@@ -690,19 +690,19 @@ internal sealed class WordImage
 
         if (stride > 1)
         {
-            Unshuffle(target, result, stride);
+            MergePlanes(target, result, stride);
         }
 
         return result;
     }
 
     /// <summary>
-    ///     Reverses the byte-plane split of a strided section: plane <c>p</c> holds byte <c>p</c> of every record.
+    ///     Reverses the byte-plane split of a fixed-stride section: plane <c>p</c> holds byte <c>p</c> of every record.
     /// </summary>
     /// <param name="planes">The planar bytes.</param>
     /// <param name="result">Receives the interleaved records.</param>
     /// <param name="stride">The record size in bytes.</param>
-    private static void Unshuffle(byte[] planes, byte[] result, int stride)
+    private static void MergePlanes(byte[] planes, byte[] result, int stride)
     {
         var n = result.Length / stride;
         for (var p = 0; p < stride; p++)

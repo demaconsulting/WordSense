@@ -72,7 +72,7 @@ public class LexiconFactTests
                 "source-ing-entry",
             },
             rows.Select(r => r[0]).ToHashSet());
-        Assert.All(rows, r =>         Assert.Contains(r[5], AllowedScopes));
+        Assert.All(rows, r => Assert.Contains(r[5], AllowedScopes));
     }
 
     /// <summary>
