@@ -81,7 +81,7 @@ internal static class ModelDownloader
             local = AppContext.BaseDirectory;
         }
 
-        return Path.Combine(local, "DemaConsulting", "WordSense", "models");
+        return Path.Join(local, "DemaConsulting", "WordSense", "models");
     }
 
     /// <summary>
@@ -106,7 +106,7 @@ internal static class ModelDownloader
     {
         foreach (var file in spec.Files)
         {
-            var path = Path.Combine(directory, file.Name);
+            var path = Path.Join(directory, file.Name);
             if (!File.Exists(path))
             {
                 throw new FileNotFoundException($"The model file '{file.Name}' was not found in '{directory}'.", path);
@@ -151,7 +151,7 @@ internal static class ModelDownloader
             ? DownloadMirror.FromOptions(mirror)
             : DownloadMirror.FromEnvironment(getEnvironmentVariable ?? Environment.GetEnvironmentVariable);
 
-        var directory = Path.Combine(Path.GetFullPath(mirror?.StoreRoot ?? DefaultStoreRoot()), spec.ModelId);
+        var directory = Path.Join(Path.GetFullPath(mirror?.StoreRoot ?? DefaultStoreRoot()), spec.ModelId);
         Directory.CreateDirectory(directory);
 
         // The private client never follows redirects itself, so credentials are attached per hop
@@ -161,13 +161,13 @@ internal static class ModelDownloader
         {
             foreach (var file in spec.Files)
             {
-                var path = Path.Combine(directory, file.Name);
+                var path = Path.Join(directory, file.Name);
                 if (File.Exists(path) && string.Equals(HashFile(path), file.Sha256, StringComparison.Ordinal))
                 {
                     continue;
                 }
 
-                await DownloadFileAsync(client, spec, effective, gitHubBaseUri ?? GitHubBaseUri, timeout, file, path, cancellationToken).ConfigureAwait(false);
+                await DownloadFileAsync(new DownloadContext(client, spec, effective, gitHubBaseUri ?? GitHubBaseUri, timeout), file, path, cancellationToken).ConfigureAwait(false);
             }
         }
         finally
@@ -217,27 +217,30 @@ internal static class ModelDownloader
     }
 
     /// <summary>
+    ///     The settings shared by every file download of one <see cref="EnsureAsync"/> call.
+    /// </summary>
+    /// <param name="Client">The HTTP client.</param>
+    /// <param name="Spec">The model.</param>
+    /// <param name="Mirror">The effective mirror, or null.</param>
+    /// <param name="LfsBaseUri">The GitHub LFS base location.</param>
+    /// <param name="AttemptTimeout">The time limit of one attempt.</param>
+    private readonly record struct DownloadContext(HttpClient Client, ModelSpec Spec, DownloadMirror? Mirror, Uri LfsBaseUri, TimeSpan AttemptTimeout);
+
+    /// <summary>
     ///     Downloads one file, trying each source until a verified copy is stored.
     /// </summary>
-    /// <param name="client">The HTTP client.</param>
-    /// <param name="spec">The model.</param>
-    /// <param name="mirror">The effective mirror, or null.</param>
-    /// <param name="gitHubBaseUri">The GitHub LFS base location.</param>
-    /// <param name="timeout">The time limit of one attempt.</param>
+    /// <param name="context">The settings shared by all files of the model.</param>
     /// <param name="file">The file to obtain.</param>
     /// <param name="destination">The final path of the file.</param>
     /// <param name="cancellationToken">A token that cancels the operation.</param>
     /// <returns>A task that completes when the file is stored.</returns>
     private static async Task DownloadFileAsync(
-        HttpClient client,
-        ModelSpec spec,
-        DownloadMirror? mirror,
-        Uri gitHubBaseUri,
-        TimeSpan timeout,
+        DownloadContext context,
         ModelFile file,
         string destination,
         CancellationToken cancellationToken)
     {
+        var (client, spec, mirror, gitHubBaseUri, timeout) = context;
         var failures = new List<string>();
         foreach (var (name, uri, auth) in BuildSources(spec, mirror, gitHubBaseUri, file))
         {

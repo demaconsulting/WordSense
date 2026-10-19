@@ -1,5 +1,6 @@
 using System.Buffers.Binary;
 using System.Collections.Frozen;
+using System.Diagnostics.CodeAnalysis;
 using System.IO.Compression;
 using System.Text;
 
@@ -192,6 +193,7 @@ internal sealed class BasicTables
     private readonly double[][] _suffixProbabilities;
     private readonly FrozenDictionary<string, LemmaCue> _cuesByClass;
 
+    [SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Constructor of an immutable table whose fields are all supplied by the single reader.")]
     private BasicTables(
         double[] parameters,
         int[] unigrams,

@@ -1,5 +1,6 @@
 using System.Buffers;
 using System.Collections.Immutable;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DemaConsulting.WordSense.Basic;
 
@@ -222,6 +223,7 @@ internal sealed class BasicClassifier
         return new WordSense(word, senses[best], probabilities[best]);
     }
 
+    [SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Private hot path that passes pre-allocated scratch buffers; bundling them would allocate per call.")]
     private void ClassifySegment(
         BasicTables tables,
         List<string> words,

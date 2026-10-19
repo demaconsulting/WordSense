@@ -516,7 +516,7 @@ internal sealed class WordImage
         return ImmutableCollectionsMarshal.AsImmutableArray(result.ToArray());
     }
 
-    private IEnumerable<int> FoldMatches(string lower)
+    private List<int> FoldMatches(string lower)
     {
         _fold ??= Uints(ImageFormat.SectionFold);
         var query = Encoding.UTF8.GetBytes(lower);
