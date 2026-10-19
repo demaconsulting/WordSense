@@ -659,7 +659,6 @@ in `corpus/`; the format of the files is described in `corpus/README.md` and the
 | `import-moby` | Rebuilds `corpus/lexicon/lexicon.tsv` from the pinned Moby file given by `--input` |
 | `compile-image` | Compiles the tables of `data/` into the embedded word image (`wordsense.img`), with inflections |
 | `rebuild-forms` | Regenerates the form tables from the committed inputs and the pinned files in `artifacts/inputs` |
-| `verify-forms` | Regenerates into a temporary directory; fails naming the files that differ from the committed ones |
 | `audit-forms [--seed N]` | Audits a seeded stratified sample of generated forms against a checker; fails at 1% error |
 | `generate-facts [--seed N]` | Derives the source-derived lexicon facts and checks them against the word table |
 | `import-agid --input FILE` | Derives the irregular forms of dictionary words from the inflection database `infl.txt` |

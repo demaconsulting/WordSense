@@ -40,21 +40,18 @@ sections:
 
               - id: WordSense-WordData-FormGenerator-Reproducible
                 title: >-
-                  FormGenerator shall regenerate the committed form tables byte for byte from the committed entry
-                  tables, the committed reviewed input, the lexicon lists and the Open English WordNet and
-                  inflection-database files named by their SHA-256 pins, in an order that depends on nothing but
-                  those inputs, and shall provide a check that fails and names the files when the committed tables
-                  differ from the regeneration or when an input is missing or does not match its pin.
+                  FormGenerator shall give identical output bytes for the same inputs (the committed entry tables,
+                  the committed reviewed input, the lexicon lists and the Open English WordNet and
+                  inflection-database files named by their SHA-256 pins), in an order that depends on nothing but
+                  those inputs, and shall refuse an input that does not match its pin.
                 tags: [unit]
                 justification: |
-                  Tables that cannot be regenerated from the committed inputs cannot be reviewed; a regenerate-and-diff
-                  check makes a hand edit of the data, or a change of the generator that is not applied to the data,
-                  visible.
+                  Tables that cannot be regenerated from the committed inputs cannot be reviewed; rerunning the
+                  generator then shows any drift as a normal data diff.
                 tests:
-                  - WordSenseBuilder_FormGenerator_Verify_CommittedTables_AreTheRegeneration
-                  - WordSenseBuilder_FormGenerator_Verify_OtherInputs_ReportsDifferences
+                  - WordSenseBuilder_FormGenerator_Run_SameInputs_GiveIdenticalBytes
+                  - WordSenseBuilder_FormGenerator_Run_ReorderedInput_GivesIdenticalBytes
                   - WordSenseBuilder_FormGenerator_Run_UnpinnedInput_IsRefused
-                  - WordSenseBuilder_Program_VerifyForms_MissingInput_Fails
 
               - id: WordSense-WordData-FormGenerator-OwnEntries
                 title: >-

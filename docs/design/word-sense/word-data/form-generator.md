@@ -61,9 +61,6 @@ the sample, and the command fails when one lacks its own analysis.
 
 - `Run(data, corpus, oewn, agid, output, oewnSha256, agidSha256)`: reads the entries, the frozen input and the sources,
   generates, prunes and writes the tables to `output` (the data directory by default); returns the statistics.
-- `Verify(data, corpus, oewn, agid, oewnSha256, agidSha256)`: regenerates into a temporary directory and compares the
-  `entry`, `form` and `form_sense_scope` files byte for byte with the committed ones; returns the differing files
-  (the `verify-forms` command; the regenerated tables are the fixed point of `rebuild-forms`).
 - `Corroborated` / `Prune`: the two-source rule.
 - `ListRank`: the order of the analyses of a spelling.
 

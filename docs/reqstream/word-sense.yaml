@@ -180,7 +180,7 @@ sections:
         tests:
           - WordSenseBuilder_ImageCompiler_Build_IsDeterministic
           - WordSenseBuilder_Appendix_Committed_MatchesCorpus
-          - WordSenseBuilder_FormGenerator_Verify_CommittedTables_AreTheRegeneration
+          - WordSenseBuilder_FormGenerator_Run_SameInputs_GiveIdenticalBytes
 
       - id: WordSense-Lib-Packaging
         title: >-

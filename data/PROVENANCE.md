@@ -50,9 +50,11 @@ surface-only: a spelling with a lemma and part of speech but no entry) and about
 138,969; rule 164,143; moby_reverse 88,881; carried 5,222; rule_variant 1,584; agid 641; hand 509; irregular_list 165;
 contraction 91.
 
-The regeneration is reproducible: `verify-forms` regenerates the `entry`, `form` and `form_sense_scope` tables from the
-committed inputs and the two pinned external files and fails, naming the files, when they differ from the committed
-ones (`rebuild-forms` is idempotent). The reviewed analyses of the earlier tables are the committed input
+The regeneration is reproducible: the same inputs give identical bytes (a unit test on small fixture inputs checks it),
+so `rebuild-forms` is idempotent. To regenerate, fetch the two inputs below, run
+`dotnet run --project tools/WordSense.Builder -- rebuild-forms --oewn <english-wordnet-2025.xml.gz> --agid <infl.txt>`
+and check `git diff data`: any change is drift that a reviewer sees as a normal data diff. The reviewed analyses of the
+earlier tables are the committed input
 `corpus/lexicon/form-frozen.tsv` (rows `carried`), so the generator never reads its own output. The inputs are not
 committed; fetch them into `artifacts/inputs` (ignored by git): `english-wordnet-2025.xml.gz` from the Open English
 WordNet 2025 release (SHA-256 pinned in `OewnImporter`) and `agid/agid-2016.01.19/infl.txt` from the AGID 2016.01.19

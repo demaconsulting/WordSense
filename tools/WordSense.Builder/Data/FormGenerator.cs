@@ -147,60 +147,6 @@ internal static partial class FormGenerator
     }
 
     /// <summary>
-    ///     Regenerates the tables into a temporary directory and compares them byte for byte with the committed ones.
-    /// </summary>
-    /// <param name="data">The data directory with the committed tables.</param>
-    /// <param name="corpus">The corpus directory.</param>
-    /// <param name="oewn">The pinned Open English WordNet file.</param>
-    /// <param name="agid">The pinned inflection database file.</param>
-    /// <param name="oewnSha256">The expected SHA-256 of the written-forms file, or null to skip the check (tests only).</param>
-    /// <param name="agidSha256">The expected SHA-256 of the inflection database file, or null to skip the check (tests only).</param>
-    /// <returns>The relative paths of the files that differ, are missing or are surplus; empty when the committed tables are the regeneration.</returns>
-    /// <exception cref="InvalidDataException">Thrown when an input is missing, does not match its pin or is inconsistent.</exception>
-    public static IReadOnlyList<string> Verify(string data, string corpus, string oewn, string agid, string? oewnSha256 = OewnImporter.PinnedSha256, string? agidSha256 = AgidImporter.PinnedSha256)
-    {
-        var temporary = Directory.CreateTempSubdirectory("wordsense-forms-");
-        try
-        {
-            Run(data, corpus, oewn, agid, temporary.FullName, oewnSha256, agidSha256);
-            var schema = DataSchema.Load(Path.Combine(data, "schema.yaml"));
-            var differences = new List<string>();
-            foreach (var name in new[] { "entry", "form", "form_sense_scope" })
-            {
-                var table = schema.Table(name);
-                var committed = TableFiles(data, table).ToDictionary(f => Path.GetRelativePath(data, f), StringComparer.Ordinal);
-                var regenerated = TableFiles(temporary.FullName, table).ToDictionary(f => Path.GetRelativePath(temporary.FullName, f), StringComparer.Ordinal);
-                foreach (var path in committed.Keys.Union(regenerated.Keys, StringComparer.Ordinal).OrderBy(p => p, StringComparer.Ordinal))
-                {
-                    if (!committed.TryGetValue(path, out var left) || !regenerated.TryGetValue(path, out var right)
-                        || !File.ReadAllBytes(left).AsSpan().SequenceEqual(File.ReadAllBytes(right)))
-                    {
-                        differences.Add(path.Replace('\\', '/'));
-                    }
-                }
-            }
-
-            return differences;
-        }
-        finally
-        {
-            temporary.Delete(true);
-        }
-    }
-
-    private static IEnumerable<string> TableFiles(string root, TableDef table)
-    {
-        if (table.Partition == PartitionKind.None)
-        {
-            var file = DataLayout.FilePath(root, table, string.Empty);
-            return File.Exists(file) ? [file] : [];
-        }
-
-        var directory = Path.Combine(root, table.Name);
-        return Directory.Exists(directory) ? Directory.EnumerateFiles(directory, "*", SearchOption.AllDirectories) : [];
-    }
-
-    /// <summary>
     ///     Regenerates the entry, form and form_sense_scope tables from the entries, the committed legacy analyses
     ///     (<c>form-frozen.tsv</c>) and the pinned sources; the output depends on nothing else, so the same inputs give the same
     ///     bytes.

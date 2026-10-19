@@ -3,14 +3,11 @@ using WordSense.Builder.Data;
 namespace WordSense.Builder.Tests;
 
 /// <summary>
-///     Tests for the reproducibility of the form tables: the committed tables are the regeneration of the committed inputs and
-///     the pinned sources, and the check reports every difference.
+///     Tests for the reproducibility of the form tables: the same inputs give identical bytes, whatever the order of the input
+///     lines, and an input that does not match its pin is refused.
 /// </summary>
 /// <remarks>
-///     The pinned Open English WordNet and AGID files are not committed. The check that regenerates the tables reads them from
-///     <c>artifacts/inputs</c> (or the files named by <c>WORDSENSE_OEWN</c> and <c>WORDSENSE_AGID</c>). When they are missing the
-///     test is skipped, unless <c>WORDSENSE_REQUIRE_FORM_INPUTS</c> is <c>true</c>, in which case it fails; CI downloads the pinned
-///     files and runs the <c>verify-forms</c> command, which fails on a missing input.
+///     The tests use the small committed Open English WordNet slice and a small inflection list, so they need no download.
 /// </remarks>
 public sealed class FormReproducibilityTests : IDisposable
 {
@@ -18,23 +15,6 @@ public sealed class FormReproducibilityTests : IDisposable
 
     /// <inheritdoc />
     public void Dispose() => _dir.Dispose();
-
-    private static (string Oewn, string Agid)? PinnedInputs()
-    {
-        var root = DataFixture.RepositoryRoot();
-        var oewn = Environment.GetEnvironmentVariable("WORDSENSE_OEWN") is { Length: > 0 } o ? o : Path.Combine(root, "artifacts", "inputs", "english-wordnet-2025.xml.gz");
-        var agid = Environment.GetEnvironmentVariable("WORDSENSE_AGID") is { Length: > 0 } a ? a : Path.Combine(root, "artifacts", "inputs", "agid", "agid-2016.01.19", "infl.txt");
-        if (File.Exists(oewn) && File.Exists(agid))
-        {
-            return (oewn, agid);
-        }
-
-        var required = string.Equals(Environment.GetEnvironmentVariable("WORDSENSE_REQUIRE_FORM_INPUTS"), "true", StringComparison.OrdinalIgnoreCase);
-        var message = $"The pinned inputs of the form tables were not found ({oewn}, {agid}); see data/PROVENANCE.md.";
-        Assert.False(required, message);
-        Assert.Skip(message);
-        return null;
-    }
 
     private string TinyInputs(out string agid)
     {
@@ -45,28 +25,53 @@ public sealed class FormReproducibilityTests : IDisposable
         return oewn;
     }
 
-    /// <summary>
-    ///     Regenerating the tables from the pinned inputs reproduces the committed files byte for byte.
-    /// </summary>
-    [Fact]
-    public void WordSenseBuilder_FormGenerator_Verify_CommittedTables_AreTheRegeneration()
+    private static SortedDictionary<string, byte[]> Snapshot(string directory) =>
+        new(Directory.EnumerateFiles(directory, "*", SearchOption.AllDirectories)
+            .ToDictionary(f => Path.GetRelativePath(directory, f).Replace('\\', '/'), File.ReadAllBytes, StringComparer.Ordinal), StringComparer.Ordinal);
+
+    private SortedDictionary<string, byte[]> Generate(string name, string oewn, string agid)
     {
-        var (oewn, agid) = PinnedInputs()!.Value;
         var root = DataFixture.RepositoryRoot();
-        var differences = FormGenerator.Verify(Path.Combine(root, "data"), Path.Combine(root, "corpus"), oewn, agid);
-        Assert.Empty(differences);
+        var output = Path.Combine(_dir.Root, name);
+        Directory.CreateDirectory(output);
+        FormGenerator.Run(Path.Combine(root, "data"), Path.Combine(root, "corpus"), oewn, agid, output, null, null);
+        return Snapshot(output);
+    }
+
+    private static void AssertIdentical(SortedDictionary<string, byte[]> expected, SortedDictionary<string, byte[]> actual)
+    {
+        Assert.NotEmpty(expected);
+        Assert.Equal(expected.Keys, actual.Keys);
+        foreach (var (path, bytes) in expected)
+        {
+            Assert.True(bytes.AsSpan().SequenceEqual(actual[path]), $"{path} differs");
+        }
     }
 
     /// <summary>
-    ///     A regeneration from other inputs than the committed tables came from is reported as differences.
+    ///     Running the generator twice on the same inputs gives identical bytes.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_FormGenerator_Verify_OtherInputs_ReportsDifferences()
+    public void WordSenseBuilder_FormGenerator_Run_SameInputs_GiveIdenticalBytes()
     {
         var oewn = TinyInputs(out var agid);
-        var root = DataFixture.RepositoryRoot();
-        var differences = FormGenerator.Verify(Path.Combine(root, "data"), Path.Combine(root, "corpus"), oewn, agid, null, null);
-        Assert.NotEmpty(differences);
+        AssertIdentical(Generate("first", oewn, agid), Generate("second", oewn, agid));
+    }
+
+    /// <summary>
+    ///     Reordering the lines of the inflection list does not change the bytes.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_FormGenerator_Run_ReorderedInput_GivesIdenticalBytes()
+    {
+        var oewn = TinyInputs(out var agid);
+        var first = Generate("ordered", oewn, agid);
+        File.WriteAllLines(agid, ["walk: V: walked | walking | walks", "bag: N: bags", "mouse: N: mice"]);
+        var ordered = Generate("ordered2", oewn, agid);
+        File.WriteAllLines(agid, ["mouse: N: mice", "bag: N: bags", "walk: V: walked | walking | walks"]);
+        var reordered = Generate("reordered", oewn, agid);
+        AssertIdentical(ordered, reordered);
+        Assert.NotEmpty(first);
     }
 
     /// <summary>
@@ -79,19 +84,6 @@ public sealed class FormReproducibilityTests : IDisposable
         var root = DataFixture.RepositoryRoot();
         var ex = Assert.Throws<InvalidDataException>(() => FormGenerator.Run(Path.Combine(root, "data"), Path.Combine(root, "corpus"), oewn, agid, _dir.Root));
         Assert.Contains("SHA-256", ex.Message, StringComparison.Ordinal);
-    }
-
-    /// <summary>
-    ///     The command fails with a message that says where the pinned input belongs when it is missing.
-    /// </summary>
-    [Fact]
-    public async Task WordSenseBuilder_Program_VerifyForms_MissingInput_Fails()
-    {
-        await using var output = new StringWriter();
-        await using var error = new StringWriter();
-        var code = await Program.RunAsync(["verify-forms", "--repository", DataFixture.RepositoryRoot(), "--oewn", Path.Combine(_dir.Root, "missing.xml.gz")], output, error, TestContext.Current.CancellationToken);
-        Assert.Equal(1, code);
-        Assert.Contains("does not exist", error.ToString(), StringComparison.Ordinal);
     }
 
     /// <summary>

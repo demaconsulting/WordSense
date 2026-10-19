@@ -81,8 +81,8 @@ nouns are no longer kept (see the next section).
 
 `rebuild-forms` is now idempotent: the reviewed rows of the earlier tables are the committed input
 `corpus/lexicon/form-frozen.tsv`, the ranks are a deterministic function of the Moby letters and explicit tie-breaks, and
-the generator no longer reads its own output, so `verify-forms` regenerates the tables from the committed inputs and the
-two pinned files and finds no difference. Besides the -ing plurals below, the change removed a few rows that earlier
+the generator no longer reads its own output, so rerunning `rebuild-forms` on the committed inputs and the two pinned
+files shows no difference in `git diff`. Besides the -ing plurals below, the change removed a few rows that earlier
 generator versions had written and that no current rule produces (the OEWN noun and adverb `am`, a gerund `during`);
 the table has 365,503 spellings (50 more than before) and 400,205 analyses (9 fewer).
 The 59 AGID plurals spelled like their singular on mass nouns in -ing (`bowling`, `brisling`, `catling`, `sibling`,
