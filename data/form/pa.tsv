@@ -7,8 +7,8 @@ PABA	0	oewn-PABA-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 PABAS	0	oewn-PABA-n	Capitalization=Upper+Number=Plur	dema	0			rule
 PAC	0	oewn-PAC-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 PACS	0	oewn-PAC-n	Capitalization=Upper+Number=Plur	dema	0			rule
-PAS	0	oewn-pas-n	Number=Sing	dema	0			oewn_form
-PAS	1	oewn-pa-n	Number=Plur	dema	0			rule
+PAS	0	oewn-pa-n	Number=Plur	dema	0			rule
+PAS	1	oewn-pas-n	Number=Sing	dema	0			oewn_form
 PAS	2	oewn-PA-n	Capitalization=Upper+Number=Plur	dema	0			rule
 PAYE	0	oewn-PAYE-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 PAYES	0	oewn-PAYE-n	Capitalization=Upper+Number=Plur	dema	0			rule
@@ -386,8 +386,8 @@ Parus bicolor	0	oewn-Parus_bicolor-n	Capitalization=Exact+Number=Sing	dema	0			o
 Parus bicolors	0	oewn-Parus_bicolor-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Parus caeruleus	0	oewn-Parus_caeruleus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Parus carolinensis	0	oewn-Parus_carolinensis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
-Pas	0	oewn-pas-n	Number=Sing	dema	0			oewn_form
-Pas	1	oewn-pa-n	Number=Plur	dema	0			rule
+Pas	0	oewn-pa-n	Number=Plur	dema	0			rule
+Pas	1	oewn-pas-n	Number=Sing	dema	0			oewn_form
 Pas	2	oewn-Pa-n	Capitalization=Title+Number=Plur	dema	0			rule
 Pascal	0	oewn-pascal-n	Number=Sing	dema	0			oewn_form
 Pascal	1	oewn-Pascal-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
@@ -882,8 +882,8 @@ paginates	0	oewn-paginate-v	Person=3+Tense=Pres	dema	0			rule
 paginating	0	oewn-paginate-v	VerbForm=Ger	dema	0			rule
 pagination	0	oewn-pagination-n	Number=Sing	dema	0			oewn_form
 paginations	0	oewn-pagination-n	Number=Plur	dema	0			rule
-paging	0	oewn-paging-n	Number=Sing	dema	0			oewn_form
-paging	1	oewn-page-v	VerbForm=Ger	dema	0			rule
+paging	0	oewn-page-v	VerbForm=Ger	dema	0			rule
+paging	1	oewn-paging-n	Number=Sing	dema	0			oewn_form
 pagings	0	oewn-paging-n	Number=Plur	dema	0			rule
 pagne	0		Number=Sing	dema	0	pagne	n	moby_reverse
 pagnes	0		Number=Plur	dema	0	pagne	n	rule
@@ -1229,8 +1229,8 @@ palatalising	0	oewn-palatalise-v	VerbForm=Ger	dema	0			rule
 palatalization	0		Number=Sing	dema	0	palatalization	n	moby_reverse
 palatalizations	0		Number=Plur	dema	0	palatalization	n	rule
 palatalize	0	oewn-palatalize-v	VerbForm=Inf	dema	0			oewn_form
-palatalized	0	oewn-palatalized-a	Degree=Pos	dema	0			oewn_form
-palatalized	1	oewn-palatalize-v	Tense=Past+VerbForm=Part	dema	0			rule
+palatalized	0	oewn-palatalize-v	Tense=Past+VerbForm=Part	dema	0			rule
+palatalized	1	oewn-palatalized-a	Degree=Pos	dema	0			oewn_form
 palatalizes	0	oewn-palatalize-v	Person=3+Tense=Pres	dema	0			rule
 palatalizing	0	oewn-palatalize-v	VerbForm=Ger	dema	0			rule
 palatals	0	oewn-palatal-n	Number=Plur	dema	0			rule
@@ -1955,17 +1955,16 @@ panelboards	0		Number=Plur	dema	0	panelboard	n	rule
 paneled	0	oewn-panel-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 paneled	1	oewn-paneled-a	Degree=Pos	dema	0			oewn_form
 paneless	0		Degree=Pos	dema	0	paneless	a	moby_reverse
-paneling	0	oewn-paneling-n	Number=Plur	dema	0			agid
-paneling	1	oewn-paneling-n	Number=Sing	dema	0			oewn_form
-paneling	2	oewn-panel-v	VerbForm=Ger	dema	0			rule_variant
+paneling	0	oewn-paneling-n	Number=Sing	dema	0			oewn_form
+paneling	1	oewn-panel-v	VerbForm=Ger	dema	0			rule_variant
+panelings	0	oewn-paneling-n	Number=Plur	dema	0			rule
 panelist	0	oewn-panelist-n	Number=Sing	dema	0			oewn_form
 panelists	0	oewn-panelist-n	Number=Plur	dema	0			rule
 panelled	0	oewn-panel-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 panelled	1	oewn-panelled-s	Degree=Pos	dema	0			oewn_form
-panelling	0	oewn-panelling-n	Number=Plur	dema	0			agid
-panelling	1	oewn-panelling-n	Number=Sing	dema	0			oewn_form
-panelling	2	oewn-panel-v	VerbForm=Ger	dema	0			oewn_form
-panellings	0	oewn-panelling-n	Number=Plur	dema	0			rule_variant
+panelling	0	oewn-panelling-n	Number=Sing	dema	0			oewn_form
+panelling	1	oewn-panel-v	VerbForm=Ger	dema	0			oewn_form
+panellings	0	oewn-panelling-n	Number=Plur	dema	0			rule
 panellist	0	oewn-panellist-n	Number=Sing	dema	0			oewn_form
 panellists	0	oewn-panellist-n	Number=Plur	dema	0			rule
 panels	0	oewn-panel-n	Number=Plur	dema	0			rule
@@ -2239,8 +2238,8 @@ pantrymen	0	oewn-pantryman-n	Number=Plur	dema	0			agid
 pantrywoman	0	oewn-pantrywoman-n	Number=Sing	dema	0			oewn_form
 pantrywomans	0	oewn-pantrywoman-n	Number=Plur	dema	0			rule
 pants	0	oewn-pants-n	Number=Sing	dema	0			oewn_form
-pants	1	oewn-pant-n	Number=Plur	dema	0			rule
-pants	2	oewn-pant-v	Person=3+Tense=Pres	dema	0			rule
+pants	1	oewn-pant-v	Person=3+Tense=Pres	dema	0			rule
+pants	2	oewn-pant-n	Number=Plur	dema	0			rule
 pants presser	0	oewn-pants_presser-n	Number=Sing	dema	0			oewn_form
 pants pressers	0	oewn-pants_presser-n	Number=Plur	dema	0			rule
 pants suit	0	oewn-pants_suit-n	Number=Sing	dema	0			oewn_form
@@ -2607,8 +2606,8 @@ parachuters	0	oewn-parachuter-n	Number=Plur	dema	0			rule
 parachutes	0	oewn-parachute-n	Number=Plur	dema	0			rule
 parachutes	1	oewn-parachute-v	Person=3+Tense=Pres	dema	0			rule
 parachutic	0		Degree=Pos	dema	0	parachutic	a	moby_reverse
-parachuting	0	oewn-parachuting-n	Number=Sing	dema	0			oewn_form
-parachuting	1	oewn-parachute-v	VerbForm=Ger	dema	0			rule
+parachuting	0	oewn-parachute-v	VerbForm=Ger	dema	0			rule
+parachuting	1	oewn-parachuting-n	Number=Sing	dema	0			oewn_form
 parachutings	0	oewn-parachuting-n	Number=Plur	dema	0			rule
 parachutism	0		Number=Sing	dema	0	parachutism	n	moby_reverse
 parachutisms	0		Number=Plur	dema	0	parachutism	n	rule
@@ -2878,8 +2877,8 @@ paramagnetisms	0	oewn-paramagnetism-n	Number=Plur	dema	0			rule
 paramagnets	0	oewn-paramagnet-n	Number=Plur	dema	0			rule
 paramatta	0		Number=Sing	dema	0	paramatta	n	moby_reverse
 paramattas	0		Number=Plur	dema	0	paramatta	n	rule
-paramecia	0	oewn-paramecia-n	Number=Sing	dema	0			oewn_form
-paramecia	1	oewn-paramecium-n	Number=Plur	dema	0			oewn_form
+paramecia	0	oewn-paramecium-n	Number=Plur	dema	0			oewn_form
+paramecia	1	oewn-paramecia-n	Number=Sing	dema	0			oewn_form
 paramecias	0	oewn-paramecia-n	Number=Plur	dema	0			rule
 paramecium	0	oewn-paramecium-n	Number=Sing	dema	0			oewn_form
 parameciums	0	oewn-paramecium-n	Number=Plur	dema	0			rule_variant
@@ -3337,8 +3336,8 @@ pargetry	0	oewn-pargetry-n	Number=Sing	dema	0			oewn_form
 pargets	0	oewn-parget-n	Number=Plur	dema	0			rule
 pargets	1	oewn-parget-v	Person=3+Tense=Pres	dema	0			rule
 pargetted	0	oewn-parget-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
-pargetting	0	oewn-pargetting-n	Number=Sing	dema	0			oewn_form
-pargetting	1	oewn-parget-v	VerbForm=Ger	dema	0			rule_variant
+pargetting	0	oewn-parget-v	VerbForm=Ger	dema	0			rule_variant
+pargetting	1	oewn-pargetting-n	Number=Sing	dema	0			oewn_form
 pargettings	0	oewn-pargetting-n	Number=Plur	dema	0			rule
 parging	0		Number=Sing	dema	0	parging	n	moby_reverse
 pargings	0		Number=Plur	dema	0	parging	n	rule
@@ -3662,8 +3661,8 @@ parricidal	0		Degree=Pos	dema	0	parricidal	a	moby_reverse
 parricide	0	oewn-parricide-n	Number=Sing	dema	0			oewn_form
 parricides	0	oewn-parricide-n	Number=Plur	dema	0			rule
 parried	0	oewn-parry-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
-parries	0	oewn-parry-n	Number=Plur	dema	0			rule
-parries	1	oewn-parry-v	Person=3+Tense=Pres	dema	0			rule
+parries	0	oewn-parry-v	Person=3+Tense=Pres	dema	0			rule
+parries	1	oewn-parry-n	Number=Plur	dema	0			rule
 parring	0	oewn-par-v	VerbForm=Ger	dema	0			rule
 parroket	0	oewn-parroket-n	Number=Sing	dema	0			oewn_form
 parrokets	0	oewn-parroket-n	Number=Plur	dema	0			rule
@@ -3930,8 +3929,8 @@ parting	2	oewn-part-n	Number=Sing+VerbForm=Ger	dema	1			carried
 parting	3	oewn-parting-n	Number=Sing	dema	0			oewn_form
 parting with	0	oewn-part_with-v	VerbForm=Ger	dema	0			rule
 partings	0	oewn-parting-n	Number=Plur	dema	0			rule
-partis	0		Degree=Pos	dema	0	partis	a	moby_reverse
-partis	1		Number=Plur	dema	0	parti	n	rule
+partis	0		Number=Plur	dema	0	parti	n	rule
+partis	1		Degree=Pos	dema	0	partis	a	moby_reverse
 partisan	0	oewn-partisan-n	Number=Sing	dema	0			oewn_form
 partisan	1	oewn-partisan-a	Degree=Pos	dema	0			oewn_form
 partisanries	0		Number=Plur	dema	0	partisanry	n	rule
@@ -4088,8 +4087,8 @@ parvos	0	oewn-parvo-n	Number=Plur	dema	0			rule
 parvovirus	0	oewn-parvovirus-n	Number=Sing	dema	0			oewn_form
 parvoviruses	0	oewn-parvovirus-n	Number=Plur	dema	0			rule
 parvulus	0		Number=Sing	dema	0	parvulus	n	moby_reverse
-pas	0	oewn-pas-n	Number=Sing	dema	0			oewn_form
-pas	1	oewn-pa-n	Number=Plur	dema	0			rule
+pas	0	oewn-pa-n	Number=Plur	dema	0			rule
+pas	1	oewn-pas-n	Number=Sing	dema	0			oewn_form
 pas de deux	0	oewn-pas_de_deux-n	Number=Sing	dema	0			oewn_form
 pas de quatre	0	oewn-pas_de_quatre-n	Number=Sing	dema	0			oewn_form
 pas de trois	0	oewn-pas_de_trois-n	Number=Sing	dema	0			oewn_form
@@ -4902,8 +4901,8 @@ patronised	1	oewn-patronised-a	Degree=Pos	dema	0			oewn_form
 patroniser	0		Number=Sing	dema	0	patroniser	n	moby_reverse
 patronisers	0		Number=Plur	dema	0	patroniser	n	rule
 patronises	0	oewn-patronise-v	Person=3+Tense=Pres	dema	0			rule
-patronising	0	oewn-patronising-a	Degree=Pos	dema	0			oewn_form
-patronising	1	oewn-patronise-v	VerbForm=Ger	dema	0			rule
+patronising	0	oewn-patronise-v	VerbForm=Ger	dema	0			rule
+patronising	1	oewn-patronising-a	Degree=Pos	dema	0			oewn_form
 patronisingly	0	oewn-patronisingly-r	Degree=Pos	dema	0			oewn_form
 patronizable	0		Degree=Pos	dema	0	patronizable	a	moby_reverse
 patronize	0	oewn-patronize-v	VerbForm=Inf	dema	0			oewn_form
@@ -4972,8 +4971,8 @@ patternmakings	0		Number=Plur	dema	0	patternmaking	n	rule
 patterns	0	oewn-pattern-n	Number=Plur	dema	0			rule
 patterns	1	oewn-pattern-v	Person=3+Tense=Pres	dema	0			rule
 patterny	0		Degree=Pos	dema	0	patterny	a	moby_reverse
-patters	0	oewn-patter-n	Number=Plur	dema	0			rule
-patters	1	oewn-patter-v	Person=3+Tense=Pres	dema	0			rule
+patters	0	oewn-patter-v	Person=3+Tense=Pres	dema	0			rule
+patters	1	oewn-patter-n	Number=Plur	dema	0			rule
 patties	0	oewn-patty-n	Number=Plur	dema	0			rule
 patting	0	oewn-pat-v	VerbForm=Ger	dema	0			oewn_form
 pattle	0		Number=Sing	dema	0	pattle	n	moby_reverse

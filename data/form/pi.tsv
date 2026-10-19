@@ -9,8 +9,8 @@ PIE	0	oewn-pie-n	Number=Sing	dema	0			oewn_form
 PIE	1	oewn-PIE-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 PIES	0	oewn-pie-n	Number=Plur	dema	0			rule
 PIES	1	oewn-pi-n	Number=Plur	dema	0			agid
-PIES	2	oewn-PI-n	Capitalization=Upper+Number=Plur	dema	0			agid
-PIES	3	oewn-PIE-n	Capitalization=Upper+Number=Plur	dema	0			rule
+PIES	2	oewn-PIE-n	Capitalization=Upper+Number=Plur	dema	0			rule
+PIES	3	oewn-PI-n	Capitalization=Upper+Number=Plur	dema	0			agid
 PIM	0	oewn-PIM-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 PIM tool	0	oewn-PIM_tool-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 PIM tools	0	oewn-PIM_tool-n	Capitalization=Exact+Number=Plur	dema	0			rule
@@ -483,8 +483,8 @@ pickaxes	1	oewn-pickaxe-n	Number=Plur	dema	0			rule
 pickaxing	0		Number=Sing	dema	0	pickaxing	n	moby_reverse
 pickaxing	1		VerbForm=Ger	dema	0	pickax	v	moby_reverse
 pickaxings	0		Number=Plur	dema	0	pickaxing	n	rule
-picked	0		Degree=Pos	dema	0	picked	a	moby_reverse
-picked	1	oewn-pick-v	Tense=Past+VerbForm=Part	dema	0			rule
+picked	0	oewn-pick-v	Tense=Past+VerbForm=Part	dema	0			rule
+picked	1		Degree=Pos	dema	0	picked	a	moby_reverse
 picked apart	0	oewn-pick_apart-v	Tense=Past+VerbForm=Part	dema	0			rule
 picked at	0	oewn-pick_at-v	Tense=Past+VerbForm=Part	dema	0			rule
 picked off	0	oewn-pick_off-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -724,8 +724,8 @@ piddlers	0		Number=Plur	dema	0	piddler	n	rule
 piddles	0	oewn-piddle-v	Person=3+Tense=Pres	dema	0			rule
 piddles	1	oewn-piddle-n	Number=Plur	dema	0			rule
 piddles away	0	oewn-piddle_away-v	Person=3+Tense=Pres	dema	0			rule
-piddling	0	oewn-piddling-a	Degree=Pos	dema	0			oewn_form
-piddling	1	oewn-piddle-v	VerbForm=Ger	dema	0			rule
+piddling	0	oewn-piddle-v	VerbForm=Ger	dema	0			rule
+piddling	1	oewn-piddling-a	Degree=Pos	dema	0			oewn_form
 piddling away	0	oewn-piddle_away-v	VerbForm=Ger	dema	0			rule
 piddock	0	oewn-piddock-n	Number=Sing	dema	0			oewn_form
 piddocks	0	oewn-piddock-n	Number=Plur	dema	0			rule
@@ -844,8 +844,8 @@ pierced	1	oewn-pierced-a	Degree=Pos	dema	0			oewn_form
 piercer	0		Number=Sing	dema	0	piercer	n	moby_reverse
 piercers	0		Number=Plur	dema	0	piercer	n	rule
 pierces	0	oewn-pierce-v	Person=3+Tense=Pres	dema	0			rule
-piercing	0	oewn-piercing-a	Degree=Pos	dema	0			oewn_form
-piercing	1	oewn-pierce-v	VerbForm=Ger	dema	0			rule
+piercing	0	oewn-pierce-v	VerbForm=Ger	dema	0			rule
+piercing	1	oewn-piercing-a	Degree=Pos	dema	0			oewn_form
 piercingly	0	oewn-piercingly-r	Degree=Pos	dema	0			oewn_form
 piercingness	0		Number=Sing	dema	0	piercingness	n	moby_reverse
 pierhead	0		Number=Sing	dema	0	pierhead	n	moby_reverse
@@ -943,8 +943,8 @@ pigeonhole	1	oewn-pigeonhole-v	VerbForm=Inf	dema	0			oewn_form
 pigeonholed	0	oewn-pigeonhole-v	Tense=Past+VerbForm=Part	dema	0			rule
 pigeonholes	0	oewn-pigeonhole-n	Number=Plur	dema	0			rule
 pigeonholes	1	oewn-pigeonhole-v	Person=3+Tense=Pres	dema	0			rule
-pigeonholing	0	oewn-pigeonholing-n	Number=Sing	dema	0			oewn_form
-pigeonholing	1	oewn-pigeonhole-v	VerbForm=Ger	dema	0			rule
+pigeonholing	0	oewn-pigeonhole-v	VerbForm=Ger	dema	0			rule
+pigeonholing	1	oewn-pigeonholing-n	Number=Sing	dema	0			oewn_form
 pigeonholings	0	oewn-pigeonholing-n	Number=Plur	dema	0			rule
 pigeonite	0		Number=Sing	dema	0	pigeonite	n	moby_reverse
 pigeonites	0		Number=Plur	dema	0	pigeonite	n	rule
@@ -1192,8 +1192,8 @@ pillager	0	oewn-pillager-n	Number=Sing	dema	0			oewn_form
 pillagers	0	oewn-pillager-n	Number=Plur	dema	0			rule
 pillages	0	oewn-pillage-v	Person=3+Tense=Pres	dema	0			rule
 pillages	1	oewn-pillage-n	Number=Plur	dema	0			rule
-pillaging	0	oewn-pillaging-n	Number=Sing	dema	0			oewn_form
-pillaging	1	oewn-pillage-v	VerbForm=Ger	dema	0			rule
+pillaging	0	oewn-pillage-v	VerbForm=Ger	dema	0			rule
+pillaging	1	oewn-pillaging-n	Number=Sing	dema	0			oewn_form
 pillagings	0	oewn-pillaging-n	Number=Plur	dema	0			rule
 pillar	0	oewn-pillar-n	Number=Sing	dema	0			oewn_form
 pillar	1		VerbForm=Inf	dema	0	pillar	v	moby_reverse
@@ -1566,13 +1566,13 @@ ping-pong balls	0	oewn-ping-pong_ball-n	Number=Plur	dema	0			rule
 ping-pong table	0	oewn-ping-pong_table-n	Number=Sing	dema	0			oewn_form
 ping-pong tables	0	oewn-ping-pong_table-n	Number=Plur	dema	0			rule
 pinge	0		VerbForm=Inf	dema	0	pinge	v	moby_reverse
-pinged	0	oewn-ping-v	Tense=Past+VerbForm=Part	dema	0			rule
-pinged	1		Tense=Past+VerbForm=Part	dema	0	pinge	v	rule
+pinged	0		Tense=Past+VerbForm=Part	dema	0	pinge	v	rule
+pinged	1	oewn-ping-v	Tense=Past+VerbForm=Part	dema	0			rule
 pinger	0	oewn-pinger-n	Number=Sing	dema	0			oewn_form
 pingers	0	oewn-pinger-n	Number=Plur	dema	0			rule
 pinges	0		Person=3+Tense=Pres	dema	0	pinge	v	rule
-pinging	0	oewn-ping-v	VerbForm=Ger	dema	0			rule
-pinging	1		VerbForm=Ger	dema	0	pinge	v	rule
+pinging	0		VerbForm=Ger	dema	0	pinge	v	rule
+pinging	1	oewn-ping-v	VerbForm=Ger	dema	0			rule
 pingo	0		Number=Sing	dema	0	pingo	n	moby_reverse
 pingos	0		Number=Plur	dema	0	pingo	n	rule
 pingpong paddle	0	oewn-pingpong_paddle-n	Number=Sing	dema	0			oewn_form
@@ -1962,8 +1962,8 @@ pipeworts	0	oewn-pipewort-n	Number=Plur	dema	0			rule
 pipier	0		Degree=Cmp	dema	0	pipy	a	moby_reverse
 pipiest	0		Degree=Sup	dema	0	pipy	a	moby_reverse
 piping	0	oewn-piping-n	Number=Sing	dema	0			oewn_form
-piping	1		Degree=Pos	dema	0	piping	a	moby_reverse
-piping	2	oewn-pipe-v	VerbForm=Ger	dema	0			rule
+piping	1	oewn-pipe-v	VerbForm=Ger	dema	0			rule
+piping	2		Degree=Pos	dema	0	piping	a	moby_reverse
 piping	3	oewn-piping-r	Degree=Pos	dema	0			oewn_form
 piping crow	0	oewn-piping_crow-n	Number=Sing	dema	0			oewn_form
 piping crow-shrike	0	oewn-piping_crow-shrike-n	Number=Sing	dema	0			oewn_form
@@ -2132,15 +2132,15 @@ piss-up	0	oewn-piss-up-n	Number=Sing	dema	0			oewn_form
 piss-ups	0	oewn-piss-up-n	Number=Plur	dema	0			rule
 pissaba palm	0	oewn-pissaba_palm-n	Number=Sing	dema	0			oewn_form
 pissaba palms	0	oewn-pissaba_palm-n	Number=Plur	dema	0			rule
-pissed	0	oewn-pissed-a	Degree=Pos	dema	0			oewn_form
-pissed	1	oewn-piss-v	Tense=Past+VerbForm=Part	dema	0			rule
+pissed	0	oewn-piss-v	Tense=Past+VerbForm=Part	dema	0			rule
+pissed	1	oewn-pissed-a	Degree=Pos	dema	0			oewn_form
 pissed off	0	oewn-pissed_off-a	Degree=Pos	dema	0			oewn_form
 pisser	0	oewn-pisser-n	Number=Sing	dema	0			oewn_form
 pissers	0	oewn-pisser-n	Number=Plur	dema	0			rule
 pisses	0	oewn-piss-v	Person=3+Tense=Pres	dema	0			rule
 pisses	1	oewn-piss-n	Number=Plur	dema	0			rule
-pissing	0	oewn-pissing-n	Number=Sing	dema	0			oewn_form
-pissing	1	oewn-piss-v	VerbForm=Ger	dema	0			rule
+pissing	0	oewn-piss-v	VerbForm=Ger	dema	0			rule
+pissing	1	oewn-pissing-n	Number=Sing	dema	0			oewn_form
 pissings	0	oewn-pissing-n	Number=Plur	dema	0			rule
 pistachio	0	oewn-pistachio-n	Number=Sing	dema	0			oewn_form
 pistachio	1		Degree=Pos	dema	0	pistachio	a	moby_reverse
@@ -2380,8 +2380,8 @@ pitter-pattered	0	oewn-pitter-patter-v	Tense=Past+VerbForm=Part	dema	0			rule
 pitter-pattering	0	oewn-pitter-patter-v	VerbForm=Ger	dema	0			rule
 pitter-patters	0	oewn-pitter-patter-n	Number=Plur	dema	0			rule
 pitter-patters	1	oewn-pitter-patter-v	Person=3+Tense=Pres	dema	0			rule
-pitting	0	oewn-pitting-n	Number=Sing	dema	0			oewn_form
-pitting	1	oewn-pit-v	VerbForm=Ger	dema	0			oewn_form
+pitting	0	oewn-pit-v	VerbForm=Ger	dema	0			oewn_form
+pitting	1	oewn-pitting-n	Number=Sing	dema	0			oewn_form
 pittings	0	oewn-pitting-n	Number=Plur	dema	0			rule
 pitty-pat	0	oewn-pitty-pat-r	Degree=Pos	dema	0			oewn_form
 pitty-patty	0	oewn-pitty-patty-r	Degree=Pos	dema	0			oewn_form

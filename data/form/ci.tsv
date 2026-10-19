@@ -182,8 +182,8 @@ cicala	0	oewn-cicala-n	Number=Sing	dema	0			oewn_form
 cicalas	0	oewn-cicala-n	Number=Plur	dema	0			rule_variant
 cicale	0	oewn-cicala-n	Number=Plur	dema	0			oewn_form
 cicatrice	0	oewn-cicatrice-n	Number=Sing	dema	0			oewn_form
-cicatrices	0	oewn-cicatrice-n	Number=Plur	dema	0			rule
-cicatrices	1	oewn-cicatrix-n	Number=Plur	dema	0			oewn_form
+cicatrices	0	oewn-cicatrix-n	Number=Plur	dema	0			oewn_form
+cicatrices	1	oewn-cicatrice-n	Number=Plur	dema	0			rule
 cicatricial	0		Degree=Pos	dema	0	cicatricial	a	moby_reverse
 cicatricle	0		Number=Sing	dema	0	cicatricle	n	moby_reverse
 cicatricles	0		Number=Plur	dema	0	cicatricle	n	rule
@@ -926,8 +926,8 @@ citied	1		VerbForm=Inf	dema	0	citied	v	moby_reverse
 cities	0	oewn-city-n	Number=Plur	dema	0			rule
 citification	0		Number=Sing	dema	0	citification	n	moby_reverse
 citifications	0		Number=Plur	dema	0	citification	n	rule
-citified	0	oewn-citified-a	Degree=Pos	dema	0			oewn_form
-citified	1	oewn-citify-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+citified	0	oewn-citify-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+citified	1	oewn-citified-a	Degree=Pos	dema	0			oewn_form
 citifies	0	oewn-citify-v	Person=3+Tense=Pres	dema	0			rule
 citify	0	oewn-citify-v	VerbForm=Inf	dema	0			oewn_form
 citifying	0	oewn-citify-v	VerbForm=Ger	dema	0			rule
@@ -1184,8 +1184,8 @@ civilizational	0		Degree=Pos	dema	0	civilizational	a	moby_reverse
 civilizations	0	oewn-civilization-n	Number=Plur	dema	0			rule
 civilizatory	0		Degree=Pos	dema	0	civilizatory	a	moby_reverse
 civilize	0	oewn-civilize-v	VerbForm=Inf	dema	0			oewn_form
-civilized	0	oewn-civilized-a	Degree=Pos	dema	0			oewn_form
-civilized	1	oewn-civilize-v	Tense=Past+VerbForm=Part	dema	0			rule
+civilized	0	oewn-civilize-v	Tense=Past+VerbForm=Part	dema	0			rule
+civilized	1	oewn-civilized-a	Degree=Pos	dema	0			oewn_form
 civilizedness	0		Number=Sing	dema	0	civilizedness	n	moby_reverse
 civilizer	0		Number=Sing	dema	0	civilizer	n	moby_reverse
 civilizers	0		Number=Plur	dema	0	civilizer	n	rule

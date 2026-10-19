@@ -203,15 +203,15 @@ age-related	0	oewn-age-related-a	Degree=Pos	dema	0			oewn_form
 age-related macular degeneration	0	oewn-age-related_macular_degeneration-n	Number=Sing	dema	0			oewn_form
 age-related macular degenerations	0	oewn-age-related_macular_degeneration-n	Number=Plur	dema	0			rule
 aged	0	oewn-aged-a	Degree=Pos	dema	0			oewn_form
-aged	1	oewn-aged-n	Number=Sing	dema	0			oewn_form
-aged	2	oewn-age-v	Tense=Past+VerbForm=Part	dema	0			rule
+aged	1	oewn-age-v	Tense=Past+VerbForm=Part	dema	0			rule
+aged	2	oewn-aged-n	Number=Sing	dema	0			oewn_form
 agedly	0		Degree=Pos	dema	0	agedly	r	moby_reverse
 agedness	0	oewn-agedness-n	Number=Sing	dema	0			oewn_form
 agednesses	0	oewn-agedness-n	Number=Plur	dema	0			rule
 ageds	0	oewn-aged-n	Number=Plur	dema	0			rule
 agee	0		Degree=Pos	dema	0	agee	a	moby_reverse
-ageing	0	oewn-ageing-n	Number=Sing	dema	0			oewn_form
-ageing	1	oewn-age-v	VerbForm=Ger	dema	0			rule_variant
+ageing	0	oewn-age-v	VerbForm=Ger	dema	0			rule_variant
+ageing	1	oewn-ageing-n	Number=Sing	dema	0			oewn_form
 ageing	2	oewn-ageing-a	Degree=Pos	dema	0			oewn_form
 ageings	0	oewn-ageing-n	Number=Plur	dema	0			rule
 ageism	0	oewn-ageism-n	Number=Sing	dema	0			oewn_form
@@ -403,8 +403,8 @@ agileness	0		Number=Sing	dema	0	agileness	n	moby_reverse
 agilenesses	0		Number=Plur	dema	0	agileness	n	rule
 agilities	0	oewn-agility-n	Number=Plur	dema	0			rule
 agility	0	oewn-agility-n	Number=Sing	dema	0			oewn_form
-aging	0	oewn-aging-n	Number=Sing	dema	0			oewn_form
-aging	1	oewn-age-v	VerbForm=Ger	dema	0			rule_variant
+aging	0	oewn-age-v	VerbForm=Ger	dema	0			rule_variant
+aging	1	oewn-aging-n	Number=Sing	dema	0			oewn_form
 aging	2	oewn-aging-a	Degree=Pos	dema	0			oewn_form
 agings	0	oewn-aging-n	Number=Plur	dema	0			rule
 agio	0	oewn-agio-n	Number=Sing	dema	0			oewn_form
@@ -537,8 +537,8 @@ agonized	0	oewn-agonize-v	Tense=Past+VerbForm=Part	dema	0			rule
 agonized	1	oewn-agonized-a	Degree=Pos	dema	0			oewn_form
 agonizedly	0		Degree=Pos	dema	0	agonizedly	r	moby_reverse
 agonizes	0	oewn-agonize-v	Person=3+Tense=Pres	dema	0			rule
-agonizing	0	oewn-agonizing-a	Degree=Pos	dema	0			oewn_form
-agonizing	1	oewn-agonize-v	VerbForm=Ger	dema	0			rule
+agonizing	0	oewn-agonize-v	VerbForm=Ger	dema	0			rule
+agonizing	1	oewn-agonizing-a	Degree=Pos	dema	0			oewn_form
 agonizingly	0	oewn-agonizingly-r	Degree=Pos	dema	0			oewn_form
 agons	0	oewn-agon-n	Number=Plur	dema	0			rule_variant
 agony	0	oewn-agony-n	Number=Sing	dema	0			oewn_form
@@ -594,8 +594,8 @@ agreeable	0	oewn-agreeable-a	Degree=Pos	dema	0			oewn_form
 agreeableness	0	oewn-agreeableness-n	Number=Sing	dema	0			oewn_form
 agreeablenesses	0	oewn-agreeableness-n	Number=Plur	dema	0			rule
 agreeably	0	oewn-agreeably-r	Degree=Pos	dema	0			oewn_form
-agreed	0	oewn-agreed-a	Degree=Pos	dema	0			oewn_form
-agreed	1	oewn-agree-v	Tense=Past+VerbForm=Part	dema	0			rule
+agreed	0	oewn-agree-v	Tense=Past+VerbForm=Part	dema	0			rule
+agreed	1	oewn-agreed-a	Degree=Pos	dema	0			oewn_form
 agreed upon	0	oewn-agreed_upon-a	Degree=Pos	dema	0			oewn_form
 agreeing	0	oewn-agree-v	VerbForm=Ger	dema	0			rule
 agreeingly	0		Degree=Pos	dema	0	agreeingly	r	moby_reverse

@@ -264,8 +264,8 @@ slasher	0	oewn-slasher-n	Number=Sing	dema	0			oewn_form
 slashers	0	oewn-slasher-n	Number=Plur	dema	0			rule
 slashes	0	oewn-slash-v	Person=3+Tense=Pres	dema	0			rule
 slashes	1	oewn-slash-n	Number=Plur	dema	0			rule
-slashing	0	oewn-slashing-a	Degree=Pos	dema	0			oewn_form
-slashing	1	oewn-slash-v	VerbForm=Ger	dema	0			rule
+slashing	0	oewn-slash-v	VerbForm=Ger	dema	0			rule
+slashing	1	oewn-slashing-a	Degree=Pos	dema	0			oewn_form
 slashingly	0		Degree=Pos	dema	0	slashingly	r	moby_reverse
 slask	0		Number=Sing	dema	0	slask	n	moby_reverse
 slasks	0		Number=Plur	dema	0	slask	n	rule
@@ -396,8 +396,8 @@ slaws	0	oewn-slaw-n	Number=Plur	dema	0			rule
 slay	0	oewn-slay-v	VerbForm=Inf	dema	0			oewn_form
 slayer	0	oewn-slayer-n	Number=Sing	dema	0			oewn_form
 slayers	0	oewn-slayer-n	Number=Plur	dema	0			rule
-slaying	0	oewn-slaying-n	Number=Sing	dema	0			oewn_form
-slaying	1	oewn-slay-v	VerbForm=Ger	dema	0			rule
+slaying	0	oewn-slay-v	VerbForm=Ger	dema	0			rule
+slaying	1	oewn-slaying-n	Number=Sing	dema	0			oewn_form
 slayings	0	oewn-slaying-n	Number=Plur	dema	0			rule
 slays	0	oewn-slay-v	Person=3+Tense=Pres	dema	0			rule
 sld	0		Number=Sing	dema	0	sld	n	moby_reverse
@@ -421,8 +421,8 @@ sled dogs	0	oewn-sled_dog-n	Number=Plur	dema	0			rule
 sledded	0	oewn-sled-v	Tense=Past+VerbForm=Part	dema	0			rule
 sledder	0	oewn-sledder-n	Number=Sing	dema	0			oewn_form
 sledders	0	oewn-sledder-n	Number=Plur	dema	0			rule
-sledding	0	oewn-sledding-n	Number=Sing	dema	0			oewn_form
-sledding	1	oewn-sled-v	VerbForm=Ger	dema	0			oewn_form
+sledding	0	oewn-sled-v	VerbForm=Ger	dema	0			oewn_form
+sledding	1	oewn-sledding-n	Number=Sing	dema	0			oewn_form
 sleddings	0	oewn-sledding-n	Number=Plur	dema	0			rule
 sledge	0	oewn-sledge-n	Number=Sing	dema	0			oewn_form
 sledge	1	oewn-sledge-v	VerbForm=Inf	dema	0			oewn_form
@@ -448,8 +448,8 @@ sleek over	0	oewn-sleek_over-v	VerbForm=Inf	dema	0			oewn_form
 sleeked	0	oewn-sleek-v	Tense=Past+VerbForm=Part	dema	0			rule
 sleeked down	0	oewn-sleek_down-v	Tense=Past+VerbForm=Part	dema	0			rule
 sleeked over	0	oewn-sleek_over-v	Tense=Past+VerbForm=Part	dema	0			rule
-sleeker	0		Number=Sing	dema	0	sleeker	n	moby_reverse
-sleeker	1	oewn-sleek-a	Degree=Cmp	dema	0			rule
+sleeker	0	oewn-sleek-a	Degree=Cmp	dema	0			rule
+sleeker	1		Number=Sing	dema	0	sleeker	n	moby_reverse
 sleekers	0		Number=Plur	dema	0	sleeker	n	rule
 sleekest	0	oewn-sleek-a	Degree=Sup	dema	0			rule
 sleekier	0		Degree=Cmp	dema	0	sleeky	a	moby_reverse
@@ -504,8 +504,8 @@ sleepily	0	oewn-sleepily-r	Degree=Pos	dema	0			oewn_form
 sleepiness	0	oewn-sleepiness-n	Number=Sing	dema	0			oewn_form
 sleepinesses	0	oewn-sleepiness-n	Number=Plur	dema	0			rule
 sleeping	0	oewn-sleeping-n	Number=Sing	dema	0			oewn_form
-sleeping	1	oewn-sleeping-a	Degree=Pos	dema	0			oewn_form
-sleeping	2	oewn-sleep-v	VerbForm=Ger	dema	0			rule
+sleeping	1	oewn-sleep-v	VerbForm=Ger	dema	0			rule
+sleeping	2	oewn-sleeping-a	Degree=Pos	dema	0			oewn_form
 sleeping accommodation	0	oewn-sleeping_accommodation-n	Number=Sing	dema	0			oewn_form
 sleeping accommodations	0	oewn-sleeping_accommodation-n	Number=Plur	dema	0			rule
 sleeping around	0	oewn-sleeping_around-n	Number=Sing	dema	0			oewn_form
@@ -591,8 +591,8 @@ sleets	1	oewn-sleet-v	Person=3+Tense=Pres	dema	0			rule
 sleety	0	oewn-sleety-a	Degree=Pos	dema	0			oewn_form
 sleeve	0	oewn-sleeve-n	Number=Sing	dema	0			oewn_form
 sleeve	1		VerbForm=Inf	dema	0	sleeve	v	moby_reverse
-sleeved	0	oewn-sleeved-a	Degree=Pos	dema	0			oewn_form
-sleeved	1		Tense=Past+VerbForm=Part	dema	0	sleeve	v	moby_reverse
+sleeved	0		Tense=Past+VerbForm=Part	dema	0	sleeve	v	moby_reverse
+sleeved	1	oewn-sleeved-a	Degree=Pos	dema	0			oewn_form
 sleeveless	0	oewn-sleeveless-a	Degree=Pos	dema	0			oewn_form
 sleevelike	0		Degree=Pos	dema	0	sleevelike	a	moby_reverse
 sleeves	0	oewn-sleeve-n	Number=Plur	dema	0			rule
@@ -666,9 +666,9 @@ slew	1	oewn-slew-v	VerbForm=Inf	dema	0			oewn_form
 slew	2	oewn-slew-n	Number=Sing	dema	0			oewn_form
 slewed	0	oewn-slew-v	Tense=Past+VerbForm=Part	dema	0			rule
 slewing	0	oewn-slew-v	VerbForm=Ger	dema	0			rule
-slews	0	oewn-slew-n	Number=Plur	dema	0			rule
-slews	1	oewn-slews-n	Number=Sing	dema	0			oewn_form
-slews	2	oewn-slew-v	Person=3+Tense=Pres	dema	0			rule
+slews	0	oewn-slew-v	Person=3+Tense=Pres	dema	0			rule
+slews	1	oewn-slew-n	Number=Plur	dema	0			rule
+slews	2	oewn-slews-n	Number=Sing	dema	0			oewn_form
 sley	0		Number=Sing	dema	0	sley	n	moby_reverse
 sley	1		VerbForm=Inf	dema	0	sley	v	moby_reverse
 sleys	0		Number=Plur	dema	0	sley	n	rule
@@ -784,9 +784,9 @@ sliding seats	0	oewn-sliding_seat-n	Number=Plur	dema	0			rule
 sliding window	0	oewn-sliding_window-n	Number=Sing	dema	0			oewn_form
 sliding windows	0	oewn-sliding_window-n	Number=Plur	dema	0			rule
 slidingly	0		Degree=Pos	dema	0	slidingly	r	moby_reverse
-slier	0		Number=Sing	dema	0	slier	n	moby_reverse
-slier	1		Degree=Pos	dema	0	slier	r	moby_reverse
-slier	2	oewn-sly-a	Degree=Cmp	dema	0			oewn_form
+slier	0	oewn-sly-a	Degree=Cmp	dema	0			oewn_form
+slier	1		Number=Sing	dema	0	slier	n	moby_reverse
+slier	2		Degree=Pos	dema	0	slier	r	moby_reverse
 sliest	0	oewn-sly-a	Degree=Sup	dema	0			oewn_form
 slight	0	oewn-slight-a	Degree=Pos	dema	0			oewn_form
 slight	1	oewn-slight-v	VerbForm=Inf	dema	0			oewn_form
@@ -794,8 +794,8 @@ slight	2	oewn-slight-n	Number=Sing	dema	0			oewn_form
 slight care	0	oewn-slight_care-n	Number=Sing	dema	0			oewn_form
 slight cares	0	oewn-slight_care-n	Number=Plur	dema	0			rule
 slighted	0	oewn-slight-v	Tense=Past+VerbForm=Part	dema	0			rule
-slighter	0		Number=Sing	dema	0	slighter	n	moby_reverse
-slighter	1	oewn-slight-a	Degree=Cmp	dema	0			rule
+slighter	0	oewn-slight-a	Degree=Cmp	dema	0			rule
+slighter	1		Number=Sing	dema	0	slighter	n	moby_reverse
 slighters	0		Number=Plur	dema	0	slighter	n	rule
 slightest	0	oewn-slight-a	Degree=Sup	dema	0			rule
 slighting	0	oewn-slighting-a	Degree=Pos	dema	0			oewn_form
@@ -839,10 +839,10 @@ slimline	0		Degree=Pos	dema	0	slimline	a	moby_reverse
 slimly	0	oewn-slimly-r	Degree=Pos	dema	0			oewn_form
 slimmed	0	oewn-slim-v	Tense=Past+VerbForm=Part	dema	0			rule
 slimmed down	0	oewn-slim_down-v	Tense=Past+VerbForm=Part	dema	0			rule
-slimmer	0		Number=Sing	dema	0	slimmer	n	moby_reverse
-slimmer	1	oewn-slim-a	Degree=Cmp	dema	0			oewn_form
-slimmest	0		VerbForm=Inf	dema	0	slimmest	v	moby_reverse
-slimmest	1	oewn-slim-a	Degree=Sup	dema	0			oewn_form
+slimmer	0	oewn-slim-a	Degree=Cmp	dema	0			oewn_form
+slimmer	1		Number=Sing	dema	0	slimmer	n	moby_reverse
+slimmest	0	oewn-slim-a	Degree=Sup	dema	0			oewn_form
+slimmest	1		VerbForm=Inf	dema	0	slimmest	v	moby_reverse
 slimmested	0		Tense=Past+VerbForm=Part	dema	0	slimmest	v	rule
 slimmesting	0		VerbForm=Ger	dema	0	slimmest	v	rule
 slimmests	0		Person=3+Tense=Pres	dema	0	slimmest	v	rule
@@ -1276,8 +1276,8 @@ slowworms	0	oewn-slowworm-n	Number=Plur	dema	0			rule
 slub	0	oewn-slub-n	Number=Sing	dema	0			oewn_form
 slub	1		VerbForm=Inf	dema	0	slub	v	moby_reverse
 slub	2		Degree=Pos	dema	0	slub	a	moby_reverse
-slubbed	0	oewn-slubbed-a	Degree=Pos	dema	0			oewn_form
-slubbed	1		Tense=Past+VerbForm=Part	dema	0	slub	v	moby_reverse
+slubbed	0		Tense=Past+VerbForm=Part	dema	0	slub	v	moby_reverse
+slubbed	1	oewn-slubbed-a	Degree=Pos	dema	0			oewn_form
 slubber	0		VerbForm=Inf	dema	0	slubber	v	moby_reverse
 slubberdegullion	0		Number=Sing	dema	0	slubberdegullion	n	moby_reverse
 slubberdegullions	0		Number=Plur	dema	0	slubberdegullion	n	rule

@@ -10,8 +10,8 @@ SIGINT	0	oewn-SIGINT-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 SIGINTS	0	oewn-SIGINT-n	Capitalization=Upper+Number=Plur	dema	0			rule
 SIRC	0	oewn-SIRC-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 SIRCS	0	oewn-SIRC-n	Capitalization=Upper+Number=Plur	dema	0			rule
-SIS	0	oewn-sis-n	Number=Sing	dema	0			oewn_form
-SIS	1	oewn-si-n	Number=Plur	dema	0			rule
+SIS	0	oewn-si-n	Number=Plur	dema	0			rule
+SIS	1	oewn-sis-n	Number=Sing	dema	0			oewn_form
 SIS	2	oewn-SI-n	Capitalization=Upper+Number=Plur	dema	0			rule
 Si	0	oewn-si-n	Number=Sing	dema	0			oewn_form
 Si	1	oewn-Si-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
@@ -84,8 +84,8 @@ Signora	0	oewn-signora-n	Number=Sing	dema	0			oewn_form
 Signora	1	oewn-Signora-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Signoras	0	oewn-signora-n	Number=Plur	dema	0			rule_variant
 Signoras	1	oewn-Signora-n	Capitalization=Title+Number=Plur	dema	0			rule_variant
-Signore	0	oewn-signore-n	Number=Sing	dema	0			oewn_form
-Signore	1	oewn-signora-n	Number=Plur	dema	0			oewn_form
+Signore	0	oewn-signora-n	Number=Plur	dema	0			oewn_form
+Signore	1	oewn-signore-n	Number=Sing	dema	0			oewn_form
 Signore	2	oewn-Signora-n	Capitalization=Title+Number=Plur	dema	0			agid
 Signorina	0	oewn-signorina-n	Number=Sing	dema	0			oewn_form
 Signorina	1	oewn-Signorina-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
@@ -158,8 +158,8 @@ Simonized	0	oewn-Simonize-v	Tense=Past+VerbForm=Part	dema	0			moby_reverse
 Simonized	1		Tense=Past+VerbForm=Part	dema	0	simonize	v	rule
 Simonized	2	oewn-Simonize-v	Capitalization=Title+Tense=Past+VerbForm=Part	dema	0			rule
 Simonizes	0		Person=3+Tense=Pres	dema	0	simonize	v	rule
-Simonizes	1	oewn-Simoniz-n	Capitalization=Title+Number=Plur	dema	0			rule
-Simonizes	2	oewn-Simonize-v	Capitalization=Title+Person=3+Tense=Pres	dema	0			rule
+Simonizes	1	oewn-Simonize-v	Capitalization=Title+Person=3+Tense=Pres	dema	0			rule
+Simonizes	2	oewn-Simoniz-n	Capitalization=Title+Number=Plur	dema	0			rule
 Simonizing	0	oewn-Simonize-v	VerbForm=Ger	dema	0			moby_reverse
 Simonizing	1		VerbForm=Ger	dema	0	simonize	v	rule
 Simonizing	2	oewn-Simonize-v	Capitalization=Title+VerbForm=Ger	dema	0			rule
@@ -234,8 +234,8 @@ Sirens	0	oewn-siren-n	Number=Plur	dema	0			rule
 Sirens	1	oewn-Siren-n	Capitalization=Title+Number=Plur	dema	0			rule
 Sirs	0	oewn-sir-n	Number=Plur	dema	0			rule
 Sirs	1	oewn-Sir-n	Capitalization=Title+Number=Plur	dema	0			rule
-Sis	0	oewn-sis-n	Number=Sing	dema	0			oewn_form
-Sis	1	oewn-si-n	Number=Plur	dema	0			rule
+Sis	0	oewn-si-n	Number=Plur	dema	0			rule
+Sis	1	oewn-sis-n	Number=Sing	dema	0			oewn_form
 Sis	2	oewn-Si-n	Capitalization=Title+Number=Plur	dema	0			rule
 Sison amomum	0	oewn-Sison_amomum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Sison amomums	0	oewn-Sison_amomum-n	Capitalization=Exact+Number=Plur	dema	0			rule
@@ -325,8 +325,8 @@ sibilating	0	oewn-sibilate-v	VerbForm=Ger	dema	0			rule
 sibilation	0		Degree=Pos	dema	0	sibilation	a	moby_reverse
 sibilation	1	oewn-sibilation-n	Number=Sing	dema	0			oewn_form
 sibilations	0	oewn-sibilation-n	Number=Plur	dema	0			rule
-sibling	0	oewn-sibling-n	Number=Plur	dema	0			agid
-sibling	1	oewn-sibling-n	Number=Sing	dema	0			oewn_form
+sibling	0	oewn-sibling-n	Number=Sing	dema	0			oewn_form
+siblings	0	oewn-sibling-n	Number=Plur	dema	0			rule
 sibs	0	oewn-sib-n	Number=Plur	dema	0			rule
 sibship	0		Number=Sing	dema	0	sibship	n	moby_reverse
 sibships	0		Number=Plur	dema	0	sibship	n	rule
@@ -385,14 +385,14 @@ sicken	0	oewn-sicken-v	VerbForm=Inf	dema	0			oewn_form
 sickened	0	oewn-sicken-v	Tense=Past+VerbForm=Part	dema	0			rule
 sickener	0		Number=Sing	dema	0	sickener	n	moby_reverse
 sickeners	0		Number=Plur	dema	0	sickener	n	rule
-sickening	0	oewn-sickening-a	Degree=Pos	dema	0			oewn_form
-sickening	1	oewn-sicken-v	VerbForm=Ger	dema	0			rule
+sickening	0	oewn-sicken-v	VerbForm=Ger	dema	0			rule
+sickening	1	oewn-sickening-a	Degree=Pos	dema	0			oewn_form
 sickeningly	0	oewn-sickeningly-r	Degree=Pos	dema	0			oewn_form
 sickeningness	0	oewn-sickeningness-n	Number=Sing	dema	0			oewn_form
 sickeningnesses	0	oewn-sickeningness-n	Number=Plur	dema	0			rule
 sickens	0	oewn-sicken-v	Person=3+Tense=Pres	dema	0			rule
-sicker	0		Degree=Pos	dema	0	sicker	r	moby_reverse
-sicker	1	oewn-sick-a	Degree=Cmp	dema	0			rule
+sicker	0	oewn-sick-a	Degree=Cmp	dema	0			rule
+sicker	1		Degree=Pos	dema	0	sicker	r	moby_reverse
 sickest	0	oewn-sick-a	Degree=Sup	dema	0			rule
 sickie	0		Number=Sing	dema	0	sickie	n	moby_reverse
 sickies	0		Number=Plur	dema	0	sickie	n	rule
@@ -664,8 +664,8 @@ sideway	0		Number=Sing	dema	0	sideway	n	moby_reverse
 sideway	1		Degree=Pos	dema	0	sideway	a	moby_reverse
 sideway	2	oewn-sideway-r	Degree=Pos	dema	0			oewn_form
 sideways	0	oewn-sideways-r	Degree=Pos	dema	0			oewn_form
-sideways	1	oewn-sideways-a	Degree=Pos	dema	0			oewn_form
-sideways	2		Number=Plur	dema	0	sideway	n	rule
+sideways	1		Number=Plur	dema	0	sideway	n	rule
+sideways	2	oewn-sideways-a	Degree=Pos	dema	0			oewn_form
 sidewheel	0		Number=Sing	dema	0	sidewheel	n	moby_reverse
 sidewheeler	0		Number=Sing	dema	0	sidewheeler	n	moby_reverse
 sidewheelers	0		Number=Plur	dema	0	sidewheeler	n	rule
@@ -920,8 +920,8 @@ signalizing	0	oewn-signalize-v	VerbForm=Ger	dema	0			rule
 signalled	0	oewn-signal-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 signaller	0	oewn-signaller-n	Number=Sing	dema	0			oewn_form
 signallers	0	oewn-signaller-n	Number=Plur	dema	0			rule
-signalling	0	oewn-signalling-n	Number=Sing	dema	0			oewn_form
-signalling	1	oewn-signal-v	VerbForm=Ger	dema	0			oewn_form
+signalling	0	oewn-signal-v	VerbForm=Ger	dema	0			oewn_form
+signalling	1	oewn-signalling-n	Number=Sing	dema	0			oewn_form
 signallings	0	oewn-signalling-n	Number=Plur	dema	0			rule
 signally	0	oewn-signally-r	Degree=Pos	dema	0			oewn_form
 signalman	0	oewn-signalman-n	Number=Sing	dema	0			oewn_form
@@ -985,8 +985,8 @@ significatively	0		Degree=Pos	dema	0	significatively	r	moby_reverse
 significativeness	0		Number=Sing	dema	0	significativeness	n	moby_reverse
 significativenesses	0		Number=Plur	dema	0	significativeness	n	rule
 significs	0		Number=Sing	dema	0	significs	n	moby_reverse
-signified	0	oewn-signified-n	Number=Sing	dema	0			oewn_form
-signified	1	oewn-signify-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+signified	0	oewn-signify-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+signified	1	oewn-signified-n	Number=Sing	dema	0			oewn_form
 signifieds	0	oewn-signified-n	Number=Plur	dema	0			rule
 signifier	0	oewn-signifier-n	Number=Sing	dema	0			oewn_form
 signifiers	0	oewn-signifier-n	Number=Plur	dema	0			rule
@@ -1008,10 +1008,10 @@ signiors	0	oewn-signior-n	Number=Plur	dema	0			rule_variant
 signor	0	oewn-signor-n	Number=Sing	dema	0			oewn_form
 signora	0	oewn-signora-n	Number=Sing	dema	0			oewn_form
 signoras	0	oewn-signora-n	Number=Plur	dema	0			rule_variant
-signore	0	oewn-signore-n	Number=Sing	dema	0			oewn_form
-signore	1	oewn-signora-n	Number=Plur	dema	0			oewn_form
-signori	0	oewn-signior-n	Number=Plur	dema	0			oewn_form
-signori	1	oewn-signore-n	Number=Plur	dema	0			oewn_form
+signore	0	oewn-signora-n	Number=Plur	dema	0			oewn_form
+signore	1	oewn-signore-n	Number=Sing	dema	0			oewn_form
+signori	0	oewn-signore-n	Number=Plur	dema	0			oewn_form
+signori	1	oewn-signior-n	Number=Plur	dema	0			oewn_form
 signories	0	oewn-signory-n	Number=Plur	dema	0			rule
 signorina	0	oewn-signorina-n	Number=Sing	dema	0			oewn_form
 signorinas	0	oewn-signorina-n	Number=Plur	dema	0			rule_variant
@@ -1715,8 +1715,8 @@ simular	1		Degree=Pos	dema	0	simular	a	moby_reverse
 simulars	0		Number=Plur	dema	0	simular	n	rule
 simulate	0	oewn-simulate-v	VerbForm=Inf	dema	0			oewn_form
 simulate	1		Degree=Pos	dema	0	simulate	a	moby_reverse
-simulated	0	oewn-simulated-a	Degree=Pos	dema	0			oewn_form
-simulated	1	oewn-simulate-v	Tense=Past+VerbForm=Part	dema	0			rule
+simulated	0	oewn-simulate-v	Tense=Past+VerbForm=Part	dema	0			rule
+simulated	1	oewn-simulated-a	Degree=Pos	dema	0			oewn_form
 simulated military operation	0	oewn-simulated_military_operation-n	Number=Sing	dema	0			oewn_form
 simulated military operations	0	oewn-simulated_military_operation-n	Number=Plur	dema	0			rule
 simulates	0	oewn-simulate-v	Person=3+Tense=Pres	dema	0			rule
@@ -1825,8 +1825,8 @@ singers	0	oewn-singer-n	Number=Plur	dema	0			rule
 singes	0	oewn-singe-v	Person=3+Tense=Pres	dema	0			rule
 singes	1	oewn-singe-n	Number=Plur	dema	0			rule
 singing	0	oewn-sing-v	VerbForm=Ger	dema	0			oewn_form
-singing	1	oewn-singing-n	Number=Sing	dema	0			oewn_form
-singing	2	oewn-singe-v	VerbForm=Ger	dema	0			oewn_form
+singing	1	oewn-singe-v	VerbForm=Ger	dema	0			oewn_form
+singing	2	oewn-singing-n	Number=Sing	dema	0			oewn_form
 singing	3	oewn-singing-a	Degree=Pos	dema	0			oewn_form
 singing along	0	oewn-sing_along-v	VerbForm=Ger	dema	0			rule
 singing voice	0	oewn-singing_voice-n	Number=Sing	dema	0			oewn_form
@@ -2204,8 +2204,8 @@ sirups	0	oewn-sirup-n	Number=Plur	dema	0			rule
 sirupy	0		Degree=Pos	dema	0	sirupy	a	moby_reverse
 sirvente	0		Number=Sing	dema	0	sirvente	n	moby_reverse
 sirventes	0		Number=Plur	dema	0	sirvente	n	rule
-sis	0	oewn-sis-n	Number=Sing	dema	0			oewn_form
-sis	1	oewn-si-n	Number=Plur	dema	0			rule
+sis	0	oewn-si-n	Number=Plur	dema	0			rule
+sis	1	oewn-sis-n	Number=Sing	dema	0			oewn_form
 sisal	0	oewn-sisal-n	Number=Sing	dema	0			oewn_form
 sisal hemp	0	oewn-sisal_hemp-n	Number=Sing	dema	0			oewn_form
 sisal hemps	0	oewn-sisal_hemp-n	Number=Plur	dema	0			rule

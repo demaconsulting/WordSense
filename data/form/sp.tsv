@@ -448,8 +448,8 @@ spanked	0	oewn-spank-v	Tense=Past+VerbForm=Part	dema	0			rule
 spanker	0	oewn-spanker-n	Number=Sing	dema	0			oewn_form
 spankers	0	oewn-spanker-n	Number=Plur	dema	0			rule
 spanking	0	oewn-spanking-n	Number=Sing	dema	0			oewn_form
-spanking	1	oewn-spanking-a	Degree=Pos	dema	0			oewn_form
-spanking	2	oewn-spank-v	VerbForm=Ger	dema	0			rule
+spanking	1	oewn-spank-v	VerbForm=Ger	dema	0			rule
+spanking	2	oewn-spanking-a	Degree=Pos	dema	0			oewn_form
 spankingly	0		Degree=Pos	dema	0	spankingly	r	moby_reverse
 spankings	0	oewn-spanking-n	Number=Plur	dema	0			rule
 spanks	0	oewn-spank-v	Person=3+Tense=Pres	dema	0			rule
@@ -511,8 +511,8 @@ sparid	1		Degree=Pos	dema	0	sparid	a	moby_reverse
 sparid fish	0	oewn-sparid_fish-n	Number=Sing	dema	0			oewn_form
 sparid fishes	0	oewn-sparid_fish-n	Number=Plur	dema	0			rule
 sparids	0	oewn-sparid-n	Number=Plur	dema	0			rule
-sparing	0	oewn-sparing-a	Degree=Pos	dema	0			oewn_form
-sparing	1	oewn-spare-v	VerbForm=Ger	dema	0			rule
+sparing	0	oewn-spare-v	VerbForm=Ger	dema	0			rule
+sparing	1	oewn-sparing-a	Degree=Pos	dema	0			oewn_form
 sparingly	0	oewn-sparingly-r	Degree=Pos	dema	0			oewn_form
 sparingness	0		Number=Sing	dema	0	sparingness	n	moby_reverse
 sparingnesses	0		Number=Plur	dema	0	sparingness	n	rule
@@ -567,8 +567,8 @@ sparklets	0		Number=Plur	dema	0	sparklet	n	rule
 sparklier	0	oewn-sparkly-a	Degree=Cmp	dema	0			rule
 sparkliest	0	oewn-sparkly-a	Degree=Sup	dema	0			rule
 sparklike	0		Degree=Pos	dema	0	sparklike	a	moby_reverse
-sparkling	0	oewn-sparkling-n	Number=Sing	dema	0			oewn_form
-sparkling	1	oewn-sparkle-v	VerbForm=Ger	dema	0			rule
+sparkling	0	oewn-sparkle-v	VerbForm=Ger	dema	0			rule
+sparkling	1	oewn-sparkling-n	Number=Sing	dema	0			oewn_form
 sparkling	2	oewn-sparkling-a	Degree=Pos	dema	0			oewn_form
 sparkling water	0	oewn-sparkling_water-n	Number=Sing	dema	0			oewn_form
 sparkling waters	0	oewn-sparkling_water-n	Number=Plur	dema	0			rule
@@ -586,14 +586,13 @@ sparks	0	oewn-spark-n	Number=Plur	dema	1			carried
 sparks	1	oewn-spark-v	Person=3+Tense=Pres	dema	1			carried
 sparks off	0	oewn-spark_off-v	Person=3+Tense=Pres	dema	0			rule
 sparlike	0		Degree=Pos	dema	0	sparlike	a	moby_reverse
-sparling	0	oewn-sparling-n	Number=Plur	dema	0			agid
-sparling	1	oewn-sparling-n	Number=Sing	dema	0			oewn_form
-sparlings	0	oewn-sparling-n	Number=Plur	dema	0			rule_variant
+sparling	0	oewn-sparling-n	Number=Sing	dema	0			oewn_form
+sparlings	0	oewn-sparling-n	Number=Plur	dema	0			rule
 sparoid	0		Degree=Pos	dema	0	sparoid	a	moby_reverse
 sparoid	1		Number=Sing	dema	0	sparoid	n	moby_reverse
 sparred	0	oewn-spar-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
-sparring	0	oewn-sparring-n	Number=Sing	dema	0			oewn_form
-sparring	1	oewn-spar-v	VerbForm=Ger	dema	0			oewn_form
+sparring	0	oewn-spar-v	VerbForm=Ger	dema	0			oewn_form
+sparring	1	oewn-sparring-n	Number=Sing	dema	0			oewn_form
 sparring match	0	oewn-sparring_match-n	Number=Sing	dema	0			oewn_form
 sparring matches	0	oewn-sparring_match-n	Number=Plur	dema	0			rule
 sparring mate	0	oewn-sparring_mate-n	Number=Sing	dema	0			oewn_form
@@ -711,8 +710,8 @@ spattering	0	oewn-spatter-v	VerbForm=Ger	dema	0			rule
 spattering	1	oewn-spattering-n	Number=Sing	dema	0			oewn_form
 spatteringly	0		Degree=Pos	dema	0	spatteringly	r	moby_reverse
 spatterings	0	oewn-spattering-n	Number=Plur	dema	0			rule
-spatters	0	oewn-spatter-n	Number=Plur	dema	0			rule
-spatters	1	oewn-spatter-v	Person=3+Tense=Pres	dema	0			rule
+spatters	0	oewn-spatter-v	Person=3+Tense=Pres	dema	0			rule
+spatters	1	oewn-spatter-n	Number=Plur	dema	0			rule
 spatterware	0		Number=Sing	dema	0	spatterware	n	moby_reverse
 spatterwares	0		Number=Plur	dema	0	spatterware	n	rule
 spatting	0	oewn-spat-v	VerbForm=Ger	dema	0			oewn_form
@@ -775,9 +774,9 @@ speakerphones	0	oewn-speakerphone-n	Number=Plur	dema	0			rule
 speakers	0	oewn-speaker-n	Number=Plur	dema	0			rule
 speakership	0	oewn-speakership-n	Number=Sing	dema	0			oewn_form
 speakerships	0	oewn-speakership-n	Number=Plur	dema	0			rule
-speaking	0	oewn-speaking-a	Degree=Pos	dema	0			oewn_form
-speaking	1	oewn-speaking-n	Number=Sing	dema	0			oewn_form
-speaking	2	oewn-speak-v	VerbForm=Ger	dema	0			rule
+speaking	0	oewn-speak-v	VerbForm=Ger	dema	0			rule
+speaking	1	oewn-speaking-a	Degree=Pos	dema	0			oewn_form
+speaking	2	oewn-speaking-n	Number=Sing	dema	0			oewn_form
 speaking for	0	oewn-speak_for-v	VerbForm=Ger	dema	0			rule
 speaking in tongues	0	oewn-speak_in_tongues-v	VerbForm=Ger	dema	0			rule
 speaking of the devil	0	oewn-speak_of_the_devil-v	VerbForm=Ger	dema	0			rule
@@ -925,9 +924,9 @@ speciating	0	oewn-speciate-v	VerbForm=Ger	dema	0			rule
 speciation	0	oewn-speciation-n	Number=Sing	dema	0			oewn_form
 speciations	0	oewn-speciation-n	Number=Plur	dema	0			rule
 specie	0	oewn-specie-n	Number=Sing	dema	0			oewn_form
-species	0	oewn-species-n	Number=Plur	dema	0			irregular_list
-species	1	oewn-species-n	Number=Sing	dema	0			oewn_form
-species	2	oewn-specie-n	Number=Plur	dema	0			rule
+species	0	oewn-specie-n	Number=Plur	dema	0			rule
+species	1	oewn-species-n	Number=Plur	dema	0			irregular_list
+species	2	oewn-species-n	Number=Sing	dema	0			oewn_form
 specifiable	0	oewn-specifiable-a	Degree=Pos	dema	0			oewn_form
 specific	0	oewn-specific-a	Degree=Pos	dema	0			oewn_form
 specific	1	oewn-specific-n	Number=Sing	dema	0			oewn_form
@@ -990,8 +989,8 @@ specklessness	0		Number=Sing	dema	0	specklessness	n	moby_reverse
 speckling	0	oewn-speckle-v	VerbForm=Ger	dema	0			rule
 specks	0	oewn-speck-n	Number=Plur	dema	0			rule
 specks	1	oewn-speck-v	Person=3+Tense=Pres	dema	0			rule
-specs	0	oewn-specs-n	Number=Sing	dema	0			oewn_form
-specs	1	oewn-spec-n	Number=Plur	dema	0			rule
+specs	0	oewn-spec-n	Number=Plur	dema	0			rule
+specs	1	oewn-specs-n	Number=Sing	dema	0			oewn_form
 spectacle	0	oewn-spectacle-n	Number=Sing	dema	0			oewn_form
 spectacled	0	oewn-spectacled-a	Degree=Pos	dema	0			oewn_form
 spectacled	1		VerbForm=Inf	dema	0	spectacled	v	moby_reverse
@@ -999,8 +998,8 @@ spectacled caiman	0	oewn-spectacled_caiman-n	Number=Sing	dema	0			oewn_form
 spectacled caimans	0	oewn-spectacled_caiman-n	Number=Plur	dema	0			rule
 spectacleless	0		Degree=Pos	dema	0	spectacleless	a	moby_reverse
 spectaclelike	0		Degree=Pos	dema	0	spectaclelike	a	moby_reverse
-spectacles	0	oewn-spectacles-n	Number=Sing	dema	0			oewn_form
-spectacles	1	oewn-spectacle-n	Number=Plur	dema	0			rule
+spectacles	0	oewn-spectacle-n	Number=Plur	dema	0			rule
+spectacles	1	oewn-spectacles-n	Number=Sing	dema	0			oewn_form
 spectacular	0	oewn-spectacular-a	Degree=Pos	dema	0			oewn_form
 spectacular	1	oewn-spectacular-n	Number=Sing	dema	0			oewn_form
 spectacularism	0		Number=Sing	dema	0	spectacularism	n	moby_reverse
@@ -1229,8 +1228,8 @@ speediest	0	oewn-speedy-a	Degree=Sup	dema	0			oewn_form
 speedily	0	oewn-speedily-r	Degree=Pos	dema	0			oewn_form
 speediness	0	oewn-speediness-n	Number=Sing	dema	0			oewn_form
 speedinesses	0	oewn-speediness-n	Number=Plur	dema	0			rule
-speeding	0	oewn-speeding-n	Number=Sing	dema	0			oewn_form
-speeding	1	oewn-speed-v	VerbForm=Ger	dema	0			rule
+speeding	0	oewn-speed-v	VerbForm=Ger	dema	0			rule
+speeding	1	oewn-speeding-n	Number=Sing	dema	0			oewn_form
 speeding skate	0	oewn-speed_skate-v	VerbForm=Ger	dema	0			rule
 speeding ticket	0	oewn-speeding_ticket-n	Number=Sing	dema	0			oewn_form
 speeding tickets	0	oewn-speeding_ticket-n	Number=Plur	dema	0			rule
@@ -1297,8 +1296,8 @@ spellbinders	0	oewn-spellbinder-n	Number=Plur	dema	0			rule
 spellbinding	0	oewn-spellbind-v	VerbForm=Ger	dema	0			rule
 spellbinding	1	oewn-spellbinding-a	Degree=Pos	dema	0			oewn_form
 spellbinds	0	oewn-spellbind-v	Person=3+Tense=Pres	dema	0			rule
-spellbound	0	oewn-spellbound-a	Degree=Pos	dema	0			oewn_form
-spellbound	1	oewn-spellbind-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+spellbound	0	oewn-spellbind-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+spellbound	1	oewn-spellbound-a	Degree=Pos	dema	0			oewn_form
 spelldown	0	oewn-spelldown-n	Number=Sing	dema	0			oewn_form
 spelldowns	0	oewn-spelldown-n	Number=Plur	dema	0			rule
 spelled	0	oewn-spell-v	Tense=Past+VerbForm=Part	dema	1			carried
@@ -1343,8 +1342,8 @@ spend-alls	0	oewn-spend-all-n	Number=Plur	dema	0			rule
 spendable	0	oewn-spendable-a	Degree=Pos	dema	0			oewn_form
 spender	0	oewn-spender-n	Number=Sing	dema	0			oewn_form
 spenders	0	oewn-spender-n	Number=Plur	dema	0			rule
-spending	0	oewn-spending-n	Number=Sing	dema	0			oewn_form
-spending	1	oewn-spend-v	VerbForm=Ger	dema	0			rule
+spending	0	oewn-spend-v	VerbForm=Ger	dema	0			rule
+spending	1	oewn-spending-n	Number=Sing	dema	0			oewn_form
 spending a penny	0	oewn-spend_a_penny-v	VerbForm=Ger	dema	0			rule
 spending cut	0	oewn-spending_cut-n	Number=Sing	dema	0			oewn_form
 spending cuts	0	oewn-spending_cut-n	Number=Plur	dema	0			rule
@@ -1353,8 +1352,8 @@ spending moneys	0	oewn-spending_money-n	Number=Plur	dema	0			rule
 spending spree	0	oewn-spending_spree-n	Number=Sing	dema	0			oewn_form
 spending sprees	0	oewn-spending_spree-n	Number=Plur	dema	0			rule
 spendings	0	oewn-spending-n	Number=Plur	dema	0			rule
-spends	0		Number=Sing	dema	0	spends	n	moby_reverse
-spends	1	oewn-spend-v	Person=3+Tense=Pres	dema	0			rule
+spends	0	oewn-spend-v	Person=3+Tense=Pres	dema	0			rule
+spends	1		Number=Sing	dema	0	spends	n	moby_reverse
 spends a penny	0	oewn-spend_a_penny-v	Person=3+Tense=Pres	dema	0			rule
 spendthrift	0	oewn-spendthrift-n	Number=Sing	dema	0			oewn_form
 spendthrift	1	oewn-spendthrift-a	Degree=Pos	dema	0			oewn_form
@@ -1763,8 +1762,8 @@ spiffs	0	oewn-spiff-n	Number=Plur	dema	0			rule
 spiffs up	0	oewn-spiff_up-v	Person=3+Tense=Pres	dema	0			rule
 spiffy	0	oewn-spiffy-a	Degree=Pos	dema	0			oewn_form
 spiflicate	0		VerbForm=Inf	dema	0	spiflicate	v	moby_reverse
-spiflicated	0		Degree=Pos	dema	0	spiflicated	a	moby_reverse
-spiflicated	1		Tense=Past+VerbForm=Part	dema	0	spiflicate	v	rule
+spiflicated	0		Tense=Past+VerbForm=Part	dema	0	spiflicate	v	rule
+spiflicated	1		Degree=Pos	dema	0	spiflicated	a	moby_reverse
 spiflicates	0		Person=3+Tense=Pres	dema	0	spiflicate	v	rule
 spiflicating	0		VerbForm=Ger	dema	0	spiflicate	v	rule
 spifs	0		Number=Plur	dema	0	spif	n	rule
@@ -1849,8 +1848,8 @@ spilled	0	oewn-spill-v	Tense=Past+VerbForm=Part	dema	0			irregular_list
 spiller	0	oewn-spiller-n	Number=Sing	dema	0			oewn_form
 spillers	0	oewn-spiller-n	Number=Plur	dema	0			rule
 spillikin	0	oewn-spillikin-n	Number=Sing	dema	0			oewn_form
-spillikins	0	oewn-spillikins-n	Number=Sing	dema	0			oewn_form
-spillikins	1	oewn-spillikin-n	Number=Plur	dema	0			rule
+spillikins	0	oewn-spillikin-n	Number=Plur	dema	0			rule
+spillikins	1	oewn-spillikins-n	Number=Sing	dema	0			oewn_form
 spilling	0	oewn-spill-v	VerbForm=Ger	dema	0			rule
 spilling out	0	oewn-spill_out-v	VerbForm=Ger	dema	0			rule
 spilling over	0	oewn-spill_over-v	VerbForm=Ger	dema	0			rule
@@ -2160,8 +2159,8 @@ spireme	0		Number=Sing	dema	0	spireme	n	moby_reverse
 spiremes	0		Number=Plur	dema	0	spireme	n	rule
 spires	0	oewn-spire-n	Number=Plur	dema	0			rule
 spiriferous	0		Degree=Pos	dema	0	spiriferous	a	moby_reverse
-spirilla	0	oewn-spirilla-n	Number=Sing	dema	0			oewn_form
-spirilla	1	oewn-spirillum-n	Number=Plur	dema	0			oewn_form
+spirilla	0	oewn-spirillum-n	Number=Plur	dema	0			oewn_form
+spirilla	1	oewn-spirilla-n	Number=Sing	dema	0			oewn_form
 spirillar	0		Degree=Pos	dema	0	spirillar	a	moby_reverse
 spirillas	0	oewn-spirilla-n	Number=Plur	dema	0			rule
 spirillum	0	oewn-spirillum-n	Number=Sing	dema	0			oewn_form
@@ -2357,8 +2356,8 @@ spitsticker	0		Number=Sing	dema	0	spitsticker	n	moby_reverse
 spitstickers	0		Number=Plur	dema	0	spitsticker	n	rule
 spitter	0	oewn-spitter-n	Number=Sing	dema	0			oewn_form
 spitters	0	oewn-spitter-n	Number=Plur	dema	0			rule
-spitting	0	oewn-spitting-n	Number=Sing	dema	0			oewn_form
-spitting	1	oewn-spit-v	VerbForm=Ger	dema	0			oewn_form
+spitting	0	oewn-spit-v	VerbForm=Ger	dema	0			oewn_form
+spitting	1	oewn-spitting-n	Number=Sing	dema	0			oewn_form
 spitting cobra	0	oewn-spitting_cobra-n	Number=Sing	dema	0			oewn_form
 spitting cobras	0	oewn-spitting_cobra-n	Number=Plur	dema	0			rule
 spitting image	0	oewn-spitting_image-n	Number=Sing	dema	0			oewn_form
@@ -2517,8 +2516,8 @@ splicer	0	oewn-splicer-n	Number=Sing	dema	0			oewn_form
 splicers	0	oewn-splicer-n	Number=Plur	dema	0			rule
 splices	0	oewn-splice-v	Person=3+Tense=Pres	dema	0			rule
 splices	1	oewn-splice-n	Number=Plur	dema	0			rule
-splicing	0	oewn-splicing-n	Number=Sing	dema	0			oewn_form
-splicing	1	oewn-splice-v	VerbForm=Ger	dema	0			rule
+splicing	0	oewn-splice-v	VerbForm=Ger	dema	0			rule
+splicing	1	oewn-splicing-n	Number=Sing	dema	0			oewn_form
 splicings	0	oewn-splicing-n	Number=Plur	dema	0			rule
 spliff	0	oewn-spliff-n	Number=Sing	dema	0			oewn_form
 spliffs	0	oewn-spliff-n	Number=Plur	dema	0			rule
@@ -2543,8 +2542,8 @@ splinterings	0	oewn-splintering-n	Number=Plur	dema	0			rule
 splinterless	0	oewn-splinterless-a	Degree=Pos	dema	0			oewn_form
 splinterproof	0	oewn-splinterproof-a	Degree=Pos	dema	0			oewn_form
 splinters	0	oewn-splinter-n	Number=Plur	dema	0			rule
-splinters	1	oewn-splinters-n	Number=Sing	dema	0			oewn_form
-splinters	2	oewn-splinter-v	Person=3+Tense=Pres	dema	0			rule
+splinters	1	oewn-splinter-v	Person=3+Tense=Pres	dema	0			rule
+splinters	2	oewn-splinters-n	Number=Sing	dema	0			oewn_form
 splintery	0	oewn-splintery-a	Degree=Pos	dema	0			oewn_form
 splinting	0	oewn-splint-v	VerbForm=Ger	dema	0			rule
 splints	0	oewn-splint-n	Number=Plur	dema	0			rule
@@ -2586,8 +2585,8 @@ split-pea soups	0	oewn-split-pea_soup-n	Number=Plur	dema	0			rule
 split-peas	0	oewn-split-pea-n	Number=Plur	dema	0			rule
 split-rail fence	0	oewn-split-rail_fence-n	Number=Sing	dema	0			oewn_form
 split-rail fences	0	oewn-split-rail_fence-n	Number=Plur	dema	0			rule
-splits	0	oewn-split-n	Number=Plur	dema	0			rule
-splits	1	oewn-split-v	Person=3+Tense=Pres	dema	0			rule
+splits	0	oewn-split-v	Person=3+Tense=Pres	dema	0			rule
+splits	1	oewn-split-n	Number=Plur	dema	0			rule
 splits up	0	oewn-split_up-v	Person=3+Tense=Pres	dema	0			rule
 splitsaw	0	oewn-splitsaw-n	Number=Sing	dema	0			oewn_form
 splitsaws	0	oewn-splitsaw-n	Number=Plur	dema	0			rule
@@ -2599,9 +2598,9 @@ splittails	0		Number=Plur	dema	0	splittail	n	rule
 splitter	0	oewn-splitter-n	Number=Sing	dema	0			oewn_form
 splitter	1	oewn-split-a	Degree=Cmp	dema	0			rule
 splitters	0	oewn-splitter-n	Number=Plur	dema	0			rule
-splitting	0	oewn-splitting-a	Degree=Pos	dema	0			oewn_form
-splitting	1		Number=Sing	dema	0	splitting	n	moby_reverse
-splitting	2	oewn-split-v	VerbForm=Ger	dema	0			oewn_form
+splitting	0	oewn-split-v	VerbForm=Ger	dema	0			oewn_form
+splitting	1	oewn-splitting-a	Degree=Pos	dema	0			oewn_form
+splitting	2		Number=Sing	dema	0	splitting	n	moby_reverse
 splitting up	0	oewn-split_up-v	VerbForm=Ger	dema	0			rule
 splitworm	0	oewn-splitworm-n	Number=Sing	dema	0			oewn_form
 splitworms	0	oewn-splitworm-n	Number=Plur	dema	0			rule
@@ -2657,12 +2656,12 @@ spoiler	0	oewn-spoiler-n	Number=Sing	dema	0			oewn_form
 spoilers	0	oewn-spoiler-n	Number=Plur	dema	0			rule
 spoilfive	0		Number=Sing	dema	0	spoilfive	n	moby_reverse
 spoilfives	0		Number=Plur	dema	0	spoilfive	n	rule
-spoiling	0	oewn-spoiling-n	Number=Sing	dema	0			oewn_form
-spoiling	1	oewn-spoil-v	VerbForm=Ger	dema	0			rule
+spoiling	0	oewn-spoil-v	VerbForm=Ger	dema	0			rule
+spoiling	1	oewn-spoiling-n	Number=Sing	dema	0			oewn_form
 spoilings	0	oewn-spoiling-n	Number=Plur	dema	0			rule
 spoilless	0		Degree=Pos	dema	0	spoilless	a	moby_reverse
-spoils	0	oewn-spoil-n	Number=Plur	dema	0			rule
-spoils	1	oewn-spoil-v	Person=3+Tense=Pres	dema	0			rule
+spoils	0	oewn-spoil-v	Person=3+Tense=Pres	dema	0			rule
+spoils	1	oewn-spoil-n	Number=Plur	dema	0			rule
 spoils system	0	oewn-spoils_system-n	Number=Sing	dema	0			oewn_form
 spoils systems	0	oewn-spoils_system-n	Number=Plur	dema	0			rule
 spoilsman	0		Number=Sing	dema	0	spoilsman	n	moby_reverse
@@ -3226,8 +3225,8 @@ spouses	0	oewn-spouse-n	Number=Plur	dema	0			rule
 spousing	0		VerbForm=Ger	dema	0	spouse	v	moby_reverse
 spout	0	oewn-spout-v	VerbForm=Inf	dema	0			oewn_form
 spout	1	oewn-spout-n	Number=Sing	dema	0			oewn_form
-spouted	0		Degree=Pos	dema	0	spouted	a	moby_reverse
-spouted	1	oewn-spout-v	Tense=Past+VerbForm=Part	dema	0			rule
+spouted	0	oewn-spout-v	Tense=Past+VerbForm=Part	dema	0			rule
+spouted	1		Degree=Pos	dema	0	spouted	a	moby_reverse
 spouter	0	oewn-spouter-n	Number=Sing	dema	0			oewn_form
 spouters	0	oewn-spouter-n	Number=Plur	dema	0			rule
 spouting	0	oewn-spout-v	VerbForm=Ger	dema	0			rule
@@ -3377,8 +3376,8 @@ sprig	0	oewn-sprig-n	Number=Sing	dema	0			oewn_form
 sprig	1		VerbForm=Inf	dema	0	sprig	v	moby_reverse
 sprig tail	0	oewn-sprig_tail-n	Number=Sing	dema	0			oewn_form
 sprig tails	0	oewn-sprig_tail-n	Number=Plur	dema	0			rule
-sprigged	0	oewn-sprigged-a	Degree=Pos	dema	0			oewn_form
-sprigged	1		Tense=Past+VerbForm=Part	dema	0	sprig	v	moby_reverse
+sprigged	0		Tense=Past+VerbForm=Part	dema	0	sprig	v	moby_reverse
+sprigged	1	oewn-sprigged-a	Degree=Pos	dema	0			oewn_form
 sprigger	0	oewn-sprigger-n	Number=Sing	dema	0			oewn_form
 spriggers	0	oewn-sprigger-n	Number=Plur	dema	0			rule
 spriggier	0		Degree=Cmp	dema	0	spriggy	a	moby_reverse
@@ -3710,8 +3709,8 @@ spurreys	0		Number=Plur	dema	0	spurrey	n	rule
 spurrier	0		Number=Sing	dema	0	spurrier	n	moby_reverse
 spurriers	0		Number=Plur	dema	0	spurrier	n	rule
 spurries	0		Number=Plur	dema	0	spurry	n	rule
-spurring	0	oewn-spurring-n	Number=Sing	dema	0			oewn_form
-spurring	1	oewn-spur-v	VerbForm=Ger	dema	0			oewn_form
+spurring	0	oewn-spur-v	VerbForm=Ger	dema	0			oewn_form
+spurring	1	oewn-spurring-n	Number=Sing	dema	0			oewn_form
 spurrings	0	oewn-spurring-n	Number=Plur	dema	0			rule
 spurrite	0		Number=Sing	dema	0	spurrite	n	moby_reverse
 spurrites	0		Number=Plur	dema	0	spurrite	n	rule
@@ -3755,8 +3754,8 @@ spyglass	0	oewn-spyglass-n	Number=Sing	dema	0			oewn_form
 spyglasses	0	oewn-spyglass-n	Number=Plur	dema	0			rule
 spyhole	0	oewn-spyhole-n	Number=Sing	dema	0			oewn_form
 spyholes	0	oewn-spyhole-n	Number=Plur	dema	0			rule
-spying	0	oewn-spying-n	Number=Sing	dema	0			oewn_form
-spying	1	oewn-spy-v	VerbForm=Ger	dema	0			rule
+spying	0	oewn-spy-v	VerbForm=Ger	dema	0			rule
+spying	1	oewn-spying-n	Number=Sing	dema	0			oewn_form
 spyings	0	oewn-spying-n	Number=Plur	dema	0			rule
 spymaster	0	oewn-spymaster-n	Number=Sing	dema	0			oewn_form
 spymasters	0	oewn-spymaster-n	Number=Plur	dema	0			rule

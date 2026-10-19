@@ -154,7 +154,8 @@ internal static class FormAuditor
         var verdicts = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
         try
         {
-            File.WriteAllLines(input, sample.Select(r => string.Join('\t', r.Spelling, r.Lemma, r.Pos, r.Features)), new UTF8Encoding(false));
+            // Two entries of one lemma (recreate) give the same key: the oracle judges each key once
+            File.WriteAllLines(input, sample.Select(r => string.Join('\t', r.Spelling, r.Lemma, r.Pos, r.Features)).Distinct(StringComparer.Ordinal), new UTF8Encoding(false));
 #pragma warning disable S4036 // The checker is the python of the build machine, as documented
             var start = new ProcessStartInfo("python") { RedirectStandardError = true, RedirectStandardOutput = true, UseShellExecute = false };
 #pragma warning restore S4036
@@ -206,7 +207,10 @@ internal static class FormAuditor
                 throw new InvalidDataException($"The verdict file '{path}' is malformed at line {number}: expected spelling, lemma, part of speech, features and a verdict of ok, bad or skip.");
             }
 
-            result[Key(p[0], p[1], p[2], p[3])] = p[4];
+            if (!result.TryAdd(Key(p[0], p[1], p[2], p[3]), p[4]))
+            {
+                throw new InvalidDataException($"The verdict file '{path}' repeats the row '{p[0]}', '{p[1]}', '{p[2]}', '{p[3]}' at line {number}; every row must have exactly one verdict.");
+            }
         }
 
         if (result.Count == 0)

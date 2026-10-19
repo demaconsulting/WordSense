@@ -21,8 +21,8 @@ As	0	dema-as-c		dema	0			carried
 As	1	dema-as-p		dema	0			carried
 As	2		Number=Sing	dema	0	as	n	moby_reverse
 As	3	oewn-as-r	Degree=Pos	dema	0			oewn_form
-As	4	oewn-A-n	Capitalization=Title+Number=Plur	dema	0			rule
-As	5	oewn-As-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+As	4	oewn-As-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+As	5	oewn-A-n	Capitalization=Title+Number=Plur	dema	0			rule
 Asadha	0	oewn-Asadha-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Asadhas	0	oewn-Asadha-n	Capitalization=Title+Number=Plur	dema	0			rule
 Asamiya	0	oewn-Asamiya-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
@@ -355,9 +355,9 @@ ascendents	0	oewn-ascendent-n	Number=Plur	dema	0			rule
 ascender	0	oewn-ascender-n	Number=Sing	dema	0			oewn_form
 ascenders	0	oewn-ascender-n	Number=Plur	dema	0			rule
 ascendible	0	oewn-ascendible-a	Degree=Pos	dema	0			oewn_form
-ascending	0	oewn-ascending-a	Degree=Pos	dema	0			oewn_form
-ascending	1	oewn-ascending-n	Number=Sing	dema	0			oewn_form
-ascending	2	oewn-ascend-v	VerbForm=Ger	dema	0			rule
+ascending	0	oewn-ascend-v	VerbForm=Ger	dema	0			rule
+ascending	1	oewn-ascending-a	Degree=Pos	dema	0			oewn_form
+ascending	2	oewn-ascending-n	Number=Sing	dema	0			oewn_form
 ascending aorta	0	oewn-ascending_aorta-n	Number=Sing	dema	0			oewn_form
 ascending aortas	0	oewn-ascending_aorta-n	Number=Plur	dema	0			rule
 ascending arteries	0	oewn-ascending_artery-n	Number=Plur	dema	0			rule
@@ -847,8 +847,8 @@ assembler	0	oewn-assembler-n	Number=Sing	dema	0			oewn_form
 assemblers	0	oewn-assembler-n	Number=Plur	dema	0			rule
 assembles	0	oewn-assemble-v	Person=3+Tense=Pres	dema	0			rule
 assemblies	0	oewn-assembly-n	Number=Plur	dema	0			rule
-assembling	0	oewn-assembling-n	Number=Sing	dema	0			oewn_form
-assembling	1	oewn-assemble-v	VerbForm=Ger	dema	0			rule
+assembling	0	oewn-assemble-v	VerbForm=Ger	dema	0			rule
+assembling	1	oewn-assembling-n	Number=Sing	dema	0			oewn_form
 assemblings	0	oewn-assembling-n	Number=Plur	dema	0			rule
 assembls	0		Number=Plur	dema	0	assembl	n	rule
 assembly	0	oewn-assembly-n	Number=Sing	dema	0			oewn_form
@@ -889,8 +889,8 @@ assents	1	oewn-assent-v	Person=3+Tense=Pres	dema	0			rule
 assert	0	oewn-assert-v	VerbForm=Inf	dema	0			oewn_form
 assert oneself	0	oewn-assert_oneself-v	VerbForm=Inf	dema	0			oewn_form
 assertable	0	oewn-assertable-a	Degree=Pos	dema	0			oewn_form
-asserted	0	oewn-asserted-a	Degree=Pos	dema	0			oewn_form
-asserted	1	oewn-assert-v	Tense=Past+VerbForm=Part	dema	0			rule
+asserted	0	oewn-assert-v	Tense=Past+VerbForm=Part	dema	0			rule
+asserted	1	oewn-asserted-a	Degree=Pos	dema	0			oewn_form
 asserted oneself	0	oewn-assert_oneself-v	Tense=Past+VerbForm=Part	dema	0			rule
 assertedly	0		Degree=Pos	dema	0	assertedly	r	moby_reverse
 asserter	0	oewn-asserter-n	Number=Sing	dema	0			oewn_form
@@ -930,8 +930,8 @@ assessors	0	oewn-assessor-n	Number=Plur	dema	0			rule
 assessorship	0		Number=Sing	dema	0	assessorship	n	moby_reverse
 assessorships	0		Number=Plur	dema	0	assessorship	n	rule
 asset	0	oewn-asset-n	Number=Sing	dema	0			oewn_form
-assets	0	oewn-assets-n	Number=Sing	dema	0			oewn_form
-assets	1	oewn-asset-n	Number=Plur	dema	0			rule
+assets	0	oewn-asset-n	Number=Plur	dema	0			rule
+assets	1	oewn-assets-n	Number=Sing	dema	0			oewn_form
 asseverate	0	oewn-asseverate-v	VerbForm=Inf	dema	0			oewn_form
 asseverated	0	oewn-asseverate-v	Tense=Past+VerbForm=Part	dema	0			rule
 asseverates	0	oewn-asseverate-v	Person=3+Tense=Pres	dema	0			rule
@@ -1028,8 +1028,8 @@ assistors	0		Number=Plur	dema	0	assistor	n	rule
 assists	0	oewn-assist-v	Person=3+Tense=Pres	dema	0			rule
 assists	1	oewn-assist-n	Number=Plur	dema	0			rule
 assize	0	oewn-assize-n	Number=Sing	dema	0			oewn_form
-assizes	0	oewn-assizes-n	Number=Sing	dema	0			oewn_form
-assizes	1	oewn-assize-n	Number=Plur	dema	0			rule
+assizes	0	oewn-assize-n	Number=Plur	dema	0			rule
+assizes	1	oewn-assizes-n	Number=Sing	dema	0			oewn_form
 asslike	0		Degree=Pos	dema	0	asslike	a	moby_reverse
 assn	0		Number=Sing	dema	0	assn	n	moby_reverse
 assns	0		Number=Plur	dema	0	assn	n	rule
@@ -1098,8 +1098,8 @@ assortative	0		Degree=Pos	dema	0	assortative	a	moby_reverse
 assortative mating	0	oewn-assortative_mating-n	Number=Sing	dema	0			oewn_form
 assortative matings	0	oewn-assortative_mating-n	Number=Plur	dema	0			rule
 assortatively	0		Degree=Pos	dema	0	assortatively	r	moby_reverse
-assorted	0	oewn-assorted-a	Degree=Pos	dema	0			oewn_form
-assorted	1	oewn-assort-v	Tense=Past+VerbForm=Part	dema	0			rule
+assorted	0	oewn-assort-v	Tense=Past+VerbForm=Part	dema	0			rule
+assorted	1	oewn-assorted-a	Degree=Pos	dema	0			oewn_form
 assorter	0		Number=Sing	dema	0	assorter	n	moby_reverse
 assorters	0		Number=Plur	dema	0	assorter	n	rule
 assorting	0	oewn-assort-v	VerbForm=Ger	dema	0			rule
@@ -1121,16 +1121,16 @@ assuasive	0	oewn-assuasive-a	Degree=Pos	dema	0			oewn_form
 assumable	0		Degree=Pos	dema	0	assumable	a	moby_reverse
 assumably	0		Degree=Pos	dema	0	assumably	r	moby_reverse
 assume	0	oewn-assume-v	VerbForm=Inf	dema	0			oewn_form
-assumed	0	oewn-assumed-a	Degree=Pos	dema	0			oewn_form
-assumed	1	oewn-assume-v	Tense=Past+VerbForm=Part	dema	0			rule
+assumed	0	oewn-assume-v	Tense=Past+VerbForm=Part	dema	0			rule
+assumed	1	oewn-assumed-a	Degree=Pos	dema	0			oewn_form
 assumed name	0	oewn-assumed_name-n	Number=Sing	dema	0			oewn_form
 assumed names	0	oewn-assumed_name-n	Number=Plur	dema	0			rule
 assumedly	0		Degree=Pos	dema	0	assumedly	r	moby_reverse
 assumer	0		Number=Sing	dema	0	assumer	n	moby_reverse
 assumers	0		Number=Plur	dema	0	assumer	n	rule
 assumes	0	oewn-assume-v	Person=3+Tense=Pres	dema	0			rule
-assuming	0	oewn-assuming-a	Degree=Pos	dema	0			oewn_form
-assuming	1	oewn-assume-v	VerbForm=Ger	dema	0			rule
+assuming	0	oewn-assume-v	VerbForm=Ger	dema	0			rule
+assuming	1	oewn-assuming-a	Degree=Pos	dema	0			oewn_form
 assumingly	0		Degree=Pos	dema	0	assumingly	r	moby_reverse
 assumpsit	0		Number=Sing	dema	0	assumpsit	n	moby_reverse
 assumpsits	0		Number=Plur	dema	0	assumpsit	n	rule
@@ -1141,9 +1141,9 @@ assumptively	0		Degree=Pos	dema	0	assumptively	r	moby_reverse
 assurance	0	oewn-assurance-n	Number=Sing	dema	0			oewn_form
 assurances	0	oewn-assurance-n	Number=Plur	dema	0			rule
 assure	0	oewn-assure-v	VerbForm=Inf	dema	0			oewn_form
-assured	0	oewn-assured-a	Degree=Pos	dema	0			oewn_form
-assured	1		Number=Sing	dema	0	assured	n	moby_reverse
-assured	2	oewn-assure-v	Tense=Past+VerbForm=Part	dema	0			rule
+assured	0	oewn-assure-v	Tense=Past+VerbForm=Part	dema	0			rule
+assured	1	oewn-assured-a	Degree=Pos	dema	0			oewn_form
+assured	2		Number=Sing	dema	0	assured	n	moby_reverse
 assuredly	0	oewn-assuredly-r	Degree=Pos	dema	0			oewn_form
 assuredness	0	oewn-assuredness-n	Number=Sing	dema	0			oewn_form
 assurednesses	0	oewn-assuredness-n	Number=Plur	dema	0			rule
@@ -1182,8 +1182,8 @@ asterid dicot genus	0	oewn-asterid_dicot_genus-n	Number=Sing	dema	0			oewn_form
 asterion	0	oewn-asterion-n	Number=Sing	dema	0			oewn_form
 asterions	0	oewn-asterion-n	Number=Plur	dema	0			rule
 asteriscus	0		Number=Sing	dema	0	asteriscus	n	moby_reverse
-asteriscuses	0		Number=Sing	dema	0	asteriscuses	n	moby_reverse
-asteriscuses	1		Number=Plur	dema	0	asteriscus	n	rule
+asteriscuses	0		Number=Plur	dema	0	asteriscus	n	rule
+asteriscuses	1		Number=Sing	dema	0	asteriscuses	n	moby_reverse
 asterisk	0	oewn-asterisk-n	Number=Sing	dema	0			oewn_form
 asterisk	1	oewn-asterisk-v	VerbForm=Inf	dema	0			oewn_form
 asterisked	0	oewn-asterisk-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -1267,8 +1267,8 @@ astonishedly	0		Degree=Pos	dema	0	astonishedly	r	moby_reverse
 astonisher	0		Number=Sing	dema	0	astonisher	n	moby_reverse
 astonishers	0		Number=Plur	dema	0	astonisher	n	rule
 astonishes	0	oewn-astonish-v	Person=3+Tense=Pres	dema	0			rule
-astonishing	0	oewn-astonishing-a	Degree=Pos	dema	0			oewn_form
-astonishing	1	oewn-astonish-v	VerbForm=Ger	dema	0			rule
+astonishing	0	oewn-astonish-v	VerbForm=Ger	dema	0			rule
+astonishing	1	oewn-astonishing-a	Degree=Pos	dema	0			oewn_form
 astonishingly	0	oewn-astonishingly-r	Degree=Pos	dema	0			oewn_form
 astonishingness	0		Number=Sing	dema	0	astonishingness	n	moby_reverse
 astonishment	0	oewn-astonishment-n	Number=Sing	dema	0			oewn_form
@@ -1276,8 +1276,8 @@ astonishments	0	oewn-astonishment-n	Number=Plur	dema	0			rule
 astound	0	oewn-astound-v	VerbForm=Inf	dema	0			oewn_form
 astounded	0	oewn-astound-v	Tense=Past+VerbForm=Part	dema	0			rule
 astounded	1	oewn-astounded-a	Degree=Pos	dema	0			oewn_form
-astounding	0	oewn-astounding-a	Degree=Pos	dema	0			oewn_form
-astounding	1	oewn-astound-v	VerbForm=Ger	dema	0			rule
+astounding	0	oewn-astound-v	VerbForm=Ger	dema	0			rule
+astounding	1	oewn-astounding-a	Degree=Pos	dema	0			oewn_form
 astoundingly	0		Degree=Pos	dema	0	astoundingly	r	moby_reverse
 astounds	0	oewn-astound-v	Person=3+Tense=Pres	dema	0			rule
 astr	0		Number=Sing	dema	0	astr	n	moby_reverse

@@ -14,6 +14,11 @@ namespace WordSense.Builder.Data;
 /// </remarks>
 internal static partial class AgidImporter
 {
+    /// <summary>
+    ///     The SHA-256 of the pinned file <c>infl.txt</c> of the release agid-2016.01.19, as upper-case hexadecimal.
+    /// </summary>
+    public const string PinnedSha256 = "3B614BB15416D97D3B3ABB0D384939BF46F5B50E2EF920D41BDD11EC1D07BAE5";
+
     [GeneratedRegex("^[a-z]+$")]
     private static partial Regex Word();
 
@@ -23,14 +28,17 @@ internal static partial class AgidImporter
     /// <param name="input">The <c>infl.txt</c> file.</param>
     /// <param name="corpus">The corpus directory with the dictionary.</param>
     /// <param name="output">The file to write.</param>
+    /// <param name="expectedSha256">The expected SHA-256 of the input, or null to skip the check.</param>
     /// <returns>A summary line.</returns>
-    /// <exception cref="InvalidDataException">Thrown when the input is missing.</exception>
-    public static string Import(string input, string corpus, string output)
+    /// <exception cref="InvalidDataException">Thrown when the input is missing or does not match the pin.</exception>
+    public static string Import(string input, string corpus, string output, string? expectedSha256 = PinnedSha256)
     {
         if (!File.Exists(input))
         {
             throw new InvalidDataException($"The inflection database file '{input}' does not exist.");
         }
+
+        OewnImporter.CheckHash(input, expectedSha256);
 
         var moby = LexiconSource.ReadWords(Path.Combine(corpus, "lexicon", LexiconSource.LexiconFile))
             .ToDictionary(w => w.Word, w => w.Letters, StringComparer.Ordinal);
@@ -106,15 +114,19 @@ internal static partial class AgidImporter
     /// <summary>
     ///     Reads the spellings that the database attests as forms of a lemma (any slot, without the marked and unlikely forms).
     /// </summary>
-    /// <param name="input">The <c>infl.txt</c> file, or null.</param>
+    /// <param name="input">The <c>infl.txt</c> file.</param>
+    /// <param name="expectedSha256">The expected SHA-256 of the input, or null to skip the check.</param>
     /// <returns>The lemmas by attested spelling.</returns>
-    public static Dictionary<string, HashSet<string>> ReadAttested(string? input)
+    /// <exception cref="InvalidDataException">Thrown when the input is missing or does not match the pin.</exception>
+    public static Dictionary<string, HashSet<string>> ReadAttested(string input, string? expectedSha256 = PinnedSha256)
     {
-        var result = new Dictionary<string, HashSet<string>>(StringComparer.Ordinal);
-        if (input is null || !File.Exists(input))
+        if (!File.Exists(input))
         {
-            return result;
+            throw new InvalidDataException($"The inflection database file '{input}' does not exist.");
         }
+
+        OewnImporter.CheckHash(input, expectedSha256);
+        var result = new Dictionary<string, HashSet<string>>(StringComparer.Ordinal);
 
         foreach (var raw in File.ReadLines(input, Encoding.Latin1))
         {

@@ -1414,8 +1414,8 @@ Twins	3	oewn-Twin-n	Capitalization=Title+Number=Plur	dema	0			rule
 Twitter	0	oewn-twitter-v	VerbForm=Inf	dema	0			oewn_form
 Twitter	1	oewn-twitter-n	Number=Sing	dema	0			oewn_form
 Twitter	2	oewn-Twitter-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-Twitters	0	oewn-twitter-n	Number=Plur	dema	0			rule
-Twitters	1	oewn-twitter-v	Person=3+Tense=Pres	dema	0			rule
+Twitters	0	oewn-twitter-v	Person=3+Tense=Pres	dema	0			rule
+Twitters	1	oewn-twitter-n	Number=Plur	dema	0			rule
 Twitters	2	oewn-Twitter-n	Capitalization=Title+Number=Plur	dema	0			rule
 Two Kettle	0	oewn-Two_Kettle-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Two Kettles	0	oewn-Two_Kettle-n	Capitalization=Title+Number=Plur	dema	0			rule
@@ -1518,8 +1518,8 @@ tabescent	0		Degree=Pos	dema	0	tabescent	a	moby_reverse
 tabi	0	oewn-tabi-n	Number=Sing	dema	0			oewn_form
 tabinet	0		Number=Sing	dema	0	tabinet	n	moby_reverse
 tabinets	0		Number=Plur	dema	0	tabinet	n	rule
-tabis	0	oewn-tabis-n	Number=Sing	dema	0			oewn_form
-tabis	1	oewn-tabi-n	Number=Plur	dema	0			rule
+tabis	0	oewn-tabi-n	Number=Plur	dema	0			rule
+tabis	1	oewn-tabis-n	Number=Sing	dema	0			oewn_form
 tabla	0		Number=Sing	dema	0	tabla	n	moby_reverse
 tablas	0		Number=Plur	dema	0	tabla	n	rule
 tablature	0	oewn-tablature-n	Number=Sing	dema	0			oewn_form
@@ -1827,8 +1827,8 @@ tactical warnings	0	oewn-tactical_warning-n	Number=Plur	dema	0			rule
 tactically	0	oewn-tactically-r	Degree=Pos	dema	0			oewn_form
 tactician	0	oewn-tactician-n	Number=Sing	dema	0			oewn_form
 tacticians	0	oewn-tactician-n	Number=Plur	dema	0			rule
-tactics	0	oewn-tactics-n	Number=Sing	dema	0			oewn_form
-tactics	1	oewn-tactic-n	Number=Plur	dema	0			rule
+tactics	0	oewn-tactic-n	Number=Plur	dema	0			rule
+tactics	1	oewn-tactics-n	Number=Sing	dema	0			oewn_form
 tactile	0	oewn-tactile-a	Degree=Pos	dema	0			oewn_form
 tactile agnosia	0	oewn-tactile_agnosia-n	Number=Sing	dema	0			oewn_form
 tactile agnosias	0	oewn-tactile_agnosia-n	Number=Plur	dema	0			rule
@@ -2022,10 +2022,9 @@ tailgaters	0	oewn-tailgater-n	Number=Plur	dema	0			rule
 tailgates	0	oewn-tailgate-n	Number=Plur	dema	0			rule
 tailgates	1	oewn-tailgate-v	Person=3+Tense=Pres	dema	0			rule
 tailgating	0	oewn-tailgate-v	VerbForm=Ger	dema	0			rule
-tailing	0	oewn-tailing-n	Number=Plur	dema	0			agid
-tailing	1	oewn-tailing-n	Number=Sing	dema	0			oewn_form
-tailing	2	oewn-tail-v	VerbForm=Ger	dema	0			rule
-tailings	0	oewn-tailing-n	Number=Plur	dema	0			rule_variant
+tailing	0	oewn-tailing-n	Number=Sing	dema	0			oewn_form
+tailing	1	oewn-tail-v	VerbForm=Ger	dema	0			rule
+tailings	0	oewn-tailing-n	Number=Plur	dema	0			rule
 taille	0		Number=Sing	dema	0	taille	n	moby_reverse
 tailles	0		Number=Plur	dema	0	taille	n	rule
 tailless	0	oewn-tailless-a	Degree=Pos	dema	0			oewn_form
@@ -2051,8 +2050,8 @@ tailor-making	0	oewn-tailor-make-v	VerbForm=Ger	dema	0			rule
 tailorbird	0	oewn-tailorbird-n	Number=Sing	dema	0			oewn_form
 tailorbirds	0	oewn-tailorbird-n	Number=Plur	dema	0			rule
 tailored	0	oewn-tailored-a	Degree=Pos	dema	0			oewn_form
-tailored	1		Number=Sing	dema	0	tailored	n	moby_reverse
-tailored	2	oewn-tailor-v	Tense=Past+VerbForm=Part	dema	0			rule
+tailored	1	oewn-tailor-v	Tense=Past+VerbForm=Part	dema	0			rule
+tailored	2		Number=Sing	dema	0	tailored	n	moby_reverse
 tailoring	0	oewn-tailor-v	VerbForm=Ger	dema	0			rule
 tailoring	1	oewn-tailoring-n	Number=Sing	dema	0			oewn_form
 tailorings	0	oewn-tailoring-n	Number=Plur	dema	0			rule
@@ -2066,11 +2065,11 @@ tailplane	0	oewn-tailplane-n	Number=Sing	dema	0			oewn_form
 tailplanes	0	oewn-tailplane-n	Number=Plur	dema	0			rule
 tailrace	0	oewn-tailrace-n	Number=Sing	dema	0			oewn_form
 tailraces	0	oewn-tailrace-n	Number=Plur	dema	0			rule
-tails	0	oewn-tails-n	Number=Sing	dema	0			oewn_form
-tails	1	dema-tails-i		dema	0			carried
-tails	2		Degree=Pos	dema	0	tails	r	moby_reverse
-tails	3	oewn-tail-n	Number=Plur	dema	0			rule
-tails	4	oewn-tail-v	Person=3+Tense=Pres	dema	0			rule
+tails	0	oewn-tail-n	Number=Plur	dema	0			rule
+tails	1	oewn-tails-n	Number=Sing	dema	0			oewn_form
+tails	2	oewn-tail-v	Person=3+Tense=Pres	dema	0			rule
+tails	3	dema-tails-i		dema	0			carried
+tails	4		Degree=Pos	dema	0	tails	r	moby_reverse
 tailskid	0		Number=Sing	dema	0	tailskid	n	moby_reverse
 tailskids	0		Number=Plur	dema	0	tailskid	n	rule
 tailspin	0	oewn-tailspin-n	Number=Sing	dema	0			oewn_form
@@ -2343,9 +2342,9 @@ takes up	0	oewn-take_up-v	Person=3+Tense=Pres	dema	0			rule
 takes up arms	0	oewn-take_up_arms-v	Person=3+Tense=Pres	dema	0			rule
 takes water	0	oewn-take_water-v	Person=3+Tense=Pres	dema	0			rule
 takin	0	oewn-takin-n	Number=Sing	dema	0			oewn_form
-taking	0	oewn-taking-a	Degree=Pos	dema	0			oewn_form
-taking	1	oewn-taking-n	Number=Sing	dema	0			oewn_form
-taking	2	oewn-take-v	VerbForm=Ger	dema	0			rule
+taking	0	oewn-take-v	VerbForm=Ger	dema	0			rule
+taking	1	oewn-taking-a	Degree=Pos	dema	0			oewn_form
+taking	2	oewn-taking-n	Number=Sing	dema	0			oewn_form
 taking a bow	0	oewn-take_a_bow-v	VerbForm=Ger	dema	0			rule
 taking a breath	0	oewn-take_a_breath-v	VerbForm=Ger	dema	0			rule
 taking a breather	0	oewn-take_a_breather-v	VerbForm=Ger	dema	0			rule
@@ -2656,11 +2655,11 @@ tallest	0	oewn-tall-a	Degree=Sup	dema	0			rule
 tallgrass	0	oewn-tallgrass-n	Number=Sing	dema	0			oewn_form
 tallgrasses	0	oewn-tallgrass-n	Number=Plur	dema	0			rule
 talli	0		Number=Sing	dema	0	talli	n	moby_reverse
-tallied	0		Number=Sing	dema	0	tallied	n	moby_reverse
-tallied	1	oewn-tally-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+tallied	0	oewn-tally-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+tallied	1		Number=Sing	dema	0	tallied	n	moby_reverse
 tallieds	0		Number=Plur	dema	0	tallied	n	rule
-tallies	0	oewn-tally-n	Number=Plur	dema	0			rule
-tallies	1	oewn-tally-v	Person=3+Tense=Pres	dema	0			rule
+tallies	0	oewn-tally-v	Person=3+Tense=Pres	dema	0			rule
+tallies	1	oewn-tally-n	Number=Plur	dema	0			rule
 tallis	0		Number=Plur	dema	0	talli	n	rule
 tallis	1	oewn-tallis-n	Number=Sing	dema	0			oewn_form
 tallises	0	oewn-tallis-n	Number=Plur	dema	0			rule
@@ -2689,8 +2688,8 @@ tallyho	2		VerbForm=Inf	dema	0	tallyho	v	moby_reverse
 tallyhoed	0		Number=Sing	dema	0	tallyhoed	n	moby_reverse
 tallyhoeds	0		Number=Plur	dema	0	tallyhoed	n	rule
 tallyhos	0		Number=Plur	dema	0	tallyho	n	rule
-tallying	0		Number=Sing	dema	0	tallying	n	moby_reverse
-tallying	1	oewn-tally-v	VerbForm=Ger	dema	0			rule
+tallying	0	oewn-tally-v	VerbForm=Ger	dema	0			rule
+tallying	1		Number=Sing	dema	0	tallying	n	moby_reverse
 tallyings	0		Number=Plur	dema	0	tallying	n	rule
 tallyman	0	oewn-tallyman-n	Number=Sing	dema	0			oewn_form
 tallymen	0	oewn-tallyman-n	Number=Plur	dema	0			agid
@@ -2785,8 +2784,8 @@ tamelessness	0		Number=Sing	dema	0	tamelessness	n	moby_reverse
 tamely	0	oewn-tamely-r	Degree=Pos	dema	0			oewn_form
 tameness	0	oewn-tameness-n	Number=Sing	dema	0			oewn_form
 tamenesses	0	oewn-tameness-n	Number=Plur	dema	0			rule
-tamer	0	oewn-tamer-n	Number=Sing	dema	0			oewn_form
-tamer	1	oewn-tame-a	Degree=Cmp	dema	0			moby_reverse
+tamer	0	oewn-tame-a	Degree=Cmp	dema	0			moby_reverse
+tamer	1	oewn-tamer-n	Number=Sing	dema	0			oewn_form
 tamers	0	oewn-tamer-n	Number=Plur	dema	0			rule
 tames	0	oewn-tame-v	Person=3+Tense=Pres	dema	0			rule
 tamest	0	oewn-tame-a	Degree=Sup	dema	0			moby_reverse
@@ -2812,8 +2811,8 @@ tamperers	0		Number=Plur	dema	0	tamperer	n	rule
 tampering	0	oewn-tamper-v	VerbForm=Ger	dema	0			rule
 tampering	1	oewn-tampering-n	Number=Sing	dema	0			oewn_form
 tamperings	0	oewn-tampering-n	Number=Plur	dema	0			rule
-tampers	0	oewn-tamper-n	Number=Plur	dema	0			rule
-tampers	1	oewn-tamper-v	Person=3+Tense=Pres	dema	0			rule
+tampers	0	oewn-tamper-v	Person=3+Tense=Pres	dema	0			rule
+tampers	1	oewn-tamper-n	Number=Plur	dema	0			rule
 tamping	0	oewn-tamp-v	VerbForm=Ger	dema	0			rule
 tamping bar	0	oewn-tamping_bar-n	Number=Sing	dema	0			oewn_form
 tamping bars	0	oewn-tamping_bar-n	Number=Plur	dema	0			rule
@@ -3066,8 +3065,8 @@ tantalized	0	oewn-tantalize-v	Tense=Past+VerbForm=Part	dema	0			rule
 tantalizer	0	oewn-tantalizer-n	Number=Sing	dema	0			oewn_form
 tantalizers	0	oewn-tantalizer-n	Number=Plur	dema	0			rule
 tantalizes	0	oewn-tantalize-v	Person=3+Tense=Pres	dema	0			rule
-tantalizing	0	oewn-tantalizing-a	Degree=Pos	dema	0			oewn_form
-tantalizing	1	oewn-tantalize-v	VerbForm=Ger	dema	0			rule
+tantalizing	0	oewn-tantalize-v	VerbForm=Ger	dema	0			rule
+tantalizing	1	oewn-tantalizing-a	Degree=Pos	dema	0			oewn_form
 tantalizingly	0	oewn-tantalizingly-r	Degree=Pos	dema	0			oewn_form
 tantalous	0		Degree=Pos	dema	0	tantalous	a	moby_reverse
 tantalum	0	oewn-tantalum-n	Number=Sing	dema	0			oewn_form
@@ -3172,8 +3171,8 @@ tapering off	0	oewn-taper_off-v	VerbForm=Ger	dema	0			rule
 tapering off	1	oewn-tapering_off-a	Degree=Pos	dema	0			oewn_form
 taperingly	0		Degree=Pos	dema	0	taperingly	r	moby_reverse
 taperings	0	oewn-tapering-n	Number=Plur	dema	0			rule
-tapers	0	oewn-taper-n	Number=Plur	dema	0			rule
-tapers	1	oewn-taper-v	Person=3+Tense=Pres	dema	0			rule
+tapers	0	oewn-taper-v	Person=3+Tense=Pres	dema	0			rule
+tapers	1	oewn-taper-n	Number=Plur	dema	0			rule
 tapers off	0	oewn-taper_off-v	Person=3+Tense=Pres	dema	0			rule
 taperstick	0		Number=Sing	dema	0	taperstick	n	moby_reverse
 tapersticks	0		Number=Plur	dema	0	taperstick	n	rule
@@ -3524,20 +3523,20 @@ tassel flowers	0	oewn-tassel_flower-n	Number=Plur	dema	0			rule
 tassel hyacinth	0	oewn-tassel_hyacinth-n	Number=Sing	dema	0			oewn_form
 tassel hyacinths	0	oewn-tassel_hyacinth-n	Number=Plur	dema	0			rule
 tassel-shaped	0	oewn-tassel-shaped-a	Degree=Pos	dema	0			oewn_form
-tasseled	0	oewn-tasseled-a	Degree=Pos	dema	0			oewn_form
-tasseled	1		Tense=Past+VerbForm=Part	dema	0	tassel	v	moby_reverse
+tasseled	0		Tense=Past+VerbForm=Part	dema	0	tassel	v	moby_reverse
+tasseled	1	oewn-tasseled-a	Degree=Pos	dema	0			oewn_form
 tasseler	0		Number=Sing	dema	0	tasseler	n	moby_reverse
 tasselers	0		Number=Plur	dema	0	tasseler	n	rule
 tasseling	0		VerbForm=Ger	dema	0	tassel	v	moby_reverse
-tasselled	0	oewn-tasselled-a	Degree=Pos	dema	0			oewn_form
-tasselled	1		Tense=Past+VerbForm=Part	dema	0	tassel	v	moby_reverse
+tasselled	0		Tense=Past+VerbForm=Part	dema	0	tassel	v	moby_reverse
+tasselled	1	oewn-tasselled-a	Degree=Pos	dema	0			oewn_form
 tasseller	0		Number=Sing	dema	0	tasseller	n	moby_reverse
 tassellers	0		Number=Plur	dema	0	tasseller	n	rule
 tasselling	0		VerbForm=Ger	dema	0	tassel	v	moby_reverse
 tasselly	0		Degree=Pos	dema	0	tasselly	r	moby_reverse
 tassels	0	oewn-tassel-n	Number=Plur	dema	0			rule
-tasses	0		Number=Plur	dema	0	tass	n	rule
-tasses	1	oewn-tasse-n	Number=Plur	dema	0			rule
+tasses	0	oewn-tasse-n	Number=Plur	dema	0			rule
+tasses	1		Number=Plur	dema	0	tass	n	rule
 tasset	0	oewn-tasset-n	Number=Sing	dema	0			oewn_form
 tassets	0	oewn-tasset-n	Number=Plur	dema	0			rule
 tassie	0		Number=Sing	dema	0	tassie	n	moby_reverse
@@ -3605,12 +3604,12 @@ tatterdemalion	0	oewn-tatterdemalion-n	Number=Sing	dema	0			oewn_form
 tatterdemalion	1	oewn-tatterdemalion-a	Degree=Pos	dema	0			oewn_form
 tatterdemalions	0	oewn-tatterdemalion-n	Number=Plur	dema	0			rule
 tattered	0		Number=Sing	dema	0	tattered	n	moby_reverse
-tattered	1	oewn-tattered-a	Degree=Pos	dema	0			oewn_form
-tattered	2		Tense=Past+VerbForm=Part	dema	0	tatter	v	rule
+tattered	1		Tense=Past+VerbForm=Part	dema	0	tatter	v	rule
+tattered	2	oewn-tattered-a	Degree=Pos	dema	0			oewn_form
 tattereds	0		Number=Plur	dema	0	tattered	n	rule
 tattering	0		VerbForm=Ger	dema	0	tatter	v	rule
-tatters	0	oewn-tatter-n	Number=Plur	dema	0			rule
-tatters	1		Person=3+Tense=Pres	dema	0	tatter	v	rule
+tatters	0		Person=3+Tense=Pres	dema	0	tatter	v	rule
+tatters	1	oewn-tatter-n	Number=Plur	dema	0			rule
 tattersall	0		Number=Sing	dema	0	tattersall	n	moby_reverse
 tattersalls	0		Number=Plur	dema	0	tattersall	n	rule
 tattier	0	oewn-tatty-a	Degree=Cmp	dema	0			oewn_form
@@ -3885,8 +3884,8 @@ taxemes	0		Number=Plur	dema	0	taxeme	n	rule
 taxer	0	oewn-taxer-n	Number=Sing	dema	0			oewn_form
 taxers	0	oewn-taxer-n	Number=Plur	dema	0			rule
 taxes	0	oewn-tax-n	Number=Plur	dema	0			oewn_form
-taxes	1	oewn-tax-v	Person=3+Tense=Pres	dema	0			rule
-taxes	2	oewn-taxis-n	Number=Plur	dema	0			oewn_form
+taxes	1	oewn-taxis-n	Number=Plur	dema	0			oewn_form
+taxes	2	oewn-tax-v	Person=3+Tense=Pres	dema	0			rule
 taxgathering	0		Number=Sing	dema	0	taxgathering	n	moby_reverse
 taxgatherings	0		Number=Plur	dema	0	taxgathering	n	rule
 taxi	0	oewn-taxi-n	Number=Sing	dema	0			oewn_form
@@ -3921,8 +3920,8 @@ taxing	0	oewn-tax-v	VerbForm=Ger	dema	0			rule
 taxing	1	oewn-taxing-a	Degree=Pos	dema	0			oewn_form
 taxiplane	0		Number=Sing	dema	0	taxiplane	n	moby_reverse
 taxiplanes	0		Number=Plur	dema	0	taxiplane	n	rule
-taxis	0	oewn-taxis-n	Number=Sing	dema	0			oewn_form
-taxis	1	oewn-taxi-n	Number=Plur	dema	0			rule_variant
+taxis	0	oewn-taxi-n	Number=Plur	dema	0			rule_variant
+taxis	1	oewn-taxis-n	Number=Sing	dema	0			oewn_form
 taxis	2	oewn-taxi-v	Person=3+Tense=Pres	dema	0			rule_variant
 taxistand	0	oewn-taxistand-n	Number=Sing	dema	0			oewn_form
 taxistands	0	oewn-taxistand-n	Number=Plur	dema	0			rule
@@ -4393,8 +4392,8 @@ teemed	0	oewn-teem-v	Tense=Past+VerbForm=Part	dema	0			rule
 teemed in	0	oewn-teem_in-v	Tense=Past+VerbForm=Part	dema	0			rule
 teemer	0		Number=Sing	dema	0	teemer	n	moby_reverse
 teemers	0		Number=Plur	dema	0	teemer	n	rule
-teeming	0	oewn-teeming-a	Degree=Pos	dema	0			oewn_form
-teeming	1	oewn-teem-v	VerbForm=Ger	dema	0			rule
+teeming	0	oewn-teem-v	VerbForm=Ger	dema	0			rule
+teeming	1	oewn-teeming-a	Degree=Pos	dema	0			oewn_form
 teeming in	0	oewn-teem_in-v	VerbForm=Ger	dema	0			rule
 teemingly	0		Degree=Pos	dema	0	teemingly	r	moby_reverse
 teemingness	0	oewn-teemingness-n	Number=Sing	dema	0			oewn_form
@@ -4966,9 +4965,9 @@ tellership	0		Number=Sing	dema	0	tellership	n	moby_reverse
 tellerships	0		Number=Plur	dema	0	tellership	n	rule
 tellies	0	oewn-telly-n	Number=Plur	dema	0			rule
 tellin	0		Number=Sing	dema	0	tellin	n	moby_reverse
-telling	0	oewn-telling-a	Degree=Pos	dema	0			oewn_form
-telling	1	oewn-telling-n	Number=Sing	dema	0			oewn_form
-telling	2	oewn-tell-v	VerbForm=Ger	dema	0			rule
+telling	0	oewn-tell-v	VerbForm=Ger	dema	0			rule
+telling	1	oewn-telling-a	Degree=Pos	dema	0			oewn_form
+telling	2	oewn-telling-n	Number=Sing	dema	0			oewn_form
 telling apart	0	oewn-tell_apart-v	VerbForm=Ger	dema	0			rule
 telling off	0	oewn-tell_off-v	VerbForm=Ger	dema	0			rule
 telling on	0	oewn-tell_on-v	VerbForm=Ger	dema	0			rule
@@ -5202,8 +5201,8 @@ temptations	0	oewn-temptation-n	Number=Plur	dema	0			rule
 tempted	0	oewn-tempt-v	Tense=Past+VerbForm=Part	dema	0			rule
 tempter	0	oewn-tempter-n	Number=Sing	dema	0			oewn_form
 tempters	0	oewn-tempter-n	Number=Plur	dema	0			rule
-tempting	0	oewn-tempting-a	Degree=Pos	dema	0			oewn_form
-tempting	1	oewn-tempt-v	VerbForm=Ger	dema	0			rule
+tempting	0	oewn-tempt-v	VerbForm=Ger	dema	0			rule
+tempting	1	oewn-tempting-a	Degree=Pos	dema	0			oewn_form
 temptingly	0	oewn-temptingly-r	Degree=Pos	dema	0			oewn_form
 temptingness	0	oewn-temptingness-n	Number=Sing	dema	0			oewn_form
 temptingnesses	0	oewn-temptingness-n	Number=Plur	dema	0			rule
@@ -5335,8 +5334,8 @@ tenderloins	0	oewn-tenderloin-n	Number=Plur	dema	0			rule
 tenderly	0	oewn-tenderly-r	Degree=Pos	dema	0			oewn_form
 tenderness	0	oewn-tenderness-n	Number=Sing	dema	0			oewn_form
 tendernesses	0	oewn-tenderness-n	Number=Plur	dema	0			rule
-tenders	0	oewn-tender-n	Number=Plur	dema	0			rule
-tenders	1	oewn-tender-v	Person=3+Tense=Pres	dema	0			rule
+tenders	0	oewn-tender-v	Person=3+Tense=Pres	dema	0			rule
+tenders	1	oewn-tender-n	Number=Plur	dema	0			rule
 tending	0	oewn-tend-v	VerbForm=Ger	dema	0			rule
 tending	1	oewn-tending-n	Number=Sing	dema	0			oewn_form
 tending	2	oewn-tending-a	Degree=Pos	dema	0			oewn_form
@@ -5475,8 +5474,8 @@ tenpenny nails	0	oewn-tenpenny_nail-n	Number=Plur	dema	0			rule
 tenpin	0	oewn-tenpin-n	Number=Sing	dema	0			oewn_form
 tenpin bowling	0	oewn-tenpin_bowling-n	Number=Sing	dema	0			oewn_form
 tenpin bowlings	0	oewn-tenpin_bowling-n	Number=Plur	dema	0			rule
-tenpins	0	oewn-tenpins-n	Number=Sing	dema	0			oewn_form
-tenpins	1	oewn-tenpin-n	Number=Plur	dema	0			rule
+tenpins	0	oewn-tenpin-n	Number=Plur	dema	0			rule
+tenpins	1	oewn-tenpins-n	Number=Sing	dema	0			oewn_form
 tenpounder	0	oewn-tenpounder-n	Number=Sing	dema	0			oewn_form
 tenpounders	0	oewn-tenpounder-n	Number=Plur	dema	0			rule
 tenrec	0	oewn-tenrec-n	Number=Sing	dema	0			oewn_form
@@ -5844,8 +5843,8 @@ termless	0		Degree=Pos	dema	0	termless	a	moby_reverse
 termly	0		Degree=Pos	dema	0	termly	r	moby_reverse
 termor	0		Number=Sing	dema	0	termor	n	moby_reverse
 termors	0		Number=Plur	dema	0	termor	n	rule
-terms	0	oewn-terms-n	Number=Sing	dema	0			oewn_form
-terms	1	oewn-term-n	Number=Plur	dema	0			rule
+terms	0	oewn-term-n	Number=Plur	dema	0			rule
+terms	1	oewn-terms-n	Number=Sing	dema	0			oewn_form
 terms	2	oewn-term-v	Person=3+Tense=Pres	dema	0			rule
 terms of a contract	0	oewn-term_of_a_contract-n	Number=Plur	dema	0			rule
 terms of enlistment	0	oewn-term_of_enlistment-n	Number=Plur	dema	0			rule
@@ -6084,8 +6083,8 @@ tesselating	0		VerbForm=Ger	dema	0	tesselate	v	rule
 tessella	0	oewn-tessella-n	Number=Sing	dema	0			oewn_form
 tessellas	0	oewn-tessella-n	Number=Plur	dema	0			rule
 tessellate	0	oewn-tessellate-v	VerbForm=Inf	dema	0			oewn_form
-tessellated	0	oewn-tessellated-a	Degree=Pos	dema	0			oewn_form
-tessellated	1	oewn-tessellate-v	Tense=Past+VerbForm=Part	dema	0			rule
+tessellated	0	oewn-tessellate-v	Tense=Past+VerbForm=Part	dema	0			rule
+tessellated	1	oewn-tessellated-a	Degree=Pos	dema	0			oewn_form
 tessellates	0	oewn-tessellate-v	Person=3+Tense=Pres	dema	0			rule
 tessellating	0	oewn-tessellate-v	VerbForm=Ger	dema	0			rule
 tessellation	0	oewn-tessellation-n	Number=Sing	dema	0			oewn_form
@@ -6528,8 +6527,8 @@ textuary	0		Degree=Pos	dema	0	textuary	a	moby_reverse
 textuary	1		Number=Sing	dema	0	textuary	n	moby_reverse
 texture	0	oewn-texture-n	Number=Sing	dema	0			oewn_form
 texture	1		VerbForm=Inf	dema	0	texture	v	moby_reverse
-textured	0	oewn-textured-a	Degree=Pos	dema	0			oewn_form
-textured	1		Tense=Past+VerbForm=Part	dema	0	texture	v	moby_reverse
+textured	0		Tense=Past+VerbForm=Part	dema	0	texture	v	moby_reverse
+textured	1	oewn-textured-a	Degree=Pos	dema	0			oewn_form
 textures	0	oewn-texture-n	Number=Plur	dema	0			rule
 texturing	0		VerbForm=Ger	dema	0	texture	v	moby_reverse
 tfr	0		Number=Sing	dema	0	tfr	n	moby_reverse
@@ -6628,8 +6627,8 @@ thanklessly	0		Degree=Pos	dema	0	thanklessly	r	moby_reverse
 thanklessness	0		Number=Sing	dema	0	thanklessness	n	moby_reverse
 thanklessnesses	0		Number=Plur	dema	0	thanklessness	n	rule
 thanks	0	oewn-thanks-n	Number=Sing	dema	0			oewn_form
-thanks	1	dema-thanks-i		dema	0			carried
-thanks	2	oewn-thank-v	Person=3+Tense=Pres	dema	0			rule
+thanks	1	oewn-thank-v	Person=3+Tense=Pres	dema	0			rule
+thanks	2	dema-thanks-i		dema	0			carried
 thanksgiver	0		Number=Sing	dema	0	thanksgiver	n	moby_reverse
 thanksgivers	0		Number=Plur	dema	0	thanksgiver	n	rule
 thanksgiving	0	oewn-thanksgiving-n	Number=Sing	dema	0			oewn_form
@@ -7629,8 +7628,8 @@ thinkably	0		Degree=Pos	dema	0	thinkably	r	moby_reverse
 thinker	0	oewn-thinker-n	Number=Sing	dema	0			oewn_form
 thinkers	0	oewn-thinker-n	Number=Plur	dema	0			rule
 thinking	0	oewn-thinking-n	Number=Sing	dema	0			oewn_form
-thinking	1	oewn-thinking-a	Degree=Pos	dema	0			oewn_form
-thinking	2	oewn-think-v	VerbForm=Ger	dema	0			rule
+thinking	1	oewn-think-v	VerbForm=Ger	dema	0			rule
+thinking	2	oewn-thinking-a	Degree=Pos	dema	0			oewn_form
 thinking about	0	oewn-think_about-v	VerbForm=Ger	dema	0			rule
 thinking back	0	oewn-think_back-v	VerbForm=Ger	dema	0			rule
 thinking cap	0	oewn-thinking_cap-n	Number=Sing	dema	0			oewn_form
@@ -8379,16 +8378,16 @@ throaty	0	oewn-throaty-a	Degree=Pos	dema	0			oewn_form
 throb	0	oewn-throb-v	VerbForm=Inf	dema	0			oewn_form
 throb	1	oewn-throb-n	Number=Sing	dema	0			oewn_form
 throbbed	0	oewn-throb-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
-throbbing	0	oewn-throbbing-n	Number=Sing	dema	0			oewn_form
-throbbing	1	oewn-throb-v	VerbForm=Ger	dema	0			oewn_form
+throbbing	0	oewn-throb-v	VerbForm=Ger	dema	0			oewn_form
+throbbing	1	oewn-throbbing-n	Number=Sing	dema	0			oewn_form
 throbbing	2	oewn-throbbing-a	Degree=Pos	dema	0			oewn_form
 throbbings	0	oewn-throbbing-n	Number=Plur	dema	0			rule
 throbless	0		Degree=Pos	dema	0	throbless	a	moby_reverse
 throbs	0	oewn-throb-v	Person=3+Tense=Pres	dema	0			rule
 throbs	1	oewn-throb-n	Number=Plur	dema	0			rule
 throe	0	oewn-throe-n	Number=Sing	dema	0			oewn_form
-throes	0	oewn-throes-n	Number=Sing	dema	0			oewn_form
-throes	1	oewn-throe-n	Number=Plur	dema	0			rule
+throes	0	oewn-throe-n	Number=Plur	dema	0			rule
+throes	1	oewn-throes-n	Number=Sing	dema	0			oewn_form
 thrombasthenia	0	oewn-thrombasthenia-n	Number=Sing	dema	0			oewn_form
 thrombasthenias	0	oewn-thrombasthenia-n	Number=Plur	dema	0			rule
 thrombectomies	0	oewn-thrombectomy-n	Number=Plur	dema	0			rule
@@ -8464,8 +8463,8 @@ throttler	0	oewn-throttler-n	Number=Sing	dema	0			oewn_form
 throttlers	0	oewn-throttler-n	Number=Plur	dema	0			rule
 throttles	0	oewn-throttle-n	Number=Plur	dema	0			rule
 throttles	1	oewn-throttle-v	Person=3+Tense=Pres	dema	0			rule
-throttling	0	oewn-throttling-n	Number=Sing	dema	0			oewn_form
-throttling	1	oewn-throttle-v	VerbForm=Ger	dema	0			rule
+throttling	0	oewn-throttle-v	VerbForm=Ger	dema	0			rule
+throttling	1	oewn-throttling-n	Number=Sing	dema	0			oewn_form
 throttlings	0	oewn-throttling-n	Number=Plur	dema	0			rule
 through	0	dema-through-p		dema	0			carried
 through	1	oewn-through-a	Degree=Pos	dema	0			oewn_form
@@ -8588,8 +8587,8 @@ thrust stage	0	oewn-thrust_stage-n	Number=Sing	dema	0			oewn_form
 thrust stages	0	oewn-thrust_stage-n	Number=Plur	dema	0			rule
 thruster	0	oewn-thruster-n	Number=Sing	dema	0			oewn_form
 thrusters	0	oewn-thruster-n	Number=Plur	dema	0			rule
-thrusting	0	oewn-thrusting-n	Number=Sing	dema	0			oewn_form
-thrusting	1	oewn-thrust-v	VerbForm=Ger	dema	0			rule
+thrusting	0	oewn-thrust-v	VerbForm=Ger	dema	0			rule
+thrusting	1	oewn-thrusting-n	Number=Sing	dema	0			oewn_form
 thrusting ahead	0	oewn-thrust_ahead-v	VerbForm=Ger	dema	0			rule
 thrusting out	0	oewn-thrust_out-v	VerbForm=Ger	dema	0			rule
 thrustings	0	oewn-thrusting-n	Number=Plur	dema	0			rule
@@ -8667,8 +8666,8 @@ thump out	0	oewn-thump_out-v	VerbForm=Inf	dema	0			oewn_form
 thumped	0	oewn-thump-v	Tense=Past+VerbForm=Part	dema	0			rule
 thumped out	0	oewn-thump_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 thumping	0	oewn-thumping-a	Degree=Pos	dema	0			oewn_form
-thumping	1	oewn-thumping-n	Number=Sing	dema	0			oewn_form
-thumping	2	oewn-thump-v	VerbForm=Ger	dema	0			rule
+thumping	1	oewn-thump-v	VerbForm=Ger	dema	0			rule
+thumping	2	oewn-thumping-n	Number=Sing	dema	0			oewn_form
 thumping out	0	oewn-thump_out-v	VerbForm=Ger	dema	0			rule
 thumpingly	0		Degree=Pos	dema	0	thumpingly	r	moby_reverse
 thumpings	0	oewn-thumping-n	Number=Plur	dema	0			rule
@@ -9001,8 +9000,8 @@ ticklers	0	oewn-tickler-n	Number=Plur	dema	0			rule
 tickles	0	oewn-tickle-v	Person=3+Tense=Pres	dema	0			rule
 tickles	1	oewn-tickle-n	Number=Plur	dema	0			rule
 tickles pink	0	oewn-tickle_pink-v	Person=3+Tense=Pres	dema	0			rule
-tickling	0	oewn-tickling-n	Number=Sing	dema	0			oewn_form
-tickling	1	oewn-tickle-v	VerbForm=Ger	dema	0			rule
+tickling	0	oewn-tickle-v	VerbForm=Ger	dema	0			rule
+tickling	1	oewn-tickling-n	Number=Sing	dema	0			oewn_form
 tickling	2	oewn-tickling-a	Degree=Pos	dema	0			oewn_form
 tickling pink	0	oewn-tickle_pink-v	VerbForm=Ger	dema	0			rule
 ticklings	0	oewn-tickling-n	Number=Plur	dema	0			rule
@@ -9100,8 +9099,8 @@ tidewater streams	0	oewn-tidewater_stream-n	Number=Plur	dema	0			rule
 tidewaters	0	oewn-tidewater-n	Number=Plur	dema	0			rule
 tideway	0	oewn-tideway-n	Number=Sing	dema	0			oewn_form
 tideways	0	oewn-tideway-n	Number=Plur	dema	0			rule
-tidied	0		Degree=Pos	dema	0	tidied	a	moby_reverse
-tidied	1	oewn-tidy-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+tidied	0	oewn-tidy-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+tidied	1		Degree=Pos	dema	0	tidied	a	moby_reverse
 tidied up	0	oewn-tidy_up-v	Tense=Past+VerbForm=Part	dema	0			rule
 tidier	0	oewn-tidy-a	Degree=Cmp	dema	0			oewn_form
 tidies	0	oewn-tidy-v	Person=3+Tense=Pres	dema	0			rule
@@ -9723,12 +9722,12 @@ ting	0	oewn-ting-n	Number=Sing	dema	0			oewn_form
 ting	1	oewn-ting-v	VerbForm=Inf	dema	0			oewn_form
 tinge	0	oewn-tinge-v	VerbForm=Inf	dema	0			oewn_form
 tinge	1	oewn-tinge-n	Number=Sing	dema	0			oewn_form
-tinged	0	oewn-ting-v	Tense=Past+VerbForm=Part	dema	0			rule
-tinged	1	oewn-tinge-v	Tense=Past+VerbForm=Part	dema	0			rule
+tinged	0	oewn-tinge-v	Tense=Past+VerbForm=Part	dema	0			rule
+tinged	1	oewn-ting-v	Tense=Past+VerbForm=Part	dema	0			rule
 tinges	0	oewn-tinge-v	Person=3+Tense=Pres	dema	0			rule
 tinges	1	oewn-tinge-n	Number=Plur	dema	0			rule
-tinging	0	oewn-ting-v	VerbForm=Ger	dema	0			rule
-tinging	1	oewn-tinge-v	VerbForm=Ger	dema	0			rule_variant
+tinging	0	oewn-tinge-v	VerbForm=Ger	dema	0			rule_variant
+tinging	1	oewn-ting-v	VerbForm=Ger	dema	0			rule
 tinglass	0		Number=Sing	dema	0	tinglass	n	moby_reverse
 tinglasses	0		Number=Plur	dema	0	tinglass	n	rule
 tingle	0	oewn-tingle-v	VerbForm=Inf	dema	0			oewn_form
@@ -9740,8 +9739,8 @@ tingles	0	oewn-tingle-v	Person=3+Tense=Pres	dema	0			rule
 tingles	1	oewn-tingle-n	Number=Plur	dema	0			rule
 tinglier	0		Degree=Cmp	dema	0	tingly	a	moby_reverse
 tingliest	0		Degree=Sup	dema	0	tingly	a	moby_reverse
-tingling	0	oewn-tingling-n	Number=Sing	dema	0			oewn_form
-tingling	1	oewn-tingle-v	VerbForm=Ger	dema	0			rule
+tingling	0	oewn-tingle-v	VerbForm=Ger	dema	0			rule
+tingling	1	oewn-tingling-n	Number=Sing	dema	0			oewn_form
 tingling	2	oewn-tingling-a	Degree=Pos	dema	0			oewn_form
 tinglingly	0		Degree=Pos	dema	0	tinglingly	r	moby_reverse
 tinglings	0	oewn-tingling-n	Number=Plur	dema	0			rule
@@ -9782,8 +9781,8 @@ tinkles	0	oewn-tinkle-v	Person=3+Tense=Pres	dema	0			rule
 tinkles	1	oewn-tinkle-n	Number=Plur	dema	0			rule
 tinklier	0	oewn-tinkly-a	Degree=Cmp	dema	0			rule
 tinkliest	0	oewn-tinkly-a	Degree=Sup	dema	0			rule
-tinkling	0		Number=Sing	dema	0	tinkling	n	moby_reverse
-tinkling	1	oewn-tinkle-v	VerbForm=Ger	dema	0			rule
+tinkling	0	oewn-tinkle-v	VerbForm=Ger	dema	0			rule
+tinkling	1		Number=Sing	dema	0	tinkling	n	moby_reverse
 tinkling	2	oewn-tinkling-a	Degree=Pos	dema	0			oewn_form
 tinklingly	0		Degree=Pos	dema	0	tinklingly	r	moby_reverse
 tinklings	0		Number=Plur	dema	0	tinkling	n	rule
@@ -9977,8 +9976,8 @@ tire irons	0	oewn-tire_iron-n	Number=Plur	dema	0			rule
 tire out	0	oewn-tire_out-v	VerbForm=Inf	dema	0			oewn_form
 tire tool	0	oewn-tire_tool-n	Number=Sing	dema	0			oewn_form
 tire tools	0	oewn-tire_tool-n	Number=Plur	dema	0			rule
-tired	0	oewn-tired-a	Degree=Pos	dema	0			oewn_form
-tired	1	oewn-tire-v	Tense=Past+VerbForm=Part	dema	0			rule
+tired	0	oewn-tire-v	Tense=Past+VerbForm=Part	dema	0			rule
+tired	1	oewn-tired-a	Degree=Pos	dema	0			oewn_form
 tired of	0	oewn-tired_of-a	Degree=Pos	dema	0			oewn_form
 tired out	0	oewn-tire_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 tiredly	0	oewn-tiredly-r	Degree=Pos	dema	0			oewn_form
@@ -11196,8 +11195,8 @@ tootled	0	oewn-tootle-v	Tense=Past+VerbForm=Part	dema	0			rule
 tootles	0	oewn-tootle-v	Person=3+Tense=Pres	dema	0			rule
 tootles	1	oewn-tootle-n	Number=Plur	dema	0			rule
 tootling	0	oewn-tootle-v	VerbForm=Ger	dema	0			rule
-toots	0	oewn-toot-n	Number=Plur	dema	0			rule
-toots	1	oewn-toot-v	Person=3+Tense=Pres	dema	0			rule
+toots	0	oewn-toot-v	Person=3+Tense=Pres	dema	0			rule
+toots	1	oewn-toot-n	Number=Plur	dema	0			rule
 tootsies	0		Number=Plur	dema	0	tootsy	n	rule
 tootsy	0		Number=Sing	dema	0	tootsy	n	moby_reverse
 toowomba canary grass	0	oewn-toowomba_canary_grass-n	Number=Sing	dema	0			oewn_form
@@ -11807,8 +11806,8 @@ tother	0		Degree=Pos	dema	0	tother	a	moby_reverse
 tother	1	dema-tother-u		dema	0			carried
 totient	0		Number=Sing	dema	0	totient	n	moby_reverse
 totients	0		Number=Plur	dema	0	totient	n	rule
-toting	0		Number=Sing	dema	0	toting	n	moby_reverse
-toting	1	oewn-tote-v	VerbForm=Ger	dema	0			rule
+toting	0	oewn-tote-v	VerbForm=Ger	dema	0			rule
+toting	1		Number=Sing	dema	0	toting	n	moby_reverse
 toting up	0	oewn-tote_up-v	VerbForm=Ger	dema	0			rule
 totings	0		Number=Plur	dema	0	toting	n	rule
 totipalmate	0		Degree=Pos	dema	0	totipalmate	a	moby_reverse
@@ -11829,8 +11828,8 @@ totter	1		Number=Sing	dema	0	totter	n	moby_reverse
 tottered	0	oewn-totter-v	Tense=Past+VerbForm=Part	dema	0			rule
 totterer	0	oewn-totterer-n	Number=Sing	dema	0			oewn_form
 totterers	0	oewn-totterer-n	Number=Plur	dema	0			rule
-tottering	0	oewn-tottering-a	Degree=Pos	dema	0			oewn_form
-tottering	1	oewn-totter-v	VerbForm=Ger	dema	0			rule
+tottering	0	oewn-totter-v	VerbForm=Ger	dema	0			rule
+tottering	1	oewn-tottering-a	Degree=Pos	dema	0			oewn_form
 totters	0	oewn-totter-v	Person=3+Tense=Pres	dema	0			rule
 tottery	0	oewn-tottery-a	Degree=Pos	dema	0			oewn_form
 totting	0	oewn-tot-v	VerbForm=Ger	dema	0			oewn_form
@@ -12091,14 +12090,13 @@ towel rails	0	oewn-towel_rail-n	Number=Plur	dema	0			rule
 towel ring	0	oewn-towel_ring-n	Number=Sing	dema	0			oewn_form
 towel rings	0	oewn-towel_ring-n	Number=Plur	dema	0			rule
 toweled	0	oewn-towel-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
-toweling	0	oewn-toweling-n	Number=Sing	dema	0			oewn_form
-toweling	1	oewn-towel-v	VerbForm=Ger	dema	0			rule_variant
+toweling	0	oewn-towel-v	VerbForm=Ger	dema	0			rule_variant
+toweling	1	oewn-toweling-n	Number=Sing	dema	0			oewn_form
 towelings	0	oewn-toweling-n	Number=Plur	dema	0			rule
 towelled	0	oewn-towel-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
-towelling	0	oewn-towelling-n	Number=Plur	dema	0			agid
-towelling	1	oewn-towelling-n	Number=Sing	dema	0			oewn_form
-towelling	2	oewn-towel-v	VerbForm=Ger	dema	0			oewn_form
-towellings	0	oewn-towelling-n	Number=Plur	dema	0			rule_variant
+towelling	0	oewn-towelling-n	Number=Sing	dema	0			oewn_form
+towelling	1	oewn-towel-v	VerbForm=Ger	dema	0			oewn_form
+towellings	0	oewn-towelling-n	Number=Plur	dema	0			rule
 towels	0	oewn-towel-n	Number=Plur	dema	0			rule
 towels	1	oewn-towel-v	Person=3+Tense=Pres	dema	0			rule
 tower	0	oewn-tower-n-1	Number=Sing	dema	1			carried
@@ -13657,8 +13655,8 @@ transportation secretary	0	oewn-transportation_secretary-n	Number=Sing	dema	0			
 transportation system	0	oewn-transportation_system-n	Number=Sing	dema	0			oewn_form
 transportation systems	0	oewn-transportation_system-n	Number=Plur	dema	0			rule
 transportations	0	oewn-transportation-n	Number=Plur	dema	0			rule
-transported	0		Degree=Pos	dema	0	transported	a	moby_reverse
-transported	1	oewn-transport-v	Tense=Past+VerbForm=Part	dema	0			rule
+transported	0	oewn-transport-v	Tense=Past+VerbForm=Part	dema	0			rule
+transported	1		Degree=Pos	dema	0	transported	a	moby_reverse
 transporter	0	oewn-transporter-n	Number=Sing	dema	0			oewn_form
 transporters	0	oewn-transporter-n	Number=Plur	dema	0			rule
 transporting	0	oewn-transport-v	VerbForm=Ger	dema	0			rule
@@ -14385,8 +14383,8 @@ treks	1	oewn-trek-n	Number=Plur	dema	0			rule
 trellis	0	oewn-trellis-n	Number=Sing	dema	0			oewn_form
 trellis	1	oewn-trellis-v	VerbForm=Inf	dema	0			oewn_form
 trellised	0	oewn-trellis-v	Tense=Past+VerbForm=Part	dema	0			rule
-trellises	0	oewn-trellis-v	Person=3+Tense=Pres	dema	0			rule
-trellises	1	oewn-trellis-n	Number=Plur	dema	0			rule
+trellises	0	oewn-trellis-n	Number=Plur	dema	0			rule
+trellises	1	oewn-trellis-v	Person=3+Tense=Pres	dema	0			rule
 trellising	0	oewn-trellis-v	VerbForm=Ger	dema	0			rule
 trelliswork	0		Number=Sing	dema	0	trelliswork	n	moby_reverse
 trellisworks	0		Number=Plur	dema	0	trelliswork	n	rule
@@ -14400,10 +14398,10 @@ trembled	0	oewn-tremble-v	Tense=Past+VerbForm=Part	dema	0			rule
 trembler	0	oewn-trembler-n	Number=Sing	dema	0			oewn_form
 tremblers	0	oewn-trembler-n	Number=Plur	dema	0			rule
 trembles	0	oewn-trembles-n	Number=Sing	dema	0			oewn_form
-trembles	1	oewn-tremble-n	Number=Plur	dema	0			rule
-trembles	2	oewn-tremble-v	Person=3+Tense=Pres	dema	0			rule
-trembling	0	oewn-trembling-n	Number=Sing	dema	0			oewn_form
-trembling	1	oewn-tremble-v	VerbForm=Ger	dema	0			rule
+trembles	1	oewn-tremble-v	Person=3+Tense=Pres	dema	0			rule
+trembles	2	oewn-tremble-n	Number=Plur	dema	0			rule
+trembling	0	oewn-tremble-v	VerbForm=Ger	dema	0			rule
+trembling	1	oewn-trembling-n	Number=Sing	dema	0			oewn_form
 trembling	2	oewn-trembling-a	Degree=Pos	dema	0			oewn_form
 tremblings	0	oewn-trembling-n	Number=Plur	dema	0			rule
 trembly	0		Degree=Pos	dema	0	trembly	a	moby_reverse
@@ -15016,8 +15014,8 @@ trierarches	0		Number=Plur	dema	0	trierarch	n	rule
 trierarchies	0		Number=Plur	dema	0	trierarchy	n	rule
 trierarchy	0		Number=Sing	dema	0	trierarchy	n	moby_reverse
 triers	0	oewn-trier-n	Number=Plur	dema	0			rule
-tries	0	oewn-try-n	Number=Plur	dema	0			rule
-tries	1	oewn-try-v	Person=3+Tense=Pres	dema	0			rule
+tries	0	oewn-try-v	Person=3+Tense=Pres	dema	0			rule
+tries	1	oewn-try-n	Number=Plur	dema	0			rule
 tries for	0	oewn-try_for-v	Person=3+Tense=Pres	dema	0			rule
 tries on	0	oewn-try_on-v	Person=3+Tense=Pres	dema	0			rule
 tries out	0	oewn-try_out-v	Person=3+Tense=Pres	dema	0			rule
@@ -15040,8 +15038,8 @@ trifles	0	oewn-trifle-n	Number=Plur	dema	0			rule
 trifles	1	oewn-trifle-v	Person=3+Tense=Pres	dema	0			rule
 trifles away	0	oewn-trifle_away-v	Person=3+Tense=Pres	dema	0			rule
 trifling	0	oewn-trifling-a	Degree=Pos	dema	0			oewn_form
-trifling	1	oewn-trifling-n	Number=Sing	dema	0			oewn_form
-trifling	2	oewn-trifle-v	VerbForm=Ger	dema	0			rule
+trifling	1	oewn-trifle-v	VerbForm=Ger	dema	0			rule
+trifling	2	oewn-trifling-n	Number=Sing	dema	0			oewn_form
 trifling away	0	oewn-trifle_away-v	VerbForm=Ger	dema	0			rule
 triflingness	0		Number=Sing	dema	0	triflingness	n	moby_reverse
 triflings	0	oewn-trifling-n	Number=Plur	dema	0			rule
@@ -15730,8 +15728,8 @@ trochee	0	oewn-trochee-n	Number=Sing	dema	0			oewn_form
 trochees	0	oewn-trochee-n	Number=Plur	dema	0			rule
 trochelminth	0		Number=Sing	dema	0	trochelminth	n	moby_reverse
 trochelminths	0		Number=Plur	dema	0	trochelminth	n	rule
-troches	0		Number=Plur	dema	0	troch	n	rule
-troches	1	oewn-troche-n	Number=Plur	dema	0			rule
+troches	0	oewn-troche-n	Number=Plur	dema	0			rule
+troches	1		Number=Plur	dema	0	troch	n	rule
 trochiluli	0		Number=Sing	dema	0	trochiluli	n	moby_reverse
 trochilulis	0		Number=Plur	dema	0	trochiluli	n	rule
 trochilus	0		Number=Sing	dema	0	trochilus	n	moby_reverse
@@ -15810,8 +15808,8 @@ trolleying	0		Number=Sing	dema	0	trolleying	n	moby_reverse
 trolleyings	0		Number=Plur	dema	0	trolleying	n	rule
 trolleys	0	oewn-trolley-n	Number=Plur	dema	0			rule
 trollied	0		VerbForm=Inf	dema	0	trollied	v	moby_reverse
-trollies	0		VerbForm=Inf	dema	0	trollies	v	moby_reverse
-trollies	1		Number=Plur	dema	0	trolly	n	rule
+trollies	0		Number=Plur	dema	0	trolly	n	rule
+trollies	1		VerbForm=Inf	dema	0	trollies	v	moby_reverse
 trolliesed	0		Tense=Past+VerbForm=Part	dema	0	trollies	v	rule
 trollieses	0		Person=3+Tense=Pres	dema	0	trollies	v	rule
 trolliesing	0		VerbForm=Ger	dema	0	trollies	v	rule
@@ -16075,8 +16073,8 @@ trounced	0	oewn-trounce-v	Tense=Past+VerbForm=Part	dema	0			rule
 trouncer	0		Number=Sing	dema	0	trouncer	n	moby_reverse
 trouncers	0		Number=Plur	dema	0	trouncer	n	rule
 trounces	0	oewn-trounce-v	Person=3+Tense=Pres	dema	0			rule
-trouncing	0	oewn-trouncing-n	Number=Sing	dema	0			oewn_form
-trouncing	1	oewn-trounce-v	VerbForm=Ger	dema	0			rule
+trouncing	0	oewn-trounce-v	VerbForm=Ger	dema	0			rule
+trouncing	1	oewn-trouncing-n	Number=Sing	dema	0			oewn_form
 trouncings	0	oewn-trouncing-n	Number=Plur	dema	0			rule
 troupe	0	oewn-troupe-n	Number=Sing	dema	0			oewn_form
 troupe	1		VerbForm=Inf	dema	0	troupe	v	moby_reverse
@@ -16102,8 +16100,8 @@ trousered	0	oewn-trousered-a	Degree=Pos	dema	0			oewn_form
 trousering	0	oewn-trousering-n	Number=Sing	dema	0			oewn_form
 trouserings	0	oewn-trousering-n	Number=Plur	dema	0			rule
 trouserless	0		Degree=Pos	dema	0	trouserless	a	moby_reverse
-trousers	0	oewn-trousers-n	Number=Sing	dema	0			oewn_form
-trousers	1	oewn-trouser-n	Number=Plur	dema	0			rule
+trousers	0	oewn-trouser-n	Number=Plur	dema	0			rule
+trousers	1	oewn-trousers-n	Number=Sing	dema	0			oewn_form
 trouses	0		Number=Plur	dema	0	trouse	n	rule
 trousseau	0	oewn-trousseau-n	Number=Sing	dema	0			oewn_form
 trousseaus	0	oewn-trousseau-n	Number=Plur	dema	0			rule_variant
@@ -16208,8 +16206,8 @@ truckler	0	oewn-truckler-n	Number=Sing	dema	0			oewn_form
 trucklers	0	oewn-truckler-n	Number=Plur	dema	0			rule
 truckles	0	oewn-truckle-v	Person=3+Tense=Pres	dema	0			rule
 truckles	1	oewn-truckle-n	Number=Plur	dema	0			rule
-truckling	0	oewn-truckling-n	Number=Sing	dema	0			oewn_form
-truckling	1	oewn-truckle-v	VerbForm=Ger	dema	0			rule
+truckling	0	oewn-truckle-v	VerbForm=Ger	dema	0			rule
+truckling	1	oewn-truckling-n	Number=Sing	dema	0			oewn_form
 trucklingly	0		Degree=Pos	dema	0	trucklingly	r	moby_reverse
 trucklings	0	oewn-truckling-n	Number=Plur	dema	0			rule
 truckload	0		Number=Sing	dema	0	truckload	n	moby_reverse
@@ -16402,8 +16400,8 @@ trumpetfish	1	oewn-trumpetfish-n	Number=Sing	dema	0			oewn_form
 trumpeting	0	oewn-trumpet-v	VerbForm=Ger	dema	0			rule
 trumpetries	0		Number=Plur	dema	0	trumpetry	n	rule
 trumpetry	0		Number=Sing	dema	0	trumpetry	n	moby_reverse
-trumpets	0	oewn-trumpets-n	Number=Sing	dema	0			oewn_form
-trumpets	1	oewn-trumpet-n	Number=Plur	dema	0			rule
+trumpets	0	oewn-trumpet-n	Number=Plur	dema	0			rule
+trumpets	1	oewn-trumpets-n	Number=Sing	dema	0			oewn_form
 trumpets	2	oewn-trumpet-v	Person=3+Tense=Pres	dema	0			rule
 trumpetweed	0		Number=Sing	dema	0	trumpetweed	n	moby_reverse
 trumpetweeds	0		Number=Plur	dema	0	trumpetweed	n	rule
@@ -16423,8 +16421,8 @@ trumscheit	0		Number=Sing	dema	0	trumscheit	n	moby_reverse
 trumscheits	0		Number=Plur	dema	0	trumscheit	n	rule
 truncate	0	oewn-truncate-v	VerbForm=Inf	dema	0			oewn_form
 truncate	1	oewn-truncate-a	Degree=Pos	dema	0			oewn_form
-truncated	0	oewn-truncated-a	Degree=Pos	dema	0			oewn_form
-truncated	1	oewn-truncate-v	Tense=Past+VerbForm=Part	dema	0			rule
+truncated	0	oewn-truncate-v	Tense=Past+VerbForm=Part	dema	0			rule
+truncated	1	oewn-truncated-a	Degree=Pos	dema	0			oewn_form
 truncated cone	0	oewn-truncated_cone-n	Number=Sing	dema	0			oewn_form
 truncated cones	0	oewn-truncated_cone-n	Number=Plur	dema	0			rule
 truncated pyramid	0	oewn-truncated_pyramid-n	Number=Sing	dema	0			oewn_form
@@ -16472,8 +16470,8 @@ trunkfishes	0	oewn-trunkfish-n	Number=Plur	dema	0			oewn_form
 trunkful	0		Number=Sing	dema	0	trunkful	n	moby_reverse
 trunkfuls	0		Number=Plur	dema	0	trunkful	n	rule
 trunkless	0		Degree=Pos	dema	0	trunkless	a	moby_reverse
-trunks	0	oewn-trunks-n	Number=Sing	dema	0			oewn_form
-trunks	1	oewn-trunk-n	Number=Plur	dema	0			rule
+trunks	0	oewn-trunk-n	Number=Plur	dema	0			rule
+trunks	1	oewn-trunks-n	Number=Sing	dema	0			oewn_form
 trunnel	0	oewn-trunnel-n	Number=Sing	dema	0			oewn_form
 trunnels	0	oewn-trunnel-n	Number=Plur	dema	0			rule
 trunnion	0		Number=Sing	dema	0	trunnion	n	moby_reverse
@@ -16484,14 +16482,14 @@ truss	0	oewn-truss-v	VerbForm=Inf	dema	0			oewn_form
 truss	1	oewn-truss-n	Number=Sing	dema	0			oewn_form
 truss bridge	0	oewn-truss_bridge-n	Number=Sing	dema	0			oewn_form
 truss bridges	0	oewn-truss_bridge-n	Number=Plur	dema	0			rule
-trussed	0	oewn-trussed-a	Degree=Pos	dema	0			oewn_form
-trussed	1	oewn-truss-v	Tense=Past+VerbForm=Part	dema	0			rule
+trussed	0	oewn-truss-v	Tense=Past+VerbForm=Part	dema	0			rule
+trussed	1	oewn-trussed-a	Degree=Pos	dema	0			oewn_form
 trusser	0		Number=Sing	dema	0	trusser	n	moby_reverse
 trussers	0		Number=Plur	dema	0	trusser	n	rule
 trusses	0	oewn-truss-v	Person=3+Tense=Pres	dema	0			rule
 trusses	1	oewn-truss-n	Number=Plur	dema	0			rule
-trussing	0		Number=Sing	dema	0	trussing	n	moby_reverse
-trussing	1	oewn-truss-v	VerbForm=Ger	dema	0			rule
+trussing	0	oewn-truss-v	VerbForm=Ger	dema	0			rule
+trussing	1		Number=Sing	dema	0	trussing	n	moby_reverse
 trussings	0		Number=Plur	dema	0	trussing	n	rule
 trust	0	oewn-trust-n	Number=Sing	dema	1			carried
 trust	1	oewn-trust-v	VerbForm=Inf	dema	1			carried
@@ -16578,8 +16576,8 @@ try square	0	oewn-try_square-n	Number=Sing	dema	0			oewn_form
 try squares	0	oewn-try_square-n	Number=Plur	dema	0			rule
 try-on	0	oewn-try-on-n	Number=Sing	dema	0			oewn_form
 try-ons	0	oewn-try-on-n	Number=Plur	dema	0			rule
-trying	0	oewn-trying-a	Degree=Pos	dema	0			oewn_form
-trying	1	oewn-try-v	VerbForm=Ger	dema	0			rule
+trying	0	oewn-try-v	VerbForm=Ger	dema	0			rule
+trying	1	oewn-trying-a	Degree=Pos	dema	0			oewn_form
 trying for	0	oewn-try_for-v	VerbForm=Ger	dema	0			rule
 trying on	0	oewn-trying_on-n	Number=Sing	dema	0			oewn_form
 trying on	1	oewn-try_on-v	VerbForm=Ger	dema	0			rule
@@ -17023,8 +17021,8 @@ tumbles	1	oewn-tumble-n	Number=Plur	dema	0			rule
 tumbles dry	0	oewn-tumble_dry-v	Person=3+Tense=Pres	dema	0			rule
 tumbleweed	0	oewn-tumbleweed-n	Number=Sing	dema	0			oewn_form
 tumbleweeds	0	oewn-tumbleweed-n	Number=Plur	dema	0			rule
-tumbling	0	oewn-tumbling-n	Number=Sing	dema	0			oewn_form
-tumbling	1	oewn-tumble-v	VerbForm=Ger	dema	0			rule
+tumbling	0	oewn-tumble-v	VerbForm=Ger	dema	0			rule
+tumbling	1	oewn-tumbling-n	Number=Sing	dema	0			oewn_form
 tumbling dry	0	oewn-tumble_dry-v	VerbForm=Ger	dema	0			rule
 tumblings	0	oewn-tumbling-n	Number=Plur	dema	0			rule
 tumbrel	0	oewn-tumbrel-n	Number=Sing	dema	0			oewn_form
@@ -18060,10 +18058,10 @@ twinkler	0	oewn-twinkler-n	Number=Sing	dema	0			oewn_form
 twinklers	0	oewn-twinkler-n	Number=Plur	dema	0			rule
 twinkles	0	oewn-twinkle-v	Person=3+Tense=Pres	dema	0			rule
 twinkles	1	oewn-twinkle-n	Number=Plur	dema	0			rule
-twinkling	0	oewn-twinkling-n	Number=Plur	dema	0			agid
-twinkling	1	oewn-twinkling-n	Number=Sing	dema	0			oewn_form
-twinkling	2	oewn-twinkle-v	VerbForm=Ger	dema	0			rule
-twinkling	3	oewn-twinkling-a	Degree=Pos	dema	0			oewn_form
+twinkling	0	oewn-twinkling-n	Number=Sing	dema	0			oewn_form
+twinkling	1	oewn-twinkle-v	VerbForm=Ger	dema	0			rule
+twinkling	2	oewn-twinkling-a	Degree=Pos	dema	0			oewn_form
+twinklings	0	oewn-twinkling-n	Number=Plur	dema	0			rule
 twinkly	0	oewn-twinkly-a	Degree=Pos	dema	0			oewn_form
 twinks	0		Person=3+Tense=Pres	dema	0	twink	v	rule
 twinned	0	oewn-twinned-a	Degree=Pos	dema	0			oewn_form
@@ -18148,8 +18146,8 @@ twitterer	0	oewn-twitterer-n	Number=Sing	dema	0			oewn_form
 twitterers	0	oewn-twitterer-n	Number=Plur	dema	0			rule
 twittering	0	oewn-twitter-v	VerbForm=Ger	dema	0			rule
 twitteringly	0		Degree=Pos	dema	0	twitteringly	r	moby_reverse
-twitters	0	oewn-twitter-n	Number=Plur	dema	0			rule
-twitters	1	oewn-twitter-v	Person=3+Tense=Pres	dema	0			rule
+twitters	0	oewn-twitter-v	Person=3+Tense=Pres	dema	0			rule
+twitters	1	oewn-twitter-n	Number=Plur	dema	0			rule
 twitterverse	0	oewn-twitterverse-n	Number=Sing	dema	0			oewn_form
 twitterverses	0	oewn-twitterverse-n	Number=Plur	dema	0			rule
 twittery	0		Degree=Pos	dema	0	twittery	a	moby_reverse
@@ -18395,9 +18393,9 @@ typesetter	0	oewn-typesetter-n	Number=Sing	dema	0			oewn_form
 typesetter's case	0	oewn-typesetter-ap-s_case-n	Number=Sing	dema	0			oewn_form
 typesetter's cases	0	oewn-typesetter-ap-s_case-n	Number=Plur	dema	0			rule
 typesetters	0	oewn-typesetter-n	Number=Plur	dema	0			rule
-typesetting	0		Number=Sing	dema	0	typesetting	n	moby_reverse
-typesetting	1		Degree=Pos	dema	0	typesetting	a	moby_reverse
-typesetting	2	oewn-typeset-v	VerbForm=Ger	dema	0			oewn_form
+typesetting	0	oewn-typeset-v	VerbForm=Ger	dema	0			oewn_form
+typesetting	1		Number=Sing	dema	0	typesetting	n	moby_reverse
+typesetting	2		Degree=Pos	dema	0	typesetting	a	moby_reverse
 typesetting machine	0	oewn-typesetting_machine-n	Number=Sing	dema	0			oewn_form
 typesetting machines	0	oewn-typesetting_machine-n	Number=Plur	dema	0			rule
 typesettings	0		Number=Plur	dema	0	typesetting	n	rule

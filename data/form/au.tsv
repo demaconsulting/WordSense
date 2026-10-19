@@ -522,9 +522,9 @@ auspicated	0	oewn-auspicate-v	Tense=Past+VerbForm=Part	dema	0			rule
 auspicates	0	oewn-auspicate-v	Person=3+Tense=Pres	dema	0			rule
 auspicating	0	oewn-auspicate-v	VerbForm=Ger	dema	0			rule
 auspice	0	oewn-auspice-n	Number=Sing	dema	0			oewn_form
-auspices	0	oewn-auspices-n	Number=Sing	dema	0			oewn_form
-auspices	1	oewn-auspex-n	Number=Plur	dema	0			oewn_form
-auspices	2	oewn-auspice-n	Number=Plur	dema	0			oewn_form
+auspices	0	oewn-auspex-n	Number=Plur	dema	0			oewn_form
+auspices	1	oewn-auspice-n	Number=Plur	dema	0			oewn_form
+auspices	2	oewn-auspices-n	Number=Sing	dema	0			oewn_form
 auspicial	0		Degree=Pos	dema	0	auspicial	a	moby_reverse
 auspicious	0	oewn-auspicious-a	Degree=Pos	dema	0			oewn_form
 auspiciously	0	oewn-auspiciously-r	Degree=Pos	dema	0			oewn_form
@@ -623,8 +623,8 @@ authorisable	0		Degree=Pos	dema	0	authorisable	a	moby_reverse
 authorisation	0	oewn-authorisation-n	Number=Sing	dema	0			oewn_form
 authorisations	0	oewn-authorisation-n	Number=Plur	dema	0			rule
 authorise	0	oewn-authorise-v	VerbForm=Inf	dema	0			oewn_form
-authorised	0	oewn-authorised-a	Degree=Pos	dema	0			oewn_form
-authorised	1	oewn-authorise-v	Tense=Past+VerbForm=Part	dema	0			rule
+authorised	0	oewn-authorise-v	Tense=Past+VerbForm=Part	dema	0			rule
+authorised	1	oewn-authorised-a	Degree=Pos	dema	0			oewn_form
 authoriser	0	oewn-authoriser-n	Number=Sing	dema	0			oewn_form
 authorisers	0	oewn-authoriser-n	Number=Plur	dema	0			rule
 authorises	0	oewn-authorise-v	Person=3+Tense=Pres	dema	0			rule
@@ -651,8 +651,8 @@ authorizable	0		Degree=Pos	dema	0	authorizable	a	moby_reverse
 authorization	0	oewn-authorization-n	Number=Sing	dema	0			oewn_form
 authorizations	0	oewn-authorization-n	Number=Plur	dema	0			rule
 authorize	0	oewn-authorize-v	VerbForm=Inf	dema	0			oewn_form
-authorized	0	oewn-authorized-a	Degree=Pos	dema	0			oewn_form
-authorized	1	oewn-authorize-v	Tense=Past+VerbForm=Part	dema	0			rule
+authorized	0	oewn-authorize-v	Tense=Past+VerbForm=Part	dema	0			rule
+authorized	1	oewn-authorized-a	Degree=Pos	dema	0			oewn_form
 authorized shares	0	oewn-authorized_shares-n	Number=Sing	dema	0			oewn_form
 authorized stock	0	oewn-authorized_stock-n	Number=Sing	dema	0			oewn_form
 authorized stocks	0	oewn-authorized_stock-n	Number=Plur	dema	0			rule

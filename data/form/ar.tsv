@@ -892,8 +892,8 @@ archival	0	oewn-archival-a	Degree=Pos	dema	0			oewn_form
 archive	0	oewn-archive-n	Number=Sing	dema	0			oewn_form
 archive	1	oewn-archive-v	VerbForm=Inf	dema	0			oewn_form
 archived	0	oewn-archive-v	Tense=Past+VerbForm=Part	dema	0			rule
-archives	0	oewn-archives-n	Number=Sing	dema	0			oewn_form
-archives	1	oewn-archive-n	Number=Plur	dema	0			rule
+archives	0	oewn-archive-n	Number=Plur	dema	0			rule
+archives	1	oewn-archives-n	Number=Sing	dema	0			oewn_form
 archives	2	oewn-archive-v	Person=3+Tense=Pres	dema	0			rule
 archiving	0	oewn-archive-v	VerbForm=Ger	dema	0			rule
 archivist	0	oewn-archivist-n	Number=Sing	dema	0			oewn_form
@@ -1165,8 +1165,8 @@ argufiers	0		Number=Plur	dema	0	argufier	n	rule
 argufies	0	oewn-argufy-v	Person=3+Tense=Pres	dema	0			rule
 argufy	0	oewn-argufy-v	VerbForm=Inf	dema	0			oewn_form
 argufying	0	oewn-argufy-v	VerbForm=Ger	dema	0			rule
-arguing	0	oewn-arguing-n	Number=Sing	dema	0			oewn_form
-arguing	1	oewn-argue-v	VerbForm=Ger	dema	0			rule
+arguing	0	oewn-argue-v	VerbForm=Ger	dema	0			rule
+arguing	1	oewn-arguing-n	Number=Sing	dema	0			oewn_form
 arguings	0	oewn-arguing-n	Number=Plur	dema	0			rule
 argument	0	oewn-argument-n	Number=Sing	dema	0			oewn_form
 argumentation	0	oewn-argumentation-n	Number=Sing	dema	0			oewn_form
@@ -1609,8 +1609,8 @@ arrangements	0	oewn-arrangement-n	Number=Plur	dema	0			rule
 arranger	0	oewn-arranger-n	Number=Sing	dema	0			oewn_form
 arrangers	0	oewn-arranger-n	Number=Plur	dema	0			rule
 arranges	0	oewn-arrange-v	Person=3+Tense=Pres	dema	0			rule
-arranging	0	oewn-arranging-n	Number=Sing	dema	0			oewn_form
-arranging	1	oewn-arrange-v	VerbForm=Ger	dema	0			rule
+arranging	0	oewn-arrange-v	VerbForm=Ger	dema	0			rule
+arranging	1	oewn-arranging-n	Number=Sing	dema	0			oewn_form
 arrangings	0	oewn-arranging-n	Number=Plur	dema	0			rule
 arrant	0	oewn-arrant-a	Degree=Pos	dema	0			oewn_form
 arrantly	0		Degree=Pos	dema	0	arrantly	r	moby_reverse
@@ -2313,8 +2313,8 @@ artophorion	0		Number=Sing	dema	0	artophorion	n	moby_reverse
 artophorions	0		Number=Plur	dema	0	artophorion	n	rule
 artotype	0		Number=Sing	dema	0	artotype	n	moby_reverse
 artotypes	0		Number=Plur	dema	0	artotype	n	rule
-arts	0	oewn-arts-n	Number=Sing	dema	0			oewn_form
-arts	1	oewn-art-n	Number=Plur	dema	0			rule
+arts	0	oewn-art-n	Number=Plur	dema	0			rule
+arts	1	oewn-arts-n	Number=Sing	dema	0			oewn_form
 arts and crafts	0	oewn-arts_and_crafts-n	Number=Sing	dema	0			oewn_form
 artsy-craftsy	0	oewn-artsy-craftsy-a	Degree=Pos	dema	0			oewn_form
 artwork	0	oewn-artwork-n	Number=Sing	dema	0			oewn_form

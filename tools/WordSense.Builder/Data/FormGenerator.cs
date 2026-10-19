@@ -49,6 +49,7 @@ internal static partial class FormGenerator
 {
     private const string Pos = "nvarupcidx";
     private const string ClosedPos = "upcidx";
+    private const string LegacyFile = "form-frozen.tsv";
     private const string LexiconLetters = "NRVJBPCIDA";
     private const string LexiconPos = "nuvarpcidx";
 
@@ -57,6 +58,9 @@ internal static partial class FormGenerator
         ["hand", "irregular_list", "contraction", "oewn_form", "carried", "rule", "agid", "rule_variant", "moby_reverse", "llm"];
 
     private sealed record Old(string Spelling, int Rank, string EntryId, string Features, string Source, string Reviewed, string Provenance);
+
+    // The committed legacy analyses: the frozen rows with their sense scopes, the closed-class rows and the two flags of a spelling
+    private sealed record Legacy(List<Old> Frozen, List<Old> Closed, List<string[]> Scopes, HashSet<string> Open, HashSet<string> ClosedOnly);
 
     // Auto: the item is a plain regular inflection (or a primary listed form) of a real lemma, which the rule and the lemma attest together
     private sealed record Item(string Spelling, string? EntryId, string? Lemma, string? PosLetter, string Features, string Provenance, string Reviewed, bool Twin = false, bool Auto = false);
@@ -71,8 +75,11 @@ internal static partial class FormGenerator
 
         public HashSet<string> FrozenSpellings { get; } = new(StringComparer.Ordinal);
 
-        /// <summary>Gets the spellings that lost a frozen analysis because no rule or list derives it.</summary>
-        public HashSet<string> DroppedFrozen { get; } = new(StringComparer.Ordinal);
+        /// <summary>Gets the spellings that also take the corroborated generated analyses of other entries.</summary>
+        public HashSet<string> OpenSpellings { get; } = new(StringComparer.Ordinal);
+
+        /// <summary>Gets the spellings that keep closed-class analyses only.</summary>
+        public HashSet<string> ClosedOnly { get; } = new(StringComparer.Ordinal);
 
         /// <summary>Gets the entries of the frozen analyses of each frozen spelling.</summary>
         public Dictionary<string, HashSet<string>> FrozenEntries { get; } = new(StringComparer.Ordinal);
@@ -93,9 +100,6 @@ internal static partial class FormGenerator
 
         public Dictionary<string, HashSet<string>> Attested { get; set; } = new(StringComparer.Ordinal);
 
-        /// <summary>Gets the (form, lemma) pairs that the labelled anchor sentences use.</summary>
-        public HashSet<(string, string)> Labelled { get; } = [];
-
         // A form of the hand or closed irregular lists that the reviewed analyses of the same entry lack (beat and cast as a past beside the
         // reviewed infinitive): the list is a source of the form, and the reviewed rows are kept as they are beside it
         private bool MissesListedForm(Item item, string entryId) =>
@@ -115,7 +119,7 @@ internal static partial class FormGenerator
                 // the irregular lists (the plural lives of life, the past lay of lie) are kept the same way: a reviewed analysis of another
                 // entry must not hide them. Other reviewed spellings stay exactly as they were reviewed (bowed is only the bend verb).
                 if (item.EntryId is { } entryId && (!(FrozenEntries.TryGetValue(item.Spelling, out var have) && have.Contains(entryId)) || MissesListedForm(item, entryId))
-                    && ((DroppedFrozen.Contains(item.Spelling) && IsInflected(item) && Corroborated(this, item))
+                    && ((OpenSpellings.Contains(item.Spelling) && IsInflected(item) && Corroborated(this, item))
                         || (!IsInflected(item) && item.Spelling.EndsWith("ing", StringComparison.Ordinal) && string.Equals(Entries[entryId][1], item.Spelling, StringComparison.OrdinalIgnoreCase))
                         || item.Provenance is "hand" or "irregular_list"))
                 {
@@ -143,23 +147,29 @@ internal static partial class FormGenerator
     }
 
     /// <summary>
-    ///     Regenerates the form tables of a data folder and the entries they need.
+    ///     Regenerates the entry, form and form_sense_scope tables from the entries, the committed legacy analyses
+    ///     (<c>form-frozen.tsv</c>) and the pinned sources; the output depends on nothing else, so the same inputs give the same
+    ///     bytes.
     /// </summary>
-    /// <param name="data">The data directory; the entry, form and form_sense_scope tables are replaced.</param>
+    /// <param name="data">The data directory with the schema and the entry, sense and class_entry tables that are read.</param>
     /// <param name="corpus">The corpus directory with the dictionary and the source lists.</param>
-    /// <param name="oewn">The Open English WordNet file with the written forms, or null for none.</param>
-    /// <param name="overwrite">True to regenerate tables that already carry the provenance column.</param>
-    /// <param name="agid">The inflection database file <c>infl.txt</c> that corroborates generated forms, or null for none.</param>
+    /// <param name="oewn">The Open English WordNet file with the written forms; its SHA-256 must match the pin.</param>
+    /// <param name="agid">The inflection database file <c>infl.txt</c> that corroborates generated forms; its SHA-256 must match the pin.</param>
+    /// <param name="output">The directory that receives the entry, form and form_sense_scope tables, or null for the data directory.</param>
+    /// <param name="oewnSha256">The expected SHA-256 of the written-forms file, or null to skip the check (tests only).</param>
+    /// <param name="agidSha256">The expected SHA-256 of the inflection database file, or null to skip the check (tests only).</param>
     /// <returns>The counts.</returns>
-    /// <exception cref="InvalidDataException">Thrown when the tables are inconsistent or already regenerated and <paramref name="overwrite"/> is false.</exception>
-    public static FormGeneratorResult Run(string data, string corpus, string? oewn, bool overwrite, string? agid = null)
+    /// <exception cref="InvalidDataException">Thrown when an input is missing, does not match its pin or is inconsistent.</exception>
+    public static FormGeneratorResult Run(string data, string corpus, string oewn, string agid, string? output = null, string? oewnSha256 = OewnImporter.PinnedSha256, string? agidSha256 = AgidImporter.PinnedSha256)
     {
         var schema = DataSchema.Load(Path.Combine(data, "schema.yaml"));
         var formTable = schema.Table("form");
         var context = new Context();
-        context.Attested = agid is null ? [] : AgidImporter.ReadAttested(agid);
-        var oldForms = ReadOld(data, schema, overwrite);
-        var scopes = DataTables.Read(data, schema.Table("form_sense_scope")).ToList();
+        context.Attested = AgidImporter.ReadAttested(agid, agidSha256);
+        var legacy = ReadLegacy(Path.Combine(corpus, "lexicon", LegacyFile));
+        var scopes = legacy.Scopes;
+        context.OpenSpellings.UnionWith(legacy.Open);
+        context.ClosedOnly.UnionWith(legacy.ClosedOnly);
         foreach (var row in DataTables.Read(data, schema.Table("entry")))
         {
             context.Entries[row[0]] = row;
@@ -171,7 +181,6 @@ internal static partial class FormGenerator
         }
 
         var classEntries = DataTables.Read(data, schema.Table("class_entry")).Select(r => r[1]).ToHashSet(StringComparer.Ordinal);
-        var scoped = scopes.Select(r => r[0]).ToHashSet(StringComparer.Ordinal);
         var sources = IrregularSources.Read(Path.Combine(corpus, "lexicon"));
         var correctionsPath = Path.Combine(corpus, "lexicon", "form-corrections.tsv");
         if (File.Exists(correctionsPath))
@@ -196,57 +205,11 @@ internal static partial class FormGenerator
                 Path.Combine(corpus, "lexicon", LexiconSource.AdditionsFile))
             .ToDictionary(w => w.Word, w => w.Letters.Select(l => LexiconPos[LexiconLetters.IndexOf(l, StringComparison.Ordinal)].ToString()).Distinct().ToArray(), StringComparer.Ordinal);
         context.Moby = moby;
-        var written = oewn is null ? [] : OewnImporter.ReadForms(oewn);
-        var formsDirectory = Path.Combine(corpus, "forms");
-        if (Directory.Exists(formsDirectory))
-        {
-            foreach (var (form, lemma, _) in Directory.GetFiles(formsDirectory, "*.tsv").SelectMany(Corpus.ReadForms))
-            {
-                context.Labelled.Add((form.ToLowerInvariant(), lemma.ToLowerInvariant()));
-            }
-        }
+        var written = OewnImporter.ReadForms(oewn, oewnSha256);
 
-        // Frozen rows: the reviewed and scoped analyses stay exactly as they are, except an inflected analysis that no rule or
-        // list derives for its entry (the old plural of an -ing noun, checking as the plural of check): it is dropped and the
-        // spelling is generated like any other
-        var reviewed = oldForms.Where(f => f.Reviewed == "1" && f.Provenance is "" or "carried" || scoped.Contains(f.Spelling)).ToList();
-        var kept = new List<(Old Row, int Original, int Order)>();
-        foreach (var f in reviewed)
-        {
-            if (Derivable(context, sources, written, f))
-            {
-                kept.Add((MergePastParticiple(context, sources, reviewed, f), f.Rank, f.Rank));
-            }
-            else if (GerundNoun(context, f) is { } gerund)
-            {
-                // The anchor sentences use the -ing form as a noun of the verb's lemma (the walking, a failing); it is a gerund
-                // noun, not a plural, and it follows the verb analysis
-                kept.Add((f with { Features = gerund }, f.Rank, f.Rank + 1000));
-                context.DroppedFrozen.Add(f.Spelling);
-            }
-            else
-            {
-                context.DroppedFrozen.Add(f.Spelling);
-            }
-        }
-
-        context.Stats["frozen_inflections_dropped_not_derivable"] = reviewed.Count - kept.Count;
-
-        // The remaining analyses of a spelling are renumbered and the sense scopes follow them
-        var newRank = new Dictionary<(string, int), int>();
-        var frozen = new List<Old>();
-        foreach (var group in kept.GroupBy(k => k.Row.Spelling, StringComparer.Ordinal))
-        {
-            var next = 0;
-            foreach (var k in group.OrderBy(k => k.Order))
-            {
-                newRank[(k.Row.Spelling, k.Original)] = next;
-                frozen.Add(k.Row with { Rank = next++ });
-            }
-        }
-
-        scopes = scopes.Where(s => !scoped.Contains(s[0]) || newRank.ContainsKey((s[0], int.Parse(s[1], CultureInfo.InvariantCulture))))
-            .Select(s => scoped.Contains(s[0]) ? new[] { s[0], newRank[(s[0], int.Parse(s[1], CultureInfo.InvariantCulture))].ToString(CultureInfo.InvariantCulture), s[2] } : s).ToList();
+        // Frozen rows: the committed legacy analyses stay exactly as they are; the generated analyses of other entries follow them
+        // where the legacy row marks the spelling open
+        var frozen = legacy.Frozen;
         foreach (var f in frozen)
         {
             context.FrozenSpellings.Add(f.Spelling);
@@ -328,23 +291,7 @@ internal static partial class FormGenerator
         }
 
         // The old analyses of closed-class entries stay unless the spelling already has an analysis of that part of speech
-        var oldRank = new Dictionary<string, List<(string Lemma, string Pos, int Rank)>>(StringComparer.Ordinal);
-        foreach (var f in oldForms)
-        {
-            if (!context.Entries.TryGetValue(f.EntryId, out var e))
-            {
-                continue;
-            }
-
-            if (!oldRank.TryGetValue(f.Spelling, out var ranks))
-            {
-                oldRank[f.Spelling] = ranks = [];
-            }
-
-            ranks.Add((e[1], e[2], f.Rank));
-        }
-
-        foreach (var f in oldForms)
+        foreach (var f in legacy.Closed)
         {
             if (frozenSpellings.Contains(f.Spelling) || !context.Entries.TryGetValue(f.EntryId, out var e) || !ClosedPos.Contains(e[2], StringComparison.Ordinal))
             {
@@ -363,7 +310,7 @@ internal static partial class FormGenerator
         Prune(context);
         ClassifyMoby(context, moby, byLemma, overridden, ReadAdded(Path.Combine(corpus, "lexicon", LexiconSource.AdditionsFile)), sources);
         Prune(context);
-        var result = Write(data, schema, formTable, context, frozen, scopes, oldRank, keep);
+        var result = Write(output ?? data, schema, formTable, context, frozen, scopes, keep);
         return result;
     }
 
@@ -460,162 +407,58 @@ internal static partial class FormGenerator
         return 1;
     }
 
-    // The features of the gerund noun that an old plural analysis of an -ing form stands for, or null when it is another row
-    private static string? GerundNoun(Context context, Old f)
+    private static Legacy ReadLegacy(string path)
     {
-        if (f.Features != "Number=Plur" || f.EntryId.Length == 0 || !f.Spelling.EndsWith("ing", StringComparison.Ordinal)
-            || !context.Entries.TryGetValue(f.EntryId, out var e) || e[2] != "n" || e[4] != "1" || !WordShape().IsMatch(e[1]))
+        if (!File.Exists(path))
         {
-            return null;
+            throw new InvalidDataException($"The legacy analyses {path} are missing.");
         }
 
-        var verb = InflectionRules.VerbRegular(e[1], w => context.Moby.ContainsKey(w));
-        return verb.Gerund.Concat(verb.GerundAlternative).Contains(f.Spelling, StringComparer.Ordinal) && context.Moby.TryGetValue(e[1], out var letters) && letters.Contains("v") ? "Number=Sing+VerbForm=Ger" : null;
-    }
-
-    // The features that the hand and closed irregular lists give a spelling as a form of a verb, or null when they do not list it
-    // as a past or a participle; the old table left some reviewed analyses of an irregular form without any features (bent, broke)
-    private static string? ListedPastFeatures(IrregularSources sources, string lemma, string spelling)
-    {
-        var past = false;
-        var part = false;
-        foreach (var list in new[] { sources.Hand, sources.Closed })
+        var frozen = new List<Old>();
+        var closed = new List<Old>();
+        var scopes = new List<string[]>();
+        var open = new HashSet<string>(StringComparer.Ordinal);
+        var closedOnly = new HashSet<string>(StringComparer.Ordinal);
+        var lineNumber = 0;
+        foreach (var line in File.ReadAllLines(path, Encoding.UTF8))
         {
-            if (list.TryGetValue((lemma, "v"), out var kinds))
+            lineNumber++;
+            if (line.Length == 0 || line[0] == '#')
             {
-                past |= kinds.Past.Any(x => x.Form == spelling);
-                part |= kinds.Participle.Any(x => x.Form == spelling);
+                continue;
+            }
+
+            var c = line.Split('\t');
+            if (c.Length != 9 || c[0] is not ("frozen" or "closed"))
+            {
+                throw new InvalidDataException($"{path}:{lineNumber}: a legacy analysis has 9 columns and the kind frozen or closed");
+            }
+
+            if (c[0] == "closed")
+            {
+                closed.Add(new Old(c[1], 0, c[3], c[4], c[5], c[6], string.Empty));
+                if (c[7] == "only")
+                {
+                    closedOnly.Add(c[1]);
+                }
+
+                continue;
+            }
+
+            var rank = int.Parse(c[2], CultureInfo.InvariantCulture);
+            frozen.Add(new Old(c[1], rank, c[3], c[4], c[5], c[6], string.Empty));
+            if (c[7] == "open")
+            {
+                open.Add(c[1]);
+            }
+
+            foreach (var scope in c[8].Split(' ', StringSplitOptions.RemoveEmptyEntries))
+            {
+                scopes.Add([c[1], c[2], scope]);
             }
         }
 
-        return (past, part) switch
-        {
-            (true, true) => "Tense=Past+VerbForm=Part",
-            (true, false) => "Tense=Past",
-            (false, true) => "VerbForm=Part",
-            _ => null,
-        };
-    }
-
-    // A reviewed -ed past of a regular verb is both the past tense and the participle, like the generated rows: the old
-    // table named only the tense, so the row takes the merged features unless the reviewed rows already carry a separate participle
-    private static Old MergePastParticiple(Context context, IrregularSources sources, List<Old> reviewed, Old f)
-    {
-        if (f.Features.Length == 0 && context.Entries.TryGetValue(f.EntryId, out var owner) && owner[2] == "v")
-        {
-            return f with { Features = ListedPastFeatures(sources, owner[1].ToLowerInvariant(), f.Spelling.ToLowerInvariant()) ?? f.Features };
-        }
-
-        if (f.Features == "Tense=Past" && context.Entries.TryGetValue(f.EntryId, out var listed) && listed[2] == "v"
-            && ListedPastFeatures(sources, listed[1].ToLowerInvariant(), f.Spelling.ToLowerInvariant()) == "Tense=Past+VerbForm=Part"
-            && !reviewed.Any(r => r.EntryId == f.EntryId && r.Spelling == f.Spelling && r.Features.Contains("VerbForm=Part", StringComparison.Ordinal)))
-        {
-            return f with { Features = "Tense=Past+VerbForm=Part" };
-        }
-
-        if (f.Features != "Tense=Past" || !context.Entries.TryGetValue(f.EntryId, out var e) || e[2] != "v" || !WordShape().IsMatch(e[1].ToLowerInvariant()))
-        {
-            return f;
-        }
-
-        var verb = InflectionRules.VerbRegular(e[1].ToLowerInvariant(), w => context.Moby.ContainsKey(w));
-        var spelling = f.Spelling.ToLowerInvariant();
-        if (!verb.Past.Concat(verb.PastAlternative).Contains(spelling, StringComparer.Ordinal)
-            || reviewed.Any(r => r.EntryId == f.EntryId && r.Spelling == f.Spelling && r.Features.Contains("VerbForm=Part", StringComparison.Ordinal)))
-        {
-            return f;
-        }
-
-        return f with { Features = "Tense=Past+VerbForm=Part" };
-    }
-
-    // Tells whether an old inflected analysis is one that a rule, a written form or a list derives for its entry
-    private static bool Derivable(Context context, IrregularSources sources, Dictionary<string, List<string>> written, Old f)
-    {
-        var features = f.Features.Split('+');
-        var featureless = f.Features.Length == 0 && f.EntryId.Length > 0 && context.Entries.TryGetValue(f.EntryId, out var owner) && !string.Equals(owner[1], f.Spelling, StringComparison.OrdinalIgnoreCase)
-            && owner[4] == "1" && !(written.TryGetValue(owner[0], out var ownerForms) && ownerForms.Contains(f.Spelling, StringComparer.OrdinalIgnoreCase))
-            && !context.Labelled.Contains((f.Spelling.ToLowerInvariant(), owner[1].ToLowerInvariant()));
-        if (featureless)
-        {
-            return false;
-        }
-
-        if (f.EntryId.Length == 0 || !features.Any(x => InflectedFeatures.Contains(x, StringComparer.Ordinal)) || features.Any(x => x.StartsWith("Capitalization=", StringComparison.Ordinal))
-            || !context.Entries.TryGetValue(f.EntryId, out var e) || e[4] != "1" || !WordShape().IsMatch(e[1].ToLowerInvariant()))
-        {
-            return true;
-        }
-
-        var low = e[1].ToLowerInvariant();
-        var pos = e[2];
-        var spelling = f.Spelling.ToLowerInvariant();
-        if (written.TryGetValue(e[0], out var forms) && forms.Any(x => string.Equals(x, f.Spelling, StringComparison.OrdinalIgnoreCase)))
-        {
-            return true;
-        }
-
-        if (context.Attested.TryGetValue(spelling, out var lemmas) && lemmas.Contains(low + "/" + pos))
-        {
-            return true;
-        }
-
-        var lookup = (low, pos);
-        string prefix = string.Empty;
-        if (pos == "v" && !sources.Closed.ContainsKey(lookup) && Prefixed(low, sources, PrefixAttested(context, low)) is { } p)
-        {
-            prefix = p.Prefix;
-            lookup = (p.Base, pos);
-        }
-
-        foreach (var list in new[] { sources.Hand, sources.Closed })
-        {
-            if (list.TryGetValue(lookup, out var kinds) && kinds.All().Any(x => string.Equals(prefix + x, spelling, StringComparison.Ordinal)))
-            {
-                return true;
-            }
-        }
-
-        var head = low;
-        var regularVerb = pos == "v" ? InflectionRules.VerbRegular(head, w => context.Moby.ContainsKey(w)) : null;
-        // Only the primary spelling of a rule stands alone; an alternative spelling or a degree form needs the dictionary
-        IEnumerable<string> expected = pos switch
-        {
-            "n" => SanePlural(head) ? [InflectionRules.NounPlural(head)[0]] : [],
-            "v" => [InflectionRules.VerbThirdPerson(head), regularVerb!.Past[0], regularVerb.Gerund[0]],
-            _ => [],
-        };
-        return expected.Contains(spelling, StringComparer.Ordinal) || (context.Moby.ContainsKey(spelling) && Alternatives(head, pos).Contains(spelling, StringComparer.Ordinal));
-    }
-
-    // Every spelling the rules offer for a word: the primary forms, the alternative spellings and the degree forms
-    private static IEnumerable<string> Alternatives(string head, string pos)
-    {
-        switch (pos)
-        {
-            case "n":
-                return InflectionRules.NounPlural(head);
-            case "v":
-                var verb = InflectionRules.VerbRegular(head, _ => true);
-                return [.. verb.Past, .. verb.PastAlternative, .. verb.Gerund, .. verb.GerundAlternative];
-            case "a" or "r":
-                return InflectionRules.AdjectiveDegrees(head) is { } d ? [d.Comparative, d.Superlative] : [];
-            default:
-                return [];
-        }
-    }
-
-    private static List<Old> ReadOld(string data, DataSchema schema, bool overwrite)
-    {
-        var table = schema.Table("form");
-        var rows = DataTables.Read(data, table).ToList();
-        var hasProvenance = rows.Count > 0 && rows[0].Length >= 9;
-        if (hasProvenance && !overwrite)
-        {
-            throw new InvalidDataException("The form table already carries the provenance column; the committed data is authoritative. Use --overwrite true to regenerate it.");
-        }
-
-        return rows.Select(r => new Old(r[0], int.Parse(r[1], CultureInfo.InvariantCulture), r[2], r[3], r[4], r[5], r.Length >= 9 ? r[8] : string.Empty)).ToList();
+        return new Legacy(frozen, closed, scopes, open, closedOnly);
     }
 
     private static string Cap(string lemma)
@@ -731,6 +574,14 @@ internal static partial class FormGenerator
                 return formToken.EndsWith("er", StringComparison.Ordinal) ? ["Cmp"] : [];
         }
     }
+
+    // The inflection database files an -ing noun that is a mass noun or a gerund noun with the plural spelled like the singular (bowling,
+    // sibling, feeling): that is not a plural, and the regular plural (bowlings) is generated by the rule instead. The fish and offspring
+    // names whose plural is the singular stay.
+    private static readonly HashSet<string> InvariantIngPlurals = new(["herring", "offspring", "ling", "whiting"], StringComparer.Ordinal);
+
+    private static bool IsIngMassPlural(string lemma, string plural) =>
+        lemma.EndsWith("ing", StringComparison.Ordinal) && string.Equals(lemma, plural, StringComparison.Ordinal) && !InvariantIngPlurals.Contains(lemma);
 
     private static void Generate(Context context, string[] entry, IrregularSources sources, Dictionary<string, List<string>> written, Dictionary<string, string[]> moby)
     {
@@ -871,7 +722,9 @@ internal static partial class FormGenerator
             var fromAgid = false;
             if (top.Count == 0 && listsApply)
             {
-                var agidForms = Listed(agid, rule).Select(f => (Inflect(entry, [f.Form])[0], f.Level == "0" ? "agid" : "rule_variant")).ToList();
+                var agidForms = Listed(agid, rule)
+                    .Where(f => !(kind == "Plur" && IsIngMassPlural(low, f.Form)))
+                    .Select(f => (Inflect(entry, [f.Form])[0], f.Level == "0" ? "agid" : "rule_variant")).ToList();
                 fromAgid = agidForms.Count > 0;
                 top.AddRange(agidForms);
             }
@@ -1334,7 +1187,6 @@ internal static partial class FormGenerator
         Context context,
         List<Old> frozen,
         List<string[]> scopes,
-        Dictionary<string, List<(string Lemma, string Pos, int Rank)>> oldRank,
         HashSet<string> keep)
     {
         var rows = new List<string[]>();
@@ -1377,23 +1229,26 @@ internal static partial class FormGenerator
                 .Where(i => !(spelling.Length == 1 && closedClass && !ClosedPos.Contains(PosOf(context, i), StringComparison.Ordinal) && !string.Equals(LemmaOf(context, i), spelling, StringComparison.OrdinalIgnoreCase)))
                 .GroupBy(i => (i.EntryId ?? string.Empty, i.Lemma ?? string.Empty, i.PosLetter ?? string.Empty, i.Features))
                 .Select(g => g.OrderBy(i => Array.IndexOf(ProvenanceOrder, i.Provenance)).First()).ToList();
-            oldRank.TryGetValue(spelling, out var ranks);
 
-            // A word that the old table held with closed-class analyses only (the, a, alas) keeps no open-class analysis
-            if (ranks is { Count: > 0 } && ranks.All(r => ClosedPos.Contains(r.Pos, StringComparison.Ordinal)) && unique.Any(i => ClosedPos.Contains(PosOf(context, i), StringComparison.Ordinal)))
+            // A word that the legacy table held with closed-class analyses only (the, a, alas) keeps no open-class analysis
+            if (context.ClosedOnly.Contains(spelling) && unique.Any(i => ClosedPos.Contains(PosOf(context, i), StringComparison.Ordinal)))
             {
-                unique = unique.Where(i => ClosedPos.Contains(PosOf(context, i), StringComparison.Ordinal) || i.Provenance is "hand" or "irregular_list").ToList();
+                // The dictionary listing of the word itself stays (a part of speech that the word list gives is never lost)
+                var listed = context.Moby.TryGetValue(spelling.ToLowerInvariant(), out var letters) ? letters : [];
+                unique = unique.Where(i => ClosedPos.Contains(PosOf(context, i), StringComparison.Ordinal) || i.Provenance is "hand" or "irregular_list"
+                    || (i.Provenance is "moby_reverse" && Array.IndexOf(listed, PosOf(context, i)) >= 0) || i.Provenance is "agid").ToList();
             }
 
+            // The frequency prior of an analysis is the place of its part of speech in the dictionary listing of its lemma (most
+            // frequent first); an analysis the dictionary does not list for the lemma follows
             int RankOf(Item i)
             {
-                var lemma = i.EntryId is { } id ? context.Entries[id][1] : i.Lemma!;
-                var pos = PosOf(context, i);
-                var matches = ranks?.Where(r => r.Lemma == lemma && r.Pos == pos).Select(r => r.Rank).ToList();
-                return matches is { Count: > 0 } ? matches.Min() : int.MaxValue;
+                var lemma = (i.EntryId is { } id ? context.Entries[id][1] : i.Lemma!).ToLowerInvariant();
+                var index = context.Moby.TryGetValue(lemma, out var letters) ? Array.IndexOf(letters, PosOf(context, i)) : -1;
+                return index < 0 ? int.MaxValue : index;
             }
 
-            // The listed irregular analyses (hand and closed lists) lead, then the analyses that the old table had, then the rest
+            // The listed irregular analyses (hand and closed lists) lead, then the dictionary order of the parts of speech, then the rest
             var own = unique
                 .OrderBy(i => ListRank(context, i))
                 .ThenBy(RankOf)

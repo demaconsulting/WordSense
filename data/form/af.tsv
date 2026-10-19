@@ -170,14 +170,14 @@ affaire	0	oewn-affaire-n	Number=Sing	dema	0			oewn_form
 affaire d'honneur	0	oewn-affaire_d-ap-honneur-n	Number=Sing	dema	0			oewn_form
 affaire d'honneurs	0	oewn-affaire_d-ap-honneur-n	Number=Plur	dema	0			rule
 affaires	0	oewn-affaire-n	Number=Plur	dema	0			rule
-affairs	0	oewn-affairs-n	Number=Sing	dema	0			oewn_form
-affairs	1	oewn-affair-n	Number=Plur	dema	0			rule
+affairs	0	oewn-affair-n	Number=Plur	dema	0			rule
+affairs	1	oewn-affairs-n	Number=Sing	dema	0			oewn_form
 affect	0	oewn-affect-n	Number=Sing	dema	1			carried
 affect	1	oewn-affect-v	VerbForm=Inf	dema	1			carried
 affectation	0	oewn-affectation-n	Number=Sing	dema	0			oewn_form
 affectations	0	oewn-affectation-n	Number=Plur	dema	0			rule
-affected	0	oewn-affected-a	Degree=Pos	dema	0			oewn_form
-affected	1	oewn-affect-v	Tense=Past+VerbForm=Part	dema	0			rule
+affected	0	oewn-affect-v	Tense=Past+VerbForm=Part	dema	0			rule
+affected	1	oewn-affected-a	Degree=Pos	dema	0			oewn_form
 affected role	0	oewn-affected_role-n	Number=Sing	dema	0			oewn_form
 affected roles	0	oewn-affected_role-n	Number=Plur	dema	0			rule
 affectedly	0	oewn-affectedly-r	Degree=Pos	dema	0			oewn_form
@@ -185,8 +185,8 @@ affectedness	0	oewn-affectedness-n	Number=Sing	dema	0			oewn_form
 affectednesses	0	oewn-affectedness-n	Number=Plur	dema	0			rule
 affecter	0		Number=Sing	dema	0	affecter	n	moby_reverse
 affecters	0		Number=Plur	dema	0	affecter	n	rule
-affecting	0	oewn-affecting-a	Degree=Pos	dema	0			oewn_form
-affecting	1	oewn-affect-v	VerbForm=Ger	dema	0			rule
+affecting	0	oewn-affect-v	VerbForm=Ger	dema	0			rule
+affecting	1	oewn-affecting-a	Degree=Pos	dema	0			oewn_form
 affectingly	0	oewn-affectingly-r	Degree=Pos	dema	0			oewn_form
 affection	0	oewn-affection-n	Number=Sing	dema	0			oewn_form
 affectional	0	oewn-affectional-a	Degree=Pos	dema	0			oewn_form
@@ -220,8 +220,8 @@ affettuoso	0		Degree=Pos	dema	0	affettuoso	a	moby_reverse
 affettuoso	1		Degree=Pos	dema	0	affettuoso	r	moby_reverse
 affiance	0	oewn-affiance-v	VerbForm=Inf	dema	0			oewn_form
 affiance	1		Number=Sing	dema	0	affiance	n	moby_reverse
-affianced	0		Degree=Pos	dema	0	affianced	a	moby_reverse
-affianced	1	oewn-affiance-v	Tense=Past+VerbForm=Part	dema	0			rule
+affianced	0	oewn-affiance-v	Tense=Past+VerbForm=Part	dema	0			rule
+affianced	1		Degree=Pos	dema	0	affianced	a	moby_reverse
 affiances	0	oewn-affiance-v	Person=3+Tense=Pres	dema	0			rule
 affiancing	0	oewn-affiance-v	VerbForm=Ger	dema	0			rule
 affiant	0	oewn-affiant-n	Number=Sing	dema	0			oewn_form
@@ -437,10 +437,10 @@ afrormosias	0		Number=Plur	dema	0	afrormosia	n	rule
 aft	0	oewn-aft-r	Degree=Pos	dema	0			oewn_form
 aft	1	oewn-aft-a	Degree=Pos	dema	0			oewn_form
 after	0	dema-after-p		dema	0			carried
-after	1	oewn-after-r	Degree=Pos	dema	0			oewn_form
-after	2	dema-after-c		dema	0			carried
-after	3	oewn-after-a	Degree=Pos	dema	0			oewn_form
-after	4	oewn-aft-a	Degree=Cmp	dema	0			rule
+after	1	oewn-aft-a	Degree=Cmp	dema	0			rule
+after	2	oewn-after-r	Degree=Pos	dema	0			oewn_form
+after	3	dema-after-c		dema	0			carried
+after	4	oewn-after-a	Degree=Pos	dema	0			oewn_form
 after a fashion	0	oewn-after_a_fashion-r	Degree=Pos	dema	0			oewn_form
 after all	0	oewn-after_all-r	Degree=Pos	dema	0			oewn_form
 after hours	0	oewn-after_hours-r	Degree=Pos	dema	0			oewn_form
@@ -493,8 +493,8 @@ aftermost	0	oewn-aftermost-a	Degree=Pos	dema	0			oewn_form
 afternoon	0	oewn-afternoon-n	Number=Sing	dema	0			oewn_form
 afternoon tea	0	oewn-afternoon_tea-n	Number=Sing	dema	0			oewn_form
 afternoon teas	0	oewn-afternoon_tea-n	Number=Plur	dema	0			rule
-afternoons	0		Degree=Pos	dema	0	afternoons	r	moby_reverse
-afternoons	1	oewn-afternoon-n	Number=Plur	dema	0			rule
+afternoons	0	oewn-afternoon-n	Number=Plur	dema	0			rule
+afternoons	1		Degree=Pos	dema	0	afternoons	r	moby_reverse
 afterpain	0		Number=Sing	dema	0	afterpain	n	moby_reverse
 afterpains	0	oewn-afterpains-n	Number=Sing	dema	0			oewn_form
 afterpains	1		Number=Plur	dema	0	afterpain	n	rule

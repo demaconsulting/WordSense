@@ -146,7 +146,7 @@ internal static partial class OewnImporter
         return new ImportResult(rows, files, split, missing, selfRelations, cleaner.Count);
     }
 
-    private static void CheckHash(string input, string? expectedSha256)
+    internal static void CheckHash(string input, string? expectedSha256)
     {
         if (expectedSha256 is null)
         {

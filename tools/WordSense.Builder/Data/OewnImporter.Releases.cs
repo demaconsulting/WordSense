@@ -62,11 +62,14 @@ internal static partial class OewnImporter
         var currentEntries = DataTables.Read(dataDirectory, schema.Table("entry")).ToList();
         var senseIds = currentSenses.Select(r => r[0]).ToHashSet(StringComparer.Ordinal);
         var entryIds = currentEntries.Select(r => r[0]).ToHashSet(StringComparer.Ordinal);
-        var byKey = new Dictionary<string, string>(StringComparer.Ordinal);
-        foreach (var row in currentSenses.Where(r => r[1].Length > 0))
+        // Exactly one current sense may carry a sense key: a duplicate would make the mapping depend on the row order
+        var keyed = currentSenses.Where(r => r[1].Length > 0).GroupBy(r => r[1], StringComparer.Ordinal).ToList();
+        if (keyed.FirstOrDefault(g => g.Count() > 1) is { } duplicate)
         {
-            byKey[row[1]] = row[0];
+            throw new InvalidDataException($"The senses {string.Join(", ", duplicate.Select(r => $"'{r[0]}'"))} have the same sense key '{duplicate.Key}'; every key must name exactly one current sense.");
         }
+
+        var byKey = keyed.ToDictionary(g => g.Key, g => g.Single()[0], StringComparer.Ordinal);
 
         var senseEntry = currentSenses.ToDictionary(r => r[0], r => r[2], StringComparer.Ordinal);
         var byLemma = currentEntries

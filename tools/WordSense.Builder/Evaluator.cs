@@ -53,7 +53,7 @@ internal sealed record BasicDetails(long TableBytes, double ColdLoadMilliseconds
 /// <param name="WordsMemoryBytes">The managed memory the first use of the word table added.</param>
 /// <param name="Basic">The extra measurements of the basic model, or null for the other models.</param>
 /// <param name="DownloadBytes">The size of the files the model downloads, or 0 for a model without a download.</param>
-/// <param name="RamBytes">The private memory the model added to the process, in bytes.</param>
+/// <param name="RamBytes">The private memory the model added to the process, in bytes (the process counter has a coarse resolution: a model of a few hundred KiB reads as 0, and the table then shows "&lt; 1 MiB").</param>
 /// <param name="FirstUseMilliseconds">The time from creating the model to the first classification.</param>
 internal sealed record EvaluationResult(
     string Model,
@@ -93,7 +93,7 @@ internal sealed record EvaluationResult(
                " | " + Percent(holdout.Meaning, holdout.HeteronymRows) + " / " + Percent(real.Meaning, real.HeteronymRows) +
                " | " + download +
                " | " + (weights / 1024.0).ToString("N0", inv) + " KiB" +
-               " | " + (RamBytes / 1048576.0).ToString("N0", inv) + " MiB" +
+               " | " + (RamBytes < 1048576 ? "< 1 MiB" : (RamBytes / 1048576.0).ToString("N0", inv) + " MiB") +
                " | " + latency.ToString("N2", inv) + " ms" +
                " | " + FirstUseMilliseconds.ToString("N0", inv) + " ms + " + WordsLoadMilliseconds.ToString("N0", inv) + " ms" +
                " | " + (DownloadBytes == 0 ? "no" : "yes") + " |\n";
@@ -159,8 +159,8 @@ internal sealed record EvaluationResult(
     private static readonly (string Name, string Holdout, string Real)[] References =
     [
         ("Statistical tagger spike (reference)", "91.4%", "81.9%"),
-        ("MiniLM", "96.91%", "92.60%"),
-        ("BertBaseCased", "99.05%", "97.39%"),
+        ("MiniLM", "96.86%", "92.60%"),
+        ("BertBaseCased", "98.99%", "97.39%"),
     ];
 
     /// <summary>
@@ -331,6 +331,8 @@ internal static class Evaluator
             privateBefore = process.PrivateMemorySize64;
         }
 
+        // The process counter moves in coarse steps, so the managed heap is measured too and the larger figure is reported
+        var managedBefore = GC.GetTotalMemory(true);
         double coldLoadMs = 0;
         long tableBytes = 0;
         if (!info.IsEncoder)
@@ -368,7 +370,7 @@ internal static class Evaluator
             privateAfter = process.PrivateMemorySize64;
         }
 
-        var ramBytes = Math.Max(0, privateAfter - privateBefore);
+        var ramBytes = Math.Max(0, Math.Max(privateAfter - privateBefore, GC.GetTotalMemory(true) - managedBefore));
         // Only the pinned files are downloaded, not every file of the model folder (README, SHA256SUMS, unused tokenizer)
         var downloadBytes = model is OnnxWordSenseModel onnx ? onnx.Spec.Files.Sum(f => f.Length) : 0;
 

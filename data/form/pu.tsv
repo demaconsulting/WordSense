@@ -78,8 +78,8 @@ Purple Heart	1	oewn-Purple_Heart-n	Capitalization=Title+Number=Sing	dema	0			oew
 Purple Hearts	0	oewn-purple_heart-n	Number=Plur	dema	0			rule
 Purple Hearts	1	oewn-Purple_Heart-n	Capitalization=Title+Number=Plur	dema	0			rule
 Pus	0	oewn-pus-n	Number=Sing	dema	0			oewn_form
-Pus	1	oewn-Pu-n	Capitalization=Title+Number=Plur	dema	0			rule
-Pus	2	oewn-Pus-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Pus	1	oewn-Pus-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Pus	2	oewn-Pu-n	Capitalization=Title+Number=Plur	dema	0			rule
 Puses	0	oewn-pus-n	Number=Plur	dema	0			rule
 Puses	1	oewn-Pus-n	Capitalization=Title+Number=Plur	dema	0			rule
 Puseyism	0	oewn-Puseyism-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
@@ -521,8 +521,8 @@ pules	0	oewn-pule-v	Person=3+Tense=Pres	dema	0			rule
 puli	0	oewn-pul-n	Number=Plur	dema	0			oewn_form
 pulik	0		Number=Sing	dema	0	pulik	n	moby_reverse
 puliks	0		Number=Plur	dema	0	pulik	n	rule
-puling	0		Degree=Pos	dema	0	puling	a	moby_reverse
-puling	1	oewn-pule-v	VerbForm=Ger	dema	0			rule
+puling	0	oewn-pule-v	VerbForm=Ger	dema	0			rule
+puling	1		Degree=Pos	dema	0	puling	a	moby_reverse
 pulingly	0		Degree=Pos	dema	0	pulingly	r	moby_reverse
 pulka	0		Number=Sing	dema	0	pulka	n	moby_reverse
 pulkas	0		Number=Plur	dema	0	pulka	n	rule
@@ -793,8 +793,8 @@ pulses	0	oewn-pulse-n	Number=Plur	dema	0			rule
 pulses	1	oewn-pulse-v	Person=3+Tense=Pres	dema	0			rule
 pulsimeter	0		Number=Sing	dema	0	pulsimeter	n	moby_reverse
 pulsimeters	0		Number=Plur	dema	0	pulsimeter	n	rule
-pulsing	0	oewn-pulsing-n	Number=Sing	dema	0			oewn_form
-pulsing	1	oewn-pulse-v	VerbForm=Ger	dema	0			rule
+pulsing	0	oewn-pulse-v	VerbForm=Ger	dema	0			rule
+pulsing	1	oewn-pulsing-n	Number=Sing	dema	0			oewn_form
 pulsings	0	oewn-pulsing-n	Number=Plur	dema	0			rule
 pulsojet	0		Number=Sing	dema	0	pulsojet	n	moby_reverse
 pulsojets	0		Number=Plur	dema	0	pulsojet	n	rule
@@ -1072,8 +1072,8 @@ punnet	0	oewn-punnet-n	Number=Sing	dema	0			oewn_form
 punnets	0	oewn-punnet-n	Number=Plur	dema	0			rule
 punnier	0	oewn-punny-a	Degree=Cmp	dema	0			rule
 punniest	0	oewn-punny-a	Degree=Sup	dema	0			rule
-punning	0	oewn-punning-n	Number=Sing	dema	0			oewn_form
-punning	1	oewn-pun-v	VerbForm=Ger	dema	0			oewn_form
+punning	0	oewn-pun-v	VerbForm=Ger	dema	0			oewn_form
+punning	1	oewn-punning-n	Number=Sing	dema	0			oewn_form
 punnings	0	oewn-punning-n	Number=Plur	dema	0			rule
 punny	0	oewn-punny-a	Degree=Pos	dema	0			oewn_form
 puns	0	oewn-pun-n	Number=Plur	dema	0			rule
@@ -1255,8 +1255,8 @@ purger	0		Number=Sing	dema	0	purger	n	moby_reverse
 purgers	0		Number=Plur	dema	0	purger	n	rule
 purges	0	oewn-purge-v	Person=3+Tense=Pres	dema	0			rule
 purges	1	oewn-purge-n	Number=Plur	dema	0			rule
-purging	0	oewn-purging-n	Number=Sing	dema	0			oewn_form
-purging	1	oewn-purge-v	VerbForm=Ger	dema	0			rule
+purging	0	oewn-purge-v	VerbForm=Ger	dema	0			rule
+purging	1	oewn-purging-n	Number=Sing	dema	0			oewn_form
 purging	2	oewn-purging-a	Degree=Pos	dema	0			oewn_form
 purging cassia	0	oewn-purging_cassia-n	Number=Sing	dema	0			oewn_form
 purging cassias	0	oewn-purging_cassia-n	Number=Plur	dema	0			rule
@@ -1549,8 +1549,8 @@ pursuance	0	oewn-pursuance-n	Number=Sing	dema	0			oewn_form
 pursuances	0	oewn-pursuance-n	Number=Plur	dema	0			rule
 pursuant	0	oewn-pursuant-a	Degree=Pos	dema	0			oewn_form
 pursue	0	oewn-pursue-v	VerbForm=Inf	dema	0			oewn_form
-pursued	0	oewn-pursued-n	Number=Sing	dema	0			oewn_form
-pursued	1	oewn-pursue-v	Tense=Past+VerbForm=Part	dema	0			rule
+pursued	0	oewn-pursue-v	Tense=Past+VerbForm=Part	dema	0			rule
+pursued	1	oewn-pursued-n	Number=Sing	dema	0			oewn_form
 pursued	2	oewn-pursued-a	Degree=Pos	dema	0			oewn_form
 pursueds	0	oewn-pursued-n	Number=Plur	dema	0			rule
 pursuer	0	oewn-pursuer-n	Number=Sing	dema	0			oewn_form
@@ -1878,11 +1878,11 @@ puttied	0	oewn-putty-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 puttier	0		Number=Sing	dema	0	puttier	n	moby_reverse
 puttiers	0		Number=Plur	dema	0	puttier	n	rule
 putties	0	oewn-putty-n	Number=Plur	dema	0			rule
-putties	1	oewn-putty-v	Person=3+Tense=Pres	dema	0			rule
-putties	2		Number=Plur	dema	0	puttie	n	rule
-putting	0	oewn-putting-n	Number=Sing	dema	0			oewn_form
-putting	1	oewn-put-v	VerbForm=Ger	dema	0			oewn_form
-putting	2	oewn-putt-v	VerbForm=Ger	dema	0			rule
+putties	1		Number=Plur	dema	0	puttie	n	rule
+putties	2	oewn-putty-v	Person=3+Tense=Pres	dema	0			rule
+putting	0	oewn-put-v	VerbForm=Ger	dema	0			oewn_form
+putting	1	oewn-putt-v	VerbForm=Ger	dema	0			rule
+putting	2	oewn-putting-n	Number=Sing	dema	0			oewn_form
 putting across	0	oewn-put_across-v	VerbForm=Ger	dema	0			rule
 putting aside	0	oewn-put_aside-v	VerbForm=Ger	dema	0			rule
 putting away	0	oewn-put_away-v	VerbForm=Ger	dema	0			rule

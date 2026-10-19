@@ -423,8 +423,8 @@ acceptancy	0		Number=Sing	dema	0	acceptancy	n	moby_reverse
 acceptant	0	oewn-acceptant-a	Degree=Pos	dema	0			oewn_form
 acceptation	0	oewn-acceptation-n	Number=Sing	dema	0			oewn_form
 acceptations	0	oewn-acceptation-n	Number=Plur	dema	0			rule
-accepted	0	oewn-accepted-a	Degree=Pos	dema	0			oewn_form
-accepted	1	oewn-accept-v	Tense=Past+VerbForm=Part	dema	0			rule
+accepted	0	oewn-accept-v	Tense=Past+VerbForm=Part	dema	0			rule
+accepted	1	oewn-accepted-a	Degree=Pos	dema	0			oewn_form
 acceptedly	0		Degree=Pos	dema	0	acceptedly	r	moby_reverse
 acceptee	0		Number=Sing	dema	0	acceptee	n	moby_reverse
 acceptees	0		Number=Plur	dema	0	acceptee	n	rule
@@ -579,8 +579,8 @@ accommodable	0		Degree=Pos	dema	0	accommodable	a	moby_reverse
 accommodate	0	oewn-accommodate-v	VerbForm=Inf	dema	0			oewn_form
 accommodated	0	oewn-accommodate-v	Tense=Past+VerbForm=Part	dema	0			rule
 accommodates	0	oewn-accommodate-v	Person=3+Tense=Pres	dema	0			rule
-accommodating	0	oewn-accommodating-a	Degree=Pos	dema	0			oewn_form
-accommodating	1	oewn-accommodate-v	VerbForm=Ger	dema	0			rule
+accommodating	0	oewn-accommodate-v	VerbForm=Ger	dema	0			rule
+accommodating	1	oewn-accommodating-a	Degree=Pos	dema	0			oewn_form
 accommodating IOL	0	oewn-accommodating_IOL-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 accommodating IOLS	0	oewn-accommodating_IOL-n	Capitalization=Exact+Number=Plur	dema	0			rule
 accommodating lens implant	0	oewn-accommodating_lens_implant-n	Number=Sing	dema	0			oewn_form
@@ -620,8 +620,8 @@ accomplice	0	oewn-accomplice-n	Number=Sing	dema	0			oewn_form
 accomplices	0	oewn-accomplice-n	Number=Plur	dema	0			rule
 accomplish	0	oewn-accomplish-v	VerbForm=Inf	dema	0			oewn_form
 accomplishable	0	oewn-accomplishable-a	Degree=Pos	dema	0			oewn_form
-accomplished	0	oewn-accomplished-a	Degree=Pos	dema	0			oewn_form
-accomplished	1	oewn-accomplish-v	Tense=Past+VerbForm=Part	dema	0			rule
+accomplished	0	oewn-accomplish-v	Tense=Past+VerbForm=Part	dema	0			rule
+accomplished	1	oewn-accomplished-a	Degree=Pos	dema	0			oewn_form
 accomplished fact	0	oewn-accomplished_fact-n	Number=Sing	dema	0			oewn_form
 accomplished facts	0	oewn-accomplished_fact-n	Number=Plur	dema	0			rule
 accomplisher	0		Number=Sing	dema	0	accomplisher	n	moby_reverse
@@ -667,8 +667,8 @@ accords	1	oewn-accord-v	Person=3+Tense=Pres	dema	0			rule
 accost	0	oewn-accost-v	VerbForm=Inf	dema	0			oewn_form
 accost	1		Number=Sing	dema	0	accost	n	moby_reverse
 accostable	0		Degree=Pos	dema	0	accostable	a	moby_reverse
-accosted	0		Degree=Pos	dema	0	accosted	a	moby_reverse
-accosted	1	oewn-accost-v	Tense=Past+VerbForm=Part	dema	0			rule
+accosted	0	oewn-accost-v	Tense=Past+VerbForm=Part	dema	0			rule
+accosted	1		Degree=Pos	dema	0	accosted	a	moby_reverse
 accosting	0	oewn-accost-v	VerbForm=Ger	dema	0			rule
 accosts	0	oewn-accost-v	Person=3+Tense=Pres	dema	0			rule
 accouchement	0	oewn-accouchement-n	Number=Sing	dema	0			oewn_form
@@ -869,8 +869,8 @@ accusing	1	oewn-accusing-a	Degree=Pos	dema	0			oewn_form
 accusingly	0	oewn-accusingly-r	Degree=Pos	dema	0			oewn_form
 accusive	0	oewn-accusive-a	Degree=Pos	dema	0			oewn_form
 accustom	0	oewn-accustom-v	VerbForm=Inf	dema	0			oewn_form
-accustomed	0	oewn-accustomed-a	Degree=Pos	dema	0			oewn_form
-accustomed	1	oewn-accustom-v	Tense=Past+VerbForm=Part	dema	0			rule
+accustomed	0	oewn-accustom-v	Tense=Past+VerbForm=Part	dema	0			rule
+accustomed	1	oewn-accustomed-a	Degree=Pos	dema	0			oewn_form
 accustomed to	0	oewn-accustomed_to-a	Degree=Pos	dema	0			oewn_form
 accustomedly	0		Degree=Pos	dema	0	accustomedly	r	moby_reverse
 accustomedness	0		Number=Sing	dema	0	accustomedness	n	moby_reverse
@@ -1113,8 +1113,8 @@ achilary	0		Degree=Pos	dema	0	achilary	a	moby_reverse
 achillea	0	oewn-achillea-n	Number=Sing	dema	0			oewn_form
 achilleas	0	oewn-achillea-n	Number=Plur	dema	0			rule
 achimenes	0	oewn-achimenes-n	Number=Sing	dema	0			oewn_form
-aching	0	oewn-aching-n	Number=Sing	dema	0			oewn_form
-aching	1	oewn-ache-v	VerbForm=Ger	dema	0			rule
+aching	0	oewn-ache-v	VerbForm=Ger	dema	0			rule
+aching	1	oewn-aching-n	Number=Sing	dema	0			oewn_form
 aching	2	oewn-aching-a	Degree=Pos	dema	0			oewn_form
 achingly	0		Degree=Pos	dema	0	achingly	r	moby_reverse
 achings	0	oewn-aching-n	Number=Plur	dema	0			rule
@@ -1483,8 +1483,8 @@ acquaintance	0	oewn-acquaintance-n	Number=Sing	dema	0			oewn_form
 acquaintances	0	oewn-acquaintance-n	Number=Plur	dema	0			rule
 acquaintanceship	0	oewn-acquaintanceship-n	Number=Sing	dema	0			oewn_form
 acquaintanceships	0	oewn-acquaintanceship-n	Number=Plur	dema	0			rule
-acquainted	0	oewn-acquainted-a	Degree=Pos	dema	0			oewn_form
-acquainted	1	oewn-acquaint-v	Tense=Past+VerbForm=Part	dema	0			rule
+acquainted	0	oewn-acquaint-v	Tense=Past+VerbForm=Part	dema	0			rule
+acquainted	1	oewn-acquainted-a	Degree=Pos	dema	0			oewn_form
 acquaintedness	0		Number=Sing	dema	0	acquaintedness	n	moby_reverse
 acquainting	0	oewn-acquaint-v	VerbForm=Ger	dema	0			rule
 acquaints	0	oewn-acquaint-v	Person=3+Tense=Pres	dema	0			rule
@@ -1519,8 +1519,8 @@ acquirements	0	oewn-acquirement-n	Number=Plur	dema	0			rule
 acquirer	0	oewn-acquirer-n	Number=Sing	dema	0			oewn_form
 acquirers	0	oewn-acquirer-n	Number=Plur	dema	0			rule
 acquires	0	oewn-acquire-v	Person=3+Tense=Pres	dema	0			rule
-acquiring	0	oewn-acquiring-n	Number=Sing	dema	0			oewn_form
-acquiring	1	oewn-acquire-v	VerbForm=Ger	dema	0			rule
+acquiring	0	oewn-acquire-v	VerbForm=Ger	dema	0			rule
+acquiring	1	oewn-acquiring-n	Number=Sing	dema	0			oewn_form
 acquirings	0	oewn-acquiring-n	Number=Plur	dema	0			rule
 acquisition	0	oewn-acquisition-n	Number=Sing	dema	0			oewn_form
 acquisition agreement	0	oewn-acquisition_agreement-n	Number=Sing	dema	0			oewn_form
@@ -1898,8 +1898,8 @@ activated carbons	0	oewn-activated_carbon-n	Number=Plur	dema	0			rule
 activated charcoal	0	oewn-activated_charcoal-n	Number=Sing	dema	0			oewn_form
 activated charcoals	0	oewn-activated_charcoal-n	Number=Plur	dema	0			rule
 activates	0	oewn-activate-v	Person=3+Tense=Pres	dema	0			rule
-activating	0	oewn-activating-n	Number=Sing	dema	0			oewn_form
-activating	1	oewn-activate-v	VerbForm=Ger	dema	0			rule
+activating	0	oewn-activate-v	VerbForm=Ger	dema	0			rule
+activating	1	oewn-activating-n	Number=Sing	dema	0			oewn_form
 activating	2	oewn-activating-a	Degree=Pos	dema	0			oewn_form
 activating agent	0	oewn-activating_agent-n	Number=Sing	dema	0			oewn_form
 activating agents	0	oewn-activating_agent-n	Number=Plur	dema	0			rule

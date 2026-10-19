@@ -20,7 +20,12 @@ All scenarios pass.
 
 - **Provenance** (`Data_Provenance_IsKnown`): every row has a known source.
 - **Regular forms** (`Data_RegularInflection_IsResolved`): tossed, brothers, spilled, others.
-- **Gerunds** (`Data_IngForm_LeadsWithVerb`, `Data_IngForm_IsNotPluralNoun`).
+- **Gerunds** (`Data_IngForm_LeadsWithVerb`, `Data_IngForm_IsNotPluralNoun`, `Data_IngNounPlural_IsNotTheSingular`).
+- **Reproducibility** (`FormReproducibilityTests.cs`): on the small committed Open English WordNet slice and a small
+  inflection list, two runs give identical bytes (`Run_SameInputs_GiveIdenticalBytes`) and a run from a differently
+  ordered input gives the same bytes (`Run_ReorderedInput_GivesIdenticalBytes`); an input that does not match its pin
+  is refused (`Run_UnpinnedInput_IsRefused`). No download is needed. Drift of the committed tables against the pinned
+  files is seen by rerunning `rebuild-forms` (see `data/PROVENANCE.md`) and reading `git diff`.
 - **Own entries kept** (`Check_AllFactsAndIngEntriesHold`): every generated fact holds and every -ing noun or
   adjective entry of the dictionary has its own analysis.
 - **Fact generation** (`Generate_IsDeterministicForSeed`, `Generate_MatchesCommittedFile`): the same seed gives the same

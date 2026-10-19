@@ -32,11 +32,11 @@ namespace DemaConsulting.WordSense;
 ///     is optimistic. All sizes are in MiB (1 MiB = 1,048,576 bytes). The memory figure is what the model adds to the
 ///     process <em>on top of</em> the word lexicon: the lexicon of this package (about 15 MiB, once per process, shared
 ///     by every model) is not included, so add it to the figure of the model you use. The memory figure is measured as
-///     the growth of the private memory of the process (<c>Process.PrivateMemorySize64</c>, after a full garbage
-///     collection) from before the model was created to after it has classified a number of warm-up sentences, so it
-///     is not a count of the model's own data: for Basic it holds the decoded statistical tables (the 83 KiB table
-///     becomes in-memory tables) and the working buffers, but also allocator, JIT-compiled code and runtime effects,
-///     which is why about 21 MiB is much more than the table. Latency per sentence is the average over the holdout
+///     the larger of the growth of the private memory of the process (<c>Process.PrivateMemorySize64</c>) and the growth
+///     of the managed heap (<c>GC.GetTotalMemory</c>), both after a full garbage collection, from before the model was
+///     created to after it has classified a number of warm-up sentences, so it is not a count of the model's own
+///     data: for Basic it holds the decoded statistical tables (the 83 KiB table becomes in-memory tables) and the
+///     working buffers, which is why about 2 MiB is more than the table. Latency per sentence is the average over the holdout
 ///     sentences.
 ///     </para>
 ///     <list type="table">
@@ -58,7 +58,7 @@ namespace DemaConsulting.WordSense;
 ///     </item>
 ///     <item>
 ///     <term>Memory added (without the lexicon)</term>
-///     <description>Basic about 21 MiB; MiniLM about 64 MiB; BertBaseCased about 150 MiB</description>
+///     <description>Basic about 2 MiB; MiniLM about 64 MiB; BertBaseCased about 150 MiB</description>
 ///     </item>
 ///     <item>
 ///     <term>Other</term>

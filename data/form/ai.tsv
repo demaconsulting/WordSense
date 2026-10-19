@@ -89,8 +89,8 @@ aileron	0	oewn-aileron-n	Number=Sing	dema	0			oewn_form
 ailerons	0	oewn-aileron-n	Number=Plur	dema	0			rule
 ailette	0		Number=Sing	dema	0	ailette	n	moby_reverse
 ailettes	0		Number=Plur	dema	0	ailette	n	rule
-ailing	0	oewn-ailing-a	Degree=Pos	dema	0			oewn_form
-ailing	1	oewn-ail-v	VerbForm=Ger	dema	0			rule
+ailing	0	oewn-ail-v	VerbForm=Ger	dema	0			rule
+ailing	1	oewn-ailing-a	Degree=Pos	dema	0			oewn_form
 ailment	0	oewn-ailment-n	Number=Sing	dema	0			oewn_form
 ailments	0	oewn-ailment-n	Number=Plur	dema	0			rule
 ails	0	oewn-ail-v	Person=3+Tense=Pres	dema	0			rule
@@ -495,8 +495,8 @@ airpost	0	oewn-airpost-n	Number=Sing	dema	0			oewn_form
 airposts	0	oewn-airpost-n	Number=Plur	dema	0			rule
 airproof	0		Degree=Pos	dema	0	airproof	a	moby_reverse
 airproof	1		VerbForm=Inf	dema	0	airproof	v	moby_reverse
-airs	0	oewn-airs-n	Number=Sing	dema	0			oewn_form
-airs	1	oewn-air-n	Number=Plur	dema	0			rule
+airs	0	oewn-air-n	Number=Plur	dema	0			rule
+airs	1	oewn-airs-n	Number=Sing	dema	0			oewn_form
 airs	2	oewn-air-v	Person=3+Tense=Pres	dema	0			rule
 airs out	0	oewn-air_out-v	Person=3+Tense=Pres	dema	0			rule
 airscrew	0	oewn-airscrew-n	Number=Sing	dema	0			oewn_form

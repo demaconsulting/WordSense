@@ -238,8 +238,8 @@ adders	0	oewn-adder-n	Number=Plur	dema	0			rule
 addible	0	oewn-addible-a	Degree=Pos	dema	0			oewn_form
 addict	0	oewn-addict-n	Number=Sing	dema	1			carried
 addict	1	oewn-addict-v	VerbForm=Inf	dema	1			carried
-addicted	0	oewn-addicted-a	Degree=Pos	dema	0			oewn_form
-addicted	1	oewn-addict-v	Tense=Past+VerbForm=Part	dema	0			rule
+addicted	0	oewn-addict-v	Tense=Past+VerbForm=Part	dema	0			rule
+addicted	1	oewn-addicted-a	Degree=Pos	dema	0			oewn_form
 addictedness	0		Number=Sing	dema	0	addictedness	n	moby_reverse
 addicting	0	oewn-addict-v	VerbForm=Ger	dema	0			rule
 addiction	0	oewn-addiction-n	Number=Sing	dema	0			oewn_form
@@ -316,8 +316,8 @@ adducer	0	oewn-adducer-n	Number=Sing	dema	0			oewn_form
 adducers	0	oewn-adducer-n	Number=Plur	dema	0			rule
 adduces	0	oewn-adduce-v	Person=3+Tense=Pres	dema	0			rule
 adducible	0		Degree=Pos	dema	0	adducible	a	moby_reverse
-adducing	0	oewn-adducing-n	Number=Sing	dema	0			oewn_form
-adducing	1	oewn-adduce-v	VerbForm=Ger	dema	0			rule
+adducing	0	oewn-adduce-v	VerbForm=Ger	dema	0			rule
+adducing	1	oewn-adducing-n	Number=Sing	dema	0			oewn_form
 adducings	0	oewn-adducing-n	Number=Plur	dema	0			rule
 adduct	0	oewn-adduct-n	Number=Sing	dema	1			carried
 adduct	1	oewn-adduct-v	VerbForm=Inf	dema	1			carried
@@ -561,8 +561,8 @@ adjectively	0	oewn-adjectively-r	Degree=Pos	dema	0			oewn_form
 adjectives	0	oewn-adjective-n	Number=Plur	dema	0			rule
 adjoin	0	oewn-adjoin-v	VerbForm=Inf	dema	0			oewn_form
 adjoined	0	oewn-adjoin-v	Tense=Past+VerbForm=Part	dema	0			rule
-adjoining	0		Degree=Pos	dema	0	adjoining	a	moby_reverse
-adjoining	1	oewn-adjoin-v	VerbForm=Ger	dema	0			rule
+adjoining	0	oewn-adjoin-v	VerbForm=Ger	dema	0			rule
+adjoining	1		Degree=Pos	dema	0	adjoining	a	moby_reverse
 adjoining room	0	oewn-adjoining_room-n	Number=Sing	dema	0			oewn_form
 adjoining rooms	0	oewn-adjoining_room-n	Number=Plur	dema	0			rule
 adjoins	0	oewn-adjoin-v	Person=3+Tense=Pres	dema	0			rule
@@ -820,8 +820,8 @@ adopt	0	oewn-adopt-v	VerbForm=Inf	dema	0			oewn_form
 adoptabilities	0		Number=Plur	dema	0	adoptability	n	rule
 adoptability	0		Number=Sing	dema	0	adoptability	n	moby_reverse
 adoptable	0	oewn-adoptable-a	Degree=Pos	dema	0			oewn_form
-adopted	0	oewn-adopted-a	Degree=Pos	dema	0			oewn_form
-adopted	1	oewn-adopt-v	Tense=Past+VerbForm=Part	dema	0			rule
+adopted	0	oewn-adopt-v	Tense=Past+VerbForm=Part	dema	0			rule
+adopted	1	oewn-adopted-a	Degree=Pos	dema	0			oewn_form
 adoptee	0	oewn-adoptee-n	Number=Sing	dema	0			oewn_form
 adoptees	0	oewn-adoptee-n	Number=Plur	dema	0			rule
 adopter	0	oewn-adopter-n	Number=Sing	dema	0			oewn_form
@@ -1190,8 +1190,8 @@ advertizements	0	oewn-advertizement-n	Number=Plur	dema	0			rule
 advertizer	0	oewn-advertizer-n	Number=Sing	dema	0			oewn_form
 advertizers	0	oewn-advertizer-n	Number=Plur	dema	0			rule
 advertizes	0	oewn-advertize-v	Person=3+Tense=Pres	dema	0			rule
-advertizing	0	oewn-advertizing-n	Number=Sing	dema	0			oewn_form
-advertizing	1	oewn-advertize-v	VerbForm=Ger	dema	0			rule
+advertizing	0	oewn-advertize-v	VerbForm=Ger	dema	0			rule
+advertizing	1	oewn-advertizing-n	Number=Sing	dema	0			oewn_form
 advertizings	0	oewn-advertizing-n	Number=Plur	dema	0			rule
 advertorial	0	oewn-advertorial-n	Number=Sing	dema	0			oewn_form
 advertorials	0	oewn-advertorial-n	Number=Plur	dema	0			rule
@@ -1208,8 +1208,8 @@ advisableness	0		Number=Sing	dema	0	advisableness	n	moby_reverse
 advisablenesses	0		Number=Plur	dema	0	advisableness	n	rule
 advisably	0		Degree=Pos	dema	0	advisably	r	moby_reverse
 advise	0	oewn-advise-v	VerbForm=Inf	dema	0			oewn_form
-advised	0	oewn-advised-a	Degree=Pos	dema	0			oewn_form
-advised	1	oewn-advise-v	Tense=Past+VerbForm=Part	dema	0			rule
+advised	0	oewn-advise-v	Tense=Past+VerbForm=Part	dema	0			rule
+advised	1	oewn-advised-a	Degree=Pos	dema	0			oewn_form
 advisedly	0	oewn-advisedly-r	Degree=Pos	dema	0			oewn_form
 advisedness	0		Number=Sing	dema	0	advisedness	n	moby_reverse
 advisee	0	oewn-advisee-n	Number=Sing	dema	0			oewn_form

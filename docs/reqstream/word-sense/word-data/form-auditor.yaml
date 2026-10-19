@@ -26,7 +26,8 @@ sections:
                   FormAuditor shall fail when the error rate of any generated stratum reaches the limit, counting a
                   disagreement of the independent checker as an error unless a recorded adjudication says the form is
                   valid, and shall leave out rows that the checker cannot judge. It shall reject a sample size below
-                  one, an empty or malformed oracle file, an oracle or adjudication verdict it does not know and a
+                  one, an empty or malformed oracle file, an oracle file that gives one row two verdicts, an oracle or
+                  adjudication verdict it does not know and a
                   sampled row without an oracle verdict, and shall fail when a generated stratum has no checked row.
                 tags: [unit]
                 justification: |
@@ -46,6 +47,7 @@ sections:
                   - WordSenseBuilder_FormAuditor_ReadVerdicts_EmptyFile_Throws
                   - WordSenseBuilder_FormAuditor_ReadVerdicts_MalformedLine_Throws
                   - WordSenseBuilder_FormAuditor_ReadVerdicts_ValidFile_IsRead
+                  - WordSenseBuilder_FormAuditor_ReadVerdicts_DuplicateRow_Throws
                   - WordSenseBuilder_FormAuditor_ReadAdjudications_BadVerdict_Throws
                   - WordSenseBuilder_Program_AuditForms_NonPositiveSample_Fails
                   - WordSenseBuilder_Program_AuditForms_EmptyOracleFile_Fails

@@ -16,7 +16,7 @@ namespace WordSense.Builder;
 ///     <list type="bullet">
 ///     <item><description><c>compile-image [--data DIR] [--corpus DIR] [--output FILE]</c> compiles the data tables into the word image of the core package (<c>Resources/wordsense.img</c>).</description></item>
 ///     <item><description><c>audit-forms [--data DIR] [--sample 300] [--seed N] [--oracle FILE] [--adjudications FILE] [--output FILE] [--max-error 0.01]</c> checks a seeded stratified sample of the inflected form rows per provenance against the LemmInflect oracle (a pip-installed checker, not shipped), reports the error rate with a 95% Wilson interval per stratum and fails when a generated stratum reaches the limit.</description></item>
-///     <item><description><c>rebuild-forms [--data DIR] [--corpus DIR] [--oewn FILE] [--agid FILE] [--overwrite true]</c> regenerates the entry and form tables of the data folder lemma-first from the entries, the irregular lists, the written forms of the Open English WordNet file and the dictionary; a generated inflection ships only when a second source corroborates it (the AGID <c>infl.txt</c> file attests forms); it refuses to replace tables that already carry the provenance column unless <c>--overwrite true</c> is given.</description></item>
+///     <item><description><c>rebuild-forms [--data DIR] [--corpus DIR] [--oewn FILE] [--agid FILE] [--output DIR]</c> regenerates the entry, form and form_sense_scope tables from the entries, the committed legacy analyses (<c>corpus/lexicon/form-frozen.tsv</c>), the irregular lists, the written forms of the Open English WordNet file and the dictionary; a generated inflection ships only when a second source corroborates it (the AGID <c>infl.txt</c> file attests forms). Both inputs must match their pinned SHA-256; the default places are <c>artifacts/inputs/english-wordnet-2025.xml.gz</c> and <c>artifacts/inputs/agid/agid-2016.01.19/infl.txt</c>. The result depends on nothing else, so it is reproducible.</description></item>
 ///     <item><description><c>import-agid --input FILE [--corpus DIR] [--output FILE]</c> derives the irregular forms of the dictionary words from the inflection database file <c>infl.txt</c>.</description></item>
 ///     <item><description><c>import-moby --input FILE [--corpus DIR] [--output FILE]</c> imports the pinned Moby Part-of-Speech II list into the dictionary word list of the corpus.</description></item>
 ///     <item><description><c>weights &lt;modelId&gt; [--corpus DIR] [--repository DIR]</c> trains the weights of an ONNX model (minilm, bert-base-cased) and writes them to its package.</description></item>
@@ -206,8 +206,9 @@ internal static class Program
     private static int RunRebuildForms(Dictionary<string, string> options, string repository, string corpus, TextWriter output)
     {
         var formsData = options.TryGetValue("data", out var bd) ? Path.GetFullPath(bd) : Path.Combine(repository, "data");
-        var formsOverwrite = options.TryGetValue("overwrite", out var fo) && string.Equals(fo, "true", StringComparison.OrdinalIgnoreCase);
-        var generated = Data.FormGenerator.Run(formsData, corpus, options.TryGetValue("oewn", out var ow) ? Path.GetFullPath(ow) : null, formsOverwrite, options.TryGetValue("agid", out var ag) ? Path.GetFullPath(ag) : null);
+        var oewnFile = FormInput(options, "oewn", Path.Combine(repository, DefaultOewnInput), "Open English WordNet");
+        var agidFile = FormInput(options, "agid", Path.Combine(repository, DefaultAgidInput), "inflection database");
+        var generated = Data.FormGenerator.Run(formsData, corpus, oewnFile, agidFile, options.TryGetValue("output", out var fo) ? Path.GetFullPath(fo) : null);
         output.Write(generated.Render());
         return 0;
     }
@@ -225,6 +226,19 @@ internal static class Program
         var lemmas = AppendixGenerator.Write(corpus, appendix);
         output.WriteLine($"Wrote the appendix of {lemmas.ToString(CultureInfo.InvariantCulture)} lemmas to {appendix}.");
         return 0;
+    }
+
+    private const string DefaultOewnInput = "artifacts/inputs/english-wordnet-2025.xml.gz";
+
+    private const string DefaultAgidInput = "artifacts/inputs/agid/agid-2016.01.19/infl.txt";
+
+    // The pinned input of the form tables: the option, else the default place; a missing file is reported with where to get it
+    private static string FormInput(Dictionary<string, string> options, string name, string fallback, string title)
+    {
+        var path = Path.GetFullPath(options.TryGetValue(name, out var given) ? given : fallback);
+        return File.Exists(path)
+            ? path
+            : throw new InvalidDataException($"The pinned {title} file '{path}' does not exist; download it (see data/PROVENANCE.md) and give its place with --{name}.");
     }
 
     private static int RunImportOewn(Dictionary<string, string> options, string repository, TextWriter output)

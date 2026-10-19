@@ -1,10 +1,8 @@
 spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
 AM	0		VerbForm=Inf	dema	0	am	v	moby_reverse
-AM	1	oewn-am-n	Number=Sing	dema	0			oewn_form
-AM	2	oewn-am-r	Degree=Pos	dema	0			oewn_form
-AM	3	dema-be-x	Tense=Pres	dema	0			irregular_list
-AM	4	oewn-AM-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
-AM	5	oewn-AM-r	Capitalization=Upper+Degree=Pos	dema	0			oewn_form
+AM	1	dema-be-x	Tense=Pres	dema	0			irregular_list
+AM	2	oewn-AM-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+AM	3	oewn-AM-r	Capitalization=Upper+Degree=Pos	dema	0			oewn_form
 AMD	0	oewn-AMD-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 AMDS	0	oewn-AMD-n	Capitalization=Upper+Number=Plur	dema	0			rule
 AMP	0	oewn-amp-n	Number=Sing	dema	0			oewn_form
@@ -15,10 +13,8 @@ AMS	0	oewn-am-n	Number=Plur	dema	0			rule
 AMS	1	oewn-AM-n	Capitalization=Upper+Number=Plur	dema	0			rule
 AMusD	0	oewn-AMusD-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Am	0		VerbForm=Inf	dema	0	am	v	moby_reverse
-Am	1	oewn-am-n	Number=Sing	dema	0			oewn_form
-Am	2	oewn-am-r	Degree=Pos	dema	0			oewn_form
-Am	3	dema-be-x	Tense=Pres	dema	0			irregular_list
-Am	4	oewn-Am-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Am	1	dema-be-x	Tense=Pres	dema	0			irregular_list
+Am	2	oewn-Am-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Aman	0	oewn-Aman-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Amanita caesarea	0	oewn-Amanita_caesarea-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Amanita caesareas	0	oewn-Amanita_caesarea-n	Capitalization=Exact+Number=Plur	dema	0			rule
@@ -501,9 +497,7 @@ Amygdalus communis amaras	0	oewn-Amygdalus_communis_amara-n	Capitalization=Exact
 Amytal	0	oewn-Amytal-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Amytals	0	oewn-Amytal-n	Capitalization=Title+Number=Plur	dema	0			rule
 am	0		VerbForm=Inf	dema	0	am	v	moby_reverse
-am	1	oewn-am-n	Number=Sing	dema	0			oewn_form
-am	2	oewn-am-r	Degree=Pos	dema	0			oewn_form
-am	3	dema-be-x	Tense=Pres	dema	0			irregular_list
+am	1	dema-be-x	Tense=Pres	dema	0			irregular_list
 amabilis fir	0	oewn-amabilis_fir-n	Number=Sing	dema	0			oewn_form
 amabilis firs	0	oewn-amabilis_fir-n	Number=Plur	dema	0			rule
 amadan	0		Number=Sing	dema	0	amadan	n	moby_reverse
@@ -591,16 +585,16 @@ amaut	0		Number=Sing	dema	0	amaut	n	moby_reverse
 amauts	0		Number=Plur	dema	0	amaut	n	rule
 amaze	0	oewn-amaze-v	VerbForm=Inf	dema	0			oewn_form
 amaze	1		Number=Sing	dema	0	amaze	n	moby_reverse
-amazed	0	oewn-amazed-a	Degree=Pos	dema	0			oewn_form
-amazed	1	oewn-amaze-v	Tense=Past+VerbForm=Part	dema	0			rule
+amazed	0	oewn-amaze-v	Tense=Past+VerbForm=Part	dema	0			rule
+amazed	1	oewn-amazed-a	Degree=Pos	dema	0			oewn_form
 amazedly	0		Degree=Pos	dema	0	amazedly	r	moby_reverse
 amazedness	0		Number=Sing	dema	0	amazedness	n	moby_reverse
 amazednesses	0		Number=Plur	dema	0	amazedness	n	rule
 amazement	0	oewn-amazement-n	Number=Sing	dema	0			oewn_form
 amazements	0	oewn-amazement-n	Number=Plur	dema	0			rule
 amazes	0	oewn-amaze-v	Person=3+Tense=Pres	dema	0			rule
-amazing	0	oewn-amazing-a	Degree=Pos	dema	0			oewn_form
-amazing	1	oewn-amaze-v	VerbForm=Ger	dema	0			rule
+amazing	0	oewn-amaze-v	VerbForm=Ger	dema	0			rule
+amazing	1	oewn-amazing-a	Degree=Pos	dema	0			oewn_form
 amazingly	0	oewn-amazingly-r	Degree=Pos	dema	0			oewn_form
 amazon	0	oewn-amazon-n	Number=Sing	dema	0			oewn_form
 amazonite	0		Number=Sing	dema	0	amazonite	n	moby_reverse
@@ -608,8 +602,8 @@ amazonites	0		Number=Plur	dema	0	amazonite	n	rule
 amazons	0	oewn-amazon-n	Number=Plur	dema	0			rule
 amba	0		Number=Sing	dema	0	amba	n	moby_reverse
 ambage	0	oewn-ambage-n	Number=Sing	dema	0			oewn_form
-ambages	0	oewn-ambages-n	Number=Sing	dema	0			oewn_form
-ambages	1	oewn-ambage-n	Number=Plur	dema	0			rule
+ambages	0	oewn-ambage-n	Number=Plur	dema	0			rule
+ambages	1	oewn-ambages-n	Number=Sing	dema	0			oewn_form
 ambagious	0	oewn-ambagious-a	Degree=Pos	dema	0			oewn_form
 ambagiously	0		Degree=Pos	dema	0	ambagiously	r	moby_reverse
 ambagiousness	0		Number=Sing	dema	0	ambagiousness	n	moby_reverse
@@ -979,8 +973,8 @@ amidship	1	oewn-amidship-r	Degree=Pos	dema	0			oewn_form
 amidships	0	oewn-amidships-r	Degree=Pos	dema	0			oewn_form
 amidst	0	dema-amidst-p		dema	0			carried
 amie	0		Number=Sing	dema	0	amie	n	moby_reverse
-amies	0		Number=Sing	dema	0	amies	n	moby_reverse
-amies	1		Number=Plur	dema	0	amie	n	rule
+amies	0		Number=Plur	dema	0	amie	n	rule
+amies	1		Number=Sing	dema	0	amies	n	moby_reverse
 amiga	0		Number=Sing	dema	0	amiga	n	moby_reverse
 amigas	0		Number=Plur	dema	0	amiga	n	rule
 amigo	0	oewn-amigo-n	Number=Sing	dema	0			oewn_form
@@ -1578,8 +1572,8 @@ amurcas	0		Number=Plur	dema	0	amurca	n	rule
 amus	0		Number=Plur	dema	0	amu	n	rule
 amusable	0		Degree=Pos	dema	0	amusable	a	moby_reverse
 amuse	0	oewn-amuse-v	VerbForm=Inf	dema	0			oewn_form
-amused	0	oewn-amused-a	Degree=Pos	dema	0			oewn_form
-amused	1	oewn-amuse-v	Tense=Past+VerbForm=Part	dema	0			rule
+amused	0	oewn-amuse-v	Tense=Past+VerbForm=Part	dema	0			rule
+amused	1	oewn-amused-a	Degree=Pos	dema	0			oewn_form
 amusedly	0		Degree=Pos	dema	0	amusedly	r	moby_reverse
 amusement	0	oewn-amusement-n	Number=Sing	dema	0			oewn_form
 amusement arcade	0	oewn-amusement_arcade-n	Number=Sing	dema	0			oewn_form
@@ -1592,8 +1586,8 @@ amusers	0		Number=Plur	dema	0	amuser	n	rule
 amuses	0	oewn-amuse-v	Person=3+Tense=Pres	dema	0			rule
 amusia	0		Number=Sing	dema	0	amusia	n	moby_reverse
 amusias	0		Number=Plur	dema	0	amusia	n	rule
-amusing	0	oewn-amusing-a	Degree=Pos	dema	0			oewn_form
-amusing	1	oewn-amuse-v	VerbForm=Ger	dema	0			rule
+amusing	0	oewn-amuse-v	VerbForm=Ger	dema	0			rule
+amusing	1	oewn-amusing-a	Degree=Pos	dema	0			oewn_form
 amusingly	0	oewn-amusingly-r	Degree=Pos	dema	0			oewn_form
 amusingness	0		Number=Sing	dema	0	amusingness	n	moby_reverse
 amusingnesses	0		Number=Plur	dema	0	amusingness	n	rule
