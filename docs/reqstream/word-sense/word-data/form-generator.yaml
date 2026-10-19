@@ -27,14 +27,34 @@ sections:
               - id: WordSense-WordData-FormGenerator-Gerunds
                 title: >-
                   FormGenerator shall give a word that ends in -ing and is the gerund of a verb a verb analysis
-                  with the gerund features ahead of any noun analysis, and shall not give it a plural noun analysis.
+                  with the gerund features ahead of any noun analysis, and shall not give it a plural noun analysis;
+                  it shall not give an -ing noun a plural spelled like its singular, except for the invariant names.
                 tags: [unit]
                 justification: |
                   A participle or gerund that is ranked below an invented plural noun is tagged with the wrong part of
-                  speech.
+                  speech; a mass noun in -ing has no plural spelled like its singular.
                 tests:
                   - WordSenseBuilder_FormGenerator_Data_IngForm_LeadsWithVerb
                   - WordSenseBuilder_FormGenerator_Data_IngForm_IsNotPluralNoun
+                  - WordSenseBuilder_FormGenerator_Data_IngNounPlural_IsNotTheSingular
+
+              - id: WordSense-WordData-FormGenerator-Reproducible
+                title: >-
+                  FormGenerator shall regenerate the committed form tables byte for byte from the committed entry
+                  tables, the committed reviewed input, the lexicon lists and the Open English WordNet and
+                  inflection-database files named by their SHA-256 pins, in an order that depends on nothing but
+                  those inputs, and shall provide a check that fails and names the files when the committed tables
+                  differ from the regeneration or when an input is missing or does not match its pin.
+                tags: [unit]
+                justification: |
+                  Tables that cannot be regenerated from the committed inputs cannot be reviewed; a regenerate-and-diff
+                  check makes a hand edit of the data, or a change of the generator that is not applied to the data,
+                  visible.
+                tests:
+                  - WordSenseBuilder_FormGenerator_Verify_CommittedTables_AreTheRegeneration
+                  - WordSenseBuilder_FormGenerator_Verify_OtherInputs_ReportsDifferences
+                  - WordSenseBuilder_FormGenerator_Run_UnpinnedInput_IsRefused
+                  - WordSenseBuilder_Program_VerifyForms_MissingInput_Fails
 
               - id: WordSense-WordData-FormGenerator-OwnEntries
                 title: >-

@@ -176,9 +176,11 @@ sections:
           - WordSense-WordSenseBuilder-Coverage
           - WordSense-WordSenseBuilder-Corpus
           - WordSense-WordSenseBuilder-Usage
+          - WordSense-WordData-FormGenerator-Reproducible
         tests:
           - WordSenseBuilder_ImageCompiler_Build_IsDeterministic
           - WordSenseBuilder_Appendix_Committed_MatchesCorpus
+          - WordSenseBuilder_FormGenerator_Verify_CommittedTables_AreTheRegeneration
 
       - id: WordSense-Lib-Packaging
         title: >-

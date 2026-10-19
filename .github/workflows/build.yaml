@@ -185,6 +185,20 @@ jobs:
           --configuration Release
           --property:Version=${{ inputs.version }}
 
+      - name: Verify the form tables are the regeneration of the pinned inputs
+        if: matrix.os == 'ubuntu-latest'
+        shell: bash
+        run: |
+          # The builder checks both files against their SHA-256 pins; a wrong or missing file fails the step.
+          mkdir -p artifacts/inputs/agid
+          curl -fsSL --retry 3 -o artifacts/inputs/english-wordnet-2025.xml.gz \
+            https://github.com/globalwordnet/english-wordnet/releases/download/2025-edition/english-wordnet-2025.xml.gz
+          # SourceForge refuses automated downloads, so the Wayback Machine copy of the same archive is used
+          curl -fsSL --retry 3 -o artifacts/inputs/agid.zip \
+            https://web.archive.org/web/2019if_/http://downloads.sourceforge.net/wordlist/agid-2016.01.19.zip
+          unzip -q -o artifacts/inputs/agid.zip -d artifacts/inputs/agid
+          dotnet tools/WordSense.Builder/bin/Release/net10.0/WordSense.Builder.dll verify-forms --repository .
+
       - name: Assert API documentation
         run: >
           dotnet fileassert

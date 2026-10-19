@@ -22,3 +22,4 @@ All scenarios pass.
   `Evaluate_FeatureRestrictedVerdict_AppliesToThoseFeaturesOnly`).
 - **Adjudications** (`ReadAdjudications_SkipsComments`, `ReadAdjudications_NoFile_IsEmpty`,
   `ReadAdjudications_FeatureColumn_RestrictsTheKey`).
+- **Oracle file** (`ReadVerdicts_DuplicateRow_Throws`): a row with two verdicts is rejected.

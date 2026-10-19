@@ -224,6 +224,8 @@ reviews:
       - "tools/WordSense.Builder/Data/AgidImporter.cs"
       - "tools/WordSense.Builder/Data/IrregularSources.cs"
       - "test/WordSense.Builder.Tests/Data/FormGeneratorDataTests.cs"
+      - "test/WordSense.Builder.Tests/Data/FormReproducibilityTests.cs"
+      - "corpus/lexicon/form-frozen.tsv"
       - "test/WordSense.Builder.Tests/Data/FactGeneratorTests.cs"
       - "test/WordSense.Builder.Tests/Data/InflectionRulesTests.cs"
       - "test/DemaConsulting.WordSense.Tests/LexiconFactTests.cs"

@@ -284,6 +284,43 @@ public sealed class OewnImporterTests : IDisposable
     }
 
     /// <summary>
+    ///     The identifier map import fails when two current senses have the same sense key, instead of letting one
+    ///     overwrite the other.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_OewnImporter_ImportPrevious_DuplicateSenseKey_Throws()
+    {
+        // Arrange
+        var data = DataFixture.ImportSlice(_dir);
+        var file = Directory.GetFiles(Path.Combine(data, "sense"), "*.tsv").First(f => File.ReadAllText(f).Contains("fish%1:05:00::", StringComparison.Ordinal));
+        DataFixture.Replace(data, Path.GetRelativePath(data, file), "fish%1:05:00::", "bass%1:05:00::");
+
+        // Act
+        var ex = Assert.Throws<InvalidDataException>(() => OewnImporter.ImportPrevious(DataFixture.SlicePath, data, "test", null));
+
+        // Assert
+        Assert.Contains("bass%1:05:00::", ex.Message, StringComparison.Ordinal);
+        Assert.Contains("exactly one", ex.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The identifier map import accepts data whose sense keys are unique.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_OewnImporter_ImportPrevious_UniqueSenseKeys_Imports()
+    {
+        // Arrange
+        var data = DataFixture.ImportSlice(_dir);
+
+        // Act
+        var result = OewnImporter.ImportPrevious(DataFixture.SlicePath, data, "test", null);
+
+        // Assert
+        Assert.Equal(0, result.SenseRows);
+        Assert.True(result.Unchanged > 0);
+    }
+
+    /// <summary>
     ///     Malformed XML is reported as invalid data.
     /// </summary>
     [Fact]

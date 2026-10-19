@@ -90,14 +90,14 @@ whose encoder is never needed is never downloaded.
 
 | Model | Best sense, holdout / real text | Download | Latency per sentence | Memory added |
 | ----- | ------------------------------: | -------: | -------------------: | -----------: |
-| Basic | about 89% / 85% | none (83 KiB embedded) | 0.03 ms (about 30 µs), under 0.1 ms | about 21 MiB |
+| Basic | about 89% / 85% | none (83 KiB embedded) | 0.03 ms (about 30 µs), under 0.1 ms | about 2 MiB |
 | MiniLM | about 97% / 93% | 22 MiB | about 2 ms | about 64 MiB |
 | BertBaseCased | about 99% / 97% | 104 MiB | about 9 ms | about 150 MiB |
 
-The memory column is measured as the growth of the private memory of the process (after a full garbage collection)
-from before the model was created to after it classified warm-up sentences, so it is not a count of the model's own
-data: for Basic (an 83 KiB embedded table) the about 21 MiB are the decoded tables and working buffers plus allocator,
-JIT-compiled code and runtime effects. The word lexicon (about 15 MiB) was loaded before and is not included.
+The memory column is measured as the larger of the growth of the private memory of the process and the growth of the
+managed heap (both after a full garbage collection) from before the model was created to after it classified warm-up
+sentences, so it is not a count of the model's own data: for Basic (an 83 KiB embedded table) the about 2 MiB are the
+decoded tables and working buffers. The word lexicon (about 15 MiB) was loaded before and is not included.
 
 **Basic is enough** when nothing may be downloaded, startup time and memory must stay small, or ONNX Runtime cannot be
 shipped, and you can accept about one wrong answer in six or seven ambiguous words on real text (a confidence threshold
@@ -658,7 +658,8 @@ in `corpus/`; the format of the files is described in `corpus/README.md` and the
 | ------- | ------------ |
 | `import-moby` | Rebuilds `corpus/lexicon/lexicon.tsv` from the pinned Moby file given by `--input` |
 | `compile-image` | Compiles the tables of `data/` into the embedded word image (`wordsense.img`), with inflections |
-| `rebuild-forms --agid FILE --oewn FILE` | Regenerates the inflected-form tables from two independent sources |
+| `rebuild-forms` | Regenerates the form tables from the committed inputs and the pinned files in `artifacts/inputs` |
+| `verify-forms` | Regenerates into a temporary directory; fails naming the files that differ from the committed ones |
 | `audit-forms [--seed N]` | Audits a seeded stratified sample of generated forms against a checker; fails at 1% error |
 | `generate-facts [--seed N]` | Derives the source-derived lexicon facts and checks them against the word table |
 | `import-agid --input FILE` | Derives the irregular forms of dictionary words from the inflection database `infl.txt` |

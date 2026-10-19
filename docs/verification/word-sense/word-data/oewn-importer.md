@@ -23,5 +23,5 @@ All scenarios below pass.
 - **Layout** (`TextTables_KeepOrder`, `NonAsciiLemmas_GoToUnderscoreFile`, `LowThreshold_SplitsAndUpdatesSchema`).
 - **Safety** (`Twice_IsByteIdentical`, `HashPin_IsChecked`, `ExistingTables_RefusesWithoutOverwrite`) and rejected
   input (`MalformedXml_Throws`, `NoLexicon_Throws`, `UnknownRelation_Throws`, `SatelliteWithoutHead_Throws`,
-  `MissingSynset_Throws`).
+  `MissingSynset_Throws`, `ImportPrevious_DuplicateSenseKey_Throws`).
 - **Command** (`Import_PinnedHash_RejectsOtherFile`, `Import_ExistingTables_NeedsOverwrite`, `Import_NoInput_ReportsUsage`).
