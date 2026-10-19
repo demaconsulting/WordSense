@@ -46,7 +46,7 @@ aid stations	0	oewn-aid_station-n	Number=Plur	dema	0			rule
 aide	0	oewn-aide-n	Number=Sing	dema	0			oewn_form
 aide-de-camp	0	oewn-aide-de-camp-n	Number=Sing	dema	0			oewn_form
 aide-memoire	0	oewn-aide-memoire-n	Number=Sing	dema	0			oewn_form
-aided	0	oewn-aid-v	Tense=Past	dema	1			carried
+aided	0	oewn-aid-v	Tense=Past+VerbForm=Part	dema	1			carried
 aider	0		Number=Sing	dema	0	aider	n	moby_reverse
 aiders	0		Number=Plur	dema	0	aider	n	rule
 aides	0	oewn-aide-n	Number=Plur	dema	0			rule
@@ -109,7 +109,7 @@ aim	0	oewn-aim-n	Number=Sing	dema	1			carried
 aim	1	oewn-aim-v	VerbForm=Inf	dema	1			carried
 aimak	0		Number=Sing	dema	0	aimak	n	moby_reverse
 aimaks	0		Number=Plur	dema	0	aimak	n	rule
-aimed	0	oewn-aim-v	Tense=Past	dema	1			carried
+aimed	0	oewn-aim-v	Tense=Past+VerbForm=Part	dema	1			carried
 aimer	0		Number=Sing	dema	0	aimer	n	moby_reverse
 aimers	0		Number=Plur	dema	0	aimer	n	rule
 aimful	0		Degree=Pos	dema	0	aimful	a	moby_reverse

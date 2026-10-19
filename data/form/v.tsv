@@ -1023,7 +1023,7 @@ value-added tax	0	oewn-value-added_tax-n	Number=Sing	dema	0			oewn_form
 value-added taxes	0	oewn-value-added_tax-n	Number=Plur	dema	0			rule
 value-system	0	oewn-value-system-n	Number=Sing	dema	0			oewn_form
 value-systems	0	oewn-value-system-n	Number=Plur	dema	0			rule
-valued	0	oewn-value-v	Tense=Past	dema	1			carried
+valued	0	oewn-value-v	Tense=Past+VerbForm=Part	dema	1			carried
 valued	1	oewn-valued-a	Degree=Pos	dema	0			carried
 valueless	0	oewn-valueless-a	Degree=Pos	dema	0			oewn_form
 valuelessness	0	oewn-valuelessness-n	Number=Sing	dema	0			oewn_form
@@ -2530,7 +2530,7 @@ venture capitalisms	0	oewn-venture_capitalism-n	Number=Plur	dema	0			rule
 venture capitalist	0	oewn-venture_capitalist-n	Number=Sing	dema	0			oewn_form
 venture capitalists	0	oewn-venture_capitalist-n	Number=Plur	dema	0			rule
 venture capitals	0	oewn-venture_capital-n	Number=Plur	dema	0			rule
-ventured	0	oewn-venture-v	Tense=Past	dema	1			carried
+ventured	0	oewn-venture-v	Tense=Past+VerbForm=Part	dema	1			carried
 venturer	0	oewn-venturer-n	Number=Sing	dema	0			oewn_form
 venturers	0	oewn-venturer-n	Number=Plur	dema	0			rule
 ventures	0	oewn-venture-n	Number=Plur	dema	1			carried
@@ -3582,7 +3582,7 @@ view as	0	oewn-view_as-v	VerbForm=Inf	dema	0			oewn_form
 view finder	0	oewn-view_finder-n	Number=Sing	dema	0			oewn_form
 view finders	0	oewn-view_finder-n	Number=Plur	dema	0			rule
 viewable	0	oewn-viewable-a	Degree=Pos	dema	0			oewn_form
-viewed	0	oewn-view-v	Tense=Past	dema	1			carried
+viewed	0	oewn-view-v	Tense=Past+VerbForm=Part	dema	1			carried
 viewed as	0	oewn-view_as-v	Tense=Past+VerbForm=Part	dema	0			rule
 viewer	0	oewn-viewer-n	Number=Sing	dema	0			oewn_form
 viewers	0	oewn-viewer-n	Number=Plur	dema	0			rule
@@ -4288,7 +4288,7 @@ visitation right	0	oewn-visitation_right-n	Number=Sing	dema	0			oewn_form
 visitation rights	0	oewn-visitation_right-n	Number=Plur	dema	0			rule
 visitations	0	oewn-visitation-n	Number=Plur	dema	0			rule
 visitatorial	0		Degree=Pos	dema	0	visitatorial	a	moby_reverse
-visited	0	oewn-visit-v	Tense=Past	dema	1			carried
+visited	0	oewn-visit-v	Tense=Past+VerbForm=Part	dema	1			carried
 visiting	0	oewn-visit-v	VerbForm=Ger	dema	1			carried
 visiting	1	oewn-visit-n	Number=Sing+VerbForm=Ger	dema	1			carried
 visiting	2	oewn-visiting-n	Number=Sing	dema	0			oewn_form
@@ -4845,7 +4845,7 @@ voice over	0	oewn-voice_over-n	Number=Sing	dema	0			oewn_form
 voice overs	0	oewn-voice_over-n	Number=Plur	dema	0			rule
 voice part	0	oewn-voice_part-n	Number=Sing	dema	0			oewn_form
 voice parts	0	oewn-voice_part-n	Number=Plur	dema	0			rule
-voiced	0	oewn-voice-v	Tense=Past	dema	1			carried
+voiced	0	oewn-voice-v	Tense=Past+VerbForm=Part	dema	1			carried
 voiced	1	oewn-voiced-a	Degree=Pos	dema	0			carried
 voiced sound	0	oewn-voiced_sound-n	Number=Sing	dema	0			oewn_form
 voiced sounds	0	oewn-voiced_sound-n	Number=Plur	dema	0			rule
@@ -5210,7 +5210,7 @@ vote in	0	oewn-vote_in-v	VerbForm=Inf	dema	0			oewn_form
 vote of confidence	0	oewn-vote_of_confidence-n	Number=Sing	dema	0			oewn_form
 vote out	0	oewn-vote_out-v	VerbForm=Inf	dema	0			oewn_form
 voteable	0		Degree=Pos	dema	0	voteable	a	moby_reverse
-voted	0	oewn-vote-v	Tense=Past	dema	1			carried
+voted	0	oewn-vote-v	Tense=Past+VerbForm=Part	dema	1			carried
 voted down	0	oewn-vote_down-v	Tense=Past+VerbForm=Part	dema	0			rule
 voted in	0	oewn-vote_in-v	Tense=Past+VerbForm=Part	dema	0			rule
 voted out	0	oewn-vote_out-v	Tense=Past+VerbForm=Part	dema	0			rule

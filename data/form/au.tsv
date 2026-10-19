@@ -365,7 +365,7 @@ augmentations	0	oewn-augmentation-n	Number=Plur	dema	0			rule
 augmentative	0	oewn-augmentative-a	Degree=Pos	dema	0			oewn_form
 augmentative	1		Number=Sing	dema	0	augmentative	n	moby_reverse
 augmentatively	0		Degree=Pos	dema	0	augmentatively	r	moby_reverse
-augmented	0	oewn-augment-v	Tense=Past	dema	1			carried
+augmented	0	oewn-augment-v	Tense=Past+VerbForm=Part	dema	1			carried
 augmented	1	oewn-augmented-a	Degree=Pos	dema	0			carried
 augmenter	0		Number=Sing	dema	0	augmenter	n	moby_reverse
 augmenters	0		Number=Plur	dema	0	augmenter	n	rule

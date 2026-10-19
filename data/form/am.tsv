@@ -1290,7 +1290,7 @@ amosites	0		Number=Plur	dema	0	amosite	n	rule
 amount	0	oewn-amount-n	Number=Sing	dema	1			carried
 amount	1	oewn-amount-v	VerbForm=Inf	dema	1			carried
 amount of money	0	oewn-amount_of_money-n	Number=Sing	dema	0			oewn_form
-amounted	0	oewn-amount-v	Tense=Past	dema	1			carried
+amounted	0	oewn-amount-v	Tense=Past+VerbForm=Part	dema	1			carried
 amounting	0	oewn-amount-v	VerbForm=Ger	dema	1			carried
 amounting	1	oewn-amount-n	Number=Sing+VerbForm=Ger	dema	1			carried
 amounts	0	oewn-amount-n	Number=Plur	dema	1			carried

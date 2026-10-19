@@ -50,5 +50,5 @@ choice, not because the rows are wrong.
 ## Coverage cost
 
 Requiring two independent sources removed about 12,000 candidate rows; the table has 13,074 fewer spellings than before
-(378,652 to 365,581) and 413,616 to 400,382 analyses. Regular -s, -ed and -ing forms of real lemmas are kept, so the
+(378,652 to 365,581) and 413,616 to 400,395 analyses. Regular -s, -ed and -ing forms of real lemmas are kept, so the
 common words stay resolved.

@@ -2415,7 +2415,7 @@ performings	0	oewn-performing-n	Number=Plur	dema	0			rule
 performs	0	oewn-perform-v	Person=3+Tense=Pres	dema	0			rule
 perfume	0	oewn-perfume-n	Number=Sing	dema	1			carried
 perfume	1	oewn-perfume-v	VerbForm=Inf	dema	1			carried
-perfumed	0	oewn-perfume-v	Tense=Past	dema	1			carried
+perfumed	0	oewn-perfume-v	Tense=Past+VerbForm=Part	dema	1			carried
 perfumeless	0		Degree=Pos	dema	0	perfumeless	a	moby_reverse
 perfumer	0	oewn-perfumer-n	Number=Sing	dema	0			oewn_form
 perfumeries	0	oewn-perfumery-n	Number=Plur	dema	0			rule

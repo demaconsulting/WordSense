@@ -1027,7 +1027,7 @@ walkabout	0	oewn-walkabout-n	Number=Sing	dema	0			oewn_form
 walkabouts	0	oewn-walkabout-n	Number=Plur	dema	0			rule
 walkaway	0	oewn-walkaway-n	Number=Sing	dema	0			oewn_form
 walkaways	0	oewn-walkaway-n	Number=Plur	dema	0			rule
-walked	0	oewn-walk-v	Tense=Past	dema	1			carried
+walked	0	oewn-walk-v	Tense=Past+VerbForm=Part	dema	1			carried
 walked about	0	oewn-walk_about-v	Tense=Past+VerbForm=Part	dema	0			rule
 walked around	0	oewn-walk_around-v	Tense=Past+VerbForm=Part	dema	0			rule
 walked away	0	oewn-walk_away-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -1672,7 +1672,7 @@ warrant officers	0	oewn-warrant_officer-n	Number=Plur	dema	0			rule
 warrantable	0		Degree=Pos	dema	0	warrantable	a	moby_reverse
 warrantableness	0		Number=Sing	dema	0	warrantableness	n	moby_reverse
 warrantablenesses	0		Number=Plur	dema	0	warrantableness	n	rule
-warranted	0	oewn-warrant-v	Tense=Past	dema	1			carried
+warranted	0	oewn-warrant-v	Tense=Past+VerbForm=Part	dema	1			carried
 warrantee	0	oewn-warrantee-n	Number=Sing	dema	0			oewn_form
 warrantees	0	oewn-warrantee-n	Number=Plur	dema	0			rule
 warranter	0	oewn-warranter-n	Number=Sing	dema	0			oewn_form
@@ -1919,7 +1919,7 @@ wastebasket	0	oewn-wastebasket-n	Number=Sing	dema	0			oewn_form
 wastebaskets	0	oewn-wastebasket-n	Number=Plur	dema	0			rule
 wastebin	0	oewn-wastebin-n	Number=Sing	dema	0			oewn_form
 wastebins	0	oewn-wastebin-n	Number=Plur	dema	0			rule
-wasted	0	oewn-waste-v	Tense=Past	dema	1			carried
+wasted	0	oewn-waste-v	Tense=Past+VerbForm=Part	dema	1			carried
 wasted one's time	0	oewn-waste_one-ap-s_time-v	Tense=Past+VerbForm=Part	dema	0			rule
 wasteful	0	oewn-wasteful-a	Degree=Pos	dema	0			oewn_form
 wastefully	0	oewn-wastefully-r	Degree=Pos	dema	0			oewn_form
@@ -2007,7 +2007,7 @@ watchcase	0		Number=Sing	dema	0	watchcase	n	moby_reverse
 watchcases	0		Number=Plur	dema	0	watchcase	n	rule
 watchdog	0	oewn-watchdog-n	Number=Sing	dema	0			oewn_form
 watchdogs	0	oewn-watchdog-n	Number=Plur	dema	0			rule
-watched	0	oewn-watch-v	Tense=Past	dema	1			carried
+watched	0	oewn-watch-v	Tense=Past+VerbForm=Part	dema	1			carried
 watched out	0	oewn-watch_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 watched over	0	oewn-watch_over-v	Tense=Past+VerbForm=Part	dema	0			rule
 watcher	0	oewn-watcher-n	Number=Sing	dema	0			oewn_form
@@ -2632,7 +2632,7 @@ wave-particle dualities	0	oewn-wave-particle_duality-n	Number=Plur	dema	0			rule
 wave-particle duality	0	oewn-wave-particle_duality-n	Number=Sing	dema	0			oewn_form
 waveband	0	oewn-waveband-n	Number=Sing	dema	0			oewn_form
 wavebands	0	oewn-waveband-n	Number=Plur	dema	0			rule
-waved	0	oewn-wave-v	Tense=Past	dema	1			carried
+waved	0	oewn-wave-v	Tense=Past+VerbForm=Part	dema	1			carried
 waved	1	dema-waved-a	Degree=Pos	dema	0			carried
 waved off	0	oewn-wave_off-v	Tense=Past+VerbForm=Part	dema	0			rule
 waveform	0	oewn-waveform-n	Number=Sing	dema	0			oewn_form
@@ -2728,7 +2728,7 @@ waxberries	0	oewn-waxberry-n	Number=Plur	dema	0			rule
 waxberry	0	oewn-waxberry-n	Number=Sing	dema	0			oewn_form
 waxbill	0		Number=Sing	dema	0	waxbill	n	moby_reverse
 waxbills	0		Number=Plur	dema	0	waxbill	n	rule
-waxed	0	oewn-wax-v	Tense=Past	dema	1			carried
+waxed	0	oewn-wax-v	Tense=Past+VerbForm=Part	dema	1			carried
 waxen	0	oewn-waxen-a	Degree=Pos	dema	0			oewn_form
 waxen	1		VerbForm=Inf	dema	0	waxen	v	moby_reverse
 waxer	0		Number=Sing	dema	0	waxer	n	moby_reverse
@@ -4221,7 +4221,7 @@ wheelbase	0	oewn-wheelbase-n	Number=Sing	dema	0			oewn_form
 wheelbases	0	oewn-wheelbase-n	Number=Plur	dema	0			rule
 wheelchair	0	oewn-wheelchair-n	Number=Sing	dema	0			oewn_form
 wheelchairs	0	oewn-wheelchair-n	Number=Plur	dema	0			rule
-wheeled	0	oewn-wheel-v	Tense=Past	dema	1			carried
+wheeled	0	oewn-wheel-v	Tense=Past+VerbForm=Part	dema	1			carried
 wheeled	1	oewn-wheeled-a	Degree=Pos	dema	0			carried
 wheeled around	0	oewn-wheel_around-v	Tense=Past+VerbForm=Part	dema	0			rule
 wheeled forecarriage	0	oewn-wheeled_forecarriage-n	Number=Sing	dema	0			oewn_form
@@ -4512,7 +4512,7 @@ whiplash injuries	0	oewn-whiplash_injury-n	Number=Plur	dema	0			rule
 whiplash injury	0	oewn-whiplash_injury-n	Number=Sing	dema	0			oewn_form
 whiplashes	0	oewn-whiplash-n	Number=Plur	dema	0			rule
 whiplike	0	oewn-whiplike-a	Degree=Pos	dema	0			oewn_form
-whipped	0	oewn-whip-v	Tense=Past	dema	1			carried
+whipped	0	oewn-whip-v	Tense=Past+VerbForm=Part	dema	1			carried
 whipped cream	0	oewn-whipped_cream-n	Number=Sing	dema	0			oewn_form
 whipped creams	0	oewn-whipped_cream-n	Number=Plur	dema	0			rule
 whipped through	0	oewn-whip_through-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -4707,7 +4707,7 @@ whisky sour	0	oewn-whisky_sour-n	Number=Sing	dema	0			oewn_form
 whisky sours	0	oewn-whisky_sour-n	Number=Plur	dema	0			rule
 whisper	0	oewn-whisper-n	Number=Sing	dema	1			carried
 whisper	1	oewn-whisper-v	VerbForm=Inf	dema	1			carried
-whispered	0	oewn-whisper-v	Tense=Past	dema	1			carried
+whispered	0	oewn-whisper-v	Tense=Past+VerbForm=Part	dema	1			carried
 whisperer	0	oewn-whisperer-n	Number=Sing	dema	0			oewn_form
 whisperers	0	oewn-whisperer-n	Number=Plur	dema	0			rule
 whispering	0	oewn-whisper-v	VerbForm=Ger	dema	1			carried
@@ -8085,7 +8085,7 @@ workboxes	0	oewn-workbox-n	Number=Plur	dema	0			rule
 workday	0	oewn-workday-n	Number=Sing	dema	0			oewn_form
 workday	1		Degree=Pos	dema	0	workday	a	moby_reverse
 workdays	0	oewn-workday-n	Number=Plur	dema	0			rule
-worked	0	oewn-work-v	Tense=Past	dema	1			carried
+worked	0	oewn-work-v	Tense=Past+VerbForm=Part	dema	1			carried
 worked	1	dema-worked-a	Degree=Pos	dema	0			carried
 worked at	0	oewn-work_at-v	Tense=Past+VerbForm=Part	dema	0			rule
 worked in	0	oewn-work_in-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -8452,7 +8452,7 @@ wouldsted	0		Tense=Past+VerbForm=Part	dema	0	wouldst	v	rule
 wouldsting	0		VerbForm=Ger	dema	0	wouldst	v	rule
 wouldsts	0		Person=3+Tense=Pres	dema	0	wouldst	v	rule
 wound	0	oewn-wound-n	Number=Sing	dema	1			carried
-wound	1	oewn-wind-v-1		dema	1			carried
+wound	1	oewn-wind-v-1	Tense=Past+VerbForm=Part	dema	1			carried
 wound	2	oewn-wind-v-2	Tense=Past+VerbForm=Part	dema	0			hand
 wound tumor virus	0	oewn-wound_tumor_virus-n	Number=Sing	dema	0			oewn_form
 wound up	0	oewn-wound_up-a	Degree=Pos	dema	0			oewn_form
@@ -8570,7 +8570,7 @@ wreck	0	oewn-wreck-n	Number=Sing	dema	1			carried
 wreck	1	oewn-wreck-v	VerbForm=Inf	dema	1			carried
 wreckage	0	oewn-wreckage-n	Number=Sing	dema	0			oewn_form
 wreckages	0	oewn-wreckage-n	Number=Plur	dema	0			rule
-wrecked	0	oewn-wreck-v	Tense=Past	dema	1			carried
+wrecked	0	oewn-wreck-v	Tense=Past+VerbForm=Part	dema	1			carried
 wrecker	0	oewn-wrecker-n	Number=Sing	dema	0			oewn_form
 wreckers	0	oewn-wrecker-n	Number=Plur	dema	0			rule
 wreckfish	0	oewn-wreckfish-n	Number=Sing	dema	0			oewn_form
@@ -8860,7 +8860,7 @@ wrongdoer	0	oewn-wrongdoer-n	Number=Sing	dema	0			oewn_form
 wrongdoers	0	oewn-wrongdoer-n	Number=Plur	dema	0			rule
 wrongdoing	0	oewn-wrongdoing-n	Number=Sing	dema	0			oewn_form
 wrongdoings	0	oewn-wrongdoing-n	Number=Plur	dema	0			rule
-wronged	0	oewn-wrong-v	Tense=Past	dema	1			carried
+wronged	0	oewn-wrong-v	Tense=Past+VerbForm=Part	dema	1			carried
 wronger	0		Number=Sing	dema	0	wronger	n	moby_reverse
 wronger	1	oewn-wrong-a	Degree=Cmp	dema	0			rule
 wrongers	0		Number=Plur	dema	0	wronger	n	rule

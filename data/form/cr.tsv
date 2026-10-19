@@ -695,7 +695,7 @@ crash-dive	0	oewn-crash-dive-v	VerbForm=Inf	dema	0			oewn_form
 crash-dived	0	oewn-crash-dive-v	Tense=Past+VerbForm=Part	dema	0			rule
 crash-dives	0	oewn-crash-dive-v	Person=3+Tense=Pres	dema	0			rule
 crash-diving	0	oewn-crash-dive-v	VerbForm=Ger	dema	0			rule
-crashed	0	oewn-crash-v	Tense=Past	dema	1			carried
+crashed	0	oewn-crash-v	Tense=Past+VerbForm=Part	dema	1			carried
 crashed land	0	oewn-crash_land-v	Tense=Past+VerbForm=Part	dema	0			rule
 crasher	0	oewn-crasher-n	Number=Sing	dema	0			oewn_form
 crashers	0	oewn-crasher-n	Number=Plur	dema	0			rule
@@ -1083,7 +1083,7 @@ creditable	0	oewn-creditable-a	Degree=Pos	dema	0			oewn_form
 creditableness	0		Number=Sing	dema	0	creditableness	n	moby_reverse
 creditablenesses	0		Number=Plur	dema	0	creditableness	n	rule
 creditably	0	oewn-creditably-r	Degree=Pos	dema	0			oewn_form
-credited	0	oewn-credit-v	Tense=Past	dema	1			carried
+credited	0	oewn-credit-v	Tense=Past+VerbForm=Part	dema	1			carried
 crediting	0	oewn-credit-v	VerbForm=Ger	dema	1			carried
 crediting	1	oewn-credit-n	Number=Sing+VerbForm=Ger	dema	1			carried
 creditless	0		Degree=Pos	dema	0	creditless	a	moby_reverse
@@ -1550,7 +1550,7 @@ cricks	1	oewn-crick-v	Person=3+Tense=Pres	dema	0			rule
 cricoid	0		Degree=Pos	dema	0	cricoid	a	moby_reverse
 cricoid	1		Number=Sing	dema	0	cricoid	n	moby_reverse
 cricopharyngeal	0		Degree=Pos	dema	0	cricopharyngeal	a	moby_reverse
-cried	0	oewn-cry-v	Tense=Past	dema	1			carried
+cried	0	oewn-cry-v	Tense=Past+VerbForm=Part	dema	1			carried
 cried for	0	oewn-cry_for-v	Tense=Past+VerbForm=Part	dema	0			rule
 cried out	0	oewn-cry_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 cried out for	0	oewn-cry_out_for-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -1997,7 +1997,7 @@ crookback	1	oewn-crookback-a	Degree=Pos	dema	0			oewn_form
 crookbacked	0	oewn-crookbacked-a	Degree=Pos	dema	0			oewn_form
 crookbacks	0	oewn-crookback-n	Number=Plur	dema	0			rule
 crooked	0	oewn-crooked-a	Degree=Pos	dema	1			carried
-crooked	1	oewn-crook-v	Tense=Past	dema	1			carried
+crooked	1	oewn-crook-v	Tense=Past+VerbForm=Part	dema	1			carried
 crooked-stemmed aster	0	oewn-crooked-stemmed_aster-n	Number=Sing	dema	0			oewn_form
 crooked-stemmed asters	0	oewn-crooked-stemmed_aster-n	Number=Plur	dema	0			rule
 crookedly	0	oewn-crookedly-r	Degree=Pos	dema	0			oewn_form
@@ -2267,7 +2267,7 @@ crosscutter	0		Number=Sing	dema	0	crosscutter	n	moby_reverse
 crosscutters	0		Number=Plur	dema	0	crosscutter	n	rule
 crosscutting	0	oewn-crosscut-v	VerbForm=Ger	dema	0			oewn_form
 crosse	0	oewn-crosse-n	Number=Sing	dema	0			oewn_form
-crossed	0	oewn-cross-v	Tense=Past	dema	1			carried
+crossed	0	oewn-cross-v	Tense=Past+VerbForm=Part	dema	1			carried
 crossed	1	oewn-crossed-a	Degree=Pos	dema	0			carried
 crossed examine	0	oewn-cross_examine-v	Tense=Past+VerbForm=Part	dema	0			rule
 crossed eye	0	oewn-crossed_eye-n	Number=Sing	dema	0			oewn_form
@@ -2490,7 +2490,7 @@ crowd control	0	oewn-crowd_control-n	Number=Sing	dema	0			oewn_form
 crowd controls	0	oewn-crowd_control-n	Number=Plur	dema	0			rule
 crowd out	0	oewn-crowd_out-v	VerbForm=Inf	dema	0			oewn_form
 crowd together	0	oewn-crowd_together-v	VerbForm=Inf	dema	0			oewn_form
-crowded	0	oewn-crowd-v	Tense=Past	dema	1			carried
+crowded	0	oewn-crowd-v	Tense=Past+VerbForm=Part	dema	1			carried
 crowded	1	oewn-crowded-a	Degree=Pos	dema	0			carried
 crowded out	0	oewn-crowd_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 crowded together	0	oewn-crowd_together-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -2572,7 +2572,7 @@ crownbeard	0	oewn-crownbeard-n	Number=Sing	dema	0			oewn_form
 crownbeards	0	oewn-crownbeard-n	Number=Plur	dema	0			rule
 crowncapping	0		Degree=Pos	dema	0	crowncapping	a	moby_reverse
 crowncapping	1		VerbForm=Inf	dema	0	crowncapping	v	moby_reverse
-crowned	0	oewn-crown-v	Tense=Past	dema	1			carried
+crowned	0	oewn-crown-v	Tense=Past+VerbForm=Part	dema	1			carried
 crowned	1	oewn-crowned-a	Degree=Pos	dema	0			carried
 crowned head	0	oewn-crowned_head-n	Number=Sing	dema	0			oewn_form
 crowned heads	0	oewn-crowned_head-n	Number=Plur	dema	0			rule

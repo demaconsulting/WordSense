@@ -567,7 +567,7 @@ pull-up	0	oewn-pull-up-n	Number=Sing	dema	0			oewn_form
 pull-ups	0	oewn-pull-up-n	Number=Plur	dema	0			rule
 pullback	0	oewn-pullback-n	Number=Sing	dema	0			oewn_form
 pullbacks	0	oewn-pullback-n	Number=Plur	dema	0			rule
-pulled	0	oewn-pull-v	Tense=Past	dema	1			carried
+pulled	0	oewn-pull-v	Tense=Past+VerbForm=Part	dema	1			carried
 pulled a face	0	oewn-pull_a_face-v	Tense=Past+VerbForm=Part	dema	0			rule
 pulled a fast one on	0	oewn-pull_a_fast_one_on-v	Tense=Past+VerbForm=Part	dema	0			rule
 pulled ahead	0	oewn-pull_ahead-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -869,7 +869,7 @@ pump wells	0	oewn-pump_well-n	Number=Plur	dema	0			rule
 pump-and-dump scheme	0	oewn-pump-and-dump_scheme-n	Number=Sing	dema	0			oewn_form
 pump-and-dump schemes	0	oewn-pump-and-dump_scheme-n	Number=Plur	dema	0			rule
 pump-type pliers	0	oewn-pump-type_pliers-n	Number=Sing	dema	0			oewn_form
-pumped	0	oewn-pump-v	Tense=Past	dema	1			carried
+pumped	0	oewn-pump-v	Tense=Past+VerbForm=Part	dema	1			carried
 pumped up	0	oewn-pumped_up-a	Degree=Pos	dema	0			oewn_form
 pumped-up	0	oewn-pumped-up-a	Degree=Pos	dema	0			oewn_form
 pumpernickel	0	oewn-pumpernickel-n	Number=Sing	dema	0			oewn_form
@@ -934,7 +934,7 @@ punchboard	0	oewn-punchboard-n	Number=Sing	dema	0			oewn_form
 punchboards	0	oewn-punchboard-n	Number=Plur	dema	0			rule
 punchbowl	0		Number=Sing	dema	0	punchbowl	n	moby_reverse
 punchbowls	0		Number=Plur	dema	0	punchbowl	n	rule
-punched	0	oewn-punch-v	Tense=Past	dema	1			carried
+punched	0	oewn-punch-v	Tense=Past+VerbForm=Part	dema	1			carried
 punched card	0	oewn-punched_card-n	Number=Sing	dema	0			oewn_form
 punched cards	0	oewn-punched_card-n	Number=Plur	dema	0			rule
 punched in	0	oewn-punch_in-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -1630,7 +1630,7 @@ pushcart	0	oewn-pushcart-n	Number=Sing	dema	0			oewn_form
 pushcarts	0	oewn-pushcart-n	Number=Plur	dema	0			rule
 pushchair	0	oewn-pushchair-n	Number=Sing	dema	0			oewn_form
 pushchairs	0	oewn-pushchair-n	Number=Plur	dema	0			rule
-pushed	0	oewn-push-v	Tense=Past	dema	1			carried
+pushed	0	oewn-push-v	Tense=Past+VerbForm=Part	dema	1			carried
 pushed	1	dema-pushed-a	Degree=Pos	dema	0			carried
 pushed around	0	oewn-push_around-v	Tense=Past+VerbForm=Part	dema	0			rule
 pushed aside	0	oewn-push_aside-v	Tense=Past+VerbForm=Part	dema	0			rule

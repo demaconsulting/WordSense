@@ -1469,7 +1469,7 @@ occasionalities	0		Number=Plur	dema	0	occasionality	n	rule
 occasionality	0		Number=Sing	dema	0	occasionality	n	moby_reverse
 occasionally	0	oewn-occasionally-r	Degree=Pos	dema	0			oewn_form
 occasionalness	0		Number=Sing	dema	0	occasionalness	n	moby_reverse
-occasioned	0	oewn-occasion-v	Tense=Past	dema	1			carried
+occasioned	0	oewn-occasion-v	Tense=Past+VerbForm=Part	dema	1			carried
 occasioning	0	oewn-occasion-v	VerbForm=Ger	dema	1			carried
 occasioning	1	oewn-occasion-n	Number=Sing+VerbForm=Ger	dema	1			carried
 occasions	0	oewn-occasion-n	Number=Plur	dema	1			carried
@@ -2145,7 +2145,7 @@ offer price	0	oewn-offer_price-n	Number=Sing	dema	0			oewn_form
 offer prices	0	oewn-offer_price-n	Number=Plur	dema	0			rule
 offer up	0	oewn-offer_up-v	VerbForm=Inf	dema	0			oewn_form
 offerable	0		Degree=Pos	dema	0	offerable	a	moby_reverse
-offered	0	oewn-offer-v	Tense=Past	dema	1			carried
+offered	0	oewn-offer-v	Tense=Past+VerbForm=Part	dema	1			carried
 offered up	0	oewn-offer_up-v	Tense=Past+VerbForm=Part	dema	0			rule
 offerer	0	oewn-offerer-n	Number=Sing	dema	0			oewn_form
 offerers	0	oewn-offerer-n	Number=Plur	dema	0			rule
@@ -2269,6 +2269,7 @@ offscourings	0		Number=Plur	dema	0	offscouring	n	rule
 offscreen	0		Degree=Pos	dema	0	offscreen	a	moby_reverse
 offset	0	oewn-offset-n	Number=Sing	dema	1			carried
 offset	1	oewn-offset-v	VerbForm=Inf	dema	1			carried
+offset	2	oewn-offset-v	Tense=Past+VerbForm=Part	dema	0			hand
 offset lithographies	0	oewn-offset_lithography-n	Number=Plur	dema	0			rule
 offset lithography	0	oewn-offset_lithography-n	Number=Sing	dema	0			oewn_form
 offset press	0	oewn-offset_press-n	Number=Sing	dema	0			oewn_form
@@ -4515,7 +4516,7 @@ orbital rotations	0	oewn-orbital_rotation-n	Number=Plur	dema	0			rule
 orbitale	0	oewn-orbitale-n	Number=Sing	dema	0			oewn_form
 orbitales	0	oewn-orbitale-n	Number=Plur	dema	0			rule
 orbitals	0		Number=Plur	dema	0	orbital	n	rule
-orbited	0	oewn-orbit-v	Tense=Past	dema	1			carried
+orbited	0	oewn-orbit-v	Tense=Past+VerbForm=Part	dema	1			carried
 orbiter	0	oewn-orbiter-n	Number=Sing	dema	0			oewn_form
 orbiters	0	oewn-orbiter-n	Number=Plur	dema	0			rule
 orbiting	0	oewn-orbit-v	VerbForm=Ger	dema	1			carried
@@ -4951,7 +4952,7 @@ orientation course	0	oewn-orientation_course-n	Number=Sing	dema	0			oewn_form
 orientation courses	0	oewn-orientation_course-n	Number=Plur	dema	0			rule
 orientations	0	oewn-orientation-n	Number=Plur	dema	0			rule
 orientative	0		Degree=Pos	dema	0	orientative	a	moby_reverse
-oriented	0	oewn-orient-v	Tense=Past	dema	1			carried
+oriented	0	oewn-orient-v	Tense=Past+VerbForm=Part	dema	1			carried
 orienteering	0		Number=Sing	dema	0	orienteering	n	moby_reverse
 orienteerings	0		Number=Plur	dema	0	orienteering	n	rule
 orienting	0	oewn-orient-v	VerbForm=Ger	dema	1			carried
@@ -11509,6 +11510,7 @@ overruling	0	oewn-overrule-v	VerbForm=Ger	dema	0			rule
 overrulingly	0		Degree=Pos	dema	0	overrulingly	r	moby_reverse
 overrun	0	oewn-overrun-n	Number=Sing	dema	1			carried
 overrun	1	oewn-overrun-v	VerbForm=Inf	dema	1			carried
+overrun	2	oewn-overrun-v	VerbForm=Part	dema	0			irregular_list
 overrunning	0	oewn-overrun-v	VerbForm=Ger	dema	0			oewn_form
 overruns	0	oewn-overrun-n	Number=Plur	dema	1			carried
 overruns	1	oewn-overrun-v	Person=3+Tense=Pres	dema	1			carried

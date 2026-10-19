@@ -935,7 +935,7 @@ chainage	0		Number=Sing	dema	0	chainage	n	moby_reverse
 chainages	0		Number=Plur	dema	0	chainage	n	rule
 chainbreak	0		Number=Sing	dema	0	chainbreak	n	moby_reverse
 chainbreaks	0		Number=Plur	dema	0	chainbreak	n	rule
-chained	0	oewn-chain-v	Tense=Past	dema	1			carried
+chained	0	oewn-chain-v	Tense=Past+VerbForm=Part	dema	1			carried
 chained up	0	oewn-chain_up-v	Tense=Past+VerbForm=Part	dema	0			rule
 chaining	0	oewn-chain-v	VerbForm=Ger	dema	1			carried
 chaining	1	oewn-chain-n	Number=Sing+VerbForm=Ger	dema	1			carried
@@ -1287,7 +1287,7 @@ chance-half correlation	0	oewn-chance-half_correlation-n	Number=Sing	dema	0			oe
 chance-half correlations	0	oewn-chance-half_correlation-n	Number=Plur	dema	0			rule
 chance-medley	0	oewn-chance-medley-n	Number=Sing	dema	0			oewn_form
 chance-medleys	0	oewn-chance-medley-n	Number=Plur	dema	0			rule
-chanced	0	oewn-chance-v	Tense=Past	dema	1			carried
+chanced	0	oewn-chance-v	Tense=Past+VerbForm=Part	dema	1			carried
 chanced	1	dema-chanced-n	Number=Sing	dema	0			carried
 chanced on	0	oewn-chance_on-v	Tense=Past+VerbForm=Part	dema	0			rule
 chanced upon	0	oewn-chance_upon-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -1386,7 +1386,7 @@ changeable	0	oewn-changeable-a	Degree=Pos	dema	0			oewn_form
 changeableness	0	oewn-changeableness-n	Number=Sing	dema	0			oewn_form
 changeablenesses	0	oewn-changeableness-n	Number=Plur	dema	0			rule
 changeably	0		Degree=Pos	dema	0	changeably	r	moby_reverse
-changed	0	oewn-change-v	Tense=Past	dema	1			carried
+changed	0	oewn-change-v	Tense=Past+VerbForm=Part	dema	1			carried
 changed by reversal	0	oewn-change_by_reversal-v	Tense=Past+VerbForm=Part	dema	0			rule
 changed course	0	oewn-change_course-v	Tense=Past+VerbForm=Part	dema	0			rule
 changed form	0	oewn-change_form-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -1896,7 +1896,7 @@ charm quark	0	oewn-charm_quark-n	Number=Sing	dema	0			oewn_form
 charm quarks	0	oewn-charm_quark-n	Number=Plur	dema	0			rule
 charman	0	oewn-charman-n	Number=Sing	dema	0			oewn_form
 charmans	0	oewn-charman-n	Number=Plur	dema	0			rule
-charmed	0	oewn-charm-v	Tense=Past	dema	1			carried
+charmed	0	oewn-charm-v	Tense=Past+VerbForm=Part	dema	1			carried
 charmedly	0		Degree=Pos	dema	0	charmedly	r	moby_reverse
 charmer	0	oewn-charmer-n	Number=Sing	dema	0			oewn_form
 charmers	0	oewn-charmer-n	Number=Plur	dema	0			rule
@@ -2008,7 +2008,7 @@ chase	1	oewn-chase-v	VerbForm=Inf	dema	1			carried
 chase after	0	oewn-chase_after-v	VerbForm=Inf	dema	0			oewn_form
 chase away	0	oewn-chase_away-v	VerbForm=Inf	dema	0			oewn_form
 chaseable	0		Degree=Pos	dema	0	chaseable	a	moby_reverse
-chased	0	oewn-chase-v	Tense=Past	dema	1			carried
+chased	0	oewn-chase-v	Tense=Past+VerbForm=Part	dema	1			carried
 chased after	0	oewn-chase_after-v	Tense=Past+VerbForm=Part	dema	0			rule
 chased away	0	oewn-chase_away-v	Tense=Past+VerbForm=Part	dema	0			rule
 chaseds	0	oewn-chased-n	Number=Plur	dema	0			rule
@@ -2284,7 +2284,7 @@ checkback	0		Number=Sing	dema	0	checkback	n	moby_reverse
 checkbacks	0		Number=Plur	dema	0	checkback	n	rule
 checkbook	0	oewn-checkbook-n	Number=Sing	dema	0			oewn_form
 checkbooks	0	oewn-checkbook-n	Number=Plur	dema	0			rule
-checked	0	oewn-check-v	Tense=Past	dema	1			carried
+checked	0	oewn-check-v	Tense=Past+VerbForm=Part	dema	1			carried
 checked	1	oewn-checked-a	Degree=Pos	dema	0			carried
 checked in	0	oewn-check_in-v	Tense=Past+VerbForm=Part	dema	0			rule
 checked into	0	oewn-check_into-v	Tense=Past+VerbForm=Part	dema	0			rule

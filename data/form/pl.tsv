@@ -202,7 +202,7 @@ placebo effect	0	oewn-placebo_effect-n	Number=Sing	dema	0			oewn_form
 placebo effects	0	oewn-placebo_effect-n	Number=Plur	dema	0			rule
 placeboes	0	oewn-placebo-n	Number=Plur	dema	0			oewn_form
 placebos	0	oewn-placebo-n	Number=Plur	dema	0			rule_variant
-placed	0	oewn-place-v	Tense=Past	dema	1			carried
+placed	0	oewn-place-v	Tense=Past+VerbForm=Part	dema	1			carried
 placed down	0	oewn-place_down-v	Tense=Past+VerbForm=Part	dema	0			rule
 placed upright	0	oewn-place_upright-v	Tense=Past+VerbForm=Part	dema	0			rule
 placeholder	0	oewn-placeholder-n	Number=Sing	dema	0			oewn_form
@@ -330,7 +330,7 @@ plague pneumonia	0	oewn-plague_pneumonia-n	Number=Sing	dema	0			oewn_form
 plague pneumonias	0	oewn-plague_pneumonia-n	Number=Plur	dema	0			rule
 plague spot	0	oewn-plague_spot-n	Number=Sing	dema	0			oewn_form
 plague spots	0	oewn-plague_spot-n	Number=Plur	dema	0			rule
-plagued	0	oewn-plague-v	Tense=Past	dema	1			carried
+plagued	0	oewn-plague-v	Tense=Past+VerbForm=Part	dema	1			carried
 plaguer	0		Number=Sing	dema	0	plaguer	n	moby_reverse
 plaguers	0		Number=Plur	dema	0	plaguer	n	rule
 plagues	0	oewn-plague-n	Number=Plur	dema	1			carried
@@ -675,7 +675,7 @@ plantation owner	0	oewn-plantation_owner-n	Number=Sing	dema	0			oewn_form
 plantation owners	0	oewn-plantation_owner-n	Number=Plur	dema	0			rule
 plantationlike	0		Degree=Pos	dema	0	plantationlike	a	moby_reverse
 plantations	0	oewn-plantation-n	Number=Plur	dema	0			rule
-planted	0	oewn-plant-v	Tense=Past	dema	1			carried
+planted	0	oewn-plant-v	Tense=Past+VerbForm=Part	dema	1			carried
 planter	0	oewn-planter-n	Number=Sing	dema	0			oewn_form
 planter's punch	0	oewn-planter-ap-s_punch-n	Number=Sing	dema	0			oewn_form
 planter's punches	0	oewn-planter-ap-s_punch-n	Number=Plur	dema	0			rule
@@ -1142,7 +1142,7 @@ playday	0	oewn-playday-n	Number=Sing	dema	0			oewn_form
 playdays	0	oewn-playday-n	Number=Plur	dema	0			rule
 playdown	0		Number=Sing	dema	0	playdown	n	moby_reverse
 playdowns	0		Number=Plur	dema	0	playdown	n	rule
-played	0	oewn-play-v	Tense=Past	dema	1			carried
+played	0	oewn-play-v	Tense=Past+VerbForm=Part	dema	1			carried
 played out	0	oewn-played_out-a	Degree=Pos	dema	0			oewn_form
 player	0	oewn-player-n	Number=Sing	dema	0			oewn_form
 player piano	0	oewn-player_piano-n	Number=Sing	dema	0			oewn_form

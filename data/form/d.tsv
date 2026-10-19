@@ -1538,7 +1538,7 @@ damageabilities	0		Number=Plur	dema	0	damageability	n	rule
 damageability	0		Number=Sing	dema	0	damageability	n	moby_reverse
 damageable	0		Degree=Pos	dema	0	damageable	a	moby_reverse
 damageableness	0		Number=Sing	dema	0	damageableness	n	moby_reverse
-damaged	0	oewn-damage-v	Tense=Past	dema	1			carried
+damaged	0	oewn-damage-v	Tense=Past+VerbForm=Part	dema	1			carried
 damager	0		Number=Sing	dema	0	damager	n	moby_reverse
 damagers	0		Number=Plur	dema	0	damager	n	rule
 damages	0	oewn-damage-n	Number=Plur	dema	1			carried
@@ -1730,7 +1730,7 @@ dance steps	0	oewn-dance_step-n	Number=Plur	dema	0			rule
 danceabilities	0		Number=Plur	dema	0	danceability	n	rule
 danceability	0		Number=Sing	dema	0	danceability	n	moby_reverse
 danceable	0	oewn-danceable-a	Degree=Pos	dema	0			oewn_form
-danced	0	oewn-dance-v	Tense=Past	dema	1			carried
+danced	0	oewn-dance-v	Tense=Past+VerbForm=Part	dema	1			carried
 dancer	0	oewn-dancer-n	Number=Sing	dema	0			oewn_form
 danceroom music	0	oewn-danceroom_music-n	Number=Sing	dema	0			oewn_form
 danceroom musics	0	oewn-danceroom_music-n	Number=Plur	dema	0			rule
@@ -2354,7 +2354,7 @@ dawn horse	0	oewn-dawn_horse-n	Number=Sing	dema	0			oewn_form
 dawn horses	0	oewn-dawn_horse-n	Number=Plur	dema	0			rule
 dawn redwood	0	oewn-dawn_redwood-n	Number=Sing	dema	0			oewn_form
 dawn redwoods	0	oewn-dawn_redwood-n	Number=Plur	dema	0			rule
-dawned	0	oewn-dawn-v	Tense=Past	dema	1			carried
+dawned	0	oewn-dawn-v	Tense=Past+VerbForm=Part	dema	1			carried
 dawning	0	oewn-dawn-v	VerbForm=Ger	dema	1			carried
 dawning	1	oewn-dawn-n	Number=Sing+VerbForm=Ger	dema	1			carried
 dawning	2	oewn-dawning-n	Number=Sing	dema	0			oewn_form
@@ -2806,7 +2806,7 @@ deal out	0	oewn-deal_out-v	VerbForm=Inf	dema	0			oewn_form
 dealate	0		Degree=Pos	dema	0	dealate	a	moby_reverse
 dealation	0		Number=Sing	dema	0	dealation	n	moby_reverse
 dealations	0		Number=Plur	dema	0	dealation	n	rule
-dealed	0	oewn-deal-v	Tense=Past	dema	1			carried
+dealed	0	oewn-deal-v	Tense=Past+VerbForm=Part	dema	1			carried
 dealer	0	oewn-dealer-n	Number=Sing	dema	0			oewn_form
 dealers	0	oewn-dealer-n	Number=Plur	dema	0			rule
 dealership	0	oewn-dealership-n	Number=Sing	dema	0			oewn_form
@@ -2824,7 +2824,7 @@ dealings	1	oewn-dealing-n	Number=Plur	dema	0			rule
 deals	0	oewn-deal-n	Number=Plur	dema	1			carried
 deals	1	oewn-deal-v	Person=3+Tense=Pres	dema	1			carried
 deals out	0	oewn-deal_out-v	Person=3+Tense=Pres	dema	0			rule
-dealt	0	oewn-deal-v		dema	1			carried
+dealt	0	oewn-deal-v	Tense=Past+VerbForm=Part	dema	1			carried
 dealt out	0	oewn-dealt_out-a	Degree=Pos	dema	0			oewn_form
 deambulatories	0		Number=Plur	dema	0	deambulatory	n	rule
 deambulatory	0		Number=Sing	dema	0	deambulatory	n	moby_reverse
@@ -3749,7 +3749,7 @@ declinatures	0		Number=Plur	dema	0	declinature	n	rule
 decline	0	oewn-decline-n	Number=Sing	dema	1			carried
 decline	1	oewn-decline-v	VerbForm=Inf	dema	1			carried
 decline in quality	0	oewn-decline_in_quality-n	Number=Sing	dema	0			oewn_form
-declined	0	oewn-decline-v	Tense=Past	dema	1			carried
+declined	0	oewn-decline-v	Tense=Past+VerbForm=Part	dema	1			carried
 decliner	0		Number=Sing	dema	0	decliner	n	moby_reverse
 decliners	0		Number=Plur	dema	0	decliner	n	rule
 declines	0	oewn-decline-n	Number=Plur	dema	1			carried
@@ -4420,7 +4420,7 @@ defeasibleness	0		Number=Sing	dema	0	defeasibleness	n	moby_reverse
 defeasiblenesses	0		Number=Plur	dema	0	defeasibleness	n	rule
 defeat	0	oewn-defeat-n	Number=Sing	dema	1			carried
 defeat	1	oewn-defeat-v	VerbForm=Inf	dema	1			carried
-defeated	0	oewn-defeat-v	Tense=Past	dema	1			carried
+defeated	0	oewn-defeat-v	Tense=Past+VerbForm=Part	dema	1			carried
 defeateds	0	oewn-defeated-n	Number=Plur	dema	0			rule
 defeater	0		Number=Sing	dema	0	defeater	n	moby_reverse
 defeaters	0		Number=Plur	dema	0	defeater	n	rule
@@ -5241,7 +5241,7 @@ delay	1	oewn-delay-v	VerbForm=Inf	dema	1			carried
 delay line	0	oewn-delay_line-n	Number=Sing	dema	0			oewn_form
 delay lines	0	oewn-delay_line-n	Number=Plur	dema	0			rule
 delayable	0		Degree=Pos	dema	0	delayable	a	moby_reverse
-delayed	0	oewn-delay-v	Tense=Past	dema	1			carried
+delayed	0	oewn-delay-v	Tense=Past+VerbForm=Part	dema	1			carried
 delayed action	0	oewn-delayed_action-n	Number=Sing	dema	0			oewn_form
 delayed actions	0	oewn-delayed_action-n	Number=Plur	dema	0			rule
 delayed allergies	0	oewn-delayed_allergy-n	Number=Plur	dema	0			rule
@@ -5347,7 +5347,7 @@ delict	0		Number=Sing	dema	0	delict	n	moby_reverse
 delicts	0		Number=Plur	dema	0	delict	n	rule
 delight	0	oewn-delight-n	Number=Sing	dema	1			carried
 delight	1	oewn-delight-v	VerbForm=Inf	dema	1			carried
-delighted	0	oewn-delight-v	Tense=Past	dema	1			carried
+delighted	0	oewn-delight-v	Tense=Past+VerbForm=Part	dema	1			carried
 delighted	1	oewn-delighted-a	Degree=Pos	dema	0			carried
 delightedly	0	oewn-delightedly-r	Degree=Pos	dema	0			oewn_form
 delightedness	0		Number=Sing	dema	0	delightedness	n	moby_reverse
@@ -5610,7 +5610,7 @@ demand-pull inflations	0	oewn-demand-pull_inflation-n	Number=Plur	dema	0			rule
 demandable	0		Degree=Pos	dema	0	demandable	a	moby_reverse
 demandant	0		Number=Sing	dema	0	demandant	n	moby_reverse
 demandants	0		Number=Plur	dema	0	demandant	n	rule
-demanded	0	oewn-demand-v	Tense=Past	dema	1			carried
+demanded	0	oewn-demand-v	Tense=Past+VerbForm=Part	dema	1			carried
 demander	0	oewn-demander-n	Number=Sing	dema	0			oewn_form
 demanders	0	oewn-demander-n	Number=Plur	dema	0			rule
 demanding	0	oewn-demand-v	VerbForm=Ger	dema	1			carried
@@ -6894,7 +6894,7 @@ deposit box	0	oewn-deposit_box-n	Number=Sing	dema	0			oewn_form
 deposit boxes	0	oewn-deposit_box-n	Number=Plur	dema	0			rule
 depositaries	0	oewn-depositary-n	Number=Plur	dema	0			rule
 depositary	0	oewn-depositary-n	Number=Sing	dema	0			oewn_form
-deposited	0	oewn-deposit-v	Tense=Past	dema	1			carried
+deposited	0	oewn-deposit-v	Tense=Past+VerbForm=Part	dema	1			carried
 depositing	0	oewn-deposit-v	VerbForm=Ger	dema	1			carried
 depositing	1	oewn-deposit-n	Number=Sing+VerbForm=Ger	dema	1			carried
 deposition	0	oewn-deposition-n	Number=Sing	dema	0			oewn_form
@@ -7701,7 +7701,7 @@ desirably	0		Degree=Pos	dema	0	desirably	r	moby_reverse
 desire	0	oewn-desire-n	Number=Sing	dema	1			carried
 desire	1	oewn-desire-v	VerbForm=Inf	dema	1			carried
 desire to know	0	oewn-desire_to_know-n	Number=Sing	dema	0			oewn_form
-desired	0	oewn-desire-v	Tense=Past	dema	1			carried
+desired	0	oewn-desire-v	Tense=Past+VerbForm=Part	dema	1			carried
 desired	1	oewn-desired-a	Degree=Pos	dema	0			carried
 desiredly	0		Degree=Pos	dema	0	desiredly	r	moby_reverse
 desiredness	0		Number=Sing	dema	0	desiredness	n	moby_reverse
@@ -8117,7 +8117,7 @@ detail	0	oewn-detail-n	Number=Sing	dema	1			carried
 detail	1	oewn-detail-v	VerbForm=Inf	dema	1			carried
 detail file	0	oewn-detail_file-n	Number=Sing	dema	0			oewn_form
 detail files	0	oewn-detail_file-n	Number=Plur	dema	0			rule
-detailed	0	oewn-detail-v	Tense=Past	dema	1			carried
+detailed	0	oewn-detail-v	Tense=Past+VerbForm=Part	dema	1			carried
 detailed	1	oewn-detailed-a	Degree=Pos	dema	0			carried
 detailedly	0		Degree=Pos	dema	0	detailedly	r	moby_reverse
 detailedness	0		Number=Sing	dema	0	detailedness	n	moby_reverse
@@ -9659,7 +9659,7 @@ dictagraph	0		Number=Sing	dema	0	dictagraph	n	moby_reverse
 dictagraphs	0		Number=Plur	dema	0	dictagraph	n	rule
 dictate	0	oewn-dictate-n	Number=Sing	dema	1			carried
 dictate	1	oewn-dictate-v	VerbForm=Inf	dema	1			carried
-dictated	0	oewn-dictate-v	Tense=Past	dema	1			carried
+dictated	0	oewn-dictate-v	Tense=Past+VerbForm=Part	dema	1			carried
 dictates	0	oewn-dictate-n	Number=Plur	dema	1			carried
 dictates	1	oewn-dictate-v	Person=3+Tense=Pres	dema	1			carried
 dictating	0	oewn-dictate-v	VerbForm=Ger	dema	1			carried
@@ -11900,7 +11900,7 @@ discordancies	0		Number=Plur	dema	0	discordancy	n	rule
 discordancy	0		Number=Sing	dema	0	discordancy	n	moby_reverse
 discordant	0	oewn-discordant-a	Degree=Pos	dema	0			oewn_form
 discordantly	0	oewn-discordantly-r	Degree=Pos	dema	0			oewn_form
-discorded	0	oewn-discord-v	Tense=Past	dema	1			carried
+discorded	0	oewn-discord-v	Tense=Past+VerbForm=Part	dema	1			carried
 discording	0	oewn-discord-v	VerbForm=Ger	dema	0			rule
 discords	0	oewn-discord-n	Number=Plur	dema	1			carried
 discords	1	oewn-discord-v	Person=3+Tense=Pres	dema	1			carried
@@ -13259,7 +13259,7 @@ disputatiousnesses	0		Number=Plur	dema	0	disputatiousness	n	rule
 disputative	0	oewn-disputative-a	Degree=Pos	dema	0			oewn_form
 dispute	0	oewn-dispute-n	Number=Sing	dema	1			carried
 dispute	1	oewn-dispute-v	VerbForm=Inf	dema	1			carried
-disputed	0	oewn-dispute-v	Tense=Past	dema	1			carried
+disputed	0	oewn-dispute-v	Tense=Past+VerbForm=Part	dema	1			carried
 disputed state	0	oewn-disputed_state-n	Number=Sing	dema	0			oewn_form
 disputed states	0	oewn-disputed_state-n	Number=Plur	dema	0			rule
 disputeless	0		Degree=Pos	dema	0	disputeless	a	moby_reverse
@@ -14412,7 +14412,7 @@ divorce courts	0	oewn-divorce_court-n	Number=Plur	dema	0			rule
 divorce lawyer	0	oewn-divorce_lawyer-n	Number=Sing	dema	0			oewn_form
 divorce lawyers	0	oewn-divorce_lawyer-n	Number=Plur	dema	0			rule
 divorceable	0		Degree=Pos	dema	0	divorceable	a	moby_reverse
-divorced	0	oewn-divorce-v	Tense=Past	dema	1			carried
+divorced	0	oewn-divorce-v	Tense=Past+VerbForm=Part	dema	1			carried
 divorced man	0	oewn-divorced_man-n	Number=Sing	dema	0			oewn_form
 divorced mans	0	oewn-divorced_man-n	Number=Plur	dema	0			rule
 divorcee	0	oewn-divorcee-n	Number=Sing	dema	0			oewn_form
@@ -14705,7 +14705,7 @@ documentary film	0	oewn-documentary_film-n	Number=Sing	dema	0			oewn_form
 documentary films	0	oewn-documentary_film-n	Number=Plur	dema	0			rule
 documentation	0	oewn-documentation-n	Number=Sing	dema	0			oewn_form
 documentations	0	oewn-documentation-n	Number=Plur	dema	0			rule
-documented	0	oewn-document-v	Tense=Past	dema	1			carried
+documented	0	oewn-document-v	Tense=Past+VerbForm=Part	dema	1			carried
 documenting	0	oewn-document-v	VerbForm=Ger	dema	1			carried
 documents	0	oewn-document-n	Number=Plur	dema	1			carried
 documents	1	oewn-document-v	Person=3+Tense=Pres	dema	1			carried
@@ -14936,7 +14936,7 @@ dogfights	1	oewn-dogfight-v	Person=3+Tense=Pres	dema	0			rule
 dogfish	0	oewn-dogfish-n	Number=Sing	dema	0			oewn_form
 dogfishes	0	oewn-dogfish-n	Number=Plur	dema	0			oewn_form
 dogged	0	oewn-dogged-a	Degree=Pos	dema	1			carried
-dogged	1	oewn-dog-v	Tense=Past	dema	1			carried
+dogged	1	oewn-dog-v	Tense=Past+VerbForm=Part	dema	1			carried
 doggedly	0	oewn-doggedly-r	Degree=Pos	dema	0			oewn_form
 doggedness	0	oewn-doggedness-n	Number=Sing	dema	0			oewn_form
 doggednesses	0	oewn-doggedness-n	Number=Plur	dema	0			rule
@@ -16750,7 +16750,7 @@ drag-cup motor	0	oewn-drag-cup_motor-n	Number=Sing	dema	0			oewn_form
 drag-cup motors	0	oewn-drag-cup_motor-n	Number=Plur	dema	0			rule
 dragee	0	oewn-dragee-n	Number=Sing	dema	0			oewn_form
 dragees	0	oewn-dragee-n	Number=Plur	dema	0			rule
-dragged	0	oewn-drag-v	Tense=Past	dema	1			carried
+dragged	0	oewn-drag-v	Tense=Past+VerbForm=Part	dema	1			carried
 dragged a bunt	0	oewn-drag_a_bunt-v	Tense=Past+VerbForm=Part	dema	0			rule
 dragged down	0	oewn-drag_down-v	Tense=Past+VerbForm=Part	dema	0			rule
 dragged in	0	oewn-drag_in-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -16884,7 +16884,7 @@ drainageway	0		Number=Sing	dema	0	drainageway	n	moby_reverse
 drainageways	0		Number=Plur	dema	0	drainageway	n	rule
 drainboard	0	oewn-drainboard-n	Number=Sing	dema	0			oewn_form
 drainboards	0	oewn-drainboard-n	Number=Plur	dema	0			rule
-drained	0	oewn-drain-v	Tense=Past	dema	1			carried
+drained	0	oewn-drain-v	Tense=Past+VerbForm=Part	dema	1			carried
 drained the cup	0	oewn-drain_the_cup-v	Tense=Past+VerbForm=Part	dema	0			rule
 drainer	0		Number=Sing	dema	0	drainer	n	moby_reverse
 drainers	0		Number=Plur	dema	0	drainer	n	rule
@@ -17071,7 +17071,7 @@ drawboy	0		Number=Sing	dema	0	drawboy	n	moby_reverse
 drawboys	0		Number=Plur	dema	0	drawboy	n	rule
 drawbridge	0	oewn-drawbridge-n	Number=Sing	dema	0			oewn_form
 drawbridges	0	oewn-drawbridge-n	Number=Plur	dema	0			rule
-drawed	0	oewn-draw-v	Tense=Past	dema	1			carried
+drawed	0	oewn-draw-v	Tense=Past+VerbForm=Part	dema	1			carried
 drawee	0	oewn-drawee-n	Number=Sing	dema	0			oewn_form
 drawees	0	oewn-drawee-n	Number=Plur	dema	0			rule
 drawer	0	oewn-drawer-n	Number=Sing	dema	0			oewn_form
@@ -17136,7 +17136,7 @@ drawlingness	0		Number=Sing	dema	0	drawlingness	n	moby_reverse
 drawls	0	oewn-drawl-v	Person=3+Tense=Pres	dema	0			rule
 drawls	1	oewn-drawl-n	Number=Plur	dema	0			rule
 drawly	0		Degree=Pos	dema	0	drawly	a	moby_reverse
-drawn	0	oewn-draw-v		dema	1			carried
+drawn	0	oewn-draw-v	VerbForm=Part	dema	1			carried
 drawn	1	oewn-drawn-a	Degree=Pos	dema	0			carried
 drawn butter	0	oewn-drawn_butter-n	Number=Sing	dema	0			oewn_form
 drawn butters	0	oewn-drawn_butter-n	Number=Plur	dema	0			rule
@@ -17401,7 +17401,7 @@ drest	0		VerbForm=Inf	dema	0	drest	v	moby_reverse
 drested	0		Tense=Past+VerbForm=Part	dema	0	drest	v	rule
 dresting	0		VerbForm=Ger	dema	0	drest	v	rule
 drests	0		Person=3+Tense=Pres	dema	0	drest	v	rule
-drew	0	oewn-draw-v		dema	1			carried
+drew	0	oewn-draw-v	Tense=Past	dema	1			carried
 drey	0	oewn-drey-n	Number=Sing	dema	0			oewn_form
 dreys	0	oewn-drey-n	Number=Plur	dema	0			rule
 drib	0	oewn-drib-n	Number=Sing	dema	0			oewn_form
@@ -17513,7 +17513,7 @@ drill-like	0	oewn-drill-like-a	Degree=Pos	dema	0			oewn_form
 drillable	0		Degree=Pos	dema	0	drillable	a	moby_reverse
 drillbit	0		Number=Sing	dema	0	drillbit	n	moby_reverse
 drillbits	0		Number=Plur	dema	0	drillbit	n	rule
-drilled	0	oewn-drill-v	Tense=Past	dema	1			carried
+drilled	0	oewn-drill-v	Tense=Past+VerbForm=Part	dema	1			carried
 drilled in	0	oewn-drill_in-v	Tense=Past+VerbForm=Part	dema	0			rule
 driller	0		Number=Sing	dema	0	driller	n	moby_reverse
 drillers	0		Number=Plur	dema	0	driller	n	rule
@@ -17555,7 +17555,7 @@ drinkableness	0		Number=Sing	dema	0	drinkableness	n	moby_reverse
 drinkablenesses	0		Number=Plur	dema	0	drinkableness	n	rule
 drinkables	0	oewn-drinkable-n	Number=Plur	dema	0			rule
 drinkably	0		Degree=Pos	dema	0	drinkably	r	moby_reverse
-drinked	0	oewn-drink-v	Tense=Past	dema	1			carried
+drinked	0	oewn-drink-v	Tense=Past+VerbForm=Part	dema	1			carried
 drinker	0	oewn-drinker-n	Number=Sing	dema	0			oewn_form
 drinkers	0	oewn-drinker-n	Number=Plur	dema	0			rule
 drinking	0	oewn-drink-v	VerbForm=Ger	dema	1			carried
@@ -17663,7 +17663,7 @@ drive-ins	0	oewn-drive-in-n	Number=Plur	dema	0			rule
 drive-thru	0	oewn-drive-thru-n	Number=Sing	dema	0			oewn_form
 drive-thrus	0	oewn-drive-thru-n	Number=Plur	dema	0			rule
 driveable	0		Degree=Pos	dema	0	driveable	a	moby_reverse
-drived	0	oewn-drive-v	Tense=Past	dema	1			carried
+drived	0	oewn-drive-v	Tense=Past+VerbForm=Part	dema	1			carried
 drivel	0	oewn-drivel-v	VerbForm=Inf	dema	0			oewn_form
 drivel	1	oewn-drivel-n	Number=Sing	dema	0			oewn_form
 driveled	0	oewn-drivel-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
@@ -17678,7 +17678,7 @@ drivelling	0	oewn-drivel-v	VerbForm=Ger	dema	0			oewn_form
 drivellingly	0		Degree=Pos	dema	0	drivellingly	r	moby_reverse
 drivels	0	oewn-drivel-v	Person=3+Tense=Pres	dema	0			rule
 drivels	1	oewn-drivel-n	Number=Plur	dema	0			rule
-driven	0	oewn-drive-v		dema	1			carried
+driven	0	oewn-drive-v	VerbForm=Part	dema	1			carried
 driven well	0	oewn-driven_well-n	Number=Sing	dema	0			oewn_form
 driven wells	0	oewn-driven_well-n	Number=Plur	dema	0			rule
 driver	0	oewn-driver-n	Number=Sing	dema	0			oewn_form
@@ -18034,7 +18034,7 @@ drouthiest	0		Degree=Sup	dema	0	drouthy	a	moby_reverse
 drouthiness	0		Number=Sing	dema	0	drouthiness	n	moby_reverse
 drouths	0	oewn-drouth-n	Number=Plur	dema	0			rule
 drouthy	0		Degree=Pos	dema	0	drouthy	a	moby_reverse
-drove	0	oewn-drive-v		dema	1			carried
+drove	0	oewn-drive-v	Tense=Past	dema	1			carried
 drove	1	oewn-drove-n	Number=Sing	dema	0			carried
 drove chisel	0	oewn-drove_chisel-n	Number=Sing	dema	0			oewn_form
 drove chisels	0	oewn-drove_chisel-n	Number=Plur	dema	0			rule
@@ -18521,7 +18521,7 @@ duckbilled platypus	0	oewn-duckbilled_platypus-n	Number=Sing	dema	0			oewn_form
 duckbills	0	oewn-duckbill-n	Number=Plur	dema	0			rule
 duckboard	0	oewn-duckboard-n	Number=Sing	dema	0			oewn_form
 duckboards	0	oewn-duckboard-n	Number=Plur	dema	0			rule
-ducked	0	oewn-duck-v	Tense=Past	dema	1			carried
+ducked	0	oewn-duck-v	Tense=Past+VerbForm=Part	dema	1			carried
 ducker	0		Number=Sing	dema	0	ducker	n	moby_reverse
 duckers	0		Number=Plur	dema	0	ducker	n	rule
 duckie	0		Degree=Pos	dema	0	duckie	a	moby_reverse
@@ -18825,7 +18825,7 @@ dump truck	0	oewn-dump_truck-n	Number=Sing	dema	0			oewn_form
 dump trucks	0	oewn-dump_truck-n	Number=Plur	dema	0			rule
 dumpcart	0	oewn-dumpcart-n	Number=Sing	dema	0			oewn_form
 dumpcarts	0	oewn-dumpcart-n	Number=Plur	dema	0			rule
-dumped	0	oewn-dump-v	Tense=Past	dema	1			carried
+dumped	0	oewn-dump-v	Tense=Past+VerbForm=Part	dema	1			carried
 dumper	0	oewn-dumper-n	Number=Sing	dema	0			oewn_form
 dumpers	0	oewn-dumper-n	Number=Plur	dema	0			rule
 dumpier	0	oewn-dumpy-a	Degree=Cmp	dema	0			oewn_form
@@ -19198,7 +19198,7 @@ dustcart	0	oewn-dustcart-n	Number=Sing	dema	0			oewn_form
 dustcarts	0	oewn-dustcart-n	Number=Plur	dema	0			rule
 dustcloth	0	oewn-dustcloth-n	Number=Sing	dema	0			oewn_form
 dustcloths	0	oewn-dustcloth-n	Number=Plur	dema	0			rule
-dusted	0	oewn-dust-v	Tense=Past	dema	1			carried
+dusted	0	oewn-dust-v	Tense=Past+VerbForm=Part	dema	1			carried
 duster	0	oewn-duster-n	Number=Sing	dema	0			oewn_form
 dusters	0	oewn-duster-n	Number=Plur	dema	0			rule
 dustheap	0		Number=Sing	dema	0	dustheap	n	moby_reverse

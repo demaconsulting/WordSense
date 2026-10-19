@@ -533,7 +533,7 @@ sidecar	0	oewn-sidecar-n	Number=Sing	dema	0			oewn_form
 sidecars	0	oewn-sidecar-n	Number=Plur	dema	0			rule
 sidecheck	0		Number=Sing	dema	0	sidecheck	n	moby_reverse
 sidechecks	0		Number=Plur	dema	0	sidecheck	n	rule
-sided	0	oewn-side-v	Tense=Past	dema	1			carried
+sided	0	oewn-side-v	Tense=Past+VerbForm=Part	dema	1			carried
 sided with	0	oewn-side_with-v	Tense=Past+VerbForm=Part	dema	0			rule
 sidehead	0		Number=Sing	dema	0	sidehead	n	moby_reverse
 sideheads	0		Number=Plur	dema	0	sidehead	n	rule
@@ -737,7 +737,7 @@ sigeh	0	oewn-sigeh-n	Number=Sing	dema	0			oewn_form
 sigehs	0	oewn-sigeh-n	Number=Plur	dema	0			rule
 sigh	0	oewn-sigh-n	Number=Sing	dema	1			carried
 sigh	1	oewn-sigh-v	VerbForm=Inf	dema	1			carried
-sighed	0	oewn-sigh-v	Tense=Past	dema	1			carried
+sighed	0	oewn-sigh-v	Tense=Past+VerbForm=Part	dema	1			carried
 sigher	0		Number=Sing	dema	0	sigher	n	moby_reverse
 sighers	0		Number=Plur	dema	0	sigher	n	rule
 sighful	0		Degree=Pos	dema	0	sighful	a	moby_reverse
@@ -947,7 +947,7 @@ signatureless	0		Degree=Pos	dema	0	signatureless	a	moby_reverse
 signatures	0	oewn-signature-n	Number=Plur	dema	0			rule
 signboard	0	oewn-signboard-n	Number=Sing	dema	0			oewn_form
 signboards	0	oewn-signboard-n	Number=Plur	dema	0			rule
-signed	0	oewn-sign-v	Tense=Past	dema	1			carried
+signed	0	oewn-sign-v	Tense=Past+VerbForm=Part	dema	1			carried
 signed away	0	oewn-sign_away-v	Tense=Past+VerbForm=Part	dema	0			rule
 signed in	0	oewn-sign_in-v	Tense=Past+VerbForm=Part	dema	0			rule
 signed off	0	oewn-sign_off-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -1058,7 +1058,7 @@ sile	0		VerbForm=Inf	dema	0	sile	v	moby_reverse
 siled	0		Tense=Past+VerbForm=Part	dema	0	sile	v	rule
 silence	0	oewn-silence-n	Number=Sing	dema	1			carried
 silence	1	oewn-silence-v	VerbForm=Inf	dema	1			carried
-silenced	0	oewn-silence-v	Tense=Past	dema	1			carried
+silenced	0	oewn-silence-v	Tense=Past+VerbForm=Part	dema	1			carried
 silencer	0	oewn-silencer-n	Number=Sing	dema	0			oewn_form
 silencers	0	oewn-silencer-n	Number=Plur	dema	0			rule
 silences	0	oewn-silence-n	Number=Plur	dema	1			carried
@@ -2051,7 +2051,7 @@ sinlessly	0		Degree=Pos	dema	0	sinlessly	r	moby_reverse
 sinlessness	0	oewn-sinlessness-n	Number=Sing	dema	0			oewn_form
 sinlessnesses	0	oewn-sinlessness-n	Number=Plur	dema	0			rule
 sinlike	0		Degree=Pos	dema	0	sinlike	a	moby_reverse
-sinned	0	oewn-sin-v	Tense=Past	dema	1			carried
+sinned	0	oewn-sin-v	Tense=Past+VerbForm=Part	dema	1			carried
 sinner	0	oewn-sinner-n	Number=Sing	dema	0			oewn_form
 sinners	0	oewn-sinner-n	Number=Plur	dema	0			rule
 sinnet	0		Number=Sing	dema	0	sinnet	n	moby_reverse

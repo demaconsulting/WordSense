@@ -202,7 +202,7 @@ bubble shells	0	oewn-bubble_shell-n	Number=Plur	dema	0			rule
 bubble up	0	oewn-bubble_up-v	VerbForm=Inf	dema	0			oewn_form
 bubble-jet printer	0	oewn-bubble-jet_printer-n	Number=Sing	dema	0			oewn_form
 bubble-jet printers	0	oewn-bubble-jet_printer-n	Number=Plur	dema	0			rule
-bubbled	0	oewn-bubble-v	Tense=Past	dema	1			carried
+bubbled	0	oewn-bubble-v	Tense=Past+VerbForm=Part	dema	1			carried
 bubbled over	0	oewn-bubble_over-v	Tense=Past+VerbForm=Part	dema	0			rule
 bubbled up	0	oewn-bubble_up-v	Tense=Past+VerbForm=Part	dema	0			rule
 bubblejet	0	oewn-bubblejet-n	Number=Sing	dema	0			oewn_form
@@ -1146,7 +1146,7 @@ bump around	0	oewn-bump_around-v	VerbForm=Inf	dema	0			oewn_form
 bump into	0	oewn-bump_into-v	VerbForm=Inf	dema	0			oewn_form
 bump off	0	oewn-bump_off-v	VerbForm=Inf	dema	0			oewn_form
 bump up	0	oewn-bump_up-v	VerbForm=Inf	dema	0			oewn_form
-bumped	0	oewn-bump-v	Tense=Past	dema	1			carried
+bumped	0	oewn-bump-v	Tense=Past+VerbForm=Part	dema	1			carried
 bumped around	0	oewn-bump_around-v	Tense=Past+VerbForm=Part	dema	0			rule
 bumped into	0	oewn-bump_into-v	Tense=Past+VerbForm=Part	dema	0			rule
 bumped off	0	oewn-bump_off-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -2501,7 +2501,7 @@ buttonball	0		Number=Sing	dema	0	buttonball	n	moby_reverse
 buttonballs	0		Number=Plur	dema	0	buttonball	n	rule
 buttonbush	0		Number=Sing	dema	0	buttonbush	n	moby_reverse
 buttonbushes	0		Number=Plur	dema	0	buttonbush	n	rule
-buttoned	0	oewn-button-v	Tense=Past	dema	1			carried
+buttoned	0	oewn-button-v	Tense=Past+VerbForm=Part	dema	1			carried
 buttoned up	0	oewn-button_up-v	Tense=Past+VerbForm=Part	dema	0			rule
 buttoned-down	0	oewn-buttoned-down-a	Degree=Pos	dema	0			oewn_form
 buttoned-up	0	oewn-buttoned-up-a	Degree=Pos	dema	0			oewn_form

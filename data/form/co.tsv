@@ -2483,7 +2483,7 @@ collectable	1	oewn-collectable-n	Number=Sing	dema	0			oewn_form
 collectables	0	oewn-collectable-n	Number=Plur	dema	0			rule
 collectanea	0		Number=Sing	dema	0	collectanea	n	moby_reverse
 collectaneas	0		Number=Plur	dema	0	collectanea	n	rule
-collected	0	oewn-collect-v	Tense=Past	dema	1			carried
+collected	0	oewn-collect-v	Tense=Past+VerbForm=Part	dema	1			carried
 collected	1	oewn-collected-a	Degree=Pos	dema	0			carried
 collectedly	0	oewn-collectedly-r	Degree=Pos	dema	0			oewn_form
 collectedness	0		Number=Sing	dema	0	collectedness	n	moby_reverse
@@ -3077,7 +3077,7 @@ colourationally	0		Degree=Pos	dema	0	colourationally	r	moby_reverse
 colourations	0	oewn-colouration-n	Number=Plur	dema	0			rule
 colourcast	0	oewn-colourcast-n	Number=Sing	dema	0			oewn_form
 colourcasts	0	oewn-colourcast-n	Number=Plur	dema	0			rule
-coloured	0	oewn-colour-v	Tense=Past	dema	1			carried
+coloured	0	oewn-colour-v	Tense=Past+VerbForm=Part	dema	1			carried
 coloured	1	oewn-coloured-a	Degree=Pos	dema	0			carried
 coloured in	0	oewn-colour_in-v	Tense=Past+VerbForm=Part	dema	0			rule
 coloured person	0	oewn-coloured_person-n	Number=Sing	dema	0			oewn_form
@@ -3287,7 +3287,7 @@ combatable	0		Degree=Pos	dema	0	combatable	a	moby_reverse
 combatant	0	oewn-combatant-n	Number=Sing	dema	0			oewn_form
 combatant	1	oewn-combatant-a	Degree=Pos	dema	0			oewn_form
 combatants	0	oewn-combatant-n	Number=Plur	dema	0			rule
-combated	0	oewn-combat-v	Tense=Past	dema	1			carried
+combated	0	oewn-combat-v	Tense=Past+VerbForm=Part	dema	1			carried
 combater	0		Number=Sing	dema	0	combater	n	moby_reverse
 combaters	0		Number=Plur	dema	0	combater	n	rule
 combating	0	oewn-combat-v	VerbForm=Ger	dema	1			carried
@@ -3299,7 +3299,7 @@ combativities	0		Number=Plur	dema	0	combativity	n	rule
 combativity	0		Number=Sing	dema	0	combativity	n	moby_reverse
 combats	0	oewn-combat-n	Number=Plur	dema	1			carried
 combats	1	oewn-combat-v	Person=3+Tense=Pres	dema	1			carried
-combatted	0	oewn-combat-v	Tense=Past	dema	1			carried
+combatted	0	oewn-combat-v	Tense=Past+VerbForm=Part	dema	1			carried
 combatter	0		Number=Sing	dema	0	combatter	n	moby_reverse
 combatters	0		Number=Plur	dema	0	combatter	n	rule
 combatting	0	oewn-combat-v	VerbForm=Ger	dema	1			carried
@@ -3828,7 +3828,7 @@ commentator	0	oewn-commentator-n	Number=Sing	dema	0			oewn_form
 commentatorial	0		Degree=Pos	dema	0	commentatorial	a	moby_reverse
 commentatorially	0		Degree=Pos	dema	0	commentatorially	r	moby_reverse
 commentators	0	oewn-commentator-n	Number=Plur	dema	0			rule
-commented	0	oewn-comment-v	Tense=Past	dema	1			carried
+commented	0	oewn-comment-v	Tense=Past+VerbForm=Part	dema	1			carried
 commenter	0		Number=Sing	dema	0	commenter	n	moby_reverse
 commenters	0		Number=Plur	dema	0	commenter	n	rule
 commenting	0	oewn-comment-v	VerbForm=Ger	dema	1			carried
@@ -5184,7 +5184,7 @@ complimentarily	0		Degree=Pos	dema	0	complimentarily	r	moby_reverse
 complimentariness	0	oewn-complimentariness-n	Number=Sing	dema	0			oewn_form
 complimentarinesses	0	oewn-complimentariness-n	Number=Plur	dema	0			rule
 complimentary	0	oewn-complimentary-a	Degree=Pos	dema	0			oewn_form
-complimented	0	oewn-compliment-v	Tense=Past	dema	1			carried
+complimented	0	oewn-compliment-v	Tense=Past+VerbForm=Part	dema	1			carried
 complimenter	0		Number=Sing	dema	0	complimenter	n	moby_reverse
 complimenters	0		Number=Plur	dema	0	complimenter	n	rule
 complimenting	0	oewn-compliment-v	VerbForm=Ger	dema	1			carried
@@ -7964,7 +7964,7 @@ contact sport	0	oewn-contact_sport-n	Number=Sing	dema	0			oewn_form
 contact sports	0	oewn-contact_sport-n	Number=Plur	dema	0			rule
 contactant	0		Number=Sing	dema	0	contactant	n	moby_reverse
 contactants	0		Number=Plur	dema	0	contactant	n	rule
-contacted	0	oewn-contact-v	Tense=Past	dema	1			carried
+contacted	0	oewn-contact-v	Tense=Past+VerbForm=Part	dema	1			carried
 contacting	0	oewn-contact-v	VerbForm=Ger	dema	1			carried
 contactor	0		Number=Sing	dema	0	contactor	n	moby_reverse
 contactors	0		Number=Plur	dema	0	contactor	n	rule
@@ -8132,7 +8132,7 @@ content	3	dema-content-i		dema	0			carried
 content word	0	oewn-content_word-n	Number=Sing	dema	0			oewn_form
 content words	0	oewn-content_word-n	Number=Plur	dema	0			rule
 contentable	0		Degree=Pos	dema	0	contentable	a	moby_reverse
-contented	0	oewn-content-v	Tense=Past	dema	1			carried
+contented	0	oewn-content-v	Tense=Past+VerbForm=Part	dema	1			carried
 contented	1	oewn-contented-a	Degree=Pos	dema	0			carried
 contentedly	0	oewn-contentedly-r	Degree=Pos	dema	0			oewn_form
 contentedness	0	oewn-contentedness-n	Number=Sing	dema	0			oewn_form
@@ -11102,7 +11102,7 @@ costume	0	oewn-costume-n	Number=Sing	dema	1			carried
 costume	1	oewn-costume-v	VerbForm=Inf	dema	1			carried
 costume designer	0	oewn-costume_designer-n	Number=Sing	dema	0			oewn_form
 costume designers	0	oewn-costume_designer-n	Number=Plur	dema	0			rule
-costumed	0	oewn-costume-v	Tense=Past	dema	1			carried
+costumed	0	oewn-costume-v	Tense=Past+VerbForm=Part	dema	1			carried
 costumer	0	oewn-costumer-n	Number=Sing	dema	0			oewn_form
 costumers	0	oewn-costumer-n	Number=Plur	dema	0			rule
 costumes	0	oewn-costume-n	Number=Plur	dema	1			carried
@@ -12111,7 +12111,7 @@ court-martialling	0	oewn-court-martial-v	VerbForm=Ger	dema	0			oewn_form
 court-martials	0	oewn-court-martial-n	Number=Plur	dema	0			rule
 court-martials	1	oewn-court-martial-v	Person=3+Tense=Pres	dema	0			rule
 court-ordered	0	oewn-court-ordered-a	Degree=Pos	dema	0			oewn_form
-courted	0	oewn-court-v	Tense=Past	dema	1			carried
+courted	0	oewn-court-v	Tense=Past+VerbForm=Part	dema	1			carried
 courted favor	0	oewn-court_favor-v	Tense=Past+VerbForm=Part	dema	0			rule
 courted favour	0	oewn-court_favour-v	Tense=Past+VerbForm=Part	dema	0			rule
 courteous	0	oewn-courteous-a	Degree=Pos	dema	0			oewn_form
@@ -12262,7 +12262,7 @@ coverage	0	oewn-coverage-n	Number=Sing	dema	0			oewn_form
 coverages	0	oewn-coverage-n	Number=Plur	dema	0			rule
 coverall	0	oewn-coverall-n	Number=Sing	dema	0			oewn_form
 coveralls	0	oewn-coverall-n	Number=Plur	dema	0			rule
-covered	0	oewn-cover-v	Tense=Past	dema	1			carried
+covered	0	oewn-cover-v	Tense=Past+VerbForm=Part	dema	1			carried
 covered bridge	0	oewn-covered_bridge-n	Number=Sing	dema	0			oewn_form
 covered bridges	0	oewn-covered_bridge-n	Number=Plur	dema	0			rule
 covered couch	0	oewn-covered_couch-n	Number=Sing	dema	0			oewn_form

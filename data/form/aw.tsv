@@ -34,7 +34,7 @@ award	0	oewn-award-n	Number=Sing	dema	1			carried
 award	1	oewn-award-v	VerbForm=Inf	dema	1			carried
 award-winning	0	oewn-award-winning-a	Degree=Pos	dema	0			oewn_form
 awardable	0		Degree=Pos	dema	0	awardable	r	moby_reverse
-awarded	0	oewn-award-v	Tense=Past	dema	1			carried
+awarded	0	oewn-award-v	Tense=Past+VerbForm=Part	dema	1			carried
 awarder	0		Number=Sing	dema	0	awarder	n	moby_reverse
 awarders	0		Number=Plur	dema	0	awarder	n	rule
 awarding	0	oewn-award-v	VerbForm=Ger	dema	1			carried

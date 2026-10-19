@@ -31,7 +31,7 @@ LDL cholesterols	0	oewn-LDL_cholesterol-n	Capitalization=Exact+Number=Plur	dema	
 LDLS	0	oewn-LDL-n	Capitalization=Upper+Number=Plur	dema	0			rule
 LE	0		Number=Sing	dema	0	le	n	moby_reverse
 LE	1	oewn-LE-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
-LED	0	oewn-lead-v	Tense=Past	dema	0			carried
+LED	0	oewn-lead-v	Tense=Past+VerbForm=Part	dema	0			carried
 LED	1	oewn-LED-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 LEDS	0	oewn-LED-n	Capitalization=Upper+Number=Plur	dema	0			rule
 LEM	0	oewn-LEM-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
@@ -2185,7 +2185,7 @@ laicize	0	oewn-laicize-v	VerbForm=Inf	dema	0			oewn_form
 laicized	0	oewn-laicize-v	Tense=Past+VerbForm=Part	dema	0			rule
 laicizes	0	oewn-laicize-v	Person=3+Tense=Pres	dema	0			rule
 laicizing	0	oewn-laicize-v	VerbForm=Ger	dema	0			rule
-laid	0	oewn-lay-v		dema	1			carried
+laid	0	oewn-lay-v	Tense=Past+VerbForm=Part	dema	1			carried
 laid low	0	oewn-laid_low-a	Degree=Pos	dema	0			oewn_form
 laid paper	0	oewn-laid_paper-n	Number=Sing	dema	0			oewn_form
 laid papers	0	oewn-laid_paper-n	Number=Plur	dema	0			rule
@@ -2643,7 +2643,7 @@ landau	0	oewn-landau-n	Number=Sing	dema	0			oewn_form
 landaulet	0		Number=Sing	dema	0	landaulet	n	moby_reverse
 landaulets	0		Number=Plur	dema	0	landaulet	n	rule
 landaus	0	oewn-landau-n	Number=Plur	dema	0			rule
-landed	0	oewn-land-v	Tense=Past	dema	1			carried
+landed	0	oewn-land-v	Tense=Past+VerbForm=Part	dema	1			carried
 landed	1	oewn-landed-a	Degree=Pos	dema	0			carried
 landed estate	0	oewn-landed_estate-n	Number=Sing	dema	0			oewn_form
 landed estates	0	oewn-landed_estate-n	Number=Plur	dema	0			rule
@@ -3847,7 +3847,7 @@ launch areas	0	oewn-launch_area-n	Number=Plur	dema	0			rule
 launch pad	0	oewn-launch_pad-n	Number=Sing	dema	0			oewn_form
 launch pads	0	oewn-launch_pad-n	Number=Plur	dema	0			rule
 launchable	0		Degree=Pos	dema	0	launchable	a	moby_reverse
-launched	0	oewn-launch-v	Tense=Past	dema	1			carried
+launched	0	oewn-launch-v	Tense=Past+VerbForm=Part	dema	1			carried
 launcher	0	oewn-launcher-n	Number=Sing	dema	0			oewn_form
 launchers	0	oewn-launcher-n	Number=Plur	dema	0			rule
 launches	0	oewn-launch-n	Number=Plur	dema	1			carried
@@ -4624,7 +4624,7 @@ leakage	0	oewn-leakage-n	Number=Sing	dema	0			oewn_form
 leakages	0	oewn-leakage-n	Number=Plur	dema	0			rule
 leakance	0		Number=Sing	dema	0	leakance	n	moby_reverse
 leakances	0		Number=Plur	dema	0	leakance	n	rule
-leaked	0	oewn-leak-v	Tense=Past	dema	1			carried
+leaked	0	oewn-leak-v	Tense=Past+VerbForm=Part	dema	1			carried
 leaked out	0	oewn-leak_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 leaker	0	oewn-leaker-n	Number=Sing	dema	0			oewn_form
 leakers	0	oewn-leaker-n	Number=Plur	dema	0			rule
@@ -4710,7 +4710,7 @@ lear	0		Number=Sing	dema	0	lear	n	moby_reverse
 learn	0	oewn-learn-v	VerbForm=Inf	dema	0			oewn_form
 learnable	0		Degree=Pos	dema	0	learnable	a	moby_reverse
 learned	0	oewn-learned-a	Degree=Pos	dema	1			carried
-learned	1	oewn-learn-v	Tense=Past	dema	1			carried
+learned	1	oewn-learn-v	Tense=Past+VerbForm=Part	dema	1			carried
 learned person	0	oewn-learned_person-n	Number=Sing	dema	0			oewn_form
 learned persons	0	oewn-learned_person-n	Number=Plur	dema	0			rule
 learned profession	0	oewn-learned_profession-n	Number=Sing	dema	0			oewn_form
@@ -4876,7 +4876,7 @@ leave office	0	oewn-leave_office-v	VerbForm=Inf	dema	0			oewn_form
 leave out	0	oewn-leave_out-v	VerbForm=Inf	dema	0			oewn_form
 leave-taking	0	oewn-leave-taking-n	Number=Sing	dema	0			oewn_form
 leave-takings	0	oewn-leave-taking-n	Number=Plur	dema	0			rule
-leaved	0	oewn-leave-v	Tense=Past	dema	1			carried
+leaved	0	oewn-leave-v	Tense=Past+VerbForm=Part	dema	1			carried
 leaved	1	oewn-leaved-a	Degree=Pos	dema	0			carried
 leaven	0	oewn-leaven-n	Number=Sing	dema	0			oewn_form
 leaven	1	oewn-leaven-v	VerbForm=Inf	dema	0			oewn_form
@@ -4984,7 +4984,7 @@ lecture demonstration	0	oewn-lecture_demonstration-n	Number=Sing	dema	0			oewn_f
 lecture demonstrations	0	oewn-lecture_demonstration-n	Number=Plur	dema	0			rule
 lecture room	0	oewn-lecture_room-n	Number=Sing	dema	0			oewn_form
 lecture rooms	0	oewn-lecture_room-n	Number=Plur	dema	0			rule
-lectured	0	oewn-lecture-v	Tense=Past	dema	1			carried
+lectured	0	oewn-lecture-v	Tense=Past+VerbForm=Part	dema	1			carried
 lecturer	0	oewn-lecturer-n	Number=Sing	dema	0			oewn_form
 lecturers	0	oewn-lecturer-n	Number=Plur	dema	0			rule
 lectures	0	oewn-lecture-n	Number=Plur	dema	1			carried
@@ -4997,7 +4997,7 @@ lecturing	2	oewn-lecturing-n	Number=Sing	dema	0			oewn_form
 lecturings	0	oewn-lecturing-n	Number=Plur	dema	0			rule
 lecythoid	0		Degree=Pos	dema	0	lecythoid	a	moby_reverse
 lecythus	0		Number=Sing	dema	0	lecythus	n	moby_reverse
-led	0	oewn-lead-v	Tense=Past	dema	1			carried
+led	0	oewn-lead-v	Tense=Past+VerbForm=Part	dema	1			carried
 lede	0	oewn-lede-n	Number=Sing	dema	0			oewn_form
 lederhosen	0	oewn-lederhosen-n	Number=Sing	dema	0			oewn_form
 lederhosens	0	oewn-lederhosen-n	Number=Plur	dema	0			rule
@@ -7040,7 +7040,7 @@ lift up	0	oewn-lift_up-v	VerbForm=Inf	dema	0			oewn_form
 liftable	0		Degree=Pos	dema	0	liftable	a	moby_reverse
 liftboy	0		Number=Sing	dema	0	liftboy	n	moby_reverse
 liftboys	0		Number=Plur	dema	0	liftboy	n	rule
-lifted	0	oewn-lift-v	Tense=Past	dema	1			carried
+lifted	0	oewn-lift-v	Tense=Past+VerbForm=Part	dema	1			carried
 lifted off	0	oewn-lift_off-v	Tense=Past+VerbForm=Part	dema	0			rule
 lifted out	0	oewn-lift_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 lifted up	0	oewn-lift_up-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -7416,7 +7416,7 @@ likeability	0		Number=Sing	dema	0	likeability	n	moby_reverse
 likeable	0	oewn-likeable-a	Degree=Pos	dema	0			oewn_form
 likeableness	0		Number=Sing	dema	0	likeableness	n	moby_reverse
 likeablenesses	0		Number=Plur	dema	0	likeableness	n	rule
-liked	0	oewn-like-v	Tense=Past	dema	1			carried
+liked	0	oewn-like-v	Tense=Past+VerbForm=Part	dema	1			carried
 likelier	0	oewn-likely-a	Degree=Cmp	dema	0			moby_reverse
 likeliest	0	oewn-likely-a	Degree=Sup	dema	0			moby_reverse
 likelihood	0	oewn-likelihood-n	Number=Sing	dema	0			oewn_form
@@ -7616,7 +7616,7 @@ limitary	0		Degree=Pos	dema	0	limitary	a	moby_reverse
 limitation	0	oewn-limitation-n	Number=Sing	dema	0			oewn_form
 limitations	0	oewn-limitation-n	Number=Plur	dema	0			rule
 limitative	0		Degree=Pos	dema	0	limitative	a	moby_reverse
-limited	0	oewn-limit-v	Tense=Past	dema	1			carried
+limited	0	oewn-limit-v	Tense=Past+VerbForm=Part	dema	1			carried
 limited	1	oewn-limited-a	Degree=Pos	dema	0			carried
 limited	2	oewn-limited-n	Number=Sing	dema	0			carried
 limited audit	0	oewn-limited_audit-n	Number=Sing	dema	0			oewn_form
@@ -7924,7 +7924,7 @@ linecaster	0		Number=Sing	dema	0	linecaster	n	moby_reverse
 linecasters	0		Number=Plur	dema	0	linecaster	n	rule
 linecut	0	oewn-linecut-n	Number=Sing	dema	0			oewn_form
 linecuts	0	oewn-linecut-n	Number=Plur	dema	0			rule
-lined	0	oewn-line-v	Tense=Past	dema	1			carried
+lined	0	oewn-line-v	Tense=Past+VerbForm=Part	dema	1			carried
 lined one's pockets	0	oewn-line_one-ap-s_pockets-v	Tense=Past+VerbForm=Part	dema	0			rule
 lined snake	0	oewn-lined_snake-n	Number=Sing	dema	0			oewn_form
 lined snakes	0	oewn-lined_snake-n	Number=Plur	dema	0			rule
@@ -8122,7 +8122,7 @@ linkage groups	0	oewn-linkage_group-n	Number=Plur	dema	0			rule
 linkages	0	oewn-linkage-n	Number=Plur	dema	0			rule
 linkboy	0	oewn-linkboy-n	Number=Sing	dema	0			oewn_form
 linkboys	0	oewn-linkboy-n	Number=Plur	dema	0			rule
-linked	0	oewn-link-v	Tense=Past	dema	1			carried
+linked	0	oewn-link-v	Tense=Past+VerbForm=Part	dema	1			carried
 linked	1	oewn-linked-a	Degree=Pos	dema	0			carried
 linked genes	0	oewn-linked_genes-n	Number=Sing	dema	0			oewn_form
 linked up	0	oewn-link_up-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -8568,7 +8568,7 @@ list system	0	oewn-list_system-n	Number=Sing	dema	0			oewn_form
 list systems	0	oewn-list_system-n	Number=Plur	dema	0			rule
 list-processing language	0	oewn-list-processing_language-n	Number=Sing	dema	0			oewn_form
 list-processing languages	0	oewn-list-processing_language-n	Number=Plur	dema	0			rule
-listed	0	oewn-list-v	Tense=Past	dema	1			carried
+listed	0	oewn-list-v	Tense=Past+VerbForm=Part	dema	1			carried
 listed	1	oewn-listed-a	Degree=Pos	dema	0			carried
 listed securities	0	oewn-listed_security-n	Number=Plur	dema	0			rule
 listed security	0	oewn-listed_security-n	Number=Sing	dema	0			oewn_form
@@ -9646,7 +9646,7 @@ lockbox	0	oewn-lockbox-n	Number=Sing	dema	0			oewn_form
 lockboxes	0	oewn-lockbox-n	Number=Plur	dema	0			rule
 lockdown	0	oewn-lockdown-n	Number=Sing	dema	0			oewn_form
 lockdowns	0	oewn-lockdown-n	Number=Plur	dema	0			rule
-locked	0	oewn-lock-v	Tense=Past	dema	1			carried
+locked	0	oewn-lock-v	Tense=Past+VerbForm=Part	dema	1			carried
 locked away	0	oewn-lock_away-v	Tense=Past+VerbForm=Part	dema	0			rule
 locked in	0	oewn-lock_in-v	Tense=Past+VerbForm=Part	dema	0			rule
 locked out	0	oewn-lock_out-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -11001,7 +11001,7 @@ lounge lizard	0	oewn-lounge_lizard-n	Number=Sing	dema	0			oewn_form
 lounge lizards	0	oewn-lounge_lizard-n	Number=Plur	dema	0			rule
 lounge suit	0	oewn-lounge_suit-n	Number=Sing	dema	0			oewn_form
 lounge suits	0	oewn-lounge_suit-n	Number=Plur	dema	0			rule
-lounged	0	oewn-lounge-v	Tense=Past	dema	1			carried
+lounged	0	oewn-lounge-v	Tense=Past+VerbForm=Part	dema	1			carried
 lounged about	0	oewn-lounge_about-v	Tense=Past+VerbForm=Part	dema	0			rule
 lounged around	0	oewn-lounge_around-v	Tense=Past+VerbForm=Part	dema	0			rule
 lounger	0	oewn-lounger-n	Number=Sing	dema	0			oewn_form
@@ -11980,7 +11980,7 @@ lungans	0		Number=Plur	dema	0	lungan	n	rule
 lunge	0	oewn-lunge-n	Number=Sing	dema	0			oewn_form
 lunge	1	oewn-lunge-v	VerbForm=Inf	dema	0			oewn_form
 lunged	0	dema-lunged-a	Degree=Pos	dema	1			carried
-lunged	1	oewn-lunge-v	Tense=Past	dema	1			carried
+lunged	1	oewn-lunge-v	Tense=Past+VerbForm=Part	dema	1			carried
 lungee	0		Number=Sing	dema	0	lungee	n	moby_reverse
 lungees	0		Number=Plur	dema	0	lungee	n	rule
 lungen	0	oewn-lungen-n	Number=Sing	dema	0			oewn_form

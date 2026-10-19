@@ -208,7 +208,7 @@ Allhallows Eves	0	oewn-Allhallows_Eve-n	Capitalization=Title+Number=Plur	dema	0	
 Allhallowtide	0	oewn-Allhallowtide-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Allhallowtides	0	oewn-Allhallowtide-n	Capitalization=Title+Number=Plur	dema	0			rule
 Alliaria officinalis	0	oewn-Alliaria_officinalis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
-Allied	0	oewn-ally-v	Tense=Past	dema	0			carried
+Allied	0	oewn-ally-v	Tense=Past+VerbForm=Part	dema	0			carried
 Allied	1	oewn-allied-a	Degree=Pos	dema	0			carried
 Allied	2	oewn-Allied-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
 Allied Command Atlantic	0	oewn-Allied_Command_Atlantic-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
@@ -775,7 +775,7 @@ alerions	0		Number=Plur	dema	0	alerion	n	rule
 alert	0	oewn-alert-n	Number=Sing	dema	1			carried
 alert	1	oewn-alert-v	VerbForm=Inf	dema	1			carried
 alert	2	oewn-alert-a	Degree=Pos	dema	0			carried
-alerted	0	oewn-alert-v	Tense=Past	dema	1			carried
+alerted	0	oewn-alert-v	Tense=Past+VerbForm=Part	dema	1			carried
 alerting	0	oewn-alert-v	VerbForm=Ger	dema	1			carried
 alerting	1	oewn-alert-n	Number=Sing+VerbForm=Ger	dema	1			carried
 alerting	2	oewn-alerting-n	Number=Sing	dema	0			oewn_form
@@ -1441,7 +1441,7 @@ allice	0	oewn-allice-n	Number=Sing	dema	0			oewn_form
 allice shad	0	oewn-allice_shad-n	Number=Sing	dema	0			oewn_form
 allice shads	0	oewn-allice_shad-n	Number=Plur	dema	0			rule
 allices	0	oewn-allice-n	Number=Plur	dema	0			rule
-allied	0	oewn-ally-v	Tense=Past	dema	1			carried
+allied	0	oewn-ally-v	Tense=Past+VerbForm=Part	dema	1			carried
 allied	1	oewn-allied-a	Degree=Pos	dema	0			carried
 allied with	0	oewn-ally_with-v	Tense=Past+VerbForm=Part	dema	0			rule
 allies	0	oewn-ally-n	Number=Plur	dema	1			carried
@@ -1659,7 +1659,7 @@ alloy iron	0	oewn-alloy_iron-n	Number=Sing	dema	0			oewn_form
 alloy irons	0	oewn-alloy_iron-n	Number=Plur	dema	0			rule
 alloy steel	0	oewn-alloy_steel-n	Number=Sing	dema	0			oewn_form
 alloy steels	0	oewn-alloy_steel-n	Number=Plur	dema	0			rule
-alloyed	0	oewn-alloy-v	Tense=Past	dema	1			carried
+alloyed	0	oewn-alloy-v	Tense=Past+VerbForm=Part	dema	1			carried
 alloying	0	oewn-alloy-v	VerbForm=Ger	dema	1			carried
 alloys	0	oewn-alloy-n	Number=Plur	dema	1			carried
 alloys	1	oewn-alloy-v	Person=3+Tense=Pres	dema	1			carried

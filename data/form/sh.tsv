@@ -381,7 +381,7 @@ shake up	0	oewn-shake_up-v	VerbForm=Inf	dema	0			oewn_form
 shake-up	0	oewn-shake-up-n	Number=Sing	dema	0			oewn_form
 shake-ups	0	oewn-shake-up-n	Number=Plur	dema	0			rule
 shakeable	0	oewn-shakeable-a	Degree=Pos	dema	0			oewn_form
-shaked	0	oewn-shake-v	Tense=Past	dema	1			carried
+shaked	0	oewn-shake-v	Tense=Past+VerbForm=Part	dema	1			carried
 shakedown	0		VerbForm=Inf	dema	0	shakedown	v	moby_reverse
 shakedown	1	oewn-shakedown-n	Number=Sing	dema	0			oewn_form
 shakedown	2	oewn-shakedown-a	Degree=Pos	dema	0			oewn_form
@@ -391,7 +391,7 @@ shakedowns	0		Person=3+Tense=Pres	dema	0	shakedown	v	rule
 shakedowns	1	oewn-shakedown-n	Number=Plur	dema	0			rule
 shakefork	0		Number=Sing	dema	0	shakefork	n	moby_reverse
 shakeforks	0		Number=Plur	dema	0	shakefork	n	rule
-shaken	0	oewn-shake-v		dema	1			carried
+shaken	0	oewn-shake-v	VerbForm=Part	dema	1			carried
 shakeout	0	oewn-shakeout-n	Number=Sing	dema	0			oewn_form
 shakeouts	0	oewn-shakeout-n	Number=Plur	dema	0			rule
 shaker	0	oewn-shaker-n	Number=Sing	dema	0			oewn_form
@@ -1340,7 +1340,7 @@ shield	1	oewn-shield-v	VerbForm=Inf	dema	1			carried
 shield fern	0	oewn-shield_fern-n	Number=Sing	dema	0			oewn_form
 shield ferns	0	oewn-shield_fern-n	Number=Plur	dema	0			rule
 shield-shaped	0	oewn-shield-shaped-a	Degree=Pos	dema	0			oewn_form
-shielded	0	oewn-shield-v	Tense=Past	dema	1			carried
+shielded	0	oewn-shield-v	Tense=Past+VerbForm=Part	dema	1			carried
 shielder	0	oewn-shielder-n	Number=Sing	dema	0			oewn_form
 shielders	0	oewn-shielder-n	Number=Plur	dema	0			rule
 shielding	0	oewn-shield-v	VerbForm=Ger	dema	1			carried
@@ -1369,7 +1369,7 @@ shift keys	0	oewn-shift_key-n	Number=Plur	dema	0			rule
 shift register	0	oewn-shift_register-n	Number=Sing	dema	0			oewn_form
 shift registers	0	oewn-shift_register-n	Number=Plur	dema	0			rule
 shiftable	0		Degree=Pos	dema	0	shiftable	a	moby_reverse
-shifted	0	oewn-shift-v	Tense=Past	dema	1			carried
+shifted	0	oewn-shift-v	Tense=Past+VerbForm=Part	dema	1			carried
 shifter	0	oewn-shifter-n	Number=Sing	dema	0			oewn_form
 shifters	0	oewn-shifter-n	Number=Plur	dema	0			rule
 shiftier	0	oewn-shifty-a	Degree=Cmp	dema	0			oewn_form
@@ -1881,7 +1881,7 @@ shock waves	0	oewn-shock_wave-n	Number=Plur	dema	0			rule
 shock-absorbent	0	oewn-shock-absorbent-a	Degree=Pos	dema	0			oewn_form
 shock-headed	0	oewn-shock-headed-a	Degree=Pos	dema	0			oewn_form
 shockable	0	oewn-shockable-a	Degree=Pos	dema	0			oewn_form
-shocked	0	oewn-shock-v	Tense=Past	dema	1			carried
+shocked	0	oewn-shock-v	Tense=Past+VerbForm=Part	dema	1			carried
 shocker	0	oewn-shocker-n	Number=Sing	dema	0			oewn_form
 shockers	0	oewn-shocker-n	Number=Plur	dema	0			rule
 shockheaded	0		Degree=Pos	dema	0	shockheaded	a	moby_reverse
@@ -2041,7 +2041,7 @@ shoogling	0		VerbForm=Ger	dema	0	shoogle	v	rule
 shooing	0	oewn-shoo-v	VerbForm=Ger	dema	0			rule
 shooing away	0	oewn-shoo_away-v	VerbForm=Ger	dema	0			rule
 shooing off	0	oewn-shoo_off-v	VerbForm=Ger	dema	0			rule
-shook	0	oewn-shake-v		dema	1			carried
+shook	0	oewn-shake-v	Tense=Past	dema	1			carried
 shook	1	oewn-shook-n	Number=Sing	dema	0			carried
 shooks	0	oewn-shook-n	Number=Plur	dema	0			rule
 shool	0		Number=Sing	dema	0	shool	n	moby_reverse
@@ -2537,7 +2537,7 @@ shout down	0	oewn-shout_down-v	VerbForm=Inf	dema	0			oewn_form
 shout out	0	oewn-shout_out-v	VerbForm=Inf	dema	0			oewn_form
 shout-out	0	oewn-shout-out-n	Number=Sing	dema	0			oewn_form
 shout-outs	0	oewn-shout-out-n	Number=Plur	dema	0			rule
-shouted	0	oewn-shout-v	Tense=Past	dema	1			carried
+shouted	0	oewn-shout-v	Tense=Past+VerbForm=Part	dema	1			carried
 shouted down	0	oewn-shout_down-v	Tense=Past+VerbForm=Part	dema	0			rule
 shouted out	0	oewn-shout_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 shouter	0	oewn-shouter-n	Number=Sing	dema	0			oewn_form
@@ -2641,7 +2641,7 @@ showding	0		VerbForm=Ger	dema	0	showd	v	rule
 showdown	0	oewn-showdown-n	Number=Sing	dema	0			oewn_form
 showdowns	0	oewn-showdown-n	Number=Plur	dema	0			rule
 showds	0		Person=3+Tense=Pres	dema	0	showd	v	rule
-showed	0	oewn-show-v	Tense=Past	dema	1			carried
+showed	0	oewn-show-v	Tense=Past+VerbForm=Part	dema	1			carried
 shower	0	oewn-shower-n-1	Number=Sing	dema	1			carried
 shower	1	oewn-shower-n-2	Number=Sing	dema	1			carried
 shower	2	oewn-shower-v	VerbForm=Inf	dema	1			carried
@@ -2662,7 +2662,7 @@ shower scrubber	0	oewn-shower_scrubber-n	Number=Sing	dema	0			oewn_form
 shower scrubbers	0	oewn-shower_scrubber-n	Number=Plur	dema	0			rule
 shower stall	0	oewn-shower_stall-n	Number=Sing	dema	0			oewn_form
 shower stalls	0	oewn-shower_stall-n	Number=Plur	dema	0			rule
-showered	0	oewn-shower-v	Tense=Past	dema	1			carried
+showered	0	oewn-shower-v	Tense=Past+VerbForm=Part	dema	1			carried
 showered down	0	oewn-shower_down-v	Tense=Past+VerbForm=Part	dema	0			rule
 showerhead	0	oewn-showerhead-n	Number=Sing	dema	0			oewn_form
 showerheads	0	oewn-showerhead-n	Number=Plur	dema	0			rule

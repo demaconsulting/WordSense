@@ -680,7 +680,7 @@ slice into	0	oewn-slice_into-v	VerbForm=Inf	dema	0			oewn_form
 slice through	0	oewn-slice_through-v	VerbForm=Inf	dema	0			oewn_form
 slice up	0	oewn-slice_up-v	VerbForm=Inf	dema	0			oewn_form
 sliceable	0		Degree=Pos	dema	0	sliceable	a	moby_reverse
-sliced	0	oewn-slice-v	Tense=Past	dema	1			carried
+sliced	0	oewn-slice-v	Tense=Past+VerbForm=Part	dema	1			carried
 sliced into	0	oewn-slice_into-v	Tense=Past+VerbForm=Part	dema	0			rule
 sliced through	0	oewn-slice_through-v	Tense=Past+VerbForm=Part	dema	0			rule
 sliced up	0	oewn-slice_up-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -730,7 +730,7 @@ slicks	0	oewn-slick-n	Number=Plur	dema	0			rule
 slicks	1	oewn-slick-v	Person=3+Tense=Pres	dema	0			rule
 slicks down	0	oewn-slick_down-v	Person=3+Tense=Pres	dema	0			rule
 slicks up	0	oewn-slick_up-v	Person=3+Tense=Pres	dema	0			rule
-slid	0	oewn-slide-v		dema	1			carried
+slid	0	oewn-slide-v	Tense=Past+VerbForm=Part	dema	1			carried
 slidable	0		Degree=Pos	dema	0	slidable	a	moby_reverse
 slidableness	0		Number=Sing	dema	0	slidableness	n	moby_reverse
 slidden	0		VerbForm=Inf	dema	0	slidden	v	moby_reverse
@@ -755,7 +755,7 @@ slide rule	0	oewn-slide_rule-n	Number=Sing	dema	0			oewn_form
 slide rules	0	oewn-slide_rule-n	Number=Plur	dema	0			rule
 slide valve	0	oewn-slide_valve-n	Number=Sing	dema	0			oewn_form
 slide valves	0	oewn-slide_valve-n	Number=Plur	dema	0			rule
-slided	0	oewn-slide-v	Tense=Past	dema	1			carried
+slided	0	oewn-slide-v	Tense=Past+VerbForm=Part	dema	1			carried
 slider	0	oewn-slider-n	Number=Sing	dema	0			oewn_form
 sliders	0	oewn-slider-n	Number=Plur	dema	0			rule
 slides	0	oewn-slide-n	Number=Plur	dema	1			carried
@@ -1197,7 +1197,7 @@ slough grass	0	oewn-slough_grass-n	Number=Sing	dema	0			oewn_form
 slough grasses	0	oewn-slough_grass-n	Number=Plur	dema	0			rule
 slough of despond	0	oewn-slough_of_despond-n	Number=Sing	dema	0			oewn_form
 slough off	0	oewn-slough_off-v	VerbForm=Inf	dema	0			oewn_form
-sloughed	0	oewn-slough-v	Tense=Past	dema	1			carried
+sloughed	0	oewn-slough-v	Tense=Past+VerbForm=Part	dema	1			carried
 sloughed off	0	oewn-slough_off-v	Tense=Past+VerbForm=Part	dema	0			rule
 sloughier	0	oewn-sloughy-a	Degree=Cmp	dema	0			rule
 sloughiest	0	oewn-sloughy-a	Degree=Sup	dema	0			rule

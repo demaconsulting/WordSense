@@ -383,7 +383,7 @@ accent	0	oewn-accent-n	Number=Sing	dema	1			carried
 accent	1	oewn-accent-v	VerbForm=Inf	dema	1			carried
 accent mark	0	oewn-accent_mark-n	Number=Sing	dema	0			oewn_form
 accent marks	0	oewn-accent_mark-n	Number=Plur	dema	0			rule
-accented	0	oewn-accent-v	Tense=Past	dema	1			carried
+accented	0	oewn-accent-v	Tense=Past+VerbForm=Part	dema	1			carried
 accenting	0	oewn-accent-v	VerbForm=Ger	dema	1			carried
 accenting	1	oewn-accenting-n	Number=Sing	dema	0			oewn_form
 accentings	0	oewn-accenting-n	Number=Plur	dema	0			rule
@@ -452,7 +452,7 @@ accessarily	0		Degree=Pos	dema	0	accessarily	r	moby_reverse
 accessariness	0		Number=Sing	dema	0	accessariness	n	moby_reverse
 accessary	0	oewn-accessary-n	Number=Sing	dema	0			oewn_form
 accessary	1	oewn-accessary-a	Degree=Pos	dema	0			oewn_form
-accessed	0	oewn-access-v	Tense=Past	dema	1			carried
+accessed	0	oewn-access-v	Tense=Past+VerbForm=Part	dema	1			carried
 accesses	0	oewn-access-n	Number=Plur	dema	1			carried
 accesses	1	oewn-access-v	Person=3+Tense=Pres	dema	1			carried
 accessibilities	0	oewn-accessibility-n	Number=Plur	dema	0			rule

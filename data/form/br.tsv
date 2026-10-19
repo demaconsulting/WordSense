@@ -1260,7 +1260,7 @@ breakbone fever	0	oewn-breakbone_fever-n	Number=Sing	dema	0			oewn_form
 breakbone fevers	0	oewn-breakbone_fever-n	Number=Plur	dema	0			rule
 breakdown	0	oewn-breakdown-n	Number=Sing	dema	0			oewn_form
 breakdowns	0	oewn-breakdown-n	Number=Plur	dema	0			rule
-breaked	0	oewn-break-v	Tense=Past	dema	1			carried
+breaked	0	oewn-break-v	Tense=Past+VerbForm=Part	dema	1			carried
 breaker	0	oewn-breaker-n	Number=Sing	dema	0			oewn_form
 breaker point	0	oewn-breaker_point-n	Number=Sing	dema	0			oewn_form
 breaker points	0	oewn-breaker_point-n	Number=Plur	dema	0			rule
@@ -1544,7 +1544,7 @@ breed	1	oewn-breed-v	VerbForm=Inf	dema	1			carried
 breed line	0	oewn-breed_line-n	Number=Sing	dema	0			oewn_form
 breed lines	0	oewn-breed_line-n	Number=Plur	dema	0			rule
 breedable	0		Degree=Pos	dema	0	breedable	a	moby_reverse
-breeded	0	oewn-breed-v	Tense=Past	dema	1			carried
+breeded	0	oewn-breed-v	Tense=Past+VerbForm=Part	dema	1			carried
 breeder	0	oewn-breeder-n	Number=Sing	dema	0			oewn_form
 breeder reactor	0	oewn-breeder_reactor-n	Number=Sing	dema	0			oewn_form
 breeder reactors	0	oewn-breeder_reactor-n	Number=Plur	dema	0			rule
@@ -2462,9 +2462,9 @@ broils	0	oewn-broil-v	Person=3+Tense=Pres	dema	0			rule
 broils	1	oewn-broil-n	Number=Plur	dema	0			rule
 brokage	0		Number=Sing	dema	0	brokage	n	moby_reverse
 brokages	0		Number=Plur	dema	0	brokage	n	rule
-broke	0	oewn-break-v		dema	1			carried
+broke	0	oewn-break-v	Tense=Past	dema	1			carried
 broke	1	oewn-broke-a	Degree=Pos	dema	0			carried
-broken	0	oewn-break-v		dema	1			carried
+broken	0	oewn-break-v	VerbForm=Part	dema	1			carried
 broken	1	oewn-broken-a	Degree=Pos	dema	0			carried
 broken arch	0	oewn-broken_arch-n	Number=Sing	dema	0			oewn_form
 broken arches	0	oewn-broken_arch-n	Number=Plur	dema	0			rule
@@ -3061,7 +3061,7 @@ brush-tailed phalangers	0	oewn-brush-tailed_phalanger-n	Number=Plur	dema	0			rul
 brush-tailed porcupine	0	oewn-brush-tailed_porcupine-n	Number=Sing	dema	0			oewn_form
 brush-tailed porcupines	0	oewn-brush-tailed_porcupine-n	Number=Plur	dema	0			rule
 brushable	0		Degree=Pos	dema	0	brushable	a	moby_reverse
-brushed	0	oewn-brush-v	Tense=Past	dema	1			carried
+brushed	0	oewn-brush-v	Tense=Past+VerbForm=Part	dema	1			carried
 brushed	1	oewn-brushed-a	Degree=Pos	dema	0			carried
 brushed aside	0	oewn-brush_aside-v	Tense=Past+VerbForm=Part	dema	0			rule
 brushed down	0	oewn-brush_down-v	Tense=Past+VerbForm=Part	dema	0			rule

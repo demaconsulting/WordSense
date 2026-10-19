@@ -297,7 +297,7 @@ smell	1	oewn-smell-v	VerbForm=Inf	dema	1			carried
 smell out	0	oewn-smell_out-v	VerbForm=Inf	dema	0			oewn_form
 smell up	0	oewn-smell_up-v	VerbForm=Inf	dema	0			oewn_form
 smellable	0		Degree=Pos	dema	0	smellable	a	moby_reverse
-smelled	0	oewn-smell-v	Tense=Past	dema	1			carried
+smelled	0	oewn-smell-v	Tense=Past+VerbForm=Part	dema	1			carried
 smeller	0		Number=Sing	dema	0	smeller	n	moby_reverse
 smellers	0		Number=Plur	dema	0	smeller	n	rule
 smellier	0	oewn-smelly-a	Degree=Cmp	dema	0			oewn_form
@@ -441,7 +441,7 @@ smoke-filled	0	oewn-smoke-filled-a	Degree=Pos	dema	0			oewn_form
 smoke-free	0	oewn-smoke-free-a	Degree=Pos	dema	0			oewn_form
 smokechaser	0		Number=Sing	dema	0	smokechaser	n	moby_reverse
 smokechasers	0		Number=Plur	dema	0	smokechaser	n	rule
-smoked	0	oewn-smoke-v	Tense=Past	dema	1			carried
+smoked	0	oewn-smoke-v	Tense=Past+VerbForm=Part	dema	1			carried
 smoked eel	0	oewn-smoked_eel-n	Number=Sing	dema	0			oewn_form
 smoked eels	0	oewn-smoked_eel-n	Number=Plur	dema	0			rule
 smoked haddock	0	oewn-smoked_haddock-n	Number=Sing	dema	0			oewn_form

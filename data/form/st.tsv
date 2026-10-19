@@ -377,7 +377,7 @@ stack	0	oewn-stack-n	Number=Sing	dema	1			carried
 stack	1	oewn-stack-v	VerbForm=Inf	dema	1			carried
 stack away	0	oewn-stack_away-v	VerbForm=Inf	dema	0			oewn_form
 stack up	0	oewn-stack_up-v	VerbForm=Inf	dema	0			oewn_form
-stacked	0	oewn-stack-v	Tense=Past	dema	1			carried
+stacked	0	oewn-stack-v	Tense=Past+VerbForm=Part	dema	1			carried
 stacked	1	oewn-stacked-a	Degree=Pos	dema	0			carried
 stacked away	0	oewn-stack_away-v	Tense=Past+VerbForm=Part	dema	0			rule
 stacked heel	0	oewn-stacked_heel-n	Number=Sing	dema	0			oewn_form
@@ -814,7 +814,7 @@ stamp pad	0	oewn-stamp_pad-n	Number=Sing	dema	0			oewn_form
 stamp pads	0	oewn-stamp_pad-n	Number=Plur	dema	0			rule
 stamp tax	0	oewn-stamp_tax-n	Number=Sing	dema	0			oewn_form
 stamp taxes	0	oewn-stamp_tax-n	Number=Plur	dema	0			rule
-stamped	0	oewn-stamp-v	Tense=Past	dema	1			carried
+stamped	0	oewn-stamp-v	Tense=Past+VerbForm=Part	dema	1			carried
 stamped down	0	oewn-stamp_down-v	Tense=Past+VerbForm=Part	dema	0			rule
 stamped out	0	oewn-stamp_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 stampedable	0		Degree=Pos	dema	0	stampedable	a	moby_reverse
@@ -950,7 +950,7 @@ standby	0	oewn-standby-n	Number=Sing	dema	0			oewn_form
 standby	1	oewn-standby-a	Degree=Pos	dema	0			oewn_form
 standdown	0	oewn-standdown-n	Number=Sing	dema	0			oewn_form
 standdowns	0	oewn-standdown-n	Number=Plur	dema	0			rule
-standed	0	oewn-stand-v	Tense=Past	dema	1			carried
+standed	0	oewn-stand-v	Tense=Past+VerbForm=Part	dema	1			carried
 standee	0	oewn-standee-n	Number=Sing	dema	0			oewn_form
 standees	0	oewn-standee-n	Number=Plur	dema	0			rule
 stander	0	oewn-stander-n	Number=Sing	dema	0			oewn_form
@@ -1216,7 +1216,7 @@ stardusts	0	oewn-stardust-n	Number=Plur	dema	0			rule
 stare	0	oewn-stare-n	Number=Sing	dema	1			carried
 stare	1	oewn-stare-v	VerbForm=Inf	dema	1			carried
 stare down	0	oewn-stare_down-v	VerbForm=Inf	dema	0			oewn_form
-stared	0	oewn-stare-v	Tense=Past	dema	1			carried
+stared	0	oewn-stare-v	Tense=Past+VerbForm=Part	dema	1			carried
 stared down	0	oewn-stare_down-v	Tense=Past+VerbForm=Part	dema	0			rule
 starer	0	oewn-starer-n	Number=Sing	dema	0			oewn_form
 starers	0	oewn-starer-n	Number=Plur	dema	0			rule
@@ -1463,7 +1463,7 @@ state-supported	0	oewn-state-supported-a	Degree=Pos	dema	0			oewn_form
 stateable	0		Degree=Pos	dema	0	stateable	a	moby_reverse
 statecraft	0	oewn-statecraft-n	Number=Sing	dema	0			oewn_form
 statecrafts	0	oewn-statecraft-n	Number=Plur	dema	0			rule
-stated	0	oewn-state-v	Tense=Past	dema	1			carried
+stated	0	oewn-state-v	Tense=Past+VerbForm=Part	dema	1			carried
 stated	1	oewn-stated-a	Degree=Pos	dema	0			carried
 statedly	0		Degree=Pos	dema	0	statedly	r	moby_reverse
 statehood	0		Number=Sing	dema	0	statehood	n	moby_reverse
@@ -1560,7 +1560,7 @@ stationary stochastic process	0	oewn-stationary_stochastic_process-n	Number=Sing
 stationary stochastic processes	0	oewn-stationary_stochastic_process-n	Number=Plur	dema	0			rule
 stationary wave	0	oewn-stationary_wave-n	Number=Sing	dema	0			oewn_form
 stationary waves	0	oewn-stationary_wave-n	Number=Plur	dema	0			rule
-stationed	0	oewn-station-v	Tense=Past	dema	1			carried
+stationed	0	oewn-station-v	Tense=Past+VerbForm=Part	dema	1			carried
 stationer	0	oewn-stationer-n	Number=Sing	dema	0			oewn_form
 stationeries	0	oewn-stationery-n	Number=Plur	dema	0			rule
 stationers	0	oewn-stationer-n	Number=Plur	dema	0			rule
@@ -2248,7 +2248,7 @@ stemmatic	0	oewn-stemmatic-a	Degree=Pos	dema	0			oewn_form
 stemmatics	0	oewn-stemmatics-n	Number=Sing	dema	0			oewn_form
 stemmatologies	0	oewn-stemmatology-n	Number=Plur	dema	0			rule
 stemmatology	0	oewn-stemmatology-n	Number=Sing	dema	0			oewn_form
-stemmed	0	oewn-stem-v	Tense=Past	dema	1			carried
+stemmed	0	oewn-stem-v	Tense=Past+VerbForm=Part	dema	1			carried
 stemmed	1	oewn-stemmed-a	Degree=Pos	dema	0			carried
 stemmer	0	oewn-stemmer-n	Number=Sing	dema	0			oewn_form
 stemmeries	0		Number=Plur	dema	0	stemmery	n	rule
@@ -2806,7 +2806,7 @@ stickball	0	oewn-stickball-n	Number=Sing	dema	0			oewn_form
 stickball game	0	oewn-stickball_game-n	Number=Sing	dema	0			oewn_form
 stickball games	0	oewn-stickball_game-n	Number=Plur	dema	0			rule
 stickballs	0	oewn-stickball-n	Number=Plur	dema	0			rule
-sticked	0	oewn-stick-v	Tense=Past	dema	1			carried
+sticked	0	oewn-stick-v	Tense=Past+VerbForm=Part	dema	1			carried
 sticker	0	oewn-sticker-n	Number=Sing	dema	0			oewn_form
 stickers	0	oewn-sticker-n	Number=Plur	dema	0			rule
 sticket	0		Degree=Pos	dema	0	sticket	a	moby_reverse
@@ -3448,7 +3448,7 @@ stockbrokerages	0		Number=Plur	dema	0	stockbrokerage	n	rule
 stockbrokers	0	oewn-stockbroker-n	Number=Plur	dema	0			rule
 stockcar	0	oewn-stockcar-n	Number=Sing	dema	0			oewn_form
 stockcars	0	oewn-stockcar-n	Number=Plur	dema	0			rule
-stocked	0	oewn-stock-v	Tense=Past	dema	1			carried
+stocked	0	oewn-stock-v	Tense=Past+VerbForm=Part	dema	1			carried
 stocked up	0	oewn-stock_up-v	Tense=Past+VerbForm=Part	dema	0			rule
 stocked with	0	oewn-stocked_with-a	Degree=Pos	dema	0			oewn_form
 stocker	0	oewn-stocker-n	Number=Sing	dema	0			oewn_form
@@ -4019,7 +4019,7 @@ store cheeses	0	oewn-store_cheese-n	Number=Plur	dema	0			rule
 store detective	0	oewn-store_detective-n	Number=Sing	dema	0			oewn_form
 store detectives	0	oewn-store_detective-n	Number=Plur	dema	0			rule
 store-bought	0	oewn-store-bought-a	Degree=Pos	dema	0			oewn_form
-stored	0	oewn-store-v	Tense=Past	dema	1			carried
+stored	0	oewn-store-v	Tense=Past+VerbForm=Part	dema	1			carried
 stored program	0	oewn-stored_program-n	Number=Sing	dema	0			oewn_form
 stored programs	0	oewn-stored_program-n	Number=Plur	dema	0			rule
 stored-program	0	oewn-stored-program-a	Degree=Pos	dema	0			oewn_form
@@ -4088,7 +4088,7 @@ storm windows	0	oewn-storm_window-n	Number=Plur	dema	0			rule
 storm-beaten	0	oewn-storm-beaten-a	Degree=Pos	dema	0			oewn_form
 storm-tossed	0	oewn-storm-tossed-a	Degree=Pos	dema	0			oewn_form
 stormbound	0	oewn-stormbound-a	Degree=Pos	dema	0			oewn_form
-stormed	0	oewn-storm-v	Tense=Past	dema	1			carried
+stormed	0	oewn-storm-v	Tense=Past+VerbForm=Part	dema	1			carried
 stormer	0		Number=Sing	dema	0	stormer	n	moby_reverse
 stormers	0		Number=Plur	dema	0	stormer	n	rule
 stormier	0	oewn-stormy-a	Degree=Cmp	dema	0			oewn_form
@@ -4678,7 +4678,7 @@ stream orchid	0	oewn-stream_orchid-n	Number=Sing	dema	0			oewn_form
 stream orchids	0	oewn-stream_orchid-n	Number=Plur	dema	0			rule
 streambed	0	oewn-streambed-n	Number=Sing	dema	0			oewn_form
 streambeds	0	oewn-streambed-n	Number=Plur	dema	0			rule
-streamed	0	oewn-stream-v	Tense=Past	dema	1			carried
+streamed	0	oewn-stream-v	Tense=Past+VerbForm=Part	dema	1			carried
 streamer	0	oewn-streamer-n	Number=Sing	dema	0			oewn_form
 streamer flies	0	oewn-streamer_fly-n	Number=Plur	dema	0			rule
 streamer fly	0	oewn-streamer_fly-n	Number=Sing	dema	0			oewn_form
@@ -4867,7 +4867,7 @@ stretch reflexes	0	oewn-stretch_reflex-n	Number=Plur	dema	0			rule
 stretchabilities	0	oewn-stretchability-n	Number=Plur	dema	0			rule
 stretchability	0	oewn-stretchability-n	Number=Sing	dema	0			oewn_form
 stretchable	0	oewn-stretchable-a	Degree=Pos	dema	0			oewn_form
-stretched	0	oewn-stretch-v	Tense=Past	dema	1			carried
+stretched	0	oewn-stretch-v	Tense=Past+VerbForm=Part	dema	1			carried
 stretched along	0	oewn-stretch_along-v	Tense=Past+VerbForm=Part	dema	0			rule
 stretched forth	0	oewn-stretch_forth-v	Tense=Past+VerbForm=Part	dema	0			rule
 stretched out	0	oewn-stretch_out-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -4939,7 +4939,7 @@ striations	0	oewn-striation-n	Number=Plur	dema	0			rule
 striatum	0	oewn-striatum-n	Number=Sing	dema	0			oewn_form
 striatums	0	oewn-striatum-n	Number=Plur	dema	0			rule
 strick	0		Number=Sing	dema	0	strick	n	moby_reverse
-stricken	0	oewn-strike-v		dema	1			carried
+stricken	0	oewn-strike-v	VerbForm=Part	dema	1			carried
 stricken	1	oewn-stricken-a	Degree=Pos	dema	0			carried
 strickle	0	oewn-strickle-n	Number=Sing	dema	0			oewn_form
 strickle	1	oewn-strickle-v	VerbForm=Inf	dema	0			oewn_form
@@ -5025,7 +5025,7 @@ strikebreaker	1		Degree=Pos	dema	0	strikebreaker	a	moby_reverse
 strikebreakers	0	oewn-strikebreaker-n	Number=Plur	dema	0			rule
 strikebreaking	0	oewn-strikebreaking-n	Number=Sing	dema	0			oewn_form
 strikebreakings	0	oewn-strikebreaking-n	Number=Plur	dema	0			rule
-striked	0	oewn-strike-v	Tense=Past	dema	1			carried
+striked	0	oewn-strike-v	Tense=Past+VerbForm=Part	dema	1			carried
 strikeout	0	oewn-strikeout-n	Number=Sing	dema	0			oewn_form
 strikeouts	0	oewn-strikeout-n	Number=Plur	dema	0			rule
 strikeover	0		Number=Sing	dema	0	strikeover	n	moby_reverse
@@ -5230,7 +5230,7 @@ striplight	0		Number=Sing	dema	0	striplight	n	moby_reverse
 striplights	0		Number=Plur	dema	0	striplight	n	rule
 stripling	0	oewn-stripling-n	Number=Plur	dema	0			agid
 stripling	1	oewn-stripling-n	Number=Sing	dema	0			oewn_form
-stripped	0	oewn-strip-v	Tense=Past	dema	1			carried
+stripped	0	oewn-strip-v	Tense=Past+VerbForm=Part	dema	1			carried
 stripped down	0	oewn-strip_down-v	Tense=Past+VerbForm=Part	dema	0			rule
 stripped mine	0	oewn-strip_mine-v	Tense=Past+VerbForm=Part	dema	0			rule
 stripped-down	0	oewn-stripped-down-a	Degree=Pos	dema	0			oewn_form
@@ -5308,7 +5308,7 @@ stroke delimber	0	oewn-stroke_delimber-n	Number=Sing	dema	0			oewn_form
 stroke delimbers	0	oewn-stroke_delimber-n	Number=Plur	dema	0			rule
 stroke play	0	oewn-stroke_play-n	Number=Sing	dema	0			oewn_form
 stroke plays	0	oewn-stroke_play-n	Number=Plur	dema	0			rule
-stroked	0	oewn-stroke-v	Tense=Past	dema	1			carried
+stroked	0	oewn-stroke-v	Tense=Past+VerbForm=Part	dema	1			carried
 strokes	0	oewn-stroke-n	Number=Plur	dema	1			carried
 strokes	1	oewn-stroke-v	Person=3+Tense=Pres	dema	1			carried
 stroking	0	oewn-stroke-v	VerbForm=Ger	dema	1			carried
@@ -5451,7 +5451,7 @@ stroyer	0		Number=Sing	dema	0	stroyer	n	moby_reverse
 stroyers	0		Number=Plur	dema	0	stroyer	n	rule
 stroying	0		VerbForm=Ger	dema	0	stroy	v	rule
 stroys	0		Person=3+Tense=Pres	dema	0	stroy	v	rule
-struck	0	oewn-strike-v		dema	1			carried
+struck	0	oewn-strike-v	Tense=Past+VerbForm=Part	dema	1			carried
 struck	1	oewn-struck-a	Degree=Pos	dema	0			carried
 structural	0	oewn-structural-a	Degree=Pos	dema	0			oewn_form
 structural anthropologies	0	oewn-structural_anthropology-n	Number=Plur	dema	0			rule
@@ -5493,7 +5493,7 @@ strudel	0	oewn-strudel-n	Number=Sing	dema	0			oewn_form
 strudels	0	oewn-strudel-n	Number=Plur	dema	0			rule
 struggle	0	oewn-struggle-n	Number=Sing	dema	1			carried
 struggle	1	oewn-struggle-v	VerbForm=Inf	dema	1			carried
-struggled	0	oewn-struggle-v	Tense=Past	dema	1			carried
+struggled	0	oewn-struggle-v	Tense=Past+VerbForm=Part	dema	1			carried
 struggler	0	oewn-struggler-n	Number=Sing	dema	0			oewn_form
 strugglers	0	oewn-struggler-n	Number=Plur	dema	0			rule
 struggles	0	oewn-struggle-n	Number=Plur	dema	1			carried
@@ -5589,7 +5589,7 @@ stuccowork	0		Number=Sing	dema	0	stuccowork	n	moby_reverse
 stuccoworker	0		Number=Sing	dema	0	stuccoworker	n	moby_reverse
 stuccoworkers	0		Number=Plur	dema	0	stuccoworker	n	rule
 stuccoworks	0		Number=Plur	dema	0	stuccowork	n	rule
-stuck	0	oewn-stick-v		dema	1			carried
+stuck	0	oewn-stick-v	Tense=Past+VerbForm=Part	dema	1			carried
 stuck	1	oewn-stuck-a	Degree=Pos	dema	0			carried
 stuck with	0	oewn-stuck_with-a	Degree=Pos	dema	0			oewn_form
 stuck-up	0	oewn-stuck-up-a	Degree=Pos	dema	0			oewn_form
@@ -5639,7 +5639,7 @@ studfishes	0		Number=Plur	dema	0	studfish	n	rule
 studhorse	0	oewn-studhorse-n	Number=Sing	dema	0			oewn_form
 studhorses	0	oewn-studhorse-n	Number=Plur	dema	0			rule
 studiable	0		Degree=Pos	dema	0	studiable	a	moby_reverse
-studied	0	oewn-study-v	Tense=Past	dema	1			carried
+studied	0	oewn-study-v	Tense=Past+VerbForm=Part	dema	1			carried
 studied	1	oewn-studied-a	Degree=Pos	dema	0			carried
 studiedly	0		Degree=Pos	dema	0	studiedly	r	moby_reverse
 studiedness	0		Number=Sing	dema	0	studiedness	n	moby_reverse

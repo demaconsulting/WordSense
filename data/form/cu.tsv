@@ -887,7 +887,7 @@ cure	0	oewn-cure-n	Number=Sing	dema	1			carried
 cure	1	oewn-cure-v	VerbForm=Inf	dema	1			carried
 cure-all	0	oewn-cure-all-n	Number=Sing	dema	0			oewn_form
 cure-alls	0	oewn-cure-all-n	Number=Plur	dema	0			rule
-cured	0	oewn-cure-v	Tense=Past	dema	1			carried
+cured	0	oewn-cure-v	Tense=Past+VerbForm=Part	dema	1			carried
 cureless	0		Degree=Pos	dema	0	cureless	a	moby_reverse
 curelessly	0		Degree=Pos	dema	0	curelessly	r	moby_reverse
 curer	0		Number=Sing	dema	0	curer	n	moby_reverse

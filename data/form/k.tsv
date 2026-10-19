@@ -2087,7 +2087,7 @@ kickboard	0		Number=Sing	dema	0	kickboard	n	moby_reverse
 kickboards	0		Number=Plur	dema	0	kickboard	n	rule
 kickdown	0		Number=Sing	dema	0	kickdown	n	moby_reverse
 kickdowns	0		Number=Plur	dema	0	kickdown	n	rule
-kicked	0	oewn-kick-v	Tense=Past	dema	1			carried
+kicked	0	oewn-kick-v	Tense=Past+VerbForm=Part	dema	1			carried
 kicked about	0	oewn-kick_about-v	Tense=Past+VerbForm=Part	dema	0			rule
 kicked around	0	oewn-kick_around-v	Tense=Past+VerbForm=Part	dema	0			rule
 kicked ass	0	oewn-kick_ass-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -2156,7 +2156,7 @@ kid	1	oewn-kid-v	VerbForm=Inf	dema	1			carried
 kid glove	0	oewn-kid_glove-n	Number=Sing	dema	0			oewn_form
 kid gloves	0	oewn-kid_glove-n	Number=Plur	dema	0			rule
 kid-glove	0	oewn-kid-glove-a	Degree=Pos	dema	0			oewn_form
-kidded	0	oewn-kid-v	Tense=Past	dema	1			carried
+kidded	0	oewn-kid-v	Tense=Past+VerbForm=Part	dema	1			carried
 kidder	0		Number=Sing	dema	0	kidder	n	moby_reverse
 kidders	0		Number=Plur	dema	0	kidder	n	rule
 kiddie	0	oewn-kiddie-n	Number=Sing	dema	0			oewn_form
@@ -2780,7 +2780,7 @@ kissability	0		Number=Sing	dema	0	kissability	n	moby_reverse
 kissable	0		Degree=Pos	dema	0	kissable	a	moby_reverse
 kissableness	0		Number=Sing	dema	0	kissableness	n	moby_reverse
 kissably	0		Degree=Pos	dema	0	kissably	r	moby_reverse
-kissed	0	oewn-kiss-v	Tense=Past	dema	1			carried
+kissed	0	oewn-kiss-v	Tense=Past+VerbForm=Part	dema	1			carried
 kissel	0		Number=Sing	dema	0	kissel	n	moby_reverse
 kissels	0		Number=Plur	dema	0	kissel	n	rule
 kisser	0	oewn-kisser-n	Number=Sing	dema	0			oewn_form
@@ -3309,7 +3309,7 @@ knockdown	0	oewn-knockdown-a	Degree=Pos	dema	0			oewn_form
 knockdown	1	oewn-knockdown-n	Number=Sing	dema	0			oewn_form
 knockdown-dragout	0	oewn-knockdown-dragout-a	Degree=Pos	dema	0			oewn_form
 knockdowns	0	oewn-knockdown-n	Number=Plur	dema	0			rule
-knocked	0	oewn-knock-v	Tense=Past	dema	1			carried
+knocked	0	oewn-knock-v	Tense=Past+VerbForm=Part	dema	1			carried
 knocked about	0	oewn-knock_about-v	Tense=Past+VerbForm=Part	dema	0			rule
 knocked against	0	oewn-knock_against-v	Tense=Past+VerbForm=Part	dema	0			rule
 knocked back	0	oewn-knock_back-v	Tense=Past+VerbForm=Part	dema	0			rule

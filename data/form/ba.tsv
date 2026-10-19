@@ -2541,7 +2541,7 @@ banksia roses	0	oewn-banksia_rose-n	Number=Plur	dema	0			rule
 banksias	0	oewn-banksia-n	Number=Plur	dema	0			rule
 banlieue	0		Number=Sing	dema	0	banlieue	n	moby_reverse
 banlieues	0		Number=Plur	dema	0	banlieue	n	rule
-banned	0	oewn-ban-v	Tense=Past	dema	1			carried
+banned	0	oewn-ban-v	Tense=Past+VerbForm=Part	dema	1			carried
 banner	0	oewn-banner-n	Number=Sing	dema	0			oewn_form
 banner	1	oewn-banner-a	Degree=Pos	dema	0			oewn_form
 bannered	0		Degree=Pos	dema	0	bannered	a	moby_reverse
@@ -3591,7 +3591,7 @@ baseburner	0		Number=Sing	dema	0	baseburner	n	moby_reverse
 baseburners	0		Number=Plur	dema	0	baseburner	n	rule
 basecoat	0		Number=Sing	dema	0	basecoat	n	moby_reverse
 basecoats	0		Number=Plur	dema	0	basecoat	n	rule
-based	0	oewn-base-v	Tense=Past	dema	1			carried
+based	0	oewn-base-v	Tense=Past+VerbForm=Part	dema	1			carried
 basehearted	0		Degree=Pos	dema	0	basehearted	a	moby_reverse
 basehearted	1		VerbForm=Inf	dema	0	basehearted	v	moby_reverse
 baseless	0	oewn-baseless-a	Degree=Pos	dema	0			oewn_form

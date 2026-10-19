@@ -691,7 +691,7 @@ picture window	0	oewn-picture_window-n	Number=Sing	dema	0			oewn_form
 picture windows	0	oewn-picture_window-n	Number=Plur	dema	0			rule
 picture writing	0	oewn-picture_writing-n	Number=Sing	dema	0			oewn_form
 picture writings	0	oewn-picture_writing-n	Number=Plur	dema	0			rule
-pictured	0	oewn-picture-v	Tense=Past	dema	1			carried
+pictured	0	oewn-picture-v	Tense=Past+VerbForm=Part	dema	1			carried
 picturegoer	0		Number=Sing	dema	0	picturegoer	n	moby_reverse
 picturegoers	0		Number=Plur	dema	0	picturegoer	n	rule
 pictures	0	oewn-picture-n	Number=Plur	dema	1			carried
@@ -1124,7 +1124,7 @@ pileas	0		Number=Plur	dema	0	pilea	n	rule
 pileate	0		Degree=Pos	dema	0	pileate	a	moby_reverse
 pileated	0		Degree=Pos	dema	0	pileated	a	moby_reverse
 pileated	1		VerbForm=Inf	dema	0	pileated	v	moby_reverse
-piled	0	oewn-pile-v	Tense=Past	dema	1			carried
+piled	0	oewn-pile-v	Tense=Past+VerbForm=Part	dema	1			carried
 piled	1	dema-piled-a	Degree=Pos	dema	0			carried
 piled up	0	oewn-pile_up-v	Tense=Past+VerbForm=Part	dema	0			rule
 pilei	0	oewn-pileus-n	Number=Plur	dema	0			oewn_form
@@ -1440,7 +1440,7 @@ pinchbottles	0		Number=Plur	dema	0	pinchbottle	n	rule
 pinchcock	0		Number=Sing	dema	0	pinchcock	n	moby_reverse
 pinchcocks	0		Number=Plur	dema	0	pinchcock	n	rule
 pinche	0	oewn-pinche-n	Number=Sing	dema	0			oewn_form
-pinched	0	oewn-pinch-v	Tense=Past	dema	1			carried
+pinched	0	oewn-pinch-v	Tense=Past+VerbForm=Part	dema	1			carried
 pincher	0		Number=Sing	dema	0	pincher	n	moby_reverse
 pinchers	0		Number=Plur	dema	0	pincher	n	rule
 pinches	0	oewn-pinch-n	Number=Plur	dema	1			carried
@@ -1714,7 +1714,7 @@ pinnatiped	1		VerbForm=Inf	dema	0	pinnatiped	v	moby_reverse
 pinnatiped	2	oewn-pinnatiped-n	Number=Sing	dema	0			oewn_form
 pinnatipeds	0	oewn-pinnatiped-n	Number=Plur	dema	0			rule
 pinnatisect	0	oewn-pinnatisect-a	Degree=Pos	dema	0			oewn_form
-pinned	0	oewn-pin-v	Tense=Past	dema	1			carried
+pinned	0	oewn-pin-v	Tense=Past+VerbForm=Part	dema	1			carried
 pinned down	0	oewn-pin_down-v	Tense=Past+VerbForm=Part	dema	0			rule
 pinned on	0	oewn-pin_on-v	Tense=Past+VerbForm=Part	dema	0			rule
 pinned up	0	oewn-pin_up-v	Tense=Past+VerbForm=Part	dema	0			rule

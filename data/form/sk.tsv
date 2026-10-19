@@ -37,7 +37,7 @@ skateboarding	1	oewn-skateboarding-n	Number=Sing	dema	0			oewn_form
 skateboardings	0	oewn-skateboarding-n	Number=Plur	dema	0			rule
 skateboards	0	oewn-skateboard-n	Number=Plur	dema	0			rule
 skateboards	1	oewn-skateboard-v	Person=3+Tense=Pres	dema	0			rule
-skated	0	oewn-skate-v	Tense=Past	dema	1			carried
+skated	0	oewn-skate-v	Tense=Past+VerbForm=Part	dema	1			carried
 skated over	0	oewn-skate_over-v	Tense=Past+VerbForm=Part	dema	0			rule
 skatemobile	0		Number=Sing	dema	0	skatemobile	n	moby_reverse
 skatemobiles	0		Number=Plur	dema	0	skatemobile	n	rule
@@ -178,7 +178,7 @@ sketchability	0		Number=Sing	dema	0	sketchability	n	moby_reverse
 sketchable	0		Degree=Pos	dema	0	sketchable	a	moby_reverse
 sketchbook	0	oewn-sketchbook-n	Number=Sing	dema	0			oewn_form
 sketchbooks	0	oewn-sketchbook-n	Number=Plur	dema	0			rule
-sketched	0	oewn-sketch-v	Tense=Past	dema	1			carried
+sketched	0	oewn-sketch-v	Tense=Past+VerbForm=Part	dema	1			carried
 sketched out	0	oewn-sketch_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 sketcher	0	oewn-sketcher-n	Number=Sing	dema	0			oewn_form
 sketchers	0	oewn-sketcher-n	Number=Plur	dema	0			rule

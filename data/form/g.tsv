@@ -1397,7 +1397,7 @@ gain ground	0	oewn-gain_ground-v	VerbForm=Inf	dema	0			oewn_form
 gain vigor	0	oewn-gain_vigor-v	VerbForm=Inf	dema	0			oewn_form
 gainable	0		Degree=Pos	dema	0	gainable	a	moby_reverse
 gaine	0		Number=Sing	dema	0	gaine	n	moby_reverse
-gained	0	oewn-gain-v	Tense=Past	dema	1			carried
+gained	0	oewn-gain-v	Tense=Past+VerbForm=Part	dema	1			carried
 gained ground	0	oewn-gain_ground-v	Tense=Past+VerbForm=Part	dema	0			rule
 gained vigor	0	oewn-gain_vigor-v	Tense=Past+VerbForm=Part	dema	0			rule
 gainer	0	oewn-gainer-n	Number=Sing	dema	0			oewn_form
@@ -5011,7 +5011,7 @@ gift-wrap	0	oewn-gift-wrap-v	VerbForm=Inf	dema	0			oewn_form
 gift-wraped	0	oewn-gift-wrap-v	Tense=Past+VerbForm=Part	dema	0			rule
 gift-wraping	0	oewn-gift-wrap-v	VerbForm=Ger	dema	0			rule
 gift-wraps	0	oewn-gift-wrap-v	Person=3+Tense=Pres	dema	0			rule
-gifted	0	oewn-gift-v	Tense=Past	dema	1			carried
+gifted	0	oewn-gift-v	Tense=Past+VerbForm=Part	dema	1			carried
 gifted	1	oewn-gifted-a	Degree=Pos	dema	0			carried
 giftedly	0		Degree=Pos	dema	0	giftedly	r	moby_reverse
 giftedness	0		Number=Sing	dema	0	giftedness	n	moby_reverse
@@ -5757,7 +5757,7 @@ glams up	0	oewn-glam_up-v	Person=3+Tense=Pres	dema	0			rule
 glance	0	oewn-glance-n	Number=Sing	dema	1			carried
 glance	1	oewn-glance-v	VerbForm=Inf	dema	1			carried
 glance over	0	oewn-glance_over-v	VerbForm=Inf	dema	0			oewn_form
-glanced	0	oewn-glance-v	Tense=Past	dema	1			carried
+glanced	0	oewn-glance-v	Tense=Past+VerbForm=Part	dema	1			carried
 glanced over	0	oewn-glance_over-v	Tense=Past+VerbForm=Part	dema	0			rule
 glances	0	oewn-glance-n	Number=Plur	dema	1			carried
 glances	1	oewn-glance-v	Person=3+Tense=Pres	dema	1			carried
@@ -8384,7 +8384,7 @@ gossip	0	oewn-gossip-n	Number=Sing	dema	1			carried
 gossip	1	oewn-gossip-v	VerbForm=Inf	dema	1			carried
 gossip columnist	0	oewn-gossip_columnist-n	Number=Sing	dema	0			oewn_form
 gossip columnists	0	oewn-gossip_columnist-n	Number=Plur	dema	0			rule
-gossiped	0	oewn-gossip-v	Tense=Past	dema	1			carried
+gossiped	0	oewn-gossip-v	Tense=Past+VerbForm=Part	dema	1			carried
 gossiper	0	oewn-gossiper-n	Number=Sing	dema	0			oewn_form
 gossipers	0	oewn-gossiper-n	Number=Plur	dema	0			rule
 gossipiness	0		Number=Sing	dema	0	gossipiness	n	moby_reverse
@@ -8397,7 +8397,7 @@ gossipmonger	0	oewn-gossipmonger-n	Number=Sing	dema	0			oewn_form
 gossipmongering	0	oewn-gossipmongering-n	Number=Sing	dema	0			oewn_form
 gossipmongerings	0	oewn-gossipmongering-n	Number=Plur	dema	0			rule
 gossipmongers	0	oewn-gossipmonger-n	Number=Plur	dema	0			rule
-gossipped	0	oewn-gossip-v	Tense=Past	dema	1			carried
+gossipped	0	oewn-gossip-v	Tense=Past+VerbForm=Part	dema	1			carried
 gossipping	0	oewn-gossip-v	VerbForm=Ger	dema	1			carried
 gossipping	1	oewn-gossip-n	Number=Sing+VerbForm=Ger	dema	1			carried
 gossipred	0		Number=Sing	dema	0	gossipred	n	moby_reverse
@@ -9334,7 +9334,7 @@ grasp	1	oewn-grasp-v	VerbForm=Inf	dema	1			carried
 graspabilities	0	oewn-graspability-n	Number=Plur	dema	0			rule
 graspability	0	oewn-graspability-n	Number=Sing	dema	0			oewn_form
 graspable	0	oewn-graspable-a	Degree=Pos	dema	0			oewn_form
-grasped	0	oewn-grasp-v	Tense=Past	dema	1			carried
+grasped	0	oewn-grasp-v	Tense=Past+VerbForm=Part	dema	1			carried
 grasper	0		Number=Sing	dema	0	grasper	n	moby_reverse
 graspers	0		Number=Plur	dema	0	grasper	n	rule
 grasping	0	oewn-grasp-v	VerbForm=Ger	dema	1			carried
@@ -10649,7 +10649,7 @@ gripmen	0		Number=Sing	dema	0	gripmen	n	moby_reverse
 gripmens	0		Number=Plur	dema	0	gripmen	n	rule
 grippal	0		Degree=Pos	dema	0	grippal	a	moby_reverse
 grippe	0	oewn-grippe-n	Number=Sing	dema	0			oewn_form
-gripped	0	oewn-grip-v	Tense=Past	dema	1			carried
+gripped	0	oewn-grip-v	Tense=Past+VerbForm=Part	dema	1			carried
 grippelike	0		Degree=Pos	dema	0	grippelike	a	moby_reverse
 gripper	0		Number=Sing	dema	0	gripper	n	moby_reverse
 grippers	0		Number=Plur	dema	0	gripper	n	rule
@@ -11560,7 +11560,7 @@ guard's van	0	oewn-guard-ap-s_van-n	Number=Sing	dema	0			oewn_form
 guard's vans	0	oewn-guard-ap-s_van-n	Number=Plur	dema	0			rule
 guardable	0		Degree=Pos	dema	0	guardable	a	moby_reverse
 guardant	0	oewn-guardant-a	Degree=Pos	dema	0			oewn_form
-guarded	0	oewn-guard-v	Tense=Past	dema	1			carried
+guarded	0	oewn-guard-v	Tense=Past+VerbForm=Part	dema	1			carried
 guarded	1	oewn-guarded-a	Degree=Pos	dema	0			carried
 guardedly	0	oewn-guardedly-r	Degree=Pos	dema	0			oewn_form
 guardedness	0		Number=Sing	dema	0	guardedness	n	moby_reverse
@@ -11760,7 +11760,7 @@ guidebook	0	oewn-guidebook-n	Number=Sing	dema	0			oewn_form
 guidebookish	0		Degree=Pos	dema	0	guidebookish	a	moby_reverse
 guidebooks	0	oewn-guidebook-n	Number=Plur	dema	0			rule
 guidebooky	0		Degree=Pos	dema	0	guidebooky	a	moby_reverse
-guided	0	oewn-guide-v	Tense=Past	dema	1			carried
+guided	0	oewn-guide-v	Tense=Past+VerbForm=Part	dema	1			carried
 guided	1	oewn-guided-a	Degree=Pos	dema	0			carried
 guided missile	0	oewn-guided_missile-n	Number=Sing	dema	0			oewn_form
 guided missile cruiser	0	oewn-guided_missile_cruiser-n	Number=Sing	dema	0			oewn_form

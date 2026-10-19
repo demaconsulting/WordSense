@@ -453,7 +453,7 @@ beam of light	0	oewn-beam_of_light-n	Number=Sing	dema	0			oewn_form
 beam scale	0	oewn-beam_scale-n	Number=Sing	dema	0			oewn_form
 beam scales	0	oewn-beam_scale-n	Number=Plur	dema	0			rule
 beam-ends	0	oewn-beam-ends-n	Number=Sing	dema	0			oewn_form
-beamed	0	oewn-beam-v	Tense=Past	dema	1			carried
+beamed	0	oewn-beam-v	Tense=Past+VerbForm=Part	dema	1			carried
 beamier	0	oewn-beamy-a	Degree=Cmp	dema	0			rule
 beamiest	0	oewn-beamy-a	Degree=Sup	dema	0			rule
 beamily	0		Degree=Pos	dema	0	beamily	r	moby_reverse
@@ -616,7 +616,7 @@ beards	0	oewn-beard-n	Number=Plur	dema	0			rule
 beards	1	oewn-beard-v	Person=3+Tense=Pres	dema	0			rule
 beardtongue	0		Number=Sing	dema	0	beardtongue	n	moby_reverse
 beardtongues	0		Number=Plur	dema	0	beardtongue	n	rule
-beared	0	oewn-bear-v	Tense=Past	dema	1			carried
+beared	0	oewn-bear-v	Tense=Past+VerbForm=Part	dema	1			carried
 bearer	0	oewn-bearer-n	Number=Sing	dema	0			oewn_form
 bearer bond	0	oewn-bearer_bond-n	Number=Sing	dema	0			oewn_form
 bearer bonds	0	oewn-bearer_bond-n	Number=Plur	dema	0			rule
@@ -694,6 +694,7 @@ beasts	0	oewn-beast-n	Number=Plur	dema	0			rule
 beasts of burden	0	oewn-beast_of_burden-n	Number=Plur	dema	0			rule
 beat	0	oewn-beat-n	Number=Sing	dema	1			carried
 beat	1	oewn-beat-v	VerbForm=Inf	dema	1			carried
+beat	2	oewn-beat-v	Tense=Past	dema	0			irregular_list
 beat a retreat	0	oewn-beat_a_retreat-v	VerbForm=Inf	dema	0			oewn_form
 beat about	0	oewn-beat_about-v	VerbForm=Inf	dema	0			oewn_form
 beat around the bush	0	oewn-beat_around_the_bush-v	VerbForm=Inf	dema	0			oewn_form
@@ -712,7 +713,7 @@ beatable	0	oewn-beatable-a	Degree=Pos	dema	0			oewn_form
 beatae	0		Number=Sing	dema	0	beatae	n	moby_reverse
 beataes	0		Number=Plur	dema	0	beatae	n	rule
 beatas	0		Number=Plur	dema	0	beata	n	rule
-beated	0	oewn-beat-v	Tense=Past	dema	1			carried
+beated	0	oewn-beat-v	Tense=Past+VerbForm=Part	dema	1			carried
 beaten	0	oewn-beat-v	VerbForm=Part	dema	0			hand
 beaten	1	oewn-beaten-a	Degree=Pos	dema	0			oewn_form
 beaten-up	0	oewn-beaten-up-a	Degree=Pos	dema	0			oewn_form
@@ -2216,7 +2217,7 @@ benday	0	oewn-benday-v	VerbForm=Inf	dema	0			oewn_form
 bendayed	0	oewn-benday-v	Tense=Past+VerbForm=Part	dema	0			rule
 bendaying	0	oewn-benday-v	VerbForm=Ger	dema	0			rule
 bendays	0	oewn-benday-v	Person=3+Tense=Pres	dema	0			rule
-bended	0	oewn-bend-v	Tense=Past	dema	1			carried
+bended	0	oewn-bend-v	Tense=Past+VerbForm=Part	dema	1			carried
 bender	0	oewn-bender-n	Number=Sing	dema	0			oewn_form
 benders	0	oewn-bender-n	Number=Plur	dema	0			rule
 bendies	0		Number=Sing	dema	0	bendies	n	moby_reverse
@@ -2366,7 +2367,7 @@ benniseed	0	oewn-benniseed-n	Number=Sing	dema	0			oewn_form
 benniseeds	0	oewn-benniseed-n	Number=Plur	dema	0			rule
 benny	0	oewn-benny-n	Number=Sing	dema	0			oewn_form
 bens	0	oewn-ben-n	Number=Plur	dema	0			rule
-bent	0	oewn-bend-v		dema	1			carried
+bent	0	oewn-bend-v	Tense=Past+VerbForm=Part	dema	1			carried
 bent	1	oewn-bent-a	Degree=Pos	dema	0			carried
 bent	2	oewn-bent-n	Number=Sing	dema	0			carried
 bent grass	0	oewn-bent_grass-n	Number=Sing	dema	0			oewn_form

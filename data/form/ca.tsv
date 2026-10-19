@@ -2125,7 +2125,7 @@ callback	0	oewn-callback-n	Number=Sing	dema	0			oewn_form
 callbacks	0	oewn-callback-n	Number=Plur	dema	0			rule
 callboy	0		Number=Sing	dema	0	callboy	n	moby_reverse
 callboys	0		Number=Plur	dema	0	callboy	n	rule
-called	0	oewn-call-v	Tense=Past	dema	1			carried
+called	0	oewn-call-v	Tense=Past+VerbForm=Part	dema	1			carried
 called at	0	oewn-call_at-v	Tense=Past+VerbForm=Part	dema	0			rule
 called attention	0	oewn-call_attention-v	Tense=Past+VerbForm=Part	dema	0			rule
 called back	0	oewn-call_back-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -2649,7 +2649,7 @@ campcraft	0		Number=Sing	dema	0	campcraft	n	moby_reverse
 campcrafts	0		Number=Plur	dema	0	campcraft	n	rule
 campeachies	0	oewn-campeachy-n	Number=Plur	dema	0			rule
 campeachy	0	oewn-campeachy-n	Number=Sing	dema	0			oewn_form
-camped	0	oewn-camp-v	Tense=Past	dema	1			carried
+camped	0	oewn-camp-v	Tense=Past+VerbForm=Part	dema	1			carried
 camped down	0	oewn-camp_down-v	Tense=Past+VerbForm=Part	dema	0			rule
 camped out	0	oewn-camp_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 camper	0	oewn-camper-n	Number=Sing	dema	0			oewn_form
@@ -4700,7 +4700,7 @@ care deliveries	0	oewn-care_delivery-n	Number=Plur	dema	0			rule
 care delivery	0	oewn-care_delivery-n	Number=Sing	dema	0			oewn_form
 care for	0	oewn-care_for-v	VerbForm=Inf	dema	0			oewn_form
 care-laden	0	oewn-care-laden-a	Degree=Pos	dema	0			oewn_form
-cared	0	oewn-care-v	Tense=Past	dema	1			carried
+cared	0	oewn-care-v	Tense=Past+VerbForm=Part	dema	1			carried
 cared a hang	0	oewn-care_a_hang-v	Tense=Past+VerbForm=Part	dema	0			rule
 cared for	0	oewn-care_for-v	Tense=Past+VerbForm=Part	dema	0			rule
 cared-for	0	oewn-cared-for-a	Degree=Pos	dema	0			oewn_form
@@ -5802,7 +5802,7 @@ cashcard	0	oewn-cashcard-n	Number=Sing	dema	0			oewn_form
 cashcards	0	oewn-cashcard-n	Number=Plur	dema	0			rule
 cashdrawer	0		Number=Sing	dema	0	cashdrawer	n	moby_reverse
 cashdrawers	0		Number=Plur	dema	0	cashdrawer	n	rule
-cashed	0	oewn-cash-v	Tense=Past	dema	1			carried
+cashed	0	oewn-cash-v	Tense=Past+VerbForm=Part	dema	1			carried
 cashed in	0	oewn-cash_in-v	Tense=Past+VerbForm=Part	dema	0			rule
 cashed in on	0	oewn-cash_in_on-v	Tense=Past+VerbForm=Part	dema	0			rule
 cashed in one's chips	0	oewn-cash_in_one-ap-s_chips-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -5939,6 +5939,7 @@ cassowaries	0	oewn-cassowary-n	Number=Plur	dema	0			rule
 cassowary	0	oewn-cassowary-n	Number=Sing	dema	0			oewn_form
 cast	0	oewn-cast-n	Number=Sing	dema	1			carried
 cast	1	oewn-cast-v	VerbForm=Inf	dema	1			carried
+cast	2	oewn-cast-v	Tense=Past+VerbForm=Part	dema	0			hand
 cast about	0	oewn-cast_about-v	VerbForm=Inf	dema	0			oewn_form
 cast anchor	0	oewn-cast_anchor-v	VerbForm=Inf	dema	0			oewn_form
 cast around	0	oewn-cast_around-v	VerbForm=Inf	dema	0			oewn_form
@@ -5966,7 +5967,7 @@ castaways	0	oewn-castaway-n	Number=Plur	dema	0			rule
 caste	0	oewn-caste-n	Number=Sing	dema	0			oewn_form
 caste system	0	oewn-caste_system-n	Number=Sing	dema	0			oewn_form
 caste systems	0	oewn-caste_system-n	Number=Plur	dema	0			rule
-casted	0	oewn-cast-v	Tense=Past	dema	1			carried
+casted	0	oewn-cast-v	Tense=Past+VerbForm=Part	dema	1			carried
 casteless	0	oewn-casteless-a	Degree=Pos	dema	0			oewn_form
 castellan	0		Number=Sing	dema	0	castellan	n	moby_reverse
 castellanies	0		Number=Plur	dema	0	castellany	n	rule
@@ -6990,7 +6991,7 @@ cause of action	0	oewn-cause_of_action-n	Number=Sing	dema	0			oewn_form
 cause of death	0	oewn-cause_of_death-n	Number=Sing	dema	0			oewn_form
 cause to be perceived	0	oewn-cause_to_be_perceived-v	VerbForm=Inf	dema	0			oewn_form
 cause to sleep	0	oewn-cause_to_sleep-v	VerbForm=Inf	dema	0			oewn_form
-caused	0	oewn-cause-v	Tense=Past	dema	1			carried
+caused	0	oewn-cause-v	Tense=Past+VerbForm=Part	dema	1			carried
 caused to be perceived	0	oewn-cause_to_be_perceived-v	Tense=Past+VerbForm=Part	dema	0			rule
 caused to sleep	0	oewn-cause_to_sleep-v	Tense=Past+VerbForm=Part	dema	0			rule
 causeless	0	oewn-causeless-a	Degree=Pos	dema	0			oewn_form

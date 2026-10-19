@@ -1274,7 +1274,7 @@ nail-tailed wallabies	0	oewn-nail-tailed_wallaby-n	Number=Plur	dema	0			rule
 nail-tailed wallaby	0	oewn-nail-tailed_wallaby-n	Number=Sing	dema	0			oewn_form
 nailbrush	0	oewn-nailbrush-n	Number=Sing	dema	0			oewn_form
 nailbrushes	0	oewn-nailbrush-n	Number=Plur	dema	0			rule
-nailed	0	oewn-nail-v	Tense=Past	dema	1			carried
+nailed	0	oewn-nail-v	Tense=Past+VerbForm=Part	dema	1			carried
 nailed down	0	oewn-nail_down-v	Tense=Past+VerbForm=Part	dema	0			rule
 nailer	0	oewn-nailer-n	Number=Sing	dema	0			oewn_form
 nailers	0	oewn-nailer-n	Number=Plur	dema	0			rule
@@ -5062,7 +5062,7 @@ nod off	0	oewn-nod_off-v	VerbForm=Inf	dema	0			oewn_form
 nodal	0		Degree=Pos	dema	0	nodal	a	moby_reverse
 nodal rhythm	0	oewn-nodal_rhythm-n	Number=Sing	dema	0			oewn_form
 nodal rhythms	0	oewn-nodal_rhythm-n	Number=Plur	dema	0			rule
-nodded	0	oewn-nod-v	Tense=Past	dema	1			carried
+nodded	0	oewn-nod-v	Tense=Past+VerbForm=Part	dema	1			carried
 nodded off	0	oewn-nod_off-v	Tense=Past+VerbForm=Part	dema	0			rule
 noddi	0		Number=Sing	dema	0	noddi	n	moby_reverse
 noddies	0		Number=Plur	dema	0	noddy	n	rule
@@ -15216,7 +15216,7 @@ notebook entry	0	oewn-notebook_entry-n	Number=Sing	dema	0			oewn_form
 notebooks	0	oewn-notebook-n	Number=Plur	dema	0			rule
 notecase	0	oewn-notecase-n	Number=Sing	dema	0			oewn_form
 notecases	0	oewn-notecase-n	Number=Plur	dema	0			rule
-noted	0	oewn-note-v	Tense=Past	dema	1			carried
+noted	0	oewn-note-v	Tense=Past+VerbForm=Part	dema	1			carried
 noted	1	oewn-noted-a	Degree=Pos	dema	0			carried
 notedly	0		Degree=Pos	dema	0	notedly	r	moby_reverse
 notedness	0		Number=Sing	dema	0	notedness	n	moby_reverse
@@ -15257,7 +15257,7 @@ noticeable	0	oewn-noticeable-a	Degree=Pos	dema	0			oewn_form
 noticeableness	0	oewn-noticeableness-n	Number=Sing	dema	0			oewn_form
 noticeablenesses	0	oewn-noticeableness-n	Number=Plur	dema	0			rule
 noticeably	0	oewn-noticeably-r	Degree=Pos	dema	0			oewn_form
-noticed	0	oewn-notice-v	Tense=Past	dema	1			carried
+noticed	0	oewn-notice-v	Tense=Past+VerbForm=Part	dema	1			carried
 noticer	0	oewn-noticer-n	Number=Sing	dema	0			oewn_form
 noticers	0	oewn-noticer-n	Number=Plur	dema	0			rule
 notices	0	oewn-notice-n	Number=Plur	dema	1			carried

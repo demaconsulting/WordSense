@@ -77,6 +77,9 @@ internal static partial class FormGenerator
         /// <summary>Gets the entries of the frozen analyses of each frozen spelling.</summary>
         public Dictionary<string, HashSet<string>> FrozenEntries { get; } = new(StringComparer.Ordinal);
 
+        // The features, one by one, of the frozen analyses of a spelling by entry
+        public HashSet<(string Spelling, string EntryId, string Feature)> FrozenFeatures { get; } = [];
+
         public Dictionary<string, HashSet<string>> FrozenPos { get; } = new(StringComparer.Ordinal);
 
         public SortedDictionary<string, List<Item>> FrozenExtras { get; } = new(StringComparer.Ordinal);
@@ -91,6 +94,13 @@ internal static partial class FormGenerator
         /// <summary>Gets the (form, lemma) pairs that the labelled anchor sentences use.</summary>
         public HashSet<(string, string)> Labelled { get; } = [];
 
+        // A form of the hand or closed irregular lists that the reviewed analyses of the same entry lack (beat and cast as a past beside the
+        // reviewed infinitive): the list is a source of the form, and the reviewed rows are kept as they are beside it
+        private bool MissesListedForm(Item item, string entryId) =>
+            item.Provenance is "hand" or "irregular_list" && IsInflected(item)
+            && item.Features.Split('+').Where(x => x is "Tense=Past" or "VerbForm=Part").ToList() is { Count: > 0 } wanted
+            && !wanted.Any(x => FrozenFeatures.Contains((item.Spelling, entryId, x)));
+
         public void Count(string name) => Stats[name] = Stats.GetValueOrDefault(name) + 1;
 
         public void Add(Item item)
@@ -102,7 +112,7 @@ internal static partial class FormGenerator
                 // The entry that carries an -ing spelling as its own lemma (the noun tracing beside the gerund of trace) and the forms of
                 // the irregular lists (the plural lives of life, the past lay of lie) are kept the same way: a reviewed analysis of another
                 // entry must not hide them. Other reviewed spellings stay exactly as they were reviewed (bowed is only the bend verb).
-                if (item.EntryId is { } entryId && !(FrozenEntries.TryGetValue(item.Spelling, out var have) && have.Contains(entryId))
+                if (item.EntryId is { } entryId && (!(FrozenEntries.TryGetValue(item.Spelling, out var have) && have.Contains(entryId)) || MissesListedForm(item, entryId))
                     && ((DroppedFrozen.Contains(item.Spelling) && IsInflected(item) && Corroborated(this, item))
                         || (!IsInflected(item) && item.Spelling.EndsWith("ing", StringComparison.Ordinal) && string.Equals(Entries[entryId][1], item.Spelling, StringComparison.OrdinalIgnoreCase))
                         || item.Provenance is "hand" or "irregular_list"))
@@ -185,7 +195,7 @@ internal static partial class FormGenerator
         {
             if (Derivable(context, sources, written, f))
             {
-                kept.Add((f, f.Rank, f.Rank));
+                kept.Add((MergePastParticiple(context, sources, reviewed, f), f.Rank, f.Rank));
             }
             else if (GerundNoun(context, f) is { } gerund)
             {
@@ -228,6 +238,10 @@ internal static partial class FormGenerator
                 }
 
                 entrySet.Add(f.EntryId);
+                foreach (var feature in f.Features.Split('+'))
+                {
+                    context.FrozenFeatures.Add((f.Spelling, f.EntryId, feature));
+                }
             }
             if (f.EntryId.Length > 0 && context.Entries.TryGetValue(f.EntryId, out var frozenEntry))
             {
@@ -429,6 +443,62 @@ internal static partial class FormGenerator
 
         var verb = InflectionRules.VerbRegular(e[1], w => context.Moby.ContainsKey(w));
         return verb.Gerund.Concat(verb.GerundAlternative).Contains(f.Spelling, StringComparer.Ordinal) && context.Moby.TryGetValue(e[1], out var letters) && letters.Contains("v") ? "Number=Sing+VerbForm=Ger" : null;
+    }
+
+    // The features that the hand and closed irregular lists give a spelling as a form of a verb, or null when they do not list it
+    // as a past or a participle; the old table left some reviewed analyses of an irregular form without any features (bent, broke)
+    private static string? ListedPastFeatures(IrregularSources sources, string lemma, string spelling)
+    {
+        var past = false;
+        var part = false;
+        foreach (var list in new[] { sources.Hand, sources.Closed })
+        {
+            if (list.TryGetValue((lemma, "v"), out var kinds))
+            {
+                past |= kinds.Past.Any(x => x.Form == spelling);
+                part |= kinds.Participle.Any(x => x.Form == spelling);
+            }
+        }
+
+        return (past, part) switch
+        {
+            (true, true) => "Tense=Past+VerbForm=Part",
+            (true, false) => "Tense=Past",
+            (false, true) => "VerbForm=Part",
+            _ => null,
+        };
+    }
+
+    // A reviewed -ed past of a regular verb is both the past tense and the participle, like the generated rows: the old
+    // table named only the tense, so the row takes the merged features unless the reviewed rows already carry a separate participle
+    private static Old MergePastParticiple(Context context, IrregularSources sources, List<Old> reviewed, Old f)
+    {
+        if (f.Features.Length == 0 && context.Entries.TryGetValue(f.EntryId, out var owner) && owner[2] == "v")
+        {
+            return f with { Features = ListedPastFeatures(sources, owner[1].ToLowerInvariant(), f.Spelling.ToLowerInvariant()) ?? f.Features };
+        }
+
+        if (f.Features == "Tense=Past" && context.Entries.TryGetValue(f.EntryId, out var listed) && listed[2] == "v"
+            && ListedPastFeatures(sources, listed[1].ToLowerInvariant(), f.Spelling.ToLowerInvariant()) == "Tense=Past+VerbForm=Part"
+            && !reviewed.Any(r => r.EntryId == f.EntryId && r.Spelling == f.Spelling && r.Features.Contains("VerbForm=Part", StringComparison.Ordinal)))
+        {
+            return f with { Features = "Tense=Past+VerbForm=Part" };
+        }
+
+        if (f.Features != "Tense=Past" || !context.Entries.TryGetValue(f.EntryId, out var e) || e[2] != "v" || !WordShape().IsMatch(e[1].ToLowerInvariant()))
+        {
+            return f;
+        }
+
+        var verb = InflectionRules.VerbRegular(e[1].ToLowerInvariant(), w => context.Moby.ContainsKey(w));
+        var spelling = f.Spelling.ToLowerInvariant();
+        if (!verb.Past.Concat(verb.PastAlternative).Contains(spelling, StringComparer.Ordinal)
+            || reviewed.Any(r => r.EntryId == f.EntryId && r.Spelling == f.Spelling && r.Features.Contains("VerbForm=Part", StringComparison.Ordinal)))
+        {
+            return f;
+        }
+
+        return f with { Features = "Tense=Past+VerbForm=Part" };
     }
 
     // Tells whether an old inflected analysis is one that a rule, a written form or a list derives for its entry

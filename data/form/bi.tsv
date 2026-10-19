@@ -2059,7 +2059,7 @@ bite out	0	oewn-bite_out-v	VerbForm=Inf	dema	0			oewn_form
 bite plate	0	oewn-bite_plate-n	Number=Sing	dema	0			oewn_form
 bite plates	0	oewn-bite_plate-n	Number=Plur	dema	0			rule
 biteable	0		Degree=Pos	dema	0	biteable	a	moby_reverse
-bited	0	oewn-bite-v	Tense=Past	dema	1			carried
+bited	0	oewn-bite-v	Tense=Past+VerbForm=Part	dema	1			carried
 biteplate	0	oewn-biteplate-n	Number=Sing	dema	0			oewn_form
 biteplates	0	oewn-biteplate-n	Number=Plur	dema	0			rule
 biter	0	oewn-biter-n	Number=Sing	dema	0			oewn_form

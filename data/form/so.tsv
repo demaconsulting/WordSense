@@ -2196,7 +2196,7 @@ sort program	0	oewn-sort_program-n	Number=Sing	dema	0			oewn_form
 sort programs	0	oewn-sort_program-n	Number=Plur	dema	0			rule
 sortable	0		Degree=Pos	dema	0	sortable	a	moby_reverse
 sortably	0		Degree=Pos	dema	0	sortably	r	moby_reverse
-sorted	0	oewn-sort-v	Tense=Past	dema	1			carried
+sorted	0	oewn-sort-v	Tense=Past+VerbForm=Part	dema	1			carried
 sorted out	0	oewn-sort_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 sorter	0	oewn-sorter-n	Number=Sing	dema	0			oewn_form
 sorters	0	oewn-sorter-n	Number=Plur	dema	0			rule
@@ -2391,7 +2391,7 @@ soundboard	0	oewn-soundboard-n	Number=Sing	dema	0			oewn_form
 soundboards	0	oewn-soundboard-n	Number=Plur	dema	0			rule
 soundbox	0	oewn-soundbox-n	Number=Sing	dema	0			oewn_form
 soundboxes	0	oewn-soundbox-n	Number=Plur	dema	0			rule
-sounded	0	oewn-sound-v	Tense=Past	dema	1			carried
+sounded	0	oewn-sound-v	Tense=Past+VerbForm=Part	dema	1			carried
 sounded off	0	oewn-sound_off-v	Tense=Past+VerbForm=Part	dema	0			rule
 sounded out	0	oewn-sound_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 sounder	0	oewn-sounder-n	Number=Sing	dema	0			oewn_form

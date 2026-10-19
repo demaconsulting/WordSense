@@ -80,7 +80,7 @@ Blephilia ciliatas	0	oewn-Blephilia_ciliata-n	Capitalization=Exact+Number=Plur	d
 Blephilia hirsuta	0	oewn-Blephilia_hirsuta-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Blephilia hirsutas	0	oewn-Blephilia_hirsuta-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Blessed	0	oewn-blessed-a	Degree=Pos	dema	0			carried
-Blessed	1	oewn-bless-v	Tense=Past	dema	0			carried
+Blessed	1	oewn-bless-v	Tense=Past+VerbForm=Part	dema	0			carried
 Blessed	2	dema-blessed-n	Number=Sing	dema	0			carried
 Blessed	3	oewn-Blessed-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
 Bletia striata	0	oewn-Bletia_striata-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
@@ -1256,7 +1256,7 @@ blesbuck	0		Number=Sing	dema	0	blesbuck	n	moby_reverse
 blesbucks	0		Number=Plur	dema	0	blesbuck	n	rule
 bless	0	oewn-bless-v	VerbForm=Inf	dema	0			oewn_form
 blessed	0	oewn-blessed-a	Degree=Pos	dema	1			carried
-blessed	1	oewn-bless-v	Tense=Past	dema	1			carried
+blessed	1	oewn-bless-v	Tense=Past+VerbForm=Part	dema	1			carried
 blessed	2	dema-blessed-n	Number=Sing	dema	0			carried
 blessed event	0	oewn-blessed_event-n	Number=Sing	dema	0			oewn_form
 blessed events	0	oewn-blessed_event-n	Number=Plur	dema	0			rule
@@ -1580,7 +1580,7 @@ blockbuster	0	oewn-blockbuster-n	Number=Sing	dema	0			oewn_form
 blockbusters	0	oewn-blockbuster-n	Number=Plur	dema	0			rule
 blockbusting	0		Number=Sing	dema	0	blockbusting	n	moby_reverse
 blockbustings	0		Number=Plur	dema	0	blockbusting	n	rule
-blocked	0	oewn-block-v	Tense=Past	dema	1			carried
+blocked	0	oewn-block-v	Tense=Past+VerbForm=Part	dema	1			carried
 blocked	1	oewn-blocked-a	Degree=Pos	dema	0			carried
 blocked off	0	oewn-block_off-v	Tense=Past+VerbForm=Part	dema	0			rule
 blocked out	0	oewn-block_out-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -1857,7 +1857,7 @@ bloodying	1	oewn-bloody-v	VerbForm=Ger	dema	0			rule
 bloom	0	oewn-bloom-n	Number=Sing	dema	1			carried
 bloom	1	oewn-bloom-v	VerbForm=Inf	dema	1			carried
 bloom of youth	0	oewn-bloom_of_youth-n	Number=Sing	dema	0			oewn_form
-bloomed	0	oewn-bloom-v	Tense=Past	dema	1			carried
+bloomed	0	oewn-bloom-v	Tense=Past+VerbForm=Part	dema	1			carried
 bloomed	1	dema-bloomed-a	Degree=Pos	dema	0			carried
 bloomer	0	oewn-bloomer-n	Number=Sing	dema	0			oewn_form
 bloomeries	0		Number=Plur	dema	0	bloomery	n	rule

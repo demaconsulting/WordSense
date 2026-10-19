@@ -992,7 +992,7 @@ schedule	0	oewn-schedule-n	Number=Sing	dema	1			carried
 schedule	1	oewn-schedule-v	VerbForm=Inf	dema	1			carried
 schedule feeding	0	oewn-schedule_feeding-n	Number=Sing	dema	0			oewn_form
 schedule feedings	0	oewn-schedule_feeding-n	Number=Plur	dema	0			rule
-scheduled	0	oewn-schedule-v	Tense=Past	dema	1			carried
+scheduled	0	oewn-schedule-v	Tense=Past+VerbForm=Part	dema	1			carried
 scheduled fire	0	oewn-scheduled_fire-n	Number=Sing	dema	0			oewn_form
 scheduled fires	0	oewn-scheduled_fire-n	Number=Plur	dema	0			rule
 scheduled maintenance	0	oewn-scheduled_maintenance-n	Number=Sing	dema	0			oewn_form
@@ -1832,7 +1832,7 @@ scoreboard	0	oewn-scoreboard-n	Number=Sing	dema	0			oewn_form
 scoreboards	0	oewn-scoreboard-n	Number=Plur	dema	0			rule
 scorecard	0	oewn-scorecard-n	Number=Sing	dema	0			oewn_form
 scorecards	0	oewn-scorecard-n	Number=Plur	dema	0			rule
-scored	0	oewn-score-v	Tense=Past	dema	1			carried
+scored	0	oewn-score-v	Tense=Past+VerbForm=Part	dema	1			carried
 scored	1	dema-scored-n	Number=Sing	dema	0			carried
 scored out	0	oewn-score_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 scorekeeper	0	oewn-scorekeeper-n	Number=Sing	dema	0			oewn_form
@@ -2221,7 +2221,7 @@ screaks	0	oewn-screak-v	Person=3+Tense=Pres	dema	0			rule
 screaky	0	oewn-screaky-a	Degree=Pos	dema	0			oewn_form
 scream	0	oewn-scream-n	Number=Sing	dema	1			carried
 scream	1	oewn-scream-v	VerbForm=Inf	dema	1			carried
-screamed	0	oewn-scream-v	Tense=Past	dema	1			carried
+screamed	0	oewn-scream-v	Tense=Past+VerbForm=Part	dema	1			carried
 screamer	0	oewn-screamer-n	Number=Sing	dema	0			oewn_form
 screamers	0	oewn-screamer-n	Number=Plur	dema	0			rule
 screaming	0	oewn-scream-v	VerbForm=Ger	dema	1			carried
@@ -2272,7 +2272,7 @@ screen saver	0	oewn-screen_saver-n	Number=Sing	dema	0			oewn_form
 screen savers	0	oewn-screen_saver-n	Number=Plur	dema	0			rule
 screen test	0	oewn-screen_test-n	Number=Sing	dema	0			oewn_form
 screen tests	0	oewn-screen_test-n	Number=Plur	dema	0			rule
-screened	0	oewn-screen-v	Tense=Past	dema	1			carried
+screened	0	oewn-screen-v	Tense=Past+VerbForm=Part	dema	1			carried
 screened off	0	oewn-screen_off-v	Tense=Past+VerbForm=Part	dema	0			rule
 screened out	0	oewn-screen_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 screener	0	oewn-screener-n	Number=Sing	dema	0			oewn_form
@@ -2343,7 +2343,7 @@ screwbean mesquites	0	oewn-screwbean_mesquite-n	Number=Plur	dema	0			rule
 screwbeans	0	oewn-screwbean-n	Number=Plur	dema	0			rule
 screwdriver	0	oewn-screwdriver-n	Number=Sing	dema	0			oewn_form
 screwdrivers	0	oewn-screwdriver-n	Number=Plur	dema	0			rule
-screwed	0	oewn-screw-v	Tense=Past	dema	1			carried
+screwed	0	oewn-screw-v	Tense=Past+VerbForm=Part	dema	1			carried
 screwed	1	dema-screwed-a	Degree=Pos	dema	0			carried
 screwed up	0	oewn-screw_up-v	Tense=Past+VerbForm=Part	dema	0			rule
 screwer	0		Number=Sing	dema	0	screwer	n	moby_reverse

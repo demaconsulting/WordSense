@@ -1333,7 +1333,7 @@ armchair	0	oewn-armchair-n	Number=Sing	dema	0			oewn_form
 armchair liberal	0	oewn-armchair_liberal-n	Number=Sing	dema	0			oewn_form
 armchair liberals	0	oewn-armchair_liberal-n	Number=Plur	dema	0			rule
 armchairs	0	oewn-armchair-n	Number=Plur	dema	0			rule
-armed	0	oewn-arm-v	Tense=Past	dema	1			carried
+armed	0	oewn-arm-v	Tense=Past+VerbForm=Part	dema	1			carried
 armed	1	oewn-armed-a	Degree=Pos	dema	0			carried
 armed bullhead	0	oewn-armed_bullhead-n	Number=Sing	dema	0			oewn_form
 armed bullheads	0	oewn-armed_bullhead-n	Number=Plur	dema	0			rule
@@ -1644,7 +1644,7 @@ arrest	1	oewn-arrest-v	VerbForm=Inf	dema	1			carried
 arrest warrant	0	oewn-arrest_warrant-n	Number=Sing	dema	0			oewn_form
 arrest warrants	0	oewn-arrest_warrant-n	Number=Plur	dema	0			rule
 arrestable	0		Degree=Pos	dema	0	arrestable	a	moby_reverse
-arrested	0	oewn-arrest-v	Tense=Past	dema	1			carried
+arrested	0	oewn-arrest-v	Tense=Past+VerbForm=Part	dema	1			carried
 arrested development	0	oewn-arrested_development-n	Number=Sing	dema	0			oewn_form
 arrested developments	0	oewn-arrested_development-n	Number=Plur	dema	0			rule
 arrester	0	oewn-arrester-n	Number=Sing	dema	0			oewn_form

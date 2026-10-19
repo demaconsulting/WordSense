@@ -2744,7 +2744,7 @@ impact	0	oewn-impact-n	Number=Sing	dema	1			carried
 impact	1	oewn-impact-v	VerbForm=Inf	dema	1			carried
 impact printer	0	oewn-impact_printer-n	Number=Sing	dema	0			oewn_form
 impact printers	0	oewn-impact_printer-n	Number=Plur	dema	0			rule
-impacted	0	oewn-impact-v	Tense=Past	dema	1			carried
+impacted	0	oewn-impact-v	Tense=Past+VerbForm=Part	dema	1			carried
 impacted	1	oewn-impacted-a	Degree=Pos	dema	0			carried
 impacted fracture	0	oewn-impacted_fracture-n	Number=Sing	dema	0			oewn_form
 impacted fractures	0	oewn-impacted_fracture-n	Number=Plur	dema	0			rule
@@ -6538,7 +6538,7 @@ influence	1	oewn-influence-v	VerbForm=Inf	dema	1			carried
 influence peddler	0	oewn-influence_peddler-n	Number=Sing	dema	0			oewn_form
 influence peddlers	0	oewn-influence_peddler-n	Number=Plur	dema	0			rule
 influenceable	0		Degree=Pos	dema	0	influenceable	a	moby_reverse
-influenced	0	oewn-influence-v	Tense=Past	dema	1			carried
+influenced	0	oewn-influence-v	Tense=Past+VerbForm=Part	dema	1			carried
 influencer	0	oewn-influencer-n	Number=Sing	dema	0			oewn_form
 influencers	0	oewn-influencer-n	Number=Plur	dema	0			rule
 influences	0	oewn-influence-n	Number=Plur	dema	1			carried
@@ -9211,7 +9211,7 @@ interest groups	0	oewn-interest_group-n	Number=Plur	dema	0			rule
 interest rate	0	oewn-interest_rate-n	Number=Sing	dema	0			oewn_form
 interest rates	0	oewn-interest_rate-n	Number=Plur	dema	0			rule
 interest-bearing	0	oewn-interest-bearing-a	Degree=Pos	dema	0			oewn_form
-interested	0	oewn-interest-v	Tense=Past	dema	1			carried
+interested	0	oewn-interest-v	Tense=Past+VerbForm=Part	dema	1			carried
 interested	1	oewn-interested-a	Degree=Pos	dema	0			carried
 interestedly	0		Degree=Pos	dema	0	interestedly	r	moby_reverse
 interestedness	0	oewn-interestedness-n	Number=Sing	dema	0			oewn_form
@@ -9730,7 +9730,7 @@ intermediate vector boson	0	oewn-intermediate_vector_boson-n	Number=Sing	dema	0	
 intermediate vector bosons	0	oewn-intermediate_vector_boson-n	Number=Plur	dema	0			rule
 intermediate wheatgrass	0	oewn-intermediate_wheatgrass-n	Number=Sing	dema	0			oewn_form
 intermediate wheatgrasses	0	oewn-intermediate_wheatgrass-n	Number=Plur	dema	0			rule
-intermediated	0	oewn-intermediate-v	Tense=Past	dema	1			carried
+intermediated	0	oewn-intermediate-v	Tense=Past+VerbForm=Part	dema	1			carried
 intermediately	0	oewn-intermediately-r	Degree=Pos	dema	0			oewn_form
 intermediateness	0		Number=Sing	dema	0	intermediateness	n	moby_reverse
 intermediatenesses	0		Number=Plur	dema	0	intermediateness	n	rule
@@ -9996,8 +9996,8 @@ internationally	0	oewn-internationally-r	Degree=Pos	dema	0			oewn_form
 internats	0		Number=Plur	dema	0	internat	n	rule
 interne	0	oewn-interne-n	Number=Sing	dema	0			oewn_form
 internecine	0	oewn-internecine-a	Degree=Pos	dema	0			oewn_form
-interned	0	oewn-intern-v-1	Tense=Past	dema	1			carried
-interned	1	oewn-intern-v-2	Tense=Past	dema	1			carried
+interned	0	oewn-intern-v-1	Tense=Past+VerbForm=Part	dema	1			carried
+interned	1	oewn-intern-v-2	Tense=Past+VerbForm=Part	dema	1			carried
 internee	0	oewn-internee-n	Number=Sing	dema	0			oewn_form
 internees	0	oewn-internee-n	Number=Plur	dema	0			rule
 internegative	0		Number=Sing	dema	0	internegative	n	moby_reverse
@@ -12182,7 +12182,7 @@ ironclad	0	oewn-ironclad-a	Degree=Pos	dema	0			oewn_form
 ironclad	1	oewn-ironclad-n	Number=Sing	dema	0			oewn_form
 ironclads	0	oewn-ironclad-n	Number=Plur	dema	0			rule
 irone	0		Number=Sing	dema	0	irone	n	moby_reverse
-ironed	0	oewn-iron-v	Tense=Past	dema	1			carried
+ironed	0	oewn-iron-v	Tense=Past+VerbForm=Part	dema	1			carried
 ironed out	0	oewn-iron_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 ironer	0		Number=Sing	dema	0	ironer	n	moby_reverse
 ironers	0		Number=Plur	dema	0	ironer	n	rule
@@ -13093,7 +13093,7 @@ issuant	0		Degree=Pos	dema	0	issuant	a	moby_reverse
 issue	0	oewn-issue-n	Number=Sing	dema	1			carried
 issue	1	oewn-issue-v	VerbForm=Inf	dema	1			carried
 issue forth	0	oewn-issue_forth-v	VerbForm=Inf	dema	0			oewn_form
-issued	0	oewn-issue-v	Tense=Past	dema	1			carried
+issued	0	oewn-issue-v	Tense=Past+VerbForm=Part	dema	1			carried
 issued forth	0	oewn-issue_forth-v	Tense=Past+VerbForm=Part	dema	0			rule
 issueless	0		Degree=Pos	dema	0	issueless	a	moby_reverse
 issuer	0	oewn-issuer-n	Number=Sing	dema	0			oewn_form

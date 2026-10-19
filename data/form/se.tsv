@@ -626,7 +626,7 @@ seal rings	0	oewn-seal_ring-n	Number=Plur	dema	0			rule
 sealable	0		Degree=Pos	dema	0	sealable	a	moby_reverse
 sealant	0	oewn-sealant-n	Number=Sing	dema	0			oewn_form
 sealants	0	oewn-sealant-n	Number=Plur	dema	0			rule
-sealed	0	oewn-seal-v	Tense=Past	dema	1			carried
+sealed	0	oewn-seal-v	Tense=Past+VerbForm=Part	dema	1			carried
 sealed	1	oewn-sealed-a	Degree=Pos	dema	0			carried
 sealed in	0	oewn-seal_in-v	Tense=Past+VerbForm=Part	dema	0			rule
 sealed instrument	0	oewn-sealed_instrument-n	Number=Sing	dema	0			oewn_form
@@ -799,7 +799,7 @@ seasonal workers	0	oewn-seasonal_worker-n	Number=Plur	dema	0			rule
 seasonally	0	oewn-seasonally-r	Degree=Pos	dema	0			oewn_form
 seasonalness	0		Number=Sing	dema	0	seasonalness	n	moby_reverse
 seasonals	0	oewn-seasonal-n	Number=Plur	dema	0			rule
-seasoned	0	oewn-season-v	Tense=Past	dema	1			carried
+seasoned	0	oewn-season-v	Tense=Past+VerbForm=Part	dema	1			carried
 seasoned salt	0	oewn-seasoned_salt-n	Number=Sing	dema	0			oewn_form
 seasoned salts	0	oewn-seasoned_salt-n	Number=Plur	dema	0			rule
 seasonedly	0		Degree=Pos	dema	0	seasonedly	r	moby_reverse
@@ -821,7 +821,7 @@ seat cushion	0	oewn-seat_cushion-n	Number=Sing	dema	0			oewn_form
 seat cushions	0	oewn-seat_cushion-n	Number=Plur	dema	0			rule
 seatbelt	0	oewn-seatbelt-n	Number=Sing	dema	0			oewn_form
 seatbelts	0	oewn-seatbelt-n	Number=Plur	dema	0			rule
-seated	0	oewn-seat-v	Tense=Past	dema	1			carried
+seated	0	oewn-seat-v	Tense=Past+VerbForm=Part	dema	1			carried
 seater	0		Number=Sing	dema	0	seater	n	moby_reverse
 seaters	0		Number=Plur	dema	0	seater	n	rule
 seating	0	oewn-seat-v	VerbForm=Ger	dema	1			carried
@@ -1087,8 +1087,8 @@ secondary syphilis	0	oewn-secondary_syphilis-n	Number=Sing	dema	0			oewn_form
 secondary winding	0	oewn-secondary_winding-n	Number=Sing	dema	0			oewn_form
 secondary windings	0	oewn-secondary_winding-n	Number=Plur	dema	0			rule
 seconde	0		Number=Sing	dema	0	seconde	n	moby_reverse
-seconded	0	oewn-second-v-1	Tense=Past	dema	1			carried
-seconded	1	oewn-second-v-2	Tense=Past	dema	1			carried
+seconded	0	oewn-second-v-1	Tense=Past+VerbForm=Part	dema	1			carried
+seconded	1	oewn-second-v-2	Tense=Past+VerbForm=Part	dema	1			carried
 seconder	0	oewn-seconder-n	Number=Sing	dema	0			oewn_form
 seconders	0	oewn-seconder-n	Number=Plur	dema	0			rule
 secondes	0		Number=Plur	dema	0	seconde	n	rule
@@ -1683,7 +1683,7 @@ segreant	0		Degree=Pos	dema	0	segreant	a	moby_reverse
 segregable	0		Degree=Pos	dema	0	segregable	a	moby_reverse
 segregate	0	oewn-segregate-n	Number=Sing	dema	1			carried
 segregate	1	oewn-segregate-v	VerbForm=Inf	dema	1			carried
-segregated	0	oewn-segregate-v	Tense=Past	dema	1			carried
+segregated	0	oewn-segregate-v	Tense=Past+VerbForm=Part	dema	1			carried
 segregated ice	0	oewn-segregated_ice-n	Number=Sing	dema	0			oewn_form
 segregated ices	0	oewn-segregated_ice-n	Number=Plur	dema	0			rule
 segregatedness	0		Number=Sing	dema	0	segregatedness	n	moby_reverse
@@ -3680,7 +3680,7 @@ sense organ	0	oewn-sense_organ-n	Number=Sing	dema	0			oewn_form
 sense organs	0	oewn-sense_organ-n	Number=Plur	dema	0			rule
 sense tagger	0	oewn-sense_tagger-n	Number=Sing	dema	0			oewn_form
 sense taggers	0	oewn-sense_tagger-n	Number=Plur	dema	0			rule
-sensed	0	oewn-sense-v	Tense=Past	dema	1			carried
+sensed	0	oewn-sense-v	Tense=Past+VerbForm=Part	dema	1			carried
 senseless	0	oewn-senseless-a	Degree=Pos	dema	0			oewn_form
 senselessly	0	oewn-senselessly-r	Degree=Pos	dema	0			oewn_form
 senselessness	0	oewn-senselessness-n	Number=Sing	dema	0			oewn_form
@@ -3855,7 +3855,7 @@ sentence stress	0	oewn-sentence_stress-n	Number=Sing	dema	0			oewn_form
 sentence stresses	0	oewn-sentence_stress-n	Number=Plur	dema	0			rule
 sentence structure	0	oewn-sentence_structure-n	Number=Sing	dema	0			oewn_form
 sentence structures	0	oewn-sentence_structure-n	Number=Plur	dema	0			rule
-sentenced	0	oewn-sentence-v	Tense=Past	dema	1			carried
+sentenced	0	oewn-sentence-v	Tense=Past+VerbForm=Part	dema	1			carried
 sentencer	0		Number=Sing	dema	0	sentencer	n	moby_reverse
 sentencers	0		Number=Plur	dema	0	sentencer	n	rule
 sentences	0	oewn-sentence-n	Number=Plur	dema	1			carried

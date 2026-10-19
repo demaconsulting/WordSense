@@ -5950,6 +5950,7 @@ undercurves	0		Number=Plur	dema	0	undercurve	n	rule
 undercurving	0		VerbForm=Inf	dema	0	undercurving	v	moby_reverse
 undercut	0	oewn-undercut-n	Number=Sing	dema	1			carried
 undercut	1	oewn-undercut-v	VerbForm=Inf	dema	1			carried
+undercut	2	oewn-undercut-v	Tense=Past+VerbForm=Part	dema	0			hand
 undercuts	0	oewn-undercut-n	Number=Plur	dema	1			carried
 undercuts	1	oewn-undercut-v	Person=3+Tense=Pres	dema	1			carried
 undercutting	0	oewn-undercut-v	VerbForm=Ger	dema	0			oewn_form
@@ -6829,7 +6830,7 @@ underscoop	1		VerbForm=Inf	dema	0	underscoop	v	moby_reverse
 underscoops	0		Number=Plur	dema	0	underscoop	n	rule
 underscore	0	oewn-underscore-n	Number=Sing	dema	1			carried
 underscore	1	oewn-underscore-v	VerbForm=Inf	dema	1			carried
-underscored	0	oewn-underscore-v	Tense=Past	dema	1			carried
+underscored	0	oewn-underscore-v	Tense=Past+VerbForm=Part	dema	1			carried
 underscores	0	oewn-underscore-n	Number=Plur	dema	1			carried
 underscores	1	oewn-underscore-v	Person=3+Tense=Pres	dema	1			carried
 underscoring	0	oewn-underscore-v	VerbForm=Ger	dema	1			carried
@@ -6879,6 +6880,7 @@ underservice	0		Number=Sing	dema	0	underservice	n	moby_reverse
 underservices	0		Number=Plur	dema	0	underservice	n	rule
 underset	0	dema-underset-n	Number=Sing	dema	1			carried
 underset	1	dema-underset-v	VerbForm=Inf	dema	1			carried
+underset	2	dema-underset-v	Tense=Past+VerbForm=Part	dema	0			hand
 undersets	0	dema-underset-n	Number=Plur	dema	1			carried
 undersets	1	dema-underset-v	Person=3+Tense=Pres	dema	1			carried
 undersetting	0	dema-underset-v	VerbForm=Ger	dema	0			rule
@@ -13116,7 +13118,7 @@ unleaky	0		Degree=Pos	dema	0	unleaky	a	moby_reverse
 unlean	0		Degree=Pos	dema	0	unlean	a	moby_reverse
 unlearn	0	oewn-unlearn-v	VerbForm=Inf	dema	0			oewn_form
 unlearned	0	oewn-unlearned-a	Degree=Pos	dema	1			carried
-unlearned	1	oewn-unlearn-v	Tense=Past	dema	1			carried
+unlearned	1	oewn-unlearn-v	Tense=Past+VerbForm=Part	dema	1			carried
 unlearnedly	0		Degree=Pos	dema	0	unlearnedly	r	moby_reverse
 unlearning	0		Degree=Pos	dema	0	unlearning	a	moby_reverse
 unlearning	1	oewn-unlearn-v	VerbForm=Ger	dema	0			rule
@@ -23012,7 +23014,7 @@ upcycles	0	oewn-upcycle-v	Person=3+Tense=Pres	dema	0			rule
 upcycling	0	oewn-upcycle-v	VerbForm=Ger	dema	0			rule
 update	0	oewn-update-n	Number=Sing	dema	1			carried
 update	1	oewn-update-v	VerbForm=Inf	dema	1			carried
-updated	0	oewn-update-v	Tense=Past	dema	1			carried
+updated	0	oewn-update-v	Tense=Past+VerbForm=Part	dema	1			carried
 updater	0		Number=Sing	dema	0	updater	n	moby_reverse
 updaters	0		Number=Plur	dema	0	updater	n	rule
 updates	0	oewn-update-n	Number=Plur	dema	1			carried
@@ -23047,7 +23049,7 @@ upgrade	0	oewn-upgrade-n	Number=Sing	dema	1			carried
 upgrade	1	oewn-upgrade-v	VerbForm=Inf	dema	1			carried
 upgrade	2	dema-upgrade-a	Degree=Pos	dema	0			carried
 upgrade	3	dema-upgrade-r	Degree=Pos	dema	0			carried
-upgraded	0	oewn-upgrade-v	Tense=Past	dema	1			carried
+upgraded	0	oewn-upgrade-v	Tense=Past+VerbForm=Part	dema	1			carried
 upgrader	0		Number=Sing	dema	0	upgrader	n	moby_reverse
 upgraders	0		Number=Plur	dema	0	upgrader	n	rule
 upgrades	0	oewn-upgrade-n	Number=Plur	dema	1			carried
@@ -23253,6 +23255,7 @@ upscale	0	oewn-upscale-a	Degree=Pos	dema	0			oewn_form
 upset	0	oewn-upset-a	Degree=Pos	dema	1			carried
 upset	1	oewn-upset-n	Number=Sing	dema	1			carried
 upset	2	oewn-upset-v	VerbForm=Inf	dema	1			carried
+upset	3	oewn-upset-v	Tense=Past+VerbForm=Part	dema	0			hand
 upset price	0	oewn-upset_price-n	Number=Sing	dema	0			oewn_form
 upset prices	0	oewn-upset_price-n	Number=Plur	dema	0			rule
 upset stomach	0	oewn-upset_stomach-n	Number=Sing	dema	0			oewn_form
@@ -23611,7 +23614,7 @@ urge	1	oewn-urge-v	VerbForm=Inf	dema	1			carried
 urge incontinence	0	oewn-urge_incontinence-n	Number=Sing	dema	0			oewn_form
 urge incontinences	0	oewn-urge_incontinence-n	Number=Plur	dema	0			rule
 urge on	0	oewn-urge_on-v	VerbForm=Inf	dema	0			oewn_form
-urged	0	oewn-urge-v	Tense=Past	dema	1			carried
+urged	0	oewn-urge-v	Tense=Past+VerbForm=Part	dema	1			carried
 urged on	0	oewn-urge_on-v	Tense=Past+VerbForm=Part	dema	0			rule
 urgencies	0	oewn-urgency-n	Number=Plur	dema	0			rule
 urgency	0	oewn-urgency-n	Number=Sing	dema	0			oewn_form
@@ -23796,7 +23799,7 @@ use up	0	oewn-use_up-v	VerbForm=Inf	dema	0			oewn_form
 useable	0	oewn-useable-a	Degree=Pos	dema	0			oewn_form
 useableness	0	oewn-useableness-n	Number=Sing	dema	0			oewn_form
 useablenesses	0	oewn-useableness-n	Number=Plur	dema	0			rule
-used	0	oewn-use-v	Tense=Past	dema	1			carried
+used	0	oewn-use-v	Tense=Past+VerbForm=Part	dema	1			carried
 used	1	oewn-used-a	Degree=Pos	dema	0			carried
 used to	0	oewn-used_to-a	Degree=Pos	dema	0			oewn_form
 used up	0	oewn-use_up-v	Tense=Past+VerbForm=Part	dema	0			rule

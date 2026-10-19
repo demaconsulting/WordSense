@@ -1633,7 +1633,7 @@ quotations	0	oewn-quotation-n	Number=Plur	dema	0			rule
 quote	0	oewn-quote-n	Number=Sing	dema	1			carried
 quote	1	oewn-quote-v	VerbForm=Inf	dema	1			carried
 quote	2	dema-quote-i		dema	0			carried
-quoted	0	oewn-quote-v	Tense=Past	dema	1			carried
+quoted	0	oewn-quote-v	Tense=Past+VerbForm=Part	dema	1			carried
 quoter	0	oewn-quoter-n	Number=Sing	dema	0			oewn_form
 quoters	0	oewn-quoter-n	Number=Plur	dema	0			rule
 quotes	0	oewn-quote-n	Number=Plur	dema	1			carried

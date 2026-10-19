@@ -200,7 +200,7 @@ snaplines	0	oewn-snapline-n	Number=Plur	dema	0			rule
 snapout	0		Number=Sing	dema	0	snapout	n	moby_reverse
 snapouts	0		Number=Plur	dema	0	snapout	n	rule
 snappable	0		Degree=Pos	dema	0	snappable	a	moby_reverse
-snapped	0	oewn-snap-v	Tense=Past	dema	1			carried
+snapped	0	oewn-snap-v	Tense=Past+VerbForm=Part	dema	1			carried
 snapped at	0	oewn-snap_at-v	Tense=Past+VerbForm=Part	dema	0			rule
 snapped back	0	oewn-snap_back-v	Tense=Past+VerbForm=Part	dema	0			rule
 snapped off	0	oewn-snap_off-v	Tense=Past+VerbForm=Part	dema	0			rule

@@ -296,7 +296,7 @@ cycle rickshaw	0	oewn-cycle_rickshaw-n	Number=Sing	dema	0			oewn_form
 cycle rickshaws	0	oewn-cycle_rickshaw-n	Number=Plur	dema	0			rule
 cyclecar	0		Number=Sing	dema	0	cyclecar	n	moby_reverse
 cyclecars	0		Number=Plur	dema	0	cyclecar	n	rule
-cycled	0	oewn-cycle-v	Tense=Past	dema	1			carried
+cycled	0	oewn-cycle-v	Tense=Past+VerbForm=Part	dema	1			carried
 cycled on	0	oewn-cycle_on-v	Tense=Past+VerbForm=Part	dema	0			rule
 cycles	0	oewn-cycle-n	Number=Plur	dema	1			carried
 cycles	1	oewn-cycle-v	Person=3+Tense=Pres	dema	1			carried

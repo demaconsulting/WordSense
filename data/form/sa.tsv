@@ -1222,7 +1222,7 @@ sailboat	0	oewn-sailboat-n	Number=Sing	dema	0			oewn_form
 sailboats	0	oewn-sailboat-n	Number=Plur	dema	0			rule
 sailcloth	0	oewn-sailcloth-n	Number=Sing	dema	0			oewn_form
 sailcloths	0	oewn-sailcloth-n	Number=Plur	dema	0			rule
-sailed	0	oewn-sail-v	Tense=Past	dema	1			carried
+sailed	0	oewn-sail-v	Tense=Past+VerbForm=Part	dema	1			carried
 sailed through	0	oewn-sail_through-v	Tense=Past+VerbForm=Part	dema	0			rule
 sailer	0		Number=Sing	dema	0	sailer	n	moby_reverse
 sailers	0		Number=Plur	dema	0	sailer	n	rule

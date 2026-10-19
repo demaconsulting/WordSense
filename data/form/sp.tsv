@@ -537,7 +537,7 @@ spark plug	0	oewn-spark_plug-n	Number=Sing	dema	0			oewn_form
 spark plugs	0	oewn-spark_plug-n	Number=Plur	dema	0			rule
 spark transmitter	0	oewn-spark_transmitter-n	Number=Sing	dema	0			oewn_form
 spark transmitters	0	oewn-spark_transmitter-n	Number=Plur	dema	0			rule
-sparked	0	oewn-spark-v	Tense=Past	dema	1			carried
+sparked	0	oewn-spark-v	Tense=Past+VerbForm=Part	dema	1			carried
 sparked off	0	oewn-spark_off-v	Tense=Past+VerbForm=Part	dema	0			rule
 sparker	0	oewn-sparker-n	Number=Sing	dema	0			oewn_form
 sparkers	0	oewn-sparker-n	Number=Plur	dema	0			rule
@@ -1301,7 +1301,7 @@ spellbound	0	oewn-spellbound-a	Degree=Pos	dema	0			oewn_form
 spellbound	1	oewn-spellbind-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 spelldown	0	oewn-spelldown-n	Number=Sing	dema	0			oewn_form
 spelldowns	0	oewn-spelldown-n	Number=Plur	dema	0			rule
-spelled	0	oewn-spell-v	Tense=Past	dema	1			carried
+spelled	0	oewn-spell-v	Tense=Past+VerbForm=Part	dema	1			carried
 speller	0	oewn-speller-n	Number=Sing	dema	0			oewn_form
 spellers	0	oewn-speller-n	Number=Plur	dema	0			rule
 spellican	0		Number=Sing	dema	0	spellican	n	moby_reverse
@@ -3129,7 +3129,7 @@ spots	1	oewn-spot-v	Person=3+Tense=Pres	dema	1			carried
 spots jam	0	oewn-spot_jam-v	Person=3+Tense=Pres	dema	0			rule
 spots promote	0	oewn-spot_promote-v	Person=3+Tense=Pres	dema	0			rule
 spottable	0		Degree=Pos	dema	0	spottable	a	moby_reverse
-spotted	0	oewn-spot-v	Tense=Past	dema	1			carried
+spotted	0	oewn-spot-v	Tense=Past+VerbForm=Part	dema	1			carried
 spotted	1	oewn-spotted-a	Degree=Pos	dema	0			carried
 spotted Joe-Pye weed	0	oewn-spotted_Joe-Pye_weed-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 spotted Joe-Pye weeds	0	oewn-spotted_Joe-Pye_weed-n	Capitalization=Exact+Number=Plur	dema	0			rule
@@ -3296,7 +3296,7 @@ spray-dried	1	oewn-spray-dried-a	Degree=Pos	dema	0			oewn_form
 spray-dries	0	oewn-spray-dry-v	Person=3+Tense=Pres	dema	0			rule
 spray-dry	0	oewn-spray-dry-v	VerbForm=Inf	dema	0			oewn_form
 spray-drying	0	oewn-spray-dry-v	VerbForm=Ger	dema	0			rule
-sprayed	0	oewn-spray-v	Tense=Past	dema	1			carried
+sprayed	0	oewn-spray-v	Tense=Past+VerbForm=Part	dema	1			carried
 sprayer	0	oewn-sprayer-n	Number=Sing	dema	0			oewn_form
 sprayers	0	oewn-sprayer-n	Number=Plur	dema	0			rule
 sprayful	0		Degree=Pos	dema	0	sprayful	a	moby_reverse
@@ -3459,7 +3459,7 @@ springbuck	0	oewn-springbuck-n	Number=Sing	dema	0			oewn_form
 springbucks	0	oewn-springbuck-n	Number=Plur	dema	0			rule
 springe	0		Number=Sing	dema	0	springe	n	moby_reverse
 springe	1		VerbForm=Inf	dema	0	springe	v	moby_reverse
-springed	0	oewn-spring-v	Tense=Past	dema	1			carried
+springed	0	oewn-spring-v	Tense=Past+VerbForm=Part	dema	1			carried
 springer	0	oewn-springer-n	Number=Sing	dema	0			oewn_form
 springer spaniel	0	oewn-springer_spaniel-n	Number=Sing	dema	0			oewn_form
 springer spaniels	0	oewn-springer_spaniel-n	Number=Plur	dema	0			rule

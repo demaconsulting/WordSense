@@ -1915,7 +1915,7 @@ tagalong	0	oewn-tagalong-n	Number=Sing	dema	0			oewn_form
 tagalongs	0	oewn-tagalong-n	Number=Plur	dema	0			rule
 tagasaste	0	oewn-tagasaste-n	Number=Sing	dema	0			oewn_form
 tagasastes	0	oewn-tagasaste-n	Number=Plur	dema	0			rule
-tagged	0	oewn-tag-v	Tense=Past	dema	1			carried
+tagged	0	oewn-tag-v	Tense=Past+VerbForm=Part	dema	1			carried
 tagged along	0	oewn-tag_along-v	Tense=Past+VerbForm=Part	dema	0			rule
 tagged on	0	oewn-tag_on-v	Tense=Past+VerbForm=Part	dema	0			rule
 tagger	0	oewn-tagger-n	Number=Sing	dema	0			oewn_form
@@ -2547,7 +2547,7 @@ talkative	0	oewn-talkative-a	Degree=Pos	dema	0			oewn_form
 talkatively	0	oewn-talkatively-r	Degree=Pos	dema	0			oewn_form
 talkativeness	0	oewn-talkativeness-n	Number=Sing	dema	0			oewn_form
 talkativenesses	0	oewn-talkativeness-n	Number=Plur	dema	0			rule
-talked	0	oewn-talk-v	Tense=Past	dema	1			carried
+talked	0	oewn-talk-v	Tense=Past+VerbForm=Part	dema	1			carried
 talked about	0	oewn-talk_about-v	Tense=Past+VerbForm=Part	dema	0			rule
 talked down	0	oewn-talk_down-v	Tense=Past+VerbForm=Part	dema	0			rule
 talked into	0	oewn-talk_into-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -3231,7 +3231,7 @@ tappa bark	0	oewn-tappa_bark-n	Number=Sing	dema	0			oewn_form
 tappa barks	0	oewn-tappa_bark-n	Number=Plur	dema	0			rule
 tappable	0		Degree=Pos	dema	0	tappable	a	moby_reverse
 tappas	0	oewn-tappa-n	Number=Plur	dema	0			rule
-tapped	0	oewn-tap-v	Tense=Past	dema	1			carried
+tapped	0	oewn-tap-v	Tense=Past+VerbForm=Part	dema	1			carried
 tapped dance	0	oewn-tap_dance-v	Tense=Past+VerbForm=Part	dema	0			rule
 tapped out	0	oewn-tap_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 tapper	0	oewn-tapper-n	Number=Sing	dema	0			oewn_form
@@ -3343,7 +3343,7 @@ target programs	0	oewn-target_program-n	Number=Plur	dema	0			rule
 target range	0	oewn-target_range-n	Number=Sing	dema	0			oewn_form
 target ranges	0	oewn-target_range-n	Number=Plur	dema	0			rule
 target-hunting	0	oewn-target-hunting-a	Degree=Pos	dema	0			oewn_form
-targeted	0	oewn-target-v	Tense=Past	dema	1			carried
+targeted	0	oewn-target-v	Tense=Past+VerbForm=Part	dema	1			carried
 targeteer	0		Number=Sing	dema	0	targeteer	n	moby_reverse
 targeteers	0		Number=Plur	dema	0	targeteer	n	rule
 targeting	0	oewn-target-v	VerbForm=Ger	dema	1			carried
@@ -3421,7 +3421,7 @@ tarred-and-feathered	0	oewn-tarred-and-feathered-a	Degree=Pos	dema	0			oewn_form
 tarreds	0		Number=Plur	dema	0	tarred	n	rule
 tarriance	0	oewn-tarriance-n	Number=Sing	dema	0			oewn_form
 tarriances	0	oewn-tarriance-n	Number=Plur	dema	0			rule
-tarried	0	oewn-tarry-v	Tense=Past	dema	1			carried
+tarried	0	oewn-tarry-v	Tense=Past+VerbForm=Part	dema	1			carried
 tarrier	0		Number=Sing	dema	0	tarrier	n	moby_reverse
 tarrier	1	oewn-tarry-a	Degree=Cmp	dema	0			rule
 tarriers	0		Number=Plur	dema	0	tarrier	n	rule
@@ -3565,7 +3565,7 @@ taste-tester	0	oewn-taste-tester-n	Number=Sing	dema	0			oewn_form
 taste-testers	0	oewn-taste-tester-n	Number=Plur	dema	0			rule
 tastebud	0	oewn-tastebud-n	Number=Sing	dema	0			oewn_form
 tastebuds	0	oewn-tastebud-n	Number=Plur	dema	0			rule
-tasted	0	oewn-taste-v	Tense=Past	dema	1			carried
+tasted	0	oewn-taste-v	Tense=Past+VerbForm=Part	dema	1			carried
 tasteful	0	oewn-tasteful-a	Degree=Pos	dema	0			oewn_form
 tastefully	0	oewn-tastefully-r	Degree=Pos	dema	0			oewn_form
 tastefulness	0	oewn-tastefulness-n	Number=Sing	dema	0			oewn_form
@@ -8697,7 +8697,7 @@ thunderclap	0	oewn-thunderclap-n	Number=Sing	dema	0			oewn_form
 thunderclaps	0	oewn-thunderclap-n	Number=Plur	dema	0			rule
 thundercloud	0	oewn-thundercloud-n	Number=Sing	dema	0			oewn_form
 thunderclouds	0	oewn-thundercloud-n	Number=Plur	dema	0			rule
-thundered	0	oewn-thunder-v	Tense=Past	dema	1			carried
+thundered	0	oewn-thunder-v	Tense=Past+VerbForm=Part	dema	1			carried
 thunderer	0	oewn-thunderer-n	Number=Sing	dema	0			oewn_form
 thunderers	0	oewn-thunderer-n	Number=Plur	dema	0			rule
 thunderhead	0	oewn-thunderhead-n	Number=Sing	dema	0			oewn_form
@@ -9162,7 +9162,7 @@ tiebreaker	0	oewn-tiebreaker-n	Number=Sing	dema	0			oewn_form
 tiebreakers	0	oewn-tiebreaker-n	Number=Plur	dema	0			rule
 tieclasp	0		Number=Sing	dema	0	tieclasp	n	moby_reverse
 tieclasps	0		Number=Plur	dema	0	tieclasp	n	rule
-tied	0	oewn-tie-v	Tense=Past	dema	1			carried
+tied	0	oewn-tie-v	Tense=Past+VerbForm=Part	dema	1			carried
 tied	1	oewn-tied-a	Degree=Pos	dema	0			carried
 tied down	0	oewn-tie_down-v	Tense=Past+VerbForm=Part	dema	0			rule
 tied in	0	oewn-tie_in-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -9185,7 +9185,7 @@ tiercels	0	oewn-tiercel-n	Number=Plur	dema	0			rule
 tierceron	0		Number=Sing	dema	0	tierceron	n	moby_reverse
 tiercerons	0		Number=Plur	dema	0	tierceron	n	rule
 tierces	0	oewn-tierce-n	Number=Plur	dema	0			rule
-tiered	0	dema-tier-v	Tense=Past	dema	1			carried
+tiered	0	dema-tier-v	Tense=Past+VerbForm=Part	dema	1			carried
 tiered seat	0	oewn-tiered_seat-n	Number=Sing	dema	0			oewn_form
 tiered seats	0	oewn-tiered_seat-n	Number=Plur	dema	0			rule
 tiering	0	dema-tier-v	VerbForm=Ger	dema	0			rule
@@ -9907,7 +9907,7 @@ tipi	0	oewn-tipi-n	Number=Sing	dema	0			oewn_form
 tipis	0	oewn-tipi-n	Number=Plur	dema	0			rule
 tipless	0		Degree=Pos	dema	0	tipless	a	moby_reverse
 tippable	0		Degree=Pos	dema	0	tippable	a	moby_reverse
-tipped	0	oewn-tip-v	Tense=Past	dema	1			carried
+tipped	0	oewn-tip-v	Tense=Past+VerbForm=Part	dema	1			carried
 tipped off	0	oewn-tip_off-v	Tense=Past+VerbForm=Part	dema	0			rule
 tipped over	0	oewn-tip_over-v	Tense=Past+VerbForm=Part	dema	0			rule
 tipper	0	oewn-tipper-n	Number=Sing	dema	0			oewn_form
@@ -11480,7 +11480,7 @@ torchwood	0		Number=Sing	dema	0	torchwood	n	moby_reverse
 torchwoods	0		Number=Plur	dema	0	torchwood	n	rule
 torchy	0		Degree=Pos	dema	0	torchy	a	moby_reverse
 torcs	0		Number=Plur	dema	0	torc	n	rule
-tore	0	oewn-tear-v-1		dema	1			carried
+tore	0	oewn-tear-v-1	Tense=Past	dema	1			carried
 tore	1	oewn-tore-n	Number=Sing	dema	0			carried
 tore	2	oewn-tear-v-2	Tense=Past	dema	0			hand
 toreador	0	oewn-toreador-n	Number=Sing	dema	0			oewn_form
@@ -11508,7 +11508,7 @@ tormentor	0	oewn-tormentor-n	Number=Sing	dema	0			oewn_form
 tormentors	0	oewn-tormentor-n	Number=Plur	dema	0			rule
 torments	0	oewn-torment-n	Number=Plur	dema	1			carried
 torments	1	oewn-torment-v	Person=3+Tense=Pres	dema	1			carried
-torn	0	oewn-tear-v-1		dema	1			carried
+torn	0	oewn-tear-v-1	VerbForm=Part	dema	1			carried
 torn	1	oewn-torn-a	Degree=Pos	dema	0			carried
 torn	2	oewn-tear-v-2	VerbForm=Part	dema	0			hand
 tornadic	0		Degree=Pos	dema	0	tornadic	a	moby_reverse
@@ -11662,7 +11662,7 @@ torture	0	oewn-torture-n	Number=Sing	dema	1			carried
 torture	1	oewn-torture-v	VerbForm=Inf	dema	1			carried
 torture chamber	0	oewn-torture_chamber-n	Number=Sing	dema	0			oewn_form
 torture chambers	0	oewn-torture_chamber-n	Number=Plur	dema	0			rule
-tortured	0	oewn-torture-v	Tense=Past	dema	1			carried
+tortured	0	oewn-torture-v	Tense=Past+VerbForm=Part	dema	1			carried
 torturer	0	oewn-torturer-n	Number=Sing	dema	0			oewn_form
 torturers	0	oewn-torturer-n	Number=Plur	dema	0			rule
 tortures	0	oewn-torture-n	Number=Plur	dema	1			carried
@@ -11887,7 +11887,7 @@ touchback	0	oewn-touchback-n	Number=Sing	dema	0			oewn_form
 touchbacks	0	oewn-touchback-n	Number=Plur	dema	0			rule
 touchdown	0	oewn-touchdown-n	Number=Sing	dema	0			oewn_form
 touchdowns	0	oewn-touchdown-n	Number=Plur	dema	0			rule
-touched	0	oewn-touch-v	Tense=Past	dema	1			carried
+touched	0	oewn-touch-v	Tense=Past+VerbForm=Part	dema	1			carried
 touched	1	oewn-touched-a	Degree=Pos	dema	0			carried
 touched a chord	0	oewn-touch_a_chord-v	Tense=Past+VerbForm=Part	dema	0			rule
 touched base	0	oewn-touch_base-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -12120,7 +12120,7 @@ tower cresses	0	oewn-tower_cress-n	Number=Plur	dema	0			rule
 tower mustard	0	oewn-tower_mustard-n	Number=Sing	dema	0			oewn_form
 tower mustards	0	oewn-tower_mustard-n	Number=Plur	dema	0			rule
 tower of strength	0	oewn-tower_of_strength-n	Number=Sing	dema	0			oewn_form
-towered	0	oewn-tower-v	Tense=Past	dema	1			carried
+towered	0	oewn-tower-v	Tense=Past+VerbForm=Part	dema	1			carried
 towered	1	dema-towered-a	Degree=Pos	dema	0			carried
 towering	0	oewn-tower-v	VerbForm=Ger	dema	1			carried
 towering	1	oewn-towering-a	Degree=Pos	dema	0			carried
@@ -12350,7 +12350,7 @@ traceableness	0		Number=Sing	dema	0	traceableness	n	moby_reverse
 traceablenesses	0		Number=Plur	dema	0	traceableness	n	rule
 traceablies	0		Number=Plur	dema	0	traceably	n	rule
 traceably	0		Number=Sing	dema	0	traceably	n	moby_reverse
-traced	0	oewn-trace-v	Tense=Past	dema	1			carried
+traced	0	oewn-trace-v	Tense=Past+VerbForm=Part	dema	1			carried
 traceless	0		Degree=Pos	dema	0	traceless	a	moby_reverse
 tracelessly	0		Degree=Pos	dema	0	tracelessly	r	moby_reverse
 tracer	0	oewn-tracer-n	Number=Sing	dema	0			oewn_form
@@ -12441,7 +12441,7 @@ track-to-track seek times	0	oewn-track-to-track_seek_time-n	Number=Plur	dema	0		
 trackable	0	oewn-trackable-a	Degree=Pos	dema	0			oewn_form
 trackball	0	oewn-trackball-n	Number=Sing	dema	0			oewn_form
 trackballs	0	oewn-trackball-n	Number=Plur	dema	0			rule
-tracked	0	oewn-track-v	Tense=Past	dema	1			carried
+tracked	0	oewn-track-v	Tense=Past+VerbForm=Part	dema	1			carried
 tracked down	0	oewn-track_down-v	Tense=Past+VerbForm=Part	dema	0			rule
 tracked vehicle	0	oewn-tracked_vehicle-n	Number=Sing	dema	0			oewn_form
 tracked vehicles	0	oewn-tracked_vehicle-n	Number=Plur	dema	0			rule
@@ -12785,7 +12785,7 @@ trainbandsman	0	oewn-trainbandsman-n	Number=Sing	dema	0			oewn_form
 trainbandsmans	0	oewn-trainbandsman-n	Number=Plur	dema	0			rule
 trainbearer	0	oewn-trainbearer-n	Number=Sing	dema	0			oewn_form
 trainbearers	0	oewn-trainbearer-n	Number=Plur	dema	0			rule
-trained	0	oewn-train-v	Tense=Past	dema	1			carried
+trained	0	oewn-train-v	Tense=Past+VerbForm=Part	dema	1			carried
 trained nurse	0	oewn-trained_nurse-n	Number=Sing	dema	0			oewn_form
 trained nurses	0	oewn-trained_nurse-n	Number=Plur	dema	0			rule
 trained worker	0	oewn-trained_worker-n	Number=Sing	dema	0			oewn_form
@@ -13205,7 +13205,7 @@ transferors	0	oewn-transferor-n	Number=Plur	dema	0			rule
 transferrable	0	oewn-transferrable-a	Degree=Pos	dema	0			oewn_form
 transferral	0	oewn-transferral-n	Number=Sing	dema	0			oewn_form
 transferrals	0	oewn-transferral-n	Number=Plur	dema	0			rule
-transferred	0	oewn-transfer-v	Tense=Past	dema	1			carried
+transferred	0	oewn-transfer-v	Tense=Past+VerbForm=Part	dema	1			carried
 transferred possession	0	oewn-transferred_possession-n	Number=Sing	dema	0			oewn_form
 transferred possessions	0	oewn-transferred_possession-n	Number=Plur	dema	0			rule
 transferred properties	0	oewn-transferred_property-n	Number=Plur	dema	0			rule
@@ -13993,7 +13993,7 @@ travel-soiled	0	oewn-travel-soiled-a	Degree=Pos	dema	0			oewn_form
 travel-stained	0	oewn-travel-stained-a	Degree=Pos	dema	0			oewn_form
 travel-worn	0	oewn-travel-worn-a	Degree=Pos	dema	0			oewn_form
 travelable	0	oewn-travelable-a	Degree=Pos	dema	0			oewn_form
-traveled	0	oewn-travel-v	Tense=Past	dema	1			carried
+traveled	0	oewn-travel-v	Tense=Past+VerbForm=Part	dema	1			carried
 traveled along	0	oewn-travel_along-v	Tense=Past+VerbForm=Part	dema	0			rule
 traveled by	0	oewn-travel_by-v	Tense=Past+VerbForm=Part	dema	0			rule
 traveled purposefully	0	oewn-travel_purposefully-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -14025,7 +14025,7 @@ traveling wave	0	oewn-traveling_wave-n	Number=Sing	dema	0			oewn_form
 traveling waves	0	oewn-traveling_wave-n	Number=Plur	dema	0			rule
 travelings	0	oewn-traveling-n	Number=Plur	dema	0			rule
 travellable	0		Degree=Pos	dema	0	travellable	a	moby_reverse
-travelled	0	oewn-travel-v	Tense=Past	dema	1			carried
+travelled	0	oewn-travel-v	Tense=Past+VerbForm=Part	dema	1			carried
 travelled	1	oewn-travelled-a	Degree=Pos	dema	0			carried
 traveller	0	oewn-traveller-n	Number=Sing	dema	0			oewn_form
 traveller's check	0	oewn-traveller-ap-s_check-n	Number=Sing	dema	0			oewn_form
@@ -14065,7 +14065,7 @@ traverse	0	oewn-traverse-n	Number=Sing	dema	1			carried
 traverse	1	oewn-traverse-v	VerbForm=Inf	dema	1			carried
 traverse	2	dema-traverse-r	Degree=Pos	dema	0			carried
 traverse	3	dema-traverse-a	Degree=Pos	dema	0			carried
-traversed	0	oewn-traverse-v	Tense=Past	dema	1			carried
+traversed	0	oewn-traverse-v	Tense=Past+VerbForm=Part	dema	1			carried
 traverser	0	oewn-traverser-n	Number=Sing	dema	0			oewn_form
 traversers	0	oewn-traverser-n	Number=Plur	dema	0			rule
 traverses	0	oewn-traverse-n	Number=Plur	dema	1			carried
@@ -14216,7 +14216,7 @@ treasury stock	0	oewn-treasury_stock-n	Number=Sing	dema	0			oewn_form
 treasury stocks	0	oewn-treasury_stock-n	Number=Plur	dema	0			rule
 treat	0	oewn-treat-n	Number=Sing	dema	1			carried
 treat	1	oewn-treat-v	VerbForm=Inf	dema	1			carried
-treated	0	oewn-treat-v	Tense=Past	dema	1			carried
+treated	0	oewn-treat-v	Tense=Past+VerbForm=Part	dema	1			carried
 treater	0	oewn-treater-n	Number=Sing	dema	0			oewn_form
 treaters	0	oewn-treater-n	Number=Plur	dema	0			rule
 treaties	0	oewn-treaty-n	Number=Plur	dema	0			rule
@@ -15115,7 +15115,7 @@ trigger	0	oewn-trigger-n	Number=Sing	dema	1			carried
 trigger	1	oewn-trigger-v	VerbForm=Inf	dema	1			carried
 trigger off	0	oewn-trigger_off-v	VerbForm=Inf	dema	0			oewn_form
 trigger-happy	0	oewn-trigger-happy-a	Degree=Pos	dema	0			oewn_form
-triggered	0	oewn-trigger-v	Tense=Past	dema	1			carried
+triggered	0	oewn-trigger-v	Tense=Past+VerbForm=Part	dema	1			carried
 triggered off	0	oewn-trigger_off-v	Tense=Past+VerbForm=Part	dema	0			rule
 triggerfish	0	oewn-triggerfish-n	Number=Sing	dema	0			oewn_form
 triggerfishes	0	oewn-triggerfish-n	Number=Plur	dema	0			oewn_form
@@ -16524,7 +16524,7 @@ trustability	0		Number=Sing	dema	0	trustability	n	moby_reverse
 trustable	0		Degree=Pos	dema	0	trustable	a	moby_reverse
 trustbuster	0	oewn-trustbuster-n	Number=Sing	dema	0			oewn_form
 trustbusters	0	oewn-trustbuster-n	Number=Plur	dema	0			rule
-trusted	0	oewn-trust-v	Tense=Past	dema	1			carried
+trusted	0	oewn-trust-v	Tense=Past+VerbForm=Part	dema	1			carried
 trustee	0	oewn-trustee-n	Number=Sing	dema	0			oewn_form
 trustee account	0	oewn-trustee_account-n	Number=Sing	dema	0			oewn_form
 trustee accounts	0	oewn-trustee_account-n	Number=Plur	dema	0			rule
@@ -17143,7 +17143,7 @@ tune-ups	0	oewn-tune-up-n	Number=Plur	dema	0			rule
 tuneable	0		Degree=Pos	dema	0	tuneable	a	moby_reverse
 tuneableness	0		Number=Sing	dema	0	tuneableness	n	moby_reverse
 tuneably	0		Degree=Pos	dema	0	tuneably	r	moby_reverse
-tuned	0	oewn-tune-v	Tense=Past	dema	1			carried
+tuned	0	oewn-tune-v	Tense=Past+VerbForm=Part	dema	1			carried
 tuned in	0	oewn-tune_in-v	Tense=Past+VerbForm=Part	dema	0			rule
 tuned up	0	oewn-tune_up-v	Tense=Past+VerbForm=Part	dema	0			rule
 tuneful	0	oewn-tuneful-a	Degree=Pos	dema	0			oewn_form
@@ -18389,7 +18389,7 @@ typecast	0	oewn-typecast-v	VerbForm=Inf	dema	0			oewn_form
 typecast	1	oewn-typecast-v	Tense=Past+VerbForm=Part	dema	0			agid
 typecasting	0	oewn-typecast-v	VerbForm=Ger	dema	0			rule
 typecasts	0	oewn-typecast-v	Person=3+Tense=Pres	dema	0			rule
-typed	0	oewn-type-v	Tense=Past	dema	1			carried
+typed	0	oewn-type-v	Tense=Past+VerbForm=Part	dema	1			carried
 typeface	0	oewn-typeface-n	Number=Sing	dema	0			oewn_form
 typefaces	0	oewn-typeface-n	Number=Plur	dema	0			rule
 typefoundries	0		Number=Plur	dema	0	typefoundry	n	rule

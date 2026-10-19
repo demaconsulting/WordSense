@@ -187,7 +187,7 @@ swallow-tailed hawks	0	oewn-swallow-tailed_hawk-n	Number=Plur	dema	0			rule
 swallow-tailed kite	0	oewn-swallow-tailed_kite-n	Number=Sing	dema	0			oewn_form
 swallow-tailed kites	0	oewn-swallow-tailed_kite-n	Number=Plur	dema	0			rule
 swallowable	0		Degree=Pos	dema	0	swallowable	a	moby_reverse
-swallowed	0	oewn-swallow-v	Tense=Past	dema	1			carried
+swallowed	0	oewn-swallow-v	Tense=Past+VerbForm=Part	dema	1			carried
 swallowed up	0	oewn-swallow_up-v	Tense=Past+VerbForm=Part	dema	0			rule
 swallower	0		Number=Sing	dema	0	swallower	n	moby_reverse
 swallowers	0		Number=Plur	dema	0	swallower	n	rule
@@ -976,7 +976,7 @@ swingbacks	0		Number=Plur	dema	0	swingback	n	rule
 swingboat	0		Number=Sing	dema	0	swingboat	n	moby_reverse
 swingboats	0		Number=Plur	dema	0	swingboat	n	rule
 swinge	0	oewn-swinge-v	VerbForm=Inf	dema	0			oewn_form
-swinged	0	oewn-swing-v	Tense=Past	dema	1			carried
+swinged	0	oewn-swing-v	Tense=Past+VerbForm=Part	dema	1			carried
 swingeing	0	oewn-swingeing-a	Degree=Pos	dema	0			oewn_form
 swingeing	1	oewn-swinge-v	VerbForm=Ger	dema	0			agid
 swingeingly	0		Degree=Pos	dema	0	swingeingly	r	moby_reverse

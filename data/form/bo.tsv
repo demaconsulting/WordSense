@@ -299,7 +299,7 @@ board rule	0	oewn-board_rule-n	Number=Sing	dema	0			oewn_form
 board rules	0	oewn-board_rule-n	Number=Plur	dema	0			rule
 board up	0	oewn-board_up-v	VerbForm=Inf	dema	0			oewn_form
 boardable	0		Degree=Pos	dema	0	boardable	a	moby_reverse
-boarded	0	oewn-board-v	Tense=Past	dema	1			carried
+boarded	0	oewn-board-v	Tense=Past+VerbForm=Part	dema	1			carried
 boarded up	0	oewn-board_up-v	Tense=Past+VerbForm=Part	dema	0			rule
 boarder	0	oewn-boarder-n	Number=Sing	dema	0			oewn_form
 boarders	0	oewn-boarder-n	Number=Plur	dema	0			rule
@@ -1046,7 +1046,7 @@ bolt thrower	0	oewn-bolt_thrower-n	Number=Sing	dema	0			oewn_form
 bolt throwers	0	oewn-bolt_thrower-n	Number=Plur	dema	0			rule
 bolt-hole	0	oewn-bolt-hole-n	Number=Sing	dema	0			oewn_form
 bolt-holes	0	oewn-bolt-hole-n	Number=Plur	dema	0			rule
-bolted	0	oewn-bolt-v	Tense=Past	dema	1			carried
+bolted	0	oewn-bolt-v	Tense=Past+VerbForm=Part	dema	1			carried
 bolted down	0	oewn-bolt_down-v	Tense=Past+VerbForm=Part	dema	0			rule
 bolted out	0	oewn-bolt_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 boltel	0		Number=Sing	dema	0	boltel	n	moby_reverse
@@ -1118,7 +1118,7 @@ bombasts	0	oewn-bombast-n	Number=Plur	dema	0			rule
 bombazine	0	oewn-bombazine-n	Number=Sing	dema	0			oewn_form
 bombazines	0	oewn-bombazine-n	Number=Plur	dema	0			rule
 bombe	0		Number=Sing	dema	0	bombe	n	moby_reverse
-bombed	0	oewn-bomb-v	Tense=Past	dema	1			carried
+bombed	0	oewn-bomb-v	Tense=Past+VerbForm=Part	dema	1			carried
 bombed out	0	oewn-bomb_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 bombed up	0	oewn-bomb_up-v	Tense=Past+VerbForm=Part	dema	0			rule
 bomber	0	oewn-bomber-n	Number=Sing	dema	0			oewn_form
@@ -1557,7 +1557,7 @@ bookcraft	0		Number=Sing	dema	0	bookcraft	n	moby_reverse
 bookcrafts	0		Number=Plur	dema	0	bookcraft	n	rule
 bookdealer	0	oewn-bookdealer-n	Number=Sing	dema	0			oewn_form
 bookdealers	0	oewn-bookdealer-n	Number=Plur	dema	0			rule
-booked	0	oewn-book-v	Tense=Past	dema	1			carried
+booked	0	oewn-book-v	Tense=Past+VerbForm=Part	dema	1			carried
 booked up	0	oewn-book_up-v	Tense=Past+VerbForm=Part	dema	0			rule
 bookend	0	oewn-bookend-n	Number=Sing	dema	0			oewn_form
 bookends	0	oewn-bookend-n	Number=Plur	dema	0			rule
@@ -1891,7 +1891,7 @@ bordereau	0		Number=Sing	dema	0	bordereau	n	moby_reverse
 bordereaus	0		Number=Plur	dema	0	bordereau	n	rule
 bordereaux	0		Number=Sing	dema	0	bordereaux	n	moby_reverse
 bordereauxes	0		Number=Plur	dema	0	bordereaux	n	rule
-bordered	0	oewn-border-v	Tense=Past	dema	1			carried
+bordered	0	oewn-border-v	Tense=Past+VerbForm=Part	dema	1			carried
 bordered	1	oewn-bordered-a	Degree=Pos	dema	0			carried
 bordered on	0	oewn-border_on-v	Tense=Past+VerbForm=Part	dema	0			rule
 borderer	0	oewn-borderer-n	Number=Sing	dema	0			oewn_form
@@ -2680,7 +2680,7 @@ bowdlerizes	0	oewn-bowdlerize-v	Person=3+Tense=Pres	dema	0			rule
 bowdlerizing	0	oewn-bowdlerize-v	VerbForm=Ger	dema	0			rule
 bowdrill	0		Number=Sing	dema	0	bowdrill	n	moby_reverse
 bowdrills	0		Number=Plur	dema	0	bowdrill	n	rule
-bowed	0	oewn-bow-v-1	Tense=Past	dema	1			carried
+bowed	0	oewn-bow-v-1	Tense=Past+VerbForm=Part	dema	1			carried
 bowed down	0	oewn-bow_down-v	Tense=Past+VerbForm=Part	dema	0			rule
 bowed down	1	oewn-bowed_down-a	Degree=Pos	dema	0			oewn_form
 bowed out	0	oewn-bow_out-v	Tense=Past+VerbForm=Part	dema	0			rule

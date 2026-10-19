@@ -290,7 +290,7 @@ addorsed	1		VerbForm=Inf	dema	0	addorsed	v	moby_reverse
 address	0	oewn-address-n	Number=Sing	dema	1			carried
 address	1	oewn-address-v	VerbForm=Inf	dema	1			carried
 addressable	0	oewn-addressable-a	Degree=Pos	dema	0			oewn_form
-addressed	0	oewn-address-v	Tense=Past	dema	1			carried
+addressed	0	oewn-address-v	Tense=Past+VerbForm=Part	dema	1			carried
 addressee	0	oewn-addressee-n	Number=Sing	dema	0			oewn_form
 addressees	0	oewn-addressee-n	Number=Plur	dema	0			rule
 addresser	0		Number=Sing	dema	0	addresser	n	moby_reverse
@@ -321,7 +321,7 @@ adducing	1	oewn-adduce-v	VerbForm=Ger	dema	0			rule
 adducings	0	oewn-adducing-n	Number=Plur	dema	0			rule
 adduct	0	oewn-adduct-n	Number=Sing	dema	1			carried
 adduct	1	oewn-adduct-v	VerbForm=Inf	dema	1			carried
-adducted	0	oewn-adduct-v	Tense=Past	dema	1			carried
+adducted	0	oewn-adduct-v	Tense=Past+VerbForm=Part	dema	1			carried
 adducting	0	oewn-adduct-v	VerbForm=Ger	dema	1			carried
 adducting	1	oewn-adducting-a	Degree=Pos	dema	0			oewn_form
 adduction	0	oewn-adduction-n	Number=Sing	dema	0			oewn_form
@@ -1043,7 +1043,7 @@ advance	0	oewn-advance-n	Number=Sing	dema	1			carried
 advance	1	oewn-advance-v	VerbForm=Inf	dema	1			carried
 advance death benefit	0	oewn-advance_death_benefit-n	Number=Sing	dema	0			oewn_form
 advance death benefits	0	oewn-advance_death_benefit-n	Number=Plur	dema	0			rule
-advanced	0	oewn-advance-v	Tense=Past	dema	1			carried
+advanced	0	oewn-advance-v	Tense=Past+VerbForm=Part	dema	1			carried
 advanced	1	oewn-advanced-a	Degree=Pos	dema	0			carried
 advancement	0	oewn-advancement-n	Number=Sing	dema	0			oewn_form
 advancements	0	oewn-advancement-n	Number=Plur	dema	0			rule
@@ -1154,7 +1154,7 @@ adversities	0	oewn-adversity-n	Number=Plur	dema	0			rule
 adversity	0	oewn-adversity-n	Number=Sing	dema	0			oewn_form
 advert	0	oewn-advert-n	Number=Sing	dema	1			carried
 advert	1	oewn-advert-v	VerbForm=Inf	dema	1			carried
-adverted	0	oewn-advert-v	Tense=Past	dema	1			carried
+adverted	0	oewn-advert-v	Tense=Past+VerbForm=Part	dema	1			carried
 advertence	0	oewn-advertence-n	Number=Sing	dema	0			oewn_form
 advertences	0	oewn-advertence-n	Number=Plur	dema	0			rule
 advertencies	0	oewn-advertency-n	Number=Plur	dema	0			rule

@@ -747,7 +747,7 @@ point-of-sale	0	oewn-point-of-sale-a	Degree=Pos	dema	0			oewn_form
 pointal	0		Number=Sing	dema	0	pointal	n	moby_reverse
 pointals	0		Number=Plur	dema	0	pointal	n	rule
 pointe	0		Number=Sing	dema	0	pointe	n	moby_reverse
-pointed	0	oewn-point-v	Tense=Past	dema	1			carried
+pointed	0	oewn-point-v	Tense=Past+VerbForm=Part	dema	1			carried
 pointed	1	oewn-pointed-a	Degree=Pos	dema	0			carried
 pointed arch	0	oewn-pointed_arch-n	Number=Sing	dema	0			oewn_form
 pointed arches	0	oewn-pointed_arch-n	Number=Plur	dema	0			rule
@@ -861,7 +861,7 @@ poison-berries	0	oewn-poison-berry-n	Number=Plur	dema	0			rule
 poison-berry	0	oewn-poison-berry-n	Number=Sing	dema	0			oewn_form
 poisonberries	0	oewn-poisonberry-n	Number=Plur	dema	0			rule
 poisonberry	0	oewn-poisonberry-n	Number=Sing	dema	0			oewn_form
-poisoned	0	oewn-poison-v	Tense=Past	dema	1			carried
+poisoned	0	oewn-poison-v	Tense=Past+VerbForm=Part	dema	1			carried
 poisoner	0	oewn-poisoner-n	Number=Sing	dema	0			oewn_form
 poisoners	0	oewn-poisoner-n	Number=Plur	dema	0			rule
 poisoning	0	oewn-poison-v	VerbForm=Ger	dema	1			carried
@@ -2376,7 +2376,7 @@ poppa	0		Number=Sing	dema	0	poppa	n	moby_reverse
 poppadom	0		Number=Sing	dema	0	poppadom	n	moby_reverse
 poppadoms	0		Number=Plur	dema	0	poppadom	n	rule
 poppas	0		Number=Plur	dema	0	poppa	n	rule
-popped	0	oewn-pop-v	Tense=Past	dema	1			carried
+popped	0	oewn-pop-v	Tense=Past+VerbForm=Part	dema	1			carried
 popped in	0	oewn-pop_in-v	Tense=Past+VerbForm=Part	dema	0			rule
 popped off	0	oewn-pop_off-v	Tense=Past+VerbForm=Part	dema	0			rule
 popped out	0	oewn-pop_out-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -3212,7 +3212,7 @@ postdural	0		Degree=Pos	dema	0	postdural	a	moby_reverse
 postdysenteric	0		Degree=Pos	dema	0	postdysenteric	a	moby_reverse
 poste restante	0	oewn-poste_restante-n	Number=Sing	dema	0			oewn_form
 poste restantes	0	oewn-poste_restante-n	Number=Plur	dema	0			rule
-posted	0	oewn-post-v	Tense=Past	dema	1			carried
+posted	0	oewn-post-v	Tense=Past+VerbForm=Part	dema	1			carried
 postelection	0		Degree=Pos	dema	0	postelection	a	moby_reverse
 postelemental	0		Degree=Pos	dema	0	postelemental	a	moby_reverse
 postelementary	0		Degree=Pos	dema	0	postelementary	a	moby_reverse
@@ -4344,7 +4344,7 @@ powerboat	0	oewn-powerboat-n	Number=Sing	dema	0			oewn_form
 powerboats	0	oewn-powerboat-n	Number=Plur	dema	0			rule
 powerbroker	0	oewn-powerbroker-n	Number=Sing	dema	0			oewn_form
 powerbrokers	0	oewn-powerbroker-n	Number=Plur	dema	0			rule
-powered	0	oewn-power-v	Tense=Past	dema	1			carried
+powered	0	oewn-power-v	Tense=Past+VerbForm=Part	dema	1			carried
 powered	1	oewn-powered-a	Degree=Pos	dema	0			carried
 powerful	0	oewn-powerful-a	Degree=Pos	dema	0			oewn_form
 powerful	1	oewn-powerful-r	Degree=Pos	dema	0			oewn_form

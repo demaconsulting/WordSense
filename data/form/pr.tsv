@@ -2325,8 +2325,8 @@ predata	0		Number=Sing	dema	0	predata	n	moby_reverse
 predatas	0		Number=Plur	dema	0	predata	n	rule
 predate	0	oewn-predate-v-1	VerbForm=Inf	dema	1			carried
 predate	1	oewn-predate-v-2	VerbForm=Inf	dema	1			carried
-predated	0	oewn-predate-v-1	Tense=Past	dema	1			carried
-predated	1	oewn-predate-v-2	Tense=Past	dema	1			carried
+predated	0	oewn-predate-v-1	Tense=Past+VerbForm=Part	dema	1			carried
+predated	1	oewn-predate-v-2	Tense=Past+VerbForm=Part	dema	1			carried
 predates	0	oewn-predate-v-1	Person=3+Tense=Pres	dema	1			carried
 predates	1	oewn-predate-v-2	Person=3+Tense=Pres	dema	1			carried
 predating	0	oewn-predate-v-1	VerbForm=Ger	dema	1			carried
@@ -3737,7 +3737,7 @@ prefixal	0		Degree=Pos	dema	0	prefixal	a	moby_reverse
 prefixally	0		Degree=Pos	dema	0	prefixally	r	moby_reverse
 prefixation	0	oewn-prefixation-n	Number=Sing	dema	0			oewn_form
 prefixations	0	oewn-prefixation-n	Number=Plur	dema	0			rule
-prefixed	0	oewn-prefix-v	Tense=Past	dema	1			carried
+prefixed	0	oewn-prefix-v	Tense=Past+VerbForm=Part	dema	1			carried
 prefixes	0	oewn-prefix-n	Number=Plur	dema	1			carried
 prefixes	1	oewn-prefix-v	Person=3+Tense=Pres	dema	1			carried
 prefixing	0	oewn-prefix-v	VerbForm=Ger	dema	1			carried
@@ -6184,7 +6184,7 @@ press-ups	0	oewn-press-up-n	Number=Plur	dema	0			rule
 pressable	0		Degree=Pos	dema	0	pressable	a	moby_reverse
 pressboard	0		Number=Sing	dema	0	pressboard	n	moby_reverse
 pressboards	0		Number=Plur	dema	0	pressboard	n	rule
-pressed	0	oewn-press-v	Tense=Past	dema	1			carried
+pressed	0	oewn-press-v	Tense=Past+VerbForm=Part	dema	1			carried
 pressed down	0	oewn-press_down-v	Tense=Past+VerbForm=Part	dema	0			rule
 pressed down on	0	oewn-press_down_on-v	Tense=Past+VerbForm=Part	dema	0			rule
 pressed home	0	oewn-press_home-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -6267,7 +6267,7 @@ pressure-wash	0	oewn-pressure-wash-v	VerbForm=Inf	dema	0			oewn_form
 pressure-washed	0	oewn-pressure-wash-v	Tense=Past+VerbForm=Part	dema	0			rule
 pressure-washes	0	oewn-pressure-wash-v	Person=3+Tense=Pres	dema	0			rule
 pressure-washing	0	oewn-pressure-wash-v	VerbForm=Ger	dema	0			rule
-pressured	0	oewn-pressure-v	Tense=Past	dema	1			carried
+pressured	0	oewn-pressure-v	Tense=Past+VerbForm=Part	dema	1			carried
 pressureless	0		Degree=Pos	dema	0	pressureless	a	moby_reverse
 pressures	0	oewn-pressure-n	Number=Plur	dema	1			carried
 pressures	1	oewn-pressure-v	Person=3+Tense=Pres	dema	1			carried
@@ -7224,7 +7224,7 @@ pride of place	0	oewn-pride_of_place-n	Number=Sing	dema	0			oewn_form
 pride oneself	0	oewn-pride_oneself-v	VerbForm=Inf	dema	0			oewn_form
 pride-of-India	0	oewn-pride-of-India-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 pride-of-indias	0	oewn-pride-of-India-n	Capitalization=Exact+Number=Plur	dema	0			rule
-prided	0	oewn-pride-v	Tense=Past	dema	1			carried
+prided	0	oewn-pride-v	Tense=Past+VerbForm=Part	dema	1			carried
 prideful	0	oewn-prideful-a	Degree=Pos	dema	0			oewn_form
 pridefully	0		Degree=Pos	dema	0	pridefully	r	moby_reverse
 pridefulness	0	oewn-pridefulness-n	Number=Sing	dema	0			oewn_form
@@ -7622,7 +7622,7 @@ printability	0		Number=Sing	dema	0	printability	n	moby_reverse
 printable	0	oewn-printable-a	Degree=Pos	dema	0			oewn_form
 printableness	0		Number=Sing	dema	0	printableness	n	moby_reverse
 printanier	0		Degree=Pos	dema	0	printanier	a	moby_reverse
-printed	0	oewn-print-v	Tense=Past	dema	1			carried
+printed	0	oewn-print-v	Tense=Past+VerbForm=Part	dema	1			carried
 printed circuit	0	oewn-printed_circuit-n	Number=Sing	dema	0			oewn_form
 printed circuits	0	oewn-printed_circuit-n	Number=Plur	dema	0			rule
 printed over	0	oewn-print_over-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -10118,7 +10118,7 @@ protestant	1	oewn-protestant-a	Degree=Pos	dema	0			oewn_form
 protestants	0		Number=Plur	dema	0	protestant	n	rule
 protestation	0	oewn-protestation-n	Number=Sing	dema	0			oewn_form
 protestations	0	oewn-protestation-n	Number=Plur	dema	0			rule
-protested	0	oewn-protest-v	Tense=Past	dema	1			carried
+protested	0	oewn-protest-v	Tense=Past+VerbForm=Part	dema	1			carried
 protester	0	oewn-protester-n	Number=Sing	dema	0			oewn_form
 protesters	0	oewn-protester-n	Number=Plur	dema	0			rule
 protesting	0	oewn-protest-v	VerbForm=Ger	dema	1			carried

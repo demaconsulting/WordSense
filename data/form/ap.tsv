@@ -702,7 +702,7 @@ appeal boards	0	oewn-appeal_board-n	Number=Plur	dema	0			rule
 appealabilities	0		Number=Plur	dema	0	appealability	n	rule
 appealability	0		Number=Sing	dema	0	appealability	n	moby_reverse
 appealable	0	oewn-appealable-a	Degree=Pos	dema	0			oewn_form
-appealed	0	oewn-appeal-v	Tense=Past	dema	1			carried
+appealed	0	oewn-appeal-v	Tense=Past+VerbForm=Part	dema	1			carried
 appealer	0		Number=Sing	dema	0	appealer	n	moby_reverse
 appealers	0		Number=Plur	dema	0	appealer	n	rule
 appealing	0	oewn-appeal-v	VerbForm=Ger	dema	1			carried
@@ -1119,7 +1119,7 @@ approachability	0	oewn-approachability-n	Number=Sing	dema	0			oewn_form
 approachable	0	oewn-approachable-a	Degree=Pos	dema	0			oewn_form
 approachableness	0		Number=Sing	dema	0	approachableness	n	moby_reverse
 approachablenesses	0		Number=Plur	dema	0	approachableness	n	rule
-approached	0	oewn-approach-v	Tense=Past	dema	1			carried
+approached	0	oewn-approach-v	Tense=Past+VerbForm=Part	dema	1			carried
 approacher	0		Number=Sing	dema	0	approacher	n	moby_reverse
 approachers	0		Number=Plur	dema	0	approacher	n	rule
 approaches	0	oewn-approach-n	Number=Plur	dema	1			carried

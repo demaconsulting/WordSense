@@ -2067,7 +2067,7 @@ cloudberries	0	oewn-cloudberry-n	Number=Plur	dema	0			rule
 cloudberry	0	oewn-cloudberry-n	Number=Sing	dema	0			oewn_form
 cloudburst	0	oewn-cloudburst-n	Number=Sing	dema	0			oewn_form
 cloudbursts	0	oewn-cloudburst-n	Number=Plur	dema	0			rule
-clouded	0	oewn-cloud-v	Tense=Past	dema	1			carried
+clouded	0	oewn-cloud-v	Tense=Past+VerbForm=Part	dema	1			carried
 clouded	1	oewn-clouded-a	Degree=Pos	dema	0			carried
 clouded over	0	oewn-cloud_over-v	Tense=Past+VerbForm=Part	dema	0			rule
 clouded up	0	oewn-cloud_up-v	Tense=Past+VerbForm=Part	dema	0			rule

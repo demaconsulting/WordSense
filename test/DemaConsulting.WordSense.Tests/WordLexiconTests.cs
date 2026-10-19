@@ -145,7 +145,7 @@ public class WordLexiconTests
         var bowed = Assert.Single(WordLexicon.Lookup("bowed"));
         Assert.Equal(PartOfSpeech.Verb, bowed.PartOfSpeech);
         Assert.Equal("bow#bend-verb", bowed.SenseId);
-        Assert.Equal("Tense=Past", bowed.Features);
+        Assert.Equal("Tense=Past+VerbForm=Part", bowed.Features);
 
         var bows = WordLexicon.Lookup("bows");
         Assert.Equal(

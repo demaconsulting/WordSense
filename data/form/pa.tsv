@@ -526,7 +526,7 @@ pace car	0	oewn-pace_car-n	Number=Sing	dema	0			oewn_form
 pace cars	0	oewn-pace_car-n	Number=Plur	dema	0			rule
 pace lap	0	oewn-pace_lap-n	Number=Sing	dema	0			oewn_form
 pace laps	0	oewn-pace_lap-n	Number=Plur	dema	0			rule
-paced	0	oewn-pace-v	Tense=Past	dema	1			carried
+paced	0	oewn-pace-v	Tense=Past+VerbForm=Part	dema	1			carried
 paced	1	dema-paced-a	Degree=Pos	dema	0			carried
 pacemaker	0	oewn-pacemaker-n	Number=Sing	dema	0			oewn_form
 pacemakers	0	oewn-pacemaker-n	Number=Plur	dema	0			rule
@@ -644,7 +644,7 @@ packaging company	0	oewn-packaging_company-n	Number=Sing	dema	0			oewn_form
 packaging concern	0	oewn-packaging_concern-n	Number=Sing	dema	0			oewn_form
 packaging concerns	0	oewn-packaging_concern-n	Number=Plur	dema	0			rule
 packagings	0	oewn-packaging-n	Number=Plur	dema	0			rule
-packed	0	oewn-pack-v	Tense=Past	dema	1			carried
+packed	0	oewn-pack-v	Tense=Past+VerbForm=Part	dema	1			carried
 packed cell volume	0	oewn-packed_cell_volume-n	Number=Sing	dema	0			oewn_form
 packed cell volumes	0	oewn-packed_cell_volume-n	Number=Plur	dema	0			rule
 packed cells	0	oewn-packed_cells-n	Number=Sing	dema	0			oewn_form
@@ -944,7 +944,7 @@ pain thresholds	0	oewn-pain_threshold-n	Number=Plur	dema	0			rule
 pain unit	0	oewn-pain_unit-n	Number=Sing	dema	0			oewn_form
 pain units	0	oewn-pain_unit-n	Number=Plur	dema	0			rule
 pain-free	0	oewn-pain-free-a	Degree=Pos	dema	0			oewn_form
-pained	0	oewn-pain-v	Tense=Past	dema	1			carried
+pained	0	oewn-pain-v	Tense=Past+VerbForm=Part	dema	1			carried
 pained	1	oewn-pained-a	Degree=Pos	dema	0			carried
 painful	0	oewn-painful-a	Degree=Pos	dema	0			oewn_form
 painful sensation	0	oewn-painful_sensation-n	Number=Sing	dema	0			oewn_form
@@ -986,7 +986,7 @@ paintbox	0	oewn-paintbox-n	Number=Sing	dema	0			oewn_form
 paintboxes	0	oewn-paintbox-n	Number=Plur	dema	0			rule
 paintbrush	0	oewn-paintbrush-n	Number=Sing	dema	0			oewn_form
 paintbrushes	0	oewn-paintbrush-n	Number=Plur	dema	0			rule
-painted	0	oewn-paint-v	Tense=Past	dema	1			carried
+painted	0	oewn-paint-v	Tense=Past+VerbForm=Part	dema	1			carried
 painted	1	oewn-painted-a	Degree=Pos	dema	0			carried
 painted a picture	0	oewn-paint_a_picture-v	Tense=Past+VerbForm=Part	dema	0			rule
 painted beauties	0	oewn-painted_beauty-n	Number=Plur	dema	0			rule
@@ -3224,7 +3224,7 @@ pardonable	0	oewn-pardonable-a	Degree=Pos	dema	0			oewn_form
 pardonableness	0		Number=Sing	dema	0	pardonableness	n	moby_reverse
 pardonablenesses	0		Number=Plur	dema	0	pardonableness	n	rule
 pardonably	0	oewn-pardonably-r	Degree=Pos	dema	0			oewn_form
-pardoned	0	oewn-pardon-v	Tense=Past	dema	1			carried
+pardoned	0	oewn-pardon-v	Tense=Past+VerbForm=Part	dema	1			carried
 pardoner	0	oewn-pardoner-n	Number=Sing	dema	0			oewn_form
 pardoners	0	oewn-pardoner-n	Number=Plur	dema	0			rule
 pardoning	0	oewn-pardon-v	VerbForm=Ger	dema	1			carried
@@ -3420,7 +3420,7 @@ parka	0	oewn-parka-n	Number=Sing	dema	0			oewn_form
 parka squirrel	0	oewn-parka_squirrel-n	Number=Sing	dema	0			oewn_form
 parka squirrels	0	oewn-parka_squirrel-n	Number=Plur	dema	0			rule
 parkas	0	oewn-parka-n	Number=Plur	dema	0			rule
-parked	0	oewn-park-v	Tense=Past	dema	1			carried
+parked	0	oewn-park-v	Tense=Past+VerbForm=Part	dema	1			carried
 parkier	0	oewn-parky-a	Degree=Cmp	dema	0			oewn_form
 parkiest	0	oewn-parky-a	Degree=Sup	dema	0			oewn_form
 parkin	0		Number=Sing	dema	0	parkin	n	moby_reverse
@@ -3769,7 +3769,7 @@ partaking	0	oewn-partake-v	VerbForm=Ger	dema	0			rule
 partaking in	0	oewn-partake_in-v	VerbForm=Ger	dema	0			rule
 partan	0		Number=Sing	dema	0	partan	n	moby_reverse
 partans	0		Number=Plur	dema	0	partan	n	rule
-parted	0	oewn-part-v	Tense=Past	dema	1			carried
+parted	0	oewn-part-v	Tense=Past+VerbForm=Part	dema	1			carried
 parted	1	oewn-parted-a	Degree=Pos	dema	0			carried
 parted leaf	0	oewn-parted_leaf-n	Number=Sing	dema	0			oewn_form
 parted leaves	0	oewn-parted_leaf-n	Number=Plur	dema	0			rule
@@ -4195,7 +4195,7 @@ passe	0		Number=Sing	dema	0	passe	n	moby_reverse
 passe	1	oewn-passe-a	Degree=Pos	dema	0			oewn_form
 passe-partout	0	oewn-passe-partout-n	Number=Sing	dema	0			oewn_form
 passe-partouts	0	oewn-passe-partout-n	Number=Plur	dema	0			rule
-passed	0	oewn-pass-v	Tense=Past	dema	1			carried
+passed	0	oewn-pass-v	Tense=Past+VerbForm=Part	dema	1			carried
 passed	1	dema-passed-a	Degree=Pos	dema	0			carried
 passed across	0	oewn-pass_across-v	Tense=Past+VerbForm=Part	dema	0			rule
 passed along	0	oewn-pass_along-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -4569,7 +4569,7 @@ patchboard	0	oewn-patchboard-n	Number=Sing	dema	0			oewn_form
 patchboards	0	oewn-patchboard-n	Number=Plur	dema	0			rule
 patchcord	0	oewn-patchcord-n	Number=Sing	dema	0			oewn_form
 patchcords	0	oewn-patchcord-n	Number=Plur	dema	0			rule
-patched	0	oewn-patch-v	Tense=Past	dema	1			carried
+patched	0	oewn-patch-v	Tense=Past+VerbForm=Part	dema	1			carried
 patched up	0	oewn-patch_up-v	Tense=Past+VerbForm=Part	dema	0			rule
 patcher	0		Number=Sing	dema	0	patcher	n	moby_reverse
 patchers	0		Number=Plur	dema	0	patcher	n	rule
@@ -5043,7 +5043,7 @@ pauraques	0		Number=Plur	dema	0	pauraque	n	rule
 pausal	0		Degree=Pos	dema	0	pausal	a	moby_reverse
 pause	0	oewn-pause-n	Number=Sing	dema	1			carried
 pause	1	oewn-pause-v	VerbForm=Inf	dema	1			carried
-paused	0	oewn-pause-v	Tense=Past	dema	1			carried
+paused	0	oewn-pause-v	Tense=Past+VerbForm=Part	dema	1			carried
 pauseful	0		Degree=Pos	dema	0	pauseful	a	moby_reverse
 pausefully	0		Degree=Pos	dema	0	pausefully	r	moby_reverse
 pauseless	0		Degree=Pos	dema	0	pauseless	a	moby_reverse

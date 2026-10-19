@@ -2506,7 +2506,7 @@ substitutability	0	oewn-substitutability-n	Number=Sing	dema	0			oewn_form
 substitutable	0	oewn-substitutable-a	Degree=Pos	dema	0			oewn_form
 substitute	0	oewn-substitute-n	Number=Sing	dema	1			carried
 substitute	1	oewn-substitute-v	VerbForm=Inf	dema	1			carried
-substituted	0	oewn-substitute-v	Tense=Past	dema	1			carried
+substituted	0	oewn-substitute-v	Tense=Past+VerbForm=Part	dema	1			carried
 substitutes	0	oewn-substitute-n	Number=Plur	dema	1			carried
 substitutes	1	oewn-substitute-v	Person=3+Tense=Pres	dema	1			carried
 substituting	0	oewn-substitute-v	VerbForm=Ger	dema	1			carried
@@ -3263,7 +3263,7 @@ suffix notations	0	oewn-suffix_notation-n	Number=Plur	dema	0			rule
 suffixal	0		Degree=Pos	dema	0	suffixal	a	moby_reverse
 suffixation	0	oewn-suffixation-n	Number=Sing	dema	0			oewn_form
 suffixations	0	oewn-suffixation-n	Number=Plur	dema	0			rule
-suffixed	0	oewn-suffix-v	Tense=Past	dema	1			carried
+suffixed	0	oewn-suffix-v	Tense=Past+VerbForm=Part	dema	1			carried
 suffixes	0	oewn-suffix-n	Number=Plur	dema	1			carried
 suffixes	1	oewn-suffix-v	Person=3+Tense=Pres	dema	1			carried
 suffixing	0	oewn-suffix-v	VerbForm=Ger	dema	1			carried
@@ -3456,7 +3456,7 @@ suitably	0	oewn-suitably-r	Degree=Pos	dema	0			oewn_form
 suitcase	0	oewn-suitcase-n	Number=Sing	dema	0			oewn_form
 suitcases	0	oewn-suitcase-n	Number=Plur	dema	0			rule
 suite	0	oewn-suite-n	Number=Sing	dema	0			oewn_form
-suited	0	oewn-suit-v	Tense=Past	dema	1			carried
+suited	0	oewn-suit-v	Tense=Past+VerbForm=Part	dema	1			carried
 suited	1	oewn-suited-a	Degree=Pos	dema	0			carried
 suites	0	oewn-suite-n	Number=Plur	dema	0			rule
 suiting	0	oewn-suit-v	VerbForm=Ger	dema	1			carried
@@ -6428,7 +6428,7 @@ supplicating	0	oewn-supplicate-v	VerbForm=Ger	dema	0			rule
 supplication	0	oewn-supplication-n	Number=Sing	dema	0			oewn_form
 supplications	0	oewn-supplication-n	Number=Plur	dema	0			rule
 supplicatory	0	oewn-supplicatory-a	Degree=Pos	dema	0			oewn_form
-supplied	0	oewn-supply-v	Tense=Past	dema	1			carried
+supplied	0	oewn-supply-v	Tense=Past+VerbForm=Part	dema	1			carried
 supplier	0	oewn-supplier-n	Number=Sing	dema	0			oewn_form
 suppliers	0	oewn-supplier-n	Number=Plur	dema	0			rule
 supplies	0	oewn-supply-n	Number=Plur	dema	1			carried
@@ -6509,7 +6509,7 @@ supposal	0	oewn-supposal-n	Number=Sing	dema	0			oewn_form
 supposals	0	oewn-supposal-n	Number=Plur	dema	0			rule
 suppose	0	oewn-suppose-v	VerbForm=Inf	dema	0			oewn_form
 supposed	0	oewn-supposed-a	Degree=Pos	dema	1			carried
-supposed	1	oewn-suppose-v	Tense=Past	dema	1			carried
+supposed	1	oewn-suppose-v	Tense=Past+VerbForm=Part	dema	1			carried
 supposed	2	oewn-supposed-a	Degree=Pos	dema	1			carried
 supposedly	0	oewn-supposed-a		dema	1			carried
 supposedly	1	oewn-supposedly-r	Degree=Pos	dema	0			carried
@@ -6935,7 +6935,7 @@ surprise	0	oewn-surprise-n	Number=Sing	dema	1			carried
 surprise	1	oewn-surprise-v	VerbForm=Inf	dema	1			carried
 surprise attack	0	oewn-surprise_attack-n	Number=Sing	dema	0			oewn_form
 surprise attacks	0	oewn-surprise_attack-n	Number=Plur	dema	0			rule
-surprised	0	oewn-surprise-v	Tense=Past	dema	1			carried
+surprised	0	oewn-surprise-v	Tense=Past+VerbForm=Part	dema	1			carried
 surprisedly	0	oewn-surprisedly-r	Degree=Pos	dema	0			oewn_form
 surpriser	0	oewn-surpriser-n	Number=Sing	dema	0			oewn_form
 surprisers	0	oewn-surpriser-n	Number=Plur	dema	0			rule

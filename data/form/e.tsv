@@ -1877,7 +1877,7 @@ ease	0	oewn-ease-n	Number=Sing	dema	1			carried
 ease	1	oewn-ease-v	VerbForm=Inf	dema	1			carried
 ease off	0	oewn-ease_off-v	VerbForm=Inf	dema	0			oewn_form
 ease up	0	oewn-ease_up-v	VerbForm=Inf	dema	0			oewn_form
-eased	0	oewn-ease-v	Tense=Past	dema	1			carried
+eased	0	oewn-ease-v	Tense=Past+VerbForm=Part	dema	1			carried
 eased off	0	oewn-ease_off-v	Tense=Past+VerbForm=Part	dema	0			rule
 eased up	0	oewn-ease_up-v	Tense=Past+VerbForm=Part	dema	0			rule
 easeful	0		Degree=Pos	dema	0	easeful	a	moby_reverse
@@ -2937,7 +2937,7 @@ effaces	0	oewn-efface-v	Person=3+Tense=Pres	dema	0			rule
 effacing	0	oewn-efface-v	VerbForm=Ger	dema	0			rule
 effect	0	oewn-effect-n	Number=Sing	dema	1			carried
 effect	1	oewn-effect-v	VerbForm=Inf	dema	1			carried
-effected	0	oewn-effect-v	Tense=Past	dema	1			carried
+effected	0	oewn-effect-v	Tense=Past+VerbForm=Part	dema	1			carried
 effecter	0	oewn-effecter-n	Number=Sing	dema	0			oewn_form
 effecters	0	oewn-effecter-n	Number=Plur	dema	0			rule
 effectible	0		Degree=Pos	dema	0	effectible	a	moby_reverse
@@ -3265,7 +3265,7 @@ egregiousness	0		Number=Sing	dema	0	egregiousness	n	moby_reverse
 egregiousnesses	0		Number=Plur	dema	0	egregiousness	n	rule
 egress	0	oewn-egress-n	Number=Sing	dema	1			carried
 egress	1	oewn-egress-v	VerbForm=Inf	dema	1			carried
-egressed	0	oewn-egress-v	Tense=Past	dema	1			carried
+egressed	0	oewn-egress-v	Tense=Past+VerbForm=Part	dema	1			carried
 egresses	0	oewn-egress-n	Number=Plur	dema	1			carried
 egresses	1	oewn-egress-v	Person=3+Tense=Pres	dema	1			carried
 egressing	0	oewn-egress-v	VerbForm=Ger	dema	0			rule
@@ -5076,7 +5076,7 @@ embows	0		Person=3+Tense=Pres	dema	0	embow	v	rule
 embrace	0	oewn-embrace-n	Number=Sing	dema	1			carried
 embrace	1	oewn-embrace-v	VerbForm=Inf	dema	1			carried
 embraceable	0		Degree=Pos	dema	0	embraceable	a	moby_reverse
-embraced	0	oewn-embrace-v	Tense=Past	dema	1			carried
+embraced	0	oewn-embrace-v	Tense=Past+VerbForm=Part	dema	1			carried
 embracement	0	oewn-embracement-n	Number=Sing	dema	0			oewn_form
 embracements	0	oewn-embracement-n	Number=Plur	dema	0			rule
 embraceor	0		Number=Sing	dema	0	embraceor	n	moby_reverse
@@ -6076,7 +6076,7 @@ encounter	0	oewn-encounter-n	Number=Sing	dema	1			carried
 encounter	1	oewn-encounter-v	VerbForm=Inf	dema	1			carried
 encounter group	0	oewn-encounter_group-n	Number=Sing	dema	0			oewn_form
 encounter groups	0	oewn-encounter_group-n	Number=Plur	dema	0			rule
-encountered	0	oewn-encounter-v	Tense=Past	dema	1			carried
+encountered	0	oewn-encounter-v	Tense=Past+VerbForm=Part	dema	1			carried
 encounterer	0		Number=Sing	dema	0	encounterer	n	moby_reverse
 encounterers	0		Number=Plur	dema	0	encounterer	n	rule
 encountering	0	oewn-encounter-v	VerbForm=Ger	dema	1			carried
@@ -6277,7 +6277,7 @@ endeavourers	0		Number=Plur	dema	0	endeavourer	n	rule
 endeavouring	0	oewn-endeavour-v	VerbForm=Ger	dema	0			rule
 endeavours	0	oewn-endeavour-v	Person=3+Tense=Pres	dema	0			rule
 endeavours	1	oewn-endeavour-n	Number=Plur	dema	0			rule
-ended	0	oewn-end-v	Tense=Past	dema	1			carried
+ended	0	oewn-end-v	Tense=Past+VerbForm=Part	dema	1			carried
 ended up	0	oewn-end_up-v	Tense=Past+VerbForm=Part	dema	0			rule
 endemic	0	oewn-endemic-a	Degree=Pos	dema	0			oewn_form
 endemic	1	oewn-endemic-n	Number=Sing	dema	0			oewn_form
@@ -9466,7 +9466,7 @@ escape velocities	0	oewn-escape_velocity-n	Number=Plur	dema	0			rule
 escape velocity	0	oewn-escape_velocity-n	Number=Sing	dema	0			oewn_form
 escape wheel	0	oewn-escape_wheel-n	Number=Sing	dema	0			oewn_form
 escape wheels	0	oewn-escape_wheel-n	Number=Plur	dema	0			rule
-escaped	0	oewn-escape-v	Tense=Past	dema	1			carried
+escaped	0	oewn-escape-v	Tense=Past+VerbForm=Part	dema	1			carried
 escaped from	0	oewn-escape_from-v	Tense=Past+VerbForm=Part	dema	0			rule
 escapee	0	oewn-escapee-n	Number=Sing	dema	0			oewn_form
 escapees	0	oewn-escapee-n	Number=Plur	dema	0			rule
@@ -11378,7 +11378,7 @@ excerpt	0	oewn-excerpt-n	Number=Sing	dema	1			carried
 excerpt	1	oewn-excerpt-v	VerbForm=Inf	dema	1			carried
 excerpta	0		Number=Sing	dema	0	excerpta	n	moby_reverse
 excerptas	0		Number=Plur	dema	0	excerpta	n	rule
-excerpted	0	oewn-excerpt-v	Tense=Past	dema	1			carried
+excerpted	0	oewn-excerpt-v	Tense=Past+VerbForm=Part	dema	1			carried
 excerpter	0		Number=Sing	dema	0	excerpter	n	moby_reverse
 excerpters	0		Number=Plur	dema	0	excerpter	n	rule
 excerptible	0		Degree=Pos	dema	0	excerptible	a	moby_reverse
@@ -12076,7 +12076,7 @@ exit poll	0	oewn-exit_poll-n	Number=Sing	dema	0			oewn_form
 exit polls	0	oewn-exit_poll-n	Number=Plur	dema	0			rule
 exitance	0		Number=Sing	dema	0	exitance	n	moby_reverse
 exitances	0		Number=Plur	dema	0	exitance	n	rule
-exited	0	oewn-exit-v	Tense=Past	dema	1			carried
+exited	0	oewn-exit-v	Tense=Past+VerbForm=Part	dema	1			carried
 exiting	0	oewn-exit-v	VerbForm=Ger	dema	1			carried
 exiting	1	oewn-exit-n	Number=Sing+VerbForm=Ger	dema	1			carried
 exits	0	oewn-exit-n	Number=Plur	dema	1			carried
@@ -12442,7 +12442,7 @@ expensivenesses	0	oewn-expensiveness-n	Number=Plur	dema	0			rule
 experience	0	oewn-experience-n	Number=Sing	dema	1			carried
 experience	1	oewn-experience-v	VerbForm=Inf	dema	1			carried
 experienceable	0		Degree=Pos	dema	0	experienceable	a	moby_reverse
-experienced	0	oewn-experience-v	Tense=Past	dema	1			carried
+experienced	0	oewn-experience-v	Tense=Past+VerbForm=Part	dema	1			carried
 experienced	1	oewn-experienced-a	Degree=Pos	dema	0			carried
 experienceless	0		Degree=Pos	dema	0	experienceless	a	moby_reverse
 experiencer	0		Number=Sing	dema	0	experiencer	n	moby_reverse
@@ -12716,7 +12716,7 @@ export duty	0	oewn-export_duty-n	Number=Sing	dema	0			oewn_form
 exportable	0	oewn-exportable-a	Degree=Pos	dema	0			oewn_form
 exportation	0	oewn-exportation-n	Number=Sing	dema	0			oewn_form
 exportations	0	oewn-exportation-n	Number=Plur	dema	0			rule
-exported	0	oewn-export-v	Tense=Past	dema	1			carried
+exported	0	oewn-export-v	Tense=Past+VerbForm=Part	dema	1			carried
 exporter	0	oewn-exporter-n	Number=Sing	dema	0			oewn_form
 exporters	0	oewn-exporter-n	Number=Plur	dema	0			rule
 exporting	0	oewn-export-v	VerbForm=Ger	dema	1			carried
@@ -13616,7 +13616,7 @@ eyebrow pencils	0	oewn-eyebrow_pencil-n	Number=Plur	dema	0			rule
 eyebrows	0	oewn-eyebrow-n	Number=Plur	dema	0			rule
 eyecup	0	oewn-eyecup-n	Number=Sing	dema	0			oewn_form
 eyecups	0	oewn-eyecup-n	Number=Plur	dema	0			rule
-eyed	0	oewn-eye-v	Tense=Past	dema	1			carried
+eyed	0	oewn-eye-v	Tense=Past+VerbForm=Part	dema	1			carried
 eyed	1	oewn-eyed-a	Degree=Pos	dema	0			carried
 eyedness	0	oewn-eyedness-n	Number=Sing	dema	0			oewn_form
 eyednesses	0	oewn-eyedness-n	Number=Plur	dema	0			rule

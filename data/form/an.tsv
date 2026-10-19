@@ -1299,7 +1299,7 @@ angelus bells	0	oewn-angelus_bell-n	Number=Plur	dema	0			rule
 angeluses	0	oewn-angelus-n	Number=Plur	dema	0			rule
 anger	0	oewn-anger-n	Number=Sing	dema	1			carried
 anger	1	oewn-anger-v	VerbForm=Inf	dema	1			carried
-angered	0	oewn-anger-v	Tense=Past	dema	1			carried
+angered	0	oewn-anger-v	Tense=Past+VerbForm=Part	dema	1			carried
 angering	0	oewn-anger-v	VerbForm=Ger	dema	1			carried
 angering	1	oewn-anger-n	Number=Sing+VerbForm=Ger	dema	1			carried
 angerly	0		Degree=Pos	dema	0	angerly	r	moby_reverse
@@ -1911,7 +1911,7 @@ annexationist	0		Number=Sing	dema	0	annexationist	n	moby_reverse
 annexationists	0		Number=Plur	dema	0	annexationist	n	rule
 annexations	0	oewn-annexation-n	Number=Plur	dema	0			rule
 annexe	0	oewn-annexe-n	Number=Sing	dema	0			oewn_form
-annexed	0	oewn-annex-v	Tense=Past	dema	1			carried
+annexed	0	oewn-annex-v	Tense=Past+VerbForm=Part	dema	1			carried
 annexes	0	oewn-annex-n	Number=Plur	dema	1			carried
 annexes	1	oewn-annex-v	Person=3+Tense=Pres	dema	1			carried
 annexing	0	oewn-annex-v	VerbForm=Ger	dema	1			carried

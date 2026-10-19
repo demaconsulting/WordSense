@@ -937,7 +937,7 @@ jagers	0		Number=Plur	dema	0	jager	n	rule
 jaggaries	0	oewn-jaggary-n	Number=Plur	dema	0			rule
 jaggary	0	oewn-jaggary-n	Number=Sing	dema	0			oewn_form
 jagged	0	oewn-jagged-a	Degree=Pos	dema	1			carried
-jagged	1	oewn-jag-v	Tense=Past	dema	1			carried
+jagged	1	oewn-jag-v	Tense=Past+VerbForm=Part	dema	1			carried
 jaggedly	0	oewn-jaggedly-r	Degree=Pos	dema	0			oewn_form
 jaggedness	0	oewn-jaggedness-n	Number=Sing	dema	0			oewn_form
 jaggednesses	0	oewn-jaggedness-n	Number=Plur	dema	0			rule
@@ -1504,7 +1504,7 @@ jerk	1	oewn-jerk-v	VerbForm=Inf	dema	1			carried
 jerk off	0	oewn-jerk_off-v	VerbForm=Inf	dema	0			oewn_form
 jerk-off	0	oewn-jerk-off-n	Number=Sing	dema	0			oewn_form
 jerk-offs	0	oewn-jerk-off-n	Number=Plur	dema	0			rule
-jerked	0	oewn-jerk-v	Tense=Past	dema	1			carried
+jerked	0	oewn-jerk-v	Tense=Past+VerbForm=Part	dema	1			carried
 jerked meat	0	oewn-jerked_meat-n	Number=Sing	dema	0			oewn_form
 jerked meats	0	oewn-jerked_meat-n	Number=Plur	dema	0			rule
 jerked off	0	oewn-jerk_off-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -2152,7 +2152,7 @@ joke	0	oewn-joke-n	Number=Sing	dema	1			carried
 joke	1	oewn-joke-v	VerbForm=Inf	dema	1			carried
 jokebook	0		Number=Sing	dema	0	jokebook	n	moby_reverse
 jokebooks	0		Number=Plur	dema	0	jokebook	n	rule
-joked	0	oewn-joke-v	Tense=Past	dema	1			carried
+joked	0	oewn-joke-v	Tense=Past+VerbForm=Part	dema	1			carried
 jokeless	0		Degree=Pos	dema	0	jokeless	a	moby_reverse
 joker	0	oewn-joker-n	Number=Sing	dema	0			oewn_form
 jokers	0	oewn-joker-n	Number=Plur	dema	0			rule
@@ -2468,7 +2468,7 @@ judge advocates	0	oewn-judge_advocate-n	Number=Plur	dema	0			rule
 judge's robe	0	oewn-judge-ap-s_robe-n	Number=Sing	dema	0			oewn_form
 judge's robes	0	oewn-judge-ap-s_robe-n	Number=Plur	dema	0			rule
 judgeable	0		Degree=Pos	dema	0	judgeable	a	moby_reverse
-judged	0	oewn-judge-v	Tense=Past	dema	1			carried
+judged	0	oewn-judge-v	Tense=Past+VerbForm=Part	dema	1			carried
 judgeless	0		Degree=Pos	dema	0	judgeless	a	moby_reverse
 judgelike	0		Degree=Pos	dema	0	judgelike	a	moby_reverse
 judgement	0	oewn-judgement-n	Number=Sing	dema	0			oewn_form

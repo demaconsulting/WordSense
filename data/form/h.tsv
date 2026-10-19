@@ -2341,7 +2341,7 @@ halt	0	oewn-halt-n	Number=Sing	dema	1			carried
 halt	1	oewn-halt-v	VerbForm=Inf	dema	1			carried
 halt	2	dema-halt-i		dema	0			carried
 halt	3	oewn-halt-a	Degree=Pos	dema	0			carried
-halted	0	oewn-halt-v	Tense=Past	dema	1			carried
+halted	0	oewn-halt-v	Tense=Past+VerbForm=Part	dema	1			carried
 halter	0	oewn-halter-n	Number=Sing	dema	0			oewn_form
 halter	1	oewn-halter-v	VerbForm=Inf	dema	0			oewn_form
 halter	2	oewn-halt-a	Degree=Cmp	dema	0			rule
@@ -2467,7 +2467,7 @@ hammer-shaped	0	oewn-hammer-shaped-a	Degree=Pos	dema	0			oewn_form
 hammerable	0		Degree=Pos	dema	0	hammerable	a	moby_reverse
 hammercloth	0		Number=Sing	dema	0	hammercloth	n	moby_reverse
 hammercloths	0		Number=Plur	dema	0	hammercloth	n	rule
-hammered	0	oewn-hammer-v	Tense=Past	dema	1			carried
+hammered	0	oewn-hammer-v	Tense=Past+VerbForm=Part	dema	1			carried
 hammered	1	oewn-hammered-a	Degree=Pos	dema	0			carried
 hammered in	0	oewn-hammer_in-v	Tense=Past+VerbForm=Part	dema	0			rule
 hammered out	0	oewn-hammer_out-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -2716,7 +2716,7 @@ handcuffed	0	oewn-handcuff-v	Tense=Past+VerbForm=Part	dema	0			rule
 handcuffing	0	oewn-handcuff-v	VerbForm=Ger	dema	0			rule
 handcuffs	0	oewn-handcuff-n	Number=Plur	dema	0			rule
 handcuffs	1	oewn-handcuff-v	Person=3+Tense=Pres	dema	0			rule
-handed	0	oewn-hand-v	Tense=Past	dema	1			carried
+handed	0	oewn-hand-v	Tense=Past+VerbForm=Part	dema	1			carried
 handed	1	oewn-handed-a	Degree=Pos	dema	0			carried
 handed down	0	oewn-hand_down-v	Tense=Past+VerbForm=Part	dema	0			rule
 handed out	0	oewn-hand_out-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -2795,7 +2795,7 @@ handle-bars	0	oewn-handle-bars-n	Number=Sing	dema	0			oewn_form
 handleable	0		Degree=Pos	dema	0	handleable	a	moby_reverse
 handlebar	0	oewn-handlebar-n	Number=Sing	dema	0			oewn_form
 handlebars	0	oewn-handlebar-n	Number=Plur	dema	0			rule
-handled	0	oewn-handle-v	Tense=Past	dema	1			carried
+handled	0	oewn-handle-v	Tense=Past+VerbForm=Part	dema	1			carried
 handled with kid gloves	0	oewn-handle_with_kid_gloves-v	Tense=Past+VerbForm=Part	dema	0			rule
 handleless	0	oewn-handleless-a	Degree=Pos	dema	0			oewn_form
 handler	0	oewn-handler-n	Number=Sing	dema	0			oewn_form
@@ -3541,7 +3541,7 @@ harm	0	oewn-harm-n	Number=Sing	dema	1			carried
 harm	1	oewn-harm-v	VerbForm=Inf	dema	1			carried
 harmattan	0	oewn-harmattan-n	Number=Sing	dema	0			oewn_form
 harmattans	0	oewn-harmattan-n	Number=Plur	dema	0			rule
-harmed	0	oewn-harm-v	Tense=Past	dema	1			carried
+harmed	0	oewn-harm-v	Tense=Past+VerbForm=Part	dema	1			carried
 harmer	0		Number=Sing	dema	0	harmer	n	moby_reverse
 harmers	0		Number=Plur	dema	0	harmer	n	rule
 harmful	0	oewn-harmful-a	Degree=Pos	dema	0			oewn_form
@@ -3957,7 +3957,7 @@ hate	1	oewn-hate-v	VerbForm=Inf	dema	1			carried
 hate mail	0	oewn-hate_mail-n	Number=Sing	dema	0			oewn_form
 hate mails	0	oewn-hate_mail-n	Number=Plur	dema	0			rule
 hateable	0		Degree=Pos	dema	0	hateable	a	moby_reverse
-hated	0	oewn-hate-v	Tense=Past	dema	1			carried
+hated	0	oewn-hate-v	Tense=Past+VerbForm=Part	dema	1			carried
 hateful	0	oewn-hateful-a	Degree=Pos	dema	0			oewn_form
 hatefully	0	oewn-hatefully-r	Degree=Pos	dema	0			oewn_form
 hatefulness	0	oewn-hatefulness-n	Number=Sing	dema	0			oewn_form
@@ -4529,7 +4529,7 @@ headcounters	0	oewn-headcounter-n	Number=Plur	dema	0			rule
 headcounts	0	oewn-headcount-n	Number=Plur	dema	0			rule
 headdress	0	oewn-headdress-n	Number=Sing	dema	0			oewn_form
 headdresses	0	oewn-headdress-n	Number=Plur	dema	0			rule
-headed	0	oewn-head-v	Tense=Past	dema	1			carried
+headed	0	oewn-head-v	Tense=Past+VerbForm=Part	dema	1			carried
 headed	1	oewn-headed-a	Degree=Pos	dema	0			carried
 headed for the hills	0	oewn-head_for_the_hills-v	Tense=Past+VerbForm=Part	dema	0			rule
 headed home	0	oewn-head_home-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -10041,7 +10041,7 @@ honorary degree	0	oewn-honorary_degree-n	Number=Sing	dema	0			oewn_form
 honorary degrees	0	oewn-honorary_degree-n	Number=Plur	dema	0			rule
 honorary societies	0	oewn-honorary_society-n	Number=Plur	dema	0			rule
 honorary society	0	oewn-honorary_society-n	Number=Sing	dema	0			oewn_form
-honored	0	oewn-honor-v	Tense=Past	dema	1			carried
+honored	0	oewn-honor-v	Tense=Past+VerbForm=Part	dema	1			carried
 honoree	0	oewn-honoree-n	Number=Sing	dema	0			oewn_form
 honorees	0	oewn-honoree-n	Number=Plur	dema	0			rule
 honorer	0		Number=Sing	dema	0	honorer	n	moby_reverse
@@ -10211,7 +10211,7 @@ hook-nosed	0	oewn-hook-nosed-a	Degree=Pos	dema	0			oewn_form
 hook-shaped	0	oewn-hook-shaped-a	Degree=Pos	dema	0			oewn_form
 hookah	0	oewn-hookah-n	Number=Sing	dema	0			oewn_form
 hookahs	0	oewn-hookah-n	Number=Plur	dema	0			rule
-hooked	0	oewn-hook-v	Tense=Past	dema	1			carried
+hooked	0	oewn-hook-v	Tense=Past+VerbForm=Part	dema	1			carried
 hooked	1	oewn-hooked-a	Degree=Pos	dema	0			carried
 hooked on	0	oewn-hook_on-v	Tense=Past+VerbForm=Part	dema	0			rule
 hooked up	0	oewn-hook_up-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -10356,7 +10356,7 @@ hope	0	oewn-hope-n	Number=Sing	dema	1			carried
 hope	1	oewn-hope-v	VerbForm=Inf	dema	1			carried
 hope chest	0	oewn-hope_chest-n	Number=Sing	dema	0			oewn_form
 hope chests	0	oewn-hope_chest-n	Number=Plur	dema	0			rule
-hoped	0	oewn-hope-v	Tense=Past	dema	1			carried
+hoped	0	oewn-hope-v	Tense=Past+VerbForm=Part	dema	1			carried
 hoped-for	0	oewn-hoped-for-a	Degree=Pos	dema	0			oewn_form
 hopeful	0	oewn-hopeful-a	Degree=Pos	dema	0			oewn_form
 hopeful	1	oewn-hopeful-n	Number=Sing	dema	0			oewn_form
@@ -11020,7 +11020,7 @@ hostageship	0		Number=Sing	dema	0	hostageship	n	moby_reverse
 hostageships	0		Number=Plur	dema	0	hostageship	n	rule
 hostaging	0		VerbForm=Inf	dema	0	hostaging	v	moby_reverse
 hostas	0		Number=Plur	dema	0	hosta	n	rule
-hosted	0	oewn-host-v	Tense=Past	dema	1			carried
+hosted	0	oewn-host-v	Tense=Past+VerbForm=Part	dema	1			carried
 hostel	0	oewn-hostel-n	Number=Sing	dema	0			oewn_form
 hosteler	0		Number=Sing	dema	0	hosteler	n	moby_reverse
 hostelers	0		Number=Plur	dema	0	hosteler	n	rule
@@ -12257,7 +12257,7 @@ huntable	0		Degree=Pos	dema	0	huntable	a	moby_reverse
 huntaway	0		Number=Sing	dema	0	huntaway	n	moby_reverse
 huntaway	1		Degree=Pos	dema	0	huntaway	a	moby_reverse
 huntaways	0		Number=Plur	dema	0	huntaway	n	rule
-hunted	0	oewn-hunt-v	Tense=Past	dema	1			carried
+hunted	0	oewn-hunt-v	Tense=Past+VerbForm=Part	dema	1			carried
 hunted	1	oewn-hunted-a	Degree=Pos	dema	0			carried
 hunted down	0	oewn-hunt_down-v	Tense=Past+VerbForm=Part	dema	0			rule
 hunted person	0	oewn-hunted_person-n	Number=Sing	dema	0			oewn_form

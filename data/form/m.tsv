@@ -3352,7 +3352,7 @@ mailcoach	0		Number=Sing	dema	0	mailcoach	n	moby_reverse
 mailcoaches	0		Number=Plur	dema	0	mailcoach	n	rule
 maildrop	0	oewn-maildrop-n	Number=Sing	dema	0			oewn_form
 maildrops	0	oewn-maildrop-n	Number=Plur	dema	0			rule
-mailed	0	oewn-mail-v	Tense=Past	dema	1			carried
+mailed	0	oewn-mail-v	Tense=Past+VerbForm=Part	dema	1			carried
 mailed	1	oewn-mailed-a	Degree=Pos	dema	0			carried
 mailed out	0	oewn-mail_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 mailer	0	oewn-mailer-n	Number=Sing	dema	0			oewn_form
@@ -5543,7 +5543,7 @@ mark up	0	oewn-mark_up-v	VerbForm=Inf	dema	0			oewn_form
 markdown	0		Number=Sing	dema	0	markdown	n	moby_reverse
 markdown	1		VerbForm=Inf	dema	0	markdown	v	moby_reverse
 markdowns	0		Number=Plur	dema	0	markdown	n	rule
-marked	0	oewn-mark-v	Tense=Past	dema	1			carried
+marked	0	oewn-mark-v	Tense=Past+VerbForm=Part	dema	1			carried
 marked	1	oewn-marked-a	Degree=Pos	dema	0			carried
 marked down	0	oewn-mark_down-v	Tense=Past+VerbForm=Part	dema	0			rule
 marked off	0	oewn-mark_off-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -6341,7 +6341,7 @@ master's thesis	0	oewn-master-ap-s_thesis-n	Number=Sing	dema	0			oewn_form
 master-at-arms	0	oewn-master-at-arms-n	Number=Sing	dema	0			oewn_form
 masterdom	0		Number=Sing	dema	0	masterdom	n	moby_reverse
 masterdoms	0		Number=Plur	dema	0	masterdom	n	rule
-mastered	0	oewn-master-v	Tense=Past	dema	1			carried
+mastered	0	oewn-master-v	Tense=Past+VerbForm=Part	dema	1			carried
 masterful	0	oewn-masterful-a	Degree=Pos	dema	0			oewn_form
 masterfully	0	oewn-masterfully-r	Degree=Pos	dema	0			oewn_form
 masterfulness	0		Number=Sing	dema	0	masterfulness	n	moby_reverse
@@ -7297,7 +7297,7 @@ meanderingly	0	oewn-meanderingly-r	Degree=Pos	dema	0			oewn_form
 meanders	0	oewn-meander-v	Person=3+Tense=Pres	dema	0			rule
 meanders	1	oewn-meander-n	Number=Plur	dema	0			rule
 meandrous	0		Degree=Pos	dema	0	meandrous	a	moby_reverse
-meaned	0	oewn-mean-v	Tense=Past	dema	1			carried
+meaned	0	oewn-mean-v	Tense=Past+VerbForm=Part	dema	1			carried
 meaner	0	oewn-mean-a	Degree=Cmp	dema	0			rule
 meanest	0	oewn-mean-a	Degree=Sup	dema	0			rule
 meanie	0	oewn-meanie-n	Number=Sing	dema	0			oewn_form
@@ -7333,7 +7333,7 @@ meanspirited	1		VerbForm=Inf	dema	0	meanspirited	v	moby_reverse
 meanspiritedly	0	oewn-meanspiritedly-r	Degree=Pos	dema	0			oewn_form
 meanspiritedness	0		Number=Sing	dema	0	meanspiritedness	n	moby_reverse
 meanspiritednesses	0		Number=Plur	dema	0	meanspiritedness	n	rule
-meant	0	oewn-mean-v		dema	1			carried
+meant	0	oewn-mean-v	Tense=Past+VerbForm=Part	dema	1			carried
 meantime	0	oewn-meantime-n	Number=Sing	dema	0			oewn_form
 meantime	1	oewn-meantime-r	Degree=Pos	dema	0			oewn_form
 meantimes	0	oewn-meantime-n	Number=Plur	dema	0			rule
@@ -7359,7 +7359,7 @@ measure	0	oewn-measure-n	Number=Sing	dema	1			carried
 measure	1	oewn-measure-v	VerbForm=Inf	dema	1			carried
 measure out	0	oewn-measure_out-v	VerbForm=Inf	dema	0			oewn_form
 measure up	0	oewn-measure_up-v	VerbForm=Inf	dema	0			oewn_form
-measured	0	oewn-measure-v	Tense=Past	dema	1			carried
+measured	0	oewn-measure-v	Tense=Past+VerbForm=Part	dema	1			carried
 measured	1	oewn-measured-a	Degree=Pos	dema	0			carried
 measured out	0	oewn-measure_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 measured rhythm	0	oewn-measured_rhythm-n	Number=Sing	dema	0			oewn_form
@@ -8851,7 +8851,7 @@ menticides	0		Number=Plur	dema	0	menticide	n	rule
 mention	0	oewn-mention-n	Number=Sing	dema	1			carried
 mention	1	oewn-mention-v	VerbForm=Inf	dema	1			carried
 mentionable	0		Degree=Pos	dema	0	mentionable	a	moby_reverse
-mentioned	0	oewn-mention-v	Tense=Past	dema	1			carried
+mentioned	0	oewn-mention-v	Tense=Past+VerbForm=Part	dema	1			carried
 mentioner	0	oewn-mentioner-n	Number=Sing	dema	0			oewn_form
 mentioners	0	oewn-mentioner-n	Number=Plur	dema	0			rule
 mentioning	0	oewn-mention-v	VerbForm=Ger	dema	1			carried
@@ -11530,7 +11530,7 @@ milk-vetches	0	oewn-milk-vetch-n	Number=Plur	dema	0			rule
 milk-white	0	oewn-milk-white-a	Degree=Pos	dema	0			oewn_form
 milkcap	0	oewn-milkcap-n	Number=Sing	dema	0			oewn_form
 milkcaps	0	oewn-milkcap-n	Number=Plur	dema	0			rule
-milked	0	oewn-milk-v	Tense=Past	dema	1			carried
+milked	0	oewn-milk-v	Tense=Past+VerbForm=Part	dema	1			carried
 milker	0	oewn-milker-n	Number=Sing	dema	0			oewn_form
 milkers	0	oewn-milker-n	Number=Plur	dema	0			rule
 milkfish	0		Number=Sing	dema	0	milkfish	n	moby_reverse
@@ -11903,7 +11903,7 @@ mind-boggling	0	oewn-mind-boggling-a	Degree=Pos	dema	0			oewn_form
 mind-expanding	0	oewn-mind-expanding-a	Degree=Pos	dema	0			oewn_form
 mind-set	0	oewn-mind-set-n	Number=Sing	dema	0			oewn_form
 mind-sets	0	oewn-mind-set-n	Number=Plur	dema	0			rule
-minded	0	oewn-mind-v	Tense=Past	dema	1			carried
+minded	0	oewn-mind-v	Tense=Past+VerbForm=Part	dema	1			carried
 minded	1	oewn-minded-a	Degree=Pos	dema	0			carried
 minder	0	oewn-minder-n	Number=Sing	dema	0			oewn_form
 minders	0	oewn-minder-n	Number=Plur	dema	0			rule
@@ -13136,6 +13136,7 @@ mishegoss	0	oewn-mishegoss-n	Number=Sing	dema	0			oewn_form
 mishegosses	0	oewn-mishegoss-n	Number=Plur	dema	0			rule
 mishit	0	dema-mishit-n	Number=Sing	dema	1			carried
 mishit	1	dema-mishit-v	VerbForm=Inf	dema	1			carried
+mishit	2	dema-mishit-v	Tense=Past+VerbForm=Part	dema	0			hand
 mishits	0	dema-mishit-n	Number=Plur	dema	1			carried
 mishits	1	dema-mishit-v	Person=3+Tense=Pres	dema	1			carried
 mishitting	0	dema-mishit-v	VerbForm=Ger	dema	0			rule
@@ -15141,7 +15142,7 @@ monitor program	0	oewn-monitor_program-n	Number=Sing	dema	0			oewn_form
 monitor programs	0	oewn-monitor_program-n	Number=Plur	dema	0			rule
 monitor speaker	0	oewn-monitor_speaker-n	Number=Sing	dema	0			oewn_form
 monitor speakers	0	oewn-monitor_speaker-n	Number=Plur	dema	0			rule
-monitored	0	oewn-monitor-v	Tense=Past	dema	1			carried
+monitored	0	oewn-monitor-v	Tense=Past+VerbForm=Part	dema	1			carried
 monitorial	0		Degree=Pos	dema	0	monitorial	a	moby_reverse
 monitoring	0	oewn-monitor-v	VerbForm=Ger	dema	1			carried
 monitoring	1	oewn-monitor-n	Number=Sing+VerbForm=Ger	dema	1			carried
@@ -17321,7 +17322,7 @@ moveable feast	0	oewn-moveable_feast-n	Number=Sing	dema	0			oewn_form
 moveable feasts	0	oewn-moveable_feast-n	Number=Plur	dema	0			rule
 moveableness	0		Number=Sing	dema	0	moveableness	n	moby_reverse
 moveably	0		Degree=Pos	dema	0	moveably	r	moby_reverse
-moved	0	oewn-move-v	Tense=Past	dema	1			carried
+moved	0	oewn-move-v	Tense=Past+VerbForm=Part	dema	1			carried
 moved ahead	0	oewn-move_ahead-v	Tense=Past+VerbForm=Part	dema	0			rule
 moved around	0	oewn-move_around-v	Tense=Past+VerbForm=Part	dema	0			rule
 moved back	0	oewn-move_back-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -17440,7 +17441,7 @@ mow	0	oewn-mow-v	VerbForm=Inf	dema	1			carried
 mow	1	oewn-mow-n	Number=Sing	dema	1			carried
 mow down	0	oewn-mow_down-v	VerbForm=Inf	dema	0			oewn_form
 mowburnt	0		Degree=Pos	dema	0	mowburnt	a	moby_reverse
-mowed	0	oewn-mow-v	Tense=Past	dema	1			carried
+mowed	0	oewn-mow-v	Tense=Past+VerbForm=Part	dema	1			carried
 mowed down	0	oewn-mow_down-v	Tense=Past+VerbForm=Part	dema	0			rule
 mower	0	oewn-mower-n	Number=Sing	dema	0			oewn_form
 mowers	0	oewn-mower-n	Number=Plur	dema	0			rule
@@ -18286,7 +18287,7 @@ multiplicative inverses	0	oewn-multiplicative_inverse-n	Number=Plur	dema	0			rul
 multiplicatively	0	oewn-multiplicatively-r	Degree=Pos	dema	0			oewn_form
 multiplicities	0	oewn-multiplicity-n	Number=Plur	dema	0			rule
 multiplicity	0	oewn-multiplicity-n	Number=Sing	dema	0			oewn_form
-multiplied	0	oewn-multiply-v	Tense=Past	dema	1			carried
+multiplied	0	oewn-multiply-v	Tense=Past+VerbForm=Part	dema	1			carried
 multiplier	0	oewn-multiplier-n	Number=Sing	dema	0			oewn_form
 multiplier factor	0	oewn-multiplier_factor-n	Number=Sing	dema	0			oewn_form
 multiplier factors	0	oewn-multiplier_factor-n	Number=Plur	dema	0			rule
