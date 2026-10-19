@@ -19,7 +19,7 @@ namespace WordSense.Builder;
 ///     <item><description><c>rebuild-forms [--data DIR] [--corpus DIR] [--oewn FILE] [--agid FILE] [--output DIR]</c> regenerates the entry, form and form_sense_scope tables from the entries, the committed legacy analyses (<c>corpus/lexicon/form-frozen.tsv</c>), the irregular lists, the written forms of the Open English WordNet file and the dictionary; a generated inflection ships only when a second source corroborates it (the AGID <c>infl.txt</c> file attests forms). Both inputs must match their pinned SHA-256; the default places are <c>artifacts/inputs/english-wordnet-2025.xml.gz</c> and <c>artifacts/inputs/agid/agid-2016.01.19/infl.txt</c>. The result depends on nothing else, so it is reproducible.</description></item>
 ///     <item><description><c>import-agid --input FILE [--corpus DIR] [--output FILE]</c> derives the irregular forms of the dictionary words from the inflection database file <c>infl.txt</c>.</description></item>
 ///     <item><description><c>import-moby --input FILE [--corpus DIR] [--output FILE]</c> imports the pinned Moby Part-of-Speech II list into the dictionary word list of the corpus.</description></item>
-///     <item><description><c>weights &lt;modelId&gt; [--corpus DIR] [--repository DIR]</c> trains the weights of an ONNX model (minilm, bert-base-cased) and writes them to its package.</description></item>
+///     <item><description><c>weights &lt;modelId&gt; [--corpus DIR] [--repository DIR] [--cache DIR] [--no-cache] [--recompute-mean]</c> trains the weights of an ONNX model (minilm, bert-base-cased) and writes them to its package. Pooled vectors are cached in <c>DIR/&lt;model id&gt;</c> (default <c>.cache/embeddings</c> of the repository) so only new sentences are encoded; <c>--no-cache</c> bypasses the cache; the global mean of the existing weights is reused unless <c>--recompute-mean</c> is given.</description></item>
 ///     <item><description><c>evaluate &lt;modelId&gt; [--corpus DIR] [--repository DIR] [--output FILE] [--table FILE] [--outcomes FILE]</c> measures a shipped model (minilm, bert-base-cased, basic); <c>--table</c> updates the row of the model in the model comparison table file; <c>--outcomes</c> writes the answer for every sentence.</description></item>
 ///     <item><description><c>ud-counts [--ud DIR] [--corpus DIR] [--output DIR]</c> downloads and verifies the pinned treebank files and writes the count files of <c>corpus/ud</c>.</description></item>
 ///     <item><description><c>train-basic [--corpus DIR] [--repository DIR] [--ud DIR] [--refresh-ud true] [--output FILE]</c> retrains the basic model completely and writes its table; it regenerates the treebank counts first when they are missing or <c>--refresh-ud true</c> is given.</description></item>
@@ -83,7 +83,7 @@ internal static class Program
                 case "import-moby":
                     return RunImportMoby(options, corpus, output);
                 case "weights":
-                    await ModelTrainer.TrainAsync(repository, corpus, ModelCatalog.Find(Require(options, "model")), output, cancellationToken).ConfigureAwait(false);
+                    await ModelTrainer.TrainAsync(repository, corpus, ModelCatalog.Find(Require(options, "model")), TrainSettingsOf(options, repository), output, cancellationToken).ConfigureAwait(false);
                     return 0;
                 case "ud-counts":
                     return await RunUdCountsAsync(options, repository, corpus, output, cancellationToken).ConfigureAwait(false);
@@ -125,7 +125,39 @@ internal static class Program
         }
     }
 
-    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "ud", "refresh-ud", "table", InputOption, "text", "top", "data", "sha256", "threshold", "overwrite", "outcomes", "oewn", "agid", "sample", "seed", "oracle", "adjudications", "max-error", "previous", "previous-release", "previous-sha256"], StringComparer.Ordinal);
+    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "ud", "refresh-ud", "table", InputOption, "text", "top", "data", "sha256", "threshold", "overwrite", "outcomes", "oewn", "agid", "sample", "seed", "oracle", "adjudications", "max-error", "previous", "previous-release", "previous-sha256", "cache", "no-cache", "recompute-mean"], StringComparer.Ordinal);
+
+    /// <summary>
+    ///     Options that are switches: they take no value, but accept a following <c>true</c> or <c>false</c>.
+    /// </summary>
+    private static readonly HashSet<string> FlagOptions = new(["no-cache", "recompute-mean"], StringComparer.Ordinal);
+
+    /// <summary>
+    ///     Builds the settings of a weights run from the options.
+    /// </summary>
+    /// <param name="options">The options.</param>
+    /// <param name="repository">The repository root.</param>
+    /// <returns>The settings.</returns>
+    /// <exception cref="ArgumentException">Thrown when <c>--cache</c> and <c>--no-cache</c> are both given.</exception>
+    internal static TrainSettings TrainSettingsOf(Dictionary<string, string> options, string repository)
+    {
+        var noCache = IsOn(options, "no-cache");
+        if (noCache && options.ContainsKey("cache"))
+        {
+            throw new ArgumentException($"The options --cache and --no-cache cannot be combined. {Usage}");
+        }
+
+        string? root = null;
+        if (!noCache)
+        {
+            root = options.TryGetValue("cache", out var cache) ? Path.GetFullPath(cache) : TrainSettings.DefaultCacheRoot(repository);
+        }
+
+        return new TrainSettings(root, IsOn(options, "recompute-mean"));
+    }
+
+    private static bool IsOn(Dictionary<string, string> options, string name) =>
+        options.TryGetValue(name, out var value) && !string.Equals(value, "false", StringComparison.Ordinal);
 
     private static int RunCompileImage(Dictionary<string, string> options, string repository, TextWriter output)
     {
@@ -342,7 +374,7 @@ internal static class Program
     }
 
     /// <summary>
-    ///     Parses <c>--name value</c> pairs.
+    ///     Parses <c>--name value</c> pairs; the switches <c>--no-cache</c> and <c>--recompute-mean</c> need no value.
     /// </summary>
     /// <param name="args">The arguments after the command.</param>
     /// <returns>The options by name.</returns>
@@ -350,19 +382,35 @@ internal static class Program
     private static Dictionary<string, string> ParseOptions(string[] args)
     {
         var options = new Dictionary<string, string>(StringComparer.Ordinal);
-        for (var i = 0; i < args.Length; i += 2)
+        var i = 0;
+        while (i < args.Length)
         {
-            if (!args[i].StartsWith("--", StringComparison.Ordinal) || i + 1 >= args.Length || args[i + 1].StartsWith("--", StringComparison.Ordinal))
+            if (!args[i].StartsWith("--", StringComparison.Ordinal))
             {
                 throw new ArgumentException($"Expected '--name value' but found '{args[i]}'. {Usage}");
             }
 
-            if (!KnownOptions.Contains(args[i][2..]))
+            var name = args[i][2..];
+            if (FlagOptions.Contains(name))
+            {
+                var explicitValue = i + 1 < args.Length && args[i + 1] is "true" or "false";
+                options[name] = explicitValue ? args[i + 1] : "true";
+                i += explicitValue ? 2 : 1;
+                continue;
+            }
+
+            if (i + 1 >= args.Length || args[i + 1].StartsWith("--", StringComparison.Ordinal))
+            {
+                throw new ArgumentException($"Expected '--name value' but found '{args[i]}'. {Usage}");
+            }
+
+            if (!KnownOptions.Contains(name))
             {
                 throw new ArgumentException($"Unknown option '{args[i]}'. {Usage}");
             }
 
-            options[args[i][2..]] = args[i + 1];
+            options[name] = args[i + 1];
+            i += 2;
         }
 
         return options;

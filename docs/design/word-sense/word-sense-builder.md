@@ -53,6 +53,10 @@ inference share one implementation of the feature computation.
   against (removed with the weights re-key).
 - `WeightsTrainer`, `LogisticTrainer`, `ModelTrainer` and `WeightsBlobWriter`: train the per-lemma classifiers from
   pooled encoder vectors and serialize the weights blob (`WSX2`).
+- `EmbeddingCache` and `CachingEncoder`: the persistent cache of pooled vectors (one file per model, keyed by the
+  words and the target index, valid for one digest of the model files, per-entry checksums, atomic save) and the
+  wrapper that asks the cache before the encoder; `FitCache` stores the fitted classifier of each lemma, keyed by its
+  exact features; `TrainSettings` carries the cache folder and the mean choice.
 - `Evaluator`, `SetResult`, `EvaluationResult`: measure a shipped model on the holdout and the real-text sentences.
 - `UdSource`, `UdCounts`, `UdSentence`: the pinned treebank source (commit and SHA-256 checksums; download and
   verification) and the tag statistics: a CoNLL-U reader that keeps a multi-word token as one token tagged like its first
@@ -85,8 +89,12 @@ Options are `--name value` pairs; every path defaults to the repository layout b
 - `import-moby --input FILE [--corpus DIR]`: derives `corpus/lexicon/lexicon.tsv` from the pinned Moby Part-of-Speech
   list after verifying its SHA-256, keeping every single lower-case word with all its parts of speech in source order
   and applying `corrections.tsv` and `classes.tsv`; it prints the counts.
-- `weights <modelId> [--corpus DIR] [--repository DIR]`: trains the weights of an encoder model (`minilm`,
-  `bert-base-cased`) and writes its `weights.bin`.
+- `weights <modelId> [--corpus DIR] [--repository DIR] [--cache DIR] [--no-cache] [--recompute-mean]`: trains the
+  weights of an encoder model (`minilm`, `bert-base-cased`) and writes its `weights.bin`. `--cache DIR` places the
+  embedding cache (default `<repository>/.cache/embeddings`; the cache of a model is the subfolder named by its model
+  id); `--no-cache` bypasses it (and cannot be combined with `--cache`); `--recompute-mean` computes the global mean
+  from the anchors instead of reusing the one of the existing weights. `--no-cache` and `--recompute-mean` are
+  switches: they take no value (an explicit `true` or `false` is accepted).
 - `evaluate <modelId> [--corpus DIR] [--repository DIR] [--output FILE]`: measures a model (`minilm`,
   `bert-base-cased`, `basic`) and prints a Markdown table.
 - `ud-counts [--ud DIR] [--corpus DIR] [--output DIR]`: downloads (when missing) and verifies the pinned treebank files
@@ -141,14 +149,60 @@ Brotli-compressed sections of the image.
 #### Weights training (`ModelTrainer.TrainAsync`)
 
 1. Read and validate the inventory, anchors, holdout and forms; the anchors and the holdout shall be disjoint.
-2. Open the model on the verified files of `model/<model-id>/` and encode every anchor sentence once, pooling the
-   hidden states of the target word (mean over its word pieces).
-3. Compute the global mean of the pooled vectors, then center every vector on it and scale it to unit length with
-   the same feature computation the classifier uses.
-4. Per lemma, fit a binary logistic regression (two senses) or one-versus-rest (more) with a deterministic Newton
+2. Open the model on the verified files of `model/<model-id>/`, and open the embedding cache (see below) unless
+   `--no-cache` is given. Take the global mean from the existing weights blob of the model when it exists, reads, names
+   the same model id and is not overridden by `--recompute-mean` (the *frozen mean*); the reason is printed whenever the
+   mean is computed instead.
+3. Get the pooled vector of every anchor sentence (the hidden states of the target word, mean over its word pieces):
+   from the cache when present, otherwise from the encoder. Progress lines report the cache hits, the sentences
+   encoded, the elapsed time and, at the end, the time spent in the encoder.
+4. Without a frozen mean, compute the global mean of the pooled vectors. Center every vector on the mean and scale it
+   to unit length with the same feature computation the classifier uses.
+5. Per lemma, fit a binary logistic regression (two senses) or one-versus-rest (more) with a deterministic Newton
    solver. When a lemma has enough samples, choose its abstain margin by cross-validation to reach the target
-   accuracy while keeping a minimum share answered; other lemmas get the median margin.
-5. Write the weights blob to the package's `Resources/weights.bin`.
+   accuracy while keeping a minimum share answered; other lemmas get the median margin. The lemmas are fitted
+   concurrently (`TrainingOptions.DefaultParallelism`, the processors minus two, 2 to 16 threads); each result is
+   written to its own slot, so the weights do not depend on the thread count. A lemma whose fit is in the fit cache
+   (see below) is not fitted again.
+6. Write the weights blob to the package's `Resources/weights.bin`.
+
+**Frozen mean rule.** Features are centered on a global mean, and a recomputed mean moves whenever any anchor changes,
+which would change the weights of every lemma. The builder therefore reuses the stored mean of the committed blob, so
+with unchanged anchors a retraining reproduces the committed blob byte for byte (provided the encoder outputs are the
+same: the committed blob must have been trained with the ONNX Runtime version now referenced, because another version
+changes the low digits of the int8 encoder output), and editing the anchors of one lemma
+changes only the weights of that lemma. The one remaining coupling is the fallback margin: a lemma with too few anchors
+for cross-validation takes the median margin of the cross-validated lemmas. Use `--recompute-mean` after an encoder
+change (a new model file) and whenever the anchors have changed so much that the old mean no longer centers them; the
+whole blob then changes.
+
+**Embedding cache (`EmbeddingCache`, `CachingEncoder`).** The encoder is deterministic for a given set of model files,
+so its output is cached per model in `<cache>/<model-id>/embeddings.bin` (default cache folder
+`<repository>/.cache/embeddings`, ignored by git). An entry is keyed by the SHA-256 of the exact word sequence and the
+target word index, and the file is valid only for the digest of the model's ONNX file and vocabulary (their SHA-256 as
+pinned in the model specification and verified when the model is opened), the casing and the version of ONNX Runtime
+(a new runtime version changes the low digits of the int8 encoder output, and with them the weights): a changed model
+file or runtime drops the whole cache. The vectors are stored as the exact 64-bit numbers the encoder returned, so a
+cached vector is bit-identical to a fresh encode. Every entry carries a checksum; an entry that fails it, a cut-off file,
+a damaged header or an unreadable file is ignored and the sentences are encoded again, never failing the run. The file
+is rewritten
+atomically (a temporary file in the same folder, then renamed) at the end of the run and after every 4000 newly
+encoded sentences, so an interrupted run keeps its work. The cache does not know the encoder code: after a change of
+the pooling or tokenization that keeps the model files, delete the cache folder or run once with `--no-cache`.
+
+**Fit cache (`FitCache`).** Fitting the classifiers is the longest step once the encoding is cached (minutes for the
+768-dimensional BertBaseCased), and the fit of a lemma depends on that lemma alone. `<cache>/<model-id>/fits.bin`
+therefore stores the fitted weights, biases and margin of each lemma, keyed by the SHA-256 of the training settings, the
+lemma, its sense names, the label of each sentence and the exact feature vectors (which already contain the global
+mean). A lemma whose anchors and mean are unchanged reuses its fit bit-identically; any change of a feature number,
+such as a recomputed mean, another encoder or another runtime version, finds no entry and the lemma is fitted. With
+the frozen mean, editing the anchors of one lemma therefore costs the encoding of its new sentences and the fit of that
+lemma. The file holds only the fits the last run used, entries carry a checksum, the first damaged entry ends the
+reading (later entries are fitted again), and the file is replaced atomically; `--no-cache` bypasses it as well.
+
+The `evaluate` command does not use the cache: it classifies through the public `ClassifyAsync` of the shipped model,
+which owns its encoder, and that guarantees that the score comes from the shipped scoring code path; caching it would
+require a second scoring path.
 
 #### Evaluation (`Evaluator.RunAsync`)
 
@@ -201,7 +255,7 @@ output step.
 - Core: `WordLexicon`, `WordDetails`, `PartOfSpeech`, `IWordSenseModel`.
 - Basic: `BasicTables`, `BasicClassifier`, `CueModel` and `PosTag` (the format, the tag set, the feature extraction and
   hash, and the segmentation shared with training).
-- Onnx: `OnnxWordSenseModel`, `OnnxEncoder`, the weights data types and `FeatureExtractor`.
+- Onnx: `OnnxWordSenseModel`, `OnnxEncoder`, the weights data types (read for the frozen mean) and `FeatureExtractor`.
 - MiniLM and BertBaseCased: the two model classes.
 - The corpus files and the model files under `model/`.
 

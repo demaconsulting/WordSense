@@ -16,7 +16,14 @@ internal sealed record TrainingOptions(
     int Folds = 5,
     double TargetAccuracy = 0.99,
     double MinCoverage = 0.7,
-    int Parallelism = 2);
+    int Parallelism = 2)
+{
+    /// <summary>
+    ///     Gets the number of lemmas the builder trains concurrently: the fit of each lemma is independent and written to
+    ///     its own slot, so the result does not depend on it; two processors are left to the machine.
+    /// </summary>
+    public static int DefaultParallelism => Math.Clamp(Environment.ProcessorCount - 2, 2, 16);
+}
 
 /// <summary>
 ///     Trains the per-lemma classifiers of a model and assembles its weights.
@@ -35,8 +42,10 @@ internal static class WeightsTrainer
     /// <param name="anchors">The training rows.</param>
     /// <param name="inventory">The sense inventory.</param>
     /// <param name="options">The trainer settings.</param>
+    /// <param name="frozenMean">The global mean to center on, or null to compute it from <paramref name="pooled"/>.</param>
+    /// <param name="fitCache">The cache of lemma fits, or null to fit every lemma.</param>
     /// <returns>The weights.</returns>
-    public static WeightsData TrainDense(string modelId, byte[] classHash, double[][] pooled, IReadOnlyList<CorpusRow> anchors, SenseInventory inventory, TrainingOptions options)
+    public static WeightsData TrainDense(string modelId, byte[] classHash, double[][] pooled, IReadOnlyList<CorpusRow> anchors, SenseInventory inventory, TrainingOptions options, float[]? frozenMean = null, FitCache? fitCache = null)
     {
         if (pooled.Length == 0)
         {
@@ -44,6 +53,33 @@ internal static class WeightsTrainer
         }
 
         var dim = pooled[0].Length;
+        if (frozenMean is not null && frozenMean.Length != dim)
+        {
+            throw new ArgumentException($"The frozen mean has {frozenMean.Length} numbers but the vectors have {dim}.", nameof(frozenMean));
+        }
+
+        // A frozen mean keeps the features of a lemma independent of the anchors of every other lemma
+        var mean = frozenMean is null ? ComputeMean(pooled, dim) : (float[])frozenMean.Clone();
+
+        var features = new float[pooled.Length][];
+        for (var i = 0; i < pooled.Length; i++)
+        {
+            features[i] = FeatureExtractor.Center(pooled[i], mean)
+                ?? throw new InvalidDataException($"{anchors[i].Source}: the feature has no magnitude: {anchors[i].Sentence}");
+        }
+
+        var entries = TrainAll(anchors, inventory, options, (_, index) => index.Select(i => features[i]).ToArray(), fitCache);
+        return new WeightsData(modelId, classHash, dim, mean, entries);
+    }
+
+    /// <summary>
+    ///     Computes the global mean of the pooled vectors.
+    /// </summary>
+    /// <param name="pooled">The pooled vectors.</param>
+    /// <param name="dim">The vector length.</param>
+    /// <returns>The mean.</returns>
+    internal static float[] ComputeMean(double[][] pooled, int dim)
+    {
         var mean = new float[dim];
         foreach (var vector in pooled)
         {
@@ -53,22 +89,15 @@ internal static class WeightsTrainer
             }
         }
 
-        var features = new float[pooled.Length][];
-        for (var i = 0; i < pooled.Length; i++)
-        {
-            features[i] = FeatureExtractor.Center(pooled[i], mean)
-                ?? throw new InvalidDataException($"{anchors[i].Source}: the feature has no magnitude: {anchors[i].Sentence}");
-        }
-
-        var entries = TrainAll(anchors, inventory, options, (_, index) => index.Select(i => features[i]).ToArray());
-        return new WeightsData(modelId, classHash, dim, mean, entries);
+        return mean;
     }
 
     private static List<WeightedLemma> TrainAll(
         IReadOnlyList<CorpusRow> anchors,
         SenseInventory inventory,
         TrainingOptions options,
-        Func<string, int[], float[][]> prepare)
+        Func<string, int[], float[][]> prepare,
+        FitCache? fitCache)
     {
         var lemmas = anchors.Select((row, i) => (row, i)).GroupBy(t => t.row.Lemma, StringComparer.Ordinal)
             .OrderBy(g => g.Key, StringComparer.Ordinal).ToList();
@@ -99,6 +128,13 @@ internal static class WeightsTrainer
 
             var labels = index.Select(i => Array.BinarySearch(names, anchors[i].Sense, StringComparer.Ordinal)).ToArray();
             var x = prepare(lemma, index);
+            var fitKey = fitCache is null ? null : FitCache.KeyOf(options, lemma, names, labels, x);
+            if (fitKey is not null && fitCache!.TryGet(fitKey, out var cached))
+            {
+                trained[k] = (cached.Kind, cached.Weights, cached.Bias, cached.Margin, cached.CrossValidated, cached.Dimension);
+                return;
+            }
+
             var kind = names.Length == 2 ? LemmaModelKind.Binary : LemmaModelKind.OneVersusRest;
             var (weights, bias) = Fit(x, labels, names.Length, kind, options.C);
             var counts = new int[names.Length];
@@ -110,6 +146,10 @@ internal static class WeightsTrainer
             var cv = counts.Min() >= MinSamplesForCrossValidation && labels.Length >= MinTotalForCrossValidation;
             var margin = cv ? ChooseMargin(lemma, x, labels, names.Length, kind, options) : 0f;
             trained[k] = (kind, weights, bias, margin, cv, x[0].Length);
+            if (fitKey is not null)
+            {
+                fitCache!.Add(fitKey, new LemmaFit(kind, weights, bias, margin, cv, x[0].Length));
+            }
         }
 
         var margins = trained.Where(t => t.Cv).Select(t => t.Margin).Order().ToList();

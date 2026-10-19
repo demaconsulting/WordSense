@@ -167,6 +167,9 @@ sections:
           - WordSense-WordSenseBuilder-Words
           - WordSense-WordSenseBuilder-ImportDictionary
           - WordSense-WordSenseBuilder-Weights
+          - WordSense-WordSenseBuilder-EmbeddingCache
+          - WordSense-WordSenseBuilder-FitCache
+          - WordSense-WordSenseBuilder-FrozenMean
           - WordSense-WordSenseBuilder-Evaluate
           - WordSense-WordSenseBuilder-UdCounts
           - WordSense-WordSenseBuilder-TrainBasic

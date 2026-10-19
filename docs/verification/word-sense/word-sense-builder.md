@@ -9,7 +9,9 @@ Tests in `test/WordSense.Builder.Tests` call the command entry point (`Program.R
 and the internal serialization types with synthetic data in temporary directories: `ProgramTests.cs` covers the commands
 and their usage and data errors, `ImageTests.cs` covers the word image and `WeightsBlobWriterTests.cs` the weights
 writers against the readers of the shipped packages, `UdCountsTests.cs` covers the treebank counts of the Basic model,
-and `BasicTrainerTests.cs` covers its trainer, table writer, model data summary and hyper-parameters.
+and `BasicTrainerTests.cs` covers its trainer, table writer, model data summary and hyper-parameters;
+`EmbeddingCacheTests.cs`, `FitCacheTests.cs` and `ModelTrainerTests.cs` cover the embedding cache, the lemma fit cache
+and the frozen mean with a stub encoder.
 Commands that need a real encoder (`weights` and `evaluate` for the encoder models) are verified through the data they
 produce: the weights embedded in the model packages are loaded and matched in the MiniLM and BertBaseCased tests, and
 the accuracy figures are recorded in the build notes, not asserted here.
@@ -112,6 +114,34 @@ All scenarios below pass on every platform and target framework of the CI matrix
   run.
 - **Weights match the lexicon**: weights trained for the committed corpus are loaded by each model package with zero
   dropped lemmas (verified in the MiniLM and BertBaseCased tests).
+- **Embedding cache** (`EmbeddingCacheTests.cs`, `ModelTrainerTests.cs`; a stub encoder, no model files): vectors read
+  back bit-identical (`EmbeddingCache_SaveAndOpen_RoundTripsBitIdentical`); the key depends on every word and the
+  target index (`KeyOf_DependsOnWordsAndTarget`); a second run over unchanged anchors encodes nothing and gives
+  byte-identical weights (`ModelTrainer_TrainDataAsync_SecondRun_EncodesNothingAndReproducesBytes`); added sentences
+  are the only ones encoded (`..._AddedSentences_AreTheOnlyOnesEncoded`); a changed model digest drops the cache
+  (`EmbeddingCache_Open_OtherModelDigest_IsInvalidated`, `..._ChangedModelDigest_EncodesEverythingAgain`); a corrupt
+  entry, a cut-off file and a damaged header are ignored and encoded again without an exception, and the weights equal
+  those of a run without a cache (`Open_CorruptEntry_*`, `Open_TruncatedFile_*`, `Open_DamagedHeader_*`,
+  `ModelTrainer_TrainDataAsync_CorruptEntry_IsEncodedAgain`); a failed save leaves no temporary file
+  (`Save_Failure_LeavesNoTemporaryFile`); the progress output names the hits and the encoded sentences.
+- **Frozen mean** (`ModelTrainerTests.cs`): with the stored mean, adding anchors to one lemma leaves the weights, biases
+  and margin of the other lemma equal and the mean unchanged (`..._FrozenMean_EditingOneLemmaLeavesOthersUnchanged`);
+  without it the other lemma changes (`..._RecomputedMean_CouplesTheLemmas`); the stored mean is read from the weights
+  of the same model, and a missing, other-model or unreadable blob gives none (`ReadFrozenMean_*`); a stored mean of
+  another dimension is not used.
+- **Fit cache** (`FitCacheTests.cs`, `ModelTrainerTests.cs`): the key depends on the settings, lemma, senses, labels
+  and every feature number but not on the thread count (`FitCache_KeyOf_*`); fits read back bit-identical and a save
+  writes only the fits used (`SaveAndOpen_*`, `Save_WritesOnlyUsedFits`); a damaged entry drops itself and the rest, and
+  a cut-off file, damaged header or garbage never throws (`Open_CorruptEntry_*`, `Open_DamagedFile_*`); unchanged anchors
+  reuse every lemma fit with byte-identical weights, with the frozen mean an edited lemma is the only one fitted and the
+  weights equal those of a run without a cache, and a recomputed mean fits every lemma again
+  (`ModelTrainer_TrainDataAsync_UnchangedAnchors_*`, `..._FrozenMeanAndEditedLemma_*`, `..._RecomputedMean_FitsEveryLemmaAgain`).
+- **Options** (`ProgramTests.cs`): `--no-cache` and `--recompute-mean` need no value; `--cache` with `--no-cache` is an
+  error; the cache folder defaults to `<repository>/.cache/embeddings` (`Program_TrainSettingsOf_ResolvesCacheAndMean`).
+- **Real runs** (not automated, they need the model files): `weights minilm` and `weights bert-base-cased` run twice
+  must leave the committed `weights.bin` byte-identical; the second run reports no encoded sentence.
+- **Evaluate is uncached**: `evaluate` classifies through `ClassifyAsync` of the shipped model and does not use the
+  embedding cache, by design.
 
 #### evaluate
 

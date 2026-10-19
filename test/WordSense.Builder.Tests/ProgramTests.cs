@@ -150,6 +150,55 @@ public sealed class ProgramTests : IDisposable
     }
 
     /// <summary>
+    ///     The switches --no-cache and --recompute-mean need no value, and accept an explicit true or false; the
+    ///     command then proceeds to the model check.
+    /// </summary>
+    /// <param name="first">The first argument.</param>
+    /// <param name="second">The second argument.</param>
+    [Theory]
+    [InlineData("--no-cache", "--recompute-mean")]
+    [InlineData("--recompute-mean", "--no-cache")]
+    [InlineData("--no-cache", "false")]
+    [InlineData("--recompute-mean", "true")]
+    public async Task WordSenseBuilder_Program_Weights_SwitchOptions_AreAcceptedWithoutValue(string first, string second)
+    {
+        var (code, _, error) = await RunAsync("weights", "basic", first, second, "--repository", _dir.Root);
+
+        Assert.Equal(1, code);
+        Assert.Contains("train-basic", error, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A cache folder together with --no-cache is contradictory and is reported.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseBuilder_Program_Weights_CacheAndNoCache_AreRejected()
+    {
+        var (code, _, error) = await RunAsync("weights", "basic", "--cache", Path.Join(_dir.Root, "c"), "--no-cache");
+
+        Assert.Equal(1, code);
+        Assert.Contains("cannot be combined", error, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The cache folder defaults to the repository, is overridden by --cache and is off with --no-cache.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Program_TrainSettingsOf_ResolvesCacheAndMean()
+    {
+        var defaults = Program.TrainSettingsOf([], _dir.Root);
+        var custom = Program.TrainSettingsOf(new() { ["cache"] = Path.Join(_dir.Root, "mine"), ["recompute-mean"] = "true" }, _dir.Root);
+        var off = Program.TrainSettingsOf(new() { ["no-cache"] = "true", ["recompute-mean"] = "false" }, _dir.Root);
+
+        Assert.Equal(Path.Join(_dir.Root, ".cache", "embeddings"), defaults.CacheRoot);
+        Assert.False(defaults.RecomputeMean);
+        Assert.Equal(Path.Join(_dir.Root, "mine"), custom.CacheRoot);
+        Assert.True(custom.RecomputeMean);
+        Assert.Null(off.CacheRoot);
+        Assert.False(off.RecomputeMean);
+    }
+
+    /// <summary>
     ///     The train-basic command trains a loadable table from a tiny corpus and treebank counts.
     /// </summary>
     [Fact]

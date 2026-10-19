@@ -99,6 +99,84 @@ sections:
               - WordSenseBuilder_WeightsBlobWriter_Write_RoundTripsThroughTheReader
               - WordSenseBuilder_Program_Weights_UnknownModel_ListsTheModels
 
+          - id: WordSense-WordSenseBuilder-EmbeddingCache
+            title: >-
+              When retraining the weights of an encoder model, the builder shall reuse the pooled vectors it computed
+              before and encode only the sentences that are new or changed. A cached vector shall be bit-identical to
+              a fresh encode, shall be valid only for the model files it was computed with, and a corrupt cache entry
+              shall be ignored and encoded again without failing the run. The builder shall report the cache hits,
+              the encoded sentences and the time, and shall let the cache be moved (--cache) or bypassed (--no-cache).
+            tags: [unit]
+            justification: |
+              The encoder is deterministic for given model files, so encoding all anchor sentences on every run is
+              wasted time; adding a few sentences to one lemma must not cost a full encode of the corpus, and a stale
+              or damaged cache must never change the shipped weights.
+            tests:
+              - WordSenseBuilder_EmbeddingCache_KeyOf_DependsOnWordsAndTarget
+              - WordSenseBuilder_EmbeddingCache_ComputeDigest_DependsOnEveryInput
+              - WordSenseBuilder_EmbeddingCache_SaveAndOpen_RoundTripsBitIdentical
+              - WordSenseBuilder_EmbeddingCache_Open_MissingFile_IsEmpty
+              - WordSenseBuilder_EmbeddingCache_Open_OtherModelDigest_IsInvalidated
+              - WordSenseBuilder_EmbeddingCache_Open_CorruptEntry_IsDiscardedAndOthersSurvive
+              - WordSenseBuilder_EmbeddingCache_Open_TruncatedFile_KeepsCompleteEntries
+              - WordSenseBuilder_EmbeddingCache_Open_DamagedHeader_IsEmptyAndInvalidated
+              - WordSenseBuilder_EmbeddingCache_Add_OtherDimension_Throws
+              - WordSenseBuilder_EmbeddingCache_Save_Failure_LeavesNoTemporaryFile
+              - WordSenseBuilder_CachingEncoder_EncodeAsync_SecondCallIsAHitAndBitIdentical
+              - WordSenseBuilder_CachingEncoder_EncodeAsync_NoCacheOrNoTokens_AlwaysEncodes
+              - WordSenseBuilder_ModelTrainer_TrainDataAsync_SecondRun_EncodesNothingAndReproducesBytes
+              - WordSenseBuilder_ModelTrainer_TrainDataAsync_AddedSentences_AreTheOnlyOnesEncoded
+              - WordSenseBuilder_ModelTrainer_TrainDataAsync_ChangedModelDigest_EncodesEverythingAgain
+              - WordSenseBuilder_ModelTrainer_TrainDataAsync_CorruptEntry_IsEncodedAgain
+              - WordSenseBuilder_ModelTrainer_TrainDataAsync_Progress_ReportsHitsAndMisses
+              - WordSenseBuilder_Program_Weights_SwitchOptions_AreAcceptedWithoutValue
+              - WordSenseBuilder_Program_Weights_CacheAndNoCache_AreRejected
+              - WordSenseBuilder_Program_TrainSettingsOf_ResolvesCacheAndMean
+
+          - id: WordSense-WordSenseBuilder-FitCache
+            title: >-
+              When retraining the weights of an encoder model, the builder shall fit again only the lemmas whose
+              features, labels or training settings changed and reuse the stored fit of every other lemma, so that
+              changing the anchors of one lemma (with the frozen mean) costs the fit of that lemma only. A reused fit
+              shall be bit-identical to a fresh one, a damaged cache entry shall be ignored and fitted again without
+              failing the run, and the fits shall be independent of the number of threads that train the lemmas.
+            tags: [unit]
+            justification: |
+              With the encoder output cached, fitting the classifiers of all lemmas becomes the longest step of a
+              retraining; because the fit of a lemma depends on that lemma alone, it need not be repeated for the
+              lemmas that did not change.
+            tests:
+              - WordSenseBuilder_FitCache_KeyOf_DependsOnEverythingTheFitDependsOn
+              - WordSenseBuilder_FitCache_SaveAndOpen_RoundTripsBitIdentical
+              - WordSenseBuilder_FitCache_Save_WritesOnlyUsedFits
+              - WordSenseBuilder_FitCache_Open_CorruptEntry_DropsItAndTheRest
+              - WordSenseBuilder_FitCache_Open_DamagedFile_IsHandled
+              - WordSenseBuilder_FitCache_Save_Failure_LeavesNoTemporaryFile
+              - WordSenseBuilder_ModelTrainer_TrainDataAsync_UnchangedAnchors_ReusesEveryLemmaFit
+              - WordSenseBuilder_ModelTrainer_TrainDataAsync_FrozenMeanAndEditedLemma_FitsOnlyThatLemma
+              - WordSenseBuilder_ModelTrainer_TrainDataAsync_RecomputedMean_FitsEveryLemmaAgain
+              - WordSenseBuilder_ModelTrainer_TrainDataAsync_Progress_ReportsHitsAndMisses
+
+          - id: WordSense-WordSenseBuilder-FrozenMean
+            title: >-
+              When retraining the weights of an encoder model, the builder shall reuse the global mean stored in the
+              existing weights of that model instead of recomputing it, unless asked to recompute it (--recompute-mean),
+              so that changing the anchors of one lemma changes the weights of that lemma only and unchanged anchors
+              reproduce the committed weights byte for byte. It shall compute the mean from the anchors when there are
+              no existing weights, they are unreadable, or they name another model or dimension.
+            tags: [unit]
+            justification: |
+              A mean over all anchors couples every lemma to every other; freezing it keeps an edit local, keeps the
+              shipped weights of untouched lemmas stable, and makes the retraining reproducible.
+            tests:
+              - WordSenseBuilder_ModelTrainer_TrainDataAsync_FrozenMean_EditingOneLemmaLeavesOthersUnchanged
+              - WordSenseBuilder_ModelTrainer_TrainDataAsync_RecomputedMean_CouplesTheLemmas
+              - WordSenseBuilder_ModelTrainer_TrainDataAsync_FrozenMeanOfOtherDimension_IsComputedInstead
+              - WordSenseBuilder_ModelTrainer_ReadFrozenMean_SameModel_ReturnsStoredMean
+              - WordSenseBuilder_ModelTrainer_ReadFrozenMean_MissingOtherOrUnreadable_ReturnsNull
+              - WordSenseBuilder_Program_TrainSettingsOf_ResolvesCacheAndMean
+              - WordSenseBuilder_Program_Weights_SwitchOptions_AreAcceptedWithoutValue
+
           - id: WordSense-WordSenseBuilder-Evaluate
             title: >-
               The builder shall measure a shipped model (an encoder model or the basic model) on the held-out and
