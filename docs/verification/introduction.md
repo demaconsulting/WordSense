@@ -1,8 +1,8 @@
 # Introduction
 
 This document provides the verification design for the WordSense, a .NET library
-that identifies the sense of ambiguous English words in context (the part of speech and, for heteronyms, a sense id
-that fixes the pronunciation) and the part of speech of
+that identifies the sense of ambiguous English words in context (the part of speech and, where the model can tell,
+the fine sense or the group of senses, with the level at which the answer was made) and the part of speech of
 common English words from an embedded dictionary.
 
 ## Purpose
@@ -38,7 +38,8 @@ constituent software items, specifically:
   **DownloadMirror** and **LemmaWeights** (Units) of the Onnx subsystem
 - **MiniLMWordSenseModel** (Unit) of the MiniLM subsystem
 - **BertBaseCasedWordSenseModel** (Unit) of the BertBaseCased subsystem
-- **WordData** (Subsystem) and its units **DataSchema**, **DataLayout**, **OewnImporter** and **DataValidator**
+- **WordData** (Subsystem) and its units **DataSchema**, **DataLayout**, **OewnImporter**, **FormGenerator**,
+  **FormAuditor**, **DataValidator** and **SenseLabelGenerator**
 
 The OnnxRuntime OTS runtime dependency of the Onnx package is also covered.
 

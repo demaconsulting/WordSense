@@ -3,8 +3,9 @@
 #### Verification Approach
 
 Tests in `test/WordSense.Builder.Tests/Data/OewnImporterTests.cs` import the slice fixture (plain and gzip) into a
-temporary folder and read the resulting TSV files; failure tests damage a copy of the fixture. The command-level tests
-are in `DataEndToEndTests.cs`.
+temporary folder and read the resulting TSV files; failure tests damage a copy of the fixture. The count import is
+tested on the imported slice with a small hand-written counts file. The command-level tests are in
+`DataEndToEndTests.cs`.
 
 #### Test Environment
 
@@ -24,4 +25,9 @@ All scenarios below pass.
 - **Safety** (`Twice_IsByteIdentical`, `HashPin_IsChecked`, `ExistingTables_RefusesWithoutOverwrite`) and rejected
   input (`MalformedXml_Throws`, `NoLexicon_Throws`, `UnknownRelation_Throws`, `SatelliteWithoutHead_Throws`,
   `MissingSynset_Throws`, `ImportPrevious_DuplicateSenseKey_Throws`).
-- **Command** (`Import_PinnedHash_RejectsOtherFile`, `Import_ExistingTables_NeedsOverwrite`, `Import_NoInput_ReportsUsage`).
+- **Frequency counts** (`ImportCounts_JoinsOnSenseKey`, `ImportCounts_SenseWithoutEntry_HasCountZero`,
+  `ImportCounts_HashPin_IsChecked`, `ImportCounts_MalformedLine_Throws`): the count of a line arrives on the sense with
+  that key; a sense with no line has the count 0; a counts file whose SHA-256 differs from the pin is rejected before
+  anything is written; a line that cannot be read throws.
+- **Command** (`Import_PinnedHash_RejectsOtherFile`, `Import_ExistingTables_NeedsOverwrite`,
+  `Import_NoInput_ReportsUsage`, `ImportWn30Counts_WritesTheTable`).

@@ -39,6 +39,22 @@ sections:
                   - WordSenseBuilder_OewnImporter_Import_Relations_StoredOnce
                   - WordSenseBuilder_OewnImporter_Import_TabInText_IsCleaned
 
+              - id: WordSense-WordData-OewnImporter-Frequency
+                title: >-
+                  OewnImporter shall import the WordNet 3.0 sense frequency counts (the pinned index.sense file, its
+                  SHA-256 checked first) into the sense frequency table, joined to the senses on the sense key, with
+                  the count 0 for a sense that has no entry, and shall reject a count line it cannot read.
+                tags: [unit]
+                justification: |
+                  The counts rank the senses of a lemma and decide how much training data each sense receives; a sense
+                  that is rare in WordNet must be recorded as such, never left without a value.
+                tests:
+                  - WordSenseBuilder_OewnImporter_ImportCounts_JoinsOnSenseKey
+                  - WordSenseBuilder_OewnImporter_ImportCounts_SenseWithoutEntry_HasCountZero
+                  - WordSenseBuilder_OewnImporter_ImportCounts_HashPin_IsChecked
+                  - WordSenseBuilder_OewnImporter_ImportCounts_MalformedLine_Throws
+                  - WordSenseBuilder_DataCommands_ImportWn30Counts_WritesTheTable
+
               - id: WordSense-WordData-OewnImporter-Safety
                 title: >-
                   OewnImporter shall produce byte-identical files for the same input, check the SHA-256 of the input

@@ -26,7 +26,7 @@ sections:
                   - WordSenseBuilder_DataValidator_Validate_FormatDefects_AreReported
                   - WordSenseBuilder_DataValidator_Validate_CellDefects_AreReported
                   - WordSenseBuilder_DataValidator_Validate_EmptyRequiredCell_Violates
-                  - WordSenseBuilder_DataValidator_Validate_ClassEntryFeatures_AreChecked
+                  - WordSenseBuilder_DataValidator_Validate_SenseTableFeatures_AreChecked
                   - WordSenseBuilder_DataValidator_Validate_ManyViolations_AreCappedPerRule
 
               - id: WordSense-WordData-DataValidator-Integrity
@@ -49,8 +49,8 @@ sections:
                 title: >-
                   DataValidator shall check the cross-table rules: satellite synsets have an adjective head and others
                   have none, every entry and synset has a sense and a gloss, sense positions are 1 to n, parts of speech
-                  of entries and synsets fit, token counts and head indexes fit the lemma, examples name senses of their
-                  own synset, and the senses of a mapped lemma are partitioned among its classes.
+                  of entries and synsets fit, token counts and head indexes fit the lemma, and examples name senses of
+                  their own synset.
                 tags: [unit]
                 justification: |
                   These rules catch the edits that are well-formed but wrong, which is what a reviewer cannot see in a
@@ -62,6 +62,52 @@ sections:
                   - WordSenseBuilder_DataValidator_Validate_EntryWithoutSense_Violates
                   - WordSenseBuilder_DataValidator_Validate_ExampleOfOtherSynset_Violates
                   - WordSenseBuilder_DataValidator_Validate_SynsetWithoutGloss_Violates
-                  - WordSenseBuilder_DataValidator_Validate_CompletePartition_IsValid
+
+              - id: WordSense-WordData-DataValidator-Senses
+                title: >-
+                  DataValidator shall check that every sense has exactly one label, that the labels of the senses of a
+                  lemma are unique and well formed, that a sense id never collides with the id of a group, that a
+                  published label is neither changed nor reused unless the id map records it, and that a project sense
+                  has no sense key and an authored gloss.
+                tags: [unit]
+                justification: |
+                  Sense ids are stored by callers; the rules that keep them readable, unique, stable and unambiguous
+                  must fail a pull request, not a user.
+                tests:
+                  - WordSenseBuilder_DataValidator_Validate_SenseWithoutLabel_Violates
+                  - WordSenseBuilder_DataValidator_Validate_DuplicateLabelInLemma_ViolatesUnique
+                  - WordSenseBuilder_DataValidator_Validate_SenseIdEqualToGroupId_Violates
+                  - WordSenseBuilder_DataValidator_Validate_ChangedPublishedLabel_ViolatesStability
+                  - WordSenseBuilder_DataValidator_Validate_ReusedRetiredId_Violates
+                  - WordSenseBuilder_DataValidator_Validate_ProjectSenseWithKey_Violates
+
+              - id: WordSense-WordData-DataValidator-Groups
+                title: >-
+                  DataValidator shall check that the senses of a curated lemma are partitioned among its groups (every
+                  sense in exactly one group), that each group has one lemma and one part of speech and no two
+                  respellings, and that a lemma that is not curated has one default group for each of its parts of
+                  speech.
+                tags: [unit]
+                justification: |
+                  A group answer must be unambiguous; the partition rules are what make it so, and they cannot be
+                  seen in a diff of rows.
+                tests:
+                  - WordSenseBuilder_DataValidator_Validate_CompleteGroups_IsValid
                   - WordSenseBuilder_DataValidator_Validate_UncoveredSense_ViolatesPartition
-                  - WordSenseBuilder_DataValidator_Validate_SenseInTwoClasses_ViolatesUnique
+                  - WordSenseBuilder_DataValidator_Validate_SenseInTwoGroups_ViolatesUnique
+                  - WordSenseBuilder_DataValidator_Validate_GroupAcrossPartsOfSpeech_Violates
+                  - WordSenseBuilder_DataValidator_Validate_GroupWithTwoRespellings_Violates
+                  - WordSenseBuilder_DataValidator_Validate_OtherLemma_NeedsOneDefaultGroupPerPartOfSpeech
+
+              - id: WordSense-WordData-DataValidator-LegacyMap
+                title: >-
+                  DataValidator shall check that every row of the legacy class map names an existing group or sense of
+                  the stated level and that no old class id appears twice.
+                tags: [unit]
+                justification: |
+                  A migration map with a dangling target or an ambiguous source would send callers to a wrong or missing
+                  sense.
+                tests:
+                  - WordSenseBuilder_DataValidator_Validate_LegacyMapTargetMissing_Violates
+                  - WordSenseBuilder_DataValidator_Validate_LegacyMapDuplicateClass_Violates
+                  - WordSenseBuilder_DataValidator_Validate_LegacyMapLevelMismatch_Violates

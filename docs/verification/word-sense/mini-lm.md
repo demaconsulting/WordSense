@@ -26,15 +26,18 @@ All subsystem scenarios pass on every platform and target framework of the CI ma
 
 ### Test Scenarios
 
-#### Real Model Classifies Heteronyms in Context
+#### Real Model Answers Heteronyms in Context at a Sense or Group Level
 
-A model created from the committed directory classifies the words of "They will record the record." with a verb for the
-first `record` and a noun for the second (`MiniLMWordSenseModelTests`, `EndToEndTests`).
+A model created from the committed directory classifies the words of "They will record the record." with the verb
+analysis for the first `record` and the noun analysis for the second, each answered at the sense or group level
+(`MiniLMWordSenseModelTests`, `EndToEndTests`;
+`MiniLMWordSenseModel_Classify_TrainedLemma_AnswersAtASenseOrGroupLevel`).
 
-#### Embedded Weights Match the Lexicon and Drop Nothing
+#### Embedded Weights Match the Word Image
 
-The weights embedded for `all-MiniLM-L6-v2-int8` load for the model id and hidden size 384, match the embedded lexicon
-and drop zero lemmas.
+The weights embedded for `all-MiniLM-L6-v2-int8` load for the model id and hidden size 384 and match the embedded word
+image: the inventory hash is the one of the shipped image and every sense of every lemma resolves, with nothing
+dropped (`EmbeddedWeights_MiniLM_MatchesWordImage`).
 
 #### README Sample Matches and Runs
 

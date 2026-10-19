@@ -3,9 +3,9 @@
 #### Verification Approach
 
 Tests in `test/DemaConsulting.WordSense.Basic.Tests/BasicTablesTests.cs` load small toy tables that `TestTables`
-builds in
-the layout of the builder's writer, and corrupted variants made by editing the decompressed bytes and recompressing
-them. One test loads the real embedded table. Nothing is mocked.
+builds in the layout of the builder's writer, and corrupted variants made by editing the decompressed bytes and
+recompressing them (a changed inventory hash, an analysis the word image does not have, a repeated analysis). One test
+loads the real embedded table. Nothing is mocked.
 
 #### Test Environment
 
@@ -18,7 +18,7 @@ All scenarios below pass on every platform and target framework of the CI matrix
 #### Test Scenarios
 
 - **Toy table reads back** (`BasicTables_Load_ToyTable_ReadsContent`): the header values, the words with their masks
-  and counts, the suffixes and the cue table (senses, hashes, weights) equal what was written.
+  and counts, the suffixes and the cue table (analyses, hashes, weights) equal what was written.
 - **Transitions are distributions** (`BasicTables_Load_Transitions_AreDistributions`): the interpolated transitions of
   an observed context sum to one.
 - **Suffix lookup** (`BasicTables_FindSuffix_KnownAndUnknown`): the longest known suffix gives a distribution over the
@@ -33,7 +33,17 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Trailing bytes** (`BasicTables_Load_TrailingBytes_Throws`): extra bytes at the end throw `InvalidDataException`.
 - **Unordered hashes** (`BasicTables_Load_UnorderedHashes_Throws`): feature hashes that are not ascending throw
   `InvalidDataException`.
+- **Other inventory** (`BasicTables_Load_OtherInventoryHash_ThrowsNamingBothHashes`): a table whose analysis inventory
+  hash differs from the word image throws `InvalidDataException`, and the message names both hashes.
+- **Unknown analysis** (`BasicTables_Load_UnknownAnalysis_Throws`): a cue column named by an analysis that the word
+  image does not have throws `InvalidDataException`.
+- **Duplicate analysis** (`BasicTables_Load_DuplicateAnalysis_Throws`): an analysis that occurs twice in one lemma table
+  throws `InvalidDataException`.
+- **Column of an analysis** (`LemmaCue_RowOf_Analysis_UsesTheColumnOfItsFeatures`): two analyses of one part of speech
+  (for example the past and the present of a verb) resolve to different columns, matched by features.
 - **Embedded table loads** (`BasicTables_Default_LoadsEmbeddedTable`): the table embedded in the assembly loads and has
   statistics (words, suffixes and cue tables).
+- **Shipped table resolves** (`BasicTables_Default_ShippedTable_ResolvesEveryCueClass`): every cue analysis of the
+  shipped table resolves to an analysis of the embedded word image.
 - **Feature hash** (`FeatureRef_Hash_PrefixAndDeterminism`): the hash of an immediate-neighbor feature equals the hash
   of the window token that spells its prefix, and the hash is stable.

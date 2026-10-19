@@ -4,8 +4,9 @@
 
 #### Purpose
 
-`FormGenerator` writes the `form` and `form_sense_scope` tables, the inflected spellings of the dictionary entries and
-their analyses (lemma, part of speech, features, provenance), and a statistics report. `InflectionRules` holds the
+`FormGenerator` writes the `form` table, the inflected spellings of the dictionary entries and their analyses (lemma,
+part of speech, features, provenance), and a statistics report. The candidate senses of a word come from the entries of
+its analyses, so the table carries no sense scope. `InflectionRules` holds the
 spelling rules; `AgidImporter` and `IrregularSources` read the closed lists and the inflection database.
 
 #### Data Model
@@ -35,8 +36,8 @@ An -ing noun does not get a plural spelled like its singular from the inflection
 Rank policy: the rank of an analysis is a frequency prior, not the answer for a sentence. The order is deterministic: the
 position of the part of speech in the Moby letters of the lemma, then explicit tie-breaks on lemma, entry and features,
 so no rank is taken from an earlier table. A gerund of a verb leads with
-the verb analysis because that is the most frequent use of an -ing form; a gerund noun that a sense label needs, the
-adjective and the noun entry of the same spelling follow it. `walking` is a verb gerund, an adjective (a walking stick)
+the verb analysis because that is the most frequent use of an -ing form; the adjective and the noun entry of the same
+spelling follow it. `walking` is a verb gerund, an adjective (a walking stick)
 and a noun, and all analyses are present; choosing among them is the job of the tagger. The policy is tested
 deliberately and separately from the linguistic facts (`Data_IngForm_LeadsWithVerb`), and the facts assert only that
 the analyses exist.

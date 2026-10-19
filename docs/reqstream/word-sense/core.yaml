@@ -8,12 +8,13 @@ sections:
         requirements:
           - id: WordSense-Core-Lexicon
             title: >-
-              The core subsystem shall provide the embedded word lexicon: for each known lower-case word, including
-              inflected forms, determiners, conjunctions and interjections, the senses it can have.
+              The core subsystem shall provide the embedded word lexicon: for each known word, including inflected
+              forms, determiners, conjunctions and interjections, the analyses (lemma, part of speech and features) it
+              can have, resolving cased and inflected spellings like their base form.
             tags: [subsystem]
             justification: |
-              Every model package starts from the same lexicon of candidate senses, so it is provided once, in the
-              package that all others reference.
+              Every model package starts from the same lexicon of analyses, so it is provided once, in the package that
+              all others reference.
             children:
               - WordSense-Core-WordLexicon-Words
               - WordSense-Core-WordLexicon-Possessives
@@ -25,10 +26,30 @@ sections:
             tests:
               - WordLexicon_Lookup_KnownWord_ReturnsItsAnalyses
 
+          - id: WordSense-Core-Senses
+            title: >-
+              The core subsystem shall provide the sense catalog: look a sense up by its id or by its OEWN sense key,
+              list the senses of a lemma and part of speech with the most frequent first, look a group up by its id and
+              list the senses of a group.
+            tags: [subsystem]
+            justification: |
+              Every model answers with senses from the same inventory, and callers resolve an answer's ids (and attach
+              WordNet-keyed resources through the sense key) without a model.
+            children:
+              - WordSense-Core-WordLexicon-Senses
+              - WordSense-Core-WordLexicon-SenseLookup
+              - WordSense-Core-WordLexicon-Groups
+              - WordSense-Core-WordSenseContracts-SenseInfo
+            tests:
+              - WordLexicon_SensesOf_LemmaAndPartOfSpeech_ListsMostFrequentFirst
+              - WordLexicon_TryGetSense_ById_FindsSense
+              - WordLexicon_TryGetGroup_ById_ListsMemberSenses
+
           - id: WordSense-Core-Contracts
             title: >-
               The core subsystem shall define the public contracts through which callers classify words with a
-              model and receive results.
+              model and receive results: the analysis of a word, the level at which it was answered, its group and
+              sense ids and its confidence, and the records that describe a sense and a group.
             tags: [subsystem]
             justification: |
               Callers program against one small set of contracts and can swap model packages, or supply their own
@@ -36,11 +57,14 @@ sections:
             children:
               - WordSense-Core-WordSenseContracts-Classify
               - WordSense-Core-WordSenseContracts-Result
+              - WordSense-Core-WordSenseContracts-Level
               - WordSense-Core-WordSenseContracts-Model
               - WordSense-Core-WordSenseContracts-Mirror
               - WordSense-Core-WordSenseContracts-Details
+              - WordSense-Core-WordSenseContracts-SenseInfo
             tests:
               - WordSenseContracts_WordSense_SameValues_AreEqual
+              - WordSenseContracts_SenseLevel_Values_AreTheFourLevels
 
           - id: WordSense-Core-Independent
             title: >-

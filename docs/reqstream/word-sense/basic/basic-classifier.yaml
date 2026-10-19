@@ -10,17 +10,22 @@ sections:
             requirements:
               - id: WordSense-Basic-BasicClassifier-Unknown
                 title: >-
-                  BasicClassifier shall answer a word that has no lexicon entry with no details and confidence 0.
+                  BasicClassifier shall answer a word that has no lexicon entry with no details, level none and
+                  confidence 0, and shall answer every word that has a lexicon entry, a number word such as one or
+                  twenty included, with details.
                 tags: [unit]
                 justification: |
-                  An unknown word must be distinguishable from a known one.
+                  An unknown word must be distinguishable from a known one, and a known word must never be reported as
+                  unknown.
                 tests:
                   - BasicClassifier_ClassifyAsync_UnknownWord_ReturnsNoDetails
+                  - BasicClassifier_ClassifyAsync_NumberWord_ReturnsDetails
 
               - id: WordSense-Basic-BasicClassifier-SingleSense
                 title: >-
-                  BasicClassifier shall answer a word with exactly one lexicon sense, a determiner such as the among
-                  them, with that sense and confidence 1, whatever the case of the word.
+                  BasicClassifier shall answer a word whose lemma and part of speech have exactly one sense, a
+                  determiner such as the among them, at the sense level with that sense and confidence 1, whatever the
+                  case of the word.
                 tags: [unit]
                 justification: |
                   A word without ambiguity needs no context.
@@ -30,9 +35,10 @@ sections:
 
               - id: WordSense-Basic-BasicClassifier-Resolve
                 title: >-
-                  BasicClassifier shall answer every word with several senses with the sense that the fused
-                  part-of-speech and context-cue evidence makes most probable, with the probability of that sense as
-                  confidence.
+                  BasicClassifier shall answer every word with several analyses with the analysis that the fused
+                  part-of-speech and context-cue evidence makes most probable, with the probability of that analysis
+                  as confidence, and shall answer a word with a single analysis and several senses with that
+                  analysis and confidence 1.
                 tags: [unit]
                 justification: |
                   This is the statistical disambiguation that the package provides; the confidence lets callers apply
@@ -40,11 +46,27 @@ sections:
                 tests:
                   - BasicClassifier_ClassifyAsync_AmbiguousWord_AlwaysAnswersWithProbability
                   - BasicClassifier_ClassifyAsync_Context_ChoosesPartOfSpeech
+                  - BasicClassifier_ClassifyAsync_SingleAnalysisWithManySenses_AnswersItWithConfidenceOne
                   - BasicWordSenseModel_ClassifyAsync_AuxiliaryContext_AnswersAuxiliary
                   - BasicWordSenseModel_ClassifyAsync_NounContext_StaysNoun
                   - BasicWordSenseModel_ClassifyAsync_NeedAsMainVerb_IsNotAuxiliary
-                  - SenseFusion_Fuse_AuxiliaryPosterior_SelectsAuxiliarySense
-                  - BasicClassifier_ClassifyAsync_SamePartOfSpeech_UsesCues
+                  - SenseFusion_Fuse_AuxiliaryPosterior_SelectsAuxiliaryAnalysis
+                  - BasicClassifier_ClassifyAsync_SamePartOfSpeechAnalyses_UsesCues
+
+              - id: WordSense-Basic-BasicClassifier-Level
+                title: >-
+                  BasicClassifier shall state the level of every answer: the part of speech level for an analysis chosen
+                  statistically, the sense level only for a word whose lemma and part of speech have one sense, and
+                  level none for an unknown word; it shall never answer at the group level.
+                tags: [unit]
+                justification: |
+                  The statistical model has no evidence that separates fine senses or groups; stating the level honestly
+                  lets callers treat its answers for what they are.
+                tests:
+                  - BasicClassifier_ClassifyAsync_AmbiguousWord_AnswersPartOfSpeechLevel
+                  - BasicClassifier_ClassifyAsync_SingleSensePart_AnswersSenseLevel
+                  - BasicClassifier_ClassifyAsync_NeverAnswersGroupLevel
+                  - BasicClassifier_ClassifyAsync_UnknownWord_AnswersLevelNone
 
               - id: WordSense-Basic-BasicClassifier-Segments
                 title: >-

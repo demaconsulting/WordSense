@@ -9,11 +9,13 @@ sections:
           - id: WordSense-MiniLM-Model
             title: >-
               The MiniLM subsystem shall provide a word-sense model on the all-MiniLM-L6-v2 (int8) encoder, an uncased
-              model with hidden size 384, with its trained weights embedded in the package.
+              model with hidden size 384, with its trained fine-sense weights and per-lemma thresholds, calibrated for
+              this encoder, embedded in the package.
             tags: [subsystem]
             justification: |
               MiniLM is the small, fast encoder: its 22 MiB model file and low latency suit interactive callers, and
-              embedding the weights leaves only the model file to be obtained.
+              embedding the weights leaves only the model file to be obtained; its thresholds are measured on its own
+              embeddings, so its confidence means the same as that of the other models.
             children:
               - WordSense-MiniLM-MiniLMWordSenseModel-Identity
               - WordSense-MiniLM-MiniLMWordSenseModel-Files
@@ -22,6 +24,7 @@ sections:
             tests:
               - MiniLMWordSenseModel_Classify_AmbiguousWord_ReturnsDeterministicResults
               - WordSense_Classifier_EndToEnd_ClassifiesRecord
+              - MiniLMWordSenseModel_Classify_TrainedLemma_AnswersAtASenseOrGroupLevel
 
           - id: WordSense-MiniLM-Packaging
             title: >-

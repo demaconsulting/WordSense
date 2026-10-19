@@ -12,7 +12,8 @@ which keeps capitalization as context.
 A sealed public class deriving from `OnnxWordSenseModel` without state of its own. Its model description: model id
 `bert-base-cased-int8`; files `model_int8.onnx` (about 103.5 MiB; 104 MiB for all four files), `vocab.txt`,
 `config.json` and `tokenizer.json`, each
-with a pinned SHA-256; case-preserving tokenizer; hidden size 768; embedded weights `weights.bin` trained at sequence
+with a pinned SHA-256; case-preserving tokenizer; hidden size 768; embedded weights `weights.bin` (fine-sense
+classifiers, form choosers and per-lemma fine and group thresholds calibrated for this encoder) trained at sequence
 length 128. The `model_int8.onnx` file is the derived encoder export, not the upstream masked language model export.
 
 #### Key Methods

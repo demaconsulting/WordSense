@@ -5,7 +5,8 @@
 #### Purpose
 
 `BasicWordSenseModel` is the public entry point of the Basic package: an `IWordSenseModel` that needs nothing to
-prepare and classifies with the statistical classifier.
+prepare and classifies with the statistical classifier, which answers at the part of speech level (the sense level
+only for a single-sense word).
 
 #### Data Model
 
@@ -35,4 +36,5 @@ embedded table is reported by the first classification, not by the model.
 
 #### Callers
 
-Application code and the builder (`evaluate basic`).
+Application code, the builder (`evaluate basic`) and the Onnx package, whose model uses it as the statistical fallback
+for ambiguous words without trained weights (it answers them at the part of speech level).

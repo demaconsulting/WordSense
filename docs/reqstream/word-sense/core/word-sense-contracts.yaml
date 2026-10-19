@@ -1,6 +1,6 @@
 ---
-# WordSenseContracts unit requirements (IWordSenseModel, MirrorOptions, WordSense,
-# WordDetails and PartOfSpeech)
+# WordSenseContracts unit requirements (IWordSenseModel, MirrorOptions, WordSense, SenseLevel, WordDetails,
+# PartOfSpeech, SenseInfo and SenseGroup)
 
 sections:
   - title: WordSense Requirements
@@ -30,15 +30,30 @@ sections:
 
               - id: WordSense-Core-WordSenseContracts-Result
                 title: >-
-                  WordSense shall be a value type carrying the word as given, the chosen details (or none) and a
-                  confidence, with value equality.
+                  WordSense shall be a value type carrying the word as given, the chosen analysis (or none), the
+                  level answered, the group id and the sense id where the level carries them (none where it does not)
+                  and a confidence, with value equality.
                 tags: [unit]
                 justification: |
-                  A value result is cheap to produce for every word, and equality makes results easy to compare and
-                  test.
+                  A value result is cheap to produce for every word, equality makes results easy to compare and test,
+                  and ids that are present exactly where the level carries them let callers test the level instead of
+                  guessing from a missing value.
                 tests:
                   - WordSenseContracts_WordSense_SameValues_AreEqual
                   - WordSenseContracts_WordSense_NoDetails_HasNullDetails
+                  - WordSenseContracts_WordSense_LevelDecidesWhichIdsAreSet
+
+              - id: WordSense-Core-WordSenseContracts-Level
+                title: >-
+                  SenseLevel shall name the four answer levels, None (unknown word), PartOfSpeech, Group and Sense,
+                  in order of increasing precision.
+                tags: [unit]
+                justification: |
+                  Callers compare levels to decide how far to trust an answer; a fixed, ordered vocabulary makes the
+                  comparison meaningful for every model.
+                tests:
+                  - WordSenseContracts_SenseLevel_Values_AreTheFourLevels
+                  - WordSenseContracts_SenseLevel_Order_IncreasesWithPrecision
 
               - id: WordSense-Core-WordSenseContracts-Model
                 title: >-
@@ -80,21 +95,38 @@ sections:
 
               - id: WordSense-Core-WordSenseContracts-Details
                 title: >-
-                  WordDetails shall describe one analysis by optional sense id, lemma, part of speech and inflection
-                  features, and PartOfSpeech shall name ten parts of speech: the eight traditional ones,
+                  WordDetails shall describe one analysis by lemma, part of speech and inflection features, without
+                  a sense id, and PartOfSpeech shall name ten parts of speech: the eight traditional ones,
                   determiner and auxiliary.
                 tags: [unit]
                 justification: |
-                  Callers (for example a text-to-speech front end) need the part of speech first, then the sense id
-                  that fixes the pronunciation of a heteronym. The articles and possessives (the, a, his) are
-                  among the most frequent words of English and fit none of the eight traditional values; modal and
-                  primary auxiliaries (will, can, is, has) are told apart from the content verb and noun senses by
-                  a trailing auxiliary sense.
+                  Callers (for example a text-to-speech front end) need the part of speech and the lemma first; the
+                  sense is a separate, level-dependent part of the answer. The articles and possessives (the, a, his)
+                  are among the most frequent words of English and fit none of the eight traditional values; modal and
+                  primary auxiliaries (will, can, is, has) are told apart from the content verb and noun uses by an
+                  auxiliary analysis.
                 tests:
                   - WordSenseContracts_WordDetails_Construct_ExposesMembers
                   - WordSenseContracts_WordDetails_SameValues_AreEqual
                   - WordSenseContracts_PartOfSpeech_Values_AreTheTenClasses
-                  - WordLexicon_Lookup_Auxiliaries_HaveTrailingAuxiliaryAnalysis
+                  - WordLexicon_Lookup_Auxiliaries_HaveAnAuxiliaryAnalysis
+
+              - id: WordSense-Core-WordSenseContracts-SenseInfo
+                title: >-
+                  SenseInfo shall describe a sense by its id, its group id, its lemma, its part of speech, its OEWN
+                  sense key (none for a project sense) and an optional respelling, and SenseGroup shall describe a
+                  group by
+                  its id, its lemma, its part of speech, the ids of its senses and an optional respelling, both as
+                  immutable values with value equality.
+                tags: [unit]
+                justification: |
+                  Callers resolve the ids of an answer to a sense or a group and read what they need (the key to reach
+                  WordNet-keyed resources, the respelling for pronunciation) without a model.
+                tests:
+                  - WordSenseContracts_SenseInfo_Construct_ExposesMembers
+                  - WordSenseContracts_SenseInfo_ProjectSense_HasNoKey
+                  - WordSenseContracts_SenseGroup_Construct_ExposesMembers
+                  - WordSenseContracts_SenseInfo_SameValues_AreEqual
 
               - id: WordSense-Core-WordSenseContracts-Independent
                 title: The core assembly shall reference no ONNX Runtime, weights or vector library.

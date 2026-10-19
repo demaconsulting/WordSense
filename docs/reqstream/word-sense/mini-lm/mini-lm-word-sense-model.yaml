@@ -34,13 +34,14 @@ sections:
 
               - id: WordSense-MiniLM-MiniLMWordSenseModel-Weights
                 title: >-
-                  MiniLMWordSenseModel shall use the trained weights embedded in its assembly and classify the senses
-                  of ambiguous words with them.
+                  MiniLMWordSenseModel shall use the trained weights and thresholds embedded in its assembly and answer
+                  the ambiguous words of the trained lemmas with them, each at the level its thresholds allow.
                 tags: [unit]
                 justification: |
                   Embedded weights make the package self-contained apart from the model file.
                 tests:
                   - MiniLMWordSenseModel_Classify_AmbiguousWord_ReturnsDeterministicResults
+                  - MiniLMWordSenseModel_Classify_TrainedLemma_AnswersAtASenseOrGroupLevel
                   - WordSense_Classifier_EndToEnd_ClassifiesRecord
 
               - id: WordSense-MiniLM-MiniLMWordSenseModel-Options

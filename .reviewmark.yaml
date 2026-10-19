@@ -84,6 +84,7 @@ reviews:
       - "docs/verification/introduction.md"                   # verification introduction
       - "docs/verification/word-sense.md"                     # system verification
       - "test/DemaConsulting.WordSense.MiniLM.Tests/ReadmeSampleTests.cs"  # end-to-end sample test
+      - "test/DemaConsulting.WordSense.Tests/CatalogTests.cs"              # system-level sense catalog tests
       - "test/DemaConsulting.WordSense.Onnx.Tests/ModelAssets.cs"          # integration test helper
 
   # WordSense-Design Review (one per system)
@@ -256,6 +257,19 @@ reviews:
       - "tools/WordSense.Builder/Data/DataValidator.cs"
       - "test/WordSense.Builder.Tests/Data/DataValidatorTests.cs"
 
+  # WordSense-WordData-SenseLabelGenerator Review (one per unit)
+  - id: WordSense-WordData-SenseLabelGenerator
+    title: Review that WordSense SenseLabelGenerator Implementation is Correct
+    context:
+      - "docs/design/word-sense/word-data.md"
+      - "docs/reqstream/word-sense/word-data.yaml"
+    paths:
+      - "docs/reqstream/word-sense/word-data/sense-label-generator.yaml"
+      - "docs/design/word-sense/word-data/sense-label-generator.md"
+      - "docs/verification/word-sense/word-data/sense-label-generator.md"
+      - "tools/WordSense.Builder/Data/SenseLabelGenerator.cs"
+      - "test/WordSense.Builder.Tests/Data/SenseLabelGeneratorTests.cs"
+
   # WordSense-Core Review (one per subsystem)
   - id: WordSense-Core
     title: Review that WordSense Core Subsystem Satisfies Requirements
@@ -297,6 +311,7 @@ reviews:
       - "docs/verification/word-sense/core/word-sense-contracts.md"
       - "src/DemaConsulting.WordSense/IWordSenseModel.cs"
       - "src/DemaConsulting.WordSense/WordDetails.cs"
+      - "src/DemaConsulting.WordSense/SenseInfo.cs"
       - "test/DemaConsulting.WordSense.Tests/ContractsTests.cs"
 
   # WordSense-Basic Review (one per subsystem)
@@ -311,6 +326,7 @@ reviews:
       - "docs/verification/word-sense/basic.md"
       - "src/DemaConsulting.WordSense.Basic/NamespaceDoc.cs"
       - "test/DemaConsulting.WordSense.Basic.Tests/XmlDocExampleTests.cs"
+      - "test/DemaConsulting.WordSense.Basic.Tests/SuiteTests.cs"
       - "test/DemaConsulting.WordSense.Basic.Tests/TestTables.cs"
 
   # WordSense-Basic-BasicWordSenseModel Review (one per unit)
@@ -519,6 +535,7 @@ reviews:
       - "docs/verification/word-sense/mini-lm.md"
       - "src/DemaConsulting.WordSense.MiniLM/NamespaceDoc.cs"
       - "test/DemaConsulting.WordSense.MiniLM.Tests/EndToEndTests.cs"
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/SuiteTests.cs"
 
   # WordSense-MiniLM-MiniLMWordSenseModel Review (one per unit)
   - id: WordSense-MiniLM-MiniLMWordSenseModel
@@ -545,6 +562,7 @@ reviews:
       - "docs/design/word-sense/bert-base-cased.md"
       - "docs/verification/word-sense/bert-base-cased.md"
       - "src/DemaConsulting.WordSense.BertBaseCased/NamespaceDoc.cs"
+      - "test/DemaConsulting.WordSense.BertBaseCased.Tests/SuiteTests.cs"
 
   # WordSense-BertBaseCased-BertBaseCasedWordSenseModel Review (one per unit)
   - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel

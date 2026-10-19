@@ -9,7 +9,9 @@ sections:
           - id: WordSense-Onnx-Classify
             title: >-
               The Onnx subsystem shall classify words from the core lexicon, running the encoder only when a word has
-              several senses and trained weights, and scoring only that word's trained candidate senses.
+              several candidate senses and trained weights, scoring only the fine senses of the word's own analyses,
+              answering a word with a single candidate sense directly, and choosing the lemma of a form that belongs to
+              several lemmas or tenses from its context.
             tags: [subsystem]
             justification: |
               Encoder inference is the expensive step; running it only for words that need context keeps
@@ -18,46 +20,87 @@ sections:
               - WordSense-Onnx-OnnxClassifier-Lookup
               - WordSense-Onnx-OnnxClassifier-Encode
               - WordSense-Onnx-OnnxClassifier-Candidates
+              - WordSense-Onnx-OnnxClassifier-SingleSense
+              - WordSense-Onnx-OnnxClassifier-MultiLemmaForm
               - WordSense-Onnx-OnnxClassifier-Validation
               - WordSense-Onnx-OnnxWordSenseModel-Classify
             tests:
               - OnnxClassifier_ClassifyAsync_OnlyAmbiguousWordsAreEncoded
+              - OnnxClassifier_ClassifyAsync_FormOfTwoLemmas_ChoosesTheLemmaFromContext
+
+          - id: WordSense-Onnx-Levels
+            title: >-
+              The Onnx subsystem shall answer a word whose lemma has trained weights at the finest level that passes
+              the lemma's own threshold for that level: the fine sense when the fine threshold is met, otherwise the
+              group when the group threshold is met, otherwise the best group with a confidence below one half.
+            tags: [subsystem]
+            justification: |
+              Each lemma has senses that are easy and senses that are hard to tell apart; per-lemma thresholds let each
+              lemma answer as precisely as its own evidence allows, and the confidence tells the caller which level
+              was reached.
+            children:
+              - WordSense-Onnx-OnnxClassifier-FineThreshold
+              - WordSense-Onnx-OnnxClassifier-GroupThreshold
+              - WordSense-Onnx-OnnxClassifier-LowConfidenceGroup
+              - WordSense-Onnx-LemmaWeights-Thresholds
+            tests:
+              - OnnxClassifier_ClassifyAsync_MarginAboveFineThreshold_AnswersSense
+              - OnnxClassifier_ClassifyAsync_FineBelowAndGroupAboveThreshold_AnswersGroup
+              - OnnxClassifier_ClassifyAsync_BothBelowThreshold_AnswersBestGroupBelowOneHalf
+
+          - id: WordSense-Onnx-Fallback
+            title: >-
+              The Onnx subsystem shall answer an ambiguous word that has no usable trained weights, or for which the
+              encoder produced no usable vector, with the analysis that the Basic model chooses, at the part of speech
+              level, and never with a guessed fine sense.
+            tags: [subsystem]
+            justification: |
+              A word must never vanish because a model was not trained for it, and a first-sense guess dressed as a
+              sense is worse than an honest part of speech; the statistical analysis is the best answer that does not
+              need weights.
+            children:
+              - WordSense-Onnx-OnnxClassifier-Fallback
+              - WordSense-Onnx-OnnxClassifier-NoVector
+              - WordSense-Onnx-OnnxWordSenseModel-Classify
+            tests:
+              - OnnxClassifier_ClassifyAsync_LemmaWithoutWeights_AnswersPartOfSpeechFromBasic
 
           - id: WordSense-Onnx-Confidence
             title: >-
-              The Onnx subsystem shall report a confidence that grows monotonically with the score margin between the
-              best and the second-best candidate relative to the lemma's abstain margin, clamped to 0 to 1, shall
-              give the best candidate even when the confidence is low, shall answer a multi-sense word without
-              trained weights with its first lexicon sense and a confidence of one over its number of senses, and
-              shall give no details and confidence 0 only when the encoder produced no usable vector.
+              The Onnx subsystem shall report a confidence that grows monotonically with the score margin of the
+              answered level, relative to the lemma's threshold for that level so that the threshold maps to one half,
+              clamped to 0 to 1, shall give the best candidate of the level even when the confidence is low, and shall
+              answer with the statistical analysis, not with no details, when the encoder produced no usable vector.
             tags: [subsystem]
             justification: |
               A monotonic, bounded confidence lets callers apply a threshold; returning the best candidate even at
-              low confidence lets them still use it, and a word that no model was trained for still gets its most
-              frequent sense instead of vanishing.
+              low confidence lets them still use it, and a word that the encoder cannot judge still gets its part of
+              speech instead of vanishing.
             children:
               - WordSense-Onnx-OnnxClassifier-Confidence
               - WordSense-Onnx-OnnxClassifier-BestCandidate
-              - WordSense-Onnx-OnnxClassifier-MissingWeights
               - WordSense-Onnx-OnnxClassifier-NoVector
               - WordSense-Onnx-LemmaWeights-Scoring
             tests:
               - OnnxClassifier_ClassifyAsync_LargerMargin_GivesHigherConfidence
+              - OnnxClassifier_ClassifyAsync_MarginAtThreshold_GivesConfidenceOneHalf
 
           - id: WordSense-Onnx-Weights
             title: >-
               The Onnx subsystem shall read trained per-lemma weights from a binary blob embedded in the model
-              package and match each lemma to the word lexicon by lemma, part of speech and meaning, keeping the
-              weights of a lemma only when its trained senses are the first senses of the lexicon entry.
+              package (the fine senses of the lemma, its two thresholds and, where needed, its form chooser) and match
+              each lemma to the sense catalog by its sense and group ids, keeping the weights of a lemma only when its
+              senses are the senses of the catalog.
             tags: [subsystem]
             justification: |
-              A stale or mismatched weights blob must never give a wrong answer; matching per lemma turns any
-              mismatch into the first-sense answer instead.
+              A stale or mismatched weights blob must never give a wrong answer; matching against the catalog turns
+              any mismatch into a load failure instead of a wrong sense.
             children:
               - WordSense-Onnx-LemmaWeights-Format
               - WordSense-Onnx-LemmaWeights-Integrity
               - WordSense-Onnx-LemmaWeights-Match
               - WordSense-Onnx-LemmaWeights-Scoring
+              - WordSense-Onnx-LemmaWeights-Thresholds
               - WordSense-Onnx-LemmaWeights-Embedded
             tests:
               - EmbeddedWeights_MiniLM_MatchesWordImage
@@ -134,8 +177,8 @@ sections:
           - id: WordSense-Onnx-Lifecycle
             title: >-
               The Onnx subsystem shall provide one abstract, disposable base class for encoder models, with the model
-              identifier and hidden size known before any download, and with the encoder session released on
-              disposal.
+              identifier and hidden size known before any download, and with the encoder session and the statistical
+              fallback model that it owns released on disposal.
             tags: [subsystem]
             justification: |
               The model packages differ only in their model description; a shared base keeps their behavior

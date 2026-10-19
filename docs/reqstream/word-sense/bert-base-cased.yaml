@@ -9,12 +9,13 @@ sections:
           - id: WordSense-BertBaseCased-Model
             title: >-
               The BertBaseCased subsystem shall provide a word-sense model on the bert-base-cased (int8) encoder, a
-              cased model with hidden size 768 that sees the capitalization of the text, with its trained weights
-              embedded in the package.
+              cased model with hidden size 768 that sees the capitalization of the text, with its trained fine-sense
+              weights and per-lemma thresholds, calibrated for this encoder, embedded in the package.
             tags: [subsystem]
             justification: |
               The larger cased encoder gives callers a more accurate option that can use capitalization as context,
-              and embedding the weights leaves only the model files to be obtained.
+              and embedding the weights leaves only the model files to be obtained; its thresholds are measured on its
+              own embeddings, so its confidence means the same as that of the other models.
             children:
               - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Identity
               - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Files
@@ -23,6 +24,7 @@ sections:
             tests:
               - BertBaseCasedWordSenseModel_Classify_AmbiguousWord_ReturnsBestSense
               - BertBaseCased_Classifier_EndToEnd_ClassifiesRecord
+              - BertBaseCasedWordSenseModel_Classify_TrainedLemma_AnswersAtASenseOrGroupLevel
 
           - id: WordSense-BertBaseCased-Packaging
             title: >-

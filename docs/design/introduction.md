@@ -1,8 +1,9 @@
 # Introduction
 
 This document provides the detailed design for the WordSense library, a .NET library that identifies the sense of
-English words in text: the lemma, the part of speech and, for heteronyms, a sense id that fixes the pronunciation.
-Words that have one sense are answered from an embedded
+English words in text: the lemma, the part of speech and, where the model can tell, the sense: an Open English WordNet
+(OEWN) fine sense with a readable id, or the coarse group of senses that it belongs to. Every answer states the level
+(part of speech, group or sense) at which it was made. Words that have one sense are answered from an embedded
 lexicon; words that have several senses are answered in context by an interchangeable word-sense model.
 
 ## Purpose
@@ -27,11 +28,12 @@ This document covers the detailed design of the WordSense system and its constit
 software items, specifically:
 
 - **WordSense (System)** — the whole library, delivered as five layered NuGet packages
-- **Core (Subsystem)** — the package `DemaConsulting.WordSense`: the embedded word lexicon and the public model
-  interface; it has no third-party dependency
-  - **WordLexicon (Unit)** — the embedded lexicon of known words and their senses, including the internal reader of
-    the lexicon blob
-  - **WordSenseContracts (Unit)** — the model interface, the mirror options and the answer values
+- **Core (Subsystem)** — the package `DemaConsulting.WordSense`: the embedded word lexicon and sense catalog and the
+  public model interface; it has no third-party dependency
+  - **WordLexicon (Unit)** — the embedded lexicon of known words (their analyses) and the sense catalog (senses and
+    groups), including the internal reader of the lexicon blob
+  - **WordSenseContracts (Unit)** — the model interface, the mirror options, the answer values, the answer level and
+    the sense and group records
 - **Basic (Subsystem)** — the package `DemaConsulting.WordSense.Basic`: a statistical model (part-of-speech tagger and
   context cues) that needs no model files
   - **BasicWordSenseModel (Unit)** — the public statistical model
@@ -39,26 +41,28 @@ software items, specifically:
   - **BasicTables (Unit)** — the embedded statistics table and its reader
   - **PosTagger (Unit)** — the hidden Markov model part-of-speech tagger
   - **CueModel (Unit)** — the context features and the naive Bayes cue scores
-  - **SenseFusion (Unit)** — the combination into sense probabilities and confidence
+  - **SenseFusion (Unit)** — the combination into analysis probabilities and confidence
 - **Onnx (Subsystem)** — the package `DemaConsulting.WordSense.Onnx`: the machinery shared by the encoder models
-  - **OnnxWordSenseModel (Unit)** — the public abstract encoder model with file management
-  - **OnnxClassifier (Unit)** — scoring of the candidate senses of a word from the encoder output
+  - **OnnxWordSenseModel (Unit)** — the public abstract encoder model with file management and the fallback model
+  - **OnnxClassifier (Unit)** — scoring of the fine senses of a word from the encoder output, the answer level, the
+    form chooser and the fallback
   - **OnnxEncoder (Unit)** — ONNX inference session and mean pooling per word
   - **WordPieceTokenizer (Unit)** — BERT WordPiece tokenizer, uncased or cased
   - **ModelDownloader (Unit)** — ordered, verified download of model files
   - **DownloadMirror (Unit)** — validated mirror configuration
-  - **LemmaWeights (Unit)** — per-lemma weights, their blob reader, matching to the lexicon and the feature
-    computation
+  - **LemmaWeights (Unit)** — per-lemma weights and thresholds, their blob reader, matching to the lexicon and the
+    feature computation
 - **MiniLM (Subsystem)** — the package `DemaConsulting.WordSense.MiniLM`
   - **MiniLMWordSenseModel (Unit)** — the all-MiniLM-L6-v2 int8 model
 - **BertBaseCased (Subsystem)** — the package `DemaConsulting.WordSense.BertBaseCased`
   - **BertBaseCasedWordSenseModel (Unit)** — the bert-base-cased int8 model
-- **WordSenseBuilder (Unit)** — the non-shipped build-time tool that creates the lexicon blob and the weights blobs
-  and measures the models
-- **WordData (Subsystem)** — the TSV word data under `data/` (imported from Open English WordNet, CC BY 4.0) and the
-  non-shipped builder code that imports and validates it
-  - **DataSchema**, **DataLayout**, **OewnImporter** and **DataValidator (Units)** — the schema, the file layout, the
-    import and the validation
+- **WordSenseBuilder (Unit)** — the non-shipped build-time tool that creates the lexicon blob and the weights blobs,
+  chooses the thresholds and measures the models
+- **WordData (Subsystem)** — the TSV word data under `data/` (imported from Open English WordNet, CC BY 4.0, with the
+  WordNet 3.0 sense counts) and the non-shipped builder code that imports, labels and validates it
+  - **DataSchema**, **DataLayout**, **OewnImporter**, **FormGenerator**, **FormAuditor**, **DataValidator** and
+    **SenseLabelGenerator (Units)** — the schema, the file layout, the import, the generated forms and their audit,
+    the validation and the readable sense labels
 
 The ONNX Runtime OTS runtime dependency of the Onnx package is also covered. The core package and the Basic package
 have no third-party runtime dependency.
@@ -105,26 +109,28 @@ diagram or the prose below.
 WordSense ships as five NuGet packages, each modeled as one subsystem of the single WordSense system. The packages
 form layers:
 
-- The **core** package defines the vocabulary: the lexicon of known words and the contracts (`IWordSenseModel`,
-  `WordSense`, `WordDetails`, `PartOfSpeech`, `MirrorOptions`). It holds no vectors, no
-  weights and no ONNX code.
-- The **Basic** package implements the contracts with a statistical tagger and cue model. It references the core
-  package only.
+- The **core** package defines the vocabulary: the lexicon of known words with their analyses, the sense catalog (every
+  fine sense and its group) and the contracts (`IWordSenseModel`, `WordSense`, `SenseLevel`, `WordDetails`,
+  `PartOfSpeech`, `SenseInfo`, `SenseGroup`, `MirrorOptions`). It holds no vectors, no weights and no ONNX code.
+- The **Basic** package implements the contracts with a statistical tagger and cue model that answers at the part of
+  speech level. It references the core package only.
 - The **Onnx** package implements the contracts for any BERT-style encoder: model file management, encoder,
-  tokenizer, weights and scoring. It references the core package and ONNX Runtime.
+  tokenizer, weights, thresholds and scoring of the fine senses. It references the core package, the Basic package
+  (the fallback for the words that the weights do not cover) and ONNX Runtime.
 - The **MiniLM** and **BertBaseCased** packages each add one public class that pins one encoder model and embeds the
-  weights trained for it. They reference the Onnx package.
+  weights and thresholds trained for it. They reference the Onnx package.
 
 The dependency rule is that a package may reference only the packages in layers below it: core references nothing,
-Basic and Onnx reference core, and MiniLM and BertBaseCased reference Onnx (and through it core). No package
-references a sibling model package. The builder tool references all five packages and is never shipped.
+Basic references core, Onnx references core and Basic, and MiniLM and BertBaseCased reference Onnx (and through it
+Basic and core). No package references a sibling model package. The builder tool references all five packages and is
+never shipped.
 
 ![WordSense system](WordSenseView.svg)
 
 The data flows from the contracts upward: a caller obtains an `IWordSenseModel` from a model package, calls
 `EnsureModelAsync` once (optional: `ClassifyAsync` ensures lazily when a word needs the model) and classifies
-tokenized text. Every model looks each
-word up in `WordLexicon` first; only a word with several senses needs the model's context decision.
+tokenized text. Every model looks each word up in `WordLexicon` first; only a word with several candidate senses needs
+the model's context decision, and each answer states the level (part of speech, group or sense) at which it was made.
 
 ## Folder Layout
 
@@ -133,8 +139,8 @@ The source code folder structure mirrors the packages, and the packages mirror t
 ```text
 src/DemaConsulting.WordSense/                      — core subsystem
 ├── WordLexicon.cs, WordImage.cs, ImageFormat.cs   — word-lexicon unit
-├── IWordSenseModel.cs (also WordSense, MirrorOptions), WordDetails.cs (also
-│   PartOfSpeech)                                   — word-sense-contracts unit
+├── IWordSenseModel.cs (also WordSense, SenseLevel, MirrorOptions), WordDetails.cs (also PartOfSpeech, SenseInfo,
+│   SenseGroup)                                     — word-sense-contracts unit
 ├── NamespaceDoc.cs                                 — namespace description for the generated API reference (no code)
 └── Resources/wordsense.img                         — embedded flat word image (resource of the word-lexicon unit)
 
@@ -174,10 +180,11 @@ model/<model-id>/                                  — model files (ONNX file, v
 tools/WordSense.Builder/                           — word-sense-builder unit (not shipped)
 tools/WordSense.Builder/Data/                      — word-data subsystem units (DataSchema.cs and SchemaYaml.cs,
                                                       DataLayout.cs and PartitionResolver.cs, OewnImporter.cs,
-                                                      DataValidator.cs)
+                                                      FormGenerator.cs and its helpers, FormAuditor.cs,
+                                                      DataValidator.cs, SenseLabelGenerator.cs)
 data/                                              — word-data tables (TSV), schema.yaml, README.md, PROVENANCE.md
-corpus/                                            — builder inputs: sense inventory, anchor, holdout and form
-                                                      sentences, dictionary lexicon, provenance
+corpus/                                            — builder inputs: anchor, holdout and form sentences, the suite,
+                                                      dictionary lexicon, provenance
 ```
 
 The `generated/` folders of the packages hold the generated API reference and are not committed. The corpus files

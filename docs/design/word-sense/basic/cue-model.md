@@ -5,8 +5,9 @@
 #### Purpose
 
 `CueModel` is the context model of the Basic model: it extracts the context features of a target word and scores the
-senses of its lemma from the lemma's table of hashed features, a naive Bayes classifier. It separates senses that
-share a part of speech, which the tagger cannot.
+candidate analyses of the word from the per-lemma table of hashed features, a naive Bayes classifier. It separates
+analyses that share a part of speech (the past and the present of `read`, the lemmas of a form such as `left`), which
+the tagger cannot.
 
 #### Data Model
 
@@ -15,24 +16,26 @@ share a part of speech, which the tagger cannot.
   target) or a right feature (the token directly after it). The immediate neighbors are always written as left and
   right features, whatever they are (even punctuation); at most 12 features arise.
 - The context is limited to the sentence segment the classifier passes in.
-- A lemma's `LemmaCue` table holds ascending 16-bit feature hashes and one signed byte per feature and sense in steps of
-  1/8 nat (`Quantum`), plus a quantized log prior per sense. Only features that were frequent enough in training have
-  weights; collisions of hashes were resolved by the builder.
+- A lemma's `LemmaCue` table holds ascending 16-bit feature hashes and one signed byte per feature and analysis in
+  steps of 1/8 nat (`Quantum`), plus a quantized log prior per analysis. The columns are analyses (lemma, part of
+  speech and features), so a table can hold the analyses of several lemmas of one form. Only features that were
+  frequent enough in training have weights; collisions of hashes were resolved by the builder.
 
 #### Key Methods
 
 - `Extract(lower, index, features)`: writes the distinct window features in position order, then the left and right
   features that exist, and returns the count.
-- `Score(cue, features, senses, scores)`: looks up each feature hash by binary search; for each candidate sense finds
-  its column (part of speech and meaning) and scores `(prior + the sum of the weights of the found features) * 1/8`.
-  A candidate the table has no column for scores `NaN`, which the fusion fills. A feature without an entry adds
-  nothing, so a word with no known feature scores its prior.
+- `Score(cue, features, analyses, scores)`: looks up each feature hash by binary search; for each candidate analysis
+  finds its column (`LemmaCue.RowOf`, by lemma, part of speech and features) and scores
+  `(prior + the sum of the weights of the found features) * 1/8`. A candidate analysis the table has no column for
+  scores `NaN`, which the fusion fills. A feature without an entry adds nothing, so a word with no known feature scores
+  its prior.
 - `HasLetter(token)`: whether a token contains a letter.
 
 #### Error Handling
 
-A null table or sense array throws `ArgumentNullException`. Missing senses and unknown features are normal and give
-`NaN` and no contribution.
+A null table or analysis array throws `ArgumentNullException`. Missing analyses and unknown features are normal and
+give `NaN` and no contribution.
 
 #### Determinism and Thread Safety
 

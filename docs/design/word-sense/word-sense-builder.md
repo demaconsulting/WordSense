@@ -9,86 +9,101 @@ is used at build time only and is never shipped in a package.
 
 The builder creates the data that the shipped packages embed and measures the shipped models:
 
-- the flat word image `wordsense.img` embedded in the core package, compiled from the authoritative tables of `data/`;
-- the weights blob `weights.bin` embedded in each encoder package (MiniLM, BertBaseCased);
+- the flat word image `wordsense.img` embedded in the core package, compiled from the authoritative tables of `data/`
+  (the words, their analyses and the sense catalog);
+- the weights blob `weights.bin` embedded in each encoder package (MiniLM, BertBaseCased): the per-lemma fine-sense
+  classifiers with their two thresholds;
 - the statistics table `basic.bin` embedded in the Basic package, and the treebank count files of `corpus/ud` it is
   trained from;
-- accuracy reports of the models, including the calibration of the Basic model;
-- the senses appendix of the user guide.
+- accuracy reports of the models at each answer level, measured on the held-out and real-text sentences, on SemCor 3.0
+  (senses) and on the test file of the English EWT treebank (part of speech);
+- the quota report of the training sentences (tiers) and the senses appendix of the user guide.
 
-It reads the repository's `corpus/` folder: the sense inventory (`senses/`: every trained lemma with its senses, parts
-of speech, meanings and respellings), the training sentences (`anchors/`), the holdout sentences (`holdout/`, never
-used for training), the form lists (`forms/`: inflected forms of trained lemmas), the dictionary of all words with
-their parts of speech and the morphology rule switches (`lexicon/`), the real-text evaluation sentences (`realtext/`)
-and the vendored
-Universal Dependencies counts (`ud/`: tag n-gram and per-word tag counts of the English EWT treebank training file). It
-references all five packages and uses internal members of them through `InternalsVisibleTo`, so that training and
-inference share one implementation of the feature computation.
+It reads the sense inventory from `data/` (the senses, their labels, groups, respellings, glosses, OEWN keys and
+WordNet 3.0 tag counts) and the repository's `corpus/` folder: the training sentences (`anchors/`), the holdout
+sentences (`holdout/`, never used for training or for thresholds), the form lists (`forms/`: inflected forms of trained
+lemmas), the dictionary of all words with their parts of speech and the auxiliary list (`lexicon/`), the real-text
+evaluation sentences (`realtext/`), the reviewed suite (`suite/`) and the vendored Universal Dependencies counts
+(`ud/`: tag n-gram and per-word tag counts of the English EWT treebank training file). It references all five packages
+and uses internal members of them through `InternalsVisibleTo`, so that training and inference share one
+implementation of the feature computation.
 
 ### Data Model
 
 - `Program`: command-line entry point; parses `--name value` options and dispatches the commands.
 - `ModelCatalog`: the models the builder knows (`minilm`, `bert-base-cased`, `basic`) with their package and model
   folder; sets the ONNX intra-op threads to 2.
-- `Corpus`, `CorpusRow`: read and validate the sentence and form files; check that anchors and holdout are disjoint.
-- `SenseInventory`: the authority on which senses exist (part of speech, meaning, respelling per lemma and sense).
-- `SenseDefinition`, `LemmaEntry`: the validated definition of one sense and of one lemma (meanings all-or-none; a
-  heteronym has at least two distinct meanings).
+- `Corpus`, `CorpusRow`: read and validate the sentence and form files. A sentence row is `lemma`, `sense_id`,
+  `part_of_speech` and `sentence`. The reader checks that the part of speech of a row is the one of its sense, and
+  that the training sentences are disjoint from every sentence they must not resemble (see Corpus validation).
+- `SenseInventory`: the authority on which senses exist, read from `data/`: for each lemma the senses in inventory
+  order with part of speech, label, group, OEWN key (none for a project sense), gloss, respelling and tag count.
+- `SenseDefinition`, `LemmaEntry`: the validated definition of one sense and of one lemma.
 - `LexiconSource`: reads the dictionary word list (`word<TAB>letters`, ascending by word, parts of speech as the
-  letters `NRVJBPCID`, the first letter being the first sense).
+  letters `NRVJBPCID`, the first letter being the first analysis) and the auxiliary list.
 - `LexiconImporter`: derives the word list from the pinned Moby list (checksum, source order of the parts of speech,
   corrections, participle and gerund rule) and writes `lexicon.tsv`.
-- `MorphologyExpander`: generates the inflected forms of every dictionary word (and of every trained lemma) from the
-  enabled morphology rules, spelling rules and the irregular entries read by `IrregularForms`.
 - `IrregularForms`: reads the irregular form lists and derives the treebank list (`ud-irregular`).
 - `CoverageReport`: the `coverage` command; measures how many running words of a directory of text files the word
-  table knows and lists the unknown words as names and others.
-- `ImageCompiler`: reads the tables of `data/` (entry, form, form_sense_scope, coarse_class) and the sense meanings of
-  `corpus/senses`, and writes the flat word image (`WSI1`): the UTF-8-byte-sorted spelling index, 8-byte analysis rows,
-  scope lists, entries, classes, the lemma-to-forms index and the fold index, each section Brotli-compressed, with the
-  data hash and a content hash in the header. Equal data always gives equal decompressed sections.
-- `FormBootstrap`: the one-off derivation of the authoritative `form` and `form_sense_scope` tables from the earlier
-  generated word table (kept for provenance; the 19 wrong-lemma forms of the old table are fixed there).
-- `WordsBuilder` and `LegacyWord`: the legacy word table that the trained-lemma mapping and the tests compare the image
-  against (removed with the weights re-key).
+  table knows, how many of the known words have a lemma with trained fine senses, and lists the unknown words as names
+  and others.
+- `ImageCompiler`: reads the tables of `data/` (entry, form, sense, sense label, sense group, group sense, respelling
+  and frequency) and the lexicon lists, and writes the flat word image (`WSI1`): the UTF-8-byte-sorted spelling
+  index, 8-byte analysis rows, entries, the lemma-to-forms index and the fold index (as before), and the sense catalog:
+  the sense ids (UTF-8 sorted), the key suffix of each sense (the part after `lemma%`), the sense-to-group index, the
+  sense-to-respelling index, the group ids and their parts of speech, the range of senses of each lemma and part of
+  speech in inventory order, and a sorted key-to-sense index. Each section is Brotli-compressed; the header holds the
+  data hash, a content hash and the inventory hash (over the sense, group and analysis-inventory sections, which is what
+  the weights must match). The catalog sections are decoded lazily by the reader. Equal data always gives equal
+  decompressed sections.
 - `WeightsTrainer`, `LogisticTrainer`, `ModelTrainer` and `WeightsBlobWriter`: train the per-lemma classifiers from
-  pooled encoder vectors and serialize the weights blob (`WSX2`).
+  pooled encoder vectors and serialize the weights blob (`WSX3`: float16 weights, the sense ids of each lemma, the
+  fine and group thresholds, and the optional form chooser).
+- `Thresholds`: chooses the fine and group thresholds of a lemma by cross-validation on its anchors.
+- `Tiers`: the per-sense quota of anchor and held-out sentences and the report of the senses that fall short.
 - `EmbeddingCache` and `CachingEncoder`: the persistent cache of pooled vectors (one file per model, keyed by the
   words and the target index, valid for one digest of the model files, per-entry checksums, atomic save) and the
   wrapper that asks the cache before the encoder; `FitCache` stores the fitted classifier of each lemma, keyed by its
-  exact features; `TrainSettings` carries the cache folder and the mean choice.
-- `Evaluator`, `SetResult`, `EvaluationResult`: measure a shipped model on the holdout and the real-text sentences.
+  exact features and its training and threshold settings; `TrainSettings` carries the cache folder and the mean choice.
+- `Evaluator`, `SetResult`, `EvaluationResult`: measure a shipped model on the holdout and the real-text sentences, at
+  each answer level.
+- `SenseEval`: the SemCor 3.0 evaluation (download to a cache with a pinned checksum, key mapping, per-level figures and
+  the most-frequent-sense baseline).
+- `RunningText`: the part-of-speech evaluation on the test file of the English EWT treebank, with the convention map.
+- `Suite`: reads the reviewed suite rows and the expectation of each model for each row.
 - `UdSource`, `UdCounts`, `UdSentence`: the pinned treebank source (commit and SHA-256 checksums; download and
-  verification) and the tag statistics: a CoNLL-U reader that keeps a multi-word token as one token tagged like its first
+  verification) and the tag statistics: a CoNLL-U reader that keeps a multi-word token as one token tagged like its
+  first
   word and skips empty nodes, the mapping of the universal tags onto the 13 tags of the tagger, the n-gram and per-word
   counts, and the deterministic count files `tag-ngrams.tsv` and `word-tags.tsv`.
 - `BasicHyperparameters`: every tunable number of the Basic model in one place (the runtime values that travel in the
   table header, the training choices, and the grid and sample sizes of the tuner).
 - `BasicTrainer`, `BasicModelData`: select the tabled words (closed-class words and the most frequent
   dictionary-ambiguous words), the suffixes and the closed-class masks from the counts, and train the cue tables from
-  the anchors.
+  the anchors, with the analysis label of each anchor rolled up from its fine sense.
 - `BasicTablesWriter`: serializes the model data into the `WSB2` blob, deterministically.
 - `BasicTuner`: scores the hyper-parameter grid.
 - `BasicModelBuilder`: the commands `ud-counts` and `train-basic`.
 - `AppendixGenerator`: generates the senses appendix of the user guide.
 - `TextSplitter`: splits raw text into words and punctuation.
 
-Invariants: the order of the senses of a lemma is the ordinal order of the sense labels and is the order of the
-weight rows of every model; equal input always gives equal output bytes (keys and lemmas are written in ordinal
-order and the trainer is deterministic).
+Invariants: the order of the senses of a lemma is the inventory order (part of speech, tag count descending, sense id
+bytes) and the weight rows of every model follow it; equal input always gives equal output bytes (keys and lemmas are
+written in ordinal order and the trainer is deterministic).
 
 ### Key Methods
 
 #### Commands
 
 Options are `--name value` pairs; every path defaults to the repository layout below the current directory. For
-`weights` and `evaluate` the model name may be given as the second argument instead of `--model`.
+`weights`, `evaluate`, `evaluate-senses` and `evaluate-running` the model name may be given as the second argument
+instead of `--model`.
 
 - `compile-image [--data DIR] [--corpus DIR] [--output FILE]`: compiles the tables of `data/` into the flat word image
   and writes `wordsense.img` (default: the core package resources); it prints the counts and the size.
 - `import-moby --input FILE [--corpus DIR]`: derives `corpus/lexicon/lexicon.tsv` from the pinned Moby Part-of-Speech
   list after verifying its SHA-256, keeping every single lower-case word with all its parts of speech in source order
-  and applying `corrections.tsv` and `classes.tsv`; it prints the counts.
+  and applying the committed corrections; it prints the counts.
 - `weights <modelId> [--corpus DIR] [--repository DIR] [--cache DIR] [--no-cache] [--recompute-mean]`: trains the
   weights of an encoder model (`minilm`, `bert-base-cased`) and writes its `weights.bin`. `--cache DIR` places the
   embedding cache (default `<repository>/.cache/embeddings`; the cache of a model is the subfolder named by its model
@@ -96,55 +111,56 @@ Options are `--name value` pairs; every path defaults to the repository layout b
   from the anchors instead of reusing the one of the existing weights. `--no-cache` and `--recompute-mean` are
   switches: they take no value (an explicit `true` or `false` is accepted).
 - `evaluate <modelId> [--corpus DIR] [--repository DIR] [--output FILE]`: measures a model (`minilm`,
-  `bert-base-cased`, `basic`) and prints a Markdown table.
+  `bert-base-cased`, `basic`) on the holdout and real-text sentences and prints a Markdown table.
+- `evaluate-senses <modelId> --cache DIR [--corpus DIR] [--repository DIR] [--output FILE]`: measures a model on
+  SemCor 3.0, downloaded to the cache when it is missing.
+- `evaluate-running <modelId> --cache DIR [--corpus DIR] [--repository DIR] [--output FILE]`: measures the
+  part-of-speech accuracy of a model on the test file of the English EWT treebank, downloaded to the cache when it is
+  missing.
 - `ud-counts [--ud DIR] [--corpus DIR] [--output DIR]`: downloads (when missing) and verifies the pinned treebank files
   and writes the count files of `corpus/ud`.
+- `ud-irregular`: derives the treebank list of irregular forms from the committed irregular lists.
+- `coverage --text DIR [--output FILE]`: reports the known, trained and unknown share of the running words of a
+  directory of plain-text files.
 - `train-basic [--corpus DIR] [--repository DIR] [--ud DIR] [--refresh-ud true] [--output FILE]`: retrains the whole
   Basic model with the default hyper-parameters and writes `Resources/basic.bin` of the Basic package. It regenerates
   the count files first when they are missing or `--refresh-ud true` is given.
 - `tune-basic [--corpus DIR] [--repository DIR] [--ud DIR]`: scores the hyper-parameter grid and prints a table; it
   writes nothing.
-- `appendix [--corpus DIR] [--output FILE]`: writes the senses appendix of the user guide.
-- `import-oewn --input FILE [--output DIR] [--sha256 HEX|none] [--threshold N] [--overwrite true]`: imports the
-  pinned Open English WordNet file into the tables of `data/` (see the WordData subsystem); it prints the counts.
-- `validate-data [--data DIR]`: validates the tables of `data/` against `data/schema.yaml`, lists the violations and
-  exits with a failure when there is one.
+- `label-senses [--data DIR]`: gives every sense without a label a generated label (the SenseLabelGenerator unit of the
+  WordData subsystem).
+- `import-wn30-counts --input FILE [--data DIR] [--sha256 HEX|none]`: imports the pinned WordNet 3.0 sense frequency
+  counts (the OewnImporter unit of the WordData subsystem).
+- `tiers [--corpus DIR] [--data DIR] [--output FILE]`: writes the quota report of the training sentences.
+- `appendix [--corpus DIR] [--data DIR] [--output FILE]`: writes the senses appendix of the user guide.
+- `import-oewn`, `validate-data`, `rebuild-forms`, `audit-forms` and `generate-facts`: the commands of the WordData
+  subsystem (see its design).
 
-#### Lexicon build (`WordsBuilder.Build`, legacy table)
+#### Image compilation (`ImageCompiler.Build`)
 
-The authoritative source of the shipped lexicon is now the `form` table of `data/`; `WordsBuilder.Build` remains as the
-reference that the committed image is compared against in the tests. Its rules, which the bootstrap of the `form` table
-reproduced exactly (apart from 19 wrong-lemma forms that were fixed), are the following. The lexicon entries come from
-four sources, in decreasing priority for the trained senses; the dictionary never
-removes a sense:
+1. Read the tables of `data/` and the dictionary lexicon. Every word of the dictionary is kept with all its parts of
+   speech, whatever the accuracy of any model for it: the accuracy of a model governs only which senses it chooses
+   between, never whether a word exists.
+2. Write one analysis (lemma, part of speech, features) for every row of the `form` table. A word of the committed
+   auxiliary list gains an auxiliary analysis. The forms of every dictionary word come from the `form` table, so no
+   morphology runs at run time.
+3. Build the sense catalog: every single-token OEWN sense and every project sense, with its readable id (`lemma#label`),
+   its group, its OEWN key (none for a project sense) and its respelling. The senses of each lemma and part of speech
+   are ranked by WordNet 3.0 tag count, then by the sense id bytes.
+4. Check the invariants before writing: a sense without a label, a sense in no group or in two groups, and a group that
+   mixes lemmas or parts of speech fail the build with an error that lists every violation.
+5. Write the sections, compress them, compute the hashes and write the file. The committed image is the compilation of
+   the committed data (`Words_Committed_MatchesData`).
 
-1. The sense inventory: every trained lemma answers with all of its senses, in label order.
-2. The form lists: each form of a trained lemma answers with only the senses its labels name, in the order of the
-   lemma and with the same `WordDetails` instances (a row that names every sense reuses the lemma's array). An
-   unknown, duplicate or empty label, or a self row (form equals lemma) that does not name every sense, fails the
-   build with an error that lists all of them. The anchor, holdout and real-text sentences must agree with the labels.
-3. The dictionary word list: each word answers with one sense per part of speech and no meaning. When a trained
-   lemma or form spells the same word, its trained senses stay first and one more sense is appended for each part of
-   speech of the dictionary that the labels do not cover, in dictionary order. That sense is the word's own: its
-   lemma is the word itself (a form may have several lemmas: `lives` is a verb of `live` and the plural of `life`;
-   `drove` is the verb of `drive` and a noun of its own, not the noun sense of `drive` that its labels excluded),
-   and it has no meaning and no respelling. No part of speech of the dictionary is lost. Every trained sense of an
-   entry has the lemma of its first sense; an own extra has the word as lemma. The weights of the lemma score only
-   the trained senses; an own extra is never ranked by an encoder model, and the Basic model scores it from the tagger
-   alone.
-4. Generated inflections: `MorphologyExpander` adds the forms of every dictionary word and trained lemma from the
-   enabled rules (noun plural, verb third person, past and -ing, adjective comparative and superlative, adverb, and
-   the derived forms), with the spelling rules and the irregular entries (an irregular form replaces the regular
-   one). Each form answers with the base's lemma; a generated form of a trained lemma with several parts of speech
-   keeps the trained senses, every other form has one sense per part of speech. An existing word always wins, so the
-   forms of step 1 to 3 are never replaced, and the first base in ordinal order wins when two bases give the same form.
-   The dictionary additions (`additions.tsv`) are merged into the word list before the expansion.
+#### Corpus validation (`Corpus`, `SenseInventory`)
 
-Every dictionary word is kept, whatever the accuracy of any model for it: the accuracy of a model governs only which
-senses it chooses between, never whether a word exists.
-
-The inflections are materialized at build time, so no morphology runs at run time. `ImageCompiler` writes the
-Brotli-compressed sections of the image.
+Every row of the anchors, the holdout and the real-text sentences must have four fields, a sense id that exists in the
+inventory, the lemma of that sense, and the part of speech of that sense. The training sentences must be disjoint from
+the holdout, real-text and suite sentences, from the SemCor and treebank test sentences (when their cached files are
+present) and from the example sentences of Open English WordNet, under two keys: the normalized sentence and every
+8-gram of its words. A sentence that the writers saw as a gloss example therefore cannot train a classifier.
+A lemma needs anchors for at least two of its senses to get weights; a lemma with fewer is not an error and is listed by
+the tiers report.
 
 #### Weights training (`ModelTrainer.TrainAsync`)
 
@@ -158,23 +174,40 @@ Brotli-compressed sections of the image.
    encoded, the elapsed time and, at the end, the time spent in the encoder.
 4. Without a frozen mean, compute the global mean of the pooled vectors. Center every vector on the mean and scale it
    to unit length with the same feature computation the classifier uses.
-5. Per lemma, fit a binary logistic regression (two senses) or one-versus-rest (more) with a deterministic Newton
-   solver. When a lemma has enough samples, choose its abstain margin by cross-validation to reach the target
-   accuracy while keeping a minimum share answered; other lemmas get the median margin. The lemmas are fitted
-   concurrently (`TrainingOptions.DefaultParallelism`, the processors minus two, 2 to 16 threads); each result is
-   written to its own slot, so the weights do not depend on the thread count. A lemma whose fit is in the fit cache
-   (see below) is not fitted again.
-6. Write the weights blob to the package's `Resources/weights.bin`.
+5. Per lemma that has two or more senses with anchors, fit a one-versus-rest L2-regularized logistic regression
+   (C = 100) over its fine senses with a deterministic Newton solver. A sense with a single anchor still takes part in
+   the training; a lemma with fewer than two anchored senses gets no weights. The columns are the senses in inventory
+   order. The group score of a lemma is derived from the fine scores (the sum of the normalized scores of the senses of
+   the group), so no group weights are stored.
+6. Choose the two thresholds of the lemma (see Thresholds below).
+7. The lemmas are fitted concurrently (`TrainingOptions.DefaultParallelism`, the processors minus two, 2 to 16
+   threads); each result is written to its own slot, so the weights do not depend on the thread count. A lemma whose
+   fit is in the fit cache (see below) is not fitted again.
+8. For a form whose analyses span lemmas (`left`, `bases`, `rows`), fit the small per-form chooser from the anchors of
+   the form, with labels rolled up from their fine senses (the lemma, or the analysis for forms such as `read`).
+9. Write the weights blob (`WSX3`, float16 weights) to the package's `Resources/weights.bin`.
+
+**Thresholds (`Thresholds.Choose`).** For every trained lemma the anchors are split into k = 5 folds by a seeded,
+deterministic shuffle; each fold is scored by a fit on the other folds, which gives out-of-fold margins for every
+anchor. The fine threshold `t_fine` is the lowest margin such that the answers at or above it reach the precision target
+on the out-of-fold anchors (95 percent by default); `t_group` is chosen in the same way on the group of the answer
+derived from the fine scores. A level for which no threshold reaches the target gets no threshold and is never answered
+for that lemma. Only the anchors are read: the holdout, real-text, suite and independent evaluation sentences never
+reach the choice, so the accuracy figures of the evaluations are independent of the thresholds. The confidence of an
+answer maps the margin of the answered level onto 0 to 1 with 0.5 at the threshold of that level.
+
+**Tiers (`Tiers`).** The quota of a sense follows its WordNet 3.0 tag count: five or more, 20 anchor and 5 held-out
+sentences; one to four, 10 and 3; none, 5 and 2. The report lists every sense of every trained lemma with its counts
+and quota, the senses that fall short and the senses that are excluded (a sense that cannot be trained), each with the
+reason.
 
 **Frozen mean rule.** Features are centered on a global mean, and a recomputed mean moves whenever any anchor changes,
 which would change the weights of every lemma. The builder therefore reuses the stored mean of the committed blob, so
 with unchanged anchors a retraining reproduces the committed blob byte for byte (provided the encoder outputs are the
 same: the committed blob must have been trained with the ONNX Runtime version now referenced, because another version
 changes the low digits of the int8 encoder output), and editing the anchors of one lemma
-changes only the weights of that lemma. The one remaining coupling is the fallback margin: a lemma with too few anchors
-for cross-validation takes the median margin of the cross-validated lemmas. Use `--recompute-mean` after an encoder
-change (a new model file) and whenever the anchors have changed so much that the old mean no longer centers them; the
-whole blob then changes.
+changes only the weights of that lemma. Use `--recompute-mean` after an encoder change (a new model file) and whenever
+the anchors have changed so much that the old mean no longer centers them; the whole blob then changes.
 
 **Embedding cache (`EmbeddingCache`, `CachingEncoder`).** The encoder is deterministic for a given set of model files,
 so its output is cached per model in `<cache>/<model-id>/embeddings.bin` (default cache folder
@@ -183,7 +216,8 @@ target word index, and the file is valid only for the digest of the model's ONNX
 pinned in the model specification and verified when the model is opened), the casing and the version of ONNX Runtime
 (a new runtime version changes the low digits of the int8 encoder output, and with them the weights): a changed model
 file or runtime drops the whole cache. The vectors are stored as the exact 64-bit numbers the encoder returned, so a
-cached vector is bit-identical to a fresh encode. Every entry carries a checksum; an entry that fails it, a cut-off file,
+cached vector is bit-identical to a fresh encode. Every entry carries a checksum; an entry that fails it, a cut-off
+file,
 a damaged header or an unreadable file is ignored and the sentences are encoded again, never failing the run. The file
 is rewritten
 atomically (a temporary file in the same folder, then renamed) at the end of the run and after every 4000 newly
@@ -192,10 +226,11 @@ the pooling or tokenization that keeps the model files, delete the cache folder 
 
 **Fit cache (`FitCache`).** Fitting the classifiers is the longest step once the encoding is cached (minutes for the
 768-dimensional BertBaseCased), and the fit of a lemma depends on that lemma alone. `<cache>/<model-id>/fits.bin`
-therefore stores the fitted weights, biases and margin of each lemma, keyed by the SHA-256 of the training settings, the
-lemma, its sense names, the label of each sentence and the exact feature vectors (which already contain the global
-mean). A lemma whose anchors and mean are unchanged reuses its fit bit-identically; any change of a feature number,
-such as a recomputed mean, another encoder or another runtime version, finds no entry and the lemma is fitted. With
+therefore stores the fitted weights, biases and thresholds of each lemma, keyed by the SHA-256 of the training settings
+(the threshold settings, the precision target and the seed included), the lemma, its sense ids, the label of each
+sentence and the exact feature vectors (which already contain the global mean). A lemma whose anchors, mean and settings
+are unchanged reuses its fit bit-identically; any change of a feature number, such as a recomputed mean, another
+encoder or another runtime version, or of a threshold setting, finds no entry and the lemma is fitted. With
 the frozen mean, editing the anchors of one lemma therefore costs the encoding of its new sentences and the fit of that
 lemma. The file holds only the fits the last run used, entries carry a checksum, the first damaged entry ends the
 reading (later entries are fitted again), and the file is replaced atomically; `--no-cache` bypasses it as well.
@@ -206,14 +241,46 @@ require a second scoring path.
 
 #### Evaluation (`Evaluator.RunAsync`)
 
-Creates the model on the verified files, classifies the holdout and the real-text sentences, and reports per set
-the rows, the share of best-sense, part-of-speech and pronunciation matches, the answered share (confidence at least
-0.5) and its accuracy, plus the weights size, the latency per sentence and the first-use time and memory of the
-lexicon. `basic` is evaluated the same way without weights and additionally reports the calibration of its
-confidence: the number and accuracy of the answers in the confidence buckets (below 0.4, 0.4 to 0.6, 0.6 to 0.7, 0.7 to
-0.8, 0.8 to 0.9 and at least 0.9), the coverage and precision at the thresholds 0.6, 0.8 and 0.9, the size of the
-embedded table, the cold load time, the latency per word and per sentence, and a fixed comparison table against the
-reference accuracies of the other models.
+Creates the model on the verified files, classifies the holdout and the real-text sentences, and reports per set the
+rows, the share of answers at each level (sense, group, low-confidence group) and the accuracy at each level (the
+share of the sense-level answers with the right sense, of the group-level answers with the right group, and of the
+low-confidence answers with the right group), and the part-of-speech accuracy, plus the weights size, the latency per
+sentence and the first-use time and memory of the lexicon. `basic` is evaluated the same way without weights and
+additionally reports the calibration of its confidence: the number and accuracy of the answers in the confidence
+buckets (below 0.4, 0.4 to 0.6, 0.6 to 0.7, 0.7 to 0.8, 0.8 to 0.9 and at least 0.9), the coverage and precision at
+the thresholds 0.6, 0.8 and 0.9, the size of the embedded table, the cold load time, the latency per word and per
+sentence, and a fixed comparison table against the reference accuracies of the other models.
+
+#### Independent sense evaluation (`SenseEval.RunAsync`)
+
+1. Download SemCor 3.0 into the cache when it is missing and verify its pinned SHA-256; a file with another checksum is
+   rejected. SemCor is never committed.
+2. Map the WordNet 3.0 sense keys of the annotated tokens to OEWN senses through the `sense_key` and `id_map` tables.
+   A token whose key has no OEWN sense is skipped and counted.
+3. Classify the sentences through the shipped model and report, for the tokens of the trained lemmas, the share
+   answered at each level, the precision at each level, the part-of-speech accuracy and the accuracy of the
+   most-frequent-sense baseline (the first sense of the lemma and part of speech in inventory order).
+
+The tiers come from WordNet 3.0 tag counts that include SemCor; this gives a frequency prior and no sentence leakage,
+and the evaluation report says so.
+
+#### Running-text evaluation (`RunningText.RunAsync`)
+
+Downloads the English EWT treebank into the cache when it is missing, verifies the pinned checksum and classifies the
+sentences of the test file; the development file is the one used to select hyper-parameters and is never used here.
+The universal tags are mapped to the parts of speech of the library by a published convention: a possessive pronoun
+(`PRON` with `Poss=Yes`) is a determiner, and `NUM`, `PART`, `SYM` and `X` are excluded; the report lists the excluded
+tokens and their number.
+
+#### Suite (`Suite.Read`)
+
+`corpus/suite/suite.tsv` holds the reviewed sentences, each with its expected sense, group or part of speech, and
+`corpus/suite/expected.tsv` holds the expectation of each model for each row (`pass` or `known-miss`). The reader
+rejects
+a malformed row, a row without an expectation for a model and an expectation that names a sense or group that is not
+in the inventory. The xUnit `SuiteTests` of the Basic, MiniLM and BertBaseCased test projects read the suite through
+the builder's reader and fail when an expected pass regresses; the encoder tests skip when the model files are not
+present (Git LFS).
 
 #### Basic training (`BasicModelBuilder.TrainAsync`)
 
@@ -222,42 +289,48 @@ reference accuracies of the other models.
 2. Read and validate the inventory, anchors, holdout and forms as for the weights; the holdout is not used further.
 3. `BasicTrainer.Train` selects from the counts the closed-class words (enough occurrences and a dominant closed-class
    share), the most frequent dictionary-ambiguous words and the suffixes of one to three characters of words the lexicon
-   lacks, and trains one naive Bayes cue table per lemma with at least two senses from the anchors, with the same
+   lacks, and trains one naive Bayes cue table per word with at least two analyses from the anchors, with the same
    feature extraction and 16-bit hash as the runtime; hash collisions keep the more frequent feature, and weights and
-   priors are quantized to 1/8 nat. All numbers come from `BasicHyperparameters`.
+   priors are quantized to 1/8 nat. The analysis label of each anchor is rolled up from its fine sense (the lemma and
+   part of speech of the sense), so the anchors are labeled only once. All numbers come from `BasicHyperparameters`.
 4. `BasicTablesWriter.Write` serializes the table, `BasicTables.Load` checks that it reads back, and the file is
-   written with its size and SHA-256 reported.
+   written with its size and SHA-256 reported. The hash of the table covers the analysis inventory that it was trained
+   against.
 
 #### Basic tuning (`BasicTuner.RunAsync`)
 
 Trains and scores each variant of the hyper-parameter grid (one parameter at a time around the default) on the
 treebank development file and on a deterministic sample of the anchors split into a train and a dev part. It reports
-the accuracy on the ambiguous treebank tokens, the best-sense accuracy on the anchor dev part and the table size. It
-never reads the holdout or the real-text sentences and writes no file, so the reported evaluation stays honest.
+the accuracy on the ambiguous treebank tokens, the accuracy of the analysis on the anchor dev part and the table size.
+It never reads the holdout or the real-text sentences and writes no file, so the reported evaluation stays honest.
 
 #### Appendix (`AppendixGenerator.Write`)
 
-Writes a deterministic Markdown appendix: the explanation of parts of speech, pronunciations and forms, the summary
-of the dictionary words, and an alphabetical list of the trained lemmas with their senses, one example sentence per
-sense and their recognized forms. Lines are wrapped to the repository's markdown line limit.
+Writes a deterministic Markdown appendix: the explanation of parts of speech, pronunciations, groups and forms, the
+summary of the dictionary words, an alphabetical list of the trained lemmas, each with its senses (id, group, OEWN sense
+key, gloss and respelling), the tier and anchor counts of each sense and their recognized forms, and the legacy class
+map from the retired class ids to the groups and senses that replace them. Lines are wrapped to the repository's
+markdown line limit.
 
 ### Error Handling
 
-The `Main` method returns 0 on success and 1 for a usage or data error. An unknown command, a missing or malformed
-option, an unknown model name, an invalid or inconsistent corpus (`InvalidDataException`), a missing file or an I/O
-failure is reported as a one-line message on the error stream. The corpus validation is strict: anchors and holdout
-shall not overlap, every sense with sentences needs an inventory entry and every inventory entry needs a sentence,
-and a lemma shall have anchor sentences for at least two senses. Nothing is written when validation fails before the
-output step.
+The `Main` method returns 0 on success and 1 for a usage or data error. An unknown or removed command, a missing or
+malformed option, an unknown model name, an invalid or inconsistent corpus or inventory (`InvalidDataException`), a
+missing file, a download whose checksum differs from the pin or an I/O failure is reported as a one-line message on the
+error stream. The corpus validation is strict: a malformed row, a sense id that does not exist, a part of speech that
+disagrees with the sense and a sentence that is not disjoint from the sets it must not resemble are errors. The image
+compilation fails on a sense without a label, a sense in no group or in two groups and a group that mixes lemmas or
+parts of speech. Nothing is written when validation fails before the output step.
 
 ### Dependencies
 
-- Core: `WordLexicon`, `WordDetails`, `PartOfSpeech`, `IWordSenseModel`.
+- Core: `WordLexicon`, `WordDetails`, `PartOfSpeech`, `SenseLevel`, `WordSense`, `IWordSenseModel`.
 - Basic: `BasicTables`, `BasicClassifier`, `CueModel` and `PosTag` (the format, the tag set, the feature extraction and
   hash, and the segmentation shared with training).
 - Onnx: `OnnxWordSenseModel`, `OnnxEncoder`, the weights data types (read for the frozen mean) and `FeatureExtractor`.
 - MiniLM and BertBaseCased: the two model classes.
-- The corpus files and the model files under `model/`.
+- The WordData subsystem (`DataSchema`, `DataLayout`, `DataTables` and the validated tables of `data/`).
+- The corpus files and the model files under `model/`; SemCor 3.0 and the English EWT treebank files in their caches.
 
 ### Callers
 

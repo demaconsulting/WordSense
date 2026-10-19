@@ -1,8 +1,9 @@
 ## Basic Subsystem Verification Design
 
 This document describes the verification of the Basic subsystem, the package `DemaConsulting.WordSense.Basic`: a
-model that needs no model files and chooses among the senses of a word with a statistical part-of-speech tagger and a
-context cue model.
+model that needs no model files and chooses among the analyses (lemma, part of speech and features) of a word with a
+statistical part-of-speech tagger and a context cue model, answering at the part of speech level and naming a sense
+only for a word whose lemma and part of speech have one sense.
 
 ### Verification Approach
 
@@ -38,30 +39,38 @@ All subsystem scenarios pass on every platform and target framework of the CI ma
 
 #### Ambiguous Words Are Always Answered
 
-For a word with several senses the result has details and a confidence between one over the number of senses and 1; the
-model never abstains (see the `BasicClassifier` and `SenseFusion` unit documents).
+For a word with several analyses the result has details, the level part of speech and a confidence between one over the
+number of analyses and 1; the model never abstains (see the `BasicClassifier` and `SenseFusion` unit documents).
 
 #### Context Chooses the Part of Speech
 
 The same word is a noun after a determiner and a verb after a pronoun, because the tagger weighs the whole sentence
 (see the `PosTagger` and `BasicClassifier` unit documents). A modal or primary auxiliary (`we will record`, `she is
 here`) is answered `Auxiliary`, while `his last will and testament`, `the can is empty` and `the will` stay nouns:
-the Auxiliary sense is not chosen directly after an article or possessive.
+the Auxiliary analysis is not chosen directly after an article or possessive.
 
-#### Cues Separate Senses of One Part of Speech
+#### Cues Separate Analyses of One Part of Speech
 
-Senses that share a part of speech, such as the two meanings of a heteronym, are told apart by the words around the
-target (see the `CueModel`, `SenseFusion` and `BasicClassifier` unit documents).
+Analyses that share a part of speech, such as the past and the present of `read` or the lemmas of `left`, are told
+apart by the words around the target (see the `CueModel`, `SenseFusion` and `BasicClassifier` unit documents).
+
+#### Answer Level Is Stated Honestly
+
+An ambiguous word is answered at the part of speech level without a group or sense id, a word whose lemma and part of
+speech have one sense at the sense level with that sense and confidence 1, a word with one analysis and several senses
+at the part of speech level with confidence 1, and an unknown word at the level none; no answer is at the group level
+(see the `BasicClassifier` unit document).
 
 #### Unambiguous Words Match the Other Packages
 
-A word with a single sense is answered with the lexicon entry and confidence 1, and an unknown word is `(word, null,
-0)`, exactly as in the model packages.
+A word with a single analysis and a single sense is answered with the analysis, the sense and its group and confidence
+1, and an unknown word has no details, the level none and confidence 0, exactly as in the model packages. A number word
+such as `one` has details.
 
 #### Embedded Table Is Valid
 
-The table embedded in the assembly loads and a malformed table is rejected with `InvalidDataException` (see the
-`BasicTables` unit document).
+The table embedded in the assembly loads and a malformed table, a table built for another analysis inventory and a table
+with an unknown or duplicate analysis are rejected with `InvalidDataException` (see the `BasicTables` unit document).
 
 #### Deterministic and Thread-Safe
 

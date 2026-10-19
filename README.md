@@ -9,20 +9,23 @@
 [![Security][badge-security]][link-security]
 [![NuGet][badge-nuget]][link-nuget]
 
-WordSense is a .NET library that identifies the sense of a word in context: its lemma, its part of speech and, where
-the sense inventory distinguishes them, its sense. Today every known word gets its part of speech (whether "record" is
-a noun or a verb), and the heteronyms, such as "bow" and "read", also get a sense id that fixes their pronunciation.
-Every word is looked up in an embedded dictionary of over 140,000 common words. Only where a word has several meanings
+WordSense is a .NET library that identifies the sense of a word in context: its lemma, its part of speech and, where a
+model can tell, its sense: an Open English WordNet (OEWN) fine sense with a readable id such as `bank#financial-institution`
+and its WordNet sense key, or the coarse group of closely related senses it belongs to. Every answer states the level it
+was made at (sense, group or part of speech) and carries a confidence for that level, so you know whether "bank" is the
+money kind, at least a financial word, or only a noun. Every word is looked up in an embedded dictionary of over
+140,000 common words. Only where a word has several meanings
 does a model choose from the sentence: either the
-`Basic` model, which is a small statistical tagger that needs nothing else, or an ONNX encoder model (`MiniLM` or
-`BertBaseCased`) that is more accurate and runs on ONNX Runtime.
+`Basic` model, which is a small statistical tagger that needs nothing else and answers with the part of speech, or an
+ONNX encoder model (`MiniLM` or `BertBaseCased`) that is more accurate, chooses fine senses and runs on ONNX Runtime.
 
 ## Features
 
-- 📖 **Dictionary** - Parts of speech for over 140,000 common words
-- 🧠 **Context Aware** - Picks the part of speech of a word from its sentence
-- 🏷️ **Word Senses** - Sense ids for heteronyms like "bow" and "read"
-- 📊 **Confidence** - Every answer carries a confidence from 0 to 1
+- 📖 **Dictionary** - Parts of speech for over 140,000 common words, with the senses of each lemma
+- 🧠 **Context Aware** - Picks the part of speech and, for trained words, the sense of a word from its sentence
+- 🏷️ **Fine Senses and Groups** - Open English WordNet senses with readable ids, WordNet sense keys and coarse groups
+- 🎚️ **Answer Levels** - Each answer says whether it is a sense, a group or a part of speech
+- 📊 **Confidence** - Every answer carries a confidence from 0 to 1 that applies to its level
 - 📦 **Layered Packages** - Small core, dependency-free Basic, optional ONNX models
 - 🔒 **Verified Models** - Downloads are checked against pinned SHA-256 digests
 - 🌍 **Multi-Platform** - Windows, Linux and macOS; .NET 8, 9 and 10
@@ -181,7 +184,8 @@ and lists the confidence thresholds of each model. See also the [model compariso
 ## Documentation
 
 - **User Guide**: usage, configuration, limitations, licensing and troubleshooting ([user guide][link-user-guide])
-- **Senses appendix**: every supported lemma with its parts of speech and pronunciations ([appendix][link-appendix])
+- **Senses appendix**: every supported lemma with its senses, groups, OEWN keys and respellings, and the map from the
+  previous release's class ids ([appendix][link-appendix])
 - **Design, Verification and Requirements**: generated from `docs/`
 
 ## Credits and licenses

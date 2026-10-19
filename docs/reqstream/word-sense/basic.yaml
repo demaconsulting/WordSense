@@ -9,18 +9,21 @@ sections:
           - id: WordSense-Basic-Classify
             title: >-
               The Basic subsystem shall classify words from the core lexicon statistically: an unknown word without
-              details, a word with one sense with full confidence, and an ambiguous word with the sense that the
-              sentence context makes most probable.
+              details, a word whose lemma and part of speech have one sense with that sense, and an ambiguous word with
+              the analysis (lemma, part of speech and features) that the sentence context makes most probable, at the
+              part of speech level.
             tags: [subsystem]
             justification: |
               A lexicon lookup decides most words; the part of speech and the context cues in the sentence decide the
-              rest without a model.
+              rest without a model. Without fine-sense evidence the model states only what it can tell, the part of
+              speech.
             children:
               - WordSense-Basic-BasicWordSenseModel-Classify
               - WordSense-Basic-BasicWordSenseModel-Dispose
               - WordSense-Basic-BasicClassifier-Unknown
               - WordSense-Basic-BasicClassifier-SingleSense
               - WordSense-Basic-BasicClassifier-Resolve
+              - WordSense-Basic-BasicClassifier-Level
               - WordSense-Basic-BasicClassifier-Segments
               - WordSense-Basic-BasicClassifier-Normalization
               - WordSense-Basic-BasicClassifier-Validation
@@ -44,22 +47,24 @@ sections:
 
           - id: WordSense-Basic-Cues
             title: >-
-              The Basic subsystem shall separate senses that share a part of speech by scoring context cues taken
-              from the words around the target against per-lemma statistics.
+              The Basic subsystem shall separate analyses of one form that share a part of speech (the past and the
+              present of read, or the lemmas of a form such as left) by scoring context cues taken from the words
+              around the target against per-lemma statistics.
             tags: [subsystem]
             justification: |
-              Part of speech alone cannot choose between meanings of one part of speech; the neighboring words can.
+              Part of speech alone cannot choose between the analyses of one part of speech; the neighboring words
+              can.
             children:
               - WordSense-Basic-CueModel-Extract
               - WordSense-Basic-CueModel-Score
             tests:
-              - BasicClassifier_ClassifyAsync_SamePartOfSpeech_UsesCues
+              - BasicClassifier_ClassifyAsync_SamePartOfSpeechAnalyses_UsesCues
 
           - id: WordSense-Basic-Fusion
             title: >-
               The Basic subsystem shall combine the part-of-speech probabilities and the cue scores into one answer
-              for every ambiguous word, with a confidence that is the probability of the chosen sense, greater than 0
-              and at most 1.
+              for every ambiguous word, with a confidence that is the probability of the chosen analysis, greater than
+              0 and at most 1.
             tags: [subsystem]
             justification: |
               Callers apply their own confidence policy; an answer with an honest probability for every ambiguous word

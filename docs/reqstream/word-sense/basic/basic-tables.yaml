@@ -13,7 +13,8 @@ sections:
                   BasicTables shall read the transition statistics, the tabled words with their closed-class masks,
                   the suffix statistics and the per-lemma cue statistics from the compressed table, and shall reject
                   a table with a wrong signature, no compression, missing data, extra data or unordered entries as
-                  invalid data.
+                  invalid data, and a table built for another analysis inventory (inventory hash), an unknown analysis
+                  or a duplicate analysis.
                 tags: [unit]
                 justification: |
                   A damaged or foreign table must fail loudly at load time instead of producing wrong answers.
@@ -28,10 +29,10 @@ sections:
                   - BasicTables_Load_WrongVersionOrTagCount_Throws
                   - BasicTables_Load_TrailingBytes_Throws
                   - BasicTables_Load_UnorderedHashes_Throws
-                  - BasicTables_Load_OtherClassHash_ThrowsNamingBothHashes
-                  - BasicTables_Load_UnknownClass_Throws
-                  - BasicTables_Load_DuplicateClass_Throws
-                  - LemmaCue_RowOf_AnalysisWithoutClass_UsesMeaninglessColumnOfItsPartOfSpeech
+                  - BasicTables_Load_OtherInventoryHash_ThrowsNamingBothHashes
+                  - BasicTables_Load_UnknownAnalysis_Throws
+                  - BasicTables_Load_DuplicateAnalysis_Throws
+                  - LemmaCue_RowOf_Analysis_UsesTheColumnOfItsFeatures
                   - FeatureRef_Hash_PrefixAndDeterminism
 
               - id: WordSense-Basic-BasicTables-Embedded

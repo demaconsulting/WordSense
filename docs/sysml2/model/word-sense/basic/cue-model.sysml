@@ -1,6 +1,6 @@
 package WordSense {
     part def CueModel {
-        doc /* The context-cue model of the basic model: extracts context features around a target word and scores the senses of a lemma with hashed naive-Bayes weights. */
+        doc /* The context-cue model of the basic model: extracts context features around a target word and scores the candidate analyses of a form with hashed naive-Bayes weights. */
 
         comment sourceRef /* Source: src/DemaConsulting.WordSense.Basic/CueModel.cs */
         comment testRef /* Test: test/DemaConsulting.WordSense.Basic.Tests/CueModelTests.cs */

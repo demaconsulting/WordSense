@@ -19,6 +19,7 @@ sections:
                 tests:
                   - WordSenseBuilder_DataSchema_Load_CommittedSchema_DeclaresTables
                   - WordSenseBuilder_DataSchema_Load_CommittedSchema_DeclaresVocabularies
+                  - WordSenseBuilder_DataSchema_Load_CommittedSchema_DeclaresSenseGroupAndFrequencyTables
                   - WordSenseBuilder_DataSchema_Load_Damaged_Throws
                   - WordSenseBuilder_DataSchema_Load_MissingFile_Throws
 

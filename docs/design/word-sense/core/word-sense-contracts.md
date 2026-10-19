@@ -11,13 +11,24 @@ model for another without code changes.
 
 - `PartOfSpeech`: Noun, Pronoun, Verb, Adjective, Adverb, Preposition, Conjunction, Interjection, Determiner (the
   articles and possessives such as the, a, an, his, my) and Auxiliary (modal and primary auxiliaries such as will,
-  can, is, has; always the last sense of a word, after its content senses). Every dictionary word has a lexicon entry.
-- `WordDetails(SenseId, Lemma, PartOfSpeech, Features)`: a sealed record. `SenseId` (a class id such as `bow#weapon`)
-  is non-null only for an analysis tied to a sense class; `Features` is the inflection as `Key=Value` pairs joined by
-  `+` (for example `Person=3+Tense=Pres`), or an empty string.
-- `WordSense(Word, Details, Confidence)`: a readonly record struct. `Word` is the input word as given; `Details` is
-  the chosen sense or null when no sense could be chosen; `Confidence` is from 0 to 1 (1 when the word has a single
-  sense, 0 when unknown or undecided).
+  can, is, has; always the last analysis of a word, after its content analyses). Every dictionary word has a lexicon
+  entry.
+- `WordDetails(Lemma, PartOfSpeech, Features)`: a sealed record that describes one analysis of a word. It carries no
+  sense id. `Features` is the inflection as `Key=Value` pairs joined by `+` (for example `Person=3+Tense=Pres`), or an
+  empty string.
+- `SenseLevel`: an enum with the four answer levels in order of increasing precision: `None` (0, the word is unknown),
+  `PartOfSpeech` (1), `Group` (2) and `Sense` (3).
+- `WordSense(Word, Details, Level, GroupId, SenseId, Confidence)`: a readonly record struct. `Word` is the input word
+  as given; `Details` is the chosen analysis, or null when the level is `None`; `Level` is the level at which the word
+  was answered. The ids are present exactly where the level carries them: at `Sense` both `SenseId` and `GroupId` are
+  set, at `Group` only `GroupId`, at `PartOfSpeech` and `None` neither. `Confidence` is from 0 to 1 and refers to the
+  answered level: 1 for a word with a single sense, 0 for an unknown word, and 0.5 exactly at the model's calibrated
+  threshold for the level.
+- `SenseInfo(SenseId, GroupId, Lemma, PartOfSpeech, SenseKey, Respelling)`: a sealed record that describes one sense of
+  the catalog. `SenseKey` is the OEWN sense key, or null for a project sense that OEWN does not provide; `Respelling`
+  is optional pronunciation data.
+- `SenseGroup(GroupId, Lemma, PartOfSpeech, SenseIds, Respelling)`: a sealed record that describes a group of senses of
+  one lemma and part of speech; `SenseIds` is an immutable array in inventory order and `Respelling` is optional.
 - `IWordSenseModel : IDisposable`: `EnsureModelAsync(MirrorOptions? mirror, CancellationToken)` prepares the model
   (files, download). `ClassifyAsync(IEnumerable<string> words, CancellationToken)` returns `Task<WordSense[]>`
   parallel to the input; empty input gives an empty array. The input is one running text whose words are joined by
@@ -35,7 +46,8 @@ model for another without code changes.
 
 The unit has no algorithms. The contract of `ClassifyAsync` is the specification that every model implements: a null
 list throws `ArgumentNullException`, a null element throws `ArgumentException`, a canceled token throws
-`OperationCanceledException`.
+`OperationCanceledException`. A caller tests the `Level` of a result, not whether an id is null: a result at the
+`PartOfSpeech` level is a valid answer that has no sense id by design.
 
 #### Error Handling
 

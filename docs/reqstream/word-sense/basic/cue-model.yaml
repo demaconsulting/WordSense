@@ -24,12 +24,12 @@ sections:
 
               - id: WordSense-Basic-CueModel-Score
                 title: >-
-                  CueModel shall score each sense of a lemma from the stored weights of the cues, mark senses without
-                  statistics, and give the prior score when no cue is known.
+                  CueModel shall score each candidate analysis of a form from the stored weights of the cues, mark
+                  analyses without statistics, and give the prior score when no cue is known.
                 tags: [unit]
                 justification: |
-                  Senses that share a part of speech are separated by the cues alone; without cues the answer must
-                  fall back to the sense frequencies.
+                  Analyses that share a part of speech are separated by the cues alone; without cues the answer must
+                  fall back to the analysis frequencies.
                 tests:
-                  - CueModel_Score_UsesWeightsAndMarksMissingSenses
+                  - CueModel_Score_UsesWeightsAndMarksMissingAnalyses
                   - CueModel_Score_UnknownFeature_GivesPrior
