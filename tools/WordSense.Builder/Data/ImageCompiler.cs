@@ -281,7 +281,7 @@ internal static class ImageCompiler
         return hash.GetHashAndReset();
     }
 
-    private static byte[] Uints(IReadOnlyList<uint> values)
+    private static byte[] Uints(List<uint> values)
     {
         var bytes = new byte[values.Count * 4];
         for (var i = 0; i < values.Count; i++)

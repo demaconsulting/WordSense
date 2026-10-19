@@ -7,6 +7,9 @@ namespace WordSense.Builder.Tests;
 /// </summary>
 public sealed class LexiconTests : IDisposable
 {
+    private static readonly string[] AlphabeticalWords = ["ant", "bee", "cat"];
+    private static readonly string[] SplitTokens = ["Don't", "re-read", "it", ",", "ok", "?"];
+
     private readonly TestDirectory _dir = new();
 
     /// <inheritdoc />
@@ -92,7 +95,7 @@ public sealed class LexiconTests : IDisposable
 
         var words = LexiconSource.ReadWords(path);
 
-        Assert.Equal(new[] { "ant", "bee", "cat" }, words.Select(w => w.Word));
+        Assert.Equal(AlphabeticalWords, words.Select(w => w.Word));
         Assert.Equal("NV", LexiconSource.ToLetters(words[1].Mask));
     }
 
@@ -138,7 +141,7 @@ public sealed class LexiconTests : IDisposable
         var segments = TextSplitter.SplitSegments(text);
 
         Assert.Equal(text, string.Concat(segments.Select(s => text.Substring(s.Start, s.Length))));
-        Assert.Equal(new[] { "Don't", "re-read", "it", ",", "ok", "?" }, TextSplitter.SplitWords(text).Select(w => w.Text).ToArray());
+        Assert.Equal(SplitTokens, TextSplitter.SplitWords(text).Select(w => w.Text).ToArray());
         Assert.Contains(segments, s => s.IsSpace && s.Length == 2);
     }
 

@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using DemaConsulting.WordSense;
 
@@ -359,6 +360,7 @@ internal sealed class SenseInventory
     /// <param name="rows">Receives the valid rows.</param>
     /// <param name="errors">Receives one message per problem, naming the file and line.</param>
     /// <param name="seen">Tracks the senses already listed, with the file of the first listing.</param>
+    [SuppressMessage("Performance", "CA1862:Use the 'StringComparison' method overloads to perform case-insensitive string comparisons", Justification = "The file must already be lower-case; an ignore-case comparison would accept the wrong spelling.")]
     private static void ReadFile(string path, List<InventoryRow> rows, List<string> errors, Dictionary<(string, string), string> seen)
     {
         var name = Path.GetFileName(path);

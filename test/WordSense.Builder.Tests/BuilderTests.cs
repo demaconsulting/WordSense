@@ -8,6 +8,8 @@ namespace WordSense.Builder.Tests;
 /// </summary>
 public sealed class BuilderTests : IDisposable
 {
+    private static readonly string[] FunctionWords = ["the", "a", "an", "his", "albeit", "although", "alas", "ah", "two"];
+
     private readonly TestDirectory _dir = new();
 
     /// <inheritdoc />
@@ -693,7 +695,7 @@ public sealed class BuilderTests : IDisposable
             .Take(10)
             .ToList();
         Assert.True(lost.Count == 0, "Parts of speech of lexicon.tsv missing from the word image: " + string.Join(", ", lost));
-        Assert.All(new[] { "the", "a", "an", "his", "albeit", "although", "alas", "ah", "two" }, w => Assert.True(table.ContainsKey(w), w));
+        Assert.All(FunctionWords, w => Assert.True(table.ContainsKey(w), w));
     }
 
     /// <summary>

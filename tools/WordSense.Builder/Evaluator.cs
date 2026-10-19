@@ -120,7 +120,7 @@ internal sealed record EvaluationResult(
 
         rows[DisplayName(Model)] = RenderTableRow();
         // The table lists the models from the simplest to the most accurate (not in catalog order)
-        var order = new[] { "basic", "minilm", "bert-base-cased" }
+        var order = PreferredModelOrder
             .Concat(ModelCatalog.All.Select(m => m.Name))
             .Distinct(StringComparer.Ordinal)
             .Select(DisplayName)
@@ -149,6 +149,7 @@ internal sealed record EvaluationResult(
     };
 
     private static readonly double[] BucketEdges = [0.4, 0.6, 0.7, 0.8, 0.9];
+    private static readonly string[] PreferredModelOrder = ["basic", "minilm", "bert-base-cased"];
     private static readonly double[] Thresholds = [0.6, 0.8, 0.9];
 
     /// <summary>
@@ -395,7 +396,7 @@ internal static class Evaluator
 
     private static async Task<SetResult> ScoreAsync(
         string name,
-        IReadOnlyList<CorpusRow> rows,
+        List<CorpusRow> rows,
         IWordSenseModel classifier,
         IReadOnlyDictionary<(string Lemma, string Label), InventoryRow> gold,
         TextWriter? outcomesLog,

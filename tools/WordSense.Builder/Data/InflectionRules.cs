@@ -82,7 +82,7 @@ internal static partial class InflectionRules
     /// </summary>
     /// <param name="word">The lower-case word.</param>
     /// <returns>The number of groups.</returns>
-    public static int VowelGroups(string word) => VowelRun().Matches(word).Count;
+    public static int VowelGroups(string word) => VowelRun().Count(word);
 
     /// <summary>
     ///     Tells whether a word ends in consonant, vowel, consonant (not w, x or y) without a vowel pair before the end.

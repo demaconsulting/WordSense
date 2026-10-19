@@ -6,6 +6,8 @@ namespace DemaConsulting.WordSense.BertBaseCased.Tests;
 /// </summary>
 public class EndToEndTests
 {
+    private static readonly string[] ReadSenses = ["read#past", "read#present"];
+
     /// <summary>
     ///     The word <c>record</c> is a verb after "will" and a noun after "the".
     /// </summary>
@@ -80,7 +82,7 @@ public class EndToEndTests
         Assert.Equal("read", readsDetails.Lemma);
         Assert.Equal(PartOfSpeech.Verb, readsDetails.PartOfSpeech);
         Assert.Equal("read#present", readsDetails.SenseId);
-        Assert.Contains(past[2].Details!.SenseId, new[] { "read#past", "read#present" });
-        Assert.Contains(present[3].Details!.SenseId, new[] { "read#past", "read#present" });
+        Assert.Contains(past[2].Details!.SenseId, ReadSenses);
+        Assert.Contains(present[3].Details!.SenseId, ReadSenses);
     }
 }

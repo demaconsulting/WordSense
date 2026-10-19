@@ -129,8 +129,8 @@ public class BasicTrainerTests
         Assert.Equal(0.5, tables.InvTemperature);
         Assert.Equal(0.5, BasicTables.Load(other).HmmWeight);
         Assert.Equal(0.25, BasicTables.Load(other).InvTemperature);
-        Assert.True(tables.Words.ContainsKey("the"));
-        Assert.True(tables.Words["the"].ClosedMask != 0);
+        Assert.True(tables.Words.TryGetValue("the", out var the));
+        Assert.NotEqual(0, the.ClosedMask);
         Assert.Equal(2, tables.Cues["bass"].Senses.Length);
         Assert.True(tables.SuffixCount > 0);
     }

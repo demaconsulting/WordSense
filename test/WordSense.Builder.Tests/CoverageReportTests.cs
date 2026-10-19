@@ -5,6 +5,9 @@ namespace WordSense.Builder.Tests;
 /// </summary>
 public sealed class CoverageReportTests : IDisposable
 {
+    private static readonly string[] BodyLines = ["the body", "more body"];
+    private static readonly string[] NoMarkerLines = ["no", "markers"];
+
     private readonly TestDirectory _dir = new();
 
     /// <inheritdoc />
@@ -21,8 +24,8 @@ public sealed class CoverageReportTests : IDisposable
     {
         string[] lines = ["License words", "*** START OF THE PROJECT ***", "the body", "more body", "*** END OF THE PROJECT ***", "License again"];
 
-        Assert.Equal(new[] { "the body", "more body" }, CoverageReport.Body(lines).ToArray());
-        Assert.Equal(new[] { "no", "markers" }, CoverageReport.Body(["no", "markers"]).ToArray());
+        Assert.Equal(BodyLines, CoverageReport.Body(lines).ToArray());
+        Assert.Equal(NoMarkerLines, CoverageReport.Body(["no", "markers"]).ToArray());
     }
 
     /// <summary>

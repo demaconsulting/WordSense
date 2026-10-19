@@ -638,7 +638,7 @@ public sealed class ModelDownloaderTests : IDisposable
             () => ModelDownloader.EnsureAsync(pinned, Mirror(server), TestContext.Current.CancellationToken, null, Lfs(server), _ => null));
 
         // Assert: both sources were tried and refused for their size
-        Assert.Equal(2, Regex.Matches(ex.Message, "larger than the pinned size").Count);
+        Assert.Equal(2, Regex.Count(ex.Message, "larger than the pinned size"));
         Assert.False(File.Exists(Path.Combine(_store, ModelId, "model.onnx")));
     }
 
