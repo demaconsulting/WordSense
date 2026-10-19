@@ -79,90 +79,40 @@ internal static class Program
             switch (args[0])
             {
                 case "compile-image":
-                    var dataFolder = options.TryGetValue("data", out var cd) ? Path.GetFullPath(cd) : Path.Combine(repository, "data");
-                    var imageOutput = options.TryGetValue("output", out var imo) ? imo : Path.Combine(repository, Data.ImageCompiler.DefaultOutput);
-                    var image = Data.ImageCompiler.Compile(dataFolder, imageOutput);
-                    output.WriteLine($"Wrote the word image to {imageOutput}: {image.Spellings.ToString(CultureInfo.InvariantCulture)} spellings, {image.Analyses.ToString(CultureInfo.InvariantCulture)} analyses, {image.Entries.ToString(CultureInfo.InvariantCulture)} entries, {image.Bytes.ToString(CultureInfo.InvariantCulture)} bytes.");
-                    return 0;
+                    return RunCompileImage(options, repository, output);
                 case "import-moby":
-                    var mobyInput = Require(options, InputOption);
-                    var lexiconOutput = options.TryGetValue("output", out var lo) ? lo : Path.Combine(corpus, "lexicon", LexiconSource.LexiconFile);
-                    var imported = LexiconImporter.Import(mobyInput, lexiconOutput);
-                    output.WriteLine(LexiconImporter.Render(imported));
-                    return 0;
+                    return RunImportMoby(options, corpus, output);
                 case "weights":
                     await ModelTrainer.TrainAsync(repository, corpus, ModelCatalog.Find(Require(options, "model")), output, cancellationToken).ConfigureAwait(false);
                     return 0;
                 case "ud-counts":
-                    var udDirectory = options.TryGetValue("ud", out var ud) ? Path.GetFullPath(ud) : BasicModelBuilder.DefaultUdCache(repository);
-                    var countsOutput = options.TryGetValue("output", out var co) ? Path.GetFullPath(co) : Path.Combine(corpus, "ud");
-                    output.WriteLine(await BasicModelBuilder.WriteUdCountsAsync(udDirectory, countsOutput, cancellationToken).ConfigureAwait(false));
-                    return 0;
+                    return await RunUdCountsAsync(options, repository, corpus, output, cancellationToken).ConfigureAwait(false);
                 case "train-basic":
-                    var cache = options.TryGetValue("ud", out var ud2) ? Path.GetFullPath(ud2) : BasicModelBuilder.DefaultUdCache(repository);
-                    var refresh = options.TryGetValue("refresh-ud", out var r) && string.Equals(r, "true", StringComparison.OrdinalIgnoreCase);
-                    var tablePath = options.TryGetValue("output", out var to) ? to : BasicModelBuilder.DefaultOutput;
-                    await BasicModelBuilder.TrainAsync(repository, corpus, cache, refresh, tablePath, output, cancellationToken).ConfigureAwait(false);
-                    return 0;
+                    return await RunTrainBasicAsync(options, repository, corpus, output, cancellationToken).ConfigureAwait(false);
                 case "tune-basic":
                     var tuneCache = options.TryGetValue("ud", out var ud3) ? Path.GetFullPath(ud3) : BasicModelBuilder.DefaultUdCache(repository);
                     output.Write(await BasicTuner.RunAsync(corpus, tuneCache, output, cancellationToken).ConfigureAwait(false));
                     return 0;
                 case "evaluate":
-                    var result = await Evaluator.RunAsync(repository, corpus, ModelCatalog.Find(Require(options, "model")), output, cancellationToken, options.GetValueOrDefault("outcomes")).ConfigureAwait(false);
-                    var text = result.Render();
-                    output.Write(text);
-                    if (options.TryGetValue("output", out var report))
-                    {
-                        File.WriteAllText(report, text, new System.Text.UTF8Encoding(false));
-                    }
-
-                    if (options.TryGetValue("table", out var tableFile))
-                    {
-                        result.UpdateTableFile(tableFile);
-                    }
-
-                    return 0;
+                    return await RunEvaluateAsync(options, repository, corpus, output, cancellationToken).ConfigureAwait(false);
                 case "ud-irregular":
-                    var irregularCache = options.TryGetValue("ud", out var ud4) ? Path.GetFullPath(ud4) : BasicModelBuilder.DefaultUdCache(repository);
-                    var irregularOutput = options.TryGetValue("output", out var io) ? io : Path.Combine(corpus, "lexicon", IrregularForms.DerivedFile);
-                    output.WriteLine(IrregularForms.Derive(irregularCache, corpus, irregularOutput));
-                    return 0;
+                    return RunUdIrregular(options, repository, corpus, output);
                 case "coverage":
-                    var textDirectory = Path.GetFullPath(Require(options, "text"));
-                    var topCount = options.TryGetValue("top", out var tp) ? int.Parse(tp, CultureInfo.InvariantCulture) : 100;
-                    var table = DemaConsulting.WordSense.WordLexicon.Current;
-                    var coverage = CoverageReport.Read(textDirectory, w => table.TryLookup(w, out _)).Render(topCount);
-                    output.Write(coverage);
-                    if (options.TryGetValue("output", out var coverageFile))
-                    {
-                        File.WriteAllText(coverageFile, coverage, new System.Text.UTF8Encoding(false));
-                    }
-
-                    return 0;
+                    return RunCoverage(options, output);
                 case "import-oewn":
                     return RunImportOewn(options, repository, output);
                 case "validate-data":
                     return RunValidateData(options, repository, output, error);
                 case "rebuild-forms":
-                    var formsData = options.TryGetValue("data", out var bd) ? Path.GetFullPath(bd) : Path.Combine(repository, "data");
-                    var formsOverwrite = options.TryGetValue("overwrite", out var fo) && string.Equals(fo, "true", StringComparison.OrdinalIgnoreCase);
-                    var generated = Data.FormGenerator.Run(formsData, corpus, options.TryGetValue("oewn", out var ow) ? Path.GetFullPath(ow) : null, formsOverwrite, options.TryGetValue("agid", out var ag) ? Path.GetFullPath(ag) : null);
-                    output.Write(generated.Render());
-                    return 0;
+                    return RunRebuildForms(options, repository, corpus, output);
                 case "generate-facts":
                     return RunGenerateFacts(options, repository, corpus, output, error);
                 case "audit-forms":
                     return RunAuditForms(options, repository, output, error);
                 case "import-agid":
-                    var agidOutput = options.TryGetValue("output", out var ao) ? ao : Path.Combine(corpus, "lexicon", Data.IrregularSources.AgidFile);
-                    output.WriteLine(Data.AgidImporter.Import(Require(options, InputOption), corpus, agidOutput));
-                    return 0;
+                    return RunImportAgid(options, corpus, output);
                 case "appendix":
-                    var appendix = options.TryGetValue("output", out var a) ? a : Path.Combine(repository, "docs", "user_guide", "appendix-senses.md");
-                    var lemmas = AppendixGenerator.Write(corpus, appendix);
-                    output.WriteLine($"Wrote the appendix of {lemmas.ToString(CultureInfo.InvariantCulture)} lemmas to {appendix}.");
-                    return 0;
+                    return RunAppendix(options, repository, corpus, output);
                 default:
                     error.WriteLine($"Unknown command '{args[0]}'. {Usage}");
                     return 1;
@@ -176,6 +126,106 @@ internal static class Program
     }
 
     private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "ud", "refresh-ud", "table", InputOption, "text", "top", "data", "sha256", "threshold", "overwrite", "outcomes", "oewn", "agid", "sample", "seed", "oracle", "adjudications", "max-error", "previous", "previous-release", "previous-sha256"], StringComparer.Ordinal);
+
+    private static int RunCompileImage(Dictionary<string, string> options, string repository, TextWriter output)
+    {
+        var dataFolder = options.TryGetValue("data", out var cd) ? Path.GetFullPath(cd) : Path.Combine(repository, "data");
+        var imageOutput = options.TryGetValue("output", out var imo) ? imo : Path.Combine(repository, Data.ImageCompiler.DefaultOutput);
+        var image = Data.ImageCompiler.Compile(dataFolder, imageOutput);
+        output.WriteLine($"Wrote the word image to {imageOutput}: {image.Spellings.ToString(CultureInfo.InvariantCulture)} spellings, {image.Analyses.ToString(CultureInfo.InvariantCulture)} analyses, {image.Entries.ToString(CultureInfo.InvariantCulture)} entries, {image.Bytes.ToString(CultureInfo.InvariantCulture)} bytes.");
+        return 0;
+    }
+
+    private static int RunImportMoby(Dictionary<string, string> options, string corpus, TextWriter output)
+    {
+        var mobyInput = Require(options, InputOption);
+        var lexiconOutput = options.TryGetValue("output", out var lo) ? lo : Path.Combine(corpus, "lexicon", LexiconSource.LexiconFile);
+        var imported = LexiconImporter.Import(mobyInput, lexiconOutput);
+        output.WriteLine(LexiconImporter.Render(imported));
+        return 0;
+    }
+
+    private static async Task<int> RunUdCountsAsync(Dictionary<string, string> options, string repository, string corpus, TextWriter output, CancellationToken cancellationToken)
+    {
+        var udDirectory = options.TryGetValue("ud", out var ud) ? Path.GetFullPath(ud) : BasicModelBuilder.DefaultUdCache(repository);
+        var countsOutput = options.TryGetValue("output", out var co) ? Path.GetFullPath(co) : Path.Combine(corpus, "ud");
+        output.WriteLine(await BasicModelBuilder.WriteUdCountsAsync(udDirectory, countsOutput, cancellationToken).ConfigureAwait(false));
+        return 0;
+    }
+
+    private static async Task<int> RunTrainBasicAsync(Dictionary<string, string> options, string repository, string corpus, TextWriter output, CancellationToken cancellationToken)
+    {
+        var cache = options.TryGetValue("ud", out var ud) ? Path.GetFullPath(ud) : BasicModelBuilder.DefaultUdCache(repository);
+        var refresh = options.TryGetValue("refresh-ud", out var r) && string.Equals(r, "true", StringComparison.OrdinalIgnoreCase);
+        var tablePath = options.TryGetValue("output", out var to) ? to : BasicModelBuilder.DefaultOutput;
+        await BasicModelBuilder.TrainAsync(repository, corpus, cache, refresh, tablePath, output, cancellationToken).ConfigureAwait(false);
+        return 0;
+    }
+
+    private static async Task<int> RunEvaluateAsync(Dictionary<string, string> options, string repository, string corpus, TextWriter output, CancellationToken cancellationToken)
+    {
+        var result = await Evaluator.RunAsync(repository, corpus, ModelCatalog.Find(Require(options, "model")), output, cancellationToken, options.GetValueOrDefault("outcomes")).ConfigureAwait(false);
+        var text = result.Render();
+        output.Write(text);
+        if (options.TryGetValue("output", out var report))
+        {
+            File.WriteAllText(report, text, new System.Text.UTF8Encoding(false));
+        }
+
+        if (options.TryGetValue("table", out var tableFile))
+        {
+            result.UpdateTableFile(tableFile);
+        }
+
+        return 0;
+    }
+
+    private static int RunUdIrregular(Dictionary<string, string> options, string repository, string corpus, TextWriter output)
+    {
+        var irregularCache = options.TryGetValue("ud", out var ud) ? Path.GetFullPath(ud) : BasicModelBuilder.DefaultUdCache(repository);
+        var irregularOutput = options.TryGetValue("output", out var io) ? io : Path.Combine(corpus, "lexicon", IrregularForms.DerivedFile);
+        output.WriteLine(IrregularForms.Derive(irregularCache, corpus, irregularOutput));
+        return 0;
+    }
+
+    private static int RunCoverage(Dictionary<string, string> options, TextWriter output)
+    {
+        var textDirectory = Path.GetFullPath(Require(options, "text"));
+        var topCount = options.TryGetValue("top", out var tp) ? int.Parse(tp, CultureInfo.InvariantCulture) : 100;
+        var table = DemaConsulting.WordSense.WordLexicon.Current;
+        var coverage = CoverageReport.Read(textDirectory, w => table.TryLookup(w, out _)).Render(topCount);
+        output.Write(coverage);
+        if (options.TryGetValue("output", out var coverageFile))
+        {
+            File.WriteAllText(coverageFile, coverage, new System.Text.UTF8Encoding(false));
+        }
+
+        return 0;
+    }
+
+    private static int RunRebuildForms(Dictionary<string, string> options, string repository, string corpus, TextWriter output)
+    {
+        var formsData = options.TryGetValue("data", out var bd) ? Path.GetFullPath(bd) : Path.Combine(repository, "data");
+        var formsOverwrite = options.TryGetValue("overwrite", out var fo) && string.Equals(fo, "true", StringComparison.OrdinalIgnoreCase);
+        var generated = Data.FormGenerator.Run(formsData, corpus, options.TryGetValue("oewn", out var ow) ? Path.GetFullPath(ow) : null, formsOverwrite, options.TryGetValue("agid", out var ag) ? Path.GetFullPath(ag) : null);
+        output.Write(generated.Render());
+        return 0;
+    }
+
+    private static int RunImportAgid(Dictionary<string, string> options, string corpus, TextWriter output)
+    {
+        var agidOutput = options.TryGetValue("output", out var ao) ? ao : Path.Combine(corpus, "lexicon", Data.IrregularSources.AgidFile);
+        output.WriteLine(Data.AgidImporter.Import(Require(options, InputOption), corpus, agidOutput));
+        return 0;
+    }
+
+    private static int RunAppendix(Dictionary<string, string> options, string repository, string corpus, TextWriter output)
+    {
+        var appendix = options.TryGetValue("output", out var a) ? a : Path.Combine(repository, "docs", "user_guide", "appendix-senses.md");
+        var lemmas = AppendixGenerator.Write(corpus, appendix);
+        output.WriteLine($"Wrote the appendix of {lemmas.ToString(CultureInfo.InvariantCulture)} lemmas to {appendix}.");
+        return 0;
+    }
 
     private static int RunImportOewn(Dictionary<string, string> options, string repository, TextWriter output)
     {

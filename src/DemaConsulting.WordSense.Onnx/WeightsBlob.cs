@@ -55,20 +55,7 @@ internal static class WeightsBlob
     /// <exception cref="InvalidDataException">Thrown when the blob is corrupt.</exception>
     public static WeightsData Read(ReadOnlySpan<byte> blob)
     {
-        byte[] data;
-        try
-        {
-            using var input = new MemoryStream(blob.ToArray());
-            using var brotli = new BrotliStream(input, CompressionMode.Decompress);
-            using var raw = new MemoryStream();
-            brotli.CopyTo(raw);
-            data = raw.ToArray();
-        }
-        catch (Exception ex) when (ex is IOException or InvalidOperationException)
-        {
-            throw new InvalidDataException("The weights are corrupt.", ex);
-        }
-
+        var data = Decompress(blob);
         var span = data.AsSpan();
         if (span.Length < Magic.Length || !span[..Magic.Length].SequenceEqual(Magic))
         {
@@ -111,6 +98,28 @@ internal static class WeightsBlob
         return p == span.Length
             ? new WeightsData(modelId, classHash, dimension, mean, lemmas)
             : throw new InvalidDataException("The weights have trailing data.");
+    }
+
+    /// <summary>
+    ///     Decompresses a weights blob.
+    /// </summary>
+    /// <param name="blob">The compressed blob.</param>
+    /// <returns>The raw bytes.</returns>
+    /// <exception cref="InvalidDataException">Thrown when the blob is corrupt.</exception>
+    private static byte[] Decompress(ReadOnlySpan<byte> blob)
+    {
+        try
+        {
+            using var input = new MemoryStream(blob.ToArray());
+            using var brotli = new BrotliStream(input, CompressionMode.Decompress);
+            using var raw = new MemoryStream();
+            brotli.CopyTo(raw);
+            return raw.ToArray();
+        }
+        catch (Exception ex) when (ex is IOException or InvalidOperationException)
+        {
+            throw new InvalidDataException("The weights are corrupt.", ex);
+        }
     }
 
     /// <summary>

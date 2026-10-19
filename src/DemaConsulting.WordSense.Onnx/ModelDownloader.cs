@@ -339,18 +339,7 @@ internal static class ModelDownloader
         for (var hop = 0; hop <= maxRedirects; hop++)
         {
             using var request = new HttpRequestMessage(HttpMethod.Get, current);
-            if (auth is not null && IsSameOrigin(auth.BaseUri, current))
-            {
-                if (auth.BearerToken is not null)
-                {
-                    request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", auth.BearerToken);
-                }
-                else if (auth.Credentials is not null)
-                {
-                    var raw = Encoding.UTF8.GetBytes($"{auth.Credentials.UserName}:{auth.Credentials.Password}");
-                    request.Headers.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(raw));
-                }
-            }
+            ApplyAuthorization(request, auth, current);
 
             var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
             var location = response.Headers.Location;
@@ -369,6 +358,30 @@ internal static class ModelDownloader
         }
 
         throw new HttpRequestException($"Too many redirects requesting '{uri.GetLeftPart(UriPartial.Path)}'.");
+    }
+
+    /// <summary>
+    ///     Attaches the mirror's credentials to a request, but only when the request goes to the mirror's own origin.
+    /// </summary>
+    /// <param name="request">The request.</param>
+    /// <param name="auth">The mirror whose credentials apply, or null for an anonymous request.</param>
+    /// <param name="target">The location the request is sent to.</param>
+    private static void ApplyAuthorization(HttpRequestMessage request, DownloadMirror? auth, Uri target)
+    {
+        if (auth is null || !IsSameOrigin(auth.BaseUri, target))
+        {
+            return;
+        }
+
+        if (auth.BearerToken is not null)
+        {
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", auth.BearerToken);
+        }
+        else if (auth.Credentials is not null)
+        {
+            var raw = Encoding.UTF8.GetBytes($"{auth.Credentials.UserName}:{auth.Credentials.Password}");
+            request.Headers.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(raw));
+        }
     }
 
     /// <summary>

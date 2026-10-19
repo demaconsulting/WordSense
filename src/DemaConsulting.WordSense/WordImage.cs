@@ -690,17 +690,28 @@ internal sealed class WordImage
 
         if (stride > 1)
         {
-            var n = raw / stride;
-            for (var p = 0; p < stride; p++)
-            {
-                for (var i = 0; i < n; i++)
-                {
-                    result[(i * stride) + p] = target[(p * n) + i];
-                }
-            }
+            Unshuffle(target, result, stride);
         }
 
         return result;
+    }
+
+    /// <summary>
+    ///     Reverses the byte-plane split of a strided section: plane <c>p</c> holds byte <c>p</c> of every record.
+    /// </summary>
+    /// <param name="planes">The planar bytes.</param>
+    /// <param name="result">Receives the interleaved records.</param>
+    /// <param name="stride">The record size in bytes.</param>
+    private static void Unshuffle(byte[] planes, byte[] result, int stride)
+    {
+        var n = result.Length / stride;
+        for (var p = 0; p < stride; p++)
+        {
+            for (var i = 0; i < n; i++)
+            {
+                result[(i * stride) + p] = planes[(p * n) + i];
+            }
+        }
     }
 
     private readonly record struct SectionEntry(uint Raw, uint Stored, uint Offset, uint Flags);

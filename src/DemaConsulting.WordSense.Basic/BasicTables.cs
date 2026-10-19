@@ -484,25 +484,32 @@ internal sealed class BasicTables
                 throw new InvalidDataException("The basic table has an invalid tag mask.");
             }
 
-            var counts = new int[PosTag.Count];
-            for (var t = 0; t < PosTag.Count; t++)
-            {
-                if ((presence & (1 << t)) == 0)
-                {
-                    continue;
-                }
-
-                counts[t] = reader.ReadVarint();
-                if (counts[t] <= 0)
-                {
-                    throw new InvalidDataException("The basic table has a non-positive word count.");
-                }
-            }
+            var counts = ReadWordCounts(reader, presence);
 
             words.Add(word, new WordEntry(closedMask, counts));
         }
 
         return words.ToFrozenDictionary(StringComparer.Ordinal);
+    }
+
+    private static int[] ReadWordCounts(Reader reader, int presence)
+    {
+        var counts = new int[PosTag.Count];
+        for (var t = 0; t < PosTag.Count; t++)
+        {
+            if ((presence & (1 << t)) == 0)
+            {
+                continue;
+            }
+
+            counts[t] = reader.ReadVarint();
+            if (counts[t] <= 0)
+            {
+                throw new InvalidDataException("The basic table has a non-positive word count.");
+            }
+        }
+
+        return counts;
     }
 
     private static (string[] Keys, double[][] Probabilities) ReadSuffixes(Reader reader)
@@ -547,46 +554,9 @@ internal sealed class BasicTables
                 throw new InvalidDataException("The basic table has an invalid sense count.");
             }
 
-            var senses = new CueSense[senseCount];
-            for (var s = 0; s < senseCount; s++)
-            {
-                var classId = reader.ReadString();
-                if (image.ClassIndex(classId) < 0)
-                {
-                    throw new InvalidDataException($"The basic table names the class '{classId}', which is not in the word image.");
-                }
-
-                if (!seenClasses.Add(classId))
-                {
-                    throw new InvalidDataException($"The basic table names the class '{classId}' twice.");
-                }
-
-                var prior = (sbyte)reader.ReadByte();
-                var meaningFlag = reader.ReadByte();
-                if (meaningFlag > 1)
-                {
-                    throw new InvalidDataException("The basic table has an invalid meaning flag.");
-                }
-
-                senses[s] = new CueSense(classId, prior) { HasMeaning = meaningFlag == 1, Pos = image.ClassPos(classId) };
-            }
-
-            var featureCount = reader.ReadCount();
-            var hashes = new ushort[featureCount];
-            var last = -1;
-            for (var f = 0; f < featureCount; f++)
-            {
-                var value = f == 0 ? reader.ReadVarint() : last + reader.ReadVarint();
-                if (value > ushort.MaxValue || value <= last)
-                {
-                    throw new InvalidDataException("The basic table has unordered feature hashes.");
-                }
-
-                hashes[f] = (ushort)value;
-                last = value;
-            }
-
-            var weights = new sbyte[checked(featureCount * senseCount)];
+            var senses = ReadCueSenses(reader, image, seenClasses, senseCount);
+            var hashes = ReadFeatureHashes(reader);
+            var weights = new sbyte[checked(hashes.Length * senseCount)];
             for (var w = 0; w < weights.Length; w++)
             {
                 weights[w] = (sbyte)reader.ReadByte();
@@ -596,6 +566,55 @@ internal sealed class BasicTables
         }
 
         return cues.ToFrozenDictionary(StringComparer.Ordinal);
+    }
+
+    private static CueSense[] ReadCueSenses(Reader reader, WordImage image, HashSet<string> seenClasses, int senseCount)
+    {
+        var senses = new CueSense[senseCount];
+        for (var s = 0; s < senseCount; s++)
+        {
+            var classId = reader.ReadString();
+            if (image.ClassIndex(classId) < 0)
+            {
+                throw new InvalidDataException($"The basic table names the class '{classId}', which is not in the word image.");
+            }
+
+            if (!seenClasses.Add(classId))
+            {
+                throw new InvalidDataException($"The basic table names the class '{classId}' twice.");
+            }
+
+            var prior = (sbyte)reader.ReadByte();
+            var meaningFlag = reader.ReadByte();
+            if (meaningFlag > 1)
+            {
+                throw new InvalidDataException("The basic table has an invalid meaning flag.");
+            }
+
+            senses[s] = new CueSense(classId, prior) { HasMeaning = meaningFlag == 1, Pos = image.ClassPos(classId) };
+        }
+
+        return senses;
+    }
+
+    private static ushort[] ReadFeatureHashes(Reader reader)
+    {
+        var featureCount = reader.ReadCount();
+        var hashes = new ushort[featureCount];
+        var last = -1;
+        for (var f = 0; f < featureCount; f++)
+        {
+            var value = f == 0 ? reader.ReadVarint() : last + reader.ReadVarint();
+            if (value > ushort.MaxValue || value <= last)
+            {
+                throw new InvalidDataException("The basic table has unordered feature hashes.");
+            }
+
+            hashes[f] = (ushort)value;
+            last = value;
+        }
+
+        return hashes;
     }
 
     private static (double[] Transition, double[] TagPrior, double[] SuffixFallback) Derive(int[] c1, int[] c2, int[] c3, double l1, double l2, double l3)
