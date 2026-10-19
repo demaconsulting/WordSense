@@ -804,9 +804,9 @@ attendee	0	oewn-attendee-n	Number=Sing	dema	0			oewn_form
 attendees	0	oewn-attendee-n	Number=Plur	dema	0			rule
 attender	0	oewn-attender-n	Number=Sing	dema	0			oewn_form
 attenders	0	oewn-attender-n	Number=Plur	dema	0			rule
-attending	0	oewn-attending-a	Degree=Pos	dema	0			oewn_form
-attending	1	oewn-attending-n	Number=Sing	dema	0			oewn_form
-attending	2	oewn-attend-v	VerbForm=Ger	dema	0			rule
+attending	0	oewn-attend-v	VerbForm=Ger	dema	0			rule
+attending	1	oewn-attending-a	Degree=Pos	dema	0			oewn_form
+attending	2	oewn-attending-n	Number=Sing	dema	0			oewn_form
 attending to	0	oewn-attend_to-v	VerbForm=Ger	dema	0			rule
 attendingly	0		Degree=Pos	dema	0	attendingly	r	moby_reverse
 attendings	0	oewn-attending-n	Number=Plur	dema	0			rule
@@ -854,8 +854,8 @@ attestations	0	oewn-attestation-n	Number=Plur	dema	0			rule
 attestative	0		Degree=Pos	dema	0	attestative	a	moby_reverse
 attestator	0	oewn-attestator-n	Number=Sing	dema	0			oewn_form
 attestators	0	oewn-attestator-n	Number=Plur	dema	0			rule
-attested	0	oewn-attested-a	Degree=Pos	dema	0			oewn_form
-attested	1	oewn-attest-v	Tense=Past+VerbForm=Part	dema	0			rule
+attested	0	oewn-attest-v	Tense=Past+VerbForm=Part	dema	0			rule
+attested	1	oewn-attested-a	Degree=Pos	dema	0			oewn_form
 attester	0	oewn-attester-n	Number=Sing	dema	0			oewn_form
 attesters	0	oewn-attester-n	Number=Plur	dema	0			rule
 attesting	0	oewn-attest-v	VerbForm=Ger	dema	0			rule
@@ -877,8 +877,8 @@ attingency	0		Number=Sing	dema	0	attingency	n	moby_reverse
 attingent	0		Degree=Pos	dema	0	attingent	a	moby_reverse
 attire	0	oewn-attire-v	VerbForm=Inf	dema	0			oewn_form
 attire	1	oewn-attire-n	Number=Sing	dema	0			oewn_form
-attired	0	oewn-attired-a	Degree=Pos	dema	0			oewn_form
-attired	1	oewn-attire-v	Tense=Past+VerbForm=Part	dema	0			rule
+attired	0	oewn-attire-v	Tense=Past+VerbForm=Part	dema	0			rule
+attired	1	oewn-attired-a	Degree=Pos	dema	0			oewn_form
 attirement	0		Number=Sing	dema	0	attirement	n	moby_reverse
 attirements	0		Number=Plur	dema	0	attirement	n	rule
 attires	0	oewn-attire-v	Person=3+Tense=Pres	dema	0			rule
@@ -977,8 +977,8 @@ attributor	0		Number=Sing	dema	0	attributor	n	moby_reverse
 attributors	0		Number=Plur	dema	0	attributor	n	rule
 attrite	0		Degree=Pos	dema	0	attrite	a	moby_reverse
 attrite	1		VerbForm=Inf	dema	0	attrite	v	moby_reverse
-attrited	0	oewn-attrited-a	Degree=Pos	dema	0			oewn_form
-attrited	1		Tense=Past+VerbForm=Part	dema	0	attrite	v	moby_reverse
+attrited	0		Tense=Past+VerbForm=Part	dema	0	attrite	v	moby_reverse
+attrited	1	oewn-attrited-a	Degree=Pos	dema	0			oewn_form
 attriteness	0		Number=Sing	dema	0	attriteness	n	moby_reverse
 attriting	0		VerbForm=Ger	dema	0	attrite	v	moby_reverse
 attrition	0	oewn-attrition-n	Number=Sing	dema	0			oewn_form

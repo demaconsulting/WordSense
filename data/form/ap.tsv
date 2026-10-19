@@ -638,10 +638,10 @@ appall	0	oewn-appall-v	VerbForm=Inf	dema	0			oewn_form
 appalled	0	oewn-appal-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 appalled	1	oewn-appall-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 appalled	2	oewn-appalled-a	Degree=Pos	dema	0			oewn_form
-appalling	0	oewn-appalling-a	Degree=Pos	dema	0			oewn_form
-appalling	1	oewn-appalling-n	Number=Sing	dema	0			oewn_form
-appalling	2	oewn-appal-v	VerbForm=Ger	dema	0			oewn_form
-appalling	3	oewn-appall-v	VerbForm=Ger	dema	0			oewn_form
+appalling	0	oewn-appal-v	VerbForm=Ger	dema	0			oewn_form
+appalling	1	oewn-appall-v	VerbForm=Ger	dema	0			oewn_form
+appalling	2	oewn-appalling-a	Degree=Pos	dema	0			oewn_form
+appalling	3	oewn-appalling-n	Number=Sing	dema	0			oewn_form
 appallingly	0	oewn-appallingly-r	Degree=Pos	dema	0			oewn_form
 appallings	0	oewn-appalling-n	Number=Plur	dema	0			rule
 appalls	0	oewn-appall-v	Person=3+Tense=Pres	dema	0			rule
@@ -946,8 +946,8 @@ applicator	0	oewn-applicator-n	Number=Sing	dema	0			oewn_form
 applicatorily	0		Degree=Pos	dema	0	applicatorily	r	moby_reverse
 applicators	0	oewn-applicator-n	Number=Plur	dema	0			rule
 applicatory	0	oewn-applicatory-a	Degree=Pos	dema	0			oewn_form
-applied	0	oewn-applied-a	Degree=Pos	dema	0			oewn_form
-applied	1	oewn-apply-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+applied	0	oewn-apply-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+applied	1	oewn-applied-a	Degree=Pos	dema	0			oewn_form
 applied anatomies	0	oewn-applied_anatomy-n	Number=Plur	dema	0			rule
 applied anatomy	0	oewn-applied_anatomy-n	Number=Sing	dema	0			oewn_form
 applied math	0	oewn-applied_math-n	Number=Sing	dema	0			oewn_form
@@ -976,8 +976,8 @@ appoggiaturas	0	oewn-appoggiatura-n	Number=Plur	dema	0			rule_variant
 appoggiature	0	oewn-appoggiatura-n	Number=Plur	dema	0			oewn_form
 appoint	0	oewn-appoint-v	VerbForm=Inf	dema	0			oewn_form
 appointable	0		Degree=Pos	dema	0	appointable	a	moby_reverse
-appointed	0	oewn-appointed-a	Degree=Pos	dema	0			oewn_form
-appointed	1	oewn-appoint-v	Tense=Past+VerbForm=Part	dema	0			rule
+appointed	0	oewn-appoint-v	Tense=Past+VerbForm=Part	dema	0			rule
+appointed	1	oewn-appointed-a	Degree=Pos	dema	0			oewn_form
 appointee	0	oewn-appointee-n	Number=Sing	dema	0			oewn_form
 appointees	0	oewn-appointee-n	Number=Plur	dema	0			rule
 appointer	0		Number=Sing	dema	0	appointer	n	moby_reverse
@@ -1171,8 +1171,8 @@ approvedness	0		Number=Sing	dema	0	approvedness	n	moby_reverse
 approver	0	oewn-approver-n	Number=Sing	dema	0			oewn_form
 approvers	0	oewn-approver-n	Number=Plur	dema	0			rule
 approves	0	oewn-approve-v	Person=3+Tense=Pres	dema	0			rule
-approving	0	oewn-approving-n	Number=Sing	dema	0			oewn_form
-approving	1	oewn-approve-v	VerbForm=Ger	dema	0			rule
+approving	0	oewn-approve-v	VerbForm=Ger	dema	0			rule
+approving	1	oewn-approving-n	Number=Sing	dema	0			oewn_form
 approving	2	oewn-approving-a	Degree=Pos	dema	0			oewn_form
 approvingly	0	oewn-approvingly-r	Degree=Pos	dema	0			oewn_form
 approvings	0	oewn-approving-n	Number=Plur	dema	0			rule

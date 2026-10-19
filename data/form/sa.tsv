@@ -1231,7 +1231,6 @@ sailfishes	0	oewn-sailfish-n	Number=Plur	dema	0			oewn_form
 sailing	0	oewn-sail-v	VerbForm=Ger	dema	1			carried
 sailing	1	oewn-sail-n	Number=Sing+VerbForm=Ger	dema	1			carried
 sailing	2	oewn-sailing-n	Number=Sing	dema	0			oewn_form
-sailing	3	oewn-sailing-n	Number=Plur	dema	0			agid
 sailing boat	0	oewn-sailing_boat-n	Number=Sing	dema	0			oewn_form
 sailing boats	0	oewn-sailing_boat-n	Number=Plur	dema	0			rule
 sailing master	0	oewn-sailing_master-n	Number=Sing	dema	0			oewn_form
@@ -1245,6 +1244,7 @@ sailing warship	0	oewn-sailing_warship-n	Number=Sing	dema	0			oewn_form
 sailing warships	0	oewn-sailing_warship-n	Number=Plur	dema	0			rule
 sailing-race	0	oewn-sailing-race-n	Number=Sing	dema	0			oewn_form
 sailing-races	0	oewn-sailing-race-n	Number=Plur	dema	0			rule
+sailings	0	oewn-sailing-n	Number=Plur	dema	0			rule
 sailmaker	0	oewn-sailmaker-n	Number=Sing	dema	0			oewn_form
 sailmakers	0	oewn-sailmaker-n	Number=Plur	dema	0			rule
 sailor	0	oewn-sailor-n	Number=Sing	dema	0			oewn_form
@@ -1424,9 +1424,9 @@ saleratus	0	oewn-saleratus-n	Number=Sing	dema	0			oewn_form
 saleratuses	0	oewn-saleratus-n	Number=Plur	dema	0			rule
 saleroom	0	oewn-saleroom-n	Number=Sing	dema	0			oewn_form
 salerooms	0	oewn-saleroom-n	Number=Plur	dema	0			rule
-sales	0	oewn-sales-n	Number=Sing	dema	0			oewn_form
-sales	1		Degree=Pos	dema	0	sales	a	moby_reverse
-sales	2	oewn-sale-n	Number=Plur	dema	0			rule
+sales	0	oewn-sale-n	Number=Plur	dema	0			rule
+sales	1	oewn-sales-n	Number=Sing	dema	0			oewn_form
+sales	2		Degree=Pos	dema	0	sales	a	moby_reverse
 sales agreement	0	oewn-sales_agreement-n	Number=Sing	dema	0			oewn_form
 sales agreements	0	oewn-sales_agreement-n	Number=Plur	dema	0			rule
 sales booth	0	oewn-sales_booth-n	Number=Sing	dema	0			oewn_form
@@ -1753,8 +1753,8 @@ saltgrasses	0		Number=Plur	dema	0	saltgrass	n	rule
 salticid	0		Number=Sing	dema	0	salticid	n	moby_reverse
 salticid	1		Degree=Pos	dema	0	salticid	a	moby_reverse
 salticids	0		Number=Plur	dema	0	salticid	n	rule
-saltier	0		Number=Sing	dema	0	saltier	n	moby_reverse
-saltier	1	oewn-salty-a	Degree=Cmp	dema	0			oewn_form
+saltier	0	oewn-salty-a	Degree=Cmp	dema	0			oewn_form
+saltier	1		Number=Sing	dema	0	saltier	n	moby_reverse
 saltiest	0	oewn-salty-a	Degree=Sup	dema	0			oewn_form
 saltigrade	0		Degree=Pos	dema	0	saltigrade	a	moby_reverse
 saltily	0		Degree=Pos	dema	0	saltily	r	moby_reverse
@@ -1960,15 +1960,15 @@ sampler	0	oewn-sampler-n	Number=Sing	dema	0			oewn_form
 samplers	0	oewn-sampler-n	Number=Plur	dema	0			rule
 samples	0	oewn-sample-n	Number=Plur	dema	0			rule
 samples	1	oewn-sample-v	Person=3+Tense=Pres	dema	0			rule
-sampling	0	oewn-sampling-n	Number=Plur	dema	0			agid
-sampling	1	oewn-sampling-n	Number=Sing	dema	0			oewn_form
-sampling	2	oewn-sample-v	VerbForm=Ger	dema	0			rule
+sampling	0	oewn-sampling-n	Number=Sing	dema	0			oewn_form
+sampling	1	oewn-sample-v	VerbForm=Ger	dema	0			rule
 sampling frequencies	0	oewn-sampling_frequency-n	Number=Plur	dema	0			rule
 sampling frequency	0	oewn-sampling_frequency-n	Number=Sing	dema	0			oewn_form
 sampling rate	0	oewn-sampling_rate-n	Number=Sing	dema	0			oewn_form
 sampling rates	0	oewn-sampling_rate-n	Number=Plur	dema	0			rule
 sampling station	0	oewn-sampling_station-n	Number=Sing	dema	0			oewn_form
 sampling stations	0	oewn-sampling_station-n	Number=Plur	dema	0			rule
+samplings	0	oewn-sampling-n	Number=Plur	dema	0			rule
 samps	0		Number=Plur	dema	0	samp	n	rule
 samsara	0	oewn-samsara-n	Number=Sing	dema	0			oewn_form
 samsaras	0	oewn-samsara-n	Number=Plur	dema	0			rule
@@ -1991,8 +1991,8 @@ sanctifiableness	0		Number=Sing	dema	0	sanctifiableness	n	moby_reverse
 sanctifiably	0		Degree=Pos	dema	0	sanctifiably	r	moby_reverse
 sanctification	0	oewn-sanctification-n	Number=Sing	dema	0			oewn_form
 sanctifications	0	oewn-sanctification-n	Number=Plur	dema	0			rule
-sanctified	0	oewn-sanctified-a	Degree=Pos	dema	0			oewn_form
-sanctified	1	oewn-sanctify-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+sanctified	0	oewn-sanctify-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+sanctified	1	oewn-sanctified-a	Degree=Pos	dema	0			oewn_form
 sanctifier	0		Number=Sing	dema	0	sanctifier	n	moby_reverse
 sanctifiers	0		Number=Plur	dema	0	sanctifier	n	rule
 sanctifies	0	oewn-sanctify-v	Person=3+Tense=Pres	dema	0			rule
@@ -2178,8 +2178,8 @@ sanded	0		Degree=Pos	dema	0	sanded	a	moby_reverse
 sanded	1	oewn-sand-v	Tense=Past+VerbForm=Part	dema	0			rule
 sanded cast	0	oewn-sand_cast-v	Tense=Past+VerbForm=Part	dema	0			rule
 sander	0	oewn-sander-n	Number=Sing	dema	0			oewn_form
-sanderling	0	oewn-sanderling-n	Number=Plur	dema	0			agid
-sanderling	1	oewn-sanderling-n	Number=Sing	dema	0			oewn_form
+sanderling	0	oewn-sanderling-n	Number=Sing	dema	0			oewn_form
+sanderlings	0	oewn-sanderling-n	Number=Plur	dema	0			rule
 sanders	0	oewn-sander-n	Number=Plur	dema	0			rule
 sandfish	0	oewn-sandfish-n	Number=Plur	dema	0			agid
 sandfish	1	oewn-sandfish-n	Number=Sing	dema	0			oewn_form
@@ -2440,8 +2440,8 @@ sapindaceous	0		Degree=Pos	dema	0	sapindaceous	a	moby_reverse
 sapless	0	oewn-sapless-a	Degree=Pos	dema	0			oewn_form
 saplessness	0		Number=Sing	dema	0	saplessness	n	moby_reverse
 saplessnesses	0		Number=Plur	dema	0	saplessness	n	rule
-sapling	0	oewn-sapling-n	Number=Plur	dema	0			agid
-sapling	1	oewn-sapling-n	Number=Sing	dema	0			oewn_form
+sapling	0	oewn-sapling-n	Number=Sing	dema	0			oewn_form
+saplings	0	oewn-sapling-n	Number=Plur	dema	0			rule
 sapodilla	0	oewn-sapodilla-n	Number=Sing	dema	0			oewn_form
 sapodilla plum	0	oewn-sapodilla_plum-n	Number=Sing	dema	0			oewn_form
 sapodilla plums	0	oewn-sapodilla_plum-n	Number=Plur	dema	0			rule
@@ -2858,8 +2858,8 @@ satisfice	0	oewn-satisfice-v	VerbForm=Inf	dema	0			oewn_form
 satisficed	0	oewn-satisfice-v	Tense=Past+VerbForm=Part	dema	0			rule
 satisfices	0	oewn-satisfice-v	Person=3+Tense=Pres	dema	0			rule
 satisficing	0	oewn-satisfice-v	VerbForm=Ger	dema	0			rule
-satisfied	0	oewn-satisfied-a	Degree=Pos	dema	0			oewn_form
-satisfied	1	oewn-satisfy-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+satisfied	0	oewn-satisfy-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+satisfied	1	oewn-satisfied-a	Degree=Pos	dema	0			oewn_form
 satisfier	0	oewn-satisfier-n	Number=Sing	dema	0			oewn_form
 satisfiers	0	oewn-satisfier-n	Number=Plur	dema	0			rule
 satisfies	0	oewn-satisfy-v	Person=3+Tense=Pres	dema	0			rule
@@ -2896,8 +2896,8 @@ saturants	0	oewn-saturant-n	Number=Plur	dema	0			rule
 saturate	0	dema-saturate-n	Number=Sing	dema	1			carried
 saturate	1	oewn-saturate-v	VerbForm=Inf	dema	1			carried
 saturate	2	dema-saturate-a	Degree=Pos	dema	0			carried
-saturated	0	oewn-saturated-a	Degree=Pos	dema	0			oewn_form
-saturated	1	oewn-saturate-v	Tense=Past+VerbForm=Part	dema	0			rule
+saturated	0	oewn-saturate-v	Tense=Past+VerbForm=Part	dema	0			rule
+saturated	1	oewn-saturated-a	Degree=Pos	dema	0			oewn_form
 saturated fatty acid	0	oewn-saturated_fatty_acid-n	Number=Sing	dema	0			oewn_form
 saturated fatty acids	0	oewn-saturated_fatty_acid-n	Number=Plur	dema	0			rule
 saturater	0		Number=Sing	dema	0	saturater	n	moby_reverse
@@ -3114,11 +3114,11 @@ saves	0	oewn-save-v	Person=3+Tense=Pres	dema	0			rule
 saves	1	oewn-save-n	Number=Plur	dema	0			rule
 saves up	0	oewn-save_up-v	Person=3+Tense=Pres	dema	0			rule
 savin	0	oewn-savin-n	Number=Sing	dema	0			oewn_form
-saving	0	oewn-saving-a	Degree=Pos	dema	0			oewn_form
-saving	1	oewn-saving-n	Number=Sing	dema	0			oewn_form
-saving	2	dema-saving-p		dema	0			carried
-saving	3	dema-saving-c		dema	0			carried
-saving	4	oewn-save-v	VerbForm=Ger	dema	0			rule
+saving	0	oewn-save-v	VerbForm=Ger	dema	0			rule
+saving	1	oewn-saving-a	Degree=Pos	dema	0			oewn_form
+saving	2	oewn-saving-n	Number=Sing	dema	0			oewn_form
+saving	3	dema-saving-p		dema	0			carried
+saving	4	dema-saving-c		dema	0			carried
 saving grace	0	oewn-saving_grace-n	Number=Sing	dema	0			oewn_form
 saving graces	0	oewn-saving_grace-n	Number=Plur	dema	0			rule
 saving up	0	oewn-save_up-v	VerbForm=Ger	dema	0			rule
@@ -3330,8 +3330,8 @@ sayings	0	oewn-saying-n	Number=Plur	dema	0			rule
 sayonara	0	dema-sayonara-i		dema	0			carried
 sayonara	1	oewn-sayonara-n	Number=Sing	dema	0			oewn_form
 sayonaras	0	oewn-sayonara-n	Number=Plur	dema	0			rule
-says	0	oewn-say-n	Number=Plur	dema	0			rule
-says	1	oewn-say-v	Person=3+Tense=Pres	dema	0			rule
+says	0	oewn-say-v	Person=3+Tense=Pres	dema	0			rule
+says	1	oewn-say-n	Number=Plur	dema	0			rule
 says farewell	0	oewn-say_farewell-v	Person=3+Tense=Pres	dema	0			rule
 sayyid	0		Number=Sing	dema	0	sayyid	n	moby_reverse
 sayyids	0		Number=Plur	dema	0	sayyid	n	rule

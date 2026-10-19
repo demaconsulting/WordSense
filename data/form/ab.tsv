@@ -161,8 +161,8 @@ abamps	0	oewn-abamp-n	Number=Plur	dema	0			rule
 abandon	0	oewn-abandon-v	VerbForm=Inf	dema	0			oewn_form
 abandon	1	oewn-abandon-n	Number=Sing	dema	0			oewn_form
 abandonable	0		Degree=Pos	dema	0	abandonable	a	moby_reverse
-abandoned	0	oewn-abandoned-a	Degree=Pos	dema	0			oewn_form
-abandoned	1	oewn-abandon-v	Tense=Past+VerbForm=Part	dema	0			rule
+abandoned	0	oewn-abandon-v	Tense=Past+VerbForm=Part	dema	0			rule
+abandoned	1	oewn-abandoned-a	Degree=Pos	dema	0			oewn_form
 abandoned infant	0	oewn-abandoned_infant-n	Number=Sing	dema	0			oewn_form
 abandoned infants	0	oewn-abandoned_infant-n	Number=Plur	dema	0			rule
 abandoned person	0	oewn-abandoned_person-n	Number=Sing	dema	0			oewn_form
@@ -185,8 +185,8 @@ abarticulation	0	oewn-abarticulation-n	Number=Sing	dema	0			oewn_form
 abarticulations	0	oewn-abarticulation-n	Number=Plur	dema	0			rule
 abas	0	oewn-aba-n	Number=Plur	dema	0			rule
 abase	0	oewn-abase-v	VerbForm=Inf	dema	0			oewn_form
-abased	0		Degree=Pos	dema	0	abased	a	moby_reverse
-abased	1	oewn-abase-v	Tense=Past+VerbForm=Part	dema	0			rule
+abased	0	oewn-abase-v	Tense=Past+VerbForm=Part	dema	0			rule
+abased	1		Degree=Pos	dema	0	abased	a	moby_reverse
 abasement	0	oewn-abasement-n	Number=Sing	dema	0			oewn_form
 abasements	0	oewn-abasement-n	Number=Plur	dema	0			rule
 abaser	0		Number=Sing	dema	0	abaser	n	moby_reverse
@@ -424,8 +424,8 @@ abider	0		Number=Sing	dema	0	abider	n	moby_reverse
 abiders	0		Number=Plur	dema	0	abider	n	rule
 abides	0	oewn-abide-v	Person=3+Tense=Pres	dema	0			rule
 abides by	0	oewn-abide_by-v	Person=3+Tense=Pres	dema	0			rule
-abiding	0	oewn-abiding-a	Degree=Pos	dema	0			oewn_form
-abiding	1	oewn-abide-v	VerbForm=Ger	dema	0			rule
+abiding	0	oewn-abide-v	VerbForm=Ger	dema	0			rule
+abiding	1	oewn-abiding-a	Degree=Pos	dema	0			oewn_form
 abiding by	0	oewn-abide_by-v	VerbForm=Ger	dema	0			rule
 abidingly	0		Degree=Pos	dema	0	abidingly	r	moby_reverse
 abidingness	0		Number=Sing	dema	0	abidingness	n	moby_reverse
@@ -778,8 +778,8 @@ abri	0		Number=Sing	dema	0	abri	n	moby_reverse
 abridgable	0		Degree=Pos	dema	0	abridgable	a	moby_reverse
 abridge	0	oewn-abridge-v	VerbForm=Inf	dema	0			oewn_form
 abridgeable	0		Degree=Pos	dema	0	abridgeable	a	moby_reverse
-abridged	0	oewn-abridged-a	Degree=Pos	dema	0			oewn_form
-abridged	1	oewn-abridge-v	Tense=Past+VerbForm=Part	dema	0			rule
+abridged	0	oewn-abridge-v	Tense=Past+VerbForm=Part	dema	0			rule
+abridged	1	oewn-abridged-a	Degree=Pos	dema	0			oewn_form
 abridgement	0	oewn-abridgement-n	Number=Sing	dema	0			oewn_form
 abridgements	0	oewn-abridgement-n	Number=Plur	dema	0			rule
 abridger	0	oewn-abridger-n	Number=Sing	dema	0			oewn_form
@@ -968,8 +968,8 @@ absorbance	0	oewn-absorbance-n	Number=Sing	dema	0			oewn_form
 absorbances	0	oewn-absorbance-n	Number=Plur	dema	0			rule
 absorbate	0	oewn-absorbate-n	Number=Sing	dema	0			oewn_form
 absorbates	0	oewn-absorbate-n	Number=Plur	dema	0			rule
-absorbed	0	oewn-absorbed-a	Degree=Pos	dema	0			oewn_form
-absorbed	1	oewn-absorb-v	Tense=Past+VerbForm=Part	dema	0			rule
+absorbed	0	oewn-absorb-v	Tense=Past+VerbForm=Part	dema	0			rule
+absorbed	1	oewn-absorbed-a	Degree=Pos	dema	0			oewn_form
 absorbedly	0		Degree=Pos	dema	0	absorbedly	r	moby_reverse
 absorbedness	0		Number=Sing	dema	0	absorbedness	n	moby_reverse
 absorbednesses	0		Number=Plur	dema	0	absorbedness	n	rule
@@ -987,8 +987,8 @@ absorbent materials	0	oewn-absorbent_material-n	Number=Plur	dema	0			rule
 absorbents	0	oewn-absorbent-n	Number=Plur	dema	0			rule
 absorber	0	oewn-absorber-n	Number=Sing	dema	0			oewn_form
 absorbers	0	oewn-absorber-n	Number=Plur	dema	0			rule
-absorbing	0	oewn-absorbing-a	Degree=Pos	dema	0			oewn_form
-absorbing	1	oewn-absorb-v	VerbForm=Ger	dema	0			rule
+absorbing	0	oewn-absorb-v	VerbForm=Ger	dema	0			rule
+absorbing	1	oewn-absorbing-a	Degree=Pos	dema	0			oewn_form
 absorbingly	0		Degree=Pos	dema	0	absorbingly	r	moby_reverse
 absorbs	0	oewn-absorb-v	Person=3+Tense=Pres	dema	0			rule
 absorptance	0	oewn-absorptance-n	Number=Sing	dema	0			oewn_form
@@ -1143,8 +1143,8 @@ abuttals	0		Number=Plur	dema	0	abuttal	n	rule
 abutted	0	oewn-abut-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 abutter	0	oewn-abutter-n	Number=Sing	dema	0			oewn_form
 abutters	0	oewn-abutter-n	Number=Plur	dema	0			rule
-abutting	0		Degree=Pos	dema	0	abutting	a	moby_reverse
-abutting	1	oewn-abut-v	VerbForm=Ger	dema	0			oewn_form
+abutting	0	oewn-abut-v	VerbForm=Ger	dema	0			oewn_form
+abutting	1		Degree=Pos	dema	0	abutting	a	moby_reverse
 abuzz	0	oewn-abuzz-a	Degree=Pos	dema	0			oewn_form
 abv	0		Number=Sing	dema	0	abv	n	moby_reverse
 abvolt	0	oewn-abvolt-n	Number=Sing	dema	0			oewn_form

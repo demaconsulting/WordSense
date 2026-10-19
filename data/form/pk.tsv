@@ -7,6 +7,6 @@ PKU tests	0	oewn-PKU_test-n	Capitalization=Exact+Number=Plur	dema	0			rule
 PKUS	0	oewn-PKU-n	Capitalization=Upper+Number=Plur	dema	0			rule
 pk	0		Number=Sing	dema	0	pk	n	moby_reverse
 pkg	0		Number=Sing	dema	0	pkg	n	moby_reverse
-pks	0		Number=Sing	dema	0	pks	n	moby_reverse
-pks	1		Number=Plur	dema	0	pk	n	rule
+pks	0		Number=Plur	dema	0	pk	n	rule
+pks	1		Number=Sing	dema	0	pks	n	moby_reverse
 pkt	0		Number=Sing	dema	0	pkt	n	moby_reverse

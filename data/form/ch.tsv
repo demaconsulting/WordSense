@@ -866,8 +866,8 @@ chaffs	1	oewn-chaff-v	Person=3+Tense=Pres	dema	0			rule
 chaffweed	0	oewn-chaffweed-n	Number=Sing	dema	0			oewn_form
 chaffweeds	0	oewn-chaffweed-n	Number=Plur	dema	0			rule
 chaffy	0	oewn-chaffy-a	Degree=Pos	dema	0			oewn_form
-chafing	0	oewn-chafing-n	Number=Sing	dema	0			oewn_form
-chafing	1	oewn-chafe-v	VerbForm=Ger	dema	0			rule
+chafing	0	oewn-chafe-v	VerbForm=Ger	dema	0			rule
+chafing	1	oewn-chafing-n	Number=Sing	dema	0			oewn_form
 chafing dish	0	oewn-chafing_dish-n	Number=Sing	dema	0			oewn_form
 chafing dishes	0	oewn-chafing_dish-n	Number=Plur	dema	0			rule
 chafing gear	0	oewn-chafing_gear-n	Number=Sing	dema	0			oewn_form
@@ -1120,8 +1120,8 @@ challenger	0	oewn-challenger-n	Number=Sing	dema	0			oewn_form
 challengers	0	oewn-challenger-n	Number=Plur	dema	0			rule
 challenges	0	oewn-challenge-v	Person=3+Tense=Pres	dema	0			rule
 challenges	1	oewn-challenge-n	Number=Plur	dema	0			rule
-challenging	0	oewn-challenging-a	Degree=Pos	dema	0			oewn_form
-challenging	1	oewn-challenge-v	VerbForm=Ger	dema	0			rule
+challenging	0	oewn-challenge-v	VerbForm=Ger	dema	0			rule
+challenging	1	oewn-challenging-a	Degree=Pos	dema	0			oewn_form
 challengingly	0		Degree=Pos	dema	0	challengingly	r	moby_reverse
 challiho	0		Number=Sing	dema	0	challiho	n	moby_reverse
 challihos	0		Number=Plur	dema	0	challiho	n	rule
@@ -1408,8 +1408,8 @@ changeless	0	oewn-changeless-a	Degree=Pos	dema	0			oewn_form
 changelessly	0		Degree=Pos	dema	0	changelessly	r	moby_reverse
 changelessness	0	oewn-changelessness-n	Number=Sing	dema	0			oewn_form
 changelessnesses	0	oewn-changelessness-n	Number=Plur	dema	0			rule
-changeling	0	oewn-changeling-n	Number=Plur	dema	0			agid
-changeling	1	oewn-changeling-n	Number=Sing	dema	0			oewn_form
+changeling	0	oewn-changeling-n	Number=Sing	dema	0			oewn_form
+changelings	0	oewn-changeling-n	Number=Plur	dema	0			rule
 changemaker	0		Number=Sing	dema	0	changemaker	n	moby_reverse
 changemakers	0		Number=Plur	dema	0	changemaker	n	rule
 changeover	0	oewn-changeover-n	Number=Sing	dema	0			oewn_form
@@ -1637,8 +1637,8 @@ chappies	0		Number=Plur	dema	0	chappie	n	rule
 chapping	0	oewn-chap-v	VerbForm=Ger	dema	0			oewn_form
 chaprasi	0		Number=Sing	dema	0	chaprasi	n	moby_reverse
 chaprasis	0		Number=Plur	dema	0	chaprasi	n	rule
-chaps	0	oewn-chap-n	Number=Plur	dema	0			rule
-chaps	1	oewn-chap-v	Person=3+Tense=Pres	dema	0			rule
+chaps	0	oewn-chap-v	Person=3+Tense=Pres	dema	0			rule
+chaps	1	oewn-chap-n	Number=Plur	dema	0			rule
 chapstick	0		Number=Sing	dema	0	chapstick	n	moby_reverse
 chapsticks	0		Number=Plur	dema	0	chapstick	n	rule
 chaptalization	0		Number=Sing	dema	0	chaptalization	n	moby_reverse
@@ -1726,8 +1726,8 @@ characters	0	oewn-character-n	Number=Plur	dema	0			rule
 characters	1	oewn-character-v	Person=3+Tense=Pres	dema	0			rule
 charactery	0		Number=Sing	dema	0	charactery	n	moby_reverse
 charade	0	oewn-charade-n	Number=Sing	dema	0			oewn_form
-charades	0	oewn-charades-n	Number=Sing	dema	0			oewn_form
-charades	1	oewn-charade-n	Number=Plur	dema	0			rule
+charades	0	oewn-charade-n	Number=Plur	dema	0			rule
+charades	1	oewn-charades-n	Number=Sing	dema	0			oewn_form
 charango	0		Number=Sing	dema	0	charango	n	moby_reverse
 charangos	0		Number=Plur	dema	0	charango	n	rule
 charas	0		Number=Plur	dema	0	chara	n	rule
@@ -1793,8 +1793,8 @@ chargeable	0	oewn-chargeable-a	Degree=Pos	dema	0			oewn_form
 chargeableness	0		Number=Sing	dema	0	chargeableness	n	moby_reverse
 chargeablenesses	0		Number=Plur	dema	0	chargeableness	n	rule
 chargeably	0		Degree=Pos	dema	0	chargeably	r	moby_reverse
-charged	0	oewn-charged-a	Degree=Pos	dema	0			oewn_form
-charged	1	oewn-charge-v	Tense=Past+VerbForm=Part	dema	0			rule
+charged	0	oewn-charge-v	Tense=Past+VerbForm=Part	dema	0			rule
+charged	1	oewn-charged-a	Degree=Pos	dema	0			oewn_form
 charged up	0	oewn-charge_up-v	Tense=Past+VerbForm=Part	dema	0			rule
 chargeful	0		Degree=Pos	dema	0	chargeful	a	moby_reverse
 chargeless	0		Degree=Pos	dema	0	chargeless	a	moby_reverse
@@ -2130,8 +2130,8 @@ chattering	0	oewn-chatter-v	VerbForm=Ger	dema	0			rule
 chattering	1	oewn-chattering-n	Number=Sing	dema	0			oewn_form
 chatteringly	0		Degree=Pos	dema	0	chatteringly	r	moby_reverse
 chatterings	0	oewn-chattering-n	Number=Plur	dema	0			rule
-chatters	0	oewn-chatter-n	Number=Plur	dema	0			rule
-chatters	1	oewn-chatter-v	Person=3+Tense=Pres	dema	0			rule
+chatters	0	oewn-chatter-v	Person=3+Tense=Pres	dema	0			rule
+chatters	1	oewn-chatter-n	Number=Plur	dema	0			rule
 chattery	0		Degree=Pos	dema	0	chattery	a	moby_reverse
 chattier	0	oewn-chatty-a	Degree=Cmp	dema	0			oewn_form
 chattiest	0	oewn-chatty-a	Degree=Sup	dema	0			oewn_form
@@ -2311,8 +2311,8 @@ checkered lily	0	oewn-checkered_lily-n	Number=Sing	dema	0			oewn_form
 checkered whiptail	0	oewn-checkered_whiptail-n	Number=Sing	dema	0			oewn_form
 checkered whiptails	0	oewn-checkered_whiptail-n	Number=Plur	dema	0			rule
 checkering	0	oewn-checker-v	VerbForm=Ger	dema	0			rule
-checkers	0	oewn-checkers-n	Number=Sing	dema	0			oewn_form
-checkers	1	oewn-checker-n	Number=Plur	dema	0			rule
+checkers	0	oewn-checker-n	Number=Plur	dema	0			rule
+checkers	1	oewn-checkers-n	Number=Sing	dema	0			oewn_form
 checkers	2	oewn-checker-v	Person=3+Tense=Pres	dema	0			rule
 checkerspot	0		Number=Sing	dema	0	checkerspot	n	moby_reverse
 checkerspots	0		Number=Plur	dema	0	checkerspot	n	rule
@@ -2527,8 +2527,8 @@ cheesiest	0	oewn-cheesy-a	Degree=Sup	dema	0			oewn_form
 cheesily	0		Degree=Pos	dema	0	cheesily	r	moby_reverse
 cheesiness	0		Number=Sing	dema	0	cheesiness	n	moby_reverse
 cheesinesses	0		Number=Plur	dema	0	cheesiness	n	rule
-cheesing	0	oewn-cheesing-n	Number=Sing	dema	0			oewn_form
-cheesing	1	oewn-cheese-v	VerbForm=Ger	dema	0			rule
+cheesing	0	oewn-cheese-v	VerbForm=Ger	dema	0			rule
+cheesing	1	oewn-cheesing-n	Number=Sing	dema	0			oewn_form
 cheesings	0	oewn-cheesing-n	Number=Plur	dema	0			rule
 cheesy	0	oewn-cheesy-a	Degree=Pos	dema	0			oewn_form
 cheetah	0	oewn-cheetah-n	Number=Sing	dema	0			oewn_form
@@ -2996,11 +2996,11 @@ cheveret	0		Number=Sing	dema	0	cheveret	n	moby_reverse
 cheverets	0		Number=Plur	dema	0	cheveret	n	rule
 chevet	0		Number=Sing	dema	0	chevet	n	moby_reverse
 chevets	0		Number=Plur	dema	0	chevet	n	rule
-chevied	0	oewn-chevy-v	Tense=Past+VerbForm=Part	dema	0			rule
-chevied	1	oewn-chivy-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
-chevies	0	oewn-chevy-v	Person=3+Tense=Pres	dema	0			rule
-chevies	1	oewn-chivy-v	Person=3+Tense=Pres	dema	0			oewn_form
-chevies	2		Number=Plur	dema	0	chevy	n	rule
+chevied	0	oewn-chivy-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+chevied	1	oewn-chevy-v	Tense=Past+VerbForm=Part	dema	0			rule
+chevies	0	oewn-chivy-v	Person=3+Tense=Pres	dema	0			oewn_form
+chevies	1		Number=Plur	dema	0	chevy	n	rule
+chevies	2	oewn-chevy-v	Person=3+Tense=Pres	dema	0			rule
 cheville	0		Number=Sing	dema	0	cheville	n	moby_reverse
 chevilles	0		Number=Plur	dema	0	cheville	n	rule
 chevon	0		Number=Sing	dema	0	chevon	n	moby_reverse
@@ -3027,8 +3027,8 @@ chevvy	0	oewn-chevvy-v	VerbForm=Inf	dema	0			oewn_form
 chevvying	0	oewn-chevvy-v	VerbForm=Ger	dema	0			rule
 chevy	0		Number=Sing	dema	0	chevy	n	moby_reverse
 chevy	1	oewn-chevy-v	VerbForm=Inf	dema	0			oewn_form
-chevying	0	oewn-chevy-v	VerbForm=Ger	dema	0			rule
-chevying	1	oewn-chivy-v	VerbForm=Ger	dema	0			oewn_form
+chevying	0	oewn-chivy-v	VerbForm=Ger	dema	0			oewn_form
+chevying	1	oewn-chevy-v	VerbForm=Ger	dema	0			rule
 chew	0	oewn-chew-v	VerbForm=Inf	dema	0			oewn_form
 chew	1	oewn-chew-n	Number=Sing	dema	0			oewn_form
 chew out	0	oewn-chew_out-v	VerbForm=Inf	dema	0			oewn_form
@@ -3687,8 +3687,8 @@ chinook salmons	0	oewn-chinook_salmon-n	Number=Plur	dema	0			rule
 chinook wind	0	oewn-chinook_wind-n	Number=Sing	dema	0			oewn_form
 chinook winds	0	oewn-chinook_wind-n	Number=Plur	dema	0			rule
 chinooks	0	oewn-chinook-n	Number=Plur	dema	0			rule
-chinos	0	oewn-chinos-n	Number=Sing	dema	0			oewn_form
-chinos	1	oewn-chino-n	Number=Plur	dema	0			rule
+chinos	0	oewn-chino-n	Number=Plur	dema	0			rule
+chinos	1	oewn-chinos-n	Number=Sing	dema	0			oewn_form
 chinquapin	0	oewn-chinquapin-n	Number=Sing	dema	0			oewn_form
 chinquapin oak	0	oewn-chinquapin_oak-n	Number=Sing	dema	0			oewn_form
 chinquapin oaks	0	oewn-chinquapin_oak-n	Number=Plur	dema	0			rule
@@ -4300,8 +4300,8 @@ chokepoint	0	oewn-chokepoint-n	Number=Sing	dema	0			oewn_form
 chokepoints	0	oewn-chokepoint-n	Number=Plur	dema	0			rule
 choker	0	oewn-choker-n	Number=Sing	dema	0			oewn_form
 chokers	0	oewn-choker-n	Number=Plur	dema	0			rule
-chokes	0	oewn-choke-n	Number=Plur	dema	0			rule
-chokes	1	oewn-choke-v	Person=3+Tense=Pres	dema	0			rule
+chokes	0	oewn-choke-v	Person=3+Tense=Pres	dema	0			rule
+chokes	1	oewn-choke-n	Number=Plur	dema	0			rule
 chokes back	0	oewn-choke_back-v	Person=3+Tense=Pres	dema	0			rule
 chokes down	0	oewn-choke_down-v	Person=3+Tense=Pres	dema	0			rule
 chokes off	0	oewn-choke_off-v	Person=3+Tense=Pres	dema	0			rule
@@ -4312,9 +4312,9 @@ chokeys	0	oewn-chokey-n	Number=Plur	dema	0			rule
 chokier	0	oewn-choky-a	Degree=Cmp	dema	0			rule
 chokies	0	oewn-choky-n	Number=Plur	dema	0			rule
 chokiest	0	oewn-choky-a	Degree=Sup	dema	0			rule
-choking	0	oewn-choking-a	Degree=Pos	dema	0			oewn_form
-choking	1	oewn-choking-n	Number=Sing	dema	0			oewn_form
-choking	2	oewn-choke-v	VerbForm=Ger	dema	0			rule
+choking	0	oewn-choke-v	VerbForm=Ger	dema	0			rule
+choking	1	oewn-choking-a	Degree=Pos	dema	0			oewn_form
+choking	2	oewn-choking-n	Number=Sing	dema	0			oewn_form
 choking back	0	oewn-choke_back-v	VerbForm=Ger	dema	0			rule
 choking coil	0	oewn-choking_coil-n	Number=Sing	dema	0			oewn_form
 choking coils	0	oewn-choking_coil-n	Number=Plur	dema	0			rule
@@ -4513,8 +4513,8 @@ choppiest	0	oewn-choppy-a	Degree=Sup	dema	0			oewn_form
 choppily	0		Degree=Pos	dema	0	choppily	r	moby_reverse
 choppiness	0	oewn-choppiness-n	Number=Sing	dema	0			oewn_form
 choppinesses	0	oewn-choppiness-n	Number=Plur	dema	0			rule
-chopping	0		Degree=Pos	dema	0	chopping	a	moby_reverse
-chopping	1	oewn-chop-v	VerbForm=Ger	dema	0			oewn_form
+chopping	0	oewn-chop-v	VerbForm=Ger	dema	0			oewn_form
+chopping	1		Degree=Pos	dema	0	chopping	a	moby_reverse
 chopping block	0	oewn-chopping_block-n	Number=Sing	dema	0			oewn_form
 chopping blocks	0	oewn-chopping_block-n	Number=Plur	dema	0			rule
 chopping board	0	oewn-chopping_board-n	Number=Sing	dema	0			oewn_form
@@ -4525,8 +4525,8 @@ chopping knives	0	oewn-chopping_knife-n	Number=Plur	dema	0			rule
 chopping off	0	oewn-chop_off-v	VerbForm=Ger	dema	0			rule
 chopping up	0	oewn-chop_up-v	VerbForm=Ger	dema	0			rule
 choppy	0	oewn-choppy-a	Degree=Pos	dema	0			oewn_form
-chops	0	oewn-chop-n	Number=Plur	dema	0			rule
-chops	1	oewn-chop-v	Person=3+Tense=Pres	dema	0			rule
+chops	0	oewn-chop-v	Person=3+Tense=Pres	dema	0			rule
+chops	1	oewn-chop-n	Number=Plur	dema	0			rule
 chops down	0	oewn-chop_down-v	Person=3+Tense=Pres	dema	0			rule
 chops off	0	oewn-chop_off-v	Person=3+Tense=Pres	dema	0			rule
 chops up	0	oewn-chop_up-v	Person=3+Tense=Pres	dema	0			rule

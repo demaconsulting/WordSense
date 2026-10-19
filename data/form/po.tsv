@@ -937,15 +937,15 @@ pokey	1	oewn-pokey-n	Number=Sing	dema	0			oewn_form
 pokeys	0	oewn-pokey-n	Number=Plur	dema	0			rule
 pokie	0		Number=Sing	dema	0	pokie	n	moby_reverse
 pokier	0	oewn-poky-a	Degree=Cmp	dema	0			oewn_form
-pokies	0		Degree=Pos	dema	0	pokies	a	moby_reverse
-pokies	1	oewn-poky-n	Number=Plur	dema	0			rule
-pokies	2		Number=Plur	dema	0	pokie	n	rule
+pokies	0		Number=Plur	dema	0	pokie	n	rule
+pokies	1		Degree=Pos	dema	0	pokies	a	moby_reverse
+pokies	2	oewn-poky-n	Number=Plur	dema	0			rule
 pokiest	0	oewn-poky-a	Degree=Sup	dema	0			oewn_form
 pokily	0		Degree=Pos	dema	0	pokily	r	moby_reverse
 pokiness	0		Number=Sing	dema	0	pokiness	n	moby_reverse
 pokinesses	0		Number=Plur	dema	0	pokiness	n	rule
-poking	0	oewn-poking-n	Number=Sing	dema	0			oewn_form
-poking	1	oewn-poke-v	VerbForm=Ger	dema	0			rule
+poking	0	oewn-poke-v	VerbForm=Ger	dema	0			rule
+poking	1	oewn-poking-n	Number=Sing	dema	0			oewn_form
 poking at	0	oewn-poke_at-v	VerbForm=Ger	dema	0			rule
 poking fun	0	oewn-poke_fun-v	VerbForm=Ger	dema	0			rule
 poking into	0	oewn-poke_into-v	VerbForm=Ger	dema	0			rule
@@ -1040,14 +1040,14 @@ poleax	0	oewn-poleax-n	Number=Sing	dema	0			oewn_form
 poleax	1	oewn-poleax-v	VerbForm=Inf	dema	0			oewn_form
 poleaxe	0	oewn-poleaxe-n	Number=Sing	dema	0			oewn_form
 poleaxe	1	oewn-poleaxe-v	VerbForm=Inf	dema	0			oewn_form
-poleaxed	0	oewn-poleax-v	Tense=Past+VerbForm=Part	dema	0			rule
-poleaxed	1	oewn-poleaxe-v	Tense=Past+VerbForm=Part	dema	0			rule
+poleaxed	0	oewn-poleaxe-v	Tense=Past+VerbForm=Part	dema	0			rule
+poleaxed	1	oewn-poleax-v	Tense=Past+VerbForm=Part	dema	0			rule
 poleaxes	0	oewn-poleax-n	Number=Plur	dema	0			rule
 poleaxes	1	oewn-poleaxe-n	Number=Plur	dema	0			rule
-poleaxes	2	oewn-poleax-v	Person=3+Tense=Pres	dema	0			rule
-poleaxes	3	oewn-poleaxe-v	Person=3+Tense=Pres	dema	0			rule
-poleaxing	0	oewn-poleax-v	VerbForm=Ger	dema	0			rule
-poleaxing	1	oewn-poleaxe-v	VerbForm=Ger	dema	0			rule
+poleaxes	2	oewn-poleaxe-v	Person=3+Tense=Pres	dema	0			rule
+poleaxes	3	oewn-poleax-v	Person=3+Tense=Pres	dema	0			rule
+poleaxing	0	oewn-poleaxe-v	VerbForm=Ger	dema	0			rule
+poleaxing	1	oewn-poleax-v	VerbForm=Ger	dema	0			rule
 polecat	0	oewn-polecat-n	Number=Sing	dema	0			oewn_form
 polecat weed	0	oewn-polecat_weed-n	Number=Sing	dema	0			oewn_form
 polecat weeds	0	oewn-polecat_weed-n	Number=Plur	dema	0			rule
@@ -1201,8 +1201,8 @@ polish	2	oewn-polish-n	Number=Sing	dema	1			carried
 polish	3	oewn-polish-v	VerbForm=Inf	dema	1			carried
 polish off	0	oewn-polish_off-v	VerbForm=Inf	dema	0			oewn_form
 polish up	0	oewn-polish_up-v	VerbForm=Inf	dema	0			oewn_form
-polished	0	oewn-polished-a	Degree=Pos	dema	0			oewn_form
-polished	1	oewn-polish-v	Tense=Past+VerbForm=Part	dema	0			rule
+polished	0	oewn-polish-v	Tense=Past+VerbForm=Part	dema	0			rule
+polished	1	oewn-polished-a	Degree=Pos	dema	0			oewn_form
 polished off	0	oewn-polish_off-v	Tense=Past+VerbForm=Part	dema	0			rule
 polished rice	0	oewn-polished_rice-n	Number=Sing	dema	0			oewn_form
 polished rices	0	oewn-polished_rice-n	Number=Plur	dema	0			rule
@@ -1319,8 +1319,8 @@ politicizes	0	oewn-politicize-v	Person=3+Tense=Pres	dema	0			rule
 politicizing	0	oewn-politicize-v	VerbForm=Ger	dema	0			rule
 politick	0	oewn-politick-v	VerbForm=Inf	dema	0			oewn_form
 politicked	0	oewn-politick-v	Tense=Past+VerbForm=Part	dema	0			rule
-politicking	0		Number=Sing	dema	0	politicking	n	moby_reverse
-politicking	1	oewn-politick-v	VerbForm=Ger	dema	0			rule
+politicking	0	oewn-politick-v	VerbForm=Ger	dema	0			rule
+politicking	1		Number=Sing	dema	0	politicking	n	moby_reverse
 politickings	0		Number=Plur	dema	0	politicking	n	rule
 politicks	0	oewn-politick-v	Person=3+Tense=Pres	dema	0			rule
 politicly	0		Degree=Pos	dema	0	politicly	r	moby_reverse
@@ -1442,8 +1442,8 @@ pollucites	0	oewn-pollucite-n	Number=Plur	dema	0			rule
 pollutant	0	oewn-pollutant-n	Number=Sing	dema	0			oewn_form
 pollutants	0	oewn-pollutant-n	Number=Plur	dema	0			rule
 pollute	0	oewn-pollute-v	VerbForm=Inf	dema	0			oewn_form
-polluted	0	oewn-polluted-a	Degree=Pos	dema	0			oewn_form
-polluted	1	oewn-pollute-v	Tense=Past+VerbForm=Part	dema	0			rule
+polluted	0	oewn-pollute-v	Tense=Past+VerbForm=Part	dema	0			rule
+polluted	1	oewn-polluted-a	Degree=Pos	dema	0			oewn_form
 pollutedness	0		Number=Sing	dema	0	pollutedness	n	moby_reverse
 polluter	0	oewn-polluter-n	Number=Sing	dema	0			oewn_form
 polluters	0	oewn-polluter-n	Number=Plur	dema	0			rule
@@ -2846,8 +2846,8 @@ posed	0	oewn-pose-v	Tense=Past+VerbForm=Part	dema	0			rule
 posed	1	oewn-posed-a	Degree=Pos	dema	0			oewn_form
 poser	0	oewn-poser-n	Number=Sing	dema	0			oewn_form
 posers	0	oewn-poser-n	Number=Plur	dema	0			rule
-poses	0	oewn-pose-n	Number=Plur	dema	0			rule
-poses	1	oewn-pose-v	Person=3+Tense=Pres	dema	0			rule
+poses	0	oewn-pose-v	Person=3+Tense=Pres	dema	0			rule
+poses	1	oewn-pose-n	Number=Plur	dema	0			rule
 poseur	0	oewn-poseur-n	Number=Sing	dema	0			oewn_form
 poseurs	0	oewn-poseur-n	Number=Plur	dema	0			rule
 poseuse	0	oewn-poseuse-n	Number=Sing	dema	0			oewn_form
@@ -2859,8 +2859,8 @@ poshest	0	oewn-posh-a	Degree=Sup	dema	0			rule
 posho	0		Number=Sing	dema	0	posho	n	moby_reverse
 poshos	0		Number=Plur	dema	0	posho	n	rule
 posies	0	oewn-posy-n	Number=Plur	dema	0			rule
-posing	0	oewn-posing-n	Number=Sing	dema	0			oewn_form
-posing	1	oewn-pose-v	VerbForm=Ger	dema	0			rule
+posing	0	oewn-pose-v	VerbForm=Ger	dema	0			rule
+posing	1	oewn-posing-n	Number=Sing	dema	0			oewn_form
 posingly	0		Degree=Pos	dema	0	posingly	r	moby_reverse
 posings	0	oewn-posing-n	Number=Plur	dema	0			rule
 posit	0	oewn-posit-v	VerbForm=Inf	dema	0			oewn_form
@@ -2960,11 +2960,11 @@ posse comitatus	0	oewn-posse_comitatus-n	Number=Sing	dema	0			oewn_form
 possed	0		Tense=Past+VerbForm=Part	dema	0	poss	v	rule
 posseman	0	oewn-posseman-n	Number=Sing	dema	0			oewn_form
 possemans	0	oewn-posseman-n	Number=Plur	dema	0			rule
-posses	0		Person=3+Tense=Pres	dema	0	poss	v	rule
-posses	1	oewn-posse-n	Number=Plur	dema	0			rule
+posses	0	oewn-posse-n	Number=Plur	dema	0			rule
+posses	1		Person=3+Tense=Pres	dema	0	poss	v	rule
 possess	0	oewn-possess-v	VerbForm=Inf	dema	0			oewn_form
-possessed	0	oewn-possessed-a	Degree=Pos	dema	0			oewn_form
-possessed	1	oewn-possess-v	Tense=Past+VerbForm=Part	dema	0			rule
+possessed	0	oewn-possess-v	Tense=Past+VerbForm=Part	dema	0			rule
+possessed	1	oewn-possessed-a	Degree=Pos	dema	0			oewn_form
 possesses	0	oewn-possess-v	Person=3+Tense=Pres	dema	0			rule
 possessing	0	oewn-possess-v	VerbForm=Ger	dema	0			rule
 possession	0	oewn-possession-n	Number=Sing	dema	0			oewn_form
@@ -3448,8 +3448,8 @@ postmortems	0	oewn-postmortem-n	Number=Plur	dema	0			rule
 postmultiplied	0		VerbForm=Inf	dema	0	postmultiplied	v	moby_reverse
 postmultiplied	1		Tense=Past+VerbForm=Part	dema	0	postmultiply	v	rule
 postmultiply	0		VerbForm=Inf	dema	0	postmultiply	v	moby_reverse
-postmultiplying	0		VerbForm=Inf	dema	0	postmultiplying	v	moby_reverse
-postmultiplying	1		VerbForm=Ger	dema	0	postmultiply	v	rule
+postmultiplying	0		VerbForm=Ger	dema	0	postmultiply	v	rule
+postmultiplying	1		VerbForm=Inf	dema	0	postmultiplying	v	moby_reverse
 postmundane	0		Degree=Pos	dema	0	postmundane	a	moby_reverse
 postmuscular	0		Degree=Pos	dema	0	postmuscular	a	moby_reverse
 postmycotic	0		Degree=Pos	dema	0	postmycotic	a	moby_reverse
@@ -3644,8 +3644,8 @@ postures	0	oewn-posture-n	Number=Plur	dema	0			rule
 postures	1	oewn-posture-v	Person=3+Tense=Pres	dema	0			rule
 postureteral	0		Degree=Pos	dema	0	postureteral	a	moby_reverse
 postureteric	0		Degree=Pos	dema	0	postureteric	a	moby_reverse
-posturing	0	oewn-posturing-n	Number=Sing	dema	0			oewn_form
-posturing	1	oewn-posture-v	VerbForm=Ger	dema	0			rule
+posturing	0	oewn-posture-v	VerbForm=Ger	dema	0			rule
+posturing	1	oewn-posturing-n	Number=Sing	dema	0			oewn_form
 posturings	0	oewn-posturing-n	Number=Plur	dema	0			rule
 posturise	0		VerbForm=Inf	dema	0	posturise	v	moby_reverse
 posturised	0		VerbForm=Inf	dema	0	posturised	v	moby_reverse

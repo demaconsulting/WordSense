@@ -15,8 +15,8 @@ Pr	0		Number=Sing	dema	0	pr	n	moby_reverse
 Pr	1	oewn-Pr-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Praetorian	0	oewn-praetorian-a	Degree=Pos	dema	0			oewn_form
 Praetorian	1		Number=Sing	dema	0	praetorian	n	moby_reverse
-Praetorian	2	oewn-Praetorian-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-Praetorian	3	oewn-Praetorian-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Praetorian	2	oewn-Praetorian-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Praetorian	3	oewn-Praetorian-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Praetorian Guard	0	oewn-Praetorian_Guard-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Praetorian Guards	0	oewn-Praetorian_Guard-n	Capitalization=Title+Number=Plur	dema	0			rule
 Praetorians	0	oewn-Praetorian-n	Capitalization=Title+Number=Plur	dema	0			rule
@@ -393,8 +393,8 @@ practicing bundling	0	oewn-practice_bundling-v	VerbForm=Ger	dema	0			rule
 practicum	0		Number=Sing	dema	0	practicum	n	moby_reverse
 practicums	0		Number=Plur	dema	0	practicum	n	rule
 practise	0	oewn-practise-v	VerbForm=Inf	dema	0			oewn_form
-practised	0	oewn-practised-a	Degree=Pos	dema	0			oewn_form
-practised	1	oewn-practise-v	Tense=Past+VerbForm=Part	dema	0			rule
+practised	0	oewn-practise-v	Tense=Past+VerbForm=Part	dema	0			rule
+practised	1	oewn-practised-a	Degree=Pos	dema	0			oewn_form
 practises	0	oewn-practise-v	Person=3+Tense=Pres	dema	0			rule
 practising	0	oewn-practise-v	VerbForm=Ger	dema	0			rule
 practitioner	0	oewn-practitioner-n	Number=Sing	dema	0			oewn_form
@@ -1209,8 +1209,8 @@ preasserted	0		Tense=Past+VerbForm=Part	dema	0	preassert	v	rule
 preasserting	0		VerbForm=Ger	dema	0	preassert	v	rule
 preasserts	0		Person=3+Tense=Pres	dema	0	preassert	v	rule
 preassign	0		VerbForm=Inf	dema	0	preassign	v	moby_reverse
-preassigned	0		Degree=Pos	dema	0	preassigned	a	moby_reverse
-preassigned	1		Tense=Past+VerbForm=Part	dema	0	preassign	v	rule
+preassigned	0		Tense=Past+VerbForm=Part	dema	0	preassign	v	rule
+preassigned	1		Degree=Pos	dema	0	preassigned	a	moby_reverse
 preassigning	0		VerbForm=Ger	dema	0	preassign	v	rule
 preassigns	0		Person=3+Tense=Pres	dema	0	preassign	v	rule
 preassume	0		VerbForm=Inf	dema	0	preassume	v	moby_reverse
@@ -1404,8 +1404,8 @@ precaptivity	0		Number=Sing	dema	0	precaptivity	n	moby_reverse
 precapture	0		VerbForm=Inf	dema	0	precapture	v	moby_reverse
 precaptured	0		Tense=Past+VerbForm=Part	dema	0	precapture	v	rule
 precaptures	0		Person=3+Tense=Pres	dema	0	precapture	v	rule
-precapturing	0		Degree=Pos	dema	0	precapturing	a	moby_reverse
-precapturing	1		VerbForm=Ger	dema	0	precapture	v	rule
+precapturing	0		VerbForm=Ger	dema	0	precapture	v	rule
+precapturing	1		Degree=Pos	dema	0	precapturing	a	moby_reverse
 precardiac	0		Degree=Pos	dema	0	precardiac	a	moby_reverse
 precarious	0	oewn-precarious-a	Degree=Pos	dema	0			oewn_form
 precariously	0	oewn-precariously-r	Degree=Pos	dema	0			oewn_form
@@ -1448,8 +1448,8 @@ precedential	0	oewn-precedential-a	Degree=Pos	dema	0			oewn_form
 precedentless	0		Degree=Pos	dema	0	precedentless	a	moby_reverse
 precedents	0	oewn-precedent-n	Number=Plur	dema	0			rule
 precedes	0	oewn-precede-v	Person=3+Tense=Pres	dema	0			rule
-preceding	0	oewn-preceding-a	Degree=Pos	dema	0			oewn_form
-preceding	1	oewn-precede-v	VerbForm=Ger	dema	0			rule
+preceding	0	oewn-precede-v	VerbForm=Ger	dema	0			rule
+preceding	1	oewn-preceding-a	Degree=Pos	dema	0			oewn_form
 precelebrant	0		Number=Sing	dema	0	precelebrant	n	moby_reverse
 precelebrants	0		Number=Plur	dema	0	precelebrant	n	rule
 precelebrate	0		VerbForm=Inf	dema	0	precelebrate	v	moby_reverse
@@ -1515,8 +1515,8 @@ precharged	0		Tense=Past+VerbForm=Part	dema	0	precharge	v	rule
 precharges	0		Person=3+Tense=Pres	dema	0	precharge	v	rule
 precharging	0		VerbForm=Ger	dema	0	precharge	v	rule
 prechart	0		VerbForm=Inf	dema	0	prechart	v	moby_reverse
-precharted	0		Degree=Pos	dema	0	precharted	a	moby_reverse
-precharted	1		Tense=Past+VerbForm=Part	dema	0	prechart	v	rule
+precharted	0		Tense=Past+VerbForm=Part	dema	0	prechart	v	rule
+precharted	1		Degree=Pos	dema	0	precharted	a	moby_reverse
 precharting	0		VerbForm=Ger	dema	0	prechart	v	rule
 precharts	0		Person=3+Tense=Pres	dema	0	prechart	v	rule
 precheck	0		VerbForm=Inf	dema	0	precheck	v	moby_reverse
@@ -3618,8 +3618,8 @@ prefamous	0		Degree=Pos	dema	0	prefamous	a	moby_reverse
 prefamously	0		Degree=Pos	dema	0	prefamously	r	moby_reverse
 prefashion	0		VerbForm=Inf	dema	0	prefashion	v	moby_reverse
 prefashion	1		Number=Sing	dema	0	prefashion	n	moby_reverse
-prefashioned	0		Degree=Pos	dema	0	prefashioned	a	moby_reverse
-prefashioned	1		Tense=Past+VerbForm=Part	dema	0	prefashion	v	rule
+prefashioned	0		Tense=Past+VerbForm=Part	dema	0	prefashion	v	rule
+prefashioned	1		Degree=Pos	dema	0	prefashioned	a	moby_reverse
 prefashioning	0		VerbForm=Ger	dema	0	prefashion	v	rule
 prefashions	0		Person=3+Tense=Pres	dema	0	prefashion	v	rule
 prefatorial	0	oewn-prefatorial-a	Degree=Pos	dema	0			oewn_form
@@ -4541,8 +4541,8 @@ prelimitated	0		Tense=Past+VerbForm=Part	dema	0	prelimitate	v	rule
 prelimitates	0		Person=3+Tense=Pres	dema	0	prelimitate	v	rule
 prelimitating	0		VerbForm=Ger	dema	0	prelimitate	v	rule
 prelimits	0		Number=Plur	dema	0	prelimit	n	rule
-prelims	0	oewn-prelims-n	Number=Sing	dema	0			oewn_form
-prelims	1	oewn-prelim-n	Number=Plur	dema	0			rule
+prelims	0	oewn-prelim-n	Number=Plur	dema	0			rule
+prelims	1	oewn-prelims-n	Number=Sing	dema	0			oewn_form
 prelingual	0		Degree=Pos	dema	0	prelingual	a	moby_reverse
 prelingually	0		Degree=Pos	dema	0	prelingually	r	moby_reverse
 preliquidate	0		VerbForm=Inf	dema	0	preliquidate	v	moby_reverse
@@ -4779,8 +4779,8 @@ premise	0	oewn-premise-v	VerbForm=Inf	dema	0			oewn_form
 premise	1	oewn-premise-n	Number=Sing	dema	0			oewn_form
 premised	0	oewn-premise-v	Tense=Past+VerbForm=Part	dema	0			rule
 premises	0	oewn-premises-n	Number=Sing	dema	0			oewn_form
-premises	1	oewn-premise-n	Number=Plur	dema	0			rule
-premises	2	oewn-premise-v	Person=3+Tense=Pres	dema	0			rule
+premises	1	oewn-premise-v	Person=3+Tense=Pres	dema	0			rule
+premises	2	oewn-premise-n	Number=Plur	dema	0			rule
 premising	0	oewn-premise-v	VerbForm=Ger	dema	0			rule
 premisrepresent	0		VerbForm=Inf	dema	0	premisrepresent	v	moby_reverse
 premisrepresentation	0		Number=Sing	dema	0	premisrepresentation	n	moby_reverse
@@ -5025,8 +5025,8 @@ preoccupant	0		Number=Sing	dema	0	preoccupant	n	moby_reverse
 preoccupants	0		Number=Plur	dema	0	preoccupant	n	rule
 preoccupation	0	oewn-preoccupation-n	Number=Sing	dema	0			oewn_form
 preoccupations	0	oewn-preoccupation-n	Number=Plur	dema	0			rule
-preoccupied	0	oewn-preoccupied-a	Degree=Pos	dema	0			oewn_form
-preoccupied	1	oewn-preoccupy-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+preoccupied	0	oewn-preoccupy-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+preoccupied	1	oewn-preoccupied-a	Degree=Pos	dema	0			oewn_form
 preoccupiedly	0		Degree=Pos	dema	0	preoccupiedly	r	moby_reverse
 preoccupiedness	0		Number=Sing	dema	0	preoccupiedness	n	moby_reverse
 preoccupier	0		Number=Sing	dema	0	preoccupier	n	moby_reverse
@@ -5078,8 +5078,8 @@ preoperators	0		Number=Plur	dema	0	preoperator	n	rule
 preopinion	0		Number=Sing	dema	0	preopinion	n	moby_reverse
 preopinions	0		Number=Plur	dema	0	preopinion	n	rule
 preoppose	0		VerbForm=Inf	dema	0	preoppose	v	moby_reverse
-preopposed	0		Degree=Pos	dema	0	preopposed	a	moby_reverse
-preopposed	1		Tense=Past+VerbForm=Part	dema	0	preoppose	v	rule
+preopposed	0		Tense=Past+VerbForm=Part	dema	0	preoppose	v	rule
+preopposed	1		Degree=Pos	dema	0	preopposed	a	moby_reverse
 preopposes	0		Person=3+Tense=Pres	dema	0	preoppose	v	rule
 preopposing	0		VerbForm=Ger	dema	0	preoppose	v	rule
 preopposition	0		Number=Sing	dema	0	preopposition	n	moby_reverse
@@ -5147,8 +5147,8 @@ prep	0	oewn-prep-n	Number=Sing	dema	0			oewn_form
 prep school	0	oewn-prep_school-n	Number=Sing	dema	0			oewn_form
 prep schools	0	oewn-prep_school-n	Number=Plur	dema	0			rule
 prepackage	0		VerbForm=Inf	dema	0	prepackage	v	moby_reverse
-prepackaged	0	oewn-prepackaged-a	Degree=Pos	dema	0			oewn_form
-prepackaged	1		Tense=Past+VerbForm=Part	dema	0	prepackage	v	rule
+prepackaged	0		Tense=Past+VerbForm=Part	dema	0	prepackage	v	rule
+prepackaged	1	oewn-prepackaged-a	Degree=Pos	dema	0			oewn_form
 prepackages	0		Person=3+Tense=Pres	dema	0	prepackage	v	rule
 prepackaging	0		VerbForm=Ger	dema	0	prepackage	v	rule
 prepacked	0	oewn-prepacked-a	Degree=Pos	dema	0			oewn_form
@@ -5173,8 +5173,8 @@ preparatory school	0	oewn-preparatory_school-n	Number=Sing	dema	0			oewn_form
 preparatory schools	0	oewn-preparatory_school-n	Number=Plur	dema	0			rule
 prepare	0	oewn-prepare-v	VerbForm=Inf	dema	0			oewn_form
 prepare for	0	oewn-prepare_for-v	VerbForm=Inf	dema	0			oewn_form
-prepared	0	oewn-prepared-a	Degree=Pos	dema	0			oewn_form
-prepared	1	oewn-prepare-v	Tense=Past+VerbForm=Part	dema	0			rule
+prepared	0	oewn-prepare-v	Tense=Past+VerbForm=Part	dema	0			rule
+prepared	1	oewn-prepared-a	Degree=Pos	dema	0			oewn_form
 prepared for	0	oewn-prepare_for-v	Tense=Past+VerbForm=Part	dema	0			rule
 preparedly	0		Degree=Pos	dema	0	preparedly	r	moby_reverse
 preparedness	0	oewn-preparedness-n	Number=Sing	dema	0			oewn_form
@@ -5323,8 +5323,8 @@ prepositors	0		Number=Plur	dema	0	prepositor	n	rule
 prepossess	0	oewn-prepossess-v	VerbForm=Inf	dema	0			oewn_form
 prepossessed	0	oewn-prepossess-v	Tense=Past+VerbForm=Part	dema	0			rule
 prepossesses	0	oewn-prepossess-v	Person=3+Tense=Pres	dema	0			rule
-prepossessing	0	oewn-prepossessing-a	Degree=Pos	dema	0			oewn_form
-prepossessing	1	oewn-prepossess-v	VerbForm=Ger	dema	0			rule
+prepossessing	0	oewn-prepossess-v	VerbForm=Ger	dema	0			rule
+prepossessing	1	oewn-prepossessing-a	Degree=Pos	dema	0			oewn_form
 prepossessingly	0		Degree=Pos	dema	0	prepossessingly	r	moby_reverse
 prepossessingness	0		Number=Sing	dema	0	prepossessingness	n	moby_reverse
 prepossessingnesses	0		Number=Plur	dema	0	prepossessingness	n	rule
@@ -6620,8 +6620,8 @@ pretences	0	oewn-pretence-n	Number=Plur	dema	0			rule
 pretend	0	oewn-pretend-v	VerbForm=Inf	dema	0			oewn_form
 pretend	1	oewn-pretend-n	Number=Sing	dema	0			oewn_form
 pretend	2	oewn-pretend-a	Degree=Pos	dema	0			oewn_form
-pretended	0	oewn-pretended-a	Degree=Pos	dema	0			oewn_form
-pretended	1	oewn-pretend-v	Tense=Past+VerbForm=Part	dema	0			rule
+pretended	0	oewn-pretend-v	Tense=Past+VerbForm=Part	dema	0			rule
+pretended	1	oewn-pretended-a	Degree=Pos	dema	0			oewn_form
 pretendedly	0		Degree=Pos	dema	0	pretendedly	r	moby_reverse
 pretender	0	oewn-pretender-n	Number=Sing	dema	0			oewn_form
 pretenders	0	oewn-pretender-n	Number=Plur	dema	0			rule
@@ -6875,8 +6875,8 @@ prevaccination	0		Number=Sing	dema	0	prevaccination	n	moby_reverse
 prevaccinations	0		Number=Plur	dema	0	prevaccination	n	rule
 prevail	0	oewn-prevail-v	VerbForm=Inf	dema	0			oewn_form
 prevailed	0	oewn-prevail-v	Tense=Past+VerbForm=Part	dema	0			rule
-prevailing	0	oewn-prevailing-a	Degree=Pos	dema	0			oewn_form
-prevailing	1	oewn-prevail-v	VerbForm=Ger	dema	0			rule
+prevailing	0	oewn-prevail-v	VerbForm=Ger	dema	0			rule
+prevailing	1	oewn-prevailing-a	Degree=Pos	dema	0			oewn_form
 prevailing parties	0	oewn-prevailing_party-n	Number=Plur	dema	0			rule
 prevailing party	0	oewn-prevailing_party-n	Number=Sing	dema	0			oewn_form
 prevailing westerlies	0	oewn-prevailing_westerly-n	Number=Plur	dema	0			rule
@@ -7145,8 +7145,8 @@ prices of admission	0	oewn-price_of_admission-n	Number=Plur	dema	0			rule
 pricey	0	oewn-pricey-a	Degree=Pos	dema	0			oewn_form
 pricier	0	oewn-pricy-a	Degree=Cmp	dema	0			oewn_form
 priciest	0	oewn-pricy-a	Degree=Sup	dema	0			oewn_form
-pricing	0	oewn-pricing-n	Number=Sing	dema	0			oewn_form
-pricing	1	oewn-price-v	VerbForm=Ger	dema	0			rule
+pricing	0	oewn-price-v	VerbForm=Ger	dema	0			rule
+pricing	1	oewn-pricing-n	Number=Sing	dema	0			oewn_form
 pricing system	0	oewn-pricing_system-n	Number=Sing	dema	0			oewn_form
 pricing systems	0	oewn-pricing_system-n	Number=Plur	dema	0			rule
 pricings	0	oewn-pricing-n	Number=Plur	dema	0			rule
@@ -7178,8 +7178,8 @@ pricklier	0	oewn-prickly-a	Degree=Cmp	dema	0			oewn_form
 prickliest	0	oewn-prickly-a	Degree=Sup	dema	0			oewn_form
 prickliness	0	oewn-prickliness-n	Number=Sing	dema	0			oewn_form
 pricklinesses	0	oewn-prickliness-n	Number=Plur	dema	0			rule
-prickling	0	oewn-prickling-n	Number=Sing	dema	0			oewn_form
-prickling	1	oewn-prickle-v	VerbForm=Ger	dema	0			rule
+prickling	0	oewn-prickle-v	VerbForm=Ger	dema	0			rule
+prickling	1	oewn-prickling-n	Number=Sing	dema	0			oewn_form
 pricklings	0	oewn-prickling-n	Number=Plur	dema	0			rule
 prickly	0	oewn-prickly-a	Degree=Pos	dema	0			oewn_form
 prickly ash	0	oewn-prickly_ash-n	Number=Sing	dema	0			oewn_form
@@ -7245,8 +7245,8 @@ prie-dieus	0	oewn-prie-dieu-n	Number=Plur	dema	0			rule
 pried	0	oewn-pry-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 prier	0		Number=Sing	dema	0	prier	n	moby_reverse
 priers	0		Number=Plur	dema	0	prier	n	rule
-pries	0	oewn-pry-n	Number=Plur	dema	0			rule
-pries	1	oewn-pry-v	Person=3+Tense=Pres	dema	0			rule
+pries	0	oewn-pry-v	Person=3+Tense=Pres	dema	0			rule
+pries	1	oewn-pry-n	Number=Plur	dema	0			rule
 priest	0	oewn-priest-n	Number=Sing	dema	0			oewn_form
 priest	1		VerbForm=Inf	dema	0	priest	v	moby_reverse
 priest-doctor	0	oewn-priest-doctor-n	Number=Sing	dema	0			oewn_form
@@ -8366,8 +8366,8 @@ prodd	0		Number=Sing	dema	0	prodd	n	moby_reverse
 prodded	0	oewn-prod-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 prodder	0		Number=Sing	dema	0	prodder	n	moby_reverse
 prodders	0		Number=Plur	dema	0	prodder	n	rule
-prodding	0	oewn-prodding-n	Number=Sing	dema	0			oewn_form
-prodding	1	oewn-prod-v	VerbForm=Ger	dema	0			oewn_form
+prodding	0	oewn-prod-v	VerbForm=Ger	dema	0			oewn_form
+prodding	1	oewn-prodding-n	Number=Sing	dema	0			oewn_form
 proddings	0	oewn-prodding-n	Number=Plur	dema	0			rule
 prodds	0		Number=Plur	dema	0	prodd	n	rule
 prodemocracy	0		Degree=Pos	dema	0	prodemocracy	a	moby_reverse
@@ -8506,8 +8506,8 @@ proferments	0		Number=Plur	dema	0	proferment	n	rule
 profert	0		Number=Sing	dema	0	profert	n	moby_reverse
 proferts	0		Number=Plur	dema	0	profert	n	rule
 profess	0	oewn-profess-v	VerbForm=Inf	dema	0			oewn_form
-professed	0	oewn-professed-a	Degree=Pos	dema	0			oewn_form
-professed	1	oewn-profess-v	Tense=Past+VerbForm=Part	dema	0			rule
+professed	0	oewn-profess-v	Tense=Past+VerbForm=Part	dema	0			rule
+professed	1	oewn-professed-a	Degree=Pos	dema	0			oewn_form
 professedly	0	oewn-professedly-r	Degree=Pos	dema	0			oewn_form
 professes	0	oewn-profess-v	Person=3+Tense=Pres	dema	0			rule
 professing	0	oewn-profess-v	VerbForm=Ger	dema	0			rule
@@ -8599,8 +8599,8 @@ profiler	0		Number=Sing	dema	0	profiler	n	moby_reverse
 profilers	0		Number=Plur	dema	0	profiler	n	rule
 profiles	0	oewn-profile-n	Number=Plur	dema	0			rule
 profiles	1	oewn-profile-v	Person=3+Tense=Pres	dema	0			rule
-profiling	0	oewn-profiling-n	Number=Sing	dema	0			oewn_form
-profiling	1	oewn-profile-v	VerbForm=Ger	dema	0			rule
+profiling	0	oewn-profile-v	VerbForm=Ger	dema	0			rule
+profiling	1	oewn-profiling-n	Number=Sing	dema	0			oewn_form
 profilings	0	oewn-profiling-n	Number=Plur	dema	0			rule
 profit	0	oewn-profit-n	Number=Sing	dema	0			oewn_form
 profit	1	oewn-profit-v	VerbForm=Inf	dema	0			oewn_form
@@ -8732,8 +8732,8 @@ program optimizations	0	oewn-program_optimization-n	Number=Plur	dema	0			rule
 program trading	0	oewn-program_trading-n	Number=Sing	dema	0			oewn_form
 program tradings	0	oewn-program_trading-n	Number=Plur	dema	0			rule
 programed	0	oewn-program-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
-programing	0	oewn-programing-n	Number=Sing	dema	0			oewn_form
-programing	1	oewn-program-v	VerbForm=Ger	dema	0			rule_variant
+programing	0	oewn-program-v	VerbForm=Ger	dema	0			rule_variant
+programing	1	oewn-programing-n	Number=Sing	dema	0			oewn_form
 programing language	0	oewn-programing_language-n	Number=Sing	dema	0			oewn_form
 programing languages	0	oewn-programing_language-n	Number=Plur	dema	0			rule
 programings	0	oewn-programing-n	Number=Plur	dema	0			rule
@@ -8754,11 +8754,11 @@ programmed cell deaths	0	oewn-programmed_cell_death-n	Number=Plur	dema	0			rule
 programmer	0	oewn-programmer-n	Number=Sing	dema	0			oewn_form
 programmers	0	oewn-programmer-n	Number=Plur	dema	0			rule
 programmes	0	oewn-programme-n	Number=Plur	dema	0			rule
-programmes	1	oewn-programme-v	Person=3+Tense=Pres	dema	0			rule
-programmes	2	oewn-program-v	Person=3+Tense=Pres	dema	0			oewn_form
-programming	0	oewn-programming-n	Number=Sing	dema	0			oewn_form
-programming	1	oewn-program-v	VerbForm=Ger	dema	0			oewn_form
-programming	2	oewn-programme-v	VerbForm=Ger	dema	0			rule
+programmes	1	oewn-program-v	Person=3+Tense=Pres	dema	0			oewn_form
+programmes	2	oewn-programme-v	Person=3+Tense=Pres	dema	0			rule
+programming	0	oewn-program-v	VerbForm=Ger	dema	0			oewn_form
+programming	1	oewn-programme-v	VerbForm=Ger	dema	0			rule
+programming	2	oewn-programming-n	Number=Sing	dema	0			oewn_form
 programming error	0	oewn-programming_error-n	Number=Sing	dema	0			oewn_form
 programming errors	0	oewn-programming_error-n	Number=Plur	dema	0			rule
 programming language	0	oewn-programming_language-n	Number=Sing	dema	0			oewn_form
@@ -9092,8 +9092,8 @@ promiser	0	oewn-promiser-n	Number=Sing	dema	0			oewn_form
 promisers	0	oewn-promiser-n	Number=Plur	dema	0			rule
 promises	0	oewn-promise-v	Person=3+Tense=Pres	dema	0			rule
 promises	1	oewn-promise-n	Number=Plur	dema	0			rule
-promising	0	oewn-promising-a	Degree=Pos	dema	0			oewn_form
-promising	1	oewn-promise-v	VerbForm=Ger	dema	0			rule
+promising	0	oewn-promise-v	VerbForm=Ger	dema	0			rule
+promising	1	oewn-promising-a	Degree=Pos	dema	0			oewn_form
 promisingly	0	oewn-promisingly-r	Degree=Pos	dema	0			oewn_form
 promisor	0	oewn-promisor-n	Number=Sing	dema	0			oewn_form
 promisors	0	oewn-promisor-n	Number=Plur	dema	0			rule
@@ -9255,8 +9255,8 @@ pronoun	0	oewn-pronoun-n	Number=Sing	dema	0			oewn_form
 pronounce	0	oewn-pronounce-v	VerbForm=Inf	dema	0			oewn_form
 pronounceable	0	oewn-pronounceable-a	Degree=Pos	dema	0			oewn_form
 pronounceableness	0		Number=Sing	dema	0	pronounceableness	n	moby_reverse
-pronounced	0	oewn-pronounced-a	Degree=Pos	dema	0			oewn_form
-pronounced	1	oewn-pronounce-v	Tense=Past+VerbForm=Part	dema	0			rule
+pronounced	0	oewn-pronounce-v	Tense=Past+VerbForm=Part	dema	0			rule
+pronounced	1	oewn-pronounced-a	Degree=Pos	dema	0			oewn_form
 pronouncedly	0		Degree=Pos	dema	0	pronouncedly	r	moby_reverse
 pronouncedness	0		Number=Sing	dema	0	pronouncedness	n	moby_reverse
 pronouncednesses	0		Number=Plur	dema	0	pronouncedness	n	rule
@@ -10023,8 +10023,8 @@ proteases	0	oewn-protease-n	Number=Plur	dema	0			rule
 protect	0	oewn-protect-v	VerbForm=Inf	dema	0			oewn_form
 protected	0	oewn-protect-v	Tense=Past+VerbForm=Part	dema	0			rule
 protected	1	oewn-protected-a	Degree=Pos	dema	0			oewn_form
-protecting	0	oewn-protecting-a	Degree=Pos	dema	0			oewn_form
-protecting	1	oewn-protect-v	VerbForm=Ger	dema	0			rule
+protecting	0	oewn-protect-v	VerbForm=Ger	dema	0			rule
+protecting	1	oewn-protecting-a	Degree=Pos	dema	0			oewn_form
 protectingly	0		Degree=Pos	dema	0	protectingly	r	moby_reverse
 protection	0	oewn-protection-n	Number=Sing	dema	0			oewn_form
 protectional	0		Degree=Pos	dema	0	protectional	a	moby_reverse
@@ -10387,8 +10387,8 @@ prove oneself	0	oewn-prove_oneself-v	VerbForm=Inf	dema	0			oewn_form
 proved	0	oewn-prove-v	Tense=Past+VerbForm=Part	dema	0			rule
 proved	1	oewn-proved-a	Degree=Pos	dema	0			oewn_form
 proved oneself	0	oewn-prove_oneself-v	Tense=Past+VerbForm=Part	dema	0			rule
-proven	0	oewn-proven-a	Degree=Pos	dema	0			oewn_form
-proven	1	oewn-prove-v	VerbForm=Part	dema	0			oewn_form
+proven	0	oewn-prove-v	VerbForm=Part	dema	0			oewn_form
+proven	1	oewn-proven-a	Degree=Pos	dema	0			oewn_form
 provenance	0	oewn-provenance-n	Number=Sing	dema	0			oewn_form
 provenances	0	oewn-provenance-n	Number=Plur	dema	0			rule
 provencal	0	oewn-provencal-a	Degree=Pos	dema	0			oewn_form
@@ -10423,8 +10423,8 @@ providentness	0		Number=Sing	dema	0	providentness	n	moby_reverse
 provider	0	oewn-provider-n	Number=Sing	dema	0			oewn_form
 providers	0	oewn-provider-n	Number=Plur	dema	0			rule
 provides	0	oewn-provide-v	Person=3+Tense=Pres	dema	0			rule
-providing	0	dema-providing-c		dema	0			carried
-providing	1	oewn-provide-v	VerbForm=Ger	dema	0			rule
+providing	0	oewn-provide-v	VerbForm=Ger	dema	0			rule
+providing	1	dema-providing-c		dema	0			carried
 province	0	oewn-province-n	Number=Sing	dema	0			oewn_form
 provinces	0	oewn-province-n	Number=Plur	dema	0			rule
 provincial	0	oewn-provincial-a	Degree=Pos	dema	0			oewn_form
@@ -10581,8 +10581,8 @@ pruner	0	oewn-pruner-n	Number=Sing	dema	0			oewn_form
 pruners	0	oewn-pruner-n	Number=Plur	dema	0			rule
 prunes	0	oewn-prune-n	Number=Plur	dema	0			rule
 prunes	1	oewn-prune-v	Person=3+Tense=Pres	dema	0			rule
-pruning	0	oewn-pruning-n	Number=Sing	dema	0			oewn_form
-pruning	1	oewn-prune-v	VerbForm=Ger	dema	0			rule
+pruning	0	oewn-prune-v	VerbForm=Ger	dema	0			rule
+pruning	1	oewn-pruning-n	Number=Sing	dema	0			oewn_form
 pruning hook	0	oewn-pruning_hook-n	Number=Sing	dema	0			oewn_form
 pruning hooks	0	oewn-pruning_hook-n	Number=Plur	dema	0			rule
 pruning knife	0	oewn-pruning_knife-n	Number=Sing	dema	0			oewn_form
@@ -10645,9 +10645,9 @@ pry bar	0	oewn-pry_bar-n	Number=Sing	dema	0			oewn_form
 pry bars	0	oewn-pry_bar-n	Number=Plur	dema	0			rule
 pryer	0		Number=Sing	dema	0	pryer	n	moby_reverse
 pryers	0		Number=Plur	dema	0	pryer	n	rule
-prying	0	oewn-prying-a	Degree=Pos	dema	0			oewn_form
-prying	1	oewn-prying-n	Number=Sing	dema	0			oewn_form
-prying	2	oewn-pry-v	VerbForm=Ger	dema	0			rule
+prying	0	oewn-pry-v	VerbForm=Ger	dema	0			rule
+prying	1	oewn-prying-a	Degree=Pos	dema	0			oewn_form
+prying	2	oewn-prying-n	Number=Sing	dema	0			oewn_form
 pryingly	0	oewn-pryingly-r	Degree=Pos	dema	0			oewn_form
 pryingness	0		Number=Sing	dema	0	pryingness	n	moby_reverse
 pryings	0	oewn-prying-n	Number=Plur	dema	0			rule

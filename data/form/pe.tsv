@@ -544,8 +544,8 @@ peanut vine	0	oewn-peanut_vine-n	Number=Sing	dema	0			oewn_form
 peanut vines	0	oewn-peanut_vine-n	Number=Plur	dema	0			rule
 peanut worm	0	oewn-peanut_worm-n	Number=Sing	dema	0			oewn_form
 peanut worms	0	oewn-peanut_worm-n	Number=Plur	dema	0			rule
-peanuts	0	oewn-peanuts-n	Number=Sing	dema	0			oewn_form
-peanuts	1	oewn-peanut-n	Number=Plur	dema	0			rule
+peanuts	0	oewn-peanut-n	Number=Plur	dema	0			rule
+peanuts	1	oewn-peanuts-n	Number=Sing	dema	0			oewn_form
 peapod	0		Number=Sing	dema	0	peapod	n	moby_reverse
 peapods	0		Number=Plur	dema	0	peapod	n	rule
 pear	0	oewn-pear-n	Number=Sing	dema	0			oewn_form
@@ -851,8 +851,8 @@ pedalfer	0		Number=Sing	dema	0	pedalfer	n	moby_reverse
 pedalfers	0		Number=Plur	dema	0	pedalfer	n	rule
 pedaling	0	oewn-pedal-v	VerbForm=Ger	dema	0			rule_variant
 pedalled	0	oewn-pedal-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
-pedaller	0	oewn-pedaller-n	Number=Sing	dema	0			oewn_form
-pedaller	1	oewn-pedal-a	Degree=Cmp	dema	0			rule_variant
+pedaller	0	oewn-pedal-a	Degree=Cmp	dema	0			rule_variant
+pedaller	1	oewn-pedaller-n	Number=Sing	dema	0			oewn_form
 pedallers	0	oewn-pedaller-n	Number=Plur	dema	0			rule
 pedalling	0	oewn-pedal-v	VerbForm=Ger	dema	0			oewn_form
 pedalo	0		Number=Sing	dema	0	pedalo	n	moby_reverse
@@ -884,9 +884,9 @@ peddleries	0		Number=Plur	dema	0	peddlery	n	rule
 peddlers	0	oewn-peddler-n	Number=Plur	dema	0			rule
 peddlery	0		Number=Sing	dema	0	peddlery	n	moby_reverse
 peddles	0	oewn-peddle-v	Person=3+Tense=Pres	dema	0			rule
-peddling	0		Degree=Pos	dema	0	peddling	a	moby_reverse
-peddling	1	oewn-peddling-n	Number=Sing	dema	0			oewn_form
-peddling	2	oewn-peddle-v	VerbForm=Ger	dema	0			rule
+peddling	0	oewn-peddle-v	VerbForm=Ger	dema	0			rule
+peddling	1		Degree=Pos	dema	0	peddling	a	moby_reverse
+peddling	2	oewn-peddling-n	Number=Sing	dema	0			oewn_form
 peddlingly	0		Degree=Pos	dema	0	peddlingly	r	moby_reverse
 peddlings	0	oewn-peddling-n	Number=Plur	dema	0			rule
 pedelec	0	oewn-pedelec-n	Number=Sing	dema	0			oewn_form
@@ -1056,10 +1056,10 @@ peeled	1	oewn-peeled-a	Degree=Pos	dema	0			oewn_form
 peeled off	0	oewn-peel_off-v	Tense=Past+VerbForm=Part	dema	0			rule
 peeler	0	oewn-peeler-n	Number=Sing	dema	0			oewn_form
 peelers	0	oewn-peeler-n	Number=Plur	dema	0			rule
-peeling	0	oewn-peeling-n	Number=Plur	dema	0			agid
-peeling	1	oewn-peeling-n	Number=Sing	dema	0			oewn_form
-peeling	2	oewn-peel-v	VerbForm=Ger	dema	0			rule
+peeling	0	oewn-peeling-n	Number=Sing	dema	0			oewn_form
+peeling	1	oewn-peel-v	VerbForm=Ger	dema	0			rule
 peeling off	0	oewn-peel_off-v	VerbForm=Ger	dema	0			rule
+peelings	0	oewn-peeling-n	Number=Plur	dema	0			rule
 peels	0	oewn-peel-v	Person=3+Tense=Pres	dema	0			rule
 peels	1	oewn-peel-n	Number=Plur	dema	0			rule
 peels off	0	oewn-peel_off-v	Person=3+Tense=Pres	dema	0			rule
@@ -1114,8 +1114,8 @@ peetweet	0		Number=Sing	dema	0	peetweet	n	moby_reverse
 peetweets	0		Number=Plur	dema	0	peetweet	n	rule
 peeve	0	oewn-peeve-v	VerbForm=Inf	dema	0			oewn_form
 peeve	1	oewn-peeve-n	Number=Sing	dema	0			oewn_form
-peeved	0	oewn-peeved-a	Degree=Pos	dema	0			oewn_form
-peeved	1	oewn-peeve-v	Tense=Past+VerbForm=Part	dema	0			rule
+peeved	0	oewn-peeve-v	Tense=Past+VerbForm=Part	dema	0			rule
+peeved	1	oewn-peeved-a	Degree=Pos	dema	0			oewn_form
 peevedly	0		Degree=Pos	dema	0	peevedly	a	moby_reverse
 peevedness	0		Number=Sing	dema	0	peevedness	n	moby_reverse
 peevers	0		Number=Sing	dema	0	peevers	n	moby_reverse
@@ -1288,9 +1288,9 @@ pelted	0	oewn-pelt-v	Tense=Past+VerbForm=Part	dema	0			rule
 pelted along	0	oewn-pelt_along-v	Tense=Past+VerbForm=Part	dema	0			rule
 pelter	0	oewn-pelter-n	Number=Sing	dema	0			oewn_form
 pelters	0	oewn-pelter-n	Number=Plur	dema	0			rule
-pelting	0		Degree=Pos	dema	0	pelting	a	moby_reverse
-pelting	1	oewn-pelting-n	Number=Sing	dema	0			oewn_form
-pelting	2	oewn-pelt-v	VerbForm=Ger	dema	0			rule
+pelting	0	oewn-pelt-v	VerbForm=Ger	dema	0			rule
+pelting	1		Degree=Pos	dema	0	pelting	a	moby_reverse
+pelting	2	oewn-pelting-n	Number=Sing	dema	0			oewn_form
 pelting along	0	oewn-pelt_along-v	VerbForm=Ger	dema	0			rule
 peltings	0	oewn-pelting-n	Number=Plur	dema	0			rule
 peltries	0		Number=Plur	dema	0	peltry	n	rule
@@ -1443,8 +1443,8 @@ pendentives	0		Number=Plur	dema	0	pendentive	n	rule
 pendently	0		Degree=Pos	dema	0	pendently	r	moby_reverse
 pendents	0	oewn-pendent-n	Number=Plur	dema	0			rule
 pending	0	dema-pending-p		dema	0			carried
-pending	1	oewn-pending-a	Degree=Pos	dema	0			oewn_form
-pending	2		VerbForm=Ger	dema	0	pend	v	rule
+pending	1		VerbForm=Ger	dema	0	pend	v	rule
+pending	2	oewn-pending-a	Degree=Pos	dema	0			oewn_form
 pendragon	0	oewn-pendragon-n	Number=Sing	dema	0			oewn_form
 pendragonish	0		Degree=Pos	dema	0	pendragonish	a	moby_reverse
 pendragons	0	oewn-pendragon-n	Number=Plur	dema	0			rule
@@ -1482,8 +1482,8 @@ penetrant	1		Number=Sing	dema	0	penetrant	n	moby_reverse
 penetrate	0	oewn-penetrate-v	VerbForm=Inf	dema	0			oewn_form
 penetrated	0	oewn-penetrate-v	Tense=Past+VerbForm=Part	dema	0			rule
 penetrates	0	oewn-penetrate-v	Person=3+Tense=Pres	dema	0			rule
-penetrating	0	oewn-penetrating-a	Degree=Pos	dema	0			oewn_form
-penetrating	1	oewn-penetrate-v	VerbForm=Ger	dema	0			rule
+penetrating	0	oewn-penetrate-v	VerbForm=Ger	dema	0			rule
+penetrating	1	oewn-penetrating-a	Degree=Pos	dema	0			oewn_form
 penetrating injuries	0	oewn-penetrating_injury-n	Number=Plur	dema	0			rule
 penetrating injury	0	oewn-penetrating_injury-n	Number=Sing	dema	0			oewn_form
 penetrating trauma	0	oewn-penetrating_trauma-n	Number=Sing	dema	0			oewn_form
@@ -1604,8 +1604,8 @@ penniless	0	oewn-penniless-a	Degree=Pos	dema	0			oewn_form
 pennilessly	0		Degree=Pos	dema	0	pennilessly	r	moby_reverse
 pennilessness	0	oewn-pennilessness-n	Number=Sing	dema	0			oewn_form
 pennilessnesses	0	oewn-pennilessness-n	Number=Plur	dema	0			rule
-penning	0	oewn-penning-n	Number=Sing	dema	0			oewn_form
-penning	1	oewn-pen-v	VerbForm=Ger	dema	0			oewn_form
+penning	0	oewn-pen-v	VerbForm=Ger	dema	0			oewn_form
+penning	1	oewn-penning-n	Number=Sing	dema	0			oewn_form
 penning up	0	oewn-pen_up-v	VerbForm=Ger	dema	0			rule
 pennings	0	oewn-penning-n	Number=Plur	dema	0			rule
 penninite	0		Number=Sing	dema	0	penninite	n	moby_reverse
@@ -1879,8 +1879,8 @@ peopled	1	oewn-peopled-a	Degree=Pos	dema	0			oewn_form
 peopleless	0		Degree=Pos	dema	0	peopleless	a	moby_reverse
 peopler	0		Number=Sing	dema	0	peopler	n	moby_reverse
 peoplers	0		Number=Plur	dema	0	peopler	n	rule
-peoples	0	oewn-peoples-n	Number=Sing	dema	0			oewn_form
-peoples	1	oewn-people-n	Number=Plur	dema	0			rule
+peoples	0	oewn-people-n	Number=Plur	dema	0			rule
+peoples	1	oewn-peoples-n	Number=Sing	dema	0			oewn_form
 peoples	2	oewn-people-v	Person=3+Tense=Pres	dema	0			rule
 peoples in power	0	oewn-people_in_power-n	Number=Plur	dema	0			rule
 peoples of color	0	oewn-people_of_color-n	Number=Plur	dema	0			rule
@@ -2377,8 +2377,8 @@ perfoliate leaves	0	oewn-perfoliate_leaf-n	Number=Plur	dema	0			rule
 perforable	0		Degree=Pos	dema	0	perforable	a	moby_reverse
 perforate	0	oewn-perforate-a	Degree=Pos	dema	1			carried
 perforate	1	oewn-perforate-v	VerbForm=Inf	dema	1			carried
-perforated	0	oewn-perforated-a	Degree=Pos	dema	0			oewn_form
-perforated	1	oewn-perforate-v	Tense=Past+VerbForm=Part	dema	0			rule
+perforated	0	oewn-perforate-v	Tense=Past+VerbForm=Part	dema	0			rule
+perforated	1	oewn-perforated-a	Degree=Pos	dema	0			oewn_form
 perforated eardrum	0	oewn-perforated_eardrum-n	Number=Sing	dema	0			oewn_form
 perforated eardrums	0	oewn-perforated_eardrum-n	Number=Plur	dema	0			rule
 perforates	0	oewn-perforate-v	Person=3+Tense=Pres	dema	1			carried
@@ -2405,9 +2405,9 @@ performative verbs	0	oewn-performative_verb-n	Number=Plur	dema	0			rule
 performed	0	oewn-perform-v	Tense=Past+VerbForm=Part	dema	0			rule
 performer	0	oewn-performer-n	Number=Sing	dema	0			oewn_form
 performers	0	oewn-performer-n	Number=Plur	dema	0			rule
-performing	0		Degree=Pos	dema	0	performing	a	moby_reverse
-performing	1	oewn-performing-n	Number=Sing	dema	0			oewn_form
-performing	2	oewn-perform-v	VerbForm=Ger	dema	0			rule
+performing	0	oewn-perform-v	VerbForm=Ger	dema	0			rule
+performing	1		Degree=Pos	dema	0	performing	a	moby_reverse
+performing	2	oewn-performing-n	Number=Sing	dema	0			oewn_form
 performing artist	0	oewn-performing_artist-n	Number=Sing	dema	0			oewn_form
 performing artists	0	oewn-performing_artist-n	Number=Plur	dema	0			rule
 performing arts	0	oewn-performing_arts-n	Number=Sing	dema	0			oewn_form
@@ -2779,13 +2779,13 @@ perishableness	0	oewn-perishableness-n	Number=Sing	dema	0			oewn_form
 perishablenesses	0	oewn-perishableness-n	Number=Plur	dema	0			rule
 perishables	0	oewn-perishable-n	Number=Plur	dema	0			rule
 perishably	0		Degree=Pos	dema	0	perishably	r	moby_reverse
-perished	0		Degree=Pos	dema	0	perished	a	moby_reverse
-perished	1	oewn-perish-v	Tense=Past+VerbForm=Part	dema	0			rule
+perished	0	oewn-perish-v	Tense=Past+VerbForm=Part	dema	0			rule
+perished	1		Degree=Pos	dema	0	perished	a	moby_reverse
 perisher	0	oewn-perisher-n	Number=Sing	dema	0			oewn_form
 perishers	0	oewn-perisher-n	Number=Plur	dema	0			rule
 perishes	0	oewn-perish-v	Person=3+Tense=Pres	dema	0			rule
-perishing	0		Degree=Pos	dema	0	perishing	a	moby_reverse
-perishing	1	oewn-perish-v	VerbForm=Ger	dema	0			rule
+perishing	0	oewn-perish-v	VerbForm=Ger	dema	0			rule
+perishing	1		Degree=Pos	dema	0	perishing	a	moby_reverse
 perishless	0		Degree=Pos	dema	0	perishless	a	moby_reverse
 perishment	0		Number=Sing	dema	0	perishment	n	moby_reverse
 perishments	0		Number=Plur	dema	0	perishment	n	rule
@@ -2869,8 +2869,8 @@ periwinkled	0		Degree=Pos	dema	0	periwinkled	a	moby_reverse
 periwinkled	1		VerbForm=Inf	dema	0	periwinkled	v	moby_reverse
 periwinkles	0	oewn-periwinkle-n	Number=Plur	dema	0			rule
 perjure	0	oewn-perjure-v	VerbForm=Inf	dema	0			oewn_form
-perjured	0		Degree=Pos	dema	0	perjured	a	moby_reverse
-perjured	1	oewn-perjure-v	Tense=Past+VerbForm=Part	dema	0			rule
+perjured	0	oewn-perjure-v	Tense=Past+VerbForm=Part	dema	0			rule
+perjured	1		Degree=Pos	dema	0	perjured	a	moby_reverse
 perjuredly	0		Degree=Pos	dema	0	perjuredly	r	moby_reverse
 perjuredness	0		Number=Sing	dema	0	perjuredness	n	moby_reverse
 perjurement	0		Number=Sing	dema	0	perjurement	n	moby_reverse
@@ -3151,8 +3151,8 @@ perpetuity	0	oewn-perpetuity-n	Number=Sing	dema	0			oewn_form
 perphenazine	0	oewn-perphenazine-n	Number=Sing	dema	0			oewn_form
 perphenazines	0	oewn-perphenazine-n	Number=Plur	dema	0			rule
 perplex	0	oewn-perplex-v	VerbForm=Inf	dema	0			oewn_form
-perplexed	0	oewn-perplexed-a	Degree=Pos	dema	0			oewn_form
-perplexed	1	oewn-perplex-v	Tense=Past+VerbForm=Part	dema	0			rule
+perplexed	0	oewn-perplex-v	Tense=Past+VerbForm=Part	dema	0			rule
+perplexed	1	oewn-perplexed-a	Degree=Pos	dema	0			oewn_form
 perplexedly	0	oewn-perplexedly-r	Degree=Pos	dema	0			oewn_form
 perplexedness	0		Number=Sing	dema	0	perplexedness	n	moby_reverse
 perplexer	0		Number=Sing	dema	0	perplexer	n	moby_reverse
@@ -3200,8 +3200,8 @@ perseverations	0	oewn-perseveration-n	Number=Plur	dema	0			rule
 persevere	0	oewn-persevere-v	VerbForm=Inf	dema	0			oewn_form
 persevered	0	oewn-persevere-v	Tense=Past+VerbForm=Part	dema	0			rule
 perseveres	0	oewn-persevere-v	Person=3+Tense=Pres	dema	0			rule
-persevering	0	oewn-persevering-a	Degree=Pos	dema	0			oewn_form
-persevering	1	oewn-persevere-v	VerbForm=Ger	dema	0			rule
+persevering	0	oewn-persevere-v	VerbForm=Ger	dema	0			rule
+persevering	1	oewn-persevering-a	Degree=Pos	dema	0			oewn_form
 perseveringly	0	oewn-perseveringly-r	Degree=Pos	dema	0			oewn_form
 persicaria	0		Number=Sing	dema	0	persicaria	n	moby_reverse
 persicarias	0		Number=Plur	dema	0	persicaria	n	rule
@@ -3523,8 +3523,8 @@ perused	0	oewn-peruse-v	Tense=Past+VerbForm=Part	dema	0			rule
 peruser	0		Number=Sing	dema	0	peruser	n	moby_reverse
 perusers	0		Number=Plur	dema	0	peruser	n	rule
 peruses	0	oewn-peruse-v	Person=3+Tense=Pres	dema	0			rule
-perusing	0	oewn-perusing-n	Number=Sing	dema	0			oewn_form
-perusing	1	oewn-peruse-v	VerbForm=Ger	dema	0			rule
+perusing	0	oewn-peruse-v	VerbForm=Ger	dema	0			rule
+perusing	1	oewn-perusing-n	Number=Sing	dema	0			oewn_form
 perusings	0	oewn-perusing-n	Number=Plur	dema	0			rule
 perv	0	oewn-perv-n	Number=Sing	dema	0			oewn_form
 perv	1	oewn-perv-v	VerbForm=Inf	dema	0			oewn_form
@@ -3559,8 +3559,8 @@ perversity	0	oewn-perversity-n	Number=Sing	dema	0			oewn_form
 perversive	0	oewn-perversive-a	Degree=Pos	dema	0			oewn_form
 pervert	0	oewn-pervert-n	Number=Sing	dema	1			carried
 pervert	1	oewn-pervert-v	VerbForm=Inf	dema	1			carried
-perverted	0	oewn-perverted-a	Degree=Pos	dema	0			oewn_form
-perverted	1	oewn-pervert-v	Tense=Past+VerbForm=Part	dema	0			rule
+perverted	0	oewn-pervert-v	Tense=Past+VerbForm=Part	dema	0			rule
+perverted	1	oewn-perverted-a	Degree=Pos	dema	0			oewn_form
 perverter	0		Number=Sing	dema	0	perverter	n	moby_reverse
 perverters	0		Number=Plur	dema	0	perverter	n	rule
 pervertibilities	0		Number=Plur	dema	0	pervertibility	n	rule
@@ -3581,8 +3581,8 @@ perviousness	0	oewn-perviousness-n	Number=Sing	dema	0			oewn_form
 perviousnesses	0	oewn-perviousness-n	Number=Plur	dema	0			rule
 pervs	0	oewn-perv-n	Number=Plur	dema	0			rule
 pervs	1	oewn-perv-v	Person=3+Tense=Pres	dema	0			rule
-pes	0	oewn-pes-n	Number=Sing	dema	0			oewn_form
-pes	1	oewn-pe-n	Number=Plur	dema	0			rule
+pes	0	oewn-pe-n	Number=Plur	dema	0			rule
+pes	1	oewn-pes-n	Number=Sing	dema	0			oewn_form
 pes cavus	0	oewn-pes_cavus-n	Number=Sing	dema	0			oewn_form
 pes planus	0	oewn-pes_planus-n	Number=Sing	dema	0			oewn_form
 pesade	0		Number=Sing	dema	0	pesade	n	moby_reverse
@@ -3901,14 +3901,14 @@ pettifogger	0	oewn-pettifogger-n	Number=Sing	dema	0			oewn_form
 pettifoggeries	0	oewn-pettifoggery-n	Number=Plur	dema	0			rule
 pettifoggers	0	oewn-pettifogger-n	Number=Plur	dema	0			rule
 pettifoggery	0	oewn-pettifoggery-n	Number=Sing	dema	0			oewn_form
-pettifogging	0		Degree=Pos	dema	0	pettifogging	a	moby_reverse
-pettifogging	1	oewn-pettifog-v	VerbForm=Ger	dema	0			oewn_form
+pettifogging	0	oewn-pettifog-v	VerbForm=Ger	dema	0			oewn_form
+pettifogging	1		Degree=Pos	dema	0	pettifogging	a	moby_reverse
 pettifogs	0	oewn-pettifog-v	Person=3+Tense=Pres	dema	0			rule
 pettily	0	oewn-pettily-r	Degree=Pos	dema	0			oewn_form
 pettiness	0	oewn-pettiness-n	Number=Sing	dema	0			oewn_form
 pettinesses	0	oewn-pettiness-n	Number=Plur	dema	0			rule
-petting	0	oewn-petting-n	Number=Sing	dema	0			oewn_form
-petting	1	oewn-pet-v	VerbForm=Ger	dema	0			oewn_form
+petting	0	oewn-pet-v	VerbForm=Ger	dema	0			oewn_form
+petting	1	oewn-petting-n	Number=Sing	dema	0			oewn_form
 petting zoo	0	oewn-petting_zoo-n	Number=Sing	dema	0			oewn_form
 petting zoos	0	oewn-petting_zoo-n	Number=Plur	dema	0			rule
 pettings	0	oewn-petting-n	Number=Plur	dema	0			rule

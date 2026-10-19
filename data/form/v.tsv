@@ -671,8 +671,8 @@ vaccinate	0	oewn-vaccinate-v	VerbForm=Inf	dema	0			oewn_form
 vaccinated	0	oewn-vaccinate-v	Tense=Past+VerbForm=Part	dema	0			rule
 vaccinated	1	oewn-vaccinated-a	Degree=Pos	dema	0			oewn_form
 vaccinates	0	oewn-vaccinate-v	Person=3+Tense=Pres	dema	0			rule
-vaccinating	0	oewn-vaccinating-n	Number=Sing	dema	0			oewn_form
-vaccinating	1	oewn-vaccinate-v	VerbForm=Ger	dema	0			rule
+vaccinating	0	oewn-vaccinate-v	VerbForm=Ger	dema	0			rule
+vaccinating	1	oewn-vaccinating-n	Number=Sing	dema	0			oewn_form
 vaccinatings	0	oewn-vaccinating-n	Number=Plur	dema	0			rule
 vaccination	0	oewn-vaccination-n	Number=Sing	dema	0			oewn_form
 vaccinationist	0		Number=Sing	dema	0	vaccinationist	n	moby_reverse
@@ -700,8 +700,8 @@ vacillant	0	oewn-vacillant-a	Degree=Pos	dema	0			oewn_form
 vacillate	0	oewn-vacillate-v	VerbForm=Inf	dema	0			oewn_form
 vacillated	0	oewn-vacillate-v	Tense=Past+VerbForm=Part	dema	0			rule
 vacillates	0	oewn-vacillate-v	Person=3+Tense=Pres	dema	0			rule
-vacillating	0	oewn-vacillating-a	Degree=Pos	dema	0			oewn_form
-vacillating	1	oewn-vacillate-v	VerbForm=Ger	dema	0			rule
+vacillating	0	oewn-vacillate-v	VerbForm=Ger	dema	0			rule
+vacillating	1	oewn-vacillating-a	Degree=Pos	dema	0			oewn_form
 vacillatingly	0		Degree=Pos	dema	0	vacillatingly	r	moby_reverse
 vacillation	0	oewn-vacillation-n	Number=Sing	dema	0			oewn_form
 vacillations	0	oewn-vacillation-n	Number=Plur	dema	0			rule
@@ -1399,16 +1399,16 @@ varicosities	0	oewn-varicosity-n	Number=Plur	dema	0			rule
 varicosity	0	oewn-varicosity-n	Number=Sing	dema	0			oewn_form
 varicotomies	0		Number=Plur	dema	0	varicotomy	n	rule
 varicotomy	0		Number=Sing	dema	0	varicotomy	n	moby_reverse
-varied	0	oewn-varied-a	Degree=Pos	dema	0			oewn_form
-varied	1	oewn-vary-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+varied	0	oewn-vary-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+varied	1	oewn-varied-a	Degree=Pos	dema	0			oewn_form
 varied Lorikeet	0	oewn-varied_Lorikeet-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 varied Lorikeets	0	oewn-varied_Lorikeet-n	Capitalization=Exact+Number=Plur	dema	0			rule
 variedly	0		Degree=Pos	dema	0	variedly	r	moby_reverse
 variedness	0	oewn-variedness-n	Number=Sing	dema	0			oewn_form
 variednesses	0	oewn-variedness-n	Number=Plur	dema	0			rule
 variegate	0	oewn-variegate-v	VerbForm=Inf	dema	0			oewn_form
-variegated	0	oewn-variegated-a	Degree=Pos	dema	0			oewn_form
-variegated	1	oewn-variegate-v	Tense=Past+VerbForm=Part	dema	0			rule
+variegated	0	oewn-variegate-v	Tense=Past+VerbForm=Part	dema	0			rule
+variegated	1	oewn-variegated-a	Degree=Pos	dema	0			oewn_form
 variegated horsetail	0	oewn-variegated_horsetail-n	Number=Sing	dema	0			oewn_form
 variegated horsetails	0	oewn-variegated_horsetail-n	Number=Plur	dema	0			rule
 variegated scouring rush	0	oewn-variegated_scouring_rush-n	Number=Sing	dema	0			oewn_form
@@ -1718,8 +1718,8 @@ vaulted	1	oewn-vault-v	Tense=Past+VerbForm=Part	dema	0			rule
 vaulter	0	oewn-vaulter-n	Number=Sing	dema	0			oewn_form
 vaulters	0	oewn-vaulter-n	Number=Plur	dema	0			rule
 vaulting	0	oewn-vaulting-n	Number=Sing	dema	0			oewn_form
-vaulting	1	oewn-vaulting-a	Degree=Pos	dema	0			oewn_form
-vaulting	2	oewn-vault-v	VerbForm=Ger	dema	0			rule
+vaulting	1	oewn-vault-v	VerbForm=Ger	dema	0			rule
+vaulting	2	oewn-vaulting-a	Degree=Pos	dema	0			oewn_form
 vaulting horse	0	oewn-vaulting_horse-n	Number=Sing	dema	0			oewn_form
 vaulting horses	0	oewn-vaulting_horse-n	Number=Plur	dema	0			rule
 vaultings	0	oewn-vaulting-n	Number=Plur	dema	0			rule
@@ -1728,12 +1728,12 @@ vaults	1	oewn-vault-v	Person=3+Tense=Pres	dema	0			rule
 vaults of heaven	0	oewn-vault_of_heaven-n	Number=Plur	dema	0			rule
 vaunt	0	oewn-vaunt-v	VerbForm=Inf	dema	0			oewn_form
 vaunt	1	oewn-vaunt-n	Number=Sing	dema	0			oewn_form
-vaunted	0		Degree=Pos	dema	0	vaunted	a	moby_reverse
-vaunted	1	oewn-vaunt-v	Tense=Past+VerbForm=Part	dema	0			rule
+vaunted	0	oewn-vaunt-v	Tense=Past+VerbForm=Part	dema	0			rule
+vaunted	1		Degree=Pos	dema	0	vaunted	a	moby_reverse
 vaunter	0	oewn-vaunter-n	Number=Sing	dema	0			oewn_form
 vaunters	0	oewn-vaunter-n	Number=Plur	dema	0			rule
-vaunting	0		Degree=Pos	dema	0	vaunting	a	moby_reverse
-vaunting	1	oewn-vaunt-v	VerbForm=Ger	dema	0			rule
+vaunting	0	oewn-vaunt-v	VerbForm=Ger	dema	0			rule
+vaunting	1		Degree=Pos	dema	0	vaunting	a	moby_reverse
 vauntingly	0	oewn-vauntingly-r	Degree=Pos	dema	0			oewn_form
 vaunts	0	oewn-vaunt-v	Person=3+Tense=Pres	dema	0			rule
 vaunts	1	oewn-vaunt-n	Number=Plur	dema	0			rule
@@ -1990,8 +1990,8 @@ velocity	0	oewn-velocity-n	Number=Sing	dema	0			oewn_form
 velodrome	0	oewn-velodrome-n	Number=Sing	dema	0			oewn_form
 velodromes	0	oewn-velodrome-n	Number=Plur	dema	0			rule
 velour	0	oewn-velour-n	Number=Sing	dema	0			oewn_form
-velours	0	oewn-velours-n	Number=Sing	dema	0			oewn_form
-velours	1	oewn-velour-n	Number=Plur	dema	0			rule
+velours	0	oewn-velour-n	Number=Plur	dema	0			rule
+velours	1	oewn-velours-n	Number=Sing	dema	0			oewn_form
 velout	0		Number=Sing	dema	0	velout	n	moby_reverse
 veloute	0	oewn-veloute-n	Number=Sing	dema	0			oewn_form
 veloutes	0	oewn-veloute-n	Number=Plur	dema	0			rule
@@ -2688,8 +2688,8 @@ veridicalities	0		Number=Plur	dema	0	veridicality	n	rule
 veridicality	0		Number=Sing	dema	0	veridicality	n	moby_reverse
 veridically	0		Degree=Pos	dema	0	veridically	r	moby_reverse
 verier	0	oewn-very-a	Degree=Cmp	dema	0			rule
-veriest	0		Number=Sing	dema	0	veriest	n	moby_reverse
-veriest	1	oewn-very-a	Degree=Sup	dema	0			rule
+veriest	0	oewn-very-a	Degree=Sup	dema	0			rule
+veriest	1		Number=Sing	dema	0	veriest	n	moby_reverse
 verifiabilities	0	oewn-verifiability-n	Number=Plur	dema	0			rule
 verifiability	0	oewn-verifiability-n	Number=Sing	dema	0			oewn_form
 verifiable	0	oewn-verifiable-a	Degree=Pos	dema	0			oewn_form
@@ -3073,8 +3073,8 @@ vesper sparrow	0	oewn-vesper_sparrow-n	Number=Sing	dema	0			oewn_form
 vesper sparrows	0	oewn-vesper_sparrow-n	Number=Plur	dema	0			rule
 vesperal	0		Number=Sing	dema	0	vesperal	n	moby_reverse
 vesperals	0		Number=Plur	dema	0	vesperal	n	rule
-vespers	0	oewn-vespers-n	Number=Sing	dema	0			oewn_form
-vespers	1	oewn-vesper-n	Number=Plur	dema	0			rule
+vespers	0	oewn-vesper-n	Number=Plur	dema	0			rule
+vespers	1	oewn-vespers-n	Number=Sing	dema	0			oewn_form
 vespertide	0		Number=Sing	dema	0	vespertide	n	moby_reverse
 vespertides	0		Number=Plur	dema	0	vespertide	n	rule
 vespertilian bat	0	oewn-vespertilian_bat-n	Number=Sing	dema	0			oewn_form
@@ -3180,8 +3180,8 @@ vet	1	oewn-vet-v	VerbForm=Inf	dema	0			oewn_form
 vetch	0	oewn-vetch-n	Number=Sing	dema	0			oewn_form
 vetches	0	oewn-vetch-n	Number=Plur	dema	0			rule
 vetchlike	0		Degree=Pos	dema	0	vetchlike	a	moby_reverse
-vetchling	0	oewn-vetchling-n	Number=Plur	dema	0			agid
-vetchling	1	oewn-vetchling-n	Number=Sing	dema	0			oewn_form
+vetchling	0	oewn-vetchling-n	Number=Sing	dema	0			oewn_form
+vetchlings	0	oewn-vetchling-n	Number=Plur	dema	0			rule
 vetchworm	0	oewn-vetchworm-n	Number=Sing	dema	0			oewn_form
 vetchworms	0	oewn-vetchworm-n	Number=Plur	dema	0			rule
 veter	0		Number=Sing	dema	0	veter	n	moby_reverse
@@ -3231,8 +3231,8 @@ vexatious litigations	0	oewn-vexatious_litigation-n	Number=Plur	dema	0			rule
 vexatiously	0	oewn-vexatiously-r	Degree=Pos	dema	0			oewn_form
 vexatiousness	0		Number=Sing	dema	0	vexatiousness	n	moby_reverse
 vexatiousnesses	0		Number=Plur	dema	0	vexatiousness	n	rule
-vexed	0	oewn-vexed-a	Degree=Pos	dema	0			oewn_form
-vexed	1	oewn-vex-v	Tense=Past+VerbForm=Part	dema	0			rule
+vexed	0	oewn-vex-v	Tense=Past+VerbForm=Part	dema	0			rule
+vexed	1	oewn-vexed-a	Degree=Pos	dema	0			oewn_form
 vexedly	0		Degree=Pos	dema	0	vexedly	r	moby_reverse
 vexedness	0		Number=Sing	dema	0	vexedness	n	moby_reverse
 vexednesses	0		Number=Plur	dema	0	vexedness	n	rule
@@ -3515,8 +3515,8 @@ victuallers	0	oewn-victualler-n	Number=Plur	dema	0			rule
 victualless	0		Degree=Pos	dema	0	victualless	a	moby_reverse
 victualling	0	oewn-victual-v	VerbForm=Ger	dema	0			oewn_form
 victuals	0	oewn-victuals-n	Number=Sing	dema	0			oewn_form
-victuals	1	oewn-victual-n	Number=Plur	dema	0			rule
-victuals	2	oewn-victual-v	Person=3+Tense=Pres	dema	0			rule
+victuals	1	oewn-victual-v	Person=3+Tense=Pres	dema	0			rule
+victuals	2	oewn-victual-n	Number=Plur	dema	0			rule
 vicuna	0	oewn-vicuna-n	Number=Sing	dema	0			oewn_form
 vicunas	0	oewn-vicuna-n	Number=Plur	dema	0			rule
 vide	0		VerbForm=Inf	dema	0	vide	v	moby_reverse
@@ -4515,8 +4515,8 @@ vitellus	0	oewn-vitellus-n	Number=Sing	dema	0			oewn_form
 vitelluses	0	oewn-vitellus-n	Number=Plur	dema	0			rule_variant
 vitiable	0		Degree=Pos	dema	0	vitiable	a	moby_reverse
 vitiate	0	oewn-vitiate-v	VerbForm=Inf	dema	0			oewn_form
-vitiated	0	oewn-vitiated-a	Degree=Pos	dema	0			oewn_form
-vitiated	1	oewn-vitiate-v	Tense=Past+VerbForm=Part	dema	0			rule
+vitiated	0	oewn-vitiate-v	Tense=Past+VerbForm=Part	dema	0			rule
+vitiated	1	oewn-vitiated-a	Degree=Pos	dema	0			oewn_form
 vitiates	0	oewn-vitiate-v	Person=3+Tense=Pres	dema	0			rule
 vitiating	0	oewn-vitiate-v	VerbForm=Ger	dema	0			rule
 vitiation	0	oewn-vitiation-n	Number=Sing	dema	0			oewn_form
@@ -4763,8 +4763,8 @@ vocalized	0	oewn-vocalize-v	Tense=Past+VerbForm=Part	dema	0			rule
 vocalizer	0	oewn-vocalizer-n	Number=Sing	dema	0			oewn_form
 vocalizers	0	oewn-vocalizer-n	Number=Plur	dema	0			rule
 vocalizes	0	oewn-vocalize-v	Person=3+Tense=Pres	dema	0			rule
-vocalizing	0	oewn-vocalizing-n	Number=Sing	dema	0			oewn_form
-vocalizing	1	oewn-vocalize-v	VerbForm=Ger	dema	0			rule
+vocalizing	0	oewn-vocalize-v	VerbForm=Ger	dema	0			rule
+vocalizing	1	oewn-vocalizing-n	Number=Sing	dema	0			oewn_form
 vocalizings	0	oewn-vocalizing-n	Number=Plur	dema	0			rule
 vocally	0	oewn-vocally-r	Degree=Pos	dema	0			oewn_form
 vocalness	0		Number=Sing	dema	0	vocalness	n	moby_reverse
@@ -5448,6 +5448,6 @@ vulvovaginitis	0	oewn-vulvovaginitis-n	Number=Sing	dema	0			oewn_form
 vv	0		Number=Sing	dema	0	vv	n	moby_reverse
 vvll	0		Number=Sing	dema	0	vvll	n	moby_reverse
 vvlls	0		Number=Plur	dema	0	vvll	n	rule
-vying	0		Degree=Pos	dema	0	vying	a	moby_reverse
-vying	1	oewn-vie-v	VerbForm=Ger	dema	0			oewn_form
+vying	0	oewn-vie-v	VerbForm=Ger	dema	0			oewn_form
+vying	1		Degree=Pos	dema	0	vying	a	moby_reverse
 vyingly	0		Degree=Pos	dema	0	vyingly	r	moby_reverse

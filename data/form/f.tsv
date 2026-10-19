@@ -22,8 +22,8 @@ FBI agents	0	oewn-FBI_agent-n	Capitalization=Exact+Number=Plur	dema	0			rule
 FBIS	0	oewn-FBI-n	Capitalization=Upper+Number=Plur	dema	0			rule
 FCC	0	oewn-FCC-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 FCCS	0	oewn-FCC-n	Capitalization=Upper+Number=Plur	dema	0			rule
-FCS	0		Number=Sing	dema	0	fcs	n	moby_reverse
-FCS	1		Number=Plur	dema	0	fc	n	rule
+FCS	0		Number=Plur	dema	0	fc	n	rule
+FCS	1		Number=Sing	dema	0	fcs	n	moby_reverse
 FCS	2	oewn-FCS-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 FDA	0	oewn-FDA-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 FDAS	0	oewn-FDA-n	Capitalization=Upper+Number=Plur	dema	0			rule
@@ -69,8 +69,8 @@ FOS	0	oewn-FO-n	Capitalization=Upper+Number=Plur	dema	0			rule
 FOTS	0	oewn-FOTS-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 FPD	0	oewn-FPD-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 FPDS	0	oewn-FPD-n	Capitalization=Upper+Number=Plur	dema	0			rule
-FPS	0		Number=Sing	dema	0	fps	n	moby_reverse
-FPS	1		Number=Plur	dema	0	fp	n	rule
+FPS	0		Number=Plur	dema	0	fp	n	rule
+FPS	1		Number=Sing	dema	0	fps	n	moby_reverse
 FPS	2	oewn-FPS-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 FRS	0	oewn-Fr-n	Number=Plur	dema	0			moby_reverse
 FRS	1		Number=Plur	dema	0	fr	n	rule
@@ -261,8 +261,8 @@ Fedayeen Saddam	0	oewn-Fedayeen_Saddam-n	Capitalization=Title+Number=Sing	dema	0
 Fedayeen Saddams	0	oewn-Fedayeen_Saddam-n	Capitalization=Title+Number=Plur	dema	0			rule
 Federal	0	oewn-federal-a	Degree=Pos	dema	0			oewn_form
 Federal	1		Number=Sing	dema	0	federal	n	moby_reverse
-Federal	2	oewn-Federal-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-Federal	3	oewn-Federal-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Federal	2	oewn-Federal-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Federal	3	oewn-Federal-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Federal Aviation Administration	0	oewn-Federal_Aviation_Administration-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Federal Aviation Administrations	0	oewn-Federal_Aviation_Administration-n	Capitalization=Title+Number=Plur	dema	0			rule
 Federal Bureau of Investigation	0	oewn-Federal_Bureau_of_Investigation-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
@@ -733,8 +733,8 @@ French	0		Number=Sing	dema	0	french	n	moby_reverse
 French	1		Degree=Pos	dema	0	french	a	moby_reverse
 French	2	oewn-French-n	Capitalization=Title+Number=Plur	dema	0			hand
 French	3	oewn-French-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-French	4	oewn-French-v	Capitalization=Title+VerbForm=Inf	dema	0			oewn_form
-French	5	oewn-French-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+French	4	oewn-French-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+French	5	oewn-French-v	Capitalization=Title+VerbForm=Inf	dema	0			oewn_form
 French Academies	0	oewn-French_Academy-n	Capitalization=Title+Number=Plur	dema	0			rule
 French Academy	0	oewn-French_Academy-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 French Canadian	0	oewn-French_Canadian-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
@@ -1102,8 +1102,8 @@ facet	1		VerbForm=Inf	dema	0	facet	v	moby_reverse
 facet plane	0	oewn-facet_plane-n	Number=Sing	dema	0			oewn_form
 facet planes	0	oewn-facet_plane-n	Number=Plur	dema	0			rule
 facete	0		Degree=Pos	dema	0	facete	a	moby_reverse
-faceted	0	oewn-faceted-a	Degree=Pos	dema	0			oewn_form
-faceted	1		Tense=Past+VerbForm=Part	dema	0	facet	v	moby_reverse
+faceted	0		Tense=Past+VerbForm=Part	dema	0	facet	v	moby_reverse
+faceted	1	oewn-faceted-a	Degree=Pos	dema	0			oewn_form
 facetely	0		Degree=Pos	dema	0	facetely	r	moby_reverse
 faceteness	0		Number=Sing	dema	0	faceteness	n	moby_reverse
 facetiae	0		Number=Sing	dema	0	facetiae	n	moby_reverse
@@ -1493,8 +1493,8 @@ faint	1	oewn-faint-v	VerbForm=Inf	dema	0			oewn_form
 faint	2	oewn-faint-n	Number=Sing	dema	0			oewn_form
 faint-hearted	0	oewn-faint-hearted-a	Degree=Pos	dema	0			oewn_form
 fainted	0	oewn-faint-v	Tense=Past+VerbForm=Part	dema	0			rule
-fainter	0		Number=Sing	dema	0	fainter	n	moby_reverse
-fainter	1	oewn-faint-a	Degree=Cmp	dema	0			rule
+fainter	0	oewn-faint-a	Degree=Cmp	dema	0			rule
+fainter	1		Number=Sing	dema	0	fainter	n	moby_reverse
 fainters	0		Number=Plur	dema	0	fainter	n	rule
 faintest	0	oewn-faint-a	Degree=Sup	dema	0			rule
 faintheart	0		Number=Sing	dema	0	faintheart	n	moby_reverse
@@ -1512,8 +1512,8 @@ faintishnesses	0		Number=Plur	dema	0	faintishness	n	rule
 faintly	0	oewn-faintly-r	Degree=Pos	dema	0			oewn_form
 faintness	0	oewn-faintness-n	Number=Sing	dema	0			oewn_form
 faintnesses	0	oewn-faintness-n	Number=Plur	dema	0			rule
-faints	0	oewn-faint-n	Number=Plur	dema	0			rule
-faints	1	oewn-faint-v	Person=3+Tense=Pres	dema	0			rule
+faints	0	oewn-faint-v	Person=3+Tense=Pres	dema	0			rule
+faints	1	oewn-faint-n	Number=Plur	dema	0			rule
 fair	0	oewn-fair-a	Degree=Pos	dema	0			oewn_form
 fair	1	oewn-fair-r	Degree=Pos	dema	0			oewn_form
 fair	2	oewn-fair-v	VerbForm=Inf	dema	0			oewn_form
@@ -2029,8 +2029,8 @@ falsifier	0	oewn-falsifier-n	Number=Sing	dema	0			oewn_form
 falsifiers	0	oewn-falsifier-n	Number=Plur	dema	0			rule
 falsifies	0	oewn-falsify-v	Person=3+Tense=Pres	dema	0			rule
 falsify	0	oewn-falsify-v	VerbForm=Inf	dema	0			oewn_form
-falsifying	0	oewn-falsifying-n	Number=Sing	dema	0			oewn_form
-falsifying	1	oewn-falsify-v	VerbForm=Ger	dema	0			rule
+falsifying	0	oewn-falsify-v	VerbForm=Ger	dema	0			rule
+falsifying	1	oewn-falsifying-n	Number=Sing	dema	0			oewn_form
 falsifyings	0	oewn-falsifying-n	Number=Plur	dema	0			rule
 falsities	0	oewn-falsity-n	Number=Plur	dema	0			rule
 falsity	0	oewn-falsity-n	Number=Sing	dema	0			oewn_form
@@ -2158,8 +2158,8 @@ famine	0	oewn-famine-n	Number=Sing	dema	0			oewn_form
 famines	0	oewn-famine-n	Number=Plur	dema	0			rule
 faming	0		VerbForm=Ger	dema	0	fame	v	moby_reverse
 famish	0	oewn-famish-v	VerbForm=Inf	dema	0			oewn_form
-famished	0	oewn-famished-a	Degree=Pos	dema	0			oewn_form
-famished	1	oewn-famish-v	Tense=Past+VerbForm=Part	dema	0			rule
+famished	0	oewn-famish-v	Tense=Past+VerbForm=Part	dema	0			rule
+famished	1	oewn-famished-a	Degree=Pos	dema	0			oewn_form
 famishes	0	oewn-famish-v	Person=3+Tense=Pres	dema	0			rule
 famishing	0	oewn-famish-v	VerbForm=Ger	dema	0			rule
 famishment	0	oewn-famishment-n	Number=Sing	dema	0			oewn_form
@@ -2632,13 +2632,13 @@ farsightednesses	0	oewn-farsightedness-n	Number=Plur	dema	0			rule
 fart	0	oewn-fart-n	Number=Sing	dema	0			oewn_form
 fart	1	oewn-fart-v	VerbForm=Inf	dema	0			oewn_form
 farted	0	oewn-fart-v	Tense=Past+VerbForm=Part	dema	0			rule
-farther	0	oewn-far-a	Degree=Cmp	dema	0			hand
-farther	1	oewn-far-r	Degree=Cmp	dema	0			hand
+farther	0	oewn-far-r	Degree=Cmp	dema	0			hand
+farther	1	oewn-far-a	Degree=Cmp	dema	0			hand
 farther	2	oewn-farther-r	Degree=Pos	dema	0			oewn_form
 farther	3	oewn-farther-a	Degree=Pos	dema	0			oewn_form
 farthermost	0	oewn-farthermost-a	Degree=Pos	dema	0			oewn_form
-farthest	0	oewn-far-a	Degree=Sup	dema	0			hand
-farthest	1	oewn-far-r	Degree=Sup	dema	0			hand
+farthest	0	oewn-far-r	Degree=Sup	dema	0			hand
+farthest	1	oewn-far-a	Degree=Sup	dema	0			hand
 farthest	2	oewn-farthest-r	Degree=Pos	dema	0			oewn_form
 farthest	3	oewn-farthest-a	Degree=Pos	dema	0			oewn_form
 farthing	0	oewn-farthing-n	Number=Sing	dema	0			oewn_form
@@ -2681,8 +2681,8 @@ fascinated	0	oewn-fascinate-v	Tense=Past+VerbForm=Part	dema	0			rule
 fascinated	1	oewn-fascinated-a	Degree=Pos	dema	0			oewn_form
 fascinatedly	0		Degree=Pos	dema	0	fascinatedly	r	moby_reverse
 fascinates	0	oewn-fascinate-v	Person=3+Tense=Pres	dema	0			rule
-fascinating	0	oewn-fascinating-a	Degree=Pos	dema	0			oewn_form
-fascinating	1	oewn-fascinate-v	VerbForm=Ger	dema	0			rule
+fascinating	0	oewn-fascinate-v	VerbForm=Ger	dema	0			rule
+fascinating	1	oewn-fascinating-a	Degree=Pos	dema	0			oewn_form
 fascinatingly	0	oewn-fascinatingly-r	Degree=Pos	dema	0			oewn_form
 fascination	0	oewn-fascination-n	Number=Sing	dema	0			oewn_form
 fascinations	0	oewn-fascination-n	Number=Plur	dema	0			rule
@@ -2986,8 +2986,8 @@ fattens out	0	oewn-fatten_out-v	Person=3+Tense=Pres	dema	0			rule
 fattens up	0	oewn-fatten_up-v	Person=3+Tense=Pres	dema	0			rule
 fatter	0	oewn-fat-a	Degree=Cmp	dema	0			oewn_form
 fattest	0		Number=Sing	dema	0	fattest	n	moby_reverse
-fattest	1		VerbForm=Inf	dema	0	fattest	v	moby_reverse
-fattest	2	oewn-fat-a	Degree=Sup	dema	0			oewn_form
+fattest	1	oewn-fat-a	Degree=Sup	dema	0			oewn_form
+fattest	2		VerbForm=Inf	dema	0	fattest	v	moby_reverse
 fattests	0		Number=Plur	dema	0	fattest	n	rule
 fattier	0	oewn-fatty-a	Degree=Cmp	dema	0			oewn_form
 fatties	0	oewn-fatty-n	Number=Plur	dema	0			rule
@@ -3205,8 +3205,8 @@ fazing	0	oewn-faze-v	VerbForm=Ger	dema	0			rule
 fb	0		Number=Sing	dema	0	fb	n	moby_reverse
 fc	0		Number=Sing	dema	0	fc	n	moby_reverse
 fcp	0		Number=Sing	dema	0	fcp	n	moby_reverse
-fcs	0		Number=Sing	dema	0	fcs	n	moby_reverse
-fcs	1		Number=Plur	dema	0	fc	n	rule
+fcs	0		Number=Plur	dema	0	fc	n	rule
+fcs	1		Number=Sing	dema	0	fcs	n	moby_reverse
 fe	0		Number=Sing	dema	0	fe	n	moby_reverse
 feal	0		Degree=Pos	dema	0	feal	a	moby_reverse
 fealties	0	oewn-fealty-n	Number=Plur	dema	0			rule
@@ -3594,7 +3594,6 @@ feeling	0	oewn-feel-v	VerbForm=Ger	dema	1			carried
 feeling	1	dema-feeling-a	Degree=Pos	dema	0			carried
 feeling	2	oewn-feel-n	Number=Sing+VerbForm=Ger	dema	1			carried
 feeling	3	oewn-feeling-n	Number=Sing	dema	0			oewn_form
-feeling	4	oewn-feeling-n	Number=Plur	dema	0			agid
 feeling for	0	oewn-feel_for-v	VerbForm=Ger	dema	0			rule
 feeling like	0	oewn-feel_like-v	VerbForm=Ger	dema	0			rule
 feeling like a million	0	oewn-feel_like_a_million-v	VerbForm=Ger	dema	0			rule
@@ -3607,7 +3606,8 @@ feelinglessly	0		Degree=Pos	dema	0	feelinglessly	r	moby_reverse
 feelingly	0	oewn-feelingly-r	Degree=Pos	dema	0			oewn_form
 feelingness	0		Number=Sing	dema	0	feelingness	n	moby_reverse
 feelingnesses	0		Number=Plur	dema	0	feelingness	n	rule
-feelings	0	oewn-feelings-n	Number=Sing	dema	0			oewn_form
+feelings	0	oewn-feeling-n	Number=Plur	dema	0			rule
+feelings	1	oewn-feelings-n	Number=Sing	dema	0			oewn_form
 feelings of movement	0	oewn-feeling_of_movement-n	Number=Plur	dema	0			rule
 feels	0	oewn-feel-n	Number=Plur	dema	1			carried
 feels	1	oewn-feel-v	Person=3+Tense=Pres	dema	1			carried
@@ -3627,8 +3627,8 @@ feezed	0		Tense=Past+VerbForm=Part	dema	0	feeze	v	rule
 feezes	0		Person=3+Tense=Pres	dema	0	feeze	v	rule
 feezing	0		VerbForm=Ger	dema	0	feeze	v	rule
 feign	0	oewn-feign-v	VerbForm=Inf	dema	0			oewn_form
-feigned	0	oewn-feigned-a	Degree=Pos	dema	0			oewn_form
-feigned	1	oewn-feign-v	Tense=Past+VerbForm=Part	dema	0			rule
+feigned	0	oewn-feign-v	Tense=Past+VerbForm=Part	dema	0			rule
+feigned	1	oewn-feigned-a	Degree=Pos	dema	0			oewn_form
 feignedly	0		Degree=Pos	dema	0	feignedly	r	moby_reverse
 feignedness	0		Number=Sing	dema	0	feignedness	n	moby_reverse
 feigner	0		Number=Sing	dema	0	feigner	n	moby_reverse
@@ -3789,8 +3789,8 @@ felt-tipped pens	0	oewn-felt-tipped_pen-n	Number=Plur	dema	0			rule
 felted	0	oewn-felt-v	Tense=Past+VerbForm=Part	dema	0			rule
 felted	1	oewn-felted-a	Degree=Pos	dema	0			oewn_form
 felted up	0	oewn-felt_up-v	Tense=Past+VerbForm=Part	dema	0			rule
-felting	0		Number=Sing	dema	0	felting	n	moby_reverse
-felting	1	oewn-felt-v	VerbForm=Ger	dema	0			rule
+felting	0	oewn-felt-v	VerbForm=Ger	dema	0			rule
+felting	1		Number=Sing	dema	0	felting	n	moby_reverse
 felting up	0	oewn-felt_up-v	VerbForm=Ger	dema	0			rule
 feltings	0		Number=Plur	dema	0	felting	n	rule
 felts	0	oewn-felt-v	Person=3+Tense=Pres	dema	0			rule
@@ -4420,8 +4420,8 @@ fetchers	0		Number=Plur	dema	0	fetcher	n	rule
 fetches	0	oewn-fetch-v	Person=3+Tense=Pres	dema	0			rule
 fetches	1	oewn-fetch-n	Number=Plur	dema	0			rule
 fetches up	0	oewn-fetch_up-v	Person=3+Tense=Pres	dema	0			rule
-fetching	0	oewn-fetching-a	Degree=Pos	dema	0			oewn_form
-fetching	1	oewn-fetch-v	VerbForm=Ger	dema	0			rule
+fetching	0	oewn-fetch-v	VerbForm=Ger	dema	0			rule
+fetching	1	oewn-fetching-a	Degree=Pos	dema	0			oewn_form
 fetching up	0	oewn-fetch_up-v	VerbForm=Ger	dema	0			rule
 fetchingly	0		Degree=Pos	dema	0	fetchingly	r	moby_reverse
 fete	0	oewn-fete-n	Number=Sing	dema	0			oewn_form
@@ -4516,8 +4516,8 @@ fettle	1	oewn-fettle-n	Number=Sing	dema	0			oewn_form
 fettled	0	oewn-fettle-v	Tense=Past+VerbForm=Part	dema	0			rule
 fettles	0	oewn-fettle-v	Person=3+Tense=Pres	dema	0			rule
 fettles	1	oewn-fettle-n	Number=Plur	dema	0			rule
-fettling	0		Number=Sing	dema	0	fettling	n	moby_reverse
-fettling	1	oewn-fettle-v	VerbForm=Ger	dema	0			rule
+fettling	0	oewn-fettle-v	VerbForm=Ger	dema	0			rule
+fettling	1		Number=Sing	dema	0	fettling	n	moby_reverse
 fettlings	0		Number=Plur	dema	0	fettling	n	rule
 fettuccine	0	oewn-fettuccine-n	Number=Sing	dema	0			oewn_form
 fettuccine Alfredo	0	oewn-fettuccine_Alfredo-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
@@ -4657,8 +4657,8 @@ fib	1	oewn-fib-v	VerbForm=Inf	dema	0			oewn_form
 fibbed	0	oewn-fib-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 fibber	0	oewn-fibber-n	Number=Sing	dema	0			oewn_form
 fibbers	0	oewn-fibber-n	Number=Plur	dema	0			rule
-fibbing	0	oewn-fibbing-n	Number=Sing	dema	0			oewn_form
-fibbing	1	oewn-fib-v	VerbForm=Ger	dema	0			oewn_form
+fibbing	0	oewn-fib-v	VerbForm=Ger	dema	0			oewn_form
+fibbing	1	oewn-fibbing-n	Number=Sing	dema	0			oewn_form
 fibbings	0	oewn-fibbing-n	Number=Plur	dema	0			rule
 fiber	0	oewn-fiber-n	Number=Sing	dema	0			oewn_form
 fiber bundle	0	oewn-fiber_bundle-n	Number=Sing	dema	0			oewn_form
@@ -5578,9 +5578,8 @@ fillets	0	oewn-fillet-n	Number=Plur	dema	0			rule
 fillets	1	oewn-fillet-v	Person=3+Tense=Pres	dema	0			rule
 fillets of sole	0	oewn-fillet_of_sole-n	Number=Plur	dema	0			rule
 fillies	0	oewn-filly-n	Number=Plur	dema	0			rule
-filling	0	oewn-filling-n	Number=Plur	dema	0			agid
-filling	1	oewn-filling-n	Number=Sing	dema	0			oewn_form
-filling	2	oewn-fill-v	VerbForm=Ger	dema	0			rule
+filling	0	oewn-filling-n	Number=Sing	dema	0			oewn_form
+filling	1	oewn-fill-v	VerbForm=Ger	dema	0			rule
 filling again	0	oewn-fill_again-v	VerbForm=Ger	dema	0			rule
 filling in	0	oewn-fill_in-v	VerbForm=Ger	dema	0			rule
 filling out	0	oewn-fill_out-v	VerbForm=Ger	dema	0			rule
@@ -5590,6 +5589,7 @@ filling the bill	0	oewn-fill_the_bill-v	VerbForm=Ger	dema	0			rule
 filling up	0	oewn-fill_up-v	VerbForm=Ger	dema	0			rule
 fillingly	0		Degree=Pos	dema	0	fillingly	r	moby_reverse
 fillingness	0		Number=Sing	dema	0	fillingness	n	moby_reverse
+fillings	0	oewn-filling-n	Number=Plur	dema	0			rule
 fillip	0	oewn-fillip-n	Number=Sing	dema	0			oewn_form
 fillip	1		VerbForm=Inf	dema	0	fillip	v	moby_reverse
 fillipeen	0		Number=Sing	dema	0	fillipeen	n	moby_reverse
@@ -6052,8 +6052,8 @@ fingering	1	oewn-finger-v	VerbForm=Ger	dema	0			rule
 fingerings	0	oewn-fingering-n	Number=Plur	dema	0			rule
 fingerless	0	oewn-fingerless-a	Degree=Pos	dema	0			oewn_form
 fingerlike	0	oewn-fingerlike-a	Degree=Pos	dema	0			oewn_form
-fingerling	0	oewn-fingerling-n	Number=Plur	dema	0			agid
-fingerling	1	oewn-fingerling-n	Number=Sing	dema	0			oewn_form
+fingerling	0	oewn-fingerling-n	Number=Sing	dema	0			oewn_form
+fingerlings	0	oewn-fingerling-n	Number=Plur	dema	0			rule
 fingermark	0	oewn-fingermark-n	Number=Sing	dema	0			oewn_form
 fingermarks	0	oewn-fingermark-n	Number=Plur	dema	0			rule
 fingernail	0	oewn-fingernail-n	Number=Sing	dema	0			oewn_form
@@ -6123,8 +6123,8 @@ finish lines	0	oewn-finish_line-n	Number=Plur	dema	0			rule
 finish off	0	oewn-finish_off-v	VerbForm=Inf	dema	0			oewn_form
 finish out	0	oewn-finish_out-v	VerbForm=Inf	dema	0			oewn_form
 finish up	0	oewn-finish_up-v	VerbForm=Inf	dema	0			oewn_form
-finished	0	oewn-finished-a	Degree=Pos	dema	0			oewn_form
-finished	1	oewn-finish-v	Tense=Past+VerbForm=Part	dema	0			rule
+finished	0	oewn-finish-v	Tense=Past+VerbForm=Part	dema	0			rule
+finished	1	oewn-finished-a	Degree=Pos	dema	0			oewn_form
 finished off	0	oewn-finish_off-v	Tense=Past+VerbForm=Part	dema	0			rule
 finished out	0	oewn-finish_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 finished up	0	oewn-finish_up-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -7043,8 +7043,8 @@ fivepenny	0		Degree=Pos	dema	0	fivepenny	a	moby_reverse
 fivepins	0		Number=Sing	dema	0	fivepins	n	moby_reverse
 fiver	0	oewn-fiver-n	Number=Sing	dema	0			oewn_form
 fivers	0	oewn-fiver-n	Number=Plur	dema	0			rule
-fives	0	oewn-fives-n	Number=Sing	dema	0			oewn_form
-fives	1	oewn-five-n	Number=Plur	dema	0			rule
+fives	0	oewn-five-n	Number=Plur	dema	0			rule
+fives	1	oewn-fives-n	Number=Sing	dema	0			oewn_form
 fivesome	0	oewn-fivesome-n	Number=Sing	dema	0			oewn_form
 fivesomes	0	oewn-fivesome-n	Number=Plur	dema	0			rule
 fix	0	oewn-fix-n	Number=Sing	dema	1			carried
@@ -7118,8 +7118,8 @@ fixing	2	oewn-fixing-n	Number=Sing	dema	0			oewn_form
 fixing agent	0	oewn-fixing_agent-n	Number=Sing	dema	0			oewn_form
 fixing agents	0	oewn-fixing_agent-n	Number=Plur	dema	0			rule
 fixing up	0	oewn-fix_up-v	VerbForm=Ger	dema	0			rule
-fixings	0	oewn-fixings-n	Number=Sing	dema	0			oewn_form
-fixings	1	oewn-fixing-n	Number=Plur	dema	0			rule
+fixings	0	oewn-fixing-n	Number=Plur	dema	0			rule
+fixings	1	oewn-fixings-n	Number=Sing	dema	0			oewn_form
 fixities	0	oewn-fixity-n	Number=Plur	dema	0			rule
 fixity	0	oewn-fixity-n	Number=Sing	dema	0			oewn_form
 fixt	0		VerbForm=Inf	dema	0	fixt	v	moby_reverse
@@ -7416,8 +7416,8 @@ flamier	0		Degree=Cmp	dema	0	flamy	a	moby_reverse
 flamiest	0		Degree=Sup	dema	0	flamy	a	moby_reverse
 flamines	0	oewn-flamen-n	Number=Plur	dema	0			oewn_form
 flaming	0	oewn-flaming-a	Degree=Pos	dema	0			oewn_form
-flaming	1	oewn-flaming-n	Number=Sing	dema	0			oewn_form
-flaming	2	oewn-flame-v	VerbForm=Ger	dema	0			rule
+flaming	1	oewn-flame-v	VerbForm=Ger	dema	0			rule
+flaming	2	oewn-flaming-n	Number=Sing	dema	0			oewn_form
 flaming poppies	0	oewn-flaming_poppy-n	Number=Plur	dema	0			rule
 flaming poppy	0	oewn-flaming_poppy-n	Number=Sing	dema	0			oewn_form
 flaming up	0	oewn-flame_up-v	VerbForm=Ger	dema	0			rule
@@ -7526,14 +7526,14 @@ flapperisms	0		Number=Plur	dema	0	flapperism	n	rule
 flappers	0	oewn-flapper-n	Number=Plur	dema	0			rule
 flappier	0	oewn-flappy-a	Degree=Cmp	dema	0			rule
 flappiest	0	oewn-flappy-a	Degree=Sup	dema	0			rule
-flapping	0	oewn-flapping-n	Number=Sing	dema	0			oewn_form
-flapping	1	oewn-flap-v	VerbForm=Ger	dema	0			oewn_form
+flapping	0	oewn-flap-v	VerbForm=Ger	dema	0			oewn_form
+flapping	1	oewn-flapping-n	Number=Sing	dema	0			oewn_form
 flapping down	0	oewn-flap_down-v	VerbForm=Ger	dema	0			rule
 flappings	0	oewn-flapping-n	Number=Plur	dema	0			rule
 flappy	0	oewn-flappy-a	Degree=Pos	dema	0			oewn_form
 flaps	0	oewn-flaps-n	Number=Sing	dema	0			oewn_form
-flaps	1	oewn-flap-n	Number=Plur	dema	0			rule
-flaps	2	oewn-flap-v	Person=3+Tense=Pres	dema	0			rule
+flaps	1	oewn-flap-v	Person=3+Tense=Pres	dema	0			rule
+flaps	2	oewn-flap-n	Number=Plur	dema	0			rule
 flaps down	0	oewn-flap_down-v	Person=3+Tense=Pres	dema	0			rule
 flare	0	oewn-flare-v	VerbForm=Inf	dema	0			oewn_form
 flare	1	oewn-flare-n	Number=Sing	dema	0			oewn_form
@@ -7556,8 +7556,8 @@ flares	0	oewn-flare-v	Person=3+Tense=Pres	dema	0			rule
 flares	1	oewn-flare-n	Number=Plur	dema	0			rule
 flares out	0	oewn-flare_out-v	Person=3+Tense=Pres	dema	0			rule
 flares up	0	oewn-flare_up-v	Person=3+Tense=Pres	dema	0			rule
-flaring	0	oewn-flaring-a	Degree=Pos	dema	0			oewn_form
-flaring	1	oewn-flare-v	VerbForm=Ger	dema	0			rule
+flaring	0	oewn-flare-v	VerbForm=Ger	dema	0			rule
+flaring	1	oewn-flaring-a	Degree=Pos	dema	0			oewn_form
 flaring out	0	oewn-flare_out-v	VerbForm=Ger	dema	0			rule
 flaring up	0	oewn-flare_up-v	VerbForm=Ger	dema	0			rule
 flaringly	0		Degree=Pos	dema	0	flaringly	r	moby_reverse
@@ -7754,8 +7754,8 @@ flattening out	0	oewn-flatten_out-v	VerbForm=Ger	dema	0			rule
 flattens	0	oewn-flatten-v	Person=3+Tense=Pres	dema	0			rule
 flattens out	0	oewn-flatten_out-v	Person=3+Tense=Pres	dema	0			rule
 flatter	0	oewn-flatter-v	VerbForm=Inf	dema	0			oewn_form
-flatter	1		Number=Sing	dema	0	flatter	n	moby_reverse
-flatter	2	oewn-flat-a	Degree=Cmp	dema	0			oewn_form
+flatter	1	oewn-flat-a	Degree=Cmp	dema	0			oewn_form
+flatter	2		Number=Sing	dema	0	flatter	n	moby_reverse
 flatterable	0		Degree=Pos	dema	0	flatterable	a	moby_reverse
 flattered	0	oewn-flatter-v	Tense=Past+VerbForm=Part	dema	0			rule
 flatterer	0	oewn-flatterer-n	Number=Sing	dema	0			oewn_form
@@ -7766,9 +7766,9 @@ flattering	1	oewn-flattering-a	Degree=Pos	dema	0			oewn_form
 flatteringly	0		Degree=Pos	dema	0	flatteringly	r	moby_reverse
 flatters	0	oewn-flatter-v	Person=3+Tense=Pres	dema	0			rule
 flattery	0	oewn-flattery-n	Number=Sing	dema	0			oewn_form
-flattest	0		Number=Sing	dema	0	flattest	n	moby_reverse
-flattest	1		VerbForm=Inf	dema	0	flattest	v	moby_reverse
-flattest	2	oewn-flat-a	Degree=Sup	dema	0			oewn_form
+flattest	0	oewn-flat-a	Degree=Sup	dema	0			oewn_form
+flattest	1		Number=Sing	dema	0	flattest	n	moby_reverse
+flattest	2		VerbForm=Inf	dema	0	flattest	v	moby_reverse
 flattests	0		Number=Plur	dema	0	flattest	n	rule
 flattie	0		Number=Sing	dema	0	flattie	n	moby_reverse
 flatties	0		Number=Plur	dema	0	flattie	n	rule
@@ -7960,8 +7960,8 @@ flectionless	0		Degree=Pos	dema	0	flectionless	a	moby_reverse
 flections	0	oewn-flection-n	Number=Plur	dema	0			rule
 fled	0	oewn-flee-v	Tense=Past+VerbForm=Part	dema	0			hand
 fledge	0	oewn-fledge-v	VerbForm=Inf	dema	0			oewn_form
-fledged	0	oewn-fledged-a	Degree=Pos	dema	0			oewn_form
-fledged	1	oewn-fledge-v	Tense=Past+VerbForm=Part	dema	0			rule
+fledged	0	oewn-fledge-v	Tense=Past+VerbForm=Part	dema	0			rule
+fledged	1	oewn-fledged-a	Degree=Pos	dema	0			oewn_form
 fledgeless	0	oewn-fledgeless-a	Degree=Pos	dema	0			oewn_form
 fledgeling	0	oewn-fledgeling-n	Number=Sing	dema	0			oewn_form
 fledgeling	1	oewn-fledgeling-a	Degree=Pos	dema	0			oewn_form
@@ -7999,9 +7999,9 @@ fleer	2	oewn-fleer-n-2	Number=Sing	dema	0			oewn_form
 fleered	0	oewn-fleer-v	Tense=Past+VerbForm=Part	dema	0			rule
 fleering	0	oewn-fleer-v	VerbForm=Ger	dema	0			rule
 fleeringly	0		Degree=Pos	dema	0	fleeringly	r	moby_reverse
-fleers	0	oewn-fleer-n-1	Number=Plur	dema	0			rule
-fleers	1	oewn-fleer-n-2	Number=Plur	dema	0			rule
-fleers	2	oewn-fleer-v	Person=3+Tense=Pres	dema	0			rule
+fleers	0	oewn-fleer-v	Person=3+Tense=Pres	dema	0			rule
+fleers	1	oewn-fleer-n-1	Number=Plur	dema	0			rule
+fleers	2	oewn-fleer-n-2	Number=Plur	dema	0			rule
 flees	0	oewn-flee-v	Person=3+Tense=Pres	dema	0			rule
 fleet	0	oewn-fleet-n	Number=Sing	dema	0			oewn_form
 fleet	1	oewn-fleet-a	Degree=Pos	dema	0			oewn_form
@@ -8175,8 +8175,8 @@ flickered	0	oewn-flicker-v	Tense=Past+VerbForm=Part	dema	0			rule
 flickering	0	oewn-flicker-v	VerbForm=Ger	dema	0			rule
 flickering	1	oewn-flickering-a	Degree=Pos	dema	0			oewn_form
 flickeringly	0		Degree=Pos	dema	0	flickeringly	r	moby_reverse
-flickers	0	oewn-flicker-n	Number=Plur	dema	0			rule
-flickers	1	oewn-flicker-v	Person=3+Tense=Pres	dema	0			rule
+flickers	0	oewn-flicker-v	Person=3+Tense=Pres	dema	0			rule
+flickers	1	oewn-flicker-n	Number=Plur	dema	0			rule
 flickertail	0	oewn-flickertail-n	Number=Sing	dema	0			oewn_form
 flickertails	0	oewn-flickertail-n	Number=Plur	dema	0			rule
 flickery	0		Degree=Pos	dema	0	flickery	a	moby_reverse
@@ -8356,9 +8356,9 @@ flipper	1	oewn-flip-a	Degree=Cmp	dema	0			rule
 flipper-like	0	oewn-flipper-like-a	Degree=Pos	dema	0			oewn_form
 flippers	0	oewn-flipper-n	Number=Plur	dema	0			rule
 flippest	0	oewn-flip-a	Degree=Sup	dema	0			rule
-flipping	0		Degree=Pos	dema	0	flipping	a	moby_reverse
-flipping	1		Degree=Pos	dema	0	flipping	r	moby_reverse
-flipping	2	oewn-flip-v	VerbForm=Ger	dema	0			oewn_form
+flipping	0	oewn-flip-v	VerbForm=Ger	dema	0			oewn_form
+flipping	1		Degree=Pos	dema	0	flipping	a	moby_reverse
+flipping	2		Degree=Pos	dema	0	flipping	r	moby_reverse
 flipping one's lid	0	oewn-flip_one-ap-s_lid-v	VerbForm=Ger	dema	0			rule
 flipping one's wig	0	oewn-flip_one-ap-s_wig-v	VerbForm=Ger	dema	0			rule
 flipping out	0	oewn-flip_out-v	VerbForm=Ger	dema	0			rule
@@ -8417,8 +8417,8 @@ flittermmices	0		Number=Plur	dema	0	flittermmice	n	rule
 flittermouse	0		Number=Sing	dema	0	flittermouse	n	moby_reverse
 flittermouses	0		Number=Plur	dema	0	flittermouse	n	rule
 flitters	0	oewn-flitter-v	Person=3+Tense=Pres	dema	0			rule
-flitting	0		Degree=Pos	dema	0	flitting	a	moby_reverse
-flitting	1	oewn-flit-v	VerbForm=Ger	dema	0			oewn_form
+flitting	0	oewn-flit-v	VerbForm=Ger	dema	0			oewn_form
+flitting	1		Degree=Pos	dema	0	flitting	a	moby_reverse
 flittingly	0		Degree=Pos	dema	0	flittingly	r	moby_reverse
 flivver	0		Number=Sing	dema	0	flivver	n	moby_reverse
 flivvers	0		Number=Plur	dema	0	flivver	n	rule
@@ -8442,9 +8442,9 @@ floater	0	oewn-floater-n	Number=Sing	dema	0			oewn_form
 floaters	0	oewn-floater-n	Number=Plur	dema	0			rule
 floatier	0	oewn-floaty-a	Degree=Cmp	dema	0			oewn_form
 floatiest	0	oewn-floaty-a	Degree=Sup	dema	0			oewn_form
-floating	0	oewn-floating-a	Degree=Pos	dema	0			oewn_form
-floating	1	oewn-floating-n	Number=Sing	dema	0			oewn_form
-floating	2	oewn-float-v	VerbForm=Ger	dema	0			rule
+floating	0	oewn-float-v	VerbForm=Ger	dema	0			rule
+floating	1	oewn-floating-a	Degree=Pos	dema	0			oewn_form
+floating	2	oewn-floating-n	Number=Sing	dema	0			oewn_form
 floating bridge	0	oewn-floating_bridge-n	Number=Sing	dema	0			oewn_form
 floating bridges	0	oewn-floating_bridge-n	Number=Plur	dema	0			rule
 floating dock	0	oewn-floating_dock-n	Number=Sing	dema	0			oewn_form
@@ -8479,8 +8479,8 @@ floatmen	0		Number=Sing	dema	0	floatmen	n	moby_reverse
 floatmens	0		Number=Plur	dema	0	floatmen	n	rule
 floatplane	0	oewn-floatplane-n	Number=Sing	dema	0			oewn_form
 floatplanes	0	oewn-floatplane-n	Number=Plur	dema	0			rule
-floats	0	oewn-float-n	Number=Plur	dema	0			rule
-floats	1	oewn-float-v	Person=3+Tense=Pres	dema	0			rule
+floats	0	oewn-float-v	Person=3+Tense=Pres	dema	0			rule
+floats	1	oewn-float-n	Number=Plur	dema	0			rule
 floatstone	0		Number=Sing	dema	0	floatstone	n	moby_reverse
 floatstones	0		Number=Plur	dema	0	floatstone	n	rule
 floaty	0	oewn-floaty-a	Degree=Pos	dema	0			oewn_form
@@ -8636,8 +8636,8 @@ floorshows	0	oewn-floorshow-n	Number=Plur	dema	0			rule
 floorwalker	0	oewn-floorwalker-n	Number=Sing	dema	0			oewn_form
 floorwalkers	0	oewn-floorwalker-n	Number=Plur	dema	0			rule
 floozie	0	oewn-floozie-n	Number=Sing	dema	0			oewn_form
-floozies	0	oewn-floozie-n	Number=Plur	dema	0			rule
-floozies	1	oewn-floozy-n	Number=Plur	dema	0			rule
+floozies	0	oewn-floozy-n	Number=Plur	dema	0			rule
+floozies	1	oewn-floozie-n	Number=Plur	dema	0			rule
 floozy	0	oewn-floozy-n	Number=Sing	dema	0			oewn_form
 flop	0	oewn-flop-v	VerbForm=Inf	dema	0			oewn_form
 flop	1	oewn-flop-n	Number=Sing	dema	0			oewn_form
@@ -8767,8 +8767,8 @@ flounce	1	oewn-flounce-n	Number=Sing	dema	0			oewn_form
 flounced	0	oewn-flounce-v	Tense=Past+VerbForm=Part	dema	0			rule
 flounces	0	oewn-flounce-v	Person=3+Tense=Pres	dema	0			rule
 flounces	1	oewn-flounce-n	Number=Plur	dema	0			rule
-flouncing	0		Number=Sing	dema	0	flouncing	n	moby_reverse
-flouncing	1	oewn-flounce-v	VerbForm=Ger	dema	0			rule
+flouncing	0	oewn-flounce-v	VerbForm=Ger	dema	0			rule
+flouncing	1		Number=Sing	dema	0	flouncing	n	moby_reverse
 flouncings	0		Number=Plur	dema	0	flouncing	n	rule
 flounder	0	oewn-flounder-v	VerbForm=Inf	dema	0			oewn_form
 flounder	1	oewn-flounder-n	Number=Plur	dema	0			agid
@@ -8803,8 +8803,8 @@ flourisher	0		Number=Sing	dema	0	flourisher	n	moby_reverse
 flourishers	0		Number=Plur	dema	0	flourisher	n	rule
 flourishes	0	oewn-flourish-v	Person=3+Tense=Pres	dema	0			rule
 flourishes	1	oewn-flourish-n	Number=Plur	dema	0			rule
-flourishing	0	oewn-flourishing-a	Degree=Pos	dema	0			oewn_form
-flourishing	1	oewn-flourish-v	VerbForm=Ger	dema	0			rule
+flourishing	0	oewn-flourish-v	VerbForm=Ger	dema	0			rule
+flourishing	1	oewn-flourishing-a	Degree=Pos	dema	0			oewn_form
 flourishingly	0		Degree=Pos	dema	0	flourishingly	r	moby_reverse
 flourless	0		Degree=Pos	dema	0	flourless	a	moby_reverse
 flours	0	oewn-flour-n	Number=Plur	dema	0			rule
@@ -8896,8 +8896,8 @@ flowerily	0		Degree=Pos	dema	0	flowerily	r	moby_reverse
 floweriness	0		Number=Sing	dema	0	floweriness	n	moby_reverse
 flowerinesses	0		Number=Plur	dema	0	floweriness	n	rule
 flowering	0	oewn-flowering-a	Degree=Pos	dema	0			oewn_form
-flowering	1	oewn-flowering-n	Number=Sing	dema	0			oewn_form
-flowering	2	oewn-flower-v	VerbForm=Ger	dema	0			rule
+flowering	1	oewn-flower-v	VerbForm=Ger	dema	0			rule
+flowering	2	oewn-flowering-n	Number=Sing	dema	0			oewn_form
 flowering almond	0	oewn-flowering_almond-n	Number=Sing	dema	0			oewn_form
 flowering almonds	0	oewn-flowering_almond-n	Number=Plur	dema	0			rule
 flowering ash	0	oewn-flowering_ash-n	Number=Sing	dema	0			oewn_form
@@ -8950,9 +8950,9 @@ flowers of zinc	0	oewn-flowers_of_zinc-n	Number=Sing	dema	0			oewn_form
 flowers-of-an-hour	0	oewn-flowers-of-an-hour-n	Number=Sing	dema	0			oewn_form
 flowers-of-an-hours	0	oewn-flowers-of-an-hour-n	Number=Plur	dema	0			rule
 flowery	0	oewn-flowery-a	Degree=Pos	dema	0			oewn_form
-flowing	0	oewn-flowing-a	Degree=Pos	dema	0			oewn_form
-flowing	1	oewn-flowing-n	Number=Sing	dema	0			oewn_form
-flowing	2	oewn-flow-v	VerbForm=Ger	dema	0			rule
+flowing	0	oewn-flow-v	VerbForm=Ger	dema	0			rule
+flowing	1	oewn-flowing-a	Degree=Pos	dema	0			oewn_form
+flowing	2	oewn-flowing-n	Number=Sing	dema	0			oewn_form
 flowing away	0	oewn-flow_away-v	VerbForm=Ger	dema	0			rule
 flowing from	0	oewn-flow_from-v	VerbForm=Ger	dema	0			rule
 flowing off	0	oewn-flow_off-v	VerbForm=Ger	dema	0			rule
@@ -9307,8 +9307,8 @@ flustering	0	oewn-fluster-v	VerbForm=Ger	dema	0			rule
 flusters	0	oewn-fluster-v	Person=3+Tense=Pres	dema	0			rule
 flusters	1	oewn-fluster-n	Number=Plur	dema	0			rule
 flustrate	0		VerbForm=Inf	dema	0	flustrate	v	moby_reverse
-flustrated	0		Degree=Pos	dema	0	flustrated	a	moby_reverse
-flustrated	1		Tense=Past+VerbForm=Part	dema	0	flustrate	v	rule
+flustrated	0		Tense=Past+VerbForm=Part	dema	0	flustrate	v	rule
+flustrated	1		Degree=Pos	dema	0	flustrated	a	moby_reverse
 flustrates	0		Person=3+Tense=Pres	dema	0	flustrate	v	rule
 flustrating	0		VerbForm=Ger	dema	0	flustrate	v	rule
 flustration	0		Number=Sing	dema	0	flustration	n	moby_reverse
@@ -9688,15 +9688,15 @@ focusers	0		Number=Plur	dema	0	focuser	n	rule
 focuses	0	oewn-focus-n	Number=Plur	dema	0			irregular_list
 focuses	1	oewn-focus-v	Person=3+Tense=Pres	dema	0			rule_variant
 focuses on	0	oewn-focus_on-v	Person=3+Tense=Pres	dema	0			rule
-focusing	0	oewn-focusing-n	Number=Sing	dema	0			oewn_form
-focusing	1	oewn-focus-v	VerbForm=Ger	dema	0			rule
+focusing	0	oewn-focus-v	VerbForm=Ger	dema	0			rule
+focusing	1	oewn-focusing-n	Number=Sing	dema	0			oewn_form
 focusing on	0	oewn-focus_on-v	VerbForm=Ger	dema	0			rule
 focusings	0	oewn-focusing-n	Number=Plur	dema	0			rule
 focussed	0	oewn-focus-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 focussed	1	oewn-focussed-a	Degree=Pos	dema	0			oewn_form
 focusses	0	oewn-focus-v	Person=3+Tense=Pres	dema	0			rule_variant
-focussing	0	oewn-focussing-n	Number=Sing	dema	0			oewn_form
-focussing	1	oewn-focus-v	VerbForm=Ger	dema	0			rule_variant
+focussing	0	oewn-focus-v	VerbForm=Ger	dema	0			rule_variant
+focussing	1	oewn-focussing-n	Number=Sing	dema	0			oewn_form
 focussings	0	oewn-focussing-n	Number=Plur	dema	0			rule
 fodder	0	oewn-fodder-n	Number=Sing	dema	0			oewn_form
 fodder	1	oewn-fodder-v	VerbForm=Inf	dema	0			oewn_form
@@ -9795,8 +9795,8 @@ foie gras	0	oewn-foie_gras-n	Number=Sing	dema	0			oewn_form
 foil	0	oewn-foil-v	VerbForm=Inf	dema	0			oewn_form
 foil	1	oewn-foil-n	Number=Sing	dema	0			oewn_form
 foilable	0		Degree=Pos	dema	0	foilable	a	moby_reverse
-foiled	0	oewn-foiled-a	Degree=Pos	dema	0			oewn_form
-foiled	1	oewn-foil-v	Tense=Past+VerbForm=Part	dema	0			rule
+foiled	0	oewn-foil-v	Tense=Past+VerbForm=Part	dema	0			rule
+foiled	1	oewn-foiled-a	Degree=Pos	dema	0			oewn_form
 foiling	0	oewn-foil-v	VerbForm=Ger	dema	0			rule
 foiling	1	oewn-foiling-n	Number=Sing	dema	0			oewn_form
 foilings	0	oewn-foiling-n	Number=Plur	dema	0			rule
@@ -10003,9 +10003,9 @@ followed up on	0	oewn-follow_up_on-v	Tense=Past+VerbForm=Part	dema	0			rule
 follower	0	oewn-follower-n	Number=Sing	dema	0			oewn_form
 followers	0	oewn-follower-n	Number=Plur	dema	0			rule
 followers	1	oewn-followers-n	Number=Sing	dema	0			oewn_form
-following	0	oewn-following-a	Degree=Pos	dema	0			oewn_form
-following	1	oewn-following-n	Number=Sing	dema	0			oewn_form
-following	2	oewn-follow-v	VerbForm=Ger	dema	0			rule
+following	0	oewn-follow-v	VerbForm=Ger	dema	0			rule
+following	1	oewn-following-a	Degree=Pos	dema	0			oewn_form
+following	2	oewn-following-n	Number=Sing	dema	0			oewn_form
 following out	0	oewn-follow_out-v	VerbForm=Ger	dema	0			rule
 following suit	0	oewn-follow_suit-v	VerbForm=Ger	dema	0			rule
 following through	0	oewn-follow_through-v	VerbForm=Ger	dema	0			rule
@@ -10046,8 +10046,8 @@ fondled	0	oewn-fondle-v	Tense=Past+VerbForm=Part	dema	0			rule
 fondler	0	oewn-fondler-n	Number=Sing	dema	0			oewn_form
 fondlers	0	oewn-fondler-n	Number=Plur	dema	0			rule
 fondles	0	oewn-fondle-v	Person=3+Tense=Pres	dema	0			rule
-fondling	0	oewn-fondling-n	Number=Sing	dema	0			oewn_form
-fondling	1	oewn-fondle-v	VerbForm=Ger	dema	0			rule
+fondling	0	oewn-fondle-v	VerbForm=Ger	dema	0			rule
+fondling	1	oewn-fondling-n	Number=Sing	dema	0			oewn_form
 fondlingly	0		Degree=Pos	dema	0	fondlingly	r	moby_reverse
 fondlings	0	oewn-fondling-n	Number=Plur	dema	0			rule
 fondly	0	oewn-fondly-r	Degree=Pos	dema	0			oewn_form
@@ -10314,8 +10314,8 @@ footless	0	oewn-footless-a	Degree=Pos	dema	0			oewn_form
 footlight	0		Number=Sing	dema	0	footlight	n	moby_reverse
 footlights	0	oewn-footlights-n	Number=Sing	dema	0			oewn_form
 footlights	1		Number=Plur	dema	0	footlight	n	rule
-footling	0	oewn-footling-a	Degree=Pos	dema	0			oewn_form
-footling	1	oewn-footle-v	VerbForm=Ger	dema	0			rule
+footling	0	oewn-footle-v	VerbForm=Ger	dema	0			rule
+footling	1	oewn-footling-a	Degree=Pos	dema	0			oewn_form
 footlocker	0	oewn-footlocker-n	Number=Sing	dema	0			oewn_form
 footlockers	0	oewn-footlocker-n	Number=Plur	dema	0			rule
 footloose	0	oewn-footloose-a	Degree=Pos	dema	0			oewn_form
@@ -10443,8 +10443,8 @@ forager	0	oewn-forager-n	Number=Sing	dema	0			oewn_form
 foragers	0	oewn-forager-n	Number=Plur	dema	0			rule
 forages	0	oewn-forage-n	Number=Plur	dema	0			rule
 forages	1	oewn-forage-v	Person=3+Tense=Pres	dema	0			rule
-foraging	0	oewn-foraging-n	Number=Sing	dema	0			oewn_form
-foraging	1	oewn-forage-v	VerbForm=Ger	dema	0			rule
+foraging	0	oewn-forage-v	VerbForm=Ger	dema	0			rule
+foraging	1	oewn-foraging-n	Number=Sing	dema	0			oewn_form
 foragings	0	oewn-foraging-n	Number=Plur	dema	0			rule
 foram	0	oewn-foram-n	Number=Sing	dema	0			oewn_form
 foramen	0	oewn-foramen-n	Number=Sing	dema	0			oewn_form
@@ -10509,9 +10509,9 @@ forbiddenly	0		Degree=Pos	dema	0	forbiddenly	r	moby_reverse
 forbiddenness	0		Number=Sing	dema	0	forbiddenness	n	moby_reverse
 forbidder	0		Number=Sing	dema	0	forbidder	n	moby_reverse
 forbidders	0		Number=Plur	dema	0	forbidder	n	rule
-forbidding	0	oewn-forbidding-a	Degree=Pos	dema	0			oewn_form
-forbidding	1	oewn-forbidding-n	Number=Sing	dema	0			oewn_form
-forbidding	2	oewn-forbid-v	VerbForm=Ger	dema	0			oewn_form
+forbidding	0	oewn-forbid-v	VerbForm=Ger	dema	0			oewn_form
+forbidding	1	oewn-forbidding-a	Degree=Pos	dema	0			oewn_form
+forbidding	2	oewn-forbidding-n	Number=Sing	dema	0			oewn_form
 forbiddingly	0	oewn-forbiddingly-r	Degree=Pos	dema	0			oewn_form
 forbiddingness	0		Number=Sing	dema	0	forbiddingness	n	moby_reverse
 forbiddings	0	oewn-forbidding-n	Number=Plur	dema	0			rule
@@ -10679,8 +10679,8 @@ foreboders	0		Number=Plur	dema	0	foreboder	n	rule
 forebodes	0	oewn-forebode-v	Person=3+Tense=Pres	dema	0			rule
 forebodies	0		Number=Plur	dema	0	forebody	n	rule
 foreboding	0	oewn-foreboding-n	Number=Sing	dema	0			oewn_form
-foreboding	1	oewn-foreboding-a	Degree=Pos	dema	0			oewn_form
-foreboding	2	oewn-forebode-v	VerbForm=Ger	dema	0			rule
+foreboding	1	oewn-forebode-v	VerbForm=Ger	dema	0			rule
+foreboding	2	oewn-foreboding-a	Degree=Pos	dema	0			oewn_form
 forebodingly	0		Degree=Pos	dema	0	forebodingly	r	moby_reverse
 forebodingness	0		Number=Sing	dema	0	forebodingness	n	moby_reverse
 forebodingnesses	0		Number=Plur	dema	0	forebodingness	n	rule
@@ -10698,8 +10698,8 @@ forecast	2	oewn-forecast-n	Number=Sing	dema	0			oewn_form
 forecasted	0	oewn-forecast-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 forecaster	0	oewn-forecaster-n	Number=Sing	dema	0			oewn_form
 forecasters	0	oewn-forecaster-n	Number=Plur	dema	0			rule
-forecasting	0	oewn-forecasting-n	Number=Sing	dema	0			oewn_form
-forecasting	1	oewn-forecast-v	VerbForm=Ger	dema	0			rule
+forecasting	0	oewn-forecast-v	VerbForm=Ger	dema	0			rule
+forecasting	1	oewn-forecasting-n	Number=Sing	dema	0			oewn_form
 forecastings	0	oewn-forecasting-n	Number=Plur	dema	0			rule
 forecastle	0	oewn-forecastle-n	Number=Sing	dema	0			oewn_form
 forecastles	0	oewn-forecastle-n	Number=Plur	dema	0			rule
@@ -11091,8 +11091,8 @@ foreteeths	0		Number=Plur	dema	0	foreteeth	n	rule
 foretell	0	oewn-foretell-v	VerbForm=Inf	dema	0			oewn_form
 foreteller	0		Number=Sing	dema	0	foreteller	n	moby_reverse
 foretellers	0		Number=Plur	dema	0	foreteller	n	rule
-foretelling	0	oewn-foretelling-n	Number=Sing	dema	0			oewn_form
-foretelling	1	oewn-foretell-v	VerbForm=Ger	dema	0			rule
+foretelling	0	oewn-foretell-v	VerbForm=Ger	dema	0			rule
+foretelling	1	oewn-foretelling-n	Number=Sing	dema	0			oewn_form
 foretellings	0	oewn-foretelling-n	Number=Plur	dema	0			rule
 foretells	0	oewn-foretell-v	Person=3+Tense=Pres	dema	0			rule
 forethought	0	oewn-forethought-n	Number=Sing	dema	0			oewn_form
@@ -11209,8 +11209,8 @@ forgivenesses	0	oewn-forgiveness-n	Number=Plur	dema	0			rule
 forgiver	0	oewn-forgiver-n	Number=Sing	dema	0			oewn_form
 forgivers	0	oewn-forgiver-n	Number=Plur	dema	0			rule
 forgives	0	oewn-forgive-v	Person=3+Tense=Pres	dema	0			rule
-forgiving	0	oewn-forgiving-a	Degree=Pos	dema	0			oewn_form
-forgiving	1	oewn-forgive-v	VerbForm=Ger	dema	0			rule
+forgiving	0	oewn-forgive-v	VerbForm=Ger	dema	0			rule
+forgiving	1	oewn-forgiving-a	Degree=Pos	dema	0			oewn_form
 forgivingly	0	oewn-forgivingly-r	Degree=Pos	dema	0			oewn_form
 forgivingness	0	oewn-forgivingness-n	Number=Sing	dema	0			oewn_form
 forgivingnesses	0	oewn-forgivingness-n	Number=Plur	dema	0			rule
@@ -11366,8 +11366,8 @@ formats	1	oewn-format-v	Person=3+Tense=Pres	dema	0			rule
 formatted	0	oewn-format-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 formatted capacities	0	oewn-formatted_capacity-n	Number=Plur	dema	0			rule
 formatted capacity	0	oewn-formatted_capacity-n	Number=Sing	dema	0			oewn_form
-formatting	0	oewn-formatting-n	Number=Sing	dema	0			oewn_form
-formatting	1	oewn-format-v	VerbForm=Ger	dema	0			oewn_form
+formatting	0	oewn-format-v	VerbForm=Ger	dema	0			oewn_form
+formatting	1	oewn-formatting-n	Number=Sing	dema	0			oewn_form
 formattings	0	oewn-formatting-n	Number=Plur	dema	0			rule
 formboard	0		Number=Sing	dema	0	formboard	n	moby_reverse
 formboards	0		Number=Plur	dema	0	formboard	n	rule
@@ -11523,8 +11523,8 @@ forsakennesses	0		Number=Plur	dema	0	forsakenness	n	rule
 forsaker	0		Number=Sing	dema	0	forsaker	n	moby_reverse
 forsakers	0		Number=Plur	dema	0	forsaker	n	rule
 forsakes	0	oewn-forsake-v	Person=3+Tense=Pres	dema	0			rule
-forsaking	0	oewn-forsaking-n	Number=Sing	dema	0			oewn_form
-forsaking	1	oewn-forsake-v	VerbForm=Ger	dema	0			rule
+forsaking	0	oewn-forsake-v	VerbForm=Ger	dema	0			rule
+forsaking	1	oewn-forsaking-n	Number=Sing	dema	0			oewn_form
 forsakings	0	oewn-forsaking-n	Number=Plur	dema	0			rule
 forsook	0	oewn-forsake-v	Tense=Past	dema	0			hand
 forsooth	0	oewn-forsooth-r	Degree=Pos	dema	0			oewn_form
@@ -11537,8 +11537,8 @@ forsterites	0		Number=Plur	dema	0	forsterite	n	rule
 forswear	0	oewn-forswear-v	VerbForm=Inf	dema	0			oewn_form
 forswearer	0		Number=Sing	dema	0	forswearer	n	moby_reverse
 forswearers	0		Number=Plur	dema	0	forswearer	n	rule
-forswearing	0	oewn-forswearing-n	Number=Sing	dema	0			oewn_form
-forswearing	1	oewn-forswear-v	VerbForm=Ger	dema	0			rule
+forswearing	0	oewn-forswear-v	VerbForm=Ger	dema	0			rule
+forswearing	1	oewn-forswearing-n	Number=Sing	dema	0			oewn_form
 forswearings	0	oewn-forswearing-n	Number=Plur	dema	0			rule
 forswears	0	oewn-forswear-v	Person=3+Tense=Pres	dema	0			rule
 forswore	0	oewn-forswear-v	Tense=Past	dema	0			hand
@@ -11922,10 +11922,10 @@ founding	1	oewn-founding-n	Number=Sing	dema	0			oewn_form
 founding father	0	oewn-founding_father-n	Number=Sing	dema	0			oewn_form
 founding fathers	0	oewn-founding_father-n	Number=Plur	dema	0			rule
 foundings	0	oewn-founding-n	Number=Plur	dema	0			rule
-foundling	0	oewn-foundling-n	Number=Plur	dema	0			agid
-foundling	1	oewn-foundling-n	Number=Sing	dema	0			oewn_form
+foundling	0	oewn-foundling-n	Number=Sing	dema	0			oewn_form
 foundling hospital	0	oewn-foundling_hospital-n	Number=Sing	dema	0			oewn_form
 foundling hospitals	0	oewn-foundling_hospital-n	Number=Plur	dema	0			rule
+foundlings	0	oewn-foundling-n	Number=Plur	dema	0			rule
 foundress	0	oewn-foundress-n	Number=Sing	dema	0			oewn_form
 foundresses	0	oewn-foundress-n	Number=Plur	dema	0			rule
 foundries	0	oewn-foundry-n	Number=Plur	dema	0			rule
@@ -12206,8 +12206,8 @@ fozinesses	0		Number=Plur	dema	0	foziness	n	rule
 fozy	0		Degree=Pos	dema	0	fozy	a	moby_reverse
 fp	0		Number=Sing	dema	0	fp	n	moby_reverse
 fpm	0		Number=Sing	dema	0	fpm	n	moby_reverse
-fps	0		Number=Sing	dema	0	fps	n	moby_reverse
-fps	1		Number=Plur	dema	0	fp	n	rule
+fps	0		Number=Plur	dema	0	fp	n	rule
+fps	1		Number=Sing	dema	0	fps	n	moby_reverse
 fpsps	0		Number=Sing	dema	0	fpsps	n	moby_reverse
 fr	0		Number=Sing	dema	0	fr	n	moby_reverse
 fracas	0	oewn-fracas-n	Number=Sing	dema	0			oewn_form
@@ -12323,8 +12323,8 @@ fragmentising	0	oewn-fragmentise-v	VerbForm=Ger	dema	0			rule
 fragmentization	0		Number=Sing	dema	0	fragmentization	n	moby_reverse
 fragmentizations	0		Number=Plur	dema	0	fragmentization	n	rule
 fragmentize	0	oewn-fragmentize-v	VerbForm=Inf	dema	0			oewn_form
-fragmentized	0		Degree=Pos	dema	0	fragmentized	a	moby_reverse
-fragmentized	1	oewn-fragmentize-v	Tense=Past+VerbForm=Part	dema	0			rule
+fragmentized	0	oewn-fragmentize-v	Tense=Past+VerbForm=Part	dema	0			rule
+fragmentized	1		Degree=Pos	dema	0	fragmentized	a	moby_reverse
 fragmentizes	0	oewn-fragmentize-v	Person=3+Tense=Pres	dema	0			rule
 fragmentizing	0	oewn-fragmentize-v	VerbForm=Ger	dema	0			rule
 fragments	0	oewn-fragment-n	Number=Plur	dema	1			carried
@@ -12458,8 +12458,8 @@ frankable	0		Degree=Pos	dema	0	frankable	a	moby_reverse
 frankalmoign	0		Number=Sing	dema	0	frankalmoign	n	moby_reverse
 frankalmoigns	0		Number=Plur	dema	0	frankalmoign	n	rule
 franked	0	oewn-frank-v	Tense=Past+VerbForm=Part	dema	0			rule
-franker	0		Number=Sing	dema	0	franker	n	moby_reverse
-franker	1	oewn-frank-a	Degree=Cmp	dema	0			rule
+franker	0	oewn-frank-a	Degree=Cmp	dema	0			rule
+franker	1		Number=Sing	dema	0	franker	n	moby_reverse
 frankers	0		Number=Plur	dema	0	franker	n	rule
 frankest	0	oewn-frank-a	Degree=Sup	dema	0			rule
 frankforter	0		Number=Sing	dema	0	frankforter	n	moby_reverse
@@ -12591,8 +12591,8 @@ frazils	0		Number=Plur	dema	0	frazil	n	rule
 frazing	0		VerbForm=Ger	dema	0	fraze	v	rule
 frazzle	0	oewn-frazzle-v	VerbForm=Inf	dema	0			oewn_form
 frazzle	1	oewn-frazzle-n	Number=Sing	dema	0			oewn_form
-frazzled	0		Degree=Pos	dema	0	frazzled	a	moby_reverse
-frazzled	1	oewn-frazzle-v	Tense=Past+VerbForm=Part	dema	0			rule
+frazzled	0	oewn-frazzle-v	Tense=Past+VerbForm=Part	dema	0			rule
+frazzled	1		Degree=Pos	dema	0	frazzled	a	moby_reverse
 frazzles	0	oewn-frazzle-v	Person=3+Tense=Pres	dema	0			rule
 frazzles	1	oewn-frazzle-n	Number=Plur	dema	0			rule
 frazzling	0	oewn-frazzle-v	VerbForm=Ger	dema	0			rule
@@ -12812,8 +12812,8 @@ freeholder	0	oewn-freeholder-n	Number=Sing	dema	0			oewn_form
 freeholders	0	oewn-freeholder-n	Number=Plur	dema	0			rule
 freeholds	0	oewn-freehold-n	Number=Plur	dema	0			rule
 freeing	0		Degree=Pos	dema	0	freeing	a	moby_reverse
-freeing	1	oewn-freeing-n	Number=Sing	dema	0			oewn_form
-freeing	2	oewn-free-v	VerbForm=Ger	dema	0			rule
+freeing	1	oewn-free-v	VerbForm=Ger	dema	0			rule
+freeing	2	oewn-freeing-n	Number=Sing	dema	0			oewn_form
 freeings	0	oewn-freeing-n	Number=Plur	dema	0			rule
 freelance	0	oewn-freelance-n	Number=Sing	dema	0			oewn_form
 freelance	1	oewn-freelance-v	VerbForm=Inf	dema	0			oewn_form
@@ -12829,8 +12829,8 @@ freeload	0	oewn-freeload-v	VerbForm=Inf	dema	0			oewn_form
 freeloaded	0	oewn-freeload-v	Tense=Past+VerbForm=Part	dema	0			rule
 freeloader	0	oewn-freeloader-n	Number=Sing	dema	0			oewn_form
 freeloaders	0	oewn-freeloader-n	Number=Plur	dema	0			rule
-freeloading	0		Number=Sing	dema	0	freeloading	n	moby_reverse
-freeloading	1	oewn-freeload-v	VerbForm=Ger	dema	0			rule
+freeloading	0	oewn-freeload-v	VerbForm=Ger	dema	0			rule
+freeloading	1		Number=Sing	dema	0	freeloading	n	moby_reverse
 freeloadings	0		Number=Plur	dema	0	freeloading	n	rule
 freeloads	0	oewn-freeload-v	Person=3+Tense=Pres	dema	0			rule
 freely	0	oewn-freely-r	Degree=Pos	dema	0			oewn_form
@@ -12849,17 +12849,17 @@ freeness	0		Number=Sing	dema	0	freeness	n	moby_reverse
 freenesses	0		Number=Plur	dema	0	freeness	n	rule
 freeperson	0	oewn-freeperson-n	Number=Sing	dema	0			oewn_form
 freepersons	0	oewn-freeperson-n	Number=Plur	dema	0			rule
-freer	0		Number=Sing	dema	0	freer	n	moby_reverse
-freer	1	oewn-free-a	Degree=Cmp	dema	0			oewn_form
+freer	0	oewn-free-a	Degree=Cmp	dema	0			oewn_form
+freer	1		Number=Sing	dema	0	freer	n	moby_reverse
 frees	0	oewn-free-v	Person=3+Tense=Pres	dema	0			rule
 frees	1	oewn-free-n	Number=Plur	dema	0			rule
 freesheet	0		Number=Sing	dema	0	freesheet	n	moby_reverse
 freesheets	0		Number=Plur	dema	0	freesheet	n	rule
 freesia	0	oewn-freesia-n	Number=Sing	dema	0			oewn_form
 freesias	0	oewn-freesia-n	Number=Plur	dema	0			rule
-freest	0		VerbForm=Inf	dema	0	freest	v	moby_reverse
-freest	1	oewn-free-a	Degree=Sup	dema	0			oewn_form
-freest	2	oewn-free-r	Degree=Sup	dema	0			moby_reverse
+freest	0	oewn-free-a	Degree=Sup	dema	0			oewn_form
+freest	1	oewn-free-r	Degree=Sup	dema	0			moby_reverse
+freest	2		VerbForm=Inf	dema	0	freest	v	moby_reverse
 freestanding	0	oewn-freestanding-a	Degree=Pos	dema	0			oewn_form
 freestanding	1		VerbForm=Inf	dema	0	freestanding	v	moby_reverse
 freestone	0	oewn-freestone-n	Number=Sing	dema	0			oewn_form
@@ -12918,9 +12918,9 @@ freezes	1	oewn-freeze-n	Number=Plur	dema	0			rule
 freezes down	0	oewn-freeze_down-v	Person=3+Tense=Pres	dema	0			rule
 freezes off	0	oewn-freeze_off-v	Person=3+Tense=Pres	dema	0			rule
 freezes out	0	oewn-freeze_out-v	Person=3+Tense=Pres	dema	0			rule
-freezing	0		Degree=Pos	dema	0	freezing	a	moby_reverse
-freezing	1	oewn-freezing-n	Number=Sing	dema	0			oewn_form
-freezing	2	oewn-freeze-v	VerbForm=Ger	dema	0			rule
+freezing	0	oewn-freeze-v	VerbForm=Ger	dema	0			rule
+freezing	1		Degree=Pos	dema	0	freezing	a	moby_reverse
+freezing	2	oewn-freezing-n	Number=Sing	dema	0			oewn_form
 freezing down	0	oewn-freeze_down-v	VerbForm=Ger	dema	0			rule
 freezing mixture	0	oewn-freezing_mixture-n	Number=Sing	dema	0			oewn_form
 freezing mixtures	0	oewn-freezing_mixture-n	Number=Plur	dema	0			rule
@@ -13124,8 +13124,8 @@ frets	0	oewn-fret-v	Person=3+Tense=Pres	dema	0			rule
 frets	1	oewn-fret-n	Number=Plur	dema	0			rule
 fretsaw	0	oewn-fretsaw-n	Number=Sing	dema	0			oewn_form
 fretsaws	0	oewn-fretsaw-n	Number=Plur	dema	0			rule
-fretted	0	oewn-fretted-a	Degree=Pos	dema	0			oewn_form
-fretted	1	oewn-fret-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+fretted	0	oewn-fret-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+fretted	1	oewn-fretted-a	Degree=Pos	dema	0			oewn_form
 frettier	0		Degree=Cmp	dema	0	fretty	a	moby_reverse
 frettiest	0		Degree=Sup	dema	0	fretty	a	moby_reverse
 fretting	0	oewn-fret-v	VerbForm=Ger	dema	0			oewn_form
@@ -13242,8 +13242,8 @@ friendzoning	0	oewn-friendzone-v	VerbForm=Ger	dema	0			rule
 frier	0	oewn-frier-n	Number=Sing	dema	0			oewn_form
 friers	0	oewn-frier-n	Number=Plur	dema	0			rule
 fries	0	oewn-fries-n	Number=Sing	dema	0			oewn_form
-fries	1	oewn-fry-n	Number=Plur	dema	0			rule_variant
-fries	2	oewn-fry-v	Person=3+Tense=Pres	dema	0			rule
+fries	1	oewn-fry-v	Person=3+Tense=Pres	dema	0			rule
+fries	2	oewn-fry-n	Number=Plur	dema	0			rule_variant
 frieze	0	oewn-frieze-n	Number=Sing	dema	0			oewn_form
 friezes	0	oewn-frieze-n	Number=Plur	dema	0			rule
 friezing	0		Number=Sing	dema	0	friezing	n	moby_reverse
@@ -13258,8 +13258,8 @@ frigged	0		Tense=Past+VerbForm=Part	dema	0	frig	v	rule
 frigged around	0	oewn-frig_around-v	Tense=Past+VerbForm=Part	dema	0			rule
 frigger	0		Number=Sing	dema	0	frigger	n	moby_reverse
 friggers	0		Number=Plur	dema	0	frigger	n	rule
-frigging	0		Degree=Pos	dema	0	frigging	a	moby_reverse
-frigging	1		VerbForm=Ger	dema	0	frig	v	rule
+frigging	0		VerbForm=Ger	dema	0	frig	v	rule
+frigging	1		Degree=Pos	dema	0	frigging	a	moby_reverse
 frigging around	0	oewn-frig_around-v	VerbForm=Ger	dema	0			rule
 fright	0	oewn-fright-n	Number=Sing	dema	0			oewn_form
 fright	1	oewn-fright-v	VerbForm=Inf	dema	0			oewn_form
@@ -13268,8 +13268,8 @@ frighten	0	oewn-frighten-v	VerbForm=Inf	dema	0			oewn_form
 frighten away	0	oewn-frighten_away-v	VerbForm=Inf	dema	0			oewn_form
 frighten off	0	oewn-frighten_off-v	VerbForm=Inf	dema	0			oewn_form
 frightenable	0		Degree=Pos	dema	0	frightenable	a	moby_reverse
-frightened	0	oewn-frightened-a	Degree=Pos	dema	0			oewn_form
-frightened	1	oewn-frighten-v	Tense=Past+VerbForm=Part	dema	0			rule
+frightened	0	oewn-frighten-v	Tense=Past+VerbForm=Part	dema	0			rule
+frightened	1	oewn-frightened-a	Degree=Pos	dema	0			oewn_form
 frightened away	0	oewn-frighten_away-v	Tense=Past+VerbForm=Part	dema	0			rule
 frightened off	0	oewn-frighten_off-v	Tense=Past+VerbForm=Part	dema	0			rule
 frightenedly	0		Degree=Pos	dema	0	frightenedly	r	moby_reverse
@@ -13432,8 +13432,8 @@ fritterer	0		Number=Sing	dema	0	fritterer	n	moby_reverse
 fritterers	0		Number=Plur	dema	0	fritterer	n	rule
 frittering	0	oewn-fritter-v	VerbForm=Ger	dema	0			rule
 frittering away	0	oewn-fritter_away-v	VerbForm=Ger	dema	0			rule
-fritters	0	oewn-fritter-n	Number=Plur	dema	0			rule
-fritters	1	oewn-fritter-v	Person=3+Tense=Pres	dema	0			rule
+fritters	0	oewn-fritter-v	Person=3+Tense=Pres	dema	0			rule
+fritters	1	oewn-fritter-n	Number=Plur	dema	0			rule
 fritters away	0	oewn-fritter_away-v	Person=3+Tense=Pres	dema	0			rule
 fritting	0		VerbForm=Ger	dema	0	frit	v	moby_reverse
 fritz	0		Number=Sing	dema	0	fritz	n	moby_reverse
@@ -13471,8 +13471,8 @@ frizzed	0	oewn-frizz-v	Tense=Past+VerbForm=Part	dema	0			rule
 frizzed	1		Tense=Past+VerbForm=Part	dema	0	friz	v	rule
 frizzer	0		Number=Sing	dema	0	frizzer	n	moby_reverse
 frizzers	0		Number=Plur	dema	0	frizzer	n	rule
-frizzes	0	oewn-frizz-n	Number=Plur	dema	0			rule
-frizzes	1	oewn-frizz-v	Person=3+Tense=Pres	dema	0			rule
+frizzes	0	oewn-frizz-v	Person=3+Tense=Pres	dema	0			rule
+frizzes	1	oewn-frizz-n	Number=Plur	dema	0			rule
 frizzier	0	oewn-frizzy-a	Degree=Cmp	dema	0			oewn_form
 frizziest	0	oewn-frizzy-a	Degree=Sup	dema	0			oewn_form
 frizzily	0		Degree=Pos	dema	0	frizzily	r	moby_reverse
@@ -14029,8 +14029,8 @@ fry cook	0	oewn-fry_cook-n	Number=Sing	dema	0			oewn_form
 fry cooks	0	oewn-fry_cook-n	Number=Plur	dema	0			rule
 fryer	0	oewn-fryer-n	Number=Sing	dema	0			oewn_form
 fryers	0	oewn-fryer-n	Number=Plur	dema	0			rule
-frying	0	oewn-frying-n	Number=Sing	dema	0			oewn_form
-frying	1	oewn-fry-v	VerbForm=Ger	dema	0			rule
+frying	0	oewn-fry-v	VerbForm=Ger	dema	0			rule
+frying	1	oewn-frying-n	Number=Sing	dema	0			oewn_form
 frying pan	0	oewn-frying_pan-n	Number=Sing	dema	0			oewn_form
 frying pans	0	oewn-frying_pan-n	Number=Plur	dema	0			rule
 fryings	0	oewn-frying-n	Number=Plur	dema	0			rule
@@ -14088,11 +14088,11 @@ fuckhead	0	oewn-fuckhead-n	Number=Sing	dema	0			oewn_form
 fuckheads	0	oewn-fuckhead-n	Number=Plur	dema	0			rule
 fuckhole	0	oewn-fuckhole-n	Number=Sing	dema	0			oewn_form
 fuckholes	0	oewn-fuckhole-n	Number=Plur	dema	0			rule
-fucking	0	oewn-fucking-a	Degree=Pos	dema	0			oewn_form
-fucking	1	oewn-fucking-r	Degree=Pos	dema	0			oewn_form
-fucking	2	dema-fucking-i		dema	0			carried
-fucking	3	oewn-fucking-n	Number=Sing	dema	0			oewn_form
-fucking	4	oewn-fuck-v	VerbForm=Ger	dema	0			rule
+fucking	0	oewn-fuck-v	VerbForm=Ger	dema	0			rule
+fucking	1	oewn-fucking-a	Degree=Pos	dema	0			oewn_form
+fucking	2	oewn-fucking-r	Degree=Pos	dema	0			oewn_form
+fucking	3	dema-fucking-i		dema	0			carried
+fucking	4	oewn-fucking-n	Number=Sing	dema	0			oewn_form
 fucking off	0	oewn-fuck_off-v	VerbForm=Ger	dema	0			rule
 fucking shit up	0	oewn-fuck_shit_up-v	VerbForm=Ger	dema	0			rule
 fucking up	0	oewn-fuck_up-v	VerbForm=Ger	dema	0			rule
@@ -14171,15 +14171,15 @@ fueled	0	oewn-fuel-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 fueled	1	oewn-fueled-a	Degree=Pos	dema	0			oewn_form
 fueler	0		Number=Sing	dema	0	fueler	n	moby_reverse
 fuelers	0		Number=Plur	dema	0	fueler	n	rule
-fueling	0	oewn-fueling-n	Number=Sing	dema	0			oewn_form
-fueling	1	oewn-fuel-v	VerbForm=Ger	dema	0			rule_variant
+fueling	0	oewn-fuel-v	VerbForm=Ger	dema	0			rule_variant
+fueling	1	oewn-fueling-n	Number=Sing	dema	0			oewn_form
 fuelings	0	oewn-fueling-n	Number=Plur	dema	0			rule
 fuelled	0	oewn-fuel-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 fuelled	1	oewn-fuelled-a	Degree=Pos	dema	0			oewn_form
 fueller	0		Number=Sing	dema	0	fueller	n	moby_reverse
 fuellers	0		Number=Plur	dema	0	fueller	n	rule
-fuelling	0	oewn-fuelling-n	Number=Sing	dema	0			oewn_form
-fuelling	1	oewn-fuel-v	VerbForm=Ger	dema	0			oewn_form
+fuelling	0	oewn-fuel-v	VerbForm=Ger	dema	0			oewn_form
+fuelling	1	oewn-fuelling-n	Number=Sing	dema	0			oewn_form
 fuellings	0	oewn-fuelling-n	Number=Plur	dema	0			rule
 fuels	0	oewn-fuel-n	Number=Plur	dema	0			rule
 fuels	1	oewn-fuel-v	Person=3+Tense=Pres	dema	0			rule
@@ -14379,8 +14379,8 @@ fullbacks	0	oewn-fullback-n	Number=Plur	dema	0			rule
 fullbacks	1	oewn-fullback-v	Person=3+Tense=Pres	dema	0			rule
 fulled	0	oewn-full-v	Tense=Past+VerbForm=Part	dema	0			rule
 fuller	0	oewn-fuller-n	Number=Sing	dema	0			oewn_form
-fuller	1		VerbForm=Inf	dema	0	fuller	v	moby_reverse
-fuller	2	oewn-full-a	Degree=Cmp	dema	0			rule
+fuller	1	oewn-full-a	Degree=Cmp	dema	0			rule
+fuller	2		VerbForm=Inf	dema	0	fuller	v	moby_reverse
 fuller's earth	0	oewn-fuller-ap-s_earth-n	Number=Sing	dema	0			oewn_form
 fuller's earths	0	oewn-fuller-ap-s_earth-n	Number=Plur	dema	0			rule
 fuller's teasel	0	oewn-fuller-ap-s_teasel-n	Number=Sing	dema	0			oewn_form
@@ -14467,8 +14467,8 @@ fumblingly	0		Degree=Pos	dema	0	fumblingly	r	moby_reverse
 fumblingness	0		Number=Sing	dema	0	fumblingness	n	moby_reverse
 fume	0	oewn-fume-v	VerbForm=Inf	dema	0			oewn_form
 fume	1	oewn-fume-n	Number=Sing	dema	0			oewn_form
-fumed	0	oewn-fumed-a	Degree=Pos	dema	0			oewn_form
-fumed	1	oewn-fume-v	Tense=Past+VerbForm=Part	dema	0			rule
+fumed	0	oewn-fume-v	Tense=Past+VerbForm=Part	dema	0			rule
+fumed	1	oewn-fumed-a	Degree=Pos	dema	0			oewn_form
 fumed oak	0	oewn-fumed_oak-n	Number=Sing	dema	0			oewn_form
 fumed oaks	0	oewn-fumed_oak-n	Number=Plur	dema	0			rule
 fumeless	0		Degree=Pos	dema	0	fumeless	a	moby_reverse
@@ -14942,8 +14942,8 @@ furry tongues	0	oewn-furry_tongue-n	Number=Plur	dema	0			rule
 furs	0	oewn-fur-n	Number=Plur	dema	0			rule
 fursuit	0	oewn-fursuit-n	Number=Sing	dema	0			oewn_form
 fursuits	0	oewn-fursuit-n	Number=Plur	dema	0			rule
-further	0	oewn-far-a	Degree=Cmp	dema	0			hand
-further	1	oewn-far-r	Degree=Cmp	dema	0			hand
+further	0	oewn-far-r	Degree=Cmp	dema	0			hand
+further	1	oewn-far-a	Degree=Cmp	dema	0			hand
 further	2	oewn-further-r	Degree=Pos	dema	0			oewn_form
 further	3	oewn-further-a	Degree=Pos	dema	0			oewn_form
 further	4	oewn-further-v	VerbForm=Inf	dema	0			oewn_form
@@ -14956,8 +14956,8 @@ furthering	0	oewn-further-v	VerbForm=Ger	dema	0			rule
 furthermore	0	oewn-furthermore-r	Degree=Pos	dema	0			oewn_form
 furthermost	0	oewn-furthermost-a	Degree=Pos	dema	0			oewn_form
 furthers	0	oewn-further-v	Person=3+Tense=Pres	dema	0			rule
-furthest	0	oewn-far-a	Degree=Sup	dema	0			hand
-furthest	1	oewn-far-r	Degree=Sup	dema	0			hand
+furthest	0	oewn-far-r	Degree=Sup	dema	0			hand
+furthest	1	oewn-far-a	Degree=Sup	dema	0			hand
 furthest	2	oewn-furthest-r	Degree=Pos	dema	0			oewn_form
 furthest	3	oewn-furthest-a	Degree=Pos	dema	0			oewn_form
 furtive	0	oewn-furtive-a	Degree=Pos	dema	0			oewn_form

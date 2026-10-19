@@ -150,8 +150,8 @@ Briths	0	oewn-Brith-n	Capitalization=Title+Number=Plur	dema	0			rule
 Briticism	0	oewn-Briticism-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Briticisms	0	oewn-Briticism-n	Capitalization=Title+Number=Plur	dema	0			rule
 British	0		Degree=Pos	dema	0	british	a	moby_reverse
-British	1	oewn-British-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-British	2	oewn-British-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+British	1	oewn-British-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+British	2	oewn-British-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 British Cabinet	0	oewn-British_Cabinet-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 British Cabinets	0	oewn-British_Cabinet-n	Capitalization=Title+Number=Plur	dema	0			rule
 British Commonwealth	0	oewn-British_Commonwealth-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
@@ -364,8 +364,8 @@ bracer	0	oewn-bracer-n	Number=Sing	dema	0			oewn_form
 bracero	0	oewn-bracero-n	Number=Sing	dema	0			oewn_form
 braceros	0	oewn-bracero-n	Number=Plur	dema	0			rule
 bracers	0	oewn-bracer-n	Number=Plur	dema	0			rule
-braces	0	oewn-braces-n	Number=Sing	dema	0			oewn_form
-braces	1	oewn-brace-n	Number=Plur	dema	0			rule_variant
+braces	0	oewn-brace-n	Number=Plur	dema	0			rule_variant
+braces	1	oewn-braces-n	Number=Sing	dema	0			oewn_form
 braces	2	oewn-brace-v	Person=3+Tense=Pres	dema	0			rule
 braces oneself for	0	oewn-brace_oneself_for-v	Person=3+Tense=Pres	dema	0			rule
 braces up	0	oewn-brace_up-v	Person=3+Tense=Pres	dema	0			rule
@@ -527,8 +527,8 @@ braggers	0	oewn-bragger-n	Number=Plur	dema	0			rule
 braggest	0	oewn-brag-a	Degree=Sup	dema	0			rule
 braggier	0	oewn-braggy-a	Degree=Cmp	dema	0			rule
 braggiest	0	oewn-braggy-a	Degree=Sup	dema	0			rule
-bragging	0	oewn-bragging-n	Number=Sing	dema	0			oewn_form
-bragging	1	oewn-brag-v	VerbForm=Ger	dema	0			oewn_form
+bragging	0	oewn-brag-v	VerbForm=Ger	dema	0			oewn_form
+bragging	1	oewn-bragging-n	Number=Sing	dema	0			oewn_form
 bragging	2	oewn-bragging-a	Degree=Pos	dema	0			oewn_form
 braggingly	0		Degree=Pos	dema	0	braggingly	r	moby_reverse
 braggings	0	oewn-bragging-n	Number=Plur	dema	0			rule
@@ -546,8 +546,8 @@ brahminical	0	oewn-brahminical-a	Degree=Pos	dema	0			oewn_form
 brahmins	0	oewn-brahmin-n	Number=Plur	dema	0			rule
 braid	0	oewn-braid-v	VerbForm=Inf	dema	0			oewn_form
 braid	1	oewn-braid-n	Number=Sing	dema	0			oewn_form
-braided	0	oewn-braided-a	Degree=Pos	dema	0			oewn_form
-braided	1	oewn-braid-v	Tense=Past+VerbForm=Part	dema	0			rule
+braided	0	oewn-braid-v	Tense=Past+VerbForm=Part	dema	0			rule
+braided	1	oewn-braided-a	Degree=Pos	dema	0			oewn_form
 braider	0		Number=Sing	dema	0	braider	n	moby_reverse
 braiders	0		Number=Plur	dema	0	braider	n	rule
 braiding	0	oewn-braiding-n	Number=Sing	dema	0			oewn_form
@@ -681,8 +681,8 @@ braise	0	oewn-braise-v	VerbForm=Inf	dema	0			oewn_form
 braised	0	oewn-braise-v	Tense=Past+VerbForm=Part	dema	0			rule
 braised	1	oewn-braised-a	Degree=Pos	dema	0			oewn_form
 braises	0	oewn-braise-v	Person=3+Tense=Pres	dema	0			rule
-braising	0	oewn-braising-n	Number=Sing	dema	0			oewn_form
-braising	1	oewn-braise-v	VerbForm=Ger	dema	0			rule
+braising	0	oewn-braise-v	VerbForm=Ger	dema	0			rule
+braising	1	oewn-braising-n	Number=Sing	dema	0			oewn_form
 braisings	0	oewn-braising-n	Number=Plur	dema	0			rule
 brake	0	oewn-brake-n	Number=Sing	dema	0			oewn_form
 brake	1	oewn-brake-v	VerbForm=Inf	dema	0			oewn_form
@@ -1014,9 +1014,9 @@ bravery	0	oewn-bravery-n	Number=Sing	dema	0			oewn_form
 braves	0	oewn-brave-n	Number=Plur	dema	0			rule
 braves	1	oewn-brave-v	Person=3+Tense=Pres	dema	0			rule
 braves out	0	oewn-brave_out-v	Person=3+Tense=Pres	dema	0			rule
-bravest	0		Number=Sing	dema	0	bravest	n	moby_reverse
-bravest	1		VerbForm=Inf	dema	0	bravest	v	moby_reverse
-bravest	2	oewn-brave-a	Degree=Sup	dema	0			moby_reverse
+bravest	0	oewn-brave-a	Degree=Sup	dema	0			moby_reverse
+bravest	1		Number=Sing	dema	0	bravest	n	moby_reverse
+bravest	2		VerbForm=Inf	dema	0	bravest	v	moby_reverse
 bravests	0		Number=Plur	dema	0	bravest	n	rule
 braving	0		Degree=Pos	dema	0	braving	a	moby_reverse
 braving	1	oewn-brave-v	VerbForm=Ger	dema	0			rule
@@ -1445,8 +1445,8 @@ breathe	0	oewn-breathe-v	VerbForm=Inf	dema	0			oewn_form
 breathe in	0	oewn-breathe_in-v	VerbForm=Inf	dema	0			oewn_form
 breathe out	0	oewn-breathe_out-v	VerbForm=Inf	dema	0			oewn_form
 breatheableness	0		Number=Sing	dema	0	breatheableness	n	moby_reverse
-breathed	0	oewn-breathed-a	Degree=Pos	dema	0			oewn_form
-breathed	1	oewn-breathe-v	Tense=Past+VerbForm=Part	dema	0			rule
+breathed	0	oewn-breathe-v	Tense=Past+VerbForm=Part	dema	0			rule
+breathed	1	oewn-breathed-a	Degree=Pos	dema	0			oewn_form
 breathed in	0	oewn-breathe_in-v	Tense=Past+VerbForm=Part	dema	0			rule
 breathed out	0	oewn-breathe_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 breather	0	oewn-breather-n	Number=Sing	dema	0			oewn_form
@@ -1527,8 +1527,8 @@ breechcloths	0	oewn-breechcloth-n	Number=Plur	dema	0			rule
 breechclout	0	oewn-breechclout-n	Number=Sing	dema	0			oewn_form
 breechclouts	0	oewn-breechclout-n	Number=Plur	dema	0			rule
 breeched	0	oewn-breeched-a	Degree=Pos	dema	0			oewn_form
-breeches	0	oewn-breeches-n	Number=Sing	dema	0			oewn_form
-breeches	1	oewn-breech-n	Number=Plur	dema	0			rule
+breeches	0	oewn-breech-n	Number=Plur	dema	0			rule
+breeches	1	oewn-breeches-n	Number=Sing	dema	0			oewn_form
 breeches buoy	0	oewn-breeches_buoy-n	Number=Sing	dema	0			oewn_form
 breeches buoys	0	oewn-breeches_buoy-n	Number=Plur	dema	0			rule
 breeching	0		Number=Sing	dema	0	breeching	n	moby_reverse
@@ -2046,8 +2046,8 @@ bring to mind	0	oewn-bring_to_mind-v	VerbForm=Inf	dema	0			oewn_form
 bring up	0	oewn-bring_up-v	VerbForm=Inf	dema	0			oewn_form
 bringer	0		Number=Sing	dema	0	bringer	n	moby_reverse
 bringers	0		Number=Plur	dema	0	bringer	n	rule
-bringing	0	oewn-bringing-n	Number=Sing	dema	0			oewn_form
-bringing	1	oewn-bring-v	VerbForm=Ger	dema	0			rule
+bringing	0	oewn-bring-v	VerbForm=Ger	dema	0			rule
+bringing	1	oewn-bringing-n	Number=Sing	dema	0			oewn_form
 bringing about	0	oewn-bring_about-v	VerbForm=Ger	dema	0			rule
 bringing around	0	oewn-bring_around-v	VerbForm=Ger	dema	0			rule
 bringing back	0	oewn-bring_back-v	VerbForm=Ger	dema	0			rule
@@ -2152,8 +2152,8 @@ briskness	0	oewn-briskness-n	Number=Sing	dema	0			oewn_form
 brisknesses	0	oewn-briskness-n	Number=Plur	dema	0			rule
 brisks	0	oewn-brisk-v	Person=3+Tense=Pres	dema	0			rule
 brisks up	0	oewn-brisk_up-v	Person=3+Tense=Pres	dema	0			rule
-brisling	0	oewn-brisling-n	Number=Plur	dema	0			agid
-brisling	1	oewn-brisling-n	Number=Sing	dema	0			oewn_form
+brisling	0	oewn-brisling-n	Number=Sing	dema	0			oewn_form
+brislings	0	oewn-brisling-n	Number=Plur	dema	0			rule
 bristle	0	oewn-bristle-n	Number=Sing	dema	0			oewn_form
 bristle	1	oewn-bristle-v	VerbForm=Inf	dema	0			oewn_form
 bristle at	0	oewn-bristle_at-v	VerbForm=Inf	dema	0			oewn_form
@@ -2330,8 +2330,8 @@ broadcast stations	0	oewn-broadcast_station-n	Number=Plur	dema	0			rule
 broadcasted	0	oewn-broadcast-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 broadcaster	0	oewn-broadcaster-n	Number=Sing	dema	0			oewn_form
 broadcasters	0	oewn-broadcaster-n	Number=Plur	dema	0			rule
-broadcasting	0	oewn-broadcasting-n	Number=Sing	dema	0			oewn_form
-broadcasting	1	oewn-broadcast-v	VerbForm=Ger	dema	0			rule
+broadcasting	0	oewn-broadcast-v	VerbForm=Ger	dema	0			rule
+broadcasting	1	oewn-broadcasting-n	Number=Sing	dema	0			oewn_form
 broadcasting companies	0	oewn-broadcasting_company-n	Number=Plur	dema	0			rule
 broadcasting company	0	oewn-broadcasting_company-n	Number=Sing	dema	0			oewn_form
 broadcasting station	0	oewn-broadcasting_station-n	Number=Sing	dema	0			oewn_form
@@ -2963,8 +2963,8 @@ browser	0	oewn-browser-n	Number=Sing	dema	0			oewn_form
 browsers	0	oewn-browser-n	Number=Plur	dema	0			rule
 browses	0	oewn-browse-v	Person=3+Tense=Pres	dema	0			rule
 browses	1	oewn-browse-n	Number=Plur	dema	0			rule
-browsing	0	oewn-browsing-n	Number=Sing	dema	0			oewn_form
-browsing	1	oewn-browse-v	VerbForm=Ger	dema	0			rule
+browsing	0	oewn-browse-v	VerbForm=Ger	dema	0			rule
+browsing	1	oewn-browsing-n	Number=Sing	dema	0			oewn_form
 browsings	0	oewn-browsing-n	Number=Plur	dema	0			rule
 brucella	0		Number=Sing	dema	0	brucella	n	moby_reverse
 brucellae	0		Number=Sing	dema	0	brucellae	n	moby_reverse

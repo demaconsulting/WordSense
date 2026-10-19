@@ -37,8 +37,8 @@ GADS	2	oewn-GAD-n	Capitalization=Upper+Number=Plur	dema	0			rule
 GAO	0	oewn-GAO-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 GAOS	0	oewn-GAO-n	Capitalization=Upper+Number=Plur	dema	0			rule
 GAS	0	oewn-gas-n	Number=Sing	dema	0			oewn_form
-GAS	1	oewn-gas-v	VerbForm=Inf	dema	0			oewn_form
-GAS	2		Number=Plur	dema	0	ga	n	rule
+GAS	1		Number=Plur	dema	0	ga	n	rule
+GAS	2	oewn-gas-v	VerbForm=Inf	dema	0			oewn_form
 GAS	3	oewn-GA-n	Capitalization=Upper+Number=Plur	dema	0			rule
 GATT	0	oewn-GATT-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 GATTS	0	oewn-GATT-n	Capitalization=Upper+Number=Plur	dema	0			rule
@@ -94,8 +94,8 @@ GPAS	0	oewn-GPA-n	Capitalization=Upper+Number=Plur	dema	0			rule
 GPO	0	oewn-GPO-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 GPOS	0	oewn-GPO-n	Capitalization=Upper+Number=Plur	dema	0			rule
 GPS	0	oewn-GP-n	Number=Plur	dema	0			moby_reverse
-GPS	1	oewn-GP-n	Capitalization=Upper+Number=Plur	dema	0			rule
-GPS	2	oewn-GPS-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+GPS	1	oewn-GPS-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+GPS	2	oewn-GP-n	Capitalization=Upper+Number=Plur	dema	0			rule
 GSA	0	oewn-GSA-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 GSAS	0	oewn-GSA-n	Capitalization=Upper+Number=Plur	dema	0			rule
 GSR	0	oewn-GSR-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
@@ -238,8 +238,8 @@ Garuda	0	oewn-Garuda-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Garudas	0	oewn-Garuda-n	Capitalization=Title+Number=Plur	dema	0			rule
 Garullus garullus	0	oewn-Garullus_garullus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Gas	0	oewn-gas-n	Number=Sing	dema	0			oewn_form
-Gas	1	oewn-gas-v	VerbForm=Inf	dema	0			oewn_form
-Gas	2		Number=Plur	dema	0	ga	n	rule
+Gas	1		Number=Plur	dema	0	ga	n	rule
+Gas	2	oewn-gas-v	VerbForm=Inf	dema	0			oewn_form
 Gas	3	oewn-Ga-n	Capitalization=Title+Number=Plur	dema	0			rule
 Gasterophilus intestinalis	0	oewn-Gasterophilus_intestinalis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Gasterosteus aculeatus	0	oewn-Gasterosteus_aculeatus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
@@ -496,8 +496,8 @@ German tamarisks	0	oewn-German_tamarisk-n	Capitalization=Exact+Number=Plur	dema	
 German-American	0	oewn-German-American-a	Capitalization=Exact+Degree=Pos	dema	0			oewn_form
 German-speaking	0	oewn-German-speaking-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
 Germanic	0		Degree=Pos	dema	0	germanic	a	moby_reverse
-Germanic	1	oewn-Germanic-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-Germanic	2	oewn-Germanic-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Germanic	1	oewn-Germanic-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Germanic	2	oewn-Germanic-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Germanic language	0	oewn-Germanic_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Germanic languages	0	oewn-Germanic_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Germanics	0	oewn-Germanic-n	Capitalization=Title+Number=Plur	dema	0			rule
@@ -674,8 +674,8 @@ Gnaphalium sylvaticums	0	oewn-Gnaphalium_sylvaticum-n	Capitalization=Exact+Numbe
 Gnetum gnemon	0	oewn-Gnetum_gnemon-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Gnetum gnemons	0	oewn-Gnetum_gnemon-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Gnostic	0	oewn-gnostic-a	Degree=Pos	dema	0			oewn_form
-Gnostic	1	oewn-Gnostic-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-Gnostic	2	oewn-Gnostic-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Gnostic	1	oewn-Gnostic-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Gnostic	2	oewn-Gnostic-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Gnosticism	0	oewn-Gnosticism-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Gnosticisms	0	oewn-Gnosticism-n	Capitalization=Title+Number=Plur	dema	0			rule
 Gnostics	0	oewn-Gnostic-n	Capitalization=Title+Number=Plur	dema	0			rule
@@ -1665,8 +1665,8 @@ gallopades	0		Number=Plur	dema	0	gallopade	n	rule
 galloped	0	oewn-gallop-v	Tense=Past+VerbForm=Part	dema	0			rule
 galloper	0		Number=Sing	dema	0	galloper	n	moby_reverse
 gallopers	0		Number=Plur	dema	0	galloper	n	rule
-galloping	0		Degree=Pos	dema	0	galloping	a	moby_reverse
-galloping	1	oewn-gallop-v	VerbForm=Ger	dema	0			rule
+galloping	0	oewn-gallop-v	VerbForm=Ger	dema	0			rule
+galloping	1		Degree=Pos	dema	0	galloping	a	moby_reverse
 gallops	0	oewn-gallop-v	Person=3+Tense=Pres	dema	0			rule
 gallops	1	oewn-gallop-n	Number=Plur	dema	0			rule
 gallous	0		Degree=Pos	dema	0	gallous	a	moby_reverse
@@ -1792,8 +1792,8 @@ gambler	0	oewn-gambler-n	Number=Sing	dema	0			oewn_form
 gamblers	0	oewn-gambler-n	Number=Plur	dema	0			rule
 gambles	0	oewn-gamble-v	Person=3+Tense=Pres	dema	0			rule
 gambles	1	oewn-gamble-n	Number=Plur	dema	0			rule
-gambling	0	oewn-gambling-n	Number=Sing	dema	0			oewn_form
-gambling	1	oewn-gamble-v	VerbForm=Ger	dema	0			rule
+gambling	0	oewn-gamble-v	VerbForm=Ger	dema	0			rule
+gambling	1	oewn-gambling-n	Number=Sing	dema	0			oewn_form
 gambling	2	oewn-gambling-a	Degree=Pos	dema	0			oewn_form
 gambling casino	0	oewn-gambling_casino-n	Number=Sing	dema	0			oewn_form
 gambling casinos	0	oewn-gambling_casino-n	Number=Plur	dema	0			rule
@@ -2149,8 +2149,8 @@ gape	1	oewn-gape-n	Number=Sing	dema	0			oewn_form
 gaped	0	oewn-gape-v	Tense=Past+VerbForm=Part	dema	0			rule
 gaper	0		Number=Sing	dema	0	gaper	n	moby_reverse
 gapers	0		Number=Plur	dema	0	gaper	n	rule
-gapes	0	oewn-gape-n	Number=Plur	dema	0			rule
-gapes	1	oewn-gape-v	Person=3+Tense=Pres	dema	0			rule
+gapes	0	oewn-gape-v	Person=3+Tense=Pres	dema	0			rule
+gapes	1	oewn-gape-n	Number=Plur	dema	0			rule
 gapeseed	0		Number=Sing	dema	0	gapeseed	n	moby_reverse
 gapeseeds	0		Number=Plur	dema	0	gapeseed	n	rule
 gapeworm	0		Number=Sing	dema	0	gapeworm	n	moby_reverse
@@ -2562,8 +2562,8 @@ garths	0		Number=Plur	dema	0	garth	n	rule
 garvey	0		Number=Sing	dema	0	garvey	n	moby_reverse
 garveys	0		Number=Plur	dema	0	garvey	n	rule
 gas	0	oewn-gas-n	Number=Sing	dema	0			oewn_form
-gas	1	oewn-gas-v	VerbForm=Inf	dema	0			oewn_form
-gas	2		Number=Plur	dema	0	ga	n	rule
+gas	1		Number=Plur	dema	0	ga	n	rule
+gas	2	oewn-gas-v	VerbForm=Inf	dema	0			oewn_form
 gas bomb	0	oewn-gas_bomb-n	Number=Sing	dema	0			oewn_form
 gas bombs	0	oewn-gas_bomb-n	Number=Plur	dema	0			rule
 gas bracket	0	oewn-gas_bracket-n	Number=Sing	dema	0			oewn_form
@@ -3029,8 +3029,8 @@ gaucho	0	oewn-gaucho-n	Number=Sing	dema	0			oewn_form
 gauchos	0	oewn-gaucho-n	Number=Plur	dema	0			rule
 gaud	0	oewn-gaud-n	Number=Sing	dema	0			oewn_form
 gaudeamus	0		Number=Sing	dema	0	gaudeamus	n	moby_reverse
-gaudeamuses	0		Number=Sing	dema	0	gaudeamuses	n	moby_reverse
-gaudeamuses	1		Number=Plur	dema	0	gaudeamus	n	rule
+gaudeamuses	0		Number=Plur	dema	0	gaudeamus	n	rule
+gaudeamuses	1		Number=Sing	dema	0	gaudeamuses	n	moby_reverse
 gauderies	0	oewn-gaudery-n	Number=Plur	dema	0			rule
 gaudery	0	oewn-gaudery-n	Number=Sing	dema	0			oewn_form
 gaudier	0	oewn-gaudy-a	Degree=Cmp	dema	0			oewn_form
@@ -3193,8 +3193,8 @@ gazellelike	0		Degree=Pos	dema	0	gazellelike	a	moby_reverse
 gazelles	0	oewn-gazelle-n	Number=Plur	dema	0			rule_variant
 gazer	0		Number=Sing	dema	0	gazer	n	moby_reverse
 gazers	0		Number=Plur	dema	0	gazer	n	rule
-gazes	0	oewn-gaze-n	Number=Plur	dema	0			rule
-gazes	1	oewn-gaze-v	Person=3+Tense=Pres	dema	0			rule
+gazes	0	oewn-gaze-v	Person=3+Tense=Pres	dema	0			rule
+gazes	1	oewn-gaze-n	Number=Plur	dema	0			rule
 gazette	0	oewn-gazette-n	Number=Sing	dema	0			oewn_form
 gazette	1	oewn-gazette-v	VerbForm=Inf	dema	0			oewn_form
 gazetted	0	oewn-gazette-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -3416,8 +3416,8 @@ gelsemium	0		Number=Sing	dema	0	gelsemium	n	moby_reverse
 gelsemiumia	0		Number=Sing	dema	0	gelsemiumia	n	moby_reverse
 gelsemiumias	0		Number=Plur	dema	0	gelsemiumia	n	rule
 gelsemiums	0		Number=Plur	dema	0	gelsemium	n	rule
-gelt	0	oewn-gelt-n	Number=Sing	dema	0			oewn_form
-gelt	1	oewn-geld-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+gelt	0	oewn-geld-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+gelt	1	oewn-gelt-n	Number=Sing	dema	0			oewn_form
 gelts	0	oewn-gelt-n	Number=Plur	dema	0			rule
 gem	0	oewn-gem-n	Number=Sing	dema	0			oewn_form
 gem	1		VerbForm=Inf	dema	0	gem	v	moby_reverse
@@ -3464,8 +3464,8 @@ gemmating	0		VerbForm=Ger	dema	0	gemmate	v	moby_reverse
 gemmation	0	oewn-gemmation-n	Number=Sing	dema	0			oewn_form
 gemmations	0	oewn-gemmation-n	Number=Plur	dema	0			rule
 gemmed	0		Number=Sing	dema	0	gemmed	n	moby_reverse
-gemmed	1	oewn-gemmed-a	Degree=Pos	dema	0			oewn_form
-gemmed	2		Tense=Past+VerbForm=Part	dema	0	gem	v	moby_reverse
+gemmed	1		Tense=Past+VerbForm=Part	dema	0	gem	v	moby_reverse
+gemmed	2	oewn-gemmed-a	Degree=Pos	dema	0			oewn_form
 gemmeds	0		Number=Plur	dema	0	gemmed	n	rule
 gemmier	0		Degree=Cmp	dema	0	gemmy	a	moby_reverse
 gemmiest	0		Degree=Sup	dema	0	gemmy	a	moby_reverse
@@ -3860,8 +3860,8 @@ genre paintings	0	oewn-genre_painting-n	Number=Plur	dema	0			rule
 genres	0	oewn-genre-n	Number=Plur	dema	0			rule
 genro	0		Number=Sing	dema	0	genro	n	moby_reverse
 genros	0		Number=Plur	dema	0	genro	n	rule
-gens	0	oewn-gens-n	Number=Sing	dema	0			oewn_form
-gens	1	oewn-gen-n	Number=Plur	dema	0			rule
+gens	0	oewn-gen-n	Number=Plur	dema	0			rule
+gens	1	oewn-gens-n	Number=Sing	dema	0			oewn_form
 genseng	0		Number=Sing	dema	0	genseng	n	moby_reverse
 gensengs	0		Number=Plur	dema	0	genseng	n	rule
 gent	0	oewn-gent-n	Number=Sing	dema	0			oewn_form
@@ -3968,8 +3968,8 @@ genuinely	0	oewn-genuinely-r	Degree=Pos	dema	0			oewn_form
 genuineness	0	oewn-genuineness-n	Number=Sing	dema	0			oewn_form
 genuinenesses	0	oewn-genuineness-n	Number=Plur	dema	0			rule
 genupectoral	0		Degree=Pos	dema	0	genupectoral	a	moby_reverse
-genus	0	oewn-genus-n	Number=Sing	dema	0			oewn_form
-genus	1	oewn-genu-n	Number=Plur	dema	0			rule_variant
+genus	0	oewn-genu-n	Number=Plur	dema	0			rule_variant
+genus	1	oewn-genus-n	Number=Sing	dema	0			oewn_form
 genus Acarus	0	oewn-genus_Acarus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 genus Argentinosaurus	0	oewn-genus_Argentinosaurus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 genus Calymmatobacterium	0	oewn-genus_Calymmatobacterium-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
@@ -4322,8 +4322,8 @@ germanium	0	oewn-germanium-n	Number=Sing	dema	0			oewn_form
 germaniums	0	oewn-germanium-n	Number=Plur	dema	0			rule
 germanous	0		Degree=Pos	dema	0	germanous	a	moby_reverse
 germany	0		Number=Sing	dema	0	germany	n	moby_reverse
-germen	0		Number=Sing	dema	0	germen	n	moby_reverse
-germen	1		Number=Plur	dema	0	german	n	rule
+germen	0		Number=Plur	dema	0	german	n	rule
+germen	1		Number=Sing	dema	0	germen	n	moby_reverse
 germens	0		Number=Plur	dema	0	germen	n	rule
 germfree	0	oewn-germfree-a	Degree=Pos	dema	0			oewn_form
 germicidal	0	oewn-germicidal-a	Degree=Pos	dema	0			oewn_form
@@ -4929,8 +4929,8 @@ gibberellins	0	oewn-gibberellin-n	Number=Plur	dema	0			rule
 gibbering	0	oewn-gibber-v	VerbForm=Ger	dema	0			rule
 gibberish	0	oewn-gibberish-n	Number=Sing	dema	0			oewn_form
 gibberishes	0	oewn-gibberish-n	Number=Plur	dema	0			rule
-gibbers	0	oewn-gibber-n	Number=Plur	dema	0			rule
-gibbers	1	oewn-gibber-v	Person=3+Tense=Pres	dema	0			rule
+gibbers	0	oewn-gibber-v	Person=3+Tense=Pres	dema	0			rule
+gibbers	1	oewn-gibber-n	Number=Plur	dema	0			rule
 gibbet	0	oewn-gibbet-n	Number=Sing	dema	0			oewn_form
 gibbet	1	oewn-gibbet-v	VerbForm=Inf	dema	0			oewn_form
 gibbeted	0	oewn-gibbet-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -4965,8 +4965,8 @@ gibibytes	0	oewn-gibibyte-n	Number=Plur	dema	0			rule
 gibing	0	oewn-gibe-v	VerbForm=Ger	dema	0			rule
 gibingly	0	oewn-gibingly-r	Degree=Pos	dema	0			oewn_form
 giblet	0	oewn-giblet-n	Number=Sing	dema	0			oewn_form
-giblets	0	oewn-giblets-n	Number=Sing	dema	0			oewn_form
-giblets	1	oewn-giblet-n	Number=Plur	dema	0			rule
+giblets	0	oewn-giblet-n	Number=Plur	dema	0			rule
+giblets	1	oewn-giblets-n	Number=Sing	dema	0			oewn_form
 gibli	0		Number=Sing	dema	0	gibli	n	moby_reverse
 giblis	0		Number=Plur	dema	0	gibli	n	rule
 gibs	0	oewn-gib-n	Number=Plur	dema	0			rule
@@ -5097,8 +5097,8 @@ gild	0	oewn-gild-v	VerbForm=Inf	dema	0			oewn_form
 gild	1	oewn-gild-n	Number=Sing	dema	0			oewn_form
 gild the lily	0	oewn-gild_the_lily-v	VerbForm=Inf	dema	0			oewn_form
 gildable	0		Degree=Pos	dema	0	gildable	a	moby_reverse
-gilded	0	oewn-gilded-a	Degree=Pos	dema	0			oewn_form
-gilded	1	oewn-gild-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+gilded	0	oewn-gild-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+gilded	1	oewn-gilded-a	Degree=Pos	dema	0			oewn_form
 gilded flicker	0	oewn-gilded_flicker-n	Number=Sing	dema	0			oewn_form
 gilded flickers	0	oewn-gilded_flicker-n	Number=Plur	dema	0			rule
 gilded the lily	0	oewn-gild_the_lily-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -5169,9 +5169,9 @@ gillying	1		VerbForm=Ger	dema	0	gilly	v	moby_reverse
 gillyings	0		Number=Plur	dema	0	gillying	n	rule
 gilsonite	0		Number=Sing	dema	0	gilsonite	n	moby_reverse
 gilsonites	0		Number=Plur	dema	0	gilsonite	n	rule
-gilt	0	oewn-gilt-n	Number=Sing	dema	0			oewn_form
-gilt	1	oewn-gilt-a	Degree=Pos	dema	0			oewn_form
-gilt	2	oewn-gild-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+gilt	0	oewn-gild-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+gilt	1	oewn-gilt-n	Number=Sing	dema	0			oewn_form
+gilt	2	oewn-gilt-a	Degree=Pos	dema	0			oewn_form
 gilt-edged	0	oewn-gilt-edged-a	Degree=Pos	dema	0			oewn_form
 gilthead	0		Number=Sing	dema	0	gilthead	n	moby_reverse
 giltheads	0		Number=Plur	dema	0	gilthead	n	rule
@@ -5413,8 +5413,8 @@ girosol	0		Number=Sing	dema	0	girosol	n	moby_reverse
 girosols	0		Number=Plur	dema	0	girosol	n	rule
 girouette	0		Number=Sing	dema	0	girouette	n	moby_reverse
 girouettes	0		Number=Plur	dema	0	girouette	n	rule
-girt	0		Degree=Pos	dema	0	girt	a	moby_reverse
-girt	1	oewn-gird-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+girt	0	oewn-gird-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+girt	1		Degree=Pos	dema	0	girt	a	moby_reverse
 girth	0	oewn-girth-n	Number=Sing	dema	0			oewn_form
 girth	1	oewn-girth-v	VerbForm=Inf	dema	0			oewn_form
 girthed	0	oewn-girth-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -5538,8 +5538,8 @@ gives up	0	oewn-give_up-v	Person=3+Tense=Pres	dema	0			rule
 gives vent	0	oewn-give_vent-v	Person=3+Tense=Pres	dema	0			rule
 gives voice	0	oewn-give_voice-v	Person=3+Tense=Pres	dema	0			rule
 gives way	0	oewn-give_way-v	Person=3+Tense=Pres	dema	0			rule
-giving	0	oewn-giving-n	Number=Sing	dema	0			oewn_form
-giving	1	oewn-give-v	VerbForm=Ger	dema	0			rule
+giving	0	oewn-give-v	VerbForm=Ger	dema	0			rule
+giving	1	oewn-giving-n	Number=Sing	dema	0			oewn_form
 giving	2	oewn-giving-a	Degree=Pos	dema	0			oewn_form
 giving a damn	0	oewn-give_a_damn-v	VerbForm=Ger	dema	0			rule
 giving a hang	0	oewn-give_a_hang-v	VerbForm=Ger	dema	0			rule
@@ -5816,8 +5816,8 @@ glarier	0	oewn-glary-a	Degree=Cmp	dema	0			rule
 glariest	0	oewn-glary-a	Degree=Sup	dema	0			rule
 glariness	0		Number=Sing	dema	0	glariness	n	moby_reverse
 glarinesses	0		Number=Plur	dema	0	glariness	n	rule
-glaring	0	oewn-glaring-a	Degree=Pos	dema	0			oewn_form
-glaring	1	oewn-glare-v	VerbForm=Ger	dema	0			rule
+glaring	0	oewn-glare-v	VerbForm=Ger	dema	0			rule
+glaring	1	oewn-glaring-a	Degree=Pos	dema	0			oewn_form
 glaringly	0	oewn-glaringly-r	Degree=Pos	dema	0			oewn_form
 glaringness	0		Number=Sing	dema	0	glaringness	n	moby_reverse
 glaringnesses	0		Number=Plur	dema	0	glaringness	n	rule
@@ -5859,8 +5859,8 @@ glassed	0	oewn-glass-v	Tense=Past+VerbForm=Part	dema	0			rule
 glassed	1	oewn-glassed-a	Degree=Pos	dema	0			oewn_form
 glassed in	0	oewn-glass_in-v	Tense=Past+VerbForm=Part	dema	0			rule
 glassed over	0	oewn-glass_over-v	Tense=Past+VerbForm=Part	dema	0			rule
-glasses	0	oewn-glasses-n	Number=Sing	dema	0			oewn_form
-glasses	1	oewn-glass-n	Number=Plur	dema	0			rule
+glasses	0	oewn-glass-n	Number=Plur	dema	0			rule
+glasses	1	oewn-glasses-n	Number=Sing	dema	0			oewn_form
 glasses	2	oewn-glass-v	Person=3+Tense=Pres	dema	0			rule
 glasses case	0	oewn-glasses_case-n	Number=Sing	dema	0			oewn_form
 glasses cases	0	oewn-glasses_case-n	Number=Plur	dema	0			rule
@@ -5895,8 +5895,8 @@ glasswares	0	oewn-glassware-n	Number=Plur	dema	0			rule
 glasswork	0	oewn-glasswork-n	Number=Sing	dema	0			oewn_form
 glassworker	0	oewn-glassworker-n	Number=Sing	dema	0			oewn_form
 glassworkers	0	oewn-glassworker-n	Number=Plur	dema	0			rule
-glassworks	0	oewn-glassworks-n	Number=Sing	dema	0			oewn_form
-glassworks	1	oewn-glasswork-n	Number=Plur	dema	0			rule
+glassworks	0	oewn-glasswork-n	Number=Plur	dema	0			rule
+glassworks	1	oewn-glassworks-n	Number=Sing	dema	0			oewn_form
 glasswort	0	oewn-glasswort-n	Number=Sing	dema	0			oewn_form
 glassworts	0	oewn-glasswort-n	Number=Plur	dema	0			rule
 glassy	0	oewn-glassy-a	Degree=Pos	dema	0			oewn_form
@@ -5924,8 +5924,8 @@ glaves	0		Number=Plur	dema	0	glave	n	rule
 glaze	0	oewn-glaze-v	VerbForm=Inf	dema	0			oewn_form
 glaze	1	oewn-glaze-n	Number=Sing	dema	0			oewn_form
 glaze over	0	oewn-glaze_over-v	VerbForm=Inf	dema	0			oewn_form
-glazed	0	oewn-glazed-a	Degree=Pos	dema	0			oewn_form
-glazed	1	oewn-glaze-v	Tense=Past+VerbForm=Part	dema	0			rule
+glazed	0	oewn-glaze-v	Tense=Past+VerbForm=Part	dema	0			rule
+glazed	1	oewn-glazed-a	Degree=Pos	dema	0			oewn_form
 glazed over	0	oewn-glaze_over-v	Tense=Past+VerbForm=Part	dema	0			rule
 glazement	0		Number=Sing	dema	0	glazement	n	moby_reverse
 glazements	0		Number=Plur	dema	0	glazement	n	rule
@@ -5940,8 +5940,8 @@ glaziers	0	oewn-glazier-n	Number=Plur	dema	0			rule
 glaziery	0		Number=Sing	dema	0	glaziery	n	moby_reverse
 glazily	0		Degree=Pos	dema	0	glazily	r	moby_reverse
 glaziness	0		Number=Sing	dema	0	glaziness	n	moby_reverse
-glazing	0		Number=Sing	dema	0	glazing	n	moby_reverse
-glazing	1	oewn-glaze-v	VerbForm=Ger	dema	0			rule
+glazing	0	oewn-glaze-v	VerbForm=Ger	dema	0			rule
+glazing	1		Number=Sing	dema	0	glazing	n	moby_reverse
 glazing over	0	oewn-glaze_over-v	VerbForm=Ger	dema	0			rule
 glazings	0		Number=Plur	dema	0	glazing	n	rule
 glb	0		Number=Sing	dema	0	glb	n	moby_reverse
@@ -5961,8 +5961,8 @@ gleanable	0		Degree=Pos	dema	0	gleanable	a	moby_reverse
 gleaned	0	oewn-glean-v	Tense=Past+VerbForm=Part	dema	0			rule
 gleaner	0	oewn-gleaner-n	Number=Sing	dema	0			oewn_form
 gleaners	0	oewn-gleaner-n	Number=Plur	dema	0			rule
-gleaning	0		Number=Sing	dema	0	gleaning	n	moby_reverse
-gleaning	1	oewn-glean-v	VerbForm=Ger	dema	0			rule
+gleaning	0	oewn-glean-v	VerbForm=Ger	dema	0			rule
+gleaning	1		Number=Sing	dema	0	gleaning	n	moby_reverse
 gleanings	0		Number=Plur	dema	0	gleaning	n	rule
 gleans	0	oewn-glean-v	Person=3+Tense=Pres	dema	0			rule
 gleba	0	oewn-gleba-n	Number=Sing	dema	0			oewn_form
@@ -6052,8 +6052,8 @@ gliders	0	oewn-glider-n	Number=Plur	dema	0			rule
 glides	0	oewn-glide-v	Person=3+Tense=Pres	dema	0			rule
 glides	1	oewn-glide-n	Number=Plur	dema	0			rule
 glides by	0	oewn-glide_by-v	Person=3+Tense=Pres	dema	0			rule
-gliding	0	oewn-gliding-n	Number=Sing	dema	0			oewn_form
-gliding	1	oewn-glide-v	VerbForm=Ger	dema	0			rule
+gliding	0	oewn-glide-v	VerbForm=Ger	dema	0			rule
+gliding	1	oewn-gliding-n	Number=Sing	dema	0			oewn_form
 gliding bacteria	0	oewn-gliding_bacteria-n	Number=Sing	dema	0			oewn_form
 gliding bacterias	0	oewn-gliding_bacteria-n	Number=Plur	dema	0			rule
 gliding by	0	oewn-glide_by-v	VerbForm=Ger	dema	0			rule
@@ -6074,8 +6074,8 @@ glimmer	0	oewn-glimmer-v	VerbForm=Inf	dema	0			oewn_form
 glimmer	1	oewn-glimmer-n	Number=Sing	dema	0			oewn_form
 glimmered	0	oewn-glimmer-v	Tense=Past+VerbForm=Part	dema	0			rule
 glimmering	0	oewn-glimmering-n	Number=Sing	dema	0			oewn_form
-glimmering	1		Degree=Pos	dema	0	glimmering	a	moby_reverse
-glimmering	2	oewn-glimmer-v	VerbForm=Ger	dema	0			rule
+glimmering	1	oewn-glimmer-v	VerbForm=Ger	dema	0			rule
+glimmering	2		Degree=Pos	dema	0	glimmering	a	moby_reverse
 glimmeringly	0		Degree=Pos	dema	0	glimmeringly	r	moby_reverse
 glimmerings	0	oewn-glimmering-n	Number=Plur	dema	0			rule
 glimmers	0	oewn-glimmer-v	Person=3+Tense=Pres	dema	0			rule
@@ -6307,8 +6307,8 @@ gloomily	0	oewn-gloomily-r	Degree=Pos	dema	0			oewn_form
 gloominess	0	oewn-gloominess-n	Number=Sing	dema	0			oewn_form
 gloominesses	0	oewn-gloominess-n	Number=Plur	dema	0			rule
 glooming	0		Number=Sing	dema	0	glooming	n	moby_reverse
-glooming	1	oewn-glooming-a	Degree=Pos	dema	0			oewn_form
-glooming	2		VerbForm=Ger	dema	0	gloom	v	moby_reverse
+glooming	1		VerbForm=Ger	dema	0	gloom	v	moby_reverse
+glooming	2	oewn-glooming-a	Degree=Pos	dema	0			oewn_form
 gloomings	0		Number=Plur	dema	0	glooming	n	rule
 gloomless	0		Degree=Pos	dema	0	gloomless	a	moby_reverse
 glooms	0	oewn-gloom-n	Number=Plur	dema	0			rule
@@ -6485,8 +6485,8 @@ glove leather	0	oewn-glove_leather-n	Number=Sing	dema	0			oewn_form
 glove leathers	0	oewn-glove_leather-n	Number=Plur	dema	0			rule
 glove puppet	0	oewn-glove_puppet-n	Number=Sing	dema	0			oewn_form
 glove puppets	0	oewn-glove_puppet-n	Number=Plur	dema	0			rule
-gloved	0	oewn-gloved-a	Degree=Pos	dema	0			oewn_form
-gloved	1		Tense=Past+VerbForm=Part	dema	0	glove	v	moby_reverse
+gloved	0		Tense=Past+VerbForm=Part	dema	0	glove	v	moby_reverse
+gloved	1	oewn-gloved-a	Degree=Pos	dema	0			oewn_form
 gloveless	0	oewn-gloveless-a	Degree=Pos	dema	0			oewn_form
 glovelike	0		Degree=Pos	dema	0	glovelike	a	moby_reverse
 gloveman	0		Number=Sing	dema	0	gloveman	n	moby_reverse
@@ -6510,13 +6510,13 @@ glowered	0	oewn-glower-v	Tense=Past+VerbForm=Part	dema	0			rule
 glowering	0	oewn-glower-v	VerbForm=Ger	dema	0			rule
 glowering	1	oewn-glowering-a	Degree=Pos	dema	0			oewn_form
 gloweringly	0	oewn-gloweringly-r	Degree=Pos	dema	0			oewn_form
-glowers	0	oewn-glower-n	Number=Plur	dema	0			rule
-glowers	1	oewn-glower-v	Person=3+Tense=Pres	dema	0			rule
+glowers	0	oewn-glower-v	Person=3+Tense=Pres	dema	0			rule
+glowers	1	oewn-glower-n	Number=Plur	dema	0			rule
 glowflies	0		Number=Plur	dema	0	glowfly	n	rule
 glowfly	0		Number=Sing	dema	0	glowfly	n	moby_reverse
 glowing	0	oewn-glowing-a	Degree=Pos	dema	0			oewn_form
-glowing	1	oewn-glowing-n	Number=Sing	dema	0			oewn_form
-glowing	2	oewn-glow-v	VerbForm=Ger	dema	0			rule
+glowing	1	oewn-glow-v	VerbForm=Ger	dema	0			rule
+glowing	2	oewn-glowing-n	Number=Sing	dema	0			oewn_form
 glowingly	0	oewn-glowingly-r	Degree=Pos	dema	0			oewn_form
 glowings	0	oewn-glowing-n	Number=Plur	dema	0			rule
 glows	0	oewn-glow-n	Number=Plur	dema	0			rule
@@ -6895,8 +6895,8 @@ gnawed	0	oewn-gnaw-v	Tense=Past+VerbForm=Part	dema	0			rule
 gnawed at	0	oewn-gnaw_at-v	Tense=Past+VerbForm=Part	dema	0			rule
 gnawer	0	oewn-gnawer-n	Number=Sing	dema	0			oewn_form
 gnawers	0	oewn-gnawer-n	Number=Plur	dema	0			rule
-gnawing	0		Number=Sing	dema	0	gnawing	n	moby_reverse
-gnawing	1	oewn-gnaw-v	VerbForm=Ger	dema	0			rule
+gnawing	0	oewn-gnaw-v	VerbForm=Ger	dema	0			rule
+gnawing	1		Number=Sing	dema	0	gnawing	n	moby_reverse
 gnawing at	0	oewn-gnaw_at-v	VerbForm=Ger	dema	0			rule
 gnawing mammal	0	oewn-gnawing_mammal-n	Number=Sing	dema	0			oewn_form
 gnawing mammals	0	oewn-gnawing_mammal-n	Number=Plur	dema	0			rule
@@ -8306,8 +8306,8 @@ goshawk	0	oewn-goshawk-n	Number=Sing	dema	0			oewn_form
 goshawks	0	oewn-goshawk-n	Number=Plur	dema	0			rule
 goshenite	0		Number=Sing	dema	0	goshenite	n	moby_reverse
 goshenites	0		Number=Plur	dema	0	goshenite	n	rule
-gosling	0	oewn-gosling-n	Number=Plur	dema	0			agid
-gosling	1	oewn-gosling-n	Number=Sing	dema	0			oewn_form
+gosling	0	oewn-gosling-n	Number=Sing	dema	0			oewn_form
+goslings	0	oewn-gosling-n	Number=Plur	dema	0			rule
 gosmore	0	oewn-gosmore-n	Number=Sing	dema	0			oewn_form
 gosmores	0	oewn-gosmore-n	Number=Plur	dema	0			rule
 gospel	0	oewn-gospel-n	Number=Sing	dema	0			oewn_form
@@ -8667,8 +8667,8 @@ gradienter	0		Number=Sing	dema	0	gradienter	n	moby_reverse
 gradienters	0		Number=Plur	dema	0	gradienter	n	rule
 gradients	0	oewn-gradient-n	Number=Plur	dema	0			rule
 gradin	0		Number=Sing	dema	0	gradin	n	moby_reverse
-grading	0	oewn-grading-n	Number=Sing	dema	0			oewn_form
-grading	1	oewn-grade-v	VerbForm=Ger	dema	0			rule
+grading	0	oewn-grade-v	VerbForm=Ger	dema	0			rule
+grading	1	oewn-grading-n	Number=Sing	dema	0			oewn_form
 gradings	0	oewn-grading-n	Number=Plur	dema	0			rule
 gradins	0		Number=Plur	dema	0	gradin	n	rule
 grads	0	oewn-grad-n	Number=Plur	dema	0			rule
@@ -9050,8 +9050,8 @@ granivore	0		Number=Sing	dema	0	granivore	n	moby_reverse
 granivores	0		Number=Plur	dema	0	granivore	n	rule
 granivorous	0		Degree=Pos	dema	0	granivorous	a	moby_reverse
 grannie	0	oewn-grannie-n	Number=Sing	dema	0			oewn_form
-grannies	0	oewn-grannie-n	Number=Plur	dema	0			rule
-grannies	1	oewn-granny-n	Number=Plur	dema	0			rule
+grannies	0	oewn-granny-n	Number=Plur	dema	0			rule
+grannies	1	oewn-grannie-n	Number=Plur	dema	0			rule
 granny	0	oewn-granny-n	Number=Sing	dema	0			oewn_form
 granny knot	0	oewn-granny_knot-n	Number=Sing	dema	0			oewn_form
 granny knots	0	oewn-granny_knot-n	Number=Plur	dema	0			rule
@@ -9407,8 +9407,8 @@ gratifier	0		Number=Sing	dema	0	gratifier	n	moby_reverse
 gratifiers	0		Number=Plur	dema	0	gratifier	n	rule
 gratifies	0	oewn-gratify-v	Person=3+Tense=Pres	dema	0			rule
 gratify	0	oewn-gratify-v	VerbForm=Inf	dema	0			oewn_form
-gratifying	0	oewn-gratifying-a	Degree=Pos	dema	0			oewn_form
-gratifying	1	oewn-gratify-v	VerbForm=Ger	dema	0			rule
+gratifying	0	oewn-gratify-v	VerbForm=Ger	dema	0			rule
+gratifying	1	oewn-gratifying-a	Degree=Pos	dema	0			oewn_form
 gratifyingly	0	oewn-gratifyingly-r	Degree=Pos	dema	0			oewn_form
 gratin	0		Number=Sing	dema	0	gratin	n	moby_reverse
 gratinate	0		VerbForm=Inf	dema	0	gratinate	v	moby_reverse
@@ -9416,8 +9416,8 @@ gratinated	0		Tense=Past+VerbForm=Part	dema	0	gratinate	v	rule
 gratinates	0		Person=3+Tense=Pres	dema	0	gratinate	v	rule
 gratinating	0		VerbForm=Ger	dema	0	gratinate	v	rule
 grating	0	oewn-grating-n	Number=Sing	dema	0			oewn_form
-grating	1	oewn-grating-a	Degree=Pos	dema	0			oewn_form
-grating	2	oewn-grate-v	VerbForm=Ger	dema	0			rule
+grating	1	oewn-grate-v	VerbForm=Ger	dema	0			rule
+grating	2	oewn-grating-a	Degree=Pos	dema	0			oewn_form
 gratingly	0	oewn-gratingly-r	Degree=Pos	dema	0			oewn_form
 gratings	0	oewn-grating-n	Number=Plur	dema	0			rule
 gratins	0		Number=Plur	dema	0	gratin	n	rule
@@ -9922,9 +9922,9 @@ greater water parsnips	0	oewn-greater_water_parsnip-n	Number=Plur	dema	0			rule
 greater whitethroat	0	oewn-greater_whitethroat-n	Number=Sing	dema	0			oewn_form
 greater whitethroats	0	oewn-greater_whitethroat-n	Number=Plur	dema	0			rule
 greater yellowlegs	0	oewn-greater_yellowlegs-n	Number=Sing	dema	0			oewn_form
-greatest	0	oewn-greatest-a	Degree=Pos	dema	0			oewn_form
-greatest	1		Number=Sing	dema	0	greatest	n	moby_reverse
-greatest	2	oewn-great-a	Degree=Sup	dema	0			rule
+greatest	0	oewn-great-a	Degree=Sup	dema	0			rule
+greatest	1	oewn-greatest-a	Degree=Pos	dema	0			oewn_form
+greatest	2		Number=Sing	dema	0	greatest	n	moby_reverse
 greatest common divisor	0	oewn-greatest_common_divisor-n	Number=Sing	dema	0			oewn_form
 greatest common divisors	0	oewn-greatest_common_divisor-n	Number=Plur	dema	0			rule
 greatest common factor	0	oewn-greatest_common_factor-n	Number=Sing	dema	0			oewn_form
@@ -9941,8 +9941,8 @@ greats	0	oewn-great-n	Number=Plur	dema	0			rule
 greave	0	oewn-greave-n	Number=Sing	dema	0			oewn_form
 greaved	0		Degree=Pos	dema	0	greaved	a	moby_reverse
 greaved	1		VerbForm=Inf	dema	0	greaved	v	moby_reverse
-greaves	0	oewn-greaves-n	Number=Sing	dema	0			oewn_form
-greaves	1	oewn-greave-n	Number=Plur	dema	0			rule
+greaves	0	oewn-greave-n	Number=Plur	dema	0			rule
+greaves	1	oewn-greaves-n	Number=Sing	dema	0			oewn_form
 grebe	0	oewn-grebe-n	Number=Sing	dema	0			oewn_form
 grebes	0	oewn-grebe-n	Number=Plur	dema	0			rule
 grecale	0		Number=Sing	dema	0	grecale	n	moby_reverse
@@ -10175,8 +10175,8 @@ greenlight	0	oewn-greenlight-v	VerbForm=Inf	dema	0			oewn_form
 greenlighted	0	oewn-greenlight-v	Tense=Past+VerbForm=Part	dema	0			rule
 greenlighting	0	oewn-greenlight-v	VerbForm=Ger	dema	0			rule
 greenlights	0	oewn-greenlight-v	Person=3+Tense=Pres	dema	0			rule
-greenling	0	oewn-greenling-n	Number=Plur	dema	0			agid
-greenling	1	oewn-greenling-n	Number=Sing	dema	0			oewn_form
+greenling	0	oewn-greenling-n	Number=Sing	dema	0			oewn_form
+greenlings	0	oewn-greenling-n	Number=Plur	dema	0			rule
 greenly	0	oewn-greenly-r	Degree=Pos	dema	0			oewn_form
 greenmail	0	oewn-greenmail-n	Number=Sing	dema	0			oewn_form
 greenmails	0	oewn-greenmail-n	Number=Plur	dema	0			rule
@@ -10476,8 +10476,8 @@ grillading	0		VerbForm=Inf	dema	0	grillading	v	moby_reverse
 grillage	0		Number=Sing	dema	0	grillage	n	moby_reverse
 grillages	0		Number=Plur	dema	0	grillage	n	rule
 grille	0	oewn-grille-n	Number=Sing	dema	0			oewn_form
-grilled	0	oewn-grilled-a	Degree=Pos	dema	0			oewn_form
-grilled	1	oewn-grill-v	Tense=Past+VerbForm=Part	dema	0			rule
+grilled	0	oewn-grill-v	Tense=Past+VerbForm=Part	dema	0			rule
+grilled	1	oewn-grilled-a	Degree=Pos	dema	0			oewn_form
 grilled cheese	0	oewn-grilled_cheese-n	Number=Sing	dema	0			oewn_form
 grilled cheeses	0	oewn-grilled_cheese-n	Number=Plur	dema	0			rule
 griller	0		Number=Sing	dema	0	griller	n	moby_reverse
@@ -10567,8 +10567,8 @@ gringos	0	oewn-gringo-n	Number=Plur	dema	0			rule
 grinned	0	oewn-grin-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 grinner	0	oewn-grinner-n	Number=Sing	dema	0			oewn_form
 grinners	0	oewn-grinner-n	Number=Plur	dema	0			rule
-grinning	0	oewn-grinning-n	Number=Sing	dema	0			oewn_form
-grinning	1	oewn-grin-v	VerbForm=Ger	dema	0			oewn_form
+grinning	0	oewn-grin-v	VerbForm=Ger	dema	0			oewn_form
+grinning	1	oewn-grinning-n	Number=Sing	dema	0			oewn_form
 grinningly	0		Degree=Pos	dema	0	grinningly	r	moby_reverse
 grinnings	0	oewn-grinning-n	Number=Plur	dema	0			rule
 grins	0	oewn-grin-v	Person=3+Tense=Pres	dema	0			rule
@@ -10589,8 +10589,8 @@ gripes	2	oewn-gripes-n	Number=Sing	dema	0			oewn_form
 gripey	0		Degree=Pos	dema	0	gripey	a	moby_reverse
 gripier	0		Degree=Cmp	dema	0	gripy	a	moby_reverse
 gripiest	0		Degree=Sup	dema	0	gripy	a	moby_reverse
-griping	0	oewn-griping-n	Number=Sing	dema	0			oewn_form
-griping	1	oewn-gripe-v	VerbForm=Ger	dema	0			rule
+griping	0	oewn-gripe-v	VerbForm=Ger	dema	0			rule
+griping	1	oewn-griping-n	Number=Sing	dema	0			oewn_form
 gripingly	0		Degree=Pos	dema	0	gripingly	r	moby_reverse
 gripings	0	oewn-griping-n	Number=Plur	dema	0			rule
 gripless	0		Degree=Pos	dema	0	gripless	a	moby_reverse
@@ -10664,8 +10664,8 @@ griths	0		Number=Plur	dema	0	grith	n	rule
 gritless	0		Degree=Pos	dema	0	gritless	a	moby_reverse
 gritrock	0	oewn-gritrock-n	Number=Sing	dema	0			oewn_form
 gritrocks	0	oewn-gritrock-n	Number=Plur	dema	0			rule
-grits	0	oewn-grits-n	Number=Sing	dema	0			oewn_form
-grits	1	oewn-grit-n	Number=Plur	dema	0			rule
+grits	0	oewn-grit-n	Number=Plur	dema	0			rule
+grits	1	oewn-grits-n	Number=Sing	dema	0			oewn_form
 grits	2	oewn-grit-v	Person=3+Tense=Pres	dema	0			rule
 gritstone	0	oewn-gritstone-n	Number=Sing	dema	0			oewn_form
 gritstones	0	oewn-gritstone-n	Number=Plur	dema	0			rule
@@ -10685,8 +10685,8 @@ grivet	0	oewn-grivet-n	Number=Sing	dema	0			oewn_form
 grivets	0	oewn-grivet-n	Number=Plur	dema	0			rule
 grizzle	0	oewn-grizzle-v	VerbForm=Inf	dema	0			oewn_form
 grizzle	1	oewn-grizzle-n	Number=Sing	dema	0			oewn_form
-grizzled	0	oewn-grizzled-a	Degree=Pos	dema	0			oewn_form
-grizzled	1	oewn-grizzle-v	Tense=Past+VerbForm=Part	dema	0			rule
+grizzled	0	oewn-grizzle-v	Tense=Past+VerbForm=Part	dema	0			rule
+grizzled	1	oewn-grizzled-a	Degree=Pos	dema	0			oewn_form
 grizzler	0		Number=Sing	dema	0	grizzler	n	moby_reverse
 grizzlers	0		Number=Plur	dema	0	grizzler	n	rule
 grizzles	0	oewn-grizzle-v	Person=3+Tense=Pres	dema	0			rule
@@ -10695,8 +10695,8 @@ grizzlier	0	oewn-grizzly-a	Degree=Cmp	dema	0			oewn_form
 grizzlies	0		Degree=Pos	dema	0	grizzlies	a	moby_reverse
 grizzlies	1	oewn-grizzly-n	Number=Plur	dema	0			rule
 grizzliest	0	oewn-grizzly-a	Degree=Sup	dema	0			oewn_form
-grizzling	0		Number=Sing	dema	0	grizzling	n	moby_reverse
-grizzling	1	oewn-grizzle-v	VerbForm=Ger	dema	0			rule
+grizzling	0	oewn-grizzle-v	VerbForm=Ger	dema	0			rule
+grizzling	1		Number=Sing	dema	0	grizzling	n	moby_reverse
 grizzlings	0		Number=Plur	dema	0	grizzling	n	rule
 grizzly	0	oewn-grizzly-a	Degree=Pos	dema	0			oewn_form
 grizzly	1	oewn-grizzly-n	Number=Sing	dema	0			oewn_form
@@ -10717,8 +10717,8 @@ groaningly	0		Degree=Pos	dema	0	groaningly	r	moby_reverse
 groans	0	oewn-groan-n	Number=Plur	dema	0			rule
 groans	1	oewn-groan-v	Person=3+Tense=Pres	dema	0			rule
 groat	0	oewn-groat-n	Number=Sing	dema	0			oewn_form
-groats	0	oewn-groats-n	Number=Sing	dema	0			oewn_form
-groats	1	oewn-groat-n	Number=Plur	dema	0			rule
+groats	0	oewn-groat-n	Number=Plur	dema	0			rule
+groats	1	oewn-groats-n	Number=Sing	dema	0			oewn_form
 grocer	0	oewn-grocer-n	Number=Sing	dema	0			oewn_form
 groceries	0	oewn-grocery-n	Number=Plur	dema	0			rule
 grocers	0	oewn-grocer-n	Number=Plur	dema	0			rule
@@ -10792,8 +10792,8 @@ groomsman	0	oewn-groomsman-n	Number=Sing	dema	0			oewn_form
 groomsmen	0	oewn-groomsman-n	Number=Plur	dema	0			agid
 groove	0	oewn-groove-n	Number=Sing	dema	0			oewn_form
 groove	1	oewn-groove-v	VerbForm=Inf	dema	0			oewn_form
-grooved	0	oewn-grooved-a	Degree=Pos	dema	0			oewn_form
-grooved	1	oewn-groove-v	Tense=Past+VerbForm=Part	dema	0			rule
+grooved	0	oewn-groove-v	Tense=Past+VerbForm=Part	dema	0			rule
+grooved	1	oewn-grooved-a	Degree=Pos	dema	0			oewn_form
 grooveless	0		Degree=Pos	dema	0	grooveless	a	moby_reverse
 groovelike	0		Degree=Pos	dema	0	groovelike	a	moby_reverse
 groover	0	oewn-groover-n	Number=Sing	dema	0			oewn_form
@@ -10802,8 +10802,8 @@ grooves	0	oewn-groove-n	Number=Plur	dema	0			rule
 grooves	1	oewn-groove-v	Person=3+Tense=Pres	dema	0			rule
 groovier	0	oewn-groovy-a	Degree=Cmp	dema	0			oewn_form
 grooviest	0	oewn-groovy-a	Degree=Sup	dema	0			oewn_form
-grooving	0	oewn-grooving-n	Number=Sing	dema	0			oewn_form
-grooving	1	oewn-groove-v	VerbForm=Ger	dema	0			rule
+grooving	0	oewn-groove-v	VerbForm=Ger	dema	0			rule
+grooving	1	oewn-grooving-n	Number=Sing	dema	0			oewn_form
 groovings	0	oewn-grooving-n	Number=Plur	dema	0			rule
 groovy	0	oewn-groovy-a	Degree=Pos	dema	0			oewn_form
 grope	0	oewn-grope-v	VerbForm=Inf	dema	0			oewn_form
@@ -10816,8 +10816,8 @@ gropers	0		Number=Plur	dema	0	groper	n	rule
 gropes	0	oewn-grope-v	Person=3+Tense=Pres	dema	0			rule
 gropes	1	oewn-grope-n	Number=Plur	dema	0			rule
 gropes for	0	oewn-grope_for-v	Person=3+Tense=Pres	dema	0			rule
-groping	0	oewn-groping-a	Degree=Pos	dema	0			oewn_form
-groping	1	oewn-grope-v	VerbForm=Ger	dema	0			rule
+groping	0	oewn-grope-v	VerbForm=Ger	dema	0			rule
+groping	1	oewn-groping-a	Degree=Pos	dema	0			oewn_form
 groping for	0	oewn-grope_for-v	VerbForm=Ger	dema	0			rule
 gropingly	0	oewn-gropingly-r	Degree=Pos	dema	0			oewn_form
 gros point	0	oewn-gros_point-n	Number=Sing	dema	0			oewn_form
@@ -10881,8 +10881,8 @@ grotesquely	0	oewn-grotesquely-r	Degree=Pos	dema	0			oewn_form
 grotesqueness	0	oewn-grotesqueness-n	Number=Sing	dema	0			oewn_form
 grotesquenesses	0	oewn-grotesqueness-n	Number=Plur	dema	0			rule
 grotesquerie	0	oewn-grotesquerie-n	Number=Sing	dema	0			oewn_form
-grotesqueries	0	oewn-grotesquerie-n	Number=Plur	dema	0			rule
-grotesqueries	1	oewn-grotesquery-n	Number=Plur	dema	0			rule
+grotesqueries	0	oewn-grotesquery-n	Number=Plur	dema	0			rule
+grotesqueries	1	oewn-grotesquerie-n	Number=Plur	dema	0			rule
 grotesquery	0	oewn-grotesquery-n	Number=Sing	dema	0			oewn_form
 grotesques	0	oewn-grotesque-n	Number=Plur	dema	0			rule
 grots	0	oewn-grot-n	Number=Plur	dema	0			rule
@@ -11050,8 +11050,8 @@ groundless	0	oewn-groundless-a	Degree=Pos	dema	0			oewn_form
 groundlessly	0		Degree=Pos	dema	0	groundlessly	r	moby_reverse
 groundlessness	0	oewn-groundlessness-n	Number=Sing	dema	0			oewn_form
 groundlessnesses	0	oewn-groundlessness-n	Number=Plur	dema	0			rule
-groundling	0	oewn-groundling-n	Number=Plur	dema	0			agid
-groundling	1	oewn-groundling-n	Number=Sing	dema	0			oewn_form
+groundling	0	oewn-groundling-n	Number=Sing	dema	0			oewn_form
+groundlings	0	oewn-groundling-n	Number=Plur	dema	0			rule
 groundmass	0	oewn-groundmass-n	Number=Sing	dema	0			oewn_form
 groundmasses	0	oewn-groundmass-n	Number=Plur	dema	0			rule
 groundnut	0	oewn-groundnut-n	Number=Sing	dema	0			oewn_form
@@ -11208,9 +11208,9 @@ growan	0		Number=Sing	dema	0	growan	n	moby_reverse
 growans	0		Number=Plur	dema	0	growan	n	rule
 grower	0	oewn-grower-n	Number=Sing	dema	0			oewn_form
 growers	0	oewn-grower-n	Number=Plur	dema	0			rule
-growing	0	oewn-growing-a	Degree=Pos	dema	0			oewn_form
-growing	1	oewn-growing-n	Number=Sing	dema	0			oewn_form
-growing	2	oewn-grow-v	VerbForm=Ger	dema	0			rule
+growing	0	oewn-grow-v	VerbForm=Ger	dema	0			rule
+growing	1	oewn-growing-a	Degree=Pos	dema	0			oewn_form
+growing	2	oewn-growing-n	Number=Sing	dema	0			oewn_form
 growing over	0	oewn-grow_over-v	VerbForm=Ger	dema	0			rule
 growing pains	0	oewn-growing_pains-n	Number=Sing	dema	0			oewn_form
 growing season	0	oewn-growing_season-n	Number=Sing	dema	0			oewn_form
@@ -11343,8 +11343,8 @@ grumbler	0	oewn-grumbler-n	Number=Sing	dema	0			oewn_form
 grumblers	0	oewn-grumbler-n	Number=Plur	dema	0			rule
 grumbles	0	oewn-grumble-v	Person=3+Tense=Pres	dema	0			rule
 grumbles	1	oewn-grumble-n	Number=Plur	dema	0			rule
-grumbling	0	oewn-grumbling-n	Number=Sing	dema	0			oewn_form
-grumbling	1	oewn-grumble-v	VerbForm=Ger	dema	0			rule
+grumbling	0	oewn-grumble-v	VerbForm=Ger	dema	0			rule
+grumbling	1	oewn-grumbling-n	Number=Sing	dema	0			oewn_form
 grumbling	2	oewn-grumbling-a	Degree=Pos	dema	0			oewn_form
 grumblingly	0		Degree=Pos	dema	0	grumblingly	r	moby_reverse
 grumblings	0	oewn-grumbling-n	Number=Plur	dema	0			rule
@@ -11998,8 +11998,8 @@ gummier	0	oewn-gummy-a	Degree=Cmp	dema	0			oewn_form
 gummiest	0	oewn-gummy-a	Degree=Sup	dema	0			oewn_form
 gumminess	0	oewn-gumminess-n	Number=Sing	dema	0			oewn_form
 gumminesses	0	oewn-gumminess-n	Number=Plur	dema	0			rule
-gumming	0	oewn-gumming-n	Number=Sing	dema	0			oewn_form
-gumming	1	oewn-gum-v	VerbForm=Ger	dema	0			oewn_form
+gumming	0	oewn-gum-v	VerbForm=Ger	dema	0			oewn_form
+gumming	1	oewn-gumming-n	Number=Sing	dema	0			oewn_form
 gumming up	0	oewn-gum_up-v	VerbForm=Ger	dema	0			rule
 gummings	0	oewn-gumming-n	Number=Plur	dema	0			rule
 gummite	0	oewn-gummite-n	Number=Sing	dema	0			oewn_form
@@ -12159,9 +12159,9 @@ gunrunner	0	oewn-gunrunner-n	Number=Sing	dema	0			oewn_form
 gunrunners	0	oewn-gunrunner-n	Number=Plur	dema	0			rule
 gunrunning	0	oewn-gunrunning-n	Number=Sing	dema	0			oewn_form
 gunrunnings	0	oewn-gunrunning-n	Number=Plur	dema	0			rule
-guns	0		Degree=Pos	dema	0	guns	a	moby_reverse
-guns	1	oewn-gun-n	Number=Plur	dema	0			rule
-guns	2	oewn-gun-v	Person=3+Tense=Pres	dema	0			rule
+guns	0	oewn-gun-n	Number=Plur	dema	0			rule
+guns	1	oewn-gun-v	Person=3+Tense=Pres	dema	0			rule
+guns	2		Degree=Pos	dema	0	guns	a	moby_reverse
 guns down	0	oewn-gun_down-v	Person=3+Tense=Pres	dema	0			rule
 guns for hire	0	oewn-gun_for_hire-n	Number=Plur	dema	0			rule
 gunsel	0		Number=Sing	dema	0	gunsel	n	moby_reverse
@@ -12351,8 +12351,8 @@ gutturality	0		Number=Sing	dema	0	gutturality	n	moby_reverse
 gutturalization	0		Number=Sing	dema	0	gutturalization	n	moby_reverse
 gutturalizations	0		Number=Plur	dema	0	gutturalization	n	rule
 gutturalize	0		VerbForm=Inf	dema	0	gutturalize	v	moby_reverse
-gutturalized	0		Degree=Pos	dema	0	gutturalized	a	moby_reverse
-gutturalized	1		Tense=Past+VerbForm=Part	dema	0	gutturalize	v	rule
+gutturalized	0		Tense=Past+VerbForm=Part	dema	0	gutturalize	v	rule
+gutturalized	1		Degree=Pos	dema	0	gutturalized	a	moby_reverse
 gutturalizes	0		Person=3+Tense=Pres	dema	0	gutturalize	v	rule
 gutturalizing	0		VerbForm=Ger	dema	0	gutturalize	v	rule
 gutturally	0	oewn-gutturally-r	Degree=Pos	dema	0			oewn_form
@@ -12385,8 +12385,8 @@ guzzled	0	oewn-guzzle-v	Tense=Past+VerbForm=Part	dema	0			rule
 guzzler	0	oewn-guzzler-n	Number=Sing	dema	0			oewn_form
 guzzlers	0	oewn-guzzler-n	Number=Plur	dema	0			rule
 guzzles	0	oewn-guzzle-v	Person=3+Tense=Pres	dema	0			rule
-guzzling	0	oewn-guzzling-n	Number=Sing	dema	0			oewn_form
-guzzling	1	oewn-guzzle-v	VerbForm=Ger	dema	0			rule
+guzzling	0	oewn-guzzle-v	VerbForm=Ger	dema	0			rule
+guzzling	1	oewn-guzzling-n	Number=Sing	dema	0			oewn_form
 guzzlings	0	oewn-guzzling-n	Number=Plur	dema	0			rule
 gv	0		Number=Sing	dema	0	gv	n	moby_reverse
 gwine	0		VerbForm=Inf	dema	0	gwine	v	moby_reverse

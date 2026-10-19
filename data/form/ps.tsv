@@ -349,8 +349,8 @@ pseudogenerically	0		Degree=Pos	dema	0	pseudogenerically	r	moby_reverse
 pseudogenteel	0		Degree=Pos	dema	0	pseudogenteel	a	moby_reverse
 pseudogentlemanly	0		Degree=Pos	dema	0	pseudogentlemanly	r	moby_reverse
 pseudogenus	0		Number=Sing	dema	0	pseudogenus	n	moby_reverse
-pseudogenuses	0		Number=Sing	dema	0	pseudogenuses	n	moby_reverse
-pseudogenuses	1		Number=Plur	dema	0	pseudogenus	n	rule
+pseudogenuses	0		Number=Plur	dema	0	pseudogenus	n	rule
+pseudogenuses	1		Number=Sing	dema	0	pseudogenuses	n	moby_reverse
 pseudogyrate	0		Degree=Pos	dema	0	pseudogyrate	a	moby_reverse
 pseudohallucination	0	oewn-pseudohallucination-n	Number=Sing	dema	0			oewn_form
 pseudohallucinations	0	oewn-pseudohallucination-n	Number=Plur	dema	0			rule
@@ -696,8 +696,8 @@ psychedelic rock	0	oewn-psychedelic_rock-n	Number=Sing	dema	0			oewn_form
 psychedelic rocks	0	oewn-psychedelic_rock-n	Number=Plur	dema	0			rule
 psychedlic mushroom	0	oewn-psychedlic_mushroom-n	Number=Sing	dema	0			oewn_form
 psychedlic mushrooms	0	oewn-psychedlic_mushroom-n	Number=Plur	dema	0			rule
-psyches	0		Person=3+Tense=Pres	dema	0	psych	v	rule
-psyches	1	oewn-psyche-n	Number=Plur	dema	0			rule
+psyches	0	oewn-psyche-n	Number=Plur	dema	0			rule
+psyches	1		Person=3+Tense=Pres	dema	0	psych	v	rule
 psyches up	0	oewn-psych_up-v	Person=3+Tense=Pres	dema	0			rule
 psychiatric	0	oewn-psychiatric-a	Degree=Pos	dema	0			oewn_form
 psychiatric hospital	0	oewn-psychiatric_hospital-n	Number=Sing	dema	0			oewn_form

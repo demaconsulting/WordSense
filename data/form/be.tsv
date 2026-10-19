@@ -857,8 +857,8 @@ bebops	0	oewn-bebop-n	Number=Plur	dema	0			rule
 bebops	1	oewn-bebop-v	Person=3+Tense=Pres	dema	0			rule
 bec	0		Number=Sing	dema	0	bec	n	moby_reverse
 becalm	0	oewn-becalm-v	VerbForm=Inf	dema	0			oewn_form
-becalmed	0	oewn-becalmed-a	Degree=Pos	dema	0			oewn_form
-becalmed	1	oewn-becalm-v	Tense=Past+VerbForm=Part	dema	0			rule
+becalmed	0	oewn-becalm-v	Tense=Past+VerbForm=Part	dema	0			rule
+becalmed	1	oewn-becalmed-a	Degree=Pos	dema	0			oewn_form
 becalming	0	oewn-becalm-v	VerbForm=Ger	dema	0			rule
 becalms	0	oewn-becalm-v	Person=3+Tense=Pres	dema	0			rule
 became	0	oewn-become-v	Tense=Past	dema	0			hand
@@ -905,9 +905,9 @@ become	1	oewn-become-v	VerbForm=Part	dema	0			irregular_list
 become flat	0	oewn-become_flat-v	VerbForm=Inf	dema	0			oewn_form
 becomes	0	oewn-become-v	Person=3+Tense=Pres	dema	0			rule
 becomes flat	0	oewn-become_flat-v	Person=3+Tense=Pres	dema	0			rule
-becoming	0	oewn-becoming-a	Degree=Pos	dema	0			oewn_form
-becoming	1		Number=Sing	dema	0	becoming	n	moby_reverse
-becoming	2	oewn-become-v	VerbForm=Ger	dema	0			rule
+becoming	0	oewn-become-v	VerbForm=Ger	dema	0			rule
+becoming	1	oewn-becoming-a	Degree=Pos	dema	0			oewn_form
+becoming	2		Number=Sing	dema	0	becoming	n	moby_reverse
 becoming flat	0	oewn-become_flat-v	VerbForm=Ger	dema	0			rule
 becomingly	0	oewn-becomingly-r	Degree=Pos	dema	0			oewn_form
 becomingness	0	oewn-becomingness-n	Number=Sing	dema	0			oewn_form
@@ -1538,8 +1538,8 @@ beggarwomans	0	oewn-beggarwoman-n	Number=Plur	dema	0			rule
 beggary	0	oewn-beggary-n	Number=Sing	dema	0			oewn_form
 begged	0	oewn-beg-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 begged off	0	oewn-beg_off-v	Tense=Past+VerbForm=Part	dema	0			rule
-begging	0	oewn-begging-n	Number=Sing	dema	0			oewn_form
-begging	1	oewn-beg-v	VerbForm=Ger	dema	0			oewn_form
+begging	0	oewn-beg-v	VerbForm=Ger	dema	0			oewn_form
+begging	1	oewn-begging-n	Number=Sing	dema	0			oewn_form
 begging off	0	oewn-beg_off-v	VerbForm=Ger	dema	0			rule
 beggings	0	oewn-begging-n	Number=Plur	dema	0			rule
 begild	0	oewn-begild-v	VerbForm=Inf	dema	0			oewn_form
@@ -1663,8 +1663,8 @@ beholdable	0		Degree=Pos	dema	0	beholdable	a	moby_reverse
 beholden	0	oewn-beholden-a	Degree=Pos	dema	0			oewn_form
 beholder	0	oewn-beholder-n	Number=Sing	dema	0			oewn_form
 beholders	0	oewn-beholder-n	Number=Plur	dema	0			rule
-beholding	0	oewn-beholding-n	Number=Sing	dema	0			oewn_form
-beholding	1	oewn-behold-v	VerbForm=Ger	dema	0			rule
+beholding	0	oewn-behold-v	VerbForm=Ger	dema	0			rule
+beholding	1	oewn-beholding-n	Number=Sing	dema	0			oewn_form
 beholdings	0	oewn-beholding-n	Number=Plur	dema	0			rule
 beholds	0	oewn-behold-v	Person=3+Tense=Pres	dema	0			rule
 behoof	0		Number=Sing	dema	0	behoof	n	moby_reverse
@@ -1787,8 +1787,8 @@ believer	0	oewn-believer-n	Number=Sing	dema	0			oewn_form
 believers	0	oewn-believer-n	Number=Plur	dema	0			rule
 believes	0	oewn-believe-v	Person=3+Tense=Pres	dema	0			rule
 believes in	0	oewn-believe_in-v	Person=3+Tense=Pres	dema	0			rule
-believing	0	oewn-believing-n	Number=Sing	dema	0			oewn_form
-believing	1	oewn-believe-v	VerbForm=Ger	dema	0			rule
+believing	0	oewn-believe-v	VerbForm=Ger	dema	0			rule
+believing	1	oewn-believing-n	Number=Sing	dema	0			oewn_form
 believing in	0	oewn-believe_in-v	VerbForm=Ger	dema	0			rule
 believingly	0	oewn-believingly-r	Degree=Pos	dema	0			oewn_form
 believings	0	oewn-believing-n	Number=Plur	dema	0			rule
@@ -1801,8 +1801,8 @@ belittlements	0	oewn-belittlement-n	Number=Plur	dema	0			rule
 belittler	0		Number=Sing	dema	0	belittler	n	moby_reverse
 belittlers	0		Number=Plur	dema	0	belittler	n	rule
 belittles	0	oewn-belittle-v	Person=3+Tense=Pres	dema	0			rule
-belittling	0	oewn-belittling-n	Number=Sing	dema	0			oewn_form
-belittling	1	oewn-belittle-v	VerbForm=Ger	dema	0			rule
+belittling	0	oewn-belittle-v	VerbForm=Ger	dema	0			rule
+belittling	1	oewn-belittling-n	Number=Sing	dema	0			oewn_form
 belittling	2	oewn-belittling-a	Degree=Pos	dema	0			oewn_form
 belittlings	0	oewn-belittling-n	Number=Plur	dema	0			rule
 belive	0		Degree=Pos	dema	0	belive	r	moby_reverse
@@ -1944,8 +1944,8 @@ bellowing	0	oewn-bellow-v	VerbForm=Ger	dema	0			rule
 bellowing	1	oewn-bellowing-n	Number=Sing	dema	0			oewn_form
 bellowings	0	oewn-bellowing-n	Number=Plur	dema	0			rule
 bellows	0	oewn-bellows-n	Number=Sing	dema	0			oewn_form
-bellows	1	oewn-bellow-n	Number=Plur	dema	0			rule
-bellows	2	oewn-bellow-v	Person=3+Tense=Pres	dema	0			rule
+bellows	1	oewn-bellow-v	Person=3+Tense=Pres	dema	0			rule
+bellows	2	oewn-bellow-n	Number=Plur	dema	0			rule
 bellows fish	0	oewn-bellows_fish-n	Number=Sing	dema	0			oewn_form
 bellows fishes	0	oewn-bellows_fish-n	Number=Plur	dema	0			rule
 bellowslike	0		Degree=Pos	dema	0	bellowslike	a	moby_reverse
@@ -2026,15 +2026,15 @@ belonged to	0	oewn-belong_to-v	Tense=Past+VerbForm=Part	dema	0			rule
 belonging	0	oewn-belonging-n	Number=Sing	dema	0			oewn_form
 belonging	1	oewn-belong-v	VerbForm=Ger	dema	0			rule
 belonging to	0	oewn-belong_to-v	VerbForm=Ger	dema	0			rule
-belongings	0	oewn-belongings-n	Number=Sing	dema	0			oewn_form
-belongings	1	oewn-belonging-n	Number=Plur	dema	0			rule
+belongings	0	oewn-belonging-n	Number=Plur	dema	0			rule
+belongings	1	oewn-belongings-n	Number=Sing	dema	0			oewn_form
 belongs	0	oewn-belong-v	Person=3+Tense=Pres	dema	0			rule
 belongs to	0	oewn-belong_to-v	Person=3+Tense=Pres	dema	0			rule
 belonoid	0		Degree=Pos	dema	0	belonoid	a	moby_reverse
 belove	0		VerbForm=Inf	dema	0	belove	v	moby_reverse
 beloved	0	oewn-beloved-a	Degree=Pos	dema	0			oewn_form
-beloved	1	oewn-beloved-n	Number=Sing	dema	0			oewn_form
-beloved	2		Tense=Past+VerbForm=Part	dema	0	belove	v	rule
+beloved	1		Tense=Past+VerbForm=Part	dema	0	belove	v	rule
+beloved	2	oewn-beloved-n	Number=Sing	dema	0			oewn_form
 beloveds	0	oewn-beloved-n	Number=Plur	dema	0			rule
 beloves	0		Person=3+Tense=Pres	dema	0	belove	v	rule
 beloving	0		VerbForm=Ger	dema	0	belove	v	rule
@@ -2141,8 +2141,8 @@ bemuddled	0		Tense=Past+VerbForm=Part	dema	0	bemuddle	v	rule
 bemuddles	0		Person=3+Tense=Pres	dema	0	bemuddle	v	rule
 bemuddling	0		VerbForm=Ger	dema	0	bemuddle	v	rule
 bemuse	0	oewn-bemuse-v	VerbForm=Inf	dema	0			oewn_form
-bemused	0	oewn-bemused-a	Degree=Pos	dema	0			oewn_form
-bemused	1	oewn-bemuse-v	Tense=Past+VerbForm=Part	dema	0			rule
+bemused	0	oewn-bemuse-v	Tense=Past+VerbForm=Part	dema	0			rule
+bemused	1	oewn-bemused-a	Degree=Pos	dema	0			oewn_form
 bemusedly	0		Degree=Pos	dema	0	bemusedly	r	moby_reverse
 bemusement	0	oewn-bemusement-n	Number=Sing	dema	0			oewn_form
 bemusements	0	oewn-bemusement-n	Number=Plur	dema	0			rule
@@ -2343,8 +2343,8 @@ bennet	0	oewn-bennet-n	Number=Sing	dema	0			oewn_form
 bennets	0	oewn-bennet-n	Number=Plur	dema	0			rule
 benni	0	oewn-benni-n	Number=Sing	dema	0			oewn_form
 bennie	0	oewn-bennie-n	Number=Sing	dema	0			oewn_form
-bennies	0	oewn-bennie-n	Number=Plur	dema	0			rule
-bennies	1	oewn-benny-n	Number=Plur	dema	0			rule
+bennies	0	oewn-benny-n	Number=Plur	dema	0			rule
+bennies	1	oewn-bennie-n	Number=Plur	dema	0			rule
 bennis	0	oewn-benni-n	Number=Plur	dema	0			rule
 benniseed	0	oewn-benniseed-n	Number=Sing	dema	0			oewn_form
 benniseeds	0	oewn-benniseed-n	Number=Plur	dema	0			rule
@@ -2490,8 +2490,8 @@ berascals	0		Person=3+Tense=Pres	dema	0	berascal	v	rule
 berate	0	oewn-berate-v	VerbForm=Inf	dema	0			oewn_form
 berated	0	oewn-berate-v	Tense=Past+VerbForm=Part	dema	0			rule
 berates	0	oewn-berate-v	Person=3+Tense=Pres	dema	0			rule
-berating	0	oewn-berating-n	Number=Sing	dema	0			oewn_form
-berating	1	oewn-berate-v	VerbForm=Ger	dema	0			rule
+berating	0	oewn-berate-v	VerbForm=Ger	dema	0			rule
+berating	1	oewn-berating-n	Number=Sing	dema	0			oewn_form
 beratings	0	oewn-berating-n	Number=Plur	dema	0			rule
 berberidaceous	0		Degree=Pos	dema	0	berberidaceous	a	moby_reverse
 berberine	0		Number=Sing	dema	0	berberine	n	moby_reverse
@@ -2507,8 +2507,8 @@ berearefted	0		Tense=Past+VerbForm=Part	dema	0	bereareft	v	rule
 berearefting	0		VerbForm=Ger	dema	0	bereareft	v	rule
 berearefts	0		Person=3+Tense=Pres	dema	0	bereareft	v	rule
 bereave	0	oewn-bereave-v	VerbForm=Inf	dema	0			oewn_form
-bereaved	0	oewn-bereaved-n	Number=Sing	dema	0			oewn_form
-bereaved	1	oewn-bereave-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+bereaved	0	oewn-bereave-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+bereaved	1	oewn-bereaved-n	Number=Sing	dema	0			oewn_form
 bereaved	2	oewn-bereaved-a	Degree=Pos	dema	0			oewn_form
 bereaved person	0	oewn-bereaved_person-n	Number=Sing	dema	0			oewn_form
 bereaved persons	0	oewn-bereaved_person-n	Number=Plur	dema	0			rule
@@ -2519,8 +2519,8 @@ bereaver	0		Number=Sing	dema	0	bereaver	n	moby_reverse
 bereavers	0		Number=Plur	dema	0	bereaver	n	rule
 bereaves	0	oewn-bereave-v	Person=3+Tense=Pres	dema	0			rule
 bereaving	0	oewn-bereave-v	VerbForm=Ger	dema	0			rule
-bereft	0	oewn-bereft-a	Degree=Pos	dema	0			oewn_form
-bereft	1	oewn-bereave-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+bereft	0	oewn-bereave-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+bereft	1	oewn-bereft-a	Degree=Pos	dema	0			oewn_form
 beret	0	oewn-beret-n	Number=Sing	dema	0			oewn_form
 berets	0	oewn-beret-n	Number=Plur	dema	0			rule
 beretta	0		Number=Sing	dema	0	beretta	n	moby_reverse
@@ -2660,8 +2660,8 @@ besetments	0		Number=Plur	dema	0	besetment	n	rule
 besets	0	oewn-beset-v	Person=3+Tense=Pres	dema	0			rule
 besetter	0		Number=Sing	dema	0	besetter	n	moby_reverse
 besetters	0		Number=Plur	dema	0	besetter	n	rule
-besetting	0		Degree=Pos	dema	0	besetting	a	moby_reverse
-besetting	1	oewn-beset-v	VerbForm=Ger	dema	0			oewn_form
+besetting	0	oewn-beset-v	VerbForm=Ger	dema	0			oewn_form
+besetting	1		Degree=Pos	dema	0	besetting	a	moby_reverse
 beshow	0		Number=Sing	dema	0	beshow	n	moby_reverse
 beshows	0		Number=Plur	dema	0	beshow	n	rule
 beshrew	0	oewn-beshrew-v	VerbForm=Inf	dema	0			oewn_form
@@ -2680,8 +2680,8 @@ besiegements	0		Number=Plur	dema	0	besiegement	n	rule
 besieger	0	oewn-besieger-n	Number=Sing	dema	0			oewn_form
 besiegers	0	oewn-besieger-n	Number=Plur	dema	0			rule
 besieges	0	oewn-besiege-v	Person=3+Tense=Pres	dema	0			rule
-besieging	0	oewn-besieging-n	Number=Sing	dema	0			oewn_form
-besieging	1	oewn-besiege-v	VerbForm=Ger	dema	0			rule
+besieging	0	oewn-besiege-v	VerbForm=Ger	dema	0			rule
+besieging	1	oewn-besieging-n	Number=Sing	dema	0			oewn_form
 besiegingly	0		Degree=Pos	dema	0	besiegingly	r	moby_reverse
 besiegings	0	oewn-besieging-n	Number=Plur	dema	0			rule
 besmear	0	oewn-besmear-v	VerbForm=Inf	dema	0			oewn_form
@@ -2701,8 +2701,8 @@ besom	1		VerbForm=Inf	dema	0	besom	v	moby_reverse
 besoms	0	oewn-besom-n	Number=Plur	dema	0			rule
 besot	0	oewn-besot-v	VerbForm=Inf	dema	0			oewn_form
 besots	0	oewn-besot-v	Person=3+Tense=Pres	dema	0			rule
-besotted	0	oewn-besotted-a	Degree=Pos	dema	0			oewn_form
-besotted	1	oewn-besot-v	Tense=Past+VerbForm=Part	dema	0			rule
+besotted	0	oewn-besot-v	Tense=Past+VerbForm=Part	dema	0			rule
+besotted	1	oewn-besotted-a	Degree=Pos	dema	0			oewn_form
 besottedly	0		Degree=Pos	dema	0	besottedly	r	moby_reverse
 besottedness	0		Number=Sing	dema	0	besottedness	n	moby_reverse
 besotting	0	oewn-besot-v	VerbForm=Ger	dema	0			rule
@@ -2746,8 +2746,8 @@ besprinkled	0	oewn-besprinkle-v	Tense=Past+VerbForm=Part	dema	0			rule
 besprinkles	0	oewn-besprinkle-v	Person=3+Tense=Pres	dema	0			rule
 besprinkling	0	oewn-besprinkle-v	VerbForm=Ger	dema	0			rule
 best	0	oewn-good-a	Degree=Sup	dema	0			hand
-best	1	oewn-well-a	Degree=Sup	dema	0			irregular_list
-best	2	oewn-well-r	Degree=Sup	dema	0			hand
+best	1	oewn-well-r	Degree=Sup	dema	0			hand
+best	2	oewn-well-a	Degree=Sup	dema	0			irregular_list
 best	3	oewn-best-a	Degree=Pos	dema	0			oewn_form
 best	4	oewn-best-r	Degree=Pos	dema	0			oewn_form
 best	5	oewn-best-n	Number=Sing	dema	0			oewn_form
@@ -2975,10 +2975,10 @@ betrays	0	oewn-betray-v	Person=3+Tense=Pres	dema	0			rule
 betroth	0	oewn-betroth-v	VerbForm=Inf	dema	0			oewn_form
 betrothal	0	oewn-betrothal-n	Number=Sing	dema	0			oewn_form
 betrothals	0	oewn-betrothal-n	Number=Plur	dema	0			rule
-betrothed	0	oewn-betrothed-a	Degree=Pos	dema	0			oewn_form
-betrothed	1	oewn-betrothed-n	Number=Plur	dema	0			agid
-betrothed	2	oewn-betrothed-n	Number=Sing	dema	0			oewn_form
-betrothed	3	oewn-betroth-v	Tense=Past+VerbForm=Part	dema	0			rule
+betrothed	0	oewn-betroth-v	Tense=Past+VerbForm=Part	dema	0			rule
+betrothed	1	oewn-betrothed-a	Degree=Pos	dema	0			oewn_form
+betrothed	2	oewn-betrothed-n	Number=Plur	dema	0			agid
+betrothed	3	oewn-betrothed-n	Number=Sing	dema	0			oewn_form
 betrothing	0	oewn-betroth-v	VerbForm=Ger	dema	0			rule
 betroths	0	oewn-betroth-v	Person=3+Tense=Pres	dema	0			rule
 bets	0	oewn-bet-n	Number=Plur	dema	0			rule
@@ -2988,8 +2988,8 @@ betta	0		Number=Sing	dema	0	betta	n	moby_reverse
 bettas	0		Number=Plur	dema	0	betta	n	rule
 betted	0	oewn-bet-v	Tense=Past+VerbForm=Part	dema	0			hand
 better	0	oewn-good-a	Degree=Cmp	dema	0			hand
-better	1	oewn-well-a	Degree=Cmp	dema	0			irregular_list
-better	2	oewn-well-r	Degree=Cmp	dema	0			hand
+better	1	oewn-well-r	Degree=Cmp	dema	0			hand
+better	2	oewn-well-a	Degree=Cmp	dema	0			irregular_list
 better	3	oewn-better-a	Degree=Pos	dema	0			oewn_form
 better	4	oewn-better-r	Degree=Pos	dema	0			oewn_form
 better	5	oewn-better-n	Number=Sing	dema	0			oewn_form

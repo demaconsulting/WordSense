@@ -427,8 +427,8 @@ subbeadle	0		Number=Sing	dema	0	subbeadle	n	moby_reverse
 subbeadles	0		Number=Plur	dema	0	subbeadle	n	rule
 subbed	0	oewn-sub-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 subbias	0		Number=Sing	dema	0	subbias	n	moby_reverse
-subbing	0	oewn-subbing-n	Number=Sing	dema	0			oewn_form
-subbing	1	oewn-sub-v	VerbForm=Ger	dema	0			oewn_form
+subbing	0	oewn-sub-v	VerbForm=Ger	dema	0			oewn_form
+subbing	1	oewn-subbing-n	Number=Sing	dema	0			oewn_form
 subbings	0	oewn-subbing-n	Number=Plur	dema	0			rule
 subbranchial	0		Degree=Pos	dema	0	subbranchial	a	moby_reverse
 subbreed	0		Number=Sing	dema	0	subbreed	n	moby_reverse
@@ -955,8 +955,8 @@ subduction	0	oewn-subduction-n	Number=Sing	dema	0			oewn_form
 subductions	0	oewn-subduction-n	Number=Plur	dema	0			rule
 subducts	0		Person=3+Tense=Pres	dema	0	subduct	v	rule
 subdue	0	oewn-subdue-v	VerbForm=Inf	dema	0			oewn_form
-subdued	0	oewn-subdued-a	Degree=Pos	dema	0			oewn_form
-subdued	1	oewn-subdue-v	Tense=Past+VerbForm=Part	dema	0			rule
+subdued	0	oewn-subdue-v	Tense=Past+VerbForm=Part	dema	0			rule
+subdued	1	oewn-subdued-a	Degree=Pos	dema	0			oewn_form
 subduedly	0		Degree=Pos	dema	0	subduedly	r	moby_reverse
 subduedness	0	oewn-subduedness-n	Number=Sing	dema	0			oewn_form
 subduednesses	0	oewn-subduedness-n	Number=Plur	dema	0			rule
@@ -1659,8 +1659,8 @@ submental	0		Degree=Pos	dema	0	submental	a	moby_reverse
 submenu	0	oewn-submenu-n	Number=Sing	dema	0			oewn_form
 submenus	0	oewn-submenu-n	Number=Plur	dema	0			rule
 submerge	0	oewn-submerge-v	VerbForm=Inf	dema	0			oewn_form
-submerged	0	oewn-submerged-a	Degree=Pos	dema	0			oewn_form
-submerged	1	oewn-submerge-v	Tense=Past+VerbForm=Part	dema	0			rule
+submerged	0	oewn-submerge-v	Tense=Past+VerbForm=Part	dema	0			rule
+submerged	1	oewn-submerged-a	Degree=Pos	dema	0			oewn_form
 submergence	0	oewn-submergence-n	Number=Sing	dema	0			oewn_form
 submergences	0	oewn-submergence-n	Number=Plur	dema	0			rule
 submerges	0	oewn-submerge-v	Person=3+Tense=Pres	dema	0			rule
@@ -1767,8 +1767,8 @@ subnote	0		Number=Sing	dema	0	subnote	n	moby_reverse
 subnotes	0		Number=Plur	dema	0	subnote	n	rule
 subnotochordal	0		Degree=Pos	dema	0	subnotochordal	a	moby_reverse
 subnucleus	0		Number=Sing	dema	0	subnucleus	n	moby_reverse
-subnucleuses	0		Number=Sing	dema	0	subnucleuses	n	moby_reverse
-subnucleuses	1		Number=Plur	dema	0	subnucleus	n	rule
+subnucleuses	0		Number=Plur	dema	0	subnucleus	n	rule
+subnucleuses	1		Number=Sing	dema	0	subnucleuses	n	moby_reverse
 subnude	0		Degree=Pos	dema	0	subnude	a	moby_reverse
 subnumber	0		Number=Sing	dema	0	subnumber	n	moby_reverse
 subnumbers	0		Number=Plur	dema	0	subnumber	n	rule
@@ -3099,9 +3099,9 @@ suckers	0	oewn-sucker-n	Number=Plur	dema	0			rule
 suckfish	0		Number=Sing	dema	0	suckfish	n	moby_reverse
 suckfish	1		VerbForm=Inf	dema	0	suckfish	v	moby_reverse
 suckfishes	0		Number=Plur	dema	0	suckfish	n	rule
-sucking	0		Degree=Pos	dema	0	sucking	a	moby_reverse
-sucking	1	oewn-sucking-n	Number=Sing	dema	0			oewn_form
-sucking	2	oewn-suck-v	VerbForm=Ger	dema	0			rule
+sucking	0	oewn-suck-v	VerbForm=Ger	dema	0			rule
+sucking	1		Degree=Pos	dema	0	sucking	a	moby_reverse
+sucking	2	oewn-sucking-n	Number=Sing	dema	0			oewn_form
 sucking fish	0	oewn-sucking_fish-n	Number=Sing	dema	0			oewn_form
 sucking fishes	0	oewn-sucking_fish-n	Number=Plur	dema	0			rule
 sucking in	0	oewn-suck_in-v	VerbForm=Ger	dema	0			rule
@@ -3118,13 +3118,13 @@ suckled	1	oewn-suckled-a	Degree=Pos	dema	0			oewn_form
 suckler	0		Number=Sing	dema	0	suckler	n	moby_reverse
 sucklers	0		Number=Plur	dema	0	suckler	n	rule
 suckles	0	oewn-suckle-v	Person=3+Tense=Pres	dema	0			rule
-suckling	0	oewn-suckling-n	Number=Plur	dema	0			agid
-suckling	1	oewn-suckling-n	Number=Sing	dema	0			oewn_form
-suckling	2	oewn-suckle-v	VerbForm=Ger	dema	0			rule
+suckling	0	oewn-suckling-n	Number=Sing	dema	0			oewn_form
+suckling	1	oewn-suckle-v	VerbForm=Ger	dema	0			rule
 suckling pig	0	oewn-suckling_pig-n	Number=Sing	dema	0			oewn_form
 suckling pigs	0	oewn-suckling_pig-n	Number=Plur	dema	0			rule
 suckling reflex	0	oewn-suckling_reflex-n	Number=Sing	dema	0			oewn_form
 suckling reflexes	0	oewn-suckling_reflex-n	Number=Plur	dema	0			rule
+sucklings	0	oewn-suckling-n	Number=Plur	dema	0			rule
 sucks	0	dema-sucks-i		dema	0			carried
 sucks in	0	oewn-suck_in-v	Person=3+Tense=Pres	dema	0			rule
 sucks out	0	oewn-suck_out-v	Person=3+Tense=Pres	dema	0			rule
@@ -3604,8 +3604,8 @@ sulfuring	0	oewn-sulfur-v	VerbForm=Ger	dema	0			rule
 sulfurization	0		Number=Sing	dema	0	sulfurization	n	moby_reverse
 sulfurizations	0		Number=Plur	dema	0	sulfurization	n	rule
 sulfurize	0		VerbForm=Inf	dema	0	sulfurize	v	moby_reverse
-sulfurized	0	oewn-sulfurized-a	Degree=Pos	dema	0			oewn_form
-sulfurized	1		Tense=Past+VerbForm=Part	dema	0	sulfurize	v	rule
+sulfurized	0		Tense=Past+VerbForm=Part	dema	0	sulfurize	v	rule
+sulfurized	1	oewn-sulfurized-a	Degree=Pos	dema	0			oewn_form
 sulfurizes	0		Person=3+Tense=Pres	dema	0	sulfurize	v	rule
 sulfurizing	0		VerbForm=Ger	dema	0	sulfurize	v	rule
 sulfurous	0	oewn-sulfurous-a	Degree=Pos	dema	0			oewn_form
@@ -3946,8 +3946,8 @@ summoning	0	oewn-summon-v	VerbForm=Ger	dema	0			rule
 summoning	1	oewn-summoning-n	Number=Sing	dema	0			oewn_form
 summonings	0	oewn-summoning-n	Number=Plur	dema	0			rule
 summons	0	oewn-summons-n	Number=Sing	dema	0			oewn_form
-summons	1	oewn-summons-v	VerbForm=Inf	dema	0			oewn_form
-summons	2	oewn-summon-v	Person=3+Tense=Pres	dema	0			rule
+summons	1	oewn-summon-v	Person=3+Tense=Pres	dema	0			rule
+summons	2	oewn-summons-v	VerbForm=Inf	dema	0			oewn_form
 summonsed	0	oewn-summons-v	Tense=Past+VerbForm=Part	dema	0			rule
 summonses	0	oewn-summons-n	Number=Plur	dema	0			rule
 summonses	1	oewn-summons-v	Person=3+Tense=Pres	dema	0			rule
@@ -4051,8 +4051,8 @@ sunbathed	0	oewn-sunbathe-v	Tense=Past+VerbForm=Part	dema	0			rule
 sunbather	0	oewn-sunbather-n	Number=Sing	dema	0			oewn_form
 sunbathers	0	oewn-sunbather-n	Number=Plur	dema	0			rule
 sunbathes	0	oewn-sunbathe-v	Person=3+Tense=Pres	dema	0			rule
-sunbathing	0		Number=Sing	dema	0	sunbathing	n	moby_reverse
-sunbathing	1	oewn-sunbathe-v	VerbForm=Ger	dema	0			rule
+sunbathing	0	oewn-sunbathe-v	VerbForm=Ger	dema	0			rule
+sunbathing	1		Number=Sing	dema	0	sunbathing	n	moby_reverse
 sunbathings	0		Number=Plur	dema	0	sunbathing	n	rule
 sunbeam	0	oewn-sunbeam-n	Number=Sing	dema	0			oewn_form
 sunbeamed	0		Degree=Pos	dema	0	sunbeamed	a	moby_reverse
@@ -4145,8 +4145,8 @@ sunflowers	0	oewn-sunflower-n	Number=Plur	dema	0			rule
 sung	0	oewn-sing-v	VerbForm=Part	dema	0			hand
 sung	1		Degree=Pos	dema	0	sung	a	moby_reverse
 sunglass	0	oewn-sunglass-n	Number=Sing	dema	0			oewn_form
-sunglasses	0	oewn-sunglasses-n	Number=Sing	dema	0			oewn_form
-sunglasses	1	oewn-sunglass-n	Number=Plur	dema	0			rule
+sunglasses	0	oewn-sunglass-n	Number=Plur	dema	0			rule
+sunglasses	1	oewn-sunglasses-n	Number=Sing	dema	0			oewn_form
 sunglow	0		Number=Sing	dema	0	sunglow	n	moby_reverse
 sunglows	0		Number=Plur	dema	0	sunglow	n	rule
 sungrebe	0		Number=Sing	dema	0	sungrebe	n	moby_reverse
@@ -4412,8 +4412,8 @@ superanimal	0		Degree=Pos	dema	0	superanimal	a	moby_reverse
 superanimalities	0		Number=Plur	dema	0	superanimality	n	rule
 superanimality	0		Number=Sing	dema	0	superanimality	n	moby_reverse
 superannuate	0	oewn-superannuate-v	VerbForm=Inf	dema	0			oewn_form
-superannuated	0	oewn-superannuated-a	Degree=Pos	dema	0			oewn_form
-superannuated	1	oewn-superannuate-v	Tense=Past+VerbForm=Part	dema	0			rule
+superannuated	0	oewn-superannuate-v	Tense=Past+VerbForm=Part	dema	0			rule
+superannuated	1	oewn-superannuated-a	Degree=Pos	dema	0			oewn_form
 superannuates	0	oewn-superannuate-v	Person=3+Tense=Pres	dema	0			rule
 superannuating	0	oewn-superannuate-v	VerbForm=Ger	dema	0			rule
 superannuation	0	oewn-superannuation-n	Number=Sing	dema	0			oewn_form
@@ -5217,13 +5217,13 @@ superimpersonally	0		Degree=Pos	dema	0	superimpersonally	r	moby_reverse
 superimplied	0		VerbForm=Inf	dema	0	superimplied	v	moby_reverse
 superimplied	1		Tense=Past+VerbForm=Part	dema	0	superimply	v	rule
 superimply	0		VerbForm=Inf	dema	0	superimply	v	moby_reverse
-superimplying	0		VerbForm=Inf	dema	0	superimplying	v	moby_reverse
-superimplying	1		VerbForm=Ger	dema	0	superimply	v	rule
+superimplying	0		VerbForm=Ger	dema	0	superimply	v	rule
+superimplying	1		VerbForm=Inf	dema	0	superimplying	v	moby_reverse
 superimportant	0		Degree=Pos	dema	0	superimportant	a	moby_reverse
 superimportantly	0		Degree=Pos	dema	0	superimportantly	r	moby_reverse
 superimpose	0	oewn-superimpose-v	VerbForm=Inf	dema	0			oewn_form
-superimposed	0	oewn-superimposed-a	Degree=Pos	dema	0			oewn_form
-superimposed	1	oewn-superimpose-v	Tense=Past+VerbForm=Part	dema	0			rule
+superimposed	0	oewn-superimpose-v	Tense=Past+VerbForm=Part	dema	0			rule
+superimposed	1	oewn-superimposed-a	Degree=Pos	dema	0			oewn_form
 superimposes	0	oewn-superimpose-v	Person=3+Tense=Pres	dema	0			rule
 superimposing	0	oewn-superimpose-v	VerbForm=Ger	dema	0			rule
 superimposition	0		Number=Sing	dema	0	superimposition	n	moby_reverse
@@ -5814,8 +5814,8 @@ superrational	0		Degree=Pos	dema	0	superrational	a	moby_reverse
 superreaction	0		Number=Sing	dema	0	superreaction	n	moby_reverse
 superreactions	0		Number=Plur	dema	0	superreaction	n	rule
 superrefine	0		VerbForm=Inf	dema	0	superrefine	v	moby_reverse
-superrefined	0		Degree=Pos	dema	0	superrefined	a	moby_reverse
-superrefined	1		Tense=Past+VerbForm=Part	dema	0	superrefine	v	rule
+superrefined	0		Tense=Past+VerbForm=Part	dema	0	superrefine	v	rule
+superrefined	1		Degree=Pos	dema	0	superrefined	a	moby_reverse
 superrefinement	0		Number=Sing	dema	0	superrefinement	n	moby_reverse
 superrefinements	0		Number=Plur	dema	0	superrefinement	n	rule
 superrefines	0		Person=3+Tense=Pres	dema	0	superrefine	v	rule
@@ -5966,8 +5966,8 @@ supersensibly	0		Degree=Pos	dema	0	supersensibly	r	moby_reverse
 supersensitisation	0		Number=Sing	dema	0	supersensitisation	n	moby_reverse
 supersensitisations	0		Number=Plur	dema	0	supersensitisation	n	rule
 supersensitise	0		VerbForm=Inf	dema	0	supersensitise	v	moby_reverse
-supersensitised	0	oewn-supersensitised-a	Degree=Pos	dema	0			oewn_form
-supersensitised	1		Tense=Past+VerbForm=Part	dema	0	supersensitise	v	rule
+supersensitised	0		Tense=Past+VerbForm=Part	dema	0	supersensitise	v	rule
+supersensitised	1	oewn-supersensitised-a	Degree=Pos	dema	0			oewn_form
 supersensitiser	0		Number=Sing	dema	0	supersensitiser	n	moby_reverse
 supersensitisers	0		Number=Plur	dema	0	supersensitiser	n	rule
 supersensitises	0		Person=3+Tense=Pres	dema	0	supersensitise	v	rule
@@ -5975,8 +5975,8 @@ supersensitising	0		VerbForm=Ger	dema	0	supersensitise	v	rule
 supersensitive	0	oewn-supersensitive-a	Degree=Pos	dema	0			oewn_form
 supersensitiveness	0		Number=Sing	dema	0	supersensitiveness	n	moby_reverse
 supersensitize	0		VerbForm=Inf	dema	0	supersensitize	v	moby_reverse
-supersensitized	0	oewn-supersensitized-a	Degree=Pos	dema	0			oewn_form
-supersensitized	1		Tense=Past+VerbForm=Part	dema	0	supersensitize	v	rule
+supersensitized	0		Tense=Past+VerbForm=Part	dema	0	supersensitize	v	rule
+supersensitized	1	oewn-supersensitized-a	Degree=Pos	dema	0			oewn_form
 supersensitizes	0		Person=3+Tense=Pres	dema	0	supersensitize	v	rule
 supersensitizing	0		VerbForm=Ger	dema	0	supersensitize	v	rule
 supersensual	0		Degree=Pos	dema	0	supersensual	a	moby_reverse
@@ -6291,8 +6291,8 @@ supervise	0	oewn-supervise-v	VerbForm=Inf	dema	0			oewn_form
 supervised	0	oewn-supervise-v	Tense=Past+VerbForm=Part	dema	0			rule
 supervised	1	oewn-supervised-a	Degree=Pos	dema	0			oewn_form
 supervises	0	oewn-supervise-v	Person=3+Tense=Pres	dema	0			rule
-supervising	0	oewn-supervising-n	Number=Sing	dema	0			oewn_form
-supervising	1	oewn-supervise-v	VerbForm=Ger	dema	0			rule
+supervising	0	oewn-supervise-v	VerbForm=Ger	dema	0			rule
+supervising	1	oewn-supervising-n	Number=Sing	dema	0			oewn_form
 supervisings	0	oewn-supervising-n	Number=Plur	dema	0			rule
 supervision	0	oewn-supervision-n	Number=Sing	dema	0			oewn_form
 supervisions	0	oewn-supervision-n	Number=Plur	dema	0			rule
@@ -6361,8 +6361,8 @@ supperless	0	oewn-supperless-a	Degree=Pos	dema	0			oewn_form
 suppers	0	oewn-supper-n	Number=Plur	dema	0			rule
 suppertime	0	oewn-suppertime-n	Number=Sing	dema	0			oewn_form
 suppertimes	0	oewn-suppertime-n	Number=Plur	dema	0			rule
-supping	0	oewn-supping-n	Number=Sing	dema	0			oewn_form
-supping	1	oewn-sup-v	VerbForm=Ger	dema	0			oewn_form
+supping	0	oewn-sup-v	VerbForm=Ger	dema	0			oewn_form
+supping	1	oewn-supping-n	Number=Sing	dema	0			oewn_form
 suppings	0	oewn-supping-n	Number=Plur	dema	0			rule
 supplant	0	oewn-supplant-v	VerbForm=Inf	dema	0			oewn_form
 supplantation	0		Number=Sing	dema	0	supplantation	n	moby_reverse
@@ -6486,9 +6486,9 @@ supported	0	oewn-support-v	Tense=Past+VerbForm=Part	dema	0			rule
 supported	1	oewn-supported-a	Degree=Pos	dema	0			oewn_form
 supporter	0	oewn-supporter-n	Number=Sing	dema	0			oewn_form
 supporters	0	oewn-supporter-n	Number=Plur	dema	0			rule
-supporting	0	oewn-supporting-a	Degree=Pos	dema	0			oewn_form
-supporting	1	oewn-supporting-n	Number=Sing	dema	0			oewn_form
-supporting	2	oewn-support-v	VerbForm=Ger	dema	0			rule
+supporting	0	oewn-support-v	VerbForm=Ger	dema	0			rule
+supporting	1	oewn-supporting-a	Degree=Pos	dema	0			oewn_form
+supporting	2	oewn-supporting-n	Number=Sing	dema	0			oewn_form
 supporting fire	0	oewn-supporting_fire-n	Number=Sing	dema	0			oewn_form
 supporting fires	0	oewn-supporting_fire-n	Number=Plur	dema	0			rule
 supporting players	0	oewn-supporting_players-n	Number=Sing	dema	0			oewn_form
@@ -6753,8 +6753,8 @@ surfacers	0		Number=Plur	dema	0	surfacer	n	rule
 surfaces	0	oewn-surface-n	Number=Plur	dema	0			rule
 surfaces	1	oewn-surface-v	Person=3+Tense=Pres	dema	0			rule
 surfaces mine	0	oewn-surface_mine-v	Person=3+Tense=Pres	dema	0			rule
-surfacing	0	oewn-surfacing-n	Number=Sing	dema	0			oewn_form
-surfacing	1	oewn-surface-v	VerbForm=Ger	dema	0			rule
+surfacing	0	oewn-surface-v	VerbForm=Ger	dema	0			rule
+surfacing	1	oewn-surfacing-n	Number=Sing	dema	0			oewn_form
 surfacing mine	0	oewn-surface_mine-v	VerbForm=Ger	dema	0			rule
 surfacings	0	oewn-surfacing-n	Number=Plur	dema	0			rule
 surfactant	0	oewn-surfactant-n	Number=Sing	dema	0			oewn_form
@@ -6908,10 +6908,10 @@ surpass	0	oewn-surpass-v	VerbForm=Inf	dema	0			oewn_form
 surpassable	0		Degree=Pos	dema	0	surpassable	a	moby_reverse
 surpassed	0	oewn-surpass-v	Tense=Past+VerbForm=Part	dema	0			rule
 surpasses	0	oewn-surpass-v	Person=3+Tense=Pres	dema	0			rule
-surpassing	0	oewn-surpassing-a	Degree=Pos	dema	0			oewn_form
-surpassing	1		Degree=Pos	dema	0	surpassing	r	moby_reverse
-surpassing	2		Number=Sing	dema	0	surpassing	n	moby_reverse
-surpassing	3	oewn-surpass-v	VerbForm=Ger	dema	0			rule
+surpassing	0	oewn-surpass-v	VerbForm=Ger	dema	0			rule
+surpassing	1	oewn-surpassing-a	Degree=Pos	dema	0			oewn_form
+surpassing	2		Degree=Pos	dema	0	surpassing	r	moby_reverse
+surpassing	3		Number=Sing	dema	0	surpassing	n	moby_reverse
 surpassingly	0	oewn-surpassingly-r	Degree=Pos	dema	0			oewn_form
 surpassingness	0		Number=Sing	dema	0	surpassingness	n	moby_reverse
 surplice	0	oewn-surplice-n	Number=Sing	dema	0			oewn_form
@@ -7004,9 +7004,9 @@ surrounded	1	oewn-surrounded-a	Degree=Pos	dema	0			oewn_form
 surroundedly	0		Degree=Pos	dema	0	surroundedly	r	moby_reverse
 surrounder	0		Number=Sing	dema	0	surrounder	n	moby_reverse
 surrounders	0		Number=Plur	dema	0	surrounder	n	rule
-surrounding	0		Number=Sing	dema	0	surrounding	n	moby_reverse
-surrounding	1	oewn-surrounding-a	Degree=Pos	dema	0			oewn_form
-surrounding	2	oewn-surround-v	VerbForm=Ger	dema	0			rule
+surrounding	0	oewn-surround-v	VerbForm=Ger	dema	0			rule
+surrounding	1		Number=Sing	dema	0	surrounding	n	moby_reverse
+surrounding	2	oewn-surrounding-a	Degree=Pos	dema	0			oewn_form
 surroundings	0	oewn-surroundings-n	Number=Sing	dema	0			oewn_form
 surroundings	1		Number=Plur	dema	0	surrounding	n	rule
 surrounds	0	oewn-surround-v	Person=3+Tense=Pres	dema	0			rule
@@ -7248,8 +7248,8 @@ suture	1	oewn-suture-v	VerbForm=Inf	dema	0			oewn_form
 sutured	0	oewn-suture-v	Tense=Past+VerbForm=Part	dema	0			rule
 sutures	0	oewn-suture-n	Number=Plur	dema	0			rule
 sutures	1	oewn-suture-v	Person=3+Tense=Pres	dema	0			rule
-suturing	0	oewn-suturing-n	Number=Sing	dema	0			oewn_form
-suturing	1	oewn-suture-v	VerbForm=Ger	dema	0			rule
+suturing	0	oewn-suture-v	VerbForm=Ger	dema	0			rule
+suturing	1	oewn-suturing-n	Number=Sing	dema	0			oewn_form
 suturings	0	oewn-suturing-n	Number=Plur	dema	0			rule
 suzerain	0	oewn-suzerain-n	Number=Sing	dema	0			oewn_form
 suzerains	0	oewn-suzerain-n	Number=Plur	dema	0			rule
