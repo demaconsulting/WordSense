@@ -191,13 +191,27 @@ internal static class FormAuditor
     public static Dictionary<string, string> ReadVerdicts(string path)
     {
         var result = new Dictionary<string, string>(StringComparer.Ordinal);
+        var number = 0;
         foreach (var line in File.ReadLines(path))
         {
-            var p = line.Split('\t');
-            if (p.Length >= 5)
+            number++;
+            if (line.Length == 0)
             {
-                result[Key(p[0], p[1], p[2], p[3])] = p[4];
+                continue;
             }
+
+            var p = line.Split('\t');
+            if (p.Length < 5 || p[4] is not ("ok" or "bad" or "skip"))
+            {
+                throw new InvalidDataException($"The verdict file '{path}' is malformed at line {number}: expected spelling, lemma, part of speech, features and a verdict of ok, bad or skip.");
+            }
+
+            result[Key(p[0], p[1], p[2], p[3])] = p[4];
+        }
+
+        if (result.Count == 0)
+        {
+            throw new InvalidDataException($"The verdict file '{path}' holds no verdict.");
         }
 
         return result;
@@ -217,15 +231,24 @@ internal static class FormAuditor
             return result;
         }
 
+        var number = 0;
         foreach (var line in File.ReadLines(path))
         {
-            var p = line.Split('\t');
-            if (p.Length >= 4 && !line.StartsWith('#'))
+            number++;
+            if (line.Length == 0 || line.StartsWith('#'))
             {
-                // An optional sixth column restricts the verdict to one feature set
-                var features = p.Length >= 6 && p[5].Length > 0 ? "\t" + p[5] : string.Empty;
-                result[$"{p[0]}\t{p[1]}\t{p[2]}{features}"] = p[3];
+                continue;
             }
+
+            var p = line.Split('\t');
+            if (p.Length < 4 || p[3] is not ("valid" or "invalid"))
+            {
+                throw new InvalidDataException($"The adjudications file '{path}' is malformed at line {number}: expected spelling, lemma, part of speech and a verdict of valid or invalid.");
+            }
+
+            // An optional sixth column restricts the verdict to one feature set
+            var features = p.Length >= 6 && p[5].Length > 0 ? "\t" + p[5] : string.Empty;
+            result[$"{p[0]}\t{p[1]}\t{p[2]}{features}"] = p[3];
         }
 
         return result;
@@ -249,7 +272,11 @@ internal static class FormAuditor
             int n = 0, disagreed = 0, errors = 0;
             foreach (var row in group)
             {
-                var verdict = verdicts.GetValueOrDefault(Key(row.Spelling, row.Lemma, row.Pos, row.Features), "skip");
+                if (!verdicts.TryGetValue(Key(row.Spelling, row.Lemma, row.Pos, row.Features), out var verdict))
+                {
+                    throw new InvalidDataException($"The oracle gave no verdict for the sampled row '{row.Spelling}' ({row.Lemma}, {row.Pos}, {row.Features}).");
+                }
+
                 var adjudicated = adjudications.GetValueOrDefault($"{row.Spelling}\t{row.Lemma}\t{row.Pos}\t{row.Features}") ?? adjudications.GetValueOrDefault($"{row.Spelling}\t{row.Lemma}\t{row.Pos}");
                 if (verdict == "skip" && adjudicated is null)
                 {
@@ -275,10 +302,21 @@ internal static class FormAuditor
             results.Add(new StratumResult(group.Key, population.GetValueOrDefault(group.Key), n, disagreed, errors));
         }
 
+        // A generated stratum that has rows but none checked proves nothing: the gate fails instead of skipping it
+        var unaudited = population.Where(p => p.Value > 0 && IsGenerated(p.Key) && !results.Any(r => r.Stratum == p.Key && r.Checked > 0)).Select(p => p.Key).ToList();
+        foreach (var stratum in unaudited)
+        {
+            failures.Add($"{stratum}\tno row was checked");
+            if (!results.Any(r => r.Stratum == stratum))
+            {
+                results.Add(new StratumResult(stratum, population[stratum], 0, 0, 0));
+            }
+        }
+
         var generated = results.Where(r => IsGenerated(r.Stratum) && r.Checked > 0).ToList();
         var total = generated.Sum(r => (double)r.Population);
         var weighted = total == 0 ? 0 : generated.Sum(r => r.Rate * r.Population) / total;
-        return new AuditResult(results, failures, weighted, generated.All(r => r.Rate < maxError));
+        return new AuditResult(results, failures, weighted, unaudited.Count == 0 && generated.All(r => r.Rate < maxError));
     }
 
     /// <summary>

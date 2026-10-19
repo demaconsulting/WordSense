@@ -50,7 +50,7 @@ by a hash of its text, is development). The holdout and the real-text sentences 
 
 `evaluate basic` prints the same comparison table on every run, so that two runs can be compared line by line. The
 reference rows are fixed values of earlier measurements; the first row is the current table. The table
-`basic.bin` is 85,237 bytes (83 KiB), SHA-256 `EE8FCBEA97188A0D6C687F601C1BF237E28DC2A2945B45A4C9CD2B0B6B0435FC`.
+`basic.bin` is 88,863 bytes (87 KiB), SHA-256 `041468213F10212E55946CC701B61532434609B2131DCD496470BDFD0DD36F22`.
 
 <!-- markdownlint-disable MD013 -->
 

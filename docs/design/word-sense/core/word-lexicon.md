@@ -23,8 +23,10 @@ possible analyses. Every model starts from it, and a word with one sense never n
   so case-sensitive entries win over the folded form.
 - Possessive fallback: when a spelling ending in `'s` or `s'` (straight or typographic apostrophe) is not stored and the
   stem is known, the lookup returns the analyses of the stem with `Poss=Yes` added to the features (alphabetical order
-  kept). Contractions (`don't`, `it's`) are a closed list of stored words and never take this path. The `'s` is a
-  separate token by the tokenizer contract, so the fallback serves callers that look up whole spellings.
+  kept). Contractions (`don't`, `it's`) are a closed list of stored words and never take this path. The reference
+  tokenizer keeps an apostrophe between letters inside the word, so `dog's` reaches the lookup as one token, but a
+  trailing apostrophe is a token of its own (`dogs'` becomes `dogs` and `'`); a caller that wants the plural possessive
+  resolved passes `dogs'` as one word.
 - The legacy accessors for the shipped model weights (`View`, `MeaningOf`, `TrainedLemmaOf`, `ClassesOf`) are removed: the
   weights are keyed by class id and resolved against the image at load.
 

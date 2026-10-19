@@ -334,4 +334,34 @@ public sealed class ProgramTests : IDisposable
         Assert.Contains("| holdout | 1 |", output, StringComparison.Ordinal);
         Assert.Contains("- Weights size:", await File.ReadAllTextAsync(target, TestContext.Current.CancellationToken), StringComparison.Ordinal);
     }
+
+    /// <summary>
+    ///     The forms audit rejects a sample size that would leave no row to check.
+    /// </summary>
+    /// <param name="sample">The sample size.</param>
+    [Theory]
+    [InlineData("0")]
+    [InlineData("-5")]
+    public async Task WordSenseBuilder_Program_AuditForms_NonPositiveSample_Fails(string sample)
+    {
+        var (code, _, error) = await RunAsync("audit-forms", "--sample", sample);
+
+        Assert.Equal(1, code);
+        Assert.Contains("--sample", error, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The forms audit rejects an empty oracle file instead of treating every row as skipped.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseBuilder_Program_AuditForms_EmptyOracleFile_Fails()
+    {
+        var oracle = Path.Combine(_dir.Root, "oracle.tsv");
+        await File.WriteAllTextAsync(oracle, string.Empty, TestContext.Current.CancellationToken);
+
+        var (code, _, error) = await RunAsync("audit-forms", "--oracle", oracle);
+
+        Assert.Equal(1, code);
+        Assert.Contains("no verdict", error, StringComparison.Ordinal);
+    }
 }

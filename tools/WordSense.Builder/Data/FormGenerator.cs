@@ -403,13 +403,21 @@ internal static partial class FormGenerator
             return true;
         }
 
-        if (item.Provenance != "agid" && context.Attested.TryGetValue(low, out var lemmas) && lemmas.Contains(LemmaOf(context, item).ToLowerInvariant()))
+        if (item.Provenance != "agid" && context.Attested.TryGetValue(low, out var lemmas) && AttestsPos(lemmas, LemmaOf(context, item).ToLowerInvariant(), PosOf(context, item)))
         {
             return true;
         }
 
         // The form of the inflection database is corroborated by the dictionary listing the spelling itself
         return item.Provenance == "agid" && context.Moby.ContainsKey(low);
+    }
+
+    // The inflection database files the adverbs that inflect (soon, sooner) with the adjectives
+    // A form attests the lemma for a part of speech only under that part of speech of the database ("a" also marks the unlikely entries "a?")
+    private static bool AttestsPos(HashSet<string> attested, string lemma, string pos)
+    {
+        var agid = pos == "r" ? "a" : pos;
+        return attested.Contains(lemma + "/" + agid) || attested.Contains(lemma + "/" + agid + "?");
     }
 
     private static void Prune(Context context)
@@ -874,7 +882,7 @@ internal static partial class FormGenerator
                 {
                     // A primary form of the inflection database (abaci, aardwolves) is corroborated by the lemma it belongs to
                     // when it has the regular shape of a plural (monarchs); the unusual ones need a second source
-                    var plainShape = kind == "Plur" ? Plain(kind) && new[] { headLow + "s", headLow + "es", headLow[..^1] + "ies" }.Any(c => string.Equals(Inflect(entry, [c])[0], spelling, StringComparison.Ordinal)) : Plain(kind);
+                    var plainShape = kind == "Plur" ? Plain(kind) && new[] { headLow + "s", headLow + "es", headLow[..^1] + "ies" }.Any(c => string.Equals(Inflect(entry, [c])[0], spelling, StringComparison.Ordinal)) : Plain(kind) && inflectable && regular().Contains(spelling);
                     yield return (spelling, provenance, provenance == "agid" && fromAgid && plainShape);
                 }
             }

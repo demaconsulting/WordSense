@@ -93,7 +93,7 @@ public sealed class FormAuditorTests
     public void WordSenseBuilder_FormAuditor_Evaluate_SkippedRows_AreNotChecked()
     {
         var sample = new List<FormAuditor.Row> { Row("cats", "rule/entry"), Row("zzz", "rule/entry") };
-        var verdicts = new Dictionary<string, string> { [Key("cats")] = "ok" };
+        var verdicts = new Dictionary<string, string> { [Key("cats")] = "ok", [Key("zzz")] = "skip" };
         var result = FormAuditor.Evaluate(sample, new Dictionary<string, int> { ["rule/entry"] = 10 }, verdicts, [], 0.01);
         Assert.Equal(1, result.Strata[0].Checked);
     }
@@ -158,5 +158,97 @@ public sealed class FormAuditorTests
     public void WordSenseBuilder_FormAuditor_ReadAdjudications_NoFile_IsEmpty()
     {
         Assert.Empty(FormAuditor.ReadAdjudications(null));
+    }
+
+    /// <summary>
+    ///     A generated stratum with rows but no checked row fails the gate.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_FormAuditor_Evaluate_GeneratedStratumWithoutCheckedRows_Fails()
+    {
+        var sample = new List<FormAuditor.Row> { Row("cats", "rule/entry"), Row("dogs", "agid/entry") };
+        var verdicts = new Dictionary<string, string> { [Key("cats")] = "ok", [Key("dogs")] = "skip" };
+        var population = new Dictionary<string, int> { ["rule/entry"] = 10, ["agid/entry"] = 10, ["moby_reverse/surface"] = 5 };
+        var result = FormAuditor.Evaluate(sample, population, verdicts, [], 0.01);
+        Assert.False(result.Passed);
+        Assert.Contains(result.Failures, f => f.StartsWith("agid/entry", StringComparison.Ordinal));
+        Assert.Contains(result.Failures, f => f.StartsWith("moby_reverse/surface", StringComparison.Ordinal));
+    }
+
+    /// <summary>
+    ///     An empty sample cannot pass the gate while the data has generated rows.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_FormAuditor_Evaluate_EmptySample_Fails()
+    {
+        var result = FormAuditor.Evaluate([], new Dictionary<string, int> { ["rule/entry"] = 10 }, new Dictionary<string, string>(), [], 0.01);
+        Assert.False(result.Passed);
+    }
+
+    /// <summary>
+    ///     A sampled row that the oracle gave no verdict for is rejected.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_FormAuditor_Evaluate_MissingVerdict_Throws()
+    {
+        var sample = new List<FormAuditor.Row> { Row("cats", "rule/entry") };
+        Assert.Throws<InvalidDataException>(() => FormAuditor.Evaluate(sample, new Dictionary<string, int> { ["rule/entry"] = 10 }, new Dictionary<string, string>(), [], 0.01));
+    }
+
+    /// <summary>
+    ///     An empty verdict file is rejected.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_FormAuditor_ReadVerdicts_EmptyFile_Throws()
+    {
+        using var dir = new TestDirectory();
+        var path = Path.Combine(dir.Root, "oracle.tsv");
+        File.WriteAllText(path, string.Empty);
+        Assert.Throws<InvalidDataException>(() => FormAuditor.ReadVerdicts(path));
+    }
+
+    /// <summary>
+    ///     A malformed line or an unknown verdict of the oracle file is rejected.
+    /// </summary>
+    /// <param name="content">The file content.</param>
+    [Theory]
+    [InlineData("cats\tcat\tn\tNumber=Plur\n")]
+    [InlineData("cats\tcat\tn\tNumber=Plur\tmaybe\n")]
+    [InlineData("cats\tcat\tn\tNumber=Plur\tOK\n")]
+    public void WordSenseBuilder_FormAuditor_ReadVerdicts_MalformedLine_Throws(string content)
+    {
+        using var dir = new TestDirectory();
+        var path = Path.Combine(dir.Root, "oracle.tsv");
+        File.WriteAllText(path, content);
+        Assert.Throws<InvalidDataException>(() => FormAuditor.ReadVerdicts(path));
+    }
+
+    /// <summary>
+    ///     A well-formed oracle file is read.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_FormAuditor_ReadVerdicts_ValidFile_IsRead()
+    {
+        using var dir = new TestDirectory();
+        var path = Path.Combine(dir.Root, "oracle.tsv");
+        File.WriteAllText(path, "cats\tcat\tn\tNumber=Plur\tok\ndogz\tdog\tn\tNumber=Plur\tbad\nzzz\tz\tn\tNumber=Plur\tskip\n");
+        var read = FormAuditor.ReadVerdicts(path);
+        Assert.Equal(3, read.Count);
+        Assert.Equal("bad", read["dogz\tdog\tn\tNumber=Plur"]);
+    }
+
+    /// <summary>
+    ///     An unknown adjudication verdict or a malformed line is rejected.
+    /// </summary>
+    /// <param name="content">The file content.</param>
+    [Theory]
+    [InlineData("mongoes\tmongo\tn\tVALID\tnote\n")]
+    [InlineData("mongoes\tmongo\tn\n")]
+    public void WordSenseBuilder_FormAuditor_ReadAdjudications_BadVerdict_Throws(string content)
+    {
+        using var dir = new TestDirectory();
+        var path = Path.Combine(dir.Root, "adj.tsv");
+        File.WriteAllText(path, content);
+        Assert.Throws<InvalidDataException>(() => FormAuditor.ReadAdjudications(path));
     }
 }

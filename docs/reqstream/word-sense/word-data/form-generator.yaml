@@ -22,6 +22,7 @@ sections:
                   - WordSenseBuilder_FormGenerator_Data_RegularInflection_IsResolved
                   - WordSenseBuilder_FormGenerator_Data_AuditCorrections_AreApplied
                   - WordSenseBuilder_FormGenerator_Data_PhraseWithIrregularHead_HasNoRegularPast
+                  - WordSenseBuilder_FormGenerator_Data_AgidOnlyIrregularForm_IsNotShipped
 
               - id: WordSense-WordData-FormGenerator-Gerunds
                 title: >-

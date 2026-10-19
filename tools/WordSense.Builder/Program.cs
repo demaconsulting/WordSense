@@ -224,8 +224,19 @@ internal static class Program
         var sample = options.TryGetValue("sample", out var sm) ? int.Parse(sm, CultureInfo.InvariantCulture) : 300;
         var seed = options.TryGetValue("seed", out var sd) ? int.Parse(sd, CultureInfo.InvariantCulture) : 20240601;
         var maxError = options.TryGetValue("max-error", out var me) ? double.Parse(me, CultureInfo.InvariantCulture) : 0.01;
+        if (sample <= 0)
+        {
+            throw new ArgumentException("The --sample value must be a positive number of rows per stratum.");
+        }
+
+        if (!(maxError > 0 && maxError <= 1))
+        {
+            throw new ArgumentException("The --max-error value must be greater than 0 and at most 1.");
+        }
+
+        var supplied = options.TryGetValue("oracle", out var oracle) ? Data.FormAuditor.ReadVerdicts(oracle) : null;
         var (rows, population) = Data.FormAuditor.Select(data, sample, seed);
-        var verdicts = options.TryGetValue("oracle", out var oracle) ? Data.FormAuditor.ReadVerdicts(oracle) : Data.FormAuditor.RunOracle(repository, rows);
+        var verdicts = supplied ?? Data.FormAuditor.RunOracle(repository, rows);
         var adjudicationFile = options.TryGetValue("adjudications", out var aj) ? aj : Path.Combine(repository, Data.FormAuditor.AdjudicationsFile.Replace('/', Path.DirectorySeparatorChar));
         var result = Data.FormAuditor.Evaluate(rows, population, verdicts, Data.FormAuditor.ReadAdjudications(adjudicationFile), maxError);
         var text = Data.FormAuditor.Render(result, sample, seed, maxError);
@@ -237,7 +248,7 @@ internal static class Program
 
         if (!result.Passed)
         {
-            error.WriteLine($"The forms audit failed: a generated stratum has an error rate of {maxError:P2} or more.");
+            error.WriteLine($"The forms audit failed: a generated stratum has an error rate of {maxError:P2} or more, or no checked row.");
             return 1;
         }
 

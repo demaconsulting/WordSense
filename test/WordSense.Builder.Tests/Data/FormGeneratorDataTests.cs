@@ -122,4 +122,17 @@ public sealed class FormGeneratorDataTests
         Assert.Empty(Rows("bed active"));
         Assert.Empty(Rows("doed away with"));
     }
+
+    /// <summary>
+    ///     A form that only the inflection database lists and that is no regular inflection needs a second source: the AGID-only
+    ///     irregular forms are not shipped.
+    /// </summary>
+    /// <param name="spelling">The spelling.</param>
+    [Theory]
+    [InlineData("outdone")]
+    [InlineData("segueing")]
+    public void WordSenseBuilder_FormGenerator_Data_AgidOnlyIrregularForm_IsNotShipped(string spelling)
+    {
+        Assert.DoesNotContain(Rows(spelling), r => r[^1] == "agid");
+    }
 }

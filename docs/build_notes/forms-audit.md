@@ -15,7 +15,9 @@ check the row against our own sources (the OEWN entries and forms, AGID, the Mob
 decide: a real error is corrected in the generator or in `corpus/lexicon/form-corrections.tsv`, or the row is left out;
 a valid row (a Latin plural, a `-men` compound, a rare word the library lacks) is recorded as valid, with the source that
 decides it, in `tools/WordSense.Builder/audit/adjudications.tsv`. These verdicts are ours. A disagreement that is not
-adjudicated is an error. The report gives, for each stratum, the population, the rows checked (rows the library cannot
+adjudicated is an error. The command refuses a sample size below one, an empty or malformed oracle file, a verdict it does
+not know and a sampled row without an oracle verdict, and it fails when a generated stratum has rows but no checked row.
+The report gives, for each stratum, the population, the rows checked (rows the library cannot
 judge are left out), the disagreements, the errors, the error rate and its 95% Wilson interval. The command fails when
 the error rate of a generated stratum (`rule`, `rule_variant`, `agid`, `moby_reverse`) reaches 1%. The weighted rate is
 the error rate of the generated strata weighted by their population.
@@ -41,12 +43,13 @@ The 95% Wilson interval of 0 errors is 0% to 1.26% for 300 rows, 1.50% for 253, 
 (`rule` entry: 2.03% seed 20240601, 2.26% seed 99, 2.33% seed 7, 2.12% seed 2025, 2.15% seed 31337).
 
 The strata that are not gated have no error either: `hand` 0/300, `oewn_form` 0/300, `irregular_list` 0/128 and `carried`
-0/254 to 0/263 on every seed (95% upper bounds 1.26%, 1.26%, 2.91% and 1.49%). The checker disagreed with 53 to 75
+0/254 to 0/263 on every seed (95% upper bounds 1.26%, 1.26%, 2.91% and 1.49%). The checker disagreed with 53 to 73
 rows of `agid`, 30 to 39 of `hand`, 39 to 55 of `oewn_form`, 6 of `irregular_list`, 11 to 17 of `rule_variant`, 7 of
-`moby_reverse/entry` and 8 to 16 of `moby_reverse/surface` per seed; our verdicts found them valid (mostly Latin and
+`moby_reverse/entry` and 8 to 15 of `moby_reverse/surface` per seed; our verdicts found them valid (mostly Latin and
 Greek plurals, `-men` and `-women` compounds and irregular pasts that the library lacks).
 
-All 524 distinct disagreements of the five seeds were adjudicated by reading each row against our sources. Before the
+All distinct disagreements of the five seeds were adjudicated by reading each row against our sources (the
+`molochs` row that seed 7 picked after the last data change included). Before the
 corrections they held about two dozen real errors (and 79 more rows found by a sweep of the phrases): in the sample of
 seed 20240601 the gated strata had 1 error in 300 `agid` rows, 1 in 300 `rule_variant` rows and 1 in 263 `carried` rows,
 and the other seeds found more of the same kinds. The corrections are:
@@ -61,6 +64,10 @@ and the other seeds found more of the same kinds. The corrections are:
   (`co-ordinate`, `abye`); `unrip` doubles its consonant (`unripped`, not `unriped`); a phrase whose head is an
   irregular verb has no regular past (`goed ahead`, `doed away with`, `bed active`: 79 rows); and the override `cates`
   as a plural of the acronym CAT was removed.
+- Corroboration by the inflection database is keyed by lemma and part of speech, so a verb form of AGID no longer
+  corroborates a noun, adjective or adverb analysis of the same lemma, and an AGID form that is no regular inflection
+  (`outdone`, `segueing`) needs a second source: 91 analyses went, 3 came back as the plain base-word row of the
+  dictionary, and 47 spellings left the table.
 
 The five seeds are the regression gate: a change that adds invalid rows makes a new disagreement that has no
 adjudication and fails the gate. The self-adjudication of one reviewer is a limit of the method, and the strata that the
@@ -72,6 +79,7 @@ example `snuck`).
 
 ## Coverage cost
 
-Requiring two independent sources removed about 12,000 candidate rows; the table has 13,152 fewer spellings than before
-(378,652 to 365,500) and 413,616 to 400,302 analyses. Regular -s, -ed and -ing forms of real lemmas are kept, so the
+Requiring two independent sources removed about 12,000 candidate rows; the table has 13,199 fewer spellings than the
+first generator build without the requirement (378,652 to 365,453) and 13,402 fewer analyses (413,616 to 400,214).
+Regular -s, -ed and -ing forms of real lemmas are kept, so the
 common words stay resolved.
