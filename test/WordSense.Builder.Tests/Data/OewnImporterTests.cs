@@ -320,6 +320,99 @@ public sealed class OewnImporterTests : IDisposable
         Assert.True(result.Unchanged > 0);
     }
 
+    private const string CountsText = "bass%1:05:00:: 00000001 1 7\nbass%1:10:00:: 00000003 2 3\nunknown%1:00:00:: 00000999 1 4\n";
+
+    /// <summary>
+    ///     The count of a line arrives on the sense with that key; a line of no sense is counted and not written.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_OewnImporter_ImportCounts_JoinsOnSenseKey()
+    {
+        // Arrange
+        var data = DataFixture.ImportSlice(_dir);
+        var counts = _dir.Write("index.sense", CountsText);
+
+        // Act
+        var result = OewnImporter.ImportCounts(counts, data, null);
+        var rows = DataFixture.Rows(data, "sense_frequency");
+
+        // Assert
+        Assert.Equal(2, result.Counted);
+        Assert.Equal(1, result.Unmatched);
+        Assert.Contains(rows, r => r.SequenceEqual(["bass%1:05:00::", "7", "wn30"]));
+        Assert.Contains(rows, r => r.SequenceEqual(["bass%1:10:00::", "3", "wn30"]));
+        Assert.DoesNotContain(rows, r => r[0].StartsWith("unknown", StringComparison.Ordinal));
+        Assert.True(DataValidator.Validate(data).IsValid);
+    }
+
+    /// <summary>
+    ///     A sense that the counts file does not list has the count 0, never a missing row.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_OewnImporter_ImportCounts_SenseWithoutEntry_HasCountZero()
+    {
+        // Arrange
+        var data = DataFixture.ImportSlice(_dir);
+        var counts = _dir.Write("index.sense", CountsText);
+        var keys = DataFixture.Rows(data, "sense").Select(r => r[1]).Where(k => k.Length > 0).ToList();
+
+        // Act
+        var result = OewnImporter.ImportCounts(counts, data, null);
+        var rows = DataFixture.Rows(data, "sense_frequency");
+
+        // Assert
+        Assert.Equal(keys.Count, rows.Count);
+        Assert.Equal(keys.Count - 2, result.Zero);
+        Assert.Contains(rows, r => r.SequenceEqual(["fish%1:05:00::", "0", "wn30"]));
+        Assert.Equal(keys.Order(StringComparer.Ordinal), rows.Select(r => r[0]).Order(StringComparer.Ordinal));
+    }
+
+    /// <summary>
+    ///     A counts file whose SHA-256 is not the pin is rejected before anything is written.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_OewnImporter_ImportCounts_HashPin_IsChecked()
+    {
+        // Arrange
+        var data = DataFixture.ImportSlice(_dir);
+        var counts = _dir.Write("index.sense", CountsText);
+        var hash = Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(counts)));
+
+        // Act
+        var accepted = OewnImporter.ImportCounts(counts, data, hash.ToLowerInvariant());
+        Directory.Delete(Path.Join(data, "sense_frequency"), true);
+        var ex = Assert.Throws<InvalidDataException>(() => OewnImporter.ImportCounts(counts, data));
+
+        // Assert
+        Assert.Equal(2, accepted.Counted);
+        Assert.Contains("SHA-256", ex.Message, StringComparison.Ordinal);
+        Assert.False(Directory.Exists(Path.Join(data, "sense_frequency")));
+    }
+
+    /// <summary>
+    ///     A line that has not four fields, a count that is not a non-negative integer or a key that appears twice
+    ///     is rejected and nothing is written.
+    /// </summary>
+    [Theory]
+    [InlineData("bass%1:05:00:: 00000001 1\n")]
+    [InlineData("bass%1:05:00:: 00000001 1 many\n")]
+    [InlineData("bass%1:05:00:: 00000001 1 -3\n")]
+    [InlineData("bass%1:05:00:: 00000001 1 7\nbass%1:05:00:: 00000001 1 8\n")]
+    [InlineData("bass%1:05:00:: 00000001 1 7\n\n")]
+    public void WordSenseBuilder_OewnImporter_ImportCounts_MalformedLine_Throws(string text)
+    {
+        // Arrange
+        var data = DataFixture.ImportSlice(_dir);
+        var counts = _dir.Write("index.sense", text);
+
+        // Act
+        var ex = Assert.Throws<InvalidDataException>(() => OewnImporter.ImportCounts(counts, data, null));
+
+        // Assert
+        Assert.Contains("index.sense:", ex.Message, StringComparison.Ordinal);
+        Assert.False(Directory.Exists(Path.Join(data, "sense_frequency")));
+    }
+
     /// <summary>
     ///     Malformed XML is reported as invalid data.
     /// </summary>

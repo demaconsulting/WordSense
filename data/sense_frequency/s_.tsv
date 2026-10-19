@@ -1,0 +1,15 @@
+sense_key	tag_count	source
+s%1:07:00::	0	wn30
+s%1:10:00::	0	wn30
+s%1:10:01::	0	wn30
+s%1:23:00::	0	wn30
+s%1:24:00::	0	wn30
+s%1:27:00::	0	wn30
+s%1:28:00::	0	wn30
+s-shape%1:25:00::	0	wn30
+s-shaped%5:00:00:formed:00	0	wn30
+s.t.p.%1:23:00::	0	wn30
+s.u.v.%1:06:00::	0	wn30
+s/n%1:24:00::	0	wn30
+s_quark%1:17:00::	0	wn30
+s_wrench%1:06:00::	0	wn30

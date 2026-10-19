@@ -1,4 +1,8 @@
 synset_id	seq	text
+dema-syn-rah-i-1	1	The interjection "rah"; a project sense, because Open English WordNet has no interjection sense of this word.
+dema-syn-rats-i-1	1	The interjection "rats"; a project sense, because Open English WordNet has no interjection sense of this word.
+dema-syn-re-p-1	1	The preposition "re"; a project sense, because Open English WordNet has no preposition sense of this word.
+dema-syn-really-i-1	1	The interjection "really"; a project sense, because Open English WordNet has no interjection sense of this word.
 dema-syn-rebid-n-1	1	noun
 dema-syn-rebid-v-1	1	verb
 dema-syn-reboot-n-1	1	noun
@@ -10,7 +14,9 @@ dema-syn-redial-v-1	1	verb
 dema-syn-redirect-n-1	1	noun
 dema-syn-redo-n-1	1	noun
 dema-syn-redraft-v-1	1	verb
+dema-syn-reference-p-1	1	The preposition "reference"; a project sense, because Open English WordNet has no preposition sense of this word.
 dema-syn-refresh-n-1	1	noun
+dema-syn-regarding-p-1	1	The preposition "regarding"; a project sense, because Open English WordNet has no preposition sense of this word.
 dema-syn-regift-n-1	1	noun
 dema-syn-rehang-n-1	1	noun
 dema-syn-rehang-v-1	1	verb
@@ -31,6 +37,7 @@ dema-syn-resit-n-1	1	noun
 dema-syn-resit-v-1	1	verb
 dema-syn-respawn-n-1	1	noun
 dema-syn-respawn-v-1	1	verb
+dema-syn-respecting-p-1	1	The preposition "respecting"; a project sense, because Open English WordNet has no preposition sense of this word.
 dema-syn-respray-n-1	1	noun
 dema-syn-respray-v-1	1	verb
 dema-syn-restart-n-1	1	noun
@@ -42,6 +49,12 @@ dema-syn-reuse-n-1	1	noun
 dema-syn-revamp-n-1	1	noun
 dema-syn-revert-n-1	1	noun
 dema-syn-rewind-n-1	1	noun
+dema-syn-rhubarb-i-1	1	The interjection "rhubarb"; a project sense, because Open English WordNet has no interjection sense of this word.
+dema-syn-right-i-1	1	discourse marker that opens or redirects talk (Right, let us begin) or checks agreement (tag "right?")
+dema-syn-righto-i-1	1	The interjection "righto"; a project sense, because Open English WordNet has no interjection sense of this word.
+dema-syn-roger-i-1	1	The interjection "roger"; a project sense, because Open English WordNet has no interjection sense of this word.
+dema-syn-round-p-1	1	The preposition "round"; a project sense, because Open English WordNet has no preposition sense of this word.
+dema-syn-roundabout-p-1	1	The preposition "roundabout"; a project sense, because Open English WordNet has no preposition sense of this word.
 oewn-00002325-v	1	undergo the biomedical and metabolic processes of respiration by taking up oxygen and producing carbon monoxide
 oewn-00002573-v	1	breathe easily again, as after exertion or anxiety
 oewn-00006263-s	1	having a relation or being related

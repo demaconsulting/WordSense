@@ -38,6 +38,8 @@ counts are used under the WordNet license notice, which `data/PROVENANCE.md`, th
 - `ImportCounts(input, data, expectedSha256)`: checks the SHA-256 of the counts file against the pin before reading it,
   reads the `sense` table of `data`, joins the counts on the sense key and writes `sense_frequency` in sorted order.
   Returns the number of senses with a count, with count 0 and the number of unmatched lines.
+- `Import` also writes the empty `sense_label_map` table when it does not exist (an existing one holds published
+  decisions and is never touched).
 
 #### Error Handling
 

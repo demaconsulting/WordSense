@@ -133,26 +133,10 @@ sections:
           - WordSense-WordData-Groups
           - WordSense-WordData-Frequency
           - WordSense-WordData-ProjectSenses
-          - WordSense-WordData-LegacyMap
         tests:
           - WordSenseBuilder_DataEndToEnd_CommittedData_IsValid
           - WordSenseBuilder_DataCommands_ImportThenValidate_Succeeds
           - WordSenseBuilder_DataEndToEnd_CommittedData_HasSenseLabelsAndGroups
-
-      - id: WordSense-Lib-Migration
-        title: >-
-          The system shall publish, for every class id of the previous release, the group or sense that replaces it, so
-          that callers can move the ids they stored to the readable ids of this release.
-        tags: [system]
-        justification: |
-          The previous release identified senses by pronunciation and part-of-speech classes; callers that stored those
-          ids need a complete, published mapping rather than a silent change of meaning.
-        children:
-          - WordSense-WordData-LegacyMap
-          - WordSense-WordSenseBuilder-Appendix
-        tests:
-          - WordSenseBuilder_DataEndToEnd_CommittedData_LegacyMapCoversEveryRetiredClass
-          - WordSenseBuilder_Appendix_Generate_ListsLegacyClassMap
 
       - id: WordSense-Lib-Layered
         title: >-
@@ -345,7 +329,7 @@ sections:
         title: >-
           The documentation shall show a README usage sample whose code and output for each model are verified against
           the library, and an appendix that lists every trained lemma with its senses (id, group, OEWN key, gloss and
-          respelling), the forms of the lemma and the legacy class map, and is never stale.
+          respelling) and the forms of the lemma, and is never stale.
         tags: [system]
         justification: |
           A usage example that no longer compiles or prints something else misleads new users, and a hand-written

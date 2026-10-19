@@ -1,4 +1,8 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-pending-p-1		dema-pending-p	dema-syn-pending-p-1	1
+dema-per-d-1		dema-per-d	dema-syn-per-d-1	1
+dema-per-p-1		dema-per-p	dema-syn-per-p-1	1
+dema-perdie-i-1		dema-perdie-i	dema-syn-perdie-i-1	1
 oewn-pe--tsai__1.20.00..	pe-tsai%1:20:00::	oewn-pe-tsai-n	oewn-11899277-n	1
 oewn-pe__1.10.00..	pe%1:10:00::	oewn-pe-n	oewn-06851487-n	1
 oewn-pea--chick__1.05.00..	pea-chick%1:05:00::	oewn-pea-chick-n	oewn-01808702-n	1

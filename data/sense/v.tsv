@@ -1,4 +1,14 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-various-d-1		dema-various-d	dema-syn-various-d-1	1
+dema-vel-c-1		dema-vel-c	dema-syn-vel-c-1	1
+dema-versus-p-1		dema-versus-p	dema-syn-versus-p-1	1
+dema-via-p-1		dema-via-p	dema-syn-via-p-1	1
+dema-vice-p-1		dema-vice-p	dema-syn-vice-p-1	1
+dema-visard-p-1		dema-visard-p	dema-syn-visard-p-1	1
+dema-viva-i-1		dema-viva-i	dema-syn-viva-i-1	1
+dema-vive-i-1		dema-vive-i	dema-syn-vive-i-1	1
+dema-voetsek-i-1		dema-voetsek-i	dema-syn-voetsek-i-1	1
+dema-vroom-i-1		dema-vroom-i	dema-syn-vroom-i-1	1
 oewn-v--1__1.06.00..	v-1%1:06:00::	oewn-V-1-n	oewn-02933307-n	1
 oewn-v--8_juice__1.13.00..	v-8_juice%1:13:00::	oewn-V-8_juice-n	oewn-07941948-n	1
 oewn-v--day__1.28.00..	v-day%1:28:00::	oewn-V-day-n	oewn-15187687-n	1

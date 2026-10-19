@@ -45,6 +45,9 @@ internal enum PartitionKind
 
     /// <summary>By the lemma of the coarse class named in the column.</summary>
     Class,
+
+    /// <summary>By the lemma of the entry of the sense whose sense key is named in the column.</summary>
+    Key,
 }
 
 /// <summary>
@@ -420,6 +423,7 @@ internal sealed class DataSchema
             "sense" => PartitionKind.Sense,
             "synset" => PartitionKind.Synset,
             "class" => PartitionKind.Class,
+            "key" => PartitionKind.Key,
             var other => throw new SchemaException(by.Line, $"Unknown partition kind '{other}'."),
         };
         return (kind, kind == PartitionKind.None ? null : partition.Require("column").AsScalar());

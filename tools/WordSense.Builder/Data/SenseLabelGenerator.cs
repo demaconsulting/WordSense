@@ -1,0 +1,399 @@
+using System.Globalization;
+using System.Text;
+
+namespace WordSense.Builder.Data;
+
+/// <summary>
+///     One sense as the label generator sees it: the sense, its entry and its synset.
+/// </summary>
+/// <param name="SenseId">The sense id.</param>
+/// <param name="SenseKey">The sense key, empty for a project sense.</param>
+/// <param name="Lemma">The lemma of the entry of the sense.</param>
+/// <param name="Pos">The part of speech letter of the entry (a letter of the <c>pos</c> vocabulary).</param>
+/// <param name="TokenCount">The number of tokens of the lemma.</param>
+/// <param name="SynsetId">The synset of the sense.</param>
+internal sealed record LabelSense(string SenseId, string SenseKey, string Lemma, string Pos, int TokenCount, string SynsetId)
+{
+    /// <summary>
+    ///     Gets a value indicating whether the sense belongs to the inventory: a sense of a lemma of one token, or a
+    ///     project sense (a sense without a sense key).
+    /// </summary>
+    public bool InInventory => TokenCount == 1 || SenseKey.Length == 0;
+}
+
+/// <summary>
+///     The tables the label generator reads, already loaded.
+/// </summary>
+/// <param name="Senses">Every sense of the data.</param>
+/// <param name="Hypernyms">The hypernym synsets of a synset.</param>
+/// <param name="Labels">The existing rows of <c>sense_label</c> (sense id, label, origin).</param>
+/// <param name="RetiredIds">The old ids of <c>sense_label_map</c> (<c>lemma#label</c>).</param>
+/// <param name="Counts">The WordNet 3.0 tag count by sense key; a sense without a count has the count 0.</param>
+/// <param name="PosNames">The part of speech names by letter.</param>
+internal sealed record LabelInputs(
+    IReadOnlyList<LabelSense> Senses,
+    IReadOnlyDictionary<string, IReadOnlyList<string>> Hypernyms,
+    IReadOnlyList<string[]> Labels,
+    IReadOnlyCollection<string> RetiredIds,
+    IReadOnlyDictionary<string, int> Counts,
+    IReadOnlyDictionary<string, string> PosNames);
+
+/// <summary>
+///     The outcome of the label generation.
+/// </summary>
+/// <param name="Rows">The new <c>sense_label</c> rows (sense id, label, origin), in no particular order.</param>
+/// <param name="Suffixed">The labels that needed a numeric suffix.</param>
+/// <param name="Fallbacks">The labels that fell back to the part of speech name although the lemma and part of speech has several senses.</param>
+internal sealed record LabelOutput(IReadOnlyList<string[]> Rows, int Suffixed, int Fallbacks);
+
+/// <summary>
+///     The counts of a run of the label generator.
+/// </summary>
+/// <param name="Kept">The label rows that existed and were kept unchanged.</param>
+/// <param name="Generated">The label rows written for senses that had none.</param>
+/// <param name="Suffixed">The generated labels that needed a numeric suffix.</param>
+/// <param name="Fallbacks">The generated labels that fell back to the part of speech name.</param>
+/// <param name="DefaultGroups">The default groups written.</param>
+/// <param name="DefaultMembers">The senses placed in a default group.</param>
+internal sealed record LabelRun(int Kept, int Generated, int Suffixed, int Fallbacks, int DefaultGroups, int DefaultMembers)
+{
+    /// <summary>
+    ///     Renders the counts as one line.
+    /// </summary>
+    /// <returns>The summary line.</returns>
+    public string Render() => string.Create(
+        CultureInfo.InvariantCulture,
+        $"sense_label: {Kept} kept, {Generated} generated ({Suffixed} with a numeric suffix, {Fallbacks} by part of speech name); default groups: {DefaultGroups} groups of {DefaultMembers} senses.");
+}
+
+/// <summary>
+///     Gives every sense of the inventory that has no label a readable, deterministic label, and gives every lemma and
+///     part of speech that no curated group covers its default group.
+/// </summary>
+/// <remarks>
+///     <para>
+///     The public id of a sense is <c>lemma#label</c>. A label is the first usable slug of: the part of speech name
+///     (the only sense of its lemma and part of speech), the first synonym of the synset, the head lemma of the first
+///     hypernym, the part of speech name; a numeric suffix makes it unique among the labels of the lemma. Labels that
+///     exist, and the labels of the old ids of the id map, are never changed, removed or taken again. Every order that
+///     could change the result is fixed by the data (sense ids and synset ids by their UTF-8 bytes, the tag count),
+///     never by the order in which rows were read, so the same data always gives the same files.
+///     </para>
+///     <para>
+///     The type is stateless and thread-safe.
+///     </para>
+/// </remarks>
+internal static class SenseLabelGenerator
+{
+    /// <summary>The origin written for the label of a sense of Open English WordNet.</summary>
+    public const string OriginGenerated = "generated";
+
+    /// <summary>The origin written for the label of a project sense.</summary>
+    public const string OriginProject = "project";
+
+    /// <summary>The origin of a curated group.</summary>
+    public const string GroupCurated = "curated";
+
+    /// <summary>The origin of a default group.</summary>
+    public const string GroupDefault = "default";
+
+    /// <summary>The suffix of the label of a default group.</summary>
+    public const string GroupSuffix = "-group";
+
+    // The order of the parts of speech in the inventory order of the senses of a lemma
+    private const string PosOrder = "nvarupcidx";
+
+    /// <summary>
+    ///     Reads the tables of a data folder, writes the <c>sense_label</c> table with a label for every sense of the
+    ///     inventory and the default groups, and returns the counts.
+    /// </summary>
+    /// <param name="dataDirectory">The data folder with <c>schema.yaml</c> and the tables.</param>
+    /// <param name="outputDirectory">The folder that receives the tables, or null to write into the data folder.</param>
+    /// <returns>The counts.</returns>
+    /// <exception cref="InvalidDataException">Thrown when an input table is missing or unreadable, or two labels of one lemma are equal; nothing is written.</exception>
+    public static LabelRun Run(string dataDirectory, string? outputDirectory = null)
+    {
+        var schema = DataSchema.Load(Path.Join(dataDirectory, "schema.yaml"));
+        var entryTable = schema.Table("entry");
+        var senseTable = schema.Table("sense");
+        RequireFolder(dataDirectory, entryTable);
+        RequireFolder(dataDirectory, senseTable);
+        RequireFolder(dataDirectory, schema.Table("synset_relation"));
+        var entries = DataTables.Read(dataDirectory, entryTable).ToDictionary(r => r[0], r => r, StringComparer.Ordinal);
+        var senseRows = DataTables.Read(dataDirectory, senseTable).ToList();
+        var senses = new List<LabelSense>(senseRows.Count);
+        foreach (var row in senseRows)
+        {
+            if (!entries.TryGetValue(row[2], out var entry))
+            {
+                throw new InvalidDataException($"The sense '{row[0]}' refers to the entry '{row[2]}', which does not exist.");
+            }
+
+            senses.Add(new LabelSense(row[0], row[1], entry[1], entry[2], int.Parse(entry[4], CultureInfo.InvariantCulture), row[3]));
+        }
+
+        var hypernyms = new Dictionary<string, List<string>>(StringComparer.Ordinal);
+        foreach (var row in DataTables.Read(dataDirectory, schema.Table("synset_relation")).Where(r => r[1] == "hypernym"))
+        {
+            if (!hypernyms.TryGetValue(row[0], out var list))
+            {
+                hypernyms[row[0]] = list = [];
+            }
+
+            list.Add(row[2]);
+        }
+
+        var labels = DataTables.Read(dataDirectory, schema.Table("sense_label")).ToList();
+        var retired = DataTables.Read(dataDirectory, schema.Table("sense_label_map")).Select(r => r[0]).ToList();
+        var counts = DataTables.Read(dataDirectory, schema.Table("sense_frequency"))
+            .ToDictionary(r => r[0], r => int.Parse(r[1], CultureInfo.InvariantCulture), StringComparer.Ordinal);
+        var posNames = schema.Vocabulary("pos");
+        var inputs = new LabelInputs(
+            senses,
+            hypernyms.ToDictionary(p => p.Key, p => (IReadOnlyList<string>)p.Value, StringComparer.Ordinal),
+            labels,
+            retired,
+            counts,
+            posNames);
+        var output = Generate(inputs);
+
+        var groups = DataTables.Read(dataDirectory, schema.Table("sense_group")).ToList();
+        var groupSenses = DataTables.Read(dataDirectory, schema.Table("group_sense")).ToList();
+        var (newGroups, newMembers) = DefaultGroups(senses, groups, groupSenses, posNames);
+
+        // Everything is computed in memory first, so a failure leaves the files as they were
+        var resolver = new PartitionResolver(schema.FileSplit);
+        foreach (var row in entries.Values)
+        {
+            resolver.AddEntry(row[0], row[1]);
+        }
+
+        foreach (var row in senseRows)
+        {
+            resolver.AddSense(row[0], row[2], row[3], row[1]);
+        }
+
+        var target = outputDirectory ?? dataDirectory;
+        DataTables.Write(target, schema.Table("sense_label"), [.. labels, .. output.Rows], resolver);
+        DataTables.Write(target, schema.Table("sense_group"), newGroups, resolver);
+        DataTables.Write(target, schema.Table("group_sense"), newMembers, resolver);
+        var defaultIds = newGroups.Where(g => g[4] == GroupDefault).Select(g => g[0]).ToHashSet(StringComparer.Ordinal);
+        var defaultMembers = newMembers.Count(m => defaultIds.Contains(m[0]));
+        return new LabelRun(labels.Count, output.Rows.Count, output.Suffixed, output.Fallbacks, defaultIds.Count, defaultMembers);
+    }
+
+    /// <summary>
+    ///     Computes the labels of the senses of the inventory that have none; the pure part of the generator.
+    /// </summary>
+    /// <param name="inputs">The loaded tables.</param>
+    /// <returns>The new rows and the counts.</returns>
+    /// <exception cref="InvalidDataException">Thrown when two existing labels of one lemma are equal.</exception>
+    public static LabelOutput Generate(LabelInputs inputs)
+    {
+        var lemmaOf = inputs.Senses.ToDictionary(s => s.SenseId, s => s.Lemma, StringComparer.Ordinal);
+        var used = UsedLabels(inputs, lemmaOf);
+        var labeled = inputs.Labels.Select(l => l[0]).ToHashSet(StringComparer.Ordinal);
+        var synsetMembers = inputs.Senses.GroupBy(s => s.SynsetId, StringComparer.Ordinal)
+            .ToDictionary(g => g.Key, g => g.OrderBy(s => s.SenseId, Utf8Order).ToList(), StringComparer.Ordinal);
+        var perLemmaPos = inputs.Senses.GroupBy(s => (s.Lemma, s.Pos)).ToDictionary(g => g.Key, g => g.Count());
+        var rows = new List<string[]>();
+        var suffixed = 0;
+        var fallbacks = 0;
+        var pending = inputs.Senses.Where(s => s.InInventory && !labeled.Contains(s.SenseId)).GroupBy(s => s.Lemma, StringComparer.Ordinal).OrderBy(g => g.Key, Utf8Order);
+        foreach (var lemmaSenses in pending)
+        {
+            var taken = used.TryGetValue(lemmaSenses.Key, out var set) ? set : [];
+            foreach (var sense in lemmaSenses.OrderBy(s => PosOrder.IndexOf(s.Pos, StringComparison.Ordinal)).ThenByDescending(s => Count(inputs, s)).ThenBy(s => s.SenseId, Utf8Order))
+            {
+                var (slug, fromName) = Choose(inputs, sense, synsetMembers, perLemmaPos[(sense.Lemma, sense.Pos)]);
+                var label = slug;
+                var number = 1;
+                while (IsTaken(taken, label, inputs.PosNames))
+                {
+                    number++;
+                    label = slug + "-" + number.ToString(CultureInfo.InvariantCulture);
+                }
+
+                suffixed += number > 1 ? 1 : 0;
+                fallbacks += fromName && perLemmaPos[(sense.Lemma, sense.Pos)] > 1 ? 1 : 0;
+                taken.Add(label);
+                rows.Add([sense.SenseId, label, sense.SenseKey.Length == 0 ? OriginProject : OriginGenerated]);
+            }
+        }
+
+        return new LabelOutput(rows, suffixed, fallbacks);
+    }
+
+    /// <summary>
+    ///     Computes the slug of a text: lower-case, accents removed, every run of other characters one hyphen.
+    /// </summary>
+    /// <param name="text">The text, for example a lemma.</param>
+    /// <returns>The slug made of lower-case ASCII letters, digits and single hyphens, or an empty text when nothing usable remains.</returns>
+    public static string Slug(string text)
+    {
+        var decomposed = text.ToLowerInvariant().Normalize(NormalizationForm.FormD);
+        var result = new StringBuilder(decomposed.Length);
+        var pendingHyphen = false;
+        foreach (var c in decomposed)
+        {
+            if (CharUnicodeInfo.GetUnicodeCategory(c) == UnicodeCategory.NonSpacingMark)
+            {
+                continue;
+            }
+
+            if (c is >= 'a' and <= 'z' or >= '0' and <= '9')
+            {
+                if (pendingHyphen && result.Length > 0)
+                {
+                    result.Append('-');
+                }
+
+                pendingHyphen = false;
+                result.Append(c);
+            }
+            else
+            {
+                pendingHyphen = true;
+            }
+        }
+
+        return result.ToString();
+    }
+
+    /// <summary>
+    ///     Gets the candidates of a sense in the order of the rules: the slug of the first synonym, then of the first
+    ///     hypernym head, then the part of speech name.
+    /// </summary>
+    /// <param name="inputs">The loaded tables.</param>
+    /// <param name="sense">The sense.</param>
+    /// <param name="synsetMembers">The senses of each synset in the order of their sense ids.</param>
+    /// <returns>The candidate slugs, each non-empty and different from the slug of the lemma, except the last.</returns>
+    public static IEnumerable<string> Candidates(LabelInputs inputs, LabelSense sense, IReadOnlyDictionary<string, List<LabelSense>> synsetMembers)
+    {
+        var own = Slug(sense.Lemma);
+        var synonym = synsetMembers.GetValueOrDefault(sense.SynsetId, [])
+            .Where(m => m.SenseId != sense.SenseId).Select(m => Slug(m.Lemma)).FirstOrDefault(s => s.Length > 0 && s != own);
+        if (synonym is not null)
+        {
+            yield return synonym;
+        }
+
+        var head = inputs.Hypernyms.GetValueOrDefault(sense.SynsetId, [])
+            .OrderBy(h => h, Utf8Order)
+            .Select(h => synsetMembers.TryGetValue(h, out var members) && members.Count > 0 ? Slug(members[0].Lemma) : string.Empty)
+            .FirstOrDefault(s => s.Length > 0 && s != own);
+        if (head is not null)
+        {
+            yield return head;
+        }
+
+        yield return inputs.PosNames[sense.Pos];
+    }
+
+    private static (string Slug, bool FromName) Choose(LabelInputs inputs, LabelSense sense, IReadOnlyDictionary<string, List<LabelSense>> synsetMembers, int sensesOfPos)
+    {
+        var name = inputs.PosNames[sense.Pos];
+        if (sensesOfPos == 1)
+        {
+            return (name, true);
+        }
+
+        var first = Candidates(inputs, sense, synsetMembers).First();
+        return (first, first == name);
+    }
+
+    private static int Count(LabelInputs inputs, LabelSense sense) =>
+        sense.SenseKey.Length > 0 ? inputs.Counts.GetValueOrDefault(sense.SenseKey) : 0;
+
+    // A label is taken by a label of the lemma, by a retired id, and by the label of a default group of the lemma
+    private static bool IsTaken(HashSet<string> taken, string label, IReadOnlyDictionary<string, string> posNames) =>
+        taken.Contains(label) || (label.EndsWith(GroupSuffix, StringComparison.Ordinal) && posNames.Values.Contains(label[..^GroupSuffix.Length]));
+
+    private static Dictionary<string, HashSet<string>> UsedLabels(LabelInputs inputs, Dictionary<string, string> lemmaOf)
+    {
+        var used = new Dictionary<string, HashSet<string>>(StringComparer.Ordinal);
+        foreach (var row in inputs.Labels)
+        {
+            if (!lemmaOf.TryGetValue(row[0], out var lemma))
+            {
+                continue;
+            }
+
+            if (!used.TryGetValue(lemma, out var set))
+            {
+                used[lemma] = set = new HashSet<string>(StringComparer.Ordinal);
+            }
+
+            if (!set.Add(row[1]))
+            {
+                throw new InvalidDataException($"The label '{row[1]}' of the lemma '{lemma}' is the label of two senses.");
+            }
+        }
+
+        foreach (var id in inputs.RetiredIds)
+        {
+            var cut = id.LastIndexOf('#');
+            if (cut <= 0)
+            {
+                continue;
+            }
+
+            var lemma = id[..cut];
+            if (!used.TryGetValue(lemma, out var set))
+            {
+                used[lemma] = set = new HashSet<string>(StringComparer.Ordinal);
+            }
+
+            set.Add(id[(cut + 1)..]);
+        }
+
+        return used;
+    }
+
+    /// <summary>
+    ///     Computes the groups after a run: the curated groups and their senses as they are, and a default group for each
+    ///     lemma and part of speech that no curated group covers.
+    /// </summary>
+    /// <param name="senses">Every sense.</param>
+    /// <param name="groups">The existing group rows (group id, lemma, part of speech, label, origin).</param>
+    /// <param name="groupSenses">The existing membership rows (group id, sense id).</param>
+    /// <param name="posNames">The part of speech names by letter.</param>
+    /// <returns>The complete group rows and membership rows.</returns>
+    public static (List<string[]> Groups, List<string[]> Members) DefaultGroups(
+        IReadOnlyList<LabelSense> senses,
+        IReadOnlyList<string[]> groups,
+        IReadOnlyList<string[]> groupSenses,
+        IReadOnlyDictionary<string, string> posNames)
+    {
+        var kept = groups.Where(g => g[4] != GroupDefault).ToList();
+        var keptIds = kept.Select(g => g[0]).ToHashSet(StringComparer.Ordinal);
+        var members = groupSenses.Where(m => keptIds.Contains(m[0])).ToList();
+        var covered = kept.Select(g => (g[1], g[2])).ToHashSet();
+        var result = new List<string[]>(kept);
+        foreach (var bucket in senses.Where(s => s.TokenCount == 1).GroupBy(s => (s.Lemma, s.Pos)).Where(g => !covered.Contains(g.Key)))
+        {
+            var label = posNames[bucket.Key.Pos] + GroupSuffix;
+            var id = bucket.Key.Lemma + "#" + label;
+            if (keptIds.Contains(id))
+            {
+                throw new InvalidDataException($"The id '{id}' of a default group is already the id of a curated group.");
+            }
+
+            result.Add([id, bucket.Key.Lemma, bucket.Key.Pos, label, GroupDefault]);
+            members.AddRange(bucket.Select(s => (string[])[id, s.SenseId]));
+        }
+
+        return (result, members);
+    }
+
+    private static void RequireFolder(string dataDirectory, TableDef table)
+    {
+        var path = table.Partition == PartitionKind.None ? Path.Join(dataDirectory, table.Name + DataLayout.Extension) : Path.Join(dataDirectory, table.Name);
+        if (!(File.Exists(path) || Directory.Exists(path)))
+        {
+            throw new InvalidDataException($"The input table '{table.Name}' is missing: {path} does not exist.");
+        }
+    }
+
+    private static readonly IComparer<string> Utf8Order = Comparer<string>.Create(DataLayout.CompareUtf8);
+}

@@ -12,7 +12,7 @@ Importer tests import the slice into a temporary folder; label generator tests b
 damage one thing of an imported copy and assert the rule tag. The end-to-end tests run the commands through the builder
 entry point and validate the committed `data/` folder, and check on it the properties that only the whole data can show:
 every sense has one unique label and a frequency, the groups partition their lemmas, project senses have no key and an
-authored gloss, closed-class analyses have a project sense, and the legacy map is complete. No network and no OEWN file
+authored gloss, and closed-class analyses have a project sense. No network and no OEWN file
 are needed.
 
 ### Test Environment
@@ -47,7 +47,8 @@ SemCor as an evaluation source only.
 
 `CommittedData_HasSenseLabelsAndGroups` checks that the real tables carry labels and groups;
 `CommittedData_EverySenseHasOneUniqueLabel` checks one label per sense and no label twice within a lemma;
-`CommittedData_PublishedLabelsAreNeverChangedOrReused` checks the published labels against the id map.
+`CommittedData_PublishedLabelsAreNeverChangedOrReused` checks the published labels against the id map (no release has
+published labels yet, so the data is its own baseline, and no retired id of the id map may be a current id).
 
 #### Groups
 
@@ -57,7 +58,8 @@ other lemma has one default group for each of its parts of speech.
 
 #### Frequency
 
-`CommittedData_EverySenseHasAFrequency` checks that every sense key has a count, 0 where the counts file has none, with
+`CommittedData_EveryKeyedSenseHasAFrequency` checks that every sense key has a count, 0 where the counts file has none,
+with
 the source named.
 
 #### Project Senses
@@ -65,10 +67,5 @@ the source named.
 `CommittedData_ProjectSensesHaveNoKeyAndAGloss` checks that a project sense has no sense key and an authored gloss;
 `CommittedData_ClosedClassAnalysesHaveAProjectSense` checks that every determiner, pronoun, preposition, conjunction,
 interjection and auxiliary analysis has one.
-
-#### Legacy Map
-
-`CommittedData_LegacyMapCoversEveryRetiredClass` checks that every retired class id has exactly one target of the stated
-level in the committed data.
 
 The scenarios are detailed in the unit documents.

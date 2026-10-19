@@ -1,4 +1,7 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-avast-i-1		dema-avast-i	dema-syn-avast-i-1	1
+dema-avaunt-i-1		dema-avaunt-i	dema-syn-avaunt-i-1	1
+dema-ave-i-1		dema-ave-i	dema-syn-ave-i-1	1
 oewn-av__1.28.00..	av%1:28:00::	oewn-Av-n	oewn-15241359-n	1
 oewn-avadavat__1.05.00..	avadavat%1:05:00::	oewn-avadavat-n	oewn-01546577-n	1
 oewn-avahi_laniger__1.05.00..	avahi_laniger%1:05:00::	oewn-Avahi_laniger-n	oewn-02503227-n	1

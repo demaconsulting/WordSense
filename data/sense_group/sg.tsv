@@ -1,0 +1,4 @@
+group_id	lemma	pos	label	origin
+SGML#noun-group	SGML	n	noun-group	default
+Sg#noun-group	Sg	n	noun-group	default
+sgraffito#noun-group	sgraffito	n	noun-group	default

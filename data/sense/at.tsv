@@ -1,4 +1,10 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-at-p-1		dema-at-p	dema-syn-at-p-1	1
+dema-athwart-p-1		dema-athwart-p	dema-syn-athwart-p-1	1
+dema-atop-p-1		dema-atop-p	dema-syn-atop-p-1	1
+dema-attaboy-i-1		dema-attaboy-i	dema-syn-attaboy-i-1	1
+dema-attention-i-1		dema-attention-i	dema-syn-attention-i-1	1
+dema-atween-p-1		dema-atween-p	dema-syn-atween-p-1	1
 oewn-at--bat__1.04.00..	at-bat%1:04:00::	oewn-at-bat-n	oewn-00459480-n	1
 oewn-at__1.23.00..	at%1:23:00::	oewn-at-n	oewn-13703153-n	1
 oewn-at__1.27.00..	at%1:27:00::	oewn-At-n	oewn-14653739-n	1

@@ -1,4 +1,10 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-am-x-1		dema-am-x	dema-syn-am-x-1	1
+dema-amen-i-1		dema-amen-i	dema-syn-amen-i-1	1
+dema-amid-p-1		dema-amid-p	dema-syn-amid-p-1	1
+dema-amidst-p-1		dema-amidst-p	dema-syn-amidst-p-1	1
+dema-among-p-1		dema-among-p	dema-syn-among-p-1	1
+dema-amongst-p-1		dema-amongst-p	dema-syn-amongst-p-1	1
 oewn-am__1.10.00..	am%1:10:00::	oewn-AM-n	oewn-06292247-n	2
 oewn-am__1.10.01..	am%1:10:01::	oewn-AM-n	oewn-06713764-n	1
 oewn-am__1.27.00..	am%1:27:00::	oewn-Am-n	oewn-14652672-n	1

@@ -1,5 +1,10 @@
 # Coarse class mapping
 
+> The class tables are the retired class inventory: they stay in `data/` only until the word image is compiled from the
+> sense inventory (labels, groups and project senses, see [README.md](README.md)), and are then removed. The temporary
+> working file `corpus/migration/legacy-class-map.tsv` maps each class to the new senses for the relabeling of the
+> corpus; it is internal and is deleted afterwards.
+
 The tables `coarse_class`, `class_sense` and `class_entry` map the labeled senses of `corpus/senses` (1,521 labels of
 744 lemmas) onto the Open English WordNet senses of `data/`. They were produced from a reviewed proposal
 (embedding, pronunciation and corpus-sentence evidence; a 80-lemma stratified sample was hand-reviewed with 100%

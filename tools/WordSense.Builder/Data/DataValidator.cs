@@ -64,23 +64,26 @@ internal sealed partial class DataValidator
     private static readonly UTF8Encoding StrictUtf8 = new(false, true);
 
     private readonly string _root;
+    private readonly string? _baseline;
     private readonly DataSchema _schema;
     private readonly Dictionary<string, int> _ruleCounts = new(StringComparer.Ordinal);
     private readonly List<string> _violations = [];
     private readonly Dictionary<string, LoadedTable> _tables = new(StringComparer.Ordinal);
 
-    private DataValidator(string root, DataSchema schema)
+    private DataValidator(string root, DataSchema schema, string? baseline)
     {
         _root = root;
         _schema = schema;
+        _baseline = baseline;
     }
 
     /// <summary>
     ///     Validates a data folder.
     /// </summary>
     /// <param name="dataDirectory">The data folder that holds <c>schema.yaml</c> and the tables.</param>
+    /// <param name="baselineDirectory">The data folder of the last release, against which the published sense labels are checked, or null.</param>
     /// <returns>The report of the validation.</returns>
-    public static ValidationReport Validate(string dataDirectory)
+    public static ValidationReport Validate(string dataDirectory, string? baselineDirectory = null)
     {
         var schemaPath = Path.Join(dataDirectory, "schema.yaml");
         DataSchema schema;
@@ -93,7 +96,7 @@ internal sealed partial class DataValidator
             return new ValidationReport([$"{schemaPath}: [schema] {ex.Message}"], 1, new Dictionary<string, int>());
         }
 
-        var validator = new DataValidator(dataDirectory, schema);
+        var validator = new DataValidator(dataDirectory, schema, baselineDirectory);
         validator.Run();
         var counts = validator._tables.ToDictionary(p => p.Key, p => p.Value.RowCount, StringComparer.Ordinal);
         return new ValidationReport(validator._violations, validator._ruleCounts.Values.Sum(), counts);
@@ -143,6 +146,7 @@ internal sealed partial class DataValidator
         CheckRelations();
         CheckConsistency();
         CheckPartitionRule();
+        CheckInventory();
     }
 
     // ---- file set ----
@@ -389,7 +393,7 @@ internal sealed partial class DataValidator
 
         foreach (var row in Rows(TableSense))
         {
-            resolver.AddSense(row[0], row[2], row[3]);
+            resolver.AddSense(row[0], row[2], row[3], row[1]);
         }
 
         foreach (var row in Rows(TableCoarseClass))

@@ -1,0 +1,11 @@
+group_id	lemma	pos	label	origin
+P#noun-group	P	n	noun-group	default
+P.A.#noun-group	P.A.	n	noun-group	default
+P.E.#noun-group	P.E.	n	noun-group	default
+P.M.#adverb-group	P.M.	r	adverb-group	default
+P.M.#noun-group	P.M.	n	noun-group	default
+P.O.#noun-group	P.O.	n	noun-group	default
+p#noun-group	p	n	noun-group	default
+p.a.#adverb-group	p.a.	r	adverb-group	default
+p.m.#adverb-group	p.m.	r	adverb-group	default
+p.m.#noun-group	p.m.	n	noun-group	default

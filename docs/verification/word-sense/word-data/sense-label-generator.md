@@ -35,6 +35,13 @@ All scenarios below pass.
   lemma whose slug equals a label in use, or the label of an old id of `sense_label_map`, receives a suffix.
 - **Source data change** (`Generate_ChangedSourceData_KeepsPublishedLabels`): after the synonym or hypernym of a sense
   has changed, a second run leaves its published label as it was.
+- **Project senses and default groups** (`Generate_ProjectSenseAndMultiWordLemma_GetTheRightOrigin`,
+  `Generate_ReservedGroupLabel_IsSkipped`, `Run_Slice_LabelsOneTokenSensesAndWritesDefaultGroups`,
+  `Run_CuratedGroup_GetsNoDefaultGroupOfThatPartOfSpeech`, `Slug_GivesLowerCaseAsciiWords`,
+  `Generate_EqualExistingLabels_Throws`, `Run_MissingInputTable_Throws`): a sense without a key gets the origin
+  `project`, a multi-word lemma gets no label, a label that is a part of speech name and `-group` is never generated, the
+  run writes one default group for each lemma and part of speech that no curated group covers, and a damaged input
+  throws.
 - **Same inputs, same bytes** (`Run_SameInputs_GiveIdenticalBytes`): two runs give identical files.
 - **Reordered input** (`Run_ReorderedInput_GivesIdenticalBytes`): a copy whose input rows are in another order gives
   the same bytes.

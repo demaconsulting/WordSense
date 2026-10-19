@@ -1,0 +1,17 @@
+group_id	lemma	pos	label	origin
+B#noun-group	B	n	noun-group	default
+B-girl#noun-group	B-girl	n	noun-group	default
+B.C.#adverb-group	B.C.	r	adverb-group	default
+B.C.E.#adverb-group	B.C.E.	r	adverb-group	default
+B.O.#noun-group	B.O.	n	noun-group	default
+B.T.U.#noun-group	B.T.U.	n	noun-group	default
+B.Th.U.#noun-group	B.Th.U.	n	noun-group	default
+B0#noun-group	B0	n	noun-group	default
+B1#noun-group	B1	n	noun-group	default
+B2#noun-group	B2	n	noun-group	default
+B3#noun-group	B3	n	noun-group	default
+B4#noun-group	B4	n	noun-group	default
+B5#noun-group	B5	n	noun-group	default
+B6#noun-group	B6	n	noun-group	default
+b#noun-group	b	n	noun-group	default
+b-meson#noun-group	b-meson	n	noun-group	default

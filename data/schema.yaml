@@ -1,5 +1,5 @@
 ---
-# WordSense data schema, version 1.
+# WordSense data schema, version 2 (version 1 plus the sense inventory: labels, groups, frequencies, respellings).
 #
 # The committed tables under data/ are the authoritative word data: they are validated by `validate-data`, never
 # regenerated over edits. This file is a restricted YAML subset (block mappings, block sequences, flow sequences of
@@ -9,7 +9,7 @@
 # (set of Feature=Value items joined by '+'). A trailing '?' allows an empty cell (NULL). An empty cell in a primary
 # key column is allowed only for a nullable column and sorts first.
 # Rows are sorted by the primary key columns in the order listed, by UTF-8 bytes (int columns numerically).
-schema_version: 1
+schema_version: 2
 data_release: oewn-2025
 
 # First letters whose files are split by the first two letters of the lemma (data/<table>/sa.tsv, s_.tsv, ...).
@@ -45,6 +45,21 @@ vocabularies:
     a: adjective
     r: adverb
     s: adjective satellite
+    u: pronoun (a project sense)
+    p: preposition (a project sense)
+    c: conjunction (a project sense)
+    i: interjection (a project sense)
+    d: determiner (a project sense)
+    x: auxiliary (a project sense)
+  label_origin:
+    curated: a label chosen by hand for a curated lemma
+    generated: a label written by the label generator for a sense of Open English WordNet
+    project: the label of a project sense, a sense that Open English WordNet does not provide
+  group_origin:
+    curated: a group chosen by hand, one of the groups that partition a curated lemma
+    default: the group of all senses of one lemma and part of speech that no curated group covers
+  frequency_source:
+    wn30: the WordNet 3.0 tag count of the sense key
   relation_subtype:
     agent: the agent of an event
     body_part: a body part
@@ -422,3 +437,85 @@ tables:
     partition:
       by: lemma
       column: spelling
+
+  # ---- the sense inventory: readable labels, groups, frequencies and respellings ----
+  # The library classifies single words, so the inventory covers the senses of lemmas of one token (entry.token_count 1)
+  # and every project sense. The public id of a sense is lemma#label; the id of a group is lemma#label of the group.
+
+  sense_label:
+    description: The readable label of a sense (public id lemma#label), unique in its lemma and frozen once published.
+    columns:
+      sense_id: id
+      label: id
+      origin: enum:label_origin
+    primary_key: [sense_id]
+    foreign_keys:
+      sense_id: sense.sense_id
+    partition:
+      by: sense
+      column: sense_id
+
+  sense_label_map:
+    description: Renames and retirements of public sense ids (an empty new_id retires the id); an old id is not reused.
+    columns:
+      old_id: id
+      new_id: id?
+      release: text
+    primary_key: [old_id, release]
+    partition:
+      by: none
+
+  sense_group:
+    description: A coarse group of the senses of one lemma and one part of speech (public id lemma#label).
+    columns:
+      group_id: id
+      lemma: text
+      pos: enum:pos
+      label: id
+      origin: enum:group_origin
+    primary_key: [group_id]
+    unique:
+      - [lemma, label]
+    partition:
+      by: lemma
+      column: lemma
+
+  group_sense:
+    description: Assigns a sense to its group; every sense is in at most one group.
+    columns:
+      group_id: id
+      sense_id: id
+    primary_key: [group_id, sense_id]
+    unique:
+      - [sense_id]
+    foreign_keys:
+      group_id: sense_group.group_id
+      sense_id: sense.sense_id
+    partition:
+      by: sense
+      column: sense_id
+
+  sense_frequency:
+    description: The WordNet 3.0 tag count of a sense key, 0 for a sense that the counts file does not list.
+    columns:
+      sense_key: text
+      tag_count: int
+      source: enum:frequency_source
+    primary_key: [sense_key]
+    foreign_keys:
+      sense_key: sense.sense_key
+    partition:
+      by: key
+      column: sense_key
+
+  sense_respelling:
+    description: The respelling of a sense whose pronunciation differs from the other senses of its lemma.
+    columns:
+      sense_id: id
+      respelling: text
+    primary_key: [sense_id]
+    foreign_keys:
+      sense_id: sense.sense_id
+    partition:
+      by: sense
+      column: sense_id

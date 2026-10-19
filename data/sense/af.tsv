@@ -1,4 +1,9 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-aff-p-1		dema-aff-p	dema-syn-aff-p-1	1
+dema-afore-c-1		dema-afore-c	dema-syn-afore-c-1	1
+dema-afore-p-1		dema-afore-p	dema-syn-afore-p-1	1
+dema-after-c-1		dema-after-c	dema-syn-after-c-1	1
+dema-after-p-1		dema-after-p	dema-syn-after-p-1	1
 oewn-afar__4.02.00..	afar%4:02:00::	oewn-afar-r	oewn-00101433-r	1
 oewn-afeard__5.00.00.afraid.00	afeard%5:00:00:afraid:00	oewn-afeard-a	oewn-00079053-s	1
 oewn-afeared__5.00.00.afraid.00	afeared%5:00:00:afraid:00	oewn-afeared-a	oewn-00079053-s	1

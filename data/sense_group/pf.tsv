@@ -1,0 +1,5 @@
+group_id	lemma	pos	label	origin
+PFC#noun-group	PFC	n	noun-group	default
+PFLOPS#noun-group	PFLOPS	n	noun-group	default
+pfannkuchen#noun-group	pfannkuchen	n	noun-group	default
+pfennig#noun-group	pfennig	n	noun-group	default

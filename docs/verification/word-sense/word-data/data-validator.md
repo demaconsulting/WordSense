@@ -4,7 +4,7 @@
 
 Tests in `test/WordSense.Builder.Tests/Data/DataValidatorTests.cs` import the slice, damage one thing of the copy (a
 cell, a row, a file) and assert that the expected rule tag is reported, and that the undamaged copy is valid. The
-sense, group and legacy map rules use a small hand-written inventory (labels, groups, a baseline copy and a legacy map)
+sense and group rules use a small hand-written inventory (labels, groups and a baseline copy)
 added to the imported slice.
 
 #### Test Environment
@@ -40,7 +40,7 @@ All scenarios below pass.
   parts of speech, a group with two respellings, and a lemma that is not curated with no default group or two for one
   part of
   speech are each reported.
-- **Legacy map** (`LegacyMapTargetMissing_Violates`, `LegacyMapDuplicateClass_Violates`,
-  `LegacyMapLevelMismatch_Violates`): a target that does not exist, an old class id that appears twice and a level that
-  does not fit the target are each reported.
 - **Reporting** (`ManyViolations_AreCappedPerRule`).
+- **More inventory cases** (`MalformedLabel_Violates`, `PublishedIdTakenByAnotherSense_ViolatesStability`,
+  `MissingBaseline_ReportsStability`, `ProjectSenseWithoutGloss_Violates`): a label that is not lower-case ASCII, a
+  published id that another sense now has, a baseline folder that does not exist and a project sense without a gloss.

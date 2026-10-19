@@ -19,6 +19,7 @@ internal sealed class PartitionResolver
     private readonly Dictionary<string, string> _senseEntry = new(StringComparer.Ordinal);
     private readonly Dictionary<string, (string Lemma, string SenseId)> _synsetFirst = new(StringComparer.Ordinal);
     private readonly Dictionary<string, string> _classLemma = new(StringComparer.Ordinal);
+    private readonly Dictionary<string, string> _keyEntry = new(StringComparer.Ordinal);
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="PartitionResolver"/> class.
@@ -42,9 +43,15 @@ internal sealed class PartitionResolver
     /// <param name="senseId">The sense id.</param>
     /// <param name="entryId">The entry it belongs to.</param>
     /// <param name="synsetId">The synset it belongs to.</param>
-    public void AddSense(string senseId, string entryId, string synsetId)
+    /// <param name="senseKey">The sense key, or null or empty for a sense without one.</param>
+    public void AddSense(string senseId, string entryId, string synsetId, string? senseKey = null)
     {
         _senseEntry[senseId] = entryId;
+        if (!string.IsNullOrEmpty(senseKey))
+        {
+            _keyEntry[senseKey] = entryId;
+        }
+
         if (!_entryLemma.TryGetValue(entryId, out var lemma))
         {
             return;
@@ -92,6 +99,7 @@ internal sealed class PartitionResolver
             PartitionKind.Entry => Lookup(_entryLemma, value),
             PartitionKind.Sense => _senseEntry.TryGetValue(value, out var entry) ? Lookup(_entryLemma, entry) : null,
             PartitionKind.Class => Lookup(_classLemma, value),
+            PartitionKind.Key => _keyEntry.TryGetValue(value, out var keyEntry) ? Lookup(_entryLemma, keyEntry) : null,
             _ => null,
         };
         if (table.Partition == PartitionKind.Synset)

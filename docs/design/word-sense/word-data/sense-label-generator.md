@@ -4,9 +4,10 @@
 
 #### Purpose
 
-`SenseLabelGenerator` gives every sense that has no label a readable, deterministic label, so that every sense of every
-word has a public id `lemma#label` and callers can store it. It writes the `sense_label` table; it never changes a label
-that already exists.
+`SenseLabelGenerator` gives every sense of a lemma of one token (`entry.token_count` 1) that has no label a readable,
+deterministic label, so that every sense of every word has a public id `lemma#label` and callers can store it. It writes
+the `sense_label` table; it never changes a label that already exists. The senses of a multi-word lemma are not
+labeled, because the library classifies single words.
 
 #### Data Model
 
@@ -18,8 +19,11 @@ Inputs, all read from `data/`:
 - `sense_label_map`: the renames and retirements of earlier ids. The label part of every old id counts as used.
 - `sense_frequency`: the tag count that orders the senses of a lemma, when the table is present.
 
-Output: the complete `sense_label` table, the existing rows unchanged and one row of origin `generated` for each sense
-that had no label.
+Output: the complete `sense_label` table, the existing rows unchanged and one row for each sense of a one-token lemma
+that had no label: origin `generated`, or `project` for a sense without a sense key (the generator never writes
+`curated`). The run also writes the groups: the curated groups and their members as they are, and a default group
+(`lemma#<part of speech name>-group`, origin `default`) with all the one-token senses of every lemma and part of speech
+that no curated group covers. The default groups are derived, so they are recomputed on every run.
 
 Inventory order of the senses of a lemma: part of speech, then WordNet 3.0 tag count descending, then the UTF-8 bytes of
 the sense id. The order depends on the data only.
@@ -34,26 +38,32 @@ The label of a sense without one is the first rule that gives a usable slug:
    hypernym synset (in the order of the synset id) whose slug is not the slug of the lemma itself.
 4. The part of speech name, when neither a synonym nor a hypernym gives a slug.
 
-A slug is the lower-case, NFC-normalized text with every run of characters other than ASCII letters and digits turned
+A slug is the lower-case, NFC-normalized text with the accents removed (the canonical decomposition without its
+combining marks), every run of characters other than ASCII letters and digits turned
 into one hyphen and leading and trailing hyphens removed, so a label contains only lower-case ASCII letters, digits and
 hyphens. A candidate whose slug is empty is skipped.
 
 Uniqueness: the labels of one lemma are unique across its parts of speech. A label already used by a sense of the lemma,
-or by an existing or retired id of the lemma, is not taken. When the slug of a sense is taken, the sense receives the
+or by an existing or retired id of the lemma, is not taken; neither is a label that is a part of speech name followed
+by `-group`, which is reserved for the default groups so that the id of a sense never equals the id of a default group.
+When the slug of a sense is taken, the sense receives the
 slug with the suffix `-2`, then `-3`, and so on, the first free number. Senses are labeled in inventory order, so the
 sense that comes first keeps the plain slug.
 
 #### Key Methods
 
-- `Run(data, output)`: reads the inputs, computes the labels of the senses that have none and writes `sense_label`
+- `Run(data, output)`: reads the inputs, computes the labels of the senses that have none and the default groups and
+  writes `sense_label`, `sense_group` and `group_sense`
   through `DataLayout` (sorted by the primary key, the existing rows byte for byte). Returns the counts: existing rows
-  kept, rows generated, and the number of labels that needed a suffix or the part of speech fallback.
+  kept, rows generated, the number of labels that needed a suffix or the part of speech fallback, and the default
+  groups.
 - `Generate(inputs)`: the pure computation, from the loaded tables to the new rows; it holds the rules above and
   has no file access.
 - `Slug(text)`: the slug of a candidate, or an empty text when nothing usable remains.
 - `Candidates(sense)`: the candidates of rule 2 to 4 in order.
 
-Preconditions: the tables validate against the schema. Postconditions: every sense has exactly one label; no row that
+Preconditions: the tables validate against the schema. Postconditions: every sense of a one-token lemma has exactly one
+label; no row that
 existed is changed or removed; the same inputs give the same bytes in the same order, whatever the order in which the
 input rows were read.
 

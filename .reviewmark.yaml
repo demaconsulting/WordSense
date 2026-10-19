@@ -165,8 +165,11 @@ reviews:
       - "tools/WordSense.Builder/Data/FeatureInference.cs"
       - "tools/WordSense.Builder/Data/FormBootstrap.cs"
       - "tools/WordSense.Builder/Data/ImageCompiler.cs"
+      - "tools/WordSense.Builder/Data/InventorySeeder.cs"
+      - "tools/WordSense.Builder/Data/LegacyClassMap.cs"
       - "test/WordSense.Builder.Tests/Data/DataEndToEndTests.cs"
       - "test/WordSense.Builder.Tests/Data/DataFixture.cs"
+      - "test/WordSense.Builder.Tests/Data/InventorySeederTests.cs"
 
   # WordSense-WordData-DataSchema Review (one per unit)
   - id: WordSense-WordData-DataSchema
@@ -207,6 +210,7 @@ reviews:
       - "docs/design/word-sense/word-data/oewn-importer.md"
       - "docs/verification/word-sense/word-data/oewn-importer.md"
       - "tools/WordSense.Builder/Data/OewnImporter.cs"
+      - "tools/WordSense.Builder/Data/OewnImporter.Counts.cs"
       - "test/WordSense.Builder.Tests/Data/OewnImporterTests.cs"
 
   # WordSense-WordData-FormGenerator Review (one per unit)
@@ -255,6 +259,7 @@ reviews:
       - "docs/design/word-sense/word-data/data-validator.md"
       - "docs/verification/word-sense/word-data/data-validator.md"
       - "tools/WordSense.Builder/Data/DataValidator.cs"
+      - "tools/WordSense.Builder/Data/DataValidator.Inventory.cs"
       - "test/WordSense.Builder.Tests/Data/DataValidatorTests.cs"
 
   # WordSense-WordData-SenseLabelGenerator Review (one per unit)

@@ -1,4 +1,17 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-so-c-1		dema-so-c	dema-syn-so-c-1	1
+dema-so-i-1		dema-so-i	dema-syn-so-i-1	1
+dema-so-u-1		dema-so-u	dema-syn-so-u-1	1
+dema-sobeit-c-1		dema-sobeit-c	dema-syn-sobeit-c-1	1
+dema-sod-i-1		dema-sod-i	dema-syn-sod-i-1	1
+dema-soft-i-1		dema-soft-i	dema-syn-soft-i-1	1
+dema-soho-i-1		dema-soho-i	dema-syn-soho-i-1	1
+dema-some-d-1		dema-some-d	dema-syn-some-d-1	1
+dema-somebody-u-1		dema-somebody-u	dema-syn-somebody-u-1	1
+dema-someone-u-1		dema-someone-u	dema-syn-someone-u-1	1
+dema-something-u-1		dema-something-u	dema-syn-something-u-1	1
+dema-sooey-i-1		dema-sooey-i	dema-syn-sooey-i-1	1
+dema-sorry-i-1		dema-sorry-i	dema-syn-sorry-i-1	1
 oewn-so--and--so__1.18.00..	so-and-so%1:18:00::	oewn-so-and-so-n	oewn-10559272-n	1
 oewn-so--called__5.00.00.questionable.00	so-called%5:00:00:questionable:00	oewn-so-called-a	oewn-01922936-s	1
 oewn-so--so__4.02.00..	so-so%4:02:00::	oewn-so-so-r	oewn-00055850-r	1

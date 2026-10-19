@@ -1,4 +1,17 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-an-d-1		dema-an-d	dema-syn-an-d-1	1
+dema-and-c-1		dema-and-c	dema-syn-and-c-1	1
+dema-ane-d-1		dema-ane-d	dema-syn-ane-d-1	1
+dema-ane-u-1		dema-ane-u	dema-syn-ane-u-1	1
+dema-anear-p-1		dema-anear-p	dema-syn-anear-p-1	1
+dema-anenst-p-1		dema-anenst-p	dema-syn-anenst-p-1	1
+dema-anent-p-1		dema-anent-p	dema-syn-anent-p-1	1
+dema-aneuch-i-1		dema-aneuch-i	dema-syn-aneuch-i-1	1
+dema-another-d-1		dema-another-d	dema-syn-another-d-1	1
+dema-any-d-1		dema-any-d	dema-syn-any-d-1	1
+dema-anybody-u-1		dema-anybody-u	dema-syn-anybody-u-1	1
+dema-anyone-u-1		dema-anyone-u	dema-syn-anyone-u-1	1
+dema-anything-u-1		dema-anything-u	dema-syn-anything-u-1	1
 oewn-an__1.10.00..	an%1:10:00::	oewn-AN-n	oewn-06710913-n	1
 oewn-ana__1.14.00..	ana%1:14:00::	oewn-ana-n	oewn-08479975-n	1
 oewn-anabaptism__1.09.00..	anabaptism%1:09:00::	oewn-Anabaptism-n	oewn-06241948-n	1

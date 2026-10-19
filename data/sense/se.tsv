@@ -1,6 +1,14 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-secundum-p-1		dema-secundum-p	dema-syn-secundum-p-1	1
+dema-seeing-c-1		dema-seeing-c	dema-syn-seeing-c-1	1
+dema-self-u-1		dema-self-u	dema-syn-self-u-1	1
+dema-senza-p-1		dema-senza-p	dema-syn-senza-p-1	1
 dema-seriate-a-1		dema-seriate-a	dema-syn-seriate-a-1	1
 dema-seriate-v-1		dema-seriate-v	dema-syn-seriate-v-1	1
+dema-seven-d-1		dema-seven-d	dema-syn-seven-d-1	1
+dema-seventeen-d-1		dema-seventeen-d	dema-syn-seventeen-d-1	1
+dema-seventy-d-1		dema-seventy-d	dema-syn-seventy-d-1	1
+dema-several-d-1		dema-several-d	dema-syn-several-d-1	1
 oewn-se__1.24.00..	se%1:24:00::	oewn-SE-n	oewn-13855040-n	1
 oewn-se__1.27.00..	se%1:27:00::	oewn-Se-n	oewn-14678354-n	1
 oewn-sea--coast__1.17.00..	sea-coast%1:17:00::	oewn-sea-coast-n	oewn-09451197-n	1

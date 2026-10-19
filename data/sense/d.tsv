@@ -1,4 +1,29 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-dam-i-1		dema-dam-i	dema-syn-dam-i-1	1
+dema-dammit-i-1		dema-dammit-i	dema-syn-dammit-i-1	1
+dema-damn-i-1		dema-damn-i	dema-syn-damn-i-1	1
+dema-damnation-i-1		dema-damnation-i	dema-syn-damnation-i-1	1
+dema-dang-i-1		dema-dang-i	dema-syn-dang-i-1	1
+dema-dare-x-1		dema-dare-x	dema-syn-dare-x-1	1
+dema-darn-i-1		dema-darn-i	dema-syn-darn-i-1	1
+dema-dash-i-1		dema-dash-i	dema-syn-dash-i-1	1
+dema-de-p-1		dema-de-p	dema-syn-de-p-1	1
+dema-dear-i-1		dema-dear-i	dema-syn-dear-i-1	1
+dema-des-p-1		dema-des-p	dema-syn-des-p-1	1
+dema-despite-p-1		dema-despite-p	dema-syn-despite-p-1	1
+dema-deuce-i-1		dema-deuce-i	dema-syn-deuce-i-1	1
+dema-di-p-1		dema-di-p	dema-syn-di-p-1	1
+dema-did-x-1		dema-did-x	dema-syn-did-x-1	1
+dema-directly-c-1		dema-directly-c	dema-syn-directly-c-1	1
+dema-divers-d-1		dema-divers-d	dema-syn-divers-d-1	1
+dema-do-x-1		dema-do-x	dema-syn-do-x-1	1
+dema-does-x-1		dema-does-x	dema-syn-does-x-1	1
+dema-doggone-i-1		dema-doggone-i	dema-syn-doggone-i-1	1
+dema-done-i-1		dema-done-i	dema-syn-done-i-1	1
+dema-down-p-1		dema-down-p	dema-syn-down-p-1	1
+dema-dozen-d-1		dema-dozen-d	dema-syn-dozen-d-1	1
+dema-drat-i-1		dema-drat-i	dema-syn-drat-i-1	1
+dema-during-p-1		dema-during-p	dema-syn-during-p-1	1
 oewn-d.a.__1.10.00..	d.a.%1:10:00::	oewn-D.A.-n	oewn-06716597-n	1
 oewn-d.j.__1.18.00..	d.j.%1:18:00::	oewn-d.j.-n	oewn-10036990-n	1
 oewn-d.o.a.__5.00.00.dead.01	d.o.a.%5:00:00:dead:01	oewn-d.o.a.-a	oewn-00097766-s	1

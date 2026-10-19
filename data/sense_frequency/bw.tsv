@@ -1,0 +1,5 @@
+sense_key	tag_count	source
+bw%1:04:00::	5	wn30
+bw_defence%1:04:00::	0	wn30
+bw_defense%1:04:00::	0	wn30
+bwr%1:06:00::	0	wn30

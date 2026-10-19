@@ -1,4 +1,7 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-zap-i-1		dema-zap-i	dema-syn-zap-i-1	1
+dema-zillion-d-1		dema-zillion-d	dema-syn-zillion-d-1	1
+dema-zounds-i-1		dema-zounds-i	dema-syn-zounds-i-1	1
 oewn-z--axis__1.09.00..	z-axis%1:09:00::	oewn-z-axis-n	oewn-06018782-n	1
 oewn-z--fold__1.25.01..	z-fold%1:25:01::	oewn-z-fold-n	oewn-92423476-n	1
 oewn-z__1.10.00..	z%1:10:00::	oewn-Z-n	oewn-06846940-n	2

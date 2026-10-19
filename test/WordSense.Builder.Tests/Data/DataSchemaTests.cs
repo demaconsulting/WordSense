@@ -31,10 +31,10 @@ public sealed class DataSchemaTests : IDisposable
         var schema = LoadText(SchemaText());
 
         // Assert
-        Assert.Equal(1, schema.Version);
+        Assert.Equal(2, schema.Version);
         Assert.Equal("oewn-2025", schema.Release);
-        Assert.Equal(15, schema.Tables.Count());
-        foreach (var name in new[] { "source", "entry", "synset", "gloss", "example", "sense", "synset_relation", "sense_relation", "pronunciation", "id_map", "coarse_class", "class_sense", "class_entry", "form", "form_sense_scope" })
+        Assert.Equal(21, schema.Tables.Count());
+        foreach (var name in new[] { "source", "entry", "synset", "gloss", "example", "sense", "synset_relation", "sense_relation", "pronunciation", "id_map", "coarse_class", "class_sense", "class_entry", "form", "form_sense_scope", "sense_label", "sense_label_map", "sense_group", "group_sense", "sense_frequency", "sense_respelling" })
         {
             Assert.True(schema.HasTable(name), name);
         }
@@ -46,6 +46,39 @@ public sealed class DataSchemaTests : IDisposable
         Assert.True(schema.Table("synset").Columns[schema.Table("synset").IndexOf("head_synset_id")].Nullable);
         Assert.Equal(PartitionKind.None, schema.Table("source").Partition);
     }
+
+    /// <summary>
+    ///     The sense inventory tables are declared with their keys, foreign keys and vocabularies.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_DataSchema_Load_CommittedSchema_DeclaresSenseGroupAndFrequencyTables()
+    {
+        // Arrange / Act
+        var schema = LoadText(SchemaText());
+
+        // Assert
+        Assert.Equal(["sense_id"], schema.Table("sense_label").PrimaryKey);
+        Assert.Equal("sense.sense_id", FormatKey(schema.Table("sense_label").ForeignKeys["sense_id"]));
+        Assert.Equal(["old_id", "release"], schema.Table("sense_label_map").PrimaryKey);
+        Assert.True(schema.Table("sense_label_map").Columns[schema.Table("sense_label_map").IndexOf("new_id")].Nullable);
+        Assert.Equal(["group_id"], schema.Table("sense_group").PrimaryKey);
+        Assert.Contains(schema.Table("sense_group").Unique, u => u.SequenceEqual(["lemma", "label"]));
+        Assert.Equal(["group_id", "sense_id"], schema.Table("group_sense").PrimaryKey);
+        Assert.Contains(schema.Table("group_sense").Unique, u => u.SequenceEqual(["sense_id"]));
+        Assert.Equal("sense_group.group_id", FormatKey(schema.Table("group_sense").ForeignKeys["group_id"]));
+        Assert.Equal(["sense_key"], schema.Table("sense_frequency").PrimaryKey);
+        Assert.Equal(PartitionKind.Key, schema.Table("sense_frequency").Partition);
+        Assert.Equal("sense.sense_key", FormatKey(schema.Table("sense_frequency").ForeignKeys["sense_key"]));
+        Assert.Equal(["sense_id"], schema.Table("sense_respelling").PrimaryKey);
+        Assert.True(schema.IsMember("label_origin", "curated"));
+        Assert.True(schema.IsMember("label_origin", "generated"));
+        Assert.True(schema.IsMember("label_origin", "project"));
+        Assert.True(schema.IsMember("group_origin", "default"));
+        Assert.True(schema.IsMember("frequency_source", "wn30"));
+        Assert.True(schema.IsMember("synset_pos", "d"));
+    }
+
+    private static string FormatKey(ForeignKey key) => key.Table + "." + key.Column;
 
     /// <summary>
     ///     Vocabularies, relation types and features are available to the validator.
@@ -111,7 +144,7 @@ public sealed class DataSchemaTests : IDisposable
     ///     Damaged schemas are rejected with a line number or a reason.
     /// </summary>
     [Theory]
-    [InlineData("schema_version: 1\n", "tab", "schema_version: 1\n\tx: 1\n")]
+    [InlineData("schema_version: 2\n", "tab", "schema_version: 2\n\tx: 1\n")]
     [InlineData("data_release: oewn-2025\n", "duplicate", "data_release: oewn-2025\ndata_release: other\n")]
     [InlineData("enum:synset_pos", "unknown vocabulary", "enum:nope")]
     [InlineData("source_id: source.source_id", "foreign key", "source_id: nowhere.source_id")]

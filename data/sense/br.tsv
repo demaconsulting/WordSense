@@ -1,4 +1,9 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-brava-i-1		dema-brava-i	dema-syn-brava-i-1	1
+dema-bravissimo-i-1		dema-bravissimo-i	dema-syn-bravissimo-i-1	1
+dema-bravo-i-1		dema-bravo-i	dema-syn-bravo-i-1	1
+dema-break-i-1		dema-break-i	dema-syn-break-i-1	1
+dema-brother-i-1		dema-brother-i	dema-syn-brother-i-1	1
 oewn-br__1.27.00..	br%1:27:00::	oewn-Br-n	oewn-14656307-n	1
 oewn-bra__1.06.00..	bra%1:06:00::	oewn-bra-n	oewn-02896008-n	1
 oewn-brabancon_griffon__1.05.00..	brabancon_griffon%1:05:00::	oewn-Brabancon_griffon-n	oewn-02115358-n	1

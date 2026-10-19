@@ -25,9 +25,10 @@ inventory:
   one group of each sense.
 - `sense_frequency(sense_key, tag_count, source)`: the WordNet 3.0 tag count of a sense key; the source is `wn30`.
 - `sense_respelling(sense_id, respelling)`: the respelling of a sense.
-- `legacy_class_map(class_id, target_id, level)`: the group or sense (the level) that replaces a retired class id.
 
-The tables of the retired class inventory and of the per-form sense scope are not part of the schema.
+The tables of the retired class inventory (`coarse_class`, `class_sense`, `class_entry`) and of the per-form sense scope
+(`form_sense_scope`) stay in the schema until the word image is compiled from the new tables; they are not part of the
+sense inventory.
 
 #### Key Methods
 

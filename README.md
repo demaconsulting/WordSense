@@ -184,8 +184,8 @@ and lists the confidence thresholds of each model. See also the [model compariso
 ## Documentation
 
 - **User Guide**: usage, configuration, limitations, licensing and troubleshooting ([user guide][link-user-guide])
-- **Senses appendix**: every supported lemma with its senses, groups, OEWN keys and respellings, and the map from the
-  previous release's class ids ([appendix][link-appendix])
+- **Senses appendix**: every supported lemma with its senses, groups, OEWN keys and respellings
+  ([appendix][link-appendix])
 - **Design, Verification and Requirements**: generated from `docs/`
 
 ## Credits and licenses
@@ -219,6 +219,11 @@ recorded with its source, license and URL in `corpus/provenance/`.
 - **Open English WordNet 2025** (<https://en-word.net>, <https://github.com/globalwordnet/english-wordnet>): CC BY 4.0.
   The word data under `data/` (entries, senses, synsets, glosses, examples, relations and pronunciations) is imported
   from it and keeps that license; see `data/README.md` and `data/PROVENANCE.md`. It is not yet shipped in a package.
+- **WordNet 3.0** (Princeton University, <https://wordnet.princeton.edu>): the sense frequency counts of the word data
+  (`data/sense_frequency`, from the WordNet 3.0 sense index `index.sense`) are used under the WordNet license: WordNet 3.0
+  Copyright 2006 by Princeton University, all rights reserved; the full notice is in `data/PROVENANCE.md`.
+- **SemCor 3.0** (the sense-annotated Brown Corpus text of the WordNet project): an evaluation source only. It is
+  downloaded to a cache by the builder to measure the models, never committed, redistributed or used for training.
 
 ## Contributing
 

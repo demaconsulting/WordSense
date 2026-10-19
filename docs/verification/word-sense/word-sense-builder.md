@@ -277,8 +277,6 @@ All scenarios below pass on every platform and target framework of the CI matrix
   byte.
 - **Senses carry group key gloss and respelling** (`Appendix_Generate_ListsSensesWithGroupKeyGlossAndRespelling`): each
   sense is listed with its id, group, OEWN sense key (none for a project sense), gloss and respelling.
-- **Legacy class map** (`Appendix_Generate_ListsLegacyClassMap`): the retired class ids are listed with the group or
-  sense that replaces each.
 - **Incomplete input is rejected** (`Appendix_Generate_RejectsIncompleteInput`, `Program_Appendix_MissingCorpus_Fails`):
   a missing anchors directory, a trained sense without an anchor sentence and an empty inventory are each rejected with
   an error that names the problem, and the command exits with code 1.

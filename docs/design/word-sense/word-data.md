@@ -7,8 +7,8 @@
 The word data subsystem is the relational word data of the library: TSV tables under `data/` that hold the entries,
 senses, synsets, glosses, examples, relations and pronunciations of English, imported once from Open English WordNet
 2025 (OEWN, CC BY 4.0), and the sense inventory built on them: a readable label for every sense, the coarse groups of
-the senses, the WordNet 3.0 frequency count of every sense, the senses of the project itself and the map from the
-retired class ids. The subsystem also holds the build-time code that creates and checks the tables. It is data only; the
+the senses, the WordNet 3.0 frequency count of every sense and the senses of the project itself. The subsystem also
+holds the build-time code that creates and checks the tables. It is data only; the
 `compile-image` command of the builder compiles the tables into the word image that the core package embeds.
 
 The subsystem contains seven units:
@@ -17,12 +17,16 @@ The subsystem contains seven units:
 - **DataLayout**: the file of a lemma (`FileFor`), the UTF-8 byte order, and the deterministic table writer.
 - **OewnImporter**: the one-time import of the pinned OEWN file into the tables, and the import of the pinned
   WordNet 3.0 sense frequency counts.
-- **DataValidator**: validates the committed tables against the schema, the sense labels, the groups and the legacy map.
+- **DataValidator**: validates the committed tables against the schema, the sense labels and the groups.
 - **FormGenerator**: generates the inflected-form table, keeping a generated row only when it is corroborated.
 - **FormAuditor**: the seeded stratified audit of the generated rows (`audit-forms`), the regression gate.
 - **SenseLabelGenerator**: gives every sense without a label a readable, deterministic label (`label-senses`).
 
-The builder commands `import-oewn`, `import-wn30-counts`, `label-senses` and `validate-data` are the entry points.
+The builder commands `import-oewn`, `import-wn30-counts`, `label-senses` and `validate-data` are the entry points; the
+bootstrap command `seed-inventory` adds the project senses of the closed-class entries and imports the curated labels
+and groups of the curation folder (`corpus/curation`), once (it is idempotent and never changes a label). The
+temporary command `legacy-class-map` writes a working file for the relabeling of the corpus and is not part of the
+subsystem (see the data section below).
 Boundaries: the subsystem does not change the corpus or any package; the image is compiled from the tables by the
 builder (see the WordSenseBuilder unit), not by the subsystem.
 
@@ -38,7 +42,7 @@ builder (see the WordSenseBuilder unit), not by the subsystem.
   the last release, against which the published labels are checked).
 - The sense inventory tables: `sense_label` (the label of every sense), `sense_label_map` (renames and retirements of
   ids), `sense_group` and `group_sense` (the groups and their senses), `sense_frequency` (the WordNet 3.0 tag count of
-  every sense key), `sense_respelling` (the respelling of a sense) and `legacy_class_map` (the retired class ids).
+  every sense key) and `sense_respelling` (the respelling of a sense).
 - `data/README.md` describes the tables for contributors and `data/PROVENANCE.md` records the sources, the pins, the
   WordNet 3.0 license notice for the counts and what was left out.
 
@@ -57,7 +61,9 @@ Relations are stored in one direction only; the inverse is derived. Symmetric re
 smaller identifier first. The schema declares the inverse pairs and which direction is stored, and the synset and
 sense levels have separate vocabularies, because `also`, `exemplifies` and `similar` exist at both levels.
 
-The sense inventory is a layer of tables over the imported senses. Every sense has one readable label
+The sense inventory is a layer of tables over the imported senses. The library classifies single words, so the inventory
+covers the senses of the lemmas of one token (`entry.token_count` 1); the senses of a multi-word lemma have no label or
+group. Every such sense has one readable label
 (`sense_label`), and its public id is `lemma#label`. The label is unique among the senses of its lemma, is frozen once
 published and is never reused: a rename or a retirement is recorded in `sense_label_map`, so a caller that stored an
 old id finds where it went. Curated labels and project labels are written by hand; `SenseLabelGenerator` writes a
@@ -80,14 +86,17 @@ Project senses are the senses that OEWN does not provide. They use the supplemen
 own entries already use (the source `dema`: an entry, a synset and a sense, with an authored gloss) and have no sense
 key. There is one for each determiner, pronoun, preposition, conjunction, interjection or auxiliary analysis
 (`lemma#<part of speech name>`), plus the curated discourse senses (`well#discourse-marker`), and the entry for the
-conjunction `or`. The candidate senses of a word come from its entries to their senses; there is no per-form sense
-scope table.
+conjunction `or`. The candidate senses of a word come from its entries to their senses. The per-form sense scope table
+and the class tables of the retired inventory stay in the schema only until the word image is compiled from the new
+tables; they are not part of the sense inventory.
 
 `sense_respelling` records the respelling of the senses whose pronunciation differs (`lead` the metal and `lead` the
-verb). `legacy_class_map` maps every class id of the retired class inventory to the group or sense that replaces it,
-with
-the level of that target (`group` or `sense`), so a stored old id and the relabeling of the corpus both have a complete,
-validated target.
+verb).
+
+A map from the retired class ids to the new groups and senses is not part of the data: it is a temporary working file
+of the corpus relabeling (`corpus/migration/legacy-class-map.tsv`, written by the `legacy-class-map` command) that is
+deleted when the relabeling is done, and it is neither validated by `validate-data`, nor shipped, nor documented as a
+feature.
 
 The importer and the validator share `DataSchema` and `DataLayout`, so they cannot disagree on shape, order or
 placement.

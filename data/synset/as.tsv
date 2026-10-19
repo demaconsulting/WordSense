@@ -1,5 +1,10 @@
 synset_id	pos	head_synset_id	lexfile
+dema-syn-as-c-1	c		
+dema-syn-as-p-1	p		
+dema-syn-aslant-p-1	p		
 dema-syn-aspirate-a-1	a		
+dema-syn-astraddle-p-1	p		
+dema-syn-astride-p-1	p		
 oewn-00003316-v	v		verb.body
 oewn-00006903-s	s	oewn-00006354-a	adj.all
 oewn-00009637-s	s	oewn-00009065-a	adj.all

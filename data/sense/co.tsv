@@ -1,8 +1,25 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-cobblers-i-1		dema-cobblers-i	dema-syn-cobblers-i-1	1
 dema-collocate-n-1		dema-collocate-n	dema-syn-collocate-n-1	1
+dema-come-i-1		dema-come-i	dema-syn-come-i-1	1
+dema-concerning-p-1		dema-concerning-p	dema-syn-concerning-p-1	1
 dema-confine-n-1		dema-confine-n	dema-syn-confine-n-1	1
+dema-congrats-i-1		dema-congrats-i	dema-syn-congrats-i-1	1
+dema-congratulation-i-1		dema-congratulation-i	dema-syn-congratulation-i-1	1
+dema-congratulations-i-1		dema-congratulations-i	dema-syn-congratulations-i-1	1
 dema-conjunct-n-1		dema-conjunct-n	dema-syn-conjunct-n-1	1
+dema-considering-c-1		dema-considering-c	dema-syn-considering-c-1	1
+dema-considering-p-1		dema-considering-p	dema-syn-considering-p-1	1
 dema-consist-n-1		dema-consist-n	dema-syn-consist-n-1	1
+dema-contact-i-1		dema-contact-i	dema-syn-contact-i-1	1
+dema-content-i-1		dema-content-i	dema-syn-content-i-1	1
+dema-contra-p-1		dema-contra-p	dema-syn-contra-p-1	1
+dema-coo-i-1		dema-coo-i	dema-syn-coo-i-1	1
+dema-cooee-i-1		dema-cooee-i	dema-syn-cooee-i-1	1
+dema-cor-i-1		dema-cor-i	dema-syn-cor-i-1	1
+dema-corblimey-i-1		dema-corblimey-i	dema-syn-corblimey-i-1	1
+dema-could-x-1		dema-could-x	dema-syn-could-x-1	1
+dema-couple-u-1		dema-couple-u	dema-syn-couple-u-1	1
 oewn-co--author__2.36.00..	co-author%2:36:00::	oewn-co-author-v	oewn-01708490-v	1
 oewn-co--beneficiary__1.18.00..	co-beneficiary%1:18:00::	oewn-co-beneficiary-n	oewn-09953430-n	1
 oewn-co--defendant__1.18.00..	co-defendant%1:18:00::	oewn-co-defendant-n	oewn-09952869-n	1

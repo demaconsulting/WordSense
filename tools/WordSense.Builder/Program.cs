@@ -28,12 +28,16 @@ namespace WordSense.Builder;
 ///     <item><description><c>coverage --text DIR [--corpus DIR] [--top N] [--output FILE]</c> reports how many of the running words of the text files of a directory the word table knows and lists the most frequent unknown words, split into name-like and other words.</description></item>
 ///     <item><description><c>appendix [--corpus DIR] [--output FILE]</c> writes the generated senses appendix of the user guide.</description></item>
 ///     <item><description><c>import-oewn --input FILE [--output DIR] [--sha256 HEX|none] [--threshold N] [--overwrite true]</c> imports the pinned Open English WordNet release into the table files of the data folder (default <c>data</c>) and refuses to replace existing tables unless <c>--overwrite true</c> is given; <c>import-oewn --previous FILE [--previous-release ID] [--previous-sha256 HEX|none] [--output DIR]</c> instead writes the identifier map from a previous release.</description></item>
-///     <item><description><c>validate-data [--data DIR]</c> validates the table files of the data folder against its <c>schema.yaml</c>; it exits with 1 and lists the violations when the data is not valid.</description></item>
+///     <item><description><c>import-wn30-counts --input FILE [--data DIR] [--sha256 HEX|none]</c> imports the pinned WordNet 3.0 sense index (<c>index.sense</c>) into the <c>sense_frequency</c> table, joined on the sense key, with the count 0 for a sense that has no line.</description></item>
+///     <item><description><c>label-senses [--data DIR]</c> gives every sense of the inventory that has no label a readable label and every lemma and part of speech that no curated group covers its default group; labels that exist are never changed.</description></item>
+///     <item><description><c>seed-inventory [--data DIR] [--curation DIR]</c> adds a project sense to every closed-class entry that has none and imports the curated labels and groups of the curation folder (default <c>corpus/curation</c>); it is the bootstrap of the inventory and is idempotent.</description></item>
+///     <item><description><c>legacy-class-map [--data DIR] [--corpus DIR] [--output FILE]</c> writes the temporary working file <c>corpus/migration/legacy-class-map.tsv</c> that maps the retired class ids to the new senses and groups for the relabeling of the corpus; the file and the command are deleted when the relabeling is done.</description></item>
+///     <item><description><c>validate-data [--data DIR] [--baseline DIR]</c> validates the table files of the data folder against its <c>schema.yaml</c> and, with a baseline (the data folder of the last release), checks that published sense labels are neither changed nor reused; it exits with 1 and lists the violations when the data is not valid.</description></item>
 ///     </list>
 /// </remarks>
 internal static class Program
 {
-    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: compile-image, rebuild-forms, audit-forms, generate-facts, import-agid, import-moby, weights <modelId>, evaluate <modelId>, ud-counts, ud-irregular, coverage, train-basic, tune-basic, appendix, import-oewn, validate-data.";
+    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: compile-image, rebuild-forms, audit-forms, generate-facts, import-agid, import-moby, weights <modelId>, evaluate <modelId>, ud-counts, ud-irregular, coverage, train-basic, tune-basic, appendix, import-oewn, import-wn30-counts, label-senses, seed-inventory, legacy-class-map, validate-data.";
 
     /// <summary>The name of the option that gives the input file of an import command.</summary>
     private const string InputOption = "input";
@@ -103,6 +107,14 @@ internal static class Program
                     return RunImportOewn(options, repository, output);
                 case "validate-data":
                     return RunValidateData(options, repository, output, error);
+                case "import-wn30-counts":
+                    return RunImportWn30Counts(options, repository, output);
+                case "label-senses":
+                    return RunLabelSenses(options, repository, output);
+                case "seed-inventory":
+                    return RunSeedInventory(options, repository, corpus, output);
+                case "legacy-class-map":
+                    return RunLegacyClassMap(options, repository, corpus, output);
                 case "rebuild-forms":
                     return RunRebuildForms(options, repository, corpus, output);
                 case "generate-facts":
@@ -125,7 +137,7 @@ internal static class Program
         }
     }
 
-    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "ud", "refresh-ud", "table", InputOption, "text", "top", "data", "sha256", "threshold", "overwrite", "outcomes", "oewn", "agid", "sample", "seed", "oracle", "adjudications", "max-error", "previous", "previous-release", "previous-sha256", "cache", "no-cache", "recompute-mean"], StringComparer.Ordinal);
+    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "ud", "refresh-ud", "table", InputOption, "text", "top", "data", "sha256", "threshold", "overwrite", "outcomes", "oewn", "agid", "sample", "seed", "oracle", "adjudications", "max-error", "previous", "previous-release", "previous-sha256", "cache", "no-cache", "recompute-mean", "baseline", "curation"], StringComparer.Ordinal);
 
     /// <summary>
     ///     Options that are switches: they take no value, but accept a following <c>true</c> or <c>false</c>.
@@ -354,10 +366,43 @@ internal static class Program
         return 0;
     }
 
+    private static int RunImportWn30Counts(Dictionary<string, string> options, string repository, TextWriter output)
+    {
+        var data = options.TryGetValue("data", out var d) ? Path.GetFullPath(d) : Path.Join(repository, "data");
+        var sha = options.TryGetValue("sha256", out var s) ? s : Data.OewnImporter.PinnedCountsSha256;
+        var result = Data.OewnImporter.ImportCounts(Require(options, InputOption), data, string.Equals(sha, "none", StringComparison.OrdinalIgnoreCase) ? null : sha);
+        output.WriteLine(Data.OewnImporter.Describe(result));
+        return 0;
+    }
+
+    private static int RunLabelSenses(Dictionary<string, string> options, string repository, TextWriter output)
+    {
+        var data = options.TryGetValue("data", out var d) ? Path.GetFullPath(d) : Path.Join(repository, "data");
+        output.WriteLine(Data.SenseLabelGenerator.Run(data).Render());
+        return 0;
+    }
+
+    private static int RunSeedInventory(Dictionary<string, string> options, string repository, string corpus, TextWriter output)
+    {
+        var data = options.TryGetValue("data", out var d) ? Path.GetFullPath(d) : Path.Join(repository, "data");
+        var curation = options.TryGetValue("curation", out var c) ? Path.GetFullPath(c) : Path.Join(corpus, "curation");
+        output.WriteLine(Data.InventorySeeder.Run(data, Directory.Exists(curation) ? curation : null).Render());
+        return 0;
+    }
+
+    private static int RunLegacyClassMap(Dictionary<string, string> options, string repository, string corpus, TextWriter output)
+    {
+        var data = options.TryGetValue("data", out var d) ? Path.GetFullPath(d) : Path.Join(repository, "data");
+        var file = options.TryGetValue("output", out var o) ? Path.GetFullPath(o) : Path.Join(corpus, "migration", "legacy-class-map.tsv");
+        var (classes, rows) = Data.LegacyClassMap.Write(data, corpus, file);
+        output.WriteLine($"Wrote {rows.ToString(CultureInfo.InvariantCulture)} rows for {classes.ToString(CultureInfo.InvariantCulture)} classes to {file} (temporary working file of the corpus relabeling).");
+        return 0;
+    }
+
     private static int RunValidateData(Dictionary<string, string> options, string repository, TextWriter output, TextWriter error)
     {
         var data = options.TryGetValue("data", out var d) ? Path.GetFullPath(d) : Path.Join(repository, "data");
-        var report = Data.DataValidator.Validate(data);
+        var report = Data.DataValidator.Validate(data, options.TryGetValue("baseline", out var b) ? Path.GetFullPath(b) : null);
         foreach (var violation in report.Violations)
         {
             error.WriteLine(violation);

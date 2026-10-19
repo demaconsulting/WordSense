@@ -95,7 +95,6 @@ sections:
               - WordSense-WordData-DataValidator-Consistency
               - WordSense-WordData-DataValidator-Senses
               - WordSense-WordData-DataValidator-Groups
-              - WordSense-WordData-DataValidator-LegacyMap
             tests:
               - WordSenseBuilder_DataEndToEnd_CommittedData_IsValid
               - WordSenseBuilder_DataEndToEnd_CommittedData_HasSenseLabelsAndGroups
@@ -118,9 +117,9 @@ sections:
 
           - id: WordSense-WordData-Senses
             title: >-
-              The word data subsystem shall give every sense one readable label, unique among the senses of its
-              lemma, so that the public id is lemma#label, shall keep a published label unchanged and never reuse
-              it, and shall record every rename or retirement of an id in an id map.
+              The word data subsystem shall give every sense of a one-word lemma one readable label, unique among the
+              senses of its lemma, so that the public id is lemma#label, shall keep a published label unchanged and
+              never reuse it, and shall record every rename or retirement of an id in an id map.
             tags: [subsystem]
             justification: |
               Callers store sense ids; an id that changed meaning, or that was reused for another sense, would corrupt
@@ -175,16 +174,3 @@ sections:
             tests:
               - WordSenseBuilder_DataEndToEnd_CommittedData_ProjectSensesHaveNoKeyAndAGloss
               - WordSenseBuilder_DataEndToEnd_CommittedData_ClosedClassAnalysesHaveAProjectSense
-
-          - id: WordSense-WordData-LegacyMap
-            title: >-
-              The word data subsystem shall map every class id of the previous release to the group or sense, and the
-              level of that target, that replaces it, so that no retired id is left without a target.
-            tags: [subsystem]
-            justification: |
-              Callers that stored the old ids and the corpus relabeling both need a complete, validated map from the
-              old classes to the new inventory.
-            children:
-              - WordSense-WordData-DataValidator-LegacyMap
-            tests:
-              - WordSenseBuilder_DataEndToEnd_CommittedData_LegacyMapCoversEveryRetiredClass

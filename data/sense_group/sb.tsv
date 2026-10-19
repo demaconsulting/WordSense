@@ -1,0 +1,6 @@
+group_id	lemma	pos	label	origin
+SB#noun-group	SB	n	noun-group	default
+SBA#noun-group	SBA	n	noun-group	default
+Sb#noun-group	Sb	n	noun-group	default
+SbE#noun-group	SbE	n	noun-group	default
+SbW#noun-group	SbW	n	noun-group	default

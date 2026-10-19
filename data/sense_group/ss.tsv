@@ -1,0 +1,9 @@
+group_id	lemma	pos	label	origin
+SS#noun-group	SS	n	noun-group	default
+SSA#noun-group	SSA	n	noun-group	default
+SSE#noun-group	SSE	n	noun-group	default
+SSMG#noun-group	SSMG	n	noun-group	default
+SSPE#noun-group	SSPE	n	noun-group	default
+SSRI#noun-group	SSRI	n	noun-group	default
+SSS#noun-group	SSS	n	noun-group	default
+SSW#noun-group	SSW	n	noun-group	default

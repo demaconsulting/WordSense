@@ -132,13 +132,11 @@ pass no longer passes (`BasicSuite_ExpectedPasses_StillPass`, `MiniLMSuite_Expec
 independent evaluations (SemCor and running-text part of speech) are verified in the builder documents: their figures
 come from downloaded texts that are never committed.
 
-### Migration Map and Data
+### Data
 
 The committed data is validated: every sense has one unique label, the groups partition the senses of their lemmas,
-every keyed sense has a frequency, the project senses have no key, and the legacy class map names a target for every
-retired class id (`WordSenseBuilder_DataEndToEnd_CommittedData_HasSenseLabelsAndGroups`,
-`WordSenseBuilder_DataEndToEnd_CommittedData_LegacyMapCoversEveryRetiredClass`); the appendix generated from that data
-lists the legacy class map (`WordSenseBuilder_Appendix_Generate_ListsLegacyClassMap`).
+every keyed sense has a frequency and the project senses have no key
+(`WordSenseBuilder_DataEndToEnd_CommittedData_HasSenseLabelsAndGroups`).
 
 ### Builder Commands
 

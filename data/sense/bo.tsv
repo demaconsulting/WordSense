@@ -1,4 +1,14 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-bo-i-1		dema-bo-i	dema-syn-bo-i-1	1
+dema-boh-i-1		dema-boh-i	dema-syn-boh-i-1	1
+dema-bonjour-i-1		dema-bonjour-i	dema-syn-bonjour-i-1	1
+dema-bonsoir-i-1		dema-bonsoir-i	dema-syn-bonsoir-i-1	1
+dema-boo-i-1		dema-boo-i	dema-syn-boo-i-1	1
+dema-both-c-1		dema-both-c	dema-syn-both-c-1	1
+dema-both-d-1		dema-both-d	dema-syn-both-d-1	1
+dema-bother-i-1		dema-bother-i	dema-syn-bother-i-1	1
+dema-botheration-i-1		dema-botheration-i	dema-syn-botheration-i-1	1
+dema-boy-i-1		dema-boy-i	dema-syn-boy-i-1	1
 oewn-bo-apos-s-apos-n__1.18.00..	bo's'n%1:18:00::	oewn-bo-ap-s-ap-n-n	oewn-09881589-n	1
 oewn-bo-apos-sun__1.18.00..	bo'sun%1:18:00::	oewn-bo-ap-sun-n	oewn-09881589-n	1
 oewn-bo_tree__1.20.00..	bo_tree%1:20:00::	oewn-bo_tree-n	oewn-12423101-n	1

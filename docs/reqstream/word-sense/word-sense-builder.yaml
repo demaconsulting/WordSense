@@ -309,17 +309,15 @@ sections:
             title: >-
               The builder shall generate the senses appendix of the user guide deterministically from the sense
               catalog of the data (each trained lemma's senses with id, group, OEWN sense key, gloss and respelling),
-              the forms, the anchor sentences and the legacy class map, shall reject incomplete input, and the
-              committed appendix shall equal the generated one.
+              the forms and the anchor sentences, shall reject incomplete input, and the committed appendix shall equal
+              the generated one.
             tags: [unit]
             justification: |
-              The list of supported lemmas with their senses, groups, keys, respellings and forms, and the map from
-              the retired class ids, must always describe the trained corpus; generating it, and failing when the
-              committed file is stale, makes drift impossible.
+              The list of supported lemmas with their senses, groups, keys, respellings and forms must always describe
+              the trained corpus; generating it, and failing when the committed file is stale, makes drift impossible.
             tests:
               - WordSenseBuilder_Appendix_Generate_ListsLemmasSensesAndForms
               - WordSenseBuilder_Appendix_Generate_ListsSensesWithGroupKeyGlossAndRespelling
-              - WordSenseBuilder_Appendix_Generate_ListsLegacyClassMap
               - WordSenseBuilder_Appendix_Generate_RejectsIncompleteInput
               - WordSenseBuilder_Program_Appendix_WritesFile
               - WordSenseBuilder_Program_Appendix_MissingCorpus_Fails

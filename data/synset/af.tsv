@@ -1,4 +1,9 @@
 synset_id	pos	head_synset_id	lexfile
+dema-syn-aff-p-1	p		
+dema-syn-afore-c-1	c		
+dema-syn-afore-p-1	p		
+dema-syn-after-c-1	c		
+dema-syn-after-p-1	p		
 oewn-00019441-v	v		verb.body
 oewn-00061741-r	r		adv.all
 oewn-00066927-r	r		adv.all

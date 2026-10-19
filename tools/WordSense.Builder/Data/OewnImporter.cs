@@ -131,7 +131,7 @@ internal static partial class OewnImporter
 
         foreach (var row in tables.Senses)
         {
-            resolver.AddSense(row[0], row[2], row[3]);
+            resolver.AddSense(row[0], row[2], row[3], row[1]);
         }
 
         // Write every table to its files
@@ -141,6 +141,14 @@ internal static partial class OewnImporter
         {
             files[name] = WriteTable(schema.Table(name), list, resolver, output);
             rows[name] = list.Count;
+        }
+
+        // The id map of the sense labels starts empty; an existing one holds published decisions and is never touched
+        var labelMap = schema.Table("sense_label_map");
+        var labelMapPath = DataLayout.FilePath(output, labelMap, string.Empty);
+        if (!File.Exists(labelMapPath))
+        {
+            DataLayout.WriteTable(labelMapPath, labelMap.Columns.Select(c => c.Name).ToArray(), []);
         }
 
         return new ImportResult(rows, files, split, missing, selfRelations, cleaner.Count);

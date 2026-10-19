@@ -1,0 +1,4 @@
+group_id	lemma	pos	label	origin
+CV#noun-group	CV	n	noun-group	default
+CVA#noun-group	CVA	n	noun-group	default
+cv#adjective-group	cv	a	adjective-group	default

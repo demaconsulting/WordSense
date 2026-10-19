@@ -308,8 +308,8 @@ It never reads the holdout or the real-text sentences and writes no file, so the
 
 Writes a deterministic Markdown appendix: the explanation of parts of speech, pronunciations, groups and forms, the
 summary of the dictionary words, an alphabetical list of the trained lemmas, each with its senses (id, group, OEWN sense
-key, gloss and respelling), the tier and anchor counts of each sense and their recognized forms, and the legacy class
-map from the retired class ids to the groups and senses that replace them. Lines are wrapped to the repository's
+key, gloss and respelling), the tier and anchor counts of each sense and their recognized forms. Lines are wrapped to
+the repository's
 markdown line limit.
 
 ### Error Handling

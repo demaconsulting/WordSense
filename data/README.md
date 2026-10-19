@@ -3,7 +3,10 @@
 The tables in this folder are the word data of WordSense: entries, senses, synsets, glosses, examples, relations and
 pronunciations of English. They were imported once from **Open English WordNet 2025** (<https://en-word.net>), which
 is licensed under **CC BY 4.0** (<https://creativecommons.org/licenses/by/4.0/>), and keep that license; project-authored
-additions (source `dema`) are MIT. See [PROVENANCE.md](PROVENANCE.md) for the source file, its hash and what was left out.
+additions (source `dema`) are MIT. The sense frequency counts (`sense_frequency`) come from **WordNet 3.0**
+(Princeton University) and are used under its license (WordNet 3.0 Copyright 2006 by Princeton University; the full
+notice is in [PROVENANCE.md](PROVENANCE.md)). **SemCor** is an evaluation source only: it is never committed. See
+[PROVENANCE.md](PROVENANCE.md) for the source file, its hash and what was left out.
 
 The data is **authoritative once committed**: edit the tables by hand (or with a script) and run the validator. The
 importer refuses to overwrite existing tables, so a re-import can never destroy an edit.
@@ -39,15 +42,48 @@ importer refuses to overwrite existing tables, so a re-import can never destroy 
 | `class_entry` | `class_id, entry_id, features` | the entry (and grammatical features) a class stands for |
 | `form` | `spelling, rank` | one analysis of a written form: entry, features, source, reviewed flag |
 | `form_sense_scope` | `spelling, rank, class_id` | the classes an analysis stands for (no row: one answer) |
+| `sense_label` | `sense_id` | the readable label of a sense (public id `lemma#label`) and its origin |
+| `sense_label_map` | `old_id, release` | renames and retirements of public sense ids (an old id is never reused) |
+| `sense_group` | `group_id` | a coarse group of the senses of one lemma and part of speech (public id `lemma#label`) |
+| `group_sense` | `group_id, sense_id` | the group of a sense; a sense is in at most one group |
+| `sense_frequency` | `sense_key` | the WordNet 3.0 tag count of a sense key (0 when the sense has none) |
+| `sense_respelling` | `sense_id` | the respelling of a sense whose pronunciation differs |
 
 The part of speech letters are `n v a r` and, for the closed classes, `u` pronoun, `p` preposition, `c` conjunction,
 `i` interjection, `d` determiner, `x` auxiliary. An entry of source `dema` may have no sense (a bare lemma and part of
-speech that forms refer to); an entry of source `oewn` always has senses. `form.spelling` is the exact written form;
-the table is partitioned by the spelling like entries by the lemma.
+speech that forms refer to); an entry of source `oewn` always has senses; an entry of a closed class has a project sense.
+`form.spelling` is the exact written form; the table is partitioned by the spelling like entries by the lemma.
 
-The coarse tables map the labeled senses of `corpus/senses` to OEWN senses. When a lemma and part of speech has a class
+The class tables (`coarse_class`, `class_sense`, `class_entry`) and `form_sense_scope` map the labeled senses of
+`corpus/senses` to OEWN senses. They stay until the word image is compiled from the sense inventory below; then they are
+removed. When a lemma and part of speech has a class
 of kind `sense_group`, `no_oewn` or `unmapped`, every sense of it is in exactly one class, so no sense is left without
 a meaning.
+
+## The sense inventory
+
+The library classifies single words, so the inventory covers the senses of the lemmas of one token (`entry.token_count`
+
+1) and every project sense.
+
+- **Labels.** Every sense has one readable label, unique among the senses of its lemma, made of lower-case ASCII
+  letters, digits and hyphens; the public id of the sense is `lemma#label` (for example `bank#coin-bank`). A label is
+  chosen by hand (origin `curated`), written by `label-senses` (origin `generated`: the part of speech name for the
+  only sense of a lemma and part of speech, else the first synonym, else the head of the hypernym, with a numeric
+  suffix where two senses would share one), or belongs to a project sense (origin `project`). A published label is
+  never changed or reused: a rename or a retirement is a row of `sense_label_map`, and `validate-data --baseline DIR`
+  compares the labels with the data folder of the last release.
+- **Project senses.** A sense that Open English WordNet does not provide: one for every closed-class entry
+  (`lemma#<part of speech name>`, for example `the#determiner`) and the curated discourse senses (`well#discourse-marker`).
+  They are rows of source `dema`: an entry, a synset, a gloss and a sense without a sense key.
+- **Groups.** Every sense of a curated lemma is in exactly one curated group of one lemma and one part of speech; a group
+  never mixes two respellings. A lemma that is not curated has one default group for each part of speech, labeled with
+  the part of speech name and `-group` (`bank#noun-group`). The ids of senses and groups are in one namespace and never
+  collide, which is why a one-sense group has the suffix `-group` (`go#attempt-group` for the sense `go#attempt`).
+- **Frequency.** `sense_frequency` has the WordNet 3.0 tag count of every sense that has a sense key, joined on the key
+  by `import-wn30-counts`; 0 when the sense index has no line for it. A project sense has no key and ranks as 0.
+- **Respellings.** `sense_respelling` is filled when a lemma is curated (the earlier inventory kept them per class), so
+  that a group never mixes two respellings.
 
 ## Relations
 
@@ -58,9 +94,16 @@ separate vocabularies in `schema.yaml`. A sense relation of type `other` needs a
 ## Commands
 
 ```text
-dotnet run --project tools/WordSense.Builder -c Release -- validate-data [--data DIR]
+dotnet run --project tools/WordSense.Builder -c Release -- validate-data [--data DIR] [--baseline DIR]
 dotnet run --project tools/WordSense.Builder -c Release -- import-oewn --input english-wordnet-2025.xml.gz [--output DIR]
+dotnet run --project tools/WordSense.Builder -c Release -- import-wn30-counts --input index.sense [--data DIR]
+dotnet run --project tools/WordSense.Builder -c Release -- label-senses [--data DIR]
+dotnet run --project tools/WordSense.Builder -c Release -- seed-inventory [--data DIR] [--curation DIR]
 ```
 
-`validate-data` prints each violation with file, line, rule and value, and exits with 1 when there is one. The OEWN
-source file is never committed; `import-oewn` checks its SHA-256 against the pin.
+`validate-data` prints each violation with file, line, rule and value, and exits with 1 when there is one; with
+`--baseline` (the data folder of the last release) it also checks that no published sense label was changed or reused.
+The OEWN source file is never committed; `import-oewn` checks its SHA-256 against the pin, and `import-wn30-counts` the
+SHA-256 of `index.sense` (see [PROVENANCE.md](PROVENANCE.md)). `label-senses` and `seed-inventory` write the sense
+inventory tables; run them after the counts are imported (the counts order the senses of a lemma). `seed-inventory`
+adds the project senses of the closed-class entries and imports the curated labels and groups of `corpus/curation`.

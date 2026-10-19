@@ -22,7 +22,7 @@ This user guide covers:
 - Choosing and installing the packages, requirements and a quick start
 - The classification API: words, results, levels, confidence, part of speech, groups and sense ids
 - The word table and the sense catalog of the core package, including the lookup of a sense by its OEWN sense key
-- Migrating from the class ids of the previous release
+- Changes from the previous release
 - Model download, mirrors and offline use
 - Limitations
 - Licensing and provenance of the data
@@ -297,7 +297,7 @@ if (answer.GroupId is { } groupId && WordLexicon.TryGetGroup(groupId, out SenseG
 3.0 sense counts). `TryGetSense` and `TryGetSenseByKey` find the same sense through its id or its key; a project sense
 has no key and is found only by its id. Every sense is in exactly one group of the same lemma and part of speech.
 
-## Migrating from the Class Ids of the Previous Release
+## Changes from the Previous Release
 
 The previous release identified a sense by a pronunciation or part-of-speech class id such as `lead#metal` or
 `read#past`, and carried it in `WordDetails.SenseId`. This release changes the model as follows:
@@ -305,9 +305,8 @@ The previous release identified a sense by a pronunciation or part-of-speech cla
 - **The sense id moved.** `WordDetails.SenseId` is gone: an analysis has a lemma, a part of speech and features. The
   sense is in `WordSense.SenseId`, next to `WordSense.GroupId` and `WordSense.Level`. Replace a test for a non-null
   sense id by a test of the level.
-- **The ids are readable fine senses and groups.** A previous class id maps to a group or to a sense of the new
-  inventory; the appendix publishes the complete map (the legacy class map), with the level of each target. A class that
-  covered several fine senses maps to a group, and a class that was one sense maps to that sense.
+- **The ids are readable fine senses and groups.** The sense ids of this release are new (`lemma#label`, for example
+  `bank#noun`), and the ids of the previous release are not valid any more; no mapping from them is provided.
 - **Confidence refers to a level.** Re-tune the threshold you apply: the confidence now says how sure the model is of
   the level it answered at, and a lemma answered at the `Group` or `PartOfSpeech` level has no sense id at all.
 - **`Lookup` returns analyses once.** `WordLexicon.Lookup` no longer repeats an analysis for each class of a word;
@@ -772,7 +771,7 @@ a lemma and size the training data of each sense come from the WordNet 3.0 sense
 WordNet license, whose notice is reproduced in `data/PROVENANCE.md`). SemCor 3.0, the sense-annotated text on which the
 models are measured, is downloaded to a cache by the builder, never committed, and used for evaluation only; it is
 credited here as the evaluation source. Project-authored additions to the data (the readable sense labels, the groups,
-the project senses and the legacy class map) are MIT.
+the project senses) are MIT.
 The training corpus is not shipped in the NuGet packages; only the derived weights are embedded. Every corpus sentence
 has a row in `corpus/provenance/*.tsv` recording its source, license, URL and contributor. The licenses in use are
 `CC0 1.0`, `Public domain`, `CC BY 2.0 FR` (Tatoeba, with the contributor recorded), `CC BY-SA 4.0` (Wikipedia and

@@ -1,4 +1,9 @@
 synset_id	seq	text
+dema-syn-aff-p-1	1	The preposition "aff"; a project sense, because Open English WordNet has no preposition sense of this word.
+dema-syn-afore-c-1	1	The conjunction "afore"; a project sense, because Open English WordNet has no conjunction sense of this word.
+dema-syn-afore-p-1	1	The preposition "afore"; a project sense, because Open English WordNet has no preposition sense of this word.
+dema-syn-after-c-1	1	The conjunction "after"; a project sense, because Open English WordNet has no conjunction sense of this word.
+dema-syn-after-p-1	1	The preposition "after"; a project sense, because Open English WordNet has no preposition sense of this word.
 oewn-00019441-v	1	act physically on; have an effect upon
 oewn-00061741-r	1	happening at a time subsequent to a reference time
 oewn-00066927-r	1	in an affected manner

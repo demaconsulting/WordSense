@@ -1,0 +1,6 @@
+group_id	lemma	pos	label	origin
+CSE#noun-group	CSE	n	noun-group	default
+CSIS#noun-group	CSIS	n	noun-group	default
+CST#noun-group	CST	n	noun-group	default
+Cs#noun-group	Cs	n	noun-group	default
+csardas#noun-group	csardas	n	noun-group	default
