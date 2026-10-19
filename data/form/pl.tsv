@@ -564,8 +564,8 @@ planned communities	0	oewn-planned_community-n	Number=Plur	dema	0			rule
 planned community	0	oewn-planned_community-n	Number=Sing	dema	0			oewn_form
 planner	0	oewn-planner-n	Number=Sing	dema	0			oewn_form
 planners	0	oewn-planner-n	Number=Plur	dema	0			rule
-planning	0	oewn-planning-n	Number=Sing	dema	0			oewn_form
-planning	1	oewn-plan-v	VerbForm=Ger	dema	0			oewn_form
+planning	0	oewn-plan-v	VerbForm=Ger	dema	0			oewn_form
+planning	1	oewn-planning-n	Number=Sing	dema	0			oewn_form
 planning board	0	oewn-planning_board-n	Number=Sing	dema	0			oewn_form
 planning boards	0	oewn-planning_board-n	Number=Plur	dema	0			rule
 planning commission	0	oewn-planning_commission-n	Number=Sing	dema	0			oewn_form
@@ -871,8 +871,8 @@ plasticizers	0	oewn-plasticizer-n	Number=Plur	dema	0			rule
 plasticizes	0	oewn-plasticize-v	Person=3+Tense=Pres	dema	0			rule
 plasticizing	0	oewn-plasticize-v	VerbForm=Ger	dema	0			rule
 plasticly	0		Degree=Pos	dema	0	plasticly	r	moby_reverse
-plastics	0		Degree=Pos	dema	0	plastics	a	moby_reverse
-plastics	1	oewn-plastic-n	Number=Plur	dema	0			rule
+plastics	0	oewn-plastic-n	Number=Plur	dema	0			rule
+plastics	1		Degree=Pos	dema	0	plastics	a	moby_reverse
 plastics industries	0	oewn-plastics_industry-n	Number=Plur	dema	0			rule
 plastics industry	0	oewn-plastics_industry-n	Number=Sing	dema	0			oewn_form
 plastid	0	oewn-plastid-n	Number=Sing	dema	0			oewn_form
@@ -1292,9 +1292,9 @@ pleasedness	0		Number=Sing	dema	0	pleasedness	n	moby_reverse
 pleaser	0	oewn-pleaser-n	Number=Sing	dema	0			oewn_form
 pleasers	0	oewn-pleaser-n	Number=Plur	dema	0			rule
 pleases	0	oewn-please-v	Person=3+Tense=Pres	dema	0			rule
-pleasing	0	oewn-pleasing-a	Degree=Pos	dema	0			oewn_form
-pleasing	1	oewn-pleasing-n	Number=Sing	dema	0			oewn_form
-pleasing	2	oewn-please-v	VerbForm=Ger	dema	0			rule
+pleasing	0	oewn-please-v	VerbForm=Ger	dema	0			rule
+pleasing	1	oewn-pleasing-a	Degree=Pos	dema	0			oewn_form
+pleasing	2	oewn-pleasing-n	Number=Sing	dema	0			oewn_form
 pleasingly	0	oewn-pleasingly-r	Degree=Pos	dema	0			oewn_form
 pleasingness	0	oewn-pleasingness-n	Number=Sing	dema	0			oewn_form
 pleasingnesses	0	oewn-pleasingness-n	Number=Plur	dema	0			rule
@@ -1582,11 +1582,11 @@ plications	0	oewn-plication-n	Number=Plur	dema	0			rule
 plie	0		Number=Sing	dema	0	plie	n	moby_reverse
 plied	0	oewn-ply-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 plier	0	oewn-plier-n	Number=Sing	dema	0			oewn_form
-pliers	0	oewn-pliers-n	Number=Sing	dema	0			oewn_form
-pliers	1	oewn-plier-n	Number=Plur	dema	0			rule
-plies	0		Number=Plur	dema	0	plie	n	rule
-plies	1	oewn-ply-n	Number=Plur	dema	0			rule
-plies	2	oewn-ply-v	Person=3+Tense=Pres	dema	0			rule
+pliers	0	oewn-plier-n	Number=Plur	dema	0			rule
+pliers	1	oewn-pliers-n	Number=Sing	dema	0			oewn_form
+plies	0	oewn-ply-v	Person=3+Tense=Pres	dema	0			rule
+plies	1		Number=Plur	dema	0	plie	n	rule
+plies	2	oewn-ply-n	Number=Plur	dema	0			rule
 plight	0	oewn-plight-n	Number=Sing	dema	0			oewn_form
 plight	1	oewn-plight-v	VerbForm=Inf	dema	0			oewn_form
 plighted	0	oewn-plight-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -1625,8 +1625,8 @@ plod	1	oewn-plod-n	Number=Sing	dema	0			oewn_form
 plodded	0	oewn-plod-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 plodder	0	oewn-plodder-n	Number=Sing	dema	0			oewn_form
 plodders	0	oewn-plodder-n	Number=Plur	dema	0			rule
-plodding	0	oewn-plodding-n	Number=Sing	dema	0			oewn_form
-plodding	1	oewn-plod-v	VerbForm=Ger	dema	0			oewn_form
+plodding	0	oewn-plod-v	VerbForm=Ger	dema	0			oewn_form
+plodding	1	oewn-plodding-n	Number=Sing	dema	0			oewn_form
 plodding	2	oewn-plodding-a	Degree=Pos	dema	0			oewn_form
 ploddingly	0	oewn-ploddingly-r	Degree=Pos	dema	0			oewn_form
 ploddingness	0		Number=Sing	dema	0	ploddingness	n	moby_reverse
@@ -1955,8 +1955,8 @@ plumped for	0	oewn-plump_for-v	Tense=Past+VerbForm=Part	dema	0			rule
 plumped in	0	oewn-plump_in-v	Tense=Past+VerbForm=Part	dema	0			rule
 plumped out	0	oewn-plump_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 plumped up	0	oewn-plump_up-v	Tense=Past+VerbForm=Part	dema	0			rule
-plumper	0		Number=Sing	dema	0	plumper	n	moby_reverse
-plumper	1	oewn-plump-a	Degree=Cmp	dema	0			rule
+plumper	0	oewn-plump-a	Degree=Cmp	dema	0			rule
+plumper	1		Number=Sing	dema	0	plumper	n	moby_reverse
 plumpers	0		Number=Plur	dema	0	plumper	n	rule
 plumpest	0	oewn-plump-a	Degree=Sup	dema	0			rule
 plumping	0	oewn-plump-v	VerbForm=Ger	dema	0			rule
@@ -2065,9 +2065,9 @@ pluripresence	0		Number=Sing	dema	0	pluripresence	n	moby_reverse
 pluripresences	0		Number=Plur	dema	0	pluripresence	n	rule
 plurs	0		Number=Plur	dema	0	plur	n	rule
 plus	0	dema-plus-p		dema	0			carried
-plus	1	oewn-plus-a	Degree=Pos	dema	0			oewn_form
-plus	2	oewn-plus-n	Number=Sing	dema	0			oewn_form
-plus	3		Number=Plur	dema	0	plu	n	rule
+plus	1		Number=Plur	dema	0	plu	n	rule
+plus	2	oewn-plus-a	Degree=Pos	dema	0			oewn_form
+plus	3	oewn-plus-n	Number=Sing	dema	0			oewn_form
 plus fours	0	oewn-plus_fours-n	Number=Sing	dema	0			oewn_form
 plus sign	0	oewn-plus_sign-n	Number=Sing	dema	0			oewn_form
 plus signs	0	oewn-plus_sign-n	Number=Plur	dema	0			rule

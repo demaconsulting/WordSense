@@ -48,8 +48,8 @@ OR gate	0	oewn-OR_gate-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 OR gates	0	oewn-OR_gate-n	Capitalization=Exact+Number=Plur	dema	0			rule
 ORS	0		Number=Plur	dema	0	or	n	rule
 ORS	1	oewn-OR-n	Capitalization=Upper+Number=Plur	dema	0			rule
-OS	0	oewn-os-n	Number=Sing	dema	0			oewn_form
-OS	1	oewn-o-n	Number=Plur	dema	0			rule
+OS	0	oewn-o-n	Number=Plur	dema	0			rule
+OS	1	oewn-os-n	Number=Sing	dema	0			oewn_form
 OS	2	oewn-OS-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 OSES	0	oewn-os-n	Number=Plur	dema	0			rule_variant
 OSES	1	oewn-OS-n	Capitalization=Upper+Number=Plur	dema	0			rule
@@ -596,8 +596,8 @@ Oryzomys palustris	0	oewn-Oryzomys_palustris-n	Capitalization=Exact+Number=Sing	
 Oryzopsis hymenoides	0	oewn-Oryzopsis_hymenoides-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Oryzopsis miliacea	0	oewn-Oryzopsis_miliacea-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Oryzopsis miliaceas	0	oewn-Oryzopsis_miliacea-n	Capitalization=Exact+Number=Plur	dema	0			rule
-Os	0	oewn-os-n	Number=Sing	dema	0			oewn_form
-Os	1	oewn-o-n	Number=Plur	dema	0			rule
+Os	0	oewn-o-n	Number=Plur	dema	0			rule
+Os	1	oewn-os-n	Number=Sing	dema	0			oewn_form
 Os	2	oewn-O-n	Capitalization=Title+Number=Plur	dema	0			rule
 Os	3	oewn-Os-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Osage	0	oewn-Osage-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
@@ -1059,8 +1059,8 @@ obligees	0		Number=Plur	dema	0	obligee	n	rule
 obliger	0	oewn-obliger-n	Number=Sing	dema	0			oewn_form
 obligers	0	oewn-obliger-n	Number=Plur	dema	0			rule
 obliges	0	oewn-oblige-v	Person=3+Tense=Pres	dema	0			rule
-obliging	0	oewn-obliging-a	Degree=Pos	dema	0			oewn_form
-obliging	1	oewn-oblige-v	VerbForm=Ger	dema	0			rule
+obliging	0	oewn-oblige-v	VerbForm=Ger	dema	0			rule
+obliging	1	oewn-obliging-a	Degree=Pos	dema	0			oewn_form
 obligingly	0	oewn-obligingly-r	Degree=Pos	dema	0			oewn_form
 obligingness	0	oewn-obligingness-n	Number=Sing	dema	0			oewn_form
 obligingnesses	0	oewn-obligingness-n	Number=Plur	dema	0			rule
@@ -2229,8 +2229,8 @@ officiary	1		Degree=Pos	dema	0	officiary	a	moby_reverse
 officiate	0	oewn-officiate-v	VerbForm=Inf	dema	0			oewn_form
 officiated	0	oewn-officiate-v	Tense=Past+VerbForm=Part	dema	0			rule
 officiates	0	oewn-officiate-v	Person=3+Tense=Pres	dema	0			rule
-officiating	0	oewn-officiating-n	Number=Sing	dema	0			oewn_form
-officiating	1	oewn-officiate-v	VerbForm=Ger	dema	0			rule
+officiating	0	oewn-officiate-v	VerbForm=Ger	dema	0			rule
+officiating	1	oewn-officiating-n	Number=Sing	dema	0			oewn_form
 officiatings	0	oewn-officiating-n	Number=Plur	dema	0			rule
 officiation	0	oewn-officiation-n	Number=Sing	dema	0			oewn_form
 officiations	0	oewn-officiation-n	Number=Plur	dema	0			rule
@@ -3578,8 +3578,8 @@ oozes out	0	oewn-ooze_out-v	Person=3+Tense=Pres	dema	0			rule
 oozes through	0	oewn-ooze_through-v	Person=3+Tense=Pres	dema	0			rule
 oozier	0	oewn-oozy-a	Degree=Cmp	dema	0			oewn_form
 ooziest	0	oewn-oozy-a	Degree=Sup	dema	0			oewn_form
-oozing	0	oewn-oozing-n	Number=Sing	dema	0			oewn_form
-oozing	1	oewn-ooze-v	VerbForm=Ger	dema	0			rule
+oozing	0	oewn-ooze-v	VerbForm=Ger	dema	0			rule
+oozing	1	oewn-oozing-n	Number=Sing	dema	0			oewn_form
 oozing	2	oewn-oozing-a	Degree=Pos	dema	0			oewn_form
 oozing out	0	oewn-ooze_out-v	VerbForm=Ger	dema	0			rule
 oozing through	0	oewn-ooze_through-v	VerbForm=Ger	dema	0			rule
@@ -3988,8 +3988,8 @@ opined	0	oewn-opine-v	Tense=Past+VerbForm=Part	dema	0			rule
 opines	0	oewn-opine-v	Person=3+Tense=Pres	dema	0			rule
 oping	0		VerbForm=Ger	dema	0	ope	v	rule
 opinicus	0		Number=Sing	dema	0	opinicus	n	moby_reverse
-opinicuses	0		Number=Sing	dema	0	opinicuses	n	moby_reverse
-opinicuses	1		Number=Plur	dema	0	opinicus	n	rule
+opinicuses	0		Number=Plur	dema	0	opinicus	n	rule
+opinicuses	1		Number=Sing	dema	0	opinicuses	n	moby_reverse
 opining	0	oewn-opine-v	VerbForm=Ger	dema	0			rule
 opinion	0	oewn-opinion-n	Number=Sing	dema	0			oewn_form
 opinion poll	0	oewn-opinion_poll-n	Number=Sing	dema	0			oewn_form
@@ -5331,8 +5331,8 @@ oryx	0	oewn-oryx-n	Number=Sing	dema	0			oewn_form
 oryxes	0	oewn-oryx-n	Number=Plur	dema	0			rule
 orzo	0	oewn-orzo-n	Number=Sing	dema	0			oewn_form
 orzos	0	oewn-orzo-n	Number=Plur	dema	0			rule
-os	0	oewn-os-n	Number=Sing	dema	0			oewn_form
-os	1	oewn-o-n	Number=Plur	dema	0			rule
+os	0	oewn-o-n	Number=Plur	dema	0			rule
+os	1	oewn-os-n	Number=Sing	dema	0			oewn_form
 os breve	0	oewn-os_breve-n	Number=Sing	dema	0			oewn_form
 os breves	0	oewn-os_breve-n	Number=Plur	dema	0			rule
 os capitatum	0	oewn-os_capitatum-n	Number=Sing	dema	0			oewn_form
@@ -5501,8 +5501,8 @@ ossiculums	0	oewn-ossiculum-n	Number=Plur	dema	0			rule
 ossiferous	0	oewn-ossiferous-a	Degree=Pos	dema	0			oewn_form
 ossification	0	oewn-ossification-n	Number=Sing	dema	0			oewn_form
 ossifications	0	oewn-ossification-n	Number=Plur	dema	0			rule
-ossified	0	oewn-ossified-a	Degree=Pos	dema	0			oewn_form
-ossified	1	oewn-ossify-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+ossified	0	oewn-ossify-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+ossified	1	oewn-ossified-a	Degree=Pos	dema	0			oewn_form
 ossifier	0		Number=Sing	dema	0	ossifier	n	moby_reverse
 ossifiers	0		Number=Plur	dema	0	ossifier	n	rule
 ossifies	0	oewn-ossify-v	Person=3+Tense=Pres	dema	0			rule
@@ -6000,8 +6000,8 @@ outbleat	0		VerbForm=Inf	dema	0	outbleat	v	moby_reverse
 outbleating	0		VerbForm=Ger	dema	0	outbleat	v	rule
 outbleats	0		Person=3+Tense=Pres	dema	0	outbleat	v	rule
 outbleed	0		VerbForm=Inf	dema	0	outbleed	v	moby_reverse
-outbleeding	0		VerbForm=Inf	dema	0	outbleeding	v	moby_reverse
-outbleeding	1		VerbForm=Ger	dema	0	outbleed	v	rule
+outbleeding	0		VerbForm=Ger	dema	0	outbleed	v	rule
+outbleeding	1		VerbForm=Inf	dema	0	outbleeding	v	moby_reverse
 outbless	0		VerbForm=Inf	dema	0	outbless	v	moby_reverse
 outblessed	0		Tense=Past+VerbForm=Part	dema	0	outbless	v	rule
 outblesses	0		Person=3+Tense=Pres	dema	0	outbless	v	rule
@@ -6109,8 +6109,8 @@ outbridged	0		Tense=Past+VerbForm=Part	dema	0	outbridge	v	rule
 outbridges	0		Person=3+Tense=Pres	dema	0	outbridge	v	rule
 outbridging	0		VerbForm=Ger	dema	0	outbridge	v	rule
 outbring	0		VerbForm=Inf	dema	0	outbring	v	moby_reverse
-outbringing	0		VerbForm=Inf	dema	0	outbringing	v	moby_reverse
-outbringing	1		VerbForm=Ger	dema	0	outbring	v	rule
+outbringing	0		VerbForm=Ger	dema	0	outbring	v	rule
+outbringing	1		VerbForm=Inf	dema	0	outbringing	v	moby_reverse
 outbrought	0		VerbForm=Inf	dema	0	outbrought	v	moby_reverse
 outbroughted	0		Tense=Past+VerbForm=Part	dema	0	outbrought	v	rule
 outbroughting	0		VerbForm=Ger	dema	0	outbrought	v	rule
@@ -6248,8 +6248,8 @@ outcries	1	oewn-outcry-v	Person=3+Tense=Pres	dema	0			rule
 outcrop	0	oewn-outcrop-n	Number=Sing	dema	0			oewn_form
 outcrop	1	oewn-outcrop-v	VerbForm=Inf	dema	0			oewn_form
 outcropped	0	oewn-outcrop-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
-outcropping	0	oewn-outcropping-n	Number=Sing	dema	0			oewn_form
-outcropping	1	oewn-outcrop-v	VerbForm=Ger	dema	0			oewn_form
+outcropping	0	oewn-outcrop-v	VerbForm=Ger	dema	0			oewn_form
+outcropping	1	oewn-outcropping-n	Number=Sing	dema	0			oewn_form
 outcroppings	0	oewn-outcropping-n	Number=Plur	dema	0			rule
 outcrops	0	oewn-outcrop-n	Number=Plur	dema	0			rule
 outcrops	1	oewn-outcrop-v	Person=3+Tense=Pres	dema	0			rule
@@ -6468,8 +6468,8 @@ outfeasted	0		Tense=Past+VerbForm=Part	dema	0	outfeast	v	rule
 outfeasting	0		VerbForm=Ger	dema	0	outfeast	v	rule
 outfeasts	0		Person=3+Tense=Pres	dema	0	outfeast	v	rule
 outfeed	0		VerbForm=Inf	dema	0	outfeed	v	moby_reverse
-outfeeding	0		VerbForm=Inf	dema	0	outfeeding	v	moby_reverse
-outfeeding	1		VerbForm=Ger	dema	0	outfeed	v	rule
+outfeeding	0		VerbForm=Ger	dema	0	outfeed	v	rule
+outfeeding	1		VerbForm=Inf	dema	0	outfeeding	v	moby_reverse
 outfence	0		VerbForm=Inf	dema	0	outfence	v	moby_reverse
 outfenced	0		Tense=Past+VerbForm=Part	dema	0	outfence	v	rule
 outfences	0		Person=3+Tense=Pres	dema	0	outfence	v	rule
@@ -6484,8 +6484,8 @@ outfielder	0	oewn-outfielder-n	Number=Sing	dema	0			oewn_form
 outfielders	0	oewn-outfielder-n	Number=Plur	dema	0			rule
 outfields	0	oewn-outfield-n	Number=Plur	dema	0			rule
 outfight	0	oewn-outfight-v	VerbForm=Inf	dema	0			oewn_form
-outfighting	0		Number=Sing	dema	0	outfighting	n	moby_reverse
-outfighting	1	oewn-outfight-v	VerbForm=Ger	dema	0			rule
+outfighting	0	oewn-outfight-v	VerbForm=Ger	dema	0			rule
+outfighting	1		Number=Sing	dema	0	outfighting	n	moby_reverse
 outfightings	0		Number=Plur	dema	0	outfighting	n	rule
 outfights	0	oewn-outfight-v	Person=3+Tense=Pres	dema	0			rule
 outfigure	0		VerbForm=Inf	dema	0	outfigure	v	moby_reverse
@@ -6504,8 +6504,8 @@ outfitted	0	oewn-outfit-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 outfitted	1	oewn-outfitted-a	Degree=Pos	dema	0			oewn_form
 outfitter	0	oewn-outfitter-n	Number=Sing	dema	0			oewn_form
 outfitters	0	oewn-outfitter-n	Number=Plur	dema	0			rule
-outfitting	0	oewn-outfitting-n	Number=Sing	dema	0			oewn_form
-outfitting	1	oewn-outfit-v	VerbForm=Ger	dema	0			oewn_form
+outfitting	0	oewn-outfit-v	VerbForm=Ger	dema	0			oewn_form
+outfitting	1	oewn-outfitting-n	Number=Sing	dema	0			oewn_form
 outfittings	0	oewn-outfitting-n	Number=Plur	dema	0			rule
 outflame	0		VerbForm=Inf	dema	0	outflame	v	moby_reverse
 outflamed	0		Tense=Past+VerbForm=Part	dema	0	outflame	v	rule
@@ -6539,8 +6539,8 @@ outflewing	0		VerbForm=Ger	dema	0	outflew	v	rule
 outflews	0		Person=3+Tense=Pres	dema	0	outflew	v	rule
 outflies	0		Person=3+Tense=Pres	dema	0	outfly	v	rule
 outfling	0		VerbForm=Inf	dema	0	outfling	v	moby_reverse
-outflinging	0		VerbForm=Inf	dema	0	outflinging	v	moby_reverse
-outflinging	1		VerbForm=Ger	dema	0	outfling	v	rule
+outflinging	0		VerbForm=Ger	dema	0	outfling	v	rule
+outflinging	1		VerbForm=Inf	dema	0	outflinging	v	moby_reverse
 outfloat	0		VerbForm=Inf	dema	0	outfloat	v	moby_reverse
 outfloated	0		Tense=Past+VerbForm=Part	dema	0	outfloat	v	rule
 outfloating	0		VerbForm=Ger	dema	0	outfloat	v	rule
@@ -6953,8 +6953,8 @@ outmeasuring	0		VerbForm=Ger	dema	0	outmeasure	v	rule
 outmerchant	0		Number=Sing	dema	0	outmerchant	n	moby_reverse
 outmerchants	0		Number=Plur	dema	0	outmerchant	n	rule
 outmode	0	oewn-outmode-v	VerbForm=Inf	dema	0			oewn_form
-outmoded	0	oewn-outmoded-a	Degree=Pos	dema	0			oewn_form
-outmoded	1	oewn-outmode-v	Tense=Past+VerbForm=Part	dema	0			rule
+outmoded	0	oewn-outmode-v	Tense=Past+VerbForm=Part	dema	0			rule
+outmoded	1	oewn-outmoded-a	Degree=Pos	dema	0			oewn_form
 outmodes	0	oewn-outmode-v	Person=3+Tense=Pres	dema	0			rule
 outmoding	0	oewn-outmode-v	VerbForm=Ger	dema	0			rule
 outmost	0	oewn-outmost-a	Degree=Pos	dema	0			oewn_form
@@ -7265,8 +7265,8 @@ outriders	0	oewn-outrider-n	Number=Plur	dema	0			rule
 outrides	0	oewn-outride-v	Person=3+Tense=Pres	dema	0			rule
 outriding	0	oewn-outride-v	VerbForm=Ger	dema	0			rule
 outrig	0		VerbForm=Inf	dema	0	outrig	v	moby_reverse
-outrigged	0	oewn-outrigged-a	Degree=Pos	dema	0			oewn_form
-outrigged	1		Tense=Past+VerbForm=Part	dema	0	outrig	v	rule
+outrigged	0		Tense=Past+VerbForm=Part	dema	0	outrig	v	rule
+outrigged	1	oewn-outrigged-a	Degree=Pos	dema	0			oewn_form
 outrigger	0	oewn-outrigger-n	Number=Sing	dema	0			oewn_form
 outrigger canoe	0	oewn-outrigger_canoe-n	Number=Sing	dema	0			oewn_form
 outrigger canoes	0	oewn-outrigger_canoe-n	Number=Plur	dema	0			rule
@@ -7344,8 +7344,8 @@ outsaints	0		Person=3+Tense=Pres	dema	0	outsaint	v	rule
 outsallied	0		VerbForm=Inf	dema	0	outsallied	v	moby_reverse
 outsallied	1		Tense=Past+VerbForm=Part	dema	0	outsally	v	rule
 outsally	0		VerbForm=Inf	dema	0	outsally	v	moby_reverse
-outsallying	0		VerbForm=Inf	dema	0	outsallying	v	moby_reverse
-outsallying	1		VerbForm=Ger	dema	0	outsally	v	rule
+outsallying	0		VerbForm=Ger	dema	0	outsally	v	rule
+outsallying	1		VerbForm=Inf	dema	0	outsallying	v	moby_reverse
 outsang	0		VerbForm=Inf	dema	0	outsang	v	moby_reverse
 outsanged	0		Tense=Past+VerbForm=Part	dema	0	outsang	v	rule
 outsanging	0		VerbForm=Ger	dema	0	outsang	v	rule
@@ -7520,8 +7520,8 @@ outskirmished	0		Tense=Past+VerbForm=Part	dema	0	outskirmish	v	rule
 outskirmishes	0		Person=3+Tense=Pres	dema	0	outskirmish	v	rule
 outskirmishing	0		VerbForm=Ger	dema	0	outskirmish	v	rule
 outskirt	0	oewn-outskirt-n	Number=Sing	dema	0			oewn_form
-outskirts	0	oewn-outskirts-n	Number=Sing	dema	0			oewn_form
-outskirts	1	oewn-outskirt-n	Number=Plur	dema	0			rule
+outskirts	0	oewn-outskirt-n	Number=Plur	dema	0			rule
+outskirts	1	oewn-outskirts-n	Number=Sing	dema	0			oewn_form
 outslander	0		VerbForm=Inf	dema	0	outslander	v	moby_reverse
 outslandered	0		Tense=Past+VerbForm=Part	dema	0	outslander	v	rule
 outslandering	0		VerbForm=Ger	dema	0	outslander	v	rule
@@ -7721,8 +7721,8 @@ outstepped	0		Tense=Past+VerbForm=Part	dema	0	outstep	v	rule
 outstepping	0		VerbForm=Ger	dema	0	outstep	v	rule
 outsteps	0		Person=3+Tense=Pres	dema	0	outstep	v	rule
 outsting	0		VerbForm=Inf	dema	0	outsting	v	moby_reverse
-outstinging	0		VerbForm=Inf	dema	0	outstinging	v	moby_reverse
-outstinging	1		VerbForm=Ger	dema	0	outsting	v	rule
+outstinging	0		VerbForm=Ger	dema	0	outsting	v	rule
+outstinging	1		VerbForm=Inf	dema	0	outstinging	v	moby_reverse
 outstink	0		VerbForm=Inf	dema	0	outstink	v	moby_reverse
 outstinking	0		VerbForm=Ger	dema	0	outstink	v	rule
 outstinks	0		Person=3+Tense=Pres	dema	0	outstink	v	rule
@@ -8172,8 +8172,8 @@ outwriggled	0		Tense=Past+VerbForm=Part	dema	0	outwriggle	v	rule
 outwriggles	0		Person=3+Tense=Pres	dema	0	outwriggle	v	rule
 outwriggling	0		VerbForm=Ger	dema	0	outwriggle	v	rule
 outwring	0		VerbForm=Inf	dema	0	outwring	v	moby_reverse
-outwringing	0		VerbForm=Inf	dema	0	outwringing	v	moby_reverse
-outwringing	1		VerbForm=Ger	dema	0	outwring	v	rule
+outwringing	0		VerbForm=Ger	dema	0	outwring	v	rule
+outwringing	1		VerbForm=Inf	dema	0	outwringing	v	moby_reverse
 outwrite	0		VerbForm=Inf	dema	0	outwrite	v	moby_reverse
 outwrites	0		Person=3+Tense=Pres	dema	0	outwrite	v	rule
 outwriting	0		VerbForm=Ger	dema	0	outwrite	v	rule
@@ -8397,8 +8397,8 @@ overacuteness	0		Number=Sing	dema	0	overacuteness	n	moby_reverse
 overaddiction	0		Number=Sing	dema	0	overaddiction	n	moby_reverse
 overaddictions	0		Number=Plur	dema	0	overaddiction	n	rule
 overadorn	0		VerbForm=Inf	dema	0	overadorn	v	moby_reverse
-overadorned	0		Degree=Pos	dema	0	overadorned	a	moby_reverse
-overadorned	1		Tense=Past+VerbForm=Part	dema	0	overadorn	v	rule
+overadorned	0		Tense=Past+VerbForm=Part	dema	0	overadorn	v	rule
+overadorned	1		Degree=Pos	dema	0	overadorned	a	moby_reverse
 overadorning	0		VerbForm=Ger	dema	0	overadorn	v	rule
 overadorns	0		Person=3+Tense=Pres	dema	0	overadorn	v	rule
 overadvance	0		VerbForm=Inf	dema	0	overadvance	v	moby_reverse
@@ -8469,8 +8469,8 @@ overanalysis	0		Number=Sing	dema	0	overanalysis	n	moby_reverse
 overanalytical	0		Degree=Pos	dema	0	overanalytical	a	moby_reverse
 overanalytically	0		Degree=Pos	dema	0	overanalytically	r	moby_reverse
 overanalyze	0		VerbForm=Inf	dema	0	overanalyze	v	moby_reverse
-overanalyzed	0		Degree=Pos	dema	0	overanalyzed	a	moby_reverse
-overanalyzed	1		Tense=Past+VerbForm=Part	dema	0	overanalyze	v	rule
+overanalyzed	0		Tense=Past+VerbForm=Part	dema	0	overanalyze	v	rule
+overanalyzed	1		Degree=Pos	dema	0	overanalyzed	a	moby_reverse
 overanalyzes	0		Person=3+Tense=Pres	dema	0	overanalyze	v	rule
 overanalyzing	0		VerbForm=Ger	dema	0	overanalyze	v	rule
 overangry	0		Degree=Pos	dema	0	overangry	a	moby_reverse
@@ -8611,8 +8611,8 @@ overbbred	0		VerbForm=Inf	dema	0	overbbred	v	moby_reverse
 overbear	0	oewn-overbear-v	VerbForm=Inf	dema	0			oewn_form
 overbearer	0		Number=Sing	dema	0	overbearer	n	moby_reverse
 overbearers	0		Number=Plur	dema	0	overbearer	n	rule
-overbearing	0	oewn-overbearing-a	Degree=Pos	dema	0			oewn_form
-overbearing	1	oewn-overbear-v	VerbForm=Ger	dema	0			rule
+overbearing	0	oewn-overbear-v	VerbForm=Ger	dema	0			rule
+overbearing	1	oewn-overbearing-a	Degree=Pos	dema	0			oewn_form
 overbearingly	0	oewn-overbearingly-r	Degree=Pos	dema	0			oewn_form
 overbearingness	0	oewn-overbearingness-n	Number=Sing	dema	0			oewn_form
 overbearingnesses	0	oewn-overbearingness-n	Number=Plur	dema	0			rule
@@ -8890,8 +8890,8 @@ overcheapness	0		Number=Sing	dema	0	overcheapness	n	moby_reverse
 overcheck	0		Number=Sing	dema	0	overcheck	n	moby_reverse
 overchecks	0		Number=Plur	dema	0	overcheck	n	rule
 overcherish	0		VerbForm=Inf	dema	0	overcherish	v	moby_reverse
-overcherished	0		Degree=Pos	dema	0	overcherished	a	moby_reverse
-overcherished	1		Tense=Past+VerbForm=Part	dema	0	overcherish	v	rule
+overcherished	0		Tense=Past+VerbForm=Part	dema	0	overcherish	v	rule
+overcherished	1		Degree=Pos	dema	0	overcherished	a	moby_reverse
 overcherishes	0		Person=3+Tense=Pres	dema	0	overcherish	v	rule
 overcherishing	0		VerbForm=Ger	dema	0	overcherish	v	rule
 overchildish	0		Degree=Pos	dema	0	overchildish	a	moby_reverse
@@ -9505,9 +9505,9 @@ overeaten	0	oewn-overeat-v	VerbForm=Part	dema	0			hand
 overeater	0		Number=Sing	dema	0	overeater	n	moby_reverse
 overeaters	0		Number=Plur	dema	0	overeater	n	rule
 overeates	0		Person=3+Tense=Pres	dema	0	overeate	v	rule
-overeating	0	oewn-overeating-n	Number=Sing	dema	0			oewn_form
-overeating	1	oewn-overeat-v	VerbForm=Ger	dema	0			rule
-overeating	2		VerbForm=Ger	dema	0	overeate	v	rule
+overeating	0	oewn-overeat-v	VerbForm=Ger	dema	0			rule
+overeating	1		VerbForm=Ger	dema	0	overeate	v	rule
+overeating	2	oewn-overeating-n	Number=Sing	dema	0			oewn_form
 overeatings	0	oewn-overeating-n	Number=Plur	dema	0			rule
 overeats	0	oewn-overeat-v	Person=3+Tense=Pres	dema	0			rule
 overedit	0		VerbForm=Inf	dema	0	overedit	v	moby_reverse
@@ -9618,8 +9618,8 @@ overexcitability	0		Number=Sing	dema	0	overexcitability	n	moby_reverse
 overexcitable	0		Degree=Pos	dema	0	overexcitable	a	moby_reverse
 overexcitably	0		Degree=Pos	dema	0	overexcitably	r	moby_reverse
 overexcite	0		VerbForm=Inf	dema	0	overexcite	v	moby_reverse
-overexcited	0	oewn-overexcited-a	Degree=Pos	dema	0			oewn_form
-overexcited	1		Tense=Past+VerbForm=Part	dema	0	overexcite	v	rule
+overexcited	0		Tense=Past+VerbForm=Part	dema	0	overexcite	v	rule
+overexcited	1	oewn-overexcited-a	Degree=Pos	dema	0			oewn_form
 overexcitement	0		Number=Sing	dema	0	overexcitement	n	moby_reverse
 overexcitements	0		Number=Plur	dema	0	overexcitement	n	rule
 overexcites	0		Person=3+Tense=Pres	dema	0	overexcite	v	rule
@@ -10221,8 +10221,8 @@ overhunt	0		VerbForm=Inf	dema	0	overhunt	v	moby_reverse
 overhunted	0		Tense=Past+VerbForm=Part	dema	0	overhunt	v	rule
 overhunting	0		VerbForm=Ger	dema	0	overhunt	v	rule
 overhunts	0		Person=3+Tense=Pres	dema	0	overhunt	v	rule
-overhurried	0		Degree=Pos	dema	0	overhurried	a	moby_reverse
-overhurried	1		Tense=Past+VerbForm=Part	dema	0	overhurry	v	rule
+overhurried	0		Tense=Past+VerbForm=Part	dema	0	overhurry	v	rule
+overhurried	1		Degree=Pos	dema	0	overhurried	a	moby_reverse
 overhurriedly	0		Degree=Pos	dema	0	overhurriedly	r	moby_reverse
 overhurries	0		Person=3+Tense=Pres	dema	0	overhurry	v	rule
 overhurry	0		VerbForm=Inf	dema	0	overhurry	v	moby_reverse
@@ -10334,8 +10334,8 @@ overinfluences	0		Person=3+Tense=Pres	dema	0	overinfluence	v	rule
 overinfluencing	0		VerbForm=Ger	dema	0	overinfluence	v	rule
 overinfluential	0		Degree=Pos	dema	0	overinfluential	a	moby_reverse
 overinhibit	0		VerbForm=Inf	dema	0	overinhibit	v	moby_reverse
-overinhibited	0		Degree=Pos	dema	0	overinhibited	a	moby_reverse
-overinhibited	1		Tense=Past+VerbForm=Part	dema	0	overinhibit	v	rule
+overinhibited	0		Tense=Past+VerbForm=Part	dema	0	overinhibit	v	rule
+overinhibited	1		Degree=Pos	dema	0	overinhibited	a	moby_reverse
 overinhibiting	0		VerbForm=Ger	dema	0	overinhibit	v	rule
 overinhibits	0		Person=3+Tense=Pres	dema	0	overinhibit	v	rule
 overinsist	0		VerbForm=Inf	dema	0	overinsist	v	moby_reverse
@@ -10475,8 +10475,8 @@ overlaness	0		Number=Sing	dema	0	overlaness	n	moby_reverse
 overlap	0	oewn-overlap-n	Number=Sing	dema	1			carried
 overlap	1	oewn-overlap-v	VerbForm=Inf	dema	1			carried
 overlapped	0	oewn-overlap-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
-overlapping	0	oewn-overlapping-n	Number=Sing	dema	0			oewn_form
-overlapping	1	oewn-overlap-v	VerbForm=Ger	dema	0			oewn_form
+overlapping	0	oewn-overlap-v	VerbForm=Ger	dema	0			oewn_form
+overlapping	1	oewn-overlapping-n	Number=Sing	dema	0			oewn_form
 overlappings	0	oewn-overlapping-n	Number=Plur	dema	0			rule
 overlaps	0	oewn-overlap-n	Number=Plur	dema	1			carried
 overlaps	1	oewn-overlap-v	Person=3+Tense=Pres	dema	1			carried
@@ -10521,8 +10521,8 @@ overleaping	0	oewn-overleap-v	VerbForm=Ger	dema	0			rule
 overleaps	0	oewn-overleap-v	Person=3+Tense=Pres	dema	0			rule
 overleapt	0	oewn-overleap-v	Tense=Past+VerbForm=Part	dema	0			hand
 overlearn	0		VerbForm=Inf	dema	0	overlearn	v	moby_reverse
-overlearned	0		Degree=Pos	dema	0	overlearned	a	moby_reverse
-overlearned	1		Tense=Past+VerbForm=Part	dema	0	overlearn	v	moby_reverse
+overlearned	0		Tense=Past+VerbForm=Part	dema	0	overlearn	v	moby_reverse
+overlearned	1		Degree=Pos	dema	0	overlearned	a	moby_reverse
 overlearnedly	0		Degree=Pos	dema	0	overlearnedly	r	moby_reverse
 overlearnedness	0		Number=Sing	dema	0	overlearnedness	n	moby_reverse
 overlearning	0		VerbForm=Ger	dema	0	overlearn	v	rule
@@ -11138,8 +11138,8 @@ overpowered	0	oewn-overpower-v	Tense=Past+VerbForm=Part	dema	0			rule
 overpowerful	0		Degree=Pos	dema	0	overpowerful	a	moby_reverse
 overpowerfully	0		Degree=Pos	dema	0	overpowerfully	r	moby_reverse
 overpowerfulness	0		Number=Sing	dema	0	overpowerfulness	n	moby_reverse
-overpowering	0	oewn-overpowering-a	Degree=Pos	dema	0			oewn_form
-overpowering	1	oewn-overpower-v	VerbForm=Ger	dema	0			rule
+overpowering	0	oewn-overpower-v	VerbForm=Ger	dema	0			rule
+overpowering	1	oewn-overpowering-a	Degree=Pos	dema	0			oewn_form
 overpoweringly	0	oewn-overpoweringly-r	Degree=Pos	dema	0			oewn_form
 overpoweringness	0		Number=Sing	dema	0	overpoweringness	n	moby_reverse
 overpowers	0	oewn-overpower-v	Person=3+Tense=Pres	dema	0			rule
@@ -11329,8 +11329,8 @@ overrashness	0		Number=Sing	dema	0	overrashness	n	moby_reverse
 overrate	0	oewn-overrate-v	VerbForm=Inf	dema	0			oewn_form
 overrated	0	oewn-overrate-v	Tense=Past+VerbForm=Part	dema	0			rule
 overrates	0	oewn-overrate-v	Person=3+Tense=Pres	dema	0			rule
-overrating	0	oewn-overrating-n	Number=Sing	dema	0			oewn_form
-overrating	1	oewn-overrate-v	VerbForm=Ger	dema	0			rule
+overrating	0	oewn-overrate-v	VerbForm=Ger	dema	0			rule
+overrating	1	oewn-overrating-n	Number=Sing	dema	0			oewn_form
 overratings	0	oewn-overrating-n	Number=Plur	dema	0			rule
 overrational	0		Degree=Pos	dema	0	overrational	a	moby_reverse
 overrationalization	0		Number=Sing	dema	0	overrationalization	n	moby_reverse
@@ -11461,8 +11461,8 @@ overrider	0		Number=Sing	dema	0	overrider	n	moby_reverse
 overriders	0		Number=Plur	dema	0	overrider	n	rule
 overrides	0	oewn-override-n	Number=Plur	dema	1			carried
 overrides	1	oewn-override-v	Person=3+Tense=Pres	dema	1			carried
-overriding	0	oewn-overriding-a	Degree=Pos	dema	0			oewn_form
-overriding	1	oewn-override-v	VerbForm=Ger	dema	0			rule
+overriding	0	oewn-override-v	VerbForm=Ger	dema	0			rule
+overriding	1	oewn-overriding-a	Degree=Pos	dema	0			oewn_form
 overrife	0		Degree=Pos	dema	0	overrife	a	moby_reverse
 overrigged	0		Degree=Pos	dema	0	overrigged	a	moby_reverse
 overrigged	1		VerbForm=Inf	dema	0	overrigged	v	moby_reverse
@@ -11892,8 +11892,8 @@ overstatements	0	oewn-overstatement-n	Number=Plur	dema	0			rule
 overstates	0	oewn-overstate-v	Person=3+Tense=Pres	dema	0			rule
 overstating	0	oewn-overstate-v	VerbForm=Ger	dema	0			rule
 overstay	0	oewn-overstay-v	VerbForm=Inf	dema	0			oewn_form
-overstayed	0		Degree=Pos	dema	0	overstayed	a	moby_reverse
-overstayed	1	oewn-overstay-v	Tense=Past+VerbForm=Part	dema	0			rule
+overstayed	0	oewn-overstay-v	Tense=Past+VerbForm=Part	dema	0			rule
+overstayed	1		Degree=Pos	dema	0	overstayed	a	moby_reverse
 overstaying	0	oewn-overstay-v	VerbForm=Ger	dema	0			rule
 overstays	0	oewn-overstay-v	Person=3+Tense=Pres	dema	0			rule
 oversteadfast	0		Degree=Pos	dema	0	oversteadfast	a	moby_reverse
@@ -11938,8 +11938,8 @@ overstitches	0		Number=Plur	dema	0	overstitch	n	rule
 overstock	0	dema-overstock-n	Number=Sing	dema	1			carried
 overstock	1	oewn-overstock-v	VerbForm=Inf	dema	1			carried
 overstocked	0	oewn-overstock-v	Tense=Past+VerbForm=Part	dema	0			rule
-overstocking	0		Number=Sing	dema	0	overstocking	n	moby_reverse
-overstocking	1	oewn-overstock-v	VerbForm=Ger	dema	0			rule
+overstocking	0	oewn-overstock-v	VerbForm=Ger	dema	0			rule
+overstocking	1		Number=Sing	dema	0	overstocking	n	moby_reverse
 overstockings	0		Number=Plur	dema	0	overstocking	n	rule
 overstocks	0	dema-overstock-n	Number=Plur	dema	1			carried
 overstocks	1	oewn-overstock-v	Person=3+Tense=Pres	dema	1			carried
@@ -12023,8 +12023,8 @@ overstudy	0		VerbForm=Inf	dema	0	overstudy	v	moby_reverse
 overstudy	1		Number=Sing	dema	0	overstudy	n	moby_reverse
 overstudying	0		VerbForm=Ger	dema	0	overstudy	v	rule
 overstuff	0	oewn-overstuff-v	VerbForm=Inf	dema	0			oewn_form
-overstuffed	0	oewn-overstuffed-a	Degree=Pos	dema	0			oewn_form
-overstuffed	1	oewn-overstuff-v	Tense=Past+VerbForm=Part	dema	0			rule
+overstuffed	0	oewn-overstuff-v	Tense=Past+VerbForm=Part	dema	0			rule
+overstuffed	1	oewn-overstuffed-a	Degree=Pos	dema	0			oewn_form
 overstuffed chair	0	oewn-overstuffed_chair-n	Number=Sing	dema	0			oewn_form
 overstuffed chairs	0	oewn-overstuffed_chair-n	Number=Plur	dema	0			rule
 overstuffing	0	oewn-overstuff-v	VerbForm=Ger	dema	0			rule
@@ -12408,8 +12408,8 @@ overwet	1		VerbForm=Inf	dema	0	overwet	v	moby_reverse
 overwet	2		Degree=Pos	dema	0	overwet	r	moby_reverse
 overwhelm	0	oewn-overwhelm-v	VerbForm=Inf	dema	0			oewn_form
 overwhelmed	0	oewn-overwhelm-v	Tense=Past+VerbForm=Part	dema	0			rule
-overwhelming	0	oewn-overwhelming-a	Degree=Pos	dema	0			oewn_form
-overwhelming	1	oewn-overwhelm-v	VerbForm=Ger	dema	0			rule
+overwhelming	0	oewn-overwhelm-v	VerbForm=Ger	dema	0			rule
+overwhelming	1	oewn-overwhelming-a	Degree=Pos	dema	0			oewn_form
 overwhelmingly	0	oewn-overwhelmingly-r	Degree=Pos	dema	0			oewn_form
 overwhelmingness	0		Number=Sing	dema	0	overwhelmingness	n	moby_reverse
 overwhelms	0	oewn-overwhelm-v	Person=3+Tense=Pres	dema	0			rule
@@ -12446,8 +12446,8 @@ overworing	0		VerbForm=Ger	dema	0	overwore	v	rule
 overwork	0	oewn-overwork-n	Number=Sing	dema	1			carried
 overwork	1	oewn-overwork-v	VerbForm=Inf	dema	1			carried
 overworked	0	oewn-overwork-v	Tense=Past+VerbForm=Part	dema	0			rule
-overworking	0	oewn-overworking-n	Number=Sing	dema	0			oewn_form
-overworking	1	oewn-overwork-v	VerbForm=Ger	dema	0			rule
+overworking	0	oewn-overwork-v	VerbForm=Ger	dema	0			rule
+overworking	1	oewn-overworking-n	Number=Sing	dema	0			oewn_form
 overworkings	0	oewn-overworking-n	Number=Plur	dema	0			rule
 overworks	0	oewn-overwork-n	Number=Plur	dema	1			carried
 overworks	1	oewn-overwork-v	Person=3+Tense=Pres	dema	1			carried
@@ -12541,8 +12541,8 @@ owed	0	oewn-owe-v	Tense=Past+VerbForm=Part	dema	0			rule
 owelties	0		Number=Plur	dema	0	owelty	n	rule
 owelty	0		Number=Sing	dema	0	owelty	n	moby_reverse
 owes	0	oewn-owe-v	Person=3+Tense=Pres	dema	0			rule
-owing	0	oewn-owing-a	Degree=Pos	dema	0			oewn_form
-owing	1	oewn-owe-v	VerbForm=Ger	dema	0			rule
+owing	0	oewn-owe-v	VerbForm=Ger	dema	0			rule
+owing	1	oewn-owing-a	Degree=Pos	dema	0			oewn_form
 owl	0	oewn-owl-n	Number=Sing	dema	0			oewn_form
 owlclaws	0	oewn-owlclaws-n	Number=Sing	dema	0			oewn_form
 owlet	0	oewn-owlet-n	Number=Sing	dema	0			oewn_form

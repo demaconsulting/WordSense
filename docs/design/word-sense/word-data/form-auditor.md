@@ -28,7 +28,8 @@ or our lists and rules; optionally restricted to one feature set). A row the che
 
 #### Error Handling
 
-A missing checker (Python or the library) throws with the install instruction. The command exits with a failure when a
+A missing checker (Python or the library) throws with the install instruction, and so does an oracle file in which one
+row has two verdicts. The command exits with a failure when a
 generated stratum reaches the limit.
 
 #### Dependencies

@@ -321,8 +321,8 @@ cuddles	1	oewn-cuddle-n	Number=Plur	dema	0			rule
 cuddlesome	0	oewn-cuddlesome-a	Degree=Pos	dema	0			oewn_form
 cuddlier	0	oewn-cuddly-a	Degree=Cmp	dema	0			rule
 cuddliest	0	oewn-cuddly-a	Degree=Sup	dema	0			rule
-cuddling	0	oewn-cuddling-n	Number=Sing	dema	0			oewn_form
-cuddling	1	oewn-cuddle-v	VerbForm=Ger	dema	0			rule
+cuddling	0	oewn-cuddle-v	VerbForm=Ger	dema	0			rule
+cuddling	1	oewn-cuddling-n	Number=Sing	dema	0			oewn_form
 cuddlings	0	oewn-cuddling-n	Number=Plur	dema	0			rule
 cuddly	0	oewn-cuddly-a	Degree=Pos	dema	0			oewn_form
 cuddy	0	oewn-cuddy-n	Number=Sing	dema	0			oewn_form
@@ -495,8 +495,8 @@ cultivar	0	oewn-cultivar-n	Number=Sing	dema	0			oewn_form
 cultivars	0	oewn-cultivar-n	Number=Plur	dema	0			rule
 cultivatable	0	oewn-cultivatable-a	Degree=Pos	dema	0			oewn_form
 cultivate	0	oewn-cultivate-v	VerbForm=Inf	dema	0			oewn_form
-cultivated	0	oewn-cultivated-a	Degree=Pos	dema	0			oewn_form
-cultivated	1	oewn-cultivate-v	Tense=Past+VerbForm=Part	dema	0			rule
+cultivated	0	oewn-cultivate-v	Tense=Past+VerbForm=Part	dema	0			rule
+cultivated	1	oewn-cultivated-a	Degree=Pos	dema	0			oewn_form
 cultivated cabbage	0	oewn-cultivated_cabbage-n	Number=Sing	dema	0			oewn_form
 cultivated cabbages	0	oewn-cultivated_cabbage-n	Number=Plur	dema	0			rule
 cultivated carrot	0	oewn-cultivated_carrot-n	Number=Sing	dema	0			oewn_form
@@ -878,8 +878,8 @@ curdled	1	oewn-curdled-a	Degree=Pos	dema	0			oewn_form
 curdler	0		Number=Sing	dema	0	curdler	n	moby_reverse
 curdlers	0		Number=Plur	dema	0	curdler	n	rule
 curdles	0	oewn-curdle-v	Person=3+Tense=Pres	dema	0			rule
-curdling	0	oewn-curdling-n	Number=Sing	dema	0			oewn_form
-curdling	1	oewn-curdle-v	VerbForm=Ger	dema	0			rule
+curdling	0	oewn-curdle-v	VerbForm=Ger	dema	0			rule
+curdling	1	oewn-curdling-n	Number=Sing	dema	0			oewn_form
 curdlings	0	oewn-curdling-n	Number=Plur	dema	0			rule
 curds	0	oewn-curd-n	Number=Plur	dema	0			rule
 curdy	0		Degree=Pos	dema	0	curdy	a	moby_reverse
@@ -958,15 +958,15 @@ curliest	0	oewn-curly-a	Degree=Sup	dema	0			oewn_form
 curlike	0		Degree=Pos	dema	0	curlike	a	moby_reverse
 curliness	0	oewn-curliness-n	Number=Sing	dema	0			oewn_form
 curlinesses	0	oewn-curliness-n	Number=Plur	dema	0			rule
-curling	0	oewn-curling-n	Number=Plur	dema	0			agid
-curling	1	oewn-curling-n	Number=Sing	dema	0			oewn_form
-curling	2	oewn-curl-v	VerbForm=Ger	dema	0			rule
-curling	3	oewn-curling-a	Degree=Pos	dema	0			oewn_form
+curling	0	oewn-curling-n	Number=Sing	dema	0			oewn_form
+curling	1	oewn-curl-v	VerbForm=Ger	dema	0			rule
+curling	2	oewn-curling-a	Degree=Pos	dema	0			oewn_form
 curling iron	0	oewn-curling_iron-n	Number=Sing	dema	0			oewn_form
 curling irons	0	oewn-curling_iron-n	Number=Plur	dema	0			rule
 curling stone	0	oewn-curling_stone-n	Number=Sing	dema	0			oewn_form
 curling stones	0	oewn-curling_stone-n	Number=Plur	dema	0			rule
 curling up	0	oewn-curl_up-v	VerbForm=Ger	dema	0			rule
+curlings	0	oewn-curling-n	Number=Plur	dema	0			rule
 curlpaper	0		Number=Sing	dema	0	curlpaper	n	moby_reverse
 curlpapers	0		Number=Plur	dema	0	curlpaper	n	rule
 curls	0	oewn-curl-v	Person=3+Tense=Pres	dema	0			rule
@@ -1056,8 +1056,8 @@ currieries	0		Number=Plur	dema	0	curriery	n	rule
 curriers	0	oewn-currier-n	Number=Plur	dema	0			rule
 curriery	0		Number=Sing	dema	0	curriery	n	moby_reverse
 curries	0	oewn-curry-n	Number=Plur	dema	0			rule
-curries	1	oewn-curry-v	Person=3+Tense=Pres	dema	0			rule
-curries	2		Number=Plur	dema	0	currie	n	rule
+curries	1		Number=Plur	dema	0	currie	n	rule
+curries	2	oewn-curry-v	Person=3+Tense=Pres	dema	0			rule
 curries favor	0	oewn-curry_favor-v	Person=3+Tense=Pres	dema	0			rule
 curries favour	0	oewn-curry_favour-v	Person=3+Tense=Pres	dema	0			rule
 currijong	0		Number=Sing	dema	0	currijong	n	moby_reverse
@@ -1121,8 +1121,8 @@ cursoriness	0		Number=Sing	dema	0	cursoriness	n	moby_reverse
 cursorinesses	0		Number=Plur	dema	0	cursoriness	n	rule
 cursors	0	oewn-cursor-n	Number=Plur	dema	0			rule
 cursory	0	oewn-cursory-a	Degree=Pos	dema	0			oewn_form
-curst	0	oewn-curst-a	Degree=Pos	dema	0			oewn_form
-curst	1	oewn-curse-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+curst	0	oewn-curse-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+curst	1	oewn-curst-a	Degree=Pos	dema	0			oewn_form
 curstly	0		Degree=Pos	dema	0	curstly	r	moby_reverse
 curstness	0		Number=Sing	dema	0	curstness	n	moby_reverse
 curt	0	oewn-curt-a	Degree=Pos	dema	0			oewn_form
@@ -1371,8 +1371,8 @@ customize	0	oewn-customize-v	VerbForm=Inf	dema	0			oewn_form
 customized	0	oewn-customize-v	Tense=Past+VerbForm=Part	dema	0			rule
 customizes	0	oewn-customize-v	Person=3+Tense=Pres	dema	0			rule
 customizing	0	oewn-customize-v	VerbForm=Ger	dema	0			rule
-customs	0	oewn-customs-n	Number=Sing	dema	0			oewn_form
-customs	1	oewn-custom-n	Number=Plur	dema	0			rule
+customs	0	oewn-custom-n	Number=Plur	dema	0			rule
+customs	1	oewn-customs-n	Number=Sing	dema	0			oewn_form
 customs duties	0	oewn-customs_duty-n	Number=Plur	dema	0			rule
 customs duty	0	oewn-customs_duty-n	Number=Sing	dema	0			oewn_form
 customs union	0	oewn-customs_union-n	Number=Sing	dema	0			oewn_form
@@ -1551,8 +1551,8 @@ cutthroat	1	oewn-cutthroat-a	Degree=Pos	dema	0			oewn_form
 cutthroats	0	oewn-cutthroat-n	Number=Plur	dema	0			rule
 cutties	0		Number=Plur	dema	0	cutty	n	moby_reverse
 cutting	0	oewn-cutting-n	Number=Sing	dema	0			oewn_form
-cutting	1	oewn-cutting-a	Degree=Pos	dema	0			oewn_form
-cutting	2	oewn-cut-v	VerbForm=Ger	dema	0			oewn_form
+cutting	1	oewn-cut-v	VerbForm=Ger	dema	0			oewn_form
+cutting	2	oewn-cutting-a	Degree=Pos	dema	0			oewn_form
 cutting across	0	oewn-cut_across-v	VerbForm=Ger	dema	0			rule
 cutting angle	0	oewn-cutting_angle-n	Number=Sing	dema	0			oewn_form
 cutting angles	0	oewn-cutting_angle-n	Number=Plur	dema	0			rule

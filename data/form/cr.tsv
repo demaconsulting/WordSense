@@ -13,8 +13,8 @@ Cr	2	oewn-Cr-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Crab	0	oewn-crab-n	Number=Sing	dema	0			oewn_form
 Crab	1	oewn-crab-v	VerbForm=Inf	dema	0			oewn_form
 Crab	2	oewn-Crab-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-Crabs	0	oewn-crabs-n	Number=Sing	dema	0			oewn_form
-Crabs	1	oewn-crab-n	Number=Plur	dema	0			rule
+Crabs	0	oewn-crab-n	Number=Plur	dema	0			rule
+Crabs	1	oewn-crabs-n	Number=Sing	dema	0			oewn_form
 Crabs	2	oewn-crab-v	Person=3+Tense=Pres	dema	0			rule
 Crabs	3	oewn-Crab-n	Capitalization=Title+Number=Plur	dema	0			rule
 Crambe maritima	0	oewn-Crambe_maritima-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
@@ -254,8 +254,8 @@ crabgrasses	0	oewn-crabgrass-n	Number=Plur	dema	0			rule
 crablike	0		Degree=Pos	dema	0	crablike	a	moby_reverse
 crabmeat	0	oewn-crabmeat-n	Number=Sing	dema	0			oewn_form
 crabmeats	0	oewn-crabmeat-n	Number=Plur	dema	0			rule
-crabs	0	oewn-crabs-n	Number=Sing	dema	0			oewn_form
-crabs	1	oewn-crab-n	Number=Plur	dema	0			rule
+crabs	0	oewn-crab-n	Number=Plur	dema	0			rule
+crabs	1	oewn-crabs-n	Number=Sing	dema	0			oewn_form
 crabs	2	oewn-crab-v	Person=3+Tense=Pres	dema	0			rule
 crabstick	0		Number=Sing	dema	0	crabstick	n	moby_reverse
 crabsticks	0		Number=Plur	dema	0	crabstick	n	rule
@@ -290,8 +290,8 @@ crackbrainedness	0		Number=Sing	dema	0	crackbrainedness	n	moby_reverse
 crackbrains	0		Number=Plur	dema	0	crackbrain	n	rule
 crackdown	0	oewn-crackdown-n	Number=Sing	dema	0			oewn_form
 crackdowns	0	oewn-crackdown-n	Number=Plur	dema	0			rule
-cracked	0	oewn-cracked-a	Degree=Pos	dema	0			oewn_form
-cracked	1	oewn-crack-v	Tense=Past+VerbForm=Part	dema	0			rule
+cracked	0	oewn-crack-v	Tense=Past+VerbForm=Part	dema	0			rule
+cracked	1	oewn-cracked-a	Degree=Pos	dema	0			oewn_form
 cracked down	0	oewn-crack_down-v	Tense=Past+VerbForm=Part	dema	0			rule
 cracked up	0	oewn-crack_up-v	Tense=Past+VerbForm=Part	dema	0			rule
 cracked wheat	0	oewn-cracked_wheat-n	Number=Sing	dema	0			oewn_form
@@ -315,10 +315,10 @@ crackers	1	oewn-crackers-a	Degree=Pos	dema	0			oewn_form
 cracket	0		Number=Sing	dema	0	cracket	n	moby_reverse
 crackets	0		Number=Plur	dema	0	cracket	n	rule
 crackies	0		Number=Plur	dema	0	cracky	n	rule
-cracking	0	oewn-cracking-a	Degree=Pos	dema	0			oewn_form
-cracking	1		Degree=Pos	dema	0	cracking	r	moby_reverse
-cracking	2	oewn-cracking-n	Number=Sing	dema	0			oewn_form
-cracking	3	oewn-crack-v	VerbForm=Ger	dema	0			rule
+cracking	0	oewn-crack-v	VerbForm=Ger	dema	0			rule
+cracking	1	oewn-cracking-a	Degree=Pos	dema	0			oewn_form
+cracking	2		Degree=Pos	dema	0	cracking	r	moby_reverse
+cracking	3	oewn-cracking-n	Number=Sing	dema	0			oewn_form
 cracking down	0	oewn-crack_down-v	VerbForm=Ger	dema	0			rule
 cracking up	0	oewn-crack_up-v	VerbForm=Ger	dema	0			rule
 crackings	0	oewn-cracking-n	Number=Plur	dema	0			rule
@@ -337,10 +337,10 @@ crackleware	0	oewn-crackleware-n	Number=Sing	dema	0			oewn_form
 cracklewares	0	oewn-crackleware-n	Number=Plur	dema	0			rule
 cracklier	0		Degree=Cmp	dema	0	crackly	a	moby_reverse
 crackliest	0		Degree=Sup	dema	0	crackly	a	moby_reverse
-crackling	0	oewn-crackling-n	Number=Plur	dema	0			agid
-crackling	1	oewn-crackling-n	Number=Sing	dema	0			oewn_form
-crackling	2	oewn-crackle-v	VerbForm=Ger	dema	0			rule
-cracklings	0	oewn-cracklings-n	Number=Sing	dema	0			oewn_form
+crackling	0	oewn-crackling-n	Number=Sing	dema	0			oewn_form
+crackling	1	oewn-crackle-v	VerbForm=Ger	dema	0			rule
+cracklings	0	oewn-crackling-n	Number=Plur	dema	0			rule
+cracklings	1	oewn-cracklings-n	Number=Sing	dema	0			oewn_form
 crackly	0		Degree=Pos	dema	0	crackly	a	moby_reverse
 cracknel	0		Number=Sing	dema	0	cracknel	n	moby_reverse
 cracknels	0		Number=Plur	dema	0	cracknel	n	rule
@@ -652,8 +652,8 @@ crappiest	0	oewn-crappy-a	Degree=Sup	dema	0			rule
 crapping	0	oewn-crap-v	VerbForm=Ger	dema	0			oewn_form
 crapping up	0	oewn-crap_up-v	VerbForm=Ger	dema	0			rule
 crappy	0	oewn-crappy-a	Degree=Pos	dema	0			oewn_form
-craps	0	oewn-craps-n	Number=Sing	dema	0			oewn_form
-craps	1	oewn-crap-n	Number=Plur	dema	0			rule
+craps	0	oewn-crap-n	Number=Plur	dema	0			rule
+craps	1	oewn-craps-n	Number=Sing	dema	0			oewn_form
 craps	2	oewn-crap-v	Person=3+Tense=Pres	dema	0			rule
 craps up	0	oewn-crap_up-v	Person=3+Tense=Pres	dema	0			rule
 crapshoot	0	oewn-crapshoot-n	Number=Sing	dema	0			oewn_form
@@ -1187,8 +1187,8 @@ creeping zinnias	0	oewn-creeping_zinnia-n	Number=Plur	dema	0			rule
 creepingly	0		Degree=Pos	dema	0	creepingly	r	moby_reverse
 creepings	0	oewn-creeping-n	Number=Plur	dema	0			rule
 creeps	0	oewn-creeps-n	Number=Sing	dema	0			oewn_form
-creeps	1	oewn-creep-n	Number=Plur	dema	0			rule
-creeps	2	oewn-creep-v	Person=3+Tense=Pres	dema	0			rule
+creeps	1	oewn-creep-v	Person=3+Tense=Pres	dema	0			rule
+creeps	2	oewn-creep-n	Number=Plur	dema	0			rule
 creeps in	0	oewn-creep_in-v	Person=3+Tense=Pres	dema	0			rule
 creeps up	0	oewn-creep_up-v	Person=3+Tense=Pres	dema	0			rule
 creepy	0	oewn-creepy-a	Degree=Pos	dema	0			oewn_form
@@ -1252,8 +1252,8 @@ crenel	0	oewn-crenel-n	Number=Sing	dema	0			oewn_form
 crenel	1	oewn-crenel-v	VerbForm=Inf	dema	0			oewn_form
 crenelate	0	oewn-crenelate-v	VerbForm=Inf	dema	0			oewn_form
 crenelate	1		Degree=Pos	dema	0	crenelate	a	moby_reverse
-crenelated	0	oewn-crenelated-a	Degree=Pos	dema	0			oewn_form
-crenelated	1	oewn-crenelate-v	Tense=Past+VerbForm=Part	dema	0			rule
+crenelated	0	oewn-crenelate-v	Tense=Past+VerbForm=Part	dema	0			rule
+crenelated	1	oewn-crenelated-a	Degree=Pos	dema	0			oewn_form
 crenelates	0	oewn-crenelate-v	Person=3+Tense=Pres	dema	0			rule
 crenelating	0	oewn-crenelate-v	VerbForm=Ger	dema	0			rule
 crenelation	0	oewn-crenelation-n	Number=Sing	dema	0			oewn_form
@@ -1289,8 +1289,8 @@ creoles	0	oewn-creole-n	Number=Plur	dema	0			rule
 creolization	0		Number=Sing	dema	0	creolization	n	moby_reverse
 creolizations	0		Number=Plur	dema	0	creolization	n	rule
 creolize	0	oewn-creolize-v	VerbForm=Inf	dema	0			oewn_form
-creolized	0		Degree=Pos	dema	0	creolized	a	moby_reverse
-creolized	1	oewn-creolize-v	Tense=Past+VerbForm=Part	dema	0			rule
+creolized	0	oewn-creolize-v	Tense=Past+VerbForm=Part	dema	0			rule
+creolized	1		Degree=Pos	dema	0	creolized	a	moby_reverse
 creolizes	0	oewn-creolize-v	Person=3+Tense=Pres	dema	0			rule
 creolizing	0	oewn-creolize-v	VerbForm=Ger	dema	0			rule
 creophagous	0		Degree=Pos	dema	0	creophagous	a	moby_reverse
@@ -1771,8 +1771,8 @@ crispen	0	oewn-crispen-v	VerbForm=Inf	dema	0			oewn_form
 crispened	0	oewn-crispen-v	Tense=Past+VerbForm=Part	dema	0			rule
 crispening	0	oewn-crispen-v	VerbForm=Ger	dema	0			rule
 crispens	0	oewn-crispen-v	Person=3+Tense=Pres	dema	0			rule
-crisper	0		Number=Sing	dema	0	crisper	n	moby_reverse
-crisper	1	oewn-crisp-a	Degree=Cmp	dema	0			rule
+crisper	0	oewn-crisp-a	Degree=Cmp	dema	0			rule
+crisper	1		Number=Sing	dema	0	crisper	n	moby_reverse
 crispers	0		Number=Plur	dema	0	crisper	n	rule
 crispest	0	oewn-crisp-a	Degree=Sup	dema	0			rule
 crisphead lettuce	0	oewn-crisphead_lettuce-n	Number=Sing	dema	0			oewn_form
@@ -2233,13 +2233,13 @@ crossbowmans	0		Number=Plur	dema	0	crossbowman	n	rule
 crossbowmen	0		Number=Sing	dema	0	crossbowmen	n	moby_reverse
 crossbowmens	0		Number=Plur	dema	0	crossbowmen	n	rule
 crossbows	0	oewn-crossbow-n	Number=Plur	dema	0			rule
-crossbred	0	oewn-crossbred-a	Degree=Pos	dema	0			oewn_form
-crossbred	1		Number=Sing	dema	0	crossbred	n	moby_reverse
-crossbred	2	oewn-crossbreed-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+crossbred	0	oewn-crossbreed-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+crossbred	1	oewn-crossbred-a	Degree=Pos	dema	0			oewn_form
+crossbred	2		Number=Sing	dema	0	crossbred	n	moby_reverse
 crossbreed	0	oewn-crossbreed-v	VerbForm=Inf	dema	0			oewn_form
 crossbreed	1	oewn-crossbreed-n	Number=Sing	dema	0			oewn_form
-crossbreeding	0	oewn-crossbreeding-n	Number=Sing	dema	0			oewn_form
-crossbreeding	1	oewn-crossbreed-v	VerbForm=Ger	dema	0			rule
+crossbreeding	0	oewn-crossbreed-v	VerbForm=Ger	dema	0			rule
+crossbreeding	1	oewn-crossbreeding-n	Number=Sing	dema	0			oewn_form
 crossbreedings	0	oewn-crossbreeding-n	Number=Plur	dema	0			rule
 crossbreeds	0	oewn-crossbreed-v	Person=3+Tense=Pres	dema	0			rule
 crossbreeds	1	oewn-crossbreed-n	Number=Plur	dema	0			rule
@@ -2351,8 +2351,8 @@ crosspieces	0	oewn-crosspiece-n	Number=Plur	dema	0			rule
 crossrail	0		Number=Sing	dema	0	crossrail	n	moby_reverse
 crossrails	0		Number=Plur	dema	0	crossrail	n	rule
 crossroad	0	oewn-crossroad-n	Number=Sing	dema	0			oewn_form
-crossroads	0	oewn-crossroads-n	Number=Sing	dema	0			oewn_form
-crossroads	1	oewn-crossroad-n	Number=Plur	dema	0			rule
+crossroads	0	oewn-crossroad-n	Number=Plur	dema	0			rule
+crossroads	1	oewn-crossroads-n	Number=Sing	dema	0			oewn_form
 crossrow	0		Number=Sing	dema	0	crossrow	n	moby_reverse
 crossrows	0		Number=Plur	dema	0	crossrow	n	rule
 crossruff	0		Number=Sing	dema	0	crossruff	n	moby_reverse
@@ -2377,8 +2377,8 @@ crosstrees	0		Number=Plur	dema	0	crosstree	n	rule
 crosswalk	0	oewn-crosswalk-n	Number=Sing	dema	0			oewn_form
 crosswalks	0	oewn-crosswalk-n	Number=Plur	dema	0			rule
 crossway	0	oewn-crossway-n	Number=Sing	dema	0			oewn_form
-crossways	0	oewn-crossways-r	Degree=Pos	dema	0			oewn_form
-crossways	1	oewn-crossway-n	Number=Plur	dema	0			rule
+crossways	0	oewn-crossway-n	Number=Plur	dema	0			rule
+crossways	1	oewn-crossways-r	Degree=Pos	dema	0			oewn_form
 crosswind	0	oewn-crosswind-n	Number=Sing	dema	0			oewn_form
 crosswinds	0	oewn-crosswind-n	Number=Plur	dema	0			rule
 crosswise	0	oewn-crosswise-a	Degree=Pos	dema	0			oewn_form
@@ -2745,8 +2745,8 @@ crumhorns	0	oewn-crumhorn-n	Number=Plur	dema	0			rule
 crummed	0		VerbForm=Inf	dema	0	crummed	v	moby_reverse
 crummie	0		Number=Sing	dema	0	crummie	n	moby_reverse
 crummier	0	oewn-crummy-a	Degree=Cmp	dema	0			oewn_form
-crummies	0		Degree=Pos	dema	0	crummies	a	moby_reverse
-crummies	1		Number=Plur	dema	0	crummie	n	rule
+crummies	0		Number=Plur	dema	0	crummie	n	rule
+crummies	1		Degree=Pos	dema	0	crummies	a	moby_reverse
 crummies	2		Number=Plur	dema	0	crummy	n	moby_reverse
 crummiest	0	oewn-crummy-a	Degree=Sup	dema	0			oewn_form
 crumming	0		VerbForm=Inf	dema	0	crumming	v	moby_reverse
@@ -2825,9 +2825,9 @@ crushers	0	oewn-crusher-n	Number=Plur	dema	0			rule
 crushes	0	oewn-crush-v	Person=3+Tense=Pres	dema	0			rule
 crushes	1	oewn-crush-n	Number=Plur	dema	0			rule
 crushes out	0	oewn-crush_out-v	Person=3+Tense=Pres	dema	0			rule
-crushing	0	oewn-crushing-a	Degree=Pos	dema	0			oewn_form
-crushing	1	oewn-crushing-n	Number=Sing	dema	0			oewn_form
-crushing	2	oewn-crush-v	VerbForm=Ger	dema	0			rule
+crushing	0	oewn-crush-v	VerbForm=Ger	dema	0			rule
+crushing	1	oewn-crushing-a	Degree=Pos	dema	0			oewn_form
+crushing	2	oewn-crushing-n	Number=Sing	dema	0			oewn_form
 crushing out	0	oewn-crush_out-v	VerbForm=Ger	dema	0			rule
 crushingly	0	oewn-crushingly-r	Degree=Pos	dema	0			oewn_form
 crushings	0	oewn-crushing-n	Number=Plur	dema	0			rule
@@ -3137,8 +3137,8 @@ crystallized gingers	0	oewn-crystallized_ginger-n	Number=Plur	dema	0			rule
 crystallized honey	0	oewn-crystallized_honey-n	Number=Sing	dema	0			oewn_form
 crystallized honeys	0	oewn-crystallized_honey-n	Number=Plur	dema	0			rule
 crystallizes	0	oewn-crystallize-v	Person=3+Tense=Pres	dema	0			rule
-crystallizing	0	oewn-crystallizing-n	Number=Sing	dema	0			oewn_form
-crystallizing	1	oewn-crystallize-v	VerbForm=Ger	dema	0			rule
+crystallizing	0	oewn-crystallize-v	VerbForm=Ger	dema	0			rule
+crystallizing	1	oewn-crystallizing-n	Number=Sing	dema	0			oewn_form
 crystallizings	0	oewn-crystallizing-n	Number=Plur	dema	0			rule
 crystallogen	0	oewn-crystallogen-n	Number=Sing	dema	0			oewn_form
 crystallogens	0	oewn-crystallogen-n	Number=Plur	dema	0			rule

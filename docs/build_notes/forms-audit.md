@@ -73,9 +73,25 @@ The five seeds are the regression gate: a change that adds invalid rows makes a 
 adjudication and fails the gate. The self-adjudication of one reviewer is a limit of the method, and the strata that the
 checker cannot judge well (curated rows and rows of the OEWN) are reported but not gated.
 
-Known weaker rows that the generator keeps because they cannot be told from valid ones without word frequency: the AGID
-`-ing` plurals of mass nouns, and `Past+Part` for an OEWN verb form of an irregular verb that gives no type (for
-example `snuck`).
+Known weaker rows that the generator keeps because they cannot be told from valid ones without word frequency: `Past+Part`
+for an OEWN verb form of an irregular verb that gives no type (for example `snuck`). The AGID `-ing` plurals of mass
+nouns are no longer kept (see the next section).
+
+## Reproducible rebuild and -ing mass nouns
+
+`rebuild-forms` is now idempotent: the reviewed rows of the earlier tables are the committed input
+`corpus/lexicon/form-frozen.tsv`, the ranks are a deterministic function of the Moby letters and explicit tie-breaks, and
+the generator no longer reads its own output, so rerunning `rebuild-forms` on the committed inputs and the two pinned
+files shows no difference in `git diff`. Besides the -ing plurals below, the change removed a few rows that earlier
+generator versions had written and that no current rule produces (the OEWN noun and adverb `am`, a gerund `during`);
+the table has 365,503 spellings (50 more than before) and 400,205 analyses (9 fewer).
+The 59 AGID plurals spelled like their singular on mass nouns in -ing (`bowling`, `brisling`, `catling`, `sibling`,
+`feeling`) are replaced by the regular plural (`bowlings`); `herring`, `offspring`, `ling` and `whiting` keep theirs.
+The audit gate passes with the seeds 20240601, 99, 7, 2025 and 31337 (weighted rate 0.000% to 0.001% before the
+adjudication of four AGID plurals that the checker did not know, `earthmen`, `lochs`, `tunicae` and `cowmen`, all valid
+by AGID and OEWN, which earlier seeds had not drawn).
+The regular forms with a single source (`canallers`, `complices`, `dismasted`) are valid words that stand on the rule and
+the base; they stay.
 
 ## Coverage cost
 

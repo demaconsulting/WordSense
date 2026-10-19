@@ -1828,8 +1828,8 @@ unaristocratically	0		Degree=Pos	dema	0	unaristocratically	r	moby_reverse
 unarithmetical	0		Degree=Pos	dema	0	unarithmetical	a	moby_reverse
 unarithmetically	0		Degree=Pos	dema	0	unarithmetically	r	moby_reverse
 unarm	0	oewn-unarm-v	VerbForm=Inf	dema	0			oewn_form
-unarmed	0	oewn-unarmed-a	Degree=Pos	dema	0			oewn_form
-unarmed	1	oewn-unarm-v	Tense=Past+VerbForm=Part	dema	0			rule
+unarmed	0	oewn-unarm-v	Tense=Past+VerbForm=Part	dema	0			rule
+unarmed	1	oewn-unarmed-a	Degree=Pos	dema	0			oewn_form
 unarming	0	oewn-unarm-v	VerbForm=Ger	dema	0			rule
 unarmored	0	oewn-unarmored-a	Degree=Pos	dema	0			oewn_form
 unarmored	1		VerbForm=Inf	dema	0	unarmored	v	moby_reverse
@@ -2216,8 +2216,8 @@ unbaked	1		VerbForm=Inf	dema	0	unbaked	v	moby_reverse
 unbalance	0	oewn-unbalance-v	VerbForm=Inf	dema	0			oewn_form
 unbalance	1	oewn-unbalance-n	Number=Sing	dema	0			oewn_form
 unbalanceable	0		Degree=Pos	dema	0	unbalanceable	a	moby_reverse
-unbalanced	0	oewn-unbalanced-a	Degree=Pos	dema	0			oewn_form
-unbalanced	1	oewn-unbalance-v	Tense=Past+VerbForm=Part	dema	0			rule
+unbalanced	0	oewn-unbalance-v	Tense=Past+VerbForm=Part	dema	0			rule
+unbalanced	1	oewn-unbalanced-a	Degree=Pos	dema	0			oewn_form
 unbalances	0	oewn-unbalance-v	Person=3+Tense=Pres	dema	0			rule
 unbalances	1	oewn-unbalance-n	Number=Plur	dema	0			rule
 unbalancing	0	oewn-unbalance-v	VerbForm=Ger	dema	0			rule
@@ -2345,8 +2345,8 @@ unbearableness	0		Number=Sing	dema	0	unbearableness	n	moby_reverse
 unbearablenesses	0		Number=Plur	dema	0	unbearableness	n	rule
 unbearably	0	oewn-unbearably-r	Degree=Pos	dema	0			oewn_form
 unbeard	0		VerbForm=Inf	dema	0	unbeard	v	moby_reverse
-unbearded	0		Degree=Pos	dema	0	unbearded	a	moby_reverse
-unbearded	1		Tense=Past+VerbForm=Part	dema	0	unbeard	v	rule
+unbearded	0		Tense=Past+VerbForm=Part	dema	0	unbeard	v	rule
+unbearded	1		Degree=Pos	dema	0	unbearded	a	moby_reverse
 unbearding	0		VerbForm=Ger	dema	0	unbeard	v	rule
 unbeards	0		Person=3+Tense=Pres	dema	0	unbeard	v	rule
 unbearing	0		Degree=Pos	dema	0	unbearing	a	moby_reverse
@@ -2440,8 +2440,8 @@ unbenches	0		Person=3+Tense=Pres	dema	0	unbench	v	rule
 unbenching	0		VerbForm=Ger	dema	0	unbench	v	rule
 unbend	0	oewn-unbend-v	VerbForm=Inf	dema	0			oewn_form
 unbendable	0	oewn-unbendable-a	Degree=Pos	dema	0			oewn_form
-unbending	0	oewn-unbending-a	Degree=Pos	dema	0			oewn_form
-unbending	1	oewn-unbend-v	VerbForm=Ger	dema	0			rule
+unbending	0	oewn-unbend-v	VerbForm=Ger	dema	0			rule
+unbending	1	oewn-unbending-a	Degree=Pos	dema	0			oewn_form
 unbendingly	0		Degree=Pos	dema	0	unbendingly	r	moby_reverse
 unbendingness	0		Number=Sing	dema	0	unbendingness	n	moby_reverse
 unbends	0	oewn-unbend-v	Person=3+Tense=Pres	dema	0			rule
@@ -2569,8 +2569,8 @@ unbirdlike	0		Degree=Pos	dema	0	unbirdlike	a	moby_reverse
 unbirthday	0		Number=Sing	dema	0	unbirthday	n	moby_reverse
 unbirthdays	0		Number=Plur	dema	0	unbirthday	n	rule
 unbit	0		VerbForm=Inf	dema	0	unbit	v	moby_reverse
-unbiting	0		Degree=Pos	dema	0	unbiting	a	moby_reverse
-unbiting	1		VerbForm=Ger	dema	0	unbit	v	rule
+unbiting	0		VerbForm=Ger	dema	0	unbit	v	rule
+unbiting	1		Degree=Pos	dema	0	unbiting	a	moby_reverse
 unbits	0		Person=3+Tense=Pres	dema	0	unbit	v	rule
 unbitted	0		Tense=Past+VerbForm=Part	dema	0	unbit	v	rule
 unbitten	0		Degree=Pos	dema	0	unbitten	a	moby_reverse
@@ -2646,8 +2646,8 @@ unblistered	1		VerbForm=Inf	dema	0	unblistered	v	moby_reverse
 unblock	0	oewn-unblock-v	VerbForm=Inf	dema	0			oewn_form
 unblockaded	0		Degree=Pos	dema	0	unblockaded	a	moby_reverse
 unblockaded	1		VerbForm=Inf	dema	0	unblockaded	v	moby_reverse
-unblocked	0		Degree=Pos	dema	0	unblocked	a	moby_reverse
-unblocked	1	oewn-unblock-v	Tense=Past+VerbForm=Part	dema	0			rule
+unblocked	0	oewn-unblock-v	Tense=Past+VerbForm=Part	dema	0			rule
+unblocked	1		Degree=Pos	dema	0	unblocked	a	moby_reverse
 unblocking	0	oewn-unblock-v	VerbForm=Ger	dema	0			rule
 unblocks	0	oewn-unblock-v	Person=3+Tense=Pres	dema	0			rule
 unbloodily	0		Degree=Pos	dema	0	unbloodily	r	moby_reverse
@@ -2709,13 +2709,13 @@ unbold	0		Degree=Pos	dema	0	unbold	a	moby_reverse
 unboldly	0		Degree=Pos	dema	0	unboldly	r	moby_reverse
 unboldness	0		Number=Sing	dema	0	unboldness	n	moby_reverse
 unbolster	0		VerbForm=Inf	dema	0	unbolster	v	moby_reverse
-unbolstered	0		Degree=Pos	dema	0	unbolstered	a	moby_reverse
-unbolstered	1		Tense=Past+VerbForm=Part	dema	0	unbolster	v	rule
+unbolstered	0		Tense=Past+VerbForm=Part	dema	0	unbolster	v	rule
+unbolstered	1		Degree=Pos	dema	0	unbolstered	a	moby_reverse
 unbolstering	0		VerbForm=Ger	dema	0	unbolster	v	rule
 unbolsters	0		Person=3+Tense=Pres	dema	0	unbolster	v	rule
 unbolt	0	oewn-unbolt-v	VerbForm=Inf	dema	0			oewn_form
-unbolted	0	oewn-unbolted-a	Degree=Pos	dema	0			oewn_form
-unbolted	1	oewn-unbolt-v	Tense=Past+VerbForm=Part	dema	0			rule
+unbolted	0	oewn-unbolt-v	Tense=Past+VerbForm=Part	dema	0			rule
+unbolted	1	oewn-unbolted-a	Degree=Pos	dema	0			oewn_form
 unbolting	0	oewn-unbolt-v	VerbForm=Ger	dema	0			rule
 unbolts	0	oewn-unbolt-v	Person=3+Tense=Pres	dema	0			rule
 unbombarded	0		Degree=Pos	dema	0	unbombarded	a	moby_reverse
@@ -2730,8 +2730,8 @@ unbonded	1		VerbForm=Inf	dema	0	unbonded	v	moby_reverse
 unboned	0		Degree=Pos	dema	0	unboned	a	moby_reverse
 unboned	1		VerbForm=Inf	dema	0	unboned	v	moby_reverse
 unbonnet	0		VerbForm=Inf	dema	0	unbonnet	v	moby_reverse
-unbonneted	0		Degree=Pos	dema	0	unbonneted	a	moby_reverse
-unbonneted	1		Tense=Past+VerbForm=Part	dema	0	unbonnet	v	rule
+unbonneted	0		Tense=Past+VerbForm=Part	dema	0	unbonnet	v	rule
+unbonneted	1		Degree=Pos	dema	0	unbonneted	a	moby_reverse
 unbonneting	0		VerbForm=Ger	dema	0	unbonnet	v	rule
 unbonnets	0		Person=3+Tense=Pres	dema	0	unbonnet	v	rule
 unbooked	0	oewn-unbooked-a	Degree=Pos	dema	0			oewn_form
@@ -2876,8 +2876,8 @@ unbridgeable	0	oewn-unbridgeable-a	Degree=Pos	dema	0			oewn_form
 unbridged	0		Degree=Pos	dema	0	unbridged	a	moby_reverse
 unbridged	1		VerbForm=Inf	dema	0	unbridged	v	moby_reverse
 unbridle	0	oewn-unbridle-v	VerbForm=Inf	dema	0			oewn_form
-unbridled	0	oewn-unbridled-a	Degree=Pos	dema	0			oewn_form
-unbridled	1	oewn-unbridle-v	Tense=Past+VerbForm=Part	dema	0			rule
+unbridled	0	oewn-unbridle-v	Tense=Past+VerbForm=Part	dema	0			rule
+unbridled	1	oewn-unbridled-a	Degree=Pos	dema	0			oewn_form
 unbridles	0	oewn-unbridle-v	Person=3+Tense=Pres	dema	0			rule
 unbridling	0	oewn-unbridle-v	VerbForm=Ger	dema	0			rule
 unbrief	0		Degree=Pos	dema	0	unbrief	a	moby_reverse
@@ -3086,8 +3086,8 @@ uncalendared	1		VerbForm=Inf	dema	0	uncalendared	v	moby_reverse
 uncalibrated	0		Degree=Pos	dema	0	uncalibrated	a	moby_reverse
 uncalibrated	1		VerbForm=Inf	dema	0	uncalibrated	v	moby_reverse
 uncalk	0		VerbForm=Inf	dema	0	uncalk	v	moby_reverse
-uncalked	0		Degree=Pos	dema	0	uncalked	a	moby_reverse
-uncalked	1		Tense=Past+VerbForm=Part	dema	0	uncalk	v	rule
+uncalked	0		Tense=Past+VerbForm=Part	dema	0	uncalk	v	rule
+uncalked	1		Degree=Pos	dema	0	uncalked	a	moby_reverse
 uncalking	0		VerbForm=Ger	dema	0	uncalk	v	rule
 uncalks	0		Person=3+Tense=Pres	dema	0	uncalk	v	rule
 uncalled	0		Degree=Pos	dema	0	uncalled	a	moby_reverse
@@ -3182,8 +3182,8 @@ uncapitulated	0		Degree=Pos	dema	0	uncapitulated	a	moby_reverse
 uncapitulated	1		VerbForm=Inf	dema	0	uncapitulated	v	moby_reverse
 uncapitulating	0		Degree=Pos	dema	0	uncapitulating	a	moby_reverse
 uncapitulating	1		VerbForm=Inf	dema	0	uncapitulating	v	moby_reverse
-uncapped	0	oewn-uncapped-a	Degree=Pos	dema	0			oewn_form
-uncapped	1		Tense=Past+VerbForm=Part	dema	0	uncap	v	rule
+uncapped	0		Tense=Past+VerbForm=Part	dema	0	uncap	v	rule
+uncapped	1	oewn-uncapped-a	Degree=Pos	dema	0			oewn_form
 uncapping	0		VerbForm=Ger	dema	0	uncap	v	rule
 uncapricious	0		Degree=Pos	dema	0	uncapricious	a	moby_reverse
 uncapriciously	0		Degree=Pos	dema	0	uncapriciously	r	moby_reverse
@@ -3268,8 +3268,8 @@ uncashed	0		Degree=Pos	dema	0	uncashed	a	moby_reverse
 uncashed	1		VerbForm=Inf	dema	0	uncashed	v	moby_reverse
 uncasing	0	oewn-uncase-v	VerbForm=Ger	dema	0			rule
 uncask	0		VerbForm=Inf	dema	0	uncask	v	moby_reverse
-uncasked	0		Degree=Pos	dema	0	uncasked	a	moby_reverse
-uncasked	1		Tense=Past+VerbForm=Part	dema	0	uncask	v	rule
+uncasked	0		Tense=Past+VerbForm=Part	dema	0	uncask	v	rule
+uncasked	1		Degree=Pos	dema	0	uncasked	a	moby_reverse
 uncasketed	0		Degree=Pos	dema	0	uncasketed	a	moby_reverse
 uncasketed	1		VerbForm=Inf	dema	0	uncasketed	v	moby_reverse
 uncasking	0		VerbForm=Ger	dema	0	uncask	v	rule
@@ -3427,8 +3427,8 @@ unchagrined	0		Degree=Pos	dema	0	unchagrined	a	moby_reverse
 unchagrined	1		VerbForm=Inf	dema	0	unchagrined	v	moby_reverse
 unchain	0	oewn-unchain-v	VerbForm=Inf	dema	0			oewn_form
 unchainable	0		Degree=Pos	dema	0	unchainable	a	moby_reverse
-unchained	0	oewn-unchained-a	Degree=Pos	dema	0			oewn_form
-unchained	1	oewn-unchain-v	Tense=Past+VerbForm=Part	dema	0			rule
+unchained	0	oewn-unchain-v	Tense=Past+VerbForm=Part	dema	0			rule
+unchained	1	oewn-unchained-a	Degree=Pos	dema	0			oewn_form
 unchaining	0	oewn-unchain-v	VerbForm=Ger	dema	0			rule
 unchains	0	oewn-unchain-v	Person=3+Tense=Pres	dema	0			rule
 unchair	0		VerbForm=Inf	dema	0	unchair	v	moby_reverse
@@ -3487,8 +3487,8 @@ unchapleted	1		VerbForm=Inf	dema	0	unchapleted	v	moby_reverse
 unchapped	0		Degree=Pos	dema	0	unchapped	a	moby_reverse
 unchapped	1		VerbForm=Inf	dema	0	unchapped	v	moby_reverse
 unchapter	0		VerbForm=Inf	dema	0	unchapter	v	moby_reverse
-unchaptered	0		Degree=Pos	dema	0	unchaptered	a	moby_reverse
-unchaptered	1		Tense=Past+VerbForm=Part	dema	0	unchapter	v	rule
+unchaptered	0		Tense=Past+VerbForm=Part	dema	0	unchapter	v	rule
+unchaptered	1		Degree=Pos	dema	0	unchaptered	a	moby_reverse
 unchaptering	0		VerbForm=Ger	dema	0	unchapter	v	rule
 unchapters	0		Person=3+Tense=Pres	dema	0	unchapter	v	rule
 uncharactered	0		Degree=Pos	dema	0	uncharactered	a	moby_reverse
@@ -3650,8 +3650,8 @@ unchurlish	0		Degree=Pos	dema	0	unchurlish	a	moby_reverse
 unchurlishly	0		Degree=Pos	dema	0	unchurlishly	r	moby_reverse
 unchurlishness	0		Number=Sing	dema	0	unchurlishness	n	moby_reverse
 unchurn	0		VerbForm=Inf	dema	0	unchurn	v	moby_reverse
-unchurned	0		Degree=Pos	dema	0	unchurned	a	moby_reverse
-unchurned	1		Tense=Past+VerbForm=Part	dema	0	unchurn	v	rule
+unchurned	0		Tense=Past+VerbForm=Part	dema	0	unchurn	v	rule
+unchurned	1		Degree=Pos	dema	0	unchurned	a	moby_reverse
 unchurning	0		VerbForm=Ger	dema	0	unchurn	v	rule
 unchurns	0		Person=3+Tense=Pres	dema	0	unchurn	v	rule
 unci	0	oewn-uncus-n	Number=Plur	dema	0			oewn_form
@@ -3733,8 +3733,8 @@ uncivilizing	0		VerbForm=Ger	dema	0	uncivilize	v	rule
 uncivilly	0	oewn-uncivilly-r	Degree=Pos	dema	0			oewn_form
 uncivilness	0		Number=Sing	dema	0	uncivilness	n	moby_reverse
 uncivilnesses	0		Number=Plur	dema	0	uncivilness	n	rule
-unclad	0	oewn-unclad-a	Degree=Pos	dema	0			oewn_form
-unclad	1	oewn-unclothe-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+unclad	0	oewn-unclothe-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+unclad	1	oewn-unclad-a	Degree=Pos	dema	0			oewn_form
 unclaimed	0	oewn-unclaimed-a	Degree=Pos	dema	0			oewn_form
 unclaimed	1		VerbForm=Inf	dema	0	unclaimed	v	moby_reverse
 unclaiming	0		Degree=Pos	dema	0	unclaiming	a	moby_reverse
@@ -3878,8 +3878,8 @@ unclutchable	0		Degree=Pos	dema	0	unclutchable	a	moby_reverse
 unclutched	0		Degree=Pos	dema	0	unclutched	a	moby_reverse
 unclutched	1		VerbForm=Inf	dema	0	unclutched	v	moby_reverse
 unclutter	0	oewn-unclutter-v	VerbForm=Inf	dema	0			oewn_form
-uncluttered	0	oewn-uncluttered-a	Degree=Pos	dema	0			oewn_form
-uncluttered	1	oewn-unclutter-v	Tense=Past+VerbForm=Part	dema	0			rule
+uncluttered	0	oewn-unclutter-v	Tense=Past+VerbForm=Part	dema	0			rule
+uncluttered	1	oewn-uncluttered-a	Degree=Pos	dema	0			oewn_form
 uncluttering	0	oewn-unclutter-v	VerbForm=Ger	dema	0			rule
 unclutters	0	oewn-unclutter-v	Person=3+Tense=Pres	dema	0			rule
 unco	0	oewn-unco-r	Degree=Pos	dema	0			oewn_form
@@ -4364,8 +4364,8 @@ unconformity	0		Number=Sing	dema	0	unconformity	n	moby_reverse
 unconfound	0		VerbForm=Inf	dema	0	unconfound	v	moby_reverse
 unconfounded	0		Tense=Past+VerbForm=Part	dema	0	unconfound	v	rule
 unconfoundedly	0		Degree=Pos	dema	0	unconfoundedly	r	moby_reverse
-unconfounding	0		Degree=Pos	dema	0	unconfounding	a	moby_reverse
-unconfounding	1		VerbForm=Ger	dema	0	unconfound	v	rule
+unconfounding	0		VerbForm=Ger	dema	0	unconfound	v	rule
+unconfounding	1		Degree=Pos	dema	0	unconfounding	a	moby_reverse
 unconfoundingly	0		Degree=Pos	dema	0	unconfoundingly	r	moby_reverse
 unconfounds	0		Person=3+Tense=Pres	dema	0	unconfound	v	rule
 unconfrontable	0		Degree=Pos	dema	0	unconfrontable	a	moby_reverse
@@ -4886,8 +4886,8 @@ uncouthnesses	0	oewn-uncouthness-n	Number=Plur	dema	0			rule
 uncovenanted	0		Degree=Pos	dema	0	uncovenanted	a	moby_reverse
 uncovenanted	1		VerbForm=Inf	dema	0	uncovenanted	v	moby_reverse
 uncover	0	oewn-uncover-v	VerbForm=Inf	dema	0			oewn_form
-uncovered	0	oewn-uncovered-a	Degree=Pos	dema	0			oewn_form
-uncovered	1	oewn-uncover-v	Tense=Past+VerbForm=Part	dema	0			rule
+uncovered	0	oewn-uncover-v	Tense=Past+VerbForm=Part	dema	0			rule
+uncovered	1	oewn-uncovered-a	Degree=Pos	dema	0			oewn_form
 uncovering	0	oewn-uncover-v	VerbForm=Ger	dema	0			rule
 uncovering	1	oewn-uncovering-n	Number=Sing	dema	0			oewn_form
 uncoverings	0	oewn-uncovering-n	Number=Plur	dema	0			rule
@@ -5962,8 +5962,8 @@ underdegreed	0		Degree=Pos	dema	0	underdegreed	a	moby_reverse
 underdegreed	1		VerbForm=Inf	dema	0	underdegreed	v	moby_reverse
 underdevelop	0	oewn-underdevelop-v	VerbForm=Inf	dema	0			oewn_form
 underdevelope	0		VerbForm=Inf	dema	0	underdevelope	v	moby_reverse
-underdeveloped	0	oewn-underdeveloped-a	Degree=Pos	dema	0			oewn_form
-underdeveloped	1	oewn-underdevelop-v	Tense=Past+VerbForm=Part	dema	0			rule
+underdeveloped	0	oewn-underdevelop-v	Tense=Past+VerbForm=Part	dema	0			rule
+underdeveloped	1	oewn-underdeveloped-a	Degree=Pos	dema	0			oewn_form
 underdeveloped	2		Tense=Past+VerbForm=Part	dema	0	underdevelope	v	rule
 underdevelopement	0		Number=Sing	dema	0	underdevelopement	n	moby_reverse
 underdevelopements	0		Number=Plur	dema	0	underdevelopement	n	rule
@@ -6033,8 +6033,8 @@ underdrawns	0		Person=3+Tense=Pres	dema	0	underdrawn	v	rule
 underdraws	0		Person=3+Tense=Pres	dema	0	underdraw	v	rule
 underdress	0	oewn-underdress-v	VerbForm=Inf	dema	0			oewn_form
 underdress	1		Number=Sing	dema	0	underdress	n	moby_reverse
-underdressed	0	oewn-underdressed-a	Degree=Pos	dema	0			oewn_form
-underdressed	1	oewn-underdress-v	Tense=Past+VerbForm=Part	dema	0			rule
+underdressed	0	oewn-underdress-v	Tense=Past+VerbForm=Part	dema	0			rule
+underdressed	1	oewn-underdressed-a	Degree=Pos	dema	0			oewn_form
 underdresses	0	oewn-underdress-v	Person=3+Tense=Pres	dema	0			rule
 underdressing	0	oewn-underdress-v	VerbForm=Ger	dema	0			rule
 underdrew	0		VerbForm=Inf	dema	0	underdrew	v	moby_reverse
@@ -6436,8 +6436,8 @@ underlinen	0		Number=Sing	dema	0	underlinen	n	moby_reverse
 underlinens	0		Number=Plur	dema	0	underlinen	n	rule
 underlines	0	oewn-underline-v	Person=3+Tense=Pres	dema	0			rule
 underlines	1	oewn-underline-n	Number=Plur	dema	0			rule
-underling	0	oewn-underling-n	Number=Plur	dema	0			agid
-underling	1	oewn-underling-n	Number=Sing	dema	0			oewn_form
+underling	0	oewn-underling-n	Number=Sing	dema	0			oewn_form
+underlings	0	oewn-underling-n	Number=Plur	dema	0			rule
 underlining	0	oewn-underline-v	VerbForm=Ger	dema	0			rule
 underlip	0	oewn-underlip-n	Number=Sing	dema	0			oewn_form
 underlips	0	oewn-underlip-n	Number=Plur	dema	0			rule
@@ -6453,8 +6453,8 @@ underlodging	0		Number=Sing	dema	0	underlodging	n	moby_reverse
 underlodgings	0		Number=Plur	dema	0	underlodging	n	rule
 underloft	0		Number=Sing	dema	0	underloft	n	moby_reverse
 underlofts	0		Number=Plur	dema	0	underloft	n	rule
-underlying	0	oewn-underlying-a	Degree=Pos	dema	0			oewn_form
-underlying	1	oewn-underlie-v	VerbForm=Ger	dema	0			oewn_form
+underlying	0	oewn-underlie-v	VerbForm=Ger	dema	0			oewn_form
+underlying	1	oewn-underlying-a	Degree=Pos	dema	0			oewn_form
 undermade	0		Degree=Pos	dema	0	undermade	a	moby_reverse
 undermaid	0		Number=Sing	dema	0	undermaid	n	moby_reverse
 undermaids	0		Number=Plur	dema	0	undermaid	n	rule
@@ -6463,8 +6463,8 @@ undermakers	0		Number=Plur	dema	0	undermaker	n	rule
 underman	0		VerbForm=Inf	dema	0	underman	v	moby_reverse
 undermanager	0		Number=Sing	dema	0	undermanager	n	moby_reverse
 undermanagers	0		Number=Plur	dema	0	undermanager	n	rule
-undermanned	0	oewn-undermanned-a	Degree=Pos	dema	0			oewn_form
-undermanned	1		Tense=Past+VerbForm=Part	dema	0	underman	v	rule
+undermanned	0		Tense=Past+VerbForm=Part	dema	0	underman	v	rule
+undermanned	1	oewn-undermanned-a	Degree=Pos	dema	0			oewn_form
 undermanning	0		VerbForm=Ger	dema	0	underman	v	rule
 undermans	0		Person=3+Tense=Pres	dema	0	underman	v	rule
 undermark	0		Number=Sing	dema	0	undermark	n	moby_reverse
@@ -6621,8 +6621,8 @@ underpile	0		Number=Sing	dema	0	underpile	n	moby_reverse
 underpiles	0		Number=Plur	dema	0	underpile	n	rule
 underpin	0	oewn-underpin-v	VerbForm=Inf	dema	0			oewn_form
 underpinned	0	oewn-underpin-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
-underpinning	0		Number=Sing	dema	0	underpinning	n	moby_reverse
-underpinning	1	oewn-underpin-v	VerbForm=Ger	dema	0			oewn_form
+underpinning	0	oewn-underpin-v	VerbForm=Ger	dema	0			oewn_form
+underpinning	1		Number=Sing	dema	0	underpinning	n	moby_reverse
 underpinnings	0		Number=Plur	dema	0	underpinning	n	rule
 underpins	0	oewn-underpin-v	Person=3+Tense=Pres	dema	0			rule
 underpitched	0		Degree=Pos	dema	0	underpitched	a	moby_reverse
@@ -6648,8 +6648,8 @@ underpoint	0		Number=Sing	dema	0	underpoint	n	moby_reverse
 underpoint	1		VerbForm=Inf	dema	0	underpoint	v	moby_reverse
 underpoints	0		Number=Plur	dema	0	underpoint	n	rule
 underpopulate	0		VerbForm=Inf	dema	0	underpopulate	v	moby_reverse
-underpopulated	0	oewn-underpopulated-a	Degree=Pos	dema	0			oewn_form
-underpopulated	1		Tense=Past+VerbForm=Part	dema	0	underpopulate	v	rule
+underpopulated	0		Tense=Past+VerbForm=Part	dema	0	underpopulate	v	rule
+underpopulated	1	oewn-underpopulated-a	Degree=Pos	dema	0			oewn_form
 underpopulates	0		Person=3+Tense=Pres	dema	0	underpopulate	v	rule
 underpopulating	0		VerbForm=Ger	dema	0	underpopulate	v	rule
 underpopulation	0		Number=Sing	dema	0	underpopulation	n	moby_reverse
@@ -7046,8 +7046,8 @@ understandable	0	oewn-understandable-a	Degree=Pos	dema	0			oewn_form
 understandableness	0		Number=Sing	dema	0	understandableness	n	moby_reverse
 understandably	0	oewn-understandably-r	Degree=Pos	dema	0			oewn_form
 understanding	0	oewn-understanding-n	Number=Sing	dema	0			oewn_form
-understanding	1	oewn-understanding-a	Degree=Pos	dema	0			oewn_form
-understanding	2	oewn-understand-v	VerbForm=Ger	dema	0			rule
+understanding	1	oewn-understand-v	VerbForm=Ger	dema	0			rule
+understanding	2	oewn-understanding-a	Degree=Pos	dema	0			oewn_form
 understandingly	0	oewn-understandingly-r	Degree=Pos	dema	0			oewn_form
 understandingness	0		Number=Sing	dema	0	understandingness	n	moby_reverse
 understandings	0	oewn-understanding-n	Number=Plur	dema	0			rule
@@ -7118,8 +7118,8 @@ understrucks	0		Person=3+Tense=Pres	dema	0	understruck	v	rule
 understructure	0	oewn-understructure-n	Number=Sing	dema	0			oewn_form
 understructures	0	oewn-understructure-n	Number=Plur	dema	0			rule
 understudied	0	oewn-understudy-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
-understudies	0	oewn-understudy-n	Number=Plur	dema	0			rule
-understudies	1	oewn-understudy-v	Person=3+Tense=Pres	dema	0			rule
+understudies	0	oewn-understudy-v	Person=3+Tense=Pres	dema	0			rule
+understudies	1	oewn-understudy-n	Number=Plur	dema	0			rule
 understudy	0	oewn-understudy-v	VerbForm=Inf	dema	0			oewn_form
 understudy	1	oewn-understudy-n	Number=Sing	dema	0			oewn_form
 understudying	0	oewn-understudy-v	VerbForm=Ger	dema	0			rule
@@ -7238,8 +7238,8 @@ undertraders	0		Number=Plur	dema	0	undertrader	n	rule
 undertrades	0		Person=3+Tense=Pres	dema	0	undertrade	v	rule
 undertrading	0		VerbForm=Ger	dema	0	undertrade	v	rule
 undertrain	0		VerbForm=Inf	dema	0	undertrain	v	moby_reverse
-undertrained	0		Degree=Pos	dema	0	undertrained	a	moby_reverse
-undertrained	1		Tense=Past+VerbForm=Part	dema	0	undertrain	v	rule
+undertrained	0		Tense=Past+VerbForm=Part	dema	0	undertrain	v	rule
+undertrained	1		Degree=Pos	dema	0	undertrained	a	moby_reverse
 undertraining	0		VerbForm=Ger	dema	0	undertrain	v	rule
 undertrains	0		Person=3+Tense=Pres	dema	0	undertrain	v	rule
 undertreasurer	0		Number=Sing	dema	0	undertreasurer	n	moby_reverse
@@ -8153,8 +8153,8 @@ undrenched	1		VerbForm=Inf	dema	0	undrenched	v	moby_reverse
 undress	0	oewn-undress-v	VerbForm=Inf	dema	0			oewn_form
 undress	1	oewn-undress-n	Number=Sing	dema	0			oewn_form
 undress	2		Degree=Pos	dema	0	undress	a	moby_reverse
-undressed	0	oewn-undressed-a	Degree=Pos	dema	0			oewn_form
-undressed	1	oewn-undress-v	Tense=Past+VerbForm=Part	dema	0			rule
+undressed	0	oewn-undress-v	Tense=Past+VerbForm=Part	dema	0			rule
+undressed	1	oewn-undressed-a	Degree=Pos	dema	0			oewn_form
 undresses	0	oewn-undress-v	Person=3+Tense=Pres	dema	0			rule
 undresses	1	oewn-undress-n	Number=Plur	dema	0			rule
 undressing	0	oewn-undress-v	VerbForm=Ger	dema	0			rule
@@ -8849,13 +8849,13 @@ unequal to	0	oewn-unequal_to-a	Degree=Pos	dema	0			oewn_form
 unequaled	0	oewn-unequaled-a	Degree=Pos	dema	0			oewn_form
 unequaled	1		VerbForm=Inf	dema	0	unequaled	v	moby_reverse
 unequalise	0		VerbForm=Inf	dema	0	unequalise	v	moby_reverse
-unequalised	0	oewn-unequalised-a	Degree=Pos	dema	0			oewn_form
-unequalised	1		Tense=Past+VerbForm=Part	dema	0	unequalise	v	rule
+unequalised	0		Tense=Past+VerbForm=Part	dema	0	unequalise	v	rule
+unequalised	1	oewn-unequalised-a	Degree=Pos	dema	0			oewn_form
 unequalises	0		Person=3+Tense=Pres	dema	0	unequalise	v	rule
 unequalising	0		VerbForm=Ger	dema	0	unequalise	v	rule
 unequalize	0		VerbForm=Inf	dema	0	unequalize	v	moby_reverse
-unequalized	0	oewn-unequalized-a	Degree=Pos	dema	0			oewn_form
-unequalized	1		Tense=Past+VerbForm=Part	dema	0	unequalize	v	rule
+unequalized	0		Tense=Past+VerbForm=Part	dema	0	unequalize	v	rule
+unequalized	1	oewn-unequalized-a	Degree=Pos	dema	0			oewn_form
 unequalizes	0		Person=3+Tense=Pres	dema	0	unequalize	v	rule
 unequalizing	0		VerbForm=Ger	dema	0	unequalize	v	rule
 unequalled	0	oewn-unequalled-a	Degree=Pos	dema	0			oewn_form
@@ -9631,8 +9631,8 @@ unfeminized	0		Tense=Past+VerbForm=Part	dema	0	unfeminize	v	rule
 unfeminizes	0		Person=3+Tense=Pres	dema	0	unfeminize	v	rule
 unfeminizing	0		VerbForm=Ger	dema	0	unfeminize	v	rule
 unfence	0		VerbForm=Inf	dema	0	unfence	v	moby_reverse
-unfenced	0	oewn-unfenced-a	Degree=Pos	dema	0			oewn_form
-unfenced	1		Tense=Past+VerbForm=Part	dema	0	unfence	v	rule
+unfenced	0		Tense=Past+VerbForm=Part	dema	0	unfence	v	rule
+unfenced	1	oewn-unfenced-a	Degree=Pos	dema	0			oewn_form
 unfences	0		Person=3+Tense=Pres	dema	0	unfence	v	rule
 unfencing	0		VerbForm=Ger	dema	0	unfence	v	rule
 unfended	0		Degree=Pos	dema	0	unfended	a	moby_reverse
@@ -11026,8 +11026,8 @@ unhairs	0		Person=3+Tense=Pres	dema	0	unhair	v	rule
 unhairy	0		Degree=Pos	dema	0	unhairy	a	moby_reverse
 unhale	0		Degree=Pos	dema	0	unhale	a	moby_reverse
 unhallow	0	oewn-unhallow-v	VerbForm=Inf	dema	0			oewn_form
-unhallowed	0	oewn-unhallowed-a	Degree=Pos	dema	0			oewn_form
-unhallowed	1	oewn-unhallow-v	Tense=Past+VerbForm=Part	dema	0			rule
+unhallowed	0	oewn-unhallow-v	Tense=Past+VerbForm=Part	dema	0			rule
+unhallowed	1	oewn-unhallowed-a	Degree=Pos	dema	0			oewn_form
 unhallowing	0	oewn-unhallow-v	VerbForm=Ger	dema	0			rule
 unhallows	0	oewn-unhallow-v	Person=3+Tense=Pres	dema	0			rule
 unhallucinated	0		Degree=Pos	dema	0	unhallucinated	a	moby_reverse
@@ -11531,8 +11531,8 @@ unhushing	0		Degree=Pos	dema	0	unhushing	a	moby_reverse
 unhushing	1		VerbForm=Inf	dema	0	unhushing	v	moby_reverse
 unhusk	0		VerbForm=Inf	dema	0	unhusk	v	moby_reverse
 unhuskable	0		Degree=Pos	dema	0	unhuskable	a	moby_reverse
-unhusked	0		Degree=Pos	dema	0	unhusked	a	moby_reverse
-unhusked	1		Tense=Past+VerbForm=Part	dema	0	unhusk	v	rule
+unhusked	0		Tense=Past+VerbForm=Part	dema	0	unhusk	v	rule
+unhusked	1		Degree=Pos	dema	0	unhusked	a	moby_reverse
 unhusking	0		VerbForm=Ger	dema	0	unhusk	v	rule
 unhusks	0		Person=3+Tense=Pres	dema	0	unhusk	v	rule
 unhustled	0		Degree=Pos	dema	0	unhustled	a	moby_reverse
@@ -12630,8 +12630,8 @@ unitary	0	oewn-unitary-a	Degree=Pos	dema	0			oewn_form
 unite	0	oewn-unite-v	VerbForm=Inf	dema	0			oewn_form
 unite	1		Number=Sing	dema	0	unite	n	moby_reverse
 uniteable	0		Degree=Pos	dema	0	uniteable	a	moby_reverse
-united	0	oewn-united-a	Degree=Pos	dema	0			oewn_form
-united	1	oewn-unite-v	Tense=Past+VerbForm=Part	dema	0			rule
+united	0	oewn-unite-v	Tense=Past+VerbForm=Part	dema	0			rule
+united	1	oewn-united-a	Degree=Pos	dema	0			oewn_form
 unitedly	0	oewn-unitedly-r	Degree=Pos	dema	0			oewn_form
 unitedness	0		Number=Sing	dema	0	unitedness	n	moby_reverse
 unitemized	0		Degree=Pos	dema	0	unitemized	a	moby_reverse
@@ -12644,8 +12644,8 @@ uniters	0		Number=Plur	dema	0	uniter	n	rule
 unites	0	oewn-unite-v	Person=3+Tense=Pres	dema	0			rule
 unities	0	oewn-unity-n	Number=Plur	dema	0			rule
 unitinerant	0		Degree=Pos	dema	0	unitinerant	a	moby_reverse
-uniting	0	oewn-uniting-n	Number=Sing	dema	0			oewn_form
-uniting	1	oewn-unite-v	VerbForm=Ger	dema	0			rule
+uniting	0	oewn-unite-v	VerbForm=Ger	dema	0			rule
+uniting	1	oewn-uniting-n	Number=Sing	dema	0			oewn_form
 unitings	0	oewn-uniting-n	Number=Plur	dema	0			rule
 unitisation	0	oewn-unitisation-n	Number=Sing	dema	0			oewn_form
 unitisations	0	oewn-unitisation-n	Number=Plur	dema	0			rule
@@ -13120,8 +13120,8 @@ unlearn	0	oewn-unlearn-v	VerbForm=Inf	dema	0			oewn_form
 unlearned	0	oewn-unlearned-a	Degree=Pos	dema	1			carried
 unlearned	1	oewn-unlearn-v	Tense=Past+VerbForm=Part	dema	1			carried
 unlearnedly	0		Degree=Pos	dema	0	unlearnedly	r	moby_reverse
-unlearning	0		Degree=Pos	dema	0	unlearning	a	moby_reverse
-unlearning	1	oewn-unlearn-v	VerbForm=Ger	dema	0			rule
+unlearning	0	oewn-unlearn-v	VerbForm=Ger	dema	0			rule
+unlearning	1		Degree=Pos	dema	0	unlearning	a	moby_reverse
 unlearns	0	oewn-unlearn-v	Person=3+Tense=Pres	dema	0			rule
 unlearnt	0		Degree=Pos	dema	0	unlearnt	a	moby_reverse
 unleasable	0		Degree=Pos	dema	0	unleasable	a	moby_reverse
@@ -13339,8 +13339,8 @@ unlively	1		Degree=Pos	dema	0	unlively	r	moby_reverse
 unliveried	0	oewn-unliveried-a	Degree=Pos	dema	0			oewn_form
 unliveried	1		VerbForm=Inf	dema	0	unliveried	v	moby_reverse
 unlives	0	oewn-unlive-v	Person=3+Tense=Pres	dema	0			rule
-unliving	0		Degree=Pos	dema	0	unliving	a	moby_reverse
-unliving	1	oewn-unlive-v	VerbForm=Ger	dema	0			rule
+unliving	0	oewn-unlive-v	VerbForm=Ger	dema	0			rule
+unliving	1		Degree=Pos	dema	0	unliving	a	moby_reverse
 unload	0	oewn-unload-v	VerbForm=Inf	dema	0			oewn_form
 unloaded	0	oewn-unload-v	Tense=Past+VerbForm=Part	dema	0			rule
 unloaded	1	oewn-unloaded-a	Degree=Pos	dema	0			oewn_form
@@ -13632,8 +13632,8 @@ unmanliness	0	oewn-unmanliness-n	Number=Sing	dema	0			oewn_form
 unmanlinesses	0	oewn-unmanliness-n	Number=Plur	dema	0			rule
 unmanly	0	oewn-unmanly-a	Degree=Pos	dema	0			oewn_form
 unmanly	1	oewn-unmanly-r	Degree=Pos	dema	0			oewn_form
-unmanned	0	oewn-unmanned-a	Degree=Pos	dema	0			oewn_form
-unmanned	1	oewn-unman-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+unmanned	0	oewn-unman-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+unmanned	1	oewn-unmanned-a	Degree=Pos	dema	0			oewn_form
 unmannered	0	oewn-unmannered-a	Degree=Pos	dema	0			oewn_form
 unmannered	1		VerbForm=Inf	dema	0	unmannered	v	moby_reverse
 unmannerliness	0		Number=Sing	dema	0	unmannerliness	n	moby_reverse
@@ -13716,11 +13716,11 @@ unmasculinely	0		Degree=Pos	dema	0	unmasculinely	r	moby_reverse
 unmashed	0		Degree=Pos	dema	0	unmashed	a	moby_reverse
 unmashed	1		VerbForm=Inf	dema	0	unmashed	v	moby_reverse
 unmask	0	oewn-unmask-v	VerbForm=Inf	dema	0			oewn_form
-unmasked	0		Degree=Pos	dema	0	unmasked	a	moby_reverse
-unmasked	1	oewn-unmask-v	Tense=Past+VerbForm=Part	dema	0			rule
-unmasking	0		Degree=Pos	dema	0	unmasking	a	moby_reverse
-unmasking	1	oewn-unmasking-n	Number=Sing	dema	0			oewn_form
-unmasking	2	oewn-unmask-v	VerbForm=Ger	dema	0			rule
+unmasked	0	oewn-unmask-v	Tense=Past+VerbForm=Part	dema	0			rule
+unmasked	1		Degree=Pos	dema	0	unmasked	a	moby_reverse
+unmasking	0	oewn-unmask-v	VerbForm=Ger	dema	0			rule
+unmasking	1		Degree=Pos	dema	0	unmasking	a	moby_reverse
+unmasking	2	oewn-unmasking-n	Number=Sing	dema	0			oewn_form
 unmaskings	0	oewn-unmasking-n	Number=Plur	dema	0			rule
 unmasks	0	oewn-unmask-v	Person=3+Tense=Pres	dema	0			rule
 unmassacred	0		Degree=Pos	dema	0	unmassacred	a	moby_reverse
@@ -13745,8 +13745,8 @@ unmatched	1		VerbForm=Inf	dema	0	unmatched	v	moby_reverse
 unmatching	0		Degree=Pos	dema	0	unmatching	a	moby_reverse
 unmatching	1		VerbForm=Inf	dema	0	unmatching	v	moby_reverse
 unmate	0		VerbForm=Inf	dema	0	unmate	v	moby_reverse
-unmated	0	oewn-unmated-a	Degree=Pos	dema	0			oewn_form
-unmated	1		Tense=Past+VerbForm=Part	dema	0	unmate	v	rule
+unmated	0		Tense=Past+VerbForm=Part	dema	0	unmate	v	rule
+unmated	1	oewn-unmated-a	Degree=Pos	dema	0			oewn_form
 unmaterial	0		Degree=Pos	dema	0	unmaterial	a	moby_reverse
 unmaterialised	0		Degree=Pos	dema	0	unmaterialised	a	moby_reverse
 unmaterialised	1		VerbForm=Inf	dema	0	unmaterialised	v	moby_reverse
@@ -14276,8 +14276,8 @@ unmortared	0		Degree=Pos	dema	0	unmortared	a	moby_reverse
 unmortared	1		VerbForm=Inf	dema	0	unmortared	v	moby_reverse
 unmortgage	0		VerbForm=Inf	dema	0	unmortgage	v	moby_reverse
 unmortgageable	0		Degree=Pos	dema	0	unmortgageable	a	moby_reverse
-unmortgaged	0	oewn-unmortgaged-a	Degree=Pos	dema	0			oewn_form
-unmortgaged	1		Tense=Past+VerbForm=Part	dema	0	unmortgage	v	rule
+unmortgaged	0		Tense=Past+VerbForm=Part	dema	0	unmortgage	v	rule
+unmortgaged	1	oewn-unmortgaged-a	Degree=Pos	dema	0			oewn_form
 unmortgages	0		Person=3+Tense=Pres	dema	0	unmortgage	v	rule
 unmortgaging	0		VerbForm=Ger	dema	0	unmortgage	v	rule
 unmortified	0		Degree=Pos	dema	0	unmortified	a	moby_reverse
@@ -14512,14 +14512,14 @@ unnationally	0		Degree=Pos	dema	0	unnationally	r	moby_reverse
 unnative	0		Degree=Pos	dema	0	unnative	a	moby_reverse
 unnatural	0	oewn-unnatural-a	Degree=Pos	dema	0			oewn_form
 unnaturalise	0		VerbForm=Inf	dema	0	unnaturalise	v	moby_reverse
-unnaturalised	0	oewn-unnaturalised-a	Degree=Pos	dema	0			oewn_form
-unnaturalised	1		Tense=Past+VerbForm=Part	dema	0	unnaturalise	v	rule
+unnaturalised	0		Tense=Past+VerbForm=Part	dema	0	unnaturalise	v	rule
+unnaturalised	1	oewn-unnaturalised-a	Degree=Pos	dema	0			oewn_form
 unnaturalises	0		Person=3+Tense=Pres	dema	0	unnaturalise	v	rule
 unnaturalising	0		VerbForm=Ger	dema	0	unnaturalise	v	rule
 unnaturalistic	0		Degree=Pos	dema	0	unnaturalistic	a	moby_reverse
 unnaturalize	0		VerbForm=Inf	dema	0	unnaturalize	v	moby_reverse
-unnaturalized	0	oewn-unnaturalized-a	Degree=Pos	dema	0			oewn_form
-unnaturalized	1		Tense=Past+VerbForm=Part	dema	0	unnaturalize	v	rule
+unnaturalized	0		Tense=Past+VerbForm=Part	dema	0	unnaturalize	v	rule
+unnaturalized	1	oewn-unnaturalized-a	Degree=Pos	dema	0			oewn_form
 unnaturalizes	0		Person=3+Tense=Pres	dema	0	unnaturalize	v	rule
 unnaturalizing	0		VerbForm=Ger	dema	0	unnaturalize	v	rule
 unnaturally	0	oewn-unnaturally-r	Degree=Pos	dema	0			oewn_form
@@ -15663,8 +15663,8 @@ unphysiologically	0		Degree=Pos	dema	0	unphysiologically	r	moby_reverse
 unpicaresque	0		Degree=Pos	dema	0	unpicaresque	a	moby_reverse
 unpick	0	oewn-unpick-v	VerbForm=Inf	dema	0			oewn_form
 unpickable	0		Degree=Pos	dema	0	unpickable	a	moby_reverse
-unpicked	0		Degree=Pos	dema	0	unpicked	a	moby_reverse
-unpicked	1	oewn-unpick-v	Tense=Past+VerbForm=Part	dema	0			rule
+unpicked	0	oewn-unpick-v	Tense=Past+VerbForm=Part	dema	0			rule
+unpicked	1		Degree=Pos	dema	0	unpicked	a	moby_reverse
 unpicketed	0		Degree=Pos	dema	0	unpicketed	a	moby_reverse
 unpicketed	1		VerbForm=Inf	dema	0	unpicketed	v	moby_reverse
 unpicking	0	oewn-unpick-v	VerbForm=Ger	dema	0			rule
@@ -15775,8 +15775,8 @@ unplanished	0		Degree=Pos	dema	0	unplanished	a	moby_reverse
 unplanished	1		VerbForm=Inf	dema	0	unplanished	v	moby_reverse
 unplanked	0		Degree=Pos	dema	0	unplanked	a	moby_reverse
 unplanked	1		VerbForm=Inf	dema	0	unplanked	v	moby_reverse
-unplanned	0	oewn-unplanned-a	Degree=Pos	dema	0			oewn_form
-unplanned	1		Tense=Past+VerbForm=Part	dema	0	unplan	v	rule
+unplanned	0		Tense=Past+VerbForm=Part	dema	0	unplan	v	rule
+unplanned	1	oewn-unplanned-a	Degree=Pos	dema	0			oewn_form
 unplanning	0		VerbForm=Ger	dema	0	unplan	v	rule
 unplans	0		Person=3+Tense=Pres	dema	0	unplan	v	rule
 unplantable	0		Degree=Pos	dema	0	unplantable	a	moby_reverse
@@ -16033,8 +16033,8 @@ unpotable	0		Degree=Pos	dema	0	unpotable	a	moby_reverse
 unpotent	0		Degree=Pos	dema	0	unpotent	a	moby_reverse
 unpotently	0		Degree=Pos	dema	0	unpotently	r	moby_reverse
 unpots	0		Person=3+Tense=Pres	dema	0	unpot	v	rule
-unpotted	0	oewn-unpotted-a	Degree=Pos	dema	0			oewn_form
-unpotted	1		Tense=Past+VerbForm=Part	dema	0	unpot	v	rule
+unpotted	0		Tense=Past+VerbForm=Part	dema	0	unpot	v	rule
+unpotted	1	oewn-unpotted-a	Degree=Pos	dema	0			oewn_form
 unpotting	0		VerbForm=Ger	dema	0	unpot	v	rule
 unpouched	0		Degree=Pos	dema	0	unpouched	a	moby_reverse
 unpouched	1		VerbForm=Inf	dema	0	unpouched	v	moby_reverse
@@ -16979,8 +16979,8 @@ unreadinesses	0		Number=Plur	dema	0	unreadiness	n	rule
 unready	0	oewn-unready-a	Degree=Pos	dema	0			oewn_form
 unreal	0	oewn-unreal-a	Degree=Pos	dema	0			oewn_form
 unrealise	0		VerbForm=Inf	dema	0	unrealise	v	moby_reverse
-unrealised	0	oewn-unrealised-a	Degree=Pos	dema	0			oewn_form
-unrealised	1		Tense=Past+VerbForm=Part	dema	0	unrealise	v	rule
+unrealised	0		Tense=Past+VerbForm=Part	dema	0	unrealise	v	rule
+unrealised	1	oewn-unrealised-a	Degree=Pos	dema	0			oewn_form
 unrealises	0		Person=3+Tense=Pres	dema	0	unrealise	v	rule
 unrealising	0		VerbForm=Ger	dema	0	unrealise	v	rule
 unrealism	0	oewn-unrealism-n	Number=Sing	dema	0			oewn_form
@@ -16991,8 +16991,8 @@ unrealities	0	oewn-unreality-n	Number=Plur	dema	0			rule
 unreality	0	oewn-unreality-n	Number=Sing	dema	0			oewn_form
 unrealizable	0	oewn-unrealizable-a	Degree=Pos	dema	0			oewn_form
 unrealize	0		VerbForm=Inf	dema	0	unrealize	v	moby_reverse
-unrealized	0	oewn-unrealized-a	Degree=Pos	dema	0			oewn_form
-unrealized	1		Tense=Past+VerbForm=Part	dema	0	unrealize	v	rule
+unrealized	0		Tense=Past+VerbForm=Part	dema	0	unrealize	v	rule
+unrealized	1	oewn-unrealized-a	Degree=Pos	dema	0			oewn_form
 unrealizes	0		Person=3+Tense=Pres	dema	0	unrealize	v	rule
 unrealizing	0		VerbForm=Ger	dema	0	unrealize	v	rule
 unreally	0		Degree=Pos	dema	0	unreally	r	moby_reverse
@@ -17070,8 +17070,8 @@ unrecited	0		Degree=Pos	dema	0	unrecited	a	moby_reverse
 unrecited	1		VerbForm=Inf	dema	0	unrecited	v	moby_reverse
 unreckon	0		VerbForm=Inf	dema	0	unreckon	v	moby_reverse
 unreckonable	0		Degree=Pos	dema	0	unreckonable	a	moby_reverse
-unreckoned	0		Degree=Pos	dema	0	unreckoned	a	moby_reverse
-unreckoned	1		Tense=Past+VerbForm=Part	dema	0	unreckon	v	rule
+unreckoned	0		Tense=Past+VerbForm=Part	dema	0	unreckon	v	rule
+unreckoned	1		Degree=Pos	dema	0	unreckoned	a	moby_reverse
 unreckoning	0		VerbForm=Ger	dema	0	unreckon	v	rule
 unreckons	0		Person=3+Tense=Pres	dema	0	unreckon	v	rule
 unreclaimable	0		Degree=Pos	dema	0	unreclaimable	a	moby_reverse
@@ -17898,8 +17898,8 @@ unrhetorical	0	oewn-unrhetorical-a	Degree=Pos	dema	0			oewn_form
 unrhetorically	0		Degree=Pos	dema	0	unrhetorically	r	moby_reverse
 unrheumatic	0		Degree=Pos	dema	0	unrheumatic	a	moby_reverse
 unrhyme	0		VerbForm=Inf	dema	0	unrhyme	v	moby_reverse
-unrhymed	0	oewn-unrhymed-a	Degree=Pos	dema	0			oewn_form
-unrhymed	1		Tense=Past+VerbForm=Part	dema	0	unrhyme	v	rule
+unrhymed	0		Tense=Past+VerbForm=Part	dema	0	unrhyme	v	rule
+unrhymed	1	oewn-unrhymed-a	Degree=Pos	dema	0			oewn_form
 unrhymes	0		Person=3+Tense=Pres	dema	0	unrhyme	v	rule
 unrhyming	0		VerbForm=Ger	dema	0	unrhyme	v	rule
 unrhythmic	0	oewn-unrhythmic-a	Degree=Pos	dema	0			oewn_form
@@ -17912,8 +17912,8 @@ unribboned	1		VerbForm=Inf	dema	0	unribboned	v	moby_reverse
 unridable	0		Degree=Pos	dema	0	unridable	a	moby_reverse
 unridden	0		Degree=Pos	dema	0	unridden	a	moby_reverse
 unriddle	0		VerbForm=Inf	dema	0	unriddle	v	moby_reverse
-unriddled	0		Degree=Pos	dema	0	unriddled	a	moby_reverse
-unriddled	1		Tense=Past+VerbForm=Part	dema	0	unriddle	v	rule
+unriddled	0		Tense=Past+VerbForm=Part	dema	0	unriddle	v	rule
+unriddled	1		Degree=Pos	dema	0	unriddled	a	moby_reverse
 unriddler	0		Number=Sing	dema	0	unriddler	n	moby_reverse
 unriddlers	0		Number=Plur	dema	0	unriddler	n	rule
 unriddles	0		Person=3+Tense=Pres	dema	0	unriddle	v	rule
@@ -17935,8 +17935,8 @@ unrifled	1		VerbForm=Inf	dema	0	unrifled	v	moby_reverse
 unrifted	0		Degree=Pos	dema	0	unrifted	a	moby_reverse
 unrifted	1		VerbForm=Inf	dema	0	unrifted	v	moby_reverse
 unrig	0		VerbForm=Inf	dema	0	unrig	v	moby_reverse
-unrigged	0	oewn-unrigged-a	Degree=Pos	dema	0			oewn_form
-unrigged	1		Tense=Past+VerbForm=Part	dema	0	unrig	v	rule
+unrigged	0		Tense=Past+VerbForm=Part	dema	0	unrig	v	rule
+unrigged	1	oewn-unrigged-a	Degree=Pos	dema	0			oewn_form
 unrigging	0		VerbForm=Ger	dema	0	unrig	v	rule
 unrightable	0		Degree=Pos	dema	0	unrightable	a	moby_reverse
 unrighted	0		Degree=Pos	dema	0	unrighted	a	moby_reverse
@@ -18079,8 +18079,8 @@ unrouged	1		VerbForm=Inf	dema	0	unrouged	v	moby_reverse
 unroughened	0		Degree=Pos	dema	0	unroughened	a	moby_reverse
 unroughened	1		VerbForm=Inf	dema	0	unroughened	v	moby_reverse
 unround	0		VerbForm=Inf	dema	0	unround	v	moby_reverse
-unrounded	0		Degree=Pos	dema	0	unrounded	a	moby_reverse
-unrounded	1		Tense=Past+VerbForm=Part	dema	0	unround	v	rule
+unrounded	0		Tense=Past+VerbForm=Part	dema	0	unround	v	rule
+unrounded	1		Degree=Pos	dema	0	unrounded	a	moby_reverse
 unrounded vowel	0	oewn-unrounded_vowel-n	Number=Sing	dema	0			oewn_form
 unrounded vowels	0	oewn-unrounded_vowel-n	Number=Plur	dema	0			rule
 unrounding	0		VerbForm=Ger	dema	0	unround	v	rule
@@ -18625,8 +18625,8 @@ unscummed	0		Degree=Pos	dema	0	unscummed	a	moby_reverse
 unscummed	1		VerbForm=Inf	dema	0	unscummed	v	moby_reverse
 unseal	0	oewn-unseal-v	VerbForm=Inf	dema	0			oewn_form
 unsealable	0		Degree=Pos	dema	0	unsealable	a	moby_reverse
-unsealed	0	oewn-unsealed-a	Degree=Pos	dema	0			oewn_form
-unsealed	1	oewn-unseal-v	Tense=Past+VerbForm=Part	dema	0			rule
+unsealed	0	oewn-unseal-v	Tense=Past+VerbForm=Part	dema	0			rule
+unsealed	1	oewn-unsealed-a	Degree=Pos	dema	0			oewn_form
 unsealing	0	oewn-unseal-v	VerbForm=Ger	dema	0			rule
 unseals	0	oewn-unseal-v	Person=3+Tense=Pres	dema	0			rule
 unseam	0		VerbForm=Inf	dema	0	unseam	v	moby_reverse
@@ -18910,8 +18910,8 @@ unsetting	0		Degree=Pos	dema	0	unsetting	a	moby_reverse
 unsetting	1		VerbForm=Inf	dema	0	unsetting	v	moby_reverse
 unsettle	0	oewn-unsettle-v	VerbForm=Inf	dema	0			oewn_form
 unsettleable	0		Degree=Pos	dema	0	unsettleable	a	moby_reverse
-unsettled	0	oewn-unsettled-a	Degree=Pos	dema	0			oewn_form
-unsettled	1	oewn-unsettle-v	Tense=Past+VerbForm=Part	dema	0			rule
+unsettled	0	oewn-unsettle-v	Tense=Past+VerbForm=Part	dema	0			rule
+unsettled	1	oewn-unsettled-a	Degree=Pos	dema	0			oewn_form
 unsettledness	0		Number=Sing	dema	0	unsettledness	n	moby_reverse
 unsettlednesses	0		Number=Plur	dema	0	unsettledness	n	rule
 unsettlement	0		Number=Sing	dema	0	unsettlement	n	moby_reverse
@@ -18935,13 +18935,13 @@ unsexy	0	oewn-unsexy-a	Degree=Pos	dema	0			oewn_form
 unshabbily	0		Degree=Pos	dema	0	unshabbily	r	moby_reverse
 unshabby	0		Degree=Pos	dema	0	unshabby	a	moby_reverse
 unshackle	0		VerbForm=Inf	dema	0	unshackle	v	moby_reverse
-unshackled	0	oewn-unshackled-a	Degree=Pos	dema	0			oewn_form
-unshackled	1		Tense=Past+VerbForm=Part	dema	0	unshackle	v	rule
+unshackled	0		Tense=Past+VerbForm=Part	dema	0	unshackle	v	rule
+unshackled	1	oewn-unshackled-a	Degree=Pos	dema	0			oewn_form
 unshackles	0		Person=3+Tense=Pres	dema	0	unshackle	v	rule
 unshackling	0		VerbForm=Ger	dema	0	unshackle	v	rule
 unshade	0		VerbForm=Inf	dema	0	unshade	v	moby_reverse
-unshaded	0	oewn-unshaded-a	Degree=Pos	dema	0			oewn_form
-unshaded	1		Tense=Past+VerbForm=Part	dema	0	unshade	v	rule
+unshaded	0		Tense=Past+VerbForm=Part	dema	0	unshade	v	rule
+unshaded	1	oewn-unshaded-a	Degree=Pos	dema	0			oewn_form
 unshades	0		Person=3+Tense=Pres	dema	0	unshade	v	rule
 unshadily	0		Degree=Pos	dema	0	unshadily	r	moby_reverse
 unshadiness	0		Number=Sing	dema	0	unshadiness	n	moby_reverse
@@ -19048,8 +19048,8 @@ unshining	1		VerbForm=Inf	dema	0	unshining	v	moby_reverse
 unshiny	0		Degree=Pos	dema	0	unshiny	a	moby_reverse
 unship	0		VerbForm=Inf	dema	0	unship	v	moby_reverse
 unshippable	0		Degree=Pos	dema	0	unshippable	a	moby_reverse
-unshipped	0		Degree=Pos	dema	0	unshipped	a	moby_reverse
-unshipped	1		Tense=Past+VerbForm=Part	dema	0	unship	v	rule
+unshipped	0		Tense=Past+VerbForm=Part	dema	0	unship	v	rule
+unshipped	1		Degree=Pos	dema	0	unshipped	a	moby_reverse
 unshipping	0		VerbForm=Ger	dema	0	unship	v	rule
 unships	0		Person=3+Tense=Pres	dema	0	unship	v	rule
 unshirked	0		Degree=Pos	dema	0	unshirked	a	moby_reverse
@@ -20231,8 +20231,8 @@ unstooping	1		VerbForm=Inf	dema	0	unstooping	v	moby_reverse
 unstop	0		VerbForm=Inf	dema	0	unstop	v	moby_reverse
 unstoppable	0	oewn-unstoppable-a	Degree=Pos	dema	0			oewn_form
 unstoppably	0		Degree=Pos	dema	0	unstoppably	r	moby_reverse
-unstopped	0		Degree=Pos	dema	0	unstopped	a	moby_reverse
-unstopped	1		Tense=Past+VerbForm=Part	dema	0	unstop	v	rule
+unstopped	0		Tense=Past+VerbForm=Part	dema	0	unstop	v	rule
+unstopped	1		Degree=Pos	dema	0	unstopped	a	moby_reverse
 unstopper	0		VerbForm=Inf	dema	0	unstopper	v	moby_reverse
 unstoppered	0		Tense=Past+VerbForm=Part	dema	0	unstopper	v	rule
 unstoppered	1	oewn-unstoppered-a	Degree=Pos	dema	0			oewn_form
@@ -20330,8 +20330,8 @@ unstridulous	0		Degree=Pos	dema	0	unstridulous	a	moby_reverse
 unstriking	0		Degree=Pos	dema	0	unstriking	a	moby_reverse
 unstriking	1		VerbForm=Inf	dema	0	unstriking	v	moby_reverse
 unstring	0	oewn-unstring-v	VerbForm=Inf	dema	0			oewn_form
-unstringed	0		Degree=Pos	dema	0	unstringed	a	moby_reverse
-unstringed	1	oewn-unstring-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+unstringed	0	oewn-unstring-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+unstringed	1		Degree=Pos	dema	0	unstringed	a	moby_reverse
 unstringent	0		Degree=Pos	dema	0	unstringent	a	moby_reverse
 unstringently	0		Degree=Pos	dema	0	unstringently	r	moby_reverse
 unstringing	0	oewn-unstring-v	VerbForm=Ger	dema	0			rule
@@ -20350,8 +20350,8 @@ unstructured	0	oewn-unstructured-a	Degree=Pos	dema	0			oewn_form
 unstructured	1		VerbForm=Inf	dema	0	unstructured	v	moby_reverse
 unstruggling	0		Degree=Pos	dema	0	unstruggling	a	moby_reverse
 unstruggling	1		VerbForm=Inf	dema	0	unstruggling	v	moby_reverse
-unstrung	0	oewn-unstrung-a	Degree=Pos	dema	0			oewn_form
-unstrung	1	oewn-unstring-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+unstrung	0	oewn-unstring-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+unstrung	1	oewn-unstrung-a	Degree=Pos	dema	0			oewn_form
 unstubbed	0		Degree=Pos	dema	0	unstubbed	a	moby_reverse
 unstubbed	1		VerbForm=Inf	dema	0	unstubbed	v	moby_reverse
 unstubbled	0		Degree=Pos	dema	0	unstubbled	a	moby_reverse
@@ -20981,8 +20981,8 @@ untangle	0	oewn-untangle-v	VerbForm=Inf	dema	0			oewn_form
 untangled	0	oewn-untangle-v	Tense=Past+VerbForm=Part	dema	0			rule
 untangled	1	oewn-untangled-a	Degree=Pos	dema	0			oewn_form
 untangles	0	oewn-untangle-v	Person=3+Tense=Pres	dema	0			rule
-untangling	0	oewn-untangling-n	Number=Sing	dema	0			oewn_form
-untangling	1	oewn-untangle-v	VerbForm=Ger	dema	0			rule
+untangling	0	oewn-untangle-v	VerbForm=Ger	dema	0			rule
+untangling	1	oewn-untangling-n	Number=Sing	dema	0			oewn_form
 untanglings	0	oewn-untangling-n	Number=Plur	dema	0			rule
 untanned	0	oewn-untanned-a	Degree=Pos	dema	0			oewn_form
 untanned	1		VerbForm=Inf	dema	0	untanned	v	moby_reverse
@@ -21242,8 +21242,8 @@ unthinkableness	0		Number=Sing	dema	0	unthinkableness	n	moby_reverse
 unthinkablenesses	0		Number=Plur	dema	0	unthinkableness	n	rule
 unthinkably	0	oewn-unthinkably-r	Degree=Pos	dema	0			oewn_form
 unthinking	0	oewn-unthinking-a	Degree=Pos	dema	0			oewn_form
-unthinking	1	oewn-unthinking-r	Degree=Pos	dema	0			oewn_form
-unthinking	2		VerbForm=Ger	dema	0	unthink	v	rule
+unthinking	1		VerbForm=Ger	dema	0	unthink	v	rule
+unthinking	2	oewn-unthinking-r	Degree=Pos	dema	0			oewn_form
 unthinkingly	0	oewn-unthinkingly-r	Degree=Pos	dema	0			oewn_form
 unthinkingness	0		Number=Sing	dema	0	unthinkingness	n	moby_reverse
 unthinkingnesses	0		Number=Plur	dema	0	unthinkingness	n	rule
@@ -21276,8 +21276,8 @@ unthrashed	0		Degree=Pos	dema	0	unthrashed	a	moby_reverse
 unthrashed	1		VerbForm=Inf	dema	0	unthrashed	v	moby_reverse
 unthread	0		VerbForm=Inf	dema	0	unthread	v	moby_reverse
 unthreadable	0		Degree=Pos	dema	0	unthreadable	a	moby_reverse
-unthreaded	0		Degree=Pos	dema	0	unthreaded	a	moby_reverse
-unthreaded	1		Tense=Past+VerbForm=Part	dema	0	unthread	v	moby_reverse
+unthreaded	0		Tense=Past+VerbForm=Part	dema	0	unthread	v	moby_reverse
+unthreaded	1		Degree=Pos	dema	0	unthreaded	a	moby_reverse
 unthreading	0		VerbForm=Ger	dema	0	unthread	v	rule
 unthreads	0		Person=3+Tense=Pres	dema	0	unthread	v	rule
 unthreatening	0	oewn-unthreatening-a	Degree=Pos	dema	0			oewn_form
@@ -21905,8 +21905,8 @@ untwitched	0		Degree=Pos	dema	0	untwitched	a	moby_reverse
 untwitched	1		VerbForm=Inf	dema	0	untwitched	v	moby_reverse
 untwitching	0		Degree=Pos	dema	0	untwitching	a	moby_reverse
 untwitching	1		VerbForm=Inf	dema	0	untwitching	v	moby_reverse
-untying	0	oewn-untying-n	Number=Sing	dema	0			oewn_form
-untying	1	oewn-untie-v	VerbForm=Ger	dema	0			oewn_form
+untying	0	oewn-untie-v	VerbForm=Ger	dema	0			oewn_form
+untying	1	oewn-untying-n	Number=Sing	dema	0			oewn_form
 untyings	0	oewn-untying-n	Number=Plur	dema	0			rule
 untyped	0		Degree=Pos	dema	0	untyped	a	moby_reverse
 untyped	1		VerbForm=Inf	dema	0	untyped	v	moby_reverse
@@ -22861,8 +22861,8 @@ unwriggled	0		Degree=Pos	dema	0	unwriggled	a	moby_reverse
 unwriggled	1		VerbForm=Inf	dema	0	unwriggled	v	moby_reverse
 unwrinkle	0		VerbForm=Inf	dema	0	unwrinkle	v	moby_reverse
 unwrinkleable	0		Degree=Pos	dema	0	unwrinkleable	a	moby_reverse
-unwrinkled	0	oewn-unwrinkled-a	Degree=Pos	dema	0			oewn_form
-unwrinkled	1		Tense=Past+VerbForm=Part	dema	0	unwrinkle	v	rule
+unwrinkled	0		Tense=Past+VerbForm=Part	dema	0	unwrinkle	v	rule
+unwrinkled	1	oewn-unwrinkled-a	Degree=Pos	dema	0			oewn_form
 unwrinkles	0		Person=3+Tense=Pres	dema	0	unwrinkle	v	rule
 unwrinkling	0		VerbForm=Ger	dema	0	unwrinkle	v	rule
 unwritable	0		Degree=Pos	dema	0	unwritable	a	moby_reverse
@@ -22971,9 +22971,9 @@ upbraid	0	oewn-upbraid-v	VerbForm=Inf	dema	0			oewn_form
 upbraided	0	oewn-upbraid-v	Tense=Past+VerbForm=Part	dema	0			rule
 upbraider	0	oewn-upbraider-n	Number=Sing	dema	0			oewn_form
 upbraiders	0	oewn-upbraider-n	Number=Plur	dema	0			rule
-upbraiding	0		Degree=Pos	dema	0	upbraiding	a	moby_reverse
-upbraiding	1	oewn-upbraiding-n	Number=Sing	dema	0			oewn_form
-upbraiding	2	oewn-upbraid-v	VerbForm=Ger	dema	0			rule
+upbraiding	0	oewn-upbraid-v	VerbForm=Ger	dema	0			rule
+upbraiding	1		Degree=Pos	dema	0	upbraiding	a	moby_reverse
+upbraiding	2	oewn-upbraiding-n	Number=Sing	dema	0			oewn_form
 upbraidingly	0		Degree=Pos	dema	0	upbraidingly	r	moby_reverse
 upbraidings	0	oewn-upbraiding-n	Number=Plur	dema	0			rule
 upbraids	0	oewn-upbraid-v	Person=3+Tense=Pres	dema	0			rule
@@ -23247,8 +23247,8 @@ uprouses	0		Person=3+Tense=Pres	dema	0	uprouse	v	rule
 uprousing	0		VerbForm=Ger	dema	0	uprouse	v	rule
 uprush	0		Number=Sing	dema	0	uprush	n	moby_reverse
 uprushes	0		Number=Plur	dema	0	uprush	n	rule
-ups	0	oewn-up-v	Person=3+Tense=Pres	dema	0			rule
-ups	1		Number=Plur	dema	0	up	n	rule
+ups	0		Number=Plur	dema	0	up	n	rule
+ups	1	oewn-up-v	Person=3+Tense=Pres	dema	0			rule
 upsadaisy	0	dema-upsadaisy-i		dema	0			carried
 upscale	0	oewn-upscale-a	Degree=Pos	dema	0			oewn_form
 upset	0	oewn-upset-a	Degree=Pos	dema	1			carried
@@ -23274,14 +23274,14 @@ upside down	0	oewn-upside_down-r	Degree=Pos	dema	0			oewn_form
 upside-down	0	oewn-upside-down-a	Degree=Pos	dema	0			oewn_form
 upside-down cake	0	oewn-upside-down_cake-n	Number=Sing	dema	0			oewn_form
 upside-down cakes	0	oewn-upside-down_cake-n	Number=Plur	dema	0			rule
-upsides	0		Degree=Pos	dema	0	upsides	r	moby_reverse
-upsides	1	oewn-upside-n	Number=Plur	dema	0			rule
+upsides	0	oewn-upside-n	Number=Plur	dema	0			rule
+upsides	1		Degree=Pos	dema	0	upsides	r	moby_reverse
 upsilon	0	oewn-upsilon-n	Number=Sing	dema	0			oewn_form
 upsilons	0	oewn-upsilon-n	Number=Plur	dema	0			rule
 upspring	0		VerbForm=Inf	dema	0	upspring	v	moby_reverse
 upspring	1		Number=Sing	dema	0	upspring	n	moby_reverse
-upspringing	0		Degree=Pos	dema	0	upspringing	r	moby_reverse
-upspringing	1		VerbForm=Ger	dema	0	upspring	v	rule
+upspringing	0		VerbForm=Ger	dema	0	upspring	v	rule
+upspringing	1		Degree=Pos	dema	0	upspringing	r	moby_reverse
 upsprings	0		Person=3+Tense=Pres	dema	0	upspring	v	rule
 upstage	0	oewn-upstage-r	Degree=Pos	dema	0			oewn_form
 upstage	1	oewn-upstage-a	Degree=Pos	dema	0			oewn_form
@@ -23393,8 +23393,8 @@ upttorning	0		VerbForm=Ger	dema	0	upttorn	v	rule
 upttorns	0		Person=3+Tense=Pres	dema	0	upttorn	v	rule
 upturn	0	oewn-upturn-n	Number=Sing	dema	1			carried
 upturn	1	dema-upturn-v	VerbForm=Inf	dema	1			carried
-upturned	0	oewn-upturned-a	Degree=Pos	dema	0			oewn_form
-upturned	1	dema-upturn-v	Tense=Past+VerbForm=Part	dema	0			rule
+upturned	0	dema-upturn-v	Tense=Past+VerbForm=Part	dema	0			rule
+upturned	1	oewn-upturned-a	Degree=Pos	dema	0			oewn_form
 upturning	0	dema-upturn-v	VerbForm=Ger	dema	0			rule
 upturns	0	oewn-upturn-n	Number=Plur	dema	1			carried
 upturns	1	dema-upturn-v	Person=3+Tense=Pres	dema	1			carried
@@ -23846,8 +23846,8 @@ ushers	0	oewn-usher-n	Number=Plur	dema	0			rule
 ushers	1	oewn-usher-v	Person=3+Tense=Pres	dema	0			rule
 ushers in	0	oewn-usher_in-v	Person=3+Tense=Pres	dema	0			rule
 ushers out	0	oewn-usher_out-v	Person=3+Tense=Pres	dema	0			rule
-using	0	oewn-using-n	Number=Sing	dema	0			oewn_form
-using	1	oewn-use-v	VerbForm=Ger	dema	0			rule
+using	0	oewn-use-v	VerbForm=Ger	dema	0			rule
+using	1	oewn-using-n	Number=Sing	dema	0			oewn_form
 using up	0	oewn-using_up-n	Number=Sing	dema	0			oewn_form
 using up	1	oewn-use_up-v	VerbForm=Ger	dema	0			rule
 using ups	0	oewn-using_up-n	Number=Plur	dema	0			rule

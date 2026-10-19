@@ -1231,8 +1231,8 @@ nagger	0	oewn-nagger-n	Number=Sing	dema	0			oewn_form
 naggers	0	oewn-nagger-n	Number=Plur	dema	0			rule
 naggier	0		Degree=Cmp	dema	0	naggy	a	moby_reverse
 naggiest	0		Degree=Sup	dema	0	naggy	a	moby_reverse
-nagging	0	oewn-nagging-a	Degree=Pos	dema	0			oewn_form
-nagging	1	oewn-nag-v	VerbForm=Ger	dema	0			oewn_form
+nagging	0	oewn-nag-v	VerbForm=Ger	dema	0			oewn_form
+nagging	1	oewn-nagging-a	Degree=Pos	dema	0			oewn_form
 naggingness	0		Number=Sing	dema	0	naggingness	n	moby_reverse
 naggish	0		Degree=Pos	dema	0	naggish	a	moby_reverse
 naggy	0		Degree=Pos	dema	0	naggy	a	moby_reverse
@@ -1737,8 +1737,8 @@ narrowings	0	oewn-narrowing-n	Number=Plur	dema	0			rule
 narrowly	0	oewn-narrowly-r	Degree=Pos	dema	0			oewn_form
 narrowness	0	oewn-narrowness-n	Number=Sing	dema	0			oewn_form
 narrownesses	0	oewn-narrowness-n	Number=Plur	dema	0			rule
-narrows	0	oewn-narrow-n	Number=Plur	dema	0			rule
-narrows	1	oewn-narrow-v	Person=3+Tense=Pres	dema	0			rule
+narrows	0	oewn-narrow-v	Person=3+Tense=Pres	dema	0			rule
+narrows	1	oewn-narrow-n	Number=Plur	dema	0			rule
 narrows down	0	oewn-narrow_down-v	Person=3+Tense=Pres	dema	0			rule
 narthecal	0		Degree=Pos	dema	0	narthecal	a	moby_reverse
 narthex	0	oewn-narthex-n	Number=Sing	dema	0			oewn_form
@@ -2179,8 +2179,8 @@ nauseate	0	oewn-nauseate-v	VerbForm=Inf	dema	0			oewn_form
 nauseated	0	oewn-nauseate-v	Tense=Past+VerbForm=Part	dema	0			rule
 nauseated	1	oewn-nauseated-a	Degree=Pos	dema	0			oewn_form
 nauseates	0	oewn-nauseate-v	Person=3+Tense=Pres	dema	0			rule
-nauseating	0	oewn-nauseating-a	Degree=Pos	dema	0			oewn_form
-nauseating	1	oewn-nauseate-v	VerbForm=Ger	dema	0			rule
+nauseating	0	oewn-nauseate-v	VerbForm=Ger	dema	0			rule
+nauseating	1	oewn-nauseating-a	Degree=Pos	dema	0			oewn_form
 nauseatingly	0		Degree=Pos	dema	0	nauseatingly	r	moby_reverse
 nauseatingness	0	oewn-nauseatingness-n	Number=Sing	dema	0			oewn_form
 nauseatingnesses	0	oewn-nauseatingness-n	Number=Plur	dema	0			rule
@@ -2733,8 +2733,8 @@ needleworkers	0	oewn-needleworker-n	Number=Plur	dema	0			rule
 needleworks	0	oewn-needlework-n	Number=Plur	dema	0			rule
 needling	0	oewn-needle-v	VerbForm=Ger	dema	0			rule
 needn't	0	dema-need-x	Contraction=Yes	dema	0			contraction
-needs	0	oewn-need-n	Number=Plur	dema	0			rule
-needs	1	oewn-need-v	Person=3+Tense=Pres	dema	0			rule
+needs	0	oewn-need-v	Person=3+Tense=Pres	dema	0			rule
+needs	1	oewn-need-n	Number=Plur	dema	0			rule
 needs	2	oewn-needs-r	Degree=Pos	dema	0			oewn_form
 needy	0	oewn-needy-a	Degree=Pos	dema	0			oewn_form
 needy	1	oewn-needy-n	Number=Sing	dema	0			oewn_form
@@ -3343,8 +3343,8 @@ nervelessness	0	oewn-nervelessness-n	Number=Sing	dema	0			oewn_form
 nervelessnesses	0	oewn-nervelessness-n	Number=Plur	dema	0			rule
 nerveroot	0	oewn-nerveroot-n	Number=Sing	dema	0			oewn_form
 nerveroots	0	oewn-nerveroot-n	Number=Plur	dema	0			rule
-nerves	0	oewn-nerves-n	Number=Sing	dema	0			oewn_form
-nerves	1	oewn-nerve-n	Number=Plur	dema	0			rule
+nerves	0	oewn-nerve-n	Number=Plur	dema	0			rule
+nerves	1	oewn-nerves-n	Number=Sing	dema	0			oewn_form
 nerves	2	oewn-nerve-v	Person=3+Tense=Pres	dema	0			rule
 nerves of steel	0	oewn-nerves_of_steel-n	Number=Sing	dema	0			oewn_form
 nervier	0	oewn-nervy-a	Degree=Cmp	dema	0			oewn_form
@@ -3446,9 +3446,9 @@ nestlers	0		Number=Plur	dema	0	nestler	n	rule
 nestles	0	oewn-nestle-v	Person=3+Tense=Pres	dema	0			rule
 nestles	1	oewn-nestle-n	Number=Plur	dema	0			rule
 nestlike	0		Degree=Pos	dema	0	nestlike	a	moby_reverse
-nestling	0	oewn-nestling-n	Number=Plur	dema	0			agid
-nestling	1	oewn-nestling-n	Number=Sing	dema	0			oewn_form
-nestling	2	oewn-nestle-v	VerbForm=Ger	dema	0			rule
+nestling	0	oewn-nestling-n	Number=Sing	dema	0			oewn_form
+nestling	1	oewn-nestle-v	VerbForm=Ger	dema	0			rule
+nestlings	0	oewn-nestling-n	Number=Plur	dema	0			rule
 nests	0	oewn-nest-n	Number=Plur	dema	0			rule
 nests	1	oewn-nest-v	Person=3+Tense=Pres	dema	0			rule
 nesty	0		Degree=Pos	dema	0	nesty	a	moby_reverse
@@ -3512,8 +3512,8 @@ netted	2	oewn-netted-a	Degree=Pos	dema	0			oewn_form
 netted fish	0	oewn-net_fish-v	Tense=Past+VerbForm=Part	dema	0			rule
 netted melon	0	oewn-netted_melon-n	Number=Sing	dema	0			oewn_form
 netted melons	0	oewn-netted_melon-n	Number=Plur	dema	0			rule
-netter	0	oewn-net-a	Degree=Cmp	dema	0			rule
-netter	1	oewn-nett-a	Degree=Cmp	dema	0			rule
+netter	0	oewn-nett-a	Degree=Cmp	dema	0			rule
+netter	1	oewn-net-a	Degree=Cmp	dema	0			rule
 netties	0		Number=Plur	dema	0	netty	n	rule
 netting	0	oewn-netting-n	Number=Sing	dema	0			oewn_form
 netting	1	oewn-net-v	VerbForm=Ger	dema	0			oewn_form
@@ -4124,8 +4124,8 @@ nib	0	oewn-nib-n	Number=Sing	dema	0			oewn_form
 nib	1		VerbForm=Inf	dema	0	nib	v	moby_reverse
 nibbana	0		Number=Sing	dema	0	nibbana	n	moby_reverse
 nibbanas	0		Number=Plur	dema	0	nibbana	n	rule
-nibbed	0	oewn-nibbed-a	Degree=Pos	dema	0			oewn_form
-nibbed	1		Tense=Past+VerbForm=Part	dema	0	nib	v	moby_reverse
+nibbed	0		Tense=Past+VerbForm=Part	dema	0	nib	v	moby_reverse
+nibbed	1	oewn-nibbed-a	Degree=Pos	dema	0			oewn_form
 nibbing	0		VerbForm=Ger	dema	0	nib	v	moby_reverse
 nibble	0	oewn-nibble-v	VerbForm=Inf	dema	0			oewn_form
 nibble	1	oewn-nibble-n	Number=Sing	dema	0			oewn_form
@@ -4216,8 +4216,8 @@ nicker seed	0	oewn-nicker_seed-n	Number=Sing	dema	0			oewn_form
 nicker seeds	0	oewn-nicker_seed-n	Number=Plur	dema	0			rule
 nickered	0	oewn-nicker-v	Tense=Past+VerbForm=Part	dema	0			rule
 nickering	0	oewn-nicker-v	VerbForm=Ger	dema	0			rule
-nickers	0	oewn-nicker-n	Number=Plur	dema	0			rule
-nickers	1	oewn-nicker-v	Person=3+Tense=Pres	dema	0			rule
+nickers	0	oewn-nicker-v	Person=3+Tense=Pres	dema	0			rule
+nickers	1	oewn-nicker-n	Number=Plur	dema	0			rule
 nickey	0		Number=Sing	dema	0	nickey	n	moby_reverse
 nickeys	0		Number=Plur	dema	0	nickey	n	rule
 nicking	0	oewn-nick-v	VerbForm=Ger	dema	0			rule
@@ -4355,21 +4355,21 @@ niggardness	0	oewn-niggardness-n	Number=Sing	dema	0			oewn_form
 niggardnesses	0	oewn-niggardness-n	Number=Plur	dema	0			rule
 niggards	0	oewn-niggard-n	Number=Plur	dema	0			rule
 niggas	0	oewn-nigga-n	Number=Plur	dema	0			rule
-nigged	0		VerbForm=Inf	dema	0	nigged	v	moby_reverse
-nigged	1		Tense=Past+VerbForm=Part	dema	0	nig	v	rule
+nigged	0		Tense=Past+VerbForm=Part	dema	0	nig	v	rule
+nigged	1		VerbForm=Inf	dema	0	nigged	v	moby_reverse
 nigger	0	oewn-nigger-n	Number=Sing	dema	0			oewn_form
 niggerhead	0		Number=Sing	dema	0	niggerhead	n	moby_reverse
 niggerheads	0		Number=Plur	dema	0	niggerhead	n	rule
 niggers	0	oewn-nigger-n	Number=Plur	dema	0			rule
-nigging	0		VerbForm=Inf	dema	0	nigging	v	moby_reverse
-nigging	1		VerbForm=Ger	dema	0	nig	v	rule
+nigging	0		VerbForm=Ger	dema	0	nig	v	rule
+nigging	1		VerbForm=Inf	dema	0	nigging	v	moby_reverse
 niggle	0	oewn-niggle-v	VerbForm=Inf	dema	0			oewn_form
 niggled	0	oewn-niggle-v	Tense=Past+VerbForm=Part	dema	0			rule
 niggler	0	oewn-niggler-n	Number=Sing	dema	0			oewn_form
 nigglers	0	oewn-niggler-n	Number=Plur	dema	0			rule
 niggles	0	oewn-niggle-v	Person=3+Tense=Pres	dema	0			rule
-niggling	0	oewn-niggling-a	Degree=Pos	dema	0			oewn_form
-niggling	1	oewn-niggle-v	VerbForm=Ger	dema	0			rule
+niggling	0	oewn-niggle-v	VerbForm=Ger	dema	0			rule
+niggling	1	oewn-niggling-a	Degree=Pos	dema	0			oewn_form
 nigh	0	oewn-nigh-a	Degree=Pos	dema	0			oewn_form
 nigh	1	oewn-nigh-r	Degree=Pos	dema	0			oewn_form
 nigh	2	dema-nigh-p		dema	0			carried
@@ -4489,8 +4489,8 @@ nightrider	0	oewn-nightrider-n	Number=Sing	dema	0			oewn_form
 nightriders	0	oewn-nightrider-n	Number=Plur	dema	0			rule
 nightriding	0		Number=Sing	dema	0	nightriding	n	moby_reverse
 nightridings	0		Number=Plur	dema	0	nightriding	n	rule
-nights	0		Degree=Pos	dema	0	nights	r	moby_reverse
-nights	1	oewn-night-n	Number=Plur	dema	0			rule
+nights	0	oewn-night-n	Number=Plur	dema	0			rule
+nights	1		Degree=Pos	dema	0	nights	r	moby_reverse
 nightshade	0	oewn-nightshade-n	Number=Sing	dema	0			oewn_form
 nightshades	0	oewn-nightshade-n	Number=Plur	dema	0			rule
 nightshirt	0	oewn-nightshirt-n	Number=Sing	dema	0			oewn_form
@@ -4691,8 +4691,8 @@ nipper	0	oewn-nipper-n	Number=Sing	dema	0			oewn_form
 nippers	0	oewn-nipper-n	Number=Plur	dema	0			rule
 nippier	0	oewn-nippy-a	Degree=Cmp	dema	0			oewn_form
 nippiest	0	oewn-nippy-a	Degree=Sup	dema	0			oewn_form
-nipping	0	oewn-nipping-a	Degree=Pos	dema	0			oewn_form
-nipping	1	oewn-nip-v	VerbForm=Ger	dema	0			oewn_form
+nipping	0	oewn-nip-v	VerbForm=Ger	dema	0			oewn_form
+nipping	1	oewn-nipping-a	Degree=Pos	dema	0			oewn_form
 nipping off	0	oewn-nip_off-v	VerbForm=Ger	dema	0			rule
 nippingly	0		Degree=Pos	dema	0	nippingly	r	moby_reverse
 nipple	0	oewn-nipple-n	Number=Sing	dema	0			oewn_form
@@ -9466,8 +9466,8 @@ nongarrulousness	0		Number=Sing	dema	0	nongarrulousness	n	moby_reverse
 nongas	0		Number=Sing	dema	0	nongas	n	moby_reverse
 nongaseness	0		Number=Sing	dema	0	nongaseness	n	moby_reverse
 nongaseous	0		Degree=Pos	dema	0	nongaseous	a	moby_reverse
-nongases	0		Number=Sing	dema	0	nongases	n	moby_reverse
-nongases	1		Number=Plur	dema	0	nongas	n	rule
+nongases	0		Number=Plur	dema	0	nongas	n	rule
+nongases	1		Number=Sing	dema	0	nongases	n	moby_reverse
 nongassy	0		Degree=Pos	dema	0	nongassy	a	moby_reverse
 nongelatinizing	0		Degree=Pos	dema	0	nongelatinizing	a	moby_reverse
 nongelatinizing	1		VerbForm=Inf	dema	0	nongelatinizing	v	moby_reverse
@@ -15740,8 +15740,8 @@ numbat	0	oewn-numbat-n	Number=Sing	dema	0			oewn_form
 numbats	0	oewn-numbat-n	Number=Plur	dema	0			rule
 numbed	0	oewn-numb-v	Tense=Past+VerbForm=Part	dema	0			rule
 number	0	oewn-number-n	Number=Sing	dema	0			oewn_form
-number	1	oewn-number-v	VerbForm=Inf	dema	0			oewn_form
-number	2	oewn-numb-a	Degree=Cmp	dema	0			rule
+number	1	oewn-numb-a	Degree=Cmp	dema	0			rule
+number	2	oewn-number-v	VerbForm=Inf	dema	0			oewn_form
 number 1	0	oewn-number_1-n	Number=Sing	dema	0			oewn_form
 number agreement	0	oewn-number_agreement-n	Number=Sing	dema	0			oewn_form
 number agreements	0	oewn-number_agreement-n	Number=Plur	dema	0			rule
@@ -15771,8 +15771,8 @@ numberless	0	oewn-numberless-a	Degree=Pos	dema	0			oewn_form
 numberplate	0	oewn-numberplate-n	Number=Sing	dema	0			oewn_form
 numberplates	0	oewn-numberplate-n	Number=Plur	dema	0			rule
 numbers	0	oewn-number-n	Number=Plur	dema	0			rule
-numbers	1	oewn-numbers-n	Number=Sing	dema	0			oewn_form
-numbers	2	oewn-number-v	Person=3+Tense=Pres	dema	0			rule
+numbers	1	oewn-number-v	Person=3+Tense=Pres	dema	0			rule
+numbers	2	oewn-numbers-n	Number=Sing	dema	0			oewn_form
 numbers game	0	oewn-numbers_game-n	Number=Sing	dema	0			oewn_form
 numbers games	0	oewn-numbers_game-n	Number=Plur	dema	0			rule
 numbers pool	0	oewn-numbers_pool-n	Number=Sing	dema	0			oewn_form
@@ -15945,8 +15945,8 @@ nursing homes	0	oewn-nursing_home-n	Number=Plur	dema	0			rule
 nursing school	0	oewn-nursing_school-n	Number=Sing	dema	0			oewn_form
 nursing schools	0	oewn-nursing_school-n	Number=Plur	dema	0			rule
 nursings	0	oewn-nursing-n	Number=Plur	dema	0			rule
-nursling	0	oewn-nursling-n	Number=Plur	dema	0			agid
-nursling	1	oewn-nursling-n	Number=Sing	dema	0			oewn_form
+nursling	0	oewn-nursling-n	Number=Sing	dema	0			oewn_form
+nurslings	0	oewn-nursling-n	Number=Plur	dema	0			rule
 nurturable	0		Degree=Pos	dema	0	nurturable	a	moby_reverse
 nurtural	0	oewn-nurtural-a	Degree=Pos	dema	0			oewn_form
 nurturance	0	oewn-nurturance-n	Number=Sing	dema	0			oewn_form
@@ -16072,10 +16072,10 @@ nutritive	1		Number=Sing	dema	0	nutritive	n	moby_reverse
 nutritively	0		Degree=Pos	dema	0	nutritively	r	moby_reverse
 nutritiveness	0	oewn-nutritiveness-n	Number=Sing	dema	0			oewn_form
 nutritivenesses	0	oewn-nutritiveness-n	Number=Plur	dema	0			rule
-nuts	0	oewn-nuts-a	Degree=Pos	dema	0			oewn_form
-nuts	1	dema-nuts-i		dema	0			carried
-nuts	2	oewn-nut-n	Number=Plur	dema	0			rule
-nuts	3	oewn-nut-v	Person=3+Tense=Pres	dema	0			rule
+nuts	0	oewn-nut-n	Number=Plur	dema	0			rule
+nuts	1	oewn-nuts-a	Degree=Pos	dema	0			oewn_form
+nuts	2	oewn-nut-v	Person=3+Tense=Pres	dema	0			rule
+nuts	3	dema-nuts-i		dema	0			carried
 nuts and bolts	0	oewn-nuts_and_bolts-n	Number=Sing	dema	0			oewn_form
 nutsedge	0	oewn-nutsedge-n	Number=Sing	dema	0			oewn_form
 nutsedges	0	oewn-nutsedge-n	Number=Plur	dema	0			rule
@@ -16133,8 +16133,8 @@ nylghaus	0	oewn-nylghau-n	Number=Plur	dema	0			rule
 nylon	0	oewn-nylon-n	Number=Sing	dema	0			oewn_form
 nylon stocking	0	oewn-nylon_stocking-n	Number=Sing	dema	0			oewn_form
 nylon stockings	0	oewn-nylon_stocking-n	Number=Plur	dema	0			rule
-nylons	0	oewn-nylons-n	Number=Sing	dema	0			oewn_form
-nylons	1	oewn-nylon-n	Number=Plur	dema	0			rule
+nylons	0	oewn-nylon-n	Number=Plur	dema	0			rule
+nylons	1	oewn-nylons-n	Number=Sing	dema	0			oewn_form
 nymph	0	oewn-nymph-n	Number=Sing	dema	0			oewn_form
 nympha	0		Number=Sing	dema	0	nympha	n	moby_reverse
 nymphae	0		Number=Sing	dema	0	nymphae	n	moby_reverse

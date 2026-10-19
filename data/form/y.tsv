@@ -451,9 +451,9 @@ yawner	0	oewn-yawner-n	Number=Sing	dema	0			oewn_form
 yawners	0	oewn-yawner-n	Number=Plur	dema	0			rule
 yawnful	0		Degree=Pos	dema	0	yawnful	a	moby_reverse
 yawnfully	0		Degree=Pos	dema	0	yawnfully	r	moby_reverse
-yawning	0	oewn-yawning-a	Degree=Pos	dema	0			oewn_form
-yawning	1	oewn-yawning-n	Number=Sing	dema	0			oewn_form
-yawning	2	oewn-yawn-v	VerbForm=Ger	dema	0			rule
+yawning	0	oewn-yawn-v	VerbForm=Ger	dema	0			rule
+yawning	1	oewn-yawning-a	Degree=Pos	dema	0			oewn_form
+yawning	2	oewn-yawning-n	Number=Sing	dema	0			oewn_form
 yawnings	0	oewn-yawning-n	Number=Plur	dema	0			rule
 yawns	0	oewn-yawn-v	Person=3+Tense=Pres	dema	0			rule
 yawns	1	oewn-yawn-n	Number=Plur	dema	0			rule
@@ -465,8 +465,8 @@ yawpers	0		Number=Plur	dema	0	yawper	n	rule
 yawping	0	oewn-yawp-v	VerbForm=Ger	dema	0			rule
 yawps	0	oewn-yawp-v	Person=3+Tense=Pres	dema	0			rule
 yaws	0	oewn-yaws-n	Number=Sing	dema	0			oewn_form
-yaws	1	oewn-yaw-n	Number=Plur	dema	0			rule
-yaws	2	oewn-yaw-v	Person=3+Tense=Pres	dema	0			rule
+yaws	1	oewn-yaw-v	Person=3+Tense=Pres	dema	0			rule
+yaws	2	oewn-yaw-n	Number=Plur	dema	0			rule
 yawweed	0		Number=Sing	dema	0	yawweed	n	moby_reverse
 yawweeds	0		Number=Plur	dema	0	yawweed	n	rule
 yazata	0		Number=Sing	dema	0	yazata	n	moby_reverse
@@ -482,8 +482,8 @@ yclepted	0		Tense=Past+VerbForm=Part	dema	0	yclept	v	rule
 yclepting	0		VerbForm=Ger	dema	0	yclept	v	rule
 yclepts	0		Person=3+Tense=Pres	dema	0	yclept	v	rule
 yd	0		Number=Sing	dema	0	yd	n	moby_reverse
-yds	0		Number=Sing	dema	0	yds	n	moby_reverse
-yds	1		Number=Plur	dema	0	yd	n	rule
+yds	0		Number=Plur	dema	0	yd	n	rule
+yds	1		Number=Sing	dema	0	yds	n	moby_reverse
 ye	0	dema-ye-u		dema	0			carried
 ye	1	dema-ye-d		dema	0			carried
 yea	0	oewn-yea-r	Degree=Pos	dema	0			oewn_form
@@ -509,9 +509,9 @@ year-round	0	oewn-year-round-a	Degree=Pos	dema	0			oewn_form
 yearbook	0	oewn-yearbook-n	Number=Sing	dema	0			oewn_form
 yearbooks	0	oewn-yearbook-n	Number=Plur	dema	0			rule
 yearlies	0	oewn-yearly-n	Number=Plur	dema	0			rule
-yearling	0	oewn-yearling-n	Number=Plur	dema	0			agid
-yearling	1	oewn-yearling-n	Number=Sing	dema	0			oewn_form
-yearling	2		Degree=Pos	dema	0	yearling	a	moby_reverse
+yearling	0	oewn-yearling-n	Number=Sing	dema	0			oewn_form
+yearling	1		Degree=Pos	dema	0	yearling	a	moby_reverse
+yearlings	0	oewn-yearling-n	Number=Plur	dema	0			rule
 yearlong	0	oewn-yearlong-a	Degree=Pos	dema	0			oewn_form
 yearly	0	oewn-yearly-a	Degree=Pos	dema	0			oewn_form
 yearly	1	oewn-yearly-r	Degree=Pos	dema	0			oewn_form
@@ -972,9 +972,9 @@ yielded	0	oewn-yield-v	Tense=Past+VerbForm=Part	dema	0			rule
 yielded up	0	oewn-yield_up-v	Tense=Past+VerbForm=Part	dema	0			rule
 yielder	0	oewn-yielder-n	Number=Sing	dema	0			oewn_form
 yielders	0	oewn-yielder-n	Number=Plur	dema	0			rule
-yielding	0	oewn-yielding-a	Degree=Pos	dema	0			oewn_form
-yielding	1	oewn-yielding-n	Number=Sing	dema	0			oewn_form
-yielding	2	oewn-yield-v	VerbForm=Ger	dema	0			rule
+yielding	0	oewn-yield-v	VerbForm=Ger	dema	0			rule
+yielding	1	oewn-yielding-a	Degree=Pos	dema	0			oewn_form
+yielding	2	oewn-yielding-n	Number=Sing	dema	0			oewn_form
 yielding up	0	oewn-yield_up-v	VerbForm=Ger	dema	0			rule
 yieldingly	0	oewn-yieldingly-r	Degree=Pos	dema	0			oewn_form
 yieldingness	0		Number=Sing	dema	0	yieldingness	n	moby_reverse
@@ -1025,8 +1025,8 @@ yodel	1	oewn-yodel-n	Number=Sing	dema	0			oewn_form
 yodeled	0	oewn-yodel-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 yodeler	0		Number=Sing	dema	0	yodeler	n	moby_reverse
 yodelers	0		Number=Plur	dema	0	yodeler	n	rule
-yodeling	0	oewn-yodeling-n	Number=Sing	dema	0			oewn_form
-yodeling	1	oewn-yodel-v	VerbForm=Ger	dema	0			rule_variant
+yodeling	0	oewn-yodel-v	VerbForm=Ger	dema	0			rule_variant
+yodeling	1	oewn-yodeling-n	Number=Sing	dema	0			oewn_form
 yodelings	0	oewn-yodeling-n	Number=Plur	dema	0			rule
 yodelled	0	oewn-yodel-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 yodeller	0	oewn-yodeller-n	Number=Sing	dema	0			oewn_form

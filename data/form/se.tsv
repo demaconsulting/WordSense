@@ -728,8 +728,8 @@ searcher beetles	0	oewn-searcher_beetle-n	Number=Plur	dema	0			rule
 searchers	0	oewn-searcher-n	Number=Plur	dema	0			rule
 searches	0	oewn-search-v	Person=3+Tense=Pres	dema	0			rule
 searches	1	oewn-search-n	Number=Plur	dema	0			rule
-searching	0	oewn-searching-a	Degree=Pos	dema	0			oewn_form
-searching	1	oewn-search-v	VerbForm=Ger	dema	0			rule
+searching	0	oewn-search-v	VerbForm=Ger	dema	0			rule
+searching	1	oewn-searching-a	Degree=Pos	dema	0			oewn_form
 searching fire	0	oewn-searching_fire-n	Number=Sing	dema	0			oewn_form
 searching fires	0	oewn-searching_fire-n	Number=Plur	dema	0			rule
 searchingly	0	oewn-searchingly-r	Degree=Pos	dema	0			oewn_form
@@ -924,8 +924,8 @@ seckel pear	0	oewn-seckel_pear-n	Number=Sing	dema	0			oewn_form
 seckel pears	0	oewn-seckel_pear-n	Number=Plur	dema	0			rule
 seckels	0	oewn-seckel-n	Number=Plur	dema	0			rule
 seclude	0	oewn-seclude-v	VerbForm=Inf	dema	0			oewn_form
-secluded	0	oewn-secluded-a	Degree=Pos	dema	0			oewn_form
-secluded	1	oewn-seclude-v	Tense=Past+VerbForm=Part	dema	0			rule
+secluded	0	oewn-seclude-v	Tense=Past+VerbForm=Part	dema	0			rule
+secluded	1	oewn-secluded-a	Degree=Pos	dema	0			oewn_form
 secludedly	0		Degree=Pos	dema	0	secludedly	r	moby_reverse
 secludedness	0		Number=Sing	dema	0	secludedness	n	moby_reverse
 secludednesses	0		Number=Plur	dema	0	secludedness	n	rule
@@ -1550,8 +1550,8 @@ seedless raisin	0	oewn-seedless_raisin-n	Number=Sing	dema	0			oewn_form
 seedless raisins	0	oewn-seedless_raisin-n	Number=Plur	dema	0			rule
 seedlessness	0		Number=Sing	dema	0	seedlessness	n	moby_reverse
 seedlike	0		Degree=Pos	dema	0	seedlike	a	moby_reverse
-seedling	0	oewn-seedling-n	Number=Plur	dema	0			agid
-seedling	1	oewn-seedling-n	Number=Sing	dema	0			oewn_form
+seedling	0	oewn-seedling-n	Number=Sing	dema	0			oewn_form
+seedlings	0	oewn-seedling-n	Number=Plur	dema	0			rule
 seedman	0	oewn-seedman-n	Number=Sing	dema	0			oewn_form
 seedmen	0	oewn-seedman-n	Number=Plur	dema	0			agid
 seedpod	0	oewn-seedpod-n	Number=Sing	dema	0			oewn_form
@@ -1568,8 +1568,8 @@ seedwoman	0	oewn-seedwoman-n	Number=Sing	dema	0			oewn_form
 seedwomans	0	oewn-seedwoman-n	Number=Plur	dema	0			rule
 seedy	0	oewn-seedy-a	Degree=Pos	dema	0			oewn_form
 seeing	0	oewn-seeing-n	Number=Sing	dema	0			oewn_form
-seeing	1	dema-seeing-c		dema	0			carried
-seeing	2	oewn-see-v	VerbForm=Ger	dema	0			rule
+seeing	1	oewn-see-v	VerbForm=Ger	dema	0			rule
+seeing	2	dema-seeing-c		dema	0			carried
 seeing	3	oewn-seeing-a	Degree=Pos	dema	0			oewn_form
 seeing double	0	oewn-see_double-v	VerbForm=Ger	dema	0			rule
 seeing eye to eye	0	oewn-see_eye_to_eye-v	VerbForm=Ger	dema	0			rule
@@ -1587,8 +1587,8 @@ seek time	0	oewn-seek_time-n	Number=Sing	dema	0			oewn_form
 seek times	0	oewn-seek_time-n	Number=Plur	dema	0			rule
 seeker	0	oewn-seeker-n	Number=Sing	dema	0			oewn_form
 seekers	0	oewn-seeker-n	Number=Plur	dema	0			rule
-seeking	0	oewn-seeking-n	Number=Sing	dema	0			oewn_form
-seeking	1	oewn-seek-v	VerbForm=Ger	dema	0			rule
+seeking	0	oewn-seek-v	VerbForm=Ger	dema	0			rule
+seeking	1	oewn-seeking-n	Number=Sing	dema	0			oewn_form
 seeking out	0	oewn-seek_out-v	VerbForm=Ger	dema	0			rule
 seekings	0	oewn-seeking-n	Number=Plur	dema	0			rule
 seeks	0	oewn-seek-v	Person=3+Tense=Pres	dema	0			rule
@@ -1604,9 +1604,9 @@ seem	0	oewn-seem-v	VerbForm=Inf	dema	0			oewn_form
 seemed	0	oewn-seem-v	Tense=Past+VerbForm=Part	dema	0			rule
 seemer	0		Number=Sing	dema	0	seemer	n	moby_reverse
 seemers	0		Number=Plur	dema	0	seemer	n	rule
-seeming	0	oewn-seeming-a	Degree=Pos	dema	0			oewn_form
-seeming	1		Number=Sing	dema	0	seeming	n	moby_reverse
-seeming	2	oewn-seem-v	VerbForm=Ger	dema	0			rule
+seeming	0	oewn-seem-v	VerbForm=Ger	dema	0			rule
+seeming	1	oewn-seeming-a	Degree=Pos	dema	0			oewn_form
+seeming	2		Number=Sing	dema	0	seeming	n	moby_reverse
 seemingly	0	oewn-seemingly-r	Degree=Pos	dema	0			oewn_form
 seemlier	0	oewn-seemly-a	Degree=Cmp	dema	0			oewn_form
 seemliest	0	oewn-seemly-a	Degree=Sup	dema	0			oewn_form
@@ -2329,8 +2329,8 @@ seller's markets	0	oewn-seller-ap-s_market-n	Number=Plur	dema	0			rule
 sellers	0	oewn-seller-n	Number=Plur	dema	0			rule
 sellers' market	0	oewn-sellers-ap-_market-n	Number=Sing	dema	0			oewn_form
 sellers' markets	0	oewn-sellers-ap-_market-n	Number=Plur	dema	0			rule
-selling	0	oewn-selling-n	Number=Sing	dema	0			oewn_form
-selling	1	oewn-sell-v	VerbForm=Ger	dema	0			rule
+selling	0	oewn-sell-v	VerbForm=Ger	dema	0			rule
+selling	1	oewn-selling-n	Number=Sing	dema	0			oewn_form
 selling agent	0	oewn-selling_agent-n	Number=Sing	dema	0			oewn_form
 selling agents	0	oewn-selling_agent-n	Number=Plur	dema	0			rule
 selling off	0	oewn-sell_off-v	VerbForm=Ger	dema	0			rule
@@ -3522,8 +3522,8 @@ sendee	0	oewn-sendee-n	Number=Sing	dema	0			oewn_form
 sendees	0	oewn-sendee-n	Number=Plur	dema	0			rule
 sender	0	oewn-sender-n	Number=Sing	dema	0			oewn_form
 senders	0	oewn-sender-n	Number=Plur	dema	0			rule
-sending	0	oewn-sending-n	Number=Sing	dema	0			oewn_form
-sending	1	oewn-send-v	VerbForm=Ger	dema	0			rule
+sending	0	oewn-send-v	VerbForm=Ger	dema	0			rule
+sending	1	oewn-sending-n	Number=Sing	dema	0			oewn_form
 sending a message	0	oewn-send_a_message-v	VerbForm=Ger	dema	0			rule
 sending around	0	oewn-send_around-v	VerbForm=Ger	dema	0			rule
 sending away	0	oewn-send_away-v	VerbForm=Ger	dema	0			rule
@@ -3769,8 +3769,8 @@ sensitized	1	oewn-sensitized-a	Degree=Pos	dema	0			oewn_form
 sensitizer	0	oewn-sensitizer-n	Number=Sing	dema	0			oewn_form
 sensitizers	0	oewn-sensitizer-n	Number=Plur	dema	0			rule
 sensitizes	0	oewn-sensitize-v	Person=3+Tense=Pres	dema	0			rule
-sensitizing	0	oewn-sensitizing-n	Number=Sing	dema	0			oewn_form
-sensitizing	1	oewn-sensitize-v	VerbForm=Ger	dema	0			rule
+sensitizing	0	oewn-sensitize-v	VerbForm=Ger	dema	0			rule
+sensitizing	1	oewn-sensitizing-n	Number=Sing	dema	0			oewn_form
 sensitizing	2	oewn-sensitizing-a	Degree=Pos	dema	0			oewn_form
 sensitizings	0	oewn-sensitizing-n	Number=Plur	dema	0			rule
 sensitometer	0	oewn-sensitometer-n	Number=Sing	dema	0			oewn_form
@@ -4141,8 +4141,8 @@ sequentiality	0		Number=Sing	dema	0	sequentiality	n	moby_reverse
 sequentially	0	oewn-sequentially-r	Degree=Pos	dema	0			oewn_form
 sequently	0		Degree=Pos	dema	0	sequently	r	moby_reverse
 sequester	0	oewn-sequester-v	VerbForm=Inf	dema	0			oewn_form
-sequestered	0	oewn-sequestered-a	Degree=Pos	dema	0			oewn_form
-sequestered	1	oewn-sequester-v	Tense=Past+VerbForm=Part	dema	0			rule
+sequestered	0	oewn-sequester-v	Tense=Past+VerbForm=Part	dema	0			rule
+sequestered	1	oewn-sequestered-a	Degree=Pos	dema	0			oewn_form
 sequestering	0	oewn-sequester-v	VerbForm=Ger	dema	0			rule
 sequesters	0	oewn-sequester-v	Person=3+Tense=Pres	dema	0			rule
 sequestrable	0		Degree=Pos	dema	0	sequestrable	a	moby_reverse
@@ -4583,14 +4583,14 @@ serviceman	0	oewn-serviceman-n	Number=Sing	dema	0			oewn_form
 servicemen	0	oewn-serviceman-n	Number=Plur	dema	0			agid
 servicer	0	oewn-servicer-n	Number=Sing	dema	0			oewn_form
 servicers	0	oewn-servicer-n	Number=Plur	dema	0			rule
-services	0	oewn-services-n	Number=Sing	dema	0			oewn_form
-services	1	oewn-service-n	Number=Plur	dema	0			rule
+services	0	oewn-service-n	Number=Plur	dema	0			rule
+services	1	oewn-services-n	Number=Sing	dema	0			oewn_form
 services	2	oewn-service-v	Person=3+Tense=Pres	dema	0			rule
 services of process	0	oewn-service_of_process-n	Number=Plur	dema	0			rule
 servicewoman	0	oewn-servicewoman-n	Number=Sing	dema	0			oewn_form
 servicewomans	0	oewn-servicewoman-n	Number=Plur	dema	0			rule
-servicing	0	oewn-servicing-n	Number=Sing	dema	0			oewn_form
-servicing	1	oewn-service-v	VerbForm=Ger	dema	0			rule
+servicing	0	oewn-service-v	VerbForm=Ger	dema	0			rule
+servicing	1	oewn-servicing-n	Number=Sing	dema	0			oewn_form
 servicings	0	oewn-servicing-n	Number=Plur	dema	0			rule
 serviette	0	oewn-serviette-n	Number=Sing	dema	0			oewn_form
 serviettes	0	oewn-serviette-n	Number=Plur	dema	0			rule
@@ -4843,8 +4843,8 @@ settles	0	oewn-settle-v	Person=3+Tense=Pres	dema	0			rule
 settles	1	oewn-settle-n	Number=Plur	dema	0			rule
 settles down	0	oewn-settle_down-v	Person=3+Tense=Pres	dema	0			rule
 settles on	0	oewn-settle_on-v	Person=3+Tense=Pres	dema	0			rule
-settling	0	oewn-settling-n	Number=Sing	dema	0			oewn_form
-settling	1	oewn-settle-v	VerbForm=Ger	dema	0			rule
+settling	0	oewn-settle-v	VerbForm=Ger	dema	0			rule
+settling	1	oewn-settling-n	Number=Sing	dema	0			oewn_form
 settling down	0	oewn-settle_down-v	VerbForm=Ger	dema	0			rule
 settling on	0	oewn-settle_on-v	VerbForm=Ger	dema	0			rule
 settlings	0	oewn-settlings-n	Number=Sing	dema	0			oewn_form
@@ -4880,8 +4880,8 @@ sevener	0	oewn-sevener-n	Number=Sing	dema	0			oewn_form
 seveners	0	oewn-sevener-n	Number=Plur	dema	0			rule
 sevenfold	0	oewn-sevenfold-a	Degree=Pos	dema	0			oewn_form
 sevenfold	1	oewn-sevenfold-r	Degree=Pos	dema	0			oewn_form
-sevens	0	oewn-sevens-n	Number=Sing	dema	0			oewn_form
-sevens	1	oewn-seven-n	Number=Plur	dema	0			rule
+sevens	0	oewn-seven-n	Number=Plur	dema	0			rule
+sevens	1	oewn-sevens-n	Number=Sing	dema	0			oewn_form
 sevensome	0	oewn-sevensome-n	Number=Sing	dema	0			oewn_form
 sevensomes	0	oewn-sevensome-n	Number=Plur	dema	0			rule
 seventeen	0	oewn-seventeen-n	Number=Sing	dema	0			oewn_form

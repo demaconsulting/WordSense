@@ -150,8 +150,8 @@ syllable	0	oewn-syllable-n	Number=Sing	dema	0			oewn_form
 syllable	1		VerbForm=Inf	dema	0	syllable	v	moby_reverse
 syllable structure	0	oewn-syllable_structure-n	Number=Sing	dema	0			oewn_form
 syllable structures	0	oewn-syllable_structure-n	Number=Plur	dema	0			rule
-syllabled	0	oewn-syllabled-a	Degree=Pos	dema	0			oewn_form
-syllabled	1		Tense=Past+VerbForm=Part	dema	0	syllable	v	moby_reverse
+syllabled	0		Tense=Past+VerbForm=Part	dema	0	syllable	v	moby_reverse
+syllabled	1	oewn-syllabled-a	Degree=Pos	dema	0			oewn_form
 syllables	0	oewn-syllable-n	Number=Plur	dema	0			rule
 syllabling	0		VerbForm=Ger	dema	0	syllable	v	moby_reverse
 syllabogram	0		Number=Sing	dema	0	syllabogram	n	moby_reverse
@@ -245,8 +245,8 @@ symbolised	0	oewn-symbolise-v	Tense=Past+VerbForm=Part	dema	0			rule
 symboliser	0	oewn-symboliser-n	Number=Sing	dema	0			oewn_form
 symbolisers	0	oewn-symboliser-n	Number=Plur	dema	0			rule
 symbolises	0	oewn-symbolise-v	Person=3+Tense=Pres	dema	0			rule
-symbolising	0	oewn-symbolising-n	Number=Sing	dema	0			oewn_form
-symbolising	1	oewn-symbolise-v	VerbForm=Ger	dema	0			rule
+symbolising	0	oewn-symbolise-v	VerbForm=Ger	dema	0			rule
+symbolising	1	oewn-symbolising-n	Number=Sing	dema	0			oewn_form
 symbolisings	0	oewn-symbolising-n	Number=Plur	dema	0			rule
 symbolism	0	oewn-symbolism-n	Number=Sing	dema	0			oewn_form
 symbolisms	0	oewn-symbolism-n	Number=Plur	dema	0			rule
@@ -263,8 +263,8 @@ symbolized	0	oewn-symbolize-v	Tense=Past+VerbForm=Part	dema	0			rule
 symbolizer	0	oewn-symbolizer-n	Number=Sing	dema	0			oewn_form
 symbolizers	0	oewn-symbolizer-n	Number=Plur	dema	0			rule
 symbolizes	0	oewn-symbolize-v	Person=3+Tense=Pres	dema	0			rule
-symbolizing	0	oewn-symbolizing-n	Number=Sing	dema	0			oewn_form
-symbolizing	1	oewn-symbolize-v	VerbForm=Ger	dema	0			rule
+symbolizing	0	oewn-symbolize-v	VerbForm=Ger	dema	0			rule
+symbolizing	1	oewn-symbolizing-n	Number=Sing	dema	0			oewn_form
 symbolizings	0	oewn-symbolizing-n	Number=Plur	dema	0			rule
 symbolled	0		Tense=Past+VerbForm=Part	dema	0	symbol	v	moby_reverse
 symbolling	0		VerbForm=Ger	dema	0	symbol	v	moby_reverse
@@ -493,8 +493,8 @@ synchronised	1	oewn-synchronised-a	Degree=Pos	dema	0			oewn_form
 synchroniser	0	oewn-synchroniser-n	Number=Sing	dema	0			oewn_form
 synchronisers	0	oewn-synchroniser-n	Number=Plur	dema	0			rule
 synchronises	0	oewn-synchronise-v	Person=3+Tense=Pres	dema	0			rule
-synchronising	0	oewn-synchronising-n	Number=Sing	dema	0			oewn_form
-synchronising	1	oewn-synchronise-v	VerbForm=Ger	dema	0			rule
+synchronising	0	oewn-synchronise-v	VerbForm=Ger	dema	0			rule
+synchronising	1	oewn-synchronising-n	Number=Sing	dema	0			oewn_form
 synchronisings	0	oewn-synchronising-n	Number=Plur	dema	0			rule
 synchronism	0	oewn-synchronism-n	Number=Sing	dema	0			oewn_form
 synchronisms	0	oewn-synchronism-n	Number=Plur	dema	0			rule
@@ -509,8 +509,8 @@ synchronized	1	oewn-synchronized-a	Degree=Pos	dema	0			oewn_form
 synchronizer	0	oewn-synchronizer-n	Number=Sing	dema	0			oewn_form
 synchronizers	0	oewn-synchronizer-n	Number=Plur	dema	0			rule
 synchronizes	0	oewn-synchronize-v	Person=3+Tense=Pres	dema	0			rule
-synchronizing	0	oewn-synchronizing-n	Number=Sing	dema	0			oewn_form
-synchronizing	1	oewn-synchronize-v	VerbForm=Ger	dema	0			rule
+synchronizing	0	oewn-synchronize-v	VerbForm=Ger	dema	0			rule
+synchronizing	1	oewn-synchronizing-n	Number=Sing	dema	0			oewn_form
 synchronizings	0	oewn-synchronizing-n	Number=Plur	dema	0			rule
 synchronoscope	0	oewn-synchronoscope-n	Number=Sing	dema	0			oewn_form
 synchronoscopes	0	oewn-synchronoscope-n	Number=Plur	dema	0			rule
@@ -538,8 +538,8 @@ synclines	0		Number=Plur	dema	0	syncline	n	rule
 synclinorium	0		Number=Sing	dema	0	synclinorium	n	moby_reverse
 synclinoriums	0		Number=Plur	dema	0	synclinorium	n	rule
 syncopate	0	oewn-syncopate-v	VerbForm=Inf	dema	0			oewn_form
-syncopated	0	oewn-syncopated-a	Degree=Pos	dema	0			oewn_form
-syncopated	1	oewn-syncopate-v	Tense=Past+VerbForm=Part	dema	0			rule
+syncopated	0	oewn-syncopate-v	Tense=Past+VerbForm=Part	dema	0			rule
+syncopated	1	oewn-syncopated-a	Degree=Pos	dema	0			oewn_form
 syncopates	0	oewn-syncopate-v	Person=3+Tense=Pres	dema	0			rule
 syncopating	0	oewn-syncopate-v	VerbForm=Ger	dema	0			rule
 syncopation	0	oewn-syncopation-n	Number=Sing	dema	0			oewn_form
@@ -857,8 +857,8 @@ syphilis	0	oewn-syphilis-n	Number=Sing	dema	0			oewn_form
 syphilisation	0		Number=Sing	dema	0	syphilisation	n	moby_reverse
 syphilisations	0		Number=Plur	dema	0	syphilisation	n	rule
 syphilise	0		Number=Sing	dema	0	syphilise	n	moby_reverse
-syphilises	0		Number=Plur	dema	0	syphilise	n	rule
-syphilises	1	oewn-syphilis-n	Number=Plur	dema	0			rule
+syphilises	0	oewn-syphilis-n	Number=Plur	dema	0			rule
+syphilises	1		Number=Plur	dema	0	syphilise	n	rule
 syphilitic	0	oewn-syphilitic-n	Number=Sing	dema	0			oewn_form
 syphilitic	1	oewn-syphilitic-a	Degree=Pos	dema	0			oewn_form
 syphilitically	0		Degree=Pos	dema	0	syphilitically	r	moby_reverse

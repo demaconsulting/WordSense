@@ -594,8 +594,8 @@ phenocrysts	0		Number=Plur	dema	0	phenocryst	n	rule
 phenol	0	oewn-phenol-n	Number=Sing	dema	0			oewn_form
 phenolate	0		VerbForm=Inf	dema	0	phenolate	v	moby_reverse
 phenolate	1		Number=Sing	dema	0	phenolate	n	moby_reverse
-phenolated	0		Degree=Pos	dema	0	phenolated	a	moby_reverse
-phenolated	1		Tense=Past+VerbForm=Part	dema	0	phenolate	v	rule
+phenolated	0		Tense=Past+VerbForm=Part	dema	0	phenolate	v	rule
+phenolated	1		Degree=Pos	dema	0	phenolated	a	moby_reverse
 phenolates	0		Person=3+Tense=Pres	dema	0	phenolate	v	rule
 phenolating	0		VerbForm=Ger	dema	0	phenolate	v	rule
 phenolic	0		Degree=Pos	dema	0	phenolic	a	moby_reverse
@@ -864,8 +864,8 @@ philosophized	0	oewn-philosophize-v	Tense=Past+VerbForm=Part	dema	0			rule
 philosophizer	0	oewn-philosophizer-n	Number=Sing	dema	0			oewn_form
 philosophizers	0	oewn-philosophizer-n	Number=Plur	dema	0			rule
 philosophizes	0	oewn-philosophize-v	Person=3+Tense=Pres	dema	0			rule
-philosophizing	0	oewn-philosophizing-n	Number=Sing	dema	0			oewn_form
-philosophizing	1	oewn-philosophize-v	VerbForm=Ger	dema	0			rule
+philosophizing	0	oewn-philosophize-v	VerbForm=Ger	dema	0			rule
+philosophizing	1	oewn-philosophizing-n	Number=Sing	dema	0			oewn_form
 philosophizings	0	oewn-philosophizing-n	Number=Plur	dema	0			rule
 philosophy	0	oewn-philosophy-n	Number=Sing	dema	0			oewn_form
 philosophy department	0	oewn-philosophy_department-n	Number=Sing	dema	0			oewn_form
@@ -1891,8 +1891,8 @@ phymatic	0		Degree=Pos	dema	0	phymatic	a	moby_reverse
 phys	0		Number=Sing	dema	0	phys	n	moby_reverse
 physa	0	oewn-physa-n	Number=Sing	dema	0			oewn_form
 physas	0	oewn-physa-n	Number=Plur	dema	0			rule
-physes	0		Number=Sing	dema	0	physes	n	moby_reverse
-physes	1		Number=Plur	dema	0	phys	n	rule
+physes	0		Number=Plur	dema	0	phys	n	rule
+physes	1		Number=Sing	dema	0	physes	n	moby_reverse
 physiatric	0		Degree=Pos	dema	0	physiatric	a	moby_reverse
 physiatrical	0		Degree=Pos	dema	0	physiatrical	a	moby_reverse
 physiatrics	0	oewn-physiatrics-n	Number=Sing	dema	0			oewn_form
@@ -1987,8 +1987,8 @@ physicked	0		VerbForm=Inf	dema	0	physicked	v	moby_reverse
 physicking	0		VerbForm=Inf	dema	0	physicking	v	moby_reverse
 physicochemical	0	oewn-physicochemical-a	Degree=Pos	dema	0			oewn_form
 physicochemically	0		Degree=Pos	dema	0	physicochemically	r	moby_reverse
-physics	0	oewn-physics-n	Number=Sing	dema	0			oewn_form
-physics	1	oewn-physic-n	Number=Plur	dema	0			rule
+physics	0	oewn-physic-n	Number=Plur	dema	0			rule
+physics	1	oewn-physics-n	Number=Sing	dema	0			oewn_form
 physics department	0	oewn-physics_department-n	Number=Sing	dema	0			oewn_form
 physics departments	0	oewn-physics_department-n	Number=Plur	dema	0			rule
 physics lab	0	oewn-physics_lab-n	Number=Sing	dema	0			oewn_form

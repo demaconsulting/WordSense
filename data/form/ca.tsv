@@ -928,8 +928,8 @@ Cathaya	0	oewn-Cathaya-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Cathayas	0	oewn-Cathaya-n	Capitalization=Title+Number=Plur	dema	0			rule
 Catholic	0	oewn-catholic-a	Degree=Pos	dema	0			oewn_form
 Catholic	1		Number=Sing	dema	0	catholic	n	moby_reverse
-Catholic	2	oewn-Catholic-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-Catholic	3	oewn-Catholic-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Catholic	2	oewn-Catholic-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Catholic	3	oewn-Catholic-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Catholic Church	0	oewn-Catholic_Church-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Catholic Churches	0	oewn-Catholic_Church-n	Capitalization=Title+Number=Plur	dema	0			rule
 Catholic Pope	0	oewn-Catholic_Pope-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
@@ -1856,12 +1856,12 @@ calculability	0	oewn-calculability-n	Number=Sing	dema	0			oewn_form
 calculable	0	oewn-calculable-a	Degree=Pos	dema	0			oewn_form
 calculably	0		Degree=Pos	dema	0	calculably	r	moby_reverse
 calculate	0	oewn-calculate-v	VerbForm=Inf	dema	0			oewn_form
-calculated	0	oewn-calculated-a	Degree=Pos	dema	0			oewn_form
-calculated	1	oewn-calculate-v	Tense=Past+VerbForm=Part	dema	0			rule
+calculated	0	oewn-calculate-v	Tense=Past+VerbForm=Part	dema	0			rule
+calculated	1	oewn-calculated-a	Degree=Pos	dema	0			oewn_form
 calculatedly	0		Degree=Pos	dema	0	calculatedly	r	moby_reverse
 calculates	0	oewn-calculate-v	Person=3+Tense=Pres	dema	0			rule
-calculating	0	oewn-calculating-a	Degree=Pos	dema	0			oewn_form
-calculating	1	oewn-calculate-v	VerbForm=Ger	dema	0			rule
+calculating	0	oewn-calculate-v	VerbForm=Ger	dema	0			rule
+calculating	1	oewn-calculating-a	Degree=Pos	dema	0			oewn_form
 calculating machine	0	oewn-calculating_machine-n	Number=Sing	dema	0			oewn_form
 calculating machines	0	oewn-calculating_machine-n	Number=Plur	dema	0			rule
 calculatingly	0	oewn-calculatingly-r	Degree=Pos	dema	0			oewn_form
@@ -2394,8 +2394,8 @@ calves' feet	0	oewn-calves-ap-_feet-n	Number=Sing	dema	0			oewn_form
 calves' feets	0	oewn-calves-ap-_feet-n	Number=Plur	dema	0			rule
 calves' liver	0	oewn-calves-ap-_liver-n	Number=Sing	dema	0			oewn_form
 calves' livers	0	oewn-calves-ap-_liver-n	Number=Plur	dema	0			rule
-calving	0	oewn-calving-n	Number=Sing	dema	0			oewn_form
-calving	1	oewn-calve-v	VerbForm=Ger	dema	0			rule
+calving	0	oewn-calve-v	VerbForm=Ger	dema	0			rule
+calving	1	oewn-calving-n	Number=Sing	dema	0			oewn_form
 calvings	0	oewn-calving-n	Number=Plur	dema	0			rule
 calvities	0		Number=Sing	dema	0	calvities	n	moby_reverse
 calvous	0		Degree=Pos	dema	0	calvous	a	moby_reverse
@@ -2741,8 +2741,8 @@ camps	1	oewn-camp-v	Person=3+Tense=Pres	dema	1			carried
 camps down	0	oewn-camp_down-v	Person=3+Tense=Pres	dema	0			rule
 camps out	0	oewn-camp_out-v	Person=3+Tense=Pres	dema	0			rule
 campshed	0		VerbForm=Inf	dema	0	campshed	v	moby_reverse
-campshedding	0		VerbForm=Inf	dema	0	campshedding	v	moby_reverse
-campshedding	1		VerbForm=Ger	dema	0	campshed	v	rule
+campshedding	0		VerbForm=Ger	dema	0	campshed	v	rule
+campshedding	1		VerbForm=Inf	dema	0	campshedding	v	moby_reverse
 campshot	0		Number=Sing	dema	0	campshot	n	moby_reverse
 campshots	0		Number=Plur	dema	0	campshot	n	rule
 campsite	0	oewn-campsite-n	Number=Sing	dema	0			oewn_form
@@ -2994,8 +2994,8 @@ candlenuts	0	oewn-candlenut-n	Number=Plur	dema	0			rule
 candlepin	0	oewn-candlepin-n	Number=Sing	dema	0			oewn_form
 candlepin bowling	0	oewn-candlepin_bowling-n	Number=Sing	dema	0			oewn_form
 candlepin bowlings	0	oewn-candlepin_bowling-n	Number=Plur	dema	0			rule
-candlepins	0	oewn-candlepins-n	Number=Sing	dema	0			oewn_form
-candlepins	1	oewn-candlepin-n	Number=Plur	dema	0			rule
+candlepins	0	oewn-candlepin-n	Number=Plur	dema	0			rule
+candlepins	1	oewn-candlepins-n	Number=Sing	dema	0			oewn_form
 candlepower	0	oewn-candlepower-n	Number=Sing	dema	0			oewn_form
 candlepower unit	0	oewn-candlepower_unit-n	Number=Sing	dema	0			oewn_form
 candlepower units	0	oewn-candlepower_unit-n	Number=Plur	dema	0			rule
@@ -3160,8 +3160,8 @@ cannabis resin	0	oewn-cannabis_resin-n	Number=Sing	dema	0			oewn_form
 cannabis resins	0	oewn-cannabis_resin-n	Number=Plur	dema	0			rule
 cannabises	0	oewn-cannabis-n	Number=Plur	dema	0			rule
 cannas	0	oewn-canna-n	Number=Plur	dema	0			rule
-canned	0	oewn-canned-a	Degree=Pos	dema	0			oewn_form
-canned	1	oewn-can-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+canned	0	oewn-can-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+canned	1	oewn-canned-a	Degree=Pos	dema	0			oewn_form
 canned food	0	oewn-canned_food-n	Number=Sing	dema	0			oewn_form
 canned foods	0	oewn-canned_food-n	Number=Plur	dema	0			rule
 canned foods	1	oewn-canned_foods-n	Number=Sing	dema	0			oewn_form
@@ -3209,8 +3209,8 @@ cannikins	0	oewn-cannikin-n	Number=Plur	dema	0			rule
 cannily	0	oewn-cannily-r	Degree=Pos	dema	0			oewn_form
 canniness	0		Number=Sing	dema	0	canniness	n	moby_reverse
 canninesses	0		Number=Plur	dema	0	canniness	n	rule
-canning	0		Number=Sing	dema	0	canning	n	moby_reverse
-canning	1	oewn-can-v	VerbForm=Ger	dema	0			oewn_form
+canning	0	oewn-can-v	VerbForm=Ger	dema	0			oewn_form
+canning	1		Number=Sing	dema	0	canning	n	moby_reverse
 cannings	0		Number=Plur	dema	0	canning	n	rule
 cannister	0	oewn-cannister-n	Number=Sing	dema	0			oewn_form
 cannisters	0	oewn-cannister-n	Number=Plur	dema	0			rule
@@ -3369,8 +3369,8 @@ canorousness	0		Number=Sing	dema	0	canorousness	n	moby_reverse
 canorousnesses	0		Number=Plur	dema	0	canorousness	n	rule
 canotier	0		Number=Sing	dema	0	canotier	n	moby_reverse
 canotiers	0		Number=Plur	dema	0	canotier	n	rule
-cans	0	oewn-can-n	Number=Plur	dema	0			rule
-cans	1	oewn-can-v	Person=3+Tense=Pres	dema	0			rule_variant
+cans	0	oewn-can-v	Person=3+Tense=Pres	dema	0			rule_variant
+cans	1	oewn-can-n	Number=Plur	dema	0			rule
 cans of worms	0	oewn-can_of_worms-n	Number=Plur	dema	0			rule
 canso	0		Number=Sing	dema	0	canso	n	moby_reverse
 cansos	0		Number=Plur	dema	0	canso	n	rule
@@ -3925,8 +3925,8 @@ capsizable	0		Degree=Pos	dema	0	capsizable	a	moby_reverse
 capsize	0	oewn-capsize-v	VerbForm=Inf	dema	0			oewn_form
 capsized	0	oewn-capsize-v	Tense=Past+VerbForm=Part	dema	0			rule
 capsizes	0	oewn-capsize-v	Person=3+Tense=Pres	dema	0			rule
-capsizing	0	oewn-capsizing-n	Number=Sing	dema	0			oewn_form
-capsizing	1	oewn-capsize-v	VerbForm=Ger	dema	0			rule
+capsizing	0	oewn-capsize-v	VerbForm=Ger	dema	0			rule
+capsizing	1	oewn-capsizing-n	Number=Sing	dema	0			oewn_form
 capsizings	0	oewn-capsizing-n	Number=Plur	dema	0			rule
 capstan	0	oewn-capstan-n	Number=Sing	dema	0			oewn_form
 capstans	0	oewn-capstan-n	Number=Plur	dema	0			rule
@@ -4209,8 +4209,8 @@ caravaning	0	oewn-caravan-v	VerbForm=Ger	dema	0			rule
 caravanist	0		Number=Sing	dema	0	caravanist	n	moby_reverse
 caravanists	0		Number=Plur	dema	0	caravanist	n	rule
 caravanned	0	oewn-caravan-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
-caravanning	0	oewn-caravanning-n	Number=Sing	dema	0			oewn_form
-caravanning	1	oewn-caravan-v	VerbForm=Ger	dema	0			rule_variant
+caravanning	0	oewn-caravan-v	VerbForm=Ger	dema	0			rule_variant
+caravanning	1	oewn-caravanning-n	Number=Sing	dema	0			oewn_form
 caravannings	0	oewn-caravanning-n	Number=Plur	dema	0			rule
 caravans	0	oewn-caravan-n	Number=Plur	dema	0			rule
 caravans	1	oewn-caravan-v	Person=3+Tense=Pres	dema	0			rule
@@ -4680,8 +4680,8 @@ cardoon	0	oewn-cardoon-n	Number=Sing	dema	0			oewn_form
 cardoons	0	oewn-cardoon-n	Number=Plur	dema	0			rule
 cardroom	0	oewn-cardroom-n	Number=Sing	dema	0			oewn_form
 cardrooms	0	oewn-cardroom-n	Number=Plur	dema	0			rule
-cards	0	oewn-cards-n	Number=Sing	dema	0			oewn_form
-cards	1	oewn-card-n	Number=Plur	dema	0			rule
+cards	0	oewn-card-n	Number=Plur	dema	0			rule
+cards	1	oewn-cards-n	Number=Sing	dema	0			oewn_form
 cards	2	oewn-card-v	Person=3+Tense=Pres	dema	0			rule
 cardsharp	0	oewn-cardsharp-n	Number=Sing	dema	0			oewn_form
 cardsharper	0	oewn-cardsharper-n	Number=Sing	dema	0			oewn_form
@@ -5037,8 +5037,8 @@ carol	1	oewn-carol-v	VerbForm=Inf	dema	0			oewn_form
 caroled	0	oewn-carol-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 caroler	0	oewn-caroler-n	Number=Sing	dema	0			oewn_form
 carolers	0	oewn-caroler-n	Number=Plur	dema	0			rule
-caroling	0	oewn-caroling-n	Number=Sing	dema	0			oewn_form
-caroling	1	oewn-carol-v	VerbForm=Ger	dema	0			rule_variant
+caroling	0	oewn-carol-v	VerbForm=Ger	dema	0			rule_variant
+caroling	1	oewn-caroling-n	Number=Sing	dema	0			oewn_form
 carolings	0	oewn-caroling-n	Number=Plur	dema	0			rule
 carolled	0	oewn-carol-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 caroller	0	oewn-caroller-n	Number=Sing	dema	0			oewn_form
@@ -5301,8 +5301,8 @@ carrier pigeons	0	oewn-carrier_pigeon-n	Number=Plur	dema	0			rule
 carrier wave	0	oewn-carrier_wave-n	Number=Sing	dema	0			oewn_form
 carrier waves	0	oewn-carrier_wave-n	Number=Plur	dema	0			rule
 carriers	0	oewn-carrier-n	Number=Plur	dema	0			rule
-carries	0	oewn-carry-n	Number=Plur	dema	0			rule
-carries	1	oewn-carry-v	Person=3+Tense=Pres	dema	0			rule
+carries	0	oewn-carry-v	Person=3+Tense=Pres	dema	0			rule
+carries	1	oewn-carry-n	Number=Plur	dema	0			rule
 carries away	0	oewn-carry_away-v	Person=3+Tense=Pres	dema	0			rule
 carries back	0	oewn-carry_back-v	Person=3+Tense=Pres	dema	0			rule
 carries forward	0	oewn-carry_forward-v	Person=3+Tense=Pres	dema	0			rule
@@ -6029,8 +6029,8 @@ castles	0	oewn-castle-n	Number=Plur	dema	0			rule
 castles	1	oewn-castle-v	Person=3+Tense=Pres	dema	0			rule
 castles in Spain	0	oewn-castle_in_Spain-n	Capitalization=Exact+Number=Plur	dema	0			rule
 castles in the air	0	oewn-castle_in_the_air-n	Number=Plur	dema	0			rule
-castling	0	oewn-castling-n	Number=Sing	dema	0			oewn_form
-castling	1	oewn-castle-v	VerbForm=Ger	dema	0			rule
+castling	0	oewn-castle-v	VerbForm=Ger	dema	0			rule
+castling	1	oewn-castling-n	Number=Sing	dema	0			oewn_form
 castling long	0	oewn-castling_long-n	Number=Sing	dema	0			oewn_form
 castling longs	0	oewn-castling_long-n	Number=Plur	dema	0			rule
 castling short	0	oewn-castling_short-n	Number=Sing	dema	0			oewn_form
@@ -6431,9 +6431,9 @@ catchies	0		Number=Plur	dema	0	catchie	n	rule
 catchiest	0	oewn-catchy-a	Degree=Sup	dema	0			oewn_form
 catchiness	0		Number=Sing	dema	0	catchiness	n	moby_reverse
 catchinesses	0		Number=Plur	dema	0	catchiness	n	rule
-catching	0	oewn-catching-a	Degree=Pos	dema	0			oewn_form
-catching	1	oewn-catching-n	Number=Sing	dema	0			oewn_form
-catching	2	oewn-catch-v	VerbForm=Ger	dema	0			rule
+catching	0	oewn-catch-v	VerbForm=Ger	dema	0			rule
+catching	1	oewn-catching-a	Degree=Pos	dema	0			oewn_form
+catching	2	oewn-catching-n	Number=Sing	dema	0			oewn_form
 catching a glimpse	0	oewn-catch_a_glimpse-v	VerbForm=Ger	dema	0			rule
 catching a wink	0	oewn-catch_a_wink-v	VerbForm=Ger	dema	0			rule
 catching cold	0	oewn-catch_cold-v	VerbForm=Ger	dema	0			rule
@@ -6760,8 +6760,8 @@ catkin	0	oewn-catkin-n	Number=Sing	dema	0			oewn_form
 catkinate	0	oewn-catkinate-a	Degree=Pos	dema	0			oewn_form
 catkins	0	oewn-catkin-n	Number=Plur	dema	0			rule
 catlike	0		Degree=Pos	dema	0	catlike	a	moby_reverse
-catling	0	oewn-catling-n	Number=Plur	dema	0			agid
-catling	1	oewn-catling-n	Number=Sing	dema	0			oewn_form
+catling	0	oewn-catling-n	Number=Sing	dema	0			oewn_form
+catlings	0	oewn-catling-n	Number=Plur	dema	0			rule
 catmint	0	oewn-catmint-n	Number=Sing	dema	0			oewn_form
 catmints	0	oewn-catmint-n	Number=Plur	dema	0			rule
 catnap	0	oewn-catnap-n	Number=Sing	dema	0			oewn_form
@@ -6800,8 +6800,8 @@ catteries	0		Number=Plur	dema	0	cattery	n	rule
 cattery	0		Number=Sing	dema	0	cattery	n	moby_reverse
 cattie	0	oewn-cattie-n	Number=Sing	dema	0			oewn_form
 cattier	0	oewn-catty-a	Degree=Cmp	dema	0			oewn_form
-catties	0	oewn-cattie-n	Number=Plur	dema	0			rule
-catties	1	oewn-catty-n	Number=Plur	dema	0			rule
+catties	0	oewn-catty-n	Number=Plur	dema	0			rule
+catties	1	oewn-cattie-n	Number=Plur	dema	0			rule
 cattiest	0	oewn-catty-a	Degree=Sup	dema	0			oewn_form
 cattily	0		Degree=Pos	dema	0	cattily	r	moby_reverse
 cattiness	0	oewn-cattiness-n	Number=Sing	dema	0			oewn_form

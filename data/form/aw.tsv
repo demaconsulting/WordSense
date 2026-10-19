@@ -22,9 +22,9 @@ awakened	0	oewn-awaken-v	Tense=Past+VerbForm=Part	dema	0			rule
 awakened	1	oewn-awakened-a	Degree=Pos	dema	0			oewn_form
 awakener	0		Number=Sing	dema	0	awakener	n	moby_reverse
 awakeners	0		Number=Plur	dema	0	awakener	n	rule
-awakening	0		Degree=Pos	dema	0	awakening	a	moby_reverse
-awakening	1	oewn-awakening-n	Number=Sing	dema	0			oewn_form
-awakening	2	oewn-awaken-v	VerbForm=Ger	dema	0			rule
+awakening	0	oewn-awaken-v	VerbForm=Ger	dema	0			rule
+awakening	1		Degree=Pos	dema	0	awakening	a	moby_reverse
+awakening	2	oewn-awakening-n	Number=Sing	dema	0			oewn_form
 awakeningly	0		Degree=Pos	dema	0	awakeningly	r	moby_reverse
 awakenings	0	oewn-awakening-n	Number=Plur	dema	0			rule
 awakens	0	oewn-awaken-v	Person=3+Tense=Pres	dema	0			rule

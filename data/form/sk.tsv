@@ -218,8 +218,8 @@ skewbald	1		Number=Sing	dema	0	skewbald	n	moby_reverse
 skewed	0	oewn-skew-v	Tense=Past+VerbForm=Part	dema	0			rule
 skewed	1	oewn-skewed-a	Degree=Pos	dema	0			oewn_form
 skewer	0	oewn-skewer-n	Number=Sing	dema	0			oewn_form
-skewer	1	oewn-skewer-v	VerbForm=Inf	dema	0			oewn_form
-skewer	2	oewn-skew-a	Degree=Cmp	dema	0			rule
+skewer	1	oewn-skew-a	Degree=Cmp	dema	0			rule
+skewer	2	oewn-skewer-v	VerbForm=Inf	dema	0			oewn_form
 skewered	0	oewn-skewer-v	Tense=Past+VerbForm=Part	dema	0			rule
 skewering	0	oewn-skewer-v	VerbForm=Ger	dema	0			rule
 skewers	0	oewn-skewer-n	Number=Plur	dema	0			rule
@@ -605,8 +605,8 @@ skipways	0		Number=Plur	dema	0	skipway	n	rule
 skirl	0	oewn-skirl-v	VerbForm=Inf	dema	0			oewn_form
 skirl	1	oewn-skirl-n	Number=Sing	dema	0			oewn_form
 skirled	0	oewn-skirl-v	Tense=Past+VerbForm=Part	dema	0			rule
-skirling	0		Number=Sing	dema	0	skirling	n	moby_reverse
-skirling	1	oewn-skirl-v	VerbForm=Ger	dema	0			rule
+skirling	0	oewn-skirl-v	VerbForm=Ger	dema	0			rule
+skirling	1		Number=Sing	dema	0	skirling	n	moby_reverse
 skirlings	0		Number=Plur	dema	0	skirling	n	rule
 skirls	0	oewn-skirl-v	Person=3+Tense=Pres	dema	0			rule
 skirls	1	oewn-skirl-n	Number=Plur	dema	0			rule

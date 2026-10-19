@@ -21,16 +21,20 @@ A generated row is written only when it is corroborated: a regular -s, -ed or -i
 and base alone; any other row needs a second source (the word list that lists the spelling, or the inflection database
 that attests it for that lemma and part of speech). Everything else is dropped and counted.
 
-Frozen rows (carried from earlier tables) are kept only when the rules can still derive them; a frozen spelling does not
-block the analyses of other entries: the entry whose own lemma is an -ing spelling (the noun `tracing` beside the gerund
-of `trace`) and the forms of the irregular lists (`lives` as the plural of `life`) are appended after the frozen
-analyses. Other reviewed spellings stay as reviewed (`bowed` is only the bend verb). A reviewed past is normalized to
-the merged features of the generated rows (`Tense=Past+VerbForm=Part`) when the rule or the lists give the spelling as
-both, a reviewed analysis without features takes them from the hand and closed lists (`bent`, `broke`), and a past or
-participle of those lists that the reviewed rows of the entry lack is appended (`beat` and `cast` beside the reviewed
-infinitive).
+Frozen rows are the reviewed analyses of earlier tables. They are a committed explicit input, `corpus/lexicon/form-frozen.tsv`,
+and the generator never reads its own output: the tables are a function of the entry tables, that file, the lexicon
+lists, the corrections file and the two pinned external sources. A frozen spelling with the flag `open` takes the
+generated analyses of other entries after the frozen ones; a spelling without it stays as reviewed (`bowed` is only the
+bend verb); a closed-class spelling with the flag `only` keeps only its closed-class analyses. Frozen rows count as
+`carried` in the provenance statistics.
 
-Rank policy: the rank of an analysis is a frequency prior, not the answer for a sentence. A gerund of a verb leads with
+An -ing noun does not get a plural spelled like its singular from the inflection database (the mass nouns `bowling`,
+`catling`, `feeling`); the plural of the rules is generated instead. The invariant names (`herring`, `offspring`, `ling`,
+`whiting`) keep theirs.
+
+Rank policy: the rank of an analysis is a frequency prior, not the answer for a sentence. The order is deterministic: the
+position of the part of speech in the Moby letters of the lemma, then explicit tie-breaks on lemma, entry and features,
+so no rank is taken from an earlier table. A gerund of a verb leads with
 the verb analysis because that is the most frequent use of an -ing form; a gerund noun that a sense label needs, the
 adjective and the noun entry of the same spelling follow it. `walking` is a verb gerund, an adjective (a walking stick)
 and a noun, and all analyses are present; choosing among them is the job of the tagger. The policy is tested
@@ -55,14 +59,15 @@ the sample, and the command fails when one lacks its own analysis.
 
 #### Key Methods
 
-- `Run(data, corpus, oewn, overwrite, agid)`: reads the entries and sources, generates, prunes and writes the tables;
-  returns the statistics.
+- `Run(data, corpus, oewn, agid, output, oewnSha256, agidSha256)`: reads the entries, the frozen input and the sources,
+  generates, prunes and writes the tables to `output` (the data directory by default); returns the statistics.
 - `Corroborated` / `Prune`: the two-source rule.
 - `ListRank`: the order of the analyses of a spelling.
 
 #### Error Handling
 
-Missing inputs or existing tables without `overwrite` throw before any file is written.
+A missing input, or an Open English WordNet or inflection-database file whose SHA-256 differs from its pin, throws
+before any file is written.
 
 #### Dependencies
 

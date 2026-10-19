@@ -50,7 +50,7 @@ by a hash of its text, is development). The holdout and the real-text sentences 
 
 `evaluate basic` prints the same comparison table on every run, so that two runs can be compared line by line. The
 reference rows are fixed values of earlier measurements; the first row is the current table. The table
-`basic.bin` is 88,863 bytes (87 KiB), SHA-256 `041468213F10212E55946CC701B61532434609B2131DCD496470BDFD0DD36F22`.
+`basic.bin` is 88,925 bytes (87 KiB), SHA-256 `3C2C1856BC4264738E7C8FE76946EA917BC5CACC201368908050C1C5F75F5D56`.
 
 <!-- markdownlint-disable MD013 -->
 
@@ -58,8 +58,8 @@ reference rows are fixed values of earlier measurements; the first row is the cu
 | ----- | ------------------: | --------------------: | ------------------------------: | -----------------------------: |
 | Basic (this build) | 91.13% | 85.20% | 92.24% / 90.13% | 90.11% / 87.41% |
 | Basic spike (research prototype) | 91.4% | 81.9% | 92.6% / 87.5% | 93.9% / 84.9% |
-| MiniLM | 96.91% | 92.60% | 97.25% / 95.36% | 96.46% / 94.45% |
-| BertBaseCased | 99.05% | 97.39% | 99.23% / 98.40% | 99.25% / 98.20% |
+| MiniLM | 96.86% | 92.60% | 97.19% / 95.36% | 96.37% / 94.45% |
+| BertBaseCased | 98.99% | 97.39% | 99.16% / 98.40% | 99.15% / 98.20% |
 
 <!-- markdownlint-enable MD013 -->
 The holdout is optimistic (written together with the training anchors); the real-text column is the realistic
@@ -88,7 +88,7 @@ below 0.6, and well calibrated at 0.9 and above.
 | Table cold load | 22 ms |
 | Classification time | 2.3 us per word, 34 us per sentence |
 | Word table first use (core package) | 170 ms, 59.7 MiB |
-| Process memory added by the model | 21 MiB |
+| Process memory added by the model | 2 MiB (larger of the private-memory and managed-heap growth) |
 
 ### Differences to the spike
 

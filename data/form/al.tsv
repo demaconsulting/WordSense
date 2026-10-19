@@ -807,8 +807,8 @@ alevins	0		Number=Plur	dema	0	alevin	n	rule
 alewife	0	oewn-alewife-n	Number=Sing	dema	0			oewn_form
 alewives	0	oewn-alewife-n	Number=Plur	dema	0			oewn_form
 alexander	0	oewn-alexander-n	Number=Sing	dema	0			oewn_form
-alexanders	0	oewn-alexanders-n	Number=Sing	dema	0			oewn_form
-alexanders	1	oewn-alexander-n	Number=Plur	dema	0			rule
+alexanders	0	oewn-alexander-n	Number=Plur	dema	0			rule
+alexanders	1	oewn-alexanders-n	Number=Sing	dema	0			oewn_form
 alexandrite	0	oewn-alexandrite-n	Number=Sing	dema	0			oewn_form
 alexandrites	0	oewn-alexandrite-n	Number=Plur	dema	0			rule
 alexia	0	oewn-alexia-n	Number=Sing	dema	0			oewn_form
@@ -1318,8 +1318,8 @@ allegation	0	oewn-allegation-n	Number=Sing	dema	0			oewn_form
 allegations	0	oewn-allegation-n	Number=Plur	dema	0			rule
 allege	0	oewn-allege-v	VerbForm=Inf	dema	0			oewn_form
 allegeable	0		Degree=Pos	dema	0	allegeable	a	moby_reverse
-alleged	0	oewn-alleged-a	Degree=Pos	dema	0			oewn_form
-alleged	1	oewn-allege-v	Tense=Past+VerbForm=Part	dema	0			rule
+alleged	0	oewn-allege-v	Tense=Past+VerbForm=Part	dema	0			rule
+alleged	1	oewn-alleged-a	Degree=Pos	dema	0			oewn_form
 allegedly	0	oewn-allegedly-r	Degree=Pos	dema	0			oewn_form
 allegement	0	oewn-allegement-n	Number=Sing	dema	0			oewn_form
 allegements	0	oewn-allegement-n	Number=Plur	dema	0			rule
@@ -1640,8 +1640,8 @@ allowanced	0	oewn-allowance-v	Tense=Past+VerbForm=Part	dema	0			rule
 allowances	0	oewn-allowance-n	Number=Plur	dema	0			rule
 allowances	1	oewn-allowance-v	Person=3+Tense=Pres	dema	0			rule
 allowancing	0	oewn-allowance-v	VerbForm=Ger	dema	0			rule
-allowed	0		Degree=Pos	dema	0	allowed	a	moby_reverse
-allowed	1	oewn-allow-v	Tense=Past+VerbForm=Part	dema	0			rule
+allowed	0	oewn-allow-v	Tense=Past+VerbForm=Part	dema	0			rule
+allowed	1		Degree=Pos	dema	0	allowed	a	moby_reverse
 allowed for	0	oewn-allow_for-v	Tense=Past+VerbForm=Part	dema	0			rule
 allowed in	0	oewn-allow_in-v	Tense=Past+VerbForm=Part	dema	0			rule
 allowedly	0		Degree=Pos	dema	0	allowedly	r	moby_reverse
@@ -1682,8 +1682,8 @@ allurer	0		Number=Sing	dema	0	allurer	n	moby_reverse
 allurers	0		Number=Plur	dema	0	allurer	n	rule
 allures	0	oewn-allure-v	Person=3+Tense=Pres	dema	0			rule
 allures	1	oewn-allure-n	Number=Plur	dema	0			rule
-alluring	0	oewn-alluring-a	Degree=Pos	dema	0			oewn_form
-alluring	1	oewn-allure-v	VerbForm=Ger	dema	0			rule
+alluring	0	oewn-allure-v	VerbForm=Ger	dema	0			rule
+alluring	1	oewn-alluring-a	Degree=Pos	dema	0			oewn_form
 alluringly	0		Degree=Pos	dema	0	alluringly	r	moby_reverse
 alluringness	0		Number=Sing	dema	0	alluringness	n	moby_reverse
 allusion	0	oewn-allusion-n	Number=Sing	dema	0			oewn_form
@@ -1830,8 +1830,8 @@ alodially	0		Degree=Pos	dema	0	alodially	r	moby_reverse
 alodium	0		Number=Sing	dema	0	alodium	n	moby_reverse
 alodiums	0		Number=Plur	dema	0	alodium	n	rule
 aloe	0	oewn-aloe-n	Number=Sing	dema	0			oewn_form
-aloes	0	oewn-aloes-n	Number=Sing	dema	0			oewn_form
-aloes	1	oewn-aloe-n	Number=Plur	dema	0			rule
+aloes	0	oewn-aloe-n	Number=Plur	dema	0			rule
+aloes	1	oewn-aloes-n	Number=Sing	dema	0			oewn_form
 aloeswood	0		Number=Sing	dema	0	aloeswood	n	moby_reverse
 aloeswoods	0		Number=Plur	dema	0	aloeswood	n	rule
 aloetic	0		Degree=Pos	dema	0	aloetic	a	moby_reverse

@@ -269,8 +269,8 @@ avow	0	oewn-avow-v	VerbForm=Inf	dema	0			oewn_form
 avowable	0		Degree=Pos	dema	0	avowable	a	moby_reverse
 avowal	0	oewn-avowal-n	Number=Sing	dema	0			oewn_form
 avowals	0	oewn-avowal-n	Number=Plur	dema	0			rule
-avowed	0	oewn-avowed-a	Degree=Pos	dema	0			oewn_form
-avowed	1	oewn-avow-v	Tense=Past+VerbForm=Part	dema	0			rule
+avowed	0	oewn-avow-v	Tense=Past+VerbForm=Part	dema	0			rule
+avowed	1	oewn-avowed-a	Degree=Pos	dema	0			oewn_form
 avowedly	0	oewn-avowedly-r	Degree=Pos	dema	0			oewn_form
 avowedness	0		Number=Sing	dema	0	avowedness	n	moby_reverse
 avower	0	oewn-avower-n	Number=Sing	dema	0			oewn_form

@@ -113,6 +113,11 @@ The evidence of every rule is in `morphology.tsv` and in `docs/build_notes/infle
 - `form-corrections.tsv`: our corrections of generated analyses that the forms audit found wrong (typos of the OEWN
   forms, AGID misspellings, wrong features), each with evidence from OEWN, AGID or Moby. LemmInflect, the dev-time
   checker of the audit, is not a source of it: the audit only flags rows, and nothing ships from the checker.
+- `form-frozen.tsv`: the reviewed analyses of the tables that were bootstrapped from the legacy corpus builder, the
+  explicit input of the form generator (`frozen` rows with their rank, entry, features, source, review flag and scope
+  classes; `closed` rows that mark the closed-class spellings). It was derived once from the reviewed table of the
+  commit before the generator existed and is edited only by hand; the generator never reads its own output, which is
+  what makes `rebuild-forms` reproducible (see `data/PROVENANCE.md`). No licensed source other than the ones named there.
 - `additions.tsv`: hand-curated words missing from the dictionary (days, months, nationalities, British spellings,
   `coverage` gaps). License: same as the repository.
 - `auxiliaries.tsv`: hand-written closed list of the English auxiliary verbs (modals and the forms of be, have and

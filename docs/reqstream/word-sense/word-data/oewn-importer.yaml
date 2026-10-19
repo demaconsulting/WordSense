@@ -43,7 +43,8 @@ sections:
                 title: >-
                   OewnImporter shall produce byte-identical files for the same input, check the SHA-256 of the input
                   against the pin before writing anything, refuse to overwrite existing tables unless told to, and
-                  reject malformed, incomplete or inconsistent input with an error.
+                  reject malformed, incomplete or inconsistent input, and a previous release that gives two current
+                  senses the same derived key, with an error.
                 tags: [unit]
                 justification: |
                   Once the tables are edited they are authoritative; a re-import must never silently replace them, and a
@@ -57,6 +58,7 @@ sections:
                   - WordSenseBuilder_OewnImporter_Import_UnknownRelation_Throws
                   - WordSenseBuilder_OewnImporter_Import_SatelliteWithoutHead_Throws
                   - WordSenseBuilder_OewnImporter_Import_MissingSynset_Throws
+                  - WordSenseBuilder_OewnImporter_ImportPrevious_DuplicateSenseKey_Throws
                   - WordSenseBuilder_DataCommands_Import_PinnedHash_RejectsOtherFile
                   - WordSenseBuilder_DataCommands_Import_ExistingTables_NeedsOverwrite
                   - WordSenseBuilder_DataCommands_Import_NoInput_ReportsUsage

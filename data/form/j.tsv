@@ -17,8 +17,8 @@ Jack of all trades	0	oewn-jack_of_all_trades-n	Number=Sing	dema	0			oewn_form
 Jack of all trades	1	oewn-Jack_of_all_trades-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Jack-tar	0	oewn-Jack-tar-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Jack-tars	0	oewn-Jack-tar-n	Capitalization=Title+Number=Plur	dema	0			rule
-Jacks	0	oewn-jacks-n	Number=Sing	dema	0			oewn_form
-Jacks	1	oewn-jack-n	Number=Plur	dema	0			rule
+Jacks	0	oewn-jack-n	Number=Plur	dema	0			rule
+Jacks	1	oewn-jacks-n	Number=Sing	dema	0			oewn_form
 Jacks	2	oewn-jack-v	Person=3+Tense=Pres	dema	0			rule
 Jacks	3	oewn-Jack-n	Capitalization=Title+Number=Plur	dema	0			rule
 Jacks of all trades	0	oewn-jack_of_all_trades-n	Number=Plur	dema	0			rule
@@ -619,8 +619,8 @@ Jungians	0	oewn-Jungian-n	Capitalization=Title+Number=Plur	dema	0			rule
 Junin virus	0	oewn-Junin_virus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Junior	0	oewn-junior-a	Degree=Pos	dema	0			oewn_form
 Junior	1	oewn-junior-n	Number=Sing	dema	0			oewn_form
-Junior	2	oewn-Junior-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-Junior	3	oewn-Junior-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Junior	2	oewn-Junior-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Junior	3	oewn-Junior-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Juniors	0	oewn-junior-n	Number=Plur	dema	0			rule
 Juniors	1	oewn-Junior-n	Capitalization=Title+Number=Plur	dema	0			rule
 Juniperus bermudiana	0	oewn-Juniperus_bermudiana-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
@@ -677,12 +677,12 @@ jabbering	0	oewn-jabber-v	VerbForm=Ger	dema	0			rule
 jabbering	1	oewn-jabbering-n	Number=Sing	dema	0			oewn_form
 jabberingly	0		Degree=Pos	dema	0	jabberingly	r	moby_reverse
 jabberings	0	oewn-jabbering-n	Number=Plur	dema	0			rule
-jabbers	0	oewn-jabber-n	Number=Plur	dema	0			rule
-jabbers	1	oewn-jabber-v	Person=3+Tense=Pres	dema	0			rule
+jabbers	0	oewn-jabber-v	Person=3+Tense=Pres	dema	0			rule
+jabbers	1	oewn-jabber-n	Number=Plur	dema	0			rule
 jabberwockies	0	oewn-jabberwocky-n	Number=Plur	dema	0			rule
 jabberwocky	0	oewn-jabberwocky-n	Number=Sing	dema	0			oewn_form
-jabbing	0	oewn-jabbing-n	Number=Sing	dema	0			oewn_form
-jabbing	1	oewn-jab-v	VerbForm=Ger	dema	0			oewn_form
+jabbing	0	oewn-jab-v	VerbForm=Ger	dema	0			oewn_form
+jabbing	1	oewn-jabbing-n	Number=Sing	dema	0			oewn_form
 jabbingly	0		Degree=Pos	dema	0	jabbingly	r	moby_reverse
 jabbings	0	oewn-jabbing-n	Number=Plur	dema	0			rule
 jabiru	0	oewn-jabiru-n	Number=Sing	dema	0			oewn_form
@@ -840,8 +840,8 @@ jackrabbited	0	oewn-jackrabbit-v	Tense=Past+VerbForm=Part	dema	0			rule
 jackrabbiting	0	oewn-jackrabbit-v	VerbForm=Ger	dema	0			rule
 jackrabbits	0	oewn-jackrabbit-n	Number=Plur	dema	0			rule
 jackrabbits	1	oewn-jackrabbit-v	Person=3+Tense=Pres	dema	0			rule
-jacks	0	oewn-jacks-n	Number=Sing	dema	0			oewn_form
-jacks	1	oewn-jack-n	Number=Plur	dema	0			rule
+jacks	0	oewn-jack-n	Number=Plur	dema	0			rule
+jacks	1	oewn-jacks-n	Number=Sing	dema	0			oewn_form
 jacks	2	oewn-jack-v	Person=3+Tense=Pres	dema	0			rule
 jacks of all trades	0	oewn-jack_of_all_trades-n	Number=Plur	dema	0			rule
 jacks off	0	oewn-jack_off-v	Person=3+Tense=Pres	dema	0			rule
@@ -861,8 +861,8 @@ jackstone	0		Number=Sing	dema	0	jackstone	n	moby_reverse
 jackstones	0		Number=Plur	dema	0	jackstone	n	rule
 jackstones	1	oewn-jackstones-n	Number=Sing	dema	0			oewn_form
 jackstraw	0	oewn-jackstraw-n	Number=Sing	dema	0			oewn_form
-jackstraws	0	oewn-jackstraws-n	Number=Sing	dema	0			oewn_form
-jackstraws	1	oewn-jackstraw-n	Number=Plur	dema	0			rule
+jackstraws	0	oewn-jackstraw-n	Number=Plur	dema	0			rule
+jackstraws	1	oewn-jackstraws-n	Number=Sing	dema	0			oewn_form
 jackyard	0		Number=Sing	dema	0	jackyard	n	moby_reverse
 jackyards	0		Number=Plur	dema	0	jackyard	n	rule
 jacobsite	0		Number=Sing	dema	0	jacobsite	n	moby_reverse
@@ -1061,8 +1061,8 @@ jammed	1	oewn-jammed-a	Degree=Pos	dema	0			oewn_form
 jammer	0	oewn-jammer-n	Number=Sing	dema	0			oewn_form
 jammers	0	oewn-jammer-n	Number=Plur	dema	0			rule
 jammies	0	oewn-jammies-n	Number=Sing	dema	0			oewn_form
-jamming	0	oewn-jamming-n	Number=Sing	dema	0			oewn_form
-jamming	1	oewn-jam-v	VerbForm=Ger	dema	0			oewn_form
+jamming	0	oewn-jam-v	VerbForm=Ger	dema	0			oewn_form
+jamming	1	oewn-jamming-n	Number=Sing	dema	0			oewn_form
 jammings	0	oewn-jamming-n	Number=Plur	dema	0			rule
 jammy	0		Degree=Pos	dema	0	jammy	a	moby_reverse
 jampack	0	oewn-jampack-v	VerbForm=Inf	dema	0			oewn_form
@@ -1362,8 +1362,8 @@ jealousness	0		Number=Sing	dema	0	jealousness	n	moby_reverse
 jealousnesses	0		Number=Plur	dema	0	jealousness	n	rule
 jealousy	0	oewn-jealousy-n	Number=Sing	dema	0			oewn_form
 jean	0	oewn-jean-n	Number=Sing	dema	0			oewn_form
-jeans	0	oewn-jeans-n	Number=Sing	dema	0			oewn_form
-jeans	1	oewn-jean-n	Number=Plur	dema	0			rule
+jeans	0	oewn-jean-n	Number=Plur	dema	0			rule
+jeans	1	oewn-jeans-n	Number=Sing	dema	0			oewn_form
 jebel	0		Number=Sing	dema	0	jebel	n	moby_reverse
 jebels	0		Number=Plur	dema	0	jebel	n	rule
 jee	0	dema-jee-i		dema	0			carried
@@ -1381,8 +1381,8 @@ jeering	1	oewn-jeering-n	Number=Sing	dema	0			oewn_form
 jeering	2	oewn-jeering-a	Degree=Pos	dema	0			oewn_form
 jeeringly	0	oewn-jeeringly-r	Degree=Pos	dema	0			oewn_form
 jeerings	0	oewn-jeering-n	Number=Plur	dema	0			rule
-jeers	0	oewn-jeer-n	Number=Plur	dema	0			rule
-jeers	1	oewn-jeer-v	Person=3+Tense=Pres	dema	0			rule
+jeers	0	oewn-jeer-v	Person=3+Tense=Pres	dema	0			rule
+jeers	1	oewn-jeer-n	Number=Plur	dema	0			rule
 jeez	0	dema-jeez-i		dema	0			carried
 jefe	0		Number=Sing	dema	0	jefe	n	moby_reverse
 jefes	0		Number=Plur	dema	0	jefe	n	rule
@@ -1569,8 +1569,8 @@ jester	0	oewn-jester-n	Number=Sing	dema	0			oewn_form
 jesters	0	oewn-jester-n	Number=Plur	dema	0			rule
 jestful	0		Degree=Pos	dema	0	jestful	a	moby_reverse
 jesting	0	oewn-jesting-a	Degree=Pos	dema	0			oewn_form
-jesting	1		Number=Sing	dema	0	jesting	n	moby_reverse
-jesting	2	oewn-jest-v	VerbForm=Ger	dema	0			rule
+jesting	1	oewn-jest-v	VerbForm=Ger	dema	0			rule
+jesting	2		Number=Sing	dema	0	jesting	n	moby_reverse
 jesting at	0	oewn-jest_at-v	VerbForm=Ger	dema	0			rule
 jestingly	0	oewn-jestingly-r	Degree=Pos	dema	0			oewn_form
 jests	0	oewn-jest-n	Number=Plur	dema	0			rule
@@ -2018,11 +2018,11 @@ jodhpur boots	0	oewn-jodhpur_boot-n	Number=Plur	dema	0			rule
 jodhpur breeches	0	oewn-jodhpur_breeches-n	Number=Sing	dema	0			oewn_form
 jodhpur shoe	0	oewn-jodhpur_shoe-n	Number=Sing	dema	0			oewn_form
 jodhpur shoes	0	oewn-jodhpur_shoe-n	Number=Plur	dema	0			rule
-jodhpurs	0	oewn-jodhpurs-n	Number=Sing	dema	0			oewn_form
-jodhpurs	1	oewn-jodhpur-n	Number=Plur	dema	0			rule
+jodhpurs	0	oewn-jodhpur-n	Number=Plur	dema	0			rule
+jodhpurs	1	oewn-jodhpurs-n	Number=Sing	dema	0			oewn_form
 joe	0		Number=Sing	dema	0	joe	n	moby_reverse
-joes	0		Number=Sing	dema	0	joes	n	moby_reverse
-joes	1		Number=Plur	dema	0	joe	n	rule
+joes	0		Number=Plur	dema	0	joe	n	rule
+joes	1		Number=Sing	dema	0	joes	n	moby_reverse
 joewood	0	oewn-joewood-n	Number=Sing	dema	0			oewn_form
 joewoods	0	oewn-joewood-n	Number=Plur	dema	0			rule
 joey	0		Number=Sing	dema	0	joey	n	moby_reverse
@@ -2035,8 +2035,8 @@ jog trots	0	oewn-jog_trot-n	Number=Plur	dema	0			rule
 jogged	0	oewn-jog-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 jogger	0	oewn-jogger-n	Number=Sing	dema	0			oewn_form
 joggers	0	oewn-jogger-n	Number=Plur	dema	0			rule
-jogging	0	oewn-jogging-n	Number=Sing	dema	0			oewn_form
-jogging	1	oewn-jog-v	VerbForm=Ger	dema	0			oewn_form
+jogging	0	oewn-jog-v	VerbForm=Ger	dema	0			oewn_form
+jogging	1	oewn-jogging-n	Number=Sing	dema	0			oewn_form
 joggings	0	oewn-jogging-n	Number=Plur	dema	0			rule
 joggle	0	oewn-joggle-v	VerbForm=Inf	dema	0			oewn_form
 joggle	1	oewn-joggle-n	Number=Sing	dema	0			oewn_form
@@ -2170,10 +2170,10 @@ joles	0		Number=Plur	dema	0	jole	n	rule
 jollied	0	oewn-jolly-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 jollied along	0	oewn-jolly_along-v	Tense=Past+VerbForm=Part	dema	0			rule
 jollied up	0	oewn-jolly_up-v	Tense=Past+VerbForm=Part	dema	0			rule
-jollier	0		Number=Sing	dema	0	jollier	n	moby_reverse
-jollier	1	oewn-jolly-a	Degree=Cmp	dema	0			oewn_form
-jollies	0	oewn-jolly-n	Number=Plur	dema	0			rule
-jollies	1	oewn-jolly-v	Person=3+Tense=Pres	dema	0			rule
+jollier	0	oewn-jolly-a	Degree=Cmp	dema	0			oewn_form
+jollier	1		Number=Sing	dema	0	jollier	n	moby_reverse
+jollies	0	oewn-jolly-v	Person=3+Tense=Pres	dema	0			rule
+jollies	1	oewn-jolly-n	Number=Plur	dema	0			rule
 jollies along	0	oewn-jolly_along-v	Person=3+Tense=Pres	dema	0			rule
 jollies up	0	oewn-jolly_up-v	Person=3+Tense=Pres	dema	0			rule
 jolliest	0	oewn-jolly-a	Degree=Sup	dema	0			oewn_form
@@ -2272,8 +2272,8 @@ jostler	0		Number=Sing	dema	0	jostler	n	moby_reverse
 jostlers	0		Number=Plur	dema	0	jostler	n	rule
 jostles	0	oewn-jostle-v	Person=3+Tense=Pres	dema	0			rule
 jostles	1	oewn-jostle-n	Number=Plur	dema	0			rule
-jostling	0	oewn-jostling-n	Number=Sing	dema	0			oewn_form
-jostling	1	oewn-jostle-v	VerbForm=Ger	dema	0			rule
+jostling	0	oewn-jostle-v	VerbForm=Ger	dema	0			rule
+jostling	1	oewn-jostling-n	Number=Sing	dema	0			oewn_form
 jostlings	0	oewn-jostling-n	Number=Plur	dema	0			rule
 jot	0	oewn-jot-v	VerbForm=Inf	dema	0			oewn_form
 jot	1	oewn-jot-n	Number=Sing	dema	0			oewn_form
@@ -2605,8 +2605,8 @@ jugglers	0	oewn-juggler-n	Number=Plur	dema	0			rule
 jugglery	0	oewn-jugglery-n	Number=Sing	dema	0			oewn_form
 juggles	0	oewn-juggle-v	Person=3+Tense=Pres	dema	0			rule
 juggles	1	oewn-juggle-n	Number=Plur	dema	0			rule
-juggling	0	oewn-juggling-n	Number=Sing	dema	0			oewn_form
-juggling	1	oewn-juggle-v	VerbForm=Ger	dema	0			rule
+juggling	0	oewn-juggle-v	VerbForm=Ger	dema	0			rule
+juggling	1	oewn-juggling-n	Number=Sing	dema	0			oewn_form
 jugglingly	0		Degree=Pos	dema	0	jugglingly	r	moby_reverse
 jugglings	0	oewn-juggling-n	Number=Plur	dema	0			rule
 jughead	0		Number=Sing	dema	0	jughead	n	moby_reverse
@@ -3045,8 +3045,8 @@ just then	0	oewn-just_then-r	Degree=Pos	dema	0			oewn_form
 just-noticeable difference	0	oewn-just-noticeable_difference-n	Number=Sing	dema	0			oewn_form
 just-noticeable differences	0	oewn-just-noticeable_difference-n	Number=Plur	dema	0			rule
 justaucorps	0		Number=Sing	dema	0	justaucorps	n	moby_reverse
-juster	0		Number=Sing	dema	0	juster	n	moby_reverse
-juster	1	oewn-just-a	Degree=Cmp	dema	0			rule
+juster	0	oewn-just-a	Degree=Cmp	dema	0			rule
+juster	1		Number=Sing	dema	0	juster	n	moby_reverse
 justers	0		Number=Plur	dema	0	juster	n	rule
 justest	0	oewn-just-a	Degree=Sup	dema	0			rule
 justice	0	oewn-justice-n	Number=Sing	dema	0			oewn_form
@@ -3111,8 +3111,8 @@ jutted out	0	oewn-jut_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 juttied	0		Number=Sing	dema	0	juttied	n	moby_reverse
 juttieds	0		Number=Plur	dema	0	juttied	n	rule
 jutties	0		Number=Plur	dema	0	jutty	n	rule
-jutting	0	oewn-jutting-n	Number=Sing	dema	0			oewn_form
-jutting	1	oewn-jut-v	VerbForm=Ger	dema	0			oewn_form
+jutting	0	oewn-jut-v	VerbForm=Ger	dema	0			oewn_form
+jutting	1	oewn-jutting-n	Number=Sing	dema	0			oewn_form
 jutting	2	oewn-jutting-a	Degree=Pos	dema	0			oewn_form
 jutting out	0	oewn-jut_out-v	VerbForm=Ger	dema	0			rule
 juttingly	0		Degree=Pos	dema	0	juttingly	r	moby_reverse

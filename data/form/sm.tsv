@@ -25,8 +25,8 @@ smackeroo	0		Number=Sing	dema	0	smackeroo	n	moby_reverse
 smackeroos	0		Number=Plur	dema	0	smackeroo	n	rule
 smackers	0	oewn-smacker-n	Number=Plur	dema	0			rule
 smacking	0		Degree=Pos	dema	0	smacking	a	moby_reverse
-smacking	1	oewn-smacking-n	Number=Sing	dema	0			oewn_form
-smacking	2	oewn-smack-v	VerbForm=Ger	dema	0			rule
+smacking	1	oewn-smack-v	VerbForm=Ger	dema	0			rule
+smacking	2	oewn-smacking-n	Number=Sing	dema	0			oewn_form
 smackings	0	oewn-smacking-n	Number=Plur	dema	0			rule
 smacks	0	oewn-smack-n	Number=Plur	dema	0			rule
 smacks	1	oewn-smack-v	Person=3+Tense=Pres	dema	0			rule
@@ -237,17 +237,17 @@ smash up	0	oewn-smash_up-v	VerbForm=Inf	dema	0			oewn_form
 smash-up	0	oewn-smash-up-n	Number=Sing	dema	0			oewn_form
 smash-ups	0	oewn-smash-up-n	Number=Plur	dema	0			rule
 smashable	0		Degree=Pos	dema	0	smashable	a	moby_reverse
-smashed	0	oewn-smashed-a	Degree=Pos	dema	0			oewn_form
-smashed	1	oewn-smash-v	Tense=Past+VerbForm=Part	dema	0			rule
+smashed	0	oewn-smash-v	Tense=Past+VerbForm=Part	dema	0			rule
+smashed	1	oewn-smashed-a	Degree=Pos	dema	0			oewn_form
 smashed up	0	oewn-smash_up-v	Tense=Past+VerbForm=Part	dema	0			rule
 smasher	0	oewn-smasher-n	Number=Sing	dema	0			oewn_form
 smashers	0	oewn-smasher-n	Number=Plur	dema	0			rule
 smashes	0	oewn-smash-v	Person=3+Tense=Pres	dema	0			rule
 smashes	1	oewn-smash-n	Number=Plur	dema	0			rule
 smashes up	0	oewn-smash_up-v	Person=3+Tense=Pres	dema	0			rule
-smashing	0	oewn-smashing-a	Degree=Pos	dema	0			oewn_form
-smashing	1	oewn-smashing-n	Number=Sing	dema	0			oewn_form
-smashing	2	oewn-smash-v	VerbForm=Ger	dema	0			rule
+smashing	0	oewn-smash-v	VerbForm=Ger	dema	0			rule
+smashing	1	oewn-smashing-a	Degree=Pos	dema	0			oewn_form
+smashing	2	oewn-smashing-n	Number=Sing	dema	0			oewn_form
 smashing up	0	oewn-smash_up-v	VerbForm=Ger	dema	0			rule
 smashingly	0	oewn-smashingly-r	Degree=Pos	dema	0			oewn_form
 smashings	0	oewn-smashing-n	Number=Plur	dema	0			rule
@@ -357,8 +357,8 @@ smiles	0	oewn-smile-n	Number=Plur	dema	0			rule
 smiles	1	oewn-smile-v	Person=3+Tense=Pres	dema	0			rule
 smiley	0	oewn-smiley-n	Number=Sing	dema	0			oewn_form
 smileys	0	oewn-smiley-n	Number=Plur	dema	0			rule
-smiling	0	oewn-smiling-n	Number=Sing	dema	0			oewn_form
-smiling	1	oewn-smile-v	VerbForm=Ger	dema	0			rule
+smiling	0	oewn-smile-v	VerbForm=Ger	dema	0			rule
+smiling	1	oewn-smiling-n	Number=Sing	dema	0			oewn_form
 smiling	2	oewn-smiling-a	Degree=Pos	dema	0			oewn_form
 smilingly	0	oewn-smilingly-r	Degree=Pos	dema	0			oewn_form
 smilings	0	oewn-smiling-n	Number=Plur	dema	0			rule
@@ -602,8 +602,8 @@ smoothens	0	oewn-smoothen-v	Person=3+Tense=Pres	dema	0			rule
 smoother	0	oewn-smoother-n	Number=Sing	dema	0			oewn_form
 smoother	1	oewn-smooth-a	Degree=Cmp	dema	0			rule
 smoothers	0	oewn-smoother-n	Number=Plur	dema	0			rule
-smoothes	0	oewn-smooth-n	Number=Plur	dema	0			rule_variant
-smoothes	1	oewn-smooth-v	Person=3+Tense=Pres	dema	0			rule_variant
+smoothes	0	oewn-smooth-v	Person=3+Tense=Pres	dema	0			rule_variant
+smoothes	1	oewn-smooth-n	Number=Plur	dema	0			rule_variant
 smoothest	0	oewn-smooth-a	Degree=Sup	dema	0			rule
 smoothhound	0	oewn-smoothhound-n	Number=Sing	dema	0			oewn_form
 smoothhound shark	0	oewn-smoothhound_shark-n	Number=Sing	dema	0			oewn_form
@@ -678,8 +678,8 @@ smuggled	1	oewn-smuggled-a	Degree=Pos	dema	0			oewn_form
 smuggler	0	oewn-smuggler-n	Number=Sing	dema	0			oewn_form
 smugglers	0	oewn-smuggler-n	Number=Plur	dema	0			rule
 smuggles	0	oewn-smuggle-v	Person=3+Tense=Pres	dema	0			rule
-smuggling	0	oewn-smuggling-n	Number=Sing	dema	0			oewn_form
-smuggling	1	oewn-smuggle-v	VerbForm=Ger	dema	0			rule
+smuggling	0	oewn-smuggle-v	VerbForm=Ger	dema	0			rule
+smuggling	1	oewn-smuggling-n	Number=Sing	dema	0			oewn_form
 smugglings	0	oewn-smuggling-n	Number=Plur	dema	0			rule
 smugly	0	oewn-smugly-r	Degree=Pos	dema	0			oewn_form
 smugness	0	oewn-smugness-n	Number=Sing	dema	0			oewn_form

@@ -299,8 +299,8 @@ cedes	0	oewn-cede-v	Person=3+Tense=Pres	dema	0			rule
 cedi	0	oewn-cedi-n	Number=Sing	dema	0			oewn_form
 cedilla	0	oewn-cedilla-n	Number=Sing	dema	0			oewn_form
 cedillas	0	oewn-cedilla-n	Number=Plur	dema	0			rule
-ceding	0	oewn-ceding-n	Number=Sing	dema	0			oewn_form
-ceding	1	oewn-cede-v	VerbForm=Ger	dema	0			rule
+ceding	0	oewn-cede-v	VerbForm=Ger	dema	0			rule
+ceding	1	oewn-ceding-n	Number=Sing	dema	0			oewn_form
 ceding back	0	oewn-ceding_back-n	Number=Sing	dema	0			oewn_form
 ceding backs	0	oewn-ceding_back-n	Number=Plur	dema	0			rule
 cedings	0	oewn-ceding-n	Number=Plur	dema	0			rule
@@ -353,8 +353,8 @@ celeb	0		Number=Sing	dema	0	celeb	n	moby_reverse
 celebrant	0	oewn-celebrant-n	Number=Sing	dema	0			oewn_form
 celebrants	0	oewn-celebrant-n	Number=Plur	dema	0			rule
 celebrate	0	oewn-celebrate-v	VerbForm=Inf	dema	0			oewn_form
-celebrated	0	oewn-celebrated-a	Degree=Pos	dema	0			oewn_form
-celebrated	1	oewn-celebrate-v	Tense=Past+VerbForm=Part	dema	0			rule
+celebrated	0	oewn-celebrate-v	Tense=Past+VerbForm=Part	dema	0			rule
+celebrated	1	oewn-celebrated-a	Degree=Pos	dema	0			oewn_form
 celebratedness	0		Number=Sing	dema	0	celebratedness	n	moby_reverse
 celebratednesses	0		Number=Plur	dema	0	celebratedness	n	rule
 celebrater	0	oewn-celebrater-n	Number=Sing	dema	0			oewn_form
@@ -1128,8 +1128,8 @@ ceramic ware	0	oewn-ceramic_ware-n	Number=Sing	dema	0			oewn_form
 ceramic wares	0	oewn-ceramic_ware-n	Number=Plur	dema	0			rule
 ceramicist	0	oewn-ceramicist-n	Number=Sing	dema	0			oewn_form
 ceramicists	0	oewn-ceramicist-n	Number=Plur	dema	0			rule
-ceramics	0	oewn-ceramics-n	Number=Sing	dema	0			oewn_form
-ceramics	1	oewn-ceramic-n	Number=Plur	dema	0			rule
+ceramics	0	oewn-ceramic-n	Number=Plur	dema	0			rule
+ceramics	1	oewn-ceramics-n	Number=Sing	dema	0			oewn_form
 ceramist	0	oewn-ceramist-n	Number=Sing	dema	0			oewn_form
 ceramists	0	oewn-ceramist-n	Number=Plur	dema	0			rule
 cerargyrite	0		Number=Sing	dema	0	cerargyrite	n	moby_reverse
@@ -1348,8 +1348,8 @@ certificating	0	oewn-certificate-v	VerbForm=Ger	dema	0			rule
 certification	0	oewn-certification-n	Number=Sing	dema	0			oewn_form
 certifications	0	oewn-certification-n	Number=Plur	dema	0			rule
 certificatory	0	oewn-certificatory-a	Degree=Pos	dema	0			oewn_form
-certified	0	oewn-certified-a	Degree=Pos	dema	0			oewn_form
-certified	1	oewn-certify-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+certified	0	oewn-certify-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+certified	1	oewn-certified-a	Degree=Pos	dema	0			oewn_form
 certified check	0	oewn-certified_check-n	Number=Sing	dema	0			oewn_form
 certified checks	0	oewn-certified_check-n	Number=Plur	dema	0			rule
 certified cheque	0	oewn-certified_cheque-n	Number=Sing	dema	0			oewn_form

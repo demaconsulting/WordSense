@@ -1476,8 +1476,8 @@ labiality	0		Number=Sing	dema	0	labiality	n	moby_reverse
 labialization	0		Number=Sing	dema	0	labialization	n	moby_reverse
 labializations	0		Number=Plur	dema	0	labialization	n	rule
 labialize	0	oewn-labialize-v	VerbForm=Inf	dema	0			oewn_form
-labialized	0		Degree=Pos	dema	0	labialized	a	moby_reverse
-labialized	1	oewn-labialize-v	Tense=Past+VerbForm=Part	dema	0			rule
+labialized	0	oewn-labialize-v	Tense=Past+VerbForm=Part	dema	0			rule
+labialized	1		Degree=Pos	dema	0	labialized	a	moby_reverse
 labializes	0	oewn-labialize-v	Person=3+Tense=Pres	dema	0			rule
 labializing	0	oewn-labialize-v	VerbForm=Ger	dema	0			rule
 labially	0		Degree=Pos	dema	0	labially	r	moby_reverse
@@ -1566,8 +1566,8 @@ laboratory coat	0	oewn-laboratory_coat-n	Number=Sing	dema	0			oewn_form
 laboratory coats	0	oewn-laboratory_coat-n	Number=Plur	dema	0			rule
 laboratory glassware	0	oewn-laboratory_glassware-n	Number=Sing	dema	0			oewn_form
 laboratory glasswares	0	oewn-laboratory_glassware-n	Number=Plur	dema	0			rule
-labored	0	oewn-labored-a	Degree=Pos	dema	0			oewn_form
-labored	1	oewn-labor-v	Tense=Past+VerbForm=Part	dema	0			rule
+labored	0	oewn-labor-v	Tense=Past+VerbForm=Part	dema	0			rule
+labored	1	oewn-labored-a	Degree=Pos	dema	0			oewn_form
 laboredly	0		Degree=Pos	dema	0	laboredly	r	moby_reverse
 laboredness	0		Number=Sing	dema	0	laboredness	n	moby_reverse
 laborer	0	oewn-laborer-n	Number=Sing	dema	0			oewn_form
@@ -1690,8 +1690,8 @@ lacerable	0		Degree=Pos	dema	0	lacerable	a	moby_reverse
 lacerant	0		Degree=Pos	dema	0	lacerant	a	moby_reverse
 lacerate	0	oewn-lacerate-v	VerbForm=Inf	dema	0			oewn_form
 lacerate	1	oewn-lacerate-a	Degree=Pos	dema	0			oewn_form
-lacerated	0	oewn-lacerated-a	Degree=Pos	dema	0			oewn_form
-lacerated	1	oewn-lacerate-v	Tense=Past+VerbForm=Part	dema	0			rule
+lacerated	0	oewn-lacerate-v	Tense=Past+VerbForm=Part	dema	0			rule
+lacerated	1	oewn-lacerated-a	Degree=Pos	dema	0			oewn_form
 lacerates	0	oewn-lacerate-v	Person=3+Tense=Pres	dema	0			rule
 lacerating	0	oewn-lacerate-v	VerbForm=Ger	dema	0			rule
 laceration	0	oewn-laceration-n	Number=Sing	dema	0			oewn_form
@@ -1772,8 +1772,8 @@ lackeying	1		VerbForm=Ger	dema	0	lackey	v	moby_reverse
 lackeyings	0		Number=Plur	dema	0	lackeying	n	rule
 lackeys	0	oewn-lackey-n	Number=Plur	dema	0			rule
 lacking	0	dema-lacking-p		dema	0			carried
-lacking	1	oewn-lacking-a	Degree=Pos	dema	0			oewn_form
-lacking	2	oewn-lack-v	VerbForm=Ger	dema	0			rule
+lacking	1	oewn-lack-v	VerbForm=Ger	dema	0			rule
+lacking	2	oewn-lacking-a	Degree=Pos	dema	0			oewn_form
 lackluster	0	oewn-lackluster-a	Degree=Pos	dema	0			oewn_form
 lackluster	1		Number=Sing	dema	0	lackluster	n	moby_reverse
 lacklustre	0	oewn-lacklustre-a	Degree=Pos	dema	0			oewn_form
@@ -1966,8 +1966,8 @@ laddies	0	oewn-laddie-n	Number=Plur	dema	0			rule
 laddish	0		Degree=Pos	dema	0	laddish	a	moby_reverse
 lade	0	oewn-lade-v	VerbForm=Inf	dema	0			oewn_form
 laded	0	oewn-lade-v	Tense=Past+VerbForm=Part	dema	0			rule
-laden	0	oewn-laden-a	Degree=Pos	dema	0			oewn_form
-laden	1	oewn-lade-v	VerbForm=Part	dema	0			oewn_form
+laden	0	oewn-lade-v	VerbForm=Part	dema	0			oewn_form
+laden	1	oewn-laden-a	Degree=Pos	dema	0			oewn_form
 laden	2	oewn-laden-v	VerbForm=Inf	dema	0			oewn_form
 ladened	0	oewn-laden-v	Tense=Past+VerbForm=Part	dema	0			rule
 ladened	1	oewn-ladened-a	Degree=Pos	dema	0			oewn_form
@@ -2312,11 +2312,11 @@ lamb-chop	0	oewn-lamb-chop-n	Number=Sing	dema	0			oewn_form
 lamb-chops	0	oewn-lamb-chop-n	Number=Plur	dema	0			rule
 lambast	0	oewn-lambast-v	VerbForm=Inf	dema	0			oewn_form
 lambaste	0	oewn-lambaste-v	VerbForm=Inf	dema	0			oewn_form
-lambasted	0	oewn-lambast-v	Tense=Past+VerbForm=Part	dema	0			rule
-lambasted	1	oewn-lambaste-v	Tense=Past+VerbForm=Part	dema	0			rule
+lambasted	0	oewn-lambaste-v	Tense=Past+VerbForm=Part	dema	0			rule
+lambasted	1	oewn-lambast-v	Tense=Past+VerbForm=Part	dema	0			rule
 lambastes	0	oewn-lambaste-v	Person=3+Tense=Pres	dema	0			rule
-lambasting	0	oewn-lambast-v	VerbForm=Ger	dema	0			rule
-lambasting	1	oewn-lambaste-v	VerbForm=Ger	dema	0			rule
+lambasting	0	oewn-lambaste-v	VerbForm=Ger	dema	0			rule
+lambasting	1	oewn-lambast-v	VerbForm=Ger	dema	0			rule
 lambasts	0	oewn-lambast-v	Person=3+Tense=Pres	dema	0			rule
 lambchop	0	oewn-lambchop-n	Number=Sing	dema	0			oewn_form
 lambchops	0	oewn-lambchop-n	Number=Plur	dema	0			rule
@@ -2399,8 +2399,8 @@ lamentablenesses	0		Number=Plur	dema	0	lamentableness	n	rule
 lamentably	0	oewn-lamentably-r	Degree=Pos	dema	0			oewn_form
 lamentation	0	oewn-lamentation-n	Number=Sing	dema	0			oewn_form
 lamentations	0	oewn-lamentation-n	Number=Plur	dema	0			rule
-lamented	0	oewn-lamented-a	Degree=Pos	dema	0			oewn_form
-lamented	1	oewn-lament-v	Tense=Past+VerbForm=Part	dema	0			rule
+lamented	0	oewn-lament-v	Tense=Past+VerbForm=Part	dema	0			rule
+lamented	1	oewn-lamented-a	Degree=Pos	dema	0			oewn_form
 lamentedly	0		Degree=Pos	dema	0	lamentedly	r	moby_reverse
 lamenter	0	oewn-lamenter-n	Number=Sing	dema	0			oewn_form
 lamenters	0	oewn-lamenter-n	Number=Plur	dema	0			rule
@@ -2410,8 +2410,8 @@ lamentingly	0		Degree=Pos	dema	0	lamentingly	r	moby_reverse
 laments	0	oewn-lament-v	Person=3+Tense=Pres	dema	0			rule
 laments	1	oewn-lament-n	Number=Plur	dema	0			rule
 lamer	0	oewn-lame-a	Degree=Cmp	dema	0			moby_reverse
-lames	0	oewn-lame-n	Number=Plur	dema	0			rule
-lames	1	oewn-lame-v	Person=3+Tense=Pres	dema	0			rule
+lames	0	oewn-lame-v	Person=3+Tense=Pres	dema	0			rule
+lames	1	oewn-lame-n	Number=Plur	dema	0			rule
 lamest	0	oewn-lame-a	Degree=Sup	dema	0			moby_reverse
 lamia	0	oewn-lamia-n	Number=Sing	dema	0			oewn_form
 lamiaceous	0		Degree=Pos	dema	0	lamiaceous	a	moby_reverse
@@ -2572,8 +2572,8 @@ lanceolately	0		Degree=Pos	dema	0	lanceolately	r	moby_reverse
 lancepod	0		Number=Sing	dema	0	lancepod	n	moby_reverse
 lancepods	0		Number=Plur	dema	0	lancepod	n	rule
 lancer	0	oewn-lancer-n	Number=Sing	dema	0			oewn_form
-lancers	0	oewn-lancers-n	Number=Sing	dema	0			oewn_form
-lancers	1	oewn-lancer-n	Number=Plur	dema	0			rule
+lancers	0	oewn-lancer-n	Number=Plur	dema	0			rule
+lancers	1	oewn-lancers-n	Number=Sing	dema	0			oewn_form
 lances	0	oewn-lance-n	Number=Plur	dema	0			rule
 lances	1	oewn-lance-v	Person=3+Tense=Pres	dema	0			rule
 lancet	0	oewn-lancet-n	Number=Sing	dema	0			oewn_form
@@ -2770,8 +2770,8 @@ landscaper	0	oewn-landscaper-n	Number=Sing	dema	0			oewn_form
 landscapers	0	oewn-landscaper-n	Number=Plur	dema	0			rule
 landscapes	0	oewn-landscape-n	Number=Plur	dema	0			rule
 landscapes	1	oewn-landscape-v	Person=3+Tense=Pres	dema	0			rule
-landscaping	0	oewn-landscaping-n	Number=Sing	dema	0			oewn_form
-landscaping	1	oewn-landscape-v	VerbForm=Ger	dema	0			rule
+landscaping	0	oewn-landscape-v	VerbForm=Ger	dema	0			rule
+landscaping	1	oewn-landscaping-n	Number=Sing	dema	0			oewn_form
 landscapings	0	oewn-landscaping-n	Number=Plur	dema	0			rule
 landscapist	0	oewn-landscapist-n	Number=Sing	dema	0			oewn_form
 landscapists	0	oewn-landscapist-n	Number=Plur	dema	0			rule
@@ -2883,8 +2883,8 @@ languished	0	oewn-languish-v	Tense=Past+VerbForm=Part	dema	0			rule
 languisher	0	oewn-languisher-n	Number=Sing	dema	0			oewn_form
 languishers	0	oewn-languisher-n	Number=Plur	dema	0			rule
 languishes	0	oewn-languish-v	Person=3+Tense=Pres	dema	0			rule
-languishing	0		Degree=Pos	dema	0	languishing	a	moby_reverse
-languishing	1	oewn-languish-v	VerbForm=Ger	dema	0			rule
+languishing	0	oewn-languish-v	VerbForm=Ger	dema	0			rule
+languishing	1		Degree=Pos	dema	0	languishing	a	moby_reverse
 languishingly	0		Degree=Pos	dema	0	languishingly	r	moby_reverse
 languishment	0		Number=Sing	dema	0	languishment	n	moby_reverse
 languishments	0		Number=Plur	dema	0	languishment	n	rule
@@ -3073,8 +3073,8 @@ lappeted	1		VerbForm=Inf	dema	0	lappeted	v	moby_reverse
 lappets	0	oewn-lappet-n	Number=Plur	dema	0			rule
 lappilli	0		Number=Sing	dema	0	lappilli	n	moby_reverse
 lappillis	0		Number=Plur	dema	0	lappilli	n	rule
-lapping	0	oewn-lapping-n	Number=Sing	dema	0			oewn_form
-lapping	1	oewn-lap-v	VerbForm=Ger	dema	0			oewn_form
+lapping	0	oewn-lap-v	VerbForm=Ger	dema	0			oewn_form
+lapping	1	oewn-lapping-n	Number=Sing	dema	0			oewn_form
 lapping machine	0	oewn-lapping_machine-n	Number=Sing	dema	0			oewn_form
 lapping machines	0	oewn-lapping_machine-n	Number=Plur	dema	0			rule
 lapping up	0	oewn-lap_up-v	VerbForm=Ger	dema	0			rule
@@ -3095,8 +3095,8 @@ lapsers	0		Number=Plur	dema	0	lapser	n	rule
 lapses	0	oewn-lapse-n	Number=Plur	dema	0			rule
 lapses	1	oewn-lapse-v	Person=3+Tense=Pres	dema	0			rule
 lapsible	0		Degree=Pos	dema	0	lapsible	a	moby_reverse
-lapsing	0	oewn-lapsing-n	Number=Sing	dema	0			oewn_form
-lapsing	1	oewn-lapse-v	VerbForm=Ger	dema	0			rule
+lapsing	0	oewn-lapse-v	VerbForm=Ger	dema	0			rule
+lapsing	1	oewn-lapsing-n	Number=Sing	dema	0			oewn_form
 lapsings	0	oewn-lapsing-n	Number=Plur	dema	0			rule
 lapstrake	0		Degree=Pos	dema	0	lapstrake	a	moby_reverse
 lapstrake	1		Number=Sing	dema	0	lapstrake	n	moby_reverse
@@ -3418,8 +3418,8 @@ lashing	2	oewn-lashing-a	Degree=Pos	dema	0			oewn_form
 lashing out	0	oewn-lash_out-v	VerbForm=Ger	dema	0			rule
 lashing together	0	oewn-lash_together-v	VerbForm=Ger	dema	0			rule
 lashingly	0		Degree=Pos	dema	0	lashingly	r	moby_reverse
-lashings	0	oewn-lashings-n	Number=Sing	dema	0			oewn_form
-lashings	1	oewn-lashing-n	Number=Plur	dema	0			rule
+lashings	0	oewn-lashing-n	Number=Plur	dema	0			rule
+lashings	1	oewn-lashings-n	Number=Sing	dema	0			oewn_form
 lashkar	0		Number=Sing	dema	0	lashkar	n	moby_reverse
 lashkars	0		Number=Plur	dema	0	lashkar	n	rule
 lashless	0		Degree=Pos	dema	0	lashless	a	moby_reverse
@@ -3489,8 +3489,8 @@ last-minute	0	oewn-last-minute-a	Degree=Pos	dema	0			oewn_form
 last-place	0	oewn-last-place-a	Degree=Pos	dema	0			oewn_form
 lasted	0	oewn-last-v	Tense=Past+VerbForm=Part	dema	0			rule
 lasted out	0	oewn-last_out-v	Tense=Past+VerbForm=Part	dema	0			rule
-laster	0		Number=Sing	dema	0	laster	n	moby_reverse
-laster	1	oewn-last-a	Degree=Cmp	dema	0			rule
+laster	0	oewn-last-a	Degree=Cmp	dema	0			rule
+laster	1		Number=Sing	dema	0	laster	n	moby_reverse
 lasters	0		Number=Plur	dema	0	laster	n	rule
 lasting	0	oewn-lasting-a	Degree=Pos	dema	0			oewn_form
 lasting	1		Number=Sing	dema	0	lasting	n	moby_reverse
@@ -3803,9 +3803,9 @@ laughed off	0	oewn-laugh_off-v	Tense=Past+VerbForm=Part	dema	0			rule
 laughed softly	0	oewn-laugh_softly-v	Tense=Past+VerbForm=Part	dema	0			rule
 laugher	0	oewn-laugher-n	Number=Sing	dema	0			oewn_form
 laughers	0	oewn-laugher-n	Number=Plur	dema	0			rule
-laughing	0		Number=Sing	dema	0	laughing	n	moby_reverse
-laughing	1	oewn-laughing-a	Degree=Pos	dema	0			oewn_form
-laughing	2	oewn-laugh-v	VerbForm=Ger	dema	0			rule
+laughing	0	oewn-laugh-v	VerbForm=Ger	dema	0			rule
+laughing	1		Number=Sing	dema	0	laughing	n	moby_reverse
+laughing	2	oewn-laughing-a	Degree=Pos	dema	0			oewn_form
 laughing at	0	oewn-laugh_at-v	VerbForm=Ger	dema	0			rule
 laughing away	0	oewn-laugh_away-v	VerbForm=Ger	dema	0			rule
 laughing gas	0	oewn-laughing_gas-n	Number=Sing	dema	0			oewn_form
@@ -3921,11 +3921,11 @@ laurel wreath	0	oewn-laurel_wreath-n	Number=Sing	dema	0			oewn_form
 laurel wreaths	0	oewn-laurel_wreath-n	Number=Plur	dema	0			rule
 laurel-tree	0	oewn-laurel-tree-n	Number=Sing	dema	0			oewn_form
 laurel-trees	0	oewn-laurel-tree-n	Number=Plur	dema	0			rule
-laureled	0	oewn-laureled-a	Degree=Pos	dema	0			oewn_form
-laureled	1		Tense=Past+VerbForm=Part	dema	0	laurel	v	moby_reverse
+laureled	0		Tense=Past+VerbForm=Part	dema	0	laurel	v	moby_reverse
+laureled	1	oewn-laureled-a	Degree=Pos	dema	0			oewn_form
 laureling	0		VerbForm=Ger	dema	0	laurel	v	moby_reverse
-laurelled	0	oewn-laurelled-a	Degree=Pos	dema	0			oewn_form
-laurelled	1		Tense=Past+VerbForm=Part	dema	0	laurel	v	moby_reverse
+laurelled	0		Tense=Past+VerbForm=Part	dema	0	laurel	v	moby_reverse
+laurelled	1	oewn-laurelled-a	Degree=Pos	dema	0			oewn_form
 laurelling	0		VerbForm=Ger	dema	0	laurel	v	moby_reverse
 laurels	0	oewn-laurel-n	Number=Plur	dema	0			rule
 laurels	1	oewn-laurels-n	Number=Sing	dema	0			oewn_form
@@ -5067,8 +5067,8 @@ leeringly	0		Degree=Pos	dema	0	leeringly	r	moby_reverse
 leers	0	oewn-leer-v	Person=3+Tense=Pres	dema	0			rule
 leers	1	oewn-leer-n	Number=Plur	dema	0			rule
 leery	0	oewn-leery-a	Degree=Pos	dema	0			oewn_form
-lees	0	oewn-lees-n	Number=Sing	dema	0			oewn_form
-lees	1	oewn-lee-n	Number=Plur	dema	0			rule
+lees	0	oewn-lee-n	Number=Plur	dema	0			rule
+lees	1	oewn-lees-n	Number=Sing	dema	0			oewn_form
 leet	0		Number=Sing	dema	0	leet	n	moby_reverse
 leets	0		Number=Plur	dema	0	leet	n	rule
 leeward	0	oewn-leeward-a	Degree=Pos	dema	0			oewn_form
@@ -5362,8 +5362,8 @@ legions	0	oewn-legion-n	Number=Plur	dema	0			rule
 legislate	0	oewn-legislate-v	VerbForm=Inf	dema	0			oewn_form
 legislated	0	oewn-legislate-v	Tense=Past+VerbForm=Part	dema	0			rule
 legislates	0	oewn-legislate-v	Person=3+Tense=Pres	dema	0			rule
-legislating	0	oewn-legislating-n	Number=Sing	dema	0			oewn_form
-legislating	1	oewn-legislate-v	VerbForm=Ger	dema	0			rule
+legislating	0	oewn-legislate-v	VerbForm=Ger	dema	0			rule
+legislating	1	oewn-legislating-n	Number=Sing	dema	0			oewn_form
 legislatings	0	oewn-legislating-n	Number=Plur	dema	0			rule
 legislation	0	oewn-legislation-n	Number=Sing	dema	0			oewn_form
 legislations	0	oewn-legislation-n	Number=Plur	dema	0			rule
@@ -5625,8 +5625,8 @@ lend-leases	0	oewn-lend-lease-n	Number=Plur	dema	0			rule
 lendable	0	oewn-lendable-a	Degree=Pos	dema	0			oewn_form
 lender	0	oewn-lender-n	Number=Sing	dema	0			oewn_form
 lenders	0	oewn-lender-n	Number=Plur	dema	0			rule
-lending	0	oewn-lending-n	Number=Sing	dema	0			oewn_form
-lending	1	oewn-lend-v	VerbForm=Ger	dema	0			rule
+lending	0	oewn-lend-v	VerbForm=Ger	dema	0			rule
+lending	1	oewn-lending-n	Number=Sing	dema	0			oewn_form
 lending institution	0	oewn-lending_institution-n	Number=Sing	dema	0			oewn_form
 lending institutions	0	oewn-lending_institution-n	Number=Plur	dema	0			rule
 lending libraries	0	oewn-lending_library-n	Number=Plur	dema	0			rule
@@ -6114,8 +6114,8 @@ letterman	0	oewn-letterman-n	Number=Sing	dema	0			oewn_form
 lettermen	0	oewn-letterman-n	Number=Plur	dema	0			agid
 letterpress	0	oewn-letterpress-n	Number=Sing	dema	0			oewn_form
 letterpresses	0	oewn-letterpress-n	Number=Plur	dema	0			rule
-letters	0	oewn-letters-n	Number=Sing	dema	0			oewn_form
-letters	1	oewn-letter-n	Number=Plur	dema	0			rule
+letters	0	oewn-letter-n	Number=Plur	dema	0			rule
+letters	1	oewn-letters-n	Number=Sing	dema	0			oewn_form
 letters	2	oewn-letter-v	Person=3+Tense=Pres	dema	0			rule
 letters bomb	0	oewn-letter_bomb-v	Person=3+Tense=Pres	dema	0			rule
 letters of administration	0	oewn-letters_of_administration-n	Number=Sing	dema	0			oewn_form
@@ -6137,8 +6137,8 @@ letterspace	0		VerbForm=Inf	dema	0	letterspace	v	moby_reverse
 letterspaced	0		Tense=Past+VerbForm=Part	dema	0	letterspace	v	rule
 letterspaces	0		Person=3+Tense=Pres	dema	0	letterspace	v	rule
 letterspacing	0		VerbForm=Ger	dema	0	letterspace	v	rule
-letting	0	oewn-letting-n	Number=Sing	dema	0			oewn_form
-letting	1	oewn-let-v	VerbForm=Ger	dema	0			oewn_form
+letting	0	oewn-let-v	VerbForm=Ger	dema	0			oewn_form
+letting	1	oewn-letting-n	Number=Sing	dema	0			oewn_form
 letting alone	0	oewn-let_alone-v	VerbForm=Ger	dema	0			rule
 letting down	0	oewn-letting_down-n	Number=Sing	dema	0			oewn_form
 letting down	1	oewn-let_down-v	VerbForm=Ger	dema	0			rule
@@ -7236,8 +7236,8 @@ lightenings	0	oewn-lightening-n	Number=Plur	dema	0			rule
 lightens	0	oewn-lighten-v	Person=3+Tense=Pres	dema	0			rule
 lightens up	0	oewn-lighten_up-v	Person=3+Tense=Pres	dema	0			rule
 lighter	0	oewn-lighter-n	Number=Sing	dema	0			oewn_form
-lighter	1	oewn-lighter-v	VerbForm=Inf	dema	0			oewn_form
-lighter	2	oewn-light-a	Degree=Cmp	dema	0			rule
+lighter	1	oewn-light-a	Degree=Cmp	dema	0			rule
+lighter	2	oewn-lighter-v	VerbForm=Inf	dema	0			oewn_form
 lighter-than-air	0	oewn-lighter-than-air-a	Degree=Pos	dema	0			oewn_form
 lighter-than-air craft	0	oewn-lighter-than-air_craft-n	Number=Sing	dema	0			oewn_form
 lighter-than-air crafts	0	oewn-lighter-than-air_craft-n	Number=Plur	dema	0			rule
@@ -7534,8 +7534,8 @@ limbernecks	0		Number=Plur	dema	0	limberneck	n	rule
 limberness	0		Number=Sing	dema	0	limberness	n	moby_reverse
 limbernesses	0		Number=Plur	dema	0	limberness	n	rule
 limbers	0	oewn-limber-n	Number=Plur	dema	0			rule
-limbers	1	oewn-limbers-n	Number=Sing	dema	0			oewn_form
-limbers	2	oewn-limber-v	Person=3+Tense=Pres	dema	0			rule
+limbers	1	oewn-limber-v	Person=3+Tense=Pres	dema	0			rule
+limbers	2	oewn-limbers-n	Number=Sing	dema	0			oewn_form
 limbers up	0	oewn-limber_up-v	Person=3+Tense=Pres	dema	0			rule
 limbi	0	oewn-limbus-n	Number=Plur	dema	0			oewn_form
 limbic	0	oewn-limbic-a	Degree=Pos	dema	0			oewn_form
@@ -7932,8 +7932,8 @@ lined up	0	oewn-line_up-v	Tense=Past+VerbForm=Part	dema	0			rule
 lineless	0		Degree=Pos	dema	0	lineless	a	moby_reverse
 linelike	0	oewn-linelike-a	Degree=Pos	dema	0			oewn_form
 lineman	0	oewn-lineman-n	Number=Sing	dema	0			oewn_form
-linemen	0	oewn-linemen-n	Number=Sing	dema	0			oewn_form
-linemen	1	oewn-lineman-n	Number=Plur	dema	0			agid
+linemen	0	oewn-lineman-n	Number=Plur	dema	0			agid
+linemen	1	oewn-linemen-n	Number=Sing	dema	0			oewn_form
 linemens	0	oewn-linemen-n	Number=Plur	dema	0			rule
 linen	0	oewn-linen-n	Number=Sing	dema	0			oewn_form
 linen paper	0	oewn-linen_paper-n	Number=Sing	dema	0			oewn_form
@@ -8622,8 +8622,8 @@ lit	1	oewn-lit-n	Number=Sing	dema	0			oewn_form
 lit	2	oewn-lit-a	Degree=Pos	dema	0			oewn_form
 lit crit	0	oewn-lit_crit-n	Number=Sing	dema	0			oewn_form
 lit crits	0	oewn-lit_crit-n	Number=Plur	dema	0			rule
-litai	0	oewn-lit-n	Number=Plur	dema	0			oewn_form
-litai	1	oewn-litas-n	Number=Plur	dema	0			oewn_form
+litai	0	oewn-litas-n	Number=Plur	dema	0			oewn_form
+litai	1	oewn-lit-n	Number=Plur	dema	0			oewn_form
 litanies	0	oewn-litany-n	Number=Plur	dema	0			rule
 litany	0	oewn-litany-n	Number=Sing	dema	0			oewn_form
 litas	0	oewn-litas-n	Number=Sing	dema	0			oewn_form
@@ -9054,8 +9054,8 @@ livebearers	0		Number=Plur	dema	0	livebearer	n	rule
 liveborn	0	oewn-liveborn-a	Degree=Pos	dema	0			oewn_form
 liveborn infant	0	oewn-liveborn_infant-n	Number=Sing	dema	0			oewn_form
 liveborn infants	0	oewn-liveborn_infant-n	Number=Plur	dema	0			rule
-lived	0		Degree=Pos	dema	0	lived	a	moby_reverse
-lived	1	oewn-live-v	Tense=Past+VerbForm=Part	dema	0			rule
+lived	0	oewn-live-v	Tense=Past+VerbForm=Part	dema	0			rule
+lived	1		Degree=Pos	dema	0	lived	a	moby_reverse
 lived down	0	oewn-live_down-v	Tense=Past+VerbForm=Part	dema	0			rule
 lived in	0	oewn-live_in-v	Tense=Past+VerbForm=Part	dema	0			rule
 lived it up	0	oewn-live_it_up-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -9167,9 +9167,9 @@ lividity	0	oewn-lividity-n	Number=Sing	dema	0			oewn_form
 lividly	0	oewn-lividly-r	Degree=Pos	dema	0			oewn_form
 lividness	0	oewn-lividness-n	Number=Sing	dema	0			oewn_form
 lividnesses	0	oewn-lividness-n	Number=Plur	dema	0			rule
-living	0	oewn-living-a	Degree=Pos	dema	0			oewn_form
-living	1	oewn-living-n	Number=Sing	dema	0			oewn_form
-living	2	oewn-live-v	VerbForm=Ger	dema	0			rule
+living	0	oewn-live-v	VerbForm=Ger	dema	0			rule
+living	1	oewn-living-a	Degree=Pos	dema	0			oewn_form
+living	2	oewn-living-n	Number=Sing	dema	0			oewn_form
 living accommodations	0	oewn-living_accommodations-n	Number=Sing	dema	0			oewn_form
 living arrangement	0	oewn-living_arrangement-n	Number=Sing	dema	0			oewn_form
 living arrangements	0	oewn-living_arrangement-n	Number=Plur	dema	0			rule
@@ -9295,10 +9295,10 @@ loading zone	0	oewn-loading_zone-n	Number=Sing	dema	0			oewn_form
 loading zones	0	oewn-loading_zone-n	Number=Plur	dema	0			rule
 loadings	0	oewn-loading-n	Number=Plur	dema	0			rule
 loadless	0		Degree=Pos	dema	0	loadless	a	moby_reverse
-loads	0	oewn-loads-n	Number=Sing	dema	0			oewn_form
-loads	1		Degree=Pos	dema	0	loads	r	moby_reverse
-loads	2	oewn-load-n	Number=Plur	dema	0			rule
-loads	3	oewn-load-v	Person=3+Tense=Pres	dema	0			rule
+loads	0	oewn-load-n	Number=Plur	dema	0			rule
+loads	1	oewn-loads-n	Number=Sing	dema	0			oewn_form
+loads	2	oewn-load-v	Person=3+Tense=Pres	dema	0			rule
+loads	3		Degree=Pos	dema	0	loads	r	moby_reverse
 loads down	0	oewn-load_down-v	Person=3+Tense=Pres	dema	0			rule
 loads up	0	oewn-load_up-v	Person=3+Tense=Pres	dema	0			rule
 loadstar	0	oewn-loadstar-n	Number=Sing	dema	0			oewn_form
@@ -9596,8 +9596,8 @@ located	1	oewn-located-a	Degree=Pos	dema	0			oewn_form
 locater	0	oewn-locater-n	Number=Sing	dema	0			oewn_form
 locaters	0	oewn-locater-n	Number=Plur	dema	0			rule
 locates	0	oewn-locate-v	Person=3+Tense=Pres	dema	0			rule
-locating	0	oewn-locating-n	Number=Sing	dema	0			oewn_form
-locating	1	oewn-locate-v	VerbForm=Ger	dema	0			rule
+locating	0	oewn-locate-v	VerbForm=Ger	dema	0			rule
+locating	1	oewn-locating-n	Number=Sing	dema	0			oewn_form
 locatings	0	oewn-locating-n	Number=Plur	dema	0			rule
 location	0	oewn-location-n	Number=Sing	dema	0			oewn_form
 locations	0	oewn-location-n	Number=Plur	dema	0			rule
@@ -9821,8 +9821,8 @@ lodging	1	oewn-lodge-v	VerbForm=Ger	dema	0			rule
 lodging house	0	oewn-lodging_house-n	Number=Sing	dema	0			oewn_form
 lodging houses	0	oewn-lodging_house-n	Number=Plur	dema	0			rule
 lodging in	0	oewn-lodge_in-v	VerbForm=Ger	dema	0			rule
-lodgings	0	oewn-lodgings-n	Number=Sing	dema	0			oewn_form
-lodgings	1	oewn-lodging-n	Number=Plur	dema	0			rule
+lodgings	0	oewn-lodging-n	Number=Plur	dema	0			rule
+lodgings	1	oewn-lodgings-n	Number=Sing	dema	0			oewn_form
 lodgment	0	oewn-lodgment-n	Number=Sing	dema	0			oewn_form
 lodgments	0	oewn-lodgment-n	Number=Plur	dema	0			rule
 lodicule	0		Number=Sing	dema	0	lodicule	n	moby_reverse
@@ -10085,8 +10085,8 @@ loin	0	oewn-loin-n	Number=Sing	dema	0			oewn_form
 loin of lamb	0	oewn-loin_of_lamb-n	Number=Sing	dema	0			oewn_form
 loincloth	0	oewn-loincloth-n	Number=Sing	dema	0			oewn_form
 loincloths	0	oewn-loincloth-n	Number=Plur	dema	0			rule
-loins	0	oewn-loins-n	Number=Sing	dema	0			oewn_form
-loins	1	oewn-loin-n	Number=Plur	dema	0			rule
+loins	0	oewn-loin-n	Number=Plur	dema	0			rule
+loins	1	oewn-loins-n	Number=Sing	dema	0			oewn_form
 loins of lamb	0	oewn-loin_of_lamb-n	Number=Plur	dema	0			rule
 loir	0	oewn-loir-n	Number=Sing	dema	0			oewn_form
 loirs	0	oewn-loir-n	Number=Plur	dema	0			rule
@@ -10417,8 +10417,8 @@ longness	0	oewn-longness-n	Number=Sing	dema	0			oewn_form
 longnesses	0	oewn-longness-n	Number=Plur	dema	0			rule
 longroot	0	oewn-longroot-n	Number=Sing	dema	0			oewn_form
 longroots	0	oewn-longroot-n	Number=Plur	dema	0			rule
-longs	0	oewn-long-v	Person=3+Tense=Pres	dema	0			rule
-longs	1		Number=Plur	dema	0	long	n	moby_reverse
+longs	0		Number=Plur	dema	0	long	n	moby_reverse
+longs	1	oewn-long-v	Person=3+Tense=Pres	dema	0			rule
 longship	0	oewn-longship-n	Number=Sing	dema	0			oewn_form
 longships	0	oewn-longship-n	Number=Plur	dema	0			rule
 longshore	0		Degree=Pos	dema	0	longshore	a	moby_reverse
@@ -10618,8 +10618,8 @@ loonie	0	oewn-loonie-n	Number=Sing	dema	0			oewn_form
 loonier	0	oewn-loony-a	Degree=Cmp	dema	0			oewn_form
 loonies	0		Degree=Pos	dema	0	loonies	a	moby_reverse
 loonies	1	oewn-looney-n	Number=Plur	dema	0			rule_variant
-loonies	2	oewn-loonie-n	Number=Plur	dema	0			rule
-loonies	3	oewn-loony-n	Number=Plur	dema	0			rule
+loonies	2	oewn-loony-n	Number=Plur	dema	0			rule
+loonies	3	oewn-loonie-n	Number=Plur	dema	0			rule
 looniest	0	oewn-loony-a	Degree=Sup	dema	0			oewn_form
 looniness	0		Number=Sing	dema	0	looniness	n	moby_reverse
 looninesses	0		Number=Plur	dema	0	looniness	n	rule
@@ -10708,8 +10708,8 @@ loosens up	0	oewn-loosen_up-v	Person=3+Tense=Pres	dema	0			rule
 looser	0	oewn-loose-a	Degree=Cmp	dema	0			moby_reverse
 looses	0	oewn-loose-v	Person=3+Tense=Pres	dema	0			rule
 looses off	0	oewn-loose_off-v	Person=3+Tense=Pres	dema	0			rule
-loosest	0		VerbForm=Inf	dema	0	loosest	v	moby_reverse
-loosest	1	oewn-loose-a	Degree=Sup	dema	0			moby_reverse
+loosest	0	oewn-loose-a	Degree=Sup	dema	0			moby_reverse
+loosest	1		VerbForm=Inf	dema	0	loosest	v	moby_reverse
 loosest	2	oewn-loose-r	Degree=Sup	dema	0			moby_reverse
 loosestrife	0	oewn-loosestrife-n	Number=Sing	dema	0			oewn_form
 loosestrifes	0	oewn-loosestrife-n	Number=Plur	dema	0			rule
@@ -10868,8 +10868,8 @@ loses it	0	oewn-lose_it-v	Person=3+Tense=Pres	dema	0			rule
 loses one's temper	0	oewn-lose_one-ap-s_temper-v	Person=3+Tense=Pres	dema	0			rule
 loses sight of	0	oewn-lose_sight_of-v	Person=3+Tense=Pres	dema	0			rule
 loses track	0	oewn-lose_track-v	Person=3+Tense=Pres	dema	0			rule
-losing	0		Degree=Pos	dema	0	losing	a	moby_reverse
-losing	1	oewn-lose-v	VerbForm=Ger	dema	0			rule
+losing	0	oewn-lose-v	VerbForm=Ger	dema	0			rule
+losing	1		Degree=Pos	dema	0	losing	a	moby_reverse
 losing it	0	oewn-lose_it-v	VerbForm=Ger	dema	0			rule
 losing one's temper	0	oewn-lose_one-ap-s_temper-v	VerbForm=Ger	dema	0			rule
 losing sight of	0	oewn-lose_sight_of-v	VerbForm=Ger	dema	0			rule
@@ -10918,8 +10918,8 @@ lotions	0	oewn-lotion-n	Number=Plur	dema	0			rule
 lotophagi	0		Number=Sing	dema	0	lotophagi	n	moby_reverse
 lotophagis	0		Number=Plur	dema	0	lotophagi	n	rule
 lots	0	oewn-lots-n	Number=Sing	dema	0			oewn_form
-lots	1	oewn-lots-r	Degree=Pos	dema	0			oewn_form
-lots	2	oewn-lot-n	Number=Plur	dema	0			rule
+lots	1	oewn-lot-n	Number=Plur	dema	0			rule
+lots	2	oewn-lots-r	Degree=Pos	dema	0			oewn_form
 lots	3	oewn-lot-v	Person=3+Tense=Pres	dema	0			rule
 lotte	0	oewn-lotte-n	Number=Sing	dema	0			oewn_form
 lotted	0		Number=Sing	dema	0	lotted	n	moby_reverse
@@ -11039,8 +11039,8 @@ loups	0		Number=Plur	dema	0	loup	n	rule
 loups-garous	0	oewn-loup-garou-n	Number=Plur	dema	0			oewn_form
 lour	0	oewn-lour-v	VerbForm=Inf	dema	0			oewn_form
 loured	0	oewn-lour-v	Tense=Past+VerbForm=Part	dema	0			rule
-louring	0		Degree=Pos	dema	0	louring	a	moby_reverse
-louring	1	oewn-lour-v	VerbForm=Ger	dema	0			rule
+louring	0	oewn-lour-v	VerbForm=Ger	dema	0			rule
+louring	1		Degree=Pos	dema	0	louring	a	moby_reverse
 louringly	0		Degree=Pos	dema	0	louringly	r	moby_reverse
 louringness	0		Number=Sing	dema	0	louringness	n	moby_reverse
 lours	0	oewn-lour-v	Person=3+Tense=Pres	dema	0			rule
@@ -11202,8 +11202,8 @@ lovesicknesses	0	oewn-lovesickness-n	Number=Plur	dema	0			rule
 lovesome	0	oewn-lovesome-a	Degree=Pos	dema	0			oewn_form
 lovey	0		Number=Sing	dema	0	lovey	n	moby_reverse
 loveys	0		Number=Plur	dema	0	lovey	n	rule
-loving	0	oewn-loving-a	Degree=Pos	dema	0			oewn_form
-loving	1	oewn-love-v	VerbForm=Ger	dema	0			rule
+loving	0	oewn-love-v	VerbForm=Ger	dema	0			rule
+loving	1	oewn-loving-a	Degree=Pos	dema	0			oewn_form
 loving cup	0	oewn-loving_cup-n	Number=Sing	dema	0			oewn_form
 loving cups	0	oewn-loving_cup-n	Number=Plur	dema	0			rule
 loving-kindness	0	oewn-loving-kindness-n	Number=Sing	dema	0			oewn_form
@@ -11349,14 +11349,14 @@ lowbush cranberry	0	oewn-lowbush_cranberry-n	Number=Sing	dema	0			oewn_form
 lowbush penstemon	0	oewn-lowbush_penstemon-n	Number=Sing	dema	0			oewn_form
 lowbush penstemons	0	oewn-lowbush_penstemon-n	Number=Plur	dema	0			rule
 lowe	0		VerbForm=Inf	dema	0	lowe	v	moby_reverse
-lowed	0	oewn-low-v	Tense=Past+VerbForm=Part	dema	0			rule
-lowed	1		Tense=Past+VerbForm=Part	dema	0	lowe	v	rule
-lower	0	oewn-lower-a	Degree=Pos	dema	0			oewn_form
-lower	1	oewn-lower-v-1	VerbForm=Inf	dema	0			oewn_form
-lower	2	oewn-lower-v-2	VerbForm=Inf	dema	0			oewn_form
-lower	3	oewn-lower-n	Number=Sing	dema	0			oewn_form
-lower	4	oewn-low-a	Degree=Cmp	dema	0			rule
-lower	5	oewn-low-r	Degree=Cmp	dema	0			rule
+lowed	0		Tense=Past+VerbForm=Part	dema	0	lowe	v	rule
+lowed	1	oewn-low-v	Tense=Past+VerbForm=Part	dema	0			rule
+lower	0	oewn-low-a	Degree=Cmp	dema	0			rule
+lower	1	oewn-lower-a	Degree=Pos	dema	0			oewn_form
+lower	2	oewn-lower-v-1	VerbForm=Inf	dema	0			oewn_form
+lower	3	oewn-lower-v-2	VerbForm=Inf	dema	0			oewn_form
+lower	4	oewn-low-r	Degree=Cmp	dema	0			rule
+lower	5	oewn-lower-n	Number=Sing	dema	0			oewn_form
 lower berth	0	oewn-lower_berth-n	Number=Sing	dema	0			oewn_form
 lower berths	0	oewn-lower_berth-n	Number=Plur	dema	0			rule
 lower bound	0	oewn-lower_bound-n	Number=Sing	dema	0			oewn_form
@@ -11407,16 +11407,16 @@ lowered	1	oewn-lower-v-2	Tense=Past+VerbForm=Part	dema	0			rule
 lowered	2	oewn-lowered-a	Degree=Pos	dema	0			oewn_form
 lowered oneself	0	oewn-lower_oneself-v	Tense=Past+VerbForm=Part	dema	0			rule
 lowering	0	oewn-lowering-a	Degree=Pos	dema	0			oewn_form
-lowering	1	oewn-lowering-n	Number=Sing	dema	0			oewn_form
-lowering	2	oewn-lower-v-1	VerbForm=Ger	dema	0			rule
-lowering	3	oewn-lower-v-2	VerbForm=Ger	dema	0			rule
+lowering	1	oewn-lower-v-1	VerbForm=Ger	dema	0			rule
+lowering	2	oewn-lower-v-2	VerbForm=Ger	dema	0			rule
+lowering	3	oewn-lowering-n	Number=Sing	dema	0			oewn_form
 lowering oneself	0	oewn-lower_oneself-v	VerbForm=Ger	dema	0			rule
 loweringly	0	oewn-loweringly-r	Degree=Pos	dema	0			oewn_form
 lowerings	0	oewn-lowering-n	Number=Plur	dema	0			rule
 lowermost	0	oewn-lowermost-a	Degree=Pos	dema	0			oewn_form
-lowers	0	oewn-lower-n	Number=Plur	dema	0			rule
-lowers	1	oewn-lower-v-1	Person=3+Tense=Pres	dema	0			rule
-lowers	2	oewn-lower-v-2	Person=3+Tense=Pres	dema	0			rule
+lowers	0	oewn-lower-v-1	Person=3+Tense=Pres	dema	0			rule
+lowers	1	oewn-lower-v-2	Person=3+Tense=Pres	dema	0			rule
+lowers	2	oewn-lower-n	Number=Plur	dema	0			rule
 lowers oneself	0	oewn-lower_oneself-v	Person=3+Tense=Pres	dema	0			rule
 lowery	0		Degree=Pos	dema	0	lowery	a	moby_reverse
 lowes	0		Person=3+Tense=Pres	dema	0	lowe	v	rule
@@ -11426,8 +11426,8 @@ lowest	2	oewn-lowest-a	Degree=Pos	dema	0			oewn_form
 lowest	3	oewn-lowest-r	Degree=Pos	dema	0			oewn_form
 lowest common multiple	0	oewn-lowest_common_multiple-n	Number=Sing	dema	0			oewn_form
 lowest common multiples	0	oewn-lowest_common_multiple-n	Number=Plur	dema	0			rule
-lowing	0	oewn-low-v	VerbForm=Ger	dema	0			rule
-lowing	1		VerbForm=Ger	dema	0	lowe	v	rule
+lowing	0		VerbForm=Ger	dema	0	lowe	v	rule
+lowing	1	oewn-low-v	VerbForm=Ger	dema	0			rule
 lowish	0		Degree=Pos	dema	0	lowish	a	moby_reverse
 lowland	0	oewn-lowland-n	Number=Sing	dema	0			oewn_form
 lowland	1	oewn-lowland-a	Degree=Pos	dema	0			oewn_form
@@ -11768,8 +11768,8 @@ lumbered	0	oewn-lumber-v	Tense=Past+VerbForm=Part	dema	0			rule
 lumberer	0		Number=Sing	dema	0	lumberer	n	moby_reverse
 lumberers	0		Number=Plur	dema	0	lumberer	n	rule
 lumbering	0	oewn-lumbering-n	Number=Sing	dema	0			oewn_form
-lumbering	1	oewn-lumbering-a	Degree=Pos	dema	0			oewn_form
-lumbering	2	oewn-lumber-v	VerbForm=Ger	dema	0			rule
+lumbering	1	oewn-lumber-v	VerbForm=Ger	dema	0			rule
+lumbering	2	oewn-lumbering-a	Degree=Pos	dema	0			oewn_form
 lumberingly	0		Degree=Pos	dema	0	lumberingly	r	moby_reverse
 lumberingness	0		Number=Sing	dema	0	lumberingness	n	moby_reverse
 lumberings	0	oewn-lumbering-n	Number=Plur	dema	0			rule
@@ -12339,8 +12339,8 @@ lygaeid bugs	0	oewn-lygaeid_bug-n	Number=Plur	dema	0			rule
 lygaeids	0	oewn-lygaeid-n	Number=Plur	dema	0			rule
 lygus bug	0	oewn-lygus_bug-n	Number=Sing	dema	0			oewn_form
 lygus bugs	0	oewn-lygus_bug-n	Number=Plur	dema	0			rule
-lying	0	oewn-lying-n	Number=Sing	dema	0			oewn_form
-lying	1	oewn-lie-v	VerbForm=Ger	dema	0			oewn_form
+lying	0	oewn-lie-v	VerbForm=Ger	dema	0			oewn_form
+lying	1	oewn-lying-n	Number=Sing	dema	0			oewn_form
 lying in wait	0	oewn-lying_in_wait-n	Number=Sing	dema	0			oewn_form
 lying under oath	0	oewn-lying_under_oath-n	Number=Sing	dema	0			oewn_form
 lying under oaths	0	oewn-lying_under_oath-n	Number=Plur	dema	0			rule
@@ -12553,8 +12553,8 @@ lysergic acid	0	oewn-lysergic_acid-n	Number=Sing	dema	0			oewn_form
 lysergic acid diethylamide	0	oewn-lysergic_acid_diethylamide-n	Number=Sing	dema	0			oewn_form
 lysergic acid diethylamides	0	oewn-lysergic_acid_diethylamide-n	Number=Plur	dema	0			rule
 lysergic acids	0	oewn-lysergic_acid-n	Number=Plur	dema	0			rule
-lyses	0		Person=3+Tense=Pres	dema	0	lyse	v	rule
-lyses	1	oewn-lysis-n	Number=Plur	dema	0			oewn_form
+lyses	0	oewn-lysis-n	Number=Plur	dema	0			oewn_form
+lyses	1		Person=3+Tense=Pres	dema	0	lyse	v	rule
 lysimeter	0		Number=Sing	dema	0	lysimeter	n	moby_reverse
 lysimeters	0		Number=Plur	dema	0	lysimeter	n	rule
 lysin	0	oewn-lysin-n	Number=Sing	dema	0			oewn_form

@@ -12,8 +12,8 @@ ANGS	0	oewn-ANG-n	Capitalization=Upper+Number=Plur	dema	0			rule
 ANOVA	0	oewn-ANOVA-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 ANOVAS	0	oewn-ANOVA-n	Capitalization=Upper+Number=Plur	dema	0			rule
 ANS	0	oewn-AN-n	Number=Plur	dema	0			moby_reverse
-ANS	1	oewn-AN-n	Capitalization=Upper+Number=Plur	dema	0			rule
-ANS	2	oewn-ANS-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+ANS	1	oewn-ANS-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+ANS	2	oewn-AN-n	Capitalization=Upper+Number=Plur	dema	0			rule
 Anabaptism	0	oewn-Anabaptism-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Anabaptisms	0	oewn-Anabaptism-n	Capitalization=Title+Number=Plur	dema	0			rule
 Anabaptist	0	oewn-Anabaptist-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
@@ -984,8 +984,8 @@ anconas	0		Number=Plur	dema	0	ancona	n	rule
 ancone	0		Number=Sing	dema	0	ancone	n	moby_reverse
 anconeous muscle	0	oewn-anconeous_muscle-n	Number=Sing	dema	0			oewn_form
 anconeous muscles	0	oewn-anconeous_muscle-n	Number=Plur	dema	0			rule
-ancones	0		Number=Sing	dema	0	ancones	n	moby_reverse
-ancones	1		Number=Plur	dema	0	ancone	n	rule
+ancones	0		Number=Plur	dema	0	ancone	n	rule
+ancones	1		Number=Sing	dema	0	ancones	n	moby_reverse
 anconoid	0		Degree=Pos	dema	0	anconoid	a	moby_reverse
 ancons	0		Number=Plur	dema	0	ancon	n	rule
 ancylose	0	oewn-ancylose-v	VerbForm=Inf	dema	0			oewn_form
@@ -1696,8 +1696,8 @@ animate being	0	oewn-animate_being-n	Number=Sing	dema	0			oewn_form
 animate beings	0	oewn-animate_being-n	Number=Plur	dema	0			rule
 animate thing	0	oewn-animate_thing-n	Number=Sing	dema	0			oewn_form
 animate things	0	oewn-animate_thing-n	Number=Plur	dema	0			rule
-animated	0	oewn-animated-a	Degree=Pos	dema	0			oewn_form
-animated	1	oewn-animate-v	Tense=Past+VerbForm=Part	dema	0			rule
+animated	0	oewn-animate-v	Tense=Past+VerbForm=Part	dema	0			rule
+animated	1	oewn-animated-a	Degree=Pos	dema	0			oewn_form
 animated cartoon	0	oewn-animated_cartoon-n	Number=Sing	dema	0			oewn_form
 animated cartoons	0	oewn-animated_cartoon-n	Number=Plur	dema	0			rule
 animated oat	0	oewn-animated_oat-n	Number=Sing	dema	0			oewn_form
@@ -1953,8 +1953,8 @@ annot	0		Number=Sing	dema	0	annot	n	moby_reverse
 annotate	0	oewn-annotate-v	VerbForm=Inf	dema	0			oewn_form
 annotated	0	oewn-annotate-v	Tense=Past+VerbForm=Part	dema	0			rule
 annotates	0	oewn-annotate-v	Person=3+Tense=Pres	dema	0			rule
-annotating	0	oewn-annotating-n	Number=Sing	dema	0			oewn_form
-annotating	1	oewn-annotate-v	VerbForm=Ger	dema	0			rule
+annotating	0	oewn-annotate-v	VerbForm=Ger	dema	0			rule
+annotating	1	oewn-annotating-n	Number=Sing	dema	0			oewn_form
 annotatings	0	oewn-annotating-n	Number=Plur	dema	0			rule
 annotation	0	oewn-annotation-n	Number=Sing	dema	0			oewn_form
 annotations	0	oewn-annotation-n	Number=Plur	dema	0			rule
@@ -1982,9 +1982,9 @@ annoyed	0	oewn-annoy-v	Tense=Past+VerbForm=Part	dema	0			rule
 annoyed	1	oewn-annoyed-a	Degree=Pos	dema	0			oewn_form
 annoyer	0	oewn-annoyer-n	Number=Sing	dema	0			oewn_form
 annoyers	0	oewn-annoyer-n	Number=Plur	dema	0			rule
-annoying	0	oewn-annoying-a	Degree=Pos	dema	0			oewn_form
-annoying	1	oewn-annoying-n	Number=Sing	dema	0			oewn_form
-annoying	2	oewn-annoy-v	VerbForm=Ger	dema	0			rule
+annoying	0	oewn-annoy-v	VerbForm=Ger	dema	0			rule
+annoying	1	oewn-annoying-a	Degree=Pos	dema	0			oewn_form
+annoying	2	oewn-annoying-n	Number=Sing	dema	0			oewn_form
 annoyingly	0	oewn-annoyingly-r	Degree=Pos	dema	0			oewn_form
 annoyingness	0		Number=Sing	dema	0	annoyingness	n	moby_reverse
 annoyings	0	oewn-annoying-n	Number=Plur	dema	0			rule
@@ -3827,8 +3827,8 @@ antipodals	0	oewn-antipodal-n	Number=Plur	dema	0			rule
 antipode	0	oewn-antipode-n	Number=Sing	dema	0			oewn_form
 antipodean	0	oewn-antipodean-a	Degree=Pos	dema	0			oewn_form
 antipodean	1		Number=Sing	dema	0	antipodean	n	moby_reverse
-antipodes	0	oewn-antipodes-n	Number=Sing	dema	0			oewn_form
-antipodes	1	oewn-antipode-n	Number=Plur	dema	0			rule
+antipodes	0	oewn-antipode-n	Number=Plur	dema	0			rule
+antipodes	1	oewn-antipodes-n	Number=Sing	dema	0			oewn_form
 antipoetic	0		Degree=Pos	dema	0	antipoetic	a	moby_reverse
 antipoetical	0		Degree=Pos	dema	0	antipoetical	a	moby_reverse
 antipoetically	0		Degree=Pos	dema	0	antipoetically	r	moby_reverse
@@ -3919,8 +3919,8 @@ antiquark	0	oewn-antiquark-n	Number=Sing	dema	0			oewn_form
 antiquarks	0	oewn-antiquark-n	Number=Plur	dema	0			rule
 antiquary	0	oewn-antiquary-n	Number=Sing	dema	0			oewn_form
 antiquate	0	oewn-antiquate-v	VerbForm=Inf	dema	0			oewn_form
-antiquated	0	oewn-antiquated-a	Degree=Pos	dema	0			oewn_form
-antiquated	1	oewn-antiquate-v	Tense=Past+VerbForm=Part	dema	0			rule
+antiquated	0	oewn-antiquate-v	Tense=Past+VerbForm=Part	dema	0			rule
+antiquated	1	oewn-antiquated-a	Degree=Pos	dema	0			oewn_form
 antiquatedness	0	oewn-antiquatedness-n	Number=Sing	dema	0			oewn_form
 antiquatednesses	0	oewn-antiquatedness-n	Number=Plur	dema	0			rule
 antiquates	0	oewn-antiquate-v	Person=3+Tense=Pres	dema	0			rule
@@ -4253,8 +4253,8 @@ antitrade	0	oewn-antitrade-n	Number=Sing	dema	0			oewn_form
 antitrade	1		Degree=Pos	dema	0	antitrade	a	moby_reverse
 antitrade wind	0	oewn-antitrade_wind-n	Number=Sing	dema	0			oewn_form
 antitrade winds	0	oewn-antitrade_wind-n	Number=Plur	dema	0			rule
-antitrades	0	oewn-antitrades-n	Number=Sing	dema	0			oewn_form
-antitrades	1	oewn-antitrade-n	Number=Plur	dema	0			rule
+antitrades	0	oewn-antitrade-n	Number=Plur	dema	0			rule
+antitrades	1	oewn-antitrades-n	Number=Sing	dema	0			oewn_form
 antitradition	0		Degree=Pos	dema	0	antitradition	a	moby_reverse
 antitraditional	0		Degree=Pos	dema	0	antitraditional	a	moby_reverse
 antitraditionalist	0		Number=Sing	dema	0	antitraditionalist	n	moby_reverse

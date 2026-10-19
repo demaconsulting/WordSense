@@ -32,7 +32,8 @@ definitions and links, `dc:source` and `Form`.
 #### Error Handling
 
 A wrong hash, malformed XML, no lexicon, an unknown relation type, a satellite without head, a missing referenced
-synset or existing tables without `overwrite` throws before any file is written.
+synset, a previous release in which two current senses derive the same key, or existing tables without `overwrite`
+throws before any file is written.
 
 #### Dependencies
 

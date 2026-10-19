@@ -412,8 +412,8 @@ baaed	0	oewn-baa-v	Tense=Past+VerbForm=Part	dema	0			rule
 baaing	0	oewn-baa-v	VerbForm=Ger	dema	0			rule
 baal	0		Degree=Pos	dema	0	baal	r	moby_reverse
 baas	0	oewn-baas-n	Number=Sing	dema	0			oewn_form
-baas	1	oewn-baa-n	Number=Plur	dema	0			rule
-baas	2	oewn-baa-v	Person=3+Tense=Pres	dema	0			rule
+baas	1	oewn-baa-v	Person=3+Tense=Pres	dema	0			rule
+baas	2	oewn-baa-n	Number=Plur	dema	0			rule
 baases	0	oewn-baas-n	Number=Plur	dema	0			rule
 baaskap	0		Number=Sing	dema	0	baaskap	n	moby_reverse
 baaskaps	0		Number=Plur	dema	0	baaskap	n	rule
@@ -451,8 +451,8 @@ babblers	0	oewn-babbler-n	Number=Plur	dema	0			rule
 babbles	0	oewn-babble-v	Person=3+Tense=Pres	dema	0			rule
 babbles	1	oewn-babble-n	Number=Plur	dema	0			rule
 babbles out	0	oewn-babble_out-v	Person=3+Tense=Pres	dema	0			rule
-babbling	0	oewn-babbling-n	Number=Sing	dema	0			oewn_form
-babbling	1	oewn-babble-v	VerbForm=Ger	dema	0			rule
+babbling	0	oewn-babble-v	VerbForm=Ger	dema	0			rule
+babbling	1	oewn-babbling-n	Number=Sing	dema	0			oewn_form
 babbling out	0	oewn-babble_out-v	VerbForm=Ger	dema	0			rule
 babblingly	0		Degree=Pos	dema	0	babblingly	r	moby_reverse
 babblings	0	oewn-babbling-n	Number=Plur	dema	0			rule
@@ -607,8 +607,8 @@ bacchanalias	0	oewn-bacchanalia-n	Number=Plur	dema	0			rule_variant
 bacchanals	0	oewn-bacchanal-n	Number=Plur	dema	0			rule
 bacchant	0	oewn-bacchant-n	Number=Sing	dema	0			oewn_form
 bacchante	0	oewn-bacchante-n	Number=Sing	dema	0			oewn_form
-bacchantes	0	oewn-bacchante-n	Number=Plur	dema	0			oewn_form
-bacchantes	1	oewn-bacchant-n	Number=Plur	dema	0			oewn_form
+bacchantes	0	oewn-bacchant-n	Number=Plur	dema	0			oewn_form
+bacchantes	1	oewn-bacchante-n	Number=Plur	dema	0			oewn_form
 bacchantic	0	oewn-bacchantic-a	Degree=Pos	dema	0			oewn_form
 bacchants	0	oewn-bacchant-n	Number=Plur	dema	0			rule_variant
 bacchic	0	oewn-bacchic-a	Degree=Pos	dema	0			oewn_form
@@ -983,8 +983,8 @@ backslide	0	oewn-backslide-v	VerbForm=Inf	dema	0			oewn_form
 backslider	0	oewn-backslider-n	Number=Sing	dema	0			oewn_form
 backsliders	0	oewn-backslider-n	Number=Plur	dema	0			rule
 backslides	0	oewn-backslide-v	Person=3+Tense=Pres	dema	0			rule
-backsliding	0	oewn-backsliding-n	Number=Sing	dema	0			oewn_form
-backsliding	1	oewn-backslide-v	VerbForm=Ger	dema	0			rule
+backsliding	0	oewn-backslide-v	VerbForm=Ger	dema	0			rule
+backsliding	1	oewn-backsliding-n	Number=Sing	dema	0			oewn_form
 backslidings	0	oewn-backsliding-n	Number=Plur	dema	0			rule
 backspace	0	oewn-backspace-v	VerbForm=Inf	dema	0			oewn_form
 backspace	1	oewn-backspace-n	Number=Sing	dema	0			oewn_form
@@ -1325,8 +1325,8 @@ baffle	0	oewn-baffle-v	VerbForm=Inf	dema	0			oewn_form
 baffle	1	oewn-baffle-n	Number=Sing	dema	0			oewn_form
 baffle board	0	oewn-baffle_board-n	Number=Sing	dema	0			oewn_form
 baffle boards	0	oewn-baffle_board-n	Number=Plur	dema	0			rule
-baffled	0	oewn-baffled-n	Number=Sing	dema	0			oewn_form
-baffled	1	oewn-baffle-v	Tense=Past+VerbForm=Part	dema	0			rule
+baffled	0	oewn-baffle-v	Tense=Past+VerbForm=Part	dema	0			rule
+baffled	1	oewn-baffled-n	Number=Sing	dema	0			oewn_form
 baffled	2	oewn-baffled-a	Degree=Pos	dema	0			oewn_form
 baffleds	0	oewn-baffled-n	Number=Plur	dema	0			rule
 bafflement	0	oewn-bafflement-n	Number=Sing	dema	0			oewn_form
@@ -1337,8 +1337,8 @@ baffler	0		Number=Sing	dema	0	baffler	n	moby_reverse
 bafflers	0		Number=Plur	dema	0	baffler	n	rule
 baffles	0	oewn-baffle-v	Person=3+Tense=Pres	dema	0			rule
 baffles	1	oewn-baffle-n	Number=Plur	dema	0			rule
-baffling	0	oewn-baffling-a	Degree=Pos	dema	0			oewn_form
-baffling	1	oewn-baffle-v	VerbForm=Ger	dema	0			rule
+baffling	0	oewn-baffle-v	VerbForm=Ger	dema	0			rule
+baffling	1	oewn-baffling-a	Degree=Pos	dema	0			oewn_form
 bafflingly	0		Degree=Pos	dema	0	bafflingly	r	moby_reverse
 bafflingness	0		Number=Sing	dema	0	bafflingness	n	moby_reverse
 baffs	0		Person=3+Tense=Pres	dema	0	baff	v	rule
@@ -1410,9 +1410,9 @@ bagpiper	0	oewn-bagpiper-n	Number=Sing	dema	0			oewn_form
 bagpipers	0	oewn-bagpiper-n	Number=Plur	dema	0			rule
 bagpipes	0	oewn-bagpipe-n	Number=Plur	dema	0			rule
 bagpiping	0		VerbForm=Inf	dema	0	bagpiping	v	moby_reverse
-bags	0	dema-bags-i		dema	0			carried
-bags	1	oewn-bag-n	Number=Plur	dema	0			rule
-bags	2	oewn-bag-v	Person=3+Tense=Pres	dema	0			rule
+bags	0	oewn-bag-n	Number=Plur	dema	0			rule
+bags	1	oewn-bag-v	Person=3+Tense=Pres	dema	0			rule
+bags	2	dema-bags-i		dema	0			carried
 bags of tricks	0	oewn-bag_of_tricks-n	Number=Plur	dema	0			rule
 bagsful	0	oewn-bagful-n	Number=Plur	dema	0			rule_variant
 baguet	0	oewn-baguet-n	Number=Sing	dema	0			oewn_form
@@ -1631,8 +1631,8 @@ balances of international payments	0	oewn-balance_of_international_payments-n	Nu
 balances of payments	0	oewn-balance_of_payments-n	Number=Plur	dema	0			rule
 balances of power	0	oewn-balance_of_power-n	Number=Plur	dema	0			rule
 balances of trade	0	oewn-balance_of_trade-n	Number=Plur	dema	0			rule
-balancing	0	oewn-balancing-n	Number=Sing	dema	0			oewn_form
-balancing	1	oewn-balance-v	VerbForm=Ger	dema	0			rule
+balancing	0	oewn-balance-v	VerbForm=Ger	dema	0			rule
+balancing	1	oewn-balancing-n	Number=Sing	dema	0			oewn_form
 balancings	0	oewn-balancing-n	Number=Plur	dema	0			rule
 balanitis	0	oewn-balanitis-n	Number=Sing	dema	0			oewn_form
 balanoposthitis	0	oewn-balanoposthitis-n	Number=Sing	dema	0			oewn_form
@@ -1969,8 +1969,8 @@ ballotades	0		Number=Plur	dema	0	ballotade	n	rule
 balloted	0	oewn-ballot-v	Tense=Past+VerbForm=Part	dema	0			rule
 balloter	0		Number=Sing	dema	0	balloter	n	moby_reverse
 balloters	0		Number=Plur	dema	0	balloter	n	rule
-balloting	0	oewn-balloting-n	Number=Sing	dema	0			oewn_form
-balloting	1	oewn-ballot-v	VerbForm=Ger	dema	0			rule
+balloting	0	oewn-ballot-v	VerbForm=Ger	dema	0			rule
+balloting	1	oewn-balloting-n	Number=Sing	dema	0			oewn_form
 ballotings	0	oewn-balloting-n	Number=Plur	dema	0			rule
 ballots	0	oewn-ballot-n	Number=Plur	dema	0			rule
 ballots	1	oewn-ballot-v	Person=3+Tense=Pres	dema	0			rule
@@ -1996,9 +1996,9 @@ ballroom dancings	0	oewn-ballroom_dancing-n	Number=Plur	dema	0			rule
 ballroom music	0	oewn-ballroom_music-n	Number=Sing	dema	0			oewn_form
 ballroom musics	0	oewn-ballroom_music-n	Number=Plur	dema	0			rule
 ballrooms	0	oewn-ballroom-n	Number=Plur	dema	0			rule
-balls	0	dema-balls-i		dema	0			carried
-balls	1	oewn-ball-n	Number=Plur	dema	0			rule
-balls	2	oewn-ball-v	Person=3+Tense=Pres	dema	0			rule
+balls	0	oewn-ball-n	Number=Plur	dema	0			rule
+balls	1	oewn-ball-v	Person=3+Tense=Pres	dema	0			rule
+balls	2	dema-balls-i		dema	0			carried
 balls of fire	0	oewn-ball_of_fire-n	Number=Plur	dema	0			rule
 balls over	0	oewn-ball_over-v	Person=3+Tense=Pres	dema	0			rule
 balls up	0	oewn-ball_up-v	Person=3+Tense=Pres	dema	0			rule
@@ -2164,8 +2164,8 @@ banana tree	0	oewn-banana_tree-n	Number=Sing	dema	0			oewn_form
 banana trees	0	oewn-banana_tree-n	Number=Plur	dema	0			rule
 bananaquit	0		Number=Sing	dema	0	bananaquit	n	moby_reverse
 bananaquits	0		Number=Plur	dema	0	bananaquit	n	rule
-bananas	0		Degree=Pos	dema	0	bananas	a	moby_reverse
-bananas	1	oewn-banana-n	Number=Plur	dema	0			rule
+bananas	0	oewn-banana-n	Number=Plur	dema	0			rule
+bananas	1		Degree=Pos	dema	0	bananas	a	moby_reverse
 banat	0		Number=Sing	dema	0	banat	n	moby_reverse
 banats	0		Number=Plur	dema	0	banat	n	rule
 banausic	0	oewn-banausic-a	Degree=Pos	dema	0			oewn_form
@@ -2193,8 +2193,8 @@ bandager	0		Number=Sing	dema	0	bandager	n	moby_reverse
 bandagers	0		Number=Plur	dema	0	bandager	n	rule
 bandages	0	oewn-bandage-n	Number=Plur	dema	0			rule
 bandages	1	oewn-bandage-v	Person=3+Tense=Pres	dema	0			rule
-bandaging	0	oewn-bandaging-n	Number=Sing	dema	0			oewn_form
-bandaging	1	oewn-bandage-v	VerbForm=Ger	dema	0			rule
+bandaging	0	oewn-bandage-v	VerbForm=Ger	dema	0			rule
+bandaging	1	oewn-bandaging-n	Number=Sing	dema	0			oewn_form
 bandagings	0	oewn-bandaging-n	Number=Plur	dema	0			rule
 bandana	0	oewn-bandana-n	Number=Sing	dema	0			oewn_form
 bandanaed	0		Degree=Pos	dema	0	bandanaed	a	moby_reverse
@@ -2577,8 +2577,8 @@ banquet songs	0	oewn-banquet_song-n	Number=Plur	dema	0			rule
 banqueted	0	oewn-banquet-v	Tense=Past+VerbForm=Part	dema	0			rule
 banqueter	0		Number=Sing	dema	0	banqueter	n	moby_reverse
 banqueters	0		Number=Plur	dema	0	banqueter	n	rule
-banqueting	0	oewn-banqueting-n	Number=Sing	dema	0			oewn_form
-banqueting	1	oewn-banquet-v	VerbForm=Ger	dema	0			rule
+banqueting	0	oewn-banquet-v	VerbForm=Ger	dema	0			rule
+banqueting	1	oewn-banqueting-n	Number=Sing	dema	0			oewn_form
 banquetings	0	oewn-banqueting-n	Number=Plur	dema	0			rule
 banquets	0	oewn-banquet-n	Number=Plur	dema	0			rule
 banquets	1	oewn-banquet-v	Person=3+Tense=Pres	dema	0			rule
@@ -2770,8 +2770,8 @@ barbecued wing	0	oewn-barbecued_wing-n	Number=Sing	dema	0			oewn_form
 barbecued wings	0	oewn-barbecued_wing-n	Number=Plur	dema	0			rule
 barbecues	0	oewn-barbecue-n	Number=Plur	dema	0			rule
 barbecues	1	oewn-barbecue-v	Person=3+Tense=Pres	dema	0			rule
-barbecuing	0	oewn-barbecuing-n	Number=Sing	dema	0			oewn_form
-barbecuing	1	oewn-barbecue-v	VerbForm=Ger	dema	0			rule
+barbecuing	0	oewn-barbecue-v	VerbForm=Ger	dema	0			rule
+barbecuing	1	oewn-barbecuing-n	Number=Sing	dema	0			oewn_form
 barbecuings	0	oewn-barbecuing-n	Number=Plur	dema	0			rule
 barbed	0	oewn-barbed-a	Degree=Pos	dema	0			oewn_form
 barbed	1	oewn-barb-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -3006,8 +3006,8 @@ barihs	0		Number=Plur	dema	0	barih	n	rule
 barilla	0	oewn-barilla-n	Number=Sing	dema	0			oewn_form
 barillas	0	oewn-barilla-n	Number=Plur	dema	0			rule
 baring	0		Degree=Pos	dema	0	baring	a	moby_reverse
-baring	1	oewn-baring-n	Number=Sing	dema	0			oewn_form
-baring	2	oewn-bare-v	VerbForm=Ger	dema	0			rule
+baring	1	oewn-bare-v	VerbForm=Ger	dema	0			rule
+baring	2	oewn-baring-n	Number=Sing	dema	0			oewn_form
 barings	0	oewn-baring-n	Number=Plur	dema	0			rule
 barish	0		Degree=Pos	dema	0	barish	a	moby_reverse
 barit	0		Number=Sing	dema	0	barit	n	moby_reverse
@@ -3251,8 +3251,8 @@ barrackers	0		Number=Plur	dema	0	barracker	n	rule
 barracking	0	oewn-barrack-v	VerbForm=Ger	dema	0			rule
 barracking	1	oewn-barracking-n	Number=Sing	dema	0			oewn_form
 barrackings	0	oewn-barracking-n	Number=Plur	dema	0			rule
-barracks	0	oewn-barrack-n	Number=Plur	dema	0			rule
-barracks	1	oewn-barrack-v	Person=3+Tense=Pres	dema	0			rule
+barracks	0	oewn-barrack-v	Person=3+Tense=Pres	dema	0			rule
+barracks	1	oewn-barrack-n	Number=Plur	dema	0			rule
 barracoon	0		Number=Sing	dema	0	barracoon	n	moby_reverse
 barracoons	0		Number=Plur	dema	0	barracoon	n	rule
 barracouta	0	oewn-barracouta-n	Number=Sing	dema	0			oewn_form
@@ -3372,13 +3372,13 @@ barricado	1	oewn-barricado-v	VerbForm=Inf	dema	0			oewn_form
 barricadoed	0		Number=Sing	dema	0	barricadoed	n	moby_reverse
 barricadoed	1	oewn-barricado-v	Tense=Past+VerbForm=Part	dema	0			rule
 barricadoeds	0		Number=Plur	dema	0	barricadoed	n	rule
-barricadoes	0	oewn-barricado-v	Person=3+Tense=Pres	dema	0			rule_variant
-barricadoes	1		Number=Sing	dema	0	barricadoes	n	moby_reverse
+barricadoes	0		Number=Sing	dema	0	barricadoes	n	moby_reverse
+barricadoes	1	oewn-barricado-v	Person=3+Tense=Pres	dema	0			rule_variant
 barricadoing	0		Number=Sing	dema	0	barricadoing	n	moby_reverse
 barricadoing	1	oewn-barricado-v	VerbForm=Ger	dema	0			rule
 barricadoings	0		Number=Plur	dema	0	barricadoing	n	rule
-barricados	0	oewn-barricado-v	Person=3+Tense=Pres	dema	0			agid
-barricados	1		Number=Plur	dema	0	barricado	n	rule
+barricados	0		Number=Plur	dema	0	barricado	n	rule
+barricados	1	oewn-barricado-v	Person=3+Tense=Pres	dema	0			agid
 barrier	0	oewn-barrier-n	Number=Sing	dema	0			oewn_form
 barrier island	0	oewn-barrier_island-n	Number=Sing	dema	0			oewn_form
 barrier islands	0	oewn-barrier_island-n	Number=Plur	dema	0			rule
@@ -3388,8 +3388,8 @@ barrier strip	0	oewn-barrier_strip-n	Number=Sing	dema	0			oewn_form
 barrier strips	0	oewn-barrier_strip-n	Number=Plur	dema	0			rule
 barriers	0	oewn-barrier-n	Number=Plur	dema	0			rule
 barring	0	dema-barring-p		dema	0			carried
-barring	1	oewn-barring-n	Number=Sing	dema	0			oewn_form
-barring	2	oewn-bar-v	VerbForm=Ger	dema	0			oewn_form
+barring	1	oewn-bar-v	VerbForm=Ger	dema	0			oewn_form
+barring	2	oewn-barring-n	Number=Sing	dema	0			oewn_form
 barring hop	0	oewn-bar_hop-v	VerbForm=Ger	dema	0			rule
 barring mitzvah	0	oewn-bar_mitzvah-v	VerbForm=Ger	dema	0			rule
 barrings	0	oewn-barring-n	Number=Plur	dema	0			rule
@@ -4080,8 +4080,8 @@ bathes	1	oewn-bathe-n	Number=Plur	dema	0			rule
 bathetic	0	oewn-bathetic-a	Degree=Pos	dema	0			oewn_form
 bathhouse	0	oewn-bathhouse-n	Number=Sing	dema	0			oewn_form
 bathhouses	0	oewn-bathhouse-n	Number=Plur	dema	0			rule
-bathing	0	oewn-bathing-n	Number=Sing	dema	0			oewn_form
-bathing	1	oewn-bathe-v	VerbForm=Ger	dema	0			rule
+bathing	0	oewn-bathe-v	VerbForm=Ger	dema	0			rule
+bathing	1	oewn-bathing-n	Number=Sing	dema	0			oewn_form
 bathing cap	0	oewn-bathing_cap-n	Number=Sing	dema	0			oewn_form
 bathing caps	0	oewn-bathing_cap-n	Number=Plur	dema	0			rule
 bathing costume	0	oewn-bathing_costume-n	Number=Sing	dema	0			oewn_form
@@ -4151,8 +4151,8 @@ batiked	0	oewn-batik-v	Tense=Past+VerbForm=Part	dema	0			rule
 batiking	0	oewn-batik-v	VerbForm=Ger	dema	0			rule
 batiks	0	oewn-batik-n	Number=Plur	dema	0			rule
 batiks	1	oewn-batik-v	Person=3+Tense=Pres	dema	0			rule
-bating	0	dema-bating-p		dema	0			carried
-bating	1	oewn-bate-v	VerbForm=Ger	dema	0			rule
+bating	0	oewn-bate-v	VerbForm=Ger	dema	0			rule
+bating	1	dema-bating-p		dema	0			carried
 batiste	0	oewn-batiste-n	Number=Sing	dema	0			oewn_form
 batistes	0	oewn-batiste-n	Number=Plur	dema	0			rule
 batlike	0		Degree=Pos	dema	0	batlike	a	moby_reverse
@@ -4169,8 +4169,8 @@ batrachian	1	oewn-batrachian-a	Degree=Pos	dema	0			oewn_form
 batrachians	0	oewn-batrachian-n	Number=Plur	dema	0			rule
 batrachomyomachia	0	oewn-batrachomyomachia-n	Number=Sing	dema	0			oewn_form
 batrachomyomachias	0	oewn-batrachomyomachia-n	Number=Plur	dema	0			rule
-bats	0	oewn-bats-a	Degree=Pos	dema	0			oewn_form
-bats	1	oewn-bat-n	Number=Plur	dema	0			rule
+bats	0	oewn-bat-n	Number=Plur	dema	0			rule
+bats	1	oewn-bats-a	Degree=Pos	dema	0			oewn_form
 bats	2	oewn-bat-v	Person=3+Tense=Pres	dema	0			rule
 bats mitzvah	0	oewn-bat_mitzvah-v	Person=3+Tense=Pres	dema	0			rule
 batsman	0	oewn-batsman-n	Number=Sing	dema	0			oewn_form
@@ -4235,8 +4235,8 @@ battering	1	oewn-battering-n	Number=Sing	dema	0			oewn_form
 battering ram	0	oewn-battering_ram-n	Number=Sing	dema	0			oewn_form
 battering rams	0	oewn-battering_ram-n	Number=Plur	dema	0			rule
 batterings	0	oewn-battering-n	Number=Plur	dema	0			rule
-batters	0	oewn-batter-n	Number=Plur	dema	0			rule
-batters	1	oewn-batter-v	Person=3+Tense=Pres	dema	0			rule
+batters	0	oewn-batter-v	Person=3+Tense=Pres	dema	0			rule
+batters	1	oewn-batter-n	Number=Plur	dema	0			rule
 battery	0	oewn-battery-n	Number=Sing	dema	0			oewn_form
 battery acid	0	oewn-battery_acid-n	Number=Sing	dema	0			oewn_form
 battery acids	0	oewn-battery_acid-n	Number=Plur	dema	0			rule

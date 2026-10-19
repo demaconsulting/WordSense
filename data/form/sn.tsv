@@ -343,8 +343,8 @@ sneakiest	0	oewn-sneaky-a	Degree=Sup	dema	0			rule
 sneakily	0	oewn-sneakily-r	Degree=Pos	dema	0			oewn_form
 sneakiness	0	oewn-sneakiness-n	Number=Sing	dema	0			oewn_form
 sneakinesses	0	oewn-sneakiness-n	Number=Plur	dema	0			rule
-sneaking	0	oewn-sneaking-a	Degree=Pos	dema	0			oewn_form
-sneaking	1	oewn-sneak-v	VerbForm=Ger	dema	0			rule
+sneaking	0	oewn-sneak-v	VerbForm=Ger	dema	0			rule
+sneaking	1	oewn-sneaking-a	Degree=Pos	dema	0			oewn_form
 sneaking away	0	oewn-sneak_away-v	VerbForm=Ger	dema	0			rule
 sneaking in	0	oewn-sneak_in-v	VerbForm=Ger	dema	0			rule
 sneaking off	0	oewn-sneak_off-v	VerbForm=Ger	dema	0			rule
@@ -400,8 +400,8 @@ sneezewort	0	oewn-sneezewort-n	Number=Sing	dema	0			oewn_form
 sneezeworts	0	oewn-sneezewort-n	Number=Plur	dema	0			rule
 sneezier	0	oewn-sneezy-a	Degree=Cmp	dema	0			rule
 sneeziest	0	oewn-sneezy-a	Degree=Sup	dema	0			rule
-sneezing	0	oewn-sneezing-n	Number=Sing	dema	0			oewn_form
-sneezing	1	oewn-sneeze-v	VerbForm=Ger	dema	0			rule
+sneezing	0	oewn-sneeze-v	VerbForm=Ger	dema	0			rule
+sneezing	1	oewn-sneezing-n	Number=Sing	dema	0			oewn_form
 sneezings	0	oewn-sneezing-n	Number=Plur	dema	0			rule
 sneezy	0	oewn-sneezy-a	Degree=Pos	dema	0			oewn_form
 snell	0		Number=Sing	dema	0	snell	n	moby_reverse
@@ -453,8 +453,8 @@ sniffle	1	oewn-sniffle-n	Number=Sing	dema	0			oewn_form
 sniffled	0	oewn-sniffle-v	Tense=Past+VerbForm=Part	dema	0			rule
 sniffler	0	oewn-sniffler-n	Number=Sing	dema	0			oewn_form
 snifflers	0	oewn-sniffler-n	Number=Plur	dema	0			rule
-sniffles	0	oewn-sniffle-n	Number=Plur	dema	0			rule
-sniffles	1	oewn-sniffle-v	Person=3+Tense=Pres	dema	0			rule
+sniffles	0	oewn-sniffle-v	Person=3+Tense=Pres	dema	0			rule
+sniffles	1	oewn-sniffle-n	Number=Plur	dema	0			rule
 sniffling	0	oewn-sniffle-v	VerbForm=Ger	dema	0			rule
 sniffly	0	oewn-sniffly-a	Degree=Pos	dema	0			oewn_form
 sniffs	0	oewn-sniff-v	Person=3+Tense=Pres	dema	0			rule
@@ -519,8 +519,8 @@ snipping off	0	oewn-snip_off-v	VerbForm=Ger	dema	0			rule
 snippings	0	oewn-snipping-n	Number=Plur	dema	0			rule
 snippy	0		Degree=Pos	dema	0	snippy	a	moby_reverse
 snips	0	oewn-snips-n	Number=Sing	dema	0			oewn_form
-snips	1	oewn-snip-n	Number=Plur	dema	0			rule
-snips	2	oewn-snip-v	Person=3+Tense=Pres	dema	0			rule
+snips	1	oewn-snip-v	Person=3+Tense=Pres	dema	0			rule
+snips	2	oewn-snip-n	Number=Plur	dema	0			rule
 snips off	0	oewn-snip_off-v	Person=3+Tense=Pres	dema	0			rule
 snit	0	oewn-snit-n	Number=Sing	dema	0			oewn_form
 snitch	0	oewn-snitch-v	VerbForm=Inf	dema	0			oewn_form
@@ -637,8 +637,8 @@ snorer	0	oewn-snorer-n	Number=Sing	dema	0			oewn_form
 snorers	0	oewn-snorer-n	Number=Plur	dema	0			rule
 snores	0	oewn-snore-v	Person=3+Tense=Pres	dema	0			rule
 snores	1	oewn-snore-n	Number=Plur	dema	0			rule
-snoring	0	oewn-snoring-n	Number=Sing	dema	0			oewn_form
-snoring	1	oewn-snore-v	VerbForm=Ger	dema	0			rule
+snoring	0	oewn-snore-v	VerbForm=Ger	dema	0			rule
+snoring	1	oewn-snoring-n	Number=Sing	dema	0			oewn_form
 snorings	0	oewn-snoring-n	Number=Plur	dema	0			rule
 snorkel	0	oewn-snorkel-n	Number=Sing	dema	0			oewn_form
 snorkel	1	oewn-snorkel-v	VerbForm=Inf	dema	0			oewn_form
@@ -934,8 +934,8 @@ snugged	0		Tense=Past+VerbForm=Part	dema	0	snug	v	moby_reverse
 snugger	0	oewn-snug-a	Degree=Cmp	dema	0			oewn_form
 snuggeries	0	oewn-snuggery-n	Number=Plur	dema	0			rule
 snuggery	0	oewn-snuggery-n	Number=Sing	dema	0			oewn_form
-snuggest	0		VerbForm=Inf	dema	0	snuggest	v	moby_reverse
-snuggest	1	oewn-snug-a	Degree=Sup	dema	0			oewn_form
+snuggest	0	oewn-snug-a	Degree=Sup	dema	0			oewn_form
+snuggest	1		VerbForm=Inf	dema	0	snuggest	v	moby_reverse
 snuggested	0		Tense=Past+VerbForm=Part	dema	0	snuggest	v	rule
 snuggesting	0		VerbForm=Ger	dema	0	snuggest	v	rule
 snuggests	0		Person=3+Tense=Pres	dema	0	snuggest	v	rule
@@ -948,8 +948,8 @@ snuggled	0	oewn-snuggle-v	Tense=Past+VerbForm=Part	dema	0			rule
 snuggled	1	oewn-snuggled-a	Degree=Pos	dema	0			oewn_form
 snuggles	0	oewn-snuggle-v	Person=3+Tense=Pres	dema	0			rule
 snuggles	1	oewn-snuggle-n	Number=Plur	dema	0			rule
-snuggling	0	oewn-snuggling-n	Number=Sing	dema	0			oewn_form
-snuggling	1	oewn-snuggle-v	VerbForm=Ger	dema	0			rule
+snuggling	0	oewn-snuggle-v	VerbForm=Ger	dema	0			rule
+snuggling	1	oewn-snuggling-n	Number=Sing	dema	0			oewn_form
 snugglings	0	oewn-snuggling-n	Number=Plur	dema	0			rule
 snugly	0	oewn-snugly-r	Degree=Pos	dema	0			oewn_form
 snugness	0	oewn-snugness-n	Number=Sing	dema	0			oewn_form
