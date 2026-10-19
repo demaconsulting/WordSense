@@ -4,8 +4,8 @@
 > `real-import`, `real-judge-*`, `validate-provenance`, `nounverb-*`, `learning-curve`, `error-diagnosis`,
 > `weak-lemmas`) were removed from `WordSense.Builder`; the results stay as the record of how the data was built.
 
-Training and evaluation data for the per-lemma classifiers that answer the part of speech and, for heteronyms, the
-pronunciation of a word in context.
+Training and evaluation data for the per-lemma classifiers that identify the sense of a word in context: its part of
+speech and, for heteronyms, the sense that fixes its pronunciation.
 
 ## Layout
 

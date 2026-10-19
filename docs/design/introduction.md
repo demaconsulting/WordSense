@@ -1,7 +1,8 @@
 # Introduction
 
-This document provides the detailed design for the WordSense library, a .NET library that tells the part of
-speech and pronunciation of English words in text. Words that have one sense are answered from an embedded
+This document provides the detailed design for the WordSense library, a .NET library that identifies the sense of
+English words in text: the lemma, the part of speech and, for heteronyms, a sense id that fixes the pronunciation.
+Words that have one sense are answered from an embedded
 lexicon; words that have several senses are answered in context by an interchangeable word-sense model.
 
 ## Purpose

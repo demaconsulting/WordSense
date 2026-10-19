@@ -9,9 +9,11 @@
 [![Security][badge-security]][link-security]
 [![NuGet][badge-nuget]][link-nuget]
 
-WordSense is a .NET library that tells, for words in context, the part of speech and the pronunciation: whether
-"record" is a noun or a verb, and how to say "bow" or "read". Every word is looked up in an embedded dictionary of
-over 140,000 common words. Only where a word has several meanings does a model choose from the sentence: either the
+WordSense is a .NET library that identifies the sense of a word in context: its lemma, its part of speech and, where
+the sense inventory distinguishes them, its sense. Today every known word gets its part of speech (whether "record" is
+a noun or a verb), and the heteronyms, such as "bow" and "read", also get a sense id that fixes their pronunciation.
+Every word is looked up in an embedded dictionary of over 140,000 common words. Only where a word has several meanings
+does a model choose from the sentence: either the
 `Basic` model, which is a small statistical tagger that needs nothing else, or an ONNX encoder model (`MiniLM` or
 `BertBaseCased`) that is more accurate and runs on ONNX Runtime.
 
@@ -19,7 +21,7 @@ over 140,000 common words. Only where a word has several meanings does a model c
 
 - 📖 **Dictionary** - Parts of speech for over 140,000 common words
 - 🧠 **Context Aware** - Picks the part of speech of a word from its sentence
-- 🔊 **Pronunciation** - Sense ids for heteronyms like "bow" and "read"
+- 🏷️ **Word Senses** - Sense ids for heteronyms like "bow" and "read"
 - 📊 **Confidence** - Every answer carries a confidence from 0 to 1
 - 📦 **Layered Packages** - Small core, dependency-free Basic, optional ONNX models
 - 🔒 **Verified Models** - Downloads are checked against pinned SHA-256 digests

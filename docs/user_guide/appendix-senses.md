@@ -4,10 +4,10 @@
 
 ## How Answers Work
 
-WordSense decides which **part of speech** a word carries in its sentence and, for a heteronym, which **pronunciation**.
-The lemma is the dictionary form of the word (for example `record`); a word such as `records` is matched to its lemma
-through the forms listed below. The answer for a word is a lemma, a part of speech and, for a heteronym only, a
-pronunciation.
+WordSense identifies the sense of a word in its sentence. Today the inventory distinguishes the **part of speech** of
+every word and, for a heteronym, the **pronunciation** sense. The lemma is the dictionary form of the word (for example
+`record`); a word such as `records` is matched to its lemma through the forms listed below. The answer for a word is a
+lemma, a part of speech and, for a heteronym only, a sense that fixes its pronunciation.
 
 ### Parts of Speech
 

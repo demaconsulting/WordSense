@@ -1,7 +1,7 @@
 # System Design
 
-This document provides the system-level design for WordSense, the library that tells the part of speech and, for
-words pronounced differently by meaning, the pronunciation of English words in text.
+This document provides the system-level design for WordSense, the library that identifies the sense of English words
+in text: the part of speech of every word and, for heteronyms, a sense id that fixes the pronunciation.
 
 ![WordSense Structure](WordSenseView.svg)
 

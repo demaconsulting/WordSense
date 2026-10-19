@@ -1,6 +1,8 @@
 # Part of Speech and Pronunciation Redesign
 
-This note records the change from a tag-based answer to an answer of part of speech and pronunciation. The earlier
+This note records the earlier, pronunciation-focused redesign from a tag-based answer to an answer of part of speech
+and pronunciation. The purpose of WordSense is to identify the sense (meaning) of a word in context; the pronunciation
+answer described here is what the sense inventory distinguishes for heteronyms today. The earlier
 build notes describe the tag-based phases and are kept as the history of how the corpus was built.
 
 ## Before and After

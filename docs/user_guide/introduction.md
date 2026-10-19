@@ -2,9 +2,11 @@
 
 ## Purpose
 
-This document is the user guide for WordSense, a .NET library that tells, for English words in context and offline,
-the part of speech and the pronunciation. It tells, for example, whether "record" is a noun or a verb, and
-whether "bow" is said like "bough" (a bend) or like "beau" (a weapon). Every word is looked up in an embedded
+This document is the user guide for WordSense, a .NET library that identifies the sense of English words in context,
+offline: the lemma, the part of speech and, where the sense inventory distinguishes them, the sense. Today every known
+word is answered with its part of speech, so the library tells, for example, whether "record" is a noun or a verb. For
+a heteronym, a word spelled the same but pronounced differently, the answer also carries a sense id that fixes the
+pronunciation, for example whether "bow" is the weapon or a bend. Every word is looked up in an embedded
 word table; a word with several meanings is decided from its sentence by a model that you choose. The library comes as
 five NuGet packages: the core `DemaConsulting.WordSense` (API and word table, no model), the statistical model
 `DemaConsulting.WordSense.Basic` (no files, no network), and two encoder models, `DemaConsulting.WordSense.MiniLM`
@@ -15,7 +17,7 @@ and `DemaConsulting.WordSense.BertBaseCased`, which share the machinery of `Dema
 This user guide covers:
 
 - Choosing and installing the packages, requirements and a quick start
-- The classification API: words, results, confidence and pronunciation
+- The classification API: words, results, confidence, part of speech and sense ids
 - The word table of the core package
 - Model download, mirrors and offline use
 - Limitations
@@ -320,6 +322,14 @@ in the build notes).
 
 ## Working with an Encoder Model
 
+How the encoder models decide: each ambiguous word was taught from a set of example sentences per sense, and the
+model compares the word in your sentence with what it learned, roughly "which sense's examples does this look most
+like". The learning happened at build time and ships inside the package as a small trained classifier for each
+word. Only the words that were trained this way (currently 744 lemmas, the same ones for MiniLM and BertBaseCased,
+listed in the appendix) are decided from context; any other word with several senses gets its first dictionary sense
+with `Confidence` one over its number of senses, and only the Basic model (which does not use embeddings and tags every
+sentence) covers those words from context. A word with one sense never needs the encoder.
+
 Both encoder models derive from `OnnxWordSenseModel`, which implements `IWordSenseModel` and has the
 public properties `HiddenSize` and `ModelId`. `IWordSenseModel` is `IDisposable`: the model owns the ONNX session and the
 downloader state, so dispose it (with `using`) when you no longer need it; disposing while calls are running is safe
@@ -610,10 +620,12 @@ ensure; cancelling does not stop the shared ensure (see "Threads and cancellatio
   endings (about 96% of the running words of a Project Gutenberg sample are known). Contractions are a closed list of
   stored words and a possessive of a known word is found with `Poss=Yes`. There is no other morphology at use
   time and no capitalization heuristic for looking a word up: a form that is not in the table is unknown.
-- **Only some multi-sense words are decided.** The encoder models decide the lemmas that have trained weights (see the
-  appendix); another multi-sense word gets its first dictionary sense with a confidence of one over its number of
-  senses. Basic decides by part of speech only; the encoder models never answer `Auxiliary` for a modal or an
-  auxiliary verb such as `will`.
+- **Only some multi-sense words are decided by the encoder models.** They choose from context only for the lemmas that
+  have trained weights (currently 744, see the appendix); a common word such as `need`, `look`, `help`, `back` or
+  `right` has none today, and gets its first dictionary sense with a confidence of one over its number of senses. The
+  published encoder accuracy is measured on the trained lemmas only. Basic tags every sentence, so it decides every
+  multi-sense word by part of speech (and by context cues where it has them); the encoder models never answer
+  `Auxiliary` for a modal or an auxiliary verb such as `will`.
 - **Pronunciation for heteronyms only.** A lemma that is not a heteronym has no `SenseId`, and the
   library has no phonetic data of its own: the consumer maps the `SenseId` to its own pronunciation.
 - **Confidence is a score, not a probability**, and its scale is specific to each model.
