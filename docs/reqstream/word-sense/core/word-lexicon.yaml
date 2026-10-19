@@ -62,6 +62,7 @@ sections:
                   - LexiconFacts_Files_CoverEveryCategoryAndMode
                   - WordLexicon_Lookup_GerundWithOwnEntry_HasBothAnalyses
                   - WordLexicon_Lookup_FormsLostByEarlierRebuild_ResolveToTheirLemma
+                  - WordLexicon_Lookup_RegularFormNextToListedAlternative_StaysRegularFormOfIrregularWordsStayAbsent
 
               - id: WordSense-Core-WordLexicon-Complete
                 title: >-

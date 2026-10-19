@@ -155,7 +155,7 @@ sections:
           - ModelDownloader_EnsureAsync_MirrorFails_FallsBackToGitHub
           - ModelDownloader_EnsureAsync_HashMismatch_FallsThroughAndKeepsNothingBad
 
-      - id: WordSense-Lib-Reproducible
+      - id: WordSense-Lib-ReproducibleBuild
         title: >-
           The build-time tool shall produce the same lexicon, weights and reports from the same corpus and models,
           and shall never be shipped in a package.

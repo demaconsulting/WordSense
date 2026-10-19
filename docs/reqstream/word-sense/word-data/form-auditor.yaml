@@ -19,6 +19,7 @@ sections:
                   - WordSenseBuilder_FormAuditor_Wilson_NoErrors_StartsAtZero
                   - WordSenseBuilder_FormAuditor_Wilson_SomeErrors_BracketsRate
                   - WordSenseBuilder_FormAuditor_Wilson_EmptySample_IsWholeRange
+                  - WordSenseBuilder_FormAuditor_ReadAdjudications_FeatureColumn_RestrictsTheKey
 
               - id: WordSense-WordData-FormAuditor-Gate
                 title: >-
@@ -35,3 +36,5 @@ sections:
                   - WordSenseBuilder_FormAuditor_Evaluate_SkippedRows_AreNotChecked
                   - WordSenseBuilder_FormAuditor_ReadAdjudications_SkipsComments
                   - WordSenseBuilder_FormAuditor_ReadAdjudications_NoFile_IsEmpty
+                  - WordSenseBuilder_FormAuditor_Evaluate_OracleAcceptedRow_IsNotAnError
+                  - WordSenseBuilder_FormAuditor_Evaluate_FeatureRestrictedVerdict_AppliesToThoseFeaturesOnly

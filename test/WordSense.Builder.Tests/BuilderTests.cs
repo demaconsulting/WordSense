@@ -697,6 +697,28 @@ public sealed class BuilderTests : IDisposable
     }
 
     /// <summary>
+    ///     Every word of the committed closed list of auxiliaries has an Auxiliary sense in the embedded word table, and
+    ///     that sense follows every other sense of the word.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Words_Committed_AuxiliarySenseComesLast()
+    {
+        var root = FindRepositoryRoot();
+        var table = new LexiconView();
+        var auxiliaries = LexiconSource.ReadAuxiliaries(Path.Combine(root.FullName, "corpus", "lexicon", "auxiliaries.tsv"));
+
+        var problems = auxiliaries
+            .Where(w => !table.ContainsKey(w)
+                || table[w].All(d => d.PartOfSpeech != PartOfSpeech.Auxiliary)
+                || table[w][^1].PartOfSpeech != PartOfSpeech.Auxiliary)
+            .Take(10)
+            .ToList();
+
+        Assert.True(problems.Count == 0, "Auxiliaries without a last Auxiliary sense: " + string.Join(", ", problems));
+        Assert.True(auxiliaries.Count > 20);
+    }
+
+    /// <summary>
     ///     A listed form has the trained senses its labels name, carrying the lemma's lemma, meaning and respelling,
     ///     followed by one sense for each dictionary part of speech the labels do not cover; that sense is the form's
     ///     own (the form is its lemma, because a form may have several lemmas) and has no meaning and no respelling.

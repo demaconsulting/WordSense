@@ -20,6 +20,8 @@ sections:
                 tests:
                   - WordSenseBuilder_FormGenerator_Data_Provenance_IsKnown
                   - WordSenseBuilder_FormGenerator_Data_RegularInflection_IsResolved
+                  - WordSenseBuilder_FormGenerator_Data_AuditCorrections_AreApplied
+                  - WordSenseBuilder_FormGenerator_Data_PhraseWithIrregularHead_HasNoRegularPast
 
               - id: WordSense-WordData-FormGenerator-Gerunds
                 title: >-
@@ -72,3 +74,4 @@ sections:
                   - WordSenseBuilder_InflectionRules_VerbRegular_Spellings
                   - WordSenseBuilder_InflectionRules_AdjectiveDegrees_ShortAndLong
                   - WordSenseBuilder_InflectionRules_ReverseCandidates_Plural_ContainsSingular
+                  - WordSenseBuilder_FormGenerator_Data_VerbSpellingInS_IsThirdPerson
