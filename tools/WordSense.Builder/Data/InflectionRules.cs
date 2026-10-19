@@ -31,7 +31,7 @@ internal static partial class InflectionRules
         + "grab grin hug jam knit mop pin plan pop prop rig rob scan sin slam snap spot star stir swap tag tan thin tip top whip win quip quit "
         + "rap sob sap nod pad pit pot put rot rid sit set tug wed ban bed bid fan fog gag gin hem hum jog lap map nab net pip pun ram sag sum "
         + "sun tab tin tub veto bud cap dub fib fit gap gun jig kid lug mat mud peg pet rag rib rim rot rub sag sip sob sod spin spur stab "
-        + "stub stun swim swot tar tip tot tub wag").Split(' ');
+        + "stub stun swim swot tar tip tot tub wag rip zap nip nag jot jut lop lob mob mug dim din fin gab gum jab jar mar pan pen rev rut sub sup vet wad web wet yap").Split(' ');
 
     private static readonly string[] StressPrefixes =
         ["re", "un", "out", "over", "under", "up", "de", "dis", "mis", "pre", "retro", "sub", "inter", "be", "counter", "off"];

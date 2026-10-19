@@ -18,5 +18,7 @@ All scenarios pass.
 
 - **Interval** (`Wilson_NoErrors_StartsAtZero`, `Wilson_SomeErrors_BracketsRate`, `Wilson_EmptySample_IsWholeRange`).
 - **Gate** (`Evaluate_AllGood_Passes`, `Evaluate_UnadjudicatedDisagreement_Fails`, `Evaluate_ValidAdjudication_Clears`,
-  `Evaluate_SkippedRows_AreNotChecked`).
-- **Adjudications** (`ReadAdjudications_SkipsComments`, `ReadAdjudications_NoFile_IsEmpty`).
+  `Evaluate_SkippedRows_AreNotChecked`, `Evaluate_OracleAcceptedRow_IsNotAnError`,
+  `Evaluate_FeatureRestrictedVerdict_AppliesToThoseFeaturesOnly`).
+- **Adjudications** (`ReadAdjudications_SkipsComments`, `ReadAdjudications_NoFile_IsEmpty`,
+  `ReadAdjudications_FeatureColumn_RestrictsTheKey`).

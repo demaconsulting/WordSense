@@ -676,8 +676,18 @@ public sealed class BuilderTests : IDisposable
         Assert.True(missing.Count == 0, "Words of lexicon.tsv missing from the word image: " + string.Join(", ", missing));
         Assert.True(lexicon.Count > 143_000);
 
-        // Every part of speech the dictionary lists for a word is among the senses of that word, without exception
+        // Every part of speech the dictionary lists for a word is among the senses of that word, without exception, except
+        // for the analyses that the forms audit dropped in form-corrections.tsv: our own sources show
+        // the analysis wrong (a plural of a verb-only word, a past spelled with one consonant), so the word list entry
+        // is not made true by a wrong analysis
+        var dropped = File.ReadLines(Path.Combine(root.FullName, "corpus", "lexicon", "form-corrections.tsv"))
+            .Where(l => l.Length > 0 && l[0] != '#')
+            .Select(l => l.Split('\t'))
+            .Where(p => p.Length > 4 && p[4] == "drop")
+            .Select(p => p[0])
+            .ToHashSet(StringComparer.Ordinal);
         var lost = lexicon
+            .Where(w => !dropped.Contains(w.Word))
             .Where(w => w.Letters.Any(l => table[w.Word].All(d => (int)d.PartOfSpeech != LexiconSource.Letters.IndexOf(l, StringComparison.Ordinal))))
             .Select(w => w.Word)
             .Take(10)

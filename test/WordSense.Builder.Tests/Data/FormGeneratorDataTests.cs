@@ -78,4 +78,48 @@ public sealed class FormGeneratorDataTests
         Assert.DoesNotContain(Rows("walking"), r => r[3].Contains("Number=Plur", StringComparison.Ordinal));
         Assert.DoesNotContain(Rows("smoking"), r => r[3].Contains("Number=Plur", StringComparison.Ordinal));
     }
+
+    /// <summary>
+    ///     The analyses that our own sources showed wrong are gone or retyped.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_FormGenerator_Data_AuditCorrections_AreApplied()
+    {
+        foreach (var gone in new[] { "araglis", "madornos", "cercariiae", "filariiae", "photosynthesises" })
+        {
+            Assert.Empty(Rows(gone));
+        }
+
+        Assert.DoesNotContain(Rows("behooves"), r => r[3] == "Number=Plur");
+        Assert.DoesNotContain(Rows("kindling"), r => r[3] == "Number=Plur");
+        Assert.DoesNotContain(Rows("unmaned"), r => r[3].Contains("VerbForm=Part", StringComparison.Ordinal));
+        Assert.DoesNotContain(Rows("cates"), r => r[2].EndsWith("CAT-n", StringComparison.Ordinal));
+        Assert.Contains(Rows("muskallunge"), r => r[3] == "Number=Sing");
+        Assert.Contains(Rows("gan"), r => r[3] == "Tense=Past");
+    }
+
+    /// <summary>
+    ///     A spelling in s of a verb is a third person, never a past.
+    /// </summary>
+    /// <param name="spelling">The spelling.</param>
+    [Theory]
+    [InlineData("chevies")]
+    [InlineData("gasses")]
+    [InlineData("programmes")]
+    [InlineData("swops")]
+    public void WordSenseBuilder_FormGenerator_Data_VerbSpellingInS_IsThirdPerson(string spelling)
+    {
+        Assert.DoesNotContain(Rows(spelling), r => r[3].Contains("Tense=Past", StringComparison.Ordinal));
+    }
+
+    /// <summary>
+    ///     A phrase whose head is an irregular verb takes no regular past (goed ahead).
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_FormGenerator_Data_PhraseWithIrregularHead_HasNoRegularPast()
+    {
+        Assert.Empty(Rows("goed ahead"));
+        Assert.Empty(Rows("bed active"));
+        Assert.Empty(Rows("doed away with"));
+    }
 }

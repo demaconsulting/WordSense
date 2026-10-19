@@ -49,6 +49,7 @@ public sealed class InflectionRulesTests
     [InlineData("stop", "stopped", "stopping")]
     [InlineData("hope", "hoped", "hoping")]
     [InlineData("carry", "carried", "carrying")]
+    [InlineData("unrip", "unripped", "unripping")]
     public void WordSenseBuilder_InflectionRules_VerbRegular_Spellings(string word, string past, string gerund)
     {
         var forms = InflectionRules.VerbRegular(word, _ => false);

@@ -9,9 +9,10 @@ namespace WordSense.Builder.Data;
 ///     independent inflection oracle and the error rate of every stratum is reported with a Wilson confidence interval.
 /// </summary>
 /// <remarks>
-///     The oracle is a checker only: it is a Python script that asks LemmInflect (installed with pip, not shipped) whether the
-///     spelling is an inflected form of the lemma. A disagreement is an error unless the adjudications file records the row as
-///     valid (a valid rare word that the oracle does not know). The oracle shares no data with the generator, but the rows the
+///     The oracle is a development-time checker only: it is a Python script that asks LemmInflect (installed with pip, not a
+///     dependency, nothing shipped from it) whether the spelling is an inflected form of the lemma. A disagreement is an error
+///     unless the adjudications file records our own verdict, decided from our sources, that the row is valid (a valid rare word
+///     that the oracle does not know); the forms of the oracle are never adopted or committed. The oracle shares no data with the generator, but the rows the
 ///     generator admits were selected by the dictionary and the inflection database, so the rates describe the shipped rows,
 ///     not the rule outputs before the corroboration.
 /// </remarks>
@@ -203,7 +204,8 @@ internal static class FormAuditor
     }
 
     /// <summary>
-    ///     Reads the adjudications: spelling, lemma, part of speech, verdict (<c>valid</c> or <c>invalid</c>) and a note.
+    ///     Reads our adjudications: spelling, lemma, part of speech, verdict (<c>valid</c> or <c>invalid</c>), a note naming our own sources and
+    ///     optionally the features the verdict is restricted to.
     /// </summary>
     /// <param name="path">The file, or null.</param>
     /// <returns>The verdict by spelling, lemma and part of speech.</returns>
@@ -220,7 +222,9 @@ internal static class FormAuditor
             var p = line.Split('\t');
             if (p.Length >= 4 && !line.StartsWith('#'))
             {
-                result[$"{p[0]}\t{p[1]}\t{p[2]}"] = p[3];
+                // An optional sixth column restricts the verdict to one feature set
+                var features = p.Length >= 6 && p[5].Length > 0 ? "\t" + p[5] : string.Empty;
+                result[$"{p[0]}\t{p[1]}\t{p[2]}{features}"] = p[3];
             }
         }
 
@@ -246,14 +250,16 @@ internal static class FormAuditor
             foreach (var row in group)
             {
                 var verdict = verdicts.GetValueOrDefault(Key(row.Spelling, row.Lemma, row.Pos, row.Features), "skip");
-                var adjudicated = adjudications.GetValueOrDefault($"{row.Spelling}\t{row.Lemma}\t{row.Pos}");
+                var adjudicated = adjudications.GetValueOrDefault($"{row.Spelling}\t{row.Lemma}\t{row.Pos}\t{row.Features}") ?? adjudications.GetValueOrDefault($"{row.Spelling}\t{row.Lemma}\t{row.Pos}");
                 if (verdict == "skip" && adjudicated is null)
                 {
                     continue;
                 }
 
                 n++;
-                var bad = adjudicated is null ? verdict == "bad" : adjudicated == "invalid";
+
+                // Our verdict decides a row where the checker disagrees or cannot judge; a row the checker accepts stays valid
+                var bad = verdict != "ok" && (adjudicated is null ? verdict == "bad" : adjudicated == "invalid");
                 if (verdict == "bad")
                 {
                     disagreed++;
@@ -289,7 +295,7 @@ internal static class FormAuditor
         var c = CultureInfo.InvariantCulture;
         text.Append("# Forms audit\n\n");
         text.Append(c, $"A stratified sample of up to {sample} inflected rows per provenance and entry-backed or surface-only stratum (seed {seed}) is checked against the LemmInflect oracle.\n");
-        text.Append("A disagreement is an error unless the adjudications file records the row as valid. The interval is the 95% Wilson interval.\n\n");
+        text.Append("A disagreement is an error unless the adjudications file records our own verdict that the row is valid. The interval is the 95% Wilson interval.\n\n");
         text.Append("| Stratum | Rows | Checked | Oracle disagrees | Errors | Error rate | 95% interval | Gated |\n|---|---|---|---|---|---|---|---|\n");
         foreach (var r in result.Strata)
         {

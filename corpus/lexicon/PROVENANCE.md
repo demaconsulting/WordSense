@@ -110,6 +110,9 @@ The evidence of every rule is in `morphology.tsv` and in `docs/build_notes/infle
 - `irregular-closed.tsv`, `agid-irregular.tsv`, `contractions.tsv`, `form-overrides.tsv`: the sources of the form
   generator. `agid-irregular.tsv` is derived by `import-agid` from AGID (see `LICENSE-AGID.txt`); the others are
   hand-written from general knowledge.
+- `form-corrections.tsv`: our corrections of generated analyses that the forms audit found wrong (typos of the OEWN
+  forms, AGID misspellings, wrong features), each with evidence from OEWN, AGID or Moby. LemmInflect, the dev-time
+  checker of the audit, is not a source of it: the audit only flags rows, and nothing ships from the checker.
 - `additions.tsv`: hand-curated words missing from the dictionary (days, months, nationalities, British spellings,
   `coverage` gaps). License: same as the repository.
 - `auxiliaries.tsv`: hand-written closed list of the English auxiliary verbs (modals and the forms of be, have and

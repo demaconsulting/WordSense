@@ -3,7 +3,8 @@
 Usage: python lemminflect_oracle.py SAMPLE.tsv VERDICTS.tsv
 
 SAMPLE.tsv has the columns spelling, lemma, part-of-speech letter and features. VERDICTS.tsv gets the same columns plus
-ok, bad or skip. LemmInflect (pip install lemminflect) is a checker only; nothing of it ships in the data.
+ok, bad or skip. LemmInflect (pip install lemminflect) is a development-time checker only: it is not a dependency, nothing
+of it ships, its forms are never adopted and this output is not committed.
 """
 import sys
 

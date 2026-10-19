@@ -2,7 +2,6 @@
 # Columns: spelling <TAB> lemma <TAB> part-of-speech letter <TAB> features <TAB> evidence
 # Each row is one analysis; a spelling listed here gets exactly these analyses (provenance hand, reviewed) instead of the reverse-rule candidates.
 # The analysis uses the dictionary entry of the lemma and part of speech when there is one, and is surface-only otherwise.
-cates	cat	n	Number=Plur	CAT is an acronym entry; the common noun is cat
 cuter	cute	a	Degree=Cmp	cut is not an adjective
 cutest	cute	a	Degree=Sup	cut is not an adjective
 dying	die	v	VerbForm=Ger	the gerund of dye is dyeing

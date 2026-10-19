@@ -12,9 +12,11 @@ gate.
 
 Strata are the provenance of a row and whether the spelling is shared with an entry (`rule/entry`, `rule/surface`,
 `agid/entry`, `moby_reverse/surface` and so on). The default sample is 300 rows per stratum. The checker is the
-LemmInflect library, run from a Python script under `tools/WordSense.Builder/audit`. It is a checker only; nothing from
-it is shipped. A disagreement is an error unless `audit/adjudications.tsv` records the row as valid (a reviewed
-decision with a note).
+LemmInflect library, run from a Python script under `tools/WordSense.Builder/audit`. It is a development-time checker
+only: it
+flags rows to look at, nothing is shipped from it, its forms are never adopted and its raw output is not committed. A
+disagreement is an error unless `audit/adjudications.tsv` records our own verdict (valid, decided from OEWN, AGID, Moby
+or our lists and rules; optionally restricted to one feature set). A row the checker accepts is never an error.
 
 #### Key Methods
 

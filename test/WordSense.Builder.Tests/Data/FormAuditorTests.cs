@@ -113,6 +113,45 @@ public sealed class FormAuditorTests
     }
 
     /// <summary>
+    ///     A row that the checker accepts is never an error, whatever the adjudications list.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_FormAuditor_Evaluate_OracleAcceptedRow_IsNotAnError()
+    {
+        var sample = new List<FormAuditor.Row> { Row("cats", "rule/entry") };
+        var verdicts = new Dictionary<string, string> { [Key("cats")] = "ok" };
+        var adjudications = new Dictionary<string, string> { ["cats\tcats\tn"] = "invalid" };
+        var result = FormAuditor.Evaluate(sample, new Dictionary<string, int> { ["rule/entry"] = 10 }, verdicts, adjudications, 0.01);
+        Assert.Equal(0, result.Strata[0].Errors);
+    }
+
+    /// <summary>
+    ///     A verdict restricted to a feature set applies to that analysis only.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_FormAuditor_Evaluate_FeatureRestrictedVerdict_AppliesToThoseFeaturesOnly()
+    {
+        var sample = new List<FormAuditor.Row> { Row("cats", "rule/entry") };
+        var verdicts = new Dictionary<string, string> { [Key("cats")] = "bad" };
+        var other = new Dictionary<string, string> { ["cats\tcats\tn\tTense=Past"] = "valid" };
+        var same = new Dictionary<string, string> { ["cats\tcats\tn\tNumber=Plur"] = "valid" };
+        Assert.Equal(1, FormAuditor.Evaluate(sample, new Dictionary<string, int> { ["rule/entry"] = 10 }, verdicts, other, 0.01).Strata[0].Errors);
+        Assert.Equal(0, FormAuditor.Evaluate(sample, new Dictionary<string, int> { ["rule/entry"] = 10 }, verdicts, same, 0.01).Strata[0].Errors);
+    }
+
+    /// <summary>
+    ///     An optional sixth column restricts the verdict to one feature set.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_FormAuditor_ReadAdjudications_FeatureColumn_RestrictsTheKey()
+    {
+        using var dir = new TestDirectory();
+        var path = Path.Combine(dir.Root, "adj.tsv");
+        File.WriteAllText(path, "gan\tgin\tv\tinvalid\tnote\tTense=Past+VerbForm=Part\n");
+        Assert.Equal("invalid", FormAuditor.ReadAdjudications(path)["gan\tgin\tv\tTense=Past+VerbForm=Part"]);
+    }
+
+    /// <summary>
     ///     A missing adjudications file gives no verdicts.
     /// </summary>
     [Fact]

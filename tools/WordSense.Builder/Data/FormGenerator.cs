@@ -84,6 +84,8 @@ internal static partial class FormGenerator
 
         public SortedDictionary<string, List<Item>> FrozenExtras { get; } = new(StringComparer.Ordinal);
 
+        public Dictionary<string, List<(string Lemma, string Pos, string Features, string Action)>> Corrections { get; } = new(StringComparer.Ordinal);
+
         public Dictionary<string, int> Stats { get; } = new(StringComparer.Ordinal);
 
         // The dictionary words and the spellings that the inflection database attests, for the corroboration of the generated forms
@@ -171,6 +173,24 @@ internal static partial class FormGenerator
         var classEntries = DataTables.Read(data, schema.Table("class_entry")).Select(r => r[1]).ToHashSet(StringComparer.Ordinal);
         var scoped = scopes.Select(r => r[0]).ToHashSet(StringComparer.Ordinal);
         var sources = IrregularSources.Read(Path.Combine(corpus, "lexicon"));
+        var correctionsPath = Path.Combine(corpus, "lexicon", "form-corrections.tsv");
+        if (File.Exists(correctionsPath))
+        {
+            foreach (var cells in File.ReadAllLines(correctionsPath, Encoding.UTF8).Where(l => l.Length > 0 && l[0] != '#').Select(l => l.TrimEnd('\r').Split('\t')))
+            {
+                if (cells.Length < 6)
+                {
+                    throw new InvalidDataException($"{correctionsPath}: a correction needs 6 columns: {string.Join('\t', cells)}");
+                }
+
+                if (!context.Corrections.TryGetValue(cells[0], out var list))
+                {
+                    context.Corrections[cells[0]] = list = [];
+                }
+
+                list.Add((cells[1], cells[2], cells[3], cells[4]));
+            }
+        }
         var moby = LexiconSource.MergeAdditions(
                 LexiconSource.ReadWords(Path.Combine(corpus, "lexicon", LexiconSource.LexiconFile)),
                 Path.Combine(corpus, "lexicon", LexiconSource.AdditionsFile))
@@ -680,9 +700,16 @@ internal static partial class FormGenerator
                     return ["Ger"];
                 }
 
-                if (formToken == InflectionRules.VerbThirdPerson(baseToken))
+                if (formToken == InflectionRules.VerbThirdPerson(baseToken) || formToken.EndsWith('s'))
                 {
+                    // Every spelling in s is a third person (chevies, gasses, programmes, quizzes), never a past
                     return ["Third"];
+                }
+
+                // A spelling of the base itself (co-ordinate for coordinate, abye for aby) is a variant of the infinitive
+                if (formToken.Replace("-", string.Empty, StringComparison.Ordinal) == baseToken.Replace("-", string.Empty, StringComparison.Ordinal) || formToken == baseToken + "e")
+                {
+                    return [];
                 }
 
                 // A form ending in en, wn or rn (proven, shown, sworn) is a participle only: the regular past stays valid
@@ -894,6 +921,11 @@ internal static partial class FormGenerator
                 {
                     var regular = InflectionRules.VerbRegular(headLow, w => moby.ContainsKey(w));
                     var skipRegular = low == "be";
+
+                    // The head of a phrasal verb that is an irregular verb (go ahead, do justice, be quiet) has no regular past:
+                    // goed ahead, doed justice and bed quiet are not forms of the phrase, and the lists of the head are not applied
+                    // to phrases
+                    var irregularHead = !single && sources.Closed.TryGetValue((headLow, "v"), out var headClosed) && (headClosed.Past.Count > 0 || headClosed.Participle.Count > 0);
                     foreach (var (s, pv, auto) in Kind("Third", "Third", () => skipRegular ? [] : Inflect(entry, [InflectionRules.VerbThirdPerson(headLow)]), _ => true))
                     {
                         emitted.Add((s, "Third", pv, auto));
@@ -906,7 +938,7 @@ internal static partial class FormGenerator
 
                     foreach (var (kind, rule) in new[] { ("Past", "Past"), ("Part", "Participle") })
                     {
-                        foreach (var (s, pv, auto) in Kind(kind, rule, () => Inflect(entry, regular.Past.Concat(regular.PastAlternative)), s => s == Inflect(entry, [regular.Past[0]])[0]))
+                        foreach (var (s, pv, auto) in Kind(kind, rule, () => irregularHead ? [] : Inflect(entry, regular.Past.Concat(regular.PastAlternative)), s => s == Inflect(entry, [regular.Past[0]])[0]))
                         {
                             emitted.Add((s, kind, pv, auto && !EndsInIrregularVerb(headLow, sources)));
                         }
@@ -1370,6 +1402,18 @@ internal static partial class FormGenerator
             {
                 ordered.Add(i);
             }
+
+            // The corrections that the audit found: an analysis that our own sources show to be wrong is dropped or retyped
+            if (context.Corrections.TryGetValue(spelling, out var corrections))
+            {
+                ordered = ordered.Where(i => !corrections.Any(c => Matches(c, i) && c.Action == "drop"))
+                    .Select(i => corrections.FirstOrDefault(c => c.Action.StartsWith("set:", StringComparison.Ordinal) && Matches(c, i)) is { Action: not null } set ? i with { Features = set.Action[4..] } : i)
+                    .ToList();
+            }
+
+            bool Matches((string Lemma, string Pos, string Features, string Action) c, Item i) =>
+                i.Features == c.Features && i.EntryId is null ? string.Equals(c.Lemma, i.Lemma, StringComparison.Ordinal) && c.Pos == i.PosLetter
+                : i.Features == c.Features && i.EntryId is { } eid && context.Entries.TryGetValue(eid, out var row) && string.Equals(c.Lemma, row[1], StringComparison.Ordinal) && c.Pos == row[2];
 
             memo[spelling] = ordered;
             return ordered;
