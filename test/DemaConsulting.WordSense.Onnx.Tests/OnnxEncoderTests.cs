@@ -119,7 +119,7 @@ public class OnnxEncoderTests
     [Fact]
     public async Task OnnxEncoder_EncodeAsync_InvalidUse_Throws()
     {
-        var encoder = Open();
+        using var encoder = Open();
         using var cancelled = new CancellationTokenSource();
         await cancelled.CancelAsync();
 

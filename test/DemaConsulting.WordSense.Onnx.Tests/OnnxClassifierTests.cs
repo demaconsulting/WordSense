@@ -110,7 +110,7 @@ public class OnnxClassifierTests
     [Fact]
     public async Task OnnxClassifier_ClassifyAsync_NoAmbiguousWords_DoesNotEncode()
     {
-        var encoder = Open();
+        using var encoder = Open();
         var classifier = new OnnxClassifier(encoder, Embedded());
         encoder.Dispose();
 
@@ -126,7 +126,7 @@ public class OnnxClassifierTests
     [Fact]
     public async Task OnnxClassifier_ClassifyAsync_AmbiguousWords_UseTheEncoder()
     {
-        var encoder = Open();
+        using var encoder = Open();
         var classifier = new OnnxClassifier(encoder, Embedded());
 
         var result = await classifier.ClassifyAsync(Sentence, TestContext.Current.CancellationToken);
