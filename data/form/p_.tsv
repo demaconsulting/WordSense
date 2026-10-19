@@ -1,2 +1,25 @@
-spelling	rank	entry_id	features	source_id	reviewed
-p	0	oewn-p-n	Number=Sing	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+P	0	oewn-p-n	Number=Sing	dema	0			oewn_form
+P	1	oewn-P-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+P.A.	0	oewn-p.a.-r	Degree=Pos	dema	0			oewn_form
+P.A.	1	oewn-P.A.-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+P.A. system	0	oewn-P.A._system-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+P.A. systems	0	oewn-P.A._system-n	Capitalization=Exact+Number=Plur	dema	0			rule
+P.E.	0	oewn-P.E.-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+P.M.	0	oewn-p.m.-n	Number=Sing	dema	0			oewn_form
+P.M.	1	oewn-p.m.-r	Degree=Pos	dema	0			oewn_form
+P.M.	2	oewn-P.M.-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+P.M.	3	oewn-P.M.-r	Capitalization=Upper+Degree=Pos	dema	0			oewn_form
+P.O.	0	oewn-P.O.-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+P/E ratio	0	oewn-P-sl-E_ratio-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+P/E ratios	0	oewn-P-sl-E_ratio-n	Capitalization=Exact+Number=Plur	dema	0			rule
+p	0	oewn-p-n	Number=Sing	dema	0			oewn_form
+p-n junction	0	oewn-p-n_junction-n	Number=Sing	dema	0			oewn_form
+p-n junctions	0	oewn-p-n_junction-n	Number=Plur	dema	0			rule
+p-n-p transistor	0	oewn-p-n-p_transistor-n	Number=Sing	dema	0			oewn_form
+p-n-p transistors	0	oewn-p-n-p_transistor-n	Number=Plur	dema	0			rule
+p-type semiconductor	0	oewn-p-type_semiconductor-n	Number=Sing	dema	0			oewn_form
+p-type semiconductors	0	oewn-p-type_semiconductor-n	Number=Plur	dema	0			rule
+p.a.	0	oewn-p.a.-r	Degree=Pos	dema	0			oewn_form
+p.m.	0	oewn-p.m.-n	Number=Sing	dema	0			oewn_form
+p.m.	1	oewn-p.m.-r	Degree=Pos	dema	0			oewn_form

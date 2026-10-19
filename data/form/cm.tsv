@@ -1,4 +1,14 @@
-spelling	rank	entry_id	features	source_id	reviewed
-cm	0	oewn-cm-n	Number=Sing	dema	0
-cml	0	dema-cml-n	Number=Sing	dema	0
-cmls	0	dema-cml-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+CMB	0	oewn-CMB-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CMBR	0	oewn-CMBR-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CMBRS	0	oewn-CMBR-n	Capitalization=Upper+Number=Plur	dema	0			rule
+CMBS	0	oewn-CMB-n	Capitalization=Upper+Number=Plur	dema	0			rule
+CMV	0	oewn-CMV-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CMVS	0	oewn-CMV-n	Capitalization=Upper+Number=Plur	dema	0			rule
+Cm	0	oewn-cm-n	Number=Sing	dema	0			oewn_form
+Cm	1	oewn-Cm-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Cms	0	oewn-cm-n	Number=Plur	dema	0			rule
+Cms	1	oewn-Cm-n	Capitalization=Title+Number=Plur	dema	0			rule
+cm	0	oewn-cm-n	Number=Sing	dema	0			oewn_form
+cml	0		Number=Sing	dema	0	cml	n	moby_reverse
+cms	0	oewn-cm-n	Number=Plur	dema	0			rule

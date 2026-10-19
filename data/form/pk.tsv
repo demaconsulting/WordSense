@@ -1,8 +1,12 @@
-spelling	rank	entry_id	features	source_id	reviewed
-pk	0	dema-pk-n	Number=Sing	dema	0
-pkg	0	dema-pkg-n	Number=Sing	dema	0
-pkgs	0	dema-pkg-n	Number=Plur	dema	0
-pks	0	dema-pks-n	Number=Sing	dema	0
-pkses	0	dema-pks-n	Number=Plur	dema	0
-pkt	0	dema-pkt-n	Number=Sing	dema	0
-pkts	0	dema-pkt-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+PKD	0	oewn-PKD-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+PKDS	0	oewn-PKD-n	Capitalization=Upper+Number=Plur	dema	0			rule
+PKU	0	oewn-PKU-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+PKU test	0	oewn-PKU_test-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+PKU tests	0	oewn-PKU_test-n	Capitalization=Exact+Number=Plur	dema	0			rule
+PKUS	0	oewn-PKU-n	Capitalization=Upper+Number=Plur	dema	0			rule
+pk	0		Number=Sing	dema	0	pk	n	moby_reverse
+pkg	0		Number=Sing	dema	0	pkg	n	moby_reverse
+pks	0		Number=Sing	dema	0	pks	n	moby_reverse
+pks	1		Number=Plur	dema	0	pk	n	rule
+pkt	0		Number=Sing	dema	0	pkt	n	moby_reverse

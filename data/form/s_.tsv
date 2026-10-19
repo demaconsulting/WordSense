@@ -1,2 +1,14 @@
-spelling	rank	entry_id	features	source_id	reviewed
-s	0	oewn-s-n	Number=Sing	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+S	0	oewn-s-n	Number=Sing	dema	0			oewn_form
+S	1	oewn-S-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+S wrench	0	oewn-S_wrench-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+S wrenches	0	oewn-S_wrench-n	Capitalization=Exact+Number=Plur	dema	0			rule
+S-shape	0	oewn-S-shape-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+S-shapes	0	oewn-S-shape-n	Capitalization=Title+Number=Plur	dema	0			rule
+S.U.V.	0	oewn-S.U.V.-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+S/N	0	oewn-S-sl-N-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+s	0	oewn-s-n	Number=Sing	dema	0			oewn_form
+s quark	0	oewn-s_quark-n	Number=Sing	dema	0			oewn_form
+s quarks	0	oewn-s_quark-n	Number=Plur	dema	0			rule
+s-shaped	0	oewn-s-shaped-a	Degree=Pos	dema	0			oewn_form
+s.t.p.	0	oewn-s.t.p.-n	Number=Sing	dema	0			oewn_form

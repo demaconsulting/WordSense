@@ -1,4 +1,8 @@
-spelling	rank	entry_id	features	source_id	reviewed
-cc	0	oewn-cc-n	Number=Sing	dema	0
-ccm	0	dema-ccm-n	Number=Sing	dema	0
-ccms	0	dema-ccm-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+CCRC	0	oewn-CCRC-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CCRCS	0	oewn-CCRC-n	Capitalization=Upper+Number=Plur	dema	0			rule
+cc	0	oewn-cc-n	Number=Sing	dema	0			oewn_form
+cc	1	oewn-cc-a	Degree=Pos	dema	0			oewn_form
+ccc	0	oewn-ccc-a	Degree=Pos	dema	0			oewn_form
+ccm	0		Number=Sing	dema	0	ccm	n	moby_reverse
+ccs	0	oewn-cc-n	Number=Plur	dema	0			rule

@@ -1,154 +1,126 @@
-spelling	rank	entry_id	features	source_id	reviewed
-aw	0	dema-aw-a	Degree=Pos	dema	0
-aw	1	dema-aw-i		dema	0
-awa	0	dema-awa-r	Degree=Pos	dema	0
-await	0	oewn-await-v	VerbForm=Inf	dema	0
-awaited	0	oewn-await-v	Tense=Past	dema	0
-awaiter	0	dema-awaiter-n	Number=Sing	dema	0
-awaiters	0	dema-await-n	Number=Plur	dema	0
-awaiting	0	oewn-await-v	VerbForm=Ger	dema	0
-awaitingly	0	dema-await-r		dema	0
-awaits	0	oewn-await-v	Person=3+Tense=Pres	dema	0
-awake	0	oewn-awake-v	VerbForm=Inf	dema	0
-awakeable	0	dema-awakeable-a	Degree=Pos	dema	0
-awakeably	0	dema-awakeable-r		dema	0
-awaked	0	dema-awaked-v	VerbForm=Inf	dema	0
-awaken	0	oewn-awaken-v	VerbForm=Inf	dema	0
-awakenable	0	dema-awakenable-a	Degree=Pos	dema	0
-awakenably	0	dema-awakenable-r		dema	0
-awakened	0	oewn-awaken-v	Tense=Past	dema	0
-awakener	0	dema-awakener-n	Number=Sing	dema	0
-awakeners	0	dema-awaken-n	Number=Plur	dema	0
-awakening	0	dema-awakening-a	Degree=Pos	dema	0
-awakening	1	oewn-awakening-n	Number=Sing	dema	0
-awakening	2	dema-awakening-v	VerbForm=Inf	dema	0
-awakeningly	0	dema-awakeningly-r	Degree=Pos	dema	0
-awakenings	0	oewn-awakening-n	Number=Plur	dema	0
-awakens	0	oewn-awaken-v	Person=3+Tense=Pres	dema	0
-awaker	0	dema-awake-n	Number=Plur	dema	0
-awakers	0	dema-awake-n	Number=Plur	dema	0
-awakes	0	oewn-awake-v	Person=3+Tense=Pres	dema	0
-awaking	0	dema-awaking-v	VerbForm=Inf	dema	0
-awakingly	0	dema-awake-r		dema	0
-award	0	oewn-award-n	Number=Sing	dema	1
-award	1	oewn-award-v	VerbForm=Inf	dema	1
-awardable	0	dema-awardable-r	Degree=Pos	dema	0
-awarded	0	oewn-award-v	Tense=Past	dema	1
-awarder	0	dema-awarder-n	Number=Sing	dema	0
-awarders	0	oewn-award-n	Number=Plur	dema	1
-awarding	0	oewn-award-n	Number=Plur	dema	1
-awarding	1	oewn-award-v	VerbForm=Ger	dema	1
-awardingly	0	dema-award-r		dema	0
-awards	0	oewn-award-n	Number=Plur	dema	1
-awards	1	oewn-award-v	Person=3+Tense=Pres	dema	1
-aware	0	oewn-aware-a	Degree=Pos	dema	0
-awarely	0	dema-aware-r		dema	0
-awareness	0	oewn-awareness-n	Number=Sing	dema	0
-awarenesses	0	oewn-awareness-n	Number=Plur	dema	0
-awarer	0	oewn-aware-a	Degree=Cmp	dema	0
-awarest	0	oewn-aware-a	Degree=Sup	dema	0
-awash	0	dema-awash-r	Degree=Pos	dema	0
-away	0	oewn-away-r	Degree=Pos	dema	0
-away	1	oewn-away-a	Degree=Pos	dema	0
-away	2	dema-away-n	Number=Sing	dema	0
-away	3	dema-away-i		dema	0
-awayer	0	oewn-away-r	Degree=Cmp	dema	0
-awayer	1	oewn-away-a	Degree=Cmp	dema	0
-awayest	0	oewn-away-r	Degree=Sup	dema	0
-awayest	1	oewn-away-a	Degree=Sup	dema	0
-awayly	0	oewn-away-r		dema	0
-awayness	0	dema-away-n	Number=Plur	dema	0
-aways	0	dema-away-n	Number=Plur	dema	0
-awe	0	oewn-awe-n	Number=Sing	dema	0
-awe	1	oewn-awe-v	VerbForm=Inf	dema	0
-aweather	0	dema-aweather-r	Degree=Pos	dema	0
-awed	0	oewn-awed-a	Degree=Pos	dema	0
-awed	1	dema-awed-v	VerbForm=Inf	dema	0
-aweded	0	dema-awed-v	Tense=Past	dema	0
-aweder	0	dema-awed-n	Number=Plur	dema	0
-aweders	0	dema-awed-n	Number=Plur	dema	0
-aweding	0	dema-awed-v	VerbForm=Ger	dema	0
-awedingly	0	dema-awed-r		dema	0
-awedly	0	dema-awedly-r	Degree=Pos	dema	0
-awedness	0	dema-awedness-n	Number=Sing	dema	0
-awednesses	0	dema-awedness-n	Number=Plur	dema	0
-aweds	0	dema-awed-v	Person=3+Tense=Pres	dema	0
-aweigh	0	oewn-aweigh-a	Degree=Pos	dema	0
-aweigher	0	oewn-aweigh-a	Degree=Cmp	dema	0
-aweighest	0	oewn-aweigh-a	Degree=Sup	dema	0
-aweighly	0	dema-aweigh-r		dema	0
-aweighness	0	dema-aweigh-n	Number=Plur	dema	0
-aweless	0	oewn-aweless-a	Degree=Pos	dema	0
-awelessly	0	dema-aweless-r		dema	0
-awelessness	0	dema-awelessness-n	Number=Sing	dema	0
-awelessnesses	0	dema-awelessness-n	Number=Plur	dema	0
-awer	0	oewn-awe-n	Number=Plur	dema	0
-awers	0	oewn-awe-n	Number=Plur	dema	0
-awes	0	oewn-awe-n	Number=Plur	dema	0
-awes	1	oewn-awe-v	Person=3+Tense=Pres	dema	0
-awesome	0	oewn-awesome-a	Degree=Pos	dema	0
-awesomely	0	dema-awesomely-r	Degree=Pos	dema	0
-awesomeness	0	dema-awesomeness-n	Number=Sing	dema	0
-awesomenesses	0	dema-awesomeness-n	Number=Plur	dema	0
-awful	0	oewn-awful-a	Degree=Pos	dema	0
-awful	1	oewn-awful-r	Degree=Pos	dema	0
-awfully	0	oewn-awfully-r	Degree=Pos	dema	0
-awfulness	0	oewn-awfulness-n	Number=Sing	dema	0
-awfulnesses	0	oewn-awfulness-n	Number=Plur	dema	0
-awheel	0	dema-awheel-r	Degree=Pos	dema	0
-awhile	0	oewn-awhile-r	Degree=Pos	dema	0
-awhirl	0	dema-awhirl-a	Degree=Pos	dema	0
-awhirler	0	dema-awhirl-a	Degree=Cmp	dema	0
-awhirlest	0	dema-awhirl-a	Degree=Sup	dema	0
-awhirlly	0	dema-awhirl-r		dema	0
-awhirlness	0	dema-awhirl-n	Number=Plur	dema	0
-awing	0	dema-awing-v	VerbForm=Inf	dema	0
-awingly	0	dema-awe-r		dema	0
-awkward	0	oewn-awkward-a	Degree=Pos	dema	0
-awkwarder	0	oewn-awkward-a	Degree=Cmp	dema	0
-awkwardest	0	oewn-awkward-a	Degree=Sup	dema	0
-awkwardly	0	oewn-awkwardly-r	Degree=Pos	dema	0
-awkwardness	0	oewn-awkwardness-n	Number=Sing	dema	0
-awkwardnesses	0	oewn-awkwardness-n	Number=Plur	dema	0
-awl	0	oewn-awl-n	Number=Sing	dema	0
-awless	0	oewn-awless-a	Degree=Pos	dema	0
-awlessly	0	dema-awless-r		dema	0
-awlessness	0	dema-awlessness-n	Number=Sing	dema	0
-awlessnesses	0	dema-awlessness-n	Number=Plur	dema	0
-awls	0	oewn-awl-n	Number=Plur	dema	0
-awlwort	0	oewn-awlwort-n	Number=Sing	dema	0
-awlworts	0	oewn-awlwort-n	Number=Plur	dema	0
-awmous	0	dema-awmous-n	Number=Sing	dema	0
-awmouses	0	dema-awmous-n	Number=Plur	dema	0
-awn	0	oewn-awn-n	Number=Sing	dema	0
-awned	0	oewn-awned-a	Degree=Pos	dema	0
-awned	1	dema-awned-v	VerbForm=Inf	dema	0
-awneded	0	dema-awned-v	Tense=Past	dema	0
-awneder	0	dema-awned-n	Number=Plur	dema	0
-awneders	0	dema-awned-n	Number=Plur	dema	0
-awneding	0	dema-awned-v	VerbForm=Ger	dema	0
-awnedingly	0	dema-awned-r		dema	0
-awnedly	0	dema-awned-r		dema	0
-awnedness	0	dema-awned-n	Number=Plur	dema	0
-awneds	0	dema-awned-v	Person=3+Tense=Pres	dema	0
-awner	0	dema-awner-n	Number=Sing	dema	0
-awners	0	dema-awner-n	Number=Plur	dema	0
-awning	0	oewn-awning-n	Number=Sing	dema	0
-awninged	0	oewn-awninged-a	Degree=Pos	dema	0
-awninged	1	dema-awninged-v	VerbForm=Inf	dema	0
-awningeded	0	dema-awninged-v	Tense=Past	dema	0
-awningeder	0	dema-awninged-n	Number=Plur	dema	0
-awningeders	0	dema-awninged-n	Number=Plur	dema	0
-awningeding	0	dema-awninged-v	VerbForm=Ger	dema	0
-awningedingly	0	dema-awninged-r		dema	0
-awningedly	0	dema-awninged-r		dema	0
-awningedness	0	dema-awninged-n	Number=Plur	dema	0
-awningeds	0	dema-awninged-v	Person=3+Tense=Pres	dema	0
-awnings	0	oewn-awning-n	Number=Plur	dema	0
-awnless	0	oewn-awnless-a	Degree=Pos	dema	0
-awnlessly	0	dema-awnless-r		dema	0
-awnlessness	0	dema-awnless-n	Number=Plur	dema	0
-awns	0	oewn-awn-n	Number=Plur	dema	0
-awoke	0	dema-awoke-v	VerbForm=Inf	dema	0
-awoken	0	oewn-awake-v		dema	0
-awry	0	oewn-awry-r	Degree=Pos	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+AWOL	0	oewn-awol-a	Degree=Pos	dema	0			oewn_form
+AWOL	1	oewn-AWOL-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+AWOLS	0	oewn-AWOL-n	Capitalization=Upper+Number=Plur	dema	0			rule
+aw	0		Degree=Pos	dema	0	aw	a	moby_reverse
+aw	1	dema-aw-i		dema	0			carried
+awa	0		Degree=Pos	dema	0	awa	r	moby_reverse
+await	0	oewn-await-v	VerbForm=Inf	dema	0			oewn_form
+awaited	0	oewn-await-v	Tense=Past+VerbForm=Part	dema	0			rule
+awaited	1	oewn-awaited-a	Degree=Pos	dema	0			oewn_form
+awaiter	0		Number=Sing	dema	0	awaiter	n	moby_reverse
+awaiters	0		Number=Plur	dema	0	awaiter	n	rule
+awaiting	0	oewn-await-v	VerbForm=Ger	dema	0			rule
+awaits	0	oewn-await-v	Person=3+Tense=Pres	dema	0			rule
+awake	0	oewn-awake-v	VerbForm=Inf	dema	0			oewn_form
+awake	1	oewn-awake-a	Degree=Pos	dema	0			oewn_form
+awakeable	0		Degree=Pos	dema	0	awakeable	a	moby_reverse
+awaked	0	oewn-awake-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+awaken	0	oewn-awaken-v	VerbForm=Inf	dema	0			oewn_form
+awakenable	0		Degree=Pos	dema	0	awakenable	a	moby_reverse
+awakened	0	oewn-awaken-v	Tense=Past+VerbForm=Part	dema	0			rule
+awakened	1	oewn-awakened-a	Degree=Pos	dema	0			oewn_form
+awakener	0		Number=Sing	dema	0	awakener	n	moby_reverse
+awakeners	0		Number=Plur	dema	0	awakener	n	rule
+awakening	0		Degree=Pos	dema	0	awakening	a	moby_reverse
+awakening	1	oewn-awakening-n	Number=Sing	dema	0			oewn_form
+awakening	2	oewn-awaken-v	VerbForm=Ger	dema	0			rule
+awakeningly	0		Degree=Pos	dema	0	awakeningly	r	moby_reverse
+awakenings	0	oewn-awakening-n	Number=Plur	dema	0			rule
+awakens	0	oewn-awaken-v	Person=3+Tense=Pres	dema	0			rule
+awakes	0	oewn-awake-v	Person=3+Tense=Pres	dema	0			rule
+awaking	0	oewn-awake-v	VerbForm=Ger	dema	0			rule
+award	0	oewn-award-n	Number=Sing	dema	1			carried
+award	1	oewn-award-v	VerbForm=Inf	dema	1			carried
+award-winning	0	oewn-award-winning-a	Degree=Pos	dema	0			oewn_form
+awardable	0		Degree=Pos	dema	0	awardable	r	moby_reverse
+awarded	0	oewn-award-v	Tense=Past+VerbForm=Part	dema	1			carried
+awarder	0		Number=Sing	dema	0	awarder	n	moby_reverse
+awarders	0		Number=Plur	dema	0	awarder	n	rule
+awarding	0	oewn-award-v	VerbForm=Ger	dema	1			carried
+awarding	1	oewn-award-n	Number=Sing+VerbForm=Ger	dema	1			carried
+awarding	2	oewn-awarding-n	Number=Sing	dema	0			oewn_form
+awardings	0	oewn-awarding-n	Number=Plur	dema	0			rule
+awards	0	oewn-award-n	Number=Plur	dema	1			carried
+awards	1	oewn-award-v	Person=3+Tense=Pres	dema	1			carried
+aware	0	oewn-aware-a	Degree=Pos	dema	0			oewn_form
+awareness	0	oewn-awareness-n	Number=Sing	dema	0			oewn_form
+awarenesses	0	oewn-awareness-n	Number=Plur	dema	0			rule
+awash	0		Degree=Pos	dema	0	awash	r	moby_reverse
+awash	1	oewn-awash-a	Degree=Pos	dema	0			oewn_form
+away	0	oewn-away-r	Degree=Pos	dema	0			oewn_form
+away	1	oewn-away-a	Degree=Pos	dema	0			oewn_form
+away	2		Number=Sing	dema	0	away	n	moby_reverse
+away	3	dema-away-i		dema	0			carried
+away game	0	oewn-away_game-n	Number=Sing	dema	0			oewn_form
+away games	0	oewn-away_game-n	Number=Plur	dema	0			rule
+awayness	0	oewn-awayness-n	Number=Sing	dema	0			oewn_form
+awaynesses	0	oewn-awayness-n	Number=Plur	dema	0			rule
+awe	0	oewn-awe-n	Number=Sing	dema	0			oewn_form
+awe	1	oewn-awe-v	VerbForm=Inf	dema	0			oewn_form
+awe-inspiring	0	oewn-awe-inspiring-a	Degree=Pos	dema	0			oewn_form
+aweary	0	oewn-aweary-a	Degree=Pos	dema	0			oewn_form
+aweather	0		Degree=Pos	dema	0	aweather	r	moby_reverse
+awed	0	oewn-awed-a	Degree=Pos	dema	0			oewn_form
+awed	1	oewn-awe-v	Tense=Past+VerbForm=Part	dema	0			rule
+awedly	0		Degree=Pos	dema	0	awedly	r	moby_reverse
+awedness	0		Number=Sing	dema	0	awedness	n	moby_reverse
+aweigh	0	oewn-aweigh-a	Degree=Pos	dema	0			oewn_form
+aweless	0	oewn-aweless-a	Degree=Pos	dema	0			oewn_form
+awelessness	0		Number=Sing	dema	0	awelessness	n	moby_reverse
+awes	0	oewn-awe-n	Number=Plur	dema	0			rule
+awes	1	oewn-awe-v	Person=3+Tense=Pres	dema	0			rule
+awesome	0	oewn-awesome-a	Degree=Pos	dema	0			oewn_form
+awesomely	0		Degree=Pos	dema	0	awesomely	r	moby_reverse
+awesomeness	0		Number=Sing	dema	0	awesomeness	n	moby_reverse
+awesomenesses	0		Number=Plur	dema	0	awesomeness	n	rule
+awestricken	0	oewn-awestricken-a	Degree=Pos	dema	0			oewn_form
+awestruck	0	oewn-awestruck-a	Degree=Pos	dema	0			oewn_form
+awful	0	oewn-awful-a	Degree=Pos	dema	0			oewn_form
+awful	1	oewn-awful-r	Degree=Pos	dema	0			oewn_form
+awfully	0	oewn-awfully-r	Degree=Pos	dema	0			oewn_form
+awfulness	0	oewn-awfulness-n	Number=Sing	dema	0			oewn_form
+awfulnesses	0	oewn-awfulness-n	Number=Plur	dema	0			rule
+awheel	0		Degree=Pos	dema	0	awheel	r	moby_reverse
+awheel	1	oewn-awheel-a	Degree=Pos	dema	0			oewn_form
+awhile	0	oewn-awhile-r	Degree=Pos	dema	0			oewn_form
+awhirl	0		Degree=Pos	dema	0	awhirl	a	moby_reverse
+awing	0	oewn-awe-v	VerbForm=Ger	dema	0			rule
+awing	1	oewn-awing-a	Degree=Pos	dema	0			oewn_form
+awkward	0	oewn-awkward-a	Degree=Pos	dema	0			oewn_form
+awkwardly	0	oewn-awkwardly-r	Degree=Pos	dema	0			oewn_form
+awkwardness	0	oewn-awkwardness-n	Number=Sing	dema	0			oewn_form
+awkwardnesses	0	oewn-awkwardness-n	Number=Plur	dema	0			rule
+awl	0	oewn-awl-n	Number=Sing	dema	0			oewn_form
+awl-shaped	0	oewn-awl-shaped-a	Degree=Pos	dema	0			oewn_form
+awless	0	oewn-awless-a	Degree=Pos	dema	0			oewn_form
+awlessness	0		Number=Sing	dema	0	awlessness	n	moby_reverse
+awls	0	oewn-awl-n	Number=Plur	dema	0			rule
+awlwort	0	oewn-awlwort-n	Number=Sing	dema	0			oewn_form
+awlworts	0	oewn-awlwort-n	Number=Plur	dema	0			rule
+awmous	0		Number=Sing	dema	0	awmous	n	moby_reverse
+awn	0	oewn-awn-n	Number=Sing	dema	0			oewn_form
+awned	0	oewn-awned-a	Degree=Pos	dema	0			oewn_form
+awned	1		VerbForm=Inf	dema	0	awned	v	moby_reverse
+awner	0		Number=Sing	dema	0	awner	n	moby_reverse
+awners	0		Number=Plur	dema	0	awner	n	rule
+awnier	0	oewn-awny-a	Degree=Cmp	dema	0			rule
+awniest	0	oewn-awny-a	Degree=Sup	dema	0			rule
+awning	0	oewn-awning-n	Number=Sing	dema	0			oewn_form
+awning deck	0	oewn-awning_deck-n	Number=Sing	dema	0			oewn_form
+awning decks	0	oewn-awning_deck-n	Number=Plur	dema	0			rule
+awninged	0	oewn-awninged-a	Degree=Pos	dema	0			oewn_form
+awninged	1		VerbForm=Inf	dema	0	awninged	v	moby_reverse
+awnings	0	oewn-awning-n	Number=Plur	dema	0			rule
+awnless	0	oewn-awnless-a	Degree=Pos	dema	0			oewn_form
+awnless bromegrass	0	oewn-awnless_bromegrass-n	Number=Sing	dema	0			oewn_form
+awnless bromegrasses	0	oewn-awnless_bromegrass-n	Number=Plur	dema	0			rule
+awns	0	oewn-awn-n	Number=Plur	dema	0			rule
+awny	0	oewn-awny-a	Degree=Pos	dema	0			oewn_form
+awoke	0	oewn-awake-v	Tense=Past	dema	0			hand
+awoken	0	oewn-awake-v	VerbForm=Part	dema	0			hand
+awol	0	oewn-awol-a	Degree=Pos	dema	0			oewn_form
+awrier	0	oewn-awry-a	Degree=Cmp	dema	0			rule
+awriest	0	oewn-awry-a	Degree=Sup	dema	0			rule
+awry	0	oewn-awry-r	Degree=Pos	dema	0			oewn_form
+awry	1	oewn-awry-a	Degree=Pos	dema	0			oewn_form

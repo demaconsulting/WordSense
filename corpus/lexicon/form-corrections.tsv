@@ -1,0 +1,16 @@
+# Corrections of generated analyses that our own sources show to be wrong, found by the forms audit.
+# Columns: spelling <TAB> lemma <TAB> part-of-speech letter <TAB> features of the analysis <TAB> action <TAB> evidence
+# Action drop removes the analysis; action set:FEATURES replaces its features. The evidence names our own sources only.
+araglis	argali	n	Number=Plur	drop	oewn form typo; AGID and Moby give argalis
+madornos	madrono	n	Number=Plur	drop	oewn form typo; AGID and Moby give madronos
+cercariiae	cercaria	n	Number=Plur	drop	oewn form typo; AGID gives cercariae
+filariiae	filaria	n	Number=Plur	drop	oewn form typo; AGID gives filariae
+kindling	kindling	n	Number=Plur	drop	mass noun; the AGID -ing plural is not attested by OEWN or Moby
+tabes	tabis	n	Number=Plur	drop	AGID gives tabes for the lemma tabes (mass noun), not as a plural of tabis
+trades	trad	n	Number=Plur	drop	trad is an adjective and noun without this plural; trades belongs to trade
+behooves	behoof	n	Number=Plur	drop	behoof has no plural; behooves is the third person of behoove
+photosynthesises	photosynthesis	n	Number=Plur	drop	photosynthesis is a mass noun; AGID marks this form as non-standard
+unmaned	unman	v	Tense=Past+VerbForm=Part	drop	the past of unman is unmanned (AGID)
+muskallunge	muskellunge	n	Number=Plur	set:Number=Sing	a spelling variant of the singular (OEWN form)
+gan	gin	v	Tense=Past+VerbForm=Part	set:Tense=Past	gan is only a past (OEWN form, Moby)
+quick-froze	quick-freeze	v	Tense=Past+VerbForm=Part	set:Tense=Past	froze is a past, the participle is quick-frozen

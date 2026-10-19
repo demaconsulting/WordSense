@@ -208,6 +208,39 @@ reviews:
       - "tools/WordSense.Builder/Data/OewnImporter.cs"
       - "test/WordSense.Builder.Tests/Data/OewnImporterTests.cs"
 
+  # WordSense-WordData-FormGenerator Review (one per unit)
+  - id: WordSense-WordData-FormGenerator
+    title: Review that WordSense FormGenerator Implementation is Correct
+    context:
+      - "docs/design/word-sense/word-data.md"
+      - "docs/reqstream/word-sense/word-data.yaml"
+    paths:
+      - "docs/reqstream/word-sense/word-data/form-generator.yaml"
+      - "docs/design/word-sense/word-data/form-generator.md"
+      - "docs/verification/word-sense/word-data/form-generator.md"
+      - "tools/WordSense.Builder/Data/FormGenerator.cs"
+      - "tools/WordSense.Builder/Data/FactGenerator.cs"
+      - "tools/WordSense.Builder/Data/InflectionRules.cs"
+      - "tools/WordSense.Builder/Data/AgidImporter.cs"
+      - "tools/WordSense.Builder/Data/IrregularSources.cs"
+      - "test/WordSense.Builder.Tests/Data/FormGeneratorDataTests.cs"
+      - "test/WordSense.Builder.Tests/Data/FactGeneratorTests.cs"
+      - "test/WordSense.Builder.Tests/Data/InflectionRulesTests.cs"
+      - "test/DemaConsulting.WordSense.Tests/LexiconFactTests.cs"
+
+  # WordSense-WordData-FormAuditor Review (one per unit)
+  - id: WordSense-WordData-FormAuditor
+    title: Review that WordSense FormAuditor Implementation is Correct
+    context:
+      - "docs/design/word-sense/word-data.md"
+      - "docs/reqstream/word-sense/word-data.yaml"
+    paths:
+      - "docs/reqstream/word-sense/word-data/form-auditor.yaml"
+      - "docs/design/word-sense/word-data/form-auditor.md"
+      - "docs/verification/word-sense/word-data/form-auditor.md"
+      - "tools/WordSense.Builder/Data/FormAuditor.cs"
+      - "test/WordSense.Builder.Tests/Data/FormAuditorTests.cs"
+
   # WordSense-WordData-DataValidator Review (one per unit)
   - id: WordSense-WordData-DataValidator
     title: Review that WordSense DataValidator Implementation is Correct

@@ -1,0 +1,78 @@
+---
+# FormGenerator unit requirements (the inflected-form table of the word data)
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: WordData Requirements
+        sections:
+          - title: FormGenerator Requirements
+            requirements:
+              - id: WordSense-WordData-FormGenerator-Corroboration
+                title: >-
+                  FormGenerator shall write a generated inflected form only when two independent sources support it,
+                  or when it is a regular -s, -ed or -ing form of a real dictionary lemma, and shall leave every other
+                  candidate out so that the word stays unknown.
+                tags: [unit]
+                justification: |
+                  A wrong analysis is worse than no analysis; a form that one rule alone proposes cannot be told from
+                  an error without a second opinion.
+                tests:
+                  - WordSenseBuilder_FormGenerator_Data_Provenance_IsKnown
+                  - WordSenseBuilder_FormGenerator_Data_RegularInflection_IsResolved
+                  - WordSenseBuilder_FormGenerator_Data_AuditCorrections_AreApplied
+                  - WordSenseBuilder_FormGenerator_Data_PhraseWithIrregularHead_HasNoRegularPast
+                  - WordSenseBuilder_FormGenerator_Data_AgidOnlyIrregularForm_IsNotShipped
+
+              - id: WordSense-WordData-FormGenerator-Gerunds
+                title: >-
+                  FormGenerator shall give a word that ends in -ing and is the gerund of a verb a verb analysis
+                  with the gerund features ahead of any noun analysis, and shall not give it a plural noun analysis.
+                tags: [unit]
+                justification: |
+                  A participle or gerund that is ranked below an invented plural noun is tagged with the wrong part of
+                  speech.
+                tests:
+                  - WordSenseBuilder_FormGenerator_Data_IngForm_LeadsWithVerb
+                  - WordSenseBuilder_FormGenerator_Data_IngForm_IsNotPluralNoun
+
+              - id: WordSense-WordData-FormGenerator-OwnEntries
+                title: >-
+                  FormGenerator shall give every spelling the analysis of each dictionary entry whose lemma is that
+                  spelling and the forms of the irregular lists, also when an earlier reviewed analysis of another
+                  entry carries the spelling.
+                tags: [unit]
+                justification: |
+                  An entry whose analysis is missing has senses that no word can reach; a noun such as tracing must
+                  keep its own analysis beside the gerund of the verb.
+                tests:
+                  - WordSenseBuilder_FactGenerator_Check_AllFactsAndIngEntriesHold
+
+              - id: WordSense-WordData-FormGenerator-Facts
+                title: >-
+                  FormGenerator shall provide a repeatable command that derives lexicon facts from the irregular
+                  lists, a seeded sample of the regular verbs and nouns, the contractions and the entries spelled like
+                  -ing forms, so that the fact set does not depend on the words seen failing in an evaluation.
+                tags: [unit]
+                justification: |
+                  A fact set chosen from observed failures rewards tuning to those words; a mechanical, seeded
+                  derivation is independent of them and can be regenerated.
+                tests:
+                  - WordSenseBuilder_FactGenerator_Generate_IsDeterministicForSeed
+                  - WordSenseBuilder_FactGenerator_Generate_MatchesCommittedFile
+
+              - id: WordSense-WordData-FormGenerator-Rules
+                title: >-
+                  FormGenerator shall derive regular noun plurals, third-person verb forms, past and gerund forms and
+                  adjective degrees by the spelling rules of English, including the doubling, dropping and changing of
+                  final letters.
+                tags: [unit]
+                justification: |
+                  The regular forms are most of the table and have to be spelled correctly.
+                tests:
+                  - WordSenseBuilder_InflectionRules_NounPlural_Regular_AddsSuffix
+                  - WordSenseBuilder_InflectionRules_VerbThirdPerson_Regular_AddsSuffix
+                  - WordSenseBuilder_InflectionRules_VerbRegular_Spellings
+                  - WordSenseBuilder_InflectionRules_AdjectiveDegrees_ShortAndLong
+                  - WordSenseBuilder_InflectionRules_ReverseCandidates_Plural_ContainsSingular
+                  - WordSenseBuilder_FormGenerator_Data_VerbSpellingInS_IsThirdPerson

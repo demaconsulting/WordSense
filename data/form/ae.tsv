@@ -1,375 +1,419 @@
-spelling	rank	entry_id	features	source_id	reviewed
-ae	0	dema-ae-a	Degree=Pos	dema	0
-ae	1	dema-ae-n	Number=Sing	dema	0
-aecia	0	dema-aecia-n	Number=Sing	dema	0
-aecial	0	oewn-aecial-a	Degree=Pos	dema	0
-aecially	0	dema-aecial-r		dema	0
-aecialness	0	dema-aecial-n	Number=Plur	dema	0
-aecias	0	dema-aecia-n	Number=Plur	dema	0
-aecidia	0	dema-aecidia-n	Number=Sing	dema	0
-aecidias	0	dema-aecidia-n	Number=Plur	dema	0
-aecidium	0	dema-aecidium-n	Number=Sing	dema	0
-aecidiums	0	dema-aecidium-n	Number=Plur	dema	0
-aeciospore	0	oewn-aeciospore-n	Number=Sing	dema	0
-aeciospores	0	oewn-aeciospore-n	Number=Plur	dema	0
-aecium	0	oewn-aecium-n	Number=Sing	dema	0
-aeciums	0	oewn-aecium-n	Number=Plur	dema	0
-aedeagal	0	dema-aedeagal-a	Degree=Pos	dema	0
-aedeagally	0	dema-aedeagal-r		dema	0
-aedeagalness	0	dema-aedeagal-n	Number=Plur	dema	0
-aedeagus	0	dema-aedeagus-n	Number=Sing	dema	0
-aedeaguses	0	dema-aedeagus-n	Number=Plur	dema	0
-aedegi	0	dema-aedegi-n	Number=Sing	dema	0
-aedegis	0	dema-aedegi-n	Number=Plur	dema	0
-aedes	0	dema-aedes-n	Number=Sing	dema	0
-aedeses	0	dema-aedes-n	Number=Plur	dema	0
-aedicula	0	dema-aedicula-n	Number=Sing	dema	0
-aediculae	0	dema-aediculae-n	Number=Sing	dema	0
-aediculaes	0	dema-aediculae-n	Number=Plur	dema	0
-aediculas	0	dema-aedicula-n	Number=Plur	dema	0
-aedicule	0	dema-aedicule-n	Number=Sing	dema	0
-aedicules	0	dema-aedicule-n	Number=Plur	dema	0
-aedile	0	dema-aedile-n	Number=Sing	dema	0
-aediles	0	dema-aedile-n	Number=Plur	dema	0
-aedileship	0	dema-aedileship-n	Number=Sing	dema	0
-aedileships	0	dema-aedileship-n	Number=Plur	dema	0
-aedilitian	0	dema-aedilitian-a	Degree=Pos	dema	0
-aedilitianly	0	dema-aedilitian-r		dema	0
-aedoeagi	0	dema-aedoeagi-n	Number=Sing	dema	0
-aedoeagis	0	dema-aedoeagi-n	Number=Plur	dema	0
-aedoeagus	0	dema-aedoeagus-n	Number=Sing	dema	0
-aedoeaguses	0	dema-aedoeagus-n	Number=Plur	dema	0
-aegirite	0	dema-aegirite-n	Number=Sing	dema	0
-aegirites	0	dema-aegirite-n	Number=Plur	dema	0
-aegis	0	oewn-aegis-n	Number=Sing	dema	0
-aegrotat	0	dema-aegrotat-n	Number=Sing	dema	0
-aegrotats	0	dema-aegrotat-n	Number=Plur	dema	0
-aeneous	0	dema-aeneous-a	Degree=Pos	dema	0
-aeneously	0	dema-aeneous-r		dema	0
-aeneousness	0	dema-aeneous-n	Number=Plur	dema	0
-aeolipile	0	dema-aeolipile-n	Number=Sing	dema	0
-aeolipiles	0	dema-aeolipile-n	Number=Plur	dema	0
-aeolotropic	0	oewn-aeolotropic-a	Degree=Pos	dema	0
-aeolotropically	0	dema-aeolotropic-r		dema	0
-aeolotropies	0	dema-aeolotropy-n	Number=Plur	dema	0
-aeolotropism	0	dema-aeolotropism-n	Number=Sing	dema	0
-aeolotropisms	0	dema-aeolotropism-n	Number=Plur	dema	0
-aeolotropy	0	dema-aeolotropy-n	Number=Sing	dema	0
-aeon	0	oewn-aeon-n	Number=Sing	dema	0
-aeonian	0	oewn-aeonian-a	Degree=Pos	dema	0
-aeonianly	0	dema-aeonian-r		dema	0
-aeonianness	0	dema-aeonian-n	Number=Plur	dema	0
-aeons	0	oewn-aeon-n	Number=Plur	dema	0
-aepyornis	0	oewn-aepyornis-n	Number=Sing	dema	0
-aeraria	0	dema-aeraria-n	Number=Sing	dema	0
-aerarian	0	dema-aerarian-a	Degree=Pos	dema	0
-aerarian	1	dema-aerarian-n	Number=Sing	dema	0
-aerarianly	0	dema-aerarian-r		dema	0
-aerarianness	0	dema-aerarian-n	Number=Plur	dema	0
-aerarians	0	dema-aerarian-n	Number=Plur	dema	0
-aerarias	0	dema-aeraria-n	Number=Plur	dema	0
-aerarium	0	dema-aerarium-n	Number=Sing	dema	0
-aerariums	0	dema-aerarium-n	Number=Plur	dema	0
-aerate	0	oewn-aerate-v	VerbForm=Inf	dema	0
-aerated	0	dema-aerated-v	VerbForm=Inf	dema	0
-aerater	0	dema-aerate-n	Number=Plur	dema	0
-aeraters	0	dema-aerate-n	Number=Plur	dema	0
-aerates	0	oewn-aerate-v	Person=3+Tense=Pres	dema	0
-aerating	0	dema-aerating-v	VerbForm=Inf	dema	0
-aeratingly	0	dema-aerate-r		dema	0
-aeration	0	oewn-aeration-n	Number=Sing	dema	0
-aerations	0	oewn-aeration-n	Number=Plur	dema	0
-aerator	0	oewn-aerator-n	Number=Sing	dema	0
-aerators	0	oewn-aerator-n	Number=Plur	dema	0
-aerenchyma	0	dema-aerenchyma-n	Number=Sing	dema	0
-aerenchymas	0	dema-aerenchyma-n	Number=Plur	dema	0
-aerial	0	oewn-aerial-a	Degree=Pos	dema	0
-aerial	1	oewn-aerial-n	Number=Sing	dema	0
-aerialist	0	oewn-aerialist-n	Number=Sing	dema	0
-aerialists	0	oewn-aerialist-n	Number=Plur	dema	0
-aerialities	0	dema-aeriality-n	Number=Plur	dema	0
-aeriality	0	dema-aeriality-n	Number=Sing	dema	0
-aerially	0	oewn-aerially-r	Degree=Pos	dema	0
-aerialness	0	dema-aerialness-n	Number=Sing	dema	0
-aerialnesses	0	dema-aerialness-n	Number=Plur	dema	0
-aerials	0	oewn-aerial-n	Number=Plur	dema	0
-aerie	0	oewn-aerie-n	Number=Sing	dema	0
-aerier	0	oewn-aery-a	Degree=Cmp	dema	0
-aeries	0	dema-aeries-n	Number=Sing	dema	0
-aeriest	0	oewn-aery-a	Degree=Sup	dema	0
-aeriferous	0	oewn-aeriferous-a	Degree=Pos	dema	0
-aeriferously	0	dema-aeriferous-r		dema	0
-aerification	0	dema-aerification-n	Number=Sing	dema	0
-aerifications	0	dema-aerification-n	Number=Plur	dema	0
-aerified	0	dema-aerified-v	VerbForm=Inf	dema	0
-aerifier	0	dema-aerify-n	Number=Plur	dema	0
-aerifiers	0	dema-aerify-n	Number=Plur	dema	0
-aerifies	0	oewn-aerify-v	Person=3+Tense=Pres	dema	0
-aeriform	0	oewn-aeriform-a	Degree=Pos	dema	0
-aeriformly	0	dema-aeriform-r		dema	0
-aeriformness	0	dema-aeriform-n	Number=Plur	dema	0
-aerify	0	oewn-aerify-v	VerbForm=Inf	dema	0
-aerifying	0	dema-aerifying-v	VerbForm=Inf	dema	0
-aerily	0	dema-aery-r		dema	0
-aeriness	0	oewn-aery-n	Number=Plur	dema	0
-aero	0	dema-aero-n	Number=Sing	dema	0
-aerobacteriological	0	dema-aerobacteriological-a	Degree=Pos	dema	0
-aerobacteriologically	0	dema-aerobacteriologically-r	Degree=Pos	dema	0
-aerobacteriologies	0	dema-aerobacteriology-n	Number=Plur	dema	0
-aerobacteriologist	0	dema-aerobacteriologist-n	Number=Sing	dema	0
-aerobacteriologists	0	dema-aerobacteriologist-n	Number=Plur	dema	0
-aerobacteriology	0	dema-aerobacteriology-n	Number=Sing	dema	0
-aeroballistic	0	dema-aeroballistic-a	Degree=Pos	dema	0
-aeroballistically	0	dema-aeroballistic-r		dema	0
-aeroballistics	0	dema-aeroballistics-n	Number=Sing	dema	0
-aeroballisticses	0	dema-aeroballistics-n	Number=Plur	dema	0
-aerobatic	0	dema-aerobatic-a	Degree=Pos	dema	0
-aerobatically	0	dema-aerobatic-r		dema	0
-aerobatics	0	oewn-aerobatics-n	Number=Sing	dema	0
-aerobaticses	0	oewn-aerobatics-n	Number=Plur	dema	0
-aerobe	0	oewn-aerobe-n	Number=Sing	dema	0
-aerobee	0	dema-aerobee-n	Number=Sing	dema	0
-aerobees	0	dema-aerobee-n	Number=Plur	dema	0
-aerobes	0	oewn-aerobe-n	Number=Plur	dema	0
-aerobia	0	dema-aerobia-n	Number=Sing	dema	0
-aerobias	0	dema-aerobia-n	Number=Plur	dema	0
-aerobic	0	oewn-aerobic-a	Degree=Pos	dema	0
-aerobically	0	dema-aerobically-r	Degree=Pos	dema	0
-aerobicness	0	dema-aerobic-n	Number=Plur	dema	0
-aerobiologic	0	dema-aerobiologic-a	Degree=Pos	dema	0
-aerobiological	0	dema-aerobiological-a	Degree=Pos	dema	0
-aerobiologically	0	dema-aerobiologically-r	Degree=Pos	dema	0
-aerobiologies	0	dema-aerobiology-n	Number=Plur	dema	0
-aerobiologist	0	dema-aerobiologist-n	Number=Sing	dema	0
-aerobiologists	0	dema-aerobiologist-n	Number=Plur	dema	0
-aerobiology	0	dema-aerobiology-n	Number=Sing	dema	0
-aerobiosis	0	oewn-aerobiosis-n	Number=Sing	dema	0
-aerobiosis	1	dema-aerobiosis-a	Degree=Pos	dema	0
-aerobiosisly	0	dema-aerobiosis-r		dema	0
-aerobiotic	0	oewn-aerobiotic-a	Degree=Pos	dema	0
-aerobiotically	0	dema-aerobiotically-r	Degree=Pos	dema	0
-aerobium	0	dema-aerobium-n	Number=Sing	dema	0
-aerobiums	0	dema-aerobium-n	Number=Plur	dema	0
-aerocar	0	dema-aerocar-n	Number=Sing	dema	0
-aerocars	0	dema-aerocar-n	Number=Plur	dema	0
-aerodonetic	0	dema-aerodonetic-a	Degree=Pos	dema	0
-aerodonetically	0	dema-aerodonetic-r		dema	0
-aerodonetics	0	dema-aerodonetics-n	Number=Sing	dema	0
-aerodoneticses	0	dema-aerodonetics-n	Number=Plur	dema	0
-aerodontalgia	0	oewn-aerodontalgia-n	Number=Sing	dema	0
-aerodontalgias	0	oewn-aerodontalgia-n	Number=Plur	dema	0
-aerodontia	0	dema-aerodontia-n	Number=Sing	dema	0
-aerodontias	0	dema-aerodontia-n	Number=Plur	dema	0
-aerodrome	0	oewn-aerodrome-n	Number=Sing	dema	0
-aerodromes	0	oewn-aerodrome-n	Number=Plur	dema	0
-aerodynamic	0	oewn-aerodynamic-a	Degree=Pos	dema	0
-aerodynamical	0	dema-aerodynamical-a	Degree=Pos	dema	0
-aerodynamically	0	dema-aerodynamically-r	Degree=Pos	dema	0
-aerodynamicist	0	dema-aerodynamicist-n	Number=Sing	dema	0
-aerodynamicists	0	dema-aerodynamicist-n	Number=Plur	dema	0
-aerodynamics	0	oewn-aerodynamics-n	Number=Sing	dema	0
-aerodynamicses	0	oewn-aerodynamics-n	Number=Plur	dema	0
-aerodyne	0	dema-aerodyne-n	Number=Sing	dema	0
-aerodynes	0	dema-aerodyne-n	Number=Plur	dema	0
-aeroelastic	0	dema-aeroelastic-a	Degree=Pos	dema	0
-aeroelastically	0	dema-aeroelastic-r		dema	0
-aeroelasticities	0	dema-aeroelasticity-n	Number=Plur	dema	0
-aeroelasticity	0	dema-aeroelasticity-n	Number=Sing	dema	0
-aeroelastics	0	dema-aeroelastics-n	Number=Sing	dema	0
-aeroelasticses	0	dema-aeroelastics-n	Number=Plur	dema	0
-aeroembolism	0	oewn-aeroembolism-n	Number=Sing	dema	0
-aeroembolisms	0	oewn-aeroembolism-n	Number=Plur	dema	0
-aeroes	0	dema-aero-n	Number=Plur	dema	0
-aerofoil	0	oewn-aerofoil-n	Number=Sing	dema	0
-aerofoils	0	oewn-aerofoil-n	Number=Plur	dema	0
-aerogel	0	oewn-aerogel-n	Number=Sing	dema	0
-aerogels	0	oewn-aerogel-n	Number=Plur	dema	0
-aerogenic	0	dema-aerogenic-a	Degree=Pos	dema	0
-aerogenically	0	dema-aerogenically-r	Degree=Pos	dema	0
-aerogram	0	oewn-aerogram-n	Number=Sing	dema	0
-aerograms	0	oewn-aerogram-n	Number=Plur	dema	0
-aerograph	0	dema-aerograph-n	Number=Sing	dema	0
-aerographer	0	dema-aerographer-n	Number=Sing	dema	0
-aerographers	0	dema-aerographer-n	Number=Plur	dema	0
-aerographic	0	dema-aerographic-a	Degree=Pos	dema	0
-aerographical	0	dema-aerographical-a	Degree=Pos	dema	0
-aerographically	0	dema-aerographic-r		dema	0
-aerographies	0	dema-aerography-n	Number=Plur	dema	0
-aerographs	0	dema-aerograph-n	Number=Plur	dema	0
-aerography	0	dema-aerography-n	Number=Sing	dema	0
-aerolite	0	oewn-aerolite-n	Number=Sing	dema	0
-aerolites	0	oewn-aerolite-n	Number=Plur	dema	0
-aerolitic	0	oewn-aerolitic-a	Degree=Pos	dema	0
-aerolitically	0	dema-aerolitic-r		dema	0
-aerolitics	0	dema-aerolitics-n	Number=Sing	dema	0
-aeroliticses	0	dema-aerolitics-n	Number=Plur	dema	0
-aerologic	0	dema-aerologic-a	Degree=Pos	dema	0
-aerological	0	oewn-aerological-a	Degree=Pos	dema	0
-aerologically	0	dema-aerologic-r		dema	0
-aerologies	0	oewn-aerology-n	Number=Plur	dema	0
-aerologist	0	dema-aerologist-n	Number=Sing	dema	0
-aerologists	0	dema-aerologist-n	Number=Plur	dema	0
-aerology	0	oewn-aerology-n	Number=Sing	dema	0
-aeromancer	0	dema-aeromancer-n	Number=Sing	dema	0
-aeromancers	0	dema-aeromancer-n	Number=Plur	dema	0
-aeromancies	0	dema-aeromancy-n	Number=Plur	dema	0
-aeromancy	0	dema-aeromancy-n	Number=Sing	dema	0
-aeromantic	0	dema-aeromantic-a	Degree=Pos	dema	0
-aeromantically	0	dema-aeromantic-r		dema	0
-aeromarine	0	dema-aeromarine-a	Degree=Pos	dema	0
-aeromarinely	0	dema-aeromarine-r		dema	0
-aeromechanic	0	dema-aeromechanic-n	Number=Sing	dema	0
-aeromechanic	1	oewn-aeromechanic-a	Degree=Pos	dema	0
-aeromechanical	0	dema-aeromechanical-a	Degree=Pos	dema	0
-aeromechanically	0	dema-aeromechanic-r		dema	0
-aeromechanics	0	oewn-aeromechanics-n	Number=Sing	dema	0
-aeromedical	0	oewn-aeromedical-a	Degree=Pos	dema	0
-aeromedically	0	dema-aeromedical-r		dema	0
-aeromedicine	0	oewn-aeromedicine-n	Number=Sing	dema	0
-aeromedicines	0	oewn-aeromedicine-n	Number=Plur	dema	0
-aerometeorograph	0	dema-aerometeorograph-n	Number=Sing	dema	0
-aerometeorographs	0	dema-aerometeorograph-n	Number=Plur	dema	0
-aerometer	0	dema-aerometer-n	Number=Sing	dema	0
-aerometers	0	dema-aerometer-n	Number=Plur	dema	0
-aerometric	0	dema-aerometric-a	Degree=Pos	dema	0
-aerometrically	0	dema-aerometric-r		dema	0
-aerometries	0	dema-aerometry-n	Number=Plur	dema	0
-aerometry	0	dema-aerometry-n	Number=Sing	dema	0
-aeron	0	dema-aeron-n	Number=Sing	dema	0
-aeronaut	0	oewn-aeronaut-n	Number=Sing	dema	0
-aeronautic	0	oewn-aeronautic-a	Degree=Pos	dema	0
-aeronautical	0	oewn-aeronautical-a	Degree=Pos	dema	0
-aeronautically	0	dema-aeronautically-r	Degree=Pos	dema	0
-aeronautics	0	oewn-aeronautics-n	Number=Sing	dema	0
-aeronauticses	0	oewn-aeronautics-n	Number=Plur	dema	0
-aeronauts	0	oewn-aeronaut-n	Number=Plur	dema	0
-aeroneurosis	0	dema-aeroneurosis-n	Number=Sing	dema	0
-aeronomies	0	dema-aeronomy-n	Number=Plur	dema	0
-aeronomy	0	dema-aeronomy-n	Number=Sing	dema	0
-aerons	0	dema-aeron-n	Number=Plur	dema	0
-aeropause	0	dema-aeropause-n	Number=Sing	dema	0
-aeropauses	0	dema-aeropause-n	Number=Plur	dema	0
-aerophagia	0	oewn-aerophagia-n	Number=Sing	dema	0
-aerophagias	0	oewn-aerophagia-n	Number=Plur	dema	0
-aerophagist	0	dema-aerophagist-n	Number=Sing	dema	0
-aerophagists	0	dema-aerophagist-n	Number=Plur	dema	0
-aerophilatelic	0	oewn-aerophilatelic-a	Degree=Pos	dema	0
-aerophilatelically	0	dema-aerophilatelic-r		dema	0
-aerophilatelies	0	oewn-aerophilately-n	Number=Plur	dema	0
-aerophilatelist	0	dema-aerophilatelist-n	Number=Sing	dema	0
-aerophilatelists	0	dema-aerophilatelist-n	Number=Plur	dema	0
-aerophilately	0	oewn-aerophilately-n	Number=Sing	dema	0
-aerophobia	0	dema-aerophobia-n	Number=Sing	dema	0
-aerophobias	0	dema-aerophobia-n	Number=Plur	dema	0
-aerophobic	0	dema-aerophobic-a	Degree=Pos	dema	0
-aerophobically	0	dema-aerophobic-r		dema	0
-aerophone	0	dema-aerophone-n	Number=Sing	dema	0
-aerophones	0	dema-aerophone-n	Number=Plur	dema	0
-aerophore	0	dema-aerophore-n	Number=Sing	dema	0
-aerophores	0	dema-aerophore-n	Number=Plur	dema	0
-aerophoto	0	dema-aerophoto-n	Number=Sing	dema	0
-aerophotoes	0	dema-aerophoto-n	Number=Plur	dema	0
-aerophotographies	0	dema-aerophotography-n	Number=Plur	dema	0
-aerophotography	0	dema-aerophotography-n	Number=Sing	dema	0
-aerophotos	0	dema-aerophotos-n	Number=Sing	dema	0
-aerophyte	0	oewn-aerophyte-n	Number=Sing	dema	0
-aerophytes	0	oewn-aerophyte-n	Number=Plur	dema	0
-aeroplane	0	oewn-aeroplane-n	Number=Sing	dema	0
-aeroplanes	0	oewn-aeroplane-n	Number=Plur	dema	0
-aeroplankton	0	dema-aeroplankton-n	Number=Sing	dema	0
-aeroplanktons	0	dema-aeroplankton-n	Number=Plur	dema	0
-aeropulse	0	dema-aeropulse-n	Number=Sing	dema	0
-aeropulses	0	dema-aeropulse-n	Number=Plur	dema	0
-aeros	0	dema-aero-n	Number=Plur	dema	0
-aeroscepsies	0	dema-aeroscepsy-n	Number=Plur	dema	0
-aeroscepsy	0	dema-aeroscepsy-n	Number=Sing	dema	0
-aeroscope	0	dema-aeroscope-n	Number=Sing	dema	0
-aeroscopes	0	dema-aeroscope-n	Number=Plur	dema	0
-aeroscopic	0	dema-aeroscopic-a	Degree=Pos	dema	0
-aeroscopically	0	dema-aeroscopically-r	Degree=Pos	dema	0
-aerosinusitis	0	dema-aerosinusitis-n	Number=Sing	dema	0
-aerosol	0	oewn-aerosol-n	Number=Sing	dema	0
-aerosols	0	oewn-aerosol-n	Number=Plur	dema	0
-aerospace	0	oewn-aerospace-n	Number=Sing	dema	0
-aerospaces	0	oewn-aerospace-n	Number=Plur	dema	0
-aerosphere	0	dema-aerosphere-n	Number=Sing	dema	0
-aerospheres	0	dema-aerosphere-n	Number=Plur	dema	0
-aerostat	0	dema-aerostat-n	Number=Sing	dema	0
-aerostatic	0	dema-aerostatic-a	Degree=Pos	dema	0
-aerostatically	0	dema-aerostatic-r		dema	0
-aerostatics	0	dema-aerostatics-n	Number=Sing	dema	0
-aerostaticses	0	dema-aerostatics-n	Number=Plur	dema	0
-aerostation	0	dema-aerostation-n	Number=Sing	dema	0
-aerostations	0	dema-aerostation-n	Number=Plur	dema	0
-aerostats	0	dema-aerostat-n	Number=Plur	dema	0
-aerotherapeutics	0	dema-aerotherapeutics-n	Number=Sing	dema	0
-aerotherapeuticses	0	dema-aerotherapeutics-n	Number=Plur	dema	0
-aerothermodynamic	0	dema-aerothermodynamic-a	Degree=Pos	dema	0
-aerothermodynamically	0	dema-aerothermodynamic-r		dema	0
-aerothermodynamics	0	dema-aerothermodynamics-n	Number=Sing	dema	0
-aerothermodynamicses	0	dema-aerothermodynamics-n	Number=Plur	dema	0
-aerotow	0	dema-aerotow-v	VerbForm=Inf	dema	0
-aerotow	1	dema-aerotow-n	Number=Sing	dema	0
-aerotowed	0	dema-aerotow-v	Tense=Past	dema	0
-aerotower	0	dema-aerotow-n	Number=Plur	dema	0
-aerotowers	0	dema-aerotow-n	Number=Plur	dema	0
-aerotowing	0	dema-aerotow-v	VerbForm=Ger	dema	0
-aerotowingly	0	dema-aerotow-r		dema	0
-aerotows	0	dema-aerotow-v	Person=3+Tense=Pres	dema	0
-aerotows	1	dema-aerotow-n	Number=Plur	dema	0
-aerotropic	0	dema-aerotropic-a	Degree=Pos	dema	0
-aerotropically	0	dema-aerotropic-r		dema	0
-aerotropism	0	dema-aerotropism-n	Number=Sing	dema	0
-aerotropisms	0	dema-aerotropism-n	Number=Plur	dema	0
-aeruginous	0	dema-aeruginous-a	Degree=Pos	dema	0
-aeruginously	0	dema-aeruginous-r		dema	0
-aerugo	0	dema-aerugo-n	Number=Sing	dema	0
-aerugoes	0	dema-aerugo-n	Number=Plur	dema	0
-aerugos	0	dema-aerugo-n	Number=Plur	dema	0
-aery	0	oewn-aery-a	Degree=Pos	dema	0
-aery	1	oewn-aery-n	Number=Sing	dema	0
-aesc	0	dema-aesc-n	Number=Sing	dema	0
-aescs	0	dema-aesc-n	Number=Plur	dema	0
-aesculin	0	dema-aesculin-n	Number=Sing	dema	0
-aesculins	0	dema-aesculin-n	Number=Plur	dema	0
-aesthesia	0	oewn-aesthesia-n	Number=Sing	dema	0
-aesthesias	0	oewn-aesthesia-n	Number=Plur	dema	0
-aesthete	0	oewn-aesthete-n	Number=Sing	dema	0
-aesthetes	0	oewn-aesthete-n	Number=Plur	dema	0
-aesthetic	0	dema-aesthetic-r	Degree=Pos	dema	0
-aesthetical	0	oewn-aesthetical-a	Degree=Pos	dema	0
-aesthetically	0	oewn-aesthetically-r	Degree=Pos	dema	0
-aesthetician	0	oewn-aesthetician-n	Number=Sing	dema	0
-aestheticians	0	oewn-aesthetician-n	Number=Plur	dema	0
-aestheticism	0	dema-aestheticism-n	Number=Sing	dema	0
-aestheticisms	0	dema-aestheticism-n	Number=Plur	dema	0
-aesthetics	0	oewn-aesthetics-n	Number=Sing	dema	0
-aestheticses	0	oewn-aesthetics-n	Number=Plur	dema	0
-aestival	0	oewn-aestival-a	Degree=Pos	dema	0
-aestivally	0	dema-aestival-r		dema	0
-aestivalness	0	dema-aestival-n	Number=Plur	dema	0
-aestivate	0	oewn-aestivate-v	VerbForm=Inf	dema	0
-aestivated	0	dema-aestivated-v	VerbForm=Inf	dema	0
-aestivater	0	dema-aestivate-n	Number=Plur	dema	0
-aestivaters	0	dema-aestivate-n	Number=Plur	dema	0
-aestivates	0	oewn-aestivate-v	Person=3+Tense=Pres	dema	0
-aestivating	0	dema-aestivating-v	VerbForm=Inf	dema	0
-aestivatingly	0	dema-aestivate-r		dema	0
-aestivation	0	oewn-aestivation-n	Number=Sing	dema	0
-aestivations	0	oewn-aestivation-n	Number=Plur	dema	0
-aestivator	0	dema-aestivator-n	Number=Sing	dema	0
-aestivators	0	dema-aestivator-n	Number=Plur	dema	0
-aet	0	dema-aet-n	Number=Sing	dema	0
-aether	0	oewn-aether-n	Number=Sing	dema	0
-aethereal	0	dema-aethereal-n	Number=Sing	dema	0
-aethereals	0	dema-aethereal-n	Number=Plur	dema	0
-aethers	0	oewn-aether-n	Number=Plur	dema	0
-aethon	0	dema-aethon-n	Number=Sing	dema	0
-aethons	0	dema-aethon-n	Number=Plur	dema	0
-aetiological	0	oewn-aetiological-a	Degree=Pos	dema	0
-aetiologically	0	dema-aetiologically-r	Degree=Pos	dema	0
-aetiologies	0	oewn-aetiology-n	Number=Plur	dema	0
-aetiologist	0	oewn-aetiologist-n	Number=Sing	dema	0
-aetiologists	0	oewn-aetiologist-n	Number=Plur	dema	0
-aetiology	0	oewn-aetiology-n	Number=Sing	dema	0
-aets	0	dema-aet-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+AEC	0	oewn-AEC-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+AECS	0	oewn-AEC-n	Capitalization=Upper+Number=Plur	dema	0			rule
+Aedes aegypti	0	oewn-Aedes_aegypti-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aedes aegyptis	0	oewn-Aedes_aegypti-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Aedes albopictus	0	oewn-Aedes_albopictus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aegean	0	oewn-Aegean-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Aegean civilisation	0	oewn-Aegean_civilisation-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aegean civilisations	0	oewn-Aegean_civilisation-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Aegean civilization	0	oewn-Aegean_civilization-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aegean civilizations	0	oewn-Aegean_civilization-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Aegean culture	0	oewn-Aegean_culture-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aegean cultures	0	oewn-Aegean_culture-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Aegean island	0	oewn-Aegean_island-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aegean islands	0	oewn-Aegean_island-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Aegiceras majus	0	oewn-Aegiceras_majus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aegilops triuncalis	0	oewn-Aegilops_triuncalis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aegina	0	oewn-Aegina-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Aeginas	0	oewn-Aegina-n	Capitalization=Title+Number=Plur	dema	0			rule
+Aegypiidae	0	oewn-Aegypiidae-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Aegypiidaes	0	oewn-Aegypiidae-n	Capitalization=Title+Number=Plur	dema	0			rule
+Aegypius monachus	0	oewn-Aegypius_monachus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aegyptopithecus	0	oewn-Aegyptopithecus-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Aeolian	0	oewn-Aeolian-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Aeolian	1	oewn-Aeolian-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Aeolians	0	oewn-Aeolian-n	Capitalization=Title+Number=Plur	dema	0			rule
+Aeolic	0	oewn-Aeolic-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Aeolic dialect	0	oewn-Aeolic_dialect-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aeolic dialects	0	oewn-Aeolic_dialect-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Aeolics	0	oewn-Aeolic-n	Capitalization=Title+Number=Plur	dema	0			rule
+Aeonium haworthii	0	oewn-Aeonium_haworthii-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aeonium haworthiis	0	oewn-Aeonium_haworthii-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Aepyceros melampus	0	oewn-Aepyceros_melampus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aertex	0	oewn-Aertex-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Aertexes	0	oewn-Aertex-n	Capitalization=Title+Number=Plur	dema	0			rule
+Aeschylean	0	oewn-Aeschylean-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Aeschynanthus radicans	0	oewn-Aeschynanthus_radicans-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aesculus hippocastanum	0	oewn-Aesculus_hippocastanum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aesculus hippocastanums	0	oewn-Aesculus_hippocastanum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Aesir	0	oewn-Aesir-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Aesirs	0	oewn-Aesir-n	Capitalization=Title+Number=Plur	dema	0			rule
+Aesop's fables	0	oewn-Aesop-ap-s_fables-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aether	0	oewn-aether-n	Number=Sing	dema	0			oewn_form
+Aether	1	oewn-Aether-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Aethers	0	oewn-aether-n	Number=Plur	dema	0			rule
+Aethers	1	oewn-Aether-n	Capitalization=Title+Number=Plur	dema	0			rule
+Aethusa cynapium	0	oewn-Aethusa_cynapium-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aethusa cynapiums	0	oewn-Aethusa_cynapium-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Aetobatus narinari	0	oewn-Aetobatus_narinari-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aetobatus narinaris	0	oewn-Aetobatus_narinari-n	Capitalization=Exact+Number=Plur	dema	0			rule
+ae	0		Degree=Pos	dema	0	ae	a	moby_reverse
+ae	1		Number=Sing	dema	0	ae	n	moby_reverse
+aecia	0	oewn-aecium-n	Number=Plur	dema	0			oewn_form
+aecial	0	oewn-aecial-a	Degree=Pos	dema	0			oewn_form
+aecidia	0		Number=Sing	dema	0	aecidia	n	moby_reverse
+aecidias	0		Number=Plur	dema	0	aecidia	n	rule
+aecidium	0		Number=Sing	dema	0	aecidium	n	moby_reverse
+aecidiums	0		Number=Plur	dema	0	aecidium	n	rule
+aeciospore	0	oewn-aeciospore-n	Number=Sing	dema	0			oewn_form
+aeciospores	0	oewn-aeciospore-n	Number=Plur	dema	0			rule
+aecium	0	oewn-aecium-n	Number=Sing	dema	0			oewn_form
+aedeagal	0		Degree=Pos	dema	0	aedeagal	a	moby_reverse
+aedeagus	0		Number=Sing	dema	0	aedeagus	n	moby_reverse
+aedegi	0		Number=Sing	dema	0	aedegi	n	moby_reverse
+aedegis	0		Number=Plur	dema	0	aedegi	n	rule
+aedes	0		Number=Sing	dema	0	aedes	n	moby_reverse
+aedicula	0		Number=Sing	dema	0	aedicula	n	moby_reverse
+aediculae	0		Number=Sing	dema	0	aediculae	n	moby_reverse
+aediculaes	0		Number=Plur	dema	0	aediculae	n	rule
+aediculas	0		Number=Plur	dema	0	aedicula	n	rule
+aedicule	0		Number=Sing	dema	0	aedicule	n	moby_reverse
+aedicules	0		Number=Plur	dema	0	aedicule	n	rule
+aedile	0		Number=Sing	dema	0	aedile	n	moby_reverse
+aediles	0		Number=Plur	dema	0	aedile	n	rule
+aedileship	0		Number=Sing	dema	0	aedileship	n	moby_reverse
+aedileships	0		Number=Plur	dema	0	aedileship	n	rule
+aedilitian	0		Degree=Pos	dema	0	aedilitian	a	moby_reverse
+aedoeagi	0		Number=Sing	dema	0	aedoeagi	n	moby_reverse
+aedoeagis	0		Number=Plur	dema	0	aedoeagi	n	rule
+aedoeagus	0		Number=Sing	dema	0	aedoeagus	n	moby_reverse
+aegir	0	oewn-aegir-n	Number=Sing	dema	0			oewn_form
+aegirite	0		Number=Sing	dema	0	aegirite	n	moby_reverse
+aegirites	0		Number=Plur	dema	0	aegirite	n	rule
+aegirs	0	oewn-aegir-n	Number=Plur	dema	0			rule
+aegis	0	oewn-aegis-n	Number=Sing	dema	0			oewn_form
+aegises	0	oewn-aegis-n	Number=Plur	dema	0			rule
+aegrotat	0		Number=Sing	dema	0	aegrotat	n	moby_reverse
+aegrotats	0		Number=Plur	dema	0	aegrotat	n	rule
+aeneous	0		Degree=Pos	dema	0	aeneous	a	moby_reverse
+aeolian harp	0	oewn-aeolian_harp-n	Number=Sing	dema	0			oewn_form
+aeolian harps	0	oewn-aeolian_harp-n	Number=Plur	dema	0			rule
+aeolian lyre	0	oewn-aeolian_lyre-n	Number=Sing	dema	0			oewn_form
+aeolian lyres	0	oewn-aeolian_lyre-n	Number=Plur	dema	0			rule
+aeolipile	0		Number=Sing	dema	0	aeolipile	n	moby_reverse
+aeolipiles	0		Number=Plur	dema	0	aeolipile	n	rule
+aeolotropic	0	oewn-aeolotropic-a	Degree=Pos	dema	0			oewn_form
+aeolotropies	0		Number=Plur	dema	0	aeolotropy	n	rule
+aeolotropism	0		Number=Sing	dema	0	aeolotropism	n	moby_reverse
+aeolotropisms	0		Number=Plur	dema	0	aeolotropism	n	rule
+aeolotropy	0		Number=Sing	dema	0	aeolotropy	n	moby_reverse
+aeon	0	oewn-aeon-n	Number=Sing	dema	0			oewn_form
+aeonian	0	oewn-aeonian-a	Degree=Pos	dema	0			oewn_form
+aeons	0	oewn-aeon-n	Number=Plur	dema	0			rule
+aepyornis	0	oewn-aepyornis-n	Number=Sing	dema	0			oewn_form
+aepyornises	0	oewn-aepyornis-n	Number=Plur	dema	0			rule
+aeraria	0		Number=Sing	dema	0	aeraria	n	moby_reverse
+aerarian	0		Degree=Pos	dema	0	aerarian	a	moby_reverse
+aerarian	1		Number=Sing	dema	0	aerarian	n	moby_reverse
+aerarias	0		Number=Plur	dema	0	aeraria	n	rule
+aerarium	0		Number=Sing	dema	0	aerarium	n	moby_reverse
+aerariums	0		Number=Plur	dema	0	aerarium	n	rule
+aerate	0	oewn-aerate-v	VerbForm=Inf	dema	0			oewn_form
+aerated	0	oewn-aerate-v	Tense=Past+VerbForm=Part	dema	0			rule
+aerated	1	oewn-aerated-a	Degree=Pos	dema	0			oewn_form
+aerates	0	oewn-aerate-v	Person=3+Tense=Pres	dema	0			rule
+aerating	0	oewn-aerate-v	VerbForm=Ger	dema	0			rule
+aeration	0	oewn-aeration-n	Number=Sing	dema	0			oewn_form
+aerations	0	oewn-aeration-n	Number=Plur	dema	0			rule
+aerator	0	oewn-aerator-n	Number=Sing	dema	0			oewn_form
+aerators	0	oewn-aerator-n	Number=Plur	dema	0			rule
+aerenchyma	0		Number=Sing	dema	0	aerenchyma	n	moby_reverse
+aerenchymas	0		Number=Plur	dema	0	aerenchyma	n	rule
+aerial	0	oewn-aerial-a	Degree=Pos	dema	0			oewn_form
+aerial	1	oewn-aerial-n	Number=Sing	dema	0			oewn_form
+aerial ladder	0	oewn-aerial_ladder-n	Number=Sing	dema	0			oewn_form
+aerial ladder truck	0	oewn-aerial_ladder_truck-n	Number=Sing	dema	0			oewn_form
+aerial ladder trucks	0	oewn-aerial_ladder_truck-n	Number=Plur	dema	0			rule
+aerial ladders	0	oewn-aerial_ladder-n	Number=Plur	dema	0			rule
+aerial mosaic	0	oewn-aerial_mosaic-n	Number=Sing	dema	0			oewn_form
+aerial mosaics	0	oewn-aerial_mosaic-n	Number=Plur	dema	0			rule
+aerial torpedo	0	oewn-aerial_torpedo-n	Number=Sing	dema	0			oewn_form
+aerial torpedoes	0	oewn-aerial_torpedo-n	Number=Plur	dema	0			rule
+aerial tramway	0	oewn-aerial_tramway-n	Number=Sing	dema	0			oewn_form
+aerial tramways	0	oewn-aerial_tramway-n	Number=Plur	dema	0			rule
+aerialist	0	oewn-aerialist-n	Number=Sing	dema	0			oewn_form
+aerialists	0	oewn-aerialist-n	Number=Plur	dema	0			rule
+aerialities	0		Number=Plur	dema	0	aeriality	n	rule
+aeriality	0		Number=Sing	dema	0	aeriality	n	moby_reverse
+aerially	0	oewn-aerially-r	Degree=Pos	dema	0			oewn_form
+aerialness	0		Number=Sing	dema	0	aerialness	n	moby_reverse
+aerials	0	oewn-aerial-n	Number=Plur	dema	0			rule
+aerides	0	oewn-aerides-n	Number=Sing	dema	0			oewn_form
+aerie	0	oewn-aerie-n	Number=Sing	dema	0			oewn_form
+aerier	0	oewn-aery-a	Degree=Cmp	dema	0			rule
+aeries	0	oewn-aerie-n	Number=Plur	dema	0			rule
+aeries	1	oewn-aery-n	Number=Plur	dema	0			rule
+aeriest	0	oewn-aery-a	Degree=Sup	dema	0			rule
+aeriferous	0	oewn-aeriferous-a	Degree=Pos	dema	0			oewn_form
+aerification	0		Number=Sing	dema	0	aerification	n	moby_reverse
+aerifications	0		Number=Plur	dema	0	aerification	n	rule
+aerified	0	oewn-aerify-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+aerifies	0	oewn-aerify-v	Person=3+Tense=Pres	dema	0			rule
+aeriform	0	oewn-aeriform-a	Degree=Pos	dema	0			oewn_form
+aerify	0	oewn-aerify-v	VerbForm=Inf	dema	0			oewn_form
+aerifying	0	oewn-aerify-v	VerbForm=Ger	dema	0			rule
+aero	0		Number=Sing	dema	0	aero	n	moby_reverse
+aerobacteriological	0		Degree=Pos	dema	0	aerobacteriological	a	moby_reverse
+aerobacteriologically	0		Degree=Pos	dema	0	aerobacteriologically	r	moby_reverse
+aerobacteriologies	0		Number=Plur	dema	0	aerobacteriology	n	rule
+aerobacteriologist	0		Number=Sing	dema	0	aerobacteriologist	n	moby_reverse
+aerobacteriologists	0		Number=Plur	dema	0	aerobacteriologist	n	rule
+aerobacteriology	0		Number=Sing	dema	0	aerobacteriology	n	moby_reverse
+aeroballistic	0		Degree=Pos	dema	0	aeroballistic	a	moby_reverse
+aeroballistics	0		Number=Sing	dema	0	aeroballistics	n	moby_reverse
+aerobatic	0		Degree=Pos	dema	0	aerobatic	a	moby_reverse
+aerobatics	0	oewn-aerobatics-n	Number=Sing	dema	0			oewn_form
+aerobe	0	oewn-aerobe-n	Number=Sing	dema	0			oewn_form
+aerobee	0		Number=Sing	dema	0	aerobee	n	moby_reverse
+aerobees	0		Number=Plur	dema	0	aerobee	n	rule
+aerobes	0	oewn-aerobe-n	Number=Plur	dema	0			rule
+aerobia	0		Number=Sing	dema	0	aerobia	n	moby_reverse
+aerobias	0		Number=Plur	dema	0	aerobia	n	rule
+aerobic	0	oewn-aerobic-a	Degree=Pos	dema	0			oewn_form
+aerobic exercise	0	oewn-aerobic_exercise-n	Number=Sing	dema	0			oewn_form
+aerobic exercises	0	oewn-aerobic_exercise-n	Number=Plur	dema	0			rule
+aerobically	0		Degree=Pos	dema	0	aerobically	r	moby_reverse
+aerobics	0	oewn-aerobics-n	Number=Sing	dema	0			oewn_form
+aerobiologic	0		Degree=Pos	dema	0	aerobiologic	a	moby_reverse
+aerobiological	0		Degree=Pos	dema	0	aerobiological	a	moby_reverse
+aerobiologically	0		Degree=Pos	dema	0	aerobiologically	r	moby_reverse
+aerobiologies	0		Number=Plur	dema	0	aerobiology	n	rule
+aerobiologist	0		Number=Sing	dema	0	aerobiologist	n	moby_reverse
+aerobiologists	0		Number=Plur	dema	0	aerobiologist	n	rule
+aerobiology	0		Number=Sing	dema	0	aerobiology	n	moby_reverse
+aerobiosis	0	oewn-aerobiosis-n	Number=Sing	dema	0			oewn_form
+aerobiosis	1		Degree=Pos	dema	0	aerobiosis	a	moby_reverse
+aerobiotic	0	oewn-aerobiotic-a	Degree=Pos	dema	0			oewn_form
+aerobiotically	0		Degree=Pos	dema	0	aerobiotically	r	moby_reverse
+aerobium	0		Number=Sing	dema	0	aerobium	n	moby_reverse
+aerobiums	0		Number=Plur	dema	0	aerobium	n	rule
+aerocar	0		Number=Sing	dema	0	aerocar	n	moby_reverse
+aerocars	0		Number=Plur	dema	0	aerocar	n	rule
+aerodonetic	0		Degree=Pos	dema	0	aerodonetic	a	moby_reverse
+aerodonetics	0		Number=Sing	dema	0	aerodonetics	n	moby_reverse
+aerodontalgia	0	oewn-aerodontalgia-n	Number=Sing	dema	0			oewn_form
+aerodontalgias	0	oewn-aerodontalgia-n	Number=Plur	dema	0			rule
+aerodontia	0		Number=Sing	dema	0	aerodontia	n	moby_reverse
+aerodontias	0		Number=Plur	dema	0	aerodontia	n	rule
+aerodrome	0	oewn-aerodrome-n	Number=Sing	dema	0			oewn_form
+aerodromes	0	oewn-aerodrome-n	Number=Plur	dema	0			rule
+aerodynamic	0	oewn-aerodynamic-a	Degree=Pos	dema	0			oewn_form
+aerodynamic force	0	oewn-aerodynamic_force-n	Number=Sing	dema	0			oewn_form
+aerodynamic forces	0	oewn-aerodynamic_force-n	Number=Plur	dema	0			rule
+aerodynamic lift	0	oewn-aerodynamic_lift-n	Number=Sing	dema	0			oewn_form
+aerodynamic lifts	0	oewn-aerodynamic_lift-n	Number=Plur	dema	0			rule
+aerodynamical	0		Degree=Pos	dema	0	aerodynamical	a	moby_reverse
+aerodynamically	0		Degree=Pos	dema	0	aerodynamically	r	moby_reverse
+aerodynamicist	0		Number=Sing	dema	0	aerodynamicist	n	moby_reverse
+aerodynamicists	0		Number=Plur	dema	0	aerodynamicist	n	rule
+aerodynamics	0	oewn-aerodynamics-n	Number=Sing	dema	0			oewn_form
+aerodyne	0		Number=Sing	dema	0	aerodyne	n	moby_reverse
+aerodynes	0		Number=Plur	dema	0	aerodyne	n	rule
+aeroelastic	0		Degree=Pos	dema	0	aeroelastic	a	moby_reverse
+aeroelasticities	0		Number=Plur	dema	0	aeroelasticity	n	rule
+aeroelasticity	0		Number=Sing	dema	0	aeroelasticity	n	moby_reverse
+aeroelastics	0		Number=Sing	dema	0	aeroelastics	n	moby_reverse
+aeroembolism	0	oewn-aeroembolism-n	Number=Sing	dema	0			oewn_form
+aeroembolisms	0	oewn-aeroembolism-n	Number=Plur	dema	0			rule
+aerofoil	0	oewn-aerofoil-n	Number=Sing	dema	0			oewn_form
+aerofoils	0	oewn-aerofoil-n	Number=Plur	dema	0			rule
+aerogel	0	oewn-aerogel-n	Number=Sing	dema	0			oewn_form
+aerogels	0	oewn-aerogel-n	Number=Plur	dema	0			rule
+aerogenerator	0	oewn-aerogenerator-n	Number=Sing	dema	0			oewn_form
+aerogenerators	0	oewn-aerogenerator-n	Number=Plur	dema	0			rule
+aerogenic	0		Degree=Pos	dema	0	aerogenic	a	moby_reverse
+aerogenically	0		Degree=Pos	dema	0	aerogenically	r	moby_reverse
+aerogram	0	oewn-aerogram-n	Number=Sing	dema	0			oewn_form
+aerogramme	0	oewn-aerogramme-n	Number=Sing	dema	0			oewn_form
+aerogrammes	0	oewn-aerogramme-n	Number=Plur	dema	0			rule
+aerograms	0	oewn-aerogram-n	Number=Plur	dema	0			rule
+aerograph	0		Number=Sing	dema	0	aerograph	n	moby_reverse
+aerographer	0		Number=Sing	dema	0	aerographer	n	moby_reverse
+aerographers	0		Number=Plur	dema	0	aerographer	n	rule
+aerographic	0		Degree=Pos	dema	0	aerographic	a	moby_reverse
+aerographical	0		Degree=Pos	dema	0	aerographical	a	moby_reverse
+aerographies	0		Number=Plur	dema	0	aerography	n	rule
+aerographs	0		Number=Plur	dema	0	aerograph	n	rule
+aerography	0		Number=Sing	dema	0	aerography	n	moby_reverse
+aerolite	0	oewn-aerolite-n	Number=Sing	dema	0			oewn_form
+aerolites	0	oewn-aerolite-n	Number=Plur	dema	0			rule
+aerolitic	0	oewn-aerolitic-a	Degree=Pos	dema	0			oewn_form
+aerolitics	0		Number=Sing	dema	0	aerolitics	n	moby_reverse
+aerologic	0		Degree=Pos	dema	0	aerologic	a	moby_reverse
+aerological	0	oewn-aerological-a	Degree=Pos	dema	0			oewn_form
+aerologies	0	oewn-aerology-n	Number=Plur	dema	0			rule
+aerologist	0		Number=Sing	dema	0	aerologist	n	moby_reverse
+aerologists	0		Number=Plur	dema	0	aerologist	n	rule
+aerology	0	oewn-aerology-n	Number=Sing	dema	0			oewn_form
+aeromancer	0		Number=Sing	dema	0	aeromancer	n	moby_reverse
+aeromancers	0		Number=Plur	dema	0	aeromancer	n	rule
+aeromancies	0		Number=Plur	dema	0	aeromancy	n	rule
+aeromancy	0		Number=Sing	dema	0	aeromancy	n	moby_reverse
+aeromantic	0		Degree=Pos	dema	0	aeromantic	a	moby_reverse
+aeromarine	0		Degree=Pos	dema	0	aeromarine	a	moby_reverse
+aeromechanic	0		Number=Sing	dema	0	aeromechanic	n	moby_reverse
+aeromechanic	1	oewn-aeromechanic-a	Degree=Pos	dema	0			oewn_form
+aeromechanical	0		Degree=Pos	dema	0	aeromechanical	a	moby_reverse
+aeromechanics	0	oewn-aeromechanics-n	Number=Sing	dema	0			oewn_form
+aeromechanics	1		Number=Plur	dema	0	aeromechanic	n	rule
+aeromedical	0	oewn-aeromedical-a	Degree=Pos	dema	0			oewn_form
+aeromedicine	0	oewn-aeromedicine-n	Number=Sing	dema	0			oewn_form
+aeromedicines	0	oewn-aeromedicine-n	Number=Plur	dema	0			rule
+aerometeorograph	0		Number=Sing	dema	0	aerometeorograph	n	moby_reverse
+aerometeorographs	0		Number=Plur	dema	0	aerometeorograph	n	rule
+aerometer	0		Number=Sing	dema	0	aerometer	n	moby_reverse
+aerometers	0		Number=Plur	dema	0	aerometer	n	rule
+aerometric	0		Degree=Pos	dema	0	aerometric	a	moby_reverse
+aerometries	0		Number=Plur	dema	0	aerometry	n	rule
+aerometry	0		Number=Sing	dema	0	aerometry	n	moby_reverse
+aeron	0		Number=Sing	dema	0	aeron	n	moby_reverse
+aeronaut	0	oewn-aeronaut-n	Number=Sing	dema	0			oewn_form
+aeronautic	0	oewn-aeronautic-a	Degree=Pos	dema	0			oewn_form
+aeronautical	0	oewn-aeronautical-a	Degree=Pos	dema	0			oewn_form
+aeronautical engineer	0	oewn-aeronautical_engineer-n	Number=Sing	dema	0			oewn_form
+aeronautical engineering	0	oewn-aeronautical_engineering-n	Number=Sing	dema	0			oewn_form
+aeronautical engineerings	0	oewn-aeronautical_engineering-n	Number=Plur	dema	0			rule
+aeronautical engineers	0	oewn-aeronautical_engineer-n	Number=Plur	dema	0			rule
+aeronautically	0		Degree=Pos	dema	0	aeronautically	r	moby_reverse
+aeronautics	0	oewn-aeronautics-n	Number=Sing	dema	0			oewn_form
+aeronauts	0	oewn-aeronaut-n	Number=Plur	dema	0			rule
+aeroneurosis	0		Number=Sing	dema	0	aeroneurosis	n	moby_reverse
+aeronomies	0		Number=Plur	dema	0	aeronomy	n	rule
+aeronomy	0		Number=Sing	dema	0	aeronomy	n	moby_reverse
+aerons	0		Number=Plur	dema	0	aeron	n	rule
+aeropause	0		Number=Sing	dema	0	aeropause	n	moby_reverse
+aeropauses	0		Number=Plur	dema	0	aeropause	n	rule
+aerophagia	0	oewn-aerophagia-n	Number=Sing	dema	0			oewn_form
+aerophagias	0	oewn-aerophagia-n	Number=Plur	dema	0			rule
+aerophagist	0		Number=Sing	dema	0	aerophagist	n	moby_reverse
+aerophagists	0		Number=Plur	dema	0	aerophagist	n	rule
+aerophilatelic	0	oewn-aerophilatelic-a	Degree=Pos	dema	0			oewn_form
+aerophilatelies	0	oewn-aerophilately-n	Number=Plur	dema	0			rule
+aerophilatelist	0		Number=Sing	dema	0	aerophilatelist	n	moby_reverse
+aerophilatelists	0		Number=Plur	dema	0	aerophilatelist	n	rule
+aerophilately	0	oewn-aerophilately-n	Number=Sing	dema	0			oewn_form
+aerophile	0	oewn-aerophile-n	Number=Sing	dema	0			oewn_form
+aerophiles	0	oewn-aerophile-n	Number=Plur	dema	0			rule
+aerophilic	0	oewn-aerophilic-a	Degree=Pos	dema	0			oewn_form
+aerophilous	0	oewn-aerophilous-a	Degree=Pos	dema	0			oewn_form
+aerophobia	0		Number=Sing	dema	0	aerophobia	n	moby_reverse
+aerophobias	0		Number=Plur	dema	0	aerophobia	n	rule
+aerophobic	0		Degree=Pos	dema	0	aerophobic	a	moby_reverse
+aerophone	0		Number=Sing	dema	0	aerophone	n	moby_reverse
+aerophones	0		Number=Plur	dema	0	aerophone	n	rule
+aerophore	0		Number=Sing	dema	0	aerophore	n	moby_reverse
+aerophores	0		Number=Plur	dema	0	aerophore	n	rule
+aerophoto	0		Number=Sing	dema	0	aerophoto	n	moby_reverse
+aerophotographies	0		Number=Plur	dema	0	aerophotography	n	rule
+aerophotography	0		Number=Sing	dema	0	aerophotography	n	moby_reverse
+aerophotos	0		Number=Plur	dema	0	aerophoto	n	rule
+aerophyte	0	oewn-aerophyte-n	Number=Sing	dema	0			oewn_form
+aerophytes	0	oewn-aerophyte-n	Number=Plur	dema	0			rule
+aeroplane	0	oewn-aeroplane-n	Number=Sing	dema	0			oewn_form
+aeroplanes	0	oewn-aeroplane-n	Number=Plur	dema	0			rule
+aeroplankton	0		Number=Sing	dema	0	aeroplankton	n	moby_reverse
+aeroplanktons	0		Number=Plur	dema	0	aeroplankton	n	rule
+aeropulse	0		Number=Sing	dema	0	aeropulse	n	moby_reverse
+aeropulses	0		Number=Plur	dema	0	aeropulse	n	rule
+aeros	0		Number=Plur	dema	0	aero	n	rule
+aeroscepsies	0		Number=Plur	dema	0	aeroscepsy	n	rule
+aeroscepsy	0		Number=Sing	dema	0	aeroscepsy	n	moby_reverse
+aeroscope	0		Number=Sing	dema	0	aeroscope	n	moby_reverse
+aeroscopes	0		Number=Plur	dema	0	aeroscope	n	rule
+aeroscopic	0		Degree=Pos	dema	0	aeroscopic	a	moby_reverse
+aeroscopically	0		Degree=Pos	dema	0	aeroscopically	r	moby_reverse
+aerosinusitis	0		Number=Sing	dema	0	aerosinusitis	n	moby_reverse
+aerosol	0	oewn-aerosol-n	Number=Sing	dema	0			oewn_form
+aerosol bomb	0	oewn-aerosol_bomb-n	Number=Sing	dema	0			oewn_form
+aerosol bombs	0	oewn-aerosol_bomb-n	Number=Plur	dema	0			rule
+aerosol can	0	oewn-aerosol_can-n	Number=Sing	dema	0			oewn_form
+aerosol cans	0	oewn-aerosol_can-n	Number=Plur	dema	0			rule
+aerosol container	0	oewn-aerosol_container-n	Number=Sing	dema	0			oewn_form
+aerosol containers	0	oewn-aerosol_container-n	Number=Plur	dema	0			rule
+aerosolise	0	oewn-aerosolise-v	VerbForm=Inf	dema	0			oewn_form
+aerosolised	0	oewn-aerosolise-v	Tense=Past+VerbForm=Part	dema	0			rule
+aerosolised	1	oewn-aerosolised-a	Degree=Pos	dema	0			oewn_form
+aerosolises	0	oewn-aerosolise-v	Person=3+Tense=Pres	dema	0			rule
+aerosolising	0	oewn-aerosolise-v	VerbForm=Ger	dema	0			rule
+aerosolize	0	oewn-aerosolize-v	VerbForm=Inf	dema	0			oewn_form
+aerosolized	0	oewn-aerosolize-v	Tense=Past+VerbForm=Part	dema	0			rule
+aerosolized	1	oewn-aerosolized-a	Degree=Pos	dema	0			oewn_form
+aerosolizes	0	oewn-aerosolize-v	Person=3+Tense=Pres	dema	0			rule
+aerosolizing	0	oewn-aerosolize-v	VerbForm=Ger	dema	0			rule
+aerosols	0	oewn-aerosol-n	Number=Plur	dema	0			rule
+aerospace	0	oewn-aerospace-n	Number=Sing	dema	0			oewn_form
+aerospace engineer	0	oewn-aerospace_engineer-n	Number=Sing	dema	0			oewn_form
+aerospace engineers	0	oewn-aerospace_engineer-n	Number=Plur	dema	0			rule
+aerospace medicine	0	oewn-aerospace_medicine-n	Number=Sing	dema	0			oewn_form
+aerospace medicines	0	oewn-aerospace_medicine-n	Number=Plur	dema	0			rule
+aerospaces	0	oewn-aerospace-n	Number=Plur	dema	0			rule
+aerosphere	0		Number=Sing	dema	0	aerosphere	n	moby_reverse
+aerospheres	0		Number=Plur	dema	0	aerosphere	n	rule
+aerostat	0		Number=Sing	dema	0	aerostat	n	moby_reverse
+aerostatic	0		Degree=Pos	dema	0	aerostatic	a	moby_reverse
+aerostatics	0		Number=Sing	dema	0	aerostatics	n	moby_reverse
+aerostation	0		Number=Sing	dema	0	aerostation	n	moby_reverse
+aerostations	0		Number=Plur	dema	0	aerostation	n	rule
+aerostats	0		Number=Plur	dema	0	aerostat	n	rule
+aerotherapeutics	0		Number=Sing	dema	0	aerotherapeutics	n	moby_reverse
+aerothermodynamic	0		Degree=Pos	dema	0	aerothermodynamic	a	moby_reverse
+aerothermodynamics	0		Number=Sing	dema	0	aerothermodynamics	n	moby_reverse
+aerotow	0		VerbForm=Inf	dema	0	aerotow	v	moby_reverse
+aerotow	1		Number=Sing	dema	0	aerotow	n	moby_reverse
+aerotowed	0		Tense=Past+VerbForm=Part	dema	0	aerotow	v	rule
+aerotowing	0		VerbForm=Ger	dema	0	aerotow	v	rule
+aerotows	0		Person=3+Tense=Pres	dema	0	aerotow	v	rule
+aerotropic	0		Degree=Pos	dema	0	aerotropic	a	moby_reverse
+aerotropism	0		Number=Sing	dema	0	aerotropism	n	moby_reverse
+aerotropisms	0		Number=Plur	dema	0	aerotropism	n	rule
+aeruginous	0		Degree=Pos	dema	0	aeruginous	a	moby_reverse
+aerugo	0		Number=Sing	dema	0	aerugo	n	moby_reverse
+aerugos	0		Number=Plur	dema	0	aerugo	n	rule
+aery	0	oewn-aery-a	Degree=Pos	dema	0			oewn_form
+aery	1	oewn-aery-n	Number=Sing	dema	0			oewn_form
+aesc	0		Number=Sing	dema	0	aesc	n	moby_reverse
+aeschynanthus	0	oewn-aeschynanthus-n	Number=Sing	dema	0			oewn_form
+aescs	0		Number=Plur	dema	0	aesc	n	rule
+aesculapian	0	oewn-aesculapian-a	Degree=Pos	dema	0			oewn_form
+aesculin	0		Number=Sing	dema	0	aesculin	n	moby_reverse
+aesculins	0		Number=Plur	dema	0	aesculin	n	rule
+aesthesia	0	oewn-aesthesia-n	Number=Sing	dema	0			oewn_form
+aesthesias	0	oewn-aesthesia-n	Number=Plur	dema	0			rule
+aesthesis	0	oewn-aesthesis-n	Number=Sing	dema	0			oewn_form
+aesthete	0	oewn-aesthete-n	Number=Sing	dema	0			oewn_form
+aesthetes	0	oewn-aesthete-n	Number=Plur	dema	0			rule
+aesthetic	0		Degree=Pos	dema	0	aesthetic	r	moby_reverse
+aesthetic	1	oewn-aesthetic-n	Number=Sing	dema	0			oewn_form
+aesthetic	2	oewn-aesthetic-a	Degree=Pos	dema	0			oewn_form
+aesthetical	0	oewn-aesthetical-a	Degree=Pos	dema	0			oewn_form
+aesthetically	0	oewn-aesthetically-r	Degree=Pos	dema	0			oewn_form
+aesthetician	0	oewn-aesthetician-n	Number=Sing	dema	0			oewn_form
+aestheticians	0	oewn-aesthetician-n	Number=Plur	dema	0			rule
+aestheticism	0		Number=Sing	dema	0	aestheticism	n	moby_reverse
+aestheticisms	0		Number=Plur	dema	0	aestheticism	n	rule
+aesthetics	0	oewn-aesthetics-n	Number=Sing	dema	0			oewn_form
+aesthetics	1	oewn-aesthetic-n	Number=Plur	dema	0			rule
+aestival	0	oewn-aestival-a	Degree=Pos	dema	0			oewn_form
+aestivate	0	oewn-aestivate-v	VerbForm=Inf	dema	0			oewn_form
+aestivated	0	oewn-aestivate-v	Tense=Past+VerbForm=Part	dema	0			rule
+aestivates	0	oewn-aestivate-v	Person=3+Tense=Pres	dema	0			rule
+aestivating	0	oewn-aestivate-v	VerbForm=Ger	dema	0			rule
+aestivation	0	oewn-aestivation-n	Number=Sing	dema	0			oewn_form
+aestivations	0	oewn-aestivation-n	Number=Plur	dema	0			rule
+aestivator	0		Number=Sing	dema	0	aestivator	n	moby_reverse
+aestivators	0		Number=Plur	dema	0	aestivator	n	rule
+aet	0		Number=Sing	dema	0	aet	n	moby_reverse
+aether	0	oewn-aether-n	Number=Sing	dema	0			oewn_form
+aethereal	0		Number=Sing	dema	0	aethereal	n	moby_reverse
+aethereals	0		Number=Plur	dema	0	aethereal	n	rule
+aethers	0	oewn-aether-n	Number=Plur	dema	0			rule
+aethon	0		Number=Sing	dema	0	aethon	n	moby_reverse
+aethons	0		Number=Plur	dema	0	aethon	n	rule
+aetiologic	0	oewn-aetiologic-a	Degree=Pos	dema	0			oewn_form
+aetiological	0	oewn-aetiological-a	Degree=Pos	dema	0			oewn_form
+aetiologically	0		Degree=Pos	dema	0	aetiologically	r	moby_reverse
+aetiologies	0	oewn-aetiology-n	Number=Plur	dema	0			rule
+aetiologist	0	oewn-aetiologist-n	Number=Sing	dema	0			oewn_form
+aetiologists	0	oewn-aetiologist-n	Number=Plur	dema	0			rule
+aetiology	0	oewn-aetiology-n	Number=Sing	dema	0			oewn_form

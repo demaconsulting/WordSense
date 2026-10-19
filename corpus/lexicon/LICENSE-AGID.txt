@@ -1,0 +1,61 @@
+Notices that accompany the Automatically Generated Inflection Database (AGID), version 2016.01.19
+(http://wordlist.aspell.net/other-dicts/ - agid-2016.01.19.zip, SHA-256 561266F842D6AA09DA09FBF68E919EE9E1D32BBDCD435E6A0DF51546D35A4E91).
+
+WordSense uses AGID only at build time, as a source of irregular inflected forms that the other sources lack (corpus/lexicon/agid-irregular.tsv).
+The notices below are reproduced verbatim from the README of AGID: the permission notice of its author, the notice of the WordNet database
+from which its part-of-speech data is taken, and the notice of the UK Advanced Cryptics Dictionary, one of its word lists.
+
+=== AGID README, "COPYRIGHT AND SOURCE": permission notice ===
+  Copyright 2000-2014 by Kevin Atkinson
+
+  Permission to use, copy, modify, distribute and sell this database,
+  the associated scripts, the output created form the scripts and its
+  documentation for any purpose is hereby granted without fee,
+  provided that the above copyright notice appears in all copies and
+  that both that copyright notice and this permission notice appear in
+  supporting documentation. Kevin Atkinson makes no representations
+  about the suitability of this array for any purpose. It is provided
+  "as is" without express or implied warranty.
+
+=== AGID README: Princeton University WordNet notice ===
+    This software and database is being provided to you, the LICENSEE, by
+    Princeton University under the following license.  By obtaining, using  
+    and/or copying this software and database, you agree that you have  
+    read, understood, and will comply with these terms and conditions.:  
+  
+    Permission to use, copy, modify and distribute this software and
+    database and its documentation for any purpose and without fee or
+    royalty is hereby granted, provided that you agree to comply with  
+    the following copyright notice and statements, including the disclaimer,  
+    and that the same appear on ALL copies of the software, database and  
+    documentation, including modifications that you make for internal  
+    use or for distribution.  
+  
+    WordNet 1.6 Copyright 1997 by Princeton University.  All rights reserved.  
+  
+    THIS SOFTWARE AND DATABASE IS PROVIDED "AS IS" AND PRINCETON  
+    UNIVERSITY MAKES NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR  
+    IMPLIED.  BY WAY OF EXAMPLE, BUT NOT LIMITATION, PRINCETON  
+    UNIVERSITY MAKES NO REPRESENTATIONS OR WARRANTIES OF MERCHANT-  
+    ABILITY OR FITNESS FOR ANY PARTICULAR PURPOSE OR THAT THE USE  
+    OF THE LICENSED SOFTWARE, DATABASE OR DOCUMENTATION WILL NOT  
+    INFRINGE ANY THIRD PARTY PATENTS, COPYRIGHTS, TRADEMARKS OR  
+    OTHER RIGHTS.
+  
+    The name of Princeton University or Princeton may not be used in  
+    advertising or publicity pertaining to distribution of the software  
+    and/or database.  Title to copyright in this software, database and  
+    any associated documentation shall at all times remain with  
+    Princeton University and LICENSEE agrees to preserve same.  
+
+=== AGID README: The UK Advanced Cryptics Dictionary notice ===
+     Copyright (c) J Ross Beresford 1993-1999. All Rights Reserved.
+
+     The following restriction is placed on the use of this
+     publication: if The UK Advanced Cryptics Dictionary is used
+     in a software package or redistributed in any form, the
+     copyright notice must be prominently displayed and the text
+     of this document must be included verbatim.
+
+     There are no other restrictions: I would like to see the
+     list distributed as widely as possible.

@@ -1,112 +1,129 @@
-spelling	rank	entry_id	features	source_id	reviewed
-ax	0	oewn-ax-n	Number=Sing	dema	0
-ax	1	oewn-ax-v	VerbForm=Inf	dema	0
-axanthopsia	0	dema-axanthopsia-n	Number=Sing	dema	0
-axanthopsias	0	dema-axanthopsia-n	Number=Plur	dema	0
-axe	0	oewn-axe-n	Number=Sing	dema	0
-axe	1	oewn-axe-v	VerbForm=Inf	dema	0
-axed	0	dema-axed-v	VerbForm=Inf	dema	0
-axeded	0	dema-axed-v	Tense=Past	dema	0
-axeder	0	dema-axed-n	Number=Plur	dema	0
-axeders	0	dema-axed-n	Number=Plur	dema	0
-axeding	0	dema-axed-v	VerbForm=Ger	dema	0
-axedingly	0	dema-axed-r		dema	0
-axeds	0	dema-axed-v	Person=3+Tense=Pres	dema	0
-axel	0	dema-axel-n	Number=Sing	dema	0
-axels	0	dema-axel-n	Number=Plur	dema	0
-axenic	0	oewn-axenic-a	Degree=Pos	dema	0
-axenically	0	dema-axenic-r		dema	0
-axenicness	0	dema-axenic-n	Number=Plur	dema	0
-axer	0	oewn-axe-n	Number=Plur	dema	0
-axers	0	oewn-axe-n	Number=Plur	dema	0
-axes	0	oewn-ax-n	Number=Plur	dema	1
-axes	1	oewn-ax-v	Person=3+Tense=Pres	dema	1
-axial	0	oewn-axial-a	Degree=Pos	dema	0
-axialities	0	dema-axiality-n	Number=Plur	dema	0
-axiality	0	dema-axiality-n	Number=Sing	dema	0
-axially	0	oewn-axially-r	Degree=Pos	dema	0
-axialness	0	dema-axial-n	Number=Plur	dema	0
-axil	0	oewn-axil-n	Number=Sing	dema	0
-axile	0	oewn-axile-a	Degree=Pos	dema	0
-axilely	0	dema-axile-r		dema	0
-axilemma	0	dema-axilemma-n	Number=Sing	dema	0
-axilemmas	0	dema-axilemma-n	Number=Plur	dema	0
-axilemmata	0	dema-axilemmata-n	Number=Sing	dema	0
-axilemmatas	0	dema-axilemmata-n	Number=Plur	dema	0
-axileness	0	dema-axile-n	Number=Plur	dema	0
-axiler	0	oewn-axile-a	Degree=Cmp	dema	0
-axilest	0	oewn-axile-a	Degree=Sup	dema	0
-axilla	0	oewn-axilla-n	Number=Sing	dema	0
-axillae	0	dema-axillae-n	Number=Sing	dema	0
-axillaes	0	dema-axillae-n	Number=Plur	dema	0
-axillar	0	dema-axillar-n	Number=Sing	dema	0
-axillaries	0	dema-axillaries-n	Number=Sing	dema	0
-axillarily	0	dema-axillary-r		dema	0
-axillars	0	dema-axillar-n	Number=Plur	dema	0
-axillary	0	oewn-axillary-a	Degree=Pos	dema	0
-axillary	1	dema-axillary-n	Number=Sing	dema	0
-axillas	0	oewn-axilla-n	Number=Plur	dema	0
-axils	0	oewn-axil-n	Number=Plur	dema	0
-axing	0	dema-axing-v	VerbForm=Inf	dema	0
-axingly	0	dema-axe-r		dema	0
-axinite	0	dema-axinite-n	Number=Sing	dema	0
-axinites	0	dema-axinite-n	Number=Plur	dema	0
-axinomancies	0	dema-axinomancy-n	Number=Plur	dema	0
-axinomancy	0	dema-axinomancy-n	Number=Sing	dema	0
-axiological	0	oewn-axiological-a	Degree=Pos	dema	0
-axiologically	0	dema-axiologically-r	Degree=Pos	dema	0
-axiologies	0	oewn-axiology-n	Number=Plur	dema	0
-axiologist	0	dema-axiologist-n	Number=Sing	dema	0
-axiologists	0	dema-axiologist-n	Number=Plur	dema	0
-axiology	0	oewn-axiology-n	Number=Sing	dema	0
-axiom	0	oewn-axiom-n	Number=Sing	dema	0
-axiomatic	0	oewn-axiomatic-a	Degree=Pos	dema	0
-axiomatically	0	oewn-axiomatically-r	Degree=Pos	dema	0
-axioms	0	oewn-axiom-n	Number=Plur	dema	0
-axis	0	oewn-axis-n	Number=Sing	dema	0
-axised	0	dema-axised-a	Degree=Pos	dema	0
-axised	1	dema-axised-v	VerbForm=Inf	dema	0
-axiseded	0	dema-axised-v	Tense=Past	dema	0
-axiseder	0	dema-axised-n	Number=Plur	dema	0
-axiseders	0	dema-axised-n	Number=Plur	dema	0
-axiseding	0	dema-axised-v	VerbForm=Ger	dema	0
-axisedingly	0	dema-axised-r		dema	0
-axisedly	0	dema-axised-r		dema	0
-axisedness	0	dema-axised-n	Number=Plur	dema	0
-axiseds	0	dema-axised-v	Person=3+Tense=Pres	dema	0
-axle	0	oewn-axle-n	Number=Sing	dema	0
-axled	0	dema-axled-a	Degree=Pos	dema	0
-axled	1	dema-axled-v	VerbForm=Inf	dema	0
-axleded	0	dema-axled-v	Tense=Past	dema	0
-axleder	0	dema-axled-n	Number=Plur	dema	0
-axleders	0	dema-axled-n	Number=Plur	dema	0
-axleding	0	dema-axled-v	VerbForm=Ger	dema	0
-axledingly	0	dema-axled-r		dema	0
-axledly	0	dema-axled-r		dema	0
-axledness	0	dema-axled-n	Number=Plur	dema	0
-axleds	0	dema-axled-v	Person=3+Tense=Pres	dema	0
-axles	0	oewn-axle-n	Number=Plur	dema	0
-axletree	0	oewn-axletree-n	Number=Sing	dema	0
-axletrees	0	oewn-axletree-n	Number=Plur	dema	0
-axlike	0	dema-axlike-a	Degree=Pos	dema	0
-axlikely	0	dema-axlike-r		dema	0
-axlikeness	0	dema-axlike-n	Number=Plur	dema	0
-axliker	0	dema-axlike-a	Degree=Cmp	dema	0
-axlikest	0	dema-axlike-a	Degree=Sup	dema	0
-axman	0	dema-axman-n	Number=Sing	dema	0
-axmans	0	dema-axman-n	Number=Plur	dema	0
-axmen	0	dema-axmen-n	Number=Sing	dema	0
-axmens	0	dema-axmen-n	Number=Plur	dema	0
-axolotl	0	oewn-axolotl-n	Number=Sing	dema	0
-axolotls	0	oewn-axolotl-n	Number=Plur	dema	0
-axon	0	oewn-axon-n	Number=Sing	dema	0
-axonal	0	oewn-axonal-a	Degree=Pos	dema	0
-axonally	0	dema-axonal-r		dema	0
-axonalness	0	dema-axonal-n	Number=Plur	dema	0
-axonometric	0	dema-axonometric-a	Degree=Pos	dema	0
-axonometrically	0	dema-axonometric-r		dema	0
-axons	0	oewn-axon-n	Number=Plur	dema	0
-axoplasm	0	dema-axoplasm-n	Number=Sing	dema	0
-axoplasms	0	dema-axoplasm-n	Number=Plur	dema	0
-axseed	0	oewn-axseed-n	Number=Sing	dema	0
-axseeds	0	oewn-axseed-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+Axes	0	oewn-ax-n	Number=Plur	dema	0			carried
+Axes	1	oewn-ax-v	Person=3+Tense=Pres	dema	0			carried
+Axes	2	oewn-Axis-n	Capitalization=Title+Number=Plur	dema	0			hand
+Axis	0	oewn-axis-n	Number=Sing	dema	0			oewn_form
+Axis	1	oewn-Axis-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+ax	0	oewn-ax-n	Number=Sing	dema	0			oewn_form
+ax	1	oewn-ax-v	VerbForm=Inf	dema	0			oewn_form
+ax handle	0	oewn-ax_handle-n	Number=Sing	dema	0			oewn_form
+ax handles	0	oewn-ax_handle-n	Number=Plur	dema	0			rule
+ax head	0	oewn-ax_head-n	Number=Sing	dema	0			oewn_form
+ax heads	0	oewn-ax_head-n	Number=Plur	dema	0			rule
+axanthopsia	0		Number=Sing	dema	0	axanthopsia	n	moby_reverse
+axanthopsias	0		Number=Plur	dema	0	axanthopsia	n	rule
+axe	0	oewn-axe-n	Number=Sing	dema	0			oewn_form
+axe	1	oewn-axe-v	VerbForm=Inf	dema	0			oewn_form
+axe handle	0	oewn-axe_handle-n	Number=Sing	dema	0			oewn_form
+axe handles	0	oewn-axe_handle-n	Number=Plur	dema	0			rule
+axe head	0	oewn-axe_head-n	Number=Sing	dema	0			oewn_form
+axe heads	0	oewn-axe_head-n	Number=Plur	dema	0			rule
+axe-hammer	0	oewn-axe-hammer-n	Number=Sing	dema	0			oewn_form
+axe-hammers	0	oewn-axe-hammer-n	Number=Plur	dema	0			rule
+axed	0	oewn-ax-v	Tense=Past+VerbForm=Part	dema	0			rule
+axed	1	oewn-axe-v	Tense=Past+VerbForm=Part	dema	0			rule
+axel	0		Number=Sing	dema	0	axel	n	moby_reverse
+axels	0		Number=Plur	dema	0	axel	n	rule
+axenic	0	oewn-axenic-a	Degree=Pos	dema	0			oewn_form
+axerophthol	0	oewn-axerophthol-n	Number=Sing	dema	0			oewn_form
+axerophthols	0	oewn-axerophthol-n	Number=Plur	dema	0			rule
+axes	0	oewn-ax-n	Number=Plur	dema	1			carried
+axes	1	oewn-ax-v	Person=3+Tense=Pres	dema	1			carried
+axes	2	oewn-axis-n	Number=Plur	dema	0			hand
+axial	0	oewn-axial-a	Degree=Pos	dema	0			oewn_form
+axial flow turbine	0	oewn-axial_flow_turbine-n	Number=Sing	dema	0			oewn_form
+axial flow turbines	0	oewn-axial_flow_turbine-n	Number=Plur	dema	0			rule
+axial motion	0	oewn-axial_motion-n	Number=Sing	dema	0			oewn_form
+axial motions	0	oewn-axial_motion-n	Number=Plur	dema	0			rule
+axial muscle	0	oewn-axial_muscle-n	Number=Sing	dema	0			oewn_form
+axial muscles	0	oewn-axial_muscle-n	Number=Plur	dema	0			rule
+axial rotation	0	oewn-axial_rotation-n	Number=Sing	dema	0			oewn_form
+axial rotations	0	oewn-axial_rotation-n	Number=Plur	dema	0			rule
+axial skeleton	0	oewn-axial_skeleton-n	Number=Sing	dema	0			oewn_form
+axial skeletons	0	oewn-axial_skeleton-n	Number=Plur	dema	0			rule
+axial turbine	0	oewn-axial_turbine-n	Number=Sing	dema	0			oewn_form
+axial turbines	0	oewn-axial_turbine-n	Number=Plur	dema	0			rule
+axialities	0		Number=Plur	dema	0	axiality	n	rule
+axiality	0		Number=Sing	dema	0	axiality	n	moby_reverse
+axially	0	oewn-axially-r	Degree=Pos	dema	0			oewn_form
+axil	0	oewn-axil-n	Number=Sing	dema	0			oewn_form
+axile	0	oewn-axile-a	Degree=Pos	dema	0			oewn_form
+axile placentation	0	oewn-axile_placentation-n	Number=Sing	dema	0			oewn_form
+axile placentations	0	oewn-axile_placentation-n	Number=Plur	dema	0			rule
+axilemma	0		Number=Sing	dema	0	axilemma	n	moby_reverse
+axilemmas	0		Number=Plur	dema	0	axilemma	n	rule
+axilemmata	0		Number=Sing	dema	0	axilemmata	n	moby_reverse
+axilemmatas	0		Number=Plur	dema	0	axilemmata	n	rule
+axilla	0	oewn-axilla-n	Number=Sing	dema	0			oewn_form
+axillae	0	oewn-axilla-n	Number=Plur	dema	0			oewn_form
+axillar	0		Number=Sing	dema	0	axillar	n	moby_reverse
+axillaries	0		Number=Plur	dema	0	axillary	n	moby_reverse
+axillars	0		Number=Plur	dema	0	axillar	n	rule
+axillary	0	oewn-axillary-a	Degree=Pos	dema	0			oewn_form
+axillary	1		Number=Sing	dema	0	axillary	n	moby_reverse
+axillary arteries	0	oewn-axillary_artery-n	Number=Plur	dema	0			rule
+axillary artery	0	oewn-axillary_artery-n	Number=Sing	dema	0			oewn_form
+axillary cavities	0	oewn-axillary_cavity-n	Number=Plur	dema	0			rule
+axillary cavity	0	oewn-axillary_cavity-n	Number=Sing	dema	0			oewn_form
+axillary fossa	0	oewn-axillary_fossa-n	Number=Sing	dema	0			oewn_form
+axillary fossas	0	oewn-axillary_fossa-n	Number=Plur	dema	0			rule
+axillary node	0	oewn-axillary_node-n	Number=Sing	dema	0			oewn_form
+axillary nodes	0	oewn-axillary_node-n	Number=Plur	dema	0			rule
+axillary vein	0	oewn-axillary_vein-n	Number=Sing	dema	0			oewn_form
+axillary veins	0	oewn-axillary_vein-n	Number=Plur	dema	0			rule
+axillas	0	oewn-axilla-n	Number=Plur	dema	0			rule_variant
+axils	0	oewn-axil-n	Number=Plur	dema	0			rule
+axing	0	oewn-ax-v	VerbForm=Ger	dema	0			rule
+axing	1	oewn-axe-v	VerbForm=Ger	dema	0			rule
+axinite	0		Number=Sing	dema	0	axinite	n	moby_reverse
+axinites	0		Number=Plur	dema	0	axinite	n	rule
+axinomancies	0		Number=Plur	dema	0	axinomancy	n	rule
+axinomancy	0		Number=Sing	dema	0	axinomancy	n	moby_reverse
+axiological	0	oewn-axiological-a	Degree=Pos	dema	0			oewn_form
+axiologically	0		Degree=Pos	dema	0	axiologically	r	moby_reverse
+axiologies	0	oewn-axiology-n	Number=Plur	dema	0			rule
+axiologist	0		Number=Sing	dema	0	axiologist	n	moby_reverse
+axiologists	0		Number=Plur	dema	0	axiologist	n	rule
+axiology	0	oewn-axiology-n	Number=Sing	dema	0			oewn_form
+axiom	0	oewn-axiom-n	Number=Sing	dema	0			oewn_form
+axiomatic	0	oewn-axiomatic-a	Degree=Pos	dema	0			oewn_form
+axiomatic system	0	oewn-axiomatic_system-n	Number=Sing	dema	0			oewn_form
+axiomatic systems	0	oewn-axiomatic_system-n	Number=Plur	dema	0			rule
+axiomatical	0	oewn-axiomatical-a	Degree=Pos	dema	0			oewn_form
+axiomatically	0	oewn-axiomatically-r	Degree=Pos	dema	0			oewn_form
+axioms	0	oewn-axiom-n	Number=Plur	dema	0			rule
+axis	0	oewn-axis-n	Number=Sing	dema	0			oewn_form
+axis of rotation	0	oewn-axis_of_rotation-n	Number=Sing	dema	0			oewn_form
+axis vertebra	0	oewn-axis_vertebra-n	Number=Sing	dema	0			oewn_form
+axis vertebras	0	oewn-axis_vertebra-n	Number=Plur	dema	0			rule
+axised	0		Degree=Pos	dema	0	axised	a	moby_reverse
+axised	1		VerbForm=Inf	dema	0	axised	v	moby_reverse
+axle	0	oewn-axle-n	Number=Sing	dema	0			oewn_form
+axle bar	0	oewn-axle_bar-n	Number=Sing	dema	0			oewn_form
+axle bars	0	oewn-axle_bar-n	Number=Plur	dema	0			rule
+axle grease	0	oewn-axle_grease-n	Number=Sing	dema	0			oewn_form
+axle greases	0	oewn-axle_grease-n	Number=Plur	dema	0			rule
+axled	0		Degree=Pos	dema	0	axled	a	moby_reverse
+axled	1		VerbForm=Inf	dema	0	axled	v	moby_reverse
+axles	0	oewn-axle-n	Number=Plur	dema	0			rule
+axletree	0	oewn-axletree-n	Number=Sing	dema	0			oewn_form
+axletrees	0	oewn-axletree-n	Number=Plur	dema	0			rule
+axlike	0		Degree=Pos	dema	0	axlike	a	moby_reverse
+axman	0		Number=Sing	dema	0	axman	n	moby_reverse
+axmans	0		Number=Plur	dema	0	axman	n	rule
+axmen	0		Number=Sing	dema	0	axmen	n	moby_reverse
+axmens	0		Number=Plur	dema	0	axmen	n	rule
+axolemma	0	oewn-axolemma-n	Number=Sing	dema	0			oewn_form
+axolemmas	0	oewn-axolemma-n	Number=Plur	dema	0			rule
+axolotl	0	oewn-axolotl-n	Number=Sing	dema	0			oewn_form
+axolotls	0	oewn-axolotl-n	Number=Plur	dema	0			rule
+axon	0	oewn-axon-n	Number=Sing	dema	0			oewn_form
+axonal	0	oewn-axonal-a	Degree=Pos	dema	0			oewn_form
+axone	0	oewn-axone-n	Number=Sing	dema	0			oewn_form
+axones	0	oewn-axone-n	Number=Plur	dema	0			rule
+axonometric	0		Degree=Pos	dema	0	axonometric	a	moby_reverse
+axons	0	oewn-axon-n	Number=Plur	dema	0			rule
+axoplasm	0		Number=Sing	dema	0	axoplasm	n	moby_reverse
+axoplasms	0		Number=Plur	dema	0	axoplasm	n	rule
+axseed	0	oewn-axseed-n	Number=Sing	dema	0			oewn_form
+axseeds	0	oewn-axseed-n	Number=Plur	dema	0			rule

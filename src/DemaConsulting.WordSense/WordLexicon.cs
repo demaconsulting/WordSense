@@ -15,7 +15,13 @@ namespace DemaConsulting.WordSense;
 ///     <para>
 ///     <see cref="Lookup"/> and <see cref="TryLookup"/> take the word as written. They look for the exact spelling first
 ///     and, when there is none, for the lower-case spelling and the spellings that differ only in case, so
-///     <c>Record</c> finds <c>record</c>; the curly apostrophe U+2019 counts as <c>'</c>. The analyses of a word are in a
+///     <c>Record</c> finds <c>record</c>; the curly apostrophe U+2019 counts as <c>'</c>. A possessive that is not stored
+///     (<c>dog's</c>, <c>dogs'</c>) gets the noun and pronoun analyses of its stem with <c>Poss=Yes</c> added to the
+///     features, for example <c>Number=Sing+Poss=Yes</c>. The contractions (<c>don't</c>, <c>it's</c>) are a closed list.
+///     The reference tokenizer of the models keeps an apostrophe between letters inside the word, so <c>dog's</c> is one token and
+///     reaches this lookup whole, but a trailing apostrophe is a token of its own (<c>dogs'</c> becomes <c>dogs</c> and <c>'</c>); a
+///     caller that wants the plural possessive resolved has to pass <c>dogs'</c> as one word itself.
+///     The analyses of a word are in a
 ///     fixed order that is part of the lexicon (for a word with several analyses the first is the most frequent) and
 ///     use the ten values of <see cref="PartOfSpeech"/>. A word that is not in the lexicon (a number written with digits, most proper
 ///     nouns or a misspelling) has no analysis. The lexicon is read-only and safe for concurrent use.

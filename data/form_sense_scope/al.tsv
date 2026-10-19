@@ -2,11 +2,8 @@ spelling	rank	class_id
 alert	0	alert#noun
 alert	1	alert#verb
 alerted	0	alert#verb
-alerter	0	alert#noun
-alerter	1	alert#verb
-alerters	0	alert#noun
-alerting	0	alert#noun
-alerting	1	alert#verb
+alerting	0	alert#verb
+alerting	1	alert#noun
 alerts	0	alert#noun
 alerts	1	alert#verb
 allied	0	ally#ally-verb

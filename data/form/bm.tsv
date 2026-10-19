@@ -1,0 +1,14 @@
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+BM	0	oewn-bm-n	Number=Sing	dema	0			oewn_form
+BM	1	oewn-BM-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+BMDO	0	oewn-BMDO-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+BMDOS	0	oewn-BMDO-n	Capitalization=Upper+Number=Plur	dema	0			rule
+BMI	0	oewn-BMI-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+BMIS	0	oewn-BMI-n	Capitalization=Upper+Number=Plur	dema	0			rule
+BMR	0	oewn-BMR-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+BMRS	0	oewn-BMR-n	Capitalization=Upper+Number=Plur	dema	0			rule
+BMS	0	oewn-bm-n	Number=Plur	dema	0			rule
+BMS	1	oewn-BM-n	Capitalization=Upper+Number=Plur	dema	0			rule
+BMus	0	oewn-BMus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+bm	0	oewn-bm-n	Number=Sing	dema	0			oewn_form
+bms	0	oewn-bm-n	Number=Plur	dema	0			rule

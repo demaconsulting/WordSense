@@ -391,32 +391,6 @@ public sealed class BuilderTests : IDisposable
     }
 
     /// <summary>
-    ///     The committed image answers every spelling of the legacy word table (the table the builder derives from the
-    ///     corpus) with the same parts of speech and meanings in the same order, so the swap of the lexicon changes no answer.
-    /// </summary>
-    [Fact]
-    public void WordSenseBuilder_Words_Committed_MatchesLegacyTable()
-    {
-        var corpus = Path.Combine(FindRepositoryRoot().FullName, "corpus");
-        var legacy = WordsBuilder.Build(corpus);
-        var problems = new List<string>();
-
-        foreach (var (spelling, expected) in legacy)
-        {
-            var actual = DemaConsulting.WordSense.WordLexicon.Lookup(spelling);
-            var left = expected.Select(d => d.PartOfSpeech).ToArray();
-            var right = actual.Select(d => d.PartOfSpeech).ToArray();
-            if (!left.SequenceEqual(right))
-            {
-                problems.Add($"{spelling}: [{string.Join(",", left)}] vs [{string.Join(",", right)}]");
-            }
-        }
-
-        Assert.True(problems.Count == 0, $"{problems.Count} spellings differ from the legacy table: " + string.Join(" | ", problems.Take(30)));
-        Assert.Equal(legacy.Count, DemaConsulting.WordSense.WordLexicon.Count);
-    }
-
-    /// <summary>
     ///     A consistent corpus passes validation.
     /// </summary>
     [Fact]
@@ -702,8 +676,18 @@ public sealed class BuilderTests : IDisposable
         Assert.True(missing.Count == 0, "Words of lexicon.tsv missing from the word image: " + string.Join(", ", missing));
         Assert.True(lexicon.Count > 143_000);
 
-        // Every part of speech the dictionary lists for a word is among the senses of that word, without exception
+        // Every part of speech the dictionary lists for a word is among the senses of that word, without exception, except
+        // for the analyses that the forms audit dropped in form-corrections.tsv: our own sources show
+        // the analysis wrong (a plural of a verb-only word, a past spelled with one consonant), so the word list entry
+        // is not made true by a wrong analysis
+        var dropped = File.ReadLines(Path.Combine(root.FullName, "corpus", "lexicon", "form-corrections.tsv"))
+            .Where(l => l.Length > 0 && l[0] != '#')
+            .Select(l => l.Split('\t'))
+            .Where(p => p.Length > 4 && p[4] == "drop")
+            .Select(p => p[0])
+            .ToHashSet(StringComparer.Ordinal);
         var lost = lexicon
+            .Where(w => !dropped.Contains(w.Word))
             .Where(w => w.Letters.Any(l => table[w.Word].All(d => (int)d.PartOfSpeech != LexiconSource.Letters.IndexOf(l, StringComparison.Ordinal))))
             .Select(w => w.Word)
             .Take(10)
@@ -713,11 +697,35 @@ public sealed class BuilderTests : IDisposable
     }
 
     /// <summary>
+    ///     Every word of the committed closed list of auxiliaries has an Auxiliary sense in the embedded word table, and
+    ///     that sense follows every other sense of the word.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Words_Committed_AuxiliarySenseComesLast()
+    {
+        var root = FindRepositoryRoot();
+        var table = new LexiconView();
+        var auxiliaries = LexiconSource.ReadAuxiliaries(Path.Combine(root.FullName, "corpus", "lexicon", "auxiliaries.tsv"));
+
+        var problems = auxiliaries
+            .Where(w => !table.ContainsKey(w)
+                || table[w].All(d => d.PartOfSpeech != PartOfSpeech.Auxiliary)
+                || table[w][^1].PartOfSpeech != PartOfSpeech.Auxiliary)
+            .Take(10)
+            .ToList();
+
+        Assert.True(problems.Count == 0, "Auxiliaries without a last Auxiliary sense: " + string.Join(", ", problems));
+        Assert.True(auxiliaries.Count > 20);
+    }
+
+    /// <summary>
     ///     A listed form has the trained senses its labels name, carrying the lemma's lemma, meaning and respelling,
     ///     followed by one sense for each dictionary part of speech the labels do not cover; that sense is the form's
     ///     own (the form is its lemma, because a form may have several lemmas) and has no meaning and no respelling.
     ///     The one exception is the closed-list Auxiliary sense, which keeps the lemma of the form (<c>was</c> of
-    ///     <c>be</c>).
+    ///     <c>be</c>). A generated analysis of another entry of the same lemma (a second verb entry <c>bow</c> of
+    ///     <c>bowing</c>, or of another dictionary lemma whose generated form it is, <c>swinge</c> of <c>swinging</c>) or
+    ///     an extra analysis of the form's own lemma may follow.
     /// </summary>
     [Fact]
     public void WordSenseBuilder_Words_Committed_FormSensesFollowLabelsThenOwnExtras()
@@ -740,8 +748,8 @@ public sealed class BuilderTests : IDisposable
                 .Where(p => !covered.Contains(p))
                 .ToList();
             if (trained.Count == 0
-                || extras.Any(d => d.Lemma != form)
-                || !extras.Select(d => d.PartOfSpeech).SequenceEqual(expected))
+                || extras.Any(d => d.Lemma != form && !table.ContainsKey(d.Lemma))
+                || expected.Any(p => extras.All(d => d.PartOfSpeech != p)))
             {
                 problems.Add(form);
             }

@@ -1,10 +1,34 @@
-spelling	rank	entry_id	features	source_id	reviewed
-cf	0	dema-cf-n	Number=Sing	dema	0
-cfd	0	dema-cfd-n	Number=Sing	dema	0
-cfds	0	dema-cfd-n	Number=Plur	dema	0
-cfh	0	dema-cfh-n	Number=Sing	dema	0
-cfhs	0	dema-cfh-n	Number=Plur	dema	0
-cfm	0	dema-cfm-n	Number=Sing	dema	0
-cfms	0	dema-cfm-n	Number=Plur	dema	0
-cfs	0	dema-cfs-n	Number=Sing	dema	0
-cfses	0	dema-cfs-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+CF	0		Number=Sing	dema	0	cf	n	moby_reverse
+CF	1	oewn-cf-r	Degree=Pos	dema	0			oewn_form
+CF	2	oewn-CF-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CFA franc	0	oewn-CFA_franc-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+CFA francs	0	oewn-CFA_franc-n	Capitalization=Exact+Number=Plur	dema	0			rule
+CFC	0	oewn-CFC-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CFCS	0	oewn-CFC-n	Capitalization=Upper+Number=Plur	dema	0			rule
+CFL	0	oewn-CFL-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CFLS	0	oewn-CFL-n	Capitalization=Upper+Number=Plur	dema	0			rule
+CFO	0	oewn-CFO-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CFOS	0	oewn-CFO-n	Capitalization=Upper+Number=Plur	dema	0			rule
+CFS	0	oewn-CF-n	Number=Plur	dema	0			moby_reverse
+CFS	1	oewn-Cf-n	Number=Plur	dema	0			moby_reverse
+CFS	2		Number=Plur	dema	0	cf	n	rule
+CFS	3	oewn-CF-n	Capitalization=Upper+Number=Plur	dema	0			rule
+CFTR	0	oewn-CFTR-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CFTRS	0	oewn-CFTR-n	Capitalization=Upper+Number=Plur	dema	0			rule
+Cf	0		Number=Sing	dema	0	cf	n	moby_reverse
+Cf	1	oewn-cf-r	Degree=Pos	dema	0			oewn_form
+Cf	2	oewn-Cf-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Cfs	0	oewn-CF-n	Number=Plur	dema	0			moby_reverse
+Cfs	1	oewn-Cf-n	Number=Plur	dema	0			moby_reverse
+Cfs	2		Number=Plur	dema	0	cf	n	rule
+Cfs	3	oewn-Cf-n	Capitalization=Title+Number=Plur	dema	0			rule
+cf	0		Number=Sing	dema	0	cf	n	moby_reverse
+cf	1	oewn-cf-r	Degree=Pos	dema	0			oewn_form
+cf.	0	oewn-cf.-r	Degree=Pos	dema	0			oewn_form
+cfd	0		Number=Sing	dema	0	cfd	n	moby_reverse
+cfh	0		Number=Sing	dema	0	cfh	n	moby_reverse
+cfm	0		Number=Sing	dema	0	cfm	n	moby_reverse
+cfs	0	oewn-CF-n	Number=Plur	dema	0			moby_reverse
+cfs	1	oewn-Cf-n	Number=Plur	dema	0			moby_reverse
+cfs	2		Number=Plur	dema	0	cf	n	rule

@@ -14,14 +14,12 @@ sections:
               authoritative tables of the data (entry, form, form_sense_scope and coarse_class) and the sense
               meanings of the corpus, with every word of the dictionary (determiners, conjunctions and interjections
               included), every sense of a trained lemma and the inflected forms of every dictionary word
-              and trained lemma (regular and irregular, with the spelling rules of English), and shall write it in
-              the compact binary format that the core package reads. The legacy word table built from the corpus
-              rules stays the reference that the committed image is compared against: a word that a trained lemma or
-              form also
-              spells, and a dictionary word, shall never be replaced by a generated form; a trained lemma shall keep
-              the trained senses first and gain the other parts of speech of the dictionary. A listed form of a
-              trained lemma shall have only the senses its labels name, and an unknown, duplicate or empty label, or
-              a restricted row for the lemma itself, shall fail the build. A modal or primary
+              and trained lemma (the generation of the forms is specified by the FormGenerator requirements), and
+              shall write it in the compact binary format that the core package reads. The committed image shall be
+              the compilation of the committed data, and a dictionary word shall never be lost; a trained lemma
+              shall keep the trained senses first. A listed form of a trained lemma shall have the senses its labels
+              name followed by its own analyses, and an unknown, duplicate or empty label, or a restricted row for
+              the lemma itself, shall fail the build. A modal or primary
               auxiliary listed in the committed auxiliary list shall gain an Auxiliary sense after all its other
               senses, and an Auxiliary sense shall never be trained.
             tags: [unit]
@@ -37,26 +35,12 @@ sections:
               - WordSenseBuilder_Image_TruncatedAtEverySectionBoundary_IsRejected
               - WordSenseBuilder_Image_WrongHash_IsRejectedByContentHashOnly
               - WordSenseBuilder_Image_CountMismatch_IsRejected
-              - WordSenseBuilder_WordsBuilder_Build_GeneratedFormOfTrainedLemma_KeepsAllTrainedSenses
-              - WordSenseBuilder_WordsBuilder_Build_CombinesLemmasFormsLexiconAndMorphology
-              - WordSenseBuilder_WordsBuilder_Build_MergesDictionaryPartsOfSpeechAfterTrainedSenses
-              - WordSenseBuilder_WordsBuilder_Build_AppendsAuxiliarySenseLast
-              - WordSenseBuilder_WordsBuilder_Build_UnknownAuxiliary_Throws
               - WordSenseBuilder_LexiconSource_ReadAuxiliaries_ReadsWordsAndRejectsBadLines
               - WordSenseBuilder_LexiconSource_Letters_CoverTheTenParts
-              - WordSenseBuilder_MorphologyExpander_Expand_GeneratesForms
-              - WordSenseBuilder_MorphologyExpander_Expand_AppliesSpellingRules
-              - WordSenseBuilder_MorphologyExpander_Expand_UsesIrregularForms
-              - WordSenseBuilder_MorphologyExpander_Expand_RespectsKnownWordsAndDisabledRules
-              - WordSenseBuilder_Words_Committed_MatchesLegacyTable
               - WordSenseBuilder_Words_Committed_MatchesData
+              - WordSenseBuilder_Words_Committed_AuxiliarySenseComesLast
               - WordSenseBuilder_Program_CompileImage_WritesImage
-              - WordSenseBuilder_WordsBuilder_Build_ListedFormWithLabels_GetsOnlyThoseSenses
-              - WordSenseBuilder_WordsBuilder_Build_ListedFormLabelsOutOfOrder_UsesLemmaOrder
-              - WordSenseBuilder_WordsBuilder_Build_ListedFormWithAllLabels_ReusesLemmaSenses
-              - WordSenseBuilder_WordsBuilder_Build_RestrictedFormWithDictionaryPos_AppendsUntrainedExtraAfterSubset
-              - WordSenseBuilder_WordsBuilder_Build_InvalidFormLabels_ThrowsListingAllErrors
-              - WordSenseBuilder_WordsBuilder_Build_SelfRowWithAllLabels_IsAccepted
+              - WordSenseBuilder_SenseInventory_ValidateRules_FlagsViolations
               - WordSenseBuilder_SenseInventory_CheckForms_ReportsEveryViolation
               - WordSenseBuilder_SenseInventory_FormSenseIndexes_FollowsLemmaOrder
               - WordSenseBuilder_SenseInventory_Validate_SentenceWithSenseOutsideFormLabels_IsReported

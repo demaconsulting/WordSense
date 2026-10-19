@@ -1,14 +1,18 @@
-spelling	rank	entry_id	features	source_id	reviewed
-bk	0	dema-bk-n	Number=Sing	dema	0
-bkbndr	0	dema-bkbndr-n	Number=Sing	dema	0
-bkbndrs	0	dema-bkbndr-n	Number=Plur	dema	0
-bkcies	0	dema-bkcy-n	Number=Plur	dema	0
-bkcy	0	dema-bkcy-n	Number=Sing	dema	0
-bkg	0	dema-bkg-n	Number=Sing	dema	0
-bkgs	0	dema-bkg-n	Number=Plur	dema	0
-bklr	0	dema-bklr-n	Number=Sing	dema	0
-bklrs	0	dema-bklr-n	Number=Plur	dema	0
-bkpr	0	dema-bkpr-n	Number=Sing	dema	0
-bkprs	0	dema-bkpr-n	Number=Plur	dema	0
-bks	0	dema-bks-n	Number=Sing	dema	0
-bkses	0	dema-bks-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+Bk	0		Number=Sing	dema	0	bk	n	moby_reverse
+Bk	1	oewn-Bk-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Bks	0	oewn-Bk-n	Number=Plur	dema	0			moby_reverse
+Bks	1		Number=Plur	dema	0	bk	n	rule
+Bks	2	oewn-Bk-n	Capitalization=Title+Number=Plur	dema	0			rule
+bk	0		Number=Sing	dema	0	bk	n	moby_reverse
+bkbndr	0		Number=Sing	dema	0	bkbndr	n	moby_reverse
+bkbndrs	0		Number=Plur	dema	0	bkbndr	n	rule
+bkcies	0		Number=Plur	dema	0	bkcy	n	rule
+bkcy	0		Number=Sing	dema	0	bkcy	n	moby_reverse
+bkg	0		Number=Sing	dema	0	bkg	n	moby_reverse
+bklr	0		Number=Sing	dema	0	bklr	n	moby_reverse
+bklrs	0		Number=Plur	dema	0	bklr	n	rule
+bkpr	0		Number=Sing	dema	0	bkpr	n	moby_reverse
+bkprs	0		Number=Plur	dema	0	bkpr	n	rule
+bks	0	oewn-Bk-n	Number=Plur	dema	0			moby_reverse
+bks	1		Number=Plur	dema	0	bk	n	rule

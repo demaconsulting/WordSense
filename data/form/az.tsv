@@ -1,108 +1,141 @@
-spelling	rank	entry_id	features	source_id	reviewed
-az	0	dema-az-n	Number=Sing	dema	0
-azalea	0	oewn-azalea-n	Number=Sing	dema	0
-azaleas	0	oewn-azalea-n	Number=Plur	dema	0
-azan	0	dema-azan-n	Number=Sing	dema	0
-azans	0	dema-azan-n	Number=Plur	dema	0
-azathioprine	0	oewn-azathioprine-n	Number=Sing	dema	0
-azathioprines	0	oewn-azathioprine-n	Number=Plur	dema	0
-azedarach	0	oewn-azedarach-n	Number=Sing	dema	0
-azedaraches	0	oewn-azedarach-n	Number=Plur	dema	0
-azedarachs	0	oewn-azedarach-n	Number=Plur	dema	0
-azeotrope	0	dema-azeotrope-n	Number=Sing	dema	0
-azeotropes	0	dema-azeotrope-n	Number=Plur	dema	0
-azeotropic	0	dema-azeotropic-a	Degree=Pos	dema	0
-azeotropically	0	dema-azeotropic-r		dema	0
-azeotropies	0	dema-azeotropy-n	Number=Plur	dema	0
-azeotropism	0	dema-azeotropism-n	Number=Sing	dema	0
-azeotropisms	0	dema-azeotropism-n	Number=Plur	dema	0
-azeotropy	0	dema-azeotropy-n	Number=Sing	dema	0
-azide	0	oewn-azide-n	Number=Sing	dema	0
-azides	0	oewn-azide-n	Number=Plur	dema	0
-azido	0	oewn-azido-a	Degree=Pos	dema	0
-azidoly	0	dema-azido-r		dema	0
-azidoness	0	dema-azido-n	Number=Plur	dema	0
-azimuth	0	oewn-azimuth-n	Number=Sing	dema	0
-azimuthal	0	oewn-azimuthal-a	Degree=Pos	dema	0
-azimuthally	0	dema-azimuthally-r	Degree=Pos	dema	0
-azimuths	0	oewn-azimuth-n	Number=Plur	dema	0
-azine	0	dema-azine-n	Number=Sing	dema	0
-azines	0	dema-azine-n	Number=Plur	dema	0
-azlon	0	dema-azlon-n	Number=Sing	dema	0
-azlons	0	dema-azlon-n	Number=Plur	dema	0
-azo	0	oewn-azo-a	Degree=Pos	dema	0
-azobenzene	0	dema-azobenzene-n	Number=Sing	dema	0
-azobenzenes	0	dema-azobenzene-n	Number=Plur	dema	0
-azoer	0	oewn-azo-a	Degree=Cmp	dema	0
-azoest	0	oewn-azo-a	Degree=Sup	dema	0
-azoic	0	oewn-azoic-a	Degree=Pos	dema	0
-azoically	0	dema-azoic-r		dema	0
-azoicness	0	dema-azoic-n	Number=Plur	dema	0
-azoimide	0	oewn-azoimide-n	Number=Sing	dema	0
-azoimides	0	oewn-azoimide-n	Number=Plur	dema	0
-azole	0	dema-azole-n	Number=Sing	dema	0
-azoles	0	dema-azole-n	Number=Plur	dema	0
-azoly	0	dema-azo-r		dema	0
-azonal	0	oewn-azonal-a	Degree=Pos	dema	0
-azonally	0	dema-azonal-r		dema	0
-azonalness	0	dema-azonal-n	Number=Plur	dema	0
-azoness	0	dema-azo-n	Number=Plur	dema	0
-azonic	0	oewn-azonic-a	Degree=Pos	dema	0
-azonically	0	dema-azonic-r		dema	0
-azonicness	0	dema-azonic-n	Number=Plur	dema	0
-azophenylene	0	dema-azophenylene-n	Number=Sing	dema	0
-azophenylenes	0	dema-azophenylene-n	Number=Plur	dema	0
-azote	0	oewn-azote-n	Number=Sing	dema	0
-azoted	0	dema-azoted-a	Degree=Pos	dema	0
-azoted	1	dema-azoted-v	VerbForm=Inf	dema	0
-azoteded	0	dema-azoted-v	Tense=Past	dema	0
-azoteder	0	dema-azoted-n	Number=Plur	dema	0
-azoteders	0	dema-azoted-n	Number=Plur	dema	0
-azoteding	0	dema-azoted-v	VerbForm=Ger	dema	0
-azotedingly	0	dema-azoted-r		dema	0
-azotedly	0	dema-azoted-r		dema	0
-azotedness	0	dema-azoted-n	Number=Plur	dema	0
-azoteds	0	dema-azoted-v	Person=3+Tense=Pres	dema	0
-azotemia	0	oewn-azotemia-n	Number=Sing	dema	0
-azotemias	0	oewn-azotemia-n	Number=Plur	dema	0
-azotes	0	oewn-azote-n	Number=Plur	dema	0
-azoth	0	dema-azoth-n	Number=Sing	dema	0
-azoths	0	dema-azoth-n	Number=Plur	dema	0
-azotic	0	oewn-azotic-a	Degree=Pos	dema	0
-azotically	0	dema-azotic-r		dema	0
-azoticness	0	dema-azotic-n	Number=Plur	dema	0
-azotise	0	dema-azotise-v	VerbForm=Inf	dema	0
-azotised	0	dema-azotised-v	VerbForm=Inf	dema	0
-azotiser	0	dema-azotise-n	Number=Plur	dema	0
-azotisers	0	dema-azotise-n	Number=Plur	dema	0
-azotises	0	dema-azotise-v	Person=3+Tense=Pres	dema	0
-azotising	0	dema-azotising-v	VerbForm=Inf	dema	0
-azotisingly	0	dema-azotise-r		dema	0
-azotize	0	dema-azotize-v	VerbForm=Inf	dema	0
-azotized	0	dema-azotized-v	VerbForm=Inf	dema	0
-azotizer	0	dema-azotize-n	Number=Plur	dema	0
-azotizers	0	dema-azotize-n	Number=Plur	dema	0
-azotizes	0	dema-azotize-v	Person=3+Tense=Pres	dema	0
-azotizing	0	dema-azotizing-v	VerbForm=Inf	dema	0
-azotizingly	0	dema-azotize-r		dema	0
-azotobacter	0	dema-azotobacter-n	Number=Sing	dema	0
-azotobacters	0	dema-azotobacter-n	Number=Plur	dema	0
-azulejo	0	dema-azulejo-n	Number=Sing	dema	0
-azulejoes	0	dema-azulejo-n	Number=Plur	dema	0
-azulejos	0	dema-azulejos-n	Number=Sing	dema	0
-azure	0	oewn-azure-n	Number=Sing	dema	0
-azure	1	oewn-azure-a	Degree=Pos	dema	0
-azurely	0	dema-azure-r		dema	0
-azureness	0	oewn-azure-n	Number=Plur	dema	0
-azurer	0	oewn-azure-a	Degree=Cmp	dema	0
-azures	0	oewn-azure-n	Number=Plur	dema	0
-azurest	0	oewn-azure-a	Degree=Sup	dema	0
-azurite	0	oewn-azurite-n	Number=Sing	dema	0
-azurites	0	oewn-azurite-n	Number=Plur	dema	0
-azurmalachite	0	dema-azurmalachite-n	Number=Sing	dema	0
-azurmalachites	0	dema-azurmalachite-n	Number=Plur	dema	0
-azygospore	0	dema-azygospore-n	Number=Sing	dema	0
-azygospores	0	dema-azygospore-n	Number=Plur	dema	0
-azygous	0	oewn-azygous-a	Degree=Pos	dema	0
-azygously	0	dema-azygous-r		dema	0
-azygousness	0	dema-azygous-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+AZ	0		Number=Sing	dema	0	az	n	moby_reverse
+AZ	1	oewn-AZ-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+AZES	0	oewn-AZ-n	Capitalization=Upper+Number=Plur	dema	0			rule
+AZT	0	oewn-AZT-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+AZTS	0	oewn-AZT-n	Capitalization=Upper+Number=Plur	dema	0			rule
+Azactam	0	oewn-Azactam-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Azactams	0	oewn-Azactam-n	Capitalization=Title+Number=Plur	dema	0			rule
+Azadirachta indica	0	oewn-Azadirachta_indica-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Azadirachta indicas	0	oewn-Azadirachta_indica-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Azerbaijani	0	oewn-Azerbaijani-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Azerbaijani	1	oewn-Azerbaijani-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Azerbaijani language	0	oewn-Azerbaijani_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Azerbaijani languages	0	oewn-Azerbaijani_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Azerbaijani monetary unit	0	oewn-Azerbaijani_monetary_unit-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Azerbaijani monetary units	0	oewn-Azerbaijani_monetary_unit-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Azerbaijanis	0	oewn-Azerbaijani-n	Capitalization=Title+Number=Plur	dema	0			rule
+Azeri	0	oewn-Azeri-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Azeris	0	oewn-Azeri-n	Capitalization=Title+Number=Plur	dema	0			rule
+Azolla caroliniana	0	oewn-Azolla_caroliniana-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Azolla carolinianas	0	oewn-Azolla_caroliniana-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Aztec	0	oewn-Aztec-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Aztec lilies	0	oewn-Aztec_lily-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Aztec lily	0	oewn-Aztec_lily-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aztec marigold	0	oewn-Aztec_marigold-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aztec marigolds	0	oewn-Aztec_marigold-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Aztecan	0	oewn-Aztecan-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Aztecan language	0	oewn-Aztecan_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aztecan languages	0	oewn-Aztecan_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Aztecans	0	oewn-Aztecan-n	Capitalization=Title+Number=Plur	dema	0			rule
+Aztecs	0	oewn-Aztec-n	Capitalization=Title+Number=Plur	dema	0			rule
+az	0		Number=Sing	dema	0	az	n	moby_reverse
+azadirachtin	0	oewn-azadirachtin-n	Number=Sing	dema	0			oewn_form
+azadirachtins	0	oewn-azadirachtin-n	Number=Plur	dema	0			rule
+azalea	0	oewn-azalea-n	Number=Sing	dema	0			oewn_form
+azaleas	0	oewn-azalea-n	Number=Plur	dema	0			rule
+azan	0		Number=Sing	dema	0	azan	n	moby_reverse
+azans	0		Number=Plur	dema	0	azan	n	rule
+azathioprine	0	oewn-azathioprine-n	Number=Sing	dema	0			oewn_form
+azathioprines	0	oewn-azathioprine-n	Number=Plur	dema	0			rule
+azedarach	0	oewn-azedarach-n	Number=Sing	dema	0			oewn_form
+azedaraches	0	oewn-azedarach-n	Number=Plur	dema	0			rule
+azederach	0	oewn-azederach-n	Number=Sing	dema	0			oewn_form
+azederaches	0	oewn-azederach-n	Number=Plur	dema	0			rule
+azeotrope	0		Number=Sing	dema	0	azeotrope	n	moby_reverse
+azeotropes	0		Number=Plur	dema	0	azeotrope	n	rule
+azeotropic	0		Degree=Pos	dema	0	azeotropic	a	moby_reverse
+azeotropies	0		Number=Plur	dema	0	azeotropy	n	rule
+azeotropism	0		Number=Sing	dema	0	azeotropism	n	moby_reverse
+azeotropisms	0		Number=Plur	dema	0	azeotropism	n	rule
+azeotropy	0		Number=Sing	dema	0	azeotropy	n	moby_reverse
+azide	0	oewn-azide-n	Number=Sing	dema	0			oewn_form
+azides	0	oewn-azide-n	Number=Plur	dema	0			rule
+azido	0	oewn-azido-a	Degree=Pos	dema	0			oewn_form
+azido group	0	oewn-azido_group-n	Number=Sing	dema	0			oewn_form
+azido groups	0	oewn-azido_group-n	Number=Plur	dema	0			rule
+azido radical	0	oewn-azido_radical-n	Number=Sing	dema	0			oewn_form
+azido radicals	0	oewn-azido_radical-n	Number=Plur	dema	0			rule
+azimuth	0	oewn-azimuth-n	Number=Sing	dema	0			oewn_form
+azimuth mark	0	oewn-azimuth_mark-n	Number=Sing	dema	0			oewn_form
+azimuth marks	0	oewn-azimuth_mark-n	Number=Plur	dema	0			rule
+azimuthal	0	oewn-azimuthal-a	Degree=Pos	dema	0			oewn_form
+azimuthally	0		Degree=Pos	dema	0	azimuthally	r	moby_reverse
+azimuths	0	oewn-azimuth-n	Number=Plur	dema	0			rule
+azine	0		Number=Sing	dema	0	azine	n	moby_reverse
+azines	0		Number=Plur	dema	0	azine	n	rule
+azithromycin	0	oewn-azithromycin-n	Number=Sing	dema	0			oewn_form
+azithromycins	0	oewn-azithromycin-n	Number=Plur	dema	0			rule
+azlon	0		Number=Sing	dema	0	azlon	n	moby_reverse
+azlons	0		Number=Plur	dema	0	azlon	n	rule
+azo	0	oewn-azo-a	Degree=Pos	dema	0			oewn_form
+azo dye	0	oewn-azo_dye-n	Number=Sing	dema	0			oewn_form
+azo dyes	0	oewn-azo_dye-n	Number=Plur	dema	0			rule
+azo group	0	oewn-azo_group-n	Number=Sing	dema	0			oewn_form
+azo groups	0	oewn-azo_group-n	Number=Plur	dema	0			rule
+azo radical	0	oewn-azo_radical-n	Number=Sing	dema	0			oewn_form
+azo radicals	0	oewn-azo_radical-n	Number=Plur	dema	0			rule
+azobenzene	0		Number=Sing	dema	0	azobenzene	n	moby_reverse
+azobenzenes	0		Number=Plur	dema	0	azobenzene	n	rule
+azoic	0	oewn-azoic-a	Degree=Pos	dema	0			oewn_form
+azoimide	0	oewn-azoimide-n	Number=Sing	dema	0			oewn_form
+azoimides	0	oewn-azoimide-n	Number=Plur	dema	0			rule
+azole	0		Number=Sing	dema	0	azole	n	moby_reverse
+azoles	0		Number=Plur	dema	0	azole	n	rule
+azonal	0	oewn-azonal-a	Degree=Pos	dema	0			oewn_form
+azonic	0	oewn-azonic-a	Degree=Pos	dema	0			oewn_form
+azophenylene	0		Number=Sing	dema	0	azophenylene	n	moby_reverse
+azophenylenes	0		Number=Plur	dema	0	azophenylene	n	rule
+azotaemia	0	oewn-azotaemia-n	Number=Sing	dema	0			oewn_form
+azotaemias	0	oewn-azotaemia-n	Number=Plur	dema	0			rule
+azote	0	oewn-azote-n	Number=Sing	dema	0			oewn_form
+azoted	0		Degree=Pos	dema	0	azoted	a	moby_reverse
+azoted	1		VerbForm=Inf	dema	0	azoted	v	moby_reverse
+azotemia	0	oewn-azotemia-n	Number=Sing	dema	0			oewn_form
+azotemias	0	oewn-azotemia-n	Number=Plur	dema	0			rule
+azotemic	0	oewn-azotemic-a	Degree=Pos	dema	0			oewn_form
+azotes	0	oewn-azote-n	Number=Plur	dema	0			rule
+azoth	0		Number=Sing	dema	0	azoth	n	moby_reverse
+azoths	0		Number=Plur	dema	0	azoth	n	rule
+azotic	0	oewn-azotic-a	Degree=Pos	dema	0			oewn_form
+azotise	0		VerbForm=Inf	dema	0	azotise	v	moby_reverse
+azotised	0		Tense=Past+VerbForm=Part	dema	0	azotise	v	rule
+azotises	0		Person=3+Tense=Pres	dema	0	azotise	v	rule
+azotising	0		VerbForm=Ger	dema	0	azotise	v	rule
+azotize	0		VerbForm=Inf	dema	0	azotize	v	moby_reverse
+azotized	0		Tense=Past+VerbForm=Part	dema	0	azotize	v	rule
+azotizes	0		Person=3+Tense=Pres	dema	0	azotize	v	rule
+azotizing	0		VerbForm=Ger	dema	0	azotize	v	rule
+azotobacter	0		Number=Sing	dema	0	azotobacter	n	moby_reverse
+azotobacter biofertilizer	0	oewn-azotobacter_biofertilizer-n	Number=Sing	dema	0			oewn_form
+azotobacter biofertilizers	0	oewn-azotobacter_biofertilizer-n	Number=Plur	dema	0			rule
+azotobacters	0		Number=Plur	dema	0	azotobacter	n	rule
+azoturia	0	oewn-azoturia-n	Number=Sing	dema	0			oewn_form
+azoturias	0	oewn-azoturia-n	Number=Plur	dema	0			rule
+aztreonam	0	oewn-aztreonam-n	Number=Sing	dema	0			oewn_form
+aztreonams	0	oewn-aztreonam-n	Number=Plur	dema	0			rule
+azulejo	0		Number=Sing	dema	0	azulejo	n	moby_reverse
+azulejos	0		Number=Plur	dema	0	azulejo	n	rule
+azure	0	oewn-azure-n	Number=Sing	dema	0			oewn_form
+azure	1	oewn-azure-a	Degree=Pos	dema	0			oewn_form
+azure	2	oewn-azure-v	VerbForm=Inf	dema	0			oewn_form
+azure aster	0	oewn-azure_aster-n	Number=Sing	dema	0			oewn_form
+azure asters	0	oewn-azure_aster-n	Number=Plur	dema	0			rule
+azured	0	oewn-azure-v	Tense=Past+VerbForm=Part	dema	0			rule
+azures	0	oewn-azure-n	Number=Plur	dema	0			rule
+azures	1	oewn-azure-v	Person=3+Tense=Pres	dema	0			rule
+azuring	0	oewn-azure-v	VerbForm=Ger	dema	0			rule
+azurite	0	oewn-azurite-n	Number=Sing	dema	0			oewn_form
+azurites	0	oewn-azurite-n	Number=Plur	dema	0			rule
+azurmalachite	0		Number=Sing	dema	0	azurmalachite	n	moby_reverse
+azurmalachites	0		Number=Plur	dema	0	azurmalachite	n	rule
+azygos	0	oewn-azygos-a	Degree=Pos	dema	0			oewn_form
+azygos vein	0	oewn-azygos_vein-n	Number=Sing	dema	0			oewn_form
+azygos veins	0	oewn-azygos_vein-n	Number=Plur	dema	0			rule
+azygospore	0		Number=Sing	dema	0	azygospore	n	moby_reverse
+azygospores	0		Number=Plur	dema	0	azygospore	n	rule
+azygous	0	oewn-azygous-a	Degree=Pos	dema	0			oewn_form
+azygous vein	0	oewn-azygous_vein-n	Number=Sing	dema	0			oewn_form
+azygous veins	0	oewn-azygous_vein-n	Number=Plur	dema	0			rule
+azymia	0	oewn-azymia-n	Number=Sing	dema	0			oewn_form
+azymias	0	oewn-azymia-n	Number=Plur	dema	0			rule

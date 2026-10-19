@@ -1,36 +1,37 @@
-spelling	rank	entry_id	features	source_id	reviewed
-ct	0	dema-ct-n	Number=Sing	dema	0
-ctenidial	0	dema-ctenidial-a	Degree=Pos	dema	0
-ctenidially	0	dema-ctenidial-r		dema	0
-ctenidialness	0	dema-ctenidial-n	Number=Plur	dema	0
-ctenidium	0	oewn-ctenidium-n	Number=Sing	dema	0
-ctenidiums	0	oewn-ctenidium-n	Number=Plur	dema	0
-cteninidia	0	dema-cteninidia-n	Number=Sing	dema	0
-cteninidias	0	dema-cteninidia-n	Number=Plur	dema	0
-ctenizid	0	dema-ctenizid-n	Number=Sing	dema	0
-ctenizid	1	dema-ctenizid-a	Degree=Pos	dema	0
-ctenizidly	0	dema-ctenizid-r		dema	0
-ctenizidness	0	dema-ctenizid-n	Number=Plur	dema	0
-ctenizids	0	dema-ctenizid-n	Number=Plur	dema	0
-ctenoid	0	oewn-ctenoid-a	Degree=Pos	dema	0
-ctenoider	0	oewn-ctenoid-a	Degree=Cmp	dema	0
-ctenoidest	0	oewn-ctenoid-a	Degree=Sup	dema	0
-ctenoidly	0	dema-ctenoid-r		dema	0
-ctenoidness	0	dema-ctenoid-n	Number=Plur	dema	0
-ctenophoran	0	dema-ctenophoran-n	Number=Sing	dema	0
-ctenophoran	1	dema-ctenophoran-a	Degree=Pos	dema	0
-ctenophoranly	0	dema-ctenophoran-r		dema	0
-ctenophorans	0	dema-ctenophoran-n	Number=Plur	dema	0
-ctenophore	0	oewn-ctenophore-n	Number=Sing	dema	0
-ctenophores	0	oewn-ctenophore-n	Number=Plur	dema	0
-ctg	0	dema-ctg-n	Number=Sing	dema	0
-ctgs	0	dema-ctg-n	Number=Plur	dema	0
-ctimo	0	dema-ctimo-n	Number=Sing	dema	0
-ctimoes	0	dema-ctimo-n	Number=Plur	dema	0
-ctimos	0	dema-ctimo-n	Number=Plur	dema	0
-ctn	0	dema-ctn-n	Number=Sing	dema	0
-ctns	0	dema-ctn-n	Number=Plur	dema	0
-ctr	0	dema-ctr-n	Number=Sing	dema	0
-ctrs	0	dema-ctr-n	Number=Plur	dema	0
-cts	0	dema-cts-n	Number=Sing	dema	0
-ctses	0	dema-cts-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+CT	0		Number=Sing	dema	0	ct	n	moby_reverse
+CT	1	oewn-CT-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CTC	0	oewn-CTC-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CTCS	0	oewn-CTC-n	Capitalization=Upper+Number=Plur	dema	0			rule
+CTS	0	oewn-CT-n	Number=Plur	dema	0			moby_reverse
+CTS	1		Number=Plur	dema	0	ct	n	rule
+CTS	2	oewn-CT-n	Capitalization=Upper+Number=Plur	dema	0			rule
+Ctenocephalides canis	0	oewn-Ctenocephalides_canis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Ctenocephalides felis	0	oewn-Ctenocephalides_felis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+ct	0		Number=Sing	dema	0	ct	n	moby_reverse
+ctene	0	oewn-ctene-n	Number=Sing	dema	0			oewn_form
+ctenes	0	oewn-ctene-n	Number=Plur	dema	0			rule
+ctenidia	0	oewn-ctenidium-n	Number=Plur	dema	0			oewn_form
+ctenidial	0		Degree=Pos	dema	0	ctenidial	a	moby_reverse
+ctenidium	0	oewn-ctenidium-n	Number=Sing	dema	0			oewn_form
+cteninidia	0		Number=Sing	dema	0	cteninidia	n	moby_reverse
+cteninidias	0		Number=Plur	dema	0	cteninidia	n	rule
+ctenizid	0		Number=Sing	dema	0	ctenizid	n	moby_reverse
+ctenizid	1		Degree=Pos	dema	0	ctenizid	a	moby_reverse
+ctenizids	0		Number=Plur	dema	0	ctenizid	n	rule
+ctenoid	0	oewn-ctenoid-a	Degree=Pos	dema	0			oewn_form
+ctenophoran	0		Number=Sing	dema	0	ctenophoran	n	moby_reverse
+ctenophoran	1		Degree=Pos	dema	0	ctenophoran	a	moby_reverse
+ctenophorans	0		Number=Plur	dema	0	ctenophoran	n	rule
+ctenophore	0	oewn-ctenophore-n	Number=Sing	dema	0			oewn_form
+ctenophore families	0	oewn-ctenophore_family-n	Number=Plur	dema	0			rule
+ctenophore family	0	oewn-ctenophore_family-n	Number=Sing	dema	0			oewn_form
+ctenophore genus	0	oewn-ctenophore_genus-n	Number=Sing	dema	0			oewn_form
+ctenophores	0	oewn-ctenophore-n	Number=Plur	dema	0			rule
+ctg	0		Number=Sing	dema	0	ctg	n	moby_reverse
+ctimo	0		Number=Sing	dema	0	ctimo	n	moby_reverse
+ctimos	0		Number=Plur	dema	0	ctimo	n	rule
+ctn	0		Number=Sing	dema	0	ctn	n	moby_reverse
+ctr	0		Number=Sing	dema	0	ctr	n	moby_reverse
+cts	0	oewn-CT-n	Number=Plur	dema	0			moby_reverse
+cts	1		Number=Plur	dema	0	ct	n	rule

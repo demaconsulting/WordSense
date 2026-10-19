@@ -1,23 +1,36 @@
-spelling	rank	entry_id	features	source_id	reviewed
-czar	0	oewn-czar-n	Number=Sing	dema	0
-czardas	0	oewn-czardas-n	Number=Sing	dema	0
-czardases	0	oewn-czardas-n	Number=Plur	dema	0
-czardom	0	dema-czardom-n	Number=Sing	dema	0
-czardoms	0	dema-czardom-n	Number=Plur	dema	0
-czarevitch	0	dema-czarevitch-n	Number=Sing	dema	0
-czarevitches	0	dema-czarevitch-n	Number=Plur	dema	0
-czarevitchs	0	dema-czarevitch-n	Number=Plur	dema	0
-czarevna	0	dema-czarevna-n	Number=Sing	dema	0
-czarevnas	0	dema-czarevna-n	Number=Plur	dema	0
-czarina	0	oewn-czarina-n	Number=Sing	dema	0
-czarinas	0	oewn-czarina-n	Number=Plur	dema	0
-czarism	0	dema-czarism-n	Number=Sing	dema	0
-czarisms	0	dema-czarism-n	Number=Plur	dema	0
-czarist	0	oewn-czarist-a	Degree=Pos	dema	0
-czarist	1	dema-czarist-n	Number=Sing	dema	0
-czaristly	0	dema-czarist-r		dema	0
-czaristness	0	dema-czarist-n	Number=Plur	dema	0
-czarists	0	dema-czarist-n	Number=Plur	dema	0
-czaritza	0	oewn-czaritza-n	Number=Sing	dema	0
-czaritzas	0	oewn-czaritza-n	Number=Plur	dema	0
-czars	0	oewn-czar-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+Czech	0	oewn-Czech-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Czech	1	oewn-Czech-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Czech language	0	oewn-Czech_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Czech languages	0	oewn-Czech_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Czech monetary unit	0	oewn-Czech_monetary_unit-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Czech monetary units	0	oewn-Czech_monetary_unit-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Czeches	0	oewn-Czech-n	Capitalization=Title+Number=Plur	dema	0			rule
+Czechness	0	oewn-Czechness-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Czechnesses	0	oewn-Czechness-n	Capitalization=Title+Number=Plur	dema	0			rule
+Czechoslovak	0	oewn-Czechoslovak-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Czechoslovakian	0	oewn-Czechoslovakian-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Czechoslovakian	1	oewn-Czechoslovakian-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Czechoslovakians	0	oewn-Czechoslovakian-n	Capitalization=Title+Number=Plur	dema	0			rule
+Czechoslovaks	0	oewn-Czechoslovak-n	Capitalization=Title+Number=Plur	dema	0			rule
+czar	0	oewn-czar-n	Number=Sing	dema	0			oewn_form
+czardas	0	oewn-czardas-n	Number=Sing	dema	0			oewn_form
+czardases	0	oewn-czardas-n	Number=Plur	dema	0			rule
+czardom	0		Number=Sing	dema	0	czardom	n	moby_reverse
+czardoms	0		Number=Plur	dema	0	czardom	n	rule
+czarevitch	0		Number=Sing	dema	0	czarevitch	n	moby_reverse
+czarevitches	0		Number=Plur	dema	0	czarevitch	n	rule
+czarevna	0		Number=Sing	dema	0	czarevna	n	moby_reverse
+czarevnas	0		Number=Plur	dema	0	czarevna	n	rule
+czarina	0	oewn-czarina-n	Number=Sing	dema	0			oewn_form
+czarinas	0	oewn-czarina-n	Number=Plur	dema	0			rule
+czarism	0		Number=Sing	dema	0	czarism	n	moby_reverse
+czarisms	0		Number=Plur	dema	0	czarism	n	rule
+czarist	0	oewn-czarist-a	Degree=Pos	dema	0			oewn_form
+czarist	1		Number=Sing	dema	0	czarist	n	moby_reverse
+czaristic	0	oewn-czaristic-a	Degree=Pos	dema	0			oewn_form
+czaritza	0	oewn-czaritza-n	Number=Sing	dema	0			oewn_form
+czaritzas	0	oewn-czaritza-n	Number=Plur	dema	0			rule
+czars	0	oewn-czar-n	Number=Plur	dema	0			rule
+czworniak	0	oewn-czworniak-n	Number=Sing	dema	0			oewn_form
+czworniaks	0	oewn-czworniak-n	Number=Plur	dema	0			rule

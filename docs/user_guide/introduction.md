@@ -185,7 +185,7 @@ The
 speech and pronunciation meanings.
 
 `Details` is `null` in exactly two cases, and `Confidence` is 0 in both. First, the word is unknown: it has no entry in
-`WordLexicon` (a number, punctuation, most proper nouns, a misspelling, a contraction such as `don't`); every
+`WordLexicon` (a number, punctuation, most proper nouns, a misspelling); every
 model does this. Second, an encoder model produced no vector for a word that has trained weights. Every dictionary
 word is in the table, the determiners, conjunctions and interjections among them, whatever the accuracy of a model:
 the accuracy only decides which sense a model chooses. Every other word gets a sense: a word with one sense gets it
@@ -203,8 +203,12 @@ WordSense[] senses = await model.ClassifyAsync(["They", "will", "record", "the",
 You tokenize the text; the models expect what the evaluation used:
 
 - Punctuation is an element of its own (`"race"`, `"."`, never `"race."`).
-- Keep a contraction (`don't`) and a hyphenated word (`re-read`) as one token. Neither is a key of the table, so such a
-  token is unknown (null, 0), but the words around it are still classified. A curly apostrophe (U+2019) is read as `'`.
+- Keep a contraction (`don't`) and a hyphenated word (`re-read`) as one token. A contraction is a stored word of the
+  table (a closed list, found with the analysis of its head word and `Contraction=Yes`); a hyphenated word is not a key,
+  so such a token is unknown (null, 0), but the words around it are still classified. A curly apostrophe (U+2019) is
+  read as `'`. A possessive (`dog's`) is looked up as a whole spelling: the lookup returns the analysis of the stem with
+  `Poss=Yes`. The tokenizer contract keeps `'s` inside the token; a caller that splits `'s` off as a separate token
+  must look the stem up on its own.
 - Case does not matter for the lookup (words are lower-cased); the cased BertBaseCased encoder also sees the case you
   give it.
 - Classify one sentence per call. The Basic model splits the list into sentences at the tokens `"."`, `"!"` and `"?"`
@@ -241,7 +245,8 @@ token is known; "null" means `Details` is null and the confidence is 0):
 | a misspelling, a name not in the lexicon | Unknown: null, 0 (a name that is in the lexicon, such as `Smith`, is found) |
 | `,` `"` `-` an em dash `;` `)` | Unknown: null, 0; for Basic only `.`, `!` and `?` also end a sentence segment |
 | `race.` (period attached) | Unknown: null, 0, and Basic sees no sentence end; always split the period off |
-| `don't` (also with U+2019), `it's`, `dog's`, `didn't` | Unknown: null, 0 (no contraction or possessive keys); neighbors are classified normally |
+| `don't` (also with U+2019), `it's`, `didn't` | Found: a stored contraction, with the analysis of its head word and `Contraction=Yes` |
+| `dog's`, `dogs'` | Found when the stem is known: the analysis of the stem with `Poss=Yes` |
 | `do` + `n't` | `do` is found, `n't` is unknown; not the form the models were evaluated on, so avoid it |
 | `well-known`, `re-read`, `mother-in-law` | Unknown: null, 0; keep them as one token |
 | `3`, `3.5`, `1,000` | Unknown: null, 0; keep `3.5` as one token, because for Basic a split period ends a segment |
@@ -601,10 +606,10 @@ ensure; cancelling does not stop the shared ensure (see "Threads and cancellatio
 
 - **Words are classified by what the table knows.** A word that is not found by `WordLexicon.Lookup` is unknown, and
   so are
-  numbers, names, contractions and possessive forms such as `don't` and `Mary's`, dialect spellings and archaic verb
-  endings (about 96% of the running words of a Project Gutenberg sample are known). There is no morphology at use
-  time and no capitalization or possessive
-  heuristic for looking a word up: a form that is not in the table is unknown.
+  numbers, names, dialect spellings and archaic verb
+  endings (about 96% of the running words of a Project Gutenberg sample are known). Contractions are a closed list of
+  stored words and a possessive of a known word is found with `Poss=Yes`. There is no other morphology at use
+  time and no capitalization heuristic for looking a word up: a form that is not in the table is unknown.
 - **Only some multi-sense words are decided.** The encoder models decide the lemmas that have trained weights (see the
   appendix); another multi-sense word gets its first dictionary sense with a confidence of one over its number of
   senses. Basic decides by part of speech only; the encoder models never answer `Auxiliary` for a modal or an
@@ -653,7 +658,10 @@ in `corpus/`; the format of the files is described in `corpus/README.md` and the
 | ------- | ------------ |
 | `import-moby` | Rebuilds `corpus/lexicon/lexicon.tsv` from the pinned Moby file given by `--input` |
 | `compile-image` | Compiles the tables of `data/` into the embedded word image (`wordsense.img`), with inflections |
-| `ud-irregular` | Derives `corpus/lexicon/irregular-ud.tsv` (irregular forms attested in UD) |
+| `rebuild-forms --agid FILE --oewn FILE` | Regenerates the inflected-form tables from two independent sources |
+| `audit-forms [--seed N]` | Audits a seeded stratified sample of generated forms against a checker; fails at 1% error |
+| `generate-facts [--seed N]` | Derives the source-derived lexicon facts and checks them against the word table |
+| `import-agid --input FILE` | Derives the irregular forms of dictionary words from the inflection database `infl.txt` |
 | `coverage --text DIR [--top N]` | Reports the token coverage of the `*.txt` files of `DIR` and the top unknown words |
 | `weights <modelId>` | Trains the weights of an encoder model (`minilm` or `bert-base-cased`) |
 | `evaluate <modelId>` | Measures a model (`minilm`, `bert-base-cased` or `basic`) on holdout and real text |
@@ -737,8 +745,8 @@ with plain http for a host that is not loopback.
 ## A Word Returns Nothing
 
 `Details` is `null` for a word that is unknown. Check
-`WordLexicon.Contains(word.ToLowerInvariant())`: when it is `false` the word is unknown to the table; a
-contraction such as `don't` or a hyphenated word kept as one token is also unknown. When it is `true`, the word has an
+`WordLexicon.Contains(word.ToLowerInvariant())`: when it is `false` the word is unknown to the table (a hyphenated
+word kept as one token is also unknown). When it is `true`, the word has an
 answer from every shipped model, with a low confidence if the model is unsure.
 
 # References

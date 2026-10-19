@@ -1,7 +1,25 @@
-spelling	rank	entry_id	features	source_id	reviewed
-srac	0	dema-srac-n	Number=Sing	dema	0
-sracs	0	dema-srac-n	Number=Plur	dema	0
-sri	0	dema-sri-n	Number=Sing	dema	0
-sris	0	dema-sri-n	Number=Plur	dema	0
-sruti	0	dema-sruti-n	Number=Sing	dema	0
-srutis	0	dema-sruti-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+Sr	0	oewn-sr-n	Number=Sing	dema	0			oewn_form
+Sr	1	oewn-Sr-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Sravana	0	oewn-Sravana-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Sravanas	0	oewn-Sravana-n	Capitalization=Title+Number=Plur	dema	0			rule
+Sri Lanka rupee	0	oewn-Sri_Lanka_rupee-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Sri Lanka rupees	0	oewn-Sri_Lanka_rupee-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Sri Lankan	0	oewn-Sri_Lankan-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Sri Lankan	1	oewn-Sri_Lankan-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Sri Lankan monetary unit	0	oewn-Sri_Lankan_monetary_unit-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Sri Lankan monetary units	0	oewn-Sri_Lankan_monetary_unit-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Sri Lankans	0	oewn-Sri_Lankan-n	Capitalization=Title+Number=Plur	dema	0			rule
+Sriracha	0	oewn-Sriracha-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Srirachas	0	oewn-Sriracha-n	Capitalization=Title+Number=Plur	dema	0			rule
+Srs	0	oewn-sr-n	Number=Plur	dema	0			rule
+Srs	1	oewn-Sr-n	Capitalization=Title+Number=Plur	dema	0			rule
+sr	0	oewn-sr-n	Number=Sing	dema	0			oewn_form
+sr.	0	oewn-sr.-a	Degree=Pos	dema	0			oewn_form
+srac	0		Number=Sing	dema	0	srac	n	moby_reverse
+sracs	0		Number=Plur	dema	0	srac	n	rule
+sri	0		Number=Sing	dema	0	sri	n	moby_reverse
+sris	0		Number=Plur	dema	0	sri	n	rule
+srs	0	oewn-sr-n	Number=Plur	dema	0			rule
+sruti	0		Number=Sing	dema	0	sruti	n	moby_reverse
+srutis	0		Number=Plur	dema	0	sruti	n	rule

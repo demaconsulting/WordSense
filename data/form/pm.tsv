@@ -1,2 +1,13 @@
-spelling	rank	entry_id	features	source_id	reviewed
-pm	0	dema-pm-n	Number=Sing	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+PM	0		Number=Sing	dema	0	pm	n	moby_reverse
+PM	1	oewn-pm-r	Degree=Pos	dema	0			oewn_form
+PM	2	oewn-PM-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+PM	3	oewn-PM-r	Capitalization=Upper+Degree=Pos	dema	0			oewn_form
+PMS	0	oewn-PM-n	Capitalization=Upper+Number=Plur	dema	0			rule
+PMS	1	oewn-PMS-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+Pm	0		Number=Sing	dema	0	pm	n	moby_reverse
+Pm	1	oewn-pm-r	Degree=Pos	dema	0			oewn_form
+Pm	2	oewn-Pm-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Pms	0	oewn-Pm-n	Capitalization=Title+Number=Plur	dema	0			rule
+pm	0		Number=Sing	dema	0	pm	n	moby_reverse
+pm	1	oewn-pm-r	Degree=Pos	dema	0			oewn_form

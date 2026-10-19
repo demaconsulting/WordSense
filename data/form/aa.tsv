@@ -1,10 +1,28 @@
-spelling	rank	entry_id	features	source_id	reviewed
-aa	0	oewn-aa-n	Number=Sing	dema	0
-aalii	0	oewn-aalii-n	Number=Sing	dema	0
-aaliis	0	oewn-aalii-n	Number=Plur	dema	0
-aardvark	0	oewn-aardvark-n	Number=Sing	dema	0
-aardvarks	0	oewn-aardvark-n	Number=Plur	dema	0
-aardwolf	0	oewn-aardwolf-n	Number=Sing	dema	0
-aardwolfs	0	oewn-aardwolf-n	Number=Plur	dema	0
-aardwolves	0	dema-aardwolves-n	Number=Sing	dema	0
-aardwolveses	0	dema-aardwolves-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+AA	0	oewn-aa-n	Number=Sing	dema	0			oewn_form
+AA	1	oewn-AA-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+AAA	0	oewn-AAA-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+AAAS	0	oewn-AAA-n	Capitalization=Upper+Number=Plur	dema	0			rule
+AAC	0	oewn-AAC-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+AACS	0	oewn-AAC-n	Capitalization=Upper+Number=Plur	dema	0			rule
+AARP	0	oewn-AARP-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+AARPS	0	oewn-AARP-n	Capitalization=Upper+Number=Plur	dema	0			rule
+AAS	0	oewn-aa-n	Number=Plur	dema	0			rule
+AAS	1	oewn-AA-n	Capitalization=Upper+Number=Plur	dema	0			rule
+AAS	2	oewn-AAS-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+AAVE	0	oewn-AAVE-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+AAVES	0	oewn-AAVE-n	Capitalization=Upper+Number=Plur	dema	0			rule
+Aaron's rod	0	oewn-Aaron-ap-s_rod-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aaron's rods	0	oewn-Aaron-ap-s_rod-n	Capitalization=Exact+Number=Plur	dema	0			rule
+aa	0	oewn-aa-n	Number=Sing	dema	0			oewn_form
+aah	0	oewn-aah-v	VerbForm=Inf	dema	0			oewn_form
+aahed	0	oewn-aah-v	Tense=Past+VerbForm=Part	dema	0			rule
+aahing	0	oewn-aah-v	VerbForm=Ger	dema	0			rule
+aahs	0	oewn-aah-v	Person=3+Tense=Pres	dema	0			rule
+aalii	0	oewn-aalii-n	Number=Sing	dema	0			oewn_form
+aaliis	0	oewn-aalii-n	Number=Plur	dema	0			rule
+aardvark	0	oewn-aardvark-n	Number=Sing	dema	0			oewn_form
+aardvarks	0	oewn-aardvark-n	Number=Plur	dema	0			rule
+aardwolf	0	oewn-aardwolf-n	Number=Sing	dema	0			oewn_form
+aardwolves	0	oewn-aardwolf-n	Number=Plur	dema	0			oewn_form
+aas	0	oewn-aa-n	Number=Plur	dema	0			rule

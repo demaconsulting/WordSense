@@ -216,7 +216,8 @@ internal sealed class WordImage
 
     /// <summary>
     ///     Looks a word up: the exact spelling first and, when there is none, the lower-case spelling and the spellings
-    ///     whose lower-case text equals the lower-case word.
+    ///     whose lower-case text equals the lower-case word. A possessive form (<c>dog's</c>, <c>dogs'</c>) that is not
+    ///     stored is answered with the noun and pronoun analyses of its stem and the feature <c>Poss=Yes</c> added.
     /// </summary>
     /// <param name="word">The word; the curly apostrophe U+2019 counts as <c>'</c>.</param>
     /// <param name="senses">The analyses, in answer order.</param>
@@ -229,6 +230,58 @@ internal sealed class WordImage
             word = word.Replace('\u2019', '\'');
         }
 
+        if (TryLookupStored(word, out senses))
+        {
+            return true;
+        }
+
+        // The possessive of a known noun or pronoun: Xs' or X's with a stem that is known
+        string? stem = null;
+        if (word.Length > 2 && word.EndsWith("'s", StringComparison.OrdinalIgnoreCase))
+        {
+            stem = word[..^2];
+        }
+        else if (word.Length > 2 && word.EndsWith("s'", StringComparison.OrdinalIgnoreCase))
+        {
+            stem = word[..^1];
+        }
+
+        if (stem is null || stem.Contains('\'', StringComparison.Ordinal) || !TryLookupStored(stem, out var stemSenses))
+        {
+            senses = default;
+            return false;
+        }
+
+        var possessive = stemSenses
+            .Where(s => s.PartOfSpeech is PartOfSpeech.Noun or PartOfSpeech.Pronoun)
+            .Select(s => s with { Features = WithPossessive(s.Features) })
+            .Distinct()
+            .ToArray();
+        if (possessive.Length == 0)
+        {
+            senses = default;
+            return false;
+        }
+
+        senses = ImmutableCollectionsMarshal.AsImmutableArray(possessive);
+        return true;
+    }
+
+    // Adds Poss=Yes to a feature string; the items stay in the alphabetical order of the stored strings
+    private static string WithPossessive(string features)
+    {
+        var items = features.Length == 0 ? [] : features.Split('+').ToList();
+        if (!items.Contains("Poss=Yes", StringComparer.Ordinal))
+        {
+            items.Add("Poss=Yes");
+        }
+
+        items.Sort(StringComparer.Ordinal);
+        return string.Join('+', items);
+    }
+
+    private bool TryLookupStored(string word, out ImmutableArray<WordDetails> senses)
+    {
         var exact = Find(word);
         if (exact >= 0)
         {

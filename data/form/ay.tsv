@@ -1,15 +1,32 @@
-spelling	rank	entry_id	features	source_id	reviewed
-ay	0	dema-ay-i		dema	0
-ay	1	dema-ay-r	Degree=Pos	dema	0
-ayah	0	oewn-ayah-n	Number=Sing	dema	0
-ayahs	0	oewn-ayah-n	Number=Plur	dema	0
-ayahuasca	0	dema-ayahuasca-n	Number=Sing	dema	0
-ayahuascas	0	dema-ayahuasca-n	Number=Plur	dema	0
-aye	0	dema-aye-n	Number=Sing	dema	0
-ayes	0	dema-aye-n	Number=Plur	dema	0
-ayin	0	oewn-ayin-n	Number=Sing	dema	0
-ayins	0	oewn-ayin-n	Number=Plur	dema	0
-ayous	0	dema-ayous-n	Number=Sing	dema	0
-ayouses	0	dema-ayous-n	Number=Plur	dema	0
-ayre	0	dema-ayre-n	Number=Sing	dema	0
-ayres	0	dema-ayre-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+Ayapana triplinervis	0	oewn-Ayapana_triplinervis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Ayrshire	0	oewn-Ayrshire-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Ayrshires	0	oewn-Ayrshire-n	Capitalization=Title+Number=Plur	dema	0			rule
+Aythya affinis	0	oewn-Aythya_affinis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aythya americana	0	oewn-Aythya_americana-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aythya americanas	0	oewn-Aythya_americana-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Aythya ferina	0	oewn-Aythya_ferina-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aythya ferinas	0	oewn-Aythya_ferina-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Aythya marila	0	oewn-Aythya_marila-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aythya marilas	0	oewn-Aythya_marila-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Aythya valisineria	0	oewn-Aythya_valisineria-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aythya valisinerias	0	oewn-Aythya_valisineria-n	Capitalization=Exact+Number=Plur	dema	0			rule
+ay	0	dema-ay-i		dema	0			carried
+ay	1		Degree=Pos	dema	0	ay	r	moby_reverse
+ayah	0	oewn-ayah-n	Number=Sing	dema	0			oewn_form
+ayahs	0	oewn-ayah-n	Number=Plur	dema	0			rule
+ayahuasca	0		Number=Sing	dema	0	ayahuasca	n	moby_reverse
+ayahuascas	0		Number=Plur	dema	0	ayahuasca	n	rule
+ayapana	0	oewn-ayapana-n	Number=Sing	dema	0			oewn_form
+ayapanas	0	oewn-ayapana-n	Number=Plur	dema	0			rule
+ayatollah	0	oewn-ayatollah-n	Number=Sing	dema	0			oewn_form
+ayatollahs	0	oewn-ayatollah-n	Number=Plur	dema	0			rule
+aye	0		Number=Sing	dema	0	aye	n	moby_reverse
+aye-aye	0	oewn-aye-aye-n	Number=Sing	dema	0			oewn_form
+aye-ayes	0	oewn-aye-aye-n	Number=Plur	dema	0			rule
+ayes	0		Number=Plur	dema	0	aye	n	rule
+ayin	0	oewn-ayin-n	Number=Sing	dema	0			oewn_form
+ayins	0	oewn-ayin-n	Number=Plur	dema	0			rule
+ayous	0		Number=Sing	dema	0	ayous	n	moby_reverse
+ayre	0		Number=Sing	dema	0	ayre	n	moby_reverse
+ayres	0		Number=Plur	dema	0	ayre	n	rule

@@ -15,7 +15,9 @@ namespace WordSense.Builder;
 ///     </para>
 ///     <list type="bullet">
 ///     <item><description><c>compile-image [--data DIR] [--corpus DIR] [--output FILE]</c> compiles the data tables into the word image of the core package (<c>Resources/wordsense.img</c>).</description></item>
-///     <item><description><c>bootstrap-forms [--data DIR] [--corpus DIR]</c> derives the form tables of the data folder from the legacy corpus once.</description></item>
+///     <item><description><c>audit-forms [--data DIR] [--sample 300] [--seed N] [--oracle FILE] [--adjudications FILE] [--output FILE] [--max-error 0.01]</c> checks a seeded stratified sample of the inflected form rows per provenance against the LemmInflect oracle (a pip-installed checker, not shipped), reports the error rate with a 95% Wilson interval per stratum and fails when a generated stratum reaches the limit.</description></item>
+///     <item><description><c>rebuild-forms [--data DIR] [--corpus DIR] [--oewn FILE] [--agid FILE] [--overwrite true]</c> regenerates the entry and form tables of the data folder lemma-first from the entries, the irregular lists, the written forms of the Open English WordNet file and the dictionary; a generated inflection ships only when a second source corroborates it (the AGID <c>infl.txt</c> file attests forms); it refuses to replace tables that already carry the provenance column unless <c>--overwrite true</c> is given.</description></item>
+///     <item><description><c>import-agid --input FILE [--corpus DIR] [--output FILE]</c> derives the irregular forms of the dictionary words from the inflection database file <c>infl.txt</c>.</description></item>
 ///     <item><description><c>import-moby --input FILE [--corpus DIR] [--output FILE]</c> imports the pinned Moby Part-of-Speech II list into the dictionary word list of the corpus.</description></item>
 ///     <item><description><c>weights &lt;modelId&gt; [--corpus DIR] [--repository DIR]</c> trains the weights of an ONNX model (minilm, bert-base-cased) and writes them to its package.</description></item>
 ///     <item><description><c>evaluate &lt;modelId&gt; [--corpus DIR] [--repository DIR] [--output FILE] [--table FILE] [--outcomes FILE]</c> measures a shipped model (minilm, bert-base-cased, basic); <c>--table</c> updates the row of the model in the model comparison table file; <c>--outcomes</c> writes the answer for every sentence.</description></item>
@@ -25,13 +27,13 @@ namespace WordSense.Builder;
 ///     <item><description><c>ud-irregular [--ud DIR] [--corpus DIR] [--output FILE]</c> derives the irregular inflected forms of the dictionary words from the pinned treebank training and development files.</description></item>
 ///     <item><description><c>coverage --text DIR [--corpus DIR] [--top N] [--output FILE]</c> reports how many of the running words of the text files of a directory the word table knows and lists the most frequent unknown words, split into name-like and other words.</description></item>
 ///     <item><description><c>appendix [--corpus DIR] [--output FILE]</c> writes the generated senses appendix of the user guide.</description></item>
-///     <item><description><c>import-oewn --input FILE [--output DIR] [--sha256 HEX|none] [--threshold N] [--overwrite true]</c> imports the pinned Open English WordNet release into the table files of the data folder (default <c>data</c>) and refuses to replace existing tables unless <c>--overwrite true</c> is given.</description></item>
+///     <item><description><c>import-oewn --input FILE [--output DIR] [--sha256 HEX|none] [--threshold N] [--overwrite true]</c> imports the pinned Open English WordNet release into the table files of the data folder (default <c>data</c>) and refuses to replace existing tables unless <c>--overwrite true</c> is given; <c>import-oewn --previous FILE [--previous-release ID] [--previous-sha256 HEX|none] [--output DIR]</c> instead writes the identifier map from a previous release.</description></item>
 ///     <item><description><c>validate-data [--data DIR]</c> validates the table files of the data folder against its <c>schema.yaml</c>; it exits with 1 and lists the violations when the data is not valid.</description></item>
 ///     </list>
 /// </remarks>
 internal static class Program
 {
-    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: compile-image, bootstrap-forms, import-moby, weights <modelId>, evaluate <modelId>, ud-counts, ud-irregular, coverage, train-basic, tune-basic, appendix, import-oewn, validate-data.";
+    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: compile-image, rebuild-forms, audit-forms, generate-facts, import-agid, import-moby, weights <modelId>, evaluate <modelId>, ud-counts, ud-irregular, coverage, train-basic, tune-basic, appendix, import-oewn, validate-data.";
 
     /// <summary>
     ///     Runs the builder.
@@ -139,10 +141,19 @@ internal static class Program
                     return RunImportOewn(options, repository, output);
                 case "validate-data":
                     return RunValidateData(options, repository, output, error);
-                case "bootstrap-forms":
-                    var bootData = options.TryGetValue("data", out var bd) ? Path.GetFullPath(bd) : Path.Combine(repository, "data");
-                    var boot = Data.FormBootstrap.Run(bootData, corpus);
-                    output.WriteLine($"Bootstrapped {boot.Spellings.ToString(CultureInfo.InvariantCulture)} spellings: {boot.Forms.ToString(CultureInfo.InvariantCulture)} analyses ({boot.Analyses.ToString(CultureInfo.InvariantCulture)} legacy answers), {boot.ScopeRows.ToString(CultureInfo.InvariantCulture)} scope rows, {boot.NewEntries.ToString(CultureInfo.InvariantCulture)} new entries.");
+                case "rebuild-forms":
+                    var formsData = options.TryGetValue("data", out var bd) ? Path.GetFullPath(bd) : Path.Combine(repository, "data");
+                    var formsOverwrite = options.TryGetValue("overwrite", out var fo) && string.Equals(fo, "true", StringComparison.OrdinalIgnoreCase);
+                    var generated = Data.FormGenerator.Run(formsData, corpus, options.TryGetValue("oewn", out var ow) ? Path.GetFullPath(ow) : null, formsOverwrite, options.TryGetValue("agid", out var ag) ? Path.GetFullPath(ag) : null);
+                    output.Write(generated.Render());
+                    return 0;
+                case "generate-facts":
+                    return RunGenerateFacts(options, repository, corpus, output, error);
+                case "audit-forms":
+                    return RunAuditForms(options, repository, output, error);
+                case "import-agid":
+                    var agidOutput = options.TryGetValue("output", out var ao) ? ao : Path.Combine(corpus, "lexicon", Data.IrregularSources.AgidFile);
+                    output.WriteLine(Data.AgidImporter.Import(Require(options, "input"), corpus, agidOutput));
                     return 0;
                 case "appendix":
                     var appendix = options.TryGetValue("output", out var a) ? a : Path.Combine(repository, "docs", "user_guide", "appendix-senses.md");
@@ -161,16 +172,86 @@ internal static class Program
         }
     }
 
-    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "ud", "refresh-ud", "table", "input", "text", "top", "data", "sha256", "threshold", "overwrite", "outcomes"], StringComparer.Ordinal);
+    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "ud", "refresh-ud", "table", "input", "text", "top", "data", "sha256", "threshold", "overwrite", "outcomes", "oewn", "agid", "sample", "seed", "oracle", "adjudications", "max-error", "previous", "previous-release", "previous-sha256"], StringComparer.Ordinal);
 
     private static int RunImportOewn(Dictionary<string, string> options, string repository, TextWriter output)
     {
         var data = options.TryGetValue("output", out var o) ? Path.GetFullPath(o) : Path.Combine(repository, "data");
+        if (options.TryGetValue("previous", out var previous))
+        {
+            var previousSha = options.TryGetValue("previous-sha256", out var ps) ? ps : Data.OewnImporter.PreviousPinnedSha256;
+            var map = Data.OewnImporter.ImportPrevious(previous, data, options.GetValueOrDefault("previous-release", Data.OewnImporter.PreviousRelease), string.Equals(previousSha, "none", StringComparison.OrdinalIgnoreCase) ? null : previousSha);
+            output.WriteLine(Data.OewnImporter.Describe(map));
+            return 0;
+        }
+
         var sha = options.TryGetValue("sha256", out var s) ? s : Data.OewnImporter.PinnedSha256;
         var threshold = options.TryGetValue("threshold", out var t) ? int.Parse(t, CultureInfo.InvariantCulture) : Data.OewnImporter.DefaultSplitThreshold;
         var overwrite = options.TryGetValue("overwrite", out var w) && string.Equals(w, "true", StringComparison.OrdinalIgnoreCase);
         var result = Data.OewnImporter.Import(Require(options, "input"), data, Path.Combine(data, "schema.yaml"), string.Equals(sha, "none", StringComparison.OrdinalIgnoreCase) ? null : sha, threshold, overwrite);
         output.Write(result.Render());
+        return 0;
+    }
+
+    private static int RunGenerateFacts(Dictionary<string, string> options, string repository, string corpus, TextWriter output, TextWriter error)
+    {
+        var data = options.TryGetValue("data", out var d) ? Path.GetFullPath(d) : Path.Combine(repository, "data");
+        var sample = options.TryGetValue("sample", out var sm) ? int.Parse(sm, CultureInfo.InvariantCulture) : Data.FactGenerator.DefaultSample;
+        var seed = options.TryGetValue("seed", out var sd) ? int.Parse(sd, CultureInfo.InvariantCulture) : Data.FactGenerator.DefaultSeed;
+        var generated = Data.FactGenerator.Generate(data, corpus, seed, sample);
+        var failures = Data.FactGenerator.Check(generated.Facts);
+        var (checkedCount, withGerund, missing) = Data.FactGenerator.CheckIngEntries(data);
+        output.WriteLine($"Seed {seed.ToString(CultureInfo.InvariantCulture)}, sample {sample.ToString(CultureInfo.InvariantCulture)}: {generated.Facts.Count.ToString(CultureInfo.InvariantCulture)} facts ({string.Join(", ", generated.Summary.Select(p => $"{p.Key} {p.Value.ToString(CultureInfo.InvariantCulture)}"))}).");
+        output.WriteLine($"{failures.Count.ToString(CultureInfo.InvariantCulture)} fact(s) do not hold in the shipped word table.");
+        output.WriteLine($"Withheld (not asserted): {generated.Withheld.Count.ToString(CultureInfo.InvariantCulture)} ({string.Join(", ", generated.Withheld.GroupBy(w => w.Category + " " + w.Reason).Select(g => $"{g.Key} {g.Count().ToString(CultureInfo.InvariantCulture)}"))}).");
+        output.WriteLine($"-ing noun and adjective entries: {checkedCount.ToString(CultureInfo.InvariantCulture)} checked, {withGerund.ToString(CultureInfo.InvariantCulture)} also have the verb gerund analysis, {missing.Count.ToString(CultureInfo.InvariantCulture)} lack the entry analysis.");
+        foreach (var line in failures.Concat(missing.Select(m => "ing-missing\t" + m)))
+        {
+            error.WriteLine(line);
+        }
+
+        if (options.TryGetValue("output", out var file))
+        {
+            File.WriteAllText(file, Data.FactGenerator.Render(generated.Facts), new System.Text.UTF8Encoding(false));
+        }
+
+        return failures.Count == 0 && missing.Count == 0 ? 0 : 1;
+    }
+
+    private static int RunAuditForms(Dictionary<string, string> options, string repository, TextWriter output, TextWriter error)
+    {
+        var data = options.TryGetValue("data", out var d) ? Path.GetFullPath(d) : Path.Combine(repository, "data");
+        var sample = options.TryGetValue("sample", out var sm) ? int.Parse(sm, CultureInfo.InvariantCulture) : 300;
+        var seed = options.TryGetValue("seed", out var sd) ? int.Parse(sd, CultureInfo.InvariantCulture) : 20240601;
+        var maxError = options.TryGetValue("max-error", out var me) ? double.Parse(me, CultureInfo.InvariantCulture) : 0.01;
+        if (sample <= 0)
+        {
+            throw new ArgumentException("The --sample value must be a positive number of rows per stratum.");
+        }
+
+        if (!(maxError > 0 && maxError <= 1))
+        {
+            throw new ArgumentException("The --max-error value must be greater than 0 and at most 1.");
+        }
+
+        var supplied = options.TryGetValue("oracle", out var oracle) ? Data.FormAuditor.ReadVerdicts(oracle) : null;
+        var (rows, population) = Data.FormAuditor.Select(data, sample, seed);
+        var verdicts = supplied ?? Data.FormAuditor.RunOracle(repository, rows);
+        var adjudicationFile = options.TryGetValue("adjudications", out var aj) ? aj : Path.Combine(repository, Data.FormAuditor.AdjudicationsFile.Replace('/', Path.DirectorySeparatorChar));
+        var result = Data.FormAuditor.Evaluate(rows, population, verdicts, Data.FormAuditor.ReadAdjudications(adjudicationFile), maxError);
+        var text = Data.FormAuditor.Render(result, sample, seed, maxError);
+        output.Write(text);
+        if (options.TryGetValue("output", out var report))
+        {
+            File.WriteAllText(report, text, new System.Text.UTF8Encoding(false));
+        }
+
+        if (!result.Passed)
+        {
+            error.WriteLine($"The forms audit failed: a generated stratum has an error rate of {maxError:P2} or more, or no checked row.");
+            return 1;
+        }
+
         return 0;
     }
 

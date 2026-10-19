@@ -14,6 +14,47 @@ language: en,en-GB
 
 # Project-specific technical terms and tool names
 words:
+  - AGID
+  - abye
+  - araglis
+  - cercariae
+  - cercariiae
+  - doed
+  - filariae
+  - filariiae
+  - formating
+  - madornos
+  - muskallunge
+  - tabis
+  - unmaned
+  - unriped
+  - LemmInflect
+  - lemminflect
+  - infl
+  - Cryptics
+  - Prefixable
+  - Recase
+  - aeiou
+  - aeiouwxy
+  - nvar
+  - upcid
+  - upcidx
+  - nvarupcidx
+  - nuvarpcidx
+  - tomatilloes
+  - whalemen
+  - whaleman
+  - complices
+  - Pandects
+  - Hursts
+  - peetweet
+  - peetweets
+  - unplaster
+  - unplastered
+  - iest
+  - trol
+  - delit
+  - outblow
   - Uints
   - zzqxjzzqxj
   - nodata

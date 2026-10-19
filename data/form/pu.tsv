@@ -1,1204 +1,1961 @@
-spelling	rank	entry_id	features	source_id	reviewed
-pub	0	oewn-pub-n	Number=Sing	dema	0
-pub	1	dema-pub-v	VerbForm=Inf	dema	0
-pubbed	0	dema-pub-v	Tense=Past	dema	0
-pubber	0	oewn-pub-n	Number=Plur	dema	0
-pubbers	0	oewn-pub-n	Number=Plur	dema	0
-pubbing	0	dema-pub-v	VerbForm=Ger	dema	0
-pubbingly	0	dema-pub-r		dema	0
-puberties	0	oewn-puberty-n	Number=Plur	dema	0
-puberty	0	oewn-puberty-n	Number=Sing	dema	0
-puberulent	0	oewn-puberulent-a	Degree=Pos	dema	0
-puberulently	0	dema-puberulent-r		dema	0
-pubes	0	oewn-pubes-n	Number=Sing	dema	0
-pubescent	0	oewn-pubescent-a	Degree=Pos	dema	0
-pubescently	0	dema-pubescent-r		dema	0
-pubescentness	0	dema-pubescent-n	Number=Plur	dema	0
-pubic	0	oewn-pubic-a	Degree=Pos	dema	0
-pubically	0	dema-pubic-r		dema	0
-pubicness	0	dema-pubic-n	Number=Plur	dema	0
-pubis	0	oewn-pubis-n	Number=Sing	dema	0
-publ	0	dema-publ-n	Number=Sing	dema	0
-public	0	oewn-public-a	Degree=Pos	dema	0
-public	1	oewn-public-n	Number=Sing	dema	0
-publically	0	dema-public-r		dema	0
-publican	0	oewn-publican-n	Number=Sing	dema	0
-publicans	0	oewn-publican-n	Number=Plur	dema	0
-publication	0	oewn-publication-n	Number=Sing	dema	0
-publications	0	oewn-publication-n	Number=Plur	dema	0
-publicist	0	oewn-publicist-n	Number=Sing	dema	0
-publicists	0	oewn-publicist-n	Number=Plur	dema	0
-publicities	0	oewn-publicity-n	Number=Plur	dema	0
-publicity	0	oewn-publicity-n	Number=Sing	dema	0
-publicize	0	oewn-publicize-v	VerbForm=Inf	dema	0
-publicized	0	oewn-publicize-v	Tense=Past	dema	0
-publicizer	0	dema-publicize-n	Number=Plur	dema	0
-publicizers	0	dema-publicize-n	Number=Plur	dema	0
-publicizes	0	oewn-publicize-v	Person=3+Tense=Pres	dema	0
-publicizing	0	oewn-publicize-v	VerbForm=Ger	dema	0
-publicizingly	0	dema-publicize-r		dema	0
-publicly	0	oewn-publicly-r	Degree=Pos	dema	0
-publicness	0	dema-publicness-n	Number=Sing	dema	0
-publicnesses	0	dema-publicness-n	Number=Plur	dema	0
-publics	0	oewn-public-n	Number=Plur	dema	0
-publicute	0	dema-publicute-n	Number=Sing	dema	0
-publicutes	0	dema-publicute-n	Number=Plur	dema	0
-publish	0	oewn-publish-v	VerbForm=Inf	dema	0
-published	0	oewn-publish-v	Tense=Past	dema	0
-publisher	0	oewn-publisher-n	Number=Sing	dema	0
-publishers	0	dema-publish-n	Number=Plur	dema	0
-publishes	0	oewn-publish-v	Person=3+Tense=Pres	dema	0
-publishing	0	oewn-publishing-n	Number=Sing	dema	0
-publishing	1	dema-publishing-v	VerbForm=Inf	dema	0
-publishingly	0	dema-publish-r		dema	0
-publishings	0	oewn-publishing-n	Number=Plur	dema	0
-publishment	0	dema-publishment-n	Number=Sing	dema	0
-publishments	0	dema-publishment-n	Number=Plur	dema	0
-publs	0	dema-publ-n	Number=Plur	dema	0
-pubs	0	oewn-pub-n	Number=Plur	dema	0
-pubs	1	dema-pub-v	Person=3+Tense=Pres	dema	0
-puca	0	dema-puca-n	Number=Sing	dema	0
-pucas	0	dema-puca-n	Number=Plur	dema	0
-puccoon	0	oewn-puccoon-n	Number=Sing	dema	0
-puccoons	0	oewn-puccoon-n	Number=Plur	dema	0
-puce	0	oewn-puce-n	Number=Sing	dema	0
-puces	0	oewn-puce-n	Number=Plur	dema	0
-puck	0	oewn-puck-n	Number=Sing	dema	0
-pucka	0	oewn-pucka-a	Degree=Pos	dema	0
-puckaer	0	oewn-pucka-a	Degree=Cmp	dema	0
-puckaest	0	oewn-pucka-a	Degree=Sup	dema	0
-puckaly	0	dema-pucka-r		dema	0
-puckaness	0	dema-pucka-n	Number=Plur	dema	0
-pucker	0	oewn-pucker-v	VerbForm=Inf	dema	0
-pucker	1	oewn-pucker-n	Number=Sing	dema	0
-puckered	0	oewn-pucker-v	Tense=Past	dema	0
-puckerer	0	dema-puckerer-n	Number=Sing	dema	0
-puckerers	0	dema-puckerer-n	Number=Plur	dema	0
-puckerily	0	dema-puckery-r		dema	0
-puckeriness	0	dema-puckery-n	Number=Plur	dema	0
-puckering	0	oewn-pucker-v	VerbForm=Ger	dema	0
-puckeringly	0	dema-pucker-r		dema	0
-puckers	0	oewn-pucker-v	Person=3+Tense=Pres	dema	0
-puckers	1	oewn-pucker-n	Number=Plur	dema	0
-puckery	0	dema-puckery-a	Degree=Pos	dema	0
-pucks	0	oewn-puck-n	Number=Plur	dema	0
-pudda	0	dema-pudda-n	Number=Sing	dema	0
-puddas	0	dema-pudda-n	Number=Plur	dema	0
-pudding	0	oewn-pudding-n	Number=Sing	dema	0
-puddinglike	0	dema-puddinglike-a	Degree=Pos	dema	0
-puddinglikely	0	dema-puddinglike-r		dema	0
-puddinglikeness	0	dema-puddinglike-n	Number=Plur	dema	0
-puddings	0	oewn-pudding-n	Number=Plur	dema	0
-puddingwife	0	oewn-puddingwife-n	Number=Sing	dema	0
-puddingwifes	0	oewn-puddingwife-n	Number=Plur	dema	0
-puddingwives	0	dema-puddingwives-n	Number=Sing	dema	0
-puddingwiveses	0	dema-puddingwives-n	Number=Plur	dema	0
-puddle	0	oewn-puddle-n	Number=Sing	dema	0
-puddle	1	oewn-puddle-v	VerbForm=Inf	dema	0
-puddled	0	dema-puddled-v	VerbForm=Inf	dema	0
-puddler	0	oewn-puddler-n	Number=Sing	dema	0
-puddlers	0	oewn-puddle-n	Number=Plur	dema	0
-puddles	0	oewn-puddle-n	Number=Plur	dema	0
-puddles	1	oewn-puddle-v	Person=3+Tense=Pres	dema	0
-puddlier	0	dema-puddly-a	Degree=Cmp	dema	0
-puddliest	0	dema-puddly-a	Degree=Sup	dema	0
-puddling	0	dema-puddling-n	Number=Sing	dema	0
-puddling	1	dema-puddling-v	VerbForm=Inf	dema	0
-puddlingly	0	dema-puddle-r		dema	0
-puddlings	0	dema-puddling-n	Number=Plur	dema	0
-puddly	0	dema-puddly-a	Degree=Pos	dema	0
-puddock	0	dema-puddock-n	Number=Sing	dema	0
-puddocks	0	dema-puddock-n	Number=Plur	dema	0
-pudencies	0	dema-pudency-n	Number=Plur	dema	0
-pudency	0	dema-pudency-n	Number=Sing	dema	0
-pudendum	0	oewn-pudendum-n	Number=Sing	dema	0
-pudendums	0	oewn-pudendum-n	Number=Plur	dema	0
-pudgier	0	oewn-pudgy-a	Degree=Cmp	dema	0
-pudgiest	0	oewn-pudgy-a	Degree=Sup	dema	0
-pudgily	0	dema-pudgily-r	Degree=Pos	dema	0
-pudginess	0	oewn-pudginess-n	Number=Sing	dema	0
-pudginesses	0	oewn-pudginess-n	Number=Plur	dema	0
-pudgy	0	oewn-pudgy-a	Degree=Pos	dema	0
-pueblo	0	oewn-pueblo-n	Number=Sing	dema	0
-puebloes	0	oewn-pueblo-n	Number=Plur	dema	0
-pueblos	0	dema-pueblos-n	Number=Sing	dema	0
-puerile	0	oewn-puerile-a	Degree=Pos	dema	0
-puerilely	0	dema-puerile-r		dema	0
-puerileness	0	dema-puerile-n	Number=Plur	dema	0
-pueriler	0	oewn-puerile-a	Degree=Cmp	dema	0
-puerilest	0	oewn-puerile-a	Degree=Sup	dema	0
-puerilism	0	dema-puerilism-n	Number=Sing	dema	0
-puerilisms	0	dema-puerilism-n	Number=Plur	dema	0
-puerilities	0	dema-puerilities-n	Number=Sing	dema	0
-puerility	0	oewn-puerility-n	Number=Sing	dema	0
-puerpera	0	oewn-puerpera-n	Number=Sing	dema	0
-puerperae	0	dema-puerperae-n	Number=Sing	dema	0
-puerperaes	0	dema-puerperae-n	Number=Plur	dema	0
-puerperal	0	oewn-puerperal-a	Degree=Pos	dema	0
-puerperally	0	dema-puerperal-r		dema	0
-puerperalness	0	dema-puerperal-n	Number=Plur	dema	0
-puerperas	0	oewn-puerpera-n	Number=Plur	dema	0
-puerperium	0	oewn-puerperium-n	Number=Sing	dema	0
-puerperiums	0	oewn-puerperium-n	Number=Plur	dema	0
-puff	0	oewn-puff-n	Number=Sing	dema	0
-puff	1	oewn-puff-v	VerbForm=Inf	dema	0
-puffball	0	oewn-puffball-n	Number=Sing	dema	0
-puffballs	0	oewn-puffball-n	Number=Plur	dema	0
-puffbird	0	oewn-puffbird-n	Number=Sing	dema	0
-puffbirds	0	oewn-puffbird-n	Number=Plur	dema	0
-puffed	0	oewn-puff-v	Tense=Past	dema	0
-puffer	0	oewn-puffer-n	Number=Sing	dema	0
-pufferies	0	dema-pufferies-n	Number=Sing	dema	0
-puffers	0	oewn-puff-n	Number=Plur	dema	0
-puffery	0	oewn-puffery-n	Number=Sing	dema	0
-puffier	0	dema-puffier-a	Degree=Pos	dema	0
-puffierly	0	dema-puffier-r		dema	0
-puffiest	0	dema-puffiest-a	Degree=Pos	dema	0
-puffiestly	0	dema-puffiest-r		dema	0
-puffily	0	dema-puffy-r		dema	0
-puffin	0	oewn-puffin-n	Number=Sing	dema	0
-puffiness	0	dema-puffy-n	Number=Plur	dema	0
-puffing	0	oewn-puff-v	VerbForm=Ger	dema	0
-puffingly	0	dema-puffingly-r	Degree=Pos	dema	0
-puffins	0	oewn-puffin-n	Number=Plur	dema	0
-puffs	0	oewn-puff-n	Number=Plur	dema	0
-puffs	1	oewn-puff-v	Person=3+Tense=Pres	dema	0
-puffy	0	oewn-puffy-a	Degree=Pos	dema	0
-pug	0	oewn-pug-n	Number=Sing	dema	0
-pug	1	dema-pug-v	VerbForm=Inf	dema	0
-pugaree	0	dema-pugaree-n	Number=Sing	dema	0
-pugarees	0	dema-pugaree-n	Number=Plur	dema	0
-pugdog	0	dema-pugdog-n	Number=Sing	dema	0
-pugdogs	0	dema-pugdog-n	Number=Plur	dema	0
-puggaree	0	dema-puggaree-n	Number=Sing	dema	0
-puggarees	0	dema-puggaree-n	Number=Plur	dema	0
-pugged	0	dema-pugged-v	VerbForm=Inf	dema	0
-pugger	0	oewn-pug-n	Number=Plur	dema	0
-puggers	0	oewn-pug-n	Number=Plur	dema	0
-puggier	0	dema-puggy-a	Degree=Cmp	dema	0
-puggiest	0	dema-puggy-a	Degree=Sup	dema	0
-puggily	0	dema-puggy-r		dema	0
-pugginess	0	dema-pugginess-n	Number=Sing	dema	0
-pugginesses	0	dema-pugginess-n	Number=Plur	dema	0
-pugging	0	dema-pugging-n	Number=Sing	dema	0
-pugging	1	dema-pugging-v	VerbForm=Inf	dema	0
-puggingly	0	dema-pug-r		dema	0
-puggings	0	dema-pugging-n	Number=Plur	dema	0
-puggish	0	dema-puggish-a	Degree=Pos	dema	0
-puggishly	0	dema-puggish-r		dema	0
-puggishness	0	dema-puggish-n	Number=Plur	dema	0
-puggree	0	dema-puggree-n	Number=Sing	dema	0
-puggrees	0	dema-puggree-n	Number=Plur	dema	0
-puggy	0	dema-puggy-a	Degree=Pos	dema	0
-pugilism	0	oewn-pugilism-n	Number=Sing	dema	0
-pugilisms	0	oewn-pugilism-n	Number=Plur	dema	0
-pugilistic	0	oewn-pugilistic-a	Degree=Pos	dema	0
-pugilistical	0	dema-pugilistical-a	Degree=Pos	dema	0
-pugilistically	0	dema-pugilistically-r	Degree=Pos	dema	0
-pugnacious	0	oewn-pugnacious-a	Degree=Pos	dema	0
-pugnaciously	0	oewn-pugnaciously-r	Degree=Pos	dema	0
-pugnaciousness	0	dema-pugnaciousness-n	Number=Sing	dema	0
-pugnaciousnesses	0	dema-pugnaciousness-n	Number=Plur	dema	0
-pugnacities	0	oewn-pugnacity-n	Number=Plur	dema	0
-pugnacity	0	oewn-pugnacity-n	Number=Sing	dema	0
-pugs	0	oewn-pug-n	Number=Plur	dema	0
-pugs	1	dema-pug-v	Person=3+Tense=Pres	dema	0
-puir	0	dema-puir-a	Degree=Pos	dema	0
-puirer	0	dema-puir-a	Degree=Cmp	dema	0
-puirest	0	dema-puir-a	Degree=Sup	dema	0
-puirly	0	dema-puir-r		dema	0
-puirness	0	dema-puirness-n	Number=Sing	dema	0
-puirnesses	0	dema-puirness-n	Number=Plur	dema	0
-puisne	0	dema-puisne-a	Degree=Pos	dema	0
-puisnely	0	dema-puisne-r		dema	0
-puisneness	0	dema-puisne-n	Number=Plur	dema	0
-puisner	0	dema-puisne-a	Degree=Cmp	dema	0
-puisnest	0	dema-puisne-a	Degree=Sup	dema	0
-puissance	0	oewn-puissance-n	Number=Sing	dema	0
-puissances	0	oewn-puissance-n	Number=Plur	dema	0
-puissant	0	oewn-puissant-a	Degree=Pos	dema	0
-puissanter	0	oewn-puissant-a	Degree=Cmp	dema	0
-puissantest	0	oewn-puissant-a	Degree=Sup	dema	0
-puissantly	0	dema-puissantly-r	Degree=Pos	dema	0
-puissantness	0	dema-puissant-n	Number=Plur	dema	0
-puja	0	dema-puja-n	Number=Sing	dema	0
-pujas	0	dema-puja-n	Number=Plur	dema	0
-puke	0	oewn-puke-v	VerbForm=Inf	dema	0
-puke	1	oewn-puke-n	Number=Sing	dema	0
-puked	0	oewn-puke-v	Tense=Past	dema	0
-puker	0	oewn-puke-n	Number=Plur	dema	0
-pukers	0	oewn-puke-n	Number=Plur	dema	0
-pukes	0	oewn-puke-v	Person=3+Tense=Pres	dema	0
-pukes	1	oewn-puke-n	Number=Plur	dema	0
-puking	0	oewn-puke-v	VerbForm=Ger	dema	0
-pukingly	0	dema-puke-r		dema	0
-pukka	0	oewn-pukka-a	Degree=Pos	dema	0
-pukkaer	0	oewn-pukka-a	Degree=Cmp	dema	0
-pukkaest	0	oewn-pukka-a	Degree=Sup	dema	0
-pukkaly	0	dema-pukka-r		dema	0
-pukkaness	0	dema-pukka-n	Number=Plur	dema	0
-puku	0	oewn-puku-n	Number=Sing	dema	0
-pukus	0	oewn-puku-n	Number=Plur	dema	0
-pul	0	oewn-pul-n	Number=Sing	dema	0
-pulchritude	0	oewn-pulchritude-n	Number=Sing	dema	0
-pulchritudes	0	oewn-pulchritude-n	Number=Plur	dema	0
-pulchritudinous	0	dema-pulchritudinous-n	Number=Sing	dema	0
-pulchritudinouses	0	dema-pulchritudinous-n	Number=Plur	dema	0
-pule	0	oewn-pule-v	VerbForm=Inf	dema	0
-puled	0	oewn-pule-v	Tense=Past	dema	0
-puler	0	dema-puler-n	Number=Sing	dema	0
-pulers	0	dema-pule-n	Number=Plur	dema	0
-pules	0	oewn-pule-v	Person=3+Tense=Pres	dema	0
-puli	0	dema-puli-n	Number=Sing	dema	0
-pulik	0	dema-pulik-n	Number=Sing	dema	0
-puliks	0	dema-pulik-n	Number=Plur	dema	0
-puling	0	dema-puling-a	Degree=Pos	dema	0
-puling	1	dema-puling-v	VerbForm=Inf	dema	0
-pulingly	0	dema-pulingly-r	Degree=Pos	dema	0
-pulis	0	dema-puli-n	Number=Plur	dema	0
-pulka	0	dema-pulka-n	Number=Sing	dema	0
-pulkas	0	dema-pulka-n	Number=Plur	dema	0
-pull	0	oewn-pull-n	Number=Sing	dema	1
-pull	1	oewn-pull-v	VerbForm=Inf	dema	1
-pulled	0	oewn-pull-v	Tense=Past	dema	1
-puller	0	oewn-pull-n	Number=Plur	dema	1
-pullers	0	oewn-pull-n	Number=Plur	dema	1
-pullet	0	oewn-pullet-n	Number=Sing	dema	0
-pullets	0	oewn-pullet-n	Number=Plur	dema	0
-pulley	0	oewn-pulley-n	Number=Sing	dema	0
-pulleyless	0	dema-pulleyless-a	Degree=Pos	dema	0
-pulleylessly	0	dema-pulleyless-r		dema	0
-pulleylessness	0	dema-pulleyless-n	Number=Plur	dema	0
-pulleys	0	dema-pulleys-n	Number=Sing	dema	0
-pulli	0	dema-pulli-n	Number=Sing	dema	0
-pulling	0	oewn-pull-n	Number=Plur	dema	1
-pulling	1	oewn-pull-v	VerbForm=Ger	dema	1
-pullingly	0	dema-pull-r		dema	0
-pullis	0	dema-pulli-n	Number=Plur	dema	0
-pullover	0	oewn-pullover-n	Number=Sing	dema	0
-pullovers	0	oewn-pullover-n	Number=Plur	dema	0
-pulls	0	oewn-pull-n	Number=Plur	dema	1
-pulls	1	oewn-pull-v	Person=3+Tense=Pres	dema	1
-pullulate	0	oewn-pullulate-v	VerbForm=Inf	dema	0
-pullulated	0	dema-pullulated-v	VerbForm=Inf	dema	0
-pullulater	0	dema-pullulate-n	Number=Plur	dema	0
-pullulaters	0	dema-pullulate-n	Number=Plur	dema	0
-pullulates	0	oewn-pullulate-v	Person=3+Tense=Pres	dema	0
-pullulating	0	dema-pullulating-v	VerbForm=Inf	dema	0
-pullulatingly	0	dema-pullulate-r		dema	0
-pullus	0	dema-pullus-n	Number=Sing	dema	0
-pulluses	0	dema-pullus-n	Number=Plur	dema	0
-pulmonarily	0	dema-pulmonary-r		dema	0
-pulmonary	0	oewn-pulmonary-a	Degree=Pos	dema	0
-pulmonate	0	dema-pulmonate-a	Degree=Pos	dema	0
-pulmonate	1	dema-pulmonate-n	Number=Sing	dema	0
-pulmonately	0	dema-pulmonate-r		dema	0
-pulmonateness	0	dema-pulmonate-n	Number=Plur	dema	0
-pulmonates	0	dema-pulmonate-n	Number=Plur	dema	0
-pulmonic	0	oewn-pulmonic-a	Degree=Pos	dema	0
-pulmonic	1	dema-pulmonic-n	Number=Sing	dema	0
-pulmonically	0	dema-pulmonic-r		dema	0
-pulmonicness	0	dema-pulmonic-n	Number=Plur	dema	0
-pulmonics	0	dema-pulmonic-n	Number=Plur	dema	0
-pulp	0	oewn-pulp-n	Number=Sing	dema	0
-pulp	1	oewn-pulp-v	VerbForm=Inf	dema	0
-pulpboard	0	dema-pulpboard-n	Number=Sing	dema	0
-pulpboards	0	dema-pulpboard-n	Number=Plur	dema	0
-pulped	0	oewn-pulp-v	Tense=Past	dema	0
-pulper	0	oewn-pulp-n	Number=Plur	dema	0
-pulpers	0	oewn-pulp-n	Number=Plur	dema	0
-pulpier	0	dema-pulpier-a	Degree=Pos	dema	0
-pulpierly	0	dema-pulpier-r		dema	0
-pulpiest	0	dema-pulpiest-a	Degree=Pos	dema	0
-pulpiestly	0	dema-pulpiest-r		dema	0
-pulpily	0	dema-pulpy-r		dema	0
-pulpiness	0	dema-pulpy-n	Number=Plur	dema	0
-pulping	0	oewn-pulp-v	VerbForm=Ger	dema	0
-pulpingly	0	dema-pulp-r		dema	0
-pulpit	0	oewn-pulpit-n	Number=Sing	dema	0
-pulpital	0	dema-pulpital-a	Degree=Pos	dema	0
-pulpitally	0	dema-pulpital-r		dema	0
-pulpitalness	0	dema-pulpital-n	Number=Plur	dema	0
-pulpiteer	0	dema-pulpiteer-n	Number=Sing	dema	0
-pulpiteers	0	dema-pulpiteer-n	Number=Plur	dema	0
-pulpitless	0	dema-pulpitless-a	Degree=Pos	dema	0
-pulpitlessly	0	dema-pulpitless-r		dema	0
-pulpitlessness	0	dema-pulpitless-n	Number=Plur	dema	0
-pulpits	0	oewn-pulpit-n	Number=Plur	dema	0
-pulpitum	0	dema-pulpitum-n	Number=Sing	dema	0
-pulpitums	0	dema-pulpitum-n	Number=Plur	dema	0
-pulpless	0	dema-pulpless-a	Degree=Pos	dema	0
-pulplessly	0	dema-pulpless-r		dema	0
-pulplessness	0	dema-pulpless-n	Number=Plur	dema	0
-pulplike	0	dema-pulplike-a	Degree=Pos	dema	0
-pulplikely	0	dema-pulplike-r		dema	0
-pulplikeness	0	dema-pulplike-n	Number=Plur	dema	0
-pulpliker	0	dema-pulplike-a	Degree=Cmp	dema	0
-pulplikest	0	dema-pulplike-a	Degree=Sup	dema	0
-pulps	0	oewn-pulp-n	Number=Plur	dema	0
-pulps	1	oewn-pulp-v	Person=3+Tense=Pres	dema	0
-pulpwood	0	oewn-pulpwood-n	Number=Sing	dema	0
-pulpwoods	0	oewn-pulpwood-n	Number=Plur	dema	0
-pulpy	0	oewn-pulpy-a	Degree=Pos	dema	0
-pulque	0	oewn-pulque-n	Number=Sing	dema	0
-pulques	0	oewn-pulque-n	Number=Plur	dema	0
-puls	0	oewn-pul-n	Number=Plur	dema	0
-pulsar	0	oewn-pulsar-n	Number=Sing	dema	0
-pulsars	0	oewn-pulsar-n	Number=Plur	dema	0
-pulsate	0	oewn-pulsate-v	VerbForm=Inf	dema	0
-pulsated	0	dema-pulsated-v	VerbForm=Inf	dema	0
-pulsater	0	dema-pulsate-n	Number=Plur	dema	0
-pulsaters	0	dema-pulsate-n	Number=Plur	dema	0
-pulsates	0	oewn-pulsate-v	Person=3+Tense=Pres	dema	0
-pulsatile	0	dema-pulsatile-a	Degree=Pos	dema	0
-pulsatilely	0	dema-pulsatile-r		dema	0
-pulsatileness	0	dema-pulsatile-n	Number=Plur	dema	0
-pulsatilities	0	dema-pulsatility-n	Number=Plur	dema	0
-pulsatility	0	dema-pulsatility-n	Number=Sing	dema	0
-pulsating	0	dema-pulsating-v	VerbForm=Inf	dema	0
-pulsatingly	0	dema-pulsate-r		dema	0
-pulsation	0	oewn-pulsation-n	Number=Sing	dema	0
-pulsations	0	oewn-pulsation-n	Number=Plur	dema	0
-pulsator	0	dema-pulsator-n	Number=Sing	dema	0
-pulsatorily	0	dema-pulsatory-r		dema	0
-pulsators	0	dema-pulsator-n	Number=Plur	dema	0
-pulsatory	0	dema-pulsatory-a	Degree=Pos	dema	0
-pulse	0	oewn-pulse-n	Number=Sing	dema	0
-pulse	1	oewn-pulse-v	VerbForm=Inf	dema	0
-pulsebeat	0	dema-pulsebeat-n	Number=Sing	dema	0
-pulsebeats	0	dema-pulsebeat-n	Number=Plur	dema	0
-pulsed	0	dema-pulsed-v	VerbForm=Inf	dema	0
-pulsejet	0	dema-pulsejet-n	Number=Sing	dema	0
-pulsejets	0	dema-pulsejet-n	Number=Plur	dema	0
-pulser	0	oewn-pulse-n	Number=Plur	dema	0
-pulsers	0	oewn-pulse-n	Number=Plur	dema	0
-pulses	0	oewn-pulse-n	Number=Plur	dema	0
-pulses	1	oewn-pulse-v	Person=3+Tense=Pres	dema	0
-pulsimeter	0	dema-pulsimeter-n	Number=Sing	dema	0
-pulsimeters	0	dema-pulsimeter-n	Number=Plur	dema	0
-pulsing	0	dema-pulsing-v	VerbForm=Inf	dema	0
-pulsingly	0	dema-pulse-r		dema	0
-pulsojet	0	dema-pulsojet-n	Number=Sing	dema	0
-pulsojets	0	dema-pulsojet-n	Number=Plur	dema	0
-pulsometer	0	dema-pulsometer-n	Number=Sing	dema	0
-pulsometers	0	dema-pulsometer-n	Number=Plur	dema	0
-pulu	0	dema-pulu-n	Number=Sing	dema	0
-pulus	0	dema-pulu-n	Number=Plur	dema	0
-pulverable	0	dema-pulverable-a	Degree=Pos	dema	0
-pulverably	0	dema-pulverable-r		dema	0
-pulverisable	0	dema-pulverisable-a	Degree=Pos	dema	0
-pulverisably	0	dema-pulverisable-r		dema	0
-pulverisation	0	oewn-pulverisation-n	Number=Sing	dema	0
-pulverisations	0	oewn-pulverisation-n	Number=Plur	dema	0
-pulverise	0	oewn-pulverise-v	VerbForm=Inf	dema	0
-pulverised	0	dema-pulverised-v	VerbForm=Inf	dema	0
-pulveriser	0	dema-pulveriser-n	Number=Sing	dema	0
-pulverisers	0	dema-pulverise-n	Number=Plur	dema	0
-pulverises	0	oewn-pulverise-v	Person=3+Tense=Pres	dema	0
-pulverising	0	dema-pulverising-v	VerbForm=Inf	dema	0
-pulverisingly	0	dema-pulverise-r		dema	0
-pulverizable	0	dema-pulverizable-a	Degree=Pos	dema	0
-pulverizably	0	dema-pulverizable-r		dema	0
-pulverization	0	oewn-pulverization-n	Number=Sing	dema	0
-pulverizations	0	oewn-pulverization-n	Number=Plur	dema	0
-pulverize	0	oewn-pulverize-v	VerbForm=Inf	dema	0
-pulverized	0	dema-pulverized-v	VerbForm=Inf	dema	0
-pulverizer	0	dema-pulverizer-n	Number=Sing	dema	0
-pulverizers	0	dema-pulverize-n	Number=Plur	dema	0
-pulverizes	0	oewn-pulverize-v	Person=3+Tense=Pres	dema	0
-pulverizing	0	dema-pulverizing-v	VerbForm=Inf	dema	0
-pulverizingly	0	dema-pulverize-r		dema	0
-pulverulence	0	dema-pulverulence-n	Number=Sing	dema	0
-pulverulences	0	dema-pulverulence-n	Number=Plur	dema	0
-pulverulent	0	dema-pulverulent-a	Degree=Pos	dema	0
-pulverulently	0	dema-pulverulently-a	Degree=Pos	dema	0
-pulvillus	0	dema-pulvillus-n	Number=Sing	dema	0
-pulvilluses	0	dema-pulvillus-n	Number=Plur	dema	0
-pulvinate	0	dema-pulvinate-a	Degree=Pos	dema	0
-pulvinately	0	dema-pulvinately-r	Degree=Pos	dema	0
-pulvinateness	0	dema-pulvinate-n	Number=Plur	dema	0
-pulvinni	0	dema-pulvinni-n	Number=Sing	dema	0
-pulvinnis	0	dema-pulvinni-n	Number=Plur	dema	0
-pulvinus	0	dema-pulvinus-n	Number=Sing	dema	0
-pulvinuses	0	dema-pulvinus-n	Number=Plur	dema	0
-puma	0	oewn-puma-n	Number=Sing	dema	0
-pumas	0	oewn-puma-n	Number=Plur	dema	0
-pumice	0	oewn-pumice-n	Number=Sing	dema	0
-pumice	1	oewn-pumice-v	VerbForm=Inf	dema	0
-pumiced	0	oewn-pumice-v	Tense=Past	dema	0
-pumicer	0	dema-pumicer-n	Number=Sing	dema	0
-pumicers	0	oewn-pumice-n	Number=Plur	dema	0
-pumices	0	oewn-pumice-n	Number=Plur	dema	0
-pumices	1	oewn-pumice-v	Person=3+Tense=Pres	dema	0
-pumicing	0	oewn-pumice-v	VerbForm=Ger	dema	0
-pumicingly	0	dema-pumice-r		dema	0
-pummel	0	oewn-pummel-v	VerbForm=Inf	dema	0
-pummeled	0	dema-pummeled-v	VerbForm=Inf	dema	0
-pummeler	0	dema-pummel-n	Number=Plur	dema	0
-pummelers	0	dema-pummel-n	Number=Plur	dema	0
-pummeling	0	dema-pummeling-v	VerbForm=Inf	dema	0
-pummelingly	0	dema-pummel-r		dema	0
-pummelled	0	dema-pummelled-v	VerbForm=Inf	dema	0
-pummelling	0	oewn-pummel-v	VerbForm=Ger	dema	0
-pummellingly	0	dema-pummel-r		dema	0
-pummels	0	oewn-pummel-v	Person=3+Tense=Pres	dema	0
-pump	0	oewn-pump-n	Number=Sing	dema	1
-pump	1	oewn-pump-v	VerbForm=Inf	dema	1
-pumped	0	oewn-pump-v	Tense=Past	dema	1
-pumper	0	oewn-pump-n	Number=Plur	dema	1
-pumpernickel	0	oewn-pumpernickel-n	Number=Sing	dema	0
-pumpernickels	0	oewn-pumpernickel-n	Number=Plur	dema	0
-pumpers	0	oewn-pump-n	Number=Plur	dema	1
-pumping	0	oewn-pump-n	Number=Plur	dema	1
-pumping	1	oewn-pump-v	VerbForm=Ger	dema	1
-pumpingly	0	dema-pump-r		dema	0
-pumpings	0	dema-pumping-n	Number=Plur	dema	0
-pumpkin	0	oewn-pumpkin-n	Number=Sing	dema	0
-pumpkins	0	oewn-pumpkin-n	Number=Plur	dema	0
-pumpkinseed	0	oewn-pumpkinseed-n	Number=Sing	dema	0
-pumpkinseeds	0	oewn-pumpkinseed-n	Number=Plur	dema	0
-pumpman	0	dema-pumpman-n	Number=Sing	dema	0
-pumpmen	0	dema-pumpmen-n	Number=Sing	dema	0
-pumpmens	0	dema-pumpmen-n	Number=Plur	dema	0
-pumps	0	oewn-pump-n	Number=Plur	dema	1
-pumps	1	oewn-pump-v	Person=3+Tense=Pres	dema	1
-pumpwell	0	dema-pumpwell-n	Number=Sing	dema	0
-pumpwells	0	dema-pumpwell-n	Number=Plur	dema	0
-pun	0	oewn-pun-n	Number=Sing	dema	0
-pun	1	oewn-pun-v	VerbForm=Inf	dema	0
-puna	0	dema-puna-n	Number=Sing	dema	0
-punas	0	dema-puna-n	Number=Plur	dema	0
-punce	0	dema-punce-v	VerbForm=Inf	dema	0
-punce	1	dema-punce-n	Number=Sing	dema	0
-punced	0	dema-punce-v	Tense=Past	dema	0
-puncer	0	dema-punce-n	Number=Plur	dema	0
-puncers	0	dema-punce-n	Number=Plur	dema	0
-punces	0	dema-punce-v	Person=3+Tense=Pres	dema	0
-punces	1	dema-punce-n	Number=Plur	dema	0
-punch	0	oewn-punch-n	Number=Sing	dema	1
-punch	1	oewn-punch-v	VerbForm=Inf	dema	1
-punchable	0	oewn-punchable-a	Degree=Pos	dema	0
-punchableness	0	dema-punchable-n	Number=Plur	dema	0
-punchably	0	dema-punchable-r		dema	0
-punchball	0	oewn-punchball-n	Number=Sing	dema	0
-punchballs	0	oewn-punchball-n	Number=Plur	dema	0
-punchboard	0	oewn-punchboard-n	Number=Sing	dema	0
-punchboards	0	oewn-punchboard-n	Number=Plur	dema	0
-punchbowl	0	dema-punchbowl-n	Number=Sing	dema	0
-punchbowls	0	dema-punchbowl-n	Number=Plur	dema	0
-punched	0	oewn-punch-v	Tense=Past	dema	1
-puncheon	0	dema-puncheon-n	Number=Sing	dema	0
-puncheons	0	dema-puncheon-n	Number=Plur	dema	0
-puncher	0	oewn-puncher-n	Number=Sing	dema	0
-punchers	0	oewn-punch-n	Number=Plur	dema	1
-punches	0	oewn-punch-n	Number=Plur	dema	1
-punches	1	oewn-punch-v	Person=3+Tense=Pres	dema	1
-punchier	0	dema-punchier-a	Degree=Pos	dema	0
-punchierly	0	dema-punchier-r		dema	0
-punchiest	0	dema-punchiest-a	Degree=Pos	dema	0
-punchiestly	0	dema-punchiest-r		dema	0
-punchily	0	dema-punchy-r		dema	0
-punchiness	0	dema-punchy-n	Number=Plur	dema	0
-punching	0	oewn-punch-n	Number=Plur	dema	1
-punching	1	oewn-punch-v	VerbForm=Ger	dema	1
-punchingly	0	dema-punch-r		dema	0
-punchs	0	oewn-punch-n	Number=Plur	dema	1
-punchs	1	oewn-punch-v	Person=3+Tense=Pres	dema	1
-punchy	0	dema-punchy-a	Degree=Pos	dema	0
-puncing	0	dema-punce-v	VerbForm=Ger	dema	0
-puncingly	0	dema-punce-r		dema	0
-punctate	0	dema-punctate-a	Degree=Pos	dema	0
-punctately	0	dema-punctate-r		dema	0
-punctateness	0	dema-punctate-n	Number=Plur	dema	0
-punctatim	0	dema-punctatim-r	Degree=Pos	dema	0
-punctation	0	dema-punctation-n	Number=Sing	dema	0
-punctations	0	dema-punctation-n	Number=Plur	dema	0
-punctilio	0	oewn-punctilio-n	Number=Sing	dema	0
-punctilios	0	oewn-punctilio-n	Number=Plur	dema	0
-punctilious	0	oewn-punctilious-a	Degree=Pos	dema	0
-punctiliously	0	oewn-punctiliously-r	Degree=Pos	dema	0
-punctiliousness	0	oewn-punctiliousness-n	Number=Sing	dema	0
-punctiliousnesses	0	oewn-punctiliousness-n	Number=Plur	dema	0
-punctual	0	oewn-punctual-a	Degree=Pos	dema	0
-punctualities	0	oewn-punctuality-n	Number=Plur	dema	0
-punctuality	0	oewn-punctuality-n	Number=Sing	dema	0
-punctually	0	oewn-punctually-r	Degree=Pos	dema	0
-punctualness	0	dema-punctualness-n	Number=Sing	dema	0
-punctualnesses	0	dema-punctualness-n	Number=Plur	dema	0
-punctuate	0	oewn-punctuate-v	VerbForm=Inf	dema	0
-punctuated	0	oewn-punctuate-v	Tense=Past	dema	0
-punctuater	0	dema-punctuate-n	Number=Plur	dema	0
-punctuaters	0	dema-punctuate-n	Number=Plur	dema	0
-punctuates	0	oewn-punctuate-v	Person=3+Tense=Pres	dema	0
-punctuating	0	oewn-punctuate-v	VerbForm=Ger	dema	0
-punctuatingly	0	dema-punctuate-r		dema	0
-punctuation	0	oewn-punctuation-n	Number=Sing	dema	0
-punctuations	0	oewn-punctuation-n	Number=Plur	dema	0
-punctuative	0	dema-punctuative-a	Degree=Pos	dema	0
-punctuatively	0	dema-punctuative-r		dema	0
-punctuativeness	0	dema-punctuative-n	Number=Plur	dema	0
-punctuator	0	dema-punctuator-n	Number=Sing	dema	0
-punctuators	0	dema-punctuator-n	Number=Plur	dema	0
-puncture	0	oewn-puncture-n	Number=Sing	dema	0
-puncture	1	oewn-puncture-v	VerbForm=Inf	dema	0
-punctured	0	dema-punctured-v	VerbForm=Inf	dema	0
-puncturer	0	oewn-puncture-n	Number=Plur	dema	0
-puncturers	0	oewn-puncture-n	Number=Plur	dema	0
-punctures	0	oewn-puncture-n	Number=Plur	dema	0
-punctures	1	oewn-puncture-v	Person=3+Tense=Pres	dema	0
-puncturing	0	dema-puncturing-v	VerbForm=Inf	dema	0
-puncturingly	0	dema-puncture-r		dema	0
-pundit	0	oewn-pundit-n	Number=Sing	dema	0
-punditic	0	dema-punditic-a	Degree=Pos	dema	0
-punditically	0	dema-punditically-r	Degree=Pos	dema	0
-punditicness	0	dema-punditic-n	Number=Plur	dema	0
-pundits	0	oewn-pundit-n	Number=Plur	dema	0
-pung	0	oewn-pung-n	Number=Sing	dema	0
-pungencies	0	oewn-pungency-n	Number=Plur	dema	0
-pungency	0	oewn-pungency-n	Number=Sing	dema	0
-pungent	0	oewn-pungent-a	Degree=Pos	dema	0
-pungenter	0	oewn-pungent-a	Degree=Cmp	dema	0
-pungentest	0	oewn-pungent-a	Degree=Sup	dema	0
-pungently	0	oewn-pungently-r	Degree=Pos	dema	0
-pungentness	0	dema-pungent-n	Number=Plur	dema	0
-pungies	0	dema-pungies-n	Number=Sing	dema	0
-pungs	0	oewn-pung-n	Number=Plur	dema	0
-pungy	0	dema-pungy-n	Number=Sing	dema	0
-punier	0	dema-punier-a	Degree=Pos	dema	0
-punierly	0	dema-punier-r		dema	0
-puniest	0	dema-puniest-a	Degree=Pos	dema	0
-puniestly	0	dema-puniest-r		dema	0
-punily	0	dema-puny-r		dema	0
-puniness	0	oewn-puniness-n	Number=Sing	dema	0
-puninesses	0	oewn-puniness-n	Number=Plur	dema	0
-punish	0	oewn-punish-v	VerbForm=Inf	dema	0
-punishable	0	oewn-punishable-a	Degree=Pos	dema	0
-punishably	0	dema-punishable-r		dema	0
-punished	0	oewn-punish-v	Tense=Past	dema	0
-punisher	0	dema-punisher-n	Number=Sing	dema	0
-punishers	0	dema-punish-n	Number=Plur	dema	0
-punishes	0	oewn-punish-v	Person=3+Tense=Pres	dema	0
-punishing	0	oewn-punish-v	VerbForm=Ger	dema	0
-punishingly	0	dema-punish-r		dema	0
-punishment	0	oewn-punishment-n	Number=Sing	dema	0
-punishments	0	oewn-punishment-n	Number=Plur	dema	0
-punitive	0	oewn-punitive-a	Degree=Pos	dema	0
-punitively	0	oewn-punitively-r	Degree=Pos	dema	0
-punitiveness	0	dema-punitiveness-n	Number=Sing	dema	0
-punitivenesses	0	dema-punitiveness-n	Number=Plur	dema	0
-punk	0	oewn-punk-n	Number=Sing	dema	0
-punk	1	oewn-punk-a	Degree=Pos	dema	0
-punka	0	dema-punka-n	Number=Sing	dema	0
-punkah	0	oewn-punkah-n	Number=Sing	dema	0
-punkah	1	dema-punkah-a	Degree=Pos	dema	0
-punkaher	0	dema-punkah-a	Degree=Cmp	dema	0
-punkahest	0	dema-punkah-a	Degree=Sup	dema	0
-punkahly	0	dema-punkah-r		dema	0
-punkahness	0	oewn-punkah-n	Number=Plur	dema	0
-punkahs	0	oewn-punkah-n	Number=Plur	dema	0
-punkas	0	dema-punka-n	Number=Plur	dema	0
-punker	0	oewn-punk-a	Degree=Cmp	dema	0
-punkest	0	oewn-punk-a	Degree=Sup	dema	0
-punkie	0	oewn-punkie-n	Number=Sing	dema	0
-punkies	0	oewn-punkie-n	Number=Plur	dema	0
-punkly	0	dema-punk-r		dema	0
-punkness	0	oewn-punk-n	Number=Plur	dema	0
-punks	0	oewn-punk-n	Number=Plur	dema	0
-punned	0	dema-punned-v	VerbForm=Inf	dema	0
-punner	0	dema-punner-n	Number=Sing	dema	0
-punners	0	oewn-pun-n	Number=Plur	dema	0
-punnet	0	oewn-punnet-n	Number=Sing	dema	0
-punnets	0	oewn-punnet-n	Number=Plur	dema	0
-punning	0	dema-punning-v	VerbForm=Inf	dema	0
-punningly	0	dema-pun-r		dema	0
-puns	0	oewn-pun-n	Number=Plur	dema	0
-puns	1	oewn-pun-v	Person=3+Tense=Pres	dema	0
-punster	0	oewn-punster-n	Number=Sing	dema	0
-punsters	0	oewn-punster-n	Number=Plur	dema	0
-punt	0	oewn-punt-n-1	Number=Sing	dema	0
-punt	1	oewn-punt-v	VerbForm=Inf	dema	0
-punted	0	oewn-punt-v	Tense=Past	dema	0
-punter	0	oewn-punter-n	Number=Sing	dema	0
-punters	0	oewn-punt-n-1	Number=Plur	dema	0
-punties	0	dema-punty-n	Number=Plur	dema	0
-puntilla	0	dema-puntilla-n	Number=Sing	dema	0
-puntillas	0	dema-puntillas-n	Number=Sing	dema	0
-puntillero	0	dema-puntillero-n	Number=Sing	dema	0
-puntilleroes	0	dema-puntillero-n	Number=Plur	dema	0
-puntilleros	0	dema-puntillero-n	Number=Plur	dema	0
-punting	0	oewn-punt-v	VerbForm=Ger	dema	0
-puntingly	0	dema-punt-r		dema	0
-punts	0	oewn-punt-n-1	Number=Plur	dema	0
-punts	1	oewn-punt-v	Person=3+Tense=Pres	dema	0
-punty	0	dema-punty-n	Number=Sing	dema	0
-puny	0	oewn-puny-a	Degree=Pos	dema	0
-pup	0	oewn-pup-n	Number=Sing	dema	0
-pup	1	oewn-pup-v	VerbForm=Inf	dema	0
-pupa	0	oewn-pupa-n	Number=Sing	dema	0
-pupae	0	dema-pupae-n	Number=Sing	dema	0
-pupaes	0	dema-pupae-n	Number=Plur	dema	0
-pupal	0	oewn-pupal-a	Degree=Pos	dema	0
-pupally	0	dema-pupal-r		dema	0
-pupalness	0	dema-pupal-n	Number=Plur	dema	0
-puparia	0	dema-puparia-n	Number=Sing	dema	0
-puparias	0	dema-puparia-n	Number=Plur	dema	0
-puparium	0	dema-puparium-n	Number=Sing	dema	0
-pupariums	0	dema-puparium-n	Number=Plur	dema	0
-pupas	0	oewn-pupa-n	Number=Plur	dema	0
-pupate	0	oewn-pupate-v	VerbForm=Inf	dema	0
-pupated	0	oewn-pupate-v	Tense=Past	dema	0
-pupater	0	dema-pupate-n	Number=Plur	dema	0
-pupaters	0	dema-pupate-n	Number=Plur	dema	0
-pupates	0	oewn-pupate-v	Person=3+Tense=Pres	dema	0
-pupating	0	oewn-pupate-v	VerbForm=Ger	dema	0
-pupatingly	0	dema-pupate-r		dema	0
-pupil	0	oewn-pupil-n	Number=Sing	dema	0
-pupillage	0	dema-pupillage-n	Number=Sing	dema	0
-pupillages	0	dema-pupillage-n	Number=Plur	dema	0
-pupillarily	0	dema-pupillary-r		dema	0
-pupillary	0	oewn-pupillary-a	Degree=Pos	dema	0
-pupilless	0	dema-pupilless-a	Degree=Pos	dema	0
-pupillessly	0	dema-pupilless-r		dema	0
-pupillessness	0	dema-pupilless-n	Number=Plur	dema	0
-pupils	0	oewn-pupil-n	Number=Plur	dema	0
-pupiparous	0	dema-pupiparous-a	Degree=Pos	dema	0
-pupiparously	0	dema-pupiparous-r		dema	0
-pupped	0	dema-pupped-v	VerbForm=Inf	dema	0
-pupper	0	oewn-pup-n	Number=Plur	dema	0
-puppers	0	oewn-pup-n	Number=Plur	dema	0
-puppet	0	oewn-puppet-n	Number=Sing	dema	0
-puppeteer	0	oewn-puppeteer-n	Number=Sing	dema	0
-puppeteers	0	oewn-puppeteer-n	Number=Plur	dema	0
-puppetries	0	dema-puppetries-n	Number=Sing	dema	0
-puppetry	0	oewn-puppetry-n	Number=Sing	dema	0
-puppets	0	oewn-puppet-n	Number=Plur	dema	0
-puppies	0	dema-puppies-n	Number=Sing	dema	0
-pupping	0	dema-pupping-v	VerbForm=Inf	dema	0
-puppingly	0	dema-pup-r		dema	0
-puppy	0	oewn-puppy-n	Number=Sing	dema	0
-puppydom	0	dema-puppydom-n	Number=Sing	dema	0
-puppydoms	0	dema-puppydom-n	Number=Plur	dema	0
-puppyfeet	0	dema-puppyfeet-n	Number=Sing	dema	0
-puppyfeets	0	dema-puppyfeet-n	Number=Plur	dema	0
-puppyfoot	0	dema-puppyfoot-n	Number=Sing	dema	0
-puppyhood	0	dema-puppyhood-n	Number=Sing	dema	0
-puppyhoods	0	dema-puppyhood-n	Number=Plur	dema	0
-puppyish	0	oewn-puppyish-a	Degree=Pos	dema	0
-puppyishly	0	dema-puppyish-r		dema	0
-puppyishness	0	dema-puppyish-n	Number=Plur	dema	0
-puppylike	0	oewn-puppylike-a	Degree=Pos	dema	0
-puppylikely	0	dema-puppylike-r		dema	0
-puppylikeness	0	dema-puppylike-n	Number=Plur	dema	0
-pups	0	oewn-pup-n	Number=Plur	dema	0
-pups	1	oewn-pup-v	Person=3+Tense=Pres	dema	0
-purblind	0	oewn-purblind-a	Degree=Pos	dema	0
-purblinder	0	oewn-purblind-a	Degree=Cmp	dema	0
-purblindest	0	oewn-purblind-a	Degree=Sup	dema	0
-purblindly	0	dema-purblindly-r	Degree=Pos	dema	0
-purblindness	0	dema-purblindness-n	Number=Sing	dema	0
-purblindnesses	0	dema-purblindness-n	Number=Plur	dema	0
-purchasable	0	oewn-purchasable-a	Degree=Pos	dema	0
-purchasably	0	dema-purchasable-r		dema	0
-purchase	0	oewn-purchase-v	VerbForm=Inf	dema	0
-purchase	1	oewn-purchase-n	Number=Sing	dema	0
-purchased	0	oewn-purchase-v	Tense=Past	dema	0
-purchaser	0	oewn-purchaser-n	Number=Sing	dema	0
-purchasers	0	oewn-purchase-n	Number=Plur	dema	0
-purchases	0	oewn-purchase-v	Person=3+Tense=Pres	dema	0
-purchases	1	oewn-purchase-n	Number=Plur	dema	0
-purchasing	0	oewn-purchase-v	VerbForm=Ger	dema	0
-purchasingly	0	dema-purchase-r		dema	0
-purdah	0	oewn-purdah-n	Number=Sing	dema	0
-purdahs	0	oewn-purdah-n	Number=Plur	dema	0
-pure	0	oewn-pure-a	Degree=Pos	dema	0
-purebred	0	oewn-purebred-a	Degree=Pos	dema	0
-purebred	1	oewn-purebred-n	Number=Sing	dema	0
-purebredly	0	dema-purebred-r		dema	0
-purebredness	0	oewn-purebred-n	Number=Plur	dema	0
-purebreds	0	oewn-purebred-n	Number=Plur	dema	0
-puree	0	oewn-puree-n	Number=Sing	dema	0
-puree	1	oewn-puree-v	VerbForm=Inf	dema	0
-pureed	0	oewn-puree-v	Tense=Past	dema	0
-pureeing	0	oewn-puree-v	VerbForm=Ger	dema	0
-pureeingly	0	dema-puree-r		dema	0
-pureer	0	oewn-puree-n	Number=Plur	dema	0
-pureers	0	oewn-puree-n	Number=Plur	dema	0
-purees	0	oewn-puree-n	Number=Plur	dema	0
-purees	1	oewn-puree-v	Person=3+Tense=Pres	dema	0
-purehearted	0	dema-purehearted-a	Degree=Pos	dema	0
-purehearted	1	dema-purehearted-v	VerbForm=Inf	dema	0
-purehearteded	0	dema-purehearted-v	Tense=Past	dema	0
-purehearteding	0	dema-purehearted-v	VerbForm=Ger	dema	0
-pureheartedly	0	dema-purehearted-r		dema	0
-purehearteds	0	dema-purehearted-v	Person=3+Tense=Pres	dema	0
-purely	0	oewn-purely-r	Degree=Pos	dema	0
-pureness	0	oewn-pureness-n	Number=Sing	dema	0
-purenesses	0	oewn-pureness-n	Number=Plur	dema	0
-purer	0	dema-purer-a	Degree=Pos	dema	0
-purerly	0	dema-purer-r		dema	0
-purest	0	dema-purest-a	Degree=Pos	dema	0
-purestly	0	dema-purest-r		dema	0
-purfle	0	dema-purfle-n	Number=Sing	dema	0
-purfle	1	dema-purfle-v	VerbForm=Inf	dema	0
-purfled	0	dema-purfle-v	Tense=Past	dema	0
-purfler	0	dema-purfler-n	Number=Sing	dema	0
-purflers	0	dema-purfle-n	Number=Plur	dema	0
-purfles	0	dema-purfle-n	Number=Plur	dema	0
-purfles	1	dema-purfle-v	Person=3+Tense=Pres	dema	0
-purfling	0	dema-purfle-v	VerbForm=Ger	dema	0
-purflingly	0	dema-purfle-r		dema	0
-purga	0	dema-purga-n	Number=Sing	dema	0
-purgas	0	dema-purga-n	Number=Plur	dema	0
-purgation	0	oewn-purgation-n	Number=Sing	dema	0
-purgations	0	oewn-purgation-n	Number=Plur	dema	0
-purgative	0	oewn-purgative-n	Number=Sing	dema	0
-purgative	1	oewn-purgative-a	Degree=Pos	dema	0
-purgatively	0	dema-purgatively-r	Degree=Pos	dema	0
-purgativeness	0	oewn-purgative-n	Number=Plur	dema	0
-purgatives	0	oewn-purgative-n	Number=Plur	dema	0
-purgatorial	0	oewn-purgatorial-a	Degree=Pos	dema	0
-purgatorially	0	dema-purgatorial-r		dema	0
-purgatories	0	oewn-purgatory-n	Number=Plur	dema	0
-purgatory	0	oewn-purgatory-n	Number=Sing	dema	0
-purge	0	oewn-purge-v	VerbForm=Inf	dema	0
-purge	1	oewn-purge-n	Number=Sing	dema	0
-purgeable	0	dema-purgeable-a	Degree=Pos	dema	0
-purgeableness	0	dema-purgeable-n	Number=Plur	dema	0
-purgeably	0	dema-purgeable-r		dema	0
-purged	0	dema-purged-v	VerbForm=Inf	dema	0
-purger	0	dema-purger-n	Number=Sing	dema	0
-purgers	0	oewn-purge-n	Number=Plur	dema	0
-purges	0	oewn-purge-v	Person=3+Tense=Pres	dema	0
-purges	1	oewn-purge-n	Number=Plur	dema	0
-purging	0	dema-purging-v	VerbForm=Inf	dema	0
-purgingly	0	dema-purge-r		dema	0
-purification	0	oewn-purification-n	Number=Sing	dema	0
-purifications	0	oewn-purification-n	Number=Plur	dema	0
-purificator	0	oewn-purificator-n	Number=Sing	dema	0
-purificators	0	oewn-purificator-n	Number=Plur	dema	0
-purified	0	dema-purified-v	VerbForm=Inf	dema	0
-purifier	0	dema-purify-n	Number=Plur	dema	0
-purifiers	0	dema-purify-n	Number=Plur	dema	0
-purifies	0	oewn-purify-v	Person=3+Tense=Pres	dema	0
-puriform	0	dema-puriform-a	Degree=Pos	dema	0
-puriformly	0	dema-puriform-r		dema	0
-puriformness	0	dema-puriform-n	Number=Plur	dema	0
-purify	0	oewn-purify-v	VerbForm=Inf	dema	0
-purifying	0	dema-purifying-v	VerbForm=Inf	dema	0
-purine	0	oewn-purine-n	Number=Sing	dema	0
-purines	0	oewn-purine-n	Number=Plur	dema	0
-purism	0	oewn-purism-n	Number=Sing	dema	0
-purisms	0	oewn-purism-n	Number=Plur	dema	0
-purist	0	oewn-purist-n	Number=Sing	dema	0
-puristic	0	dema-puristic-a	Degree=Pos	dema	0
-puristical	0	dema-puristical-a	Degree=Pos	dema	0
-puristically	0	dema-puristically-r	Degree=Pos	dema	0
-puristicness	0	dema-puristic-n	Number=Plur	dema	0
-purists	0	oewn-purist-n	Number=Plur	dema	0
-puritan	0	oewn-puritan-n	Number=Sing	dema	0
-puritan	1	dema-puritan-a	Degree=Pos	dema	0
-puritanical	0	oewn-puritanical-a	Degree=Pos	dema	0
-puritanically	0	oewn-puritanically-r	Degree=Pos	dema	0
-puritanicalness	0	dema-puritanicalness-n	Number=Sing	dema	0
-puritanicalnesses	0	dema-puritanicalness-n	Number=Plur	dema	0
-puritanly	0	dema-puritan-r		dema	0
-puritanness	0	oewn-puritan-n	Number=Plur	dema	0
-puritans	0	oewn-puritan-n	Number=Plur	dema	0
-purities	0	oewn-purity-n	Number=Plur	dema	0
-purity	0	oewn-purity-n	Number=Sing	dema	0
-purl	0	oewn-purl-n	Number=Sing	dema	0
-purl	1	oewn-purl-v	VerbForm=Inf	dema	0
-purled	0	oewn-purl-v	Tense=Past	dema	0
-purler	0	dema-purler-n	Number=Sing	dema	0
-purlers	0	oewn-purl-n	Number=Plur	dema	0
-purlieu	0	oewn-purlieu-n	Number=Sing	dema	0
-purlieus	0	oewn-purlieu-n	Number=Plur	dema	0
-purlin	0	dema-purlin-n	Number=Sing	dema	0
-purling	0	oewn-purl-v	VerbForm=Ger	dema	0
-purlingly	0	dema-purl-r		dema	0
-purlins	0	dema-purlin-n	Number=Plur	dema	0
-purloin	0	oewn-purloin-v	VerbForm=Inf	dema	0
-purloined	0	oewn-purloin-v	Tense=Past	dema	0
-purloiner	0	dema-purloiner-n	Number=Sing	dema	0
-purloiners	0	dema-purloin-n	Number=Plur	dema	0
-purloining	0	oewn-purloin-v	VerbForm=Ger	dema	0
-purloiningly	0	dema-purloin-r		dema	0
-purloins	0	oewn-purloin-v	Person=3+Tense=Pres	dema	0
-purls	0	oewn-purl-n	Number=Plur	dema	0
-purls	1	oewn-purl-v	Person=3+Tense=Pres	dema	0
-purpart	0	dema-purpart-n	Number=Sing	dema	0
-purparties	0	dema-purparty-n	Number=Plur	dema	0
-purparts	0	dema-purpart-n	Number=Plur	dema	0
-purparty	0	dema-purparty-n	Number=Sing	dema	0
-purple	0	oewn-purple-n	Number=Sing	dema	0
-purple	1	oewn-purple-a	Degree=Pos	dema	0
-purpled	0	dema-purpled-v	VerbForm=Inf	dema	0
-purpleded	0	dema-purpled-v	Tense=Past	dema	0
-purpleder	0	dema-purpled-n	Number=Plur	dema	0
-purpleders	0	dema-purpled-n	Number=Plur	dema	0
-purpleding	0	dema-purpled-v	VerbForm=Ger	dema	0
-purpledingly	0	dema-purpled-r		dema	0
-purpleds	0	dema-purpled-v	Person=3+Tense=Pres	dema	0
-purpleheart	0	dema-purpleheart-n	Number=Sing	dema	0
-purplehearts	0	dema-purpleheart-n	Number=Plur	dema	0
-purpleness	0	oewn-purpleness-n	Number=Sing	dema	0
-purplenesses	0	oewn-purpleness-n	Number=Plur	dema	0
-purpler	0	oewn-purple-a	Degree=Cmp	dema	0
-purples	0	oewn-purple-n	Number=Plur	dema	0
-purplest	0	oewn-purple-a	Degree=Sup	dema	0
-purpling	0	dema-purpling-v	VerbForm=Inf	dema	0
-purplinged	0	dema-purpling-v	Tense=Past	dema	0
-purplinger	0	dema-purpling-n	Number=Plur	dema	0
-purplingers	0	dema-purpling-n	Number=Plur	dema	0
-purplinging	0	dema-purpling-v	VerbForm=Ger	dema	0
-purplingingly	0	dema-purpling-r		dema	0
-purplings	0	dema-purpling-v	Person=3+Tense=Pres	dema	0
-purplish	0	oewn-purplish-a	Degree=Pos	dema	0
-purplishly	0	dema-purplish-r		dema	0
-purplishness	0	dema-purplishness-n	Number=Sing	dema	0
-purplishnesses	0	dema-purplishness-n	Number=Plur	dema	0
-purply	0	dema-purple-r		dema	0
-purport	0	oewn-purport-n	Number=Sing	dema	1
-purport	1	oewn-purport-v	VerbForm=Inf	dema	1
-purported	0	oewn-purport-v	Tense=Past	dema	0
-purporter	0	oewn-purport-n	Number=Plur	dema	0
-purporters	0	oewn-purport-n	Number=Plur	dema	0
-purporting	0	oewn-purport-v	VerbForm=Ger	dema	0
-purportingly	0	dema-purport-r		dema	0
-purports	0	oewn-purport-n	Number=Plur	dema	1
-purports	1	oewn-purport-v	Person=3+Tense=Pres	dema	1
-purpose	0	oewn-purpose-n	Number=Sing	dema	0
-purpose	1	oewn-purpose-v	VerbForm=Inf	dema	0
-purposed	0	dema-purposed-v	VerbForm=Inf	dema	0
-purposeful	0	oewn-purposeful-a	Degree=Pos	dema	0
-purposefully	0	dema-purposeful-r		dema	0
-purposeless	0	oewn-purposeless-a	Degree=Pos	dema	0
-purposelessly	0	oewn-purposelessly-r	Degree=Pos	dema	0
-purposelessness	0	oewn-purposelessness-n	Number=Sing	dema	0
-purposelessnesses	0	oewn-purposelessness-n	Number=Plur	dema	0
-purposely	0	oewn-purposely-r	Degree=Pos	dema	0
-purposer	0	oewn-purpose-n	Number=Plur	dema	0
-purposers	0	oewn-purpose-n	Number=Plur	dema	0
-purposes	0	oewn-purpose-n	Number=Plur	dema	0
-purposes	1	oewn-purpose-v	Person=3+Tense=Pres	dema	0
-purposing	0	dema-purposing-v	VerbForm=Inf	dema	0
-purposingly	0	dema-purpose-r		dema	0
-purposive	0	oewn-purposive-a	Degree=Pos	dema	0
-purposively	0	dema-purposively-r	Degree=Pos	dema	0
-purposiveness	0	dema-purposiveness-n	Number=Sing	dema	0
-purposivenesses	0	dema-purposiveness-n	Number=Plur	dema	0
-purpresture	0	dema-purpresture-n	Number=Sing	dema	0
-purprestures	0	dema-purpresture-n	Number=Plur	dema	0
-purpura	0	oewn-purpura-n	Number=Sing	dema	0
-purpuras	0	oewn-purpura-n	Number=Plur	dema	0
-purpure	0	dema-purpure-n	Number=Sing	dema	0
-purpure	1	dema-purpure-a	Degree=Pos	dema	0
-purpurely	0	dema-purpure-r		dema	0
-purpureness	0	dema-purpure-n	Number=Plur	dema	0
-purpurer	0	dema-purpure-a	Degree=Cmp	dema	0
-purpures	0	dema-purpure-n	Number=Plur	dema	0
-purpurest	0	dema-purpure-a	Degree=Sup	dema	0
-purpuric	0	dema-purpuric-a	Degree=Pos	dema	0
-purpurically	0	dema-purpuric-r		dema	0
-purpuricness	0	dema-purpuric-n	Number=Plur	dema	0
-purpurin	0	dema-purpurin-n	Number=Sing	dema	0
-purpurins	0	dema-purpurin-n	Number=Plur	dema	0
-purr	0	oewn-purr-v	VerbForm=Inf	dema	0
-purr	1	oewn-purr-n	Number=Sing	dema	0
-purred	0	oewn-purr-v	Tense=Past	dema	0
-purree	0	dema-purree-n	Number=Sing	dema	0
-purree	1	dema-purree-a	Degree=Pos	dema	0
-purreely	0	dema-purree-r		dema	0
-purreeness	0	dema-purree-n	Number=Plur	dema	0
-purreer	0	dema-purree-a	Degree=Cmp	dema	0
-purrees	0	dema-purree-n	Number=Plur	dema	0
-purreest	0	dema-purree-a	Degree=Sup	dema	0
-purrer	0	oewn-purr-n	Number=Plur	dema	0
-purrers	0	oewn-purr-n	Number=Plur	dema	0
-purring	0	oewn-purr-v	VerbForm=Ger	dema	0
-purringly	0	dema-purringly-r	Degree=Pos	dema	0
-purrs	0	oewn-purr-v	Person=3+Tense=Pres	dema	0
-purrs	1	oewn-purr-n	Number=Plur	dema	0
-purse	0	oewn-purse-n	Number=Sing	dema	0
-purse	1	oewn-purse-v	VerbForm=Inf	dema	0
-pursed	0	dema-pursed-v	VerbForm=Inf	dema	0
-purseless	0	dema-purseless-a	Degree=Pos	dema	0
-purselessly	0	dema-purseless-r		dema	0
-purselessness	0	dema-purseless-n	Number=Plur	dema	0
-purselike	0	dema-purselike-a	Degree=Pos	dema	0
-purselikely	0	dema-purselike-r		dema	0
-purselikeness	0	dema-purselike-n	Number=Plur	dema	0
-purser	0	oewn-purser-n	Number=Sing	dema	0
-pursers	0	oewn-purse-n	Number=Plur	dema	0
-purses	0	oewn-purse-n	Number=Plur	dema	0
-purses	1	oewn-purse-v	Person=3+Tense=Pres	dema	0
-pursier	0	dema-pursier-a	Degree=Pos	dema	0
-pursierly	0	dema-pursier-r		dema	0
-pursiest	0	dema-pursiest-a	Degree=Pos	dema	0
-pursiestly	0	dema-pursiest-r		dema	0
-pursily	0	dema-pursily-r	Degree=Pos	dema	0
-pursiness	0	dema-pursiness-n	Number=Sing	dema	0
-pursinesses	0	dema-pursiness-n	Number=Plur	dema	0
-pursing	0	dema-pursing-v	VerbForm=Inf	dema	0
-pursingly	0	dema-purse-r		dema	0
-purslane	0	oewn-purslane-n	Number=Sing	dema	0
-purslanes	0	oewn-purslane-n	Number=Plur	dema	0
-pursuable	0	dema-pursuable-a	Degree=Pos	dema	0
-pursuableness	0	dema-pursuable-n	Number=Plur	dema	0
-pursuably	0	dema-pursuable-r		dema	0
-pursuance	0	oewn-pursuance-n	Number=Sing	dema	0
-pursuances	0	oewn-pursuance-n	Number=Plur	dema	0
-pursuant	0	oewn-pursuant-a	Degree=Pos	dema	0
-pursuanter	0	oewn-pursuant-a	Degree=Cmp	dema	0
-pursuantest	0	oewn-pursuant-a	Degree=Sup	dema	0
-pursuantly	0	dema-pursuant-r		dema	0
-pursuantness	0	dema-pursuant-n	Number=Plur	dema	0
-pursue	0	oewn-pursue-v	VerbForm=Inf	dema	0
-pursued	0	dema-pursued-v	VerbForm=Inf	dema	0
-pursuer	0	oewn-pursuer-n	Number=Sing	dema	0
-pursuers	0	dema-pursue-n	Number=Plur	dema	0
-pursues	0	oewn-pursue-v	Person=3+Tense=Pres	dema	0
-pursuing	0	dema-pursuing-v	VerbForm=Inf	dema	0
-pursuingly	0	dema-pursue-r		dema	0
-pursuit	0	oewn-pursuit-n	Number=Sing	dema	0
-pursuits	0	oewn-pursuit-n	Number=Plur	dema	0
-pursuivant	0	dema-pursuivant-n	Number=Sing	dema	0
-pursuivants	0	dema-pursuivant-n	Number=Plur	dema	0
-pursy	0	oewn-pursy-a	Degree=Pos	dema	0
-purtenance	0	dema-purtenance-n	Number=Sing	dema	0
-purtenances	0	dema-purtenance-n	Number=Plur	dema	0
-purulence	0	oewn-purulence-n	Number=Sing	dema	0
-purulences	0	oewn-purulence-n	Number=Plur	dema	0
-purulent	0	oewn-purulent-a	Degree=Pos	dema	0
-purulently	0	dema-purulently-r	Degree=Pos	dema	0
-purulentness	0	dema-purulent-n	Number=Plur	dema	0
-puruloid	0	dema-puruloid-a	Degree=Pos	dema	0
-puruloidly	0	dema-puruloid-r		dema	0
-puruloidness	0	dema-puruloid-n	Number=Plur	dema	0
-purusha	0	dema-purusha-n	Number=Sing	dema	0
-purushas	0	dema-purusha-n	Number=Plur	dema	0
-purvey	0	oewn-purvey-v	VerbForm=Inf	dema	0
-purveyance	0	oewn-purveyance-n	Number=Sing	dema	0
-purveyances	0	oewn-purveyance-n	Number=Plur	dema	0
-purveyed	0	oewn-purvey-v	Tense=Past	dema	0
-purveyer	0	dema-purvey-n	Number=Plur	dema	0
-purveyers	0	dema-purvey-n	Number=Plur	dema	0
-purveying	0	oewn-purvey-v	VerbForm=Ger	dema	0
-purveyor	0	oewn-purveyor-n	Number=Sing	dema	0
-purveyors	0	oewn-purveyor-n	Number=Plur	dema	0
-purveys	0	oewn-purvey-v	Person=3+Tense=Pres	dema	0
-purview	0	oewn-purview-n	Number=Sing	dema	0
-purviews	0	oewn-purview-n	Number=Plur	dema	0
-pus	0	oewn-pus-n	Number=Sing	dema	0
-puses	0	oewn-pus-n	Number=Plur	dema	0
-push	0	oewn-push-n	Number=Sing	dema	1
-push	1	oewn-push-v	VerbForm=Inf	dema	1
-pushball	0	oewn-pushball-n	Number=Sing	dema	0
-pushballs	0	oewn-pushball-n	Number=Plur	dema	0
-pushcard	0	dema-pushcard-n	Number=Sing	dema	0
-pushcards	0	dema-pushcard-n	Number=Plur	dema	0
-pushcart	0	oewn-pushcart-n	Number=Sing	dema	0
-pushcarts	0	oewn-pushcart-n	Number=Plur	dema	0
-pushchair	0	oewn-pushchair-n	Number=Sing	dema	0
-pushchairs	0	oewn-pushchair-n	Number=Plur	dema	0
-pushed	0	oewn-push-v	Tense=Past	dema	1
-pushed	1	dema-pushed-a	Degree=Pos	dema	0
-pushedly	0	dema-pushed-r		dema	0
-pusher	0	oewn-pusher-n	Number=Sing	dema	0
-pushers	0	oewn-push-n	Number=Plur	dema	1
-pushes	0	oewn-push-n	Number=Plur	dema	1
-pushes	1	oewn-push-v	Person=3+Tense=Pres	dema	1
-pushier	0	dema-pushier-a	Degree=Pos	dema	0
-pushierly	0	dema-pushier-r		dema	0
-pushiest	0	dema-pushiest-a	Degree=Pos	dema	0
-pushiestly	0	dema-pushiest-r		dema	0
-pushily	0	dema-pushy-r		dema	0
-pushiness	0	oewn-pushiness-n	Number=Sing	dema	0
-pushinesses	0	oewn-pushiness-n	Number=Plur	dema	0
-pushing	0	oewn-push-n	Number=Plur	dema	1
-pushing	1	oewn-push-v	VerbForm=Ger	dema	1
-pushing	2	dema-pushing-a	Degree=Pos	dema	0
-pushing	3	dema-pushing-r	Degree=Pos	dema	0
-pushingly	0	dema-pushingly-r	Degree=Pos	dema	0
-pushingness	0	dema-pushingness-n	Number=Sing	dema	0
-pushingnesses	0	dema-pushingness-n	Number=Plur	dema	0
-pushover	0	oewn-pushover-n	Number=Sing	dema	0
-pushovers	0	oewn-pushover-n	Number=Plur	dema	0
-pushpin	0	oewn-pushpin-n	Number=Sing	dema	0
-pushpins	0	oewn-pushpin-n	Number=Plur	dema	0
-pushrod	0	dema-pushrod-n	Number=Sing	dema	0
-pushrods	0	dema-pushrod-n	Number=Plur	dema	0
-pushy	0	oewn-pushy-a	Degree=Pos	dema	0
-pusillanimities	0	oewn-pusillanimity-n	Number=Plur	dema	0
-pusillanimity	0	oewn-pusillanimity-n	Number=Sing	dema	0
-pusillanimous	0	oewn-pusillanimous-a	Degree=Pos	dema	0
-pusillanimously	0	dema-pusillanimous-r		dema	0
-puslike	0	dema-puslike-a	Degree=Pos	dema	0
-puslikely	0	dema-puslike-r		dema	0
-puslikeness	0	dema-puslike-n	Number=Plur	dema	0
-pusliker	0	dema-puslike-a	Degree=Cmp	dema	0
-puslikest	0	dema-puslike-a	Degree=Sup	dema	0
-puss	0	oewn-puss-n	Number=Sing	dema	0
-pusses	0	oewn-puss-n	Number=Plur	dema	0
-pussier	0	dema-pussier-a	Degree=Pos	dema	0
-pussierly	0	dema-pussier-r		dema	0
-pussies	0	dema-pussies-n	Number=Sing	dema	0
-pussiest	0	dema-pussiest-a	Degree=Pos	dema	0
-pussiestly	0	dema-pussiest-r		dema	0
-pussily	0	dema-pussy-r		dema	0
-pussiness	0	oewn-pussy-n	Number=Plur	dema	0
-pussley	0	oewn-pussley-n	Number=Sing	dema	0
-pussleys	0	oewn-pussley-n	Number=Plur	dema	0
-pusslike	0	dema-pusslike-a	Degree=Pos	dema	0
-pusslikely	0	dema-pusslike-r		dema	0
-pusslikeness	0	dema-pusslike-n	Number=Plur	dema	0
-pussliker	0	dema-pusslike-a	Degree=Cmp	dema	0
-pusslikest	0	dema-pusslike-a	Degree=Sup	dema	0
-pussy	0	oewn-pussy-n	Number=Sing	dema	0
-pussy	1	oewn-pussy-a	Degree=Pos	dema	0
-pussyfeet	0	dema-pussyfoot-n	Number=Plur	dema	0
-pussyfoot	0	oewn-pussyfoot-v	VerbForm=Inf	dema	0
-pussyfoot	1	dema-pussyfoot-n	Number=Sing	dema	0
-pussyfooted	0	oewn-pussyfoot-v	Tense=Past	dema	0
-pussyfooter	0	dema-pussyfoot-n	Number=Plur	dema	0
-pussyfooters	0	dema-pussyfoot-n	Number=Plur	dema	0
-pussyfooting	0	oewn-pussyfoot-v	VerbForm=Ger	dema	0
-pussyfootingly	0	dema-pussyfoot-r		dema	0
-pussyfoots	0	oewn-pussyfoot-v	Person=3+Tense=Pres	dema	0
-pustulant	0	dema-pustulant-a	Degree=Pos	dema	0
-pustulant	1	dema-pustulant-n	Number=Sing	dema	0
-pustulantly	0	dema-pustulant-r		dema	0
-pustulantness	0	dema-pustulant-n	Number=Plur	dema	0
-pustulants	0	dema-pustulant-n	Number=Plur	dema	0
-pustular	0	dema-pustular-a	Degree=Pos	dema	0
-pustularly	0	dema-pustular-r		dema	0
-pustularness	0	dema-pustular-n	Number=Plur	dema	0
-pustulate	0	oewn-pustulate-a	Degree=Pos	dema	1
-pustulate	1	dema-pustulate-v	VerbForm=Inf	dema	1
-pustulated	0	dema-pustulated-v	VerbForm=Inf	dema	0
-pustulately	0	dema-pustulate-r		dema	0
-pustulateness	0	dema-pustulate-n	Number=Plur	dema	0
-pustulater	0	dema-pustulate-n	Number=Plur	dema	0
-pustulaters	0	dema-pustulate-n	Number=Plur	dema	0
-pustulates	0	dema-pustulate-v	Person=3+Tense=Pres	dema	1
-pustulating	0	dema-pustulating-v	VerbForm=Inf	dema	0
-pustulatingly	0	dema-pustulate-r		dema	0
-pustulation	0	dema-pustulation-n	Number=Sing	dema	0
-pustulations	0	dema-pustulation-n	Number=Plur	dema	0
-pustule	0	oewn-pustule-n	Number=Sing	dema	0
-pustuled	0	dema-pustuled-a	Degree=Pos	dema	0
-pustuled	1	dema-pustuled-v	VerbForm=Inf	dema	0
-pustuleded	0	dema-pustuled-v	Tense=Past	dema	0
-pustuleder	0	dema-pustuled-n	Number=Plur	dema	0
-pustuleders	0	dema-pustuled-n	Number=Plur	dema	0
-pustuleding	0	dema-pustuled-v	VerbForm=Ger	dema	0
-pustuledingly	0	dema-pustuled-r		dema	0
-pustuledly	0	dema-pustuled-r		dema	0
-pustuledness	0	dema-pustuled-n	Number=Plur	dema	0
-pustuleds	0	dema-pustuled-v	Person=3+Tense=Pres	dema	0
-pustules	0	oewn-pustule-n	Number=Plur	dema	0
-pustulous	0	dema-pustulous-a	Degree=Pos	dema	0
-pustulously	0	dema-pustulous-r		dema	0
-pustulousness	0	dema-pustulous-n	Number=Plur	dema	0
-put	0	oewn-put-v	VerbForm=Inf	dema	0
-put	1	oewn-put-n	Number=Sing	dema	0
-putamen	0	oewn-putamen-n	Number=Sing	dema	0
-putamens	0	oewn-putamen-n	Number=Plur	dema	0
-putamina	0	dema-putamina-n	Number=Sing	dema	0
-putaminas	0	dema-putamina-n	Number=Plur	dema	0
-putaminous	0	dema-putaminous-a	Degree=Pos	dema	0
-putaminously	0	dema-putaminous-r		dema	0
-putative	0	oewn-putative-a	Degree=Pos	dema	0
-putatively	0	dema-putatively-r	Degree=Pos	dema	0
-putativeness	0	dema-putative-n	Number=Plur	dema	0
-putlog	0	dema-putlog-n	Number=Sing	dema	0
-putlogs	0	dema-putlog-n	Number=Plur	dema	0
-putrefaction	0	oewn-putrefaction-n	Number=Sing	dema	0
-putrefactions	0	oewn-putrefaction-n	Number=Plur	dema	0
-putrefiable	0	oewn-putrefiable-a	Degree=Pos	dema	0
-putrefiably	0	dema-putrefiable-r		dema	0
-putrefied	0	dema-putrefied-v	VerbForm=Inf	dema	0
-putrefier	0	dema-putrefier-n	Number=Sing	dema	0
-putrefiers	0	dema-putrefier-n	Number=Plur	dema	0
-putrefies	0	oewn-putrefy-v	Person=3+Tense=Pres	dema	0
-putrefy	0	oewn-putrefy-v	VerbForm=Inf	dema	0
-putrefying	0	dema-putrefying-v	VerbForm=Inf	dema	0
-putrescence	0	oewn-putrescence-n	Number=Sing	dema	0
-putrescences	0	oewn-putrescence-n	Number=Plur	dema	0
-putrescencies	0	dema-putrescency-n	Number=Plur	dema	0
-putrescency	0	dema-putrescency-n	Number=Sing	dema	0
-putrescent	0	oewn-putrescent-a	Degree=Pos	dema	0
-putrescently	0	dema-putrescent-r		dema	0
-putrescentness	0	dema-putrescent-n	Number=Plur	dema	0
-putrescibilities	0	dema-putrescibility-n	Number=Plur	dema	0
-putrescibility	0	dema-putrescibility-n	Number=Sing	dema	0
-putrescible	0	oewn-putrescible-a	Degree=Pos	dema	0
-putrescible	1	dema-putrescible-n	Number=Sing	dema	0
-putrescibles	0	dema-putrescible-n	Number=Plur	dema	0
-putrescibly	0	dema-putrescible-r		dema	0
-putrescine	0	oewn-putrescine-n	Number=Sing	dema	0
-putrescines	0	oewn-putrescine-n	Number=Plur	dema	0
-putrid	0	oewn-putrid-a	Degree=Pos	dema	0
-putrider	0	oewn-putrid-a	Degree=Cmp	dema	0
-putridest	0	oewn-putrid-a	Degree=Sup	dema	0
-putridities	0	oewn-putridity-n	Number=Plur	dema	0
-putridity	0	oewn-putridity-n	Number=Sing	dema	0
-putridly	0	dema-putridly-r	Degree=Pos	dema	0
-putridness	0	oewn-putridness-n	Number=Sing	dema	0
-putridnesses	0	oewn-putridness-n	Number=Plur	dema	0
-putrilage	0	dema-putrilage-n	Number=Sing	dema	0
-putrilages	0	dema-putrilage-n	Number=Plur	dema	0
-putrilaginous	0	dema-putrilaginous-a	Degree=Pos	dema	0
-putrilaginously	0	dema-putrilaginously-r	Degree=Pos	dema	0
-puts	0	oewn-put-v	Person=3+Tense=Pres	dema	0
-puts	1	oewn-put-n	Number=Plur	dema	0
-putt	0	oewn-putt-n	Number=Sing	dema	0
-putt	1	oewn-putt-v	VerbForm=Inf	dema	0
-putted	0	oewn-putt-v	Tense=Past	dema	0
-puttee	0	oewn-puttee-n	Number=Sing	dema	0
-puttees	0	oewn-puttee-n	Number=Plur	dema	0
-putter	0	oewn-putter-n	Number=Sing	dema	0
-putter	1	oewn-putter-v	VerbForm=Inf	dema	0
-puttered	0	oewn-putter-v	Tense=Past	dema	0
-puttering	0	oewn-putter-v	VerbForm=Ger	dema	0
-putteringly	0	dema-putter-r		dema	0
-putters	0	oewn-put-n	Number=Plur	dema	0
-putti	0	dema-putti-n	Number=Sing	dema	0
-puttie	0	dema-puttie-n	Number=Sing	dema	0
-puttied	0	dema-puttied-v	VerbForm=Inf	dema	0
-puttier	0	dema-puttier-n	Number=Sing	dema	0
-puttiers	0	dema-puttier-n	Number=Plur	dema	0
-putties	0	dema-putties-n	Number=Sing	dema	0
-putting	0	dema-putting-v	VerbForm=Inf	dema	0
-puttingly	0	dema-put-r		dema	0
-puttis	0	dema-putti-n	Number=Plur	dema	0
-putto	0	dema-putto-n	Number=Sing	dema	0
-puttoes	0	dema-putto-n	Number=Plur	dema	0
-puttos	0	dema-putto-n	Number=Plur	dema	0
-putts	0	oewn-putt-n	Number=Plur	dema	0
-putts	1	oewn-putt-v	Person=3+Tense=Pres	dema	0
-putty	0	oewn-putty-n	Number=Sing	dema	0
-putty	1	oewn-putty-v	VerbForm=Inf	dema	0
-puttying	0	dema-puttying-n	Number=Sing	dema	0
-puttying	1	dema-puttying-v	VerbForm=Inf	dema	0
-puttyings	0	dema-puttying-n	Number=Plur	dema	0
-puttyroot	0	oewn-puttyroot-n	Number=Sing	dema	0
-puttyroots	0	oewn-puttyroot-n	Number=Plur	dema	0
-puzzle	0	oewn-puzzle-v	VerbForm=Inf	dema	0
-puzzle	1	oewn-puzzle-n	Number=Sing	dema	0
-puzzled	0	dema-puzzled-v	VerbForm=Inf	dema	0
-puzzledly	0	dema-puzzledly-r	Degree=Pos	dema	0
-puzzledness	0	dema-puzzledness-n	Number=Sing	dema	0
-puzzlednesses	0	dema-puzzledness-n	Number=Plur	dema	0
-puzzlement	0	oewn-puzzlement-n	Number=Sing	dema	0
-puzzlements	0	oewn-puzzlement-n	Number=Plur	dema	0
-puzzler	0	oewn-puzzler-n	Number=Sing	dema	0
-puzzlers	0	oewn-puzzle-n	Number=Plur	dema	0
-puzzles	0	oewn-puzzle-v	Person=3+Tense=Pres	dema	0
-puzzles	1	oewn-puzzle-n	Number=Plur	dema	0
-puzzling	0	dema-puzzling-v	VerbForm=Inf	dema	0
-puzzlingly	0	dema-puzzlingly-r	Degree=Pos	dema	0
-puzzlingness	0	dema-puzzlingness-n	Number=Sing	dema	0
-puzzlingnesses	0	dema-puzzlingness-n	Number=Plur	dema	0
-puzzolana	0	dema-puzzolana-n	Number=Sing	dema	0
-puzzolanas	0	dema-puzzolana-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+PU	0	oewn-PU-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+PUR	0	oewn-PUR-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+PURS	0	oewn-PUR-n	Capitalization=Upper+Number=Plur	dema	0			rule
+PUS	0	oewn-pus-n	Number=Sing	dema	0			oewn_form
+PUS	1	oewn-PU-n	Capitalization=Upper+Number=Plur	dema	0			rule
+Pu	0	oewn-Pu-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Puccinia graminis	0	oewn-Puccinia_graminis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Puck	0	oewn-puck-n	Number=Sing	dema	0			oewn_form
+Puck	1	oewn-Puck-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Pucks	0	oewn-puck-n	Number=Plur	dema	0			rule
+Pucks	1	oewn-Puck-n	Capitalization=Title+Number=Plur	dema	0			rule
+Pueblo	0	oewn-pueblo-n	Number=Sing	dema	0			oewn_form
+Pueblo	1	oewn-Pueblo-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Puebloan person	0	oewn-Puebloan_person-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Puebloan persons	0	oewn-Puebloan_person-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pueblos	0	oewn-pueblo-n	Number=Plur	dema	0			rule
+Pueblos	1	oewn-Pueblo-n	Capitalization=Title+Number=Plur	dema	0			rule
+Pueraria lobata	0	oewn-Pueraria_lobata-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pueraria lobatas	0	oewn-Pueraria_lobata-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Puerto Rican	0	oewn-Puerto_Rican-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Puerto Ricans	0	oewn-Puerto_Rican-n	Capitalization=Title+Number=Plur	dema	0			rule
+Puffinus puffinus	0	oewn-Puffinus_puffinus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pujunan	0	oewn-Pujunan-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Pujunan language	0	oewn-Pujunan_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pujunan languages	0	oewn-Pujunan_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pujunans	0	oewn-Pujunan-n	Capitalization=Title+Number=Plur	dema	0			rule
+Pulex irritans	0	oewn-Pulex_irritans-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pulicaria dysenterica	0	oewn-Pulicaria_dysenterica-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pulicaria dysentericas	0	oewn-Pulicaria_dysenterica-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pullman	0	oewn-Pullman-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Pullman car	0	oewn-Pullman_car-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pullman cars	0	oewn-Pullman_car-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pullman porter	0	oewn-Pullman_porter-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pullman porters	0	oewn-Pullman_porter-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pullmans	0	oewn-Pullman-n	Capitalization=Title+Number=Plur	dema	0			rule
+Pulsatilla occidentalis	0	oewn-Pulsatilla_occidentalis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pulsatilla patens	0	oewn-Pulsatilla_patens-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pulsatilla vulgaris	0	oewn-Pulsatilla_vulgaris-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Punic	0	oewn-punic-a	Degree=Pos	dema	0			oewn_form
+Punic	1	oewn-Punic-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Punic	2	oewn-Punic-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Punica granatum	0	oewn-Punica_granatum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Punica granatums	0	oewn-Punica_granatum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Punics	0	oewn-Punic-n	Capitalization=Title+Number=Plur	dema	0			rule
+Punjabi	0	oewn-Punjabi-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Punjabi language	0	oewn-Punjabi_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Punjabi languages	0	oewn-Punjabi_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Punjabis	0	oewn-Punjabi-n	Capitalization=Title+Number=Plur	dema	0			rule
+Purana	0	oewn-Purana-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Puranas	0	oewn-Purana-n	Capitalization=Title+Number=Plur	dema	0			rule
+Puranic	0	oewn-Puranic-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Purim	0	oewn-Purim-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Purims	0	oewn-Purim-n	Capitalization=Title+Number=Plur	dema	0			rule
+Purinethol	0	oewn-Purinethol-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Purinethols	0	oewn-Purinethol-n	Capitalization=Title+Number=Plur	dema	0			rule
+Puritan	0	oewn-puritan-n	Number=Sing	dema	0			oewn_form
+Puritan	1		Degree=Pos	dema	0	puritan	a	moby_reverse
+Puritan	2	oewn-Puritan-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Puritanism	0	oewn-puritanism-n	Number=Sing	dema	0			oewn_form
+Puritanism	1	oewn-Puritanism-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Puritanisms	0	oewn-puritanism-n	Number=Plur	dema	0			rule
+Puritanisms	1	oewn-Puritanism-n	Capitalization=Title+Number=Plur	dema	0			rule
+Puritans	0	oewn-puritan-n	Number=Plur	dema	0			rule
+Puritans	1	oewn-Puritan-n	Capitalization=Title+Number=Plur	dema	0			rule
+Purkinje cell	0	oewn-Purkinje_cell-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Purkinje cells	0	oewn-Purkinje_cell-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Purkinje fiber	0	oewn-Purkinje_fiber-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Purkinje fibers	0	oewn-Purkinje_fiber-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Purkinje network	0	oewn-Purkinje_network-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Purkinje networks	0	oewn-Purkinje_network-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Purkinje's system	0	oewn-Purkinje-ap-s_system-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Purkinje's systems	0	oewn-Purkinje-ap-s_system-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Purkinje's tissue	0	oewn-Purkinje-ap-s_tissue-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Purkinje's tissues	0	oewn-Purkinje-ap-s_tissue-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Purple Heart	0	oewn-purple_heart-n	Number=Sing	dema	0			oewn_form
+Purple Heart	1	oewn-Purple_Heart-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Purple Hearts	0	oewn-purple_heart-n	Number=Plur	dema	0			rule
+Purple Hearts	1	oewn-Purple_Heart-n	Capitalization=Title+Number=Plur	dema	0			rule
+Pus	0	oewn-pus-n	Number=Sing	dema	0			oewn_form
+Pus	1	oewn-Pu-n	Capitalization=Title+Number=Plur	dema	0			rule
+Pus	2	oewn-Pus-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Puses	0	oewn-pus-n	Number=Plur	dema	0			rule
+Puses	1	oewn-Pus-n	Capitalization=Title+Number=Plur	dema	0			rule
+Puseyism	0	oewn-Puseyism-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Puseyisms	0	oewn-Puseyism-n	Capitalization=Title+Number=Plur	dema	0			rule
+Pushtun	0	oewn-Pushtun-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Pushtuns	0	oewn-Pushtun-n	Capitalization=Title+Number=Plur	dema	0			rule
+pub	0	oewn-pub-n	Number=Sing	dema	0			oewn_form
+pub	1		VerbForm=Inf	dema	0	pub	v	moby_reverse
+pub crawl	0	oewn-pub_crawl-n	Number=Sing	dema	0			oewn_form
+pub crawls	0	oewn-pub_crawl-n	Number=Plur	dema	0			rule
+pub-crawl	0	oewn-pub-crawl-v	VerbForm=Inf	dema	0			oewn_form
+pub-crawled	0	oewn-pub-crawl-v	Tense=Past+VerbForm=Part	dema	0			rule
+pub-crawling	0	oewn-pub-crawl-v	VerbForm=Ger	dema	0			rule
+pub-crawls	0	oewn-pub-crawl-v	Person=3+Tense=Pres	dema	0			rule
+pubertal	0	oewn-pubertal-a	Degree=Pos	dema	0			oewn_form
+puberties	0	oewn-puberty-n	Number=Plur	dema	0			rule
+puberty	0	oewn-puberty-n	Number=Sing	dema	0			oewn_form
+puberulent	0	oewn-puberulent-a	Degree=Pos	dema	0			oewn_form
+pubes	0	oewn-pubes-n	Number=Plur	dema	0			agid
+pubes	1	oewn-pubes-n	Number=Sing	dema	0			oewn_form
+pubes	2	oewn-pubis-n	Number=Plur	dema	0			oewn_form
+pubescence	0	oewn-pubescence-n	Number=Sing	dema	0			oewn_form
+pubescences	0	oewn-pubescence-n	Number=Plur	dema	0			rule
+pubescent	0	oewn-pubescent-a	Degree=Pos	dema	0			oewn_form
+pubic	0	oewn-pubic-a	Degree=Pos	dema	0			oewn_form
+pubic bone	0	oewn-pubic_bone-n	Number=Sing	dema	0			oewn_form
+pubic bones	0	oewn-pubic_bone-n	Number=Plur	dema	0			rule
+pubic hair	0	oewn-pubic_hair-n	Number=Sing	dema	0			oewn_form
+pubic hairs	0	oewn-pubic_hair-n	Number=Plur	dema	0			rule
+pubic louse	0	oewn-pubic_louse-n	Number=Sing	dema	0			oewn_form
+pubic louses	0	oewn-pubic_louse-n	Number=Plur	dema	0			rule
+pubic region	0	oewn-pubic_region-n	Number=Sing	dema	0			oewn_form
+pubic regions	0	oewn-pubic_region-n	Number=Plur	dema	0			rule
+pubis	0	oewn-pubis-n	Number=Sing	dema	0			oewn_form
+publ	0		Number=Sing	dema	0	publ	n	moby_reverse
+public	0	oewn-public-a	Degree=Pos	dema	0			oewn_form
+public	1	oewn-public-n	Number=Sing	dema	0			oewn_form
+public address system	0	oewn-public_address_system-n	Number=Sing	dema	0			oewn_form
+public address systems	0	oewn-public_address_system-n	Number=Plur	dema	0			rule
+public assistance	0	oewn-public_assistance-n	Number=Sing	dema	0			oewn_form
+public assistances	0	oewn-public_assistance-n	Number=Plur	dema	0			rule
+public charities	0	oewn-public_charity-n	Number=Plur	dema	0			rule
+public charity	0	oewn-public_charity-n	Number=Sing	dema	0			oewn_form
+public convenience	0	oewn-public_convenience-n	Number=Sing	dema	0			oewn_form
+public conveniences	0	oewn-public_convenience-n	Number=Plur	dema	0			rule
+public debate	0	oewn-public_debate-n	Number=Sing	dema	0			oewn_form
+public debates	0	oewn-public_debate-n	Number=Plur	dema	0			rule
+public debt	0	oewn-public_debt-n	Number=Sing	dema	0			oewn_form
+public debts	0	oewn-public_debt-n	Number=Plur	dema	0			rule
+public defender	0	oewn-public_defender-n	Number=Sing	dema	0			oewn_form
+public defenders	0	oewn-public_defender-n	Number=Plur	dema	0			rule
+public discussion	0	oewn-public_discussion-n	Number=Sing	dema	0			oewn_form
+public discussions	0	oewn-public_discussion-n	Number=Plur	dema	0			rule
+public domain	0	oewn-public_domain-n	Number=Sing	dema	0			oewn_form
+public domains	0	oewn-public_domain-n	Number=Plur	dema	0			rule
+public easement	0	oewn-public_easement-n	Number=Sing	dema	0			oewn_form
+public easements	0	oewn-public_easement-n	Number=Plur	dema	0			rule
+public executioner	0	oewn-public_executioner-n	Number=Sing	dema	0			oewn_form
+public executioners	0	oewn-public_executioner-n	Number=Plur	dema	0			rule
+public exposure	0	oewn-public_exposure-n	Number=Sing	dema	0			oewn_form
+public exposures	0	oewn-public_exposure-n	Number=Plur	dema	0			rule
+public eye	0	oewn-public_eye-n	Number=Sing	dema	0			oewn_form
+public eyes	0	oewn-public_eye-n	Number=Plur	dema	0			rule
+public figure	0	oewn-public_figure-n	Number=Sing	dema	0			oewn_form
+public figures	0	oewn-public_figure-n	Number=Plur	dema	0			rule
+public holiday	0	oewn-public_holiday-n	Number=Sing	dema	0			oewn_form
+public holidays	0	oewn-public_holiday-n	Number=Plur	dema	0			rule
+public house	0	oewn-public_house-n	Number=Sing	dema	0			oewn_form
+public houses	0	oewn-public_house-n	Number=Plur	dema	0			rule
+public housing	0	oewn-public_housing-n	Number=Sing	dema	0			oewn_form
+public housings	0	oewn-public_housing-n	Number=Plur	dema	0			rule
+public knowledge	0	oewn-public_knowledge-n	Number=Sing	dema	0			oewn_form
+public knowledges	0	oewn-public_knowledge-n	Number=Plur	dema	0			rule
+public lavatories	0	oewn-public_lavatory-n	Number=Plur	dema	0			rule
+public lavatory	0	oewn-public_lavatory-n	Number=Sing	dema	0			oewn_form
+public law	0	oewn-public_law-n	Number=Sing	dema	0			oewn_form
+public laws	0	oewn-public_law-n	Number=Plur	dema	0			rule
+public lecture	0	oewn-public_lecture-n	Number=Sing	dema	0			oewn_form
+public lectures	0	oewn-public_lecture-n	Number=Plur	dema	0			rule
+public libraries	0	oewn-public_library-n	Number=Plur	dema	0			rule
+public library	0	oewn-public_library-n	Number=Sing	dema	0			oewn_form
+public mover	0	oewn-public_mover-n	Number=Sing	dema	0			oewn_form
+public movers	0	oewn-public_mover-n	Number=Plur	dema	0			rule
+public nudities	0	oewn-public_nudity-n	Number=Plur	dema	0			rule
+public nudity	0	oewn-public_nudity-n	Number=Sing	dema	0			oewn_form
+public nuisance	0	oewn-public_nuisance-n	Number=Sing	dema	0			oewn_form
+public nuisances	0	oewn-public_nuisance-n	Number=Plur	dema	0			rule
+public office	0	oewn-public_office-n	Number=Sing	dema	0			oewn_form
+public offices	0	oewn-public_office-n	Number=Plur	dema	0			rule
+public opinion	0	oewn-public_opinion-n	Number=Sing	dema	0			oewn_form
+public opinion poll	0	oewn-public_opinion_poll-n	Number=Sing	dema	0			oewn_form
+public opinion polls	0	oewn-public_opinion_poll-n	Number=Plur	dema	0			rule
+public opinions	0	oewn-public_opinion-n	Number=Plur	dema	0			rule
+public presentation	0	oewn-public_presentation-n	Number=Sing	dema	0			oewn_form
+public presentations	0	oewn-public_presentation-n	Number=Plur	dema	0			rule
+public press	0	oewn-public_press-n	Number=Sing	dema	0			oewn_form
+public presses	0	oewn-public_press-n	Number=Plur	dema	0			rule
+public properties	0	oewn-public_property-n	Number=Plur	dema	0			rule
+public property	0	oewn-public_property-n	Number=Sing	dema	0			oewn_form
+public prosecutor	0	oewn-public_prosecutor-n	Number=Sing	dema	0			oewn_form
+public prosecutors	0	oewn-public_prosecutor-n	Number=Plur	dema	0			rule
+public record	0	oewn-public_record-n	Number=Sing	dema	0			oewn_form
+public records	0	oewn-public_record-n	Number=Plur	dema	0			rule
+public relations	0	oewn-public_relations-n	Number=Sing	dema	0			oewn_form
+public relations man	0	oewn-public_relations_man-n	Number=Sing	dema	0			oewn_form
+public relations mans	0	oewn-public_relations_man-n	Number=Plur	dema	0			rule
+public relations person	0	oewn-public_relations_person-n	Number=Sing	dema	0			oewn_form
+public relations persons	0	oewn-public_relations_person-n	Number=Plur	dema	0			rule
+public relations woman	0	oewn-public_relations_woman-n	Number=Sing	dema	0			oewn_form
+public relations womans	0	oewn-public_relations_woman-n	Number=Plur	dema	0			rule
+public school	0	oewn-public_school-n	Number=Sing	dema	0			oewn_form
+public schools	0	oewn-public_school-n	Number=Plur	dema	0			rule
+public securities	0	oewn-public_security-n	Number=Plur	dema	0			rule
+public security	0	oewn-public_security-n	Number=Sing	dema	0			oewn_form
+public servant	0	oewn-public_servant-n	Number=Sing	dema	0			oewn_form
+public servants	0	oewn-public_servant-n	Number=Plur	dema	0			rule
+public service	0	oewn-public_service-n	Number=Sing	dema	0			oewn_form
+public services	0	oewn-public_service-n	Number=Plur	dema	0			rule
+public speaker	0	oewn-public_speaker-n	Number=Sing	dema	0			oewn_form
+public speakers	0	oewn-public_speaker-n	Number=Plur	dema	0			rule
+public speaking	0	oewn-public_speaking-n	Number=Sing	dema	0			oewn_form
+public speakings	0	oewn-public_speaking-n	Number=Plur	dema	0			rule
+public square	0	oewn-public_square-n	Number=Sing	dema	0			oewn_form
+public squares	0	oewn-public_square-n	Number=Plur	dema	0			rule
+public toilet	0	oewn-public_toilet-n	Number=Sing	dema	0			oewn_form
+public toilets	0	oewn-public_toilet-n	Number=Plur	dema	0			rule
+public transit	0	oewn-public_transit-n	Number=Sing	dema	0			oewn_form
+public transits	0	oewn-public_transit-n	Number=Plur	dema	0			rule
+public transport	0	oewn-public_transport-n	Number=Sing	dema	0			oewn_form
+public transports	0	oewn-public_transport-n	Number=Plur	dema	0			rule
+public treasuries	0	oewn-public_treasury-n	Number=Plur	dema	0			rule
+public treasury	0	oewn-public_treasury-n	Number=Sing	dema	0			oewn_form
+public trust	0	oewn-public_trust-n	Number=Sing	dema	0			oewn_form
+public trusts	0	oewn-public_trust-n	Number=Plur	dema	0			rule
+public utilities	0	oewn-public_utility-n	Number=Plur	dema	0			rule
+public utility	0	oewn-public_utility-n	Number=Sing	dema	0			oewn_form
+public utility companies	0	oewn-public_utility_company-n	Number=Plur	dema	0			rule
+public utility company	0	oewn-public_utility_company-n	Number=Sing	dema	0			oewn_form
+public violence	0	oewn-public_violence-n	Number=Sing	dema	0			oewn_form
+public violences	0	oewn-public_violence-n	Number=Plur	dema	0			rule
+public works	0	oewn-public_works-n	Number=Sing	dema	0			oewn_form
+public-relations campaign	0	oewn-public-relations_campaign-n	Number=Sing	dema	0			oewn_form
+public-relations campaigns	0	oewn-public-relations_campaign-n	Number=Plur	dema	0			rule
+public-service corporation	0	oewn-public-service_corporation-n	Number=Sing	dema	0			oewn_form
+public-service corporations	0	oewn-public-service_corporation-n	Number=Plur	dema	0			rule
+public-spirited	0	oewn-public-spirited-a	Degree=Pos	dema	0			oewn_form
+publically	0	oewn-publically-r	Degree=Pos	dema	0			oewn_form
+publican	0	oewn-publican-n	Number=Sing	dema	0			oewn_form
+publicans	0	oewn-publican-n	Number=Plur	dema	0			rule
+publication	0	oewn-publication-n	Number=Sing	dema	0			oewn_form
+publications	0	oewn-publication-n	Number=Plur	dema	0			rule
+publicise	0	oewn-publicise-v	VerbForm=Inf	dema	0			oewn_form
+publicised	0	oewn-publicise-v	Tense=Past+VerbForm=Part	dema	0			rule
+publicised	1	oewn-publicised-a	Degree=Pos	dema	0			oewn_form
+publiciser	0	oewn-publiciser-n	Number=Sing	dema	0			oewn_form
+publicisers	0	oewn-publiciser-n	Number=Plur	dema	0			rule
+publicises	0	oewn-publicise-v	Person=3+Tense=Pres	dema	0			rule
+publicising	0	oewn-publicise-v	VerbForm=Ger	dema	0			rule
+publicist	0	oewn-publicist-n	Number=Sing	dema	0			oewn_form
+publicists	0	oewn-publicist-n	Number=Plur	dema	0			rule
+publicities	0	oewn-publicity-n	Number=Plur	dema	0			rule
+publicity	0	oewn-publicity-n	Number=Sing	dema	0			oewn_form
+publicity man	0	oewn-publicity_man-n	Number=Sing	dema	0			oewn_form
+publicity mans	0	oewn-publicity_man-n	Number=Plur	dema	0			rule
+publicity woman	0	oewn-publicity_woman-n	Number=Sing	dema	0			oewn_form
+publicity womans	0	oewn-publicity_woman-n	Number=Plur	dema	0			rule
+publicize	0	oewn-publicize-v	VerbForm=Inf	dema	0			oewn_form
+publicized	0	oewn-publicize-v	Tense=Past+VerbForm=Part	dema	0			rule
+publicized	1	oewn-publicized-a	Degree=Pos	dema	0			oewn_form
+publicizer	0	oewn-publicizer-n	Number=Sing	dema	0			oewn_form
+publicizers	0	oewn-publicizer-n	Number=Plur	dema	0			rule
+publicizes	0	oewn-publicize-v	Person=3+Tense=Pres	dema	0			rule
+publicizing	0	oewn-publicize-v	VerbForm=Ger	dema	0			rule
+publicizing	1	oewn-publicizing-n	Number=Sing	dema	0			oewn_form
+publicizings	0	oewn-publicizing-n	Number=Plur	dema	0			rule
+publicly	0	oewn-publicly-r	Degree=Pos	dema	0			oewn_form
+publicness	0		Number=Sing	dema	0	publicness	n	moby_reverse
+publicnesses	0		Number=Plur	dema	0	publicness	n	rule
+publics	0	oewn-public-n	Number=Plur	dema	0			rule
+publicute	0		Number=Sing	dema	0	publicute	n	moby_reverse
+publicutes	0		Number=Plur	dema	0	publicute	n	rule
+publish	0	oewn-publish-v	VerbForm=Inf	dema	0			oewn_form
+publishable	0	oewn-publishable-a	Degree=Pos	dema	0			oewn_form
+published	0	oewn-publish-v	Tense=Past+VerbForm=Part	dema	0			rule
+published	1	oewn-published-a	Degree=Pos	dema	0			oewn_form
+publisher	0	oewn-publisher-n	Number=Sing	dema	0			oewn_form
+publishers	0	oewn-publisher-n	Number=Plur	dema	0			rule
+publishes	0	oewn-publish-v	Person=3+Tense=Pres	dema	0			rule
+publishing	0	oewn-publishing-n	Number=Sing	dema	0			oewn_form
+publishing	1	oewn-publish-v	VerbForm=Ger	dema	0			rule
+publishing companies	0	oewn-publishing_company-n	Number=Plur	dema	0			rule
+publishing company	0	oewn-publishing_company-n	Number=Sing	dema	0			oewn_form
+publishing conglomerate	0	oewn-publishing_conglomerate-n	Number=Sing	dema	0			oewn_form
+publishing conglomerates	0	oewn-publishing_conglomerate-n	Number=Plur	dema	0			rule
+publishing empire	0	oewn-publishing_empire-n	Number=Sing	dema	0			oewn_form
+publishing empires	0	oewn-publishing_empire-n	Number=Plur	dema	0			rule
+publishing firm	0	oewn-publishing_firm-n	Number=Sing	dema	0			oewn_form
+publishing firms	0	oewn-publishing_firm-n	Number=Plur	dema	0			rule
+publishing house	0	oewn-publishing_house-n	Number=Sing	dema	0			oewn_form
+publishing houses	0	oewn-publishing_house-n	Number=Plur	dema	0			rule
+publishings	0	oewn-publishing-n	Number=Plur	dema	0			rule
+publishment	0		Number=Sing	dema	0	publishment	n	moby_reverse
+publishments	0		Number=Plur	dema	0	publishment	n	rule
+publs	0		Number=Plur	dema	0	publ	n	rule
+pubococcygeus exercises	0	oewn-pubococcygeus_exercises-n	Number=Sing	dema	0			oewn_form
+pubs	0	oewn-pub-n	Number=Plur	dema	0			rule
+puca	0		Number=Sing	dema	0	puca	n	moby_reverse
+pucas	0		Number=Plur	dema	0	puca	n	rule
+puccoon	0	oewn-puccoon-n	Number=Sing	dema	0			oewn_form
+puccoons	0	oewn-puccoon-n	Number=Plur	dema	0			rule
+puce	0	oewn-puce-n	Number=Sing	dema	0			oewn_form
+puces	0	oewn-puce-n	Number=Plur	dema	0			rule
+puck	0	oewn-puck-n	Number=Sing	dema	0			oewn_form
+pucka	0	oewn-pucka-a	Degree=Pos	dema	0			oewn_form
+pucker	0	oewn-pucker-v	VerbForm=Inf	dema	0			oewn_form
+pucker	1	oewn-pucker-n	Number=Sing	dema	0			oewn_form
+puckerbush	0	oewn-puckerbush-n	Number=Sing	dema	0			oewn_form
+puckerbushes	0	oewn-puckerbush-n	Number=Plur	dema	0			rule
+puckered	0	oewn-pucker-v	Tense=Past+VerbForm=Part	dema	0			rule
+puckerer	0		Number=Sing	dema	0	puckerer	n	moby_reverse
+puckerers	0		Number=Plur	dema	0	puckerer	n	rule
+puckering	0	oewn-pucker-v	VerbForm=Ger	dema	0			rule
+puckers	0	oewn-pucker-v	Person=3+Tense=Pres	dema	0			rule
+puckers	1	oewn-pucker-n	Number=Plur	dema	0			rule
+puckery	0		Degree=Pos	dema	0	puckery	a	moby_reverse
+puckish	0	oewn-puckish-a	Degree=Pos	dema	0			oewn_form
+puckishly	0	oewn-puckishly-r	Degree=Pos	dema	0			oewn_form
+puckishness	0	oewn-puckishness-n	Number=Sing	dema	0			oewn_form
+puckishnesses	0	oewn-puckishness-n	Number=Plur	dema	0			rule
+pucks	0	oewn-puck-n	Number=Plur	dema	0			rule
+pud	0	oewn-pud-n	Number=Sing	dema	0			oewn_form
+pudda	0		Number=Sing	dema	0	pudda	n	moby_reverse
+puddas	0		Number=Plur	dema	0	pudda	n	rule
+pudden-head	0	oewn-pudden-head-n	Number=Sing	dema	0			oewn_form
+pudden-heads	0	oewn-pudden-head-n	Number=Plur	dema	0			rule
+pudding	0	oewn-pudding-n	Number=Sing	dema	0			oewn_form
+pudding berries	0	oewn-pudding_berry-n	Number=Plur	dema	0			rule
+pudding berry	0	oewn-pudding_berry-n	Number=Sing	dema	0			oewn_form
+pudding face	0	oewn-pudding_face-n	Number=Sing	dema	0			oewn_form
+pudding faces	0	oewn-pudding_face-n	Number=Plur	dema	0			rule
+pudding head	0	oewn-pudding_head-n	Number=Sing	dema	0			oewn_form
+pudding heads	0	oewn-pudding_head-n	Number=Plur	dema	0			rule
+pudding pipe tree	0	oewn-pudding_pipe_tree-n	Number=Sing	dema	0			oewn_form
+pudding pipe trees	0	oewn-pudding_pipe_tree-n	Number=Plur	dema	0			rule
+pudding stone	0	oewn-pudding_stone-n	Number=Sing	dema	0			oewn_form
+pudding stones	0	oewn-pudding_stone-n	Number=Plur	dema	0			rule
+pudding-face	0	oewn-pudding-face-n	Number=Sing	dema	0			oewn_form
+pudding-faces	0	oewn-pudding-face-n	Number=Plur	dema	0			rule
+pudding-wife	0	oewn-pudding-wife-n	Number=Sing	dema	0			oewn_form
+pudding-wifes	0	oewn-pudding-wife-n	Number=Plur	dema	0			rule
+puddingheaded	0	oewn-puddingheaded-a	Degree=Pos	dema	0			oewn_form
+puddinglike	0		Degree=Pos	dema	0	puddinglike	a	moby_reverse
+puddings	0	oewn-pudding-n	Number=Plur	dema	0			rule
+puddingwife	0	oewn-puddingwife-n	Number=Sing	dema	0			oewn_form
+puddingwifes	0	oewn-puddingwife-n	Number=Plur	dema	0			rule
+puddingwives	0		Number=Sing	dema	0	puddingwives	n	moby_reverse
+puddle	0	oewn-puddle-n	Number=Sing	dema	0			oewn_form
+puddle	1	oewn-puddle-v	VerbForm=Inf	dema	0			oewn_form
+puddled	0	oewn-puddle-v	Tense=Past+VerbForm=Part	dema	0			rule
+puddler	0	oewn-puddler-n	Number=Sing	dema	0			oewn_form
+puddlers	0	oewn-puddler-n	Number=Plur	dema	0			rule
+puddles	0	oewn-puddle-n	Number=Plur	dema	0			rule
+puddles	1	oewn-puddle-v	Person=3+Tense=Pres	dema	0			rule
+puddling	0		Number=Sing	dema	0	puddling	n	moby_reverse
+puddling	1	oewn-puddle-v	VerbForm=Ger	dema	0			rule
+puddlings	0		Number=Plur	dema	0	puddling	n	rule
+puddly	0		Degree=Pos	dema	0	puddly	a	moby_reverse
+puddock	0		Number=Sing	dema	0	puddock	n	moby_reverse
+puddocks	0		Number=Plur	dema	0	puddock	n	rule
+pudencies	0		Number=Plur	dema	0	pudency	n	rule
+pudency	0		Number=Sing	dema	0	pudency	n	moby_reverse
+pudenda	0	oewn-pudendum-n	Number=Plur	dema	0			oewn_form
+pudendal	0	oewn-pudendal-a	Degree=Pos	dema	0			oewn_form
+pudendal arteries	0	oewn-pudendal_artery-n	Number=Plur	dema	0			rule
+pudendal artery	0	oewn-pudendal_artery-n	Number=Sing	dema	0			oewn_form
+pudendal block	0	oewn-pudendal_block-n	Number=Sing	dema	0			oewn_form
+pudendal blocks	0	oewn-pudendal_block-n	Number=Plur	dema	0			rule
+pudendal cleavage	0	oewn-pudendal_cleavage-n	Number=Sing	dema	0			oewn_form
+pudendal cleavages	0	oewn-pudendal_cleavage-n	Number=Plur	dema	0			rule
+pudendal cleft	0	oewn-pudendal_cleft-n	Number=Sing	dema	0			oewn_form
+pudendal clefts	0	oewn-pudendal_cleft-n	Number=Plur	dema	0			rule
+pudendal slit	0	oewn-pudendal_slit-n	Number=Sing	dema	0			oewn_form
+pudendal slits	0	oewn-pudendal_slit-n	Number=Plur	dema	0			rule
+pudendal vein	0	oewn-pudendal_vein-n	Number=Sing	dema	0			oewn_form
+pudendal veins	0	oewn-pudendal_vein-n	Number=Plur	dema	0			rule
+pudendum	0	oewn-pudendum-n	Number=Sing	dema	0			oewn_form
+pudge	0	oewn-pudge-n	Number=Sing	dema	0			oewn_form
+pudges	0	oewn-pudge-n	Number=Plur	dema	0			rule
+pudgier	0	oewn-pudgy-a	Degree=Cmp	dema	0			oewn_form
+pudgiest	0	oewn-pudgy-a	Degree=Sup	dema	0			oewn_form
+pudgily	0		Degree=Pos	dema	0	pudgily	r	moby_reverse
+pudginess	0	oewn-pudginess-n	Number=Sing	dema	0			oewn_form
+pudginesses	0	oewn-pudginess-n	Number=Plur	dema	0			rule
+pudgy	0	oewn-pudgy-a	Degree=Pos	dema	0			oewn_form
+puds	0	oewn-pud-n	Number=Plur	dema	0			rule
+pueblo	0	oewn-pueblo-n	Number=Sing	dema	0			oewn_form
+pueblos	0	oewn-pueblo-n	Number=Plur	dema	0			rule
+puerile	0	oewn-puerile-a	Degree=Pos	dema	0			oewn_form
+puerilism	0		Number=Sing	dema	0	puerilism	n	moby_reverse
+puerilisms	0		Number=Plur	dema	0	puerilism	n	rule
+puerilities	0	oewn-puerility-n	Number=Plur	dema	0			rule
+puerility	0	oewn-puerility-n	Number=Sing	dema	0			oewn_form
+puerpera	0	oewn-puerpera-n	Number=Sing	dema	0			oewn_form
+puerperae	0		Number=Sing	dema	0	puerperae	n	moby_reverse
+puerperaes	0		Number=Plur	dema	0	puerperae	n	rule
+puerperal	0	oewn-puerperal-a	Degree=Pos	dema	0			oewn_form
+puerperal fever	0	oewn-puerperal_fever-n	Number=Sing	dema	0			oewn_form
+puerperal fevers	0	oewn-puerperal_fever-n	Number=Plur	dema	0			rule
+puerperas	0	oewn-puerpera-n	Number=Plur	dema	0			rule
+puerperium	0	oewn-puerperium-n	Number=Sing	dema	0			oewn_form
+puerperiums	0	oewn-puerperium-n	Number=Plur	dema	0			rule
+puff	0	oewn-puff-n	Number=Sing	dema	0			oewn_form
+puff	1	oewn-puff-v	VerbForm=Inf	dema	0			oewn_form
+puff	2	oewn-puff-a	Degree=Pos	dema	0			oewn_form
+puff adder	0	oewn-puff_adder-n	Number=Sing	dema	0			oewn_form
+puff adders	0	oewn-puff_adder-n	Number=Plur	dema	0			rule
+puff batter	0	oewn-puff_batter-n	Number=Sing	dema	0			oewn_form
+puff batters	0	oewn-puff_batter-n	Number=Plur	dema	0			rule
+puff of air	0	oewn-puff_of_air-n	Number=Sing	dema	0			oewn_form
+puff out	0	oewn-puff_out-v	VerbForm=Inf	dema	0			oewn_form
+puff paste	0	oewn-puff_paste-n	Number=Sing	dema	0			oewn_form
+puff pastes	0	oewn-puff_paste-n	Number=Plur	dema	0			rule
+puff up	0	oewn-puff_up-v	VerbForm=Inf	dema	0			oewn_form
+puffball	0	oewn-puffball-n	Number=Sing	dema	0			oewn_form
+puffballs	0	oewn-puffball-n	Number=Plur	dema	0			rule
+puffbird	0	oewn-puffbird-n	Number=Sing	dema	0			oewn_form
+puffbirds	0	oewn-puffbird-n	Number=Plur	dema	0			rule
+puffed	0	oewn-puff-v	Tense=Past+VerbForm=Part	dema	0			rule
+puffed	1	oewn-puffed-a	Degree=Pos	dema	0			oewn_form
+puffed out	0	oewn-puff_out-v	Tense=Past+VerbForm=Part	dema	0			rule
+puffed rice	0	oewn-puffed_rice-n	Number=Sing	dema	0			oewn_form
+puffed rices	0	oewn-puffed_rice-n	Number=Plur	dema	0			rule
+puffed up	0	oewn-puff_up-v	Tense=Past+VerbForm=Part	dema	0			rule
+puffed wheat	0	oewn-puffed_wheat-n	Number=Sing	dema	0			oewn_form
+puffed wheats	0	oewn-puffed_wheat-n	Number=Plur	dema	0			rule
+puffer	0	oewn-puffer-n	Number=Sing	dema	0			oewn_form
+puffer	1	oewn-puff-a	Degree=Cmp	dema	0			rule
+pufferfish	0	oewn-pufferfish-n	Number=Sing	dema	0			oewn_form
+pufferfishes	0	oewn-pufferfish-n	Number=Plur	dema	0			rule
+pufferies	0	oewn-puffery-n	Number=Plur	dema	0			rule
+puffers	0	oewn-puffer-n	Number=Plur	dema	0			rule
+puffery	0	oewn-puffery-n	Number=Sing	dema	0			oewn_form
+puffier	0	oewn-puffy-a	Degree=Cmp	dema	0			oewn_form
+puffiest	0	oewn-puffy-a	Degree=Sup	dema	0			oewn_form
+puffin	0	oewn-puffin-n	Number=Sing	dema	0			oewn_form
+puffiness	0	oewn-puffiness-n	Number=Sing	dema	0			oewn_form
+puffinesses	0	oewn-puffiness-n	Number=Plur	dema	0			rule
+puffing	0	oewn-puff-v	VerbForm=Ger	dema	0			rule
+puffing	1	oewn-puffing-n	Number=Sing	dema	0			oewn_form
+puffing out	0	oewn-puff_out-v	VerbForm=Ger	dema	0			rule
+puffing up	0	oewn-puff_up-v	VerbForm=Ger	dema	0			rule
+puffingly	0		Degree=Pos	dema	0	puffingly	r	moby_reverse
+puffings	0	oewn-puffing-n	Number=Plur	dema	0			rule
+puffins	0	oewn-puffin-n	Number=Plur	dema	0			rule
+puffs	0	oewn-puff-n	Number=Plur	dema	0			rule
+puffs	1	oewn-puff-v	Person=3+Tense=Pres	dema	0			rule
+puffs of air	0	oewn-puff_of_air-n	Number=Plur	dema	0			rule
+puffs out	0	oewn-puff_out-v	Person=3+Tense=Pres	dema	0			rule
+puffs up	0	oewn-puff_up-v	Person=3+Tense=Pres	dema	0			rule
+puffy	0	oewn-puffy-a	Degree=Pos	dema	0			oewn_form
+pug	0	oewn-pug-n	Number=Sing	dema	0			oewn_form
+pug	1		VerbForm=Inf	dema	0	pug	v	moby_reverse
+pug nose	0	oewn-pug_nose-n	Number=Sing	dema	0			oewn_form
+pug noses	0	oewn-pug_nose-n	Number=Plur	dema	0			rule
+pug-dog	0	oewn-pug-dog-n	Number=Sing	dema	0			oewn_form
+pug-dogs	0	oewn-pug-dog-n	Number=Plur	dema	0			rule
+pug-faced	0	oewn-pug-faced-a	Degree=Pos	dema	0			oewn_form
+pug-nose	0	oewn-pug-nose-a	Degree=Pos	dema	0			oewn_form
+pug-nosed	0	oewn-pug-nosed-a	Degree=Pos	dema	0			oewn_form
+pugaree	0		Number=Sing	dema	0	pugaree	n	moby_reverse
+pugarees	0		Number=Plur	dema	0	pugaree	n	rule
+pugdog	0		Number=Sing	dema	0	pugdog	n	moby_reverse
+pugdogs	0		Number=Plur	dema	0	pugdog	n	rule
+puggaree	0		Number=Sing	dema	0	puggaree	n	moby_reverse
+puggarees	0		Number=Plur	dema	0	puggaree	n	rule
+pugged	0		Tense=Past+VerbForm=Part	dema	0	pug	v	moby_reverse
+pugginess	0		Number=Sing	dema	0	pugginess	n	moby_reverse
+pugging	0		Number=Sing	dema	0	pugging	n	moby_reverse
+pugging	1		VerbForm=Ger	dema	0	pug	v	moby_reverse
+puggings	0		Number=Plur	dema	0	pugging	n	rule
+puggish	0		Degree=Pos	dema	0	puggish	a	moby_reverse
+puggree	0		Number=Sing	dema	0	puggree	n	moby_reverse
+puggrees	0		Number=Plur	dema	0	puggree	n	rule
+puggy	0		Degree=Pos	dema	0	puggy	a	moby_reverse
+pugilism	0	oewn-pugilism-n	Number=Sing	dema	0			oewn_form
+pugilisms	0	oewn-pugilism-n	Number=Plur	dema	0			rule
+pugilist	0	oewn-pugilist-n	Number=Sing	dema	0			oewn_form
+pugilistic	0	oewn-pugilistic-a	Degree=Pos	dema	0			oewn_form
+pugilistical	0		Degree=Pos	dema	0	pugilistical	a	moby_reverse
+pugilistically	0		Degree=Pos	dema	0	pugilistically	r	moby_reverse
+pugilists	0	oewn-pugilist-n	Number=Plur	dema	0			rule
+pugnacious	0	oewn-pugnacious-a	Degree=Pos	dema	0			oewn_form
+pugnaciously	0	oewn-pugnaciously-r	Degree=Pos	dema	0			oewn_form
+pugnaciousness	0		Number=Sing	dema	0	pugnaciousness	n	moby_reverse
+pugnaciousnesses	0		Number=Plur	dema	0	pugnaciousness	n	rule
+pugnacities	0	oewn-pugnacity-n	Number=Plur	dema	0			rule
+pugnacity	0	oewn-pugnacity-n	Number=Sing	dema	0			oewn_form
+pugs	0	oewn-pug-n	Number=Plur	dema	0			rule
+puir	0		Degree=Pos	dema	0	puir	a	moby_reverse
+puirness	0		Number=Sing	dema	0	puirness	n	moby_reverse
+puisne	0		Degree=Pos	dema	0	puisne	a	moby_reverse
+puissance	0	oewn-puissance-n	Number=Sing	dema	0			oewn_form
+puissances	0	oewn-puissance-n	Number=Plur	dema	0			rule
+puissant	0	oewn-puissant-a	Degree=Pos	dema	0			oewn_form
+puissantly	0		Degree=Pos	dema	0	puissantly	r	moby_reverse
+puja	0		Number=Sing	dema	0	puja	n	moby_reverse
+pujas	0		Number=Plur	dema	0	puja	n	rule
+puka	0	oewn-puka-n	Number=Sing	dema	0			oewn_form
+pukas	0	oewn-puka-n	Number=Plur	dema	0			rule
+puke	0	oewn-puke-v	VerbForm=Inf	dema	0			oewn_form
+puke	1	oewn-puke-n	Number=Sing	dema	0			oewn_form
+puked	0	oewn-puke-v	Tense=Past+VerbForm=Part	dema	0			rule
+pukes	0	oewn-puke-v	Person=3+Tense=Pres	dema	0			rule
+pukes	1	oewn-puke-n	Number=Plur	dema	0			rule
+puking	0	oewn-puke-v	VerbForm=Ger	dema	0			rule
+puking	1	oewn-puking-n	Number=Sing	dema	0			oewn_form
+pukings	0	oewn-puking-n	Number=Plur	dema	0			rule
+pukka	0	oewn-pukka-a	Degree=Pos	dema	0			oewn_form
+puku	0	oewn-puku-n	Number=Sing	dema	0			oewn_form
+pukus	0	oewn-puku-n	Number=Plur	dema	0			rule
+pul	0	oewn-pul-n	Number=Sing	dema	0			oewn_form
+pula	0	oewn-pula-n	Number=Sing	dema	0			oewn_form
+pulas	0	oewn-pula-n	Number=Plur	dema	0			rule
+pulasan	0	oewn-pulasan-n	Number=Sing	dema	0			oewn_form
+pulasan tree	0	oewn-pulasan_tree-n	Number=Sing	dema	0			oewn_form
+pulasan trees	0	oewn-pulasan_tree-n	Number=Plur	dema	0			rule
+pulasans	0	oewn-pulasan-n	Number=Plur	dema	0			rule
+pulassan	0	oewn-pulassan-n	Number=Sing	dema	0			oewn_form
+pulassans	0	oewn-pulassan-n	Number=Plur	dema	0			rule
+pulchritude	0	oewn-pulchritude-n	Number=Sing	dema	0			oewn_form
+pulchritudes	0	oewn-pulchritude-n	Number=Plur	dema	0			rule
+pulchritudinous	0		Number=Sing	dema	0	pulchritudinous	n	moby_reverse
+pulchritudinous	1	oewn-pulchritudinous-a	Degree=Pos	dema	0			oewn_form
+pule	0	oewn-pule-v	VerbForm=Inf	dema	0			oewn_form
+puled	0	oewn-pule-v	Tense=Past+VerbForm=Part	dema	0			rule
+puler	0		Number=Sing	dema	0	puler	n	moby_reverse
+pulers	0		Number=Plur	dema	0	puler	n	rule
+pules	0	oewn-pule-v	Person=3+Tense=Pres	dema	0			rule
+puli	0	oewn-pul-n	Number=Plur	dema	0			oewn_form
+pulik	0		Number=Sing	dema	0	pulik	n	moby_reverse
+puliks	0		Number=Plur	dema	0	pulik	n	rule
+puling	0		Degree=Pos	dema	0	puling	a	moby_reverse
+puling	1	oewn-pule-v	VerbForm=Ger	dema	0			rule
+pulingly	0		Degree=Pos	dema	0	pulingly	r	moby_reverse
+pulka	0		Number=Sing	dema	0	pulka	n	moby_reverse
+pulkas	0		Number=Plur	dema	0	pulka	n	rule
+pull	0	oewn-pull-n	Number=Sing	dema	1			carried
+pull	1	oewn-pull-v	VerbForm=Inf	dema	1			carried
+pull a face	0	oewn-pull_a_face-v	VerbForm=Inf	dema	0			oewn_form
+pull a fast one on	0	oewn-pull_a_fast_one_on-v	VerbForm=Inf	dema	0			oewn_form
+pull ahead	0	oewn-pull_ahead-v	VerbForm=Inf	dema	0			oewn_form
+pull along	0	oewn-pull_along-v	VerbForm=Inf	dema	0			oewn_form
+pull at	0	oewn-pull_at-v	VerbForm=Inf	dema	0			oewn_form
+pull away	0	oewn-pull_away-v	VerbForm=Inf	dema	0			oewn_form
+pull back	0	oewn-pull_back-v	VerbForm=Inf	dema	0			oewn_form
+pull chain	0	oewn-pull_chain-n	Number=Sing	dema	0			oewn_form
+pull chains	0	oewn-pull_chain-n	Number=Plur	dema	0			rule
+pull down	0	oewn-pull_down-v	VerbForm=Inf	dema	0			oewn_form
+pull in	0	oewn-pull_in-v	VerbForm=Inf	dema	0			oewn_form
+pull in one's horns	0	oewn-pull_in_one-ap-s_horns-v	VerbForm=Inf	dema	0			oewn_form
+pull off	0	oewn-pull_off-v	VerbForm=Inf	dema	0			oewn_form
+pull one's weight	0	oewn-pull_one-ap-s_weight-v	VerbForm=Inf	dema	0			oewn_form
+pull out	0	oewn-pull_out-v	VerbForm=Inf	dema	0			oewn_form
+pull out all the stops	0	oewn-pull_out_all_the_stops-v	VerbForm=Inf	dema	0			oewn_form
+pull over	0	oewn-pull_over-v	VerbForm=Inf	dema	0			oewn_form
+pull round	0	oewn-pull_round-v	VerbForm=Inf	dema	0			oewn_form
+pull someone's leg	0	oewn-pull_someone-ap-s_leg-v	VerbForm=Inf	dema	0			oewn_form
+pull strings	0	oewn-pull_strings-v	VerbForm=Inf	dema	0			oewn_form
+pull the leg of	0	oewn-pull_the_leg_of-v	VerbForm=Inf	dema	0			oewn_form
+pull the plug	0	oewn-pull_the_plug-v	VerbForm=Inf	dema	0			oewn_form
+pull the wool over someone's eyes	0	oewn-pull_the_wool_over_someone-ap-s_eyes-v	VerbForm=Inf	dema	0			oewn_form
+pull through	0	oewn-pull_through-v	VerbForm=Inf	dema	0			oewn_form
+pull together	0	oewn-pull_together-v	VerbForm=Inf	dema	0			oewn_form
+pull up	0	oewn-pull_up-v	VerbForm=Inf	dema	0			oewn_form
+pull up short	0	oewn-pull_up_short-v	VerbForm=Inf	dema	0			oewn_form
+pull up stakes	0	oewn-pull_up_stakes-v	VerbForm=Inf	dema	0			oewn_form
+pull wires	0	oewn-pull_wires-v	VerbForm=Inf	dema	0			oewn_form
+pull-in	0	oewn-pull-in-n	Number=Sing	dema	0			oewn_form
+pull-ins	0	oewn-pull-in-n	Number=Plur	dema	0			rule
+pull-off	0	oewn-pull-off-n	Number=Sing	dema	0			oewn_form
+pull-offs	0	oewn-pull-off-n	Number=Plur	dema	0			rule
+pull-through	0	oewn-pull-through-n	Number=Sing	dema	0			oewn_form
+pull-throughs	0	oewn-pull-through-n	Number=Plur	dema	0			rule
+pull-up	0	oewn-pull-up-n	Number=Sing	dema	0			oewn_form
+pull-ups	0	oewn-pull-up-n	Number=Plur	dema	0			rule
+pullback	0	oewn-pullback-n	Number=Sing	dema	0			oewn_form
+pullbacks	0	oewn-pullback-n	Number=Plur	dema	0			rule
+pulled	0	oewn-pull-v	Tense=Past+VerbForm=Part	dema	1			carried
+pulled a face	0	oewn-pull_a_face-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulled a fast one on	0	oewn-pull_a_fast_one_on-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulled ahead	0	oewn-pull_ahead-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulled along	0	oewn-pull_along-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulled at	0	oewn-pull_at-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulled away	0	oewn-pull_away-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulled back	0	oewn-pull_back-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulled down	0	oewn-pull_down-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulled in	0	oewn-pull_in-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulled in one's horns	0	oewn-pull_in_one-ap-s_horns-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulled off	0	oewn-pull_off-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulled one's weight	0	oewn-pull_one-ap-s_weight-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulled out	0	oewn-pull_out-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulled out all the stops	0	oewn-pull_out_all_the_stops-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulled over	0	oewn-pull_over-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulled round	0	oewn-pull_round-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulled someone's leg	0	oewn-pull_someone-ap-s_leg-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulled strings	0	oewn-pull_strings-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulled the leg of	0	oewn-pull_the_leg_of-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulled the plug	0	oewn-pull_the_plug-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulled the wool over someone's eyes	0	oewn-pull_the_wool_over_someone-ap-s_eyes-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulled through	0	oewn-pull_through-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulled together	0	oewn-pull_together-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulled up	0	oewn-pull_up-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulled up short	0	oewn-pull_up_short-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulled up stakes	0	oewn-pull_up_stakes-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulled wires	0	oewn-pull_wires-v	Tense=Past+VerbForm=Part	dema	0			rule
+puller	0	oewn-puller-n	Number=Sing	dema	0			oewn_form
+pullers	0	oewn-puller-n	Number=Plur	dema	0			rule
+pullet	0	oewn-pullet-n	Number=Sing	dema	0			oewn_form
+pullets	0	oewn-pullet-n	Number=Plur	dema	0			rule
+pulley	0	oewn-pulley-n	Number=Sing	dema	0			oewn_form
+pulley block	0	oewn-pulley_block-n	Number=Sing	dema	0			oewn_form
+pulley blocks	0	oewn-pulley_block-n	Number=Plur	dema	0			rule
+pulley-block	0	oewn-pulley-block-n	Number=Sing	dema	0			oewn_form
+pulley-blocks	0	oewn-pulley-block-n	Number=Plur	dema	0			rule
+pulleyless	0		Degree=Pos	dema	0	pulleyless	a	moby_reverse
+pulleys	0	oewn-pulley-n	Number=Plur	dema	0			rule
+pulli	0		Number=Sing	dema	0	pulli	n	moby_reverse
+pulling	0	oewn-pull-v	VerbForm=Ger	dema	1			carried
+pulling	1	oewn-pull-n	Number=Sing+VerbForm=Ger	dema	1			carried
+pulling	2	oewn-pulling-n	Number=Sing	dema	0			oewn_form
+pulling a face	0	oewn-pull_a_face-v	VerbForm=Ger	dema	0			rule
+pulling a fast one on	0	oewn-pull_a_fast_one_on-v	VerbForm=Ger	dema	0			rule
+pulling ahead	0	oewn-pull_ahead-v	VerbForm=Ger	dema	0			rule
+pulling along	0	oewn-pull_along-v	VerbForm=Ger	dema	0			rule
+pulling at	0	oewn-pull_at-v	VerbForm=Ger	dema	0			rule
+pulling away	0	oewn-pull_away-v	VerbForm=Ger	dema	0			rule
+pulling back	0	oewn-pull_back-v	VerbForm=Ger	dema	0			rule
+pulling down	0	oewn-pull_down-v	VerbForm=Ger	dema	0			rule
+pulling in	0	oewn-pull_in-v	VerbForm=Ger	dema	0			rule
+pulling in one's horns	0	oewn-pull_in_one-ap-s_horns-v	VerbForm=Ger	dema	0			rule
+pulling off	0	oewn-pull_off-v	VerbForm=Ger	dema	0			rule
+pulling one's weight	0	oewn-pull_one-ap-s_weight-v	VerbForm=Ger	dema	0			rule
+pulling out	0	oewn-pulling_out-n	Number=Sing	dema	0			oewn_form
+pulling out	1	oewn-pull_out-v	VerbForm=Ger	dema	0			rule
+pulling out all the stops	0	oewn-pull_out_all_the_stops-v	VerbForm=Ger	dema	0			rule
+pulling outs	0	oewn-pulling_out-n	Number=Plur	dema	0			rule
+pulling over	0	oewn-pull_over-v	VerbForm=Ger	dema	0			rule
+pulling round	0	oewn-pull_round-v	VerbForm=Ger	dema	0			rule
+pulling someone's leg	0	oewn-pull_someone-ap-s_leg-v	VerbForm=Ger	dema	0			rule
+pulling strings	0	oewn-pull_strings-v	VerbForm=Ger	dema	0			rule
+pulling the leg of	0	oewn-pull_the_leg_of-v	VerbForm=Ger	dema	0			rule
+pulling the plug	0	oewn-pull_the_plug-v	VerbForm=Ger	dema	0			rule
+pulling the wool over someone's eyes	0	oewn-pull_the_wool_over_someone-ap-s_eyes-v	VerbForm=Ger	dema	0			rule
+pulling through	0	oewn-pull_through-v	VerbForm=Ger	dema	0			rule
+pulling together	0	oewn-pull_together-v	VerbForm=Ger	dema	0			rule
+pulling up	0	oewn-pull_up-v	VerbForm=Ger	dema	0			rule
+pulling up short	0	oewn-pull_up_short-v	VerbForm=Ger	dema	0			rule
+pulling up stakes	0	oewn-pull_up_stakes-v	VerbForm=Ger	dema	0			rule
+pulling wires	0	oewn-pull_wires-v	VerbForm=Ger	dema	0			rule
+pullings	0	oewn-pulling-n	Number=Plur	dema	0			rule
+pullis	0		Number=Plur	dema	0	pulli	n	rule
+pullorum disease	0	oewn-pullorum_disease-n	Number=Sing	dema	0			oewn_form
+pullorum diseases	0	oewn-pullorum_disease-n	Number=Plur	dema	0			rule
+pullout	0	oewn-pullout-n	Number=Sing	dema	0			oewn_form
+pullouts	0	oewn-pullout-n	Number=Plur	dema	0			rule
+pullover	0	oewn-pullover-n	Number=Sing	dema	0			oewn_form
+pullovers	0	oewn-pullover-n	Number=Plur	dema	0			rule
+pulls	0	oewn-pull-n	Number=Plur	dema	1			carried
+pulls	1	oewn-pull-v	Person=3+Tense=Pres	dema	1			carried
+pulls a face	0	oewn-pull_a_face-v	Person=3+Tense=Pres	dema	0			rule
+pulls a fast one on	0	oewn-pull_a_fast_one_on-v	Person=3+Tense=Pres	dema	0			rule
+pulls ahead	0	oewn-pull_ahead-v	Person=3+Tense=Pres	dema	0			rule
+pulls along	0	oewn-pull_along-v	Person=3+Tense=Pres	dema	0			rule
+pulls at	0	oewn-pull_at-v	Person=3+Tense=Pres	dema	0			rule
+pulls away	0	oewn-pull_away-v	Person=3+Tense=Pres	dema	0			rule
+pulls back	0	oewn-pull_back-v	Person=3+Tense=Pres	dema	0			rule
+pulls down	0	oewn-pull_down-v	Person=3+Tense=Pres	dema	0			rule
+pulls in	0	oewn-pull_in-v	Person=3+Tense=Pres	dema	0			rule
+pulls in one's horns	0	oewn-pull_in_one-ap-s_horns-v	Person=3+Tense=Pres	dema	0			rule
+pulls off	0	oewn-pull_off-v	Person=3+Tense=Pres	dema	0			rule
+pulls one's weight	0	oewn-pull_one-ap-s_weight-v	Person=3+Tense=Pres	dema	0			rule
+pulls out	0	oewn-pull_out-v	Person=3+Tense=Pres	dema	0			rule
+pulls out all the stops	0	oewn-pull_out_all_the_stops-v	Person=3+Tense=Pres	dema	0			rule
+pulls over	0	oewn-pull_over-v	Person=3+Tense=Pres	dema	0			rule
+pulls round	0	oewn-pull_round-v	Person=3+Tense=Pres	dema	0			rule
+pulls someone's leg	0	oewn-pull_someone-ap-s_leg-v	Person=3+Tense=Pres	dema	0			rule
+pulls strings	0	oewn-pull_strings-v	Person=3+Tense=Pres	dema	0			rule
+pulls the leg of	0	oewn-pull_the_leg_of-v	Person=3+Tense=Pres	dema	0			rule
+pulls the plug	0	oewn-pull_the_plug-v	Person=3+Tense=Pres	dema	0			rule
+pulls the wool over someone's eyes	0	oewn-pull_the_wool_over_someone-ap-s_eyes-v	Person=3+Tense=Pres	dema	0			rule
+pulls through	0	oewn-pull_through-v	Person=3+Tense=Pres	dema	0			rule
+pulls together	0	oewn-pull_together-v	Person=3+Tense=Pres	dema	0			rule
+pulls up	0	oewn-pull_up-v	Person=3+Tense=Pres	dema	0			rule
+pulls up short	0	oewn-pull_up_short-v	Person=3+Tense=Pres	dema	0			rule
+pulls up stakes	0	oewn-pull_up_stakes-v	Person=3+Tense=Pres	dema	0			rule
+pulls wires	0	oewn-pull_wires-v	Person=3+Tense=Pres	dema	0			rule
+pullulate	0	oewn-pullulate-v	VerbForm=Inf	dema	0			oewn_form
+pullulate with	0	oewn-pullulate_with-v	VerbForm=Inf	dema	0			oewn_form
+pullulated	0	oewn-pullulate-v	Tense=Past+VerbForm=Part	dema	0			rule
+pullulated with	0	oewn-pullulate_with-v	Tense=Past+VerbForm=Part	dema	0			rule
+pullulates	0	oewn-pullulate-v	Person=3+Tense=Pres	dema	0			rule
+pullulates with	0	oewn-pullulate_with-v	Person=3+Tense=Pres	dema	0			rule
+pullulating	0	oewn-pullulate-v	VerbForm=Ger	dema	0			rule
+pullulating with	0	oewn-pullulate_with-v	VerbForm=Ger	dema	0			rule
+pullulation	0	oewn-pullulation-n	Number=Sing	dema	0			oewn_form
+pullulations	0	oewn-pullulation-n	Number=Plur	dema	0			rule
+pullus	0		Number=Sing	dema	0	pullus	n	moby_reverse
+pulmonary	0	oewn-pulmonary-a	Degree=Pos	dema	0			oewn_form
+pulmonary anthrax	0	oewn-pulmonary_anthrax-n	Number=Sing	dema	0			oewn_form
+pulmonary anthraxes	0	oewn-pulmonary_anthrax-n	Number=Plur	dema	0			rule
+pulmonary arteries	0	oewn-pulmonary_artery-n	Number=Plur	dema	0			rule
+pulmonary artery	0	oewn-pulmonary_artery-n	Number=Sing	dema	0			oewn_form
+pulmonary circulation	0	oewn-pulmonary_circulation-n	Number=Sing	dema	0			oewn_form
+pulmonary circulations	0	oewn-pulmonary_circulation-n	Number=Plur	dema	0			rule
+pulmonary congestion	0	oewn-pulmonary_congestion-n	Number=Sing	dema	0			oewn_form
+pulmonary congestions	0	oewn-pulmonary_congestion-n	Number=Plur	dema	0			rule
+pulmonary embolism	0	oewn-pulmonary_embolism-n	Number=Sing	dema	0			oewn_form
+pulmonary embolisms	0	oewn-pulmonary_embolism-n	Number=Plur	dema	0			rule
+pulmonary emphysema	0	oewn-pulmonary_emphysema-n	Number=Sing	dema	0			oewn_form
+pulmonary emphysemas	0	oewn-pulmonary_emphysema-n	Number=Plur	dema	0			rule
+pulmonary plexus	0	oewn-pulmonary_plexus-n	Number=Sing	dema	0			oewn_form
+pulmonary reserve	0	oewn-pulmonary_reserve-n	Number=Sing	dema	0			oewn_form
+pulmonary reserves	0	oewn-pulmonary_reserve-n	Number=Plur	dema	0			rule
+pulmonary stenosis	0	oewn-pulmonary_stenosis-n	Number=Sing	dema	0			oewn_form
+pulmonary trunk	0	oewn-pulmonary_trunk-n	Number=Sing	dema	0			oewn_form
+pulmonary trunks	0	oewn-pulmonary_trunk-n	Number=Plur	dema	0			rule
+pulmonary tuberculosis	0	oewn-pulmonary_tuberculosis-n	Number=Sing	dema	0			oewn_form
+pulmonary valve	0	oewn-pulmonary_valve-n	Number=Sing	dema	0			oewn_form
+pulmonary valves	0	oewn-pulmonary_valve-n	Number=Plur	dema	0			rule
+pulmonary vein	0	oewn-pulmonary_vein-n	Number=Sing	dema	0			oewn_form
+pulmonary veins	0	oewn-pulmonary_vein-n	Number=Plur	dema	0			rule
+pulmonate	0		Degree=Pos	dema	0	pulmonate	a	moby_reverse
+pulmonate	1		Number=Sing	dema	0	pulmonate	n	moby_reverse
+pulmonic	0	oewn-pulmonic-a	Degree=Pos	dema	0			oewn_form
+pulmonic	1		Number=Sing	dema	0	pulmonic	n	moby_reverse
+pulmonic plague	0	oewn-pulmonic_plague-n	Number=Sing	dema	0			oewn_form
+pulmonic plagues	0	oewn-pulmonic_plague-n	Number=Plur	dema	0			rule
+pulp	0	oewn-pulp-n	Number=Sing	dema	0			oewn_form
+pulp	1	oewn-pulp-v	VerbForm=Inf	dema	0			oewn_form
+pulp cavities	0	oewn-pulp_cavity-n	Number=Plur	dema	0			rule
+pulp cavity	0	oewn-pulp_cavity-n	Number=Sing	dema	0			oewn_form
+pulp magazine	0	oewn-pulp_magazine-n	Number=Sing	dema	0			oewn_form
+pulp magazines	0	oewn-pulp_magazine-n	Number=Plur	dema	0			rule
+pulpboard	0		Number=Sing	dema	0	pulpboard	n	moby_reverse
+pulpboards	0		Number=Plur	dema	0	pulpboard	n	rule
+pulped	0	oewn-pulp-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulpier	0	oewn-pulpy-a	Degree=Cmp	dema	0			oewn_form
+pulpiest	0	oewn-pulpy-a	Degree=Sup	dema	0			oewn_form
+pulpiness	0	oewn-pulpiness-n	Number=Sing	dema	0			oewn_form
+pulpinesses	0	oewn-pulpiness-n	Number=Plur	dema	0			rule
+pulping	0	oewn-pulp-v	VerbForm=Ger	dema	0			rule
+pulpit	0	oewn-pulpit-n	Number=Sing	dema	0			oewn_form
+pulpital	0		Degree=Pos	dema	0	pulpital	a	moby_reverse
+pulpiteer	0		Number=Sing	dema	0	pulpiteer	n	moby_reverse
+pulpiteers	0		Number=Plur	dema	0	pulpiteer	n	rule
+pulpitless	0		Degree=Pos	dema	0	pulpitless	a	moby_reverse
+pulpits	0	oewn-pulpit-n	Number=Plur	dema	0			rule
+pulpitum	0		Number=Sing	dema	0	pulpitum	n	moby_reverse
+pulpitums	0		Number=Plur	dema	0	pulpitum	n	rule
+pulpless	0		Degree=Pos	dema	0	pulpless	a	moby_reverse
+pulplike	0		Degree=Pos	dema	0	pulplike	a	moby_reverse
+pulps	0	oewn-pulp-n	Number=Plur	dema	0			rule
+pulps	1	oewn-pulp-v	Person=3+Tense=Pres	dema	0			rule
+pulpwood	0	oewn-pulpwood-n	Number=Sing	dema	0			oewn_form
+pulpwoods	0	oewn-pulpwood-n	Number=Plur	dema	0			rule
+pulpy	0	oewn-pulpy-a	Degree=Pos	dema	0			oewn_form
+pulque	0	oewn-pulque-n	Number=Sing	dema	0			oewn_form
+pulques	0	oewn-pulque-n	Number=Plur	dema	0			rule
+puls	0	oewn-pul-n	Number=Plur	dema	0			rule_variant
+pulsar	0	oewn-pulsar-n	Number=Sing	dema	0			oewn_form
+pulsars	0	oewn-pulsar-n	Number=Plur	dema	0			rule
+pulsate	0	oewn-pulsate-v	VerbForm=Inf	dema	0			oewn_form
+pulsated	0	oewn-pulsate-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulsates	0	oewn-pulsate-v	Person=3+Tense=Pres	dema	0			rule
+pulsatile	0		Degree=Pos	dema	0	pulsatile	a	moby_reverse
+pulsatilities	0		Number=Plur	dema	0	pulsatility	n	rule
+pulsatility	0		Number=Sing	dema	0	pulsatility	n	moby_reverse
+pulsating	0	oewn-pulsate-v	VerbForm=Ger	dema	0			rule
+pulsation	0	oewn-pulsation-n	Number=Sing	dema	0			oewn_form
+pulsations	0	oewn-pulsation-n	Number=Plur	dema	0			rule
+pulsator	0		Number=Sing	dema	0	pulsator	n	moby_reverse
+pulsators	0		Number=Plur	dema	0	pulsator	n	rule
+pulsatory	0		Degree=Pos	dema	0	pulsatory	a	moby_reverse
+pulse	0	oewn-pulse-n	Number=Sing	dema	0			oewn_form
+pulse	1	oewn-pulse-v	VerbForm=Inf	dema	0			oewn_form
+pulse counter	0	oewn-pulse_counter-n	Number=Sing	dema	0			oewn_form
+pulse counters	0	oewn-pulse_counter-n	Number=Plur	dema	0			rule
+pulse generator	0	oewn-pulse_generator-n	Number=Sing	dema	0			oewn_form
+pulse generators	0	oewn-pulse_generator-n	Number=Plur	dema	0			rule
+pulse height analyzer	0	oewn-pulse_height_analyzer-n	Number=Sing	dema	0			oewn_form
+pulse height analyzers	0	oewn-pulse_height_analyzer-n	Number=Plur	dema	0			rule
+pulse modulation	0	oewn-pulse_modulation-n	Number=Sing	dema	0			oewn_form
+pulse modulations	0	oewn-pulse_modulation-n	Number=Plur	dema	0			rule
+pulse oximeter	0	oewn-pulse_oximeter-n	Number=Sing	dema	0			oewn_form
+pulse oximeters	0	oewn-pulse_oximeter-n	Number=Plur	dema	0			rule
+pulse rate	0	oewn-pulse_rate-n	Number=Sing	dema	0			oewn_form
+pulse rates	0	oewn-pulse_rate-n	Number=Plur	dema	0			rule
+pulse timing circuit	0	oewn-pulse_timing_circuit-n	Number=Sing	dema	0			oewn_form
+pulse timing circuits	0	oewn-pulse_timing_circuit-n	Number=Plur	dema	0			rule
+pulse-time modulation	0	oewn-pulse-time_modulation-n	Number=Sing	dema	0			oewn_form
+pulse-time modulations	0	oewn-pulse-time_modulation-n	Number=Plur	dema	0			rule
+pulsebeat	0		Number=Sing	dema	0	pulsebeat	n	moby_reverse
+pulsebeats	0		Number=Plur	dema	0	pulsebeat	n	rule
+pulsed	0	oewn-pulse-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulsejet	0		Number=Sing	dema	0	pulsejet	n	moby_reverse
+pulsejets	0		Number=Plur	dema	0	pulsejet	n	rule
+pulseless	0	oewn-pulseless-a	Degree=Pos	dema	0			oewn_form
+pulseless disease	0	oewn-pulseless_disease-n	Number=Sing	dema	0			oewn_form
+pulseless diseases	0	oewn-pulseless_disease-n	Number=Plur	dema	0			rule
+pulses	0	oewn-pulse-n	Number=Plur	dema	0			rule
+pulses	1	oewn-pulse-v	Person=3+Tense=Pres	dema	0			rule
+pulsimeter	0		Number=Sing	dema	0	pulsimeter	n	moby_reverse
+pulsimeters	0		Number=Plur	dema	0	pulsimeter	n	rule
+pulsing	0	oewn-pulsing-n	Number=Sing	dema	0			oewn_form
+pulsing	1	oewn-pulse-v	VerbForm=Ger	dema	0			rule
+pulsings	0	oewn-pulsing-n	Number=Plur	dema	0			rule
+pulsojet	0		Number=Sing	dema	0	pulsojet	n	moby_reverse
+pulsojets	0		Number=Plur	dema	0	pulsojet	n	rule
+pulsometer	0		Number=Sing	dema	0	pulsometer	n	moby_reverse
+pulsometers	0		Number=Plur	dema	0	pulsometer	n	rule
+pulu	0		Number=Sing	dema	0	pulu	n	moby_reverse
+pulus	0		Number=Plur	dema	0	pulu	n	rule
+pulverable	0		Degree=Pos	dema	0	pulverable	a	moby_reverse
+pulverisable	0		Degree=Pos	dema	0	pulverisable	a	moby_reverse
+pulverisation	0	oewn-pulverisation-n	Number=Sing	dema	0			oewn_form
+pulverisations	0	oewn-pulverisation-n	Number=Plur	dema	0			rule
+pulverise	0	oewn-pulverise-v	VerbForm=Inf	dema	0			oewn_form
+pulverised	0	oewn-pulverise-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulverised	1	oewn-pulverised-a	Degree=Pos	dema	0			oewn_form
+pulveriser	0		Number=Sing	dema	0	pulveriser	n	moby_reverse
+pulverisers	0		Number=Plur	dema	0	pulveriser	n	rule
+pulverises	0	oewn-pulverise-v	Person=3+Tense=Pres	dema	0			rule
+pulverising	0	oewn-pulverise-v	VerbForm=Ger	dema	0			rule
+pulverizable	0		Degree=Pos	dema	0	pulverizable	a	moby_reverse
+pulverization	0	oewn-pulverization-n	Number=Sing	dema	0			oewn_form
+pulverizations	0	oewn-pulverization-n	Number=Plur	dema	0			rule
+pulverize	0	oewn-pulverize-v	VerbForm=Inf	dema	0			oewn_form
+pulverized	0	oewn-pulverize-v	Tense=Past+VerbForm=Part	dema	0			rule
+pulverized	1	oewn-pulverized-a	Degree=Pos	dema	0			oewn_form
+pulverizer	0		Number=Sing	dema	0	pulverizer	n	moby_reverse
+pulverizers	0		Number=Plur	dema	0	pulverizer	n	rule
+pulverizes	0	oewn-pulverize-v	Person=3+Tense=Pres	dema	0			rule
+pulverizing	0	oewn-pulverize-v	VerbForm=Ger	dema	0			rule
+pulverulence	0		Number=Sing	dema	0	pulverulence	n	moby_reverse
+pulverulences	0		Number=Plur	dema	0	pulverulence	n	rule
+pulverulent	0		Degree=Pos	dema	0	pulverulent	a	moby_reverse
+pulverulently	0		Degree=Pos	dema	0	pulverulently	a	moby_reverse
+pulvillus	0		Number=Sing	dema	0	pulvillus	n	moby_reverse
+pulvinate	0		Degree=Pos	dema	0	pulvinate	a	moby_reverse
+pulvinately	0		Degree=Pos	dema	0	pulvinately	r	moby_reverse
+pulvinni	0		Number=Sing	dema	0	pulvinni	n	moby_reverse
+pulvinnis	0		Number=Plur	dema	0	pulvinni	n	rule
+pulvinus	0		Number=Sing	dema	0	pulvinus	n	moby_reverse
+puma	0	oewn-puma-n	Number=Plur	dema	0			rule_variant
+puma	1	oewn-puma-n	Number=Sing	dema	0			oewn_form
+pumas	0	oewn-puma-n	Number=Plur	dema	0			rule_variant
+pumice	0	oewn-pumice-n	Number=Sing	dema	0			oewn_form
+pumice	1	oewn-pumice-v	VerbForm=Inf	dema	0			oewn_form
+pumice stone	0	oewn-pumice_stone-n	Number=Sing	dema	0			oewn_form
+pumice stones	0	oewn-pumice_stone-n	Number=Plur	dema	0			rule
+pumiced	0	oewn-pumice-v	Tense=Past+VerbForm=Part	dema	0			rule
+pumicer	0		Number=Sing	dema	0	pumicer	n	moby_reverse
+pumicers	0		Number=Plur	dema	0	pumicer	n	rule
+pumices	0	oewn-pumice-n	Number=Plur	dema	0			rule
+pumices	1	oewn-pumice-v	Person=3+Tense=Pres	dema	0			rule
+pumicing	0	oewn-pumice-v	VerbForm=Ger	dema	0			rule
+pummel	0	oewn-pummel-v	VerbForm=Inf	dema	0			oewn_form
+pummeled	0	oewn-pummel-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+pummeling	0	oewn-pummel-v	VerbForm=Ger	dema	0			rule_variant
+pummelled	0	oewn-pummel-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+pummelling	0	oewn-pummel-v	VerbForm=Ger	dema	0			oewn_form
+pummelo	0	oewn-pummelo-n	Number=Sing	dema	0			oewn_form
+pummelos	0	oewn-pummelo-n	Number=Plur	dema	0			rule
+pummels	0	oewn-pummel-v	Person=3+Tense=Pres	dema	0			rule
+pump	0	oewn-pump-n	Number=Sing	dema	1			carried
+pump	1	oewn-pump-v	VerbForm=Inf	dema	1			carried
+pump action	0	oewn-pump_action-n	Number=Sing	dema	0			oewn_form
+pump actions	0	oewn-pump_action-n	Number=Plur	dema	0			rule
+pump house	0	oewn-pump_house-n	Number=Sing	dema	0			oewn_form
+pump houses	0	oewn-pump_house-n	Number=Plur	dema	0			rule
+pump priming	0	oewn-pump_priming-n	Number=Sing	dema	0			oewn_form
+pump primings	0	oewn-pump_priming-n	Number=Plur	dema	0			rule
+pump room	0	oewn-pump_room-n	Number=Sing	dema	0			oewn_form
+pump rooms	0	oewn-pump_room-n	Number=Plur	dema	0			rule
+pump well	0	oewn-pump_well-n	Number=Sing	dema	0			oewn_form
+pump wells	0	oewn-pump_well-n	Number=Plur	dema	0			rule
+pump-and-dump scheme	0	oewn-pump-and-dump_scheme-n	Number=Sing	dema	0			oewn_form
+pump-and-dump schemes	0	oewn-pump-and-dump_scheme-n	Number=Plur	dema	0			rule
+pump-type pliers	0	oewn-pump-type_pliers-n	Number=Sing	dema	0			oewn_form
+pumped	0	oewn-pump-v	Tense=Past+VerbForm=Part	dema	1			carried
+pumped up	0	oewn-pumped_up-a	Degree=Pos	dema	0			oewn_form
+pumped-up	0	oewn-pumped-up-a	Degree=Pos	dema	0			oewn_form
+pumpernickel	0	oewn-pumpernickel-n	Number=Sing	dema	0			oewn_form
+pumpernickels	0	oewn-pumpernickel-n	Number=Plur	dema	0			rule
+pumping	0	oewn-pump-v	VerbForm=Ger	dema	1			carried
+pumping	1	oewn-pump-n	Number=Sing+VerbForm=Ger	dema	1			carried
+pumping station	0	oewn-pumping_station-n	Number=Sing	dema	0			oewn_form
+pumping stations	0	oewn-pumping_station-n	Number=Plur	dema	0			rule
+pumpkin	0	oewn-pumpkin-n	Number=Sing	dema	0			oewn_form
+pumpkin ash	0	oewn-pumpkin_ash-n	Number=Sing	dema	0			oewn_form
+pumpkin ashes	0	oewn-pumpkin_ash-n	Number=Plur	dema	0			rule
+pumpkin pie	0	oewn-pumpkin_pie-n	Number=Sing	dema	0			oewn_form
+pumpkin pies	0	oewn-pumpkin_pie-n	Number=Plur	dema	0			rule
+pumpkin seed	0	oewn-pumpkin_seed-n	Number=Sing	dema	0			oewn_form
+pumpkin seeds	0	oewn-pumpkin_seed-n	Number=Plur	dema	0			rule
+pumpkin vine	0	oewn-pumpkin_vine-n	Number=Sing	dema	0			oewn_form
+pumpkin vines	0	oewn-pumpkin_vine-n	Number=Plur	dema	0			rule
+pumpkin-shaped	0	oewn-pumpkin-shaped-a	Degree=Pos	dema	0			oewn_form
+pumpkins	0	oewn-pumpkin-n	Number=Plur	dema	0			rule
+pumpkinseed	0	oewn-pumpkinseed-n	Number=Sing	dema	0			oewn_form
+pumpkinseeds	0	oewn-pumpkinseed-n	Number=Plur	dema	0			rule
+pumpman	0		Number=Sing	dema	0	pumpman	n	moby_reverse
+pumpmans	0		Number=Plur	dema	0	pumpman	n	rule
+pumpmen	0		Number=Sing	dema	0	pumpmen	n	moby_reverse
+pumpmens	0		Number=Plur	dema	0	pumpmen	n	rule
+pumps	0	oewn-pump-n	Number=Plur	dema	1			carried
+pumps	1	oewn-pump-v	Person=3+Tense=Pres	dema	1			carried
+pumpwell	0		Number=Sing	dema	0	pumpwell	n	moby_reverse
+pumpwells	0		Number=Plur	dema	0	pumpwell	n	rule
+pun	0	oewn-pun-n	Number=Sing	dema	0			oewn_form
+pun	1	oewn-pun-v	VerbForm=Inf	dema	0			oewn_form
+puna	0		Number=Sing	dema	0	puna	n	moby_reverse
+punas	0		Number=Plur	dema	0	puna	n	rule
+punce	0		VerbForm=Inf	dema	0	punce	v	moby_reverse
+punce	1		Number=Sing	dema	0	punce	n	moby_reverse
+punced	0		Tense=Past+VerbForm=Part	dema	0	punce	v	rule
+punces	0		Person=3+Tense=Pres	dema	0	punce	v	rule
+punch	0	oewn-punch-n	Number=Sing	dema	1			carried
+punch	1	oewn-punch-v	VerbForm=Inf	dema	1			carried
+punch bag	0	oewn-punch_bag-n	Number=Sing	dema	0			oewn_form
+punch bags	0	oewn-punch_bag-n	Number=Plur	dema	0			rule
+punch bowl	0	oewn-punch_bowl-n	Number=Sing	dema	0			oewn_form
+punch bowls	0	oewn-punch_bowl-n	Number=Plur	dema	0			rule
+punch card	0	oewn-punch_card-n	Number=Sing	dema	0			oewn_form
+punch cards	0	oewn-punch_card-n	Number=Plur	dema	0			rule
+punch in	0	oewn-punch_in-v	VerbForm=Inf	dema	0			oewn_form
+punch line	0	oewn-punch_line-n	Number=Sing	dema	0			oewn_form
+punch lines	0	oewn-punch_line-n	Number=Plur	dema	0			rule
+punch out	0	oewn-punch_out-v	VerbForm=Inf	dema	0			oewn_form
+punch pliers	0	oewn-punch_pliers-n	Number=Sing	dema	0			oewn_form
+punch press	0	oewn-punch_press-n	Number=Sing	dema	0			oewn_form
+punch presses	0	oewn-punch_press-n	Number=Plur	dema	0			rule
+punch-drunk	0	oewn-punch-drunk-a	Degree=Pos	dema	0			oewn_form
+punch-up	0	oewn-punch-up-n	Number=Sing	dema	0			oewn_form
+punch-ups	0	oewn-punch-up-n	Number=Plur	dema	0			rule
+punchable	0	oewn-punchable-a	Degree=Pos	dema	0			oewn_form
+punchayet	0	oewn-punchayet-n	Number=Sing	dema	0			oewn_form
+punchayets	0	oewn-punchayet-n	Number=Plur	dema	0			rule
+punchball	0	oewn-punchball-n	Number=Sing	dema	0			oewn_form
+punchballs	0	oewn-punchball-n	Number=Plur	dema	0			rule
+punchboard	0	oewn-punchboard-n	Number=Sing	dema	0			oewn_form
+punchboards	0	oewn-punchboard-n	Number=Plur	dema	0			rule
+punchbowl	0		Number=Sing	dema	0	punchbowl	n	moby_reverse
+punchbowls	0		Number=Plur	dema	0	punchbowl	n	rule
+punched	0	oewn-punch-v	Tense=Past+VerbForm=Part	dema	1			carried
+punched card	0	oewn-punched_card-n	Number=Sing	dema	0			oewn_form
+punched cards	0	oewn-punched_card-n	Number=Plur	dema	0			rule
+punched in	0	oewn-punch_in-v	Tense=Past+VerbForm=Part	dema	0			rule
+punched out	0	oewn-punch_out-v	Tense=Past+VerbForm=Part	dema	0			rule
+punched paper tape reader	0	oewn-punched_paper_tape_reader-n	Number=Sing	dema	0			oewn_form
+punched paper tape readers	0	oewn-punched_paper_tape_reader-n	Number=Plur	dema	0			rule
+punched tape reader	0	oewn-punched_tape_reader-n	Number=Sing	dema	0			oewn_form
+punched tape readers	0	oewn-punched_tape_reader-n	Number=Plur	dema	0			rule
+puncheon	0		Number=Sing	dema	0	puncheon	n	moby_reverse
+puncheons	0		Number=Plur	dema	0	puncheon	n	rule
+puncher	0	oewn-puncher-n	Number=Sing	dema	0			oewn_form
+punchers	0	oewn-puncher-n	Number=Plur	dema	0			rule
+punches	0	oewn-punch-n	Number=Plur	dema	1			carried
+punches	1	oewn-punch-v	Person=3+Tense=Pres	dema	1			carried
+punches in	0	oewn-punch_in-v	Person=3+Tense=Pres	dema	0			rule
+punches out	0	oewn-punch_out-v	Person=3+Tense=Pres	dema	0			rule
+punchier	0		Degree=Cmp	dema	0	punchy	a	moby_reverse
+punchiest	0		Degree=Sup	dema	0	punchy	a	moby_reverse
+punching	0	oewn-punch-v	VerbForm=Ger	dema	1			carried
+punching	1	oewn-punch-n	Number=Sing+VerbForm=Ger	dema	1			carried
+punching bag	0	oewn-punching_bag-n	Number=Sing	dema	0			oewn_form
+punching bags	0	oewn-punching_bag-n	Number=Plur	dema	0			rule
+punching ball	0	oewn-punching_ball-n	Number=Sing	dema	0			oewn_form
+punching balls	0	oewn-punching_ball-n	Number=Plur	dema	0			rule
+punching in	0	oewn-punch_in-v	VerbForm=Ger	dema	0			rule
+punching out	0	oewn-punch_out-v	VerbForm=Ger	dema	0			rule
+punchline	0	oewn-punchline-n	Number=Sing	dema	0			oewn_form
+punchlines	0	oewn-punchline-n	Number=Plur	dema	0			rule
+punchy	0		Degree=Pos	dema	0	punchy	a	moby_reverse
+puncing	0		VerbForm=Ger	dema	0	punce	v	rule
+punctate	0		Degree=Pos	dema	0	punctate	a	moby_reverse
+punctatim	0		Degree=Pos	dema	0	punctatim	r	moby_reverse
+punctation	0		Number=Sing	dema	0	punctation	n	moby_reverse
+punctations	0		Number=Plur	dema	0	punctation	n	rule
+punctilio	0	oewn-punctilio-n	Number=Sing	dema	0			oewn_form
+punctilios	0	oewn-punctilio-n	Number=Plur	dema	0			rule
+punctilious	0	oewn-punctilious-a	Degree=Pos	dema	0			oewn_form
+punctiliously	0	oewn-punctiliously-r	Degree=Pos	dema	0			oewn_form
+punctiliousness	0	oewn-punctiliousness-n	Number=Sing	dema	0			oewn_form
+punctiliousnesses	0	oewn-punctiliousness-n	Number=Plur	dema	0			rule
+punctual	0	oewn-punctual-a	Degree=Pos	dema	0			oewn_form
+punctualities	0	oewn-punctuality-n	Number=Plur	dema	0			rule
+punctuality	0	oewn-punctuality-n	Number=Sing	dema	0			oewn_form
+punctually	0	oewn-punctually-r	Degree=Pos	dema	0			oewn_form
+punctualness	0		Number=Sing	dema	0	punctualness	n	moby_reverse
+punctualnesses	0		Number=Plur	dema	0	punctualness	n	rule
+punctuate	0	oewn-punctuate-v	VerbForm=Inf	dema	0			oewn_form
+punctuated	0	oewn-punctuate-v	Tense=Past+VerbForm=Part	dema	0			rule
+punctuated equilibrium	0	oewn-punctuated_equilibrium-n	Number=Sing	dema	0			oewn_form
+punctuated equilibriums	0	oewn-punctuated_equilibrium-n	Number=Plur	dema	0			rule
+punctuates	0	oewn-punctuate-v	Person=3+Tense=Pres	dema	0			rule
+punctuating	0	oewn-punctuate-v	VerbForm=Ger	dema	0			rule
+punctuation	0	oewn-punctuation-n	Number=Sing	dema	0			oewn_form
+punctuation mark	0	oewn-punctuation_mark-n	Number=Sing	dema	0			oewn_form
+punctuation marks	0	oewn-punctuation_mark-n	Number=Plur	dema	0			rule
+punctuations	0	oewn-punctuation-n	Number=Plur	dema	0			rule
+punctuative	0		Degree=Pos	dema	0	punctuative	a	moby_reverse
+punctuator	0		Number=Sing	dema	0	punctuator	n	moby_reverse
+punctuators	0		Number=Plur	dema	0	punctuator	n	rule
+punctum	0	oewn-punctum-n	Number=Sing	dema	0			oewn_form
+punctums	0	oewn-punctum-n	Number=Plur	dema	0			rule
+puncturable	0	oewn-puncturable-a	Degree=Pos	dema	0			oewn_form
+puncture	0	oewn-puncture-n	Number=Sing	dema	0			oewn_form
+puncture	1	oewn-puncture-v	VerbForm=Inf	dema	0			oewn_form
+punctured	0	oewn-puncture-v	Tense=Past+VerbForm=Part	dema	0			rule
+punctured	1	oewn-punctured-a	Degree=Pos	dema	0			oewn_form
+punctureless	0	oewn-punctureless-a	Degree=Pos	dema	0			oewn_form
+punctures	0	oewn-puncture-n	Number=Plur	dema	0			rule
+punctures	1	oewn-puncture-v	Person=3+Tense=Pres	dema	0			rule
+puncturing	0	oewn-puncture-v	VerbForm=Ger	dema	0			rule
+pundit	0	oewn-pundit-n	Number=Sing	dema	0			oewn_form
+punditic	0		Degree=Pos	dema	0	punditic	a	moby_reverse
+punditically	0		Degree=Pos	dema	0	punditically	r	moby_reverse
+pundits	0	oewn-pundit-n	Number=Plur	dema	0			rule
+pung	0	oewn-pung-n	Number=Sing	dema	0			oewn_form
+pungapung	0	oewn-pungapung-n	Number=Sing	dema	0			oewn_form
+pungapungs	0	oewn-pungapung-n	Number=Plur	dema	0			rule
+pungencies	0	oewn-pungency-n	Number=Plur	dema	0			rule
+pungency	0	oewn-pungency-n	Number=Sing	dema	0			oewn_form
+pungent	0	oewn-pungent-a	Degree=Pos	dema	0			oewn_form
+pungently	0	oewn-pungently-r	Degree=Pos	dema	0			oewn_form
+pungies	0		Number=Plur	dema	0	pungy	n	rule
+pungs	0	oewn-pung-n	Number=Plur	dema	0			rule
+pungy	0		Number=Sing	dema	0	pungy	n	moby_reverse
+punic	0	oewn-punic-a	Degree=Pos	dema	0			oewn_form
+punier	0	oewn-puny-a	Degree=Cmp	dema	0			oewn_form
+puniest	0	oewn-puny-a	Degree=Sup	dema	0			oewn_form
+punily	0	oewn-punily-r	Degree=Pos	dema	0			oewn_form
+puniness	0	oewn-puniness-n	Number=Sing	dema	0			oewn_form
+puninesses	0	oewn-puniness-n	Number=Plur	dema	0			rule
+punish	0	oewn-punish-v	VerbForm=Inf	dema	0			oewn_form
+punishable	0	oewn-punishable-a	Degree=Pos	dema	0			oewn_form
+punished	0	oewn-punish-v	Tense=Past+VerbForm=Part	dema	0			rule
+punished	1	oewn-punished-a	Degree=Pos	dema	0			oewn_form
+punisher	0		Number=Sing	dema	0	punisher	n	moby_reverse
+punishers	0		Number=Plur	dema	0	punisher	n	rule
+punishes	0	oewn-punish-v	Person=3+Tense=Pres	dema	0			rule
+punishing	0	oewn-punish-v	VerbForm=Ger	dema	0			rule
+punishing	1	oewn-punishing-a	Degree=Pos	dema	0			oewn_form
+punishingly	0	oewn-punishingly-r	Degree=Pos	dema	0			oewn_form
+punishment	0	oewn-punishment-n	Number=Sing	dema	0			oewn_form
+punishments	0	oewn-punishment-n	Number=Plur	dema	0			rule
+punitive	0	oewn-punitive-a	Degree=Pos	dema	0			oewn_form
+punitive damages	0	oewn-punitive_damages-n	Number=Sing	dema	0			oewn_form
+punitively	0	oewn-punitively-r	Degree=Pos	dema	0			oewn_form
+punitiveness	0		Number=Sing	dema	0	punitiveness	n	moby_reverse
+punitivenesses	0		Number=Plur	dema	0	punitiveness	n	rule
+punitorily	0	oewn-punitorily-r	Degree=Pos	dema	0			oewn_form
+punitory	0	oewn-punitory-a	Degree=Pos	dema	0			oewn_form
+punk	0	oewn-punk-n	Number=Sing	dema	0			oewn_form
+punk	1	oewn-punk-a	Degree=Pos	dema	0			oewn_form
+punk rock	0	oewn-punk_rock-n	Number=Sing	dema	0			oewn_form
+punk rocker	0	oewn-punk_rocker-n	Number=Sing	dema	0			oewn_form
+punk rockers	0	oewn-punk_rocker-n	Number=Plur	dema	0			rule
+punk rocks	0	oewn-punk_rock-n	Number=Plur	dema	0			rule
+punka	0		Number=Sing	dema	0	punka	n	moby_reverse
+punkah	0	oewn-punkah-n	Number=Sing	dema	0			oewn_form
+punkah	1		Degree=Pos	dema	0	punkah	a	moby_reverse
+punkahs	0	oewn-punkah-n	Number=Plur	dema	0			rule
+punkas	0		Number=Plur	dema	0	punka	n	rule
+punker	0	oewn-punk-a	Degree=Cmp	dema	0			rule
+punkest	0	oewn-punk-a	Degree=Sup	dema	0			rule
+punkey	0	oewn-punkey-n	Number=Sing	dema	0			oewn_form
+punkeys	0	oewn-punkey-n	Number=Plur	dema	0			rule
+punkie	0	oewn-punkie-n	Number=Sing	dema	0			oewn_form
+punkies	0	oewn-punkie-n	Number=Plur	dema	0			rule
+punkies	1	oewn-punky-n	Number=Plur	dema	0			rule
+punks	0	oewn-punk-n	Number=Plur	dema	0			rule
+punks	1	oewn-punks-n	Number=Sing	dema	0			oewn_form
+punky	0	oewn-punky-n	Number=Sing	dema	0			oewn_form
+punned	0	oewn-pun-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+punner	0		Number=Sing	dema	0	punner	n	moby_reverse
+punners	0		Number=Plur	dema	0	punner	n	rule
+punnet	0	oewn-punnet-n	Number=Sing	dema	0			oewn_form
+punnets	0	oewn-punnet-n	Number=Plur	dema	0			rule
+punnier	0	oewn-punny-a	Degree=Cmp	dema	0			rule
+punniest	0	oewn-punny-a	Degree=Sup	dema	0			rule
+punning	0	oewn-punning-n	Number=Sing	dema	0			oewn_form
+punning	1	oewn-pun-v	VerbForm=Ger	dema	0			oewn_form
+punnings	0	oewn-punning-n	Number=Plur	dema	0			rule
+punny	0	oewn-punny-a	Degree=Pos	dema	0			oewn_form
+puns	0	oewn-pun-n	Number=Plur	dema	0			rule
+puns	1	oewn-pun-v	Person=3+Tense=Pres	dema	0			rule
+punster	0	oewn-punster-n	Number=Sing	dema	0			oewn_form
+punsters	0	oewn-punster-n	Number=Plur	dema	0			rule
+punt	0	oewn-punt-n-1	Number=Sing	dema	0			oewn_form
+punt	1	oewn-punt-n-2	Number=Sing	dema	0			oewn_form
+punt	2	oewn-punt-v	VerbForm=Inf	dema	0			oewn_form
+punted	0	oewn-punt-v	Tense=Past+VerbForm=Part	dema	0			rule
+punter	0	oewn-punter-n	Number=Sing	dema	0			oewn_form
+punters	0	oewn-punter-n	Number=Plur	dema	0			rule
+punties	0		Number=Plur	dema	0	punty	n	rule
+puntilla	0		Number=Sing	dema	0	puntilla	n	moby_reverse
+puntillas	0		Number=Plur	dema	0	puntilla	n	rule
+puntillero	0		Number=Sing	dema	0	puntillero	n	moby_reverse
+puntilleros	0		Number=Plur	dema	0	puntillero	n	rule
+punting	0	oewn-punt-v	VerbForm=Ger	dema	0			rule
+punting	1	oewn-punting-n	Number=Sing	dema	0			oewn_form
+puntings	0	oewn-punting-n	Number=Plur	dema	0			rule
+punts	0	oewn-punt-n-1	Number=Plur	dema	0			rule
+punts	1	oewn-punt-n-2	Number=Plur	dema	0			rule
+punts	2	oewn-punt-v	Person=3+Tense=Pres	dema	0			rule
+punty	0		Number=Sing	dema	0	punty	n	moby_reverse
+puny	0	oewn-puny-a	Degree=Pos	dema	0			oewn_form
+pup	0	oewn-pup-n	Number=Sing	dema	0			oewn_form
+pup	1	oewn-pup-v	VerbForm=Inf	dema	0			oewn_form
+pup tent	0	oewn-pup_tent-n	Number=Sing	dema	0			oewn_form
+pup tents	0	oewn-pup_tent-n	Number=Plur	dema	0			rule
+pupa	0	oewn-pupa-n	Number=Sing	dema	0			oewn_form
+pupae	0	oewn-pupa-n	Number=Plur	dema	0			oewn_form
+pupal	0	oewn-pupal-a	Degree=Pos	dema	0			oewn_form
+puparia	0		Number=Sing	dema	0	puparia	n	moby_reverse
+puparias	0		Number=Plur	dema	0	puparia	n	rule
+puparium	0		Number=Sing	dema	0	puparium	n	moby_reverse
+pupariums	0		Number=Plur	dema	0	puparium	n	rule
+pupas	0	oewn-pupa-n	Number=Plur	dema	0			rule_variant
+pupate	0	oewn-pupate-v	VerbForm=Inf	dema	0			oewn_form
+pupated	0	oewn-pupate-v	Tense=Past+VerbForm=Part	dema	0			rule
+pupates	0	oewn-pupate-v	Person=3+Tense=Pres	dema	0			rule
+pupating	0	oewn-pupate-v	VerbForm=Ger	dema	0			rule
+pupil	0	oewn-pupil-n	Number=Sing	dema	0			oewn_form
+pupillage	0		Number=Sing	dema	0	pupillage	n	moby_reverse
+pupillages	0		Number=Plur	dema	0	pupillage	n	rule
+pupillary	0	oewn-pupillary-a	Degree=Pos	dema	0			oewn_form
+pupillary reflex	0	oewn-pupillary_reflex-n	Number=Sing	dema	0			oewn_form
+pupillary reflexes	0	oewn-pupillary_reflex-n	Number=Plur	dema	0			rule
+pupillary sphincter	0	oewn-pupillary_sphincter-n	Number=Sing	dema	0			oewn_form
+pupillary sphincters	0	oewn-pupillary_sphincter-n	Number=Plur	dema	0			rule
+pupilless	0		Degree=Pos	dema	0	pupilless	a	moby_reverse
+pupils	0	oewn-pupil-n	Number=Plur	dema	0			rule
+pupiparous	0		Degree=Pos	dema	0	pupiparous	a	moby_reverse
+pupped	0	oewn-pup-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+puppet	0	oewn-puppet-n	Number=Sing	dema	0			oewn_form
+puppet government	0	oewn-puppet_government-n	Number=Sing	dema	0			oewn_form
+puppet governments	0	oewn-puppet_government-n	Number=Plur	dema	0			rule
+puppet leader	0	oewn-puppet_leader-n	Number=Sing	dema	0			oewn_form
+puppet leaders	0	oewn-puppet_leader-n	Number=Plur	dema	0			rule
+puppet play	0	oewn-puppet_play-n	Number=Sing	dema	0			oewn_form
+puppet plays	0	oewn-puppet_play-n	Number=Plur	dema	0			rule
+puppet regime	0	oewn-puppet_regime-n	Number=Sing	dema	0			oewn_form
+puppet regimes	0	oewn-puppet_regime-n	Number=Plur	dema	0			rule
+puppet ruler	0	oewn-puppet_ruler-n	Number=Sing	dema	0			oewn_form
+puppet rulers	0	oewn-puppet_ruler-n	Number=Plur	dema	0			rule
+puppet show	0	oewn-puppet_show-n	Number=Sing	dema	0			oewn_form
+puppet shows	0	oewn-puppet_show-n	Number=Plur	dema	0			rule
+puppet state	0	oewn-puppet_state-n	Number=Sing	dema	0			oewn_form
+puppet states	0	oewn-puppet_state-n	Number=Plur	dema	0			rule
+puppeteer	0	oewn-puppeteer-n	Number=Sing	dema	0			oewn_form
+puppeteers	0	oewn-puppeteer-n	Number=Plur	dema	0			rule
+puppetries	0	oewn-puppetry-n	Number=Plur	dema	0			rule
+puppetry	0	oewn-puppetry-n	Number=Sing	dema	0			oewn_form
+puppets	0	oewn-puppet-n	Number=Plur	dema	0			rule
+puppies	0	oewn-puppy-n	Number=Plur	dema	0			rule
+pupping	0	oewn-pup-v	VerbForm=Ger	dema	0			oewn_form
+puppy	0	oewn-puppy-n	Number=Sing	dema	0			oewn_form
+puppy fat	0	oewn-puppy_fat-n	Number=Sing	dema	0			oewn_form
+puppy fats	0	oewn-puppy_fat-n	Number=Plur	dema	0			rule
+puppy love	0	oewn-puppy_love-n	Number=Sing	dema	0			oewn_form
+puppy loves	0	oewn-puppy_love-n	Number=Plur	dema	0			rule
+puppydom	0		Number=Sing	dema	0	puppydom	n	moby_reverse
+puppydoms	0		Number=Plur	dema	0	puppydom	n	rule
+puppyfeet	0		Number=Sing	dema	0	puppyfeet	n	moby_reverse
+puppyfeets	0		Number=Plur	dema	0	puppyfeet	n	rule
+puppyfoot	0		Number=Sing	dema	0	puppyfoot	n	moby_reverse
+puppyfoots	0		Number=Plur	dema	0	puppyfoot	n	rule
+puppyhood	0		Number=Sing	dema	0	puppyhood	n	moby_reverse
+puppyhoods	0		Number=Plur	dema	0	puppyhood	n	rule
+puppyish	0	oewn-puppyish-a	Degree=Pos	dema	0			oewn_form
+puppylike	0	oewn-puppylike-a	Degree=Pos	dema	0			oewn_form
+pups	0	oewn-pup-n	Number=Plur	dema	0			rule
+pups	1	oewn-pup-v	Person=3+Tense=Pres	dema	0			rule
+purau	0	oewn-purau-n	Number=Sing	dema	0			oewn_form
+puraus	0	oewn-purau-n	Number=Plur	dema	0			rule
+purblind	0	oewn-purblind-a	Degree=Pos	dema	0			oewn_form
+purblindly	0		Degree=Pos	dema	0	purblindly	r	moby_reverse
+purblindness	0		Number=Sing	dema	0	purblindness	n	moby_reverse
+purblindnesses	0		Number=Plur	dema	0	purblindness	n	rule
+purchasable	0	oewn-purchasable-a	Degree=Pos	dema	0			oewn_form
+purchase	0	oewn-purchase-v	VerbForm=Inf	dema	0			oewn_form
+purchase	1	oewn-purchase-n	Number=Sing	dema	0			oewn_form
+purchase agreement	0	oewn-purchase_agreement-n	Number=Sing	dema	0			oewn_form
+purchase agreements	0	oewn-purchase_agreement-n	Number=Plur	dema	0			rule
+purchase contract	0	oewn-purchase_contract-n	Number=Sing	dema	0			oewn_form
+purchase contracts	0	oewn-purchase_contract-n	Number=Plur	dema	0			rule
+purchase order	0	oewn-purchase_order-n	Number=Sing	dema	0			oewn_form
+purchase orders	0	oewn-purchase_order-n	Number=Plur	dema	0			rule
+purchase price	0	oewn-purchase_price-n	Number=Sing	dema	0			oewn_form
+purchase prices	0	oewn-purchase_price-n	Number=Plur	dema	0			rule
+purchased	0	oewn-purchase-v	Tense=Past+VerbForm=Part	dema	0			rule
+purchaser	0	oewn-purchaser-n	Number=Sing	dema	0			oewn_form
+purchasers	0	oewn-purchaser-n	Number=Plur	dema	0			rule
+purchases	0	oewn-purchase-v	Person=3+Tense=Pres	dema	0			rule
+purchases	1	oewn-purchase-n	Number=Plur	dema	0			rule
+purchasing	0	oewn-purchase-v	VerbForm=Ger	dema	0			rule
+purchasing	1	oewn-purchasing-n	Number=Sing	dema	0			oewn_form
+purchasing agent	0	oewn-purchasing_agent-n	Number=Sing	dema	0			oewn_form
+purchasing agents	0	oewn-purchasing_agent-n	Number=Plur	dema	0			rule
+purchasing department	0	oewn-purchasing_department-n	Number=Sing	dema	0			oewn_form
+purchasing departments	0	oewn-purchasing_department-n	Number=Plur	dema	0			rule
+purchasings	0	oewn-purchasing-n	Number=Plur	dema	0			rule
+purdah	0	oewn-purdah-n	Number=Sing	dema	0			oewn_form
+purdahs	0	oewn-purdah-n	Number=Plur	dema	0			rule
+pure	0	oewn-pure-a	Degree=Pos	dema	0			oewn_form
+pure absence	0	oewn-pure_absence-n	Number=Sing	dema	0			oewn_form
+pure absences	0	oewn-pure_absence-n	Number=Plur	dema	0			rule
+pure binary numeration system	0	oewn-pure_binary_numeration_system-n	Number=Sing	dema	0			oewn_form
+pure binary numeration systems	0	oewn-pure_binary_numeration_system-n	Number=Plur	dema	0			rule
+pure gold	0	oewn-pure_gold-n	Number=Sing	dema	0			oewn_form
+pure golds	0	oewn-pure_gold-n	Number=Plur	dema	0			rule
+pure iambic trimeter	0	oewn-pure_iambic_trimeter-n	Number=Sing	dema	0			oewn_form
+pure iambic trimeters	0	oewn-pure_iambic_trimeter-n	Number=Plur	dema	0			rule
+pure imaginary number	0	oewn-pure_imaginary_number-n	Number=Sing	dema	0			oewn_form
+pure imaginary numbers	0	oewn-pure_imaginary_number-n	Number=Plur	dema	0			rule
+pure mathematics	0	oewn-pure_mathematics-n	Number=Sing	dema	0			oewn_form
+pure tone	0	oewn-pure_tone-n	Number=Sing	dema	0			oewn_form
+pure tones	0	oewn-pure_tone-n	Number=Plur	dema	0			rule
+pureblood	0	oewn-pureblood-n	Number=Sing	dema	0			oewn_form
+pureblood	1	oewn-pureblood-a	Degree=Pos	dema	0			oewn_form
+pureblooded	0	oewn-pureblooded-a	Degree=Pos	dema	0			oewn_form
+purebloods	0	oewn-pureblood-n	Number=Plur	dema	0			rule
+purebred	0	oewn-purebred-a	Degree=Pos	dema	0			oewn_form
+purebred	1	oewn-purebred-n	Number=Sing	dema	0			oewn_form
+purebreds	0	oewn-purebred-n	Number=Plur	dema	0			rule
+puree	0	oewn-puree-n	Number=Sing	dema	0			oewn_form
+puree	1	oewn-puree-v	VerbForm=Inf	dema	0			oewn_form
+pureed	0	oewn-puree-v	Tense=Past+VerbForm=Part	dema	0			rule
+pureeing	0	oewn-puree-v	VerbForm=Ger	dema	0			rule
+purees	0	oewn-puree-n	Number=Plur	dema	0			rule
+purees	1	oewn-puree-v	Person=3+Tense=Pres	dema	0			rule
+purehearted	0		Degree=Pos	dema	0	purehearted	a	moby_reverse
+purehearted	1		VerbForm=Inf	dema	0	purehearted	v	moby_reverse
+purely	0	oewn-purely-r	Degree=Pos	dema	0			oewn_form
+pureness	0	oewn-pureness-n	Number=Sing	dema	0			oewn_form
+purenesses	0	oewn-pureness-n	Number=Plur	dema	0			rule
+purer	0	oewn-pure-a	Degree=Cmp	dema	0			rule
+purest	0	oewn-pure-a	Degree=Sup	dema	0			rule
+purfle	0		Number=Sing	dema	0	purfle	n	moby_reverse
+purfle	1		VerbForm=Inf	dema	0	purfle	v	moby_reverse
+purfler	0		Number=Sing	dema	0	purfler	n	moby_reverse
+purflers	0		Number=Plur	dema	0	purfler	n	rule
+purfles	0		Number=Plur	dema	0	purfle	n	rule
+purga	0		Number=Sing	dema	0	purga	n	moby_reverse
+purgas	0		Number=Plur	dema	0	purga	n	rule
+purgation	0	oewn-purgation-n	Number=Sing	dema	0			oewn_form
+purgations	0	oewn-purgation-n	Number=Plur	dema	0			rule
+purgative	0	oewn-purgative-n	Number=Sing	dema	0			oewn_form
+purgative	1	oewn-purgative-a	Degree=Pos	dema	0			oewn_form
+purgatively	0		Degree=Pos	dema	0	purgatively	r	moby_reverse
+purgatives	0	oewn-purgative-n	Number=Plur	dema	0			rule
+purgatorial	0	oewn-purgatorial-a	Degree=Pos	dema	0			oewn_form
+purgatories	0	oewn-purgatory-n	Number=Plur	dema	0			rule
+purgatory	0	oewn-purgatory-n	Number=Sing	dema	0			oewn_form
+purge	0	oewn-purge-v	VerbForm=Inf	dema	0			oewn_form
+purge	1	oewn-purge-n	Number=Sing	dema	0			oewn_form
+purgeable	0		Degree=Pos	dema	0	purgeable	a	moby_reverse
+purged	0	oewn-purge-v	Tense=Past+VerbForm=Part	dema	0			rule
+purger	0		Number=Sing	dema	0	purger	n	moby_reverse
+purgers	0		Number=Plur	dema	0	purger	n	rule
+purges	0	oewn-purge-v	Person=3+Tense=Pres	dema	0			rule
+purges	1	oewn-purge-n	Number=Plur	dema	0			rule
+purging	0	oewn-purging-n	Number=Sing	dema	0			oewn_form
+purging	1	oewn-purge-v	VerbForm=Ger	dema	0			rule
+purging	2	oewn-purging-a	Degree=Pos	dema	0			oewn_form
+purging cassia	0	oewn-purging_cassia-n	Number=Sing	dema	0			oewn_form
+purging cassias	0	oewn-purging_cassia-n	Number=Plur	dema	0			rule
+purgings	0	oewn-purging-n	Number=Plur	dema	0			rule
+purification	0	oewn-purification-n	Number=Sing	dema	0			oewn_form
+purifications	0	oewn-purification-n	Number=Plur	dema	0			rule
+purificator	0	oewn-purificator-n	Number=Sing	dema	0			oewn_form
+purificatorium	0	oewn-purificatorium-n	Number=Sing	dema	0			oewn_form
+purificatoriums	0	oewn-purificatorium-n	Number=Plur	dema	0			rule
+purificators	0	oewn-purificator-n	Number=Plur	dema	0			rule
+purified	0	oewn-purify-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+purifier	0	oewn-purifier-n	Number=Sing	dema	0			oewn_form
+purifiers	0	oewn-purifier-n	Number=Plur	dema	0			rule
+purifies	0	oewn-purify-v	Person=3+Tense=Pres	dema	0			rule
+puriform	0		Degree=Pos	dema	0	puriform	a	moby_reverse
+purify	0	oewn-purify-v	VerbForm=Inf	dema	0			oewn_form
+purifying	0	oewn-purify-v	VerbForm=Ger	dema	0			rule
+purifying	1	oewn-purifying-a	Degree=Pos	dema	0			oewn_form
+purine	0	oewn-purine-n	Number=Sing	dema	0			oewn_form
+purines	0	oewn-purine-n	Number=Plur	dema	0			rule
+purism	0	oewn-purism-n	Number=Sing	dema	0			oewn_form
+purisms	0	oewn-purism-n	Number=Plur	dema	0			rule
+purist	0	oewn-purist-n	Number=Sing	dema	0			oewn_form
+puristic	0		Degree=Pos	dema	0	puristic	a	moby_reverse
+puristical	0		Degree=Pos	dema	0	puristical	a	moby_reverse
+puristically	0		Degree=Pos	dema	0	puristically	r	moby_reverse
+purists	0	oewn-purist-n	Number=Plur	dema	0			rule
+puritan	0	oewn-puritan-n	Number=Sing	dema	0			oewn_form
+puritan	1		Degree=Pos	dema	0	puritan	a	moby_reverse
+puritanic	0	oewn-puritanic-a	Degree=Pos	dema	0			oewn_form
+puritanical	0	oewn-puritanical-a	Degree=Pos	dema	0			oewn_form
+puritanically	0	oewn-puritanically-r	Degree=Pos	dema	0			oewn_form
+puritanicalness	0		Number=Sing	dema	0	puritanicalness	n	moby_reverse
+puritanicalnesses	0		Number=Plur	dema	0	puritanicalness	n	rule
+puritanism	0	oewn-puritanism-n	Number=Sing	dema	0			oewn_form
+puritanisms	0	oewn-puritanism-n	Number=Plur	dema	0			rule
+puritans	0	oewn-puritan-n	Number=Plur	dema	0			rule
+purities	0	oewn-purity-n	Number=Plur	dema	0			rule
+purity	0	oewn-purity-n	Number=Sing	dema	0			oewn_form
+purl	0	oewn-purl-n	Number=Sing	dema	0			oewn_form
+purl	1	oewn-purl-v	VerbForm=Inf	dema	0			oewn_form
+purl stitch	0	oewn-purl_stitch-n	Number=Sing	dema	0			oewn_form
+purl stitch	1	oewn-purl_stitch-v	VerbForm=Inf	dema	0			oewn_form
+purl stitches	0	oewn-purl_stitch-n	Number=Plur	dema	0			rule
+purled	0	oewn-purl-v	Tense=Past+VerbForm=Part	dema	0			rule
+purled stitch	0	oewn-purl_stitch-v	Tense=Past+VerbForm=Part	dema	0			rule
+purler	0		Number=Sing	dema	0	purler	n	moby_reverse
+purlers	0		Number=Plur	dema	0	purler	n	rule
+purlieu	0	oewn-purlieu-n	Number=Sing	dema	0			oewn_form
+purlieus	0	oewn-purlieu-n	Number=Plur	dema	0			rule
+purlin	0		Number=Sing	dema	0	purlin	n	moby_reverse
+purling	0	oewn-purl-v	VerbForm=Ger	dema	0			rule
+purling stitch	0	oewn-purl_stitch-v	VerbForm=Ger	dema	0			rule
+purlins	0		Number=Plur	dema	0	purlin	n	rule
+purloin	0	oewn-purloin-v	VerbForm=Inf	dema	0			oewn_form
+purloined	0	oewn-purloin-v	Tense=Past+VerbForm=Part	dema	0			rule
+purloiner	0		Number=Sing	dema	0	purloiner	n	moby_reverse
+purloiners	0		Number=Plur	dema	0	purloiner	n	rule
+purloining	0	oewn-purloin-v	VerbForm=Ger	dema	0			rule
+purloins	0	oewn-purloin-v	Person=3+Tense=Pres	dema	0			rule
+purloo	0	oewn-purloo-n	Number=Sing	dema	0			oewn_form
+purloos	0	oewn-purloo-n	Number=Plur	dema	0			rule
+purls	0	oewn-purl-n	Number=Plur	dema	0			rule
+purls	1	oewn-purl-v	Person=3+Tense=Pres	dema	0			rule
+purls stitch	0	oewn-purl_stitch-v	Person=3+Tense=Pres	dema	0			rule
+purpart	0		Number=Sing	dema	0	purpart	n	moby_reverse
+purparties	0		Number=Plur	dema	0	purparty	n	rule
+purparts	0		Number=Plur	dema	0	purpart	n	rule
+purparty	0		Number=Sing	dema	0	purparty	n	moby_reverse
+purple	0	oewn-purple-n	Number=Sing	dema	0			oewn_form
+purple	1	oewn-purple-a	Degree=Pos	dema	0			oewn_form
+purple	2	oewn-purple-v	VerbForm=Inf	dema	0			oewn_form
+purple amaranth	0	oewn-purple_amaranth-n	Number=Sing	dema	0			oewn_form
+purple amaranths	0	oewn-purple_amaranth-n	Number=Plur	dema	0			rule
+purple anise	0	oewn-purple_anise-n	Number=Sing	dema	0			oewn_form
+purple anises	0	oewn-purple_anise-n	Number=Plur	dema	0			rule
+purple apricot	0	oewn-purple_apricot-n	Number=Sing	dema	0			oewn_form
+purple apricots	0	oewn-purple_apricot-n	Number=Plur	dema	0			rule
+purple avens	0	oewn-purple_avens-n	Number=Sing	dema	0			oewn_form
+purple bacteria	0	oewn-purple_bacteria-n	Number=Sing	dema	0			oewn_form
+purple bacterias	0	oewn-purple_bacteria-n	Number=Plur	dema	0			rule
+purple beech	0	oewn-purple_beech-n	Number=Sing	dema	0			oewn_form
+purple beeches	0	oewn-purple_beech-n	Number=Plur	dema	0			rule
+purple boneset	0	oewn-purple_boneset-n	Number=Sing	dema	0			oewn_form
+purple bonesets	0	oewn-purple_boneset-n	Number=Plur	dema	0			rule
+purple chinese houses	0	oewn-purple_chinese_houses-n	Number=Sing	dema	0			oewn_form
+purple clematis	0	oewn-purple_clematis-n	Number=Sing	dema	0			oewn_form
+purple clover	0	oewn-purple_clover-n	Number=Sing	dema	0			oewn_form
+purple clovers	0	oewn-purple_clover-n	Number=Plur	dema	0			rule
+purple cress	0	oewn-purple_cress-n	Number=Sing	dema	0			oewn_form
+purple cresses	0	oewn-purple_cress-n	Number=Plur	dema	0			rule
+purple emperor	0	oewn-purple_emperor-n	Number=Sing	dema	0			oewn_form
+purple emperors	0	oewn-purple_emperor-n	Number=Plur	dema	0			rule
+purple finch	0	oewn-purple_finch-n	Number=Sing	dema	0			oewn_form
+purple finches	0	oewn-purple_finch-n	Number=Plur	dema	0			rule
+purple fringeless orchid	0	oewn-purple_fringeless_orchid-n	Number=Sing	dema	0			oewn_form
+purple fringeless orchids	0	oewn-purple_fringeless_orchid-n	Number=Plur	dema	0			rule
+purple fringeless orchis	0	oewn-purple_fringeless_orchis-n	Number=Sing	dema	0			oewn_form
+purple gallinule	0	oewn-purple_gallinule-n	Number=Sing	dema	0			oewn_form
+purple gallinules	0	oewn-purple_gallinule-n	Number=Plur	dema	0			rule
+purple grackle	0	oewn-purple_grackle-n	Number=Sing	dema	0			oewn_form
+purple grackles	0	oewn-purple_grackle-n	Number=Plur	dema	0			rule
+purple granadillo	0	oewn-purple_granadillo-n	Number=Sing	dema	0			oewn_form
+purple granadillos	0	oewn-purple_granadillo-n	Number=Plur	dema	0			rule
+purple ground cherries	0	oewn-purple_ground_cherry-n	Number=Plur	dema	0			rule
+purple ground cherry	0	oewn-purple_ground_cherry-n	Number=Sing	dema	0			oewn_form
+purple heart	0	oewn-purple_heart-n	Number=Sing	dema	0			oewn_form
+purple hearts	0	oewn-purple_heart-n	Number=Plur	dema	0			rule
+purple heather	0	oewn-purple_heather-n	Number=Sing	dema	0			oewn_form
+purple heathers	0	oewn-purple_heather-n	Number=Plur	dema	0			rule
+purple loco	0	oewn-purple_loco-n	Number=Sing	dema	0			oewn_form
+purple locos	0	oewn-purple_loco-n	Number=Plur	dema	0			rule
+purple locoweed	0	oewn-purple_locoweed-n	Number=Sing	dema	0			oewn_form
+purple locoweeds	0	oewn-purple_locoweed-n	Number=Plur	dema	0			rule
+purple loosestrife	0	oewn-purple_loosestrife-n	Number=Sing	dema	0			oewn_form
+purple loosestrifes	0	oewn-purple_loosestrife-n	Number=Plur	dema	0			rule
+purple martin	0	oewn-purple_martin-n	Number=Sing	dema	0			oewn_form
+purple martins	0	oewn-purple_martin-n	Number=Plur	dema	0			rule
+purple milk vetch	0	oewn-purple_milk_vetch-n	Number=Sing	dema	0			oewn_form
+purple milk vetches	0	oewn-purple_milk_vetch-n	Number=Plur	dema	0			rule
+purple mullein	0	oewn-purple_mullein-n	Number=Sing	dema	0			oewn_form
+purple mulleins	0	oewn-purple_mullein-n	Number=Plur	dema	0			rule
+purple nightshade	0	oewn-purple_nightshade-n	Number=Sing	dema	0			oewn_form
+purple nightshades	0	oewn-purple_nightshade-n	Number=Plur	dema	0			rule
+purple onion	0	oewn-purple_onion-n	Number=Sing	dema	0			oewn_form
+purple onions	0	oewn-purple_onion-n	Number=Plur	dema	0			rule
+purple orchis	0	oewn-purple_orchis-n	Number=Sing	dema	0			oewn_form
+purple osier	0	oewn-purple_osier-n	Number=Sing	dema	0			oewn_form
+purple osiers	0	oewn-purple_osier-n	Number=Plur	dema	0			rule
+purple passage	0	oewn-purple_passage-n	Number=Sing	dema	0			oewn_form
+purple passages	0	oewn-purple_passage-n	Number=Plur	dema	0			rule
+purple pea	0	oewn-purple_pea-n	Number=Sing	dema	0			oewn_form
+purple peas	0	oewn-purple_pea-n	Number=Plur	dema	0			rule
+purple poppy mallow	0	oewn-purple_poppy_mallow-n	Number=Sing	dema	0			oewn_form
+purple poppy mallows	0	oewn-purple_poppy_mallow-n	Number=Plur	dema	0			rule
+purple rock brake	0	oewn-purple_rock_brake-n	Number=Sing	dema	0			oewn_form
+purple rock brakes	0	oewn-purple_rock_brake-n	Number=Plur	dema	0			rule
+purple sage	0	oewn-purple_sage-n	Number=Sing	dema	0			oewn_form
+purple sages	0	oewn-purple_sage-n	Number=Plur	dema	0			rule
+purple sanicle	0	oewn-purple_sanicle-n	Number=Sing	dema	0			oewn_form
+purple sanicles	0	oewn-purple_sanicle-n	Number=Plur	dema	0			rule
+purple saxifrage	0	oewn-purple_saxifrage-n	Number=Sing	dema	0			oewn_form
+purple saxifrages	0	oewn-purple_saxifrage-n	Number=Plur	dema	0			rule
+purple silkweed	0	oewn-purple_silkweed-n	Number=Sing	dema	0			oewn_form
+purple silkweeds	0	oewn-purple_silkweed-n	Number=Plur	dema	0			rule
+purple strawberry guava	0	oewn-purple_strawberry_guava-n	Number=Sing	dema	0			oewn_form
+purple strawberry guavas	0	oewn-purple_strawberry_guava-n	Number=Plur	dema	0			rule
+purple trillium	0	oewn-purple_trillium-n	Number=Sing	dema	0			oewn_form
+purple trilliums	0	oewn-purple_trillium-n	Number=Plur	dema	0			rule
+purple velvet plant	0	oewn-purple_velvet_plant-n	Number=Sing	dema	0			oewn_form
+purple velvet plants	0	oewn-purple_velvet_plant-n	Number=Plur	dema	0			rule
+purple virgin's bower	0	oewn-purple_virgin-ap-s_bower-n	Number=Sing	dema	0			oewn_form
+purple virgin's bowers	0	oewn-purple_virgin-ap-s_bower-n	Number=Plur	dema	0			rule
+purple willow	0	oewn-purple_willow-n	Number=Sing	dema	0			oewn_form
+purple willows	0	oewn-purple_willow-n	Number=Plur	dema	0			rule
+purple-black	0	oewn-purple-black-a	Degree=Pos	dema	0			oewn_form
+purple-blue	0	oewn-purple-blue-a	Degree=Pos	dema	0			oewn_form
+purple-brown	0	oewn-purple-brown-a	Degree=Pos	dema	0			oewn_form
+purple-eyed	0	oewn-purple-eyed-a	Degree=Pos	dema	0			oewn_form
+purple-flowered	0	oewn-purple-flowered-a	Degree=Pos	dema	0			oewn_form
+purple-flowering raspberries	0	oewn-purple-flowering_raspberry-n	Number=Plur	dema	0			rule
+purple-flowering raspberry	0	oewn-purple-flowering_raspberry-n	Number=Sing	dema	0			oewn_form
+purple-fringed orchid	0	oewn-purple-fringed_orchid-n	Number=Sing	dema	0			oewn_form
+purple-fringed orchids	0	oewn-purple-fringed_orchid-n	Number=Plur	dema	0			rule
+purple-fringed orchis	0	oewn-purple-fringed_orchis-n	Number=Sing	dema	0			oewn_form
+purple-green	0	oewn-purple-green-a	Degree=Pos	dema	0			oewn_form
+purple-hooded orchis	0	oewn-purple-hooded_orchis-n	Number=Sing	dema	0			oewn_form
+purple-lilac	0	oewn-purple-lilac-a	Degree=Pos	dema	0			oewn_form
+purple-red	0	oewn-purple-red-a	Degree=Pos	dema	0			oewn_form
+purple-spotted	0	oewn-purple-spotted-a	Degree=Pos	dema	0			oewn_form
+purple-staining Cortinarius	0	oewn-purple-staining_Cortinarius-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+purple-stemmed aster	0	oewn-purple-stemmed_aster-n	Number=Sing	dema	0			oewn_form
+purple-stemmed asters	0	oewn-purple-stemmed_aster-n	Number=Plur	dema	0			rule
+purple-tinged	0	oewn-purple-tinged-a	Degree=Pos	dema	0			oewn_form
+purple-tinted	0	oewn-purple-tinted-a	Degree=Pos	dema	0			oewn_form
+purple-veined	0	oewn-purple-veined-a	Degree=Pos	dema	0			oewn_form
+purple-white	0	oewn-purple-white-a	Degree=Pos	dema	0			oewn_form
+purpled	0	oewn-purple-v	Tense=Past+VerbForm=Part	dema	0			rule
+purpleheart	0		Number=Sing	dema	0	purpleheart	n	moby_reverse
+purplehearts	0		Number=Plur	dema	0	purpleheart	n	rule
+purpleness	0	oewn-purpleness-n	Number=Sing	dema	0			oewn_form
+purplenesses	0	oewn-purpleness-n	Number=Plur	dema	0			rule
+purpler	0	oewn-purple-a	Degree=Cmp	dema	0			rule
+purples	0	oewn-purple-n	Number=Plur	dema	0			rule
+purples	1	oewn-purple-v	Person=3+Tense=Pres	dema	0			rule
+purplest	0	oewn-purple-a	Degree=Sup	dema	0			rule
+purpling	0	oewn-purple-v	VerbForm=Ger	dema	0			rule
+purplish	0	oewn-purplish-a	Degree=Pos	dema	0			oewn_form
+purplish blue	0	oewn-purplish_blue-n	Number=Sing	dema	0			oewn_form
+purplish blues	0	oewn-purplish_blue-n	Number=Plur	dema	0			rule
+purplish pink	0	oewn-purplish_pink-n	Number=Sing	dema	0			oewn_form
+purplish pinks	0	oewn-purplish_pink-n	Number=Plur	dema	0			rule
+purplish red	0	oewn-purplish_red-n	Number=Sing	dema	0			oewn_form
+purplish reds	0	oewn-purplish_red-n	Number=Plur	dema	0			rule
+purplish-black	0	oewn-purplish-black-a	Degree=Pos	dema	0			oewn_form
+purplish-blue	0	oewn-purplish-blue-a	Degree=Pos	dema	0			oewn_form
+purplish-brown	0	oewn-purplish-brown-a	Degree=Pos	dema	0			oewn_form
+purplish-green	0	oewn-purplish-green-a	Degree=Pos	dema	0			oewn_form
+purplish-lilac	0	oewn-purplish-lilac-a	Degree=Pos	dema	0			oewn_form
+purplish-red	0	oewn-purplish-red-n	Number=Sing	dema	0			oewn_form
+purplish-red	1	oewn-purplish-red-a	Degree=Pos	dema	0			oewn_form
+purplish-reds	0	oewn-purplish-red-n	Number=Plur	dema	0			rule
+purplish-white	0	oewn-purplish-white-a	Degree=Pos	dema	0			oewn_form
+purplishness	0		Number=Sing	dema	0	purplishness	n	moby_reverse
+purport	0	oewn-purport-n	Number=Sing	dema	1			carried
+purport	1	oewn-purport-v	VerbForm=Inf	dema	1			carried
+purported	0	oewn-purport-v	Tense=Past+VerbForm=Part	dema	0			rule
+purportedly	0	oewn-purportedly-r	Degree=Pos	dema	0			oewn_form
+purporting	0	oewn-purport-v	VerbForm=Ger	dema	0			rule
+purports	0	oewn-purport-n	Number=Plur	dema	1			carried
+purports	1	oewn-purport-v	Person=3+Tense=Pres	dema	1			carried
+purpose	0	oewn-purpose-n	Number=Sing	dema	0			oewn_form
+purpose	1	oewn-purpose-v	VerbForm=Inf	dema	0			oewn_form
+purpose-built	0	oewn-purpose-built-a	Degree=Pos	dema	0			oewn_form
+purpose-made	0	oewn-purpose-made-a	Degree=Pos	dema	0			oewn_form
+purposed	0	oewn-purpose-v	Tense=Past+VerbForm=Part	dema	0			rule
+purposeful	0	oewn-purposeful-a	Degree=Pos	dema	0			oewn_form
+purposefully	0	oewn-purposefully-r	Degree=Pos	dema	0			oewn_form
+purposefulness	0	oewn-purposefulness-n	Number=Sing	dema	0			oewn_form
+purposefulnesses	0	oewn-purposefulness-n	Number=Plur	dema	0			rule
+purposeless	0	oewn-purposeless-a	Degree=Pos	dema	0			oewn_form
+purposelessly	0	oewn-purposelessly-r	Degree=Pos	dema	0			oewn_form
+purposelessness	0	oewn-purposelessness-n	Number=Sing	dema	0			oewn_form
+purposelessnesses	0	oewn-purposelessness-n	Number=Plur	dema	0			rule
+purposely	0	oewn-purposely-r	Degree=Pos	dema	0			oewn_form
+purposes	0	oewn-purpose-n	Number=Plur	dema	0			rule
+purposes	1	oewn-purpose-v	Person=3+Tense=Pres	dema	0			rule
+purposing	0	oewn-purpose-v	VerbForm=Ger	dema	0			rule
+purposive	0	oewn-purposive-a	Degree=Pos	dema	0			oewn_form
+purposively	0		Degree=Pos	dema	0	purposively	r	moby_reverse
+purposiveness	0		Number=Sing	dema	0	purposiveness	n	moby_reverse
+purposivenesses	0		Number=Plur	dema	0	purposiveness	n	rule
+purpresture	0		Number=Sing	dema	0	purpresture	n	moby_reverse
+purprestures	0		Number=Plur	dema	0	purpresture	n	rule
+purpura	0	oewn-purpura-n	Number=Sing	dema	0			oewn_form
+purpura hemorrhagica	0	oewn-purpura_hemorrhagica-n	Number=Sing	dema	0			oewn_form
+purpura hemorrhagicas	0	oewn-purpura_hemorrhagica-n	Number=Plur	dema	0			rule
+purpuras	0	oewn-purpura-n	Number=Plur	dema	0			rule
+purpurate	0	oewn-purpurate-v	VerbForm=Inf	dema	0			oewn_form
+purpurated	0	oewn-purpurate-v	Tense=Past+VerbForm=Part	dema	0			rule
+purpurates	0	oewn-purpurate-v	Person=3+Tense=Pres	dema	0			rule
+purpurating	0	oewn-purpurate-v	VerbForm=Ger	dema	0			rule
+purpure	0		Number=Sing	dema	0	purpure	n	moby_reverse
+purpure	1		Degree=Pos	dema	0	purpure	a	moby_reverse
+purpures	0		Number=Plur	dema	0	purpure	n	rule
+purpuric	0		Degree=Pos	dema	0	purpuric	a	moby_reverse
+purpurin	0		Number=Sing	dema	0	purpurin	n	moby_reverse
+purpurins	0		Number=Plur	dema	0	purpurin	n	rule
+purr	0	oewn-purr-v	VerbForm=Inf	dema	0			oewn_form
+purr	1	oewn-purr-n	Number=Sing	dema	0			oewn_form
+purred	0	oewn-purr-v	Tense=Past+VerbForm=Part	dema	0			rule
+purree	0		Number=Sing	dema	0	purree	n	moby_reverse
+purree	1		Degree=Pos	dema	0	purree	a	moby_reverse
+purrees	0		Number=Plur	dema	0	purree	n	rule
+purring	0	oewn-purr-v	VerbForm=Ger	dema	0			rule
+purringly	0		Degree=Pos	dema	0	purringly	r	moby_reverse
+purrs	0	oewn-purr-v	Person=3+Tense=Pres	dema	0			rule
+purrs	1	oewn-purr-n	Number=Plur	dema	0			rule
+purse	0	oewn-purse-n	Number=Sing	dema	0			oewn_form
+purse	1	oewn-purse-v	VerbForm=Inf	dema	0			oewn_form
+purse seine	0	oewn-purse_seine-n	Number=Sing	dema	0			oewn_form
+purse seines	0	oewn-purse_seine-n	Number=Plur	dema	0			rule
+purse string	0	oewn-purse_string-n	Number=Sing	dema	0			oewn_form
+purse strings	0	oewn-purse_string-n	Number=Plur	dema	0			rule
+purse strings	1	oewn-purse_strings-n	Number=Sing	dema	0			oewn_form
+purse-proud	0	oewn-purse-proud-a	Degree=Pos	dema	0			oewn_form
+purse-string operation	0	oewn-purse-string_operation-n	Number=Sing	dema	0			oewn_form
+purse-string operations	0	oewn-purse-string_operation-n	Number=Plur	dema	0			rule
+pursed	0	oewn-purse-v	Tense=Past+VerbForm=Part	dema	0			rule
+purseless	0		Degree=Pos	dema	0	purseless	a	moby_reverse
+purselike	0		Degree=Pos	dema	0	purselike	a	moby_reverse
+purser	0	oewn-purser-n	Number=Sing	dema	0			oewn_form
+pursers	0	oewn-purser-n	Number=Plur	dema	0			rule
+purses	0	oewn-purse-n	Number=Plur	dema	0			rule
+purses	1	oewn-purse-v	Person=3+Tense=Pres	dema	0			rule
+pursier	0	oewn-pursy-a	Degree=Cmp	dema	0			rule
+pursiest	0	oewn-pursy-a	Degree=Sup	dema	0			rule
+pursily	0		Degree=Pos	dema	0	pursily	r	moby_reverse
+pursiness	0		Number=Sing	dema	0	pursiness	n	moby_reverse
+pursinesses	0		Number=Plur	dema	0	pursiness	n	rule
+pursing	0	oewn-purse-v	VerbForm=Ger	dema	0			rule
+purslane	0	oewn-purslane-n	Number=Sing	dema	0			oewn_form
+purslane speedwell	0	oewn-purslane_speedwell-n	Number=Sing	dema	0			oewn_form
+purslane speedwells	0	oewn-purslane_speedwell-n	Number=Plur	dema	0			rule
+purslanes	0	oewn-purslane-n	Number=Plur	dema	0			rule
+pursuable	0		Degree=Pos	dema	0	pursuable	a	moby_reverse
+pursual	0	oewn-pursual-n	Number=Sing	dema	0			oewn_form
+pursuals	0	oewn-pursual-n	Number=Plur	dema	0			rule
+pursuance	0	oewn-pursuance-n	Number=Sing	dema	0			oewn_form
+pursuances	0	oewn-pursuance-n	Number=Plur	dema	0			rule
+pursuant	0	oewn-pursuant-a	Degree=Pos	dema	0			oewn_form
+pursue	0	oewn-pursue-v	VerbForm=Inf	dema	0			oewn_form
+pursued	0	oewn-pursued-n	Number=Sing	dema	0			oewn_form
+pursued	1	oewn-pursue-v	Tense=Past+VerbForm=Part	dema	0			rule
+pursued	2	oewn-pursued-a	Degree=Pos	dema	0			oewn_form
+pursueds	0	oewn-pursued-n	Number=Plur	dema	0			rule
+pursuer	0	oewn-pursuer-n	Number=Sing	dema	0			oewn_form
+pursuers	0	oewn-pursuer-n	Number=Plur	dema	0			rule
+pursues	0	oewn-pursue-v	Person=3+Tense=Pres	dema	0			rule
+pursuing	0	oewn-pursue-v	VerbForm=Ger	dema	0			rule
+pursuing	1	oewn-pursuing-a	Degree=Pos	dema	0			oewn_form
+pursuit	0	oewn-pursuit-n	Number=Sing	dema	0			oewn_form
+pursuits	0	oewn-pursuit-n	Number=Plur	dema	0			rule
+pursuivant	0		Number=Sing	dema	0	pursuivant	n	moby_reverse
+pursuivants	0		Number=Plur	dema	0	pursuivant	n	rule
+pursy	0	oewn-pursy-a	Degree=Pos	dema	0			oewn_form
+purtenance	0		Number=Sing	dema	0	purtenance	n	moby_reverse
+purtenances	0		Number=Plur	dema	0	purtenance	n	rule
+purulence	0	oewn-purulence-n	Number=Sing	dema	0			oewn_form
+purulences	0	oewn-purulence-n	Number=Plur	dema	0			rule
+purulencies	0	oewn-purulency-n	Number=Plur	dema	0			rule
+purulency	0	oewn-purulency-n	Number=Sing	dema	0			oewn_form
+purulent	0	oewn-purulent-a	Degree=Pos	dema	0			oewn_form
+purulent pleurisies	0	oewn-purulent_pleurisy-n	Number=Plur	dema	0			rule
+purulent pleurisy	0	oewn-purulent_pleurisy-n	Number=Sing	dema	0			oewn_form
+purulently	0		Degree=Pos	dema	0	purulently	r	moby_reverse
+puruloid	0		Degree=Pos	dema	0	puruloid	a	moby_reverse
+purusha	0		Number=Sing	dema	0	purusha	n	moby_reverse
+purushas	0		Number=Plur	dema	0	purusha	n	rule
+purvey	0	oewn-purvey-v	VerbForm=Inf	dema	0			oewn_form
+purveyance	0	oewn-purveyance-n	Number=Sing	dema	0			oewn_form
+purveyances	0	oewn-purveyance-n	Number=Plur	dema	0			rule
+purveyed	0	oewn-purvey-v	Tense=Past+VerbForm=Part	dema	0			rule
+purveying	0	oewn-purvey-v	VerbForm=Ger	dema	0			rule
+purveyor	0	oewn-purveyor-n	Number=Sing	dema	0			oewn_form
+purveyors	0	oewn-purveyor-n	Number=Plur	dema	0			rule
+purveys	0	oewn-purvey-v	Person=3+Tense=Pres	dema	0			rule
+purview	0	oewn-purview-n	Number=Sing	dema	0			oewn_form
+purviews	0	oewn-purview-n	Number=Plur	dema	0			rule
+pus	0	oewn-pus-n	Number=Sing	dema	0			oewn_form
+pus-forming bacteria	0	oewn-pus-forming_bacteria-n	Number=Sing	dema	0			oewn_form
+pus-forming bacterias	0	oewn-pus-forming_bacteria-n	Number=Plur	dema	0			rule
+puses	0	oewn-pus-n	Number=Plur	dema	0			rule
+push	0	oewn-push-n	Number=Sing	dema	1			carried
+push	1	oewn-push-v	VerbForm=Inf	dema	1			carried
+push around	0	oewn-push_around-v	VerbForm=Inf	dema	0			oewn_form
+push aside	0	oewn-push_aside-v	VerbForm=Inf	dema	0			oewn_form
+push away	0	oewn-push_away-v	VerbForm=Inf	dema	0			oewn_form
+push back	0	oewn-push_back-n	Number=Sing	dema	0			oewn_form
+push back	1	oewn-push_back-v	VerbForm=Inf	dema	0			oewn_form
+push backs	0	oewn-push_back-n	Number=Plur	dema	0			rule
+push broom	0	oewn-push_broom-n	Number=Sing	dema	0			oewn_form
+push brooms	0	oewn-push_broom-n	Number=Plur	dema	0			rule
+push button	0	oewn-push_button-n	Number=Sing	dema	0			oewn_form
+push buttons	0	oewn-push_button-n	Number=Plur	dema	0			rule
+push down	0	oewn-push_down-v	VerbForm=Inf	dema	0			oewn_form
+push forward	0	oewn-push_forward-v	VerbForm=Inf	dema	0			oewn_form
+push on	0	oewn-push_on-v	VerbForm=Inf	dema	0			oewn_form
+push out	0	oewn-push_out-v	VerbForm=Inf	dema	0			oewn_form
+push through	0	oewn-push_through-v	VerbForm=Inf	dema	0			oewn_form
+push up	0	oewn-push_up-v	VerbForm=Inf	dema	0			oewn_form
+push-bike	0	oewn-push-bike-n	Number=Sing	dema	0			oewn_form
+push-bikes	0	oewn-push-bike-n	Number=Plur	dema	0			rule
+push-button radio	0	oewn-push-button_radio-n	Number=Sing	dema	0			oewn_form
+push-button radios	0	oewn-push-button_radio-n	Number=Plur	dema	0			rule
+push-down list	0	oewn-push-down_list-n	Number=Sing	dema	0			oewn_form
+push-down lists	0	oewn-push-down_list-n	Number=Plur	dema	0			rule
+push-down queue	0	oewn-push-down_queue-n	Number=Sing	dema	0			oewn_form
+push-down queues	0	oewn-push-down_queue-n	Number=Plur	dema	0			rule
+push-down stack	0	oewn-push-down_stack-n	Number=Sing	dema	0			oewn_form
+push-down stacks	0	oewn-push-down_stack-n	Number=Plur	dema	0			rule
+push-down storage	0	oewn-push-down_storage-n	Number=Sing	dema	0			oewn_form
+push-down storages	0	oewn-push-down_storage-n	Number=Plur	dema	0			rule
+push-down store	0	oewn-push-down_store-n	Number=Sing	dema	0			oewn_form
+push-down stores	0	oewn-push-down_store-n	Number=Plur	dema	0			rule
+pushball	0	oewn-pushball-n	Number=Sing	dema	0			oewn_form
+pushballs	0	oewn-pushball-n	Number=Plur	dema	0			rule
+pushcard	0		Number=Sing	dema	0	pushcard	n	moby_reverse
+pushcards	0		Number=Plur	dema	0	pushcard	n	rule
+pushcart	0	oewn-pushcart-n	Number=Sing	dema	0			oewn_form
+pushcarts	0	oewn-pushcart-n	Number=Plur	dema	0			rule
+pushchair	0	oewn-pushchair-n	Number=Sing	dema	0			oewn_form
+pushchairs	0	oewn-pushchair-n	Number=Plur	dema	0			rule
+pushed	0	oewn-push-v	Tense=Past+VerbForm=Part	dema	1			carried
+pushed	1	dema-pushed-a	Degree=Pos	dema	0			carried
+pushed around	0	oewn-push_around-v	Tense=Past+VerbForm=Part	dema	0			rule
+pushed aside	0	oewn-push_aside-v	Tense=Past+VerbForm=Part	dema	0			rule
+pushed away	0	oewn-push_away-v	Tense=Past+VerbForm=Part	dema	0			rule
+pushed back	0	oewn-push_back-v	Tense=Past+VerbForm=Part	dema	0			rule
+pushed down	0	oewn-push_down-v	Tense=Past+VerbForm=Part	dema	0			rule
+pushed forward	0	oewn-push_forward-v	Tense=Past+VerbForm=Part	dema	0			rule
+pushed on	0	oewn-push_on-v	Tense=Past+VerbForm=Part	dema	0			rule
+pushed out	0	oewn-push_out-v	Tense=Past+VerbForm=Part	dema	0			rule
+pushed through	0	oewn-push_through-v	Tense=Past+VerbForm=Part	dema	0			rule
+pushed up	0	oewn-push_up-v	Tense=Past+VerbForm=Part	dema	0			rule
+pusher	0	oewn-pusher-n	Number=Sing	dema	0			oewn_form
+pushers	0	oewn-pusher-n	Number=Plur	dema	0			rule
+pushes	0	oewn-push-n	Number=Plur	dema	1			carried
+pushes	1	oewn-push-v	Person=3+Tense=Pres	dema	1			carried
+pushes around	0	oewn-push_around-v	Person=3+Tense=Pres	dema	0			rule
+pushes aside	0	oewn-push_aside-v	Person=3+Tense=Pres	dema	0			rule
+pushes away	0	oewn-push_away-v	Person=3+Tense=Pres	dema	0			rule
+pushes back	0	oewn-push_back-v	Person=3+Tense=Pres	dema	0			rule
+pushes down	0	oewn-push_down-v	Person=3+Tense=Pres	dema	0			rule
+pushes forward	0	oewn-push_forward-v	Person=3+Tense=Pres	dema	0			rule
+pushes on	0	oewn-push_on-v	Person=3+Tense=Pres	dema	0			rule
+pushes out	0	oewn-push_out-v	Person=3+Tense=Pres	dema	0			rule
+pushes through	0	oewn-push_through-v	Person=3+Tense=Pres	dema	0			rule
+pushes up	0	oewn-push_up-v	Person=3+Tense=Pres	dema	0			rule
+pushful	0	oewn-pushful-a	Degree=Pos	dema	0			oewn_form
+pushier	0	oewn-pushy-a	Degree=Cmp	dema	0			oewn_form
+pushiest	0	oewn-pushy-a	Degree=Sup	dema	0			oewn_form
+pushiness	0	oewn-pushiness-n	Number=Sing	dema	0			oewn_form
+pushinesses	0	oewn-pushiness-n	Number=Plur	dema	0			rule
+pushing	0	oewn-push-v	VerbForm=Ger	dema	1			carried
+pushing	1	dema-pushing-a	Degree=Pos	dema	0			carried
+pushing	2	dema-pushing-r	Degree=Pos	dema	0			carried
+pushing	3	oewn-push-n	Number=Sing+VerbForm=Ger	dema	1			carried
+pushing	4	oewn-pushing-n	Number=Sing	dema	0			oewn_form
+pushing around	0	oewn-push_around-v	VerbForm=Ger	dema	0			rule
+pushing aside	0	oewn-push_aside-v	VerbForm=Ger	dema	0			rule
+pushing away	0	oewn-push_away-v	VerbForm=Ger	dema	0			rule
+pushing back	0	oewn-push_back-v	VerbForm=Ger	dema	0			rule
+pushing down	0	oewn-push_down-v	VerbForm=Ger	dema	0			rule
+pushing forward	0	oewn-push_forward-v	VerbForm=Ger	dema	0			rule
+pushing on	0	oewn-push_on-v	VerbForm=Ger	dema	0			rule
+pushing out	0	oewn-push_out-v	VerbForm=Ger	dema	0			rule
+pushing through	0	oewn-push_through-v	VerbForm=Ger	dema	0			rule
+pushing up	0	oewn-push_up-v	VerbForm=Ger	dema	0			rule
+pushingly	0		Degree=Pos	dema	0	pushingly	r	moby_reverse
+pushingness	0		Number=Sing	dema	0	pushingness	n	moby_reverse
+pushings	0	oewn-pushing-n	Number=Plur	dema	0			rule
+pushover	0	oewn-pushover-n	Number=Sing	dema	0			oewn_form
+pushovers	0	oewn-pushover-n	Number=Plur	dema	0			rule
+pushpin	0	oewn-pushpin-n	Number=Sing	dema	0			oewn_form
+pushpins	0	oewn-pushpin-n	Number=Plur	dema	0			rule
+pushrod	0		Number=Sing	dema	0	pushrod	n	moby_reverse
+pushrods	0		Number=Plur	dema	0	pushrod	n	rule
+pushup	0	oewn-pushup-n	Number=Sing	dema	0			oewn_form
+pushups	0	oewn-pushup-n	Number=Plur	dema	0			rule
+pushy	0	oewn-pushy-a	Degree=Pos	dema	0			oewn_form
+pusillanimities	0	oewn-pusillanimity-n	Number=Plur	dema	0			rule
+pusillanimity	0	oewn-pusillanimity-n	Number=Sing	dema	0			oewn_form
+pusillanimous	0	oewn-pusillanimous-a	Degree=Pos	dema	0			oewn_form
+pusillanimously	0	oewn-pusillanimously-r	Degree=Pos	dema	0			oewn_form
+pusillanimousness	0	oewn-pusillanimousness-n	Number=Sing	dema	0			oewn_form
+pusillanimousnesses	0	oewn-pusillanimousness-n	Number=Plur	dema	0			rule
+puslike	0		Degree=Pos	dema	0	puslike	a	moby_reverse
+puss	0	oewn-puss-n	Number=Sing	dema	0			oewn_form
+pusses	0	oewn-puss-n	Number=Plur	dema	0			rule
+pussier	0	oewn-pussy-a	Degree=Cmp	dema	0			oewn_form
+pussies	0	oewn-pussy-n	Number=Plur	dema	0			rule
+pussiest	0	oewn-pussy-a	Degree=Sup	dema	0			oewn_form
+pussley	0	oewn-pussley-n	Number=Sing	dema	0			oewn_form
+pussleys	0	oewn-pussley-n	Number=Plur	dema	0			rule
+pusslies	0	oewn-pussly-n	Number=Plur	dema	0			rule
+pusslike	0		Degree=Pos	dema	0	pusslike	a	moby_reverse
+pussly	0	oewn-pussly-n	Number=Sing	dema	0			oewn_form
+pussy	0	oewn-pussy-n	Number=Sing	dema	0			oewn_form
+pussy	1	oewn-pussy-a	Degree=Pos	dema	0			oewn_form
+pussy willow	0	oewn-pussy_willow-n	Number=Sing	dema	0			oewn_form
+pussy willows	0	oewn-pussy_willow-n	Number=Plur	dema	0			rule
+pussy's-paw	0	oewn-pussy-ap-s-paw-n	Number=Sing	dema	0			oewn_form
+pussy's-paws	0	oewn-pussy-ap-s-paw-n	Number=Plur	dema	0			rule
+pussy-paw	0	oewn-pussy-paw-n	Number=Sing	dema	0			oewn_form
+pussy-paws	0	oewn-pussy-paw-n	Number=Plur	dema	0			rule
+pussy-paws	1	oewn-pussy-paws-n	Number=Sing	dema	0			oewn_form
+pussycat	0	oewn-pussycat-n	Number=Sing	dema	0			oewn_form
+pussycats	0	oewn-pussycat-n	Number=Plur	dema	0			rule
+pussyfoot	0	oewn-pussyfoot-v	VerbForm=Inf	dema	0			oewn_form
+pussyfoot	1		Number=Sing	dema	0	pussyfoot	n	moby_reverse
+pussyfooted	0	oewn-pussyfoot-v	Tense=Past+VerbForm=Part	dema	0			rule
+pussyfooting	0	oewn-pussyfoot-v	VerbForm=Ger	dema	0			rule
+pussyfoots	0	oewn-pussyfoot-v	Person=3+Tense=Pres	dema	0			rule
+pussyfuck	0	oewn-pussyfuck-v	VerbForm=Inf	dema	0			oewn_form
+pussyfucked	0	oewn-pussyfuck-v	Tense=Past+VerbForm=Part	dema	0			rule
+pussyfucking	0	oewn-pussyfuck-v	VerbForm=Ger	dema	0			rule
+pussyfucks	0	oewn-pussyfuck-v	Person=3+Tense=Pres	dema	0			rule
+pussytoes	0	oewn-pussytoes-n	Number=Sing	dema	0			oewn_form
+pustulant	0		Degree=Pos	dema	0	pustulant	a	moby_reverse
+pustulant	1		Number=Sing	dema	0	pustulant	n	moby_reverse
+pustular	0		Degree=Pos	dema	0	pustular	a	moby_reverse
+pustulate	0	oewn-pustulate-a	Degree=Pos	dema	1			carried
+pustulate	1	dema-pustulate-v	VerbForm=Inf	dema	1			carried
+pustulated	0	dema-pustulate-v	Tense=Past+VerbForm=Part	dema	0			rule
+pustulates	0	dema-pustulate-v	Person=3+Tense=Pres	dema	1			carried
+pustulating	0	dema-pustulate-v	VerbForm=Ger	dema	0			rule
+pustulation	0		Number=Sing	dema	0	pustulation	n	moby_reverse
+pustulations	0		Number=Plur	dema	0	pustulation	n	rule
+pustule	0	oewn-pustule-n	Number=Sing	dema	0			oewn_form
+pustuled	0		Degree=Pos	dema	0	pustuled	a	moby_reverse
+pustuled	1		VerbForm=Inf	dema	0	pustuled	v	moby_reverse
+pustules	0	oewn-pustule-n	Number=Plur	dema	0			rule
+pustulous	0		Degree=Pos	dema	0	pustulous	a	moby_reverse
+put	0	oewn-put-v	VerbForm=Inf	dema	0			oewn_form
+put	1	oewn-put-v	Tense=Past+VerbForm=Part	dema	0			hand
+put	2	oewn-put-n	Number=Sing	dema	0			oewn_form
+put across	0	oewn-put_across-v	VerbForm=Inf	dema	0			oewn_form
+put aside	0	oewn-put_aside-v	VerbForm=Inf	dema	0			oewn_form
+put away	0	oewn-put_away-v	VerbForm=Inf	dema	0			oewn_form
+put back	0	oewn-put_back-v	VerbForm=Inf	dema	0			oewn_form
+put behind bars	0	oewn-put_behind_bars-v	VerbForm=Inf	dema	0			oewn_form
+put differently	0	oewn-put_differently-r	Degree=Pos	dema	0			oewn_form
+put down	0	oewn-put_down-v	VerbForm=Inf	dema	0			oewn_form
+put forward	0	oewn-put_forward-v	VerbForm=Inf	dema	0			oewn_form
+put in	0	oewn-put_in-v	VerbForm=Inf	dema	0			oewn_form
+put off	0	oewn-put_off-v	VerbForm=Inf	dema	0			oewn_form
+put on	0	oewn-put_on-v	VerbForm=Inf	dema	0			oewn_form
+put on	1	oewn-put_on-a	Degree=Pos	dema	0			oewn_form
+put on airs	0	oewn-put_on_airs-v	VerbForm=Inf	dema	0			oewn_form
+put on the line	0	oewn-put_on_the_line-v	VerbForm=Inf	dema	0			oewn_form
+put one across	0	oewn-put_one_across-v	VerbForm=Inf	dema	0			oewn_form
+put one over	0	oewn-put_one_over-v	VerbForm=Inf	dema	0			oewn_form
+put option	0	oewn-put_option-n	Number=Sing	dema	0			oewn_form
+put options	0	oewn-put_option-n	Number=Plur	dema	0			rule
+put out	0	oewn-put_out-v	VerbForm=Inf	dema	0			oewn_form
+put out feelers	0	oewn-put_out_feelers-v	VerbForm=Inf	dema	0			oewn_form
+put over	0	oewn-put_over-v	VerbForm=Inf	dema	0			oewn_form
+put right	0	oewn-put_right-v	VerbForm=Inf	dema	0			oewn_form
+put through	0	oewn-put_through-v	VerbForm=Inf	dema	0			oewn_form
+put to death	0	oewn-put_to_death-v	VerbForm=Inf	dema	0			oewn_form
+put to sleep	0	oewn-put_to_sleep-v	VerbForm=Inf	dema	0			oewn_form
+put to work	0	oewn-put_to_work-v	VerbForm=Inf	dema	0			oewn_form
+put together	0	oewn-put_together-v	VerbForm=Inf	dema	0			oewn_form
+put under	0	oewn-put_under-v	VerbForm=Inf	dema	0			oewn_form
+put up	0	oewn-put_up-v	VerbForm=Inf	dema	0			oewn_form
+put-down	0	oewn-put-down-n	Number=Sing	dema	0			oewn_form
+put-downs	0	oewn-put-down-n	Number=Plur	dema	0			rule
+put-on	0	oewn-put-on-n	Number=Sing	dema	0			oewn_form
+put-ons	0	oewn-put-on-n	Number=Plur	dema	0			rule
+put-put	0	oewn-put-put-n	Number=Sing	dema	0			oewn_form
+put-puts	0	oewn-put-put-n	Number=Plur	dema	0			rule
+put-up	0	oewn-put-up-a	Degree=Pos	dema	0			oewn_form
+put-upon	0	oewn-put-upon-a	Degree=Pos	dema	0			oewn_form
+putamen	0	oewn-putamen-n	Number=Sing	dema	0			oewn_form
+putamina	0	oewn-putamen-n	Number=Plur	dema	0			oewn_form
+putaminous	0		Degree=Pos	dema	0	putaminous	a	moby_reverse
+putative	0	oewn-putative-a	Degree=Pos	dema	0			oewn_form
+putatively	0		Degree=Pos	dema	0	putatively	r	moby_reverse
+putdownable	0	oewn-putdownable-a	Degree=Pos	dema	0			oewn_form
+putlog	0		Number=Sing	dema	0	putlog	n	moby_reverse
+putlogs	0		Number=Plur	dema	0	putlog	n	rule
+putoff	0	oewn-putoff-n	Number=Sing	dema	0			oewn_form
+putoffs	0	oewn-putoff-n	Number=Plur	dema	0			rule
+putout	0	oewn-putout-n	Number=Sing	dema	0			oewn_form
+putouts	0	oewn-putout-n	Number=Plur	dema	0			rule
+putrefacient	0	oewn-putrefacient-a	Degree=Pos	dema	0			oewn_form
+putrefaction	0	oewn-putrefaction-n	Number=Sing	dema	0			oewn_form
+putrefactions	0	oewn-putrefaction-n	Number=Plur	dema	0			rule
+putrefactive	0	oewn-putrefactive-a	Degree=Pos	dema	0			oewn_form
+putrefiable	0	oewn-putrefiable-a	Degree=Pos	dema	0			oewn_form
+putrefied	0	oewn-putrefy-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+putrefier	0		Number=Sing	dema	0	putrefier	n	moby_reverse
+putrefiers	0		Number=Plur	dema	0	putrefier	n	rule
+putrefies	0	oewn-putrefy-v	Person=3+Tense=Pres	dema	0			rule
+putrefy	0	oewn-putrefy-v	VerbForm=Inf	dema	0			oewn_form
+putrefying	0	oewn-putrefy-v	VerbForm=Ger	dema	0			rule
+putrescence	0	oewn-putrescence-n	Number=Sing	dema	0			oewn_form
+putrescences	0	oewn-putrescence-n	Number=Plur	dema	0			rule
+putrescencies	0		Number=Plur	dema	0	putrescency	n	rule
+putrescency	0		Number=Sing	dema	0	putrescency	n	moby_reverse
+putrescent	0	oewn-putrescent-a	Degree=Pos	dema	0			oewn_form
+putrescibilities	0		Number=Plur	dema	0	putrescibility	n	rule
+putrescibility	0		Number=Sing	dema	0	putrescibility	n	moby_reverse
+putrescible	0	oewn-putrescible-a	Degree=Pos	dema	0			oewn_form
+putrescible	1		Number=Sing	dema	0	putrescible	n	moby_reverse
+putrescine	0	oewn-putrescine-n	Number=Sing	dema	0			oewn_form
+putrescines	0	oewn-putrescine-n	Number=Plur	dema	0			rule
+putrid	0	oewn-putrid-a	Degree=Pos	dema	0			oewn_form
+putrid-smelling	0	oewn-putrid-smelling-a	Degree=Pos	dema	0			oewn_form
+putridities	0	oewn-putridity-n	Number=Plur	dema	0			rule
+putridity	0	oewn-putridity-n	Number=Sing	dema	0			oewn_form
+putridly	0		Degree=Pos	dema	0	putridly	r	moby_reverse
+putridness	0	oewn-putridness-n	Number=Sing	dema	0			oewn_form
+putridnesses	0	oewn-putridness-n	Number=Plur	dema	0			rule
+putrilage	0		Number=Sing	dema	0	putrilage	n	moby_reverse
+putrilages	0		Number=Plur	dema	0	putrilage	n	rule
+putrilaginous	0		Degree=Pos	dema	0	putrilaginous	a	moby_reverse
+putrilaginously	0		Degree=Pos	dema	0	putrilaginously	r	moby_reverse
+puts	0	oewn-put-v	Person=3+Tense=Pres	dema	0			rule
+puts	1	oewn-put-n	Number=Plur	dema	0			rule
+puts across	0	oewn-put_across-v	Person=3+Tense=Pres	dema	0			rule
+puts aside	0	oewn-put_aside-v	Person=3+Tense=Pres	dema	0			rule
+puts away	0	oewn-put_away-v	Person=3+Tense=Pres	dema	0			rule
+puts back	0	oewn-put_back-v	Person=3+Tense=Pres	dema	0			rule
+puts behind bars	0	oewn-put_behind_bars-v	Person=3+Tense=Pres	dema	0			rule
+puts down	0	oewn-put_down-v	Person=3+Tense=Pres	dema	0			rule
+puts forward	0	oewn-put_forward-v	Person=3+Tense=Pres	dema	0			rule
+puts in	0	oewn-put_in-v	Person=3+Tense=Pres	dema	0			rule
+puts off	0	oewn-put_off-v	Person=3+Tense=Pres	dema	0			rule
+puts on	0	oewn-put_on-v	Person=3+Tense=Pres	dema	0			rule
+puts on airs	0	oewn-put_on_airs-v	Person=3+Tense=Pres	dema	0			rule
+puts on the line	0	oewn-put_on_the_line-v	Person=3+Tense=Pres	dema	0			rule
+puts one across	0	oewn-put_one_across-v	Person=3+Tense=Pres	dema	0			rule
+puts one over	0	oewn-put_one_over-v	Person=3+Tense=Pres	dema	0			rule
+puts out	0	oewn-put_out-v	Person=3+Tense=Pres	dema	0			rule
+puts out feelers	0	oewn-put_out_feelers-v	Person=3+Tense=Pres	dema	0			rule
+puts over	0	oewn-put_over-v	Person=3+Tense=Pres	dema	0			rule
+puts right	0	oewn-put_right-v	Person=3+Tense=Pres	dema	0			rule
+puts through	0	oewn-put_through-v	Person=3+Tense=Pres	dema	0			rule
+puts to death	0	oewn-put_to_death-v	Person=3+Tense=Pres	dema	0			rule
+puts to sleep	0	oewn-put_to_sleep-v	Person=3+Tense=Pres	dema	0			rule
+puts to work	0	oewn-put_to_work-v	Person=3+Tense=Pres	dema	0			rule
+puts together	0	oewn-put_together-v	Person=3+Tense=Pres	dema	0			rule
+puts under	0	oewn-put_under-v	Person=3+Tense=Pres	dema	0			rule
+puts up	0	oewn-put_up-v	Person=3+Tense=Pres	dema	0			rule
+putsch	0	oewn-putsch-n	Number=Sing	dema	0			oewn_form
+putsches	0	oewn-putsch-n	Number=Plur	dema	0			rule
+putt	0	oewn-putt-n	Number=Sing	dema	0			oewn_form
+putt	1	oewn-putt-v	VerbForm=Inf	dema	0			oewn_form
+putted	0	oewn-putt-v	Tense=Past+VerbForm=Part	dema	0			rule
+puttee	0	oewn-puttee-n	Number=Sing	dema	0			oewn_form
+puttees	0	oewn-puttee-n	Number=Plur	dema	0			rule
+putter	0	oewn-putter-n	Number=Sing	dema	0			oewn_form
+putter	1	oewn-putter-v	VerbForm=Inf	dema	0			oewn_form
+putter around	0	oewn-putter_around-v	VerbForm=Inf	dema	0			oewn_form
+puttered	0	oewn-putter-v	Tense=Past+VerbForm=Part	dema	0			rule
+puttered around	0	oewn-putter_around-v	Tense=Past+VerbForm=Part	dema	0			rule
+putterer	0	oewn-putterer-n	Number=Sing	dema	0			oewn_form
+putterers	0	oewn-putterer-n	Number=Plur	dema	0			rule
+puttering	0	oewn-putter-v	VerbForm=Ger	dema	0			rule
+puttering around	0	oewn-putter_around-v	VerbForm=Ger	dema	0			rule
+putters	0	oewn-putter-n	Number=Plur	dema	0			rule
+putters	1	oewn-putter-v	Person=3+Tense=Pres	dema	0			rule
+putters around	0	oewn-putter_around-v	Person=3+Tense=Pres	dema	0			rule
+putti	0		Number=Sing	dema	0	putti	n	moby_reverse
+puttie	0		Number=Sing	dema	0	puttie	n	moby_reverse
+puttied	0	oewn-putty-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+puttier	0		Number=Sing	dema	0	puttier	n	moby_reverse
+puttiers	0		Number=Plur	dema	0	puttier	n	rule
+putties	0	oewn-putty-n	Number=Plur	dema	0			rule
+putties	1	oewn-putty-v	Person=3+Tense=Pres	dema	0			rule
+putties	2		Number=Plur	dema	0	puttie	n	rule
+putting	0	oewn-putting-n	Number=Sing	dema	0			oewn_form
+putting	1	oewn-put-v	VerbForm=Ger	dema	0			oewn_form
+putting	2	oewn-putt-v	VerbForm=Ger	dema	0			rule
+putting across	0	oewn-put_across-v	VerbForm=Ger	dema	0			rule
+putting aside	0	oewn-put_aside-v	VerbForm=Ger	dema	0			rule
+putting away	0	oewn-put_away-v	VerbForm=Ger	dema	0			rule
+putting back	0	oewn-put_back-v	VerbForm=Ger	dema	0			rule
+putting behind bars	0	oewn-put_behind_bars-v	VerbForm=Ger	dema	0			rule
+putting down	0	oewn-put_down-v	VerbForm=Ger	dema	0			rule
+putting forward	0	oewn-put_forward-v	VerbForm=Ger	dema	0			rule
+putting green	0	oewn-putting_green-n	Number=Sing	dema	0			oewn_form
+putting greens	0	oewn-putting_green-n	Number=Plur	dema	0			rule
+putting in	0	oewn-put_in-v	VerbForm=Ger	dema	0			rule
+putting iron	0	oewn-putting_iron-n	Number=Sing	dema	0			oewn_form
+putting irons	0	oewn-putting_iron-n	Number=Plur	dema	0			rule
+putting off	0	oewn-put_off-v	VerbForm=Ger	dema	0			rule
+putting on	0	oewn-put_on-v	VerbForm=Ger	dema	0			rule
+putting on airs	0	oewn-put_on_airs-v	VerbForm=Ger	dema	0			rule
+putting on the line	0	oewn-put_on_the_line-v	VerbForm=Ger	dema	0			rule
+putting one across	0	oewn-put_one_across-v	VerbForm=Ger	dema	0			rule
+putting one over	0	oewn-put_one_over-v	VerbForm=Ger	dema	0			rule
+putting out	0	oewn-put_out-v	VerbForm=Ger	dema	0			rule
+putting out feelers	0	oewn-put_out_feelers-v	VerbForm=Ger	dema	0			rule
+putting over	0	oewn-put_over-v	VerbForm=Ger	dema	0			rule
+putting right	0	oewn-put_right-v	VerbForm=Ger	dema	0			rule
+putting surface	0	oewn-putting_surface-n	Number=Sing	dema	0			oewn_form
+putting surfaces	0	oewn-putting_surface-n	Number=Plur	dema	0			rule
+putting through	0	oewn-put_through-v	VerbForm=Ger	dema	0			rule
+putting to death	0	oewn-putting_to_death-n	Number=Sing	dema	0			oewn_form
+putting to death	1	oewn-put_to_death-v	VerbForm=Ger	dema	0			rule
+putting to sleep	0	oewn-put_to_sleep-v	VerbForm=Ger	dema	0			rule
+putting to work	0	oewn-put_to_work-v	VerbForm=Ger	dema	0			rule
+putting together	0	oewn-put_together-v	VerbForm=Ger	dema	0			rule
+putting under	0	oewn-put_under-v	VerbForm=Ger	dema	0			rule
+putting up	0	oewn-put_up-v	VerbForm=Ger	dema	0			rule
+puttings	0	oewn-putting-n	Number=Plur	dema	0			rule
+puttings to death	0	oewn-putting_to_death-n	Number=Plur	dema	0			rule
+puttis	0		Number=Plur	dema	0	putti	n	rule
+putto	0		Number=Sing	dema	0	putto	n	moby_reverse
+puttos	0		Number=Plur	dema	0	putto	n	rule
+putts	0	oewn-putt-n	Number=Plur	dema	0			rule
+putts	1	oewn-putt-v	Person=3+Tense=Pres	dema	0			rule
+putty	0	oewn-putty-n	Number=Sing	dema	0			oewn_form
+putty	1	oewn-putty-v	VerbForm=Inf	dema	0			oewn_form
+putty knife	0	oewn-putty_knife-n	Number=Sing	dema	0			oewn_form
+putty knives	0	oewn-putty_knife-n	Number=Plur	dema	0			rule
+puttying	0		Number=Sing	dema	0	puttying	n	moby_reverse
+puttying	1	oewn-putty-v	VerbForm=Ger	dema	0			rule
+puttyings	0		Number=Plur	dema	0	puttying	n	rule
+puttyroot	0	oewn-puttyroot-n	Number=Sing	dema	0			oewn_form
+puttyroots	0	oewn-puttyroot-n	Number=Plur	dema	0			rule
+putz	0	oewn-putz-n	Number=Sing	dema	0			oewn_form
+putzes	0	oewn-putz-n	Number=Plur	dema	0			rule
+puzzle	0	oewn-puzzle-v	VerbForm=Inf	dema	0			oewn_form
+puzzle	1	oewn-puzzle-n	Number=Sing	dema	0			oewn_form
+puzzle out	0	oewn-puzzle_out-v	VerbForm=Inf	dema	0			oewn_form
+puzzle over	0	oewn-puzzle_over-v	VerbForm=Inf	dema	0			oewn_form
+puzzled	0	oewn-puzzle-v	Tense=Past+VerbForm=Part	dema	0			rule
+puzzled	1	oewn-puzzled-a	Degree=Pos	dema	0			oewn_form
+puzzled out	0	oewn-puzzle_out-v	Tense=Past+VerbForm=Part	dema	0			rule
+puzzled over	0	oewn-puzzle_over-v	Tense=Past+VerbForm=Part	dema	0			rule
+puzzledly	0		Degree=Pos	dema	0	puzzledly	r	moby_reverse
+puzzledness	0		Number=Sing	dema	0	puzzledness	n	moby_reverse
+puzzlement	0	oewn-puzzlement-n	Number=Sing	dema	0			oewn_form
+puzzlements	0	oewn-puzzlement-n	Number=Plur	dema	0			rule
+puzzler	0	oewn-puzzler-n	Number=Sing	dema	0			oewn_form
+puzzlers	0	oewn-puzzler-n	Number=Plur	dema	0			rule
+puzzles	0	oewn-puzzle-v	Person=3+Tense=Pres	dema	0			rule
+puzzles	1	oewn-puzzle-n	Number=Plur	dema	0			rule
+puzzles out	0	oewn-puzzle_out-v	Person=3+Tense=Pres	dema	0			rule
+puzzles over	0	oewn-puzzle_over-v	Person=3+Tense=Pres	dema	0			rule
+puzzling	0	oewn-puzzle-v	VerbForm=Ger	dema	0			rule
+puzzling	1	oewn-puzzling-a	Degree=Pos	dema	0			oewn_form
+puzzling out	0	oewn-puzzle_out-v	VerbForm=Ger	dema	0			rule
+puzzling over	0	oewn-puzzle_over-v	VerbForm=Ger	dema	0			rule
+puzzlingly	0		Degree=Pos	dema	0	puzzlingly	r	moby_reverse
+puzzlingness	0		Number=Sing	dema	0	puzzlingness	n	moby_reverse
+puzzolana	0		Number=Sing	dema	0	puzzolana	n	moby_reverse
+puzzolanas	0		Number=Plur	dema	0	puzzolana	n	rule

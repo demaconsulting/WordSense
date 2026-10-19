@@ -1,8 +1,13 @@
-spelling	rank	entry_id	features	source_id	reviewed
-pc	0	dema-pc-n	Number=Sing	dema	0
-pcf	0	dema-pcf-n	Number=Sing	dema	0
-pcfs	0	dema-pcf-n	Number=Plur	dema	0
-pci	0	dema-pci-n	Number=Sing	dema	0
-pcis	0	dema-pci-n	Number=Plur	dema	0
-pct	0	oewn-pct-n	Number=Sing	dema	0
-pcts	0	oewn-pct-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+PC	0		Number=Sing	dema	0	pc	n	moby_reverse
+PC	1	oewn-PC-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+PC board	0	oewn-PC_board-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+PC boards	0	oewn-PC_board-n	Capitalization=Exact+Number=Plur	dema	0			rule
+PCP	0	oewn-PCP-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+PCPS	0	oewn-PCP-n	Capitalization=Upper+Number=Plur	dema	0			rule
+PCS	0	oewn-PC-n	Capitalization=Upper+Number=Plur	dema	0			rule
+pc	0		Number=Sing	dema	0	pc	n	moby_reverse
+pcf	0		Number=Sing	dema	0	pcf	n	moby_reverse
+pci	0		Number=Sing	dema	0	pci	n	moby_reverse
+pct	0	oewn-pct-n	Number=Sing	dema	0			oewn_form
+pcts	0	oewn-pct-n	Number=Plur	dema	0			rule

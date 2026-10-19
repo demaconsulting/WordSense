@@ -17,6 +17,7 @@ input-files:
   - docs/build_notes/pos-pronunciation-redesign.md
   - docs/build_notes/lexicon-evaluation.md
   - docs/build_notes/inflection-coverage.md
+  - docs/build_notes/forms-audit.md
   - docs/build_notes/package-split.md
   - docs/build_notes/model-comparison.md
   - docs/build_notes/basic-evaluation.md

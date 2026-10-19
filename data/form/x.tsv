@@ -1,207 +1,472 @@
-spelling	rank	entry_id	features	source_id	reviewed
-x	0	oewn-x-n	Number=Sing	dema	0
-x	1	dema-x-v	VerbForm=Inf	dema	0
-xalostockite	0	dema-xalostockite-n	Number=Sing	dema	0
-xalostockites	0	dema-xalostockite-n	Number=Plur	dema	0
-xanthate	0	oewn-xanthate-n	Number=Sing	dema	0
-xanthates	0	oewn-xanthate-n	Number=Plur	dema	0
-xanthation	0	dema-xanthation-n	Number=Sing	dema	0
-xanthations	0	dema-xanthation-n	Number=Plur	dema	0
-xanthein	0	dema-xanthein-n	Number=Sing	dema	0
-xantheins	0	dema-xanthein-n	Number=Plur	dema	0
-xanthene	0	dema-xanthene-n	Number=Sing	dema	0
-xanthenes	0	dema-xanthene-n	Number=Plur	dema	0
-xanthic	0	dema-xanthic-a	Degree=Pos	dema	0
-xanthically	0	dema-xanthic-r		dema	0
-xanthicness	0	dema-xanthic-n	Number=Plur	dema	0
-xanthin	0	dema-xanthin-n	Number=Sing	dema	0
-xanthine	0	oewn-xanthine-n	Number=Sing	dema	0
-xanthines	0	oewn-xanthine-n	Number=Plur	dema	0
-xanthins	0	dema-xanthin-n	Number=Plur	dema	0
-xanthochroid	0	dema-xanthochroid-a	Degree=Pos	dema	0
-xanthochroidly	0	dema-xanthochroid-r		dema	0
-xanthochroidness	0	dema-xanthochroid-n	Number=Plur	dema	0
-xanthochroism	0	dema-xanthochroism-n	Number=Sing	dema	0
-xanthochroisms	0	dema-xanthochroism-n	Number=Plur	dema	0
-xanthoma	0	oewn-xanthoma-n	Number=Sing	dema	0
-xanthomas	0	oewn-xanthoma-n	Number=Plur	dema	0
-xanthophyll	0	oewn-xanthophyll-n	Number=Sing	dema	0
-xanthophyllous	0	dema-xanthophyllous-a	Degree=Pos	dema	0
-xanthophyllously	0	dema-xanthophyllous-r		dema	0
-xanthophylls	0	oewn-xanthophyll-n	Number=Plur	dema	0
-xanthosiderite	0	dema-xanthosiderite-n	Number=Sing	dema	0
-xanthosiderites	0	dema-xanthosiderite-n	Number=Plur	dema	0
-xanthous	0	oewn-xanthous-a	Degree=Pos	dema	0
-xanthously	0	dema-xanthous-r		dema	0
-xanthousness	0	dema-xanthous-n	Number=Plur	dema	0
-xat	0	dema-xat-n	Number=Sing	dema	0
-xats	0	dema-xat-n	Number=Plur	dema	0
-xc	0	dema-xc-n	Number=Sing	dema	0
-xcl	0	dema-xcl-n	Number=Sing	dema	0
-xcls	0	dema-xcl-n	Number=Plur	dema	0
-xd	0	dema-xd-n	Number=Sing	dema	0
-xebec	0	dema-xebec-n	Number=Sing	dema	0
-xebecs	0	dema-xebec-n	Number=Plur	dema	0
-xenia	0	dema-xenia-n	Number=Sing	dema	0
-xenias	0	dema-xenia-n	Number=Plur	dema	0
-xenochia	0	dema-xenochia-n	Number=Sing	dema	0
-xenochias	0	dema-xenochia-n	Number=Plur	dema	0
-xenocryst	0	dema-xenocryst-n	Number=Sing	dema	0
-xenocrystic	0	dema-xenocrystic-a	Degree=Pos	dema	0
-xenocrystically	0	dema-xenocrystic-r		dema	0
-xenocrysts	0	dema-xenocryst-n	Number=Plur	dema	0
-xenodiagnosis	0	dema-xenodiagnosis-n	Number=Sing	dema	0
-xenodiagnostic	0	dema-xenodiagnostic-a	Degree=Pos	dema	0
-xenodiagnostically	0	dema-xenodiagnostic-r		dema	0
-xenodocheion	0	dema-xenodocheion-n	Number=Sing	dema	0
-xenodocheions	0	dema-xenodocheion-n	Number=Plur	dema	0
-xenogamies	0	dema-xenogamy-n	Number=Plur	dema	0
-xenogamy	0	dema-xenogamy-n	Number=Sing	dema	0
-xenogenesis	0	oewn-xenogenesis-n	Number=Sing	dema	0
-xenogenetic	0	dema-xenogenetic-a	Degree=Pos	dema	0
-xenogenetically	0	dema-xenogenetic-r		dema	0
-xenogenic	0	dema-xenogenic-a	Degree=Pos	dema	0
-xenogenically	0	dema-xenogenic-r		dema	0
-xenoglossia	0	dema-xenoglossia-n	Number=Sing	dema	0
-xenoglossias	0	dema-xenoglossia-n	Number=Plur	dema	0
-xenolith	0	oewn-xenolith-n	Number=Sing	dema	0
-xenolithic	0	dema-xenolithic-a	Degree=Pos	dema	0
-xenolithically	0	dema-xenolithic-r		dema	0
-xenoliths	0	oewn-xenolith-n	Number=Plur	dema	0
-xenomorphic	0	dema-xenomorphic-a	Degree=Pos	dema	0
-xenomorphically	0	dema-xenomorphically-r	Degree=Pos	dema	0
-xenon	0	oewn-xenon-n	Number=Sing	dema	0
-xenons	0	oewn-xenon-n	Number=Plur	dema	0
-xenophile	0	dema-xenophile-n	Number=Sing	dema	0
-xenophiles	0	dema-xenophile-n	Number=Plur	dema	0
-xenophobe	0	dema-xenophobe-n	Number=Sing	dema	0
-xenophobes	0	dema-xenophobe-n	Number=Plur	dema	0
-xenophobia	0	oewn-xenophobia-n	Number=Sing	dema	0
-xenophobias	0	oewn-xenophobia-n	Number=Plur	dema	0
-xenophobic	0	oewn-xenophobic-a	Degree=Pos	dema	0
-xenophobically	0	dema-xenophobic-r		dema	0
-xerarch	0	dema-xerarch-a	Degree=Pos	dema	0
-xerarcher	0	dema-xerarch-a	Degree=Cmp	dema	0
-xerarchest	0	dema-xerarch-a	Degree=Sup	dema	0
-xerarchly	0	dema-xerarch-r		dema	0
-xerarchness	0	dema-xerarch-n	Number=Plur	dema	0
-xeric	0	oewn-xeric-a	Degree=Pos	dema	0
-xerically	0	dema-xeric-r		dema	0
-xericness	0	dema-xeric-n	Number=Plur	dema	0
-xeroderma	0	oewn-xeroderma-n	Number=Sing	dema	0
-xerodermas	0	oewn-xeroderma-n	Number=Plur	dema	0
-xerographic	0	oewn-xerographic-a	Degree=Pos	dema	0
-xerographically	0	dema-xerographically-r	Degree=Pos	dema	0
-xerographies	0	oewn-xerography-n	Number=Plur	dema	0
-xerography	0	oewn-xerography-n	Number=Sing	dema	0
-xeromorphic	0	dema-xeromorphic-a	Degree=Pos	dema	0
-xeromorphically	0	dema-xeromorphic-r		dema	0
-xerophagies	0	dema-xerophagies-n	Number=Sing	dema	0
-xerophagy	0	dema-xerophagy-n	Number=Sing	dema	0
-xerophilous	0	dema-xerophilous-a	Degree=Pos	dema	0
-xerophilously	0	dema-xerophilous-r		dema	0
-xerophthalmia	0	oewn-xerophthalmia-n	Number=Sing	dema	0
-xerophthalmias	0	oewn-xerophthalmia-n	Number=Plur	dema	0
-xerophyte	0	oewn-xerophyte-n	Number=Sing	dema	0
-xerophytes	0	oewn-xerophyte-n	Number=Plur	dema	0
-xerophytic	0	oewn-xerophytic-a	Degree=Pos	dema	0
-xerophytically	0	dema-xerophytically-r	Degree=Pos	dema	0
-xerophytism	0	dema-xerophytism-n	Number=Sing	dema	0
-xerophytisms	0	dema-xerophytism-n	Number=Plur	dema	0
-xerosere	0	dema-xerosere-n	Number=Sing	dema	0
-xeroseres	0	dema-xerosere-n	Number=Plur	dema	0
-xerosis	0	dema-xerosis-n	Number=Sing	dema	0
-xerotic	0	dema-xerotic-a	Degree=Pos	dema	0
-xerotically	0	dema-xerotic-r		dema	0
-xeroticness	0	dema-xerotic-n	Number=Plur	dema	0
-xi	0	oewn-xi-n	Number=Sing	dema	0
-xiphisternal	0	dema-xiphisternal-a	Degree=Pos	dema	0
-xiphisternally	0	dema-xiphisternal-r		dema	0
-xiphisternum	0	dema-xiphisternum-n	Number=Sing	dema	0
-xiphisternums	0	dema-xiphisternum-n	Number=Plur	dema	0
-xiphistna	0	dema-xiphistna-n	Number=Sing	dema	0
-xiphistnas	0	dema-xiphistna-n	Number=Plur	dema	0
-xiphoid	0	dema-xiphoid-a	Degree=Pos	dema	0
-xiphoid	1	dema-xiphoid-n	Number=Sing	dema	0
-xiphoider	0	dema-xiphoid-a	Degree=Cmp	dema	0
-xiphoidest	0	dema-xiphoid-a	Degree=Sup	dema	0
-xiphoidly	0	dema-xiphoid-r		dema	0
-xiphoidness	0	dema-xiphoid-n	Number=Plur	dema	0
-xiphoids	0	dema-xiphoid-n	Number=Plur	dema	0
-xiphosuran	0	dema-xiphosuran-n	Number=Sing	dema	0
-xiphosuran	1	dema-xiphosuran-a	Degree=Pos	dema	0
-xiphosuranly	0	dema-xiphosuran-r		dema	0
-xiphosurans	0	dema-xiphosuran-n	Number=Plur	dema	0
-xis	0	dema-xis-n	Number=Sing	dema	0
-xoanon	0	dema-xoanon-n	Number=Sing	dema	0
-xoanona	0	dema-xoanona-n	Number=Sing	dema	0
-xoanonas	0	dema-xoanona-n	Number=Plur	dema	0
-xoanons	0	dema-xoanon-n	Number=Plur	dema	0
-xr	0	dema-xr-n	Number=Sing	dema	0
-xr	1	dema-xr-a	Degree=Pos	dema	0
-xw	0	dema-xw-n	Number=Sing	dema	0
-xylan	0	dema-xylan-n	Number=Sing	dema	0
-xylans	0	dema-xylan-n	Number=Plur	dema	0
-xylem	0	oewn-xylem-n	Number=Sing	dema	0
-xylems	0	oewn-xylem-n	Number=Plur	dema	0
-xylene	0	oewn-xylene-n	Number=Sing	dema	0
-xylenes	0	oewn-xylene-n	Number=Plur	dema	0
-xylic	0	dema-xylic-a	Degree=Pos	dema	0
-xylically	0	dema-xylic-r		dema	0
-xylicness	0	dema-xylic-n	Number=Plur	dema	0
-xylidine	0	dema-xylidine-n	Number=Sing	dema	0
-xylidines	0	dema-xylidine-n	Number=Plur	dema	0
-xylo	0	dema-xylo-n	Number=Sing	dema	0
-xylocarp	0	dema-xylocarp-n	Number=Sing	dema	0
-xylocarps	0	dema-xylocarp-n	Number=Plur	dema	0
-xyloes	0	dema-xylo-n	Number=Plur	dema	0
-xylograph	0	dema-xylograph-n	Number=Sing	dema	0
-xylograph	1	dema-xylograph-v	VerbForm=Inf	dema	0
-xylographed	0	dema-xylograph-v	Tense=Past	dema	0
-xylographer	0	dema-xylographer-n	Number=Sing	dema	0
-xylographers	0	dema-xylograph-n	Number=Plur	dema	0
-xylographic	0	dema-xylographic-a	Degree=Pos	dema	0
-xylographical	0	dema-xylographical-a	Degree=Pos	dema	0
-xylographically	0	dema-xylographically-r	Degree=Pos	dema	0
-xylographies	0	dema-xylography-n	Number=Plur	dema	0
-xylographing	0	dema-xylograph-v	VerbForm=Ger	dema	0
-xylographingly	0	dema-xylograph-r		dema	0
-xylographs	0	dema-xylograph-n	Number=Plur	dema	0
-xylographs	1	dema-xylograph-v	Person=3+Tense=Pres	dema	0
-xylography	0	dema-xylography-n	Number=Sing	dema	0
-xyloid	0	dema-xyloid-a	Degree=Pos	dema	0
-xyloider	0	dema-xyloid-a	Degree=Cmp	dema	0
-xyloidest	0	dema-xyloid-a	Degree=Sup	dema	0
-xyloidly	0	dema-xyloid-r		dema	0
-xyloidness	0	dema-xyloid-n	Number=Plur	dema	0
-xylol	0	oewn-xylol-n	Number=Sing	dema	0
-xylols	0	oewn-xylol-n	Number=Plur	dema	0
-xylophage	0	dema-xylophage-n	Number=Sing	dema	0
-xylophages	0	dema-xylophage-n	Number=Plur	dema	0
-xylophagous	0	dema-xylophagous-a	Degree=Pos	dema	0
-xylophagously	0	dema-xylophagous-r		dema	0
-xylophone	0	oewn-xylophone-n	Number=Sing	dema	0
-xylophones	0	oewn-xylophone-n	Number=Plur	dema	0
-xylos	0	dema-xylo-n	Number=Plur	dema	0
-xylose	0	oewn-xylose-n	Number=Sing	dema	0
-xyloses	0	oewn-xylose-n	Number=Plur	dema	0
-xylostroma	0	dema-xylostroma-n	Number=Sing	dema	0
-xylostromas	0	dema-xylostroma-n	Number=Plur	dema	0
-xylostromata	0	dema-xylostromata-n	Number=Sing	dema	0
-xylostromatas	0	dema-xylostromata-n	Number=Plur	dema	0
-xylostromatoid	0	dema-xylostromatoid-a	Degree=Pos	dema	0
-xylostromatoidly	0	dema-xylostromatoid-r		dema	0
-xylotomies	0	dema-xylotomy-n	Number=Plur	dema	0
-xylotomist	0	dema-xylotomist-n	Number=Sing	dema	0
-xylotomists	0	dema-xylotomist-n	Number=Plur	dema	0
-xylotomous	0	dema-xylotomous-a	Degree=Pos	dema	0
-xylotomously	0	dema-xylotomous-r		dema	0
-xylotomy	0	dema-xylotomy-n	Number=Sing	dema	0
-xylyl	0	dema-xylyl-n	Number=Sing	dema	0
-xylyls	0	dema-xylyl-n	Number=Plur	dema	0
-xyst	0	dema-xyst-n	Number=Sing	dema	0
-xyster	0	dema-xyster-n	Number=Sing	dema	0
-xysters	0	dema-xyster-n	Number=Plur	dema	0
-xysts	0	dema-xyst-n	Number=Plur	dema	0
-xystum	0	dema-xystum-n	Number=Sing	dema	0
-xystums	0	dema-xystum-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+X	0	oewn-x-n	Number=Sing	dema	0			oewn_form
+X	1		VerbForm=Inf	dema	0	x	v	moby_reverse
+X	2	oewn-x-a	Degree=Pos	dema	0			oewn_form
+X	3	oewn-X-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+X chromosome	0	oewn-X_chromosome-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+X chromosomes	0	oewn-X_chromosome-n	Capitalization=Exact+Number=Plur	dema	0			rule
+X ray	0	oewn-X_ray-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+X rays	0	oewn-X_ray-n	Capitalization=Exact+Number=Plur	dema	0			rule
+X-OR circuit	0	oewn-X-OR_circuit-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+X-OR circuits	0	oewn-X-OR_circuit-n	Capitalization=Exact+Number=Plur	dema	0			rule
+X-SCID	0	oewn-X-SCID-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+X-SCIDS	0	oewn-X-SCID-n	Capitalization=Upper+Number=Plur	dema	0			rule
+X-linked	0	oewn-X-linked-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+X-linked SCID	0	oewn-X-linked_SCID-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+X-linked SCIDS	0	oewn-X-linked_SCID-n	Capitalization=Exact+Number=Plur	dema	0			rule
+X-linked dominant inheritance	0	oewn-X-linked_dominant_inheritance-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+X-linked dominant inheritances	0	oewn-X-linked_dominant_inheritance-n	Capitalization=Exact+Number=Plur	dema	0			rule
+X-linked gene	0	oewn-X-linked_gene-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+X-linked genes	0	oewn-X-linked_gene-n	Capitalization=Exact+Number=Plur	dema	0			rule
+X-linked recessive inheritance	0	oewn-X-linked_recessive_inheritance-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+X-linked recessive inheritances	0	oewn-X-linked_recessive_inheritance-n	Capitalization=Exact+Number=Plur	dema	0			rule
+X-radiation	0	oewn-X-radiation-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+X-radiations	0	oewn-X-radiation-n	Capitalization=Title+Number=Plur	dema	0			rule
+X-ray	0	oewn-x-ray-v	VerbForm=Inf	dema	0			oewn_form
+X-ray	1	oewn-X-ray-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+X-ray diffraction	0	oewn-X-ray_diffraction-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+X-ray diffractions	0	oewn-X-ray_diffraction-n	Capitalization=Exact+Number=Plur	dema	0			rule
+X-ray film	0	oewn-X-ray_film-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+X-ray films	0	oewn-X-ray_film-n	Capitalization=Exact+Number=Plur	dema	0			rule
+X-ray machine	0	oewn-X-ray_machine-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+X-ray machines	0	oewn-X-ray_machine-n	Capitalization=Exact+Number=Plur	dema	0			rule
+X-ray photograph	0	oewn-X-ray_photograph-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+X-ray photographies	0	oewn-X-ray_photography-n	Capitalization=Exact+Number=Plur	dema	0			rule
+X-ray photographs	0	oewn-X-ray_photograph-n	Capitalization=Exact+Number=Plur	dema	0			rule
+X-ray photography	0	oewn-X-ray_photography-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+X-ray picture	0	oewn-X-ray_picture-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+X-ray pictures	0	oewn-X-ray_picture-n	Capitalization=Exact+Number=Plur	dema	0			rule
+X-ray therapies	0	oewn-X-ray_therapy-n	Capitalization=Exact+Number=Plur	dema	0			rule
+X-ray therapy	0	oewn-X-ray_therapy-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+X-ray tube	0	oewn-X-ray_tube-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+X-ray tubes	0	oewn-X-ray_tube-n	Capitalization=Exact+Number=Plur	dema	0			rule
+X-raying	0	oewn-x-ray-v	VerbForm=Ger	dema	0			rule
+X-raying	1	oewn-X-raying-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+X-rayings	0	oewn-X-raying-n	Capitalization=Title+Number=Plur	dema	0			rule
+X-rays	0	oewn-x-ray-v	Person=3+Tense=Pres	dema	0			rule
+X-rays	1	oewn-X-ray-n	Capitalization=Title+Number=Plur	dema	0			rule
+X-tail	0	oewn-X-tail-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+X-tails	0	oewn-X-tail-n	Capitalization=Title+Number=Plur	dema	0			rule
+XC	0		Number=Sing	dema	0	xc	n	moby_reverse
+XC	1	oewn-xc-a	Degree=Pos	dema	0			oewn_form
+XC	2	oewn-XC-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+XCS	0	oewn-XC-n	Capitalization=Upper+Number=Plur	dema	0			rule
+XI	0	oewn-xi-n	Number=Sing	dema	0			oewn_form
+XI	1	oewn-xi-a	Degree=Pos	dema	0			oewn_form
+XI	2	oewn-XI-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+XIES	0	oewn-XY-n	Capitalization=Upper+Number=Plur	dema	0			rule
+XII	0	oewn-xii-a	Degree=Pos	dema	0			oewn_form
+XII	1	oewn-XII-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+XIII	0	oewn-xiii-a	Degree=Pos	dema	0			oewn_form
+XIII	1	oewn-XIII-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+XIIIS	0	oewn-XIII-n	Capitalization=Upper+Number=Plur	dema	0			rule
+XIIS	0	oewn-XII-n	Capitalization=Upper+Number=Plur	dema	0			rule
+XIS	0	oewn-XI-n	Number=Plur	dema	0			moby_reverse
+XIS	1	oewn-xi-n	Number=Plur	dema	0			rule
+XIS	2	oewn-XI-n	Capitalization=Upper+Number=Plur	dema	0			rule
+XIV	0	oewn-xiv-a	Degree=Pos	dema	0			oewn_form
+XIV	1	oewn-XIV-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+XIVS	0	oewn-XIV-n	Capitalization=Upper+Number=Plur	dema	0			rule
+XIX	0	oewn-xix-a	Degree=Pos	dema	0			oewn_form
+XIX	1	oewn-XIX-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+XIXES	0	oewn-XIX-n	Capitalization=Upper+Number=Plur	dema	0			rule
+XL	0	oewn-xl-a	Degree=Pos	dema	0			oewn_form
+XL	1	oewn-XL-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+XLS	0	oewn-XL-n	Capitalization=Upper+Number=Plur	dema	0			rule
+XOR circuit	0	oewn-XOR_circuit-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+XOR circuits	0	oewn-XOR_circuit-n	Capitalization=Exact+Number=Plur	dema	0			rule
+XOR gate	0	oewn-XOR_gate-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+XOR gates	0	oewn-XOR_gate-n	Capitalization=Exact+Number=Plur	dema	0			rule
+XT	0	oewn-XT-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+XTC	0	oewn-XTC-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+XTCS	0	oewn-XTC-n	Capitalization=Upper+Number=Plur	dema	0			rule
+XTS	0	oewn-XT-n	Capitalization=Upper+Number=Plur	dema	0			rule
+XV	0	oewn-xv-a	Degree=Pos	dema	0			oewn_form
+XV	1	oewn-XV-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+XVI	0	oewn-xvi-a	Degree=Pos	dema	0			oewn_form
+XVI	1	oewn-XVI-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+XVII	0	oewn-xvii-a	Degree=Pos	dema	0			oewn_form
+XVII	1	oewn-XVII-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+XVIII	0	oewn-xviii-a	Degree=Pos	dema	0			oewn_form
+XVIII	1	oewn-XVIII-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+XVIIIS	0	oewn-XVIII-n	Capitalization=Upper+Number=Plur	dema	0			rule
+XVIIS	0	oewn-XVII-n	Capitalization=Upper+Number=Plur	dema	0			rule
+XVIS	0	oewn-XVI-n	Capitalization=Upper+Number=Plur	dema	0			rule
+XVS	0	oewn-XV-n	Capitalization=Upper+Number=Plur	dema	0			rule
+XX	0	oewn-xx-a	Degree=Pos	dema	0			oewn_form
+XX	1	oewn-XX-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+XXES	0	oewn-XX-n	Capitalization=Upper+Number=Plur	dema	0			rule
+XXI	0	oewn-xxi-a	Degree=Pos	dema	0			oewn_form
+XXI	1	oewn-XXI-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+XXIES	0	oewn-XXY-n	Capitalization=Upper+Number=Plur	dema	0			rule
+XXII	0	oewn-xxii-a	Degree=Pos	dema	0			oewn_form
+XXII	1	oewn-XXII-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+XXIII	0	oewn-xxiii-a	Degree=Pos	dema	0			oewn_form
+XXIII	1	oewn-XXIII-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+XXIIIS	0	oewn-XXIII-n	Capitalization=Upper+Number=Plur	dema	0			rule
+XXIIS	0	oewn-XXII-n	Capitalization=Upper+Number=Plur	dema	0			rule
+XXIS	0	oewn-XXI-n	Capitalization=Upper+Number=Plur	dema	0			rule
+XXIV	0	oewn-xxiv-a	Degree=Pos	dema	0			oewn_form
+XXIV	1	oewn-XXIV-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+XXIVS	0	oewn-XXIV-n	Capitalization=Upper+Number=Plur	dema	0			rule
+XXIX	0	oewn-xxix-a	Degree=Pos	dema	0			oewn_form
+XXIX	1	oewn-XXIX-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+XXIXES	0	oewn-XXIX-n	Capitalization=Upper+Number=Plur	dema	0			rule
+XXV	0	oewn-xxv-a	Degree=Pos	dema	0			oewn_form
+XXV	1	oewn-XXV-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+XXVI	0	oewn-xxvi-a	Degree=Pos	dema	0			oewn_form
+XXVI	1	oewn-XXVI-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+XXVII	0	oewn-xxvii-a	Degree=Pos	dema	0			oewn_form
+XXVII	1	oewn-XXVII-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+XXVIII	0	oewn-xxviii-a	Degree=Pos	dema	0			oewn_form
+XXVIII	1	oewn-XXVIII-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+XXVIIIS	0	oewn-XXVIII-n	Capitalization=Upper+Number=Plur	dema	0			rule
+XXVIIS	0	oewn-XXVII-n	Capitalization=Upper+Number=Plur	dema	0			rule
+XXVIS	0	oewn-XXVI-n	Capitalization=Upper+Number=Plur	dema	0			rule
+XXVS	0	oewn-XXV-n	Capitalization=Upper+Number=Plur	dema	0			rule
+XXX	0	oewn-xxx-a	Degree=Pos	dema	0			oewn_form
+XXX	1	oewn-XXX-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+XXXES	0	oewn-XXX-n	Capitalization=Upper+Number=Plur	dema	0			rule
+XXY	0	oewn-XXY-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+XXY-syndrome	0	oewn-XXY-syndrome-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+XY	0	oewn-XY-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+XYIES	0	oewn-XYY-n	Capitalization=Upper+Number=Plur	dema	0			rule
+XYY	0	oewn-XYY-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+Xanax	0	oewn-Xanax-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Xanaxes	0	oewn-Xanax-n	Capitalization=Title+Number=Plur	dema	0			rule
+Xanthosoma atrovirens	0	oewn-Xanthosoma_atrovirens-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Xanthosoma sagittifolium	0	oewn-Xanthosoma_sagittifolium-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Xanthosoma sagittifoliums	0	oewn-Xanthosoma_sagittifolium-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Xe	0	oewn-Xe-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Xenicus gilviventris	0	oewn-Xenicus_gilviventris-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Xenopus laevis	0	oewn-Xenopus_laevis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Xenorhyncus asiaticus	0	oewn-Xenorhyncus_asiaticus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Xeranthemum annuum	0	oewn-Xeranthemum_annuum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Xeranthemum annuums	0	oewn-Xeranthemum_annuum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Xerophyllum tenax	0	oewn-Xerophyllum_tenax-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Xerophyllum tenaxes	0	oewn-Xerophyllum_tenax-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Xerox	0	oewn-xerox-n	Number=Sing	dema	0			oewn_form
+Xerox	1	oewn-xerox-v	VerbForm=Inf	dema	0			oewn_form
+Xerox	2	oewn-Xerox-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Xerox machine	0	oewn-Xerox_machine-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Xerox machines	0	oewn-Xerox_machine-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Xeroxes	0	oewn-xerox-n	Number=Plur	dema	0			rule
+Xeroxes	1	oewn-xerox-v	Person=3+Tense=Pres	dema	0			rule
+Xeroxes	2	oewn-Xerox-n	Capitalization=Title+Number=Plur	dema	0			rule
+Xes	0	oewn-x-n	Number=Plur	dema	0			rule
+Xes	1	oewn-X-n	Capitalization=Title+Number=Plur	dema	0			rule
+Xes	2	oewn-Xe-n	Capitalization=Title+Number=Plur	dema	0			rule
+Xestobium rufovillosum	0	oewn-Xestobium_rufovillosum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Xestobium rufovillosums	0	oewn-Xestobium_rufovillosum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Xhosa	0	oewn-Xhosa-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Xhosa language	0	oewn-Xhosa_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Xhosa languages	0	oewn-Xhosa_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Xhosas	0	oewn-Xhosa-n	Capitalization=Title+Number=Plur	dema	0			rule
+Ximenesia encelioides	0	oewn-Ximenesia_encelioides-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Xiphias gladius	0	oewn-Xiphias_gladius-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Xiphosurus polyphemus	0	oewn-Xiphosurus_polyphemus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Xishuangbanna Dai	0	oewn-Xishuangbanna_Dai-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Xishuangbanna Dais	0	oewn-Xishuangbanna_Dai-n	Capitalization=Title+Number=Plur	dema	0			rule
+Xmas	0	oewn-Xmas-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Xxy-syndromes	0	oewn-XXY-syndrome-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Xylaria mali	0	oewn-Xylaria_mali-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Xylaria malis	0	oewn-Xylaria_mali-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Xylaria polymorpha	0	oewn-Xylaria_polymorpha-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Xylaria polymorphas	0	oewn-Xylaria_polymorpha-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Xylocaine	0	oewn-Xylocaine-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Xylocaines	0	oewn-Xylocaine-n	Capitalization=Title+Number=Plur	dema	0			rule
+Xylomelum pyriforme	0	oewn-Xylomelum_pyriforme-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Xylomelum pyriformes	0	oewn-Xylomelum_pyriforme-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Xylopia aethiopica	0	oewn-Xylopia_aethiopica-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Xylopia aethiopicas	0	oewn-Xylopia_aethiopica-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Xylosma congestum	0	oewn-Xylosma_congestum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Xylosma congestums	0	oewn-Xylosma_congestum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Xyphophorus helleri	0	oewn-Xyphophorus_helleri-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Xyphophorus helleris	0	oewn-Xyphophorus_helleri-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Xyris operculata	0	oewn-Xyris_operculata-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Xyris operculatas	0	oewn-Xyris_operculata-n	Capitalization=Exact+Number=Plur	dema	0			rule
+x	0	oewn-x-n	Number=Sing	dema	0			oewn_form
+x	1		VerbForm=Inf	dema	0	x	v	moby_reverse
+x	2	oewn-x-a	Degree=Pos	dema	0			oewn_form
+x-axis	0	oewn-x-axis-n	Number=Sing	dema	0			oewn_form
+x-ray	0	oewn-x-ray-v	VerbForm=Inf	dema	0			oewn_form
+x-rayed	0	oewn-x-ray-v	Tense=Past+VerbForm=Part	dema	0			rule
+x-raying	0	oewn-x-ray-v	VerbForm=Ger	dema	0			rule
+x-rays	0	oewn-x-ray-v	Person=3+Tense=Pres	dema	0			rule
+x64	0	oewn-x64-n	Number=Sing	dema	0			oewn_form
+x86	0	oewn-x86-n	Number=Sing	dema	0			oewn_form
+xalostockite	0		Number=Sing	dema	0	xalostockite	n	moby_reverse
+xalostockites	0		Number=Plur	dema	0	xalostockite	n	rule
+xanthate	0	oewn-xanthate-n	Number=Sing	dema	0			oewn_form
+xanthates	0	oewn-xanthate-n	Number=Plur	dema	0			rule
+xanthation	0		Number=Sing	dema	0	xanthation	n	moby_reverse
+xanthations	0		Number=Plur	dema	0	xanthation	n	rule
+xanthein	0		Number=Sing	dema	0	xanthein	n	moby_reverse
+xantheins	0		Number=Plur	dema	0	xanthein	n	rule
+xanthelasma	0	oewn-xanthelasma-n	Number=Sing	dema	0			oewn_form
+xanthelasmas	0	oewn-xanthelasma-n	Number=Plur	dema	0			rule
+xanthemia	0	oewn-xanthemia-n	Number=Sing	dema	0			oewn_form
+xanthemias	0	oewn-xanthemia-n	Number=Plur	dema	0			rule
+xanthene	0		Number=Sing	dema	0	xanthene	n	moby_reverse
+xanthenes	0		Number=Plur	dema	0	xanthene	n	rule
+xanthic	0		Degree=Pos	dema	0	xanthic	a	moby_reverse
+xanthic acid	0	oewn-xanthic_acid-n	Number=Sing	dema	0			oewn_form
+xanthic acids	0	oewn-xanthic_acid-n	Number=Plur	dema	0			rule
+xanthin	0		Number=Sing	dema	0	xanthin	n	moby_reverse
+xanthine	0	oewn-xanthine-n	Number=Sing	dema	0			oewn_form
+xanthines	0	oewn-xanthine-n	Number=Plur	dema	0			rule
+xanthins	0		Number=Plur	dema	0	xanthin	n	rule
+xanthochroid	0		Degree=Pos	dema	0	xanthochroid	a	moby_reverse
+xanthochroism	0		Number=Sing	dema	0	xanthochroism	n	moby_reverse
+xanthochroisms	0		Number=Plur	dema	0	xanthochroism	n	rule
+xanthoma	0	oewn-xanthoma-n	Number=Sing	dema	0			oewn_form
+xanthoma disseminatum	0	oewn-xanthoma_disseminatum-n	Number=Sing	dema	0			oewn_form
+xanthoma disseminatums	0	oewn-xanthoma_disseminatum-n	Number=Plur	dema	0			rule
+xanthoma multiplex	0	oewn-xanthoma_multiplex-n	Number=Sing	dema	0			oewn_form
+xanthoma multiplexes	0	oewn-xanthoma_multiplex-n	Number=Plur	dema	0			rule
+xanthomas	0	oewn-xanthoma-n	Number=Plur	dema	0			rule
+xanthomatosis	0	oewn-xanthomatosis-n	Number=Sing	dema	0			oewn_form
+xanthomonad	0	oewn-xanthomonad-n	Number=Sing	dema	0			oewn_form
+xanthomonads	0	oewn-xanthomonad-n	Number=Plur	dema	0			rule
+xanthophyl	0	oewn-xanthophyl-n	Number=Sing	dema	0			oewn_form
+xanthophyll	0	oewn-xanthophyll-n	Number=Sing	dema	0			oewn_form
+xanthophyllous	0		Degree=Pos	dema	0	xanthophyllous	a	moby_reverse
+xanthophylls	0	oewn-xanthophyll-n	Number=Plur	dema	0			rule
+xanthophyls	0	oewn-xanthophyl-n	Number=Plur	dema	0			rule
+xanthopsia	0	oewn-xanthopsia-n	Number=Sing	dema	0			oewn_form
+xanthopsias	0	oewn-xanthopsia-n	Number=Plur	dema	0			rule
+xanthosiderite	0		Number=Sing	dema	0	xanthosiderite	n	moby_reverse
+xanthosiderites	0		Number=Plur	dema	0	xanthosiderite	n	rule
+xanthosis	0	oewn-xanthosis-n	Number=Sing	dema	0			oewn_form
+xanthous	0	oewn-xanthous-a	Degree=Pos	dema	0			oewn_form
+xat	0		Number=Sing	dema	0	xat	n	moby_reverse
+xc	0		Number=Sing	dema	0	xc	n	moby_reverse
+xc	1	oewn-xc-a	Degree=Pos	dema	0			oewn_form
+xci	0	oewn-xci-a	Degree=Pos	dema	0			oewn_form
+xcii	0	oewn-xcii-a	Degree=Pos	dema	0			oewn_form
+xciii	0	oewn-xciii-a	Degree=Pos	dema	0			oewn_form
+xciv	0	oewn-xciv-a	Degree=Pos	dema	0			oewn_form
+xcl	0		Number=Sing	dema	0	xcl	n	moby_reverse
+xcl	1	oewn-xcl-a	Degree=Pos	dema	0			oewn_form
+xcv	0	oewn-xcv-a	Degree=Pos	dema	0			oewn_form
+xcvi	0	oewn-xcvi-a	Degree=Pos	dema	0			oewn_form
+xcvii	0	oewn-xcvii-a	Degree=Pos	dema	0			oewn_form
+xcviii	0	oewn-xcviii-a	Degree=Pos	dema	0			oewn_form
+xd	0		Number=Sing	dema	0	xd	n	moby_reverse
+xebec	0		Number=Sing	dema	0	xebec	n	moby_reverse
+xebecs	0		Number=Plur	dema	0	xebec	n	rule
+xenia	0		Number=Sing	dema	0	xenia	n	moby_reverse
+xenias	0		Number=Plur	dema	0	xenia	n	rule
+xenochia	0		Number=Sing	dema	0	xenochia	n	moby_reverse
+xenochias	0		Number=Plur	dema	0	xenochia	n	rule
+xenocryst	0		Number=Sing	dema	0	xenocryst	n	moby_reverse
+xenocrystic	0		Degree=Pos	dema	0	xenocrystic	a	moby_reverse
+xenocrysts	0		Number=Plur	dema	0	xenocryst	n	rule
+xenodiagnosis	0		Number=Sing	dema	0	xenodiagnosis	n	moby_reverse
+xenodiagnostic	0		Degree=Pos	dema	0	xenodiagnostic	a	moby_reverse
+xenodocheion	0		Number=Sing	dema	0	xenodocheion	n	moby_reverse
+xenodocheions	0		Number=Plur	dema	0	xenodocheion	n	rule
+xenogamies	0		Number=Plur	dema	0	xenogamy	n	rule
+xenogamy	0		Number=Sing	dema	0	xenogamy	n	moby_reverse
+xenogeneic	0	oewn-xenogeneic-a	Degree=Pos	dema	0			oewn_form
+xenogenesis	0	oewn-xenogenesis-n	Number=Sing	dema	0			oewn_form
+xenogenetic	0		Degree=Pos	dema	0	xenogenetic	a	moby_reverse
+xenogenic	0		Degree=Pos	dema	0	xenogenic	a	moby_reverse
+xenoglossia	0		Number=Sing	dema	0	xenoglossia	n	moby_reverse
+xenoglossias	0		Number=Plur	dema	0	xenoglossia	n	rule
+xenograft	0	oewn-xenograft-n	Number=Sing	dema	0			oewn_form
+xenografts	0	oewn-xenograft-n	Number=Plur	dema	0			rule
+xenolith	0	oewn-xenolith-n	Number=Sing	dema	0			oewn_form
+xenolithic	0		Degree=Pos	dema	0	xenolithic	a	moby_reverse
+xenoliths	0	oewn-xenolith-n	Number=Plur	dema	0			rule
+xenomorphic	0		Degree=Pos	dema	0	xenomorphic	a	moby_reverse
+xenomorphically	0		Degree=Pos	dema	0	xenomorphically	r	moby_reverse
+xenon	0	oewn-xenon-n	Number=Sing	dema	0			oewn_form
+xenons	0	oewn-xenon-n	Number=Plur	dema	0			rule
+xenophile	0		Number=Sing	dema	0	xenophile	n	moby_reverse
+xenophiles	0		Number=Plur	dema	0	xenophile	n	rule
+xenophobe	0		Number=Sing	dema	0	xenophobe	n	moby_reverse
+xenophobes	0		Number=Plur	dema	0	xenophobe	n	rule
+xenophobia	0	oewn-xenophobia-n	Number=Sing	dema	0			oewn_form
+xenophobias	0	oewn-xenophobia-n	Number=Plur	dema	0			rule
+xenophobic	0	oewn-xenophobic-a	Degree=Pos	dema	0			oewn_form
+xenotime	0	oewn-xenotime-n	Number=Sing	dema	0			oewn_form
+xenotimes	0	oewn-xenotime-n	Number=Plur	dema	0			rule
+xenotransplant	0	oewn-xenotransplant-n	Number=Sing	dema	0			oewn_form
+xenotransplantation	0	oewn-xenotransplantation-n	Number=Sing	dema	0			oewn_form
+xenotransplantations	0	oewn-xenotransplantation-n	Number=Plur	dema	0			rule
+xenotransplants	0	oewn-xenotransplant-n	Number=Plur	dema	0			rule
+xeranthemum	0	oewn-xeranthemum-n	Number=Sing	dema	0			oewn_form
+xeranthemums	0	oewn-xeranthemum-n	Number=Plur	dema	0			rule
+xerarch	0		Degree=Pos	dema	0	xerarch	a	moby_reverse
+xeric	0	oewn-xeric-a	Degree=Pos	dema	0			oewn_form
+xeroderma	0	oewn-xeroderma-n	Number=Sing	dema	0			oewn_form
+xeroderma pigmentosum	0	oewn-xeroderma_pigmentosum-n	Number=Sing	dema	0			oewn_form
+xeroderma pigmentosums	0	oewn-xeroderma_pigmentosum-n	Number=Plur	dema	0			rule
+xerodermas	0	oewn-xeroderma-n	Number=Plur	dema	0			rule
+xerodermia	0	oewn-xerodermia-n	Number=Sing	dema	0			oewn_form
+xerodermias	0	oewn-xerodermia-n	Number=Plur	dema	0			rule
+xerographic	0	oewn-xerographic-a	Degree=Pos	dema	0			oewn_form
+xerographic copier	0	oewn-xerographic_copier-n	Number=Sing	dema	0			oewn_form
+xerographic copiers	0	oewn-xerographic_copier-n	Number=Plur	dema	0			rule
+xerographic printer	0	oewn-xerographic_printer-n	Number=Sing	dema	0			oewn_form
+xerographic printers	0	oewn-xerographic_printer-n	Number=Plur	dema	0			rule
+xerographically	0		Degree=Pos	dema	0	xerographically	r	moby_reverse
+xerographies	0	oewn-xerography-n	Number=Plur	dema	0			rule
+xerography	0	oewn-xerography-n	Number=Sing	dema	0			oewn_form
+xeroma	0	oewn-xeroma-n	Number=Sing	dema	0			oewn_form
+xeromas	0	oewn-xeroma-n	Number=Plur	dema	0			rule
+xeromorphic	0		Degree=Pos	dema	0	xeromorphic	a	moby_reverse
+xerophagies	0		Number=Plur	dema	0	xerophagy	n	rule
+xerophagy	0		Number=Sing	dema	0	xerophagy	n	moby_reverse
+xerophile	0	oewn-xerophile-n	Number=Sing	dema	0			oewn_form
+xerophiles	0	oewn-xerophile-n	Number=Plur	dema	0			rule
+xerophilous	0		Degree=Pos	dema	0	xerophilous	a	moby_reverse
+xerophilous plant	0	oewn-xerophilous_plant-n	Number=Sing	dema	0			oewn_form
+xerophilous plants	0	oewn-xerophilous_plant-n	Number=Plur	dema	0			rule
+xerophthalmia	0	oewn-xerophthalmia-n	Number=Sing	dema	0			oewn_form
+xerophthalmias	0	oewn-xerophthalmia-n	Number=Plur	dema	0			rule
+xerophthalmus	0	oewn-xerophthalmus-n	Number=Sing	dema	0			oewn_form
+xerophyte	0	oewn-xerophyte-n	Number=Sing	dema	0			oewn_form
+xerophytes	0	oewn-xerophyte-n	Number=Plur	dema	0			rule
+xerophytic	0	oewn-xerophytic-a	Degree=Pos	dema	0			oewn_form
+xerophytic plant	0	oewn-xerophytic_plant-n	Number=Sing	dema	0			oewn_form
+xerophytic plants	0	oewn-xerophytic_plant-n	Number=Plur	dema	0			rule
+xerophytically	0		Degree=Pos	dema	0	xerophytically	r	moby_reverse
+xerophytism	0		Number=Sing	dema	0	xerophytism	n	moby_reverse
+xerophytisms	0		Number=Plur	dema	0	xerophytism	n	rule
+xeroradiographies	0	oewn-xeroradiography-n	Number=Plur	dema	0			rule
+xeroradiography	0	oewn-xeroradiography-n	Number=Sing	dema	0			oewn_form
+xerosere	0		Number=Sing	dema	0	xerosere	n	moby_reverse
+xeroseres	0		Number=Plur	dema	0	xerosere	n	rule
+xerosis	0		Number=Sing	dema	0	xerosis	n	moby_reverse
+xerostomia	0	oewn-xerostomia-n	Number=Sing	dema	0			oewn_form
+xerostomias	0	oewn-xerostomia-n	Number=Plur	dema	0			rule
+xerotes	0	oewn-xerotes-n	Number=Sing	dema	0			oewn_form
+xerotic	0		Degree=Pos	dema	0	xerotic	a	moby_reverse
+xerox	0	oewn-xerox-n	Number=Sing	dema	0			oewn_form
+xerox	1	oewn-xerox-v	VerbForm=Inf	dema	0			oewn_form
+xerox copies	0	oewn-xerox_copy-n	Number=Plur	dema	0			rule
+xerox copy	0	oewn-xerox_copy-n	Number=Sing	dema	0			oewn_form
+xeroxed	0	oewn-xerox-v	Tense=Past+VerbForm=Part	dema	0			rule
+xeroxes	0	oewn-xerox-n	Number=Plur	dema	0			rule
+xeroxes	1	oewn-xerox-v	Person=3+Tense=Pres	dema	0			rule
+xeroxing	0	oewn-xerox-v	VerbForm=Ger	dema	0			rule
+xes	0	oewn-x-n	Number=Plur	dema	0			rule
+xi	0	oewn-xi-n	Number=Sing	dema	0			oewn_form
+xi	1	oewn-xi-a	Degree=Pos	dema	0			oewn_form
+xii	0	oewn-xii-a	Degree=Pos	dema	0			oewn_form
+xiii	0	oewn-xiii-a	Degree=Pos	dema	0			oewn_form
+xiphisternal	0		Degree=Pos	dema	0	xiphisternal	a	moby_reverse
+xiphisternum	0		Number=Sing	dema	0	xiphisternum	n	moby_reverse
+xiphisternums	0		Number=Plur	dema	0	xiphisternum	n	rule
+xiphistna	0		Number=Sing	dema	0	xiphistna	n	moby_reverse
+xiphistnas	0		Number=Plur	dema	0	xiphistna	n	rule
+xiphium iris	0	oewn-xiphium_iris-n	Number=Sing	dema	0			oewn_form
+xiphoid	0		Degree=Pos	dema	0	xiphoid	a	moby_reverse
+xiphoid	1		Number=Sing	dema	0	xiphoid	n	moby_reverse
+xiphoid process	0	oewn-xiphoid_process-n	Number=Sing	dema	0			oewn_form
+xiphoid processes	0	oewn-xiphoid_process-n	Number=Plur	dema	0			rule
+xiphosuran	0		Number=Sing	dema	0	xiphosuran	n	moby_reverse
+xiphosuran	1		Degree=Pos	dema	0	xiphosuran	a	moby_reverse
+xiphosurans	0		Number=Plur	dema	0	xiphosuran	n	rule
+xis	0	oewn-XI-n	Number=Plur	dema	0			moby_reverse
+xis	1	oewn-xi-n	Number=Plur	dema	0			rule
+xiv	0	oewn-xiv-a	Degree=Pos	dema	0			oewn_form
+xix	0	oewn-xix-a	Degree=Pos	dema	0			oewn_form
+xl	0	oewn-xl-a	Degree=Pos	dema	0			oewn_form
+xli	0	oewn-xli-a	Degree=Pos	dema	0			oewn_form
+xlii	0	oewn-xlii-a	Degree=Pos	dema	0			oewn_form
+xliii	0	oewn-xliii-a	Degree=Pos	dema	0			oewn_form
+xliv	0	oewn-xliv-a	Degree=Pos	dema	0			oewn_form
+xlv	0	oewn-xlv-a	Degree=Pos	dema	0			oewn_form
+xlvi	0	oewn-xlvi-a	Degree=Pos	dema	0			oewn_form
+xlvii	0	oewn-xlvii-a	Degree=Pos	dema	0			oewn_form
+xlviii	0	oewn-xlviii-a	Degree=Pos	dema	0			oewn_form
+xoanon	0		Number=Sing	dema	0	xoanon	n	moby_reverse
+xoanona	0		Number=Sing	dema	0	xoanona	n	moby_reverse
+xoanonas	0		Number=Plur	dema	0	xoanona	n	rule
+xoanons	0		Number=Plur	dema	0	xoanon	n	rule
+xr	0		Number=Sing	dema	0	xr	n	moby_reverse
+xr	1		Degree=Pos	dema	0	xr	a	moby_reverse
+xv	0	oewn-xv-a	Degree=Pos	dema	0			oewn_form
+xvi	0	oewn-xvi-a	Degree=Pos	dema	0			oewn_form
+xvii	0	oewn-xvii-a	Degree=Pos	dema	0			oewn_form
+xviii	0	oewn-xviii-a	Degree=Pos	dema	0			oewn_form
+xw	0		Number=Sing	dema	0	xw	n	moby_reverse
+xx	0	oewn-xx-a	Degree=Pos	dema	0			oewn_form
+xxi	0	oewn-xxi-a	Degree=Pos	dema	0			oewn_form
+xxii	0	oewn-xxii-a	Degree=Pos	dema	0			oewn_form
+xxiii	0	oewn-xxiii-a	Degree=Pos	dema	0			oewn_form
+xxiv	0	oewn-xxiv-a	Degree=Pos	dema	0			oewn_form
+xxix	0	oewn-xxix-a	Degree=Pos	dema	0			oewn_form
+xxv	0	oewn-xxv-a	Degree=Pos	dema	0			oewn_form
+xxvi	0	oewn-xxvi-a	Degree=Pos	dema	0			oewn_form
+xxvii	0	oewn-xxvii-a	Degree=Pos	dema	0			oewn_form
+xxviii	0	oewn-xxviii-a	Degree=Pos	dema	0			oewn_form
+xxx	0	oewn-xxx-a	Degree=Pos	dema	0			oewn_form
+xxxi	0	oewn-xxxi-a	Degree=Pos	dema	0			oewn_form
+xxxii	0	oewn-xxxii-a	Degree=Pos	dema	0			oewn_form
+xxxiii	0	oewn-xxxiii-a	Degree=Pos	dema	0			oewn_form
+xxxiv	0	oewn-xxxiv-a	Degree=Pos	dema	0			oewn_form
+xxxv	0	oewn-xxxv-a	Degree=Pos	dema	0			oewn_form
+xxxvi	0	oewn-xxxvi-a	Degree=Pos	dema	0			oewn_form
+xxxvii	0	oewn-xxxvii-a	Degree=Pos	dema	0			oewn_form
+xxxviii	0	oewn-xxxviii-a	Degree=Pos	dema	0			oewn_form
+xylan	0		Number=Sing	dema	0	xylan	n	moby_reverse
+xylans	0		Number=Plur	dema	0	xylan	n	rule
+xylem	0	oewn-xylem-n	Number=Sing	dema	0			oewn_form
+xylems	0	oewn-xylem-n	Number=Plur	dema	0			rule
+xylene	0	oewn-xylene-n	Number=Sing	dema	0			oewn_form
+xylenes	0	oewn-xylene-n	Number=Plur	dema	0			rule
+xylic	0		Degree=Pos	dema	0	xylic	a	moby_reverse
+xylidine	0		Number=Sing	dema	0	xylidine	n	moby_reverse
+xylidines	0		Number=Plur	dema	0	xylidine	n	rule
+xylo	0		Number=Sing	dema	0	xylo	n	moby_reverse
+xylocarp	0		Number=Sing	dema	0	xylocarp	n	moby_reverse
+xylocarps	0		Number=Plur	dema	0	xylocarp	n	rule
+xylograph	0		Number=Sing	dema	0	xylograph	n	moby_reverse
+xylograph	1		VerbForm=Inf	dema	0	xylograph	v	moby_reverse
+xylographer	0		Number=Sing	dema	0	xylographer	n	moby_reverse
+xylographers	0		Number=Plur	dema	0	xylographer	n	rule
+xylographic	0		Degree=Pos	dema	0	xylographic	a	moby_reverse
+xylographical	0		Degree=Pos	dema	0	xylographical	a	moby_reverse
+xylographically	0		Degree=Pos	dema	0	xylographically	r	moby_reverse
+xylographies	0		Number=Plur	dema	0	xylography	n	rule
+xylographs	0		Number=Plur	dema	0	xylograph	n	rule
+xylography	0		Number=Sing	dema	0	xylography	n	moby_reverse
+xyloid	0		Degree=Pos	dema	0	xyloid	a	moby_reverse
+xylol	0	oewn-xylol-n	Number=Sing	dema	0			oewn_form
+xylols	0	oewn-xylol-n	Number=Plur	dema	0			rule
+xylometer	0	oewn-xylometer-n	Number=Sing	dema	0			oewn_form
+xylometers	0	oewn-xylometer-n	Number=Plur	dema	0			rule
+xylophage	0		Number=Sing	dema	0	xylophage	n	moby_reverse
+xylophages	0		Number=Plur	dema	0	xylophage	n	rule
+xylophagous	0		Degree=Pos	dema	0	xylophagous	a	moby_reverse
+xylophone	0	oewn-xylophone-n	Number=Sing	dema	0			oewn_form
+xylophones	0	oewn-xylophone-n	Number=Plur	dema	0			rule
+xylophonist	0	oewn-xylophonist-n	Number=Sing	dema	0			oewn_form
+xylophonists	0	oewn-xylophonist-n	Number=Plur	dema	0			rule
+xylos	0		Number=Plur	dema	0	xylo	n	rule
+xylose	0	oewn-xylose-n	Number=Sing	dema	0			oewn_form
+xyloses	0	oewn-xylose-n	Number=Plur	dema	0			rule
+xylosma	0	oewn-xylosma-n	Number=Sing	dema	0			oewn_form
+xylosmas	0	oewn-xylosma-n	Number=Plur	dema	0			rule
+xylostroma	0		Number=Sing	dema	0	xylostroma	n	moby_reverse
+xylostromas	0		Number=Plur	dema	0	xylostroma	n	rule
+xylostromata	0		Number=Sing	dema	0	xylostromata	n	moby_reverse
+xylostromatas	0		Number=Plur	dema	0	xylostromata	n	rule
+xylostromatoid	0		Degree=Pos	dema	0	xylostromatoid	a	moby_reverse
+xylotomies	0		Number=Plur	dema	0	xylotomy	n	rule
+xylotomist	0		Number=Sing	dema	0	xylotomist	n	moby_reverse
+xylotomists	0		Number=Plur	dema	0	xylotomist	n	rule
+xylotomous	0		Degree=Pos	dema	0	xylotomous	a	moby_reverse
+xylotomy	0		Number=Sing	dema	0	xylotomy	n	moby_reverse
+xylyl	0		Number=Sing	dema	0	xylyl	n	moby_reverse
+xylyls	0		Number=Plur	dema	0	xylyl	n	rule
+xyst	0		Number=Sing	dema	0	xyst	n	moby_reverse
+xyster	0		Number=Sing	dema	0	xyster	n	moby_reverse
+xysters	0		Number=Plur	dema	0	xyster	n	rule
+xysts	0		Number=Plur	dema	0	xyst	n	rule
+xystum	0		Number=Sing	dema	0	xystum	n	moby_reverse
+xystums	0		Number=Plur	dema	0	xystum	n	rule

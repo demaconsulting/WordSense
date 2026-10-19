@@ -1,4 +1,3 @@
-spelling	rank	entry_id	features	source_id	reviewed
-bx	0	dema-bx-n	Number=Sing	dema	0
-bxs	0	dema-bxs-n	Number=Sing	dema	0
-bxses	0	dema-bxs-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+bx	0		Number=Sing	dema	0	bx	n	moby_reverse
+bxs	0		Number=Sing	dema	0	bxs	n	moby_reverse

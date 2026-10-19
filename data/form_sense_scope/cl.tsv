@@ -12,9 +12,7 @@ closes	0	close#verb
 cloud	0	cloud#noun
 cloud	1	cloud#verb
 clouded	0	cloud#verb
-clouder	0	cloud#noun
-clouders	0	cloud#noun
-clouding	0	cloud#noun
-clouding	1	cloud#verb
+clouding	0	cloud#verb
+clouding	1	cloud#noun
 clouds	0	cloud#noun
 clouds	1	cloud#verb

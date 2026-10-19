@@ -1,303 +1,553 @@
-spelling	rank	entry_id	features	source_id	reviewed
-ai	0	oewn-ai-n	Number=Sing	dema	0
-aiblins	0	dema-aiblins-r	Degree=Pos	dema	0
-aid	0	oewn-aid-n	Number=Sing	dema	1
-aid	1	oewn-aid-v	VerbForm=Inf	dema	1
-aide	0	oewn-aide-n	Number=Sing	dema	0
-aided	0	oewn-aid-v	Tense=Past	dema	1
-aider	0	dema-aider-n	Number=Sing	dema	0
-aiders	0	oewn-aid-n	Number=Plur	dema	1
-aides	0	oewn-aide-n	Number=Plur	dema	0
-aidful	0	dema-aidful-a	Degree=Pos	dema	0
-aidfully	0	dema-aidful-r		dema	0
-aidfulness	0	dema-aidful-n	Number=Plur	dema	0
-aiding	0	oewn-aid-n	Number=Plur	dema	1
-aiding	1	oewn-aid-v	VerbForm=Ger	dema	1
-aidingly	0	dema-aid-r		dema	0
-aidless	0	dema-aidless-a	Degree=Pos	dema	0
-aidlessly	0	dema-aidless-r		dema	0
-aidlessness	0	dema-aidless-n	Number=Plur	dema	0
-aids	0	oewn-aid-n	Number=Plur	dema	1
-aids	1	oewn-aid-v	Person=3+Tense=Pres	dema	1
-aiglet	0	oewn-aiglet-n	Number=Sing	dema	0
-aiglets	0	oewn-aiglet-n	Number=Plur	dema	0
-aigrette	0	oewn-aigrette-n	Number=Sing	dema	0
-aigrettes	0	oewn-aigrette-n	Number=Plur	dema	0
-aiguille	0	dema-aiguille-n	Number=Sing	dema	0
-aiguilles	0	dema-aiguille-n	Number=Plur	dema	0
-aiguillette	0	oewn-aiguillette-n	Number=Sing	dema	0
-aiguilletted	0	dema-aiguilletted-a	Degree=Pos	dema	0
-aiguilletted	1	dema-aiguilletted-v	VerbForm=Inf	dema	0
-aiguilletteded	0	dema-aiguilletted-v	Tense=Past	dema	0
-aiguilletteding	0	dema-aiguilletted-v	VerbForm=Ger	dema	0
-aiguillettedly	0	dema-aiguilletted-r		dema	0
-aiguilletteds	0	dema-aiguilletted-v	Person=3+Tense=Pres	dema	0
-aiguillettes	0	oewn-aiguillette-n	Number=Plur	dema	0
-aikido	0	oewn-aikido-n	Number=Sing	dema	0
-aikidoes	0	oewn-aikido-n	Number=Plur	dema	0
-aikidos	0	oewn-aikido-n	Number=Plur	dema	0
-aikona	0	dema-aikona-i		dema	0
-aikuchi	0	dema-aikuchi-n	Number=Sing	dema	0
-aikuchis	0	dema-aikuchi-n	Number=Plur	dema	0
-ail	0	oewn-ail-v	VerbForm=Inf	dema	0
-ailanthic	0	dema-ailanthic-a	Degree=Pos	dema	0
-ailanthically	0	dema-ailanthic-r		dema	0
-ailanthicness	0	dema-ailanthic-n	Number=Plur	dema	0
-ailanthus	0	oewn-ailanthus-n	Number=Sing	dema	0
-ailanthuses	0	dema-ailanthuses-n	Number=Sing	dema	0
-ailed	0	oewn-ail-v	Tense=Past	dema	0
-ailer	0	oewn-ail-n	Number=Plur	dema	0
-aileron	0	oewn-aileron-n	Number=Sing	dema	0
-ailerons	0	oewn-aileron-n	Number=Plur	dema	0
-ailers	0	oewn-ail-n	Number=Plur	dema	0
-ailette	0	dema-ailette-n	Number=Sing	dema	0
-ailettes	0	dema-ailette-n	Number=Plur	dema	0
-ailing	0	oewn-ailing-a	Degree=Pos	dema	0
-ailing	1	dema-ailing-v	VerbForm=Inf	dema	0
-ailingly	0	dema-ail-r		dema	0
-ailment	0	oewn-ailment-n	Number=Sing	dema	0
-ailments	0	oewn-ailment-n	Number=Plur	dema	0
-ails	0	oewn-ail-v	Person=3+Tense=Pres	dema	0
-ailurophile	0	dema-ailurophile-n	Number=Sing	dema	0
-ailurophiles	0	dema-ailurophile-n	Number=Plur	dema	0
-ailurophilia	0	dema-ailurophilia-n	Number=Sing	dema	0
-ailurophilias	0	dema-ailurophilia-n	Number=Plur	dema	0
-ailurophilic	0	dema-ailurophilic-a	Degree=Pos	dema	0
-ailurophilically	0	dema-ailurophilic-r		dema	0
-ailurophobe	0	dema-ailurophobe-n	Number=Sing	dema	0
-ailurophobes	0	dema-ailurophobe-n	Number=Plur	dema	0
-ailurophobia	0	oewn-ailurophobia-n	Number=Sing	dema	0
-ailurophobias	0	oewn-ailurophobia-n	Number=Plur	dema	0
-ailurophobic	0	dema-ailurophobic-a	Degree=Pos	dema	0
-ailurophobically	0	dema-ailurophobic-r		dema	0
-aim	0	oewn-aim-n	Number=Sing	dema	1
-aim	1	oewn-aim-v	VerbForm=Inf	dema	1
-aimak	0	dema-aimak-n	Number=Sing	dema	0
-aimaks	0	dema-aimak-n	Number=Plur	dema	0
-aimed	0	oewn-aim-v	Tense=Past	dema	1
-aimer	0	dema-aimer-n	Number=Sing	dema	0
-aimers	0	oewn-aim-n	Number=Plur	dema	1
-aimful	0	dema-aimful-a	Degree=Pos	dema	0
-aimfully	0	dema-aimfully-r	Degree=Pos	dema	0
-aimfulness	0	dema-aimful-n	Number=Plur	dema	0
-aiming	0	oewn-aim-n	Number=Plur	dema	1
-aiming	1	oewn-aim-v	VerbForm=Ger	dema	1
-aimingly	0	dema-aim-r		dema	0
-aimless	0	oewn-aimless-a	Degree=Pos	dema	0
-aimlessly	0	oewn-aimlessly-r	Degree=Pos	dema	0
-aimlessness	0	oewn-aimlessness-n	Number=Sing	dema	0
-aimlessnesses	0	oewn-aimlessness-n	Number=Plur	dema	0
-aims	0	oewn-aim-n	Number=Plur	dema	1
-aims	1	oewn-aim-v	Person=3+Tense=Pres	dema	1
-ain	0	dema-ain-d		dema	0
-ain	1	dema-ain-n	Number=Sing	dema	0
-ains	0	dema-ain-n	Number=Plur	dema	0
-air	0	oewn-air-n	Number=Sing	dema	0
-air	1	oewn-air-v	VerbForm=Inf	dema	0
-airbill	0	dema-airbill-n	Number=Sing	dema	0
-airbills	0	dema-airbill-n	Number=Plur	dema	0
-airboat	0	dema-airboat-n	Number=Sing	dema	0
-airboats	0	dema-airboat-n	Number=Plur	dema	0
-airborne	0	oewn-airborne-a	Degree=Pos	dema	0
-airbornely	0	dema-airborne-r		dema	0
-airborneness	0	dema-airborne-n	Number=Plur	dema	0
-airborner	0	oewn-airborne-a	Degree=Cmp	dema	0
-airbornest	0	oewn-airborne-a	Degree=Sup	dema	0
-airbrasive	0	dema-airbrasive-n	Number=Sing	dema	0
-airbrasive	1	dema-airbrasive-a	Degree=Pos	dema	0
-airbrasively	0	dema-airbrasive-r		dema	0
-airbrasiveness	0	dema-airbrasive-n	Number=Plur	dema	0
-airbrasives	0	dema-airbrasive-n	Number=Plur	dema	0
-airbrick	0	dema-airbrick-n	Number=Sing	dema	0
-airbricks	0	dema-airbrick-n	Number=Plur	dema	0
-airbrush	0	oewn-airbrush-n	Number=Sing	dema	0
-airbrushes	0	oewn-airbrush-n	Number=Plur	dema	0
-airburst	0	oewn-airburst-n	Number=Sing	dema	0
-airbursts	0	oewn-airburst-n	Number=Plur	dema	0
-airbus	0	oewn-airbus-n	Number=Sing	dema	0
-airbuses	0	oewn-airbus-n	Number=Plur	dema	0
-aircraft	0	oewn-aircraft-n	Number=Sing	dema	0
-aircraftman	0	oewn-aircraftman-n	Number=Sing	dema	0
-aircraftmen	0	dema-aircraftmen-n	Number=Sing	dema	0
-aircraftmens	0	dema-aircraftmen-n	Number=Plur	dema	0
-aircrafts	0	oewn-aircraft-n	Number=Plur	dema	0
-aircraftsman	0	oewn-aircraftsman-n	Number=Sing	dema	0
-aircraftsmans	0	oewn-aircraftsman-n	Number=Plur	dema	0
-aircraftsmen	0	dema-aircraftsmen-n	Number=Sing	dema	0
-aircraftsmens	0	dema-aircraftsmen-n	Number=Plur	dema	0
-aircraftswoman	0	oewn-aircraftswoman-n	Number=Sing	dema	0
-aircraftswomans	0	oewn-aircraftswoman-n	Number=Plur	dema	0
-aircraftswomen	0	dema-aircraftswomen-n	Number=Sing	dema	0
-aircraftswomens	0	dema-aircraftswomen-n	Number=Plur	dema	0
-aircrew	0	oewn-aircrew-n	Number=Sing	dema	0
-aircrewman	0	oewn-aircrewman-n	Number=Sing	dema	0
-aircrewmen	0	dema-aircrewmen-n	Number=Sing	dema	0
-aircrewmens	0	dema-aircrewmen-n	Number=Plur	dema	0
-aircrews	0	oewn-aircrew-n	Number=Plur	dema	0
-airdrome	0	oewn-airdrome-n	Number=Sing	dema	0
-airdromes	0	oewn-airdrome-n	Number=Plur	dema	0
-airdrop	0	oewn-airdrop-n	Number=Sing	dema	0
-airdrop	1	dema-airdrop-v	VerbForm=Inf	dema	0
-airdrop	2	dema-airdrop-a	Degree=Pos	dema	0
-airdroped	0	dema-airdrop-v	Tense=Past	dema	0
-airdroper	0	oewn-airdrop-n	Number=Plur	dema	0
-airdroper	1	dema-airdrop-a	Degree=Cmp	dema	0
-airdropers	0	oewn-airdrop-n	Number=Plur	dema	0
-airdropest	0	dema-airdrop-a	Degree=Sup	dema	0
-airdroping	0	dema-airdrop-v	VerbForm=Ger	dema	0
-airdropingly	0	dema-airdrop-r		dema	0
-airdroply	0	dema-airdrop-r		dema	0
-airdropness	0	oewn-airdrop-n	Number=Plur	dema	0
-airdropped	0	dema-airdropped-v	VerbForm=Inf	dema	0
-airdropping	0	dema-airdropping-v	VerbForm=Inf	dema	0
-airdrops	0	oewn-airdrop-n	Number=Plur	dema	0
-airdrops	1	dema-airdrop-v	Person=3+Tense=Pres	dema	0
-aired	0	oewn-air-v	Tense=Past	dema	0
-airer	0	oewn-air-n	Number=Plur	dema	0
-airers	0	oewn-air-n	Number=Plur	dema	0
-airfield	0	oewn-airfield-n	Number=Sing	dema	0
-airfields	0	oewn-airfield-n	Number=Plur	dema	0
-airflow	0	oewn-airflow-n	Number=Sing	dema	0
-airflows	0	oewn-airflow-n	Number=Plur	dema	0
-airfoil	0	oewn-airfoil-n	Number=Sing	dema	0
-airfoils	0	oewn-airfoil-n	Number=Plur	dema	0
-airframe	0	oewn-airframe-n	Number=Sing	dema	0
-airframes	0	oewn-airframe-n	Number=Plur	dema	0
-airglow	0	dema-airglow-n	Number=Sing	dema	0
-airglows	0	dema-airglow-n	Number=Plur	dema	0
-airgraph	0	dema-airgraph-n	Number=Sing	dema	0
-airgraph	1	dema-airgraph-v	VerbForm=Inf	dema	0
-airgraphed	0	dema-airgraph-v	Tense=Past	dema	0
-airgrapher	0	dema-airgraph-n	Number=Plur	dema	0
-airgraphers	0	dema-airgraph-n	Number=Plur	dema	0
-airgraphing	0	dema-airgraph-v	VerbForm=Ger	dema	0
-airgraphingly	0	dema-airgraph-r		dema	0
-airgraphs	0	dema-airgraph-n	Number=Plur	dema	0
-airgraphs	1	dema-airgraph-v	Person=3+Tense=Pres	dema	0
-airhead	0	oewn-airhead-n	Number=Sing	dema	0
-airheads	0	oewn-airhead-n	Number=Plur	dema	0
-airier	0	dema-airier-a	Degree=Pos	dema	0
-airierly	0	dema-airier-r		dema	0
-airiest	0	dema-airiest-a	Degree=Pos	dema	0
-airiestly	0	dema-airiest-r		dema	0
-airily	0	oewn-airily-r	Degree=Pos	dema	0
-airiness	0	oewn-airiness-n	Number=Sing	dema	0
-airinesses	0	oewn-airiness-n	Number=Plur	dema	0
-airing	0	oewn-airing-n	Number=Sing	dema	0
-airing	1	dema-airing-v	VerbForm=Inf	dema	0
-airingly	0	dema-air-r		dema	0
-airings	0	oewn-airing-n	Number=Plur	dema	0
-airless	0	oewn-airless-a	Degree=Pos	dema	0
-airlessly	0	dema-airless-r		dema	0
-airlessness	0	dema-airless-n	Number=Plur	dema	0
-airlift	0	oewn-airlift-n	Number=Sing	dema	0
-airlift	1	oewn-airlift-v	VerbForm=Inf	dema	0
-airlifted	0	oewn-airlift-v	Tense=Past	dema	0
-airlifter	0	oewn-airlift-n	Number=Plur	dema	0
-airlifters	0	oewn-airlift-n	Number=Plur	dema	0
-airlifting	0	oewn-airlift-v	VerbForm=Ger	dema	0
-airliftingly	0	dema-airlift-r		dema	0
-airlifts	0	oewn-airlift-n	Number=Plur	dema	0
-airlifts	1	oewn-airlift-v	Person=3+Tense=Pres	dema	0
-airlight	0	dema-airlight-n	Number=Sing	dema	0
-airlights	0	dema-airlight-n	Number=Plur	dema	0
-airlike	0	oewn-airlike-a	Degree=Pos	dema	0
-airlikely	0	dema-airlike-r		dema	0
-airlikeness	0	dema-airlike-n	Number=Plur	dema	0
-airliker	0	oewn-airlike-a	Degree=Cmp	dema	0
-airlikest	0	oewn-airlike-a	Degree=Sup	dema	0
-airline	0	oewn-airline-n	Number=Sing	dema	0
-airliner	0	oewn-airliner-n	Number=Sing	dema	0
-airliners	0	oewn-airliner-n	Number=Plur	dema	0
-airlines	0	oewn-airline-n	Number=Plur	dema	0
-airlock	0	oewn-airlock-n	Number=Sing	dema	0
-airlocks	0	oewn-airlock-n	Number=Plur	dema	0
-airman	0	oewn-airman-n	Number=Sing	dema	0
-airmanship	0	oewn-airmanship-n	Number=Sing	dema	0
-airmanships	0	oewn-airmanship-n	Number=Plur	dema	0
-airmen	0	dema-airmen-n	Number=Sing	dema	0
-airmens	0	dema-airmen-n	Number=Plur	dema	0
-airplane	0	oewn-airplane-n	Number=Sing	dema	0
-airplanes	0	oewn-airplane-n	Number=Plur	dema	0
-airport	0	oewn-airport-n	Number=Sing	dema	0
-airports	0	oewn-airport-n	Number=Plur	dema	0
-airproof	0	dema-airproof-a	Degree=Pos	dema	0
-airproof	1	dema-airproof-v	VerbForm=Inf	dema	0
-airproofed	0	dema-airproof-v	Tense=Past	dema	0
-airproofer	0	dema-airproof-a	Degree=Cmp	dema	0
-airproofer	1	dema-airproof-n	Number=Plur	dema	0
-airproofers	0	dema-airproof-n	Number=Plur	dema	0
-airproofest	0	dema-airproof-a	Degree=Sup	dema	0
-airproofing	0	dema-airproof-v	VerbForm=Ger	dema	0
-airproofingly	0	dema-airproof-r		dema	0
-airproofly	0	dema-airproof-r		dema	0
-airproofness	0	dema-airproof-n	Number=Plur	dema	0
-airproofs	0	dema-airproof-v	Person=3+Tense=Pres	dema	0
-airs	0	oewn-airs-n	Number=Sing	dema	0
-airscrew	0	oewn-airscrew-n	Number=Sing	dema	0
-airscrews	0	oewn-airscrew-n	Number=Plur	dema	0
-airship	0	oewn-airship-n	Number=Sing	dema	0
-airships	0	oewn-airship-n	Number=Plur	dema	0
-airsick	0	oewn-airsick-a	Degree=Pos	dema	0
-airsicker	0	oewn-airsick-a	Degree=Cmp	dema	0
-airsickest	0	oewn-airsick-a	Degree=Sup	dema	0
-airsickly	0	dema-airsick-r		dema	0
-airsickness	0	oewn-airsickness-n	Number=Sing	dema	0
-airsicknesses	0	oewn-airsickness-n	Number=Plur	dema	0
-airspace	0	oewn-airspace-n	Number=Sing	dema	0
-airspaces	0	oewn-airspace-n	Number=Plur	dema	0
-airspeed	0	oewn-airspeed-n	Number=Sing	dema	0
-airspeeds	0	oewn-airspeed-n	Number=Plur	dema	0
-airstream	0	oewn-airstream-n	Number=Sing	dema	0
-airstreams	0	oewn-airstream-n	Number=Plur	dema	0
-airstrip	0	oewn-airstrip-n	Number=Sing	dema	0
-airstrips	0	oewn-airstrip-n	Number=Plur	dema	0
-airt	0	dema-airt-n	Number=Sing	dema	0
-airtight	0	oewn-airtight-a	Degree=Pos	dema	0
-airtighter	0	oewn-airtight-a	Degree=Cmp	dema	0
-airtightest	0	oewn-airtight-a	Degree=Sup	dema	0
-airtightly	0	dema-airtightly-r	Degree=Pos	dema	0
-airtightness	0	dema-airtightness-n	Number=Sing	dema	0
-airtightnesses	0	dema-airtightness-n	Number=Plur	dema	0
-airts	0	dema-airt-n	Number=Plur	dema	0
-airwash	0	dema-airwash-v	VerbForm=Inf	dema	0
-airwash	1	dema-airwash-n	Number=Sing	dema	0
-airwashed	0	dema-airwash-v	Tense=Past	dema	0
-airwasher	0	dema-airwash-n	Number=Plur	dema	0
-airwashers	0	dema-airwash-n	Number=Plur	dema	0
-airwashes	0	dema-airwash-v	Person=3+Tense=Pres	dema	0
-airwashes	1	dema-airwash-n	Number=Plur	dema	0
-airwashing	0	dema-airwash-v	VerbForm=Ger	dema	0
-airwashingly	0	dema-airwash-r		dema	0
-airwaves	0	dema-airwaves-n	Number=Sing	dema	0
-airwaveses	0	dema-airwaves-n	Number=Plur	dema	0
-airway	0	oewn-airway-n	Number=Sing	dema	0
-airways	0	oewn-airway-n	Number=Plur	dema	0
-airwoman	0	oewn-airwoman-n	Number=Sing	dema	0
-airwomen	0	dema-airwomen-n	Number=Sing	dema	0
-airwomens	0	dema-airwomen-n	Number=Plur	dema	0
-airworthily	0	dema-airworthy-r		dema	0
-airworthiness	0	oewn-airworthiness-n	Number=Sing	dema	0
-airworthinesses	0	oewn-airworthiness-n	Number=Plur	dema	0
-airworthy	0	oewn-airworthy-a	Degree=Pos	dema	0
-airy	0	oewn-airy-a	Degree=Pos	dema	0
-ais	0	dema-ais-n	Number=Sing	dema	0
-aisle	0	oewn-aisle-n	Number=Sing	dema	0
-aisled	0	dema-aisled-a	Degree=Pos	dema	0
-aisled	1	dema-aisled-v	VerbForm=Inf	dema	0
-aisleded	0	dema-aisled-v	Tense=Past	dema	0
-aisleder	0	dema-aisled-n	Number=Plur	dema	0
-aisleders	0	dema-aisled-n	Number=Plur	dema	0
-aisleding	0	dema-aisled-v	VerbForm=Ger	dema	0
-aisledingly	0	dema-aisled-r		dema	0
-aisledly	0	dema-aisled-r		dema	0
-aisledness	0	dema-aisled-n	Number=Plur	dema	0
-aisleds	0	dema-aisled-v	Person=3+Tense=Pres	dema	0
-aisles	0	oewn-aisle-n	Number=Plur	dema	0
-ait	0	dema-ait-n	Number=Sing	dema	0
-aitch	0	dema-aitch-n	Number=Sing	dema	0
-aitchbone	0	oewn-aitchbone-n	Number=Sing	dema	0
-aitchbones	0	oewn-aitchbone-n	Number=Plur	dema	0
-aitches	0	dema-aitch-n	Number=Plur	dema	0
-aitchs	0	dema-aitch-n	Number=Plur	dema	0
-aits	0	dema-ait-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+AI	0	oewn-ai-n	Number=Sing	dema	0			oewn_form
+AI	1	oewn-AI-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+AIDS	0	oewn-aid-n	Number=Plur	dema	0			carried
+AIDS	1	oewn-aid-v	Person=3+Tense=Pres	dema	0			carried
+AIDS	2	oewn-AIDS-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+AIS	0	oewn-AI-n	Number=Plur	dema	0			moby_reverse
+AIS	1	oewn-ai-n	Number=Plur	dema	0			rule
+AIS	2	oewn-AI-n	Capitalization=Upper+Number=Plur	dema	0			rule
+Ailanthus altissima	0	oewn-Ailanthus_altissima-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Ailanthus altissimas	0	oewn-Ailanthus_altissima-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Ailuropoda melanoleuca	0	oewn-Ailuropoda_melanoleuca-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Ailuropoda melanoleucas	0	oewn-Ailuropoda_melanoleuca-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Ailurus fulgens	0	oewn-Ailurus_fulgens-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Air Combat Command	0	oewn-Air_Combat_Command-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Air Combat Commands	0	oewn-Air_Combat_Command-n	Capitalization=Title+Number=Plur	dema	0			rule
+Air Corps	0	oewn-Air_Corps-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Air Force	0	oewn-air_force-n	Number=Sing	dema	0			oewn_form
+Air Force	1	oewn-Air_Force-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Air Force ISR	0	oewn-Air_Force_ISR-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Air Force ISRS	0	oewn-Air_Force_ISR-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Air Force Intelligence Surveillance and Reconnaissance	0	oewn-Air_Force_Intelligence_Surveillance_and_Reconnaissance-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Air Force Intelligence Surveillance and Reconnaissances	0	oewn-Air_Force_Intelligence_Surveillance_and_Reconnaissance-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Air Force Space Command	0	oewn-Air_Force_Space_Command-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Air Force Space Commands	0	oewn-Air_Force_Space_Command-n	Capitalization=Title+Number=Plur	dema	0			rule
+Air Forces	0	oewn-air_force-n	Number=Plur	dema	0			rule
+Air Forces	1	oewn-Air_Force-n	Capitalization=Title+Number=Plur	dema	0			rule
+Air Medal	0	oewn-Air_Medal-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Air Medals	0	oewn-Air_Medal-n	Capitalization=Title+Number=Plur	dema	0			rule
+Air National Guard	0	oewn-Air_National_Guard-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Air National Guards	0	oewn-Air_National_Guard-n	Capitalization=Title+Number=Plur	dema	0			rule
+Airedale	0	oewn-Airedale-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Airedale terrier	0	oewn-Airedale_terrier-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Airedale terriers	0	oewn-Airedale_terrier-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Airedales	0	oewn-Airedale-n	Capitalization=Title+Number=Plur	dema	0			rule
+Aix galericulata	0	oewn-Aix_galericulata-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aix galericulatas	0	oewn-Aix_galericulata-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Aix sponsa	0	oewn-Aix_sponsa-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aix sponsas	0	oewn-Aix_sponsa-n	Capitalization=Exact+Number=Plur	dema	0			rule
+ai	0	oewn-ai-n	Number=Sing	dema	0			oewn_form
+aiblins	0		Degree=Pos	dema	0	aiblins	r	moby_reverse
+aid	0	oewn-aid-n	Number=Sing	dema	1			carried
+aid	1	oewn-aid-v	VerbForm=Inf	dema	1			carried
+aid station	0	oewn-aid_station-n	Number=Sing	dema	0			oewn_form
+aid stations	0	oewn-aid_station-n	Number=Plur	dema	0			rule
+aide	0	oewn-aide-n	Number=Sing	dema	0			oewn_form
+aide-de-camp	0	oewn-aide-de-camp-n	Number=Sing	dema	0			oewn_form
+aide-memoire	0	oewn-aide-memoire-n	Number=Sing	dema	0			oewn_form
+aided	0	oewn-aid-v	Tense=Past+VerbForm=Part	dema	1			carried
+aider	0		Number=Sing	dema	0	aider	n	moby_reverse
+aiders	0		Number=Plur	dema	0	aider	n	rule
+aides	0	oewn-aide-n	Number=Plur	dema	0			rule
+aides-de-camp	0	oewn-aide-de-camp-n	Number=Plur	dema	0			oewn_form
+aides-memoire	0	oewn-aide-memoire-n	Number=Plur	dema	0			oewn_form
+aidful	0		Degree=Pos	dema	0	aidful	a	moby_reverse
+aiding	0	oewn-aid-v	VerbForm=Ger	dema	1			carried
+aiding	1	oewn-aid-n	Number=Sing+VerbForm=Ger	dema	1			carried
+aidless	0		Degree=Pos	dema	0	aidless	a	moby_reverse
+aids	0	oewn-aid-n	Number=Plur	dema	1			carried
+aids	1	oewn-aid-v	Person=3+Tense=Pres	dema	1			carried
+aiglet	0	oewn-aiglet-n	Number=Sing	dema	0			oewn_form
+aiglets	0	oewn-aiglet-n	Number=Plur	dema	0			rule
+aigret	0	oewn-aigret-n	Number=Sing	dema	0			oewn_form
+aigrets	0	oewn-aigret-n	Number=Plur	dema	0			rule
+aigrette	0	oewn-aigrette-n	Number=Sing	dema	0			oewn_form
+aigrettes	0	oewn-aigrette-n	Number=Plur	dema	0			rule
+aigu	0	oewn-aigu-n	Number=Sing	dema	0			oewn_form
+aiguille	0		Number=Sing	dema	0	aiguille	n	moby_reverse
+aiguilles	0		Number=Plur	dema	0	aiguille	n	rule
+aiguillette	0	oewn-aiguillette-n	Number=Sing	dema	0			oewn_form
+aiguilletted	0		Degree=Pos	dema	0	aiguilletted	a	moby_reverse
+aiguilletted	1		VerbForm=Inf	dema	0	aiguilletted	v	moby_reverse
+aiguillettes	0	oewn-aiguillette-n	Number=Plur	dema	0			rule
+aigus	0	oewn-aigu-n	Number=Plur	dema	0			rule
+aikido	0	oewn-aikido-n	Number=Sing	dema	0			oewn_form
+aikidos	0	oewn-aikido-n	Number=Plur	dema	0			rule
+aikona	0	dema-aikona-i		dema	0			carried
+aikuchi	0		Number=Sing	dema	0	aikuchi	n	moby_reverse
+aikuchis	0		Number=Plur	dema	0	aikuchi	n	rule
+ail	0	oewn-ail-v	VerbForm=Inf	dema	0			oewn_form
+ail	1	oewn-ail-n	Number=Sing	dema	0			oewn_form
+ailanthic	0		Degree=Pos	dema	0	ailanthic	a	moby_reverse
+ailanthus	0	oewn-ailanthus-n	Number=Sing	dema	0			oewn_form
+ailanthus silkworm	0	oewn-ailanthus_silkworm-n	Number=Sing	dema	0			oewn_form
+ailanthus silkworms	0	oewn-ailanthus_silkworm-n	Number=Plur	dema	0			rule
+ailanthuses	0	oewn-ailanthus-n	Number=Plur	dema	0			rule
+ailed	0	oewn-ail-v	Tense=Past+VerbForm=Part	dema	0			rule
+aileron	0	oewn-aileron-n	Number=Sing	dema	0			oewn_form
+ailerons	0	oewn-aileron-n	Number=Plur	dema	0			rule
+ailette	0		Number=Sing	dema	0	ailette	n	moby_reverse
+ailettes	0		Number=Plur	dema	0	ailette	n	rule
+ailing	0	oewn-ailing-a	Degree=Pos	dema	0			oewn_form
+ailing	1	oewn-ail-v	VerbForm=Ger	dema	0			rule
+ailment	0	oewn-ailment-n	Number=Sing	dema	0			oewn_form
+ailments	0	oewn-ailment-n	Number=Plur	dema	0			rule
+ails	0	oewn-ail-v	Person=3+Tense=Pres	dema	0			rule
+ails	1	oewn-ail-n	Number=Plur	dema	0			rule
+ailurophile	0		Number=Sing	dema	0	ailurophile	n	moby_reverse
+ailurophiles	0		Number=Plur	dema	0	ailurophile	n	rule
+ailurophilia	0		Number=Sing	dema	0	ailurophilia	n	moby_reverse
+ailurophilias	0		Number=Plur	dema	0	ailurophilia	n	rule
+ailurophilic	0		Degree=Pos	dema	0	ailurophilic	a	moby_reverse
+ailurophobe	0		Number=Sing	dema	0	ailurophobe	n	moby_reverse
+ailurophobes	0		Number=Plur	dema	0	ailurophobe	n	rule
+ailurophobia	0	oewn-ailurophobia-n	Number=Sing	dema	0			oewn_form
+ailurophobias	0	oewn-ailurophobia-n	Number=Plur	dema	0			rule
+ailurophobic	0		Degree=Pos	dema	0	ailurophobic	a	moby_reverse
+aim	0	oewn-aim-n	Number=Sing	dema	1			carried
+aim	1	oewn-aim-v	VerbForm=Inf	dema	1			carried
+aimak	0		Number=Sing	dema	0	aimak	n	moby_reverse
+aimaks	0		Number=Plur	dema	0	aimak	n	rule
+aimed	0	oewn-aim-v	Tense=Past+VerbForm=Part	dema	1			carried
+aimer	0		Number=Sing	dema	0	aimer	n	moby_reverse
+aimers	0		Number=Plur	dema	0	aimer	n	rule
+aimful	0		Degree=Pos	dema	0	aimful	a	moby_reverse
+aimfully	0		Degree=Pos	dema	0	aimfully	r	moby_reverse
+aiming	0	oewn-aim-v	VerbForm=Ger	dema	1			carried
+aiming	1	oewn-aim-n	Number=Sing+VerbForm=Ger	dema	1			carried
+aimless	0	oewn-aimless-a	Degree=Pos	dema	0			oewn_form
+aimlessly	0	oewn-aimlessly-r	Degree=Pos	dema	0			oewn_form
+aimlessness	0	oewn-aimlessness-n	Number=Sing	dema	0			oewn_form
+aimlessnesses	0	oewn-aimlessness-n	Number=Plur	dema	0			rule
+aims	0	oewn-aim-n	Number=Plur	dema	1			carried
+aims	1	oewn-aim-v	Person=3+Tense=Pres	dema	1			carried
+ain	0	dema-ain-d		dema	0			carried
+ain	1		Number=Sing	dema	0	ain	n	moby_reverse
+ain	2	oewn-ain-a	Degree=Pos	dema	0			oewn_form
+ain't	0	dema-be-x	Contraction=Yes	dema	0			contraction
+aioli	0	oewn-aioli-n	Number=Sing	dema	0			oewn_form
+aioli sauce	0	oewn-aioli_sauce-n	Number=Sing	dema	0			oewn_form
+aioli sauces	0	oewn-aioli_sauce-n	Number=Plur	dema	0			rule
+aiolis	0	oewn-aioli-n	Number=Plur	dema	0			rule
+air	0	oewn-air-n	Number=Sing	dema	0			oewn_form
+air	1	oewn-air-v	VerbForm=Inf	dema	0			oewn_form
+air alert	0	oewn-air_alert-n	Number=Sing	dema	0			oewn_form
+air alerts	0	oewn-air_alert-n	Number=Plur	dema	0			rule
+air attache	0	oewn-air_attache-n	Number=Sing	dema	0			oewn_form
+air attaches	0	oewn-air_attache-n	Number=Plur	dema	0			rule
+air attack	0	oewn-air_attack-n	Number=Sing	dema	0			oewn_form
+air attacks	0	oewn-air_attack-n	Number=Plur	dema	0			rule
+air bag	0	oewn-air_bag-n	Number=Sing	dema	0			oewn_form
+air bags	0	oewn-air_bag-n	Number=Plur	dema	0			rule
+air base	0	oewn-air_base-n	Number=Sing	dema	0			oewn_form
+air bases	0	oewn-air_base-n	Number=Plur	dema	0			rule
+air bladder	0	oewn-air_bladder-n	Number=Sing	dema	0			oewn_form
+air bladders	0	oewn-air_bladder-n	Number=Plur	dema	0			rule
+air bubble	0	oewn-air_bubble-n	Number=Sing	dema	0			oewn_form
+air bubbles	0	oewn-air_bubble-n	Number=Plur	dema	0			rule
+air castle	0	oewn-air_castle-n	Number=Sing	dema	0			oewn_form
+air castles	0	oewn-air_castle-n	Number=Plur	dema	0			rule
+air cell	0	oewn-air_cell-n	Number=Sing	dema	0			oewn_form
+air cells	0	oewn-air_cell-n	Number=Plur	dema	0			rule
+air cleaner	0	oewn-air_cleaner-n	Number=Sing	dema	0			oewn_form
+air cleaners	0	oewn-air_cleaner-n	Number=Plur	dema	0			rule
+air compressor	0	oewn-air_compressor-n	Number=Sing	dema	0			oewn_form
+air compressors	0	oewn-air_compressor-n	Number=Plur	dema	0			rule
+air conditioner	0	oewn-air_conditioner-n	Number=Sing	dema	0			oewn_form
+air conditioners	0	oewn-air_conditioner-n	Number=Plur	dema	0			rule
+air conditioning	0	oewn-air_conditioning-n	Number=Sing	dema	0			oewn_form
+air conditionings	0	oewn-air_conditioning-n	Number=Plur	dema	0			rule
+air cover	0	oewn-air_cover-n	Number=Sing	dema	0			oewn_form
+air covers	0	oewn-air_cover-n	Number=Plur	dema	0			rule
+air crew	0	oewn-air_crew-n	Number=Sing	dema	0			oewn_form
+air crews	0	oewn-air_crew-n	Number=Plur	dema	0			rule
+air current	0	oewn-air_current-n	Number=Sing	dema	0			oewn_form
+air currents	0	oewn-air_current-n	Number=Plur	dema	0			rule
+air cushion	0	oewn-air_cushion-n	Number=Sing	dema	0			oewn_form
+air cushions	0	oewn-air_cushion-n	Number=Plur	dema	0			rule
+air defense	0	oewn-air_defense-n	Number=Sing	dema	0			oewn_form
+air defenses	0	oewn-air_defense-n	Number=Plur	dema	0			rule
+air division	0	oewn-air_division-n	Number=Sing	dema	0			oewn_form
+air divisions	0	oewn-air_division-n	Number=Plur	dema	0			rule
+air duct	0	oewn-air_duct-n	Number=Sing	dema	0			oewn_form
+air ducts	0	oewn-air_duct-n	Number=Plur	dema	0			rule
+air embolism	0	oewn-air_embolism-n	Number=Sing	dema	0			oewn_form
+air embolisms	0	oewn-air_embolism-n	Number=Plur	dema	0			rule
+air filter	0	oewn-air_filter-n	Number=Sing	dema	0			oewn_form
+air filters	0	oewn-air_filter-n	Number=Plur	dema	0			rule
+air flow	0	oewn-air_flow-n	Number=Sing	dema	0			oewn_form
+air flows	0	oewn-air_flow-n	Number=Plur	dema	0			rule
+air force	0	oewn-air_force-n	Number=Sing	dema	0			oewn_form
+air force academies	0	oewn-air_force_academy-n	Number=Plur	dema	0			rule
+air force academy	0	oewn-air_force_academy-n	Number=Sing	dema	0			oewn_form
+air force officer	0	oewn-air_force_officer-n	Number=Sing	dema	0			oewn_form
+air force officers	0	oewn-air_force_officer-n	Number=Plur	dema	0			rule
+air forces	0	oewn-air_force-n	Number=Plur	dema	0			rule
+air gas	0	oewn-air_gas-n	Number=Sing	dema	0			oewn_form
+air group	0	oewn-air_group-n	Number=Sing	dema	0			oewn_form
+air groups	0	oewn-air_group-n	Number=Plur	dema	0			rule
+air gun	0	oewn-air_gun-n	Number=Sing	dema	0			oewn_form
+air guns	0	oewn-air_gun-n	Number=Plur	dema	0			rule
+air hammer	0	oewn-air_hammer-n	Number=Sing	dema	0			oewn_form
+air hammers	0	oewn-air_hammer-n	Number=Plur	dema	0			rule
+air hole	0	oewn-air_hole-n	Number=Sing	dema	0			oewn_form
+air holes	0	oewn-air_hole-n	Number=Plur	dema	0			rule
+air horn	0	oewn-air_horn-n	Number=Sing	dema	0			oewn_form
+air horns	0	oewn-air_horn-n	Number=Plur	dema	0			rule
+air hose	0	oewn-air_hose-n	Number=Sing	dema	0			oewn_form
+air hoses	0	oewn-air_hose-n	Number=Plur	dema	0			rule
+air host	0	oewn-air_host-n	Number=Sing	dema	0			oewn_form
+air hostess	0	oewn-air_hostess-n	Number=Sing	dema	0			oewn_form
+air hostesses	0	oewn-air_hostess-n	Number=Plur	dema	0			rule
+air hosts	0	oewn-air_host-n	Number=Plur	dema	0			rule
+air jacket	0	oewn-air_jacket-n	Number=Sing	dema	0			oewn_form
+air jackets	0	oewn-air_jacket-n	Number=Plur	dema	0			rule
+air lane	0	oewn-air_lane-n	Number=Sing	dema	0			oewn_form
+air lanes	0	oewn-air_lane-n	Number=Plur	dema	0			rule
+air letter	0	oewn-air_letter-n	Number=Sing	dema	0			oewn_form
+air letters	0	oewn-air_letter-n	Number=Plur	dema	0			rule
+air lock	0	oewn-air_lock-n	Number=Sing	dema	0			oewn_form
+air locks	0	oewn-air_lock-n	Number=Plur	dema	0			rule
+air mail	0	oewn-air_mail-n	Number=Sing	dema	0			oewn_form
+air mails	0	oewn-air_mail-n	Number=Plur	dema	0			rule
+air marshal	0	oewn-air_marshal-n	Number=Sing	dema	0			oewn_form
+air marshals	0	oewn-air_marshal-n	Number=Plur	dema	0			rule
+air mass	0	oewn-air_mass-n	Number=Sing	dema	0			oewn_form
+air masses	0	oewn-air_mass-n	Number=Plur	dema	0			rule
+air mattress	0	oewn-air_mattress-n	Number=Sing	dema	0			oewn_form
+air mattresses	0	oewn-air_mattress-n	Number=Plur	dema	0			rule
+air mile	0	oewn-air_mile-n	Number=Sing	dema	0			oewn_form
+air miles	0	oewn-air_mile-n	Number=Plur	dema	0			rule
+air out	0	oewn-air_out-v	VerbForm=Inf	dema	0			oewn_form
+air passage	0	oewn-air_passage-n	Number=Sing	dema	0			oewn_form
+air passages	0	oewn-air_passage-n	Number=Plur	dema	0			rule
+air plant	0	oewn-air_plant-n	Number=Sing	dema	0			oewn_form
+air plants	0	oewn-air_plant-n	Number=Plur	dema	0			rule
+air pocket	0	oewn-air_pocket-n	Number=Sing	dema	0			oewn_form
+air pockets	0	oewn-air_pocket-n	Number=Plur	dema	0			rule
+air pollution	0	oewn-air_pollution-n	Number=Sing	dema	0			oewn_form
+air pollutions	0	oewn-air_pollution-n	Number=Plur	dema	0			rule
+air potato	0	oewn-air_potato-n	Number=Sing	dema	0			oewn_form
+air potatoes	0	oewn-air_potato-n	Number=Plur	dema	0			rule
+air power	0	oewn-air_power-n	Number=Sing	dema	0			oewn_form
+air powers	0	oewn-air_power-n	Number=Plur	dema	0			rule
+air pressure	0	oewn-air_pressure-n	Number=Sing	dema	0			oewn_form
+air pressures	0	oewn-air_pressure-n	Number=Plur	dema	0			rule
+air pump	0	oewn-air_pump-n	Number=Sing	dema	0			oewn_form
+air pumps	0	oewn-air_pump-n	Number=Plur	dema	0			rule
+air raid	0	oewn-air_raid-n	Number=Sing	dema	0			oewn_form
+air raids	0	oewn-air_raid-n	Number=Plur	dema	0			rule
+air reconnaissance	0	oewn-air_reconnaissance-n	Number=Sing	dema	0			oewn_form
+air reconnaissances	0	oewn-air_reconnaissance-n	Number=Plur	dema	0			rule
+air rifle	0	oewn-air_rifle-n	Number=Sing	dema	0			oewn_form
+air rifles	0	oewn-air_rifle-n	Number=Plur	dema	0			rule
+air sac	0	oewn-air_sac-n	Number=Sing	dema	0			oewn_form
+air sacs	0	oewn-air_sac-n	Number=Plur	dema	0			rule
+air search radar	0	oewn-air_search_radar-n	Number=Sing	dema	0			oewn_form
+air search radars	0	oewn-air_search_radar-n	Number=Plur	dema	0			rule
+air shaft	0	oewn-air_shaft-n	Number=Sing	dema	0			oewn_form
+air shafts	0	oewn-air_shaft-n	Number=Plur	dema	0			rule
+air sick	0	oewn-air_sick-a	Degree=Pos	dema	0			oewn_form
+air sickness	0	oewn-air_sickness-n	Number=Sing	dema	0			oewn_form
+air sicknesses	0	oewn-air_sickness-n	Number=Plur	dema	0			rule
+air sock	0	oewn-air_sock-n	Number=Sing	dema	0			oewn_form
+air socks	0	oewn-air_sock-n	Number=Plur	dema	0			rule
+air space	0	oewn-air_space-n	Number=Sing	dema	0			oewn_form
+air spaces	0	oewn-air_space-n	Number=Plur	dema	0			rule
+air spring	0	oewn-air_spring-n	Number=Sing	dema	0			oewn_form
+air springs	0	oewn-air_spring-n	Number=Plur	dema	0			rule
+air station	0	oewn-air_station-n	Number=Sing	dema	0			oewn_form
+air stations	0	oewn-air_station-n	Number=Plur	dema	0			rule
+air terminal	0	oewn-air_terminal-n	Number=Sing	dema	0			oewn_form
+air terminals	0	oewn-air_terminal-n	Number=Plur	dema	0			rule
+air thermometer	0	oewn-air_thermometer-n	Number=Sing	dema	0			oewn_form
+air thermometers	0	oewn-air_thermometer-n	Number=Plur	dema	0			rule
+air traffic	0	oewn-air_traffic-n	Number=Sing	dema	0			oewn_form
+air traffics	0	oewn-air_traffic-n	Number=Plur	dema	0			rule
+air transport	0	oewn-air_transport-n	Number=Sing	dema	0			oewn_form
+air transportation	0	oewn-air_transportation-n	Number=Sing	dema	0			oewn_form
+air transportation system	0	oewn-air_transportation_system-n	Number=Sing	dema	0			oewn_form
+air transportation systems	0	oewn-air_transportation_system-n	Number=Plur	dema	0			rule
+air transportations	0	oewn-air_transportation-n	Number=Plur	dema	0			rule
+air transports	0	oewn-air_transport-n	Number=Plur	dema	0			rule
+air travel	0	oewn-air_travel-n	Number=Sing	dema	0			oewn_form
+air traveler	0	oewn-air_traveler-n	Number=Sing	dema	0			oewn_form
+air travelers	0	oewn-air_traveler-n	Number=Plur	dema	0			rule
+air traveller	0	oewn-air_traveller-n	Number=Sing	dema	0			oewn_form
+air travellers	0	oewn-air_traveller-n	Number=Plur	dema	0			rule
+air travels	0	oewn-air_travel-n	Number=Plur	dema	0			rule
+air unit	0	oewn-air_unit-n	Number=Sing	dema	0			oewn_form
+air units	0	oewn-air_unit-n	Number=Plur	dema	0			rule
+air wave	0	oewn-air_wave-n	Number=Sing	dema	0			oewn_form
+air waves	0	oewn-air_wave-n	Number=Plur	dema	0			rule
+air well	0	oewn-air_well-n	Number=Sing	dema	0			oewn_form
+air wells	0	oewn-air_well-n	Number=Plur	dema	0			rule
+air-breathing	0	oewn-air-breathing-a	Degree=Pos	dema	0			oewn_form
+air-condition	0	oewn-air-condition-v	VerbForm=Inf	dema	0			oewn_form
+air-conditioned	0	oewn-air-condition-v	Tense=Past+VerbForm=Part	dema	0			rule
+air-conditioned	1	oewn-air-conditioned-a	Degree=Pos	dema	0			oewn_form
+air-conditioner	0	oewn-air-conditioner-n	Number=Sing	dema	0			oewn_form
+air-conditioners	0	oewn-air-conditioner-n	Number=Plur	dema	0			rule
+air-conditioning	0	oewn-air-condition-v	VerbForm=Ger	dema	0			rule
+air-conditions	0	oewn-air-condition-v	Person=3+Tense=Pres	dema	0			rule
+air-cool	0	oewn-air-cool-v	VerbForm=Inf	dema	0			oewn_form
+air-cooled	0	oewn-air-cool-v	Tense=Past+VerbForm=Part	dema	0			rule
+air-cooled	1	oewn-air-cooled-a	Degree=Pos	dema	0			oewn_form
+air-cooling	0	oewn-air-cool-v	VerbForm=Ger	dema	0			rule
+air-cools	0	oewn-air-cool-v	Person=3+Tense=Pres	dema	0			rule
+air-dried	0	oewn-air-dried-a	Degree=Pos	dema	0			oewn_form
+air-drop	0	oewn-air-drop-v	VerbForm=Inf	dema	0			oewn_form
+air-droped	0	oewn-air-drop-v	Tense=Past+VerbForm=Part	dema	0			rule
+air-droping	0	oewn-air-drop-v	VerbForm=Ger	dema	0			rule
+air-drops	0	oewn-air-drop-v	Person=3+Tense=Pres	dema	0			rule
+air-dry	0	oewn-air-dry-a	Degree=Pos	dema	0			oewn_form
+air-filled	0	oewn-air-filled-a	Degree=Pos	dema	0			oewn_form
+air-freight	0	oewn-air-freight-v	VerbForm=Inf	dema	0			oewn_form
+air-freighted	0	oewn-air-freight-v	Tense=Past+VerbForm=Part	dema	0			rule
+air-freighting	0	oewn-air-freight-v	VerbForm=Ger	dema	0			rule
+air-freights	0	oewn-air-freight-v	Person=3+Tense=Pres	dema	0			rule
+air-intake	0	oewn-air-intake-n	Number=Sing	dema	0			oewn_form
+air-intakes	0	oewn-air-intake-n	Number=Plur	dema	0			rule
+air-raid shelter	0	oewn-air-raid_shelter-n	Number=Sing	dema	0			oewn_form
+air-raid shelters	0	oewn-air-raid_shelter-n	Number=Plur	dema	0			rule
+air-ship	0	oewn-air-ship-v	VerbForm=Inf	dema	0			oewn_form
+air-shiped	0	oewn-air-ship-v	Tense=Past+VerbForm=Part	dema	0			rule
+air-shiping	0	oewn-air-ship-v	VerbForm=Ger	dema	0			rule
+air-ships	0	oewn-air-ship-v	Person=3+Tense=Pres	dema	0			rule
+air-slake	0	oewn-air-slake-v	VerbForm=Inf	dema	0			oewn_form
+air-slaked	0	oewn-air-slake-v	Tense=Past+VerbForm=Part	dema	0			rule
+air-slakes	0	oewn-air-slake-v	Person=3+Tense=Pres	dema	0			rule
+air-slaking	0	oewn-air-slake-v	VerbForm=Ger	dema	0			rule
+air-sleeve	0	oewn-air-sleeve-n	Number=Sing	dema	0			oewn_form
+air-sleeves	0	oewn-air-sleeve-n	Number=Plur	dema	0			rule
+air-tight	0	oewn-air-tight-a	Degree=Pos	dema	0			oewn_form
+air-to-air	0	oewn-air-to-air-a	Degree=Pos	dema	0			oewn_form
+air-to-air missile	0	oewn-air-to-air_missile-n	Number=Sing	dema	0			oewn_form
+air-to-air missiles	0	oewn-air-to-air_missile-n	Number=Plur	dema	0			rule
+air-to-ground	0	oewn-air-to-ground-a	Degree=Pos	dema	0			oewn_form
+air-to-ground missile	0	oewn-air-to-ground_missile-n	Number=Sing	dema	0			oewn_form
+air-to-ground missiles	0	oewn-air-to-ground_missile-n	Number=Plur	dema	0			rule
+air-to-surface	0	oewn-air-to-surface-a	Degree=Pos	dema	0			oewn_form
+air-to-surface missile	0	oewn-air-to-surface_missile-n	Number=Sing	dema	0			oewn_form
+air-to-surface missiles	0	oewn-air-to-surface_missile-n	Number=Plur	dema	0			rule
+airbill	0		Number=Sing	dema	0	airbill	n	moby_reverse
+airbills	0		Number=Plur	dema	0	airbill	n	rule
+airboat	0		Number=Sing	dema	0	airboat	n	moby_reverse
+airboats	0		Number=Plur	dema	0	airboat	n	rule
+airborne	0	oewn-airborne-a	Degree=Pos	dema	0			oewn_form
+airborne patrol	0	oewn-airborne_patrol-n	Number=Sing	dema	0			oewn_form
+airborne patrols	0	oewn-airborne_patrol-n	Number=Plur	dema	0			rule
+airborne transmission	0	oewn-airborne_transmission-n	Number=Sing	dema	0			oewn_form
+airborne transmissions	0	oewn-airborne_transmission-n	Number=Plur	dema	0			rule
+airbrake	0	oewn-airbrake-n	Number=Sing	dema	0			oewn_form
+airbrakes	0	oewn-airbrake-n	Number=Plur	dema	0			rule
+airbrasive	0		Number=Sing	dema	0	airbrasive	n	moby_reverse
+airbrasive	1		Degree=Pos	dema	0	airbrasive	a	moby_reverse
+airbrasives	0		Number=Plur	dema	0	airbrasive	n	rule
+airbrick	0		Number=Sing	dema	0	airbrick	n	moby_reverse
+airbricks	0		Number=Plur	dema	0	airbrick	n	rule
+airbrush	0	oewn-airbrush-n	Number=Sing	dema	0			oewn_form
+airbrush	1	oewn-airbrush-v	VerbForm=Inf	dema	0			oewn_form
+airbrushed	0	oewn-airbrush-v	Tense=Past+VerbForm=Part	dema	0			rule
+airbrushes	0	oewn-airbrush-n	Number=Plur	dema	0			rule
+airbrushes	1	oewn-airbrush-v	Person=3+Tense=Pres	dema	0			rule
+airbrushing	0	oewn-airbrush-v	VerbForm=Ger	dema	0			rule
+airburst	0	oewn-airburst-n	Number=Sing	dema	0			oewn_form
+airbursts	0	oewn-airburst-n	Number=Plur	dema	0			rule
+airbus	0	oewn-airbus-n	Number=Sing	dema	0			oewn_form
+airbuses	0	oewn-airbus-n	Number=Plur	dema	0			rule_variant
+airbusses	0	oewn-airbus-n	Number=Plur	dema	0			rule_variant
+aircraft	0	oewn-aircraft-n	Number=Plur	dema	0			irregular_list
+aircraft	1	oewn-aircraft-n	Number=Sing	dema	0			oewn_form
+aircraft carrier	0	oewn-aircraft_carrier-n	Number=Sing	dema	0			oewn_form
+aircraft carriers	0	oewn-aircraft_carrier-n	Number=Plur	dema	0			rule
+aircraft engine	0	oewn-aircraft_engine-n	Number=Sing	dema	0			oewn_form
+aircraft engines	0	oewn-aircraft_engine-n	Number=Plur	dema	0			rule
+aircraft landing	0	oewn-aircraft_landing-n	Number=Sing	dema	0			oewn_form
+aircraft landings	0	oewn-aircraft_landing-n	Number=Plur	dema	0			rule
+aircraft officer	0	oewn-aircraft_officer-n	Number=Sing	dema	0			oewn_form
+aircraft officers	0	oewn-aircraft_officer-n	Number=Plur	dema	0			rule
+aircraftman	0	oewn-aircraftman-n	Number=Sing	dema	0			oewn_form
+aircraftmen	0	oewn-aircraftman-n	Number=Plur	dema	0			agid
+aircraftsman	0	oewn-aircraftsman-n	Number=Sing	dema	0			oewn_form
+aircraftsmans	0	oewn-aircraftsman-n	Number=Plur	dema	0			rule
+aircraftsmen	0		Number=Sing	dema	0	aircraftsmen	n	moby_reverse
+aircraftsmens	0		Number=Plur	dema	0	aircraftsmen	n	rule
+aircraftswoman	0	oewn-aircraftswoman-n	Number=Sing	dema	0			oewn_form
+aircraftswomans	0	oewn-aircraftswoman-n	Number=Plur	dema	0			rule
+aircraftswomen	0		Number=Sing	dema	0	aircraftswomen	n	moby_reverse
+aircraftswomens	0		Number=Plur	dema	0	aircraftswomen	n	rule
+aircraftwoman	0	oewn-aircraftwoman-n	Number=Sing	dema	0			oewn_form
+aircraftwomans	0	oewn-aircraftwoman-n	Number=Plur	dema	0			rule
+aircrew	0	oewn-aircrew-n	Number=Sing	dema	0			oewn_form
+aircrew member	0	oewn-aircrew_member-n	Number=Sing	dema	0			oewn_form
+aircrew members	0	oewn-aircrew_member-n	Number=Plur	dema	0			rule
+aircrewman	0	oewn-aircrewman-n	Number=Sing	dema	0			oewn_form
+aircrewmans	0	oewn-aircrewman-n	Number=Plur	dema	0			rule
+aircrewmen	0		Number=Sing	dema	0	aircrewmen	n	moby_reverse
+aircrewmens	0		Number=Plur	dema	0	aircrewmen	n	rule
+aircrews	0	oewn-aircrew-n	Number=Plur	dema	0			rule
+aircrewwoman	0	oewn-aircrewwoman-n	Number=Sing	dema	0			oewn_form
+aircrewwomans	0	oewn-aircrewwoman-n	Number=Plur	dema	0			rule
+airdock	0	oewn-airdock-n	Number=Sing	dema	0			oewn_form
+airdocks	0	oewn-airdock-n	Number=Plur	dema	0			rule
+airdrome	0	oewn-airdrome-n	Number=Sing	dema	0			oewn_form
+airdromes	0	oewn-airdrome-n	Number=Plur	dema	0			rule
+airdrop	0	oewn-airdrop-n	Number=Sing	dema	0			oewn_form
+airdrop	1		VerbForm=Inf	dema	0	airdrop	v	moby_reverse
+airdrop	2		Degree=Pos	dema	0	airdrop	a	moby_reverse
+airdropped	0		Tense=Past+VerbForm=Part	dema	0	airdrop	v	moby_reverse
+airdropping	0		VerbForm=Ger	dema	0	airdrop	v	moby_reverse
+airdrops	0	oewn-airdrop-n	Number=Plur	dema	0			rule
+aired	0	oewn-air-v	Tense=Past+VerbForm=Part	dema	0			rule
+aired	1	oewn-aired-a	Degree=Pos	dema	0			oewn_form
+aired out	0	oewn-air_out-v	Tense=Past+VerbForm=Part	dema	0			rule
+airfare	0	oewn-airfare-n	Number=Sing	dema	0			oewn_form
+airfares	0	oewn-airfare-n	Number=Plur	dema	0			rule
+airfield	0	oewn-airfield-n	Number=Sing	dema	0			oewn_form
+airfields	0	oewn-airfield-n	Number=Plur	dema	0			rule
+airflow	0	oewn-airflow-n	Number=Sing	dema	0			oewn_form
+airflows	0	oewn-airflow-n	Number=Plur	dema	0			rule
+airfoil	0	oewn-airfoil-n	Number=Sing	dema	0			oewn_form
+airfoils	0	oewn-airfoil-n	Number=Plur	dema	0			rule
+airforce	0	oewn-airforce-n	Number=Sing	dema	0			oewn_form
+airforces	0	oewn-airforce-n	Number=Plur	dema	0			rule
+airframe	0	oewn-airframe-n	Number=Sing	dema	0			oewn_form
+airframes	0	oewn-airframe-n	Number=Plur	dema	0			rule
+airfreight	0	oewn-airfreight-v	VerbForm=Inf	dema	0			oewn_form
+airfreighted	0	oewn-airfreight-v	Tense=Past+VerbForm=Part	dema	0			rule
+airfreighting	0	oewn-airfreight-v	VerbForm=Ger	dema	0			rule
+airfreights	0	oewn-airfreight-v	Person=3+Tense=Pres	dema	0			rule
+airglow	0		Number=Sing	dema	0	airglow	n	moby_reverse
+airglows	0		Number=Plur	dema	0	airglow	n	rule
+airgraph	0		Number=Sing	dema	0	airgraph	n	moby_reverse
+airgraph	1		VerbForm=Inf	dema	0	airgraph	v	moby_reverse
+airgraphs	0		Number=Plur	dema	0	airgraph	n	rule
+airgun	0	oewn-airgun-n	Number=Sing	dema	0			oewn_form
+airguns	0	oewn-airgun-n	Number=Plur	dema	0			rule
+airhead	0	oewn-airhead-n	Number=Sing	dema	0			oewn_form
+airheaded	0	oewn-airheaded-a	Degree=Pos	dema	0			oewn_form
+airheads	0	oewn-airhead-n	Number=Plur	dema	0			rule
+airier	0	oewn-airy-a	Degree=Cmp	dema	0			oewn_form
+airiest	0	oewn-airy-a	Degree=Sup	dema	0			oewn_form
+airily	0	oewn-airily-r	Degree=Pos	dema	0			oewn_form
+airiness	0	oewn-airiness-n	Number=Sing	dema	0			oewn_form
+airinesses	0	oewn-airiness-n	Number=Plur	dema	0			rule
+airing	0	oewn-airing-n	Number=Sing	dema	0			oewn_form
+airing	1	oewn-air-v	VerbForm=Ger	dema	0			rule
+airing cupboard	0	oewn-airing_cupboard-n	Number=Sing	dema	0			oewn_form
+airing cupboards	0	oewn-airing_cupboard-n	Number=Plur	dema	0			rule
+airing out	0	oewn-air_out-v	VerbForm=Ger	dema	0			rule
+airings	0	oewn-airing-n	Number=Plur	dema	0			rule
+airless	0	oewn-airless-a	Degree=Pos	dema	0			oewn_form
+airlift	0	oewn-airlift-n	Number=Sing	dema	0			oewn_form
+airlift	1	oewn-airlift-v	VerbForm=Inf	dema	0			oewn_form
+airlifted	0	oewn-airlift-v	Tense=Past+VerbForm=Part	dema	0			rule
+airlifting	0	oewn-airlift-v	VerbForm=Ger	dema	0			rule
+airlifts	0	oewn-airlift-n	Number=Plur	dema	0			rule
+airlifts	1	oewn-airlift-v	Person=3+Tense=Pres	dema	0			rule
+airlight	0		Number=Sing	dema	0	airlight	n	moby_reverse
+airlights	0		Number=Plur	dema	0	airlight	n	rule
+airlike	0	oewn-airlike-a	Degree=Pos	dema	0			oewn_form
+airline	0	oewn-airline-n	Number=Sing	dema	0			oewn_form
+airline business	0	oewn-airline_business-n	Number=Sing	dema	0			oewn_form
+airline businesses	0	oewn-airline_business-n	Number=Plur	dema	0			rule
+airliner	0	oewn-airliner-n	Number=Sing	dema	0			oewn_form
+airliners	0	oewn-airliner-n	Number=Plur	dema	0			rule
+airlines	0	oewn-airline-n	Number=Plur	dema	0			rule
+airlock	0	oewn-airlock-n	Number=Sing	dema	0			oewn_form
+airlocks	0	oewn-airlock-n	Number=Plur	dema	0			rule
+airmail	0	oewn-airmail-n	Number=Sing	dema	0			oewn_form
+airmail	1	oewn-airmail-v	VerbForm=Inf	dema	0			oewn_form
+airmail letter	0	oewn-airmail_letter-n	Number=Sing	dema	0			oewn_form
+airmail letters	0	oewn-airmail_letter-n	Number=Plur	dema	0			rule
+airmailed	0	oewn-airmail-v	Tense=Past+VerbForm=Part	dema	0			rule
+airmailer	0	oewn-airmailer-n	Number=Sing	dema	0			oewn_form
+airmailers	0	oewn-airmailer-n	Number=Plur	dema	0			rule
+airmailing	0	oewn-airmail-v	VerbForm=Ger	dema	0			rule
+airmails	0	oewn-airmail-n	Number=Plur	dema	0			rule
+airmails	1	oewn-airmail-v	Person=3+Tense=Pres	dema	0			rule
+airman	0	oewn-airman-n	Number=Sing	dema	0			oewn_form
+airmanship	0	oewn-airmanship-n	Number=Sing	dema	0			oewn_form
+airmanships	0	oewn-airmanship-n	Number=Plur	dema	0			rule
+airmen	0	oewn-airman-n	Number=Plur	dema	0			agid
+airplane	0	oewn-airplane-n	Number=Sing	dema	0			oewn_form
+airplane landing	0	oewn-airplane_landing-n	Number=Sing	dema	0			oewn_form
+airplane landings	0	oewn-airplane_landing-n	Number=Plur	dema	0			rule
+airplane maneuver	0	oewn-airplane_maneuver-n	Number=Sing	dema	0			oewn_form
+airplane maneuvers	0	oewn-airplane_maneuver-n	Number=Plur	dema	0			rule
+airplane mechanics	0	oewn-airplane_mechanics-n	Number=Sing	dema	0			oewn_form
+airplane pilot	0	oewn-airplane_pilot-n	Number=Sing	dema	0			oewn_form
+airplane pilots	0	oewn-airplane_pilot-n	Number=Plur	dema	0			rule
+airplane propeller	0	oewn-airplane_propeller-n	Number=Sing	dema	0			oewn_form
+airplane propellers	0	oewn-airplane_propeller-n	Number=Plur	dema	0			rule
+airplane ticket	0	oewn-airplane_ticket-n	Number=Sing	dema	0			oewn_form
+airplane tickets	0	oewn-airplane_ticket-n	Number=Plur	dema	0			rule
+airplanes	0	oewn-airplane-n	Number=Plur	dema	0			rule
+airport	0	oewn-airport-n	Number=Sing	dema	0			oewn_form
+airport charge	0	oewn-airport_charge-n	Number=Sing	dema	0			oewn_form
+airport charges	0	oewn-airport_charge-n	Number=Plur	dema	0			rule
+airport terminal	0	oewn-airport_terminal-n	Number=Sing	dema	0			oewn_form
+airport terminals	0	oewn-airport_terminal-n	Number=Plur	dema	0			rule
+airports	0	oewn-airport-n	Number=Plur	dema	0			rule
+airpost	0	oewn-airpost-n	Number=Sing	dema	0			oewn_form
+airposts	0	oewn-airpost-n	Number=Plur	dema	0			rule
+airproof	0		Degree=Pos	dema	0	airproof	a	moby_reverse
+airproof	1		VerbForm=Inf	dema	0	airproof	v	moby_reverse
+airs	0	oewn-airs-n	Number=Sing	dema	0			oewn_form
+airs	1	oewn-air-n	Number=Plur	dema	0			rule
+airs	2	oewn-air-v	Person=3+Tense=Pres	dema	0			rule
+airs out	0	oewn-air_out-v	Person=3+Tense=Pres	dema	0			rule
+airscrew	0	oewn-airscrew-n	Number=Sing	dema	0			oewn_form
+airscrews	0	oewn-airscrew-n	Number=Plur	dema	0			rule
+airship	0	oewn-airship-n	Number=Sing	dema	0			oewn_form
+airships	0	oewn-airship-n	Number=Plur	dema	0			rule
+airsick	0	oewn-airsick-a	Degree=Pos	dema	0			oewn_form
+airsickness	0	oewn-airsickness-n	Number=Sing	dema	0			oewn_form
+airsicknesses	0	oewn-airsickness-n	Number=Plur	dema	0			rule
+airspace	0	oewn-airspace-n	Number=Sing	dema	0			oewn_form
+airspaces	0	oewn-airspace-n	Number=Plur	dema	0			rule
+airspeed	0	oewn-airspeed-n	Number=Sing	dema	0			oewn_form
+airspeeds	0	oewn-airspeed-n	Number=Plur	dema	0			rule
+airstream	0	oewn-airstream-n	Number=Sing	dema	0			oewn_form
+airstreams	0	oewn-airstream-n	Number=Plur	dema	0			rule
+airstrip	0	oewn-airstrip-n	Number=Sing	dema	0			oewn_form
+airstrips	0	oewn-airstrip-n	Number=Plur	dema	0			rule
+airt	0		Number=Sing	dema	0	airt	n	moby_reverse
+airt	1	oewn-airt-v	VerbForm=Inf	dema	0			oewn_form
+airted	0	oewn-airt-v	Tense=Past+VerbForm=Part	dema	0			rule
+airtight	0	oewn-airtight-a	Degree=Pos	dema	0			oewn_form
+airtightly	0		Degree=Pos	dema	0	airtightly	r	moby_reverse
+airtightness	0		Number=Sing	dema	0	airtightness	n	moby_reverse
+airtightnesses	0		Number=Plur	dema	0	airtightness	n	rule
+airting	0	oewn-airt-v	VerbForm=Ger	dema	0			rule
+airts	0		Number=Plur	dema	0	airt	n	rule
+airts	1	oewn-airt-v	Person=3+Tense=Pres	dema	0			rule
+airwash	0		VerbForm=Inf	dema	0	airwash	v	moby_reverse
+airwash	1		Number=Sing	dema	0	airwash	n	moby_reverse
+airwashed	0		Tense=Past+VerbForm=Part	dema	0	airwash	v	rule
+airwashes	0		Person=3+Tense=Pres	dema	0	airwash	v	rule
+airwashing	0		VerbForm=Ger	dema	0	airwash	v	rule
+airwave	0	oewn-airwave-n	Number=Sing	dema	0			oewn_form
+airwaves	0	oewn-airwave-n	Number=Plur	dema	0			rule
+airway	0	oewn-airway-n	Number=Sing	dema	0			oewn_form
+airways	0	oewn-airway-n	Number=Plur	dema	0			rule
+airwoman	0	oewn-airwoman-n	Number=Sing	dema	0			oewn_form
+airwomen	0	oewn-airwoman-n	Number=Plur	dema	0			agid
+airworthiness	0	oewn-airworthiness-n	Number=Sing	dema	0			oewn_form
+airworthinesses	0	oewn-airworthiness-n	Number=Plur	dema	0			rule
+airworthy	0	oewn-airworthy-a	Degree=Pos	dema	0			oewn_form
+airy	0	oewn-airy-a	Degree=Pos	dema	0			oewn_form
+ais	0	oewn-AI-n	Number=Plur	dema	0			moby_reverse
+ais	1	oewn-ai-n	Number=Plur	dema	0			rule
+aisle	0	oewn-aisle-n	Number=Sing	dema	0			oewn_form
+aisled	0		Degree=Pos	dema	0	aisled	a	moby_reverse
+aisled	1		VerbForm=Inf	dema	0	aisled	v	moby_reverse
+aisles	0	oewn-aisle-n	Number=Plur	dema	0			rule
+ait	0		Number=Sing	dema	0	ait	n	moby_reverse
+aitch	0		Number=Sing	dema	0	aitch	n	moby_reverse
+aitchbone	0	oewn-aitchbone-n	Number=Sing	dema	0			oewn_form
+aitchbones	0	oewn-aitchbone-n	Number=Plur	dema	0			rule
+aitches	0		Number=Plur	dema	0	aitch	n	rule
+aits	0		Number=Plur	dema	0	ait	n	rule

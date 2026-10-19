@@ -1,2 +1,48 @@
-spelling	rank	entry_id	features	source_id	reviewed
-c	0	oewn-c-n	Number=Sing	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+C	0	oewn-c-n	Number=Sing	dema	0			oewn_form
+C	1	oewn-c-a	Degree=Pos	dema	0			oewn_form
+C	2	oewn-C-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+C and W	0	oewn-C_and_W-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+C and Ws	0	oewn-C_and_W-n	Capitalization=Exact+Number=Plur	dema	0			rule
+C batteries	0	oewn-C_battery-n	Capitalization=Exact+Number=Plur	dema	0			rule
+C battery	0	oewn-C_battery-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+C clef	0	oewn-C_clef-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+C clefs	0	oewn-C_clef-n	Capitalization=Exact+Number=Plur	dema	0			rule
+C compiler	0	oewn-C_compiler-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+C compilers	0	oewn-C_compiler-n	Capitalization=Exact+Number=Plur	dema	0			rule
+C flute	0	oewn-C_flute-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+C flutes	0	oewn-C_flute-n	Capitalization=Exact+Number=Plur	dema	0			rule
+C major	0	oewn-C_major-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+C major scale	0	oewn-C_major_scale-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+C major scales	0	oewn-C_major_scale-n	Capitalization=Exact+Number=Plur	dema	0			rule
+C majors	0	oewn-C_major-n	Capitalization=Exact+Number=Plur	dema	0			rule
+C program	0	oewn-C_program-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+C programs	0	oewn-C_program-n	Capitalization=Exact+Number=Plur	dema	0			rule
+C-clamp	0	oewn-C-clamp-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+C-clamps	0	oewn-C-clamp-n	Capitalization=Title+Number=Plur	dema	0			rule
+C-ration	0	oewn-C-ration-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+C-rations	0	oewn-C-ration-n	Capitalization=Title+Number=Plur	dema	0			rule
+C-reactive protein	0	oewn-C-reactive_protein-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+C-reactive proteins	0	oewn-C-reactive_protein-n	Capitalization=Exact+Number=Plur	dema	0			rule
+C-section	0	oewn-C-section-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+C-sections	0	oewn-C-section-n	Capitalization=Title+Number=Plur	dema	0			rule
+C. diphtheriae	0	oewn-C._diphtheriae-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+C. diphtheriaes	0	oewn-C._diphtheriae-n	Capitalization=Exact+Number=Plur	dema	0			rule
+C. psittaci	0	oewn-C._psittaci-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+C. psittacis	0	oewn-C._psittaci-n	Capitalization=Exact+Number=Plur	dema	0			rule
+C. trachomatis	0	oewn-C._trachomatis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+C.E.	0	oewn-C.E.-r	Capitalization=Upper+Degree=Pos	dema	0			oewn_form
+C.O.D.	0	oewn-C.O.D.-r	Capitalization=Upper+Degree=Pos	dema	0			oewn_form
+C.P.U.	0	oewn-C.P.U.-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+C0	0	oewn-C0-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+C1	0	oewn-C1-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+C2	0	oewn-C2-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+C2H6	0	oewn-C2H6-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+C3	0	oewn-C3-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+C4	0	oewn-C4-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+C5	0	oewn-C5-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+C6	0	oewn-C6-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+c	0	oewn-c-n	Number=Sing	dema	0			oewn_form
+c	1	oewn-c-a	Degree=Pos	dema	0			oewn_form
+c-note	0	oewn-c-note-n	Number=Sing	dema	0			oewn_form
+c-notes	0	oewn-c-note-n	Number=Plur	dema	0			rule

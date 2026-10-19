@@ -219,6 +219,8 @@ write	V	Past	wrote	list
 write	V	Participle	written	list
 man	N	Plural	men	list
 woman	N	Plural	women	list
+irishman	N	Plural	irishmen	list
+frenchman	N	Plural	frenchmen	list
 child	N	Plural	children	list
 foot	N	Plural	feet	list
 tooth	N	Plural	teeth	list

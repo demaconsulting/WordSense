@@ -1,6 +1,7 @@
-spelling	rank	entry_id	features	source_id	reviewed
-cg	0	dema-cg-n	Number=Sing	dema	0
-cgm	0	dema-cgm-n	Number=Sing	dema	0
-cgms	0	dema-cgm-n	Number=Plur	dema	0
-cgs	0	oewn-cgs-n	Number=Sing	dema	0
-cgses	0	oewn-cgs-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+cg	0		Number=Sing	dema	0	cg	n	moby_reverse
+cgm	0		Number=Sing	dema	0	cgm	n	moby_reverse
+cgs	0	oewn-cgs-n	Number=Sing	dema	0			oewn_form
+cgs	1		Number=Plur	dema	0	cg	n	rule
+cgs system	0	oewn-cgs_system-n	Number=Sing	dema	0			oewn_form
+cgs systems	0	oewn-cgs_system-n	Number=Plur	dema	0			rule

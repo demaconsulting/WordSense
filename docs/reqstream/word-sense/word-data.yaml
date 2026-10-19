@@ -56,6 +56,28 @@ sections:
               - WordSenseBuilder_OewnImporter_Import_Slice_CountsRows
               - WordSenseBuilder_DataCommands_ImportThenValidate_Succeeds
 
+          - id: WordSense-WordData-Forms
+            title: >-
+              The word data subsystem shall generate the inflected-form table from the entries and independent
+              sources, keep a generated form only when two independent sources support it (or it is a regular form of
+              a real lemma), and provide a repeatable audit that reports the error rate of every source with its
+              confidence interval.
+            tags: [subsystem]
+            justification: |
+              Wrong analyses are worse than unknown words; a sampled audit is the measurable evidence that the table is
+              correct.
+            children:
+              - WordSense-WordData-FormGenerator-Corroboration
+              - WordSense-WordData-FormGenerator-Gerunds
+              - WordSense-WordData-FormGenerator-OwnEntries
+              - WordSense-WordData-FormGenerator-Facts
+              - WordSense-WordData-FormGenerator-Rules
+              - WordSense-WordData-FormAuditor-Interval
+              - WordSense-WordData-FormAuditor-Gate
+            tests:
+              - WordSenseBuilder_FormGenerator_Data_Provenance_IsKnown
+              - WordSenseBuilder_FormAuditor_Evaluate_UnadjudicatedDisagreement_Fails
+
           - id: WordSense-WordData-Validation
             title: >-
               The word data subsystem shall validate the committed tables against the schema, reporting for each

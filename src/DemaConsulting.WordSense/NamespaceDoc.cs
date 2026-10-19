@@ -192,8 +192,12 @@ namespace DemaConsulting.WordSense;
 ///     <description>Unknown: null, 0, because <c>race.</c> is not a lexicon key; Basic then sees no sentence end. Always split the period off</description>
 ///     </item>
 ///     <item>
-///     <term><c>don't</c> (also with U+2019), <c>it's</c>, <c>dog's</c>, <c>didn't</c></term>
-///     <description>Unknown: null, 0 (the lexicon has no contraction or possessive keys); the neighboring words are classified normally. If you need the base word of a possessive classified, split it before the <c>'s</c> yourself (<c>record</c>, <c>'s</c>); the evaluation did not do that</description>
+///     <term><c>don't</c> (also with U+2019), <c>it's</c>, <c>didn't</c></term>
+///     <description>Found: a stored contraction (a closed list) with the analysis of its head word and <c>Contraction=Yes</c></description>
+///     </item>
+///     <item>
+///     <term><c>dog's</c>, <c>dogs'</c></term>
+///     <description>Found when the stem is known: the analysis of the stem with <c>Poss=Yes</c>. The <c>'s</c> stays inside the token by the tokenizer contract; if you split it off, look the stem up on its own</description>
 ///     </item>
 ///     <item>
 ///     <term><c>do</c> + <c>n't</c> (split by another tokenizer)</term>

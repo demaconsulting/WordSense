@@ -16,6 +16,8 @@ sections:
               package that all others reference.
             children:
               - WordSense-Core-WordLexicon-Words
+              - WordSense-Core-WordLexicon-Possessives
+              - WordSense-Core-WordLexicon-Facts
               - WordSense-Core-WordLexicon-Complete
               - WordSense-Core-WordLexicon-Embedded
               - WordSense-Core-WordLexicon-LazyLoad

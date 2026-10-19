@@ -38,6 +38,16 @@ internal static partial class OewnImporter
     public const string PinnedSha256 = "9CA6D1DCB75F822FDD66617F7D9DA48142ACE38DD544D6AD5E2FECA1674AD3FE";
 
     /// <summary>
+    ///     The SHA-256 of the previous OEWN release 2024 file <c>english-wordnet-2024.xml.gz</c>, as upper-case hexadecimal.
+    /// </summary>
+    public const string PreviousPinnedSha256 = "E1F633B0A93758CAE34EA27C44C4DAD310A8AF2467B155F99DD6673AF697E875";
+
+    /// <summary>
+    ///     The release name written to the <c>id_map</c> table for identifiers of the OEWN 2024 release.
+    /// </summary>
+    public const string PreviousRelease = "oewn-2024";
+
+    /// <summary>
     ///     The default number of entries above which a first letter gets two-letter files.
     /// </summary>
     public const int DefaultSplitThreshold = 8000;
@@ -346,6 +356,11 @@ internal static partial class OewnImporter
                 entry.Pronunciations.Add((pronunciation.Attribute("variety")?.Value ?? string.Empty, pronunciation.Value));
             }
 
+            foreach (var form in element.Elements("Form"))
+            {
+                entry.Forms.Add(Required(form, "writtenForm"));
+            }
+
             foreach (var sense in element.Elements("Sense"))
             {
                 entry.Senses.Add(ReadSense(sense));
@@ -395,6 +410,8 @@ internal static partial class OewnImporter
     private sealed record RawEntry(string Id, string Lemma, string Pos)
     {
         public List<(string Variety, string Text)> Pronunciations { get; } = [];
+
+        public List<string> Forms { get; } = [];
 
         public List<RawSense> Senses { get; } = [];
     }

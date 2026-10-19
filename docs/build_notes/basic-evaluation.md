@@ -50,13 +50,13 @@ by a hash of its text, is development). The holdout and the real-text sentences 
 
 `evaluate basic` prints the same comparison table on every run, so that two runs can be compared line by line. The
 reference rows are fixed values of earlier measurements; the first row is the current table. The table
-`basic.bin` is 85,237 bytes (83 KiB), SHA-256 `EE8FCBEA97188A0D6C687F601C1BF237E28DC2A2945B45A4C9CD2B0B6B0435FC`.
+`basic.bin` is 88,863 bytes (87 KiB), SHA-256 `041468213F10212E55946CC701B61532434609B2131DCD496470BDFD0DD36F22`.
 
 <!-- markdownlint-disable MD013 -->
 
 | Model | Best sense, holdout | Best sense, real text | Part of speech (holdout / real) | Pronunciation (holdout / real) |
 | ----- | ------------------: | --------------------: | ------------------------------: | -----------------------------: |
-| Basic (this build) | 91.17% | 85.49% | 92.20% / 90.28% | 90.32% / 87.71% |
+| Basic (this build) | 91.13% | 85.20% | 92.24% / 90.13% | 90.11% / 87.41% |
 | Basic spike (research prototype) | 91.4% | 81.9% | 92.6% / 87.5% | 93.9% / 84.9% |
 | MiniLM | 96.91% | 92.60% | 97.25% / 95.36% | 96.46% / 94.45% |
 | BertBaseCased | 99.05% | 97.39% | 99.23% / 98.40% | 99.25% / 98.20% |
