@@ -46,8 +46,18 @@ internal static class FactGenerator
     /// <summary>The result of one generation.</summary>
     /// <param name="Facts">The fact rows.</param>
     /// <param name="Summary">The counts by category.</param>
-    /// <param name="NotShipped">The rule-derived regular forms that the word table does not carry, by category.</param>
-    internal sealed record Generated(List<Fact> Facts, SortedDictionary<string, int> Summary, SortedDictionary<string, int> NotShipped);
+    /// <param name="Withheld">The forms that were deliberately not asserted, each with its reason code.</param>
+    internal sealed record Generated(List<Fact> Facts, SortedDictionary<string, int> Summary, List<Withheld> Withheld);
+
+    /// <summary>A form that the generator deliberately did not assert.</summary>
+    /// <param name="Category">The category of the fact.</param>
+    /// <param name="Word">The spelling.</param>
+    /// <param name="Lemma">The lemma.</param>
+    /// <param name="Reason">The reason code.</param>
+    internal sealed record Withheld(string Category, string Word, string Lemma, string Reason);
+
+    /// <summary>The reason code of a regular past form that no source of the repository corroborates.</summary>
+    public const string NoSecondSource = "past-unlisted-and-not-shipped";
 
     /// <summary>
     ///     Generates the facts.
@@ -63,9 +73,10 @@ internal static class FactGenerator
         var entries = ReadEntries(data);
         var lemmas = entries.Select(e => (e.Lemma, e.Pos)).ToHashSet();
         var facts = new List<Fact>();
+        var withheld = new List<Withheld>();
 
-        AddIrregular(facts, "source-irregular-closed", sources.Closed, lemmas);
-        AddIrregular(facts, "source-irregular-hand", sources.Hand, lemmas);
+        AddIrregular(facts, withheld, "source-irregular-closed", sources.Closed, lemmas);
+        AddIrregular(facts, withheld, "source-irregular-hand", sources.Hand, lemmas);
 
         var irregular = sources.Closed.Keys.Concat(sources.Hand.Keys).Concat(sources.Agid.Keys).ToHashSet();
         var listed = LexiconSource.MergeAdditions(
@@ -76,7 +87,19 @@ internal static class FactGenerator
         {
             var forms = InflectionRules.VerbRegular(lemma, listed.Contains);
             facts.Add(new Fact("source-regular-verb", InflectionRules.VerbThirdPerson(lemma), lemma, "Verb", "Person=3+Tense=Pres"));
-            facts.Add(new Fact("source-regular-verb", forms.Past[0], lemma, "Verb", "Tense=Past"));
+            var past = new Fact("source-regular-verb", forms.Past[0], lemma, "Verb", "Tense=Past+VerbForm=Part");
+            if (listed.Contains(past.Word) || Holds(past, WordLexicon.Lookup(past.Word)))
+            {
+                facts.Add(past);
+            }
+            else
+            {
+                // A generated -ed form ships only with a second source: the dictionary listing it, or the inflection database
+                // (not part of the repository). A form that the dictionary does not list and the table does not carry is withheld
+                // by that rule and named with its reason; a dictionary-listed form that is missing is a failing fact
+                withheld.Add(new Withheld("source-regular-verb", past.Word, lemma, NoSecondSource));
+            }
+
             facts.Add(new Fact("source-regular-verb", forms.Gerund[0], lemma, "Verb", "VerbForm=Ger"));
         }
 
@@ -103,22 +126,10 @@ internal static class FactGenerator
             }
         }
 
-        // A regular form that a rule derives is shipped only when a second source corroborates it, so a missing one is a
-        // policy decision and is counted, not asserted; every other category must hold
-        var notShipped = new SortedDictionary<string, int>(StringComparer.Ordinal);
-        facts = facts.Where(f =>
-        {
-            if (f.Category is not ("source-regular-verb" or "source-regular-noun" or "source-possessive") || Holds(f, WordLexicon.Lookup(f.Word)))
-            {
-                return true;
-            }
-
-            notShipped[f.Category] = notShipped.GetValueOrDefault(f.Category) + 1;
-            return false;
-        }).ToList();
+        // Nothing is filtered by whether it holds: a fact that the word table fails is a failing fact
         var distinct = facts.DistinctBy(f => (f.Category, f.Word, f.Lemma, f.Pos, f.Features)).OrderBy(f => f.Category, StringComparer.Ordinal).ThenBy(f => f.Word, StringComparer.Ordinal).ThenBy(f => f.Lemma, StringComparer.Ordinal).ThenBy(f => f.Features, StringComparer.Ordinal).ToList();
         var summary = new SortedDictionary<string, int>(distinct.GroupBy(f => f.Category).ToDictionary(g => g.Key, g => g.Count()), StringComparer.Ordinal);
-        return new Generated(distinct, summary, notShipped);
+        return new Generated(distinct, summary, withheld);
     }
 
     /// <summary>
@@ -185,7 +196,12 @@ internal static class FactGenerator
         !senses.IsDefaultOrEmpty && senses.Any(s =>
             (f.Lemma == "*" || string.Equals(s.Lemma, f.Lemma, StringComparison.OrdinalIgnoreCase))
             && (f.Pos == "*" || s.PartOfSpeech.ToString() == f.Pos)
-            && (f.Features == "*" || s.Features == f.Features));
+            && FeaturesMatch(f.Features, s.Features));
+
+    // "*" is any, a leading "~" asks that every "+"-separated feature of the pattern is among the features, else the strings are equal
+    private static bool FeaturesMatch(string pattern, string features) =>
+        pattern == "*" || features == pattern
+        || (pattern.StartsWith('~') && pattern[1..].Split('+').All(p => features.Split('+').Contains(p, StringComparer.Ordinal)));
 
     private static IEnumerable<string> IngEntries(List<(string Lemma, string Pos)> entries, string pos) =>
         entries.Where(e => e.Pos == pos && IsPlain(e.Lemma) && e.Lemma.Length > 4 && e.Lemma.EndsWith("ing", StringComparison.Ordinal)).Select(e => e.Lemma);
@@ -205,12 +221,13 @@ internal static class FactGenerator
             .OrderBy(l => l, StringComparer.Ordinal)
             .ToList();
 
-    private static void AddIrregular(List<Fact> facts, string category, Dictionary<(string Lemma, string Pos), IrregularKinds> source, HashSet<(string Lemma, string Pos)> lemmas)
+    private static void AddIrregular(List<Fact> facts, List<Withheld> withheld, string category, Dictionary<(string Lemma, string Pos), IrregularKinds> source, HashSet<(string Lemma, string Pos)> lemmas)
     {
         foreach (var ((lemma, letter), kinds) in source)
         {
             if (lemma.Contains(' ', StringComparison.Ordinal) || !lemmas.Contains((lemma, letter.ToLowerInvariant())))
             {
+                withheld.Add(new Withheld(category, "*", lemma, lemma.Contains(' ', StringComparison.Ordinal) ? "multiword-lemma" : "lemma-not-an-entry"));
                 continue;
             }
 
@@ -219,10 +236,21 @@ internal static class FactGenerator
             {
                 foreach (var (form, _) in kinds.Of(kind)!)
                 {
-                    if (!form.Contains(' ', StringComparison.Ordinal))
+                    if (form.Contains(' ', StringComparison.Ordinal))
                     {
-                        facts.Add(new Fact(category, form, lemma, part.ToString(), kind == "Plural" ? "Number=Plur" : "*"));
+                        withheld.Add(new Withheld(category, form, lemma, "multiword-form"));
+                        continue;
                     }
+
+                    var features = kind switch
+                    {
+                        "Plural" => "Number=Plur",
+                        "Past" => "~Tense=Past",
+                        "Participle" => "~VerbForm=Part",
+                        "Comparative" => "~Degree=Cmp",
+                        _ => "~Degree=Sup",
+                    };
+                    facts.Add(new Fact(category, form, lemma, part.ToString(), features));
                 }
             }
         }

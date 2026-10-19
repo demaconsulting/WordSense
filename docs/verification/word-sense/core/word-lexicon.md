@@ -44,7 +44,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `Lookup_FormsLostByEarlierRebuild_ResolveToTheirLemma`): the fallback, and the fixed fact set in
   `Fixtures/lexicon-facts.tsv` (hand-observed rows) and `Fixtures/lexicon-facts-generated.tsv` (rows derived
   mechanically from the sources with a fixed seed: irregular lists, sampled regular verbs and nouns, possessives,
-  contractions, -ing entries). A fact asserts that an analysis exists; the order of the analyses is not asserted.
+  contractions, -ing entries). A fact asserts that an analysis exists; the order of the analyses is not asserted. No
+  fact is dropped for failing: a form is left out of the file only when the generator names it with a reason code.
   `Lookup_GerundWithOwnEntry_HasBothAnalyses` checks that a gerund has the verb analysis and the analysis of its own
   noun or adjective entry.
 - **Forms are lower case** (`FormsOf_Forms_AreLowerCase`) and **case folds** (`Lookup_Case_FoldsToLowerCase`): an

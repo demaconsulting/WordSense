@@ -13,7 +13,7 @@ public class LexiconFactTests
     private static readonly string[] FactFiles = ["lexicon-facts.tsv", "lexicon-facts-generated.tsv"];
 
     /// <summary>
-    ///     The fact rows of both files: category, word, lemma, part of speech, features ("*" for any) and the mode (any, absent).
+    ///     The fact rows of both files: category, word, lemma, part of speech, features ("*" for any, a leading "~" for features that must all be among those of the analysis) and the mode (any, absent).
     /// </summary>
     public static TheoryData<string, string, string, string, string, string> Facts()
     {
@@ -43,7 +43,8 @@ public class LexiconFactTests
         bool Matches(WordDetails s) =>
             (lemma == "*" || string.Equals(s.Lemma, lemma, StringComparison.OrdinalIgnoreCase))
             && (pos == "*" || s.PartOfSpeech == Enum.Parse<PartOfSpeech>(pos))
-            && (features == "*" || s.Features == features);
+            && (features == "*" || s.Features == features
+                || (features.StartsWith('~') && features[1..].Split('+').All(p => s.Features.Split('+').Contains(p))));
 
         Assert.True(senses.Any(Matches), $"{category}: '{word}' lacks {lemma} {pos} {features}");
     }

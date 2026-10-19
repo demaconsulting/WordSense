@@ -24,7 +24,11 @@ that attests it for that lemma and part of speech). Everything else is dropped a
 Frozen rows (carried from earlier tables) are kept only when the rules can still derive them; a frozen spelling does not
 block the analyses of other entries: the entry whose own lemma is an -ing spelling (the noun `tracing` beside the gerund
 of `trace`) and the forms of the irregular lists (`lives` as the plural of `life`) are appended after the frozen
-analyses. Other reviewed spellings stay as reviewed (`bowed` is only the bend verb).
+analyses. Other reviewed spellings stay as reviewed (`bowed` is only the bend verb). A reviewed past is normalized to
+the merged features of the generated rows (`Tense=Past+VerbForm=Part`) when the rule or the lists give the spelling as
+both, a reviewed analysis without features takes them from the hand and closed lists (`bent`, `broke`), and a past or
+participle of those lists that the reviewed rows of the entry lack is appended (`beat` and `cast` beside the reviewed
+infinitive).
 
 Rank policy: the rank of an analysis is a frequency prior, not the answer for a sentence. A gerund of a verb leads with
 the verb analysis because that is the most frequent use of an -ing form; a gerund noun that a sense label needs, the

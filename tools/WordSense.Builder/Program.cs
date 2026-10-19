@@ -203,7 +203,7 @@ internal static class Program
         var (checkedCount, withGerund, missing) = Data.FactGenerator.CheckIngEntries(data);
         output.WriteLine($"Seed {seed.ToString(CultureInfo.InvariantCulture)}, sample {sample.ToString(CultureInfo.InvariantCulture)}: {generated.Facts.Count.ToString(CultureInfo.InvariantCulture)} facts ({string.Join(", ", generated.Summary.Select(p => $"{p.Key} {p.Value.ToString(CultureInfo.InvariantCulture)}"))}).");
         output.WriteLine($"{failures.Count.ToString(CultureInfo.InvariantCulture)} fact(s) do not hold in the shipped word table.");
-        output.WriteLine($"Regular forms derived by rule but not shipped (uncorroborated, not asserted): {string.Join(", ", generated.NotShipped.Select(p => $"{p.Key} {p.Value.ToString(CultureInfo.InvariantCulture)}"))}.");
+        output.WriteLine($"Withheld (not asserted): {generated.Withheld.Count.ToString(CultureInfo.InvariantCulture)} ({string.Join(", ", generated.Withheld.GroupBy(w => w.Category + " " + w.Reason).Select(g => $"{g.Key} {g.Count().ToString(CultureInfo.InvariantCulture)}"))}).");
         output.WriteLine($"-ing noun and adjective entries: {checkedCount.ToString(CultureInfo.InvariantCulture)} checked, {withGerund.ToString(CultureInfo.InvariantCulture)} also have the verb gerund analysis, {missing.Count.ToString(CultureInfo.InvariantCulture)} lack the entry analysis.");
         foreach (var line in failures.Concat(missing.Select(m => "ing-missing\t" + m)))
         {
