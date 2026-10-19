@@ -38,6 +38,9 @@ internal static class IrregularForms
     /// </summary>
     public const string HandFile = "irregular-forms.tsv";
 
+    /// <summary>The rule name of a form that is none of the named inflection rules.</summary>
+    private const string OtherRule = "Other";
+
     /// <summary>
     ///     The name of the list derived from the treebank (test oracle only).
     /// </summary>
@@ -53,7 +56,7 @@ internal static class IrregularForms
     /// <param name="directory">The lexicon directory.</param>
     /// <returns>The entries; empty when the list does not exist.</returns>
     /// <exception cref="InvalidDataException">Thrown when a line is malformed.</exception>
-    public static List<IrregularEntry> Read(string directory) => ReadFile(Path.Combine(directory, HandFile));
+    public static List<IrregularEntry> Read(string directory) => ReadFile(Path.Join(directory, HandFile));
 
     /// <summary>
     ///     Reads one irregular list.
@@ -107,12 +110,12 @@ internal static class IrregularForms
     /// <exception cref="InvalidDataException">Thrown when a treebank file is missing.</exception>
     public static string Derive(string udDirectory, string corpus, string output)
     {
-        var lexicon = LexiconSource.ReadWords(Path.Combine(corpus, "lexicon", LexiconSource.LexiconFile))
+        var lexicon = LexiconSource.ReadWords(Path.Join(corpus, "lexicon", LexiconSource.LexiconFile))
             .ToDictionary(w => w.Word, w => w.Mask, StringComparer.Ordinal);
         var counts = new Dictionary<(string Lemma, char Letter, string Rule, string Form), int>();
         foreach (var name in Files)
         {
-            var path = Path.Combine(udDirectory, name);
+            var path = Path.Join(udDirectory, name);
             if (!File.Exists(path))
             {
                 throw new InvalidDataException($"The treebank file '{path}' is missing; run ud-counts first.");
@@ -154,7 +157,7 @@ internal static class IrregularForms
 
         var regular = new Dictionary<string, HashSet<string>>(StringComparer.Ordinal);
         var groups = new SortedDictionary<(string Lemma, char Letter, string Rule), List<(string Form, int Count)>>();
-        foreach (var ((lemma, letter, rule, form), count) in counts.Where(c => c.Value >= MinCount && c.Key.Rule != "Other" && !lexicon.ContainsKey(c.Key.Form)))
+        foreach (var ((lemma, letter, rule, form), count) in counts.Where(c => c.Value >= MinCount && c.Key.Rule != OtherRule && !lexicon.ContainsKey(c.Key.Form)))
         {
             if (!regular.TryGetValue(lemma, out var forms))
             {
@@ -245,7 +248,7 @@ internal static class IrregularForms
     {
         if (letter == 'N')
         {
-            return features.Contains("Number=Plur", StringComparison.Ordinal) ? "Plural" : "Other";
+            return features.Contains("Number=Plur", StringComparison.Ordinal) ? "Plural" : OtherRule;
         }
 
         if (letter == 'V')
@@ -256,7 +259,7 @@ internal static class IrregularForms
                 return "Participle";
             }
 
-            return past ? "Past" : "Other";
+            return past ? "Past" : OtherRule;
         }
 
         if (features.Contains("Degree=Cmp", StringComparison.Ordinal))
@@ -264,6 +267,6 @@ internal static class IrregularForms
             return "Comparative";
         }
 
-        return features.Contains("Degree=Sup", StringComparison.Ordinal) ? "Superlative" : "Other";
+        return features.Contains("Degree=Sup", StringComparison.Ordinal) ? "Superlative" : OtherRule;
     }
 }

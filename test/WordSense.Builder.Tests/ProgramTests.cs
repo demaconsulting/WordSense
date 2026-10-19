@@ -28,7 +28,7 @@ public sealed class ProgramTests : IDisposable
         _dir.Write("corpus/senses/s.tsv", TestDirectory.SensesHeader + "walk\tnoun\tnoun\t\t\nwalk\tverb\tverb\t\t\n");
         _dir.Write("corpus/anchors/a.tsv", "walk\tverb\tThey will {walk} home.\nwalk\tnoun\tThe {walk} was long.\n");
         _dir.Write("corpus/holdout/h.tsv", "walk\tverb\tYou should {walk} more.\n");
-        return Path.Combine(_dir.Root, "corpus");
+        return Path.Join(_dir.Root, "corpus");
     }
 
     /// <summary>
@@ -69,13 +69,13 @@ public sealed class ProgramTests : IDisposable
     {
         var (missingCode, _, missingError) = await RunAsync("import-moby");
         var input = _dir.Write("mobypos.txt", "the\\D\n");
-        var (wrongCode, _, wrongError) = await RunAsync("import-moby", "--input", input, "--output", Path.Combine(_dir.Root, "lexicon.tsv"));
+        var (wrongCode, _, wrongError) = await RunAsync("import-moby", "--input", input, "--output", Path.Join(_dir.Root, "lexicon.tsv"));
 
         Assert.Equal(1, missingCode);
         Assert.Contains("--input", missingError, StringComparison.Ordinal);
         Assert.Equal(1, wrongCode);
         Assert.Contains("pinned", wrongError, StringComparison.Ordinal);
-        Assert.False(File.Exists(Path.Combine(_dir.Root, "lexicon.tsv")));
+        Assert.False(File.Exists(Path.Join(_dir.Root, "lexicon.tsv")));
     }
 
     /// <summary>
@@ -163,8 +163,8 @@ public sealed class ProgramTests : IDisposable
             sentences.Add(new UdSentence(["the", "walk", "."], [PosTag.Determiner, PosTag.Noun, PosTag.Punctuation]));
         }
 
-        UdCounts.Count(sentences).Write(Path.Combine(corpus, "ud"));
-        var table = Path.Combine(_dir.Root, "out", "basic.bin");
+        UdCounts.Count(sentences).Write(Path.Join(corpus, "ud"));
+        var table = Path.Join(_dir.Root, "out", "basic.bin");
 
         var (code, output, error) = await RunAsync("train-basic", "--repository", _dir.Root, "--corpus", corpus, "--output", table);
 
@@ -181,9 +181,9 @@ public sealed class ProgramTests : IDisposable
     {
         var corpus = PrepareCorpus();
         _dir.Write("corpus/anchors/a.tsv", "walk\tbogus\tThey will {walk} home.\n");
-        UdCounts.Count([new UdSentence(["the", "walk"], [PosTag.Determiner, PosTag.Noun])]).Write(Path.Combine(corpus, "ud"));
+        UdCounts.Count([new UdSentence(["the", "walk"], [PosTag.Determiner, PosTag.Noun])]).Write(Path.Join(corpus, "ud"));
 
-        var (code, _, error) = await RunAsync("train-basic", "--repository", _dir.Root, "--corpus", corpus, "--output", Path.Combine(_dir.Root, "basic.bin"));
+        var (code, _, error) = await RunAsync("train-basic", "--repository", _dir.Root, "--corpus", corpus, "--output", Path.Join(_dir.Root, "basic.bin"));
 
         Assert.Equal(1, code);
         Assert.NotEmpty(error);
@@ -216,10 +216,10 @@ public sealed class ProgramTests : IDisposable
     {
         var corpus = PrepareCorpus();
         _dir.Write("text/t.txt", "*** START ***\nwalk walked zzqxj\n*** END ***\n");
-        var target = Path.Combine(_dir.Root, "out", "coverage.md");
+        var target = Path.Join(_dir.Root, "out", "coverage.md");
         Directory.CreateDirectory(Path.GetDirectoryName(target)!);
 
-        var (code, output, error) = await RunAsync("coverage", "--corpus", corpus, "--text", Path.Combine(_dir.Root, "text"), "--top", "5", "--output", target);
+        var (code, output, error) = await RunAsync("coverage", "--corpus", corpus, "--text", Path.Join(_dir.Root, "text"), "--top", "5", "--output", target);
 
         Assert.Equal(0, code);
         Assert.Empty(error);
@@ -247,9 +247,9 @@ public sealed class ProgramTests : IDisposable
     public async Task WordSenseBuilder_Program_CompileImage_WritesImage()
     {
         var root = FindRepositoryRoot();
-        var target = Path.Combine(_dir.Root, "out", "wordsense.img");
+        var target = Path.Join(_dir.Root, "out", "wordsense.img");
 
-        var (code, output, error) = await RunAsync("compile-image", "--data", Path.Combine(root, "data"), "--corpus", Path.Combine(root, "corpus"), "--output", target);
+        var (code, output, error) = await RunAsync("compile-image", "--data", Path.Join(root, "data"), "--corpus", Path.Join(root, "corpus"), "--output", target);
 
         Assert.Equal(0, code);
         Assert.Empty(error);
@@ -266,9 +266,9 @@ public sealed class ProgramTests : IDisposable
     [Fact]
     public async Task WordSenseBuilder_Program_CompileImage_MissingData_Fails()
     {
-        var target = Path.Combine(_dir.Root, "out", "wordsense.img");
+        var target = Path.Join(_dir.Root, "out", "wordsense.img");
 
-        var (code, _, error) = await RunAsync("compile-image", "--data", Path.Combine(_dir.Root, "nodata"), "--corpus", Path.Combine(_dir.Root, "corpus"), "--output", target);
+        var (code, _, error) = await RunAsync("compile-image", "--data", Path.Join(_dir.Root, "nodata"), "--corpus", Path.Join(_dir.Root, "corpus"), "--output", target);
 
         Assert.Equal(1, code);
         Assert.NotEmpty(error);
@@ -278,7 +278,7 @@ public sealed class ProgramTests : IDisposable
     private static string FindRepositoryRoot()
     {
         var root = new DirectoryInfo(AppContext.BaseDirectory);
-        while (root is not null && !File.Exists(Path.Combine(root.FullName, "corpus", "lexicon", "lexicon.tsv")))
+        while (root is not null && !File.Exists(Path.Join(root.FullName, "corpus", "lexicon", "lexicon.tsv")))
         {
             root = root.Parent;
         }
@@ -295,7 +295,7 @@ public sealed class ProgramTests : IDisposable
     {
         var corpus = PrepareCorpus();
         _dir.Write("corpus/forms/f.tsv", "form\tlemma\tlabels\nwalks\twalk\tnoun,verb\n");
-        var target = Path.Combine(_dir.Root, "out", "appendix.md");
+        var target = Path.Join(_dir.Root, "out", "appendix.md");
 
         var (code, output, _) = await RunAsync("appendix", "--corpus", corpus, "--output", target);
 
@@ -310,7 +310,7 @@ public sealed class ProgramTests : IDisposable
     [Fact]
     public async Task WordSenseBuilder_Program_Appendix_MissingCorpus_Fails()
     {
-        var (code, _, error) = await RunAsync("appendix", "--corpus", Path.Combine(_dir.Root, "missing"), "--output", Path.Combine(_dir.Root, "x.md"));
+        var (code, _, error) = await RunAsync("appendix", "--corpus", Path.Join(_dir.Root, "missing"), "--output", Path.Join(_dir.Root, "x.md"));
 
         Assert.Equal(1, code);
         Assert.Contains("was not found", error, StringComparison.Ordinal);
@@ -323,7 +323,7 @@ public sealed class ProgramTests : IDisposable
     public async Task WordSenseBuilder_Program_Evaluate_BasicModel_PrintsMeasurements()
     {
         var corpus = PrepareCorpus();
-        var target = Path.Combine(_dir.Root, "out", "evaluation.md");
+        var target = Path.Join(_dir.Root, "out", "evaluation.md");
         Directory.CreateDirectory(Path.GetDirectoryName(target)!);
 
         var (code, output, error) = await RunAsync("evaluate", "basic", "--repository", _dir.Root, "--corpus", corpus, "--output", target);
@@ -356,7 +356,7 @@ public sealed class ProgramTests : IDisposable
     [Fact]
     public async Task WordSenseBuilder_Program_AuditForms_EmptyOracleFile_Fails()
     {
-        var oracle = Path.Combine(_dir.Root, "oracle.tsv");
+        var oracle = Path.Join(_dir.Root, "oracle.tsv");
         await File.WriteAllTextAsync(oracle, string.Empty, TestContext.Current.CancellationToken);
 
         var (code, _, error) = await RunAsync("audit-forms", "--oracle", oracle);

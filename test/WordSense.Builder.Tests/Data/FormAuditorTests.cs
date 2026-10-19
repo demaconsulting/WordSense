@@ -105,7 +105,7 @@ public sealed class FormAuditorTests
     public void WordSenseBuilder_FormAuditor_ReadAdjudications_SkipsComments()
     {
         using var dir = new TestDirectory();
-        var path = Path.Combine(dir.Root, "adj.tsv");
+        var path = Path.Join(dir.Root, "adj.tsv");
         File.WriteAllText(path, "# comment\nmongoes\tmongoes\tn\tvalid\tnote\n");
         var read = FormAuditor.ReadAdjudications(path);
         Assert.Single(read);
@@ -146,7 +146,7 @@ public sealed class FormAuditorTests
     public void WordSenseBuilder_FormAuditor_ReadAdjudications_FeatureColumn_RestrictsTheKey()
     {
         using var dir = new TestDirectory();
-        var path = Path.Combine(dir.Root, "adj.tsv");
+        var path = Path.Join(dir.Root, "adj.tsv");
         File.WriteAllText(path, "gan\tgin\tv\tinvalid\tnote\tTense=Past+VerbForm=Part\n");
         Assert.Equal("invalid", FormAuditor.ReadAdjudications(path)["gan\tgin\tv\tTense=Past+VerbForm=Part"]);
     }
@@ -202,7 +202,7 @@ public sealed class FormAuditorTests
     public void WordSenseBuilder_FormAuditor_ReadVerdicts_EmptyFile_Throws()
     {
         using var dir = new TestDirectory();
-        var path = Path.Combine(dir.Root, "oracle.tsv");
+        var path = Path.Join(dir.Root, "oracle.tsv");
         File.WriteAllText(path, string.Empty);
         Assert.Throws<InvalidDataException>(() => FormAuditor.ReadVerdicts(path));
     }
@@ -218,7 +218,7 @@ public sealed class FormAuditorTests
     public void WordSenseBuilder_FormAuditor_ReadVerdicts_MalformedLine_Throws(string content)
     {
         using var dir = new TestDirectory();
-        var path = Path.Combine(dir.Root, "oracle.tsv");
+        var path = Path.Join(dir.Root, "oracle.tsv");
         File.WriteAllText(path, content);
         Assert.Throws<InvalidDataException>(() => FormAuditor.ReadVerdicts(path));
     }
@@ -233,7 +233,7 @@ public sealed class FormAuditorTests
     public void WordSenseBuilder_FormAuditor_ReadVerdicts_DuplicateRow_Throws(string second)
     {
         using var dir = new TestDirectory();
-        var path = Path.Combine(dir.Root, "oracle.tsv");
+        var path = Path.Join(dir.Root, "oracle.tsv");
         File.WriteAllText(path, $"cats\tcat\tn\tNumber=Plur\tok\ncats\tcat\tn\tNumber=Plur\t{second}\n");
         var ex = Assert.Throws<InvalidDataException>(() => FormAuditor.ReadVerdicts(path));
         Assert.Contains("line 2", ex.Message, StringComparison.Ordinal);
@@ -246,7 +246,7 @@ public sealed class FormAuditorTests
     public void WordSenseBuilder_FormAuditor_ReadVerdicts_ValidFile_IsRead()
     {
         using var dir = new TestDirectory();
-        var path = Path.Combine(dir.Root, "oracle.tsv");
+        var path = Path.Join(dir.Root, "oracle.tsv");
         File.WriteAllText(path, "cats\tcat\tn\tNumber=Plur\tok\ndogz\tdog\tn\tNumber=Plur\tbad\nzzz\tz\tn\tNumber=Plur\tskip\n");
         var read = FormAuditor.ReadVerdicts(path);
         Assert.Equal(3, read.Count);
@@ -263,7 +263,7 @@ public sealed class FormAuditorTests
     public void WordSenseBuilder_FormAuditor_ReadAdjudications_BadVerdict_Throws(string content)
     {
         using var dir = new TestDirectory();
-        var path = Path.Combine(dir.Root, "adj.tsv");
+        var path = Path.Join(dir.Root, "adj.tsv");
         File.WriteAllText(path, content);
         Assert.Throws<InvalidDataException>(() => FormAuditor.ReadAdjudications(path));
     }

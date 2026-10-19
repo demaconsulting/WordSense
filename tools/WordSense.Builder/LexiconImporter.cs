@@ -66,7 +66,7 @@ internal static class LexiconImporter
         }
 
         var directory = Path.GetDirectoryName(Path.GetFullPath(output)) ?? ".";
-        var corrections = ReadCorrections(Path.Combine(directory, CorrectionsFile));
+        var corrections = ReadCorrections(Path.Join(directory, CorrectionsFile));
 
         var codes = new Dictionary<string, string>(StringComparer.Ordinal);
         var lines = 0;

@@ -17,7 +17,7 @@ public sealed class DataSchemaTests : IDisposable
         _dir.Dispose();
     }
 
-    private static string SchemaText() => File.ReadAllText(Path.Combine(DataFixture.RepositoryRoot(), "data", "schema.yaml"), Encoding.UTF8);
+    private static string SchemaText() => File.ReadAllText(Path.Join(DataFixture.RepositoryRoot(), "data", "schema.yaml"), Encoding.UTF8);
 
     private DataSchema LoadText(string text) => DataSchema.Load(_dir.Write("schema.yaml", text));
 
@@ -138,6 +138,6 @@ public sealed class DataSchemaTests : IDisposable
     public void WordSenseBuilder_DataSchema_Load_MissingFile_Throws()
     {
         // Arrange / Act / Assert
-        Assert.ThrowsAny<IOException>(() => DataSchema.Load(Path.Combine(_dir.Root, "none.yaml")));
+        Assert.ThrowsAny<IOException>(() => DataSchema.Load(Path.Join(_dir.Root, "none.yaml")));
     }
 }

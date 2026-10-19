@@ -129,8 +129,8 @@ public class BasicTrainerTests
         Assert.Equal(0.5, tables.InvTemperature);
         Assert.Equal(0.5, BasicTables.Load(other).HmmWeight);
         Assert.Equal(0.25, BasicTables.Load(other).InvTemperature);
-        Assert.True(tables.Words.ContainsKey("the"));
-        Assert.True(tables.Words["the"].ClosedMask != 0);
+        Assert.True(tables.Words.TryGetValue("the", out var the));
+        Assert.NotEqual(0, the.ClosedMask);
         Assert.Equal(2, tables.Cues["bass"].Senses.Length);
         Assert.True(tables.SuffixCount > 0);
     }
@@ -176,10 +176,10 @@ public class BasicTrainerTests
     public async Task WordSenseBuilder_BasicTuner_RunAsync_MissingDevFile_Throws()
     {
         using var dir = new TestDirectory();
-        var corpus = Path.Combine(dir.Root, "corpus");
-        UdCounts.Count([new UdSentence(["the", "cat"], [PosTag.Determiner, PosTag.Noun])]).Write(Path.Combine(corpus, "ud"));
+        var corpus = Path.Join(dir.Root, "corpus");
+        UdCounts.Count([new UdSentence(["the", "cat"], [PosTag.Determiner, PosTag.Noun])]).Write(Path.Join(corpus, "ud"));
 
-        await Assert.ThrowsAsync<FileNotFoundException>(() => BasicTuner.RunAsync(corpus, Path.Combine(dir.Root, "cache"), TextWriter.Null, TestContext.Current.CancellationToken));
+        await Assert.ThrowsAsync<FileNotFoundException>(() => BasicTuner.RunAsync(corpus, Path.Join(dir.Root, "cache"), TextWriter.Null, TestContext.Current.CancellationToken));
     }
 
     /// <summary>

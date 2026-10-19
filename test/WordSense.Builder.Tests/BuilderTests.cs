@@ -8,6 +8,8 @@ namespace WordSense.Builder.Tests;
 /// </summary>
 public sealed class BuilderTests : IDisposable
 {
+    private static readonly string[] FunctionWords = ["the", "a", "an", "his", "albeit", "although", "alas", "ah", "two"];
+
     private readonly TestDirectory _dir = new();
 
     /// <inheritdoc />
@@ -84,7 +86,7 @@ public sealed class BuilderTests : IDisposable
     [Fact]
     public void WordSenseBuilder_Corpus_DirectoryAndDisjointness()
     {
-        Assert.Empty(Corpus.ReadDirectory(Path.Combine(_dir.Root, "none")));
+        Assert.Empty(Corpus.ReadDirectory(Path.Join(_dir.Root, "none")));
         var a = Row("bank", "money", "A {bank}.", "a.tsv");
         var b = Row("bank", "river", "A {bank}.", "b.tsv");
         Assert.Throws<InvalidDataException>(() => Corpus.EnsureDisjoint([a], [b]));
@@ -194,7 +196,7 @@ public sealed class BuilderTests : IDisposable
     public void WordSenseBuilder_SenseInventory_MeaningAndRespelling_RoundTripAndAreOptional()
     {
         SenseInventory.WriteFile(
-            Path.Combine(_dir.Root, "grp", "x.tsv"),
+            Path.Join(_dir.Root, "grp", "x.tsv"),
             [
                 new InventoryRow("bow", "bend-noun", PartOfSpeech.Noun, "bend", "bou", "x.tsv"),
                 new InventoryRow("bow", "bend-verb", PartOfSpeech.Verb, "bend", "bou", "x.tsv"),
@@ -202,12 +204,12 @@ public sealed class BuilderTests : IDisposable
                 new InventoryRow("bank", "noun", PartOfSpeech.Noun, null, null, "x.tsv"),
             ]);
 
-        var inventory = SenseInventory.ReadDirectory(Path.Combine(_dir.Root, "grp"));
+        var inventory = SenseInventory.ReadDirectory(Path.Join(_dir.Root, "grp"));
 
         Assert.Equal(new SenseDefinition(PartOfSpeech.Noun, "bend", "bou"), inventory.DefinitionsOf("bow")[0]);
         Assert.Equal(new SenseDefinition(PartOfSpeech.Noun, "weapon"), inventory.DefinitionsOf("bow")[2]);
         Assert.Equal(new SenseDefinition(PartOfSpeech.Noun), inventory.DefinitionsOf("bank")[0]);
-        Assert.StartsWith("lemma\tlabel\tpos\tmeaning\trespelling\n", File.ReadAllText(Path.Combine(_dir.Root, "grp", "x.tsv")), StringComparison.Ordinal);
+        Assert.StartsWith("lemma\tlabel\tpos\tmeaning\trespelling\n", File.ReadAllText(Path.Join(_dir.Root, "grp", "x.tsv")), StringComparison.Ordinal);
     }
 
     /// <summary>
@@ -218,7 +220,7 @@ public sealed class BuilderTests : IDisposable
     {
         Write("bad-col/a.tsv", "lemma\tlabel\tpos\tmeaning\trespelling\nbank\tnoun\tNoun\t\t\nbank\tb\tverb\tBad Meaning\t\nbank\tc\tverb\t\tbow\n");
 
-        var ex = Assert.Throws<InvalidDataException>(() => SenseInventory.ReadDirectory(Path.Combine(_dir.Root, "bad-col")));
+        var ex = Assert.Throws<InvalidDataException>(() => SenseInventory.ReadDirectory(Path.Join(_dir.Root, "bad-col")));
 
         Assert.Contains("a.tsv:2", ex.Message, StringComparison.Ordinal);
         Assert.Contains("a.tsv:3", ex.Message, StringComparison.Ordinal);
@@ -231,7 +233,7 @@ public sealed class BuilderTests : IDisposable
     [Fact]
     public void WordSenseBuilder_SenseInventory_ReadDirectory_RejectsMalformedRows()
     {
-        var dir = Path.Combine(_dir.Root, "inv");
+        var dir = Path.Join(_dir.Root, "inv");
         Write("inv/a.tsv", "lemma\tlabel\tpos\tmeaning\trespelling\nbank\tnoun\tnoun\t\t\nbank\tnoun\tnoun\t\t\nbank\tadj\tAdj\t\t\nBank\tx\tnoun\t\t\nbank\ty\nwill\taux\tauxiliary\t\t\n");
         Write("inv/b.tsv", "wrong header\n");
 
@@ -254,12 +256,12 @@ public sealed class BuilderTests : IDisposable
         Write("skip/a.tsv", TestDirectory.SensesHeader + "bank\tnoun\tnoun\t\t\n");
         Write("skip/b.tsv", "garbage\n");
 
-        var inventory = SenseInventory.ReadDirectory(Path.Combine(_dir.Root, "skip"), "b.tsv");
+        var inventory = SenseInventory.ReadDirectory(Path.Join(_dir.Root, "skip"), "b.tsv");
 
         Assert.Equal(1, inventory.LemmaCount);
         Assert.True(inventory.ContainsLemma("bank"));
         Assert.False(inventory.ContainsLemma("other"));
-        Assert.Equal(0, SenseInventory.ReadDirectory(Path.Combine(_dir.Root, "missing")).LemmaCount);
+        Assert.Equal(0, SenseInventory.ReadDirectory(Path.Join(_dir.Root, "missing")).LemmaCount);
     }
 
     /// <summary>
@@ -268,12 +270,12 @@ public sealed class BuilderTests : IDisposable
     [Fact]
     public void WordSenseBuilder_SenseInventory_WriteAndRead_RoundTrips()
     {
-        var path = Path.Combine(_dir.Root, "inv", "x.tsv");
+        var path = Path.Join(_dir.Root, "inv", "x.tsv");
         SenseInventory.WriteFile(
             path,
             [new InventoryRow("bow", "bend", PartOfSpeech.Noun, "bend", null, "x.tsv"), new InventoryRow("bow", "weapon", PartOfSpeech.Noun, "weapon", null, "x.tsv")]);
 
-        var inventory = SenseInventory.ReadDirectory(Path.Combine(_dir.Root, "inv"));
+        var inventory = SenseInventory.ReadDirectory(Path.Join(_dir.Root, "inv"));
 
         Assert.Equal(2, inventory.Rows.Count());
         Assert.Equal(1, inventory.LemmaCount);
@@ -383,11 +385,11 @@ public sealed class BuilderTests : IDisposable
     [Fact]
     public void WordSenseBuilder_SenseInventory_Validate_CommittedCorpus_IsConsistent()
     {
-        var corpus = Path.Combine(FindRepositoryRoot().FullName, "corpus");
-        var inventory = SenseInventory.ReadDirectory(Path.Combine(corpus, "senses"));
-        var forms = Directory.GetFiles(Path.Combine(corpus, "forms"), "*.tsv").OrderBy(f => f, StringComparer.Ordinal).SelectMany(Corpus.ReadForms).ToList();
+        var corpus = Path.Join(FindRepositoryRoot().FullName, "corpus");
+        var inventory = SenseInventory.ReadDirectory(Path.Join(corpus, "senses"));
+        var forms = Directory.GetFiles(Path.Join(corpus, "forms"), "*.tsv").OrderBy(f => f, StringComparer.Ordinal).SelectMany(Corpus.ReadForms).ToList();
 
-        inventory.Validate(Corpus.ReadDirectory(Path.Combine(corpus, "anchors")), Corpus.ReadDirectory(Path.Combine(corpus, "holdout")), forms);
+        inventory.Validate(Corpus.ReadDirectory(Path.Join(corpus, "anchors")), Corpus.ReadDirectory(Path.Join(corpus, "holdout")), forms);
     }
 
     /// <summary>
@@ -530,7 +532,7 @@ public sealed class BuilderTests : IDisposable
         Write("corpus/holdout/h.tsv", "walk\tverb\tYou should {walk} more.\nwalk\tnoun\tThe {walk} was long.\n");
         using var progress = new StringWriter();
 
-        var result = await Evaluator.RunAsync(_dir.Root, Path.Combine(_dir.Root, "corpus"), ModelCatalog.Find("basic"), progress, TestContext.Current.CancellationToken);
+        var result = await Evaluator.RunAsync(_dir.Root, Path.Join(_dir.Root, "corpus"), ModelCatalog.Find("basic"), progress, TestContext.Current.CancellationToken);
 
         Assert.Equal(["holdout", "real-text"], result.Sets.Select(s => s.Name));
         Assert.Equal(2, result.Sets[0].Rows);
@@ -547,7 +549,7 @@ public sealed class BuilderTests : IDisposable
     public void WordSenseBuilder_Appendix_Generate_ListsLemmasSensesAndForms()
     {
         // Arrange: two lemmas written in reverse order, one heteronym with a respelling, a restricted form and a long example
-        var corpus = Path.Combine(_dir.Root, "corpus");
+        var corpus = Path.Join(_dir.Root, "corpus");
         var longSentence = "He {took} " + string.Join(' ', Enumerable.Repeat("another remarkably long stretch of words", 8)) + ".";
         Write("corpus/anchors/a.tsv", "zip\tnoun\tShe pulled the {zip} on the old bag.\n" +
             "zip\tnoun\tA {zip} is a fastener that joins two edges of cloth.\n" +
@@ -593,7 +595,7 @@ public sealed class BuilderTests : IDisposable
     public void WordSenseBuilder_Appendix_Generate_RejectsIncompleteInput()
     {
         // Arrange: only the senses exist, and the forms file names an unknown label
-        var corpus = Path.Combine(_dir.Root, "corpus");
+        var corpus = Path.Join(_dir.Root, "corpus");
         Write("corpus/senses/s.tsv", "lemma\tlabel\tpos\tmeaning\trespelling\nzip\tnoun\tnoun\t\t\nzip\tverb\tverb\t\t\n");
 
         // Act and assert: missing forms and anchors directories
@@ -609,7 +611,7 @@ public sealed class BuilderTests : IDisposable
         Assert.Contains("label 'bogus'", incomplete.Message, StringComparison.Ordinal);
 
         // Act and assert: an empty inventory
-        File.Delete(Path.Combine(corpus, "senses", "s.tsv"));
+        File.Delete(Path.Join(corpus, "senses", "s.tsv"));
         Assert.Throws<InvalidDataException>(() => AppendixGenerator.Generate(corpus));
     }
 
@@ -621,10 +623,10 @@ public sealed class BuilderTests : IDisposable
     public void WordSenseBuilder_Appendix_Committed_MatchesCorpus()
     {
         var root = FindRepositoryRoot();
-        var committedPath = Path.Combine(root.FullName, "docs", "user_guide", "appendix-senses.md");
-        var regenerated = Path.Combine(_dir.Root, "regenerated", "appendix-senses.md");
+        var committedPath = Path.Join(root.FullName, "docs", "user_guide", "appendix-senses.md");
+        var regenerated = Path.Join(_dir.Root, "regenerated", "appendix-senses.md");
 
-        AppendixGenerator.Write(Path.Combine(root.FullName, "corpus"), regenerated);
+        AppendixGenerator.Write(Path.Join(root.FullName, "corpus"), regenerated);
 
         // Line endings are normalized, so a checkout with CRLF conversion does not matter
         var expected = File.ReadAllText(regenerated).ReplaceLineEndings("\n");
@@ -643,14 +645,14 @@ public sealed class BuilderTests : IDisposable
     public void WordSenseBuilder_Words_Committed_MatchesData()
     {
         var root = FindRepositoryRoot();
-        var committed = File.ReadAllBytes(Path.Combine(root.FullName, ImageCompiler.DefaultOutput.Replace('/', Path.DirectorySeparatorChar)));
+        var committed = File.ReadAllBytes(Path.Join(root.FullName, ImageCompiler.DefaultOutput.Replace('/', Path.DirectorySeparatorChar)));
 
-        var (image, result) = ImageCompiler.Build(Path.Combine(root.FullName, "data"));
+        var (image, result) = ImageCompiler.Build(Path.Join(root.FullName, "data"));
 
         var open = DemaConsulting.WordSense.WordImage.Open(committed);
         var fresh = DemaConsulting.WordSense.WordImage.Open(image);
         Assert.True(
-            open.DataHash.SequenceEqual(ImageCompiler.DataHash(Path.Combine(root.FullName, "data"))),
+            open.DataHash.SequenceEqual(ImageCompiler.DataHash(Path.Join(root.FullName, "data"))),
             "src/DemaConsulting.WordSense/Resources/wordsense.img is stale; run the 'compile-image' command.");
         Assert.Equal(result.Spellings, open.SpellingCount);
         Assert.Equal(result.Entries, open.EntryCount);
@@ -669,7 +671,7 @@ public sealed class BuilderTests : IDisposable
     public void WordSenseBuilder_Words_Committed_HoldsEveryDictionaryWord()
     {
         var root = FindRepositoryRoot();
-        var lexicon = LexiconSource.ReadWords(Path.Combine(root.FullName, "corpus", "lexicon", "lexicon.tsv"));
+        var lexicon = LexiconSource.ReadWords(Path.Join(root.FullName, "corpus", "lexicon", "lexicon.tsv"));
         var table = new LexiconView();
 
         var missing = lexicon.Where(w => !table.ContainsKey(w.Word)).Select(w => w.Word).Take(10).ToList();
@@ -680,7 +682,7 @@ public sealed class BuilderTests : IDisposable
         // for the analyses that the forms audit dropped in form-corrections.tsv: our own sources show
         // the analysis wrong (a plural of a verb-only word, a past spelled with one consonant), so the word list entry
         // is not made true by a wrong analysis
-        var dropped = File.ReadLines(Path.Combine(root.FullName, "corpus", "lexicon", "form-corrections.tsv"))
+        var dropped = File.ReadLines(Path.Join(root.FullName, "corpus", "lexicon", "form-corrections.tsv"))
             .Where(l => l.Length > 0 && l[0] != '#')
             .Select(l => l.Split('\t'))
             .Where(p => p.Length > 4 && p[4] == "drop")
@@ -693,7 +695,7 @@ public sealed class BuilderTests : IDisposable
             .Take(10)
             .ToList();
         Assert.True(lost.Count == 0, "Parts of speech of lexicon.tsv missing from the word image: " + string.Join(", ", lost));
-        Assert.All(new[] { "the", "a", "an", "his", "albeit", "although", "alas", "ah", "two" }, w => Assert.True(table.ContainsKey(w), w));
+        Assert.All(FunctionWords, w => Assert.True(table.ContainsKey(w), w));
     }
 
     /// <summary>
@@ -705,7 +707,7 @@ public sealed class BuilderTests : IDisposable
     {
         var root = FindRepositoryRoot();
         var table = new LexiconView();
-        var auxiliaries = LexiconSource.ReadAuxiliaries(Path.Combine(root.FullName, "corpus", "lexicon", "auxiliaries.tsv"));
+        var auxiliaries = LexiconSource.ReadAuxiliaries(Path.Join(root.FullName, "corpus", "lexicon", "auxiliaries.tsv"));
 
         var problems = auxiliaries
             .Where(w => !table.ContainsKey(w)
@@ -731,10 +733,10 @@ public sealed class BuilderTests : IDisposable
     public void WordSenseBuilder_Words_Committed_FormSensesFollowLabelsThenOwnExtras()
     {
         var root = FindRepositoryRoot();
-        var corpus = Path.Combine(root.FullName, "corpus");
+        var corpus = Path.Join(root.FullName, "corpus");
         var table = new LexiconView();
-        var dictionary = LexiconSource.ReadWords(Path.Combine(corpus, "lexicon", "lexicon.tsv")).ToDictionary(w => w.Word, w => w.Letters, StringComparer.Ordinal);
-        var forms = Directory.GetFiles(Path.Combine(corpus, "forms"), "*.tsv").SelectMany(Corpus.ReadForms).ToList();
+        var dictionary = LexiconSource.ReadWords(Path.Join(corpus, "lexicon", "lexicon.tsv")).ToDictionary(w => w.Word, w => w.Letters, StringComparer.Ordinal);
+        var forms = Directory.GetFiles(Path.Join(corpus, "forms"), "*.tsv").SelectMany(Corpus.ReadForms).ToList();
         var checkedForms = 0;
         var problems = new List<string>();
         foreach (var (form, _, _) in forms.Where(f => f.Form != f.Lemma && table.ContainsKey(f.Lemma) && table.ContainsKey(f.Form)))
@@ -813,11 +815,11 @@ public sealed class BuilderTests : IDisposable
     public async Task WordSenseBuilder_ModelTable_BasicRow_MatchesEvaluation()
     {
         var root = FindRepositoryRoot();
-        var table = await File.ReadAllLinesAsync(Path.Combine(root.FullName, "docs", "build_notes", "model-table.md"), TestContext.Current.CancellationToken);
+        var table = await File.ReadAllLinesAsync(Path.Join(root.FullName, "docs", "build_notes", "model-table.md"), TestContext.Current.CancellationToken);
         var committed = Assert.Single(table, l => l.StartsWith("| Basic |", StringComparison.Ordinal)).Split('|')[..6];
         using var progress = new StringWriter();
 
-        var result = await Evaluator.RunAsync(root.FullName, Path.Combine(root.FullName, "corpus"), ModelCatalog.Find("basic"), progress, TestContext.Current.CancellationToken);
+        var result = await Evaluator.RunAsync(root.FullName, Path.Join(root.FullName, "corpus"), ModelCatalog.Find("basic"), progress, TestContext.Current.CancellationToken);
 
         var measured = result.RenderTableRow().Split('|')[..6];
         Assert.Equal(measured, committed);
@@ -847,7 +849,7 @@ public sealed class BuilderTests : IDisposable
     private static DirectoryInfo FindRepositoryRoot()
     {
         var root = new DirectoryInfo(AppContext.BaseDirectory);
-        while (root is not null && !File.Exists(Path.Combine(root.FullName, "corpus", "lexicon", "lexicon.tsv")))
+        while (root is not null && !File.Exists(Path.Join(root.FullName, "corpus", "lexicon", "lexicon.tsv")))
         {
             root = root.Parent;
         }

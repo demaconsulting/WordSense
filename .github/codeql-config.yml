@@ -2,3 +2,8 @@
 # CodeQL configuration for WordSense
 
 name: "WordSense CodeQL Config"
+
+# Generated and build output is not authored code.
+paths-ignore:
+  - "**/obj/**"
+  - "**/bin/**"

@@ -162,11 +162,11 @@ internal static partial class FormGenerator
     /// <exception cref="InvalidDataException">Thrown when an input is missing, does not match its pin or is inconsistent.</exception>
     public static FormGeneratorResult Run(string data, string corpus, string oewn, string agid, string? output = null, string? oewnSha256 = OewnImporter.PinnedSha256, string? agidSha256 = AgidImporter.PinnedSha256)
     {
-        var schema = DataSchema.Load(Path.Combine(data, "schema.yaml"));
+        var schema = DataSchema.Load(Path.Join(data, "schema.yaml"));
         var formTable = schema.Table("form");
         var context = new Context();
         context.Attested = AgidImporter.ReadAttested(agid, agidSha256);
-        var legacy = ReadLegacy(Path.Combine(corpus, "lexicon", LegacyFile));
+        var legacy = ReadLegacy(Path.Join(corpus, "lexicon", LegacyFile));
         var scopes = legacy.Scopes;
         context.OpenSpellings.UnionWith(legacy.Open);
         context.ClosedOnly.UnionWith(legacy.ClosedOnly);
@@ -181,8 +181,8 @@ internal static partial class FormGenerator
         }
 
         var classEntries = DataTables.Read(data, schema.Table("class_entry")).Select(r => r[1]).ToHashSet(StringComparer.Ordinal);
-        var sources = IrregularSources.Read(Path.Combine(corpus, "lexicon"));
-        var correctionsPath = Path.Combine(corpus, "lexicon", "form-corrections.tsv");
+        var sources = IrregularSources.Read(Path.Join(corpus, "lexicon"));
+        var correctionsPath = Path.Join(corpus, "lexicon", "form-corrections.tsv");
         if (File.Exists(correctionsPath))
         {
             foreach (var cells in File.ReadAllLines(correctionsPath, Encoding.UTF8).Where(l => l.Length > 0 && l[0] != '#').Select(l => l.TrimEnd('\r').Split('\t')))
@@ -201,8 +201,8 @@ internal static partial class FormGenerator
             }
         }
         var moby = LexiconSource.MergeAdditions(
-                LexiconSource.ReadWords(Path.Combine(corpus, "lexicon", LexiconSource.LexiconFile)),
-                Path.Combine(corpus, "lexicon", LexiconSource.AdditionsFile))
+                LexiconSource.ReadWords(Path.Join(corpus, "lexicon", LexiconSource.LexiconFile)),
+                Path.Join(corpus, "lexicon", LexiconSource.AdditionsFile))
             .ToDictionary(w => w.Word, w => w.Letters.Select(l => LexiconPos[LexiconLetters.IndexOf(l, StringComparison.Ordinal)].ToString()).Distinct().ToArray(), StringComparer.Ordinal);
         context.Moby = moby;
         var written = OewnImporter.ReadForms(oewn, oewnSha256);
@@ -308,7 +308,7 @@ internal static partial class FormGenerator
 
         // A generated form ships only when a second, independent source corroborates it; the rest stays unknown
         Prune(context);
-        ClassifyMoby(context, moby, byLemma, overridden, ReadAdded(Path.Combine(corpus, "lexicon", LexiconSource.AdditionsFile)), sources);
+        ClassifyMoby(context, moby, byLemma, overridden, ReadAdded(Path.Join(corpus, "lexicon", LexiconSource.AdditionsFile)), sources);
         Prune(context);
         var result = Write(output ?? data, schema, formTable, context, frozen, scopes, keep);
         return result;

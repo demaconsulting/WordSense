@@ -57,7 +57,7 @@ internal static partial class OewnImporter
     public static IdMapResult ImportPrevious(string previous, string dataDirectory, string release = PreviousRelease, string? expectedSha256 = PreviousPinnedSha256)
     {
         CheckHash(previous, expectedSha256);
-        var schema = DataSchema.Load(Path.Combine(dataDirectory, "schema.yaml"));
+        var schema = DataSchema.Load(Path.Join(dataDirectory, "schema.yaml"));
         var currentSenses = DataTables.Read(dataDirectory, schema.Table("sense")).ToList();
         var currentEntries = DataTables.Read(dataDirectory, schema.Table("entry")).ToList();
         var senseIds = currentSenses.Select(r => r[0]).ToHashSet(StringComparer.Ordinal);

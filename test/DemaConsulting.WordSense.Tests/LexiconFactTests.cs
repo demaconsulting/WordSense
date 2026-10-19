@@ -11,6 +11,7 @@ namespace DemaConsulting.WordSense.Tests;
 public class LexiconFactTests
 {
     private static readonly string[] FactFiles = ["lexicon-facts.tsv", "lexicon-facts-generated.tsv"];
+    private static readonly string[] AllowedScopes = ["any", "absent"];
 
     /// <summary>
     ///     The fact rows of both files: category, word, lemma, part of speech, features ("*" for any, a leading "~" for features that must all be among those of the analysis) and the mode (any, absent).
@@ -71,7 +72,7 @@ public class LexiconFactTests
                 "source-ing-entry",
             },
             rows.Select(r => r[0]).ToHashSet());
-        Assert.All(rows, r => Assert.Contains(r[5], new[] { "any", "absent" }));
+        Assert.All(rows, r => Assert.Contains(r[5], AllowedScopes));
     }
 
     /// <summary>
@@ -91,5 +92,5 @@ public class LexiconFactTests
     }
 
     private static IEnumerable<string[]> ReadRows() =>
-        FactFiles.SelectMany(file => File.ReadLines(Path.Combine(AppContext.BaseDirectory, "Fixtures", file)).Skip(1).Where(l => l.Length > 0).Select(l => l.Split('\t')));
+        FactFiles.SelectMany(file => File.ReadLines(Path.Join(AppContext.BaseDirectory, "Fixtures", file)).Skip(1).Where(l => l.Length > 0).Select(l => l.Split('\t')));
 }

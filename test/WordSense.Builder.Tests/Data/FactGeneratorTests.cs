@@ -11,7 +11,7 @@ public sealed class FactGeneratorTests
     private static string Root()
     {
         var dir = new DirectoryInfo(AppContext.BaseDirectory);
-        while (dir is not null && !File.Exists(Path.Combine(dir.FullName, "data", "schema.yaml")))
+        while (dir is not null && !File.Exists(Path.Join(dir.FullName, "data", "schema.yaml")))
         {
             dir = dir.Parent;
         }
@@ -20,7 +20,7 @@ public sealed class FactGeneratorTests
     }
 
     private static FactGenerator.Generated Generate(int seed) =>
-        FactGenerator.Generate(Path.Combine(Root(), "data"), Path.Combine(Root(), "corpus"), seed, FactGenerator.DefaultSample);
+        FactGenerator.Generate(Path.Join(Root(), "data"), Path.Join(Root(), "corpus"), seed, FactGenerator.DefaultSample);
 
     /// <summary>
     ///     The same seed gives the same facts and another seed gives other sampled facts.
@@ -40,7 +40,7 @@ public sealed class FactGeneratorTests
     [Fact]
     public void WordSenseBuilder_FactGenerator_Generate_MatchesCommittedFile()
     {
-        var path = Path.Combine(Root(), "test", "DemaConsulting.WordSense.Tests", "Fixtures", "lexicon-facts-generated.tsv");
+        var path = Path.Join(Root(), "test", "DemaConsulting.WordSense.Tests", "Fixtures", "lexicon-facts-generated.tsv");
         var expected = FactGenerator.Render(Generate(FactGenerator.DefaultSeed).Facts);
 
         Assert.Equal(expected, File.ReadAllText(path).Replace("\r\n", "\n", StringComparison.Ordinal));
@@ -54,7 +54,7 @@ public sealed class FactGeneratorTests
     public void WordSenseBuilder_FactGenerator_Check_AllFactsAndIngEntriesHold()
     {
         var facts = Generate(FactGenerator.DefaultSeed).Facts;
-        var (checkedCount, _, missing) = FactGenerator.CheckIngEntries(Path.Combine(Root(), "data"));
+        var (checkedCount, _, missing) = FactGenerator.CheckIngEntries(Path.Join(Root(), "data"));
 
         Assert.Empty(FactGenerator.Check(facts));
         Assert.True(checkedCount > 2000);

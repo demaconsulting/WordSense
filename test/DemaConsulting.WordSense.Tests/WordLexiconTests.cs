@@ -6,6 +6,8 @@ namespace DemaConsulting.WordSense.Tests;
 /// </summary>
 public class WordLexiconTests
 {
+    private static readonly string[] KnownWords = ["record", "the", "bows", "drove"];
+
     /// <summary>
     ///     A well-known word with several parts of speech lists them under one key.
     /// </summary>
@@ -360,7 +362,7 @@ public class WordLexiconTests
     public void WordLexicon_Count_EmbeddedImage_LoadsAndIsNotEmpty()
     {
         Assert.True(WordLexicon.Count > 300_000);
-        Assert.All(new[] { "record", "the", "bows", "drove" }, word => Assert.NotEmpty(WordLexicon.Lookup(word)));
+        Assert.All(KnownWords, word => Assert.NotEmpty(WordLexicon.Lookup(word)));
         Assert.Equal(WordLexicon.Lookup("record"), WordLexicon.Lookup("record"));
     }
 

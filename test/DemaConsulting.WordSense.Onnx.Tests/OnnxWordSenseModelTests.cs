@@ -15,7 +15,7 @@ public class OnnxWordSenseModelTests
     private static MiniLMWordSenseModel Open(string? directory = null) => new(directory) { IntraOpThreads = 2 };
 
     private static Task ServeModel(HttpListenerContext context, string directory) =>
-        LocalServer.SendFileAsync(context, Path.Combine(directory, Path.GetFileName(context.Request.Url!.AbsolutePath)));
+        LocalServer.SendFileAsync(context, Path.Join(directory, Path.GetFileName(context.Request.Url!.AbsolutePath)));
 
     /// <summary>
     ///     The identity is available before any file is.
@@ -64,7 +64,7 @@ public class OnnxWordSenseModelTests
     public async Task OnnxWordSenseModel_ClassifyAsync_LexiconOnlyWords_NeverTouchesModelFiles()
     {
         // The directory does not exist: an ensure would throw FileNotFoundException
-        var missing = Path.Combine(Path.GetTempPath(), "wordsense-missing-" + Guid.NewGuid().ToString("N"));
+        var missing = Path.Join(Path.GetTempPath(), "wordsense-missing-" + Guid.NewGuid().ToString("N"));
         using var model = Open(missing);
 
         var result = await model.ClassifyAsync(["The", "zzqxjw", "."], TestContext.Current.CancellationToken);
@@ -87,7 +87,7 @@ public class OnnxWordSenseModelTests
     [InlineData("The")]
     public async Task OnnxWordSenseModel_ClassifyAsync_CanceledTokenWithoutModelWork_Throws(string? word)
     {
-        var missing = Path.Combine(Path.GetTempPath(), "wordsense-missing-" + Guid.NewGuid().ToString("N"));
+        var missing = Path.Join(Path.GetTempPath(), "wordsense-missing-" + Guid.NewGuid().ToString("N"));
         using var model = Open(missing);
         using var cts = new CancellationTokenSource();
         await cts.CancelAsync();
@@ -106,7 +106,7 @@ public class OnnxWordSenseModelTests
     public async Task OnnxWordSenseModel_ClassifyAsync_MultiSenseWordsWithoutWeights_FallBackWithoutModelFiles()
     {
         // The directory does not exist: an ensure would throw FileNotFoundException
-        var missing = Path.Combine(Path.GetTempPath(), "wordsense-missing-" + Guid.NewGuid().ToString("N"));
+        var missing = Path.Join(Path.GetTempPath(), "wordsense-missing-" + Guid.NewGuid().ToString("N"));
         using var model = Open(missing);
 
         var result = await model.ClassifyAsync(["so", "will"], TestContext.Current.CancellationToken);
@@ -163,7 +163,7 @@ public class OnnxWordSenseModelTests
     public async Task OnnxWordSenseModel_ClassifyAsync_AfterFailedLazyEnsure_CanBeRetried()
     {
         var source = ModelAssets.RequireModelDirectory();
-        var directory = Path.Combine(Path.GetTempPath(), "wordsense-model-" + Guid.NewGuid().ToString("N"));
+        var directory = Path.Join(Path.GetTempPath(), "wordsense-model-" + Guid.NewGuid().ToString("N"));
         try
         {
             using var model = Open(directory);
@@ -173,7 +173,7 @@ public class OnnxWordSenseModelTests
             Directory.CreateDirectory(directory);
             foreach (var name in ModelFiles)
             {
-                File.Copy(Path.Combine(source, name), Path.Combine(directory, name));
+                File.Copy(Path.Join(source, name), Path.Join(directory, name));
             }
 
             var result = await model.ClassifyAsync(words, TestContext.Current.CancellationToken);
@@ -196,11 +196,11 @@ public class OnnxWordSenseModelTests
     public async Task OnnxWordSenseModel_EnsureModelAsync_MissingFile_Throws()
     {
         var source = ModelAssets.RequireModelDirectory();
-        var directory = Path.Combine(Path.GetTempPath(), "wordsense-model-" + Guid.NewGuid().ToString("N"));
+        var directory = Path.Join(Path.GetTempPath(), "wordsense-model-" + Guid.NewGuid().ToString("N"));
         Directory.CreateDirectory(directory);
         try
         {
-            File.Copy(Path.Combine(source, "vocab.txt"), Path.Combine(directory, "vocab.txt"));
+            File.Copy(Path.Join(source, "vocab.txt"), Path.Join(directory, "vocab.txt"));
             using var model = Open(directory);
 
             await Assert.ThrowsAsync<FileNotFoundException>(() => model.EnsureModelAsync(null, TestContext.Current.CancellationToken));
@@ -219,12 +219,12 @@ public class OnnxWordSenseModelTests
     public async Task OnnxWordSenseModel_EnsureModelAsync_AlteredFile_Throws()
     {
         var source = ModelAssets.RequireModelDirectory();
-        var directory = Path.Combine(Path.GetTempPath(), "wordsense-model-" + Guid.NewGuid().ToString("N"));
+        var directory = Path.Join(Path.GetTempPath(), "wordsense-model-" + Guid.NewGuid().ToString("N"));
         Directory.CreateDirectory(directory);
         try
         {
-            File.Copy(Path.Combine(source, "vocab.txt"), Path.Combine(directory, "vocab.txt"));
-            await File.WriteAllTextAsync(Path.Combine(directory, "model_int8.onnx"), "altered", TestContext.Current.CancellationToken);
+            File.Copy(Path.Join(source, "vocab.txt"), Path.Join(directory, "vocab.txt"));
+            await File.WriteAllTextAsync(Path.Join(directory, "model_int8.onnx"), "altered", TestContext.Current.CancellationToken);
             using var model = Open(directory);
 
             await Assert.ThrowsAsync<InvalidDataException>(() => model.EnsureModelAsync(null, TestContext.Current.CancellationToken));
@@ -243,7 +243,7 @@ public class OnnxWordSenseModelTests
     public async Task OnnxWordSenseModel_EnsureModelAsync_Concurrent_SharesOneDownload()
     {
         var source = ModelAssets.RequireModelDirectory();
-        var store = Path.Combine(Path.GetTempPath(), "wordsense-store-" + Guid.NewGuid().ToString("N"));
+        var store = Path.Join(Path.GetTempPath(), "wordsense-store-" + Guid.NewGuid().ToString("N"));
         try
         {
             using var server = new LocalServer(c => ServeModel(c, source));
@@ -271,7 +271,7 @@ public class OnnxWordSenseModelTests
     public async Task OnnxWordSenseModel_EnsureModelAsync_AfterFailure_CanBeRetried()
     {
         var source = ModelAssets.RequireModelDirectory();
-        var store = Path.Combine(Path.GetTempPath(), "wordsense-store-" + Guid.NewGuid().ToString("N"));
+        var store = Path.Join(Path.GetTempPath(), "wordsense-store-" + Guid.NewGuid().ToString("N"));
         try
         {
             var healthy = false;
@@ -305,7 +305,7 @@ public class OnnxWordSenseModelTests
     [Fact]
     public async Task OnnxWordSenseModel_ClassifyAsync_MissingDirectory_ThrowsFileNotFound()
     {
-        using var model = Open(Path.Combine(Path.GetTempPath(), "wordsense-missing-" + Guid.NewGuid().ToString("N")));
+        using var model = Open(Path.Join(Path.GetTempPath(), "wordsense-missing-" + Guid.NewGuid().ToString("N")));
 
         await Assert.ThrowsAsync<FileNotFoundException>(() => model.ClassifyAsync(["record"], TestContext.Current.CancellationToken));
     }
@@ -468,7 +468,7 @@ public class OnnxWordSenseModelTests
     [Fact]
     public async Task OnnxWordSenseModel_Dispose_DuringEnsure_CancelsDownload()
     {
-        var store = Path.Combine(Path.GetTempPath(), "wordsense-store-" + Guid.NewGuid().ToString("N"));
+        var store = Path.Join(Path.GetTempPath(), "wordsense-store-" + Guid.NewGuid().ToString("N"));
         var release = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
         try
         {

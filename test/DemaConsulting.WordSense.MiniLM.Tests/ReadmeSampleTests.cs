@@ -33,8 +33,8 @@ public class ReadmeSampleTests
         var root = DocSampleText.FindRepositoryRoot();
         var token = TestContext.Current.CancellationToken;
         return (
-            await File.ReadAllTextAsync(Path.Combine(root, "README.md"), token),
-            await File.ReadAllTextAsync(Path.Combine(root, "test", "DemaConsulting.WordSense.MiniLM.Tests", "ReadmeSample.cs"), token));
+            await File.ReadAllTextAsync(Path.Join(root, "README.md"), token),
+            await File.ReadAllTextAsync(Path.Join(root, "test", "DemaConsulting.WordSense.MiniLM.Tests", "ReadmeSample.cs"), token));
     }
 
     private static string Compiled(string source, string name, string usings) =>

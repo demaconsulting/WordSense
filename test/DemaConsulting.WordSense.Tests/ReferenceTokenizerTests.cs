@@ -5,16 +5,17 @@ namespace DemaConsulting.WordSense.Tests;
 /// <summary>
 ///     Tests that the reference tokenizer published in the documentation behaves as documented.
 /// </summary>
-public class ReferenceTokenizerTests
+public partial class ReferenceTokenizerTests
 {
     /// <summary>
     ///     The pattern as it is written in the namespace documentation, the README and the user guide.
     /// </summary>
     private const string Pattern = @"\d+(?:[.,]\d+)+|[\p{L}\p{Nd}\p{Mn}\p{Mc}]+(?:['\u2019-][\p{L}\p{Nd}\p{Mn}\p{Mc}]+)*|[\uD800-\uDBFF][\uDC00-\uDFFF]|\S";
 
-    private static readonly Regex TokenPattern = new(Pattern, RegexOptions.CultureInvariant);
+    [GeneratedRegex(Pattern, RegexOptions.CultureInvariant)]
+    private static partial Regex TokenPattern();
 
-    private static string[] Tokenize(string sentence) => TokenPattern.Matches(sentence).Select(match => match.Value).ToArray();
+    private static string[] Tokenize(string sentence) => TokenPattern().Matches(sentence).Select(match => match.Value).ToArray();
 
     /// <summary>
     ///     The documented sentence is split as the documentation states.
@@ -70,7 +71,7 @@ public class ReferenceTokenizerTests
     [Fact]
     public void ReferenceTokenizer_Pattern_MatchesNamespaceDocumentation()
     {
-        var path = Path.Combine(AppContext.BaseDirectory, "DemaConsulting.WordSense.xml");
+        var path = Path.Join(AppContext.BaseDirectory, "DemaConsulting.WordSense.xml");
         var documentation = File.ReadAllText(path);
 
         Assert.Contains(Pattern, documentation, StringComparison.Ordinal);

@@ -30,8 +30,8 @@ public sealed class ModelFileCheckTests : IDisposable
     [Fact]
     public void ModelFileCheck_FindMissing_LfsPointer_IsReported()
     {
-        File.WriteAllBytes(Path.Combine(_folder.FullName, "model.bin"), new byte[4]);
-        File.WriteAllText(Path.Combine(_folder.FullName, "vocab.txt"), "version https://git-lfs.github.com/spec/v1\noid sha256:00\nsize 4\n");
+        File.WriteAllBytes(Path.Join(_folder.FullName, "model.bin"), new byte[4]);
+        File.WriteAllText(Path.Join(_folder.FullName, "vocab.txt"), "version https://git-lfs.github.com/spec/v1\noid sha256:00\nsize 4\n");
 
         var reason = ModelFileCheck.FindMissing(Spec(length: 0), _folder.FullName);
 
@@ -46,8 +46,8 @@ public sealed class ModelFileCheckTests : IDisposable
     [Fact]
     public void ModelFileCheck_FindMissing_WrongSize_IsReported()
     {
-        File.WriteAllBytes(Path.Combine(_folder.FullName, "model.bin"), new byte[3]);
-        File.WriteAllBytes(Path.Combine(_folder.FullName, "vocab.txt"), new byte[3]);
+        File.WriteAllBytes(Path.Join(_folder.FullName, "model.bin"), new byte[3]);
+        File.WriteAllBytes(Path.Join(_folder.FullName, "vocab.txt"), new byte[3]);
 
         var reason = ModelFileCheck.FindMissing(Spec(length: 4), _folder.FullName);
 
@@ -61,8 +61,8 @@ public sealed class ModelFileCheckTests : IDisposable
     [Fact]
     public void ModelFileCheck_FindMissing_CompleteFolder_IsNull()
     {
-        File.WriteAllBytes(Path.Combine(_folder.FullName, "model.bin"), new byte[4]);
-        File.WriteAllBytes(Path.Combine(_folder.FullName, "vocab.txt"), new byte[4]);
+        File.WriteAllBytes(Path.Join(_folder.FullName, "model.bin"), new byte[4]);
+        File.WriteAllBytes(Path.Join(_folder.FullName, "vocab.txt"), new byte[4]);
 
         Assert.Null(ModelFileCheck.FindMissing(Spec(length: 4), _folder.FullName));
     }
@@ -73,8 +73,8 @@ public sealed class ModelFileCheckTests : IDisposable
     [Fact]
     public void ModelFileCheck_IsLfsPointer_DetectsThePrefix()
     {
-        var pointer = Path.Combine(_folder.FullName, "pointer");
-        var real = Path.Combine(_folder.FullName, "real");
+        var pointer = Path.Join(_folder.FullName, "pointer");
+        var real = Path.Join(_folder.FullName, "real");
         File.WriteAllText(pointer, "version https://git-lfs.github.com/spec/v1\n");
         File.WriteAllBytes(real, [1, 2, 3]);
 
@@ -88,8 +88,8 @@ public sealed class ModelFileCheckTests : IDisposable
     [Fact]
     public void ModelFileCheck_Require_ValidFolder_ReturnsFolderWithoutThrowing()
     {
-        File.WriteAllBytes(Path.Combine(_folder.FullName, "model.bin"), [1, 2, 3, 4]);
-        File.WriteAllBytes(Path.Combine(_folder.FullName, "vocab.txt"), [5, 6, 7, 8]);
+        File.WriteAllBytes(Path.Join(_folder.FullName, "model.bin"), [1, 2, 3, 4]);
+        File.WriteAllBytes(Path.Join(_folder.FullName, "vocab.txt"), [5, 6, 7, 8]);
         var spec = Spec(length: 4, model: HashOf("model.bin"), vocab: HashOf("vocab.txt"));
 
         Assert.Equal(_folder.FullName, ModelFileCheck.Require(spec, _folder.FullName));
@@ -102,8 +102,8 @@ public sealed class ModelFileCheckTests : IDisposable
     [Fact]
     public void ModelFileCheck_Require_CorruptFolder_FailsWithDigestMessage()
     {
-        File.WriteAllBytes(Path.Combine(_folder.FullName, "model.bin"), [1, 2, 3, 4]);
-        File.WriteAllBytes(Path.Combine(_folder.FullName, "vocab.txt"), [5, 6, 7, 8]);
+        File.WriteAllBytes(Path.Join(_folder.FullName, "model.bin"), [1, 2, 3, 4]);
+        File.WriteAllBytes(Path.Join(_folder.FullName, "vocab.txt"), [5, 6, 7, 8]);
 
         var error = Record.Exception(() => ModelFileCheck.Require(Spec(length: 4), _folder.FullName));
 
@@ -111,7 +111,7 @@ public sealed class ModelFileCheckTests : IDisposable
         Assert.Contains("SHA-256", error.Message, StringComparison.Ordinal);
     }
 
-    private string HashOf(string name) => ModelDownloader.HashFile(Path.Combine(_folder.FullName, name));
+    private string HashOf(string name) => ModelDownloader.HashFile(Path.Join(_folder.FullName, name));
 
     private static ModelSpec Spec(long length = 0, string? model = null, string? vocab = null) => new(
         "test",

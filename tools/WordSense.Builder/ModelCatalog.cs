@@ -25,7 +25,7 @@ internal sealed record ModelInfo(string Name, string Package, string? ModelDirec
     /// </summary>
     /// <param name="repository">The repository root.</param>
     /// <returns>The path.</returns>
-    public string WeightsPath(string repository) => Path.Combine(repository, "src", Package, "Resources", "weights.bin");
+    public string WeightsPath(string repository) => Path.Join(repository, "src", Package, "Resources", "weights.bin");
 }
 
 /// <summary>

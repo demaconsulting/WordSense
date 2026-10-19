@@ -17,7 +17,7 @@ public class ModelTableReadmeTests
     {
         for (var dir = new DirectoryInfo(AppContext.BaseDirectory); dir is not null; dir = dir.Parent)
         {
-            if (File.Exists(Path.Combine(dir.FullName, "WordSense.slnx")))
+            if (File.Exists(Path.Join(dir.FullName, "WordSense.slnx")))
             {
                 return dir.FullName;
             }
@@ -48,8 +48,8 @@ public class ModelTableReadmeTests
     {
         var root = FindRepositoryRoot();
         var token = TestContext.Current.CancellationToken;
-        var readme = await File.ReadAllTextAsync(Path.Combine(root, "README.md"), token);
-        var generated = await File.ReadAllTextAsync(Path.Combine(root, "docs", "build_notes", "model-table.md"), token);
+        var readme = await File.ReadAllTextAsync(Path.Join(root, "README.md"), token);
+        var generated = await File.ReadAllTextAsync(Path.Join(root, "docs", "build_notes", "model-table.md"), token);
 
         var expected = TableLines(generated, "docs/build_notes/model-table.md");
         Assert.Equal(expected, TableLines(readme, "README.md"));
@@ -63,7 +63,7 @@ public class ModelTableReadmeTests
     public async Task ModelTable_GeneratedFile_HasRowForEachModel()
     {
         var token = TestContext.Current.CancellationToken;
-        var generated = await File.ReadAllTextAsync(Path.Combine(FindRepositoryRoot(), "docs", "build_notes", "model-table.md"), token);
+        var generated = await File.ReadAllTextAsync(Path.Join(FindRepositoryRoot(), "docs", "build_notes", "model-table.md"), token);
 
         var lines = TableLines(generated, "docs/build_notes/model-table.md");
 

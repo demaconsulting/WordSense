@@ -38,7 +38,28 @@ internal sealed partial class DataValidator
     /// </summary>
     public const int MaxPerRule = 20;
 
-    private static readonly string[] LoadOrder = ["source", "entry", "synset", "sense"];
+    /// <summary>The name of the entry table, also the name of its validation rule.</summary>
+    private const string TableEntry = "entry";
+
+    /// <summary>The name of the synset table, also the name of its validation rule.</summary>
+    private const string TableSynset = "synset";
+
+    /// <summary>The name of the sense table, also the name of its validation rule.</summary>
+    private const string TableSense = "sense";
+
+    /// <summary>The name of the coarse-class table.</summary>
+    private const string TableCoarseClass = "coarse_class";
+
+    /// <summary>The name of the form-sense-scope table, also the name of its validation rule.</summary>
+    private const string TableFormSenseScope = "form_sense_scope";
+
+    /// <summary>The name of the rule checking the set of files in the data directory.</summary>
+    private const string RuleFileSet = "file-set";
+
+    /// <summary>The name of the rule checking the byte-level format of a file.</summary>
+    private const string RuleFormat = "format";
+
+    private static readonly string[] LoadOrder = ["source", TableEntry, TableSynset, TableSense];
 
     private static readonly UTF8Encoding StrictUtf8 = new(false, true);
 
@@ -61,7 +82,7 @@ internal sealed partial class DataValidator
     /// <returns>The report of the validation.</returns>
     public static ValidationReport Validate(string dataDirectory)
     {
-        var schemaPath = Path.Combine(dataDirectory, "schema.yaml");
+        var schemaPath = Path.Join(dataDirectory, "schema.yaml");
         DataSchema schema;
         try
         {
@@ -130,7 +151,7 @@ internal sealed partial class DataValidator
     {
         if (!Directory.Exists(_root))
         {
-            Report(_root, 0, "file-set", "The data directory does not exist.");
+            Report(_root, 0, RuleFileSet, "The data directory does not exist.");
             return;
         }
 
@@ -144,7 +165,7 @@ internal sealed partial class DataValidator
             var isDocument = File.Exists(path) && (name == "schema.yaml" || name.EndsWith(".md", StringComparison.Ordinal));
             if (!isTableFile && !isTableDirectory && !isDocument)
             {
-                Report(path, 0, "file-set", "Unexpected file or folder in the data directory.");
+                Report(path, 0, RuleFileSet, "Unexpected file or folder in the data directory.");
             }
         }
     }
@@ -153,11 +174,11 @@ internal sealed partial class DataValidator
     {
         if (table.Partition == PartitionKind.None)
         {
-            yield return (Path.Combine(_root, table.Name + DataLayout.Extension), string.Empty);
+            yield return (Path.Join(_root, table.Name + DataLayout.Extension), string.Empty);
             yield break;
         }
 
-        var directory = Path.Combine(_root, table.Name);
+        var directory = Path.Join(_root, table.Name);
         if (!Directory.Exists(directory))
         {
             // A partitioned table without rows has no files, so a missing folder is an empty table
@@ -169,7 +190,7 @@ internal sealed partial class DataValidator
             var key = Path.GetFileNameWithoutExtension(path);
             if (!File.Exists(path) || !path.EndsWith(DataLayout.Extension, StringComparison.Ordinal) || !DataLayout.IsValidKey(key, _schema.FileSplit))
             {
-                Report(path, 0, "file-set", $"'{Path.GetFileName(path)}' is not a valid file of table '{table.Name}' for the file split plan.");
+                Report(path, 0, RuleFileSet, $"'{Path.GetFileName(path)}' is not a valid file of table '{table.Name}' for the file split plan.");
                 continue;
             }
 
@@ -187,7 +208,7 @@ internal sealed partial class DataValidator
         {
             if (!File.Exists(path))
             {
-                Report(path, 0, "file-set", $"The file of table '{table.Name}' is missing.");
+                Report(path, 0, RuleFileSet, $"The file of table '{table.Name}' is missing.");
                 continue;
             }
 
@@ -245,7 +266,7 @@ internal sealed partial class DataValidator
         var bytes = File.ReadAllBytes(path);
         if (bytes.Length >= 3 && bytes[0] == 0xEF && bytes[1] == 0xBB && bytes[2] == 0xBF)
         {
-            Report(path, 1, "format", "The file starts with a byte-order mark.");
+            Report(path, 1, RuleFormat, "The file starts with a byte-order mark.");
             return null;
         }
 
@@ -256,19 +277,19 @@ internal sealed partial class DataValidator
         }
         catch (DecoderFallbackException)
         {
-            Report(path, 0, "format", "The file is not valid UTF-8.");
+            Report(path, 0, RuleFormat, "The file is not valid UTF-8.");
             return null;
         }
 
         if (text.Contains('\r'))
         {
-            Report(path, 0, "format", "The file contains a carriage return; line ends must be LF.");
+            Report(path, 0, RuleFormat, "The file contains a carriage return; line ends must be LF.");
             return null;
         }
 
         if (text.Length == 0 || text[^1] != '\n')
         {
-            Report(path, 0, "format", "The file must end with a line feed.");
+            Report(path, 0, RuleFormat, "The file must end with a line feed.");
             return null;
         }
 
@@ -279,7 +300,7 @@ internal sealed partial class DataValidator
     {
         if (text.Length == 0)
         {
-            Report(path, line, "format", "Blank line.");
+            Report(path, line, RuleFormat, "Blank line.");
             return null;
         }
 
@@ -361,17 +382,17 @@ internal sealed partial class DataValidator
     private PartitionResolver BuildResolver()
     {
         var resolver = new PartitionResolver(_schema.FileSplit);
-        foreach (var row in Rows("entry"))
+        foreach (var row in Rows(TableEntry))
         {
             resolver.AddEntry(row[0], row[1]);
         }
 
-        foreach (var row in Rows("sense"))
+        foreach (var row in Rows(TableSense))
         {
             resolver.AddSense(row[0], row[2], row[3]);
         }
 
-        foreach (var row in Rows("coarse_class"))
+        foreach (var row in Rows(TableCoarseClass))
         {
             resolver.AddClass(row[0], row[1]);
         }
@@ -533,7 +554,7 @@ internal sealed partial class DataValidator
 
     private void CheckEntries()
     {
-        if (!_tables.TryGetValue("entry", out var entries))
+        if (!_tables.TryGetValue(TableEntry, out var entries))
         {
             return;
         }
@@ -545,7 +566,7 @@ internal sealed partial class DataValidator
                 var problem = EntryProblem(file.Rows[i]);
                 if (problem is not null)
                 {
-                    Report(file.Path, i + 2, "entry", $"{file.Rows[i][0]}: {problem}");
+                    Report(file.Path, i + 2, TableEntry, $"{file.Rows[i][0]}: {problem}");
                 }
             }
         }
@@ -566,13 +587,13 @@ internal sealed partial class DataValidator
 
     private void CheckSynsets()
     {
-        if (!_tables.TryGetValue("synset", out var synsets))
+        if (!_tables.TryGetValue(TableSynset, out var synsets))
         {
             return;
         }
 
         var pos = Index(synsets.Rows, 0, 1);
-        var withSense = Rows("sense").Select(r => r[3]).ToHashSet(StringComparer.Ordinal);
+        var withSense = Rows(TableSense).Select(r => r[3]).ToHashSet(StringComparer.Ordinal);
         var withGloss = Rows("gloss").Select(r => r[0]).ToHashSet(StringComparer.Ordinal);
         foreach (var file in synsets.Files)
         {
@@ -583,7 +604,7 @@ internal sealed partial class DataValidator
                 var problem = SynsetProblem(row, head.Length > 0 ? pos.GetValueOrDefault(head) : null, withSense.Contains(row[0]), withGloss.Contains(row[0]));
                 if (problem is not null)
                 {
-                    Report(file.Path, i + 2, "synset", $"{row[0]}: {problem}");
+                    Report(file.Path, i + 2, TableSynset, $"{row[0]}: {problem}");
                 }
             }
         }
@@ -611,13 +632,13 @@ internal sealed partial class DataValidator
 
     private void CheckSenses()
     {
-        if (!_tables.TryGetValue("sense", out var senses))
+        if (!_tables.TryGetValue(TableSense, out var senses))
         {
             return;
         }
 
-        var synsetPos = Index(Rows("synset"), 0, 1);
-        var entryPos = Index(Rows("entry"), 0, 2);
+        var synsetPos = Index(Rows(TableSynset), 0, 1);
+        var entryPos = Index(Rows(TableEntry), 0, 2);
         var positions = new Dictionary<string, List<int>>(StringComparer.Ordinal);
         foreach (var file in senses.Files)
         {
@@ -632,7 +653,7 @@ internal sealed partial class DataValidator
                 list.Add(int.Parse(row[4], CultureInfo.InvariantCulture));
                 if (entryPos.TryGetValue(row[2], out var ep) && synsetPos.TryGetValue(row[3], out var sp) && !PosCompatible(ep, sp))
                 {
-                    Report(file.Path, i + 2, "sense", $"{row[0]}: entry part of speech '{ep}' does not fit synset part of speech '{sp}'.");
+                    Report(file.Path, i + 2, TableSense, $"{row[0]}: entry part of speech '{ep}' does not fit synset part of speech '{sp}'.");
                 }
             }
         }
@@ -642,7 +663,7 @@ internal sealed partial class DataValidator
             list.Sort();
             if (!list.SequenceEqual(Enumerable.Range(1, list.Count)))
             {
-                Report(Path.Combine(_root, "sense"), 0, "sense", $"The positions of the senses of entry '{entry}' are not 1..{list.Count.ToString(CultureInfo.InvariantCulture)}.");
+                Report(Path.Join(_root, TableSense), 0, TableSense, $"The positions of the senses of entry '{entry}' are not 1..{list.Count.ToString(CultureInfo.InvariantCulture)}.");
             }
         }
 
@@ -655,9 +676,9 @@ internal sealed partial class DataValidator
             referenced.Add(row[2]);
         }
 
-        foreach (var entry in Rows("entry").Where(r => !positions.ContainsKey(r[0]) && !ClosedClass.Contains(r[2]) && !referenced.Contains(r[0])))
+        foreach (var entry in Rows(TableEntry).Where(r => !positions.ContainsKey(r[0]) && !ClosedClass.Contains(r[2]) && !referenced.Contains(r[0])))
         {
-            Report(Path.Combine(_root, "entry"), 0, "sense", $"Entry '{entry[0]}' has no sense and no class or carried analysis refers to it.");
+            Report(Path.Join(_root, TableEntry), 0, TableSense, $"Entry '{entry[0]}' has no sense and no class or carried analysis refers to it.");
         }
     }
 
@@ -676,10 +697,10 @@ internal sealed partial class DataValidator
             return;
         }
 
-        var entryPos = Index(Rows("entry"), 0, 2);
-        var entryKeys = Rows("entry").Select(r => (r[1], r[2])).ToHashSet();
-        var classKind = Index(Rows("coarse_class"), 0, 4);
-        var classPos = Index(Rows("coarse_class"), 0, 3);
+        var entryPos = Index(Rows(TableEntry), 0, 2);
+        var entryKeys = Rows(TableEntry).Select(r => (r[1], r[2])).ToHashSet();
+        var classKind = Index(Rows(TableCoarseClass), 0, 4);
+        var classPos = Index(Rows(TableCoarseClass), 0, 3);
         var ranks = new Dictionary<string, HashSet<int>>(StringComparer.Ordinal);
         foreach (var file in forms.Files)
         {
@@ -710,11 +731,11 @@ internal sealed partial class DataValidator
         {
             if (!set.OrderBy(r => r).SequenceEqual(Enumerable.Range(0, set.Count)))
             {
-                Report(Path.Combine(_root, "form"), 0, "form", $"The ranks of the analyses of '{spelling}' are not 0..{(set.Count - 1).ToString(CultureInfo.InvariantCulture)}.");
+                Report(Path.Join(_root, "form"), 0, "form", $"The ranks of the analyses of '{spelling}' are not 0..{(set.Count - 1).ToString(CultureInfo.InvariantCulture)}.");
             }
         }
 
-        if (!_tables.TryGetValue("form_sense_scope", out var scopes))
+        if (!_tables.TryGetValue(TableFormSenseScope, out var scopes))
         {
             return;
         }
@@ -732,23 +753,23 @@ internal sealed partial class DataValidator
                 var row = file.Rows[i];
                 if (!formEntry.TryGetValue((row[0], int.Parse(row[1], CultureInfo.InvariantCulture)), out var entry))
                 {
-                    Report(file.Path, i + 2, "form_sense_scope", $"{row[0]}#{row[1]}: there is no such analysis in the form table.");
+                    Report(file.Path, i + 2, TableFormSenseScope, $"{row[0]}#{row[1]}: there is no such analysis in the form table.");
                     continue;
                 }
 
                 if (entry.Length == 0)
                 {
-                    Report(file.Path, i + 2, "form_sense_scope", $"{row[0]}#{row[1]}: a surface-only analysis has no entry and cannot have a scope.");
+                    Report(file.Path, i + 2, TableFormSenseScope, $"{row[0]}#{row[1]}: a surface-only analysis has no entry and cannot have a scope.");
                     continue;
                 }
 
                 if (classKind.GetValueOrDefault(row[2]) == "unmapped")
                 {
-                    Report(file.Path, i + 2, "form_sense_scope", $"{row[0]}#{row[1]}: class '{row[2]}' is an unmapped bucket and cannot be an answer.");
+                    Report(file.Path, i + 2, TableFormSenseScope, $"{row[0]}#{row[1]}: class '{row[2]}' is an unmapped bucket and cannot be an answer.");
                 }
                 else if (entryPos.TryGetValue(entry, out var ep) && classPos.TryGetValue(row[2], out var cp) && ep != cp)
                 {
-                    Report(file.Path, i + 2, "form_sense_scope", $"{row[0]}#{row[1]}: class '{row[2]}' has part of speech '{cp}' but entry '{entry}' has '{ep}'.");
+                    Report(file.Path, i + 2, TableFormSenseScope, $"{row[0]}#{row[1]}: class '{row[2]}' has part of speech '{cp}' but entry '{entry}' has '{ep}'.");
                 }
             }
         }
@@ -792,7 +813,7 @@ internal sealed partial class DataValidator
             return;
         }
 
-        var senseSynset = Index(Rows("sense"), 0, 3);
+        var senseSynset = Index(Rows(TableSense), 0, 3);
         foreach (var file in examples.Files)
         {
             for (var i = 0; i < file.Rows.Count; i++)
@@ -810,7 +831,7 @@ internal sealed partial class DataValidator
 
     private void CheckPartitionRule()
     {
-        var classes = Rows("coarse_class").ToList();
+        var classes = Rows(TableCoarseClass).ToList();
         if (classes.Count == 0)
         {
             return;
@@ -818,9 +839,9 @@ internal sealed partial class DataValidator
 
         var covered = Rows("class_sense").Select(r => r[1]).ToHashSet(StringComparer.Ordinal);
         var mapped = classes.Where(c => c[4] is "sense_group" or "no_oewn" or "unmapped").Select(c => (Lemma: c[1], Pos: c[3])).ToHashSet();
-        var entries = Index(Rows("entry").Where(e => mapped.Contains((e[1], e[2]))), 0, 1);
-        var path = Path.Combine(_root, "class_sense");
-        foreach (var sense in Rows("sense"))
+        var entries = Index(Rows(TableEntry).Where(e => mapped.Contains((e[1], e[2]))), 0, 1);
+        var path = Path.Join(_root, "class_sense");
+        foreach (var sense in Rows(TableSense))
         {
             if (entries.TryGetValue(sense[2], out var lemma) && !covered.Contains(sense[0]))
             {

@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace DemaConsulting.WordSense.Onnx;
 
 /// <summary>
@@ -66,6 +68,7 @@ internal sealed class InFlightTracker
     ///     Registers an operation that is about to use the resource.
     /// </summary>
     /// <exception cref="ObjectDisposedException">Thrown when the tracker has been closed.</exception>
+    [SuppressMessage("Usage", "CA1513:Use ObjectDisposedException throw helper", Justification = "The exception must carry the owning model's name, which the throw helper cannot take as a string.")]
     public void Enter()
     {
         lock (_lock)

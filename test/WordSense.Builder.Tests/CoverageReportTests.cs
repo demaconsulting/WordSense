@@ -5,6 +5,9 @@ namespace WordSense.Builder.Tests;
 /// </summary>
 public sealed class CoverageReportTests : IDisposable
 {
+    private static readonly string[] BodyLines = ["the body", "more body"];
+    private static readonly string[] NoMarkerLines = ["no", "markers"];
+
     private readonly TestDirectory _dir = new();
 
     /// <inheritdoc />
@@ -21,8 +24,8 @@ public sealed class CoverageReportTests : IDisposable
     {
         string[] lines = ["License words", "*** START OF THE PROJECT ***", "the body", "more body", "*** END OF THE PROJECT ***", "License again"];
 
-        Assert.Equal(new[] { "the body", "more body" }, CoverageReport.Body(lines).ToArray());
-        Assert.Equal(new[] { "no", "markers" }, CoverageReport.Body(["no", "markers"]).ToArray());
+        Assert.Equal(BodyLines, CoverageReport.Body(lines).ToArray());
+        Assert.Equal(NoMarkerLines, CoverageReport.Body(["no", "markers"]).ToArray());
     }
 
     /// <summary>
@@ -61,7 +64,7 @@ public sealed class CoverageReportTests : IDisposable
         _dir.Write("text/a.txt", "Header unknownlicense\n*** START ***\nthe dog\n*** END ***\nfooter unknownlicense\n");
         _dir.Write("text/b.txt", "the cat\n");
 
-        var report = CoverageReport.Read(Path.Combine(_dir.Root, "text"), w => w is "the" or "dog");
+        var report = CoverageReport.Read(Path.Join(_dir.Root, "text"), w => w is "the" or "dog");
         var markdown = report.Render(10);
 
         Assert.Equal(2, report.Files);
@@ -78,9 +81,9 @@ public sealed class CoverageReportTests : IDisposable
     [Fact]
     public void WordSenseBuilder_CoverageReport_Read_BadDirectory_Throws()
     {
-        Assert.Throws<InvalidDataException>(() => CoverageReport.Read(Path.Combine(_dir.Root, "missing"), _ => true));
-        Directory.CreateDirectory(Path.Combine(_dir.Root, "empty"));
-        Assert.Throws<InvalidDataException>(() => CoverageReport.Read(Path.Combine(_dir.Root, "empty"), _ => true));
+        Assert.Throws<InvalidDataException>(() => CoverageReport.Read(Path.Join(_dir.Root, "missing"), _ => true));
+        Directory.CreateDirectory(Path.Join(_dir.Root, "empty"));
+        Assert.Throws<InvalidDataException>(() => CoverageReport.Read(Path.Join(_dir.Root, "empty"), _ => true));
     }
 
     /// <summary>

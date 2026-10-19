@@ -349,17 +349,22 @@ internal static class PosTagger
                 }
 
                 // The path is impossible under the transitions: fall back to the normalized emissions
-                var emissionTotal = 0.0;
-                for (var ci = 0; ci < count; ci++)
-                {
-                    emissionTotal += Emission(i, Tag(i, ci));
-                }
+                FillFromEmissions(i, count, row);
+            }
+        }
 
-                for (var ci = 0; ci < count; ci++)
-                {
-                    var tag = Tag(i, ci);
-                    row[tag] = emissionTotal > 0 ? Emission(i, tag) / emissionTotal : 1.0 / count;
-                }
+        private void FillFromEmissions(int position, int count, Span<double> row)
+        {
+            var emissionTotal = 0.0;
+            for (var ci = 0; ci < count; ci++)
+            {
+                emissionTotal += Emission(position, Tag(position, ci));
+            }
+
+            for (var ci = 0; ci < count; ci++)
+            {
+                var tag = Tag(position, ci);
+                row[tag] = emissionTotal > 0 ? Emission(position, tag) / emissionTotal : 1.0 / count;
             }
         }
 

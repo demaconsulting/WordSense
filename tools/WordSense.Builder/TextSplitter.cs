@@ -34,23 +34,7 @@ internal static class TextSplitter
             var start = i;
             if (IsWordChar(text, i))
             {
-                i += CharLength(text, i);
-                while (i < text.Length)
-                {
-                    if (IsWordChar(text, i))
-                    {
-                        i += CharLength(text, i);
-                    }
-                    else if ((text[i] is '\'' or '\u2019' or '-') && i + 1 < text.Length && IsWordChar(text, i + 1))
-                    {
-                        i++;
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-
+                i = EndOfWord(text, i);
                 segments.Add(new Segment(start, i - start, true, false));
             }
             else if (char.IsWhiteSpace(text[i]))
@@ -70,6 +54,34 @@ internal static class TextSplitter
         }
 
         return segments;
+    }
+
+    /// <summary>
+    ///     Finds the end of the word that starts at an index; an apostrophe or hyphen followed by a word character stays inside the word.
+    /// </summary>
+    /// <param name="text">The text.</param>
+    /// <param name="start">The index of the first character of the word.</param>
+    /// <returns>The index after the last character of the word.</returns>
+    private static int EndOfWord(string text, int start)
+    {
+        var i = start + CharLength(text, start);
+        while (i < text.Length)
+        {
+            if (IsWordChar(text, i))
+            {
+                i += CharLength(text, i);
+            }
+            else if ((text[i] is '\'' or '\u2019' or '-') && i + 1 < text.Length && IsWordChar(text, i + 1))
+            {
+                i++;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        return i;
     }
 
     /// <summary>

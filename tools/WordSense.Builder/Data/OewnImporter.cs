@@ -167,7 +167,7 @@ internal static partial class OewnImporter
         foreach (var name in OewnTables)
         {
             var table = schema.Table(name);
-            var path = table.Partition == PartitionKind.None ? Path.Combine(output, name + DataLayout.Extension) : Path.Combine(output, name);
+            var path = table.Partition == PartitionKind.None ? Path.Join(output, name + DataLayout.Extension) : Path.Join(output, name);
             var exists = table.Partition == PartitionKind.None ? File.Exists(path) : Directory.Exists(path) && Directory.EnumerateFiles(path).Any();
             if (!exists)
             {

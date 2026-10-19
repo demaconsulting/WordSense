@@ -75,7 +75,7 @@ internal static class XmlDocExampleVerifier
     /// </param>
     public static void VerifyExamples(string xmlDocumentationFileName, params string[] additionalUsings)
     {
-        var documentationPath = Path.Combine(AppContext.BaseDirectory, xmlDocumentationFileName);
+        var documentationPath = Path.Join(AppContext.BaseDirectory, xmlDocumentationFileName);
         Assert.True(
             File.Exists(documentationPath),
             $"The XML documentation file '{xmlDocumentationFileName}' was not found in the test output "

@@ -134,7 +134,7 @@ public sealed class DataValidatorTests : IDisposable
     public void WordSenseBuilder_DataValidator_Validate_MissingDirectory_ReportsSchema()
     {
         // Arrange / Act
-        var report = DataValidator.Validate(Path.Combine(_dir.Root, "nothing"));
+        var report = DataValidator.Validate(Path.Join(_dir.Root, "nothing"));
 
         // Assert
         Assert.False(report.IsValid);
@@ -181,7 +181,7 @@ public sealed class DataValidatorTests : IDisposable
     {
         // Arrange
         var data = Data();
-        File.Delete(Path.Combine(data, "source.tsv"));
+        File.Delete(Path.Join(data, "source.tsv"));
 
         // Act / Assert
         AssertViolation(data, "file-set");
@@ -244,7 +244,7 @@ public sealed class DataValidatorTests : IDisposable
     {
         // Arrange
         var data = Data();
-        var path = Path.Combine(data, "entry", "f.tsv");
+        var path = Path.Join(data, "entry", "f.tsv");
         var text = File.ReadAllText(path, Encoding.UTF8);
         var bytes = defect switch
         {
@@ -291,7 +291,7 @@ public sealed class DataValidatorTests : IDisposable
         };
 
         // Act
-        DataFixture.Replace(data, Path.Combine("entry", file), original, changed);
+        DataFixture.Replace(data, Path.Join("entry", file), original, changed);
 
         // Assert
         AssertViolation(data, "cell");
@@ -319,7 +319,7 @@ public sealed class DataValidatorTests : IDisposable
     {
         // Arrange - swap the two bass entries
         var data = Data();
-        var path = Path.Combine(data, "entry", "b.tsv");
+        var path = Path.Join(data, "entry", "b.tsv");
         var lines = File.ReadAllLines(path, Encoding.UTF8).ToList();
         (lines[1], lines[2]) = (lines[2], lines[1]);
         File.WriteAllText(path, string.Join('\n', lines) + "\n", new UTF8Encoding(false));

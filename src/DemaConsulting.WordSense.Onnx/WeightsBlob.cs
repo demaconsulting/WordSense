@@ -55,20 +55,7 @@ internal static class WeightsBlob
     /// <exception cref="InvalidDataException">Thrown when the blob is corrupt.</exception>
     public static WeightsData Read(ReadOnlySpan<byte> blob)
     {
-        byte[] data;
-        try
-        {
-            using var input = new MemoryStream(blob.ToArray());
-            using var brotli = new BrotliStream(input, CompressionMode.Decompress);
-            using var raw = new MemoryStream();
-            brotli.CopyTo(raw);
-            data = raw.ToArray();
-        }
-        catch (Exception ex) when (ex is IOException or InvalidOperationException)
-        {
-            throw new InvalidDataException("The weights are corrupt.", ex);
-        }
-
+        var data = Decompress(blob);
         var span = data.AsSpan();
         if (span.Length < Magic.Length || !span[..Magic.Length].SequenceEqual(Magic))
         {
@@ -100,42 +87,7 @@ internal static class WeightsBlob
         {
             for (var i = 0; i < count; i++)
             {
-                var lemma = ReadString(span, ref p);
-                if (!seen.Add(lemma))
-                {
-                    throw new InvalidDataException("The weights have a duplicate lemma.");
-                }
-
-                var abstain = ReadFloats(span, ref p, 1)[0];
-                var kind = (LemmaModelKind)ReadByte(span, ref p);
-                var senseCount = ReadVarint(span, ref p);
-                if (kind == LemmaModelKind.Binary && senseCount != 2)
-                {
-                    throw new InvalidDataException($"The weights of '{lemma}' are binary but have {senseCount} senses; a binary model needs exactly two.");
-                }
-
-                var classIds = new List<string>(Math.Min(senseCount, 255));
-                for (var s = 0; s < senseCount; s++)
-                {
-                    var classId = ReadString(span, ref p);
-                    if (classId.Length == 0 || !seenClasses.Add(classId))
-                    {
-                        throw new InvalidDataException($"The weights have an empty or duplicate class id in '{lemma}'.");
-                    }
-
-                    classIds.Add(classId);
-                }
-
-                var rows = kind == LemmaModelKind.Binary ? 1 : senseCount;
-                var bias = ReadFloats(span, ref p, rows);
-                var weights = ReadFloats(span, ref p, checked(rows * dimension));
-                var lemmaWeights = new LemmaWeights(kind, weights, bias, abstain, dimension);
-                if (classIds.Count != lemmaWeights.SenseCount)
-                {
-                    throw new InvalidDataException($"The weights of '{lemma}' have {lemmaWeights.SenseCount} senses but name {classIds.Count} classes.");
-                }
-
-                lemmas.Add(new WeightedLemma(lemma, classIds, lemmaWeights));
+                lemmas.Add(ReadLemma(span, ref p, dimension, seen, seenClasses));
             }
         }
         catch (Exception ex) when (ex is ArgumentException or OverflowException)
@@ -146,6 +98,78 @@ internal static class WeightsBlob
         return p == span.Length
             ? new WeightsData(modelId, classHash, dimension, mean, lemmas)
             : throw new InvalidDataException("The weights have trailing data.");
+    }
+
+    /// <summary>
+    ///     Decompresses a weights blob.
+    /// </summary>
+    /// <param name="blob">The compressed blob.</param>
+    /// <returns>The raw bytes.</returns>
+    /// <exception cref="InvalidDataException">Thrown when the blob is corrupt.</exception>
+    private static byte[] Decompress(ReadOnlySpan<byte> blob)
+    {
+        try
+        {
+            using var input = new MemoryStream(blob.ToArray());
+            using var brotli = new BrotliStream(input, CompressionMode.Decompress);
+            using var raw = new MemoryStream();
+            brotli.CopyTo(raw);
+            return raw.ToArray();
+        }
+        catch (Exception ex) when (ex is IOException or InvalidOperationException)
+        {
+            throw new InvalidDataException("The weights are corrupt.", ex);
+        }
+    }
+
+    /// <summary>
+    ///     Reads the classifier of one lemma.
+    /// </summary>
+    /// <param name="span">The data.</param>
+    /// <param name="p">The read position, advanced past the lemma.</param>
+    /// <param name="dimension">The dense feature dimension.</param>
+    /// <param name="seen">The lemmas read so far; the new lemma is added.</param>
+    /// <param name="seenClasses">The class ids read so far; the new class ids are added.</param>
+    /// <returns>The lemma with its classifier.</returns>
+    /// <exception cref="InvalidDataException">Thrown when the lemma is duplicated or inconsistent.</exception>
+    private static WeightedLemma ReadLemma(ReadOnlySpan<byte> span, ref int p, int dimension, HashSet<string> seen, HashSet<string> seenClasses)
+    {
+        var lemma = ReadString(span, ref p);
+        if (!seen.Add(lemma))
+        {
+            throw new InvalidDataException("The weights have a duplicate lemma.");
+        }
+
+        var abstain = ReadFloats(span, ref p, 1)[0];
+        var kind = (LemmaModelKind)ReadByte(span, ref p);
+        var senseCount = ReadVarint(span, ref p);
+        if (kind == LemmaModelKind.Binary && senseCount != 2)
+        {
+            throw new InvalidDataException($"The weights of '{lemma}' are binary but have {senseCount} senses; a binary model needs exactly two.");
+        }
+
+        var classIds = new List<string>(Math.Min(senseCount, 255));
+        for (var s = 0; s < senseCount; s++)
+        {
+            var classId = ReadString(span, ref p);
+            if (classId.Length == 0 || !seenClasses.Add(classId))
+            {
+                throw new InvalidDataException($"The weights have an empty or duplicate class id in '{lemma}'.");
+            }
+
+            classIds.Add(classId);
+        }
+
+        var rows = kind == LemmaModelKind.Binary ? 1 : senseCount;
+        var bias = ReadFloats(span, ref p, rows);
+        var weights = ReadFloats(span, ref p, checked(rows * dimension));
+        var lemmaWeights = new LemmaWeights(kind, weights, bias, abstain, dimension);
+        if (classIds.Count != lemmaWeights.SenseCount)
+        {
+            throw new InvalidDataException($"The weights of '{lemma}' have {lemmaWeights.SenseCount} senses but name {classIds.Count} classes.");
+        }
+
+        return new WeightedLemma(lemma, classIds, lemmaWeights);
     }
 
     /// <summary>

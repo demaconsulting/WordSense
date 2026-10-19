@@ -29,7 +29,7 @@ internal static class ModelFileCheck
         ArgumentNullException.ThrowIfNull(spec);
         foreach (var file in spec.Files)
         {
-            var path = Path.Combine(directory, file.Name);
+            var path = Path.Join(directory, file.Name);
             if (!File.Exists(path))
             {
                 return $"The model file '{file.Name}' is missing.";
@@ -90,7 +90,7 @@ internal static class ModelFileCheck
     {
         foreach (var file in spec.Files)
         {
-            if (!string.Equals(ModelDownloader.HashFile(Path.Combine(directory, file.Name)), file.Sha256, StringComparison.Ordinal))
+            if (!string.Equals(ModelDownloader.HashFile(Path.Join(directory, file.Name)), file.Sha256, StringComparison.Ordinal))
             {
                 return $"The model file '{file.Name}' in '{directory}' does not match its pinned SHA-256.";
             }

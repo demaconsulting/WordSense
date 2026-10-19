@@ -20,10 +20,17 @@ internal sealed class LocalServer : IDisposable
     /// <param name="handler">Handles each request; it must complete the response.</param>
     public LocalServer(Func<HttpListenerContext, Task> handler)
     {
+        int port;
         var probe = new TcpListener(IPAddress.Loopback, 0);
-        probe.Start();
-        var port = ((IPEndPoint)probe.LocalEndpoint).Port;
-        probe.Stop();
+        try
+        {
+            probe.Start();
+            port = ((IPEndPoint)probe.LocalEndpoint).Port;
+        }
+        finally
+        {
+            probe.Stop();
+        }
 
         BaseUri = new Uri($"http://127.0.0.1:{port}");
         _listener.Prefixes.Add(BaseUri.AbsoluteUri);

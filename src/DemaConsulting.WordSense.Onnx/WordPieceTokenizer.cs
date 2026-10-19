@@ -335,7 +335,7 @@ internal sealed class WordPieceTokenizer
 
                 for (var i = start; i < end; i++)
                 {
-                    builder.Append(word[i].Rune.ToString());
+                    builder.Append(word[i].Rune);
                 }
 
                 if (_vocabulary.TryGetValue(builder.ToString(), out found))

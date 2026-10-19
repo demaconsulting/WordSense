@@ -18,9 +18,9 @@ public sealed class FormReproducibilityTests : IDisposable
 
     private string TinyInputs(out string agid)
     {
-        var oewn = Path.Combine(_dir.Root, "oewn.xml");
+        var oewn = Path.Join(_dir.Root, "oewn.xml");
         File.Copy(DataFixture.SlicePath, oewn);
-        agid = Path.Combine(_dir.Root, "infl.txt");
+        agid = Path.Join(_dir.Root, "infl.txt");
         File.WriteAllText(agid, "bag: N: bags\n");
         return oewn;
     }
@@ -32,9 +32,9 @@ public sealed class FormReproducibilityTests : IDisposable
     private SortedDictionary<string, byte[]> Generate(string name, string oewn, string agid)
     {
         var root = DataFixture.RepositoryRoot();
-        var output = Path.Combine(_dir.Root, name);
+        var output = Path.Join(_dir.Root, name);
         Directory.CreateDirectory(output);
-        FormGenerator.Run(Path.Combine(root, "data"), Path.Combine(root, "corpus"), oewn, agid, output, null, null);
+        FormGenerator.Run(Path.Join(root, "data"), Path.Join(root, "corpus"), oewn, agid, output, null, null);
         return Snapshot(output);
     }
 
@@ -82,7 +82,7 @@ public sealed class FormReproducibilityTests : IDisposable
     {
         var oewn = TinyInputs(out var agid);
         var root = DataFixture.RepositoryRoot();
-        var ex = Assert.Throws<InvalidDataException>(() => FormGenerator.Run(Path.Combine(root, "data"), Path.Combine(root, "corpus"), oewn, agid, _dir.Root));
+        var ex = Assert.Throws<InvalidDataException>(() => FormGenerator.Run(Path.Join(root, "data"), Path.Join(root, "corpus"), oewn, agid, _dir.Root));
         Assert.Contains("SHA-256", ex.Message, StringComparison.Ordinal);
     }
 
@@ -99,8 +99,8 @@ public sealed class FormReproducibilityTests : IDisposable
     [InlineData("offspring", true)]
     public void WordSenseBuilder_FormGenerator_Data_IngNounPlural_IsNotTheSingular(string spelling, bool plural)
     {
-        var data = Path.Combine(DataFixture.RepositoryRoot(), "data");
-        var schema = DataSchema.Load(Path.Combine(data, "schema.yaml"));
+        var data = Path.Join(DataFixture.RepositoryRoot(), "data");
+        var schema = DataSchema.Load(Path.Join(data, "schema.yaml"));
         var own = DataTables.Read(data, schema.Table("form")).Where(r => r[0] == spelling && r[2] == $"oewn-{spelling}-n" && r[3].Contains("Number=Plur", StringComparison.Ordinal));
         Assert.Equal(plural, own.Any());
     }

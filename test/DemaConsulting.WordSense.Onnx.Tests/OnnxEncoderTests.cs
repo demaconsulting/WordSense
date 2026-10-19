@@ -12,8 +12,8 @@ public class OnnxEncoderTests
     {
         var directory = ModelAssets.RequireModelDirectory();
         return new OnnxEncoder(
-            Path.Combine(directory, "model_int8.onnx"),
-            Path.Combine(directory, "vocab.txt"),
+            Path.Join(directory, "model_int8.onnx"),
+            Path.Join(directory, "vocab.txt"),
             true,
             maxSequenceLength,
             intraOpThreads);
@@ -119,7 +119,7 @@ public class OnnxEncoderTests
     [Fact]
     public async Task OnnxEncoder_EncodeAsync_InvalidUse_Throws()
     {
-        var encoder = Open();
+        using var encoder = Open();
         using var cancelled = new CancellationTokenSource();
         await cancelled.CancelAsync();
 
@@ -141,8 +141,8 @@ public class OnnxEncoderTests
     public void OnnxEncoder_Constructor_InvalidArguments_Throws()
     {
         var directory = ModelAssets.RequireModelDirectory();
-        var model = Path.Combine(directory, "model_int8.onnx");
-        var vocabulary = Path.Combine(directory, "vocab.txt");
+        var model = Path.Join(directory, "model_int8.onnx");
+        var vocabulary = Path.Join(directory, "vocab.txt");
 
         Assert.Throws<ArgumentNullException>(() => new OnnxEncoder(null!, vocabulary, true, 128, 2));
         Assert.Throws<ArgumentNullException>(() => new OnnxEncoder(model, null!, true, 128, 2));
@@ -158,8 +158,8 @@ public class OnnxEncoderTests
     public void OnnxEncoder_Constructor_InvalidModelFile_Throws()
     {
         var directory = ModelAssets.RequireModelDirectory();
-        var vocabulary = Path.Combine(directory, "vocab.txt");
-        var garbage = Path.Combine(Path.GetTempPath(), "wordsense-garbage-" + Guid.NewGuid().ToString("N") + ".onnx");
+        var vocabulary = Path.Join(directory, "vocab.txt");
+        var garbage = Path.Join(Path.GetTempPath(), "wordsense-garbage-" + Guid.NewGuid().ToString("N") + ".onnx");
         File.WriteAllText(garbage, "this is not an onnx model");
 
         try

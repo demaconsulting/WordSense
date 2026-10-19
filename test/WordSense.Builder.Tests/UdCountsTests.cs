@@ -108,8 +108,8 @@ public sealed class UdCountsTests : IDisposable
     public void WordSenseBuilder_UdCounts_WriteAndRead_RoundTripsDeterministically()
     {
         var counts = UdCounts.Count(Read());
-        var first = Path.Combine(_dir.Root, "out1");
-        var second = Path.Combine(_dir.Root, "out2");
+        var first = Path.Join(_dir.Root, "out1");
+        var second = Path.Join(_dir.Root, "out2");
 
         counts.Write(first);
         counts.Write(second);
@@ -122,8 +122,8 @@ public sealed class UdCountsTests : IDisposable
         Assert.All(counts.Words, pair => Assert.Equal(pair.Value, back.Words[pair.Key]));
         foreach (var file in new[] { UdCounts.NgramsFile, UdCounts.WordsFile })
         {
-            Assert.Equal(File.ReadAllBytes(Path.Combine(first, file)), File.ReadAllBytes(Path.Combine(second, file)));
-            Assert.DoesNotContain("\r", File.ReadAllText(Path.Combine(first, file)), StringComparison.Ordinal);
+            Assert.Equal(File.ReadAllBytes(Path.Join(first, file)), File.ReadAllBytes(Path.Join(second, file)));
+            Assert.DoesNotContain("\r", File.ReadAllText(Path.Join(first, file)), StringComparison.Ordinal);
         }
     }
 
@@ -134,9 +134,9 @@ public sealed class UdCountsTests : IDisposable
     public void WordSenseBuilder_UdCounts_Read_BadHeader_Throws()
     {
         var counts = UdCounts.Count(Read());
-        var directory = Path.Combine(_dir.Root, "bad");
+        var directory = Path.Join(_dir.Root, "bad");
         counts.Write(directory);
-        File.WriteAllText(Path.Combine(directory, UdCounts.WordsFile), "wrong\theader\n");
+        File.WriteAllText(Path.Join(directory, UdCounts.WordsFile), "wrong\theader\n");
 
         Assert.Throws<InvalidDataException>(() => UdCounts.Read(directory));
     }

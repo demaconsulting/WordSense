@@ -552,8 +552,8 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     /// <param name="directory">The directory that holds the model files.</param>
     /// <returns>The encoder.</returns>
     private OnnxEncoder OpenEncoderCore(string directory) => new(
-        Path.Combine(directory, _spec.OnnxFileName),
-        Path.Combine(directory, _spec.VocabularyFileName),
+        Path.Join(directory, _spec.OnnxFileName),
+        Path.Join(directory, _spec.VocabularyFileName),
         _spec.LowerCase,
         _maxSequenceLength,
         IntraOpThreads);

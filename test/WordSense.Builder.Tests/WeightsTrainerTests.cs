@@ -114,7 +114,7 @@ public sealed class WeightsTrainerTests
         Assert.False(basic.IsEncoder);
         Assert.True(ModelCatalog.Find("bert-base-cased").IsEncoder);
         Assert.Equal(
-            Path.Combine("repo", "src", "DemaConsulting.WordSense.MiniLM", "Resources", "weights.bin"),
+            Path.Join("repo", "src", "DemaConsulting.WordSense.MiniLM", "Resources", "weights.bin"),
             minilm.WeightsPath("repo"));
         Assert.Throws<ArgumentException>(() => ModelCatalog.Find("unknown"));
     }

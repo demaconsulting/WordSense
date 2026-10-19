@@ -14,7 +14,7 @@ public sealed class ModelDownloaderTests : IDisposable
     private const string OnnxText = "pretend this is an onnx file";
     private const string VocabText = "pretend this is a vocabulary";
 
-    private readonly string _store = Path.Combine(Path.GetTempPath(), "wordsense-tests-" + Guid.NewGuid().ToString("N"));
+    private readonly string _store = Path.Join(Path.GetTempPath(), "wordsense-tests-" + Guid.NewGuid().ToString("N"));
     private readonly List<string> _defaultStoreFolders = [];
 
     private static readonly ModelSpec Spec = new(
@@ -68,7 +68,7 @@ public sealed class ModelDownloaderTests : IDisposable
 
         var directory = await ModelDownloader.EnsureAsync(Spec, Mirror(server), TestContext.Current.CancellationToken, null, Lfs(server), _ => null);
 
-        Assert.Equal(Path.Combine(_store, ModelId), directory);
+        Assert.Equal(Path.Join(_store, ModelId), directory);
         Assert.Equal(["/mirror/test-model/model.onnx", "/mirror/test-model/vocab.txt"], Paths(server));
         ModelDownloader.Verify(Spec, directory);
     }
@@ -133,7 +133,7 @@ public sealed class ModelDownloaderTests : IDisposable
         await ModelDownloader.EnsureAsync(Spec, Mirror(server), TestContext.Current.CancellationToken, null, Lfs(server), _ => null);
         Assert.Equal(before, Paths(server).Length);
 
-        await File.WriteAllTextAsync(Path.Combine(directory, "vocab.txt"), "corrupt", TestContext.Current.CancellationToken);
+        await File.WriteAllTextAsync(Path.Join(directory, "vocab.txt"), "corrupt", TestContext.Current.CancellationToken);
         await ModelDownloader.EnsureAsync(Spec, Mirror(server), TestContext.Current.CancellationToken, null, Lfs(server), _ => null);
 
         Assert.Equal(before + 1, Paths(server).Length);
@@ -180,7 +180,7 @@ public sealed class ModelDownloaderTests : IDisposable
         Directory.CreateDirectory(_store);
         Assert.Throws<FileNotFoundException>(() => ModelDownloader.Verify(Spec, _store));
 
-        File.WriteAllText(Path.Combine(_store, "model.onnx"), "wrong");
+        File.WriteAllText(Path.Join(_store, "model.onnx"), "wrong");
         Assert.Throws<InvalidDataException>(() => ModelDownloader.Verify(Spec, _store));
     }
 
@@ -190,7 +190,7 @@ public sealed class ModelDownloaderTests : IDisposable
     [Fact]
     public void ModelDownloader_DefaultStoreRoot_IsPerUser()
     {
-        Assert.EndsWith(Path.Combine("DemaConsulting", "WordSense", "models"), ModelDownloader.DefaultStoreRoot(), StringComparison.Ordinal);
+        Assert.EndsWith(Path.Join("DemaConsulting", "WordSense", "models"), ModelDownloader.DefaultStoreRoot(), StringComparison.Ordinal);
     }
 
     /// <summary>
@@ -221,7 +221,7 @@ public sealed class ModelDownloaderTests : IDisposable
     private ModelSpec UniqueSpec()
     {
         var spec = Spec with { ModelId = "test-model-" + Guid.NewGuid().ToString("N") };
-        _defaultStoreFolders.Add(Path.Combine(ModelDownloader.DefaultStoreRoot(), spec.ModelId));
+        _defaultStoreFolders.Add(Path.Join(ModelDownloader.DefaultStoreRoot(), spec.ModelId));
         return spec;
     }
 
@@ -459,9 +459,9 @@ public sealed class ModelDownloaderTests : IDisposable
     public async Task ModelDownloader_EnsureModel_CorruptCacheAndAllSourcesFail_LeavesFileInPlace()
     {
         using var server = new LocalServer(c => LocalServer.SendAsync(c, 500, "broken"));
-        var folder = Path.Combine(_store, ModelId);
+        var folder = Path.Join(_store, ModelId);
         Directory.CreateDirectory(folder);
-        var vocabulary = Path.Combine(folder, "vocab.txt");
+        var vocabulary = Path.Join(folder, "vocab.txt");
         await File.WriteAllTextAsync(vocabulary, "corrupt", TestContext.Current.CancellationToken);
 
         await Assert.ThrowsAsync<HttpRequestException>(
@@ -638,8 +638,8 @@ public sealed class ModelDownloaderTests : IDisposable
             () => ModelDownloader.EnsureAsync(pinned, Mirror(server), TestContext.Current.CancellationToken, null, Lfs(server), _ => null));
 
         // Assert: both sources were tried and refused for their size
-        Assert.Equal(2, Regex.Matches(ex.Message, "larger than the pinned size").Count);
-        Assert.False(File.Exists(Path.Combine(_store, ModelId, "model.onnx")));
+        Assert.Equal(2, Regex.Count(ex.Message, "larger than the pinned size"));
+        Assert.False(File.Exists(Path.Join(_store, ModelId, "model.onnx")));
     }
 
     /// <summary>
@@ -651,9 +651,9 @@ public sealed class ModelDownloaderTests : IDisposable
     public async Task ModelDownloader_EnsureModel_StalePartialFile_IsNotResumedOrReused()
     {
         // Arrange: a leftover partial file of an earlier run
-        var folder = Path.Combine(_store, ModelId);
+        var folder = Path.Join(_store, ModelId);
         Directory.CreateDirectory(folder);
-        var stale = Path.Combine(folder, "model.onnx.0123456789abcdef0123456789abcdef.part");
+        var stale = Path.Join(folder, "model.onnx.0123456789abcdef0123456789abcdef.part");
         await File.WriteAllTextAsync(stale, "pretend", TestContext.Current.CancellationToken);
         using var server = new LocalServer(Serve);
 
@@ -663,7 +663,7 @@ public sealed class ModelDownloaderTests : IDisposable
         // Assert: the whole file was requested and verified; the stale file is untouched
         ModelDownloader.Verify(Spec, directory);
         Assert.Equal("pretend", await File.ReadAllTextAsync(stale, TestContext.Current.CancellationToken));
-        Assert.Equal(OnnxText, await File.ReadAllTextAsync(Path.Combine(folder, "model.onnx"), TestContext.Current.CancellationToken));
+        Assert.Equal(OnnxText, await File.ReadAllTextAsync(Path.Join(folder, "model.onnx"), TestContext.Current.CancellationToken));
     }
 
     /// <summary>

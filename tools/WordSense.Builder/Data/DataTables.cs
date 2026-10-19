@@ -26,7 +26,7 @@ internal static class DataTables
         }
         else
         {
-            var directory = Path.Combine(root, table.Name);
+            var directory = Path.Join(root, table.Name);
             files = Directory.Exists(directory)
                 ? Directory.GetFiles(directory, "*" + DataLayout.Extension).OrderBy(f => f, StringComparer.Ordinal).ToArray()
                 : [];
@@ -67,7 +67,7 @@ internal static class DataTables
             return 1;
         }
 
-        var directory = Path.Combine(root, table.Name);
+        var directory = Path.Join(root, table.Name);
         if (Directory.Exists(directory))
         {
             Directory.Delete(directory, true);

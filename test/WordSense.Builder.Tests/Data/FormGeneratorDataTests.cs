@@ -12,18 +12,18 @@ public sealed class FormGeneratorDataTests
     private static string RepositoryData()
     {
         var dir = new DirectoryInfo(AppContext.BaseDirectory);
-        while (dir is not null && !File.Exists(Path.Combine(dir.FullName, "data", "schema.yaml")))
+        while (dir is not null && !File.Exists(Path.Join(dir.FullName, "data", "schema.yaml")))
         {
             dir = dir.Parent;
         }
 
-        return dir is null ? throw new InvalidOperationException("The data folder was not found.") : Path.Combine(dir.FullName, "data");
+        return dir is null ? throw new InvalidOperationException("The data folder was not found.") : Path.Join(dir.FullName, "data");
     }
 
     private static List<string[]> Load()
     {
         var data = RepositoryData();
-        var schema = DataSchema.Load(Path.Combine(data, "schema.yaml"));
+        var schema = DataSchema.Load(Path.Join(data, "schema.yaml"));
         return DataTables.Read(data, schema.Table("form")).Select(r => r.ToArray()).ToList();
     }
 

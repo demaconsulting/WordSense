@@ -26,9 +26,9 @@ public sealed class DataEndToEndTests : IDisposable
 
     private string EmptyDataFolder()
     {
-        var data = Path.Combine(_dir.Root, "data");
+        var data = Path.Join(_dir.Root, "data");
         Directory.CreateDirectory(data);
-        File.Copy(Path.Combine(DataFixture.RepositoryRoot(), "data", "schema.yaml"), Path.Combine(data, "schema.yaml"));
+        File.Copy(Path.Join(DataFixture.RepositoryRoot(), "data", "schema.yaml"), Path.Join(data, "schema.yaml"));
         return data;
     }
 
@@ -111,7 +111,7 @@ public sealed class DataEndToEndTests : IDisposable
         // Arrange
         var data = EmptyDataFolder();
         await RunAsync("import-oewn", "--input", DataFixture.SlicePath, "--output", data, "--sha256", "none");
-        File.Delete(Path.Combine(data, "source.tsv"));
+        File.Delete(Path.Join(data, "source.tsv"));
 
         // Act
         var result = await RunAsync("validate-data", "--data", data);
@@ -143,7 +143,7 @@ public sealed class DataEndToEndTests : IDisposable
     public void WordSenseBuilder_DataEndToEnd_CommittedData_IsValid()
     {
         // Arrange
-        var data = Path.Combine(DataFixture.RepositoryRoot(), "data");
+        var data = Path.Join(DataFixture.RepositoryRoot(), "data");
 
         // Act
         var report = DataValidator.Validate(data);
@@ -160,7 +160,7 @@ public sealed class DataEndToEndTests : IDisposable
     public void WordSenseBuilder_DataEndToEnd_CommittedData_HasCoarseMapping()
     {
         // Arrange
-        var data = Path.Combine(DataFixture.RepositoryRoot(), "data");
+        var data = Path.Join(DataFixture.RepositoryRoot(), "data");
 
         // Act
         var report = DataValidator.Validate(data);
@@ -182,9 +182,9 @@ public sealed class DataEndToEndTests : IDisposable
         var root = DataFixture.RepositoryRoot();
         var files = new[]
         {
-            Path.Combine(root, "README.md"),
-            Path.Combine(root, "data", "README.md"),
-            Path.Combine(root, "data", "PROVENANCE.md")
+            Path.Join(root, "README.md"),
+            Path.Join(root, "data", "README.md"),
+            Path.Join(root, "data", "PROVENANCE.md")
         };
 
         // Act / Assert
