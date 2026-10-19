@@ -922,14 +922,8 @@ becripples	0		Person=3+Tense=Pres	dema	0	becripple	v	rule
 becrippling	0		VerbForm=Ger	dema	0	becripple	v	rule
 bed	0	oewn-bed-n	Number=Sing	dema	0			oewn_form
 bed	1	oewn-bed-v	VerbForm=Inf	dema	0			oewn_form
-bed active	0	oewn-be_active-v	Tense=Past+VerbForm=Part	dema	0			rule
-bed adrift	0	oewn-be_adrift-v	Tense=Past+VerbForm=Part	dema	0			rule
-bed after	0	oewn-be_after-v	Tense=Past+VerbForm=Part	dema	0			rule
-bed amiss	0	oewn-be_amiss-v	Tense=Past+VerbForm=Part	dema	0			rule
 bed and breakfast	0	oewn-bed_and_breakfast-n	Number=Sing	dema	0			oewn_form
 bed and breakfasts	0	oewn-bed_and_breakfast-n	Number=Plur	dema	0			rule
-bed at pains	0	oewn-be_at_pains-v	Tense=Past+VerbForm=Part	dema	0			rule
-bed born	0	oewn-be_born-v	Tense=Past+VerbForm=Part	dema	0			rule
 bed bug	0	oewn-bed_bug-n	Number=Sing	dema	0			oewn_form
 bed bugs	0	oewn-bed_bug-n	Number=Plur	dema	0			rule
 bed check	0	oewn-bed_check-n	Number=Sing	dema	0			oewn_form
@@ -941,32 +935,22 @@ bed covering	0	oewn-bed_covering-n	Number=Sing	dema	0			oewn_form
 bed coverings	0	oewn-bed_covering-n	Number=Plur	dema	0			rule
 bed covers	0	oewn-bed_cover-n	Number=Plur	dema	0			rule
 bed down	0	oewn-bed_down-v	VerbForm=Inf	dema	0			oewn_form
-bed due	0	oewn-be_due-v	Tense=Past+VerbForm=Part	dema	0			rule
-bed given	0	oewn-be_given-v	Tense=Past+VerbForm=Part	dema	0			rule
 bed ground	0	oewn-bed_ground-n	Number=Sing	dema	0			oewn_form
 bed grounds	0	oewn-bed_ground-n	Number=Plur	dema	0			rule
-bed intimate	0	oewn-be_intimate-v	Tense=Past+VerbForm=Part	dema	0			rule
 bed jacket	0	oewn-bed_jacket-n	Number=Sing	dema	0			oewn_form
 bed jackets	0	oewn-bed_jacket-n	Number=Plur	dema	0			rule
-bed known as	0	oewn-be_known_as-v	Tense=Past+VerbForm=Part	dema	0			rule
 bed linen	0	oewn-bed_linen-n	Number=Sing	dema	0			oewn_form
 bed linens	0	oewn-bed_linen-n	Number=Plur	dema	0			rule
 bed of flowers	0	oewn-bed_of_flowers-n	Number=Sing	dema	0			oewn_form
 bed of roses	0	oewn-bed_of_roses-n	Number=Sing	dema	0			oewn_form
-bed on	0	oewn-be_on-v	Tense=Past+VerbForm=Part	dema	0			rule
-bed on cloud nine	0	oewn-be_on_cloud_nine-v	Tense=Past+VerbForm=Part	dema	0			rule
-bed on the ball	0	oewn-be_on_the_ball-v	Tense=Past+VerbForm=Part	dema	0			rule
 bed pillow	0	oewn-bed_pillow-n	Number=Sing	dema	0			oewn_form
 bed pillows	0	oewn-bed_pillow-n	Number=Plur	dema	0			rule
-bed quiet	0	oewn-be_quiet-v	Tense=Past+VerbForm=Part	dema	0			rule
 bed rest	0	oewn-bed_rest-n	Number=Sing	dema	0			oewn_form
 bed rests	0	oewn-bed_rest-n	Number=Plur	dema	0			rule
 bed sheet	0	oewn-bed_sheet-n	Number=Sing	dema	0			oewn_form
 bed sheets	0	oewn-bed_sheet-n	Number=Plur	dema	0			rule
-bed sick	0	oewn-be_sick-v	Tense=Past+VerbForm=Part	dema	0			rule
 bed wetter	0	oewn-bed_wetter-n	Number=Sing	dema	0			oewn_form
 bed wetters	0	oewn-bed_wetter-n	Number=Plur	dema	0			rule
-bed with it	0	oewn-be_with_it-v	Tense=Past+VerbForm=Part	dema	0			rule
 bed-and-breakfast	0	oewn-bed-and-breakfast-n	Number=Sing	dema	0			oewn_form
 bed-and-breakfasts	0	oewn-bed-and-breakfast-n	Number=Plur	dema	0			rule
 bed-ground	0	oewn-bed-ground-n	Number=Sing	dema	0			oewn_form
@@ -1688,7 +1672,6 @@ behoofs	0		Number=Plur	dema	0	behoof	n	rule
 behoove	0	oewn-behoove-v	VerbForm=Inf	dema	0			oewn_form
 behooved	0	oewn-behoove-v	Tense=Past+VerbForm=Part	dema	0			rule
 behooves	0	oewn-behoove-v	Person=3+Tense=Pres	dema	0			rule
-behooves	1		Number=Plur	dema	0	behoof	n	moby_reverse
 behooving	0	oewn-behoove-v	VerbForm=Ger	dema	0			rule
 behove	0	oewn-behove-v	VerbForm=Inf	dema	0			oewn_form
 behoved	0	oewn-behove-v	Tense=Past+VerbForm=Part	dema	0			rule

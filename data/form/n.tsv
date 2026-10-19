@@ -11606,8 +11606,7 @@ nonpluses	0	oewn-nonplus-v	Person=3+Tense=Pres	dema	0			rule_variant
 nonplusing	0	oewn-nonplus-v	VerbForm=Ger	dema	0			rule_variant
 nonplussed	0	oewn-nonplus-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 nonplussed	1	oewn-nonplussed-a	Degree=Pos	dema	0			oewn_form
-nonplusses	0	oewn-nonplus-v	Person=3+Tense=Pres	dema	0			rule_variant
-nonplusses	1	oewn-nonplus-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+nonplusses	0	oewn-nonplus-v	Person=3+Tense=Pres	dema	0			oewn_form
 nonplussing	0	oewn-nonplus-v	VerbForm=Ger	dema	0			oewn_form
 nonplutocratical	0		Degree=Pos	dema	0	nonplutocratical	a	moby_reverse
 nonpneumatic	0		Degree=Pos	dema	0	nonpneumatic	a	moby_reverse

@@ -1638,7 +1638,6 @@ photostatting	0	oewn-photostat-v	VerbForm=Ger	dema	0			rule_variant
 photosynthate	0		Number=Sing	dema	0	photosynthate	n	moby_reverse
 photosynthates	0		Number=Plur	dema	0	photosynthate	n	rule
 photosynthesis	0	oewn-photosynthesis-n	Number=Sing	dema	0			oewn_form
-photosynthesises	0	oewn-photosynthesis-n	Number=Plur	dema	0			rule_variant
 photosynthesize	0		VerbForm=Inf	dema	0	photosynthesize	v	moby_reverse
 photosynthesized	0		Tense=Past+VerbForm=Part	dema	0	photosynthesize	v	rule
 photosynthesizes	0		Person=3+Tense=Pres	dema	0	photosynthesize	v	rule

@@ -15036,8 +15036,8 @@ rewelded	0		Tense=Past+VerbForm=Part	dema	0	reweld	v	rule
 rewelding	0		VerbForm=Ger	dema	0	reweld	v	rule
 rewelds	0		Person=3+Tense=Pres	dema	0	reweld	v	rule
 rewet	0		VerbForm=Inf	dema	0	rewet	v	moby_reverse
-reweting	0		VerbForm=Ger	dema	0	rewet	v	rule
 rewets	0		Person=3+Tense=Pres	dema	0	rewet	v	rule
+rewetting	0		VerbForm=Ger	dema	0	rewet	v	rule
 rewiden	0		VerbForm=Inf	dema	0	rewiden	v	moby_reverse
 rewidened	0		Tense=Past+VerbForm=Part	dema	0	rewiden	v	rule
 rewidening	0		VerbForm=Ger	dema	0	rewiden	v	rule

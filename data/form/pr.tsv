@@ -8756,7 +8756,7 @@ programmer	0	oewn-programmer-n	Number=Sing	dema	0			oewn_form
 programmers	0	oewn-programmer-n	Number=Plur	dema	0			rule
 programmes	0	oewn-programme-n	Number=Plur	dema	0			rule
 programmes	1	oewn-programme-v	Person=3+Tense=Pres	dema	0			rule
-programmes	2	oewn-program-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+programmes	2	oewn-program-v	Person=3+Tense=Pres	dema	0			oewn_form
 programming	0	oewn-programming-n	Number=Sing	dema	0			oewn_form
 programming	1	oewn-program-v	VerbForm=Ger	dema	0			oewn_form
 programming	2	oewn-programme-v	VerbForm=Ger	dema	0			rule
@@ -8766,7 +8766,7 @@ programming language	0	oewn-programming_language-n	Number=Sing	dema	0			oewn_for
 programming languages	0	oewn-programming_language-n	Number=Plur	dema	0			rule
 programmings	0	oewn-programming-n	Number=Plur	dema	0			rule
 programs	0	oewn-program-n	Number=Plur	dema	0			rule
-programs	1	oewn-program-v	Person=3+Tense=Pres	dema	0			rule
+programs	1	oewn-program-v	Person=3+Tense=Pres	dema	0			rule_variant
 progravid	0		Degree=Pos	dema	0	progravid	a	moby_reverse
 progress	0	oewn-progress-n	Number=Sing	dema	1			carried
 progress	1	oewn-progress-v	VerbForm=Inf	dema	1			carried

@@ -2000,7 +2000,7 @@ gams	0	oewn-gam-n	Number=Plur	dema	0			rule
 gamut	0	oewn-gamut-n	Number=Sing	dema	0			oewn_form
 gamuts	0	oewn-gamut-n	Number=Plur	dema	0			rule
 gamy	0	oewn-gamy-a	Degree=Pos	dema	0			oewn_form
-gan	0	oewn-gin-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+gan	0	oewn-gin-v	Tense=Past	dema	0			oewn_form
 gand flower	0	oewn-gand_flower-n	Number=Sing	dema	0			oewn_form
 gand flowers	0	oewn-gand_flower-n	Number=Plur	dema	0			rule
 gander	0	oewn-gander-n	Number=Sing	dema	0			oewn_form
@@ -2796,8 +2796,7 @@ gassed up	0	oewn-gas_up-v	Tense=Past+VerbForm=Part	dema	0			rule
 gasser	0		Number=Sing	dema	0	gasser	n	moby_reverse
 gassers	0		Number=Plur	dema	0	gasser	n	rule
 gasses	0	oewn-gas-n	Number=Plur	dema	0			oewn_form
-gasses	1	oewn-gas-v	Person=3+Tense=Pres	dema	0			rule_variant
-gasses	2	oewn-gas-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+gasses	1	oewn-gas-v	Person=3+Tense=Pres	dema	0			oewn_form
 gassier	0	oewn-gassy-a	Degree=Cmp	dema	0			oewn_form
 gassiest	0	oewn-gassy-a	Degree=Sup	dema	0			oewn_form
 gassiness	0		Number=Sing	dema	0	gassiness	n	moby_reverse
@@ -7221,54 +7220,6 @@ godson	0	oewn-godson-n	Number=Sing	dema	0			oewn_form
 godsons	0	oewn-godson-n	Number=Plur	dema	0			rule
 godwit	0	oewn-godwit-n	Number=Sing	dema	0			oewn_form
 godwits	0	oewn-godwit-n	Number=Plur	dema	0			rule
-goed Dutch	0	oewn-go_Dutch-v	Capitalization=Exact+Tense=Past+VerbForm=Part	dema	0			rule
-goed a long way	0	oewn-go_a_long_way-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed about	0	oewn-go_about-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed after	0	oewn-go_after-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed against	0	oewn-go_against-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed ahead	0	oewn-go_ahead-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed all out	0	oewn-go_all_out-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed along	0	oewn-go_along-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed around	0	oewn-go_around-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed away	0	oewn-go_away-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed back	0	oewn-go_back-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed back on	0	oewn-go_back_on-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed bad	0	oewn-go_bad-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed ballistic	0	oewn-go_ballistic-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed by	0	oewn-go_by-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed deep	0	oewn-go_deep-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed down	0	oewn-go_down-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed down on	0	oewn-go_down_on-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed far	0	oewn-go_far-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed for	0	oewn-go_for-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed for broke	0	oewn-go_for_broke-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed forth	0	oewn-go_forth-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed forward	0	oewn-go_forward-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed home	0	oewn-go_home-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed in	0	oewn-go_in-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed into	0	oewn-go_into-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed off	0	oewn-go_off-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed off at half-cock	0	oewn-go_off_at_half-cock-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed off half-cocked	0	oewn-go_off_half-cocked-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed on	0	oewn-go_on-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed out	0	oewn-go_out-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed over	0	oewn-go_over-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed past	0	oewn-go_past-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed steady	0	oewn-go_steady-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed through	0	oewn-go_through-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed through the motions	0	oewn-go_through_the_motions-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed through with	0	oewn-go_through_with-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed to	0	oewn-go_to-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed to bed	0	oewn-go_to_bed-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed to pieces	0	oewn-go_to_pieces-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed to pot	0	oewn-go_to_pot-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed to sleep	0	oewn-go_to_sleep-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed to the dogs	0	oewn-go_to_the_dogs-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed to war	0	oewn-go_to_war-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed under	0	oewn-go_under-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed up	0	oewn-go_up-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed with	0	oewn-go_with-v	Tense=Past+VerbForm=Part	dema	0			rule
-goed wrong	0	oewn-go_wrong-v	Tense=Past+VerbForm=Part	dema	0			rule
 goer	0	oewn-goer-n	Number=Sing	dema	0			oewn_form
 goer	1	oewn-go-a	Degree=Cmp	dema	0			rule
 goers	0	oewn-goer-n	Number=Plur	dema	0			rule

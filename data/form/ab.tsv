@@ -1153,7 +1153,6 @@ abwatt	0	oewn-abwatt-n	Number=Sing	dema	0			oewn_form
 abwatts	0	oewn-abwatt-n	Number=Plur	dema	0			rule
 aby	0	oewn-aby-v	VerbForm=Inf	dema	0			oewn_form
 abye	0	oewn-abye-v	VerbForm=Inf	dema	0			oewn_form
-abye	1	oewn-aby-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 abyed	0	oewn-abye-v	Tense=Past+VerbForm=Part	dema	0			rule
 abyeing	0	oewn-abye-v	VerbForm=Ger	dema	0			rule_variant
 abyes	0	oewn-abye-v	Person=3+Tense=Pres	dema	0			rule

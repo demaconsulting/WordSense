@@ -1511,7 +1511,6 @@ tabernacles	0	oewn-tabernacle-n	Number=Plur	dema	0			rule
 tabernacular	0		Degree=Pos	dema	0	tabernacular	a	moby_reverse
 tabers	0		Number=Plur	dema	0	taber	n	rule
 tabes	0	oewn-tabes-n	Number=Sing	dema	0			oewn_form
-tabes	1	oewn-tabis-n	Number=Plur	dema	0			agid
 tabes dorsalis	0	oewn-tabes_dorsalis-n	Number=Sing	dema	0			oewn_form
 tabescence	0		Number=Sing	dema	0	tabescence	n	moby_reverse
 tabescences	0		Number=Plur	dema	0	tabescence	n	rule
@@ -12589,7 +12588,6 @@ tradership	0		Number=Sing	dema	0	tradership	n	moby_reverse
 traderships	0		Number=Plur	dema	0	tradership	n	rule
 trades	0	oewn-trade-n	Number=Plur	dema	0			rule
 trades	1	oewn-trade-v	Person=3+Tense=Pres	dema	0			rule
-trades	2	oewn-trad-n	Number=Plur	dema	0			agid
 trades in	0	oewn-trade_in-v	Person=3+Tense=Pres	dema	0			rule
 trades union	0	oewn-trades_union-n	Number=Sing	dema	0			oewn_form
 trades unions	0	oewn-trades_union-n	Number=Plur	dema	0			rule
@@ -12864,7 +12862,7 @@ trameled	0	oewn-trammel-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 trameling	0	oewn-trammel-v	VerbForm=Ger	dema	0			oewn_form
 tramelled	0	oewn-trammel-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 tramelling	0	oewn-trammel-v	VerbForm=Ger	dema	0			oewn_form
-tramels	0	oewn-trammel-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+tramels	0	oewn-trammel-v	Person=3+Tense=Pres	dema	0			oewn_form
 tramless	0		Degree=Pos	dema	0	tramless	a	moby_reverse
 tramline	0	oewn-tramline-n	Number=Sing	dema	0			oewn_form
 tramlines	0	oewn-tramline-n	Number=Plur	dema	0			rule
@@ -12882,7 +12880,7 @@ trammeller	0		Number=Sing	dema	0	trammeller	n	moby_reverse
 trammellers	0		Number=Plur	dema	0	trammeller	n	rule
 trammelling	0	oewn-trammel-v	VerbForm=Ger	dema	0			rule_variant
 trammels	0	oewn-trammel-n	Number=Plur	dema	0			rule
-trammels	1	oewn-trammel-v	Person=3+Tense=Pres	dema	0			rule
+trammels	1	oewn-trammel-v	Person=3+Tense=Pres	dema	0			rule_variant
 trammie	0		Number=Sing	dema	0	trammie	n	moby_reverse
 trammies	0		Number=Plur	dema	0	trammie	n	rule
 tramming	0	oewn-tram-v	VerbForm=Ger	dema	0			oewn_form

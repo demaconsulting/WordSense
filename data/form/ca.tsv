@@ -6616,8 +6616,7 @@ caterwaulers	0		Number=Plur	dema	0	caterwauler	n	rule
 caterwauling	0	oewn-caterwaul-v	VerbForm=Ger	dema	0			rule
 caterwauls	0	oewn-caterwaul-v	Person=3+Tense=Pres	dema	0			rule
 caterwauls	1	oewn-caterwaul-n	Number=Plur	dema	0			rule
-cates	0	oewn-CAT-n	Number=Plur	dema	1			hand
-cates	1		Number=Plur	dema	0	cate	n	rule
+cates	0		Number=Plur	dema	0	cate	n	rule
 catface	0		Number=Sing	dema	0	catface	n	moby_reverse
 catfaced	0		Degree=Pos	dema	0	catfaced	a	moby_reverse
 catfaced	1		VerbForm=Inf	dema	0	catfaced	v	moby_reverse

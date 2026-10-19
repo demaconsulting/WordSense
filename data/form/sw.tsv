@@ -356,7 +356,7 @@ swapped	0	oewn-swap-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 swapper	0		Number=Sing	dema	0	swapper	n	moby_reverse
 swappers	0		Number=Plur	dema	0	swapper	n	rule
 swapping	0	oewn-swap-v	VerbForm=Ger	dema	0			oewn_form
-swaps	0	oewn-swap-v	Person=3+Tense=Pres	dema	0			rule
+swaps	0	oewn-swap-v	Person=3+Tense=Pres	dema	0			rule_variant
 swaps	1	oewn-swap-n	Number=Plur	dema	0			rule
 swaraj	0		Number=Sing	dema	0	swaraj	n	moby_reverse
 swaraj	1		Degree=Pos	dema	0	swaraj	a	moby_reverse
@@ -1208,7 +1208,7 @@ swopping	0	oewn-swap-v	VerbForm=Ger	dema	0			oewn_form
 swopping	1	oewn-swop-v	VerbForm=Ger	dema	0			rule
 swops	0	oewn-swop-n	Number=Plur	dema	0			rule
 swops	1	oewn-swop-v	Person=3+Tense=Pres	dema	0			rule
-swops	2	oewn-swap-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+swops	2	oewn-swap-v	Person=3+Tense=Pres	dema	0			oewn_form
 sword	0	oewn-sword-n	Number=Sing	dema	0			oewn_form
 sword bean	0	oewn-sword_bean-n	Number=Sing	dema	0			oewn_form
 sword beans	0	oewn-sword_bean-n	Number=Plur	dema	0			rule

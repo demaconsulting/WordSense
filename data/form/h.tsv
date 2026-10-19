@@ -3972,11 +3972,14 @@ hates	0	oewn-hate-n	Number=Plur	dema	1			carried
 hates	1	oewn-hate-v	Person=3+Tense=Pres	dema	1			carried
 hatful	0	oewn-hatful-n	Number=Sing	dema	0			oewn_form
 hatfuls	0	oewn-hatful-n	Number=Plur	dema	0			rule
-hath	0	oewn-have-v	Person=3+Tense=Pres	dema	0			agid
+hath	0		VerbForm=Inf	dema	0	hath	v	moby_reverse
 hatha yoga	0	oewn-hatha_yoga-n	Number=Sing	dema	0			oewn_form
 hatha yogas	0	oewn-hatha_yoga-n	Number=Plur	dema	0			rule
+hathed	0		Tense=Past+VerbForm=Part	dema	0	hath	v	rule
+hathing	0		VerbForm=Ger	dema	0	hath	v	rule
 hathpace	0		Number=Sing	dema	0	hathpace	n	moby_reverse
 hathpaces	0		Number=Plur	dema	0	hathpace	n	rule
+haths	0		Person=3+Tense=Pres	dema	0	hath	v	rule
 hating	0	oewn-hate-v	VerbForm=Ger	dema	1			carried
 hating	1	oewn-hate-n	Number=Sing+VerbForm=Ger	dema	1			carried
 hatless	0	oewn-hatless-a	Degree=Pos	dema	0			oewn_form

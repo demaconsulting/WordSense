@@ -5335,13 +5335,12 @@ whizz-kid	0	oewn-whizz-kid-n	Number=Sing	dema	0			oewn_form
 whizz-kids	0	oewn-whizz-kid-n	Number=Plur	dema	0			rule
 whizzbang	0	oewn-whizzbang-n	Number=Sing	dema	0			oewn_form
 whizzbangs	0	oewn-whizzbang-n	Number=Plur	dema	0			rule
-whizzed	0	oewn-whiz-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+whizzed	0	oewn-whiz-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 whizzed	1	oewn-whizz-v	Tense=Past+VerbForm=Part	dema	0			rule
 whizzed along	0	oewn-whizz_along-v	Tense=Past+VerbForm=Part	dema	0			rule
-whizzes	0	oewn-whiz-v	Tense=Past+VerbForm=Part	dema	0			hand
-whizzes	1	oewn-whiz-v	Person=3+Tense=Pres	dema	0			agid
-whizzes	2	oewn-whizz-n	Number=Plur	dema	0			rule
-whizzes	3	oewn-whizz-v	Person=3+Tense=Pres	dema	0			rule
+whizzes	0	oewn-whiz-v	Person=3+Tense=Pres	dema	0			hand
+whizzes	1	oewn-whizz-n	Number=Plur	dema	0			rule
+whizzes	2	oewn-whizz-v	Person=3+Tense=Pres	dema	0			rule
 whizzes along	0	oewn-whizz_along-v	Person=3+Tense=Pres	dema	0			rule
 whizzing	0	oewn-whiz-v	VerbForm=Ger	dema	0			oewn_form
 whizzing	1	oewn-whizz-v	VerbForm=Ger	dema	0			rule

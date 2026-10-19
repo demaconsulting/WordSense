@@ -1177,7 +1177,7 @@ quick-eared	0	oewn-quick-eared-a	Degree=Pos	dema	0			oewn_form
 quick-freeze	0	oewn-quick-freeze-v	VerbForm=Inf	dema	0			oewn_form
 quick-freezes	0	oewn-quick-freeze-v	Person=3+Tense=Pres	dema	0			rule
 quick-freezing	0	oewn-quick-freeze-v	VerbForm=Ger	dema	0			rule
-quick-froze	0	oewn-quick-freeze-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+quick-froze	0	oewn-quick-freeze-v	Tense=Past	dema	0			oewn_form
 quick-frozen	0	oewn-quick-freeze-v	VerbForm=Part	dema	0			oewn_form
 quick-frozen	1	oewn-quick-frozen-a	Degree=Pos	dema	0			oewn_form
 quick-sighted	0	oewn-quick-sighted-a	Degree=Pos	dema	0			oewn_form
@@ -1584,12 +1584,11 @@ quiz programs	0	oewn-quiz_program-n	Number=Plur	dema	0			rule
 quizmaster	0	oewn-quizmaster-n	Number=Sing	dema	0			oewn_form
 quizmasters	0	oewn-quizmaster-n	Number=Plur	dema	0			rule
 quizzable	0		Degree=Pos	dema	0	quizzable	a	moby_reverse
-quizzed	0	oewn-quiz-v	Tense=Past+VerbForm=Part	dema	0			moby_reverse
+quizzed	0	oewn-quiz-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 quizzer	0	oewn-quizzer-n	Number=Sing	dema	0			oewn_form
 quizzers	0	oewn-quizzer-n	Number=Plur	dema	0			rule
 quizzes	0	oewn-quiz-n	Number=Plur	dema	0			hand
-quizzes	1	oewn-quiz-v	Tense=Past+VerbForm=Part	dema	0			hand
-quizzes	2	oewn-quiz-v	Person=3+Tense=Pres	dema	0			agid
+quizzes	1	oewn-quiz-v	Person=3+Tense=Pres	dema	0			hand
 quizzical	0	oewn-quizzical-a	Degree=Pos	dema	0			oewn_form
 quizzicalities	0		Number=Plur	dema	0	quizzicality	n	rule
 quizzicality	0		Number=Sing	dema	0	quizzicality	n	moby_reverse

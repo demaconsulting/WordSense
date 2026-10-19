@@ -687,11 +687,10 @@ co-option	0	oewn-co-option-n	Number=Sing	dema	0			oewn_form
 co-options	0	oewn-co-option-n	Number=Plur	dema	0			rule
 co-opts	0	oewn-co-opt-v	Person=3+Tense=Pres	dema	0			rule
 co-ordinate	0	oewn-co-ordinate-n	Number=Sing	dema	0			oewn_form
-co-ordinate	1	oewn-coordinate-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 co-ordinated	0	oewn-coordinate-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 co-ordinated	1	oewn-co-ordinated-a	Degree=Pos	dema	0			oewn_form
 co-ordinates	0	oewn-co-ordinate-n	Number=Plur	dema	0			rule
-co-ordinates	1	oewn-coordinate-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+co-ordinates	1	oewn-coordinate-v	Person=3+Tense=Pres	dema	0			oewn_form
 co-ordinating	0	oewn-coordinate-v	VerbForm=Ger	dema	0			oewn_form
 co-ordinator	0	oewn-co-ordinator-n	Number=Sing	dema	0			oewn_form
 co-ordinators	0	oewn-co-ordinator-n	Number=Plur	dema	0			rule

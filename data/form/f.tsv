@@ -5412,7 +5412,6 @@ filariae	0		Number=Sing	dema	0	filariae	n	moby_reverse
 filariaes	0		Number=Plur	dema	0	filariae	n	rule
 filarial	0	oewn-filarial-a	Degree=Pos	dema	0			oewn_form
 filariasis	0	oewn-filariasis-n	Number=Sing	dema	0			oewn_form
-filariiae	0	oewn-filaria-n	Number=Plur	dema	0			oewn_form
 filariid	0	oewn-filariid-a	Degree=Pos	dema	0			oewn_form
 filariid	1		Number=Sing	dema	0	filariid	n	moby_reverse
 filasse	0		Number=Sing	dema	0	filasse	n	moby_reverse

@@ -13606,7 +13606,6 @@ unmandated	0		Degree=Pos	dema	0	unmandated	a	moby_reverse
 unmandated	1		VerbForm=Inf	dema	0	unmandated	v	moby_reverse
 unmandatory	0		Degree=Pos	dema	0	unmandatory	a	moby_reverse
 unmaned	0		Degree=Pos	dema	0	unmaned	a	moby_reverse
-unmaned	1	oewn-unman-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 unmaneuvered	0		Degree=Pos	dema	0	unmaneuvered	a	moby_reverse
 unmaneuvered	1		VerbForm=Inf	dema	0	unmaneuvered	v	moby_reverse
 unmanful	0	oewn-unmanful-a	Degree=Pos	dema	0			oewn_form
@@ -17970,7 +17969,6 @@ unriotously	0		Degree=Pos	dema	0	unriotously	r	moby_reverse
 unriotousness	0		Number=Sing	dema	0	unriotousness	n	moby_reverse
 unrip	0		VerbForm=Inf	dema	0	unrip	v	moby_reverse
 unripe	0	oewn-unripe-a	Degree=Pos	dema	0			oewn_form
-unriped	0		Tense=Past+VerbForm=Part	dema	0	unrip	v	rule
 unripely	0		Degree=Pos	dema	0	unripely	r	moby_reverse
 unripened	0	oewn-unripened-a	Degree=Pos	dema	0			oewn_form
 unripened	1		VerbForm=Inf	dema	0	unripened	v	moby_reverse
@@ -17978,8 +17976,9 @@ unripeness	0		Number=Sing	dema	0	unripeness	n	moby_reverse
 unripenesses	0		Number=Plur	dema	0	unripeness	n	rule
 unripening	0		Degree=Pos	dema	0	unripening	a	moby_reverse
 unripening	1		VerbForm=Inf	dema	0	unripening	v	moby_reverse
-unriping	0		VerbForm=Ger	dema	0	unrip	v	rule
 unrippable	0		Degree=Pos	dema	0	unrippable	a	moby_reverse
+unripped	0		Tense=Past+VerbForm=Part	dema	0	unrip	v	rule
+unripping	0		VerbForm=Ger	dema	0	unrip	v	rule
 unrippled	0		Degree=Pos	dema	0	unrippled	a	moby_reverse
 unrippled	1		VerbForm=Inf	dema	0	unrippled	v	moby_reverse
 unrippling	0		Degree=Pos	dema	0	unrippling	a	moby_reverse

@@ -1162,7 +1162,6 @@ cercarial	0	oewn-cercarial-a	Degree=Pos	dema	0			oewn_form
 cercarian	0		Degree=Pos	dema	0	cercarian	a	moby_reverse
 cercarian	1		Number=Sing	dema	0	cercarian	n	moby_reverse
 cercarias	0	oewn-cercaria-n	Number=Plur	dema	0			rule_variant
-cercariiae	0	oewn-cercaria-n	Number=Plur	dema	0			oewn_form
 cerci	0		Number=Sing	dema	0	cerci	n	moby_reverse
 cercis	0		Number=Plur	dema	0	cerci	n	rule
 cercus	0		Number=Sing	dema	0	cercus	n	moby_reverse

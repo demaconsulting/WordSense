@@ -4880,9 +4880,9 @@ defyingly	0		Degree=Pos	dema	0	defyingly	r	moby_reverse
 deg	0		Number=Sing	dema	0	deg	n	moby_reverse
 degage	0	oewn-degage-a	Degree=Pos	dema	0			oewn_form
 degas	0	oewn-degas-v	VerbForm=Inf	dema	0			oewn_form
-degases	0	oewn-degas-v	Person=3+Tense=Pres	dema	0			rule
+degases	0	oewn-degas-v	Person=3+Tense=Pres	dema	0			rule_variant
 degassed	0	oewn-degas-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
-degasses	0	oewn-degas-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+degasses	0	oewn-degas-v	Person=3+Tense=Pres	dema	0			oewn_form
 degassing	0	oewn-degas-v	VerbForm=Ger	dema	0			oewn_form
 degauss	0	oewn-degauss-v	VerbForm=Inf	dema	0			oewn_form
 degaussed	0	oewn-degauss-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -14769,21 +14769,6 @@ dodoisms	0		Number=Plur	dema	0	dodoism	n	rule
 dodos	0	oewn-dodo-n	Number=Plur	dema	0			rule_variant
 doe	0	oewn-doe-n	Number=Plur	dema	0			agid
 doe	1	oewn-doe-n	Number=Sing	dema	0			oewn_form
-doed a job on	0	oewn-do_a_job_on-v	Tense=Past+VerbForm=Part	dema	0			rule
-doed away with	0	oewn-do_away_with-v	Tense=Past+VerbForm=Part	dema	0			rule
-doed by	0	oewn-do_by-v	Tense=Past+VerbForm=Part	dema	0			rule
-doed drugs	0	oewn-do_drugs-v	Tense=Past+VerbForm=Part	dema	0			rule
-doed good	0	oewn-do_good-v	Tense=Past+VerbForm=Part	dema	0			rule
-doed in	0	oewn-do_in-v	Tense=Past+VerbForm=Part	dema	0			rule
-doed it	0	oewn-do_it-v	Tense=Past+VerbForm=Part	dema	0			rule
-doed justice	0	oewn-do_justice-v	Tense=Past+VerbForm=Part	dema	0			rule
-doed one's best	0	oewn-do_one-ap-s_best-v	Tense=Past+VerbForm=Part	dema	0			rule
-doed the dishes	0	oewn-do_the_dishes-v	Tense=Past+VerbForm=Part	dema	0			rule
-doed the honors	0	oewn-do_the_honors-v	Tense=Past+VerbForm=Part	dema	0			rule
-doed up	0	oewn-do_up-v	Tense=Past+VerbForm=Part	dema	0			rule
-doed well	0	oewn-do_well-v	Tense=Past+VerbForm=Part	dema	0			rule
-doed well by	0	oewn-do_well_by-v	Tense=Past+VerbForm=Part	dema	0			rule
-doed work	0	oewn-do_work-v	Tense=Past+VerbForm=Part	dema	0			rule
 doek	0		Number=Sing	dema	0	doek	n	moby_reverse
 doeks	0		Number=Plur	dema	0	doek	n	rule
 doer	0	oewn-doer-n	Number=Sing	dema	0			oewn_form
