@@ -35,6 +35,9 @@ internal static class Program
 {
     private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: compile-image, rebuild-forms, audit-forms, generate-facts, import-agid, import-moby, weights <modelId>, evaluate <modelId>, ud-counts, ud-irregular, coverage, train-basic, tune-basic, appendix, import-oewn, validate-data.";
 
+    /// <summary>The name of the option that gives the input file of an import command.</summary>
+    private const string InputOption = "input";
+
     /// <summary>
     ///     Runs the builder.
     /// </summary>
@@ -82,7 +85,7 @@ internal static class Program
                     output.WriteLine($"Wrote the word image to {imageOutput}: {image.Spellings.ToString(CultureInfo.InvariantCulture)} spellings, {image.Analyses.ToString(CultureInfo.InvariantCulture)} analyses, {image.Entries.ToString(CultureInfo.InvariantCulture)} entries, {image.Bytes.ToString(CultureInfo.InvariantCulture)} bytes.");
                     return 0;
                 case "import-moby":
-                    var mobyInput = Require(options, "input");
+                    var mobyInput = Require(options, InputOption);
                     var lexiconOutput = options.TryGetValue("output", out var lo) ? lo : Path.Combine(corpus, "lexicon", LexiconSource.LexiconFile);
                     var imported = LexiconImporter.Import(mobyInput, lexiconOutput);
                     output.WriteLine(LexiconImporter.Render(imported));
@@ -153,7 +156,7 @@ internal static class Program
                     return RunAuditForms(options, repository, output, error);
                 case "import-agid":
                     var agidOutput = options.TryGetValue("output", out var ao) ? ao : Path.Combine(corpus, "lexicon", Data.IrregularSources.AgidFile);
-                    output.WriteLine(Data.AgidImporter.Import(Require(options, "input"), corpus, agidOutput));
+                    output.WriteLine(Data.AgidImporter.Import(Require(options, InputOption), corpus, agidOutput));
                     return 0;
                 case "appendix":
                     var appendix = options.TryGetValue("output", out var a) ? a : Path.Combine(repository, "docs", "user_guide", "appendix-senses.md");
@@ -172,7 +175,7 @@ internal static class Program
         }
     }
 
-    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "ud", "refresh-ud", "table", "input", "text", "top", "data", "sha256", "threshold", "overwrite", "outcomes", "oewn", "agid", "sample", "seed", "oracle", "adjudications", "max-error", "previous", "previous-release", "previous-sha256"], StringComparer.Ordinal);
+    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "ud", "refresh-ud", "table", InputOption, "text", "top", "data", "sha256", "threshold", "overwrite", "outcomes", "oewn", "agid", "sample", "seed", "oracle", "adjudications", "max-error", "previous", "previous-release", "previous-sha256"], StringComparer.Ordinal);
 
     private static int RunImportOewn(Dictionary<string, string> options, string repository, TextWriter output)
     {
@@ -188,7 +191,7 @@ internal static class Program
         var sha = options.TryGetValue("sha256", out var s) ? s : Data.OewnImporter.PinnedSha256;
         var threshold = options.TryGetValue("threshold", out var t) ? int.Parse(t, CultureInfo.InvariantCulture) : Data.OewnImporter.DefaultSplitThreshold;
         var overwrite = options.TryGetValue("overwrite", out var w) && string.Equals(w, "true", StringComparison.OrdinalIgnoreCase);
-        var result = Data.OewnImporter.Import(Require(options, "input"), data, Path.Combine(data, "schema.yaml"), string.Equals(sha, "none", StringComparison.OrdinalIgnoreCase) ? null : sha, threshold, overwrite);
+        var result = Data.OewnImporter.Import(Require(options, InputOption), data, Path.Combine(data, "schema.yaml"), string.Equals(sha, "none", StringComparison.OrdinalIgnoreCase) ? null : sha, threshold, overwrite);
         output.Write(result.Render());
         return 0;
     }

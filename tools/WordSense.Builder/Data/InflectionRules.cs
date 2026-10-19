@@ -14,6 +14,21 @@ namespace WordSense.Builder.Data;
 /// </remarks>
 internal static partial class InflectionRules
 {
+    /// <summary>The UD feature string of a plural noun.</summary>
+    internal const string FeaturePlural = "Number=Plur";
+
+    /// <summary>The UD feature string of a past participle (the form shared with the past tense).</summary>
+    internal const string FeaturePastParticiple = "Tense=Past+VerbForm=Part";
+
+    /// <summary>The UD feature string of a gerund.</summary>
+    internal const string FeatureGerund = "VerbForm=Ger";
+
+    /// <summary>The UD feature string of a comparative adjective.</summary>
+    internal const string FeatureComparative = "Degree=Cmp";
+
+    /// <summary>The UD feature string of a superlative adjective.</summary>
+    internal const string FeatureSuperlative = "Degree=Sup";
+
     private static readonly HashSet<string> NounEsO = new(
         ["potato", "tomato", "hero", "echo", "veto", "torpedo", "embargo", "tornado", "volcano", "buffalo", "domino", "mosquito", "cargo", "mango"],
         StringComparer.Ordinal);
@@ -205,23 +220,23 @@ internal static partial class InflectionRules
             case "n":
                 if (w.EndsWith("ies", StringComparison.Ordinal))
                 {
-                    result.Add((w[..^3] + "y", "Number=Plur"));
+                    result.Add((w[..^3] + "y", FeaturePlural));
                 }
 
                 if (w.EndsWith("es", StringComparison.Ordinal))
                 {
-                    result.Add((w[..^2], "Number=Plur"));
+                    result.Add((w[..^2], FeaturePlural));
                 }
 
                 if (w.EndsWith("ves", StringComparison.Ordinal))
                 {
-                    result.Add((w[..^3] + "f", "Number=Plur"));
-                    result.Add((w[..^3] + "fe", "Number=Plur"));
+                    result.Add((w[..^3] + "f", FeaturePlural));
+                    result.Add((w[..^3] + "fe", FeaturePlural));
                 }
 
                 if (w.EndsWith('s') && !w.EndsWith("ss", StringComparison.Ordinal))
                 {
-                    result.Add((w[..^1], "Number=Plur"));
+                    result.Add((w[..^1], FeaturePlural));
                 }
 
                 break;
@@ -243,31 +258,31 @@ internal static partial class InflectionRules
 
                 if (w.EndsWith("ied", StringComparison.Ordinal))
                 {
-                    result.Add((w[..^3] + "y", "Tense=Past+VerbForm=Part"));
+                    result.Add((w[..^3] + "y", FeaturePastParticiple));
                 }
 
                 if (w.EndsWith("ed", StringComparison.Ordinal))
                 {
-                    result.Add((w[..^2], "Tense=Past+VerbForm=Part"));
-                    result.Add((w[..^1], "Tense=Past+VerbForm=Part"));
+                    result.Add((w[..^2], FeaturePastParticiple));
+                    result.Add((w[..^1], FeaturePastParticiple));
                     if (w.Length > 4 && w[^3] == w[^4])
                     {
-                        result.Add((w[..^3], "Tense=Past+VerbForm=Part"));
+                        result.Add((w[..^3], FeaturePastParticiple));
                     }
                 }
 
                 if (w.EndsWith("ing", StringComparison.Ordinal))
                 {
-                    result.Add((w[..^3], "VerbForm=Ger"));
-                    result.Add((w[..^3] + "e", "VerbForm=Ger"));
+                    result.Add((w[..^3], FeatureGerund));
+                    result.Add((w[..^3] + "e", FeatureGerund));
                     if (w.Length > 5 && w[^4] == w[^5])
                     {
-                        result.Add((w[..^4], "VerbForm=Ger"));
+                        result.Add((w[..^4], FeatureGerund));
                     }
 
                     if (w.EndsWith("ying", StringComparison.Ordinal))
                     {
-                        result.Add((w[..^4] + "ie", "VerbForm=Ger"));
+                        result.Add((w[..^4] + "ie", FeatureGerund));
                     }
                 }
 
@@ -276,31 +291,31 @@ internal static partial class InflectionRules
             case "r":
                 if (w.EndsWith("ier", StringComparison.Ordinal))
                 {
-                    result.Add((w[..^3] + "y", "Degree=Cmp"));
+                    result.Add((w[..^3] + "y", FeatureComparative));
                 }
 
                 if (w.EndsWith("iest", StringComparison.Ordinal))
                 {
-                    result.Add((w[..^4] + "y", "Degree=Sup"));
+                    result.Add((w[..^4] + "y", FeatureSuperlative));
                 }
 
                 if (w.EndsWith("er", StringComparison.Ordinal))
                 {
-                    result.Add((w[..^2], "Degree=Cmp"));
-                    result.Add((w[..^1], "Degree=Cmp"));
+                    result.Add((w[..^2], FeatureComparative));
+                    result.Add((w[..^1], FeatureComparative));
                     if (w.Length > 4 && w[^3] == w[^4])
                     {
-                        result.Add((w[..^3], "Degree=Cmp"));
+                        result.Add((w[..^3], FeatureComparative));
                     }
                 }
 
                 if (w.EndsWith("est", StringComparison.Ordinal))
                 {
-                    result.Add((w[..^3], "Degree=Sup"));
-                    result.Add((w[..^2], "Degree=Sup"));
+                    result.Add((w[..^3], FeatureSuperlative));
+                    result.Add((w[..^2], FeatureSuperlative));
                     if (w.Length > 5 && w[^4] == w[^5])
                     {
-                        result.Add((w[..^4], "Degree=Sup"));
+                        result.Add((w[..^4], FeatureSuperlative));
                     }
                 }
 

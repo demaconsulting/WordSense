@@ -31,6 +31,9 @@ internal static class FactGenerator
     /// <summary>The header line of a fact file.</summary>
     public const string Header = "category\tword\tlemma\tpos\tfeatures\tmode";
 
+    /// <summary>The category of the facts generated from a sampled regular verb.</summary>
+    private const string SourceRegularVerb = "source-regular-verb";
+
     /// <summary>One fact row.</summary>
     /// <param name="Category">The category (the origin of the row).</param>
     /// <param name="Word">The spelling.</param>
@@ -86,8 +89,8 @@ internal static class FactGenerator
         foreach (var lemma in Sample(entries.Where(e => e.Pos == "v" && IsPlain(e.Lemma) && !irregular.Contains((e.Lemma, "v"))).Select(e => e.Lemma), seed, sample))
         {
             var forms = InflectionRules.VerbRegular(lemma, listed.Contains);
-            facts.Add(new Fact("source-regular-verb", InflectionRules.VerbThirdPerson(lemma), lemma, "Verb", "Person=3+Tense=Pres"));
-            var past = new Fact("source-regular-verb", forms.Past[0], lemma, "Verb", "Tense=Past+VerbForm=Part");
+            facts.Add(new Fact(SourceRegularVerb, InflectionRules.VerbThirdPerson(lemma), lemma, "Verb", "Person=3+Tense=Pres"));
+            var past = new Fact(SourceRegularVerb, forms.Past[0], lemma, "Verb", "Tense=Past+VerbForm=Part");
             if (listed.Contains(past.Word) || Holds(past, WordLexicon.Lookup(past.Word)))
             {
                 facts.Add(past);
@@ -97,10 +100,10 @@ internal static class FactGenerator
                 // A generated -ed form ships only with a second source: the dictionary listing it, or the inflection database
                 // (not part of the repository). A form that the dictionary does not list and the table does not carry is withheld
                 // by that rule and named with its reason; a dictionary-listed form that is missing is a failing fact
-                withheld.Add(new Withheld("source-regular-verb", past.Word, lemma, NoSecondSource));
+                withheld.Add(new Withheld(SourceRegularVerb, past.Word, lemma, NoSecondSource));
             }
 
-            facts.Add(new Fact("source-regular-verb", forms.Gerund[0], lemma, "Verb", "VerbForm=Ger"));
+            facts.Add(new Fact(SourceRegularVerb, forms.Gerund[0], lemma, "Verb", "VerbForm=Ger"));
         }
 
         foreach (var lemma in Sample(entries.Where(e => e.Pos == "n" && IsPlain(e.Lemma) && !e.Lemma.EndsWith('s') && !irregular.Contains((e.Lemma, "n"))).Select(e => e.Lemma), seed, sample))

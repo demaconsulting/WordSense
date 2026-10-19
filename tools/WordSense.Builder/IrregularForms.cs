@@ -38,6 +38,9 @@ internal static class IrregularForms
     /// </summary>
     public const string HandFile = "irregular-forms.tsv";
 
+    /// <summary>The rule name of a form that is none of the named inflection rules.</summary>
+    private const string OtherRule = "Other";
+
     /// <summary>
     ///     The name of the list derived from the treebank (test oracle only).
     /// </summary>
@@ -154,7 +157,7 @@ internal static class IrregularForms
 
         var regular = new Dictionary<string, HashSet<string>>(StringComparer.Ordinal);
         var groups = new SortedDictionary<(string Lemma, char Letter, string Rule), List<(string Form, int Count)>>();
-        foreach (var ((lemma, letter, rule, form), count) in counts.Where(c => c.Value >= MinCount && c.Key.Rule != "Other" && !lexicon.ContainsKey(c.Key.Form)))
+        foreach (var ((lemma, letter, rule, form), count) in counts.Where(c => c.Value >= MinCount && c.Key.Rule != OtherRule && !lexicon.ContainsKey(c.Key.Form)))
         {
             if (!regular.TryGetValue(lemma, out var forms))
             {
@@ -245,7 +248,7 @@ internal static class IrregularForms
     {
         if (letter == 'N')
         {
-            return features.Contains("Number=Plur", StringComparison.Ordinal) ? "Plural" : "Other";
+            return features.Contains("Number=Plur", StringComparison.Ordinal) ? "Plural" : OtherRule;
         }
 
         if (letter == 'V')
@@ -256,7 +259,7 @@ internal static class IrregularForms
                 return "Participle";
             }
 
-            return past ? "Past" : "Other";
+            return past ? "Past" : OtherRule;
         }
 
         if (features.Contains("Degree=Cmp", StringComparison.Ordinal))
@@ -264,6 +267,6 @@ internal static class IrregularForms
             return "Comparative";
         }
 
-        return features.Contains("Degree=Sup", StringComparison.Ordinal) ? "Superlative" : "Other";
+        return features.Contains("Degree=Sup", StringComparison.Ordinal) ? "Superlative" : OtherRule;
     }
 }
