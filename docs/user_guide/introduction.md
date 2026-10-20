@@ -327,9 +327,12 @@ level:
 
 <!-- markdownlint-enable MD013 -->
 
-The thresholds of each lemma were measured when the weights were trained, by cross-validation on the lemma's own
-training sentences, for a precision target of 95 percent at each level (a lemma has a group threshold only when it has
-groups; a level whose target was never reached is never answered for that lemma); they decide the level of an answer.
+The thresholds of each lemma were measured when the weights were trained: first by cross-validation on the lemma's own
+training sentences, for a precision target of 95 percent at each level, and then moved up on real text. Real held-out
+sentences of documents that are kept apart from the test documents (the calibration split) are scored, and the thresholds
+are raised, with one shift for all lemmas that have few such sentences and a threshold of their own for a lemma that has
+many, until the answers on them reach the target (a lemma has a group threshold only when it has groups; a level whose
+target was never reached is never answered for that lemma); they decide the level of an answer.
 The `Confidence` that the result carries is the probability of the answer at that level:
 
 <!-- markdownlint-disable MD013 -->
@@ -346,8 +349,9 @@ A word with one lemma and part of speech and one sense has the confidence 1, and
 grows with the margin
 of the model's evidence, but it is comparable only within one result: do not compare it across models, across words or
 across levels as if it were calibrated, and tune any threshold per model and level on your own text. The precision that
-the models reach on independent text (SemCor) is lower than the target on the training sentences and is published per
-level in the README model table.
+the models reach on real held-out text (the test split of the corpus, never seen by the weights or the thresholds) is
+published per level in the README model table and in `docs/build_notes/quota-fill.md`; it is measured on a balanced
+corpus, so it is not the precision on typical running text, and the independent text (SemCor) is the check for that.
 
 The `Level` is what to test. A `PartOfSpeech` result from an encoder model for a trained lemma still lists the ranked
 senses of its analysis: use the best of them as a guess, or treat the word as unresolved.

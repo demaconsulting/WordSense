@@ -151,23 +151,56 @@ sections:
 
           - id: WordSense-WordSenseBuilder-Thresholds
             title: >-
-              The builder shall choose for every trained lemma a fine threshold, and for a lemma that has groups also a
-              group threshold, by
-              cross-validation on the anchors of the lemma only, so that the answers above each threshold reach a
-              configured precision target (95 percent by default), deterministically, and shall never read the
-              held-out, real-text, suite or independent evaluation sentences to choose them; a level for which no
-              threshold reaches the target shall never be answered for that lemma.
+              The builder shall choose for every trained lemma a first fine threshold, and for a lemma that has groups
+              also a first group threshold, by cross-validation on the anchors of the lemma only, so that the answers
+              above each threshold reach a configured precision target (95 percent by default), deterministically; a
+              level for which no threshold reaches the target shall never be answered for that lemma. These first
+              thresholds are the input of the real-text calibration (WordSense-WordSenseBuilder-RealCalibration), which
+              is the only step that may read held-out sentences to move them.
             tags: [unit]
             justification: |
               Per-lemma thresholds make the confidence of each answer mean the same thing for every lemma and every
-              model; choosing them on anchors alone keeps every published accuracy figure independent of the
-              thresholds, and never answering a level that cannot meet the target keeps the promise honest.
+              model, and never answering a level that cannot meet the target keeps the promise honest. The anchor
+              cross-validation is the conservative starting point and a lemma with no real calibration rows keeps it;
+              it is optimistic on real text (its anchors are balanced and partly written), which is why the real-text
+              calibration follows.
             tests:
               - WordSenseBuilder_Thresholds_Choose_MeetPrecisionTargetOnOutOfFoldAnswers
               - WordSenseBuilder_Thresholds_Choose_IsDeterministicForSeed
               - WordSenseBuilder_Thresholds_Choose_NeverReadsHoldoutOrEvaluationSentences
               - WordSenseBuilder_Thresholds_Choose_TargetNeverReached_NeverAnswersThatLevel
               - WordSenseBuilder_ModelTrainer_TrainDataAsync_WritesBothThresholdsPerLemma
+
+          - id: WordSense-WordSenseBuilder-RealCalibration
+            title: >-
+              The builder shall split the real-text held-out sentences (provenance origin real) by document into a
+              calibration split and a test split with a fixed, recorded rule (the first bit of the SHA-256 of the
+              document identifier; a Tatoeba sentence is its own document), and shall move the thresholds of the
+              trained lemmas so that the answers on the real calibration sentences reach the precision target: a
+              lemma with enough calibration rows gets a threshold of its own that is never lower than its adjusted
+              cross-validation threshold, every other lemma gets its cross-validation threshold plus one pooled shift
+              that is fitted on the calibration rows of all those lemmas, a level that was never answered stays never
+              answered, and the group threshold moves the same way only when the calibration rows can verify it. The
+              test split and the written held-out sentences shall never influence a threshold, and the calibration shall
+              be deterministic.
+            tags: [unit]
+            justification: |
+              Thresholds chosen by cross-validation on the anchors are calibrated on a balanced corpus that is partly
+              written, so on real text the sense answers fall about ten points short of the target (85.7 to 87.5
+              percent against 95 percent measured on the held-out real sentences). Calibrating on held-out real
+              sentences whose documents are disjoint from the test split keeps the headline real-text figures
+              independent of the thresholds, and one pooled shift is the robust choice because a lemma has only a few
+              calibration rows.
+            tests:
+              - WordSenseBuilder_RealSplit_Classify_SplitsRealRowsByDocument
+              - WordSenseBuilder_RealSplit_Classify_WrittenAndUnknownRows_AreNeverRealRows
+              - WordSenseBuilder_RealSplit_Classify_ReportsTestRowsInDocumentsWithoutAnchors
+              - WordSenseBuilder_RealCalibrator_Apply_RaisesThresholdsUntilThePooledPrecisionReachesTheTarget
+              - WordSenseBuilder_RealCalibrator_Apply_LemmaWithEnoughRows_KeepsTheHigherOfItsOwnAndTheAdjustedThreshold
+              - WordSenseBuilder_RealCalibrator_Apply_NoCalibrationRows_KeepsTheThresholds
+              - WordSenseBuilder_RealCalibrator_Apply_NeverStaysNever_AndIsDeterministic
+              - WordSenseBuilder_RealCalibrator_Apply_GroupThreshold_MovesOnlyWithEnoughAnswers
+              - WordSenseBuilder_ModelTrainer_TrainDataAsync_CalibrationRows_MoveTheThresholds
 
           - id: WordSense-WordSenseBuilder-Tiers
             title: >-
@@ -267,18 +300,25 @@ sections:
 
           - id: WordSense-WordSenseBuilder-Evaluate
             title: >-
-              The builder shall measure a shipped model (an encoder model or the basic model) on the held-out and
-              real-text sentences of the corpus, and report accuracy and coverage at each answer level (the share
+              The builder shall measure a shipped model (an encoder model or the basic model) on the held-out
+              sentences of the corpus, and report accuracy and coverage at each answer level (the share
               answered at the sense, group and part of speech level, and the accuracy at each level) and for
-              the part of speech; for the basic model it shall also report calibration, confidence thresholds, table
+              the part of speech, with the real-text test split (the real held-out sentences of the test documents) as
+              the headline set and the real calibration split, the written held-out sentences and the whole held-out
+              set only as clearly labeled secondary sets, with a diagnostic set of the test sentences whose document
+              supplies no anchor, and with a statement that no held-out set is representative running text; for the
+              basic model it shall also report calibration, confidence thresholds, table
               size, latency and a fixed comparison table printed on every run.
             tags: [unit]
             justification: |
               Each model's accuracy claim must be checkable against a repeatable measurement on sentences that were
-              never used for training, and an answer that carries a level must be measured at that level.
+              never used for training or for the thresholds, and an answer that carries a level must be measured at that
+              level. The written held-out sentences are about 17 points easier than real ones, so they must never be
+              the headline.
             tests:
               - WordSenseBuilder_Evaluator_RunAsync_BasicModel_CountsHoldoutRows
               - WordSenseBuilder_Evaluator_RunAsync_ReportsShareAndAccuracyPerLevel
+              - WordSenseBuilder_Evaluator_RunAsync_ProvenanceNamesTheOrigin_ReportsTheRealTestSplitFirst
               - WordSenseBuilder_Program_Evaluate_BasicModel_PrintsMeasurements
               - WordSenseBuilder_Program_Evaluate_UnknownModel_ReportsError
               - WordSenseBuilder_ModelTable_BasicRow_MatchesEvaluation

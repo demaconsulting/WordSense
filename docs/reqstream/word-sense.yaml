@@ -352,6 +352,7 @@ sections:
           - WordSense-WordSenseBuilder-Weights
           - WordSense-WordSenseBuilder-FormChoosers
           - WordSense-WordSenseBuilder-Thresholds
+          - WordSense-WordSenseBuilder-RealCalibration
           - WordSense-WordSenseBuilder-Tiers
           - WordSense-WordSenseBuilder-EmbeddingCache
           - WordSense-WordSenseBuilder-FitCache

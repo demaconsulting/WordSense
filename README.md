@@ -143,8 +143,8 @@ record    Verb         PartOfSpeech 0.94                 Noun 0.06
 a         Determiner   Sense        1.00  a#determiner
 record    Noun         PartOfSpeech 0.93                 Verb 0.07
 then      Adverb       PartOfSpeech 0.99                 Noun 0.01
-go        Verb         PartOfSpeech 0.76                 Noun 0.20
-back      Adverb       Sense        0.98  back#to-former-place Noun 0.01
+go        Verb         PartOfSpeech 0.78                 Noun 0.20
+back      Adverb       Group        0.99  back#group:return Noun 0.01
 home      Noun         PartOfSpeech 0.76                 Adverb 0.23
 ```
 
@@ -159,7 +159,7 @@ an        Determiner   Sense        1.00  an#determiner
 arrow     Noun         PartOfSpeech 1.00
 from      Preposition  Sense        1.00  from#preposition
 his       Determiner   Sense        1.00  his#determiner
-bow       Noun         Sense        1.00  bow#archery-bow Verb 0.00
+bow       Noun         PartOfSpeech 1.00                 Verb 0.00
 at        Preposition  Sense        1.00  at#preposition Noun 0.00
 a         Determiner   Sense        1.00  a#determiner
 deer      Noun         Sense        1.00  deer#noun
@@ -171,8 +171,8 @@ a         Determiner   Sense        1.00  a#determiner
 record    Noun         PartOfSpeech 0.91                 Verb 0.09
 then      Adverb       PartOfSpeech 0.99                 Noun 0.01
 go        Verb         PartOfSpeech 0.99                 Noun 0.01
-back      Adverb       Sense        0.97  back#to-former-place Noun 0.00
-home      Adverb       Sense        0.54  home#to-residence Noun 0.22
+back      Adverb       Group        0.98  back#group:return Noun 0.00
+home      Adverb       PartOfSpeech 0.57                 Noun 0.22
 ```
 
 The words `bow`, `record`, `go`, `back` and `home` are trained by the encoder models in this version (the senses
@@ -180,9 +180,11 @@ appendix lists them), while `Basic` answers every word at the part-of-speech lev
 sense level). The `Level` of an answer says how precisely the model answers. `Sense` is a fine sense
 (`back#to-former-place`,
 with its id and sense key in the catalog, and also for a word whose lemma and part of speech have only one sense, such
-as `the`), `Group` is a group of closely related senses (`GroupId`; none of the words above reaches it), and
-`PartOfSpeech` is the analysis only: the model could not tell the senses apart with the precision its thresholds ask for
-(MiniLM answers `bow`, `record`, `go` and `home` at that level and BertBaseCased `record` and `go`), and the ranked
+as `the`), `Group` is a group of closely related senses (`GroupId`; MiniLM and BertBaseCased answer `back` at that level),
+and `PartOfSpeech` is the analysis only: the model could not tell the senses apart with the precision its thresholds ask
+for (the thresholds are calibrated on real text, so the encoder models answer most ambiguous words at this level: MiniLM
+answers `bow`, `record`, `go` and `home` at that level and BertBaseCased `bow`, `record`, `go` and `home`), and the
+ranked
 senses of each analysis in `Analyses` still show how the
 evidence spreads. `Analyses` lists every possible analysis (lemma, part of speech and features) with its probability,
 `Details` is the best analysis of the most probable lemma and part of speech, and a low confidence marks a guess (for
@@ -202,11 +204,11 @@ Tokenize the text yourself, one sentence per call: punctuation is a token of its
 <!-- markdownlint-disable MD013 -->
 
 <!-- model-table:begin -->
-| Model | Holdout best analysis | Real-text best analysis | Part of speech (holdout / real) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
+| Model | Real-text best analysis (test split) | Real-text part of speech (test split) | Written-holdout best analysis (secondary) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Basic | 90.31% | n/a | 90.59% / n/a | none | 83 KiB | 4 MiB | 0.09 ms | 43 ms + 79 ms | no |
-| MiniLM | 95.60% | n/a | 95.85% / n/a | 22 MiB | 3,396 KiB | 70 MiB | 6.21 ms | 479 ms + 62 ms | yes |
-| BERT base cased | 97.97% | n/a | 98.20% / n/a | 104 MiB | 6,677 KiB | 190 MiB | 36.32 ms | 1,051 ms + 80 ms | yes |
+| Basic | 91.59% | 91.85% | 89.51% | none | 83 KiB | 4 MiB | 0.11 ms | 31 ms + 56 ms | no |
+| MiniLM | 95.69% | 95.78% | 95.98% | 22 MiB | 3,395 KiB | 70 MiB | 2.23 ms | 464 ms + 58 ms | yes |
+| BERT base cased | 97.07% | 97.16% | 98.95% | 104 MiB | 6,676 KiB | 187 MiB | 11.16 ms | 1,011 ms + 96 ms | yes |
 <!-- model-table:end -->
 
 <!-- markdownlint-enable MD013 -->
@@ -216,21 +218,20 @@ Tokenize the text yourself, one sentence per call: punctuation is a token of its
   rest.
 - 🎯 **bert-base-cased** - Larger case-sensitive encoder, 104 MiB download; the most precise on the trained lemmas.
 
-The columns measure the 14,468 held-out sentences of the relabeled corpus, the first reviewed batch and the quota
-filling (the whole table, all three models, is measured on the same sentences), so they say nothing about words that no
-model was trained for; the real-text columns are `n/a` until an independent evaluation (SemCor for senses, the English
-EWT treebank for parts of speech) is published. About 47% of the held-out sentences are real sentences (Tatoeba,
-Project Gutenberg and other public-domain text), the others were written by a language model, and the sense of every
-sentence was judged by a model or mapped by rule. The held-out sentences are also targeted (selected or written for a
-specific sense, with the quotas of the tiers), so they are a balanced classifier measure and **not** the accuracy on
-representative text, and the numbers are optimistic (`evaluate` reports the real targeted, earlier real and written
-sentences separately). The levels of the encoder answers on these sentences
-(`docs/build_notes/relabel-results.md` and `docs/build_notes/quota-fill.md` have the full tables):
+**The headline figures are measured on real text**: the 3,413 real held-out sentences (Project Gutenberg, Tatoeba, VOA
+and US agency text) of the *test documents*, a half of the real held-out sentences that is split off by document and that
+no weight or threshold has seen (the other half, the calibration documents, chooses the per-lemma thresholds). The
+written held-out sentences (7,738, written by a language model) are easier and are shown only as a secondary column.
+Neither is representative running text: the held-out sentences were found or written for specific senses with the quotas
+of the tiers, so the figures measure the classifier on a balanced corpus, they say nothing about words that no model was
+trained for, and an independent evaluation (SemCor for senses, the English EWT treebank for parts of speech) is still to
+come. The levels of the encoder answers on the real test sentences (the thresholds aim at 95% precision of the sense
+answers; `docs/build_notes/quota-fill.md` has the full tables and the sets that `evaluate` reports):
 
-| Model | Sense (share, precision) | Group (share, precision) | Part of speech (share, precision) |
-| --- | ---: | ---: | ---: |
-| MiniLM | 51.9%, 92.1% | 1.3%, 92.6% | 46.8%, 93.0% |
-| BERT base cased | 69.3%, 93.1% | 0.7%, 91.8% | 30.1%, 95.5% |
+| Model | Sense (share, precision) | Group (share, precision) | Part of speech (share, precision) | Fine top-1 |
+| --- | ---: | ---: | ---: | ---: |
+| MiniLM | 7.9%, 94.1% | 1.0%, 91.4% | 91.0%, 95.6% | 65.3% |
+| BERT base cased | 16.3%, 96.6% | 0.7%, 100% | 83.0%, 96.7% | 73.0% |
 
 The table is generated into `docs/build_notes/model-table.md`; the user guide explains how the numbers were measured
 and lists the confidence thresholds of each model. See also the [model comparison][link-model-comparison] and the

@@ -80,31 +80,83 @@ the open part-of-speech corpus and SemCor.
 
 <!-- markdownlint-enable MD013 -->
 
-The fine top-1 of the wave 1 row is on 14,319 held-out sentences of the trained lemmas (the held-out set grew by 2,000
-sentences, mostly of rare senses that the earlier set did not have, which is why the figure falls although the models
-improved: the same senses were not measured before). The whole holdout (14,468 rows):
+The fine top-1 of the wave 1 row is on 14,319 held-out sentences of the trained lemmas, measured before the thresholds
+were calibrated on real text (the held-out set grew by 2,000 sentences, mostly of rare senses that the earlier set did
+not have, which is why the figure falls although the models improved). The headline since the calibration is the
+**real-text test split** (next section).
+
+## Real-text threshold calibration
+
+The ablation of the anchors (training on all anchors beats real-only by 15.6 points and written-only by 8.5 points on
+real text) found the real-text sense precision far below the 95% target: BERT 87.5% and MiniLM 85.7% on the real
+held-out sentences, because the thresholds were chosen by cross-validation on the anchors, which are balanced and partly
+written. The builder now moves the thresholds on real text (requirement `WordSense-WordSenseBuilder-RealCalibration`,
+design in `docs/design/word-sense/word-sense-builder.md`):
+
+- **Split by document.** The real held-out rows (provenance `origin = real`, 6,730 rows) are split by the first bit of
+  the SHA-256 of `document|<document id>`: a document is a Gutenberg book, a VOA article or a government page (the part
+  of the source key before `#`), a Tatoeba sentence is its own document. Result: **calibration** 3,317 rows, **test**
+  3,413 rows; every sentence of a document is on one side; the written rows (7,738) are in neither. The rule is in
+  `RealSplit.cs`; there is no seed.
+- **Document-disjointness from the anchors.** The calibration and test documents are disjoint from each other. The 6,730
+  real held-out rows come from 4,282 documents (3,754 are Tatoeba sentences), but 401 of the 528 other documents
+  (Gutenberg, VOA and agency pages; 2,823 held-out rows) also supply 5,396 real anchors: the earlier harvests did not
+  separate them. `evaluate` therefore also reports the test rows of documents that supply no anchor (1,944 rows). From
+  wave 2 on the harvest gives every document one role by hash (a quarter of the documents are evaluation documents that
+  supply held-out rows only, the others supply anchors only), so new rows are disjoint.
+- **Calibration.** The final thresholds are the cross-validation ones, raised until the answers on the calibration rows
+  reach the target: a lemma with 20 or more calibration rows (22 lemmas) gets a threshold of its own, never below its
+  adjusted one; all other lemmas share one pooled shift; a level that was never answered stays never answered; the group
+  thresholds move only when at least 30 calibration group answers can verify them (otherwise they are kept and the run
+  says so). The lemma-level target is 0.97, two points above the 95% aimed at on the pipeline, because the precision of
+  the whole pipeline (the analysis and the form chooser) on the same sentences is about two points below the lemma-level
+  precision (measured: calibrated lemma-level 95.1% against 92.6% pipeline at the target 0.95 on MiniLM). The sweep of
+  the target on the real test split (sense answers, share and precision): MiniLM 0.95: 16.7% at 92.5%, 0.97: 7.9% at
+  94.1%, 0.98: 5.2% at 93.8%; BERT 0.95: 37.5% at 93.4%, 0.97: 16.3% at 96.6%. MiniLM saturates near 94%: about 7% of
+  the gold labels are wrong (the ablation's blind judge), which caps the measurable precision of a level.
+
+### Real-text test split (headline)
 
 <!-- markdownlint-disable MD013 -->
 
-| Model | Held-out set | Rows | Sense answers (share, precision) | Fine top-1 | Part of speech |
-| --- | --- | ---: | --- | ---: | ---: |
-| MiniLM | all | 14,468 | 51.87%, 92.08% | 74.47% | 95.85% |
-| MiniLM | real text, targeted (found for a sense) | 1,400 | 17.43%, 77.46% | 49.07% | 95.71% |
-| MiniLM | real text, earlier harvest | 5,330 | 47.37%, 86.50% | 67.94% | 95.25% |
-| MiniLM | LLM-written | 7,738 | 61.19%, 95.82% | 83.56% | 96.28% |
-| BERT base cased | all | 14,468 | 69.27%, 93.14% | 81.44% | 98.20% |
-| BERT base cased | real text, targeted (found for a sense) | 1,400 | 49.79%, 83.07% | 63.36% | 97.36% |
-| BERT base cased | real text, earlier harvest | 5,330 | 61.95%, 88.46% | 74.20% | 96.94% |
-| BERT base cased | LLM-written | 7,738 | 77.84%, 96.86% | 89.70% | 99.22% |
-| Basic | all | 14,468 | 19.82%, 89.26% | 18.79% | 90.59% |
+| Model | Rows | Sense (share, precision) | Group (share, precision) | Part of speech (share, precision) | Fine top-1 | Best analysis |
+| --- | ---: | --- | --- | --- | ---: | ---: |
+| MiniLM | 3,413 | 7.94%, 94.10% | 1.03%, 91.43% | 91.03%, 95.62% | 65.28% | 95.69% |
+| BERT base cased | 3,413 | 16.26%, 96.58% | 0.73%, 100.00% | 83.01%, 96.72% | 73.01% | 97.07% |
+| Basic | 3,413 | 6.62%, 80.09% | 0.00%, n/a | 93.38%, 92.66% | 6.01% | 91.59% |
 
 <!-- markdownlint-enable MD013 -->
 
-Written held-out sentences are easier than real ones for the encoders (BERT 89.7% against 63.4% fine top-1 on the
-targeted real sentences), so the written share inflates every overall figure. The targeted real held-out set is hard on
-purpose: it is rich in rare senses with five or ten anchors. Form choosers (wave 1 and the written top-up): 340 forms
-trained from 7,235 sentences (78 before), 17 forms left without a chooser; on 2,407 held-out chooser sentences MiniLM
-has top-1 90.03% (answered 74.32% at precision 95.30%) and BERT base cased 95.26% (89.74% at 97.50%).
+The BERT sense precision meets the 95% target on the real test split; MiniLM stays at 94.1% with a 7.9% share. Before
+the calibration (the thresholds from the cross-validation on the anchors) the figures on all real held-out rows were
+BERT 59.4% of the rows at 87.5% and MiniLM 41.1% at 85.7% (the ablation, which counted the whole real holdout), so the
+calibration trades sense coverage for precision: BERT answers 16% of the real sentences at the sense level (59% before)
+and the rest at the part of speech (83%, precision 96.7%).
+
+The other sets that `evaluate` reports (diagnostic or secondary):
+
+<!-- markdownlint-disable MD013 -->
+
+| Model | Set | Rows | Sense (share, precision) | Fine top-1 | Best analysis |
+| --- | --- | ---: | --- | ---: | ---: |
+| MiniLM | real, test split, documents without anchors | 1,944 | 9.26%, 96.67% | 71.14% | 96.66% |
+| MiniLM | real, calibration split (the thresholds were chosen on it) | 3,317 | 8.29%, 92.00% | 62.71% | 94.63% |
+| MiniLM | written holdout (secondary: easier) | 7,738 | 13.61%, 98.20% | 83.56% | 95.98% |
+| MiniLM | all holdout rows | 14,468 | 11.05%, 96.44% | 74.47% | 95.60% |
+| BERT base cased | real, test split, documents without anchors | 1,944 | 19.39%, 97.61% | 77.57% | 97.38% |
+| BERT base cased | real, calibration split (the thresholds were chosen on it) | 3,317 | 16.22%, 94.98% | 70.85% | 96.62% |
+| BERT base cased | written holdout (secondary: easier) | 7,738 | 27.84%, 98.93% | 89.70% | 98.95% |
+| BERT base cased | all holdout rows | 14,468 | 22.44%, 97.87% | 81.44% | 97.97% |
+
+<!-- markdownlint-enable MD013 -->
+
+The written held-out sentences are about 17 points easier than real text (BERT fine top-1 89.7% against 73.0%), so the
+written figures are secondary only. The test rows of documents that supply no anchor score higher than the whole test
+split (the rows of documents that do supply anchors are the older legacy rows with noisier labels); the calibration
+split scores a little lower at the sense level than the test split because the lemma-level calibration cannot see the
+analysis errors. Form choosers (wave 1 and the written top-up): 340 forms trained from 7,235 sentences (78 before), 17
+forms left without a chooser; on 2,407 held-out chooser sentences MiniLM has top-1 90.03% (answered 74.32% at precision
+95.30%) and BERT base cased 95.26% (89.74% at 97.50%).
 
 Suite (348 hand-written rows that no corpus row contains; "fine" counts a sense of the expected class, list M the part
 of speech): MiniLM 91.7% (H 91.7, M 95.2, C 87.0; 89.4% before), BERT base cased 94.8% (H 95.5, M 96.0, C 92.4; 92.8%

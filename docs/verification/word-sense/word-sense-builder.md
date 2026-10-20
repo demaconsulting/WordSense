@@ -13,7 +13,9 @@ writers against the readers of the shipped packages, `UdCountsTests.cs` covers t
 and `BasicTrainerTests.cs` covers its trainer, table writer, model data summary and hyper-parameters;
 `EmbeddingCacheTests.cs`, `FitCacheTests.cs` and `ModelTrainerTests.cs` cover the embedding cache, the lemma fit cache,
 the frozen mean and the thresholds with a stub encoder; `WeightsTrainerTests.cs` and `ThresholdsTests.cs` cover the fit
-and the choice of the thresholds on small synthetic features; `ChooserCorpusTests.cs` and `ChooserTrainingTests.cs`
+and the choice of the thresholds on small synthetic features; `RealSplitTests.cs` and `RealCalibratorTests.cs` cover the
+split of the real held-out sentences by document and the real-text calibration of the thresholds on one-dimensional
+synthetic lemmas; `ChooserCorpusTests.cs` and `ChooserTrainingTests.cs`
 cover the chooser rows and the training of the form choosers; `TiersTests.cs`, `SenseEvalTests.cs`,
 `RunningTextTests.cs` and `SuiteReaderTests.cs` cover the quota report, the two independent evaluations and the suite
 reader
@@ -202,6 +204,30 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Both thresholds are written** (`ModelTrainer_TrainDataAsync_WritesBothThresholdsPerLemma`): the weights blob
   holds `t_fine` of every trained lemma and `t_group` of every trained lemma that has groups.
 
+#### Real-text calibration
+
+- **Split by document** (`RealSplit_Classify_SplitsRealRowsByDocument`): with a provenance file, the rows of one
+  document (the same source and the same key before `#`) are all calibration or all test, both sides get rows, and a
+  Tatoeba sentence is its own document.
+- **Only real rows are split** (`RealSplit_Classify_WrittenAndUnknownRows_AreNeverRealRows`): a row whose origin is
+  written, and a row without provenance, is in neither split.
+- **Anchor documents** (`RealSplit_Classify_ReportsTestRowsInDocumentsWithoutAnchors`): the test rows whose document
+  supplies no anchor are listed apart.
+- **Pooled shift** (`RealCalibrator_Apply_RaisesThresholdsUntilThePooledPrecisionReachesTheTarget`): on calibration rows
+  where the cross-validation thresholds are too low, the thresholds are raised by one shift and the pooled precision of
+  the answers reaches the target; thresholds that already meet it are not moved.
+- **Own threshold** (`RealCalibrator_Apply_LemmaWithEnoughRows_KeepsTheHigherOfItsOwnAndTheAdjustedThreshold`): a lemma
+  with at least 20 calibration rows keeps the higher of its own threshold and the adjusted one; a lemma with fewer rows
+  gets the pooled shift.
+- **No rows** (`RealCalibrator_Apply_NoCalibrationRows_KeepsTheThresholds`): without calibration rows every
+  threshold is unchanged.
+- **Never and determinism** (`RealCalibrator_Apply_NeverStaysNever_AndIsDeterministic`): a level that was never
+  answered stays never answered, and two runs give the same thresholds.
+- **Group level** (`RealCalibrator_Apply_GroupThreshold_MovesOnlyWithEnoughAnswers`): the group threshold moves only
+  when at least 30 calibration answers can verify it.
+- **Wired into the training** (`ModelTrainer_TrainDataAsync_CalibrationRows_MoveTheThresholds`): with calibration rows
+  the trained thresholds are at least the cross-validation ones, and without them they are equal.
+
 #### tiers
 
 - **Quota follows the tag count** (`Tiers_Quota_FollowsTheTagCount`): five or more gives 20 anchor and 5 held-out
@@ -219,10 +245,11 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Shares and accuracy per level** (`Evaluator_RunAsync_ReportsShareAndAccuracyPerLevel`): with a stub model that
   answers rows at each level, the report gives the share answered at the sense, group and part-of-speech level, the
   accuracy at each level and the part-of-speech accuracy.
-- **Subsets by origin** (`Evaluator_RunAsync_ProvenanceNamesTheOrigin_ReportsSubsetsSeparately`): with a provenance file
-  that marks one held-out row as targeted real text and the other as written, the report has the set `holdout` and one
-  set for each origin (their rows and correct answers are counted separately) and states that the figures are not the
-  accuracy on representative text.
+- **Real test split first** (`Evaluator_RunAsync_ProvenanceNamesTheOrigin_ReportsTheRealTestSplitFirst`): with a
+  provenance file that marks held-out rows as real and written, the report has the real test split as its first
+  (headline) set, then the test rows of documents without anchors, the calibration split, the written rows and the whole
+  holdout (their rows and correct answers are counted separately) and states that the figures are not the accuracy on
+  representative text.
 - **Basic evaluation needs no model**: `evaluate basic` runs on a synthetic corpus without model files, counts the
   holdout rows and prints the accuracy and coverage measurements together with the calibration buckets, the confidence
   thresholds, the table size, the latency and the fixed comparison table

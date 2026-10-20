@@ -13,7 +13,8 @@ namespace WordSense.Builder;
 /// <param name="CacheRoot">The folder that holds the embedding caches (one subfolder per model id), or null to encode every sentence.</param>
 /// <param name="RecomputeMean">True to compute the global mean again instead of reusing the one of the existing weights.</param>
 /// <param name="Solver">The method that fits the classifiers; the kernel form is the default and the primal form is the slow reference.</param>
-internal sealed record TrainSettings(string? CacheRoot, bool RecomputeMean = false, FitSolver Solver = FitSolver.Kernel)
+/// <param name="CalibrationTarget">The precision that the answers of a level must reach on the real calibration sentences (see <see cref="RealCalibrator"/>). The default 0.97 is two points above the 95 percent aimed at on real test text: the measured gap between the lemma-level precision on the calibration rows and the precision of the whole pipeline (analysis and chooser errors) is about two points.</param>
+internal sealed record TrainSettings(string? CacheRoot, bool RecomputeMean = false, FitSolver Solver = FitSolver.Kernel, double CalibrationTarget = RealCalibrator.DefaultLemmaTarget)
 {
     /// <summary>
     ///     Gets the default cache folder of a repository.
@@ -95,7 +96,8 @@ internal static class ModelTrainer
         using var encoder = model.OpenEncoder();
         var caching = new CachingEncoder(encoder.EncodeAsync, cache);
         var data = await TrainDataAsync(
-            info.Name, model.ModelId, WordLexicon.Current.InventoryHash.ToArray(), anchors, options, caching, frozenMean, fitCache, output, clock, cancellationToken, holdout, chooserAnchors, chooserHoldout).ConfigureAwait(false);
+            info.Name, model.ModelId, WordLexicon.Current.InventoryHash.ToArray(), anchors, options, caching, frozenMean, fitCache, output, clock, cancellationToken, holdout, chooserAnchors, chooserHoldout,
+            RealSplit.Classify(corpus, holdout).Calibration, new CalibrationOptions(settings.CalibrationTarget)).ConfigureAwait(false);
 
         Directory.CreateDirectory(Path.GetDirectoryName(path)!);
         File.WriteAllBytes(path, WeightsBlobWriter.Write(data));
@@ -185,6 +187,8 @@ internal static class ModelTrainer
     /// <param name="holdout">The held-out rows for the half-precision gate, or null to skip the gate.</param>
     /// <param name="chooserAnchors">The chooser training rows, or null for none.</param>
     /// <param name="chooserHoldout">The chooser held-out rows that measure the choosers, or null for none.</param>
+    /// <param name="calibration">The real held-out rows of the calibration documents that move the thresholds to the precision target, or null to keep the cross-validation thresholds.</param>
+    /// <param name="calibrationOptions">The settings of the calibration, or null for the defaults.</param>
     /// <returns>The full-precision weights, with the form choosers.</returns>
     /// <exception cref="InvalidDataException">Thrown when a target word has no tokens, the corpus is inconsistent or the half-precision gate fails.</exception>
     internal static async Task<WeightsData> TrainDataAsync(
@@ -201,7 +205,9 @@ internal static class ModelTrainer
         CancellationToken cancellationToken,
         IReadOnlyList<CorpusRow>? holdout = null,
         IReadOnlyList<ChooserRow>? chooserAnchors = null,
-        IReadOnlyList<ChooserRow>? chooserHoldout = null)
+        IReadOnlyList<ChooserRow>? chooserHoldout = null,
+        IReadOnlyList<CorpusRow>? calibration = null,
+        CalibrationOptions? calibrationOptions = null)
     {
         var pooled = await EncodeAsync(name, "sentences", anchors, encoder, output, clock, cancellationToken).ConfigureAwait(false);
         output.WriteLine($"{name}: embeddings: {encoder.Hits} cache hits, {encoder.Misses} encoded in {encoder.EncodeTime:hh\\:mm\\:ss\\.fff} ({(encoder.Cache is null ? "cache off" : $"{encoder.Cache.Count} entries cached")}).");
@@ -216,6 +222,11 @@ internal static class ModelTrainer
         var fitClock = Stopwatch.StartNew();
         var trained = WeightsTrainer.TrainDense(modelId, inventoryHash, pooled, anchors, options, frozenMean, fitCache);
         var data = trained.Data;
+        if (calibration is { Count: > 0 })
+        {
+            data = await CalibrateAsync(name, data, calibration, calibrationOptions ?? new CalibrationOptions(), encoder, output, clock, cancellationToken).ConfigureAwait(false);
+        }
+
         if (chooserAnchors is { Count: > 0 })
         {
             data = await TrainChoosersAsync(name, data, chooserAnchors, chooserHoldout ?? [], options, encoder, fitCache, output, clock, cancellationToken).ConfigureAwait(false);
@@ -234,7 +245,7 @@ internal static class ModelTrainer
             }
         }
 
-        ReportTraining(name, trained, output);
+        ReportTraining(name, data, trained.Untrained, output);
         if (holdout is not null)
         {
             await CheckPrecisionAsync(name, data, holdout, encoder, output, clock, cancellationToken).ConfigureAwait(false);
@@ -419,18 +430,48 @@ internal static class ModelTrainer
     ///     Reports which lemmas got weights and which thresholds were found.
     /// </summary>
     /// <param name="name">The model name used in messages.</param>
-    /// <param name="trained">The training result.</param>
+    /// <param name="data">The trained weights.</param>
+    /// <param name="untrained">The lemmas that got no weights.</param>
     /// <param name="output">Receives the lines.</param>
-    private static void ReportTraining(string name, TrainedWeights trained, TextWriter output)
+    private static void ReportTraining(string name, WeightsData data, IReadOnlyList<(string Lemma, int AnchoredSenses)> untrained, TextWriter output)
     {
-        var lemmas = trained.Data.Lemmas;
+        var lemmas = data.Lemmas;
         var withGroups = lemmas.Where(l => l.SenseIds.Any(id => WordLexicon.TryGetSense(id, out var sense) && sense.GroupId is not null)).ToList();
         output.WriteLine($"{name}: trained {lemmas.Count} lemmas; fine threshold found for {lemmas.Count(l => l.Weights.FineThreshold < LemmaWeights.Never)}, never for {lemmas.Count(l => l.Weights.FineThreshold >= LemmaWeights.Never)}; group threshold found for {withGroups.Count(l => l.Weights.GroupThreshold < LemmaWeights.Never)} of {withGroups.Count} lemmas that have groups, never for {withGroups.Count(l => l.Weights.GroupThreshold >= LemmaWeights.Never)}.");
-        if (trained.Untrained.Count > 0)
+        if (untrained.Count > 0)
         {
-            var listed = string.Join(", ", trained.Untrained.Take(MaxLemmasListed).Select(u => $"{u.Lemma} ({u.AnchoredSenses})"));
-            output.WriteLine($"{name}: {trained.Untrained.Count} lemmas with anchors have fewer than two anchored senses and got no weights: {listed}{(trained.Untrained.Count > MaxLemmasListed ? ", ..." : string.Empty)}.");
+            var listed = string.Join(", ", untrained.Take(MaxLemmasListed).Select(u => $"{u.Lemma} ({u.AnchoredSenses})"));
+            output.WriteLine($"{name}: {untrained.Count} lemmas with anchors have fewer than two anchored senses and got no weights: {listed}{(untrained.Count > MaxLemmasListed ? ", ..." : string.Empty)}.");
         }
+    }
+
+    /// <summary>
+    ///     Moves the thresholds of the trained lemmas to the precision target on the real-text calibration rows.
+    /// </summary>
+    /// <param name="name">The model name used in messages.</param>
+    /// <param name="data">The weights with their first thresholds.</param>
+    /// <param name="calibration">The real held-out rows of the calibration documents.</param>
+    /// <param name="calibrationOptions">The settings of the calibration.</param>
+    /// <param name="encoder">The encoder, with its cache.</param>
+    /// <param name="output">Receives the summary line.</param>
+    /// <param name="clock">The clock of the whole run.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>The weights with the calibrated thresholds.</returns>
+    private static async Task<WeightsData> CalibrateAsync(string name, WeightsData data, IReadOnlyList<CorpusRow> calibration, CalibrationOptions calibrationOptions, CachingEncoder encoder, TextWriter output, Stopwatch clock, CancellationToken cancellationToken)
+    {
+        var trainedLemmas = data.Lemmas.Select(l => l.Lemma).ToHashSet(StringComparer.Ordinal);
+        var rows = calibration.Where(r => trainedLemmas.Contains(r.Lemma)).ToList();
+        if (rows.Count == 0)
+        {
+            output.WriteLine($"{name}: real-text calibration: no calibration row belongs to a trained lemma; the cross-validation thresholds are kept.");
+            return data;
+        }
+
+        var pooled = await EncodeAsync(name, "real calibration sentences", rows, encoder, output, clock, cancellationToken).ConfigureAwait(false);
+        var features = Features(pooled, data.Mean, rows.Select(r => r.Sentence).ToList());
+        var (calibrated, report) = RealCalibrator.Apply(data, rows, features, calibrationOptions);
+        output.WriteLine($"{name}: {report.Describe()}");
+        return calibrated;
     }
 
     /// <summary>

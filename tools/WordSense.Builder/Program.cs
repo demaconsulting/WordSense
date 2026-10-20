@@ -19,7 +19,7 @@ namespace WordSense.Builder;
 ///     <item><description><c>rebuild-forms [--data DIR] [--corpus DIR] [--oewn FILE] [--agid FILE] [--output DIR]</c> regenerates the entry and form tables from the entries, the committed legacy analyses (<c>corpus/lexicon/form-frozen.tsv</c>), the irregular lists, the written forms of the Open English WordNet file and the dictionary; a generated inflection ships only when a second source corroborates it (the AGID <c>infl.txt</c> file attests forms). Both inputs must match their pinned SHA-256; the default places are <c>artifacts/inputs/english-wordnet-2025.xml.gz</c> and <c>artifacts/inputs/agid/agid-2016.01.19/infl.txt</c>. The result depends on nothing else, so it is reproducible.</description></item>
 ///     <item><description><c>import-agid --input FILE [--corpus DIR] [--output FILE]</c> derives the irregular forms of the dictionary words from the inflection database file <c>infl.txt</c>.</description></item>
 ///     <item><description><c>import-moby --input FILE [--corpus DIR] [--output FILE]</c> imports the pinned Moby Part-of-Speech II list into the dictionary word list of the corpus.</description></item>
-///     <item><description><c>weights &lt;modelId&gt; [--corpus DIR] [--repository DIR] [--cache DIR] [--no-cache] [--recompute-mean] [--solver kernel|primal]</c> trains the fine-sense weights of an ONNX model (minilm, bert-base-cased) from <c>corpus/anchors</c> and writes them to its package; the thresholds of each lemma are chosen by cross-validation on its anchors, and the half-precision storage is checked against <c>corpus/holdout</c>. Pooled vectors are cached in <c>DIR/&lt;model id&gt;</c> (default <c>.cache/embeddings</c> of the repository) so only new sentences are encoded; <c>--no-cache</c> bypasses the cache; the global mean of the existing weights is reused unless <c>--recompute-mean</c> is given. The classifiers are fitted by Newton's method in the span of the anchors of the lemma (<c>--solver kernel</c>, the default, which is fast when a lemma has fewer anchors than the encoder has dimensions); <c>--solver primal</c> is the slow reference in the feature space that finds the same optimum.</description></item>
+///     <item><description><c>weights &lt;modelId&gt; [--corpus DIR] [--repository DIR] [--cache DIR] [--no-cache] [--recompute-mean] [--solver kernel|primal] [--calibration-target P]</c> trains the fine-sense weights of an ONNX model (minilm, bert-base-cased) from <c>corpus/anchors</c> and writes them to its package; the thresholds of each lemma are first chosen by cross-validation on its anchors and then moved to the precision target measured on the real-text calibration sentences of <c>corpus/holdout</c> (the real held-out sentences of the calibration documents, see the real-text split; <c>--calibration-target P</c> sets the lemma-level target, 0.97 by default), and the half-precision storage is checked against <c>corpus/holdout</c>. Pooled vectors are cached in <c>DIR/&lt;model id&gt;</c> (default <c>.cache/embeddings</c> of the repository) so only new sentences are encoded; <c>--no-cache</c> bypasses the cache; the global mean of the existing weights is reused unless <c>--recompute-mean</c> is given. The classifiers are fitted by Newton's method in the span of the anchors of the lemma (<c>--solver kernel</c>, the default, which is fast when a lemma has fewer anchors than the encoder has dimensions); <c>--solver primal</c> is the slow reference in the feature space that finds the same optimum.</description></item>
 ///     <item><description><c>evaluate &lt;modelId&gt; [--corpus DIR] [--repository DIR] [--output FILE] [--table FILE] [--outcomes FILE]</c> measures a shipped model (minilm, bert-base-cased, basic) on <c>corpus/holdout</c>: the share of the sentences answered at each level and the precision at each level; <c>--table</c> updates the row of the model in the model comparison table file; <c>--outcomes</c> writes the answer for every sentence.</description></item>
 ///     <item><description><c>ud-counts [--ud DIR] [--corpus DIR] [--output DIR]</c> downloads and verifies the pinned treebank files and writes the count files of <c>corpus/ud</c>.</description></item>
 ///     <item><description><c>train-basic [--corpus DIR] [--repository DIR] [--ud DIR] [--refresh-ud true] [--output FILE]</c> retrains the basic model completely and writes its table; it reads the legacy class-labeled data of <c>corpus/legacy</c> (anchors, holdout, senses, forms) because the shipped table was trained from it, and regenerates the treebank counts first when they are missing or <c>--refresh-ud true</c> is given.</description></item>
@@ -134,7 +134,7 @@ internal static class Program
         }
     }
 
-    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "ud", "refresh-ud", "table", InputOption, "text", "top", "data", "sha256", "threshold", "overwrite", "outcomes", "oewn", "agid", "sample", "seed", "oracle", "adjudications", "max-error", "previous", "previous-release", "previous-sha256", "cache", "no-cache", "recompute-mean", "baseline", "curation", "solver"], StringComparer.Ordinal);
+    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "ud", "refresh-ud", "table", InputOption, "text", "top", "data", "sha256", "threshold", "overwrite", "outcomes", "oewn", "agid", "sample", "seed", "oracle", "adjudications", "max-error", "previous", "previous-release", "previous-sha256", "cache", "no-cache", "recompute-mean", "baseline", "curation", "solver", "calibration-target"], StringComparer.Ordinal);
 
     /// <summary>
     ///     Options that are switches: they take no value, but accept a following <c>true</c> or <c>false</c>.
@@ -168,7 +168,14 @@ internal static class Program
             throw new ArgumentException($"The option --solver must be 'kernel' or 'primal', not '{solverName}'. {Usage}");
         }
 
-        return new TrainSettings(root, IsOn(options, "recompute-mean"), solver);
+        var calibrationTarget = RealCalibrator.DefaultLemmaTarget;
+        if (options.TryGetValue("calibration-target", out var targetText)
+            && (!double.TryParse(targetText, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out calibrationTarget) || calibrationTarget is <= 0.5 or >= 1))
+        {
+            throw new ArgumentException($"The option --calibration-target must be a precision between 0.5 and 1, not '{targetText}'. {Usage}");
+        }
+
+        return new TrainSettings(root, IsOn(options, "recompute-mean"), solver, calibrationTarget);
     }
 
     private static bool IsOn(Dictionary<string, string> options, string name) =>

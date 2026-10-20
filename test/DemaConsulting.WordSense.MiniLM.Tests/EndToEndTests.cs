@@ -130,6 +130,7 @@ public class EndToEndTests
             ["I", "will", "go", "back", "to", "the", "house", "."],
             ["She", "turned", "right", "at", "the", "corner", "and", "walked", "home", "."],
             ["Please", "help", "me", "carry", "the", "test", "papers", "."],
+            ["Neither", "side", "wanted", "to", "break", "the", "contract", "before", "it", "expired", "."],
         ];
 
         // Act
@@ -140,7 +141,7 @@ public class EndToEndTests
         }
 
         // Assert: the levels follow the contract, and the most confident answers reach the sense level
-        var trained = all.Where(r => r.Analyses.Any(a => !a.Senses.IsEmpty) && r.Level != SenseLevel.None && r.Analyses.Length > 0 && r.Details!.Lemma is "back" or "right" or "home" or "help" or "test").ToList();
+        var trained = all.Where(r => r.Analyses.Any(a => !a.Senses.IsEmpty) && r.Level != SenseLevel.None && r.Analyses.Length > 0 && r.Details!.Lemma is "back" or "right" or "home" or "help" or "test" or "contract").ToList();
         Assert.NotEmpty(trained);
         Assert.Contains(trained, r => r.Level == SenseLevel.Sense);
         foreach (var result in trained)

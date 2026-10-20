@@ -6,11 +6,11 @@ Do not edit it by hand: the table of the root README must equal the table below 
 <!-- markdownlint-disable MD013 -->
 
 <!-- model-table:begin -->
-| Model | Holdout best analysis | Real-text best analysis | Part of speech (holdout / real) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
+| Model | Real-text best analysis (test split) | Real-text part of speech (test split) | Written-holdout best analysis (secondary) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Basic | 90.31% | n/a | 90.59% / n/a | none | 83 KiB | 4 MiB | 0.09 ms | 43 ms + 79 ms | no |
-| MiniLM | 95.60% | n/a | 95.85% / n/a | 22 MiB | 3,396 KiB | 70 MiB | 6.21 ms | 479 ms + 62 ms | yes |
-| BERT base cased | 97.97% | n/a | 98.20% / n/a | 104 MiB | 6,677 KiB | 190 MiB | 36.32 ms | 1,051 ms + 80 ms | yes |
+| Basic | 91.59% | 91.85% | 89.51% | none | 83 KiB | 4 MiB | 0.11 ms | 31 ms + 56 ms | no |
+| MiniLM | 95.69% | 95.78% | 95.98% | 22 MiB | 3,395 KiB | 70 MiB | 2.23 ms | 464 ms + 58 ms | yes |
+| BERT base cased | 97.07% | 97.16% | 98.95% | 104 MiB | 6,676 KiB | 187 MiB | 11.16 ms | 1,011 ms + 96 ms | yes |
 <!-- model-table:end -->
 
 <!-- markdownlint-enable MD013 -->

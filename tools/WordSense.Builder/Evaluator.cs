@@ -97,29 +97,55 @@ internal sealed record EvaluationResult(
     private const string TableEnd = "<!-- model-table:end -->";
 
     private const string TableHeader =
-        "| Model | Holdout best analysis | Real-text best analysis | Part of speech (holdout / real) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |\n" +
+        "| Model | Real-text best analysis (test split) | Real-text part of speech (test split) | Written-holdout best analysis (secondary) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |\n" +
         "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |\n";
+
+    /// <summary>
+    ///     Gets the name of the set of all held-out rows when the corpus names the origin of its rows.
+    /// </summary>
+    internal const string AllRowsSetName = "holdout, all rows (secondary)";
+
+    /// <summary>
+    ///     Gets the name of the headline set: the real held-out sentences of the test documents.
+    /// </summary>
+    internal const string RealTestSetName = "real text, test split (headline)";
+
+    /// <summary>
+    ///     Gets the name of the set of the test sentences whose document supplies no anchor.
+    /// </summary>
+    internal const string RealTestFreeSetName = "real text, test split, documents without anchors";
+
+    /// <summary>
+    ///     Gets the name of the calibration split, on which the thresholds were chosen.
+    /// </summary>
+    internal const string RealCalibrationSetName = "real text, calibration split (diagnostic)";
+
+    /// <summary>
+    ///     Gets the name of the written held-out sentences.
+    /// </summary>
+    internal const string WrittenSetName = "written holdout (secondary)";
 
     /// <summary>
     ///     Renders the row of this model for the model comparison table of the README.
     /// </summary>
     /// <remarks>
     ///     The columns are those of the table of the README. The best analysis is the selected analysis having the lemma and
-    ///     the part of speech of the sense of the row. The real-text set belongs to the retired classes and is no longer
-    ///     measured, so its cells read n/a until an independent running-text evaluation replaces it.
+    ///     the part of speech of the sense of the row. The headline columns are measured on the real-text test split; the
+    ///     written held-out sentences are secondary (they are easier) and a set that the corpus does not have reads n/a.
     /// </remarks>
     /// <returns>The table row, ending with a line feed.</returns>
     public string RenderTableRow()
     {
         var inv = CultureInfo.InvariantCulture;
-        var holdout = Sets.First(s => s.Name == "holdout");
+        var real = Sets.FirstOrDefault(s => s.Name == RealTestSetName);
+        var written = Sets.FirstOrDefault(s => s.Name == WrittenSetName);
         var weights = Basic is null ? WeightsBytes : Basic.TableBytes;
         var latency = Basic is null ? MillisecondsPerSentence : Basic.MicrosecondsPerSentence / 1000.0;
         var download = DownloadBytes == 0 ? "none" : (DownloadBytes / 1048576.0).ToString("N0", inv) + " MiB";
         return "| " + DisplayName(Model) +
-               " | " + Percent(holdout.AnalysisCorrect, holdout.Rows) +
-               " | n/a" +
-               " | " + Percent(holdout.PosCorrect, holdout.Rows) + " / n/a" +
+               " | " + (real is null ? "n/a" : Percent(real.AnalysisCorrect, real.Rows)) +
+               " | " + (real is null ? "n/a" : Percent(real.PosCorrect, real.Rows)) +
+               " | " + (written is null ? "n/a" : Percent(written.AnalysisCorrect, written.Rows)) +
                " | " + download +
                " | " + (weights / 1024.0).ToString("N0", inv) + " KiB" +
                " | " + (RamBytes < 1048576 ? "< 1 MiB" : (RamBytes / 1048576.0).ToString("N0", inv) + " MiB") +
@@ -221,8 +247,10 @@ internal sealed record EvaluationResult(
         text.Append('\n');
         if (Sets.Count > 1)
         {
-            text.Append("The held-out sentences are targeted: they were selected or written for a specific sense, so every figure is a classifier ")
-                .Append("measure on a balanced corpus and not the accuracy on representative text.\n\n");
+            text.Append("The first set is the headline: real held-out sentences of the test documents, which no threshold or weight has seen. ")
+                .Append("The calibration split chose the thresholds (diagnostic), the written sentences are easier than real text (secondary). ")
+                .Append("No set is representative running text: the held-out sentences were selected or written for specific senses, so every ")
+                .Append("figure is a classifier measure on a balanced corpus and not the accuracy on representative text.\n\n");
         }
 
         text.Append("- Weights size: ").Append((WeightsBytes / 1024.0).ToString("N0", inv)).Append(" KiB\n");
@@ -275,7 +303,7 @@ internal sealed record EvaluationResult(
         RenderCalibration(text, inv);
 
         text.Append("\n#### Best analysis\n\n| Model | Holdout |\n| --- | ---: |\n");
-        var holdout = Sets.FirstOrDefault(s => s.Name == "holdout");
+        var holdout = Sets.LastOrDefault();
         text.Append("| Basic (this run) | ").Append(holdout is null ? "n/a" : Percent(holdout.AnalysisCorrect, holdout.Rows)).Append(" |\n");
     }
 
@@ -416,12 +444,14 @@ internal static class Evaluator
 
         using var outcomesLog = outcomesFile is null ? null : new StreamWriter(outcomesFile, false, new System.Text.UTF8Encoding(false)) { NewLine = "\n" };
         var clock = Stopwatch.StartNew();
-        var subsetSpecs = ProvenanceSubsets(corpus, holdout);
-        var (holdoutResult, subsetResults) = await ScoreAsync("holdout", holdout, classifier, outcomesLog, subsetSpecs, cancellationToken).ConfigureAwait(false);
+        var holdoutSplit = RealSplit.Classify(corpus, holdout, Corpus.ReadDirectory(Path.Join(corpus, "anchors")));
+        var subsetSpecs = SubsetsOf(holdoutSplit);
+        var overallName = subsetSpecs.Count == 0 ? "holdout" : EvaluationResult.AllRowsSetName;
+        var (holdoutResult, subsetResults) = await ScoreAsync(overallName, holdout, classifier, outcomesLog, subsetSpecs, cancellationToken).ConfigureAwait(false);
         clock.Stop();
         var latency = holdout.Count == 0 ? 0 : clock.Elapsed.TotalMilliseconds / holdout.Count;
         progress.WriteLine($"{info.Name}: holdout done.");
-        List<SetResult> sets = [holdoutResult, .. subsetResults];
+        List<SetResult> sets = [.. subsetResults, holdoutResult];
 
         var weights = info.IsEncoder ? info.WeightsPath(repository) : string.Empty;
         BasicDetails? basic = null;
@@ -521,84 +551,31 @@ internal static class Evaluator
     };
 
     /// <summary>
-    ///     Reads the origin of every sentence from <c>corpus/provenance</c> and names the subsets of the held-out rows.
+    ///     Names the subsets of the held-out rows from the real-text split of the corpus.
     /// </summary>
     /// <remarks>
-    ///     The held-out sentences are not representative real text: those found for a specific sense are targeted, the
-    ///     earlier harvests were selected for the old classes and the written ones are LLM-written. The subsets are
-    ///     reported separately so that no figure is read as the accuracy on typical text. A provenance row is joined to a
-    ///     corpus row by its id (the first 12 hexadecimal digits of the SHA-256 of <c>lemma|sentence</c>).
+    ///     The held-out sentences are not representative real text. The headline set is the real sentences of the test
+    ///     documents; the same sentences restricted to documents that supply no anchor, the calibration split (on which
+    ///     the thresholds were chosen) and the written sentences are secondary or diagnostic and are named so.
     /// </remarks>
-    /// <param name="corpus">The corpus directory.</param>
-    /// <param name="rows">The held-out rows.</param>
-    /// <returns>The named predicates of the subsets that have rows; empty when there is no provenance.</returns>
-    internal static List<(string Name, Func<CorpusRow, bool> Member)> ProvenanceSubsets(string corpus, IReadOnlyList<CorpusRow> rows)
+    /// <param name="split">The split of the held-out rows (see <see cref="RealSplit"/>).</param>
+    /// <returns>The named predicates of the sets that have rows; empty when the corpus has no provenance.</returns>
+    internal static List<(string Name, Func<CorpusRow, bool> Member)> SubsetsOf(HoldoutSplit split)
     {
-        var directory = Path.Join(corpus, "provenance");
-        var kinds = new Dictionary<string, string>(StringComparer.Ordinal);
-        if (!Directory.Exists(directory))
-        {
-            return [];
-        }
-
-        foreach (var file in Directory.GetFiles(directory, "*.tsv").OrderBy(f => f, StringComparer.Ordinal))
-        {
-            var lines = File.ReadAllLines(file, new UTF8Encoding(false));
-            if (lines.Length == 0)
-            {
-                continue;
-            }
-
-            var header = lines[0].Split('\t');
-            var idColumn = Array.IndexOf(header, "id");
-            var originColumn = Array.IndexOf(header, "origin");
-            var selectionColumn = Array.IndexOf(header, "selection");
-            if (idColumn < 0 || originColumn < 0)
-            {
-                continue;
-            }
-
-            foreach (var line in lines.Skip(1))
-            {
-                var columns = line.Split('\t');
-                if (columns.Length <= originColumn)
-                {
-                    continue;
-                }
-
-                string kind;
-                if (columns[originColumn] != "real")
-                {
-                    kind = "written";
-                }
-                else
-                {
-                    kind = selectionColumn >= 0 && columns.Length > selectionColumn && columns[selectionColumn] == "targeted" ? "real-targeted" : "real-earlier";
-                }
-
-                kinds[columns[idColumn]] = kind;
-            }
-        }
-
-        string KindOf(CorpusRow row)
-        {
-            var hash = System.Security.Cryptography.SHA256.HashData(Encoding.UTF8.GetBytes(row.Lemma + "|" + row.Sentence));
-            return kinds.GetValueOrDefault(Convert.ToHexString(hash)[..12].ToLowerInvariant(), "unknown");
-        }
-
-        var kindOfRow = rows.ToDictionary(r => (r.Lemma, r.Sentence), KindOf);
+        ArgumentNullException.ThrowIfNull(split);
         var subsets = new List<(string, Func<CorpusRow, bool>)>();
-        foreach (var (kind, label) in new[]
+        foreach (var (name, rows) in new[]
                  {
-                     ("real-targeted", "holdout: real text, targeted (found for a sense)"),
-                     ("real-earlier", "holdout: real text, earlier harvest"),
-                     ("written", "holdout: LLM-written"),
+                     (EvaluationResult.RealTestSetName, split.Test),
+                     (EvaluationResult.RealTestFreeSetName, split.TestWithoutAnchorDocuments),
+                     (EvaluationResult.RealCalibrationSetName, split.Calibration),
+                     (EvaluationResult.WrittenSetName, split.Written),
                  })
         {
-            if (kindOfRow.Values.Any(v => v == kind))
+            if (rows.Count > 0)
             {
-                var captured = kind;
-                subsets.Add((label, r => kindOfRow[(r.Lemma, r.Sentence)] == captured));
+                var members = new HashSet<CorpusRow>(rows, ReferenceEqualityComparer.Instance);
+                subsets.Add((name, r => members.Contains(r)));
             }
         }
 

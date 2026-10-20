@@ -133,8 +133,14 @@ licence column names the basis and the contributor column the document.
 the quota-filled files) hold the number of sentences that the quota of a sense asks for, not a sample of running text:
 the share of a sense in them says nothing about how often the sense occurs. They must **never** be used for usage
 statistics (tagger or sense counts, frequency priors, word frequencies). Held-out sentences found for a sense are fine
-for measuring the classifier, but a figure measured on them is not the accuracy on representative real text:
-`evaluate` reports the held-out rows by origin (targeted real text, earlier harvest, LLM-written) and says so. The
+for measuring the classifier, but a figure measured on them is not the accuracy on representative real text.
+**The real held-out sentences are split by document** (the first bit of the SHA-256 of `document|<document id>`, see
+`tools/WordSense.Builder/RealSplit.cs`): the *calibration* half chooses the per-lemma thresholds of the encoder weights,
+the *test* half never influences a weight or a threshold and is the headline of `evaluate`, which also reports the
+calibration half, the written held-out sentences and the whole holdout as secondary or diagnostic sets. The documents of
+the two halves are disjoint; from wave 2 on, the harvest also keeps the documents that supply held-out rows apart from
+the documents that supply anchors (an *evaluation document* is chosen by a hash, one in four). The older rows share 401
+documents between anchors and held-out sentences; `evaluate` reports the test rows of documents without anchors apart. The
 representative measurements are the open English part-of-speech corpus and SemCor (the independent evaluation).
 
 ## Sense Files and Forms File (legacy)

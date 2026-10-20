@@ -393,6 +393,49 @@ public sealed class ModelTrainerTests : IDisposable
     }
 
     /// <summary>
+    ///     With calibration rows the trained thresholds are at least the cross-validation ones (calibration only raises
+    ///     them), the summary reports the calibration, and without calibration rows the thresholds are the
+    ///     cross-validation ones.
+    /// </summary>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_ModelTrainer_TrainDataAsync_CalibrationRows_MoveTheThresholds()
+    {
+        // Arrange: the anchors of the test, and 45 calibration rows whose sentences look like the first sense but are
+        // labeled with the sense of the other group, so the first thresholds answer wrongly
+        var (a1, a2, b, none) = SenseFixtures.Grouped("test");
+        var anchors = new List<CorpusRow>();
+        for (var i = 0; i < 12; i++)
+        {
+            anchors.Add(StubEmbedding.Row(a1, "a1", i));
+            anchors.Add(StubEmbedding.Row(a2, "a2", i));
+            anchors.Add(StubEmbedding.Row(b, "b", i));
+            anchors.Add(StubEmbedding.Row(none, "n", i));
+        }
+
+        var calibration = Enumerable.Range(100, 45).Select(i => StubEmbedding.Row(b, "a1", i)).ToList();
+        var options = new TrainingOptions(Parallelism: 1);
+        using var plainOutput = new StringWriter();
+        using var calibratedOutput = new StringWriter();
+
+        // Act
+        var plain = await ModelTrainer.TrainDataAsync(
+            "stub", ModelId, Hash, anchors, options, Encoder(null), null, null, plainOutput, Stopwatch.StartNew(), TestContext.Current.CancellationToken);
+        var calibrated = await ModelTrainer.TrainDataAsync(
+            "stub", ModelId, Hash, anchors, options, Encoder(null), null, null, calibratedOutput, Stopwatch.StartNew(), TestContext.Current.CancellationToken,
+            calibration: calibration);
+
+        // Assert
+        Assert.DoesNotContain("real-text calibration", plainOutput.ToString(), StringComparison.Ordinal);
+        Assert.Contains("real-text calibration: 45 rows of 1 lemmas", calibratedOutput.ToString(), StringComparison.Ordinal);
+        var before = plain.Lemmas.Single().Weights;
+        var after = calibrated.Lemmas.Single().Weights;
+        Assert.True(before.FineThreshold < LemmaWeights.Never);
+        Assert.True(after.FineThreshold > before.FineThreshold);
+        Assert.True(after.GroupThreshold >= before.GroupThreshold);
+    }
+
+    /// <summary>
     ///     A lemma with anchors for a single sense gets no weights and is named in the output; it does not fail the run.
     /// </summary>
     /// <returns>A task that completes when the check is done.</returns>

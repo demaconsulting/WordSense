@@ -78,8 +78,11 @@ implementation of the feature computation.
   the form differ in tense) and the sentence with the form in braces. A label must stand for an analysis of the form
   and a sentence must occur once across both sets; it also finds the label of an analysis by the rule of the weights
   table (the exact `lemma/features` label, else the lemma).
-- `Thresholds`: chooses the fine threshold of a lemma, and the group threshold of a lemma that has groups, by
+- `Thresholds`: chooses the first fine threshold of a lemma, and the first group threshold of a lemma that has groups, by
   cross-validation on its anchors.
+- `RealSplit`, `RealCalibrator`: split the real-text held-out sentences by document into a calibration and a test
+  split (from `corpus/provenance`) and move the thresholds of the trained lemmas to the precision target measured on
+  the real calibration sentences (see "Real-text calibration" below).
 - `Tiers`: the per-sense quota of anchor and held-out sentences and the report of the senses that fall short.
 - `EmbeddingCache` and `CachingEncoder`: the persistent cache of pooled vectors (one file per model, keyed by the
   words and the target index, valid for one digest of the model files, per-entry checksums, atomic save) and the
@@ -207,7 +210,8 @@ the tiers report.
    the senses of the group), so no group weights are stored. The solver works in the span of the anchors (the
    *kernel* form, see below) whenever the training part has fewer anchors than the encoder has dimensions, and in the
    feature space otherwise.
-6. Choose the thresholds of the lemma (see Thresholds below).
+6. Choose the first thresholds of the lemma (see Thresholds below); after all lemmas are fitted, move them to the
+   real-text precision target (see Real-text calibration below).
 7. The lemmas are fitted concurrently (`TrainingOptions.DefaultParallelism`, the processors minus two, 2 to 16
    threads), and inside a lemma the senses of a fit and the folds of the cross-validation are fitted concurrently too;
    each result is written to its own slot, so the weights do not depend on the thread count. A lemma whose
@@ -252,9 +256,27 @@ is in a group and whose fine margin is below `t_fine` (the rows that fall throug
 when `t_fine` is "never"), with the group margin defined as at run time (the group probability minus the largest
 probability of any other group or ungrouped sense). A
 level for which no threshold reaches the target gets no threshold and is never answered
-for that lemma. Only the anchors are read: the holdout, suite and independent evaluation sentences never
-reach the choice, so the accuracy figures of the evaluations are independent of the thresholds. The thresholds decide
-the level of an answer; the confidence of an answer is the probability of the answered level.
+for that lemma. Only the anchors are read by this step. These are the first thresholds: the anchors are balanced and partly
+written, so the answers above them fall short of the target on real text, and the real-text calibration below moves them.
+The thresholds decide the level of an answer; the confidence of an answer is the probability of the answered level.
+
+**Real-text calibration (`RealSplit`, `RealCalibrator`).** The real held-out sentences (provenance `origin = real`, joined
+to a corpus row by the first 12 hexadecimal digits of the SHA-256 of `lemma|sentence`) are split by *document*: the
+document of a row is its source and the part of the source key before `#` (a Gutenberg book, a VOA article, a government
+page; a Tatoeba sentence is its own document), and the first bit of the SHA-256 of `document|<id>` (0 calibration, 1 test)
+gives its side, so every sentence of a document is on one side and the split is fixed by the data, not by a seed. The
+written held-out sentences and the rows without provenance are never in either split. The calibration rows of the trained
+lemmas are encoded through the same cache and scored by the final full-precision weights. For the fine level, a lemma with
+at least 20 calibration rows gets a threshold of its own (the lowest margin that reaches the precision target with at
+least five answers); every lemma that has a finite first threshold and no threshold of its own gets one pooled shift
+`s >= 0`, the lowest shift such that the calibration answers of all those lemmas with margin at least `t_cv + s` reach the
+target with at least 30 answers (when no shift reaches it, the largest shift that keeps 30 answers). The final fine
+threshold is `max(t_cv + s, t_own)`, so calibration only raises a threshold and a level that was never answered stays so.
+The group threshold moves the same way, over the calibration rows that fall through the final fine threshold and whose
+best sense is in a group, but only when at least 30 such answers exist to verify it (otherwise it is kept and the report
+says it is unverified). A calibration row whose sense has no anchor counts as a wrong answer. The test split and the
+written held-out sentences never reach the choice; the report of the run prints the rows used, the shift and the pooled
+precision before and after. `evaluate` reports the real test split as the headline set.
 
 **Tiers (`Tiers`).** The quota of a sense follows its WordNet 3.0 tag count: five or more, 20 anchor and 5 held-out
 sentences; one to four, 10 and 3; none, 5 and 2. The report lists every sense of every trained lemma with its counts
@@ -313,10 +335,13 @@ own probability; over all rows and over the rows that rank senses), the part-of-
 analysis, plus the weights size, the latency per
 sentence and the first-use time and memory of the lexicon. When `corpus/provenance` names the origin of the held-out
 sentences (the first 12 hexadecimal digits of the SHA-256 of `lemma|sentence` join a provenance row to a row), the same
-classification is also scored for three subsets, each reported as its own set: real text that was targeted at a sense
-(`selection = targeted`), real text of the earlier harvests and LLM-written sentences. No subset is representative
-real text (the held-out sentences are balanced and selected or written per sense), and the report says so; the
-representative measurements are the independent evaluations. `basic` is evaluated the same way without weights and
+classification is scored for these sets, each reported on its own, in this order: **real text, test split** (the headline
+set: real held-out sentences of the test documents, see Real-text calibration), the same sentences restricted to the
+documents that supply no anchor, **real text, calibration split** (diagnostic: the thresholds were chosen on it),
+**LLM-written** held-out sentences (secondary: about 17 points easier than real text) and the whole held-out set. No set
+is representative real text (the held-out sentences are balanced and selected or written per sense), and the report
+says so; the representative measurements are the independent evaluations. `basic` is evaluated the same way without
+weights and
 additionally reports the calibration of its confidence: the number and accuracy of the answers in the confidence
 buckets (below 0.4, 0.4 to 0.6, 0.6 to 0.7, 0.7 to 0.8, 0.8 to 0.9 and at least 0.9), the coverage and precision at
 the thresholds 0.6, 0.8 and 0.9, the size of the embedded table, the cold load time, the latency per word and per

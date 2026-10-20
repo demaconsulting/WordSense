@@ -198,8 +198,9 @@ public sealed class EvaluatorTests : IDisposable
 
         var result = await Evaluator.RunAsync(root.FullName, Path.Join(root.FullName, "corpus"), ModelCatalog.Find("basic"), progress, TestContext.Current.CancellationToken);
 
-        var set = result.Sets[0];
-        Assert.Equal("holdout", set.Name);
+        var set = result.Sets[^1];
+        Assert.Equal(EvaluationResult.AllRowsSetName, set.Name);
+        Assert.Equal(EvaluationResult.RealTestSetName, result.Sets[0].Name);
         Assert.True(set.Rows > 900);
         Assert.Equal(0, set.Group.Answered);
         Assert.Equal(set.Rows, set.Sense.Answered + set.PartOfSpeech.Answered + set.None);
@@ -208,26 +209,33 @@ public sealed class EvaluatorTests : IDisposable
     }
 
     /// <summary>
-    ///     The held-out rows are also reported by origin when the provenance names it: targeted real text, earlier
-    ///     harvests and written sentences are separate sets, and the report says that the figures are not representative.
+    ///     The held-out rows are reported by origin when the provenance names it: the real test split comes first as the
+    ///     headline, then the test rows of documents without anchors, the calibration split, the written rows and the
+    ///     whole holdout, and the report says that the figures are not representative.
     /// </summary>
     /// <returns>A task that completes when the check is done.</returns>
     [Fact]
-    public async Task WordSenseBuilder_Evaluator_RunAsync_ProvenanceNamesTheOrigin_ReportsSubsetsSeparately()
+    public async Task WordSenseBuilder_Evaluator_RunAsync_ProvenanceNamesTheOrigin_ReportsTheRealTestSplitFirst()
     {
-        // Arrange: two rows, one targeted real sentence and one written sentence
+        // Arrange: a real sentence of a test document, a real sentence of a calibration document and a written one
         var (a1, _, b, _) = SenseFixtures.Grouped("test");
         var good = Result(SenseLevel.Sense, [Analysis(PartOfSpeech.Noun, 1.0, (a1.SenseId, 1.0))], PartOfSpeech.Noun, a1.GroupId, a1.SenseId);
-        var script = new Dictionary<string, ClassifyResult> { ["0"] = good, ["1"] = good };
-        var realSentence = "A {test} 0 here.";
-        var writtenSentence = "A {test} 1 here.";
-        _dir.Write("corpus/holdout/h.tsv", $"test\t{a1.SenseId}\t{a1.PartOfSpeech}\t{realSentence}\ntest\t{b.SenseId}\t{b.PartOfSpeech}\t{writtenSentence}\n");
+        var script = new Dictionary<string, ClassifyResult> { ["0"] = good, ["1"] = good, ["2"] = good };
+        var testBook = Enumerable.Range(0, 100).First(n => RealSplit.SideOf($"gutenberg:pg{n.ToString(CultureInfo.InvariantCulture)}") == HoldoutSide.Test);
+        var calibrationBook = Enumerable.Range(0, 100).First(n => RealSplit.SideOf($"gutenberg:pg{n.ToString(CultureInfo.InvariantCulture)}") == HoldoutSide.Calibration);
+        var sentences = new[] { "A {test} 0 here.", "A {test} 1 here.", "A {test} 2 here." };
+        _dir.Write("corpus/holdout/h.tsv", $"test\t{a1.SenseId}\t{a1.PartOfSpeech}\t{sentences[0]}\ntest\t{a1.SenseId}\t{a1.PartOfSpeech}\t{sentences[1]}\ntest\t{b.SenseId}\t{b.PartOfSpeech}\t{sentences[2]}\n");
         static string Id(string sentence) =>
             Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(System.Text.Encoding.UTF8.GetBytes("test|" + sentence)))[..12].ToLowerInvariant();
         var header = string.Join('\t', "id", "lemma", "sense", "split", "source", "licence", "source_key", "url", "contributor", "origin", "selection");
-        var realRow = string.Join('\t', Id(realSentence), "test", a1.SenseId, "holdout", "gutenberg", "Public domain", "k", "-", "c", "real", "targeted");
-        var writtenRow = string.Join('\t', Id(writtenSentence), "test", b.SenseId, "holdout", "llm-corpus", "MIT (project-authored)", "k", "-", "c", "llm-corpus", "targeted");
-        _dir.Write("corpus/provenance/p.tsv", header + "\n" + realRow + "\n" + writtenRow + "\n");
+        string Row(string sentence, string sense, string source, string key, string origin) =>
+            string.Join('\t', Id(sentence), "test", sense, "holdout", source, "Public domain", key, "-", "c", origin, "targeted");
+        _dir.Write(
+            "corpus/provenance/p.tsv",
+            header + "\n" +
+            Row(sentences[0], a1.SenseId, "gutenberg", $"pg{testBook.ToString(CultureInfo.InvariantCulture)}#s1", "real") + "\n" +
+            Row(sentences[1], a1.SenseId, "gutenberg", $"pg{calibrationBook.ToString(CultureInfo.InvariantCulture)}#s1", "real") + "\n" +
+            Row(sentences[2], b.SenseId, "llm-corpus", "quota-w1-written", "llm-corpus") + "\n");
         var info = new ModelInfo("fake", "pkg", null, _ => new ScriptedModel(script));
         using var progress = new StringWriter();
 
@@ -235,9 +243,12 @@ public sealed class EvaluatorTests : IDisposable
         var result = await Evaluator.RunAsync(_dir.Root, Path.Join(_dir.Root, "corpus"), info, progress, TestContext.Current.CancellationToken);
 
         // Assert
-        Assert.Equal(["holdout", "holdout: real text, targeted (found for a sense)", "holdout: LLM-written"], result.Sets.Select(s => s.Name));
-        Assert.Equal([2, 1, 1], result.Sets.Select(s => s.Rows));
-        Assert.Equal([1, 1, 0], result.Sets.Select(s => s.Sense.Correct));
+        Assert.Equal(
+            [EvaluationResult.RealTestSetName, EvaluationResult.RealTestFreeSetName, EvaluationResult.RealCalibrationSetName, EvaluationResult.WrittenSetName, EvaluationResult.AllRowsSetName],
+            result.Sets.Select(s => s.Name));
+        Assert.Equal([1, 1, 1, 1, 3], result.Sets.Select(s => s.Rows));
+        Assert.Equal([1, 1, 1, 0, 2], result.Sets.Select(s => s.Sense.Correct));
         Assert.Contains("not the accuracy on representative text", result.Render(), StringComparison.Ordinal);
+        Assert.StartsWith("| fake | 100.00% | 100.00% | 100.00% |", result.RenderTableRow(), StringComparison.Ordinal);
     }
 }
