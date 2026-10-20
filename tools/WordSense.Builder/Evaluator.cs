@@ -12,23 +12,52 @@ using DemaConsulting.WordSense.MiniLM;
 namespace WordSense.Builder;
 
 /// <summary>
-///     Counts of one evaluation set.
+///     The answers of one level: how many sentences were answered at the level and how many of those were right.
 /// </summary>
+/// <param name="Answered">Sentences answered at the level.</param>
+/// <param name="Correct">Answered sentences whose answer at that level was right.</param>
+internal readonly record struct LevelCount(int Answered, int Correct);
+
+/// <summary>
+///     Counts of one evaluation set, measured through the public result of a model.
+/// </summary>
+/// <remarks>
+///     An answer is right at its own level: at the sense level when the answered sense is the sense of the row, at the
+///     group level when the answered group is the group of the sense of the row (a sense that is in no group is never
+///     right at the group level), at the part-of-speech level when the part of speech of the selected analysis is the
+///     one of the row. A word that the lexicon does not know has the level None and is never right.
+/// </remarks>
 /// <param name="Name">The name of the set.</param>
 /// <param name="Rows">Sentences evaluated.</param>
-/// <param name="BestSense">Sentences whose selected analysis (lemma, part of speech and features) was right.</param>
-/// <param name="Pos">Sentences whose part of speech was right.</param>
-/// <param name="Answered">Sentences with a confidence of at least 0.5.</param>
-/// <param name="AnsweredCorrect">Answered sentences whose selected analysis was right.</param>
-/// <param name="Outcomes">The confidence and correctness of every sentence, or null when not collected.</param>
+/// <param name="Sense">The answers at the sense level.</param>
+/// <param name="Group">The answers at the group level.</param>
+/// <param name="PartOfSpeech">The answers at the part-of-speech level.</param>
+/// <param name="None">Sentences whose target word is not in the lexicon.</param>
+/// <param name="FineTop1">Sentences whose most probable sense (the largest analysis probability times sense probability over every ranked sense) is the sense of the row; a sentence without ranked senses counts as wrong.</param>
+/// <param name="Ranked">Sentences whose result ranks at least one sense.</param>
+/// <param name="FineTop1OfRanked">Ranked sentences whose most probable sense is the sense of the row.</param>
+/// <param name="PosCorrect">Sentences whose selected analysis has the part of speech of the row, whatever the level of the answer.</param>
+/// <param name="AnalysisCorrect">Sentences whose selected analysis has the lemma and the part of speech of the row.</param>
+/// <param name="Outcomes">The confidence and the correctness at the answered level of every sentence, or null when not collected.</param>
 internal sealed record SetResult(
     string Name,
     int Rows,
-    int BestSense,
-    int Pos,
-    int Answered,
-    int AnsweredCorrect,
-    IReadOnlyList<(double Confidence, bool Correct)>? Outcomes = null);
+    LevelCount Sense,
+    LevelCount Group,
+    LevelCount PartOfSpeech,
+    int None,
+    int FineTop1,
+    int Ranked,
+    int FineTop1OfRanked,
+    int PosCorrect,
+    int AnalysisCorrect,
+    IReadOnlyList<(double Confidence, bool Correct)>? Outcomes = null)
+{
+    /// <summary>
+    ///     Gets the number of sentences whose answer was right at its own level.
+    /// </summary>
+    public int CorrectAtLevel => Sense.Correct + Group.Correct + PartOfSpeech.Correct;
+}
 
 /// <summary>
 ///     The measurements that only the basic model reports.
@@ -74,19 +103,23 @@ internal sealed record EvaluationResult(
     /// <summary>
     ///     Renders the row of this model for the model comparison table of the README.
     /// </summary>
+    /// <remarks>
+    ///     The columns are those of the table of the README. The best analysis is the selected analysis having the lemma and
+    ///     the part of speech of the sense of the row. The real-text set belongs to the retired classes and is no longer
+    ///     measured, so its cells read n/a until an independent running-text evaluation replaces it.
+    /// </remarks>
     /// <returns>The table row, ending with a line feed.</returns>
     public string RenderTableRow()
     {
         var inv = CultureInfo.InvariantCulture;
         var holdout = Sets.First(s => s.Name == "holdout");
-        var real = Sets.First(s => s.Name == "real-text");
         var weights = Basic is null ? WeightsBytes : Basic.TableBytes;
         var latency = Basic is null ? MillisecondsPerSentence : Basic.MicrosecondsPerSentence / 1000.0;
         var download = DownloadBytes == 0 ? "none" : (DownloadBytes / 1048576.0).ToString("N0", inv) + " MiB";
         return "| " + DisplayName(Model) +
-               " | " + Percent(holdout.BestSense, holdout.Rows) +
-               " | " + Percent(real.BestSense, real.Rows) +
-               " | " + Percent(holdout.Pos, holdout.Rows) + " / " + Percent(real.Pos, real.Rows) +
+               " | " + Percent(holdout.AnalysisCorrect, holdout.Rows) +
+               " | n/a" +
+               " | " + Percent(holdout.PosCorrect, holdout.Rows) + " / n/a" +
                " | " + download +
                " | " + (weights / 1024.0).ToString("N0", inv) + " KiB" +
                " | " + (RamBytes < 1048576 ? "< 1 MiB" : (RamBytes / 1048576.0).ToString("N0", inv) + " MiB") +
@@ -157,15 +190,32 @@ internal sealed record EvaluationResult(
         var inv = CultureInfo.InvariantCulture;
         var text = new StringBuilder();
         text.Append("### ").Append(Model).Append('\n').Append('\n');
-        text.Append("| Set | Rows | Best analysis | Part of speech | Answered | Answered accuracy |\n");
+        text.Append("Share of the sentences answered at each level:\n\n");
+        text.Append("| Set | Rows | Sense | Group | Part of speech | None |\n");
         text.Append("| --- | ---: | ---: | ---: | ---: | ---: |\n");
         foreach (var s in Sets)
         {
             text.Append("| ").Append(s.Name).Append(" | ").Append(s.Rows.ToString(inv))
-                .Append(" | ").Append(Percent(s.BestSense, s.Rows))
-                .Append(" | ").Append(Percent(s.Pos, s.Rows))
-                .Append(" | ").Append(Percent(s.Answered, s.Rows))
-                .Append(" | ").Append(Percent(s.AnsweredCorrect, s.Answered)).Append(" |\n");
+                .Append(" | ").Append(Percent(s.Sense.Answered, s.Rows))
+                .Append(" | ").Append(Percent(s.Group.Answered, s.Rows))
+                .Append(" | ").Append(Percent(s.PartOfSpeech.Answered, s.Rows))
+                .Append(" | ").Append(Percent(s.None, s.Rows)).Append(" |\n");
+        }
+
+        text.Append("\nAccuracy (precision at a level is the share of the answers at that level that are right at it):\n\n");
+        text.Append("| Set | Sense precision | Group precision | Part-of-speech precision | Correct at answered level | Fine top-1 | Fine top-1 (ranked rows) | Part of speech | Best analysis |\n");
+        text.Append("| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n");
+        foreach (var s in Sets)
+        {
+            text.Append("| ").Append(s.Name)
+                .Append(" | ").Append(Percent(s.Sense.Correct, s.Sense.Answered))
+                .Append(" | ").Append(Percent(s.Group.Correct, s.Group.Answered))
+                .Append(" | ").Append(Percent(s.PartOfSpeech.Correct, s.PartOfSpeech.Answered))
+                .Append(" | ").Append(Percent(s.CorrectAtLevel, s.Rows))
+                .Append(" | ").Append(Percent(s.FineTop1, s.Rows))
+                .Append(" | ").Append(Percent(s.FineTop1OfRanked, s.Ranked))
+                .Append(" | ").Append(Percent(s.PosCorrect, s.Rows))
+                .Append(" | ").Append(Percent(s.AnalysisCorrect, s.Rows)).Append(" |\n");
         }
 
         text.Append('\n');
@@ -218,16 +268,14 @@ internal sealed record EvaluationResult(
 
         RenderCalibration(text, inv);
 
-        text.Append("\n#### Best analysis\n\n| Model | Holdout | Real-text |\n| --- | ---: | ---: |\n");
+        text.Append("\n#### Best analysis\n\n| Model | Holdout |\n| --- | ---: |\n");
         var holdout = Sets.FirstOrDefault(s => s.Name == "holdout");
-        var real = Sets.FirstOrDefault(s => s.Name == "real-text");
-        text.Append("| Basic (this run) | ").Append(holdout is null ? "n/a" : Percent(holdout.BestSense, holdout.Rows))
-            .Append(" | ").Append(real is null ? "n/a" : Percent(real.BestSense, real.Rows)).Append(" |\n");
+        text.Append("| Basic (this run) | ").Append(holdout is null ? "n/a" : Percent(holdout.AnalysisCorrect, holdout.Rows)).Append(" |\n");
     }
 
     private void RenderCalibration(StringBuilder text, IFormatProvider inv)
     {
-        text.Append("#### Confidence calibration (rows; best-sense accuracy)\n\n");
+        text.Append("#### Confidence calibration (rows; correct at the answered level)\n\n");
         text.Append("| Set | ").Append(string.Join(" | ", Enumerable.Range(0, BucketEdges.Length + 1).Select(Bucket))).Append(" |\n");
         text.Append("| --- |").Append(string.Concat(Enumerable.Repeat(" ---: |", BucketEdges.Length + 1))).Append('\n');
         foreach (var set in Sets.Where(s => s.Outcomes is not null))
@@ -258,8 +306,13 @@ internal sealed record EvaluationResult(
 }
 
 /// <summary>
-///     Measures a shipped model on the holdout and the real-text sentences.
+///     Measures a shipped model on the held-out sentences of the fine-sense corpus.
 /// </summary>
+/// <remarks>
+///     Every sentence is classified through the public <c>ClassifyAsync</c> of the model and the result of its target
+///     word is judged at the level it was answered (see <see cref="SetResult"/>). Only <c>corpus/holdout</c> is read: the
+///     real-text sentences carry the labels of the retired classes and are no longer measured.
+/// </remarks>
 internal static class Evaluator
 {
     private const int WarmUpSentences = 20;
@@ -290,16 +343,12 @@ internal static class Evaluator
     /// <param name="info">The model.</param>
     /// <param name="progress">Receives progress messages.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
-    /// <param name="outcomesFile">When given, receives one line for each scored sentence (set, index, gold class, answered class, confidence, correct 1 or 0) for comparisons between versions.</param>
+    /// <param name="outcomesFile">When given, receives one line for each scored sentence (set, index, sense id, answer with its level, confidence, correct at the level 1 or 0) for comparisons between versions.</param>
     /// <returns>The measurements.</returns>
     public static async Task<EvaluationResult> RunAsync(string repository, string corpus, ModelInfo info, TextWriter progress, CancellationToken cancellationToken, string? outcomesFile = null)
     {
         var (wordsMs, wordsBytes) = MeasureWords();
-        var inventory = SenseInventory.ReadDirectory(Path.Join(corpus, "senses"));
-        var labels = AnalysisLabels.Load(inventory, corpus);
         var holdout = Corpus.ReadDirectory(Path.Join(corpus, "holdout"));
-        var realPath = Path.Join(corpus, "realtext", "eval-seed.tsv");
-        var real = File.Exists(realPath) ? Corpus.ReadSentences(realPath) : [];
 
         // The baseline is taken after the corpus is read, so the RAM figure holds only the model
         GC.Collect();
@@ -360,13 +409,12 @@ internal static class Evaluator
         };
 
         using var outcomesLog = outcomesFile is null ? null : new StreamWriter(outcomesFile, false, new System.Text.UTF8Encoding(false)) { NewLine = "\n" };
-        var sets = new List<SetResult>();
         var clock = Stopwatch.StartNew();
-        sets.Add(await ScoreAsync("holdout", holdout, classifier, labels, outcomesLog, cancellationToken).ConfigureAwait(false));
+        var holdoutResult = await ScoreAsync("holdout", holdout, classifier, outcomesLog, cancellationToken).ConfigureAwait(false);
         clock.Stop();
         var latency = holdout.Count == 0 ? 0 : clock.Elapsed.TotalMilliseconds / holdout.Count;
         progress.WriteLine($"{info.Name}: holdout done.");
-        sets.Add(await ScoreAsync("real-text", real, classifier, labels, outcomesLog, cancellationToken).ConfigureAwait(false));
+        List<SetResult> sets = [holdoutResult];
 
         var weights = info.IsEncoder ? info.WeightsPath(repository) : string.Empty;
         BasicDetails? basic = null;
@@ -381,34 +429,128 @@ internal static class Evaluator
             downloadBytes, ramBytes, info.IsEncoder ? firstUse.Elapsed.TotalMilliseconds : coldLoadMs);
     }
 
+    /// <summary>
+    ///     The verdict on the result of one sentence.
+    /// </summary>
+    /// <param name="Level">The level at which the model answered.</param>
+    /// <param name="CorrectAtLevel">Whether the answer is right at its own level.</param>
+    /// <param name="Ranked">Whether the result ranks at least one sense.</param>
+    /// <param name="FineTop1">Whether the most probable ranked sense is the sense of the row.</param>
+    /// <param name="PosCorrect">Whether the selected analysis has the part of speech of the row.</param>
+    /// <param name="AnalysisCorrect">Whether the selected analysis has the lemma and the part of speech of the row.</param>
+    /// <param name="Confidence">The confidence of the answer.</param>
+    internal readonly record struct Verdict(SenseLevel Level, bool CorrectAtLevel, bool Ranked, bool FineTop1, bool PosCorrect, bool AnalysisCorrect, double Confidence);
+
+    /// <summary>
+    ///     Judges the result of the target word of a row.
+    /// </summary>
+    /// <remarks>
+    ///     The answer is right at its own level: the sense at the sense level, the group of the sense of the row at the
+    ///     group level (a sense without a group is never right there), the part of speech of the row at the
+    ///     part-of-speech level; an unknown word is never right. The most probable sense is the one with the largest
+    ///     sum, over the analyses that list it, of the probability of the analysis times its own probability (the
+    ///     first on a tie); a result that ranks no sense has none and counts as wrong.
+    /// </remarks>
+    /// <param name="row">The row.</param>
+    /// <param name="result">The result of the target word of the row.</param>
+    /// <returns>The verdict.</returns>
+    internal static Verdict Judge(CorpusRow row, ClassifyResult result)
+    {
+        ArgumentNullException.ThrowIfNull(row);
+        var details = result.Details;
+        var posRight = details is not null && details.PartOfSpeech == row.PartOfSpeech;
+        var analysisRight = posRight && string.Equals(details!.Lemma, row.Lemma, StringComparison.Ordinal);
+        var correct = result.Level switch
+        {
+            SenseLevel.Sense => string.Equals(result.SenseId, row.SenseId, StringComparison.Ordinal),
+            SenseLevel.Group => GroupOf(row.SenseId) is { } group && string.Equals(result.GroupId, group, StringComparison.Ordinal),
+            SenseLevel.PartOfSpeech => posRight,
+            _ => false,
+        };
+
+        // Sum analysis probability x sense probability per sense id: analyses that share a lemma and part of speech
+        // (and differ in features) list the same senses, and a consumer maps senses to categories this way
+        var scores = new Dictionary<string, double>(StringComparer.Ordinal);
+        foreach (var analysis in result.Analyses)
+        {
+            foreach (var sense in analysis.Senses)
+            {
+                scores[sense.SenseId] = scores.GetValueOrDefault(sense.SenseId) + (analysis.Probability * sense.Probability);
+            }
+        }
+
+        string? best = null;
+        var bestScore = double.NegativeInfinity;
+        foreach (var (senseId, score) in scores)
+        {
+            if (score > bestScore)
+            {
+                bestScore = score;
+                best = senseId;
+            }
+        }
+
+        return new Verdict(result.Level, correct, best is not null, string.Equals(best, row.SenseId, StringComparison.Ordinal), posRight, analysisRight, result.Confidence);
+    }
+
+    /// <summary>
+    ///     Finds the group of a sense of the catalog.
+    /// </summary>
+    /// <param name="senseId">The sense id.</param>
+    /// <returns>The group id, or null when the sense is in no group or unknown.</returns>
+    private static string? GroupOf(string senseId) => WordLexicon.TryGetSense(senseId, out var sense) ? sense.GroupId : null;
+
+    /// <summary>
+    ///     Describes the answer of a result for the outcomes file: the level and what was answered at it.
+    /// </summary>
+    /// <param name="result">The result.</param>
+    /// <returns>The text.</returns>
+    private static string Answer(ClassifyResult result) => result.Level switch
+    {
+        SenseLevel.Sense => "Sense:" + result.SenseId,
+        SenseLevel.Group => "Group:" + result.GroupId,
+        SenseLevel.PartOfSpeech => "PartOfSpeech:" + result.Details?.Lemma + "|" + result.Details?.PartOfSpeech,
+        _ => "None",
+    };
+
     private static async Task<SetResult> ScoreAsync(
         string name,
         List<CorpusRow> rows,
         IWordSenseModel classifier,
-        AnalysisLabels labels,
         TextWriter? outcomesLog,
         CancellationToken cancellationToken)
     {
-        int best = 0, pos = 0, answered = 0, answeredCorrect = 0;
         var outcomes = new List<(double Confidence, bool Correct)>(rows.Count);
+        var answered = new LevelCount[4];
+        int ranked = 0, fineTop1 = 0, fineTop1OfRanked = 0, pos = 0, analysis = 0;
         foreach (var row in rows)
         {
-            var expected = labels.Of(row.Lemma, row.Sense);
             var results = await classifier.ClassifyAsync(row.Words, cancellationToken).ConfigureAwait(false);
             var actual = results[row.TargetWordIndex];
-            var details = actual.Details;
-            var right = labels.IsRight(row.Lemma, row.Sense, details);
-            best += right ? 1 : 0;
-            outcomes.Add((actual.Confidence, right));
-            outcomesLog?.WriteLine(string.Join('\t', name, outcomes.Count - 1, row.Lemma + "#" + row.Sense, details is null ? "-" : details.Lemma + "|" + details.PartOfSpeech + "|" + details.Features, actual.Confidence.ToString("F6", CultureInfo.InvariantCulture), right ? "1" : "0"));
-            pos += details is not null && expected.Any(k => k.Pos == details.PartOfSpeech) ? 1 : 0;
-            if (actual.Confidence >= 0.5)
-            {
-                answered++;
-                answeredCorrect += right ? 1 : 0;
-            }
+            var verdict = Judge(row, actual);
+            var level = (int)verdict.Level;
+            answered[level] = new LevelCount(answered[level].Answered + 1, answered[level].Correct + (verdict.CorrectAtLevel ? 1 : 0));
+            ranked += verdict.Ranked ? 1 : 0;
+            fineTop1 += verdict.FineTop1 ? 1 : 0;
+            fineTop1OfRanked += verdict.Ranked && verdict.FineTop1 ? 1 : 0;
+            pos += verdict.PosCorrect ? 1 : 0;
+            analysis += verdict.AnalysisCorrect ? 1 : 0;
+            outcomes.Add((verdict.Confidence, verdict.CorrectAtLevel));
+            outcomesLog?.WriteLine(string.Join('\t', name, outcomes.Count - 1, row.SenseId, Answer(actual), actual.Confidence.ToString("F6", CultureInfo.InvariantCulture), verdict.CorrectAtLevel ? "1" : "0"));
         }
 
-        return new SetResult(name, rows.Count, best, pos, answered, answeredCorrect, outcomes);
+        return new SetResult(
+            name,
+            rows.Count,
+            answered[(int)SenseLevel.Sense],
+            answered[(int)SenseLevel.Group],
+            answered[(int)SenseLevel.PartOfSpeech],
+            answered[(int)SenseLevel.None].Answered,
+            fineTop1,
+            ranked,
+            fineTop1OfRanked,
+            pos,
+            analysis,
+            outcomes);
     }
 }

@@ -98,14 +98,14 @@ sections:
               - id: WordSense-Onnx-OnnxClassifier-BestCandidate
                 title: >-
                   OnnxClassifier shall keep the best sense and the best group of a trained lemma visible, in the ranked
-                  Senses of the selected analysis, whatever level it answers, so that a coarser or less confident
-                  answer still tells which senses are likely.
+                  Senses of the selected analysis, whatever level it answers, so that a coarser answer still tells
+                  which senses and groups are likely.
                 tags: [unit]
                 justification: |
-                  Callers that accept low-confidence answers, or that group the senses their own way, must not lose the
+                  Callers that accept a coarser answer, or that group the senses their own way, must not lose the
                   model's ranking because the model stepped up to a coarser level.
                 tests:
-                  - OnnxClassifier_ClassifyAsync_LowMargin_ReturnsBestGroupWithLowConfidence
+                  - OnnxClassifier_ClassifyAsync_LowMargin_KeepsTheBestSenseAndGroupVisibleInTheRankedSenses
 
               - id: WordSense-Onnx-OnnxClassifier-FineThreshold
                 title: >-
@@ -133,34 +133,22 @@ sections:
                 tests:
                   - OnnxClassifier_ClassifyAsync_FineBelowAndGroupAboveThreshold_AnswersGroup
 
-              - id: WordSense-Onnx-OnnxClassifier-LowConfidenceGroup
-                title: >-
-                  OnnxClassifier shall, for a lemma that has groups, when neither threshold is met and the best sense
-                  is in a group, answer that group at the group level with a low confidence (the probability of the
-                  selected analysis times the summed probability of the senses of the group, which is below the
-                  confidence of an answer that met its threshold for the same margin).
-                tags: [unit]
-                justification: |
-                  When a model is unsure between senses it steps up to their shared group; the caller learns from the
-                  confidence that the model could not meet its own precision target and can discard the answer or
-                  accept it knowingly, but still gets the best group and, through the Senses of the selected analysis,
-                  its member senses.
-                tests:
-                  - OnnxClassifier_ClassifyAsync_BothBelowThreshold_AnswersBestGroupBelowOneHalf
-
               - id: WordSense-Onnx-OnnxClassifier-StepToPartOfSpeech
                 title: >-
-                  OnnxClassifier shall, when the fine threshold is not met and no group exists to step to (the lemma
-                  has no groups, or the best sense is in no group), answer at the part of speech level with the
-                  selected analysis and its probability as the confidence, never as unknown, and shall never answer at
-                  the group level for a lemma that has no groups.
+                  OnnxClassifier shall, when the fine threshold is not met and no group can be answered (the lemma has
+                  no groups, the best sense is in no group, or the group margin does not reach the group threshold),
+                  answer at the part of speech level with the selected analysis and its probability as the confidence,
+                  never as unknown, and shall never answer at the group level for a lemma that has no groups or for a
+                  group whose threshold is not met.
                 tags: [unit]
                 justification: |
                   Levels nest as part of speech, group and sense, and a group exists only where it was curated; a
-                  model that is unsure between senses that share no group can honestly state only the part of speech,
-                  with a low confidence, and must never invent a group.
+                  model that is unsure between senses, and not sure of their shared group either, can honestly state
+                  only the part of speech, while the ranked senses of the analysis still show which senses and groups
+                  are likely. Such a model must never invent a group or name one that missed its precision target.
                 tests:
                   - OnnxClassifier_ClassifyAsync_LemmaWithoutGroups_StepsFromSenseToPartOfSpeech
+                  - OnnxClassifier_ClassifyAsync_BothBelowThreshold_AnswersPartOfSpeech
 
               - id: WordSense-Onnx-OnnxClassifier-Untrained
                 title: >-
@@ -209,7 +197,6 @@ sections:
                   - OnnxClassifier_ClassifyAsync_FormOfTwoLemmas_ChoosesTheLemmaFromContext
                   - OnnxClassifier_ClassifyAsync_ReadPastVersusPresent_ChoosesTheTenseFeatures
                   - OnnxClassifier_ClassifyAsync_FormChooserBelowThreshold_AnswersPartOfSpeech
-                  - OnnxClassifier_ClassifyAsync_EveryMultiLemmaForm_HasAChooser
 
               - id: WordSense-Onnx-OnnxClassifier-Validation
                 title: >-

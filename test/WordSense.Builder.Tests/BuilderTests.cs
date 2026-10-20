@@ -4,7 +4,7 @@ using PartOfSpeech = DemaConsulting.WordSense.PartOfSpeech;
 namespace WordSense.Builder.Tests;
 
 /// <summary>
-///     Tests for the corpus reader, the logistic trainer, the sense inventory, the evaluator, the appendix and the committed data.
+///     Tests for the legacy corpus reader, the logistic trainer, the legacy sense inventory, the evaluator, the appendix and the committed data.
 /// </summary>
 public sealed class BuilderTests : IDisposable
 {
@@ -19,15 +19,16 @@ public sealed class BuilderTests : IDisposable
     }
 
     /// <summary>
-    ///     A well-formed row is parsed with its words and target word.
+    ///     A well-formed legacy row is parsed with its words and target word.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_Corpus_ReadSentences_ParsesRow()
+    public void WordSenseBuilder_LegacyCorpus_ReadSentences_ParsesRow()
     {
         var path = Write("a.tsv", "bank\tmoney\tShe went to the {bank} today.\n");
-        var rows = Corpus.ReadSentences(path);
+        var rows = LegacyCorpus.ReadSentences(path);
         var row = Assert.Single(rows);
         Assert.Equal("bank", row.Lemma);
+        Assert.Equal("money", row.Sense);
         Assert.Equal(["She", "went", "to", "the", "bank", "today", "."], row.Words);
         Assert.Equal("bank", row.Words[row.TargetWordIndex]);
     }
@@ -42,16 +43,16 @@ public sealed class BuilderTests : IDisposable
     [InlineData("It was a big-{lunged} dog.", "It was a big- lunged dog .", "lunged")]
     [InlineData("The {regiment}'s flag fell.", "The regiment 's flag fell .", "regiment")]
     [InlineData("The y-{intercept} is two.", "The y- intercept is two .", "intercept")]
-    public void WordSenseBuilder_Corpus_ReadSentences_SplitsCompoundTarget(string sentence, string words, string target)
+    public void WordSenseBuilder_LegacyCorpus_ReadSentences_SplitsCompoundTarget(string sentence, string words, string target)
     {
-        var row = Assert.Single(Corpus.ReadSentences(Write("c.tsv", "bank\tmoney\t" + sentence + "\n")));
+        var row = Assert.Single(LegacyCorpus.ReadSentences(Write("c.tsv", "bank\tmoney\t" + sentence + "\n")));
 
         Assert.Equal(words, string.Join(' ', row.Words));
         Assert.Equal(target, row.Words[row.TargetWordIndex]);
     }
 
     /// <summary>
-    ///     Malformed rows are rejected.
+    ///     Malformed legacy rows are rejected.
     /// </summary>
     /// <param name="line">The malformed line.</param>
     [Theory]
@@ -60,37 +61,37 @@ public sealed class BuilderTests : IDisposable
     [InlineData("bank\tmoney\tNo target here.")]
     [InlineData("bank\tmoney\tTwo {bank} {bank}.")]
     [InlineData("bank\tmoney\tEmpty {} pair.")]
-    public void WordSenseBuilder_Corpus_ReadSentences_RejectsMalformedRow(string line)
+    public void WordSenseBuilder_LegacyCorpus_ReadSentences_RejectsMalformedRow(string line)
     {
         var path = Write("bad.tsv", line + "\n");
-        Assert.Throws<InvalidDataException>(() => Corpus.ReadSentences(path));
+        Assert.Throws<InvalidDataException>(() => LegacyCorpus.ReadSentences(path));
     }
 
     /// <summary>
-    ///     The lenient reader returns the valid rows and one message per malformed row.
+    ///     The lenient legacy reader returns the valid rows and one message per malformed row.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_Corpus_ReadSentencesLenient_CollectsErrors()
+    public void WordSenseBuilder_LegacyCorpus_ReadSentencesLenient_CollectsErrors()
     {
         var path = Write("l.tsv", "bank\tmoney\tA {bank}.\nbank\tmoney\tNo target.\n");
 
-        var (rows, errors) = Corpus.ReadSentencesLenient(path);
+        var (rows, errors) = LegacyCorpus.ReadSentencesLenient(path);
 
         Assert.Single(rows);
         Assert.Single(errors);
     }
 
     /// <summary>
-    ///     A missing directory yields no rows, and duplicates across sets are detected.
+    ///     A missing directory yields no legacy rows, and duplicates across sets are detected.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_Corpus_DirectoryAndDisjointness()
+    public void WordSenseBuilder_LegacyCorpus_DirectoryAndDisjointness()
     {
-        Assert.Empty(Corpus.ReadDirectory(Path.Join(_dir.Root, "none")));
+        Assert.Empty(LegacyCorpus.ReadDirectory(Path.Join(_dir.Root, "none")));
         var a = Row("bank", "money", "A {bank}.", "a.tsv");
         var b = Row("bank", "river", "A {bank}.", "b.tsv");
-        Assert.Throws<InvalidDataException>(() => Corpus.EnsureDisjoint([a], [b]));
-        Corpus.EnsureDisjoint([a], [Row("bank", "river", "Another {bank}.", "b.tsv")]);
+        Assert.Throws<InvalidDataException>(() => LegacyCorpus.EnsureDisjoint([a], [b]));
+        LegacyCorpus.EnsureDisjoint([a], [Row("bank", "river", "Another {bank}.", "b.tsv")]);
     }
 
     /// <summary>
@@ -139,9 +140,9 @@ public sealed class BuilderTests : IDisposable
     ///     The rules require meanings all-or-none, two distinct meanings for a heteronym, unique (part of speech, meaning) pairs and consistent respellings.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_SenseInventory_ValidateRules_FlagsViolations()
+    public void WordSenseBuilder_LegacySenseInventory_ValidateRules_FlagsViolations()
     {
-        var inventory = new SenseInventory(
+        var inventory = new LegacySenseInventory(
         [
             new InventoryRow("good", "a", PartOfSpeech.Noun, null, null, "s.tsv"),
             new InventoryRow("good", "b", PartOfSpeech.Verb, null, null, "s.tsv"),
@@ -177,9 +178,9 @@ public sealed class BuilderTests : IDisposable
     ///     Two senses of one part of speech are valid when they carry different meanings.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_SenseInventory_ValidateRules_AllowsTwoSensesOfOnePartOfSpeechWithDifferentMeanings()
+    public void WordSenseBuilder_LegacySenseInventory_ValidateRules_AllowsTwoSensesOfOnePartOfSpeechWithDifferentMeanings()
     {
-        var inventory = new SenseInventory(
+        var inventory = new LegacySenseInventory(
         [
             new InventoryRow("sewer", "drain", PartOfSpeech.Noun, "drain", null, "s.tsv"),
             new InventoryRow("sewer", "stitcher", PartOfSpeech.Noun, "stitcher", null, "s.tsv"),
@@ -193,9 +194,9 @@ public sealed class BuilderTests : IDisposable
     ///     The meaning and respelling columns round-trip, are optional (empty) and the header is the five-column one.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_SenseInventory_MeaningAndRespelling_RoundTripAndAreOptional()
+    public void WordSenseBuilder_LegacySenseInventory_MeaningAndRespelling_RoundTripAndAreOptional()
     {
-        SenseInventory.WriteFile(
+        LegacySenseInventory.WriteFile(
             Path.Join(_dir.Root, "grp", "x.tsv"),
             [
                 new InventoryRow("bow", "bend-noun", PartOfSpeech.Noun, "bend", "bou", "x.tsv"),
@@ -204,7 +205,7 @@ public sealed class BuilderTests : IDisposable
                 new InventoryRow("bank", "noun", PartOfSpeech.Noun, null, null, "x.tsv"),
             ]);
 
-        var inventory = SenseInventory.ReadDirectory(Path.Join(_dir.Root, "grp"));
+        var inventory = LegacySenseInventory.ReadDirectory(Path.Join(_dir.Root, "grp"));
 
         Assert.Equal(new SenseDefinition(PartOfSpeech.Noun, "bend", "bou"), inventory.DefinitionsOf("bow")[0]);
         Assert.Equal(new SenseDefinition(PartOfSpeech.Noun, "weapon"), inventory.DefinitionsOf("bow")[2]);
@@ -216,11 +217,11 @@ public sealed class BuilderTests : IDisposable
     ///     An invalid part of speech, meaning or respelling is rejected with the file and line.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_SenseInventory_InvalidColumns_AreRejected()
+    public void WordSenseBuilder_LegacySenseInventory_InvalidColumns_AreRejected()
     {
         Write("bad-col/a.tsv", "lemma\tlabel\tpos\tmeaning\trespelling\nbank\tnoun\tNoun\t\t\nbank\tb\tverb\tBad Meaning\t\nbank\tc\tverb\t\tbow\n");
 
-        var ex = Assert.Throws<InvalidDataException>(() => SenseInventory.ReadDirectory(Path.Join(_dir.Root, "bad-col")));
+        var ex = Assert.Throws<InvalidDataException>(() => LegacySenseInventory.ReadDirectory(Path.Join(_dir.Root, "bad-col")));
 
         Assert.Contains("a.tsv:2", ex.Message, StringComparison.Ordinal);
         Assert.Contains("a.tsv:3", ex.Message, StringComparison.Ordinal);
@@ -231,13 +232,13 @@ public sealed class BuilderTests : IDisposable
     ///     The inventory rejects malformed files with every problem found.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_SenseInventory_ReadDirectory_RejectsMalformedRows()
+    public void WordSenseBuilder_LegacySenseInventory_ReadDirectory_RejectsMalformedRows()
     {
         var dir = Path.Join(_dir.Root, "inv");
         Write("inv/a.tsv", "lemma\tlabel\tpos\tmeaning\trespelling\nbank\tnoun\tnoun\t\t\nbank\tnoun\tnoun\t\t\nbank\tadj\tAdj\t\t\nBank\tx\tnoun\t\t\nbank\ty\nwill\taux\tauxiliary\t\t\n");
         Write("inv/b.tsv", "wrong header\n");
 
-        var ex = Assert.Throws<InvalidDataException>(() => SenseInventory.ReadDirectory(dir));
+        var ex = Assert.Throws<InvalidDataException>(() => LegacySenseInventory.ReadDirectory(dir));
 
         Assert.Contains("already listed", ex.Message, StringComparison.Ordinal);
         Assert.Contains("pos must be one of", ex.Message, StringComparison.Ordinal);
@@ -251,31 +252,31 @@ public sealed class BuilderTests : IDisposable
     ///     A file can be left out of the inventory, and a missing directory is an empty inventory.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_SenseInventory_ReadDirectory_SkipsFileAndToleratesMissingDirectory()
+    public void WordSenseBuilder_LegacySenseInventory_ReadDirectory_SkipsFileAndToleratesMissingDirectory()
     {
         Write("skip/a.tsv", TestDirectory.SensesHeader + "bank\tnoun\tnoun\t\t\n");
         Write("skip/b.tsv", "garbage\n");
 
-        var inventory = SenseInventory.ReadDirectory(Path.Join(_dir.Root, "skip"), "b.tsv");
+        var inventory = LegacySenseInventory.ReadDirectory(Path.Join(_dir.Root, "skip"), "b.tsv");
 
         Assert.Equal(1, inventory.LemmaCount);
         Assert.True(inventory.ContainsLemma("bank"));
         Assert.False(inventory.ContainsLemma("other"));
-        Assert.Equal(0, SenseInventory.ReadDirectory(Path.Join(_dir.Root, "missing")).LemmaCount);
+        Assert.Equal(0, LegacySenseInventory.ReadDirectory(Path.Join(_dir.Root, "missing")).LemmaCount);
     }
 
     /// <summary>
     ///     The inventory round-trips through its file format.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_SenseInventory_WriteAndRead_RoundTrips()
+    public void WordSenseBuilder_LegacySenseInventory_WriteAndRead_RoundTrips()
     {
         var path = Path.Join(_dir.Root, "inv", "x.tsv");
-        SenseInventory.WriteFile(
+        LegacySenseInventory.WriteFile(
             path,
             [new InventoryRow("bow", "bend", PartOfSpeech.Noun, "bend", null, "x.tsv"), new InventoryRow("bow", "weapon", PartOfSpeech.Noun, "weapon", null, "x.tsv")]);
 
-        var inventory = SenseInventory.ReadDirectory(Path.Join(_dir.Root, "inv"));
+        var inventory = LegacySenseInventory.ReadDirectory(Path.Join(_dir.Root, "inv"));
 
         Assert.Equal(2, inventory.Rows.Count());
         Assert.Equal(1, inventory.LemmaCount);
@@ -290,9 +291,9 @@ public sealed class BuilderTests : IDisposable
     ///     Validation reports anchors without an inventory entry, entries without anchors, holdout senses and forms labels that are no senses.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_SenseInventory_Validate_ChecksBothDirections()
+    public void WordSenseBuilder_LegacySenseInventory_Validate_ChecksBothDirections()
     {
-        var inventory = new SenseInventory([Inv("bank", "noun"), Inv("bank", "orphan")]);
+        var inventory = new LegacySenseInventory([Inv("bank", "noun"), Inv("bank", "orphan")]);
         var anchors = new[] { Row("bank", "noun", "A {bank}.", "a.tsv"), Row("bank", "verb", "B {bank}.", "a.tsv") };
         var holdout = new[] { Row("bank", "adj", "C {bank}.", "h.tsv") };
         var forms = new List<(string Form, string Lemma, string[] Labels)>
@@ -315,9 +316,9 @@ public sealed class BuilderTests : IDisposable
     ///     lemma itself are reported, and forms of untrained lemmas are ignored.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_SenseInventory_CheckForms_ReportsEveryViolation()
+    public void WordSenseBuilder_LegacySenseInventory_CheckForms_ReportsEveryViolation()
     {
-        var inventory = new SenseInventory([Inv("bank", "noun"), Inv("bank", "verb", PartOfSpeech.Verb)]);
+        var inventory = new LegacySenseInventory([Inv("bank", "noun"), Inv("bank", "verb", PartOfSpeech.Verb)]);
         var forms = new List<(string Form, string Lemma, string[] Labels)>
         {
             ("banks", "bank", ["noun", "money"]),
@@ -343,9 +344,9 @@ public sealed class BuilderTests : IDisposable
     ///     The senses a form names are the positions of its labels in the order of the lemma's labels.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_SenseInventory_FormSenseIndexes_FollowsLemmaOrder()
+    public void WordSenseBuilder_LegacySenseInventory_FormSenseIndexes_FollowsLemmaOrder()
     {
-        var inventory = new SenseInventory([Inv("bow", "weapon"), Inv("bow", "bend-noun"), Inv("bow", "bend-verb", PartOfSpeech.Verb)]);
+        var inventory = new LegacySenseInventory([Inv("bow", "weapon"), Inv("bow", "bend-noun"), Inv("bow", "bend-verb", PartOfSpeech.Verb)]);
 
         Assert.Equal([0, 2], inventory.FormSenseIndexes("bow", ["weapon", "bend-noun"]));
         Assert.Equal([1], inventory.FormSenseIndexes("bow", ["bend-verb"]));
@@ -358,9 +359,9 @@ public sealed class BuilderTests : IDisposable
     ///     reported; a self row and a form of another lemma are not.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_SenseInventory_Validate_SentenceWithSenseOutsideFormLabels_IsReported()
+    public void WordSenseBuilder_LegacySenseInventory_Validate_SentenceWithSenseOutsideFormLabels_IsReported()
     {
-        var inventory = new SenseInventory([Inv("bank", "noun"), Inv("bank", "verb", PartOfSpeech.Verb)]);
+        var inventory = new LegacySenseInventory([Inv("bank", "noun"), Inv("bank", "verb", PartOfSpeech.Verb)]);
         var anchors = new[]
         {
             Row("bank", "noun", "A {bank}.", "a.tsv"),
@@ -379,26 +380,26 @@ public sealed class BuilderTests : IDisposable
     }
 
     /// <summary>
-    ///     The committed corpus is consistent: every form row is valid and no anchor or holdout sentence uses a listed
-    ///     form as a sense outside its labels.
+    ///     The committed legacy corpus, which still trains the Basic model, is consistent: every form row is valid and
+    ///     no anchor or holdout sentence uses a listed form as a sense outside its labels.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_SenseInventory_Validate_CommittedCorpus_IsConsistent()
+    public void WordSenseBuilder_LegacySenseInventory_Validate_CommittedLegacyCorpus_IsConsistent()
     {
-        var corpus = Path.Join(FindRepositoryRoot().FullName, "corpus");
-        var inventory = SenseInventory.ReadDirectory(Path.Join(corpus, "senses"));
+        var corpus = Path.Join(FindRepositoryRoot().FullName, "corpus", "legacy");
+        var inventory = LegacySenseInventory.ReadDirectory(Path.Join(corpus, "senses"));
         var forms = Directory.GetFiles(Path.Join(corpus, "forms"), "*.tsv").OrderBy(f => f, StringComparer.Ordinal).SelectMany(Corpus.ReadForms).ToList();
 
-        inventory.Validate(Corpus.ReadDirectory(Path.Join(corpus, "anchors")), Corpus.ReadDirectory(Path.Join(corpus, "holdout")), forms);
+        inventory.Validate(LegacyCorpus.ReadDirectory(Path.Join(corpus, "anchors")), LegacyCorpus.ReadDirectory(Path.Join(corpus, "holdout")), forms);
     }
 
     /// <summary>
-    ///     A consistent corpus passes validation.
+    ///     A consistent legacy corpus passes validation.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_SenseInventory_Validate_ConsistentCorpus_Passes()
+    public void WordSenseBuilder_LegacySenseInventory_Validate_ConsistentCorpus_Passes()
     {
-        var inventory = new SenseInventory([Inv("bank", "noun")]);
+        var inventory = new LegacySenseInventory([Inv("bank", "noun")]);
 
         inventory.Validate([Row("bank", "noun", "A {bank}.", "a.tsv")], [Row("bank", "noun", "B {bank}.", "h.tsv")], [("banks", "bank", ["noun"])]);
     }
@@ -473,14 +474,15 @@ public sealed class BuilderTests : IDisposable
     }
 
     /// <summary>
-    ///     The evaluation renders one row per set with percentages, n/a for empty sets and the three measurements.
+    ///     The evaluation renders the share answered at each level and the accuracy of each level per set, with n/a for
+    ///     empty sets, and the three measurements.
     /// </summary>
     [Fact]
     public void WordSenseBuilder_EvaluationResult_Render_FormatsSetsAndMeasurements()
     {
         var result = new EvaluationResult(
             "demo",
-            [new SetResult("holdout", 4, 3, 4, 2, 2), new SetResult("real-text", 0, 0, 0, 0, 0)],
+            [Set("holdout", 4, new(2, 1), new(1, 1), new(1, 1), 0, 2, 4, 2, 4, 3), Set("empty", 0, default, default, default, 0, 0, 0, 0, 0, 0)],
             2048,
             1.5,
             12,
@@ -488,9 +490,11 @@ public sealed class BuilderTests : IDisposable
 
         var text = result.Render();
 
-        Assert.StartsWith("### demo\n\n| Set | Rows | Best analysis | Part of speech | Answered | Answered accuracy |\n", text, StringComparison.Ordinal);
-        Assert.Contains("| holdout | 4 | 75.00% | 100.00% | 50.00% | 100.00% |\n", text, StringComparison.Ordinal);
-        Assert.Contains("| real-text | 0 | n/a | n/a | n/a | n/a |\n", text, StringComparison.Ordinal);
+        Assert.StartsWith("### demo\n\nShare of the sentences answered at each level:\n\n| Set | Rows | Sense | Group | Part of speech | None |\n", text, StringComparison.Ordinal);
+        Assert.Contains("| holdout | 4 | 50.00% | 25.00% | 25.00% | 0.00% |\n", text, StringComparison.Ordinal);
+        Assert.Contains("| empty | 0 | n/a | n/a | n/a | n/a |\n", text, StringComparison.Ordinal);
+        Assert.Contains("| holdout | 50.00% | 100.00% | 100.00% | 75.00% | 50.00% | 50.00% | 100.00% | 75.00% |\n", text, StringComparison.Ordinal);
+        Assert.Contains("| empty | n/a | n/a | n/a | n/a | n/a | n/a | n/a | n/a |\n", text, StringComparison.Ordinal);
         Assert.Contains("- Weights size: 2 KiB\n", text, StringComparison.Ordinal);
         Assert.Contains("- Classification latency: 1.50 ms per sentence\n", text, StringComparison.Ordinal);
         Assert.Contains("- Word table first use: 12 ms, 2.0 MiB\n", text, StringComparison.Ordinal);
@@ -506,7 +510,7 @@ public sealed class BuilderTests : IDisposable
         (double Confidence, bool Correct)[] outcomes = [(0.95, true), (0.85, true), (0.65, false), (0.2, false)];
         var result = new EvaluationResult(
             "demo",
-            [new SetResult("real-text", 4, 2, 4, 2, 2, outcomes)],
+            [Set("holdout", 4, new(2, 2), default, new(2, 0), 0, 2, 4, 2, 4, 2, outcomes)],
             2048,
             1.5,
             12,
@@ -514,30 +518,36 @@ public sealed class BuilderTests : IDisposable
 
         var text = result.Render();
 
-        Assert.Contains("#### Confidence calibration (rows; best-sense accuracy)\n", text, StringComparison.Ordinal);
-        Assert.Contains("| real-text | 1 / 0.00% | 0 / n/a | 1 / 0.00% | 0 / n/a | 1 / 100.00% | 1 / 100.00% |\n", text, StringComparison.Ordinal);
-        Assert.Contains("| real-text | 0.6 | 75.00% | 66.67% |\n", text, StringComparison.Ordinal);
-        Assert.Contains("| real-text | 0.9 | 25.00% | 100.00% |\n", text, StringComparison.Ordinal);
+        Assert.Contains("#### Confidence calibration (rows; correct at the answered level)\n", text, StringComparison.Ordinal);
+        Assert.Contains("| holdout | 1 / 0.00% | 0 / n/a | 1 / 0.00% | 0 / n/a | 1 / 100.00% | 1 / 100.00% |\n", text, StringComparison.Ordinal);
+        Assert.Contains("| holdout | 0.6 | 75.00% | 66.67% |\n", text, StringComparison.Ordinal);
+        Assert.Contains("| holdout | 0.9 | 25.00% | 100.00% |\n", text, StringComparison.Ordinal);
         Assert.DoesNotContain("#### Comparison", text, StringComparison.Ordinal);
     }
 
+    private static SetResult Set(string name, int rows, LevelCount sense, LevelCount group, LevelCount pos, int none, int fineTop1, int ranked, int fineTop1OfRanked, int posCorrect, int analysisCorrect, IReadOnlyList<(double Confidence, bool Correct)>? outcomes = null) =>
+        new(name, rows, sense, group, pos, none, fineTop1, ranked, fineTop1OfRanked, posCorrect, analysisCorrect, outcomes);
+
     /// <summary>
-    ///     The statistical model is evaluated on the holdout without any model files.
+    ///     The statistical model is evaluated on the holdout without any model files; the result has one set, the
+    ///     holdout, and counts every row at one of the levels the Basic model answers.
     /// </summary>
     /// <returns>A task that completes when the check is done.</returns>
     [Fact]
     public async Task WordSenseBuilder_Evaluator_RunAsync_BasicModel_CountsHoldoutRows()
     {
-        Write("corpus/senses/s.tsv", TestDirectory.SensesHeader + "walk\tnoun\tnoun\t\t\nwalk\tverb\tverb\t\t\n");
-        Write("corpus/migration/legacy-class-map.tsv", "class_id\tkind\tlemma\tpos\tmeaning\trespelling\tsense_count\tsense_id\tgroup_id\tentry_id\tentry_lemma\tentry_pos\tfeatures\n");
-        Write("corpus/holdout/h.tsv", "walk\tverb\tYou should {walk} more.\nwalk\tnoun\tThe {walk} was long.\n");
+        var verb = SenseFixtures.Senses("walk", PartOfSpeech.Verb, 1)[0];
+        var noun = SenseFixtures.Senses("walk", PartOfSpeech.Noun, 1)[0];
+        Write("corpus/holdout/h.tsv", $"walk\t{verb.SenseId}\tVerb\tYou should {{walk}} more.\nwalk\t{noun.SenseId}\tNoun\tThe {{walk}} was long.\n");
         using var progress = new StringWriter();
 
         var result = await Evaluator.RunAsync(_dir.Root, Path.Join(_dir.Root, "corpus"), ModelCatalog.Find("basic"), progress, TestContext.Current.CancellationToken);
 
-        Assert.Equal(["holdout", "real-text"], result.Sets.Select(s => s.Name));
-        Assert.Equal(2, result.Sets[0].Rows);
-        Assert.Equal(0, result.Sets[1].Rows);
+        var set = Assert.Single(result.Sets);
+        Assert.Equal("holdout", set.Name);
+        Assert.Equal(2, set.Rows);
+        Assert.Equal(2, set.Sense.Answered + set.Group.Answered + set.PartOfSpeech.Answered + set.None);
+        Assert.Equal(0, set.Group.Answered);
         Assert.Equal(0, result.WeightsBytes);
         Assert.Contains("holdout done", progress.ToString(), StringComparison.Ordinal);
     }
@@ -571,7 +581,7 @@ public sealed class BuilderTests : IDisposable
         Assert.Contains($"| {"`Verb`",-14} | {1,6} | {2,6} |", text, StringComparison.Ordinal);
         Assert.Contains($"| {"`Determiner`",-14} | {1,6} | {1,6} |", text, StringComparison.Ordinal);
         Assert.Contains("The library supports 2 lemmas with 7 senses in total", text, StringComparison.Ordinal);
-        Assert.Contains("not listed until the corpus is relabeled: `zzyzx`.", text.ReplaceLineEndings(" "), StringComparison.Ordinal);
+        Assert.Contains("not listed: `zzyzx`.", text.ReplaceLineEndings(" "), StringComparison.Ordinal);
         Assert.True(text.IndexOf("- **bank**;", StringComparison.Ordinal) < text.IndexOf("- **the**;", StringComparison.Ordinal));
         Assert.Contains("- **bank**; parts of speech: noun, verb; forms: banks\n", text, StringComparison.Ordinal);
         Assert.Contains("- **the**; parts of speech: determiner; no other forms\n", text, StringComparison.Ordinal);
@@ -645,37 +655,37 @@ public sealed class BuilderTests : IDisposable
             "oewn-5-v\t1\ttip laterally\n" +
             "oewn-6-v\t1\tcover with ashes\n" +
             "dema-1-d\t1\tthe definite article\n");
-        Write("corpus/senses/s.tsv", TestDirectory.SensesHeader + "the\tdeterminer\tdeterminer\t\t\nbank\tnoun\tnoun\t\t\nbank\tverb\tverb\t\t\nzzyzx\tnoun\tnoun\t\t\n");
+        Write("corpus/anchors/a.tsv", "the\tthe#determiner\tDeterminer\tThe {the} end.\nbank\tbank#ridge\tNoun\tA {bank} here.\nbank\tbank#cover\tVerb\tThey {bank} it.\nzzyzx\tzzyzx#noun\tNoun\tA {zzyzx} appears.\n");
         return (Path.Join(_dir.Root, "corpus"), data);
     }
 
     /// <summary>
-    ///     The generator rejects a missing directory, an inventory without a lemma of the data and a sense without a gloss.
+    ///     The generator rejects a missing directory, anchors without a lemma of the data and a sense without a gloss.
     /// </summary>
     [Fact]
     public void WordSenseBuilder_Appendix_Generate_RejectsIncompleteInput()
     {
-        // Arrange: the corpus has no senses directory and the data folder is missing
+        // Arrange: the corpus has no anchors directory and the data folder is missing
         var corpus = Path.Join(_dir.Root, "corpus");
         var data = Path.Join(_dir.Root, "data");
 
         // Act and assert: missing directories
         var missing = Assert.Throws<InvalidDataException>(() => AppendixGenerator.Generate(corpus, data));
-        Assert.Contains("senses", missing.Message, StringComparison.Ordinal);
+        Assert.Contains("anchors", missing.Message, StringComparison.Ordinal);
         Assert.Contains("was not found", missing.Message, StringComparison.Ordinal);
 
-        // Act and assert: an empty inventory
-        Write("corpus/senses/s.tsv", TestDirectory.SensesHeader);
+        // Act and assert: no anchors
+        Write("corpus/anchors/a.tsv", string.Empty);
         data = ImageCompilerTests.WriteSmallData(_dir.Root);
         Assert.Throws<InvalidDataException>(() => AppendixGenerator.Generate(corpus, data));
 
         // Act and assert: no trained lemma has a sense in the data
-        Write("corpus/senses/s.tsv", TestDirectory.SensesHeader + "zzyzx\tnoun\tnoun\t\t\n");
+        Write("corpus/anchors/a.tsv", "zzyzx\tzzyzx#noun\tNoun\tA {zzyzx} appears.\n");
         var none = Assert.Throws<InvalidDataException>(() => AppendixGenerator.Generate(corpus, data));
         Assert.Contains("None of the trained lemmas", none.Message, StringComparison.Ordinal);
 
         // Act and assert: the senses of bank have no gloss in the small data folder
-        Write("corpus/senses/s.tsv", TestDirectory.SensesHeader + "bank\tnoun\tnoun\t\t\n");
+        Write("corpus/anchors/a.tsv", "bank\tbank#ridge\tNoun\tA {bank} here.\n");
         var noGloss = Assert.Throws<InvalidDataException>(() => AppendixGenerator.Generate(corpus, data));
         Assert.Contains("'bank#ridge' has no gloss", noGloss.Message, StringComparison.Ordinal);
     }
@@ -828,8 +838,9 @@ public sealed class BuilderTests : IDisposable
     }
 
     /// <summary>
-    ///     The Basic row of the README model table equals the measurement of the evaluator on the committed holdout and
-    ///     real-text sets (the accuracy columns; the timing columns depend on the machine).
+    ///     The Basic row of the README model table equals the measurement of the evaluator on the committed holdout set
+    ///     (the accuracy columns; the timing columns depend on the machine). The real-text cells read n/a because that
+    ///     set is no longer measured.
     /// </summary>
     /// <returns>A task that completes when the check is done.</returns>
     [Fact]
@@ -884,9 +895,9 @@ public sealed class BuilderTests : IDisposable
 
     private string Write(string relative, string content) => _dir.Write(relative, content);
 
-    private CorpusRow Row(string lemma, string sense, string sentence, string file)
+    private LegacyRow Row(string lemma, string sense, string sentence, string file)
     {
         var path = Write("rows/" + Guid.NewGuid().ToString("N") + "/" + file, $"{lemma}\t{sense}\t{sentence}\n");
-        return Assert.Single(Corpus.ReadSentences(path));
+        return Assert.Single(LegacyCorpus.ReadSentences(path));
     }
 }

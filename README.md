@@ -17,8 +17,10 @@ the candidate analyses with their probabilities, so you know whether "bank" is t
 word, or only a noun. Every word is looked up in an embedded dictionary of over 140,000 common words. Only where a word
 has several analyses does a model choose from the sentence: the `Basic` model, a small statistical tagger that needs
 nothing else and answers with the part of speech, or an ONNX encoder package (`MiniLM` or `BertBaseCased`) that runs on
-ONNX Runtime and, in this version, answers through the `Basic` model; scoring fine senses with the encoders follows in a
-later version.
+ONNX Runtime and scores the fine senses of the words it was trained for. In this first version that is a trial of 20
+words (`back`, `even`, `first`, `forward`, `go`, `help`, `home`, `however`, `just`, `little`, `long`, `only`, `own`,
+`please`, `pretty`, `review`, `right`, `still`, `test` and `well`, 294 senses); every other ambiguous word is answered
+by the `Basic` model at the part-of-speech level, and more words follow in later versions.
 
 ## Features
 
@@ -69,16 +71,18 @@ using var model = new BasicWordSenseModel();
 // using var model = new BertBaseCasedWordSenseModel();  // using DemaConsulting.WordSense.BertBaseCased;
 await model.EnsureModelAsync();
 
-// Classify the words of a sentence whose "bow" and "record" are heteronyms
-var words = "The hunter fired an arrow from his bow at a deer so we will record a record".Split(' ');
+// Classify the words of a sentence whose "bow" and "record" are heteronyms and whose "go", "back" and "home"
+// are among the trained words of the encoder models
+var words = "The hunter fired an arrow from his bow at a deer so we will record a record then go back home".Split(' ');
 var results = await model.ClassifyAsync(words);
 
-// Print the part of speech (or unknown), the level, the confidence, the sense id (at the sense level) and the
-// runner-up analysis (the second most probable part of speech, when the word has one)
+// Print the part of speech (or unknown), the level, the confidence, the sense id (at the sense level) or the
+// group id (at the group level) and the runner-up analysis (the second most probable part of speech, when the
+// word has one)
 foreach (var result in results)
 {
     var pos = result.Details?.PartOfSpeech.ToString() ?? "unknown";
-    var sense = result.SenseId ?? "";
+    var sense = result.SenseId ?? result.GroupId ?? "";
     var next = result.Analyses.Length > 1
         ? $"{result.Analyses[1].Details.PartOfSpeech} {result.Analyses[1].Probability:F2}"
         : "";
@@ -107,6 +111,10 @@ will      Auxiliary    Sense        1.00  will#auxiliary Noun 0.00
 record    Verb         PartOfSpeech 1.00                 Noun 0.00
 a         Determiner   Sense        1.00  a#determiner
 record    Noun         PartOfSpeech 1.00                 Verb 0.00
+then      Adverb       PartOfSpeech 0.99                 Noun 0.01
+go        Verb         PartOfSpeech 1.00                 Noun 0.00
+back      Adverb       PartOfSpeech 0.66                 Noun 0.27
+home      Noun         PartOfSpeech 0.65                 Adverb 0.35
 ```
 
 Output with the `MiniLM` model:
@@ -130,6 +138,10 @@ will      Auxiliary    Sense        1.00  will#auxiliary Noun 0.00
 record    Verb         PartOfSpeech 1.00                 Noun 0.00
 a         Determiner   Sense        1.00  a#determiner
 record    Noun         PartOfSpeech 1.00                 Verb 0.00
+then      Adverb       PartOfSpeech 0.99                 Noun 0.01
+go        Verb         PartOfSpeech 0.82                 Noun 0.18
+back      Adverb       Sense        0.98  back#to-former-place Noun 0.00
+home      Noun         PartOfSpeech 0.77                 Adverb 0.21
 ```
 
 Output with the `BertBaseCased` model:
@@ -153,17 +165,26 @@ will      Auxiliary    Sense        1.00  will#auxiliary Noun 0.00
 record    Verb         PartOfSpeech 1.00                 Noun 0.00
 a         Determiner   Sense        1.00  a#determiner
 record    Noun         PartOfSpeech 1.00                 Verb 0.00
+then      Adverb       PartOfSpeech 0.99                 Noun 0.01
+go        Verb         PartOfSpeech 0.99                 Noun 0.01
+back      Adverb       Sense        0.97  back#to-former-place Noun 0.00
+home      Adverb       Sense        0.54  home#to-residence Noun 0.22
 ```
 
-The heteronyms `bow` and `record` are the interesting words. The `Level` of an answer says how precisely the model
-answers: `Sense` for a word whose lemma and part of speech have one sense (the sense id is then given), `PartOfSpeech`
-for a word with several meanings, whose fine senses these models do not score yet; `Analyses` lists every possible
-analysis (lemma, part of speech and features) with its probability, `Details` is the most probable one, and a low
-confidence marks a guess (for example `so`). The probabilities are comparable only within one result, never across
-models. In this version the `MiniLM` and `BertBaseCased` packages answer every ambiguous word with the `Basic` model at
-the part-of-speech level (their encoders will score fine senses in a later version), so the three models print the same
-lines. The modal and helping verbs (`will`, `can`, `is`, `have`) have an `Auxiliary` analysis. A word that is not in the
-dictionary has `IsKnown` false, `Details` of `null`, the level `None` and a confidence of 0.
+The words `bow` and `record` are heteronyms but not among the 20 words that the encoders were trained for in this version,
+so every model answers them with the `Basic` model at the part-of-speech level. The words `go`, `back` and `home` are
+trained: the `Level` of an answer says how precisely the model answers. `Sense` is a fine sense (`back#to-former-place`,
+with its id and sense key in the catalog, and also for a word whose lemma and part of speech have only one sense, such
+as `the`), `Group` is a group of closely related senses (`GroupId`; none of the words above reaches it), and
+`PartOfSpeech` is the analysis only: the model could not tell the senses apart with the precision its thresholds ask for
+(MiniLM and BertBaseCased answer `go` at that level and MiniLM also `home`), and the ranked senses of each analysis in
+`Analyses` still show how the
+evidence spreads. `Analyses` lists every possible analysis (lemma, part of speech and features) with its probability,
+`Details` is the most probable one, and a low confidence marks a guess (for example `so`). The probabilities are
+comparable only within one result, never across models. A model never answers an untrained word at the sense level
+unless its lemma and part of speech have a single sense. The modal and helping verbs (`will`, `can`, `is`, `have`) have
+an `Auxiliary` analysis. A word that is not in the dictionary has `IsKnown` false, `Details` of `null`, the level
+`None` and a confidence of 0.
 Tokenize the text yourself, one sentence per call: punctuation is a token of its own. See the
 [user guide][link-user-guide] for tokenizing, confidence thresholds, mirrors, disposal and threading.
 
@@ -174,22 +195,31 @@ Tokenize the text yourself, one sentence per call: punctuation is a token of its
 <!-- model-table:begin -->
 | Model | Holdout best analysis | Real-text best analysis | Part of speech (holdout / real) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Basic | 91.93% | 89.40% | 92.13% / 90.42% | none | 83 KiB | 13 MiB | 0.08 ms | 24 ms + 55 ms | no |
-| MiniLM | 91.93% | 89.40% | 92.13% / 90.42% | 22 MiB | 1,132 KiB | 12 MiB | 0.12 ms | 161 ms + 80 ms | yes |
-| BERT base cased | 91.93% | 89.40% | 92.13% / 90.42% | 104 MiB | 2,245 KiB | 13 MiB | 0.08 ms | 211 ms + 58 ms | yes |
+| Basic | 77.64% | n/a | 77.64% / n/a | none | 83 KiB | 4 MiB | 0.07 ms | 31 ms + 56 ms | no |
+| MiniLM | 94.72% | n/a | 94.72% / n/a | 22 MiB | 203 KiB | 60 MiB | 1.51 ms | 341 ms + 57 ms | yes |
+| BERT base cased | 97.87% | n/a | 97.87% / n/a | 104 MiB | 395 KiB | 148 MiB | 7.27 ms | 542 ms + 56 ms | yes |
 <!-- model-table:end -->
 
 <!-- markdownlint-enable MD013 -->
 
-- ⚡ **basic** - No download, fastest; about 89% best analysis on real text.
-- ⚖️ **minilm** - The default encoder package: 22 MiB download; today it answers through the `Basic` model.
-- 🎯 **bert-base-cased** - Larger case-sensitive encoder, 104 MiB download; today it answers through the `Basic` model.
+- ⚡ **basic** - No download, fastest; answers at the part-of-speech level (and the sense of a word with one sense).
+- ⚖️ **minilm** - The default encoder package: 22 MiB download; fine senses for the 20 trial words, `Basic` for the rest.
+- 🎯 **bert-base-cased** - Larger case-sensitive encoder, 104 MiB download; the most precise on the 20 trial words.
 
-The encoder packages score fine senses in a later version; until then their rows repeat the `Basic` numbers.
-The holdout sentences were written with the training sentences, so the real-text column is the realistic expectation.
+The columns measure the 984 held-out sentences of the 20 trial words (the whole table, all three models, is measured on
+the same sentences), so they say nothing about words that no model was trained for; the real-text columns are `n/a`
+until an independent evaluation (SemCor for senses, the English EWT treebank for parts of speech) is published. The
+held-out sentences were written by the same generator as the training sentences, so the numbers are optimistic. The
+levels of the encoder answers on these sentences (`docs/build_notes/trial-evaluation.md` has the full tables):
+
+| Model | Sense (share, precision) | Group (share, precision) | Part of speech (share, precision) |
+| --- | ---: | ---: | ---: |
+| MiniLM | 50.2%, 96.2% | 8.1%, 97.5% | 41.7%, 88.5% |
+| BERT base cased | 81.5%, 96.6% | 5.4%, 98.1% | 13.1%, 87.6% |
+
 The table is generated into `docs/build_notes/model-table.md`; the user guide explains how the numbers were measured
 and lists the confidence thresholds of each model. See also the [model comparison][link-model-comparison] and the
-[Basic evaluation][link-basic-evaluation].
+[Basic evaluation][link-basic-evaluation] (both measure the earlier part-of-speech classes and are historical).
 
 ## Documentation
 

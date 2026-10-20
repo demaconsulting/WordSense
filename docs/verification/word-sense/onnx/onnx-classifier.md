@@ -3,13 +3,12 @@
 #### Verification Approach
 
 Tests in `test/DemaConsulting.WordSense.Onnx.Tests/OnnxClassifierTests.cs` call the classifier with word lists and the
-real embedded lexicon, so the expected analyses, senses and levels follow from the lexicon. The scenarios of the current
-version (the lexicon-only answers) need no model, no encoder and no other model package. The scenarios of the
-increment that adds the scoring of fine senses (marked below) build the classifier over the real MiniLM int8
-encoder (through `ModelAssets`, skipped when the Git LFS content is absent) with hand-made weights matched against the
-real embedded lexicon, so the expected sense, group and confidence follow from the arithmetic; substitute weights with
-chosen thresholds are used so that a specific level is reached. Real-model accuracy is verified in the MiniLM and
-BertBaseCased subsystem documents.
+real embedded lexicon, so the expected analyses, senses and levels follow from the lexicon. The lexicon-only scenarios
+need no model, no encoder and no other model package. The scoring scenarios build the classifier over a fake encoder
+(a delegate that returns designed vectors and counts its calls) and hand-made weights over the real senses of the
+shipped catalog, so the expected sense, group and confidence follow from the arithmetic; the thresholds of the weights
+are chosen so that a specific level is reached. Real-model behavior is verified in the MiniLM and BertBaseCased
+subsystem documents.
 
 #### Test Environment
 
@@ -52,9 +51,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Confidence is monotonic in the margin** (`LargerMargin_GivesHigherConfidence`, `ConfidenceIsWithinZeroAndOne`;
   scoring increment): for a growing margin of the best fine score the confidence, the probability of the answer at its
   level, never decreases and stays between 0 and 1.
-- **Best senses are kept** (`LowMargin_ReturnsBestGroupWithLowConfidence`; scoring increment): a low margin still lists
-  the ranked senses and answers the best group, or the part of speech where there is none, with its low confidence, not
-  no answer.
+- **Best senses are kept** (`LowMargin_KeepsTheBestSenseAndGroupVisibleInTheRankedSenses`; scoring increment): a low
+  margin still lists the ranked senses, the best sense and the best group of the lemma first among them, whatever
+  coarser level is answered, not no answer.
 - **Fine threshold met** (`MarginAboveFineThreshold_AnswersSense`, `MarginAtFineThreshold_AnswersSense`; scoring
   increment): a fine margin above, and exactly at, the lemma's fine threshold gives the best fine sense at the `Sense`
   level with the sense id, the group id when the sense is in a group, and the sense lying in the selected analysis.
@@ -62,9 +61,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
   a lemma that has groups, a fine margin below its threshold with a group margin that reaches the group threshold gives
   the best group at the `Group` level with the group id only; the group's member senses are listed in the selected
   analysis.
-- **Low-confidence group** (`BothBelowThreshold_AnswersBestGroupBelowOneHalf`; scoring increment): when neither threshold
-  is reached and the best sense is in a group, the answer is that group at the `Group` level with a lower confidence
-  than a threshold-met answer.
+- **Neither threshold met** (`BothBelowThreshold_AnswersPartOfSpeech`; scoring increment): when neither threshold is
+  reached (or the group threshold is "never"), the answer is the selected analysis at the `PartOfSpeech` level with its
+  probability as the confidence, and the ranked senses of the analysis still show the best sense and its group.
 - **Step to the part of speech** (`LemmaWithoutGroups_StepsFromSenseToPartOfSpeech`; scoring increment): for a lemma that
   has no groups, a fine margin below the fine threshold gives the selected analysis at the `PartOfSpeech` level with its
   probability as the confidence, never a `Group` answer and never level `None`.
@@ -77,11 +76,13 @@ All scenarios below pass on every platform and target framework of the CI matrix
   from the weights, or a target without word pieces, gives the lexicon-only answer at the `PartOfSpeech` level, not
   unknown.
 - **Form of several lemmas** (`FormOfTwoLemmas_ChoosesTheLemmaFromContext`,
-  `ReadPastVersusPresent_ChoosesTheTenseFeatures`, `FormChooserBelowThreshold_AnswersPartOfSpeech`,
-  `EveryMultiLemmaForm_HasAChooser`; scoring increment): a form such as `left` is answered
+  `ReadPastVersusPresent_ChoosesTheTenseFeatures`, `FormChooserBelowThreshold_AnswersPartOfSpeech`; scoring
+  increment): a form such as `left` is answered
   with the senses of the analysis that its chooser picks from the sentence; `read` gets its tense features from the
-  chooser; a chooser margin below its threshold gives the `PartOfSpeech` level; every form of the lexicon whose analyses
-  belong to several lemmas has a chooser in the shipped weights.
+  chooser; a chooser margin below its threshold gives the `PartOfSpeech` level. The shipped weights carry no chooser
+  yet (the corpus has no anchors for these forms), so the test that every form of the lexicon whose analyses belong to
+  several lemmas has a chooser (`EveryMultiLemmaForm_HasAChooser`) is deferred until the relabeled corpus provides
+  them; until then such a form is answered from the lexicon.
 - **Words are returned as written**: the result array is parallel to the input, holds each word as given, and is
   case-insensitive in lookup (including the curly apostrophe).
 - **Empty list and argument validation** (`EmptyList_ReturnsEmpty`, `NullWords_Throws`, `NullElement_Throws`,

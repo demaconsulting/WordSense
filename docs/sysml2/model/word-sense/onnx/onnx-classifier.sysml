@@ -3,7 +3,7 @@ package WordSense {
         doc /* The classifier of the encoder models: runs the encoder only for words that need context, scores the fine senses of every analysis of each such word with the per-lemma weights, gives each analysis a probability and lists the ranked senses inside it, answers at the sense level, the group level (for a lemma that has groups) or else the part of speech by the lemma's thresholds, chooses the analysis of a multi-lemma form, and answers a word without scored senses from the lexicon alone (its analyses equally likely, no scored senses, the part of speech level) for a fallback model to decide. */
 
         comment sourceRef /* Source: src/DemaConsulting.WordSense.Onnx/OnnxClassifier.cs */
-        comment testRef /* Test: test/DemaConsulting.WordSense.Onnx.Tests/OnnxClassifierTests.cs */
+        comment testRef /* Test: test/DemaConsulting.WordSense.Onnx.Tests/OnnxClassifierTests.cs, test/DemaConsulting.WordSense.Onnx.Tests/Fixtures.cs */
         comment designRef /* Design: docs/design/word-sense/onnx/onnx-classifier.md */
         comment verificationRef /* Verification: docs/verification/word-sense/onnx/onnx-classifier.md */
         comment reqRef /* Requirements: docs/reqstream/word-sense/onnx/onnx-classifier.yaml */

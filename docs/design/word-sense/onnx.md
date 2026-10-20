@@ -9,9 +9,10 @@ verified model files, the ONNX encoder and its tokenizer, the trained per-lemma 
 scores the fine senses of an ambiguous word and decides the level of the answer. It is the only package with a
 third-party runtime dependency, ONNX Runtime, and it references only the core package. Its single public type is the
 abstract `OnnxWordSenseModel`; the model packages derive from it and supply the model identity. The encoder model is
-usable on its own. In the current version the scoring of fine senses with the encoder is not yet part of the
-classifier, so every word is answered from the lexicon alone (with all its analyses equally likely and no scored
-senses); once the scoring arrives, that remains the answer for every word whose lemma has no trained weights. The
+usable on its own. The classifier scores the fine senses of the lemmas that have trained weights (the 20 words of
+the first reviewed batch in this version) with the encoder and decides the level of the answer; every word whose
+lemma has no trained weights is answered from the lexicon alone (with all its analyses equally likely and no scored
+senses). The
 statistical choice among the analyses of such a word is not made in this package: the MiniLM and BertBaseCased
 packages compose the encoder model with the Basic model through the core `FallbackWordSenseModel`, which uses the Basic
 result for every word the encoder did not score.
@@ -70,8 +71,7 @@ two models.
 This section describes how the encoder models (MiniLM and BertBaseCased) decide the sense of a word and at which
 level they answer. The Basic model does not use embeddings at all: it tags the sentence with a hidden Markov model and
 weighs context cues, and it answers the part of speech (see _Basic Subsystem Design_). The scoring of fine senses with
-the encoder is specified here as the target state of the encoder models and arrives in the increment that adds it to
-`OnnxClassifier`; until then the classifier answers from the lexicon alone (see _Classification (Run Time)_).
+the encoder is specified here and implemented by `OnnxClassifier` (see _Classification (Run Time)_).
 
 #### Vocabulary
 
@@ -105,9 +105,9 @@ weights are free to emphasize the directions that separate the senses instead of
 
 Fine senses of one lemma are often hard to separate while their group, where the lemma has one, is not. The classifier
 therefore answers at the finest level it can support: the fine sense when its margin reaches the lemma's fine threshold,
-otherwise, for a lemma that has groups and a best sense that is in a group, the group (with a lower confidence when the
-group margin does not reach the lemma's group threshold), and otherwise the part of speech. A known word is never
-answered as unknown: an uncertain word is answered at the part of speech level with a low confidence.
+otherwise, for a lemma that has groups and a best sense that is in a group, the group when the group margin reaches
+the lemma's group threshold, and otherwise the part of speech, with the ranked senses of the analysis still listed. A
+known word is never answered as unknown: an uncertain word is answered at the part of speech level.
 
 The flow, from the training data to a decision:
 
@@ -127,8 +127,7 @@ flowchart TD
     G --> C2[Analyses with probabilities, senses with probabilities inside each analysis]
     G -- fine margin reaches t_fine --> R2[Sense level]
     G -- best sense in a group, group margin reaches t_group --> R3[Group level]
-    G -- best sense in a group, neither --> R4[Group level, lower confidence]
-    G -- no group to step to --> R6[Part of speech level, low confidence]
+    G -- neither --> R4[Part of speech level, ranked senses still listed]
     L -- no scored senses --> R5[Lexicon analyses, part of speech level; a composite uses the fallback model]
 ```
 
@@ -164,11 +163,12 @@ The training runs as follows:
    cross-validation (k = 5) on the lemma's anchors only. Each
    fold is fitted without its held-out anchors and scores them. From the out-of-fold scores the builder takes, for every
    anchor, the fine margin and whether the best fine sense is right, and (for a lemma that has groups, over the anchors
-   whose best sense is in a group) the group margin and whether the best group is
+   whose best sense is in a group, and whose fine margin is below `t_fine`, the rows that fall through to the group
+   level) the group margin and whether the best group is
    right (the group scores are derived as at run time). The fine threshold `t_fine` is the smallest margin such that the
-   out-of-fold answers whose margin is at least that value reach the precision target; `t_group` is found the same way on
-   the group answers, and only for a lemma that has groups. The target is 95% precision for both encoders. A level whose
-   target is never reached gets the
+   out-of-fold answers whose margin is at least that value reach the precision target (with at least three answers);
+   `t_group` is found the same way on the group answers, and only for a lemma that has groups. The target is 95%
+   precision for both encoders. A level whose target is never reached gets the
    threshold "never" and is never answered for that lemma. The result is deterministic for a given seed.
 5. Per form with several lemmas or tenses (`left`, `bases`, `rows`, `found`, `read`, `reread`), a small form chooser is
    fitted the same way over analysis labels. The labels are rolled up from the fine-sense anchors of the form: the
@@ -209,12 +209,13 @@ senses of its lemma and part of speech. It then decides:
    - If the margin of the best fine sense reaches the lemma's `t_fine`, the answer is the fine sense at the `Sense`
      level, with the sense id and, when the sense is in a group, its group id.
    - Otherwise, for a lemma that has groups and a best sense that is in a group, the answer is that group at the
-     `Group` level, with the group id only: when the margin of the group reaches `t_group` the model is confident in it,
-     and when it does not, the answer is still the group, with a correspondingly lower confidence. The member senses of
-     the group stay listed in the senses of the selected analysis.
-   - Otherwise (the lemma has no groups, or the best sense is in no group) the model steps from the sense to the part of
-     speech: the answer is the selected analysis at the `PartOfSpeech` level with its probability as a low confidence.
-     The model never answers at the `Group` level for a lemma without groups, and never at `None` for a known word.
+     `Group` level, with the group id only, when the margin of the group reaches `t_group`. The member senses of the
+     group stay listed in the senses of the selected analysis.
+   - Otherwise (the lemma has no groups, the best sense is in no group, or the group margin is below `t_group`) the
+     model steps from the sense to the part of speech: the answer is the selected analysis at the `PartOfSpeech`
+     level with its probability as the confidence; the ranked senses of the analysis still show the likely senses
+     and groups. The model never answers at the `Group` level for a lemma without groups or for a group whose
+     threshold is not met, and never at `None` for a known word.
 
    The confidence is the probability of the answer at its level: at `PartOfSpeech` the probability of the selected
    analysis; at `Group` that probability times the sum of the probabilities of the member senses of the group within
@@ -241,17 +242,19 @@ senses of its lemma and part of speech. It then decides:
    Basic model. A word with a single analysis but many senses and no weights (`bank` when untrained) is answered the
    same way, at the part of speech level with confidence 1.
 
-In the current version only the cases 1, 2 and 4 occur: the classifier does not run the encoder and answers every word
-from the lexicon.
+The shipped weights of this version cover the 20 lemmas of the first reviewed batch (`back`, `even`, `first`,
+`forward`, `go`, `help`, `home`, `however`, `just`, `little`, `long`, `only`, `own`, `please`, `pretty`, `review`,
+`right`, `still`, `test`, `well`) and no form chooser (the corpus has no anchors for the forms that need one), so the
+cases 1, 2 and 4 occur for every other word and for the forms of several lemmas, and case 3 for the trained lemmas.
 
 #### Evaluation Scope
 
-The builder's `evaluate` command scores a model on the holdout sentences and on the real-text sentences and reports,
-per level, the share of words answered at the fine, group and part-of-speech level and the accuracy at each
-level. The lemmas of these rows are trained lemmas, so the published encoder accuracy reflects the trained lemmas
-only; the words answered by the fallback are measured with the Basic model. Holdout sentences come from the same
-generator as the anchors, so their accuracy is optimistic; the independent real-text evaluation described in the
-`WordSenseBuilder` design is the measure of the shipped behavior.
+The builder's `evaluate` command scores a model on the holdout sentences and reports, per level, the share of words
+answered at the sense, group and part-of-speech level and the precision at each level. The lemmas of these rows are
+trained lemmas, so the published encoder accuracy reflects the trained lemmas only; the words answered by the fallback
+are measured with the Basic model. Holdout sentences come from the same generator as the anchors, so their accuracy is
+optimistic; the independent real-text evaluation described in the `WordSenseBuilder` design is the measure of the
+shipped behavior.
 
 #### Rationale
 

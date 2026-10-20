@@ -14,17 +14,20 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     from it.
 ///     </para>
 ///     <para>
-///     This is the encoder model and it is usable on its own, but in this version <see cref="ClassifyAsync"/> answers
-///     from the lexicon alone: the scoring of fine senses with the encoder is not part of this version. A word that is
-///     not in the lexicon is unknown, a word with one analysis and one sense is answered at the
-///     <see cref="SenseLevel.Sense"/> level, and every other known word is answered at the
-///     <see cref="SenseLevel.PartOfSpeech"/> level with all its analyses equally likely and without scored senses.
-///     Use the model composed with a fallback model that chooses the analysis of such words in context (see
-///     <see cref="FallbackWordSenseModel"/>), as the MiniLM and BertBaseCased packages do with the Basic model.
+///     This is the encoder model and it is usable on its own: <see cref="ClassifyAsync"/> scores the fine senses of the
+///     lemmas that have trained weights with the encoder and answers each word at the finest level it is confident in
+///     (see <see cref="ClassifyResult"/> and <see cref="SenseLevel"/>). A word that is not in the lexicon is unknown, a
+///     word with one analysis and one sense is answered at the <see cref="SenseLevel.Sense"/> level without any model
+///     file, and every other known word whose senses are not scored (its lemma has no trained weights) is answered
+///     from the lexicon at the <see cref="SenseLevel.PartOfSpeech"/> level with all its analyses equally likely and
+///     without scored senses. Use the model composed with a fallback model that chooses the analysis of such words in
+///     context (see <see cref="FallbackWordSenseModel"/>), as the MiniLM and BertBaseCased packages do with the Basic
+///     model.
 ///     </para>
 ///     <para>
 ///     Call <see cref="EnsureModelAsync"/> to make the model files available and verified. <see cref="ClassifyAsync"/>
-///     does not need them: a classification never downloads a file, never opens an ONNX session and never fails because
+///     ensures them itself when a word needs the encoder, and answers every other text without them: a classification
+///     of words that need no context never downloads a file, never opens an ONNX session and never fails because
 ///     a model file is missing. The model files come from the directory
 ///     given to the model's constructor (every file verified against its pinned SHA-256, with no network access) or,
 ///     when none was given, from the per-user store, which a mirror or the GitHub copy of the repository fills on first
@@ -65,13 +68,15 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     the CPU only; there is no GPU option.
 ///     </para>
 ///     <para>
-///     The classification returns one <see cref="ClassifyResult"/> per word, with its <see cref="ClassifyResult.Analyses"/>,
-///     the selected <see cref="ClassifyResult.Details"/> (the first analysis of the lexicon, as the analyses are equally
-///     likely), a confidence between 0 and 1 and the <see cref="ClassifyResult.Level"/> at which the answer was given;
-///     <see cref="ClassifyResult.Details"/> is null (level <see cref="SenseLevel.None"/>, confidence 0) only when the
-///     word is not in the lexicon. For example, in <c>["They", "will", "record", "the", "record", "."]</c> the word
-///     <c>"the"</c> has one analysis and one sense, the period is unknown, and <c>"record"</c> has its noun and verb
-///     analyses, each with probability 1/2, in both places, because this model does not look at the context.
+///     The classification returns one <see cref="ClassifyResult"/> per word, with its <see cref="ClassifyResult.Analyses"/>
+///     (each with its probability and, for a trained lemma, its ranked senses), the selected
+///     <see cref="ClassifyResult.Details"/>, a confidence between 0 and 1 and the <see cref="ClassifyResult.Level"/> at
+///     which the answer was given; <see cref="ClassifyResult.Details"/> is null (level <see cref="SenseLevel.None"/>,
+///     confidence 0) only when the word is not in the lexicon. For example, in
+///     <c>["They", "will", "record", "the", "record", "."]</c> the word <c>"the"</c> has one analysis and one sense, the
+///     period is unknown, and each <c>"record"</c> has its noun and verb analyses with the probabilities that the
+///     context gives them (when the lemma <c>record</c> is not trained for this model, each has the probability 1/2 and
+///     the first analysis of the lexicon is the selected one).
 ///     </para>
 ///     <para>
 ///     Input: split punctuation into elements of their own and keep contractions (<c>don't</c>) and hyphenated words
@@ -80,7 +85,9 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     <para>
 ///     First-use costs (approximate and machine dependent): <see cref="EnsureModelAsync"/> reads and hashes each model
 ///     file (about 30 ms for the 22 MiB MiniLM files and about 110 ms for the 104 MiB BertBaseCased files, measured
-///     with a warm file cache; a cold or slow disk takes longer); the word lexicon (about 55 ms, about 15 MiB) loads on first use. After
+///     with a warm file cache; a cold or slow disk takes longer); the first classification that needs the encoder opens
+///     the ONNX session (about 0.4 s for MiniLM, about 0.5 s for BertBaseCased) and loads the weights; the word lexicon
+///     (about 55 ms) loads on first use. After
 ///     <see cref="Dispose()"/>, <see cref="EnsureModelAsync"/> and <see cref="ClassifyAsync"/> throw
 ///     <see cref="ObjectDisposedException"/>: <see cref="EnsureModelAsync"/> throws it synchronously from the call,
 ///     while <see cref="ClassifyAsync"/> reports it through the returned task (an <c>await</c> inside a <c>try</c>
@@ -112,7 +119,9 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     private readonly object _gate = new();
     private Task? _ensure;
     private string? _directory;
-    private readonly OnnxClassifier _classifier = new();
+    private OnnxEncoder? _encoder;
+    private OnnxClassifier? _classifier;
+    private WeightedLemmaTable? _table;
     private readonly CancellationTokenSource _disposeCts = new();
     private readonly CancellationToken _disposeToken;
     private volatile bool _disposed;
@@ -135,7 +144,7 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
         _modelDirectory = modelDirectory is null ? null : Path.GetFullPath(modelDirectory);
         _maxSequenceLength = maxSequenceLength;
         _disposeToken = _disposeCts.Token;
-        _inFlight = new InFlightTracker(GetType().Name, ReleaseResources);
+        _inFlight = new InFlightTracker(GetType().Name, ReleaseEncoder);
     }
 
     /// <summary>
@@ -248,32 +257,41 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     }
 
     /// <summary>
-    ///     Classifies every word of a tokenized sentence or text from the lexicon alone; the encoder does not score senses in this version.
+    ///     Classifies every word of a tokenized sentence or text; the model files are ensured on first use.
     /// </summary>
     /// <param name="words">The words in order, including punctuation tokens, each as its own element.</param>
     /// <param name="cancellationToken">A token that cancels the operation.</param>
     /// <returns>A non-null array parallel to <paramref name="words"/>; empty for an empty list.</returns>
     /// <remarks>
-    ///     An unknown word is answered with <see cref="ClassifyResult.Unknown"/>. A known word is answered with all its
-    ///     analyses, each with the probability 1/n for n analyses (the first analysis of the lexicon is the selected one),
-    ///     and an analysis whose lemma and part of speech have exactly one sense lists that sense with probability 1. The
-    ///     result is at the <see cref="SenseLevel.Sense"/> level when the selected analysis has exactly one sense
-    ///     (confidence 1/n), otherwise at the <see cref="SenseLevel.PartOfSpeech"/> level with the confidence 1/n and no
-    ///     scored senses in the selected analysis, which makes a composition use its fallback model for the word (see
-    ///     <see cref="FallbackWordSenseModel"/>). The call needs no model file: nothing is ensured, downloaded or
-    ///     verified, so it works before <see cref="EnsureModelAsync"/> and when the model directory does not exist. The method is
+    ///     An unknown word is answered with <see cref="ClassifyResult.Unknown"/>. A word with one analysis and one sense
+    ///     is answered at the <see cref="SenseLevel.Sense"/> level with confidence 1. A word whose lemma has trained
+    ///     weights and several scored senses is scored with the encoder: its analyses get their probabilities, each
+    ///     lists its senses ranked by their probability, and the answer is at the finest level the lemma's thresholds
+    ///     support (sense, group or part of speech). Every other known word (no trained weights) is answered from the
+    ///     lexicon with all its analyses equally likely (probability 1/n for n analyses, the first analysis of the
+    ///     lexicon is the selected one) at the <see cref="SenseLevel.PartOfSpeech"/> level and without scored senses,
+    ///     which makes a composition use its fallback model for the word (see <see cref="FallbackWordSenseModel"/>).
+    ///     A list in which no word needs the encoder is answered without any model file: nothing is ensured,
+    ///     downloaded or verified, so it works before <see cref="EnsureModelAsync"/> and when the model directory does
+    ///     not exist. A word that needs the encoder ensures the model lazily (with the default and environment mirror
+    ///     settings; call <see cref="EnsureModelAsync"/> yourself first to pass a <see cref="MirrorOptions"/>), shared
+    ///     with concurrent callers; a failed ensure can be retried by the next call. The method is
     ///     thread-safe. Every exception, including <see cref="ObjectDisposedException"/>, is reported through the
     ///     returned task, so an <c>await</c> in a <c>try</c> catches it; a disposed model wins over an already cancelled
     ///     token. Disposing while this call is running is safe: the call completes normally and the model's resources
     ///     are released after it (and every other running call) has finished. Threads and cancellation: the
-    ///     call runs synchronously on the calling thread (argument checks and the lexicon load), so offload the call yourself if the caller
+    ///     call runs synchronously on the calling thread until the model files are needed (argument checks, the lexicon
+    ///     load and the weights check), so offload the call yourself if the caller
     ///     must not block. The token is checked before the work starts, so an already canceled token cancels the call even for an empty list or
     ///     a list of single-sense words. An empty element is unknown and an element
     ///     containing a space is looked up as one key, which no lexicon entry has, so it is unknown too.
     /// </remarks>
     /// <exception cref="ArgumentNullException">Thrown when the list is null.</exception>
-    /// <exception cref="ArgumentException">Thrown when an element is null.</exception>
-    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
+    /// <exception cref="ArgumentException">Thrown when an element is null, or by the lazy ensure when the mirror settings of the <c>WORDSENSE_MIRROR_*</c> environment variables are invalid.</exception>
+    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled, or when the model is disposed during the lazy ensure.</exception>
+    /// <exception cref="InvalidDataException">Thrown when a file of a supplied model directory does not match its pinned SHA-256 (lazy ensure), the embedded weights are corrupt or do not match the word image, or the ONNX model cannot be read.</exception>
+    /// <exception cref="HttpRequestException">Thrown by the lazy ensure when a file could not be obtained and verified.</exception>
+    /// <exception cref="FileNotFoundException">Thrown by the lazy ensure when a supplied model directory lacks a model file.</exception>
     /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed, whatever the words.</exception>
     public async Task<ClassifyResult[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default)
     {
@@ -288,8 +306,15 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
         // Honor an already canceled token before any work, whatever the words (a disposed model wins, above)
         cancellationToken.ThrowIfCancellationRequested();
 
-        // The answer needs no model file; the call is registered while it runs so that a disposal does not release the
-        // resources of the model under it
+        // A word needs the model only when its lemma has trained weights and several scored senses; the weights are
+        // embedded in the assembly, so deciding this needs no model file, download or ONNX session
+        if (!OnnxClassifier.NeedsModel(list, GetTable()))
+        {
+            return OnnxClassifier.ResolveWithoutModel(list, cancellationToken);
+        }
+
+        // Ambiguous words need the model: ensure it lazily (shared with concurrent callers), then open the resources
+        await EnsureModelAsync(null, cancellationToken).ConfigureAwait(false);
         var classifier = AcquireClassifier();
         try
         {
@@ -302,36 +327,95 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     }
 
     /// <summary>
-    ///     Gets whether the resources the model owns for classification have been released.
+    ///     Gets whether the encoder (and with it the ONNX session) has been released or was never opened.
     /// </summary>
-    internal bool IsReleased => _inFlight.Released;
+    internal bool IsEncoderReleased
+    {
+        get
+        {
+            lock (_gate)
+            {
+                return _encoder is null;
+            }
+        }
+    }
 
     /// <summary>
     ///     Registers a running classification and returns the classifier; every call must be paired with
-    ///     <see cref="ReleaseClassifier"/>. While registered, a disposal does not release the model's resources.
+    ///     <see cref="ReleaseClassifier"/>. While registered, a disposal does not release the ONNX session.
     /// </summary>
     /// <returns>The classifier.</returns>
     /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed.</exception>
+    /// <exception cref="InvalidOperationException">Thrown when the model files are not available.</exception>
+    /// <exception cref="InvalidDataException">Thrown when the embedded weights are corrupt or the ONNX model cannot be read.</exception>
     internal OnnxClassifier AcquireClassifier()
     {
         _inFlight.Enter();
-        return _classifier;
+        try
+        {
+            return GetClassifier();
+        }
+        catch
+        {
+            _inFlight.Exit();
+            throw;
+        }
     }
 
     /// <summary>
     ///     Unregisters a classification registered by <see cref="AcquireClassifier"/>; after a disposal, the last one
-    ///     to finish releases the model's resources.
+    ///     to finish releases the ONNX session.
     /// </summary>
     internal void ReleaseClassifier() => _inFlight.Exit();
 
     /// <summary>
-    ///     Releases the resources of the model; run once by the in-flight tracker, after the last running classification.
-    ///     The classification of this version holds no resource, so there is nothing to release yet; the encoder session
-    ///     that scores senses will be released here.
+    ///     Releases the encoder; run once by the in-flight tracker, after the last running classification.
     /// </summary>
-    private static void ReleaseResources()
+    private void ReleaseEncoder()
     {
-        // Nothing to release in this version: the lexicon answers hold no resource
+        OnnxEncoder? encoder;
+        lock (_gate)
+        {
+            encoder = _encoder;
+            _encoder = null;
+            _classifier = null;
+        }
+
+        encoder?.Dispose();
+    }
+
+    /// <summary>
+    ///     Gets the embedded weights, loading and checking them on first use (no model file is needed).
+    /// </summary>
+    /// <returns>The table.</returns>
+    private WeightedLemmaTable GetTable()
+    {
+        lock (_gate)
+        {
+            ObjectDisposedException.ThrowIf(_disposed, this);
+            return _table ??= WeightedLemmaTable.LoadEmbedded(_spec.WeightsAssembly, _spec.WeightsResourceName, _spec.ModelId, _spec.HiddenSize);
+        }
+    }
+
+    /// <summary>
+    ///     Gets the classifier, opening the encoder and loading the weights on first use.
+    /// </summary>
+    /// <returns>The classifier.</returns>
+    private OnnxClassifier GetClassifier()
+    {
+        lock (_gate)
+        {
+            ObjectDisposedException.ThrowIf(_disposed, this);
+            if (_classifier is null)
+            {
+                var directory = _directory ?? throw new InvalidOperationException("The model files are not available; call EnsureModelAsync first.");
+                _table ??= WeightedLemmaTable.LoadEmbedded(_spec.WeightsAssembly, _spec.WeightsResourceName, _spec.ModelId, _spec.HiddenSize);
+                _encoder ??= OpenEncoderCore(directory);
+                _classifier = new OnnxClassifier(_table, _encoder.EncodeAsync);
+            }
+
+            return _classifier;
+        }
     }
 
     /// <summary>

@@ -4,26 +4,37 @@ using DemaConsulting.WordSense;
 namespace WordSense.Builder;
 
 /// <summary>
-///     One labeled sentence of the corpus.
+///     One labeled sentence of the fine-sense corpus.
 /// </summary>
 /// <param name="Lemma">The lower-case lemma of the target word.</param>
-/// <param name="Sense">The sense label.</param>
+/// <param name="SenseId">The public id of the fine sense (<c>lemma#label</c>) of the target word in this sentence.</param>
+/// <param name="PartOfSpeech">The part of speech of the sense, as written in the row.</param>
 /// <param name="Sentence">The sentence with the target word wrapped in one pair of braces.</param>
 /// <param name="Source">The name of the file the row came from, used to group reports.</param>
 /// <param name="Words">The words of the sentence (braces removed), as the shared text splitter produces them.</param>
 /// <param name="TargetWordIndex">The index in <paramref name="Words"/> of the braced target word.</param>
-internal sealed record CorpusRow(string Lemma, string Sense, string Sentence, string Source, IReadOnlyList<string> Words, int TargetWordIndex);
+internal sealed record CorpusRow(string Lemma, string SenseId, PartOfSpeech PartOfSpeech, string Sentence, string Source, IReadOnlyList<string> Words, int TargetWordIndex);
 
 /// <summary>
-///     Reads and validates the corpus files.
+///     Reads and validates the fine-sense corpus files (<c>corpus/anchors</c> and <c>corpus/holdout</c>).
 /// </summary>
+/// <remarks>
+///     A row has four tab-separated fields and no header: the lower-case lemma, the sense id, the name of the part of
+///     speech and the sentence with the target word in one pair of braces. The reader checks the format and, through
+///     <see cref="SenseInventory"/>, that the sense exists in the catalog of the word image, belongs to the lemma of the
+///     row and has the part of speech of the row. The rows of the retired class labels are read by
+///     <see cref="LegacyCorpus"/>.
+/// </remarks>
 internal static class Corpus
 {
+    private const int ColumnCount = 4;
+
     /// <summary>
     ///     Reads every <c>*.tsv</c> sentence file in a directory, in file-name order.
     /// </summary>
-    /// <param name="directory">The directory.</param>
+    /// <param name="directory">The directory; a missing directory has no rows.</param>
     /// <returns>The rows of all files.</returns>
+    /// <exception cref="InvalidDataException">Thrown when a row is malformed or inconsistent with the sense catalog.</exception>
     public static List<CorpusRow> ReadDirectory(string directory)
     {
         var rows = new List<CorpusRow>();
@@ -41,11 +52,43 @@ internal static class Corpus
     }
 
     /// <summary>
-    ///     Reads one sentence file and validates the format of every row.
+    ///     Reads the lemmas of the rows of every <c>*.tsv</c> sentence file in a directory, without validating the rows.
+    /// </summary>
+    /// <remarks>
+    ///     The appendix and the coverage report only need to know which lemmas have training sentences; they read the
+    ///     first column and leave the checking of the rows to the reader that trains.
+    /// </remarks>
+    /// <param name="directory">The directory; a missing directory has no lemmas.</param>
+    /// <returns>The distinct lemmas (the first column of every non-empty row, trimmed).</returns>
+    public static HashSet<string> ReadLemmas(string directory)
+    {
+        var lemmas = new HashSet<string>(StringComparer.Ordinal);
+        if (!Directory.Exists(directory))
+        {
+            return lemmas;
+        }
+
+        foreach (var file in Directory.GetFiles(directory, "*.tsv"))
+        {
+            foreach (var line in File.ReadLines(file, new UTF8Encoding(false)))
+            {
+                var lemma = line.Split('\t')[0].Trim();
+                if (lemma.Length > 0)
+                {
+                    lemmas.Add(lemma);
+                }
+            }
+        }
+
+        return lemmas;
+    }
+
+    /// <summary>
+    ///     Reads one sentence file and validates every row.
     /// </summary>
     /// <param name="path">The file path.</param>
     /// <returns>The rows.</returns>
-    /// <exception cref="InvalidDataException">Thrown when a row is malformed.</exception>
+    /// <exception cref="InvalidDataException">Thrown with the first problem found.</exception>
     public static List<CorpusRow> ReadSentences(string path)
     {
         var (rows, errors) = ReadSentencesLenient(path);
@@ -53,10 +96,16 @@ internal static class Corpus
     }
 
     /// <summary>
-    ///     Reads one sentence file, keeping well-formed rows and describing the malformed ones.
+    ///     Reads one sentence file, keeping the valid rows and describing the others.
     /// </summary>
+    /// <remarks>
+    ///     A row is invalid when it is not four columns, its lemma is not lower-case, its part of speech is not the name
+    ///     of a part of speech, its sentence has no single non-empty braced target inside one word, its sense is not in
+    ///     the catalog, or the lemma or the part of speech of the row differs from the ones of the sense. Whether the
+    ///     target word is a form of the lemma is a softer rule that <see cref="SenseInventory.Validate"/> reports.
+    /// </remarks>
     /// <param name="path">The file path.</param>
-    /// <returns>The well-formed rows and one message per malformed row.</returns>
+    /// <returns>The valid rows and one message per invalid row.</returns>
     public static (List<CorpusRow> Rows, List<string> Errors) ReadSentencesLenient(string path)
     {
         var name = Path.GetFileName(path);
@@ -73,67 +122,51 @@ internal static class Corpus
             }
 
             var columns = line.Split('\t');
-            if (columns.Length != 3)
+            if (columns.Length != ColumnCount)
             {
-                errors.Add($"{name}:{number}: expected 3 tab-separated columns but found {columns.Length}.");
+                errors.Add($"{name}:{number}: expected {ColumnCount} tab-separated columns but found {columns.Length}.");
                 continue;
             }
 
-            var (lemma, sense, sentence) = (columns[0].Trim(), columns[1].Trim(), columns[2].Trim());
-            if (lemma.Length == 0 || sense.Length == 0 || !string.Equals(lemma, lemma.ToLowerInvariant(), StringComparison.Ordinal))
+            var (lemma, senseId, posText, sentence) = (columns[0].Trim(), columns[1].Trim(), columns[2].Trim(), columns[3].Trim());
+            if (lemma.Length == 0 || senseId.Length == 0 || !string.Equals(lemma, lemma.ToLowerInvariant(), StringComparison.Ordinal))
             {
-                errors.Add($"{name}:{number}: lemma must be lower-case and sense must be non-empty.");
+                errors.Add($"{name}:{number}: the lemma must be lower-case and the sense id must be non-empty.");
                 continue;
             }
 
-            var open = sentence.IndexOf('{', StringComparison.Ordinal);
-            var close = sentence.IndexOf('}', StringComparison.Ordinal);
-            if (open < 0 || close != sentence.LastIndexOf('}') || open != sentence.LastIndexOf('{') || close < open + 2)
+            if (!Enum.TryParse<PartOfSpeech>(posText, false, out var pos) || !Enum.IsDefined(pos) || !string.Equals(pos.ToString(), posText, StringComparison.Ordinal))
             {
-                errors.Add($"{name}:{number}: the sentence must contain exactly one non-empty {{target}} pair.");
+                errors.Add($"{name}:{number}: '{posText}' is not the name of a part of speech.");
                 continue;
             }
 
-            // The braces mark one word of the shared word split; a target inside a hyphenated or possessive word
-            // splits that word at the braces, which BERT pre-tokenization does anyway (hyphens and apostrophes are punctuation)
-            var plain = sentence.Replace("{", string.Empty, StringComparison.Ordinal).Replace("}", string.Empty, StringComparison.Ordinal);
-            var words = TextSplitter.SplitWords(plain);
-            var end = close - 1;
-            var containing = words.FindIndex(w => w.Start <= open && end <= w.Start + w.Length);
-            if (containing < 0)
+            var (words, targetIndex, problem) = SplitTarget(sentence);
+            if (problem is not null)
             {
-                errors.Add($"{name}:{number}: the braced target must lie within one word.");
+                errors.Add($"{name}:{number}: {problem}");
                 continue;
             }
 
-            var word = words[containing];
-            var pieces = new List<string>();
-            if (open > word.Start)
+            if (SenseInventory.CheckSense(lemma, senseId, pos) is { } disagreement)
             {
-                pieces.Add(plain[word.Start..open]);
+                errors.Add($"{name}:{number}: {disagreement}");
+                continue;
             }
 
-            var targetIndex = containing + pieces.Count;
-            pieces.Add(plain[open..end]);
-            if (end < word.Start + word.Length)
-            {
-                pieces.Add(plain[end..(word.Start + word.Length)]);
-            }
-
-            var texts = words.Select(w => w.Text).ToList();
-            texts.RemoveAt(containing);
-            texts.InsertRange(containing, pieces);
-            rows.Add(new CorpusRow(lemma, sense, sentence, name, texts, targetIndex));
+            rows.Add(new CorpusRow(lemma, senseId, pos, sentence, name, words!, targetIndex));
         }
 
         return (rows, errors);
     }
 
     /// <summary>
-    ///     Reads a forms file: <c>form</c>, <c>lemma</c>, <c>labels</c> with a header line.
+    ///     Reads a legacy forms file: <c>form</c>, <c>lemma</c>, <c>labels</c> with a header line. Only the Basic model
+    ///     commands still use it, through <see cref="LegacyCorpus"/>.
     /// </summary>
     /// <param name="path">The file path.</param>
     /// <returns>Form, lemma and label list per row.</returns>
+    /// <exception cref="InvalidDataException">Thrown when a row has fewer than two columns.</exception>
     public static List<(string Form, string Lemma, string[] Labels)> ReadForms(string path)
     {
         var forms = new List<(string, string, string[])>();
@@ -160,21 +193,112 @@ internal static class Corpus
     }
 
     /// <summary>
-    ///     Checks that no sentence appears twice, in either set or across both.
+    ///     Checks that no sentence appears twice, in either set or across both. Sentences are compared by their
+    ///     normalized text, so a difference of case, spacing or punctuation does not make a sentence new.
     /// </summary>
     /// <param name="anchors">The training rows.</param>
     /// <param name="holdout">The evaluation rows.</param>
     /// <exception cref="InvalidDataException">Thrown when a sentence is duplicated.</exception>
     public static void EnsureDisjoint(IEnumerable<CorpusRow> anchors, IEnumerable<CorpusRow> holdout)
     {
-        var seen = new Dictionary<string, string>(StringComparer.Ordinal);
-        var tagged = anchors.Select(r => ("anchors", r)).Concat(holdout.Select(r => ("holdout", r)));
-        foreach (var (set, row) in tagged)
+        var tagged = anchors.Select(r => ("anchors", r.Source, Normalize(r.Sentence)))
+            .Concat(holdout.Select(r => ("holdout", r.Source, Normalize(r.Sentence))));
+        EnsureDistinct(tagged, true);
+    }
+
+    /// <summary>
+    ///     Normalizes a sentence for the disjointness check: braces are dropped, letters and digits are lower-cased and
+    ///     every other run of characters becomes a single space.
+    /// </summary>
+    /// <param name="sentence">The sentence of a row.</param>
+    /// <returns>The normalized text.</returns>
+    public static string Normalize(string sentence)
+    {
+        var text = new StringBuilder(sentence.Length);
+        var space = false;
+        foreach (var ch in sentence)
         {
-            if (!seen.TryAdd(row.Sentence, $"{set}/{row.Source}"))
+            if (char.IsLetterOrDigit(ch))
             {
-                throw new InvalidDataException($"Duplicate sentence in {set}/{row.Source} (first seen in {seen[row.Sentence]}): {row.Sentence}");
+                if (space && text.Length > 0)
+                {
+                    text.Append(' ');
+                }
+
+                space = false;
+                text.Append(char.ToLowerInvariant(ch));
+            }
+            else
+            {
+                space = true;
             }
         }
+
+        return text.ToString();
+    }
+
+    /// <summary>
+    ///     Checks that no key occurs twice among the sentences of the sets.
+    /// </summary>
+    /// <param name="sentences">The set name, the file name and the comparison key of every sentence.</param>
+    /// <param name="normalized">True when the keys are normalized texts, which the message then says.</param>
+    /// <exception cref="InvalidDataException">Thrown when a key occurs twice.</exception>
+    internal static void EnsureDistinct(IEnumerable<(string Set, string Source, string Key)> sentences, bool normalized)
+    {
+        var seen = new Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (var (set, source, key) in sentences)
+        {
+            if (!seen.TryAdd(key, $"{set}/{source}"))
+            {
+                throw new InvalidDataException($"Duplicate sentence{(normalized ? " (after normalization)" : string.Empty)} in {set}/{source} (first seen in {seen[key]}): {key}");
+            }
+        }
+    }
+
+    /// <summary>
+    ///     Splits a braced sentence into its words and finds the target word.
+    /// </summary>
+    /// <remarks>
+    ///     The braces mark one word of the shared word split. A target inside a hyphenated or possessive word splits that
+    ///     word at the braces, which BERT pre-tokenization does anyway (hyphens and apostrophes are punctuation).
+    /// </remarks>
+    /// <param name="sentence">The sentence with one pair of braces.</param>
+    /// <returns>The words and the index of the target word, or a message that describes the problem.</returns>
+    internal static (IReadOnlyList<string>? Words, int TargetIndex, string? Problem) SplitTarget(string sentence)
+    {
+        var open = sentence.IndexOf('{', StringComparison.Ordinal);
+        var close = sentence.IndexOf('}', StringComparison.Ordinal);
+        if (open < 0 || close != sentence.LastIndexOf('}') || open != sentence.LastIndexOf('{') || close < open + 2)
+        {
+            return (null, -1, "the sentence must contain exactly one non-empty {target} pair.");
+        }
+
+        var plain = sentence.Replace("{", string.Empty, StringComparison.Ordinal).Replace("}", string.Empty, StringComparison.Ordinal);
+        var words = TextSplitter.SplitWords(plain);
+        var end = close - 1;
+        var containing = words.FindIndex(w => w.Start <= open && end <= w.Start + w.Length);
+        if (containing < 0)
+        {
+            return (null, -1, "the braced target must lie within one word.");
+        }
+
+        var word = words[containing];
+        var pieces = new List<string>();
+        if (open > word.Start)
+        {
+            pieces.Add(plain[word.Start..open]);
+        }
+
+        var targetIndex = containing + pieces.Count;
+        pieces.Add(plain[open..end]);
+        if (end < word.Start + word.Length)
+        {
+            pieces.Add(plain[end..(word.Start + word.Length)]);
+        }
+
+        var texts = words.Select(w => w.Text).ToList();
+        texts.RemoveAt(containing);
+        texts.InsertRange(containing, pieces);
+        return (texts, targetIndex, null);
     }
 }

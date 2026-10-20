@@ -31,11 +31,11 @@ All subsystem scenarios pass on every platform and target framework of the CI ma
 #### Real Model Answers Heteronyms in Context
 
 A model created from the committed directory classifies the words of "They will record the record." with the verb
-analysis for the first `record` and the noun analysis for the second, each answered at the part-of-speech level in this
-version (and, when the encoder scores fine senses, at a sense, group or part-of-speech level that the result states,
-with the senses of a trained lemma listed whatever the level)
-(`MiniLMWordSenseModelTests`, `EndToEndTests`;
-`MiniLMWordSenseModel_Classify_TrainedLemma_AnswersAtASenseOrGroupLevel` belongs to the scoring increment).
+analysis for the first `record` and the noun analysis for the second, each answered at the part-of-speech level (the
+lemma `record` is not trained, so the Basic model answers). A trained lemma (`back` in "I will go back to the house.")
+is answered by the encoder at a sense or group level that the result states, with the senses of every analysis listed
+whatever the level (`MiniLMWordSenseModelTests`, `EndToEndTests`;
+`MiniLMWordSenseModel_Classify_TrainedLemma_AnswersAtASenseOrGroupLevel`).
 
 #### Untrained Ambiguous Words Are Answered by the Basic Model
 

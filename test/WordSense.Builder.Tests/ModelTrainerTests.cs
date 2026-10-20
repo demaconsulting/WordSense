@@ -2,27 +2,24 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 
 using System.Diagnostics;
+using DemaConsulting.WordSense;
 using DemaConsulting.WordSense.Onnx;
-using PartOfSpeech = DemaConsulting.WordSense.PartOfSpeech;
 
 namespace WordSense.Builder.Tests;
 
 /// <summary>
-///     Tests for retraining with the embedding cache and the frozen global mean; a stub encoder replaces the ONNX
-///     model.
+///     Tests for retraining with the embedding cache, the fit cache and the frozen global mean; a stub encoder replaces
+///     the ONNX model. The lemmas and senses are real ones of the catalog of the word image.
 /// </summary>
 public sealed class ModelTrainerTests : IDisposable
 {
     private const string ModelId = "stub-model";
     private static readonly byte[] Hash = new byte[32];
     private static readonly byte[] Digest = EmbeddingCache.ComputeDigest("aa", "bb", false, "1.0");
-    private static readonly SenseInventory Inventory = new(
-    [
-        new InventoryRow("bank", "noun", PartOfSpeech.Noun, null, null, "s.tsv"),
-        new InventoryRow("bank", "verb", PartOfSpeech.Verb, null, null, "s.tsv"),
-        new InventoryRow("bat", "noun", PartOfSpeech.Noun, null, null, "s.tsv"),
-        new InventoryRow("bat", "verb", PartOfSpeech.Verb, null, null, "s.tsv"),
-    ]);
+    private static readonly SenseInfo WalkNoun = SenseFixtures.Senses("walk", PartOfSpeech.Noun, 1)[0];
+    private static readonly SenseInfo WalkVerb = SenseFixtures.Senses("walk", PartOfSpeech.Verb, 1)[0];
+    private static readonly SenseInfo RunNoun = SenseFixtures.Senses("run", PartOfSpeech.Noun, 1)[0];
+    private static readonly SenseInfo RunVerb = SenseFixtures.Senses("run", PartOfSpeech.Verb, 1)[0];
 
     private readonly TestDirectory _dir = new();
     private int _encodeCalls;
@@ -33,49 +30,32 @@ public sealed class ModelTrainerTests : IDisposable
         _dir.Dispose();
     }
 
-    private static CorpusRow Row(string lemma, string sense, int number) =>
-        new(lemma, sense, $"The {{{lemma}}} {sense} {number}.", "a.tsv", ["The", lemma, sense, number.ToString(System.Globalization.CultureInfo.InvariantCulture), "."], 1);
-
-    private static List<CorpusRow> Anchors(int bankPerSense, int batPerSense)
+    private static List<CorpusRow> Anchors(int walkPerSense, int runPerSense)
     {
         var rows = new List<CorpusRow>();
-        foreach (var (lemma, count) in new[] { ("bank", bankPerSense), ("bat", batPerSense) })
+        foreach (var (noun, verb, count) in new[] { (WalkNoun, WalkVerb, walkPerSense), (RunNoun, RunVerb, runPerSense) })
         {
             for (var i = 0; i < count; i++)
             {
-                rows.Add(Row(lemma, "noun", i));
-                rows.Add(Row(lemma, "verb", i));
+                rows.Add(StubEmbedding.Row(noun, "noun", i));
+                rows.Add(StubEmbedding.Row(verb, "verb", i));
             }
         }
 
         return rows;
     }
 
-    private static double[] Embed(IReadOnlyList<string> words)
-    {
-        // A deterministic pseudo-embedding: a sense signal plus a spread that depends on the text
-        var seed = 17u;
-        foreach (var ch in string.Join(' ', words))
-        {
-            seed = (seed * 31) + ch;
-        }
-
-        double Unit(int k) => ((((seed >> k) * 2654435761u) >> 8) & 0xFFFF) / 65535.0;
-        var sign = words[2] == "noun" ? 1.0 : -1.0;
-        return [(sign * 2) + Unit(1), (sign * 0.5) + Unit(3), Unit(5), Unit(7) - 0.5];
-    }
-
     private CachingEncoder Encoder(EmbeddingCache? cache) => new(
         (words, targets, _) =>
         {
             _encodeCalls++;
-            return ValueTask.FromResult<double[]?[]>(targets.Select(_ => (double[]?)Embed(words)).ToArray());
+            return ValueTask.FromResult<double[]?[]>(targets.Select(_ => (double[]?)StubEmbedding.Embed(words)).ToArray());
         },
         cache);
 
-    private static Task<WeightsData> TrainAsync(List<CorpusRow> anchors, CachingEncoder encoder, float[]? mean, FitCache? fits = null) =>
+    private static Task<WeightsData> TrainAsync(List<CorpusRow> anchors, CachingEncoder encoder, float[]? mean, FitCache? fits = null, IReadOnlyList<CorpusRow>? holdout = null) =>
         ModelTrainer.TrainDataAsync(
-            "stub", ModelId, Hash, anchors, Inventory, new TrainingOptions(Parallelism: 1), encoder, mean, fits, TextWriter.Null, Stopwatch.StartNew(), TestContext.Current.CancellationToken);
+            "stub", ModelId, Hash, anchors, new TrainingOptions(Parallelism: 1), encoder, mean, fits, TextWriter.Null, Stopwatch.StartNew(), TestContext.Current.CancellationToken, holdout);
 
     private static WeightedLemma Lemma(WeightsData data, string lemma) => data.Lemmas.Single(l => l.Lemma == lemma);
 
@@ -173,7 +153,7 @@ public sealed class ModelTrainerTests : IDisposable
     }
 
     /// <summary>
-    ///     With the frozen mean, changing the anchors of one lemma leaves the weights of the other lemma unchanged.
+    ///     With the frozen mean, changing the anchors of one lemma leaves the weights and thresholds of the other lemma unchanged.
     /// </summary>
     /// <returns>A task that completes when the check is done.</returns>
     [Fact]
@@ -187,12 +167,13 @@ public sealed class ModelTrainerTests : IDisposable
 
         // Assert
         Assert.Equal(original.Mean, edited.Mean);
-        var before = Lemma(original, "bank").Weights;
-        var after = Lemma(edited, "bank").Weights;
+        var before = Lemma(original, "walk").Weights;
+        var after = Lemma(edited, "walk").Weights;
         Assert.Equal(before.Weights, after.Weights);
         Assert.Equal(before.Bias, after.Bias);
-        Assert.Equal(before.AbstainMargin, after.AbstainMargin);
-        Assert.NotEqual(Lemma(original, "bat").Weights.Weights, Lemma(edited, "bat").Weights.Weights);
+        Assert.Equal(before.FineThreshold, after.FineThreshold);
+        Assert.Equal(before.GroupThreshold, after.GroupThreshold);
+        Assert.NotEqual(Lemma(original, "run").Weights.Weights, Lemma(edited, "run").Weights.Weights);
     }
 
     /// <summary>
@@ -210,7 +191,7 @@ public sealed class ModelTrainerTests : IDisposable
 
         // Assert
         Assert.NotEqual(original.Mean, edited.Mean);
-        Assert.NotEqual(Lemma(original, "bank").Weights.Weights, Lemma(edited, "bank").Weights.Weights);
+        Assert.NotEqual(Lemma(original, "walk").Weights.Weights, Lemma(edited, "walk").Weights.Weights);
     }
 
     /// <summary>
@@ -293,7 +274,7 @@ public sealed class ModelTrainerTests : IDisposable
 
         // Act
         await ModelTrainer.TrainDataAsync(
-            "stub", ModelId, Hash, anchors, Inventory, new TrainingOptions(Parallelism: 1), Encoder(EmbeddingCache.Open(_dir.Root, Digest)), null, FitCache.Open(_dir.Root), output, Stopwatch.StartNew(), TestContext.Current.CancellationToken);
+            "stub", ModelId, Hash, anchors, new TrainingOptions(Parallelism: 1), Encoder(EmbeddingCache.Open(_dir.Root, Digest)), null, FitCache.Open(_dir.Root), output, Stopwatch.StartNew(), TestContext.Current.CancellationToken);
 
         // Assert
         Assert.Contains("0 cache hits, 12 encoded", output.ToString(), StringComparison.Ordinal);
@@ -361,5 +342,99 @@ public sealed class ModelTrainerTests : IDisposable
         // Assert
         Assert.Equal(0, fits.Hits);
         Assert.Equal(2, fits.Misses);
+    }
+
+    /// <summary>
+    ///     Every trained lemma carries a fine and a group threshold in the written blob; a lemma with groups whose
+    ///     confusable senses fall through the fine level gets finite ones, a lemma without groups never answers the
+    ///     group level, and the summary of the run counts them.
+    /// </summary>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_ModelTrainer_TrainDataAsync_WritesBothThresholdsPerLemma()
+    {
+        // Arrange: test has two senses of one group that the embedding cannot tell apart, a sense of another group
+        // and a sense in no group; walk has no group at all
+        var (a1, a2, b, none) = SenseFixtures.Grouped("test");
+        var anchors = new List<CorpusRow>();
+        for (var i = 0; i < 12; i++)
+        {
+            anchors.Add(StubEmbedding.Row(a1, "a1", i));
+            anchors.Add(StubEmbedding.Row(a2, "a2", i));
+            anchors.Add(StubEmbedding.Row(b, "b", i));
+            anchors.Add(StubEmbedding.Row(none, "n", i));
+            anchors.Add(StubEmbedding.Row(WalkNoun, "noun", i));
+            anchors.Add(StubEmbedding.Row(WalkVerb, "verb", i));
+        }
+
+        using var output = new StringWriter();
+
+        // Act
+        var data = await ModelTrainer.TrainDataAsync(
+            "stub", ModelId, Hash, anchors, new TrainingOptions(Parallelism: 1), Encoder(null), null, null, output, Stopwatch.StartNew(), TestContext.Current.CancellationToken);
+        var read = WeightsBlob.Read(WeightsBlobWriter.Write(data));
+
+        // Assert
+        Assert.Equal(["test", "walk"], read.Lemmas.Select(l => l.Lemma));
+        foreach (var (written, trained) in read.Lemmas.Zip(data.Lemmas))
+        {
+            Assert.Equal(trained.Weights.FineThreshold, written.Weights.FineThreshold);
+            Assert.Equal(trained.Weights.GroupThreshold, written.Weights.GroupThreshold);
+            Assert.True(written.Weights.FineThreshold >= 0);
+            Assert.True(written.Weights.GroupThreshold >= 0);
+        }
+
+        var test = read.Lemmas[0].Weights;
+        Assert.True(test.FineThreshold < LemmaWeights.Never);
+        Assert.True(test.GroupThreshold < LemmaWeights.Never);
+        Assert.Equal(LemmaWeights.Never, read.Lemmas[1].Weights.GroupThreshold);
+        Assert.Contains("trained 2 lemmas", output.ToString(), StringComparison.Ordinal);
+        Assert.Contains("group threshold found for 1 of 1 lemmas that have groups", output.ToString(), StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A lemma with anchors for a single sense gets no weights and is named in the output; it does not fail the run.
+    /// </summary>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_ModelTrainer_TrainDataAsync_LemmaWithOneAnchoredSense_IsReportedAndLeftOut()
+    {
+        // Arrange
+        var anchors = Anchors(3, 3).Where(r => r.Lemma == "walk").Concat(Enumerable.Range(0, 3).Select(i => StubEmbedding.Row(RunNoun, "noun", i))).ToList();
+        using var output = new StringWriter();
+
+        // Act
+        var data = await ModelTrainer.TrainDataAsync(
+            "stub", ModelId, Hash, anchors, new TrainingOptions(Parallelism: 1), Encoder(null), null, null, output, Stopwatch.StartNew(), TestContext.Current.CancellationToken);
+
+        // Assert
+        Assert.Equal(["walk"], data.Lemmas.Select(l => l.Lemma));
+        Assert.Contains("fewer than two anchored senses and got no weights: run (1)", output.ToString(), StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     With held-out rows the trainer encodes them through the same cache, prints the fine accuracy with the full and
+    ///     the half-precision weights and the difference, and leaves the weights as they would be without them.
+    /// </summary>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_ModelTrainer_TrainDataAsync_Holdout_ReportsTheHalfPrecisionGate()
+    {
+        // Arrange: held-out rows of a trained and of an untrained lemma
+        var anchors = Anchors(6, 6);
+        var holdout = Enumerable.Range(100, 6).SelectMany(i => new[] { StubEmbedding.Row(WalkNoun, "noun", i), StubEmbedding.Row(WalkVerb, "verb", i), StubEmbedding.Row(SenseFixtures.Senses("go", PartOfSpeech.Verb, 1)[0], "verb", i) }).ToList();
+        using var output = new StringWriter();
+        var encoder = Encoder(EmbeddingCache.Open(_dir.Root, Digest));
+
+        // Act
+        var data = await ModelTrainer.TrainDataAsync(
+            "stub", ModelId, Hash, anchors, new TrainingOptions(Parallelism: 1), encoder, null, null, output, Stopwatch.StartNew(), TestContext.Current.CancellationToken, holdout);
+
+        // Assert: only the 12 held-out rows of walk were encoded and scored
+        Assert.Equal(anchors.Count + 12, encoder.Misses);
+        Assert.Contains("half-precision gate: 12 held-out rows: fine top-1", output.ToString(), StringComparison.Ordinal);
+        Assert.Contains("with full-precision weights", output.ToString(), StringComparison.Ordinal);
+        Assert.Contains("with the stored half-precision weights", output.ToString(), StringComparison.Ordinal);
+        Assert.Equal(["run", "walk"], data.Lemmas.Select(l => l.Lemma));
     }
 }

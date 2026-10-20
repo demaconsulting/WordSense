@@ -37,13 +37,13 @@ internal readonly record struct AnalysisKey(string Lemma, PartOfSpeech Pos, stri
 }
 
 /// <summary>
-///     Rolls the labels of the retired class corpus (<c>corpus/anchors</c>, <c>holdout</c>, <c>realtext</c>) up to
+///     Rolls the labels of the retired class corpus (<c>corpus/legacy/anchors</c>, <c>holdout</c>, <c>realtext</c>) up to
 ///     analyses: the lemma, the part of speech and, for the classes that stand for one tense, the features.
 /// </summary>
 /// <remarks>
 ///     <para>
 ///     The corpus still carries the labels of the retired pronunciation classes (<c>lemma</c> and <c>label</c>, the class
-///     id being <c>lemma#label</c>). The part of speech of a label is in <c>corpus/senses</c>; the classes that stand for
+///     id being <c>lemma#label</c>). The part of speech of a label is in <c>corpus/legacy/senses</c>; the classes that stand for
 ///     the entries of another lemma or for one tense of a verb (<c>read#past</c>, <c>bases#bases-base</c>) are in the
 ///     temporary file <c>corpus/migration/legacy-class-map.tsv</c>. A row of a class that stands for the entries of
 ///     several lemmas names all of them. This class is deleted together with the migration file when the corpus is
@@ -64,11 +64,11 @@ internal sealed class AnalysisLabels
     /// <summary>
     ///     Builds the labels from the sense inventory and the migration file.
     /// </summary>
-    /// <param name="inventory">The sense inventory of the corpus (<c>corpus/senses</c>).</param>
+    /// <param name="inventory">The sense inventory of the legacy corpus (<c>corpus/legacy/senses</c>).</param>
     /// <param name="corpusDirectory">The corpus directory that holds <c>migration/legacy-class-map.tsv</c>.</param>
     /// <returns>The labels.</returns>
     /// <exception cref="InvalidDataException">Thrown when the migration file is missing or malformed.</exception>
-    public static AnalysisLabels Load(SenseInventory inventory, string corpusDirectory)
+    public static AnalysisLabels Load(LegacySenseInventory inventory, string corpusDirectory)
     {
         ArgumentNullException.ThrowIfNull(inventory);
         ArgumentNullException.ThrowIfNull(corpusDirectory);

@@ -15,8 +15,9 @@ needs-review:
   - "docs/user_guide/**/*.md"    # User guide documentation
   - "docs/sysml2/**/*.sysml"     # SysML2 architecture model
   - "tools/real-text/**"          # Real-text harvest tooling
-  - "corpus/provenance/**"        # Provenance of the real sentences
-  - "corpus/realtext/**"          # Real-text evaluation sentences
+  - "corpus/provenance/**"        # Provenance of the sentences of the fine-sense corpus
+  - "corpus/legacy/provenance/**"  # Provenance of the real sentences of the legacy corpus
+  - "corpus/legacy/realtext/**"   # Real-text evaluation sentences of the legacy corpus
   - "corpus/lexicon/**"           # Derived part-of-speech lexicon (Moby, public domain) and its provenance
   - "corpus/ud/**"                # Universal Dependencies tag and word-tag counts for the Basic model
   - "data/schema.yaml"            # Word data schema
@@ -143,7 +144,8 @@ reviews:
       - "tools/real-text/**"
       - "!tools/real-text/cache/**"
       - "corpus/provenance/**"
-      - "corpus/realtext/**"
+      - "corpus/legacy/provenance/**"
+      - "corpus/legacy/realtext/**"
       - "corpus/lexicon/**"
       - "corpus/ud/**"
 
@@ -460,6 +462,7 @@ reviews:
       - "docs/verification/word-sense/onnx/onnx-classifier.md"
       - "src/DemaConsulting.WordSense.Onnx/OnnxClassifier.cs"
       - "test/DemaConsulting.WordSense.Onnx.Tests/OnnxClassifierTests*.cs"
+      - "test/DemaConsulting.WordSense.Onnx.Tests/Fixtures.cs"
       - "test/DemaConsulting.WordSense.Onnx.Tests/OnnxLayeringTests.cs"
 
   # WordSense-Onnx-OnnxEncoder Review (one per unit)
@@ -534,6 +537,8 @@ reviews:
       - "test/DemaConsulting.WordSense.Onnx.Tests/LemmaWeightsTests.cs"
       - "test/DemaConsulting.WordSense.Onnx.Tests/WeightsBlobTests.cs"
       - "test/DemaConsulting.WordSense.Onnx.Tests/WeightedLemmaTableTests.cs"
+      - "test/DemaConsulting.WordSense.Onnx.Tests/BlobWriter.cs"
+      - "test/DemaConsulting.WordSense.Onnx.Tests/Fixtures.cs"
 
   # WordSense-MiniLM Review (one per subsystem)
   - id: WordSense-MiniLM

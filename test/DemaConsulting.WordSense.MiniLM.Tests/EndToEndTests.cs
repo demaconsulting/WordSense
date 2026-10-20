@@ -112,4 +112,90 @@ public class EndToEndTests
             Assert.Equal(result.Analyses[0].Details, result.Details);
         }
     }
+
+    /// <summary>
+    ///     Trained lemmas in clear sentences are answered at the finest level the model is confident in: at least one
+    ///     answer reaches the sense level, and every answer follows the level contract (a sense carries its id and the
+    ///     group of the catalog, a group only its id, a part of speech neither).
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSense_Classifier_EndToEnd_AnswersAtTheFinestConfidentLevel()
+    {
+        // Arrange: trained lemmas of the first batch in sentences that make the sense clear
+        using var model = new MiniLMWordSenseModel(ModelFolder.Require());
+        model.Encoder.IntraOpThreads = 2;
+        string[][] sentences =
+        [
+            ["I", "will", "go", "back", "to", "the", "house", "."],
+            ["She", "turned", "right", "at", "the", "corner", "and", "walked", "home", "."],
+            ["Please", "help", "me", "carry", "the", "test", "papers", "."],
+        ];
+
+        // Act
+        var all = new List<ClassifyResult>();
+        foreach (var sentence in sentences)
+        {
+            all.AddRange(await model.ClassifyAsync(sentence, TestContext.Current.CancellationToken));
+        }
+
+        // Assert: the levels follow the contract, and the most confident answers reach the sense level
+        var trained = all.Where(r => r.Analyses.Any(a => !a.Senses.IsEmpty) && r.Level != SenseLevel.None && r.Analyses.Length > 0 && r.Details!.Lemma is "back" or "right" or "home" or "help" or "test").ToList();
+        Assert.NotEmpty(trained);
+        Assert.Contains(trained, r => r.Level == SenseLevel.Sense);
+        foreach (var result in trained)
+        {
+            switch (result.Level)
+            {
+                case SenseLevel.Sense:
+                    Assert.True(WordLexicon.TryGetSense(result.SenseId!, out var sense));
+                    Assert.Equal(sense.GroupId, result.GroupId);
+                    break;
+                case SenseLevel.Group:
+                    Assert.Null(result.SenseId);
+                    Assert.True(WordLexicon.TryGetGroup(result.GroupId!, out _));
+                    break;
+                default:
+                    Assert.Equal(SenseLevel.PartOfSpeech, result.Level);
+                    Assert.Null(result.SenseId);
+                    Assert.Null(result.GroupId);
+                    break;
+            }
+        }
+    }
+
+    /// <summary>
+    ///     The senses of every analysis of a trained word are ranked by probability, largest first, and sum to one, and
+    ///     belong to the lemma and the part of speech of the analysis.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSense_Classifier_EndToEnd_SensesAreRankedAndSumToOne()
+    {
+        // Arrange
+        using var model = new MiniLMWordSenseModel(ModelFolder.Require());
+        model.Encoder.IntraOpThreads = 2;
+
+        // Act
+        var results = await model.ClassifyAsync(["I", "will", "go", "back", "to", "the", "house", "."], TestContext.Current.CancellationToken);
+
+        // Assert: the trained word lists scored senses in at least one analysis; each list is ranked and sums to one
+        var back = results[3];
+        Assert.Contains(back.Analyses, a => !a.Senses.IsEmpty);
+        foreach (var analysis in back.Analyses.Where(a => !a.Senses.IsEmpty))
+        {
+            Assert.Equal(1.0, analysis.Senses.Sum(s => s.Probability), 6);
+            for (var i = 1; i < analysis.Senses.Length; i++)
+            {
+                Assert.True(analysis.Senses[i - 1].Probability >= analysis.Senses[i].Probability);
+            }
+
+            Assert.All(analysis.Senses, s =>
+            {
+                Assert.True(WordLexicon.TryGetSense(s.SenseId, out var info));
+                Assert.Equal(analysis.Details.Lemma, info.Lemma);
+                Assert.Equal(analysis.Details.PartOfSpeech, info.PartOfSpeech);
+            });
+        }
+    }
 }

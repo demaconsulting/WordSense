@@ -83,16 +83,16 @@ internal static class BasicTrainer
     /// </summary>
     /// <param name="ud">The treebank counts.</param>
     /// <param name="lexicon">The lexicon of the core package: the analyses of a lower-case word, or the default array when unknown.</param>
-    /// <param name="anchors">The training sentences of the cue model.</param>
-    /// <param name="inventory">The sense inventory.</param>
+    /// <param name="anchors">The training sentences of the cue model (legacy class labels).</param>
+    /// <param name="inventory">The legacy sense inventory.</param>
     /// <param name="labels">The analyses that the corpus labels stand for.</param>
     /// <param name="hp">The hyper-parameters.</param>
     /// <returns>The model data.</returns>
     public static BasicModelData Train(
         UdCounts ud,
         Func<string, ImmutableArray<WordDetails>> lexicon,
-        IReadOnlyList<CorpusRow> anchors,
-        SenseInventory inventory,
+        IReadOnlyList<LegacyRow> anchors,
+        LegacySenseInventory inventory,
         AnalysisLabels labels,
         BasicHyperparameters hp)
     {
@@ -205,8 +205,8 @@ internal static class BasicTrainer
     }
 
     private static (List<BasicCueRow> Cues, int Collisions, int Skipped) TrainCues(
-        IReadOnlyList<CorpusRow> anchors,
-        SenseInventory inventory,
+        IReadOnlyList<LegacyRow> anchors,
+        LegacySenseInventory inventory,
         AnalysisLabels labels,
         BasicHyperparameters hp)
     {
@@ -283,7 +283,7 @@ internal static class BasicTrainer
     /// <param name="inventory">The sense inventory that lists the labels of the lemma.</param>
     /// <param name="labels">The analyses that the labels stand for.</param>
     /// <returns>The analyses in ordinal order of lemma, part of speech and features.</returns>
-    private static AnalysisKey[] ColumnsOf(string lemma, SenseInventory inventory, AnalysisLabels labels) =>
+    private static AnalysisKey[] ColumnsOf(string lemma, LegacySenseInventory inventory, AnalysisLabels labels) =>
         [.. inventory.RowsOf(lemma)
             .Select(r => labels.Of(r.Lemma, r.Label))
             .Where(stands => stands.Count == 1)

@@ -15,16 +15,18 @@ The builder creates the data that the shipped packages embed and measures the sh
   classifiers with their thresholds;
 - the statistics table `basic.bin` embedded in the Basic package, and the treebank count files of `corpus/ud` it is
   trained from;
-- accuracy reports of the models at each answer level, measured on the held-out and real-text sentences, on SemCor 3.0
+- accuracy reports of the models at each answer level, measured on the held-out sentences, on SemCor 3.0
   (senses) and on the test file of the English EWT treebank (part of speech);
 - the quota report of the training sentences (tiers) and the senses appendix of the user guide.
 
-It reads the sense inventory from `data/` (the senses, their labels, groups, respellings, glosses, OEWN keys and
-WordNet 3.0 tag counts) and the repository's `corpus/` folder: the training sentences (`anchors/`), the holdout
-sentences (`holdout/`, never used for training or for thresholds), the form lists (`forms/`: inflected forms of trained
-lemmas), the dictionary of all words with their parts of speech and the auxiliary list (`lexicon/`), the real-text
-evaluation sentences (`realtext/`), the reviewed suite (`suite/`) and the vendored Universal Dependencies counts
-(`ud/`: tag n-gram and per-word tag counts of the English EWT treebank training file). It references all five packages
+It reads the sense catalog (the senses, their labels, groups, respellings, OEWN keys and WordNet 3.0 tag counts) from
+the word image, which is compiled from `data/`, and the repository's `corpus/` folder: the training sentences
+(`anchors/`, rows of a fine sense id), the holdout sentences (`holdout/`, never used for training or for thresholds),
+their provenance (`provenance/`), the dictionary of all words with their parts of speech and the auxiliary list
+(`lexicon/`), the reviewed suite (`suite/`, with the independent evaluation sets of a later increment) and the
+vendored Universal Dependencies counts (`ud/`: tag n-gram and per-word tag counts of the English EWT treebank
+training file). The former class-labeled sentences, inventory and form lists wait in `legacy/` for their relabeling and
+only the Basic model commands read them. It references all five packages
 and uses internal members of them through `InternalsVisibleTo`, so that training and inference share one
 implementation of the feature computation.
 
@@ -36,8 +38,10 @@ implementation of the feature computation.
 - `Corpus`, `CorpusRow`: read and validate the sentence and form files. A sentence row is `lemma`, `sense_id`,
   `part_of_speech` and `sentence`. The reader checks that the part of speech of a row is the one of its sense, and
   that the training sentences are disjoint from every sentence they must not resemble (see Corpus validation).
-- `SenseInventory`: the authority on which senses exist, read from `data/`: for each lemma the senses in inventory
-  order with part of speech, label, group, OEWN key (none for a project sense), gloss, respelling and tag count.
+- `SenseInventory`: the authority on which senses exist, read from the sense catalog of the word image (the data of
+  `data/` as compiled): for each lemma the senses in inventory order with part of speech, group, OEWN key (none for a
+  project sense) and respelling; it checks the rows of the corpus against it. `LegacyCorpus` and `LegacySenseInventory`
+  read the class-labeled data of `corpus/legacy` that the Basic model commands still train from.
 - `SenseDefinition`, `LemmaEntry`: the validated definition of one sense and of one lemma.
 - `LexiconSource`: reads the dictionary word list (`word<TAB>letters`, ascending by word, parts of speech as the
   letters `NRVJBPCID`, the first letter being the first analysis) and the auxiliary list.
@@ -74,7 +78,7 @@ implementation of the feature computation.
   words and the target index, valid for one digest of the model files, per-entry checksums, atomic save) and the
   wrapper that asks the cache before the encoder; `FitCache` stores the fitted classifier of each lemma, keyed by its
   exact features and its training and threshold settings; `TrainSettings` carries the cache folder and the mean choice.
-- `Evaluator`, `SetResult`, `EvaluationResult`: measure a shipped model on the holdout and the real-text sentences, at
+- `Evaluator`, `SetResult`, `EvaluationResult`: measure a shipped model on the holdout sentences, at
   each answer level.
 - `SenseEval`: the SemCor 3.0 evaluation (download to a cache with a pinned checksum, key mapping, per-level figures and
   the most-frequent-sense baseline).
@@ -120,7 +124,7 @@ instead of `--model`.
   from the anchors instead of reusing the one of the existing weights. `--no-cache` and `--recompute-mean` are
   switches: they take no value (an explicit `true` or `false` is accepted).
 - `evaluate <modelId> [--corpus DIR] [--repository DIR] [--output FILE]`: measures a model (`minilm`,
-  `bert-base-cased`, `basic`) on the holdout and real-text sentences and prints a Markdown table.
+  `bert-base-cased`, `basic`) on the holdout sentences and prints a Markdown table.
 - `evaluate-senses <modelId> --cache DIR [--corpus DIR] [--repository DIR] [--output FILE]`: measures a model on
   SemCor 3.0, downloaded to the cache when it is missing.
 - `evaluate-running <modelId> --cache DIR [--corpus DIR] [--repository DIR] [--output FILE]`: measures the
@@ -166,7 +170,7 @@ instead of `--model`.
 
 #### Corpus validation (`Corpus`, `SenseInventory`)
 
-Every row of the anchors, the holdout and the real-text sentences must have four fields, a sense id that exists in the
+Every row of the anchors and the holdout sentences must have four fields, a sense id that exists in the
 inventory, the lemma of that sense, and the part of speech of that sense. The training sentences must be disjoint from
 the holdout, real-text and suite sentences, from the SemCor and treebank test sentences (when their cached files are
 present) and from the example sentences of Open English WordNet, under two keys: the normalized sentence and every
@@ -176,7 +180,10 @@ the tiers report.
 
 #### Weights training (`ModelTrainer.TrainAsync`)
 
-1. Read and validate the inventory, anchors, holdout and forms; the anchors and the holdout shall be disjoint.
+1. Read the anchors and the holdout and check them against the sense catalog of the word image: every row has a sense
+   that exists, belongs to the lemma of the row and has the part of speech of the row (an error), and its braced target
+   word is analyzed by the lexicon as that lemma and part of speech (a warning that is reported and still trains); the
+   anchors and the holdout shall be disjoint (by normalized sentence). The legacy class-labeled folders are never read.
 2. Open the model on the verified files of `model/<model-id>/`, and open the embedding cache (see below) unless
    `--no-cache` is given. Take the global mean from the existing weights blob of the model when it exists, reads, names
    the same model id and is not overridden by `--recompute-mean` (the *frozen mean*); the reason is printed whenever the
@@ -195,19 +202,26 @@ the tiers report.
 7. The lemmas are fitted concurrently (`TrainingOptions.DefaultParallelism`, the processors minus two, 2 to 16
    threads); each result is written to its own slot, so the weights do not depend on the thread count. A lemma whose
    fit is in the fit cache (see below) is not fitted again.
-8. For a form whose analyses span lemmas (`left`, `bases`, `rows`), fit the small per-form chooser from the anchors of
-   the form, with labels rolled up from their fine senses (the lemma, or the analysis for forms such as `read`).
-9. Write the weights blob (`WSX3`, float16 weights) to the package's `Resources/weights.bin`.
+8. Form choosers (for a form whose analyses span lemmas, such as `left`, `bases`, `rows`) are not trained yet: the
+   corpus has no rows for them. The blob format and its writer support them, and the weights carry none.
+9. Check the half-precision storage: encode the held-out rows of the trained lemmas through the same cache, score them
+   with the full-precision weights and with the weights read back from the written blob, print both fine top-1
+   accuracies, and fail without writing when they differ by more than 0.2 percentage point. Then write the weights blob
+   (`WSX3`, float16 weights) to the package's `Resources/weights.bin`. The summary of the run counts the lemmas that
+   have a finite fine threshold and a finite group threshold and names the lemmas that got no weights.
 
 **Thresholds (`Thresholds.Choose`).** For every trained lemma the anchors are split into k = 5 folds by a seeded,
 deterministic shuffle; each fold is scored by a fit on the other folds, which gives out-of-fold margins for every
-anchor. The fine threshold `t_fine` is the lowest margin such that the answers at or above it reach the precision target
-on the out-of-fold anchors (95 percent by default); `t_group` is chosen in the same way on the group of the answer
-derived from the fine scores, only for a lemma that has groups and over the anchors whose best sense is in a group. A
+anchor. The fine threshold `t_fine` is the lowest margin such that the answers at or above it (equal margins together)
+reach the precision target on the out-of-fold anchors (95 percent by default) with at least three answers; `t_group`
+is chosen in the same way on the group answers, only for a lemma that has groups and over the anchors whose best sense
+is in a group and whose fine margin is below `t_fine` (the rows that fall through to the group level; every anchor
+when `t_fine` is "never"), with the group margin defined as at run time (the group probability minus the largest
+probability of any other group or ungrouped sense). A
 level for which no threshold reaches the target gets no threshold and is never answered
-for that lemma. Only the anchors are read: the holdout, real-text, suite and independent evaluation sentences never
-reach the choice, so the accuracy figures of the evaluations are independent of the thresholds. The confidence of an
-answer maps the margin of the answered level onto 0 to 1 with 0.5 at the threshold of that level.
+for that lemma. Only the anchors are read: the holdout, suite and independent evaluation sentences never
+reach the choice, so the accuracy figures of the evaluations are independent of the thresholds. The thresholds decide
+the level of an answer; the confidence of an answer is the probability of the answered level.
 
 **Tiers (`Tiers`).** The quota of a sense follows its WordNet 3.0 tag count: five or more, 20 anchor and 5 held-out
 sentences; one to four, 10 and 3; none, 5 and 2. The report lists every sense of every trained lemma with its counts
@@ -254,10 +268,14 @@ require a second scoring path.
 
 #### Evaluation (`Evaluator.RunAsync`)
 
-Creates the model on the verified files, classifies the holdout and the real-text sentences, and reports per set the
-rows, the share of answers at each level (sense, group, part of speech) and the accuracy at each level (the
-share of the sense-level answers with the right sense, of the group-level answers with the right group, and of the
-part-of-speech answers with the right analysis), plus the weights size, the latency per
+Creates the model on the verified files, classifies the sentences of `corpus/holdout` (the real-text sentences carry
+the labels of the retired classes and are no longer measured), and reports per set the rows, the share of answers at
+each level (sense, group, part of speech, and none for an unknown word) and the accuracy at each level (the
+share of the sense-level answers with the right sense, of the group-level answers with the group of the sense of the row,
+and of the part-of-speech answers with the right part of speech), the share of rows that are right at the level they
+were answered, the top-1 fine accuracy (the sense with the largest product of the probability of its analysis and its
+own probability; over all rows and over the rows that rank senses), the part-of-speech accuracy of the selected
+analysis, plus the weights size, the latency per
 sentence and the first-use time and memory of the lexicon. `basic` is evaluated the same way without weights and
 additionally reports the calibration of its confidence: the number and accuracy of the answers in the confidence
 buckets (below 0.4, 0.4 to 0.6, 0.6 to 0.7, 0.7 to 0.8, 0.8 to 0.9 and at least 0.9), the coverage and precision at
@@ -299,7 +317,9 @@ present (Git LFS).
 
 1. Regenerate the count files of `corpus/ud` from the verified treebank when they are missing or `--refresh-ud true` is
    given (`ud-counts` does the same on its own).
-2. Read and validate the inventory, anchors, holdout and forms as for the weights; the holdout is not used further.
+2. Read and validate the legacy inventory, anchors, holdout and forms of `corpus/legacy` as for the weights of the earlier
+   release (the shipped table was trained from this class-labeled data); the holdout is not used further. The command
+   moves to the fine-sense corpus when the tables are retrained for it.
 3. `BasicTrainer.Train` selects from the counts the closed-class words (enough occurrences and a dominant closed-class
    share), the most frequent dictionary-ambiguous words and the suffixes of one to three characters of words the lexicon
    lacks, and trains the naive Bayes cue tables from the anchors, keyed by training lemma (a form that spans lemmas, such

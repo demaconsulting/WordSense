@@ -1,184 +1,33 @@
-using System.IO.Compression;
 using System.Text;
 
 namespace DemaConsulting.WordSense.Onnx.Tests;
 
 /// <summary>
-///     Tests for the weights reader <see cref="WeightsBlob"/>. Round trips with the writer are tested in the build
-///     tool's tests.
+///     Tests for the weights reader <see cref="WeightsBlob"/>. The blobs are written by the test helper
+///     <see cref="BlobWriter"/>, which follows the WSX3 layout; round trips with the real writer are tested in the
+///     build tool's tests.
 /// </summary>
 public class WeightsBlobTests
 {
-    private static readonly byte[] Hash = [.. Enumerable.Range(1, WeightsBlob.HashSize).Select(i => (byte)i)];
+    private const int Dimension = 2;
+
+    private static byte[] Hash => BlobWriter.Hash();
+
+    private static LemmaSpec Lemma(string name, params string[] senseIds) => LemmaSpec.Of(name, Dimension, senseIds);
+
+    private static byte[] Compressed(params LemmaSpec[] lemmas) =>
+        BlobWriter.Compress(BlobWriter.Raw(BlobWriter.ModelId, Hash, Dimension, lemmas));
 
     /// <summary>
-    ///     Brotli-compresses raw blob bytes.
-    /// </summary>
-    /// <param name="raw">The raw bytes.</param>
-    /// <returns>The compressed bytes.</returns>
-    private static byte[] Compress(byte[] raw)
-    {
-        using var output = new MemoryStream();
-        using (var brotli = new BrotliStream(output, CompressionLevel.Fastest))
-        {
-            brotli.Write(raw);
-        }
-
-        return output.ToArray();
-    }
-
-    /// <summary>
-    ///     Builds the header: magic, model id "m", class hash, dimension 1, dense flag and one mean value.
-    /// </summary>
-    /// <returns>The header bytes.</returns>
-    private static byte[] Header() => [.. "WSX2"u8.ToArray(), 1, (byte)'m', .. Hash, 1, 0, 0, 0, 0, 0];
-
-    /// <summary>
-    ///     Builds a blob with one lemma "a" of the given kind and the given class ids (dimension 1).
-    /// </summary>
-    /// <param name="kind">The model kind byte.</param>
-    /// <param name="classIds">The class ids, each of ASCII text.</param>
-    /// <param name="lemmaByte">The single byte of the lemma text.</param>
-    /// <returns>The compressed blob.</returns>
-    private static byte[] OneLemma(byte kind, string[] classIds, byte lemmaByte = (byte)'a')
-    {
-        var rows = kind == 1 ? 1 : classIds.Length;
-        List<byte> bytes = [.. Header(), 1, 1, lemmaByte, 0, 0, 0, 0, kind, (byte)classIds.Length];
-        foreach (var id in classIds)
-        {
-            bytes.Add((byte)id.Length);
-            bytes.AddRange(Encoding.ASCII.GetBytes(id));
-        }
-
-        bytes.AddRange(new byte[4 * rows]); // biases
-        bytes.AddRange(new byte[4 * rows]); // weights, dimension 1
-        return Compress([.. bytes]);
-    }
-
-    /// <summary>
-    ///     Builds the raw (uncompressed) bytes of a valid blob with a binary lemma "a" and a one-versus-rest lemma "b"
-    ///     of three classes, dimension 1.
+    ///     Builds the raw bytes of a valid blob with the lemmas "a" (two senses) and "b" (three senses), dimension 1.
     /// </summary>
     /// <returns>The raw bytes.</returns>
-    private static byte[] TwoLemmasRaw()
-    {
-        List<byte> bytes = [.. Header(), 2];
-        AddLemma(bytes, (byte)'a', 1, ["a#x", "a#y"]);
-        AddLemma(bytes, (byte)'b', 2, ["b#x", "b#y", "b#z"]);
-        return [.. bytes];
-    }
-
-    /// <summary>
-    ///     Appends one lemma (name length, name, margin, kind, sense count, class ids, biases, weights) to a blob.
-    /// </summary>
-    /// <param name="bytes">The blob bytes to append to.</param>
-    /// <param name="name">The single byte of the lemma text.</param>
-    /// <param name="kind">The model kind byte.</param>
-    /// <param name="classIds">The class ids, each of ASCII text.</param>
-    private static void AddLemma(List<byte> bytes, byte name, byte kind, string[] classIds)
-    {
-        var rows = kind == 1 ? 1 : classIds.Length;
-        bytes.AddRange([1, name, 0, 0, 0, 0, kind, (byte)classIds.Length]);
-        foreach (var id in classIds)
-        {
-            bytes.Add((byte)id.Length);
-            bytes.AddRange(Encoding.ASCII.GetBytes(id));
-        }
-
-        bytes.AddRange(new byte[4 * rows]);
-        bytes.AddRange(new byte[4 * rows]);
-    }
-
-    /// <summary>
-    ///     The valid two-lemma blob reads back, which makes the failure matrix below meaningful.
-    /// </summary>
-    [Fact]
-    public void WeightsBlob_Read_TwoLemmaBlob_IsAccepted()
-    {
-        var data = WeightsBlob.Read(Compress(TwoLemmasRaw()));
-
-        Assert.Equal(["a", "b"], data.Lemmas.Select(l => l.Lemma));
-        Assert.Equal(["b#x", "b#y", "b#z"], data.Lemmas[1].ClassIds);
-    }
-
-    /// <summary>
-    ///     A blob cut at any byte, so at every section boundary (header, mean, lemma name, margin, kind, class ids,
-    ///     biases, weights) and inside every section, is rejected.
-    /// </summary>
-    [Fact]
-    public void WeightsBlob_Read_TruncatedAtEveryLength_Throws()
-    {
-        // Arrange
-        var raw = TwoLemmasRaw();
-
-        // Act / Assert: every proper prefix is rejected as corrupt data
-        for (var length = 0; length < raw.Length; length++)
-        {
-            var prefix = raw[..length];
-            Assert.True(
-                Throws(() => WeightsBlob.Read(Compress(prefix))),
-                $"A blob cut at {length} of {raw.Length} bytes was accepted.");
-        }
-    }
-
-    /// <summary>
-    ///     A lemma count that is larger or smaller than the lemmas present, and a sense count that disagrees with the
-    ///     class ids present, are rejected.
-    /// </summary>
-    [Fact]
-    public void WeightsBlob_Read_CountMismatch_Throws()
-    {
-        // Arrange: the lemma count is the byte after the header; the first sense count is the 8th byte of the first lemma
-        var headerLength = Header().Length;
-        var tooMany = TwoLemmasRaw();
-        tooMany[headerLength] = 3;
-        var tooFew = TwoLemmasRaw();
-        tooFew[headerLength] = 1;
-        var moreSenses = TwoLemmasRaw();
-        moreSenses[headerLength + 1 + 7] = 3;
-        var fewerSenses = TwoLemmasRaw();
-        fewerSenses[headerLength + 1 + 7] = 1;
-
-        // Act / Assert
-        Assert.True(Throws(() => WeightsBlob.Read(Compress(tooMany))), "Lemma count too large.");
-        Assert.True(Throws(() => WeightsBlob.Read(Compress(tooFew))), "Lemma count too small.");
-
-        // The sense-count mutations must fail for the intended reason, not by truncation or another check
-        var more = Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(Compress(moreSenses)));
-        Assert.Contains("'a' are binary but have 3 senses", more.Message, StringComparison.Ordinal);
-        var fewer = Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(Compress(fewerSenses)));
-        Assert.Contains("'a' are binary but have 1 senses", fewer.Message, StringComparison.Ordinal);
-    }
-
-    /// <summary>
-    ///     A blob with an unsupported version in its magic, and a flag byte for sparse weights, is rejected.
-    /// </summary>
-    [Fact]
-    public void WeightsBlob_Read_WrongVersionOrFlag_Throws()
-    {
-        var version = TwoLemmasRaw();
-        version[3] = (byte)'3';
-        var sparse = TwoLemmasRaw();
-        sparse[Header().Length - 5] = 1;
-
-        Assert.True(Throws(() => WeightsBlob.Read(Compress(version))), "Version WSX3.");
-        Assert.True(Throws(() => WeightsBlob.Read(Compress(sparse))), "Sparse flag.");
-    }
-
-    /// <summary>
-    ///     The reader does not judge the class hash: whatever the blob carries is returned, and the table that resolves
-    ///     the classes rejects a foreign hash (see <c>WeightedLemmaTableTests</c>).
-    /// </summary>
-    [Fact]
-    public void WeightsBlob_Read_AnyClassHash_IsReturnedUnchecked()
-    {
-        var raw = TwoLemmasRaw();
-        raw[2 + 4] = 0xEE;
-
-        var data = WeightsBlob.Read(Compress(raw));
-
-        Assert.Equal(0xEE, data.ClassHash[0]);
-    }
+    private static byte[] TwoLemmasRaw() => BlobWriter.Raw(
+        BlobWriter.ModelId,
+        Hash,
+        1,
+        LemmaSpec.Of("a", 1, "a#x", "a#y"),
+        LemmaSpec.Of("b", 1, "b#x", "b#y", "b#z"));
 
     /// <summary>
     ///     Runs an action and reports whether it threw <see cref="InvalidDataException"/>.
@@ -199,24 +48,264 @@ public class WeightsBlobTests
     }
 
     /// <summary>
+    ///     A lemma reads back its sense ids in column order, with its biases and half-precision weights widened.
+    /// </summary>
+    [Fact]
+    public void WeightsBlob_Read_FineSenseLemma_KeepsSenseIds()
+    {
+        // Arrange: three senses over two components, with values that a half represents exactly
+        var spec = new LemmaSpec("a", ["a#x", "a#y", "a#z"], [0.5f, -1f, 2f], [1f, 0.5f, -2f, 0.25f, 4f, -0.125f]);
+
+        // Act
+        var data = WeightsBlob.Read(Compressed(spec));
+
+        // Assert
+        var lemma = Assert.Single(data.Lemmas);
+        Assert.Equal("a", lemma.Lemma);
+        Assert.Equal(["a#x", "a#y", "a#z"], lemma.SenseIds);
+        Assert.Equal(3, lemma.Weights.SenseCount);
+        Assert.Equal(Dimension, lemma.Weights.Dimension);
+        Assert.Equal([0.5f, -1f, 2f], lemma.Weights.Bias);
+        Assert.Equal([1f, 0.5f, -2f, 0.25f, 4f, -0.125f], lemma.Weights.Weights);
+        Assert.Empty(lemma.Choosers);
+    }
+
+    /// <summary>
+    ///     The thresholds of a lemma and of a chooser read back; a threshold that is never reached stays so.
+    /// </summary>
+    [Fact]
+    public void WeightsBlob_Read_Thresholds_AreKept()
+    {
+        // Arrange: one lemma with both thresholds, one with a group threshold that is never reached, and a chooser
+        var chooser = new ChooserSpec("left", ["leave", "left"], 1.25f, [0f, 0f], new float[2 * Dimension]);
+        var first = Lemma("a", "a#x", "a#y") with { FineThreshold = 0.75f, GroupThreshold = 0.25f, Choosers = [chooser] };
+        var second = Lemma("b", "b#x", "b#y") with { FineThreshold = 1.5f, GroupThreshold = LemmaWeights.Never };
+
+        // Act
+        var data = WeightsBlob.Read(Compressed(first, second));
+
+        // Assert
+        Assert.Equal(0.75f, data.Lemmas[0].Weights.FineThreshold);
+        Assert.Equal(0.25f, data.Lemmas[0].Weights.GroupThreshold);
+        Assert.Equal(1.5f, data.Lemmas[1].Weights.FineThreshold);
+        Assert.Equal(LemmaWeights.Never, data.Lemmas[1].Weights.GroupThreshold);
+        Assert.Equal(1.25f, Assert.Single(data.Lemmas[0].Choosers).Weights.FineThreshold);
+    }
+
+    /// <summary>
+    ///     A form chooser reads back with its form, labels, biases and weights.
+    /// </summary>
+    [Fact]
+    public void WeightsBlob_Read_FormChooser_IsKept()
+    {
+        // Arrange
+        var chooser = new ChooserSpec("read", ["read", "read/Tense=Pres"], 0.5f, [0.25f, -0.5f], [1f, 2f, 3f, 4f]);
+        var spec = Lemma("read", "read#x", "read#y") with { Choosers = [chooser] };
+
+        // Act
+        var data = WeightsBlob.Read(Compressed(spec));
+
+        // Assert
+        var read = Assert.Single(Assert.Single(data.Lemmas).Choosers);
+        Assert.Equal("read", read.Form);
+        Assert.Equal(["read", "read/Tense=Pres"], read.Labels);
+        Assert.Equal([0.25f, -0.5f], read.Weights.Bias);
+        Assert.Equal([1f, 2f, 3f, 4f], read.Weights.Weights);
+        Assert.Equal(0.5f, read.Weights.FineThreshold);
+        Assert.Equal(LemmaWeights.Never, read.Weights.GroupThreshold);
+    }
+
+    /// <summary>
+    ///     A chooser with fewer than two labels, an empty or duplicate label, an empty form, a form that two choosers
+    ///     share or a negative threshold is rejected.
+    /// </summary>
+    [Fact]
+    public void WeightsBlob_Read_InvalidChooser_Throws()
+    {
+        // Arrange
+        ChooserSpec Make(string form = "left", string[]? labels = null, float threshold = 0.5f)
+        {
+            labels ??= ["leave", "left"];
+            return new ChooserSpec(form, labels, threshold, new float[labels.Length], new float[labels.Length * Dimension]);
+        }
+
+        // Act / Assert
+        Assert.True(Throws(() => WeightsBlob.Read(Compressed(Lemma("a", "a#x", "a#y") with { Choosers = [Make(labels: ["only"])] }))), "One label.");
+        Assert.True(Throws(() => WeightsBlob.Read(Compressed(Lemma("a", "a#x", "a#y") with { Choosers = [Make(labels: ["leave", string.Empty])] }))), "Empty label.");
+        Assert.True(Throws(() => WeightsBlob.Read(Compressed(Lemma("a", "a#x", "a#y") with { Choosers = [Make(labels: ["leave", "leave"])] }))), "Duplicate label.");
+        Assert.True(Throws(() => WeightsBlob.Read(Compressed(Lemma("a", "a#x", "a#y") with { Choosers = [Make(form: string.Empty)] }))), "Empty form.");
+        Assert.True(Throws(() => WeightsBlob.Read(Compressed(Lemma("a", "a#x", "a#y") with { Choosers = [Make(threshold: -1f)] }))), "Negative threshold.");
+        Assert.True(Throws(() => WeightsBlob.Read(Compressed(Lemma("a", "a#x", "a#y") with { Choosers = [Make(), Make()] }))), "Form twice in one lemma.");
+        Assert.True(
+            Throws(() => WeightsBlob.Read(Compressed(Lemma("a", "a#x", "a#y") with { Choosers = [Make()] }, Lemma("b", "b#x", "b#y") with { Choosers = [Make()] }))),
+            "Form in two lemmas.");
+    }
+
+    /// <summary>
+    ///     A blob with no lemmas reads as an empty set of weights that keeps its model id, hash and dimension.
+    /// </summary>
+    [Fact]
+    public void WeightsBlob_Read_NoLemmas_ReturnsEmptyWeights()
+    {
+        // Arrange / Act
+        var data = WeightsBlob.Read(Compressed());
+
+        // Assert
+        Assert.Equal(BlobWriter.ModelId, data.ModelId);
+        Assert.Equal(Hash, data.InventoryHash);
+        Assert.Equal(Dimension, data.Dimension);
+        Assert.Equal(new float[Dimension], data.Mean);
+        Assert.Empty(data.Lemmas);
+    }
+
+    /// <summary>
+    ///     The mean vector reads back as written.
+    /// </summary>
+    [Fact]
+    public void WeightsBlob_Read_Mean_IsKept()
+    {
+        // Arrange
+        List<byte> bytes = [.. BlobWriter.Header(BlobWriter.ModelId, Hash, 3, [0.5f, -1.5f, 2f])];
+        BlobWriter.Varint(bytes, 0);
+
+        // Act
+        var data = WeightsBlob.Read(BlobWriter.Compress([.. bytes]));
+
+        // Assert
+        Assert.Equal([0.5f, -1.5f, 2f], data.Mean);
+        Assert.Equal(3, data.Dimension);
+    }
+
+    /// <summary>
+    ///     The valid two-lemma blob reads back, which makes the failure matrix below meaningful.
+    /// </summary>
+    [Fact]
+    public void WeightsBlob_Read_TwoLemmaBlob_IsAccepted()
+    {
+        // Arrange / Act
+        var data = WeightsBlob.Read(BlobWriter.Compress(TwoLemmasRaw()));
+
+        // Assert
+        Assert.Equal(["a", "b"], data.Lemmas.Select(l => l.Lemma));
+        Assert.Equal(["b#x", "b#y", "b#z"], data.Lemmas[1].SenseIds);
+    }
+
+    /// <summary>
+    ///     A blob cut at any byte, so at every section boundary (header, mean, lemma, thresholds, sense count, sense ids,
+    ///     biases, weights, chooser count) and inside every section, is rejected.
+    /// </summary>
+    [Fact]
+    public void WeightsBlob_Read_TruncatedAtEveryLength_Throws()
+    {
+        // Arrange: a blob that has a chooser too, so that its sections are cut as well
+        var chooser = new ChooserSpec("left", ["leave", "left"], 0.5f, [0f, 0f], [1f, 2f]);
+        var raw = BlobWriter.Raw(
+            BlobWriter.ModelId,
+            Hash,
+            1,
+            LemmaSpec.Of("a", 1, "a#x", "a#y") with { Choosers = [chooser] },
+            LemmaSpec.Of("b", 1, "b#x", "b#y", "b#z"));
+
+        // Act / Assert: every proper prefix is rejected as corrupt data
+        for (var length = 0; length < raw.Length; length++)
+        {
+            var prefix = raw[..length];
+            Assert.True(
+                Throws(() => WeightsBlob.Read(BlobWriter.Compress(prefix))),
+                $"A blob cut at {length} of {raw.Length} bytes was accepted.");
+        }
+    }
+
+    /// <summary>
+    ///     A lemma count that is larger or smaller than the lemmas present, and a sense count that disagrees with the
+    ///     sense ids present, are rejected.
+    /// </summary>
+    [Fact]
+    public void WeightsBlob_Read_CountMismatch_Throws()
+    {
+        // Arrange: the lemma count is the byte after the header; the sense count of the first lemma follows its name
+        // (one byte of length, one byte of text) and its two thresholds
+        var headerLength = BlobWriter.Header(BlobWriter.ModelId, Hash, 1).Length;
+        var senseCount = headerLength + 1 + 2 + 8;
+        var tooMany = TwoLemmasRaw();
+        tooMany[headerLength] = 3;
+        var tooFew = TwoLemmasRaw();
+        tooFew[headerLength] = 1;
+        var moreSenses = TwoLemmasRaw();
+        moreSenses[senseCount] = 3;
+        var fewerSenses = TwoLemmasRaw();
+        fewerSenses[senseCount] = 1;
+
+        // Act / Assert: the mutated bytes are really the counts
+        Assert.Equal(2, TwoLemmasRaw()[headerLength]);
+        Assert.Equal(2, TwoLemmasRaw()[senseCount]);
+        Assert.True(Throws(() => WeightsBlob.Read(BlobWriter.Compress(tooMany))), "Lemma count too large.");
+        Assert.True(Throws(() => WeightsBlob.Read(BlobWriter.Compress(tooFew))), "Lemma count too small.");
+        Assert.True(Throws(() => WeightsBlob.Read(BlobWriter.Compress(moreSenses))), "Sense count too large.");
+
+        // A sense count of one must fail because a lemma needs two senses, not by another check
+        var fewer = Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(BlobWriter.Compress(fewerSenses)));
+        Assert.Contains("needs at least two", fewer.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A blob with an unsupported version in its magic, and a flag byte for sparse weights, is rejected.
+    /// </summary>
+    [Fact]
+    public void WeightsBlob_Read_WrongVersionOrFlag_Throws()
+    {
+        // Arrange: another version digit, and the flag byte that follows the dimension
+        var version = TwoLemmasRaw();
+        version[3] = (byte)'4';
+        var sparse = TwoLemmasRaw();
+        sparse[BlobWriter.Header(BlobWriter.ModelId, Hash, 1).Length - 1 - 4] = 1;
+
+        // Act / Assert
+        Assert.True(Throws(() => WeightsBlob.Read(BlobWriter.Compress(version))), "Version WSX4.");
+        Assert.True(Throws(() => WeightsBlob.Read(BlobWriter.Compress(sparse))), "Sparse flag.");
+    }
+
+    /// <summary>
+    ///     The reader does not judge the inventory hash: whatever the blob carries is returned, and the table that
+    ///     resolves the senses rejects a foreign hash (see <c>WeightedLemmaTableTests</c>).
+    /// </summary>
+    [Fact]
+    public void WeightsBlob_Read_AnyInventoryHash_IsReturnedUnchecked()
+    {
+        // Arrange: change the first byte of the hash, which follows the magic and the model id "m"
+        var raw = TwoLemmasRaw();
+        raw[4 + 1 + 1] = 0xEE;
+
+        // Act
+        var data = WeightsBlob.Read(BlobWriter.Compress(raw));
+
+        // Assert
+        Assert.Equal(0xEE, data.InventoryHash[0]);
+        Assert.Equal(WeightsBlob.HashSize, data.InventoryHash.Length);
+    }
+
+    /// <summary>
     ///     Data that is not a compressed stream is rejected.
     /// </summary>
     [Fact]
     public void WeightsBlob_Read_NotCompressed_Throws()
     {
+        // Arrange / Act / Assert
         Assert.Throws<InvalidDataException>(() => WeightsBlob.Read([9, 8, 7, 6, 5]));
     }
 
     /// <summary>
-    ///     A compressed stream with an unknown magic number, including the old layout, is rejected.
+    ///     A compressed stream with an unknown magic number, including the retired layout, is rejected.
     /// </summary>
     /// <param name="magic">The magic text.</param>
     [Theory]
     [InlineData("NOPE")]
     [InlineData("WSX1")]
+    [InlineData("WSX2")]
     public void WeightsBlob_Read_UnknownMagic_Throws(string magic)
     {
-        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(Compress(Encoding.ASCII.GetBytes(magic))));
+        // Arrange / Act / Assert
+        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(BlobWriter.Compress(Encoding.ASCII.GetBytes(magic))));
     }
 
     /// <summary>
@@ -225,72 +314,63 @@ public class WeightsBlobTests
     [Fact]
     public void WeightsBlob_Read_Truncated_Throws()
     {
-        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(Compress([.. "WSX2"u8.ToArray(), 40])));
-        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(Compress([.. "WSX2"u8.ToArray(), 1, (byte)'m', 1, 2, 3])));
+        // Arrange / Act / Assert: a model id that is longer than the data, and a hash that is cut short
+        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(BlobWriter.Compress([.. "WSX3"u8.ToArray(), 40])));
+        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(BlobWriter.Compress([.. "WSX3"u8.ToArray(), 1, (byte)'m', 1, 2, 3])));
     }
 
     /// <summary>
-    ///     A blob with no lemmas reads as an empty set of weights that keeps its class hash.
+    ///     A lemma with fewer than two senses is rejected.
     /// </summary>
     [Fact]
-    public void WeightsBlob_Read_NoLemmas_ReturnsEmptyWeights()
+    public void WeightsBlob_Read_LemmaWithOneSense_Throws()
     {
-        var data = WeightsBlob.Read(Compress([.. Header(), 0]));
+        // Arrange
+        var raw = BlobWriter.Raw(BlobWriter.ModelId, Hash, Dimension, new LemmaSpec("a", ["a#x"], [0f], new float[Dimension]));
 
-        Assert.Equal("m", data.ModelId);
-        Assert.Equal(Hash, data.ClassHash);
-        Assert.Equal(1, data.Dimension);
-        Assert.Empty(data.Lemmas);
+        // Act
+        var ex = Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(BlobWriter.Compress(raw)));
+
+        // Assert
+        Assert.Contains("needs at least two", ex.Message, StringComparison.Ordinal);
     }
 
     /// <summary>
-    ///     A lemma reads back its class ids in column order.
+    ///     An empty sense id, a sense id that two columns name and a sense id that two lemmas name are rejected.
     /// </summary>
     [Fact]
-    public void WeightsBlob_Read_OneVersusRestLemma_KeepsClassIds()
+    public void WeightsBlob_Read_EmptyOrDuplicateSenseId_Throws()
     {
-        var data = WeightsBlob.Read(OneLemma(2, ["a#x", "a#y", "a#z"]));
-
-        var lemma = Assert.Single(data.Lemmas);
-        Assert.Equal(["a#x", "a#y", "a#z"], lemma.ClassIds);
-        Assert.Equal(3, lemma.Weights.SenseCount);
+        // Arrange / Act / Assert
+        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(Compressed(Lemma("a", "a#x", string.Empty))));
+        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(Compressed(Lemma("a", "a#x", "a#x"))));
+        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(Compressed(Lemma("a", "a#x", "a#y"), Lemma("b", "a#x", "b#y"))));
     }
 
     /// <summary>
-    ///     A binary lemma has exactly two classes; one or three are rejected, and so is a one-versus-rest lemma with fewer than two.
-    /// </summary>
-    /// <param name="kind">The model kind byte.</param>
-    /// <param name="count">The number of class ids.</param>
-    [Theory]
-    [InlineData((byte)1, 1)]
-    [InlineData((byte)1, 3)]
-    [InlineData((byte)2, 1)]
-    public void WeightsBlob_Read_WrongSenseCountForKind_Throws(byte kind, int count)
-    {
-        var ids = Enumerable.Range(0, count).Select(i => $"a#{i}").ToArray();
-
-        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(OneLemma(kind, ids)));
-    }
-
-    /// <summary>
-    ///     A binary lemma with two classes is accepted.
+    ///     A negative or non-finite threshold, of a lemma or of a chooser, is rejected.
     /// </summary>
     [Fact]
-    public void WeightsBlob_Read_BinaryLemmaWithTwoClasses_IsAccepted()
+    public void WeightsBlob_Read_NegativeThreshold_Throws()
     {
-        var data = WeightsBlob.Read(OneLemma(1, ["a#x", "a#y"]));
-
-        Assert.Equal(LemmaModelKind.Binary, Assert.Single(data.Lemmas).Weights.Kind);
+        // Arrange / Act / Assert
+        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(Compressed(Lemma("a", "a#x", "a#y") with { FineThreshold = -0.5f })));
+        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(Compressed(Lemma("a", "a#x", "a#y") with { GroupThreshold = -0.5f })));
+        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(Compressed(Lemma("a", "a#x", "a#y") with { FineThreshold = float.NaN })));
+        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(Compressed(Lemma("a", "a#x", "a#y") with { GroupThreshold = float.PositiveInfinity })));
     }
 
     /// <summary>
-    ///     An empty class id and a class id that two columns name are rejected.
+    ///     A weight that is not finite is rejected as corrupt data.
     /// </summary>
     [Fact]
-    public void WeightsBlob_Read_EmptyOrDuplicateClassId_Throws()
+    public void WeightsBlob_Read_NonFiniteWeight_Throws()
     {
-        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(OneLemma(2, ["a#x", string.Empty])));
-        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(OneLemma(2, ["a#x", "a#x"])));
+        // Arrange: one weight is NaN (a half keeps it)
+        var spec = new LemmaSpec("a", ["a#x", "a#y"], [0f, 0f], [0f, float.NaN, 0f, 0f]);
+
+        // Act / Assert
+        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(Compressed(spec)));
     }
 
     /// <summary>
@@ -299,8 +379,16 @@ public class WeightsBlobTests
     [Fact]
     public void WeightsBlob_Read_MalformedUtf8Lemma_Throws()
     {
-        var ex = Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(OneLemma(1, ["a#x", "a#y"], lemmaByte: 0xFF)));
+        // Arrange: replace the single text byte of the lemma "a" with a byte that is never valid UTF-8
+        var raw = BlobWriter.Raw(BlobWriter.ModelId, Hash, 1, LemmaSpec.Of("a", 1, "a#x", "a#y"));
+        var lemmaText = BlobWriter.Header(BlobWriter.ModelId, Hash, 1).Length + 1 + 1;
+        Assert.Equal((byte)'a', raw[lemmaText]);
+        raw[lemmaText] = 0xFF;
 
+        // Act
+        var ex = Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(BlobWriter.Compress(raw)));
+
+        // Assert
         Assert.IsType<DecoderFallbackException>(ex.InnerException);
     }
 
@@ -310,7 +398,12 @@ public class WeightsBlobTests
     [Fact]
     public void WeightsBlob_Read_ZeroDimension_Throws()
     {
-        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(Compress([.. "WSX2"u8.ToArray(), 1, (byte)'m', .. Hash, 0, 0, 0])));
+        // Arrange
+        List<byte> bytes = [.. BlobWriter.Header(BlobWriter.ModelId, Hash, 0)];
+        BlobWriter.Varint(bytes, 0);
+
+        // Act / Assert
+        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(BlobWriter.Compress([.. bytes])));
     }
 
     /// <summary>
@@ -319,6 +412,10 @@ public class WeightsBlobTests
     [Fact]
     public void WeightsBlob_Read_TrailingBytes_Throws()
     {
-        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(Compress([.. Header(), 0, 0])));
+        // Arrange
+        List<byte> bytes = [.. BlobWriter.Raw(BlobWriter.ModelId, Hash, Dimension), 0];
+
+        // Act / Assert
+        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(BlobWriter.Compress([.. bytes])));
     }
 }

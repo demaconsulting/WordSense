@@ -67,11 +67,11 @@ and decides the level of an answer from the lemma's own thresholds.
   - `Confidence(margin, threshold)` is a monotonic function of the margin, bounded to 0 to 1, 0 for a non-numeric
     margin and 1 for an infinite one; the confidence of a result is the probability of its answer at its level (see
     _OnnxClassifier Unit Design_), which this function orders but does not replace.
-  - `Level` decides the level of an answer with the lemma's own `FineThreshold` and `GroupThreshold`, never shared
-    values: the fine sense when the fine margin reaches `FineThreshold`, otherwise, for a lemma that has groups and a
-    best sense in a group, the group (with a lower confidence when the group margin does not reach
-    `GroupThreshold`), otherwise the part of speech. A threshold that is "never"
-    cannot be met by a finite margin. A chooser is scored the same way over its labels with its own threshold.
+  - `Level` decides the kind of answer with the lemma's own `FineThreshold` and `GroupThreshold`, never shared
+    values: the fine sense when the fine margin reaches `FineThreshold` and the best sense lies in the selected
+    analysis, otherwise, for a best sense that is in a group, the group when the group margin reaches
+    `GroupThreshold`, otherwise the part of speech. A threshold that is "never" cannot be met by any margin. A chooser
+    is scored the same way over its labels with its own threshold.
 
 #### Error Handling
 

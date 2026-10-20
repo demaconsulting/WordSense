@@ -2,20 +2,18 @@ using System.Buffers.Binary;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
-using DemaConsulting.WordSense.Onnx;
 
 namespace WordSense.Builder;
 
 /// <summary>
 ///     The result of fitting the classifier of one lemma.
 /// </summary>
-/// <param name="Kind">Binary or one-versus-rest.</param>
-/// <param name="Weights">The row-major weights.</param>
+/// <param name="Weights">The row-major weights, one row per sense.</param>
 /// <param name="Bias">One bias per row.</param>
-/// <param name="Margin">The cross-validated abstain margin, or 0 when the lemma was not cross-validated.</param>
-/// <param name="CrossValidated">True when the margin was chosen by cross-validation.</param>
+/// <param name="FineThreshold">The fine threshold chosen by cross-validation, or <c>LemmaWeights.Never</c>.</param>
+/// <param name="GroupThreshold">The group threshold chosen by cross-validation, or <c>LemmaWeights.Never</c>.</param>
 /// <param name="Dimension">The feature dimension.</param>
-internal sealed record LemmaFit(LemmaModelKind Kind, float[] Weights, float[] Bias, float Margin, bool CrossValidated, int Dimension);
+internal sealed record LemmaFit(float[] Weights, float[] Bias, float FineThreshold, float GroupThreshold, int Dimension);
 
 /// <summary>
 ///     A persistent cache of the fitted classifier of each lemma, so that a retraining fits only the lemmas whose
@@ -23,20 +21,22 @@ internal sealed record LemmaFit(LemmaModelKind Kind, float[] Weights, float[] Bi
 /// </summary>
 /// <remarks>
 ///     <para>
-///     The key of a fit is the SHA-256 of everything the fit depends on: the training settings, the lemma, its sense
-///     names, the label of each sentence and the exact feature vectors (which already include the global mean). A
-///     lemma whose anchors and mean are unchanged therefore always finds its previous fit, and any change of the
-///     features, such as another mean, another encoder or another runtime, simply finds nothing. The fit is
-///     deterministic, so a cached fit is bit-identical to a fresh one.
+///     The key of a fit is the SHA-256 of everything the fit and its thresholds depend on: the training and threshold
+///     settings (C, the folds, the precision target and the minimum number of answers), the lemma (which seeds the
+///     folds), its sense ids, the group index of each sense, the label of each sentence and the exact feature vectors
+///     (which already include the global mean). A lemma whose anchors, mean and settings are unchanged therefore always
+///     finds its previous fit, and any change of the features, such as another mean, another encoder or another
+///     runtime, simply finds nothing. The fit and the thresholds are deterministic, so a cached fit is bit-identical to
+///     a fresh one.
 ///     </para>
 ///     <para>
 ///     One file holds the fits of the last run (entries not used by a run are not written again, so the file does not
-///     grow). Format (little-endian): the the four magic bytes (ASCII W, S, F, C) and a version byte, the entry count as a 32-bit integer and
-///     the first 8 bytes of the SHA-256 of these bytes; then per entry the 32-byte key, the kind and
-///     cross-validation bytes, the dimension and the row count as 32-bit integers, the margin, the biases and the
-///     weights as 32-bit floats, and the first 8 bytes of the SHA-256 of the entry. The first damaged entry ends the
-///     reading (the entries are of variable length), and everything after it is fitted again. The file is replaced
-///     atomically. The members are safe to call from several threads.
+///     grow). Format version 2 (little-endian): the four magic bytes (ASCII W, S, F, C) and a version byte, the entry
+///     count as a 32-bit integer and the first 8 bytes of the SHA-256 of these bytes; then per entry the 32-byte key,
+///     the dimension and the row count as 32-bit integers, the fine and the group threshold, the biases and the weights
+///     as 32-bit floats, and the first 8 bytes of the SHA-256 of the entry. The first damaged entry ends the reading
+///     (the entries are of variable length), and everything after it is fitted again. A file of another version is
+///     ignored. The file is replaced atomically. The members are safe to call from several threads.
 ///     </para>
 /// </remarks>
 internal sealed class FitCache
@@ -46,10 +46,10 @@ internal sealed class FitCache
     /// </summary>
     public const string FileName = "fits.bin";
 
-    private const byte Version = 1;
+    private const byte Version = 2;
     private const int KeySize = 32;
     private const int ChecksumSize = 8;
-    private const int EntryFixedSize = KeySize + 2 + 4 + 4 + 4;
+    private const int EntryFixedSize = KeySize + 4 + 4 + 4 + 4;
     private const int MaxRows = 4096;
     private const int MaxDimension = 65536;
     private static readonly byte[] Magic = [(byte)'W', (byte)'S', (byte)'F', (byte)'C'];
@@ -99,13 +99,14 @@ internal sealed class FitCache
     /// <summary>
     ///     Computes the key of one lemma fit.
     /// </summary>
-    /// <param name="options">The training settings that influence the fit.</param>
+    /// <param name="options">The training and threshold settings that influence the fit.</param>
     /// <param name="lemma">The lemma.</param>
-    /// <param name="names">The sense names of the lemma, in label order.</param>
-    /// <param name="labels">The sense index of each feature.</param>
+    /// <param name="senseIds">The sense ids of the lemma, in column order.</param>
+    /// <param name="groups">The group index of each column, or -1 for a sense that is in no group.</param>
+    /// <param name="labels">The column index of each feature.</param>
     /// <param name="features">The features.</param>
     /// <returns>The key as hexadecimal text.</returns>
-    public static string KeyOf(TrainingOptions options, string lemma, IReadOnlyList<string> names, int[] labels, float[][] features)
+    public static string KeyOf(TrainingOptions options, string lemma, IReadOnlyList<string> senseIds, IReadOnlyList<int> groups, int[] labels, float[][] features)
     {
         using var hash = IncrementalHash.CreateHash(HashAlgorithmName.SHA256);
         var number = new byte[8];
@@ -125,13 +126,19 @@ internal sealed class FitCache
         Append(Version);
         Append(BitConverter.DoubleToInt64Bits(options.C));
         Append(options.Folds);
-        Append(BitConverter.DoubleToInt64Bits(options.TargetAccuracy));
-        Append(BitConverter.DoubleToInt64Bits(options.MinCoverage));
+        Append(BitConverter.DoubleToInt64Bits(options.TargetPrecision));
+        Append(options.MinAnswered);
         AppendText(lemma);
-        Append(names.Count);
-        foreach (var name in names)
+        Append(senseIds.Count);
+        foreach (var senseId in senseIds)
         {
-            AppendText(name);
+            AppendText(senseId);
+        }
+
+        Append(groups.Count);
+        foreach (var group in groups)
+        {
+            Append(group);
         }
 
         Append(labels.Length);
@@ -255,11 +262,10 @@ internal sealed class FitCache
             var rows = fit.Bias.Length;
             var record = new byte[EntryFixedSize + (rows * sizeof(float)) + (fit.Weights.Length * sizeof(float))];
             Convert.FromHexString(key).CopyTo(record, 0);
-            record[KeySize] = (byte)fit.Kind;
-            record[KeySize + 1] = fit.CrossValidated ? (byte)1 : (byte)0;
-            BinaryPrimitives.WriteInt32LittleEndian(record.AsSpan(KeySize + 2), fit.Dimension);
-            BinaryPrimitives.WriteInt32LittleEndian(record.AsSpan(KeySize + 6), rows);
-            BinaryPrimitives.WriteSingleLittleEndian(record.AsSpan(KeySize + 10), fit.Margin);
+            BinaryPrimitives.WriteInt32LittleEndian(record.AsSpan(KeySize), fit.Dimension);
+            BinaryPrimitives.WriteInt32LittleEndian(record.AsSpan(KeySize + 4), rows);
+            BinaryPrimitives.WriteSingleLittleEndian(record.AsSpan(KeySize + 8), fit.FineThreshold);
+            BinaryPrimitives.WriteSingleLittleEndian(record.AsSpan(KeySize + 12), fit.GroupThreshold);
             var position = EntryFixedSize;
             foreach (var value in fit.Bias.Concat(fit.Weights))
             {
@@ -307,9 +313,9 @@ internal sealed class FitCache
         }
 
         var entry = span[position..];
-        var dimension = BinaryPrimitives.ReadInt32LittleEndian(entry[(KeySize + 2)..]);
-        var rows = BinaryPrimitives.ReadInt32LittleEndian(entry[(KeySize + 6)..]);
-        if (dimension is < 1 or > MaxDimension || rows is < 1 or > MaxRows || entry[KeySize] is not ((byte)LemmaModelKind.Binary or (byte)LemmaModelKind.OneVersusRest))
+        var dimension = BinaryPrimitives.ReadInt32LittleEndian(entry[KeySize..]);
+        var rows = BinaryPrimitives.ReadInt32LittleEndian(entry[(KeySize + 4)..]);
+        if (dimension is < 1 or > MaxDimension || rows is < 2 or > MaxRows)
         {
             return false;
         }
@@ -340,7 +346,16 @@ internal sealed class FitCache
         }
 
         key = Convert.ToHexString(body[..KeySize]);
-        fit = new LemmaFit((LemmaModelKind)body[KeySize], weights, bias, BinaryPrimitives.ReadSingleLittleEndian(body[(KeySize + 10)..]), body[KeySize + 1] != 0, dimension);
+        var fine = BinaryPrimitives.ReadSingleLittleEndian(body[(KeySize + 8)..]);
+        var group = BinaryPrimitives.ReadSingleLittleEndian(body[(KeySize + 12)..]);
+
+        // A threshold that the weights reader would refuse makes the entry damaged
+        if (!float.IsFinite(fine) || fine < 0 || !float.IsFinite(group) || group < 0 || weights.Any(w => !float.IsFinite(w)) || bias.Any(b => !float.IsFinite(b)))
+        {
+            return false;
+        }
+
+        fit = new LemmaFit(weights, bias, fine, group, dimension);
         position += (int)size + ChecksumSize;
         return true;
     }

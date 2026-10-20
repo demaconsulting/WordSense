@@ -8,9 +8,9 @@ Do not edit it by hand: the table of the root README must equal the table below 
 <!-- model-table:begin -->
 | Model | Holdout best analysis | Real-text best analysis | Part of speech (holdout / real) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Basic | 91.93% | 89.40% | 92.13% / 90.42% | none | 83 KiB | 13 MiB | 0.08 ms | 24 ms + 55 ms | no |
-| MiniLM | 91.93% | 89.40% | 92.13% / 90.42% | 22 MiB | 1,132 KiB | 12 MiB | 0.12 ms | 161 ms + 80 ms | yes |
-| BERT base cased | 91.93% | 89.40% | 92.13% / 90.42% | 104 MiB | 2,245 KiB | 13 MiB | 0.08 ms | 211 ms + 58 ms | yes |
+| Basic | 77.64% | n/a | 77.64% / n/a | none | 83 KiB | 4 MiB | 0.07 ms | 31 ms + 56 ms | no |
+| MiniLM | 94.72% | n/a | 94.72% / n/a | 22 MiB | 203 KiB | 60 MiB | 1.51 ms | 341 ms + 57 ms | yes |
+| BERT base cased | 97.87% | n/a | 97.87% / n/a | 104 MiB | 395 KiB | 148 MiB | 7.27 ms | 542 ms + 56 ms | yes |
 <!-- model-table:end -->
 
 <!-- markdownlint-enable MD013 -->

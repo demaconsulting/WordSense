@@ -1,30 +1,67 @@
 # WordSense Corpus
 
-> **Historical.** This page records an earlier phase of the project. The builder commands it names (for example
-> `real-import`, `real-judge-*`, `validate-provenance`, `nounverb-*`, `learning-curve`, `error-diagnosis`,
-> `weak-lemmas`) were removed from `WordSense.Builder`; the results stay as the record of how the data was built.
+Training and evaluation data of the encoder models, and the inputs of the word table. The sentences identify the fine
+sense of a word in context: an Open English WordNet (OEWN) sense with a readable id such as `back#spine`.
 
-Training and evaluation data for the per-lemma classifiers that identify the sense of a word in context: its part of
-speech and, for heteronyms, the sense that fixes its pronunciation.
+> **Current state.** The sentence folders `anchors/`, `holdout/` and `provenance/` hold the first reviewed batch of 20
+> lemmas (`back`, `even`, `first`, `forward`, `go`, `help`, `home`, `however`, `just`, `little`, `long`, `only`, `own`,
+> `please`, `pretty`, `review`, `right`, `still`, `test` and `well`; 294 senses, 3,488 anchors and 984 held-out
+> sentences) in the fine-sense row format below. The former class-labeled corpus (24,461 anchors, 12,789 holdout and 689
+> real-text sentences) moved to `legacy/` and awaits relabeling; see `legacy/README.md`. The rest of this page, from
+> "Sense Files and Forms File" on, describes that legacy data and the history of how it was built; the builder commands
+> it names (for example `real-import`, `real-judge-*`, `validate-provenance`, `nounverb-*`, `learning-curve`,
+> `error-diagnosis`, `weak-lemmas`) were removed from `WordSense.Builder`; the results stay as the record.
 
 ## Layout
 
+<!-- markdownlint-disable MD013 -->
+
 | Folder | File pattern | Purpose |
 | ------ | ------------ | ------- |
-| `anchors/` | `*.tsv` | Labeled training sentences |
-| `holdout/` | `*.tsv` | Labeled evaluation sentences, never used for training |
-| `forms/` | `*.tsv` | Inflected form to lemma map |
+| `anchors/` | `*.tsv` | Labeled training sentences (fine senses) |
+| `holdout/` | `*.tsv` | Labeled evaluation sentences, never used for training or for choosing thresholds |
+| `provenance/` | `*.tsv` | Origin of every sentence: writer, selector, license |
+| `legacy/` | see `legacy/README.md` | The former class-labeled corpus, awaiting relabeling (`anchors`, `holdout`, `realtext`, `senses`, `forms`, `provenance`) |
+| `curation/` | `*.tsv`, `README.md` | The reviewed senses and groups of the first batch (the input of `seed-inventory`) |
+| `lexicon/` | `*.tsv` | The dictionary word list, the auxiliaries and the form rules (inputs of `compile-image`) |
 | `ud/` | `*.tsv` | Tag statistics of the UD English-EWT treebank for the Basic model (see `ud/PROVENANCE.md`) |
+| `migration/` | `*.tsv` | The temporary map from the retired classes to fine senses, used to relabel the legacy corpus |
+| `audit/` | `*.tsv`, `*.md` | Records of earlier audits |
+
+<!-- markdownlint-enable MD013 -->
 
 Every file is UTF-8 without a byte-order mark, with LF line endings.
 
 ## Sentence Files
 
-Rows have three tab-separated columns and no header: `lemma`, `sense` (the sense label, see the inventory below) and
-`sentence`. The sentence marks the target word
-by wrapping it in exactly one pair of braces, for example `The {record} for the fastest mile was set in 1999.`
+Rows have four tab-separated columns and no header: `lemma`, `sense_id`, `part_of_speech` and `sentence`.
 
-Sources are grouped by file name. `seed-34.tsv` is the 34-lemma seed set; `speech-batchN.tsv` files are imported by the
+- `sense_id` is the public id of a sense of the word image (`lemma#slug`; project senses such as `right#discourse-marker`
+  have one too). It must exist in the sense catalog and belong to `lemma`.
+- `part_of_speech` is the name of the part of speech of that sense (`Noun`, `Verb`, `Adjective`, `Adverb`, ...). The builder
+  rejects a row whose part of speech is not the one of its sense.
+- The sentence marks the target word by wrapping it in exactly one pair of braces, for example
+  `The {back} of the chair was cracked.` The braced word, looked up in lower case, must have an analysis with the lemma
+  and the part of speech of the row.
+
+The builder validates the files when it trains (`weights`), evaluates (`evaluate`), writes the appendix or reports
+coverage: a malformed row is an error, and so is a sentence that occurs twice or in both `anchors/` and `holdout/`. A
+lemma needs anchors for at least two of its senses to get weights; a sense with a single anchor still takes part in the
+training.
+
+`anchors/batch-1.tsv` and `holdout/batch-1.tsv` are the rows of the first reviewed batch: the sentences were written
+by a language model (`gpt-5.6-luna`), filtered by a blind judge and selected by `claude-sonnet-5.5`, with 20, 10 or 5
+anchors and 5, 3 or 2 held-out sentences per sense according to the WordNet 3.0 tag count of the sense (the tiers). The
+held-out sentences come from the same generator as the anchors, so accuracy measured on them is optimistic.
+`provenance/batch-1.tsv` has one row per sentence (`id`, `lemma`, `sense`, `split`, `source`, `licence`, `source_key`,
+`url`, `contributor`, `origin`); the sentences are project-authored (`MIT (project-authored)`).
+
+## Sense Files and Forms File (legacy)
+
+The following sections describe the retired class-labeled files that are now in `legacy/`; the paths in them are
+relative to `legacy/`. Legacy sentence rows have three columns (`lemma`, `sense` label, `sentence`; the sense label is
+described by the inventory below). Sources are grouped by file name.
+`seed-34.tsv` is the 34-lemma seed set; `speech-batchN.tsv` files are imported by the
 builder's `import-batches` command. A file under `anchors/` has a matching file of the same name under `holdout/`.
 
 ## Forms File

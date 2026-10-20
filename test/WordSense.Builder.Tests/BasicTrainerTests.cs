@@ -34,7 +34,7 @@ public class BasicTrainerTests
         return UdCounts.Count(sentences);
     }
 
-    private static SenseInventory Inventory() => new(
+    private static LegacySenseInventory Inventory() => new(
     [
         new InventoryRow("record", "noun", PartOfSpeech.Noun, "noun", null, "s.tsv"),
         new InventoryRow("record", "verb", PartOfSpeech.Verb, "verb", null, "s.tsv"),
@@ -47,17 +47,17 @@ public class BasicTrainerTests
     /// <param name="inventory">The inventory.</param>
     /// <param name="migrationRows">The rows of the legacy class map below its header.</param>
     /// <returns>The labels.</returns>
-    private static AnalysisLabels Labels(SenseInventory inventory, params string[] migrationRows)
+    private static AnalysisLabels Labels(LegacySenseInventory inventory, params string[] migrationRows)
     {
         using var dir = new TestDirectory();
         dir.Write(Path.Join("corpus", AnalysisLabels.MigrationFile), MigrationHeader + string.Concat(migrationRows.Select(r => r + "\n")));
         return AnalysisLabels.Load(inventory, Path.Join(dir.Root, "corpus"));
     }
 
-    private static CorpusRow Row(string lemma, string sense, params string[] words) =>
+    private static LegacyRow Row(string lemma, string sense, params string[] words) =>
         new(lemma, sense, string.Join(' ', words), "a.tsv", words, Array.IndexOf(words, lemma));
 
-    private static List<CorpusRow> Anchors() =>
+    private static List<LegacyRow> Anchors() =>
     [
         Row("record", "noun", "the", "river", "record", "swims"),
         Row("record", "noun", "a", "river", "record", "bites"),
@@ -151,7 +151,7 @@ public class BasicTrainerTests
     {
         // Arrange: a lemma with two classes of senses (two parts of speech), a verb with two tenses, and a form that
         // spans two lemmas with one class that stands for both
-        var inventory = new SenseInventory(
+        var inventory = new LegacySenseInventory(
         [
             new InventoryRow("bank", "money", PartOfSpeech.Noun, "money", null, "s.tsv"),
             new InventoryRow("bank", "slope", PartOfSpeech.Noun, "slope", null, "s.tsv"),
@@ -170,7 +170,7 @@ public class BasicTrainerTests
             "bases#basis\tlemma_split\tbases\tn\tnoun\t\t0\t\t\toewn-basis-n\tbasis\tn\t",
             "bases#both\tlemma_split\tbases\tn\tnoun\t\t0\t\t\toewn-base-n\tbase\tn\t",
             "bases#both\tlemma_split\tbases\tn\tnoun\t\t0\t\t\toewn-basis-n\tbasis\tn\t");
-        List<CorpusRow> anchors =
+        List<LegacyRow> anchors =
         [
             Row("bank", "money", "the", "bank", "pays"),
             Row("bank", "money", "a", "bank", "lends"),
@@ -213,12 +213,12 @@ public class BasicTrainerTests
     [Fact]
     public void WordSenseBuilder_BasicTrainer_Train_SingleAnalysisLemma_HasNoCueTable()
     {
-        var inventory = new SenseInventory(
+        var inventory = new LegacySenseInventory(
         [
             new InventoryRow("bank", "money", PartOfSpeech.Noun, "money", null, "s.tsv"),
             new InventoryRow("bank", "slope", PartOfSpeech.Noun, "slope", null, "s.tsv"),
         ]);
-        List<CorpusRow> anchors = [Row("bank", "money", "the", "bank", "pays"), Row("bank", "slope", "the", "bank", "erodes")];
+        List<LegacyRow> anchors = [Row("bank", "money", "the", "bank", "pays"), Row("bank", "slope", "the", "bank", "erodes")];
 
         var data = BasicTrainer.Train(Counts(), w => Lexicon.TryGetValue(w, out var found) ? found : default, anchors, inventory, Labels(inventory), BasicHyperparameters.Default);
 
@@ -233,7 +233,7 @@ public class BasicTrainerTests
     {
         var inventory = Inventory();
         var labels = Labels(inventory);
-        List<CorpusRow> anchors = [.. Anchors(), Row("record", "bogus", "the", "record")];
+        List<LegacyRow> anchors = [.. Anchors(), Row("record", "bogus", "the", "record")];
 
         Assert.Throws<InvalidDataException>(() =>
             BasicTrainer.Train(Counts(), w => Lexicon.TryGetValue(w, out var found) ? found : default, anchors, inventory, labels, BasicHyperparameters.Default));
@@ -293,7 +293,7 @@ public class BasicTrainerTests
     public void WordSenseBuilder_BasicTuner_SplitAnchors_IsDeterministicAndDisjoint()
     {
         var anchors = Enumerable.Range(0, 200)
-            .Select(i => new CorpusRow("bass", "fish", $"sentence number {i} bass", "a.tsv", ["sentence", "number", i.ToString(System.Globalization.CultureInfo.InvariantCulture), "bass"], 3))
+            .Select(i => new LegacyRow("bass", "fish", $"sentence number {i} bass", "a.tsv", ["sentence", "number", i.ToString(System.Globalization.CultureInfo.InvariantCulture), "bass"], 3))
             .ToList();
 
         var (train1, dev1) = BasicTuner.SplitAnchors(anchors);

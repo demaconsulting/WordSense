@@ -19,10 +19,8 @@ public sealed class FitCacheTests : IDisposable
         _dir.Dispose();
     }
 
-    private static LemmaFit Fit(int seed, LemmaModelKind kind = LemmaModelKind.Binary) =>
-        kind == LemmaModelKind.Binary
-            ? new LemmaFit(kind, [seed * 0.1f, -seed / 3f, float.Epsilon * seed], [seed + 0.5f], seed * 0.25f, true, 3)
-            : new LemmaFit(kind, [1f, 2f, 3f, 4f, 5f, 6f, 7f, 8f, 9f], [0.1f, 0.2f, 0.3f], 0f, false, 3);
+    private static LemmaFit Fit(int seed) =>
+        new([seed * 0.1f, -seed / 3f, float.Epsilon * seed, 1f, 2f, 3f], [seed + 0.5f, -1f], seed * 0.25f, seed % 2 == 0 ? LemmaWeights.Never : 0.5f, 3);
 
     private static string K(char c) => new(c, 64);
 
@@ -32,35 +30,56 @@ public sealed class FitCacheTests : IDisposable
     {
         var cache = FitCache.Open(_dir.Root);
         cache.Add(K('A'), Fit(1));
-        cache.Add(K('B'), Fit(2, LemmaModelKind.OneVersusRest));
+        cache.Add(K('B'), Fit(2));
         cache.Add(K('C'), Fit(3));
         cache.Save();
         return cache;
     }
 
     /// <summary>
-    ///     The key depends on the settings, the lemma, the senses, the labels and every feature number.
+    ///     The key depends on the training settings, the lemma, the sense ids, the groups of the senses, the labels and
+    ///     every feature number, and not on the number of threads.
     /// </summary>
     [Fact]
     public void WordSenseBuilder_FitCache_KeyOf_DependsOnEverythingTheFitDependsOn()
     {
         // Arrange
-        string[] names = ["noun", "verb"];
+        string[] senses = ["bank#noun", "bank#verb"];
+        int[] groups = [-1, -1];
         int[] labels = [0, 1];
-        var key = FitCache.KeyOf(Options, "bank", names, labels, Features(0));
+        var key = FitCache.KeyOf(Options, "bank", senses, groups, labels, Features(0));
 
         // Act and Assert
-        Assert.Equal(key, FitCache.KeyOf(new TrainingOptions(Parallelism: 7), "bank", names, labels, Features(0)));
-        Assert.NotEqual(key, FitCache.KeyOf(Options with { C = 10 }, "bank", names, labels, Features(0)));
-        Assert.NotEqual(key, FitCache.KeyOf(Options with { Folds = 3 }, "bank", names, labels, Features(0)));
-        Assert.NotEqual(key, FitCache.KeyOf(Options, "bat", names, labels, Features(0)));
-        Assert.NotEqual(key, FitCache.KeyOf(Options, "bank", ["noun", "adj"], labels, Features(0)));
-        Assert.NotEqual(key, FitCache.KeyOf(Options, "bank", names, [1, 0], Features(0)));
-        Assert.NotEqual(key, FitCache.KeyOf(Options, "bank", names, labels, Features(0.001f)));
+        Assert.Equal(key, FitCache.KeyOf(new TrainingOptions(Parallelism: 7), "bank", senses, groups, labels, Features(0)));
+        Assert.NotEqual(key, FitCache.KeyOf(Options with { C = 10 }, "bank", senses, groups, labels, Features(0)));
+        Assert.NotEqual(key, FitCache.KeyOf(Options with { Folds = 3 }, "bank", senses, groups, labels, Features(0)));
+        Assert.NotEqual(key, FitCache.KeyOf(Options, "bat", senses, groups, labels, Features(0)));
+        Assert.NotEqual(key, FitCache.KeyOf(Options, "bank", ["bank#noun", "bank#adj"], groups, labels, Features(0)));
+        Assert.NotEqual(key, FitCache.KeyOf(Options, "bank", senses, [0, 0], labels, Features(0)));
+        Assert.NotEqual(key, FitCache.KeyOf(Options, "bank", senses, groups, [1, 0], Features(0)));
+        Assert.NotEqual(key, FitCache.KeyOf(Options, "bank", senses, groups, labels, Features(0.001f)));
     }
 
     /// <summary>
-    ///     Saved fits come back bit-identical, and only the cache file is left behind.
+    ///     The key depends on the settings that choose the thresholds: the precision target and the minimum number of answers.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_FitCache_KeyOf_DependsOnTheThresholdSettings()
+    {
+        // Arrange
+        string[] senses = ["bank#noun", "bank#verb"];
+        int[] groups = [-1, -1];
+        int[] labels = [0, 1];
+        var key = FitCache.KeyOf(Options, "bank", senses, groups, labels, Features(0));
+
+        // Act and Assert
+        Assert.NotEqual(key, FitCache.KeyOf(Options with { TargetPrecision = 0.9 }, "bank", senses, groups, labels, Features(0)));
+        Assert.NotEqual(key, FitCache.KeyOf(Options with { MinAnswered = 5 }, "bank", senses, groups, labels, Features(0)));
+        Assert.Equal(key, FitCache.KeyOf(Options with { TargetPrecision = 0.95, MinAnswered = 3 }, "bank", senses, groups, labels, Features(0)));
+    }
+
+    /// <summary>
+    ///     Saved fits come back bit-identical with both thresholds, and only the cache file is left behind.
     /// </summary>
     [Fact]
     public void WordSenseBuilder_FitCache_SaveAndOpen_RoundTripsBitIdentical()
@@ -70,21 +89,21 @@ public sealed class FitCacheTests : IDisposable
 
         // Act
         var reopened = FitCache.Open(_dir.Root);
-        var found = reopened.TryGet(K('B'), out var fit);
-        var binary = reopened.TryGet(K('A'), out var first);
+        var found = reopened.TryGet(K('B'), out var never);
+        var other = reopened.TryGet(K('A'), out var first);
 
         // Assert
         Assert.Equal(3, reopened.Loaded);
         Assert.Equal(0, reopened.Discarded);
         Assert.True(found);
-        Assert.True(binary);
-        Assert.Equal(LemmaModelKind.OneVersusRest, fit.Kind);
-        Assert.Equal(Fit(2, LemmaModelKind.OneVersusRest).Weights, fit.Weights);
-        Assert.Equal(Fit(2, LemmaModelKind.OneVersusRest).Bias, fit.Bias);
-        Assert.False(fit.CrossValidated);
+        Assert.True(other);
+        Assert.Equal(Fit(2).Weights, never.Weights);
+        Assert.Equal(Fit(2).Bias, never.Bias);
+        Assert.Equal(LemmaWeights.Never, never.GroupThreshold);
+        Assert.Equal(Fit(2).FineThreshold, never.FineThreshold);
         Assert.Equal(BitConverter.SingleToInt32Bits(Fit(1).Weights[2]), BitConverter.SingleToInt32Bits(first.Weights[2]));
-        Assert.Equal(Fit(1).Margin, first.Margin);
-        Assert.True(first.CrossValidated);
+        Assert.Equal(Fit(1).FineThreshold, first.FineThreshold);
+        Assert.Equal(0.5f, first.GroupThreshold);
         Assert.Equal(3, first.Dimension);
         Assert.Equal([FitCache.FileName], Directory.GetFiles(_dir.Root).Select(Path.GetFileName));
     }
@@ -142,6 +161,7 @@ public sealed class FitCacheTests : IDisposable
     [InlineData("garbage")]
     [InlineData("empty")]
     [InlineData("header")]
+    [InlineData("version")]
     public void WordSenseBuilder_FitCache_Open_DamagedFile_IsHandled(string mode)
     {
         // Arrange
@@ -152,6 +172,7 @@ public sealed class FitCacheTests : IDisposable
             "truncated" => bytes[..(bytes.Length - 10)],
             "garbage" => [.. "this is not a cache"u8],
             "empty" => [],
+            "version" => [.. bytes.Select((b, i) => i == 4 ? (byte)1 : b)],
             _ => [.. bytes.Select((b, i) => i == 6 ? (byte)(b ^ 0x7F) : b)],
         };
         File.WriteAllBytes(cache.Path, bytes);

@@ -8,9 +8,9 @@
 encoder and weights lazily, and classifies words with them (lazily ensuring the files when a word needs the encoder).
 It is usable on its own and depends only on the core package: it owns no other model, so a word whose senses it does
 not score is answered from the lexicon alone, and the choice among the analyses of such a word is left to the model it
-is composed with (see `FallbackWordSenseModel`). In the current version the classification is the lexicon-only answer
-of the classifier: it loads no weights, opens no encoder and needs no model file, and the lazy ensure, the weights
-load and the encoder run described below arrive with the scoring of fine senses.
+is composed with (see `FallbackWordSenseModel`). A classification that has no word with several scored senses is
+answered from the lexicon alone: it loads no encoder and needs no model file; the lazy ensure, the encoder session and
+the weights are used only for a text with a trained lemma.
 
 #### Data Model
 
@@ -18,8 +18,8 @@ load and the encoder run described below arrive with the scoring of fine senses.
   to a full path) and the maximum sequence length, which shall be from 8 to 512.
 - Public properties: `HiddenSize` and `ModelId`. They are public on purpose: callers and the model packages read them
   (for example to show which model and encoder size is in use) before `EnsureModelAsync` has run.
-- State: the in-flight (or finished) ensure task, the shared classifier (stateless today; it will hold the cached
-  encoder and weights table), the disposed flag and an in-flight tracker that counts running classifications, all
+- State: the in-flight (or finished) ensure task, the shared classifier, the encoder and the weights table (opened and
+  loaded on first need), the disposed flag and an in-flight tracker that counts running classifications, all
   guarded by a lock, plus a cancellation source that disposal cancels and then disposes (the download holds a copy of
   its token, which stays cancelled).
 - Internal test and builder hooks: the ONNX intra-op thread count, the HTTP client, the GitHub base URI, the
@@ -36,16 +36,15 @@ load and the encoder run described below arrive with the scoring of fine senses.
   (`ModelDownloader.Verify`, no network); otherwise it calls `ModelDownloader.EnsureAsync` with the disposal token.
 - `ClassifyAsync(words, cancellationToken)`: checks the disposed flag, validates the words, throws
   `OperationCanceledException` (through the returned task) for an already canceled token, even for an empty list or a
-  list that needs no model. It then registers with the in-flight tracker and runs the shared `OnnxClassifier` over the
-  words; the registration is released in a `finally`. In the current version the classifier answers from the lexicon
-  alone, so the call needs no model file and never ensures: unknown words are `ClassifyResult.Unknown`, a word with one
-  analysis and one sense is answered at the sense level, and every other known word with its analyses equally likely at
-  the part of speech level and no scored senses (no first-sense guess). When the scoring of fine senses is added, the
-  call loads the embedded weights table (no model file and no ONNX; cached) when some word has several lexicon senses
-  and, only when a word has several senses together with usable weights for its lemma (`OnnxClassifier.NeedsModel`),
-  awaits `EnsureModelAsync(null, cancellationToken)` (the default and environment mirror settings; concurrent
-  callers share one ensure and a failed ensure is retried by the next call), opens the encoder on first need (cached)
-  and runs the classifier over the encoder and the weights table. It is safe for concurrent use.
+  list that needs no model. It then loads the embedded weights table (no model file and no ONNX; cached) and, when no
+  word is pending (`OnnxClassifier.NeedsModel`: no word has several senses together with usable weights, or a form
+  chooser), answers from the lexicon alone without any model file: unknown words are `ClassifyResult.Unknown`, a word
+  with one analysis and one sense is answered at the sense level, and every other known word with its analyses equally
+  likely at the part of speech level and no scored senses (no first-sense guess). Only when a word is pending does it
+  await `EnsureModelAsync(null, cancellationToken)` (the default and environment mirror settings; concurrent
+  callers share one ensure and a failed ensure is retried by the next call), register with the in-flight tracker, open
+  the encoder on first need (cached) and run the shared `OnnxClassifier` over the encoder and the weights table; the
+  registration is released in a `finally`. It is safe for concurrent use.
 - `Dispose()`: idempotent and thread-safe; the first call marks the model disposed (new calls throw), cancels the
   disposal token, which aborts an in-flight download (its temporary files are removed), and closes the in-flight
   tracker (`InFlightTracker`, internal): when no classification is running the resources (the encoder session, once

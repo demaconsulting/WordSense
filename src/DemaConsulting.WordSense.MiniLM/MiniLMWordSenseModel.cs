@@ -18,14 +18,19 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     resources are released after the last one).
 ///     </para>
 ///     <para>
-///     Classification. The scoring of fine senses with the encoder is not part of this version, so the encoder model
-///     answers only the words that need no choice: a word with one analysis and one sense is answered at the
-///     <see cref="SenseLevel.Sense"/> level. Every ambiguous word is answered by the Basic fallback at the
+///     Classification. The encoder model scores the fine senses of the 20 lemmas that this version has weights for
+///     (`back`, `even`, `first`, `forward`, `go`, `help`, `home`, `however`, `just`, `little`, `long`, `only`, `own`,
+///     `please`, `pretty`, `review`, `right`, `still`, `test` and `well`) and answers each of them at the finest level its
+///     per-lemma thresholds support: the <see cref="SenseLevel.Sense"/> level with the sense id, the
+///     <see cref="SenseLevel.Group"/> level with the group id, or the <see cref="SenseLevel.PartOfSpeech"/> level; the
+///     ranked senses of every analysis are listed whatever the level. A word with one analysis and one sense is answered
+///     at the <see cref="SenseLevel.Sense"/> level. Every other ambiguous word is answered by the Basic fallback at the
 ///     <see cref="SenseLevel.PartOfSpeech"/> level: it chooses the analysis (the part of speech) from the context, the
 ///     analyses of the result carry its probabilities, and no sense is scored. The composition rules (which model answers a word,
 ///     and that a result always belongs completely to one of the two models) are those of
-///     <see cref="FallbackWordSenseModel"/>. <see cref="ClassifyAsync"/> needs no model file, so it never downloads a
-///     file and never fails because a file is missing.
+///     <see cref="FallbackWordSenseModel"/>. <see cref="ClassifyAsync"/> needs the encoder files only for a text that
+///     contains a trained lemma with several senses (it ensures them on first use), and never downloads a file or fails
+///     because a file is missing for any other text.
 ///     </para>
 ///     <para>
 ///     Two kinds of data are involved: the per-lemma classifier weights trained for this encoder are embedded in the
@@ -33,8 +38,8 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     21.9 MiB or 22,972,370 bytes, and <c>vocab.txt</c>, 0.2 MiB or 231,508 bytes; 22 MiB in total) are downloaded
 ///     once by <see cref="EnsureModelAsync"/>, verified
 ///     against pinned SHA-256 digests and cached per user; pass a model directory to the constructor to use files you
-///     supply, in which case no network access happens at all. In this version the classification itself does not read
-///     the encoder files or the embedded weights. The files are described in the repository at
+///     supply, in which case no network access happens at all. The first classification that needs the encoder opens
+///     the ONNX session and checks the embedded weights against the word image. The files are described in the repository at
 ///     https://github.com/demaconsulting/WordSense/tree/main/model/all-MiniLM-L6-v2-int8. The identifier of this model
 ///     (<see cref="ModelId"/>) is <c>all-MiniLM-L6-v2-int8</c>; it names the store folder and the
 ///     folder on a mirror.

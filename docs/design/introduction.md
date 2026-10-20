@@ -200,8 +200,9 @@ tools/WordSense.Builder/Data/                      — word-data subsystem units
                                                       FormGenerator.cs and its helpers, FormAuditor.cs,
                                                       DataValidator.cs, SenseLabelGenerator.cs)
 data/                                              — word-data tables (TSV), schema.yaml, README.md, PROVENANCE.md
-corpus/                                            — builder inputs: anchor, holdout and form sentences, the suite,
-                                                      dictionary lexicon, provenance
+corpus/                                            — builder inputs: anchor and holdout sentences (fine-sense rows) with
+                                                      their provenance, the legacy class-labeled corpus awaiting
+                                                      relabeling (corpus/legacy), dictionary lexicon, the suite
 ```
 
 The `generated/` folders of the packages hold the generated API reference and are not committed. The corpus files

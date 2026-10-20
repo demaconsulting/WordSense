@@ -160,17 +160,18 @@ public class BertBaseCasedWordSenseModelTests
     [Fact]
     public async Task BertBaseCasedWordSenseModel_Dispose_DisposesEncoderAndFallback()
     {
-        // Arrange: both models are usable while the model lives
-        var model = new BertBaseCasedWordSenseModel();
-        Assert.False(model.Encoder.IsReleased);
-        Assert.Single(await model.Encoder.ClassifyAsync(["record"], TestContext.Current.CancellationToken));
+        // Arrange: both models are usable while the model lives; a trained lemma makes the encoder open its session
+        var model = Open(ModelFolder.Require());
+        await model.EnsureModelAsync(null, TestContext.Current.CancellationToken);
+        Assert.Single(await model.Encoder.ClassifyAsync(["back"], TestContext.Current.CancellationToken));
+        Assert.False(model.Encoder.IsEncoderReleased);
         Assert.Single(await model.Fallback.ClassifyAsync(["record"], TestContext.Current.CancellationToken));
 
         // Act
         model.Dispose();
 
         // Assert: the encoder is released and both reject calls
-        Assert.True(model.Encoder.IsReleased);
+        Assert.True(model.Encoder.IsEncoderReleased);
         await Assert.ThrowsAsync<ObjectDisposedException>(() => model.Encoder.ClassifyAsync(["record"], TestContext.Current.CancellationToken));
         await Assert.ThrowsAsync<ObjectDisposedException>(() => model.Fallback.ClassifyAsync(["record"], TestContext.Current.CancellationToken));
     }
@@ -230,5 +231,43 @@ public class BertBaseCasedWordSenseModelTests
 
         Assert.Equal(PartOfSpeech.Verb, result[2].Details?.PartOfSpeech);
         Assert.Equal(PartOfSpeech.Noun, result[4].Details?.PartOfSpeech);
+    }
+
+    /// <summary>
+    ///     A trained lemma in a clear sentence is answered by the encoder at the sense or the group level, with the ids
+    ///     of the catalog, a probability for every analysis and its senses ranked inside the selected analysis.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BertBaseCasedWordSenseModel_Classify_TrainedLemma_AnswersAtASenseOrGroupLevel()
+    {
+        // Arrange: "back" is a trained lemma; the sentence is about going back to a place
+        using var model = Open(ModelFolder.Require());
+        await model.EnsureModelAsync(null, TestContext.Current.CancellationToken);
+
+        // Act
+        var results = await model.ClassifyAsync(["I", "will", "go", "back", "to", "the", "house", "."], TestContext.Current.CancellationToken);
+
+        // Assert: the trained word is answered with a sense or a group of its lemma, and lists its ranked senses
+        var back = results[3];
+        Assert.True(back.Level is SenseLevel.Sense or SenseLevel.Group, $"The level was {back.Level}.");
+        Assert.Equal("back", back.Details?.Lemma);
+        Assert.InRange(back.Confidence, 0.0, 1.0);
+        var selected = back.Analyses.First(a => a.Details.Equals(back.Details));
+        Assert.False(selected.Senses.IsEmpty);
+        Assert.Equal(1.0, selected.Senses.Sum(s => s.Probability), 6);
+        Assert.Equal(1.0, back.Analyses.Sum(a => a.Probability), 6);
+        if (back.Level == SenseLevel.Sense)
+        {
+            Assert.True(WordLexicon.TryGetSense(back.SenseId!, out var sense));
+            Assert.Equal("back", sense.Lemma);
+            Assert.Equal(sense.GroupId, back.GroupId);
+        }
+        else
+        {
+            Assert.Null(back.SenseId);
+            Assert.True(WordLexicon.TryGetGroup(back.GroupId!, out var group));
+            Assert.Equal("back", group.Lemma);
+        }
     }
 }

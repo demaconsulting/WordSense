@@ -63,11 +63,10 @@ satisfied only by a passing result from its own platform or framework.
 ### Answer Level and Fallback with a Real Model
 
 A trained lemma is classified in a clear sentence and in an unclear one. The clear one is answered at the finest level
-that its thresholds allow, and the result states that level; the unclear one is answered at the group level with a
-lower confidence when the lemma has a group for its best sense and neither threshold is met, and otherwise at
-the part of speech level with a low confidence, because a group exists only where it was curated
-(`WordSense_Classifier_EndToEnd_AnswersAtTheFinestConfidentLevel`, which belongs to the increment that adds the scoring
-of fine senses with the encoder). A word with several senses that the model was not
+that its thresholds allow, and the result states that level; the unclear one is answered at the group level when the
+lemma has a group for its best sense and the group threshold is met, and otherwise at the part of speech level,
+because a group exists only where it was curated and a level whose threshold is not met is never answered
+(`WordSense_Classifier_EndToEnd_AnswersAtTheFinestConfidentLevel`). A word with several senses that the model was not
 trained for is answered at the part of speech level by the statistical analysis of the Basic model of the composition,
 with no sense id and no group id, and never at level none because it is known
 (`WordSense_Classifier_EndToEnd_UntrainedWord_AnswersPartOfSpeech`).

@@ -18,9 +18,14 @@ namespace WordSense.Builder;
 internal static class BasicTuner
 {
     /// <summary>
+    ///     The folder of the corpus that holds the class-labeled data the Basic model is still trained from.
+    /// </summary>
+    internal const string LegacyFolder = "legacy";
+
+    /// <summary>
     ///     Runs the tuning.
     /// </summary>
-    /// <param name="corpus">The corpus directory (anchors, senses, the legacy class map and the vendored treebank counts).</param>
+    /// <param name="corpus">The corpus directory (the legacy anchors and senses, the legacy class map and the vendored treebank counts).</param>
     /// <param name="udCache">The directory that holds the verified treebank development file.</param>
     /// <param name="progress">Receives progress messages.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
@@ -39,9 +44,9 @@ internal static class BasicTuner
         UdSource.Verify(devPath, UdSource.Files[devName]);
         var dev = UdCounts.ReadConllu(devPath).Take(BasicHyperparameters.UdDevSentences).ToList();
         var lexicon = (Func<string, ImmutableArray<WordDetails>>)(key => WordLexicon.TryLookup(key, out var found) ? found : []);
-        var inventory = SenseInventory.ReadDirectory(Path.Join(corpus, "senses"));
+        var inventory = LegacySenseInventory.ReadDirectory(Path.Join(corpus, LegacyFolder, "senses"));
         var labels = AnalysisLabels.Load(inventory, corpus);
-        var (train, anchorDev) = SplitAnchors(Corpus.ReadDirectory(Path.Join(corpus, "anchors")));
+        var (train, anchorDev) = SplitAnchors(LegacyCorpus.ReadDirectory(Path.Join(corpus, LegacyFolder, "anchors")));
         progress.WriteLine($"Tuning on {dev.Count} treebank dev sentences, {train.Count} anchor train and {anchorDev.Count} anchor dev sentences.");
 
         var text = new StringBuilder();
@@ -81,7 +86,7 @@ internal static class BasicTuner
     /// </summary>
     /// <param name="anchors">All anchor sentences.</param>
     /// <returns>The train and the dev rows; a sentence is a dev row when a hash of its text modulo <see cref="BasicHyperparameters.AnchorDevModulus"/> is zero.</returns>
-    internal static (List<CorpusRow> Train, List<CorpusRow> Dev) SplitAnchors(IReadOnlyList<CorpusRow> anchors)
+    internal static (List<LegacyRow> Train, List<LegacyRow> Dev) SplitAnchors(IReadOnlyList<LegacyRow> anchors)
     {
         ArgumentNullException.ThrowIfNull(anchors);
         var order = Enumerable.Range(0, anchors.Count).ToArray();
@@ -95,8 +100,8 @@ internal static class BasicTuner
             (order[i], order[j]) = (order[j], order[i]);
         }
 
-        var train = new List<CorpusRow>();
-        var dev = new List<CorpusRow>();
+        var train = new List<LegacyRow>();
+        var dev = new List<LegacyRow>();
         foreach (var index in order.Take(BasicHyperparameters.AnchorSample).Order())
         {
             var row = anchors[index];
@@ -172,7 +177,7 @@ internal static class BasicTuner
 
     private static async Task<(int Rows, int Correct)> ScoreAnchorsAsync(
         BasicTables tables,
-        List<CorpusRow> rows,
+        List<LegacyRow> rows,
         Func<string, ImmutableArray<WordDetails>> lexicon,
         AnalysisLabels labels,
         CancellationToken cancellationToken)

@@ -58,6 +58,20 @@ internal static class ModelCatalog
         All.FirstOrDefault(m => string.Equals(m.Name, name, StringComparison.Ordinal))
         ?? throw new ArgumentException($"Unknown model '{name}'; use one of: {string.Join(", ", All.Select(m => m.Name))}.");
 
+    /// <summary>
+    ///     Gets the encoder model inside a composed encoder model (the model of a package wraps its encoder, which owns the
+    ///     pinned files and the embedded weights), so the trainer can open the encoder; the composed model keeps owning it.
+    /// </summary>
+    /// <param name="model">A model created from a <see cref="ModelInfo"/> that has an encoder.</param>
+    /// <returns>The encoder model.</returns>
+    /// <exception cref="ArgumentException">Thrown when the model has no encoder.</exception>
+    public static OnnxWordSenseModel EncoderOf(IWordSenseModel model) => model switch
+    {
+        MiniLMWordSenseModel minilm => minilm.Encoder,
+        BertBaseCasedWordSenseModel bert => bert.Encoder,
+        _ => throw new ArgumentException($"The model {model.GetType().Name} has no encoder."),
+    };
+
     private static T Throttle<T>(T model, Func<T, OnnxWordSenseModel> encoder)
     {
         encoder(model).IntraOpThreads = IntraOpThreads;

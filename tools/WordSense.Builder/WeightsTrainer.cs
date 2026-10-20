@@ -4,18 +4,18 @@ using DemaConsulting.WordSense.Onnx;
 namespace WordSense.Builder;
 
 /// <summary>
-///     Settings of the weights trainer.
+///     Settings of the weights trainer and of the threshold choice.
 /// </summary>
 /// <param name="C">Inverse regularization strength of the logistic regression.</param>
-/// <param name="Folds">Number of cross-validation folds used to choose abstain margins.</param>
-/// <param name="TargetAccuracy">Accuracy the answered sentences should reach when choosing a margin.</param>
-/// <param name="MinCoverage">Share of sentences that must stay answered when choosing a margin.</param>
+/// <param name="Folds">Number of cross-validation folds used to choose the thresholds.</param>
+/// <param name="TargetPrecision">Precision that the answers of a level must reach when its threshold is chosen.</param>
+/// <param name="MinAnswered">Number of answers a threshold must keep before its precision is believed.</param>
 /// <param name="Parallelism">Number of lemmas trained concurrently.</param>
 internal sealed record TrainingOptions(
     double C = 100,
     int Folds = 5,
-    double TargetAccuracy = 0.99,
-    double MinCoverage = 0.7,
+    double TargetPrecision = 0.95,
+    int MinAnswered = 3,
     int Parallelism = 2)
 {
     /// <summary>
@@ -26,26 +26,47 @@ internal sealed record TrainingOptions(
 }
 
 /// <summary>
-///     Trains the per-lemma classifiers of a model and assembles its weights.
+///     The weights of a training run and the lemmas that got none.
 /// </summary>
+/// <param name="Data">The weights of every lemma that has anchors for at least two senses.</param>
+/// <param name="Untrained">Each lemma with anchors that has no weights, with the number of senses it has anchors for.</param>
+internal sealed record TrainedWeights(WeightsData Data, IReadOnlyList<(string Lemma, int AnchoredSenses)> Untrained);
+
+/// <summary>
+///     Trains the per-lemma fine-sense classifiers of a model and assembles its weights.
+/// </summary>
+/// <remarks>
+///     <para>
+///     For every lemma whose anchors name at least two distinct senses the trainer fits one one-versus-rest L2
+///     logistic regression (see <see cref="LogisticTrainer"/>) over the senses of the lemma that have at least one
+///     anchor, on features centered on the global mean and scaled to unit length (<see cref="FeatureExtractor"/>). The
+///     columns are those senses in inventory order: the parts of speech in enumeration order and, in each, the order of
+///     <see cref="WordLexicon.SensesOf"/>. A sense with a single anchor takes part in the training. A lemma with fewer
+///     than two anchored senses has nothing to choose between and gets no weights; that is reported, not an error. A
+///     two-sense lemma has two rows (there is no binary model). The thresholds of the lemma come from
+///     <see cref="Thresholds.Choose"/> on the anchors alone.
+///     </para>
+///     <para>
+///     Form choosers (the small classifiers that pick the lemma of a form such as <c>left</c>) are not trained: the
+///     corpus has no rows for them yet, so the weights carry none (the blob format supports them).
+///     </para>
+/// </remarks>
 internal static class WeightsTrainer
 {
-    private const int MinSamplesForCrossValidation = 3;
-    private const int MinTotalForCrossValidation = 10;
-
     /// <summary>
     ///     Trains dense-feature weights from pooled encoder vectors.
     /// </summary>
     /// <param name="modelId">The model identifier recorded in the weights.</param>
-    /// <param name="classHash">The class hash of the word image the weights are trained for (<c>WordImage.ClassHash</c>).</param>
+    /// <param name="inventoryHash">The 32-byte inventory hash of the word image the weights are trained for (<c>WordLexicon.Current.InventoryHash</c>).</param>
     /// <param name="pooled">One pooled vector per anchor row.</param>
-    /// <param name="anchors">The training rows.</param>
-    /// <param name="inventory">The sense inventory.</param>
+    /// <param name="anchors">The training rows; their senses are looked up in the catalog of the word image.</param>
     /// <param name="options">The trainer settings.</param>
     /// <param name="frozenMean">The global mean to center on, or null to compute it from <paramref name="pooled"/>.</param>
     /// <param name="fitCache">The cache of lemma fits, or null to fit every lemma.</param>
-    /// <returns>The weights.</returns>
-    public static WeightsData TrainDense(string modelId, byte[] classHash, double[][] pooled, IReadOnlyList<CorpusRow> anchors, SenseInventory inventory, TrainingOptions options, float[]? frozenMean = null, FitCache? fitCache = null)
+    /// <returns>The weights, with the lemmas that got none.</returns>
+    /// <exception cref="InvalidDataException">Thrown when there are no anchors, a feature has no magnitude or an anchor names a sense that the catalog does not have.</exception>
+    /// <exception cref="ArgumentException">Thrown when the frozen mean does not have the dimension of the vectors.</exception>
+    public static TrainedWeights TrainDense(string modelId, byte[] inventoryHash, double[][] pooled, IReadOnlyList<CorpusRow> anchors, TrainingOptions options, float[]? frozenMean = null, FitCache? fitCache = null)
     {
         if (pooled.Length == 0)
         {
@@ -68,8 +89,8 @@ internal static class WeightsTrainer
                 ?? throw new InvalidDataException($"{anchors[i].Source}: the feature has no magnitude: {anchors[i].Sentence}");
         }
 
-        var entries = TrainAll(anchors, inventory, options, (_, index) => index.Select(i => features[i]).ToArray(), fitCache);
-        return new WeightsData(modelId, classHash, dim, mean, entries);
+        var (entries, untrained) = TrainAll(anchors, features, options, fitCache);
+        return new TrainedWeights(new WeightsData(modelId, inventoryHash, dim, mean, entries), untrained);
     }
 
     /// <summary>
@@ -92,101 +113,22 @@ internal static class WeightsTrainer
         return mean;
     }
 
-    private static List<WeightedLemma> TrainAll(
-        IReadOnlyList<CorpusRow> anchors,
-        SenseInventory inventory,
-        TrainingOptions options,
-        Func<string, int[], float[][]> prepare,
-        FitCache? fitCache)
-    {
-        var lemmas = anchors.Select((row, i) => (row, i)).GroupBy(t => t.row.Lemma, StringComparer.Ordinal)
-            .OrderBy(g => g.Key, StringComparer.Ordinal).ToList();
-        var trained = new (LemmaModelKind Kind, float[] Weights, float[] Bias, float Margin, bool Cv, int Dimension)[lemmas.Count];
-        try
-        {
-            Parallel.For(0, lemmas.Count, new ParallelOptions { MaxDegreeOfParallelism = Math.Max(1, options.Parallelism) }, k =>
-            {
-                TrainLemma(k);
-            });
-        }
-        catch (AggregateException ex) when (ex.InnerExceptions.Count > 0)
-        {
-            // Report the first data error itself, not the wrapper, so the caller can print one line
-            System.Runtime.ExceptionServices.ExceptionDispatchInfo.Capture(ex.Flatten().InnerExceptions[0]).Throw();
-            throw;
-        }
-
-        void TrainLemma(int k)
-        {
-            var lemma = lemmas[k].Key;
-            var index = lemmas[k].Select(t => t.i).ToArray();
-            var names = inventory.LabelsOf(lemma);
-            if (names.Length < 2)
-            {
-                throw new InvalidDataException($"Lemma '{lemma}' needs anchor sentences for at least two senses.");
-            }
-
-            var labels = index.Select(i => Array.BinarySearch(names, anchors[i].Sense, StringComparer.Ordinal)).ToArray();
-            var x = prepare(lemma, index);
-            var fitKey = fitCache is null ? null : FitCache.KeyOf(options, lemma, names, labels, x);
-            if (fitKey is not null && fitCache!.TryGet(fitKey, out var cached))
-            {
-                trained[k] = (cached.Kind, cached.Weights, cached.Bias, cached.Margin, cached.CrossValidated, cached.Dimension);
-                return;
-            }
-
-            var kind = names.Length == 2 ? LemmaModelKind.Binary : LemmaModelKind.OneVersusRest;
-            var (weights, bias) = Fit(x, labels, names.Length, kind, options.C);
-            var counts = new int[names.Length];
-            foreach (var label in labels)
-            {
-                counts[label]++;
-            }
-
-            var cv = counts.Min() >= MinSamplesForCrossValidation && labels.Length >= MinTotalForCrossValidation;
-            var margin = cv ? ChooseMargin(lemma, x, labels, names.Length, kind, options) : 0f;
-            trained[k] = (kind, weights, bias, margin, cv, x[0].Length);
-            if (fitKey is not null)
-            {
-                fitCache!.Add(fitKey, new LemmaFit(kind, weights, bias, margin, cv, x[0].Length));
-            }
-        }
-
-        var margins = trained.Where(t => t.Cv).Select(t => t.Margin).Order().ToList();
-        var fallback = margins.Count == 0 ? 0f : margins[margins.Count / 2];
-        var entries = new List<WeightedLemma>(lemmas.Count);
-        for (var k = 0; k < lemmas.Count; k++)
-        {
-            var t = trained[k];
-            var lemma = lemmas[k].Key;
-            var classIds = inventory.LabelsOf(lemma).Select(label => lemma + "#" + label).ToList();
-            var weights = new LemmaWeights(t.Kind, t.Weights, t.Bias, t.Cv ? t.Margin : fallback, t.Dimension);
-            entries.Add(new WeightedLemma(lemma, classIds, weights));
-        }
-
-        return entries;
-    }
-
     /// <summary>
-    ///     Fits the weight rows for a lemma.
+    ///     Fits the weight rows for a lemma: one one-versus-rest row per sense.
     /// </summary>
     /// <param name="x">The features.</param>
     /// <param name="labels">The sense index of each feature.</param>
     /// <param name="senseCount">The number of senses.</param>
-    /// <param name="kind">Binary or one-versus-rest.</param>
     /// <param name="c">The inverse regularization strength.</param>
     /// <returns>Row-major weights and one bias per row.</returns>
-    internal static (float[] Weights, float[] Bias) Fit(float[][] x, int[] labels, int senseCount, LemmaModelKind kind, double c)
+    internal static (float[] Weights, float[] Bias) Fit(float[][] x, int[] labels, int senseCount, double c)
     {
-        var rows = kind == LemmaModelKind.Binary ? 1 : senseCount;
         var dim = x[0].Length;
-        var weights = new float[rows * dim];
-        var bias = new float[rows];
-        for (var row = 0; row < rows; row++)
+        var weights = new float[senseCount * dim];
+        var bias = new float[senseCount];
+        for (var row = 0; row < senseCount; row++)
         {
-            // The binary row scores the second sense positively
-            var target = kind == LemmaModelKind.Binary ? 1 : row;
-            var (w, b) = LogisticTrainer.Train(x, labels.Select(l => l == target).ToArray(), c);
+            var (w, b) = LogisticTrainer.Train(x, labels.Select(l => l == row).ToArray(), c);
             for (var d = 0; d < dim; d++)
             {
                 weights[(row * dim) + d] = (float)w[d];
@@ -198,85 +140,139 @@ internal static class WeightsTrainer
         return (weights, bias);
     }
 
-    private static float ChooseMargin(string lemma, float[][] x, int[] labels, int senseCount, LemmaModelKind kind, TrainingOptions options)
+    /// <summary>
+    ///     Trains every lemma that has anchors, concurrently.
+    /// </summary>
+    /// <param name="anchors">The training rows.</param>
+    /// <param name="features">The centered, unit-length feature of each row.</param>
+    /// <param name="options">The settings.</param>
+    /// <param name="fitCache">The cache of lemma fits, or null.</param>
+    /// <returns>The trained lemmas in ordinal order of the lemma, and the lemmas without weights.</returns>
+    private static (List<WeightedLemma> Entries, List<(string Lemma, int AnchoredSenses)> Untrained) TrainAll(
+        IReadOnlyList<CorpusRow> anchors,
+        float[][] features,
+        TrainingOptions options,
+        FitCache? fitCache)
     {
-        var folds = Math.Min(options.Folds, labels.GroupBy(l => l).Min(g => g.Count()));
-        var assignment = AssignFolds(lemma, labels, folds);
-        var observed = new List<(float Margin, bool Correct)>();
-        var dim = x[0].Length;
-        var scores = new float[senseCount];
-        for (var fold = 0; fold < folds; fold++)
+        var lemmas = anchors.Select((row, i) => (row, i)).GroupBy(t => t.row.Lemma, StringComparer.Ordinal)
+            .OrderBy(g => g.Key, StringComparer.Ordinal).ToList();
+        var trained = new WeightedLemma?[lemmas.Count];
+        var anchoredSenses = new int[lemmas.Count];
+        try
         {
-            var train = Enumerable.Range(0, x.Length).Where(i => assignment[i] != fold).ToArray();
-            var (weights, bias) = Fit(train.Select(i => x[i]).ToArray(), train.Select(i => labels[i]).ToArray(), senseCount, kind, options.C);
-            var model = new LemmaWeights(kind, weights, bias, 0f, dim);
-            foreach (var i in Enumerable.Range(0, x.Length).Where(i => assignment[i] == fold))
+            Parallel.For(0, lemmas.Count, new ParallelOptions { MaxDegreeOfParallelism = Math.Max(1, options.Parallelism) }, k =>
             {
-                model.Scores(x[i], scores);
-                var (best, margin) = LemmaWeights.Rank(scores);
-                observed.Add((margin, best == labels[i]));
+                trained[k] = TrainLemma(lemmas[k].Key, lemmas[k].Select(t => t.i).ToArray(), anchors, features, options, fitCache, out anchoredSenses[k]);
+            });
+        }
+        catch (AggregateException ex) when (ex.InnerExceptions.Count > 0)
+        {
+            // Report the first data error itself, not the wrapper, so the caller can print one line
+            System.Runtime.ExceptionServices.ExceptionDispatchInfo.Capture(ex.Flatten().InnerExceptions[0]).Throw();
+            throw;
+        }
+
+        var entries = new List<WeightedLemma>(lemmas.Count);
+        var untrained = new List<(string, int)>();
+        for (var k = 0; k < lemmas.Count; k++)
+        {
+            if (trained[k] is { } entry)
+            {
+                entries.Add(entry);
+            }
+            else
+            {
+                untrained.Add((lemmas[k].Key, anchoredSenses[k]));
             }
         }
 
-        observed.Sort((a, b) => a.Margin.CompareTo(b.Margin));
-        var total = observed.Count;
-        var correctFromHere = observed.Count(o => o.Correct);
-        for (var i = 0; i < total; i++)
-        {
-            // Accepting everything from i upward must stay accurate and keep enough coverage
-            var coverage = (double)(total - i) / total;
-            if (coverage < options.MinCoverage)
-            {
-                break;
-            }
-
-            if ((double)correctFromHere / (total - i) >= options.TargetAccuracy)
-            {
-                return observed[i].Margin;
-            }
-
-            correctFromHere -= observed[i].Correct ? 1 : 0;
-        }
-
-        // Nothing reaches the target: keep the minimum required coverage
-        var cut = (int)Math.Floor((1 - options.MinCoverage) * total);
-        return observed[Math.Min(cut, total - 1)].Margin;
+        return (entries, untrained);
     }
 
-    private static int[] AssignFolds(string lemma, int[] labels, int folds)
+    /// <summary>
+    ///     Trains one lemma, or reports that it has nothing to choose between.
+    /// </summary>
+    /// <param name="lemma">The lemma.</param>
+    /// <param name="index">The indexes of the anchors of the lemma.</param>
+    /// <param name="anchors">All training rows.</param>
+    /// <param name="features">The feature of each row.</param>
+    /// <param name="options">The settings.</param>
+    /// <param name="fitCache">The cache of lemma fits, or null.</param>
+    /// <param name="anchored">Receives the number of senses of the lemma that have anchors.</param>
+    /// <returns>The weights, or null when fewer than two senses have anchors.</returns>
+    private static WeightedLemma? TrainLemma(
+        string lemma,
+        int[] index,
+        IReadOnlyList<CorpusRow> anchors,
+        float[][] features,
+        TrainingOptions options,
+        FitCache? fitCache,
+        out int anchored)
     {
-        // string.GetHashCode is randomized per process, so derive the seed with FNV-1a instead
-        var seed = 2166136261u;
-        foreach (var ch in lemma)
+        // The columns are the anchored senses in inventory order; an anchor of a sense the catalog lacks is a data error
+        var withAnchors = index.Select(i => anchors[i].SenseId).ToHashSet(StringComparer.Ordinal);
+        var catalog = SenseInventory.SensesOf(lemma);
+        var columns = catalog.Where(s => withAnchors.Contains(s.SenseId)).ToList();
+        if (columns.Count != withAnchors.Count)
         {
-            seed = (seed ^ ch) * 16777619u;
+            var unknown = withAnchors.Except(columns.Select(c => c.SenseId), StringComparer.Ordinal).Order(StringComparer.Ordinal).First();
+            throw new InvalidDataException($"The anchors of '{lemma}' name the sense '{unknown}', which is not a sense of the lemma in the catalog.");
         }
 
-        var assignment = new int[labels.Length];
-        foreach (var group in labels.Select((label, i) => (label, i)).GroupBy(t => t.label).OrderBy(g => g.Key))
+        anchored = columns.Count;
+        if (columns.Count < 2)
         {
-            // Shuffle by a seeded integer hash of the index; deterministic and independent of any RNG
-            var order = group.Select(t => t.i).OrderBy(i => Mix(seed, (uint)i)).ThenBy(i => i).ToArray();
-            for (var position = 0; position < order.Length; position++)
-            {
-                assignment[order[position]] = position % folds;
-            }
+            return null;
         }
 
-        return assignment;
+        var senseIds = columns.Select(c => c.SenseId).ToArray();
+        var groupIndex = new Dictionary<string, int>(StringComparer.Ordinal);
+        var groups = columns.Select(c => GroupIndexOf(c, groupIndex)).ToArray();
+        var labels = index.Select(i => Array.IndexOf(senseIds, anchors[i].SenseId)).ToArray();
+        var x = index.Select(i => features[i]).ToArray();
+
+        var key = fitCache is null ? null : FitCache.KeyOf(options, lemma, senseIds, groups, labels, x);
+        if (key is not null && fitCache!.TryGet(key, out var cached))
+        {
+            return Entry(lemma, senseIds, cached);
+        }
+
+        var (weights, bias) = Fit(x, labels, senseIds.Length, options.C);
+        var thresholds = Thresholds.Choose(lemma, x, labels, senseIds.Length, groups, options);
+        var fit = new LemmaFit(weights, bias, thresholds.Fine, thresholds.Group, x[0].Length);
+        fitCache?.Add(key!, fit);
+        return Entry(lemma, senseIds, fit);
     }
 
-    private static uint Mix(uint seed, uint value)
+    /// <summary>
+    ///     Gives the group of a sense an index in order of first appearance.
+    /// </summary>
+    /// <param name="sense">The sense.</param>
+    /// <param name="indexes">The group indexes assigned so far; a new group is added.</param>
+    /// <returns>The index of the group of the sense, or -1 when it is in no group.</returns>
+    private static int GroupIndexOf(SenseInfo sense, Dictionary<string, int> indexes)
     {
-        unchecked
+        if (sense.GroupId is null)
         {
-            var h = seed ^ (value * 0x9E3779B1u);
-            h ^= h >> 16;
-            h *= 0x85EB_CA6Bu;
-            h ^= h >> 13;
-            h *= 0xC2B2AE35u;
-            h ^= h >> 16;
-            return h;
+            return -1;
         }
+
+        if (!indexes.TryGetValue(sense.GroupId, out var index))
+        {
+            index = indexes.Count;
+            indexes[sense.GroupId] = index;
+        }
+
+        return index;
     }
+
+    /// <summary>
+    ///     Builds the weights of a lemma from a fit.
+    /// </summary>
+    /// <param name="lemma">The lemma.</param>
+    /// <param name="senseIds">The sense ids in column order.</param>
+    /// <param name="fit">The fit.</param>
+    /// <returns>The lemma with its classifier and thresholds.</returns>
+    private static WeightedLemma Entry(string lemma, string[] senseIds, LemmaFit fit) =>
+        new(lemma, senseIds, new LemmaWeights(fit.Weights, fit.Bias, fit.Dimension, fit.FineThreshold, fit.GroupThreshold));
 }

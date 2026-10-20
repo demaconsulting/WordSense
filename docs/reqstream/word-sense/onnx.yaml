@@ -35,25 +35,25 @@ sections:
             title: >-
               The Onnx subsystem shall answer a word whose lemma has trained weights at the finest level that passes
               the lemma's own threshold for that level: the fine sense when the fine threshold is met, otherwise, for a
-              lemma that has groups and a best sense in a group, the group (with a lower confidence when the group
-              threshold is not met either), and otherwise the part of speech with a low confidence; it shall never
-              answer at the group level for a lemma without groups, and never as unknown for a known word.
+              lemma that has groups and a best sense in a group, the group when the group threshold is met, and
+              otherwise the part of speech; it shall never answer at a level whose threshold is not met, never at the
+              group level for a lemma without groups, and never as unknown for a known word.
             tags: [subsystem]
             justification: |
               Each lemma has senses that are easy and senses that are hard to tell apart; per-lemma thresholds let each
-              lemma answer as precisely as its own evidence allows, and the confidence tells the caller which level
-              was reached and how sure the model is. Groups exist only where curated, so a model unsure between senses
-              steps up to their shared group when there is one and otherwise to the part of speech.
+              lemma answer as precisely as its own evidence allows, and the level tells the caller which precision
+              target was reached. Groups exist only where curated, so a model unsure between senses steps up to their
+              shared group when there is one and the evidence supports it, and otherwise to the part of speech, with
+              the ranked senses still listed.
             children:
               - WordSense-Onnx-OnnxClassifier-FineThreshold
               - WordSense-Onnx-OnnxClassifier-GroupThreshold
-              - WordSense-Onnx-OnnxClassifier-LowConfidenceGroup
               - WordSense-Onnx-OnnxClassifier-StepToPartOfSpeech
               - WordSense-Onnx-LemmaWeights-Thresholds
             tests:
               - OnnxClassifier_ClassifyAsync_MarginAboveFineThreshold_AnswersSense
               - OnnxClassifier_ClassifyAsync_FineBelowAndGroupAboveThreshold_AnswersGroup
-              - OnnxClassifier_ClassifyAsync_BothBelowThreshold_AnswersBestGroupBelowOneHalf
+              - OnnxClassifier_ClassifyAsync_BothBelowThreshold_AnswersPartOfSpeech
               - OnnxClassifier_ClassifyAsync_LemmaWithoutGroups_StepsFromSenseToPartOfSpeech
 
           - id: WordSense-Onnx-Candidates

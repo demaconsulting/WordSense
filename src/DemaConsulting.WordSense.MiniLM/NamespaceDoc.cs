@@ -21,10 +21,12 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     </para>
 ///     <para>
 ///     Start with <see cref="MiniLMWordSenseModel"/>: create it, call <c>EnsureModelAsync</c>, then <c>ClassifyAsync</c>.
-///     In this version <c>ClassifyAsync</c> does not read the model files: <c>MiniLMWordSenseModel</c> composes its
-///     encoder model with the Basic model as the fallback (see <c>FallbackWordSenseModel</c>), and the scoring of fine senses with the
-///     encoder is not part of this version, so every ambiguous word is answered by the Basic model at the part-of-speech
-///     level. The files are described in the repository at
+///     <c>MiniLMWordSenseModel</c> composes its encoder model with the Basic model as the fallback (see
+///     <c>FallbackWordSenseModel</c>). The encoder model scores the fine senses of the 20 lemmas that this version has
+///     weights for and answers them at the sense, group or part-of-speech level, whichever its per-lemma thresholds
+///     support; every other ambiguous word is answered by the Basic model at the part-of-speech level. A text that has no
+///     trained lemma with several senses is classified without reading the model files, and a text that has one ensures
+///     them on first use. The files are described in the repository at
 ///     https://github.com/demaconsulting/WordSense/tree/main/model/all-MiniLM-L6-v2-int8. The model identifier
 ///     (<c>ModelId</c>) is <c>all-MiniLM-L6-v2-int8</c>; it names the store folder and the folder on a mirror. The
 ///     model is uncased: its tokenizer lower-cases the text, so the case of your words never changes its answer.
@@ -60,10 +62,12 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     </para>
 ///     <para>
 ///     Results: <c>ClassifyAsync</c> returns one <c>ClassifyResult</c> per word, with the probability of every analysis
-///     of the word. In this version a word with one analysis and one sense is answered by the encoder model at the
-///     <c>Sense</c> level with confidence 1, and every other known word by the Basic model at the <c>PartOfSpeech</c>
-///     level with the probability of its selected analysis as the confidence (not the scale of the encoder scores of a
-///     later version, so do not tune a threshold on it for another model), without scored senses. An unknown word has no
+///     of the word. A word with one analysis and one sense is answered by the encoder model at the
+///     <c>Sense</c> level with confidence 1; a trained lemma by the encoder model at the <c>Sense</c>, <c>Group</c> or
+///     <c>PartOfSpeech</c> level with the probability of the answer at that level as the confidence, and its ranked
+///     senses listed in every analysis; every other known word by the Basic model at the <c>PartOfSpeech</c>
+///     level with the probability of its selected analysis as the confidence (not the scale of the encoder, so do not
+///     tune a threshold on it for another model), without scored senses. An unknown word has no
 ///     <c>Details</c>, the <c>None</c> level and confidence 0. A low confidence still carries the best part of speech.
 ///     </para>
 ///     <para>

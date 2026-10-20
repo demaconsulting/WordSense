@@ -43,11 +43,11 @@ A trained word is answered at the sense level when its fine margin reaches the l
 (`OnnxClassifier_ClassifyAsync_MarginAboveFineThreshold_AnswersSense`), otherwise, for a lemma that has groups and a
 best sense in a group, at the group level, with the group id only, when its group
 margin reaches the group threshold
-(`OnnxClassifier_ClassifyAsync_FineBelowAndGroupAboveThreshold_AnswersGroup`) and with a lower confidence when it does
-not (`OnnxClassifier_ClassifyAsync_BothBelowThreshold_AnswersBestGroupBelowOneHalf`); a lemma without groups steps from
+(`OnnxClassifier_ClassifyAsync_FineBelowAndGroupAboveThreshold_AnswersGroup`) and otherwise at the part of speech level
+(`OnnxClassifier_ClassifyAsync_BothBelowThreshold_AnswersPartOfSpeech`); a lemma without groups steps from
 the sense to the part of speech, never to a group
 (`OnnxClassifier_ClassifyAsync_LemmaWithoutGroups_StepsFromSenseToPartOfSpeech`). A known word is never answered at
-the level none. These scenarios belong to the increment that adds the scoring of fine senses with the encoder.
+the level none.
 
 #### Analyses and Senses Are Ranked and Sum to One
 

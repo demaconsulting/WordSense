@@ -153,8 +153,8 @@ analyses at the part of speech level, and the Basic model of a composition choos
      analysis with its probability and, in each, the senses with their probabilities given the analysis (softmax-
      normalized fine scores, summing to one, whatever the level), and answers at the finest level whose per-lemma
      threshold is met: the fine sense (level `Sense`, with its group id when the sense is in a group), else, for a
-     lemma that has groups and a best sense in a group, the group (level `Group`, with a lower confidence when the
-     group threshold is not met either), else the part of speech (level `PartOfSpeech` with a low confidence). A word
+     lemma that has groups and a best sense in a group, the group (level `Group`, when the group threshold is met), else
+     the part of speech (level `PartOfSpeech`, with the ranked senses still listed). A word
      whose lemma has no weights, or for which the encoder gave no usable vector, is answered from the lexicon alone:
      the analyses are equally likely, the first is selected, no senses are scored, and the level is `PartOfSpeech`.
 5. A composite model (`FallbackWordSenseModel`) answers each word with the complete result of its primary model when

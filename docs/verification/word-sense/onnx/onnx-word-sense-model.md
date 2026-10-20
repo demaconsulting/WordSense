@@ -34,8 +34,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
   (`UntrainedAmbiguousWords_AnswerPartOfSpeechWithoutModelFiles`): `ClassifyAsync(["so", "will"])` on a model whose
   directory does not exist returns for each word its lexicon analyses (equally likely, the first selected) at the part
   of speech level, with no scored senses, no group or sense id and the probability of the selected analysis as
-  confidence, with no ensure and no first-sense guess; in the current version the same holds for every ambiguous word,
-  and when the scoring of fine senses is added a word with several senses and weights (`record`) still ensures the files
+  confidence, with no ensure and no first-sense guess; the same holds for every ambiguous word whose lemma has no
+  trained weights, while a word with several senses and weights (`back`) ensures the files
   (`MissingDirectory_ThrowsFileNotFound`).
 - **Lazy ensure** (scoring increment): `ClassifyAsync` on an ambiguous word without a prior `EnsureModelAsync` ensures
   the files by itself (default settings) and classifies; a missing directory throws `FileNotFoundException`.

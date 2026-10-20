@@ -62,15 +62,15 @@ internal static class BasicModelBuilder
             output.WriteLine(await WriteUdCountsAsync(udCache, udDirectory, cancellationToken).ConfigureAwait(false));
         }
 
-        var inventory = SenseInventory.ReadDirectory(Path.Join(corpus, "senses"));
+        var inventory = LegacySenseInventory.ReadDirectory(Path.Join(corpus, BasicTuner.LegacyFolder, "senses"));
         var labels = AnalysisLabels.Load(inventory, corpus);
-        var anchors = Corpus.ReadDirectory(Path.Join(corpus, "anchors"));
-        var holdout = Corpus.ReadDirectory(Path.Join(corpus, "holdout"));
-        var formsDirectory = Path.Join(corpus, "forms");
+        var anchors = LegacyCorpus.ReadDirectory(Path.Join(corpus, BasicTuner.LegacyFolder, "anchors"));
+        var holdout = LegacyCorpus.ReadDirectory(Path.Join(corpus, BasicTuner.LegacyFolder, "holdout"));
+        var formsDirectory = Path.Join(corpus, BasicTuner.LegacyFolder, "forms");
         var forms = Directory.Exists(formsDirectory)
             ? Directory.GetFiles(formsDirectory, "*.tsv").OrderBy(f => f, StringComparer.Ordinal).SelectMany(Corpus.ReadForms).ToList()
             : [];
-        Corpus.EnsureDisjoint(anchors, holdout);
+        LegacyCorpus.EnsureDisjoint(anchors, holdout);
         inventory.Validate(anchors, holdout, forms);
 
         var data = BasicTrainer.Train(UdCounts.Read(udDirectory), key => WordLexicon.TryLookup(key, out var found) ? found : [], anchors, inventory, labels, BasicHyperparameters.Default);

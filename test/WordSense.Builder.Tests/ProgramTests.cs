@@ -1,3 +1,4 @@
+using DemaConsulting.WordSense;
 using DemaConsulting.WordSense.Basic;
 
 namespace WordSense.Builder.Tests;
@@ -23,12 +24,21 @@ public sealed class ProgramTests : IDisposable
         return (code, output.ToString(), error.ToString());
     }
 
+    private string PrepareLegacyCorpus()
+    {
+        _dir.Write("corpus/legacy/senses/s.tsv", TestDirectory.SensesHeader + "walk\tnoun\tnoun\t\t\nwalk\tverb\tverb\t\t\n");
+        _dir.Write("corpus/migration/legacy-class-map.tsv", "class_id\tkind\tlemma\tpos\tmeaning\trespelling\tsense_count\tsense_id\tgroup_id\tentry_id\tentry_lemma\tentry_pos\tfeatures\n");
+        _dir.Write("corpus/legacy/anchors/a.tsv", "walk\tverb\tThey will {walk} home.\nwalk\tnoun\tThe {walk} was long.\n");
+        _dir.Write("corpus/legacy/holdout/h.tsv", "walk\tverb\tYou should {walk} more.\n");
+        return Path.Join(_dir.Root, "corpus");
+    }
+
     private string PrepareCorpus()
     {
-        _dir.Write("corpus/senses/s.tsv", TestDirectory.SensesHeader + "walk\tnoun\tnoun\t\t\nwalk\tverb\tverb\t\t\n");
-        _dir.Write("corpus/migration/legacy-class-map.tsv", "class_id\tkind\tlemma\tpos\tmeaning\trespelling\tsense_count\tsense_id\tgroup_id\tentry_id\tentry_lemma\tentry_pos\tfeatures\n");
-        _dir.Write("corpus/anchors/a.tsv", "walk\tverb\tThey will {walk} home.\nwalk\tnoun\tThe {walk} was long.\n");
-        _dir.Write("corpus/holdout/h.tsv", "walk\tverb\tYou should {walk} more.\n");
+        var verb = SenseFixtures.Senses("walk", PartOfSpeech.Verb, 1)[0];
+        var noun = SenseFixtures.Senses("walk", PartOfSpeech.Noun, 1)[0];
+        _dir.Write("corpus/anchors/a.tsv", $"walk\t{verb.SenseId}\tVerb\tThey will {{walk}} home.\nwalk\t{noun.SenseId}\tNoun\tThe {{walk}} was long.\n");
+        _dir.Write("corpus/holdout/h.tsv", $"walk\t{verb.SenseId}\tVerb\tYou should {{walk}} more.\n");
         return Path.Join(_dir.Root, "corpus");
     }
 
@@ -215,12 +225,12 @@ public sealed class ProgramTests : IDisposable
     }
 
     /// <summary>
-    ///     The train-basic command trains a loadable table from a tiny corpus and treebank counts.
+    ///     The train-basic command trains a loadable table from a tiny legacy corpus and treebank counts.
     /// </summary>
     [Fact]
     public async Task WordSenseBuilder_Program_TrainBasic_TinyCorpus_WritesLoadableTable()
     {
-        var corpus = PrepareCorpus();
+        var corpus = PrepareLegacyCorpus();
         var sentences = new List<UdSentence>();
         for (var i = 0; i < 4; i++)
         {
@@ -239,13 +249,13 @@ public sealed class ProgramTests : IDisposable
     }
 
     /// <summary>
-    ///     A corpus whose anchors name a sense that the inventory lacks makes train-basic fail with an error.
+    ///     A legacy corpus whose anchors name a class that the inventory lacks makes train-basic fail with an error.
     /// </summary>
     [Fact]
     public async Task WordSenseBuilder_Program_TrainBasic_InconsistentCorpus_ReportsError()
     {
-        var corpus = PrepareCorpus();
-        _dir.Write("corpus/anchors/a.tsv", "walk\tbogus\tThey will {walk} home.\n");
+        var corpus = PrepareLegacyCorpus();
+        _dir.Write("corpus/legacy/anchors/a.tsv", "walk\tbogus\tThey will {walk} home.\n");
         UdCounts.Count([new UdSentence(["the", "walk"], [PosTag.Determiner, PosTag.Noun])]).Write(Path.Join(corpus, "ud"));
 
         var (code, _, error) = await RunAsync("train-basic", "--repository", _dir.Root, "--corpus", corpus, "--output", Path.Join(_dir.Root, "basic.bin"));
@@ -361,7 +371,7 @@ public sealed class ProgramTests : IDisposable
     {
         var data = ImageCompilerTests.WriteSmallData(_dir.Root);
         _dir.Write("data/gloss/g.tsv", "synset_id\tseq\ttext\n" + string.Concat(Enumerable.Range(1, 6).Select(i => $"oewn-{i}-{(i < 5 ? "n" : "v")}\t1\tgloss {i}\n")));
-        _dir.Write("corpus/senses/s.tsv", TestDirectory.SensesHeader + "bank\tnoun\tnoun\t\t\nbank\tverb\tverb\t\t\n");
+        _dir.Write("corpus/anchors/a.tsv", "bank\tbank#ridge\tNoun\tA {bank} here.\nbank\tbank#cover\tVerb\tThey {bank} it.\n");
         var corpus = Path.Join(_dir.Root, "corpus");
         var target = Path.Join(_dir.Root, "out", "appendix.md");
 

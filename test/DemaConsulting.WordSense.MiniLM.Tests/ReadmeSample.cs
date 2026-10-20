@@ -48,16 +48,18 @@ internal sealed class ReadmeSample
         // using var model = new BertBaseCasedWordSenseModel();  // using DemaConsulting.WordSense.BertBaseCased;
         await model.EnsureModelAsync();
 
-        // Classify the words of a sentence whose "bow" and "record" are heteronyms
-        var words = "The hunter fired an arrow from his bow at a deer so we will record a record".Split(' ');
+        // Classify the words of a sentence whose "bow" and "record" are heteronyms and whose "go", "back" and "home"
+        // are among the trained words of the encoder models
+        var words = "The hunter fired an arrow from his bow at a deer so we will record a record then go back home".Split(' ');
         var results = await model.ClassifyAsync(words);
 
-        // Print the part of speech (or unknown), the level, the confidence, the sense id (at the sense level) and the
-        // runner-up analysis (the second most probable part of speech, when the word has one)
+        // Print the part of speech (or unknown), the level, the confidence, the sense id (at the sense level) or the
+        // group id (at the group level) and the runner-up analysis (the second most probable part of speech, when the
+        // word has one)
         foreach (var result in results)
         {
             var pos = result.Details?.PartOfSpeech.ToString() ?? "unknown";
-            var sense = result.SenseId ?? "";
+            var sense = result.SenseId ?? result.GroupId ?? "";
             var next = result.Analyses.Length > 1
                 ? $"{result.Analyses[1].Details.PartOfSpeech} {result.Analyses[1].Probability:F2}"
                 : "";

@@ -9,16 +9,17 @@ of a word its probability, decides the fine sense, the group or the part of spee
 encoder's view of their context, and answers the words whose senses it does not score from the lexicon alone, so that
 a composite model can hand them to its fallback model.
 
-In the current version the classifier performs the lexicon resolution and the lexicon-only answer (steps 1, 2 and 8
-below) and runs no encoder; the steps that need the encoder (3 to 7) are the target state that the fine-sense scoring
-adds without changing the lifecycle code of `OnnxWordSenseModel`.
+The classifier performs the whole decision of the encoder models: the lexicon resolution and the lexicon-only answer
+(steps 1, 2 and 8 below) and, for the words whose lemma has trained weights, the encoder run and the scoring (steps 3
+to 7), without changing the lifecycle code of `OnnxWordSenseModel`.
 
 #### Data Model
 
-An internal sealed class that holds no mutable state; in the target state it holds the shared encoder and the weights
-table (`WeightedLemmaTable`) as well. It uses no other model: it never references the Basic package. Per call it builds
-one result per word and work lists: words answered at once, words pending an encoder decision and words answered from
-the lexicon alone.
+An internal sealed class that holds no mutable state; it holds the weights table (`WeightedLemmaTable`) and the
+encoder as a delegate (`PooledEncode`; the model supplies its shared `OnnxEncoder`, tests supply a fake, and a classifier
+without an encoder answers every word from the lexicon). It uses no other model: it never references the Basic
+package. Per call it builds one result per word and work lists: words answered at once, words pending an encoder
+decision and words answered from the lexicon alone.
 
 A result is a core `ClassifyResult(Word, IsKnown, Analyses, Details, Level, Confidence, GroupId, SenseId)`; the
 `Analyses` are `AnalysisCandidate(Details, Probability, Senses)` with `SenseCandidate(SenseId, Probability)` senses.
@@ -64,33 +65,40 @@ first in lexicon order is selected.
    mean, scale to unit length). A word without word pieces, or a vector whose dimension differs from the weights, is
    answered from the lexicon alone.
 5. **Form chooser.** For a pending form whose analyses belong to several lemmas (`left`, `bases`, `rows`, `found`) or
-   to several tenses of one lemma (`read`, `reread`), the chooser of the form scores its analysis labels with the
-   feature; the softmax of the scores gives each analysis its probability, and the margin `m` of the best label
-   against its own threshold `t` is checked. If `m >= t`, the analysis of the best label is selected and the lemma's
-   fine classifier then runs for it. If the margin is below the threshold the answer is the best label's analysis at
-   the `PartOfSpeech` level with its probability as the (low) confidence. A selected lemma without weights is
-   answered at the `PartOfSpeech` level in the same way.
+   to several tenses of one lemma (`read`, `reread`), the chooser of the form scores its labels with the feature. A
+   label stands for the analyses of its lemma, or, written `lemma/features`, for the analysis of that lemma with those
+   features (the table checks at load that every analysis of the form has a label and every label an analysis). The
+   softmax of the scores gives each label its probability, which is shared among its analyses in proportion to the mass
+   of their senses; the margin `m` of the best label against the threshold `t` of the chooser is checked. If `m >= t`,
+   the most probable analysis is selected and the fine classifier of its lemma then runs for it. If the margin is
+   below the threshold the answer is the most probable analysis at the `PartOfSpeech` level with its probability as the
+   (low) confidence. A selected lemma without weights is answered at the `PartOfSpeech` level in the same way. No
+   chooser is trained yet (the corpus has no anchors for these forms), so the embedded weights of the shipped models
+   carry none and such forms are answered from the lexicon (step 8) until the relabeled corpus provides them.
 6. **Levels, analyses and senses.** `LemmaWeights` scores the senses (one-versus-rest activation per fine sense) and
    derives the group scores for a lemma that has groups (the sum of the normalized fine probabilities per group, a
-   sense that is in no group standing alone). The softmax of the fine scores gives each sense a probability; the
-   probability of an analysis is the mass of its senses (or the chooser probability of a multi-lemma form), and the
+   sense that is in no group standing alone). The softmax of the fine scores of the senses of the word's analyses
+   gives each sense a probability; the probability of an analysis is the mass of its senses (or the chooser
+   probability of a multi-lemma form), shared equally by the analyses that have the same lemma and part of speech and
+   differ only in features (`cut` as an infinitive and as a past tense) unless the chooser tells them apart, and the
    probability of a sense given its analysis is its mass renormalized within the analysis. Every analysis lists its
    senses ranked by that probability (equal probabilities keep inventory order, nothing is truncated), whatever the
    level answered, so a consumer that maps senses to its own categories can sum `analysis.Probability *
-   sense.Probability` per category even when the answer is at the `PartOfSpeech` or the `Group` level. The level is
-   then decided for the selected analysis (the most probable one). Groups exist only where curated, so the levels nest
-   as part of speech, group (where one exists) and sense, and a model that is unsure between senses steps up to the
-   next level that exists:
+   sense.Probability` per category even when the answer is at the `PartOfSpeech` or the `Group` level. A sense without
+   a column in the weights is never scored, so an analysis whose senses all lack a column has probability 0. The level
+   is then decided for the selected analysis (the most probable one). Groups exist only where curated, so the levels
+   nest as part of speech, group (where one exists) and sense, and a model that is unsure between senses steps up to
+   the next level that exists and meets its threshold:
    - the best fine sense is answered at the `Sense` level when its margin is at least `t_fine` of the lemma and it
      lies in the selected analysis, with its group id when the sense is in a group;
-   - otherwise, for a lemma that has groups and a best sense that is in a group, the group is answered at the `Group`
-     level when its margin is at least `t_group`;
-   - otherwise, for such a lemma and sense, the group is still answered at the `Group` level, with the lower
-     confidence that its probabilities give;
-   - otherwise (the lemma has no groups, so it has no `t_group`, or the best sense is in no group) the selected analysis
-     is answered at the `PartOfSpeech` level with its probability as the confidence.
+   - otherwise, for a lemma that has groups and a best sense that is in a group (and lies in the selected analysis),
+     the group is answered at the `Group` level when the group margin (the probability of the group minus the largest
+     probability of any other group or single ungrouped sense) is at least `t_group`;
+   - otherwise (the lemma has no groups, the best sense is in no group, or the group margin is below `t_group`) the
+     selected analysis is answered at the `PartOfSpeech` level with its probability as the confidence. The ranked
+     senses of the analysis still show the likely senses and groups.
 
-   A threshold that is "never" is not reached by any finite margin. A single remaining sense has an infinite margin.
+   A threshold that is "never" is not reached by any margin. A single remaining sense has an infinite margin.
    The confidence is the probability of the answered level (the table in _Data Model_), so it is between 0 and 1,
    grows with the margin and is comparable only within one result.
 7. **Result.** The result carries the analyses, the selected analysis as `Details`, the level, the confidence and the
@@ -98,18 +106,18 @@ first in lexicon order is selected.
    `FallbackWordSenseModel` reads as "this model scored senses for the word": it then uses this result, and otherwise
    its fallback.
 8. **Lexicon-only answer.** For a known word whose senses are not scored (a word without usable weights, a word with a
-   single analysis and many senses and no weights, a word whose encoder vector is unusable, and every word in the
-   current version) the answer is built from the lexicon: every analysis has probability 1/n for n analyses (1 for a
+   single analysis and many senses and no weights, a form of several lemmas without a chooser, a word whose encoder
+   vector is unusable) the answer is built from the lexicon: every analysis has probability 1/n for n analyses (1 for a
    single analysis) in lexicon order, the first analysis is the selected one, the senses lists are empty (a word with a
    single analysis whose lemma and part of speech have exactly one sense lists that sense with probability 1), and the
    level is `Sense` for that single-analysis, single-sense word and otherwise `PartOfSpeech`, with the probability of the
    selected analysis as confidence. No fine sense is ever guessed. The classifier does not choose among the analyses
    itself: the model it is composed with does.
 
-`NeedsModel`, `HasMultiSenseWord` and `ResolveWithoutModel` (target state) let the model answer text without ensuring
-or opening anything: `NeedsModel` takes the weights table (the embedded weights, which need no model file) and is true
-only when a word is pending, that is, has several senses together with usable weights. Words that are unknown, have
-one analysis and one sense, or get the lexicon-only answer are answered without the encoder and without model files.
+`NeedsModel` and `ResolveWithoutModel` let the model answer text without ensuring or opening anything: `NeedsModel`
+takes the weights table (the embedded weights, which need no model file) and is true only when a word is pending, that
+is, has several senses together with usable weights (or a chooser). Words that are unknown, have one analysis and one
+sense, or get the lexicon-only answer are answered without the encoder and without model files.
 
 #### Error Handling
 
@@ -120,8 +128,8 @@ gets the lexicon-only answer. Encoder failures propagate.
 
 #### Dependencies
 
-`WordLexicon`, the core contracts and, in the target state, `OnnxEncoder` and `LemmaWeights` (weights table, feature
-computation, scoring, levels). No other model: the classifier does not reference the Basic package.
+`WordLexicon`, the core contracts, `OnnxEncoder` (through the `PooledEncode` delegate) and `LemmaWeights` (weights
+table, feature computation, scoring, levels). No other model: the classifier does not reference the Basic package.
 
 #### Callers
 
