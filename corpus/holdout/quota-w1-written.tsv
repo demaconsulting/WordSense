@@ -1,0 +1,677 @@
+call	call#accuse	Verb	The referee {called} the striker on faking an injury to win a penalty.
+call	call#accuse	Verb	The review {called} the manufacturer on overstating the battery's expected lifespan.
+call	call#call-option	Noun	She sold the {call} after the stock rose above the contract's exercise price.
+call	call#call-option	Noun	The brokerage confirmed that the {call} covered one hundred shares at a specified strike.
+call	call#card-bid	Verb	He {called} for another card instead of standing on his weak hand.
+call	call#card-bid	Verb	After counting the table, the dealer {called} for a show of hands.
+call	call#card-demand	Noun	The judge recorded the exact timing of the {call} for a show of hands.
+call	call#card-demand	Noun	Once the {call} for cards came, no player could change the announced bid.
+call	call#convene	Verb	The organization is {calling} delegates together to revise its bylaws.
+call	call#convene	Verb	The council {called} a public hearing on the proposed shelter.
+call	call#convene	Verb	Because the deadline moved, the project manager {called} a coordination meeting.
+call	call#convene	Verb	The minister {called} an interagency meeting to coordinate the response.
+call	call#convene	Verb	The residents {called} a town meeting to oppose the proposed landfill.
+call	call#cry	Noun	The protesters raised a single {call} against the proposed eviction.
+call	call#cry	Noun	A hoarse {call} from the gallery interrupted the minister's speech.
+call	call#cry-out	Verb	The goalkeeper {called} as the collision knocked the breath from him.
+call	call#cry-out	Verb	She {called} out as icy water rushed over her boots.
+call	call#demand	Noun	Her editorial became a powerful {call} for lawmakers to protect coastal wetlands.
+call	call#demand	Noun	The court heard a {call} from advocates demanding equal treatment.
+call	call#demand	Noun	Their petition added another {call} for transparent budgeting at city hall.
+call	call#lead-dance	Verb	At the festival, Marjorie {called} each figure clearly over the fiddle music.
+call	call#lead-dance	Verb	She {called} the next move while dancers formed two turning lines.
+call	call#lure	Verb	The hunter {called} softly like a mallard until the birds drifted closer.
+call	call#margin-call	Noun	The broker issued a {call} after the stock's sudden decline reduced collateral.
+call	call#margin-call	Noun	Falling technology shares left several traders facing a costly {call}.
+call	call#official-visit	Noun	The sales director scheduled a {call} on three major clients before departure.
+call	call#postpone	Verb	The school {called} off classes after a water main burst.
+call	call#postpone	Verb	Investors {called} off the launch ceremony when severe winds increased.
+call	call#program-command	Noun	This library exposes a {call} for retrieving the current system time.
+call	call#program-command	Noun	The virtual machine rejected the {call} because its arguments had incompatible types.
+call	call#read-aloud	Verb	The professor {called} attendance aloud and marked each response in her notebook.
+call	call#read-aloud	Verb	Before the exam, an assistant {called} the class list and noted late arrivals.
+call	call#read-aloud	Verb	The registrar {called} names aloud so students could correct enrollment errors.
+call	call#recall-loan	Verb	The bank {called} the loan after the borrower breached the repayment agreement.
+call	call#recall-loan	Verb	The borrower refinanced quickly when the lender {called} the loan.
+call	call#redeem	Verb	The prospectus specifies when the company may {call} each tranche.
+call	call#redeem	Verb	The issuer {called} the bonds five years before their scheduled maturity.
+call	call#referee	Verb	The umpire {called} the runner out after reviewing the close slide.
+call	call#referee	Verb	The official {called} a penalty for the deliberate handball.
+call	call#referee-decision	Noun	The captain accepted the referee's {call} without confronting the official.
+call	call#referee-decision	Noun	The referee reversed his {call} after the video review.
+call	call#wake	Verb	The babysitter {called} the children gently after they slept through the alarm.
+change	change#change-covering	Verb	We {changed} the protective film on the display before reopening the exhibit.
+change	change#change-money	Noun	The cashier placed the {change} beside the receipt instead of handing it over.
+change	change#change-money	Noun	After the purchase, the clerk counted the {change} aloud.
+change	change#change-money	Noun	The cashier handed me my {change} after I paid with a fifty-dollar bill.
+change	change#change-transport	Verb	She will {change} subway lines at the next platform.
+change	change#change-transport	Verb	To reach the island, visitors {change} ferries at the mainland terminal.
+change	change#change-transport	Verb	Passengers {changing} trains should follow the signs for the northern platform.
+change	change#currency-exchange	Noun	We stopped at a bank to get {change} for a hundred-euro note.
+change	change#currency-exchange	Noun	She tucked the remaining {change} from her currency exchange into her wallet.
+change	change#deepen-tone	Verb	The choir director noticed that his voice was {changing} during adolescence.
+change	change#deepen-tone	Verb	With age, the actor's speaking voice {changed} from bright to resonantly deep.
+change	change#mutual-exchange	Verb	At the reunion, old friends {changed} photographs and compared family news.
+change	change#mutual-exchange	Verb	They {changed} compliments before taking the stage.
+change	change#small-coins	Noun	He donated his accumulated {change} to the neighborhood food bank.
+end	end#communication-end	Noun	The translator listened carefully at her {end} of the telephone line.
+end	end#communication-end	Noun	The technician tested both {ends} before reopening the customer support line.
+end	end#conclude	Verb	The last question {ended} the examination before the students handed in their papers.
+end	end#defensive-end	Noun	The scout praised her instincts at {end} during the college playoffs.
+end	end#defensive-end	Noun	The team drafted a powerful athlete to fill its vacant {end} spot.
+end	end#end-lineman	Noun	The {end} shed two blockers before tackling the runner.
+end	end#end-lineman	Noun	At halftime, the injured {end} received treatment in the locker room.
+end	end#end-lineman	Noun	The crowd roared when the {end} forced a fumble near the goal line.
+end	end#remnant	Noun	A bin near the cutting table held {ends} of linen and denim.
+end	end#remnant	Noun	The designer sorted the remaining {ends} by color before beginning the collage.
+end	end#role	Noun	The committee assigned each member a specific {end}, so no essential task would be overlooked.
+end	end#role	Noun	Being a mentor means recognizing your {end} in a younger colleague's professional growth.
+end	end#role	Noun	The oldest sibling took her {end} seriously, organizing rides whenever their parents needed help.
+eye	eye#loop	Noun	The tailor marked the {eyes} along the coat before sewing on its decorative clasps.
+eye	eye#loop	Noun	A tiny {eye} in the sail accepted the line that secured it to the mast.
+face	face#accuse	Verb	She {faced} her roommate with the unpaid bills before renewing the lease.
+face	face#accuse	Verb	The detective {faced} the driver with contradictory accounts of the collision.
+face	face#accuse	Verb	An internal review {faced} the hospital with evidence of repeated scheduling violations.
+face	face#audacity	Noun	With remarkable {face}, the disgraced official requested another leadership position.
+face	face#expose	Verb	Before serving the dish, he {faced} the decorative side toward the guests.
+face	face#expose	Verb	The dealer slowly {faced} the final tile toward the waiting contestants.
+face	face#front	Noun	The old compass had a scratched {face}, but its needle still pointed north.
+face	face#front	Noun	The watchmaker replaced the cracked {face} without disturbing the tiny gears.
+face	face#grimace	Noun	The child made a dramatic {face} at the sight of steamed broccoli.
+face	face#standing	Noun	Her promotion gave her more {face} in a traditionally male profession.
+face	face#trim	Verb	The tailor will {face} the jacket's lapels with dark green silk.
+face	face#trim	Verb	The seamstress {faces} each sleeve opening with a narrow strip of satin.
+face	face#typeface	Noun	The logo's custom {face} was drawn specifically for the new brand.
+face	face#typeface	Noun	Readers found the condensed {face} difficult to read in long paragraphs.
+face	face#working-surface	Noun	A polished {face} on the skate blade reduced friction against the ice.
+face	face#working-surface	Noun	Engineers coated the cutting tool's {face} with a heat-resistant material.
+face	face#working-surface	Noun	The shovel's broad {face} sliced through the wet snow.
+feel	feel#discover-by-search	Verb	They {felt} their way across the unfamiliar room after the alarm failed.
+feel	feel#discover-by-search	Verb	In thick fog, the hikers {felt} their way toward the rope barrier.
+feel	feel#palpate	Verb	The nurse {felt} along his neck to check the enlarged lymph node.
+feel	feel#palpate	Verb	The midwife {felt} the mother's abdomen to assess the baby's position.
+feel	feel#palpate	Verb	She {felt} the sore muscle along her shoulder before applying an ice pack.
+feel	feel#sexual-stimulation	Noun	The passenger complained when another rider tried to get a {feel} on the packed bus.
+feel	feel#sexual-stimulation	Noun	That crude {feel} ended the date before dessert arrived.
+feel	feel#sexual-touch	Verb	He {felt} his partner's genitals only after she clearly invited the intimate touch.
+feel	feel#sexual-touch	Verb	He {felt} her breasts during the intimate scene, following the choreography and consent agreement.
+fight	fight#combat-match	Noun	The heavyweight {fight} drew a capacity crowd to the downtown arena.
+fight	fight#combat-match	Noun	Promoters announced a rematch after the controversial {fight}.
+fight	fight#competitiveness	Noun	The underdogs played with enough {fight} to unsettle the league leaders.
+fight	fight#competitiveness	Noun	The candidate's {fight} energized volunteers during the close primary race.
+figure	figure#envision	Verb	They {figured} the vacant lot as a public orchard.
+figure	figure#estimate	Verb	The committee {figures} public support remains stronger than expected.
+go	go#have-form	Verb	His account of the incident {went} roughly as follows, according to the police report.
+go	go#mdma-slang	Noun	At the warehouse rave, security confiscated packets labeled as {go} before admitting anyone.
+go	go#mdma-slang	Noun	Police reports linked the nightclub arrests to an illegal shipment of {go}.
+hand	hand#applause	Noun	Her teammates gave her a generous {hand} after she scored the winning goal.
+hand	hand#applause	Noun	With a smile, the presenter accepted the audience's {hand} and returned to her seat.
+hand	hand#bridge-player	Noun	The club welcomed a young {hand} who had learned bridge from her grandparents.
+hand	hand#bridge-player	Noun	Each {hand} kept careful notes about opponents' bids throughout the afternoon.
+hand	hand#clock-hand	Noun	At noon, both {hands} aligned perfectly at the top of the dial.
+hand	hand#deckhand	Noun	The captain called every {hand} on deck when the storm changed direction.
+hand	hand#escort	Verb	Two ushers {handed} the bride's parents down the aisle before the music started.
+hand	hand#farm-worker	Noun	The hired {hand} stayed late to finish repairing the chicken coop.
+hand	hand#farm-worker	Noun	Several {hands} gathered around the combine when its engine stopped.
+hand	hand#farm-worker	Noun	A skilled {hand} can harvest delicate berries without bruising them.
+hand	hand#forepaw	Noun	A chimpanzee's {hand} has an opposable thumb suited for climbing and handling objects.
+hand	hand#handbreadth	Noun	The gray gelding reached sixteen {hands} by the time he was fully grown.
+hand	hand#handwriting	Noun	The faded {hand} on the postcard remained legible despite the water damage.
+hand	hand#skill	Noun	They hired him because he has a reliable {hand} with electrical repairs.
+head	head#abscess-tip	Noun	He covered the infected area after noticing a new {head} at its center.
+head	head#abscess-tip	Noun	A firm {head} showed where the trapped pus had collected beneath the skin.
+head	head#animal	Noun	The auctioneer announced that the first {head} would enter the ring at noon.
+head	head#animal	Noun	A single {head} of alpaca stood apart from the rest of the herd.
+head	head#animal	Noun	The farm's insurance policy covers every {head} kept in the main barn.
+head	head#animal	Noun	The cattle dealer inspected one {head} after another before making an offer.
+head	head#animal	Noun	The rancher counted every {head} of cattle before moving the herd.
+head	head#arrow-tip	Noun	A painted {head} marked the direction of the trail on the sign.
+head	head#arrow-tip	Noun	At the compass point, the arrow's {head} indicated due north.
+head	head#crisis	Noun	The investigation came to a {head} when the missing records were discovered.
+head	head#crisis	Noun	Everything came to a {head} when the supplier canceled the contract.
+head	head#decapitate	Verb	The machine automatically {heads} and cleans the fish along the processing line.
+head	head#disk-head	Noun	Unlike a needle, the recording {head} never touches the disk while it reads the encoded patterns.
+head	head#disk-head	Noun	Several tiny {heads} swept across the platter surfaces as the storage array retrieved the requested records.
+head	head#drug-user	Noun	The nightclub's rehabilitation outreach team spoke privately with several {heads} about safer treatment options.
+head	head#drug-user	Noun	The clinic welcomed {heads} without judgment and connected them with physicians and counseling.
+head	head#drum-skin	Noun	The drummer tightened the {head} until each tap produced a crisp, resonant note.
+head	head#flower-cluster	Noun	The botanist counted each flower {head} before recording the plant's growth.
+head	head#foam	Noun	The brewer adjusted carbonation after tasters complained that the beer's {head} vanished too quickly.
+head	head#forefront	Noun	The sculpture stood at the {head} of the gallery, closest to visitors entering the room.
+head	head#forefront	Noun	The exhibit's first case occupied the {head} of the long rectangular hall.
+head	head#front	Noun	At the {head} of the line, the color guard saluted the reviewing commander.
+head	head#front	Noun	The archers stationed themselves near the {head} of the formation before dawn.
+head	head#front	Noun	At the {head} of the column, a surveyor marked the route with bright flags.
+head	head#front	Noun	The lead section held the {head} of the formation while the rest regrouped.
+head	head#front	Noun	The general placed experienced soldiers at the {head} of the marching column.
+head	head#head-length	Noun	He estimated the doorway was about eight {heads} high using the old unit.
+head	head#head-length	Noun	The statue measured three {heads} from its base to the figure's crown.
+head	head#issue	Noun	The committee returned to the {head} of whether the reservoir should be expanded.
+head	head#lead-group	Verb	The scholarship student {headed} her class while mentoring classmates after school.
+head	head#lead-group	Verb	By midseason, the rookie {headed} the division in stolen bases.
+head	head#lead-group	Verb	The veteran striker {heads} the league in goals and organizes every attack.
+head	head#muscle-head	Noun	The surgeon detached the muscle's {head} from the upper arm bone during the repair.
+head	head#muscle-head	Noun	Researchers compared blood flow at the muscle {head} and its lower attachment.
+head	head#oral-sex	Noun	The film's adult dialogue referred to {head}, though the scene itself remained offscreen.
+head	head#oral-sex	Noun	A warning before the program noted its explicit mention of {head}.
+head	head#originate	Verb	The river {headed} in a glacier-fed lake high above the valley.
+head	head#originate	Verb	Surveyors confirmed that the creek {headed} in a spring several miles uphill.
+head	head#person	Noun	The shelter charges five dollars per {head} for the community dinner.
+head	head#pressure	Noun	The gauge measured pressure {head} at the base of the cooling tower.
+head	head#pressure	Noun	Operators monitored the oil {head} while adjusting the pipeline valves.
+head	head#pressure	Noun	Scientists compared fluid {head} on both sides of the barrier.
+head	head#progress	Noun	The tug made little {head} against the strong river current.
+head	head#progress	Noun	The stalled bill gained {head} when several independent lawmakers joined its sponsors.
+head	head#round-mass	Noun	Through the telescope, astronomers watched the bright {head} of the comet approach the sun.
+head	head#school-principal	Noun	The {head} of the elementary school approved the playground renovation.
+head	head#school-principal	Noun	Teachers asked the {head} for more planning time before the new curriculum began.
+head	head#ship-toilet	Noun	On the overnight ferry, passengers shared a cramped {head} below deck.
+head	head#ship-toilet	Noun	The sailor scrubbed the boat's {head} before guests came aboard.
+head	head#source	Noun	The survey crew camped near the stream's {head} to measure seasonal flow.
+head	head#source	Noun	The river's {head} lies in a protected forest above the reservoir.
+head	head#source	Noun	Volunteers cleared litter from the trail leading to the {head} of the creek.
+head	head#steer	Verb	A trained guide {headed} the horses away from the unstable bridge.
+head	head#steer	Verb	The shepherd {headed} the flock toward fresh pasture before sunset.
+head	head#steer	Verb	The expedition leader {heads} the team toward the glacier's safest crossing.
+head	head#striking-part	Noun	The pick's narrow {head} chipped stone from the quarry wall.
+head	head#swell	Verb	Under warm conditions, the young cabbage plants {headed} within weeks.
+head	head#swell	Verb	The brewer watched the foam {head} as fermentation grew more active.
+head	head#top	Noun	Water collected around the {head} of the fountain's central column.
+increase	increase#addition	Noun	The package contained an {increase} of two replacement valves.
+increase	increase#addition	Noun	An {increase} of eleven volunteers filled every remaining shift.
+increase	increase#addition	Noun	The gardener made an {increase} of four planting beds beside the greenhouse.
+lead	lead#aim-correction	Noun	The artillery crew calculated the {lead} before firing at the moving vehicle.
+lead	lead#aim-correction	Noun	The turret computer automatically set the correct {lead} for the drone.
+lead	lead#aim-correction	Noun	The hunter's excessive {lead} sent the arrow ahead of the bird.
+lead	lead#animal-leash	Noun	A reflective {lead} made the dog visible during evening walks.
+lead	lead#base-runner-position	Noun	The catcher noticed the runner's {lead} and signaled for a pickoff throw.
+lead	lead#base-runner-position	Noun	He shortened his {lead} when the pitcher began the delivery.
+lead	lead#clue	Noun	The unusual invoice gave auditors a {lead} that several transactions had been falsified.
+lead	lead#clue	Noun	A fragment of blue paint offered investigators a {lead} about the vehicle involved.
+lead	lead#clue	Noun	A receipt from the harbor provided a crucial {lead} about where the stolen paintings had gone.
+lead	lead#direct-music	Verb	The veteran conductor will {lead} the orchestra through a demanding symphonic finale.
+lead	lead#direct-music	Verb	The guest musician will {lead} tonight's concert while the regular director recovers.
+lead	lead#direct-music	Verb	He {leads} a community orchestra that welcomes players of every experience level.
+lead	lead#direct-music	Verb	The orchestra's principal conductor {leads} the group with disciplined, economical movements.
+lead	lead#direct-music	Verb	He {led} the choir into the hymn's final refrain.
+lead	lead#ignition-timing	Noun	Incorrect {lead} caused the vintage car to knock whenever it climbed a hill.
+lead	lead#ignition-timing	Noun	Changes in altitude required the pilot to verify the engine's {lead}.
+lead	lead#introduction	Noun	Her humorous {lead} eased readers into an otherwise grim report about the factory closure.
+lead	lead#introduction	Noun	He drafted three versions of the {lead} before settling on a sharper opening.
+lead	lead#introduction	Noun	Editors shortened the {lead} to fit the morning edition's narrow column.
+lead	lead#jumper-cable	Noun	The electrician measured resistance through the {lead} before approving the repair.
+lead	lead#jumper-cable	Noun	He coiled the {lead} neatly after the tractor finally started.
+lead	lead#main-actor	Noun	The director adjusted several scenes to showcase her strengths as the {lead}.
+lead	lead#main-actor	Noun	Two {leads} shared the stage in the musical's alternating performances.
+lead	lead#main-story	Noun	The website's {lead} reported the emergency evacuation before officials held a press conference.
+lead	lead#main-story	Noun	International newspapers treated the ceasefire announcement as their {lead} the following morning.
+lead	lead#opening-card	Noun	North's unexpected {lead} forced declarer to reconsider the entire play.
+lead	lead#opening-card	Noun	Once the {lead} was placed, each player followed the suit when possible.
+lead	lead#printing-strip	Noun	Old printing manuals explain how printers trimmed {leads} to adjust line spacing.
+lead	lead#printing-strip	Noun	The restoration team identified the narrow metal pieces as printer's {leads}.
+lead	lead#race-advantage	Noun	The favorite's {lead} vanished when rain began falling on the road.
+lead	lead#race-advantage	Noun	Coaches urged the runner not to waste energy defending her {lead}.
+lead	lead#race-advantage	Noun	The rider's three-second {lead} survived a puncture in the closing stretch.
+lead	lead#route	Verb	The ventilation duct {leads} warm air from the furnace to each room.
+lead	lead#tip	Noun	Their sales team tracks each {lead} from the first inquiry to a contract.
+lead	lead#tip	Noun	Several online inquiries turned into qualified {leads} for the small business.
+lead	lead#winning-score	Noun	The basketball team lost its {lead} in the closing seconds.
+lead	lead#winning-score	Noun	Strong defense helped the underdogs maintain their surprising {lead}.
+leave	leave#bequeath	Verb	Rather than sell the property, they will {leave} it to their children.
+leave	leave#bequeath	Verb	The widow {left} her wedding ring to her daughter-in-law.
+leave	leave#forget-behind	Verb	We {left} the tickets at home and missed the opening performance.
+leave	leave#forget-behind	Verb	She {left} the keys inside the locked car.
+leave	leave#forget-behind	Verb	He {left} his prescription at the pharmacy and had to go back.
+leave	leave#impart	Verb	The guide {left} visitors with a deeper understanding of the marsh ecosystem.
+leave	leave#leave-behind	Verb	The accident victim {left} behind a grieving spouse and three children.
+leave	leave#leave-behind	Verb	When he died, he {left} behind a close-knit family.
+leave	leave#leave-behind	Verb	The musician {left} behind a wife who continued managing the foundation.
+leave	leave#leave-behind	Verb	At his death, the doctor {left} behind a partner and an elderly mother.
+lie	lie#place	Noun	Aerial photographs clarified the {lie} of the river through the floodplain.
+like	like#alike	Adjective	Their political speeches were {like} in tone, structure, and choice of examples.
+like	like#alike	Adjective	The laboratory samples were {like} in appearance but came from different rivers.
+like	like#comparable	Adjective	The twins received {like} assignments, with identical deadlines and materials.
+like	like#comparable	Adjective	The two classrooms have {like} dimensions, including matching windows and storage alcoves.
+like	like#equal-value	Adjective	The two grants provided a {like} amount of funding for equipment.
+like	like#equal-value	Adjective	The two teams recorded a {like} number of fouls during the match.
+like	like#equal-value	Adjective	Both candidates spent a {like} sum on regional advertising.
+like	like#regard	Verb	How do investors {like} the company's plan to enter foreign markets?
+like	like#regard	Verb	How will residents {like} the proposed changes to bus routes?
+like	like#similar	Adjective	The tailor displayed suits of {like} design in the front window.
+like	like#similar	Adjective	Several {like} incidents had occurred near the railway that summer.
+like	like#similar	Adjective	The team recruited players with {like} experience in defensive positions.
+like	like#similar	Adjective	The committee invited speakers with {like} views on community planning.
+like	like#want	Verb	Would you {like} coffee or tea with your breakfast?
+like	like#want	Verb	The travelers would {like} directions to the nearest train station.
+line	line#boundary-mark	Noun	The ball bounced off the touch {line} and returned to play.
+line	line#communication-channel	Noun	Investigators traced the leak through an unauthorized {line} into the database.
+line	line#credit-limit	Noun	The company negotiated a larger credit {line} to finance seasonal inventory.
+line	line#credit-limit	Noun	The mortgage broker compared lenders by interest rates and credit {lines}.
+line	line#delineate	Verb	Artists {lined} the oval in charcoal before adding shading inside it.
+line	line#delineate	Verb	The technician {lines} the circuit path on the inspection diagram.
+line	line#fabric-reinforcement	Verb	We {lined} the basket with canvas so it could carry heavier tools.
+line	line#fabric-reinforcement	Verb	She {lined} the old book with cloth before rebinding its cracked cover.
+line	line#factory-conveyor	Noun	The new {line} carries appliances through welding, painting, and final testing.
+line	line#factory-conveyor	Noun	Managers slowed the {line} when shipments of circuit boards arrived late.
+line	line#fill-plentifully	Verb	The fraudulent charity helped its founders {line} their pockets instead of aiding families.
+line	line#lineage	Noun	Several royal {lines} competed for the throne after the ruler died without an heir.
+line	line#lineage	Noun	Ancestors from the same {line} had occupied the coastal settlement for centuries.
+line	line#melody	Noun	Her vocal {line} rises gently before resolving on the lower note.
+line	line#melody	Noun	Two intertwining {lines} make the duet sound richer than either part alone.
+line	line#pipeline	Noun	Sensors along the {line} detected an abrupt drop in pressure.
+line	line#print-measure	Noun	Her obituary exceeded the paid allowance by three printed {lines}.
+line	line#print-measure	Noun	The charity reserved six {lines} in the local paper's community section.
+line	line#product-line	Noun	Customers can choose among three {lines} of office furniture.
+line	line#product-line	Noun	The company protects its luxury {line} by avoiding deep discounts.
+line	line#progression	Noun	One decision set off a {line} of consequences that lasted for years.
+line	line#progression	Noun	The court reconstructed the {line} of actions that preceded the accident.
+line	line#sales-pitch	Noun	He abandoned the usual {line} when the buyer demanded specific numbers.
+line	line#spectral-line	Noun	In the solar spectrum, every {line} carries information about an element.
+line	line#spectral-line	Noun	The calibration lamp supplied a reference {line} before observations began.
+line	line#spectral-line	Noun	A redshift moved the observed {line} toward a longer wavelength.
+live	live#current	Adjective	The proposal may look outdated, but its central question remains {live}.
+live	live#current	Adjective	The proposed zoning change remains a {live} issue in the neighborhood.
+live	live#elastic	Adjective	A {live} tennis ball bounced high on the hard court.
+live	live#elastic	Adjective	Her curls looked {live} and springy after the conditioning treatment.
+live	live#energized	Adjective	A {live} ember rolled across the porch and burned the wooden step.
+live	live#energized	Adjective	A {live} coal glowed faintly long after the flames disappeared.
+live	live#eruptive	Adjective	Villagers evacuated after ash began rising from the {live} crater.
+live	live#eruptive	Adjective	Emergency planners updated evacuation routes near the {live} volcano.
+live	live#ready-for-use	Adjective	The editor marked the approved article as {live} on the news site.
+live	live#ready-for-use	Adjective	The team restored the {live} service before customers noticed the outage.
+live	live#resonant	Adjective	Her trumpet filled the {live} room with warm, lingering overtones.
+live	live#resonant	Adjective	The singer adjusted her technique for the room's {live} reverberation.
+live	live#thrive	Verb	They {live} richly through music, travel, and close friendships rather than wealth.
+mean	mean#average	Adjective	Their {mean} household spends less on transportation than comparable families nearby.
+mean	mean#average	Adjective	Her {mean} grade concealed a wide gap between excellent essays and failed quizzes.
+mean	mean#average	Adjective	He was of {mean} build, so the tailor made only minor adjustments.
+mean	mean#average	Adjective	The river's {mean} flow has declined since upstream farms expanded irrigation.
+mean	mean#average	Adjective	Researchers selected a {mean} dose that would reveal effects without causing distress.
+mean	mean#matter	Verb	That tiny gesture {meant} more to her than anyone in the room realized.
+mean	mean#matter	Verb	My grandmother's advice still {means} a great deal to me.
+mean	mean#matter	Verb	Your support {meant} everything during the months after my surgery.
+mean	mean#paltry	Adjective	Workers protested after management announced a {mean} raise for the coming year.
+mean	mean#paltry	Adjective	They sold the antique for a {mean} price compared with its appraised value.
+mean	mean#poverty-stricken	Adjective	Their {mean} farm produced barely enough food for the household.
+mean	mean#stingy	Adjective	Even wealthy relatives considered him {mean} with money.
+mean	mean#superb	Adjective	The repair crew did a {mean} job restoring the historic windows.
+mean	mean#superb	Adjective	The apprentice showed {mean} skill after only six months of training.
+mean	mean#worthless	Adjective	Her old coupon was {mean} because the store had closed permanently.
+move	move#follow-procedure	Verb	The appeal {moved} through each administrative stage without an unusual delay.
+move	move#follow-procedure	Verb	The software {moved} through its startup routine before displaying the dashboard.
+move	move#follow-procedure	Verb	She {moved} through the certification process without skipping any required course.
+move	move#follow-procedure	Verb	The review {moved} according to the timetable set by the ethics board.
+move	move#follow-procedure	Verb	The mediator {moved} through the agreed agenda despite repeated side arguments.
+move	move#game-turn	Verb	You may {move} only after drawing a card from the deck.
+move	move#game-turn	Verb	The rules allow each participant to {move} twice during that phase.
+move	move#motility	Noun	Researchers isolated a rapid {move} of the cilia along the cell surface.
+move	move#motility	Noun	The surgeon watched for any involuntary {move} of the patient's fingers.
+move	move#motility	Noun	One small {move} of the lever released the spring without shifting the housing.
+move	move#play	Noun	His next {move} in the card game forced us to discard valuable cards.
+move	move#propose-motion	Verb	The chair {moved} that the committee approve the revised safety rules.
+move	move#relocation	Noun	The sudden {move} left the old storefront empty by Monday.
+move	move#sell	Verb	To {move} the old furniture, the dealer offered free delivery.
+move	move#sell	Verb	Local restaurants {move} more specialty sauces when gift baskets include recipe cards.
+move	move#sell	Verb	Seasonal demand usually {moves} patio furniture well before summer officially begins.
+move	move#take-action	Verb	The school {moves} cautiously when allegations involve students or staff.
+move	move#take-action	Verb	The team is {moving} aggressively to resolve customer complaints this quarter.
+move	move#take-action	Verb	The department {moves} cautiously whenever a complaint involves confidential personnel records.
+only	only#ultimately	Adverb	The campaign promised renewal; it {only} produced another year of gridlock.
+only	only#ultimately	Adverb	The new route seemed faster, but it {only} added congestion near downtown.
+part	part#dramatic-role	Noun	The actor wore elaborate makeup to transform herself for the {part}.
+part	part#dramatic-role	Noun	Casting directors offered her a supporting {part} in the new drama.
+part	part#hair-part	Noun	The stylist created two clean {parts} for the braided hairstyle.
+part	part#hair-part	Noun	She changed her {part} before the wedding photographs.
+part	part#hair-part	Noun	The child asked whether a zigzag {part} would work for picture day.
+part	part#leave	Verb	Their caravan {parted} for the desert with fresh water and repaired tires.
+part	part#leave	Verb	She quietly {parted} for home after the neighborhood meeting ended.
+part	part#musical-voice	Noun	A substitute received the soprano {part} and joined the rehearsal without delay.
+part	part#musical-voice	Noun	The composer gave the percussionists a sharply syncopated {part} near the ending.
+part	part#musical-voice	Noun	The organist highlighted the chorale's inner {part} during the Sunday service.
+part	part#partly	Adverb	Their plans were {part} disrupted by a sudden change in airline schedules.
+part	part#partly	Adverb	The painting is {part} obscured by a layer of old varnish.
+part	part#partly	Adverb	The garden remained {part} shaded by the tall apartment building.
+part	part#role-function	Noun	The goalkeeper's {part} was to organize the defense and watch the corners.
+part	part#role-function	Noun	An usher's {part} includes helping late arrivals find their seats quietly.
+part	part#share	Noun	The children divided the inheritance fairly, and each received a {part} of the farm.
+part	part#share	Noun	Our department secured its {part} of the research budget for next year.
+part	part#share	Noun	The contract assigns the photographer a {part} of merchandise sales.
+part	part#share	Noun	He gave his {part} of the refund to a friend who needed it.
+part	part#share	Noun	The partners divided their {parts} of the restaurant after selling it.
+pay	pay#reciprocate	Verb	The volunteers {paid} the community's welcome by restoring its neglected playground.
+pay	pay#reciprocate	Verb	He always {pays} a favor with another favor rather than letting gratitude fade.
+pay	pay#reciprocate	Verb	Our department {paid} the neighboring lab's assistance by sharing its equipment.
+pay	pay#reciprocate	Verb	The children {paid} their grandmother's patience with an afternoon of cheerful chores.
+pay	pay#reciprocate	Verb	The student {paid} her tutor's encouragement with remarkable persistence.
+pay	pay#repay	Verb	No gift could fully {pay} the nurse back for staying through the long night.
+place	place#aim	Verb	She {placed} her criticism squarely on the policy rather than the junior staff.
+place	place#aim	Verb	He {placed} the flashlight beam toward the trail where the hikers had disappeared.
+place	place#aim	Verb	The archer {placed} his shot toward the center of the distant target.
+place	place#assign-location	Verb	The company {placed} its customer support center in a smaller city.
+place	place#blank-space	Noun	Enter the access code in the highlighted {place} on the screen.
+place	place#blank-space	Noun	The online survey opens a text {place} after each rating question.
+place	place#blank-space	Noun	After crossing out the error, he left a clean {place} for the correction.
+place	place#estimate	Verb	Officials {placed} the crowd size at nearly fifty thousand people.
+place	place#estimate	Verb	Scientists {placed} the glacier's retreat at several meters each year.
+place	place#estimate	Verb	Experts {placed} the storm's peak winds above one hundred miles per hour.
+place	place#finish-in-race	Verb	He wagered on number six to {place} and collected when the horse finished second.
+place	place#finish-in-race	Verb	Their veteran horse was expected to {place} in the regional steeplechase.
+place	place#grade	Verb	Please {place} these candidates in order of experience before tomorrow's interviews.
+place	place#grade	Verb	After comparing the evidence, the panel {placed} her performance above last year's winner.
+place	place#grade	Verb	The auditor {placed} the branch offices by profitability after reviewing their quarterly statements.
+place	place#home	Noun	The landlord inspected our {place} before renewing the annual lease.
+place	place#identify	Verb	She {places} the quotation as coming from a letter rather than the published memoir.
+place	place#identify	Verb	She immediately {placed} the voice as her former professor's distinctive baritone.
+place	place#identify	Verb	He {placed} the melody as a folk tune he had heard during childhood.
+place	place#identify-location	Verb	Medical imaging {placed} the small tumor against the patient's pancreas.
+place	place#identify-location	Verb	The rescue crew {places} the stranded boat near the northern reef.
+place	place#invest	Verb	She {placed} her savings in a low-cost index fund after meeting with an adviser.
+place	place#invest	Verb	The treasurer {places} company reserves in instruments that can be sold quickly.
+place	place#job	Noun	The ambassador's {place} required knowledge of three languages and regional history.
+place	place#locate	Verb	The opera is {placed} in an imaginary kingdom ruled by rival siblings.
+place	place#locate	Verb	The novel {places} its central conflict in a coastal village during winter.
+place	place#locate	Verb	The documentary {places} the story in a period of rapid industrial expansion.
+place	place#order	Verb	The investor {placed} a limit order for shares before the market opened.
+place	place#order	Verb	I {placed} a call to the insurance company immediately after the collision.
+place	place#order	Verb	The pharmacy is {placing} a bulk order for flu vaccines this week.
+place	place#passage	Noun	After the interruption, I quickly found my {place} beside the paragraph about migration.
+place	place#passage	Noun	My eyes slipped down the page, and I had to retrace my {place}.
+place	place#passage	Noun	The editor circled the sentence where I had lost my {place}.
+place	place#piazza	Noun	Children chased pigeons across the broad {place} while parents watched from shaded benches.
+place	place#piazza	Noun	A fountain anchors the {place}, leaving ample room for markets and neighborhood festivals.
+place	place#piazza	Noun	The narrow streets open suddenly onto a sunny {place} lined with stone arcades.
+place	place#place-in-race	Verb	Their debate team {placed} third in a tournament featuring forty schools.
+place	place#sing-in-tune	Verb	The choir director stopped the rehearsal when the altos could not {place} the opening note.
+place	place#sing-in-tune	Verb	Her teacher praised how consistently she {placed} the sustained notes during rehearsal.
+place	place#situation	Noun	He said anyone in her {place} would have accepted the generous settlement.
+place	place#situation	Noun	She asked what I would do in her {place} after receiving the threatening letter.
+place	place#situation	Noun	Anyone in that {place} would need practical help rather than criticism.
+play	play#act-carelessly	Verb	He was {playing} with fire by ignoring repeated warnings from the engineers.
+play	play#act-carelessly	Verb	Their leader was {playing} with the team's future by refusing to plan beyond next month.
+play	play#action	Noun	The merger proposal is back in {play} after regulators requested additional information.
+play	play#action	Noun	The company is in {play} now that several investors have expressed interest.
+play	play#action	Noun	The zoning change brought a previously overlooked parcel into {play} for developers.
+play	play#assume-role	Verb	She asked her younger brother to {play} the patient while she practiced being a doctor.
+play	play#be-presented	Verb	The children's puppet show {played} twice because many families arrived late.
+play	play#be-received	Verb	The mayor's apology did not {play} well with residents still facing flooded homes.
+play	play#be-received	Verb	The sudden price increase {played} badly with loyal customers.
+play	play#bet-on	Verb	Many traders {played} a stronger dollar when they purchased those contracts.
+play	play#bet-on	Verb	The bettors {played} the home team after its star quarterback returned.
+play	play#bid	Noun	Their diplomatic {play} for regional influence worried neighboring governments.
+play	play#bid	Noun	The publisher's {play} for the bestselling author's next novel became intensely competitive.
+play	play#bid	Noun	The team's late {play} for a playoff berth depends on winning every remaining game.
+play	play#compete-against	Verb	After promotion, the Wildcats will {play} against much stronger teams.
+play	play#compete-against	Verb	The defending champion {plays} against an unseeded newcomer tonight.
+play	play#employment	Noun	Repeated {play} of the instrument's mechanism revealed a hidden weakness.
+play	play#flow	Verb	Water {played} from the cracked cistern after the earthquake.
+play	play#free-rein	Noun	The revised rules give local offices more {play} in scheduling public services.
+play	play#fun	Noun	Among close friends, his teasing {play} was affectionate rather than mean-spirited.
+play	play#fun	Noun	The siblings traded {plays} about one another's music choices during the long drive.
+play	play#gamble	Verb	She would {play} only an amount she could afford to lose.
+play	play#gamble	Verb	He {played} his birthday money on a long-shot basketball bet.
+play	play#gamble	Verb	The traveler {played} a small wager on a local boxing match.
+play	play#gamble	Verb	He {played} a small stake on the visiting team after checking the weather.
+play	play#gamble	Verb	The friends {played} their spare change on a televised boxing match.
+play	play#hit	Verb	The goalkeeper anticipated how the striker would {play} the penalty.
+play	play#hit	Verb	The batter {played} the pitch late and sent it toward left field.
+play	play#looseness	Noun	The inspection report noted slight {play} around the elevator cable.
+play	play#maneuver	Noun	The midfielder's clever {play} opened space behind the defense.
+play	play#maneuver	Noun	His controlled {play} of the handlebars kept the bicycle upright.
+play	play#maneuver	Noun	The dancer added a rapid {play} that changed the routine's rhythm.
+play	play#maneuver	Noun	The goalkeeper stopped the shot with an athletic {play} to his left.
+play	play#maneuver	Noun	The crane operator made a delicate {play} to place the beam.
+play	play#move-freely	Verb	The operator {plays} the control rod gently within the chamber.
+play	play#move-freely	Verb	He {played} the rudder from side to side while checking the boat.
+play	play#perform-at	Verb	Next month, the troupe will {play} at the restored riverfront theater.
+play	play#perform-at	Verb	Our jazz group {plays} at the hotel lounge every Thursday.
+play	play#perform-at	Verb	After the renovation, the orchestra will {play} in the grand ballroom.
+play	play#period-of-play	Noun	A power failure suspended {play} in the televised chess tournament.
+play	play#period-of-play	Noun	The goalkeeper's treatment delayed {play} for nearly ten minutes.
+play	play#plan-of-action	Noun	The manager added two set {plays} to the training schedule.
+play	play#plan-of-action	Noun	The veteran midfielder improvised when the original {play} broke down.
+play	play#plan-of-action	Noun	The coach's tablet displayed each {play} with arrows and player numbers.
+play	play#plan-of-action	Noun	The new {play} uses a decoy runner to open the middle.
+play	play#play-recording	Verb	The stereo {played} quietly through the night beside the sleeping infant.
+play	play#play-recording	Verb	When visitors entered, the exhibit {played} a recording of factory sounds.
+play	play#play-recording	Verb	The child pressed a button, and the toy {played} a prerecorded lullaby.
+play	play#pretend	Verb	She {played} modest after receiving the award she had pursued for years.
+play	play#shimmer	Noun	At dusk, a faint {play} of color appeared on the wet pavement.
+play	play#shimmer	Noun	A weak {play} of amber light flickered beneath the doorway.
+play	play#swordplay	Noun	Years of fencing lessons gave her the precise footwork required for elegant {play}.
+play	play#swordplay	Noun	Every movement in the duel required balance, timing, and confident {play}.
+play	play#tire-line	Verb	The flexible rod helped her {play} the fish without exhausting her arms.
+play	play#tire-line	Verb	The angler carefully {played} the salmon instead of trying to haul it aboard.
+play	play#turn	Noun	We recorded every {play} so the disputed game could be reviewed later.
+play	play#turn	Noun	She announced her {play} clearly before moving the token across the board.
+play	play#use-in-game	Verb	The coach {played} three substitutes after the visitors took a large lead.
+play	play#use-in-game	Verb	Our captain {plays} younger athletes whenever the score becomes comfortable.
+play	play#use-or-move	Verb	After studying the board, Martin {played} a bishop to the open diagonal.
+play	play#use-or-move	Verb	He {played} the last checker onto the only safe square.
+point	point#aim-at	Verb	The charity {points} its resources toward communities hit hardest by flooding.
+point	point#aim-at	Verb	He {points} his criticism at the policy, not at the employees enforcing it.
+point	point#breaker-point	Noun	A pitted {point} can prevent the spark plugs from firing reliably.
+point	point#breaker-point	Noun	A faulty {point} left the delivery van stranded outside the garage.
+point	point#channel	Verb	She {pointed} the kayak toward the sheltered inlet before the storm arrived.
+point	point#channel	Verb	They {pointed} their skis downhill and started the descent.
+point	point#channel	Verb	He {pointed} the motorcycle toward the service road when traffic stopped.
+point	point#channel	Verb	He {pointed} the wagon toward the village where fresh supplies were available.
+point	point#channel	Verb	A painted arrow {points} cyclists toward the start of the mountain loop.
+point	point#decimal-point	Noun	Readers in some countries use a comma where American notation uses a {point}.
+point	point#full-stop	Noun	In British writing, a period at the end of a sentence is called a {point}.
+point	point#full-stop	Noun	The student forgot the closing {point} on three lines of dialogue.
+point	point#geometric-point	Noun	At the origin, the coordinate axes share a single {point}.
+point	point#geometric-point	Noun	The endpoints are labeled {points} A and B in the construction.
+point	point#linear-measure	Noun	The publisher increased the body text by one {point} after readers complained about readability.
+point	point#linear-measure	Noun	He measured the annotation as eight {points}, not eight millimeters, before sending the file to press.
+point	point#loan-point	Noun	Her closing statement listed three {points} as an upfront charge on the home loan.
+point	point#loan-point	Noun	The lender's disclosure separated prepaid {points} from interest and other settlement expenses.
+point	point#luff	Verb	She {pointed} across the bay until the sails started fluttering against the wind.
+point	point#luff	Verb	To avoid the fishing nets, we {pointed} closer to the wind and changed course.
+point	point#mark-diacritics	Verb	The scholar used a fine pen to {point} each letter with the required vowel marks.
+point	point#mark-diacritics	Verb	She spent the afternoon {pointing} every letter in the copied passage by hand.
+point	point#mark-hebrew	Verb	She spent the evening {pointing} Hebrew names for a beginner's pronunciation exercise.
+point	point#mark-hebrew	Verb	Her job was {pointing} Hebrew captions beneath photographs of ancient inscriptions.
+point	point#mark-psalm	Verb	They asked the visiting musician to {point} the psalm for inexperienced singers.
+point	point#mark-psalm	Verb	Before practice, the conductor showed us how to {point} the final psalm.
+point	point#peak	Noun	The pennant's lower edges meet in a deep {point} that flutters above the harbor.
+point	point#peak	Noun	The mountain silhouette has a rounded summit, not the expected sharp {point}.
+point	point#peak	Noun	At the center of the emblem, two red lines formed a perfect {point}.
+point	point#penetrating-style	Noun	The columnist's {point} made each criticism feel urgent without resorting to insults.
+point	point#penetrating-style	Noun	His letters possess a memorable {point}, even when he discusses ordinary errands.
+point	point#position	Verb	The bracket can {point} vertically or horizontally, depending on which holes the installer uses.
+point	point#position	Verb	With the swivel unlocked, the telescope can {point} anywhere along the horizon.
+point	point#repoint	Verb	The mason returned to {point} the chimney after rain exposed cracks in its joints.
+point	point#repoint	Verb	The bricklayer is {pointing} joints beneath the windows this week.
+point	point#sharpen	Verb	The factory {points} thousands of matchsticks every hour.
+point	point#sharpen	Verb	The gardener {pointed} the bamboo cane so it could support the young plant.
+point	point#spot	Noun	Her patience with frightened patients is the strongest {point} of her nursing style.
+point	point#spot	Noun	The comedian's timing was the bright {point} of an otherwise uneven show.
+point	point#spot	Noun	The documentary's most memorable {point} was its intimate look at rural teachers.
+point	point#wall-outlet	Noun	The contractor placed a waterproof {point} beside the outdoor workbench.
+point	point#wall-outlet	Noun	The old office had only one working {point} for all its computers.
+present	present#confront	Verb	When questioned, the manager was {presented} with proof of the unauthorized purchase.
+present	present#confront	Verb	The board {presented} the executive with complaints from several former employees.
+present	present#present-formally	Verb	The new envoy will be {presented} to the monarch tomorrow morning.
+present	present#present-formally	Verb	During the diplomatic ceremony, the ambassador {presented} the incoming envoy.
+present	present#salute	Verb	The recruits learned to {present} arms sharply during drill practice.
+present	present#salute	Verb	At the memorial, the uniformed escort {presented} arms in complete silence.
+present	present#stage-performance	Verb	The company will {present} a new comedy at the downtown theater.
+present	present#stage-performance	Verb	The festival {presents} experimental theater from emerging playwrights.
+present	present#stage-performance	Verb	The company {presents} touring productions at schools across the county.
+present	present#stage-performance	Verb	The theater {presented} a gripping mystery with an entirely female cast.
+reach	reach#accomplish	Verb	The farmers {reached} a record harvest through irrigation and careful soil care.
+reach	reach#hand-over	Verb	Across the counter, the clerk {reached} the receipt to the waiting customer.
+reach	reach#hand-over	Verb	The teacher {reached} certificates to the graduating students one by one.
+reach	reach#reaching	Noun	The climber's final {reach} caught the ledge above the waterfall.
+reach	reach#reaching	Noun	She made a sideways {reach} and switched off the bedside lamp.
+reach	reach#reaching	Noun	During the stretch, avoid a sudden {reach} beyond your comfortable range.
+result	result#cause	Verb	The spoiled fruit {resulted} an unpleasant odor in the pantry.
+result	result#cause	Verb	The fermentation {resulted} a sharp smell and cloudy liquid.
+result	result#cause	Verb	The repeated footsteps {resulted} a worn path through the grass.
+result	result#cause	Verb	The dye bath {resulted} uneven patches on the wool.
+result	result#cause	Verb	The cooking oil {resulted} a stubborn stain on the apron.
+result	result#resultant-role	Noun	The newly woven rug functions as the {result} in the sentence describing the loom's work.
+result	result#resultant-role	Noun	Linguists marked the snowman as the {result} of the children's building activity.
+result	result#solution	Noun	The algebra student checked the {result} against the answer key before submitting her proof.
+return	return#file-report	Verb	Each department {returns} its quarterly expense report to the finance director.
+return	return#file-report	Verb	Managers are {returning} the evaluation forms to human resources this afternoon.
+return	return#football-return	Noun	A fumble {return} gave the visitors excellent field position late in the fourth quarter.
+return	return#football-return	Noun	The announcer called the interception {return} one of the season's defining plays.
+return	return#homecoming	Noun	Grandparents prepared a feast for the grandchildren's {return} from camp.
+return	return#homecoming	Noun	Their joyful {return} from the pilgrimage ended a year of separation.
+return	return#income-tax-return	Noun	The tax office rejected his {return} because one schedule was missing.
+return	return#income-tax-return	Noun	She uploaded bank statements while completing the online {return}.
+return	return#income-tax-return	Noun	The government mailed instructions explaining how to complete the annual {return}.
+return	return#income-tax-return	Noun	An audit began after officials found inconsistencies in the contractor's {return}.
+return	return#make-return	Verb	The broker {returned} a kickback to the intermediary after the contract was signed.
+return	return#make-return	Verb	The contractor quietly {returned} part of the fee to secure future work.
+return	return#mathematical-return	Verb	At the next iteration, the sequence {returns} to its earlier value.
+return	return#mathematical-return	Verb	As the parameter decreases, the solution path {returns} to the stable branch.
+return	return#pass-by-inheritance	Verb	After the baron's death, the disputed lands {returned} to his surviving relatives.
+return	return#pass-by-inheritance	Verb	The inheritance will {return} to her niece if the current beneficiary dies childless.
+return	return#re-elect	Verb	The voters {returned} the governor after a campaign focused on transportation.
+return	return#re-elect	Verb	Party members are {returning} the incumbent senator to lead the committee.
+return	return#repay	Verb	The festival promised to {return} ticket fees if severe weather forced cancellation.
+return	return#repay	Verb	To {return} the loan early, the couple sold their second car.
+return	return#retort	Noun	The senator's sharp {return} ended the interview before another question could be asked.
+return	return#retort	Noun	The lawyer saved her strongest {return} for the witness's final claim.
+return	return#return-key	Noun	Pressing {return} inserted a line break instead of sending the message.
+return	return#return-key	Noun	Press the {return} after entering the command to send it to the server.
+return	return#return-shot	Noun	A mistimed {return} floated long and cost him the game.
+return	return#return-shot	Noun	She watched the serve carefully before choosing a forehand {return}.
+return	return#reversal	Noun	A sharp {return} in the current pushed the research vessel toward shore.
+return	return#reversal	Noun	The dancer's {return} sent her spinning in the opposite direction.
+return	return#transmit	Verb	The jury {returned} a unanimous verdict after three hours of deliberation.
+return	return#transmit	Verb	The grand jury {returned} indictments against two former officials.
+return	return#transmit	Verb	The court {returned} a verdict that established an important precedent.
+right	right#face-down	Adverb	The cyclist hit the loose gravel and landed {right} on his face.
+right	right#face-down	Adverb	When the wave knocked him over, he fell {right} on his face in the shallows.
+right	right#face-down	Adverb	The exhausted hiker collapsed {right} on his face beside the trail.
+right	right#face-down	Adverb	The toddler toppled forward, landing {right} on his face.
+right	right#face-down	Adverb	She stumbled through the doorway and fell {right} on her face.
+right	right#political-right	Adjective	The candidate attracted support from the party's {right}-wing activists.
+right	right#political-right	Adjective	The minister belongs to the party's {right} faction.
+show	show#place	Verb	The jockey said the horse could {show} if the track dried.
+show	show#place	Verb	The trainer entered the gelding because he expected it to {show}.
+show	show#register	Verb	The odometer {shows} the rental car traveled fewer miles than expected.
+show	show#register	Verb	The thermometer {showed} twelve degrees below freezing before dawn.
+show	show#register	Verb	The battery indicator {showed} only one bar during the hike.
+show	show#register	Verb	The fuel sensor {showed} an empty tank despite the recent refill.
+show	show#register	Verb	The weighing machine {showed} a slight difference between the packages.
+stand	stand#bandstand	Noun	Fresh paint brightened the old {stand} before the summer concert season.
+stand	stand#bandstand	Noun	The musicians carried their instruments up to the {stand} before sunset.
+stand	stand#display-rack	Noun	The newspaper shop placed a rotating {stand} near the entrance for the morning editions.
+stand	stand#display-rack	Noun	The shoe shop put sandals on a stepped {stand} in the center aisle.
+stand	stand#display-rack	Noun	The boutique arranged folded scarves across a three-level {stand}.
+stand	stand#erect	Verb	The technician {stands} the solar panel vertically for testing.
+stand	stand#erect	Verb	The stagehand {stands} the piano lid upright before the rehearsal.
+stand	stand#grandstand	Noun	The stadium's upper {stand} shook whenever the home team scored.
+stand	stand#remain-valid	Verb	The warranty {stands} until the final day of the calendar year.
+stand	stand#stand-table	Noun	The telephone sat on a small {stand} in the apartment hallway.
+stand	stand#stand-table	Noun	A folding {stand} provided a convenient surface for the bedside alarm.
+stand	stand#stoppage	Noun	The investigation brought the expansion project to a {stand} for several weeks.
+stand	stand#stoppage	Noun	Repair crews worked overnight after the refinery reached a complete {stand}.
+stand	stand#stud-service	Verb	The thoroughbred {stands} exclusively for selected mares at the private stable.
+stand	stand#stud-service	Verb	The farm's prize bull is {standing} for breeding appointments this week.
+stand	stand#support	Noun	A wooden {stand} supported the aquarium while workers repaired the cabinet.
+stand	stand#support	Noun	A rubber {stand} under the machine reduced vibration across the laboratory floor.
+stand	stand#take-position	Verb	During the debate, both candidates explained where they {stood} on immigration.
+stand	stand#take-position	Verb	She {stood} for a ceasefire when most officials demanded escalation.
+stand	stand#tour-stop	Noun	The comedian extended her New York {stand} after every show sold out.
+stand	stand#tour-stop	Noun	Fans queued overnight for tickets to the band's hometown {stand}.
+stand	stand#tour-stop	Noun	The magician's coastal {stand} ended after ten consecutive sold-out shows.
+stand	stand#viewpoint	Noun	Viewed from the farmer's {stand}, the zoning change threatens essential income.
+stand	stand#viewpoint	Noun	From my {stand}, the short-term savings are not worth the risks.
+state	state#denote	Verb	In the diagram, the arrows {state} the direction of electrical flow.
+state	state#denote	Verb	The formula {states} how much solvent the reaction requires.
+state	state#denote	Verb	The compass symbol {states} which direction the map faces.
+state	state#nation-territory	Noun	Archaeologists found inscriptions marking the boundary of an ancient {state}.
+state	state#propose	Verb	The scientist {states} a possible explanation for the unexpected results.
+state	state#propose	Verb	The council will {state} a motion to delay the vote.
+state	state#propose	Verb	The proposal {states} a framework that legislators can debate.
+state	state#propose	Verb	The director {states} a case for keeping the rural clinic open.
+state	state#propose	Verb	In her letter, she {stated} a proposal for sharing the vacant lot.
+study	study#absorption	Noun	Lost in {study}, the historian missed the evening train entirely.
+study	study#absorption	Noun	He entered a state of deep {study} during the overnight observatory shift.
+study	study#attend-school	Verb	Where did your parents {study} before joining the research service?
+study	study#consider	Verb	We {studied} the compromise carefully instead of accepting it immediately.
+study	study#contemplate	Verb	She {studies} questions of mercy whenever doubt begins to trouble her.
+study	study#contemplate	Verb	They gathered by the river to {study} the transience of earthly things.
+study	study#quick-memorizer	Noun	Everyone noticed that the quiet apprentice was a quick {study}.
+study	study#quick-memorizer	Noun	He became known as a quick {study} after memorizing every cue.
+study	study#sketch	Noun	He compared several figure {studies} before redrawing the central group.
+study	study#sketch	Noun	These preliminary {studies} helped the illustrator plan the book's cover.
+study	study#technique-exercise	Noun	His teacher assigned three {studies} for bow control before allowing him to rehearse the concerto.
+study	study#technique-exercise	Noun	The composer wrote a demanding {study} that isolates octave leaps across the keyboard.
+use	use#enjoyment	Noun	Her temporary {use} of the cottage was authorized by a written license.
+use	use#enjoyment	Noun	A revocable permit provided {use} of the pasture until construction began.
+use	use#habit	Noun	By habitual {use}, the children lowered their voices whenever the library door opened.
+use	use#habit	Noun	Years of {use} had made him patient with delays and noisy crowds.
+use	use#habit	Noun	The child acquired the {use} of covering her ears whenever fireworks began.
+use	use#manipulation	Noun	The coach condemned the captain's {use} of teammates to settle a personal feud.
+use	use#manipulation	Noun	Through careful {use} of rumors, the landlord turned tenants against one another.
+use	use#manipulation	Noun	The charity rejected the donor's {use} of donations to control its public statements.
+use	use#use-regularly	Verb	He {uses} nicotine patches while trying to quit smoking.
+use	use#use-regularly	Verb	She rarely {uses} painkillers unless a headache persists overnight.
+use	use#use-regularly	Verb	We {used} the medication exactly as prescribed throughout recovery.
+use	use#use-regularly	Verb	She {used} the same allergy medicine each spring.
+walk	walk#accompany	Verb	The officer {walked} the witness into the courthouse through a side door.
+walk	walk#accompany	Verb	Please {walk} your brother to the bus stop before dinner.
+walk	walk#associate	Verb	Their organization {walks} with survivors rather than speaking over them.
+walk	walk#associate	Verb	The charity {walks} with families as they rebuild after eviction.
+walk	walk#base-on-balls	Noun	The pitcher issued another {walk} when his fastball missed outside.
+walk	walk#base-on-balls	Noun	With the count full, the batter watched ball four for a {walk}.
+walk	walk#base-on-balls	Noun	A wild pitch advanced the runner who had reached on a {walk}.
+walk	walk#gait	Noun	Her trainer praised the colt's long, swinging {walk} during the morning lesson.
+walk	walk#gait	Noun	The riding school records each horse's {walk}, trot, and canter during evaluations.
+walk	walk#pace	Verb	The parade horses {walked} down the avenue between the marching bands.
+walk	walk#play	Verb	The pitcher {walked} another batter when his curveball repeatedly bounced away.
+walk	walk#play	Verb	The catcher visited the mound after the pitcher {walked} two runners.
+walk	walk#play	Verb	One misplaced slider {walked} the batter who eventually scored the tying run.
+walk	walk#rack-up	Verb	The designated hitter {walked} and forced the pitcher to face the cleanup hitter.
+walk	walk#rack-up	Verb	After falling behind in the count, the rookie {walked} instead of striking out.
+walk	walk#rack-up	Verb	He {walked} after the pitcher threw two wild pitches and lost command.
+watch	watch#lookout	Noun	We hired a night {watch} to alert the camp if wildlife approached.
+watch	watch#lookout	Noun	Our {watch} spotted smoke rising beyond the far ridge.
+watch	watch#religious-vigil	Noun	The congregation held a Christmas Eve {watch} until the first light of morning.
+watch	watch#religious-vigil	Noun	The candlelit {watch} honored the saint on the eve of the holy day.
+work	work#acquit	Verb	The walnut veneer {works} easily with a fine hand plane.
+work	work#acquit	Verb	This dough {works} best when kneaded on a cool counter.
+work	work#arrive-at	Verb	The constant vibration {worked} the screws free overnight.
+work	work#arrive-at	Verb	The belt's motion {worked} the pulley into alignment.
+work	work#becharm	Verb	A skilled host {worked} the dinner table until everyone supported the proposal.
+work	work#becharm	Verb	She {worked} her audience through laughter, then introduced the difficult request.
+work	work#cause-fermentation	Verb	The brewer {worked} the mash carefully to encourage a strong fermentation.
+work	work#cause-fermentation	Verb	A village brewer {worked} the barley mash through a slow fermenting stage.
+work	work#crop	Verb	They {worked} the pasture twice to prepare it for new seed.
+work	work#crop	Verb	They {worked} the river-bottom fields before the seasonal floods arrived.
+work	work#crop	Verb	The cooperative {worked} neglected land into fertile beds for beans.
+work	work#exercise	Verb	She {worked} her core with slow, controlled exercises.
+work	work#exercise	Verb	He {worked} his back muscles using a rowing machine.
+work	work#exercise	Verb	Heavy gardening {worked} my shoulders more than any gym routine.
+work	work#exercise	Verb	A steep staircase {worked} muscles I rarely use.
+work	work#exercise	Verb	Cycling uphill {worked} his thighs far more than flat roads.
+work	work#ferment	Verb	Those leftovers {worked} quickly in the warm kitchen.
+work	work#ferment	Verb	The fish brine {worked} after the container cracked overnight.
+work	work#go	Verb	The interns {worked} through the safety checklist before entering the laboratory.
+work	work#go	Verb	He {worked} through three drafts before reaching a convincing conclusion.
+work	work#go	Verb	The discussion {worked} toward an agreement once both sides shared their figures.
+work	work#mechanical-work	Noun	The student drew an arrow showing the direction of force during the {work}.
+work	work#mechanical-work	Noun	Researchers compared the {work} done by two differently shaped paddles.
+work	work#mechanical-work	Noun	The battery supplies energy, while the motor converts it into mechanical {work}.
+work	work#mechanical-work	Noun	The instructor asked whether lifting the same mass higher would require more {work}.
+work	work#move-agitatedly	Verb	The toddler {worked} impatiently in the stroller straps.
+work	work#move-onto	Verb	The mechanic {worked} the replacement hose onto the metal fitting.
+work	work#move-onto	Verb	The editor {worked} the new statistics into the published report.
+work	work#operate	Verb	The volunteers {worked} the phones during the emergency fundraising drive.
+work	work#operate	Verb	The campaign staff {worked} the phones to remind voters about the deadline.
+work	work#operate-in	Verb	The firm {worked} in coastal restoration after the hurricane.
+work	work#operate-in	Verb	She {worked} in emergency medicine before becoming a teacher.
+work	work#put-to-work	Verb	The captain {worked} the crew hard during the storm, keeping every sailor occupied with essential repairs.
+work	work#put-to-work	Verb	The chef {worked} his assistants through the lunch rush, directing each person toward urgent kitchen tasks.
+work	work#put-to-work	Verb	The manager {worked} the sales team relentlessly during the final week of the quarter.
+work	work#study	Noun	His {work} toward the certification included hundreds of practice questions and weekly tutoring.
+work	work#study	Noun	To master calculus, Jordan scheduled short periods of {work} instead of cramming overnight.
+work	work#study	Noun	The research team scheduled protected {work} time so analysts could study the survey results carefully.
+work	work#study	Noun	Careful {work} through the manual helped the technician understand the instrument's calibration procedure.
+work	work#study	Noun	Her morning {work} consisted of translating newspaper editorials to improve advanced Spanish.

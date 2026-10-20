@@ -311,7 +311,12 @@ and of the part-of-speech answers with the right part of speech), the share of r
 were answered, the top-1 fine accuracy (the sense with the largest product of the probability of its analysis and its
 own probability; over all rows and over the rows that rank senses), the part-of-speech accuracy of the selected
 analysis, plus the weights size, the latency per
-sentence and the first-use time and memory of the lexicon. `basic` is evaluated the same way without weights and
+sentence and the first-use time and memory of the lexicon. When `corpus/provenance` names the origin of the held-out
+sentences (the first 12 hexadecimal digits of the SHA-256 of `lemma|sentence` join a provenance row to a row), the same
+classification is also scored for three subsets, each reported as its own set: real text that was targeted at a sense
+(`selection = targeted`), real text of the earlier harvests and LLM-written sentences. No subset is representative
+real text (the held-out sentences are balanced and selected or written per sense), and the report says so; the
+representative measurements are the independent evaluations. `basic` is evaluated the same way without weights and
 additionally reports the calibration of its confidence: the number and accuracy of the answers in the confidence
 buckets (below 0.4, 0.4 to 0.6, 0.6 to 0.7, 0.7 to 0.8, 0.8 to 0.9 and at least 0.9), the coverage and precision at
 the thresholds 0.6, 0.8 and 0.9, the size of the embedded table, the cold load time, the latency per word and per

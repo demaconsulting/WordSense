@@ -219,6 +219,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Shares and accuracy per level** (`Evaluator_RunAsync_ReportsShareAndAccuracyPerLevel`): with a stub model that
   answers rows at each level, the report gives the share answered at the sense, group and part-of-speech level, the
   accuracy at each level and the part-of-speech accuracy.
+- **Subsets by origin** (`Evaluator_RunAsync_ProvenanceNamesTheOrigin_ReportsSubsetsSeparately`): with a provenance file
+  that marks one held-out row as targeted real text and the other as written, the report has the set `holdout` and one
+  set for each origin (their rows and correct answers are counted separately) and states that the figures are not the
+  accuracy on representative text.
 - **Basic evaluation needs no model**: `evaluate basic` runs on a synthetic corpus without model files, counts the
   holdout rows and prints the accuracy and coverage measurements together with the calibration buckets, the confidence
   thresholds, the table size, the latency and the fixed comparison table

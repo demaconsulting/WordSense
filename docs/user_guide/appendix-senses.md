@@ -507,7 +507,8 @@ frequent sense of a part of speech first).
   - `arsenic#arsenic-element` (noun); group: none; key: `arsenic%1:27:00::`; gloss: a very poisonous metallic element
     that has three allotropic forms; arsenic and arsenic compounds are used as herbicides and insecticides and in
     various alloys; found in arsenopyrite and orpiment and realgar
-  - `arsenic#arsenic-related` (adjective); group: none; key: project sense; gloss: adjective
+  - `arsenic#arsenic-related` (adjective); group: none; key: project sense; gloss: relating to or containing arsenic in
+    its higher oxidation state of +5
 - **articulate**; parts of speech: verb, adjective; forms: articulated, articulates, articulating
   - `articulate#formulate` (verb); group: none; key: `articulate%2:32:02::`; gloss: put into words or an expression
   - `articulate#joint` (verb); group: none; key: `articulate%2:40:00::`; gloss: provide with a joint
@@ -528,7 +529,8 @@ frequent sense of a part of speech first).
     stop sounds
   - `aspirate#breathe-in` (verb); group: none; key: `aspirate%2:29:00::`; gloss: inhale (air, water, etc.)
   - `aspirate#draw-out` (verb); group: none; key: `aspirate%2:35:00::`; gloss: remove by suction
-  - `aspirate#adjective-noun` (adjective); group: none; key: project sense; gloss: adj-noun
+  - `aspirate#adjective-noun` (adjective); group: none; key: project sense; gloss: pronounced with an audible puff of
+    breath
 - **associate**; parts of speech: noun, verb, adjective; forms: associated, associates, associating
   - `associate#compeer` (noun); group: none; key: `associate%1:18:00::`; gloss: a person who joins with others in some
     activity or endeavor
@@ -562,7 +564,8 @@ frequent sense of a part of speech first).
   - `attribute#assign` (verb); group: none; key: `attribute%2:31:01::`; gloss: decide as to where something belongs in a
     scheme
 - **augment**; parts of speech: noun, verb; forms: augmented, augmenting, augments
-  - `augment#addition` (noun); group: none; key: project sense; gloss: noun
+  - `augment#addition` (noun); group: none; key: project sense; gloss: an addition or increase, especially a prefixed
+    vowel marking past tense in certain languages
   - `augment#increase` (verb); group: none; key: `augment%2:30:01::`; gloss: enlarge or increase
   - `augment#grow` (verb); group: none; key: `augment%2:30:00::`; gloss: grow or intensify
 - **august**; parts of speech: adjective; forms: August
@@ -1138,8 +1141,8 @@ frequent sense of a part of speech first).
   - `break#swerve` (verb); group: none; key: `break%2:38:15::`; gloss: change directions suddenly
   - `break#voice-crack` (verb); group: none; key: `break%2:30:07::`; gloss: crack; of the male voice in puberty
   - `break#weaken` (verb); group: none; key: `break%2:29:10::`; gloss: weaken or destroy in spirit or body
-  - `break#interjection` (interjection); group: none; key: project sense; gloss: The interjection "break"; a project
-    sense, because Open English WordNet has no interjection sense of this word.
+  - `break#interjection` (interjection); group: none; key: project sense; gloss: used to order a pause or separation,
+    especially of boxers in a clinch
 - **breed**; parts of speech: noun, verb; forms: bred, breeded, breeding, breeds
   - `breed#animal-breed` (noun); group: none; key: `breed%1:14:00::`; gloss: a special variety of domesticated animals
     within a species
@@ -1572,8 +1575,8 @@ frequent sense of a part of speech first).
   - `check#train-self-control` (verb); group: none; key: `check%2:41:02::`; gloss: develop (a child's or animal's)
     behavior by instruction and practice; especially to teach self-control
   - `check#write-check` (verb); group: none; key: `check%2:32:07::`; gloss: write out a check on a bank account
-  - `check#check-interjection` (interjection); group: none; key: project sense; gloss: The interjection "check"; a
-    project sense, because Open English WordNet has no interjection sense of this word.
+  - `check#check-interjection` (interjection); group: none; key: project sense; gloss: used to acknowledge agreement or
+    completion, or to announce an attack on a king in chess
 - **cleanly**; parts of speech: adjective, adverb; forms: cleanlier, cleanliest
   - `cleanly#clean-habit` (adjective); group: none; key: `cleanly%5:00:00:clean:01`; gloss: habitually clean
   - `cleanly#deftly` (adverb); group: none; key: `cleanly%4:02:00::`; gloss: smoothly and without difficulty; precisely
@@ -1681,7 +1684,8 @@ frequent sense of a part of speech first).
     your faculties
   - `collected#gathered` (adjective); group: none; key: `collected%3:44:00::`; gloss: brought together in one place
 - **collocate**; parts of speech: noun, verb; forms: collocated, collocates, collocating
-  - `collocate#collocate-noun` (noun); group: none; key: project sense; gloss: noun
+  - `collocate#collocate-noun` (noun); group: none; key: project sense; gloss: a word that habitually occurs with a
+    particular other word
   - `collocate#co-occur` (verb); group: none; key: `collocate%2:42:00::`; gloss: have a strong tendency to occur side by
     side
   - `collocate#group-together` (verb); group: none; key: `collocate%2:31:00::`; gloss: group or chunk together in a
@@ -1880,7 +1884,8 @@ frequent sense of a part of speech first).
   - `confederate#allied` (adjective); group: none; key: `confederate%5:00:00:united:00`; gloss: united in a confederacy
     or league
 - **confine**; parts of speech: noun, verb; forms: confined, confines, confining
-  - `confine#confines` (noun); group: none; key: project sense; gloss: noun
+  - `confine#confines` (noun); group: none; key: project sense; gloss: the boundaries or limits of a place, subject, or
+    activity, usually used in the plural
   - `confine#limit` (verb); group: none; key: `confine%2:30:00::`; gloss: place limits on (extent or amount or access)
   - `confine#prevent-escape` (verb); group: none; key: `confine%2:35:03::`; gloss: prevent from leaving or from being
     removed
@@ -1944,7 +1949,8 @@ frequent sense of a part of speech first).
     decay, loss, or destruction
   - `conserve#use-frugally` (verb); group: none; key: `conserve%2:40:00::`; gloss: use cautiously and frugally
 - **consist**; parts of speech: noun, verb; forms: consisted, consisting, consists
-  - `consist#composition` (noun); group: none; key: project sense; gloss: noun
+  - `consist#composition` (noun); group: none; key: project sense; gloss: the set and arrangement of locomotives and
+    cars making up a train
   - `consist#originate-in` (verb); group: none; key: `consist%2:42:00::`; gloss: originate (in)
   - `consist#be-composed` (verb); group: none; key: `consist%2:42:01::`; gloss: be composed of
   - `consist#be-consistent` (verb); group: none; key: `consist%2:42:02::`; gloss: be consistent in form, tenor, or
@@ -2011,8 +2017,8 @@ frequent sense of a part of speech first).
   - `contact#communicate` (verb); group: none; key: `contact%2:32:00::`; gloss: be in or establish communication with
   - `contact#touch` (verb); group: none; key: `contact%2:35:03::`; gloss: be in direct physical contact with; make
     contact
-  - `contact#contact-call` (interjection); group: none; key: project sense; gloss: The interjection "contact"; a project
-    sense, because Open English WordNet has no interjection sense of this word.
+  - `contact#contact-call` (interjection); group: none; key: project sense; gloss: used to announce that an aircraft's
+    ignition is on and its engine is ready to be started (aviation)
 - **content**; parts of speech: noun, verb, adjective, interjection; forms: contented, contenting, contents
   - `content#contents` (noun); group: none; key: `content%1:14:00::`; gloss: (usually plural) everything that is
     included in a collection and that is held or included in something
@@ -2031,8 +2037,8 @@ frequent sense of a part of speech first).
   - `content#satisfy` (verb); group: none; key: `content%2:37:00::`; gloss: make content
   - `content#satisfied` (adjective); group: none; key: `content%3:00:00::`; gloss: satisfied or showing satisfaction
     with things as they are
-  - `content#content-exclamation` (interjection); group: none; key: project sense; gloss: The interjection "content"; a
-    project sense, because Open English WordNet has no interjection sense of this word.
+  - `content#content-exclamation` (interjection); group: none; key: project sense; gloss: used to express agreement or
+    cast an affirmative vote, especially in the British House of Lords
 - **contest**; parts of speech: noun, verb; forms: contested, contesting, contests
   - `contest#competition` (noun); group: none; key: `contest%1:11:00::`; gloss: an occasion on which a winner is
     selected from among two or more contestants
@@ -2381,7 +2387,8 @@ frequent sense of a part of speech first).
 - **curate**; parts of speech: noun, verb; forms: curated, curates, curating
   - `curate#church-curate` (noun); group: none; key: `curate%1:18:00::`; gloss: a person authorized to conduct religious
     worship
-  - `curate#organize` (verb); group: none; key: project sense; gloss: verb
+  - `curate#organize` (verb); group: none; key: project sense; gloss: select, organize, and care for items in a
+    collection, exhibition, or presentation
 - **cure**; parts of speech: noun, verb; forms: cured, cures, curing
   - `cure#treatment` (noun); group: none; key: `cure%1:06:00::`; gloss: a medicine or therapy that cures disease or
     relieve pain
@@ -3164,7 +3171,8 @@ frequent sense of a part of speech first).
 - **enervate**; parts of speech: verb, adjective; forms: enervated, enervates, enervating
   - `enervate#weaken` (verb); group: none; key: `enervate%2:30:00::`; gloss: weaken mentally or morally
   - `enervate#unsettle` (verb); group: none; key: `enervate%2:37:00::`; gloss: disturb the composure of
-  - `enervate#descriptive` (adjective); group: none; key: project sense; gloss: adjective
+  - `enervate#descriptive` (adjective); group: none; key: project sense; gloss: lacking strength or vitality; weakened
+    or exhausted (rare)
 - **entail**; parts of speech: noun, verb; forms: entailed, entailing, entails
   - `entail#fee-tail-creation` (noun); group: none; key: `entail%1:04:00::`; gloss: the act of entailing property; the
     creation of a fee tail from a fee simple
@@ -3272,12 +3280,14 @@ frequent sense of a part of speech first).
   - `excise#cut` (verb); group: none; key: `excise%2:30:02::`; gloss: remove by cutting
   - `excise#levy` (verb); group: none; key: `excise%2:40:00::`; gloss: levy an excise tax on
 - **excommunicate**; parts of speech: noun, verb, adjective; forms: excommunicated, excommunicates, excommunicating
-  - `excommunicate#nominal` (noun); group: none; key: project sense; gloss: adjective-noun
+  - `excommunicate#nominal` (noun); group: none; key: project sense; gloss: a person excluded from membership in a
+    church or from receiving its sacraments
   - `excommunicate#church-exclusion` (verb); group: none; key: `excommunicate%2:32:00::`; gloss: exclude from a church
     or a religious community
   - `excommunicate#expel` (verb); group: none; key: `excommunicate%2:41:00::`; gloss: oust or exclude from a group or
     membership by decree
-  - `excommunicate#adjectival` (adjective); group: none; key: project sense; gloss: adjective-noun
+  - `excommunicate#adjectival` (adjective); group: none; key: project sense; gloss: excluded from the sacraments or
+    communion of a church by ecclesiastical authority
 - **excuse**; parts of speech: noun, verb; forms: excused, excuses, excusing
   - `excuse#defense` (noun); group: none; key: `excuse%1:10:00::`; gloss: a defense of some offensive behavior or some
     failure to keep a promise etc.
@@ -3322,8 +3332,10 @@ frequent sense of a part of speech first).
     particular state of mind
   - `experience#undergo` (verb); group: `experience#group:undergoing`; key: `experience%2:30:00::`; gloss: undergo
 - **explant**; parts of speech: noun, verb; forms: explanted, explanting, explants
-  - `explant#explant-specimen` (noun); group: none; key: project sense; gloss: noun
-  - `explant#remove-tissue` (verb); group: none; key: project sense; gloss: verb
+  - `explant#explant-specimen` (noun); group: none; key: project sense; gloss: a piece of living tissue removed from an
+    organism for culture outside the body
+  - `explant#remove-tissue` (verb); group: none; key: project sense; gloss: remove living tissue from an organism for
+    culture outside the body
 - **exploit**; parts of speech: noun, verb; forms: exploited, exploiting, exploits
   - `exploit#feat` (noun); group: none; key: `exploit%1:04:00::`; gloss: a notable achievement
   - `exploit#use` (verb); group: none; key: `exploit%2:34:00::`; gloss: use or manipulate to one's advantage
@@ -3399,7 +3411,8 @@ frequent sense of a part of speech first).
   - `face#trim` (verb); group: none; key: `face%2:35:00::`; gloss: line the edge (of a garment) with a different
     material
 - **fail**; parts of speech: noun, verb; forms: failed, failing, fails
-  - `fail#failure` (noun); group: none; key: project sense; gloss: fail (noun); no definition recorded
+  - `fail#failure` (noun); group: none; key: project sense; gloss: a failure to do what is expected or required,
+    especially in the phrase without fail
   - `fail#omit` (verb); group: none; key: `fail%2:41:02::`; gloss: fail to do something; leave something undone
   - `fail#be-unsuccessful` (verb); group: none; key: `fail%2:41:00::`; gloss: be unsuccessful
   - `fail#disappoint` (verb); group: none; key: `fail%2:37:00::`; gloss: disappoint, prove undependable to; abandon,
@@ -3799,7 +3812,8 @@ frequent sense of a part of speech first).
 - **foretoken**; parts of speech: noun, verb; forms: foretokened, foretokening, foretokens
   - `foretoken#omen` (noun); group: none; key: `foretoken%1:11:00::`; gloss: an event that is experienced as indicating
     important things to come
-  - `foretoken#foreshadow` (verb); group: none; key: project sense; gloss: verb
+  - `foretoken#foreshadow` (verb); group: none; key: project sense; gloss: indicate or give warning of something that
+    will happen (archaic)
 - **forward**; parts of speech: noun, verb, adjective, adverb; forms: forwarded, forwarding, forwards
   - `forward#player` (noun); group: none; key: `forward%1:18:00::`; gloss: the person who plays the position of forward
     in certain games, such as basketball, soccer, or hockey
@@ -3950,7 +3964,8 @@ frequent sense of a part of speech first).
   - `geminate#occur-in-pairs` (verb); group: none; key: `geminate%2:35:01::`; gloss: occur in pairs
   - `geminate#pair` (verb); group: `geminate#group:pairing`; key: `geminate%2:35:00::`; gloss: arrange in pairs
   - `geminate#reduplicate` (verb); group: none; key: `geminate%2:36:00::`; gloss: form by reduplication
-  - `geminate#doubled` (adjective); group: none; key: project sense; gloss: adjective
+  - `geminate#doubled` (adjective); group: none; key: project sense; gloss: doubled or prolonged in pronunciation,
+    especially of a consonant (phonetics)
 - **gift**; parts of speech: noun, verb; forms: gifted, gifting, gifts
   - `gift#present` (noun); group: none; key: `gift%1:21:00::`; gloss: something acquired without compensation
   - `gift#talent` (noun); group: none; key: `gift%1:09:00::`; gloss: natural abilities or qualities
@@ -4125,8 +4140,8 @@ frequent sense of a part of speech first).
   - `halt#prevent` (verb); group: none; key: `halt%2:41:00::`; gloss: stop from happening or developing
   - `halt#stop-flow` (verb); group: none; key: `halt%2:30:02::`; gloss: stop the flow of a liquid
   - `halt#leg-disabled` (adjective); group: none; key: `halt%5:00:00:unfit:01`; gloss: disabled in the feet or legs
-  - `halt#interjection` (interjection); group: none; key: project sense; gloss: The interjection "halt"; a project
-    sense, because Open English WordNet has no interjection sense of this word.
+  - `halt#interjection` (interjection); group: none; key: project sense; gloss: used as a command to stop moving
+    immediately
 - **hammer**; parts of speech: noun, verb; forms: hammered, hammering, hammerring, hammers
   - `hammer#firing-hammer` (noun); group: none; key: `hammer%1:06:04::`; gloss: the part of a gunlock that strikes the
     percussion cap when the trigger is pulled
@@ -4456,7 +4471,8 @@ frequent sense of a part of speech first).
     successful issue
   - `implement#enforce` (verb); group: none; key: `implement%2:41:00::`; gloss: ensure observance of laws and rules
 - **implicate**; parts of speech: noun, verb; forms: implicated, implicates, implicating
-  - `implicate#noun-sense` (noun); group: none; key: project sense; gloss: noun
+  - `implicate#noun-sense` (noun); group: none; key: project sense; gloss: a proposition that follows logically from
+    another proposition
   - `implicate#entail` (verb); group: none; key: `implicate%2:42:00::`; gloss: impose, involve, or imply as a necessary
     accompaniment or result
   - `implicate#incriminate` (verb); group: none; key: `implicate%2:42:01::`; gloss: bring into intimate and
@@ -4567,7 +4583,7 @@ frequent sense of a part of speech first).
   - `inebriate#drink-heavily` (verb); group: none; key: `inebriate%2:34:00::`; gloss: become drunk or drink excessively
   - `inebriate#elate` (verb); group: none; key: `inebriate%2:37:00::`; gloss: fill with sublime emotion
   - `inebriate#intoxicate` (verb); group: none; key: `inebriate%2:34:01::`; gloss: make drunk (with alcoholic drinks)
-  - `inebriate#drunk` (adjective); group: none; key: project sense; gloss: adjective-noun
+  - `inebriate#drunk` (adjective); group: none; key: project sense; gloss: intoxicated with alcohol; drunk
 - **infix**; parts of speech: noun, verb; forms: infixed, infixes, infixing
   - `infix#medial-affix` (noun); group: none; key: `infix%1:10:00::`; gloss: an affix that is inserted inside the word
   - `infix#affix` (verb); group: none; key: `infix%2:35:00::`; gloss: attach a morpheme into a stem word
@@ -4635,8 +4651,8 @@ frequent sense of a part of speech first).
   - `inside#inside` (adverb); group: none; key: `inside%4:02:01::`; gloss: on the inside
   - `inside#actually` (adverb); group: none; key: `inside%4:02:02::`; gloss: in reality
   - `inside#privately` (adverb); group: none; key: `inside%4:02:03::`; gloss: with respect to private feelings
-  - `inside#within-preposition` (preposition); group: none; key: project sense; gloss: The preposition "inside"; a
-    project sense, because Open English WordNet has no preposition sense of this word.
+  - `inside#within-preposition` (preposition); group: none; key: project sense; gloss: within the interior or boundaries
+    of something
 - **insult**; parts of speech: noun, verb; forms: insulted, insulting, insults
   - `insult#abuse` (noun); group: none; key: `insult%1:10:00::`; gloss: a rude expression intended to offend or hurt
   - `insult#affront` (noun); group: none; key: `insult%1:04:00::`; gloss: a deliberately offensive act or something
@@ -4692,11 +4708,15 @@ frequent sense of a part of speech first).
   - `interest#concern` (verb); group: none; key: `interest%2:42:01::`; gloss: be on the mind of
   - `interest#be-important` (verb); group: none; key: `interest%2:42:00::`; gloss: be of importance or consequence
 - **intergrade**; parts of speech: noun, verb; forms: intergraded, intergrades, intergrading
-  - `intergrade#intergradation` (noun); group: none; key: project sense; gloss: noun
-  - `intergrade#blend-gradually` (verb); group: none; key: project sense; gloss: verb
+  - `intergrade#intergradation` (noun); group: none; key: project sense; gloss: an intermediate form linking two
+    distinct types or populations
+  - `intergrade#blend-gradually` (verb); group: none; key: project sense; gloss: merge gradually through a series of
+    intermediate forms or stages
 - **interlay**; parts of speech: noun, verb; forms: interlaid, interlaying, interlays
-  - `interlay#interlaid-material` (noun); group: none; key: project sense; gloss: noun
-  - `interlay#layer-between` (verb); group: none; key: project sense; gloss: verb
+  - `interlay#interlaid-material` (noun); group: none; key: project sense; gloss: a layer of material placed between
+    other layers
+  - `interlay#layer-between` (verb); group: none; key: project sense; gloss: place a layer or material between other
+    layers or things
 - **interlock**; parts of speech: noun, verb; forms: interlocked, interlocking, interlocks
   - `interlock#ignition-interlock` (noun); group: none; key: `interlock%1:06:00::`; gloss: a device that prevents an
     automotive engine from starting
@@ -4721,8 +4741,8 @@ frequent sense of a part of speech first).
   - `intern#confine` (verb); group: none; key: `intern%2:41:02::`; gloss: deprive of freedom
   - `intern#train-as-intern` (verb); group: none; key: `intern%2:41:00::`; gloss: work as an intern
 - **interspace**; parts of speech: noun, verb; forms: interspaced, interspaces, interspacing
-  - `interspace#intervening-space` (noun); group: none; key: project sense; gloss: noun
-  - `interspace#space-between` (verb); group: none; key: project sense; gloss: verb
+  - `interspace#intervening-space` (noun); group: none; key: project sense; gloss: a space or gap between things
+  - `interspace#space-between` (verb); group: none; key: project sense; gloss: arrange with spaces or intervals between
 - **intimate**; parts of speech: noun, verb, adjective; forms: intimated, intimates, intimating
   - `intimate#confidant` (noun); group: none; key: `intimate%1:18:00::`; gloss: someone to whom private matters are
     confided
@@ -4760,7 +4780,8 @@ frequent sense of a part of speech first).
     force
   - `invalid#no-longer-valid` (adjective); group: none; key: `invalid%5:00:00:expired:00`; gloss: no longer valid
 - **invert**; parts of speech: noun, verb; forms: inverted, inverting, inverts
-  - `invert#inversion` (noun); group: none; key: project sense; gloss: noun
+  - `invert#inversion` (noun); group: none; key: project sense; gloss: the lowest interior surface of a drain, channel,
+    sewer, or tunnel
   - `invert#musical-inversion` (verb); group: none; key: `invert%2:30:01::`; gloss: make an inversion (in a musical
     composition)
   - `invert#reverse-order` (verb); group: none; key: `invert%2:30:03::`; gloss: reverse the position, order, relation,
@@ -4789,7 +4810,8 @@ frequent sense of a part of speech first).
   - `iron#press-cloth` (verb); group: none; key: `iron%2:35:00::`; gloss: press and smooth with a heated iron
   - `iron#sturdy` (adjective); group: none; key: `iron%5:00:00:robust:00`; gloss: extremely robust
 - **isolate**; parts of speech: noun, verb; forms: isolated, isolates, isolating
-  - `isolate#isolated-person` (noun); group: none; key: project sense; gloss: noun
+  - `isolate#isolated-person` (noun); group: none; key: project sense; gloss: a person, organism, or substance separated
+    from others or obtained in isolation
   - `isolate#insulate` (verb); group: none; key: `isolate%2:30:00::`; gloss: place or set apart
   - `isolate#purify` (verb); group: none; key: `isolate%2:30:01::`; gloss: obtain in pure form
   - `isolate#keep-apart` (verb); group: none; key: `isolate%2:30:02::`; gloss: set apart from others
@@ -5212,10 +5234,10 @@ frequent sense of a part of speech first).
     characteristics
   - `like#equal-value` (adjective); group: none; key: `like%3:00:02::`; gloss: equal in amount or value
   - `like#comparable` (adjective); group: none; key: `like%5:00:00:same:00`; gloss: conforming in every respect
-  - `like#comparison-preposition` (preposition); group: none; key: project sense; gloss: The preposition "like"; a
-    project sense, because Open English WordNet has no preposition sense of this word.
-  - `like#comparison-conjunction` (conjunction); group: none; key: project sense; gloss: The conjunction "like"; a
-    project sense, because Open English WordNet has no conjunction sense of this word.
+  - `like#comparison-preposition` (preposition); group: none; key: project sense; gloss: similar to or in the same
+    manner as
+  - `like#comparison-conjunction` (conjunction); group: none; key: project sense; gloss: introduces a clause expressing
+    similarity of manner or appearance; as or as if
 - **limit**; parts of speech: noun, verb; forms: limited, limiting, limits, limitting
   - `limit#maximum` (noun); group: `limit#group:maximum-constraint`; key: `limit%1:07:00::`; gloss: the greatest
     possible degree of something
@@ -5338,8 +5360,8 @@ frequent sense of a part of speech first).
   - `little#short-stature` (adjective); group: `little#group:small`; key: `little%3:00:00::`; gloss: low in stature; not
     tall; describing something or someone with a stature less than normal
   - `little#not-much` (adverb); group: none; key: `little%4:02:00::`; gloss: not much
-  - `little#determiner` (determiner); group: none; key: project sense; gloss: The determiner "little"; a project sense,
-    because Open English WordNet has no determiner sense of this word.
+  - `little#determiner` (determiner); group: none; key: project sense; gloss: marks a small amount of something, often
+    implying not enough unless preceded by a
 - **live**; parts of speech: verb, adjective, adverb; forms: lived, lives, livest, living
   - `live#reside` (verb); group: none; key: `live%2:42:08::`; gloss: be an inhabitant of or reside in
   - `live#live-lifestyle` (verb); group: none; key: `live%2:42:06::`; gloss: lead a certain kind of life; live in a
@@ -5419,7 +5441,8 @@ frequent sense of a part of speech first).
     forward and the back leg straight and with the sword arm outstretched forward
   - `lunge#verb` (verb); group: none; key: `lunge%2:38:00::`; gloss: make a thrusting forward movement
 - **lunged**; parts of speech: adjective; no other forms
-  - `lunged#with-lungs` (adjective); group: none; key: project sense; gloss: adjective
+  - `lunged#with-lungs` (adjective); group: none; key: project sense; gloss: having lungs of a specified kind or
+    capacity, usually in compounds
 
 ### Lemmas Starting With M
 
@@ -5438,8 +5461,10 @@ frequent sense of a part of speech first).
   - `mail#forward` (verb); group: none; key: `mail%2:32:00::`; gloss: cause to be directed or transmitted to another
     place
 - **marginate**; parts of speech: verb, adjective; forms: marginated, marginates, marginating
-  - `marginate#add-margin` (verb); group: none; key: project sense; gloss: verb
-  - `marginate#having-margin` (adjective); group: none; key: project sense; gloss: adjective
+  - `marginate#add-margin` (verb); group: none; key: project sense; gloss: provide with a margin or add notes in the
+    margin
+  - `marginate#having-margin` (adjective); group: none; key: project sense; gloss: having a distinct border or margin,
+    often of a contrasting color
 - **mark**; parts of speech: noun, verb; forms: marked, marking, marks
   - `mark#grade` (noun); group: none; key: `mark%1:09:01::`; gloss: a number or letter indicating quality (especially of
     a student's performance)
@@ -5632,8 +5657,9 @@ frequent sense of a part of speech first).
     etc.)
   - `misfire#fail-to-fire` (verb); group: none; key: `misfire%2:33:00::`; gloss: fail to fire or detonate
 - **mishit**; parts of speech: noun, verb; forms: mishits, mishitting
-  - `mishit#bad-hit` (noun); group: none; key: project sense; gloss: noun
-  - `mishit#hit-badly` (verb); group: none; key: project sense; gloss: verb
+  - `mishit#bad-hit` (noun); group: none; key: project sense; gloss: a badly timed or inaccurate stroke or hit,
+    especially of a ball
+  - `mishit#hit-badly` (verb); group: none; key: project sense; gloss: strike a ball inaccurately or with poor timing
 - **mismatch**; parts of speech: noun, verb; forms: mismatched, mismatches, mismatching
   - `mismatch#bad-match` (noun); group: none; key: `mismatch%1:09:00::`; gloss: a bad or unsuitable match
   - `mismatch#match-badly` (verb); group: none; key: `mismatch%2:35:00::`; gloss: match badly; match two objects or
@@ -5798,7 +5824,8 @@ frequent sense of a part of speech first).
     with a function; charge to be
   - `nominate#nominate-candidate` (verb); group: `nominate#group:candidate-nomination`; key: `nominate%2:41:02::`;
     gloss: put forward; nominate for appointment to an office or for an honor or position
-  - `nominate#nominated` (adjective); group: none; key: project sense; gloss: adjective
+  - `nominate#nominated` (adjective); group: none; key: project sense; gloss: bearing the same name as the larger taxon
+    and containing its name-bearing type (taxonomy)
 - **note**; parts of speech: noun, verb; forms: noted, notes, noting
   - `note#written-account` (noun); group: none; key: `note%1:10:00::`; gloss: a brief written record
   - `note#billet` (noun); group: none; key: `note%1:10:03::`; gloss: a short personal letter
@@ -5867,7 +5894,8 @@ frequent sense of a part of speech first).
     or cases or sides
   - `obverse#side` (noun); group: none; key: `obverse%1:06:00::`; gloss: the side of a coin or medal bearing the
     principal stamp or design
-  - `obverse#front-facing` (adjective); group: none; key: project sense; gloss: adjective
+  - `obverse#front-facing` (adjective); group: none; key: project sense; gloss: having the narrower end at the base, as
+    an inverted cone or egg-shaped leaf
 - **occasion**; parts of speech: noun, verb; forms: occasioned, occasioning, occasions
   - `occasion#juncture` (noun); group: none; key: `occasion%1:11:00::`; gloss: an event that occurs at a critical time
   - `occasion#affair` (noun); group: none; key: `occasion%1:11:01::`; gloss: a formal or official social gathering or
@@ -5926,7 +5954,8 @@ frequent sense of a part of speech first).
 - **opiate**; parts of speech: noun, verb; forms: opiated, opiates, opiating
   - `opiate#opium-drug` (noun); group: none; key: `opiate%1:06:00::`; gloss: a narcotic drug that contains opium or an
     opium derivative
-  - `opiate#use-opiates` (verb); group: none; key: project sense; gloss: verb
+  - `opiate#use-opiates` (verb); group: none; key: project sense; gloss: sedate with an opium-based drug or lull into an
+    unresponsive state
 - **orbit**; parts of speech: noun, verb; forms: orbited, orbiting, orbits, orbitting
   - `orbit#celestial-orbit` (noun); group: none; key: `orbit%1:15:00::`; gloss: the (usually elliptical) path described
     by one celestial body in its revolution about another
@@ -5958,7 +5987,8 @@ frequent sense of a part of speech first).
   - `outgo#exceed` (verb); group: none; key: `outgo%2:33:00::`; gloss: be or do something to a greater degree
 - **outreach**; parts of speech: noun, verb; forms: outreached, outreaches, outreaching
   - `outreach#reaching-out` (noun); group: none; key: `outreach%1:04:00::`; gloss: the act of reaching out
-  - `outreach#reach-beyond` (verb); group: none; key: project sense; gloss: verb
+  - `outreach#reach-beyond` (verb); group: none; key: project sense; gloss: reach beyond an existing group to contact
+    people or offer help and services
 - **overall**; parts of speech: noun, adjective, adverb; forms: overalls
   - `overall#work-clothes` (noun); group: none; key: `overall%1:06:00::`; gloss: (usually plural) work clothing
     consisting of denim trousers (usually with a bib and shoulder straps)
@@ -5966,7 +5996,7 @@ frequent sense of a part of speech first).
     smock worn over ordinary clothing for dirty work
   - `overall#general` (adjective); group: none; key: `overall%5:00:00:general:00`; gloss: involving only main features
   - `overall#comprehensive` (adjective); group: none; key: `overall%5:00:00:gross:00`; gloss: including everything
-  - `overall#generally` (adverb); group: none; key: project sense; gloss: adverb
+  - `overall#generally` (adverb); group: none; key: project sense; gloss: taking everything into account; on the whole
 - **overbid**; parts of speech: noun, verb; forms: overbidden, overbidding, overbids
   - `overbid#bridge-overcall` (noun); group: none; key: `overbid%1:10:01::`; gloss: (bridge) a bid that is higher than
     your opponent's bid (especially when your partner has not bid at all and your bid exceeds the value of your hand)
@@ -5984,22 +6014,27 @@ frequent sense of a part of speech first).
 - **overcall**; parts of speech: noun, verb; forms: overcalled, overcalling, overcalls
   - `overcall#bridge-overcall` (noun); group: none; key: `overcall%1:10:00::`; gloss: (bridge) a bid that is higher than
     your opponent's bid (especially when your partner has not bid at all and your bid exceeds the value of your hand)
-  - `overcall#bid-over` (verb); group: none; key: project sense; gloss: verb
+  - `overcall#bid-over` (verb); group: none; key: project sense; gloss: make a bid higher than an opponent's preceding
+    bid (bridge)
 - **overcharge**; parts of speech: noun, verb; forms: overcharged, overcharges, overcharging
   - `overcharge#excessive-price` (noun); group: none; key: `overcharge%1:21:00::`; gloss: a price that is too high
   - `overcharge#fleece` (verb); group: none; key: `overcharge%2:40:00::`; gloss: rip off; ask an unreasonable price
   - `overcharge#overload` (verb); group: none; key: `overcharge%2:35:00::`; gloss: place too much a load on
 - **overdose**; parts of speech: noun, verb; forms: overdosed, overdoses, overdosing
-  - `overdose#excessive-dose` (noun); group: none; key: project sense; gloss: noun
+  - `overdose#excessive-dose` (noun); group: none; key: project sense; gloss: an amount of a drug or other substance
+    exceeding a safe or recommended dose
   - `overdose#dose-excessively` (verb); group: none; key: `overdose%2:29:00::`; gloss: dose too heavily
 - **overdress**; parts of speech: noun, verb; forms: overdressed, overdresses, overdressing
-  - `overdress#excessive-attire` (noun); group: none; key: project sense; gloss: noun
+  - `overdress#excessive-attire` (noun); group: none; key: project sense; gloss: clothing that is more elaborate,
+    formal, or abundant than the occasion requires
   - `overdress#attire` (verb); group: none; key: `overdress%2:29:00::`; gloss: put on special clothes to appear
     particularly appealing and attractive
   - `overdress#overclothe` (verb); group: none; key: `overdress%2:29:01::`; gloss: dress too warmly
 - **overdub**; parts of speech: noun, verb; forms: overdubbed, overdubbing, overdubs
-  - `overdub#dubbed-recording` (noun); group: none; key: project sense; gloss: noun
-  - `overdub#add-dubbing` (verb); group: none; key: project sense; gloss: verb
+  - `overdub#dubbed-recording` (noun); group: none; key: project sense; gloss: a recorded sound or performance added to
+    an existing recording
+  - `overdub#add-dubbing` (verb); group: none; key: project sense; gloss: record additional sound onto an existing
+    recording
 - **overestimate**; parts of speech: noun, verb; forms: overestimated, overestimates, overestimating
   - `overestimate#overappraisal` (noun); group: none; key: `overestimate%1:10:00::`; gloss: an appraisal that is too
     high
@@ -6076,7 +6111,8 @@ frequent sense of a part of speech first).
 - **overpass**; parts of speech: noun, verb; forms: overpassed, overpasses, overpassing, overpast
   - `overpass#highway-overpass` (noun); group: none; key: `overpass%1:06:00::`; gloss: bridge formed by the upper level
     of a crossing of two highways at different levels
-  - `overpass#pass-over` (verb); group: none; key: project sense; gloss: verb
+  - `overpass#pass-over` (verb); group: none; key: project sense; gloss: go past or beyond a point, limit, or level
+    (rare)
 - **overprint**; parts of speech: noun, verb; forms: overprinted, overprinting, overprints
   - `overprint#additional-print` (noun); group: none; key: `overprint%1:06:00::`; gloss: something added by overprinting
   - `overprint#print-over` (verb); group: none; key: `overprint%2:36:00::`; gloss: print (additional text or colors)
@@ -6105,16 +6141,19 @@ frequent sense of a part of speech first).
   - `overshoot#aim-too-high` (verb); group: none; key: `overshoot%2:31:00::`; gloss: aim too high
   - `overshoot#shoot-past` (verb); group: none; key: `overshoot%2:33:00::`; gloss: shoot beyond or over (a target)
 - **overspend**; parts of speech: noun, verb; forms: overspending, overspends, overspent
-  - `overspend#excessive-spending` (noun); group: none; key: project sense; gloss: noun
+  - `overspend#excessive-spending` (noun); group: none; key: project sense; gloss: spending in excess of a budget or the
+    amount available
   - `overspend#exceed-budget` (verb); group: none; key: `overspend%2:40:01::`; gloss: spend more than available of (a
     budget)
   - `overspend#spend-freely` (verb); group: none; key: `overspend%2:40:00::`; gloss: spend at a high rate
 - **oversteer**; parts of speech: noun, verb; forms: oversteered, oversteering, oversteers
   - `oversteer#excess-steering` (noun); group: none; key: `oversteer%1:07:01::`; gloss: when a car turns (steers) by
     more than (over) the amount commanded by the driver.
-  - `oversteer#turn-too-much` (verb); group: none; key: project sense; gloss: verb
+  - `oversteer#turn-too-much` (verb); group: none; key: project sense; gloss: steer too sharply, or turn more sharply
+    than intended because the rear tires lose grip
 - **overstock**; parts of speech: noun, verb; forms: overstocked, overstocking, overstocks
-  - `overstock#excess-inventory` (noun); group: none; key: project sense; gloss: noun
+  - `overstock#excess-inventory` (noun); group: none; key: project sense; gloss: a supply of goods greater than is
+    needed or can readily be sold
   - `overstock#stock-excessively` (verb); group: none; key: `overstock%2:40:00::`; gloss: stock excessively
 - **overthrow**; parts of speech: noun, verb; forms: overthrew, overthrowing, overthrown, overthrows
   - `overthrow#regime-downfall` (noun); group: none; key: `overthrow%1:04:01::`; gloss: the termination of a ruler or
@@ -6142,7 +6181,8 @@ frequent sense of a part of speech first).
 - **overweight**; parts of speech: noun, verb, adjective; forms: overweighted, overweighting, overweights
   - `overweight#excess-weight` (noun); group: none; key: `overweight%1:07:00::`; gloss: the property of excessive
     fatness
-  - `overweight#weigh-too-much` (verb); group: none; key: project sense; gloss: verb
+  - `overweight#weigh-too-much` (verb); group: none; key: project sense; gloss: load with excessive weight or assign
+    disproportionate importance to
   - `overweight#heavyset` (adjective); group: none; key: `overweight%5:00:00:fat:01`; gloss: usually describes a large
     person who is fat but has a large frame to carry it
 - **overwork**; parts of speech: noun, verb; forms: overworked, overworking, overworks
@@ -6154,8 +6194,8 @@ frequent sense of a part of speech first).
   - `own#possess` (verb); group: none; key: `own%2:40:00::`; gloss: have ownership or possession of
   - `own#belonging-to` (adjective); group: none; key: `own%5:00:00:personal:00`; gloss: belonging to or on behalf of a
     specified person (especially yourself); preceded by a possessive
-  - `own#determiner` (determiner); group: none; key: project sense; gloss: The determiner "own"; a project sense,
-    because Open English WordNet has no determiner sense of this word.
+  - `own#determiner` (determiner); group: none; key: project sense; gloss: emphasizes that something belongs
+    specifically or exclusively to the person indicated by a possessive
 
 ### Lemmas Starting With P
 
@@ -6171,8 +6211,8 @@ frequent sense of a part of speech first).
   - `pace#move-at-pace` (verb); group: none; key: `pace%2:38:01::`; gloss: go at a pace
   - `pace#measure-by-pacing` (verb); group: none; key: `pace%2:30:00::`; gloss: measure (distances) by pacing
   - `pace#set-pace` (verb); group: none; key: `pace%2:31:00::`; gloss: regulate or set the pace of
-  - `pace#notwithstanding` (preposition); group: none; key: project sense; gloss: The preposition "pace"; a project
-    sense, because Open English WordNet has no preposition sense of this word.
+  - `pace#notwithstanding` (preposition); group: none; key: project sense; gloss: with due respect to the named person
+    or authority, while disagreeing with their opinion
 - **pack**; parts of speech: noun, verb; forms: packed, packing, packs
   - `pack#collection` (noun); group: none; key: `pack%1:14:03::`; gloss: a complete collection of similar things
   - `pack#large-quantity` (noun); group: none; key: `pack%1:23:00::`; gloss: a large indefinite quantity
@@ -6252,8 +6292,8 @@ frequent sense of a part of speech first).
     punishment for an offense
   - `pardon#excuse` (verb); group: none; key: `pardon%2:32:01::`; gloss: accept an excuse for
   - `pardon#forgive` (verb); group: none; key: `pardon%2:32:00::`; gloss: grant a pardon to
-  - `pardon#please-repeat` (interjection); group: none; key: project sense; gloss: The interjection "pardon"; a project
-    sense, because Open English WordNet has no interjection sense of this word.
+  - `pardon#please-repeat` (interjection); group: none; key: project sense; gloss: used to ask politely for something to
+    be repeated or clarified
 - **park**; parts of speech: noun, verb; forms: parked, parking, parks
   - `park#parkland` (noun); group: none; key: `park%1:15:00::`; gloss: a large area of land preserved in its natural
     state as public property
@@ -6351,8 +6391,8 @@ frequent sense of a part of speech first).
   - `pass#inherit` (verb); group: none; key: `pass%2:40:13::`; gloss: be inherited by
   - `pass#throw-ball` (verb); group: none; key: `pass%2:40:01::`; gloss: throw (a ball) to another player
   - `pass#ball-passing` (adjective); group: none; key: `pass%3:00:00::`; gloss: of advancing the ball by throwing it
-  - `pass#pass-request` (interjection); group: none; key: project sense; gloss: The interjection "pass"; a project
-    sense, because Open English WordNet has no interjection sense of this word.
+  - `pass#pass-request` (interjection); group: none; key: project sense; gloss: used to decline a turn or answer, or to
+    request the next question
 - **pasty**; parts of speech: noun, adjective; forms: pastier, pasties, pastiest
   - `pasty#meat-pie` (noun); group: none; key: `pasty%1:13:00::`; gloss: small meat pie or turnover
   - `pasty#nipple-cover` (noun); group: none; key: `pasty%1:06:00::`; gloss: (usually used in the plural) one of a pair
@@ -6794,8 +6834,8 @@ frequent sense of a part of speech first).
   - `pop#popular` (adjective); group: none; key: `pop%5:00:00:nonclassical:00`; gloss: (of music or art) new and of
     general appeal (especially among young people)
   - `pop#with-pop` (adverb); group: none; key: `pop%4:02:00::`; gloss: like a pop or with a pop
-  - `pop#exclamation` (interjection); group: none; key: project sense; gloss: The interjection "pop"; a project sense,
-    because Open English WordNet has no interjection sense of this word.
+  - `pop#exclamation` (interjection); group: none; key: project sense; gloss: used to imitate a short, sharp explosive
+    sound
 - **post**; parts of speech: noun, verb; forms: posted, posting, posts
   - `post#berth` (noun); group: none; key: `post%1:04:00::`; gloss: a job in an organization
   - `post#military-post` (noun); group: none; key: `post%1:06:01::`; gloss: military installation at which a body of
@@ -6830,7 +6870,8 @@ frequent sense of a part of speech first).
     another place
 - **postfix**; parts of speech: noun, verb; forms: postfixed, postfixes, postfixing
   - `postfix#suffix` (noun); group: none; key: `postfix%1:10:00::`; gloss: an affix that is added at the end of the word
-  - `postfix#append-suffix` (verb); group: none; key: project sense; gloss: verb
+  - `postfix#append-suffix` (verb); group: none; key: project sense; gloss: add a letter, word, or other element to the
+    end of something
 - **postulate**; parts of speech: noun, verb; forms: postulated, postulates, postulating
   - `postulate#assumption` (noun); group: none; key: `postulate%1:10:00::`; gloss: (logic) a proposition that is
     accepted as true in order to provide a basis for logical reasoning
@@ -6894,19 +6935,23 @@ frequent sense of a part of speech first).
   - `predicate#form-predicate` (verb); group: none; key: `predicate%2:32:02::`; gloss: make the (grammatical) predicate
     in a proposition
 - **prefetch**; parts of speech: noun, verb; forms: prefetched, prefetches, prefetching
-  - `prefetch#prefetch-operation` (noun); group: none; key: project sense; gloss: noun
-  - `prefetch#fetch-ahead` (verb); group: none; key: project sense; gloss: verb
+  - `prefetch#prefetch-operation` (noun); group: none; key: project sense; gloss: an operation that retrieves data or
+    instructions before they are needed (computing)
+  - `prefetch#fetch-ahead` (verb); group: none; key: project sense; gloss: retrieve data or instructions before they are
+    needed (computing)
 - **prefix**; parts of speech: noun, verb; forms: prefixed, prefixes, prefixing
   - `prefix#prefix-affix` (noun); group: none; key: `prefix%1:10:00::`; gloss: an affix that is added in front of the
     word
   - `prefix#attach-prefix` (verb); group: none; key: `prefix%2:35:00::`; gloss: attach a prefix to
 - **preload**; parts of speech: noun, verb; forms: preloaded, preloading, preloads
-  - `preload#preload-operation` (noun); group: none; key: project sense; gloss: noun
-  - `preload#load-ahead` (verb); group: none; key: project sense; gloss: verb
+  - `preload#preload-operation` (noun); group: none; key: project sense; gloss: an initial force applied to a component
+    before its normal working load
+  - `preload#load-ahead` (verb); group: none; key: project sense; gloss: apply an initial load to a component, or load
+    data before it is needed
 - **premix**; parts of speech: noun, verb; forms: premixed, premixes, premixing
   - `premix#dry-mixture` (noun); group: none; key: `premix%1:13:00::`; gloss: a commercially prepared mixture of dry
     ingredients
-  - `premix#mix-ahead` (verb); group: none; key: project sense; gloss: verb
+  - `premix#mix-ahead` (verb); group: none; key: project sense; gloss: mix ingredients in advance of their use
 - **present**; parts of speech: noun, verb, adjective; forms: presented, presenter, presenting, presents
   - `present#present-time` (noun); group: none; key: `present%1:28:00::`; gloss: the period of time that is happening
     now; any continuous stretch of time including the moment of speech
@@ -7185,7 +7230,8 @@ frequent sense of a part of speech first).
   - `push#sell-illegal-goods` (verb); group: none; key: `push%2:40:00::`; gloss: sell or promote the sale of (illegal
     goods such as drugs)
 - **pustulate**; parts of speech: verb, adjective; forms: pustulated, pustulates, pustulating
-  - `pustulate#form-pustules` (verb); group: none; key: project sense; gloss: verb
+  - `pustulate#form-pustules` (verb); group: none; key: project sense; gloss: develop or cause to develop small
+    pus-filled swellings
   - `pustulate#blemished-skin` (adjective); group: none; key: `pustulate%5:00:00:blemished:00`; gloss: (of complexion)
     blemished by imperfections of the skin
 
@@ -7194,7 +7240,8 @@ frequent sense of a part of speech first).
 - **quadrate**; parts of speech: noun, verb, adjective; forms: quadrated, quadrates, quadrating
   - `quadrate#cube` (noun); group: none; key: `quadrate%1:25:02::`; gloss: a cubelike object
   - `quadrate#square-object` (noun); group: none; key: `quadrate%1:25:01::`; gloss: a square-shaped object
-  - `quadrate#make-square` (verb); group: none; key: project sense; gloss: verb
+  - `quadrate#make-square` (verb); group: none; key: project sense; gloss: make square or bring into agreement;
+    correspond or agree (rare)
   - `quadrate#four-sided` (adjective); group: none; key: `quadrate%5:00:00:square:00`; gloss: having four sides and four
     angles
 - **quadruplicate**; parts of speech: noun, verb, adjective; forms: quadruplicated, quadruplicates, quadruplicating
@@ -7204,8 +7251,10 @@ frequent sense of a part of speech first).
   - `quadruplicate#fourfold` (adjective); group: none; key: `quadruplicate%5:00:00:multiple:00`; gloss: having four
     units or components
 - **quintuplicate**; parts of speech: verb, adjective; forms: quintuplicated, quintuplicates, quintuplicating
-  - `quintuplicate#make-five-copies` (verb); group: none; key: project sense; gloss: verb
-  - `quintuplicate#fivefold` (adjective); group: none; key: project sense; gloss: adjective
+  - `quintuplicate#make-five-copies` (verb); group: none; key: project sense; gloss: make five identical copies of
+    something
+  - `quintuplicate#fivefold` (adjective); group: none; key: project sense; gloss: existing in five identical copies or
+    consisting of five corresponding parts
 - **quote**; parts of speech: noun, verb, interjection; forms: quoted, quotes, quoting
   - `quote#quotation` (noun); group: none; key: `quote%1:10:01::`; gloss: a passage or expression that is quoted or
     cited
@@ -7215,8 +7264,8 @@ frequent sense of a part of speech first).
   - `quote#add-quotation-marks` (verb); group: none; key: `quote%2:32:07::`; gloss: put quote marks around
   - `quote#cite-as-example` (verb); group: none; key: `quote%2:32:02::`; gloss: refer to for illustration or proof
   - `quote#state-price` (verb); group: none; key: `quote%2:32:13::`; gloss: name the price of
-  - `quote#quote-interjection` (interjection); group: none; key: project sense; gloss: The interjection "quote"; a
-    project sense, because Open English WordNet has no interjection sense of this word.
+  - `quote#quote-interjection` (interjection); group: none; key: project sense; gloss: used in speech to mark the
+    beginning of a quotation or a word being cited
 
 ### Lemmas Starting With R
 
@@ -7398,15 +7447,19 @@ frequent sense of a part of speech first).
     former allegiance
   - `rebel#break-customs` (verb); group: none; key: `rebel%2:41:01::`; gloss: break with established customs
 - **rebid**; parts of speech: noun, verb; forms: rebidding, rebids
-  - `rebid#second-bid` (noun); group: none; key: project sense; gloss: noun
-  - `rebid#bid-again` (verb); group: none; key: project sense; gloss: verb
+  - `rebid#second-bid` (noun); group: none; key: project sense; gloss: a second or repeated bid or bidding process
+  - `rebid#bid-again` (verb); group: none; key: project sense; gloss: submit a bid again or offer a project for bidding
+    again
 - **reboot**; parts of speech: noun, verb; forms: rebooted, rebooting, reboots
-  - `reboot#system-restart` (noun); group: none; key: project sense; gloss: noun
+  - `reboot#system-restart` (noun); group: none; key: project sense; gloss: a restart of a computer or its operating
+    system
   - `reboot#restart-system` (verb); group: none; key: `reboot%2:29:00::`; gloss: cause to load (an operating system) and
     start the initial processes
 - **rebore**; parts of speech: noun, verb; forms: rebored, rebores, reboring
-  - `rebore#rebore-operation` (noun); group: none; key: project sense; gloss: noun
-  - `rebore#bore-again` (verb); group: none; key: project sense; gloss: verb
+  - `rebore#rebore-operation` (noun); group: none; key: project sense; gloss: an operation that enlarges or restores the
+    bore of a cylinder or barrel
+  - `rebore#bore-again` (verb); group: none; key: project sense; gloss: bore a hole or cylinder again, usually to
+    enlarge or restore its interior
 - **recall**; parts of speech: noun, verb; forms: recalled, recalling, recalls
   - `recall#bugle-return` (noun); group: none; key: `recall%1:10:01::`; gloss: a bugle call that signals troops to
     return
@@ -7444,7 +7497,8 @@ frequent sense of a part of speech first).
   - `recess#adjourn` (verb); group: none; key: `recess%2:30:00::`; gloss: close at the end of a session
   - `recess#indent` (verb); group: none; key: `recess%2:35:00::`; gloss: make a recess in
 - **recharge**; parts of speech: noun, verb; forms: recharged, recharges, recharging
-  - `recharge#recharging` (noun); group: none; key: project sense; gloss: noun
+  - `recharge#recharging` (noun); group: none; key: project sense; gloss: the replenishment of stored electrical energy
+    in a battery
   - `recharge#charge-anew` (verb); group: none; key: `recharge%2:30:00::`; gloss: charge anew
   - `recharge#reload` (verb); group: none; key: `recharge%2:35:00::`; gloss: load anew
 - **recoil**; parts of speech: noun, verb; forms: recoiled, recoiling, recoils
@@ -7487,19 +7541,22 @@ frequent sense of a part of speech first).
   - `recreate#play` (verb); group: none; key: `recreate%2:41:00::`; gloss: engage in recreational activities rather than
     work; occupy oneself in a diversion
 - **redial**; parts of speech: noun, verb; forms: redialed, redialing, redialled, redialling, redials
-  - `redial#redial-action` (noun); group: none; key: project sense; gloss: noun
-  - `redial#dial-again` (verb); group: none; key: project sense; gloss: verb
+  - `redial#redial-action` (noun); group: none; key: project sense; gloss: the act or function of dialing a telephone
+    number again
+  - `redial#dial-again` (verb); group: none; key: project sense; gloss: dial a telephone number again
 - **redirect**; parts of speech: noun, verb; forms: redirected, redirecting, redirects
-  - `redirect#redirection` (noun); group: none; key: project sense; gloss: noun
+  - `redirect#redirection` (noun); group: none; key: project sense; gloss: a rule or response that sends a web request
+    to a different address (computing)
   - `redirect#reroute` (verb); group: none; key: `redirect%2:38:00::`; gloss: channel into a new direction
 - **redo**; parts of speech: noun, verb; forms: redid, redoes, redoing, redone, redos
-  - `redo#redo-action` (noun); group: none; key: project sense; gloss: noun
+  - `redo#redo-action` (noun); group: none; key: project sense; gloss: an act of doing something over, especially to
+    renovate or improve it
   - `redo#makeover` (verb); group: none; key: `redo%2:36:00::`; gloss: make new
   - `redo#rebuild` (verb); group: none; key: `redo%2:30:00::`; gloss: do over, as of (part of) a house
 - **redraft**; parts of speech: noun, verb; forms: redrafted, redrafting, redrafts
   - `redraft#new-draft` (noun); group: none; key: `redraft%1:21:00::`; gloss: a draft for the amount of a dishonored
     draft plus the costs and charges of drafting again
-  - `redraft#draft-again` (verb); group: none; key: project sense; gloss: verb
+  - `redraft#draft-again` (verb); group: none; key: project sense; gloss: write a revised version of a document or text
 - **refill**; parts of speech: noun, verb; forms: refilled, refilling, refills
   - `refill#prescription-refill` (noun); group: none; key: `refill%1:06:01::`; gloss: a prescription drug that is
     provided again
@@ -7528,7 +7585,8 @@ frequent sense of a part of speech first).
   - `reform#reform-person` (verb); group: none; key: `reform%2:30:04::`; gloss: bring, lead, or force to abandon a wrong
     or evil course of life, conduct, and adopt a right one
 - **refresh**; parts of speech: noun, verb; forms: refreshed, refreshes, refreshing
-  - `refresh#refresh-action` (noun); group: none; key: project sense; gloss: noun
+  - `refresh#refresh-action` (noun); group: none; key: project sense; gloss: an act of renewing, reviving, or updating
+    something
   - `refresh#become-fresh` (verb); group: `refresh#group:freshness-change`; key: `refresh%2:29:02::`; gloss: become or
     make oneself fresh again
   - `refresh#feel-fresh` (verb); group: none; key: `refresh%2:30:00::`; gloss: make (to feel) fresh
@@ -7568,7 +7626,8 @@ frequent sense of a part of speech first).
   - `regenerate#morally-reformed` (adjective); group: none; key: `regenerate%3:00:00::`; gloss: reformed spiritually or
     morally
 - **regift**; parts of speech: noun, verb; forms: regifted, regifting, regifts
-  - `regift#regifting` (noun); group: none; key: project sense; gloss: noun
+  - `regift#regifting` (noun); group: none; key: project sense; gloss: a gift passed on to someone else after being
+    received as a present
   - `regift#give-again` (verb); group: none; key: `regift%2:40:00::`; gloss: give a present that one has received to
     someone else
 - **regiment**; parts of speech: noun, verb; forms: regimented, regimenting, regiments
@@ -7627,8 +7686,10 @@ frequent sense of a part of speech first).
   - `regress#worsen` (verb); group: none; key: `regress%2:30:00::`; gloss: get worse or fall back to a previous
     condition
 - **rehang**; parts of speech: noun, verb; forms: rehanged, rehanging, rehangs, rehung
-  - `rehang#rehanging` (noun); group: none; key: project sense; gloss: noun
-  - `rehang#hang-again` (verb); group: none; key: project sense; gloss: verb
+  - `rehang#rehanging` (noun); group: none; key: project sense; gloss: an act of hanging objects again, especially
+    rearranging paintings in an exhibition
+  - `rehang#hang-again` (verb); group: none; key: project sense; gloss: hang something again, often in a different
+    position or arrangement
 - **rehash**; parts of speech: noun, verb; forms: rehashed, rehashes, rehashing
   - `rehash#rehashed-material` (noun); group: none; key: `rehash%1:10:00::`; gloss: old material that is slightly
     reworked and used again
@@ -7636,7 +7697,8 @@ frequent sense of a part of speech first).
     changes
   - `rehash#review-again` (verb); group: none; key: `rehash%2:32:00::`; gloss: go back over
 - **reheat**; parts of speech: noun, verb; forms: reheated, reheating, reheats
-  - `reheat#reheating` (noun); group: none; key: project sense; gloss: noun
+  - `reheat#reheating` (noun); group: none; key: project sense; gloss: a further heating of a substance, especially
+    steam or exhaust gases in an engine
   - `reheat#heat-again` (verb); group: none; key: `reheat%2:30:00::`; gloss: heat again
 - **reincarnate**; parts of speech: verb, adjective; forms: reincarnated, reincarnates, reincarnating
   - `reincarnate#be-reborn` (verb); group: none; key: `reincarnate%2:42:00::`; gloss: be born anew in another body after
@@ -7661,8 +7723,10 @@ frequent sense of a part of speech first).
   - `relapse#deteriorate-health` (verb); group: none; key: `relapse%2:30:00::`; gloss: deteriorate in health
   - `relapse#return-bad-behavior` (verb); group: none; key: `relapse%2:29:00::`; gloss: go back to bad behavior
 - **relaunch**; parts of speech: noun, verb; forms: relaunched, relaunches, relaunching
-  - `relaunch#relaunching` (noun); group: none; key: project sense; gloss: noun
-  - `relaunch#launch-again` (verb); group: none; key: project sense; gloss: verb
+  - `relaunch#relaunching` (noun); group: none; key: project sense; gloss: a renewed introduction or start of a product,
+    publication, business, or activity
+  - `relaunch#launch-again` (verb); group: none; key: project sense; gloss: start, introduce, or put into operation
+    again
 - **relay**; parts of speech: noun, verb; forms: relaid, relayed, relaying, relays
   - `relay#handing-over` (noun); group: none; key: `relay%1:04:00::`; gloss: the act of passing something along from one
     person or group to another
@@ -7675,8 +7739,8 @@ frequent sense of a part of speech first).
   - `relay#pass-along` (verb); group: none; key: `relay%2:32:00::`; gloss: pass along
   - `relay#control-by-relay` (verb); group: none; key: `relay%2:35:00::`; gloss: control or operate by relay
 - **relet**; parts of speech: noun, verb; forms: relets, reletting
-  - `relet#reletting` (noun); group: none; key: project sense; gloss: noun
-  - `relet#let-again` (verb); group: none; key: project sense; gloss: verb
+  - `relet#reletting` (noun); group: none; key: project sense; gloss: the act of renting out a property again
+  - `relet#let-again` (verb); group: none; key: project sense; gloss: rent out a property again, usually to a new tenant
 - **remake**; parts of speech: noun, verb; forms: remade, remakes, remaking
   - `remake#new-version` (noun); group: none; key: `remake%1:06:00::`; gloss: creation that is created again or anew
   - `remake#make-again` (verb); group: none; key: `remake%2:36:00::`; gloss: make new
@@ -7694,12 +7758,12 @@ frequent sense of a part of speech first).
   - `remit#remand` (verb); group: none; key: `remit%2:32:01::`; gloss: refer (a matter or legal case) to another
     committee or authority or court for decision
 - **remold**; parts of speech: noun, verb; forms: remolded, remolding, remolds
-  - `remold#remolding` (noun); group: none; key: project sense; gloss: noun
+  - `remold#remolding` (noun); group: none; key: project sense; gloss: a used tire fitted with a new layer of tread
   - `remold#cast-again` (verb); group: none; key: `remold%2:36:00::`; gloss: cast again
   - `remold#reshape` (verb); group: none; key: `remold%2:36:01::`; gloss: shape again or shape differently
   - `remold#retread-tire` (verb); group: none; key: `remold%2:30:00::`; gloss: give new treads to (a tire)
 - **remould**; parts of speech: noun, verb; forms: remoulded, remoulding, remoulds
-  - `remould#remoulding` (noun); group: none; key: project sense; gloss: noun
+  - `remould#remoulding` (noun); group: none; key: project sense; gloss: a used tire fitted with a new layer of tread
   - `remould#cast-again` (verb); group: none; key: `remould%2:36:00::`; gloss: cast again
   - `remould#retread-tire` (verb); group: none; key: `remould%2:30:00::`; gloss: give new treads to (a tire)
 - **remount**; parts of speech: noun, verb; forms: remounted, remounting, remounts
@@ -7724,8 +7788,10 @@ frequent sense of a part of speech first).
   - `rent#rent-under-lease` (verb); group: none; key: `rent%2:41:00::`; gloss: hold under a lease or rental agreement;
     of goods and services
 - **renunciate**; parts of speech: noun, verb; forms: renunciated, renunciates, renunciating
-  - `renunciate#renouncer` (noun); group: none; key: project sense; gloss: noun
-  - `renunciate#renounce` (verb); group: none; key: project sense; gloss: verb
+  - `renunciate#renouncer` (noun); group: none; key: project sense; gloss: a person who gives up worldly possessions and
+    desires for a religious or ascetic life
+  - `renunciate#renounce` (verb); group: none; key: project sense; gloss: formally give up or reject a claim,
+    allegiance, or possession (rare)
 - **replay**; parts of speech: noun, verb; forms: replayed, replaying, replays
   - `replay#action-replay` (noun); group: none; key: `replay%1:04:00::`; gloss: the immediate rebroadcast of some action
     (especially sports action) that has been recorded on videotape
@@ -7736,14 +7802,16 @@ frequent sense of a part of speech first).
   - `replay#replay-match` (verb); group: none; key: `replay%2:33:01::`; gloss: repeat a game against the same opponent
   - `replay#replay-melody` (verb); group: none; key: `replay%2:36:00::`; gloss: play (a melody) again
 - **replicate**; parts of speech: noun, verb; forms: replicated, replicates, replicating
-  - `replicate#duplicate` (noun); group: none; key: project sense; gloss: noun
+  - `replicate#duplicate` (noun); group: none; key: project sense; gloss: a repeated experimental unit, sample, or trial
+    used to assess variation or confirm results
   - `replicate#bend-back` (verb); group: none; key: `replicate%2:38:00::`; gloss: bend or turn backward
   - `replicate#copy` (verb); group: none; key: `replicate%2:36:01::`; gloss: reproduce or make an exact copy of
   - `replicate#do-again` (verb); group: none; key: `replicate%2:36:00::`; gloss: make or do or perform again
 - **repost**; parts of speech: noun, verb; forms: reposted, reposting, reposts
   - `repost#social-media-repost` (noun); group: none; key: `repost%1:10:01::`; gloss: A post on social media that has
     already been posted
-  - `repost#share-again` (verb); group: none; key: project sense; gloss: verb
+  - `repost#share-again` (verb); group: none; key: project sense; gloss: publish or share previously posted content
+    again, especially online
 - **reprimand**; parts of speech: noun, verb; forms: reprimanded, reprimanding, reprimands
   - `reprimand#rebuke` (noun); group: none; key: `reprimand%1:10:00::`; gloss: an act or expression of criticism and
     censure
@@ -7765,8 +7833,10 @@ frequent sense of a part of speech first).
 - **reread**; parts of speech: verb; forms: rereading, rereads
   - `reread#read-again` (verb); group: none; key: `reread%2:31:00::`; gloss: read anew; read again
 - **rerelease**; parts of speech: noun, verb; forms: rereleased, rereleases, rereleasing
-  - `rerelease#second-release` (noun); group: none; key: project sense; gloss: noun
-  - `rerelease#release-again` (verb); group: none; key: project sense; gloss: verb
+  - `rerelease#second-release` (noun); group: none; key: project sense; gloss: a new release or edition of a previously
+    available work or product
+  - `rerelease#release-again` (verb); group: none; key: project sense; gloss: make a previously released work or product
+    available to the public again
 - **rerun**; parts of speech: noun, verb; forms: reran, rerunning, reruns
   - `rerun#repeat-broadcast` (noun); group: none; key: `rerun%1:10:00::`; gloss: a program that is broadcast again
   - `rerun#rebroadcast` (verb); group: none; key: `rerun%2:32:00::`; gloss: broadcast again, as of a film
@@ -7821,8 +7891,10 @@ frequent sense of a part of speech first).
     from a position
   - `resign#relinquish` (verb); group: none; key: `resign%2:40:04::`; gloss: part with a possession or right
 - **resit**; parts of speech: noun, verb; forms: resat, resits, resitting
-  - `resit#repeat-exam` (noun); group: none; key: project sense; gloss: noun
-  - `resit#retake-exam` (verb); group: none; key: project sense; gloss: verb
+  - `resit#repeat-exam` (noun); group: none; key: project sense; gloss: an examination taken again, usually after an
+    earlier failure
+  - `resit#retake-exam` (verb); group: none; key: project sense; gloss: take an examination again, usually after failing
+    it
 - **resort**; parts of speech: noun, verb; forms: resorted, resorting, resorts
   - `resort#holiday-resort` (noun); group: none; key: `resort%1:15:00::`; gloss: a hotel located in a resort area
   - `resort#hangout` (noun); group: none; key: `resort%1:15:01::`; gloss: a frequently visited place
@@ -7833,8 +7905,10 @@ frequent sense of a part of speech first).
   - `resort#travel-to-place` (verb); group: none; key: `resort%2:38:00::`; gloss: move, travel, or proceed toward some
     place
 - **respawn**; parts of speech: noun, verb; forms: respawned, respawning, respawns
-  - `respawn#respawn-event` (noun); group: none; key: project sense; gloss: noun
-  - `respawn#spawn-again` (verb); group: none; key: project sense; gloss: verb
+  - `respawn#respawn-event` (noun); group: none; key: project sense; gloss: the reappearance of a character or object
+    after death or removal in a video game
+  - `respawn#spawn-again` (verb); group: none; key: project sense; gloss: reappear or cause to reappear after death or
+    removal in a video game
 - **respect**; parts of speech: noun, verb; forms: respected, respecting, respects
   - `respect#aspect` (noun); group: none; key: `respect%1:09:00::`; gloss: (usually preceded by ‘in’) a detail or point
   - `respect#esteem` (noun); group: none; key: `respect%1:09:01::`; gloss: an attitude of admiration or esteem
@@ -7849,15 +7923,18 @@ frequent sense of a part of speech first).
   - `respect#admire` (verb); group: none; key: `respect%2:31:00::`; gloss: regard highly; think much of
   - `respect#treat-respectfully` (verb); group: none; key: `respect%2:41:00::`; gloss: show respect towards
 - **respray**; parts of speech: noun, verb; forms: resprayed, respraying, resprays
-  - `respray#respray-job` (noun); group: none; key: project sense; gloss: noun
-  - `respray#spray-again` (verb); group: none; key: project sense; gloss: verb
+  - `respray#respray-job` (noun); group: none; key: project sense; gloss: a fresh coat of paint applied by spraying,
+    especially to a vehicle
+  - `respray#spray-again` (verb); group: none; key: project sense; gloss: spray again, especially to apply a new coat of
+    paint
 - **restart**; parts of speech: noun, verb; forms: restarted, restarting, restarts
-  - `restart#restart-event` (noun); group: none; key: project sense; gloss: noun
+  - `restart#restart-event` (noun); group: none; key: project sense; gloss: an act of starting something again,
+    especially a computer or program
   - `restart#begin-again` (verb); group: none; key: `restart%2:30:00::`; gloss: take up or begin anew
   - `restart#restart-engine` (verb); group: none; key: `restart%2:38:00::`; gloss: start an engine again, for example
 - **restyle**; parts of speech: noun, verb; forms: restyled, restyles, restyling
-  - `restyle#restyling` (noun); group: none; key: project sense; gloss: noun
-  - `restyle#style-again` (verb); group: none; key: project sense; gloss: verb
+  - `restyle#restyling` (noun); group: none; key: project sense; gloss: a change in the style or appearance of something
+  - `restyle#style-again` (verb); group: none; key: project sense; gloss: change the style or appearance of something
 - **result**; parts of speech: noun, verb; forms: resulted, resulting, results
   - `result#consequence` (noun); group: none; key: `result%1:19:00::`; gloss: a phenomenon that follows and is caused by
     some previous phenomenon
@@ -7893,8 +7970,9 @@ frequent sense of a part of speech first).
   - `retard#hinder-growth` (verb); group: none; key: `retard%2:30:07::`; gloss: slow the growth or development of
   - `retard#slow-down` (verb); group: none; key: `retard%2:30:00::`; gloss: lose velocity; move more slowly
 - **retest**; parts of speech: noun, verb; forms: retested, retesting, retests
-  - `retest#repeat-test` (noun); group: none; key: project sense; gloss: noun
-  - `retest#test-again` (verb); group: none; key: project sense; gloss: verb
+  - `retest#repeat-test` (noun); group: none; key: project sense; gloss: a test performed again to check or confirm a
+    result
+  - `retest#test-again` (verb); group: none; key: project sense; gloss: test again to check or confirm a result
 - **rethink**; parts of speech: noun, verb; forms: rethinking, rethinks, rethought
   - `rethink#reconsideration` (noun); group: none; key: `rethink%1:09:00::`; gloss: thinking again about a choice
     previously made
@@ -7985,14 +8063,17 @@ frequent sense of a part of speech first).
   - `return#provide` (verb); group: none; key: `return%2:36:00::`; gloss: give or supply
   - `return#re-elect` (verb); group: none; key: `return%2:41:00::`; gloss: elect again
 - **reuse**; parts of speech: noun, verb; forms: reused, reuses, reusing
-  - `reuse#reuse-act` (noun); group: none; key: project sense; gloss: noun
+  - `reuse#reuse-act` (noun); group: none; key: project sense; gloss: the act of using something again rather than
+    discarding it
   - `reuse#use-again` (verb); group: none; key: `reuse%2:34:00::`; gloss: use again after processing
 - **revamp**; parts of speech: noun, verb; forms: revamped, revamping, revamps
-  - `revamp#overhaul` (noun); group: none; key: project sense; gloss: noun
+  - `revamp#overhaul` (noun); group: none; key: project sense; gloss: a substantial revision or renovation intended to
+    improve something
   - `revamp#renovate` (verb); group: none; key: `revamp%2:30:00::`; gloss: to patch up or renovate; repair or restore
   - `revamp#replace-vamp` (verb); group: none; key: `revamp%2:30:01::`; gloss: provide (a shoe) with a new vamp
 - **revert**; parts of speech: noun, verb; forms: reverted, reverting, reverts
-  - `revert#reversion` (noun); group: none; key: project sense; gloss: noun
+  - `revert#reversion` (noun); group: none; key: project sense; gloss: an action that undoes a change and restores an
+    earlier state, especially in software
   - `revert#regress` (verb); group: none; key: `revert%2:30:00::`; gloss: go back to a previous state
   - `revert#mutation-reversion` (verb); group: none; key: `revert%2:30:13::`; gloss: undergo reversion, as in a mutation
 - **review**; parts of speech: noun, verb; forms: reviewed, reviewing, reviews
@@ -8044,7 +8125,8 @@ frequent sense of a part of speech first).
   - `rewatch#watch-again` (verb); group: none; key: `rewatch%2:39:01::`; gloss: to watch a show or television one more
     time
 - **rewind**; parts of speech: noun, verb; forms: rewinding, rewinds, rewound
-  - `rewind#rewind-action` (noun); group: none; key: project sense; gloss: noun
+  - `rewind#rewind-action` (noun); group: none; key: project sense; gloss: an act of winding a recording backward or
+    returning playback to an earlier point
   - `rewind#wind-again` (verb); group: none; key: `rewind%2:35:00::`; gloss: wind (up) again
 - **rewrite**; parts of speech: noun, verb; forms: rewrites, rewriting, rewritten, rewrote
   - `rewrite#rewritten-work` (noun); group: none; key: `rewrite%1:10:00::`; gloss: something that has been written again
@@ -8374,7 +8456,8 @@ frequent sense of a part of speech first).
   - `sailing#seafaring` (noun); group: none; key: `sailing%1:04:00::`; gloss: riding in a sailboat
   - `sailing#glide` (noun); group: none; key: `sailing%1:04:03::`; gloss: the activity of flying a glider
 - **saturate**; parts of speech: noun, verb; forms: saturated, saturates, saturating
-  - `saturate#saturation` (noun); group: none; key: project sense; gloss: noun
+  - `saturate#saturation` (noun); group: none; key: project sense; gloss: a saturated chemical compound, especially a
+    saturated fat or fatty acid
   - `saturate#chemically-saturate` (verb); group: none; key: `saturate%2:30:01::`; gloss: cause (a chemical compound,
     vapour, solution, magnetic material) to unite with the greatest possible amount of another substance
   - `saturate#impregnate` (verb); group: none; key: `saturate%2:30:04::`; gloss: infuse or fill completely
@@ -8632,8 +8715,10 @@ frequent sense of a part of speech first).
   - `separate#segregated` (adjective); group: none; key: `separate%5:00:02:segregated:00`; gloss: separated according to
     race, sex, class, or religion
 - **seriate**; parts of speech: verb, adjective; forms: seriated, seriates, seriating
-  - `seriate#arrange-in-series` (verb); group: none; key: project sense; gloss: verb
-  - `seriate#serial` (adjective); group: none; key: project sense; gloss: adjective
+  - `seriate#arrange-in-series` (verb); group: none; key: project sense; gloss: arrange in a series or ordered sequence,
+    especially by age or similarity of form
+  - `seriate#serial` (adjective); group: none; key: project sense; gloss: arranged in a series, sequence, or successive
+    rows
 - **sewer**; parts of speech: noun; forms: sewers
   - `sewer#sewer-pipe` (noun); group: none; key: `sewer%1:06:00::`; gloss: a waste pipe that carries away sewage or
     surface water
@@ -8861,7 +8946,8 @@ frequent sense of a part of speech first).
   - `situate#locate` (verb); group: none; key: `situate%2:42:00::`; gloss: determine or indicate the place, site, or
     limits of, as if by an instrument or by a survey
   - `situate#deposit` (verb); group: none; key: `situate%2:35:00::`; gloss: put (something somewhere) firmly
-  - `situate#located` (adjective); group: none; key: project sense; gloss: adjective
+  - `situate#located` (adjective); group: none; key: project sense; gloss: located or positioned in a particular place
+    (archaic)
 - **skate**; parts of speech: noun, verb; forms: skated, skates, skating
   - `skate#skate-fish` (noun); group: none; key: `skate%1:05:00::`; gloss: large edible rays having a long snout and
     thick tail with pectoral fins continuous with the head; swim by undulating the edges of the pectoral fins
@@ -8987,8 +9073,8 @@ frequent sense of a part of speech first).
   - `snap#clamp` (verb); group: none; key: `snap%2:35:04::`; gloss: bring the jaws together
   - `snap#meltdown` (verb); group: none; key: `snap%2:37:00::`; gloss: lose control of one's emotions
   - `snap#photograph` (verb); group: none; key: `snap%2:32:01::`; gloss: record on photographic film
-  - `snap#exclamation` (interjection); group: none; key: project sense; gloss: The interjection "snap"; a project sense,
-    because Open English WordNet has no interjection sense of this word.
+  - `snap#exclamation` (interjection); group: none; key: project sense; gloss: used to announce a match or coincidence,
+    or to express surprise (informal)
 - **sophisticate**; parts of speech: noun, verb; forms: sophisticated, sophisticates, sophisticating
   - `sophisticate#worldly-person` (noun); group: none; key: `sophisticate%1:18:00::`; gloss: a worldly-wise person
   - `sophisticate#adulterate` (verb); group: none; key: `sophisticate%2:30:01::`; gloss: alter and make impure, as with
@@ -10015,7 +10101,7 @@ frequent sense of a part of speech first).
     one another
   - `tier#tier-worker` (noun); group: none; key: `tier%1:18:00::`; gloss: a worker who ties something
   - `tier#tying-rope` (noun); group: none; key: `tier%1:06:01::`; gloss: something that is used for tying
-  - `tier#arrange-in-tiers` (verb); group: none; key: project sense; gloss: row
+  - `tier#arrange-in-tiers` (verb); group: none; key: project sense; gloss: arrange in rows or layers one above another
 - **tip**; parts of speech: noun, verb; forms: tipped, tipping, tips
   - `tip#end` (noun); group: none; key: `tip%1:15:00::`; gloss: the extreme end of something; especially something
     pointed
@@ -10104,8 +10190,8 @@ frequent sense of a part of speech first).
   - `touch#understand` (verb); group: none; key: `touch%2:31:00::`; gloss: comprehend
   - `touch#partake` (verb); group: none; key: `touch%2:34:00::`; gloss: consume
   - `touch#tint` (verb); group: none; key: `touch%2:30:01::`; gloss: color lightly
-  - `touch#interjection` (interjection); group: none; key: project sense; gloss: The interjection "touch"; a project
-    sense, because Open English WordNet has no interjection sense of this word.
+  - `touch#interjection` (interjection); group: none; key: project sense; gloss: used to acknowledge a hit in fencing or
+    a telling point in an argument
 - **touched**; parts of speech: adjective; no other forms
   - `touched#adjective` (adjective); group: none; key: `touched%3:00:00::`; gloss: having come into contact
   - `touched#affected` (adjective); group: none; key: `touched%3:00:01::`; gloss: being excited or provoked to the
@@ -10230,7 +10316,8 @@ frequent sense of a part of speech first).
   - `transfer#relocate` (verb); group: none; key: `transfer%2:38:01::`; gloss: shift the position or location of, as for
     business, legal, educational, or military purposes
 - **transform**; parts of speech: noun, verb; forms: transformed, transforming, transforms
-  - `transform#noun-form` (noun); group: none; key: project sense; gloss: noun
+  - `transform#noun-form` (noun); group: none; key: project sense; gloss: a mathematical operation that maps a function
+    or quantity into another form, or its result
   - `transform#mathematical-transform` (verb); group: none; key: `transform%2:30:02::`; gloss: subject to a mathematical
     transformation
   - `transform#transmute` (verb); group: none; key: `transform%2:30:00::`; gloss: change or alter in form, appearance,
@@ -10323,7 +10410,8 @@ frequent sense of a part of speech first).
   - `treat#regard` (verb); group: none; key: `treat%2:31:00::`; gloss: regard or consider in a specific way
 - **trifurcate**; parts of speech: verb, adjective; forms: trifurcated, trifurcates, trifurcating
   - `trifurcate#divide-three` (verb); group: none; key: `trifurcate%2:30:00::`; gloss: divide into three
-  - `trifurcate#three-branched` (adjective); group: none; key: project sense; gloss: adjective
+  - `trifurcate#three-branched` (adjective); group: none; key: project sense; gloss: divided into three branches or
+    prongs
 - **trigger**; parts of speech: noun, verb; forms: triggered, triggering, triggerring, triggers
   - `trigger#gun-trigger` (noun); group: none; key: `trigger%1:06:00::`; gloss: lever that activates the firing
     mechanism of a gun
@@ -10382,7 +10470,8 @@ frequent sense of a part of speech first).
 ### Lemmas Starting With U
 
 - **underbid**; parts of speech: noun, verb; forms: underbidding, underbids
-  - `underbid#low-bid` (noun); group: none; key: project sense; gloss: noun
+  - `underbid#low-bid` (noun); group: none; key: project sense; gloss: a bid that is too low, especially for the work
+    required or the strength of a card hand
   - `underbid#bid-lower` (verb); group: none; key: `underbid%2:40:01::`; gloss: bid lower than a competing bidder
   - `underbid#bid-too-low` (verb); group: none; key: `underbid%2:40:00::`; gloss: bid too low
   - `underbid#underbid-hand` (verb); group: none; key: `underbid%2:40:02::`; gloss: bid (a hand of cards) at less than
@@ -10393,8 +10482,10 @@ frequent sense of a part of speech first).
   - `undercharge#charge-too-little` (verb); group: none; key: `undercharge%2:40:00::`; gloss: charge (someone) too
     little money
 - **undercount**; parts of speech: noun, verb; forms: undercounted, undercounting, undercounts
-  - `undercount#count-shortfall` (noun); group: none; key: project sense; gloss: noun
-  - `undercount#count-too-low` (verb); group: none; key: project sense; gloss: verb
+  - `undercount#count-shortfall` (noun); group: none; key: project sense; gloss: a count or estimate below the actual
+    number
+  - `undercount#count-too-low` (verb); group: none; key: project sense; gloss: count or estimate fewer than the actual
+    number
 - **undercut**; parts of speech: noun, verb; forms: undercuts, undercutting
   - `undercut#backspin-shot` (noun); group: none; key: `undercut%1:04:00::`; gloss: (sports) a stroke that puts reverse
     spin on the ball
@@ -10448,15 +10539,18 @@ frequent sense of a part of speech first).
   - `underscore#underline` (verb); group: none; key: `underscore%2:32:03::`; gloss: draw a line or lines underneath to
     call attention to
 - **underset**; parts of speech: noun, verb; forms: undersets, undersetting
-  - `underset#lower-set` (noun); group: none; key: project sense; gloss: noun
-  - `underset#set-below` (verb); group: none; key: project sense; gloss: verb
+  - `underset#lower-set` (noun); group: none; key: project sense; gloss: a current flowing beneath the surface of a body
+    of water
+  - `underset#set-below` (verb); group: none; key: project sense; gloss: set beneath or support from below
 - **undershoot**; parts of speech: noun, verb; forms: undershooting, undershoots, undershot
-  - `undershoot#shortfall` (noun); group: none; key: project sense; gloss: noun
+  - `undershoot#shortfall` (noun); group: none; key: project sense; gloss: a fall below a target or steady value,
+    especially in a signal or control system
   - `undershoot#land-short` (verb); group: none; key: `undershoot%2:38:00::`; gloss: fall short of (the runway) in a
     landing
   - `undershoot#shoot-short` (verb); group: none; key: `undershoot%2:33:00::`; gloss: shoot short of or below (a target)
 - **underspend**; parts of speech: noun, verb; forms: underspending, underspends, underspent
-  - `underspend#spending-shortfall` (noun); group: none; key: project sense; gloss: noun
+  - `underspend#spending-shortfall` (noun); group: none; key: project sense; gloss: the amount by which actual spending
+    falls below a budget or planned expenditure
   - `underspend#spend-below-rate` (verb); group: none; key: `underspend%2:40:00::`; gloss: spend at less than the normal
     rate
   - `underspend#spend-less` (verb); group: none; key: `underspend%2:40:01::`; gloss: spend less than the whole of (a
@@ -10473,8 +10567,9 @@ frequent sense of a part of speech first).
   - `undertaking#funeral-business` (noun); group: none; key: `undertaking%1:04:01::`; gloss: the trade of a funeral
     director
 - **underuse**; parts of speech: noun, verb; forms: underused, underuses, underusing
-  - `underuse#insufficient-use` (noun); group: none; key: project sense; gloss: noun
-  - `underuse#use-too-little` (verb); group: none; key: project sense; gloss: verb
+  - `underuse#insufficient-use` (noun); group: none; key: project sense; gloss: use that is less frequent or extensive
+    than is possible or appropriate
+  - `underuse#use-too-little` (verb); group: none; key: project sense; gloss: use less than is possible or appropriate
 - **undulate**; parts of speech: verb, adjective; forms: undulated, undulates, undulating
   - `undulate#ripple` (verb); group: none; key: `undulate%2:38:01::`; gloss: stir up (water) so as to form ripples
   - `undulate#billow` (verb); group: none; key: `undulate%2:42:00::`; gloss: occur in soft rounded shapes
@@ -10497,8 +10592,10 @@ frequent sense of a part of speech first).
   - `unlearned#poorly-learned` (adjective); group: none; key: `unlearned%5:00:00:unscholarly:00`; gloss: not well
     learned
 - **unpeople**; parts of speech: noun, verb; forms: unpeopled, unpeoples, unpeopling
-  - `unpeople#depopulation` (noun); group: none; key: project sense; gloss: noun
-  - `unpeople#depopulate` (verb); group: none; key: project sense; gloss: verb
+  - `unpeople#depopulation` (noun); group: none; key: project sense; gloss: people denied recognized social or political
+    existence or treated as if they do not exist
+  - `unpeople#depopulate` (verb); group: none; key: project sense; gloss: deprive a place of its inhabitants or remove
+    people from it
 - **update**; parts of speech: noun, verb; forms: updated, updates, updating
   - `update#info-update` (noun); group: none; key: `update%1:10:00::`; gloss: information or data that updates
   - `update#updating` (noun); group: none; key: `update%1:04:00::`; gloss: the act of bringing someone or something up
@@ -10565,7 +10662,8 @@ frequent sense of a part of speech first).
     bottom is no longer the bottom
   - `upset#physically-unwell` (adjective); group: none; key: `upset%5:00:00:ill:01`; gloss: mildly physically distressed
 - **upsetting**; parts of speech: noun, adjective; forms: upsettings
-  - `upsetting#distress-event` (noun); group: none; key: project sense; gloss: upsetting (noun); no definition recorded
+  - `upsetting#distress-event` (noun); group: none; key: project sense; gloss: the disruption or disturbance of an
+    established arrangement, routine, or state
   - `upsetting#distressing` (adjective); group: none; key: `upsetting%5:00:00:displeasing:00`; gloss: causing an
     emotional disturbance
 - **uptown**; parts of speech: noun, adjective, adverb; forms: uptowns
@@ -10578,7 +10676,7 @@ frequent sense of a part of speech first).
 - **upturn**; parts of speech: noun, verb; forms: upturned, upturning, upturns
   - `upturn#upward-trend` (noun); group: none; key: `upturn%1:04:00::`; gloss: an upward movement or trend as in
     business activity
-  - `upturn#turn-up` (verb); group: none; key: project sense; gloss: verb
+  - `upturn#turn-up` (verb); group: none; key: project sense; gloss: turn over or cause to face upward
 - **urge**; parts of speech: noun, verb; forms: urged, urges, urging
   - `urge#impulse` (noun); group: none; key: `urge%1:16:00::`; gloss: an instinctive motive
   - `urge#itch` (noun); group: none; key: `urge%1:12:00::`; gloss: a strong restless desire
@@ -10915,7 +11013,8 @@ frequent sense of a part of speech first).
     clothing or leaves blowing in the wind
   - `whisper#speak-softly` (verb); group: none; key: `whisper%2:32:00::`; gloss: speak softly; in a low voice
 - **wicked**; parts of speech: verb, adjective; forms: wickeded, wickeding, wickedly, wickeds
-  - `wicked#wicking` (verb); group: none; key: project sense; gloss: wick
+  - `wicked#wicking` (verb); group: none; key: project sense; gloss: draw or convey liquid through absorbent material by
+    capillary action
   - `wicked#evil` (adjective); group: none; key: `wicked%3:00:00::`; gloss: morally bad in principle or practice
   - `wicked#severe` (adjective); group: none; key: `wicked%5:00:00:intense:00`; gloss: intensely or extremely bad or
     unpleasant in degree or quality

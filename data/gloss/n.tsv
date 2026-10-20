@@ -1,35 +1,35 @@
 synset_id	seq	text
-dema-syn-n-d-1	1	The determiner "n"; a project sense, because Open English WordNet has no determiner sense of this word.
-dema-syn-nane-u-1	1	The pronoun "nane"; a project sense, because Open English WordNet has no pronoun sense of this word.
-dema-syn-natheless-p-1	1	The preposition "natheless"; a project sense, because Open English WordNet has no preposition sense of this word.
-dema-syn-near-p-1	1	The preposition "near"; a project sense, because Open English WordNet has no preposition sense of this word.
-dema-syn-neath-p-1	1	The preposition "neath"; a project sense, because Open English WordNet has no preposition sense of this word.
-dema-syn-need-x-1	1	The auxiliary "need"; a project sense, because Open English WordNet has no auxiliary sense of this word.
-dema-syn-neither-c-1	1	The conjunction "neither"; a project sense, because Open English WordNet has no conjunction sense of this word.
-dema-syn-neither-d-1	1	The determiner "neither"; a project sense, because Open English WordNet has no determiner sense of this word.
-dema-syn-nerts-i-1	1	The interjection "nerts"; a project sense, because Open English WordNet has no interjection sense of this word.
-dema-syn-nethermost-d-1	1	The determiner "nethermost"; a project sense, because Open English WordNet has no determiner sense of this word.
-dema-syn-never-i-1	1	The interjection "never"; a project sense, because Open English WordNet has no interjection sense of this word.
-dema-syn-nevertheless-c-1	1	The conjunction "nevertheless"; a project sense, because Open English WordNet has no conjunction sense of this word.
-dema-syn-next-p-1	1	The preposition "next"; a project sense, because Open English WordNet has no preposition sense of this word.
-dema-syn-nigh-p-1	1	The preposition "nigh"; a project sense, because Open English WordNet has no preposition sense of this word.
-dema-syn-nine-d-1	1	The determiner "nine"; a project sense, because Open English WordNet has no determiner sense of this word.
-dema-syn-nineteen-d-1	1	The determiner "nineteen"; a project sense, because Open English WordNet has no determiner sense of this word.
-dema-syn-ninety-d-1	1	The determiner "ninety"; a project sense, because Open English WordNet has no determiner sense of this word.
-dema-syn-nix-i-1	1	The interjection "nix"; a project sense, because Open English WordNet has no interjection sense of this word.
-dema-syn-no-d-1	1	The determiner "no"; a project sense, because Open English WordNet has no determiner sense of this word.
-dema-syn-noblewoman-u-1	1	The pronoun "noblewoman"; a project sense, because Open English WordNet has no pronoun sense of this word.
-dema-syn-nobody-u-1	1	The pronoun "nobody"; a project sense, because Open English WordNet has no pronoun sense of this word.
-dema-syn-nominate-a-1	1	adjective
-dema-syn-none-u-1	1	The pronoun "none"; a project sense, because Open English WordNet has no pronoun sense of this word.
-dema-syn-nonetheless-c-1	1	The conjunction "nonetheless"; a project sense, because Open English WordNet has no conjunction sense of this word.
-dema-syn-nonsense-i-1	1	The interjection "nonsense"; a project sense, because Open English WordNet has no interjection sense of this word.
-dema-syn-nor-c-1	1	The conjunction "nor"; a project sense, because Open English WordNet has no conjunction sense of this word.
-dema-syn-nothing-u-1	1	The pronoun "nothing"; a project sense, because Open English WordNet has no pronoun sense of this word.
-dema-syn-notwithstanding-c-1	1	The conjunction "notwithstanding"; a project sense, because Open English WordNet has no conjunction sense of this word.
-dema-syn-notwithstanding-p-1	1	The preposition "notwithstanding"; a project sense, because Open English WordNet has no preposition sense of this word.
-dema-syn-now-c-1	1	The conjunction "now"; a project sense, because Open English WordNet has no conjunction sense of this word.
-dema-syn-nuts-i-1	1	The interjection "nuts"; a project sense, because Open English WordNet has no interjection sense of this word.
+dema-syn-n-d-1	1	specifies an arbitrary or unspecified number, especially in mathematics
+dema-syn-nane-u-1	1	not one; no person or thing (Scots)
+dema-syn-natheless-p-1	1	despite; notwithstanding (archaic)
+dema-syn-near-p-1	1	at or within a short distance of in place or time; close to
+dema-syn-neath-p-1	1	below or underneath (poetic)
+dema-syn-need-x-1	1	modal verb expressing necessity, chiefly in questions and negative statements
+dema-syn-neither-c-1	1	introduces the first of two alternatives excluded together, usually paired with nor
+dema-syn-neither-d-1	1	excludes each of two people or things; not either
+dema-syn-nerts-i-1	1	used to express annoyance, disbelief, or rejection (informal)
+dema-syn-nethermost-d-1	1	identifies the lowest in position or rank (archaic)
+dema-syn-never-i-1	1	used to express emphatic disbelief or refusal
+dema-syn-nevertheless-c-1	1	introduces a contrasting statement that remains true despite what was just said
+dema-syn-next-p-1	1	immediately beside or after; adjacent to
+dema-syn-nigh-p-1	1	close to in place, time, or degree (archaic)
+dema-syn-nine-d-1	1	specifies a quantity of eight plus one
+dema-syn-nineteen-d-1	1	specifies a quantity of eighteen plus one
+dema-syn-ninety-d-1	1	specifies a quantity of nine times ten
+dema-syn-nix-i-1	1	used to express refusal or rejection; no (informal)
+dema-syn-no-d-1	1	specifies the absence of any amount or any member of a group; not any
+dema-syn-noblewoman-u-1	1	a woman of noble birth or rank; not ordinarily used as a pronoun
+dema-syn-nobody-u-1	1	refers to no person; not anyone
+dema-syn-nominate-a-1	1	bearing the same name as the larger taxon and containing its name-bearing type (taxonomy)
+dema-syn-none-u-1	1	refers to not one or not any of the people or things in question
+dema-syn-nonetheless-c-1	1	links a contrasting statement to what precedes it: despite that; nevertheless
+dema-syn-nonsense-i-1	1	used to reject a statement as absurd or untrue
+dema-syn-nor-c-1	1	introduces a further negative alternative or statement, often paired with neither
+dema-syn-nothing-u-1	1	refers to no thing, event, or amount; not anything
+dema-syn-notwithstanding-c-1	1	introduces a concessive clause: although; despite the fact that
+dema-syn-notwithstanding-p-1	1	in spite of; without being prevented or affected by
+dema-syn-now-c-1	1	introduces a clause explaining a current circumstance: since; given that
+dema-syn-nuts-i-1	1	used to express annoyance, disbelief, or defiant rejection (informal)
 oewn-00003356-a	1	being born or beginning
 oewn-00004565-r	1	in a negative way
 oewn-00004669-r	1	in a harmful manner

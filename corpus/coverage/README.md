@@ -24,3 +24,15 @@ it has both quotas, `short` when it has at least one sentence but misses a quota
 45,434 more anchors and 12,231 more held-out sentences to meet their quotas. The count is measured on the files of
 `../anchors` and `../holdout` as committed; the relabeled rows (see "Relabeled Legacy Corpus" in `../README.md`) came
 from a corpus that was never sized by tier, so they cover the frequent senses and few of the rare ones.
+
+## Quota filling (progress)
+
+`quota-coverage.tsv` has the same columns measured on the corpus as it is now (after the filling of the waves done so
+far; `tools/quota-fill/coverage.py` writes it) and `quota-unfilled.tsv` lists the senses of the lemmas of the finished
+waves that the harvest and the writing could not bring to their quota, with the number of sentences written for them and
+how many of those the blind labeler placed in the intended sense. Such senses cannot be filled credibly by this method
+(a near-duplicate of a sibling sense, or a gloss too thin to write to) and are candidates for the review of the senses and
+groups. The waves, the method and the progress table are in `docs/build_notes/quota-fill.md`. After wave 1 (the 50 most
+frequent lemmas): 1,775 of 6,856 senses meet their quota (2,896 short, 2,185 empty); 37,585 anchors and 10,132 held-out
+sentences are still missing, 373 and 44 of them in the lemmas of wave 1. All quota-filled sentences are targeted
+(see "Quota-Filled Rows (targeted)" in `../README.md`).

@@ -1,0 +1,58 @@
+sense_id	part_of_speech	tier	anchors	anchor_quota	holdout	holdout_quota	written	confirmed_blind	gloss
+call#decide	Verb	R	0	5	0	2	25	0	indicate a decision in regard to
+call#wake	Verb	R	3	5	2	2	10	4	rouse somebody from sleep with a call
+change#change-result	Noun	C	19	20	5	5	40	15	the result of alteration or modification
+change#different-thing	Noun	U	0	10	0	3	43	0	a thing that is different
+end#end-surface	Noun	C	17	20	5	5	45	17	the surface at either extremity of a three-dimensional object
+feel#discover-by-search	Verb	U	0	10	2	3	41	2	find by testing or cautious exploration
+help#means-of-serving	Noun	U	0	10	2	3	39	1	a means of serving
+help#change-better	Verb	U	5	10	2	3	19	0	improve; change for the better
+head#lead-group	Verb	U	2	10	3	3	38	5	be the first or leading member of (a group) and excel
+increase#addition	Noun	C	4	20	5	5	48	7	a quantity that is added
+like#regard	Verb	U	9	10	3	3	34	11	feel about or towards; consider, evaluate, or regard
+lead#leave-residue	Verb	C	0	20	0	5	0	0	produce as a result or residue
+lead#go-ahead	Verb	C	16	20	5	5	23	3	travel in front of; go in advance of others
+lead#span	Verb	C	19	20	5	5	21	11	stretch out over a distance, space, time, or scope; run or extend between two points or beyond a certain point
+lead#contribute	Verb	C	0	20	0	5	64	0	be conducive to
+leave#leave-behind	Verb	C	17	20	5	5	44	21	be survived by after one's death
+line#fabric-reinforcement	Verb	R	2	5	2	2	22	4	reinforce with fabric
+mean#matter	Verb	C	9	20	5	5	61	12	have a specified degree of importance
+move#follow-procedure	Verb	C	19	20	5	5	46	24	follow a procedure or take a course
+move#take-action	Verb	C	11	20	5	5	60	14	be in a state of action
+move#travel-between	Verb	C	18	20	5	5	45	18	go or proceed from one point to another
+move#arouse-compassion	Verb	U	7	10	3	3	20	7	arouse sympathy or compassion in
+own#determiner	Determiner	U	0	10	0	3	0	0	emphasizes that something belongs specifically or exclusively to the person indicated by a possessive
+only#ultimately	Adverb	C	16	20	4	5	19	2	in the final outcome
+part#instance	Noun	R	0	5	0	2	17	0	an item that is an instance of some type
+pay#discharge-debt	Verb	C	1	20	0	5	7	0	cancel or discharge a debt
+pay#dedicate	Verb	U	1	10	1	3	40	1	dedicate
+pay#repay	Verb	R	4	5	2	2	15	5	make a compensation for
+place#assign-location	Verb	U	0	10	2	3	39	1	assign a location to
+place#aim	Verb	U	6	10	3	3	30	9	intend (something) to move towards a certain goal
+place#finish-in-race	Verb	R	3	5	2	2	19	5	finish second or better in a horse or dog race
+play#employment	Noun	U	5	10	3	3	24	5	utilization or exercise
+play#play-instrument	Verb	C	17	20	5	5	16	1	play on an instrument
+play#toy	Verb	U	0	10	0	3	41	0	engage in an activity as if it were a game rather than take it seriously
+play#use-or-move	Verb	R	4	5	2	2	19	6	use or move
+point#spot	Noun	U	9	10	3	3	29	11	an outstanding characteristic
+point#gunpoint	Noun	R	0	5	0	2	0	0	the gun muzzle's direction
+point#pointedness	Noun	R	1	5	2	2	20	3	the property of a shape that tapers to a sharp tip
+point#aim-at	Verb	R	4	5	2	2	20	6	intend (something) to move towards a certain goal
+point#position	Verb	R	1	5	2	2	21	3	be positionable in a specified manner
+right#face-down	Adverb	C	0	20	5	5	67	5	in a face down manner
+reach#accomplish	Verb	C	1	20	5	5	68	6	to gain with effort
+reach#exert	Verb	R	0	5	0	2	17	0	to exert much effort or energy
+result#solution	Noun	C	17	20	5	5	38	18	a statement that solves a problem or explains how to solve the problem
+result#resultant-role	Noun	R	3	5	2	2	5	5	the semantic role of the noun phrase whose referent exists only by virtue of the activity denoted by the verb in the clause
+return#reversal	Noun	U	3	10	3	3	28	6	the occurrence of a change in direction back in the opposite direction
+return#make-return	Verb	U	0	10	3	3	30	3	make a return
+state#nation-territory	Noun	R	3	5	2	2	16	4	the territory occupied by a nation
+study#absorption	Noun	C	17	20	5	5	29	19	a state of deep mental absorption
+study#attend-school	Verb	C	7	20	5	5	60	7	be a student; follow a course of study; be enrolled at an institute of learning
+use#habit	Noun	U	4	10	3	3	30	7	(psychology) an automatic pattern of behavior in reaction to a specific situation; may be inherited or acquired through frequent repetition
+use#use-regularly	Verb	C	8	20	5	5	68	12	take or consume (regularly or habitually)
+walk#walking	Noun	U	1	10	1	3	15	1	the act of traveling by foot
+walk#pace	Verb	R	2	5	2	2	18	3	walk at a pace
+watch#ascertain	Verb	R	0	5	0	2	24	0	find out, learn, or determine with certainty, usually by making an inquiry or other effort
+work#forge	Verb	R	0	5	1	2	0	0	make something, usually for a specific function
+work#operate	Verb	R	2	5	2	2	21	4	operate in or through

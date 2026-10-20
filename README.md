@@ -143,7 +143,7 @@ record    Verb         PartOfSpeech 0.94                 Noun 0.06
 a         Determiner   Sense        1.00  a#determiner
 record    Noun         PartOfSpeech 0.93                 Verb 0.07
 then      Adverb       PartOfSpeech 0.99                 Noun 0.01
-go        Verb         PartOfSpeech 0.76                 Noun 0.22
+go        Verb         PartOfSpeech 0.76                 Noun 0.20
 back      Adverb       Sense        0.98  back#to-former-place Noun 0.01
 home      Noun         PartOfSpeech 0.76                 Adverb 0.23
 ```
@@ -204,9 +204,9 @@ Tokenize the text yourself, one sentence per call: punctuation is a token of its
 <!-- model-table:begin -->
 | Model | Holdout best analysis | Real-text best analysis | Part of speech (holdout / real) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Basic | 90.55% | n/a | 90.81% / n/a | none | 83 KiB | 4 MiB | 0.06 ms | 31 ms + 58 ms | no |
-| MiniLM | 94.89% | n/a | 95.14% / n/a | 22 MiB | 2,721 KiB | 67 MiB | 5.47 ms | 408 ms + 56 ms | yes |
-| BERT base cased | 97.36% | n/a | 97.59% / n/a | 104 MiB | 5,360 KiB | 180 MiB | 24.50 ms | 641 ms + 57 ms | yes |
+| Basic | 90.31% | n/a | 90.59% / n/a | none | 83 KiB | 4 MiB | 0.09 ms | 43 ms + 79 ms | no |
+| MiniLM | 95.60% | n/a | 95.85% / n/a | 22 MiB | 3,396 KiB | 70 MiB | 6.21 ms | 479 ms + 62 ms | yes |
+| BERT base cased | 97.97% | n/a | 98.20% / n/a | 104 MiB | 6,677 KiB | 190 MiB | 36.32 ms | 1,051 ms + 80 ms | yes |
 <!-- model-table:end -->
 
 <!-- markdownlint-enable MD013 -->
@@ -216,18 +216,21 @@ Tokenize the text yourself, one sentence per call: punctuation is a token of its
   rest.
 - 🎯 **bert-base-cased** - Larger case-sensitive encoder, 104 MiB download; the most precise on the trained lemmas.
 
-The columns measure the 12,369 held-out sentences of the relabeled corpus and of the first reviewed batch (the whole
-table, all three models, is measured on the same sentences), so they say nothing about words that no model was trained
-for; the real-text columns are `n/a` until an independent evaluation (SemCor for senses, the English EWT treebank for
-parts of speech) is published. About 43% of the held-out sentences are real sentences (Tatoeba and Project
-Gutenberg), the others were written by a language model, and the sense of every sentence was judged by a model or mapped
-by rule, so the numbers are optimistic. The levels of the encoder answers on these sentences
-(`docs/build_notes/relabel-results.md` has the full tables):
+The columns measure the 14,468 held-out sentences of the relabeled corpus, the first reviewed batch and the quota
+filling (the whole table, all three models, is measured on the same sentences), so they say nothing about words that no
+model was trained for; the real-text columns are `n/a` until an independent evaluation (SemCor for senses, the English
+EWT treebank for parts of speech) is published. About 47% of the held-out sentences are real sentences (Tatoeba,
+Project Gutenberg and other public-domain text), the others were written by a language model, and the sense of every
+sentence was judged by a model or mapped by rule. The held-out sentences are also targeted (selected or written for a
+specific sense, with the quotas of the tiers), so they are a balanced classifier measure and **not** the accuracy on
+representative text, and the numbers are optimistic (`evaluate` reports the real targeted, earlier real and written
+sentences separately). The levels of the encoder answers on these sentences
+(`docs/build_notes/relabel-results.md` and `docs/build_notes/quota-fill.md` have the full tables):
 
 | Model | Sense (share, precision) | Group (share, precision) | Part of speech (share, precision) |
 | --- | ---: | ---: | ---: |
-| MiniLM | 57.2%, 91.9% | 1.4%, 94.1% | 41.4%, 91.2% |
-| BERT base cased | 69.8%, 93.5% | 0.8%, 95.0% | 29.4%, 94.1% |
+| MiniLM | 51.9%, 92.1% | 1.3%, 92.6% | 46.8%, 93.0% |
+| BERT base cased | 69.3%, 93.1% | 0.7%, 91.8% | 30.1%, 95.5% |
 
 The table is generated into `docs/build_notes/model-table.md`; the user guide explains how the numbers were measured
 and lists the confidence thresholds of each model. See also the [model comparison][link-model-comparison] and the

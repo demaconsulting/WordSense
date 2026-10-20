@@ -198,11 +198,46 @@ public sealed class EvaluatorTests : IDisposable
 
         var result = await Evaluator.RunAsync(root.FullName, Path.Join(root.FullName, "corpus"), ModelCatalog.Find("basic"), progress, TestContext.Current.CancellationToken);
 
-        var set = Assert.Single(result.Sets);
+        var set = result.Sets[0];
+        Assert.Equal("holdout", set.Name);
         Assert.True(set.Rows > 900);
         Assert.Equal(0, set.Group.Answered);
         Assert.Equal(set.Rows, set.Sense.Answered + set.PartOfSpeech.Answered + set.None);
         Assert.True(set.PosCorrect <= set.Rows);
         Assert.True(set.PartOfSpeech.Correct <= set.PartOfSpeech.Answered);
+    }
+
+    /// <summary>
+    ///     The held-out rows are also reported by origin when the provenance names it: targeted real text, earlier
+    ///     harvests and written sentences are separate sets, and the report says that the figures are not representative.
+    /// </summary>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_Evaluator_RunAsync_ProvenanceNamesTheOrigin_ReportsSubsetsSeparately()
+    {
+        // Arrange: two rows, one targeted real sentence and one written sentence
+        var (a1, _, b, _) = SenseFixtures.Grouped("test");
+        var good = Result(SenseLevel.Sense, [Analysis(PartOfSpeech.Noun, 1.0, (a1.SenseId, 1.0))], PartOfSpeech.Noun, a1.GroupId, a1.SenseId);
+        var script = new Dictionary<string, ClassifyResult> { ["0"] = good, ["1"] = good };
+        var realSentence = "A {test} 0 here.";
+        var writtenSentence = "A {test} 1 here.";
+        _dir.Write("corpus/holdout/h.tsv", $"test\t{a1.SenseId}\t{a1.PartOfSpeech}\t{realSentence}\ntest\t{b.SenseId}\t{b.PartOfSpeech}\t{writtenSentence}\n");
+        static string Id(string sentence) =>
+            Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(System.Text.Encoding.UTF8.GetBytes("test|" + sentence)))[..12].ToLowerInvariant();
+        var header = string.Join('\t', "id", "lemma", "sense", "split", "source", "licence", "source_key", "url", "contributor", "origin", "selection");
+        var realRow = string.Join('\t', Id(realSentence), "test", a1.SenseId, "holdout", "gutenberg", "Public domain", "k", "-", "c", "real", "targeted");
+        var writtenRow = string.Join('\t', Id(writtenSentence), "test", b.SenseId, "holdout", "llm-corpus", "MIT (project-authored)", "k", "-", "c", "llm-corpus", "targeted");
+        _dir.Write("corpus/provenance/p.tsv", header + "\n" + realRow + "\n" + writtenRow + "\n");
+        var info = new ModelInfo("fake", "pkg", null, _ => new ScriptedModel(script));
+        using var progress = new StringWriter();
+
+        // Act
+        var result = await Evaluator.RunAsync(_dir.Root, Path.Join(_dir.Root, "corpus"), info, progress, TestContext.Current.CancellationToken);
+
+        // Assert
+        Assert.Equal(["holdout", "holdout: real text, targeted (found for a sense)", "holdout: LLM-written"], result.Sets.Select(s => s.Name));
+        Assert.Equal([2, 1, 1], result.Sets.Select(s => s.Rows));
+        Assert.Equal([1, 1, 0], result.Sets.Select(s => s.Sense.Correct));
+        Assert.Contains("not the accuracy on representative text", result.Render(), StringComparison.Ordinal);
     }
 }

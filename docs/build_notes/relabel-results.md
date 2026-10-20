@@ -136,4 +136,6 @@ train yet (`used`: the adjective `used` has no rows; `dove`, `polish`) and the c
   stay reproducible). Retrain Basic without them, or keep it as it is.
 - **Legacy folder and class map** stay (Basic trains from them; the class map is read by its trainer). They go together
   when Basic no longer needs them.
-- **Choosers** need rows for the other lemma of every participle form (243 forms): the quota filling is the place.
+- **Choosers** need rows for the other lemma of every participle form (243 forms): the quota filling is the place
+  (wave 1 did it, see `quota-fill.md`: 340 forms have a chooser now, 17 have none). The figures of this note are those of
+  the relabeled corpus before the quota filling; the later figures are in `quota-fill.md`.

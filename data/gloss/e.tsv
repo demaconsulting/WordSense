@@ -1,39 +1,39 @@
 synset_id	seq	text
-dema-syn-each-d-1	1	The determiner "each"; a project sense, because Open English WordNet has no determiner sense of this word.
-dema-syn-egad-i-1	1	The interjection "egad"; a project sense, because Open English WordNet has no interjection sense of this word.
-dema-syn-eh-i-1	1	The interjection "eh"; a project sense, because Open English WordNet has no interjection sense of this word.
-dema-syn-eight-d-1	1	The determiner "eight"; a project sense, because Open English WordNet has no determiner sense of this word.
-dema-syn-eighteen-d-1	1	The determiner "eighteen"; a project sense, because Open English WordNet has no determiner sense of this word.
-dema-syn-eighty-d-1	1	The determiner "eighty"; a project sense, because Open English WordNet has no determiner sense of this word.
-dema-syn-either-c-1	1	The conjunction "either"; a project sense, because Open English WordNet has no conjunction sense of this word.
-dema-syn-either-d-1	1	The determiner "either"; a project sense, because Open English WordNet has no determiner sense of this word.
-dema-syn-eleuin-i-1	1	The interjection "eleuin"; a project sense, because Open English WordNet has no interjection sense of this word.
-dema-syn-eleven-d-1	1	The determiner "eleven"; a project sense, because Open English WordNet has no determiner sense of this word.
-dema-syn-else-d-1	1	The determiner "else"; a project sense, because Open English WordNet has no determiner sense of this word.
-dema-syn-encore-i-1	1	The interjection "encore"; a project sense, because Open English WordNet has no interjection sense of this word.
-dema-syn-enervate-a-1	1	adjective
-dema-syn-enough-d-1	1	The determiner "enough"; a project sense, because Open English WordNet has no determiner sense of this word.
-dema-syn-er-i-1	1	The interjection "er"; a project sense, because Open English WordNet has no interjection sense of this word.
-dema-syn-ere-c-1	1	The conjunction "ere"; a project sense, because Open English WordNet has no conjunction sense of this word.
-dema-syn-ere-p-1	1	The preposition "ere"; a project sense, because Open English WordNet has no preposition sense of this word.
-dema-syn-ergo-c-1	1	The conjunction "ergo"; a project sense, because Open English WordNet has no conjunction sense of this word.
-dema-syn-et-c-1	1	The conjunction "et"; a project sense, because Open English WordNet has no conjunction sense of this word.
-dema-syn-eureka-i-1	1	The interjection "eureka"; a project sense, because Open English WordNet has no interjection sense of this word.
-dema-syn-every-d-1	1	The determiner "every"; a project sense, because Open English WordNet has no determiner sense of this word.
-dema-syn-everybody-u-1	1	The pronoun "everybody"; a project sense, because Open English WordNet has no pronoun sense of this word.
-dema-syn-everyone-u-1	1	The pronoun "everyone"; a project sense, because Open English WordNet has no pronoun sense of this word.
-dema-syn-everything-u-1	1	The pronoun "everything"; a project sense, because Open English WordNet has no pronoun sense of this word.
-dema-syn-ex-p-1	1	The preposition "ex"; a project sense, because Open English WordNet has no preposition sense of this word.
-dema-syn-exactly-i-1	1	The interjection "exactly"; a project sense, because Open English WordNet has no interjection sense of this word.
-dema-syn-excelsior-i-1	1	The interjection "excelsior"; a project sense, because Open English WordNet has no interjection sense of this word.
-dema-syn-except-c-1	1	The conjunction "except"; a project sense, because Open English WordNet has no conjunction sense of this word.
-dema-syn-except-p-1	1	The preposition "except"; a project sense, because Open English WordNet has no preposition sense of this word.
-dema-syn-excepting-c-1	1	The conjunction "excepting"; a project sense, because Open English WordNet has no conjunction sense of this word.
-dema-syn-excepting-p-1	1	The preposition "excepting"; a project sense, because Open English WordNet has no preposition sense of this word.
-dema-syn-excommunicate-a-1	1	adjective-noun
-dema-syn-excommunicate-n-1	1	adjective-noun
-dema-syn-explant-n-1	1	noun
-dema-syn-explant-v-1	1	verb
+dema-syn-each-d-1	1	refers to every member of a group separately
+dema-syn-egad-i-1	1	used to express surprise or emphatic approval (archaic)
+dema-syn-eh-i-1	1	used to ask for repetition or confirmation, or to express surprise or doubt
+dema-syn-eight-d-1	1	specifies a quantity of eight people or things
+dema-syn-eighteen-d-1	1	specifies a quantity of eighteen people or things
+dema-syn-eighty-d-1	1	specifies a quantity of eighty people or things
+dema-syn-either-c-1	1	introduces the first of two or more alternatives linked by or
+dema-syn-either-d-1	1	refers to one or the other of two, or to each of two
+dema-syn-eleuin-i-1	1	used as an exclamation of surprise or distress (rare)
+dema-syn-eleven-d-1	1	specifies a quantity of eleven people or things
+dema-syn-else-d-1	1	indicates an additional or different person or thing, usually after an indefinite or interrogative pronoun
+dema-syn-encore-i-1	1	used to call for an additional or repeated performance
+dema-syn-enervate-a-1	1	lacking strength or vitality; weakened or exhausted (rare)
+dema-syn-enough-d-1	1	indicates a quantity or number sufficient for a need or purpose
+dema-syn-er-i-1	1	used to express hesitation or to fill a pause while speaking
+dema-syn-ere-c-1	1	introduces an event before which another occurs; before (archaic)
+dema-syn-ere-p-1	1	before a specified time or event (archaic)
+dema-syn-ergo-c-1	1	introduces a conclusion that follows from what has been stated; therefore
+dema-syn-et-c-1	1	joins words or phrases with the meaning and, especially in borrowed Latin expressions
+dema-syn-eureka-i-1	1	used to express delight at a discovery or successful solution
+dema-syn-every-d-1	1	refers to all members of a group individually without exception, or to each occurrence at a stated interval
+dema-syn-everybody-u-1	1	refers to every person in a group or all people generally
+dema-syn-everyone-u-1	1	refers to every person in a group or all people generally
+dema-syn-everything-u-1	1	refers to all things or all matters under consideration
+dema-syn-ex-p-1	1	from or out of; indicating origin, source, or former membership
+dema-syn-exactly-i-1	1	used to express complete agreement or confirm that a statement is correct
+dema-syn-excelsior-i-1	1	used as an exhortation to strive ever higher or onward
+dema-syn-except-c-1	1	introduces an exception or qualification to a statement; except that or unless
+dema-syn-except-p-1	1	not including; other than
+dema-syn-excepting-c-1	1	introduces a clause stating an exception or condition; unless (rare)
+dema-syn-excepting-p-1	1	not including; excluding
+dema-syn-excommunicate-a-1	1	excluded from the sacraments or communion of a church by ecclesiastical authority
+dema-syn-excommunicate-n-1	1	a person excluded from membership in a church or from receiving its sacraments
+dema-syn-explant-n-1	1	a piece of living tissue removed from an organism for culture outside the body
+dema-syn-explant-v-1	1	remove living tissue from an organism for culture outside the body
 oewn-00001740-n	1	that which is perceived or known or inferred to have its own distinct existence (living or nonliving)
 oewn-00003552-s	1	coming into existence
 oewn-00004306-r	1	in an enviable manner

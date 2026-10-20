@@ -528,7 +528,7 @@ arrest#apprehend	oewn-arrest__2.35.00..	arrest%2:35:00::	oewn-01217701-v	v	Verb	
 arrest#restrain	oewn-arrest__2.33.00..	arrest%2:33:00::	oewn-01133899-v	v	Verb	hold back, as of a danger or an enemy; check the expansion or influence of	2	U	wn30-tag-count	oewn				arrest,arrested,arresting,arrests
 arrest#catch	oewn-arrest__2.35.01..	arrest%2:35:01::	oewn-01508590-v	v	Verb	attract and fix	1	U	wn30-tag-count	oewn				arrest,arrested,arresting,arrests
 arrest#halt	oewn-arrest__2.38.00..	arrest%2:38:00::	oewn-01863572-v	v	Verb	cause to come to an abrupt stop	0	R	wn30-tag-count	oewn				arrest,arrested,arresting,arrests
-arsenic#arsenic-related	dema-arsenic-a-1		dema-syn-arsenic-a-1	a	Adjective	adjective		U	project sense: tier to be set	project				arsenic
+arsenic#arsenic-related	dema-arsenic-a-1		dema-syn-arsenic-a-1	a	Adjective	relating to or containing arsenic in its higher oxidation state of +5		U	project sense: tier to be set	project				arsenic
 arsenic#arsenic-trioxide	oewn-arsenic__1.27.01..	arsenic%1:27:01::	oewn-14792380-n	n	Noun	a white powdered poisonous trioxide of arsenic; used in manufacturing glass and as a pesticide (rat poison) and weed killer	1	U	wn30-tag-count	oewn				arsenic,arsenics
 arsenic#arsenic-element	oewn-arsenic__1.27.00..	arsenic%1:27:00::	oewn-14653327-n	n	Noun	a very poisonous metallic element that has three allotropic forms; arsenic and arsenic compounds are used as herbicides and insecticides and in various alloys; found in arsenopyrite and orpiment and realgar	0	R	wn30-tag-count	oewn				arsenic,arsenics
 articulate#eloquent	oewn-articulate__3.00.00..	articulate%3:00:00::	oewn-00151470-a	a	Adjective	expressing yourself easily or characterized by clear expressive language	1	U	wn30-tag-count	oewn				articulate
@@ -538,7 +538,7 @@ articulate#formulate	oewn-articulate__2.32.02..	articulate%2:32:02::	oewn-009824
 articulate#joint	oewn-articulate__2.40.00..	articulate%2:40:00::	oewn-02359283-v	v	Verb	provide with a joint	1	U	wn30-tag-count	oewn				articulate,articulated,articulates,articulating
 articulate#join-by-joint	oewn-articulate__2.42.00..	articulate%2:42:00::	oewn-02628718-v	v	Verb	unite by forming a joint or joints	0	R	wn30-tag-count	oewn			D	articulate,articulated,articulates,articulating
 articulate#state-clearly	oewn-articulate__2.32.01..	articulate%2:32:01::	oewn-00980401-v	v	Verb	express or state clearly	0	R	wn30-tag-count	oewn			D	articulate,articulated,articulates,articulating
-aspirate#adjective-noun	dema-aspirate-a-1		dema-syn-aspirate-a-1	a	Adjective	adj-noun		U	project sense: tier to be set	project				aspirate
+aspirate#adjective-noun	dema-aspirate-a-1		dema-syn-aspirate-a-1	a	Adjective	pronounced with an audible puff of breath		U	project sense: tier to be set	project				aspirate
 aspirate#consonant	oewn-aspirate__1.10.00..	aspirate%1:10:00::	oewn-07131466-n	n	Noun	a consonant pronounced with aspiration	0	R	wn30-tag-count	oewn				aspirate,aspirates
 aspirate#phone	oewn-aspirate__1.10.01..	aspirate%1:10:01::	oewn-92463361-n	n	Noun	a speech sound having as an obvious concomitant an audible puff of breath, as initial stop consonants or initial /h/ sounds.	0	R	wn30-tag-count	oewn				aspirate,aspirates
 aspirate#aspirate-pronounce	oewn-aspirate__2.32.00..	aspirate%2:32:00::	oewn-00954071-v	v	Verb	pronounce with aspiration; of stop sounds	0	R	wn30-tag-count	oewn				aspirate,aspirated,aspirates,aspirating
@@ -560,7 +560,7 @@ attribute#dimension	oewn-attribute__1.09.00..	attribute%1:09:00::	oewn-05857567-
 attribute#abstract-entity	oewn-attribute__1.03.00..	attribute%1:03:00::	oewn-00024444-n	n	Noun	an abstraction belonging to or characteristic of an entity	1	U	wn30-tag-count	oewn			R	attribute,attributes
 attribute#ascribe	oewn-attribute__2.31.00..	attribute%2:31:00::	oewn-00728262-v	v	Verb	attribute or credit to	16	C	wn30-tag-count	oewn				attribute,attributed,attributes,attributing
 attribute#assign	oewn-attribute__2.31.01..	attribute%2:31:01::	oewn-00742058-v	v	Verb	decide as to where something belongs in a scheme	0	R	wn30-tag-count	oewn				attribute,attributed,attributes,attributing
-augment#addition	dema-augment-n-1		dema-syn-augment-n-1	n	Noun	noun		U	project sense: tier to be set	project				augment,augments
+augment#addition	dema-augment-n-1		dema-syn-augment-n-1	n	Noun	an addition or increase, especially a prefixed vowel marking past tense in certain languages		U	project sense: tier to be set	project				augment,augments
 augment#increase	oewn-augment__2.30.01..	augment%2:30:01::	oewn-00154196-v	v	Verb	enlarge or increase	8	C	wn30-tag-count	oewn				augment,augmented,augmenting,augments
 augment#grow	oewn-augment__2.30.00..	augment%2:30:00::	oewn-00157758-v	v	Verb	grow or intensify	1	U	wn30-tag-count	oewn				augment,augmented,augmenting,augments
 august#grand	oewn-august__5.00.00.noble.02	august%5:00:00:noble:02	oewn-01595457-s	s	Adjective	of or befitting a lord	0	R	wn30-tag-count	oewn				August,august
@@ -898,7 +898,7 @@ break#cause-ruin	oewn-break__2.41.09..	break%2:41:09::	oewn-02565221-v	v	Verb	ca
 break#break-billiards	oewn-break__2.35.14..	break%2:35:14::	oewn-01600916-v	v	Verb	make the opening shot that scatters the balls	0	R	wn30-tag-count	oewn			R	break,breaked,breaking,breaks,broke,broken
 break#give-up	oewn-break__2.42.03..	break%2:42:03::	oewn-02687334-v	v	Verb	give up	0	R	wn30-tag-count	oewn				break,breaked,breaking,breaks,broke,broken
 break#weaken	oewn-break__2.29.10..	break%2:29:10::	oewn-00030456-v	v	Verb	weaken or destroy in spirit or body	0	R	wn30-tag-count	oewn				break,breaked,breaking,breaks,broke,broken
-break#interjection	dema-break-i-1		dema-syn-break-i-1	i	Interjection	The interjection "break"; a project sense, because Open English WordNet has no interjection sense of this word.		U	project sense: tier to be set	project				break
+break#interjection	dema-break-i-1		dema-syn-break-i-1	i	Interjection	used to order a pause or separation, especially of boxers in a clinch		U	project sense: tier to be set	project				break
 breed#animal-breed	oewn-breed__1.14.00..	breed%1:14:00::	oewn-08118376-n	n	Noun	a special variety of domesticated animals within a species	1	U	wn30-tag-count	oewn				breed,breeding,breeds
 breed#animal-type	oewn-breed__1.09.00..	breed%1:09:00::	oewn-05848056-n	n	Noun	a special type	0	R	wn30-tag-count	oewn				breed,breeding,breeds
 breed#mate	oewn-breed__2.35.00..	breed%2:35:00::	oewn-01433080-v	v	Verb	copulate with a female, used especially of horses	1	U	wn30-tag-count	oewn			R	bred,breed,breeded,breeding,breeds
@@ -1147,7 +1147,7 @@ check#stop-pursuit	oewn-check__2.38.12..	check%2:38:12::	oewn-01865608-v	v	Verb	
 check#switch-prey	oewn-check__2.38.14..	check%2:38:14::	oewn-01865753-v	v	Verb	abandon the intended prey, turn, and pursue an inferior prey	0	R	wn30-tag-count	oewn			R	check,checked,checking,checks
 check#stop-abruptly	oewn-check__2.30.10..	check%2:30:10::	oewn-00355288-v	v	Verb	arrest the motion (of something) abruptly	0	R	wn30-tag-count	oewn				check,checked,checking,checks
 check#source-check	oewn-check__2.31.12..	check%2:31:12::	oewn-00665271-v	v	Verb	verify by consulting a source or authority	0	R	wn30-tag-count	oewn				check,checked,checking,checks
-check#check-interjection	dema-check-i-1		dema-syn-check-i-1	i	Interjection	The interjection "check"; a project sense, because Open English WordNet has no interjection sense of this word.		U	project sense: tier to be set	project				check
+check#check-interjection	dema-check-i-1		dema-syn-check-i-1	i	Interjection	used to acknowledge agreement or completion, or to announce an attack on a king in chess		U	project sense: tier to be set	project				check
 cleanly#clean-habit	oewn-cleanly__5.00.00.clean.01	cleanly%5:00:00:clean:01	oewn-00419497-s	s	Adjective	habitually clean	0	R	wn30-tag-count	oewn				cleanlier,cleanliest,cleanly
 cleanly#deftly	oewn-cleanly__4.02.00..	cleanly%4:02:00::	oewn-00232612-r	r	Adverb	smoothly and without difficulty; precisely and deftly	2	U	wn30-tag-count	oewn				cleanly
 cleanly#low-pollution	oewn-cleanly__4.02.02..	cleanly%4:02:02::	oewn-00286876-r	r	Adverb	in a manner that minimizes dirt and pollution	0	R	wn30-tag-count	oewn				cleanly
@@ -1213,7 +1213,7 @@ collect#collect-payment	oewn-collect__2.40.01..	collect%2:40:01::	oewn-02222955-
 collect#assemble	oewn-collect__2.35.00..	collect%2:35:00::	oewn-01383303-v	v	Verb	assemble or get together	12	C	wn30-tag-count	oewn				collect,collected,collecting,collects
 collect#bring-together	oewn-collect__2.35.01..	collect%2:35:01::	oewn-01387093-v	v	Verb	get or bring together	8	C	wn30-tag-count	oewn				collect,collected,collecting,collects
 collect#call-together	oewn-collect__2.40.03..	collect%2:40:03::	oewn-02310566-v	v	Verb	gather or collect	2	U	wn30-tag-count	oewn				collect,collected,collecting,collects
-collocate#collocate-noun	dema-collocate-n-1		dema-syn-collocate-n-1	n	Noun	noun		U	project sense: tier to be set	project				collocate,collocates
+collocate#collocate-noun	dema-collocate-n-1		dema-syn-collocate-n-1	n	Noun	a word that habitually occurs with a particular other word		U	project sense: tier to be set	project				collocate,collocates
 collocate#group-together	oewn-collocate__2.31.00..	collocate%2:31:00::	oewn-00658687-v	v	Verb	group or chunk together in a certain order or place side by side	0	R	wn30-tag-count	oewn				collocate,collocated,collocates,collocating
 collocate#co-occur	oewn-collocate__2.42.00..	collocate%2:42:00::	oewn-02618645-v	v	Verb	have a strong tendency to occur side by side	0	R	wn30-tag-count	oewn				collocate,collocated,collocates,collocating
 colour#color-capable	oewn-colour__3.00.02..	colour%3:00:02::	oewn-00395196-a	a	Adjective	having or capable of producing colors	1	U	wn30-tag-count	oewn				
@@ -1310,7 +1310,7 @@ confederate#accomplice	oewn-confederate__1.18.00..	confederate%1:18:00::	oewn-09
 confederate#plot-helper	oewn-confederate__1.18.01..	confederate%1:18:01::	oewn-09972962-n	n	Noun	someone who assists in a plot	0	R	wn30-tag-count	oewn				Confederate,Confederates,confederate,confederates
 confederate#unite	oewn-confederate__2.41.00..	confederate%2:41:00::	oewn-02476108-v	v	Verb	form a group or unite	0	R	wn30-tag-count	oewn				Confederate,Confederates,confederate,confederated,confederates,confederating
 confederate#federate	oewn-confederate__2.41.10..	confederate%2:41:10::	oewn-02439388-v	v	Verb	form a confederation with; of nations	0	R	wn30-tag-count	oewn				Confederate,Confederates,confederate,confederated,confederates,confederating
-confine#confines	dema-confine-n-1		dema-syn-confine-n-1	n	Noun	noun		U	project sense: tier to be set	project			R	confine,confines
+confine#confines	dema-confine-n-1		dema-syn-confine-n-1	n	Noun	the boundaries or limits of a place, subject, or activity, usually used in the plural		U	project sense: tier to be set	project			R	confine,confines
 confine#limit	oewn-confine__2.30.00..	confine%2:30:00::	oewn-00234091-v	v	Verb	place limits on (extent or amount or access)	5	C	wn30-tag-count	oewn				confine,confined,confines,confining
 confine#prevent-escape	oewn-confine__2.35.03..	confine%2:35:03::	oewn-01349980-v	v	Verb	prevent from leaving or from being removed	3	U	wn30-tag-count	oewn				confine,confined,confines,confining
 confine#restrict	oewn-confine__2.35.01..	confine%2:35:01::	oewn-01304044-v	v	Verb	to close within bounds, or otherwise limit or deprive of free movement	0	R	wn30-tag-count	oewn				confine,confined,confines,confining
@@ -1340,7 +1340,7 @@ conjugate#inflect	oewn-conjugate__2.32.00..	conjugate%2:32:00::	oewn-00985155-v	
 conjunct#stepwise	oewn-conjunct__3.00.00..	conjunct%3:00:00::	oewn-00568064-a	a	Adjective	progressing melodically by intervals of a second	0	R	wn30-tag-count	oewn				conjunct
 conjunct#associated	oewn-conjunct__5.00.00.united.00	conjunct%5:00:00:united:00	oewn-02486810-s	s	Adjective	bound in close association	0	R	wn30-tag-count	oewn				conjunct
 conjunct#joint	oewn-conjunct__5.00.00.joint.00	conjunct%5:00:00:joint:00	oewn-02119388-s	s	Adjective	involving the joint activity of two or more	0	R	wn30-tag-count	oewn				conjunct
-conjunct#joined-part	dema-conjunct-n-1		dema-syn-conjunct-n-1	n	Noun	noun		U	project sense: tier to be set	project			R	conjunct,conjuncts
+conjunct#joined-part	dema-conjunct-n-1		dema-syn-conjunct-n-1	n	Noun	a member of a coordinated expression or a proposition joined to another by a logical conjunction		U	project sense: tier to be set	project			R	conjunct,conjuncts
 conscript#drafted-soldier	oewn-conscript__1.18.00..	conscript%1:18:00::	oewn-10048490-n	n	Noun	someone who is drafted into military service	0	R	wn30-tag-count	oewn				conscript,conscripts
 conscript#draft	oewn-conscript__2.33.00..	conscript%2:33:00::	oewn-01101117-v	v	Verb	enroll into service compulsorily	1	U	wn30-tag-count	oewn				conscript,conscripted,conscripting,conscripts
 conserve#fruit-preserve	oewn-conserve__1.13.00..	conserve%1:13:00::	oewn-07658080-n	n	Noun	fruit preserved by cooking with sugar	0	R	wn30-tag-count	oewn				conserve,conserves
@@ -1348,7 +1348,7 @@ conserve#use-frugally	oewn-conserve__2.40.00..	conserve%2:40:00::	oewn-02273988-
 conserve#maintain	oewn-conserve__2.42.00..	conserve%2:42:00::	oewn-02688390-v	v	Verb	keep constant through physical or chemical reactions or evolutionary change	0	R	wn30-tag-count	oewn				conserve,conserved,conserves,conserving
 conserve#preserve-sugar	oewn-conserve__2.30.00..	conserve%2:30:00::	oewn-00212475-v	v	Verb	preserve with sugar	0	R	wn30-tag-count	oewn				conserve,conserved,conserves,conserving
 conserve#protect	oewn-conserve__2.40.02..	conserve%2:40:02::	oewn-02284977-v	v	Verb	keep in safety and protect from harm, decay, loss, or destruction	0	R	wn30-tag-count	oewn				conserve,conserved,conserves,conserving
-consist#composition	dema-consist-n-1		dema-syn-consist-n-1	n	Noun	noun		U	project sense: tier to be set	project			R	consist,consists
+consist#composition	dema-consist-n-1		dema-syn-consist-n-1	n	Noun	the set and arrangement of locomotives and cars making up a train		U	project sense: tier to be set	project			R	consist,consists
 consist#originate-in	oewn-consist__2.42.00..	consist%2:42:00::	oewn-02659476-v	v	Verb	originate (in)	4	U	wn30-tag-count	oewn				consist,consisted,consisting,consists
 consist#be-consistent	oewn-consist__2.42.02..	consist%2:42:02::	oewn-02664128-v	v	Verb	be consistent in form, tenor, or character; be congruous	0	R	wn30-tag-count	oewn				consist,consisted,consisting,consists
 consist#be-contained	oewn-consist__2.42.04..	consist%2:42:04::	oewn-02756729-v	v	Verb	have its essential character; be comprised or contained in; be embodied in	0	R	wn30-tag-count	oewn				consist,consisted,consisting,consists
@@ -1386,7 +1386,7 @@ contact#contact-lens	oewn-contact__1.06.01..	contact%1:06:01::	oewn-03098615-n	n
 contact#communication	oewn-contact__1.10.01..	contact%1:10:01::	oewn-07293990-n	n	Noun	a communicative interaction	0	R	wn30-tag-count	oewn				contact,contacts
 contact#communicate	oewn-contact__2.32.00..	contact%2:32:00::	oewn-00745330-v	v	Verb	be in or establish communication with	10	C	wn30-tag-count	oewn				contact,contacted,contacting,contacts
 contact#touch	oewn-contact__2.35.03..	contact%2:35:03::	oewn-01208316-v	v	Verb	be in direct physical contact with; make contact	0	R	wn30-tag-count	oewn				contact,contacted,contacting,contacts
-contact#contact-call	dema-contact-i-1		dema-syn-contact-i-1	i	Interjection	The interjection "contact"; a project sense, because Open English WordNet has no interjection sense of this word.		U	project sense: tier to be set	project				contact
+contact#contact-call	dema-contact-i-1		dema-syn-contact-i-1	i	Interjection	used to announce that an aircraft's ignition is on and its engine is ready to be started (aviation)		U	project sense: tier to be set	project				contact
 content#satisfied	oewn-content__3.00.00..	content%3:00:00::	oewn-00591490-a	a	Adjective	satisfied or showing satisfaction with things as they are	0	R	wn30-tag-count	oewn				content
 content#contents	oewn-content__1.14.00..	content%1:14:00::	oewn-07971643-n	n	Noun	(usually plural) everything that is included in a collection and that is held or included in something	12	C	wn30-tag-count	oewn				content,contents
 content#message	oewn-content__1.10.00..	content%1:10:00::	oewn-06611268-n	n	Noun	content communicating a message; what something is about	8	C	wn30-tag-count	oewn				content,contents
@@ -1397,7 +1397,7 @@ content#contentedness	oewn-content__1.26.00..	content%1:26:00::	oewn-14436286-n	
 content#depicted-object	oewn-content__1.06.00..	content%1:06:00::	oewn-04354303-n	n	Noun	something (a person or object or scene) selected by an artist or photographer for graphic representation	0	R	wn30-tag-count	oewn				content,contents
 content#satisfy-partly	oewn-content__2.34.00..	content%2:34:00::	oewn-01196771-v	v	Verb	satisfy in a limited way	3	U	wn30-tag-count	oewn				content,contented,contenting
 content#satisfy	oewn-content__2.37.00..	content%2:37:00::	oewn-01820811-v	v	Verb	make content	2	U	wn30-tag-count	oewn				content,contented,contenting
-content#content-exclamation	dema-content-i-1		dema-syn-content-i-1	i	Interjection	The interjection "content"; a project sense, because Open English WordNet has no interjection sense of this word.		U	project sense: tier to be set	project				content
+content#content-exclamation	dema-content-i-1		dema-syn-content-i-1	i	Interjection	used to express agreement or cast an affirmative vote, especially in the British House of Lords		U	project sense: tier to be set	project				content
 contest#competition	oewn-contest__1.11.00..	contest%1:11:00::	oewn-07470961-n	n	Noun	an occasion on which a winner is selected from among two or more contestants	8	C	wn30-tag-count	oewn				contest,contests
 contest#rival-struggle	oewn-contest__1.04.00..	contest%1:04:00::	oewn-01171451-n	n	Noun	a struggle between rivals	1	U	wn30-tag-count	oewn				contest,contests
 contest#dispute	oewn-contest__2.32.00..	contest%2:32:00::	oewn-00871260-v	v	Verb	to make the subject of dispute, contention, or litigation	3	U	wn30-tag-count	oewn				contest,contested,contesting,contests
@@ -1591,7 +1591,7 @@ cry#state-by-crying	oewn-cry__2.29.02..	cry%2:29:02::	oewn-00066456-v	v	Verb	bri
 cry#animal-sound	oewn-cry__2.32.03..	cry%2:32:03::	oewn-00987496-v	v	Verb	utter a characteristic sound	0	R	wn30-tag-count	oewn				cried,cries,cry,crying
 cry#demand-action	oewn-cry__2.34.00..	cry%2:34:00::	oewn-01191520-v	v	Verb	demand immediate action	0	R	wn30-tag-count	oewn				cried,cries,cry,crying
 curate#church-curate	oewn-curate__1.18.00..	curate%1:18:00::	oewn-10003102-n	n	Noun	a person authorized to conduct religious worship	0	R	wn30-tag-count	oewn				curate,curates
-curate#organize	dema-curate-v-1		dema-syn-curate-v-1	v	Verb	verb		U	project sense: tier to be set	project				curate,curated,curates,curating
+curate#organize	dema-curate-v-1		dema-syn-curate-v-1	v	Verb	select, organize, and care for items in a collection, exhibition, or presentation		U	project sense: tier to be set	project				curate,curated,curates,curating
 cure#treatment	oewn-cure__1.06.00..	cure%1:06:00::	oewn-04081594-n	n	Noun	a medicine or therapy that cures disease or relieve pain	8	C	wn30-tag-count	oewn				cure,cures,curing
 cure#heal	oewn-cure__2.29.00..	cure%2:29:00::	oewn-00081478-v	v	Verb	provide a cure for, make healthy again	12	C	wn30-tag-count	oewn				cure,cured,cures,curing
 cure#preserve-food	oewn-cure__2.30.00..	cure%2:30:00::	oewn-00528652-v	v	Verb	prepare by drying, salting, or chemical processing in order to preserve	1	U	wn30-tag-count	oewn				cure,cured,cures,curing
@@ -2059,7 +2059,7 @@ end#finish	oewn-end__2.42.00..	end%2:42:00::	oewn-02615799-v	v	Verb	have an end,
 end#halt	oewn-end__2.30.01..	end%2:30:01::	oewn-00353480-v	v	Verb	bring to an end or halt	29	C	wn30-tag-count	oewn				end,ended,ending,ends
 end#conclude	oewn-end__2.42.01..	end%2:42:01::	oewn-02741293-v	v	Verb	be the end of; be the last or concluding part of	10	C	wn30-tag-count	oewn				end,ended,ending,ends
 end#eliminate	oewn-end__2.36.13..	end%2:36:13::	oewn-01623891-v	v	Verb	put an end to	0	R	wn30-tag-count	oewn				end,ended,ending,ends
-enervate#descriptive	dema-enervate-a-1		dema-syn-enervate-a-1	a	Adjective	adjective		U	project sense: tier to be set	project				enervate
+enervate#descriptive	dema-enervate-a-1		dema-syn-enervate-a-1	a	Adjective	lacking strength or vitality; weakened or exhausted (rare)		U	project sense: tier to be set	project				enervate
 enervate#weaken	oewn-enervate__2.30.00..	enervate%2:30:00::	oewn-00390527-v	v	Verb	weaken mentally or morally	1	U	wn30-tag-count	oewn			R	enervate,enervated,enervates,enervating
 enervate#unsettle	oewn-enervate__2.37.00..	enervate%2:37:00::	oewn-01787700-v	v	Verb	disturb the composure of	0	R	wn30-tag-count	oewn				enervate,enervated,enervates,enervating
 entail#inherited-land	oewn-entail__1.21.00..	entail%1:21:00::	oewn-13309965-n	n	Noun	land received by fee tail	0	R	wn30-tag-count	oewn			R	entail,entails
@@ -2110,8 +2110,8 @@ excise#tax	oewn-excise__1.21.00..	excise%1:21:00::	oewn-13337354-n	n	Noun	a tax 
 excise#delete	oewn-excise__2.35.00..	excise%2:35:00::	oewn-01552202-v	v	Verb	remove by erasing or crossing out or as if by drawing a line	1	U	wn30-tag-count	oewn				excise,excised,excises,excising
 excise#cut	oewn-excise__2.30.02..	excise%2:30:02::	oewn-00473802-v	v	Verb	remove by cutting	0	R	wn30-tag-count	oewn				excise,excised,excises,excising
 excise#levy	oewn-excise__2.40.00..	excise%2:40:00::	oewn-02312862-v	v	Verb	levy an excise tax on	0	R	wn30-tag-count	oewn				excise,excised,excises,excising
-excommunicate#adjectival	dema-excommunicate-a-1		dema-syn-excommunicate-a-1	a	Adjective	adjective-noun		U	project sense: tier to be set	project				excommunicate
-excommunicate#nominal	dema-excommunicate-n-1		dema-syn-excommunicate-n-1	n	Noun	adjective-noun		U	project sense: tier to be set	project				excommunicate,excommunicates
+excommunicate#adjectival	dema-excommunicate-a-1		dema-syn-excommunicate-a-1	a	Adjective	excluded from the sacraments or communion of a church by ecclesiastical authority		U	project sense: tier to be set	project				excommunicate
+excommunicate#nominal	dema-excommunicate-n-1		dema-syn-excommunicate-n-1	n	Noun	a person excluded from membership in a church or from receiving its sacraments		U	project sense: tier to be set	project				excommunicate,excommunicates
 excommunicate#church-exclusion	oewn-excommunicate__2.32.00..	excommunicate%2:32:00::	oewn-01032430-v	v	Verb	exclude from a church or a religious community	2	U	wn30-tag-count	oewn				excommunicate,excommunicated,excommunicates,excommunicating
 excommunicate#expel	oewn-excommunicate__2.41.00..	excommunicate%2:41:00::	oewn-02407254-v	v	Verb	oust or exclude from a group or membership by decree	0	R	wn30-tag-count	oewn				excommunicate,excommunicated,excommunicates,excommunicating
 excuse#defense	oewn-excuse__1.10.00..	excuse%1:10:00::	oewn-06754000-n	n	Noun	a defense of some offensive behavior or some failure to keep a promise etc.	10	C	wn30-tag-count	oewn				excuse,excuses
@@ -2140,8 +2140,8 @@ experience#know	oewn-experience__2.31.00..	experience%2:31:00::	oewn-00598039-v	
 experience#undergo-state	oewn-experience__2.39.00..	experience%2:39:00::	oewn-02112480-v	v	Verb	go through (mental or physical states or experiences)	8	C	wn30-tag-count	oewn	experience#undergoing	near-identical glosses		experience,experienced,experiences,experiencing
 experience#feel	oewn-experience__2.37.00..	experience%2:37:00::	oewn-01775456-v	v	Verb	undergo an emotional sensation or be in a particular state of mind	5	C	wn30-tag-count	oewn				experience,experienced,experiences,experiencing
 experience#undergo	oewn-experience__2.30.00..	experience%2:30:00::	oewn-00120854-v	v	Verb	undergo	0	R	wn30-tag-count	oewn	experience#undergoing	near-identical glosses	D	experience,experienced,experiences,experiencing
-explant#explant-specimen	dema-explant-n-1		dema-syn-explant-n-1	n	Noun	noun		U	project sense: tier to be set	project			R	explant,explants
-explant#remove-tissue	dema-explant-v-1		dema-syn-explant-v-1	v	Verb	verb		U	project sense: tier to be set	project			R	explant,explanted,explanting,explants
+explant#explant-specimen	dema-explant-n-1		dema-syn-explant-n-1	n	Noun	a piece of living tissue removed from an organism for culture outside the body		U	project sense: tier to be set	project			R	explant,explants
+explant#remove-tissue	dema-explant-v-1		dema-syn-explant-v-1	v	Verb	remove living tissue from an organism for culture outside the body		U	project sense: tier to be set	project			R	explant,explanted,explanting,explants
 exploit#feat	oewn-exploit__1.04.00..	exploit%1:04:00::	oewn-00037483-n	n	Noun	a notable achievement	2	U	wn30-tag-count	oewn				exploit,exploits
 exploit#use	oewn-exploit__2.34.00..	exploit%2:34:00::	oewn-01165070-v	v	Verb	use or manipulate to one's advantage	8	C	wn30-tag-count	oewn				exploit,exploited,exploiting,exploits
 exploit#draw-on	oewn-exploit__2.34.01..	exploit%2:34:01::	oewn-01166589-v	v	Verb	draw from; make good use of	3	U	wn30-tag-count	oewn				exploit,exploited,exploiting,exploits
@@ -2188,7 +2188,7 @@ face#accuse	oewn-face__2.32.03..	face%2:32:03::	oewn-01068455-v	v	Verb	present s
 face#cover	oewn-face__2.35.01..	face%2:35:01::	oewn-01273753-v	v	Verb	cover the front or surface of	0	R	wn30-tag-count	oewn				face,faced,faces,facing
 face#expose	oewn-face__2.39.04..	face%2:39:04::	oewn-02142380-v	v	Verb	turn so as to expose the face	0	R	wn30-tag-count	oewn				face,faced,faces,facing
 face#trim	oewn-face__2.35.00..	face%2:35:00::	oewn-01274500-v	v	Verb	line the edge (of a garment) with a different material	0	R	wn30-tag-count	oewn			R	face,faced,faces,facing
-fail#failure	dema-fail-n-1		dema-syn-fail-n-1	n	Noun	fail (noun); no definition recorded		U	project sense: tier to be set	project				fail,failing,fails
+fail#failure	dema-fail-n-1		dema-syn-fail-n-1	n	Noun	a failure to do what is expected or required, especially in the phrase without fail		U	project sense: tier to be set	project				fail,failing,fails
 fail#omit	oewn-fail__2.41.02..	fail%2:41:02::	oewn-02534950-v	v	Verb	fail to do something; leave something undone	66	C	wn30-tag-count	oewn				fail,failed,failing,fails
 fail#be-unsuccessful	oewn-fail__2.41.00..	fail%2:41:00::	oewn-02534046-v	v	Verb	be unsuccessful	33	C	wn30-tag-count	oewn				fail,failed,failing,fails
 fail#disappoint	oewn-fail__2.37.00..	fail%2:37:00::	oewn-01803246-v	v	Verb	disappoint, prove undependable to; abandon, forsake	5	C	wn30-tag-count	oewn				fail,failed,failing,fails
@@ -2442,7 +2442,7 @@ force#take-by-force	oewn-force__2.35.03..	force%2:35:03::	oewn-01589521-v	v	Verb
 forearm#lower-arm	oewn-forearm__1.08.00..	forearm%1:08:00::	oewn-05571956-n	n	Noun	the part of the superior limb between the elbow and the wrist	1	U	wn30-tag-count	oewn				forearm,forearms
 forearm#arm-in-advance	oewn-forearm__2.33.00..	forearm%2:33:00::	oewn-01090140-v	v	Verb	arm in advance of a confrontation	0	R	wn30-tag-count	oewn				forearm,forearmed,forearming,forearms
 foretoken#omen	oewn-foretoken__1.11.00..	foretoken%1:11:00::	oewn-07300719-n	n	Noun	an event that is experienced as indicating important things to come	0	R	wn30-tag-count	oewn			R	foretoken,foretokens
-foretoken#foreshadow	dema-foretoken-v-1		dema-syn-foretoken-v-1	v	Verb	verb		U	project sense: tier to be set	project			R	foretoken,foretokened,foretokening,foretokens
+foretoken#foreshadow	dema-foretoken-v-1		dema-syn-foretoken-v-1	v	Verb	indicate or give warning of something that will happen (archaic)		U	project sense: tier to be set	project			R	foretoken,foretokened,foretokening,foretokens
 fragment#part	oewn-fragment__1.17.01..	fragment%1:17:01::	oewn-09308160-n	n	Noun	a piece broken off or cut off of something else	7	C	wn30-tag-count	oewn				fragment,fragments
 fragment#shard	oewn-fragment__1.06.00..	fragment%1:06:00::	oewn-04191744-n	n	Noun	a broken piece of a brittle artifact	1	U	wn30-tag-count	oewn				fragment,fragments
 fragment#incomplete-piece	oewn-fragment__1.10.00..	fragment%1:10:00::	oewn-07021796-n	n	Noun	an incomplete piece	0	R	wn30-tag-count	oewn				fragment,fragments
@@ -2510,7 +2510,7 @@ gallant#dashing	oewn-gallant__5.00.00.spirited.00	gallant%5:00:00:spirited:00	oe
 gallant#lofty	oewn-gallant__5.00.00.impressive.00	gallant%5:00:00:impressive:00	oewn-01288228-s	s	Adjective	having or displaying great dignity or nobility	0	R	wn30-tag-count	oewn				gallant,gallanter,gallantly
 gallant#dapper-man	oewn-gallant__1.18.01..	gallant%1:18:01::	oewn-10010564-n	n	Noun	a man who is much concerned with his dress and appearance	1	U	wn30-tag-count	oewn			R	gallant,gallants
 gallant#squire	oewn-gallant__1.18.00..	gallant%1:18:00::	oewn-10663501-n	n	Noun	a man who attends or escorts a woman	0	R	wn30-tag-count	oewn			R	gallant,gallants
-geminate#doubled	dema-geminate-a-1		dema-syn-geminate-a-1	a	Adjective	adjective		U	project sense: tier to be set	project			R	geminate
+geminate#doubled	dema-geminate-a-1		dema-syn-geminate-a-1	a	Adjective	doubled or prolonged in pronunciation, especially of a consonant (phonetics)		U	project sense: tier to be set	project			R	geminate
 geminate#double-consonant	oewn-geminate__1.10.00..	geminate%1:10:00::	oewn-07134484-n	n	Noun	a doubled or long consonant	0	R	wn30-tag-count	oewn			R	geminates
 geminate#double	oewn-geminate__2.30.00..	geminate%2:30:00::	oewn-00247474-v	v	Verb	arrange or combine in pairs	0	R	wn30-tag-count	oewn	geminate#pairing	near-identical glosses	R	geminate,geminated,geminates,geminating
 geminate#pair	oewn-geminate__2.35.00..	geminate%2:35:00::	oewn-01467847-v	v	Verb	arrange in pairs	0	R	wn30-tag-count	oewn	geminate#pairing	near-identical glosses	D	geminate,geminated,geminates,geminating
@@ -2587,7 +2587,7 @@ halt#stop-abruptly	oewn-halt__2.38.05..	halt%2:38:05::	oewn-01863572-v	v	Verb	ca
 halt#come-to-stop	oewn-halt__2.38.01..	halt%2:38:01::	oewn-01864781-v	v	Verb	come to a halt, stop moving	7	C	wn30-tag-count	oewn				halt,halted,halting,halts
 halt#prevent	oewn-halt__2.41.00..	halt%2:41:00::	oewn-02565578-v	v	Verb	stop from happening or developing	4	U	wn30-tag-count	oewn				halt,halted,halting,halts
 halt#stop-flow	oewn-halt__2.30.02..	halt%2:30:02::	oewn-00355106-v	v	Verb	stop the flow of a liquid	0	R	wn30-tag-count	oewn			R	halt,halted,halting,halts
-halt#interjection	dema-halt-i-1		dema-syn-halt-i-1	i	Interjection	The interjection "halt"; a project sense, because Open English WordNet has no interjection sense of this word.		U	project sense: tier to be set	project				halt
+halt#interjection	dema-halt-i-1		dema-syn-halt-i-1	i	Interjection	used as a command to stop moving immediately		U	project sense: tier to be set	project				halt
 hammer#firing-hammer	oewn-hammer__1.06.04..	hammer%1:06:04::	oewn-03486907-n	n	Noun	the part of a gunlock that strikes the percussion cap when the trigger is pulled	2	U	wn30-tag-count	oewn			R	hammer,hammering,hammerring,hammers
 hammer#hand-hammer	oewn-hammer__1.06.00..	hammer%1:06:00::	oewn-03486255-n	n	Noun	a hand tool with a heavy rigid head and a handle; used to deliver an impulsive force by striking	2	U	wn30-tag-count	oewn				hammer,hammering,hammerring,hammers
 hammer#pounding	oewn-hammer__1.04.00..	hammer%1:04:00::	oewn-01177806-n	n	Noun	the act of pounding (delivering repeated heavy blows)	0	R	wn30-tag-count	oewn				hammer,hammering,hammerring,hammers
@@ -2758,7 +2758,7 @@ implement#tool	oewn-implement__1.06.00..	implement%1:06:00::	oewn-03569147-n	n	N
 implement#apply	oewn-implement__2.41.01..	implement%2:41:01::	oewn-02414095-v	v	Verb	apply in a manner consistent with its purpose or design	3	U	wn30-tag-count	oewn				implement,implemented,implementing,implements
 implement#enforce	oewn-implement__2.41.00..	implement%2:41:00::	oewn-02565990-v	v	Verb	ensure observance of laws and rules	2	U	wn30-tag-count	oewn				implement,implemented,implementing,implements
 implement#carry-out	oewn-implement__2.30.00..	implement%2:30:00::	oewn-00486949-v	v	Verb	pursue to a conclusion or bring to a successful issue	2	U	wn30-tag-count	oewn				implement,implemented,implementing,implements
-implicate#noun-sense	dema-implicate-n-1		dema-syn-implicate-n-1	n	Noun	noun		U	project sense: tier to be set	project				implicate,implicates
+implicate#noun-sense	dema-implicate-n-1		dema-syn-implicate-n-1	n	Noun	a proposition that follows logically from another proposition		U	project sense: tier to be set	project				implicate,implicates
 implicate#incriminate	oewn-implicate__2.42.01..	implicate%2:42:01::	oewn-02683142-v	v	Verb	bring into intimate and incriminating connection	0	R	wn30-tag-count	oewn				implicate,implicated,implicates,implicating
 implicate#entail	oewn-implicate__2.42.00..	implicate%2:42:00::	oewn-02640889-v	v	Verb	impose, involve, or imply as a necessary accompaniment or result	0	R	wn30-tag-count	oewn				implicate,implicated,implicates,implicating
 import#importation	oewn-import__1.06.00..	import%1:06:00::	oewn-03569847-n	n	Noun	commodities (goods or services) bought from a foreign country	2	U	wn30-tag-count	oewn				import,imports
@@ -2822,7 +2822,7 @@ indent#authentication-cut	oewn-indent__2.35.01..	indent%2:35:01::	oewn-01282436-
 indent#dent	oewn-indent__2.35.00..	indent%2:35:00::	oewn-01282234-v	v	Verb	make a depression into	0	R	wn30-tag-count	oewn				indent,indented,indenting,indents
 indent#indenture	oewn-indent__2.32.02..	indent%2:32:02::	oewn-00887090-v	v	Verb	bind by or as if by indentures, as of an apprentice or servant	0	R	wn30-tag-count	oewn				indent,indented,indenting,indents
 indent#notch	oewn-indent__2.35.02..	indent%2:35:02::	oewn-01279737-v	v	Verb	notch the edge of or make jagged	0	R	wn30-tag-count	oewn				indent,indented,indenting,indents
-inebriate#drunk	dema-inebriate-a-1		dema-syn-inebriate-a-1	a	Adjective	adjective-noun		U	project sense: tier to be set	project				inebriate
+inebriate#drunk	dema-inebriate-a-1		dema-syn-inebriate-a-1	a	Adjective	intoxicated with alcohol; drunk		U	project sense: tier to be set	project				inebriate
 inebriate#chronic-drinker	oewn-inebriate__1.18.00..	inebriate%1:18:00::	oewn-10057110-n	n	Noun	a chronic drinker	0	R	wn30-tag-count	oewn				inebriate,inebriates
 inebriate#elate	oewn-inebriate__2.37.00..	inebriate%2:37:00::	oewn-01816291-v	v	Verb	fill with sublime emotion	0	R	wn30-tag-count	oewn			R	inebriate,inebriated,inebriates,inebriating
 inebriate#drink-heavily	oewn-inebriate__2.34.00..	inebriate%2:34:00::	oewn-01192810-v	v	Verb	become drunk or drink excessively	0	R	wn30-tag-count	oewn			R	inebriate,inebriated,inebriates,inebriating
@@ -2867,7 +2867,7 @@ inside#actually	oewn-inside__4.02.02..	inside%4:02:02::	oewn-00104786-r	r	Adverb
 inside#privately	oewn-inside__4.02.03..	inside%4:02:03::	oewn-00231805-r	r	Adverb	with respect to private feelings	0	R	wn30-tag-count	oewn				inside
 inside#inner-surface	oewn-inside__1.15.00..	inside%1:15:00::	oewn-08605707-n	n	Noun	the inner or enclosed surface of something	4	U	wn30-tag-count	oewn				inside,insides
 inside#inner-region	oewn-inside__1.15.01..	inside%1:15:01::	oewn-08605849-n	n	Noun	the region that is inside of something	4	U	wn30-tag-count	oewn				inside,insides
-inside#within-preposition	dema-inside-p-1		dema-syn-inside-p-1	p	Preposition	The preposition "inside"; a project sense, because Open English WordNet has no preposition sense of this word.		U	project sense: tier to be set	project				inside
+inside#within-preposition	dema-inside-p-1		dema-syn-inside-p-1	p	Preposition	within the interior or boundaries of something		U	project sense: tier to be set	project				inside
 insult#abuse	oewn-insult__1.10.00..	insult%1:10:00::	oewn-06728162-n	n	Noun	a rude expression intended to offend or hurt	2	U	wn30-tag-count	oewn				insult,insults
 insult#affront	oewn-insult__1.04.00..	insult%1:04:00::	oewn-01227516-n	n	Noun	a deliberately offensive act or something producing the effect of deliberate disrespect	0	R	wn30-tag-count	oewn				insult,insults
 insult#speak-rudely	oewn-insult__2.32.00..	insult%2:32:00::	oewn-00850100-v	v	Verb	treat, mention, or speak to rudely	3	U	wn30-tag-count	oewn				insult,insulted,insulting,insults
@@ -2896,10 +2896,10 @@ interest#pastime	oewn-interest__1.04.01..	interest%1:04:01::	oewn-00432492-n	n	N
 interest#arouse	oewn-interest__2.37.00..	interest%2:37:00::	oewn-01825361-v	v	Verb	excite the curiosity of; engage the interest of	5	C	wn30-tag-count	oewn				interest,interested,interesting,interests
 interest#concern	oewn-interest__2.42.01..	interest%2:42:01::	oewn-02684248-v	v	Verb	be on the mind of	2	U	wn30-tag-count	oewn				interest,interested,interesting,interests
 interest#be-important	oewn-interest__2.42.00..	interest%2:42:00::	oewn-02684473-v	v	Verb	be of importance or consequence	1	U	wn30-tag-count	oewn				interest,interested,interesting,interests
-intergrade#intergradation	dema-intergrade-n-1		dema-syn-intergrade-n-1	n	Noun	noun		U	project sense: tier to be set	project				intergrade,intergrades
-intergrade#blend-gradually	dema-intergrade-v-1		dema-syn-intergrade-v-1	v	Verb	verb		U	project sense: tier to be set	project				intergrade,intergraded,intergrades,intergrading
-interlay#interlaid-material	dema-interlay-n-1		dema-syn-interlay-n-1	n	Noun	noun		U	project sense: tier to be set	project				interlay,interlays
-interlay#layer-between	dema-interlay-v-1		dema-syn-interlay-v-1	v	Verb	verb		U	project sense: tier to be set	project				interlaid,interlay,interlaying,interlays
+intergrade#intergradation	dema-intergrade-n-1		dema-syn-intergrade-n-1	n	Noun	an intermediate form linking two distinct types or populations		U	project sense: tier to be set	project				intergrade,intergrades
+intergrade#blend-gradually	dema-intergrade-v-1		dema-syn-intergrade-v-1	v	Verb	merge gradually through a series of intermediate forms or stages		U	project sense: tier to be set	project				intergrade,intergraded,intergrades,intergrading
+interlay#interlaid-material	dema-interlay-n-1		dema-syn-interlay-n-1	n	Noun	a layer of material placed between other layers		U	project sense: tier to be set	project				interlay,interlays
+interlay#layer-between	dema-interlay-v-1		dema-syn-interlay-v-1	v	Verb	place a layer or material between other layers or things		U	project sense: tier to be set	project				interlaid,interlay,interlaying,interlays
 interlock#ignition-interlock	oewn-interlock__1.06.00..	interlock%1:06:00::	oewn-03584960-n	n	Noun	a device that prevents an automotive engine from starting	0	R	wn30-tag-count	oewn				interlock,interlocks
 interlock#interlocking	oewn-interlock__1.04.00..	interlock%1:04:00::	oewn-00141213-n	n	Noun	the act of interlocking or meshing	0	R	wn30-tag-count	oewn				interlock,interlocks
 interlock#mesh	oewn-interlock__2.30.00..	interlock%2:30:00::	oewn-00406004-v	v	Verb	coordinate in such a way that all parts work together effectively	1	U	wn30-tag-count	oewn				interlock,interlocked,interlocking,interlocks
@@ -2912,8 +2912,8 @@ intermediate#mediate	oewn-intermediate__2.32.00..	intermediate%2:32:00::	oewn-00
 intern#trainee	oewn-intern__1.18.00..	intern%1:18:00::	oewn-10230873-n	n	Noun	an advanced student or graduate in medicine gaining supervised practical experience	0	R	wn30-tag-count	oewn				intern,interning,interns
 intern#confine	oewn-intern__2.41.02..	intern%2:41:02::	oewn-02501036-v	v	Verb	deprive of freedom	0	R	wn30-tag-count	oewn				intern,interned,interning,interns
 intern#train-as-intern	oewn-intern__2.41.00..	intern%2:41:00::	oewn-02451684-v	v	Verb	work as an intern	0	R	wn30-tag-count	oewn				intern,interned,interning,interns
-interspace#intervening-space	dema-interspace-n-1		dema-syn-interspace-n-1	n	Noun	noun		U	project sense: tier to be set	project				interspace,interspaces
-interspace#space-between	dema-interspace-v-1		dema-syn-interspace-v-1	v	Verb	verb		U	project sense: tier to be set	project				interspace,interspaced,interspaces,interspacing
+interspace#intervening-space	dema-interspace-n-1		dema-syn-interspace-n-1	n	Noun	a space or gap between things		U	project sense: tier to be set	project				interspace,interspaces
+interspace#space-between	dema-interspace-v-1		dema-syn-interspace-v-1	v	Verb	arrange with spaces or intervals between		U	project sense: tier to be set	project				interspace,interspaced,interspaces,interspacing
 intimate#close	oewn-intimate__5.00.00.close.02	intimate%5:00:00:close:02	oewn-00455341-s	s	Adjective	marked by close acquaintance, association, or familiarity	5	C	wn30-tag-count	oewn				intimate
 intimate#cosy	oewn-intimate__5.00.00.friendly.01	intimate%5:00:00:friendly:01	oewn-01079833-s	s	Adjective	having or fostering a warm or friendly and informal atmosphere	1	U	wn30-tag-count	oewn				intimate
 intimate#familiar	oewn-intimate__5.00.02.close.02	intimate%5:00:02:close:02	oewn-00455086-s	s	Adjective	having mutual interests or affections; of established friendship	1	U	wn30-tag-count	oewn				intimate
@@ -2934,7 +2934,7 @@ invalid#no-longer-valid	oewn-invalid__5.00.00.expired.00	invalid%5:00:00:expired
 invalid#chronically-ill	oewn-invalid__1.18.00..	invalid%1:18:00::	oewn-10233900-n	n	Noun	someone who is incapacitated by a chronic illness or injury	1	U	wn30-tag-count	oewn				invalid,invalids
 invalid#permanently-disable	oewn-invalid__2.29.00..	invalid%2:29:00::	oewn-00091720-v	v	Verb	injure permanently	0	R	wn30-tag-count	oewn				invalid,invalided,invaliding
 invalid#retire-from-duty	oewn-invalid__2.41.00..	invalid%2:41:00::	oewn-02409926-v	v	Verb	force to retire, remove from active duty, as of firemen	0	R	wn30-tag-count	oewn				invalid,invalided,invaliding
-invert#inversion	dema-invert-n-1		dema-syn-invert-n-1	n	Noun	noun		U	project sense: tier to be set	project				invert,inverts
+invert#inversion	dema-invert-n-1		dema-syn-invert-n-1	n	Noun	the lowest interior surface of a drain, channel, sewer, or tunnel		U	project sense: tier to be set	project				invert,inverts
 invert#musical-inversion	oewn-invert__2.30.01..	invert%2:30:01::	oewn-00387824-v	v	Verb	make an inversion (in a musical composition)	1	U	wn30-tag-count	oewn				invert,inverted,inverting,inverts
 invert#turn-upside-down	oewn-invert__2.30.00..	invert%2:30:00::	oewn-00387386-v	v	Verb	turn inside out or upside down	0	R	wn30-tag-count	oewn				invert,inverted,inverting,inverts
 invert#reverse-order	oewn-invert__2.30.03..	invert%2:30:03::	oewn-00387636-v	v	Verb	reverse the position, order, relation, or condition of	0	R	wn30-tag-count	oewn				invert,inverted,inverting,inverts
@@ -2953,7 +2953,7 @@ iron#club	oewn-iron__1.06.01..	iron%1:06:01::	oewn-03590242-n	n	Noun	a golf club
 iron#branding-iron	oewn-iron__1.06.02..	iron%1:06:02::	oewn-03590506-n	n	Noun	implement used to brand live stock	0	R	wn30-tag-count	oewn				iron,ironing,ironning,irons
 iron#smoothing-iron	oewn-iron__1.06.00..	iron%1:06:00::	oewn-03589998-n	n	Noun	home appliance consisting of a flat metal base that is heated and used to smooth cloth	0	R	wn30-tag-count	oewn				iron,ironing,ironning,irons
 iron#press-cloth	oewn-iron__2.35.00..	iron%2:35:00::	oewn-01393487-v	v	Verb	press and smooth with a heated iron	2	U	wn30-tag-count	oewn				iron,ironed,ironing,irons
-isolate#isolated-person	dema-isolate-n-1		dema-syn-isolate-n-1	n	Noun	noun		U	project sense: tier to be set	project				isolate,isolates
+isolate#isolated-person	dema-isolate-n-1		dema-syn-isolate-n-1	n	Noun	a person, organism, or substance separated from others or obtained in isolation		U	project sense: tier to be set	project				isolate,isolates
 isolate#insulate	oewn-isolate__2.30.00..	isolate%2:30:00::	oewn-00495205-v	v	Verb	place or set apart	12	C	wn30-tag-count	oewn				isolate,isolated,isolates,isolating
 isolate#purify	oewn-isolate__2.30.01..	isolate%2:30:01::	oewn-00497851-v	v	Verb	obtain in pure form	3	U	wn30-tag-count	oewn				isolate,isolated,isolates,isolating
 isolate#keep-apart	oewn-isolate__2.30.02..	isolate%2:30:02::	oewn-00496744-v	v	Verb	set apart from others	2	U	wn30-tag-count	oewn				isolate,isolated,isolates,isolating
@@ -3195,8 +3195,8 @@ like#enjoy	oewn-like__2.37.05..	like%2:37:05::	oewn-01781131-v	v	Verb	find enjoy
 like#be-fond	oewn-like__2.37.04..	like%2:37:04::	oewn-01780873-v	v	Verb	be fond of	19	C	wn30-tag-count	oewn				like,liked,likes,liking
 like#regard	oewn-like__2.31.00..	like%2:31:00::	oewn-00693431-v	v	Verb	feel about or towards; consider, evaluate, or regard	2	U	wn30-tag-count	oewn				like,liked,likes,liking
 like#want	oewn-like__2.37.06..	like%2:37:06::	oewn-01829904-v	v	Verb	want to have	1	U	wn30-tag-count	oewn				like,liked,likes,liking
-like#comparison-conjunction	dema-like-c-1		dema-syn-like-c-1	c	Conjunction	The conjunction "like"; a project sense, because Open English WordNet has no conjunction sense of this word.		U	project sense: tier to be set	project				like
-like#comparison-preposition	dema-like-p-1		dema-syn-like-p-1	p	Preposition	The preposition "like"; a project sense, because Open English WordNet has no preposition sense of this word.		U	project sense: tier to be set	project				like
+like#comparison-conjunction	dema-like-c-1		dema-syn-like-c-1	c	Conjunction	introduces a clause expressing similarity of manner or appearance; as or as if		U	project sense: tier to be set	project				like
+like#comparison-preposition	dema-like-p-1		dema-syn-like-p-1	p	Preposition	similar to or in the same manner as		U	project sense: tier to be set	project				like
 limit#maximum	oewn-limit__1.07.00..	limit%1:07:00::	oewn-05131322-n	n	Noun	the greatest possible degree of something	24	C	wn30-tag-count	oewn	limit#maximum-constraint	near-identical glosses		limit,limiting,limits,limitting
 limit#endpoint	oewn-limit__1.28.00..	limit%1:28:00::	oewn-15293814-n	n	Noun	final or latest limiting point	3	U	wn30-tag-count	oewn				limit,limiting,limits,limitting
 limit#boundary	oewn-limit__1.15.00..	limit%1:15:00::	oewn-08610212-n	n	Noun	the boundary of a specific area	1	U	wn30-tag-count	oewn				limit,limiting,limits,limitting
@@ -3300,7 +3300,7 @@ lounge#couch	oewn-lounge__1.06.01..	lounge%1:06:01::	oewn-04263630-n	n	Noun	an u
 lounge#waiting-room	oewn-lounge__1.06.00..	lounge%1:06:00::	oewn-03697143-n	n	Noun	a room (as in a hotel or airport) with seating where people can wait	0	R	wn30-tag-count	oewn				lounge,lounges,lounging
 lounge#recline	oewn-lounge__2.35.00..	lounge%2:35:00::	oewn-01531127-v	v	Verb	sit or recline comfortably	2	U	wn30-tag-count	oewn				lounge,lounged,lounges,lounging
 lounge#loiter	oewn-lounge__2.42.00..	lounge%2:42:00::	oewn-02645159-v	v	Verb	be about a place without any apparent purpose	0	R	wn30-tag-count	oewn				lounge,lounged,lounges,lounging
-lunged#with-lungs	dema-lunged-a-1		dema-syn-lunged-a-1	a	Adjective	adjective		U	project sense: tier to be set	project				lunged
+lunged#with-lungs	dema-lunged-a-1		dema-syn-lunged-a-1	a	Adjective	having lungs of a specified kind or capacity, usually in compounds		U	project sense: tier to be set	project				lunged
 mail#postal-system	oewn-mail__1.10.00..	mail%1:10:00::	oewn-06275051-n	n	Noun	the system whereby messages are transmitted via the post office	2	U	wn30-tag-count	oewn				mail,mailing,mails
 mail#postal-mail	oewn-mail__1.10.01..	mail%1:10:01::	oewn-06286287-n	n	Noun	the bags of letters and packages that are transported by the postal service	2	U	wn30-tag-count	oewn				mail,mailing,mails
 mail#mail-vehicle	oewn-mail__1.06.01..	mail%1:06:01::	oewn-03715183-n	n	Noun	a conveyance that transports the letters and packages that are conveyed by the postal system	1	U	wn30-tag-count	oewn				mail,mailing,mails
@@ -3308,8 +3308,8 @@ mail#chainmail	oewn-mail__1.06.00..	mail%1:06:00::	oewn-03003851-n	n	Noun	(Middl
 mail#delivery	oewn-mail__1.14.00..	mail%1:14:00::	oewn-08480074-n	n	Noun	any particular collection of letters or packages that is delivered	0	R	wn30-tag-count	oewn				mail,mailing,mails
 mail#send-by-post	oewn-mail__2.35.00..	mail%2:35:00::	oewn-01440525-v	v	Verb	send via the postal service	12	C	wn30-tag-count	oewn				mail,mailed,mailing,mails
 mail#forward	oewn-mail__2.32.00..	mail%2:32:00::	oewn-01033289-v	v	Verb	cause to be directed or transmitted to another place	0	R	wn30-tag-count	oewn				mail,mailed,mailing,mails
-marginate#having-margin	dema-marginate-a-1		dema-syn-marginate-a-1	a	Adjective	adjective		U	project sense: tier to be set	project				marginate
-marginate#add-margin	dema-marginate-v-1		dema-syn-marginate-v-1	v	Verb	verb		U	project sense: tier to be set	project				marginate,marginated,marginates,marginating
+marginate#having-margin	dema-marginate-a-1		dema-syn-marginate-a-1	a	Adjective	having a distinct border or margin, often of a contrasting color		U	project sense: tier to be set	project				marginate
+marginate#add-margin	dema-marginate-v-1		dema-syn-marginate-v-1	v	Verb	provide with a margin or add notes in the margin		U	project sense: tier to be set	project				marginate,marginated,marginates,marginating
 mark#grade	oewn-mark__1.09.01..	mark%1:09:01::	oewn-05745098-n	n	Noun	a number or letter indicating quality (especially of a student's performance)	5	C	wn30-tag-count	oewn				mark,marking,marks
 mark#distinguishing-symbol	oewn-mark__1.10.02..	mark%1:10:02::	oewn-07284884-n	n	Noun	a distinguishing symbol	4	U	wn30-tag-count	oewn				mark,marking,marks
 mark#target	oewn-mark__1.10.04..	mark%1:10:04::	oewn-07276776-n	n	Noun	a reference point to shoot at	3	U	wn30-tag-count	oewn				mark,marking,marks
@@ -3431,8 +3431,8 @@ miscount#count-wrongly	oewn-miscount__2.32.00..	miscount%2:32:00::	oewn-00950634
 misfire#failed-explosion	oewn-misfire__1.11.00..	misfire%1:11:00::	oewn-07436349-n	n	Noun	an explosion that fails to occur	0	R	wn30-tag-count	oewn				misfire,misfires
 misfire#failure-to-hit	oewn-misfire__1.11.01..	misfire%1:11:01::	oewn-07334374-n	n	Noun	a failure to hit (or meet or find etc.)	0	R	wn30-tag-count	oewn				misfire,misfires
 misfire#fail-to-fire	oewn-misfire__2.33.00..	misfire%2:33:00::	oewn-01137079-v	v	Verb	fail to fire or detonate	1	U	wn30-tag-count	oewn				misfire,misfired,misfires,misfiring
-mishit#bad-hit	dema-mishit-n-1		dema-syn-mishit-n-1	n	Noun	noun		U	project sense: tier to be set	project				mishit,mishits
-mishit#hit-badly	dema-mishit-v-1		dema-syn-mishit-v-1	v	Verb	verb		U	project sense: tier to be set	project				mishit,mishits,mishitting
+mishit#bad-hit	dema-mishit-n-1		dema-syn-mishit-n-1	n	Noun	a badly timed or inaccurate stroke or hit, especially of a ball		U	project sense: tier to be set	project				mishit,mishits
+mishit#hit-badly	dema-mishit-v-1		dema-syn-mishit-v-1	v	Verb	strike a ball inaccurately or with poor timing		U	project sense: tier to be set	project				mishit,mishits,mishitting
 mismatch#bad-match	oewn-mismatch__1.09.00..	mismatch%1:09:00::	oewn-05704164-n	n	Noun	a bad or unsuitable match	0	R	wn30-tag-count	oewn				mismatch,mismatches
 mismatch#match-badly	oewn-mismatch__2.35.00..	mismatch%2:35:00::	oewn-01296629-v	v	Verb	match badly; match two objects or people that do not go together	0	R	wn30-tag-count	oewn				mismatch,mismatched,mismatches,mismatching
 misplay#defensive-error	oewn-misplay__1.04.00..	misplay%1:04:00::	oewn-00072888-n	n	Noun	(baseball) a failure of a defensive player to make an out when normal play would have sufficed	0	R	wn30-tag-count	oewn				misplay,misplays
@@ -3522,7 +3522,7 @@ nod#communicate	oewn-nod__2.32.00..	nod%2:32:00::	oewn-00899973-v	v	Verb	lower a
 nod#sleepy-nod	oewn-nod__2.29.03..	nod%2:29:03::	oewn-00016695-v	v	Verb	let the head fall forward through drowsiness	1	U	wn30-tag-count	oewn				nod,nodded,nodding,nods
 nod#drowse	oewn-nod__2.29.02..	nod%2:29:02::	oewn-00016566-v	v	Verb	be almost asleep	0	R	wn30-tag-count	oewn				nod,nodded,nodding,nods
 nod#sway	oewn-nod__2.38.00..	nod%2:38:00::	oewn-01881778-v	v	Verb	sway gently back and forth, as in a nodding motion	0	R	wn30-tag-count	oewn				nod,nodded,nodding,nods
-nominate#nominated	dema-nominate-a-1		dema-syn-nominate-a-1	a	Adjective	adjective		U	project sense: tier to be set	project				nominate
+nominate#nominated	dema-nominate-a-1		dema-syn-nominate-a-1	a	Adjective	bearing the same name as the larger taxon and containing its name-bearing type (taxonomy)		U	project sense: tier to be set	project				nominate
 nominate#candidate	oewn-nominate__2.32.00..	nominate%2:32:00::	oewn-00881061-v	v	Verb	propose as a candidate for some honor	4	U	wn30-tag-count	oewn	nominate#candidate-nomination	near-identical glosses		nominate,nominated,nominates,nominating
 nominate#appoint-role	oewn-nominate__2.41.00..	nominate%2:41:00::	oewn-02401347-v	v	Verb	create and charge with a task or function	0	R	wn30-tag-count	oewn	nominate#role-assignment	near-identical glosses		nominate,nominated,nominates,nominating
 nominate#assign-role	oewn-nominate__2.41.01..	nominate%2:41:01::	oewn-02401858-v	v	Verb	charge with a function; charge to be	0	R	wn30-tag-count	oewn	nominate#role-assignment	near-identical glosses	D	nominate,nominated,nominates,nominating
@@ -3564,7 +3564,7 @@ obligate#condition-bound	oewn-obligate__3.00.00..	obligate%3:00:00::	oewn-016218
 obligate#bind	oewn-obligate__2.32.00..	obligate%2:32:00::	oewn-00886738-v	v	Verb	bind by an obligation; cause to be indebted	0	R	wn30-tag-count	oewn				obligate,obligated,obligates,obligating
 obligate#commit	oewn-obligate__2.40.00..	obligate%2:40:00::	oewn-02353178-v	v	Verb	commit in order to fulfill an obligation	0	R	wn30-tag-count	oewn				obligate,obligated,obligates,obligating
 obligate#compel	oewn-obligate__2.41.00..	obligate%2:41:00::	oewn-02512195-v	v	Verb	force somebody to do something	0	R	wn30-tag-count	oewn				obligate,obligated,obligates,obligating
-obverse#front-facing	dema-obverse-a-1		dema-syn-obverse-a-1	a	Adjective	adjective		U	project sense: tier to be set	project				obverse
+obverse#front-facing	dema-obverse-a-1		dema-syn-obverse-a-1	a	Adjective	having the narrower end at the base, as an inverted cone or egg-shaped leaf		U	project sense: tier to be set	project				obverse
 obverse#alternative	oewn-obverse__1.09.00..	obverse%1:09:00::	oewn-05799319-n	n	Noun	the more conspicuous of two alternatives or cases or sides	1	U	wn30-tag-count	oewn				obverse,obverses
 obverse#side	oewn-obverse__1.06.00..	obverse%1:06:00::	oewn-03846027-n	n	Noun	the side of a coin or medal bearing the principal stamp or design	0	R	wn30-tag-count	oewn				obverse,obverses
 occasion#juncture	oewn-occasion__1.11.00..	occasion%1:11:00::	oewn-07431314-n	n	Noun	an event that occurs at a critical time	14	C	wn30-tag-count	oewn				occasion,occasioning,occasions
@@ -3601,7 +3601,7 @@ offset#create	oewn-offset__2.36.01..	offset%2:36:01::	oewn-01750893-v	v	Verb	cre
 offset#impress	oewn-offset__2.36.00..	offset%2:36:00::	oewn-01750748-v	v	Verb	produce by offset printing	0	R	wn30-tag-count	oewn				offset,offsets,offsetting
 offset#transfer	oewn-offset__2.40.01..	offset%2:40:01::	oewn-02236826-v	v	Verb	cause (printed matter) to transfer or smear onto another surface	0	R	wn30-tag-count	oewn				offset,offsets,offsetting
 opiate#opium-drug	oewn-opiate__1.06.00..	opiate%1:06:00::	oewn-03856266-n	n	Noun	a narcotic drug that contains opium or an opium derivative	0	R	wn30-tag-count	oewn				opiate,opiates
-opiate#use-opiates	dema-opiate-v-1		dema-syn-opiate-v-1	v	Verb	verb		U	project sense: tier to be set	project			R	opiate,opiated,opiates,opiating
+opiate#use-opiates	dema-opiate-v-1		dema-syn-opiate-v-1	v	Verb	sedate with an opium-based drug or lull into an unresponsive state		U	project sense: tier to be set	project			R	opiate,opiated,opiates,opiating
 orbit#celestial-orbit	oewn-orbit__1.15.00..	orbit%1:15:00::	oewn-08629606-n	n	Noun	the (usually elliptical) path described by one celestial body in its revolution about another	11	C	wn30-tag-count	oewn				orbit,orbiting,orbits,orbitting
 orbit#ambit	oewn-orbit__1.07.00..	orbit%1:07:00::	oewn-05132642-n	n	Noun	an area in which something acts or operates or has power or control:	1	U	wn30-tag-count	oewn				orbit,orbiting,orbits,orbitting
 orbit#area	oewn-orbit__1.26.00..	orbit%1:26:00::	oewn-14537641-n	n	Noun	a particular environment or walk of life	1	U	wn30-tag-count	oewn				orbit,orbiting,orbits,orbitting
@@ -3620,10 +3620,10 @@ ornament#enhance	oewn-ornament__2.42.00..	ornament%2:42:00::	oewn-02755122-v	v	V
 outgo#expenditure	oewn-outgo__1.21.00..	outgo%1:21:00::	oewn-13296311-n	n	Noun	money paid out; an amount spent	0	R	wn30-tag-count	oewn				outgo,outgoes,outgos
 outgo#exceed	oewn-outgo__2.33.00..	outgo%2:33:00::	oewn-01108050-v	v	Verb	be or do something to a greater degree	0	R	wn30-tag-count	oewn				outgo,outgoes,outgoing,outgone,outwent
 outreach#reaching-out	oewn-outreach__1.04.00..	outreach%1:04:00::	oewn-00349779-n	n	Noun	the act of reaching out	5	C	wn30-tag-count	oewn				outreach,outreaches
-outreach#reach-beyond	dema-outreach-v-1		dema-syn-outreach-v-1	v	Verb	verb		U	project sense: tier to be set	project				outreach,outreached,outreaches,outreaching
+outreach#reach-beyond	dema-outreach-v-1		dema-syn-outreach-v-1	v	Verb	reach beyond an existing group to contact people or offer help and services		U	project sense: tier to be set	project				outreach,outreached,outreaches,outreaching
 overall#general	oewn-overall__5.00.00.general.00	overall%5:00:00:general:00	oewn-01106144-s	s	Adjective	involving only main features	9	C	wn30-tag-count	oewn				overall
 overall#comprehensive	oewn-overall__5.00.00.gross.00	overall%5:00:00:gross:00	oewn-01587354-s	s	Adjective	including everything	8	C	wn30-tag-count	oewn				overall
-overall#generally	dema-overall-r-1		dema-syn-overall-r-1	r	Adverb	adverb		U	project sense: tier to be set	project				overall
+overall#generally	dema-overall-r-1		dema-syn-overall-r-1	r	Adverb	taking everything into account; on the whole		U	project sense: tier to be set	project				overall
 overall#work-clothes	oewn-overall__1.06.00..	overall%1:06:00::	oewn-03868628-n	n	Noun	(usually plural) work clothing consisting of denim trousers (usually with a bib and shoulder straps)	4	U	wn30-tag-count	oewn				overall,overalls
 overall#protective-coveralls	oewn-overall__1.06.02..	overall%1:06:02::	oewn-03868782-n	n	Noun	a loose protective coverall or smock worn over ordinary clothing for dirty work	0	R	wn30-tag-count	oewn				overall,overalls
 overbid#higher-bid	oewn-overbid__1.10.00..	overbid%1:10:00::	oewn-07179949-n	n	Noun	a bid that is higher than preceding bids	0	R	wn30-tag-count	oewn				overbid,overbids
@@ -3635,17 +3635,17 @@ overburden#overload	oewn-overburden__1.06.00..	overburden%1:06:00::	oewn-0387053
 overburden#burden	oewn-overburden__2.32.00..	overburden%2:32:00::	oewn-00752848-v	v	Verb	burden with too much work or responsibility	1	U	wn30-tag-count	oewn				overburden,overburdened,overburdening,overburdens
 overburden#weight-load	oewn-overburden__2.35.00..	overburden%2:35:00::	oewn-01490344-v	v	Verb	load with excessive weight	0	R	wn30-tag-count	oewn				overburden,overburdened,overburdening,overburdens
 overcall#bridge-overcall	oewn-overcall__1.10.00..	overcall%1:10:00::	oewn-06750507-n	n	Noun	(bridge) a bid that is higher than your opponent's bid (especially when your partner has not bid at all and your bid exceeds the value of your hand)	0	R	wn30-tag-count	oewn			R	overcall,overcalls
-overcall#bid-over	dema-overcall-v-1		dema-syn-overcall-v-1	v	Verb	verb		U	project sense: tier to be set	project				overcall,overcalled,overcalling,overcalls
+overcall#bid-over	dema-overcall-v-1		dema-syn-overcall-v-1	v	Verb	make a bid higher than an opponent's preceding bid (bridge)		U	project sense: tier to be set	project				overcall,overcalled,overcalling,overcalls
 overcharge#excessive-price	oewn-overcharge__1.21.00..	overcharge%1:21:00::	oewn-13328806-n	n	Noun	a price that is too high	0	R	wn30-tag-count	oewn				overcharge,overcharges
 overcharge#fleece	oewn-overcharge__2.40.00..	overcharge%2:40:00::	oewn-02324030-v	v	Verb	rip off; ask an unreasonable price	0	R	wn30-tag-count	oewn				overcharge,overcharged,overcharges,overcharging
 overcharge#overload	oewn-overcharge__2.35.00..	overcharge%2:35:00::	oewn-01491184-v	v	Verb	place too much a load on	0	R	wn30-tag-count	oewn				overcharge,overcharged,overcharges,overcharging
-overdose#excessive-dose	dema-overdose-n-1		dema-syn-overdose-n-1	n	Noun	noun		U	project sense: tier to be set	project				overdose,overdoses
+overdose#excessive-dose	dema-overdose-n-1		dema-syn-overdose-n-1	n	Noun	an amount of a drug or other substance exceeding a safe or recommended dose		U	project sense: tier to be set	project				overdose,overdoses
 overdose#dose-excessively	oewn-overdose__2.29.00..	overdose%2:29:00::	oewn-00085106-v	v	Verb	dose too heavily	0	R	wn30-tag-count	oewn				overdose,overdosed,overdoses,overdosing
-overdress#excessive-attire	dema-overdress-n-1		dema-syn-overdress-n-1	n	Noun	noun		U	project sense: tier to be set	project				overdress,overdresses
+overdress#excessive-attire	dema-overdress-n-1		dema-syn-overdress-n-1	n	Noun	clothing that is more elaborate, formal, or abundant than the occasion requires		U	project sense: tier to be set	project				overdress,overdresses
 overdress#attire	oewn-overdress__2.29.00..	overdress%2:29:00::	oewn-00043880-v	v	Verb	put on special clothes to appear particularly appealing and attractive	0	R	wn30-tag-count	oewn				overdress,overdressed,overdresses,overdressing
 overdress#overclothe	oewn-overdress__2.29.01..	overdress%2:29:01::	oewn-00049026-v	v	Verb	dress too warmly	0	R	wn30-tag-count	oewn				overdress,overdressed,overdresses,overdressing
-overdub#dubbed-recording	dema-overdub-n-1		dema-syn-overdub-n-1	n	Noun	noun		U	project sense: tier to be set	project				overdub,overdubs
-overdub#add-dubbing	dema-overdub-v-1		dema-syn-overdub-v-1	v	Verb	verb		U	project sense: tier to be set	project				overdub,overdubbed,overdubbing,overdubs
+overdub#dubbed-recording	dema-overdub-n-1		dema-syn-overdub-n-1	n	Noun	a recorded sound or performance added to an existing recording		U	project sense: tier to be set	project				overdub,overdubs
+overdub#add-dubbing	dema-overdub-v-1		dema-syn-overdub-v-1	v	Verb	record additional sound onto an existing recording		U	project sense: tier to be set	project				overdub,overdubbed,overdubbing,overdubs
 overestimate#overappraisal	oewn-overestimate__1.10.00..	overestimate%1:10:00::	oewn-06540983-n	n	Noun	an appraisal that is too high	0	R	wn30-tag-count	oewn				overestimate,overestimates
 overestimate#overestimation	oewn-overestimate__1.09.00..	overestimate%1:09:00::	oewn-05812282-n	n	Noun	a calculation that results in an estimate that is too high	0	R	wn30-tag-count	oewn				overestimate,overestimates
 overestimate#overrate	oewn-overestimate__2.31.00..	overestimate%2:31:00::	oewn-00673936-v	v	Verb	make too high an estimate of	1	U	wn30-tag-count	oewn				overestimate,overestimated,overestimates,overestimating
@@ -3691,7 +3691,7 @@ overlook#drop	oewn-overlook__2.31.00..	overlook%2:31:00::	oewn-00616690-v	v	Verb
 overlook#look-down-on	oewn-overlook__2.42.00..	overlook%2:42:00::	oewn-02701971-v	v	Verb	look down on	0	R	wn30-tag-count	oewn				overlook,overlooked,overlooking,overlooks
 overlook#watch-over	oewn-overlook__2.39.00..	overlook%2:39:00::	oewn-02170692-v	v	Verb	watch over	0	R	wn30-tag-count	oewn				overlook,overlooked,overlooking,overlooks
 overpass#highway-overpass	oewn-overpass__1.06.00..	overpass%1:06:00::	oewn-03871095-n	n	Noun	bridge formed by the upper level of a crossing of two highways at different levels	0	R	wn30-tag-count	oewn				overpass,overpasses
-overpass#pass-over	dema-overpass-v-1		dema-syn-overpass-v-1	v	Verb	verb		U	project sense: tier to be set	project				overpass,overpassed,overpasses,overpassing,overpast
+overpass#pass-over	dema-overpass-v-1		dema-syn-overpass-v-1	v	Verb	go past or beyond a point, limit, or level (rare)		U	project sense: tier to be set	project				overpass,overpassed,overpasses,overpassing,overpast
 overprint#additional-print	oewn-overprint__1.06.00..	overprint%1:06:00::	oewn-03871382-n	n	Noun	something added by overprinting	0	R	wn30-tag-count	oewn				overprint,overprints
 overprint#print-over	oewn-overprint__2.36.00..	overprint%2:36:00::	oewn-01752081-v	v	Verb	print (additional text or colors) onto an already imprinted paper	0	R	wn30-tag-count	oewn				overprint,overprinted,overprinting,overprints
 override#device	oewn-override__1.06.00..	override%1:06:00::	oewn-03871498-n	n	Noun	a manually operated device to correct the operation of an automatic device	0	R	wn30-tag-count	oewn				override,overrides
@@ -3709,12 +3709,12 @@ overrun#pass-beyond	oewn-overrun__2.31.03..	overrun%2:31:03::	oewn-00707690-v	v	
 overshoot#failed-approach	oewn-overshoot__1.04.00..	overshoot%1:04:00::	oewn-00282742-n	n	Noun	an approach that fails and gives way to another attempt	0	R	wn30-tag-count	oewn				overshoot,overshoots
 overshoot#aim-too-high	oewn-overshoot__2.31.00..	overshoot%2:31:00::	oewn-00707544-v	v	Verb	aim too high	1	U	wn30-tag-count	oewn				overshoot,overshooting,overshoots,overshot
 overshoot#shoot-past	oewn-overshoot__2.33.00..	overshoot%2:33:00::	oewn-01137645-v	v	Verb	shoot beyond or over (a target)	1	U	wn30-tag-count	oewn				overshoot,overshooting,overshoots,overshot
-overspend#excessive-spending	dema-overspend-n-1		dema-syn-overspend-n-1	n	Noun	noun		U	project sense: tier to be set	project				overspend,overspends
+overspend#excessive-spending	dema-overspend-n-1		dema-syn-overspend-n-1	n	Noun	spending in excess of a budget or the amount available		U	project sense: tier to be set	project				overspend,overspends
 overspend#spend-freely	oewn-overspend__2.40.00..	overspend%2:40:00::	oewn-02271162-v	v	Verb	spend at a high rate	0	R	wn30-tag-count	oewn				overspend,overspending,overspends,overspent
 overspend#exceed-budget	oewn-overspend__2.40.01..	overspend%2:40:01::	oewn-02272572-v	v	Verb	spend more than available of (a budget)	0	R	wn30-tag-count	oewn				overspend,overspending,overspends,overspent
 oversteer#excess-steering	oewn-oversteer__1.07.01..	oversteer%1:07:01::	oewn-92417700-n	n	Noun	when a car turns (steers) by more than (over) the amount commanded by the driver.	0	R	wn30-tag-count	oewn				oversteer,oversteers
-oversteer#turn-too-much	dema-oversteer-v-1		dema-syn-oversteer-v-1	v	Verb	verb		U	project sense: tier to be set	project				oversteer,oversteered,oversteering,oversteers
-overstock#excess-inventory	dema-overstock-n-1		dema-syn-overstock-n-1	n	Noun	noun		U	project sense: tier to be set	project				overstock,overstocks
+oversteer#turn-too-much	dema-oversteer-v-1		dema-syn-oversteer-v-1	v	Verb	steer too sharply, or turn more sharply than intended because the rear tires lose grip		U	project sense: tier to be set	project				oversteer,oversteered,oversteering,oversteers
+overstock#excess-inventory	dema-overstock-n-1		dema-syn-overstock-n-1	n	Noun	a supply of goods greater than is needed or can readily be sold		U	project sense: tier to be set	project				overstock,overstocks
 overstock#stock-excessively	oewn-overstock__2.40.00..	overstock%2:40:00::	oewn-02328600-v	v	Verb	stock excessively	0	R	wn30-tag-count	oewn				overstock,overstocked,overstocking,overstocks
 overthrow#regime-downfall	oewn-overthrow__1.04.01..	overthrow%1:04:01::	oewn-00216550-n	n	Noun	the termination of a ruler or institution (especially by force)	1	U	wn30-tag-count	oewn				overthrow,overthrows
 overthrow#disturbance	oewn-overthrow__1.04.02..	overthrow%1:04:02::	oewn-00555887-n	n	Noun	the act of disturbing the mind or body	0	R	wn30-tag-count	oewn				overthrow,overthrows
@@ -3732,7 +3732,7 @@ overuse#excessive-use	oewn-overuse__1.04.00..	overuse%1:04:00::	oewn-00953544-n	
 overuse#use-excessively	oewn-overuse__2.34.00..	overuse%2:34:00::	oewn-01164011-v	v	Verb	make use of too often or too extensively	0	R	wn30-tag-count	oewn				overuse,overused,overuses,overusing
 overweight#heavyset	oewn-overweight__5.00.00.fat.01	overweight%5:00:00:fat:01	oewn-00990957-s	s	Adjective	usually describes a large person who is fat but has a large frame to carry it	1	U	wn30-tag-count	oewn				overweight
 overweight#excess-weight	oewn-overweight__1.07.00..	overweight%1:07:00::	oewn-05007702-n	n	Noun	the property of excessive fatness	0	R	wn30-tag-count	oewn				overweight,overweights
-overweight#weigh-too-much	dema-overweight-v-1		dema-syn-overweight-v-1	v	Verb	verb		U	project sense: tier to be set	project				overweight,overweighted,overweighting,overweights
+overweight#weigh-too-much	dema-overweight-v-1		dema-syn-overweight-v-1	v	Verb	load with excessive weight or assign disproportionate importance to		U	project sense: tier to be set	project				overweight,overweighted,overweighting,overweights
 overwork#excessive-work	oewn-overwork__1.04.00..	overwork%1:04:00::	oewn-00624610-n	n	Noun	the act of working too much or too long	0	R	wn30-tag-count	oewn				overwork,overworks
 overwork#use-too-much	oewn-overwork__2.36.00..	overwork%2:36:00::	oewn-01673069-v	v	Verb	use too much	1	U	wn30-tag-count	oewn				overwork,overworked,overworking,overworks
 overwork#work-too-hard	oewn-overwork__2.41.00..	overwork%2:41:00::	oewn-02414278-v	v	Verb	work excessively hard	0	R	wn30-tag-count	oewn				overwork,overworked,overworking,overworks
@@ -3746,7 +3746,7 @@ pace#walk	oewn-pace__2.38.00..	pace%2:38:00::	oewn-01933207-v	v	Verb	walk with s
 pace#move-at-pace	oewn-pace__2.38.01..	pace%2:38:01::	oewn-02095432-v	v	Verb	go at a pace	6	C	wn30-tag-count	oewn				pace,paced,paces,pacing
 pace#measure-by-pacing	oewn-pace__2.30.00..	pace%2:30:00::	oewn-00491658-v	v	Verb	measure (distances) by pacing	2	U	wn30-tag-count	oewn				pace,paced,paces,pacing
 pace#set-pace	oewn-pace__2.31.00..	pace%2:31:00::	oewn-00704367-v	v	Verb	regulate or set the pace of	0	R	wn30-tag-count	oewn				pace,paced,paces,pacing
-pace#notwithstanding	dema-pace-p-1		dema-syn-pace-p-1	p	Preposition	The preposition "pace"; a project sense, because Open English WordNet has no preposition sense of this word.		U	project sense: tier to be set	project				pace
+pace#notwithstanding	dema-pace-p-1		dema-syn-pace-p-1	p	Preposition	with due respect to the named person or authority, while disagreeing with their opinion		U	project sense: tier to be set	project				pace
 pack#collection	oewn-pack__1.14.03..	pack%1:14:03::	oewn-07973040-n	n	Noun	a complete collection of similar things	1	U	wn30-tag-count	oewn				pack,packing,packs
 pack#large-quantity	oewn-pack__1.23.00..	pack%1:23:00::	oewn-13797293-n	n	Noun	a large indefinite quantity	1	U	wn30-tag-count	oewn				pack,packing,packs
 pack#package	oewn-pack__1.06.00..	pack%1:06:00::	oewn-03876224-n	n	Noun	a convenient package or parcel (as of cigarettes or film)	1	U	wn30-tag-count	oewn				pack,packing,packs
@@ -3787,7 +3787,7 @@ pardon#formal-release	oewn-pardon__1.04.01..	pardon%1:04:01::	oewn-01251862-n	n	
 pardon#release-warrant	oewn-pardon__1.10.00..	pardon%1:10:00::	oewn-06564630-n	n	Noun	a warrant granting release from punishment for an offense	0	R	wn30-tag-count	oewn				pardon,pardoning,pardonning,pardons
 pardon#excuse	oewn-pardon__2.32.01..	pardon%2:32:01::	oewn-00907805-v	v	Verb	accept an excuse for	2	U	wn30-tag-count	oewn				pardon,pardoned,pardoning,pardons
 pardon#forgive	oewn-pardon__2.32.00..	pardon%2:32:00::	oewn-00907352-v	v	Verb	grant a pardon to	2	U	wn30-tag-count	oewn				pardon,pardoned,pardoning,pardons
-pardon#please-repeat	dema-pardon-i-1		dema-syn-pardon-i-1	i	Interjection	The interjection "pardon"; a project sense, because Open English WordNet has no interjection sense of this word.		U	project sense: tier to be set	project				pardon
+pardon#please-repeat	dema-pardon-i-1		dema-syn-pardon-i-1	i	Interjection	used to ask politely for something to be repeated or clarified		U	project sense: tier to be set	project				pardon
 park#parkland	oewn-park__1.15.00..	park%1:15:00::	oewn-08632724-n	n	Noun	a large area of land preserved in its natural state as public property	13	C	wn30-tag-count	oewn				park,parking,parks
 park#recreation-ground	oewn-park__1.15.01..	park%1:15:01::	oewn-08632949-n	n	Noun	a piece of open land for recreational use in an urban area	5	C	wn30-tag-count	oewn				park,parking,parks
 park#sports-stadium	oewn-park__1.06.00..	park%1:06:00::	oewn-02785801-n	n	Noun	a facility in which ball games are played (especially baseball games)	2	U	wn30-tag-count	oewn				park,parking,parks
@@ -3856,7 +3856,7 @@ pass#inherit	oewn-pass__2.40.13..	pass%2:40:13::	oewn-02234332-v	v	Verb	be inher
 pass#excrete	oewn-pass__2.29.00..	pass%2:29:00::	oewn-00072742-v	v	Verb	eliminate from the body	0	R	wn30-tag-count	oewn				pass,passed,passes,passing
 pass#throw-ball	oewn-pass__2.40.01..	pass%2:40:01::	oewn-02236255-v	v	Verb	throw (a ball) to another player	0	R	wn30-tag-count	oewn				pass,passed,passes,passing
 pass#cause-to-pass	oewn-pass__2.38.04..	pass%2:38:04::	oewn-02056400-v	v	Verb	cause to pass	0	R	wn30-tag-count	oewn				pass,passed,passes,passing
-pass#pass-request	dema-pass-i-1		dema-syn-pass-i-1	i	Interjection	The interjection "pass"; a project sense, because Open English WordNet has no interjection sense of this word.		U	project sense: tier to be set	project				pass
+pass#pass-request	dema-pass-i-1		dema-syn-pass-i-1	i	Interjection	used to decline a turn or answer, or to request the next question		U	project sense: tier to be set	project				pass
 pasty#gluey	oewn-pasty__5.00.00.adhesive.00	pasty%5:00:00:adhesive:00	oewn-00053931-s	s	Adjective	having the sticky properties of an adhesive	1	U	wn30-tag-count	oewn				pastier,pastiest,pasty
 pasty#pale	oewn-pasty__5.00.00.colorless.02	pasty%5:00:00:colorless:02	oewn-00407217-s	s	Adjective	resembling paste in color; pallid	1	U	wn30-tag-count	oewn				pastier,pastiest,pasty
 pasty#meat-pie	oewn-pasty__1.13.00..	pasty%1:13:00::	oewn-07888146-n	n	Noun	small meat pie or turnover	0	R	wn30-tag-count	oewn				pasties,pasty
@@ -4142,7 +4142,7 @@ pop#take-drugs	oewn-pop__2.34.00..	pop%2:34:00::	oewn-01202125-v	v	Verb	take dru
 pop#release	oewn-pop__2.35.07..	pop%2:35:07::	oewn-01477610-v	v	Verb	release suddenly	0	R	wn30-tag-count	oewn				pop,popped,popping,pops
 pop#make-pop	oewn-pop__2.39.06..	pop%2:39:06::	oewn-02190638-v	v	Verb	cause to make a sharp explosive sound	0	R	wn30-tag-count	oewn				pop,popped,popping,pops
 pop#thrust	oewn-pop__2.35.05..	pop%2:35:05::	oewn-01502149-v	v	Verb	put or thrust suddenly and forcefully	0	R	wn30-tag-count	oewn				pop,popped,popping,pops
-pop#exclamation	dema-pop-i-1		dema-syn-pop-i-1	i	Interjection	The interjection "pop"; a project sense, because Open English WordNet has no interjection sense of this word.		U	project sense: tier to be set	project				pop
+pop#exclamation	dema-pop-i-1		dema-syn-pop-i-1	i	Interjection	used to imitate a short, sharp explosive sound		U	project sense: tier to be set	project				pop
 post#berth	oewn-post__1.04.00..	post%1:04:00::	oewn-00587299-n	n	Noun	a job in an organization	3	U	wn30-tag-count	oewn				post,posting,posts
 post#military-post	oewn-post__1.06.01..	post%1:06:01::	oewn-03768938-n	n	Noun	military installation at which a body of troops is stationed	3	U	wn30-tag-count	oewn				post,posting,posts
 post#station	oewn-post__1.15.00..	post%1:15:00::	oewn-08641960-n	n	Noun	the position where someone (as a guard or sentry) stands or is assigned to stand	3	U	wn30-tag-count	oewn				post,posting,posts
@@ -4166,7 +4166,7 @@ post#display	oewn-post__2.35.00..	post%2:35:00::	oewn-01573231-v	v	Verb	place so
 post#ride-western	oewn-post__2.38.04..	post%2:38:04::	oewn-01963964-v	v	Verb	ride Western style and bob up and down in the saddle in rhythm with a horse's trotting gait	0	R	wn30-tag-count	oewn			R	post,posted,posting,posts
 post#mark-with-stake	oewn-post__2.35.01..	post%2:35:01::	oewn-01594397-v	v	Verb	mark with a stake	0	R	wn30-tag-count	oewn				post,posted,posting,posts
 postfix#suffix	oewn-postfix__1.10.00..	postfix%1:10:00::	oewn-06319977-n	n	Noun	an affix that is added at the end of the word	0	R	wn30-tag-count	oewn				postfix,postfixes
-postfix#append-suffix	dema-postfix-v-1		dema-syn-postfix-v-1	v	Verb	verb		U	project sense: tier to be set	project				postfix,postfixed,postfixes,postfixing
+postfix#append-suffix	dema-postfix-v-1		dema-syn-postfix-v-1	v	Verb	add a letter, word, or other element to the end of something		U	project sense: tier to be set	project				postfix,postfixed,postfixes,postfixing
 postulate#assumption	oewn-postulate__1.10.00..	postulate%1:10:00::	oewn-06766013-n	n	Noun	(logic) a proposition that is accepted as true in order to provide a basis for logical reasoning	1	U	wn30-tag-count	oewn				postulate,postulates
 postulate#contend	oewn-postulate__2.32.00..	postulate%2:32:00::	oewn-00758943-v	v	Verb	maintain or assert	3	U	wn30-tag-count	oewn				postulate,postulated,postulates,postulating
 postulate#posit	oewn-postulate__2.31.00..	postulate%2:31:00::	oewn-00718663-v	v	Verb	take as a given; assume as a postulate or axiom	1	U	wn30-tag-count	oewn				postulate,postulated,postulates,postulating
@@ -4200,14 +4200,14 @@ predicate#grammatical-predicate	oewn-predicate__1.10.00..	predicate%1:10:00::	oe
 predicate#entail	oewn-predicate__2.32.01..	predicate%2:32:01::	oewn-00933194-v	v	Verb	involve as a necessary condition of consequence; as in logic	0	R	wn30-tag-count	oewn				predicate,predicated,predicates,predicating
 predicate#attribute	oewn-predicate__2.32.00..	predicate%2:32:00::	oewn-01019010-v	v	Verb	affirm or declare as an attribute or quality of	0	R	wn30-tag-count	oewn				predicate,predicated,predicates,predicating
 predicate#form-predicate	oewn-predicate__2.32.02..	predicate%2:32:02::	oewn-01019231-v	v	Verb	make the (grammatical) predicate in a proposition	0	R	wn30-tag-count	oewn				predicate,predicated,predicates,predicating
-prefetch#prefetch-operation	dema-prefetch-n-1		dema-syn-prefetch-n-1	n	Noun	noun		U	project sense: tier to be set	project			R	prefetch,prefetches
-prefetch#fetch-ahead	dema-prefetch-v-1		dema-syn-prefetch-v-1	v	Verb	verb		U	project sense: tier to be set	project			R	prefetch,prefetched,prefetches,prefetching
+prefetch#prefetch-operation	dema-prefetch-n-1		dema-syn-prefetch-n-1	n	Noun	an operation that retrieves data or instructions before they are needed (computing)		U	project sense: tier to be set	project			R	prefetch,prefetches
+prefetch#fetch-ahead	dema-prefetch-v-1		dema-syn-prefetch-v-1	v	Verb	retrieve data or instructions before they are needed (computing)		U	project sense: tier to be set	project			R	prefetch,prefetched,prefetches,prefetching
 prefix#prefix-affix	oewn-prefix__1.10.00..	prefix%1:10:00::	oewn-06319294-n	n	Noun	an affix that is added in front of the word	1	U	wn30-tag-count	oewn				prefix,prefixes
 prefix#attach-prefix	oewn-prefix__2.35.00..	prefix%2:35:00::	oewn-01300547-v	v	Verb	attach a prefix to	0	R	wn30-tag-count	oewn				prefix,prefixed,prefixes,prefixing
-preload#preload-operation	dema-preload-n-1		dema-syn-preload-n-1	n	Noun	noun		U	project sense: tier to be set	project			R	preload,preloads
-preload#load-ahead	dema-preload-v-1		dema-syn-preload-v-1	v	Verb	verb		U	project sense: tier to be set	project			R	preload,preloaded,preloading,preloads
+preload#preload-operation	dema-preload-n-1		dema-syn-preload-n-1	n	Noun	an initial force applied to a component before its normal working load		U	project sense: tier to be set	project			R	preload,preloads
+preload#load-ahead	dema-preload-v-1		dema-syn-preload-v-1	v	Verb	apply an initial load to a component, or load data before it is needed		U	project sense: tier to be set	project			R	preload,preloaded,preloading,preloads
 premix#dry-mixture	oewn-premix__1.13.00..	premix%1:13:00::	oewn-07898861-n	n	Noun	a commercially prepared mixture of dry ingredients	3	U	wn30-tag-count	oewn				premix,premixes
-premix#mix-ahead	dema-premix-v-1		dema-syn-premix-v-1	v	Verb	verb		U	project sense: tier to be set	project				premix,premixed,premixes,premixing
+premix#mix-ahead	dema-premix-v-1		dema-syn-premix-v-1	v	Verb	mix ingredients in advance of their use		U	project sense: tier to be set	project				premix,premixed,premixes,premixing
 present#current	oewn-present__3.00.01..	present%3:00:01::	oewn-01735600-a	a	Adjective	temporal sense; intermediate between past and future; now existing or happening or in consideration	60	C	wn30-tag-count	oewn				present,presenter
 present#located-here	oewn-present__3.00.02..	present%3:00:02::	oewn-01852337-a	a	Adjective	being or existing in a specified place	39	C	wn30-tag-count	oewn				present,presenter
 present#present-time	oewn-present__1.28.00..	present%1:28:00::	oewn-15144478-n	n	Noun	the period of time that is happening now; any continuous stretch of time including the moment of speech	17	C	wn30-tag-count	oewn				present,presents
@@ -4374,23 +4374,23 @@ push#sell-illegal-goods	oewn-push__2.40.00..	push%2:40:00::	oewn-02250337-v	v	Ve
 push#move-strenuously	oewn-push__2.38.08..	push%2:38:08::	oewn-01876870-v	v	Verb	move strenuously and with effort	0	R	wn30-tag-count	oewn				push,pushed,pushes,pushing
 push#childbirth-push	oewn-push__2.35.06..	push%2:35:06::	oewn-01450251-v	v	Verb	make strenuous pushing movements during birth to expel the baby	0	R	wn30-tag-count	oewn				push,pushed,pushes,pushing
 pustulate#blemished-skin	oewn-pustulate__5.00.00.blemished.00	pustulate%5:00:00:blemished:00	oewn-00247031-s	s	Adjective	(of complexion) blemished by imperfections of the skin	0	R	wn30-tag-count	oewn				pustulate
-pustulate#form-pustules	dema-pustulate-v-1		dema-syn-pustulate-v-1	v	Verb	verb		U	project sense: tier to be set	project			R	pustulate,pustulated,pustulates,pustulating
+pustulate#form-pustules	dema-pustulate-v-1		dema-syn-pustulate-v-1	v	Verb	develop or cause to develop small pus-filled swellings		U	project sense: tier to be set	project			R	pustulate,pustulated,pustulates,pustulating
 quadrate#four-sided	oewn-quadrate__5.00.00.square.00	quadrate%5:00:00:square:00	oewn-02050919-s	s	Adjective	having four sides and four angles	0	R	wn30-tag-count	oewn				quadrate
 quadrate#cube	oewn-quadrate__1.25.02..	quadrate%1:25:02::	oewn-13940055-n	n	Noun	a cubelike object	0	R	wn30-tag-count	oewn				quadrate,quadrates
 quadrate#square-object	oewn-quadrate__1.25.01..	quadrate%1:25:01::	oewn-13901688-n	n	Noun	a square-shaped object	0	R	wn30-tag-count	oewn				quadrate,quadrates
-quadrate#make-square	dema-quadrate-v-1		dema-syn-quadrate-v-1	v	Verb	verb		U	project sense: tier to be set	project			R	quadrate,quadrated,quadrates,quadrating
+quadrate#make-square	dema-quadrate-v-1		dema-syn-quadrate-v-1	v	Verb	make square or bring into agreement; correspond or agree (rare)		U	project sense: tier to be set	project			R	quadrate,quadrated,quadrates,quadrating
 quadruplicate#fourfold	oewn-quadruplicate__5.00.00.multiple.00	quadruplicate%5:00:00:multiple:00	oewn-02227145-s	s	Adjective	having four units or components	0	R	wn30-tag-count	oewn				quadruplicate
 quadruplicate#four-copies	oewn-quadruplicate__1.06.00..	quadruplicate%1:06:00::	oewn-04037642-n	n	Noun	any four copies; any of four things that correspond to one another exactly	0	R	wn30-tag-count	oewn				quadruplicate
 quadruplicate#copy-four-times	oewn-quadruplicate__2.36.00..	quadruplicate%2:36:00::	oewn-01739828-v	v	Verb	reproduce fourfold	0	R	wn30-tag-count	oewn				quadruplicate,quadruplicated,quadruplicates,quadruplicating
-quintuplicate#fivefold	dema-quintuplicate-a-1		dema-syn-quintuplicate-a-1	a	Adjective	adjective		U	project sense: tier to be set	project			R	quintuplicate
-quintuplicate#make-five-copies	dema-quintuplicate-v-1		dema-syn-quintuplicate-v-1	v	Verb	verb		U	project sense: tier to be set	project			R	quintuplicate,quintuplicated,quintuplicates,quintuplicating
+quintuplicate#fivefold	dema-quintuplicate-a-1		dema-syn-quintuplicate-a-1	a	Adjective	existing in five identical copies or consisting of five corresponding parts		U	project sense: tier to be set	project			R	quintuplicate
+quintuplicate#make-five-copies	dema-quintuplicate-v-1		dema-syn-quintuplicate-v-1	v	Verb	make five identical copies of something		U	project sense: tier to be set	project			R	quintuplicate,quintuplicated,quintuplicates,quintuplicating
 quote#quotation	oewn-quote__1.10.01..	quote%1:10:01::	oewn-06625409-n	n	Noun	a passage or expression that is quoted or cited	0	R	wn30-tag-count	oewn				quote,quotes,quoting
 quote#quotation-mark	oewn-quote__1.10.00..	quote%1:10:00::	oewn-06857249-n	n	Noun	a punctuation mark used to attribute the enclosed text to someone else	0	R	wn30-tag-count	oewn				quote,quotes,quoting
 quote#quote-passage	oewn-quote__2.32.00..	quote%2:32:00::	oewn-01025268-v	v	Verb	repeat a passage from	30	C	wn30-tag-count	oewn				quote,quoted,quotes,quoting
 quote#cite-as-example	oewn-quote__2.32.02..	quote%2:32:02::	oewn-01025583-v	v	Verb	refer to for illustration or proof	0	R	wn30-tag-count	oewn				quote,quoted,quotes,quoting
 quote#state-price	oewn-quote__2.32.13..	quote%2:32:13::	oewn-01025934-v	v	Verb	name the price of	0	R	wn30-tag-count	oewn				quote,quoted,quotes,quoting
 quote#add-quotation-marks	oewn-quote__2.32.07..	quote%2:32:07::	oewn-01006448-v	v	Verb	put quote marks around	0	R	wn30-tag-count	oewn				quote,quoted,quotes,quoting
-quote#quote-interjection	dema-quote-i-1		dema-syn-quote-i-1	i	Interjection	The interjection "quote"; a project sense, because Open English WordNet has no interjection sense of this word.		U	project sense: tier to be set	project				quote
+quote#quote-interjection	dema-quote-i-1		dema-syn-quote-i-1	i	Interjection	used in speech to mark the beginning of a quotation or a word being cited		U	project sense: tier to be set	project				quote
 rack#rib-section	oewn-rack__1.13.00..	rack%1:13:00::	oewn-07683818-n	n	Noun	rib section of a forequarter of veal or pork or especially lamb or mutton	0	R	wn30-tag-count	oewn				rack,racking,racks
 rack#horse-rack-gait	oewn-rack__1.04.00..	rack%1:04:00::	oewn-00288120-n	n	Noun	a rapid gait of a horse in which each foot strikes the ground separately	0	R	wn30-tag-count	oewn			R	rack,racking,racks
 rack#storage-rack	oewn-rack__1.06.00..	rack%1:06:00::	oewn-04044916-n	n	Noun	a support for displaying or holding various articles	0	R	wn30-tag-count	oewn				rack,racking,racks
@@ -4492,12 +4492,12 @@ rebel#armed-rebel	oewn-rebel__1.18.00..	rebel%1:18:00::	oewn-10229738-n	n	Noun	a
 rebel#maverick	oewn-rebel__1.18.01..	rebel%1:18:01::	oewn-10323321-n	n	Noun	someone who exhibits great independence in thought and action	1	U	wn30-tag-count	oewn				Rebel,Rebels,rebel,rebels
 rebel#join-rebellion	oewn-rebel__2.41.00..	rebel%2:41:00::	oewn-02589224-v	v	Verb	take part in a rebellion; renounce a former allegiance	5	C	wn30-tag-count	oewn				Rebel,Rebels,rebel,rebelled,rebelling,rebels
 rebel#break-customs	oewn-rebel__2.41.01..	rebel%2:41:01::	oewn-02589464-v	v	Verb	break with established customs	2	U	wn30-tag-count	oewn			R	Rebel,Rebels,rebel,rebelled,rebelling,rebels
-rebid#second-bid	dema-rebid-n-1		dema-syn-rebid-n-1	n	Noun	noun		U	project sense: tier to be set	project			R	rebid,rebids
-rebid#bid-again	dema-rebid-v-1		dema-syn-rebid-v-1	v	Verb	verb		U	project sense: tier to be set	project			R	rebid,rebidding,rebids
-reboot#system-restart	dema-reboot-n-1		dema-syn-reboot-n-1	n	Noun	noun		U	project sense: tier to be set	project				reboot,reboots
+rebid#second-bid	dema-rebid-n-1		dema-syn-rebid-n-1	n	Noun	a second or repeated bid or bidding process		U	project sense: tier to be set	project			R	rebid,rebids
+rebid#bid-again	dema-rebid-v-1		dema-syn-rebid-v-1	v	Verb	submit a bid again or offer a project for bidding again		U	project sense: tier to be set	project			R	rebid,rebidding,rebids
+reboot#system-restart	dema-reboot-n-1		dema-syn-reboot-n-1	n	Noun	a restart of a computer or its operating system		U	project sense: tier to be set	project				reboot,reboots
 reboot#restart-system	oewn-reboot__2.29.00..	reboot%2:29:00::	oewn-00098100-v	v	Verb	cause to load (an operating system) and start the initial processes	0	R	wn30-tag-count	oewn				reboot,rebooted,rebooting,reboots
-rebore#rebore-operation	dema-rebore-n-1		dema-syn-rebore-n-1	n	Noun	noun		U	project sense: tier to be set	project			R	rebore,rebores
-rebore#bore-again	dema-rebore-v-1		dema-syn-rebore-v-1	v	Verb	verb		U	project sense: tier to be set	project			R	rebore,rebored,rebores,reboring
+rebore#rebore-operation	dema-rebore-n-1		dema-syn-rebore-n-1	n	Noun	an operation that enlarges or restores the bore of a cylinder or barrel		U	project sense: tier to be set	project			R	rebore,rebores
+rebore#bore-again	dema-rebore-v-1		dema-syn-rebore-v-1	v	Verb	bore a hole or cylinder again, usually to enlarge or restore its interior		U	project sense: tier to be set	project			R	rebore,rebored,rebores,reboring
 recall#official-removal	oewn-recall__1.04.01..	recall%1:04:01::	oewn-01261399-n	n	Noun	the act of removing an official by petition	0	R	wn30-tag-count	oewn			R	recall,recalls
 recall#bugle-return	oewn-recall__1.10.01..	recall%1:10:01::	oewn-06817246-n	n	Noun	a bugle call that signals troops to return	0	R	wn30-tag-count	oewn				recall,recalls
 recall#return-call	oewn-recall__1.10.00..	recall%1:10:00::	oewn-07205500-n	n	Noun	a call to return	0	R	wn30-tag-count	oewn			D	recall,recalls
@@ -4521,7 +4521,7 @@ recess#niche	oewn-recess__1.06.00..	recess%1:06:00::	oewn-04069081-n	n	Noun	an e
 recess#set-in-recess	oewn-recess__2.35.01..	recess%2:35:01::	oewn-01501511-v	v	Verb	put into a recess	2	U	wn30-tag-count	oewn				recess,recessed,recesses,recessing
 recess#adjourn	oewn-recess__2.30.00..	recess%2:30:00::	oewn-00364950-v	v	Verb	close at the end of a session	0	R	wn30-tag-count	oewn				recess,recessed,recesses,recessing
 recess#indent	oewn-recess__2.35.00..	recess%2:35:00::	oewn-01279869-v	v	Verb	make a recess in	0	R	wn30-tag-count	oewn				recess,recessed,recesses,recessing
-recharge#recharging	dema-recharge-n-1		dema-syn-recharge-n-1	n	Noun	noun		U	project sense: tier to be set	project				recharge,recharges
+recharge#recharging	dema-recharge-n-1		dema-syn-recharge-n-1	n	Noun	the replenishment of stored electrical energy in a battery		U	project sense: tier to be set	project				recharge,recharges
 recharge#charge-anew	oewn-recharge__2.30.00..	recharge%2:30:00::	oewn-00519368-v	v	Verb	charge anew	0	R	wn30-tag-count	oewn				recharge,recharged,recharges,recharging
 recharge#reload	oewn-recharge__2.35.00..	recharge%2:35:00::	oewn-01493229-v	v	Verb	load anew	0	R	wn30-tag-count	oewn				recharge,recharged,recharges,recharging
 recoil#backlash	oewn-recoil__1.11.00..	recoil%1:11:00::	oewn-07364792-n	n	Noun	a movement back from an impact	0	R	wn30-tag-count	oewn				recoil,recoils
@@ -4548,15 +4548,15 @@ recreate#copy	oewn-recreate__2.36.06..	recreate%2:36:06::	oewn-01697776-v	v	Verb
 recreate#play	oewn-recreate__2.41.00..	recreate%2:41:00::	oewn-02423521-v	v	Verb	engage in recreational activities rather than work; occupy oneself in a diversion	0	R	wn30-tag-count	oewn				recreate,recreated,recreates,recreating
 recreate#imagine-again	oewn-recreate__2.31.01..	recreate%2:31:01::	oewn-00738804-v	v	Verb	form anew in the imagination; recollect and re-form in the mind	0	R	wn30-tag-count	oewn				recreate,recreated,recreates,recreating
 recreate#make-again	oewn-recreate__2.36.05..	recreate%2:36:05::	oewn-01622373-v	v	Verb	produce or make another of	0	R	wn30-tag-count	oewn				recreate,recreated,recreates,recreating
-redial#redial-action	dema-redial-n-1		dema-syn-redial-n-1	n	Noun	noun		U	project sense: tier to be set	project			R	redial,redials
-redial#dial-again	dema-redial-v-1		dema-syn-redial-v-1	v	Verb	verb		U	project sense: tier to be set	project			R	redial,redialed,redialing,redialled,redialling,redials
-redirect#redirection	dema-redirect-n-1		dema-syn-redirect-n-1	n	Noun	noun		U	project sense: tier to be set	project				redirect,redirects
+redial#redial-action	dema-redial-n-1		dema-syn-redial-n-1	n	Noun	the act or function of dialing a telephone number again		U	project sense: tier to be set	project			R	redial,redials
+redial#dial-again	dema-redial-v-1		dema-syn-redial-v-1	v	Verb	dial a telephone number again		U	project sense: tier to be set	project			R	redial,redialed,redialing,redialled,redialling,redials
+redirect#redirection	dema-redirect-n-1		dema-syn-redirect-n-1	n	Noun	a rule or response that sends a web request to a different address (computing)		U	project sense: tier to be set	project				redirect,redirects
 redirect#reroute	oewn-redirect__2.38.00..	redirect%2:38:00::	oewn-01957193-v	v	Verb	channel into a new direction	1	U	wn30-tag-count	oewn				redirect,redirected,redirecting,redirects
-redo#redo-action	dema-redo-n-1		dema-syn-redo-n-1	n	Noun	noun		U	project sense: tier to be set	project				redo,redos
+redo#redo-action	dema-redo-n-1		dema-syn-redo-n-1	n	Noun	an act of doing something over, especially to renovate or improve it		U	project sense: tier to be set	project				redo,redos
 redo#makeover	oewn-redo__2.36.00..	redo%2:36:00::	oewn-01622744-v	v	Verb	make new	0	R	wn30-tag-count	oewn				redid,redo,redoes,redoing,redone
 redo#rebuild	oewn-redo__2.30.00..	redo%2:30:00::	oewn-00199854-v	v	Verb	do over, as of (part of) a house	0	R	wn30-tag-count	oewn				redid,redo,redoes,redoing,redone
 redraft#new-draft	oewn-redraft__1.21.00..	redraft%1:21:00::	oewn-13399204-n	n	Noun	a draft for the amount of a dishonored draft plus the costs and charges of drafting again	0	R	wn30-tag-count	oewn				redraft,redrafts
-redraft#draft-again	dema-redraft-v-1		dema-syn-redraft-v-1	v	Verb	verb		U	project sense: tier to be set	project				redraft,redrafted,redrafting,redrafts
+redraft#draft-again	dema-redraft-v-1		dema-syn-redraft-v-1	v	Verb	write a revised version of a document or text		U	project sense: tier to be set	project				redraft,redrafted,redrafting,redrafts
 refill#prescription-refill	oewn-refill__1.06.01..	refill%1:06:01::	oewn-04075373-n	n	Noun	a prescription drug that is provided again	0	R	wn30-tag-count	oewn				refill,refills
 refill#refill-product	oewn-refill__1.06.00..	refill%1:06:00::	oewn-04075167-n	n	Noun	a commercial product that refills a container with its appropriate contents	0	R	wn30-tag-count	oewn				refill,refills
 refill#fill-again	oewn-refill__2.30.00..	refill%2:30:00::	oewn-00454758-v	v	Verb	fill something that had previously been emptied	1	U	wn30-tag-count	oewn				refill,refilled,refilling,refills
@@ -4571,7 +4571,7 @@ reform#crack-molecules	oewn-reform__2.30.01..	reform%2:30:01::	oewn-00266827-v	v
 reform#crack-feedstock	oewn-reform__2.30.02..	reform%2:30:02::	oewn-00266967-v	v	Verb	produce by cracking	0	R	wn30-tag-count	oewn			R	Reformed,reform,reformed,reforming,reforms
 reform#reform-person	oewn-reform__2.30.04..	reform%2:30:04::	oewn-00385291-v	v	Verb	bring, lead, or force to abandon a wrong or evil course of life, conduct, and adopt a right one	0	R	wn30-tag-count	oewn				Reformed,reform,reformed,reforming,reforms
 reform#improve-life	oewn-reform__2.30.03..	reform%2:30:03::	oewn-00167742-v	v	Verb	change for the better	0	R	wn30-tag-count	oewn				Reformed,reform,reformed,reforming,reforms
-refresh#refresh-action	dema-refresh-n-1		dema-syn-refresh-n-1	n	Noun	noun		U	project sense: tier to be set	project				refresh,refreshes
+refresh#refresh-action	dema-refresh-n-1		dema-syn-refresh-n-1	n	Noun	an act of renewing, reviving, or updating something		U	project sense: tier to be set	project				refresh,refreshes
 refresh#refresh-memory	oewn-refresh__2.31.00..	refresh%2:31:00::	oewn-00698618-v	v	Verb	refresh one's memory	0	R	wn30-tag-count	oewn				refresh,refreshed,refreshes,refreshing
 refresh#make-fresh	oewn-refresh__2.29.00..	refresh%2:29:00::	oewn-00024642-v	v	Verb	make fresh again	0	R	wn30-tag-count	oewn	refresh#freshness-change	near-identical glosses		refresh,refreshed,refreshes,refreshing
 refresh#become-fresh	oewn-refresh__2.29.02..	refresh%2:29:02::	oewn-00024807-v	v	Verb	become or make oneself fresh again	0	R	wn30-tag-count	oewn	refresh#freshness-change	near-identical glosses		refresh,refreshed,refreshes,refreshing
@@ -4596,7 +4596,7 @@ regenerate#reform-sinner	oewn-regenerate__2.30.05..	regenerate%2:30:05::	oewn-00
 regenerate#renew-life	oewn-regenerate__2.30.01..	regenerate%2:30:01::	oewn-00168396-v	v	Verb	get or give new life or energy; return to life, regain energy, recuperate	0	R	wn30-tag-count	oewn				regenerate,regenerated,regenerates,regenerating
 regenerate#renew	oewn-regenerate__2.36.00..	regenerate%2:36:00::	oewn-01634614-v	v	Verb	reestablish on a new, usually improved, basis or make new or like new	0	R	wn30-tag-count	oewn				regenerate,regenerated,regenerates,regenerating
 regenerate#restore-strength	oewn-regenerate__2.29.00..	regenerate%2:29:00::	oewn-00097375-v	v	Verb	restore strength	0	R	wn30-tag-count	oewn				regenerate,regenerated,regenerates,regenerating
-regift#regifting	dema-regift-n-1		dema-syn-regift-n-1	n	Noun	noun		U	project sense: tier to be set	project				regift,regifts
+regift#regifting	dema-regift-n-1		dema-syn-regift-n-1	n	Noun	a gift passed on to someone else after being received as a present		U	project sense: tier to be set	project				regift,regifts
 regift#give-again	oewn-regift__2.40.00..	regift%2:40:00::	oewn-02205670-v	v	Verb	give a present that one has received to someone else	0	R	wn30-tag-count	oewn				regift,regifted,regifting,regifts
 regiment#military-unit	oewn-regiment__1.14.00..	regiment%1:14:00::	oewn-08230738-n	n	Noun	army unit smaller than a division, which can be divided into several companies, squadrons, or batteries and often into two battalions.	145	C	wn30-tag-count	oewn				regiment,regiments
 regiment#discipline	oewn-regiment__2.41.02..	regiment%2:41:02::	oewn-02447237-v	v	Verb	subject to rigid discipline, order, and systematization	1	U	wn30-tag-count	oewn				regiment,regimented,regimenting,regiments
@@ -4625,12 +4625,12 @@ regress#regress-to-mean	oewn-regress__2.30.06..	regress%2:30:06::	oewn-00492392-
 regress#relapse-behavior	oewn-regress__2.29.00..	regress%2:29:00::	oewn-00093079-v	v	Verb	go back to bad behavior	0	R	wn30-tag-count	oewn				regress,regressed,regresses,regressing
 regress#worsen	oewn-regress__2.30.00..	regress%2:30:00::	oewn-00250199-v	v	Verb	get worse or fall back to a previous condition	0	R	wn30-tag-count	oewn				regress,regressed,regresses,regressing
 regress#return-to-state	oewn-regress__2.30.01..	regress%2:30:01::	oewn-00387981-v	v	Verb	go back to a previous state	0	R	wn30-tag-count	oewn			R	regress,regressed,regresses,regressing
-rehang#rehanging	dema-rehang-n-1		dema-syn-rehang-n-1	n	Noun	noun		U	project sense: tier to be set	project				rehang,rehangs
-rehang#hang-again	dema-rehang-v-1		dema-syn-rehang-v-1	v	Verb	verb		U	project sense: tier to be set	project				rehang,rehanged,rehanging,rehangs,rehung
+rehang#rehanging	dema-rehang-n-1		dema-syn-rehang-n-1	n	Noun	an act of hanging objects again, especially rearranging paintings in an exhibition		U	project sense: tier to be set	project				rehang,rehangs
+rehang#hang-again	dema-rehang-v-1		dema-syn-rehang-v-1	v	Verb	hang something again, often in a different position or arrangement		U	project sense: tier to be set	project				rehang,rehanged,rehanging,rehangs,rehung
 rehash#rehashed-material	oewn-rehash__1.10.00..	rehash%1:10:00::	oewn-06648284-n	n	Noun	old material that is slightly reworked and used again	0	R	wn30-tag-count	oewn				rehash,rehashes
 rehash#reuse-unchanged	oewn-rehash__2.34.00..	rehash%2:34:00::	oewn-01164945-v	v	Verb	present or use over, with no or few changes	1	U	wn30-tag-count	oewn				rehash,rehashed,rehashes,rehashing
 rehash#review-again	oewn-rehash__2.32.00..	rehash%2:32:00::	oewn-01011124-v	v	Verb	go back over	0	R	wn30-tag-count	oewn				rehash,rehashed,rehashes,rehashing
-reheat#reheating	dema-reheat-n-1		dema-syn-reheat-n-1	n	Noun	noun		U	project sense: tier to be set	project				reheat,reheats
+reheat#reheating	dema-reheat-n-1		dema-syn-reheat-n-1	n	Noun	a further heating of a substance, especially steam or exhaust gases in an engine		U	project sense: tier to be set	project				reheat,reheats
 reheat#heat-again	oewn-reheat__2.30.00..	reheat%2:30:00::	oewn-00545360-v	v	Verb	heat again	0	R	wn30-tag-count	oewn				reheat,reheated,reheating,reheats
 reincarnate#reborn-body	oewn-reincarnate__5.00.00.corporeal.00	reincarnate%5:00:00:corporeal:00	oewn-00633568-s	s	Adjective	having a new body	0	R	wn30-tag-count	oewn				reincarnate
 reincarnate#new-form	oewn-reincarnate__2.30.00..	reincarnate%2:30:00::	oewn-00167460-v	v	Verb	cause to appear in a new form	0	R	wn30-tag-count	oewn				reincarnate,reincarnated,reincarnates,reincarnating
@@ -4646,8 +4646,8 @@ reject#immune-rejection	oewn-reject__2.42.04..	reject%2:42:04::	oewn-02760892-v	
 relapse#relapse-failure	oewn-relapse__1.04.00..	relapse%1:04:00::	oewn-00069153-n	n	Noun	a failure to maintain a higher state	0	R	wn30-tag-count	oewn				relapse,relapses
 relapse#return-bad-behavior	oewn-relapse__2.29.00..	relapse%2:29:00::	oewn-00093079-v	v	Verb	go back to bad behavior	0	R	wn30-tag-count	oewn				relapse,relapsed,relapses,relapsing
 relapse#deteriorate-health	oewn-relapse__2.30.00..	relapse%2:30:00::	oewn-00269051-v	v	Verb	deteriorate in health	0	R	wn30-tag-count	oewn				relapse,relapsed,relapses,relapsing
-relaunch#relaunching	dema-relaunch-n-1		dema-syn-relaunch-n-1	n	Noun	noun		U	project sense: tier to be set	project				relaunch,relaunches
-relaunch#launch-again	dema-relaunch-v-1		dema-syn-relaunch-v-1	v	Verb	verb		U	project sense: tier to be set	project				relaunch,relaunched,relaunches,relaunching
+relaunch#relaunching	dema-relaunch-n-1		dema-syn-relaunch-n-1	n	Noun	a renewed introduction or start of a product, publication, business, or activity		U	project sense: tier to be set	project				relaunch,relaunches
+relaunch#launch-again	dema-relaunch-v-1		dema-syn-relaunch-v-1	v	Verb	start, introduce, or put into operation again		U	project sense: tier to be set	project				relaunch,relaunched,relaunches,relaunching
 relay#handing-over	oewn-relay__1.04.00..	relay%1:04:00::	oewn-00319393-n	n	Noun	the act of passing something along from one person or group to another	1	U	wn30-tag-count	oewn				relay,relays
 relay#electrical-relay	oewn-relay__1.06.00..	relay%1:06:00::	oewn-04080072-n	n	Noun	electrical device such that current flowing through it in one circuit can switch on and off a current in a second circuit	0	R	wn30-tag-count	oewn				relay,relays
 relay#relay-race	oewn-relay__1.11.00..	relay%1:11:00::	oewn-07479040-n	n	Noun	a race between teams; each member runs or swims part of the distance	0	R	wn30-tag-count	oewn				relay,relays
@@ -4655,8 +4655,8 @@ relay#worker-shift	oewn-relay__1.14.00..	relay%1:14:00::	oewn-08235886-n	n	Noun	
 relay#fresh-team	oewn-relay__1.14.01..	relay%1:14:01::	oewn-08001975-n	n	Noun	a fresh team to relieve weary draft animals	0	R	wn30-tag-count	oewn				relay,relays
 relay#pass-along	oewn-relay__2.32.00..	relay%2:32:00::	oewn-00745068-v	v	Verb	pass along	2	U	wn30-tag-count	oewn				relaid,relay,relayed,relaying,relays
 relay#control-by-relay	oewn-relay__2.35.00..	relay%2:35:00::	oewn-01228140-v	v	Verb	control or operate by relay	0	R	wn30-tag-count	oewn				relaid,relay,relayed,relaying,relays
-relet#reletting	dema-relet-n-1		dema-syn-relet-n-1	n	Noun	noun		U	project sense: tier to be set	project				relet,relets
-relet#let-again	dema-relet-v-1		dema-syn-relet-v-1	v	Verb	verb		U	project sense: tier to be set	project				relet,relets,reletting
+relet#reletting	dema-relet-n-1		dema-syn-relet-n-1	n	Noun	the act of renting out a property again		U	project sense: tier to be set	project				relet,relets
+relet#let-again	dema-relet-v-1		dema-syn-relet-v-1	v	Verb	rent out a property again, usually to a new tenant		U	project sense: tier to be set	project				relet,relets,reletting
 remake#new-version	oewn-remake__1.06.00..	remake%1:06:00::	oewn-04081441-n	n	Noun	creation that is created again or anew	0	R	wn30-tag-count	oewn				remake,remakes
 remake#make-again	oewn-remake__2.36.00..	remake%2:36:00::	oewn-01622744-v	v	Verb	make new	2	U	wn30-tag-count	oewn				remade,remake,remakes,remaking
 remit#scope-of-authority	oewn-remit__1.09.00..	remit%1:09:00::	oewn-05824016-n	n	Noun	the topic that a person, committee, or piece of research is expected to deal with or has authority to deal with	0	R	wn30-tag-count	oewn				remit,remits
@@ -4668,11 +4668,11 @@ remit#postpone	oewn-remit__2.42.00..	remit%2:42:00::	oewn-02648898-v	v	Verb	hold
 remit#forgive	oewn-remit__2.32.04..	remit%2:32:04::	oewn-00905900-v	v	Verb	forgive	0	R	wn30-tag-count	oewn				remit,remits,remitted,remitting
 remit#remand	oewn-remit__2.32.01..	remit%2:32:01::	oewn-00952006-v	v	Verb	refer (a matter or legal case) to another committee or authority or court for decision	0	R	wn30-tag-count	oewn				remit,remits,remitted,remitting
 remit#loosen	oewn-remit__2.30.00..	remit%2:30:00::	oewn-00422078-v	v	Verb	make slack as by lessening tension or firmness	0	R	wn30-tag-count	oewn				remit,remits,remitted,remitting
-remold#remolding	dema-remold-n-1		dema-syn-remold-n-1	n	Noun	noun		U	project sense: tier to be set	project				remold,remolds
+remold#remolding	dema-remold-n-1		dema-syn-remold-n-1	n	Noun	a used tire fitted with a new layer of tread		U	project sense: tier to be set	project				remold,remolds
 remold#cast-again	oewn-remold__2.36.00..	remold%2:36:00::	oewn-01667100-v	v	Verb	cast again	0	R	wn30-tag-count	oewn				remold,remolded,remolding,remolds
 remold#retread-tire	oewn-remold__2.30.00..	remold%2:30:00::	oewn-00163880-v	v	Verb	give new treads to (a tire)	0	R	wn30-tag-count	oewn				remold,remolded,remolding,remolds
 remold#reshape	oewn-remold__2.36.01..	remold%2:36:01::	oewn-01664764-v	v	Verb	shape again or shape differently	0	R	wn30-tag-count	oewn				remold,remolded,remolding,remolds
-remould#remoulding	dema-remould-n-1		dema-syn-remould-n-1	n	Noun	noun		U	project sense: tier to be set	project				remould,remoulds
+remould#remoulding	dema-remould-n-1		dema-syn-remould-n-1	n	Noun	a used tire fitted with a new layer of tread		U	project sense: tier to be set	project				remould,remoulds
 remould#cast-again	oewn-remould__2.36.00..	remould%2:36:00::	oewn-01667100-v	v	Verb	cast again	0	R	wn30-tag-count	oewn				remould,remoulded,remoulding,remoulds
 remould#retread-tire	oewn-remould__2.30.00..	remould%2:30:00::	oewn-00163880-v	v	Verb	give new treads to (a tire)	0	R	wn30-tag-count	oewn				remould,remoulded,remoulding,remoulds
 remount#fresh-horse	oewn-remount__1.05.00..	remount%1:05:00::	oewn-02380801-n	n	Noun	a fresh horse especially (formerly) to replace one killed or injured in battle	0	R	wn30-tag-count	oewn			R	remount,remounts
@@ -4687,20 +4687,20 @@ rent#lease-out	oewn-rent__2.41.01..	rent%2:41:01::	oewn-02465622-v	v	Verb	let fo
 rent#lease-out-legal	oewn-rent__2.40.01..	rent%2:40:01::	oewn-02213685-v	v	Verb	grant use or occupation of under a term of contract	2	U	wn30-tag-count	oewn	rent#lease-terms	near-identical glosses		rent,rented,renting,rents
 rent#charter	oewn-rent__2.40.00..	rent%2:40:00::	oewn-02213319-v	v	Verb	engage for service under a term of contract	1	U	wn30-tag-count	oewn				rent,rented,renting,rents
 rent#rent-under-lease	oewn-rent__2.41.00..	rent%2:41:00::	oewn-02466042-v	v	Verb	hold under a lease or rental agreement; of goods and services	0	R	wn30-tag-count	oewn				rent,rented,renting,rents
-renunciate#renouncer	dema-renunciate-n-1		dema-syn-renunciate-n-1	n	Noun	noun		U	project sense: tier to be set	project			R	renunciate,renunciates
-renunciate#renounce	dema-renunciate-v-1		dema-syn-renunciate-v-1	v	Verb	verb		U	project sense: tier to be set	project			R	renunciate,renunciated,renunciates,renunciating
+renunciate#renouncer	dema-renunciate-n-1		dema-syn-renunciate-n-1	n	Noun	a person who gives up worldly possessions and desires for a religious or ascetic life		U	project sense: tier to be set	project			R	renunciate,renunciates
+renunciate#renounce	dema-renunciate-v-1		dema-syn-renunciate-v-1	v	Verb	formally give up or reject a claim, allegiance, or possession (rare)		U	project sense: tier to be set	project			R	renunciate,renunciated,renunciates,renunciating
 replay#action-replay	oewn-replay__1.04.00..	replay%1:04:00::	oewn-01022059-n	n	Noun	the immediate rebroadcast of some action (especially sports action) that has been recorded on videotape	0	R	wn30-tag-count	oewn				replay,replays
 replay#rematch	oewn-replay__1.11.00..	replay%1:11:00::	oewn-07357795-n	n	Noun	something (especially a game) that is played again	0	R	wn30-tag-count	oewn				replay,replays
 replay#replay-match	oewn-replay__2.33.01..	replay%2:33:01::	oewn-01083394-v	v	Verb	repeat a game against the same opponent	0	R	wn30-tag-count	oewn				replay,replayed,replaying,replays
 replay#play-again	oewn-replay__2.33.00..	replay%2:33:00::	oewn-01078276-v	v	Verb	play again	0	R	wn30-tag-count	oewn				replay,replayed,replaying,replays
 replay#replay-melody	oewn-replay__2.36.00..	replay%2:36:00::	oewn-01729407-v	v	Verb	play (a melody) again	0	R	wn30-tag-count	oewn			D	replay,replayed,replaying,replays
 replay#playback	oewn-replay__2.36.01..	replay%2:36:01::	oewn-01742228-v	v	Verb	reproduce (a recording) on a recorder	0	R	wn30-tag-count	oewn				replay,replayed,replaying,replays
-replicate#duplicate	dema-replicate-n-1		dema-syn-replicate-n-1	n	Noun	noun		U	project sense: tier to be set	project			R	replicate,replicates
+replicate#duplicate	dema-replicate-n-1		dema-syn-replicate-n-1	n	Noun	a repeated experimental unit, sample, or trial used to assess variation or confirm results		U	project sense: tier to be set	project			R	replicate,replicates
 replicate#copy	oewn-replicate__2.36.01..	replicate%2:36:01::	oewn-01738810-v	v	Verb	reproduce or make an exact copy of	0	R	wn30-tag-count	oewn				replicate,replicated,replicates,replicating
 replicate#do-again	oewn-replicate__2.36.00..	replicate%2:36:00::	oewn-01738383-v	v	Verb	make or do or perform again	0	R	wn30-tag-count	oewn				replicate,replicated,replicates,replicating
 replicate#bend-back	oewn-replicate__2.38.00..	replicate%2:38:00::	oewn-02040343-v	v	Verb	bend or turn backward	0	R	wn30-tag-count	oewn			R	replicate,replicated,replicates,replicating
 repost#social-media-repost	oewn-repost__1.10.01..	repost%1:10:01::	oewn-90000011-n	n	Noun	A post on social media that has already been posted	0	R	wn30-tag-count	oewn				repost,reposts
-repost#share-again	dema-repost-v-1		dema-syn-repost-v-1	v	Verb	verb		U	project sense: tier to be set	project				repost,reposted,reposting,reposts
+repost#share-again	dema-repost-v-1		dema-syn-repost-v-1	v	Verb	publish or share previously posted content again, especially online		U	project sense: tier to be set	project				repost,reposted,reposting,reposts
 reprimand#rebuke	oewn-reprimand__1.10.00..	reprimand%1:10:00::	oewn-06724794-n	n	Noun	an act or expression of criticism and censure	0	R	wn30-tag-count	oewn				reprimand,reprimanding,reprimands
 reprimand#formal-rebuke	oewn-reprimand__2.32.00..	reprimand%2:32:00::	oewn-00825330-v	v	Verb	rebuke formally	2	U	wn30-tag-count	oewn				reprimand,reprimanded,reprimanding,reprimands
 reprimand#harsh-rebuke	oewn-reprimand__2.32.01..	reprimand%2:32:01::	oewn-00826456-v	v	Verb	censure severely or angrily	0	R	wn30-tag-count	oewn				reprimand,reprimanded,reprimanding,reprimands
@@ -4713,8 +4713,8 @@ request#express-need	oewn-request__2.32.01..	request%2:32:01::	oewn-00754770-v	v
 request#ask-to-do	oewn-request__2.32.02..	request%2:32:02::	oewn-00755473-v	v	Verb	ask (a person) to do something	7	C	wn30-tag-count	oewn				request,requested,requesting,requests
 request#request-information	oewn-request__2.32.13..	request%2:32:13::	oewn-01071831-v	v	Verb	inquire for (information)	0	R	wn30-tag-count	oewn				request,requested,requesting,requests
 reread#read-again	oewn-reread__2.31.00..	reread%2:31:00::	oewn-00627360-v	v	Verb	read anew; read again	3	U	wn30-tag-count	oewn				reread,rereading,rereads
-rerelease#second-release	dema-rerelease-n-1		dema-syn-rerelease-n-1	n	Noun	noun		U	project sense: tier to be set	project				rerelease,rereleases
-rerelease#release-again	dema-rerelease-v-1		dema-syn-rerelease-v-1	v	Verb	verb		U	project sense: tier to be set	project				rerelease,rereleased,rereleases,rereleasing
+rerelease#second-release	dema-rerelease-n-1		dema-syn-rerelease-n-1	n	Noun	a new release or edition of a previously available work or product		U	project sense: tier to be set	project				rerelease,rereleases
+rerelease#release-again	dema-rerelease-v-1		dema-syn-rerelease-v-1	v	Verb	make a previously released work or product available to the public again		U	project sense: tier to be set	project				rerelease,rereleased,rereleases,rereleasing
 rerun#repeat-broadcast	oewn-rerun__1.10.00..	rerun%1:10:00::	oewn-06632570-n	n	Noun	a program that is broadcast again	0	R	wn30-tag-count	oewn				rerun,reruns
 rerun#rebroadcast	oewn-rerun__2.32.00..	rerun%2:32:00::	oewn-00975920-v	v	Verb	broadcast again, as of a film	1	U	wn30-tag-count	oewn				reran,rerun,rerunning,reruns
 rerun#campaign-again	oewn-rerun__2.33.00..	rerun%2:33:00::	oewn-01096950-v	v	Verb	run again for office	0	R	wn30-tag-count	oewn				reran,rerun,rerunning,reruns
@@ -4743,16 +4743,16 @@ resign#quit-job	oewn-resign__2.41.00..	resign%2:41:00::	oewn-02372031-v	v	Verb	l
 resign#relinquish	oewn-resign__2.40.04..	resign%2:40:04::	oewn-02321284-v	v	Verb	part with a possession or right	0	R	wn30-tag-count	oewn				resign,resigned,resigning,resigns
 resign#quit-office	oewn-resign__2.41.05..	resign%2:41:05::	oewn-02387509-v	v	Verb	give up or retire from a position	0	R	wn30-tag-count	oewn	resign#quit-position	near-identical glosses	D	resign,resigned,resigning,resigns
 resign#accept-fate	oewn-resign__2.31.00..	resign%2:31:00::	oewn-00734417-v	v	Verb	accept as inevitable	0	R	wn30-tag-count	oewn				resign,resigned,resigning,resigns
-resit#repeat-exam	dema-resit-n-1		dema-syn-resit-n-1	n	Noun	noun		U	project sense: tier to be set	project			R	resit,resits
-resit#retake-exam	dema-resit-v-1		dema-syn-resit-v-1	v	Verb	verb		U	project sense: tier to be set	project			R	resat,resit,resits,resitting
+resit#repeat-exam	dema-resit-n-1		dema-syn-resit-n-1	n	Noun	an examination taken again, usually after an earlier failure		U	project sense: tier to be set	project			R	resit,resits
+resit#retake-exam	dema-resit-v-1		dema-syn-resit-v-1	v	Verb	take an examination again, usually after failing it		U	project sense: tier to be set	project			R	resat,resit,resits,resitting
 resort#holiday-resort	oewn-resort__1.15.00..	resort%1:15:00::	oewn-08658106-n	n	Noun	a hotel located in a resort area	1	U	wn30-tag-count	oewn				resort,resorting,resorts
 resort#hangout	oewn-resort__1.15.01..	resort%1:15:01::	oewn-08599031-n	n	Noun	a frequently visited place	0	R	wn30-tag-count	oewn				resort,resorting,resorts
 resort#recourse	oewn-resort__1.04.00..	resort%1:04:00::	oewn-01211087-n	n	Noun	act of turning to for assistance	0	R	wn30-tag-count	oewn				resort,resorting,resorts
 resort#source-of-help	oewn-resort__1.07.00..	resort%1:07:00::	oewn-05162506-n	n	Noun	something or someone turned to for assistance or security	0	R	wn30-tag-count	oewn			D	resort,resorting,resorts
 resort#fall-back	oewn-resort__2.41.11..	resort%2:41:11::	oewn-02596228-v	v	Verb	have recourse to	7	C	wn30-tag-count	oewn				resort,resorted,resorting,resorts
 resort#travel-to-place	oewn-resort__2.38.00..	resort%2:38:00::	oewn-01847439-v	v	Verb	move, travel, or proceed toward some place	0	R	wn30-tag-count	oewn			R	resort,resorted,resorting,resorts
-respawn#respawn-event	dema-respawn-n-1		dema-syn-respawn-n-1	n	Noun	noun		U	project sense: tier to be set	project			R	respawn,respawns
-respawn#spawn-again	dema-respawn-v-1		dema-syn-respawn-v-1	v	Verb	verb		U	project sense: tier to be set	project			R	respawn,respawned,respawning,respawns
+respawn#respawn-event	dema-respawn-n-1		dema-syn-respawn-n-1	n	Noun	the reappearance of a character or object after death or removal in a video game		U	project sense: tier to be set	project			R	respawn,respawns
+respawn#spawn-again	dema-respawn-v-1		dema-syn-respawn-v-1	v	Verb	reappear or cause to reappear after death or removal in a video game		U	project sense: tier to be set	project			R	respawn,respawned,respawning,respawns
 respect#aspect	oewn-respect__1.09.00..	respect%1:09:00::	oewn-05828314-n	n	Noun	(usually preceded by ‘in’) a detail or point	15	C	wn30-tag-count	oewn				respect,respecting,respects
 respect#esteem	oewn-respect__1.09.01..	respect%1:09:01::	oewn-06216535-n	n	Noun	an attitude of admiration or esteem	5	C	wn30-tag-count	oewn				respect,respecting,respects
 respect#honor-status	oewn-respect__1.26.00..	respect%1:26:00::	oewn-14461018-n	n	Noun	the condition of being honored (esteemed or respected or well regarded)	5	C	wn30-tag-count	oewn				respect,respecting,respects
@@ -4762,13 +4762,13 @@ respect#consideration	oewn-respect__1.07.00..	respect%1:07:00::	oewn-04921016-n	
 respect#friendly-regard	oewn-respect__1.12.00..	respect%1:12:00::	oewn-07560785-n	n	Noun	a feeling of friendship and esteem	0	R	wn30-tag-count	oewn				respect,respecting,respects
 respect#admire	oewn-respect__2.31.00..	respect%2:31:00::	oewn-00695834-v	v	Verb	regard highly; think much of	12	C	wn30-tag-count	oewn				respect,respected,respecting,respects
 respect#treat-respectfully	oewn-respect__2.41.00..	respect%2:41:00::	oewn-02462665-v	v	Verb	show respect towards	4	U	wn30-tag-count	oewn				respect,respected,respecting,respects
-respray#respray-job	dema-respray-n-1		dema-syn-respray-n-1	n	Noun	noun		U	project sense: tier to be set	project			R	respray,resprays
-respray#spray-again	dema-respray-v-1		dema-syn-respray-v-1	v	Verb	verb		U	project sense: tier to be set	project			R	respray,resprayed,respraying,resprays
-restart#restart-event	dema-restart-n-1		dema-syn-restart-n-1	n	Noun	noun		U	project sense: tier to be set	project				restart,restarts
+respray#respray-job	dema-respray-n-1		dema-syn-respray-n-1	n	Noun	a fresh coat of paint applied by spraying, especially to a vehicle		U	project sense: tier to be set	project			R	respray,resprays
+respray#spray-again	dema-respray-v-1		dema-syn-respray-v-1	v	Verb	spray again, especially to apply a new coat of paint		U	project sense: tier to be set	project			R	respray,resprayed,respraying,resprays
+restart#restart-event	dema-restart-n-1		dema-syn-restart-n-1	n	Noun	an act of starting something again, especially a computer or program		U	project sense: tier to be set	project				restart,restarts
 restart#begin-again	oewn-restart__2.30.00..	restart%2:30:00::	oewn-00350758-v	v	Verb	take up or begin anew	0	R	wn30-tag-count	oewn				restart,restarted,restarting,restarts
 restart#restart-engine	oewn-restart__2.38.00..	restart%2:38:00::	oewn-01862672-v	v	Verb	start an engine again, for example	0	R	wn30-tag-count	oewn				restart,restarted,restarting,restarts
-restyle#restyling	dema-restyle-n-1		dema-syn-restyle-n-1	n	Noun	noun		U	project sense: tier to be set	project				restyle,restyles
-restyle#style-again	dema-restyle-v-1		dema-syn-restyle-v-1	v	Verb	verb		U	project sense: tier to be set	project				restyle,restyled,restyles,restyling
+restyle#restyling	dema-restyle-n-1		dema-syn-restyle-n-1	n	Noun	a change in the style or appearance of something		U	project sense: tier to be set	project				restyle,restyles
+restyle#style-again	dema-restyle-v-1		dema-syn-restyle-v-1	v	Verb	change the style or appearance of something		U	project sense: tier to be set	project				restyle,restyled,restyles,restyling
 result#consequence	oewn-result__1.19.00..	result%1:19:00::	oewn-11430739-n	n	Noun	a phenomenon that follows and is caused by some previous phenomenon	83	C	wn30-tag-count	oewn				result,resulting,results
 result#solution	oewn-result__1.10.00..	result%1:10:00::	oewn-06756201-n	n	Noun	a statement that solves a problem or explains how to solve the problem	25	C	wn30-tag-count	oewn				result,resulting,results
 result#outcome	oewn-result__1.11.00..	result%1:11:00::	oewn-07307418-n	n	Noun	something that results	24	C	wn30-tag-count	oewn				result,resulting,results
@@ -4791,8 +4791,8 @@ retard#decelerate	oewn-retard__2.30.01..	retard%2:30:01::	oewn-00439707-v	v	Verb
 retard#be-delayed	oewn-retard__2.42.00..	retard%2:42:00::	oewn-02758442-v	v	Verb	be delayed	0	R	wn30-tag-count	oewn				retard,retarded,retarding,retards
 retard#hinder-growth	oewn-retard__2.30.07..	retard%2:30:07::	oewn-00441241-v	v	Verb	slow the growth or development of	0	R	wn30-tag-count	oewn				retard,retarded,retarding,retards
 retard#slow-down	oewn-retard__2.30.00..	retard%2:30:00::	oewn-00440913-v	v	Verb	lose velocity; move more slowly	0	R	wn30-tag-count	oewn				retard,retarded,retarding,retards
-retest#repeat-test	dema-retest-n-1		dema-syn-retest-n-1	n	Noun	noun		U	project sense: tier to be set	project				retest,retests
-retest#test-again	dema-retest-v-1		dema-syn-retest-v-1	v	Verb	verb		U	project sense: tier to be set	project				retest,retested,retesting,retests
+retest#repeat-test	dema-retest-n-1		dema-syn-retest-n-1	n	Noun	a test performed again to check or confirm a result		U	project sense: tier to be set	project				retest,retests
+retest#test-again	dema-retest-v-1		dema-syn-retest-v-1	v	Verb	test again to check or confirm a result		U	project sense: tier to be set	project				retest,retested,retesting,retests
 rethink#reconsideration	oewn-rethink__1.09.00..	rethink%1:09:00::	oewn-05798017-n	n	Noun	thinking again about a choice previously made	0	R	wn30-tag-count	oewn				rethink,rethinks
 rethink#reconsider	oewn-rethink__2.31.00..	rethink%2:31:00::	oewn-00690510-v	v	Verb	change one's mind	2	U	wn30-tag-count	oewn				rethink,rethinking,rethinks,rethought
 reticulate#netlike	oewn-reticulate__3.00.00..	reticulate%3:00:00::	oewn-02013324-a	a	Adjective	resembling or forming a network	3	U	wn30-tag-count	oewn			R	reticulate
@@ -4847,12 +4847,12 @@ return#provide	oewn-return__2.36.00..	return%2:36:00::	oewn-01632192-v	v	Verb	gi
 return#re-elect	oewn-return__2.41.00..	return%2:41:00::	oewn-02406438-v	v	Verb	elect again	0	R	wn30-tag-count	oewn				return,returned,returning,returns
 return#file-report	oewn-return__2.32.02..	return%2:32:02::	oewn-00880549-v	v	Verb	submit (a report, etc.) to someone in authority	0	R	wn30-tag-count	oewn				return,returned,returning,returns
 return#mathematical-return	oewn-return__2.38.01..	return%2:38:01::	oewn-02009631-v	v	Verb	return to a previous position; in mathematics	0	R	wn30-tag-count	oewn			R	return,returned,returning,returns
-reuse#reuse-act	dema-reuse-n-1		dema-syn-reuse-n-1	n	Noun	noun		U	project sense: tier to be set	project				reuse,reuses
+reuse#reuse-act	dema-reuse-n-1		dema-syn-reuse-n-1	n	Noun	the act of using something again rather than discarding it		U	project sense: tier to be set	project				reuse,reuses
 reuse#use-again	oewn-reuse__2.34.00..	reuse%2:34:00::	oewn-01164741-v	v	Verb	use again after processing	1	U	wn30-tag-count	oewn				reuse,reused,reuses,reusing
-revamp#overhaul	dema-revamp-n-1		dema-syn-revamp-n-1	n	Noun	noun		U	project sense: tier to be set	project				revamp,revamps
+revamp#overhaul	dema-revamp-n-1		dema-syn-revamp-n-1	n	Noun	a substantial revision or renovation intended to improve something		U	project sense: tier to be set	project				revamp,revamps
 revamp#renovate	oewn-revamp__2.30.00..	revamp%2:30:00::	oewn-00163723-v	v	Verb	to patch up or renovate; repair or restore	3	U	wn30-tag-count	oewn				revamp,revamped,revamping,revamps
 revamp#replace-vamp	oewn-revamp__2.30.01..	revamp%2:30:01::	oewn-00534607-v	v	Verb	provide (a shoe) with a new vamp	0	R	wn30-tag-count	oewn				revamp,revamped,revamping,revamps
-revert#reversion	dema-revert-n-1		dema-syn-revert-n-1	n	Noun	noun		U	project sense: tier to be set	project				revert,reverts
+revert#reversion	dema-revert-n-1		dema-syn-revert-n-1	n	Noun	an action that undoes a change and restores an earlier state, especially in software		U	project sense: tier to be set	project				revert,reverts
 revert#regress	oewn-revert__2.30.00..	revert%2:30:00::	oewn-00387981-v	v	Verb	go back to a previous state	3	U	wn30-tag-count	oewn				revert,reverted,reverting,reverts
 revert#mutation-reversion	oewn-revert__2.30.13..	revert%2:30:13::	oewn-00120025-v	v	Verb	undergo reversion, as in a mutation	0	R	wn30-tag-count	oewn			R	revert,reverted,reverting,reverts
 reward#payoff	oewn-reward__1.11.00..	reward%1:11:00::	oewn-07310247-n	n	Noun	a recompense for worthy acts or retribution for wrongdoing	4	U	wn30-tag-count	oewn				reward,rewarding,rewards
@@ -4865,7 +4865,7 @@ reward#reinforce	oewn-reward__2.32.00..	reward%2:32:00::	oewn-00789322-v	v	Verb	
 reward#recompense	oewn-reward__2.40.00..	reward%2:40:00::	oewn-02349377-v	v	Verb	act or give recompense in recognition of someone's behavior or actions	0	R	wn30-tag-count	oewn				reward,rewarded,rewarding,rewards
 rewatch#repeat-viewing	oewn-rewatch__1.04.01..	rewatch%1:04:01::	oewn-91000061-n	n	Noun	the act of watching a show or television one more time	0	R	wn30-tag-count	oewn				rewatch,rewatches
 rewatch#watch-again	oewn-rewatch__2.39.01..	rewatch%2:39:01::	oewn-91000041-v	v	Verb	to watch a show or television one more time	0	R	wn30-tag-count	oewn				rewatch,rewatched,rewatches,rewatching
-rewind#rewind-action	dema-rewind-n-1		dema-syn-rewind-n-1	n	Noun	noun		U	project sense: tier to be set	project				rewind,rewinds
+rewind#rewind-action	dema-rewind-n-1		dema-syn-rewind-n-1	n	Noun	an act of winding a recording backward or returning playback to an earlier point		U	project sense: tier to be set	project				rewind,rewinds
 rewind#wind-again	oewn-rewind__2.35.00..	rewind%2:35:00::	oewn-01524927-v	v	Verb	wind (up) again	0	R	wn30-tag-count	oewn				rewind,rewinding,rewinds,rewound
 rewrite#rewritten-work	oewn-rewrite__1.10.00..	rewrite%1:10:00::	oewn-06375556-n	n	Noun	something that has been written again	0	R	wn30-tag-count	oewn				rewrite,rewrites
 rewrite#alter-writing	oewn-rewrite__2.32.00..	rewrite%2:32:00::	oewn-00997883-v	v	Verb	write differently; alter the writing of	3	U	wn30-tag-count	oewn				rewrite,rewrites,rewriting,rewritten,rewrote
@@ -5031,7 +5031,7 @@ sail#travel-water	oewn-sail__2.38.03..	sail%2:38:03::	oewn-01850600-v	v	Verb	tra
 sail#glide	oewn-sail__2.38.01..	sail%2:38:01::	oewn-01873556-v	v	Verb	move with sweeping, effortless, gliding motions	3	U	wn30-tag-count	oewn				sail,sailed,sailing,sails
 sail#boat	oewn-sail__2.38.00..	sail%2:38:00::	oewn-01949375-v	v	Verb	travel on water propelled by wind	1	U	wn30-tag-count	oewn				sail,sailed,sailing,sails
 sail#navigate	oewn-sail__2.38.02..	sail%2:38:02::	oewn-01850262-v	v	Verb	travel on water propelled by wind or by other means	0	R	wn30-tag-count	oewn				sail,sailed,sailing,sails
-saturate#saturation	dema-saturate-n-1		dema-syn-saturate-n-1	n	Noun	noun		U	project sense: tier to be set	project				saturate,saturates
+saturate#saturation	dema-saturate-n-1		dema-syn-saturate-n-1	n	Noun	a saturated chemical compound, especially a saturated fat or fatty acid		U	project sense: tier to be set	project				saturate,saturates
 saturate#chemically-saturate	oewn-saturate__2.30.01..	saturate%2:30:01::	oewn-00457312-v	v	Verb	cause (a chemical compound, vapour, solution, magnetic material) to unite with the greatest possible amount of another substance	1	U	wn30-tag-count	oewn				saturate,saturated,saturates,saturating
 saturate#impregnate	oewn-saturate__2.30.04..	saturate%2:30:04::	oewn-00498786-v	v	Verb	infuse or fill completely	0	R	wn30-tag-count	oewn				saturate,saturated,saturates,saturating
 schedule#agenda	oewn-schedule__1.09.00..	schedule%1:09:00::	oewn-05919534-n	n	Noun	a temporally organized plan for matters to be attended to	11	C	wn30-tag-count	oewn				schedule,schedules,scheduling
@@ -5178,8 +5178,8 @@ separate#go-apart	oewn-separate__2.38.00..	separate%2:38:00::	oewn-02034003-v	v	
 separate#branch	oewn-separate__2.30.04..	separate%2:30:04::	oewn-00329612-v	v	Verb	divide into two or more branches so as to form a fork	0	R	wn30-tag-count	oewn				separate,separated,separates,separating
 separate#discriminate	oewn-separate__2.41.00..	separate%2:41:00::	oewn-02517971-v	v	Verb	treat differently on the basis of sex or race	0	R	wn30-tag-count	oewn				separate,separated,separates,separating
 separate#move-apart	oewn-separate__2.35.00..	separate%2:35:00::	oewn-01560556-v	v	Verb	move or break apart	0	R	wn30-tag-count	oewn			D	separate,separated,separates,separating
-seriate#serial	dema-seriate-a-1		dema-syn-seriate-a-1	a	Adjective	adjective		U	project sense: tier to be set	project			R	seriate
-seriate#arrange-in-series	dema-seriate-v-1		dema-syn-seriate-v-1	v	Verb	verb		U	project sense: tier to be set	project			R	seriate,seriated,seriates,seriating
+seriate#serial	dema-seriate-a-1		dema-syn-seriate-a-1	a	Adjective	arranged in a series, sequence, or successive rows		U	project sense: tier to be set	project			R	seriate
+seriate#arrange-in-series	dema-seriate-v-1		dema-syn-seriate-v-1	v	Verb	arrange in a series or ordered sequence, especially by age or similarity of form		U	project sense: tier to be set	project			R	seriate,seriated,seriates,seriating
 sewer#sewer-pipe	oewn-sewer__1.06.00..	sewer%1:06:00::	oewn-04186187-n	n	Noun	a waste pipe that carries away sewage or surface water	4	U	wn30-tag-count	oewn				sewer,sewers
 sewer#needleworker	oewn-sewer__1.18.00..	sewer%1:18:00::	oewn-10603770-n	n	Noun	someone who sews	1	U	wn30-tag-count	oewn				sewer,sewers
 sewer#misfortune	oewn-sewer__1.26.00..	sewer%1:26:00::	oewn-14499576-n	n	Noun	misfortune resulting in lost effort or money	0	R	wn30-tag-count	oewn			R	sewer,sewers
@@ -5324,7 +5324,7 @@ sin#hebrew-letter-sin	oewn-sin__1.10.00..	sin%1:10:00::	oewn-06851918-n	n	Noun	t
 sin#sine	oewn-sin__1.24.00..	sin%1:24:00::	oewn-13809591-n	n	Noun	ratio of the length of the side opposite the given angle to the length of the hypotenuse of a right-angled triangle	0	R	wn30-tag-count	oewn				sin,sinning,sins
 sin#transgress	oewn-sin__2.41.00..	sin%2:41:00::	oewn-02571602-v	v	Verb	commit a sin; violate a law of God or a moral law	7	C	wn30-tag-count	oewn				sin,sinned,sinning,sins
 sin#blunder	oewn-sin__2.41.01..	sin%2:41:01::	oewn-02572142-v	v	Verb	commit a faux pas or a fault or make a serious mistake	0	R	wn30-tag-count	oewn				sin,sinned,sinning,sins
-situate#located	dema-situate-a-1		dema-syn-situate-a-1	a	Adjective	adjective		U	project sense: tier to be set	project			R	situate
+situate#located	dema-situate-a-1		dema-syn-situate-a-1	a	Adjective	located or positioned in a particular place (archaic)		U	project sense: tier to be set	project			R	situate
 situate#locate	oewn-situate__2.42.00..	situate%2:42:00::	oewn-02700775-v	v	Verb	determine or indicate the place, site, or limits of, as if by an instrument or by a survey	3	U	wn30-tag-count	oewn				situate,situated,situates,situating
 situate#deposit	oewn-situate__2.35.00..	situate%2:35:00::	oewn-01578506-v	v	Verb	put (something somewhere) firmly	1	U	wn30-tag-count	oewn				situate,situated,situates,situating
 skate#skate-fish	oewn-skate__1.05.00..	skate%1:05:00::	oewn-01503801-n	n	Noun	large edible rays having a long snout and thick tail with pectoral fins continuous with the head; swim by undulating the edges of the pectoral fins	0	R	wn30-tag-count	oewn			R	skate,skates,skating
@@ -5407,7 +5407,7 @@ snap#grab	oewn-snap__2.35.00..	snap%2:35:00::	oewn-01442364-v	v	Verb	to grasp ha
 snap#clamp	oewn-snap__2.35.04..	snap%2:35:04::	oewn-01448920-v	v	Verb	bring the jaws together	0	R	wn30-tag-count	oewn				snap,snapped,snapping,snaps
 snap#meltdown	oewn-snap__2.37.00..	snap%2:37:00::	oewn-01788114-v	v	Verb	lose control of one's emotions	0	R	wn30-tag-count	oewn				snap,snapped,snapping,snaps
 snap#photograph	oewn-snap__2.32.01..	snap%2:32:01::	oewn-01005294-v	v	Verb	record on photographic film	0	R	wn30-tag-count	oewn				snap,snapped,snapping,snaps
-snap#exclamation	dema-snap-i-1		dema-syn-snap-i-1	i	Interjection	The interjection "snap"; a project sense, because Open English WordNet has no interjection sense of this word.		U	project sense: tier to be set	project				snap
+snap#exclamation	dema-snap-i-1		dema-syn-snap-i-1	i	Interjection	used to announce a match or coincidence, or to express surprise (informal)		U	project sense: tier to be set	project				snap
 sophisticate#worldly-person	oewn-sophisticate__1.18.00..	sophisticate%1:18:00::	oewn-10644647-n	n	Noun	a worldly-wise person	1	U	wn30-tag-count	oewn				sophisticate,sophisticates
 sophisticate#make-worldly	oewn-sophisticate__2.41.00..	sophisticate%2:41:00::	oewn-02393906-v	v	Verb	make less natural or innocent	0	R	wn30-tag-count	oewn				sophisticate,sophisticated,sophisticates,sophisticating
 sophisticate#complicate	oewn-sophisticate__2.30.00..	sophisticate%2:30:00::	oewn-00403296-v	v	Verb	make more complex or refined	0	R	wn30-tag-count	oewn				sophisticate,sophisticated,sophisticates,sophisticating
@@ -5997,7 +5997,7 @@ tier#tied-competitor	oewn-tier__1.18.01..	tier%1:18:01::	oewn-10730158-n	n	Noun	
 tier#grade	oewn-tier__1.26.00..	tier%1:26:00::	oewn-14451564-n	n	Noun	a relative position or degree of value in a graded group	0	R	wn30-tag-count	oewn				tier,tiers
 tier#tying-rope	oewn-tier__1.06.01..	tier%1:06:01::	oewn-04441193-n	n	Noun	something that is used for tying	0	R	wn30-tag-count	oewn				tier,tiers
 tier#tier-worker	oewn-tier__1.18.00..	tier%1:18:00::	oewn-10730052-n	n	Noun	a worker who ties something	0	R	wn30-tag-count	oewn			R	tier,tiers
-tier#arrange-in-tiers	dema-tier-v-1		dema-syn-tier-v-1	v	Verb	row		U	project sense: tier to be set	project				tier,tiered,tiering,tiers
+tier#arrange-in-tiers	dema-tier-v-1		dema-syn-tier-v-1	v	Verb	arrange in rows or layers one above another		U	project sense: tier to be set	project				tier,tiered,tiering,tiers
 tip#end	oewn-tip__1.15.00..	tip%1:15:00::	oewn-08680894-n	n	Noun	the extreme end of something; especially something pointed	9	C	wn30-tag-count	oewn				tip,tipping,tips
 tip#gratuity	oewn-tip__1.21.00..	tip%1:21:00::	oewn-13319724-n	n	Noun	a relatively small amount of money given for services rendered (as by a waiter)	3	U	wn30-tag-count	oewn			R	tip,tipping,tips
 tip#opportunity-clue	oewn-tip__1.10.00..	tip%1:10:00::	oewn-06664322-n	n	Noun	an indication of potential opportunity	3	U	wn30-tag-count	oewn				tip,tipping,tips
@@ -6055,7 +6055,7 @@ touch#reach-as-far	oewn-touch__2.42.01..	touch%2:42:01::	oewn-02691488-v	v	Verb	
 touch#understand	oewn-touch__2.31.00..	touch%2:31:00::	oewn-00592037-v	v	Verb	comprehend	1	U	wn30-tag-count	oewn				touch,touched,touches,touching
 touch#partake	oewn-touch__2.34.00..	touch%2:34:00::	oewn-01174998-v	v	Verb	consume	0	R	wn30-tag-count	oewn				touch,touched,touches,touching
 touch#tint	oewn-touch__2.30.01..	touch%2:30:01::	oewn-00287688-v	v	Verb	color lightly	0	R	wn30-tag-count	oewn			R	touch,touched,touches,touching
-touch#interjection	dema-touch-i-1		dema-syn-touch-i-1	i	Interjection	The interjection "touch"; a project sense, because Open English WordNet has no interjection sense of this word.		U	project sense: tier to be set	project				touch
+touch#interjection	dema-touch-i-1		dema-syn-touch-i-1	i	Interjection	used to acknowledge a hit in fencing or a telling point in an argument		U	project sense: tier to be set	project				touch
 tower#construction	oewn-tower__1.06.00..	tower%1:06:00::	oewn-04467365-n	n	Noun	a structure taller than its diameter; can stand alone or be attached to a larger building	4	U	wn30-tag-count	oewn				tower,towering,towers
 tower#column	oewn-tower__1.25.00..	tower%1:25:00::	oewn-13923115-n	n	Noun	anything that approximates the shape of a column or tower	1	U	wn30-tag-count	oewn				tower,towering,towers
 tower#towboat	oewn-tower__1.06.01..	tower%1:06:01::	oewn-04503138-n	n	Noun	a powerful small boat designed to pull or push larger ships	0	R	wn30-tag-count	oewn			R	tower,towers
@@ -6122,7 +6122,7 @@ transfer#change-conveyance	oewn-transfer__2.38.02..	transfer%2:38:02::	oewn-0209
 transfer#relay	oewn-transfer__2.35.00..	transfer%2:35:00::	oewn-01438013-v	v	Verb	send from one person or place to another	1	U	wn30-tag-count	oewn				transfer,transferred,transferring,transfers
 transfer#relocate	oewn-transfer__2.38.01..	transfer%2:38:01::	oewn-02090707-v	v	Verb	shift the position or location of, as for business, legal, educational, or military purposes	0	R	wn30-tag-count	oewn				transfer,transferred,transferring,transfers
 transfer#move-across-time	oewn-transfer__2.30.00..	transfer%2:30:00::	oewn-00556317-v	v	Verb	transfer from one place or period to another	0	R	wn30-tag-count	oewn			D	transfer,transferred,transferring,transfers
-transform#noun-form	dema-transform-n-1		dema-syn-transform-n-1	n	Noun	noun		U	project sense: tier to be set	project				transform,transforms
+transform#noun-form	dema-transform-n-1		dema-syn-transform-n-1	n	Noun	a mathematical operation that maps a function or quantity into another form, or its result		U	project sense: tier to be set	project				transform,transforms
 transform#mathematical-transform	oewn-transform__2.30.02..	transform%2:30:02::	oewn-00545091-v	v	Verb	subject to a mathematical transformation	14	C	wn30-tag-count	oewn				transform,transformed,transforming,transforms
 transform#transmute	oewn-transform__2.30.00..	transform%2:30:00::	oewn-00383306-v	v	Verb	change or alter in form, appearance, or nature	10	C	wn30-tag-count	oewn				transform,transformed,transforming,transforms
 transform#metamorphose	oewn-transform__2.30.03..	transform%2:30:03::	oewn-00382272-v	v	Verb	change in outward structure or looks	3	U	wn30-tag-count	oewn				transform,transformed,transforming,transforms
@@ -6174,7 +6174,7 @@ treat#provide-treat	oewn-treat__2.40.00..	treat%2:40:00::	oewn-02266449-v	v	Verb
 treat#negotiate	oewn-treat__2.32.03..	treat%2:32:03::	oewn-00764765-v	v	Verb	engage in negotiations in order to reach an agreement	0	R	wn30-tag-count	oewn				treat,treated,treating,treats
 treat#regard	oewn-treat__2.31.00..	treat%2:31:00::	oewn-00652816-v	v	Verb	regard or consider in a specific way	0	R	wn30-tag-count	oewn				treat,treated,treating,treats
 treat#regale	oewn-treat__2.34.00..	treat%2:34:00::	oewn-01178529-v	v	Verb	provide with choice or abundant food or drink	0	R	wn30-tag-count	oewn				treat,treated,treating,treats
-trifurcate#three-branched	dema-trifurcate-a-1		dema-syn-trifurcate-a-1	a	Adjective	adjective		U	project sense: tier to be set	project				trifurcate
+trifurcate#three-branched	dema-trifurcate-a-1		dema-syn-trifurcate-a-1	a	Adjective	divided into three branches or prongs		U	project sense: tier to be set	project				trifurcate
 trifurcate#divide-three	oewn-trifurcate__2.30.00..	trifurcate%2:30:00::	oewn-00330813-v	v	Verb	divide into three	0	R	wn30-tag-count	oewn				trifurcate,trifurcated,trifurcates,trifurcating
 trigger#gun-trigger	oewn-trigger__1.06.00..	trigger%1:06:00::	oewn-03475752-n	n	Noun	lever that activates the firing mechanism of a gun	5	C	wn30-tag-count	oewn				trigger,triggering,triggerring,triggers
 trigger#activator	oewn-trigger__1.06.01..	trigger%1:06:01::	oewn-04490329-n	n	Noun	a device that activates or releases or causes something to happen	0	R	wn30-tag-count	oewn				trigger,triggering,triggerring,triggers
@@ -6208,15 +6208,15 @@ type#symbol	oewn-type__1.10.00..	type%1:10:00::	oewn-06808825-n	n	Noun	all of th
 type#taxon	oewn-type__1.14.01..	type%1:14:01::	oewn-08128385-n	n	Noun	(biology) the taxonomic group whose characteristics are used to define the next higher taxon	0	R	wn30-tag-count	oewn				type,types,typing
 type#typewrite	oewn-type__2.32.00..	type%2:32:00::	oewn-01006737-v	v	Verb	write by means of a keyboard with types	2	U	wn30-tag-count	oewn				type,typed,types,typing
 type#typecast	oewn-type__2.31.00..	type%2:31:00::	oewn-00620372-v	v	Verb	identify as belonging to a certain type	1	U	wn30-tag-count	oewn				type,typed,types,typing
-underbid#low-bid	dema-underbid-n-1		dema-syn-underbid-n-1	n	Noun	noun		U	project sense: tier to be set	project				underbid,underbids
+underbid#low-bid	dema-underbid-n-1		dema-syn-underbid-n-1	n	Noun	a bid that is too low, especially for the work required or the strength of a card hand		U	project sense: tier to be set	project				underbid,underbids
 underbid#bid-too-low	oewn-underbid__2.40.00..	underbid%2:40:00::	oewn-02304648-v	v	Verb	bid too low	0	R	wn30-tag-count	oewn				underbid,underbidding,underbids
 underbid#bid-lower	oewn-underbid__2.40.01..	underbid%2:40:01::	oewn-02304885-v	v	Verb	bid lower than a competing bidder	0	R	wn30-tag-count	oewn				underbid,underbidding,underbids
 underbid#underbid-hand	oewn-underbid__2.40.02..	underbid%2:40:02::	oewn-02305827-v	v	Verb	bid (a hand of cards) at less than the strength of the hand warrants	0	R	wn30-tag-count	oewn				underbid,underbidding,underbids
 undercharge#insufficient-charge	oewn-undercharge__1.06.00..	undercharge%1:06:00::	oewn-04514904-n	n	Noun	an insufficient charge	0	R	wn30-tag-count	oewn				undercharge,undercharges
 undercharge#low-price	oewn-undercharge__1.21.00..	undercharge%1:21:00::	oewn-13328707-n	n	Noun	a price that is too low	0	R	wn30-tag-count	oewn				undercharge,undercharges
 undercharge#charge-too-little	oewn-undercharge__2.40.00..	undercharge%2:40:00::	oewn-02324270-v	v	Verb	charge (someone) too little money	0	R	wn30-tag-count	oewn				undercharge,undercharged,undercharges,undercharging
-undercount#count-shortfall	dema-undercount-n-1		dema-syn-undercount-n-1	n	Noun	noun		U	project sense: tier to be set	project				undercount,undercounts
-undercount#count-too-low	dema-undercount-v-1		dema-syn-undercount-v-1	v	Verb	verb		U	project sense: tier to be set	project				undercount,undercounted,undercounting,undercounts
+undercount#count-shortfall	dema-undercount-n-1		dema-syn-undercount-n-1	n	Noun	a count or estimate below the actual number		U	project sense: tier to be set	project				undercount,undercounts
+undercount#count-too-low	dema-undercount-v-1		dema-syn-undercount-v-1	v	Verb	count or estimate fewer than the actual number		U	project sense: tier to be set	project				undercount,undercounted,undercounting,undercounts
 undercut#backspin-shot	oewn-undercut__1.04.00..	undercut%1:04:00::	oewn-00566846-n	n	Noun	(sports) a stroke that puts reverse spin on the ball	0	R	wn30-tag-count	oewn				undercut,undercuts
 undercut#underside-cut	oewn-undercut__1.04.01..	undercut%1:04:01::	oewn-00388334-n	n	Noun	a cut made underneath to remove material	0	R	wn30-tag-count	oewn				undercut,undercuts
 undercut#removed-material	oewn-undercut__1.27.00..	undercut%1:27:00::	oewn-15108541-n	n	Noun	the material removed by a cut made underneath	0	R	wn30-tag-count	oewn				undercut,undercuts
@@ -6244,18 +6244,18 @@ underlay#put-under	oewn-underlay__2.35.00..	underlay%2:35:00::	oewn-01499931-v	v
 underscore#underline-mark	oewn-underscore__1.10.00..	underscore%1:10:00::	oewn-06814276-n	n	Noun	a line drawn underneath (especially under written matter)	0	R	wn30-tag-count	oewn				underscore,underscores
 underscore#emphasise	oewn-underscore__2.32.00..	underscore%2:32:00::	oewn-01016618-v	v	Verb	give extra weight to (a communication)	3	U	wn30-tag-count	oewn				underscore,underscored,underscores,underscoring
 underscore#underline	oewn-underscore__2.32.03..	underscore%2:32:03::	oewn-01006280-v	v	Verb	draw a line or lines underneath to call attention to	0	R	wn30-tag-count	oewn				underscore,underscored,underscores,underscoring
-underset#lower-set	dema-underset-n-1		dema-syn-underset-n-1	n	Noun	noun		U	project sense: tier to be set	project				underset,undersets
-underset#set-below	dema-underset-v-1		dema-syn-underset-v-1	v	Verb	verb		U	project sense: tier to be set	project				underset,undersets,undersetting
-undershoot#shortfall	dema-undershoot-n-1		dema-syn-undershoot-n-1	n	Noun	noun		U	project sense: tier to be set	project				undershoot,undershoots
+underset#lower-set	dema-underset-n-1		dema-syn-underset-n-1	n	Noun	a current flowing beneath the surface of a body of water		U	project sense: tier to be set	project				underset,undersets
+underset#set-below	dema-underset-v-1		dema-syn-underset-v-1	v	Verb	set beneath or support from below		U	project sense: tier to be set	project				underset,undersets,undersetting
+undershoot#shortfall	dema-undershoot-n-1		dema-syn-undershoot-n-1	n	Noun	a fall below a target or steady value, especially in a signal or control system		U	project sense: tier to be set	project				undershoot,undershoots
 undershoot#land-short	oewn-undershoot__2.38.00..	undershoot%2:38:00::	oewn-01984490-v	v	Verb	fall short of (the runway) in a landing	0	R	wn30-tag-count	oewn				undershoot,undershooting,undershoots,undershot
 undershoot#shoot-short	oewn-undershoot__2.33.00..	undershoot%2:33:00::	oewn-01154998-v	v	Verb	shoot short of or below (a target)	0	R	wn30-tag-count	oewn				undershoot,undershooting,undershoots,undershot
-underspend#spending-shortfall	dema-underspend-n-1		dema-syn-underspend-n-1	n	Noun	noun		U	project sense: tier to be set	project				underspend,underspends
+underspend#spending-shortfall	dema-underspend-n-1		dema-syn-underspend-n-1	n	Noun	the amount by which actual spending falls below a budget or planned expenditure		U	project sense: tier to be set	project				underspend,underspends
 underspend#spend-below-rate	oewn-underspend__2.40.00..	underspend%2:40:00::	oewn-02271402-v	v	Verb	spend at less than the normal rate	0	R	wn30-tag-count	oewn				underspend,underspending,underspends,underspent
 underspend#spend-less	oewn-underspend__2.40.01..	underspend%2:40:01::	oewn-02272696-v	v	Verb	spend less than the whole of (a budget, for example)	0	R	wn30-tag-count	oewn				underspend,underspending,underspends,underspent
 undertaking#task	oewn-undertaking__1.04.00..	undertaking%1:04:00::	oewn-00797381-n	n	Noun	any piece of work that is undertaken or attempted	1	U	wn30-tag-count	oewn				undertaking,undertakings
 undertaking#funeral-business	oewn-undertaking__1.04.01..	undertaking%1:04:01::	oewn-01122580-n	n	Noun	the trade of a funeral director	0	R	wn30-tag-count	oewn				undertaking,undertakings
-underuse#insufficient-use	dema-underuse-n-1		dema-syn-underuse-n-1	n	Noun	noun		U	project sense: tier to be set	project				underuse,underuses
-underuse#use-too-little	dema-underuse-v-1		dema-syn-underuse-v-1	v	Verb	verb		U	project sense: tier to be set	project				underuse,underused,underuses,underusing
+underuse#insufficient-use	dema-underuse-n-1		dema-syn-underuse-n-1	n	Noun	use that is less frequent or extensive than is possible or appropriate		U	project sense: tier to be set	project				underuse,underuses
+underuse#use-too-little	dema-underuse-v-1		dema-syn-underuse-v-1	v	Verb	use less than is possible or appropriate		U	project sense: tier to be set	project				underuse,underused,underuses,underusing
 undulate#wavy	oewn-undulate__5.00.00.smooth.02	undulate%5:00:00:smooth:02	oewn-02252967-s	s	Adjective	having a wavy margin and rippled surface	0	R	wn30-tag-count	oewn				undulate
 undulate#ripple	oewn-undulate__2.38.01..	undulate%2:38:01::	oewn-02043899-v	v	Verb	stir up (water) so as to form ripples	1	U	wn30-tag-count	oewn				undulate,undulated,undulates,undulating
 undulate#fluctuate	oewn-undulate__2.30.00..	undulate%2:30:00::	oewn-00582432-v	v	Verb	increase and decrease in volume or pitch, as if in waves	0	R	wn30-tag-count	oewn				undulate,undulated,undulates,undulating
@@ -6264,8 +6264,8 @@ undulate#billow	oewn-undulate__2.42.00..	undulate%2:42:00::	oewn-02693093-v	v	Ve
 unlearned#poorly-learned	oewn-unlearned__5.00.00.unscholarly.00	unlearned%5:00:00:unscholarly:00	oewn-02091809-s	s	Adjective	not well learned	0	R	wn30-tag-count	oewn				unlearned
 unlearned#ignorant	oewn-unlearned__5.00.00.uneducated.00	unlearned%5:00:00:uneducated:00	oewn-00834764-s	s	Adjective	uneducated in general; lacking knowledge or sophistication	0	R	wn30-tag-count	oewn				unlearned
 unlearned#innate	oewn-unlearned__3.00.02..	unlearned%3:00:02::	oewn-01641326-a	a	Adjective	not established by conditioning or learning	0	R	wn30-tag-count	oewn				unlearned
-unpeople#depopulation	dema-unpeople-n-1		dema-syn-unpeople-n-1	n	Noun	noun		U	project sense: tier to be set	project				unpeople,unpeoples
-unpeople#depopulate	dema-unpeople-v-1		dema-syn-unpeople-v-1	v	Verb	verb		U	project sense: tier to be set	project				unpeople,unpeopled,unpeoples,unpeopling
+unpeople#depopulation	dema-unpeople-n-1		dema-syn-unpeople-n-1	n	Noun	people denied recognized social or political existence or treated as if they do not exist		U	project sense: tier to be set	project				unpeople,unpeoples
+unpeople#depopulate	dema-unpeople-v-1		dema-syn-unpeople-v-1	v	Verb	deprive a place of its inhabitants or remove people from it		U	project sense: tier to be set	project				unpeople,unpeopled,unpeoples,unpeopling
 update#updating	oewn-update__1.04.00..	update%1:04:00::	oewn-00035244-n	n	Noun	the act of bringing someone or something up to date	0	R	wn30-tag-count	oewn				update,updates
 update#info-update	oewn-update__1.10.00..	update%1:10:00::	oewn-06655934-n	n	Noun	information or data that updates	0	R	wn30-tag-count	oewn				update,updates
 update#modernize	oewn-update__2.30.00..	update%2:30:00::	oewn-00170503-v	v	Verb	modernize or bring up to date	2	U	wn30-tag-count	oewn				update,updated,updates,updating
@@ -6309,12 +6309,12 @@ upset#overturn	oewn-upset__2.38.00..	upset%2:38:00::	oewn-01913971-v	v	Verb	caus
 upset#defeat-suddenly	oewn-upset__2.33.00..	upset%2:33:00::	oewn-01111498-v	v	Verb	defeat suddenly and unexpectedly	0	R	wn30-tag-count	oewn				upset,upsets,upsetting
 upset#form-with-swage	oewn-upset__2.35.00..	upset%2:35:00::	oewn-01258938-v	v	Verb	form metals with a swage	0	R	wn30-tag-count	oewn				upset,upsets,upsetting
 upsetting#distressing	oewn-upsetting__5.00.00.displeasing.00	upsetting%5:00:00:displeasing:00	oewn-01814304-s	s	Adjective	causing an emotional disturbance	0	R	wn30-tag-count	oewn				upsetting
-upsetting#distress-event	dema-upsetting-n-1		dema-syn-upsetting-n-1	n	Noun	upsetting (noun); no definition recorded		U	project sense: tier to be set	project				upsetting,upsettings
+upsetting#distress-event	dema-upsetting-n-1		dema-syn-upsetting-n-1	n	Noun	the disruption or disturbance of an established arrangement, routine, or state		U	project sense: tier to be set	project				upsetting,upsettings
 uptown#upper-town	oewn-uptown__3.00.00..	uptown%3:00:00::	oewn-02504272-a	a	Adjective	of or located in the upper part of a town	0	R	wn30-tag-count	oewn				uptown
 uptown#upper-town-direction	oewn-uptown__4.02.00..	uptown%4:02:00::	oewn-00189276-r	r	Adverb	toward or in the upper part of town	0	R	wn30-tag-count	oewn				uptown
 uptown#residential-district	oewn-uptown__1.15.00..	uptown%1:15:00::	oewn-08571743-n	n	Noun	a residential part of town away from the central commercial district	2	U	wn30-tag-count	oewn				uptown,uptowns
 upturn#upward-trend	oewn-upturn__1.04.00..	upturn%1:04:00::	oewn-00266993-n	n	Noun	an upward movement or trend as in business activity	0	R	wn30-tag-count	oewn				upturn,upturns
-upturn#turn-up	dema-upturn-v-1		dema-syn-upturn-v-1	v	Verb	verb		U	project sense: tier to be set	project				upturn,upturned,upturning,upturns
+upturn#turn-up	dema-upturn-v-1		dema-syn-upturn-v-1	v	Verb	turn over or cause to face upward		U	project sense: tier to be set	project				upturn,upturned,upturning,upturns
 urge#impulse	oewn-urge__1.16.00..	urge%1:16:00::	oewn-09203328-n	n	Noun	an instinctive motive	2	U	wn30-tag-count	oewn				urge,urges,urging
 urge#itch	oewn-urge__1.12.00..	urge%1:12:00::	oewn-07505591-n	n	Noun	a strong restless desire	2	U	wn30-tag-count	oewn				urge,urges,urging
 urge#exhort	oewn-urge__2.32.00..	urge%2:32:00::	oewn-00767694-v	v	Verb	force or impel in an indicated direction	36	C	wn30-tag-count	oewn				urge,urged,urges,urging
@@ -6504,7 +6504,7 @@ wicked#severe	oewn-wicked__5.00.00.intense.00	wicked%5:00:00:intense:00	oewn-015
 wicked#sinful	oewn-wicked__5.00.00.unrighteous.00	wicked%5:00:00:unrighteous:00	oewn-02044938-s	s	Adjective	having committed unrighteous acts	1	U	wn30-tag-count	oewn				wicked,wickedly
 wicked#arch	oewn-wicked__5.00.00.playful.00	wicked%5:00:00:playful:00	oewn-02130013-s	s	Adjective	naughtily or annoyingly playful	0	R	wn30-tag-count	oewn				wicked,wickedly
 wicked#repulsive	oewn-wicked__5.00.00.offensive.01	wicked%5:00:00:offensive:01	oewn-01630074-s	s	Adjective	highly offensive; arousing aversion or disgust	0	R	wn30-tag-count	oewn				wicked,wickedly
-wicked#wicking	dema-wicked-v-1		dema-syn-wicked-v-1	v	Verb	wick		U	project sense: tier to be set	project			R	wicked,wickeded,wickeding,wickeds
+wicked#wicking	dema-wicked-v-1		dema-syn-wicked-v-1	v	Verb	draw or convey liquid through absorbent material by capillary action		U	project sense: tier to be set	project			R	wicked,wickeded,wickeding,wickeds
 wind#air-current	oewn-wind__1.19.00..	wind%1:19:00::	oewn-11546388-n	n	Noun	air moving (sometimes with considerable force) from an area of high pressure to an area of low pressure	28	C	wn30-tag-count	oewn				wind,winds
 wind#breathing-out	oewn-wind__1.04.01..	wind%1:04:01::	oewn-00838198-n	n	Noun	breath	1	U	wn30-tag-count	oewn				wind,winds
 wind#influence	oewn-wind__1.19.01..	wind%1:19:01::	oewn-11435606-n	n	Noun	a tendency or force that influences events	1	U	wn30-tag-count	oewn				wind,winds

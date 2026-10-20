@@ -113,6 +113,30 @@ the verb forms with two tenses (`read`, `reread`, `cast`, `upset`, ...) take the
 labels and every analysis of the form has a label among them, and reports the forms that got none (the quota filling
 adds the missing lemmas).
 
+## Quota-Filled Rows (targeted)
+
+`anchors/`, `holdout/`, `choosers/` and `provenance/` also hold the files `quota-w<N>-real.tsv`, `quota-w<N>-written.tsv`
+and `quota-w<N>-forms.tsv` (chooser rows of a form), made by the quota filling (`tools/quota-fill`, see
+`docs/build_notes/quota-fill.md`): they bring every sense to the quota of its tier (see `coverage/README.md`).
+
+**Every quota-filled row is targeted.** It was found or written for one specific sense (or, for the chooser files, one
+specific form), never drawn at random from a text. Its provenance row says so in three extra columns after `origin`:
+`selection` (`targeted`), `selection_reason` (`sense=<sense id>`, or `form=<form>` for a chooser row) and `found_by`
+(how it was found: `harvest: pool sentence with the form '...' of the lemma, found in <document>; labeled gpt-6.1-sol
+(high confidence, full sense list of the form)`, or `written: gpt-5.6-luna wrote it for the sense; gpt-6.1-sol labeled it
+blind with the same sense`). The real sentences come only from public-domain or CC0 text (Project Gutenberg books
+published 1930 or earlier, Tatoeba sentences of the CC0 export, VOA Learning English staff-written articles and the
+USGS, NPS and National Weather Service pages, whose agencies state that their material is in the public domain); the
+licence column names the basis and the contributor column the document.
+
+**The encoder corpus is a balanced classifier corpus.** `anchors/`, `holdout/` and `choosers/` (all of them, not only
+the quota-filled files) hold the number of sentences that the quota of a sense asks for, not a sample of running text:
+the share of a sense in them says nothing about how often the sense occurs. They must **never** be used for usage
+statistics (tagger or sense counts, frequency priors, word frequencies). Held-out sentences found for a sense are fine
+for measuring the classifier, but a figure measured on them is not the accuracy on representative real text:
+`evaluate` reports the held-out rows by origin (targeted real text, earlier harvest, LLM-written) and says so. The
+representative measurements are the open English part-of-speech corpus and SemCor (the independent evaluation).
+
 ## Sense Files and Forms File (legacy)
 
 The following sections describe the retired class-labeled files that are now in `legacy/`; the paths in them are

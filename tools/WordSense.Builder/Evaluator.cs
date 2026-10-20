@@ -219,6 +219,12 @@ internal sealed record EvaluationResult(
         }
 
         text.Append('\n');
+        if (Sets.Count > 1)
+        {
+            text.Append("The held-out sentences are targeted: they were selected or written for a specific sense, so every figure is a classifier ")
+                .Append("measure on a balanced corpus and not the accuracy on representative text.\n\n");
+        }
+
         text.Append("- Weights size: ").Append((WeightsBytes / 1024.0).ToString("N0", inv)).Append(" KiB\n");
         text.Append("- Classification latency: ").Append(MillisecondsPerSentence.ToString("N2", inv)).Append(" ms per sentence\n");
         text.Append("- Word table first use: ").Append(WordsLoadMilliseconds.ToString("N0", inv)).Append(" ms, ")
@@ -410,11 +416,12 @@ internal static class Evaluator
 
         using var outcomesLog = outcomesFile is null ? null : new StreamWriter(outcomesFile, false, new System.Text.UTF8Encoding(false)) { NewLine = "\n" };
         var clock = Stopwatch.StartNew();
-        var holdoutResult = await ScoreAsync("holdout", holdout, classifier, outcomesLog, cancellationToken).ConfigureAwait(false);
+        var subsetSpecs = ProvenanceSubsets(corpus, holdout);
+        var (holdoutResult, subsetResults) = await ScoreAsync("holdout", holdout, classifier, outcomesLog, subsetSpecs, cancellationToken).ConfigureAwait(false);
         clock.Stop();
         var latency = holdout.Count == 0 ? 0 : clock.Elapsed.TotalMilliseconds / holdout.Count;
         progress.WriteLine($"{info.Name}: holdout done.");
-        List<SetResult> sets = [holdoutResult];
+        List<SetResult> sets = [holdoutResult, .. subsetResults];
 
         var weights = info.IsEncoder ? info.WeightsPath(repository) : string.Empty;
         BasicDetails? basic = null;
@@ -513,44 +520,160 @@ internal static class Evaluator
         _ => "None",
     };
 
-    private static async Task<SetResult> ScoreAsync(
+    /// <summary>
+    ///     Reads the origin of every sentence from <c>corpus/provenance</c> and names the subsets of the held-out rows.
+    /// </summary>
+    /// <remarks>
+    ///     The held-out sentences are not representative real text: those found for a specific sense are targeted, the
+    ///     earlier harvests were selected for the old classes and the written ones are LLM-written. The subsets are
+    ///     reported separately so that no figure is read as the accuracy on typical text. A provenance row is joined to a
+    ///     corpus row by its id (the first 12 hexadecimal digits of the SHA-256 of <c>lemma|sentence</c>).
+    /// </remarks>
+    /// <param name="corpus">The corpus directory.</param>
+    /// <param name="rows">The held-out rows.</param>
+    /// <returns>The named predicates of the subsets that have rows; empty when there is no provenance.</returns>
+    internal static List<(string Name, Func<CorpusRow, bool> Member)> ProvenanceSubsets(string corpus, IReadOnlyList<CorpusRow> rows)
+    {
+        var directory = Path.Join(corpus, "provenance");
+        var kinds = new Dictionary<string, string>(StringComparer.Ordinal);
+        if (!Directory.Exists(directory))
+        {
+            return [];
+        }
+
+        foreach (var file in Directory.GetFiles(directory, "*.tsv").OrderBy(f => f, StringComparer.Ordinal))
+        {
+            var lines = File.ReadAllLines(file, new UTF8Encoding(false));
+            if (lines.Length == 0)
+            {
+                continue;
+            }
+
+            var header = lines[0].Split('\t');
+            var idColumn = Array.IndexOf(header, "id");
+            var originColumn = Array.IndexOf(header, "origin");
+            var selectionColumn = Array.IndexOf(header, "selection");
+            if (idColumn < 0 || originColumn < 0)
+            {
+                continue;
+            }
+
+            foreach (var line in lines.Skip(1))
+            {
+                var columns = line.Split('\t');
+                if (columns.Length <= originColumn)
+                {
+                    continue;
+                }
+
+                string kind;
+                if (columns[originColumn] != "real")
+                {
+                    kind = "written";
+                }
+                else
+                {
+                    kind = selectionColumn >= 0 && columns.Length > selectionColumn && columns[selectionColumn] == "targeted" ? "real-targeted" : "real-earlier";
+                }
+
+                kinds[columns[idColumn]] = kind;
+            }
+        }
+
+        string KindOf(CorpusRow row)
+        {
+            var hash = System.Security.Cryptography.SHA256.HashData(Encoding.UTF8.GetBytes(row.Lemma + "|" + row.Sentence));
+            return kinds.GetValueOrDefault(Convert.ToHexString(hash)[..12].ToLowerInvariant(), "unknown");
+        }
+
+        var kindOfRow = rows.ToDictionary(r => (r.Lemma, r.Sentence), KindOf);
+        var subsets = new List<(string, Func<CorpusRow, bool>)>();
+        foreach (var (kind, label) in new[]
+                 {
+                     ("real-targeted", "holdout: real text, targeted (found for a sense)"),
+                     ("real-earlier", "holdout: real text, earlier harvest"),
+                     ("written", "holdout: LLM-written"),
+                 })
+        {
+            if (kindOfRow.Values.Any(v => v == kind))
+            {
+                var captured = kind;
+                subsets.Add((label, r => kindOfRow[(r.Lemma, r.Sentence)] == captured));
+            }
+        }
+
+        return subsets;
+    }
+
+    private static async Task<(SetResult Overall, List<SetResult> Subsets)> ScoreAsync(
         string name,
         List<CorpusRow> rows,
         IWordSenseModel classifier,
         TextWriter? outcomesLog,
+        List<(string Name, Func<CorpusRow, bool> Member)> subsets,
         CancellationToken cancellationToken)
     {
-        var outcomes = new List<(double Confidence, bool Correct)>(rows.Count);
-        var answered = new LevelCount[4];
-        int ranked = 0, fineTop1 = 0, fineTop1OfRanked = 0, pos = 0, analysis = 0;
+        var tallies = new List<Tally> { new(name, true) };
+        tallies.AddRange(subsets.Select(s => new Tally(s.Name, false)));
+        var index = 0;
         foreach (var row in rows)
         {
             var results = await classifier.ClassifyAsync(row.Words, cancellationToken).ConfigureAwait(false);
             var actual = results[row.TargetWordIndex];
             var verdict = Judge(row, actual);
-            var level = (int)verdict.Level;
-            answered[level] = new LevelCount(answered[level].Answered + 1, answered[level].Correct + (verdict.CorrectAtLevel ? 1 : 0));
-            ranked += verdict.Ranked ? 1 : 0;
-            fineTop1 += verdict.FineTop1 ? 1 : 0;
-            fineTop1OfRanked += verdict.Ranked && verdict.FineTop1 ? 1 : 0;
-            pos += verdict.PosCorrect ? 1 : 0;
-            analysis += verdict.AnalysisCorrect ? 1 : 0;
-            outcomes.Add((verdict.Confidence, verdict.CorrectAtLevel));
-            outcomesLog?.WriteLine(string.Join('\t', name, outcomes.Count - 1, row.SenseId, Answer(actual), actual.Confidence.ToString("F6", CultureInfo.InvariantCulture), verdict.CorrectAtLevel ? "1" : "0"));
+            tallies[0].Add(verdict);
+            for (var s = 0; s < subsets.Count; s++)
+            {
+                if (subsets[s].Member(row))
+                {
+                    tallies[s + 1].Add(verdict);
+                }
+            }
+
+            outcomesLog?.WriteLine(string.Join('\t', name, index, row.SenseId, Answer(actual), actual.Confidence.ToString("F6", CultureInfo.InvariantCulture), verdict.CorrectAtLevel ? "1" : "0"));
+            index++;
         }
 
-        return new SetResult(
+        return (tallies[0].ToResult(), tallies.Skip(1).Select(t => t.ToResult()).ToList());
+    }
+
+    /// <summary>
+    ///     The running counts of one evaluation set.
+    /// </summary>
+    private sealed class Tally(string name, bool keepOutcomes)
+    {
+        private readonly LevelCount[] _answered = new LevelCount[4];
+        private readonly List<(double Confidence, bool Correct)> _outcomes = [];
+        private int _rows, _ranked, _fineTop1, _fineTop1OfRanked, _pos, _analysis;
+
+        public void Add(Verdict verdict)
+        {
+            var level = (int)verdict.Level;
+            _answered[level] = new LevelCount(_answered[level].Answered + 1, _answered[level].Correct + (verdict.CorrectAtLevel ? 1 : 0));
+            _rows++;
+            _ranked += verdict.Ranked ? 1 : 0;
+            _fineTop1 += verdict.FineTop1 ? 1 : 0;
+            _fineTop1OfRanked += verdict.Ranked && verdict.FineTop1 ? 1 : 0;
+            _pos += verdict.PosCorrect ? 1 : 0;
+            _analysis += verdict.AnalysisCorrect ? 1 : 0;
+            if (keepOutcomes)
+            {
+                _outcomes.Add((verdict.Confidence, verdict.CorrectAtLevel));
+            }
+        }
+
+        public SetResult ToResult() => new(
             name,
-            rows.Count,
-            answered[(int)SenseLevel.Sense],
-            answered[(int)SenseLevel.Group],
-            answered[(int)SenseLevel.PartOfSpeech],
-            answered[(int)SenseLevel.None].Answered,
-            fineTop1,
-            ranked,
-            fineTop1OfRanked,
-            pos,
-            analysis,
-            outcomes);
+            _rows,
+            _answered[(int)SenseLevel.Sense],
+            _answered[(int)SenseLevel.Group],
+            _answered[(int)SenseLevel.PartOfSpeech],
+            _answered[(int)SenseLevel.None].Answered,
+            _fineTop1,
+            _ranked,
+            _fineTop1OfRanked,
+            _pos,
+            _analysis,
+            keepOutcomes ? _outcomes : null);
     }
 }

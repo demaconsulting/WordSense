@@ -33,6 +33,21 @@ accepted were dropped by hand because their glosses differ in more than wording)
 return when the classifier's confusion data shows that their senses are mixed up. Their `group_id` in `senses.tsv` is
 empty.
 
+## Glosses of project senses
+
+A project sense (a sense that Open English WordNet does not have; source `dema`, synset id `dema-syn-...`) first had a
+placeholder gloss: the seeder template ("The preposition "about"; a project sense, because Open English WordNet has no
+preposition sense of this word."; 817 senses), a bare part-of-speech or label word (`noun`, `verb`, `adj-noun`; 118) or
+"... no definition recorded" (2). The detection rule (`tools/quota-fill/placeholder_glosses.py detect`) is: the sense is
+a project sense and its gloss is empty, a bare word or hyphenated pair of words, the seeder template or ends with
+"no definition recorded". The 937 placeholder glosses were replaced by real one-line definitions that
+`gpt-6.1-sol` wrote from the lemma, the part of speech, the role of the sense (for example a closed class), the other
+senses of the lemma and one or two example sentences. `project-glosses.tsv` is the record (`sense_id`, part of speech,
+old gloss, new gloss). The glosses are stored where the seeder and the compiler read them: the committed table
+`data/gloss` (the rows of the `dema-syn-*` synsets only; no gloss of an Open English WordNet synset was touched, and
+OEWN glosses stay verbatim) and, for the 135 project senses that this curation lists, the `gloss` column of
+`senses.tsv`, which `seed-inventory` writes into `data/`. No placeholder gloss remains (`detect` reports 0).
+
 ## Part of speech of a curated sense
 
 The `part_of_speech` of a curated sense must be the part of speech of its sense in `data/` (the part of speech of its
