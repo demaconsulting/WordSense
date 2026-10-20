@@ -12,7 +12,7 @@ The builder creates the data that the shipped packages embed and measures the sh
 - the flat word image `wordsense.img` embedded in the core package, compiled from the authoritative tables of `data/`
   (the words, their analyses and the sense catalog);
 - the weights blob `weights.bin` embedded in each encoder package (MiniLM, BertBaseCased): the per-lemma fine-sense
-  classifiers with their two thresholds;
+  classifiers with their thresholds;
 - the statistics table `basic.bin` embedded in the Basic package, and the treebank count files of `corpus/ud` it is
   trained from;
 - accuracy reports of the models at each answer level, measured on the held-out and real-text sentences, on SemCor 3.0
@@ -48,18 +48,27 @@ implementation of the feature computation.
   table knows, how many of the known words have a lemma with trained fine senses, and lists the unknown words as names
   and others.
 - `ImageCompiler`: reads the tables of `data/` (entry, form, sense, sense label, sense group, group sense, respelling
-  and frequency) and the lexicon lists, and writes the flat word image (`WSI1`): the UTF-8-byte-sorted spelling
-  index, 8-byte analysis rows, entries, the lemma-to-forms index and the fold index (as before), and the sense catalog:
-  the sense ids (UTF-8 sorted), the key suffix of each sense (the part after `lemma%`), the sense-to-group index, the
-  sense-to-respelling index, the group ids and their parts of speech, the range of senses of each lemma and part of
-  speech in inventory order, and a sorted key-to-sense index. Each section is Brotli-compressed; the header holds the
-  data hash, a content hash and the inventory hash (over the sense, group and analysis-inventory sections, which is what
-  the weights must match). The catalog sections are decoded lazily by the reader. Equal data always gives equal
-  decompressed sections.
+  and frequency) and the lexicon lists, and writes the flat word image (`WSI1` version 3, a 112-byte header: magic,
+  version, section count, a reserved word, the SHA-256 of the data tables, the SHA-256 of all bytes from offset 112 and
+  the 32-byte inventory hash; then a directory of 20-byte entries and the sections). The analysis sections are the
+  UTF-8-byte-sorted spelling index, the features, the entries with their lemma and part of speech, one analysis row
+  (entry index and feature index) per `form` row, the lemma-to-forms index and the fold index. The
+  catalog sections are the sense ids sorted by UTF-8 bytes (a sense index is its position), the OEWN key suffix of each
+  sense (the part after `lemma%`, empty for a project sense), the sense-to-group index (group index plus one, 0 for a
+  sense in no group), the sense-to-respelling index (respelling index plus one, 0 for none) with the distinct
+  respelling strings, the group ids (UTF-8 sorted) and group parts of speech, the group members (CSR in inventory
+  order), the lemma and part-of-speech blocks (lemma bytes and part of speech sorted by lemma bytes then part of
+  speech, each with a CSR of sense indexes in inventory order: WordNet 3.0 tag count descending, project senses last,
+  then sense id bytes) and a key index (sense indexes sorted by full key bytes). Each section is Brotli-compressed. The
+  inventory hash covers, as raw decompressed bytes with each section fed as id, length and bytes, the spelling,
+  analysis, feature, entry lemma and part-of-speech, sense id, sense-group, group id, group part-of-speech and
+  lemma-block sections, and is what the weights and `basic.bin` must match. The catalog sections are decoded lazily by
+  the reader. Equal data always gives equal decompressed sections.
 - `WeightsTrainer`, `LogisticTrainer`, `ModelTrainer` and `WeightsBlobWriter`: train the per-lemma classifiers from
   pooled encoder vectors and serialize the weights blob (`WSX3`: float16 weights, the sense ids of each lemma, the
-  fine and group thresholds, and the optional form chooser).
-- `Thresholds`: chooses the fine and group thresholds of a lemma by cross-validation on its anchors.
+  thresholds, and the optional form chooser).
+- `Thresholds`: chooses the fine threshold of a lemma, and the group threshold of a lemma that has groups, by
+  cross-validation on its anchors.
 - `Tiers`: the per-sense quota of anchor and held-out sentences and the report of the senses that fall short.
 - `EmbeddingCache` and `CachingEncoder`: the persistent cache of pooled vectors (one file per model, keyed by the
   words and the target index, valid for one digest of the model files, per-entry checksums, atomic save) and the
@@ -81,7 +90,7 @@ implementation of the feature computation.
 - `BasicTrainer`, `BasicModelData`: select the tabled words (closed-class words and the most frequent
   dictionary-ambiguous words), the suffixes and the closed-class masks from the counts, and train the cue tables from
   the anchors, with the analysis label of each anchor rolled up from its fine sense.
-- `BasicTablesWriter`: serializes the model data into the `WSB2` blob, deterministically.
+- `BasicTablesWriter`: serializes the model data into the `WSB3` blob, deterministically.
 - `BasicTuner`: scores the hyper-parameter grid.
 - `BasicModelBuilder`: the commands `ud-counts` and `train-basic`.
 - `AppendixGenerator`: generates the senses appendix of the user guide.
@@ -145,10 +154,13 @@ instead of `--model`.
    auxiliary list gains an auxiliary analysis. The forms of every dictionary word come from the `form` table, so no
    morphology runs at run time.
 3. Build the sense catalog: every single-token OEWN sense and every project sense, with its readable id (`lemma#label`),
-   its group, its OEWN key (none for a project sense) and its respelling. The senses of each lemma and part of speech
+   its group (none when it is in no group), its OEWN key (none for a project sense) and its respelling. The senses of
+   each lemma and part of speech
    are ranked by WordNet 3.0 tag count, then by the sense id bytes.
-4. Check the invariants before writing: a sense without a label, a sense in no group or in two groups, and a group that
-   mixes lemmas or parts of speech fail the build with an error that lists every violation.
+4. Check the invariants before writing: a sense without a label, a sense in two groups, a group of fewer than two senses
+   or of all the senses of its lemma and part of speech, a group that
+   mixes lemmas or parts of speech, and a group id that lacks the group marker (`lemma#group:label`) or equals a sense
+   id fail the build with an error that lists every violation.
 5. Write the sections, compress them, compute the hashes and write the file. The committed image is the compilation of
    the committed data (`Words_Committed_MatchesData`).
 
@@ -177,9 +189,9 @@ the tiers report.
 5. Per lemma that has two or more senses with anchors, fit a one-versus-rest L2-regularized logistic regression
    (C = 100) over its fine senses with a deterministic Newton solver. A sense with a single anchor still takes part in
    the training; a lemma with fewer than two anchored senses gets no weights. The columns are the senses in inventory
-   order. The group score of a lemma is derived from the fine scores (the sum of the normalized scores of the senses of
-   the group), so no group weights are stored.
-6. Choose the two thresholds of the lemma (see Thresholds below).
+   order. The group score of a lemma that has groups is derived from the fine scores (the sum of the normalized scores of
+   the senses of the group), so no group weights are stored.
+6. Choose the thresholds of the lemma (see Thresholds below).
 7. The lemmas are fitted concurrently (`TrainingOptions.DefaultParallelism`, the processors minus two, 2 to 16
    threads); each result is written to its own slot, so the weights do not depend on the thread count. A lemma whose
    fit is in the fit cache (see below) is not fitted again.
@@ -191,7 +203,8 @@ the tiers report.
 deterministic shuffle; each fold is scored by a fit on the other folds, which gives out-of-fold margins for every
 anchor. The fine threshold `t_fine` is the lowest margin such that the answers at or above it reach the precision target
 on the out-of-fold anchors (95 percent by default); `t_group` is chosen in the same way on the group of the answer
-derived from the fine scores. A level for which no threshold reaches the target gets no threshold and is never answered
+derived from the fine scores, only for a lemma that has groups and over the anchors whose best sense is in a group. A
+level for which no threshold reaches the target gets no threshold and is never answered
 for that lemma. Only the anchors are read: the holdout, real-text, suite and independent evaluation sentences never
 reach the choice, so the accuracy figures of the evaluations are independent of the thresholds. The confidence of an
 answer maps the margin of the answered level onto 0 to 1 with 0.5 at the threshold of that level.
@@ -242,9 +255,9 @@ require a second scoring path.
 #### Evaluation (`Evaluator.RunAsync`)
 
 Creates the model on the verified files, classifies the holdout and the real-text sentences, and reports per set the
-rows, the share of answers at each level (sense, group, low-confidence group) and the accuracy at each level (the
+rows, the share of answers at each level (sense, group, part of speech) and the accuracy at each level (the
 share of the sense-level answers with the right sense, of the group-level answers with the right group, and of the
-low-confidence answers with the right group), and the part-of-speech accuracy, plus the weights size, the latency per
+part-of-speech answers with the right analysis), plus the weights size, the latency per
 sentence and the first-use time and memory of the lexicon. `basic` is evaluated the same way without weights and
 additionally reports the calibration of its confidence: the number and accuracy of the answers in the confidence
 buckets (below 0.4, 0.4 to 0.6, 0.6 to 0.7, 0.7 to 0.8, 0.8 to 0.9 and at least 0.9), the coverage and precision at
@@ -289,13 +302,18 @@ present (Git LFS).
 2. Read and validate the inventory, anchors, holdout and forms as for the weights; the holdout is not used further.
 3. `BasicTrainer.Train` selects from the counts the closed-class words (enough occurrences and a dominant closed-class
    share), the most frequent dictionary-ambiguous words and the suffixes of one to three characters of words the lexicon
-   lacks, and trains one naive Bayes cue table per word with at least two analyses from the anchors, with the same
-   feature extraction and 16-bit hash as the runtime; hash collisions keep the more frequent feature, and weights and
+   lacks, and trains the naive Bayes cue tables from the anchors, keyed by training lemma (a form that spans lemmas, such
+   as `left` or `bases`, gets a table of its own), whose columns are analyses (lemma, part of speech and features): a
+   column with empty features stands for every analysis of that lemma and part of speech, and a column with features
+   (for example `read`'s `Tense=Past+VerbForm=Part` and `Tense=Pres`) matches that analysis exactly. The features are
+   extracted
+   with the same feature extraction and 16-bit hash as the runtime; hash collisions keep the more frequent feature, and
+   weights and
    priors are quantized to 1/8 nat. The analysis label of each anchor is rolled up from its fine sense (the lemma and
    part of speech of the sense), so the anchors are labeled only once. All numbers come from `BasicHyperparameters`.
 4. `BasicTablesWriter.Write` serializes the table, `BasicTables.Load` checks that it reads back, and the file is
-   written with its size and SHA-256 reported. The hash of the table covers the analysis inventory that it was trained
-   against.
+   written with its size and SHA-256 reported. The table carries the inventory hash of the word image that it was
+   trained against and is rebuilt whenever the inventory changes.
 
 #### Basic tuning (`BasicTuner.RunAsync`)
 
@@ -319,12 +337,14 @@ malformed option, an unknown model name, an invalid or inconsistent corpus or in
 missing file, a download whose checksum differs from the pin or an I/O failure is reported as a one-line message on the
 error stream. The corpus validation is strict: a malformed row, a sense id that does not exist, a part of speech that
 disagrees with the sense and a sentence that is not disjoint from the sets it must not resemble are errors. The image
-compilation fails on a sense without a label, a sense in no group or in two groups and a group that mixes lemmas or
-parts of speech. Nothing is written when validation fails before the output step.
+compilation fails on a sense without a label, a sense in two groups, a group of fewer than two senses or of all the
+senses of its lemma and part of speech, a group that mixes lemmas or
+parts of speech, and a group id without the group marker or equal to a sense id. Nothing is written when validation
+fails before the output step.
 
 ### Dependencies
 
-- Core: `WordLexicon`, `WordDetails`, `PartOfSpeech`, `SenseLevel`, `WordSense`, `IWordSenseModel`.
+- Core: `WordLexicon`, `WordDetails`, `PartOfSpeech`, `SenseLevel`, `ClassifyResult`, `IWordSenseModel`.
 - Basic: `BasicTables`, `BasicClassifier`, `CueModel` and `PosTag` (the format, the tag set, the feature extraction and
   hash, and the segmentation shared with training).
 - Onnx: `OnnxWordSenseModel`, `OnnxEncoder`, the weights data types (read for the frozen mean) and `FeatureExtractor`.

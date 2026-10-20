@@ -1,192 +1,180 @@
-group_id	lemma	part_of_speech	member_sense_ids	gloss
-just#fair	just	Adjective	just#fair-proper,just#fair-to-all,just#impartial,just#morally-excellent	used especially of what is legally or ethically right or proper or fitting | fair to all parties as dictated by reason and conscience | free from favoritism or self-interest or bias or deception; conforming with esta | of moral excellence
-just#only-merely	just	Adverb	just#only-merely	and nothing more
-just#exactly	just	Adverb	just#exactly,just#at-this-moment	indicating exactness or preciseness | exactly at this moment or the moment described
-just#recently	just	Adverb	just#a-moment-ago,just#shortly-before	only a moment ago | only a very short time before
-just#absolutely	just	Adverb	just#absolutely	(used for emphasis) absolutely
-just#possibly	just	Adverb	just#possibly	possibly (indicating a slight chance of something being true)
-just#narrowly	just	Adverb	just#narrowly	by a little
-go#function	go	Adjective/Verb	go#ready-working,go#function-as-expected	functioning correctly and ready for action | perform as expected when applied
-go#work-shift	go	Noun	go#work-shift	a time period for working (after which you will be relieved by someone else)
-go#mdma-slang	go	Noun	go#mdma-slang	street names for methylenedioxymethamphetamine
-go#attempt	go	Noun	go#attempt	a usually brief attempt
-go#board-game	go	Noun	go#board-game	a board game for two players who place counters on a grid; the object is to surr
-go#travel	go	Verb	go#travel-move,go#depart-leave,go#begin-start	change location; move, travel, or proceed, also metaphorically | move away from a place into another direction | begin or set in motion
-go#course	go	Verb	go#follow-procedure,go#take-course,go#proceed-fare	follow a procedure or take a course | follow a certain course | pass, fare, or elapse; of a certain state of affairs or action
-go#state	go	Verb	go#become-state,go#remain-in-condition	enter or assume a certain state or condition | be or continue to be in a certain condition
-go#be-awarded	go	Verb	go#be-awarded	be awarded; be allotted
-go#have-form	go	Verb	go#have-form	have a particular form
-go#extend	go	Verb	go#extend-span,go#lead-extend	stretch out over a distance, space, time, or scope; run or extend between two po | lead, extend, or afford access
-go#be-discarded	go	Verb	go#be-discarded	be abolished or discarded
-go#sound	go	Verb	go#make-sound,go#be-sounded	make a certain noise or sound | be sounded, played, or expressed
-go#spent	go	Verb	go#be-used-up,go#be-spent-money	to be spent or finished | be spent
-go#be-changed	go	Verb	go#be-changed	progress by being changed
-go#survive	go	Verb	go#survive	continue to live and avoid dying
-go#die-fail	go	Verb	go#pass-away,go#fail-stop	pass from physical life and lose all bodily attributes and functions necessary t | stop operating or functioning
-go#fit-belong	go	Verb	go#belong-place,go#match-harmonize,go#fit	be in the right place or situation | blend or harmonize | be the right size or shape; fit correctly or as desired
-go#rank-compare	go	Verb	go#rank-compare	be ranked or compare
-go#take-turn	go	Verb	go#take-turn	have a turn; make one's move in a game
-go#divide-into	go	Verb	go#divide-into	be contained in
-go#rummage	go	Verb	go#rummage	go through in search of something; search through someone's belongings in an una
-go#choose-support	go	Verb	go#choose-support	give support (to) or make a choice (of) one out of a group or number
-please#polite-request	please	Adverb	please#polite-request	used in polite request
-please#give-pleasure	please	Verb	please#give-pleasure,please#satisfy	give pleasure to or be pleasing to | give satisfaction
-please#be-willing	please	Verb	please#be-willing	be the will of or have the will (to)
-even#divisible-by-two	even	Adjective	even#divisible-by-two	divisible by two
-even#equal	even	Adjective	even#equal-matched,even#tied-score	equal in degree or extent or amount; or equally matched or balanced | of the score in a contest
-even#level-regular	even	Adjective	even#level-smooth,even#symmetrical,even#at-intervals	being level or straight or regular and without variation as e.g. in shape or tex | symmetrically arranged | occurring at fixed intervals
-even#evening	even	Noun	even#evening	the latter part of the day (the period of decreasing daylight from late afternoo
-even#emphasis	even	Adverb	even#intensive,even#to-full-extent	used as an intensive especially to indicate something unexpected | to the full extent
-even#notwithstanding	even	Adverb	even#notwithstanding	in spite of; notwithstanding
-even#comparative-degree	even	Adverb	even#comparative-degree	to a greater degree or extent; used with comparisons
-even#level-out	even	Verb	even#make-level,even#become-level,even#make-equal	make level or straight | become even or more even | make even or more even
-only#sole	only	Adjective	only#sole,only#exclusive	being the only one; single and isolated from others | exclusive of anyone or anything else
-only#merely	only	Adverb	only#merely,only#exclusively	and nothing more | without any others being included or involved
-only#outcome	only	Adverb	only#nevertheless-result,only#ultimately	with nevertheless the final result | in the final outcome
-only#except-that	only	Adverb	only#except-that	except that
-only#as-recently-as	only	Adverb	only#as-recently-as	as recently as
-back#rear-located	back	Adjective	back#rear-located,back#animal-rear	related to or located at the back | located at or near the back of an animal
-back#earlier-date	back	Adjective	back#earlier-date	of an earlier date
-back#body	back	Noun	back#body-trunk,back#spine	the posterior part of a human (or animal) body from the neck to the end of the s | the series of vertebrae forming the axis of the skeleton and protecting the spin
-back#object-rear	back	Noun	back#hidden-side,back#farthest-part,back#book-spine,back#garment-back,back#chair-back	the side that goes last or is not normally seen | the part of something that is furthest from the normal viewer | the protective covering on the front, back, and spine of a book | the part of a garment that covers the back of your body | a support that you can lean against while sitting
-back#football	back	Noun	back#football-back,back#football-position	(football) a person who plays in the backfield | (American football) the position of a player on a football team who is stationed
-back#return	back	Adverb	back#to-former-place,back#to-original-state	in or to or toward a former location | in or to or toward an original condition
-back#rearward	back	Adverb	back#rearward	at or to or toward the back or rear
-back#in-past-time	back	Adverb	back#in-past-time	in or to or toward a past time
-back#respond	back	Adverb	back#in-reply,back#in-retaliation	in reply | in repayment or retaliation
-back#support	back	Verb	back#be-behind-approve,back#support-approve,back#finance,back#validate	be behind; approve of | give support or one's approval to | support financial backing for | establish as valid or genuine
-back#reverse	back	Verb	back#move-backward,back#cause-backward	travel backward | cause to travel backward
-back#lie-behind	back	Verb	back#lie-behind	be in back of
-back#bet-on	back	Verb	back#bet-on	place a bet on
-back#shift-counterclockwise	back	Verb	back#shift-counterclockwise	shift to a counterclockwise direction
-back#provide-backing	back	Verb	back#provide-backing	strengthen by providing with a back or backing
-still#motionless	still	Adjective	still#motionless	not in physical motion
-still#silent-quiet	still	Adjective	still#silent-quiet	marked by absence of sound
-still#calm-water	still	Adjective	still#calm-water,still#no-current	(of a body of water) free from disturbance by heavy waves | free from noticeable current
-still#static-image	still	Adjective	still#static-image	used of pictures; of a single or static photograph not presented so as to create
-still#non-sparkling	still	Adjective	still#non-sparkling	not sparkling
-still#film-photo	still	Noun	still#film-photo	a static photograph (especially one taken from a movie and used for advertising 
-still#tranquil-silence	still	Noun	still#tranquil-silence	(poetic) tranquil silence
-still#distillery	still	Noun	still#distilling-apparatus,still#distillery	an apparatus used for the distillation of liquids; consists of a vessel in which | a plant and works where alcoholic drinks are made by distillation
-still#even-now	still	Adverb	still#even-now	with reference to action or condition; without change, interruption, or cessatio
-still#nevertheless	still	Adverb	still#nevertheless	despite anything to the contrary (usually preceding a concession)
-still#to-greater-degree	still	Adverb	still#to-greater-degree	to a greater degree or extent; used with comparisons
-still#without-moving	still	Adverb	still#without-moving	without moving or making a sound
-still#calm	still	Verb	still#make-calm,still#quiet-silence,still#lessen-calm	make calm or still | cause to be quiet or not talk | lessen the intensity of or calm
-still#make-motionless	still	Verb	still#make-motionless	make motionless
-little#small	little	Adjective	little#small-size,little#petty-unimportant,little#short-stature,little#endearing-small	limited or below average in number or quantity or magnitude or extent | (informal) small and of little importance | low in stature; not tall; describing something or someone with a stature less th | small in a way that arouses feelings (of tenderness or its opposite depending on
-little#not-much-quantity	little	Adjective	little#not-much-quantity	(quantifier used with mass nouns) small in quantity or degree; not much or almos
-little#young	little	Adjective	little#young	(of children and animals) young, immature
-little#faint-voice	little	Adjective	little#faint-voice	(of a voice) faint
-little#lowercase	little	Adjective	little#lowercase	lowercase
-little#small-amount	little	Noun	little#small-amount	a small amount or duration
-little#not-much	little	Adverb	little#not-much	not much
-right#right-hand-side	right	Adjective	right#right-hand-side,right#for-right-hand	being or located on or directed toward the side of the body to the east when fac | intended for the right hand
-right#correct	right	Adjective	right#correct,right#correct-opinion,right#precisely-accurate	free from error; especially conforming to fact or truth | correct in opinion or judgment | precisely accurate
-right#proper-suitable	right	Adjective	right#socially-correct,right#appropriate-suitable,right#in-order,right#proper-procedure,right#most-suitable	socially right or correct | appropriate for a condition or purpose or occasion or a person's character, need | in or into a satisfactory condition | in accord with accepted standards of usage or procedure | most suitable or right for a particular purpose
-right#just-lawful	right	Adjective	right#just-lawful	in conformance with justice or law or morality
-right#political-right	right	Adjective	right#political-right	of or belonging to the political or intellectual right
-right#perpendicular	right	Adjective	right#perpendicular	having the axis perpendicular to the base
-right#outward-facing	right	Adjective	right#outward-facing	(of the side of cloth or clothing) facing or intended to face outward
-right#informal-very	right	Adjective	right#informal-very	(informal) very; used informally as an intensifier
-right#entitlement	right	Noun	right#entitlement,right#legal-interest	an abstract idea of that which is due to a person or governmental body by law or | (frequently plural) the interest possessed by law or custom in some intangible t
-right#right-side	right	Noun	right#right-side,right#right-hand,right#right-turn	location near or direction toward the right side; i.e. the side to the south whe | the hand that is on the right side of the body | a turn toward the side of the body that is on the south when the person is facin
-right#right-field	right	Noun	right#right-field	the piece of ground in the outfield on the catcher's right
-right#political-wing	right	Noun	right#political-wing	those who support political or social or economic conservatism; those who believ
-right#justice	right	Noun	right#justice	anything in accord with principles of justice
-right#exactly-completely	right	Adverb	right#precisely,right#completely	precisely, exactly | to a complete degree or to the full or entire extent; Completely or entirely
-right#immediately	right	Adverb	right#immediately	immediately
-right#face-down	right	Adverb	right#face-down	in a face down manner
-right#toward-right	right	Adverb	right#toward-right	toward or on the right; also used figuratively
-right#correctly	right	Adverb	right#correctly,right#accurately	in the right manner; correctly; suitably | in an accurate manner
-right#interjection	right	Interjection	right#agreement-yes,right#discourse-marker	an interjection expressing agreement; Yes, you are indeed correct | discourse marker that opens or redirects talk (Right, let us begin) or checks ag
-right#southern-very	right	Adverb	right#southern-very	(Southern regional intensive) very; to a great degree
-right#morally	right	Adverb	right#morally	in accordance with moral or social standards
-right#correct-wrong	right	Verb	right#make-amends,right#correct-fix	make reparations or amends for | make right or correct
-right#upright	right	Verb	right#set-upright,right#regain-upright	put in or restore to an upright position | regain an upright or proper position
-own#belonging-to	own	Adjective	own#belonging-to	belonging to or on behalf of a specified person (especially yourself); preceded 
-own#possess	own	Verb	own#possess	have ownership or possession of
-however#contrast	however	Adverb	however#nevertheless,however#by-contrast	despite anything to the contrary (usually preceding a concession) | by contrast; on the other hand
-however#to-whatever-degree	however	Adverb	however#to-whatever-degree	to whatever degree or extent
-however#in-whatever-way	however	Adverb/Conjunction	however#any-manner,however#conjunction	in whatever way or manner | introduces a clause meaning "in whatever way / no matter how" (However you slice
-well#in-good-health	well	Adjective	well#in-good-health	in good health especially after having suffered illness or injury
-well#advisable	well	Adjective	well#favorable-result,well#advisable	resulting favorably | wise or advantageous and hence advisable
-well#water-source	well	Noun	well#water-source	a deep hole or shaft dug or drilled to obtain water or oil or gas or brine
-well#cavity	well	Noun	well#liquid-cavity,well#stair-shaft,well#ship-compartment	a cavity or vessel used to contain liquid | an open shaft through the floors of a building (as for a stairway) | an enclosed compartment in a ship or plane for holding something as e.g. fish or
-well#abundant-source	well	Noun	well#abundant-source	an abundant source
-well#good-manner	well	Adverb	well#good-manner,well#skillfully	(often used as a combining form) in a good or proper or satisfactory manner or t | with skill or in a pleasing manner
-well#thoroughly-degree	well	Adverb	well#thoroughly,well#intensifier,well#to-great-degree	thoroughly or completely; fully; often used as a combining form | (used for emphasis or as an intensifier) entirely or fully | to a great extent or degree
-well#likelihood	well	Adverb	well#likelihood	indicating high probability; in all likelihood
-well#suitable-extent	well	Adverb	well#suitable-extent	to a suitable or appropriate extent or degree
-well#favorably	well	Adverb	well#favorably,well#advantageously	favorably; with approval | in a manner affording benefit or advantage
-well#intimate-knowledge	well	Adverb	well#intimate-knowledge	with great or especially intimate knowledge
-well#prudently	well	Adverb	well#prudently	with prudence or propriety
-well#financial-comfort	well	Adverb	well#financial-comfort	in financial comfort
-well#good-humor	well	Adverb	well#good-humor	without unusual distress or resentment; with good humor
-well#rise-up	well	Verb	well#rise-up	come up, as of a liquid
-well#discourse-marker	well	Interjection	well#discourse-marker	discourse marker or filler opening an utterance, expressing hesitation, resignat
-review#examination	review	Noun	review#reappraisal,review#medical-checkup,review#accounting-review,review#judicial-review,review#formal-examination	a new appraisal or evaluation | a subsequent examination of a patient for the purpose of monitoring earlier trea | (accounting) a service (less exhaustive than an audit) that provides some assura | (law) a judicial reexamination of the proceedings of a court (especially by an a | a formal or official examination
-review#critical-article	review	Noun	review#critical-article	an essay or article that gives a critical evaluation (as of a book or play)
-review#variety-show	review	Noun	review#variety-show	a variety show with topical sketches and songs and dancing and comedians
-review#periodical	review	Noun	review#periodical	a periodical that publishes critical essays on current affairs or literature or 
-review#recap-practice	review	Noun	review#summary-recap,review#practice-drill	a summary at the end that repeats the substance of a longer discussion | practice intended to polish performance or refresh the memory
-review#look-again	review	Verb	review#look-again,review#refresh-memory,review#look-back	look at again; examine again | refresh one's memory | look back upon (a period of time, sequence of events); remember
-review#appraise-critically	review	Verb	review#appraise-critically	appraise critically
-review#inspect-troops	review	Verb	review#inspect-troops	hold a review (of troops)
-first#initial	first	Adjective	first#ordinal-initial,first#initial-stage,first#setting-in-motion	preceding all others in time or space or degree | serving to begin | serving to set in motion
-first#top	first	Adjective	first#top-voice,first#foremost	highest in pitch or chief among parts or voices or instruments or orchestra sect | ranking above all others
-first#first-item	first	Noun	first#top-ranked-item,first#first-item	the first or highest in an ordering or series | the first element in a countable series
-first#start-time	first	Noun	first#start-time	the time at which something is supposed to begin
-first#first-base	first	Noun	first#first-base	the fielding position of the player on a baseball team who is stationed at first
-first#honours-degree	first	Noun	first#honours-degree	an honours degree of the highest class
-first#low-gear	first	Noun	first#low-gear	the lowest forward gear ratio in the gear box of a motor vehicle; used to start 
-first#initially	first	Adverb	first#before-anything,first#initial-time	before anything else | the initial time
-first#before-another	first	Adverb	first#before-another	before another in time, space, or importance
-first#prominently-forward	first	Adverb	first#prominently-forward	prominently forward
-long#lasting-time	long	Adjective	long#lasting-time	primarily temporal sense; being or indicating a relatively great or greater than
-long#spatial-length	long	Adjective	long#spatial-length,long#tall	primarily spatial sense; of relatively great or greater than average spatial ext | of relatively great height
-long#good-memory	long	Adjective	long#good-memory	good at remembering
-long#holding-securities	long	Adjective	long#holding-securities	holding securities or commodities in expectation of a rise in prices
-long#long-vowel	long	Adjective	long#long-vowel	(of speech sounds or syllables) of relatively long duration
-long#risky	long	Adjective	long#risky	involving substantial risk
-long#far-sighted	long	Adjective	long#far-sighted	planning prudently for the future
-long#excessive	long	Adjective	long#excessive	having or being more than normal or necessary
-long#for-long-time	long	Adverb	long#for-long-time	for an extended time or at a distant time
-long#for-distance	long	Adverb	long#for-distance	for an extended distance
-long#yearn	long	Verb	long#yearn	desire strongly or persistently
-help#assistance	help	Noun	help#assistance,help#useful-resource	the activity of contributing to the fulfillment of a need or furtherance of an e | a person or thing that is a resource that helps make something easier or possibl
-help#helper-person	help	Noun	help#helper-person	a person who contributes to the fulfillment of a need or furtherance of an effor
-help#means-of-serving	help	Noun	help#means-of-serving	a means of serving
-help#assist	help	Verb	help#assist,help#further-cause	give help or assistance; be of service | contribute to the furtherance of
-help#improve	help	Verb	help#improve-condition,help#change-better	improve the condition of | improve; change for the better
-help#be-useful	help	Verb	help#be-useful	be of use
-help#refrain	help	Verb	help#refrain	abstain from doing; always used with a negative
-help#serve-food	help	Verb	help#serve-food,help#take-use	help to some food; help with food or drink | take or use
-help#cry-for-aid	help	Interjection	help#cry-for-aid	cry calling for urgent assistance (Help! Fire!)
-forward#front-located	forward	Adjective	forward#front-located,forward#forward-gear,forward#moving-ahead	at or near or directed toward the front | of the transmission gear causing forward movement in a motor vehicle | moving forward
-forward#bold-presumptuous	forward	Adjective	forward#bold-presumptuous	used of temperament or behavior; lacking restraint or modesty
-forward#player	forward	Noun	forward#player,forward#team-position	the person who plays the position of forward in certain games, such as basketbal | a position on a basketball, soccer, or hockey team
-forward#toward-front	forward	Adverb	forward#toward-front,forward#forward-direction,forward#toward-bow	at or to or toward the front; forward | in a forward direction | near or toward the bow of a ship or cockpit of a plane
-forward#ahead-in-time	forward	Adverb	forward#ahead-in-order,forward#toward-future	forward in time or order or degree | toward the future; forward in time
-forward#send-on	forward	Verb	forward#send-on	send or ship onward from an intermediate post or station in transit
-pretty#attractive	pretty	Adjective	pretty#attractive	pleasing by delicacy or grace; not imposing
-pretty#ironic-bad	pretty	Adjective	pretty#ironic-bad	(used ironically) unexpectedly bad
-pretty#fairly	pretty	Adverb	pretty#fairly	to certain extent or degree
-test#trial	test	Noun	test#trial,test#undergoing-testing,test#act-of-testing	trying something to find out about it | the act of undergoing testing | the act of testing something
-test#exam	test	Noun	test#standardized-measure,test#exam-questions	any standardized procedure for measuring sensitivity or memory or intelligence o | a set of questions or exercises evaluating skill or knowledge
-test#shell	test	Noun	test#shell	a hard outer covering as of some amoebas and sea urchins
-test#try-out	test	Verb	test#try-out,test#analyze-substance	put to the test, as for its quality, or give experimental use to | determine the presence or properties of (a substance)
-test#medical	test	Verb	test#medical-screening,test#show-when-tested	test or examine for the presence of disease or infection | show a certain characteristic when tested
-test#examine-knowledge	test	Verb	test#examine-knowledge,test#score-on-test,test#undergo-test	examine someone's knowledge of something | achieve a certain score or rating on a test | undergo a test
-home#own-ground	home	Adjective	home#own-ground	used of your own ground
-home#domestic	home	Adjective	home#domestic,home#domestic-country	relating to or being where one lives or where one's roots are | inside the country
-home#residence	home	Noun	home#residence-place,home#house-dwelling	where you live at a particular time | housing that someone is living in
-home#homeland	home	Noun	home#homeland,home#place-of-origin	the country or state or city where you live | place where something began and flourished
-home#home-plate	home	Noun	home#home-plate	(baseball) base consisting of a rubber slab where the batter stands; it must be 
-home#base-station	home	Noun	home#base-station	the place where you are stationed and from which missions start and end
-home#family-environment	home	Noun	home#domestic-environment,home#household	an environment offering affection and security | a social unit living together
-home#care-institution	home	Noun	home#care-institution	an institution where people are cared for
-home#to-residence	home	Adverb	home#to-residence	at or to or in the direction of one's home or family
-home#on-target	home	Adverb	home#on-target,home#to-the-heart	on or to the point aimed at | to the fullest extent; to the heart
-home#provide-home	home	Verb	home#provide-home	provide with, or send to, a home
-home#home-in	home	Verb	home#home-in	return home accurately from a long distance
+group_id	lemma	part_of_speech	member_sense_ids	kind	evidence	gloss
+just#fair	just	Adjective	just#fair-proper,just#fair-to-all,just#impartial,just#morally-excellent			used especially of what is legally or ethically right or proper or fitting | fair to all parties as dictated by reason and conscience | free from favoritism or self-interest or bias or deception; conforming with esta | of moral excellence
+just#only-merely	just	Adverb	just#only-merely			and nothing more
+just#recently	just	Adverb	just#a-moment-ago,just#shortly-before	equivalent	curated:flag every non-head member is D (near-duplicate)	only a moment ago | only a very short time before
+just#absolutely	just	Adverb	just#absolutely			(used for emphasis) absolutely
+just#possibly	just	Adverb	just#possibly			possibly (indicating a slight chance of something being true)
+just#narrowly	just	Adverb	just#narrowly			by a little
+go#function	go	Adjective/Verb	go#ready-working,go#function-as-expected			functioning correctly and ready for action | perform as expected when applied
+go#work-shift	go	Noun	go#work-shift			a time period for working (after which you will be relieved by someone else)
+go#mdma-slang	go	Noun	go#mdma-slang			street names for methylenedioxymethamphetamine
+go#attempt	go	Noun	go#attempt			a usually brief attempt
+go#board-game	go	Noun	go#board-game			a board game for two players who place counters on a grid; the object is to surr
+go#travel	go	Verb	go#travel-move,go#depart-leave,go#begin-start	related	curated:gloss related meanings	change location; move, travel, or proceed, also metaphorically | move away from a place into another direction | begin or set in motion
+go#course	go	Verb	go#follow-procedure,go#take-course,go#proceed-fare	related	curated:gloss related meanings	follow a procedure or take a course | follow a certain course | pass, fare, or elapse; of a certain state of affairs or action
+go#state	go	Verb	go#become-state,go#remain-in-condition	related	curated:gloss related meanings	enter or assume a certain state or condition | be or continue to be in a certain condition
+go#be-awarded	go	Verb	go#be-awarded			be awarded; be allotted
+go#have-form	go	Verb	go#have-form			have a particular form
+go#extend	go	Verb	go#extend-span,go#lead-extend	equivalent	curated:flag every non-head member is D (near-duplicate)	stretch out over a distance, space, time, or scope; run or extend between two po | lead, extend, or afford access
+go#be-discarded	go	Verb	go#be-discarded			be abolished or discarded
+go#sound	go	Verb	go#make-sound,go#be-sounded	equivalent	curated:flag every non-head member is D (near-duplicate)	make a certain noise or sound | be sounded, played, or expressed
+go#spent	go	Verb	go#be-used-up,go#be-spent-money	equivalent	curated:flag every non-head member is D (near-duplicate)	to be spent or finished | be spent
+go#be-changed	go	Verb	go#be-changed			progress by being changed
+go#survive	go	Verb	go#survive			continue to live and avoid dying
+go#die-fail	go	Verb	go#pass-away,go#fail-stop	related	curated:gloss related meanings	pass from physical life and lose all bodily attributes and functions necessary t | stop operating or functioning
+go#fit-belong	go	Verb	go#belong-place,go#match-harmonize,go#fit	related	curated:gloss related meanings	be in the right place or situation | blend or harmonize | be the right size or shape; fit correctly or as desired
+go#rank-compare	go	Verb	go#rank-compare			be ranked or compare
+go#take-turn	go	Verb	go#take-turn			have a turn; make one's move in a game
+go#divide-into	go	Verb	go#divide-into			be contained in
+go#rummage	go	Verb	go#rummage			go through in search of something; search through someone's belongings in an una
+go#choose-support	go	Verb	go#choose-support			give support (to) or make a choice (of) one out of a group or number
+please#polite-request	please	Adverb	please#polite-request			used in polite request
+please#be-willing	please	Verb	please#be-willing			be the will of or have the will (to)
+even#divisible-by-two	even	Adjective	even#divisible-by-two			divisible by two
+even#equal	even	Adjective	even#equal-matched,even#tied-score	related	curated:gloss related meanings	equal in degree or extent or amount; or equally matched or balanced | of the score in a contest
+even#level-regular	even	Adjective	even#level-smooth,even#symmetrical,even#at-intervals	related	curated:gloss related meanings	being level or straight or regular and without variation as e.g. in shape or tex | symmetrically arranged | occurring at fixed intervals
+even#evening	even	Noun	even#evening			the latter part of the day (the period of decreasing daylight from late afternoo
+even#emphasis	even	Adverb	even#intensive,even#to-full-extent	related	curated:gloss related meanings	used as an intensive especially to indicate something unexpected | to the full extent
+even#notwithstanding	even	Adverb	even#notwithstanding			in spite of; notwithstanding
+even#comparative-degree	even	Adverb	even#comparative-degree			to a greater degree or extent; used with comparisons
+even#level-out	even	Verb	even#make-level,even#become-level,even#make-equal			make level or straight | become even or more even | make even or more even
+only#sole	only	Adjective	only#sole,only#exclusive			being the only one; single and isolated from others | exclusive of anyone or anything else
+only#merely	only	Adverb	only#merely,only#exclusively	related	judge: 3/62 in-group confusion, 4 in-group alternates	and nothing more | without any others being included or involved
+only#outcome	only	Adverb	only#nevertheless-result,only#ultimately	equivalent	curated:flag every non-head member is D (near-duplicate)	with nevertheless the final result | in the final outcome
+only#except-that	only	Adverb	only#except-that			except that
+only#as-recently-as	only	Adverb	only#as-recently-as			as recently as
+back#earlier-date	back	Adjective	back#earlier-date			of an earlier date
+back#body	back	Noun	back#body-trunk,back#spine	equivalent	curated:flag every non-head member is D (near-duplicate)	the posterior part of a human (or animal) body from the neck to the end of the s | the series of vertebrae forming the axis of the skeleton and protecting the spin
+back#object-rear	back	Noun	back#hidden-side,back#farthest-part,back#book-spine,back#garment-back,back#chair-back	related	curated:gloss related meanings	the side that goes last or is not normally seen | the part of something that is furthest from the normal viewer | the protective covering on the front, back, and spine of a book | the part of a garment that covers the back of your body | a support that you can lean against while sitting
+back#football	back	Noun	back#football-back,back#football-position	equivalent	curated:flag every non-head member is D (near-duplicate)	(football) a person who plays in the backfield | (American football) the position of a player on a football team who is stationed
+back#return	back	Adverb	back#to-former-place,back#to-original-state	equivalent	curated:flag every non-head member is D (near-duplicate)	in or to or toward a former location | in or to or toward an original condition
+back#rearward	back	Adverb	back#rearward			at or to or toward the back or rear
+back#in-past-time	back	Adverb	back#in-past-time			in or to or toward a past time
+back#respond	back	Adverb	back#in-reply,back#in-retaliation	equivalent	curated:flag every non-head member is D (near-duplicate)	in reply | in repayment or retaliation
+back#support	back	Verb	back#be-behind-approve,back#support-approve,back#finance,back#validate	related	curated:gloss related meanings	be behind; approve of | give support or one's approval to | support financial backing for | establish as valid or genuine
+back#reverse	back	Verb	back#move-backward,back#cause-backward	related	curated:gloss related meanings	travel backward | cause to travel backward
+back#lie-behind	back	Verb	back#lie-behind			be in back of
+back#bet-on	back	Verb	back#bet-on			place a bet on
+back#shift-counterclockwise	back	Verb	back#shift-counterclockwise			shift to a counterclockwise direction
+back#provide-backing	back	Verb	back#provide-backing			strengthen by providing with a back or backing
+still#motionless	still	Adjective	still#motionless			not in physical motion
+still#silent-quiet	still	Adjective	still#silent-quiet			marked by absence of sound
+still#static-image	still	Adjective	still#static-image			used of pictures; of a single or static photograph not presented so as to create
+still#non-sparkling	still	Adjective	still#non-sparkling			not sparkling
+still#film-photo	still	Noun	still#film-photo			a static photograph (especially one taken from a movie and used for advertising 
+still#tranquil-silence	still	Noun	still#tranquil-silence			(poetic) tranquil silence
+still#distillation	still	Noun	still#distilling-apparatus,still#distillery	related	judge: 0/34 in-group confusion, 8 in-group alternates	an apparatus used for the distillation of liquids; consists of a vessel in which | a plant and works where alcoholic drinks are made by distillation
+still#even-now	still	Adverb	still#even-now			with reference to action or condition; without change, interruption, or cessatio
+still#nevertheless	still	Adverb	still#nevertheless			despite anything to the contrary (usually preceding a concession)
+still#to-greater-degree	still	Adverb	still#to-greater-degree			to a greater degree or extent; used with comparisons
+still#without-moving	still	Adverb	still#without-moving			without moving or making a sound
+still#calm	still	Verb	still#make-calm,still#quiet-silence,still#lessen-calm	equivalent	curated:flag every non-head member is D (near-duplicate)	make calm or still | cause to be quiet or not talk | lessen the intensity of or calm
+still#make-motionless	still	Verb	still#make-motionless			make motionless
+little#small	little	Adjective	little#small-size,little#petty-unimportant,little#short-stature,little#endearing-small	related	curated:gloss related meanings	limited or below average in number or quantity or magnitude or extent | (informal) small and of little importance | low in stature; not tall; describing something or someone with a stature less th | small in a way that arouses feelings (of tenderness or its opposite depending on
+little#not-much-quantity	little	Adjective	little#not-much-quantity			(quantifier used with mass nouns) small in quantity or degree; not much or almos
+little#young	little	Adjective	little#young			(of children and animals) young, immature
+little#faint-voice	little	Adjective	little#faint-voice			(of a voice) faint
+little#lowercase	little	Adjective	little#lowercase			lowercase
+little#small-amount	little	Noun	little#small-amount			a small amount or duration
+little#not-much	little	Adverb	little#not-much			not much
+right#right-hand-side	right	Adjective	right#right-hand-side,right#for-right-hand	equivalent	judge: 3/47 in-group confusion, 4 in-group alternates	being or located on or directed toward the side of the body to the east when fac | intended for the right hand
+right#correct	right	Adjective	right#correct,right#correct-opinion,right#precisely-accurate	equivalent	judge: 8/58 in-group confusion, 15 in-group alternates	free from error; especially conforming to fact or truth | correct in opinion or judgment | precisely accurate
+right#proper-suitable	right	Adjective	right#socially-correct,right#appropriate-suitable,right#in-order,right#proper-procedure,right#most-suitable	related	curated:gloss related meanings	socially right or correct | appropriate for a condition or purpose or occasion or a person's character, need | in or into a satisfactory condition | in accord with accepted standards of usage or procedure | most suitable or right for a particular purpose
+right#just-lawful	right	Adjective	right#just-lawful			in conformance with justice or law or morality
+right#political-right	right	Adjective	right#political-right			of or belonging to the political or intellectual right
+right#perpendicular	right	Adjective	right#perpendicular			having the axis perpendicular to the base
+right#outward-facing	right	Adjective	right#outward-facing			(of the side of cloth or clothing) facing or intended to face outward
+right#informal-very	right	Adjective	right#informal-very			(informal) very; used informally as an intensifier
+right#entitlement	right	Noun	right#entitlement,right#legal-interest	equivalent	judge: 9/41 in-group confusion, 7 in-group alternates	an abstract idea of that which is due to a person or governmental body by law or | (frequently plural) the interest possessed by law or custom in some intangible t
+right#right-field	right	Noun	right#right-field			the piece of ground in the outfield on the catcher's right
+right#political-wing	right	Noun	right#political-wing			those who support political or social or economic conservatism; those who believ
+right#justice	right	Noun	right#justice			anything in accord with principles of justice
+right#exactly-completely	right	Adverb	right#precisely,right#completely	equivalent	curated:flag every non-head member is D (near-duplicate)	precisely, exactly | to a complete degree or to the full or entire extent; Completely or entirely
+right#immediately	right	Adverb	right#immediately			immediately
+right#face-down	right	Adverb	right#face-down			in a face down manner
+right#toward-right	right	Adverb	right#toward-right			toward or on the right; also used figuratively
+right#correctly	right	Adverb	right#correctly,right#accurately	equivalent	judge: 5/27 in-group confusion, 8 in-group alternates	in the right manner; correctly; suitably | in an accurate manner
+right#interjection	right	Interjection	right#agreement-yes,right#discourse-marker			an interjection expressing agreement; Yes, you are indeed correct | discourse marker that opens or redirects talk (Right, let us begin) or checks ag
+right#southern-very	right	Adverb	right#southern-very			(Southern regional intensive) very; to a great degree
+right#morally	right	Adverb	right#morally			in accordance with moral or social standards
+right#correct-wrong	right	Verb	right#make-amends,right#correct-fix	equivalent	curated:flag every non-head member is D (near-duplicate)	make reparations or amends for | make right or correct
+right#upright	right	Verb	right#set-upright,right#regain-upright	related	curated:gloss related meanings	put in or restore to an upright position | regain an upright or proper position
+own#belonging-to	own	Adjective	own#belonging-to			belonging to or on behalf of a specified person (especially yourself); preceded 
+own#possess	own	Verb	own#possess			have ownership or possession of
+however#contrast	however	Adverb	however#nevertheless,however#by-contrast	equivalent	curated:flag every non-head member is D (near-duplicate)	despite anything to the contrary (usually preceding a concession) | by contrast; on the other hand
+however#to-whatever-degree	however	Adverb	however#to-whatever-degree			to whatever degree or extent
+however#in-whatever-way	however	Adverb/Conjunction	however#any-manner,however#conjunction			in whatever way or manner | introduces a clause meaning "in whatever way / no matter how" (However you slice
+well#in-good-health	well	Adjective	well#in-good-health			in good health especially after having suffered illness or injury
+well#water-source	well	Noun	well#water-source			a deep hole or shaft dug or drilled to obtain water or oil or gas or brine
+well#cavity	well	Noun	well#liquid-cavity,well#stair-shaft,well#ship-compartment	related	curated:gloss related meanings	a cavity or vessel used to contain liquid | an open shaft through the floors of a building (as for a stairway) | an enclosed compartment in a ship or plane for holding something as e.g. fish or
+well#abundant-source	well	Noun	well#abundant-source			an abundant source
+well#good-manner	well	Adverb	well#good-manner,well#skillfully	equivalent	judge: 10/48 in-group confusion, 28 in-group alternates	(often used as a combining form) in a good or proper or satisfactory manner or t | with skill or in a pleasing manner
+well#thoroughly-degree	well	Adverb	well#thoroughly,well#intensifier,well#to-great-degree	equivalent	curated:flag every non-head member is D (near-duplicate)	thoroughly or completely; fully; often used as a combining form | (used for emphasis or as an intensifier) entirely or fully | to a great extent or degree
+well#likelihood	well	Adverb	well#likelihood			indicating high probability; in all likelihood
+well#suitable-extent	well	Adverb	well#suitable-extent			to a suitable or appropriate extent or degree
+well#intimate-knowledge	well	Adverb	well#intimate-knowledge			with great or especially intimate knowledge
+well#prudently	well	Adverb	well#prudently			with prudence or propriety
+well#financial-comfort	well	Adverb	well#financial-comfort			in financial comfort
+well#good-humor	well	Adverb	well#good-humor			without unusual distress or resentment; with good humor
+well#rise-up	well	Verb	well#rise-up			come up, as of a liquid
+well#discourse-marker	well	Interjection	well#discourse-marker			discourse marker or filler opening an utterance, expressing hesitation, resignat
+review#examination	review	Noun	review#reappraisal,review#medical-checkup,review#accounting-review,review#judicial-review,review#formal-examination	related	curated:gloss related meanings	a new appraisal or evaluation | a subsequent examination of a patient for the purpose of monitoring earlier trea | (accounting) a service (less exhaustive than an audit) that provides some assura | (law) a judicial reexamination of the proceedings of a court (especially by an a | a formal or official examination
+review#critical-article	review	Noun	review#critical-article			an essay or article that gives a critical evaluation (as of a book or play)
+review#variety-show	review	Noun	review#variety-show			a variety show with topical sketches and songs and dancing and comedians
+review#periodical	review	Noun	review#periodical			a periodical that publishes critical essays on current affairs or literature or 
+review#recap-practice	review	Noun	review#summary-recap,review#practice-drill	equivalent	curated:flag every non-head member is D (near-duplicate)	a summary at the end that repeats the substance of a longer discussion | practice intended to polish performance or refresh the memory
+review#look-again	review	Verb	review#look-again,review#refresh-memory,review#look-back	related	judge: 0/51 in-group confusion, 11 in-group alternates	look at again; examine again | refresh one's memory | look back upon (a period of time, sequence of events); remember
+review#appraise-critically	review	Verb	review#appraise-critically			appraise critically
+review#inspect-troops	review	Verb	review#inspect-troops			hold a review (of troops)
+first#initial	first	Adjective	first#ordinal-initial,first#initial-stage,first#setting-in-motion	related	curated:gloss related meanings	preceding all others in time or space or degree | serving to begin | serving to set in motion
+first#top	first	Adjective	first#top-voice,first#foremost	related	curated:gloss related meanings	highest in pitch or chief among parts or voices or instruments or orchestra sect | ranking above all others
+first#first-in-order	first	Noun	first#top-ranked-item,first#first-item	equivalent	judge: 3/62 in-group confusion, 18 in-group alternates; curated:flag both members are D (near-duplicate)	the first or highest in an ordering or series | the first element in a countable series
+first#start-time	first	Noun	first#start-time			the time at which something is supposed to begin
+first#first-base	first	Noun	first#first-base			the fielding position of the player on a baseball team who is stationed at first
+first#honours-degree	first	Noun	first#honours-degree			an honours degree of the highest class
+first#low-gear	first	Noun	first#low-gear			the lowest forward gear ratio in the gear box of a motor vehicle; used to start 
+first#initially	first	Adverb	first#before-anything,first#initial-time	equivalent	curated:flag every non-head member is D (near-duplicate)	before anything else | the initial time
+first#before-another	first	Adverb	first#before-another			before another in time, space, or importance
+first#prominently-forward	first	Adverb	first#prominently-forward			prominently forward
+long#lasting-time	long	Adjective	long#lasting-time			primarily temporal sense; being or indicating a relatively great or greater than
+long#good-memory	long	Adjective	long#good-memory			good at remembering
+long#holding-securities	long	Adjective	long#holding-securities			holding securities or commodities in expectation of a rise in prices
+long#long-vowel	long	Adjective	long#long-vowel			(of speech sounds or syllables) of relatively long duration
+long#risky	long	Adjective	long#risky			involving substantial risk
+long#far-sighted	long	Adjective	long#far-sighted			planning prudently for the future
+long#excessive	long	Adjective	long#excessive			having or being more than normal or necessary
+long#for-long-time	long	Adverb	long#for-long-time			for an extended time or at a distant time
+long#for-distance	long	Adverb	long#for-distance			for an extended distance
+long#yearn	long	Verb	long#yearn			desire strongly or persistently
+help#assistance	help	Noun	help#assistance,help#useful-resource	related	judge: 2/48 in-group confusion, 11 in-group alternates	the activity of contributing to the fulfillment of a need or furtherance of an e | a person or thing that is a resource that helps make something easier or possibl
+help#helper-person	help	Noun	help#helper-person			a person who contributes to the fulfillment of a need or furtherance of an effor
+help#means-of-serving	help	Noun	help#means-of-serving			a means of serving
+help#improve	help	Verb	help#improve-condition,help#change-better	equivalent	curated:flag every non-head member is D (near-duplicate)	improve the condition of | improve; change for the better
+help#be-useful	help	Verb	help#be-useful			be of use
+help#refrain	help	Verb	help#refrain			abstain from doing; always used with a negative
+help#cry-for-aid	help	Interjection	help#cry-for-aid			cry calling for urgent assistance (Help! Fire!)
+forward#bold-presumptuous	forward	Adjective	forward#bold-presumptuous			used of temperament or behavior; lacking restraint or modesty
+forward#player	forward	Noun	forward#player,forward#team-position			the person who plays the position of forward in certain games, such as basketbal | a position on a basketball, soccer, or hockey team
+forward#toward-front	forward	Adverb	forward#toward-front,forward#forward-direction,forward#toward-bow	equivalent	judge: 8/58 in-group confusion, 49 in-group alternates	at or to or toward the front; forward | in a forward direction | near or toward the bow of a ship or cockpit of a plane
+forward#ahead-in-time	forward	Adverb	forward#ahead-in-order,forward#toward-future	equivalent	curated:gloss near-identical glosses	forward in time or order or degree | toward the future; forward in time
+forward#send-on	forward	Verb	forward#send-on			send or ship onward from an intermediate post or station in transit
+pretty#attractive	pretty	Adjective	pretty#attractive			pleasing by delicacy or grace; not imposing
+pretty#ironic-bad	pretty	Adjective	pretty#ironic-bad			(used ironically) unexpectedly bad
+pretty#fairly	pretty	Adverb	pretty#fairly			to certain extent or degree
+test#trial	test	Noun	test#trial,test#undergoing-testing,test#act-of-testing	related	judge: 18/65 in-group confusion, 35 in-group alternates	trying something to find out about it | the act of undergoing testing | the act of testing something
+test#exam	test	Noun	test#standardized-measure,test#exam-questions	related	curated:gloss related meanings	any standardized procedure for measuring sensitivity or memory or intelligence o | a set of questions or exercises evaluating skill or knowledge
+test#shell	test	Noun	test#shell			a hard outer covering as of some amoebas and sea urchins
+test#try-out	test	Verb	test#try-out,test#analyze-substance	related	judge: 0/48 in-group confusion, 0 in-group alternates; curated:gloss related meanings	put to the test, as for its quality, or give experimental use to | determine the presence or properties of (a substance)
+test#medical	test	Verb	test#medical-screening,test#show-when-tested	related	curated:gloss related meanings	test or examine for the presence of disease or infection | show a certain characteristic when tested
+test#examine-knowledge	test	Verb	test#examine-knowledge,test#score-on-test,test#undergo-test	related	judge: 0/37 in-group confusion, 5 in-group alternates	examine someone's knowledge of something | achieve a certain score or rating on a test | undergo a test
+home#own-ground	home	Adjective	home#own-ground			used of your own ground
+home#domestic	home	Adjective	home#domestic,home#domestic-country	related	judge: 0/27 in-group confusion, 0 in-group alternates; curated:gloss related meanings	relating to or being where one lives or where one's roots are | inside the country
+home#residence	home	Noun	home#residence-place,home#house-dwelling	related	curated:gloss related meanings	where you live at a particular time | housing that someone is living in
+home#homeland	home	Noun	home#homeland,home#place-of-origin	related	judge: 0/48 in-group confusion, 4 in-group alternates	the country or state or city where you live | place where something began and flourished
+home#home-plate	home	Noun	home#home-plate			(baseball) base consisting of a rubber slab where the batter stands; it must be 
+home#base-station	home	Noun	home#base-station			the place where you are stationed and from which missions start and end
+home#family-environment	home	Noun	home#domestic-environment,home#household	equivalent	curated:flag every non-head member is D (near-duplicate)	an environment offering affection and security | a social unit living together
+home#care-institution	home	Noun	home#care-institution			an institution where people are cared for
+home#to-residence	home	Adverb	home#to-residence			at or to or in the direction of one's home or family
+home#provide-home	home	Verb	home#provide-home			provide with, or send to, a home
+home#home-in	home	Verb	home#home-in			return home accurately from a long distance

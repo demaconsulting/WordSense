@@ -16,9 +16,11 @@ the tagger cannot.
   target) or a right feature (the token directly after it). The immediate neighbors are always written as left and
   right features, whatever they are (even punctuation); at most 12 features arise.
 - The context is limited to the sentence segment the classifier passes in.
-- A lemma's `LemmaCue` table holds ascending 16-bit feature hashes and one signed byte per feature and analysis in
+- A lemma's `LemmaCue` table, keyed by training lemma (or by a form that spans lemmas), holds ascending 16-bit feature
+  hashes and one signed byte per feature and analysis in
   steps of 1/8 nat (`Quantum`), plus a quantized log prior per analysis. The columns are analyses (lemma, part of
-  speech and features), so a table can hold the analyses of several lemmas of one form. Only features that were
+  speech and features), so a table can hold the analyses of several lemmas of one form; a column with empty features
+  stands for any features of that lemma and part of speech. Only features that were
   frequent enough in training have weights; collisions of hashes were resolved by the builder.
 
 #### Key Methods
@@ -26,7 +28,9 @@ the tagger cannot.
 - `Extract(lower, index, features)`: writes the distinct window features in position order, then the left and right
   features that exist, and returns the count.
 - `Score(cue, features, analyses, scores)`: looks up each feature hash by binary search; for each candidate analysis
-  finds its column (`LemmaCue.RowOf`, by lemma, part of speech and features) and scores
+  finds its column (`LemmaCue.RowOf`: among the columns of its lemma and part of speech whose feature items are all
+  contained in the features of the analysis, the one with the most items; the empty-features column always qualifies)
+  and scores
   `(prior + the sum of the weights of the found features) * 1/8`. A candidate analysis the table has no column for
   scores `NaN`, which the fusion fills. A feature without an entry adds nothing, so a word with no known feature scores
   its prior.

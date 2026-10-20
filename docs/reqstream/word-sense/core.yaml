@@ -30,26 +30,32 @@ sections:
             title: >-
               The core subsystem shall provide the sense catalog: look a sense up by its id or by its OEWN sense key,
               list the senses of a lemma and part of speech with the most frequent first, look a group up by its id and
-              list the senses of a group.
+              list the senses of a group, and identify the sense inventory of the embedded image by a version string.
             tags: [subsystem]
             justification: |
               Every model answers with senses from the same inventory, and callers resolve an answer's ids (and attach
-              WordNet-keyed resources through the sense key) without a model.
+              WordNet-keyed resources through the sense key) without a model. A group answer always leads to its member
+              senses through the group lookup, and the version lets a caller that stores group ids, which are versioned
+              per data release, detect a changed catalog.
             children:
               - WordSense-Core-WordLexicon-Senses
               - WordSense-Core-WordLexicon-SenseLookup
               - WordSense-Core-WordLexicon-Groups
+              - WordSense-Core-WordLexicon-Version
               - WordSense-Core-WordSenseContracts-SenseInfo
             tests:
               - WordLexicon_SensesOf_LemmaAndPartOfSpeech_ListsMostFrequentFirst
               - WordLexicon_TryGetSense_ById_FindsSense
               - WordLexicon_TryGetGroup_ById_ListsMemberSenses
+              - WordLexicon_Version_IsStableLowerCaseHex
 
           - id: WordSense-Core-Contracts
             title: >-
               The core subsystem shall define the public contracts through which callers classify words with a
-              model and receive results: the analysis of a word, the level at which it was answered, its group and
-              sense ids and its confidence, and the records that describe a sense and a group.
+              model and receive results: one result per word with the analyses of the word and their probabilities
+              (and, where scored, the probabilities of the senses inside each analysis), the selected analysis, the
+              level at which the word was answered, its group and sense ids and its confidence, and the records that
+              describe a sense and a group.
             tags: [subsystem]
             justification: |
               Callers program against one small set of contracts and can swap model packages, or supply their own
@@ -58,13 +64,32 @@ sections:
               - WordSense-Core-WordSenseContracts-Classify
               - WordSense-Core-WordSenseContracts-Result
               - WordSense-Core-WordSenseContracts-Level
+              - WordSense-Core-WordSenseContracts-Confidence
+              - WordSense-Core-WordSenseContracts-Candidates
               - WordSense-Core-WordSenseContracts-Model
               - WordSense-Core-WordSenseContracts-Mirror
               - WordSense-Core-WordSenseContracts-Details
               - WordSense-Core-WordSenseContracts-SenseInfo
             tests:
-              - WordSenseContracts_WordSense_SameValues_AreEqual
+              - WordSenseContracts_ClassifyResult_SameValues_AreEqual
               - WordSenseContracts_SenseLevel_Values_AreTheFourLevels
+              - WordSenseContracts_ClassifyResult_Analyses_AreKeptInOrder
+
+          - id: WordSense-Core-Fallback
+            title: >-
+              The core subsystem shall provide a public composite model that combines two models, answering each word
+              with the complete result of the primary model where it scored senses for the word and otherwise with
+              the complete result of the fallback model, and owning the lifetime of both.
+            tags: [subsystem]
+            justification: |
+              Model packages differ in what they can score; a composite in the core package lets any pair of
+              models, including a third-party model, be combined without a package depending on another model
+              package, and lets the encoder packages offer one model that answers every word.
+            children:
+              - WordSense-Core-WordSenseContracts-Fallback
+            tests:
+              - WordSenseContracts_FallbackWordSenseModel_PrimaryScoredSenses_UsesPrimary
+              - WordSenseContracts_FallbackWordSenseModel_PrimaryChoseOnlyAnalysis_UsesFallback
 
           - id: WordSense-Core-Independent
             title: >-
@@ -81,10 +106,13 @@ sections:
           - id: WordSense-Core-Packaging
             title: >-
               The core package shall ship its XML documentation with a namespace summary and verified examples, its
-              NuGet metadata, and a README that carries the credits and licenses of the third-party word data it embeds.
+              NuGet metadata with the license expression MIT AND CC-BY-4.0, and a README and a packed NOTICE file that
+              carry the credits and licenses of the third-party word data it embeds (Open English WordNet 2025 under
+              CC BY 4.0, and the Princeton WordNet 3.0 notice).
             tags: [subsystem]
             justification: |
-              The embedded lexicon derives from third-party word lists whose licenses require attribution, and
-              consumers learn the API from the documentation that ships with the package.
+              The embedded lexicon and sense inventory derive from Open English WordNet and, through its sense
+              frequencies, from Princeton WordNet 3.0, whose licenses require attribution, and consumers learn the API
+              from the documentation that ships with the package.
             tests:
               - WordSense_XmlDocExamples_Compile

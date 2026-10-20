@@ -11,13 +11,22 @@ sections:
               - id: WordSense-Basic-BasicTables-Load
                 title: >-
                   BasicTables shall read the transition statistics, the tabled words with their closed-class masks,
-                  the suffix statistics and the per-lemma cue statistics from the compressed table, and shall reject
-                  a table with a wrong signature, no compression, missing data, extra data or unordered entries as
-                  invalid data, and a table built for another analysis inventory (inventory hash), an unknown analysis
-                  or a duplicate analysis.
+                  the suffix statistics and the cue statistics, keyed by training lemma with the analyses (lemma, part
+                  of speech and features) as columns, from the compressed table, shall find the cue table of a word
+                  first by the normalized word and then by the lemma of its first analysis, shall match an analysis
+                  to the column of its lemma and part of speech whose feature items are all contained in the features
+                  of the analysis, the column with the most items winning, so that a column with empty features, which
+                  stands for any features, serves every analysis of that lemma and part of speech that no column of more
+                  specific features claims, and shall reject a table with a wrong
+                  signature (the magic WSB3), no compression, missing data, extra data or unordered entries as invalid
+                  data, and a table
+                  built for another analysis inventory (inventory hash), an unknown analysis or a duplicate analysis.
                 tags: [unit]
                 justification: |
-                  A damaged or foreign table must fail loudly at load time instead of producing wrong answers.
+                  A damaged or foreign table must fail loudly at load time instead of producing wrong answers, and a
+                  table that names its analyses must be rebuilt whenever the inventory changes. A form that spans
+                  lemmas (left, bases) needs a table of its own, and an analysis with features (the past participle of
+                  read) must not fall into the column of a different analysis of the same lemma.
                 tests:
                   - BasicTables_Load_ToyTable_ReadsContent
                   - BasicTables_Load_Transitions_AreDistributions

@@ -15,11 +15,13 @@ sections:
               frequency), holding every word of the dictionary (determiners, conjunctions and interjections included)
               with all its parts of speech, the inflected forms of every dictionary word (the generation of the forms
               is specified by the FormGenerator requirements), and the sense catalog: every single-token OEWN sense
-              and every project sense with its readable id, its group, its OEWN sense key (none for a project sense)
+              and its group (none when it is in no group), its OEWN sense key (none for a project sense)
               and its respelling, the senses of each lemma and part of speech ranked by WordNet 3.0 frequency; and
               shall write it in the compact binary format that the core package reads. The committed image shall be
               the compilation of the committed data, a dictionary word shall never be lost, and a sense without a
-              label, a sense in no group or in two groups, or a group that mixes lemmas or parts of speech shall fail
+              label, a sense in two groups, a group of fewer than two senses or of all the senses of its lemma and part
+              of speech, a group that mixes lemmas or parts of speech, or a group id that lacks the group marker
+              (lemma#group:label) or equals a sense id shall fail
               the build. A modal or primary auxiliary listed in the committed auxiliary list shall gain an auxiliary
               analysis.
             tags: [unit]
@@ -33,7 +35,9 @@ sections:
               - WordSenseBuilder_ImageCompiler_Build_CatalogIsDeterministic
               - WordSenseBuilder_ImageCompiler_Build_SenseWithoutLabel_Fails
               - WordSenseBuilder_ImageCompiler_Build_SenseInTwoGroups_Fails
+              - WordSenseBuilder_ImageCompiler_Build_GroupOfOneSenseOrAllSenses_Fails
               - WordSenseBuilder_ImageCompiler_Build_GroupMixingPartsOfSpeech_Fails
+              - WordSenseBuilder_ImageCompiler_Build_GroupIdWithoutMarkerOrEqualToSenseId_Fails
               - WordSenseBuilder_Image_Spellings_AreSortedByUtf8Bytes
               - WordSenseBuilder_Image_Find_ReturnsOwnIndex
               - WordSenseBuilder_Image_Corruption_IsRejected
@@ -110,7 +114,8 @@ sections:
 
           - id: WordSense-WordSenseBuilder-Thresholds
             title: >-
-              The builder shall choose for every trained lemma a fine threshold and a group threshold by
+              The builder shall choose for every trained lemma a fine threshold, and for a lemma that has groups also a
+              group threshold, by
               cross-validation on the anchors of the lemma only, so that the answers above each threshold reach a
               configured precision target (95 percent by default), deterministically, and shall never read the
               held-out, real-text, suite or independent evaluation sentences to choose them; a level for which no
@@ -227,7 +232,7 @@ sections:
             title: >-
               The builder shall measure a shipped model (an encoder model or the basic model) on the held-out and
               real-text sentences of the corpus, and report accuracy and coverage at each answer level (the share
-              answered at the sense, group and low-confidence group level, and the accuracy at each level) and for
+              answered at the sense, group and part of speech level, and the accuracy at each level) and for
               the part of speech; for the basic model it shall also report calibration, confidence thresholds, table
               size, latency and a fixed comparison table printed on every run.
             tags: [unit]

@@ -9,7 +9,6 @@ namespace WordSense.Builder.Tests;
 public sealed class DataValidatorTests : IDisposable
 {
     private const string BassSense1 = "oewn-bass__1.05.00..";
-    private const string BassSense2 = "oewn-bass__1.10.00..";
 
     private readonly TestDirectory _dir = new();
 
@@ -30,13 +29,6 @@ public sealed class DataValidatorTests : IDisposable
         Assert.True(Messages(report).Contains($"[{rule}]", StringComparison.Ordinal), $"Expected [{rule}] in: " + Messages(report));
     }
 
-    private static void AddBassClass(string data, bool coverBoth)
-    {
-        DataFixture.Write(data, "coarse_class/b.tsv", "class_id\tlemma\tlabel\tpos\tkind\nbass#1\tbass\tfish\tn\tsense_group\n");
-        var rows = $"class_id\tsense_id\nbass#1\t{BassSense1}\n" + (coverBoth ? $"bass#1\t{BassSense2}\n" : string.Empty);
-        DataFixture.Write(data, "class_sense/b.tsv", rows);
-    }
-
     /// <summary>
     ///     The slice imported from OEWN is valid and the report counts its rows.
     /// </summary>
@@ -52,57 +44,11 @@ public sealed class DataValidatorTests : IDisposable
         // Assert
         Assert.True(report.IsValid, Messages(report));
         Assert.Equal(14, report.RowCounts["entry"]);
-        Assert.Equal(0, report.RowCounts["coarse_class"]);
+        Assert.False(report.RowCounts.ContainsKey("coarse_class"));
     }
 
     /// <summary>
-    ///     A class mapping that covers all senses of its lemma and part of speech is valid.
-    /// </summary>
-    [Fact]
-    public void WordSenseBuilder_DataValidator_Validate_CompletePartition_IsValid()
-    {
-        // Arrange
-        var data = Data();
-        AddBassClass(data, true);
-
-        // Act
-        var report = DataValidator.Validate(data);
-
-        // Assert
-        Assert.True(report.IsValid, Messages(report));
-    }
-
-    /// <summary>
-    ///     A sense of a mapped lemma that is in no class breaks the partition rule.
-    /// </summary>
-    [Fact]
-    public void WordSenseBuilder_DataValidator_Validate_UncoveredClassSense_ViolatesPartition()
-    {
-        // Arrange
-        var data = Data();
-        AddBassClass(data, false);
-
-        // Act / Assert
-        AssertViolation(data, "partition");
-    }
-
-    /// <summary>
-    ///     A sense in two classes breaks the unique constraint.
-    /// </summary>
-    [Fact]
-    public void WordSenseBuilder_DataValidator_Validate_SenseInTwoClasses_ViolatesUnique()
-    {
-        // Arrange
-        var data = Data();
-        DataFixture.Write(data, "coarse_class/b.tsv", "class_id\tlemma\tlabel\tpos\tkind\nbass#1\tbass\tfish\tn\tsense_group\nbass#2\tbass\tvoice\tn\tsense_group\n");
-        DataFixture.Write(data, "class_sense/b.tsv", $"class_id\tsense_id\nbass#1\t{BassSense1}\nbass#1\t{BassSense2}\nbass#2\t{BassSense2}\n");
-
-        // Act / Assert
-        AssertViolation(data, "unique");
-    }
-
-    /// <summary>
-    ///     Features of the table that links a class to an entry are checked against the feature vocabulary.
+    ///     Features of an analysis of the form table are checked against the feature vocabulary.
     /// </summary>
     [Theory]
     [InlineData("Tense=Past+VerbForm=Part", true)]
@@ -113,8 +59,7 @@ public sealed class DataValidatorTests : IDisposable
     {
         // Arrange
         var data = Data();
-        DataFixture.Write(data, "coarse_class/b.tsv", "class_id\tlemma\tlabel\tpos\tkind\nbig#f\tbig\tform\ta\tlemma_split\n");
-        DataFixture.Write(data, "class_entry/b.tsv", $"class_id\tentry_id\tfeatures\nbig#f\toewn-big-a\t{features}\n");
+        DataFixture.Write(data, "form/b.tsv", $"spelling\trank\tentry_id\tfeatures\tsource_id\treviewed\tlemma\tpos\tprovenance\nbig\t0\toewn-big-a\t{features}\toewn\t0\t\t\toewn_form\n");
 
         // Act
         var report = DataValidator.Validate(data);
@@ -488,10 +433,6 @@ public sealed class DataValidatorTests : IDisposable
 
     // ---- the sense inventory: labels, groups and the published ids ----
 
-    private const string Bass1Group = "bass#noun-group\toewn-bass__1.05.00..\n";
-    private const string Bass2Group = "bass#noun-group\toewn-bass__1.10.00..\n";
-    private const string DefaultBassGroup = "bass#noun-group\tbass\tn\tnoun-group\tdefault\n";
-
     private string Labeled(string name = "data")
     {
         var data = DataFixture.ImportSlice(_dir, name);
@@ -499,50 +440,84 @@ public sealed class DataValidatorTests : IDisposable
         return data;
     }
 
-    // Replaces the default group of the nouns of bass by curated groups
-    private static void CurateBass(string data, bool coverBoth = true)
+    // The slice has two nouns of bass; a third one (bass 1.05.01, in the synset of the first one) makes a group of two of the three possible
+    private string LabeledWithThreeBassNouns(string name = "data")
     {
-        DataFixture.Replace(data, "sense_group/b.tsv", DefaultBassGroup, "bass#high\tbass\tn\thigh\tcurated\nbass#low\tbass\tn\tlow\tcurated\n");
+        var data = DataFixture.ImportSlice(_dir, name);
         DataFixture.Replace(
             data,
-            "group_sense/b.tsv",
-            Bass1Group + Bass2Group,
-            "bass#high\toewn-bass__1.05.00..\n" + (coverBoth ? "bass#low\toewn-bass__1.10.00..\n" : string.Empty));
+            "sense/b.tsv",
+            "oewn-bass__1.10.00..\t",
+            "oewn-bass__1.05.01..\tbass%1:05:01::\toewn-bass-n\toewn-00000001-n\t2\noewn-bass__1.10.00..\t");
+        SenseLabelGenerator.Run(data);
+        return data;
+    }
+
+    // Writes one curated group of bass nouns with the listed members
+    private static void WriteBassGroup(string data, string label, string pos, params string[] members) =>
+        WriteGroup(data, "bass#group:" + label, label, pos, "related", members);
+
+    // Writes one group of bass senses with the given id, label, part of speech and kind (the id is not checked here)
+    private static void WriteGroup(string data, string groupId, string label, string pos, string kind, params string[] members)
+    {
+        DataFixture.Write(data, "sense_group/b.tsv", $"group_id\tlemma\tpos\tlabel\torigin\tkind\n{groupId}\tbass\t{pos}\t{label}\tcurated\t{kind}\n");
+        DataFixture.Write(data, "group_sense/b.tsv", "group_id\tsense_id\n" + string.Concat(members.Select(m => $"{groupId}\t{m}\n")));
     }
 
     /// <summary>
-    ///     Labels and default groups made by the generator are valid, and so are curated groups that partition the lemma.
+    ///     Senses without any group are valid: a group is optional, and a curated group of some, but not all, senses of a
+    ///     lemma and part of speech is valid.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_DataValidator_Validate_CompleteGroups_IsValid()
+    public void WordSenseBuilder_DataValidator_Validate_CuratedGroupOfSomeSenses_IsValid()
     {
         // Arrange
-        var data = Labeled();
+        var data = LabeledWithThreeBassNouns();
 
         // Act
-        var generated = DataValidator.Validate(data);
-        CurateBass(data);
-        var curated = DataValidator.Validate(data);
+        var withoutGroups = DataValidator.Validate(data);
+        WriteBassGroup(data, "high", "n", "oewn-bass__1.05.00..", "oewn-bass__1.05.01..");
+        var withGroup = DataValidator.Validate(data);
 
         // Assert
-        Assert.True(generated.IsValid, Messages(generated));
-        Assert.True(curated.IsValid, Messages(curated));
-        Assert.Equal(12, curated.RowCounts["sense_label"]);
-        Assert.Equal(12, curated.RowCounts["group_sense"]);
+        Assert.True(withoutGroups.IsValid, Messages(withoutGroups));
+        Assert.True(withGroup.IsValid, Messages(withGroup));
+        Assert.Equal(13, withGroup.RowCounts["sense_label"]);
+        Assert.Equal(2, withGroup.RowCounts["group_sense"]);
     }
 
     /// <summary>
-    ///     A sense of a curated lemma that is in no group breaks the partition rule.
+    ///     A group of one sense is a violation: a sense needs no group of its own.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_DataValidator_Validate_UncoveredSense_ViolatesPartition()
+    public void WordSenseBuilder_DataValidator_Validate_GroupOfOneSense_Violates()
     {
         // Arrange
-        var data = Labeled();
-        CurateBass(data, coverBoth: false);
+        var data = LabeledWithThreeBassNouns();
+        WriteBassGroup(data, "high", "n", "oewn-bass__1.05.00..");
 
-        // Act / Assert
-        AssertViolation(data, "partition");
+        // Act
+        var report = DataValidator.Validate(data);
+
+        // Assert
+        Assert.Contains("at least two senses", Messages(report), StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A group with every sense of its lemma and part of speech is a violation: the part of speech is the next level.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_DataValidator_Validate_GroupOfAllSensesOfPartOfSpeech_Violates()
+    {
+        // Arrange
+        var data = LabeledWithThreeBassNouns();
+        WriteBassGroup(data, "all", "n", "oewn-bass__1.05.00..", "oewn-bass__1.05.01..", "oewn-bass__1.10.00..");
+
+        // Act
+        var report = DataValidator.Validate(data);
+
+        // Assert
+        Assert.Contains("every sense of its lemma and part of speech", Messages(report), StringComparison.Ordinal);
     }
 
     /// <summary>
@@ -551,10 +526,13 @@ public sealed class DataValidatorTests : IDisposable
     [Fact]
     public void WordSenseBuilder_DataValidator_Validate_SenseInTwoGroups_ViolatesUnique()
     {
-        // Arrange
-        var data = Labeled();
-        CurateBass(data);
-        DataFixture.Replace(data, "group_sense/b.tsv", "bass#high\toewn-bass__1.05.00..\n", "bass#high\toewn-bass__1.05.00..\nbass#high\toewn-bass__1.10.00..\n");
+        // Arrange - two groups of bass share the sense 1.05.00
+        var data = LabeledWithThreeBassNouns();
+        DataFixture.Write(data, "sense_group/b.tsv", "group_id\tlemma\tpos\tlabel\torigin\tkind\nbass#group:high\tbass\tn\thigh\tcurated\trelated\nbass#group:low\tbass\tn\tlow\tcurated\trelated\n");
+        DataFixture.Write(
+            data,
+            "group_sense/b.tsv",
+            "group_id\tsense_id\nbass#group:high\toewn-bass__1.05.00..\nbass#group:high\toewn-bass__1.05.01..\nbass#group:low\toewn-bass__1.05.00..\nbass#group:low\toewn-bass__1.10.00..\n");
 
         // Act / Assert
         AssertViolation(data, "unique");
@@ -566,12 +544,29 @@ public sealed class DataValidatorTests : IDisposable
     [Fact]
     public void WordSenseBuilder_DataValidator_Validate_GroupAcrossPartsOfSpeech_Violates()
     {
-        // Arrange - the group of the nouns of bass says it is a verb group
-        var data = Labeled();
-        DataFixture.Replace(data, "sense_group/b.tsv", DefaultBassGroup, "bass#noun-group\tbass\tv\tnoun-group\tdefault\n");
+        // Arrange - the group of two nouns of bass says it is a verb group
+        var data = LabeledWithThreeBassNouns();
+        WriteBassGroup(data, "high", "v", "oewn-bass__1.05.00..", "oewn-bass__1.05.01..");
 
         // Act / Assert
         AssertViolation(data, "group");
+    }
+
+    /// <summary>
+    ///     A group whose senses belong to two lemmas is a violation.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_DataValidator_Validate_GroupAcrossLemmas_Violates()
+    {
+        // Arrange - a sense of fish is a member of a group of bass
+        var data = LabeledWithThreeBassNouns();
+        WriteBassGroup(data, "high", "n", "oewn-bass__1.05.00..", "oewn-fish__1.05.00..");
+
+        // Act
+        var report = DataValidator.Validate(data);
+
+        // Assert
+        Assert.Contains("belongs to the lemma 'fish'", Messages(report), StringComparison.Ordinal);
     }
 
     /// <summary>
@@ -580,10 +575,9 @@ public sealed class DataValidatorTests : IDisposable
     [Fact]
     public void WordSenseBuilder_DataValidator_Validate_GroupWithTwoRespellings_Violates()
     {
-        // Arrange - one curated group of both nouns of bass, with two pronunciations
-        var data = Labeled();
-        DataFixture.Replace(data, "sense_group/b.tsv", DefaultBassGroup, "bass#all\tbass\tn\tall\tcurated\n");
-        DataFixture.Replace(data, "group_sense/b.tsv", Bass1Group + Bass2Group, "bass#all\toewn-bass__1.05.00..\nbass#all\toewn-bass__1.10.00..\n");
+        // Arrange - one curated group of two of the nouns of bass, with two pronunciations
+        var data = LabeledWithThreeBassNouns();
+        WriteBassGroup(data, "all", "n", "oewn-bass__1.05.00..", "oewn-bass__1.10.00..");
         Assert.True(DataValidator.Validate(data).IsValid);
         DataFixture.Write(data, "sense_respelling/b.tsv", string.Join('\n', "sense_id\trespelling", "oewn-bass__1.05.00..\tbass", "oewn-bass__1.10.00..\tbase") + "\n");
 
@@ -592,29 +586,90 @@ public sealed class DataValidatorTests : IDisposable
     }
 
     /// <summary>
-    ///     A lemma that is not curated needs one default group for each part of speech and its senses are in it.
+    ///     The retired origin of the default groups is no longer a member of the group origins.
     /// </summary>
-    [Theory]
-    [InlineData("missing")]
-    [InlineData("other-group")]
-    public void WordSenseBuilder_DataValidator_Validate_OtherLemma_NeedsOneDefaultGroupPerPartOfSpeech(string defect)
+    [Fact]
+    public void WordSenseBuilder_DataValidator_Validate_DefaultGroupOrigin_Violates()
     {
         // Arrange
-        var data = Labeled();
-        if (defect == "missing")
-        {
-            DataFixture.Replace(data, "sense_group/b.tsv", "big#adjective-group\tbig\ta\tadjective-group\tdefault\n", string.Empty);
-            DataFixture.Replace(data, "group_sense/b.tsv", "big#adjective-group\toewn-big__3.00.00..\n", string.Empty);
-        }
-        else
-        {
-            // The second noun of bass is moved to a second default group of the same part of speech
-            DataFixture.Replace(data, "sense_group/b.tsv", DefaultBassGroup, DefaultBassGroup + "bass#noun-group-extra\tbass\tn\tnoun-group-extra\tdefault\n");
-            DataFixture.Replace(data, "group_sense/b.tsv", Bass2Group, "bass#noun-group-extra\toewn-bass__1.10.00..\n");
-        }
+        var data = LabeledWithThreeBassNouns();
+        WriteBassGroup(data, "high", "n", "oewn-bass__1.05.00..", "oewn-bass__1.05.01..");
+        DataFixture.Replace(data, "sense_group/b.tsv", "\tcurated\t", "\tdefault\t");
 
         // Act / Assert
-        AssertViolation(data, defect == "missing" ? "partition" : "group");
+        AssertViolation(data, "cell");
+    }
+
+    /// <summary>
+    ///     The id of a group without the marker <c>group:</c> is a violation: it could be the id of a sense.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_DataValidator_Validate_GroupIdWithoutMarker_Violates()
+    {
+        // Arrange
+        var data = LabeledWithThreeBassNouns();
+        WriteGroup(data, "bass#high", "high", "n", "related", "oewn-bass__1.05.00..", "oewn-bass__1.05.01..");
+
+        // Act
+        var report = DataValidator.Validate(data);
+
+        // Assert
+        Assert.Contains("must carry the marker 'group:'", Messages(report), StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The id of a group whose lemma part is not the lemma of the group is a violation.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_DataValidator_Validate_GroupIdOfAnotherLemma_Violates()
+    {
+        // Arrange - the group of bass is called fish#group:high
+        var data = LabeledWithThreeBassNouns();
+        WriteGroup(data, "fish#group:high", "high", "n", "related", "oewn-bass__1.05.00..", "oewn-bass__1.05.01..");
+
+        // Act
+        var report = DataValidator.Validate(data);
+
+        // Assert
+        Assert.Contains("the id of a group is its lemma", Messages(report), StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A group label that is not a slug of lower-case ASCII letters, digits and hyphens is a violation.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_DataValidator_Validate_GroupLabelNotASlug_Violates()
+    {
+        // Arrange - the label has an upper-case letter, which the slug rule rejects
+        var data = LabeledWithThreeBassNouns();
+        WriteGroup(data, "bass#group:High", "High", "n", "related", "oewn-bass__1.05.00..", "oewn-bass__1.05.01..");
+
+        // Act
+        var report = DataValidator.Validate(data);
+
+        // Assert
+        Assert.Contains("must be lower-case ASCII letters, digits and single hyphens", Messages(report), StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A group without a kind, or with a kind outside the vocabulary, is a violation; both kinds are valid.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_DataValidator_Validate_GroupKind_MustBeInTheVocabulary()
+    {
+        // Arrange / Act
+        var data = LabeledWithThreeBassNouns();
+        WriteGroup(data, "bass#group:high", "high", "n", "equivalent", "oewn-bass__1.05.00..", "oewn-bass__1.05.01..");
+        var equivalent = DataValidator.Validate(data);
+        WriteGroup(data, "bass#group:high", "high", "n", string.Empty, "oewn-bass__1.05.00..", "oewn-bass__1.05.01..");
+        var missing = DataValidator.Validate(data);
+        WriteGroup(data, "bass#group:high", "high", "n", "similar", "oewn-bass__1.05.00..", "oewn-bass__1.05.01..");
+        var unknown = DataValidator.Validate(data);
+
+        // Assert
+        Assert.True(equivalent.IsValid, Messages(equivalent));
+        Assert.Contains("[cell]", Messages(missing), StringComparison.Ordinal);
+        Assert.Contains("'similar' is not in vocabulary 'group_kind'", Messages(unknown), StringComparison.Ordinal);
     }
 
     /// <summary>
@@ -660,21 +715,51 @@ public sealed class DataValidatorTests : IDisposable
     }
 
     /// <summary>
-    ///     A sense id that is also the id of a group is a violation, because the two share one namespace.
+    ///     A sense id that is also the id of a group is a violation; the marker <c>group:</c> keeps the two apart, so only
+    ///     a sense label with the marker can collide.
     /// </summary>
     [Fact]
     public void WordSenseBuilder_DataValidator_Validate_SenseIdEqualToGroupId_Violates()
     {
-        // Arrange - bass#fish is the id of the first noun of bass; a group gets the same id
-        var data = Labeled();
-        DataFixture.Replace(data, "sense_group/b.tsv", DefaultBassGroup, "bass#fish\tbass\tn\tfish\tcurated\n");
-        DataFixture.Replace(data, "group_sense/b.tsv", Bass1Group + Bass2Group, "bass#fish\toewn-bass__1.05.00..\nbass#fish\toewn-bass__1.10.00..\n");
+        // Arrange - the first noun of bass is labeled group:high, which makes its id the id of the group of two nouns
+        var data = LabeledWithThreeBassNouns();
+        var first = DataFixture.Rows(data, "sense_label").Single(l => l[0] == "oewn-bass__1.05.00..");
+        DataFixture.Replace(data, "sense_label/b.tsv", $"oewn-bass__1.05.00..\t{first[1]}\t", "oewn-bass__1.05.00..\tgroup:high\t");
+        WriteBassGroup(data, "high", "n", "oewn-bass__1.05.00..", "oewn-bass__1.05.01..");
 
         // Act
         var report = DataValidator.Validate(data);
 
         // Assert
         Assert.Contains("is the id of a sense and of a group", Messages(report), StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     Group ids are versioned per data release and are not frozen: a baseline with another group id, or without
+    ///     the group, is no stability violation, while the same change of a sense label still is.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_DataValidator_Validate_ChangedGroupId_IsNotAStabilityViolation()
+    {
+        // Arrange - the baseline has the group high, the current data has the group low
+        var baseline = LabeledWithThreeBassNouns("baseline");
+        WriteBassGroup(baseline, "high", "n", "oewn-bass__1.05.00..", "oewn-bass__1.05.01..");
+        var current = LabeledWithThreeBassNouns("current");
+        WriteBassGroup(current, "low", "n", "oewn-bass__1.05.00..", "oewn-bass__1.05.01..");
+        var withoutGroup = LabeledWithThreeBassNouns("without-group");
+        var first = DataFixture.Rows(current, "sense_label").Single(l => l[0] == "oewn-bass__1.05.00..");
+        DataFixture.Replace(current, "sense_label/b.tsv", $"oewn-bass__1.05.00..\t{first[1]}\t", "oewn-bass__1.05.00..\tchanged\t");
+
+        // Act
+        var senseChanged = DataValidator.Validate(current, baseline);
+        DataFixture.Replace(current, "sense_label/b.tsv", "oewn-bass__1.05.00..\tchanged\t", $"oewn-bass__1.05.00..\t{first[1]}\t");
+        var groupRenamed = DataValidator.Validate(current, baseline);
+        var groupDropped = DataValidator.Validate(withoutGroup, baseline);
+
+        // Assert
+        Assert.Contains("[stability]", Messages(senseChanged), StringComparison.Ordinal);
+        Assert.True(groupRenamed.IsValid, Messages(groupRenamed));
+        Assert.True(groupDropped.IsValid, Messages(groupDropped));
     }
 
     /// <summary>

@@ -5,17 +5,16 @@ namespace DemaConsulting.WordSense.Basic.Tests;
 /// </summary>
 public class SenseFusionTests
 {
-    private static readonly WordDetails Fish = WordLexicon.Lookup("bass").First(c => c.SenseId == "bass#fish");
-    private static readonly WordDetails Music = WordLexicon.Lookup("bass").First(c => c.SenseId == "bass#music");
-    private static readonly WordDetails Verb = new(null, "bass", PartOfSpeech.Verb, string.Empty);
-    private static readonly WordDetails Auxiliary = new(null, "bass", PartOfSpeech.Auxiliary, string.Empty);
+    private static readonly WordDetails Noun = TestTables.RecordNoun;
+    private static readonly WordDetails Verb = TestTables.RecordVerb;
+    private static readonly WordDetails Auxiliary = new("record", PartOfSpeech.Auxiliary, string.Empty);
 
     /// <summary>
     ///     The auxiliary tag has the numeric value of the auxiliary part of speech, so the mass of the auxiliary state
-    ///     reaches the auxiliary sense and it wins when the tagger is sure of it.
+    ///     reaches the auxiliary analysis and it wins when the tagger is sure of it.
     /// </summary>
     [Fact]
-    public void SenseFusion_Fuse_AuxiliaryPosterior_SelectsAuxiliarySense()
+    public void SenseFusion_Fuse_AuxiliaryPosterior_SelectsAuxiliaryAnalysis()
     {
         var posteriors = new double[PosTag.Count];
         posteriors[PosTag.Noun] = 0.001;
@@ -24,7 +23,7 @@ public class SenseFusionTests
         double[] cues = [double.NaN, double.NaN, double.NaN];
         var probabilities = new double[3];
 
-        SenseFusion.Fuse(posteriors, [Fish, Verb, Auxiliary], cues, 1.5, 0.5, probabilities);
+        SenseFusion.Fuse(posteriors, [Noun, Verb, Auxiliary], cues, 1.5, 0.5, probabilities);
 
         Assert.Equal(PosTag.Auxiliary, PosTag.Of(PartOfSpeech.Auxiliary));
         Assert.Equal(2, SenseFusion.Winner(probabilities));
@@ -32,7 +31,7 @@ public class SenseFusionTests
     }
 
     /// <summary>
-    ///     Fusion gives probabilities that sum to one and pick the sense of the likely part of speech.
+    ///     Fusion gives probabilities that sum to one and pick the analysis of the likely part of speech.
     /// </summary>
     [Fact]
     public void SenseFusion_Fuse_PosPosteriorDecides()
@@ -43,7 +42,7 @@ public class SenseFusionTests
         double[] cues = [0, 0, double.NaN];
         var probabilities = new double[3];
 
-        SenseFusion.Fuse(posteriors, [Fish, Music, Verb], cues, 1.5, 0.5, probabilities);
+        SenseFusion.Fuse(posteriors, [Noun, TestTables.CatNoun, Verb], cues, 1.5, 0.5, probabilities);
 
         Assert.Equal(1.0, probabilities.Sum(), 9);
         Assert.True(probabilities[0] > probabilities[2]);
@@ -51,17 +50,18 @@ public class SenseFusionTests
     }
 
     /// <summary>
-    ///     The cue scores separate senses that share a part of speech.
+    ///     The cue scores separate analyses that share a part of speech: they have the same posterior share, so only the
+    ///     cues decide between the past and the present of <c>read</c>.
     /// </summary>
     [Fact]
-    public void SenseFusion_Fuse_CuesSeparateSamePartOfSpeech()
+    public void SenseFusion_Fuse_CuesSeparateSamePartOfSpeechAnalyses()
     {
         var posteriors = new double[PosTag.Count];
-        posteriors[PosTag.Noun] = 1.0;
+        posteriors[PosTag.Verb] = 1.0;
         double[] cues = [-10, -2];
         var probabilities = new double[2];
 
-        SenseFusion.Fuse(posteriors, [Fish, Music], cues, 1.5, 0.5, probabilities);
+        SenseFusion.Fuse(posteriors, [TestTables.ReadPast, TestTables.ReadPres], cues, 1.5, 0.5, probabilities);
 
         Assert.Equal(1, SenseFusion.Winner(probabilities));
         Assert.InRange(probabilities[1], 0.5, 1.0);
@@ -75,7 +75,7 @@ public class SenseFusionTests
     {
         var probabilities = new double[2];
 
-        SenseFusion.Fuse(new double[PosTag.Count], [Fish, Music], [double.NaN, double.NaN], 1.5, 0.5, probabilities);
+        SenseFusion.Fuse(new double[PosTag.Count], [TestTables.ReadPast, TestTables.ReadPres], [double.NaN, double.NaN], 1.5, 0.5, probabilities);
 
         Assert.Equal(0.5, probabilities[0], 9);
         Assert.Equal(0.5, probabilities[1], 9);
@@ -89,10 +89,10 @@ public class SenseFusionTests
     public void SenseFusion_Fuse_ExtremeScores_StayFinite()
     {
         var posteriors = new double[PosTag.Count];
-        posteriors[PosTag.Noun] = 1.0;
+        posteriors[PosTag.Verb] = 1.0;
         var probabilities = new double[2];
 
-        SenseFusion.Fuse(posteriors, [Fish, Music], [-1e6, 0], 1.5, 1.0, probabilities);
+        SenseFusion.Fuse(posteriors, [TestTables.ReadPast, TestTables.ReadPres], [-1e6, 0], 1.5, 1.0, probabilities);
 
         Assert.All(probabilities, p => Assert.True(double.IsFinite(p)));
         Assert.Equal(1.0, probabilities.Sum(), 9);
@@ -116,12 +116,12 @@ public class SenseFusionTests
     public void SenseFusion_Fuse_MissingCue_IsFilledWithMeanOfOthers()
     {
         var posteriors = new double[PosTag.Count];
-        posteriors[PosTag.Noun] = 1.0;
+        posteriors[PosTag.Verb] = 1.0;
         var withNaN = new double[2];
         var withMean = new double[2];
 
-        SenseFusion.Fuse(posteriors, [Fish, Music], [-3.0, double.NaN], 1.5, 0.5, withNaN);
-        SenseFusion.Fuse(posteriors, [Fish, Music], [-3.0, -3.0], 1.5, 0.5, withMean);
+        SenseFusion.Fuse(posteriors, [TestTables.ReadPast, TestTables.ReadPres], [-3.0, double.NaN], 1.5, 0.5, withNaN);
+        SenseFusion.Fuse(posteriors, [TestTables.ReadPast, TestTables.ReadPres], [-3.0, -3.0], 1.5, 0.5, withMean);
 
         Assert.Equal(withMean[0], withNaN[0], 9);
         Assert.Equal(withMean[1], withNaN[1], 9);

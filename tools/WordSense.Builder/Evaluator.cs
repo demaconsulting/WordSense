@@ -3,7 +3,8 @@ using System.Globalization;
 using System.Text;
 using DemaConsulting.WordSense;
 using DemaConsulting.WordSense.Basic;
-using DemaConsulting.WordSense.Onnx;
+using DemaConsulting.WordSense.BertBaseCased;
+using DemaConsulting.WordSense.MiniLM;
 
 #pragma warning disable S6966 // the tool writes small console and file outputs; asynchronous writes add nothing
 #pragma warning disable S1215 // the measurement of the word table memory needs explicit collections
@@ -15,20 +16,16 @@ namespace WordSense.Builder;
 /// </summary>
 /// <param name="Name">The name of the set.</param>
 /// <param name="Rows">Sentences evaluated.</param>
-/// <param name="BestSense">Sentences whose best sense (part of speech and meaning) was right.</param>
+/// <param name="BestSense">Sentences whose selected analysis (lemma, part of speech and features) was right.</param>
 /// <param name="Pos">Sentences whose part of speech was right.</param>
-/// <param name="HeteronymRows">Sentences of heteronym lemmas.</param>
-/// <param name="Meaning">Sentences of heteronym lemmas whose meaning (pronunciation) was right.</param>
 /// <param name="Answered">Sentences with a confidence of at least 0.5.</param>
-/// <param name="AnsweredCorrect">Answered sentences whose best sense was right.</param>
+/// <param name="AnsweredCorrect">Answered sentences whose selected analysis was right.</param>
 /// <param name="Outcomes">The confidence and correctness of every sentence, or null when not collected.</param>
 internal sealed record SetResult(
     string Name,
     int Rows,
     int BestSense,
     int Pos,
-    int HeteronymRows,
-    int Meaning,
     int Answered,
     int AnsweredCorrect,
     IReadOnlyList<(double Confidence, bool Correct)>? Outcomes = null);
@@ -71,8 +68,8 @@ internal sealed record EvaluationResult(
     private const string TableEnd = "<!-- model-table:end -->";
 
     private const string TableHeader =
-        "| Model | Holdout best sense | Real-text best sense | Part of speech (holdout / real) | Pronunciation (holdout / real) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |\n" +
-        "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |\n";
+        "| Model | Holdout best analysis | Real-text best analysis | Part of speech (holdout / real) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |\n" +
+        "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |\n";
 
     /// <summary>
     ///     Renders the row of this model for the model comparison table of the README.
@@ -90,7 +87,6 @@ internal sealed record EvaluationResult(
                " | " + Percent(holdout.BestSense, holdout.Rows) +
                " | " + Percent(real.BestSense, real.Rows) +
                " | " + Percent(holdout.Pos, holdout.Rows) + " / " + Percent(real.Pos, real.Rows) +
-               " | " + Percent(holdout.Meaning, holdout.HeteronymRows) + " / " + Percent(real.Meaning, real.HeteronymRows) +
                " | " + download +
                " | " + (weights / 1024.0).ToString("N0", inv) + " KiB" +
                " | " + (RamBytes < 1048576 ? "< 1 MiB" : (RamBytes / 1048576.0).ToString("N0", inv) + " MiB") +
@@ -153,17 +149,6 @@ internal sealed record EvaluationResult(
     private static readonly double[] Thresholds = [0.6, 0.8, 0.9];
 
     /// <summary>
-    ///     The best-sense accuracy (holdout, real-text) of the models the basic model is compared with; fixed reference
-    ///     values (the spike of the statistical tagger and the two encoder models), so that every run prints the same table.
-    /// </summary>
-    private static readonly (string Name, string Holdout, string Real)[] References =
-    [
-        ("Statistical tagger spike (reference)", "91.4%", "81.9%"),
-        ("MiniLM", "96.86%", "92.60%"),
-        ("BertBaseCased", "98.99%", "97.39%"),
-    ];
-
-    /// <summary>
     ///     Renders the measurements as Markdown.
     /// </summary>
     /// <returns>The text, with LF line ends.</returns>
@@ -172,14 +157,13 @@ internal sealed record EvaluationResult(
         var inv = CultureInfo.InvariantCulture;
         var text = new StringBuilder();
         text.Append("### ").Append(Model).Append('\n').Append('\n');
-        text.Append("| Set | Rows | Best sense | Part of speech | Pronunciation | Answered | Answered accuracy |\n");
-        text.Append("| --- | ---: | ---: | ---: | ---: | ---: | ---: |\n");
+        text.Append("| Set | Rows | Best analysis | Part of speech | Answered | Answered accuracy |\n");
+        text.Append("| --- | ---: | ---: | ---: | ---: | ---: |\n");
         foreach (var s in Sets)
         {
             text.Append("| ").Append(s.Name).Append(" | ").Append(s.Rows.ToString(inv))
                 .Append(" | ").Append(Percent(s.BestSense, s.Rows))
                 .Append(" | ").Append(Percent(s.Pos, s.Rows))
-                .Append(" | ").Append(Percent(s.Meaning, s.HeteronymRows))
                 .Append(" | ").Append(Percent(s.Answered, s.Rows))
                 .Append(" | ").Append(Percent(s.AnsweredCorrect, s.Answered)).Append(" |\n");
         }
@@ -234,15 +218,11 @@ internal sealed record EvaluationResult(
 
         RenderCalibration(text, inv);
 
-        text.Append("\n#### Comparison (best sense)\n\n| Model | Holdout | Real-text |\n| --- | ---: | ---: |\n");
+        text.Append("\n#### Best analysis\n\n| Model | Holdout | Real-text |\n| --- | ---: | ---: |\n");
         var holdout = Sets.FirstOrDefault(s => s.Name == "holdout");
         var real = Sets.FirstOrDefault(s => s.Name == "real-text");
         text.Append("| Basic (this run) | ").Append(holdout is null ? "n/a" : Percent(holdout.BestSense, holdout.Rows))
             .Append(" | ").Append(real is null ? "n/a" : Percent(real.BestSense, real.Rows)).Append(" |\n");
-        foreach (var (name, holdoutValue, realValue) in References)
-        {
-            text.Append("| ").Append(name).Append(" | ").Append(holdoutValue).Append(" | ").Append(realValue).Append(" |\n");
-        }
     }
 
     private void RenderCalibration(StringBuilder text, IFormatProvider inv)
@@ -316,7 +296,7 @@ internal static class Evaluator
     {
         var (wordsMs, wordsBytes) = MeasureWords();
         var inventory = SenseInventory.ReadDirectory(Path.Join(corpus, "senses"));
-        var gold = inventory.Rows.ToDictionary(r => (r.Lemma, r.Label));
+        var labels = AnalysisLabels.Load(inventory, corpus);
         var holdout = Corpus.ReadDirectory(Path.Join(corpus, "holdout"));
         var realPath = Path.Join(corpus, "realtext", "eval-seed.tsv");
         var real = File.Exists(realPath) ? Corpus.ReadSentences(realPath) : [];
@@ -372,16 +352,21 @@ internal static class Evaluator
 
         var ramBytes = Math.Max(0, Math.Max(privateAfter - privateBefore, GC.GetTotalMemory(true) - managedBefore));
         // Only the pinned files are downloaded, not every file of the model folder (README, SHA256SUMS, unused tokenizer)
-        var downloadBytes = model is OnnxWordSenseModel onnx ? onnx.Spec.Files.Sum(f => f.Length) : 0;
+        var downloadBytes = model switch
+        {
+            MiniLMWordSenseModel minilm => minilm.Encoder.Spec.Files.Sum(f => f.Length),
+            BertBaseCasedWordSenseModel bert => bert.Encoder.Spec.Files.Sum(f => f.Length),
+            _ => 0,
+        };
 
         using var outcomesLog = outcomesFile is null ? null : new StreamWriter(outcomesFile, false, new System.Text.UTF8Encoding(false)) { NewLine = "\n" };
         var sets = new List<SetResult>();
         var clock = Stopwatch.StartNew();
-        sets.Add(await ScoreAsync("holdout", holdout, classifier, gold, outcomesLog, cancellationToken).ConfigureAwait(false));
+        sets.Add(await ScoreAsync("holdout", holdout, classifier, labels, outcomesLog, cancellationToken).ConfigureAwait(false));
         clock.Stop();
         var latency = holdout.Count == 0 ? 0 : clock.Elapsed.TotalMilliseconds / holdout.Count;
         progress.WriteLine($"{info.Name}: holdout done.");
-        sets.Add(await ScoreAsync("real-text", real, classifier, gold, outcomesLog, cancellationToken).ConfigureAwait(false));
+        sets.Add(await ScoreAsync("real-text", real, classifier, labels, outcomesLog, cancellationToken).ConfigureAwait(false));
 
         var weights = info.IsEncoder ? info.WeightsPath(repository) : string.Empty;
         BasicDetails? basic = null;
@@ -400,37 +385,30 @@ internal static class Evaluator
         string name,
         List<CorpusRow> rows,
         IWordSenseModel classifier,
-        IReadOnlyDictionary<(string Lemma, string Label), InventoryRow> gold,
+        AnalysisLabels labels,
         TextWriter? outcomesLog,
         CancellationToken cancellationToken)
     {
-        int best = 0, pos = 0, heteronyms = 0, meaning = 0, answered = 0, answeredCorrect = 0;
-        var facts = ClassFacts.From(gold.Values);
+        int best = 0, pos = 0, answered = 0, answeredCorrect = 0;
         var outcomes = new List<(double Confidence, bool Correct)>(rows.Count);
         foreach (var row in rows)
         {
-            var expected = gold[(row.Lemma, row.Sense)];
-            var senses = await classifier.ClassifyAsync(row.Words, cancellationToken).ConfigureAwait(false);
-            var actual = senses[row.TargetWordIndex];
+            var expected = labels.Of(row.Lemma, row.Sense);
+            var results = await classifier.ClassifyAsync(row.Words, cancellationToken).ConfigureAwait(false);
+            var actual = results[row.TargetWordIndex];
             var details = actual.Details;
-            var rightSense = details is not null && details.PartOfSpeech == expected.Pos && string.Equals(facts.MeaningOf(details), expected.Meaning, StringComparison.Ordinal);
-            best += rightSense ? 1 : 0;
-            outcomes.Add((actual.Confidence, rightSense));
-            outcomesLog?.WriteLine(string.Join('\t', name, outcomes.Count - 1, row.Lemma + "#" + row.Sense, details is null ? "-" : facts.LemmaOf(details) + "|" + details.PartOfSpeech + "|" + facts.MeaningOf(details), actual.Confidence.ToString("F6", CultureInfo.InvariantCulture), rightSense ? "1" : "0"));
-            pos += details is not null && details.PartOfSpeech == expected.Pos ? 1 : 0;
-            if (expected.Meaning is not null)
-            {
-                heteronyms++;
-                meaning += details is not null && string.Equals(facts.MeaningOf(details), expected.Meaning, StringComparison.Ordinal) ? 1 : 0;
-            }
-
+            var right = labels.IsRight(row.Lemma, row.Sense, details);
+            best += right ? 1 : 0;
+            outcomes.Add((actual.Confidence, right));
+            outcomesLog?.WriteLine(string.Join('\t', name, outcomes.Count - 1, row.Lemma + "#" + row.Sense, details is null ? "-" : details.Lemma + "|" + details.PartOfSpeech + "|" + details.Features, actual.Confidence.ToString("F6", CultureInfo.InvariantCulture), right ? "1" : "0"));
+            pos += details is not null && expected.Any(k => k.Pos == details.PartOfSpeech) ? 1 : 0;
             if (actual.Confidence >= 0.5)
             {
                 answered++;
-                answeredCorrect += rightSense ? 1 : 0;
+                answeredCorrect += right ? 1 : 0;
             }
         }
 
-        return new SetResult(name, rows.Count, best, pos, heteronyms, meaning, answered, answeredCorrect, outcomes);
+        return new SetResult(name, rows.Count, best, pos, answered, answeredCorrect, outcomes);
     }
 }

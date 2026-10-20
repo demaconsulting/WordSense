@@ -115,8 +115,10 @@ sections:
               - id: WordSense-Core-WordLexicon-Format
                 title: >-
                   WordLexicon shall reject a corrupt or foreign word image (wrong magic or version, content hash
-                  mismatch, invalid section, a sense that names a group or a respelling that does not exist, or a
-                  duplicate sense id).
+                  mismatch, invalid section, a sense that names a group or a respelling that does not exist, a
+                  duplicate sense id, a group id without the group marker (lemma#group:label), a group with fewer than
+                  two members or with all the senses of its lemma and part of speech, a group that mixes lemmas or
+                  parts of speech, or group members that disagree with the sense-to-group index).
                 tags: [unit]
                 justification: |
                   A damaged image must fail loudly instead of producing wrong senses.
@@ -126,6 +128,8 @@ sections:
                   - WordSenseBuilder_Image_WrongHash_IsRejectedByContentHashOnly
                   - WordSenseBuilder_Image_CountMismatch_IsRejected
                   - WordSenseBuilder_Image_SenseWithUnknownGroup_IsRejected
+                  - WordSenseBuilder_Image_GroupOfOneSenseOrAllSenses_IsRejected
+                  - WordSenseBuilder_Image_GroupIdWithoutMarker_IsRejected
                   - WordSenseBuilder_Image_DuplicateSenseId_IsRejected
 
               - id: WordSense-Core-WordLexicon-Senses
@@ -160,14 +164,35 @@ sections:
 
               - id: WordSense-Core-WordLexicon-Groups
                 title: >-
-                  WordLexicon shall find a group by its readable id, list the senses of the group, and keep every sense
-                  in exactly one group of its own lemma and part of speech.
+                  WordLexicon shall find a group by its readable id (lemma#group:label, a namespace of its own, so
+                  that a
+                  group id never equals a sense id), list the senses of the group in inventory order, keep every sense
+                  in at most one group, and keep every group to one lemma and one part of speech with at least two, but
+                  not all, of the senses of that lemma and part of speech.
                 tags: [unit]
                 justification: |
-                  A group answer must lead to the senses it stands for, and a sense that sat in no group, or in two,
-                  would make a group answer ambiguous.
+                  A group answer must lead to the senses it stands for, so that a caller can degrade the answer to its
+                  member senses; a sense in two groups would make a group answer ambiguous; a group of one sense or of
+                  every sense would add nothing, because groups exist only to set confusable senses apart from the rest;
+                  and a group id that can never be mistaken for a sense id lets callers store both kinds of id
+                  side by side.
                 tests:
                   - WordLexicon_TryGetGroup_ById_ListsMemberSenses
                   - WordLexicon_TryGetGroup_UnknownId_IsFalse
-                  - WordLexicon_Groups_EverySense_BelongsToExactlyOneGroup
+                  - WordLexicon_Groups_EverySense_BelongsToAtMostOneGroup
                   - WordLexicon_Groups_EveryGroup_HasOneLemmaAndOnePartOfSpeech
+                  - WordLexicon_Groups_EveryGroup_HasAtLeastTwoSensesAndNotAllOfThem
+                  - WordLexicon_Groups_EveryGroupId_HasGroupMarkerAndNeverEqualsASenseId
+
+              - id: WordSense-Core-WordLexicon-Version
+                title: >-
+                  WordLexicon shall expose a version string that identifies the sense inventory of the embedded image
+                  (the first 16 lower-case hexadecimal digits of the inventory hash), the same on every call and
+                  different whenever an analysis, a sense or a group of the catalog changes.
+                tags: [unit]
+                justification: |
+                  Sense ids are frozen but group ids are versioned per data release; a caller that stores group ids
+                  saves the version with them and can tell, by comparing for equality, that the catalog it runs against
+                  is not the one it stored them for.
+                tests:
+                  - WordLexicon_Version_IsStableLowerCaseHex

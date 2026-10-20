@@ -43,9 +43,6 @@ internal enum PartitionKind
     /// <summary>By the lemma of the first sense of the synset named in the column.</summary>
     Synset,
 
-    /// <summary>By the lemma of the coarse class named in the column.</summary>
-    Class,
-
     /// <summary>By the lemma of the entry of the sense whose sense key is named in the column.</summary>
     Key,
 }
@@ -422,7 +419,6 @@ internal sealed class DataSchema
             "entry" => PartitionKind.Entry,
             "sense" => PartitionKind.Sense,
             "synset" => PartitionKind.Synset,
-            "class" => PartitionKind.Class,
             "key" => PartitionKind.Key,
             var other => throw new SchemaException(by.Line, $"Unknown partition kind '{other}'."),
         };

@@ -7,10 +7,6 @@ namespace DemaConsulting.WordSense.Basic.Tests;
 /// </summary>
 public class CueModelTests
 {
-    private static readonly WordDetails Fish = WordLexicon.Lookup("bass").First(c => c.SenseId == "bass#fish");
-    private static readonly WordDetails Music = WordLexicon.Lookup("bass").First(c => c.SenseId == "bass#music");
-    private static readonly WordDetails Verb = new(null, "bass", PartOfSpeech.Verb, string.Empty);
-
     /// <summary>
     ///     The features are the distinct letter-bearing window tokens plus the two immediate neighbors.
     /// </summary>
@@ -67,17 +63,21 @@ public class CueModelTests
     }
 
     /// <summary>
-    ///     The scores follow the quantized weights; a sense the table lacks scores NaN.
+    ///     The scores follow the quantized weights of the column of each analysis, an analysis whose features match the
+    ///     empty column scores with it, and an analysis the table has no column for scores NaN.
     /// </summary>
     [Fact]
-    public void CueModel_Score_UsesWeightsAndMarksMissingSenses()
+    public void CueModel_Score_UsesWeightsAndMarksMissingAnalyses()
     {
-        var tables = BasicTables.Load(TestTables.Default());
-        ImmutableArray<WordDetails> senses = [Fish, Music, Verb];
+        // Arrange: the toy table has a past and a present column of the verb "read" and none for the verb "record"
+        var tables = TestTables.Load(TestTables.Default());
+        ImmutableArray<WordDetails> analyses = [TestTables.ReadPast, TestTables.ReadPres, TestTables.RecordVerb];
         var scores = new double[3];
 
-        CueModel.Score(tables.Cues["bass"], [new FeatureRef(CueModel.Window, "river")], senses, scores);
+        // Act
+        CueModel.Score(tables.Cues["read"], [new FeatureRef(CueModel.Window, "yesterday")], analyses, scores);
 
+        // Assert
         Assert.Equal((-8 - 2) * CueModel.Quantum, scores[0], 9);
         Assert.Equal((-8 - 40) * CueModel.Quantum, scores[1], 9);
         Assert.True(double.IsNaN(scores[2]));
@@ -89,10 +89,10 @@ public class CueModelTests
     [Fact]
     public void CueModel_Score_UnknownFeature_GivesPrior()
     {
-        var tables = BasicTables.Load(TestTables.Default());
+        var tables = TestTables.Load(TestTables.Default());
         var scores = new double[2];
 
-        CueModel.Score(tables.Cues["bass"], [new FeatureRef(CueModel.Window, "zzzz-no-such")], [Fish, Music], scores);
+        CueModel.Score(tables.Cues["read"], [new FeatureRef(CueModel.Window, "zzzz-no-such")], [TestTables.ReadPast, TestTables.ReadPres], scores);
 
         Assert.Equal(-8 * CueModel.Quantum, scores[0], 9);
         Assert.Equal(-8 * CueModel.Quantum, scores[1], 9);

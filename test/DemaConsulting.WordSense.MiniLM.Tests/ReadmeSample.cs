@@ -52,12 +52,16 @@ internal sealed class ReadmeSample
         var words = "The hunter fired an arrow from his bow at a deer so we will record a record".Split(' ');
         var results = await model.ClassifyAsync(words);
 
-        // Print the part of speech (or unknown), the confidence and, for a heteronym, the sense id
+        // Print the part of speech (or unknown), the level, the confidence, the sense id (at the sense level) and the
+        // runner-up analysis (the second most probable part of speech, when the word has one)
         foreach (var result in results)
         {
             var pos = result.Details?.PartOfSpeech.ToString() ?? "unknown";
-            var say = result.Details?.SenseId ?? "";
-            Console.WriteLine($"{result.Word,-9} {pos,-12} {result.Confidence,4:F2}  {say}".TrimEnd());
+            var sense = result.SenseId ?? "";
+            var next = result.Analyses.Length > 1
+                ? $"{result.Analyses[1].Details.PartOfSpeech} {result.Analyses[1].Probability:F2}"
+                : "";
+            Console.WriteLine($"{result.Word,-9} {pos,-12} {result.Level,-12} {result.Confidence,4:F2}  {sense,-14} {next}".TrimEnd());
         }
 
         // </sample:readme>
@@ -85,7 +89,7 @@ internal sealed class ReadmeSample
             _model.EnsureModelAsync(mirror, cancellationToken);
 
         /// <inheritdoc />
-        public Task<WordSense[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default) =>
+        public Task<ClassifyResult[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default) =>
             _model.ClassifyAsync(words, cancellationToken);
 
         /// <inheritdoc />

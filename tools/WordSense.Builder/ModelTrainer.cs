@@ -85,7 +85,7 @@ internal static class ModelTrainer
         using var encoder = model.OpenEncoder();
         var caching = new CachingEncoder(encoder.EncodeAsync, cache);
         var data = await TrainDataAsync(
-            info.Name, model.ModelId, DemaConsulting.WordSense.WordLexicon.Current.ClassHash.ToArray(), anchors, inventory, options, caching, frozenMean, fitCache, output, clock, cancellationToken).ConfigureAwait(false);
+            info.Name, model.ModelId, DemaConsulting.WordSense.WordLexicon.Current.InventoryHash.ToArray(), anchors, inventory, options, caching, frozenMean, fitCache, output, clock, cancellationToken).ConfigureAwait(false);
 
         Directory.CreateDirectory(Path.GetDirectoryName(path)!);
         File.WriteAllBytes(path, WeightsBlobWriter.Write(data));

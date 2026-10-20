@@ -9,20 +9,21 @@
 [![Security][badge-security]][link-security]
 [![NuGet][badge-nuget]][link-nuget]
 
-WordSense is a .NET library that identifies the sense of a word in context: its lemma, its part of speech and, where a
-model can tell, its sense: an Open English WordNet (OEWN) fine sense with a readable id such as `bank#financial-institution`
-and its WordNet sense key, or the coarse group of closely related senses it belongs to. Every answer states the level it
-was made at (sense, group or part of speech) and carries a confidence for that level, so you know whether "bank" is the
-money kind, at least a financial word, or only a noun. Every word is looked up in an embedded dictionary of over
-140,000 common words. Only where a word has several meanings
-does a model choose from the sentence: either the
-`Basic` model, which is a small statistical tagger that needs nothing else and answers with the part of speech, or an
-ONNX encoder model (`MiniLM` or `BertBaseCased`) that is more accurate, chooses fine senses and runs on ONNX Runtime.
+WordSense is a .NET library that identifies a word in context: its lemma, its part of speech and features and, where
+the senses allow, its sense: an Open English WordNet (OEWN) fine sense with a readable id such as
+`bank#financial-institution` and its WordNet sense key, or the group of closely related senses it belongs to. Every
+answer states the level it was made at (sense, group or part of speech), carries a confidence for that level and lists
+the candidate analyses with their probabilities, so you know whether "bank" is the money kind, at least a financial
+word, or only a noun. Every word is looked up in an embedded dictionary of over 140,000 common words. Only where a word
+has several analyses does a model choose from the sentence: the `Basic` model, a small statistical tagger that needs
+nothing else and answers with the part of speech, or an ONNX encoder package (`MiniLM` or `BertBaseCased`) that runs on
+ONNX Runtime and, in this version, answers through the `Basic` model; scoring fine senses with the encoders follows in a
+later version.
 
 ## Features
 
 - 📖 **Dictionary** - Parts of speech for over 140,000 common words, with the senses of each lemma
-- 🧠 **Context Aware** - Picks the part of speech and, for trained words, the sense of a word from its sentence
+- 🧠 **Context Aware** - Picks the analysis (lemma, part of speech, features) of a word from its sentence
 - 🏷️ **Fine Senses and Groups** - Open English WordNet senses with readable ids, WordNet sense keys and coarse groups
 - 🎚️ **Answer Levels** - Each answer says whether it is a sense, a group or a part of speech
 - 📊 **Confidence** - Every answer carries a confidence from 0 to 1 that applies to its level
@@ -72,12 +73,16 @@ await model.EnsureModelAsync();
 var words = "The hunter fired an arrow from his bow at a deer so we will record a record".Split(' ');
 var results = await model.ClassifyAsync(words);
 
-// Print the part of speech (or unknown), the confidence and, for a heteronym, the sense id
+// Print the part of speech (or unknown), the level, the confidence, the sense id (at the sense level) and the
+// runner-up analysis (the second most probable part of speech, when the word has one)
 foreach (var result in results)
 {
     var pos = result.Details?.PartOfSpeech.ToString() ?? "unknown";
-    var say = result.Details?.SenseId ?? "";
-    Console.WriteLine($"{result.Word,-9} {pos,-12} {result.Confidence,4:F2}  {say}".TrimEnd());
+    var sense = result.SenseId ?? "";
+    var next = result.Analyses.Length > 1
+        ? $"{result.Analyses[1].Details.PartOfSpeech} {result.Analyses[1].Probability:F2}"
+        : "";
+    Console.WriteLine($"{result.Word,-9} {pos,-12} {result.Level,-12} {result.Confidence,4:F2}  {sense,-14} {next}".TrimEnd());
 }
 ```
 
@@ -85,76 +90,80 @@ Output with the `Basic` model:
 
 <!-- output:basic -->
 ```text
-The       Determiner   1.00
-hunter    Noun         1.00
-fired     Verb         1.00
-an        Determiner   1.00
-arrow     Noun         1.00
-from      Preposition  1.00
-his       Determiner   1.00
-bow       Noun         0.78  bow#weapon
-at        Preposition  1.00
-a         Determiner   1.00
-deer      Noun         0.50
-so        Conjunction  0.61
-we        Pronoun      1.00
-will      Auxiliary    1.00
-record    Verb         1.00  record#verb
-a         Determiner   1.00
-record    Noun         1.00  record#noun
+The       Determiner   Sense        1.00  the#determiner
+hunter    Noun         PartOfSpeech 1.00
+fired     Verb         PartOfSpeech 1.00                 Adjective 0.00
+an        Determiner   Sense        1.00  an#determiner
+arrow     Noun         PartOfSpeech 1.00
+from      Preposition  Sense        1.00  from#preposition
+his       Determiner   Sense        1.00  his#determiner
+bow       Noun         PartOfSpeech 1.00                 Verb 0.00
+at        Preposition  Sense        1.00  at#preposition Noun 0.00
+a         Determiner   Sense        1.00  a#determiner
+deer      Noun         Sense        0.50  deer#noun      Noun 0.50
+so        Conjunction  Sense        0.61  so#conjunction Adverb 0.39
+we        Pronoun      Sense        1.00  we#pronoun
+will      Auxiliary    Sense        1.00  will#auxiliary Noun 0.00
+record    Verb         PartOfSpeech 1.00                 Noun 0.00
+a         Determiner   Sense        1.00  a#determiner
+record    Noun         PartOfSpeech 1.00                 Verb 0.00
 ```
 
 Output with the `MiniLM` model:
 
 <!-- output:minilm -->
 ```text
-The       Determiner   1.00
-hunter    Noun         1.00
-fired     Verb         0.50
-an        Determiner   1.00
-arrow     Noun         1.00
-from      Preposition  1.00
-his       Determiner   1.00
-bow       Noun         1.00  bow#weapon
-at        Preposition  0.50
-a         Determiner   1.00
-deer      Noun         0.50
-so        Adverb       0.17
-we        Pronoun      1.00
-will      Verb         0.50
-record    Verb         1.00  record#verb
-a         Determiner   1.00
-record    Noun         1.00  record#noun
+The       Determiner   Sense        1.00  the#determiner
+hunter    Noun         PartOfSpeech 1.00
+fired     Verb         PartOfSpeech 1.00                 Adjective 0.00
+an        Determiner   Sense        1.00  an#determiner
+arrow     Noun         PartOfSpeech 1.00
+from      Preposition  Sense        1.00  from#preposition
+his       Determiner   Sense        1.00  his#determiner
+bow       Noun         PartOfSpeech 1.00                 Verb 0.00
+at        Preposition  Sense        1.00  at#preposition Noun 0.00
+a         Determiner   Sense        1.00  a#determiner
+deer      Noun         Sense        0.50  deer#noun      Noun 0.50
+so        Conjunction  Sense        0.61  so#conjunction Adverb 0.39
+we        Pronoun      Sense        1.00  we#pronoun
+will      Auxiliary    Sense        1.00  will#auxiliary Noun 0.00
+record    Verb         PartOfSpeech 1.00                 Noun 0.00
+a         Determiner   Sense        1.00  a#determiner
+record    Noun         PartOfSpeech 1.00                 Verb 0.00
 ```
 
 Output with the `BertBaseCased` model:
 
 <!-- output:bertbasecased -->
 ```text
-The       Determiner   1.00
-hunter    Noun         1.00
-fired     Verb         0.50
-an        Determiner   1.00
-arrow     Noun         1.00
-from      Preposition  1.00
-his       Determiner   1.00
-bow       Noun         1.00  bow#weapon
-at        Preposition  0.50
-a         Determiner   1.00
-deer      Noun         0.50
-so        Adverb       0.17
-we        Pronoun      1.00
-will      Verb         0.50
-record    Verb         0.85  record#verb
-a         Determiner   1.00
-record    Noun         0.35  record#noun
+The       Determiner   Sense        1.00  the#determiner
+hunter    Noun         PartOfSpeech 1.00
+fired     Verb         PartOfSpeech 1.00                 Adjective 0.00
+an        Determiner   Sense        1.00  an#determiner
+arrow     Noun         PartOfSpeech 1.00
+from      Preposition  Sense        1.00  from#preposition
+his       Determiner   Sense        1.00  his#determiner
+bow       Noun         PartOfSpeech 1.00                 Verb 0.00
+at        Preposition  Sense        1.00  at#preposition Noun 0.00
+a         Determiner   Sense        1.00  a#determiner
+deer      Noun         Sense        0.50  deer#noun      Noun 0.50
+so        Conjunction  Sense        0.61  so#conjunction Adverb 0.39
+we        Pronoun      Sense        1.00  we#pronoun
+will      Auxiliary    Sense        1.00  will#auxiliary Noun 0.00
+record    Verb         PartOfSpeech 1.00                 Noun 0.00
+a         Determiner   Sense        1.00  a#determiner
+record    Noun         PartOfSpeech 1.00                 Verb 0.00
 ```
 
-The heteronyms `bow` and `record` get their sense id. A word with one meaning is answered with confidence 1; a word
-with several meanings gets its best sense, and a low confidence marks a guess (for example `so`), so read the
-confidence of the model you use. The modal and helping verbs (`will`, `can`, `is`, `have`) have an `Auxiliary` sense that
-only the `Basic` model answers. The confidences shown for the encoder models are approximate: they differ slightly
-between CPUs and operating systems. A word that is not in the dictionary has `Details` of `null` and a confidence of 0.
+The heteronyms `bow` and `record` are the interesting words. The `Level` of an answer says how precisely the model
+answers: `Sense` for a word whose lemma and part of speech have one sense (the sense id is then given), `PartOfSpeech`
+for a word with several meanings, whose fine senses these models do not score yet; `Analyses` lists every possible
+analysis (lemma, part of speech and features) with its probability, `Details` is the most probable one, and a low
+confidence marks a guess (for example `so`). The probabilities are comparable only within one result, never across
+models. In this version the `MiniLM` and `BertBaseCased` packages answer every ambiguous word with the `Basic` model at
+the part-of-speech level (their encoders will score fine senses in a later version), so the three models print the same
+lines. The modal and helping verbs (`will`, `can`, `is`, `have`) have an `Auxiliary` analysis. A word that is not in the
+dictionary has `IsKnown` false, `Details` of `null`, the level `None` and a confidence of 0.
 Tokenize the text yourself, one sentence per call: punctuation is a token of its own. See the
 [user guide][link-user-guide] for tokenizing, confidence thresholds, mirrors, disposal and threading.
 
@@ -163,19 +172,20 @@ Tokenize the text yourself, one sentence per call: punctuation is a token of its
 <!-- markdownlint-disable MD013 -->
 
 <!-- model-table:begin -->
-| Model | Holdout best sense | Real-text best sense | Part of speech (holdout / real) | Pronunciation (holdout / real) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Basic | 91.13% | 85.20% | 92.24% / 90.13% | 90.11% / 87.41% | none | 87 KiB | 2 MiB | 0.05 ms | 36 ms + 64 ms | no |
-| MiniLM | 96.86% | 92.60% | 97.19% / 95.36% | 96.37% / 94.45% | 22 MiB | 1,129 KiB | 64 MiB | 1.84 ms | 388 ms + 201 ms | yes |
-| BERT base cased | 98.99% | 97.39% | 99.16% / 98.40% | 99.15% / 98.20% | 104 MiB | 2,241 KiB | 150 MiB | 8.55 ms | 521 ms + 173 ms | yes |
+| Model | Holdout best analysis | Real-text best analysis | Part of speech (holdout / real) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| Basic | 91.93% | 89.40% | 92.13% / 90.42% | none | 83 KiB | 13 MiB | 0.08 ms | 24 ms + 55 ms | no |
+| MiniLM | 91.93% | 89.40% | 92.13% / 90.42% | 22 MiB | 1,132 KiB | 12 MiB | 0.12 ms | 161 ms + 80 ms | yes |
+| BERT base cased | 91.93% | 89.40% | 92.13% / 90.42% | 104 MiB | 2,245 KiB | 13 MiB | 0.08 ms | 211 ms + 58 ms | yes |
 <!-- model-table:end -->
 
 <!-- markdownlint-enable MD013 -->
 
-- ⚡ **basic** - No download, fastest; about 85% on real text.
-- ⚖️ **minilm** - The default: 22 MiB download, about 2 ms a sentence, about 93%.
-- 🎯 **bert-base-cased** - Most accurate, about 97%; 104 MiB download, about 150 MiB RAM.
+- ⚡ **basic** - No download, fastest; about 89% best analysis on real text.
+- ⚖️ **minilm** - The default encoder package: 22 MiB download; today it answers through the `Basic` model.
+- 🎯 **bert-base-cased** - Larger case-sensitive encoder, 104 MiB download; today it answers through the `Basic` model.
 
+The encoder packages score fine senses in a later version; until then their rows repeat the `Basic` numbers.
 The holdout sentences were written with the training sentences, so the real-text column is the realistic expectation.
 The table is generated into `docs/build_notes/model-table.md`; the user guide explains how the numbers were measured
 and lists the confidence thresholds of each model. See also the [model comparison][link-model-comparison] and the
@@ -194,6 +204,16 @@ The packages that embed derived data (`DemaConsulting.WordSense`, `DemaConsultin
 `DemaConsulting.WordSense.MiniLM` and `DemaConsulting.WordSense.BertBaseCased`) carry this section in their package
 readme. The corpus itself is not shipped in the packages, only the derived tables and weights; every real sentence is
 recorded with its source, license and URL in `corpus/provenance/`.
+
+Package licenses:
+
+- **`DemaConsulting.WordSense`** (core): `MIT AND CC-BY-4.0`. The code and the project-authored data are MIT; the
+  embedded word image is derived from Open English WordNet 2025 (CC BY 4.0). The package contains a `NOTICE.md` with the
+  attribution and the notices of Open English WordNet, WordNet 3.0, AGID and the Moby list.
+- **`DemaConsulting.WordSense.Basic`**: `MIT AND CC-BY-SA-4.0`. The code is MIT; the embedded statistical table is
+  derived from the UD English-EWT treebank (CC BY-SA 4.0). The package contains a `NOTICE.md` with the attribution.
+- **`DemaConsulting.WordSense.Onnx`, `DemaConsulting.WordSense.MiniLM` and `DemaConsulting.WordSense.BertBaseCased`**:
+  `MIT`. The weights are statistical summaries of the corpus and do not contain its sentences.
 
 - **Moby Part-of-Speech List** (Grady Ward): public domain; the embedded dictionary is derived from it.
 - **Automatically Generated Inflection Database (AGID)** (Kevin Atkinson, 2000-2016,
@@ -218,7 +238,9 @@ recorded with its source, license and URL in `corpus/provenance/`.
 - **ONNX Runtime** (Microsoft Corporation): MIT License; installed as a separate NuGet dependency.
 - **Open English WordNet 2025** (<https://en-word.net>, <https://github.com/globalwordnet/english-wordnet>): CC BY 4.0.
   The word data under `data/` (entries, senses, synsets, glosses, examples, relations and pronunciations) is imported
-  from it and keeps that license; see `data/README.md` and `data/PROVENANCE.md`. It is not yet shipped in a package.
+  from it and keeps that license; see `data/README.md` and `data/PROVENANCE.md`. The sense ids, sense keys, lemmas and
+  forms of the word image that the core package embeds are derived from it (changed: imported, extended and compiled);
+  the entries, glosses and examples are not in the image.
 - **WordNet 3.0** (Princeton University, <https://wordnet.princeton.edu>): the sense frequency counts of the word data
   (`data/sense_frequency`, from the WordNet 3.0 sense index `index.sense`) are used under the WordNet license: WordNet 3.0
   Copyright 2006 by Princeton University, all rights reserved; the full notice is in `data/PROVENANCE.md`.

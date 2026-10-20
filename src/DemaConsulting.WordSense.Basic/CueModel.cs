@@ -48,9 +48,9 @@ internal readonly record struct FeatureRef(int Kind, string Token)
 }
 
 /// <summary>
-///     The context cue model: extracts the context features of a target word and scores the senses of its lemma from
-///     the lemma's table of hashed features, a naive Bayes classifier with additive smoothing whose log weights are
-///     quantized to eighths of a nat.
+///     The context cue model: extracts the context features of a target word and scores the analyses of the word from
+///     the table of hashed features of its training lemma, a naive Bayes classifier with additive smoothing whose log
+///     weights are quantized to eighths of a nat.
 /// </summary>
 internal static class CueModel
 {
@@ -141,16 +141,16 @@ internal static class CueModel
     }
 
     /// <summary>
-    ///     Scores the candidate senses of a word.
+    ///     Scores the candidate analyses of a word.
     /// </summary>
-    /// <param name="cue">The cue table of the lemma.</param>
+    /// <param name="cue">The cue table of the word or of its lemma.</param>
     /// <param name="features">The features of the target.</param>
-    /// <param name="senses">The candidate senses.</param>
-    /// <param name="scores">Receives one log score per candidate (the prior plus the weights of the target's features); <see cref="double.NaN"/> for a candidate the table does not have.</param>
-    public static void Score(LemmaCue cue, ReadOnlySpan<FeatureRef> features, ImmutableArray<WordDetails> senses, Span<double> scores)
+    /// <param name="analyses">The candidate analyses (lemma, part of speech and features), each matched to its column with <see cref="LemmaCue.RowOf"/>.</param>
+    /// <param name="scores">Receives one log score per candidate (the prior plus the weights of the target's features); <see cref="double.NaN"/> for a candidate the table has no column for.</param>
+    public static void Score(LemmaCue cue, ReadOnlySpan<FeatureRef> features, ImmutableArray<WordDetails> analyses, Span<double> scores)
     {
         ArgumentNullException.ThrowIfNull(cue);
-        ArgumentOutOfRangeException.ThrowIfEqual(senses.IsDefault, true);
+        ArgumentOutOfRangeException.ThrowIfEqual(analyses.IsDefault, true);
         Span<int> rows = features.Length <= MaxFeatures ? stackalloc int[MaxFeatures] : new int[features.Length];
         var found = 0;
         foreach (var feature in features)
@@ -162,17 +162,17 @@ internal static class CueModel
             }
         }
 
-        var width = cue.Senses.Length;
-        for (var j = 0; j < senses.Length; j++)
+        var width = cue.Analyses.Length;
+        for (var j = 0; j < analyses.Length; j++)
         {
-            var column = cue.RowOf(senses[j]);
+            var column = cue.RowOf(analyses[j]);
             if (column < 0)
             {
                 scores[j] = double.NaN;
                 continue;
             }
 
-            int sum = cue.Senses[column].Prior;
+            int sum = cue.Analyses[column].Prior;
             for (var r = 0; r < found; r++)
             {
                 sum += cue.Weights[(rows[r] * width) + column];

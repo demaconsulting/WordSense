@@ -4,10 +4,12 @@ namespace DemaConsulting.WordSense.Basic;
 
 /// <summary>
 ///     Fuses the part-of-speech posterior of the tagger with the context cue scores into one probability per candidate
-///     sense.
+///     analysis.
 /// </summary>
 /// <remarks>
-///     The fused score of a candidate is <c>w * ln(max(p, 1e-6)) + cue / temperature</c> where <c>p</c> is the posterior
+///     The candidates are analyses (lemma, part of speech and features), never senses, and several may share a part of
+///     speech: they then share the same posterior share and only the cue scores separate them. The fused score of a
+///     candidate is <c>w * ln(max(p, 1e-6)) + cue / temperature</c> where <c>p</c> is the posterior
 ///     of the candidate's part of speech renormalized over the candidates and <c>cue</c> is its cue score (the mean of
 ///     the available scores when the candidate has none, zero when no candidate has one). The result is the softmax of
 ///     the scores, so the confidence of a decision is the probability of the winner.
@@ -20,26 +22,26 @@ internal static class SenseFusion
     ///     Computes the fused probability of each candidate.
     /// </summary>
     /// <param name="posteriors">The tagger posterior of the word, <see cref="PosTag.Count"/> values.</param>
-    /// <param name="senses">The candidates.</param>
+    /// <param name="analyses">The candidate analyses.</param>
     /// <param name="cues">The cue score of each candidate, <see cref="double.NaN"/> when missing; modified in place.</param>
     /// <param name="tagWeight">The weight of the logarithm of the part-of-speech posterior.</param>
     /// <param name="invTemperature">The factor on the cue scores.</param>
     /// <param name="probabilities">Receives the probability of each candidate; the values sum to 1.</param>
     public static void Fuse(
         ReadOnlySpan<double> posteriors,
-        ImmutableArray<WordDetails> senses,
+        ImmutableArray<WordDetails> analyses,
         Span<double> cues,
         double tagWeight,
         double invTemperature,
         Span<double> probabilities)
     {
-        ArgumentOutOfRangeException.ThrowIfEqual(senses.IsDefault, true);
-        var count = senses.Length;
+        ArgumentOutOfRangeException.ThrowIfEqual(analyses.IsDefault, true);
+        var count = analyses.Length;
         Span<double> mass = stackalloc double[PosTag.Count];
         mass.Clear();
-        foreach (var sense in senses)
+        foreach (var analysis in analyses)
         {
-            var pos = PosTag.Of(sense.PartOfSpeech);
+            var pos = PosTag.Of(analysis.PartOfSpeech);
             mass[pos] = posteriors[pos];
         }
 
@@ -64,7 +66,7 @@ internal static class SenseFusion
         var best = double.NegativeInfinity;
         for (var j = 0; j < count; j++)
         {
-            var p = total > 0 ? posteriors[PosTag.Of(senses[j].PartOfSpeech)] / total : 1.0 / count;
+            var p = total > 0 ? posteriors[PosTag.Of(analyses[j].PartOfSpeech)] / total : 1.0 / count;
             var cue = double.IsFinite(cues[j]) ? cues[j] : fill;
             probabilities[j] = (tagWeight * Math.Log(Math.Max(p, PosteriorFloor))) + (cue * invTemperature);
             best = Math.Max(best, probabilities[j]);

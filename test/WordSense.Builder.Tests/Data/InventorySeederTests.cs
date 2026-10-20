@@ -4,13 +4,13 @@ using WordSense.Builder.Data;
 namespace WordSense.Builder.Tests;
 
 /// <summary>
-///     Tests of the inventory bootstrap (<see cref="InventorySeeder"/>) and of the temporary working file of the corpus
-///     relabeling (<see cref="LegacyClassMap"/>). They are plain unit checks of build-time helpers, not requirements.
+///     Tests of the inventory bootstrap (<see cref="InventorySeeder"/>). They are plain unit checks of a build-time
+///     helper, not requirements.
 /// </summary>
 public sealed class InventorySeederTests : IDisposable
 {
     private const string SensesHeader = "sense_id\toewn_sense_id\tpart_of_speech\tgloss\tsource\tgroup_id\n";
-    private const string GroupsHeader = "group_id\tlemma\tpart_of_speech\tmember_sense_ids\n";
+    private const string GroupsHeader = "group_id\tlemma\tpart_of_speech\tmember_sense_ids\tkind\tevidence\n";
 
     private readonly TestDirectory _dir = new();
 
@@ -26,6 +26,18 @@ public sealed class InventorySeederTests : IDisposable
         DataFixture.Replace(data, "source.tsv", "version\n", "version\ndema\tDEMA Consulting\tMIT\thttps://example.org\t1\n");
         DataFixture.Replace(data, "entry/b.tsv", "source_id\n", "source_id\ndema-big-i\tbig\ti\t0\t1\t1\tdema\n");
         DataFixture.Write(data, "entry/t.tsv", "entry_id\tlemma\tpos\thomograph_no\ttoken_count\thead_idx\tsource_id\ndema-the-d\tthe\td\t0\t1\t1\tdema\n");
+        return data;
+    }
+
+    // The slice has two nouns of bass; a third one (1.05.01) lets a group have some, but not all, of them
+    private string ThreeBassNounsSlice()
+    {
+        var data = ClosedClassSlice();
+        DataFixture.Replace(
+            data,
+            "sense/b.tsv",
+            "oewn-bass__1.10.00..\t",
+            "oewn-bass__1.05.01..\tbass%1:05:01::\toewn-bass-n\toewn-00000001-n\t2\noewn-bass__1.10.00..\t");
         return data;
     }
 
@@ -61,20 +73,22 @@ public sealed class InventorySeederTests : IDisposable
     }
 
     /// <summary>
-    ///     The curated labels and groups are imported: a one-sense group whose id is a sense id is renamed, a group that
-    ///     mixes two parts of speech is split, and a project sense gets its authored gloss.
+    ///     The curated labels and groups are imported: a group of some senses is kept with the id <c>lemma#group:slug</c>
+    ///     (also when its slug is the label of a sense, and without any suffix), a group of one sense is left out (also
+    ///     each part of a group that mixes two parts of speech), and a project sense gets its authored gloss.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_InventorySeeder_Run_Curation_ImportsLabelsAndSplitsAndRenamesGroups()
+    public void WordSenseBuilder_InventorySeeder_Run_Curation_ImportsLabelsAndKeepsOnlyGroupsOfSomeSenses()
     {
-        // Arrange - bass has two curated nouns in two groups; big has an adjective and an interjection in one group
-        var data = ClosedClassSlice();
+        // Arrange - bass has three curated nouns (a group of two and a single one); big has an adjective and an interjection in one group
+        var data = ThreeBassNounsSlice();
         var curation = Curation(
             "bass#fish-food\toewn-bass__1.05.00..\tNoun\tthe flesh of a fish\toewn\tbass#fish-food\n"
+            + "bass#fish-meat\toewn-bass__1.05.01..\tNoun\tthe meat of a fish\toewn\tbass#fish-food\n"
             + "bass#voice\toewn-bass__1.10.00..\tNoun\tthe lowest voice\toewn\tbass#sound\n"
             + "big#large\toewn-big__3.00.00..\tAdjective\tabove average in size\toewn\tbig#size\n"
             + "big#wow\t\tInterjection\tan exclamation of wonder\tproject\tbig#size\n",
-            "bass#fish-food\tbass\tNoun\tbass#fish-food\n"
+            "bass#fish-food\tbass\tNoun\tbass#fish-food,bass#fish-meat\tequivalent\tgloss:near-identical\n"
             + "bass#sound\tbass\tNoun\tbass#voice\n"
             + "big#size\tbig\tAdjective/Interjection\tbig#large,big#wow\n");
 
@@ -82,17 +96,18 @@ public sealed class InventorySeederTests : IDisposable
         var run = InventorySeeder.Run(data, curation);
         SenseLabelGenerator.Run(data);
         var report = DataValidator.Validate(data);
-        var groups = DataFixture.Rows(data, "sense_group").Select(g => g[0] + "|" + g[2] + "|" + g[4]).ToList();
+        var groups = DataFixture.Rows(data, "sense_group").Select(g => string.Join('|', g)).ToList();
+        var members = DataFixture.Rows(data, "group_sense");
 
         // Assert
-        Assert.Equal(4, run.CuratedLabels);
-        Assert.Equal(4, run.CuratedGroups);
+        Assert.Equal(5, run.CuratedLabels);
+        Assert.Equal(1, run.CuratedGroups);
         Assert.Equal(1, run.SplitGroups);
-        Assert.Equal(1, run.RenamedGroups);
-        Assert.Contains("bass#fish-food-group|n|curated", groups);
-        Assert.Contains("bass#sound|n|curated", groups);
-        Assert.Contains("big#size|a|curated", groups);
-        Assert.Contains("big#size-interjection|i|curated", groups);
+        Assert.Equal(3, run.DroppedSingletons);
+        Assert.Equal(0, run.DroppedWholePartOfSpeech);
+        Assert.Equal(["bass#group:fish-food|bass|n|fish-food|curated|equivalent"], groups);
+        Assert.Equal(2, members.Count);
+        Assert.All(members, m => Assert.Equal("bass#group:fish-food", m[0]));
         Assert.Contains(DataFixture.Rows(data, "sense_label"), l => l[0] == "dema-big-i-1" && l[1] == "wow" && l[2] == "project");
         Assert.Contains(DataFixture.Rows(data, "gloss"), g => g[0] == "dema-syn-big-i-1" && g[2] == "an exclamation of wonder");
         Assert.True(report.IsValid, string.Join("\n", report.Violations));
@@ -105,13 +120,16 @@ public sealed class InventorySeederTests : IDisposable
     public void WordSenseBuilder_InventorySeeder_Run_IsIdempotentAndNeverChangesALabel()
     {
         // Arrange
-        var data = ClosedClassSlice();
+        var data = ThreeBassNounsSlice();
         var curation = Curation(
             "bass#fish-food\toewn-bass__1.05.00..\tNoun\tthe flesh of a fish\toewn\tbass#fish-food\n"
+            + "bass#fish-meat\toewn-bass__1.05.01..\tNoun\tthe meat of a fish\toewn\tbass#fish-food\n"
             + "bass#voice\toewn-bass__1.10.00..\tNoun\tthe lowest voice\toewn\tbass#voice\n",
-            "bass#fish-food\tbass\tNoun\tbass#fish-food\nbass#voice\tbass\tNoun\tbass#voice\n");
+            "bass#fish-food\tbass\tNoun\tbass#fish-food,bass#fish-meat\trelated\tjudge: 3/20 in-group confusion\nbass#voice\tbass\tNoun\tbass#voice\n");
         InventorySeeder.Run(data, curation);
-        var before = Directory.GetFiles(Path.Join(data, "sense_label")).Select(File.ReadAllText).ToList();
+        var labels = Directory.GetFiles(Path.Join(data, "sense_label")).Select(File.ReadAllText).ToList();
+        var groups = Directory.GetFiles(Path.Join(data, "sense_group")).Select(File.ReadAllText).ToList();
+        var members = Directory.GetFiles(Path.Join(data, "group_sense")).Select(File.ReadAllText).ToList();
 
         // Act
         var again = InventorySeeder.Run(data, curation);
@@ -123,39 +141,108 @@ public sealed class InventorySeederTests : IDisposable
         // Assert
         Assert.Equal(0, again.ProjectSenses);
         Assert.Equal(0, again.CuratedLabels);
-        Assert.Equal(before, Directory.GetFiles(Path.Join(data, "sense_label")).Select(File.ReadAllText).ToList());
+        Assert.Equal(1, again.CuratedGroups);
+        Assert.Equal(labels, Directory.GetFiles(Path.Join(data, "sense_label")).Select(File.ReadAllText).ToList());
+        Assert.Equal(groups, Directory.GetFiles(Path.Join(data, "sense_group")).Select(File.ReadAllText).ToList());
+        Assert.Equal(members, Directory.GetFiles(Path.Join(data, "group_sense")).Select(File.ReadAllText).ToList());
         Assert.Contains("published id", ex.Message, StringComparison.Ordinal);
     }
 
     /// <summary>
-    ///     The working file maps every class to its new senses and groups, and a class that stands for an entry to the
-    ///     entry; a class whose sense has no label is refused.
+    ///     A group that would be written needs a kind of the <c>group_kind</c> vocabulary, non-empty evidence and a slug;
+    ///     otherwise the run is refused and nothing is written.
     /// </summary>
-    [Fact]
-    public void WordSenseBuilder_LegacyClassMap_Write_MapsClassesToNewSensesAndGroups()
+    [Theory]
+    [InlineData("", "gloss:near-identical", "kind")]
+    [InlineData("similar", "gloss:near-identical", "kind")]
+    [InlineData("related", "", "no evidence")]
+    [InlineData("related", "   ", "no evidence")]
+    public void WordSenseBuilder_InventorySeeder_Run_GroupWithoutKindOrEvidence_IsRefused(string kind, string evidence, string expected)
     {
-        // Arrange - one class with both nouns of bass, one lemma-split class that stands for the entry of big
-        var data = DataFixture.ImportSlice(_dir);
-        DataFixture.Write(data, "coarse_class/b.tsv", "class_id\tlemma\tlabel\tpos\tkind\nbass#fish\tbass\tfish\tn\tsense_group\nbigger#f\tbigger\tform\ta\tlemma_split\n");
-        DataFixture.Write(data, "class_sense/b.tsv", "class_id\tsense_id\nbass#fish\toewn-bass__1.05.00..\nbass#fish\toewn-bass__1.10.00..\n");
-        DataFixture.Write(data, "class_entry/b.tsv", "class_id\tentry_id\tfeatures\nbigger#f\toewn-big-a\tDegree=Cmp\n");
-        _dir.Write("corpus/senses/x.tsv", TestDirectory.SensesHeader + "bass\tfish\tnoun\tfish\tbas\nbigger\tform\tadjective\t\t\n");
-        var output = Path.Join(_dir.Root, "corpus", "migration", "legacy-class-map.tsv");
-        var corpus = Path.Join(_dir.Root, "corpus");
+        // Arrange
+        var data = ThreeBassNounsSlice();
+        var curation = Curation(
+            "bass#fish-food\toewn-bass__1.05.00..\tNoun\tthe flesh of a fish\toewn\tbass#fish-food\n"
+            + "bass#fish-meat\toewn-bass__1.05.01..\tNoun\tthe meat of a fish\toewn\tbass#fish-food\n"
+            + "bass#voice\toewn-bass__1.10.00..\tNoun\tthe lowest voice\toewn\tbass#voice\n",
+            $"bass#fish-food\tbass\tNoun\tbass#fish-food,bass#fish-meat\t{kind}\t{evidence}\n");
 
         // Act
-        var refused = Assert.Throws<InvalidDataException>(() => LegacyClassMap.Write(data, corpus, output));
-        SenseLabelGenerator.Run(data);
-        var (classes, rows) = LegacyClassMap.Write(data, corpus, output);
-        var lines = File.ReadAllLines(output, Encoding.UTF8);
+        var ex = Assert.Throws<InvalidDataException>(() => InventorySeeder.Run(data, curation));
 
         // Assert
-        Assert.Contains("run label-senses", refused.Message, StringComparison.Ordinal);
-        Assert.Equal(2, classes);
-        Assert.Equal(3, rows);
-        Assert.Equal("class_id\tkind\tlemma\tpos\tmeaning\trespelling\tsense_count\tsense_id\tgroup_id\tentry_id\tentry_lemma\tentry_pos\tfeatures", lines[0]);
-        Assert.Contains("bass#fish\tsense_group\tbass\tn\tfish\tbas\t2\tbass#fish\tbass#noun-group\t\t\t\t", lines);
-        Assert.Contains("bass#fish\tsense_group\tbass\tn\tfish\tbas\t2\tbass#noun\tbass#noun-group\t\t\t\t", lines);
-        Assert.Contains("bigger#f\tlemma_split\tbigger\ta\t\t\t0\t\t\toewn-big-a\tbig\ta\tDegree=Cmp", lines);
+        Assert.Contains(expected, ex.Message, StringComparison.Ordinal);
+        Assert.False(Directory.Exists(Path.Join(data, "sense_group")));
+    }
+
+    /// <summary>
+    ///     A group slug that is not made of lower-case ASCII letters, digits and hyphens, such as one that carries the
+    ///     marker itself, is refused.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_InventorySeeder_Run_GroupSlugWithMarker_IsRefused()
+    {
+        // Arrange
+        var data = ThreeBassNounsSlice();
+        var curation = Curation(
+            "bass#fish-food\toewn-bass__1.05.00..\tNoun\tthe flesh of a fish\toewn\tbass#group:fish\n"
+            + "bass#fish-meat\toewn-bass__1.05.01..\tNoun\tthe meat of a fish\toewn\tbass#group:fish\n"
+            + "bass#voice\toewn-bass__1.10.00..\tNoun\tthe lowest voice\toewn\tbass#voice\n",
+            "bass#group:fish\tbass\tNoun\tbass#fish-food,bass#fish-meat\trelated\tgloss:near-identical\n");
+
+        // Act
+        var ex = Assert.Throws<InvalidDataException>(() => InventorySeeder.Run(data, curation));
+
+        // Assert
+        Assert.Contains("slug", ex.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A group that has every sense of its lemma and part of speech is left out, because the part of speech is the
+    ///     next level.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_InventorySeeder_Run_GroupOfAllSensesOfPartOfSpeech_IsLeftOut()
+    {
+        // Arrange
+        var data = ThreeBassNounsSlice();
+        var curation = Curation(
+            "bass#fish-food\toewn-bass__1.05.00..\tNoun\tthe flesh of a fish\toewn\tbass#all\n"
+            + "bass#fish-meat\toewn-bass__1.05.01..\tNoun\tthe meat of a fish\toewn\tbass#all\n"
+            + "bass#voice\toewn-bass__1.10.00..\tNoun\tthe lowest voice\toewn\tbass#all\n",
+            "bass#all\tbass\tNoun\tbass#fish-food,bass#fish-meat,bass#voice\n");
+
+        // Act
+        var run = InventorySeeder.Run(data, curation);
+        SenseLabelGenerator.Run(data);
+        var report = DataValidator.Validate(data);
+
+        // Assert
+        Assert.Equal(3, run.CuratedLabels);
+        Assert.Equal(0, run.CuratedGroups);
+        Assert.Equal(1, run.DroppedWholePartOfSpeech);
+        Assert.Equal(0, run.DroppedSingletons);
+        Assert.False(Directory.Exists(Path.Join(data, "sense_group")));
+        Assert.True(report.IsValid, string.Join("\n", report.Violations));
+    }
+
+    /// <summary>
+    ///     A group row of any origin other than curated, such as a retired default group, is removed with its members.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_InventorySeeder_Run_RetiredDefaultGroups_AreRemoved()
+    {
+        // Arrange
+        var data = ClosedClassSlice();
+        DataFixture.Write(data, "sense_group/b.tsv", "group_id\tlemma\tpos\tlabel\torigin\nbass#noun-group\tbass\tn\tnoun-group\tdefault\n");
+        DataFixture.Write(data, "group_sense/b.tsv", "group_id\tsense_id\nbass#noun-group\toewn-bass__1.05.00..\nbass#noun-group\toewn-bass__1.10.00..\n");
+
+        // Act
+        var run = InventorySeeder.Run(data, null);
+
+        // Assert
+        Assert.Equal(1, run.RemovedStale);
+        Assert.False(Directory.Exists(Path.Join(data, "sense_group")));
+        Assert.False(Directory.Exists(Path.Join(data, "group_sense")));
     }
 }

@@ -1,7 +1,0 @@
-class_id	lemma	label	pos	kind
-blessed#blessed-adj	blessed	blessed-adj	a	sense_group
-blessed#blessed-past	blessed	blessed-past	v	lemma_split
-block#noun	block	noun	n	sense_group
-block#verb	block	verb	v	sense_group
-bloom#noun	bloom	noun	n	sense_group
-bloom#verb	bloom	verb	v	sense_group

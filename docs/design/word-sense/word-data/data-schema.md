@@ -21,14 +21,17 @@ inventory:
 - `sense_label(sense_id, label, origin)`: the readable label of every sense, unique per lemma; the origin is
   `curated`, `generated` or `project`.
 - `sense_label_map(old_id, new_id, release)`: the renames and retirements of ids; an old id is never reused.
-- `sense_group(group_id, lemma, pos, label, origin)` and `group_sense(group_id, sense_id)`: the coarse groups and the
-  one group of each sense.
+- `sense_group(group_id, lemma, pos, label, origin, kind)` and `group_sense(group_id, sense_id)`: the curated groups
+  (origin `curated` only; kind `equivalent` or `related`, the `group_kind` vocabulary; the id is `lemma#group:label`,
+  versioned per data release and not frozen) and the group of a sense (at most one; a sense needs none). The column
+  `kind` is the last column, so a reader by column index of the earlier columns is not affected.
 - `sense_frequency(sense_key, tag_count, source)`: the WordNet 3.0 tag count of a sense key; the source is `wn30`.
 - `sense_respelling(sense_id, respelling)`: the respelling of a sense.
 
 The tables of the retired class inventory (`coarse_class`, `class_sense`, `class_entry`) and of the per-form sense scope
-(`form_sense_scope`) stay in the schema until the word image is compiled from the new tables; they are not part of the
-sense inventory.
+(`form_sense_scope`), with their `class_kind` vocabulary and the `class` partition kind, are removed (schema version 3);
+nothing in the schema refers to a class. Schema version 4 adds the `kind` column of `sense_group` with the
+`group_kind` vocabulary and the group id scheme `lemma#group:label`.
 
 #### Key Methods
 

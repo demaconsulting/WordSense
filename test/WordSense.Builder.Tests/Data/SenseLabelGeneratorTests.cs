@@ -5,8 +5,8 @@ using WordSense.Builder.Data;
 namespace WordSense.Builder.Tests;
 
 /// <summary>
-///     Tests for <see cref="SenseLabelGenerator"/>: the labels of the senses and the default groups, on small
-///     in-memory tables for the rules and on the imported slice for the files.
+///     Tests for <see cref="SenseLabelGenerator"/>: the labels of the senses, on small in-memory tables for the rules and
+///     on the imported slice for the files. The generator never creates a group.
 /// </summary>
 public sealed partial class SenseLabelGeneratorTests : IDisposable
 {
@@ -259,23 +259,6 @@ public sealed partial class SenseLabelGeneratorTests : IDisposable
     }
 
     /// <summary>
-    ///     A label that would end in -group after a part of speech name is never generated, because the default groups
-    ///     use those ids.
-    /// </summary>
-    [Fact]
-    public void WordSenseBuilder_SenseLabelGenerator_Generate_ReservedGroupLabel_IsSkipped()
-    {
-        // Arrange - the synonym "noun group" slugs to noun-group
-        var inputs = Inputs([Sense("b1", "bat", "n", "y1"), Sense("c1", "noun group", "n", "y1"), Sense("b2", "bat", "n", "y2")]);
-
-        // Act
-        var labels = LabelsOf(SenseLabelGenerator.Generate(inputs));
-
-        // Assert
-        Assert.Equal("noun-group-2", labels["b1"]);
-    }
-
-    /// <summary>
     ///     A sense without a sense key is a project sense and a multi-word lemma has no label.
     /// </summary>
     [Fact]
@@ -319,10 +302,10 @@ public sealed partial class SenseLabelGeneratorTests : IDisposable
     }
 
     /// <summary>
-    ///     The run labels every sense of a one-token lemma, writes the default groups and reports the counts.
+    ///     The run labels every sense of a one-token lemma, creates no group and reports the counts.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_SenseLabelGenerator_Run_Slice_LabelsOneTokenSensesAndWritesDefaultGroups()
+    public void WordSenseBuilder_SenseLabelGenerator_Run_Slice_LabelsOneTokenSensesAndCreatesNoGroup()
     {
         // Arrange
         var data = DataFixture.ImportSlice(_dir);
@@ -330,40 +313,36 @@ public sealed partial class SenseLabelGeneratorTests : IDisposable
         // Act
         var run = SenseLabelGenerator.Run(data);
         var labels = DataFixture.Rows(data, "sense_label");
-        var groups = DataFixture.Rows(data, "sense_group");
-        var members = DataFixture.Rows(data, "group_sense");
 
         // Assert - 14 senses, two of them of the two-token lemmas "run up" and "𝒜 matrix"
         Assert.Equal(12, run.Generated);
         Assert.Equal(0, run.Kept);
         Assert.Equal(12, labels.Count);
-        Assert.Equal(12, members.Count);
-        Assert.Equal(run.DefaultGroups, groups.Count);
-        Assert.All(groups, g => Assert.Equal("default", g[4]));
-        Assert.Contains(groups, g => g[0] == "bass#noun-group" && g[2] == "n");
+        Assert.False(Directory.Exists(Path.Join(data, "sense_group")));
+        Assert.False(Directory.Exists(Path.Join(data, "group_sense")));
         Assert.Contains(labels, l => l[0] == "oewn-large__5.00.00.big.00" && l[1] == "adjective");
         Assert.True(DataValidator.Validate(data).IsValid, string.Join("\n", DataValidator.Validate(data).Violations));
     }
 
     /// <summary>
-    ///     A part of speech that a curated group covers gets no default group; the other parts of speech of the lemma do.
+    ///     A curated group stays as it is, and its label does not matter to the sense labels: the id of a group
+    ///     (<c>lemma#group:label</c>) is in its own namespace, so a sense may have the same label.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_SenseLabelGenerator_Run_CuratedGroup_GetsNoDefaultGroupOfThatPartOfSpeech()
+    public void WordSenseBuilder_SenseLabelGenerator_Run_ExistingGroup_IsKeptAndItsLabelStaysAvailable()
     {
-        // Arrange - bass has a curated group of its nouns
+        // Arrange - bass has a curated group named fish; the first noun of bass is still labeled fish
         var data = DataFixture.ImportSlice(_dir);
-        DataFixture.Write(data, "sense_group/b.tsv", "group_id\tlemma\tpos\tlabel\torigin\nbass#all\tbass\tn\tall\tcurated\n");
-        DataFixture.Write(data, "group_sense/b.tsv", "group_id\tsense_id\nbass#all\toewn-bass__1.05.00..\nbass#all\toewn-bass__1.10.00..\n");
+        DataFixture.Write(data, "sense_group/b.tsv", "group_id\tlemma\tpos\tlabel\torigin\tkind\nbass#group:fish\tbass\tn\tfish\tcurated\trelated\n");
+        DataFixture.Write(data, "group_sense/b.tsv", "group_id\tsense_id\nbass#group:fish\toewn-bass__1.05.00..\nbass#group:fish\toewn-bass__1.10.00..\n");
+        var before = FolderText(data, "sense_group", "group_sense");
 
         // Act
         SenseLabelGenerator.Run(data);
-        var groups = DataFixture.Rows(data, "sense_group");
 
         // Assert
-        Assert.Contains(groups, g => g[0] == "bass#all" && g[4] == "curated");
-        Assert.DoesNotContain(groups, g => g[0] == "bass#noun-group");
-        Assert.Contains(groups, g => g[0] == "bassist#noun-group");
+        Assert.Equal(before, FolderText(data, "sense_group", "group_sense"));
+        Assert.Contains(DataFixture.Rows(data, "sense_label"), l => l[0] == "oewn-bass__1.05.00.." && l[1] == "fish");
     }
 
     /// <summary>
@@ -375,14 +354,14 @@ public sealed partial class SenseLabelGeneratorTests : IDisposable
         // Arrange
         var first = LabeledSlice("first");
         var second = LabeledSlice("second");
-        var firstText = FolderText(first, "sense_label", "sense_group", "group_sense");
+        var firstText = FolderText(first, "sense_label");
 
         // Act - run the first copy again
         SenseLabelGenerator.Run(first);
 
         // Assert
-        Assert.Equal(firstText, FolderText(first, "sense_label", "sense_group", "group_sense"));
-        Assert.Equal(firstText, FolderText(second, "sense_label", "sense_group", "group_sense"));
+        Assert.Equal(firstText, FolderText(first, "sense_label"));
+        Assert.Equal(firstText, FolderText(second, "sense_label"));
     }
 
     /// <summary>
@@ -405,7 +384,7 @@ public sealed partial class SenseLabelGeneratorTests : IDisposable
         SenseLabelGenerator.Run(second);
 
         // Assert
-        Assert.Equal(FolderText(first, "sense_label", "sense_group", "group_sense"), FolderText(second, "sense_label", "sense_group", "group_sense"));
+        Assert.Equal(FolderText(first, "sense_label"), FolderText(second, "sense_label"));
     }
 
     /// <summary>

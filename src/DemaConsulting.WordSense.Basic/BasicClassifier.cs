@@ -1,23 +1,40 @@
 using System.Buffers;
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.InteropServices;
 
 namespace DemaConsulting.WordSense.Basic;
 
 /// <summary>
 ///     The classifier of the basic model: a statistical part-of-speech tagger and a context cue model choose among the
-///     lexicon senses of each word.
+///     lexicon analyses of each ambiguous word; the classifier scores analyses, not fine senses.
 /// </summary>
 /// <remarks>
 ///     <para>
-///     A word with no lexicon entry is <c>(word, null, 0)</c>; a word with one entry is <c>(word, entry, 1)</c>. For a
-///     word with several entries, the text is split into sentence segments at the tokens ".", "!" and "?"; the tagger
-///     computes the part-of-speech posterior of every word of the segment, the cue model scores the senses from the
-///     neighboring words, and <see cref="SenseFusion"/> turns both into one probability per sense. The result is the most
-///     probable sense and its probability, so the confidence of an ambiguous word is at least one over the number of
-///     senses and the word never goes unanswered. The posterior of the auxiliary state decides the
-///     <see cref="PartOfSpeech.Auxiliary"/> sense of the modal and helping verbs (<c>will</c>, <c>is</c>), except right
+///     A word with no lexicon analysis (or no letter) is <see cref="ClassifyResult.Unknown"/>: it is not known, has no
+///     analysis, and is at the <see cref="SenseLevel.None"/> level with confidence 0. A word with one analysis lists it
+///     with probability 1. For a word with several analyses, the text is split into sentence
+///     segments at the tokens ".", "!" and "?"; the tagger computes the part-of-speech posterior of every word of the
+///     segment, the cue model scores the analyses from the neighboring words, and <see cref="SenseFusion"/> turns both
+///     into one probability per analysis. <see cref="ClassifyResult.Analyses"/> lists every analysis with that
+///     probability, the largest first (ties keep the order of the lexicon), and the selected analysis is the first one.
+///     The posterior of the auxiliary state decides the
+///     <see cref="PartOfSpeech.Auxiliary"/> analysis of the modal and helping verbs (<c>will</c>, <c>is</c>), except right
 ///     after an article or a possessive, where the word is a noun or a main verb (<c>the can</c>, <c>his will</c>).
+///     </para>
+///     <para>
+///     The statistics carry no evidence that separates fine senses or groups, so the classifier never scores the
+///     senses of an analysis that has several. An analysis whose lemma and part of speech have exactly one sense lists
+///     that sense with probability 1 (no evidence is needed to choose it); every other analysis lists no senses. When
+///     the selected analysis has exactly one sense the result is at the <see cref="SenseLevel.Sense"/> level with that
+///     sense (and its group, normally none) and the confidence is the probability of the analysis; otherwise the result
+///     is at the <see cref="SenseLevel.PartOfSpeech"/> level with the probability of the analysis as the confidence, so
+///     the confidence of an ambiguous word is at least one over the number of analyses and a known word never goes
+///     unanswered. The classifier never answers at the <see cref="SenseLevel.Group"/> level.
+///     </para>
+///     <para>
+///     The analyses array of a word with a single analysis is built once and shared by every result for that word
+///     (a small thread-safe cache), so classifying common words does not allocate it again.
 ///     </para>
 ///     <para>
 ///     The classifier holds no mutable state, so one instance may be used from many threads at once, and the result
@@ -26,15 +43,23 @@ namespace DemaConsulting.WordSense.Basic;
 /// </remarks>
 internal sealed class BasicClassifier
 {
+    private const int SingleCacheSize = 1024;
+
     private readonly BasicTables? _tables;
     private readonly Func<string, ImmutableArray<WordDetails>> _lexicon;
+    private readonly Func<string, PartOfSpeech, int> _senseCount;
+    private readonly Func<string, PartOfSpeech, ImmutableArray<SenseInfo>> _sensesOf;
+
+    // A small direct-mapped cache of the answer for a word with a single analysis. The entries are immutable, so a
+    // racing writer can only replace one valid entry with another.
+    private readonly SingleEntry?[] _singles = new SingleEntry?[SingleCacheSize];
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="BasicClassifier"/> class that uses the embedded table and the
     ///     lexicon of the core library.
     /// </summary>
     public BasicClassifier()
-        : this(null, Lookup)
+        : this(null, Lookup, CountSenses, WordLexicon.SensesOf)
     {
     }
 
@@ -43,13 +68,23 @@ internal sealed class BasicClassifier
     /// </summary>
     /// <param name="tables">The statistics, or null for the embedded table (loaded on first use).</param>
     /// <param name="lexicon">The lexicon: the analyses of a lower-case word, or the default array when it is unknown.</param>
-    internal BasicClassifier(BasicTables? tables, Func<string, ImmutableArray<WordDetails>> lexicon)
+    /// <param name="senseCount">The number of senses of a lemma and part of speech (0 when it has none).</param>
+    /// <param name="sensesOf">The senses of a lemma and part of speech; asked only for a lemma and part of speech that have exactly one sense.</param>
+    internal BasicClassifier(
+        BasicTables? tables,
+        Func<string, ImmutableArray<WordDetails>> lexicon,
+        Func<string, PartOfSpeech, int> senseCount,
+        Func<string, PartOfSpeech, ImmutableArray<SenseInfo>> sensesOf)
     {
         _tables = tables;
         _lexicon = lexicon;
+        _senseCount = senseCount;
+        _sensesOf = sensesOf;
     }
 
-    private static ImmutableArray<WordDetails> Lookup(string key) => WordLexicon.TryLookup(key, out var senses) ? senses : [];
+    private static ImmutableArray<WordDetails> Lookup(string key) => WordLexicon.TryLookup(key, out var analyses) ? analyses : [];
+
+    private static int CountSenses(string lemma, PartOfSpeech pos) => WordLexicon.Current.SenseCountOf(lemma, pos);
 
     /// <summary>
     ///     Classifies every word of a tokenized sentence or text.
@@ -57,7 +92,7 @@ internal sealed class BasicClassifier
     /// <param name="words">The words in order, including punctuation tokens.</param>
     /// <param name="cancellationToken">A token that cancels the operation.</param>
     /// <returns>An array parallel to <paramref name="words"/>.</returns>
-    public Task<WordSense[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default)
+    public Task<ClassifyResult[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(words);
         var list = words.ToList();
@@ -67,7 +102,7 @@ internal sealed class BasicClassifier
         }
 
         cancellationToken.ThrowIfCancellationRequested();
-        var results = new WordSense[list.Count];
+        var results = new ClassifyResult[list.Count];
         if (list.Count == 0)
         {
             return Task.FromResult(results);
@@ -182,27 +217,30 @@ internal sealed class BasicClassifier
         return TaggerToken.Word(key, mask, char.IsUpper(word[0]));
     }
 
-    private static int MaskOf(ImmutableArray<WordDetails> senses)
+    private static int MaskOf(ImmutableArray<WordDetails> analyses)
     {
         var mask = 0;
-        foreach (var sense in senses)
+        foreach (var analysis in analyses)
         {
-            mask |= 1 << PosTag.Of(sense.PartOfSpeech);
+            mask |= 1 << PosTag.Of(analysis.PartOfSpeech);
         }
 
         return mask;
     }
 
-    private static WordSense Choose(BasicTables tables, string word, ImmutableArray<WordDetails> senses, ReadOnlySpan<double> posterior, ReadOnlySpan<FeatureRef> features, bool afterDeterminer)
+    private ClassifyResult Choose(BasicTables tables, string word, string key, ImmutableArray<WordDetails> analyses, ReadOnlySpan<double> posterior, ReadOnlySpan<FeatureRef> features, bool afterDeterminer)
     {
-        var count = senses.Length;
+        var count = analyses.Length;
         Span<double> cues = count <= 32 ? stackalloc double[32] : new double[count];
         Span<double> probabilities = count <= 32 ? stackalloc double[32] : new double[count];
         cues = cues[..count];
         probabilities = probabilities[..count];
-        if (tables.FindCue(senses[0]) is { } cue)
+
+        // The cue table of the word itself (a form that spans lemmas) or of the lemma of its first analysis scores the
+        // analyses; without a table the fusion relies on the tagger alone
+        if (tables.FindCue(key, analyses) is { } cue)
         {
-            CueModel.Score(cue, features, senses, cues);
+            CueModel.Score(cue, features, analyses, cues);
         }
         else
         {
@@ -218,10 +256,119 @@ internal sealed class BasicClassifier
             effective = adjusted;
         }
 
-        SenseFusion.Fuse(effective, senses, cues, tables.HmmWeight, tables.InvTemperature, probabilities);
-        var best = SenseFusion.Winner(probabilities);
-        return new WordSense(word, senses[best], probabilities[best]);
+        SenseFusion.Fuse(effective, analyses, cues, tables.HmmWeight, tables.InvTemperature, probabilities);
+        var list = ListAnalyses(analyses, probabilities, out var selectedGroup);
+        return Answer(word, list, selectedGroup);
     }
+
+    /// <summary>
+    ///     Builds the candidates of a word: every analysis with its probability, the largest first and, on a tie, in
+    ///     lexicon order, and with the one sense of an analysis that has exactly one sense.
+    /// </summary>
+    /// <param name="analyses">The analyses of the word in lexicon order.</param>
+    /// <param name="probabilities">The probability of each analysis, parallel to <paramref name="analyses"/>.</param>
+    /// <param name="selectedGroup">Receives the group of the only sense of the first candidate, or null.</param>
+    /// <returns>The candidates, sorted.</returns>
+    private ImmutableArray<AnalysisCandidate> ListAnalyses(ImmutableArray<WordDetails> analyses, ReadOnlySpan<double> probabilities, out string? selectedGroup)
+    {
+        var count = analyses.Length;
+        var candidates = new AnalysisCandidate[count];
+        string?[]? groups = null;
+        for (var j = 0; j < count; j++)
+        {
+            var senses = OnlySenseOf(analyses[j], out var group);
+            candidates[j] = new AnalysisCandidate(analyses[j], probabilities[j], senses);
+            if (group is not null)
+            {
+                groups ??= new string?[count];
+                groups[j] = group;
+            }
+        }
+
+        // A stable insertion sort: the number of analyses is small and a tie keeps the lexicon order
+        Span<int> order = count <= 32 ? stackalloc int[32] : new int[count];
+        for (var j = 0; j < count; j++)
+        {
+            var at = j;
+            while (at > 0 && candidates[order[at - 1]].Probability < candidates[j].Probability)
+            {
+                order[at] = order[at - 1];
+                at--;
+            }
+
+            order[at] = j;
+        }
+
+        var sorted = new AnalysisCandidate[count];
+        for (var j = 0; j < count; j++)
+        {
+            sorted[j] = candidates[order[j]];
+        }
+
+        selectedGroup = groups?[order[0]];
+        return ImmutableCollectionsMarshal.AsImmutableArray(sorted);
+    }
+
+    /// <summary>
+    ///     Lists the only sense of an analysis, with probability 1, when its lemma and part of speech have exactly one
+    ///     sense.
+    /// </summary>
+    /// <param name="analysis">The analysis.</param>
+    /// <param name="group">Receives the group of that sense (normally none).</param>
+    /// <returns>The one sense, or the empty array when the analysis has none or several.</returns>
+    private ImmutableArray<SenseCandidate> OnlySenseOf(WordDetails analysis, out string? group)
+    {
+        group = null;
+        if (_senseCount(analysis.Lemma, analysis.PartOfSpeech) == 1
+            && _sensesOf(analysis.Lemma, analysis.PartOfSpeech) is { Length: 1 } senses)
+        {
+            group = senses[0].GroupId;
+            return [new SenseCandidate(senses[0].SenseId, 1.0)];
+        }
+
+        return [];
+    }
+
+    /// <summary>
+    ///     Answers with the first candidate: at the sense level when it has exactly one sense, otherwise at the
+    ///     part-of-speech level; the confidence is the probability of the candidate (times the probability 1 of its sense).
+    /// </summary>
+    /// <param name="word">The word as written.</param>
+    /// <param name="list">The sorted candidates of the word.</param>
+    /// <param name="selectedGroup">The group of the only sense of the first candidate, or null.</param>
+    /// <returns>The answer.</returns>
+    private static ClassifyResult Answer(string word, ImmutableArray<AnalysisCandidate> list, string? selectedGroup)
+    {
+        var selected = list[0];
+        return selected.Senses.Length == 1
+            ? new ClassifyResult(word, true, list, selected.Details, SenseLevel.Sense, selected.Probability * selected.Senses[0].Probability, selectedGroup, selected.Senses[0].SenseId)
+            : new ClassifyResult(word, true, list, selected.Details, SenseLevel.PartOfSpeech, selected.Probability, null, null);
+    }
+
+    /// <summary>
+    ///     Answers a word that has exactly one analysis. The analysis has probability 1, so the answer is the same for
+    ///     every occurrence of the word: it is built once, with its analyses array, and then shared.
+    /// </summary>
+    /// <param name="word">The word as written.</param>
+    /// <param name="key">The lower-case lexicon key of the word.</param>
+    /// <param name="analysis">The only analysis of the word.</param>
+    /// <returns>The answer.</returns>
+    private ClassifyResult AnswerSingleAnalysis(string word, string key, WordDetails analysis)
+    {
+        var slot = (key.GetHashCode() & int.MaxValue) % SingleCacheSize;
+        var cached = Volatile.Read(ref _singles[slot]);
+        if (cached is null || !string.Equals(cached.Key, key, StringComparison.Ordinal))
+        {
+            var list = ListAnalyses([analysis], [1.0], out var group);
+            cached = new SingleEntry(key, Answer(word, list, group));
+            Volatile.Write(ref _singles[slot], cached);
+        }
+
+        var template = cached.Template;
+        return new ClassifyResult(word, true, template.Analyses, template.Details, template.Level, template.Confidence, template.GroupId, template.SenseId);
+    }
+
+    private sealed record SingleEntry(string Key, ClassifyResult Template);
 
     [SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Private hot path that passes pre-allocated scratch buffers; bundling them would allocate per call.")]
     private void ClassifySegment(
@@ -233,7 +380,7 @@ internal sealed class BasicClassifier
         TaggerToken[] tokens,
         double[] posteriors,
         FeatureRef[] features,
-        WordSense[] results)
+        ClassifyResult[] results)
     {
         for (var i = 0; i < length; i++)
         {
@@ -245,19 +392,19 @@ internal sealed class BasicClassifier
         {
             var word = words[start + i];
             var key = Normalize(word);
-            var senses = key.Length == 0 ? default : _lexicon(key);
-            if (senses.IsDefaultOrEmpty)
+            var analyses = key.Length == 0 ? default : _lexicon(key);
+            if (analyses.IsDefaultOrEmpty)
             {
-                results[start + i] = new WordSense(word, null, 0);
+                results[start + i] = ClassifyResult.Unknown(word);
             }
-            else if (senses.Length == 1)
+            else if (analyses.Length == 1)
             {
-                results[start + i] = new WordSense(word, senses[0], 1);
+                results[start + i] = AnswerSingleAnalysis(word, key, analyses[0]);
             }
             else
             {
                 var featureCount = CueModel.Extract(lower.AsSpan(start, length), i, features);
-                results[start + i] = Choose(tables, word, senses, posteriors.AsSpan(i * PosTag.Count, PosTag.Count), features.AsSpan(0, featureCount), i > 0 && IsNounDeterminer(lower[start + i - 1]));
+                results[start + i] = Choose(tables, word, key, analyses, posteriors.AsSpan(i * PosTag.Count, PosTag.Count), features.AsSpan(0, featureCount), i > 0 && IsNounDeterminer(lower[start + i - 1]));
             }
         }
     }

@@ -15,7 +15,7 @@ sections:
             justification: |
               MiniLM is the small, fast encoder: its 22 MiB model file and low latency suit interactive callers, and
               embedding the weights leaves only the model file to be obtained; its thresholds are measured on its own
-              embeddings, so its confidence means the same as that of the other models.
+              embeddings, so its levels are decided for this encoder.
             children:
               - WordSense-MiniLM-MiniLMWordSenseModel-Identity
               - WordSense-MiniLM-MiniLMWordSenseModel-Files
@@ -25,6 +25,23 @@ sections:
               - MiniLMWordSenseModel_Classify_AmbiguousWord_ReturnsDeterministicResults
               - WordSense_Classifier_EndToEnd_ClassifiesRecord
               - MiniLMWordSenseModel_Classify_TrainedLemma_AnswersAtASenseOrGroupLevel
+
+          - id: WordSense-MiniLM-Composition
+            title: >-
+              The MiniLM package shall depend on the core, Onnx and Basic packages, and its public model shall be the
+              core FallbackWordSenseModel of its own encoder model (primary) and the Basic model (fallback), so that
+              every ambiguous word that the encoder does not score is answered by the Basic model, and shall ensure and
+              dispose both models.
+            tags: [subsystem]
+            justification: |
+              The encoder scores fine senses only for the lemmas it was trained for; pairing it with the Basic model
+              inside the package gives callers one model that answers every word, while the Onnx package itself stays
+              free of a dependency on the Basic package.
+            children:
+              - WordSense-MiniLM-MiniLMWordSenseModel-Composition
+            tests:
+              - MiniLMWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback
+              - MiniLMWordSenseModel_Assembly_ReferencesCoreOnnxAndBasic
 
           - id: WordSense-MiniLM-Packaging
             title: >-

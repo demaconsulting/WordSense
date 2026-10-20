@@ -1,7 +1,11 @@
+using System.Collections.Immutable;
+
 namespace DemaConsulting.WordSense.Basic.Tests;
 
 /// <summary>
-///     Tests for <see cref="BasicTables"/> and the feature hash of <see cref="FeatureRef"/>.
+///     Tests for <see cref="BasicTables"/>, <see cref="LemmaCue"/> and the feature hash of <see cref="FeatureRef"/>. The
+///     tables are loaded against a toy analysis inventory, so these tests need no word image except the two that name
+///     the embedded table.
 /// </summary>
 public class BasicTablesTests
 {
@@ -11,7 +15,7 @@ public class BasicTablesTests
     [Fact]
     public void BasicTables_Load_ToyTable_ReadsContent()
     {
-        var tables = BasicTables.Load(TestTables.Default());
+        var tables = TestTables.Load(TestTables.Default());
 
         Assert.Equal(0.75, tables.Gamma);
         Assert.Equal(5.0, tables.Beta);
@@ -21,8 +25,9 @@ public class BasicTablesTests
         Assert.Equal(1 << PosTag.Determiner, tables.Words["the"].ClosedMask);
         Assert.Equal(12, tables.Words["record"].Total);
         Assert.Equal(1, tables.SuffixCount);
-        Assert.Equal(2, tables.Cues["bass"].Senses.Length);
-        Assert.Equal(2, tables.Cues["bass"].Hashes.Length);
+        var cue = tables.Cues["read"];
+        Assert.Equal(TestTables.ReadColumns(), cue.Analyses);
+        Assert.Equal(2, cue.Hashes.Length);
     }
 
     /// <summary>
@@ -31,7 +36,7 @@ public class BasicTablesTests
     [Fact]
     public void BasicTables_Load_Transitions_AreDistributions()
     {
-        var tables = BasicTables.Load(TestTables.Default());
+        var tables = TestTables.Load(TestTables.Default());
 
         var sum = 0.0;
         for (var c = 0; c < PosTag.Extended; c++)
@@ -48,7 +53,7 @@ public class BasicTablesTests
     [Fact]
     public void BasicTables_FindSuffix_KnownAndUnknown()
     {
-        var tables = BasicTables.Load(TestTables.Default());
+        var tables = TestTables.Load(TestTables.Default());
 
         var known = tables.FindSuffix("walked");
 
@@ -67,7 +72,7 @@ public class BasicTablesTests
         var raw = TestTables.Decompress(TestTables.Default());
         raw[0] = (byte)'X';
 
-        Assert.Throws<InvalidDataException>(() => BasicTables.Load(TestTables.Compress(raw)));
+        Assert.Throws<InvalidDataException>(() => TestTables.Load(TestTables.Compress(raw)));
     }
 
     /// <summary>
@@ -76,7 +81,7 @@ public class BasicTablesTests
     [Fact]
     public void BasicTables_Load_NotCompressed_Throws()
     {
-        Assert.Throws<InvalidDataException>(() => BasicTables.Load("not a table at all"u8));
+        Assert.Throws<InvalidDataException>(() => TestTables.Load("not a table at all"u8));
     }
 
     /// <summary>
@@ -90,7 +95,7 @@ public class BasicTablesTests
         Assert.True(at >= 0);
         raw[at] = 0xFF; // never valid in UTF-8
 
-        var ex = Assert.Throws<InvalidDataException>(() => BasicTables.Load(TestTables.Compress(raw)));
+        var ex = Assert.Throws<InvalidDataException>(() => TestTables.Load(TestTables.Compress(raw)));
 
         Assert.IsType<System.Text.DecoderFallbackException>(ex.InnerException);
     }
@@ -103,7 +108,7 @@ public class BasicTablesTests
     {
         var raw = TestTables.Decompress(TestTables.Default());
 
-        Assert.Throws<InvalidDataException>(() => BasicTables.Load(TestTables.Compress(raw[..(raw.Length - 3)])));
+        Assert.Throws<InvalidDataException>(() => TestTables.Load(TestTables.Compress(raw[..(raw.Length - 3)])));
     }
 
     /// <summary>
@@ -121,28 +126,28 @@ public class BasicTablesTests
         {
             var blob = TestTables.Compress(raw[..length]);
             Assert.True(
-                Throws(() => BasicTables.Load(blob)),
+                Throws(() => TestTables.Load(blob)),
                 $"A table cut at {length} of {raw.Length} bytes was accepted.");
         }
     }
 
     /// <summary>
-    ///     An unsupported version in the magic number and a tag count that differs from the tag set are rejected.
+    ///     The retired class-keyed format and a tag count that differs from the tag set are rejected.
     /// </summary>
     [Fact]
     public void BasicTables_Load_WrongVersionOrTagCount_Throws()
     {
         // Arrange: the tag count is a single-byte varint after the magic, the hash and seven doubles
         var version = TestTables.Decompress(TestTables.Default());
-        version[3] = (byte)'1';
+        version[3] = (byte)'2';
         var tags = TestTables.Decompress(TestTables.Default());
         const int tagCountOffset = 4 + 32 + (7 * 8);
         Assert.Equal(PosTag.Count, tags[tagCountOffset]);
         tags[tagCountOffset]++;
 
         // Act / Assert
-        Assert.True(Throws(() => BasicTables.Load(TestTables.Compress(version))), "Version WSB1.");
-        Assert.True(Throws(() => BasicTables.Load(TestTables.Compress(tags))), "Tag count.");
+        Assert.True(Throws(() => TestTables.Load(TestTables.Compress(version))), "Version WSB2.");
+        Assert.True(Throws(() => TestTables.Load(TestTables.Compress(tags))), "Tag count.");
     }
 
     /// <summary>
@@ -171,7 +176,7 @@ public class BasicTablesTests
     {
         var raw = TestTables.Decompress(TestTables.Default());
 
-        Assert.Throws<InvalidDataException>(() => BasicTables.Load(TestTables.Compress([.. raw, 0])));
+        Assert.Throws<InvalidDataException>(() => TestTables.Load(TestTables.Compress([.. raw, 0])));
     }
 
     /// <summary>
@@ -180,13 +185,13 @@ public class BasicTablesTests
     [Fact]
     public void BasicTables_Load_UnorderedHashes_Throws()
     {
-        var hashes = TestTables.HeteronymHashes();
+        var hashes = TestTables.CueHashes();
         var blob = TestTables.Build(
             [("record", 0, new int[PosTag.Count])],
             [],
-            [("bass", [new CueSense("bass#fish", 0), new CueSense("bass#music", 0)], [hashes[1], hashes[0]], [0, 0, 0, 0])]);
+            [("read", TestTables.ReadColumns(), [hashes[1], hashes[0]], [0, 0, 0, 0])]);
 
-        Assert.Throws<InvalidDataException>(() => BasicTables.Load(blob));
+        Assert.Throws<InvalidDataException>(() => TestTables.Load(blob));
     }
 
     /// <summary>
@@ -202,11 +207,12 @@ public class BasicTablesTests
         var blob = TestTables.Build([("record", 0, counts)], [], []);
 
         // Act and Assert
-        Assert.Throws<InvalidDataException>(() => BasicTables.Load(blob));
+        Assert.Throws<InvalidDataException>(() => TestTables.Load(blob));
     }
 
     /// <summary>
-    ///     The table embedded in the assembly loads and has statistics.
+    ///     The table embedded in the assembly loads and has statistics. It needs the embedded word image and the
+    ///     regenerated table.
     /// </summary>
     [Fact]
     public void BasicTables_Default_LoadsEmbeddedTable()
@@ -219,82 +225,191 @@ public class BasicTablesTests
     }
 
     /// <summary>
-    ///     A table trained for another class inventory is rejected, and the message names both hashes.
+    ///     A table trained for another analysis inventory is rejected, and the message names both hashes.
     /// </summary>
     [Fact]
-    public void BasicTables_Load_OtherClassHash_ThrowsNamingBothHashes()
+    public void BasicTables_Load_OtherInventoryHash_ThrowsNamingBothHashes()
     {
+        // Arrange: a table that carries the all-zero hash, loaded against the toy inventory
         var other = new byte[32];
-        var blob = TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], classHash: other);
+        var blob = TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], inventoryHash: other);
 
-        var ex = Assert.Throws<InvalidDataException>(() => BasicTables.Load(blob));
+        // Act
+        var ex = Assert.Throws<InvalidDataException>(() => TestTables.Load(blob));
 
+        // Assert: the hash of the table and the hash of the inventory are in the message
         Assert.Contains(Convert.ToHexString(other), ex.Message, StringComparison.Ordinal);
-        Assert.Contains(Convert.ToHexString(WordLexicon.Current.ClassHash), ex.Message, StringComparison.Ordinal);
+        Assert.Contains(Convert.ToHexString(TestTables.ToyHash), ex.Message, StringComparison.Ordinal);
     }
 
     /// <summary>
-    ///     A cue that names a class the word image does not have is rejected.
+    ///     A cue column that names an analysis the inventory does not have is rejected, and the message names it.
     /// </summary>
     [Fact]
-    public void BasicTables_Load_UnknownClass_Throws()
+    public void BasicTables_Load_UnknownAnalysis_Throws()
     {
-        var hashes = TestTables.HeteronymHashes();
-        var blob = TestTables.Build(
-            [("record", 0, new int[PosTag.Count])],
-            [],
-            [("bass", [new CueSense("bass#fish", 0), new CueSense("bass#no-such-class", 0)], hashes, [0, 0, 0, 0])]);
+        // Arrange: the second column is a noun "read", which the toy inventory lacks
+        var hashes = TestTables.CueHashes();
+        CueAnalysis[] columns =
+        [
+            new("read", PartOfSpeech.Verb, "Tense=Past", 0),
+            new("read", PartOfSpeech.Noun, "Number=Sing", 0),
+        ];
+        var blob = TestTables.Build([("record", 0, new int[PosTag.Count])], [], [("read", columns, hashes, [0, 0, 0, 0])]);
 
-        var ex = Assert.Throws<InvalidDataException>(() => BasicTables.Load(blob));
+        // Act
+        var ex = Assert.Throws<InvalidDataException>(() => TestTables.Load(blob));
 
-        Assert.Contains("bass#no-such-class", ex.Message, StringComparison.Ordinal);
+        // Assert
+        Assert.Contains("'read'", ex.Message, StringComparison.Ordinal);
+        Assert.Contains("Noun", ex.Message, StringComparison.Ordinal);
     }
 
     /// <summary>
-    ///     A class that two cue columns name is rejected.
+    ///     A column with a part-of-speech byte that is not a part of speech is rejected.
     /// </summary>
     [Fact]
-    public void BasicTables_Load_DuplicateClass_Throws()
+    public void BasicTables_Load_InvalidPartOfSpeech_Throws()
     {
-        var hashes = TestTables.HeteronymHashes();
-        var blob = TestTables.Build(
-            [("record", 0, new int[PosTag.Count])],
-            [],
-            [("bass", [new CueSense("bass#fish", 0), new CueSense("bass#fish", 0)], hashes, [0, 0, 0, 0])]);
+        var hashes = TestTables.CueHashes();
+        CueAnalysis[] columns = [new("read", PartOfSpeech.Verb, "Tense=Past", 0), new("read", (PartOfSpeech)99, "Tense=Pres", 0)];
+        var blob = TestTables.Build([("record", 0, new int[PosTag.Count])], [], [("read", columns, hashes, [0, 0, 0, 0])]);
 
-        Assert.Throws<InvalidDataException>(() => BasicTables.Load(blob));
+        Assert.Throws<InvalidDataException>(() => TestTables.Load(blob));
     }
 
     /// <summary>
-    ///     An analysis without a class is scored by the meaning-less column of its part of speech; a class that is not
-    ///     in the cue gets no column.
+    ///     An analysis that two columns of one cue table name is rejected.
     /// </summary>
     [Fact]
-    public void LemmaCue_RowOf_AnalysisWithoutClass_UsesMeaninglessColumnOfItsPartOfSpeech()
+    public void BasicTables_Load_DuplicateAnalysis_Throws()
     {
-        var hashes = TestTables.HeteronymHashes();
-        var blob = TestTables.Build(
-            [("record", 0, new int[PosTag.Count])],
-            [],
-            [("record", [new CueSense("record#noun", 0), new CueSense("record#verb", 0)], hashes, [0, 0, 0, 0])]);
-        var cue = BasicTables.Load(blob).Cues["record"];
+        // Arrange: the same lemma, part of speech and features twice
+        var hashes = TestTables.CueHashes();
+        CueAnalysis[] columns = [new("read", PartOfSpeech.Verb, "Tense=Past", 0), new("read", PartOfSpeech.Verb, "Tense=Past", 0)];
+        var blob = TestTables.Build([("record", 0, new int[PosTag.Count])], [], [("read", columns, hashes, [0, 0, 0, 0])]);
 
-        Assert.Equal(0, cue.RowOf(new WordDetails(null, "recorded", PartOfSpeech.Noun, string.Empty)));
-        Assert.Equal(1, cue.RowOf(new WordDetails(null, "recorded", PartOfSpeech.Verb, string.Empty)));
-        Assert.Equal(-1, cue.RowOf(new WordDetails(null, "recorded", PartOfSpeech.Adjective, string.Empty)));
-        Assert.Equal(-1, cue.RowOf(new WordDetails("bass#fish", "bass", PartOfSpeech.Noun, string.Empty)));
-        Assert.Equal(1, cue.RowOf(new WordDetails("record#verb", "record", PartOfSpeech.Verb, string.Empty)));
+        // Act
+        var ex = Assert.Throws<InvalidDataException>(() => TestTables.Load(blob));
+
+        // Assert
+        Assert.Contains("twice", ex.Message, StringComparison.Ordinal);
     }
 
     /// <summary>
-    ///     The shipped table loads against the shipped word image (the load checks the class hash) and resolves every cue class.
+    ///     An analysis is scored by the column of its own features when there is one, and otherwise by the column with
+    ///     empty features, which stands for every analysis of its lemma and part of speech; an analysis of another
+    ///     lemma or part of speech has no column.
+    /// </summary>
+    [Fact]
+    public void LemmaCue_RowOf_Analysis_UsesTheColumnOfItsFeatures()
+    {
+        // Arrange: the empty-features column, the past tense and the past participle of read
+        var hashes = TestTables.CueHashes();
+        CueAnalysis[] columns =
+        [
+            new("read", PartOfSpeech.Verb, string.Empty, 0),
+            new("read", PartOfSpeech.Verb, "Tense=Past", 0),
+            new("read", PartOfSpeech.Verb, "Tense=Past+VerbForm=Part", 0),
+        ];
+        var cue = TestTables.Load(TestTables.Build([("record", 0, new int[PosTag.Count])], [], [("read", columns, hashes, new sbyte[6])])).Cues["read"];
+
+        // Act / Assert: the column of the exact features, the fallback column and no column
+        Assert.Equal(1, cue.RowOf(TestTables.ReadPast));
+        Assert.Equal(2, cue.RowOf(TestTables.ReadPastParticiple));
+        Assert.Equal(0, cue.RowOf(TestTables.ReadPres));
+        Assert.Equal(0, cue.RowOf(new WordDetails("read", PartOfSpeech.Verb, string.Empty)));
+        Assert.Equal(-1, cue.RowOf(TestTables.RecordVerb));
+        Assert.Equal(-1, cue.RowOf(new WordDetails("read", PartOfSpeech.Noun, string.Empty)));
+    }
+
+    /// <summary>
+    ///     Without an empty-features column, an analysis whose features contain none of the column items has no column.
+    /// </summary>
+    [Fact]
+    public void LemmaCue_RowOf_NoEmptyFeaturesColumn_UnmatchedAnalysisHasNoColumn()
+    {
+        var cue = TestTables.Load(TestTables.Default()).Cues["read"];
+
+        Assert.Equal(0, cue.RowOf(TestTables.ReadPast));
+        Assert.Equal(1, cue.RowOf(TestTables.ReadPres));
+        Assert.Equal(0, cue.RowOf(TestTables.ReadPastParticiple));
+        Assert.Equal(-1, cue.RowOf(new WordDetails("read", PartOfSpeech.Verb, "VerbForm=Inf")));
+        Assert.Equal(-1, cue.RowOf(new WordDetails("read", PartOfSpeech.Verb, string.Empty)));
+    }
+
+    /// <summary>
+    ///     Of the columns whose feature items are all contained in the analysis, the one with the most items wins and the
+    ///     first of equally specific columns is taken.
+    /// </summary>
+    [Fact]
+    public void LemmaCue_RowOf_SeveralContainedColumns_TakesTheMostSpecificThenTheFirst()
+    {
+        // Arrange: two one-item columns that the participle contains, then a two-item column
+        var hashes = TestTables.CueHashes();
+        CueAnalysis[] ties =
+        [
+            new("read", PartOfSpeech.Verb, "VerbForm=Part", 0),
+            new("read", PartOfSpeech.Verb, "Tense=Past", 0),
+        ];
+        CueAnalysis[] specific = [.. ties, new("read", PartOfSpeech.Verb, "Tense=Past+VerbForm=Part", 0)];
+        var tied = TestTables.Load(TestTables.Build([("record", 0, new int[PosTag.Count])], [], [("read", ties, hashes, new sbyte[4])])).Cues["read"];
+        var most = TestTables.Load(TestTables.Build([("record", 0, new int[PosTag.Count])], [], [("read", specific, hashes, new sbyte[6])])).Cues["read"];
+
+        // Act / Assert
+        Assert.Equal(0, tied.RowOf(TestTables.ReadPastParticiple));
+        Assert.Equal(2, most.RowOf(TestTables.ReadPastParticiple));
+    }
+
+    /// <summary>
+    ///     The cue table of a word is the table named by the normalized word first, then the table of the lemma of its
+    ///     first analysis, and none when neither exists.
+    /// </summary>
+    [Fact]
+    public void BasicTables_FindCue_WordTableBeforeLemmaTable()
+    {
+        // Arrange: a table of the form "left" that spans two lemmas, and the table of the lemma "read"
+        var hashes = TestTables.CueHashes();
+        CueAnalysis[] leftColumns =
+        [
+            new("leave", PartOfSpeech.Verb, "Tense=Past", 0),
+            new("left", PartOfSpeech.Adjective, string.Empty, 0),
+        ];
+        var tables = TestTables.Load(TestTables.Build(
+            [("record", 0, new int[PosTag.Count])],
+            [],
+            [("left", leftColumns, hashes, new sbyte[4]), ("read", TestTables.ReadColumns(), hashes, new sbyte[4])]));
+        ImmutableArray<WordDetails> leftAnalyses = [TestTables.LeftAdjective, TestTables.LeavePast];
+        ImmutableArray<WordDetails> readAnalyses = [TestTables.ReadPres, TestTables.ReadPast];
+        ImmutableArray<WordDetails> readFormAnalyses = [TestTables.ReadPast, TestTables.ReadPres];
+
+        // Act
+        var byWord = tables.FindCue("left", leftAnalyses);
+        var byLemma = tables.FindCue("reads", readAnalyses);
+        var byWordFirst = tables.FindCue("read", readFormAnalyses);
+        var none = tables.FindCue("record", [TestTables.RecordNoun, TestTables.RecordVerb]);
+
+        // Assert
+        Assert.Same(tables.Cues["left"], byWord);
+        Assert.Same(tables.Cues["read"], byLemma);
+        Assert.Same(tables.Cues["read"], byWordFirst);
+        Assert.Null(none);
+        Assert.Equal(1, byWord!.RowOf(TestTables.LeftAdjective));
+        Assert.Equal(0, byWord.RowOf(TestTables.LeavePast));
+    }
+
+    /// <summary>
+    ///     The shipped table loads against the shipped word image (the load checks the inventory hash) and every analysis
+    ///     it names exists there. It needs the regenerated word image and table.
     /// </summary>
     [Fact]
     public void BasicTables_Default_ShippedTable_ResolvesEveryCueClass()
     {
         var tables = BasicTables.Default;
 
-        Assert.All(tables.Cues.Values, cue => Assert.All(cue.Senses, s => Assert.NotNull(s.Pos)));
+        Assert.All(
+            tables.Cues.Values,
+            cue => Assert.All(cue.Analyses, a => Assert.True(WordLexicon.Current.AnalysisExists(a.Lemma, a.PartOfSpeech, a.Features), $"{a.Lemma} {a.PartOfSpeech} '{a.Features}'")));
     }
 
     /// <summary>

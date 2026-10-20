@@ -11,12 +11,14 @@ and decides the level of an answer from the lemma's own thresholds.
 #### Data Model
 
 - `WeightsData(ModelId, InventoryHash, Dimension, Mean, Lemmas)`: the decoded blob; `InventoryHash` is the 32-byte hash
-  of the sense, group and analysis-inventory sections of the word image the weights were trained for, `Mean` is the
+  of the spelling, analysis, feature, entry, sense, group and lemma-block sections of the word image the weights were
+  trained for, `Mean` is the
   global (frozen) mean of the training vectors.
 - `WeightedLemma(Lemma, SenseIds, FineThreshold, GroupThreshold, Biases, Weights, Choosers)`: one lemma. `SenseIds` are
   the fine sense ids (`lemma#slug`, the sense ids of the public API) in column order, so row `i` of the weights scores
-  sense `i`. There is one one-versus-rest row and one bias per sense, and at least two senses. The two thresholds are
-  margins that are not negative: `FineThreshold` for the fine level and `GroupThreshold` for the group level. A level
+  sense `i`. There is one one-versus-rest row and one bias per sense, and at least two senses. The thresholds are
+  margins that are not negative: `FineThreshold` for the fine level and `GroupThreshold` for the group level, which is
+  chosen and used only for a lemma that has groups. A level
   that never reached the precision target carries the largest finite float as its threshold ("never"), which no finite
   margin meets. For every lemma the number of `SenseIds` equals the number of rows; reader and writer reject any other
   entry.
@@ -54,15 +56,21 @@ and decides the level of an answer from the lemma's own thresholds.
     bias (the one-versus-rest activation).
   - `Rank` orders the candidate senses by score and returns the best, the second best and the margin between them; a
     single candidate has an infinite margin.
-  - `GroupScores` derives the score of each group of the candidates: it takes the softmax of the candidates' fine
-    scores and sums the probabilities of the senses of each group. The groups are ranked and their margin is the
+  - `GroupScores` derives the score of each group of the candidates of a lemma that has groups: it takes the softmax of
+    the candidates' fine scores and sums the probabilities of the senses of each group (a sense in no group stands
+    alone). The groups are ranked and their margin is the
     difference of the best two group scores; a single group has an infinite margin. No group rows are stored.
-  - `Confidence(margin, threshold)` is `clamp(0.5 + 0.5 * (margin - threshold) / max(threshold, 0.5), 0, 1)`: monotonic
-    in the margin, bounded to 0 to 1, exactly one half at the threshold, 0 for a non-numeric margin and 1 for an
-    infinite one.
+  - `Candidates` ranks the senses of the lemma and part of speech of an analysis by the softmax of their fine
+    scores: the probabilities sum to one over the listed senses and equal probabilities keep inventory order. They become
+    the `Senses` of the `AnalysisCandidate` of that analysis (the probability of a sense given its analysis, the
+    renormalization within the analysis being done by the classifier).
+  - `Confidence(margin, threshold)` is a monotonic function of the margin, bounded to 0 to 1, 0 for a non-numeric
+    margin and 1 for an infinite one; the confidence of a result is the probability of its answer at its level (see
+    _OnnxClassifier Unit Design_), which this function orders but does not replace.
   - `Level` decides the level of an answer with the lemma's own `FineThreshold` and `GroupThreshold`, never shared
-    values: the fine sense when the fine margin reaches `FineThreshold`, otherwise the group when the group margin
-    reaches `GroupThreshold`, otherwise the best group with the confidence below one half. A threshold that is "never"
+    values: the fine sense when the fine margin reaches `FineThreshold`, otherwise, for a lemma that has groups and a
+    best sense in a group, the group (with a lower confidence when the group margin does not reach
+    `GroupThreshold`), otherwise the part of speech. A threshold that is "never"
     cannot be met by a finite margin. A chooser is scored the same way over its labels with its own threshold.
 
 #### Error Handling
@@ -71,7 +79,7 @@ and decides the level of an answer from the lemma's own thresholds.
 magic or a wrong version, a sparse flag, a corrupt, truncated, inconsistent or non-finite blob, a lemma with fewer than
 two senses, an empty or duplicate sense id, a negative threshold, a malformed UTF-8 lemma, a zero dimension, a count
 that disagrees with the data present, or trailing data. A feature of the wrong dimension is reported as a mismatch to
-the caller, which then uses the fallback.
+the caller, which then gives the word the lexicon-only answer.
 
 #### Dependencies
 

@@ -1,5 +1,6 @@
 using System.Buffers.Binary;
 using System.Collections.Frozen;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.IO.Compression;
 using System.Text;
@@ -7,22 +8,18 @@ using System.Text;
 namespace DemaConsulting.WordSense.Basic;
 
 /// <summary>
-///     One sense row of a cue table: the class that the weights of one lemma column score.
+///     One column of a cue table: the analysis that the weights of the column score. The table names the analysis by
+///     lemma, part of speech and features and the loader checks it against the analysis inventory of the word image.
 /// </summary>
-/// <param name="ClassId">The id of the class (the sense id of the public API).</param>
-/// <param name="Prior">The quantized log prior of the sense, in steps of 1/8 nat (zero or negative).</param>
-internal sealed record CueSense(string ClassId, sbyte Prior)
-{
-    /// <summary>
-    ///     Gets a value indicating whether the class carries a pronunciation meaning (a heteronym class).
-    /// </summary>
-    public bool HasMeaning { get; init; }
-
-    /// <summary>
-    ///     Gets the part of speech of the class, resolved from the word image at load.
-    /// </summary>
-    public PartOfSpeech? Pos { get; init; }
-}
+/// <remarks>
+///     A column with empty features stands for every analysis of its lemma and part of speech; a column with features
+///     (for example <c>Tense=Past</c>) stands for the analyses that carry all of its items.
+/// </remarks>
+/// <param name="Lemma">The lemma of the analysis, as written in the word image (a training lemma, which may be a form such as <c>left</c>).</param>
+/// <param name="PartOfSpeech">The part of speech of the analysis.</param>
+/// <param name="Features">The required feature items (<c>Key=Value</c> joined by <c>+</c>); empty when the column stands for every analysis of the lemma and part of speech.</param>
+/// <param name="Prior">The quantized log prior of the analysis, in steps of 1/8 nat (zero or negative).</param>
+internal sealed record CueAnalysis(string Lemma, PartOfSpeech PartOfSpeech, string Features, sbyte Prior);
 
 /// <summary>
 ///     The statistics of one tabled word: its closed-class tags and its per-tag training counts.
@@ -70,35 +67,43 @@ internal sealed class WordEntry
 }
 
 /// <summary>
-///     The cue table of one ambiguous lemma: its senses, the hashed context features that carry weights, and the
-///     quantized weights.
+///     The cue table of one ambiguous training lemma: its analyses as columns, the hashed context features that carry
+///     weights, and the quantized weights.
 /// </summary>
+/// <remarks>
+///     The table is keyed by a training lemma (or by a form that spans lemmas, such as <c>left</c>), so its columns may
+///     name analyses of several lemmas. The feature items of each column are split once at construction so that
+///     <see cref="RowOf"/> does not allocate.
+/// </remarks>
 internal sealed class LemmaCue
 {
+    private readonly string[][] _items;
+
     /// <summary>
     ///     Initializes a new instance of the <see cref="LemmaCue"/> class.
     /// </summary>
-    /// <param name="lemma">The lemma.</param>
-    /// <param name="senses">The senses, in the column order of the weights.</param>
+    /// <param name="lemma">The training lemma that keys the table.</param>
+    /// <param name="analyses">The analyses, in the column order of the weights.</param>
     /// <param name="hashes">The ascending, distinct 16-bit feature hashes.</param>
-    /// <param name="weights">The weights, feature-major: one value per sense for each hash.</param>
-    public LemmaCue(string lemma, CueSense[] senses, ushort[] hashes, sbyte[] weights)
+    /// <param name="weights">The weights, feature-major: one value per analysis for each hash.</param>
+    public LemmaCue(string lemma, CueAnalysis[] analyses, ushort[] hashes, sbyte[] weights)
     {
         Lemma = lemma;
-        Senses = senses;
+        Analyses = analyses;
         Hashes = hashes;
         Weights = weights;
+        _items = [.. analyses.Select(a => a.Features.Length == 0 ? [] : a.Features.Split('+'))];
     }
 
     /// <summary>
-    ///     Gets the lemma.
+    ///     Gets the training lemma that keys the table.
     /// </summary>
     public string Lemma { get; }
 
     /// <summary>
-    ///     Gets the senses in weight-column order.
+    ///     Gets the analyses in weight-column order.
     /// </summary>
-    public CueSense[] Senses { get; }
+    public CueAnalysis[] Analyses { get; }
 
     /// <summary>
     ///     Gets the ascending feature hashes.
@@ -111,37 +116,70 @@ internal sealed class LemmaCue
     public sbyte[] Weights { get; }
 
     /// <summary>
-    ///     Finds the column of a lexicon sense.
+    ///     Finds the column of an analysis of the lexicon.
     /// </summary>
-    /// <param name="details">The sense, matched by its class id.</param>
-    /// <returns>The index of the sense, or -1 when the table has no such sense.</returns>
+    /// <remarks>
+    ///     Among the columns of the same lemma and part of speech whose feature items are all contained in the feature
+    ///     items of the analysis, the one with the most items wins (the first on a tie); a column with empty features
+    ///     always qualifies, so it is the fallback of every analysis of its lemma and part of speech. The column of the
+    ///     most specific features is preferred because it was trained on exactly that use (the past of <c>read</c>).
+    /// </remarks>
+    /// <param name="details">The analysis (lemma, part of speech and features).</param>
+    /// <returns>The index of the column, or -1 when the table has no column for the analysis.</returns>
     public int RowOf(WordDetails details)
     {
         ArgumentNullException.ThrowIfNull(details);
-        for (var i = 0; i < Senses.Length; i++)
+        var best = -1;
+        var bestItems = -1;
+        for (var i = 0; i < Analyses.Length; i++)
         {
-            if (string.Equals(Senses[i].ClassId, details.SenseId, StringComparison.Ordinal))
+            var column = Analyses[i];
+            if (column.PartOfSpeech != details.PartOfSpeech
+                || _items[i].Length <= bestItems
+                || !string.Equals(column.Lemma, details.Lemma, StringComparison.Ordinal)
+                || !HasAll(details.Features, _items[i]))
             {
-                return i;
+                continue;
+            }
+
+            best = i;
+            bestItems = _items[i].Length;
+        }
+
+        return best;
+    }
+
+    [SuppressMessage("Major Code Smell", "S3267:Loops should be simplified using the \"All\" LINQ method", Justification = "Hot path of every candidate analysis; a lambda that captures the features would allocate per call.")]
+    private static bool HasAll(string features, string[] items)
+    {
+        foreach (var item in items)
+        {
+            if (!HasItem(features, item))
+            {
+                return false;
             }
         }
 
-        // An analysis that is not a class of this lemma (an inflected form of a neighbor, or an untrained word) is
-        // scored by the plain column of its part of speech, as the shipped model has always done.
-        // An analysis without a class (an inflected form of a neighbor, or an untrained word) has no meaning, so it
-        // is scored by the column of its part of speech that has no meaning, as the shipped model has always done.
-        if (details.SenseId is null)
+        return true;
+    }
+
+    private static bool HasItem(string features, string item)
+    {
+        // Walk the '+'-separated items without allocating
+        var rest = features.AsSpan();
+        while (rest.Length > 0)
         {
-            for (var i = 0; i < Senses.Length; i++)
+            var end = rest.IndexOf('+');
+            var current = end < 0 ? rest : rest[..end];
+            if (current.SequenceEqual(item))
             {
-                if (!Senses[i].HasMeaning && Senses[i].Pos == details.PartOfSpeech)
-                {
-                    return i;
-                }
+                return true;
             }
+
+            rest = end < 0 ? default : rest[(end + 1)..];
         }
 
-        return -1;
+        return false;
     }
 }
 
@@ -151,18 +189,20 @@ internal sealed class LemmaCue
 /// </summary>
 /// <remarks>
 ///     <para>
-///     The table is a Brotli-compressed container that the repository's builder writes (<c>WSB2</c>); after
+///     The table is a Brotli-compressed container that the repository's builder writes (<c>WSB3</c>); after
 ///     decompression every integer is a little-endian 7-bit varint unless noted, a double is eight little-endian
-///     bytes and a string is a varint byte length followed by UTF-8. The layout is: the magic <c>WSB2</c>; the
-///     32-byte class hash (SHA-256 of the class table of the word image the table was trained for); seven
-///     doubles (gamma, beta, lambda1, lambda2, lambda3, the weight of the tagger in the fusion, the inverse
-///     temperature of the cues); the tag count; the unigram, bigram and trigram tag counts (the boundary is the last
-///     index); the tabled words (word, flags byte with bit 0 = closed class, a 16-bit closed mask when closed, a 16-bit
-///     presence mask and one count per set bit); the suffix entries (suffix and four counts for noun, verb, adjective
-///     and adverb); and the cue lemmas (lemma, senses with class id and quantized prior, the delta-coded
-///     ascending 16-bit feature hashes and one signed byte weight per feature and sense). Words, suffixes and lemmas
-///     are in ascending ordinal order, so equal data always gives equal bytes. The load fails when the hash differs from the
-///     word image or a class id is unknown or used twice.
+///     bytes and a string is a varint byte length followed by UTF-8. The layout is: the magic <c>WSB3</c>; the
+///     32-byte analysis inventory hash (<c>WordImage.InventoryHash</c>, the hash of the analysis, sense and group sections
+///     of the word image the table was trained for); seven doubles (gamma, beta, lambda1, lambda2, lambda3, the weight
+///     of the tagger in the fusion, the inverse temperature of the cues); the tag count; the unigram, bigram and
+///     trigram tag counts (the boundary is the last index); the tabled words (word, flags byte with bit 0 = closed
+///     class, a 16-bit closed mask when closed, a 16-bit presence mask and one count per set bit); the suffix entries
+///     (suffix and four counts for noun, verb, adjective and adverb); and the cue lemmas (the training lemma, the
+///     analysis count, per analysis the lemma string, the part-of-speech byte, the features string and the signed
+///     quantized prior byte, the delta-coded ascending 16-bit feature hashes and one signed byte weight per feature
+///     and analysis). Words, suffixes and lemmas are in ascending ordinal order, so equal data always gives equal
+///     bytes. The load fails when the hash differs from the word image, when an analysis does not exist in the word
+///     image, or when a lemma table names an analysis twice.
 ///     </para>
 ///     <para>
 ///     An instance is immutable and safe for concurrent use. <see cref="Default"/> is the table embedded in the
@@ -182,16 +222,15 @@ internal sealed class BasicTables
     public const double SuffixSmoothing = 0.1;
 
     private const double MinimumTagPrior = 1e-9;
-    private const int MaximumSenses = 255;
+    private const int MaximumAnalyses = 255;
     private const int MaximumLemmaLength = 1024;
     private const int HashSize = 32;
-    private static readonly byte[] Magic = "WSB2"u8.ToArray();
+    private static readonly byte[] Magic = "WSB3"u8.ToArray();
 
     private static readonly Lazy<BasicTables> DefaultTables = new(LoadEmbedded, LazyThreadSafetyMode.ExecutionAndPublication);
 
     private readonly string[] _suffixKeys;
     private readonly double[][] _suffixProbabilities;
-    private readonly FrozenDictionary<string, LemmaCue> _cuesByClass;
 
     [SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Constructor of an immutable table whose fields are all supplied by the single reader.")]
     private BasicTables(
@@ -218,7 +257,6 @@ internal sealed class BasicTables
         _suffixKeys = suffixKeys;
         _suffixProbabilities = suffixProbabilities;
         Cues = cues;
-        _cuesByClass = cues.Values.SelectMany(c => c.Senses.Select(s => (s.ClassId, Cue: c))).ToFrozenDictionary(p => p.ClassId, p => p.Cue, StringComparer.Ordinal);
         var derived = Derive(unigrams, bigrams, trigrams, Lambda1, Lambda2, Lambda3);
         Transition = derived.Transition;
         TagPrior = derived.TagPrior;
@@ -257,12 +295,12 @@ internal sealed class BasicTables
     public double Lambda3 { get; }
 
     /// <summary>
-    ///     Gets the weight of the logarithm of the part-of-speech posterior in the fused score of a sense.
+    ///     Gets the weight of the logarithm of the part-of-speech posterior in the fused score of an analysis.
     /// </summary>
     public double HmmWeight { get; }
 
     /// <summary>
-    ///     Gets the factor (the inverse of the temperature) that scales the cue score in the fused score of a sense.
+    ///     Gets the factor (the inverse of the temperature) that scales the cue score in the fused score of an analysis.
     /// </summary>
     public double InvTemperature { get; }
 
@@ -303,7 +341,7 @@ internal sealed class BasicTables
     public FrozenDictionary<string, WordEntry> Words { get; }
 
     /// <summary>
-    ///     Gets the cue tables by lemma.
+    ///     Gets the cue tables by training lemma (or by a form that spans lemmas).
     /// </summary>
     public FrozenDictionary<string, LemmaCue> Cues { get; }
 
@@ -330,6 +368,21 @@ internal sealed class BasicTables
     public static BasicTables Load(ReadOnlySpan<byte> blob, WordImage image)
     {
         ArgumentNullException.ThrowIfNull(image);
+        return Load(blob, image.InventoryHash, image.AnalysisExists);
+    }
+
+    /// <summary>
+    ///     Reads a table against an explicit analysis inventory. The overload that takes the word image delegates here;
+    ///     the tests use it with a small inventory so that they do not need an image.
+    /// </summary>
+    /// <param name="blob">The compressed blob.</param>
+    /// <param name="inventoryHash">The 32-byte analysis inventory hash that the table must carry.</param>
+    /// <param name="analysisExists">Tells whether an analysis (lemma, part of speech, required features) is in the inventory.</param>
+    /// <returns>The table.</returns>
+    /// <exception cref="InvalidDataException">Thrown when the blob is corrupt, carries another inventory hash, names an unknown analysis or names an analysis twice in one lemma table.</exception>
+    internal static BasicTables Load(ReadOnlySpan<byte> blob, ReadOnlySpan<byte> inventoryHash, Func<string, PartOfSpeech, string, bool> analysisExists)
+    {
+        ArgumentNullException.ThrowIfNull(analysisExists);
         var reader = new Reader(Decompress(blob));
         for (var i = 0; i < Magic.Length; i++)
         {
@@ -345,10 +398,10 @@ internal sealed class BasicTables
             hash[i] = reader.ReadByte();
         }
 
-        if (!hash.AsSpan().SequenceEqual(image.ClassHash))
+        if (!hash.AsSpan().SequenceEqual(inventoryHash))
         {
             throw new InvalidDataException(
-                $"The basic table was trained for another class inventory: its class hash is {Convert.ToHexString(hash)}, the word image has {Convert.ToHexString(image.ClassHash)}. Rebuild the table.");
+                $"The basic table was trained for another analysis inventory: its inventory hash is {Convert.ToHexString(hash)}, the word image has {Convert.ToHexString(inventoryHash)}. Rebuild the table.");
         }
 
         var parameters = new double[7];
@@ -368,7 +421,7 @@ internal sealed class BasicTables
         var trigrams = reader.ReadVarints(PosTag.Extended * PosTag.Extended * PosTag.Extended);
         var words = ReadWords(reader);
         var (suffixKeys, suffixProbabilities) = ReadSuffixes(reader);
-        var cues = ReadCues(reader, image);
+        var cues = ReadCues(reader, analysisExists);
         if (reader.Remaining != 0)
         {
             throw new InvalidDataException("The basic table has trailing bytes.");
@@ -378,14 +431,22 @@ internal sealed class BasicTables
     }
 
     /// <summary>
-    ///     Finds the cue table that scores a word: the one that holds the class of its first analysis.
+    ///     Finds the cue table that scores a word: the table keyed by the normalized word (a form that spans lemmas, such
+    ///     as <c>left</c> or <c>bases</c>, has a table of its own) and otherwise the table keyed by the lemma of its first
+    ///     analysis.
     /// </summary>
-    /// <param name="first">The first (most frequent) analysis of the word.</param>
+    /// <param name="word">The normalized (lower-case) word.</param>
+    /// <param name="analyses">The analyses of the word in lexicon order; the first (most frequent) one names the lemma.</param>
     /// <returns>The cue table, or null when the word has none.</returns>
-    public LemmaCue? FindCue(WordDetails first)
+    public LemmaCue? FindCue(string word, ImmutableArray<WordDetails> analyses)
     {
-        ArgumentNullException.ThrowIfNull(first);
-        return first.SenseId is { } id ? _cuesByClass.GetValueOrDefault(id) : Cues.GetValueOrDefault(first.Lemma);
+        ArgumentNullException.ThrowIfNull(word);
+        if (Cues.TryGetValue(word, out var byWord))
+        {
+            return byWord;
+        }
+
+        return analyses.IsDefaultOrEmpty ? null : Cues.GetValueOrDefault(analyses[0].Lemma);
     }
 
     /// <summary>
@@ -533,11 +594,10 @@ internal sealed class BasicTables
         return (keys, probabilities);
     }
 
-    private static FrozenDictionary<string, LemmaCue> ReadCues(Reader reader, WordImage image)
+    private static FrozenDictionary<string, LemmaCue> ReadCues(Reader reader, Func<string, PartOfSpeech, string, bool> analysisExists)
     {
         var count = reader.ReadCount();
         var cues = new Dictionary<string, LemmaCue>(count, StringComparer.Ordinal);
-        var seenClasses = new HashSet<string>(StringComparer.Ordinal);
         string? previous = null;
         for (var i = 0; i < count; i++)
         {
@@ -548,53 +608,58 @@ internal sealed class BasicTables
             }
 
             previous = lemma;
-            var senseCount = reader.ReadVarint();
-            if (senseCount is < 2 or > MaximumSenses)
+            var analysisCount = reader.ReadVarint();
+            if (analysisCount is < 2 or > MaximumAnalyses)
             {
-                throw new InvalidDataException("The basic table has an invalid sense count.");
+                throw new InvalidDataException("The basic table has an invalid analysis count.");
             }
 
-            var senses = ReadCueSenses(reader, image, seenClasses, senseCount);
+            var analyses = ReadCueAnalyses(reader, analysisExists, lemma, analysisCount);
             var hashes = ReadFeatureHashes(reader);
-            var weights = new sbyte[checked(hashes.Length * senseCount)];
+            var weights = new sbyte[checked(hashes.Length * analysisCount)];
             for (var w = 0; w < weights.Length; w++)
             {
                 weights[w] = (sbyte)reader.ReadByte();
             }
 
-            cues.Add(lemma, new LemmaCue(lemma, senses, hashes, weights));
+            cues.Add(lemma, new LemmaCue(lemma, analyses, hashes, weights));
         }
 
         return cues.ToFrozenDictionary(StringComparer.Ordinal);
     }
 
-    private static CueSense[] ReadCueSenses(Reader reader, WordImage image, HashSet<string> seenClasses, int senseCount)
+    private static CueAnalysis[] ReadCueAnalyses(Reader reader, Func<string, PartOfSpeech, string, bool> analysisExists, string table, int analysisCount)
     {
-        var senses = new CueSense[senseCount];
-        for (var s = 0; s < senseCount; s++)
+        var analyses = new CueAnalysis[analysisCount];
+        var seen = new HashSet<(string, PartOfSpeech, string)>();
+        for (var s = 0; s < analysisCount; s++)
         {
-            var classId = reader.ReadString();
-            if (image.ClassIndex(classId) < 0)
-            {
-                throw new InvalidDataException($"The basic table names the class '{classId}', which is not in the word image.");
-            }
-
-            if (!seenClasses.Add(classId))
-            {
-                throw new InvalidDataException($"The basic table names the class '{classId}' twice.");
-            }
-
+            var lemma = reader.ReadString();
+            var posByte = reader.ReadByte();
+            var features = reader.ReadString();
             var prior = (sbyte)reader.ReadByte();
-            var meaningFlag = reader.ReadByte();
-            if (meaningFlag > 1)
+            if (!Enum.IsDefined((PartOfSpeech)posByte))
             {
-                throw new InvalidDataException("The basic table has an invalid meaning flag.");
+                throw new InvalidDataException("The basic table has an invalid part of speech.");
             }
 
-            senses[s] = new CueSense(classId, prior) { HasMeaning = meaningFlag == 1, Pos = image.ClassPos(classId) };
+            var pos = (PartOfSpeech)posByte;
+
+            // Every column must name an analysis of the word image, and no analysis may be a column twice
+            if (!analysisExists(lemma, pos, features))
+            {
+                throw new InvalidDataException($"The basic table names the analysis '{lemma}' ({pos}, '{features}') in the cue table '{table}', which is not in the word image.");
+            }
+
+            if (!seen.Add((lemma, pos, features)))
+            {
+                throw new InvalidDataException($"The basic table names the analysis '{lemma}' ({pos}, '{features}') twice in the cue table '{table}'.");
+            }
+
+            analyses[s] = new CueAnalysis(lemma, pos, features, prior);
         }
 
-        return senses;
+        return analyses;
     }
 
     private static ushort[] ReadFeatureHashes(Reader reader)

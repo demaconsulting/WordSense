@@ -11,7 +11,8 @@ embedded in the assembly: a second-order hidden Markov model (HMM) that estimate
 a sentence, and a naive Bayes cue model over the neighboring words that separates analyses that share a part of speech.
 A fusion step combines both into one probability per analysis. The statistics carry no evidence that separates fine
 senses or groups of senses, so the model answers an ambiguous word at the part of speech level and names a sense only
-where the lemma and part of speech of the word have exactly one sense. It is small and fast and less accurate than the
+where the selected analysis has exactly one sense (its lemma and part of speech have exactly one sense). Every analysis
+of a known word is listed with its probability. It is small and fast and less accurate than the
 encoder models; its measured accuracy is reported in the repository's build notes.
 
 The subsystem contains six units:
@@ -32,13 +33,15 @@ lemma and part of speech) and the analysis inventory of the word image.
 
 It exposes `BasicWordSenseModel` with a public parameterless constructor. `EnsureModelAsync` returns immediately and
 ignores the mirror; `ClassifyAsync` classifies at once, so a lazy ensure is trivial. It consumes the `WordLexicon`
-lookups and the contracts of the core package (`WordSense`, `WordDetails` and `SenseLevel`). All other types are
+lookups and the contracts of the core package (`ClassifyResult`, `AnalysisCandidate`, `SenseCandidate`, `WordDetails`
+and `SenseLevel`). All other types are
 internal and visible to the builder (which trains and writes the table with the same feature hash and tag constants)
 and to the Basic test project.
 
-The Onnx package references this package and uses `BasicWordSenseModel` as the statistical fallback: an ambiguous word
-without trained weights is answered with the part of speech level answer of this model. The Basic package itself
-depends on the core package only.
+The MiniLM and BertBaseCased packages reference this package and compose `BasicWordSenseModel` with their encoder model
+through the core `FallbackWordSenseModel`: an ambiguous word that the encoder does not score is answered with the part
+of speech level answer of this model. The Basic package itself depends on the core package only, and so does the Onnx
+package: neither references the other.
 
 ### Design
 
@@ -53,24 +56,33 @@ apostrophe straightened; tokens without a letter become empty), splits the list 
    contains a digit); a word carries the set of parts of speech of its lexicon analyses and whether it is capitalized;
 2. `PosTagger` computes the tag posterior of every token of the segment;
 3. for each word, in order, the lexicon analyses of the normalized form decide the answer and its level:
-   - no analysis (or an empty key): level none, no details, no group or sense id, confidence 0;
-   - exactly one analysis whose lemma and part of speech have exactly one sense: level sense with that sense and its
-     group, confidence 1;
-   - exactly one analysis with several senses: level part of speech with that analysis, confidence 1;
-   - several analyses: `CueModel` extracts the features of the word from the segment and scores the analyses,
-     `SenseFusion` turns the posterior and the cue scores into one probability per analysis, and the result is the
-     most probable analysis at the part of speech level with that probability as its confidence.
+   - no analysis (or an empty key): `ClassifyResult.Unknown`: not known, no analyses, no details, no group or sense id,
+     level none, confidence 0;
+   - exactly one analysis: it is listed with probability 1 (a shared array, cached per word, so the common words do not
+     allocate it again). With exactly one sense for its lemma and part of speech, that sense is listed with probability
+     1 and the answer is at the sense level with that sense (no group, normally), confidence 1; with several senses the
+     answer is at the part of speech level, confidence 1;
+   - several analyses: `CueModel` extracts the features of the word from the segment and scores the analyses against the
+     cue table of the word or, failing that, of the lemma of its first analysis (the column of an analysis is the column
+     of its lemma and part of speech whose feature items are all contained in the analysis features, the one with the
+     most items winning; a column with empty features stands for any features),
+     `SenseFusion` turns the posterior and the cue scores into one probability per analysis, and every analysis is
+     listed with its probability, sorted largest first (a stable sort, so a tie keeps the lexicon order). The first is
+     the selected analysis. The answer is at the part of speech level with the probability of the selected analysis as
+     its confidence, or at the sense level (same confidence) when the selected analysis has exactly one sense.
 
 Every word that has a lexicon analysis is answered with details, number words such as `one` or `twenty` included; only
 a word without analyses and a token without a letter are unknown. The model never answers at the group level, and it
-never names a sense for a word whose lemma and part of speech have several senses, because its statistics do not
-separate them.
+lists no senses for an analysis whose lemma and part of speech have several senses (it scores analyses and not fine
+senses), so it never names a sense for such an analysis, because its statistics do not separate the senses. An
+analysis whose lemma and part of speech have exactly one sense lists that sense with probability 1, whatever the
+probability of the analysis, because no evidence is needed to choose it.
 
-An ambiguous word is therefore always answered, and its confidence is the probability of the chosen analysis, at least
-one over the number of analyses and at most 1. The confidence is a relative score, not a calibrated probability, but a
-higher value is more often right: the builder's `evaluate basic` reports the accuracy per confidence bucket and the
-coverage and precision at fixed thresholds, so a caller can trade coverage for precision with a threshold. Ties go to
-the analysis that comes first in the lexicon order of the form.
+An ambiguous word is therefore always answered, and its confidence is the probability of the selected analysis, at
+least one over the number of analyses and at most 1. The confidence is a relative score, not a calibrated probability,
+but a higher value is more often right: the builder's `evaluate basic` reports the accuracy per confidence bucket and
+the coverage and precision at fixed thresholds, so a caller can trade coverage for precision with a threshold. Ties go
+to the analysis that comes first in the lexicon order of the form.
 
 #### Statistical Table
 
@@ -79,13 +91,14 @@ the analysis that comes first in the lexicon order of the form.
 inventory of the word image it was trained for; seven little-endian doubles (gamma, beta, lambda 1 to 3, the tagger
 weight of the fusion and the inverse temperature of the cues); the tag count; the unigram, bigram and trigram tag
 counts (the sentence boundary is the last index); the tabled words with their closed-class mask and per-tag counts; the
-suffix table; and the cue tables of the ambiguous lemmas (16-bit feature hashes and one signed byte weight per feature
+suffix table; and the cue tables, keyed by training lemma (16-bit feature hashes and one signed byte weight per feature
 and analysis, in steps of 1/8 nat). The cue analyses are named by lemma, part of speech and features and resolved
 against the analysis inventory of the word image at load: a hash mismatch or an unknown or duplicate analysis is a load
-failure. Words, suffixes and lemmas are in ordinal order, so equal training data gives byte-identical tables. The
+failure, so the table is rebuilt whenever the inventory changes. Words, suffixes and lemmas are in ordinal order, so
+equal training data gives byte-identical tables. The
 builder rolls the analysis labels of its training sentences up from the fine-sense corpus. The reader validates the
-layout and throws `InvalidDataException` for anything malformed. The format is described in detail in the
-`BasicTables` unit design.
+layout and throws `InvalidDataException` for anything malformed. The format (magic `WSB3`) is described in detail in
+the `BasicTables` unit design.
 
 #### Determinism and Concurrency
 

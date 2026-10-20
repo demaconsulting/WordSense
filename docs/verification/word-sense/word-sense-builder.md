@@ -45,15 +45,18 @@ All scenarios below pass on every platform and target framework of the CI matrix
   included (`ImageCompiler_Build_IsDeterministic`, `ImageCompiler_Build_CatalogIsDeterministic`), and the committed
   image
   equals a fresh compilation (`Words_Committed_MatchesData`).
-- **Invalid inventory fails the build**: a sense without a label, a sense in two groups and a group that mixes
-  parts of speech are each rejected with an error that names the sense or group, and no file is written
+- **Invalid inventory fails the build**: a sense without a label, a sense in two groups, a group of one sense or of all
+  the senses of its lemma and part of speech, a group that mixes
+  parts of speech, and a group id without the `#group:` marker or equal to a sense id are each rejected with an error
+  that names the sense or group, and no file is written
   (`ImageCompiler_Build_SenseWithoutLabel_Fails`, `ImageCompiler_Build_SenseInTwoGroups_Fails`,
-  `ImageCompiler_Build_GroupMixingPartsOfSpeech_Fails`).
+  `ImageCompiler_Build_GroupOfOneSenseOrAllSenses_Fails`, `ImageCompiler_Build_GroupMixingPartsOfSpeech_Fails`,
+  `ImageCompiler_Build_GroupIdWithoutMarkerOrEqualToSenseId_Fails`).
 - **Every dictionary word is kept** (`Words_Committed_HoldsEveryDictionaryWord`): the committed image holds every
   word of the committed dictionary with each of its parts of speech, without exception.
 - **The catalog is complete** (`Words_Committed_CatalogHoldsEveryOewnAndProjectSense`): every single-token OEWN sense
-  and every project sense of the committed data is in the catalog with its id, group, key (none for a project sense)
-  and respelling.
+  and every project sense of the committed data is in the catalog with its id, group (when it is in one), key (none for
+  a project sense) and respelling.
 - **Auxiliaries** (`Words_Committed_AuxiliariesGainTheirAnalysis`,
   `LexiconSource_ReadAuxiliaries_ReadsWordsAndRejectsBadLines`,
   `LexiconSource_Letters_CoverTheTenParts`): each word of `corpus/lexicon/auxiliaries.tsv` gains an auxiliary
@@ -61,9 +64,15 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Spellings and lookup** (`Image_Spellings_AreSortedByUtf8Bytes`, `Image_Find_ReturnsOwnIndex`): the spelling index is
   sorted by the UTF-8 bytes and finds each spelling at its own index.
 - **Damaged images are rejected** (`Image_Corruption_IsRejected`, `Image_TruncatedAtEverySectionBoundary_IsRejected`,
-  `Image_WrongHash_IsRejectedByContentHashOnly`, `Image_CountMismatch_IsRejected`): the reader rejects a tampered file,
-  a file cut off at any section boundary and a section count that does not match; a wrong hash is detected by the
-  content hash alone.
+  `Image_WrongHash_IsRejectedByContentHashOnly`, `Image_CountMismatch_IsRejected`,
+  `Image_SenseWithUnknownGroup_IsRejected`, `Image_GroupOfOneSenseOrAllSenses_IsRejected`,
+  `Image_GroupIdWithoutMarker_IsRejected`): the reader rejects a
+  tampered file, a file cut off at any section boundary (the 112-byte header of version 3, the directory of 20-byte
+  entries and each section) and a section count that does not match; a wrong hash is detected by the content hash
+  alone; a sense that names an unknown group, a group id without the `#group:` marker, a group with fewer than two
+  members, a group of all the senses of its
+  lemma and part of speech, a group that mixes lemmas or parts of speech and group members that disagree with the
+  sense-to-group index are rejected.
 - **Sense inventory rules** (`SenseInventory_ValidateRules_FlagsViolations`,
   `SenseInventory_Validate_CommittedCorpus_IsConsistent`): the inventory rules flag each violation, and the committed
   corpus agrees with the committed inventory.
@@ -166,7 +175,7 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Unreachable target** (`Thresholds_Choose_TargetNeverReached_NeverAnswersThatLevel`): a lemma whose out-of-fold
   precision never reaches the target gets no threshold for that level, so that level is never answered.
 - **Both thresholds are written** (`ModelTrainer_TrainDataAsync_WritesBothThresholdsPerLemma`): the weights blob
-  holds `t_fine` and `t_group` of every trained lemma.
+  holds `t_fine` of every trained lemma and `t_group` of every trained lemma that has groups.
 
 #### tiers
 
@@ -183,7 +192,7 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Report is rendered and written**: the result is written to the standard output, and to the file given with
   `--output` (`EvaluationResult_Render_FormatsSetsAndMeasurements`).
 - **Shares and accuracy per level** (`Evaluator_RunAsync_ReportsShareAndAccuracyPerLevel`): with a stub model that
-  answers rows at each level, the report gives the share answered at the sense, group and low-confidence level, the
+  answers rows at each level, the report gives the share answered at the sense, group and part-of-speech level, the
   accuracy at each level and the part-of-speech accuracy.
 - **Basic evaluation needs no model**: `evaluate basic` runs on a synthetic corpus without model files, counts the
   holdout rows and prints the accuracy and coverage measurements together with the calibration buckets, the confidence

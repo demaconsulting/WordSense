@@ -5,7 +5,8 @@
 #### Purpose
 
 `SenseFusion` combines the part-of-speech posterior of the tagger with the cue scores into one probability per
-candidate analysis of a form, and picks the winner. The probability of the winner is the confidence of the result.
+candidate analysis of a form. The classifier lists every analysis with its probability, so the probabilities are the
+analyses of the result, and the probability of the largest is the confidence of the result.
 
 #### Data Model
 
@@ -25,9 +26,10 @@ senses; several candidates may share a part of speech.
 3. compute the score `tagWeight * ln(max(p, 1e-6)) + cue * invTemperature` per candidate;
 4. take the softmax with the maximum subtracted first, so extreme scores stay finite, and the probabilities sum to 1.
 
-`Winner(probabilities)` returns the index of the largest probability and the lowest index on a tie. The result is at
-least one over the number of candidates and strictly monotone in the score margin. The confidence that the classifier
-reports is therefore greater than 0 and at most 1.
+`Winner(probabilities)` returns the index of the largest probability and the lowest index on a tie; the classifier
+applies the same rule when it sorts the analyses (largest first, a tie keeps the lexicon order). The probabilities sum
+to 1, and the largest is at least one over the number of candidates and strictly monotone in the score margin. The
+confidence that the classifier reports is therefore greater than 0 and at most 1.
 
 #### Error Handling
 

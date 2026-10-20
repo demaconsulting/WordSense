@@ -1,16 +1,14 @@
 namespace DemaConsulting.WordSense;
 
 /// <summary>
-///     One possible analysis of a written word: the sense it stands for (when the word is a trained one), its lemma, its
-///     part of speech and its grammatical features.
+///     One analysis of a written word: its lemma, its part of speech and its grammatical features.
 /// </summary>
 /// <remarks>
 ///     <para>
-///     A lemma is the dictionary base form of a word, so the word <c>records</c> has the lemma <c>record</c>. The
-///     <see cref="SenseId"/> names one class of the coarse sense inventory of the shipped models, for example
-///     <c>lead#metal</c> or <c>read#past</c>; it is <see langword="null"/> for an analysis that has no sense, which is the
-///     case for most words. Treat a sense id as an opaque, stable key (for example the key of your own pronunciation
-///     lexicon).
+///     A lemma is the dictionary base form of a word, so the word <c>records</c> has the lemma <c>record</c>. An analysis
+///     names no sense: the senses of an analysis are the senses of its lemma and part of speech, listed by
+///     <see cref="WordLexicon.SensesOf"/>. A form that belongs to several lemmas or tenses (<c>left</c>, <c>bases</c>,
+///     <c>read</c>) has one analysis for each.
 ///     </para>
 ///     <para>
 ///     <see cref="Features"/> lists the grammatical features of the form as <c>Feature=Value</c> items joined by
@@ -20,21 +18,52 @@ namespace DemaConsulting.WordSense;
 /// </remarks>
 /// <example>
 ///     <code>
-///     foreach (WordDetails sense in WordLexicon.Lookup("lead"))
+///     foreach (WordDetails analysis in WordLexicon.Lookup("lead"))
 ///     {
-///         Console.WriteLine($"{sense.SenseId ?? "-"}: {sense.Lemma}, {sense.PartOfSpeech}, {sense.Features}");
+///         Console.WriteLine($"{analysis.Lemma}, {analysis.PartOfSpeech}, {analysis.Features}");
 ///     }
 ///     </code>
 /// </example>
-/// <param name="SenseId">
-///     The identifier of the sense (the class id, <c>lemma#label</c>), or <see langword="null"/> when the analysis has no
-///     sense.
-/// </param>
 /// <param name="Lemma">The base form of the word, for example <c>record</c> for <c>records</c>.</param>
 /// <param name="PartOfSpeech">The part of speech.</param>
 /// <param name="Features">The grammatical features, or an empty string when they are not known.</param>
-public sealed record WordDetails(string? SenseId, string Lemma, PartOfSpeech PartOfSpeech, string Features);
+public sealed record WordDetails(string Lemma, PartOfSpeech PartOfSpeech, string Features)
+{
+    /// <summary>
+    ///     Finds the value of a grammatical feature in <see cref="Features"/>.
+    /// </summary>
+    /// <param name="name">The name of the feature, for example <c>Tense</c> or <c>Number</c>.</param>
+    /// <param name="value">Receives the value, for example <c>Past</c>; <see langword="null"/> when the analysis has no such feature.</param>
+    /// <returns><see langword="true"/> when the feature is present.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="name"/> is null.</exception>
+    public bool TryGetFeature(string name, [System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out string? value)
+    {
+        ArgumentNullException.ThrowIfNull(name);
+        value = null;
+        if (name.Length == 0)
+        {
+            return false;
+        }
 
+        // Scan the items without splitting the string; only the found value is allocated
+        var rest = Features.AsSpan();
+        while (!rest.IsEmpty)
+        {
+            var end = rest.IndexOf('+');
+            var item = end < 0 ? rest : rest[..end];
+            var equals = item.IndexOf('=');
+            if (equals == name.Length && item[..equals].SequenceEqual(name))
+            {
+                value = item[(equals + 1)..].ToString();
+                return true;
+            }
+
+            rest = end < 0 ? default : rest[(end + 1)..];
+        }
+
+        return false;
+    }
+}
 /// <summary>
 ///     The part of speech of a word.
 /// </summary>
@@ -97,7 +126,7 @@ public enum PartOfSpeech
 
     /// <summary>
     ///     An auxiliary (helping or modal) verb, for example the <c>will</c> in "we will record" or the <c>is</c> in
-    ///     "she is here". Only the Basic model answers this value; the encoder models never do.
+    ///     "she is here". The lexicon lists it as the last analysis of the word, after the analyses it already had.
     /// </summary>
     Auxiliary = 9,
 }

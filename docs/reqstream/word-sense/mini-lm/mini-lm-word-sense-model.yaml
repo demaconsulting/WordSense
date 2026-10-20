@@ -44,6 +44,22 @@ sections:
                   - MiniLMWordSenseModel_Classify_TrainedLemma_AnswersAtASenseOrGroupLevel
                   - WordSense_Classifier_EndToEnd_ClassifiesRecord
 
+              - id: WordSense-MiniLM-MiniLMWordSenseModel-Composition
+                title: >-
+                  MiniLMWordSenseModel shall wrap a FallbackWordSenseModel of its encoder model (primary) and a
+                  BasicWordSenseModel (fallback), answer every ambiguous word that the encoder does not score with the
+                  complete result of the Basic model (the analyses chosen in context at the part of speech level), make
+                  EnsureModelAsync ensure the encoder files (the Basic model needs none) and make Dispose dispose both
+                  models.
+                tags: [unit]
+                justification: |
+                  Every word of a text must be answered, not only the lemmas the weights were trained for; the
+                  composition lives in the model package so that the encoder base class needs no Basic model.
+                tests:
+                  - MiniLMWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback
+                  - MiniLMWordSenseModel_Assembly_ReferencesCoreOnnxAndBasic
+                  - MiniLMWordSenseModel_Dispose_DisposesEncoderAndFallback
+
               - id: WordSense-MiniLM-MiniLMWordSenseModel-Options
                 title: >-
                   MiniLMWordSenseModel shall accept an optional model directory and a maximum sequence length that

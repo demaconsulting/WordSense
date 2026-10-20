@@ -15,7 +15,7 @@ sections:
             justification: |
               The larger cased encoder gives callers a more accurate option that can use capitalization as context,
               and embedding the weights leaves only the model files to be obtained; its thresholds are measured on its
-              own embeddings, so its confidence means the same as that of the other models.
+              own embeddings, so its levels are decided for this encoder.
             children:
               - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Identity
               - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Files
@@ -25,6 +25,23 @@ sections:
               - BertBaseCasedWordSenseModel_Classify_AmbiguousWord_ReturnsBestSense
               - BertBaseCased_Classifier_EndToEnd_ClassifiesRecord
               - BertBaseCasedWordSenseModel_Classify_TrainedLemma_AnswersAtASenseOrGroupLevel
+
+          - id: WordSense-BertBaseCased-Composition
+            title: >-
+              The BertBaseCased package shall depend on the core, Onnx and Basic packages, and its public model shall
+              be the core FallbackWordSenseModel of its own encoder model (primary) and the Basic model (fallback), so
+              that every ambiguous word that the encoder does not score is answered by the Basic model, and shall
+              ensure and dispose both models.
+            tags: [subsystem]
+            justification: |
+              The encoder scores fine senses only for the lemmas it was trained for; pairing it with the Basic model
+              inside the package gives callers one model that answers every word, while the Onnx package itself stays
+              free of a dependency on the Basic package.
+            children:
+              - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Composition
+            tests:
+              - BertBaseCasedWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback
+              - BertBaseCasedWordSenseModel_Assembly_ReferencesCoreOnnxAndBasic
 
           - id: WordSense-BertBaseCased-Packaging
             title: >-

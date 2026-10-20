@@ -11,16 +11,15 @@ internal sealed partial class DataValidator
     private const string RuleLabel = "label";
     private const string RuleStability = "stability";
     private const string RuleGroup = "group";
-    private const string RulePartition = "partition";
     private const string RuleUnique = "unique";
     private const string TableSenseLabel = "sense_label";
     private const string TableSenseLabelMap = "sense_label_map";
     private const string TableSenseGroup = "sense_group";
     private const string TableGroupSense = "group_sense";
     private const string OriginProject = "project";
-    private const string OriginCurated = "curated";
-    private const string OriginDefault = "default";
 
+    // The marker of the id of a group (lemma#group:label); it is not a label character, so a group id is never a sense id
+    private const string GroupMarker = "group:";
     [GeneratedRegex(@"^[a-z0-9]+(-[a-z0-9]+)*$", RegexOptions.CultureInvariant)]
     private static partial Regex WellFormedLabel();
 
@@ -81,9 +80,9 @@ internal sealed partial class DataValidator
         var groupIds = groups.Select(g => g.Row[0]).ToHashSet(StringComparer.Ordinal);
         var publicIds = CheckLabels(labels, senses, labelOf, groupIds);
         CheckProjectSenses(labels, senses);
-        CheckLabelMap(maps, publicIds, groupIds);
+        CheckLabelMap(maps, publicIds);
         CheckStability(maps, publicIds);
-        CheckGroups(groups, senses, labelOf.Count > 0 || groups.Count > 0);
+        CheckGroups(groups, senses);
     }
 
     // ---- labels ----
@@ -162,24 +161,25 @@ internal sealed partial class DataValidator
 
     // ---- the id map and the published labels ----
 
-    private void CheckLabelMap(List<(string Path, int Line, string[] Row)> maps, Dictionary<string, string> publicIds, HashSet<string> groupIds)
+    // The id map is about senses only: group ids are versioned per data release and are never recorded in it
+    private void CheckLabelMap(List<(string Path, int Line, string[] Row)> maps, Dictionary<string, string> publicIds)
     {
         var current = publicIds.Values.ToHashSet(StringComparer.Ordinal);
-        current.UnionWith(groupIds);
         foreach (var (path, line, row) in maps)
         {
             if (current.Contains(row[0]))
             {
-                Report(path, line, RuleStability, $"The retired id '{row[0]}' is the id of a current sense or group; a retired id is never reused.");
+                Report(path, line, RuleStability, $"The retired id '{row[0]}' is the id of a current sense; a retired id is never reused.");
             }
 
             if (row[1].Length > 0 && !current.Contains(row[1]))
             {
-                Report(path, line, RuleStability, $"The id map sends '{row[0]}' to '{row[1]}', which is not the id of a current sense or group.");
+                Report(path, line, RuleStability, $"The id map sends '{row[0]}' to '{row[1]}', which is not the id of a current sense.");
             }
         }
     }
 
+    // Only the sense labels are compared with the baseline: sense ids are frozen once published, group ids are not
     private void CheckStability(
         List<(string Path, int Line, string[] Row)> maps,
         Dictionary<string, string> publicIds)
@@ -258,20 +258,14 @@ internal sealed partial class DataValidator
 
     // ---- groups ----
 
-    private void CheckGroups(List<(string Path, int Line, string[] Row)> groups, Dictionary<string, SenseFacts> senses, bool inventoryExists)
+    private void CheckGroups(List<(string Path, int Line, string[] Row)> groups, Dictionary<string, SenseFacts> senses)
     {
-        if (!inventoryExists)
-        {
-            return;
-        }
-
         var groupRows = groups.ToDictionary(g => g.Row[0], g => g.Row, StringComparer.Ordinal);
         var respelling = Rows("sense_respelling").GroupBy(r => r[0], StringComparer.Ordinal).ToDictionary(g => g.Key, g => g.Last()[1], StringComparer.Ordinal);
-        var groupOf = new Dictionary<string, string>(StringComparer.Ordinal);
+        var senseCounts = senses.Values.GroupBy(s => (s.Lemma, s.Pos)).ToDictionary(g => g.Key, g => g.Count());
         var members = new Dictionary<string, List<string>>(StringComparer.Ordinal);
         foreach (var (path, line, row) in Located(TableGroupSense))
         {
-            groupOf[row[1]] = row[0];
             if (!members.TryGetValue(row[0], out var list))
             {
                 members[row[0]] = list = [];
@@ -284,15 +278,15 @@ internal sealed partial class DataValidator
             }
         }
 
-        var curated = groups.Where(g => g.Row[4] == OriginCurated).Select(g => g.Row[1]).ToHashSet(StringComparer.Ordinal);
-        var curatedPos = groups.Where(g => g.Row[4] == OriginCurated).Select(g => (g.Row[1], g.Row[2])).ToHashSet();
-        var posNames = _schema.Vocabulary("pos");
         foreach (var (path, line, group) in groups)
         {
-            var expected = group[1] + "#" + group[3];
-            if (group[0] != expected)
+            if (!group[0].Contains('#' + GroupMarker, StringComparison.Ordinal))
             {
-                Report(path, line, RuleGroup, $"{group[0]}: the id of a group is its lemma, '#' and its label ('{expected}').");
+                Report(path, line, RuleGroup, $"{group[0]}: the id of a group must carry the marker '{GroupMarker}' after the '#', so that it can never be the id of a sense.");
+            }
+            else if (group[0] != group[1] + "#" + GroupMarker + group[3])
+            {
+                Report(path, line, RuleGroup, $"{group[0]}: the id of a group is its lemma, '#{GroupMarker}' and its label ('{group[1]}#{GroupMarker}{group[3]}').");
             }
 
             if (!WellFormedLabel().IsMatch(group[3]))
@@ -300,50 +294,21 @@ internal sealed partial class DataValidator
                 Report(path, line, RuleGroup, $"{group[0]}: the label '{group[3]}' must be lower-case ASCII letters, digits and single hyphens.");
             }
 
-            if (!members.TryGetValue(group[0], out var list) || list.Count == 0)
+            if (!members.TryGetValue(group[0], out var list) || list.Count < 2)
             {
-                Report(path, line, RuleGroup, $"{group[0]}: a group needs at least one sense.");
+                Report(path, line, RuleGroup, $"{group[0]}: a group needs at least two senses; a sense needs no group of its own.");
                 continue;
+            }
+
+            if (senseCounts.TryGetValue((group[1], group[2]), out var all) && list.Count >= all)
+            {
+                Report(path, line, RuleGroup, $"{group[0]}: a group must not contain every sense of its lemma and part of speech; the part of speech is the next level.");
             }
 
             var names = list.Select(m => respelling.GetValueOrDefault(m)).Where(r => !string.IsNullOrEmpty(r)).Distinct(StringComparer.Ordinal).ToList();
             if (names.Count > 1)
             {
                 Report(path, line, RuleGroup, $"{group[0]}: a group must not mix respellings ({string.Join(", ", names)}).");
-            }
-
-            if (group[4] == OriginDefault)
-            {
-                var name = group[1] + "#" + posNames[group[2]] + "-group";
-                if (group[0] != name)
-                {
-                    Report(path, line, RuleGroup, $"{group[0]}: a default group is named '{name}'.");
-                }
-
-                if (curatedPos.Contains((group[1], group[2])))
-                {
-                    Report(path, line, RuleGroup, $"{group[0]}: the lemma '{group[1]}' has curated groups of this part of speech, so it has no default group of it.");
-                }
-            }
-            else if (!curated.Contains(group[1]))
-            {
-                Report(path, line, RuleGroup, $"{group[0]}: the lemma '{group[1]}' has no curated group, so its groups must be default groups.");
-            }
-        }
-
-        var partitionPath = Path.Join(_root, TableGroupSense);
-        foreach (var sense in senses.Values.Where(s => s.Tokens == "1").OrderBy(s => s.Id, StringComparer.Ordinal))
-        {
-            if (!groupOf.TryGetValue(sense.Id, out var groupId))
-            {
-                var what = curated.Contains(sense.Lemma)
-                    ? $"Sense '{sense.Id}' of the curated lemma '{sense.Lemma}' is in no group."
-                    : $"The lemma '{sense.Lemma}' is not curated and needs the default group '{sense.Lemma}#{posNames[sense.Pos]}-group' for sense '{sense.Id}'.";
-                Report(partitionPath, 0, RulePartition, what);
-            }
-            else if (!curated.Contains(sense.Lemma) && groupRows.TryGetValue(groupId, out var group) && (group[4] != OriginDefault || group[0] != sense.Lemma + "#" + posNames[sense.Pos] + "-group"))
-            {
-                Report(partitionPath, 0, RuleGroup, $"Sense '{sense.Id}' of the lemma '{sense.Lemma}', which is not curated, is in the group '{groupId}' and not in the default group of its part of speech.");
             }
         }
     }

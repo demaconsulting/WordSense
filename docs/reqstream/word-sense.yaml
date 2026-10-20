@@ -8,18 +8,21 @@
 # into the subsystem requirements under docs/reqstream/word-sense/.
 #
 # The sense model is the fine-sense model: every sense is an Open English WordNet (OEWN) sense with a readable id,
-# every sense belongs to one coarse group, and an answer states the level (part of speech, group or sense) at which
-# the model was confident enough to answer.
+# groups exist only where curated (closely related, easily confused senses of one lemma and part of speech), and an
+# answer states the level (part of speech, group or sense) at which the model was confident enough to answer, with
+# the ranked analyses and, where the model scored them, the ranked senses of each analysis, so that a consumer can
+# apply its own grouping.
 
 sections:
   - title: WordSense Requirements
     requirements:
       - id: WordSense-Lib-Classify
         title: >-
-          The system shall classify the words of a running text, answering for each word its analysis (lemma, part
-          of speech and features), the sense at the level it could answer (a fine sense, a group of senses or the
-          part of speech alone), the level that was answered and a confidence for that level, and return one
-          result per input word in the input order.
+          The system shall classify the words of a running text, answering for each word whether it is known, every
+          analysis (lemma, part of speech and features) with its probability, the selected analysis, the level that was
+          answered (a fine sense, a group of senses or the part of speech alone, none only for an unknown word), a
+          confidence at that level and the sense or group id where the level carries one, and return one result per
+          input word in the input order.
         tags: [system]
         justification: |
           This is the purpose of the system: given a text, callers learn which sense (for example "bank" as a financial
@@ -77,39 +80,96 @@ sections:
 
       - id: WordSense-Lib-Groups
         title: >-
-          The system shall place every fine sense in exactly one coarse group of the same lemma and part of speech,
-          identify each group by a readable id of the form lemma#group-label, and let callers list the senses of a
-          group.
+          The system shall define a group only where it was curated, as a set of at least two, but not all, of the
+          senses of one lemma and part of speech that are closely related in meaning and easily confused, place a sense
+          in at most one group, identify each group by a readable id of its own namespace, lemma#group:label, that can
+          never equal a sense id, and let callers list the member senses of a group, so that a group answer always
+          exposes its member senses; sense ids are frozen, group ids are versioned per data release, and the version of
+          the sense inventory is available to callers.
         tags: [system]
         justification: |
-          Fine senses are often finer than a caller needs and than a model can tell apart; a group lets the system
-          answer with a meaning the model is sure of, and lets a caller treat closely related senses alike.
+          Fine senses are often finer than a caller needs and than a model can tell apart; a group of closely related,
+          easily confused senses lets the system answer with a meaning the model is sure of, and lets a caller treat
+          those senses alike or degrade the answer to its member senses. A group that held one sense or every sense
+          would add nothing, so groups exist only where they separate confusable senses from the rest. A group id that
+          can never be mistaken for a sense id can be stored next to one, and because groups are curated again with
+          each data release, callers treat group ids as opaque per-release values and save them with the inventory
+          version.
         children:
           - WordSense-Core-Senses
           - WordSense-WordData-Groups
         tests:
-          - WordSense_Catalog_EverySense_BelongsToExactlyOneGroup
+          - WordSense_Catalog_EverySense_BelongsToAtMostOneGroup
           - WordSense_Catalog_Group_ListsItsSenses
+          - WordLexicon_Groups_EveryGroupId_HasGroupMarkerAndNeverEqualsASenseId
+          - WordLexicon_Version_IsStableLowerCaseHex
 
       - id: WordSense-Lib-AnswerLevel
         title: >-
           The system shall answer a word with several senses at the finest level that the model is confident in: the
-          fine sense when it is, otherwise the group of senses when that is confident, otherwise the best group
-          marked as low confidence, and a word it can only tell by part of speech at the part of speech; the result
-          shall state the level.
+          fine sense when it is, otherwise the group of the senses it is unsure between when they share a group,
+          otherwise the part of speech of the selected analysis; the levels nest as part of speech, group (only where
+          one exists) and sense, a known word shall never be answered at level none, and the result shall state the
+          level.
         tags: [system]
         justification: |
           A model that is sure only of the group, or only of the part of speech, is more useful when it says so than
-          when it names a fine sense that is a guess; the level lets callers use each answer for what it is worth, for
-          example to choose a pronunciation only where the group fixes it.
+          when it names a fine sense that is a guess; when a model is unsure between senses it steps up to the next
+          level that exists, their shared group or else the part of speech. The level lets callers use each answer for
+          what it is worth, for example to choose a pronunciation only where the group fixes it.
         children:
           - WordSense-Core-Contracts
           - WordSense-Basic-Classify
           - WordSense-Onnx-Levels
-          - WordSense-Onnx-Fallback
+          - WordSense-Onnx-Untrained
         tests:
           - WordSense_Classifier_EndToEnd_AnswersAtTheFinestConfidentLevel
           - WordSense_Classifier_EndToEnd_UntrainedWord_AnswersPartOfSpeech
+
+      - id: WordSense-Lib-Candidates
+        title: >-
+          The system shall list, for every known word, its analyses ranked by probability, the probabilities summing to
+          one and none left out, and, for each analysis whose senses the model scores, the senses ranked by their
+          probability given the analysis, summing to one, so that a consumer can apply its own grouping of the senses,
+          and shall list no senses for an analysis whose senses the model does not score.
+        tags: [system]
+        justification: |
+          A model that answers at the part-of-speech or the group level still knows how likely each analysis and each
+          fine sense is, and a consumer may group the senses differently from the curated groups: a consumer that maps
+          senses to its own categories sums analysis.Probability times sense.Probability per category (for example 0.48
+          for one sense of bow and 0.41 for another sense that the consumer puts in the same category give 0.89 for
+          that category), which no single answered sense could tell it. Listing every analysis, never a truncated
+          list, makes the result the single source of truth from which the summary is derived.
+        children:
+          - WordSense-Core-Contracts
+          - WordSense-Basic-Candidates
+          - WordSense-Onnx-Candidates
+        tests:
+          - WordSense_Classifier_EndToEnd_AnalysesAreRankedAndSumToOne
+          - WordSense_Classifier_EndToEnd_SensesAreRankedAndSumToOne
+
+      - id: WordSense-Lib-Fallback
+        title: >-
+          The system shall let two models be composed so that each word is answered by the first model where it scored
+          senses for the word and otherwise by the second, with the complete result of one model and never a mixture,
+          and the encoder model packages shall answer, by default, with their encoder model composed with the Basic
+          model, so that every ambiguous word that the encoder does not score is answered at the part of speech level
+          by the Basic model.
+        tags: [system]
+        justification: |
+          An encoder scores fine senses only for the lemmas it was trained for, while the Basic model chooses the part
+          of speech of every ambiguous word; composing them gives callers one model that answers every word as
+          precisely as its evidence allows, and a result that belongs completely to one model keeps its
+          probabilities, level and confidence consistent.
+        children:
+          - WordSense-Core-Fallback
+          - WordSense-MiniLM-Composition
+          - WordSense-BertBaseCased-Composition
+        tests:
+          - WordSenseContracts_FallbackWordSenseModel_PrimaryScoredSenses_UsesPrimary
+          - WordSenseContracts_FallbackWordSenseModel_PrimaryChoseOnlyAnalysis_UsesFallback
+          - MiniLMWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback
+          - BertBaseCasedWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback
 
       - id: WordSense-Lib-Data
         title: >-
@@ -141,35 +201,41 @@ sections:
       - id: WordSense-Lib-Layered
         title: >-
           The system shall be delivered as five layered packages, in which the core package carries no ONNX
-          Runtime, weights or vector dependency, the Basic package depends only on the core package, and every other
-          package builds on the core contracts (the Onnx package may reuse the Basic package).
+          Runtime, weights or vector dependency, the Basic package and the Onnx package depend only on the core
+          package, and the MiniLM and BertBaseCased packages depend on the core, Onnx and Basic packages.
         tags: [system]
         justification: |
-          Callers that need only the lexicon or the statistical Basic model must not pay for a native runtime or a model
-          file; layering lets each caller take exactly the packages it needs, and lets a third party implement the
-          core contracts with its own model. The encoder models answer words they were not trained for with the Basic
-          model, so the Onnx package may build on it.
+          Callers that need only the lexicon, the statistical Basic model or the bare encoder model must not pay for
+          anything they do not use (a native runtime, a model file, another model); layering lets each caller take
+          exactly the packages it needs, and lets a third party implement the core contracts with its own model. The
+          encoder models answer words they were not trained for with the Basic model, so the two model packages that
+          ship an encoder bring the Basic package along and compose the two, while the Onnx package itself stays
+          independent of it.
         children:
           - WordSense-Core-Independent
           - WordSense-Basic-Offline
           - WordSense-Onnx-Lifecycle
-          - WordSense-Onnx-Fallback
+          - WordSense-Onnx-Untrained
+          - WordSense-MiniLM-Composition
+          - WordSense-BertBaseCased-Composition
           - WordSense-MiniLM-Model
           - WordSense-BertBaseCased-Model
         tests:
           - WordSenseContracts_CoreAssembly_HasNoOnnxOrWeightsReferences
-          - OnnxWordSense_Assembly_ReferencesOnlyCoreAndBasic
+          - OnnxWordSense_Assembly_ReferencesOnlyCore
+          - MiniLMWordSenseModel_Assembly_ReferencesCoreOnnxAndBasic
+          - BertBaseCasedWordSenseModel_Assembly_ReferencesCoreOnnxAndBasic
           - WordSense_Classifier_EndToEnd_ClassifiesRecord
 
       - id: WordSense-Lib-BasicModel
         title: >-
           The system shall provide a statistical model that chooses the analysis (part of speech and features) of an
-          ambiguous word from the cues in its sentence, answers every ambiguous word with a probability, answers the
-          sense only where the lemma and part of speech have one sense, is deterministic and thread-safe, and needs
-          no model file, no network access and no native runtime.
+          ambiguous word from the cues in its sentence, answers every ambiguous word with a probability for each of
+          its analyses, answers the sense only where the selected analysis has one sense, is deterministic and
+          thread-safe, and needs no model file, no network access and no native runtime.
         tags: [system]
         justification: |
-          A small, fast and dependency-free model serves callers that accept lower accuracy; the probability lets
+          A small, fast and dependency-free model serves callers that accept lower accuracy; the probabilities let
           them decide which answers to trust, and stating the part of speech level honestly keeps it from naming fine
           senses it cannot tell apart.
         children:
@@ -199,11 +265,13 @@ sections:
         children:
           - WordSense-Onnx-Classify
           - WordSense-Onnx-Levels
-          - WordSense-Onnx-Fallback
+          - WordSense-Onnx-Untrained
           - WordSense-Onnx-Weights
           - WordSense-Onnx-Encoder
           - WordSense-MiniLM-Model
           - WordSense-BertBaseCased-Model
+          - WordSense-MiniLM-Composition
+          - WordSense-BertBaseCased-Composition
         tests:
           - OnnxEncoder_EncodeAsync_ValidTargets_ReturnsDeterministicVectors
           - BertBaseCasedWordSenseModel_Classify_AmbiguousWord_ReturnsBestSense
@@ -211,15 +279,17 @@ sections:
 
       - id: WordSense-Lib-Confidence
         title: >-
-          The system shall report a confidence between 0 and 1 with every result that applies to the level answered
-          and equals 0.5 at the model's calibrated threshold for that level, shall give the best candidate of the
-          level with a low confidence rather than none where the model can rank candidates, and shall report no
-          details, level none and confidence 0 where it cannot decide, as for a word it does not know.
+          The system shall report a confidence between 0 and 1 with every result that is the probability of the answer
+          at the level answered (the probability of the selected analysis, times the probability of the answered sense
+          or the summed probability of the member senses of the answered group within that analysis), shall report a
+          known word that the model is unsure about at the part of speech level or finer with a low confidence rather
+          than as unknown, and shall report no details, level none and confidence 0 only for a word it does not know.
         tags: [system]
         justification: |
-          Callers apply their own confidence policy; a monotonic, bounded confidence that is calibrated per level, and a
-          clear distinction between low confidence and no decision, let them do so. A confidence of at least 0.5
-          means the model's own precision target for that level was met.
+          Callers apply their own confidence policy; a monotonic, bounded confidence defined from the probabilities
+          that the result also lists, and a clear distinction between low confidence (a known word that is hard) and
+          no decision (an unknown word), let them do so. The scale is not calibrated across models, words or levels,
+          so each caller tunes its own threshold per model and level.
         children:
           - WordSense-Basic-Fusion
           - WordSense-Basic-BasicClassifier-Unknown
@@ -228,7 +298,7 @@ sections:
         tests:
           - BasicClassifier_ClassifyAsync_AmbiguousWord_AlwaysAnswersWithProbability
           - OnnxClassifier_ClassifyAsync_LargerMargin_GivesHigherConfidence
-          - OnnxClassifier_ClassifyAsync_MarginAtThreshold_GivesConfidenceOneHalf
+          - WordSenseContracts_ClassifyResult_LevelDecidesWhichIdsAreSet
 
       - id: WordSense-Lib-Measured
         title: >-
@@ -305,13 +375,15 @@ sections:
         title: >-
           Each of the five packages shall ship XML documentation with a namespace summary and verified examples,
           NuGet metadata and a README; each package that embeds derived data carries the credits and licenses in its
-          package readme.
+          package readme and in a packed NOTICE file, and declares the license expression that covers the embedded
+          data (the core package MIT AND CC-BY-4.0, the Basic package MIT AND CC-BY-SA-4.0).
         tags: [system]
         justification: |
           Consumers learn the API from the package itself; examples that are compiled by the test suite cannot go
           stale (the tests verify the documentation examples; NuGet metadata and the package readme are produced
-          and checked by the pack step), and the credits and licenses in the package readme satisfy the licenses of
-          the embedded data and models.
+          and checked by the pack step), and the credits, notices and license expressions in the package satisfy the
+          licenses of the embedded data (Open English WordNet and Princeton WordNet in the core package, the
+          UD English-EWT treebank in the Basic package) and models.
         children:
           - WordSense-Core-Packaging
           - WordSense-Basic-Packaging

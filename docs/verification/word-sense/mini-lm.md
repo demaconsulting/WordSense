@@ -1,13 +1,15 @@
 ## MiniLM Subsystem Verification Design
 
 This document describes the verification of the MiniLM subsystem, the package `DemaConsulting.WordSense.MiniLM`: the
-`all-MiniLM-L6-v2-int8` encoder (uncased, hidden size 384) with the weights trained for it embedded in the assembly.
+`all-MiniLM-L6-v2-int8` encoder (uncased, hidden size 384) with the weights trained for it embedded in the assembly,
+composed with the Basic model.
 
 ### Verification Approach
 
-The subsystem is a thin layer on the Onnx package, so verification concentrates on what the layer adds: the pinned model
-identity and the embedded weights. Tests in `test/DemaConsulting.WordSense.MiniLM.Tests` run the real int8 model (Git
-LFS) from `model/all-MiniLM-L6-v2-int8/` against the embedded lexicon and weights through the public API
+The subsystem is a thin layer on the Onnx and Basic packages, so verification concentrates on what the layer adds: the
+pinned model identity, the embedded weights and the composition with the Basic model. Tests in
+`test/DemaConsulting.WordSense.MiniLM.Tests` run the real int8 model (Git LFS) from `model/all-MiniLM-L6-v2-int8/`
+against the embedded lexicon and weights through the public API
 (`MiniLMWordSenseModelTests`), compile and run the README sample (`ReadmeSampleTests`) and
 compile the XML documentation examples (`XmlDocExampleTests`). Download behavior is not repeated here; it is verified
 once for all models in the Onnx subsystem.
@@ -26,12 +28,23 @@ All subsystem scenarios pass on every platform and target framework of the CI ma
 
 ### Test Scenarios
 
-#### Real Model Answers Heteronyms in Context at a Sense or Group Level
+#### Real Model Answers Heteronyms in Context
 
 A model created from the committed directory classifies the words of "They will record the record." with the verb
-analysis for the first `record` and the noun analysis for the second, each answered at the sense or group level
+analysis for the first `record` and the noun analysis for the second, each answered at the part-of-speech level in this
+version (and, when the encoder scores fine senses, at a sense, group or part-of-speech level that the result states,
+with the senses of a trained lemma listed whatever the level)
 (`MiniLMWordSenseModelTests`, `EndToEndTests`;
-`MiniLMWordSenseModel_Classify_TrainedLemma_AnswersAtASenseOrGroupLevel`).
+`MiniLMWordSenseModel_Classify_TrainedLemma_AnswersAtASenseOrGroupLevel` belongs to the scoring increment).
+
+#### Untrained Ambiguous Words Are Answered by the Basic Model
+
+A word with several senses that the encoder does not score is answered with the complete result of the Basic model of
+the composition (its analyses with their probabilities, the selected analysis, the level part of speech and no group or
+sense id), and disposing the model disposes the encoder model and the Basic model
+(`MiniLMWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback`,
+`MiniLMWordSenseModel_Dispose_DisposesEncoderAndFallback`). The assembly references the core, Onnx and Basic packages
+(`MiniLMWordSenseModel_Assembly_ReferencesCoreOnnxAndBasic`).
 
 #### Embedded Weights Match the Word Image
 

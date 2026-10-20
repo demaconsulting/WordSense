@@ -20,7 +20,7 @@ internal static class BasicTuner
     /// <summary>
     ///     Runs the tuning.
     /// </summary>
-    /// <param name="corpus">The corpus directory (anchors, senses and the vendored treebank counts).</param>
+    /// <param name="corpus">The corpus directory (anchors, senses, the legacy class map and the vendored treebank counts).</param>
     /// <param name="udCache">The directory that holds the verified treebank development file.</param>
     /// <param name="progress">Receives progress messages.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
@@ -40,12 +40,12 @@ internal static class BasicTuner
         var dev = UdCounts.ReadConllu(devPath).Take(BasicHyperparameters.UdDevSentences).ToList();
         var lexicon = (Func<string, ImmutableArray<WordDetails>>)(key => WordLexicon.TryLookup(key, out var found) ? found : []);
         var inventory = SenseInventory.ReadDirectory(Path.Join(corpus, "senses"));
-        var facts = ClassFacts.From(inventory.Rows);
+        var labels = AnalysisLabels.Load(inventory, corpus);
         var (train, anchorDev) = SplitAnchors(Corpus.ReadDirectory(Path.Join(corpus, "anchors")));
         progress.WriteLine($"Tuning on {dev.Count} treebank dev sentences, {train.Count} anchor train and {anchorDev.Count} anchor dev sentences.");
 
         var text = new StringBuilder();
-        text.Append("| Variant | UD dev ambiguous POS | Anchor dev best sense | Table size |\n");
+        text.Append("| Variant | UD dev ambiguous POS | Anchor dev analysis | Table size |\n");
         text.Append("| --- | ---: | ---: | ---: |\n");
         var seen = new HashSet<BasicHyperparameters>();
         var variants = new List<(string Label, BasicHyperparameters Parameters)> { ("default", BasicHyperparameters.Default) };
@@ -61,11 +61,11 @@ internal static class BasicTuner
         foreach (var (label, hp) in variants)
         {
             cancellationToken.ThrowIfCancellationRequested();
-            var data = BasicTrainer.Train(counts, lexicon, train, inventory, hp);
-            var blob = BasicTablesWriter.Write(data, WordLexicon.Current.ClassHash, CompressionLevel.Fastest);
+            var data = BasicTrainer.Train(counts, lexicon, train, inventory, labels, hp);
+            var blob = BasicTablesWriter.Write(data, WordLexicon.Current.InventoryHash, CompressionLevel.Fastest);
             var tables = BasicTables.Load(blob, WordLexicon.Current);
             var (ambiguous, ambiguousCorrect) = ScoreTreebank(tables, dev, lexicon);
-            var (anchorRows, anchorCorrect) = await ScoreAnchorsAsync(tables, anchorDev, lexicon, inventory, facts, cancellationToken).ConfigureAwait(false);
+            var (anchorRows, anchorCorrect) = await ScoreAnchorsAsync(tables, anchorDev, lexicon, labels, cancellationToken).ConfigureAwait(false);
             text.Append("| ").Append(label)
                 .Append(" | ").Append(Percent(ambiguousCorrect, ambiguous))
                 .Append(" | ").Append(Percent(anchorCorrect, anchorRows))
@@ -174,19 +174,16 @@ internal static class BasicTuner
         BasicTables tables,
         List<CorpusRow> rows,
         Func<string, ImmutableArray<WordDetails>> lexicon,
-        SenseInventory inventory,
-        ClassFacts facts,
+        AnalysisLabels labels,
         CancellationToken cancellationToken)
     {
-        var classifier = new BasicClassifier(tables, lexicon);
-        var gold = inventory.Rows.ToDictionary(r => (r.Lemma, r.Label));
+        var classifier = new BasicClassifier(tables, lexicon, (lemma, pos) => WordLexicon.Current.SenseCountOf(lemma, pos), WordLexicon.SensesOf);
         var correct = 0;
         foreach (var row in rows)
         {
-            var expected = gold[(row.Lemma, row.Sense)];
-            var senses = await classifier.ClassifyAsync(row.Words, cancellationToken).ConfigureAwait(false);
-            var details = senses[row.TargetWordIndex].Details;
-            correct += details is not null && details.PartOfSpeech == expected.Pos && string.Equals(facts.MeaningOf(details), expected.Meaning, StringComparison.Ordinal) ? 1 : 0;
+            // The answer is right when it is one of the analyses that the label of the row stands for
+            var results = await classifier.ClassifyAsync(row.Words, cancellationToken).ConfigureAwait(false);
+            correct += labels.IsRight(row.Lemma, row.Sense, results[row.TargetWordIndex].Details) ? 1 : 0;
         }
 
         return (rows.Count, correct);

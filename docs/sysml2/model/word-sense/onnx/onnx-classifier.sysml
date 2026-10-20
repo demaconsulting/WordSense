@@ -1,6 +1,6 @@
 package WordSense {
     part def OnnxClassifier {
-        doc /* The classifier of the encoder models: runs the encoder only for words that need context, scores the fine senses of every analysis of each such word with the per-lemma weights, answers at the sense, group or low-confidence group level by the lemma's two thresholds, chooses the lemma of a multi-lemma form, and answers an untrained word with the Basic model at the part of speech level. */
+        doc /* The classifier of the encoder models: runs the encoder only for words that need context, scores the fine senses of every analysis of each such word with the per-lemma weights, gives each analysis a probability and lists the ranked senses inside it, answers at the sense level, the group level (for a lemma that has groups) or else the part of speech by the lemma's thresholds, chooses the analysis of a multi-lemma form, and answers a word without scored senses from the lexicon alone (its analyses equally likely, no scored senses, the part of speech level) for a fallback model to decide. */
 
         comment sourceRef /* Source: src/DemaConsulting.WordSense.Onnx/OnnxClassifier.cs */
         comment testRef /* Test: test/DemaConsulting.WordSense.Onnx.Tests/OnnxClassifierTests.cs */

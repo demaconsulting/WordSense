@@ -1,8 +1,0 @@
-group_id	lemma	pos	label	origin
-S#noun-group	S	n	noun-group	default
-S-shape#noun-group	S-shape	n	noun-group	default
-S.U.V.#noun-group	S.U.V.	n	noun-group	default
-S/N#noun-group	S/N	n	noun-group	default
-s#noun-group	s	n	noun-group	default
-s-shaped#adjective-group	s-shaped	a	adjective-group	default
-s.t.p.#noun-group	s.t.p.	n	noun-group	default

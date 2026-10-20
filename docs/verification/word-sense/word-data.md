@@ -11,8 +11,9 @@ lemmas, `other` relations with subtypes, symmetric relations and a missing inver
 Importer tests import the slice into a temporary folder; label generator tests build small tables; validator tests
 damage one thing of an imported copy and assert the rule tag. The end-to-end tests run the commands through the builder
 entry point and validate the committed `data/` folder, and check on it the properties that only the whole data can show:
-every sense has one unique label and a frequency, the groups partition their lemmas, project senses have no key and an
-authored gloss, and closed-class analyses have a project sense. No network and no OEWN file
+every sense has one unique label and a frequency, the groups are sets of some of the senses of one part of speech, project
+senses have no key and an authored gloss, and closed-class analyses (the conjunction `or` and the auxiliaries included)
+have a project sense. No network and no OEWN file
 are needed.
 
 ### Test Environment
@@ -38,23 +39,30 @@ returns failure (`Validate_InvalidData_ListsViolations`).
 
 #### Committed Data and Attribution
 
-`CommittedData_IsValid` validates the real tables; `Attribution_NamesLicenseAndSource` checks that README, the data
+`CommittedData_IsValid` validates the real tables; `CommittedData_HasNoRetiredClassTables` checks that the class tables
+and the form scopes of the retired inventory are gone; `Attribution_NamesLicenseAndSource` checks that README, the data
 README and the provenance record name Open English WordNet and CC BY 4.0, and
 `Attribution_NamesWordNetCountsAndSemCorUse` checks that they also name WordNet 3.0 as the source of the counts and
 SemCor as an evaluation source only.
 
 #### Senses
 
-`CommittedData_HasSenseLabelsAndGroups` checks that the real tables carry labels and groups;
+`CommittedData_HasSenseLabelsAndGroups` checks that the real tables carry labels and the few curated groups, with the
+two group kinds;
 `CommittedData_EverySenseHasOneUniqueLabel` checks one label per sense and no label twice within a lemma;
-`CommittedData_PublishedLabelsAreNeverChangedOrReused` checks the published labels against the id map (no release has
-published labels yet, so the data is its own baseline, and no retired id of the id map may be a current id).
+`CommittedData_PublishedLabelsAreNeverChangedOrReused` checks the published sense labels against the id map (no release
+has published labels yet, so the data is its own baseline, and no retired id of the id map may be a current sense id;
+group ids are not part of this check, because they are versioned per data release).
 
 #### Groups
 
-`CommittedData_GroupsPartitionTheirLemmas` checks that every sense of a curated lemma is in exactly one group of one
-part of speech without two respellings, and `CommittedData_OtherLemmasHaveOneDefaultGroupPerPartOfSpeech` that every
-other lemma has one default group for each of its parts of speech.
+`CommittedData_GroupsAreSetsOfSomeSensesOfOnePartOfSpeech` checks that every group has at least two, but not all, senses
+of its lemma and part of speech, only senses of that lemma and part of speech, no two respellings, and that no sense is
+in two groups; `CommittedData_GroupsHaveAMarkerIdAKindAndCuratedEvidence` checks that every group id is
+`lemma#group:label` with a slug label and is never a sense id, that every kind is `equivalent` or `related`, and that the
+curation file carries the same kind and non-empty evidence for the group; `CommittedData_SensesNeedNoGroup` checks that
+almost every sense is in no group, that only the lemmas of the curation have groups and that no group has the name of a
+retired default group (`-group`).
 
 #### Frequency
 
@@ -66,6 +74,8 @@ the source named.
 
 `CommittedData_ProjectSensesHaveNoKeyAndAGloss` checks that a project sense has no sense key and an authored gloss;
 `CommittedData_ClosedClassAnalysesHaveAProjectSense` checks that every determiner, pronoun, preposition, conjunction,
-interjection and auxiliary analysis has one.
+interjection and auxiliary analysis has one; `CommittedData_OrAndTheAuxiliariesHaveClosedClassAnalyses` checks that the
+spelling `or` leads with the conjunction `or#conjunction` and that every auxiliary of
+`corpus/lexicon/auxiliaries.tsv` has its entry, the project sense `<word>#auxiliary` and an Auxiliary analysis.
 
 The scenarios are detailed in the unit documents.

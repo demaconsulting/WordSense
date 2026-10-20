@@ -1,35 +1,61 @@
 using System.Collections.Immutable;
+using System.Runtime.InteropServices;
 
 namespace DemaConsulting.WordSense.Basic.Tests;
 
 /// <summary>
-///     Tests for <see cref="BasicClassifier"/> on a toy table and lexicon.
+///     Tests for <see cref="BasicClassifier"/> on a toy table and lexicon. Only the number-word test reads the embedded
+///     word lexicon.
 /// </summary>
 public class BasicClassifierTests
 {
-    private static readonly WordDetails Cat = new(null, "cat", PartOfSpeech.Noun, string.Empty);
-    private static readonly WordDetails Fish = WordLexicon.Lookup("bass").First(c => c.SenseId == "bass#fish");
-    private static readonly WordDetails Music = WordLexicon.Lookup("bass").First(c => c.SenseId == "bass#music");
+    private static readonly WordDetails Bank = new("bank", PartOfSpeech.Noun, "Number=Sing");
+    private static readonly WordDetails DoNot = new("don't", PartOfSpeech.Verb, "VerbForm=Fin");
+
+    private static readonly SenseInfo CatSense = new("cat#feline", null, "cat", PartOfSpeech.Noun, "cat%1:05:00::", null);
 
     private static readonly Dictionary<string, ImmutableArray<WordDetails>> Lexicon = new(StringComparer.Ordinal)
     {
-        ["cat"] = [Cat],
-        ["don't"] = [new(null, "don't", PartOfSpeech.Verb, string.Empty)],
-        ["record"] = [new(null, "record", PartOfSpeech.Noun, string.Empty), new(null, "record", PartOfSpeech.Verb, string.Empty)],
-        ["bass"] = [Fish, Music],
+        ["cat"] = [TestTables.CatNoun],
+        ["bank"] = [Bank],
+        ["don't"] = [DoNot],
+        ["record"] = [TestTables.RecordNoun, TestTables.RecordVerb],
+        ["read"] = [TestTables.ReadPres, TestTables.ReadPast],
+        ["tied"] = [TestTables.RecordVerb, TestTables.RecordNoun, TestTables.ReadPast],
+        ["puss"] = [TestTables.CatNoun, TestTables.RecordVerb],
+        ["claw"] = [TestTables.RecordVerb, TestTables.CatNoun],
     };
 
-    private static readonly BasicTables Tables = BasicTables.Load(TestTables.Default());
+    private static readonly Dictionary<(string Lemma, PartOfSpeech Pos), ImmutableArray<SenseInfo>> Senses = new()
+    {
+        [("cat", PartOfSpeech.Noun)] = [CatSense],
+        [("bank", PartOfSpeech.Noun)] =
+        [
+            new("bank#institution", "bank#money", "bank", PartOfSpeech.Noun, null, null),
+            new("bank#building", "bank#money", "bank", PartOfSpeech.Noun, null, null),
+            new("bank#slope", null, "bank", PartOfSpeech.Noun, null, null),
+        ],
+    };
 
-    private static BasicClassifier Create() => new(Tables, Find);
+    private static readonly BasicTables Tables = TestTables.Load(TestTables.Default());
+
+    // The tagger has no weight and no cue table is known, so every analysis of a word has the same probability
+    private static readonly BasicTables TieTables = TestTables.Load(TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], hmmWeight: 0));
+
+    private static BasicClassifier Create(BasicTables? tables = null) => new(tables ?? Tables, Find, Count, SensesOf);
 
     private static ImmutableArray<WordDetails> Find(string word) => Lexicon.GetValueOrDefault(word);
 
-    private static Task<WordSense[]> Run(params string[] words) =>
+    private static ImmutableArray<SenseInfo> SensesOf(string lemma, PartOfSpeech pos) =>
+        Senses.TryGetValue((lemma, pos), out var found) ? found : [];
+
+    private static int Count(string lemma, PartOfSpeech pos) => SensesOf(lemma, pos).Length;
+
+    private static Task<ClassifyResult[]> Run(params string[] words) =>
         Create().ClassifyAsync(words, TestContext.Current.CancellationToken);
 
     /// <summary>
-    ///     A word that is not in the lexicon has no details and no confidence.
+    ///     A word that is not in the lexicon is unknown.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
@@ -37,11 +63,39 @@ public class BasicClassifierTests
     {
         var results = await Run("zzqxjw");
 
-        Assert.Equal(new WordSense("zzqxjw", null, 0), results[0]);
+        Assert.Equal(ClassifyResult.Unknown("zzqxjw"), results[0]);
+        Assert.False(results[0].IsKnown);
     }
 
     /// <summary>
-    ///     A word with exactly one lexicon entry is answered with full confidence.
+    ///     A word that is in the lexicon, a number word such as <c>one</c> or <c>twenty</c> included, is answered with
+    ///     details; only a token without a letter is unknown. It reads the embedded word lexicon and therefore needs the
+    ///     regenerated word image.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_NumberWord_ReturnsDetails()
+    {
+        // Arrange: the toy statistics with the lexicon of the core package
+        var classifier = new BasicClassifier(Tables, key => WordLexicon.TryLookup(key, out var found) ? found : [], (lemma, pos) => WordLexicon.Current.SenseCountOf(lemma, pos), WordLexicon.SensesOf);
+
+        // Act
+        var results = await classifier.ClassifyAsync(["one", "Twenty", "20"], TestContext.Current.CancellationToken);
+
+        // Assert: the number words are known and have details and a level, the digit string is unknown
+        Assert.All(results.Take(2), r => Assert.True(r.IsKnown));
+        Assert.NotNull(results[0].Details);
+        Assert.NotNull(results[1].Details);
+        Assert.All(results.Take(2), r => Assert.NotEqual(SenseLevel.None, r.Level));
+        Assert.All(results.Take(2), r => Assert.InRange(r.Confidence, 0.0001, 1.0));
+        Assert.All(results.Take(2), r => Assert.False(r.Analyses.IsEmpty));
+        Assert.Null(results[2].Details);
+        Assert.Equal(SenseLevel.None, results[2].Level);
+    }
+
+    /// <summary>
+    ///     A word whose only analysis has exactly one sense is answered at the sense level with full confidence,
+    ///     whatever the case of the word.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
@@ -49,7 +103,255 @@ public class BasicClassifierTests
     {
         var results = await Run("The", "CAT");
 
-        Assert.Equal(new WordSense("CAT", Cat, 1.0), results[1]);
+        var expected = new ClassifyResult(
+            "CAT",
+            true,
+            [new AnalysisCandidate(TestTables.CatNoun, 1.0, [new SenseCandidate("cat#feline", 1.0)])],
+            TestTables.CatNoun,
+            SenseLevel.Sense,
+            1.0,
+            null,
+            "cat#feline");
+        Assert.Equal(expected, results[1]);
+    }
+
+    /// <summary>
+    ///     A word whose lemma and part of speech have one sense is answered at the sense level with that sense and
+    ///     without a group, in lower case, capitalized and upper case.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_SingleSensePart_AnswersSenseLevel()
+    {
+        var results = await Run("cat", "Cat", "CAT");
+
+        Assert.All(results, r =>
+        {
+            Assert.True(r.IsKnown);
+            Assert.Equal(SenseLevel.Sense, r.Level);
+            Assert.Equal("cat#feline", r.SenseId);
+            Assert.Null(r.GroupId);
+            Assert.Equal(TestTables.CatNoun, r.Details);
+            Assert.Equal(1.0, r.Confidence);
+        });
+    }
+
+    /// <summary>
+    ///     A word with a single analysis but several senses is answered with that analysis at the part-of-speech level
+    ///     and confidence 1, because the statistics cannot choose a sense; so is a word whose lemma and part of speech
+    ///     have no sense in the catalog. The analysis lists no senses.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_SingleAnalysisWithManySenses_AnswersItWithConfidenceOne()
+    {
+        var results = await Run("bank", "don't");
+
+        Assert.Equal(new ClassifyResult("bank", true, [new AnalysisCandidate(Bank, 1.0, [])], Bank, SenseLevel.PartOfSpeech, 1.0, null, null), results[0]);
+        Assert.Equal(new ClassifyResult("don't", true, [new AnalysisCandidate(DoNot, 1.0, [])], DoNot, SenseLevel.PartOfSpeech, 1.0, null, null), results[1]);
+    }
+
+    /// <summary>
+    ///     An ambiguous word is answered with one of its analyses at the part-of-speech level, without a group or a sense.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_AmbiguousWord_AnswersPartOfSpeechLevel()
+    {
+        var results = await Run("they", "record", "the", "record", "they", "read");
+
+        foreach (var index in new[] { 1, 3, 5 })
+        {
+            Assert.True(results[index].IsKnown);
+            Assert.Equal(SenseLevel.PartOfSpeech, results[index].Level);
+            Assert.Null(results[index].GroupId);
+            Assert.Null(results[index].SenseId);
+            Assert.Contains(results[index].Details!, Lexicon[results[index].Word]);
+            Assert.Equal(results[index].Analyses[0].Probability, results[index].Confidence);
+        }
+    }
+
+    /// <summary>
+    ///     No answer is ever at the group level, whatever the word.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_NeverAnswersGroupLevel()
+    {
+        var results = await Run("They", "record", "the", "cat", "bank", "don't", "read", ".", "zzqxjw", "123");
+
+        Assert.DoesNotContain(results, r => r.Level == SenseLevel.Group);
+        Assert.Equal(
+            [SenseLevel.None, SenseLevel.PartOfSpeech, SenseLevel.None, SenseLevel.Sense, SenseLevel.PartOfSpeech, SenseLevel.PartOfSpeech, SenseLevel.PartOfSpeech, SenseLevel.None, SenseLevel.None, SenseLevel.None],
+            results.Select(r => r.Level));
+    }
+
+    /// <summary>
+    ///     A word without an analysis, or a token without a letter, is answered at the level none: not known, without
+    ///     analyses, details, group or sense, with confidence 0.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_UnknownWord_AnswersLevelNone()
+    {
+        var results = await Run("zzqxjw", ".", "123");
+
+        Assert.All(results, r =>
+        {
+            Assert.False(r.IsKnown);
+            Assert.Equal(SenseLevel.None, r.Level);
+            Assert.Null(r.Details);
+            Assert.Null(r.GroupId);
+            Assert.Null(r.SenseId);
+            Assert.Equal(0.0, r.Confidence);
+        });
+    }
+
+    /// <summary>
+    ///     An unknown word has no analyses (the shared empty array, never the default array).
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_UnknownWord_HasNoAnalyses()
+    {
+        var results = await Run("zzqxjw", ".", "123");
+
+        Assert.All(results, r =>
+        {
+            Assert.False(r.Analyses.IsDefault);
+            Assert.True(r.Analyses.IsEmpty);
+        });
+    }
+
+    /// <summary>
+    ///     An ambiguous word lists every analysis with its probability, the largest first, summing to one, the selected
+    ///     analysis (<c>Details</c>) first; the analyses with several senses list no senses.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_AmbiguousWord_ListsAnalysesAndNoSenses()
+    {
+        var results = await Run("They", "record", "the", "record", "yesterday", "they", "read", ".", "zzqxjw");
+
+        foreach (var index in new[] { 1, 3, 6 })
+        {
+            var result = results[index];
+            var analyses = result.Analyses;
+
+            // Every analysis of the lexicon is listed once, none is truncated
+            Assert.Equal(Lexicon[result.Word].Length, analyses.Length);
+            Assert.All(Lexicon[result.Word], details => Assert.Contains(analyses, a => a.Details == details));
+
+            // The probabilities sum to one and are sorted, the largest first
+            Assert.Equal(1.0, analyses.Sum(a => a.Probability), 9);
+            Assert.Equal(analyses.OrderByDescending(a => a.Probability).Select(a => a.Probability), analyses.Select(a => a.Probability));
+
+            // The selected analysis is the first one and the confidence is its probability
+            Assert.Equal(analyses[0].Details, result.Details);
+            Assert.Equal(analyses[0].Probability, result.Confidence);
+
+            // The statistics do not score senses: record and read have no sense in the toy catalog
+            Assert.All(analyses, a => Assert.True(a.Senses.IsEmpty));
+        }
+    }
+
+    /// <summary>
+    ///     The selected analysis is the most probable one of the analysis probabilities: the context decides, and the list is
+    ///     reordered accordingly.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_Context_SelectsTheMostProbableAnalysis()
+    {
+        var noun = await Run("the", "record");
+        var verb = await Run("they", "record");
+
+        Assert.Equal(TestTables.RecordNoun, noun[1].Analyses[0].Details);
+        Assert.Equal(TestTables.RecordVerb, verb[1].Analyses[0].Details);
+        Assert.Equal(noun[1].Details, noun[1].Analyses.MaxBy(a => a.Probability).Details);
+        Assert.Equal(verb[1].Details, verb[1].Analyses.MaxBy(a => a.Probability).Details);
+        Assert.Equal(TestTables.RecordVerb, noun[1].Analyses[1].Details);
+    }
+
+    /// <summary>
+    ///     An analysis whose lemma and part of speech have exactly one sense lists that sense with probability 1, also
+    ///     inside an ambiguous word; the other analyses of the word list none. When the selected analysis has the one
+    ///     sense, the result is at the sense level with the probability of the analysis as the confidence.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_SingleSenseAnalysis_ListsThatSenseWithProbabilityOne()
+    {
+        var classifier = Create(TieTables);
+
+        var results = await classifier.ClassifyAsync(["cat", "puss", "claw"], TestContext.Current.CancellationToken);
+
+        // A word with one analysis and one sense
+        Assert.Equal([new SenseCandidate("cat#feline", 1.0)], results[0].Analyses[0].Senses);
+
+        // Every analysis has the same probability, so the lexicon order decides: the cat sense is selected
+        var puss = results[1];
+        Assert.Equal(2, puss.Analyses.Length);
+        Assert.Equal([new SenseCandidate("cat#feline", 1.0)], puss.Analyses[0].Senses);
+        Assert.True(puss.Analyses[1].Senses.IsEmpty);
+        Assert.Equal(SenseLevel.Sense, puss.Level);
+        Assert.Equal("cat#feline", puss.SenseId);
+        Assert.Null(puss.GroupId);
+        Assert.Equal(0.5, puss.Confidence, 9);
+
+        // The verb is selected: the part-of-speech level, although the second analysis lists its one sense
+        var claw = results[2];
+        Assert.True(claw.Analyses[0].Senses.IsEmpty);
+        Assert.Equal([new SenseCandidate("cat#feline", 1.0)], claw.Analyses[1].Senses);
+        Assert.Equal(SenseLevel.PartOfSpeech, claw.Level);
+        Assert.Null(claw.SenseId);
+        Assert.Equal(0.5, claw.Confidence, 9);
+    }
+
+    /// <summary>
+    ///     The analyses array of a word with a single analysis is built once: two results for the word, also in
+    ///     different case, hold the same underlying array.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_SingleAnalysisWord_SharesItsAnalysesArray()
+    {
+        var results = await Run("cat", "bank", "Cat", "bank", "zzqxjw", "zzqxjw");
+
+        Assert.Same(
+            ImmutableCollectionsMarshal.AsArray(results[0].Analyses),
+            ImmutableCollectionsMarshal.AsArray(results[2].Analyses));
+        Assert.Same(
+            ImmutableCollectionsMarshal.AsArray(results[1].Analyses),
+            ImmutableCollectionsMarshal.AsArray(results[3].Analyses));
+        Assert.NotSame(
+            ImmutableCollectionsMarshal.AsArray(results[0].Analyses),
+            ImmutableCollectionsMarshal.AsArray(results[1].Analyses));
+        Assert.Same(
+            ImmutableCollectionsMarshal.AsArray(results[4].Analyses),
+            ImmutableCollectionsMarshal.AsArray(results[5].Analyses));
+        Assert.Equal("Cat", results[2].Word);
+    }
+
+    /// <summary>
+    ///     Analyses with the same probability keep the order of the lexicon, also when the order is not the order of the
+    ///     analyses of the parts of speech.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_TiesKeepLexiconOrder()
+    {
+        var classifier = Create(TieTables);
+
+        var results = await classifier.ClassifyAsync(["tied", "puss", "claw"], TestContext.Current.CancellationToken);
+
+        Assert.Equal(Lexicon["tied"], results[0].Analyses.Select(a => a.Details));
+        Assert.All(results[0].Analyses, a => Assert.Equal(1.0 / 3.0, a.Probability, 9));
+        Assert.Equal(TestTables.RecordVerb, results[0].Details);
+        Assert.Equal(Lexicon["puss"], results[1].Analyses.Select(a => a.Details));
+        Assert.Equal(Lexicon["claw"], results[2].Analyses.Select(a => a.Details));
+        Assert.Equal(TestTables.CatNoun, results[1].Details);
+        Assert.Equal(TestTables.RecordVerb, results[2].Details);
     }
 
     /// <summary>
@@ -59,7 +361,7 @@ public class BasicClassifierTests
     [Fact]
     public async Task BasicClassifier_ClassifyAsync_AmbiguousWord_AlwaysAnswersWithProbability()
     {
-        var results = await Run("record", "the", "record", "they", "record", "bass");
+        var results = await Run("record", "the", "record", "they", "record", "read");
 
         foreach (var index in new[] { 0, 2, 4, 5 })
         {
@@ -83,17 +385,49 @@ public class BasicClassifierTests
     }
 
     /// <summary>
-    ///     Senses with the same part of speech are told apart by the words around the target.
+    ///     Analyses with the same part of speech, the past and the present of <c>read</c>, are told apart by the words
+    ///     around the target.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task BasicClassifier_ClassifyAsync_SamePartOfSpeech_UsesCues()
+    public async Task BasicClassifier_ClassifyAsync_SamePartOfSpeechAnalyses_UsesCues()
     {
-        var fish = await Run("the", "river", "bass");
-        var music = await Run("the", "guitar", "bass");
+        var past = await Run("yesterday", "they", "read");
+        var present = await Run("they", "read", "tomorrow");
 
-        Assert.Equal("bass#fish", fish[2].Details!.SenseId);
-        Assert.Equal("bass#music", music[2].Details!.SenseId);
+        Assert.Equal(TestTables.ReadPast, past[2].Details);
+        Assert.Equal(TestTables.ReadPres, present[1].Details);
+    }
+
+    /// <summary>
+    ///     The cue table of a form that spans lemmas is used before the table of the lemma of its first analysis: the
+    ///     cues choose between the lemmas of <c>left</c>.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_FormThatSpansLemmas_UsesTheCueTableOfTheForm()
+    {
+        // Arrange: a table keyed by the form "left" with a column per lemma, and no weight for the tagger
+        var hashes = TestTables.CueHashes();
+        var yesterday = new FeatureRef(CueModel.Window, "yesterday").Hash;
+        CueAnalysis[] columns = [new("leave", PartOfSpeech.Verb, "Tense=Past", -8), new("left", PartOfSpeech.Adjective, string.Empty, -8)];
+        sbyte[] yesterdayRow = [-2, -40];
+        sbyte[] tomorrowRow = [-40, -2];
+        sbyte[] weights = hashes[0] == yesterday ? [.. yesterdayRow, .. tomorrowRow] : [.. tomorrowRow, .. yesterdayRow];
+        var tables = TestTables.Load(TestTables.Build([("record", 0, new int[PosTag.Count])], [], [("left", columns, hashes, weights)], hmmWeight: 0));
+        var lexicon = new Dictionary<string, ImmutableArray<WordDetails>>(StringComparer.Ordinal)
+        {
+            ["left"] = [TestTables.LeftAdjective, TestTables.LeavePast],
+        };
+        var classifier = new BasicClassifier(tables, word => lexicon.GetValueOrDefault(word), Count, SensesOf);
+
+        // Act
+        var verb = await classifier.ClassifyAsync(["yesterday", "they", "left"], TestContext.Current.CancellationToken);
+        var adjective = await classifier.ClassifyAsync(["tomorrow", "the", "left"], TestContext.Current.CancellationToken);
+
+        // Assert
+        Assert.Equal(TestTables.LeavePast, verb[2].Details);
+        Assert.Equal(TestTables.LeftAdjective, adjective[2].Details);
     }
 
     /// <summary>
@@ -103,8 +437,8 @@ public class BasicClassifierTests
     [Fact]
     public async Task BasicClassifier_ClassifyAsync_Segments_AreIndependent()
     {
-        var alone = await Run("the", "guitar", "bass");
-        var inText = await Run("They", "record", "the", "river", ".", "the", "guitar", "bass");
+        var alone = await Run("yesterday", "they", "read");
+        var inText = await Run("They", "record", "the", "tomorrow", ".", "yesterday", "they", "read");
 
         Assert.Equal(alone, inText[5..]);
     }
@@ -120,49 +454,6 @@ public class BasicClassifierTests
         Assert.Equal((2, 3), BasicClassifier.SegmentOf(words, 3));
         Assert.Equal((0, 2), BasicClassifier.SegmentOf(words, 1));
         Assert.Equal((5, 1), BasicClassifier.SegmentOf(words, 5));
-    }
-
-    /// <summary>
-    ///     A form that lists a non-prefix subset of the senses of its lemma is scored over that subset only, matched
-    ///     by identity: a cue that prefers a sense the form lacks does not win, and a single listed sense is answered
-    ///     directly with full confidence.
-    /// </summary>
-    /// <returns>A task that completes when the check has run.</returns>
-    [Fact]
-    public async Task BasicClassifier_ClassifyAsync_NonPrefixSubset_IsScoredOverItsOwnSenses()
-    {
-        var bow = WordLexicon.Lookup("bow").Where(b => b.SenseId is not null).ToImmutableArray();
-        Assert.Equal(3, bow.Length);
-        var voice = bow[2];
-        var hashes = TestTables.HeteronymHashes();
-        var river = new FeatureRef(CueModel.Window, "river").Hash;
-        sbyte[] riverRow = [-2, -40, -40];
-        sbyte[] guitarRow = [-40, -2, -6];
-        var tables = BasicTables.Load(TestTables.Build(
-            [("the", 1 << PosTag.Determiner, new int[PosTag.Count])],
-            [],
-            [(
-                "bow",
-                [.. bow.Select(b => new CueSense(b.SenseId!, -8) { HasMeaning = true })],
-                hashes,
-                hashes[0] == river ? [.. riverRow, .. guitarRow] : [.. guitarRow, .. riverRow])]));
-        var lexicon = new Dictionary<string, ImmutableArray<WordDetails>>(StringComparer.Ordinal)
-        {
-            ["bow"] = [bow[0], bow[1], voice],
-            ["bows"] = [bow[0], voice],
-            ["bowed"] = [voice],
-        };
-        var classifier = new BasicClassifier(tables, word => lexicon.GetValueOrDefault(word));
-
-        var whole = await classifier.ClassifyAsync(["the", "guitar", "bow"], TestContext.Current.CancellationToken);
-        var subset = await classifier.ClassifyAsync(["the", "guitar", "bows"], TestContext.Current.CancellationToken);
-        var riverSubset = await classifier.ClassifyAsync(["the", "river", "bows"], TestContext.Current.CancellationToken);
-        var single = await classifier.ClassifyAsync(["the", "guitar", "bowed"], TestContext.Current.CancellationToken);
-
-        Assert.Equal(bow[1], whole[2].Details);
-        Assert.Equal(voice, subset[2].Details);
-        Assert.Equal(bow[0], riverSubset[2].Details);
-        Assert.Equal(new WordSense("bowed", voice, 1.0), single[2]);
     }
 
     /// <summary>
@@ -227,7 +518,7 @@ public class BasicClassifierTests
     public async Task BasicClassifier_ClassifyAsync_IsDeterministicAndThreadSafe()
     {
         var classifier = Create();
-        string[] words = ["They", "record", "the", "river", "bass", ".", "the", "record"];
+        string[] words = ["They", "record", "the", "tomorrow", "read", ".", "the", "record"];
         var expected = await classifier.ClassifyAsync(words, TestContext.Current.CancellationToken);
 
         var runs = await Task.WhenAll(Enumerable.Range(0, 16).Select(_ =>

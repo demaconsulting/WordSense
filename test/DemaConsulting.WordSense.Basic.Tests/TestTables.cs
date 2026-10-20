@@ -1,11 +1,13 @@
 using System.Buffers.Binary;
 using System.IO.Compression;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace DemaConsulting.WordSense.Basic.Tests;
 
 /// <summary>
-///     Builds small statistical tables for the tests, in the same layout the builder writes.
+///     Builds small statistical tables for the tests, in the same layout the builder writes, together with a toy analysis
+///     inventory that the tables are loaded against, so that no test of the tables needs the embedded word image.
 /// </summary>
 internal static class TestTables
 {
@@ -21,6 +23,56 @@ internal static class TestTables
     ];
 
     /// <summary>
+    ///     The analysis inventory hash of the toy inventory; the toy tables carry it unless a test says otherwise.
+    /// </summary>
+    public static readonly byte[] ToyHash = SHA256.HashData("basic toy analysis inventory"u8);
+
+    /// <summary>
+    ///     The past tense of the verb <c>read</c>.
+    /// </summary>
+    public static readonly WordDetails ReadPast = new("read", PartOfSpeech.Verb, "Tense=Past+VerbForm=Fin");
+
+    /// <summary>
+    ///     The present tense of the verb <c>read</c>.
+    /// </summary>
+    public static readonly WordDetails ReadPres = new("read", PartOfSpeech.Verb, "Tense=Pres+VerbForm=Fin");
+
+    /// <summary>
+    ///     The past participle of the verb <c>read</c>.
+    /// </summary>
+    public static readonly WordDetails ReadPastParticiple = new("read", PartOfSpeech.Verb, "Tense=Past+VerbForm=Part");
+
+    /// <summary>
+    ///     The noun <c>record</c>.
+    /// </summary>
+    public static readonly WordDetails RecordNoun = new("record", PartOfSpeech.Noun, "Number=Sing");
+
+    /// <summary>
+    ///     The verb <c>record</c>.
+    /// </summary>
+    public static readonly WordDetails RecordVerb = new("record", PartOfSpeech.Verb, "VerbForm=Inf");
+
+    /// <summary>
+    ///     The adjective <c>left</c>.
+    /// </summary>
+    public static readonly WordDetails LeftAdjective = new("left", PartOfSpeech.Adjective, "Degree=Pos");
+
+    /// <summary>
+    ///     The past tense of the verb <c>leave</c>, a form that is spelled <c>left</c>.
+    /// </summary>
+    public static readonly WordDetails LeavePast = new("leave", PartOfSpeech.Verb, "Tense=Past+VerbForm=Fin");
+
+    /// <summary>
+    ///     The noun <c>cat</c>.
+    /// </summary>
+    public static readonly WordDetails CatNoun = new("cat", PartOfSpeech.Noun, "Number=Sing");
+
+    private static readonly WordDetails[] ToyInventory =
+    [
+        ReadPast, ReadPres, ReadPastParticiple, RecordNoun, RecordVerb, LeftAdjective, LeavePast, CatNoun,
+    ];
+
+    /// <summary>
     ///     Builds the blob of a toy table.
     /// </summary>
     /// <param name="words">The tabled words.</param>
@@ -28,19 +80,40 @@ internal static class TestTables
     /// <param name="cues">The cue tables.</param>
     /// <param name="hmmWeight">The weight of the tagger.</param>
     /// <param name="invTemperature">The inverse temperature of the cues.</param>
-    /// <param name="classHash">The class hash to write, or null for the hash of the embedded word image.</param>
+    /// <param name="inventoryHash">The inventory hash to write, or null for <see cref="ToyHash"/>.</param>
     /// <returns>The compressed blob.</returns>
     public static byte[] Build(
         (string Word, int ClosedMask, int[] Counts)[] words,
         (string Suffix, int[] Counts)[] suffixes,
-        (string Lemma, CueSense[] Senses, ushort[] Hashes, sbyte[] Weights)[] cues,
+        (string Lemma, CueAnalysis[] Analyses, ushort[] Hashes, sbyte[] Weights)[] cues,
         double hmmWeight = 1.5,
         double invTemperature = 0.5,
-        byte[]? classHash = null) => Compress(Raw(words, suffixes, cues, hmmWeight, invTemperature, classHash));
+        byte[]? inventoryHash = null) => Compress(Raw(words, suffixes, cues, hmmWeight, invTemperature, inventoryHash));
 
     /// <summary>
-    ///     Builds the toy table used by most tests: a few closed-class words, the verb and noun "record" and the
-    ///     heteronym "bass" with a cue table.
+    ///     Reads a blob against the toy inventory.
+    /// </summary>
+    /// <param name="blob">The compressed blob.</param>
+    /// <returns>The table.</returns>
+    public static BasicTables Load(ReadOnlySpan<byte> blob) => BasicTables.Load(blob, ToyHash, ToyExists);
+
+    /// <summary>
+    ///     Tells whether an analysis is in the toy inventory, with the rule of the word image: the lemma and part of
+    ///     speech are equal and every required feature item is present (any features when none is required).
+    /// </summary>
+    /// <param name="lemma">The lemma.</param>
+    /// <param name="pos">The part of speech.</param>
+    /// <param name="features">The required feature items joined by <c>+</c>, or empty.</param>
+    /// <returns>True when the toy inventory has such an analysis.</returns>
+    public static bool ToyExists(string lemma, PartOfSpeech pos, string features)
+    {
+        var required = features.Length == 0 ? [] : features.Split('+');
+        return ToyInventory.Any(a => a.Lemma == lemma && a.PartOfSpeech == pos && required.All(item => a.Features.Split('+').Contains(item)));
+    }
+
+    /// <summary>
+    ///     Builds the toy table used by most tests: a few closed-class words, the verb and noun "record" and the verb
+    ///     "read" with a cue table that separates its past from its present.
     /// </summary>
     /// <returns>The compressed blob.</returns>
     public static byte[] Default()
@@ -63,37 +136,38 @@ internal static class TestTables
                 ("record", 0, Counts((PosTag.Noun, 6), (PosTag.Verb, 6))),
             ],
             [("ed", [1, 9, 1, 0])],
-            [
-                (
-                    "bass",
-                    [new CueSense("bass#fish", -8) { HasMeaning = true }, new CueSense("bass#music", -8) { HasMeaning = true }],
-                    HeteronymHashes(),
-                    HeteronymWeights()),
-            ]);
+            [("read", ReadColumns(), CueHashes(), CueWeights())]);
     }
 
     /// <summary>
-    ///     Gets the ascending feature hashes of the "bass" table: those of the window words "river" and "guitar".
+    ///     Gets the columns of the "read" cue table: the past and the present tense, in ordinal order of their features.
+    /// </summary>
+    /// <returns>The columns.</returns>
+    public static CueAnalysis[] ReadColumns() =>
+        [new CueAnalysis("read", PartOfSpeech.Verb, "Tense=Past", -8), new CueAnalysis("read", PartOfSpeech.Verb, "Tense=Pres", -8)];
+
+    /// <summary>
+    ///     Gets the ascending feature hashes of the "read" table: those of the window words "yesterday" and "tomorrow".
     /// </summary>
     /// <returns>The hashes.</returns>
-    public static ushort[] HeteronymHashes()
+    public static ushort[] CueHashes()
     {
-        var river = new FeatureRef(CueModel.Window, "river").Hash;
-        var guitar = new FeatureRef(CueModel.Window, "guitar").Hash;
-        return river < guitar ? [river, guitar] : [guitar, river];
+        var yesterday = new FeatureRef(CueModel.Window, "yesterday").Hash;
+        var tomorrow = new FeatureRef(CueModel.Window, "tomorrow").Hash;
+        return yesterday < tomorrow ? [yesterday, tomorrow] : [tomorrow, yesterday];
     }
 
     /// <summary>
-    ///     Gets the weights of the "bass" table for the hashes of "river" and "guitar" in ascending hash order.
+    ///     Gets the weights of the "read" table for the hashes of "yesterday" and "tomorrow" in ascending hash order.
     /// </summary>
-    /// <returns>The weights, feature-major, two senses per feature: fish and music.</returns>
-    public static sbyte[] HeteronymWeights()
+    /// <returns>The weights, feature-major, two columns per feature: the past and the present.</returns>
+    public static sbyte[] CueWeights()
     {
-        var river = new FeatureRef(CueModel.Window, "river").Hash;
-        var guitar = new FeatureRef(CueModel.Window, "guitar").Hash;
-        sbyte[] riverRow = [-2, -40];
-        sbyte[] guitarRow = [-40, -2];
-        return river < guitar ? [.. riverRow, .. guitarRow] : [.. guitarRow, .. riverRow];
+        var yesterday = new FeatureRef(CueModel.Window, "yesterday").Hash;
+        var tomorrow = new FeatureRef(CueModel.Window, "tomorrow").Hash;
+        sbyte[] yesterdayRow = [-2, -40];
+        sbyte[] tomorrowRow = [-40, -2];
+        return yesterday < tomorrow ? [.. yesterdayRow, .. tomorrowRow] : [.. tomorrowRow, .. yesterdayRow];
     }
 
     /// <summary>
@@ -129,14 +203,14 @@ internal static class TestTables
     private static byte[] Raw(
         (string Word, int ClosedMask, int[] Counts)[] words,
         (string Suffix, int[] Counts)[] suffixes,
-        (string Lemma, CueSense[] Senses, ushort[] Hashes, sbyte[] Weights)[] cues,
+        (string Lemma, CueAnalysis[] Analyses, ushort[] Hashes, sbyte[] Weights)[] cues,
         double hmmWeight,
         double invTemperature,
-        byte[]? classHash = null)
+        byte[]? inventoryHash)
     {
         using var raw = new MemoryStream();
-        raw.Write("WSB2"u8);
-        raw.Write(classHash ?? WordLexicon.Current.ClassHash);
+        raw.Write("WSB3"u8);
+        raw.Write(inventoryHash ?? ToyHash);
         foreach (var value in new[] { 0.75, 5, 0.1, 0.3, 0.6, hmmWeight, invTemperature })
         {
             var bytes = new byte[8];
@@ -200,15 +274,16 @@ internal static class TestTables
         }
 
         Varint(raw, cues.Length);
-        foreach (var (lemma, senses, hashes, weights) in cues.OrderBy(c => c.Lemma, StringComparer.Ordinal))
+        foreach (var (lemma, analyses, hashes, weights) in cues.OrderBy(c => c.Lemma, StringComparer.Ordinal))
         {
             Text(raw, lemma);
-            Varint(raw, senses.Length);
-            foreach (var sense in senses)
+            Varint(raw, analyses.Length);
+            foreach (var analysis in analyses)
             {
-                Text(raw, sense.ClassId);
-                raw.WriteByte((byte)sense.Prior);
-                raw.WriteByte(sense.HasMeaning ? (byte)1 : (byte)0);
+                Text(raw, analysis.Lemma);
+                raw.WriteByte((byte)analysis.PartOfSpeech);
+                Text(raw, analysis.Features);
+                raw.WriteByte((byte)analysis.Prior);
             }
 
             Varint(raw, hashes.Length);

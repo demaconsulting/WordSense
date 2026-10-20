@@ -67,34 +67,44 @@ sections:
                 title: >-
                   DataValidator shall check that every sense has exactly one label, that the labels of the senses of a
                   lemma are unique and well formed, that a sense id never collides with the id of a group, that a
-                  published label is neither changed nor reused unless the id map records it, and that a project sense
-                  has no sense key and an authored gloss.
+                  published sense label is neither changed nor reused unless the id map records it (group ids are
+                  versioned per data release and are never compared with the baseline), and that a project sense has no
+                  sense key and an authored gloss.
                 tags: [unit]
                 justification: |
                   Sense ids are stored by callers; the rules that keep them readable, unique, stable and unambiguous
-                  must fail a pull request, not a user.
+                  must fail a pull request, not a user. Group ids may change between releases, so a changed group must
+                  not fail the stability check.
                 tests:
                   - WordSenseBuilder_DataValidator_Validate_SenseWithoutLabel_Violates
                   - WordSenseBuilder_DataValidator_Validate_DuplicateLabelInLemma_ViolatesUnique
                   - WordSenseBuilder_DataValidator_Validate_SenseIdEqualToGroupId_Violates
                   - WordSenseBuilder_DataValidator_Validate_ChangedPublishedLabel_ViolatesStability
+                  - WordSenseBuilder_DataValidator_Validate_ChangedGroupId_IsNotAStabilityViolation
                   - WordSenseBuilder_DataValidator_Validate_ReusedRetiredId_Violates
                   - WordSenseBuilder_DataValidator_Validate_ProjectSenseWithKey_Violates
 
               - id: WordSense-WordData-DataValidator-Groups
                 title: >-
-                  DataValidator shall check that the senses of a curated lemma are partitioned among its groups (every
-                  sense in exactly one group), that each group has one lemma and one part of speech and no two
-                  respellings, and that a lemma that is not curated has one default group for each of its parts of
-                  speech.
+                  DataValidator shall check that every group has at least two, but not all, of the senses of its lemma
+                  and part of speech, one lemma, one part of speech and no two respellings, that a sense is in at most
+                  one group, that the id of a group is its lemma, the marker group: and its slug label, that the origin
+                  of a group is curated and its kind is equivalent or related; a sense needs no group.
                 tags: [unit]
                 justification: |
-                  A group answer must be unambiguous; the partition rules are what make it so, and they cannot be
-                  seen in a diff of rows.
+                  A group answer must be unambiguous and must add something to its part of speech; the rules are what
+                  make it so, and they cannot be seen in a diff of rows. The marker keeps a group id from ever being a
+                  sense id, and the kind lets a consumer know what the group claims.
                 tests:
-                  - WordSenseBuilder_DataValidator_Validate_CompleteGroups_IsValid
-                  - WordSenseBuilder_DataValidator_Validate_UncoveredSense_ViolatesPartition
+                  - WordSenseBuilder_DataValidator_Validate_CuratedGroupOfSomeSenses_IsValid
+                  - WordSenseBuilder_DataValidator_Validate_GroupOfOneSense_Violates
+                  - WordSenseBuilder_DataValidator_Validate_GroupOfAllSensesOfPartOfSpeech_Violates
                   - WordSenseBuilder_DataValidator_Validate_SenseInTwoGroups_ViolatesUnique
                   - WordSenseBuilder_DataValidator_Validate_GroupAcrossPartsOfSpeech_Violates
+                  - WordSenseBuilder_DataValidator_Validate_GroupAcrossLemmas_Violates
                   - WordSenseBuilder_DataValidator_Validate_GroupWithTwoRespellings_Violates
-                  - WordSenseBuilder_DataValidator_Validate_OtherLemma_NeedsOneDefaultGroupPerPartOfSpeech
+                  - WordSenseBuilder_DataValidator_Validate_DefaultGroupOrigin_Violates
+                  - WordSenseBuilder_DataValidator_Validate_GroupIdWithoutMarker_Violates
+                  - WordSenseBuilder_DataValidator_Validate_GroupIdOfAnotherLemma_Violates
+                  - WordSenseBuilder_DataValidator_Validate_GroupLabelNotASlug_Violates
+                  - WordSenseBuilder_DataValidator_Validate_GroupKind_MustBeInTheVocabulary

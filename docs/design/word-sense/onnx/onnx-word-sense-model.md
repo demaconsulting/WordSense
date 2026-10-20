@@ -5,8 +5,12 @@
 #### Purpose
 
 `OnnxWordSenseModel` is the public abstract base of the encoder models. It prepares the model files, loads the
-encoder and weights lazily, owns the statistical fallback model, and classifies words with them (lazily ensuring the
-files when a word needs the encoder).
+encoder and weights lazily, and classifies words with them (lazily ensuring the files when a word needs the encoder).
+It is usable on its own and depends only on the core package: it owns no other model, so a word whose senses it does
+not score is answered from the lexicon alone, and the choice among the analyses of such a word is left to the model it
+is composed with (see `FallbackWordSenseModel`). In the current version the classification is the lexicon-only answer
+of the classifier: it loads no weights, opens no encoder and needs no model file, and the lazy ensure, the weights
+load and the encoder run described below arrive with the scoring of fine senses.
 
 #### Data Model
 
@@ -14,14 +18,10 @@ files when a word needs the encoder).
   to a full path) and the maximum sequence length, which shall be from 8 to 512.
 - Public properties: `HiddenSize` and `ModelId`. They are public on purpose: callers and the model packages read them
   (for example to show which model and encoder size is in use) before `EnsureModelAsync` has run.
-- State: the in-flight (or finished) ensure task, the cached encoder and weights table, the fallback model, the
-  disposed flag and an in-flight tracker that counts running classifications, all guarded by a lock, plus a
-  cancellation source that
-  disposal cancels and then disposes (the download holds a copy of
+- State: the in-flight (or finished) ensure task, the shared classifier (stateless today; it will hold the cached
+  encoder and weights table), the disposed flag and an in-flight tracker that counts running classifications, all
+  guarded by a lock, plus a cancellation source that disposal cancels and then disposes (the download holds a copy of
   its token, which stays cancelled).
-- The fallback model is a Basic model (`BasicWordSenseModel`) created with the model and owned by it. It needs no
-  file and no network: its statistics are embedded in the Basic assembly. It answers the ambiguous words that the
-  encoder weights do not cover, at the part of speech level, and is shared by all calls of this model.
 - Internal test and builder hooks: the ONNX intra-op thread count, the HTTP client, the GitHub base URI, the
   environment variable reader, `OpenEncoder()` (builder training) and the description.
 
@@ -36,22 +36,21 @@ files when a word needs the encoder).
   (`ModelDownloader.Verify`, no network); otherwise it calls `ModelDownloader.EnsureAsync` with the disposal token.
 - `ClassifyAsync(words, cancellationToken)`: checks the disposed flag, validates the words, throws
   `OperationCanceledException` (through the returned task) for an already canceled token, even for an empty list or a
-  list that needs no model, and, when some word has
-  several lexicon senses, loads the embedded weights table (no model file and no ONNX; cached and shared with the
-  later classifier). When no word has several senses together with usable weights for its lemma
-  (`OnnxClassifier.NeedsModel` is false), it answers without touching model files or ONNX: unknown words, single-sense
-  words and the ambiguous words without trained weights, which the fallback model answers with its analysis at the
-  part of speech level and its probability as confidence (no first-sense guess). Otherwise it awaits
-  `EnsureModelAsync(null, cancellationToken)` (the default and
-  environment mirror settings; concurrent callers share one ensure and a failed ensure is retried by the next call).
-  It then registers with the in-flight tracker, and, under the lock, opens the encoder on first need (cached) and
-  runs the `OnnxClassifier` over the encoder, the weights table and the fallback model. It is safe for
-  concurrent use.
+  list that needs no model. It then registers with the in-flight tracker and runs the shared `OnnxClassifier` over the
+  words; the registration is released in a `finally`. In the current version the classifier answers from the lexicon
+  alone, so the call needs no model file and never ensures: unknown words are `ClassifyResult.Unknown`, a word with one
+  analysis and one sense is answered at the sense level, and every other known word with its analyses equally likely at
+  the part of speech level and no scored senses (no first-sense guess). When the scoring of fine senses is added, the
+  call loads the embedded weights table (no model file and no ONNX; cached) when some word has several lexicon senses
+  and, only when a word has several senses together with usable weights for its lemma (`OnnxClassifier.NeedsModel`),
+  awaits `EnsureModelAsync(null, cancellationToken)` (the default and environment mirror settings; concurrent
+  callers share one ensure and a failed ensure is retried by the next call), opens the encoder on first need (cached)
+  and runs the classifier over the encoder and the weights table. It is safe for concurrent use.
 - `Dispose()`: idempotent and thread-safe; the first call marks the model disposed (new calls throw), cancels the
   disposal token, which aborts an in-flight download (its temporary files are removed), and closes the in-flight
-  tracker (`InFlightTracker`, internal): when no classification is running the encoder is released at once and the
-  fallback model is disposed with it, otherwise the last classification to finish releases both, so a running
-  classification never meets a disposed fallback. It never waits, neither for the abort nor for running
+  tracker (`InFlightTracker`, internal): when no classification is running the resources (the encoder session, once
+  the scoring opens one) are released at once, otherwise the last classification to finish releases them, so a running
+  classification never meets a released resource. It never waits, neither for the abort nor for running
   classifications. The shared ensure task, and so every pending `EnsureModelAsync` or lazy ensure, ends canceled:
   `OperationCanceledException`, whatever exception the abort surfaced as. Cancellation applies to the download
   path only; with an explicit model directory the verification is synchronous and is not canceled.
@@ -71,15 +70,17 @@ files when a word needs the encoder).
   `ArgumentNullException`).
 - Download and verification failures propagate from `ModelDownloader` (see that unit); a failed ensure can be
   retried. They surface through the returned task, not synchronously.
-- A missing or inconsistent weights resource throws `InvalidDataException` from `ClassifyAsync`; weights requested
-  before the files were ensured throw `InvalidOperationException("The model files are not available.")` (an internal
-  guard that the public call sequence cannot reach).
+- A missing or inconsistent weights resource throws `InvalidDataException` from `ClassifyAsync` (once the weights are
+  loaded by the classification); weights requested before the files were ensured throw
+  `InvalidOperationException("The model files are not available.")` (an internal guard that the public call sequence
+  cannot reach).
 
 #### Dependencies
 
 `ModelDownloader`, `DownloadMirror` (through the downloader), `LemmaWeights` (weights table), `OnnxEncoder`,
-`OnnxClassifier`, `BasicWordSenseModel` (the owned fallback, from the Basic package) and the core contracts.
+`OnnxClassifier` and the core contracts. No other model package.
 
 #### Callers
 
-`MiniLMWordSenseModel`, `BertBaseCasedWordSenseModel`, application code (through the interface) and the builder.
+`MiniLMEncoderModel` and `BertBaseCasedEncoderModel` (the internal encoder models, which the public models compose with
+the Basic model), application code (through the interface) and the builder.

@@ -1,9 +1,0 @@
-group_id	lemma	pos	label	origin
-CF#noun-group	CF	n	noun-group	default
-CFC#noun-group	CFC	n	noun-group	default
-CFL#noun-group	CFL	n	noun-group	default
-CFO#noun-group	CFO	n	noun-group	default
-CFTR#noun-group	CFTR	n	noun-group	default
-Cf#noun-group	Cf	n	noun-group	default
-cf#adverb-group	cf	r	adverb-group	default
-cf.#adverb-group	cf.	r	adverb-group	default

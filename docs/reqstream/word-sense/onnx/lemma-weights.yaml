@@ -11,9 +11,9 @@ sections:
               - id: WordSense-Onnx-LemmaWeights-Format
                 title: >-
                   The weights reader shall read the binary weights blob of a model: its model identifier, the hash of
-                  the inventory (the senses, groups and analyses) of the word image, dimension, mean vector and, per
+                  the inventory hash of the word image, dimension, mean vector and, per
                   lemma, its sense
-                  ids, bias, the weights of every sense, its two thresholds and its optional form chooser, and the
+                  ids, bias, the weights of every sense, its thresholds and its optional form chooser, and the
                   reduced precision in which the weights are stored shall change the measured fine accuracy of a model
                   by no more than 0.2 percentage point.
                 tags: [unit]
@@ -74,25 +74,26 @@ sections:
 
               - id: WordSense-Onnx-LemmaWeights-Scoring
                 title: >-
-                  Lemma weights shall score each fine sense of a lemma for a feature vector, rank the senses, derive a
-                  score for each group of the lemma from the scores of its senses, and map the margin between the best
-                  and the second-best candidate of a level to a confidence that is monotonic in the margin, bounded to
-                  0 to 1 and one half at the lemma's threshold for that level.
+                  Lemma weights shall score each fine sense of a lemma for a feature vector, normalize the scores to
+                  probabilities that sum to one, rank the senses, derive a score for each group of the lemma from the
+                  scores of its senses, and map the margin between the best and the second-best candidate of a level to
+                  a confidence that is monotonic in the margin and bounded to 0 to 1.
                 tags: [unit]
                 justification: |
-                  The confidence is the contract callers rely on; a monotonic, bounded mapping makes thresholds
-                  meaningful, and group scores that follow from the fine scores keep the two levels consistent.
+                  The normalized probabilities are what the result lists as the senses of an analysis, and a monotonic,
+                  bounded confidence makes thresholds meaningful; group scores that follow from the fine scores keep
+                  the two levels consistent.
                 tests:
                   - LemmaWeights_Scores_OneVersusRest_ReturnsOneScorePerRow
                   - LemmaWeights_Rank_ReturnsBestAndMargin
                   - LemmaWeights_GroupScores_SumTheFineProbabilitiesOfTheGroup
                   - LemmaWeights_Confidence_IsMonotonicAndClamped
-                  - LemmaWeights_Confidence_AtThreshold_IsOneHalf
 
               - id: WordSense-Onnx-LemmaWeights-Thresholds
                 title: >-
-                  Lemma weights shall carry for each lemma a fine threshold and a group threshold, and shall apply
-                  the lemma's own thresholds, not shared ones, when they decide the level of an answer.
+                  Lemma weights shall carry for each lemma a fine threshold and, only for a lemma that has groups, a
+                  group threshold, and shall apply the lemma's own thresholds, not shared ones, when they decide the
+                  level of an answer.
                 tags: [unit]
                 justification: |
                   Senses of one lemma may be easy to tell apart and senses of another may not; thresholds measured per

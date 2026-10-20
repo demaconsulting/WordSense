@@ -18,7 +18,7 @@ namespace DemaConsulting.WordSense;
 ///     the image was compiled from. Instances are immutable after construction and safe for concurrent use.
 ///     </para>
 /// </remarks>
-internal sealed class WordImage
+internal sealed partial class WordImage
 {
     private const int MaxSpellingBytes = 255;
 
@@ -28,20 +28,17 @@ internal sealed class WordImage
     private readonly uint[] _spellingOffset;
     private readonly uint[] _analysisStart;
     private readonly uint[] _rows;
-    private readonly uint[] _scopeStart;
-    private readonly uint[] _scopeItems;
     private readonly string[] _features;
     private readonly byte[] _entryLemmaBytes;
     private readonly uint[] _entryLemmaOffset;
     private readonly byte[] _entryPos;
     private readonly string?[] _entryLemmas;
-    private readonly string[] _classIds;
-    private readonly byte[] _classPos;
     private readonly int _foldCount;
+    private readonly uint[] _meta;
     private uint[]? _fold;
     private uint[]? _entryFormStart;
     private uint[]? _entryForms;
-    private byte[]? _classHash;
+    private Catalog? _catalog;
 
     private WordImage(byte[] data)
     {
@@ -53,13 +50,14 @@ internal sealed class WordImage
             throw new InvalidDataException("The word image has an invalid meta section.");
         }
 
+        _meta = meta;
         SpellingCount = Count(meta[ImageFormat.MetaSpellingCount]);
         EntryCount = Count(meta[ImageFormat.MetaEntryCount]);
-        ClassCount = Count(meta[ImageFormat.MetaClassCount]);
         var rowCount = Count(meta[ImageFormat.MetaRowCount]);
-        var scopeCount = Count(meta[ImageFormat.MetaScopeCount]);
         var featureCount = Count(meta[ImageFormat.MetaFeatureCount]);
         _foldCount = Count(meta[ImageFormat.MetaFoldCount]);
+        SenseCount = Count(meta[ImageFormat.MetaSenseCount]);
+        GroupCount = Count(meta[ImageFormat.MetaGroupCount]);
 
         var spellingLength = Section(ImageFormat.SectionSpellingLength);
         _spellingBytes = Section(ImageFormat.SectionSpellingBytes);
@@ -82,13 +80,6 @@ internal sealed class WordImage
             throw new InvalidDataException("The word image has an invalid analysis row section.");
         }
 
-        _scopeStart = Uints(ImageFormat.SectionScopeStart);
-        _scopeItems = Uints(ImageFormat.SectionScopeItems);
-        if (_scopeStart.Length != scopeCount + 1 || _scopeStart[^1] != _scopeItems.Length)
-        {
-            throw new InvalidDataException("The word image has an invalid scope section.");
-        }
-
         _features = Strings(ImageFormat.SectionFeatureLength, ImageFormat.SectionFeatureBytes, featureCount);
         _entryLemmaBytes = Section(ImageFormat.SectionEntryLemmaBytes);
         _entryLemmaOffset = Offsets(Section(ImageFormat.SectionEntryLemmaLength), EntryCount, _entryLemmaBytes.Length, "entry lemma");
@@ -99,22 +90,7 @@ internal sealed class WordImage
         }
 
         _entryLemmas = new string?[EntryCount];
-        _classIds = Strings(ImageFormat.SectionClassIdLength, ImageFormat.SectionClassIdBytes, ClassCount);
-        _classPos = Section(ImageFormat.SectionClassPos);
-        if (_classPos.Length != ClassCount || _classPos.Any(p => p > (byte)PartOfSpeech.Auxiliary))
-        {
-            throw new InvalidDataException("The word image has an invalid class section.");
-        }
-
-        for (var i = 1; i < _classIds.Length; i++)
-        {
-            if (CompareUtf8(_classIds[i - 1], _classIds[i]) >= 0)
-            {
-                throw new InvalidDataException("The word image has unordered class ids.");
-            }
-        }
-
-        ValidateRows(rowCount, scopeCount, featureCount);
+        ValidateRows(rowCount, featureCount);
     }
 
     /// <summary>
@@ -128,14 +104,26 @@ internal sealed class WordImage
     public int EntryCount { get; }
 
     /// <summary>
-    ///     Gets the number of classes.
+    ///     Gets the number of senses of the catalog.
     /// </summary>
-    public int ClassCount { get; }
+    public int SenseCount { get; }
+
+    /// <summary>
+    ///     Gets the number of groups of the catalog.
+    /// </summary>
+    public int GroupCount { get; }
 
     /// <summary>
     ///     Gets the SHA-256 of the data the image was compiled from.
     /// </summary>
     public ReadOnlySpan<byte> DataHash => _data.AsSpan(ImageFormat.DataHashOffset, ImageFormat.HashSize);
+
+    /// <summary>
+    ///     Gets the inventory hash of the header: the SHA-256 over the sections that name analyses, senses and groups.
+    ///     Models trained for this inventory carry the hash, so a model and an image that disagree on the inventory are
+    ///     detected when the model is loaded.
+    /// </summary>
+    public ReadOnlySpan<byte> InventoryHash => _data.AsSpan(ImageFormat.InventoryHashOffset, ImageFormat.HashSize);
 
     /// <summary>
     ///     Opens an image.
@@ -352,88 +340,62 @@ internal sealed class WordImage
     }
 
     /// <summary>
-    ///     Gets the SHA-256 of the class table: for every class in index order the UTF-8 bytes of its id, a zero byte and
-    ///     its part of speech byte. Models trained for this inventory carry the hash, so a model and an image that
-    ///     disagree on the classes are detected when the model is loaded.
+    ///     Determines whether the image has an analysis: an entry of the lemma and part of speech that some form lists with
+    ///     the features (every <c>Key=Value</c> item of <paramref name="features"/> present; any features when empty).
     /// </summary>
-    public ReadOnlySpan<byte> ClassHash
+    /// <param name="lemma">The lemma as written in the entry.</param>
+    /// <param name="pos">The part of speech.</param>
+    /// <param name="features">The required feature items joined by <c>+</c>, or an empty string.</param>
+    /// <returns>True when an analysis with this lemma, part of speech and features exists.</returns>
+    public bool AnalysisExists(string lemma, PartOfSpeech pos, string features)
     {
-        get
+        ArgumentNullException.ThrowIfNull(lemma);
+        ArgumentNullException.ThrowIfNull(features);
+        var byteCount = Encoding.UTF8.GetByteCount(lemma);
+        if (byteCount is 0 or > MaxSpellingBytes)
         {
-            var hash = _classHash;
-            if (hash is null)
+            return false;
+        }
+
+        Span<byte> query = stackalloc byte[MaxSpellingBytes];
+        query = query[..Encoding.UTF8.GetBytes(lemma, query)];
+        var required = features.Length == 0 ? [] : features.Split('+');
+        LoadForms();
+        for (var e = FirstEntry(query); e < EntryCount && EntryLemmaSpan(e).SequenceEqual(query); e++)
+        {
+            if (_entryPos[e] != (byte)pos)
             {
-                using var sha = IncrementalHash.CreateHash(HashAlgorithmName.SHA256);
-                Span<byte> tail = stackalloc byte[2];
-                for (var i = 0; i < _classIds.Length; i++)
+                continue;
+            }
+
+            for (var k = _entryFormStart![e]; k < _entryFormStart[e + 1]; k++)
+            {
+                var spelling = (int)_entryForms![k];
+                for (var r = (int)_analysisStart[spelling]; r < (int)_analysisStart[spelling + 1]; r++)
                 {
-                    sha.AppendData(Encoding.UTF8.GetBytes(_classIds[i]));
-                    tail[0] = 0;
-                    tail[1] = _classPos[i];
-                    sha.AppendData(tail);
+                    if (_rows[r * 2] == e && HasItems(_features[(int)_rows[(r * 2) + 1]], required))
+                    {
+                        return true;
+                    }
                 }
-
-                hash = sha.GetHashAndReset();
-                _classHash = hash;
             }
-
-            return hash;
         }
+
+        return false;
     }
 
-    /// <summary>
-    ///     Gets the id of a class by index.
-    /// </summary>
-    /// <param name="index">The class index, 0 up to <see cref="ClassCount"/>.</param>
-    /// <returns>The class id.</returns>
-    public string ClassId(int index) => _classIds[index];
-
-    /// <summary>
-    ///     Gets the part of speech of a class.
-    /// </summary>
-    /// <param name="classId">The class id.</param>
-    /// <returns>The part of speech, or null for an unknown class.</returns>
-    public PartOfSpeech? ClassPos(string classId)
+    private static bool HasItems(string features, string[] required)
     {
-        var index = ClassIndex(classId);
-        return index < 0 ? null : (PartOfSpeech)_classPos[index];
-    }
-
-    /// <summary>
-    ///     Finds a class by id.
-    /// </summary>
-    /// <param name="classId">The class id.</param>
-    /// <returns>The class index, or -1 for an unknown class.</returns>
-    public int ClassIndex(string classId)
-    {
-        ArgumentNullException.ThrowIfNull(classId);
-        int lo = 0, hi = _classIds.Length;
-        while (lo < hi)
+        if (required.Length == 0)
         {
-            var mid = (int)((uint)(lo + hi) >> 1);
-            var c = CompareUtf8(_classIds[mid], classId);
-            if (c == 0)
-            {
-                return mid;
-            }
-
-            if (c < 0)
-            {
-                lo = mid + 1;
-            }
-            else
-            {
-                hi = mid;
-            }
+            return true;
         }
 
-        return -1;
+        var have = features.Split('+');
+        return required.All(item => have.Contains(item, StringComparer.Ordinal));
     }
 
     private static int Count(uint value) => value > int.MaxValue / 8 ? throw new InvalidDataException("The word image has an invalid count.") : (int)value;
-
-    private static int CompareUtf8(string a, string b) =>
-        Encoding.UTF8.GetBytes(a).AsSpan().SequenceCompareTo(Encoding.UTF8.GetBytes(b));
 
     private ReadOnlySpan<byte> SpellingSpan(int i) =>
         _spellingBytes.AsSpan((int)_spellingOffset[i], (int)(_spellingOffset[i + 1] - _spellingOffset[i]));
@@ -489,26 +451,18 @@ internal sealed class WordImage
 
     private ImmutableArray<WordDetails> Materialize(List<int> spellings)
     {
+        // One analysis for each lemma, part of speech and features: two entries of one lemma and part of speech (the
+        // homographs of the source) give one analysis
         var result = new List<WordDetails>();
         foreach (var spelling in spellings)
         {
             for (var r = (int)_analysisStart[spelling]; r < (int)_analysisStart[spelling + 1]; r++)
             {
                 var entry = (int)_rows[r * 2];
-                var packed = _rows[(r * 2) + 1];
-                var features = _features[(int)(packed & 0xFFFF)];
-                var scope = (int)(packed >> 16);
-                var lemma = EntryLemma(entry);
-                var pos = (PartOfSpeech)_entryPos[entry];
-                if (scope == 0)
+                var analysis = new WordDetails(EntryLemma(entry), (PartOfSpeech)_entryPos[entry], _features[(int)_rows[(r * 2) + 1]]);
+                if (!result.Contains(analysis))
                 {
-                    result.Add(new WordDetails(null, lemma, pos, features));
-                    continue;
-                }
-
-                for (var k = _scopeStart[scope - 1]; k < _scopeStart[scope]; k++)
-                {
-                    result.Add(new WordDetails(_classIds[(int)_scopeItems[k]], lemma, pos, features));
+                    result.Add(analysis);
                 }
             }
         }
@@ -563,28 +517,14 @@ internal sealed class WordImage
         _entryForms = forms;
     }
 
-    private void ValidateRows(int rowCount, int scopeCount, int featureCount)
+    private void ValidateRows(int rowCount, int featureCount)
     {
         for (var r = 0; r < rowCount; r++)
         {
-            var packed = _rows[(r * 2) + 1];
-            if (_rows[r * 2] >= EntryCount || (packed & 0xFFFF) >= featureCount || (packed >> 16) > scopeCount)
+            if (_rows[r * 2] >= EntryCount || _rows[(r * 2) + 1] >= featureCount)
             {
                 throw new InvalidDataException("The word image has an analysis row that refers outside its tables.");
             }
-        }
-
-        for (var i = 1; i < _scopeStart.Length; i++)
-        {
-            if (_scopeStart[i] < _scopeStart[i - 1])
-            {
-                throw new InvalidDataException("The word image has an invalid scope list.");
-            }
-        }
-
-        if (_scopeItems.Any(c => c >= ClassCount))
-        {
-            throw new InvalidDataException("The word image has a scope that refers to an unknown class.");
         }
 
         if (_entryPos.Any(p => p > (byte)PartOfSpeech.Auxiliary))

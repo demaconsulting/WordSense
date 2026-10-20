@@ -8,7 +8,7 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     The trained weights of one model: the feature space description and one classifier per ambiguous lemma.
 /// </summary>
 /// <param name="ModelId">The identifier of the model the weights were trained for.</param>
-/// <param name="ClassHash">The SHA-256 of the class table of the word image the weights were trained for (<c>WordImage.ClassHash</c>).</param>
+/// <param name="ClassHash">The 32-byte hash field of the blob: the SHA-256 of the sense inventory of the word image the weights were trained for (<c>WordImage.InventoryHash</c>); the field keeps the name of the format, and the reader returns it unchecked.</param>
 /// <param name="Dimension">The dense feature dimension, which is the hidden size of the encoder.</param>
 /// <param name="Mean">The global mean vector subtracted from a pooled vector before scoring; length <paramref name="Dimension"/>.</param>
 /// <param name="Lemmas">The classifiers, one per lemma group.</param>
@@ -21,15 +21,15 @@ internal sealed record WeightsData(string ModelId, byte[] ClassHash, int Dimensi
 /// <remarks>
 ///     <para>
 ///     Content after the Brotli layer: the magic <c>WSX2</c>; the model id as a length-prefixed UTF-8 string; the
-///     32-byte class hash (SHA-256 of the class table of the word image the weights were trained for); the dimension as
+///     32-byte class hash (SHA-256 of the sense inventory of the word image the weights were trained for); the dimension as
 ///     a varint; a flag byte that is always 0 (dense weights); the mean as little-endian 32-bit floats;
 ///     the lemma group count as a varint; then per group, in ordinal order of the name: the name, the abstain margin (float), the
 ///     model kind (byte: 1 binary, 2 one-versus-rest), the sense count (varint), per sense the class id as a string, then
 ///     the bias floats (one per row) and the weight floats (row-major). A binary model has exactly two senses.
 ///     </para>
 ///     <para>
-///     The reader checks the structure only: every class id must be non-empty and used by one group at most. That the
-///     ids exist in the word image and that the hash matches is checked by <see cref="WeightedLemmaTable"/>.
+///     The reader checks the structure only: every class id must be non-empty and used by one group at most. The hash is
+///     returned as read; <see cref="WeightedLemmaTable"/> checks the consistency of the groups and class ids.
 ///     Varints are 7-bit little-endian groups; strings are a varint byte length followed by UTF-8 bytes.
 ///     </para>
 /// </remarks>

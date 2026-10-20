@@ -53,8 +53,9 @@ project references show the layering. Requirements-to-test coverage is tracked b
 The MiniLM and BertBaseCased test projects each create the model from the committed model directory, call
 `EnsureModelAsync` and `ClassifyAsync`, and classify the words of "They will record the record." The first `record`
 must be a verb and the second a noun (`WordSense_Classifier_EndToEnd_ClassifiesRecord`). The result of each word
-carries its analysis, its level, the group and sense ids that the level allows and a confidence
-(`WordSense_Classifier_EndToEnd_ResultCarriesAnalysisLevelAndSense`). This scenario is run on each CI operating system
+carries `IsKnown`, its analyses, the selected analysis, its level, the group and sense ids that the level allows and a
+confidence (`WordSense_Classifier_EndToEnd_ResultCarriesAnalysisLevelAndSense`). This scenario is run on each CI
+operating system
 (Windows, Linux, macOS) and each target framework (net8.0, net9.0, net10.0); the platform requirements are each linked
 to it with a source filter (`windows@`, `ubuntu@`, `macos@`, `net8.0@`, `net9.0@`, `net10.0@`), so a requirement is
 satisfied only by a passing result from its own platform or framework.
@@ -63,42 +64,78 @@ satisfied only by a passing result from its own platform or framework.
 
 A trained lemma is classified in a clear sentence and in an unclear one. The clear one is answered at the finest level
 that its thresholds allow, and the result states that level; the unclear one is answered at the group level with a
-confidence below one half when neither threshold is met
-(`WordSense_Classifier_EndToEnd_AnswersAtTheFinestConfidentLevel`). A word with several senses that the model was not
-trained for is answered at the part of speech level by the statistical analysis, with no sense id and no group id
+lower confidence when the lemma has a group for its best sense and neither threshold is met, and otherwise at
+the part of speech level with a low confidence, because a group exists only where it was curated
+(`WordSense_Classifier_EndToEnd_AnswersAtTheFinestConfidentLevel`, which belongs to the increment that adds the scoring
+of fine senses with the encoder). A word with several senses that the model was not
+trained for is answered at the part of speech level by the statistical analysis of the Basic model of the composition,
+with no sense id and no group id, and never at level none because it is known
 (`WordSense_Classifier_EndToEnd_UntrainedWord_AnswersPartOfSpeech`).
+
+### Analyses Are Ranked and Sum to One
+
+Each model classifies a word with several analyses (for example `record`) in a sentence. The analyses of the result
+are sorted by probability with the largest first, their probabilities sum to one within a small tolerance, the first
+analysis equals the selected `Details`, and an unknown word has none
+(`WordSense_Classifier_EndToEnd_AnalysesAreRankedAndSumToOne`, run for MiniLM and BertBaseCased, whose composition
+answers with the Basic model in this increment).
+
+### Senses Are Ranked and Sum to One with a Real Model
+
+A trained lemma with several senses is classified in a context that does not decide between two of its senses. Whatever
+level the result is answered at, the senses of the selected analysis are the senses of its lemma and part of speech,
+ranked by their probability given the analysis with the most probable first, and their probabilities sum to one within a
+small tolerance, so that a consumer can sum `analysis.Probability * sense.Probability` per category of its own
+(`WordSense_Classifier_EndToEnd_SensesAreRankedAndSumToOne`, run for MiniLM and BertBaseCased once the encoder scores
+fine senses; the Basic model lists senses only for an analysis with exactly one sense, as the Basic unit document
+shows).
+
+### Composition of Two Models
+
+The core test project composes two test-double models with `FallbackWordSenseModel` and checks that a word the primary
+model scored is answered by the primary result and every other word by the complete fallback result
+(`WordSenseContracts_FallbackWordSenseModel_PrimaryScoredSenses_UsesPrimary`,
+`WordSenseContracts_FallbackWordSenseModel_PrimaryChoseOnlyAnalysis_UsesFallback`). The MiniLM and BertBaseCased test
+projects classify an ambiguous word that the encoder does not score and find the result of the Basic model
+(`MiniLMWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback`,
+`BertBaseCasedWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback`).
 
 ### Sense Catalog Is Consistent
 
 The core test project walks the embedded catalog: every sense id is unique and has at most one OEWN sense key, a project
-sense has no key, a sense found by its id equals the sense found by its key, every sense is in exactly one group of
-its own lemma and part of speech, and every group lists its senses
+sense has no key, a sense found by its id equals the sense found by its key, every sense is in at most one group of
+its own lemma and part of speech, every group lists its senses, every group id carries the group marker
+(`lemma#group:label`) and never equals a sense id, and the version of the inventory is a stable string of lower-case
+hexadecimal digits
 (`WordSense_Catalog_SenseIds_AreUniqueAndLinkedToOneKey`, `WordSense_Catalog_ProjectSenses_HaveNoKey`,
-`WordSense_Catalog_LookupByIdAndByKey_FindTheSameSense`, `WordSense_Catalog_EverySense_BelongsToExactlyOneGroup`,
-`WordSense_Catalog_Group_ListsItsSenses`).
+`WordSense_Catalog_LookupByIdAndByKey_FindTheSameSense`, `WordSense_Catalog_EverySense_BelongsToAtMostOneGroup`,
+`WordSense_Catalog_Group_ListsItsSenses`, `WordLexicon_Groups_EveryGroupId_HasGroupMarkerAndNeverEqualsASenseId`,
+`WordLexicon_Version_IsStableLowerCaseHex`).
 
 ### Lexicon-Only Classification with the Basic Model
 
 The Basic test project classifies a short word list through `BasicWordSenseModel`, with no model files: a word whose
 lemma and part of speech have one sense is answered at the sense level with confidence 1, a word without a lexicon
-entry is unknown at level none with confidence 0, and a word with several analyses is answered at the part of speech
-level with the probability of its chosen analysis. Repeated calls give identical results, and the embedded statistics
-table loads on first use.
+entry is unknown at level none with confidence 0 and no analysis, and a word with several analyses lists every analysis
+with its probability and is answered at the part of speech level with the probability of its selected analysis. Repeated
+calls give identical results, and the embedded statistics table loads on first use.
 
 ### Core Package Has No ONNX Dependency
 
 The core package must not reference ONNX Runtime or any model package. This is verified by inspecting the project
 references of the core project: its only references are the framework and build-time analyzers. The Basic package
-references only the core package; the Onnx package references the core package, the Basic package and ONNX Runtime
-(`OnnxWordSense_Assembly_ReferencesOnlyCoreAndBasic`); the MiniLM and BertBaseCased packages reference only the Onnx
-package (and, transitively, the Basic and core packages).
+references only the core package; the Onnx package references only the core package and ONNX Runtime
+(`OnnxWordSense_Assembly_ReferencesOnlyCore`); the MiniLM and BertBaseCased packages reference the core, Onnx and Basic
+packages (`MiniLMWordSenseModel_Assembly_ReferencesCoreOnnxAndBasic`,
+`BertBaseCasedWordSenseModel_Assembly_ReferencesCoreOnnxAndBasic`).
 
 ### Packages Share One Contract
 
 A model of each package (Basic, MiniLM, BertBaseCased) is used through `IWordSenseModel`
 only. For a word whose lemma and part of speech have a single sense every package gives the same answer, the sense at
-level sense with confidence 1 (this includes the determiners such as `the`, in any case); for an unknown word every
-package gives the word, no details, level none and confidence 0.
+level sense with confidence 1 and one analysis and one sense with probability 1 (this includes the determiners such as
+`the`, in any case); for an unknown word every
+package gives the word, not known, no analyses, no details, level none and confidence 0.
 
 ### Embedded Data Is Consistent
 

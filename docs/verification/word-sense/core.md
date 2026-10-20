@@ -34,13 +34,17 @@ detailed in the `WordLexicon` unit document.
 #### Sense Catalog Resolves Senses and Groups
 
 The senses of a lemma and part of speech are listed most frequent first; a sense is found by its readable id and by its
-OEWN sense key (the same sense through either), a project sense has no key, and every sense is in exactly one group
-that lists it. The scenarios are detailed in the `WordLexicon` unit document.
+OEWN sense key (the same sense through either), a project sense has no key, and every sense is in at most one group
+that lists it, every group having at least two senses and never all the senses of its lemma and part of speech, and
+every group id carrying the group marker (`lemma#group:label`) and never equal to a sense id; the version string of the
+inventory is the same on every call and has the form of 16 lower-case hexadecimal digits. The
+scenarios are detailed in the `WordLexicon` unit document.
 
 #### Contracts Are Usable Without a Model Package
 
-`WordSense`, `SenseLevel`, `WordDetails`, `PartOfSpeech`, `SenseInfo`, `SenseGroup`, `MirrorOptions` and
-`IWordSenseModel` can be used by a test double with no model package referenced (`ContractsTests`). The scenarios are
+`ClassifyResult`, `AnalysisCandidate`, `SenseCandidate`, `SenseLevel`, `WordDetails`, `PartOfSpeech`, `SenseInfo`,
+`SenseGroup`, `MirrorOptions`, `IWordSenseModel` and `FallbackWordSenseModel` can be used by a test double with no
+model package referenced (`ContractsTests`). The scenarios are
 detailed in the `WordSenseContracts` unit document.
 
 #### No ONNX Dependency

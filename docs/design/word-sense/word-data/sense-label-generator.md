@@ -21,9 +21,8 @@ Inputs, all read from `data/`:
 
 Output: the complete `sense_label` table, the existing rows unchanged and one row for each sense of a one-token lemma
 that had no label: origin `generated`, or `project` for a sense without a sense key (the generator never writes
-`curated`). The run also writes the groups: the curated groups and their members as they are, and a default group
-(`lemma#<part of speech name>-group`, origin `default`) with all the one-token senses of every lemma and part of speech
-that no curated group covers. The default groups are derived, so they are recomputed on every run.
+`curated`). The generator never reads, creates, changes or removes a group: a group exists only when it is curated, and
+its id (`lemma#group:slug`) lives in its own namespace, so a group does not take a label of the lemma.
 
 Inventory order of the senses of a lemma: part of speech, then WordNet 3.0 tag count descending, then the UTF-8 bytes of
 the sense id. The order depends on the data only.
@@ -43,20 +42,18 @@ combining marks), every run of characters other than ASCII letters and digits tu
 into one hyphen and leading and trailing hyphens removed, so a label contains only lower-case ASCII letters, digits and
 hyphens. A candidate whose slug is empty is skipped.
 
-Uniqueness: the labels of one lemma are unique across its parts of speech. A label already used by a sense of the lemma,
-or by an existing or retired id of the lemma, is not taken; neither is a label that is a part of speech name followed
-by `-group`, which is reserved for the default groups so that the id of a sense never equals the id of a default group.
+Uniqueness: the labels of one lemma are unique across its parts of speech. A label already used by a sense of the lemma
+or by an existing or retired id of the lemma is not taken (the label of a group is not: a group id carries the marker
+`group:` and is in its own namespace).
 When the slug of a sense is taken, the sense receives the
 slug with the suffix `-2`, then `-3`, and so on, the first free number. Senses are labeled in inventory order, so the
 sense that comes first keeps the plain slug.
 
 #### Key Methods
 
-- `Run(data, output)`: reads the inputs, computes the labels of the senses that have none and the default groups and
-  writes `sense_label`, `sense_group` and `group_sense`
+- `Run(data, output)`: reads the inputs, computes the labels of the senses that have none and writes `sense_label`
   through `DataLayout` (sorted by the primary key, the existing rows byte for byte). Returns the counts: existing rows
-  kept, rows generated, the number of labels that needed a suffix or the part of speech fallback, and the default
-  groups.
+  kept, rows generated, and the number of labels that needed a suffix or the part of speech fallback.
 - `Generate(inputs)`: the pure computation, from the loaded tables to the new rows; it holds the rules above and
   has no file access.
 - `Slug(text)`: the slug of a candidate, or an empty text when nothing usable remains.

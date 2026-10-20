@@ -19,13 +19,16 @@ word image by the hash of the analysis inventory.
   row-major over 14 x 14 x 14), `TagPrior` and `SuffixFallback`; the `Words` (`WordEntry`: closed-class mask and per-tag
   counts) and the `Cues` (`LemmaCue`: the analyses as `CueAnalysis` with lemma, part of speech, features and quantized
   prior, the ascending feature hashes and the feature-major signed byte weights), both frozen dictionaries.
-- The analysis inventory hash: a 32-byte hash over the analysis inventory of the word image (the lemma, part of speech
-  and features of every analysis of every form). It identifies the inventory the cue columns were trained against.
+- The analysis inventory hash: a 32-byte hash that is the inventory hash of the word image (its spelling, analysis,
+  feature, entry, sense, group and lemma-block sections). It identifies the inventory the cue columns were trained
+  against: `basic.bin` names its analyses, so it is rebuilt whenever the inventory changes, and a table that carries
+  another hash is refused.
 - `FeatureRef`: one context feature (kind and token) and its 16-bit hash, a 32-bit FNV-1a over the UTF-16 code units of
   the feature name (the token, prefixed with `L1:` or `R1:` for an immediate neighbor) folded by xor-ing the upper half
   into the lower half. The builder uses the same hash, so training and inference cannot diverge.
 - The table format (Brotli, then little-endian; integers are 7-bit varints, strings are a varint byte length and
-  UTF-8): the four-byte magic that names the format and its revision; the 32-byte analysis inventory hash; seven doubles
+  UTF-8): the four-byte magic `WSB3` that names the format and its revision; the 32-byte analysis inventory hash;
+  seven doubles
   (gamma, beta, lambda 1 to 3, tagger weight, inverse temperature); the tag count (13); the unigram (14), bigram
   (14 x 14) and trigram (14 x 14 x 14) counts; the word count and per word the word, a flags byte (bit 0: closed
   class), a 16-bit closed-class mask when closed, a 16-bit presence mask and one count per set bit; the suffix count and
@@ -45,8 +48,16 @@ word image by the hash of the analysis inventory.
 - `Default`: the table embedded in the assembly, loaded on first use under a thread-safe lazy initializer.
 - `FindSuffix(key)`: the distribution over noun, verb, adjective and adverb of the longest tabled suffix of one to three
   characters of a word (binary search), or null when none is tabled; probabilities are `(count + 0.1) / (total + 0.4)`.
-- `LemmaCue.RowOf(analysis)`: the column of an analysis in a cue table, matched by lemma, part of speech and features;
-  the column of a second analysis of one part of speech (the past of `read`) is therefore not the column of the first.
+- `LemmaCue.RowOf(analysis)`: the column of an analysis in a cue table. The columns are analyses (lemma, part of speech
+  and features): a column with empty features stands for any features of that lemma and part of speech, and a column
+  with features (for example `read`'s `Tense=Past+VerbForm=Part` and `Tense=Pres`) is a candidate for an analysis whose
+  feature items include all of its items. Among the candidate columns of the same lemma and part of speech the one with
+  the most feature items wins (the first on a tie), and the empty-features column always qualifies, so it is the
+  fallback of every analysis of its lemma and part of speech; the column of a second analysis of one part of speech
+  (the past of `read`) is therefore not the column of the first.
+- `BasicTables.FindCue(word, first)`: the cue table of a word: the table named by the normalized word first (a form that
+  spans lemmas, such as `left` or `bases`, has its own table) and then the table of the lemma of the first analysis;
+  null when neither exists.
 - The derivation interpolates `Transition = lambda3 * p3 + lambda2 * p2 + lambda1 * p1` from the counts, so each row
   that has observations is a probability distribution.
 

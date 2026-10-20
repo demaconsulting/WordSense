@@ -53,9 +53,7 @@ internal sealed record LabelOutput(IReadOnlyList<string[]> Rows, int Suffixed, i
 /// <param name="Generated">The label rows written for senses that had none.</param>
 /// <param name="Suffixed">The generated labels that needed a numeric suffix.</param>
 /// <param name="Fallbacks">The generated labels that fell back to the part of speech name.</param>
-/// <param name="DefaultGroups">The default groups written.</param>
-/// <param name="DefaultMembers">The senses placed in a default group.</param>
-internal sealed record LabelRun(int Kept, int Generated, int Suffixed, int Fallbacks, int DefaultGroups, int DefaultMembers)
+internal sealed record LabelRun(int Kept, int Generated, int Suffixed, int Fallbacks)
 {
     /// <summary>
     ///     Renders the counts as one line.
@@ -63,12 +61,11 @@ internal sealed record LabelRun(int Kept, int Generated, int Suffixed, int Fallb
     /// <returns>The summary line.</returns>
     public string Render() => string.Create(
         CultureInfo.InvariantCulture,
-        $"sense_label: {Kept} kept, {Generated} generated ({Suffixed} with a numeric suffix, {Fallbacks} by part of speech name); default groups: {DefaultGroups} groups of {DefaultMembers} senses.");
+        $"sense_label: {Kept} kept, {Generated} generated ({Suffixed} with a numeric suffix, {Fallbacks} by part of speech name).");
 }
 
 /// <summary>
-///     Gives every sense of the inventory that has no label a readable, deterministic label, and gives every lemma and
-///     part of speech that no curated group covers its default group.
+///     Gives every sense of the inventory that has no label a readable, deterministic label.
 /// </summary>
 /// <remarks>
 ///     <para>
@@ -91,21 +88,15 @@ internal static class SenseLabelGenerator
     /// <summary>The origin written for the label of a project sense.</summary>
     public const string OriginProject = "project";
 
-    /// <summary>The origin of a curated group.</summary>
+    /// <summary>The origin of a curated group, the only origin a group has.</summary>
     public const string GroupCurated = "curated";
-
-    /// <summary>The origin of a default group.</summary>
-    public const string GroupDefault = "default";
-
-    /// <summary>The suffix of the label of a default group.</summary>
-    public const string GroupSuffix = "-group";
 
     // The order of the parts of speech in the inventory order of the senses of a lemma
     private const string PosOrder = "nvarupcidx";
 
     /// <summary>
     ///     Reads the tables of a data folder, writes the <c>sense_label</c> table with a label for every sense of the
-    ///     inventory and the default groups, and returns the counts.
+    ///     inventory, and returns the counts. It never creates a group: a group exists only when it is curated.
     /// </summary>
     /// <param name="dataDirectory">The data folder with <c>schema.yaml</c> and the tables.</param>
     /// <param name="outputDirectory">The folder that receives the tables, or null to write into the data folder.</param>
@@ -157,10 +148,6 @@ internal static class SenseLabelGenerator
             posNames);
         var output = Generate(inputs);
 
-        var groups = DataTables.Read(dataDirectory, schema.Table("sense_group")).ToList();
-        var groupSenses = DataTables.Read(dataDirectory, schema.Table("group_sense")).ToList();
-        var (newGroups, newMembers) = DefaultGroups(senses, groups, groupSenses, posNames);
-
         // Everything is computed in memory first, so a failure leaves the files as they were
         var resolver = new PartitionResolver(schema.FileSplit);
         foreach (var row in entries.Values)
@@ -175,11 +162,7 @@ internal static class SenseLabelGenerator
 
         var target = outputDirectory ?? dataDirectory;
         DataTables.Write(target, schema.Table("sense_label"), [.. labels, .. output.Rows], resolver);
-        DataTables.Write(target, schema.Table("sense_group"), newGroups, resolver);
-        DataTables.Write(target, schema.Table("group_sense"), newMembers, resolver);
-        var defaultIds = newGroups.Where(g => g[4] == GroupDefault).Select(g => g[0]).ToHashSet(StringComparer.Ordinal);
-        var defaultMembers = newMembers.Count(m => defaultIds.Contains(m[0]));
-        return new LabelRun(labels.Count, output.Rows.Count, output.Suffixed, output.Fallbacks, defaultIds.Count, defaultMembers);
+        return new LabelRun(labels.Count, output.Rows.Count, output.Suffixed, output.Fallbacks);
     }
 
     /// <summary>
@@ -208,7 +191,7 @@ internal static class SenseLabelGenerator
                 var (slug, fromName) = Choose(inputs, sense, synsetMembers, perLemmaPos[(sense.Lemma, sense.Pos)]);
                 var label = slug;
                 var number = 1;
-                while (IsTaken(taken, label, inputs.PosNames))
+                while (taken.Contains(label))
                 {
                     number++;
                     label = slug + "-" + number.ToString(CultureInfo.InvariantCulture);
@@ -305,10 +288,6 @@ internal static class SenseLabelGenerator
     private static int Count(LabelInputs inputs, LabelSense sense) =>
         sense.SenseKey.Length > 0 ? inputs.Counts.GetValueOrDefault(sense.SenseKey) : 0;
 
-    // A label is taken by a label of the lemma, by a retired id, and by the label of a default group of the lemma
-    private static bool IsTaken(HashSet<string> taken, string label, IReadOnlyDictionary<string, string> posNames) =>
-        taken.Contains(label) || (label.EndsWith(GroupSuffix, StringComparison.Ordinal) && posNames.Values.Contains(label[..^GroupSuffix.Length]));
-
     private static Dictionary<string, HashSet<string>> UsedLabels(LabelInputs inputs, Dictionary<string, string> lemmaOf)
     {
         var used = new Dictionary<string, HashSet<string>>(StringComparer.Ordinal);
@@ -330,6 +309,8 @@ internal static class SenseLabelGenerator
             }
         }
 
+        // A label is taken by a label of the lemma and by a retired id; the label of a group is not taken, because the id
+        // of a group (lemma#group:label) lives in its own namespace
         foreach (var id in inputs.RetiredIds)
         {
             var cut = id.LastIndexOf('#');
@@ -348,42 +329,6 @@ internal static class SenseLabelGenerator
         }
 
         return used;
-    }
-
-    /// <summary>
-    ///     Computes the groups after a run: the curated groups and their senses as they are, and a default group for each
-    ///     lemma and part of speech that no curated group covers.
-    /// </summary>
-    /// <param name="senses">Every sense.</param>
-    /// <param name="groups">The existing group rows (group id, lemma, part of speech, label, origin).</param>
-    /// <param name="groupSenses">The existing membership rows (group id, sense id).</param>
-    /// <param name="posNames">The part of speech names by letter.</param>
-    /// <returns>The complete group rows and membership rows.</returns>
-    public static (List<string[]> Groups, List<string[]> Members) DefaultGroups(
-        IReadOnlyList<LabelSense> senses,
-        IReadOnlyList<string[]> groups,
-        IReadOnlyList<string[]> groupSenses,
-        IReadOnlyDictionary<string, string> posNames)
-    {
-        var kept = groups.Where(g => g[4] != GroupDefault).ToList();
-        var keptIds = kept.Select(g => g[0]).ToHashSet(StringComparer.Ordinal);
-        var members = groupSenses.Where(m => keptIds.Contains(m[0])).ToList();
-        var covered = kept.Select(g => (g[1], g[2])).ToHashSet();
-        var result = new List<string[]>(kept);
-        foreach (var bucket in senses.Where(s => s.TokenCount == 1).GroupBy(s => (s.Lemma, s.Pos)).Where(g => !covered.Contains(g.Key)))
-        {
-            var label = posNames[bucket.Key.Pos] + GroupSuffix;
-            var id = bucket.Key.Lemma + "#" + label;
-            if (keptIds.Contains(id))
-            {
-                throw new InvalidDataException($"The id '{id}' of a default group is already the id of a curated group.");
-            }
-
-            result.Add([id, bucket.Key.Lemma, bucket.Key.Pos, label, GroupDefault]);
-            members.AddRange(bucket.Select(s => (string[])[id, s.SenseId]));
-        }
-
-        return (result, members);
     }
 
     private static void RequireFolder(string dataDirectory, TableDef table)

@@ -7,14 +7,20 @@
 The Onnx subsystem is the package `DemaConsulting.WordSense.Onnx`. It holds everything the encoder models share:
 verified model files, the ONNX encoder and its tokenizer, the trained per-lemma weights and the classifier that
 scores the fine senses of an ambiguous word and decides the level of the answer. It is the only package with a
-third-party runtime dependency, ONNX Runtime, and it builds on the Basic package, whose statistical model answers the
-words the encoder was not trained for. Its single public type is the abstract `OnnxWordSenseModel`; the model packages
-derive from it and supply the model identity.
+third-party runtime dependency, ONNX Runtime, and it references only the core package. Its single public type is the
+abstract `OnnxWordSenseModel`; the model packages derive from it and supply the model identity. The encoder model is
+usable on its own. In the current version the scoring of fine senses with the encoder is not yet part of the
+classifier, so every word is answered from the lexicon alone (with all its analyses equally likely and no scored
+senses); once the scoring arrives, that remains the answer for every word whose lemma has no trained weights. The
+statistical choice among the analyses of such a word is not made in this package: the MiniLM and BertBaseCased
+packages compose the encoder model with the Basic model through the core `FallbackWordSenseModel`, which uses the Basic
+result for every word the encoder did not score.
 
 The subsystem contains seven units:
 
-- **OnnxWordSenseModel**: file management, lazy loading, the owned fallback model and classification.
-- **OnnxClassifier**: lexicon resolution, candidate selection, level decision and fallback.
+- **OnnxWordSenseModel**: file management, lazy loading and classification.
+- **OnnxClassifier**: lexicon resolution, analysis and sense scoring, level decision and the lexicon-only answer of a
+  word without scored senses.
 - **OnnxEncoder**: tokenization, inference and mean pooling.
 - **WordPieceTokenizer**: the BERT WordPiece tokenizer, uncased or cased.
 - **ModelDownloader**: ordered, verified download of model files.
@@ -26,8 +32,8 @@ The subsystem contains seven units:
 
 It exposes the abstract `OnnxWordSenseModel` (implements `IWordSenseModel`, which is `IDisposable`) with the properties
 `HiddenSize` and `ModelId`. Its constructor is private protected, so only the WordSense model packages can derive.
-It consumes the core contracts and the `WordLexicon` (analyses, senses, groups), the Basic package model as the
-fallback, the ONNX Runtime inference API, HTTP(S) for downloads, the file system for the model store, and the embedded
+It consumes the core contracts and the `WordLexicon` (analyses, senses, groups), the ONNX Runtime inference API,
+HTTP(S) for downloads, the file system for the model store, and the embedded
 weights of the derived model's assembly. All other members are internal and visible to the MiniLM and BertBaseCased
 packages, the builder and the test projects.
 
@@ -43,35 +49,49 @@ The units collaborate as follows:
    `ModelDownloader.EnsureAsync`, which builds the mirror with `DownloadMirror` (from `MirrorOptions` or the
    environment), reuses valid files from the store and downloads the others.
 2. `OnnxWordSenseModel.ClassifyAsync` (lazily ensuring first when a word needs the encoder) loads the embedded weights
-   once through `LemmaWeights` (blob reader and all-or-nothing match to the word image), creates the Basic model it
-   owns as the fallback, opens one `OnnxEncoder` once (which builds a `WordPieceTokenizer` and the ONNX session) and
-   runs an `OnnxClassifier` over the shared encoder, weights and fallback model.
+   once through `LemmaWeights` (blob reader and all-or-nothing match to the word image), opens one `OnnxEncoder` once
+   (which builds a `WordPieceTokenizer` and the ONNX session) and runs an `OnnxClassifier` over the shared encoder and
+   weights.
 3. `OnnxClassifier.ClassifyAsync` resolves every word from the lexicon, asks `OnnxEncoder` for the pooled vector of
    the words that need context, turns each vector into a feature with the global mean of the weights, scores the
-   candidate fine senses of the word with `LemmaWeights`, lets `LemmaWeights` decide the level of the answer, and
-   asks the fallback model for the words that have no usable weights.
+   fine senses of the word's analyses with `LemmaWeights`, lets `LemmaWeights` decide the level of the answer and
+   builds the result (the analyses with their probabilities and the senses inside them, the selected analysis, the
+   level, the confidence and the ids). A word without scored senses is answered from the lexicon alone.
 
-Training and inference share the feature computation, so the builder and the classifier cannot diverge. The encoder,
-the weights and the fallback model are shared by all callers of one model and are released when the model is disposed.
+Training and inference share the feature computation, so the builder and the classifier cannot diverge. The encoder
+and the weights are shared by all callers of one model and are released when the model is disposed.
 
-Layer rule: Basic references only the core package; this package references the core package, the Basic package and
-ONNX Runtime; the MiniLM and BertBaseCased packages reference this package.
+Layer rule: this package references the core package and ONNX Runtime only; it never references the Basic package.
+The MiniLM and BertBaseCased packages reference this package, the Basic package and the core package, and compose the
+two models.
 
 ### Classification Approach
 
 This section describes how the encoder models (MiniLM and BertBaseCased) decide the sense of a word and at which
 level they answer. The Basic model does not use embeddings at all: it tags the sentence with a hidden Markov model and
-weighs context cues, and it answers the part of speech (see _Basic Subsystem Design_).
+weighs context cues, and it answers the part of speech (see _Basic Subsystem Design_). The scoring of fine senses with
+the encoder is specified here as the target state of the encoder models and arrives in the increment that adds it to
+`OnnxClassifier`; until then the classifier answers from the lexicon alone (see _Classification (Run Time)_).
 
 #### Vocabulary
 
 - A **fine sense** is one Open English WordNet sense (or a project sense where WordNet has none) with an id
-  `lemma#slug`. A **group** is the coarse set of fine senses of one lemma and one part of speech that the lexicon puts
-  together, with an id `lemma#group-slug`; every fine sense is in exactly one group.
+  `lemma#slug`; sense ids are frozen. A **group** exists only where curated: a set of at least two, but not all, fine
+  senses of one lemma and one part of speech that are closely related in meaning and easily confused, with an id
+  `lemma#group:slug` in a namespace of its own (a group id never equals a sense id); a fine
+  sense is in at most one group, and a lemma may have no group at all. Group ids are versioned per data release and are
+  not frozen.
 - An **analysis** is a lemma, a part of speech and features of a word form. A form has one or more analyses.
-- The **level** of an answer is `Sense`, `Group`, `PartOfSpeech` or `None`. The **margin** of a level is the
+- The **level** of an answer is `Sense`, `Group`, `PartOfSpeech` or `None`. The levels nest: `None` above
+  `PartOfSpeech` (lemma and part of speech), above the optional `Group`, above `Sense`. `None` is only for a word that
+  is not in the lexicon. When the classifier is unsure
+  between senses it steps up to the next level that exists: the group they share, otherwise the part of speech. The
+  **margin** of a level is the
   difference between the best and the second-best candidate of that level; the **threshold** of a level is the margin
   at which the lemma's own evidence meets the precision target.
+- The **analyses** of a result are every analysis of the word with its probability (summing to one); inside an analysis
+  the **senses** are its fine senses with their probabilities given the analysis (summing to one). A consumer can apply
+  its own grouping to them (see _Analyses and senses_ under _Classification (Run Time)_).
 
 #### Intuition and Actual Method
 
@@ -83,9 +103,11 @@ embeddings, and the run time only evaluates that classifier. Because the embeddi
 unit length, a linear classifier on them is a learned refinement of nearest centroid with cosine similarity: the
 weights are free to emphasize the directions that separate the senses instead of treating all directions alike.
 
-Fine senses of one lemma are often hard to separate while their groups are not. The classifier therefore answers at
-the finest level it can support: the fine sense when its margin reaches the lemma's fine threshold, otherwise the group
-when the group margin reaches the lemma's group threshold, otherwise the best group with a confidence below one half.
+Fine senses of one lemma are often hard to separate while their group, where the lemma has one, is not. The classifier
+therefore answers at the finest level it can support: the fine sense when its margin reaches the lemma's fine threshold,
+otherwise, for a lemma that has groups and a best sense that is in a group, the group (with a lower confidence when the
+group margin does not reach the lemma's group threshold), and otherwise the part of speech. A known word is never
+answered as unknown: an uncertain word is answered at the part of speech level with a low confidence.
 
 The flow, from the training data to a decision:
 
@@ -94,18 +116,20 @@ flowchart TD
     A[Anchor sentences per fine sense] --> B[Encoder: pooled vector of the target word]
     B --> C[Center on global mean, scale to unit length]
     C --> D[Per-lemma one-vs-rest logistic regression over fine senses, offline]
-    C --> T[Seeded k-fold cross-validation on anchors: t_fine and t_group per lemma]
+    C --> T[Seeded k-fold cross-validation on anchors: t_fine per lemma, t_group for a lemma with groups]
     D --> E[(Embedded weights blob of the model)]
     T --> E
-    W[Word at run time] --> L{Candidate senses from the lexicon}
-    L -- one sense --> R1[Sense level, confidence 1]
+    W[Word at run time] --> L{Analyses and senses from the lexicon}
+    L -- one analysis, one sense --> R1[Sense level, confidence 1]
     L -- several senses, trained weights --> F[Encoder, feature as above]
     E --> G
-    F --> G[Score the candidate fine senses, derive the group scores]
+    F --> G[Score the fine senses of the analyses, derive the group scores]
+    G --> C2[Analyses with probabilities, senses with probabilities inside each analysis]
     G -- fine margin reaches t_fine --> R2[Sense level]
-    G -- group margin reaches t_group --> R3[Group level]
-    G -- neither --> R4[Best group, confidence below one half]
-    L -- several senses, no usable weights --> R5[Basic model: analysis at part of speech level]
+    G -- best sense in a group, group margin reaches t_group --> R3[Group level]
+    G -- best sense in a group, neither --> R4[Group level, lower confidence]
+    G -- no group to step to --> R6[Part of speech level, low confidence]
+    L -- no scored senses --> R5[Lexicon analyses, part of speech level; a composite uses the fallback model]
 ```
 
 #### Training (Offline)
@@ -113,7 +137,8 @@ flowchart TD
 The builder command `weights <modelId>` trains one weights blob per encoder model. Its inputs come from the corpus
 and the word data:
 
-- The sense inventory (fine senses, their groups and their ids) comes from the word data compiled into the word image,
+- The sense inventory (fine senses, their groups where curated and their ids) comes from the word data compiled into
+  the word image,
   so training and the run time read one inventory.
 - `corpus/anchors` is the training data: sentences with the target word marked and labeled with its fine sense id.
 - `corpus/holdout` holds sentences that are never trained on; the builder refuses anchors and holdout that overlap.
@@ -135,19 +160,22 @@ The training runs as follows:
    with anchors to get weights; a sense with a single anchor stays in training. The fit is a Newton method with
    fixed iteration rules, so the same input gives the same weights (`LogisticTrainer`, `WeightsTrainer`,
    `ModelTrainer`).
-4. Per lemma, two thresholds are chosen by seeded k-fold cross-validation (k = 5) on the lemma's anchors only. Each
+4. Per lemma, a fine threshold, and for a lemma that has groups a group threshold, are chosen by seeded k-fold
+   cross-validation (k = 5) on the lemma's anchors only. Each
    fold is fitted without its held-out anchors and scores them. From the out-of-fold scores the builder takes, for every
-   anchor, the fine margin and whether the best fine sense is right, and the group margin and whether the best group is
+   anchor, the fine margin and whether the best fine sense is right, and (for a lemma that has groups, over the anchors
+   whose best sense is in a group) the group margin and whether the best group is
    right (the group scores are derived as at run time). The fine threshold `t_fine` is the smallest margin such that the
    out-of-fold answers whose margin is at least that value reach the precision target; `t_group` is found the same way on
-   the group answers. The target is 95% precision for both encoders. A level whose target is never reached gets the
+   the group answers, and only for a lemma that has groups. The target is 95% precision for both encoders. A level whose
+   target is never reached gets the
    threshold "never" and is never answered for that lemma. The result is deterministic for a given seed.
 5. Per form with several lemmas or tenses (`left`, `bases`, `rows`, `found`, `read`, `reread`), a small form chooser is
    fitted the same way over analysis labels. The labels are rolled up from the fine-sense anchors of the form: the
    lemma of the sense of each anchor, or for the forms of one lemma that differ in tense (`read`, `reread`) its
    analysis. The chooser has its own threshold, chosen by the same cross-validation.
 6. The weights (header with the model id, the dimension, the global mean and the hash of the inventory; per lemma the
-   sense ids, the two thresholds, the rows and the form choosers) are written to the blob that is embedded in the
+   sense ids, the thresholds, the rows and the form choosers) are written to the blob that is embedded in the
    model package (`WeightsBlobWriter`, read at run time by `WeightsBlob` into `LemmaWeights` entries). The rows are
    stored as float16; a gate test requires that this changes the measured fine accuracy by no more than 0.2 percentage
    point against full precision.
@@ -157,41 +185,69 @@ the derived group answers ever lose more than one point of accuracy against a de
 would be added to the format.
 
 Weights are per model: MiniLM and BertBaseCased each have their own blob, trained from the same corpus, so both cover
-the same lemmas, and each blob carries the thresholds calibrated on the embeddings of its own encoder, so the
-confidence has the same meaning for both.
+the same lemmas, and each blob carries the thresholds calibrated on the embeddings of its own encoder, so the level of
+an answer is decided against the evidence of its own encoder.
 
 #### Classification (Run Time)
 
 `OnnxClassifier` resolves each word from the lexicon first: the analyses of the word and, for each analysis, the fine
 senses of its lemma and part of speech. It then decides:
 
-1. **Unknown word.** No analysis: no details, level `None`, confidence 0.
-2. **One sense.** The word has one analysis whose lemma and part of speech have exactly one fine sense: the answer is
-   that sense at the `Sense` level with confidence 1. The encoder is not run, and a text in which every word is of
-   this kind needs no model file at all.
+1. **Unknown word.** No analysis: `ClassifyResult.Unknown`: not known, no analyses, no details, level `None`,
+   confidence 0.
+2. **One analysis and one sense.** The word has one analysis whose lemma and part of speech have exactly one fine
+   sense: the analysis has probability 1 and lists that sense with probability 1, and the answer is that sense at the
+   `Sense` level with confidence 1. The encoder is not run, and a text in which every word is of this kind needs no
+   model file at all.
 3. **Several senses and trained weights.** The word is pending. The encoder runs once over the text, the pooled vector
    of the word is turned into the feature, and the classifier scores the fine senses of every analysis of the word
    (so every part of speech the word can have is reachable, such as the preposition use of `like`) and no sense of any
-   other lemma. A form whose analyses belong to several lemmas or tenses first gets its analysis from its form
-   chooser. The level is then decided:
+   other lemma. The softmax of the fine scores gives each sense a probability; the probability of an analysis is the
+   mass of its senses and the probability of a sense given its analysis is its mass renormalized within the analysis. A
+   form whose analyses belong to several lemmas or tenses first gets the probabilities of its analyses from its form
+   chooser. The level is then decided, for the selected analysis (the most probable one):
    - If the margin of the best fine sense reaches the lemma's `t_fine`, the answer is the fine sense at the `Sense`
-     level, with the sense id and its group id.
-   - Otherwise, if the margin of the best group reaches `t_group`, the answer is that group at the `Group` level, with
-     the group id only and a confidence of at least one half.
-   - Otherwise the answer is the best group at the `Group` level with a confidence below one half.
+     level, with the sense id and, when the sense is in a group, its group id.
+   - Otherwise, for a lemma that has groups and a best sense that is in a group, the answer is that group at the
+     `Group` level, with the group id only: when the margin of the group reaches `t_group` the model is confident in it,
+     and when it does not, the answer is still the group, with a correspondingly lower confidence. The member senses of
+     the group stay listed in the senses of the selected analysis.
+   - Otherwise (the lemma has no groups, or the best sense is in no group) the model steps from the sense to the part of
+     speech: the answer is the selected analysis at the `PartOfSpeech` level with its probability as a low confidence.
+     The model never answers at the `Group` level for a lemma without groups, and never at `None` for a known word.
 
-   The confidence maps the margin `m` of the answered level and that level's threshold `t` of the lemma to
-   `clamp(0.5 + 0.5 * (m - t) / max(t, 0.5), 0, 1)`, so it grows with the margin and is exactly 0.5 at the lemma's own
-   threshold for that level. The best candidate is always returned, even with a low confidence.
-4. **Several senses and no usable weights.** The lemma has no trained weights, the encoder produced no usable vector,
-   or a multi-lemma form has no chooser: the answer is the analysis the Basic model chooses for the word in the same
-   text, at the `PartOfSpeech` level, with the Basic probability as confidence. No fine sense is guessed. A word with
-   a single analysis but many senses and no weights (`bank` when untrained) is answered the same way.
+   The confidence is the probability of the answer at its level: at `PartOfSpeech` the probability of the selected
+   analysis; at `Group` that probability times the sum of the probabilities of the member senses of the group within
+   the analysis; at `Sense` that probability times the probability of the answered sense within the analysis. It grows
+   monotonically with the margin of the best fine score over the others, is between 0 and 1 and is comparable only
+   within one result. The margin and the lemma's thresholds decide the level; the confidence reports how likely the
+   answer is.
+
+   **Analyses and senses.** Whatever the level answered, the result lists every analysis of the word with its
+   probability and, inside each analysis, the senses of its lemma and part of speech ranked by their probability given
+   the analysis (equal probabilities keep inventory order, nothing is truncated), so both lists sum to one. A consumer
+   that maps senses to its own categories sums `analysis.Probability * sense.Probability` per category, so
+   `bow#archery` at 0.48 and `bow#violin` at 0.41 give 0.89 for one category even when the result itself is answered
+   only at the part-of-speech level. A non-empty senses list in the selected analysis is also what makes a
+   `FallbackWordSenseModel` use this result instead of its fallback.
+4. **No scored senses.** The lemma has no trained weights, the encoder produced no usable vector, or a multi-lemma form
+   has no chooser: the word is answered from the lexicon alone. Its analyses are equally likely (probability 1 for a
+   single analysis, 1/n for n analyses), the first analysis of the lexicon is the selected one, the senses lists are
+   empty (a word with a single analysis whose lemma and part of speech have exactly one sense lists that sense with
+   probability 1 and is answered at the sense level), and the level is `PartOfSpeech` with the probability of the
+   selected analysis as confidence. No fine sense is guessed. The choice among the analyses is left to the fallback
+   model of a composition: a word of this kind has no scored senses, so a
+   `FallbackWordSenseModel` answers it with its fallback model, which the MiniLM and BertBaseCased packages set to the
+   Basic model. A word with a single analysis but many senses and no weights (`bank` when untrained) is answered the
+   same way, at the part of speech level with confidence 1.
+
+In the current version only the cases 1, 2 and 4 occur: the classifier does not run the encoder and answers every word
+from the lexicon.
 
 #### Evaluation Scope
 
 The builder's `evaluate` command scores a model on the holdout sentences and on the real-text sentences and reports,
-per level, the share of words answered at the fine, group and low-confidence group level and the accuracy at each
+per level, the share of words answered at the fine, group and part-of-speech level and the accuracy at each
 level. The lemmas of these rows are trained lemmas, so the published encoder accuracy reflects the trained lemmas
 only; the words answered by the fallback are measured with the Basic model. Holdout sentences come from the same
 generator as the anchors, so their accuracy is optimistic; the independent real-text evaluation described in the
@@ -224,10 +280,12 @@ not a public extension point. A contributor adds a model as follows:
 
 1. Put the encoder files in `model/<model-id>/` (Git LFS) with `SHA256SUMS` and a README that records the source,
    license and the preparation steps (for example `tools/model-prep/make-bert-encoder.py`).
-2. Create a package `DemaConsulting.WordSense.<Name>` that references `DemaConsulting.WordSense.Onnx`, with a sealed
-   class that derives from `OnnxWordSenseModel` and passes a `ModelSpec` (model id, each `ModelFile` with its SHA-256 and
+2. Create a package `DemaConsulting.WordSense.<Name>` that references `DemaConsulting.WordSense.Onnx` and
+   `DemaConsulting.WordSense.Basic`, with an internal sealed encoder class that derives from `OnnxWordSenseModel` and
+   passes a `ModelSpec` (model id, each `ModelFile` with its SHA-256 and
    exact length, ONNX and vocabulary file names, whether the tokenizer lower-cases, the weights assembly and resource
-   name, the hidden size) and a default maximum sequence length of 128.
+   name, the hidden size) and a default maximum sequence length of 128, and a public sealed model class that wraps a
+   `FallbackWordSenseModel` of the encoder class (primary) and a `BasicWordSenseModel` (fallback).
 3. Register the model in the builder's `ModelCatalog`, run `weights <modelId>` to train the weights and the per-lemma
    thresholds for that encoder and embed the resulting `weights.bin` as the manifest resource named in the spec, and run
    `evaluate <modelId>` to record the per-level accuracy in the build notes.

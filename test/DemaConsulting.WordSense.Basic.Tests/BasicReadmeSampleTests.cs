@@ -112,14 +112,15 @@ public class BasicReadmeSampleTests
         {
             var expected = expectedLines[i].Split(' ', StringSplitOptions.RemoveEmptyEntries);
             var found = actualLines[i].Split(' ', StringSplitOptions.RemoveEmptyEntries);
-            Assert.True(expected.Length >= 3 && found.Length == expected.Length, $"Line {i + 1}: expected '{expectedLines[i]}' but found '{actualLines[i]}'.");
+            Assert.True(expected.Length >= 4 && found.Length == expected.Length, $"Line {i + 1}: expected '{expectedLines[i]}' but found '{actualLines[i]}'.");
 
-            // Word, part of speech and respelling exactly; the confidence (third column) within the tolerance
+            // Word, part of speech, level, sense and runner-up exactly; the confidence (fourth column) within the tolerance
             Assert.Equal(expected[0], found[0]);
             Assert.Equal(expected[1], found[1]);
-            Assert.Equal(string.Join(' ', expected.Skip(3)), string.Join(' ', found.Skip(3)));
-            var difference = Math.Abs(decimal.Parse(expected[2], CultureInfo.InvariantCulture) - decimal.Parse(found[2], CultureInfo.InvariantCulture));
-            Assert.True(difference <= ConfidenceTolerance, $"Line {i + 1}: the confidence {found[2]} of '{found[0]}' differs from the documented {expected[2]}.");
+            Assert.Equal(expected[2], found[2]);
+            Assert.Equal(string.Join(' ', expected.Skip(4)), string.Join(' ', found.Skip(4)));
+            var difference = Math.Abs(decimal.Parse(expected[3], CultureInfo.InvariantCulture) - decimal.Parse(found[3], CultureInfo.InvariantCulture));
+            Assert.True(difference <= ConfidenceTolerance, $"Line {i + 1}: the confidence {found[3]} of '{found[0]}' differs from the documented {expected[3]}.");
         }
     }
 }

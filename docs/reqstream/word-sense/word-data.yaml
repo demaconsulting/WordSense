@@ -98,6 +98,7 @@ sections:
             tests:
               - WordSenseBuilder_DataEndToEnd_CommittedData_IsValid
               - WordSenseBuilder_DataEndToEnd_CommittedData_HasSenseLabelsAndGroups
+              - WordSenseBuilder_DataEndToEnd_CommittedData_HasNoRetiredClassTables
               - WordSenseBuilder_DataCommands_Validate_InvalidData_ListsViolations
 
           - id: WordSense-WordData-Attribution
@@ -118,12 +119,13 @@ sections:
           - id: WordSense-WordData-Senses
             title: >-
               The word data subsystem shall give every sense of a one-word lemma one readable label, unique among the
-              senses of its lemma, so that the public id is lemma#label, shall keep a published label unchanged and
-              never reuse it, and shall record every rename or retirement of an id in an id map.
+              senses of its lemma, so that the public id is lemma#label, shall keep a published sense label unchanged
+              and never reuse it, and shall record every rename or retirement of a sense id in an id map.
             tags: [subsystem]
             justification: |
               Callers store sense ids; an id that changed meaning, or that was reused for another sense, would corrupt
-              their data silently, so labels are frozen once published and any change is explicit.
+              their data silently, so sense labels are frozen once published and any change is explicit. Group ids are
+              not part of this promise: they are versioned per data release.
             children:
               - WordSense-WordData-SenseLabelGenerator-Generate
               - WordSense-WordData-SenseLabelGenerator-Preserve
@@ -134,18 +136,28 @@ sections:
 
           - id: WordSense-WordData-Groups
             title: >-
-              The word data subsystem shall assign every sense of a curated lemma to exactly one group, give each
-              group one lemma, one part of speech and a readable label, keep two respellings out of one group, and
-              give a lemma that is not curated one default group for each of its parts of speech.
+              The word data subsystem shall let a lemma and part of speech have curated groups only, each a set of at
+              least two, but not all, of its closely related and confusable senses, with one lemma, one part of speech,
+              a readable label, a kind (equivalent or related) and an id lemma#group:label that can never be the id of a
+              sense, a sense in at most one group and no two respellings in one group, shall version group ids per data
+              release without freezing them, and shall create no group of one sense, no group of a whole part of speech
+              and no default group.
             tags: [subsystem]
             justification: |
-              A group answer is only useful when it is unambiguous: a sense in two groups, a group across parts of
-              speech or a group that mixes pronunciations would make the answer meaningless to the caller.
+              The levels nest: none, part of speech, an optional group, sense; when a classifier is unsure between
+              senses it steps up to the next level that exists. A group is therefore only useful for senses that are
+              close and confusable; a sense in two groups, a group across parts of speech, a group that mixes
+              pronunciations, or a group that adds nothing to its part of speech would make the answer meaningless to
+              the caller. The marker in the id keeps a group answer from being mistaken for a sense answer, the kind
+              tells a caller whether the members are near-duplicates or a family of meanings, and because a group can be
+              re-cut when the evidence changes, its id is versioned with the data release and the caller keeps the
+              member sense ids, which are frozen.
             children:
               - WordSense-WordData-DataValidator-Groups
             tests:
-              - WordSenseBuilder_DataEndToEnd_CommittedData_GroupsPartitionTheirLemmas
-              - WordSenseBuilder_DataEndToEnd_CommittedData_OtherLemmasHaveOneDefaultGroupPerPartOfSpeech
+              - WordSenseBuilder_DataEndToEnd_CommittedData_GroupsAreSetsOfSomeSensesOfOnePartOfSpeech
+              - WordSenseBuilder_DataEndToEnd_CommittedData_GroupsHaveAMarkerIdAKindAndCuratedEvidence
+              - WordSenseBuilder_DataEndToEnd_CommittedData_SensesNeedNoGroup
 
           - id: WordSense-WordData-Frequency
             title: >-
@@ -164,8 +176,9 @@ sections:
           - id: WordSense-WordData-ProjectSenses
             title: >-
               The word data subsystem shall declare the senses that Open English WordNet does not provide, one for
-              each determiner, pronoun, preposition, conjunction, interjection or auxiliary analysis and the curated
-              discourse senses, as project senses without a sense key, each with an authored gloss.
+              each determiner, pronoun, preposition, conjunction, interjection or auxiliary analysis (including the
+              conjunction or and every auxiliary of the closed list) and the curated discourse senses, as project
+              senses without a sense key, each with an authored gloss.
             tags: [subsystem]
             justification: |
               Closed-class and discourse uses are among the most frequent words of English but are not WordNet senses;
@@ -174,3 +187,4 @@ sections:
             tests:
               - WordSenseBuilder_DataEndToEnd_CommittedData_ProjectSensesHaveNoKeyAndAGloss
               - WordSenseBuilder_DataEndToEnd_CommittedData_ClosedClassAnalysesHaveAProjectSense
+              - WordSenseBuilder_DataEndToEnd_CommittedData_OrAndTheAuxiliariesHaveClosedClassAnalyses

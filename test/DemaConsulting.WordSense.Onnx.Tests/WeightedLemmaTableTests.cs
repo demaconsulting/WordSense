@@ -1,62 +1,56 @@
 namespace DemaConsulting.WordSense.Onnx.Tests;
 
 /// <summary>
-///     Tests for <see cref="WeightedLemmaTable"/>: the strict match of trained class ids to the word image.
+///     Tests for <see cref="WeightedLemmaTable"/>: the structural checks of the trained lemma groups and class ids.
 /// </summary>
 public class WeightedLemmaTableTests
 {
-    private static readonly WordImage Image = WordLexicon.Current;
-
     private static WeightedLemma Lemma(string lemma, params string[] classIds) => new(
         lemma,
         classIds,
         new LemmaWeights(LemmaModelKind.Binary, [1f, 0f], [0f], 0.1f, 2));
 
-    private static WeightsData Data(params WeightedLemma[] lemmas) => new("test-model", Image.ClassHash.ToArray(), 2, [0f, 0f], lemmas);
+    private static WeightsData Data(params WeightedLemma[] lemmas) => new("test-model", new byte[32], 2, [0f, 0f], lemmas);
 
     /// <summary>
-    ///     Classes of the image are found by id, with their column.
+    ///     Classes are found by id, with their column, and lemmas by name.
     /// </summary>
     [Fact]
     public void WeightedLemmaTable_Constructor_KnownClasses_AreFoundById()
     {
-        var table = new WeightedLemmaTable(Data(Lemma("record", "record#noun", "record#verb")), Image);
+        // Arrange: one lemma with two classes
+        var data = Data(Lemma("record", "record#noun", "record#verb"));
 
+        // Act: build the table and look classes and lemmas up
+        var table = new WeightedLemmaTable(data);
         var weights = table.FindByClass("record#verb", out var column);
+        var none = table.FindByClass("bass#fish", out var noneColumn);
 
+        // Assert: the trained class is found with its column, the others are not
         Assert.NotNull(weights);
         Assert.Equal(1, column);
-        Assert.Null(table.FindByClass("bass#fish", out var none));
-        Assert.Equal(-1, none);
+        Assert.Null(none);
+        Assert.Equal(-1, noneColumn);
         Assert.NotNull(table.Find("record"));
         Assert.Null(table.Find("other"));
     }
 
     /// <summary>
-    ///     Weights trained for another class inventory are rejected, and the message names both hashes.
+    ///     The table does not check the class ids against the word lexicon: it is built from the weights alone, whatever
+    ///     the hash field holds.
     /// </summary>
     [Fact]
-    public void WeightedLemmaTable_Constructor_OtherClassHash_ThrowsNamingBothHashes()
+    public void WeightedLemmaTable_Constructor_ClassesOutsideTheLexicon_AreAccepted()
     {
-        var other = new byte[32];
-        var data = Data(Lemma("record", "record#noun", "record#verb")) with { ClassHash = other };
+        // Arrange: a class id that no lexicon has and a hash that is not the lexicon's
+        var data = Data(Lemma("record", "record#noun", "no-such-class")) with { ClassHash = [.. Enumerable.Repeat((byte)0xEE, 32)] };
 
-        var ex = Assert.Throws<InvalidDataException>(() => new WeightedLemmaTable(data, Image));
+        // Act
+        var table = new WeightedLemmaTable(data);
 
-        Assert.Contains(Convert.ToHexString(other), ex.Message, StringComparison.Ordinal);
-        Assert.Contains(Convert.ToHexString(Image.ClassHash), ex.Message, StringComparison.Ordinal);
-    }
-
-    /// <summary>
-    ///     A class id that the word image does not have is an error, never a dropped lemma.
-    /// </summary>
-    [Fact]
-    public void WeightedLemmaTable_Constructor_UnknownClass_Throws()
-    {
-        var ex = Assert.Throws<InvalidDataException>(() =>
-            new WeightedLemmaTable(Data(Lemma("record", "record#noun", "record#no-such-class")), Image));
-
-        Assert.Contains("record#no-such-class", ex.Message, StringComparison.Ordinal);
+        // Assert: both classes are found
+        Assert.NotNull(table.FindByClass("no-such-class", out _));
+        Assert.Same(data, table.Data);
     }
 
     /// <summary>
@@ -65,10 +59,11 @@ public class WeightedLemmaTableTests
     [Fact]
     public void WeightedLemmaTable_Constructor_DuplicateClass_Throws()
     {
+        // Arrange / Act / Assert: the same class twice in one lemma, and in two lemmas
         Assert.Throws<InvalidDataException>(() =>
-            new WeightedLemmaTable(Data(Lemma("record", "record#noun", "record#noun")), Image));
+            new WeightedLemmaTable(Data(Lemma("record", "record#noun", "record#noun"))));
         Assert.Throws<InvalidDataException>(() =>
-            new WeightedLemmaTable(Data(Lemma("a", "record#noun", "record#verb"), Lemma("b", "record#noun", "bass#fish")), Image));
+            new WeightedLemmaTable(Data(Lemma("a", "record#noun", "record#verb"), Lemma("b", "record#noun", "bass#fish"))));
     }
 
     /// <summary>
@@ -77,8 +72,9 @@ public class WeightedLemmaTableTests
     [Fact]
     public void WeightedLemmaTable_Constructor_DuplicateLemma_Throws()
     {
+        // Arrange / Act / Assert
         Assert.Throws<InvalidDataException>(() =>
-            new WeightedLemmaTable(Data(Lemma("record", "record#noun", "record#verb"), Lemma("record", "bass#fish", "bass#music")), Image));
+            new WeightedLemmaTable(Data(Lemma("record", "record#noun", "record#verb"), Lemma("record", "bass#fish", "bass#music"))));
     }
 
     /// <summary>
@@ -87,8 +83,19 @@ public class WeightedLemmaTableTests
     [Fact]
     public void WeightedLemmaTable_Constructor_ClassCountMismatch_Throws()
     {
+        // Arrange / Act / Assert: two weight rows but three class ids
         Assert.Throws<InvalidDataException>(() =>
-            new WeightedLemmaTable(Data(Lemma("record", "record#noun", "record#verb", "bass#fish")), Image));
+            new WeightedLemmaTable(Data(Lemma("record", "record#noun", "record#verb", "bass#fish"))));
+    }
+
+    /// <summary>
+    ///     A null weights object is rejected.
+    /// </summary>
+    [Fact]
+    public void WeightedLemmaTable_Constructor_NullData_Throws()
+    {
+        // Arrange / Act / Assert
+        Assert.Throws<ArgumentNullException>(() => new WeightedLemmaTable(null!));
     }
 
     /// <summary>
@@ -97,6 +104,7 @@ public class WeightedLemmaTableTests
     [Fact]
     public void WeightedLemmaTable_LoadEmbedded_MissingResource_Throws()
     {
+        // Arrange / Act / Assert
         Assert.Throws<InvalidDataException>(() =>
             WeightedLemmaTable.LoadEmbedded(typeof(WeightedLemmaTableTests).Assembly, "no.such.resource", "x", 2));
     }
@@ -107,9 +115,11 @@ public class WeightedLemmaTableTests
     [Fact]
     public void WeightedLemmaTable_LoadEmbedded_WrongModelId_Throws()
     {
+        // Arrange: the embedded MiniLM weights
         var assembly = typeof(MiniLM.MiniLMWordSenseModel).Assembly;
         const string Resource = "DemaConsulting.WordSense.MiniLM.weights.bin";
 
+        // Act / Assert: another model id, and another dimension
         Assert.Throws<InvalidDataException>(() => WeightedLemmaTable.LoadEmbedded(assembly, Resource, "another-model", 384));
         Assert.Throws<InvalidDataException>(() => WeightedLemmaTable.LoadEmbedded(assembly, Resource, "all-MiniLM-L6-v2-int8", 768));
     }

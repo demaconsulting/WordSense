@@ -480,7 +480,7 @@ public sealed class BuilderTests : IDisposable
     {
         var result = new EvaluationResult(
             "demo",
-            [new SetResult("holdout", 4, 3, 4, 2, 1, 2, 2), new SetResult("real-text", 0, 0, 0, 0, 0, 0, 0)],
+            [new SetResult("holdout", 4, 3, 4, 2, 2), new SetResult("real-text", 0, 0, 0, 0, 0)],
             2048,
             1.5,
             12,
@@ -488,9 +488,9 @@ public sealed class BuilderTests : IDisposable
 
         var text = result.Render();
 
-        Assert.StartsWith("### demo\n\n| Set | Rows | Best sense | Part of speech | Pronunciation | Answered | Answered accuracy |\n", text, StringComparison.Ordinal);
-        Assert.Contains("| holdout | 4 | 75.00% | 100.00% | 50.00% | 50.00% | 100.00% |\n", text, StringComparison.Ordinal);
-        Assert.Contains("| real-text | 0 | n/a | n/a | n/a | n/a | n/a |\n", text, StringComparison.Ordinal);
+        Assert.StartsWith("### demo\n\n| Set | Rows | Best analysis | Part of speech | Answered | Answered accuracy |\n", text, StringComparison.Ordinal);
+        Assert.Contains("| holdout | 4 | 75.00% | 100.00% | 50.00% | 100.00% |\n", text, StringComparison.Ordinal);
+        Assert.Contains("| real-text | 0 | n/a | n/a | n/a | n/a |\n", text, StringComparison.Ordinal);
         Assert.Contains("- Weights size: 2 KiB\n", text, StringComparison.Ordinal);
         Assert.Contains("- Classification latency: 1.50 ms per sentence\n", text, StringComparison.Ordinal);
         Assert.Contains("- Word table first use: 12 ms, 2.0 MiB\n", text, StringComparison.Ordinal);
@@ -506,7 +506,7 @@ public sealed class BuilderTests : IDisposable
         (double Confidence, bool Correct)[] outcomes = [(0.95, true), (0.85, true), (0.65, false), (0.2, false)];
         var result = new EvaluationResult(
             "demo",
-            [new SetResult("real-text", 4, 2, 4, 2, 1, 2, 2, outcomes)],
+            [new SetResult("real-text", 4, 2, 4, 2, 2, outcomes)],
             2048,
             1.5,
             12,
@@ -529,6 +529,7 @@ public sealed class BuilderTests : IDisposable
     public async Task WordSenseBuilder_Evaluator_RunAsync_BasicModel_CountsHoldoutRows()
     {
         Write("corpus/senses/s.tsv", TestDirectory.SensesHeader + "walk\tnoun\tnoun\t\t\nwalk\tverb\tverb\t\t\n");
+        Write("corpus/migration/legacy-class-map.tsv", "class_id\tkind\tlemma\tpos\tmeaning\trespelling\tsense_count\tsense_id\tgroup_id\tentry_id\tentry_lemma\tentry_pos\tfeatures\n");
         Write("corpus/holdout/h.tsv", "walk\tverb\tYou should {walk} more.\nwalk\tnoun\tThe {walk} was long.\n");
         using var progress = new StringWriter();
 
@@ -542,28 +543,19 @@ public sealed class BuilderTests : IDisposable
     }
 
     /// <summary>
-    ///     The appendix explains the parts of speech and meanings, lists lemmas alphabetically with senses, meanings, respellings,
-    ///     bold examples and forms (restricted forms in parentheses), keeps every line within the limit and is byte-identical on repeat.
+    ///     The appendix explains the parts of speech, groups, pronunciations and forms, lists the trained lemmas
+    ///     alphabetically with their parts of speech and forms, keeps every line within the limit, escapes markdown
+    ///     characters, leaves out a trained lemma that has no sense in the data and is byte-identical on repeat.
     /// </summary>
     [Fact]
     public void WordSenseBuilder_Appendix_Generate_ListsLemmasSensesAndForms()
     {
-        // Arrange: two lemmas written in reverse order, one heteronym with a respelling, a restricted form and a long example
-        var corpus = Path.Join(_dir.Root, "corpus");
-        var longSentence = "He {took} " + string.Join(' ', Enumerable.Repeat("another remarkably long stretch of words", 8)) + ".";
-        Write("corpus/anchors/a.tsv", "zip\tnoun\tShe pulled the {zip} on the old bag.\n" +
-            "zip\tnoun\tA {zip} is a fastener that joins two edges of cloth.\n" +
-            "zip\tverb\tTo {zip}.\n" +
-            "bow\tbend-verb\tThey {bowed} to the audience *twice* at the end.\n" +
-            "bow\tweapon\tHe drew a {bow}.\n" +
-            "bow\tbend-noun\t" + longSentence + "\n");
-        Write("corpus/senses/s.tsv", "lemma\tlabel\tpos\tmeaning\trespelling\nzip\tnoun\tnoun\t\t\nzip\tverb\tverb\t\t\n" +
-            "bow\tbend-verb\tverb\tbend\tbow\nbow\tbend-noun\tnoun\tbend\tbow\nbow\tweapon\tnoun\tweapon\t\n");
-        Write("corpus/forms/f.tsv", "form\tlemma\tlabels\nzips\tzip\tnoun,verb\nbowed\tbow\tbend-verb\nzip\tzip\tnoun,verb\nother\tunknown\tx\n");
+        // Arrange: two trained lemmas written in reverse order, one form, and a trained lemma the data does not have
+        var (corpus, data) = WriteAppendixInput();
 
         // Act
-        var text = AppendixGenerator.Generate(corpus);
-        var again = AppendixGenerator.Generate(corpus);
+        var text = AppendixGenerator.Generate(corpus, data);
+        var again = AppendixGenerator.Generate(corpus, data);
 
         // Assert
         Assert.Equal(text, again);
@@ -572,52 +564,125 @@ public sealed class BuilderTests : IDisposable
         Assert.EndsWith("\n", text, StringComparison.Ordinal);
         Assert.DoesNotContain("\n\n\n", text, StringComparison.Ordinal);
         Assert.All(text.Split('\n'), line => Assert.True(line.Length <= AppendixGenerator.LineLimit, line));
-        Assert.Contains($"| {"`Noun`",-14} | {3,6} |", text, StringComparison.Ordinal);
-        Assert.Contains($"| {"`Verb`",-14} | {2,6} |", text, StringComparison.Ordinal);
-        Assert.Contains("The library supports 2 lemmas with 5 senses in total", text, StringComparison.Ordinal);
-        Assert.True(text.IndexOf("- **bow**;", StringComparison.Ordinal) < text.IndexOf("- **zip**;", StringComparison.Ordinal));
-        Assert.Contains("- **bow**; parts of speech: noun, verb; heteronym, meanings: bend, weapon; forms: bowed (verb bend)\n", text, StringComparison.Ordinal);
-        Assert.Contains("- **zip**; parts of speech: noun, verb; forms: zips\n", text, StringComparison.Ordinal);
-        Assert.Contains("  - `noun`; meaning: `bend`; respelling: `bow`; example: He **took** ", text, StringComparison.Ordinal);
-        Assert.Contains("  - `verb`; meaning: `bend`; respelling: `bow`; example: They **bowed** to the audience \\*twice\\* at the end.\n", text, StringComparison.Ordinal);
-        Assert.Contains("  - `noun`; meaning: `weapon`; example: He drew a **bow**.\n", text, StringComparison.Ordinal);
-        Assert.Contains("  - `noun`; example: She pulled the **zip** on the old bag.\n", text, StringComparison.Ordinal);
-        Assert.Contains("  - `verb`; example: To **zip**.\n", text, StringComparison.Ordinal);
+        Assert.Contains("### Groups\n", text, StringComparison.Ordinal);
+        Assert.Contains("### Pronunciations\n", text, StringComparison.Ordinal);
+        Assert.Contains("### Forms\n", text, StringComparison.Ordinal);
+        Assert.Contains($"| {"`Noun`",-14} | {1,6} | {4,6} |", text, StringComparison.Ordinal);
+        Assert.Contains($"| {"`Verb`",-14} | {1,6} | {2,6} |", text, StringComparison.Ordinal);
+        Assert.Contains($"| {"`Determiner`",-14} | {1,6} | {1,6} |", text, StringComparison.Ordinal);
+        Assert.Contains("The library supports 2 lemmas with 7 senses in total", text, StringComparison.Ordinal);
+        Assert.Contains("not listed until the corpus is relabeled: `zzyzx`.", text.ReplaceLineEndings(" "), StringComparison.Ordinal);
+        Assert.True(text.IndexOf("- **bank**;", StringComparison.Ordinal) < text.IndexOf("- **the**;", StringComparison.Ordinal));
+        Assert.Contains("- **bank**; parts of speech: noun, verb; forms: banks\n", text, StringComparison.Ordinal);
+        Assert.Contains("- **the**; parts of speech: determiner; no other forms\n", text, StringComparison.Ordinal);
         Assert.Contains("### Lemmas Starting With B\n", text, StringComparison.Ordinal);
-        Assert.Contains("### Lemmas Starting With Z\n", text, StringComparison.Ordinal);
+        Assert.Contains("### Lemmas Starting With T\n", text, StringComparison.Ordinal);
+        Assert.Contains(Unwrapped(text), line => line.Contains("gloss: a financial institution that accepts deposits \\*and\\* lends money; a depository", StringComparison.Ordinal));
         Assert.Contains(text.Split('\n'), line => line.StartsWith("    ", StringComparison.Ordinal));
     }
 
     /// <summary>
-    ///     The generator rejects a missing directory, a sense without an anchor and a form label that is not a sense.
+    ///     Each sense of a trained lemma is listed in inventory order with its id, group (none when it has no group),
+    ///     OEWN sense key (a project sense has none), respelling when it has one, and gloss.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Appendix_Generate_ListsSensesWithGroupKeyGlossAndRespelling()
+    {
+        var (corpus, data) = WriteAppendixInput();
+
+        var text = AppendixGenerator.Generate(corpus, data);
+
+        var senses = Unwrapped(text).Where(l => l.StartsWith("  - `", StringComparison.Ordinal)).ToList();
+        Assert.Equal(
+            [
+                "  - `bank#incline` (noun); group: none; key: `bank%1:17:01::`; gloss: sloping land beside a body of water",
+                "  - `bank#banking-company` (noun); group: `bank#group:depository`; key: `bank%1:14:00::`; gloss: a financial institution that accepts deposits \\*and\\* lends money; a depository",
+                "  - `bank#ridge` (noun); group: none; key: `bank%1:17:00::`; respelling: `bangk`; gloss: a long ridge of land",
+                "  - `bank#coin-bank` (noun); group: `bank#group:depository`; key: `bank%1:06:01::`; gloss: a container for coins",
+                "  - `bank#close-in` (verb); group: none; key: `bank%2:35:00::`; gloss: tip laterally",
+                "  - `bank#cover` (verb); group: none; key: `bank%2:35:01::`; gloss: cover with ashes",
+                "  - `the#determiner` (determiner); group: none; key: project sense; gloss: the definite article",
+            ],
+            senses);
+    }
+
+    // Joins the continuation lines of the wrapped list items
+    private static List<string> Unwrapped(string text)
+    {
+        var items = new List<string>();
+        foreach (var line in text.Split('\n'))
+        {
+            if (line.StartsWith("    ", StringComparison.Ordinal) && items.Count > 0)
+            {
+                items[^1] += " " + line.Trim();
+            }
+            else
+            {
+                items.Add(line);
+            }
+        }
+
+        return items;
+    }
+
+    // Writes a small data folder with glosses, a project sense, a respelling and a form, and a corpus with two trained
+    // lemmas written in reverse order and one that the data does not have
+    private (string Corpus, string Data) WriteAppendixInput()
+    {
+        var data = ImageCompilerTests.WriteSmallData(_dir.Root);
+        Write("data/entry/t.tsv", "entry_id\tlemma\tpos\thomograph_no\ttoken_count\thead_idx\tsource_id\ndema-the-d\tthe\td\t0\t1\t1\tdema\n");
+        Write("data/sense/t.tsv", "sense_id\tsense_key\tentry_id\tsynset_id\tposition\ndema-the__d\t\tdema-the-d\tdema-1-d\t1\n");
+        Write("data/sense_label/t.tsv", "sense_id\tlabel\torigin\ndema-the__d\tdeterminer\tproject\n");
+        Write("data/form/t.tsv", "spelling\trank\tentry_id\tfeatures\tsource\treviewed\tsurface_lemma\tsurface_pos\torigin\n" +
+            "banks\t0\toewn-bank-n\tNumber=Plur\tdema\t0\t\t\toewn_form\nthe\t0\tdema-the-d\t\tdema\t0\t\t\tdema\n");
+        Write("data/sense_respelling/r.tsv", "sense_id\trespelling\noewn-bank__1.17.00..\tbangk\n");
+        Write("data/gloss/g.tsv", "synset_id\tseq\ttext\n" +
+            "oewn-1-n\t1\ta container for coins\n" +
+            "oewn-2-n\t1\ta financial institution that accepts deposits *and* lends money\n" +
+            "oewn-2-n\t2\ta depository\n" +
+            "oewn-3-n\t1\ta long ridge of land\n" +
+            "oewn-4-n\t1\tsloping land beside a body of water\n" +
+            "oewn-5-v\t1\ttip laterally\n" +
+            "oewn-6-v\t1\tcover with ashes\n" +
+            "dema-1-d\t1\tthe definite article\n");
+        Write("corpus/senses/s.tsv", TestDirectory.SensesHeader + "the\tdeterminer\tdeterminer\t\t\nbank\tnoun\tnoun\t\t\nbank\tverb\tverb\t\t\nzzyzx\tnoun\tnoun\t\t\n");
+        return (Path.Join(_dir.Root, "corpus"), data);
+    }
+
+    /// <summary>
+    ///     The generator rejects a missing directory, an inventory without a lemma of the data and a sense without a gloss.
     /// </summary>
     [Fact]
     public void WordSenseBuilder_Appendix_Generate_RejectsIncompleteInput()
     {
-        // Arrange: only the senses exist, and the forms file names an unknown label
+        // Arrange: the corpus has no senses directory and the data folder is missing
         var corpus = Path.Join(_dir.Root, "corpus");
-        Write("corpus/senses/s.tsv", "lemma\tlabel\tpos\tmeaning\trespelling\nzip\tnoun\tnoun\t\t\nzip\tverb\tverb\t\t\n");
+        var data = Path.Join(_dir.Root, "data");
 
-        // Act and assert: missing forms and anchors directories
-        var missing = Assert.Throws<InvalidDataException>(() => AppendixGenerator.Generate(corpus));
-        Assert.Contains("forms", missing.Message, StringComparison.Ordinal);
-        Assert.Contains("anchors", missing.Message, StringComparison.Ordinal);
-
-        // Act and assert: no anchor for the verb sense, and a form with an unknown label
-        Write("corpus/anchors/a.tsv", "zip\tnoun\tShe pulled the {zip} on the old bag.\n");
-        Write("corpus/forms/f.tsv", "form\tlemma\tlabels\nzips\tzip\tnoun,bogus\n");
-        var incomplete = Assert.Throws<InvalidDataException>(() => AppendixGenerator.Generate(corpus));
-        Assert.Contains("'zip/verb' has no anchor sentence", incomplete.Message, StringComparison.Ordinal);
-        Assert.Contains("label 'bogus'", incomplete.Message, StringComparison.Ordinal);
+        // Act and assert: missing directories
+        var missing = Assert.Throws<InvalidDataException>(() => AppendixGenerator.Generate(corpus, data));
+        Assert.Contains("senses", missing.Message, StringComparison.Ordinal);
+        Assert.Contains("was not found", missing.Message, StringComparison.Ordinal);
 
         // Act and assert: an empty inventory
-        File.Delete(Path.Join(corpus, "senses", "s.tsv"));
-        Assert.Throws<InvalidDataException>(() => AppendixGenerator.Generate(corpus));
+        Write("corpus/senses/s.tsv", TestDirectory.SensesHeader);
+        data = ImageCompilerTests.WriteSmallData(_dir.Root);
+        Assert.Throws<InvalidDataException>(() => AppendixGenerator.Generate(corpus, data));
+
+        // Act and assert: no trained lemma has a sense in the data
+        Write("corpus/senses/s.tsv", TestDirectory.SensesHeader + "zzyzx\tnoun\tnoun\t\t\n");
+        var none = Assert.Throws<InvalidDataException>(() => AppendixGenerator.Generate(corpus, data));
+        Assert.Contains("None of the trained lemmas", none.Message, StringComparison.Ordinal);
+
+        // Act and assert: the senses of bank have no gloss in the small data folder
+        Write("corpus/senses/s.tsv", TestDirectory.SensesHeader + "bank\tnoun\tnoun\t\t\n");
+        var noGloss = Assert.Throws<InvalidDataException>(() => AppendixGenerator.Generate(corpus, data));
+        Assert.Contains("'bank#ridge' has no gloss", noGloss.Message, StringComparison.Ordinal);
     }
 
     /// <summary>
-    ///     The committed user-guide appendix equals what the generator produces from the committed corpus, so it
-    ///     cannot go stale: regenerate it with <c>appendix</c>.
+    ///     The committed user-guide appendix equals what the generator produces from the committed corpus and data, so
+    ///     it cannot go stale: regenerate it with <c>appendix</c>.
     /// </summary>
     [Fact]
     public void WordSenseBuilder_Appendix_Committed_MatchesCorpus()
@@ -626,7 +691,7 @@ public sealed class BuilderTests : IDisposable
         var committedPath = Path.Join(root.FullName, "docs", "user_guide", "appendix-senses.md");
         var regenerated = Path.Join(_dir.Root, "regenerated", "appendix-senses.md");
 
-        AppendixGenerator.Write(Path.Join(root.FullName, "corpus"), regenerated);
+        AppendixGenerator.Write(Path.Join(root.FullName, "corpus"), Path.Join(root.FullName, "data"), regenerated);
 
         // Line endings are normalized, so a checkout with CRLF conversion does not matter
         var expected = File.ReadAllText(regenerated).ReplaceLineEndings("\n");
@@ -656,6 +721,9 @@ public sealed class BuilderTests : IDisposable
             "src/DemaConsulting.WordSense/Resources/wordsense.img is stale; run the 'compile-image' command.");
         Assert.Equal(result.Spellings, open.SpellingCount);
         Assert.Equal(result.Entries, open.EntryCount);
+        Assert.Equal(result.Senses, open.SenseCount);
+        Assert.Equal(result.Groups, open.GroupCount);
+        Assert.True(open.InventoryHash.SequenceEqual(fresh.InventoryHash));
         foreach (var id in fresh.SectionIds)
         {
             Assert.True(fresh.RawSection(id).AsSpan().SequenceEqual(open.RawSection(id)), $"Section {id} of the committed image differs from a fresh compilation.");
@@ -699,11 +767,11 @@ public sealed class BuilderTests : IDisposable
     }
 
     /// <summary>
-    ///     Every word of the committed closed list of auxiliaries has an Auxiliary sense in the embedded word table, and
-    ///     that sense follows every other sense of the word.
+    ///     Every word of the committed closed list of auxiliaries has an Auxiliary analysis in the embedded word table,
+    ///     and that analysis follows every other analysis of the word.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_Words_Committed_AuxiliarySenseComesLast()
+    public void WordSenseBuilder_Words_Committed_AuxiliariesGainTheirAnalysis()
     {
         var root = FindRepositoryRoot();
         var table = new LexiconView();
@@ -716,94 +784,47 @@ public sealed class BuilderTests : IDisposable
             .Take(10)
             .ToList();
 
-        Assert.True(problems.Count == 0, "Auxiliaries without a last Auxiliary sense: " + string.Join(", ", problems));
+        Assert.True(problems.Count == 0, "Auxiliaries without a last Auxiliary analysis: " + string.Join(", ", problems));
         Assert.True(auxiliaries.Count > 20);
     }
 
     /// <summary>
-    ///     A listed form has the trained senses its labels name, carrying the lemma's lemma, meaning and respelling,
-    ///     followed by one sense for each dictionary part of speech the labels do not cover; that sense is the form's
-    ///     own (the form is its lemma, because a form may have several lemmas) and has no meaning and no respelling.
-    ///     The one exception is the closed-list Auxiliary sense, which keeps the lemma of the form (<c>was</c> of
-    ///     <c>be</c>). A generated analysis of another entry of the same lemma (a second verb entry <c>bow</c> of
-    ///     <c>bowing</c>, or of another dictionary lemma whose generated form it is, <c>swinge</c> of <c>swinging</c>) or
-    ///     an extra analysis of the form's own lemma may follow.
+    ///     The catalog of the committed image holds every single-token Open English WordNet sense and every project sense
+    ///     of the committed data, each with the id <c>lemma#label</c>, the key of the data (none for a project sense) and
+    ///     the group of the data (none for a sense that is in no group).
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_Words_Committed_FormSensesFollowLabelsThenOwnExtras()
+    public void WordSenseBuilder_Words_Committed_CatalogHoldsEveryOewnAndProjectSense()
     {
-        var root = FindRepositoryRoot();
-        var corpus = Path.Join(root.FullName, "corpus");
-        var table = new LexiconView();
-        var dictionary = LexiconSource.ReadWords(Path.Join(corpus, "lexicon", "lexicon.tsv")).ToDictionary(w => w.Word, w => w.Letters, StringComparer.Ordinal);
-        var forms = Directory.GetFiles(Path.Join(corpus, "forms"), "*.tsv").SelectMany(Corpus.ReadForms).ToList();
-        var checkedForms = 0;
-        var problems = new List<string>();
-        foreach (var (form, _, _) in forms.Where(f => f.Form != f.Lemma && table.ContainsKey(f.Lemma) && table.ContainsKey(f.Form)))
-        {
-            var senses = table[form].Where(d => d.PartOfSpeech != PartOfSpeech.Auxiliary).ToList();
-            var trained = senses.Where(d => d.SenseId is not null).ToList();
-            var extras = senses.Where(d => d.SenseId is null).ToList();
-            var covered = trained.Select(d => d.PartOfSpeech).ToHashSet();
-            var expected = (dictionary.TryGetValue(form, out var letters) ? letters : string.Empty)
-                .Select(l => (PartOfSpeech)LexiconSource.Letters.IndexOf(l, StringComparison.Ordinal))
-                .Where(p => !covered.Contains(p))
-                .ToList();
-            if (trained.Count == 0
-                || extras.Any(d => d.Lemma != form && !table.ContainsKey(d.Lemma))
-                || expected.Any(p => extras.All(d => d.PartOfSpeech != p)))
+        var data = Path.Join(FindRepositoryRoot().FullName, "data");
+        var schema = WordSense.Builder.Data.DataSchema.Load(Path.Join(data, "schema.yaml"));
+        var entries = WordSense.Builder.Data.DataTables.Read(data, schema.Table("entry")).ToDictionary(r => r[0], StringComparer.Ordinal);
+        var senses = WordSense.Builder.Data.DataTables.Read(data, schema.Table("sense")).ToDictionary(r => r[0], StringComparer.Ordinal);
+        var labels = WordSense.Builder.Data.DataTables.Read(data, schema.Table("sense_label")).ToDictionary(r => r[0], r => r[1], StringComparer.Ordinal);
+        var groups = WordSense.Builder.Data.DataTables.Read(data, schema.Table("group_sense")).ToDictionary(r => r[1], r => r[0], StringComparer.Ordinal);
+
+        var missing = senses.Values
+            .Where(s => entries[s[2]][4] == "1" || entries[s[2]][6] == "dema")
+            .Where(s => !labels.ContainsKey(s[0]))
+            .Select(s => s[0])
+            .Take(10)
+            .ToList();
+        Assert.True(missing.Count == 0, "Senses of the data without a label: " + string.Join(", ", missing));
+
+        var wrong = labels
+            .Select(p => (Sense: senses[p.Key], Label: p.Value))
+            .Where(p =>
             {
-                problems.Add(form);
-            }
-
-            checkedForms++;
-        }
-
-        Assert.True(problems.Count == 0, "Forms that break the label/extra rules: " + string.Join(", ", problems.Take(10)));
-        Assert.True(checkedForms > 1000);
-    }
-
-    /// <summary>
-    ///     The eight verb-only forms (<c>bent</c>, <c>chanced</c>, <c>drove</c>, <c>flew</c>, <c>limited</c>, <c>rode</c>,
-    ///     <c>scored</c>, <c>shook</c>) whose dictionary entry lists parts of speech that the labels do not cover: each keeps
-    ///     the verb sense of its lemma and gains analyses of the form's own (an entry whose lemma is the form, without a
-    ///     sense id): <c>drove</c> is the verb of <c>drive</c> and a noun of its own, not the noun sense of <c>drive</c>.
-    /// </summary>
-    [Fact]
-    public void WordSenseBuilder_Words_Committed_RestrictedFormsGainTheirOwnExtra()
-    {
-        var table = new LexiconView();
-        var expected = new (string Form, string Lemma, PartOfSpeech[] Extras)[]
-        {
-            ("bent", "bend", [PartOfSpeech.Adjective, PartOfSpeech.Noun]),
-            ("chanced", "chance", [PartOfSpeech.Noun]),
-            ("drove", "drive", [PartOfSpeech.Noun]),
-            ("flew", "fly", [PartOfSpeech.Noun]),
-            ("limited", "limit", [PartOfSpeech.Adjective, PartOfSpeech.Noun]),
-            ("rode", "ride", [PartOfSpeech.Noun]),
-            ("scored", "score", [PartOfSpeech.Noun]),
-            ("shook", "shake", [PartOfSpeech.Noun]),
-        };
-
-        foreach (var (form, lemma, extraPos) in expected)
-        {
-            var senses = table[form];
-            var trained = senses.Take(senses.Length - extraPos.Length).ToList();
-            Assert.NotEmpty(trained);
-            Assert.All(trained, d =>
-            {
-                Assert.Equal(lemma, d.Lemma);
-                Assert.Equal(PartOfSpeech.Verb, d.PartOfSpeech);
-            });
-
-            var extras = senses.Skip(trained.Count).ToList();
-            Assert.Equal(extraPos, extras.Select(e => e.PartOfSpeech));
-            Assert.All(extras, e =>
-            {
-                Assert.Equal(form, e.Lemma);
-                Assert.Null(e.SenseId);
-            });
-        }
+                var lemma = entries[p.Sense[2]][1];
+                return !DemaConsulting.WordSense.WordLexicon.TryGetSense(lemma + "#" + p.Label, out var found)
+                    || found.SenseKey != (p.Sense[1].Length == 0 ? null : p.Sense[1])
+                    || found.GroupId != groups.GetValueOrDefault(p.Sense[0]);
+            })
+            .Select(p => p.Sense[0])
+            .Take(10)
+            .ToList();
+        Assert.True(wrong.Count == 0, "Senses of the data that the catalog lacks or has with other values: " + string.Join(", ", wrong));
+        Assert.Equal(labels.Count, DemaConsulting.WordSense.WordLexicon.Current.SenseCount);
     }
 
     /// <summary>

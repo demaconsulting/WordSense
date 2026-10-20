@@ -20,7 +20,7 @@ internal static class ModelFolder
             if (File.Exists(Path.Join(candidate, "SHA256SUMS")))
             {
                 using var model = new BertBaseCasedWordSenseModel(candidate);
-                return ModelFileCheck.Require(model.Spec, candidate);
+                return ModelFileCheck.Require(model.Encoder.Spec, candidate);
             }
         }
 

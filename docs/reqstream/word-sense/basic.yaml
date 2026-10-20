@@ -8,15 +8,15 @@ sections:
         requirements:
           - id: WordSense-Basic-Classify
             title: >-
-              The Basic subsystem shall classify words from the core lexicon statistically: an unknown word without
-              details, a word whose lemma and part of speech have one sense with that sense, and an ambiguous word with
-              the analysis (lemma, part of speech and features) that the sentence context makes most probable, at the
-              part of speech level.
+              The Basic subsystem shall classify words from the core lexicon statistically: an unknown word as
+              unknown, with no analysis, and every known word with all its analyses and their probabilities, the
+              analysis that the sentence context makes most probable selected, at the part of speech level, or at the
+              sense level where the selected analysis has exactly one sense.
             tags: [subsystem]
             justification: |
               A lexicon lookup decides most words; the part of speech and the context cues in the sentence decide the
-              rest without a model. Without fine-sense evidence the model states only what it can tell, the part of
-              speech.
+              rest without a model. Without fine-sense evidence the model states only what it can tell, the analysis
+              and its probability, and names a sense only where the lemma and part of speech have no other.
             children:
               - WordSense-Basic-BasicWordSenseModel-Classify
               - WordSense-Basic-BasicWordSenseModel-Dispose
@@ -29,6 +29,25 @@ sections:
               - WordSense-Basic-BasicClassifier-Validation
             tests:
               - BasicClassifier_ClassifyAsync_Context_ChoosesPartOfSpeech
+              - BasicClassifier_ClassifyAsync_Context_SelectsTheMostProbableAnalysis
+
+          - id: WordSense-Basic-Candidates
+            title: >-
+              The Basic subsystem shall list, for every known word, all its analyses with probabilities that sum to
+              one, the largest first and, on a tie, in lexicon order, and shall list senses only inside an analysis
+              whose lemma and part of speech have exactly one sense (that sense with probability 1), and no senses for
+              any other analysis, because it scores analyses and not fine senses.
+            tags: [subsystem]
+            justification: |
+              A consumer that reads the analyses must be able to tell a model without sense scores from one that scores
+              senses; empty sense lists for the ambiguous analyses say that the Basic model has none, while the one
+              sense of a single-sense analysis is certain and needs no evidence.
+            children:
+              - WordSense-Basic-BasicClassifier-Candidates
+            tests:
+              - BasicClassifier_ClassifyAsync_AmbiguousWord_ListsAnalysesAndNoSenses
+              - BasicClassifier_ClassifyAsync_SingleSenseAnalysis_ListsThatSenseWithProbabilityOne
+              - BasicClassifier_ClassifyAsync_TiesKeepLexiconOrder
 
           - id: WordSense-Basic-Tagger
             title: >-
@@ -49,7 +68,7 @@ sections:
             title: >-
               The Basic subsystem shall separate analyses of one form that share a part of speech (the past and the
               present of read, or the lemmas of a form such as left) by scoring context cues taken from the words
-              around the target against per-lemma statistics.
+              around the target against the cue statistics of the form or of its lemma, whose columns are analyses.
             tags: [subsystem]
             justification: |
               Part of speech alone cannot choose between the analyses of one part of speech; the neighboring words
@@ -62,9 +81,10 @@ sections:
 
           - id: WordSense-Basic-Fusion
             title: >-
-              The Basic subsystem shall combine the part-of-speech probabilities and the cue scores into one answer
-              for every ambiguous word, with a confidence that is the probability of the chosen analysis, greater than
-              0 and at most 1.
+              The Basic subsystem shall combine the part-of-speech probabilities and the cue scores into one
+              probability for every analysis of an ambiguous word, each greater than 0 and the probabilities summing to
+              one, so that the confidence of the answer, the probability of the selected analysis, is greater than 0
+              and at most 1.
             tags: [subsystem]
             justification: |
               Callers apply their own confidence policy; an answer with an honest probability for every ambiguous word
@@ -107,9 +127,13 @@ sections:
           - id: WordSense-Basic-Packaging
             title: >-
               The Basic package shall ship its XML documentation with a namespace summary and verified examples, its
-              NuGet metadata, and a README.
+              NuGet metadata with the license expression MIT AND CC-BY-SA-4.0, and a README and a packed NOTICE file
+              that carry the credits and license of the statistics it embeds (derived from UD English-EWT under
+              CC BY-SA 4.0).
             tags: [subsystem]
             justification: |
-              Consumers learn the API from the package; verified examples cannot go stale.
+              The embedded statistics are trained on a share-alike treebank, whose license requires attribution and
+              is carried by the package; consumers learn the API from the package, and verified examples cannot go
+              stale.
             tests:
               - BasicWordSense_XmlDocExamples_Compile

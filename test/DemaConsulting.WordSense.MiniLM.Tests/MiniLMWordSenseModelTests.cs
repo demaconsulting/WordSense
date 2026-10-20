@@ -2,10 +2,19 @@ namespace DemaConsulting.WordSense.MiniLM.Tests;
 
 /// <summary>
 ///     Tests for <see cref="MiniLMWordSenseModel"/>. Most need no model files and no network access; the two that
-///     classify with the real model are skipped when the Git LFS files are absent.
+///     use the real model files are skipped when the Git LFS files are absent.
 /// </summary>
 public class MiniLMWordSenseModelTests
 {
+    private static readonly string[] Sentence = ["They", "will", "record", "the", "record", "."];
+
+    private static MiniLMWordSenseModel Open(string? directory = null)
+    {
+        var model = new MiniLMWordSenseModel(directory);
+        model.Encoder.IntraOpThreads = 2;
+        return model;
+    }
+
     /// <summary>
     ///     The pinned model identity is available before the files are.
     /// </summary>
@@ -16,7 +25,7 @@ public class MiniLMWordSenseModelTests
 
         Assert.Equal("all-MiniLM-L6-v2-int8", model.ModelId);
         Assert.Equal(384, model.HiddenSize);
-        Assert.True(model.Spec.LowerCase);
+        Assert.True(model.Encoder.Spec.LowerCase);
     }
 
     /// <summary>
@@ -47,6 +56,41 @@ public class MiniLMWordSenseModelTests
     }
 
     /// <summary>
+    ///     An ambiguous word that the encoder does not score is answered by the Basic fallback from the context, at the
+    ///     part of speech level: a verb after "will", a noun after "the", the analyses summing to 1 and no scored sense.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task MiniLMWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback()
+    {
+        // Arrange: no model files are needed, the real Basic model is the fallback
+        using var model = new MiniLMWordSenseModel();
+
+        // Act
+        var results = await model.ClassifyAsync(Sentence, TestContext.Current.CancellationToken);
+
+        // Assert: the context decides the analysis, as the Basic model does
+        Assert.Equal(PartOfSpeech.Verb, results[2].Details?.PartOfSpeech);
+        Assert.Equal(PartOfSpeech.Noun, results[4].Details?.PartOfSpeech);
+        foreach (var index in new[] { 2, 4 })
+        {
+            var result = results[index];
+            Assert.Equal(SenseLevel.PartOfSpeech, result.Level);
+            Assert.Null(result.SenseId);
+            Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 9);
+            Assert.True(result.Analyses.Length > 1);
+            Assert.All(result.Analyses, a => Assert.True(a.Senses.IsEmpty));
+            Assert.Equal(result.Details, result.Analyses[0].Details);
+        }
+
+        // The answer is the one of the Basic model, not the uniform answer of the encoder model
+        using var basic = new Basic.BasicWordSenseModel();
+        var expected = await basic.ClassifyAsync(Sentence, TestContext.Current.CancellationToken);
+        Assert.Equal(expected[2], results[2]);
+        Assert.Equal(expected[4], results[4]);
+    }
+
+    /// <summary>
     ///     The model pins exactly its two files, each by a SHA-256 digest.
     /// </summary>
     [Fact]
@@ -54,8 +98,33 @@ public class MiniLMWordSenseModelTests
     {
         using var model = new MiniLMWordSenseModel();
 
-        Assert.Equal(["model_int8.onnx", "vocab.txt"], model.Spec.Files.Select(f => f.Name).Order().ToArray());
-        Assert.All(model.Spec.Files, f => Assert.Matches("^[0-9a-f]{64}$", f.Sha256.ToLowerInvariant()));
+        Assert.Equal(["model_int8.onnx", "vocab.txt"], model.Encoder.Spec.Files.Select(f => f.Name).Order().ToArray());
+        Assert.All(model.Encoder.Spec.Files, f => Assert.Matches("^[0-9a-f]{64}$", f.Sha256.ToLowerInvariant()));
+    }
+
+    /// <summary>
+    ///     The assembly builds on the core, the Onnx and the Basic packages and on nothing else of the WordSense family:
+    ///     besides the framework and the ONNX Runtime it references exactly those three.
+    /// </summary>
+    [Fact]
+    public void MiniLMWordSenseModel_Assembly_ReferencesCoreOnnxAndBasic()
+    {
+        // Arrange: the names of the assemblies that the MiniLM assembly references
+        var references = typeof(MiniLMWordSenseModel).Assembly.GetReferencedAssemblies()
+            .Select(r => r.Name!)
+            .ToList();
+
+        // Act: keep the assemblies that are neither the framework nor the ONNX Runtime
+        var others = references
+            .Where(name => !name.StartsWith("System", StringComparison.Ordinal)
+                && !name.StartsWith("Microsoft.", StringComparison.Ordinal)
+                && !string.Equals(name, "mscorlib", StringComparison.Ordinal)
+                && !string.Equals(name, "netstandard", StringComparison.Ordinal))
+            .Order(StringComparer.Ordinal)
+            .ToList();
+
+        // Assert
+        Assert.Equal(["DemaConsulting.WordSense", "DemaConsulting.WordSense.Basic", "DemaConsulting.WordSense.Onnx"], others);
     }
 
     /// <summary>
@@ -86,6 +155,28 @@ public class MiniLMWordSenseModelTests
     }
 
     /// <summary>
+    ///     Disposing the model disposes both the encoder model and the Basic fallback model, so both reject further calls.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task MiniLMWordSenseModel_Dispose_DisposesEncoderAndFallback()
+    {
+        // Arrange: both models are usable while the model lives
+        var model = new MiniLMWordSenseModel();
+        Assert.False(model.Encoder.IsReleased);
+        Assert.Single(await model.Encoder.ClassifyAsync(["record"], TestContext.Current.CancellationToken));
+        Assert.Single(await model.Fallback.ClassifyAsync(["record"], TestContext.Current.CancellationToken));
+
+        // Act
+        model.Dispose();
+
+        // Assert: the encoder is released and both reject calls
+        Assert.True(model.Encoder.IsReleased);
+        await Assert.ThrowsAsync<ObjectDisposedException>(() => model.Encoder.ClassifyAsync(["record"], TestContext.Current.CancellationToken));
+        await Assert.ThrowsAsync<ObjectDisposedException>(() => model.Fallback.ClassifyAsync(["record"], TestContext.Current.CancellationToken));
+    }
+
+    /// <summary>
     ///     The defaults construct a model with the per-user store and a 128-token window; the limits are accepted.
     /// </summary>
     [Fact]
@@ -107,7 +198,7 @@ public class MiniLMWordSenseModelTests
     [Fact]
     public async Task MiniLMWordSenseModel_EnsureModelAsync_ModelDirectory_VerifiesPinnedFiles()
     {
-        using var model = new MiniLMWordSenseModel(ModelFolder.Require()) { IntraOpThreads = 2 };
+        using var model = Open(ModelFolder.Require());
 
         await model.EnsureModelAsync(null, TestContext.Current.CancellationToken);
 
@@ -115,18 +206,18 @@ public class MiniLMWordSenseModelTests
     }
 
     /// <summary>
-    ///     The same text always gives the same classification, and the ambiguous word is resolved.
+    ///     The same text always gives the same classification, and the two uses of the ambiguous word get their part of
+    ///     speech from the context.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
     public async Task MiniLMWordSenseModel_Classify_AmbiguousWord_ReturnsDeterministicResults()
     {
-        using var model = new MiniLMWordSenseModel(ModelFolder.Require()) { IntraOpThreads = 2 };
+        using var model = Open(ModelFolder.Require());
         await model.EnsureModelAsync(null, TestContext.Current.CancellationToken);
-        string[] words = ["They", "will", "record", "the", "record", "."];
 
-        var first = await model.ClassifyAsync(words, TestContext.Current.CancellationToken);
-        var second = await model.ClassifyAsync(words, TestContext.Current.CancellationToken);
+        var first = await model.ClassifyAsync(Sentence, TestContext.Current.CancellationToken);
+        var second = await model.ClassifyAsync(Sentence, TestContext.Current.CancellationToken);
 
         Assert.Equal(first, second);
         Assert.Equal(PartOfSpeech.Verb, first[2].Details?.PartOfSpeech);

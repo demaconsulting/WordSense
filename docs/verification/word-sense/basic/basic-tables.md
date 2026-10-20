@@ -40,7 +40,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Duplicate analysis** (`BasicTables_Load_DuplicateAnalysis_Throws`): an analysis that occurs twice in one lemma table
   throws `InvalidDataException`.
 - **Column of an analysis** (`LemmaCue_RowOf_Analysis_UsesTheColumnOfItsFeatures`): two analyses of one part of speech
-  (for example the past and the present of a verb) resolve to different columns, matched by features.
+  (for example the past participle and the present of `read`) resolve to different columns: the column whose feature
+  items are all contained in the features of the analysis and that has the most items wins; an analysis without a
+  column of its own uses the column with empty features (any features) of its lemma and part of speech.
 - **Embedded table loads** (`BasicTables_Default_LoadsEmbeddedTable`): the table embedded in the assembly loads and has
   statistics (words, suffixes and cue tables).
 - **Shipped table resolves** (`BasicTables_Default_ShippedTable_ResolvesEveryCueClass`): every cue analysis of the

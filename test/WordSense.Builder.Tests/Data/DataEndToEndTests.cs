@@ -159,23 +159,26 @@ public sealed partial class DataEndToEndTests : IDisposable
     }
 
     /// <summary>
-    ///     The committed coarse mapping is present and partitions the senses of the mapped lemmas.
+    ///     The class tables and the form scopes of the retired inventory are gone from the committed data.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_DataEndToEnd_CommittedData_HasCoarseMapping()
+    public void WordSenseBuilder_DataEndToEnd_CommittedData_HasNoRetiredClassTables()
     {
         // Arrange / Act
         var report = CommittedReport.Value;
 
         // Assert
         Assert.True(report.IsValid, string.Join("\n", report.Violations));
-        Assert.True(report.RowCounts["coarse_class"] >= 1521);
-        Assert.True(report.RowCounts["class_sense"] > 6000);
         Assert.Equal(2, report.RowCounts["source"]);
+        foreach (var table in new[] { "coarse_class", "class_sense", "class_entry", "form_sense_scope" })
+        {
+            Assert.False(report.RowCounts.ContainsKey(table), table);
+            Assert.False(Directory.Exists(Path.Join(CommittedRoot, table)), table);
+        }
     }
 
     /// <summary>
-    ///     The committed data carries the labels and groups of the sense inventory.
+    ///     The committed data carries the labels of the sense inventory and its few curated groups.
     /// </summary>
     [Fact]
     public void WordSenseBuilder_DataEndToEnd_CommittedData_HasSenseLabelsAndGroups()
@@ -187,9 +190,10 @@ public sealed partial class DataEndToEndTests : IDisposable
         // Assert
         Assert.True(report.IsValid, string.Join("\n", report.Violations));
         Assert.True(report.RowCounts["sense_label"] > 129_000);
-        Assert.True(report.RowCounts["sense_group"] > 80_000);
-        Assert.Equal(report.RowCounts["sense_label"], report.RowCounts["group_sense"]);
-        Assert.True(inventory.Groups.Values.Count(g => g[4] == "curated") >= 190);
+        Assert.InRange(report.RowCounts["sense_group"], 50, 1_000);
+        Assert.True(report.RowCounts["group_sense"] >= 2 * report.RowCounts["sense_group"]);
+        Assert.All(inventory.Groups.Values, g => Assert.Equal("curated", g[4]));
+        Assert.Equal(["equivalent", "related"], inventory.Groups.Values.Select(g => g[5]).Distinct().Order(StringComparer.Ordinal));
         Assert.Contains("curated", inventory.Labels.Values.Select(l => l[2]));
         Assert.Contains(inventory.Labels, l => inventory.PublicId(l.Key) == "go#attempt");
     }
@@ -217,7 +221,7 @@ public sealed partial class DataEndToEndTests : IDisposable
 
     /// <summary>
     ///     No release has published sense labels yet, so the data is its own baseline: nothing changes and no retired
-    ///     id of the id map is the id of a current sense or group.
+    ///     id of the id map is the id of a current sense. Group ids are versioned per release and not compared.
     /// </summary>
     [Fact]
     public void WordSenseBuilder_DataEndToEnd_CommittedData_PublishedLabelsAreNeverChangedOrReused()
@@ -227,7 +231,7 @@ public sealed partial class DataEndToEndTests : IDisposable
 
         // Act
         var report = DataValidator.Validate(CommittedRoot, CommittedRoot);
-        var current = inventory.Labels.Keys.Select(inventory.PublicId).Concat(inventory.Groups.Keys).ToHashSet(StringComparer.Ordinal);
+        var current = inventory.Labels.Keys.Select(inventory.PublicId).ToHashSet(StringComparer.Ordinal);
         var reused = inventory.LabelMap.Select(m => m[0]).Where(current.Contains).ToList();
 
         // Assert
@@ -236,63 +240,103 @@ public sealed partial class DataEndToEndTests : IDisposable
     }
 
     /// <summary>
-    ///     Every sense of a curated lemma is in exactly one group of its lemma and part of speech, without two
-    ///     respellings.
+    ///     Every group id is <c>lemma#group:label</c> with a slug label, so it is never the id of a sense, and every group
+    ///     has a kind of the vocabulary; the curation of the group carries the same kind and non-empty evidence.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_DataEndToEnd_CommittedData_GroupsPartitionTheirLemmas()
+    public void WordSenseBuilder_DataEndToEnd_CommittedData_GroupsHaveAMarkerIdAKindAndCuratedEvidence()
     {
         // Arrange
         var inventory = Inventory.Value;
-        var curated = inventory.Groups.Values.Where(g => g[4] == "curated").Select(g => g[1]).ToHashSet(StringComparer.Ordinal);
+        var senseIds = inventory.Labels.Keys.Select(inventory.PublicId).ToHashSet(StringComparer.Ordinal);
+        var curation = File.ReadAllLines(Path.Join(DataFixture.RepositoryRoot(), "corpus", "curation", "groups.tsv"));
+        var header = curation[0].Split('\t');
+        var curated = curation.Skip(1).Where(l => l.Length > 0).Select(l => l.Split('\t')).Select(c => (Id: c[Array.IndexOf(header, "group_id")], Kind: c[Array.IndexOf(header, "kind")], Evidence: c[Array.IndexOf(header, "evidence")])).ToList();
 
-        // Act
-        var problems = new List<string>();
-        foreach (var sense in inventory.Senses.Values.Where(s => curated.Contains(inventory.Lemma(s)) && inventory.Entries[s[2]][4] == "1"))
-        {
-            if (!inventory.GroupOf.TryGetValue(sense[0], out var groupId))
-            {
-                problems.Add($"{sense[0]} is in no group");
-                continue;
-            }
-
-            var group = inventory.Groups[groupId];
-            if (group[1] != inventory.Lemma(sense) || group[2] != inventory.Entries[sense[2]][2])
-            {
-                problems.Add($"{sense[0]} is in the group {groupId} of another lemma or part of speech");
-            }
-        }
-
-        var mixed = inventory.Members.GroupBy(m => m[0]).Where(g => g.Select(m => inventory.Respelling.GetValueOrDefault(m[1])).Where(r => !string.IsNullOrEmpty(r)).Distinct().Count() > 1).Select(g => g.Key).ToList();
+        // Act - a group split by part of speech has the curated slug plus a part of speech suffix
+        static string SlugOf(string id) => id[(id.IndexOf('#', StringComparison.Ordinal) + 1)..];
+        var badId = inventory.Groups.Values.Where(g => g[0] != g[1] + "#group:" + g[3] || !LabelShape().IsMatch(g[3]) || senseIds.Contains(g[0])).Select(g => g[0]).Take(5).ToList();
+        var badKind = inventory.Groups.Values.Where(g => g[5] is not ("equivalent" or "related")).Select(g => g[0]).Take(5).ToList();
+        var noEvidence = inventory.Groups.Values
+            .Where(g => !curated.Any(c => c.Id.StartsWith(g[1] + "#", StringComparison.Ordinal)
+                && (SlugOf(c.Id) == g[3] || g[3].StartsWith(SlugOf(c.Id) + "-", StringComparison.Ordinal))
+                && c.Kind == g[5]
+                && c.Evidence.Trim().Length > 0))
+            .Select(g => g[0]).Take(5).ToList();
 
         // Assert
-        Assert.True(curated.Count >= 20, "at least the 20 curated lemmas");
-        Assert.Contains("go", curated);
-        Assert.Empty(problems.Take(5));
-        Assert.Empty(mixed);
+        Assert.Empty(badId);
+        Assert.Empty(badKind);
+        Assert.Empty(noEvidence);
     }
 
     /// <summary>
-    ///     Every lemma that is not curated has one default group for each of its parts of speech, with all its senses.
+    ///     Every group is a set of at least two, but not all, senses of one lemma and part of speech, a sense is in at
+    ///     most one group, and a group does not hold two respellings.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_DataEndToEnd_CommittedData_OtherLemmasHaveOneDefaultGroupPerPartOfSpeech()
+    public void WordSenseBuilder_DataEndToEnd_CommittedData_GroupsAreSetsOfSomeSensesOfOnePartOfSpeech()
     {
         // Arrange
         var inventory = Inventory.Value;
-        var curated = inventory.Groups.Values.Where(g => g[4] == "curated").Select(g => g[1]).ToHashSet(StringComparer.Ordinal);
-        var pos = new Dictionary<string, string> { ["n"] = "noun", ["v"] = "verb", ["a"] = "adjective", ["r"] = "adverb", ["u"] = "pronoun", ["p"] = "preposition", ["c"] = "conjunction", ["i"] = "interjection", ["d"] = "determiner", ["x"] = "auxiliary" };
+        var sensesOfPartOfSpeech = inventory.Senses.Values.GroupBy(s => (inventory.Lemma(s), inventory.Entries[s[2]][2])).ToDictionary(g => g.Key, g => g.Count());
+        var byGroup = inventory.Members.GroupBy(m => m[0]).ToDictionary(g => g.Key, g => g.Select(m => m[1]).ToList(), StringComparer.Ordinal);
 
         // Act
-        var others = inventory.Senses.Values.Where(s => inventory.Entries[s[2]][4] == "1" && !curated.Contains(inventory.Lemma(s))).ToList();
-        var wrong = others.Where(s => inventory.GroupOf.GetValueOrDefault(s[0]) != inventory.Lemma(s) + "#" + pos[inventory.Entries[s[2]][2]] + "-group").Select(s => s[0]).Take(5).ToList();
-        var buckets = others.Select(s => (inventory.Lemma(s), inventory.Entries[s[2]][2])).Distinct().Count();
-        var defaults = inventory.Groups.Values.Where(g => g[4] == "default" && !curated.Contains(g[1])).ToList();
+        var problems = new List<string>();
+        foreach (var group in inventory.Groups.Values)
+        {
+            var members = byGroup.GetValueOrDefault(group[0], []);
+            var key = (group[1], group[2]);
+            if (members.Count < 2)
+            {
+                problems.Add($"{group[0]} has fewer than two senses");
+            }
+
+            if (members.Count >= sensesOfPartOfSpeech.GetValueOrDefault(key))
+            {
+                problems.Add($"{group[0]} has every sense of its lemma and part of speech");
+            }
+
+            if (members.Any(m => (inventory.Lemma(inventory.Senses[m]), inventory.Entries[inventory.Senses[m][2]][2]) != key))
+            {
+                problems.Add($"{group[0]} has a sense of another lemma or part of speech");
+            }
+
+            if (members.Select(m => inventory.Respelling.GetValueOrDefault(m)).Where(r => !string.IsNullOrEmpty(r)).Distinct().Count() > 1)
+            {
+                problems.Add($"{group[0]} mixes respellings");
+            }
+        }
+
+        var inTwoGroups = inventory.Members.GroupBy(m => m[1]).Where(g => g.Count() > 1).Select(g => g.Key).Take(5).ToList();
 
         // Assert
-        Assert.Empty(wrong);
-        Assert.Equal(buckets, defaults.Count);
-        Assert.All(defaults, g => Assert.Equal(g[1] + "#" + g[3], g[0]));
+        Assert.Empty(problems.Take(5));
+        Assert.Empty(inTwoGroups);
+    }
+
+    /// <summary>
+    ///     A group is optional: almost every sense is in no group, only the lemmas of the curation have groups, and no
+    ///     group has the name of a retired default group.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_DataEndToEnd_CommittedData_SensesNeedNoGroup()
+    {
+        // Arrange
+        var inventory = Inventory.Value;
+        var inventorySenses = inventory.Senses.Values.Where(inventory.InInventory).ToList();
+        var curation = File.ReadAllLines(Path.Join(DataFixture.RepositoryRoot(), "corpus", "curation", "groups.tsv")).Skip(1).Where(l => l.Length > 0).Select(l => l.Split('\t')[1]).ToHashSet(StringComparer.Ordinal);
+
+        // Act
+        var withoutGroup = inventorySenses.Count(s => !inventory.GroupOf.ContainsKey(s[0]));
+        var oldNames = inventory.Groups.Keys.Where(id => id.EndsWith("-group", StringComparison.Ordinal)).Take(5).ToList();
+        var foreign = inventory.Groups.Values.Where(g => !curation.Contains(g[1])).Select(g => g[0]).Take(5).ToList();
+
+        // Assert
+        Assert.True(withoutGroup > inventorySenses.Count - 500, "the groups cover only a few senses");
+        Assert.Empty(oldNames);
+        Assert.Empty(foreign);
     }
 
     /// <summary>
@@ -362,6 +406,32 @@ public sealed partial class DataEndToEndTests : IDisposable
     }
 
     /// <summary>
+    ///     The conjunction <c>or</c> and every auxiliary verb of the closed list have an analysis with a project sense
+    ///     (<c>or#conjunction</c>, <c>can#auxiliary</c>).
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_DataEndToEnd_CommittedData_OrAndTheAuxiliariesHaveClosedClassAnalyses()
+    {
+        // Arrange
+        var inventory = Inventory.Value;
+        var listed = File.ReadAllLines(Path.Join(DataFixture.RepositoryRoot(), "corpus", "lexicon", "auxiliaries.tsv"))
+            .Where(l => l.Length > 0 && l[0] != '#').Select(l => l.Split('\t')[0]).ToList();
+        var senseOf = inventory.Senses.Values.Where(s => s[1].Length == 0).ToDictionary(s => s[2], s => inventory.PublicId(s[0]), StringComparer.Ordinal);
+
+        // Act
+        var noEntry = listed.Where(w => !senseOf.GetValueOrDefault($"dema-{w}-x", string.Empty).Equals($"{w}#auxiliary", StringComparison.Ordinal)).ToList();
+        var noAnalysis = listed.Where(w => !inventory.FormsOf.GetValueOrDefault(w, []).Any(e => inventory.Entries[e][2] == "x")).ToList();
+        var orAnalyses = inventory.FormsOf.GetValueOrDefault("or", []);
+
+        // Assert
+        Assert.NotEmpty(listed);
+        Assert.Empty(noEntry);
+        Assert.Empty(noAnalysis);
+        Assert.Equal("dema-or-c", orAnalyses[0]);
+        Assert.Equal("or#conjunction", senseOf["dema-or-c"]);
+    }
+
+    /// <summary>
     ///     The count import command writes the table from a counts file.
     /// </summary>
     [Fact]
@@ -389,7 +459,7 @@ public sealed partial class DataEndToEndTests : IDisposable
     ///     The label command labels the senses and the validator accepts the result; the baseline option is read.
     /// </summary>
     [Fact]
-    public async Task WordSenseBuilder_DataCommands_LabelSenses_WritesLabelsAndGroups()
+    public async Task WordSenseBuilder_DataCommands_LabelSenses_WritesLabelsAndNoGroups()
     {
         // Arrange
         var data = EmptyDataFolder();
@@ -404,6 +474,7 @@ public sealed partial class DataEndToEndTests : IDisposable
         Assert.Contains("12 generated", label.Output, StringComparison.Ordinal);
         Assert.Equal(0, validate.Code);
         Assert.Contains("sense_label 12", validate.Output, StringComparison.Ordinal);
+        Assert.False(Directory.Exists(Path.Join(data, "sense_group")));
     }
 
     /// <summary>
@@ -458,6 +529,7 @@ public sealed partial class DataEndToEndTests : IDisposable
             Respelling = Read("sense_respelling").ToDictionary(r => r[0], r => r[1], StringComparer.Ordinal);
             Glosses = Read("gloss").Where(g => g[2].Length > 0).Select(g => g[0]).ToHashSet(StringComparer.Ordinal);
             FormEntries = Read("form").Where(f => f[2].Length > 0).Select(f => f[2]).ToHashSet(StringComparer.Ordinal);
+            FormsOf = Read("form").Where(f => f[2].Length > 0).GroupBy(f => f[0], StringComparer.Ordinal).ToDictionary(g => g.Key, g => g.Select(f => f[2]).ToList(), StringComparer.Ordinal);
         }
 
         public Dictionary<string, string[]> Entries { get; }
@@ -481,6 +553,8 @@ public sealed partial class DataEndToEndTests : IDisposable
         public HashSet<string> Glosses { get; }
 
         public HashSet<string> FormEntries { get; }
+
+        public Dictionary<string, List<string>> FormsOf { get; }
 
         public string Lemma(string[] sense) => Entries[sense[2]][1];
 

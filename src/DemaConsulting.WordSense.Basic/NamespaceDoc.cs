@@ -1,8 +1,8 @@
 namespace DemaConsulting.WordSense.Basic;
 
 /// <summary>
-///     The basic model for DemaConsulting.WordSense: chooses between the senses of an ambiguous English word from the
-///     words around it, with no neural network, no model files and no ONNX Runtime.
+///     The basic model for DemaConsulting.WordSense: chooses the analysis (lemma, part of speech and features) of an
+///     ambiguous English word from the words around it, with no neural network, no model files and no ONNX Runtime.
 /// </summary>
 /// <remarks>
 ///     <para>
@@ -40,29 +40,49 @@ namespace DemaConsulting.WordSense.Basic;
 ///     </para>
 ///     <para>
 ///     Accuracy (build notes, https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/basic-evaluation.md and
-///     https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-table.md): about 89% best-sense
-///     accuracy on the holdout and about 85% on real text, against about 93% and 97% on real text for MiniLM and
-///     BertBaseCased. Basic is enough when nothing may be downloaded, startup time and memory must stay small, or
-///     ONNX Runtime cannot be shipped; use an encoder model when real-text accuracy matters more.
+///     https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-table.md): about 92% best-analysis
+///     accuracy on the holdout and about 89% on real text, and about 92% and 90% for the part of speech alone. Basic is
+///     enough when nothing may be downloaded, startup time and memory must stay small, or ONNX Runtime cannot be
+///     shipped.
 ///     </para>
 ///     <para>
 ///     Tokens: split punctuation into elements of their own, one sentence per call is recommended. The model splits a
 ///     list into sentence segments at the tokens <c>"."</c>, <c>"!"</c> and <c>"?"</c>, tags each segment and uses the
 ///     five words on each side of the target as context; there is no length limit. Keep a contraction such as
-///     <c>don't</c> or a hyphenated word as one token; it has no lexicon entry and is returned as unknown (null,
-///     confidence 0), and a tokenizer that splits it into <c>do</c> and <c>n't</c> changes what the tagger sees.
+///     <c>don't</c> or a hyphenated word as one token; it has no lexicon entry and is returned as unknown
+///     (<see cref="ClassifyResult.IsKnown"/> is false, level <see cref="SenseLevel.None"/>, no analysis, <c>Details</c>
+///     null, confidence 0), and a tokenizer that splits it into <c>do</c> and <c>n't</c> changes what the tagger sees.
+///     </para>
+///     <para>
+///     Result: <see cref="ClassifyResult.Analyses"/> lists every analysis of the word (lemma, part of speech and
+///     features) with its probability, the largest first, summing to one; <c>Details</c> is the first of them, the
+///     selected analysis. The model scores analyses, not fine senses: the <see cref="AnalysisCandidate.Senses"/> of an
+///     analysis list its one sense with probability 1 when its lemma and part of speech have exactly one sense, and are
+///     empty otherwise. A consumer that wants the model's decision reads the summary (<c>Level</c>, <c>Confidence</c>,
+///     <c>SenseId</c>); one that wants its own decision reads the analyses.
+///     </para>
+///     <para>
+///     Answer levels: the Basic model answers at two of the four <see cref="SenseLevel"/> values for a known word. When
+///     the selected analysis has a lemma and part of speech with exactly one sense, the word is answered at the
+///     <see cref="SenseLevel.Sense"/> level with that sense (<c>SenseId</c>, and <c>GroupId</c> when the sense is in a
+///     group); every other known word is answered at the <see cref="SenseLevel.PartOfSpeech"/> level with its analysis in
+///     <c>Details</c> and no sense or group id, because the statistics cannot separate fine senses or groups of senses,
+///     however low the confidence is; an unknown word is answered at the <see cref="SenseLevel.None"/> level. The model
+///     never answers at the <see cref="SenseLevel.Group"/> level.
 ///     </para>
 ///     <para>
 ///     Confidence: 0 means the word is unknown to the lexicon (<c>Details</c> is null), 1 means the word has a single
-///     sense in the lexicon, and a word with several senses gets the probability of the chosen sense, between one over
-///     the number of senses and 1; <c>Details</c> is never null for a word that is in the lexicon, so an ambiguous
+///     analysis in the lexicon, and a word with several analyses gets the probability of the selected analysis, between
+///     one over the number of analyses and 1 (at the sense level it is that probability times the probability 1 of the
+///     one sense); <c>Details</c> is never null for a word that is in the lexicon (a number word such as
+///     <c>one</c> included), so an ambiguous
 ///     word is never left undecided. This probability scale is specific to the Basic model: do not reuse a threshold
 ///     from, or for, MiniLM or BertBaseCased, whose confidence is a margin score. The value is a relative score, not a
 ///     calibrated probability, but higher values are more often right: on real text a threshold of 0.6 keeps about
 ///     90% of the target words at about 89% precision, 0.8 about 78% at about 93%, and 0.9 about 70% at about 96%
 ///     (holdout: 95% at 90%, 86% at 94%, 78% at 96%; the table is in
 ///     https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/basic-evaluation.md). The lowest value
-///     a word with n senses can get is 1/n (0.5 for two senses), so a threshold at or below that keeps every answer
+///     a word with n analyses can get is 1/n (0.5 for two analyses), so a threshold at or below that keeps every answer
 ///     for such words; the recommended starting threshold for this model is 0.8.
 ///     </para>
 ///     <para>
@@ -81,11 +101,10 @@ namespace DemaConsulting.WordSense.Basic;
 ///     table of edge cases in the documentation of the <c>DemaConsulting.WordSense</c> namespace.
 ///     </para>
 ///     <para>
-///     Which model to choose: Basic is the smallest and fastest and needs nothing else, but it is less accurate than
-///     the encoder models. If accuracy matters more, use
-///     <c>DemaConsulting.WordSense.MiniLM</c> (the default recommendation: 22 MiB, about 2 ms per sentence) or
-///     <c>DemaConsulting.WordSense.BertBaseCased</c> (104 MiB, case-aware and the most accurate); see the namespace
-///     documentation of <c>DemaConsulting.WordSense</c> for the comparison table.
+///     Which model to choose: Basic is the smallest and fastest and needs nothing else. The encoder packages
+///     <c>DemaConsulting.WordSense.MiniLM</c> (22 MiB) and <c>DemaConsulting.WordSense.BertBaseCased</c> (104 MiB,
+///     case-aware) are meant to score fine senses and groups of senses; in this version they answer every word through
+///     the Basic model. See the namespace documentation of <c>DemaConsulting.WordSense</c> and the model table.
 ///     </para>
 /// </remarks>
 /// <example>
@@ -98,11 +117,11 @@ namespace DemaConsulting.WordSense.Basic;
 ///     await model.EnsureModelAsync();
 ///
 ///     string[] words = ["They", "will", "record", "the", "record", "."];
-///     WordSense[] senses = await model.ClassifyAsync(words);
+///     ClassifyResult[] results = await model.ClassifyAsync(words);
 ///
 ///     for (var i = 0; i &lt; words.Length; i++)
 ///     {
-///         Console.WriteLine($"{words[i]}: {senses[i].Details?.PartOfSpeech.ToString() ?? "-"} ({senses[i].Confidence:0.00})");
+///         Console.WriteLine($"{words[i]}: {results[i].Details?.PartOfSpeech.ToString() ?? "-"} ({results[i].Level}, {results[i].Confidence:0.00})");
 ///     }
 ///     </code>
 /// </example>

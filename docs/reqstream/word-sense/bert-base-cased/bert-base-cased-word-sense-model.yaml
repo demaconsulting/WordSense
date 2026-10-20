@@ -44,6 +44,22 @@ sections:
                   - BertBaseCasedWordSenseModel_Classify_AmbiguousWord_ReturnsBestSense
                   - BertBaseCasedWordSenseModel_Classify_TrainedLemma_AnswersAtASenseOrGroupLevel
 
+              - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Composition
+                title: >-
+                  BertBaseCasedWordSenseModel shall wrap a FallbackWordSenseModel of its encoder model (primary) and a
+                  BasicWordSenseModel (fallback), answer every ambiguous word that the encoder does not score with the
+                  complete result of the Basic model (the analyses chosen in context at the part of speech level), make
+                  EnsureModelAsync ensure the encoder files (the Basic model needs none) and make Dispose dispose both
+                  models.
+                tags: [unit]
+                justification: |
+                  Every word of a text must be answered, not only the lemmas the weights were trained for; the
+                  composition lives in the model package so that the encoder base class needs no Basic model.
+                tests:
+                  - BertBaseCasedWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback
+                  - BertBaseCasedWordSenseModel_Assembly_ReferencesCoreOnnxAndBasic
+                  - BertBaseCasedWordSenseModel_Dispose_DisposesEncoderAndFallback
+
               - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Options
                 title: >-
                   BertBaseCasedWordSenseModel shall accept an optional model directory and a maximum sequence length

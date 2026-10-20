@@ -42,7 +42,7 @@ sections:
                   sharing one ensure between concurrent callers and allowing a failed ensure to be retried), and shall
                   answer words that need no model (unknown, single-sense, or ambiguous without trained weights)
                   without touching model files or the encoder, an ambiguous word without weights getting the
-                  statistical analysis of the fallback model at the part of speech level.
+                  lexicon analyses at the part of speech level (all analyses equally likely, no scored senses).
                 tags: [unit]
                 justification: |
                   Loading a session and weights is expensive and must happen once; a model that is never needed must
@@ -58,8 +58,7 @@ sections:
 
               - id: WordSense-Onnx-OnnxWordSenseModel-Dispose
                 title: >-
-                  OnnxWordSenseModel shall release its encoder session and the fallback model it owns on disposal,
-                  tolerate repeated and concurrent
+                  OnnxWordSenseModel shall release its encoder session on disposal, tolerate repeated and concurrent
                   disposal, defer the release while a classification is running (the running call completes and the
                   last one to finish releases the session; new calls are refused at once), cancel a download that its
                   preparation step has in flight (the pending call then throws OperationCanceledException and leaves
@@ -76,7 +75,6 @@ sections:
                   - OnnxWordSenseModel_Dispose_DuringEnsure_CancelsDownload
                   - OnnxWordSenseModel_Dispose_DuringClassification_DefersEncoderRelease
                   - OnnxWordSenseModel_Dispose_Idle_ReleasesEncoderImmediately
-                  - OnnxWordSenseModel_Dispose_ReleasesTheFallbackModel
                   - InFlightTracker_Close_Idle_ReleasesOnce
                   - InFlightTracker_Close_WithRunningOperations_ReleasesAfterLastExit
                   - InFlightTracker_Enter_AfterClose_ThrowsObjectDisposed

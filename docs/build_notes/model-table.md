@@ -6,11 +6,11 @@ Do not edit it by hand: the table of the root README must equal the table below 
 <!-- markdownlint-disable MD013 -->
 
 <!-- model-table:begin -->
-| Model | Holdout best sense | Real-text best sense | Part of speech (holdout / real) | Pronunciation (holdout / real) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Basic | 91.13% | 85.20% | 92.24% / 90.13% | 90.11% / 87.41% | none | 87 KiB | 2 MiB | 0.05 ms | 36 ms + 64 ms | no |
-| MiniLM | 96.86% | 92.60% | 97.19% / 95.36% | 96.37% / 94.45% | 22 MiB | 1,129 KiB | 64 MiB | 1.84 ms | 388 ms + 201 ms | yes |
-| BERT base cased | 98.99% | 97.39% | 99.16% / 98.40% | 99.15% / 98.20% | 104 MiB | 2,241 KiB | 150 MiB | 8.55 ms | 521 ms + 173 ms | yes |
+| Model | Holdout best analysis | Real-text best analysis | Part of speech (holdout / real) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| Basic | 91.93% | 89.40% | 92.13% / 90.42% | none | 83 KiB | 13 MiB | 0.08 ms | 24 ms + 55 ms | no |
+| MiniLM | 91.93% | 89.40% | 92.13% / 90.42% | 22 MiB | 1,132 KiB | 12 MiB | 0.12 ms | 161 ms + 80 ms | yes |
+| BERT base cased | 91.93% | 89.40% | 92.13% / 90.42% | 104 MiB | 2,245 KiB | 13 MiB | 0.08 ms | 211 ms + 58 ms | yes |
 <!-- model-table:end -->
 
 <!-- markdownlint-enable MD013 -->

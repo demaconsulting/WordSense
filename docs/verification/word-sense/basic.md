@@ -2,8 +2,9 @@
 
 This document describes the verification of the Basic subsystem, the package `DemaConsulting.WordSense.Basic`: a
 model that needs no model files and chooses among the analyses (lemma, part of speech and features) of a word with a
-statistical part-of-speech tagger and a context cue model, answering at the part of speech level and naming a sense
-only for a word whose lemma and part of speech have one sense.
+statistical part-of-speech tagger and a context cue model, giving every analysis its probability, answering at the part
+of speech level and naming a sense only where the selected analysis has one sense (its lemma and part of speech have
+exactly one sense).
 
 ### Verification Approach
 
@@ -39,8 +40,9 @@ All subsystem scenarios pass on every platform and target framework of the CI ma
 
 #### Ambiguous Words Are Always Answered
 
-For a word with several analyses the result has details, the level part of speech and a confidence between one over the
-number of analyses and 1; the model never abstains (see the `BasicClassifier` and `SenseFusion` unit documents).
+For a word with several analyses the result has details, lists every analysis with its probability (the probabilities
+sum to one, the largest first, a tie in lexicon order), has the level part of speech and a confidence between one over
+the number of analyses and 1; the model never abstains (see the `BasicClassifier` and `SenseFusion` unit documents).
 
 #### Context Chooses the Part of Speech
 
@@ -56,16 +58,17 @@ apart by the words around the target (see the `CueModel`, `SenseFusion` and `Bas
 
 #### Answer Level Is Stated Honestly
 
-An ambiguous word is answered at the part of speech level without a group or sense id, a word whose lemma and part of
-speech have one sense at the sense level with that sense and confidence 1, a word with one analysis and several senses
-at the part of speech level with confidence 1, and an unknown word at the level none; no answer is at the group level
-(see the `BasicClassifier` unit document).
+An ambiguous word is answered at the part of speech level without a group or sense id, with all its analyses listed and
+no scored senses; a word whose selected analysis has a lemma and part of speech with one sense is answered at the sense
+level with that sense (and lists it with probability 1 in its analysis); a word with one analysis and several senses is
+answered at the part of speech level with confidence 1, and an unknown word at the level none with no analysis; no
+answer is at the group level (see the `BasicClassifier` unit document).
 
 #### Unambiguous Words Match the Other Packages
 
-A word with a single analysis and a single sense is answered with the analysis, the sense and its group and confidence
-1, and an unknown word has no details, the level none and confidence 0, exactly as in the model packages. A number word
-such as `one` has details.
+A word with a single analysis and a single sense is answered with the analysis, the sense (with no group) and confidence
+1, and an unknown word is not known, has no analyses, no details, the level none and confidence 0, exactly as in the
+model packages. A number word such as `one` has details.
 
 #### Embedded Table Is Valid
 

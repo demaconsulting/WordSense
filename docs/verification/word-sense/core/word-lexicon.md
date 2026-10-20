@@ -66,8 +66,14 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `TryGetSenseByKey_ProjectSense_IsNeverFound`): a sense found by its id equals the sense found by its OEWN key; an
   unknown id and an unknown key are absent; a project sense has no key and is only found by its id.
 - **Groups** (`TryGetGroup_ById_ListsMemberSenses`, `TryGetGroup_UnknownId_IsFalse`,
-  `Groups_EverySense_BelongsToExactlyOneGroup`, `Groups_EveryGroup_HasOneLemmaAndOnePartOfSpeech`): a group lists its
-  senses; every sense of the catalog is in exactly one group, and every group has one lemma and one part of speech.
+  `Groups_EverySense_BelongsToAtMostOneGroup`, `Groups_EveryGroup_HasOneLemmaAndOnePartOfSpeech`,
+  `Groups_EveryGroup_HasAtLeastTwoSensesAndNotAllOfThem`, `Groups_EveryGroupId_HasGroupMarkerAndNeverEqualsASenseId`): a
+  group lists its senses in inventory order; every sense of the catalog is in at
+  most one group (a sense in no group has a null group id), every group has one lemma and one part of speech, every
+  group has at least two senses and never all the senses of its lemma and part of speech, and every group id has the
+  `#group:` marker and is never equal to a sense id.
+- **Version** (`Version_IsStableLowerCaseHex`): `WordLexicon.Version` is the same on every call and is 16 lower-case
+  hexadecimal digits that equal the first eight bytes of the inventory hash of the opened image.
 - **Embedded image and lazy loading** (`Count_EmbeddedImage_LoadsAndIsNotEmpty`,
   `Lookup_ConcurrentAccess_ReturnsSameAnswers`): the image loads on first use and many tasks that access it at the
   same moment receive the same answers.
@@ -76,11 +82,16 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Corrupt image is rejected** (`Image_Corruption_IsRejected`): a wrong magic number, an unsupported version, a
   flipped byte and a truncated image each throw `InvalidDataException`.
 - **Image failure matrix** (`Image_TruncatedAtEverySectionBoundary_IsRejected`, `Image_WrongHash_IsRejectedByContentHashOnly`,
-  `Image_CountMismatch_IsRejected`, `Image_SenseWithUnknownGroup_IsRejected`, `Image_DuplicateSenseId_IsRejected`): an
+  `Image_CountMismatch_IsRejected`, `Image_SenseWithUnknownGroup_IsRejected`,
+  `Image_GroupOfOneSenseOrAllSenses_IsRejected`, `Image_GroupIdWithoutMarker_IsRejected`,
+  `Image_DuplicateSenseId_IsRejected`): an
   image cut at the header, the directory and each section boundary is rejected with and without the hash check; a wrong
   content hash is rejected while the source data hash is informational; a section whose directory length disagrees
   with its content, or a directory with too many sections, is rejected; a sense that names a group that does not exist
-  and a duplicate sense id are rejected.
+  and a duplicate sense id are rejected; a group id without the `#group:` marker, a group with fewer than two members,
+  a group of all the senses of its lemma
+  and part of speech, a group that mixes lemmas or parts of speech and group members that disagree with the
+  sense-to-group index are rejected.
 - **Complete dictionary**: the builder tests `Words_Committed_HoldsEveryDictionaryWord` and
   `Words_Committed_CatalogHoldsEveryOewnAndProjectSense` show that no dictionary word and no sense is absent from the
   image.

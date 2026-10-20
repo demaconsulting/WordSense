@@ -61,12 +61,13 @@ namespace DemaConsulting.WordSense;
 ///     parallel to the input (same length and order; empty for an empty list). Disposal: after <c>Dispose</c>, both
 ///     methods throw <see cref="ObjectDisposedException"/>, and <c>Dispose</c> is idempotent and thread-safe.
 ///     Concurrency: <see cref="ClassifyAsync"/> is safe to call from several threads at once on one instance.
-///     Confidence: a word that the lexicon does not know has <see cref="WordSense.Details"/> null and confidence 0; a
-///     word with a single sense gets that sense with confidence 1; an ambiguous word gets its best sense together with
-///     a confidence from 0 to 1 whose scale the implementation documents (callers must not reuse a threshold across
-///     implementations); only a null <see cref="WordSense.Details"/> means unknown or unscored, so an ambiguous word
-///     with a non-null <see cref="WordSense.Details"/> may legitimately carry any value from 0 to 1, including exactly
-///     0 or exactly 1. An implementation that needs no files completes <see cref="EnsureModelAsync"/> at once.
+///     Confidence: a word that the lexicon does not know has <see cref="ClassifyResult.Details"/> null, the level
+///     <see cref="SenseLevel.None"/> and confidence 0; a word whose lemma and part of speech have a single sense gets
+///     that sense with confidence 1; an ambiguous word gets its best answer at the level the implementation is
+///     confident in, with a confidence from 0 to 1 that refers to that level and whose scale the implementation
+///     documents (callers must not reuse a threshold across implementations); only a null
+///     <see cref="ClassifyResult.Details"/> means unknown. An implementation that needs no files completes
+///     <see cref="EnsureModelAsync"/> at once.
 ///     Disposal while calls run: <c>Dispose</c> must be safe while calls are running (it must not break or hang a
 ///     running classification). Lazy ensure: <see cref="ClassifyAsync"/> should ensure the model lazily and only when
 ///     a word needs it, never for a list that the lexicon alone answers. Word list: enumerate the
@@ -74,8 +75,8 @@ namespace DemaConsulting.WordSense;
 ///     <see cref="EnsureModelAsync"/> must not throw for it; it returns a cancelled task (awaiting it throws
 ///     <see cref="OperationCanceledException"/>), except that a task that has already completed may be returned as it
 ///     is (see the remarks of <see cref="EnsureModelAsync"/>).
-///     Result content: each element of the result has <see cref="WordSense.Word"/> equal to the input element at the
-///     same index (as given, not lower-cased); <see cref="WordSense.Details"/> comes from
+///     Result content: each element of the result has <see cref="ClassifyResult.Word"/> equal to the input element at the
+///     same index (as given, not lower-cased); <see cref="ClassifyResult.Details"/> comes from
 ///     <see cref="WordLexicon.Lookup"/> semantics: the word is lower-cased (<c>ToLowerInvariant()</c>) and then looked up
 ///     with <see cref="WordLexicon.Lookup"/>, which matches the spelling exactly or without regard to case and counts the
 ///     curly apostrophe U+2019 as <c>'</c>, so <c>Record</c> finds <c>record</c> (the shipped models do exactly that, and an implementation should too), so
@@ -114,8 +115,8 @@ namespace DemaConsulting.WordSense;
 ///     using (model)
 ///     {
 ///         await model.EnsureModelAsync();
-///         WordSense[] senses = await model.ClassifyAsync(["to", "record", "the", "record"]);
-///         Console.WriteLine(senses[1].Details?.PartOfSpeech.ToString() ?? "unknown");
+///         ClassifyResult[] results = await model.ClassifyAsync(["to", "record", "the", "record"]);
+///         Console.WriteLine(results[1].Details?.PartOfSpeech.ToString() ?? "unknown");
 ///     }
 ///     </code>
 /// </example>
@@ -188,8 +189,8 @@ public interface IWordSenseModel : IDisposable
     Task EnsureModelAsync(MirrorOptions? mirror = null, CancellationToken cancellationToken = default);
 
     /// <summary>
-    ///     Classifies every word of a tokenized sentence or text: which sense (lemma, part of speech, pronunciation
-    ///     meaning) each word has.
+    ///     Classifies every word of a tokenized sentence or text: which analysis (lemma, part of speech, features) and,
+    ///     where the model can tell, which sense or group of senses each word has.
     /// </summary>
     /// <param name="words">The words in order, including punctuation tokens, each as its own element.</param>
     /// <param name="cancellationToken">
@@ -208,21 +209,20 @@ public interface IWordSenseModel : IDisposable
     ///     </para>
     ///     <para>
     ///     Each word is lower-cased and looked up in <see cref="WordLexicon"/>; the curly apostrophe (U+2019) is
-    ///     read as <c>'</c>. A word without an entry is unknown: <see cref="WordSense.Details"/> is null and the
-    ///     confidence is 0. A word with one sense is answered with confidence 1. A word with several senses is resolved
-    ///     from its context; how the context is used, and what the confidence means, is defined by each model package
-    ///     (see <see cref="WordSense"/>). There are exactly two ways to get a null <see cref="WordSense.Details"/>: the
-    ///     word is unknown to the lexicon (every model), or an encoder model cannot score the word (it has several
-    ///     senses and trained weights, but the encoder produced no usable vector for it). The
-    ///     Basic model never leaves <see cref="WordSense.Details"/> null for a word that is in the lexicon. Every other
-    ///     word with several senses gets its best sense, even when the confidence is low; an encoder model answers a
-    ///     word with several senses but no trained weights with its first (most frequent) sense and a confidence of one
-    ///     over the number of senses.
+    ///     read as <c>'</c>. A word without an entry is unknown: <see cref="ClassifyResult.Details"/> is null, the level is
+    ///     <see cref="SenseLevel.None"/> and the
+    ///     confidence is 0. A word whose lemma and part of speech have one sense is answered with that sense and confidence 1. A word with several analyses or senses is resolved
+    ///     from its context at the finest level the model is confident in; how the context is used, and what the confidence means, is defined by each model package
+    ///     (see <see cref="ClassifyResult"/>). There is exactly one way to get a null <see cref="ClassifyResult.Details"/>: the
+    ///     word is unknown to the lexicon (every model). Every word of the lexicon gets details; a word whose
+    ///     analysis has several senses that the model cannot tell apart is answered at the part-of-speech level (or the
+    ///     group level), and an encoder package falls back to the Basic model (<see cref="FallbackWordSenseModel"/>) for
+    ///     the words its own model does not score.
     ///     </para>
     ///     <para>
     ///     Tokenization is the caller's job, and the models expect the tokens that the evaluation used: split off
     ///     punctuation (<c>"race"</c>, <c>"."</c>), but keep a contraction (<c>"don't"</c>) and a hyphenated word
-    ///     (<c>"re-read"</c>) as one token. A contraction is a stored word; a hyphenated token has no lexicon entry, so it is unknown (null, confidence 0),
+    ///     (<c>"re-read"</c>) as one token. A contraction is a stored word; a hyphenated token is found only when the whole word is in the lexicon, otherwise it is unknown (null, confidence 0),
     ///     but the surrounding words are still classified. Classify one sentence per call: the Basic model splits the
     ///     list at the tokens <c>"."</c>, <c>"!"</c> and <c>"?"</c>, while an encoder model reads the whole list as one
     ///     text, of at most 128 word pieces by default (512 at most); a longer list is handled per word from a window
@@ -264,100 +264,8 @@ public interface IWordSenseModel : IDisposable
     /// <exception cref="HttpRequestException">Thrown by a lazy ensure of an encoder model when a file could not be obtained and verified from any source.</exception>
     /// <exception cref="FileNotFoundException">Thrown by a lazy ensure of an encoder model when a supplied model directory does not exist or lacks a model file.</exception>
     /// <exception cref="InvalidDataException">Thrown by an encoder model when a file of a supplied model directory does not match its pinned SHA-256, or its embedded weights or ONNX file cannot be read.</exception>
-    Task<WordSense[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default);
+    Task<ClassifyResult[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default);
 }
-
-/// <summary>
-///     The classification of one word.
-/// </summary>
-/// <remarks>
-///     <para>
-///     The type <c>WordSense</c> (this record struct) shares its name with the namespace <c>DemaConsulting.WordSense</c>
-///     that contains it; in code, write <c>WordSense[]</c> for the result type. In code that itself lives in a
-///     namespace under <c>DemaConsulting.*</c> (for example <c>namespace DemaConsulting.MyApp</c>), the simple name
-///     <c>WordSense</c> resolves to the namespace, not to the type, and the compiler reports an error (a namespace is
-///     used like a type): add an alias inside your namespace declaration,
-///     <c>using WordSense = DemaConsulting.WordSense.WordSense;</c>, or write the full name
-///     <c>DemaConsulting.WordSense.WordSense</c> (see the second example below). Code outside such a namespace, with
-///     <c>using DemaConsulting.WordSense;</c>, needs neither.
-///     </para>
-///     <para>
-///     The test for "no sense chosen" is <c>Details is null</c>, not <c>Confidence == 0</c>. Only a null
-///     <see cref="Details"/> means unknown or unscored (and then <see cref="Confidence"/> is 0). The reverse does not
-///     hold: an ambiguous word that an encoder model resolved has a non-null <see cref="Details"/> and may legitimately
-///     carry any confidence from 0 to 1, including exactly 0 or exactly 1; a word with a single sense in the lexicon
-///     always gets 1. Never treat a confidence of 0 as "unknown" by itself.
-///     </para>
-///     <para>
-///     <see cref="Details"/> is null in exactly two cases. First, the word is unknown: it has no entry in the lexicon
-///     (a number written with digits, punctuation, most proper nouns, a misspelling);
-///     every model does this. Second, an encoder model (MiniLM, BertBaseCased) could not score a word that has several
-///     senses and trained weights, because the encoder produced no vector for the word. This does not occur in
-///     practice, but the API allows it. In both cases <see cref="Confidence"/> is 0. Every other
-///     word gets a sense: a word with one sense gets it with confidence 1, and a word with several senses gets its best
-///     sense even when the confidence is low (an encoder model gives a word without trained weights its first, most
-///     frequent sense with a confidence of one over the number of senses), so a null <see cref="Details"/> never
-///     means "low confidence". The Basic model never leaves <see cref="Details"/> null for a word that is in the
-///     lexicon.
-///     </para>
-///     <para>
-///     Confidence is a number from 0 to 1: a null <see cref="Details"/> (unknown or unscored) goes with 0, a word that
-///     has only one sense in the lexicon gets 1, and a word resolved from its context gets a value from the model
-///     package's own scale, which can be any value from 0 to 1 (even exactly 0 or 1) with a non-null
-///     <see cref="Details"/>. The
-///     scales differ per model and a threshold must not be reused across models. The Basic model gives a word with
-///     several senses the probability of the chosen sense (never below 1/n for a word with n senses, so 0.5 for a
-///     word with two senses: a threshold at or below 1/n keeps every answer of an n-sense word), so it is never
-///     undecided; its recommended starting threshold is 0.8 (see the <c>DemaConsulting.WordSense.Basic</c> namespace
-///     documentation). The encoder models (MiniLM, BertBaseCased) give a word with several senses but no trained
-///     weights its first sense with a confidence of exactly 1/n; they map
-///     the margin between the best and the runner-up sense monotonically onto 0 to 1, relative to the abstain margin
-///     trained for the word's lemma: 0.5 means the margin equals the abstain margin (the evaluation counts a word as
-///     answered from 0.5 up and as abstained below it, so 0.5 is the lowest meaningful value, not a useful filter),
-///     larger values mean a clearer
-///     decision, and the result is clamped to 0 to 1. The recommended starting threshold for each encoder is 0.8
-///     (about three quarters of the real-text target words kept, with about one error in fifty for MiniLM and one in
-///     a hundred for BertBaseCased); the share of words that reaches a given value differs between the two encoders,
-///     so tune the threshold per model on your own text. It is a ranking
-///     score, not a calibrated probability: compare it against a threshold you choose and treat lower values as
-///     uncertain; <see cref="Details"/> still holds the best sense when the confidence is low. Below your threshold,
-///     treat the word as unresolved or low confidence: fall back to handling that does not depend on
-///     <see cref="WordDetails.SenseId"/> (for example your default pronunciation), or use <see cref="Details"/> only as
-///     a guess (for example show it marked as uncertain).
-///     </para>
-/// </remarks>
-/// <example>
-///     <code>
-///     WordSense sense = new("barks", new WordDetails("bark#verb", "bark", PartOfSpeech.Verb, "Person=3+Tense=Pres"), 0.93);
-///     Console.WriteLine($"{sense.Word} is a {sense.Details?.PartOfSpeech} with confidence {sense.Confidence:P0}");
-///
-///     // Keep only confident answers. A threshold belongs to one model: 0.8 is the recommended start for each of
-///     // Basic, MiniLM and BertBaseCased, but it is read in that model's own scale; re-tune it per model
-///     const double threshold = 0.8;
-///     bool confident = sense.Details is not null &amp;&amp; sense.Confidence >= threshold;
-///     </code>
-///     Code in a namespace under <c>DemaConsulting.*</c>: alias the type, because the simple name <c>WordSense</c>
-///     means the namespace there.
-///     <code>
-///     namespace DemaConsulting.MyApp
-///     {
-///         using WordSense = DemaConsulting.WordSense.WordSense;
-///
-///         internal static class Disambiguator
-///         {
-///             internal static async Task&lt;WordSense[]&gt; ClassifyAsync(IWordSenseModel model, string[] words)
-///             {
-///                 WordSense[] senses = await model.ClassifyAsync(words);
-///                 return senses;
-///             }
-///         }
-///     }
-///     </code>
-/// </example>
-/// <param name="Word">The word as given by the caller.</param>
-/// <param name="Details">The chosen sense, or <see langword="null"/> when none was chosen.</param>
-/// <param name="Confidence">The confidence in <paramref name="Details"/>, from 0 to 1; 0 with a null <paramref name="Details"/> means unknown or unscored, while a non-null <paramref name="Details"/> may carry any value from 0 to 1.</param>
-public readonly record struct WordSense(string Word, WordDetails? Details, double Confidence);
 
 /// <summary>
 ///     Describes a user-supplied HTTP(S) mirror that is tried before the public download source, plus where downloaded
@@ -475,7 +383,7 @@ public readonly record struct WordSense(string Word, WordDetails? Details, doubl
 ///     async Task PrepareAsync(IWordSenseModel model)
 ///     {
 ///         await model.EnsureModelAsync(mirror);   // mirror first, then the public source; files verified
-///         WordSense[] senses = await model.ClassifyAsync(["to", "record", "the", "record"]);
+///         ClassifyResult[] results = await model.ClassifyAsync(["to", "record", "the", "record"]);
 ///     }
 ///     </code>
 /// </example>

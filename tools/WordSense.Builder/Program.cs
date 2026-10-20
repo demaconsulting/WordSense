@@ -16,7 +16,7 @@ namespace WordSense.Builder;
 ///     <list type="bullet">
 ///     <item><description><c>compile-image [--data DIR] [--corpus DIR] [--output FILE]</c> compiles the data tables into the word image of the core package (<c>Resources/wordsense.img</c>).</description></item>
 ///     <item><description><c>audit-forms [--data DIR] [--sample 300] [--seed N] [--oracle FILE] [--adjudications FILE] [--output FILE] [--max-error 0.01]</c> checks a seeded stratified sample of the inflected form rows per provenance against the LemmInflect oracle (a pip-installed checker, not shipped), reports the error rate with a 95% Wilson interval per stratum and fails when a generated stratum reaches the limit.</description></item>
-///     <item><description><c>rebuild-forms [--data DIR] [--corpus DIR] [--oewn FILE] [--agid FILE] [--output DIR]</c> regenerates the entry, form and form_sense_scope tables from the entries, the committed legacy analyses (<c>corpus/lexicon/form-frozen.tsv</c>), the irregular lists, the written forms of the Open English WordNet file and the dictionary; a generated inflection ships only when a second source corroborates it (the AGID <c>infl.txt</c> file attests forms). Both inputs must match their pinned SHA-256; the default places are <c>artifacts/inputs/english-wordnet-2025.xml.gz</c> and <c>artifacts/inputs/agid/agid-2016.01.19/infl.txt</c>. The result depends on nothing else, so it is reproducible.</description></item>
+///     <item><description><c>rebuild-forms [--data DIR] [--corpus DIR] [--oewn FILE] [--agid FILE] [--output DIR]</c> regenerates the entry and form tables from the entries, the committed legacy analyses (<c>corpus/lexicon/form-frozen.tsv</c>), the irregular lists, the written forms of the Open English WordNet file and the dictionary; a generated inflection ships only when a second source corroborates it (the AGID <c>infl.txt</c> file attests forms). Both inputs must match their pinned SHA-256; the default places are <c>artifacts/inputs/english-wordnet-2025.xml.gz</c> and <c>artifacts/inputs/agid/agid-2016.01.19/infl.txt</c>. The result depends on nothing else, so it is reproducible.</description></item>
 ///     <item><description><c>import-agid --input FILE [--corpus DIR] [--output FILE]</c> derives the irregular forms of the dictionary words from the inflection database file <c>infl.txt</c>.</description></item>
 ///     <item><description><c>import-moby --input FILE [--corpus DIR] [--output FILE]</c> imports the pinned Moby Part-of-Speech II list into the dictionary word list of the corpus.</description></item>
 ///     <item><description><c>weights &lt;modelId&gt; [--corpus DIR] [--repository DIR] [--cache DIR] [--no-cache] [--recompute-mean]</c> trains the weights of an ONNX model (minilm, bert-base-cased) and writes them to its package. Pooled vectors are cached in <c>DIR/&lt;model id&gt;</c> (default <c>.cache/embeddings</c> of the repository) so only new sentences are encoded; <c>--no-cache</c> bypasses the cache; the global mean of the existing weights is reused unless <c>--recompute-mean</c> is given.</description></item>
@@ -25,19 +25,18 @@ namespace WordSense.Builder;
 ///     <item><description><c>train-basic [--corpus DIR] [--repository DIR] [--ud DIR] [--refresh-ud true] [--output FILE]</c> retrains the basic model completely and writes its table; it regenerates the treebank counts first when they are missing or <c>--refresh-ud true</c> is given.</description></item>
 ///     <item><description><c>tune-basic [--corpus DIR] [--repository DIR] [--ud DIR]</c> scores the hyper-parameter grid on the treebank development file and the anchor dev sentences; it writes nothing.</description></item>
 ///     <item><description><c>ud-irregular [--ud DIR] [--corpus DIR] [--output FILE]</c> derives the irregular inflected forms of the dictionary words from the pinned treebank training and development files.</description></item>
-///     <item><description><c>coverage --text DIR [--corpus DIR] [--top N] [--output FILE]</c> reports how many of the running words of the text files of a directory the word table knows and lists the most frequent unknown words, split into name-like and other words.</description></item>
-///     <item><description><c>appendix [--corpus DIR] [--output FILE]</c> writes the generated senses appendix of the user guide.</description></item>
+///     <item><description><c>coverage --text DIR [--corpus DIR] [--top N] [--output FILE]</c> reports how many of the running words of the text files of a directory the word table knows, the share of the known words whose lemma is trained (a lemma of <c>corpus/senses</c>), and lists the most frequent unknown words, split into name-like and other words.</description></item>
+///     <item><description><c>appendix [--corpus DIR] [--data DIR] [--output FILE]</c> writes the generated senses appendix of the user guide: the senses of the trained lemmas of <c>corpus/senses</c> with id, group, sense key, gloss and respelling, from the data folder (default <c>data</c>).</description></item>
 ///     <item><description><c>import-oewn --input FILE [--output DIR] [--sha256 HEX|none] [--threshold N] [--overwrite true]</c> imports the pinned Open English WordNet release into the table files of the data folder (default <c>data</c>) and refuses to replace existing tables unless <c>--overwrite true</c> is given; <c>import-oewn --previous FILE [--previous-release ID] [--previous-sha256 HEX|none] [--output DIR]</c> instead writes the identifier map from a previous release.</description></item>
 ///     <item><description><c>import-wn30-counts --input FILE [--data DIR] [--sha256 HEX|none]</c> imports the pinned WordNet 3.0 sense index (<c>index.sense</c>) into the <c>sense_frequency</c> table, joined on the sense key, with the count 0 for a sense that has no line.</description></item>
-///     <item><description><c>label-senses [--data DIR]</c> gives every sense of the inventory that has no label a readable label and every lemma and part of speech that no curated group covers its default group; labels that exist are never changed.</description></item>
-///     <item><description><c>seed-inventory [--data DIR] [--curation DIR]</c> adds a project sense to every closed-class entry that has none and imports the curated labels and groups of the curation folder (default <c>corpus/curation</c>); it is the bootstrap of the inventory and is idempotent.</description></item>
-///     <item><description><c>legacy-class-map [--data DIR] [--corpus DIR] [--output FILE]</c> writes the temporary working file <c>corpus/migration/legacy-class-map.tsv</c> that maps the retired class ids to the new senses and groups for the relabeling of the corpus; the file and the command are deleted when the relabeling is done.</description></item>
+///     <item><description><c>label-senses [--data DIR]</c> gives every sense of the inventory that has no label a readable label; labels that exist are never changed and no group is created.</description></item>
+///     <item><description><c>seed-inventory [--data DIR] [--curation DIR]</c> adds a project sense to every closed-class entry that has none and imports the curated labels and groups of the curation folder (default <c>corpus/curation</c>), leaving out a group with one sense and a group with every sense of its lemma and part of speech; it is the bootstrap of the inventory and is idempotent.</description></item>
 ///     <item><description><c>validate-data [--data DIR] [--baseline DIR]</c> validates the table files of the data folder against its <c>schema.yaml</c> and, with a baseline (the data folder of the last release), checks that published sense labels are neither changed nor reused; it exits with 1 and lists the violations when the data is not valid.</description></item>
 ///     </list>
 /// </remarks>
 internal static class Program
 {
-    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: compile-image, rebuild-forms, audit-forms, generate-facts, import-agid, import-moby, weights <modelId>, evaluate <modelId>, ud-counts, ud-irregular, coverage, train-basic, tune-basic, appendix, import-oewn, import-wn30-counts, label-senses, seed-inventory, legacy-class-map, validate-data.";
+    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: compile-image, rebuild-forms, audit-forms, generate-facts, import-agid, import-moby, weights <modelId>, evaluate <modelId>, ud-counts, ud-irregular, coverage, train-basic, tune-basic, appendix, import-oewn, import-wn30-counts, label-senses, seed-inventory, validate-data.";
 
     /// <summary>The name of the option that gives the input file of an import command.</summary>
     private const string InputOption = "input";
@@ -102,7 +101,7 @@ internal static class Program
                 case "ud-irregular":
                     return RunUdIrregular(options, repository, corpus, output);
                 case "coverage":
-                    return RunCoverage(options, output);
+                    return RunCoverage(options, corpus, output);
                 case "import-oewn":
                     return RunImportOewn(options, repository, output);
                 case "validate-data":
@@ -113,8 +112,6 @@ internal static class Program
                     return RunLabelSenses(options, repository, output);
                 case "seed-inventory":
                     return RunSeedInventory(options, repository, corpus, output);
-                case "legacy-class-map":
-                    return RunLegacyClassMap(options, repository, corpus, output);
                 case "rebuild-forms":
                     return RunRebuildForms(options, repository, corpus, output);
                 case "generate-facts":
@@ -176,7 +173,7 @@ internal static class Program
         var dataFolder = options.TryGetValue("data", out var cd) ? Path.GetFullPath(cd) : Path.Join(repository, "data");
         var imageOutput = options.TryGetValue("output", out var imo) ? imo : Path.Join(repository, Data.ImageCompiler.DefaultOutput);
         var image = Data.ImageCompiler.Compile(dataFolder, imageOutput);
-        output.WriteLine($"Wrote the word image to {imageOutput}: {image.Spellings.ToString(CultureInfo.InvariantCulture)} spellings, {image.Analyses.ToString(CultureInfo.InvariantCulture)} analyses, {image.Entries.ToString(CultureInfo.InvariantCulture)} entries, {image.Bytes.ToString(CultureInfo.InvariantCulture)} bytes.");
+        output.WriteLine($"Wrote the word image to {imageOutput}: {image.Spellings.ToString(CultureInfo.InvariantCulture)} spellings, {image.Analyses.ToString(CultureInfo.InvariantCulture)} analyses, {image.Entries.ToString(CultureInfo.InvariantCulture)} entries, {image.Senses.ToString(CultureInfo.InvariantCulture)} senses, {image.Groups.ToString(CultureInfo.InvariantCulture)} groups, {image.Bytes.ToString(CultureInfo.InvariantCulture)} bytes.");
         return 0;
     }
 
@@ -232,12 +229,22 @@ internal static class Program
         return 0;
     }
 
-    private static int RunCoverage(Dictionary<string, string> options, TextWriter output)
+    private static int RunCoverage(Dictionary<string, string> options, string corpus, TextWriter output)
     {
         var textDirectory = Path.GetFullPath(Require(options, "text"));
         var topCount = options.TryGetValue("top", out var tp) ? int.Parse(tp, CultureInfo.InvariantCulture) : 100;
+        var sensesDirectory = Path.Join(corpus, "senses");
+        if (!Directory.Exists(sensesDirectory))
+        {
+            throw new InvalidDataException($"The directory '{sensesDirectory}' was not found.");
+        }
+
+        var trainedLemmas = SenseInventory.ReadDirectory(sensesDirectory).Rows.Select(r => r.Lemma).ToHashSet(StringComparer.Ordinal);
         var table = DemaConsulting.WordSense.WordLexicon.Current;
-        var coverage = CoverageReport.Read(textDirectory, w => table.TryLookup(w, out _)).Render(topCount);
+        var coverage = CoverageReport.Read(
+            textDirectory,
+            w => table.TryLookup(w, out _),
+            w => table.TryLookup(w, out var analyses) && analyses.Any(a => trainedLemmas.Contains(a.Lemma))).Render(topCount);
         output.Write(coverage);
         if (options.TryGetValue("output", out var coverageFile))
         {
@@ -267,7 +274,8 @@ internal static class Program
     private static int RunAppendix(Dictionary<string, string> options, string repository, string corpus, TextWriter output)
     {
         var appendix = options.TryGetValue("output", out var a) ? a : Path.Join(repository, "docs", "user_guide", "appendix-senses.md");
-        var lemmas = AppendixGenerator.Write(corpus, appendix);
+        var data = options.TryGetValue("data", out var d) ? Path.GetFullPath(d) : Path.Join(repository, "data");
+        var lemmas = AppendixGenerator.Write(corpus, data, appendix);
         output.WriteLine($"Wrote the appendix of {lemmas.ToString(CultureInfo.InvariantCulture)} lemmas to {appendix}.");
         return 0;
     }
@@ -387,15 +395,6 @@ internal static class Program
         var data = options.TryGetValue("data", out var d) ? Path.GetFullPath(d) : Path.Join(repository, "data");
         var curation = options.TryGetValue("curation", out var c) ? Path.GetFullPath(c) : Path.Join(corpus, "curation");
         output.WriteLine(Data.InventorySeeder.Run(data, Directory.Exists(curation) ? curation : null).Render());
-        return 0;
-    }
-
-    private static int RunLegacyClassMap(Dictionary<string, string> options, string repository, string corpus, TextWriter output)
-    {
-        var data = options.TryGetValue("data", out var d) ? Path.GetFullPath(d) : Path.Join(repository, "data");
-        var file = options.TryGetValue("output", out var o) ? Path.GetFullPath(o) : Path.Join(corpus, "migration", "legacy-class-map.tsv");
-        var (classes, rows) = Data.LegacyClassMap.Write(data, corpus, file);
-        output.WriteLine($"Wrote {rows.ToString(CultureInfo.InvariantCulture)} rows for {classes.ToString(CultureInfo.InvariantCulture)} classes to {file} (temporary working file of the corpus relabeling).");
         return 0;
     }
 

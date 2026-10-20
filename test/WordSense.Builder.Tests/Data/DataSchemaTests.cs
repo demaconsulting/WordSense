@@ -31,12 +31,18 @@ public sealed class DataSchemaTests : IDisposable
         var schema = LoadText(SchemaText());
 
         // Assert
-        Assert.Equal(2, schema.Version);
+        Assert.Equal(4, schema.Version);
         Assert.Equal("oewn-2025", schema.Release);
-        Assert.Equal(21, schema.Tables.Count());
-        foreach (var name in new[] { "source", "entry", "synset", "gloss", "example", "sense", "synset_relation", "sense_relation", "pronunciation", "id_map", "coarse_class", "class_sense", "class_entry", "form", "form_sense_scope", "sense_label", "sense_label_map", "sense_group", "group_sense", "sense_frequency", "sense_respelling" })
+        Assert.Equal(17, schema.Tables.Count());
+        foreach (var name in new[] { "source", "entry", "synset", "gloss", "example", "sense", "synset_relation", "sense_relation", "pronunciation", "id_map", "form", "sense_label", "sense_label_map", "sense_group", "group_sense", "sense_frequency", "sense_respelling" })
         {
             Assert.True(schema.HasTable(name), name);
+        }
+
+        // The class tables and the form scopes of the retired inventory are gone
+        foreach (var name in new[] { "coarse_class", "class_sense", "class_entry", "form_sense_scope" })
+        {
+            Assert.False(schema.HasTable(name), name);
         }
 
         var entry = schema.Table("entry");
@@ -63,6 +69,9 @@ public sealed class DataSchemaTests : IDisposable
         Assert.True(schema.Table("sense_label_map").Columns[schema.Table("sense_label_map").IndexOf("new_id")].Nullable);
         Assert.Equal(["group_id"], schema.Table("sense_group").PrimaryKey);
         Assert.Contains(schema.Table("sense_group").Unique, u => u.SequenceEqual(["lemma", "label"]));
+        Assert.Equal(["group_id", "lemma", "pos", "label", "origin", "kind"], schema.Table("sense_group").Columns.Select(c => c.Name));
+        Assert.Equal(ColumnKind.Enum, schema.Table("sense_group").Columns[schema.Table("sense_group").IndexOf("kind")].Kind);
+        Assert.False(schema.Table("sense_group").Columns[schema.Table("sense_group").IndexOf("kind")].Nullable);
         Assert.Equal(["group_id", "sense_id"], schema.Table("group_sense").PrimaryKey);
         Assert.Contains(schema.Table("group_sense").Unique, u => u.SequenceEqual(["sense_id"]));
         Assert.Equal("sense_group.group_id", FormatKey(schema.Table("group_sense").ForeignKeys["group_id"]));
@@ -73,7 +82,11 @@ public sealed class DataSchemaTests : IDisposable
         Assert.True(schema.IsMember("label_origin", "curated"));
         Assert.True(schema.IsMember("label_origin", "generated"));
         Assert.True(schema.IsMember("label_origin", "project"));
-        Assert.True(schema.IsMember("group_origin", "default"));
+        Assert.True(schema.IsMember("group_origin", "curated"));
+        Assert.False(schema.IsMember("group_origin", "default"));
+        Assert.True(schema.IsMember("group_kind", "equivalent"));
+        Assert.True(schema.IsMember("group_kind", "related"));
+        Assert.False(schema.IsMember("group_kind", "similar"));
         Assert.True(schema.IsMember("frequency_source", "wn30"));
         Assert.True(schema.IsMember("synset_pos", "d"));
     }
@@ -144,7 +157,7 @@ public sealed class DataSchemaTests : IDisposable
     ///     Damaged schemas are rejected with a line number or a reason.
     /// </summary>
     [Theory]
-    [InlineData("schema_version: 2\n", "tab", "schema_version: 2\n\tx: 1\n")]
+    [InlineData("schema_version: 4\n", "tab", "schema_version: 4\n\tx: 1\n")]
     [InlineData("data_release: oewn-2025\n", "duplicate", "data_release: oewn-2025\ndata_release: other\n")]
     [InlineData("enum:synset_pos", "unknown vocabulary", "enum:nope")]
     [InlineData("source_id: source.source_id", "foreign key", "source_id: nowhere.source_id")]

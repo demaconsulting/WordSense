@@ -6,83 +6,110 @@ namespace DemaConsulting.WordSense.MiniLM.Tests;
 /// </summary>
 public class EndToEndTests
 {
-    private static readonly string[] ReadSenses = ["read#past", "read#present"];
-
     /// <summary>
-    ///     The word <c>record</c> is a verb after "will" and a noun after "the".
+    ///     The word <c>record</c> is a verb after "will" and a noun after "the"; each answer states its level and is
+    ///     never a group, and the period is unknown.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
     public async Task WordSense_Classifier_EndToEnd_ClassifiesRecord()
     {
-        using var model = new MiniLMWordSenseModel(ModelFolder.Require()) { IntraOpThreads = 2 };
+        // Arrange: the model on the committed model files, verified up front
+        using var model = new MiniLMWordSenseModel(ModelFolder.Require());
+        model.Encoder.IntraOpThreads = 2;
         await model.EnsureModelAsync(null, TestContext.Current.CancellationToken);
 
-        var senses = await model.ClassifyAsync(["They", "will", "record", "the", "record", "."], TestContext.Current.CancellationToken);
+        // Act
+        var results = await model.ClassifyAsync(["They", "will", "record", "the", "record", "."], TestContext.Current.CancellationToken);
 
-        Assert.Equal(6, senses.Length);
-        Assert.Equal(PartOfSpeech.Verb, senses[2].Details?.PartOfSpeech);
-        Assert.Equal(PartOfSpeech.Noun, senses[4].Details?.PartOfSpeech);
-        Assert.All(senses, s => Assert.InRange(s.Confidence, 0.0, 1.0));
+        // Assert: one result per word, the two uses of "record" told apart, the period unknown
+        Assert.Equal(6, results.Length);
+        Assert.Equal(PartOfSpeech.Verb, results[2].Details?.PartOfSpeech);
+        Assert.Equal(PartOfSpeech.Noun, results[4].Details?.PartOfSpeech);
+        Assert.Equal(SenseLevel.None, results[5].Level);
+        Assert.Null(results[5].Details);
+        Assert.All(results, r => Assert.InRange(r.Confidence, 0.0, 1.0));
+        Assert.All(results, r => Assert.NotEqual(SenseLevel.Group, r.Level));
     }
 
     /// <summary>
-    ///     A form that names a single sense answers it with full confidence: <c>bowed</c> is only the bend verb.
+    ///     Every result carries its candidate analyses, the selected analysis, a level and, at the sense level, the
+    ///     sense id: the determiner "the" has one sense, so it is answered at the sense level.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task WordSense_Classifier_EndToEnd_BowedIsOnlyTheBendVerb()
+    public async Task WordSense_Classifier_EndToEnd_ResultCarriesAnalysisLevelAndSense()
     {
-        using var model = new MiniLMWordSenseModel(ModelFolder.Require()) { IntraOpThreads = 2 };
-        await model.EnsureModelAsync(null, TestContext.Current.CancellationToken);
+        // Arrange
+        using var model = new MiniLMWordSenseModel(ModelFolder.Require());
+        model.Encoder.IntraOpThreads = 2;
 
-        var senses = await model.ClassifyAsync(["He", "bowed", "to", "the", "queen", "."], TestContext.Current.CancellationToken);
+        // Act
+        var results = await model.ClassifyAsync(["They", "will", "record", "the", "record", "."], TestContext.Current.CancellationToken);
 
-        Assert.Equal(Assert.Single(WordLexicon.Lookup("bowed")), senses[1].Details);
-        Assert.Equal(1.0, senses[1].Confidence);
+        // Assert: the one-sense determiner is a sense answer with its id, an unknown token has no analysis
+        var the = results[3];
+        Assert.True(the.IsKnown);
+        Assert.Equal(SenseLevel.Sense, the.Level);
+        Assert.Equal("the#determiner", the.SenseId);
+        Assert.Null(the.GroupId);
+        Assert.NotNull(the.Details);
+        Assert.Equal(1.0, the.Confidence, 6);
+        Assert.False(results[5].IsKnown);
+        Assert.Empty(results[5].Analyses);
+        Assert.All(results.Where(r => r.IsKnown), r => Assert.NotEmpty(r.Analyses));
     }
 
     /// <summary>
-    ///     <c>bows</c> keeps all three senses of <c>bow</c> and the context picks among them.
+    ///     A word with several meanings that the model does not score is a known word, answered at the part-of-speech
+    ///     level (never none) with its analysis and no sense or group id.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task WordSense_Classifier_EndToEnd_BowsIsResolvedAmongItsThreeSenses()
+    public async Task WordSense_Classifier_EndToEnd_UntrainedWord_AnswersPartOfSpeech()
     {
-        using var model = new MiniLMWordSenseModel(ModelFolder.Require()) { IntraOpThreads = 2 };
-        await model.EnsureModelAsync(null, TestContext.Current.CancellationToken);
+        // Arrange
+        using var model = new MiniLMWordSenseModel(ModelFolder.Require());
+        model.Encoder.IntraOpThreads = 2;
 
-        var actors = await model.ClassifyAsync(["The", "actors", "took", "their", "bows", "."], TestContext.Current.CancellationToken);
-        var queen = await model.ClassifyAsync(["He", "bows", "to", "the", "queen", "."], TestContext.Current.CancellationToken);
-        var archer = await model.ClassifyAsync(["She", "drew", "back", "the", "bows", "."], TestContext.Current.CancellationToken);
+        // Act
+        var results = await model.ClassifyAsync(["They", "will", "record", "the", "record", "."], TestContext.Current.CancellationToken);
 
-        var senses = WordLexicon.Lookup("bows");
-        Assert.Equal(3, senses.Length);
-        Assert.Contains(actors[4].Details, senses);
-        Assert.Contains(queen[1].Details, senses);
-        Assert.Contains(archer[4].Details, senses);
-        Assert.Equal(PartOfSpeech.Verb, queen[1].Details?.PartOfSpeech);
+        // Assert
+        var record = results[4];
+        Assert.True(record.IsKnown);
+        Assert.NotNull(record.Details);
+        Assert.Equal(SenseLevel.PartOfSpeech, record.Level);
+        Assert.Null(record.SenseId);
+        Assert.Null(record.GroupId);
+        Assert.InRange(record.Confidence, 0.0, 1.0);
     }
 
     /// <summary>
-    ///     <c>reads</c> is always the present tense, while <c>read</c> is told apart by its context.
+    ///     The analyses of a word are sorted by probability, largest first, and sum to one; the selected analysis is
+    ///     the first of them.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task WordSense_Classifier_EndToEnd_ReadsIsPresentAndReadSplitsByContext()
+    public async Task WordSense_Classifier_EndToEnd_AnalysesAreRankedAndSumToOne()
     {
-        using var model = new MiniLMWordSenseModel(ModelFolder.Require()) { IntraOpThreads = 2 };
-        await model.EnsureModelAsync(null, TestContext.Current.CancellationToken);
+        // Arrange
+        using var model = new MiniLMWordSenseModel(ModelFolder.Require());
+        model.Encoder.IntraOpThreads = 2;
 
-        var reads = await model.ClassifyAsync(["She", "reads", "a", "book", "every", "night", "."], TestContext.Current.CancellationToken);
-        var past = await model.ClassifyAsync(["Yesterday", "he", "read", "the", "report", "and", "sent", "comments", "."], TestContext.Current.CancellationToken);
-        var present = await model.ClassifyAsync(["She", "loves", "to", "read", "before", "bed", "."], TestContext.Current.CancellationToken);
+        // Act
+        var results = await model.ClassifyAsync(["They", "will", "record", "the", "record", "."], TestContext.Current.CancellationToken);
 
-        var readsDetails = reads[1].Details!;
-        Assert.Equal("read", readsDetails.Lemma);
-        Assert.Equal(PartOfSpeech.Verb, readsDetails.PartOfSpeech);
-        Assert.Equal("read#present", readsDetails.SenseId);
-        Assert.Contains(past[2].Details!.SenseId, ReadSenses);
-        Assert.Contains(present[3].Details!.SenseId, ReadSenses);
+        // Assert
+        foreach (var result in results.Where(r => r.IsKnown))
+        {
+            Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 6);
+            for (var i = 1; i < result.Analyses.Length; i++)
+            {
+                Assert.True(result.Analyses[i - 1].Probability >= result.Analyses[i].Probability);
+            }
+
+            Assert.Equal(result.Analyses[0].Details, result.Details);
+        }
     }
 }

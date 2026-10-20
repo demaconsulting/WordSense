@@ -61,7 +61,7 @@
   </ItemGroup>
 
   <!-- Project References: the MiniLM and BertBaseCased packages supply the embedded weights that the
-       zero-dropped-lemmas test checks -->
+       embedded-weights tests check -->
   <ItemGroup>
     <ProjectReference Include="..\..\src\DemaConsulting.WordSense\DemaConsulting.WordSense.csproj" />
     <ProjectReference Include="..\..\src\DemaConsulting.WordSense.Onnx\DemaConsulting.WordSense.Onnx.csproj" />

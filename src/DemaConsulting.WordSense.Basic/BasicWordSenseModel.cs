@@ -2,15 +2,24 @@ namespace DemaConsulting.WordSense.Basic;
 
 /// <summary>
 ///     A word-sense model that needs no neural network: a statistical part-of-speech tagger and a context cue model
-///     choose among the senses of an ambiguous word.
+///     choose the analysis (lemma, part of speech and features) of an ambiguous word.
 /// </summary>
 /// <remarks>
 ///     <para>
-///     The model looks every word up in <see cref="WordLexicon"/>. A word with one entry is answered with full
-///     confidence. For a word with several entries, a hidden Markov model over the whole sentence estimates the part of
-///     speech of the word, a naive Bayes model over the neighboring words separates senses that share a part of speech,
-///     and the two are combined into one probability per sense; the most probable sense is returned with that
-///     probability as the confidence. Its small statistical tables are embedded in the assembly: there are no model
+///     The model looks every word up in <see cref="WordLexicon"/>. A word with one analysis lists it with
+///     probability 1: the result is at the <see cref="SenseLevel.Sense"/> level with its sense when its lemma and part of
+///     speech have exactly one sense, otherwise at the <see cref="SenseLevel.PartOfSpeech"/> level. For a word with
+///     several analyses, a hidden Markov model over the whole sentence estimates the part of speech of the word, a naive
+///     Bayes model over the neighboring words separates analyses that share a part of speech (the past and the present of
+///     <c>read</c>), and the two are combined into one probability per analysis; <see cref="ClassifyResult.Analyses"/>
+///     lists every analysis with that probability, the largest first, and the most probable one is the selected analysis
+///     (<see cref="ClassifyResult.Details"/>). The result is at the part-of-speech level with that probability as the
+///     confidence, or at the sense level when the selected analysis has exactly one sense. The statistics carry no
+///     evidence that separates fine senses or groups of senses, so the model never answers at the
+///     <see cref="SenseLevel.Group"/> level, and the <see cref="AnalysisCandidate.Senses"/> of an analysis are empty
+///     unless its lemma and part of speech have exactly one sense (then that sense, with probability 1). A word that is
+///     not in the lexicon is not known (<see cref="ClassifyResult.IsKnown"/> is false). Its small statistical
+///     tables are embedded in the assembly: there are no model
 ///     files, no ONNX Runtime dependency, <see cref="EnsureModelAsync"/> returns immediately and nothing is ever
 ///     downloaded. It is small and fast, and less accurate than the encoder models of
 ///     <c>DemaConsulting.WordSense.MiniLM</c> and <c>DemaConsulting.WordSense.BertBaseCased</c>; its accuracy is
@@ -41,11 +50,11 @@ namespace DemaConsulting.WordSense.Basic;
 ///     await model.EnsureModelAsync();
 ///
 ///     string[] words = ["They", "will", "record", "the", "record", "."];
-///     WordSense[] senses = await model.ClassifyAsync(words);
+///     ClassifyResult[] results = await model.ClassifyAsync(words);
 ///
 ///     for (var i = 0; i &lt; words.Length; i++)
 ///     {
-///         Console.WriteLine($"{words[i]}: {senses[i].Details?.PartOfSpeech.ToString() ?? "-"} ({senses[i].Confidence:0.00})");
+///         Console.WriteLine($"{words[i]}: {results[i].Details?.PartOfSpeech.ToString() ?? "-"} ({results[i].Level}, {results[i].Confidence:0.00})");
 ///     }
 ///     </code>
 /// </example>
@@ -83,12 +92,12 @@ public sealed class BasicWordSenseModel : IWordSenseModel
     /// </summary>
     /// <param name="words">The words in order, including punctuation tokens, each as its own element.</param>
     /// <param name="cancellationToken">A token that cancels the operation.</param>
-    /// <returns>A non-null array parallel to <paramref name="words"/>. Unlike the encoder models, it needs no preceding ensure (there is nothing to ensure); the first call loads the word lexicon (about 55 ms, approximate). Everything runs synchronously on the calling thread and the returned task is already complete (offload the call yourself if the caller must not block); the token is checked when the call starts and between sentence segments. An empty element is unknown (null, 0); an element that contains a space is not split and is unknown too.</returns>
+    /// <returns>A non-null array parallel to <paramref name="words"/>. Unlike the encoder models, it needs no preceding ensure (there is nothing to ensure); the first call loads the word lexicon (about 55 ms, approximate). Everything runs synchronously on the calling thread and the returned task is already complete (offload the call yourself if the caller must not block); the token is checked when the call starts and between sentence segments. An empty element is unknown (<see cref="ClassifyResult.IsKnown"/> is false, level none, no analysis, no details, confidence 0); an element that contains a space is not split and is unknown too.</returns>
     /// <exception cref="ArgumentNullException">Thrown (from the call itself) when the list is null.</exception>
     /// <exception cref="ArgumentException">Thrown (from the call itself) when an element is null.</exception>
     /// <exception cref="OperationCanceledException">Thrown (from the call itself) when <paramref name="cancellationToken"/> is already cancelled when the call starts, or is cancelled between two sentence segments.</exception>
     /// <exception cref="ObjectDisposedException">Thrown (from the call itself, before any other check) when the model has been disposed.</exception>
-    public Task<WordSense[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default)
+    public Task<ClassifyResult[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default)
     {
         ThrowIfDisposed();
         return _classifier.Value.ClassifyAsync(words, cancellationToken);

@@ -20,13 +20,13 @@ internal sealed record BasicWordRow(string Word, int ClosedMask, int[] Counts);
 internal sealed record BasicSuffixRow(string Suffix, int[] Counts);
 
 /// <summary>
-///     The cue table of one lemma, ready to be written.
+///     The cue table of one training lemma, ready to be written.
 /// </summary>
-/// <param name="Lemma">The lemma.</param>
-/// <param name="Senses">The senses in weight-column order.</param>
+/// <param name="Lemma">The training lemma that keys the table (the corpus lemma, which may be a form such as <c>left</c>).</param>
+/// <param name="Analyses">The analyses in weight-column order: ordinal order of lemma, part of speech and features.</param>
 /// <param name="Hashes">The ascending feature hashes.</param>
 /// <param name="Weights">The quantized weights, feature-major.</param>
-internal sealed record BasicCueRow(string Lemma, CueSense[] Senses, ushort[] Hashes, sbyte[] Weights);
+internal sealed record BasicCueRow(string Lemma, CueAnalysis[] Analyses, ushort[] Hashes, sbyte[] Weights);
 
 /// <summary>
 ///     Everything the table of the basic model holds, before it is serialized.
@@ -39,6 +39,7 @@ internal sealed record BasicCueRow(string Lemma, CueSense[] Senses, ushort[] Has
 /// <param name="Suffixes">The tabled suffixes in ordinal order.</param>
 /// <param name="Cues">The cue tables in ordinal order of lemma.</param>
 /// <param name="Collisions">The number of cue features dropped because their hash collided with a more frequent feature of the same lemma.</param>
+/// <param name="SkippedAnchors">The number of anchor sentences left out of the cue tables because their label stands for several analyses.</param>
 internal sealed record BasicModelData(
     BasicHyperparameters Hyperparameters,
     int[] Unigrams,
@@ -47,7 +48,8 @@ internal sealed record BasicModelData(
     IReadOnlyList<BasicWordRow> Words,
     IReadOnlyList<BasicSuffixRow> Suffixes,
     IReadOnlyList<BasicCueRow> Cues,
-    int Collisions)
+    int Collisions,
+    int SkippedAnchors)
 {
     /// <summary>
     ///     Gets the number of tabled words that are closed-class words.
@@ -64,17 +66,17 @@ internal sealed record BasicModelData(
     /// </summary>
     /// <returns>The summary.</returns>
     public string Summary() =>
-        $"{Words.Count} words ({ClosedWords} closed-class), {Suffixes.Count} suffixes, {Cues.Count} cue lemmas, {CueFeatures} cue features, {Collisions} hash collisions";
+        $"{Words.Count} words ({ClosedWords} closed-class), {Suffixes.Count} suffixes, {Cues.Count} cue lemmas, {CueFeatures} cue features, {Collisions} hash collisions, {SkippedAnchors} anchors skipped (their label stands for several analyses)";
 }
 
 /// <summary>
 ///     Trains the basic model: the tabled words and suffixes from the Universal Dependencies counts, and the cue tables
-///     from the anchor sentences. Every choice reads <see cref="BasicHyperparameters"/>; the result depends only on the
-///     inputs, so equal inputs give an equal model.
+///     from the anchor sentences, whose labels are rolled up to analyses. Every choice reads
+///     <see cref="BasicHyperparameters"/>; the result depends only on the inputs, so equal inputs give an equal model.
 /// </summary>
 internal static class BasicTrainer
 {
-    private const int MaximumSenses = 255;
+    private const int MaximumAnalyses = 255;
 
     /// <summary>
     ///     Trains the model.
@@ -83,6 +85,7 @@ internal static class BasicTrainer
     /// <param name="lexicon">The lexicon of the core package: the analyses of a lower-case word, or the default array when unknown.</param>
     /// <param name="anchors">The training sentences of the cue model.</param>
     /// <param name="inventory">The sense inventory.</param>
+    /// <param name="labels">The analyses that the corpus labels stand for.</param>
     /// <param name="hp">The hyper-parameters.</param>
     /// <returns>The model data.</returns>
     public static BasicModelData Train(
@@ -90,18 +93,20 @@ internal static class BasicTrainer
         Func<string, ImmutableArray<WordDetails>> lexicon,
         IReadOnlyList<CorpusRow> anchors,
         SenseInventory inventory,
+        AnalysisLabels labels,
         BasicHyperparameters hp)
     {
         ArgumentNullException.ThrowIfNull(ud);
         ArgumentNullException.ThrowIfNull(lexicon);
         ArgumentNullException.ThrowIfNull(anchors);
         ArgumentNullException.ThrowIfNull(inventory);
+        ArgumentNullException.ThrowIfNull(labels);
         ArgumentNullException.ThrowIfNull(hp);
         var closed = ud.Words.ToDictionary(p => p.Key, p => ClosedMaskOf(p.Value, hp), StringComparer.Ordinal);
         var words = SelectWords(ud, lexicon, closed, hp);
         var suffixes = SelectSuffixes(ud, lexicon, closed, hp);
-        var (cues, collisions) = TrainCues(anchors, inventory, hp);
-        return new BasicModelData(hp, ud.Unigrams, ud.Bigrams, ud.Trigrams, words, suffixes, cues, collisions);
+        var (cues, collisions, skipped) = TrainCues(anchors, inventory, labels, hp);
+        return new BasicModelData(hp, ud.Unigrams, ud.Bigrams, ud.Trigrams, words, suffixes, cues, collisions, skipped);
     }
 
     /// <summary>
@@ -199,31 +204,50 @@ internal static class BasicTrainer
         return [.. table.Where(p => p.Value.Sum() >= hp.SuffixMinTotal).Select(p => new BasicSuffixRow(p.Key, p.Value))];
     }
 
-    private static (List<BasicCueRow> Cues, int Collisions) TrainCues(IReadOnlyList<CorpusRow> anchors, SenseInventory inventory, BasicHyperparameters hp)
+    private static (List<BasicCueRow> Cues, int Collisions, int Skipped) TrainCues(
+        IReadOnlyList<CorpusRow> anchors,
+        SenseInventory inventory,
+        AnalysisLabels labels,
+        BasicHyperparameters hp)
     {
         var cues = new List<BasicCueRow>();
         var collisions = 0;
+        var skipped = 0;
         var features = new FeatureRef[CueModel.MaxFeatures];
         foreach (var group in anchors.GroupBy(a => a.Lemma, StringComparer.Ordinal).OrderBy(g => g.Key, StringComparer.Ordinal))
         {
-            var rows = inventory.RowsOf(group.Key);
-            if (rows.Length is < 2 or > MaximumSenses)
+            // The columns are the distinct analyses that the labels of the lemma stand for; a label that stands for
+            // several analyses (a lemma_split class with several entries) names none of them
+            var columns = ColumnsOf(group.Key, inventory, labels);
+            if (columns.Length is < 2 or > MaximumAnalyses)
             {
                 continue;
             }
 
-            var columnOf = new Dictionary<string, int>(StringComparer.Ordinal);
-            for (var s = 0; s < rows.Length; s++)
+            var columnOf = new Dictionary<AnalysisKey, int>();
+            for (var c = 0; c < columns.Length; c++)
             {
-                columnOf[rows[s].Label] = s;
+                columnOf[columns[c]] = c;
             }
 
-            var senseCounts = new int[rows.Length];
+            var analysisCounts = new int[columns.Length];
             var featureCounts = new Dictionary<FeatureRef, int[]>();
             foreach (var row in group)
             {
-                var column = columnOf[row.Sense];
-                senseCounts[column]++;
+                var stands = labels.Of(row.Lemma, row.Sense);
+                if (stands.Count == 0)
+                {
+                    throw new InvalidDataException($"The anchor label '{row.Lemma}#{row.Sense}' has no analysis.");
+                }
+
+                if (stands.Count > 1)
+                {
+                    skipped++;
+                    continue;
+                }
+
+                var column = columnOf[stands[0]];
+                analysisCounts[column]++;
                 var (start, length) = BasicClassifier.SegmentOf(row.Words, row.TargetWordIndex);
                 var lower = new string[length];
                 for (var i = 0; i < length; i++)
@@ -234,28 +258,45 @@ internal static class BasicTrainer
                 var count = CueModel.Extract(lower, row.TargetWordIndex - start, features);
                 for (var f = 0; f < count; f++)
                 {
-                    if (!featureCounts.TryGetValue(features[f], out var perSense))
+                    if (!featureCounts.TryGetValue(features[f], out var perAnalysis))
                     {
-                        perSense = new int[rows.Length];
-                        featureCounts[features[f]] = perSense;
+                        perAnalysis = new int[columns.Length];
+                        featureCounts[features[f]] = perAnalysis;
                     }
 
-                    perSense[column]++;
+                    perAnalysis[column]++;
                 }
             }
 
-            var (cue, dropped) = BuildCue(group.Key, rows, senseCounts, featureCounts, hp);
+            var (cue, dropped) = BuildCue(group.Key, columns, analysisCounts, featureCounts, hp);
             cues.Add(cue);
             collisions += dropped;
         }
 
-        return (cues, collisions);
+        return (cues, collisions, skipped);
     }
+
+    /// <summary>
+    ///     Lists the distinct analyses that the labels of a lemma stand for, in the column order of its cue table.
+    /// </summary>
+    /// <param name="lemma">The corpus lemma.</param>
+    /// <param name="inventory">The sense inventory that lists the labels of the lemma.</param>
+    /// <param name="labels">The analyses that the labels stand for.</param>
+    /// <returns>The analyses in ordinal order of lemma, part of speech and features.</returns>
+    private static AnalysisKey[] ColumnsOf(string lemma, SenseInventory inventory, AnalysisLabels labels) =>
+        [.. inventory.RowsOf(lemma)
+            .Select(r => labels.Of(r.Lemma, r.Label))
+            .Where(stands => stands.Count == 1)
+            .Select(stands => stands[0])
+            .Distinct()
+            .OrderBy(k => k.Lemma, StringComparer.Ordinal)
+            .ThenBy(k => k.Pos)
+            .ThenBy(k => k.Features, StringComparer.Ordinal)];
 
     private static (BasicCueRow Cue, int Dropped) BuildCue(
         string lemma,
-        InventoryRow[] rows,
-        int[] senseCounts,
+        AnalysisKey[] columns,
+        int[] analysisCounts,
         Dictionary<FeatureRef, int[]> featureCounts,
         BasicHyperparameters hp)
     {
@@ -283,40 +324,40 @@ internal static class BasicTrainer
             }
         }
 
-        var senseTotal = senseCounts.Sum();
+        var analysisTotal = analysisCounts.Sum();
         var vocabulary = byHash.Count;
-        var senses = new CueSense[rows.Length];
-        var featureTotals = new int[rows.Length];
+        var analyses = new CueAnalysis[columns.Length];
+        var featureTotals = new int[columns.Length];
         foreach (var (_, counts) in byHash.Values)
         {
-            for (var s = 0; s < rows.Length; s++)
+            for (var s = 0; s < columns.Length; s++)
             {
                 featureTotals[s] += counts[s];
             }
         }
 
-        for (var s = 0; s < rows.Length; s++)
+        for (var s = 0; s < columns.Length; s++)
         {
-            var prior = Math.Log((senseCounts[s] + 1.0) / (senseTotal + rows.Length));
-            senses[s] = new CueSense(rows[s].Lemma + "#" + rows[s].Label, Quantize(prior)) { HasMeaning = rows[s].Meaning is not null };
+            var prior = Math.Log((analysisCounts[s] + 1.0) / (analysisTotal + columns.Length));
+            analyses[s] = new CueAnalysis(columns[s].Lemma, columns[s].Pos, columns[s].Features, Quantize(prior));
         }
 
-        var weights = new sbyte[vocabulary * rows.Length];
+        var weights = new sbyte[vocabulary * columns.Length];
         var hashes = new ushort[vocabulary];
         var index = 0;
         foreach (var (hash, (_, counts)) in byHash)
         {
             hashes[index] = hash;
-            for (var s = 0; s < rows.Length; s++)
+            for (var s = 0; s < columns.Length; s++)
             {
                 var w = Math.Log((counts[s] + hp.CueAlpha) / (featureTotals[s] + (hp.CueAlpha * vocabulary)));
-                weights[(index * rows.Length) + s] = Quantize(w);
+                weights[(index * columns.Length) + s] = Quantize(w);
             }
 
             index++;
         }
 
-        return (new BasicCueRow(lemma, senses, hashes, weights), dropped);
+        return (new BasicCueRow(lemma, analyses, hashes, weights), dropped);
     }
 
     private static sbyte Quantize(double logValue) =>

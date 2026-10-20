@@ -47,12 +47,6 @@ internal sealed partial class DataValidator
     /// <summary>The name of the sense table, also the name of its validation rule.</summary>
     private const string TableSense = "sense";
 
-    /// <summary>The name of the coarse-class table.</summary>
-    private const string TableCoarseClass = "coarse_class";
-
-    /// <summary>The name of the form-sense-scope table, also the name of its validation rule.</summary>
-    private const string TableFormSenseScope = "form_sense_scope";
-
     /// <summary>The name of the rule checking the set of files in the data directory.</summary>
     private const string RuleFileSet = "file-set";
 
@@ -145,7 +139,6 @@ internal sealed partial class DataValidator
 
         CheckRelations();
         CheckConsistency();
-        CheckPartitionRule();
         CheckInventory();
     }
 
@@ -394,11 +387,6 @@ internal sealed partial class DataValidator
         foreach (var row in Rows(TableSense))
         {
             resolver.AddSense(row[0], row[2], row[3], row[1]);
-        }
-
-        foreach (var row in Rows(TableCoarseClass))
-        {
-            resolver.AddClass(row[0], row[1]);
         }
 
         return resolver;
@@ -672,9 +660,9 @@ internal sealed partial class DataValidator
         }
 
         // An entry without a sense exists only for a closed-class word (pronoun, preposition, conjunction, interjection,
-        // determiner, auxiliary) or because a class or a carried analysis of the earlier table refers to it; any other
+        // determiner, auxiliary) or because a carried analysis of the earlier table refers to it; any other
         // lemma and part of speech without senses is a surface-only analysis of the form table, never an entry
-        var referenced = Rows("class_entry").Select(r => r[1]).ToHashSet(StringComparer.Ordinal);
+        var referenced = new HashSet<string>(StringComparer.Ordinal);
         foreach (var row in Rows("form").Where(r => r[2].Length > 0 && r[8] == CarriedProvenance))
         {
             referenced.Add(row[2]);
@@ -682,7 +670,7 @@ internal sealed partial class DataValidator
 
         foreach (var entry in Rows(TableEntry).Where(r => !positions.ContainsKey(r[0]) && !ClosedClass.Contains(r[2]) && !referenced.Contains(r[0])))
         {
-            Report(Path.Join(_root, TableEntry), 0, TableSense, $"Entry '{entry[0]}' has no sense and no class or carried analysis refers to it.");
+            Report(Path.Join(_root, TableEntry), 0, TableSense, $"Entry '{entry[0]}' has no sense and no carried analysis refers to it.");
         }
     }
 
@@ -701,10 +689,7 @@ internal sealed partial class DataValidator
             return;
         }
 
-        var entryPos = Index(Rows(TableEntry), 0, 2);
         var entryKeys = Rows(TableEntry).Select(r => (r[1], r[2])).ToHashSet();
-        var classKind = Index(Rows(TableCoarseClass), 0, 4);
-        var classPos = Index(Rows(TableCoarseClass), 0, 3);
         var ranks = new Dictionary<string, HashSet<int>>(StringComparer.Ordinal);
         foreach (var file in forms.Files)
         {
@@ -736,45 +721,6 @@ internal sealed partial class DataValidator
             if (!set.OrderBy(r => r).SequenceEqual(Enumerable.Range(0, set.Count)))
             {
                 Report(Path.Join(_root, "form"), 0, "form", $"The ranks of the analyses of '{spelling}' are not 0..{(set.Count - 1).ToString(CultureInfo.InvariantCulture)}.");
-            }
-        }
-
-        if (!_tables.TryGetValue(TableFormSenseScope, out var scopes))
-        {
-            return;
-        }
-
-        var formEntry = new Dictionary<(string, int), string>();
-        foreach (var row in Rows("form"))
-        {
-            formEntry[(row[0], int.Parse(row[1], CultureInfo.InvariantCulture))] = row[2];
-        }
-
-        foreach (var file in scopes.Files)
-        {
-            for (var i = 0; i < file.Rows.Count; i++)
-            {
-                var row = file.Rows[i];
-                if (!formEntry.TryGetValue((row[0], int.Parse(row[1], CultureInfo.InvariantCulture)), out var entry))
-                {
-                    Report(file.Path, i + 2, TableFormSenseScope, $"{row[0]}#{row[1]}: there is no such analysis in the form table.");
-                    continue;
-                }
-
-                if (entry.Length == 0)
-                {
-                    Report(file.Path, i + 2, TableFormSenseScope, $"{row[0]}#{row[1]}: a surface-only analysis has no entry and cannot have a scope.");
-                    continue;
-                }
-
-                if (classKind.GetValueOrDefault(row[2]) == "unmapped")
-                {
-                    Report(file.Path, i + 2, TableFormSenseScope, $"{row[0]}#{row[1]}: class '{row[2]}' is an unmapped bucket and cannot be an answer.");
-                }
-                else if (entryPos.TryGetValue(entry, out var ep) && classPos.TryGetValue(row[2], out var cp) && ep != cp)
-                {
-                    Report(file.Path, i + 2, TableFormSenseScope, $"{row[0]}#{row[1]}: class '{row[2]}' has part of speech '{cp}' but entry '{entry}' has '{ep}'.");
-                }
             }
         }
     }
@@ -827,29 +773,6 @@ internal sealed partial class DataValidator
                 {
                     Report(file.Path, i + 2, "example", $"Sense '{row[2]}' is not a sense of synset '{row[0]}'.");
                 }
-            }
-        }
-    }
-
-    // ---- partition rule ----
-
-    private void CheckPartitionRule()
-    {
-        var classes = Rows(TableCoarseClass).ToList();
-        if (classes.Count == 0)
-        {
-            return;
-        }
-
-        var covered = Rows("class_sense").Select(r => r[1]).ToHashSet(StringComparer.Ordinal);
-        var mapped = classes.Where(c => c[4] is "sense_group" or "no_oewn" or "unmapped").Select(c => (Lemma: c[1], Pos: c[3])).ToHashSet();
-        var entries = Index(Rows(TableEntry).Where(e => mapped.Contains((e[1], e[2]))), 0, 1);
-        var path = Path.Join(_root, "class_sense");
-        foreach (var sense in Rows(TableSense))
-        {
-            if (entries.TryGetValue(sense[2], out var lemma) && !covered.Contains(sense[0]))
-            {
-                Report(path, 0, "partition", $"Sense '{sense[0]}' of mapped lemma '{lemma}' is in no class; put it in a class or in an 'unmapped' class.");
             }
         }
     }

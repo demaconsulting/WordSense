@@ -166,7 +166,6 @@ reviews:
       - "tools/WordSense.Builder/Data/FormBootstrap.cs"
       - "tools/WordSense.Builder/Data/ImageCompiler.cs"
       - "tools/WordSense.Builder/Data/InventorySeeder.cs"
-      - "tools/WordSense.Builder/Data/LegacyClassMap.cs"
       - "test/WordSense.Builder.Tests/Data/DataEndToEndTests.cs"
       - "test/WordSense.Builder.Tests/Data/DataFixture.cs"
       - "test/WordSense.Builder.Tests/Data/InventorySeederTests.cs"
@@ -301,6 +300,7 @@ reviews:
       - "docs/verification/word-sense/core/word-lexicon.md"
       - "src/DemaConsulting.WordSense/WordLexicon.cs"
       - "src/DemaConsulting.WordSense/WordImage.cs"
+      - "src/DemaConsulting.WordSense/WordImage.Catalog.cs"
       - "src/DemaConsulting.WordSense/ImageFormat.cs"
       - "test/DemaConsulting.WordSense.Tests/WordLexiconTests.cs"
 
@@ -315,9 +315,15 @@ reviews:
       - "docs/design/word-sense/core/word-sense-contracts.md"
       - "docs/verification/word-sense/core/word-sense-contracts.md"
       - "src/DemaConsulting.WordSense/IWordSenseModel.cs"
+      - "src/DemaConsulting.WordSense/ClassifyResult.cs"
+      - "src/DemaConsulting.WordSense/AnalysisCandidate.cs"
+      - "src/DemaConsulting.WordSense/FallbackWordSenseModel.cs"
       - "src/DemaConsulting.WordSense/WordDetails.cs"
       - "src/DemaConsulting.WordSense/SenseInfo.cs"
+      - "src/DemaConsulting.WordSense/SenseLevel.cs"
+      - "src/DemaConsulting.WordSense/SenseCandidate.cs"
       - "test/DemaConsulting.WordSense.Tests/ContractsTests.cs"
+      - "test/DemaConsulting.WordSense.Tests/FallbackWordSenseModelTests.cs"
 
   # WordSense-Basic Review (one per subsystem)
   - id: WordSense-Basic
@@ -454,6 +460,7 @@ reviews:
       - "docs/verification/word-sense/onnx/onnx-classifier.md"
       - "src/DemaConsulting.WordSense.Onnx/OnnxClassifier.cs"
       - "test/DemaConsulting.WordSense.Onnx.Tests/OnnxClassifierTests*.cs"
+      - "test/DemaConsulting.WordSense.Onnx.Tests/OnnxLayeringTests.cs"
 
   # WordSense-Onnx-OnnxEncoder Review (one per unit)
   - id: WordSense-Onnx-OnnxEncoder
@@ -553,6 +560,7 @@ reviews:
       - "docs/design/word-sense/mini-lm/mini-lm-word-sense-model.md"
       - "docs/verification/word-sense/mini-lm/mini-lm-word-sense-model.md"
       - "src/DemaConsulting.WordSense.MiniLM/MiniLMWordSenseModel.cs"
+      - "src/DemaConsulting.WordSense.MiniLM/MiniLMEncoderModel.cs"
       - "test/DemaConsulting.WordSense.MiniLM.Tests/MiniLMWordSenseModelTests.cs"
       - "test/DemaConsulting.WordSense.MiniLM.Tests/ModelFolder.cs"
 
@@ -580,6 +588,7 @@ reviews:
       - "docs/design/word-sense/bert-base-cased/bert-base-cased-word-sense-model.md"
       - "docs/verification/word-sense/bert-base-cased/bert-base-cased-word-sense-model.md"
       - "src/DemaConsulting.WordSense.BertBaseCased/BertBaseCasedWordSenseModel.cs"
+      - "src/DemaConsulting.WordSense.BertBaseCased/BertBaseCasedEncoderModel.cs"
       - "test/DemaConsulting.WordSense.BertBaseCased.Tests/BertBaseCasedWordSenseModelTests.cs"
       - "test/DemaConsulting.WordSense.BertBaseCased.Tests/EndToEndTests.cs"
       - "test/DemaConsulting.WordSense.BertBaseCased.Tests/ModelFolder.cs"

@@ -6,6 +6,15 @@ namespace DemaConsulting.WordSense.BertBaseCased.Tests;
 /// </summary>
 public class BertBaseCasedWordSenseModelTests
 {
+    private static readonly string[] Sentence = ["They", "will", "record", "the", "record", "."];
+
+    private static BertBaseCasedWordSenseModel Open(string? directory = null)
+    {
+        var model = new BertBaseCasedWordSenseModel(directory);
+        model.Encoder.IntraOpThreads = 2;
+        return model;
+    }
+
     /// <summary>
     ///     The pinned model identity is available before the files are.
     /// </summary>
@@ -68,8 +77,8 @@ public class BertBaseCasedWordSenseModelTests
     {
         using var model = new BertBaseCasedWordSenseModel();
 
-        Assert.False(model.Spec.LowerCase);
-        Assert.Equal(768, model.Spec.HiddenSize);
+        Assert.False(model.Encoder.Spec.LowerCase);
+        Assert.Equal(768, model.Encoder.Spec.HiddenSize);
     }
 
     /// <summary>
@@ -80,8 +89,90 @@ public class BertBaseCasedWordSenseModelTests
     {
         using var model = new BertBaseCasedWordSenseModel();
 
-        Assert.Equal(["config.json", "model_int8.onnx", "tokenizer.json", "vocab.txt"], model.Spec.Files.Select(f => f.Name).Order().ToArray());
-        Assert.All(model.Spec.Files, f => Assert.Matches("^[0-9a-f]{64}$", f.Sha256.ToLowerInvariant()));
+        Assert.Equal(["config.json", "model_int8.onnx", "tokenizer.json", "vocab.txt"], model.Encoder.Spec.Files.Select(f => f.Name).Order().ToArray());
+        Assert.All(model.Encoder.Spec.Files, f => Assert.Matches("^[0-9a-f]{64}$", f.Sha256.ToLowerInvariant()));
+    }
+
+    /// <summary>
+    ///     An ambiguous word that the encoder does not score is answered by the Basic fallback from the context, at the
+    ///     part of speech level: a verb after "will", a noun after "the", the analyses summing to 1 and no scored sense.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BertBaseCasedWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback()
+    {
+        // Arrange: no model files are needed, the real Basic model is the fallback
+        using var model = new BertBaseCasedWordSenseModel();
+
+        // Act
+        var results = await model.ClassifyAsync(Sentence, TestContext.Current.CancellationToken);
+
+        // Assert: the context decides the analysis, as the Basic model does
+        Assert.Equal(PartOfSpeech.Verb, results[2].Details?.PartOfSpeech);
+        Assert.Equal(PartOfSpeech.Noun, results[4].Details?.PartOfSpeech);
+        foreach (var index in new[] { 2, 4 })
+        {
+            var result = results[index];
+            Assert.Equal(SenseLevel.PartOfSpeech, result.Level);
+            Assert.Null(result.SenseId);
+            Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 9);
+            Assert.True(result.Analyses.Length > 1);
+            Assert.All(result.Analyses, a => Assert.True(a.Senses.IsEmpty));
+            Assert.Equal(result.Details, result.Analyses[0].Details);
+        }
+
+        // The answer is the one of the Basic model, not the uniform answer of the encoder model
+        using var basic = new Basic.BasicWordSenseModel();
+        var expected = await basic.ClassifyAsync(Sentence, TestContext.Current.CancellationToken);
+        Assert.Equal(expected[2], results[2]);
+        Assert.Equal(expected[4], results[4]);
+    }
+
+    /// <summary>
+    ///     The assembly builds on the core, the Onnx and the Basic packages and on nothing else of the WordSense family:
+    ///     besides the framework and the ONNX Runtime it references exactly those three.
+    /// </summary>
+    [Fact]
+    public void BertBaseCasedWordSenseModel_Assembly_ReferencesCoreOnnxAndBasic()
+    {
+        // Arrange: the names of the assemblies that the BertBaseCased assembly references
+        var references = typeof(BertBaseCasedWordSenseModel).Assembly.GetReferencedAssemblies()
+            .Select(r => r.Name!)
+            .ToList();
+
+        // Act: keep the assemblies that are neither the framework nor the ONNX Runtime
+        var others = references
+            .Where(name => !name.StartsWith("System", StringComparison.Ordinal)
+                && !name.StartsWith("Microsoft.", StringComparison.Ordinal)
+                && !string.Equals(name, "mscorlib", StringComparison.Ordinal)
+                && !string.Equals(name, "netstandard", StringComparison.Ordinal))
+            .Order(StringComparer.Ordinal)
+            .ToList();
+
+        // Assert
+        Assert.Equal(["DemaConsulting.WordSense", "DemaConsulting.WordSense.Basic", "DemaConsulting.WordSense.Onnx"], others);
+    }
+
+    /// <summary>
+    ///     Disposing the model disposes both the encoder model and the Basic fallback model, so both reject further calls.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BertBaseCasedWordSenseModel_Dispose_DisposesEncoderAndFallback()
+    {
+        // Arrange: both models are usable while the model lives
+        var model = new BertBaseCasedWordSenseModel();
+        Assert.False(model.Encoder.IsReleased);
+        Assert.Single(await model.Encoder.ClassifyAsync(["record"], TestContext.Current.CancellationToken));
+        Assert.Single(await model.Fallback.ClassifyAsync(["record"], TestContext.Current.CancellationToken));
+
+        // Act
+        model.Dispose();
+
+        // Assert: the encoder is released and both reject calls
+        Assert.True(model.Encoder.IsReleased);
+        await Assert.ThrowsAsync<ObjectDisposedException>(() => model.Encoder.ClassifyAsync(["record"], TestContext.Current.CancellationToken));
+        await Assert.ThrowsAsync<ObjectDisposedException>(() => model.Fallback.ClassifyAsync(["record"], TestContext.Current.CancellationToken));
     }
 
     /// <summary>
@@ -118,7 +209,7 @@ public class BertBaseCasedWordSenseModelTests
     [Fact]
     public async Task BertBaseCasedWordSenseModel_EnsureModelAsync_ModelDirectory_VerifiesPinnedFiles()
     {
-        using var model = new BertBaseCasedWordSenseModel(ModelFolder.Require()) { IntraOpThreads = 2 };
+        using var model = Open(ModelFolder.Require());
 
         await model.EnsureModelAsync(null, TestContext.Current.CancellationToken);
 
@@ -126,16 +217,16 @@ public class BertBaseCasedWordSenseModelTests
     }
 
     /// <summary>
-    ///     An ambiguous word is resolved to its best sense from the context.
+    ///     The two uses of an ambiguous word get their part of speech from the context.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
     public async Task BertBaseCasedWordSenseModel_Classify_AmbiguousWord_ReturnsBestSense()
     {
-        using var model = new BertBaseCasedWordSenseModel(ModelFolder.Require()) { IntraOpThreads = 2 };
+        using var model = Open(ModelFolder.Require());
         await model.EnsureModelAsync(null, TestContext.Current.CancellationToken);
 
-        var result = await model.ClassifyAsync(["They", "will", "record", "the", "record", "."], TestContext.Current.CancellationToken);
+        var result = await model.ClassifyAsync(Sentence, TestContext.Current.CancellationToken);
 
         Assert.Equal(PartOfSpeech.Verb, result[2].Details?.PartOfSpeech);
         Assert.Equal(PartOfSpeech.Noun, result[4].Details?.PartOfSpeech);

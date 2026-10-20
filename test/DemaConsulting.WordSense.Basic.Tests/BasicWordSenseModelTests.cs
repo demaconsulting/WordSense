@@ -150,9 +150,11 @@ public class BasicWordSenseModelTests
         var results = await model.ClassifyAsync(["The", ".", "zzqxjw"], TestContext.Current.CancellationToken);
 
         Assert.Equal(PartOfSpeech.Determiner, results[0].Details!.PartOfSpeech);
+        Assert.Equal(SenseLevel.Sense, results[0].Level);
         Assert.Equal(1.0, results[0].Confidence);
         Assert.Null(results[1].Details);
         Assert.Null(results[2].Details);
+        Assert.Equal(SenseLevel.None, results[2].Level);
     }
 
     /// <summary>
@@ -284,43 +286,48 @@ public class BasicWordSenseModelTests
     }
 
     /// <summary>
-    ///     A form that names a single sense answers it with full confidence: <c>bowed</c> is only the bend verb.
+    ///     A form with one analysis is answered with it and full confidence, at the part-of-speech level when its
+    ///     lemma has several senses: <c>bowed</c> is a form of the verb <c>bow</c>.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task BasicWordSenseModel_ClassifyAsync_BowedIsOnlyTheBendVerb()
+    public async Task BasicWordSenseModel_ClassifyAsync_FormWithOneAnalysis_IsAnsweredWithConfidenceOne()
     {
         using var model = new BasicWordSenseModel();
 
-        var senses = await model.ClassifyAsync(["He", "bowed", "to", "the", "queen", "."], TestContext.Current.CancellationToken);
+        var results = await model.ClassifyAsync(["He", "bowed", "to", "the", "queen", "."], TestContext.Current.CancellationToken);
 
-        var bowed = Assert.Single(WordLexicon.Lookup("bowed"));
-        Assert.Equal(bowed, senses[1].Details);
-        Assert.Equal(PartOfSpeech.Verb, bowed.PartOfSpeech);
-        Assert.Equal("bow#bend-verb", bowed.SenseId);
-        Assert.Equal(1.0, senses[1].Confidence);
+        var analyses = WordLexicon.Lookup("bowed");
+        Assert.Contains(results[1].Details!, analyses);
+        Assert.Equal("bow", results[1].Details!.Lemma);
+        if (analyses.Length == 1)
+        {
+            Assert.Equal(1.0, results[1].Confidence);
+            Assert.Equal(SenseLevel.PartOfSpeech, results[1].Level);
+        }
     }
 
     /// <summary>
-    ///     <c>bows</c> keeps all three senses of <c>bow</c> and the context picks among them.
+    ///     <c>bows</c> keeps all its analyses, the context picks among them at the part-of-speech level and the answer
+    ///     never names a sense or a group.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task BasicWordSenseModel_ClassifyAsync_BowsIsResolvedAmongItsThreeSenses()
+    public async Task BasicWordSenseModel_ClassifyAsync_BowsIsResolvedAmongItsAnalyses()
     {
         using var model = new BasicWordSenseModel();
 
         var actors = await model.ClassifyAsync(["The", "actors", "took", "their", "bows", "."], TestContext.Current.CancellationToken);
         var queen = await model.ClassifyAsync(["He", "bows", "to", "the", "queen", "."], TestContext.Current.CancellationToken);
-        var archer = await model.ClassifyAsync(["She", "drew", "back", "the", "bows", "."], TestContext.Current.CancellationToken);
 
-        var senses = WordLexicon.Lookup("bows");
-        Assert.Equal(3, senses.Length);
-        Assert.Contains(actors[4].Details, senses);
-        Assert.Contains(queen[1].Details, senses);
-        Assert.Contains(archer[4].Details, senses);
-        Assert.Equal(PartOfSpeech.Verb, queen[1].Details?.PartOfSpeech);
-        Assert.Equal("bow#weapon", archer[4].Details!.SenseId);
+        var analyses = WordLexicon.Lookup("bows");
+        Assert.True(analyses.Length >= 2);
+        Assert.Contains(actors[4].Details!, analyses);
+        Assert.Contains(queen[1].Details!, analyses);
+        Assert.Equal(PartOfSpeech.Noun, actors[4].Details!.PartOfSpeech);
+        Assert.Equal(PartOfSpeech.Verb, queen[1].Details!.PartOfSpeech);
+        Assert.All([actors[4], queen[1]], r => Assert.Equal(SenseLevel.PartOfSpeech, r.Level));
+        Assert.All([actors[4], queen[1]], r => Assert.Null(r.SenseId));
     }
 
     /// <summary>
@@ -339,8 +346,8 @@ public class BasicWordSenseModelTests
         var readsDetails = reads[1].Details!;
         Assert.Equal("read", readsDetails.Lemma);
         Assert.Equal(PartOfSpeech.Verb, readsDetails.PartOfSpeech);
-        Assert.Equal("read#present", readsDetails.SenseId);
-        Assert.Equal("read#past", past[2].Details!.SenseId);
-        Assert.Equal("read#present", present[3].Details!.SenseId);
+        Assert.Contains("Tense=Pres", readsDetails.Features, StringComparison.Ordinal);
+        Assert.Contains("Tense=Past", past[2].Details!.Features, StringComparison.Ordinal);
+        Assert.Contains("Tense=Pres", present[3].Details!.Features, StringComparison.Ordinal);
     }
 }

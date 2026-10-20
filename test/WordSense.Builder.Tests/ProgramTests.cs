@@ -26,6 +26,7 @@ public sealed class ProgramTests : IDisposable
     private string PrepareCorpus()
     {
         _dir.Write("corpus/senses/s.tsv", TestDirectory.SensesHeader + "walk\tnoun\tnoun\t\t\nwalk\tverb\tverb\t\t\n");
+        _dir.Write("corpus/migration/legacy-class-map.tsv", "class_id\tkind\tlemma\tpos\tmeaning\trespelling\tsense_count\tsense_id\tgroup_id\tentry_id\tentry_lemma\tentry_pos\tfeatures\n");
         _dir.Write("corpus/anchors/a.tsv", "walk\tverb\tThey will {walk} home.\nwalk\tnoun\tThe {walk} was long.\n");
         _dir.Write("corpus/holdout/h.tsv", "walk\tverb\tYou should {walk} more.\n");
         return Path.Join(_dir.Root, "corpus");
@@ -41,6 +42,21 @@ public sealed class ProgramTests : IDisposable
 
         Assert.Equal(1, code);
         foreach (var command in new[] { "compile-image", "import-moby", "weights", "evaluate", "ud-counts", "ud-irregular", "coverage", "train-basic", "tune-basic", "appendix" })
+        {
+            Assert.Contains(command, error, StringComparison.Ordinal);
+        }
+    }
+
+    /// <summary>
+    ///     The usage lists the commands of the sense inventory.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseBuilder_Program_Usage_ListsTheSenseCommands()
+    {
+        var (code, _, error) = await RunAsync();
+
+        Assert.Equal(1, code);
+        foreach (var command in new[] { "import-oewn", "validate-data", "import-wn30-counts", "label-senses", "seed-inventory", "appendix" })
         {
             Assert.Contains(command, error, StringComparison.Ordinal);
         }
@@ -273,6 +289,7 @@ public sealed class ProgramTests : IDisposable
         Assert.Equal(0, code);
         Assert.Empty(error);
         Assert.Contains("| Known tokens | 2 (66.67 percent) |", output, StringComparison.Ordinal);
+        Assert.Contains("| Known tokens of trained lemmas | 2 (100.00 percent of the known tokens) |", output, StringComparison.Ordinal);
         Assert.Contains("| zzqxj | 1 |", output, StringComparison.Ordinal);
         Assert.Equal(output, await File.ReadAllTextAsync(target, TestContext.Current.CancellationToken));
     }
@@ -342,15 +359,18 @@ public sealed class ProgramTests : IDisposable
     [Fact]
     public async Task WordSenseBuilder_Program_Appendix_WritesFile()
     {
-        var corpus = PrepareCorpus();
-        _dir.Write("corpus/forms/f.tsv", "form\tlemma\tlabels\nwalks\twalk\tnoun,verb\n");
+        var data = ImageCompilerTests.WriteSmallData(_dir.Root);
+        _dir.Write("data/gloss/g.tsv", "synset_id\tseq\ttext\n" + string.Concat(Enumerable.Range(1, 6).Select(i => $"oewn-{i}-{(i < 5 ? "n" : "v")}\t1\tgloss {i}\n")));
+        _dir.Write("corpus/senses/s.tsv", TestDirectory.SensesHeader + "bank\tnoun\tnoun\t\t\nbank\tverb\tverb\t\t\n");
+        var corpus = Path.Join(_dir.Root, "corpus");
         var target = Path.Join(_dir.Root, "out", "appendix.md");
 
-        var (code, output, _) = await RunAsync("appendix", "--corpus", corpus, "--output", target);
+        var (code, output, error) = await RunAsync("appendix", "--corpus", corpus, "--data", data, "--output", target);
 
         Assert.Equal(0, code);
+        Assert.Empty(error);
         Assert.Contains("Wrote the appendix of 1 lemmas", output, StringComparison.Ordinal);
-        Assert.Equal(AppendixGenerator.Generate(corpus), await File.ReadAllTextAsync(target, TestContext.Current.CancellationToken));
+        Assert.Equal(AppendixGenerator.Generate(corpus, data), await File.ReadAllTextAsync(target, TestContext.Current.CancellationToken));
     }
 
     /// <summary>

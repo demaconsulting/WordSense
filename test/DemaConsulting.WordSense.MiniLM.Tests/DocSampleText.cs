@@ -46,13 +46,22 @@ internal static partial class DocSampleText
     public static string RequireModelDirectory(string modelId)
     {
         var directory = Path.Join(FindRepositoryRoot(), "model", modelId);
-        using OnnxWordSenseModel model = modelId switch
+        IWordSenseModel model = modelId switch
         {
             "all-MiniLM-L6-v2-int8" => new MiniLMWordSenseModel(directory),
             "bert-base-cased-int8" => new BertBaseCasedWordSenseModel(directory),
             _ => throw new ArgumentException($"Unknown model '{modelId}'.", nameof(modelId)),
         };
-        return ModelFileCheck.Require(model.Spec, directory);
+        using (model)
+        {
+            var encoder = model switch
+            {
+                MiniLMWordSenseModel minilm => minilm.Encoder,
+                BertBaseCasedWordSenseModel bert => bert.Encoder,
+                _ => throw new ArgumentException($"Unknown model '{modelId}'.", nameof(modelId)),
+            };
+            return ModelFileCheck.Require(encoder.Spec, directory);
+        }
     }
 
     /// <summary>
@@ -132,9 +141,10 @@ internal static partial class DocSampleText
     ///     within a tolerance and every other column exactly.
     /// </summary>
     /// <remarks>
-    ///     Each line is <c>word pos confidence [respelling]</c> separated by spaces. The confidences of an encoder model
-    ///     come from an int8 ONNX graph whose output differs slightly between CPUs and operating systems, so they are
-    ///     approximate; the word, the part of speech and the respelling are decisions and must match exactly.
+    ///     Each line is <c>word pos level confidence [sense] [runner-up]</c> separated by spaces. The confidences of an
+    ///     encoder model come from an int8 ONNX graph whose output differs slightly between CPUs and operating systems,
+    ///     so they are approximate; the word, the part of speech, the level and the sense are decisions and must match
+    ///     exactly.
     /// </remarks>
     /// <param name="documented">The output block of the README, the single source of truth.</param>
     /// <param name="actual">The output the sample wrote.</param>
@@ -148,17 +158,18 @@ internal static partial class DocSampleText
         {
             var expected = expectedLines[i].Split(' ', StringSplitOptions.RemoveEmptyEntries);
             var found = actualLines[i].Split(' ', StringSplitOptions.RemoveEmptyEntries);
-            Assert.True(expected.Length >= 3 && found.Length == expected.Length, $"Line {i + 1}: expected '{expectedLines[i]}' but found '{actualLines[i]}'.");
+            Assert.True(expected.Length >= 4 && found.Length == expected.Length, $"Line {i + 1}: expected '{expectedLines[i]}' but found '{actualLines[i]}'.");
 
-            // Word, part of speech and respelling exactly; the confidence (third column) within the tolerance
+            // Word, part of speech, level, sense and runner-up exactly; the confidence (fourth column) within the tolerance
             Assert.Equal(expected[0], found[0]);
             Assert.Equal(expected[1], found[1]);
-            Assert.Equal(string.Join(' ', expected.Skip(3)), string.Join(' ', found.Skip(3)));
-            var expectedConfidence = decimal.Parse(expected[2], System.Globalization.CultureInfo.InvariantCulture);
-            var foundConfidence = decimal.Parse(found[2], System.Globalization.CultureInfo.InvariantCulture);
+            Assert.Equal(expected[2], found[2]);
+            Assert.Equal(string.Join(' ', expected.Skip(4)), string.Join(' ', found.Skip(4)));
+            var expectedConfidence = decimal.Parse(expected[3], System.Globalization.CultureInfo.InvariantCulture);
+            var foundConfidence = decimal.Parse(found[3], System.Globalization.CultureInfo.InvariantCulture);
             Assert.True(
                 Math.Abs(expectedConfidence - foundConfidence) <= tolerance,
-                $"Line {i + 1}: the confidence {found[2]} of '{found[0]}' differs from the documented {expected[2]} by more than {tolerance}.");
+                $"Line {i + 1}: the confidence {found[3]} of '{found[0]}' differs from the documented {expected[3]} by more than {tolerance}.");
         }
     }
 

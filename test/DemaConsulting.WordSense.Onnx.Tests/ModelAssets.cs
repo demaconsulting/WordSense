@@ -38,7 +38,7 @@ internal static class ModelAssets
             Assert.Skip("The model directory was not found.");
         }
 
-        using var model = new MiniLMWordSenseModel(directory);
+        using var model = new MiniLMEncoderModel(directory, 128);
         return ModelFileCheck.Require(model.Spec, directory);
     }
 

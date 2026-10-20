@@ -26,8 +26,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
   group equals the sum of the normalized fine probabilities of its candidate senses, the group scores sum to one, and a
   single
   group has an infinite margin.
-- **Confidence is monotonic** (`Confidence_IsMonotonicAndClamped`, `Confidence_AtThreshold_IsOneHalf`): the confidence
-  never decreases as the margin grows, is clamped to 0 and 1, and equals 0.5 where the margin equals the threshold.
+- **Confidence is monotonic** (`Confidence_IsMonotonicAndClamped`): the confidence never decreases as the margin grows
+  and is clamped to 0 and 1 (the confidence of a result is the probability of its answer, which the classifier
+  verifies).
 - **Level uses the lemma's own thresholds** (`Level_UsesTheLemmasOwnThresholds`): two lemmas with the same scores and
   different thresholds are answered at different levels; a threshold of "never" is not met by a finite margin.
 - **Invalid weights are rejected**: a wrong shape, a non-finite value and a feature of the wrong length throw

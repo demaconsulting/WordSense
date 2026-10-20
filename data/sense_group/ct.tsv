@@ -1,7 +1,0 @@
-group_id	lemma	pos	label	origin
-CT#noun-group	CT	n	noun-group	default
-CTC#noun-group	CTC	n	noun-group	default
-ctene#noun-group	ctene	n	noun-group	default
-ctenidium#noun-group	ctenidium	n	noun-group	default
-ctenoid#adjective-group	ctenoid	a	adjective-group	default
-ctenophore#noun-group	ctenophore	n	noun-group	default

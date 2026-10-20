@@ -2,12 +2,14 @@
 
 #### Verification Approach
 
-Tests in `test/DemaConsulting.WordSense.Onnx.Tests/OnnxClassifierTests.cs` build the classifier over the real MiniLM int8
+Tests in `test/DemaConsulting.WordSense.Onnx.Tests/OnnxClassifierTests.cs` call the classifier with word lists and the
+real embedded lexicon, so the expected analyses, senses and levels follow from the lexicon. The scenarios of the current
+version (the lexicon-only answers) need no model, no encoder and no other model package. The scenarios of the
+increment that adds the scoring of fine senses (marked below) build the classifier over the real MiniLM int8
 encoder (through `ModelAssets`, skipped when the Git LFS content is absent) with hand-made weights matched against the
-real embedded lexicon, so the expected sense, group and confidence follow from the arithmetic; scenarios whose words
-need no context do not depend on the model at all. Substitute weights with chosen thresholds are used so that a specific
-level is reached, and a test double stands in for the fallback model where the scenario needs to know that the
-fallback was asked. Real-model accuracy is verified in the MiniLM and BertBaseCased subsystem documents.
+real embedded lexicon, so the expected sense, group and confidence follow from the arithmetic; substitute weights with
+chosen thresholds are used so that a specific level is reached. Real-model accuracy is verified in the MiniLM and
+BertBaseCased subsystem documents.
 
 #### Test Environment
 
@@ -20,44 +22,64 @@ All scenarios below pass on every platform and target framework of the CI matrix
 
 #### Test Scenarios
 
-- **Unknown word** (`UnknownWord_ReturnsNoDetails`): a word with no lexicon entry gives no details, level `None`,
-  no ids and confidence 0, and needs no encoder result.
+- **Unknown word** (`UnknownWord_IsAnsweredAsUnknown`): a word with no lexicon entry is not known, has no analyses, no
+  details, level `None`, no ids and confidence 0, and needs no encoder result.
 - **Capitalized word** (`CapitalizedWord_ResolvesLikeLowerCase`): `The` and `the` give the same answer.
-- **Single-sense word** (`SingleSenseWord_ReturnsEntryWithFullConfidence`, `SingleSenseWord_DoesNotEncode`): a word
-  whose lemma and part of speech have one sense, a determiner such as `the` among them, is answered at the `Sense` level
-  with that sense, its group and confidence 1, and the encoder is not asked for it.
+- **Single analysis and single sense** (`SingleAnalysisSingleSense_AnswersTheSense`, `SingleSenseWord_DoesNotEncode`): a
+  word with one analysis whose lemma and part of speech have one sense, a determiner such as `the` among them, is
+  answered at the `Sense` level with that analysis (probability 1), that sense (probability 1), no group id (a group
+  never holds all the senses of its lemma and part of speech) and confidence 1, and the encoder is not asked for it.
+- **Single analysis, several senses** (`SingleAnalysisSeveralSenses_AnswersPartOfSpeech`): a word with one analysis
+  and several senses and no weights is answered at the `PartOfSpeech` level with that analysis, no scored senses, no ids
+  and confidence 1.
+- **Several analyses, no weights** (`LemmaWithoutWeights_AnswersAnalysesWithoutScoredSenses`,
+  `LemmaWithoutWeights_NeverAnswersAFineSense`): a word with several analyses whose lemma has no weights lists every
+  analysis with the probability 1/n in lexicon order, selects the first, lists no scored senses, answers at the
+  `PartOfSpeech` level with the probability 1/n as confidence and no group or sense id, and never names a fine sense.
+- **First analysis with one sense** (`SeveralAnalysesFirstWithOneSense_StaysAtPartOfSpeech`): even when the first
+  analysis has exactly one sense, nothing was scored, so no sense is listed or named and the answer stays at the
+  `PartOfSpeech` level with the confidence 1/n.
+- **Later analysis with one sense** (`SeveralAnalysesLaterWithOneSense_StaysAtPartOfSpeech`): likewise when only a later
+  analysis has exactly one sense: no analysis lists scored senses and the answer stays at the `PartOfSpeech` level.
 - **Encoder only when needed** (`NoAmbiguousWords_DoesNotEncode`, `AmbiguousWords_UseTheEncoder`,
-  `OnlyAmbiguousWordsAreEncoded`): the encoder runs once for a text in which at least one word has several candidate
-  senses and usable weights, only for those words, and never for a text in which no word does.
-- **Candidates of every analysis** (`WordWithSeveralAnalyses_RanksTheSensesOfEveryAnalysis`,
-  `PrepositionUseOfLike_IsReachable`, `InflectedForm_RanksTheSensesOfItsLemma`): a word with several analyses ranks the
-  fine senses of all of them, so the preposition use of `like` can be the answer beside its verb and noun senses; an
-  inflected form ranks the senses of its lemma; no sense of another lemma competes.
-- **Confidence is monotonic in the margin** (`LargerMargin_GivesHigherConfidence`,
-  `ConfidenceIsWithinZeroAndOne`, `MarginAtThreshold_GivesConfidenceOneHalf`): for a growing margin of the answered
-  level the confidence never decreases, is clamped to 0 and 1, and equals 0.5 where the margin equals the lemma's
-  threshold for that level.
-- **Best candidate is kept** (`LowMargin_ReturnsBestGroupWithLowConfidence`): a low margin still returns the best group
-  with its low confidence, not no answer.
-- **Fine threshold met** (`MarginAboveFineThreshold_AnswersSense`, `MarginAtFineThreshold_AnswersSense`): a fine margin
-  above, and exactly at, the lemma's fine threshold gives the best fine sense at the `Sense` level with the sense id,
-  the group id and a confidence of at least one half.
-- **Group answered when only the group is sure** (`FineBelowAndGroupAboveThreshold_AnswersGroup`): a fine margin below
-  its threshold with a group margin that reaches the group threshold gives the best group at the `Group` level with the
-  group id only and a confidence of at least one half.
-- **Low-confidence group** (`BothBelowThreshold_AnswersBestGroupBelowOneHalf`): when neither threshold is reached the
-  answer is the best group at the `Group` level with a confidence below one half.
-- **Untrained lemma falls back to the part of speech** (`LemmaWithoutWeights_AnswersPartOfSpeechFromBasic`,
-  `LemmaWithoutWeights_NeverAnswersAFineSense`, `SingleAnalysisWithManySensesAndNoWeights_AnswersPartOfSpeech`): a word
-  with several senses whose lemma has no weights is answered with the analysis that the fallback model chooses, at the
-  `PartOfSpeech` level, with no group id and no sense id and with the fallback probability as confidence; the same holds
-  for a word with a single analysis and many senses, and the encoder is not asked for it.
-- **Unusable vector falls back** (`DimensionMismatch_FallsBackToPartOfSpeech`): a vector whose dimension differs from the
-  weights, or a target without word pieces, gives the fallback answer at the `PartOfSpeech` level, not no details.
+  `OnlyAmbiguousWordsAreEncoded`; scoring increment): the encoder runs once for a text in which at least one word has
+  several senses and usable weights, only for those words, and never for a text in which no word does.
+- **Senses of every analysis** (`WordWithSeveralAnalyses_RanksTheSensesOfEveryAnalysis`,
+  `PrepositionUseOfLike_IsReachable`, `InflectedForm_RanksTheSensesOfItsLemma`; scoring increment): a word with
+  several analyses ranks the fine senses of all of them, so the preposition use of `like` can be the answer beside its
+  verb and noun senses; an inflected form ranks the senses of its lemma; no sense of another lemma competes; the
+  probability of an analysis is the mass of its senses.
+- **Confidence is monotonic in the margin** (`LargerMargin_GivesHigherConfidence`, `ConfidenceIsWithinZeroAndOne`;
+  scoring increment): for a growing margin of the best fine score the confidence, the probability of the answer at its
+  level, never decreases and stays between 0 and 1.
+- **Best senses are kept** (`LowMargin_ReturnsBestGroupWithLowConfidence`; scoring increment): a low margin still lists
+  the ranked senses and answers the best group, or the part of speech where there is none, with its low confidence, not
+  no answer.
+- **Fine threshold met** (`MarginAboveFineThreshold_AnswersSense`, `MarginAtFineThreshold_AnswersSense`; scoring
+  increment): a fine margin above, and exactly at, the lemma's fine threshold gives the best fine sense at the `Sense`
+  level with the sense id, the group id when the sense is in a group, and the sense lying in the selected analysis.
+- **Group answered when only the group is sure** (`FineBelowAndGroupAboveThreshold_AnswersGroup`; scoring increment): for
+  a lemma that has groups, a fine margin below its threshold with a group margin that reaches the group threshold gives
+  the best group at the `Group` level with the group id only; the group's member senses are listed in the selected
+  analysis.
+- **Low-confidence group** (`BothBelowThreshold_AnswersBestGroupBelowOneHalf`; scoring increment): when neither threshold
+  is reached and the best sense is in a group, the answer is that group at the `Group` level with a lower confidence
+  than a threshold-met answer.
+- **Step to the part of speech** (`LemmaWithoutGroups_StepsFromSenseToPartOfSpeech`; scoring increment): for a lemma that
+  has no groups, a fine margin below the fine threshold gives the selected analysis at the `PartOfSpeech` level with its
+  probability as the confidence, never a `Group` answer and never level `None`.
+- **Analyses and senses** (`TrainedLemma_ListsRankedCandidatesSummingToOne`, `SingleSenseWord_ListsNoCandidates`,
+  `LemmaWithoutWeights_ListsNoCandidates`; scoring increment): a trained lemma lists every analysis with its probability
+  and, inside each, the senses ranked by their probability given the analysis, the most probable first, with
+  probabilities that sum to one within a small tolerance, whatever the level answered; equal probabilities keep
+  inventory order; a single-sense word and a lemma without weights list no scored senses.
+- **Unusable vector** (`DimensionMismatch_FallsBackToPartOfSpeech`; scoring increment): a vector whose dimension differs
+  from the weights, or a target without word pieces, gives the lexicon-only answer at the `PartOfSpeech` level, not
+  unknown.
 - **Form of several lemmas** (`FormOfTwoLemmas_ChoosesTheLemmaFromContext`,
   `ReadPastVersusPresent_ChoosesTheTenseFeatures`, `FormChooserBelowThreshold_AnswersPartOfSpeech`,
-  `EveryMultiLemmaForm_HasAChooser`): a form such as `left` is answered
-  with the senses of the lemma that its chooser picks from the sentence; `read` gets its tense features from the
+  `EveryMultiLemmaForm_HasAChooser`; scoring increment): a form such as `left` is answered
+  with the senses of the analysis that its chooser picks from the sentence; `read` gets its tense features from the
   chooser; a chooser margin below its threshold gives the `PartOfSpeech` level; every form of the lexicon whose analyses
   belong to several lemmas has a chooser in the shipped weights.
 - **Words are returned as written**: the result array is parallel to the input, holds each word as given, and is

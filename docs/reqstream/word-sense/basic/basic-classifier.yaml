@@ -10,43 +10,50 @@ sections:
             requirements:
               - id: WordSense-Basic-BasicClassifier-Unknown
                 title: >-
-                  BasicClassifier shall answer a word that has no lexicon entry with no details, level none and
-                  confidence 0, and shall answer every word that has a lexicon entry, a number word such as one or
-                  twenty included, with details.
+                  BasicClassifier shall answer a word that has no lexicon entry, or no letter, as unknown (not known, no
+                  analysis, no details, level none and confidence 0), and shall answer every word that has a lexicon
+                  entry, a number word such as one or twenty included, with details.
                 tags: [unit]
                 justification: |
                   An unknown word must be distinguishable from a known one, and a known word must never be reported as
                   unknown.
                 tests:
                   - BasicClassifier_ClassifyAsync_UnknownWord_ReturnsNoDetails
+                  - BasicClassifier_ClassifyAsync_UnknownWord_HasNoAnalyses
                   - BasicClassifier_ClassifyAsync_NumberWord_ReturnsDetails
 
               - id: WordSense-Basic-BasicClassifier-SingleSense
                 title: >-
-                  BasicClassifier shall answer a word whose lemma and part of speech have exactly one sense, a
-                  determiner such as the among them, at the sense level with that sense and confidence 1, whatever the
-                  case of the word.
+                  BasicClassifier shall answer a word whose selected analysis has exactly one sense (a lemma and part
+                  of speech with a single sense, a determiner such as the among them) at the sense level with that
+                  sense, and shall list that sense with probability 1 in every analysis that has exactly one sense,
+                  whatever the case of the word.
                 tags: [unit]
                 justification: |
-                  A word without ambiguity needs no context.
+                  A sense without alternatives needs no context and no evidence.
                 tests:
                   - BasicClassifier_ClassifyAsync_SingleSenseWord_ReturnsEntryWithFullConfidence
+                  - BasicClassifier_ClassifyAsync_SingleSenseAnalysis_ListsThatSenseWithProbabilityOne
                   - BasicWordSenseModel_ClassifyAsync_LexiconOnlyWords_NeverNeedEnsure
 
               - id: WordSense-Basic-BasicClassifier-Resolve
                 title: >-
-                  BasicClassifier shall answer every word with several analyses with the analysis that the fused
-                  part-of-speech and context-cue evidence makes most probable, with the probability of that analysis
-                  as confidence, and shall answer a word with a single analysis and several senses with that
-                  analysis and confidence 1.
+                  BasicClassifier shall give every word with several analyses a probability for each analysis from the
+                  fused part-of-speech and context-cue evidence, with the analysis of the largest probability as the
+                  selected analysis and its probability as the confidence, and shall give a word with a single analysis
+                  that analysis with probability 1 and confidence 1, sharing one analyses array between all results for
+                  such a word.
                 tags: [unit]
                 justification: |
-                  This is the statistical disambiguation that the package provides; the confidence lets callers apply
-                  their own policy instead of the classifier abstaining.
+                  This is the statistical disambiguation that the package provides; the probabilities let callers apply
+                  their own policy instead of the classifier abstaining, and a word with one analysis needs no
+                  evidence, so its answer is built once.
                 tests:
                   - BasicClassifier_ClassifyAsync_AmbiguousWord_AlwaysAnswersWithProbability
                   - BasicClassifier_ClassifyAsync_Context_ChoosesPartOfSpeech
+                  - BasicClassifier_ClassifyAsync_Context_SelectsTheMostProbableAnalysis
                   - BasicClassifier_ClassifyAsync_SingleAnalysisWithManySenses_AnswersItWithConfidenceOne
+                  - BasicClassifier_ClassifyAsync_SingleAnalysisWord_SharesItsAnalysesArray
                   - BasicWordSenseModel_ClassifyAsync_AuxiliaryContext_AnswersAuxiliary
                   - BasicWordSenseModel_ClassifyAsync_NounContext_StaysNoun
                   - BasicWordSenseModel_ClassifyAsync_NeedAsMainVerb_IsNotAuxiliary
@@ -55,18 +62,35 @@ sections:
 
               - id: WordSense-Basic-BasicClassifier-Level
                 title: >-
-                  BasicClassifier shall state the level of every answer: the part of speech level for an analysis chosen
-                  statistically, the sense level only for a word whose lemma and part of speech have one sense, and
-                  level none for an unknown word; it shall never answer at the group level.
+                  BasicClassifier shall state the level of every answer: the part of speech level, with the probability
+                  of the selected analysis as confidence, for an analysis chosen statistically whose lemma and part of
+                  speech have several senses; the sense level, with the same confidence, only when the selected analysis
+                  has exactly one sense; and level none for an unknown word; it shall never answer at the group level.
                 tags: [unit]
                 justification: |
                   The statistical model has no evidence that separates fine senses or groups; stating the level honestly
-                  lets callers treat its answers for what they are.
+                  lets callers treat its answers for what they are, and a known word is never left unanswered.
                 tests:
                   - BasicClassifier_ClassifyAsync_AmbiguousWord_AnswersPartOfSpeechLevel
                   - BasicClassifier_ClassifyAsync_SingleSensePart_AnswersSenseLevel
                   - BasicClassifier_ClassifyAsync_NeverAnswersGroupLevel
                   - BasicClassifier_ClassifyAsync_UnknownWord_AnswersLevelNone
+
+              - id: WordSense-Basic-BasicClassifier-Candidates
+                title: >-
+                  BasicClassifier shall list the analyses of every known word sorted by probability, the largest first
+                  and, on a tie, in lexicon order, never truncated and summing to one, and shall list in an analysis
+                  no senses, except the one sense with probability 1 of an analysis whose lemma and part of speech
+                  have exactly one sense, because it scores analyses and not fine senses.
+                tags: [unit]
+                justification: |
+                  The statistical model has no evidence about fine senses, and inventing probabilities for them would
+                  mislead a consumer that groups the senses itself; empty sense lists state that no scores exist, and
+                  the full ranked analyses let a consumer make its own choice among them.
+                tests:
+                  - BasicClassifier_ClassifyAsync_AmbiguousWord_ListsAnalysesAndNoSenses
+                  - BasicClassifier_ClassifyAsync_SingleSenseAnalysis_ListsThatSenseWithProbabilityOne
+                  - BasicClassifier_ClassifyAsync_TiesKeepLexiconOrder
 
               - id: WordSense-Basic-BasicClassifier-Segments
                 title: >-

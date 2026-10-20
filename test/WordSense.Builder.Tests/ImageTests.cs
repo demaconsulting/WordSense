@@ -43,11 +43,148 @@ public sealed class ImageTests
         var b = WordImage.Open(ImageCompiler.Build(data).Image);
 
         Assert.True(a.DataHash.SequenceEqual(b.DataHash));
-        Assert.True(a.ClassHash.SequenceEqual(b.ClassHash));
+        Assert.True(a.InventoryHash.SequenceEqual(b.InventoryHash));
+        Assert.True(a.InventoryHash.SequenceEqual(ImageFormat.ComputeInventoryHash(a.RawSection)), "The header holds the hash of the inventory sections.");
         foreach (var id in a.SectionIds)
         {
             Assert.True(a.RawSection(id).AsSpan().SequenceEqual(b.RawSection(id)), $"Section {id} differs.");
         }
+    }
+
+    /// <summary>
+    ///     The sense ids of the committed catalog are in UTF-8 byte order and its structure and key index are consistent.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Image_Catalog_IsOrderedAndConsistent()
+    {
+        var image = WordImage.Open(Committed.Value);
+
+        image.ValidateCatalog();
+
+        Assert.True(image.SenseCount > 129_000);
+        Assert.True(image.GroupCount > 0);
+    }
+
+    /// <summary>
+    ///     A sense that names a group that does not exist is rejected when the catalog is read.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Image_SenseWithUnknownGroup_IsRejected()
+    {
+        var image = Damage(sections =>
+        {
+            var groups = Uints(sections[ImageFormat.SectionSenseGroup].Raw);
+            groups[0] = 99;
+            sections[ImageFormat.SectionSenseGroup] = (Bytes(groups), 4);
+        });
+
+        var error = Assert.Throws<InvalidDataException>(() => WordImage.Open(image).ValidateCatalog());
+
+        Assert.Contains("group that does not exist", error.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     Two senses with the same id are rejected when the catalog is read.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Image_DuplicateSenseId_IsRejected()
+    {
+        var image = Damage(sections =>
+        {
+            var lengths = sections[ImageFormat.SectionSenseIdLength].Raw;
+            var text = Encoding.UTF8.GetString(sections[ImageFormat.SectionSenseIdBytes].Raw);
+            var ids = new List<string>();
+            var position = 0;
+            foreach (var length in lengths)
+            {
+                ids.Add(text[position..(position + length)]);
+                position += length;
+            }
+
+            ids[1] = ids[0];
+            sections[ImageFormat.SectionSenseIdLength] = (ids.Select(i => (byte)Encoding.UTF8.GetByteCount(i)).ToArray(), 1);
+            sections[ImageFormat.SectionSenseIdBytes] = (Encoding.UTF8.GetBytes(string.Concat(ids)), 1);
+        });
+
+        var error = Assert.Throws<InvalidDataException>(() => WordImage.Open(image).ValidateCatalog());
+
+        Assert.Contains("occurs twice", error.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A group of one sense, a group of all the senses of its lemma and part of speech, and a group whose members are
+    ///     of two parts of speech are rejected when the catalog is read.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Image_GroupOfOneSenseOrAllSenses_IsRejected()
+    {
+        // The sorted senses of the small data folder: banking-company, close-in (verb), coin-bank, cover (verb), incline, ridge
+        var one = Damage(sections => SetGroups(sections, [1, 0, 0, 0, 0, 0]));
+        var all = Damage(sections => SetGroups(sections, [1, 0, 1, 0, 1, 1]));
+        var mixed = Damage(sections => SetGroups(sections, [1, 1, 1, 0, 0, 0]));
+
+        Assert.Contains("fewer than two", Assert.Throws<InvalidDataException>(() => WordImage.Open(one).ValidateCatalog()).Message, StringComparison.Ordinal);
+        Assert.Contains("all the senses", Assert.Throws<InvalidDataException>(() => WordImage.Open(all).ValidateCatalog()).Message, StringComparison.Ordinal);
+        Assert.Contains("do not agree", Assert.Throws<InvalidDataException>(() => WordImage.Open(mixed).ValidateCatalog()).Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A group id without the group marker is rejected when the catalog is read.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Image_GroupIdWithoutMarker_IsRejected()
+    {
+        var image = Damage(sections =>
+        {
+            var text = Encoding.UTF8.GetString(sections[ImageFormat.SectionGroupIdBytes].Raw).Replace("#group:", "#grope:", StringComparison.Ordinal);
+            sections[ImageFormat.SectionGroupIdBytes] = (Encoding.UTF8.GetBytes(text), 1);
+        });
+
+        var error = Assert.Throws<InvalidDataException>(() => WordImage.Open(image).ValidateCatalog());
+
+        Assert.Contains("group marker", error.Message, StringComparison.Ordinal);
+    }
+
+    private static uint[] Uints(byte[] raw) => System.Runtime.InteropServices.MemoryMarshal.Cast<byte, uint>(raw).ToArray();
+
+    private static byte[] Bytes(IEnumerable<uint> values)
+    {
+        var list = values.ToList();
+        var bytes = new byte[list.Count * 4];
+        for (var i = 0; i < list.Count; i++)
+        {
+            BinaryPrimitives.WriteUInt32LittleEndian(bytes.AsSpan(i * 4), list[i]);
+        }
+
+        return bytes;
+    }
+
+    // Rebuilds the group sections from the group of each sense (0 for none), listing the members in inventory order
+    private static void SetGroups(SortedDictionary<int, (byte[] Raw, int Stride)> sections, uint[] senseGroup)
+    {
+        var blockSenses = Uints(sections[ImageFormat.SectionBlockSenses].Raw);
+        var starts = new List<uint> { 0 };
+        var members = new List<uint>();
+        for (var group = 1u; group <= senseGroup.Max(); group++)
+        {
+            members.AddRange(blockSenses.Where(s => senseGroup[s] == group));
+            starts.Add((uint)members.Count);
+        }
+
+        sections[ImageFormat.SectionSenseGroup] = (Bytes(senseGroup), 4);
+        sections[ImageFormat.SectionGroupMemberStart] = (Bytes(starts), 4);
+        sections[ImageFormat.SectionGroupMembers] = (Bytes(members), 4);
+    }
+
+    // Compiles the small data folder, lets the test change the raw sections and assembles the image again
+    private static byte[] Damage(Action<SortedDictionary<int, (byte[] Raw, int Stride)>> change)
+    {
+        using var dir = new TestDirectory();
+        var (bytes, _) = ImageCompiler.Build(ImageCompilerTests.WriteSmallData(dir.Root));
+        var image = WordImage.Open(bytes);
+        var sections = new SortedDictionary<int, (byte[] Raw, int Stride)>(image.SectionIds.ToDictionary(id => id, id => (image.RawSection(id), 1)));
+        change(sections);
+        return ImageCompiler.Assemble(sections, image.DataHash.ToArray(), image.InventoryHash.ToArray());
     }
 
     /// <summary>

@@ -43,8 +43,8 @@ internal static class ModelCatalog
     /// </summary>
     public static readonly IReadOnlyList<ModelInfo> All =
     [
-        new("minilm", "DemaConsulting.WordSense.MiniLM", "all-MiniLM-L6-v2-int8", dir => Throttle(new MiniLMWordSenseModel(dir))),
-        new("bert-base-cased", "DemaConsulting.WordSense.BertBaseCased", "bert-base-cased-int8", dir => Throttle(new BertBaseCasedWordSenseModel(dir))),
+        new("minilm", "DemaConsulting.WordSense.MiniLM", "all-MiniLM-L6-v2-int8", dir => Throttle(new MiniLMWordSenseModel(dir), m => m.Encoder)),
+        new("bert-base-cased", "DemaConsulting.WordSense.BertBaseCased", "bert-base-cased-int8", dir => Throttle(new BertBaseCasedWordSenseModel(dir), m => m.Encoder)),
         new("basic", "DemaConsulting.WordSense.Basic", null, _ => new BasicWordSenseModel()),
     ];
 
@@ -58,9 +58,9 @@ internal static class ModelCatalog
         All.FirstOrDefault(m => string.Equals(m.Name, name, StringComparison.Ordinal))
         ?? throw new ArgumentException($"Unknown model '{name}'; use one of: {string.Join(", ", All.Select(m => m.Name))}.");
 
-    private static OnnxWordSenseModel Throttle(OnnxWordSenseModel model)
+    private static T Throttle<T>(T model, Func<T, OnnxWordSenseModel> encoder)
     {
-        model.IntraOpThreads = IntraOpThreads;
+        encoder(model).IntraOpThreads = IntraOpThreads;
         return model;
     }
 }

@@ -13,17 +13,20 @@ sections:
                   SenseLabelGenerator shall give every sense that has no curated label a readable, deterministic label
                   that is unique among the senses of its lemma: the part of speech name for the only sense of a lemma
                   and part of speech (lemma#noun), otherwise the first synonym of its synset, otherwise the head lemma
-                  of its hypernym, made unique by a numeric suffix where two senses would otherwise share one.
+                  of its hypernym, made unique by a numeric suffix where two senses would otherwise share one; it
+                  shall create no group.
                 tags: [unit]
                 justification: |
                   Callers can use any sense of any word, not only the curated ones, so every sense needs an id that
-                  reads like what it means; a fixed rule makes the ids reproducible and reviewable.
+                  reads like what it means; a fixed rule makes the ids reproducible and reviewable. A group exists only
+                  when it is curated, so the generator never makes one.
                 tests:
                   - WordSenseBuilder_SenseLabelGenerator_Generate_OnlySenseOfPartOfSpeech_UsesThePartOfSpeechName
                   - WordSenseBuilder_SenseLabelGenerator_Generate_UsesTheFirstSynonym
                   - WordSenseBuilder_SenseLabelGenerator_Generate_NoSynonym_UsesTheHypernymHead
                   - WordSenseBuilder_SenseLabelGenerator_Generate_DuplicateLabels_GetNumericSuffixes
                   - WordSenseBuilder_SenseLabelGenerator_Generate_LabelsAreWellFormedAndUniquePerLemma
+                  - WordSenseBuilder_SenseLabelGenerator_Run_Slice_LabelsOneTokenSensesAndCreatesNoGroup
 
               - id: WordSense-WordData-SenseLabelGenerator-Preserve
                 title: >-
@@ -32,11 +35,13 @@ sections:
                 tags: [unit]
                 justification: |
                   A published id is a promise to the callers who stored it; regenerating the labels must not break
-                  that promise, whatever else in the data has changed.
+                  that promise, whatever else in the data has changed. Group ids (lemma#group:label) are in their own
+                  namespace, so a group never takes a sense label and is left as it is.
                 tests:
                   - WordSenseBuilder_SenseLabelGenerator_Generate_ExistingLabels_AreKept
                   - WordSenseBuilder_SenseLabelGenerator_Generate_NewSenseOfLemma_NeverTakesAnExistingOrRetiredLabel
                   - WordSenseBuilder_SenseLabelGenerator_Generate_ChangedSourceData_KeepsPublishedLabels
+                  - WordSenseBuilder_SenseLabelGenerator_Run_ExistingGroup_IsKeptAndItsLabelStaysAvailable
 
               - id: WordSense-WordData-SenseLabelGenerator-Reproducible
                 title: >-

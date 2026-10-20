@@ -10,7 +10,7 @@ public class PosTaggerTests
     private static double[] Run(TaggerToken[] sentence)
     {
         var posteriors = new double[sentence.Length * PosTag.Count];
-        PosTagger.Posteriors(BasicTables.Load(TestTables.Default()), sentence, posteriors);
+        PosTagger.Posteriors(TestTables.Load(TestTables.Default()), sentence, posteriors);
         return posteriors;
     }
 
@@ -102,7 +102,7 @@ public class PosTaggerTests
     [Fact]
     public void PosTagger_Posteriors_EmptyAndSmallBuffer()
     {
-        var tables = BasicTables.Load(TestTables.Default());
+        var tables = TestTables.Load(TestTables.Default());
 
         PosTagger.Posteriors(tables, [], []);
 

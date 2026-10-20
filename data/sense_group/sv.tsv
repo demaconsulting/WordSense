@@ -1,6 +1,0 @@
-group_id	lemma	pos	label	origin
-SVM#noun-group	SVM	n	noun-group	default
-SVR#noun-group	SVR	n	noun-group	default
-Svengali#noun-group	Svengali	n	noun-group	default
-svelte#adjective-group	svelte	a	adjective-group	default
-svoboda#noun-group	svoboda	n	noun-group	default

@@ -63,6 +63,7 @@ internal static class BasicModelBuilder
         }
 
         var inventory = SenseInventory.ReadDirectory(Path.Join(corpus, "senses"));
+        var labels = AnalysisLabels.Load(inventory, corpus);
         var anchors = Corpus.ReadDirectory(Path.Join(corpus, "anchors"));
         var holdout = Corpus.ReadDirectory(Path.Join(corpus, "holdout"));
         var formsDirectory = Path.Join(corpus, "forms");
@@ -72,8 +73,8 @@ internal static class BasicModelBuilder
         Corpus.EnsureDisjoint(anchors, holdout);
         inventory.Validate(anchors, holdout, forms);
 
-        var data = BasicTrainer.Train(UdCounts.Read(udDirectory), key => WordLexicon.TryLookup(key, out var found) ? found : [], anchors, inventory, BasicHyperparameters.Default);
-        var blob = BasicTablesWriter.Write(data, WordLexicon.Current.ClassHash);
+        var data = BasicTrainer.Train(UdCounts.Read(udDirectory), key => WordLexicon.TryLookup(key, out var found) ? found : [], anchors, inventory, labels, BasicHyperparameters.Default);
+        var blob = BasicTablesWriter.Write(data, WordLexicon.Current.InventoryHash);
         _ = BasicTables.Load(blob, WordLexicon.Current);
         var path = Path.IsPathRooted(outputPath) ? outputPath : Path.Join(repository, outputPath);
         Directory.CreateDirectory(Path.GetDirectoryName(path)!);

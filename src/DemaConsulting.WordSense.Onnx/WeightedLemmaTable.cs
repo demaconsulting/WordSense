@@ -4,20 +4,21 @@ using System.Reflection;
 namespace DemaConsulting.WordSense.Onnx;
 
 /// <summary>
-///     The trained lemma groups of a model, each class of them resolved to a class of the word image.
+///     The trained lemma groups of a model, with every trained class of them found by its id.
 /// </summary>
 /// <remarks>
 ///     <para>
-///     The weights name their senses by class id, the stable sense id of the public API. The table checks the weights
-///     against the word image when it is built and fails when they do not belong together: the class hash of the weights
-///     must equal the class hash of the image, and every class id must be a class of the image. There is no silent
-///     fallback: a stale or mismatched weights blob is an error (<see cref="InvalidDataException"/>), never a wrong answer
-///     and never a quietly weaker model. A class is found by its id with <see cref="FindByClass"/>; no id is parsed and
-///     no class is derived from a name.
+///     The weights name their senses by class id. The table checks the structure of the weights when it is built and
+///     fails when they are inconsistent: a lemma twice, a class id used twice (within a lemma or by two lemmas), or a
+///     lemma whose number of class ids differs from the number of its weight rows. There is no silent fallback: an
+///     inconsistent weights blob is an error (<see cref="InvalidDataException"/>), never a wrong answer and never a
+///     quietly weaker model. A class is found by its id with <see cref="FindByClass"/>; no id is parsed and no class
+///     is derived from a name. The table does not look at the word lexicon: whether the class ids belong to the
+///     lexicon in use is the business of the code that scores with them.
 ///     </para>
 ///     <para>
-///     The lexicon may hold more classes of a lemma than the weights were trained for (for example a part of speech
-///     the model has no weights for); the model then chooses among the trained classes only.
+///     The lexicon may hold more senses of a lemma than the weights were trained for; the model then chooses among the
+///     trained classes only.
 ///     </para>
 /// </remarks>
 internal sealed class WeightedLemmaTable
@@ -28,18 +29,11 @@ internal sealed class WeightedLemmaTable
     ///     Initializes a new instance of the <see cref="WeightedLemmaTable"/> class.
     /// </summary>
     /// <param name="data">The trained weights.</param>
-    /// <param name="image">The word image the weights must belong to.</param>
-    /// <exception cref="InvalidDataException">Thrown when the class hash differs from the image, a class id is not in the image, or the senses and the weights of a lemma disagree.</exception>
-    public WeightedLemmaTable(WeightsData data, WordImage image)
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="data"/> is null.</exception>
+    /// <exception cref="InvalidDataException">Thrown when a lemma or a class id occurs twice, or the class ids and the weights of a lemma disagree.</exception>
+    public WeightedLemmaTable(WeightsData data)
     {
         ArgumentNullException.ThrowIfNull(data);
-        ArgumentNullException.ThrowIfNull(image);
-        if (!data.ClassHash.AsSpan().SequenceEqual(image.ClassHash))
-        {
-            throw new InvalidDataException(
-                $"The weights were trained for another class inventory: their class hash is {Convert.ToHexString(data.ClassHash)}, the word image has {Convert.ToHexString(image.ClassHash)}. Rebuild the weights.");
-        }
-
         Data = data;
         var lemmas = new Dictionary<string, WeightedLemma>(StringComparer.Ordinal);
         var byClass = new Dictionary<string, (WeightedLemma, int)>(StringComparer.Ordinal);
@@ -58,11 +52,6 @@ internal sealed class WeightedLemmaTable
             for (var column = 0; column < entry.ClassIds.Count; column++)
             {
                 var id = entry.ClassIds[column];
-                if (image.ClassIndex(id) < 0)
-                {
-                    throw new InvalidDataException($"The weights of '{entry.Lemma}' name the class '{id}', which is not in the word image.");
-                }
-
                 if (!byClass.TryAdd(id, (entry, column)))
                 {
                     throw new InvalidDataException($"The weights name the class '{id}' twice.");
@@ -85,14 +74,14 @@ internal sealed class WeightedLemmaTable
     public FrozenDictionary<string, WeightedLemma> Lemmas { get; }
 
     /// <summary>
-    ///     Loads the weights embedded in an assembly and checks them against the word lexicon.
+    ///     Loads the weights embedded in an assembly and checks them for the model they must belong to.
     /// </summary>
     /// <param name="assembly">The assembly that embeds the weights.</param>
     /// <param name="resourceName">The manifest resource name.</param>
     /// <param name="modelId">The model identifier the weights must have been trained for.</param>
     /// <param name="hiddenSize">The hidden size of the encoder the weights must match.</param>
     /// <returns>The checked table.</returns>
-    /// <exception cref="InvalidDataException">Thrown when the resource is missing, corrupt, for another model or not for the word lexicon.</exception>
+    /// <exception cref="InvalidDataException">Thrown when the resource is missing, corrupt, for another model or of another dimension.</exception>
     public static WeightedLemmaTable LoadEmbedded(Assembly assembly, string resourceName, string modelId, int hiddenSize)
     {
         ArgumentNullException.ThrowIfNull(assembly);
@@ -107,7 +96,7 @@ internal sealed class WeightedLemmaTable
         }
 
         return data.Dimension == hiddenSize
-            ? new WeightedLemmaTable(data, WordLexicon.Current)
+            ? new WeightedLemmaTable(data)
             : throw new InvalidDataException($"The embedded weights have dimension {data.Dimension}, not {hiddenSize}.");
     }
 

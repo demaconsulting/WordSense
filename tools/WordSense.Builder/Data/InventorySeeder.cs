@@ -10,8 +10,17 @@ namespace WordSense.Builder.Data;
 /// <param name="CuratedLabels">The curated and project labels written from the curation files.</param>
 /// <param name="CuratedGroups">The curated groups written.</param>
 /// <param name="SplitGroups">The curated groups that had to be split because their senses have two parts of speech.</param>
-/// <param name="RenamedGroups">The curated groups renamed because their id was the id of a sense.</param>
-internal sealed record SeedRun(int ProjectSenses, int CuratedLabels, int CuratedGroups, int SplitGroups, int RenamedGroups)
+/// <param name="DroppedSingletons">The curated groups left out because they have only one sense.</param>
+/// <param name="DroppedWholePartOfSpeech">The curated groups left out because they have every sense of their lemma and part of speech.</param>
+/// <param name="RemovedStale">The group rows removed because their origin is not <c>curated</c> (the retired default groups).</param>
+internal sealed record SeedRun(
+    int ProjectSenses,
+    int CuratedLabels,
+    int CuratedGroups,
+    int SplitGroups,
+    int DroppedSingletons,
+    int DroppedWholePartOfSpeech,
+    int RemovedStale)
 {
     /// <summary>
     ///     Renders the counts as one line.
@@ -19,7 +28,7 @@ internal sealed record SeedRun(int ProjectSenses, int CuratedLabels, int Curated
     /// <returns>The summary line.</returns>
     public string Render() => string.Create(
         CultureInfo.InvariantCulture,
-        $"seed-inventory: {ProjectSenses} project senses added, {CuratedLabels} curated labels, {CuratedGroups} curated groups ({SplitGroups} split by part of speech, {RenamedGroups} renamed because the id was a sense id).");
+        $"seed-inventory: {ProjectSenses} project senses added, {CuratedLabels} curated labels, {CuratedGroups} curated groups ({SplitGroups} split by part of speech); left out: {DroppedSingletons} one-sense groups, {DroppedWholePartOfSpeech} groups of a whole part of speech; {RemovedStale} stale group rows removed.");
 }
 
 /// <summary>
@@ -32,10 +41,18 @@ internal sealed record SeedRun(int ProjectSenses, int CuratedLabels, int Curated
 ///     Open English WordNet, so each one gets a project sense: a sense, a synset and a gloss of the source <c>dema</c>,
 ///     without a sense key. The curation folder holds the reviewed curated lemmas as <c>senses.tsv</c> (columns
 ///     <c>sense_id</c>, <c>oewn_sense_id</c>, <c>part_of_speech</c>, <c>gloss</c>, <c>source</c> and <c>group_id</c>) and
-///     <c>groups.tsv</c> (<c>group_id</c>, <c>lemma</c>, <c>part_of_speech</c> and <c>member_sense_ids</c>); the ids there
-///     are public ids (<c>lemma#label</c>). A curated group that mixes two parts of speech is split by part of speech,
-///     and a group whose id is also the id of a sense gets the suffix <c>-group</c>, because the ids of senses and
-///     groups share one namespace.
+///     <c>groups.tsv</c> (<c>group_id</c>, <c>lemma</c>, <c>part_of_speech</c>, <c>member_sense_ids</c>, <c>kind</c> and
+///     <c>evidence</c>); the ids of senses there are public ids (<c>lemma#label</c>) and the id of a curated group is
+///     <c>lemma#slug</c>, which the seeder writes as the group id <c>lemma#group:slug</c>.
+///     </para>
+///     <para>
+///     A group exists only when it is needed: a set of at least two, but not all, senses of one lemma and one part of
+///     speech. A curated group that mixes two parts of speech is split by part of speech; a group with one sense, and a
+///     group with every sense of its lemma and part of speech, is left out. A group that is written needs a
+///     <c>kind</c> of the <c>group_kind</c> vocabulary and non-empty <c>evidence</c> (the admission rule: the
+///     curator's same-meaning judgment plus observed confusion or near-identical glosses); the evidence is curation
+///     metadata and is not written to the data. The id of a group carries the marker <c>group:</c>, so it can never be
+///     the id of a sense.
 ///     </para>
 ///     <para>
 ///     The run is idempotent and refuses to change a label that a sense already has. It is stateless and thread-safe.
@@ -43,6 +60,9 @@ internal sealed record SeedRun(int ProjectSenses, int CuratedLabels, int Curated
 /// </remarks>
 internal static class InventorySeeder
 {
+    /// <summary>The marker that follows the <c>#</c> in the id of a group (<c>lemma#group:slug</c>).</summary>
+    public const string GroupMarker = "group:";
+
     private const string ClosedClass = "upcidx";
 
     /// <summary>
@@ -65,10 +85,15 @@ internal static class InventorySeeder
         var labels = DataTables.Read(dataDirectory, schema.Table("sense_label")).ToList();
         var groups = DataTables.Read(dataDirectory, schema.Table("sense_group")).ToList();
         var members = DataTables.Read(dataDirectory, schema.Table("group_sense")).ToList();
-        var counts = (Labels: 0, Groups: 0, Split: 0, Renamed: 0);
+
+        // A group has the origin curated only; a group of any other origin (the retired default groups) is stale
+        var stale = groups.Where(g => g[4] != SenseLabelGenerator.GroupCurated).Select(g => g[0]).ToHashSet(StringComparer.Ordinal);
+        groups.RemoveAll(g => stale.Contains(g[0]));
+        members.RemoveAll(m => stale.Contains(m[0]));
+        var counts = new GroupImport(0, 0, 0, 0, 0);
         if (curationDirectory is not null)
         {
-            counts = ImportCuration(curationDirectory, entries, senses, glosses, labels, groups, members, posNames);
+            counts = ImportCuration(curationDirectory, entries, senses, glosses, labels, groups, members, posNames, schema.Vocabulary("group_kind"));
         }
 
         var resolver = new PartitionResolver(schema.FileSplit);
@@ -88,8 +113,10 @@ internal static class InventorySeeder
         DataTables.Write(dataDirectory, schema.Table("sense_label"), labels, resolver);
         DataTables.Write(dataDirectory, schema.Table("sense_group"), groups, resolver);
         DataTables.Write(dataDirectory, schema.Table("group_sense"), members, resolver);
-        return new SeedRun(added, counts.Labels, counts.Groups, counts.Split, counts.Renamed);
+        return new SeedRun(added, counts.Labels, counts.Groups, counts.Split, counts.Singletons, counts.WholePartOfSpeech, stale.Count);
     }
+
+    private sealed record GroupImport(int Labels, int Groups, int Split, int Singletons, int WholePartOfSpeech);
 
     private static int AddProjectSenses(
         Dictionary<string, string[]> entries,
@@ -115,7 +142,7 @@ internal static class InventorySeeder
         return added;
     }
 
-    private static (int Labels, int Groups, int Split, int Renamed) ImportCuration(
+    private static GroupImport ImportCuration(
         string folder,
         Dictionary<string, string[]> entries,
         List<string[]> senses,
@@ -123,7 +150,8 @@ internal static class InventorySeeder
         List<string[]> labels,
         List<string[]> groups,
         List<string[]> members,
-        IReadOnlyDictionary<string, string> posNames)
+        IReadOnlyDictionary<string, string> posNames,
+        IReadOnlyDictionary<string, string> kinds)
     {
         var curatedSenses = ReadTsv(Path.Join(folder, "senses.tsv"));
         var curatedGroups = ReadTsv(Path.Join(folder, "groups.tsv"));
@@ -166,8 +194,8 @@ internal static class InventorySeeder
             dataId[publicId] = id;
         }
 
-        var written = SplitGroups(curatedGroups, entries, senseRow, dataId, groups, members, posNames, out var split, out var renamed);
-        return (newLabels, written, split, renamed);
+        var counts = SplitGroups(curatedGroups, entries, senseRow, dataId, byLemmaPos, labels, groups, members, posNames, kinds);
+        return counts with { Labels = newLabels };
     }
 
     private static string ProjectSenseOf(
@@ -198,20 +226,23 @@ internal static class InventorySeeder
         }
     }
 
-    private static int SplitGroups(
+    private static GroupImport SplitGroups(
         List<Dictionary<string, string>> curatedGroups,
         Dictionary<string, string[]> entries,
         Dictionary<string, string[]> senseRow,
         Dictionary<string, string> dataId,
+        Dictionary<(string Lemma, string Pos), List<string>> byLemmaPos,
+        List<string[]> labels,
         List<string[]> groups,
         List<string[]> members,
         IReadOnlyDictionary<string, string> posNames,
-        out int split,
-        out int renamed)
+        IReadOnlyDictionary<string, string> kinds)
     {
-        split = 0;
-        renamed = 0;
-        var publicSenseIds = dataId.Keys.ToHashSet(StringComparer.Ordinal);
+        int split = 0, singletons = 0, wholePos = 0;
+
+        // The id of a group carries the marker, so it can never be the id of a sense; the public id of every labeled
+        // sense is still collected as a defensive check
+        var publicSenseIds = labels.Select(l => entries[senseRow[l[0]][2]][1] + "#" + l[1]).ToHashSet(StringComparer.Ordinal);
         var curatedLemmas = curatedGroups.Select(g => g["lemma"]).ToHashSet(StringComparer.Ordinal);
 
         // The groups of the curated lemmas are replaced as a whole; the groups of other lemmas are kept
@@ -229,26 +260,49 @@ internal static class InventorySeeder
             split += byPos.Count > 1 ? 1 : 0;
             foreach (var part in byPos)
             {
-                var label = part.Key == primary ? baseLabel : baseLabel + "-" + posNames[part.Key];
-                if (publicSenseIds.Contains(lemma + "#" + label))
+                var memberIds = part.Select(m => dataId[m]).Distinct(StringComparer.Ordinal).ToList();
+                if (memberIds.Count < 2)
                 {
-                    label += SenseLabelGenerator.GroupSuffix;
-                    renamed++;
+                    singletons++;
+                    continue;
                 }
 
-                var id = lemma + "#" + label;
+                if (memberIds.Count >= byLemmaPos[(lemma, part.Key)].Count)
+                {
+                    wholePos++;
+                    continue;
+                }
+
+                var label = part.Key == primary ? baseLabel : baseLabel + "-" + posNames[part.Key];
+                if (SenseLabelGenerator.Slug(label) != label)
+                {
+                    throw new InvalidDataException($"The curated group '{group["group_id"]}' needs a slug of lower-case ASCII letters, digits and single hyphens; '{label}' is not one.");
+                }
+
+                var kind = group.GetValueOrDefault("kind", string.Empty).Trim();
+                if (!kinds.ContainsKey(kind))
+                {
+                    throw new InvalidDataException($"The curated group '{group["group_id"]}' has the kind '{kind}', which is not one of: {string.Join(", ", kinds.Keys)}.");
+                }
+
+                if (group.GetValueOrDefault("evidence", string.Empty).Trim().Length == 0)
+                {
+                    throw new InvalidDataException($"The curated group '{group["group_id"]}' has no evidence; a group needs observed confusion or near-identical glosses besides the curator's judgment.");
+                }
+
+                var id = lemma + "#" + GroupMarker + label;
                 if (publicSenseIds.Contains(id) || groups.Any(g => g[0] == id))
                 {
                     throw new InvalidDataException($"The group id '{id}' is already the id of a sense or of another group.");
                 }
 
-                groups.Add([id, lemma, part.Key, label, SenseLabelGenerator.GroupCurated]);
-                members.AddRange(part.Select(m => new[] { id, dataId[m] }));
+                groups.Add([id, lemma, part.Key, label, SenseLabelGenerator.GroupCurated, kind]);
+                members.AddRange(memberIds.Select(m => new[] { id, m }));
                 written++;
             }
         }
 
-        return written;
+        return new GroupImport(0, written, split, singletons, wholePos);
     }
 
     // The part of speech that keeps the label of a split group: the first one the group names that its senses have

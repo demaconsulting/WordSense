@@ -11,7 +11,8 @@ The subsystem is verified at three levels. The pure units (`WordPieceTokenizer`,
 `HttpListener` (`LocalServer`) that serves small files, failures, corrupt files and redirects; pinned digests are
 substituted for the test files, so no test reaches a public host. The model-level units (`OnnxWordSenseModel`,
 `OnnxClassifier`, `OnnxEncoder`) are verified with fake weights (with chosen thresholds, so that each answer level is
-reached), the Basic model as the fallback and either a fake encoder input or the committed int8 model through the
+reached), a test double standing in for a fallback model where a scenario needs one, and either a fake encoder input or
+the committed int8 model through the
 helper `ModelAssets`, which skips a test when the Git LFS content is absent. Tests live in
 `test/DemaConsulting.WordSense.Onnx.Tests`; the concrete model packages are verified in their own subsystem documents.
 
@@ -39,23 +40,41 @@ unit documents).
 #### Words Are Answered at the Level the Lemma's Thresholds Allow
 
 A trained word is answered at the sense level when its fine margin reaches the lemma's fine threshold
-(`OnnxClassifier_ClassifyAsync_MarginAboveFineThreshold_AnswersSense`), otherwise at the group level when its group
+(`OnnxClassifier_ClassifyAsync_MarginAboveFineThreshold_AnswersSense`), otherwise, for a lemma that has groups and a
+best sense in a group, at the group level, with the group id only, when its group
 margin reaches the group threshold
-(`OnnxClassifier_ClassifyAsync_FineBelowAndGroupAboveThreshold_AnswersGroup`), otherwise with the best group and a
-confidence below one half (`OnnxClassifier_ClassifyAsync_BothBelowThreshold_AnswersBestGroupBelowOneHalf`).
+(`OnnxClassifier_ClassifyAsync_FineBelowAndGroupAboveThreshold_AnswersGroup`) and with a lower confidence when it does
+not (`OnnxClassifier_ClassifyAsync_BothBelowThreshold_AnswersBestGroupBelowOneHalf`); a lemma without groups steps from
+the sense to the part of speech, never to a group
+(`OnnxClassifier_ClassifyAsync_LemmaWithoutGroups_StepsFromSenseToPartOfSpeech`). A known word is never answered at
+the level none. These scenarios belong to the increment that adds the scoring of fine senses with the encoder.
 
-#### Untrained Words Fall Back to the Part of Speech
+#### Analyses and Senses Are Ranked and Sum to One
 
-An ambiguous word whose lemma has no usable weights is answered with the analysis of the Basic model at the part of
-speech level, never with a guessed fine sense
-(`OnnxClassifier_ClassifyAsync_LemmaWithoutWeights_AnswersPartOfSpeechFromBasic`).
+A trained lemma lists every analysis of the word with its probability (summing to one) and, inside each analysis, the
+ranked senses of its lemma and part of speech with their probabilities given the analysis (summing to one), whatever
+the level answered; a single-sense word and a lemma without weights list no scored senses
+(`OnnxClassifier_ClassifyAsync_TrainedLemma_ListsRankedCandidatesSummingToOne`,
+`OnnxClassifier_ClassifyAsync_SingleSenseWord_ListsNoCandidates`,
+`OnnxClassifier_ClassifyAsync_LemmaWithoutWeights_ListsNoCandidates`).
+
+#### Words Without Scored Senses Are Answered from the Lexicon
+
+A known word whose lemma has no usable weights is answered from the lexicon alone: its analyses are equally likely,
+the first is selected, no senses are scored and the level is the part of speech, never a guessed fine sense (a word
+with a single analysis is certain about it, and at the sense level when its lemma and part of speech have exactly one
+sense), and without any other model package
+(`OnnxClassifier_ClassifyAsync_LemmaWithoutWeights_AnswersAnalysesWithoutScoredSenses`,
+`OnnxClassifier_ClassifyAsync_SingleAnalysisSeveralSenses_AnswersPartOfSpeech`,
+`OnnxClassifier_ClassifyAsync_SeveralAnalysesFirstWithOneSense_StaysAtPartOfSpeech`,
+`OnnxClassifier_ClassifyAsync_SeveralAnalysesLaterWithOneSense_StaysAtPartOfSpeech`). The package references only the
+core package (`OnnxWordSense_Assembly_ReferencesOnlyCore`).
 
 #### Confidence Grows with the Margin
 
-The confidence of a context-resolved word is monotonic in the margin of the answered level and is one half at the
-lemma's threshold for that level
-(`OnnxClassifier_ClassifyAsync_LargerMargin_GivesHigherConfidence`,
-`OnnxClassifier_ClassifyAsync_MarginAtThreshold_GivesConfidenceOneHalf`; see the `OnnxClassifier` and `LemmaWeights` unit
+The confidence of a context-resolved word is the probability of its answer at its level and is monotonic in the margin
+of the answered level
+(`OnnxClassifier_ClassifyAsync_LargerMargin_GivesHigherConfidence`; see the `OnnxClassifier` and `LemmaWeights` unit
 documents).
 
 #### A Form of Several Lemmas Gets Its Lemma from the Context
@@ -65,7 +84,7 @@ A form such as `left` is answered with the senses of the lemma that the form cho
 
 #### Weights Match the Word Image
 
-Weights are matched to the word image by sense id and by the hash of the sense, group and analysis inventory; any
+Weights are matched to the word image by sense id and by the inventory hash of the image; any
 mismatch is a load failure and nothing is dropped. The weights embedded in the model packages resolve completely against
 the shipped image (`EmbeddedWeights_MiniLM_MatchesWordImage`; see the `LemmaWeights` unit document).
 
@@ -75,12 +94,10 @@ Model files are obtained from the mirror and then GitHub LFS, verified against t
 under `<store>/<model-id>/`, and downloaded once even when requested concurrently (see the `ModelDownloader` and
 `DownloadMirror` unit documents).
 
-#### Disposal Releases the Encoder and the Fallback Model
+#### Disposal Releases the Encoder
 
-Disposing a model releases the encoder session and the fallback model it owns, deferring the release while a
-classification runs, and is harmless when repeated
-(`OnnxWordSenseModel_Dispose_CalledTwice_IsHarmless`, `OnnxWordSenseModel_Dispose_ReleasesTheFallbackModel`; see the
-`OnnxWordSenseModel` unit document).
+Disposing a model releases the encoder session, deferring the release while a classification runs, and is harmless when
+repeated (`OnnxWordSenseModel_Dispose_CalledTwice_IsHarmless`; see the `OnnxWordSenseModel` unit document).
 
 #### Tokenization Equals the Reference
 

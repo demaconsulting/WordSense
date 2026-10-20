@@ -4,9 +4,10 @@
 
 #### Purpose
 
-`FormGenerator` writes the `form` table, the inflected spellings of the dictionary entries and their analyses (lemma,
-part of speech, features, provenance), and a statistics report. The candidate senses of a word come from the entries of
-its analyses, so the table carries no sense scope. `InflectionRules` holds the
+`FormGenerator` writes the `entry` and `form` tables, the inflected spellings of the dictionary entries and their analyses
+(lemma, part of speech, features, provenance), and a statistics report. The candidate senses of a word come from the
+entries of its analyses, so the tables carry no sense scope (the `form_sense_scope` table and the class tables that fed
+it are retired, and the generator reads and writes neither). `InflectionRules` holds the
 spelling rules; `AgidImporter` and `IrregularSources` read the closed lists and the inflection database.
 
 #### Data Model
@@ -27,7 +28,10 @@ and the generator never reads its own output: the tables are a function of the e
 lists, the corrections file and the two pinned external sources. A frozen spelling with the flag `open` takes the
 generated analyses of other entries after the frozen ones; a spelling without it stays as reviewed (`bowed` is only the
 bend verb); a closed-class spelling with the flag `only` keeps only its closed-class analyses. Frozen rows count as
-`carried` in the provenance statistics.
+`carried` in the provenance statistics. The class column of a frozen row (the class ids of the retired inventory) is not
+read. A closed word that the dictionary lists only as an open-class word is given its analysis by a frozen row of its
+project entry (`or` has the conjunction `dema-or-c` first, followed by the noun and adjective analyses of the
+dictionary).
 
 An -ing noun does not get a plural spelled like its singular from the inflection database (the mass nouns `bowling`,
 `catling`, `feeling`); the plural of the rules is generated instead. The invariant names (`herring`, `offspring`, `ling`,

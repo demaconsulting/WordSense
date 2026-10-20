@@ -10,8 +10,8 @@
 
 `ValidationReport`: the violations listed (file, line, rule, message), the total number of violations, the row count
 of every table and `IsValid`. Rule tags: schema, file-set, header, cell-count, format, cell, sort, empty-file,
-placement, unique, foreign-key, relation, entry, synset, sense, example, partition, label, stability, group. At most 20
-violations are listed per rule; the total is still counted. A lemma is curated when it has a group of origin `curated`.
+placement, unique, foreign-key, relation, entry, synset, sense, example, label, stability, group. At most 20
+violations are listed per rule; the total is still counted.
 
 #### Key Methods
 
@@ -23,16 +23,24 @@ violations are listed per rule; the total is still counted. A lemma is curated w
 - Sense rules (`label`, `stability`, `sense`): a data folder with no label, group or id map yet (a fresh import) has no
   inventory, and the rules below are not applied to it. Every sense of a lemma of one token, and every sense without a
   sense key, has exactly one label; the labels of the senses of a
-  lemma are unique and made of lower-case ASCII letters, digits and hyphens; no sense id equals the id of a group (the
-  two share one namespace); a label that was published is neither changed nor reused for another sense unless
+  lemma are unique and made of lower-case ASCII letters, digits and hyphens; no sense id equals the id of a group (a
+  defensive check: the marker of a group id, below, is not a label character, so only a malformed label can collide); a
+  label that was published is neither changed nor reused for another sense unless
   `sense_label_map` records the change; a project sense (label origin `project`) has no sense key and an authored gloss,
   and a sense without a sense key has the origin `project`. The published labels are
   those of the `sense_label` table of the baseline, which the check compares with the current table (without a baseline
-  only the retired ids are checked); an id that `sense_label_map` retires must not appear as a current id.
-- Group rules (`group`, `partition`, `unique`): the senses of a curated lemma are partitioned among its groups (every
-  sense in exactly one group); each group has one lemma, one part of speech and no two respellings; a lemma that is not
-  curated has exactly one default group for each of its parts of speech, labeled with the part of speech name and
-  `-group`.
+  only the retired ids are checked); an id that `sense_label_map` retires must not appear as a current id. Only sense
+  labels are compared: group ids are versioned per data release and are not frozen, so the baseline check never reads
+  or compares a group, and `sense_label_map` is about senses only.
+- Group rules (`group`, `unique`, `cell`): the id of a group is `lemma#group:label`: the id must carry the marker
+  `group:` after the `#`, its lemma part must be the lemma of the group, and the label is the slug after the marker
+  (lower-case ASCII letters, digits and single hyphens), unique in its lemma; a group has at least two senses but not all
+  senses of its lemma and part of speech (the part of speech is the next level, so such a group is redundant); each group
+  has one lemma, one part of speech and no two respellings; a sense is in at most one group; the origin of a group is
+  `curated` and its kind is `equivalent` or `related` (both required and checked against the schema vocabularies by the
+  cell rule). A sense needs no group, so there is no partition rule. The class and scope rules of the retired inventory
+  are gone; an entry without a sense is accepted only for a closed-class word or when a carried analysis refers to it.
+  The admission evidence of a group is curation metadata, checked by the curation import and not by the validator.
 
 #### Error Handling
 
