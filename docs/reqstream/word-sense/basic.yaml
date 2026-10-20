@@ -34,7 +34,9 @@ sections:
           - id: WordSense-Basic-Candidates
             title: >-
               The Basic subsystem shall list, for every known word, all its analyses with probabilities that sum to
-              one, the largest first and, on a tie, in lexicon order, and shall list senses only inside an analysis
+              one, the lemmas and parts of speech by the sum of their probabilities, the largest first, and inside
+              one of them the feature variants by their own probability, the largest first and, on a tie, in lexicon
+              order, and shall list senses only inside an analysis
               whose lemma and part of speech have exactly one sense (that sense with probability 1), and no senses for
               any other analysis, because it scores analyses and not fine senses.
             tags: [subsystem]
@@ -48,6 +50,7 @@ sections:
               - BasicClassifier_ClassifyAsync_AmbiguousWord_ListsAnalysesAndNoSenses
               - BasicClassifier_ClassifyAsync_SingleSenseAnalysis_ListsThatSenseWithProbabilityOne
               - BasicClassifier_ClassifyAsync_TiesKeepLexiconOrder
+              - BasicClassifier_ClassifyAsync_VariantsOfASlot_ShareItsProbabilityAndStayTogether
 
           - id: WordSense-Basic-Tagger
             title: >-
@@ -83,7 +86,8 @@ sections:
             title: >-
               The Basic subsystem shall combine the part-of-speech probabilities and the cue scores into one
               probability for every analysis of an ambiguous word, each greater than 0 and the probabilities summing to
-              one, so that the confidence of the answer, the probability of the selected analysis, is greater than 0
+              one, so that the confidence of the answer, the probability of the lemma and part of speech of the
+              selected analysis, is greater than 0
               and at most 1.
             tags: [subsystem]
             justification: |

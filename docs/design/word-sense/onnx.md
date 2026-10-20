@@ -11,7 +11,8 @@ third-party runtime dependency, ONNX Runtime, and it references only the core pa
 abstract `OnnxWordSenseModel`; the model packages derive from it and supply the model identity. The encoder model is
 usable on its own. The classifier scores the fine senses of the lemmas that have trained weights (the 20 words of
 the first reviewed batch in this version) with the encoder and decides the level of the answer; every word whose
-lemma has no trained weights is answered from the lexicon alone (with all its analyses equally likely and no scored
+lemma has no trained weights is answered from the lexicon alone (with all its lemmas and parts of speech equally likely
+and no scored
 senses). The
 statistical choice among the analyses of such a word is not made in this package: the MiniLM and BertBaseCased
 packages compose the encoder model with the Basic model through the core `FallbackWordSenseModel`, which uses the Basic
@@ -158,7 +159,8 @@ The training runs as follows:
    one weight row and one bias per fine sense, also for a lemma with two senses. A lemma needs at least two senses
    with anchors to get weights; a sense with a single anchor stays in training. The fit is a Newton method with
    fixed iteration rules, so the same input gives the same weights (`LogisticTrainer`, `WeightsTrainer`,
-   `ModelTrainer`).
+   `ModelTrainer`); when a lemma has fewer anchors than the encoder has dimensions it runs in the span of the anchors
+   (`KernelBasis`, `LemmaFitter`), which finds the same optimum much faster.
 4. Per lemma, a fine threshold, and for a lemma that has groups a group threshold, are chosen by seeded k-fold
    cross-validation (k = 5) on the lemma's anchors only. Each
    fold is fitted without its held-out anchors and scores them. From the out-of-fold scores the builder takes, for every
@@ -201,11 +203,13 @@ senses of its lemma and part of speech. It then decides:
    model file at all.
 3. **Several senses and trained weights.** The word is pending. The encoder runs once over the text, the pooled vector
    of the word is turned into the feature, and the classifier scores the fine senses of every analysis of the word
-   (so every part of speech the word can have is reachable, such as the preposition use of `like`) and no sense of any
-   other lemma. The softmax of the fine scores gives each sense a probability; the probability of an analysis is the
-   mass of its senses and the probability of a sense given its analysis is its mass renormalized within the analysis. A
+   so every part of speech the word can have is reachable, such as the preposition use of `like`) and no sense of any
+   other lemma. The softmax of the fine scores gives each sense a probability; the probability of a lemma and part of
+   speech (a slot) is the mass of its senses, the probability of a sense given its slot is its mass renormalized within
+   the slot, and the analyses of a slot that differ only in features (`cut` as an infinitive and as a past tense) share
+   the probability of the slot, equally unless a chooser tells them apart. A
    form whose analyses belong to several lemmas or tenses first gets the probabilities of its analyses from its form
-   chooser. The level is then decided, for the selected analysis (the most probable one):
+   chooser. The level is then decided, for the selected analysis (the best variant of the most probable slot):
    - If the margin of the best fine sense reaches the lemma's `t_fine`, the answer is the fine sense at the `Sense`
      level, with the sense id and, when the sense is in a group, its group id.
    - Otherwise, for a lemma that has groups and a best sense that is in a group, the answer is that group at the
@@ -213,30 +217,33 @@ senses of its lemma and part of speech. It then decides:
      group stay listed in the senses of the selected analysis.
    - Otherwise (the lemma has no groups, the best sense is in no group, or the group margin is below `t_group`) the
      model steps from the sense to the part of speech: the answer is the selected analysis at the `PartOfSpeech`
-     level with its probability as the confidence; the ranked senses of the analysis still show the likely senses
+     level with the probability of its slot as the confidence; the ranked senses of the analysis still show the likely senses
      and groups. The model never answers at the `Group` level for a lemma without groups or for a group whose
      threshold is not met, and never at `None` for a known word.
 
-   The confidence is the probability of the answer at its level: at `PartOfSpeech` the probability of the selected
-   analysis; at `Group` that probability times the sum of the probabilities of the member senses of the group within
-   the analysis; at `Sense` that probability times the probability of the answered sense within the analysis. It grows
+   The confidence is the probability of the answer at its level: at `PartOfSpeech` the probability of the slot of the
+   selected analysis; at `Group` that probability times the sum of the probabilities of the member senses of the group
+   within the slot; at `Sense` that probability times the probability of the answered sense within the slot, so it is
+   the probability of the sense whatever the number of feature variants of the slot. It grows
    monotonically with the margin of the best fine score over the others, is between 0 and 1 and is comparable only
    within one result. The margin and the lemma's thresholds decide the level; the confidence reports how likely the
    answer is.
 
    **Analyses and senses.** Whatever the level answered, the result lists every analysis of the word with its
    probability and, inside each analysis, the senses of its lemma and part of speech ranked by their probability given
-   the analysis (equal probabilities keep inventory order, nothing is truncated), so both lists sum to one. A consumer
-   that maps senses to its own categories sums `analysis.Probability * sense.Probability` per category, so
+   the slot (equal probabilities keep inventory order, nothing is truncated), so both lists sum to one. A consumer
+   that maps senses to its own categories sums `analysis.Probability * sense.Probability` per category over all
+   analyses, so
    `bow#archery` at 0.48 and `bow#violin` at 0.41 give 0.89 for one category even when the result itself is answered
    only at the part-of-speech level. A non-empty senses list in the selected analysis is also what makes a
    `FallbackWordSenseModel` use this result instead of its fallback.
 4. **No scored senses.** The lemma has no trained weights, the encoder produced no usable vector, or a multi-lemma form
-   has no chooser: the word is answered from the lexicon alone. Its analyses are equally likely (probability 1 for a
-   single analysis, 1/n for n analyses), the first analysis of the lexicon is the selected one, the senses lists are
+   has no chooser: the word is answered from the lexicon alone. Its lemmas and parts of speech (slots) are equally
+   likely (probability 1 for a single one, 1/s for s of them) and the analyses of a slot split its probability equally,
+   the first analysis of the lexicon is the selected one, the senses lists are
    empty (a word with a single analysis whose lemma and part of speech have exactly one sense lists that sense with
    probability 1 and is answered at the sense level), and the level is `PartOfSpeech` with the probability of the
-   selected analysis as confidence. No fine sense is guessed. The choice among the analyses is left to the fallback
+   slot of the selected analysis as confidence. No fine sense is guessed. The choice among the analyses is left to the fallback
    model of a composition: a word of this kind has no scored senses, so a
    `FallbackWordSenseModel` answers it with its fallback model, which the MiniLM and BertBaseCased packages set to the
    Basic model. A word with a single analysis but many senses and no weights (`bank` when untrained) is answered the

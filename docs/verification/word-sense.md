@@ -74,7 +74,8 @@ with no sense id and no group id, and never at level none because it is known
 ### Analyses Are Ranked and Sum to One
 
 Each model classifies a word with several analyses (for example `record`) in a sentence. The analyses of the result
-are sorted by probability with the largest first, their probabilities sum to one within a small tolerance, the first
+are sorted by the probability of their lemma and part of speech with the largest first (and inside one lemma and part of
+speech by their own probability), their probabilities sum to one within a small tolerance, the first
 analysis equals the selected `Details`, and an unknown word has none
 (`WordSense_Classifier_EndToEnd_AnalysesAreRankedAndSumToOne`, run for MiniLM and BertBaseCased, whose composition
 answers with the Basic model in this increment).

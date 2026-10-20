@@ -6,7 +6,8 @@
 
 `BasicClassifier` is the internal helper of the Basic model with the lexicon and the statistical units: it decides
 the answer level of every word, answers unambiguous words directly and, for words with several analyses, drives the
-tagger, the cue model and the fusion to give every analysis its probability and select the most probable one.
+tagger, the cue model and the fusion to give every analysis its probability and select the best analysis of the most
+probable lemma and part of speech.
 
 #### Data Model
 
@@ -36,8 +37,8 @@ classifier produces three of the four levels:
 | no analysis, or a token without a letter | none | null (not known, no analyses) | null | 0 |
 | one analysis, one sense for its lemma and part of speech | sense | the analysis | the sense, no group | 1 |
 | one analysis, several senses | part of speech | the analysis | null | 1 |
-| several analyses, selected analysis with one sense | sense | the selected analysis | the sense | probability of the selected analysis |
-| several analyses, selected analysis with several senses | part of speech | the selected analysis | null | probability of the selected analysis |
+| several analyses, selected analysis with one sense | sense | the selected analysis | the sense | probability of the slot (lemma and part of speech) of the selected analysis |
+| several analyses, selected analysis with several senses | part of speech | the selected analysis | null | probability of the slot of the selected analysis |
 
 <!-- markdownlint-enable MD013 -->
 
@@ -61,21 +62,27 @@ returns the analyses of the form (one per lemma, part of speech and features, ne
    part of speech level with confidence 1, because the statistics cannot choose a sense;
 3. several analyses: `CueModel.Extract` gets the features of the word in its segment; `BasicTables.FindCue` looks up the
    cue table of the normalized word first (a form that spans lemmas, such as `left` or `bases`, has a table of its own)
-   and then the table of the lemma of the first analysis. A table gives one cue score per analysis, otherwise all cue
-   scores are zero, which leaves the fusion to the tagger alone; `SenseFusion.Fuse` gives one probability per analysis.
+   and then the table of the lemma of the first analysis. A table gives one cue score per analysis (`NaN` for an analysis
+   it has no column for), otherwise no analysis has a cue score, which leaves the fusion to the tagger alone;
+   `SenseFusion.Fuse` gives one probability per analysis.
    The classifier builds an `AnalysisCandidate` for each analysis (with the one sense of an analysis that has exactly
-   one sense) and sorts them by probability, largest first, with a stable insertion sort (the number of analyses is
-   small), so a tie keeps the lexicon order. The first is the selected analysis; its probability is the confidence. If it
+   one sense) and sorts them with a stable insertion sort (the number of analyses is small): the slots (lemma and
+   part of speech) by the sum of the probabilities of their analyses, largest first, a tie keeping the lexicon order
+   of the first analysis of the slot, and the analyses of one slot by their own probability, largest first, a tie
+   keeping the lexicon order. The first is the selected analysis, the best variant of the most probable slot, and
+   the probability of its slot is the confidence. If it
    has exactly one sense the answer is at the sense level with that sense (and its group, normally none), otherwise at the
    part of speech level. Analyses of one form that share a part of speech (the past and the
-   present of `read`, the lemmas of `left`) have the same tagger posterior, so only the cue scores separate them. The
+   present of `read`, the lemmas of `left`) have the same tagger posterior, so only the cue scores separate them; the
+   analyses of one lemma and part of speech share the senses, so their split never lowers the confidence. The
    tagger posterior of the Auxiliary tag selects the Auxiliary analysis of a word, except directly after an article or
    possessive (the, a, an, my, your, his, its, our, their), where that posterior is ignored so that `the can` and
    `his will` stay nouns.
 
 Postconditions: the result is parallel to the input; a known word has details and the level part of speech or sense, an
 unknown word has no details, no analyses, the level none and confidence 0; the analyses of a known word are all listed,
-sorted, with probabilities that sum to one; the confidence of a statistical answer is greater than 0 and at most 1; the
+ordered by slot and variant, with probabilities that sum to one; the confidence of a statistical answer is greater than
+0 and at most 1; the
 group level is never produced; the senses of an analysis are empty unless its lemma and part of speech have exactly one
 sense.
 

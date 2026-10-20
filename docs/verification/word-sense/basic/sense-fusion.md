@@ -29,3 +29,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Tie** (`SenseFusion_Winner_Tie_PicksFirst`): equal probabilities pick the first candidate (the lowest index).
 - **Missing cue** (`SenseFusion_Fuse_MissingCue_IsFilledWithMeanOfOthers`): a NaN cue behaves like the mean of the
   finite cues.
+- **Variants of a slot** (`SenseFusion_Fuse_VariantsWithoutCues_ShareTheWeightOfOneCandidate`,
+  `SenseFusion_Fuse_VariantsWithCues_KeepTheirWeights`, `SenseFusion_Fuse_VariantsOfWhichOneHasNoCue_ShareTheFillWeight`):
+  with indifferent evidence a noun with one analysis and a verb with two feature variants have 1/2 each and the variants
+  1/4 each (not 1/3 each); variants that have cue scores keep their own weights; of the variants of one slot only
+  those without a cue score share the weight of one candidate.

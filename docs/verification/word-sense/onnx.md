@@ -60,11 +60,13 @@ the level answered; a single-sense word and a lemma without weights list no scor
 
 #### Words Without Scored Senses Are Answered from the Lexicon
 
-A known word whose lemma has no usable weights is answered from the lexicon alone: its analyses are equally likely,
-the first is selected, no senses are scored and the level is the part of speech, never a guessed fine sense (a word
+A known word whose lemma has no usable weights is answered from the lexicon alone: its lemmas and parts of speech are
+equally likely (the feature variants of one share its probability), the first analysis is selected, no senses are
+scored and the level is the part of speech, never a guessed fine sense (a word
 with a single analysis is certain about it, and at the sense level when its lemma and part of speech have exactly one
 sense), and without any other model package
 (`OnnxClassifier_ClassifyAsync_LemmaWithoutWeights_AnswersAnalysesWithoutScoredSenses`,
+`OnnxClassifier_ClassifyAsync_VariantsOfTheOnlySlot_AreConfidentAtThePartOfSpeech`,
 `OnnxClassifier_ClassifyAsync_SingleAnalysisSeveralSenses_AnswersPartOfSpeech`,
 `OnnxClassifier_ClassifyAsync_SeveralAnalysesFirstWithOneSense_StaysAtPartOfSpeech`,
 `OnnxClassifier_ClassifyAsync_SeveralAnalysesLaterWithOneSense_StaysAtPartOfSpeech`). The package references only the

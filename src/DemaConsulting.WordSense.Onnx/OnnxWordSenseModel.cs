@@ -19,8 +19,8 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     (see <see cref="ClassifyResult"/> and <see cref="SenseLevel"/>). A word that is not in the lexicon is unknown, a
 ///     word with one analysis and one sense is answered at the <see cref="SenseLevel.Sense"/> level without any model
 ///     file, and every other known word whose senses are not scored (its lemma has no trained weights) is answered
-///     from the lexicon at the <see cref="SenseLevel.PartOfSpeech"/> level with all its analyses equally likely and
-///     without scored senses. Use the model composed with a fallback model that chooses the analysis of such words in
+///     from the lexicon at the <see cref="SenseLevel.PartOfSpeech"/> level with every lemma and part of speech equally
+///     likely and without scored senses. Use the model composed with a fallback model that chooses the analysis of such words in
 ///     context (see <see cref="FallbackWordSenseModel"/>), as the MiniLM and BertBaseCased packages do with the Basic
 ///     model.
 ///     </para>
@@ -268,7 +268,8 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     ///     weights and several scored senses is scored with the encoder: its analyses get their probabilities, each
     ///     lists its senses ranked by their probability, and the answer is at the finest level the lemma's thresholds
     ///     support (sense, group or part of speech). Every other known word (no trained weights) is answered from the
-    ///     lexicon with all its analyses equally likely (probability 1/n for n analyses, the first analysis of the
+    ///     lexicon with every lemma and part of speech equally likely (probability 1/s for s of them, shared equally by
+    ///     its analyses that differ only in features, and the first analysis of the
     ///     lexicon is the selected one) at the <see cref="SenseLevel.PartOfSpeech"/> level and without scored senses,
     ///     which makes a composition use its fallback model for the word (see <see cref="FallbackWordSenseModel"/>).
     ///     A list in which no word needs the encoder is answered without any model file: nothing is ensured,

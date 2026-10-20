@@ -27,8 +27,12 @@ model for another without code changes, and the composite `FallbackWordSenseMode
 - `SenseCandidate(SenseId, Probability)`: a readonly record struct that names one fine sense and its probability from
   0 to 1 given the analysis it is listed in.
 - `AnalysisCandidate(Details, Probability, Senses)`: a readonly record struct for one analysis of a word.
-  `Details` is the `WordDetails` of the analysis; `Probability` is its probability among the analyses of the word;
-  `Senses` is an immutable array of `SenseCandidate`, the probability of each fine sense given the analysis, sorted by
+  `Details` is the `WordDetails` of the analysis; `Probability` is its probability among the analyses of the word, where
+  the analyses that share a lemma and a part of speech (a slot, the unit that owns the senses) and differ only in
+  features share the probability of the slot, split among them by the model's evidence or equally, so the probability of
+  a slot is the sum over its analyses;
+  `Senses` is an immutable array of `SenseCandidate`, the probability of each fine sense given the analysis (given its
+  slot, the same for every variant of a slot), sorted by
   probability (ties by the ordinal order of the sense id), summing to one and never truncated. `Senses` is empty when
   the model did not score the senses of the analysis. A `default` candidate is valid (a placeholder `Details` without a
   lemma, empty `Senses`). Equality compares the senses item by item.
@@ -36,20 +40,25 @@ model for another without code changes, and the composite `FallbackWordSenseMode
   the result for one word (the type is not named `WordSense`, which is the name of the namespace and the package). It
   has two parts:
   - `Analyses` is the single source of truth: an immutable array of `AnalysisCandidate`, the probability of every
-    analysis (lemma, part of speech and features) of the word, sorted by probability, largest first (ties keep the
+    analysis (lemma, part of speech and features) of the word, sorted by the probability of the slot of the analysis,
+    largest first, and inside a slot by the probability of the analysis, largest first (ties keep the
     order of the analyses of `WordLexicon.Lookup`), summing to one and never truncated; it is empty only for an
     unknown word.
   - The summary: `Word` is the input word as given; `IsKnown` tells whether the word is in the lexicon; `Details` is the
-    selected analysis (the most probable one, stored in the result), or null for an unknown word; `Level` is the level
+    selected analysis (the first analysis: the best variant of the most probable slot, stored in the result), or null for
+    an unknown word; `Level` is the level
     at which the word was answered. `Level` is `None` only for an unknown word (`IsKnown` false, `Analyses` empty,
     `Confidence` 0); a known word that the model is unsure about is at `PartOfSpeech` with a low `Confidence`. The ids
     are present exactly where the level carries them: at `Sense` `SenseId` is set (the answered sense lies in the
     selected analysis) and `GroupId` is set only when the sense is in a group, at `Group` only `GroupId` (the group lies
     in the selected analysis), at `PartOfSpeech` and `None` neither. `Confidence` is from 0 to 1 and is the probability
-    of the answer at its level: at `PartOfSpeech` the probability of the selected analysis; at `Group` that probability
-    times the sum of the probabilities, within the analysis, of the member senses of the group; at `Sense` that
-    probability times the probability of the answered sense within the analysis. A word with one analysis and one sense
-    is answered at `Sense` with confidence 1. Probabilities are comparable only within one result (not across models,
+    of the answer at its level, built on the probability of the slot of the selected analysis (the sum of the
+    probabilities of its feature variants, so that the split among them never lowers it): at `PartOfSpeech` that
+    probability; at `Group` that probability
+    times the sum of the probabilities, within the slot, of the member senses of the group; at `Sense` that
+    probability times the probability of the answered sense within the slot. A word with one lemma and part of speech
+    and one sense is answered at `Sense` with confidence 1. Probabilities are comparable only within one result (not
+    across models,
     words or levels).
   - A group answer always exposes its member senses: `GroupId` with `WordLexicon.TryGetGroup` gives the
     `SenseGroup` whose `SenseIds` are the members in inventory order, and the `Senses` of the selected analysis (when

@@ -11,12 +11,14 @@ namespace WordSense.Builder;
 /// <param name="TargetPrecision">Precision that the answers of a level must reach when its threshold is chosen.</param>
 /// <param name="MinAnswered">Number of answers a threshold must keep before its precision is believed.</param>
 /// <param name="Parallelism">Number of lemmas trained concurrently.</param>
+/// <param name="Solver">The method that fits the classifiers; the kernel form and the primal form find the same optimum.</param>
 internal sealed record TrainingOptions(
     double C = 100,
     int Folds = 5,
     double TargetPrecision = 0.95,
     int MinAnswered = 3,
-    int Parallelism = 2)
+    int Parallelism = 2,
+    FitSolver Solver = FitSolver.Kernel)
 {
     /// <summary>
     ///     Gets the number of lemmas the builder trains concurrently: the fit of each lemma is independent and written to
@@ -120,25 +122,10 @@ internal static class WeightsTrainer
     /// <param name="labels">The sense index of each feature.</param>
     /// <param name="senseCount">The number of senses.</param>
     /// <param name="c">The inverse regularization strength.</param>
+    /// <param name="solver">The solver; the default is the kernel form, which is much faster when there are fewer samples than features.</param>
     /// <returns>Row-major weights and one bias per row.</returns>
-    internal static (float[] Weights, float[] Bias) Fit(float[][] x, int[] labels, int senseCount, double c)
-    {
-        var dim = x[0].Length;
-        var weights = new float[senseCount * dim];
-        var bias = new float[senseCount];
-        for (var row = 0; row < senseCount; row++)
-        {
-            var (w, b) = LogisticTrainer.Train(x, labels.Select(l => l == row).ToArray(), c);
-            for (var d = 0; d < dim; d++)
-            {
-                weights[(row * dim) + d] = (float)w[d];
-            }
-
-            bias[row] = (float)b;
-        }
-
-        return (weights, bias);
-    }
+    internal static (float[] Weights, float[] Bias) Fit(float[][] x, int[] labels, int senseCount, double c, FitSolver solver = FitSolver.Kernel) =>
+        new LemmaFitter(x, solver).Fit(Enumerable.Range(0, x.Length).ToArray(), labels, senseCount, c);
 
     /// <summary>
     ///     Trains every lemma that has anchors, concurrently.
@@ -237,8 +224,9 @@ internal static class WeightsTrainer
             return Entry(lemma, senseIds, cached);
         }
 
-        var (weights, bias) = Fit(x, labels, senseIds.Length, options.C);
-        var thresholds = Thresholds.Choose(lemma, x, labels, senseIds.Length, groups, options);
+        var fitter = new LemmaFitter(x, options.Solver, options.Parallelism);
+        var (weights, bias) = fitter.Fit(Enumerable.Range(0, x.Length).ToArray(), labels, senseIds.Length, options.C);
+        var thresholds = Thresholds.Choose(lemma, x, labels, senseIds.Length, groups, options, fitter);
         var fit = new LemmaFit(weights, bias, thresholds.Fine, thresholds.Group, x[0].Length);
         fitCache?.Add(key!, fit);
         return Entry(lemma, senseIds, fit);

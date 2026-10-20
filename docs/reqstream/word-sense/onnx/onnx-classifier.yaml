@@ -81,12 +81,34 @@ sections:
                   - OnnxClassifier_ClassifyAsync_SingleSenseWord_ListsNoCandidates
                   - OnnxClassifier_ClassifyAsync_LemmaWithoutWeights_ListsNoCandidates
 
+              - id: WordSense-Onnx-OnnxClassifier-Slots
+                title: >-
+                  OnnxClassifier shall compute the probabilities per lemma and part of speech (a slot), never per
+                  feature variant: the probability of a slot is the mass of its senses (for a form with a chooser,
+                  the share of the chooser's labels that its analyses carry), the probability of a sense given its slot
+                  is its mass renormalized in the slot, the analyses of one slot that differ only in features split the
+                  probability of the slot (by the chooser when it has a label for each of them, otherwise equally,
+                  ties in lexicon order), and the selected analysis is the best variant of the most probable slot, so
+                  that the number of feature variants never lowers a confidence and never moves the selection to
+                  another part of speech.
+                tags: [unit]
+                justification: |
+                  The senses belong to a lemma and a part of speech, not to a feature variant (cut as an infinitive and
+                  as a past tense, deer as a singular and a plural). Dividing the mass of a slot by its number of
+                  variants halved the confidence in a sense for no reason in the evidence and let a part of speech with
+                  one analysis beat a more probable one with several.
+                tests:
+                  - OnnxClassifier_ClassifyAsync_FeaturesOfOneLemmaAndPartOfSpeech_ShareTheSlotProbability
+                  - OnnxClassifier_ClassifyAsync_SlotWithSeveralVariants_IsSelectedByItsTotalProbability
+                  - OnnxClassifier_ClassifyAsync_VariantsOfTheOnlySlot_AreConfidentAtThePartOfSpeech
+                  - OnnxClassifier_ClassifyAsync_ReadPastVersusPresent_ChoosesTheTenseFeatures
+
               - id: WordSense-Onnx-OnnxClassifier-Confidence
                 title: >-
                   OnnxClassifier shall report the confidence of an answer as the probability of its level (the
-                  probability of the selected analysis, times the probability of the answered sense or the summed
-                  probability of the member senses of the answered group, within that analysis), from 0 to 1, growing
-                  monotonically with the margin of the best fine score over the others.
+                  probability of the slot of the selected analysis, times the probability of the answered sense or the
+                  summed probability of the member senses of the answered group, within that slot), from 0 to 1,
+                  growing monotonically with the margin of the best fine score over the others.
                 tags: [unit]
                 justification: |
                   A monotonic confidence lets a caller choose a threshold, and defining it from the probabilities that
@@ -155,9 +177,11 @@ sections:
                   OnnxClassifier shall answer a known word whose senses it does not score (its lemma has no usable
                   trained weights) from the lexicon alone: a single analysis with probability 1 (at the sense level with
                   that sense listed with probability 1 when its lemma and part of speech have exactly one sense, else at
-                  the part of speech level), and several analyses with the uniform probability 1/n each, in lexicon
-                  order with the first as the selected analysis, at the part of speech level with the probability of
-                  the selected analysis as confidence and no scored senses, and never a guessed fine sense.
+                  the part of speech level), and several analyses with the uniform probability 1/s for each of the s
+                  lemmas and parts of speech, shared equally by the analyses of one of them that differ only in
+                  features, listed by lemma and part of speech in lexicon order with the first analysis as the
+                  selected analysis, at the part of speech level with the probability of the lemma and part of speech
+                  of the selected analysis as confidence and no scored senses, and never a guessed fine sense.
                 tags: [unit]
                 justification: |
                   A word must never vanish because a model was not trained for it, and a first-sense guess presented as
@@ -170,6 +194,7 @@ sections:
                   - OnnxClassifier_ClassifyAsync_SingleAnalysisSeveralSenses_AnswersPartOfSpeech
                   - OnnxClassifier_ClassifyAsync_SeveralAnalysesFirstWithOneSense_StaysAtPartOfSpeech
                   - OnnxClassifier_ClassifyAsync_SeveralAnalysesLaterWithOneSense_StaysAtPartOfSpeech
+                  - OnnxClassifier_ClassifyAsync_VariantsOfTheOnlySlot_AreConfidentAtThePartOfSpeech
 
               - id: WordSense-Onnx-OnnxClassifier-NoVector
                 title: >-
@@ -186,7 +211,8 @@ sections:
                 title: >-
                   OnnxClassifier shall, for a form whose analyses belong to several lemmas (left, bases, rows, found)
                   or to several tenses of one lemma (read, reread), give each analysis a probability from the sentence
-                  context, select the most probable one and list the senses of each analysis, and shall answer at
+                  context, select the best analysis of the most probable one and list the senses of each analysis,
+                  and shall answer at
                   the part of speech level when the choice is not confident.
                 tags: [unit]
                 justification: |

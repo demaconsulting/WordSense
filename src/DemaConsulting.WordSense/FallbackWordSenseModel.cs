@@ -13,7 +13,10 @@ namespace DemaConsulting.WordSense;
 ///     primary model, or it only chose between analyses) the result of the fallback model is used. The result of a word is
 ///     always the complete result of one of the two models, never a mixture: its analyses, selected analysis, level,
 ///     confidence and ids belong together, and the probabilities of one result are not comparable with those of the other
-///     model.
+///     model. The composition adds no probability of its own, so the rules of the models hold unchanged inside the result
+///     that is used: the senses belong to a lemma and part of speech (a slot), the feature variants of a slot share its
+///     probability, the selected analysis is the best variant of the most probable slot, and the confidence is built on
+///     the probability of the slot.
 ///     </para>
 ///     <para>
 ///     A typical composition is an encoder model as the primary model, which scores the fine senses of the lemmas it was

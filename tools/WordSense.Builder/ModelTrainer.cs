@@ -12,7 +12,8 @@ namespace WordSense.Builder;
 /// </summary>
 /// <param name="CacheRoot">The folder that holds the embedding caches (one subfolder per model id), or null to encode every sentence.</param>
 /// <param name="RecomputeMean">True to compute the global mean again instead of reusing the one of the existing weights.</param>
-internal sealed record TrainSettings(string? CacheRoot, bool RecomputeMean = false)
+/// <param name="Solver">The method that fits the classifiers; the kernel form is the default and the primal form is the slow reference.</param>
+internal sealed record TrainSettings(string? CacheRoot, bool RecomputeMean = false, FitSolver Solver = FitSolver.Kernel)
 {
     /// <summary>
     ///     Gets the default cache folder of a repository.
@@ -61,7 +62,7 @@ internal static class ModelTrainer
         var validation = SenseInventory.Validate(anchors, holdout);
         ReportWarnings(validation, output, info.Name);
         validation.ThrowIfInvalid();
-        var options = new TrainingOptions(Parallelism: TrainingOptions.DefaultParallelism);
+        var options = new TrainingOptions(Parallelism: TrainingOptions.DefaultParallelism, Solver: settings.Solver);
         var clock = Stopwatch.StartNew();
 
         using var composed = info.Create(Path.Join(repository, "model", info.ModelDirectory!));

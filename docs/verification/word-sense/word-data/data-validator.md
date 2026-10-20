@@ -29,7 +29,9 @@ All scenarios below pass.
   `DanglingReference_ViolatesForeignKey`,
   `RowInWrongFile_ViolatesPlacement`, `RelationDefects_AreReported`).
 - **Cross-table rules** (`HeadDefects_ViolateSynset`, `TokenDefects_ViolateEntry`, `SenseDefects_ViolateSense`,
-  `EntryWithoutSense_Violates`, `ExampleOfOtherSynset_Violates`, `SynsetWithoutGloss_Violates`).
+  `SenseKeyOfOtherPartOfSpeech_ViolatesSense`, `EntryWithoutSense_Violates`, `ExampleOfOtherSynset_Violates`,
+  `SynsetWithoutGloss_Violates`): the part of speech of an entry and the ss_type of a sense key must fit the part of
+  speech of the synset of the sense (an adjective satellite counts as an adjective).
 - **Sense labels** (`SenseWithoutLabel_Violates`, `DuplicateLabelInLemma_ViolatesUnique`,
   `SenseIdEqualToGroupId_Violates`, `ChangedPublishedLabel_ViolatesStability`, `ChangedGroupId_IsNotAStabilityViolation`,
   `ReusedRetiredId_Violates`, `ProjectSenseWithKey_Violates`): a sense without a label, a label twice in a lemma, a

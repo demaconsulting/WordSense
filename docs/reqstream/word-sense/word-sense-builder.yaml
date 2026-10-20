@@ -97,16 +97,27 @@ sections:
           - id: WordSense-WordSenseBuilder-Weights
             title: >-
               The builder shall train, for a named encoder model and the shared corpus, one set of per-lemma weights
-              deterministically, scoring each fine sense of every lemma that has two or more senses with anchors
+              deterministically (the same input gives byte-identical weights whatever the number of threads), scoring
+              each fine sense of every lemma that has two or more senses with anchors
               (a sense with a single anchor still takes part in training, a lemma with fewer than two anchored senses
-              gets no weights), and shall write it, naming the model, to the package of that model.
+              gets no weights), in the span of the anchors of the lemma when it has fewer anchors than the encoder has
+              dimensions (an exact reformulation of the feature-space fit, which stays available as the reference
+              solver), and shall write it, naming the model, to the package of that model.
             tags: [unit]
             justification: |
               Each encoder package needs classifiers trained for its own embedding space; training every model from
               the one shared corpus keeps the models comparable, and a lemma with nothing to choose between gets no
-              classifier that could only guess.
+              classifier that could only guess. The fit in the feature space took 11.5 minutes for 20 lemmas of the
+              768-dimensional encoder, which does not scale to the planned corpus of about 740 lemmas; the
+              equivalent fit in the span of the anchors takes seconds.
             tests:
               - WordSenseBuilder_LogisticTrainer_SeparatesAndIsDeterministic
+              - WordSenseBuilder_KernelBasis_Create_KeepsInnerProductsAndDropsDuplicates
+              - WordSenseBuilder_KernelBasis_Create_Subset_UsesTheSubsetOnly
+              - WordSenseBuilder_WeightsTrainer_Fit_KernelSolver_FindsThePrimalOptimum
+              - WordSenseBuilder_WeightsTrainer_Fit_KernelSolver_IsDeterministic
+              - WordSenseBuilder_LemmaFitter_Fit_IsIndependentOfTheThreadCount
+              - WordSenseBuilder_WeightsTrainer_Fit_MoreSamplesThanDimensions_IsThePrimalSolver
               - WordSenseBuilder_WeightsBlobWriter_Write_RoundTripsThroughTheReader
               - WordSenseBuilder_Program_Weights_UnknownModel_ListsTheModels
               - WordSenseBuilder_WeightsTrainer_LemmaWithOneAnchoredSense_GetsNoWeights

@@ -67,8 +67,12 @@ apostrophe straightened; tokens without a letter become empty), splits the list 
      of its lemma and part of speech whose feature items are all contained in the analysis features, the one with the
      most items winning; a column with empty features stands for any features),
      `SenseFusion` turns the posterior and the cue scores into one probability per analysis, and every analysis is
-     listed with its probability, sorted largest first (a stable sort, so a tie keeps the lexicon order). The first is
-     the selected analysis. The answer is at the part of speech level with the probability of the selected analysis as
+     listed with its probability. The senses belong to a lemma and a part of speech (a slot), not to the analyses of a
+     slot that differ only in features (`cut` as an infinitive and as a past tense, `deer` as a singular and a plural),
+     so the slots are listed by the sum of the probabilities of their analyses, largest first, and the analyses of a
+     slot by their own probability (a stable sort, so a tie keeps the lexicon order). The first is
+     the selected analysis: the best variant of the most probable slot. The answer is at the part of speech level with
+     the probability of the slot of the selected analysis as
      its confidence, or at the sense level (same confidence) when the selected analysis has exactly one sense.
 
 Every word that has a lexicon analysis is answered with details, number words such as `one` or `twenty` included; only
@@ -78,8 +82,10 @@ senses), so it never names a sense for such an analysis, because its statistics 
 analysis whose lemma and part of speech have exactly one sense lists that sense with probability 1, whatever the
 probability of the analysis, because no evidence is needed to choose it.
 
-An ambiguous word is therefore always answered, and its confidence is the probability of the selected analysis, at
-least one over the number of analyses and at most 1. The confidence is a relative score, not a calibrated probability,
+An ambiguous word is therefore always answered, and its confidence is the probability of the slot of the selected
+analysis (the sum over its feature variants, which the split among them never lowers), at
+least one over the number of lemmas and parts of speech of the word and at most 1. The confidence is a relative
+score, not a calibrated probability,
 but a higher value is more often right: the builder's `evaluate basic` reports the accuracy per confidence bucket and
 the coverage and precision at fixed thresholds, so a caller can trade coverage for precision with a threshold. Ties go
 to the analysis that comes first in the lexicon order of the form.

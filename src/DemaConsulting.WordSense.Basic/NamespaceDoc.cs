@@ -72,8 +72,11 @@ namespace DemaConsulting.WordSense.Basic;
 ///     </para>
 ///     <para>
 ///     Confidence: 0 means the word is unknown to the lexicon (<c>Details</c> is null), 1 means the word has a single
-///     analysis in the lexicon, and a word with several analyses gets the probability of the selected analysis, between
-///     one over the number of analyses and 1 (at the sense level it is that probability times the probability 1 of the
+///     lemma and part of speech in the lexicon, and a word with several of them gets the probability of the lemma
+///     and part of speech of the selected analysis (the analyses that differ only in features, such as the singular and
+///     the plural of <c>deer</c>, share it and never lower it), between
+///     one over the number of lemmas and parts of speech and 1 (at the sense level it is that probability times the
+///     probability 1 of the
 ///     one sense); <c>Details</c> is never null for a word that is in the lexicon (a number word such as
 ///     <c>one</c> included), so an ambiguous
 ///     word is never left undecided. This probability scale is specific to the Basic model: do not reuse a threshold
@@ -82,7 +85,7 @@ namespace DemaConsulting.WordSense.Basic;
 ///     90% of the target words at about 89% precision, 0.8 about 78% at about 93%, and 0.9 about 70% at about 96%
 ///     (holdout: 95% at 90%, 86% at 94%, 78% at 96%; the table is in
 ///     https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/basic-evaluation.md). The lowest value
-///     a word with n analyses can get is 1/n (0.5 for two analyses), so a threshold at or below that keeps every answer
+///     a word with s lemmas and parts of speech can get is 1/s (0.5 for two), so a threshold at or below that keeps every answer
 ///     for such words; the recommended starting threshold for this model is 0.8.
 ///     </para>
 ///     <para>

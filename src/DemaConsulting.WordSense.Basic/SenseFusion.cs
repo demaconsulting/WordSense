@@ -7,12 +7,16 @@ namespace DemaConsulting.WordSense.Basic;
 ///     analysis.
 /// </summary>
 /// <remarks>
-///     The candidates are analyses (lemma, part of speech and features), never senses, and several may share a part of
-///     speech: they then share the same posterior share and only the cue scores separate them. The fused score of a
+///     The candidates are analyses (lemma, part of speech and features), never senses. Several may share a lemma and a
+///     part of speech (a slot, the unit that owns the senses): they then share the same posterior share and only the cue
+///     scores separate them. The fused score of a
 ///     candidate is <c>w * ln(max(p, 1e-6)) + cue / temperature</c> where <c>p</c> is the posterior
 ///     of the candidate's part of speech renormalized over the candidates and <c>cue</c> is its cue score (the mean of
 ///     the available scores when the candidate has none, zero when no candidate has one). The result is the softmax of
-///     the scores, so the confidence of a decision is the probability of the winner.
+///     the scores, with one correction: the candidates of one slot that have no cue score are not separated by the
+///     context, so together they carry the weight of a single candidate (each one the fraction one over their number),
+///     and a slot is never favored merely because its analyses differ in features. The probability of a slot is the sum
+///     of the probabilities of its candidates.
 /// </remarks>
 internal static class SenseFusion
 {
@@ -76,6 +80,16 @@ internal static class SenseFusion
         for (var j = 0; j < count; j++)
         {
             probabilities[j] = Math.Exp(probabilities[j] - best);
+        }
+
+        // The candidates of one slot without a cue score share the weight of one candidate
+        for (var j = 0; j < count; j++)
+        {
+            if (!double.IsFinite(cues[j]))
+            {
+                probabilities[j] /= Unscored(analyses, cues, j);
+            }
+
             sum += probabilities[j];
         }
 
@@ -84,6 +98,36 @@ internal static class SenseFusion
             probabilities[j] /= sum;
         }
     }
+
+    /// <summary>
+    ///     Counts the candidates that have the lemma and the part of speech of a candidate and no cue score.
+    /// </summary>
+    /// <param name="analyses">The candidate analyses.</param>
+    /// <param name="cues">The cue scores, <see cref="double.NaN"/> when missing.</param>
+    /// <param name="index">The candidate.</param>
+    /// <returns>The number of candidates of its slot without a cue score (at least 1: the candidate itself).</returns>
+    private static int Unscored(ImmutableArray<WordDetails> analyses, ReadOnlySpan<double> cues, int index)
+    {
+        var count = 0;
+        for (var k = 0; k < analyses.Length; k++)
+        {
+            if (!double.IsFinite(cues[k]) && SameSlot(analyses[k], analyses[index]))
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    /// <summary>
+    ///     Tells whether two analyses have the same lemma and part of speech, so that they share their senses.
+    /// </summary>
+    /// <param name="a">An analysis.</param>
+    /// <param name="b">Another analysis.</param>
+    /// <returns>True when lemma and part of speech are equal.</returns>
+    internal static bool SameSlot(WordDetails a, WordDetails b) =>
+        a.PartOfSpeech == b.PartOfSpeech && string.Equals(a.Lemma, b.Lemma, StringComparison.Ordinal);
 
     /// <summary>
     ///     Gets the index of the largest probability, preferring the lowest index on ties.

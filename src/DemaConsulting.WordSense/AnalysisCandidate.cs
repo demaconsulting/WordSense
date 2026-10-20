@@ -9,12 +9,19 @@ namespace DemaConsulting.WordSense;
 /// <remarks>
 ///     <para>
 ///     <see cref="Probability"/> is the probability of the analysis (lemma, part of speech and features) among the
-///     analyses of the word; over all analyses of a result they sum to one. <see cref="Senses"/> lists, when the model
-///     scored the fine senses of the analysis, the probability of each sense given the analysis: they sum to one over the
+///     analyses of the word; over all analyses of a result they sum to one. The senses belong to a lemma and a part of
+///     speech, not to the features, so the analyses that have the same lemma and part of speech and differ only in
+///     features (a <em>slot</em>: <c>cut</c> as an infinitive and as a past tense, <c>deer</c> as a singular and a
+///     plural) share the probability of their slot, split among them by the evidence the model has (a form chooser, the
+///     context cues of the Basic model) or, without evidence, equally, and every one of them lists the same senses with
+///     the same probabilities. The probability of a slot is the sum of the probabilities of its analyses.
+///     <see cref="Senses"/> lists, when the model
+///     scored the fine senses of the analysis, the probability of each sense given the analysis (given its slot): they
+///     sum to one over the
 ///     listed senses, are sorted by probability (ties by the ordinal order of the sense id) and are never truncated. The
 ///     list is empty when the model did not score the senses of this analysis. A consumer that maps senses to its own
-///     categories can sum the probabilities of the senses per category (and multiply by <see cref="Probability"/> to
-///     compare categories across analyses).
+///     categories can sum <c>Probability * sense.Probability</c> per category over all analyses (which gives the
+///     probability of the slot times the probability of the sense, whatever the number of feature variants).
 ///     </para>
 ///     <para>
 ///     The probabilities are comparable only within one result; do not compare them across models. A

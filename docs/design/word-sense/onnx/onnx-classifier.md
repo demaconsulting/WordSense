@@ -30,19 +30,34 @@ Per level:
 | Level | Details | GroupId | SenseId | Confidence |
 | --- | --- | --- | --- | --- |
 | `None` | null (not known, no analyses) | null | null | 0 |
-| `PartOfSpeech` | the selected analysis | null | null | the probability of the selected analysis |
-| `Group` | the selected analysis | set | null | the probability of the selected analysis times the summed probability of the senses of the group |
-| `Sense` | the selected analysis | set if in a group | set | the probability of the selected analysis times the probability of the sense, or 1 |
+| `PartOfSpeech` | the selected analysis | null | null | the probability of the slot of the selected analysis |
+| `Group` | the selected analysis | set | null | the probability of the slot times the summed probability of the senses of the group within the slot |
+| `Sense` | the selected analysis | set if in a group | set | the probability of the slot times the probability of the sense within the slot, or 1 |
 
 <!-- markdownlint-enable MD013 -->
 
-`Analyses` lists every analysis of the word, the probabilities summing to one, sorted by probability (ties in lexicon
-order), and inside each analysis the `Senses` described in step 6 (empty when they were not scored, except the one
-sense with probability 1 of the only analysis of a word whose lemma and part of speech have exactly one sense).
+A **slot** is a lemma and a part of speech: the unit that owns the senses. The analyses of a form that share a slot and
+differ only in features (`cut` as an infinitive and as a past tense, `deer` as a singular and a plural) are the
+_variants_ of the slot. The probability of a slot is the sum of the probabilities of its variants, and the confidence
+is built on it, so the split among variants never lowers it.
 
-An analysis is chosen by lemma and part of speech; when several analyses of the form share them and differ only in
-features, the probabilities come from the form chooser (see _Form chooser_), or, without one, they are equal and the
-first in lexicon order is selected.
+`Analyses` lists every analysis of the word, the probabilities summing to one, the slots sorted by their probability
+(ties in the lexicon order of their first analysis) and inside a slot the variants sorted by their probability (ties in
+lexicon order), and inside each analysis the `Senses` described in step 6 (empty when they were not scored, except the
+one sense with probability 1 of the only analysis of a word whose lemma and part of speech have exactly one sense).
+The first analysis is the selected one: the best variant of the most probable slot.
+
+The probabilities are computed per slot, never per variant:
+
+1. The probability of a sense given its slot comes from the softmax of the fine scores, renormalized in the slot.
+2. The probability of a slot is the mass of its senses in that softmax; for a form with a chooser it is the share of the
+   probability of the chooser's labels that the slot's analyses carry (a label shares its probability among its slots in
+   proportion to the mass of their senses).
+3. The variants of a slot split its probability: by the labels of the chooser when it has one per variant (`read` as a
+   past and a present tense), otherwise equally, the lexicon order breaking ties. This prior is documented, not
+   learned, and it reaches neither the level nor the confidence.
+4. The selected analysis is the best variant of the most probable slot, and the confidence at the sense level is
+   `P(slot) × P(sense | slot)`, whatever the number of variants.
 
 #### Key Methods
 
@@ -68,34 +83,41 @@ first in lexicon order is selected.
    to several tenses of one lemma (`read`, `reread`), the chooser of the form scores its labels with the feature. A
    label stands for the analyses of its lemma, or, written `lemma/features`, for the analysis of that lemma with those
    features (the table checks at load that every analysis of the form has a label and every label an analysis). The
-   softmax of the scores gives each label its probability, which is shared among its analyses in proportion to the mass
-   of their senses; the margin `m` of the best label against the threshold `t` of the chooser is checked. If `m >= t`,
-   the most probable analysis is selected and the fine classifier of its lemma then runs for it. If the margin is
-   below the threshold the answer is the most probable analysis at the `PartOfSpeech` level with its probability as the
+   softmax of the scores gives each label its probability, which is shared among the slots of its analyses in proportion
+   to the mass of their senses, and among the analyses of a slot equally; the margin `m` of the best label against the
+   threshold `t` of the chooser is checked. If `m >= t`,
+   the best analysis of the most probable slot is selected and the fine classifier of its lemma then runs for it. If the
+   margin is
+   below the threshold the answer is the selected analysis at the `PartOfSpeech` level with the probability of its slot
+   as the
    (low) confidence. A selected lemma without weights is answered at the `PartOfSpeech` level in the same way. No
    chooser is trained yet (the corpus has no anchors for these forms), so the embedded weights of the shipped models
    carry none and such forms are answered from the lexicon (step 8) until the relabeled corpus provides them.
 6. **Levels, analyses and senses.** `LemmaWeights` scores the senses (one-versus-rest activation per fine sense) and
    derives the group scores for a lemma that has groups (the sum of the normalized fine probabilities per group, a
    sense that is in no group standing alone). The softmax of the fine scores of the senses of the word's analyses
-   gives each sense a probability; the probability of an analysis is the mass of its senses (or the chooser
-   probability of a multi-lemma form), shared equally by the analyses that have the same lemma and part of speech and
-   differ only in features (`cut` as an infinitive and as a past tense) unless the chooser tells them apart, and the
-   probability of a sense given its analysis is its mass renormalized within the analysis. Every analysis lists its
-   senses ranked by that probability (equal probabilities keep inventory order, nothing is truncated), whatever the
+   gives each sense a probability; the probability of a slot is the mass of its senses (or the chooser probability of a
+   multi-lemma form, shared among its slots), the analyses of a slot (feature variants such as `cut` as an infinitive and
+   as a past tense) split the probability of the slot equally unless the chooser tells them apart, and the
+   probability of a sense given its slot is its mass renormalized within the slot, the same for every variant of the
+   slot. Every analysis lists
+   its senses ranked by that probability (equal probabilities keep inventory order, nothing is truncated), whatever the
    level answered, so a consumer that maps senses to its own categories can sum `analysis.Probability *
-   sense.Probability` per category even when the answer is at the `PartOfSpeech` or the `Group` level. A sense without
-   a column in the weights is never scored, so an analysis whose senses all lack a column has probability 0. The level
-   is then decided for the selected analysis (the most probable one). Groups exist only where curated, so the levels
+   sense.Probability` per category over all analyses (the probability of the slot times that of the sense) even when the
+   answer is at the `PartOfSpeech` or the `Group` level. A sense without
+   a column in the weights is never scored, so a slot whose senses all lack a column has probability 0. The level
+   is then decided for the selected analysis (the best variant of the most probable slot). Groups exist only where
+   curated, so the levels
    nest as part of speech, group (where one exists) and sense, and a model that is unsure between senses steps up to
    the next level that exists and meets its threshold:
    - the best fine sense is answered at the `Sense` level when its margin is at least `t_fine` of the lemma and it
-     lies in the selected analysis, with its group id when the sense is in a group;
-   - otherwise, for a lemma that has groups and a best sense that is in a group (and lies in the selected analysis),
+     lies in the selected slot, with its group id when the sense is in a group;
+   - otherwise, for a lemma that has groups and a best sense that is in a group (and lies in the selected slot),
      the group is answered at the `Group` level when the group margin (the probability of the group minus the largest
      probability of any other group or single ungrouped sense) is at least `t_group`;
    - otherwise (the lemma has no groups, the best sense is in no group, or the group margin is below `t_group`) the
-     selected analysis is answered at the `PartOfSpeech` level with its probability as the confidence. The ranked
+     selected analysis is answered at the `PartOfSpeech` level with the probability of its slot as the confidence. The
+     ranked
      senses of the analysis still show the likely senses and groups.
 
    A threshold that is "never" is not reached by any margin. A single remaining sense has an infinite margin.
@@ -107,11 +129,13 @@ first in lexicon order is selected.
    its fallback.
 8. **Lexicon-only answer.** For a known word whose senses are not scored (a word without usable weights, a word with a
    single analysis and many senses and no weights, a form of several lemmas without a chooser, a word whose encoder
-   vector is unusable) the answer is built from the lexicon: every analysis has probability 1/n for n analyses (1 for a
-   single analysis) in lexicon order, the first analysis is the selected one, the senses lists are empty (a word with a
+   vector is unusable) the answer is built from the lexicon: every lemma and part of speech (slot) has probability 1/s
+   for s slots (1 for a single slot), shared equally by its variants, the slots are listed in lexicon order of
+   their first analysis, the first analysis is the selected one, the senses lists are empty (a word with a
    single analysis whose lemma and part of speech have exactly one sense lists that sense with probability 1), and the
    level is `Sense` for that single-analysis, single-sense word and otherwise `PartOfSpeech`, with the probability of the
-   selected analysis as confidence. No fine sense is ever guessed. The classifier does not choose among the analyses
+   slot of the selected analysis as confidence. No fine sense is ever guessed. The classifier does not choose among the
+   analyses
    itself: the model it is composed with does.
 
 `NeedsModel` and `ResolveWithoutModel` let the model answer text without ensuring or opening anything: `NeedsModel`

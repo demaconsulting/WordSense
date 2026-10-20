@@ -54,15 +54,19 @@ internal sealed class ReadmeSample
         var results = await model.ClassifyAsync(words);
 
         // Print the part of speech (or unknown), the level, the confidence, the sense id (at the sense level) or the
-        // group id (at the group level) and the runner-up analysis (the second most probable part of speech, when the
-        // word has one)
+        // group id (at the group level) and the runner-up part of speech with its probability, when the word has one
+        // (the analyses that share a part of speech, such as the singular and the plural of "deer", share its probability)
         foreach (var result in results)
         {
             var pos = result.Details?.PartOfSpeech.ToString() ?? "unknown";
             var sense = result.SenseId ?? result.GroupId ?? "";
-            var next = result.Analyses.Length > 1
-                ? $"{result.Analyses[1].Details.PartOfSpeech} {result.Analyses[1].Probability:F2}"
-                : "";
+            var next = result.Analyses
+                .Where(a => a.Details.PartOfSpeech != result.Details?.PartOfSpeech)
+                .GroupBy(a => a.Details.PartOfSpeech)
+                .Select(g => (Pos: g.Key, Probability: g.Sum(a => a.Probability)))
+                .OrderByDescending(g => g.Probability)
+                .Select(g => $"{g.Pos} {g.Probability:F2}")
+                .FirstOrDefault("");
             Console.WriteLine($"{result.Word,-9} {pos,-12} {result.Level,-12} {result.Confidence,4:F2}  {sense,-14} {next}".TrimEnd());
         }
 

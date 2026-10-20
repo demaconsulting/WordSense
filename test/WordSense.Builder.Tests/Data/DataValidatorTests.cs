@@ -370,6 +370,28 @@ public sealed class DataValidatorTests : IDisposable
     }
 
     /// <summary>
+    ///     The ss_type of a sense key must name the part of speech of the synset of the sense, an adjective satellite
+    ///     being the ss_type 5 of an <c>s</c> synset, and the key must carry an ss_type from 1 to 5.
+    /// </summary>
+    [Theory]
+    [InlineData("bass%1:05:00::", "bass%2:05:00::")]
+    [InlineData("bass%1:05:00::", "bass%3:05:00::")]
+    [InlineData("bass%1:05:00::", "bass%x:05:00::")]
+    public void WordSenseBuilder_DataValidator_Validate_SenseKeyOfOtherPartOfSpeech_ViolatesSense(string original, string changed)
+    {
+        // Arrange
+        var data = Data();
+        DataFixture.Replace(data, "sense/b.tsv", original, changed);
+
+        // Act
+        var report = DataValidator.Validate(data);
+
+        // Assert
+        Assert.Contains("[sense]", Messages(report), StringComparison.Ordinal);
+        Assert.Contains("the sense key '" + changed + "'", Messages(report), StringComparison.Ordinal);
+    }
+
+    /// <summary>
     ///     An entry without any sense is a violation.
     /// </summary>
     [Fact]

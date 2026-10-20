@@ -35,20 +35,27 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Single analysis shares its array** (`..._SingleAnalysisWord_SharesItsAnalysesArray`): two results for the same word
   with one analysis carry the same analyses (equal contents; the array is built once and shared).
 - **Ambiguous word always answers** (`..._AmbiguousWord_AlwaysAnswersWithProbability`): a word with several analyses
-  has details and a confidence greater than 0, at least one over the number of analyses and at most 1.
-- **Ambiguous word level** (`..._AmbiguousWord_AnswersPartOfSpeechLevel`): the answer states the level part of speech
-  and has neither a group id nor a sense id.
+  has details and a confidence greater than 0, at least one over the number of lemmas and parts of speech and at most 1.
+- **Ambiguous word level** (`..._AmbiguousWord_AnswersPartOfSpeechLevel`): the answer states the level part of speech,
+  has neither a group id nor a sense id, and its confidence is the probability of the lemma and part of speech of the
+  selected analysis (the sum over its feature variants).
 - **Ambiguous word lists analyses and no senses** (`..._AmbiguousWord_ListsAnalysesAndNoSenses`): the analyses of a
-  word with several analyses are all listed, sorted by probability with the largest first, their probabilities sum to
+  word with several analyses are all listed, sorted by the probability of their lemma and part of speech and inside one
+  by their own, their probabilities sum to
   one, and no analysis lists senses.
 - **Single-sense analysis lists its sense** (`..._SingleSenseAnalysis_ListsThatSenseWithProbabilityOne`): an analysis
   whose lemma and part of speech have exactly one sense lists that sense with probability 1, also when the word has
   other analyses, and the answer is at the sense level only when that analysis is the selected one.
 - **Ties keep the lexicon order** (`..._TiesKeepLexiconOrder`): analyses with equal probabilities are listed in the order
   of the lexicon, and the first of them is the selected analysis.
+- **Variants of a slot** (`..._VariantsOfASlot_ShareItsProbabilityAndStayTogether`,
+  `..._VariantsOfTheOnlySlot_AreAnsweredWithConfidenceOne`): the two variants of a verb beside the one analysis of a
+  noun, with no evidence, have 1/4 each and the noun 1/2, are listed together before the noun (the slot that comes first
+  in the lexicon wins the tie) and the confidence is 1/2, the probability of the slot; a word whose analyses are the
+  singular and the plural of one noun with one sense is answered at the sense level with confidence 1, not 1/2.
 - **Most probable analysis is selected** (`..._Context_SelectsTheMostProbableAnalysis`): the selected analysis
   (`Details`) is the first of the
-  sorted analyses, that is, the analysis of the largest probability, and its probability is the confidence.
+  sorted analyses, that is, the best analysis of the most probable lemma and part of speech.
 - **Never the group level** (`..._NeverAnswersGroupLevel`): over unknown, single-sense, single-analysis and ambiguous
   words, no answer has the level group.
 - **Context chooses the part of speech** (`..._Context_ChoosesPartOfSpeech`): the sentence context decides between a

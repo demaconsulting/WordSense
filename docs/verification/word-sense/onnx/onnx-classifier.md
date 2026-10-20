@@ -33,11 +33,15 @@ All scenarios below pass on every platform and target framework of the CI matrix
   and confidence 1.
 - **Several analyses, no weights** (`LemmaWithoutWeights_AnswersAnalysesWithoutScoredSenses`,
   `LemmaWithoutWeights_NeverAnswersAFineSense`): a word with several analyses whose lemma has no weights lists every
-  analysis with the probability 1/n in lexicon order, selects the first, lists no scored senses, answers at the
-  `PartOfSpeech` level with the probability 1/n as confidence and no group or sense id, and never names a fine sense.
+  analysis grouped by lemma and part of speech in lexicon order, every lemma and part of speech with the probability
+  1/s (s of them) shared equally by its feature variants, selects the first analysis, lists no scored senses, answers
+  at the `PartOfSpeech` level with the probability of the slot of the selected analysis (1/s) as confidence and no group
+  or sense id, and never names a fine sense.
+- **Variants of the only slot** (`VariantsOfTheOnlySlot_AreConfidentAtThePartOfSpeech`): `deer`, a singular and a plural
+  of one noun, has the probability 1/2 for each variant and the confidence 1, not 1/2.
 - **First analysis with one sense** (`SeveralAnalysesFirstWithOneSense_StaysAtPartOfSpeech`): even when the first
   analysis has exactly one sense, nothing was scored, so no sense is listed or named and the answer stays at the
-  `PartOfSpeech` level with the confidence 1/n.
+  `PartOfSpeech` level with the confidence of its slot.
 - **Later analysis with one sense** (`SeveralAnalysesLaterWithOneSense_StaysAtPartOfSpeech`): likewise when only a later
   analysis has exactly one sense: no analysis lists scored senses and the answer stays at the `PartOfSpeech` level.
 - **Encoder only when needed** (`NoAmbiguousWords_DoesNotEncode`, `AmbiguousWords_UseTheEncoder`,
@@ -47,7 +51,13 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `PrepositionUseOfLike_IsReachable`, `InflectedForm_RanksTheSensesOfItsLemma`; scoring increment): a word with
   several analyses ranks the fine senses of all of them, so the preposition use of `like` can be the answer beside its
   verb and noun senses; an inflected form ranks the senses of its lemma; no sense of another lemma competes; the
-  probability of an analysis is the mass of its senses.
+  probability of a lemma and part of speech is the mass of its senses.
+- **Slots** (`FeaturesOfOneLemmaAndPartOfSpeech_ShareTheSlotProbability`,
+  `SlotWithSeveralVariants_IsSelectedByItsTotalProbability`): the two verb analyses of `read` split the probability of
+  the verb equally, list the same senses, and the confidence of a sense answer is the probability of the sense (the
+  probability of the verb times its probability within the verb), not half of it; when the noun is more probable than
+  each verb variant but less than the verb as a whole, the verb is listed first and selected, and the answer is the
+  part of speech with the probability of the verb as a whole.
 - **Confidence is monotonic in the margin** (`LargerMargin_GivesHigherConfidence`, `ConfidenceIsWithinZeroAndOne`;
   scoring increment): for a growing margin of the best fine score the confidence, the probability of the answer at its
   level, never decreases and stays between 0 and 1.
@@ -62,11 +72,11 @@ All scenarios below pass on every platform and target framework of the CI matrix
   the best group at the `Group` level with the group id only; the group's member senses are listed in the selected
   analysis.
 - **Neither threshold met** (`BothBelowThreshold_AnswersPartOfSpeech`; scoring increment): when neither threshold is
-  reached (or the group threshold is "never"), the answer is the selected analysis at the `PartOfSpeech` level with its
-  probability as the confidence, and the ranked senses of the analysis still show the best sense and its group.
+  reached (or the group threshold is "never"), the answer is the selected analysis at the `PartOfSpeech` level with the
+  probability of its slot as the confidence, and the ranked senses of the analysis still show the best sense and its group.
 - **Step to the part of speech** (`LemmaWithoutGroups_StepsFromSenseToPartOfSpeech`; scoring increment): for a lemma that
-  has no groups, a fine margin below the fine threshold gives the selected analysis at the `PartOfSpeech` level with its
-  probability as the confidence, never a `Group` answer and never level `None`.
+  has no groups, a fine margin below the fine threshold gives the selected analysis at the `PartOfSpeech` level with the
+  probability of its slot as the confidence, never a `Group` answer and never level `None`.
 - **Analyses and senses** (`TrainedLemma_ListsRankedCandidatesSummingToOne`, `SingleSenseWord_ListsNoCandidates`,
   `LemmaWithoutWeights_ListsNoCandidates`; scoring increment): a trained lemma lists every analysis with its probability
   and, inside each, the senses ranked by their probability given the analysis, the most probable first, with
@@ -79,7 +89,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `ReadPastVersusPresent_ChoosesTheTenseFeatures`, `FormChooserBelowThreshold_AnswersPartOfSpeech`; scoring
   increment): a form such as `left` is answered
   with the senses of the analysis that its chooser picks from the sentence; `read` gets its tense features from the
-  chooser; a chooser margin below its threshold gives the `PartOfSpeech` level. The shipped weights carry no chooser
+  chooser, and the verb as a whole (both tenses) is the slot whose probability the confidence is built on; a chooser
+  margin below its threshold gives the `PartOfSpeech` level. The shipped weights carry no chooser
   yet (the corpus has no anchors for these forms), so the test that every form of the lexicon whose analyses belong to
   several lemmas has a chooser (`EveryMultiLemmaForm_HasAChooser`) is deferred until the relabeled corpus provides
   them; until then such a form is answered from the lexicon.

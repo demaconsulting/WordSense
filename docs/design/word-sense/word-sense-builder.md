@@ -197,10 +197,13 @@ the tiers report.
    (C = 100) over its fine senses with a deterministic Newton solver. A sense with a single anchor still takes part in
    the training; a lemma with fewer than two anchored senses gets no weights. The columns are the senses in inventory
    order. The group score of a lemma that has groups is derived from the fine scores (the sum of the normalized scores of
-   the senses of the group), so no group weights are stored.
+   the senses of the group), so no group weights are stored. The solver works in the span of the anchors (the
+   *kernel* form, see below) whenever the training part has fewer anchors than the encoder has dimensions, and in the
+   feature space otherwise.
 6. Choose the thresholds of the lemma (see Thresholds below).
 7. The lemmas are fitted concurrently (`TrainingOptions.DefaultParallelism`, the processors minus two, 2 to 16
-   threads); each result is written to its own slot, so the weights do not depend on the thread count. A lemma whose
+   threads), and inside a lemma the senses of a fit and the folds of the cross-validation are fitted concurrently too;
+   each result is written to its own slot, so the weights do not depend on the thread count. A lemma whose
    fit is in the fit cache (see below) is not fitted again.
 8. Form choosers (for a form whose analyses span lemmas, such as `left`, `bases`, `rows`) are not trained yet: the
    corpus has no rows for them. The blob format and its writer support them, and the weights carry none.
@@ -209,6 +212,21 @@ the tiers report.
    accuracies, and fail without writing when they differ by more than 0.2 percentage point. Then write the weights blob
    (`WSX3`, float16 weights) to the package's `Resources/weights.bin`. The summary of the run counts the lemmas that
    have a finite fine threshold and a finite group threshold and names the lemmas that got no weights.
+
+**Kernel solver (`KernelBasis`, `LemmaFitter`, `LogisticTrainer`).** The weight vector of an L2-regularized logistic
+regression lies in the span of its training samples, so with fewer samples n than features (a lemma has 50 to 500
+anchors, the encoders 384 or 768 dimensions) the Newton iteration can run in the n coordinates of that span instead of in
+the feature space, which cuts one iteration from the cube of the dimension to the cube of n. `KernelBasis` computes the
+Gram matrix of the anchors once per lemma, takes the Cholesky factor of the Gram matrix of the training part (a
+duplicate sentence adds no coordinate), and uses its rows as the coordinates: they have the same inner products as the
+features, which is all the loss and the penalty see, so the Newton iterates are those of the feature space and the
+optimum is the same; `Expand` turns the solution back into the weight vector over the features. All sums run in a
+fixed scalar order (only element-wise updates are vectorized), so the result is deterministic and does not depend on
+the processor or the thread count. The same Gram matrix serves the five folds and the final fit, and the senses of a
+fit and the folds run concurrently. `--solver primal` selects the feature-space Newton method for every fit, which is the
+reference: it reproduced the committed blobs byte for byte, and the kernel solver agrees with it to about 1e-6 in a
+weight with identical answers on the held-out sentences (see `docs/build_notes/fit-speed.md`). The solver is part of the
+key of the fit cache.
 
 **Thresholds (`Thresholds.Choose`).** For every trained lemma the anchors are split into k = 5 folds by a seeded,
 deterministic shuffle; each fold is scored by a fit on the other folds, which gives out-of-fold margins for every
@@ -251,10 +269,12 @@ atomically (a temporary file in the same folder, then renamed) at the end of the
 encoded sentences, so an interrupted run keeps its work. The cache does not know the encoder code: after a change of
 the pooling or tokenization that keeps the model files, delete the cache folder or run once with `--no-cache`.
 
-**Fit cache (`FitCache`).** Fitting the classifiers is the longest step once the encoding is cached (minutes for the
-768-dimensional BertBaseCased), and the fit of a lemma depends on that lemma alone. `<cache>/<model-id>/fits.bin`
+**Fit cache (`FitCache`).** Fitting the classifiers is the longest step once the encoding is cached (seconds with the
+kernel solver for the 20 trial lemmas, where the feature-space solver needed 77 seconds for MiniLM and 11.5 minutes for
+the 768-dimensional BertBaseCased), and the fit of a lemma depends on that lemma alone. `<cache>/<model-id>/fits.bin`
 therefore stores the fitted weights, biases and thresholds of each lemma, keyed by the SHA-256 of the training settings
-(the threshold settings, the precision target and the seed included), the lemma, its sense ids, the label of each
+(the threshold settings, the precision target, the solver and the seed included), the lemma, its sense ids, the label of
+each
 sentence and the exact feature vectors (which already contain the global mean). A lemma whose anchors, mean and settings
 are unchanged reuses its fit bit-identically; any change of a feature number, such as a recomputed mean, another
 encoder or another runtime version, or of a threshold setting, finds no entry and the lemma is fitted. With

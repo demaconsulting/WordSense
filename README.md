@@ -77,15 +77,19 @@ var words = "The hunter fired an arrow from his bow at a deer so we will record 
 var results = await model.ClassifyAsync(words);
 
 // Print the part of speech (or unknown), the level, the confidence, the sense id (at the sense level) or the
-// group id (at the group level) and the runner-up analysis (the second most probable part of speech, when the
-// word has one)
+// group id (at the group level) and the runner-up part of speech with its probability, when the word has one
+// (the analyses that share a part of speech, such as the singular and the plural of "deer", share its probability)
 foreach (var result in results)
 {
     var pos = result.Details?.PartOfSpeech.ToString() ?? "unknown";
     var sense = result.SenseId ?? result.GroupId ?? "";
-    var next = result.Analyses.Length > 1
-        ? $"{result.Analyses[1].Details.PartOfSpeech} {result.Analyses[1].Probability:F2}"
-        : "";
+    var next = result.Analyses
+        .Where(a => a.Details.PartOfSpeech != result.Details?.PartOfSpeech)
+        .GroupBy(a => a.Details.PartOfSpeech)
+        .Select(g => (Pos: g.Key, Probability: g.Sum(a => a.Probability)))
+        .OrderByDescending(g => g.Probability)
+        .Select(g => $"{g.Pos} {g.Probability:F2}")
+        .FirstOrDefault("");
     Console.WriteLine($"{result.Word,-9} {pos,-12} {result.Level,-12} {result.Confidence,4:F2}  {sense,-14} {next}".TrimEnd());
 }
 ```
@@ -104,7 +108,7 @@ his       Determiner   Sense        1.00  his#determiner
 bow       Noun         PartOfSpeech 1.00                 Verb 0.00
 at        Preposition  Sense        1.00  at#preposition Noun 0.00
 a         Determiner   Sense        1.00  a#determiner
-deer      Noun         Sense        0.50  deer#noun      Noun 0.50
+deer      Noun         Sense        1.00  deer#noun
 so        Conjunction  Sense        0.61  so#conjunction Adverb 0.39
 we        Pronoun      Sense        1.00  we#pronoun
 will      Auxiliary    Sense        1.00  will#auxiliary Noun 0.00
@@ -131,7 +135,7 @@ his       Determiner   Sense        1.00  his#determiner
 bow       Noun         PartOfSpeech 1.00                 Verb 0.00
 at        Preposition  Sense        1.00  at#preposition Noun 0.00
 a         Determiner   Sense        1.00  a#determiner
-deer      Noun         Sense        0.50  deer#noun      Noun 0.50
+deer      Noun         Sense        1.00  deer#noun
 so        Conjunction  Sense        0.61  so#conjunction Adverb 0.39
 we        Pronoun      Sense        1.00  we#pronoun
 will      Auxiliary    Sense        1.00  will#auxiliary Noun 0.00
@@ -158,7 +162,7 @@ his       Determiner   Sense        1.00  his#determiner
 bow       Noun         PartOfSpeech 1.00                 Verb 0.00
 at        Preposition  Sense        1.00  at#preposition Noun 0.00
 a         Determiner   Sense        1.00  a#determiner
-deer      Noun         Sense        0.50  deer#noun      Noun 0.50
+deer      Noun         Sense        1.00  deer#noun
 so        Conjunction  Sense        0.61  so#conjunction Adverb 0.39
 we        Pronoun      Sense        1.00  we#pronoun
 will      Auxiliary    Sense        1.00  will#auxiliary Noun 0.00
@@ -180,7 +184,11 @@ as `the`), `Group` is a group of closely related senses (`GroupId`; none of the 
 (MiniLM and BertBaseCased answer `go` at that level and MiniLM also `home`), and the ranked senses of each analysis in
 `Analyses` still show how the
 evidence spreads. `Analyses` lists every possible analysis (lemma, part of speech and features) with its probability,
-`Details` is the most probable one, and a low confidence marks a guess (for example `so`). The probabilities are
+`Details` is the best analysis of the most probable lemma and part of speech, and a low confidence marks a guess (for
+example `so`). The senses belong to a lemma and a part of speech, not to its feature variants: `deer` is a singular
+and a plural of one noun, so its two analyses share the probability of the noun and the confidence is 1.00, not split
+in two.
+The probabilities are
 comparable only within one result, never across models. A model never answers an untrained word at the sense level
 unless its lemma and part of speech have a single sense. The modal and helping verbs (`will`, `can`, `is`, `have`) have
 an `Auxiliary` analysis. A word that is not in the dictionary has `IsKnown` false, `Details` of `null`, the level
@@ -195,9 +203,9 @@ Tokenize the text yourself, one sentence per call: punctuation is a token of its
 <!-- model-table:begin -->
 | Model | Holdout best analysis | Real-text best analysis | Part of speech (holdout / real) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Basic | 77.64% | n/a | 77.64% / n/a | none | 83 KiB | 4 MiB | 0.07 ms | 31 ms + 56 ms | no |
-| MiniLM | 94.72% | n/a | 94.72% / n/a | 22 MiB | 203 KiB | 60 MiB | 1.51 ms | 341 ms + 57 ms | yes |
-| BERT base cased | 97.87% | n/a | 97.87% / n/a | 104 MiB | 395 KiB | 148 MiB | 7.27 ms | 542 ms + 56 ms | yes |
+| Basic | 77.64% | n/a | 77.64% / n/a | none | 83 KiB | 8 MiB | 0.07 ms | 31 ms + 59 ms | no |
+| MiniLM | 94.72% | n/a | 94.72% / n/a | 22 MiB | 203 KiB | 60 MiB | 1.92 ms | 356 ms + 57 ms | yes |
+| BERT base cased | 97.87% | n/a | 97.87% / n/a | 104 MiB | 396 KiB | 148 MiB | 26.05 ms | 591 ms + 85 ms | yes |
 <!-- model-table:end -->
 
 <!-- markdownlint-enable MD013 -->

@@ -20,6 +20,11 @@ violations are listed per rule; the total is still counted.
   conventions and the cross-table rules (satellite heads, an entry and a synset each have a sense and a gloss, sense
   positions 1..n, part-of-speech fit, token counts and head indexes, and examples naming senses of their own synset),
   and then the rules of the sense inventory. The baseline is the data folder of the last release (optional).
+- Part-of-speech fit (`sense`): the part of speech of a sense is the one of its entry, and it must fit the part of speech
+  of its synset in Open English WordNet: equal, except that an adjective entry fits an adjective (`a`) or an adjective
+  satellite (`s`) synset. The ss_type digit of the sense key (`lemma%ss_type:...`: 1 noun, 2 verb, 3 adjective, 4 adverb,
+  5 adjective satellite) must name the part of speech of the synset of the sense, and a key without a digit from 1 to 5
+  is reported; a project sense has no key and nothing to compare.
 - Sense rules (`label`, `stability`, `sense`): a data folder with no label, group or id map yet (a fresh import) has no
   inventory, and the rules below are not applied to it. Every sense of a lemma of one token, and every sense without a
   sense key, has exactly one label; the labels of the senses of a

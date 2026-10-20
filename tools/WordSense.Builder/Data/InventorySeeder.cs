@@ -172,6 +172,12 @@ internal static class InventorySeeder
                 throw new InvalidDataException($"The curated sense '{publicId}' does not match a sense of the lemma '{lemma}' in the data.");
             }
 
+            // The part of speech of a sense is the one of its Open English WordNet entry (an adjective satellite is an adjective)
+            if (!posNames.TryGetValue(entries[sense[2]][2], out var dataPos) || !string.Equals(dataPos, row["part_of_speech"], StringComparison.OrdinalIgnoreCase))
+            {
+                throw new InvalidDataException($"The curated sense '{publicId}' has the part of speech '{row["part_of_speech"]}', but the sense '{id}' of the data is a {dataPos ?? entries[sense[2]][2]}.");
+            }
+
             if (isProject)
             {
                 ReplaceGloss(glosses, sense[3], row["gloss"]);

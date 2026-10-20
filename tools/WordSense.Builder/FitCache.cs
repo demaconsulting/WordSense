@@ -22,16 +22,17 @@ internal sealed record LemmaFit(float[] Weights, float[] Bias, float FineThresho
 /// <remarks>
 ///     <para>
 ///     The key of a fit is the SHA-256 of everything the fit and its thresholds depend on: the training and threshold
-///     settings (C, the folds, the precision target and the minimum number of answers), the lemma (which seeds the
+///     settings (C, the folds, the precision target, the minimum number of answers and the solver), the lemma (which seeds the
 ///     folds), its sense ids, the group index of each sense, the label of each sentence and the exact feature vectors
 ///     (which already include the global mean). A lemma whose anchors, mean and settings are unchanged therefore always
 ///     finds its previous fit, and any change of the features, such as another mean, another encoder or another
 ///     runtime, simply finds nothing. The fit and the thresholds are deterministic, so a cached fit is bit-identical to
-///     a fresh one.
+///     a fresh one. The two solvers (kernel and primal) find the same optimum but not the same last bits, so the solver
+///     is part of the key; the format version 3 was introduced with the kernel solver and retires the fits of version 2.
 ///     </para>
 ///     <para>
 ///     One file holds the fits of the last run (entries not used by a run are not written again, so the file does not
-///     grow). Format version 2 (little-endian): the four magic bytes (ASCII W, S, F, C) and a version byte, the entry
+///     grow). Format version 3 (little-endian): the four magic bytes (ASCII W, S, F, C) and a version byte, the entry
 ///     count as a 32-bit integer and the first 8 bytes of the SHA-256 of these bytes; then per entry the 32-byte key,
 ///     the dimension and the row count as 32-bit integers, the fine and the group threshold, the biases and the weights
 ///     as 32-bit floats, and the first 8 bytes of the SHA-256 of the entry. The first damaged entry ends the reading
@@ -46,7 +47,7 @@ internal sealed class FitCache
     /// </summary>
     public const string FileName = "fits.bin";
 
-    private const byte Version = 2;
+    private const byte Version = 3;
     private const int KeySize = 32;
     private const int ChecksumSize = 8;
     private const int EntryFixedSize = KeySize + 4 + 4 + 4 + 4;
@@ -128,6 +129,7 @@ internal sealed class FitCache
         Append(options.Folds);
         Append(BitConverter.DoubleToInt64Bits(options.TargetPrecision));
         Append(options.MinAnswered);
+        Append((int)options.Solver);
         AppendText(lemma);
         Append(senseIds.Count);
         foreach (var senseId in senseIds)

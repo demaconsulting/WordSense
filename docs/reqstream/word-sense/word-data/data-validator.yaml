@@ -49,8 +49,9 @@ sections:
                 title: >-
                   DataValidator shall check the cross-table rules: satellite synsets have an adjective head and others
                   have none, every entry and synset has a sense and a gloss, sense positions are 1 to n, parts of speech
-                  of entries and synsets fit, token counts and head indexes fit the lemma, and examples name senses of
-                  their own synset.
+                  of entries and synsets fit (an adjective satellite counts as an adjective) and the ss_type of every
+                  sense key names the part of speech of the synset of the sense, token counts and head indexes fit the
+                  lemma, and examples name senses of their own synset.
                 tags: [unit]
                 justification: |
                   These rules catch the edits that are well-formed but wrong, which is what a reviewer cannot see in a
@@ -59,6 +60,7 @@ sections:
                   - WordSenseBuilder_DataValidator_Validate_HeadDefects_ViolateSynset
                   - WordSenseBuilder_DataValidator_Validate_TokenDefects_ViolateEntry
                   - WordSenseBuilder_DataValidator_Validate_SenseDefects_ViolateSense
+                  - WordSenseBuilder_DataValidator_Validate_SenseKeyOfOtherPartOfSpeech_ViolatesSense
                   - WordSenseBuilder_DataValidator_Validate_EntryWithoutSense_Violates
                   - WordSenseBuilder_DataValidator_Validate_ExampleOfOtherSynset_Violates
                   - WordSenseBuilder_DataValidator_Validate_SynsetWithoutGloss_Violates

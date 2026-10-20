@@ -41,8 +41,10 @@ All subsystem scenarios pass on every platform and target framework of the CI ma
 #### Ambiguous Words Are Always Answered
 
 For a word with several analyses the result has details, lists every analysis with its probability (the probabilities
-sum to one, the largest first, a tie in lexicon order), has the level part of speech and a confidence between one over
-the number of analyses and 1; the model never abstains (see the `BasicClassifier` and `SenseFusion` unit documents).
+sum to one, the lemmas and parts of speech by the sum of their probabilities with the largest first, a tie in lexicon
+order), has the level part of speech and a confidence between one over
+the number of lemmas and parts of speech and 1; the model never abstains (see the `BasicClassifier` and `SenseFusion`
+unit documents).
 
 #### Context Chooses the Part of Speech
 

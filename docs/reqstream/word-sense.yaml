@@ -280,8 +280,9 @@ sections:
       - id: WordSense-Lib-Confidence
         title: >-
           The system shall report a confidence between 0 and 1 with every result that is the probability of the answer
-          at the level answered (the probability of the selected analysis, times the probability of the answered sense
-          or the summed probability of the member senses of the answered group within that analysis), shall report a
+          at the level answered (the probability of the lemma and part of speech of the selected analysis, which the
+          feature variants of that lemma and part of speech share and never lower, times the probability of the
+          answered sense or the summed probability of the member senses of the answered group within it), shall report a
           known word that the model is unsure about at the part of speech level or finer with a low confidence rather
           than as unknown, and shall report no details, level none and confidence 0 only for a word it does not know.
         tags: [system]

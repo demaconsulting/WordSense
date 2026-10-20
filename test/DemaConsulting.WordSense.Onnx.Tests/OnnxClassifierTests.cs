@@ -707,21 +707,68 @@ public class OnnxClassifierTests
         // Act
         var result = await classifier.ClassifyAsync(Sentence, TestContext.Current.CancellationToken);
 
-        // Assert: both "record" words have the analyses of the lexicon in its order, uniform, with no scored sense
+        // Assert: both "record" words have the analyses of the lexicon grouped by lemma and part of speech, every lemma
+        // and part of speech equally likely, with no scored sense
         foreach (var index in new[] { 2, 4 })
         {
             var record = result[index];
             Assert.True(record.IsKnown);
             Assert.Equal(SenseLevel.PartOfSpeech, record.Level);
-            Assert.Equal(lexicon[0], record.Details);
-            Assert.Equal(lexicon, record.Analyses.Select(a => a.Details));
-            Assert.All(record.Analyses, a => Assert.Equal(1.0 / lexicon.Length, a.Probability, 12));
-            Assert.Equal(1.0, record.Analyses.Sum(a => a.Probability), 12);
-            Assert.All(record.Analyses, a => Assert.True(a.Senses.IsEmpty));
-            Assert.Equal(1.0 / lexicon.Length, record.Confidence, 12);
+            AssertLexiconOnly(record, lexicon);
             Assert.Null(record.GroupId);
             Assert.Null(record.SenseId);
         }
+    }
+
+    /// <summary>
+    ///     Checks a lexicon-only answer: the lemmas and parts of speech (slots) of the word are equally likely, the
+    ///     analyses of a slot split its probability equally, the analyses are listed by slot in lexicon order, the first
+    ///     one is selected, the confidence is the probability of its slot and no sense is scored.
+    /// </summary>
+    /// <param name="result">The result.</param>
+    /// <param name="lexicon">The analyses of the word in lexicon order.</param>
+    private static void AssertLexiconOnly(ClassifyResult result, System.Collections.Immutable.ImmutableArray<WordDetails> lexicon)
+    {
+        var slots = lexicon.GroupBy(d => (d.Lemma, d.PartOfSpeech)).ToList();
+        var expected = slots.SelectMany(g => g).ToList();
+        Assert.Equal(expected, result.Analyses.Select(a => a.Details));
+        foreach (var slot in slots)
+        {
+            foreach (var analysis in slot)
+            {
+                Assert.Equal(1.0 / slots.Count / slot.Count(), result.Analyses.Single(a => a.Details.Equals(analysis)).Probability, 12);
+            }
+        }
+
+        Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 12);
+        Assert.Equal(expected[0], result.Details);
+        Assert.Equal(1.0 / slots.Count, result.Confidence, 12);
+        Assert.All(result.Analyses, a => Assert.True(a.Senses.IsEmpty));
+    }
+
+    /// <summary>
+    ///     A word whose analyses all have one lemma and part of speech and differ only in features is certain about
+    ///     its part of speech, however many variants it has: the variants split the probability 1 and the confidence
+    ///     is 1.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxClassifier_ClassifyAsync_VariantsOfTheOnlySlot_AreConfidentAtThePartOfSpeech()
+    {
+        // Arrange: "deer" is a singular and a plural noun of one lemma
+        var classifier = new OnnxClassifier();
+        var lexicon = WordLexicon.Lookup("deer");
+        Assert.Equal(2, lexicon.Length);
+        Assert.Single(lexicon.Select(d => (d.Lemma, d.PartOfSpeech)).Distinct());
+
+        // Act
+        var result = (await classifier.ClassifyAsync(["deer"], TestContext.Current.CancellationToken))[0];
+
+        // Assert: both variants have half of the probability 1, and the confidence is 1, not 1/2
+        Assert.Equal(SenseLevel.PartOfSpeech, result.Level);
+        Assert.Equal(1.0, result.Confidence, 12);
+        Assert.All(result.Analyses, a => Assert.Equal(0.5, a.Probability, 12));
+        AssertLexiconOnly(result, lexicon);
     }
 
     /// <summary>
@@ -786,14 +833,10 @@ public class OnnxClassifierTests
         // Act
         var result = (await classifier.ClassifyAsync(["that"], TestContext.Current.CancellationToken))[0];
 
-        // Assert: uniform analyses, the selected one is the first, no sense is named or scored
-        Assert.Equal(lexicon, result.Analyses.Select(a => a.Details));
-        Assert.All(result.Analyses, a => Assert.Equal(1.0 / lexicon.Length, a.Probability, 12));
-        Assert.Equal(lexicon[0], result.Details);
+        // Assert: the analyses of the lexicon by slot, the selected one is the first, no sense is named or scored
+        AssertLexiconOnly(result, lexicon);
         Assert.Equal(SenseLevel.PartOfSpeech, result.Level);
         Assert.Null(result.SenseId);
-        Assert.Equal(1.0 / lexicon.Length, result.Confidence, 12);
-        Assert.All(result.Analyses, a => Assert.True(a.Senses.IsEmpty));
     }
 
     /// <summary>
@@ -817,9 +860,7 @@ public class OnnxClassifierTests
         // Assert
         Assert.Equal(SenseLevel.PartOfSpeech, result.Level);
         Assert.Null(result.SenseId);
-        Assert.Equal(lexicon[0], result.Details);
-        Assert.Equal(1.0 / lexicon.Length, result.Confidence, 12);
-        Assert.All(result.Analyses, a => Assert.True(a.Senses.IsEmpty));
+        AssertLexiconOnly(result, lexicon);
     }
 
     /// <summary>
@@ -837,16 +878,12 @@ public class OnnxClassifierTests
         var shortVector = await RunAsync(JustTable(1f, 0f), new double[7]);
         var noVector = await RunAsync(JustTable(1f, 0f), null);
 
-        // Assert: the analyses of the lexicon, uniform, no scored sense, at the part of speech level
+        // Assert: the analyses of the lexicon by slot, no scored sense, at the part of speech level
         foreach (var result in new[] { shortVector, noVector })
         {
             Assert.True(result.IsKnown);
             Assert.Equal(SenseLevel.PartOfSpeech, result.Level);
-            Assert.Equal(lexicon, result.Analyses.Select(a => a.Details));
-            Assert.All(result.Analyses, a => Assert.Equal(1.0 / lexicon.Length, a.Probability, 12));
-            Assert.All(result.Analyses, a => Assert.True(a.Senses.IsEmpty));
-            Assert.Equal(lexicon[0], result.Details);
-            Assert.Equal(1.0 / lexicon.Length, result.Confidence, 12);
+            AssertLexiconOnly(result, lexicon);
             Assert.Null(result.SenseId);
             Assert.Null(result.GroupId);
         }
@@ -918,17 +955,20 @@ public class OnnxClassifierTests
         var past = await RunAsync(table, Fixtures.Feature(senseScore, (Fixtures.Label(1), 4)), "read");
         var present = await RunAsync(table, Fixtures.Feature(senseScore, (Fixtures.Label(2), 4)), "read");
 
-        // Assert: the preferred tense is selected and answered with the sense, with the probability of its label
+        // Assert: the preferred tense is selected and answered with the sense; the chooser tells the tenses apart, but the
+        // senses belong to the verb, so the confidence is the probability of the verb (both tenses) times that of the sense
         Assert.Equal("Tense=Past+VerbForm=Part", past.Details!.Features);
         Assert.Equal("Tense=Pres", present.Details!.Features);
         var label = Math.Exp(4) / (Math.Exp(4) + 2);
+        var verbProbability = label + (1 / (Math.Exp(4) + 2));
         foreach (var result in new[] { past, present })
         {
             Assert.Equal(SenseLevel.Sense, result.Level);
             Assert.Equal(verb[0].SenseId, result.SenseId);
-            Assert.Equal(label * Math.Exp(3) / (Math.Exp(3) + verb.Length - 1), result.Confidence, Tolerance);
+            Assert.Equal(verbProbability * Math.Exp(3) / (Math.Exp(3) + verb.Length - 1), result.Confidence, Tolerance);
             Assert.Equal(4, result.Analyses.Length);
             Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 9);
+            Assert.Equal(verbProbability, result.Analyses.Where(a => a.Details.PartOfSpeech == PartOfSpeech.Verb).Sum(a => a.Probability), Tolerance);
         }
 
         // The verb analyses list the verb senses, the noun analysis its own sense
@@ -937,12 +977,13 @@ public class OnnxClassifierTests
     }
 
     /// <summary>
-    ///     The analyses of one lemma and part of speech that differ only in features share the mass equally when no
-    ///     chooser separates them.
+    ///     The analyses of one lemma and part of speech that differ only in features share the probability of their
+    ///     slot equally when no chooser separates them, and the split never lowers the confidence of the answer: it is the
+    ///     probability of the slot times the probability of the sense.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task OnnxClassifier_ClassifyAsync_FeaturesOfOneLemmaAndPartOfSpeech_SplitTheMassEqually()
+    public async Task OnnxClassifier_ClassifyAsync_FeaturesOfOneLemmaAndPartOfSpeech_ShareTheSlotProbability()
     {
         // Arrange: the two verb analyses of "read" have the same senses; a verb sense leads
         var table = Fixtures.Table(Fixtures.Lemma("read", fine: 1f));
@@ -958,6 +999,47 @@ public class OnnxClassifierTests
         Assert.Equal(verbs[0].Probability, verbs[1].Probability, 12);
         Assert.Equal("Tense=Past+VerbForm=Part", result.Details!.Features);
         Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 9);
+
+        // The sense probability is not divided among the variants: the confidence is the probability of the sense
+        var senses = Fixtures.SenseIds("read").Length;
+        Assert.Equal(SenseLevel.Sense, result.Level);
+        Assert.Equal(verb[0].SenseId, result.SenseId);
+        Assert.Equal(Math.Exp(3) / (Math.Exp(3) + senses - 1), result.Confidence, Tolerance);
+        var slot = verbs.Sum(a => a.Probability);
+        Assert.Equal(slot * Math.Exp(3) / (Math.Exp(3) + verb.Length - 1), result.Confidence, Tolerance);
+        Assert.Equal(verbs[0].Senses, verbs[1].Senses);
+    }
+
+    /// <summary>
+    ///     The most probable lemma and part of speech is selected, even when another one has a single analysis that is
+    ///     more probable than each of the feature variants of the first: the variants do not lose the selection by
+    ///     sharing their slot.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxClassifier_ClassifyAsync_SlotWithSeveralVariants_IsSelectedByItsTotalProbability()
+    {
+        // Arrange: "read" has 11 verb senses (two analyses) and 1 noun sense (one analysis); the noun sense scores 2, so the
+        // noun is more probable than each verb analysis (about 0.40 against 0.30) but less than the verb as a whole (0.60)
+        var table = Fixtures.Table(Fixtures.Lemma("read", fine: 1f));
+        var verb = WordLexicon.SensesOf("read", PartOfSpeech.Verb);
+        var noun = Assert.Single(WordLexicon.SensesOf("read", PartOfSpeech.Noun));
+        Assert.Equal(11, verb.Length);
+        var vector = Fixtures.Feature("read", (noun.SenseId, 2));
+
+        // Act
+        var result = await RunAsync(table, vector, "read");
+
+        // Assert: the verb slot is listed first and selected; the noun is the best sense but not in the selected slot,
+        // so the answer is the part of speech with the probability of the verb as a whole
+        var verbProbability = verb.Length / (verb.Length + Math.Exp(2));
+        Assert.Equal(PartOfSpeech.Verb, result.Details!.PartOfSpeech);
+        Assert.Equal(PartOfSpeech.Verb, result.Analyses[0].Details.PartOfSpeech);
+        Assert.Equal(PartOfSpeech.Verb, result.Analyses[1].Details.PartOfSpeech);
+        Assert.Equal(PartOfSpeech.Noun, result.Analyses[2].Details.PartOfSpeech);
+        Assert.True(result.Analyses[2].Probability > result.Analyses[1].Probability);
+        Assert.Equal(SenseLevel.PartOfSpeech, result.Level);
+        Assert.Equal(verbProbability, result.Confidence, Tolerance);
     }
 
     /// <summary>

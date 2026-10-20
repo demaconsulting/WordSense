@@ -11,7 +11,7 @@ namespace DemaConsulting.WordSense;
 ///     The result has two parts. <see cref="Analyses"/> is the full answer: the probability of every analysis (lemma,
 ///     part of speech and features) that the word can have in its context and, inside each analysis, the probability of
 ///     each of its fine senses when the model scored them. Everything else is a summary of it: <see cref="Details"/> is the
-///     selected analysis (the most probable one), and <see cref="Level"/>, <see cref="Confidence"/>,
+///     selected analysis (the best variant of the most probable slot, see below), and <see cref="Level"/>, <see cref="Confidence"/>,
 ///     <see cref="GroupId"/> and <see cref="SenseId"/> say how precisely the model is willing to name the meaning. A
 ///     consumer that wants its own decision reads <see cref="Analyses"/>; a consumer that wants the model's decision
 ///     reads the summary.
@@ -28,18 +28,24 @@ namespace DemaConsulting.WordSense;
 ///     they have one and otherwise with the part of speech. Test the level, not whether an identifier is null.
 ///     </para>
 ///     <para>
-///     Confidence is a number from 0 to 1 at the level of the answer. At the part-of-speech level it is the probability of
-///     the selected analysis. At the group level it is the probability of the selected analysis times the sum of the
-///     probabilities of the member senses of the group within that analysis. At the sense level it is the probability of
-///     the selected analysis times the probability of the answered sense within that analysis. It is 0 for an unknown
-///     word and 1 for a word with a single analysis and a single sense. The probabilities are comparable only within one
-///     result: do not compare them across models or across words as if they were calibrated, and tune any threshold per
-///     model and level on your own text.
+///     Confidence is a number from 0 to 1 at the level of the answer. It is built on the probability of the
+///     <i>slot</i> of the selected analysis: the sum of the probabilities of the analyses that have the lemma and the part
+///     of speech of the selected analysis (analyses that differ only in features, such as <c>cut</c> as an infinitive and
+///     as a past tense, or <c>deer</c> as a singular and a plural, share one slot, because the senses belong to a lemma
+///     and a part of speech and not to a feature variant). At the part-of-speech level it is the probability of that slot.
+///     At the group level it is the probability of the slot times the sum of the probabilities of the member senses of
+///     the group within it. At the sense level it is the probability of the slot times the probability of the answered
+///     sense within it. The split of a slot among its feature variants never lowers the confidence. It is 0 for an unknown
+///     word and 1 for a word with a single lemma and part of speech and a single sense. The probabilities are comparable
+///     only within one result: do not compare them across models or across words as if they were calibrated, and tune
+///     any threshold per model and level on your own text.
 ///     </para>
 ///     <para>
-///     Ordering and determinism. The analyses are sorted by probability, the largest first; ties keep the order of the
-///     analyses of <see cref="WordLexicon.Lookup"/>. The senses of an analysis are sorted by probability and, on a tie,
-///     by the ordinal order of the sense id. Nothing is truncated: every analysis of the word is listed, and when a model
+///     Ordering and determinism. The analyses are sorted by the probability of their slot, the largest first, and inside
+///     a slot by their own probability, the largest first; ties keep the order of the analyses of
+///     <see cref="WordLexicon.Lookup"/>. The first analysis is therefore the best variant of the most probable slot, and it
+///     is the selected one. The senses of an analysis are sorted by probability and, on a tie, by the ordinal order of the
+///     sense id. Nothing is truncated: every analysis of the word is listed, and when a model
 ///     scored the senses of an analysis, every sense of it. All arrays are immutable and may be shared between results
 ///     (for an unknown word, a word with one analysis and one sense), so never rely on reference identity. A
 ///     <see langword="default"/> result is valid: its arrays are empty and its word is the empty string.
@@ -82,7 +88,7 @@ public readonly record struct ClassifyResult
     /// <param name="word">The word as given by the caller.</param>
     /// <param name="isKnown">Whether the word is in the lexicon.</param>
     /// <param name="analyses">The analyses with their probabilities, the most probable first; a default array counts as empty.</param>
-    /// <param name="details">The selected analysis: the most probable one, or <see langword="null"/> for an unknown word.</param>
+    /// <param name="details">The selected analysis: the best analysis of the most probable slot, or <see langword="null"/> for an unknown word.</param>
     /// <param name="level">The level at which the word was answered.</param>
     /// <param name="confidence">The confidence at that level, from 0 to 1.</param>
     /// <param name="groupId">The answered group, or the group of the answered sense; otherwise <see langword="null"/>.</param>
@@ -118,14 +124,14 @@ public readonly record struct ClassifyResult
     public bool IsKnown { get; }
 
     /// <summary>
-    ///     Gets the analyses of the word with their probabilities, the most probable first, summing to one; empty for an
-    ///     unknown word.
+    ///     Gets the analyses of the word with their probabilities, the most probable slot (lemma and part of speech)
+    ///     first and in a slot the most probable analysis first, summing to one; empty for an unknown word.
     /// </summary>
     public ImmutableArray<AnalysisCandidate> Analyses => _analyses.IsDefault ? NoAnalyses : _analyses;
 
     /// <summary>
-    ///     Gets the selected analysis: the most probable one, stored with the result; <see langword="null"/> for an
-    ///     unknown word.
+    ///     Gets the selected analysis: the best analysis of the most probable slot (lemma and part of speech), stored with
+    ///     the result; <see langword="null"/> for an unknown word.
     /// </summary>
     public WordDetails? Details { get; }
 

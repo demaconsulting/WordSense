@@ -120,6 +120,16 @@ All scenarios below pass on every platform and target framework of the CI matrix
   (`WeightsBlobWriter_Write_RoundTripsThroughTheReader`).
 - **Training is deterministic**: the logistic trainer separates a small data set and gives identical weights on a repeat
   run (`LogisticTrainer_SeparatesAndIsDeterministic`).
+- **Kernel solver is equivalent and deterministic** (`KernelFitTests.cs`): the coordinates of the kernel basis keep the
+  inner products of the samples, a duplicate adds no coordinate and the expansion gives the same activations
+  (`KernelBasis_Create_KeepsInnerProductsAndDropsDuplicates`, `..._Subset_UsesTheSubsetOnly`); the kernel solver finds
+  the weights, biases and cross-validated thresholds of the primal reference solver, also with duplicate samples
+  (`WeightsTrainer_Fit_KernelSolver_FindsThePrimalOptimum`, `Thresholds_Choose_KernelSolver_FindsThePrimalThresholds`),
+  repeats bit for bit and gives the same bits with one thread and with many
+  (`..._KernelSolver_IsDeterministic`, `LemmaFitter_Fit_IsIndependentOfTheThreadCount`) and is the primal solver when
+  there are at least as many
+  samples as features (`..._MoreSamplesThanDimensions_IsThePrimalSolver`). On the committed corpus the kernel fit
+  gives identical answers on the held-out sentences and a gate difference of 0.00 points (see the fit-speed note).
 - **Lemmas without enough anchored senses**: a lemma with a single anchored sense gets no weights
   (`WeightsTrainer_LemmaWithOneAnchoredSense_GetsNoWeights`), and a sense with a single anchor stays in the training of
   a lemma that has two anchored senses (`WeightsTrainer_SenseWithOneAnchor_StaysInTraining`).
@@ -146,7 +156,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
   of the same model, and a missing, other-model or unreadable blob gives none (`ReadFrozenMean_*`); a stored mean of
   another dimension is not used (`..._FrozenMeanOfOtherDimension_IsComputedInstead`).
 - **Fit cache** (`FitCacheTests.cs`, `ModelTrainerTests.cs`): the key depends on the settings (the threshold settings
-  included, `FitCache_KeyOf_DependsOnTheThresholdSettings`), lemma, senses, labels and every feature number but not on
+  and the solver included, `FitCache_KeyOf_DependsOnTheThresholdSettings`), lemma, senses, labels and every feature
+  number but not on
   the thread count (`FitCache_KeyOf_*`); fits read back bit-identical and a save
   writes only the fits used (`SaveAndOpen_*`, `Save_WritesOnlyUsedFits`); a damaged entry drops itself and the rest, and
   a cut-off file, damaged header or garbage never throws (`Open_CorruptEntry_*`, `Open_DamagedFile_*`); unchanged

@@ -14,6 +14,15 @@ of `senses.tsv`, and `group_id`, `lemma`, `part_of_speech`, `member_sense_ids`, 
 `right#discourse-marker`, `well#discourse-marker`, `help#cry-for-aid` and `however#conjunction`) and `sense_group`
 and `group_sense` (origin `curated`). The run is idempotent: a second run changes nothing.
 
+## Part of speech of a curated sense
+
+The `part_of_speech` of a curated sense must be the part of speech of its sense in `data/` (the part of speech of its
+Open English WordNet entry; an adjective satellite is an adjective); `seed-inventory` refuses the curation otherwise.
+`right#agreement-yes` was curated as an interjection although Open English WordNet files the sense (`oewn-00151409-r`)
+under the adverbs; it is an adverb here, as in the corpus rows. `back#animal-rear` is an adjective on purpose: it is the
+adjective satellite `oewn-00132764-s` (`back%5:00:00:posterior:00`, "located at or near the back of an animal", as in
+the back legs of a horse); the noun use of a horse's back is `back#body-trunk`.
+
 ## Groups
 
 A **group exists only when it is needed**: a set of at least two, but not all, senses of one lemma and one part of

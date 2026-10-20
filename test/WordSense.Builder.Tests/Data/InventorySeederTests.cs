@@ -149,6 +149,26 @@ public sealed class InventorySeederTests : IDisposable
     }
 
     /// <summary>
+    ///     A curated sense whose part of speech is not the one of its sense in the data is refused and nothing is written.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_InventorySeeder_Run_CuratedPartOfSpeechOfOtherSense_IsRefused()
+    {
+        // Arrange - the first noun of bass is curated as an adjective
+        var data = ThreeBassNounsSlice();
+        var curation = Curation(
+            "bass#fish-food\toewn-bass__1.05.00..\tAdjective\tthe flesh of a fish\toewn\t\n",
+            string.Empty);
+
+        // Act
+        var ex = Assert.Throws<InvalidDataException>(() => InventorySeeder.Run(data, curation));
+
+        // Assert
+        Assert.Contains("part of speech 'Adjective'", ex.Message, StringComparison.Ordinal);
+        Assert.False(Directory.Exists(Path.Join(data, "sense_label")));
+    }
+
+    /// <summary>
     ///     A group that would be written needs a kind of the <c>group_kind</c> vocabulary, non-empty evidence and a slug;
     ///     otherwise the run is refused and nothing is written.
     /// </summary>

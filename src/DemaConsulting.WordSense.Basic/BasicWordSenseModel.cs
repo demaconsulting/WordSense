@@ -12,8 +12,10 @@ namespace DemaConsulting.WordSense.Basic;
 ///     several analyses, a hidden Markov model over the whole sentence estimates the part of speech of the word, a naive
 ///     Bayes model over the neighboring words separates analyses that share a part of speech (the past and the present of
 ///     <c>read</c>), and the two are combined into one probability per analysis; <see cref="ClassifyResult.Analyses"/>
-///     lists every analysis with that probability, the largest first, and the most probable one is the selected analysis
-///     (<see cref="ClassifyResult.Details"/>). The result is at the part-of-speech level with that probability as the
+///     lists every analysis with that probability, the analyses of the most probable lemma and part of speech first and
+///     the best of them the selected analysis
+///     (<see cref="ClassifyResult.Details"/>). The result is at the part-of-speech level with the probability of the
+///     lemma and part of speech of the selected analysis (the sum over its feature variants) as the
 ///     confidence, or at the sense level when the selected analysis has exactly one sense. The statistics carry no
 ///     evidence that separates fine senses or groups of senses, so the model never answers at the
 ///     <see cref="SenseLevel.Group"/> level, and the <see cref="AnalysisCandidate.Senses"/> of an analysis are empty

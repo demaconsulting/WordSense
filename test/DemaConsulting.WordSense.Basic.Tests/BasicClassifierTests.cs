@@ -11,6 +11,8 @@ public class BasicClassifierTests
 {
     private static readonly WordDetails Bank = new("bank", PartOfSpeech.Noun, "Number=Sing");
     private static readonly WordDetails DoNot = new("don't", PartOfSpeech.Verb, "VerbForm=Fin");
+    private static readonly WordDetails DeerSing = new("deer", PartOfSpeech.Noun, "Number=Sing");
+    private static readonly WordDetails DeerPlur = new("deer", PartOfSpeech.Noun, "Number=Plur");
 
     private static readonly SenseInfo CatSense = new("cat#feline", null, "cat", PartOfSpeech.Noun, "cat%1:05:00::", null);
 
@@ -24,11 +26,14 @@ public class BasicClassifierTests
         ["tied"] = [TestTables.RecordVerb, TestTables.RecordNoun, TestTables.ReadPast],
         ["puss"] = [TestTables.CatNoun, TestTables.RecordVerb],
         ["claw"] = [TestTables.RecordVerb, TestTables.CatNoun],
+        ["varied"] = [TestTables.ReadPres, TestTables.RecordNoun, TestTables.ReadPast],
+        ["deer"] = [DeerSing, DeerPlur],
     };
 
     private static readonly Dictionary<(string Lemma, PartOfSpeech Pos), ImmutableArray<SenseInfo>> Senses = new()
     {
         [("cat", PartOfSpeech.Noun)] = [CatSense],
+        [("deer", PartOfSpeech.Noun)] = [new("deer#animal", null, "deer", PartOfSpeech.Noun, "deer%1:05:00::", null)],
         [("bank", PartOfSpeech.Noun)] =
         [
             new("bank#institution", "bank#money", "bank", PartOfSpeech.Noun, null, null),
@@ -167,9 +172,13 @@ public class BasicClassifierTests
             Assert.Null(results[index].GroupId);
             Assert.Null(results[index].SenseId);
             Assert.Contains(results[index].Details!, Lexicon[results[index].Word]);
-            Assert.Equal(results[index].Analyses[0].Probability, results[index].Confidence);
+            Assert.Equal(SlotProbability(results[index]), results[index].Confidence, 12);
         }
     }
+
+    // The probability of the lemma and part of speech of the selected analysis: the sum over its feature variants
+    private static double SlotProbability(ClassifyResult result) =>
+        result.Analyses.Where(a => a.Details.Lemma == result.Details!.Lemma && a.Details.PartOfSpeech == result.Details.PartOfSpeech).Sum(a => a.Probability);
 
     /// <summary>
     ///     No answer is ever at the group level, whatever the word.
@@ -246,9 +255,9 @@ public class BasicClassifierTests
             Assert.Equal(1.0, analyses.Sum(a => a.Probability), 9);
             Assert.Equal(analyses.OrderByDescending(a => a.Probability).Select(a => a.Probability), analyses.Select(a => a.Probability));
 
-            // The selected analysis is the first one and the confidence is its probability
+            // The selected analysis is the first one and the confidence is the probability of its lemma and part of speech
             Assert.Equal(analyses[0].Details, result.Details);
-            Assert.Equal(analyses[0].Probability, result.Confidence);
+            Assert.Equal(SlotProbability(result), result.Confidence, 12);
 
             // The statistics do not score senses: record and read have no sense in the toy catalog
             Assert.All(analyses, a => Assert.True(a.Senses.IsEmpty));
@@ -352,6 +361,57 @@ public class BasicClassifierTests
         Assert.Equal(Lexicon["claw"], results[2].Analyses.Select(a => a.Details));
         Assert.Equal(TestTables.CatNoun, results[1].Details);
         Assert.Equal(TestTables.RecordVerb, results[2].Details);
+    }
+
+    /// <summary>
+    ///     The analyses of one lemma and part of speech that differ only in features share the probability of their
+    ///     slot: they never make the slot more probable than another one, are listed together with their slot, and the
+    ///     confidence of the answer is the probability of the slot, not of one variant.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_VariantsOfASlot_ShareItsProbabilityAndStayTogether()
+    {
+        // Arrange: no tagger weight and no cue table, so the context decides nothing; "varied" has the two variants of
+        // the verb read around the one analysis of the noun record
+        var classifier = Create(TieTables);
+
+        // Act
+        var results = await classifier.ClassifyAsync(["varied"], TestContext.Current.CancellationToken);
+
+        // Assert: two slots of probability 1/2, the variants of the verb 1/4 each (not three times 1/3), listed together
+        // in the order of the lexicon, the first slot first
+        var result = results[0];
+        Assert.Equal([TestTables.ReadPres, TestTables.ReadPast, TestTables.RecordNoun], result.Analyses.Select(a => a.Details));
+        Assert.Equal(0.25, result.Analyses[0].Probability, 9);
+        Assert.Equal(0.25, result.Analyses[1].Probability, 9);
+        Assert.Equal(0.5, result.Analyses[2].Probability, 9);
+        Assert.Equal(TestTables.ReadPres, result.Details);
+        Assert.Equal(SenseLevel.PartOfSpeech, result.Level);
+        Assert.Equal(0.5, result.Confidence, 9);
+    }
+
+    /// <summary>
+    ///     A word whose analyses all share a lemma and a part of speech is certain about it: the variants split the
+    ///     probability 1 and the confidence is 1, at the sense level when the lemma and part of speech have one sense.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_VariantsOfTheOnlySlot_AreAnsweredWithConfidenceOne()
+    {
+        // Arrange: "deer" is a singular and a plural of one noun with one sense
+        var classifier = Create(TieTables);
+
+        // Act
+        var results = await classifier.ClassifyAsync(["deer", "read"], TestContext.Current.CancellationToken);
+
+        // Assert: both variants have 1/2, and the answer has the whole probability of the slot
+        Assert.All(results[0].Analyses, a => Assert.Equal(0.5, a.Probability, 9));
+        Assert.Equal(SenseLevel.Sense, results[0].Level);
+        Assert.Equal("deer#animal", results[0].SenseId);
+        Assert.Equal(1.0, results[0].Confidence, 9);
+        Assert.Equal(SenseLevel.PartOfSpeech, results[1].Level);
+        Assert.Equal(1.0, results[1].Confidence, 9);
     }
 
     /// <summary>

@@ -42,7 +42,8 @@ sections:
                   sharing one ensure between concurrent callers and allowing a failed ensure to be retried), and shall
                   answer words that need no model (unknown, single-sense, or ambiguous without trained weights)
                   without touching model files or the encoder, an ambiguous word without weights getting the
-                  lexicon analyses at the part of speech level (all analyses equally likely, no scored senses).
+                  lexicon analyses at the part of speech level (every lemma and part of speech equally likely, the
+                  feature variants of one sharing its probability, no scored senses).
                 tags: [unit]
                 justification: |
                   Loading a session and weights is expensive and must happen once; a model that is never needed must

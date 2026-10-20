@@ -74,8 +74,8 @@ the weights read back from the written blob: BERT 93.70 and 93.70 percent, MiniL
 
 | Model | Blob before (class weights) | Blob now (half precision, fine senses of 20 lemmas) |
 | --- | ---: | ---: |
-| MiniLM | 1,159,517 bytes | 208,298 bytes |
-| BERT base cased | 2,298,596 bytes | 404,951 bytes |
+| MiniLM | 1,159,517 bytes | 208,063 bytes |
+| BERT base cased | 2,298,596 bytes | 405,020 bytes |
 
 The earlier blobs scored the 1,521 pronunciation and part-of-speech classes of 744 lemmas; the new blobs hold the fine
 senses of 20 lemmas (294 senses), so the sizes are not comparable per lemma. Both blobs train in the repository with
@@ -94,10 +94,43 @@ The reviewed suite (348 rows) contains 44 sentences of the 20 words (`back`, `fi
 | BERT base cased | 42 of 44 | 38 sense, 2 group, 4 part of speech |
 
 For comparison, the models of the earlier version (before these words were trained) were right on 41 (Basic) and 17
-(MiniLM and BERT) of the same rows. The misses are `He patted the horse on its {back}` (BERT answers `back#animal-rear`,
-a sense that the catalog files under the adjectives, so its part of speech is wrong for the suite), `The old theory is
-{little} known` (MiniLM and BERT answer the sense `little#not-much-quantity`, an adjective sense, for an adverb use),
-`The committee will {review}` (MiniLM, part of speech level, noun) and three `Basic` misses.
+(MiniLM and BERT) of the same rows. The misses are `He patted the horse on its {back}` (BERT answers the adjective
+sense `back#animal-rear`; see the correction below), `The old theory is {little} known` (MiniLM and BERT answer the
+sense `little#not-much-quantity`, an adjective sense, for an adverb use), `The committee will {review}` (MiniLM, part of
+speech level, noun) and three `Basic` misses. This table was measured in increment I4 with a suite that is not part of
+the repository; it was not measured again for the follow-up below.
+
+## Follow-up of the review of this increment
+
+Three findings of the review were fixed after the first measurement.
+
+**Feature variants no longer split the sense probability.** Analyses of one lemma and part of speech that differ only in
+features (`cut` as an infinitive and as a past tense, `deer` as a singular and a plural, `read` as a past and a present
+tense) shared the probability mass of their senses equally, so the confidence in a sense was divided by the number of
+variants (`deer#noun` showed 0.50 in every model) and a part of speech with one analysis could beat a more probable one
+with several. The senses belong to a lemma and a part of speech (a *slot*), so now: the probability of a sense is
+computed per slot, the variants of a slot split the probability of the slot (by the form chooser when it has a label for
+each, by the context cues in the Basic model, otherwise equally, in lexicon order), the selected analysis is the best
+variant of the most probable slot, and the confidence at the sense level is `P(slot) x P(sense | slot)`, at the part of
+speech level `P(slot)`. The held-out numbers above do not change (the trial words have few variants): every row has the
+same answer and the confidence of the held-out rows is unchanged. On the 12,735 words with several analyses of the
+English EWT test treebank (a one-off run of the Basic model before and after) the selected analysis, its part of speech
+and its features are the same for every word (92.18 percent of the 12,056 words whose gold part of speech is among the
+analyses are right in both), and the confidence of 142 words changed (variants of one slot no longer lower it).
+
+**The catalog was right about `back#animal-rear`.** It is the adjective satellite `oewn-00132764-s`
+(`back%5:00:00:posterior:00`, "located at or near the back of an animal", as in the back legs of a horse), an adjective
+in Open English WordNet; the noun use of a horse's back is `back#body-trunk`. The suite row `He patted the horse on its
+{back}` is therefore a model error (BERT still answers the adjective sense, 0.85, MiniLM now selects the noun at the
+part-of-speech level with 0.50), not a catalog error. The check that a sense agrees with its synset was extended (the
+`ss_type` digit of every sense key against the part of speech of its synset, 185,129 keys, no violation) and the
+curation was checked against the data: the only violation was the curated part of speech of `right#agreement-yes`
+(Interjection, but an adverb in Open English WordNet), now corrected, and `seed-inventory` refuses a curation whose
+part of speech differs from the data.
+
+**The fit is fast.** The fit of the classifiers uses the span of the anchors instead of the feature space and fits
+senses and folds concurrently: 8.6 s instead of 77 s for MiniLM and 9.4 s instead of 11.5 minutes for BERT base cased
+(see `fit-speed.md`). The new weights give the same answers on the held-out sentences (0.00 points).
 
 ## Not measured yet
 

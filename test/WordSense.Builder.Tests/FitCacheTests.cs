@@ -53,6 +53,7 @@ public sealed class FitCacheTests : IDisposable
         Assert.Equal(key, FitCache.KeyOf(new TrainingOptions(Parallelism: 7), "bank", senses, groups, labels, Features(0)));
         Assert.NotEqual(key, FitCache.KeyOf(Options with { C = 10 }, "bank", senses, groups, labels, Features(0)));
         Assert.NotEqual(key, FitCache.KeyOf(Options with { Folds = 3 }, "bank", senses, groups, labels, Features(0)));
+        Assert.NotEqual(key, FitCache.KeyOf(Options with { Solver = FitSolver.Primal }, "bank", senses, groups, labels, Features(0)));
         Assert.NotEqual(key, FitCache.KeyOf(Options, "bat", senses, groups, labels, Features(0)));
         Assert.NotEqual(key, FitCache.KeyOf(Options, "bank", ["bank#noun", "bank#adj"], groups, labels, Features(0)));
         Assert.NotEqual(key, FitCache.KeyOf(Options, "bank", senses, [0, 0], labels, Features(0)));

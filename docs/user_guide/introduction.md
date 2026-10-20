@@ -98,10 +98,14 @@ test suite for each of the three models; the samples in this guide are reviewed 
   answer an auxiliary through their Basic model.
 - **Features**: the inflection of the analysis as `Key=Value` pairs separated by `+` (for example `Number=Plur`), or an
   empty string. They come from the authoritative form table of the library.
-- **Confidence**: a number from 0 to 1 in each result that is the probability of the answer at its level: at the
-  `PartOfSpeech` level the probability of the selected analysis; at the `Group` level that probability times the sum of
-  the probabilities, within the analysis, of the senses of the group; at the `Sense` level that probability times the
-  probability of the answered sense within the analysis. It is 1 for a word with one analysis and one sense and 0 for an
+- **Confidence**: a number from 0 to 1 in each result that is the probability of the answer at its level, built on
+  the probability of the **slot** of the selected analysis (its lemma and part of speech: the sum of the probabilities
+  of the analyses that share them and differ only in features, such as `cut` as an infinitive and as a past tense, or
+  `deer` as a singular and a plural; the senses belong to the slot, so the split among these variants never lowers the
+  confidence): at the `PartOfSpeech` level the probability of the slot; at the `Group` level that probability times
+  the sum of the probabilities, within the slot, of the senses of the group; at the `Sense` level that probability
+  times the probability of the answered sense within the slot. It is 1 for a word with one lemma and part of speech and
+  one sense and 0 for an
   unknown word. It is comparable only within one result, not across models, words or levels.
 - **Fallback model**: the second model of a `FallbackWordSenseModel`. It answers every word for which the first model
   (the primary model) scored no senses. The MiniLM and BertBaseCased packages use their encoder as the primary model
@@ -243,13 +247,19 @@ without custom code:
 - `Word`: the word as you gave it.
 - `IsKnown`: whether the word is in the word table.
 - `Analyses`: an `ImmutableArray<AnalysisCandidate>`, the full answer: every analysis of the word with its
-  `Probability`, the largest first (ties keep the order of `WordLexicon.Lookup`), summing to one and never truncated.
-  It is empty only for an unknown word. Each `AnalysisCandidate` has `Details` (a `WordDetails`: `Lemma`,
+  `Probability`, summing to one and never truncated. The analyses are ordered by the probability of their lemma and
+  part of speech (the sum over the analyses that share them), the largest first, and inside one lemma and part of
+  speech by their own probability, the largest first (ties keep the order of `WordLexicon.Lookup`); the analyses that
+  differ only in features (`cut` as an infinitive and as a past tense) share the probability of their lemma and part of
+  speech, split among them by the evidence of the model or, without evidence, equally, and every one of them lists
+  the same senses with the same probabilities. It is empty only for an unknown word. Each `AnalysisCandidate` has
+  `Details` (a `WordDetails`: `Lemma`,
   `PartOfSpeech` and `Features`; it has no sense id), `Probability` and `Senses`, an `ImmutableArray<SenseCandidate>` of
   the fine senses of that analysis, each a `SenseId` and a `Probability` given the analysis, the largest first (ties by
   ordinal sense id), summing to one and never truncated. `Senses` is empty when the model did not score the senses of
   the analysis (every analysis of the Basic model, except the one sense of an analysis that has only one).
-- `Details`: the selected analysis (the most probable one) as a `WordDetails`, or `null` for an unknown word.
+- `Details`: the selected analysis (the best variant of the most probable lemma and part of speech, the first entry of
+  `Analyses`) as a `WordDetails`, or `null` for an unknown word.
   `WordDetails.TryGetFeature("Tense", out var tense)` reads one feature of it.
 - `Level`: the `SenseLevel` at which the word was answered: `None` (only for an unknown word), `PartOfSpeech`, `Group`
   or `Sense`.
@@ -326,13 +336,14 @@ The `Confidence` that the result carries is the probability of the answer at tha
 
 | Level | Confidence |
 | ----- | ---------- |
-| `PartOfSpeech` | the `Probability` of the selected analysis (the first entry of `Analyses`) |
-| `Group` | the probability of the selected analysis times the sum of the probabilities, within that analysis, of the senses that are members of the group |
-| `Sense` | the probability of the selected analysis times the probability of the answered sense within that analysis |
+| `PartOfSpeech` | the probability of the slot of the selected analysis (the sum of the `Probability` of the analyses that have its lemma and part of speech) |
+| `Group` | the probability of the slot times the sum of the probabilities, within the slot, of the senses that are members of the group |
+| `Sense` | the probability of the slot times the probability of the answered sense within the slot |
 
 <!-- markdownlint-enable MD013 -->
 
-A word with one analysis and one sense has the confidence 1, and an unknown word 0. The confidence grows with the margin
+A word with one lemma and part of speech and one sense has the confidence 1, and an unknown word 0. The confidence
+grows with the margin
 of the model's evidence, but it is comparable only within one result: do not compare it across models, across words or
 across levels as if it were calibrated, and tune any threshold per model and level on your own text. The precision that
 the models reach on independent text (SemCor) is lower than the target on the training sentences and is published per
@@ -572,9 +583,11 @@ web treebank, limited to the parts of speech that the word table allows) and, fo
 sentences, context cues that separate analyses of the same part of speech (for example the past participle and the
 present of `read`, or the lemmas of `left`). It always answers a word with several analyses, at the `PartOfSpeech`
 level, and lists every analysis in `Analyses` with its probability; the confidence is the
-probability that the model gives to the selected analysis, between 0 and 1. It names a sense (level `Sense`) only
+probability that the model gives to the lemma and part of speech of the selected analysis (the sum over its feature
+variants, which the context cues alone separate), between 0 and 1. It names a sense (level `Sense`) only
 for a word whose selected analysis has a lemma and part of speech with a single sense (the confidence is then the
-probability of the analysis, 1 for a word with one analysis), it never answers at the `Group` level, and the `Senses`
+probability of that lemma and part of speech, 1 for a word with only one), it never answers at the `Group` level, and
+the `Senses`
 of its analyses are empty except for the one sense of such a single-sense analysis (probability 1), because it scores
 analyses and not fine senses. The measured
 quality is in the build notes (`basic-evaluation.md`). First use costs about 55 ms for the word table and about 22 ms for
@@ -743,13 +756,14 @@ composition of their encoder model and the Basic model.
 ## Confidence
 
 The confidence of a result is the probability of the answer at its level (see "Levels and Confidence"): the
-probability of the selected analysis, times the probability of the answered sense (or the summed probability of the
-member senses of the answered group) within that analysis. An encoder model scores the fine senses of a word and the
+probability of the lemma and part of speech of the selected analysis (the feature variants of one share it and never
+lower it), times the probability of the answered sense (or the summed probability of the
+member senses of the answered group) within it. An encoder model scores the fine senses of a word and the
 groups they form, picks the finest level whose margin passes the lemma's own threshold for that level, and a word that
 it is unsure about is still answered, at the `Group` or the `PartOfSpeech` level, with a correspondingly low
 confidence; the `Senses` of the selected analysis keep the ranking of the senses visible. A word that the encoder was
 not trained for (or could not judge) scored no senses, so the package answers it with the Basic model: its analysis at
-the `PartOfSpeech` level, with the probability of that analysis as confidence.
+the `PartOfSpeech` level, with the probability of its lemma and part of speech as confidence.
 
 The confidence is not calibrated: it is comparable only within one result, not across models, words or levels, and no
 value such as 0.5 means "the model met its target". Choose a threshold per model and level on your own text, and

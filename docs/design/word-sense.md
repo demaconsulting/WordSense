@@ -29,7 +29,9 @@ An answer (`ClassifyResult`) has two parts. `Analyses` is the single source of t
 `AnalysisCandidate` for every analysis (lemma, part of speech and features) that the word can have in its context,
 each with its probability (the probabilities sum to one over the word) and, where the model scored the fine senses of
 the analysis, its `Senses` (a `SenseCandidate` list of sense id and probability given the analysis, summing to one).
-Everything else is a summary of it: `Details` is the selected analysis (the most probable one), `Level`
+Everything else is a summary of it: `Details` is the selected analysis (the best variant of the most probable slot, a
+slot being a lemma and a part of speech: the senses belong to a slot, and the analyses of a slot that differ only in
+features, such as `cut` as an infinitive and as a past tense, share its probability), `Level`
 (`SenseLevel`) is the level at which the model was confident enough to answer (the fine sense, the group, or the part
 of speech alone; none only for a word that is not in the lexicon), `Confidence` is the probability of the answer at
 that level, and `GroupId` and `SenseId` name the answered group and sense. The system is delivered as five layered NuGet
@@ -144,8 +146,10 @@ analyses at the part of speech level, and the Basic model of a composition choos
      holds all the senses of its lemma and part of speech), in every model;
    - otherwise the model decides. Basic estimates the part of speech of every word of the sentence with a
      hidden Markov model, scores the analyses of the word from the neighboring words and fuses both into a probability
-     for every analysis, so it always answers: `Analyses` lists every analysis with its probability, the selected
-     analysis is the most probable one, and the level is `PartOfSpeech` with that probability as confidence (or `Sense`
+     for every analysis, so it always answers: `Analyses` lists every analysis with its probability (the probability of
+     a slot is the sum over its feature variants, and the context cues alone split it among them), the selected
+     analysis is the best variant of the most probable slot, and the level is `PartOfSpeech` with the probability of
+     that slot as confidence (or `Sense`
      when the selected analysis has exactly one sense). The senses of an analysis are listed only when it has
      exactly one sense (probability 1). An encoder model
      runs the encoder once over the text (only when some word needs it), pools the hidden states of the word,
@@ -154,18 +158,23 @@ analyses at the part of speech level, and the Basic model of a composition choos
      normalized fine scores, summing to one, whatever the level), and answers at the finest level whose per-lemma
      threshold is met: the fine sense (level `Sense`, with its group id when the sense is in a group), else, for a
      lemma that has groups and a best sense in a group, the group (level `Group`, when the group threshold is met), else
-     the part of speech (level `PartOfSpeech`, with the ranked senses still listed). A word
+     the part of speech (level `PartOfSpeech`, with the ranked senses still listed). The probabilities are worked
+     out per slot: a slot has the mass of its senses, the probability of a sense given its slot is its renormalized
+     mass, the feature variants of a slot split its probability (by the form chooser when it has a label for each,
+     otherwise equally) and the split never reaches the level or the confidence. A word
      whose lemma has no weights, or for which the encoder gave no usable vector, is answered from the lexicon alone:
-     the analyses are equally likely, the first is selected, no senses are scored, and the level is `PartOfSpeech`.
+     the slots are equally likely (the variants of a slot split its share equally), the first is selected, no senses
+     are scored, and the level is `PartOfSpeech`.
 5. A composite model (`FallbackWordSenseModel`) answers each word with the complete result of its primary model when
    the primary model scored senses for it (the selected analysis lists scored senses, or the level is `Group` or
    `Sense`) and otherwise with the complete result of its fallback model. In the encoder packages the primary model is
    the encoder model and the fallback is the Basic model, so a word that the encoder does not score is answered by Basic
-   at the part of speech level with the probabilities of its analyses.
+   at the part of speech level with the probabilities of its analyses. The composite adds no probability of its own: the
+   slot rules above hold inside each of the two results.
 6. The model returns a `ClassifyResult[]` parallel to the input. The confidence of each result is the probability of
-   its answer at its own level (the probability of the selected analysis times the probability of the answered sense,
-   or the summed probability of the member senses of the answered group, within that analysis); it is comparable only
-   within one result.
+   its answer at its own level (the probability of the slot of the selected analysis, times the probability of the
+   answered sense, or the summed probability of the member senses of the answered group, within that slot); it is
+   comparable only within one result.
 
 At build time the builder reads the data and the corpus and writes the lexicon blob embedded in core and the weights
 blobs (with their thresholds) embedded in the encoder packages.

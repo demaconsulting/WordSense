@@ -63,34 +63,44 @@ sections:
               - id: WordSense-Basic-BasicClassifier-Level
                 title: >-
                   BasicClassifier shall state the level of every answer: the part of speech level, with the probability
-                  of the selected analysis as confidence, for an analysis chosen statistically whose lemma and part of
-                  speech have several senses; the sense level, with the same confidence, only when the selected analysis
+                  of the lemma and part of speech (the sum of the probabilities of the feature variants) of the selected
+                  analysis as confidence, for an analysis chosen statistically whose lemma and part of speech have
+                  several senses; the sense level, with the same confidence, only when the selected analysis
                   has exactly one sense; and level none for an unknown word; it shall never answer at the group level.
                 tags: [unit]
                 justification: |
                   The statistical model has no evidence that separates fine senses or groups; stating the level honestly
-                  lets callers treat its answers for what they are, and a known word is never left unanswered.
+                  lets callers treat its answers for what they are, and a known word is never left unanswered. The
+                  confidence is built on the lemma and part of speech because they own the senses: the split of a
+                  slot among feature variants (deer as a singular and a plural) must not halve it.
                 tests:
                   - BasicClassifier_ClassifyAsync_AmbiguousWord_AnswersPartOfSpeechLevel
                   - BasicClassifier_ClassifyAsync_SingleSensePart_AnswersSenseLevel
                   - BasicClassifier_ClassifyAsync_NeverAnswersGroupLevel
                   - BasicClassifier_ClassifyAsync_UnknownWord_AnswersLevelNone
+                  - BasicClassifier_ClassifyAsync_VariantsOfTheOnlySlot_AreAnsweredWithConfidenceOne
 
               - id: WordSense-Basic-BasicClassifier-Candidates
                 title: >-
-                  BasicClassifier shall list the analyses of every known word sorted by probability, the largest first
-                  and, on a tie, in lexicon order, never truncated and summing to one, and shall list in an analysis
+                  BasicClassifier shall list the analyses of every known word never truncated and summing to one, the
+                  lemmas and parts of speech (slots) by the sum of the probabilities of their analyses, the largest
+                  first, and the analyses of one slot (feature variants that share its senses and its probability) by
+                  their own probability, the largest first, with ties in lexicon order, so that the first analysis is
+                  the best variant of the most probable slot, and shall list in an analysis
                   no senses, except the one sense with probability 1 of an analysis whose lemma and part of speech
                   have exactly one sense, because it scores analyses and not fine senses.
                 tags: [unit]
                 justification: |
                   The statistical model has no evidence about fine senses, and inventing probabilities for them would
                   mislead a consumer that groups the senses itself; empty sense lists state that no scores exist, and
-                  the full ranked analyses let a consumer make its own choice among them.
+                  the full ranked analyses let a consumer make its own choice among them. The variants of a slot are
+                  listed together, so that a part of speech with several feature variants neither wins nor loses the
+                  selection because of their number.
                 tests:
                   - BasicClassifier_ClassifyAsync_AmbiguousWord_ListsAnalysesAndNoSenses
                   - BasicClassifier_ClassifyAsync_SingleSenseAnalysis_ListsThatSenseWithProbabilityOne
                   - BasicClassifier_ClassifyAsync_TiesKeepLexiconOrder
+                  - BasicClassifier_ClassifyAsync_VariantsOfASlot_ShareItsProbabilityAndStayTogether
 
               - id: WordSense-Basic-BasicClassifier-Segments
                 title: >-

@@ -25,7 +25,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
   results has no null element.
 - **Level decides which ids are set** (`ClassifyResult_LevelDecidesWhichIdsAreSet`): a result at the sense level carries
   a sense id and carries a group id only when the sense is in a group, at the group level only a group id, and at the
-  part of speech and none levels neither; the confidence is the probability of the selected analysis at the part of
+  part of speech and none levels neither; the confidence is the probability of the slot (lemma and part of speech) of the
+  selected analysis at the part of
   speech level, that probability times the member sense mass at the group level and that probability times the sense
   probability at the sense level; details are null only for an unknown word, which is not known, has no analyses, level
   none and confidence 0 (`ClassifyResult_NoDetails_HasNullDetails`).

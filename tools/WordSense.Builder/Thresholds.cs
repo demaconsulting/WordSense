@@ -56,9 +56,10 @@ internal static class Thresholds
     /// <param name="senseCount">The number of columns.</param>
     /// <param name="groups">The group index of each column, or -1 for a sense that is in no group.</param>
     /// <param name="options">The training settings: C, the folds, the precision target and the minimum number of answers.</param>
+    /// <param name="fitter">The fitter of the anchors of the lemma (it shares its Gram matrix with the final fit), or null to create one.</param>
     /// <returns>The fine and the group threshold; either is <see cref="LemmaWeights.Never"/> when its level never reaches the target.</returns>
     /// <exception cref="ArgumentException">Thrown when the arrays disagree in length.</exception>
-    public static LemmaThresholds Choose(string lemma, float[][] features, int[] labels, int senseCount, int[] groups, TrainingOptions options)
+    public static LemmaThresholds Choose(string lemma, float[][] features, int[] labels, int senseCount, int[] groups, TrainingOptions options, LemmaFitter? fitter = null)
     {
         ArgumentNullException.ThrowIfNull(lemma);
         ArgumentNullException.ThrowIfNull(features);
@@ -70,7 +71,7 @@ internal static class Thresholds
             throw new ArgumentException("There must be one label per feature and one group index per column.", nameof(labels));
         }
 
-        var outOfFold = ScoreOutOfFold(lemma, features, labels, senseCount, options);
+        var outOfFold = ScoreOutOfFold(lemma, features, labels, senseCount, options, fitter ?? new LemmaFitter(features, options.Solver, options.Parallelism));
         var fine = ChooseThreshold(outOfFold.Select(o => ((double)o.FineMargin, o.FineCorrect)).ToList(), options);
         if (!groups.Any(g => g >= 0))
         {
@@ -137,33 +138,38 @@ internal static class Thresholds
     /// <param name="labels">The column of each anchor.</param>
     /// <param name="senseCount">The number of columns.</param>
     /// <param name="options">The settings.</param>
+    /// <param name="fitter">The fitter that trains the classifier of each fold.</param>
     /// <returns>For each tested anchor its scores over all columns, the best column, the fine margin and whether the best column is the true one.</returns>
-    private static List<OutOfFold> ScoreOutOfFold(string lemma, float[][] features, int[] labels, int senseCount, TrainingOptions options)
+    private static List<OutOfFold> ScoreOutOfFold(string lemma, float[][] features, int[] labels, int senseCount, TrainingOptions options, LemmaFitter fitter)
     {
         var folds = Math.Max(2, options.Folds);
         var assignment = AssignFolds(lemma, labels, senseCount, folds);
-        var observed = new List<OutOfFold>();
-        var scores = new float[senseCount];
-        for (var fold = 0; fold < folds; fold++)
+
+        // The folds are independent; each one writes its own list, and the lists are joined in the order of the folds
+        var perFold = new List<OutOfFold>[folds];
+        Parallel.For(0, folds, new ParallelOptions { MaxDegreeOfParallelism = Math.Max(1, options.Parallelism) }, fold =>
         {
+            var observed = new List<OutOfFold>();
+            perFold[fold] = observed;
             var test = Enumerable.Range(0, features.Length).Where(i => assignment[i] == fold).ToArray();
             if (test.Length == 0)
             {
-                continue;
+                return;
             }
 
             var train = Enumerable.Range(0, features.Length).Where(i => assignment[i] != fold).ToArray();
-            var (weights, bias) = WeightsTrainer.Fit(train.Select(i => features[i]).ToArray(), train.Select(i => labels[i]).ToArray(), senseCount, options.C);
+            var (weights, bias) = fitter.Fit(train, labels, senseCount, options.C);
             var model = new LemmaWeights(weights, bias, features[0].Length);
+            var scores = new float[senseCount];
             foreach (var i in test)
             {
                 model.Scores(features[i], scores);
                 var (best, margin) = LemmaWeights.Rank(scores);
                 observed.Add(new OutOfFold((float[])scores.Clone(), best, margin, labels[i], best == labels[i]));
             }
-        }
+        });
 
-        return observed;
+        return [.. perFold.SelectMany(f => f)];
     }
 
     /// <summary>

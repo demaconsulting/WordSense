@@ -22,21 +22,27 @@ internal delegate ValueTask<double[]?[]> PooledEncode(IReadOnlyList<string> word
 ///     and several scored senses is pending: the words are joined by single spaces into one text, the encoder runs once
 ///     for the pending words, the pooled vector of each is centered on the global mean of the weights and scaled to unit
 ///     length, and the classifier scores the fine senses of every analysis of the word (and no sense of another lemma).
-///     The softmax of the scores gives the probability of every sense, the probability of an analysis is the mass of its
-///     senses, and the level is decided for the most probable analysis with the thresholds of the lemma: the sense when
-///     the margin of the best fine sense reaches the fine threshold and the best sense lies in that analysis, else the
+///     The softmax of the scores gives the probability of every sense. The senses belong to a lemma and part of speech
+///     (a <i>slot</i>), not to the analyses of a slot that differ only in features (<c>cut</c> as an infinitive and as a
+///     past tense, <c>deer</c> as a singular and a plural), so the probability of a slot is the mass of its senses and
+///     the probability of a sense given its slot is its mass renormalized in the slot; the analyses of a slot split the
+///     probability of the slot (by the chooser of the form when it has a label for each of them, otherwise equally), and
+///     that split never reaches the level or the confidence. The selected analysis is the best analysis of the most
+///     probable slot, and the level is decided for it with the thresholds of the lemma: the sense when
+///     the margin of the best fine sense reaches the fine threshold and the best sense lies in that slot, else the
 ///     group of the best sense when it has one and the margin of the group reaches the group threshold, else the part of
 ///     speech (the ranked senses of the analysis still show the likely senses and groups). The confidence is the
-///     probability of the answer at its level (the probability of the analysis times the probability of the sense, or
+///     probability of the answer at its level (the probability of the slot, times the probability of the sense, or
 ///     of the group, within it).
 ///     </para>
 ///     <para>
 ///     A form whose analyses belong to several lemmas or tenses (<c>left</c>, <c>read</c>) is first resolved by the
 ///     chooser of the form, a small classifier over the lemmas or analyses of the form with its own threshold; a form of
 ///     that kind without a chooser is answered from the lexicon. A word whose senses are not scored (no weights, fewer
-///     than two scored senses, no usable vector) is answered from the lexicon alone: a single analysis with probability
-///     1 or several analyses with the uniform probability 1/n (the lexicon order is kept, so the first analysis is the
-///     selected one) at the <see cref="SenseLevel.PartOfSpeech"/> level, without scored senses. Such a word is left to
+///     than two scored senses, no usable vector) is answered from the lexicon alone: every lemma and part of speech has
+///     the same probability 1/s for s of them, the analyses of one of them split it equally (the lexicon order is kept,
+///     so the first analysis is the selected one), at the <see cref="SenseLevel.PartOfSpeech"/> level, without scored
+///     senses. Such a word is left to
 ///     the fallback model of a composition (see <see cref="FallbackWordSenseModel"/>). No fine sense is ever guessed.
 ///     </para>
 ///     <para>
@@ -254,16 +260,38 @@ internal sealed class OnnxClassifier
     /// <param name="word">The word.</param>
     /// <param name="details">The analyses of the word, at least one.</param>
     /// <returns>The result at the part of speech level without scored senses.</returns>
+    /// <remarks>
+    ///     The probability is shared out by lemma and part of speech, not by analysis: every lemma and part of speech has
+    ///     the same probability and the analyses that differ only in features share it equally. The analyses are listed
+    ///     by slot in the order of the lexicon (a slot is placed where its first analysis is), so the selected analysis
+    ///     is the first one of the lexicon and the confidence is the probability of its slot.
+    /// </remarks>
     private static ClassifyResult LexiconOnly(string word, ImmutableArray<WordDetails> details)
     {
-        var probability = 1.0 / details.Length;
-        var analyses = ImmutableArray.CreateBuilder<AnalysisCandidate>(details.Length);
-        foreach (var analysis in details)
+        var slots = new List<List<int>>();
+        for (var i = 0; i < details.Length; i++)
         {
-            analyses.Add(new AnalysisCandidate(analysis, probability, []));
+            var slot = slots.Find(s => details[s[0]].Lemma == details[i].Lemma && details[s[0]].PartOfSpeech == details[i].PartOfSpeech);
+            if (slot is null)
+            {
+                slot = [];
+                slots.Add(slot);
+            }
+
+            slot.Add(i);
         }
 
-        return new ClassifyResult(word, true, analyses.MoveToImmutable(), details[0], SenseLevel.PartOfSpeech, probability, null, null);
+        var slotProbability = 1.0 / slots.Count;
+        var analyses = ImmutableArray.CreateBuilder<AnalysisCandidate>(details.Length);
+        foreach (var slot in slots)
+        {
+            foreach (var i in slot)
+            {
+                analyses.Add(new AnalysisCandidate(details[i], slotProbability / slot.Count, []));
+            }
+        }
+
+        return new ClassifyResult(word, true, analyses.MoveToImmutable(), details[slots[0][0]], SenseLevel.PartOfSpeech, slotProbability, null, null);
     }
 
     /// <summary>
@@ -273,6 +301,14 @@ internal sealed class OnnxClassifier
     /// <param name="plan">The pending word.</param>
     /// <param name="feature">The unit-length feature of the word in context.</param>
     /// <returns>The result.</returns>
+    /// <remarks>
+    ///     The senses belong to a lemma and part of speech (a slot), not to the analyses that differ only in features, so
+    ///     the probabilities are worked out per slot: the probability of a slot is the mass of its senses (or, for a form
+    ///     with a chooser, the share of the chooser's labels that its analyses carry), the probability of a sense given
+    ///     its slot is its mass renormalized in the slot, and the confidence is the probability of the slot times that.
+    ///     The analyses of one slot split the probability of the slot: by the chooser when it has a label for each of
+    ///     them, otherwise equally. The selected analysis is the best one of the most probable slot.
+    /// </remarks>
     private static ClassifyResult Decide(string word, Pending plan, float[] feature)
     {
         var table = plan.Table;
@@ -293,7 +329,7 @@ internal sealed class OnnxClassifier
         }
 
         // Probability of every analysis: the chooser splits the mass among the lemmas or tenses of a form, the senses
-        // split the mass of one lemma among its parts of speech
+        // split the mass of one lemma among its parts of speech (its slots); the analyses of a slot split its mass
         var weightOf = new double[details.Length];
         var chooserConfident = true;
         if (plan.Chooser is { } chooser)
@@ -316,26 +352,46 @@ internal sealed class OnnxClassifier
                     continue;
                 }
 
-                var shares = indexes.Select(i => SlotMass(plan, lemmaScores, i)).ToArray();
-                var total = shares.Sum();
-                for (var k = 0; k < indexes.Count; k++)
+                // The label shares its probability among the slots of its analyses by the mass of their senses, and a
+                // slot shares it equally among its analyses that the label stands for
+                var slotsOfLabel = indexes.Select(plan.SlotOf).Distinct().ToList();
+                var masses = slotsOfLabel.Select(s => SlotMass(lemmaScores, s)).ToArray();
+                var total = masses.Sum();
+                for (var k = 0; k < slotsOfLabel.Count; k++)
                 {
-                    weightOf[indexes[k]] = labelProbability[label] * (total > 0 ? shares[k] / total : 1.0 / indexes.Count);
+                    var inSlot = indexes.Where(i => plan.SlotOf(i) == slotsOfLabel[k]).ToList();
+                    var share = total > 0 ? masses[k] / total : 1.0 / slotsOfLabel.Count;
+                    foreach (var i in inSlot)
+                    {
+                        weightOf[i] = labelProbability[label] * share / inSlot.Count;
+                    }
                 }
             }
         }
         else
         {
-            for (var i = 0; i < details.Length; i++)
+            var masses = plan.Slots.Select(s => SlotMass(lemmaScores, s)).ToArray();
+            var total = masses.Sum();
+            for (var s = 0; s < plan.Slots.Count; s++)
             {
-                weightOf[i] = SlotMass(plan, lemmaScores, i) / plan.SlotOf(i).Analyses.Count;
+                foreach (var i in plan.Slots[s].Analyses)
+                {
+                    weightOf[i] = (total > 0 ? masses[s] / total : 1.0 / plan.Slots.Count) / plan.Slots[s].Analyses.Count;
+                }
             }
         }
 
         Normalize(weightOf);
 
-        // Rank the analyses by probability (ties keep the lexicon order) and list the senses inside each of them
-        var order = Enumerable.Range(0, details.Length).OrderByDescending(i => weightOf[i]).ThenBy(i => i).ToArray();
+        // The probability of every slot, and the order: the most probable slot first (ties keep the lexicon order of the
+        // first analysis of the slot), and in a slot the most probable analysis first (ties keep the lexicon order)
+        var slotProbability = plan.Slots.ToDictionary(s => s, s => s.Analyses.Sum(i => weightOf[i]));
+        var order = Enumerable.Range(0, details.Length)
+            .OrderByDescending(i => slotProbability[plan.SlotOf(i)])
+            .ThenBy(i => plan.Slots.IndexOf(plan.SlotOf(i)))
+            .ThenByDescending(i => weightOf[i])
+            .ThenBy(i => i)
+            .ToArray();
         var analyses = ImmutableArray.CreateBuilder<AnalysisCandidate>(details.Length);
         foreach (var i in order)
         {
@@ -344,9 +400,10 @@ internal sealed class OnnxClassifier
 
         var selected = order[0];
         var selectedSlot = plan.SlotOf(selected);
+        var analysisProbability = slotProbability[selectedSlot];
         if (!chooserConfident || !lemmaScores.TryGetValue(selectedSlot.Lemma, out var scores))
         {
-            return PartOfSpeechAnswer(word, analyses.MoveToImmutable(), details[selected], weightOf[selected]);
+            return PartOfSpeechAnswer(word, analyses.MoveToImmutable(), details[selected], analysisProbability);
         }
 
         // The level of the selected analysis, with the thresholds of its lemma
@@ -354,7 +411,6 @@ internal sealed class OnnxClassifier
         var bestSense = scores.Senses[best];
         var inSelected = bestSense.PartOfSpeech == selectedSlot.PartOfSpeech;
         var kind = scores.Lemma.Weights.Weights.Level(scores.FineMargin, inSelected, bestSense.GroupId is not null, scores.GroupMargin);
-        var analysisProbability = weightOf[selected];
         switch (kind)
         {
             case AnswerKind.Sense:
@@ -370,17 +426,13 @@ internal sealed class OnnxClassifier
         new(word, true, analyses, selected, SenseLevel.PartOfSpeech, probability, null, null);
 
     /// <summary>
-    ///     Gets the mass of the senses of the slot of an analysis, or 1 when the senses are not scored.
+    ///     Gets the mass of the senses of a slot, or 1 when the senses are not scored.
     /// </summary>
-    /// <param name="plan">The pending word.</param>
     /// <param name="lemmaScores">The scored lemmas.</param>
-    /// <param name="analysis">The index of the analysis.</param>
+    /// <param name="slot">The slot.</param>
     /// <returns>The mass.</returns>
-    private static double SlotMass(Pending plan, Dictionary<string, LemmaScores> lemmaScores, int analysis)
-    {
-        var slot = plan.SlotOf(analysis);
-        return lemmaScores.TryGetValue(slot.Lemma, out var scores) ? scores.MassOf(slot) : 1.0;
-    }
+    private static double SlotMass(Dictionary<string, LemmaScores> lemmaScores, Slot slot) =>
+        lemmaScores.TryGetValue(slot.Lemma, out var scores) ? scores.MassOf(slot) : 1.0;
 
     /// <summary>
     ///     Lists the senses of an analysis ranked by their probability given the analysis.

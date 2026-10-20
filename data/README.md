@@ -128,4 +128,5 @@ SHA-256 of `index.sense` (see [PROVENANCE.md](PROVENANCE.md)). `label-senses` an
 inventory tables; run them after the counts are imported (the counts order the senses of a lemma). `seed-inventory`
 adds the project senses of the closed-class entries and imports the curated labels and groups of `corpus/curation`,
 leaving out a group of one sense and a group of every sense of its lemma and part of speech, and refusing a group
-without a valid kind or without evidence. `label-senses` never creates a group.
+without a valid kind or without evidence, and a curated sense whose part of speech is not the one of its sense in the
+data (an adjective satellite is an adjective). `label-senses` never creates a group.

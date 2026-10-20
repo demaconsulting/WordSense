@@ -647,6 +647,12 @@ internal sealed partial class DataValidator
                 {
                     Report(file.Path, i + 2, TableSense, $"{row[0]}: entry part of speech '{ep}' does not fit synset part of speech '{sp}'.");
                 }
+
+                // The ss_type digit of an OEWN sense key (lemma%ss_type:...) names the part of speech of the synset too
+                if (synsetPos.TryGetValue(row[3], out var keyed) && KeyProblem(row[1], keyed) is { } keyProblem)
+                {
+                    Report(file.Path, i + 2, TableSense, $"{row[0]}: {keyProblem}");
+                }
             }
         }
 
@@ -751,6 +757,40 @@ internal sealed partial class DataValidator
         }
 
         return SurfaceProvenance.Contains(row[8]) ? null : $"Provenance '{row[8]}' is not allowed for a surface-only analysis.";
+    }
+
+    /// <summary>
+    ///     Checks the part of speech that the ss_type of a sense key names against the part of speech of the synset of
+    ///     the sense (the ss_type 1 is a noun, 2 a verb, 3 an adjective, 4 an adverb and 5 an adjective satellite).
+    /// </summary>
+    /// <param name="senseKey">The sense key, empty for a project sense (which has nothing to check).</param>
+    /// <param name="synsetPos">The part of speech letter of the synset of the sense: <c>n</c>, <c>v</c>, <c>a</c>, <c>s</c>, <c>r</c> or a project letter.</param>
+    /// <returns>The problem, or null when the key fits the synset.</returns>
+    private static string? KeyProblem(string senseKey, string synsetPos)
+    {
+        var percent = senseKey.LastIndexOf('%');
+        if (senseKey.Length == 0 || percent < 0)
+        {
+            return null;
+        }
+
+        var colon = senseKey.IndexOf(':', percent);
+        var type = colon > percent ? senseKey[(percent + 1)..colon] : string.Empty;
+        var expected = type switch
+        {
+            "1" => "n",
+            "2" => "v",
+            "3" => "a",
+            "4" => "r",
+            "5" => "s",
+            _ => null,
+        };
+        if (expected is null)
+        {
+            return $"the sense key '{senseKey}' has no ss_type of 1 to 5.";
+        }
+
+        return expected == synsetPos ? null : $"the sense key '{senseKey}' names the part of speech '{expected}' but its synset has '{synsetPos}'.";
     }
 
     private static bool PosCompatible(string entryPos, string synsetPos) =>
