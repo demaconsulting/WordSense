@@ -55,7 +55,8 @@ internal sealed record SeedRun(
 ///     the id of a sense.
 ///     </para>
 ///     <para>
-///     The run is idempotent and refuses to change a label that a sense already has. It is stateless and thread-safe.
+///     The run is idempotent. It replaces a generated label (which was never published) by the curated one and
+///     refuses to change a curated or project label that a sense already has. It is stateless and thread-safe.
 ///     </para>
 /// </remarks>
 internal static class InventorySeeder
@@ -184,7 +185,20 @@ internal static class InventorySeeder
             }
 
             var origin = isProject ? SenseLabelGenerator.OriginProject : "curated";
-            if (labelOf.TryGetValue(id, out var existing) && existing[1] != label)
+            labelOf.TryGetValue(id, out var existing);
+            if (existing is not null && (string.Equals(existing[2], SenseLabelGenerator.OriginGenerated, StringComparison.Ordinal) || (isProject && string.Equals(existing[2], SenseLabelGenerator.OriginProject, StringComparison.Ordinal))))
+            {
+                // A generated or project label that is not curated yet was never published: the curation takes over
+                // the sense, with its label when it differs
+                if (existing[1] != label || existing[2] != origin)
+                {
+                    newLabels++;
+                }
+
+                existing[1] = label;
+                existing[2] = origin;
+            }
+            else if (existing is not null && existing[1] != label)
             {
                 throw new InvalidDataException($"The sense '{id}' already has the label '{existing[1]}'; the curated label '{label}' would change a published id.");
             }

@@ -6,10 +6,11 @@ sense of a word in context: an Open English WordNet (OEWN) sense with a readable
 > **Current state.** The sentence folders `anchors/`, `holdout/` and `provenance/` hold the first reviewed batch of 20
 > lemmas (`back`, `even`, `first`, `forward`, `go`, `help`, `home`, `however`, `just`, `little`, `long`, `only`, `own`,
 > `please`, `pretty`, `review`, `right`, `still`, `test` and `well`; 294 senses, 3,488 anchors and 984 held-out
-> sentences) in the fine-sense row format below. The former class-labeled corpus (24,461 anchors, 12,789 holdout and 689
-> real-text sentences) moved to `legacy/` and awaits relabeling; see `legacy/README.md`. The rest of this page, from
-> "Sense Files and Forms File" on, describes that legacy data and the history of how it was built; the builder commands
-> it names (for example `real-import`, `real-judge-*`, `validate-provenance`, `nounverb-*`, `learning-curve`,
+> sentences) and the relabeled legacy corpus (`relabel-*.tsv`: 21,552 anchors, 11,385 held-out sentences and, in
+> `realtext/`, 655 real-text sentences), all in the fine-sense row format below. The former class-labeled corpus
+> moved to `legacy/`; the Basic model still trains from it (see `legacy/README.md`). The rest of this page, from "Sense
+> Files and Forms File" on, describes that legacy data and the history of how it was built; the builder commands it
+> names (for example `real-import`, `real-judge-*`, `validate-provenance`, `nounverb-*`, `learning-curve`,
 > `error-diagnosis`, `weak-lemmas`) were removed from `WordSense.Builder`; the results stay as the record.
 
 ## Layout
@@ -20,9 +21,13 @@ sense of a word in context: an Open English WordNet (OEWN) sense with a readable
 | ------ | ------------ | ------- |
 | `anchors/` | `*.tsv` | Labeled training sentences (fine senses) |
 | `holdout/` | `*.tsv` | Labeled evaluation sentences, never used for training or for choosing thresholds |
+| `choosers/anchors/`, `choosers/holdout/` | `*.tsv` | Training and evaluation rows of the form choosers (the lemma or tense of a shared form) |
+| `realtext/` | `*.tsv` | Relabeled real-text sentences for evaluation only (never trained on; no evaluator reads them yet) |
 | `provenance/` | `*.tsv` | Origin of every sentence: writer, selector, license |
-| `legacy/` | see `legacy/README.md` | The former class-labeled corpus, awaiting relabeling (`anchors`, `holdout`, `realtext`, `senses`, `forms`, `provenance`) |
-| `curation/` | `*.tsv`, `README.md` | The reviewed senses and groups of the first batch (the input of `seed-inventory`) |
+| `disputed/` | `*.tsv` | Legacy rows the relabeling could not place (unsure, duplicate, no analysis, capitalized lemma); never trained |
+| `coverage/` | `*.tsv`, `README.md` | The quota report of every sense (anchors and held-out sentences against the tiers) |
+| `legacy/` | see `legacy/README.md` | The former class-labeled corpus (Basic still trains from it) and the CC BY-SA rows that the relabeling excluded |
+| `curation/` | `*.tsv`, `README.md` | The reviewed senses and groups (the input of `seed-inventory`) |
 | `lexicon/` | `*.tsv` | The dictionary word list, the auxiliaries and the form rules (inputs of `compile-image`) |
 | `ud/` | `*.tsv` | Tag statistics of the UD English-EWT treebank for the Basic model (see `ud/PROVENANCE.md`) |
 | `migration/` | `*.tsv` | The temporary map from the retired classes to fine senses, used to relabel the legacy corpus |
@@ -55,6 +60,58 @@ anchors and 5, 3 or 2 held-out sentences per sense according to the WordNet 3.0 
 held-out sentences come from the same generator as the anchors, so accuracy measured on them is optimistic.
 `provenance/batch-1.tsv` has one row per sentence (`id`, `lemma`, `sense`, `split`, `source`, `licence`, `source_key`,
 `url`, `contributor`, `origin`); the sentences are project-authored (`MIT (project-authored)`).
+
+## Relabeled Legacy Corpus
+
+`anchors/relabel-anchors.tsv`, `holdout/relabel-holdout.tsv` and `realtext/relabel-realtext.tsv` are the sentences of
+the former class-labeled corpus (`legacy/`) relabeled to fine senses; `provenance/relabel.tsv` has one row per sentence
+with the original source, licence, source key, URL and contributor, and a note in the contributor column that records
+how the row was relabeled (`relabeled by rule from legacy class lemma#class` or `relabeled by gpt-6.1-sol from legacy
+class lemma#class`). The split of a sentence (anchors, holdout or real text) is the one of the legacy row, so the
+anchors and the holdout stay disjoint. How the rows were made:
+
+1. **Licence filter.** Rows whose source is Wikipedia, Wiktionary or the UD English treebank (CC BY-SA 4.0) are not
+   relabeled and never train: they were copied to `legacy/excluded-cc-by-sa/`. Tatoeba rows (CC BY 2.0 FR, CC0 1.0),
+   Project Gutenberg
+   rows (public domain) and the project-authored rows stay with their recorded attribution; the legacy rows without a
+   provenance record are LLM-written (`MIT (project-authored)`).
+2. **By rule.** A row whose legacy class maps to exactly one fine sense (`migration/legacy-class-map.tsv`, with the
+   generated labels of the map translated to the curated ones) is relabeled to that sense when the lexicon analyzes the
+   braced word as the lemma and part of speech of the sense.
+3. **Judged.** Every other row is labeled by one judge (`gpt-6.1-sol`, chosen by the calibration on the 984 held-out
+   sentences of `batch-1`, see `docs/build_notes/relabel-results.md`) that sees the sentence, the target and the
+   full sense list (id, part of speech, gloss) of every lemma the target word can be a form of, and answers one sense
+   id or `unsure`. Rows the judge was unsure about, rows whose sense has no analysis of the word, rows of a
+   capitalized lemma (the corpus format has lower-case lemmas) and sentences that occur twice are not written: they are
+   listed with the reason in `disputed/relabel-disputed.tsv` for later review.
+
+Every `relabel-*` row validates like any other row of its folder, so the weights and the evaluation read them without
+change.
+
+## Chooser Files
+
+`choosers/anchors/*.tsv` and `choosers/holdout/*.tsv` train and measure the form choosers: the small classifiers that
+decide which lemma, or which tense of one lemma, a word form has (`left` as a form of `leave` or of the adjective
+`left`, `read` as a past or a present verb). Rows have three tab-separated columns and no header: `form`, `label` and
+`sentence`.
+
+- `form` is the lower-case word form; the braced word of the sentence, lower-cased, must be the form, and the form must
+  be in the word image.
+- `label` names what the sentence shows: the lemma of the analyses it stands for (`leave`), or, for a lemma whose
+  analyses of the form differ in features (the past and the present of `read`), one analysis written
+  `lemma/features` (`read/Tense=Past+VerbForm=Part`). The other analyses of such a lemma (the noun `read`) share the
+  label `read`. A label must stand for an analysis of the form (the table checks the same rule when the weights load).
+- The sentence marks the form in exactly one pair of braces, as in the fine-sense files.
+
+The rows are the same sentences as the fine-sense rows, labeled a second way, and keep their split: a held-out sentence
+never trains a chooser. A sentence occurs once across both chooser sets. `relabel-anchors.tsv` and `relabel-holdout.tsv`
+hold the rows made from the relabeled legacy corpus: the forms of several lemmas (`used`, `left`, `bases`, `axes`,
+`analyses`, `diagnoses`, `ellipses`, `rows`, the participles that are adjectives) take the lemma of the sense the judge
+chose, and
+the verb forms with two tenses (`read`, `reread`, `cast`, `upset`, ...) take the tense of the legacy class (`read`,
+`reread`) or the one a second judge call chose. The builder trains a chooser for a form when its rows name at least two
+labels and every analysis of the form has a label among them, and reports the forms that got none (the quota filling
+adds the missing lemmas).
 
 ## Sense Files and Forms File (legacy)
 

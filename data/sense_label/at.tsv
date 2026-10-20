@@ -271,9 +271,9 @@ oewn-attentively__4.02.00..	adverb	generated
 oewn-attentiveness__1.07.00..	considerateness	generated
 oewn-attentiveness__1.07.01..	trait	generated
 oewn-attentiveness__1.09.00..	heed	generated
-oewn-attenuate__2.30.00..	weaken	generated
-oewn-attenuate__2.30.01..	rarefy	generated
-oewn-attenuate__5.00.00.decreased.00	adjective	generated
+oewn-attenuate__2.30.00..	weaken	curated
+oewn-attenuate__2.30.01..	rarefy	curated
+oewn-attenuate__5.00.00.decreased.00	reduced-strength	curated
 oewn-attenuated__5.00.00.decreased.00	attenuate	generated
 oewn-attenuated__5.00.02.decreased.00	adjective	generated
 oewn-attenuation__1.07.00..	weakness	generated
@@ -333,10 +333,10 @@ oewn-attractor__1.09.00..	attracter	generated
 oewn-attractor__1.09.01..	attracter-2	generated
 oewn-attractor__1.18.00..	attracter-3	generated
 oewn-attributable__3.00.00..	adjective	generated
-oewn-attribute__1.03.00..	abstract-entity	generated
-oewn-attribute__1.09.00..	dimension	generated
-oewn-attribute__2.31.00..	ascribe	generated
-oewn-attribute__2.31.01..	assign	generated
+oewn-attribute__1.03.00..	abstract-entity	curated
+oewn-attribute__1.09.00..	dimension	curated
+oewn-attribute__2.31.00..	ascribe	curated
+oewn-attribute__2.31.01..	assign	curated
 oewn-attribution__1.09.00..	ascription	generated
 oewn-attribution__1.09.01..	ascription-2	generated
 oewn-attributive__3.00.00..	adjective	generated

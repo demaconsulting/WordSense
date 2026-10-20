@@ -1,4 +1,5 @@
 group_id	lemma	pos	label	origin	kind
+handle#group:management	handle	v	management	curated	equivalent
 help#group:assistance	help	n	assistance	curated	related
 help#group:improve	help	v	improve	curated	equivalent
 home#group:domestic	home	a	domestic	curated	related
@@ -6,3 +7,4 @@ home#group:family-environment	home	n	family-environment	curated	equivalent
 home#group:homeland	home	n	homeland	curated	related
 home#group:residence	home	n	residence	curated	related
 however#group:contrast	however	r	contrast	curated	equivalent
+hunt#group:searching	hunt	n	searching	curated	equivalent

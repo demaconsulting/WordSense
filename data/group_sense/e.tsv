@@ -1,4 +1,10 @@
 group_id	sense_id
+encounter#group:casual-meeting	oewn-encounter__1.04.01..
+encounter#group:casual-meeting	oewn-encounter__1.11.00..
+entrance#group:act-of-entry	oewn-entrance__1.04.00..
+entrance#group:act-of-entry	oewn-entrance__1.11.00..
+escape#group:fleeing	oewn-escape__2.38.00..
+escape#group:fleeing	oewn-escape__2.38.02..
 even#group:emphasis	oewn-even__4.02.00..
 even#group:emphasis	oewn-even__4.02.04..
 even#group:equal	oewn-even__5.00.01.equal.00
@@ -6,3 +12,5 @@ even#group:equal	oewn-even__5.00.02.equal.00
 even#group:level-regular	oewn-even__3.00.01..
 even#group:level-regular	oewn-even__5.00.00.steady.00
 even#group:level-regular	oewn-even__5.00.00.symmetrical.00
+experience#group:undergoing	oewn-experience__2.30.00..
+experience#group:undergoing	oewn-experience__2.39.00..

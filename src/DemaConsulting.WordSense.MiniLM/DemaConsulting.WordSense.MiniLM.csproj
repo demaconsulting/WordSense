@@ -11,7 +11,7 @@
     <Version>0.0.0</Version>
     <Authors>DEMA Consulting</Authors>
     <Company>DEMA Consulting</Company>
-    <Description>MiniLM encoder package for DemaConsulting.WordSense: an int8 ONNX all-MiniLM-L6-v2 encoder composed with the Basic model. It scores the fine senses of the 20 trial words with weights embedded in the package and answers every other ambiguous word through the Basic model. The roughly 22 MiB model is downloaded once on first use and verified by SHA-256.</Description>
+    <Description>MiniLM encoder package for DemaConsulting.WordSense: an int8 ONNX all-MiniLM-L6-v2 encoder composed with the Basic model. It scores the fine senses of the trained lemmas with weights embedded in the package and answers every other ambiguous word through the Basic model. The roughly 22 MiB model is downloaded once on first use and verified by SHA-256.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/demaconsulting/WordSense</PackageProjectUrl>
     <RepositoryUrl>https://github.com/demaconsulting/WordSense</RepositoryUrl>

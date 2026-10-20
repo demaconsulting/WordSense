@@ -1,4 +1,6 @@
 group_id	sense_id
+geminate#group:pairing	oewn-geminate__2.30.00..
+geminate#group:pairing	oewn-geminate__2.35.00..
 go#group:course	oewn-go__2.30.01..
 go#group:course	oewn-go__2.41.00..
 go#group:course	oewn-go__2.42.03..
@@ -18,3 +20,5 @@ go#group:state	oewn-go__2.42.07..
 go#group:travel	oewn-go__2.38.00..
 go#group:travel	oewn-go__2.38.01..
 go#group:travel	oewn-go__2.38.09..
+grasp#group:comprehension	oewn-grasp__1.07.00..
+grasp#group:comprehension	oewn-grasp__1.09.00..

@@ -9,8 +9,8 @@ verified model files, the ONNX encoder and its tokenizer, the trained per-lemma 
 scores the fine senses of an ambiguous word and decides the level of the answer. It is the only package with a
 third-party runtime dependency, ONNX Runtime, and it references only the core package. Its single public type is the
 abstract `OnnxWordSenseModel`; the model packages derive from it and supply the model identity. The encoder model is
-usable on its own. The classifier scores the fine senses of the lemmas that have trained weights (the 20 words of
-the first reviewed batch in this version) with the encoder and decides the level of the answer; every word whose
+usable on its own. The classifier scores the fine senses of the lemmas that have trained weights (the lemmas of the
+relabeled corpus in this version) with the encoder and decides the level of the answer; every word whose
 lemma has no trained weights is answered from the lexicon alone (with all its lemmas and parts of speech equally likely
 and no scored
 senses). The
@@ -173,9 +173,10 @@ The training runs as follows:
    precision for both encoders. A level whose target is never reached gets the
    threshold "never" and is never answered for that lemma. The result is deterministic for a given seed.
 5. Per form with several lemmas or tenses (`left`, `bases`, `rows`, `found`, `read`, `reread`), a small form chooser is
-   fitted the same way over analysis labels. The labels are rolled up from the fine-sense anchors of the form: the
-   lemma of the sense of each anchor, or for the forms of one lemma that differ in tense (`read`, `reread`) its
-   analysis. The chooser has its own threshold, chosen by the same cross-validation.
+   fitted the same way over analysis labels, from the chooser rows of `corpus/choosers`: sentences of the form
+   labeled with the lemma of the analyses they stand for, or, for the forms of one lemma that differ in tense (`read`,
+   `reread`), with the analysis (`lemma/features`). The chooser has its own threshold, chosen by the same
+   cross-validation; a form whose rows do not cover every analysis gets no chooser and is answered from the lexicon.
 6. The weights (header with the model id, the dimension, the global mean and the hash of the inventory; per lemma the
    sense ids, the thresholds, the rows and the form choosers) are written to the blob that is embedded in the
    model package (`WeightsBlobWriter`, read at run time by `WeightsBlob` into `LemmaWeights` entries). The rows are
@@ -249,10 +250,9 @@ senses of its lemma and part of speech. It then decides:
    Basic model. A word with a single analysis but many senses and no weights (`bank` when untrained) is answered the
    same way, at the part of speech level with confidence 1.
 
-The shipped weights of this version cover the 20 lemmas of the first reviewed batch (`back`, `even`, `first`,
-`forward`, `go`, `help`, `home`, `however`, `just`, `little`, `long`, `only`, `own`, `please`, `pretty`, `review`,
-`right`, `still`, `test`, `well`) and no form chooser (the corpus has no anchors for the forms that need one), so the
-cases 1, 2 and 4 occur for every other word and for the forms of several lemmas, and case 3 for the trained lemmas.
+The shipped weights of this version cover the lemmas of the relabeled corpus (see `corpus/README.md` for their number)
+and the form choosers of the forms whose chooser rows cover every analysis; the lexicon answers every other word and
+every form of several lemmas without a chooser (the cases 1, 2 and 4), and case 3 holds for the trained lemmas.
 
 #### Evaluation Scope
 

@@ -90,10 +90,11 @@ All scenarios below pass on every platform and target framework of the CI matrix
   increment): a form such as `left` is answered
   with the senses of the analysis that its chooser picks from the sentence; `read` gets its tense features from the
   chooser, and the verb as a whole (both tenses) is the slot whose probability the confidence is built on; a chooser
-  margin below its threshold gives the `PartOfSpeech` level. The shipped weights carry no chooser
-  yet (the corpus has no anchors for these forms), so the test that every form of the lexicon whose analyses belong to
-  several lemmas has a chooser (`EveryMultiLemmaForm_HasAChooser`) is deferred until the relabeled corpus provides
-  them; until then such a form is answered from the lexicon.
+  margin below its threshold gives the `PartOfSpeech` level. The shipped weights carry the choosers of the forms whose
+  chooser rows cover every analysis (the builder trains them from `corpus/choosers`); the test that every form of the
+  lexicon whose analyses belong to several lemmas has a chooser (`EveryMultiLemmaForm_HasAChooser`) stays deferred until
+  the quota filling of the corpus gives every such form rows for each of its lemmas; until then a form without a
+  chooser is answered from the lexicon.
 - **Words are returned as written**: the result array is parallel to the input, holds each word as given, and is
   case-insensitive in lookup (including the curly apostrophe).
 - **Empty list and argument validation** (`EmptyList_ReturnsEmpty`, `NullWords_Throws`, `NullElement_Throws`,

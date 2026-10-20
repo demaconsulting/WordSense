@@ -1,0 +1,11 @@
+group_id	sense_id
+dance#group:social-dance	oewn-dance__1.11.00..
+dance#group:social-dance	oewn-dance__1.14.00..
+deliberate#group:planned-intent	oewn-deliberate__5.00.00.intended.00
+deliberate#group:planned-intent	oewn-deliberate__5.00.01.intended.00
+discord#group:general-disagreement	oewn-discord__1.04.01..
+discord#group:general-disagreement	oewn-discord__1.26.00..
+draw#group:pulling	oewn-draw__2.35.03..
+draw#group:pulling	oewn-draw__2.38.11..
+dust#group:fine-particles	oewn-dust__1.27.00..
+dust#group:fine-particles	oewn-dust__1.27.02..

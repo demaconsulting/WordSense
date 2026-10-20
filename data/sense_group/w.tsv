@@ -1,4 +1,5 @@
 group_id	lemma	pos	label	origin	kind
+waste#group:squander	waste	v	squander	curated	equivalent
 well#group:cavity	well	n	cavity	curated	related
 well#group:good-manner	well	r	good-manner	curated	equivalent
 well#group:thoroughly-degree	well	r	thoroughly-degree	curated	equivalent

@@ -90,9 +90,9 @@ The probabilities are computed per slot, never per variant:
    margin is
    below the threshold the answer is the selected analysis at the `PartOfSpeech` level with the probability of its slot
    as the
-   (low) confidence. A selected lemma without weights is answered at the `PartOfSpeech` level in the same way. No
-   chooser is trained yet (the corpus has no anchors for these forms), so the embedded weights of the shipped models
-   carry none and such forms are answered from the lexicon (step 8) until the relabeled corpus provides them.
+   (low) confidence. A selected lemma without weights is answered at the `PartOfSpeech` level in the same way. A form
+   without a trained chooser (its chooser rows do not cover every analysis of the form, or it has none) is answered
+   from the lexicon (step 8): the builder reports the forms that got no chooser and why.
 6. **Levels, analyses and senses.** `LemmaWeights` scores the senses (one-versus-rest activation per fine sense) and
    derives the group scores for a lemma that has groups (the sum of the normalized fine probabilities per group, a
    sense that is in no group standing alone). The softmax of the fine scores of the senses of the word's analyses

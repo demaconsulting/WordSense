@@ -22,7 +22,9 @@ The builder creates the data that the shipped packages embed and measures the sh
 It reads the sense catalog (the senses, their labels, groups, respellings, OEWN keys and WordNet 3.0 tag counts) from
 the word image, which is compiled from `data/`, and the repository's `corpus/` folder: the training sentences
 (`anchors/`, rows of a fine sense id), the holdout sentences (`holdout/`, never used for training or for thresholds),
-their provenance (`provenance/`), the dictionary of all words with their parts of speech and the auxiliary list
+the chooser rows (`choosers/anchors` and `choosers/holdout`, the same sentences labeled with the lemma or tense of
+their form), their provenance (`provenance/`), the dictionary of all words with their parts of speech and the auxiliary
+list
 (`lexicon/`), the reviewed suite (`suite/`, with the independent evaluation sets of a later increment) and the
 vendored Universal Dependencies counts (`ud/`: tag n-gram and per-word tag counts of the English EWT treebank
 training file). The former class-labeled sentences, inventory and form lists wait in `legacy/` for their relabeling and
@@ -68,9 +70,14 @@ implementation of the feature computation.
   analysis, feature, entry lemma and part-of-speech, sense id, sense-group, group id, group part-of-speech and
   lemma-block sections, and is what the weights and `basic.bin` must match. The catalog sections are decoded lazily by
   the reader. Equal data always gives equal decompressed sections.
-- `WeightsTrainer`, `LogisticTrainer`, `ModelTrainer` and `WeightsBlobWriter`: train the per-lemma classifiers from
-  pooled encoder vectors and serialize the weights blob (`WSX3`: float16 weights, the sense ids of each lemma, the
-  thresholds, and the optional form chooser).
+- `WeightsTrainer`, `LogisticTrainer`, `ModelTrainer` and `WeightsBlobWriter`: train the per-lemma classifiers and the
+  form choosers from pooled encoder vectors and serialize the weights blob (`WSX3`: float16 weights, the sense ids of
+  each lemma, the thresholds, and the form choosers).
+- `ChooserCorpus`: reads and validates the chooser rows (`corpus/choosers/anchors` and `holdout`): rows of the form,
+  the label (the lemma of the analyses it stands for, or `lemma/features` for one analysis of a lemma whose analyses of
+  the form differ in tense) and the sentence with the form in braces. A label must stand for an analysis of the form
+  and a sentence must occur once across both sets; it also finds the label of an analysis by the rule of the weights
+  table (the exact `lemma/features` label, else the lemma).
 - `Thresholds`: chooses the fine threshold of a lemma, and the group threshold of a lemma that has groups, by
   cross-validation on its anchors.
 - `Tiers`: the per-sense quota of anchor and held-out sentences and the report of the senses that fall short.
@@ -205,8 +212,16 @@ the tiers report.
    threads), and inside a lemma the senses of a fit and the folds of the cross-validation are fitted concurrently too;
    each result is written to its own slot, so the weights do not depend on the thread count. A lemma whose
    fit is in the fit cache (see below) is not fitted again.
-8. Form choosers (for a form whose analyses span lemmas, such as `left`, `bases`, `rows`) are not trained yet: the
-   corpus has no rows for them. The blob format and its writer support them, and the weights carry none.
+8. Form choosers (for a form whose analyses span lemmas, such as `left`, `bases`, `rows`, or whose verb analyses differ
+   in tense, such as `read`) are trained from the chooser rows of `corpus/choosers` (see `ChooserCorpus` below), after
+   the lemmas: the rows of a form are encoded through the same cache, centered on the same mean, and fitted by the same
+   one-versus-rest logistic regression over the labels of the rows (a chooser has no groups, only a fine threshold,
+   chosen by the same cross-validation on its rows). A form gets no chooser, and is answered from the lexicon alone, when
+   its rows name fewer than two labels, when an analysis of the form has no label among them (the table refuses such a
+   chooser when the weights load) or when no lemma of the form has weights; the summary lists those forms with the
+   reason. A chooser is stored with the first lemma of the form, in ordinal order, that has weights. The held-out chooser
+   rows are only scored: the summary prints the top-1 accuracy of the choosers, the share of the sentences answered at
+   the thresholds and the precision of those answers.
 9. Check the half-precision storage: encode the held-out rows of the trained lemmas through the same cache, score them
    with the full-precision weights and with the weights read back from the written blob, print both fine top-1
    accuracies, and fail without writing when they differ by more than 0.2 percentage point. Then write the weights blob

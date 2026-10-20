@@ -21,7 +21,7 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     <para>
 ///     Start with <see cref="BertBaseCasedWordSenseModel"/>: create it, call <c>EnsureModelAsync</c>, then
 ///     <c>ClassifyAsync</c>. <c>BertBaseCasedWordSenseModel</c> composes its encoder model with the Basic model as the
-///     fallback (see <c>FallbackWordSenseModel</c>). The encoder model scores the fine senses of the 20 lemmas that this
+///     fallback (see <c>FallbackWordSenseModel</c>). The encoder model scores the fine senses of the lemmas that this
 ///     version has weights for and answers them at the sense, group or part-of-speech level, whichever its per-lemma
 ///     thresholds support; every other ambiguous word is answered by the Basic model at the part-of-speech level. A text
 ///     that has no trained lemma with several senses is classified without reading the model files, and a text that has

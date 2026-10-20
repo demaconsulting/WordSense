@@ -29,7 +29,7 @@ namespace DemaConsulting.WordSense;
 ///     <para>
 ///     Which model to choose. The comparison of the models is generated into the build notes
 ///     (https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-table.md, which the README
-///     repeats exactly). The encoder packages score the fine senses of the 20 lemmas of the first reviewed batch (see the
+///     repeats exactly). The encoder packages score the fine senses of the lemmas of the relabeled corpus (see the
 ///     senses appendix of the user guide) and answer every other ambiguous word through the Basic model (they compose it
 ///     with <see cref="FallbackWordSenseModel"/>); the table shows the figures measured on the held-out sentences of
 ///     that batch. Choose

@@ -1,0 +1,10 @@
+group_id	lemma	pos	label	origin	kind
+colour#group:visual-hue	colour	n	visual-hue	curated	equivalent
+combine#group:put-together	combine	v	put-together	curated	equivalent
+compact#group:compression	compact	v	compression	curated	equivalent
+compound#group:composite	compound	a	composite	curated	equivalent
+compound#group:joining	compound	v	joining	curated	equivalent
+conduct#group:conduct-music	conduct	v	conduct-music	curated	equivalent
+contact#group:touch-senses	contact	n	touch-senses	curated	equivalent
+contract#group:contracting	contract	v	contracting	curated	equivalent
+convert#group:transforming	convert	v	transforming	curated	equivalent

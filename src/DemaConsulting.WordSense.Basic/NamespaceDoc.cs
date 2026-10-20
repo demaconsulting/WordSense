@@ -106,7 +106,7 @@ namespace DemaConsulting.WordSense.Basic;
 ///     <para>
 ///     Which model to choose: Basic is the smallest and fastest and needs nothing else. The encoder packages
 ///     <c>DemaConsulting.WordSense.MiniLM</c> (22 MiB) and <c>DemaConsulting.WordSense.BertBaseCased</c> (104 MiB,
-///     case-aware) score the fine senses and groups of senses of the 20 lemmas of the first reviewed batch and answer
+///     case-aware) score the fine senses and groups of senses of the lemmas of the relabeled corpus and answer
 ///     every other ambiguous word through the Basic model. See the namespace documentation of
 ///     <c>DemaConsulting.WordSense</c> and the model table.
 ///     </para>

@@ -18,9 +18,8 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     resources are released after the last one).
 ///     </para>
 ///     <para>
-///     Classification. The encoder model scores the fine senses of the 20 lemmas that this version has weights for
-///     (`back`, `even`, `first`, `forward`, `go`, `help`, `home`, `however`, `just`, `little`, `long`, `only`, `own`,
-///     `please`, `pretty`, `review`, `right`, `still`, `test` and `well`) and answers each of them at the finest level its
+///     Classification. The encoder model scores the fine senses of the lemmas that this version has weights for
+///     (the lemmas of the relabeled corpus, listed in the senses appendix of the user guide) and answers each of them at the finest level its
 ///     per-lemma thresholds support: the <see cref="SenseLevel.Sense"/> level with the sense id, the
 ///     <see cref="SenseLevel.Group"/> level with the group id, or the <see cref="SenseLevel.PartOfSpeech"/> level; the
 ///     ranked senses of every analysis are listed whatever the level. A word with one analysis and one sense is answered

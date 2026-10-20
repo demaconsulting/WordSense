@@ -1,6 +1,15 @@
 group_id	lemma	pos	label	origin	kind
+talk#group:revealing	talk	v	revealing	curated	equivalent
+taste#group:taste-sensation	taste	n	taste-sensation	curated	equivalent
+tear#group:tearing-apart	tear	v	tearing-apart	curated	equivalent
 test#group:exam	test	n	exam	curated	related
 test#group:examine-knowledge	test	v	examine-knowledge	curated	related
 test#group:medical	test	v	medical	curated	related
 test#group:trial	test	n	trial	curated	related
 test#group:try-out	test	v	try-out	curated	related
+tie#group:contest-tie	tie	n	contest-tie	curated	equivalent
+tip#group:tilting	tip	v	tilting	curated	equivalent
+torment#group:severe-suffering	torment	n	severe-suffering	curated	equivalent
+torture#group:severe-suffering	torture	n	severe-suffering	curated	equivalent
+touch#group:contact-actions	touch	v	contact-actions	curated	equivalent
+trust#group:trusting	trust	v	trusting	curated	equivalent

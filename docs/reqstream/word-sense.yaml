@@ -350,6 +350,7 @@ sections:
           - WordSense-WordSenseBuilder-Words
           - WordSense-WordSenseBuilder-ImportDictionary
           - WordSense-WordSenseBuilder-Weights
+          - WordSense-WordSenseBuilder-FormChoosers
           - WordSense-WordSenseBuilder-Thresholds
           - WordSense-WordSenseBuilder-Tiers
           - WordSense-WordSenseBuilder-EmbeddingCache

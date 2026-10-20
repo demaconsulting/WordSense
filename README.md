@@ -139,13 +139,13 @@ deer      Noun         Sense        1.00  deer#noun
 so        Conjunction  Sense        0.61  so#conjunction Adverb 0.39
 we        Pronoun      Sense        1.00  we#pronoun
 will      Auxiliary    Sense        1.00  will#auxiliary Noun 0.00
-record    Verb         PartOfSpeech 1.00                 Noun 0.00
+record    Verb         PartOfSpeech 0.94                 Noun 0.06
 a         Determiner   Sense        1.00  a#determiner
-record    Noun         PartOfSpeech 1.00                 Verb 0.00
+record    Noun         PartOfSpeech 0.93                 Verb 0.07
 then      Adverb       PartOfSpeech 0.99                 Noun 0.01
-go        Verb         PartOfSpeech 0.82                 Noun 0.18
-back      Adverb       Sense        0.98  back#to-former-place Noun 0.00
-home      Noun         PartOfSpeech 0.77                 Adverb 0.21
+go        Verb         PartOfSpeech 0.76                 Noun 0.22
+back      Adverb       Sense        0.98  back#to-former-place Noun 0.01
+home      Noun         PartOfSpeech 0.76                 Adverb 0.23
 ```
 
 Output with the `BertBaseCased` model:
@@ -159,30 +159,31 @@ an        Determiner   Sense        1.00  an#determiner
 arrow     Noun         PartOfSpeech 1.00
 from      Preposition  Sense        1.00  from#preposition
 his       Determiner   Sense        1.00  his#determiner
-bow       Noun         PartOfSpeech 1.00                 Verb 0.00
+bow       Noun         Sense        1.00  bow#archery-bow Verb 0.00
 at        Preposition  Sense        1.00  at#preposition Noun 0.00
 a         Determiner   Sense        1.00  a#determiner
 deer      Noun         Sense        1.00  deer#noun
 so        Conjunction  Sense        0.61  so#conjunction Adverb 0.39
 we        Pronoun      Sense        1.00  we#pronoun
 will      Auxiliary    Sense        1.00  will#auxiliary Noun 0.00
-record    Verb         PartOfSpeech 1.00                 Noun 0.00
+record    Verb         PartOfSpeech 0.99                 Noun 0.01
 a         Determiner   Sense        1.00  a#determiner
-record    Noun         PartOfSpeech 1.00                 Verb 0.00
+record    Noun         PartOfSpeech 0.91                 Verb 0.09
 then      Adverb       PartOfSpeech 0.99                 Noun 0.01
 go        Verb         PartOfSpeech 0.99                 Noun 0.01
 back      Adverb       Sense        0.97  back#to-former-place Noun 0.00
 home      Adverb       Sense        0.54  home#to-residence Noun 0.22
 ```
 
-The words `bow` and `record` are heteronyms but not among the 20 words that the encoders were trained for in this version,
-so every model answers them with the `Basic` model at the part-of-speech level. The words `go`, `back` and `home` are
-trained: the `Level` of an answer says how precisely the model answers. `Sense` is a fine sense (`back#to-former-place`,
+The words `bow`, `record`, `go`, `back` and `home` are trained by the encoder models in this version (the senses
+appendix lists them), while `Basic` answers every word at the part-of-speech level (and a word with one sense at the
+sense level). The `Level` of an answer says how precisely the model answers. `Sense` is a fine sense
+(`back#to-former-place`,
 with its id and sense key in the catalog, and also for a word whose lemma and part of speech have only one sense, such
 as `the`), `Group` is a group of closely related senses (`GroupId`; none of the words above reaches it), and
 `PartOfSpeech` is the analysis only: the model could not tell the senses apart with the precision its thresholds ask for
-(MiniLM and BertBaseCased answer `go` at that level and MiniLM also `home`), and the ranked senses of each analysis in
-`Analyses` still show how the
+(MiniLM answers `bow`, `record`, `go` and `home` at that level and BertBaseCased `record` and `go`), and the ranked
+senses of each analysis in `Analyses` still show how the
 evidence spreads. `Analyses` lists every possible analysis (lemma, part of speech and features) with its probability,
 `Details` is the best analysis of the most probable lemma and part of speech, and a low confidence marks a guess (for
 example `so`). The senses belong to a lemma and a part of speech, not to its feature variants: `deer` is a singular
@@ -203,27 +204,30 @@ Tokenize the text yourself, one sentence per call: punctuation is a token of its
 <!-- model-table:begin -->
 | Model | Holdout best analysis | Real-text best analysis | Part of speech (holdout / real) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Basic | 77.64% | n/a | 77.64% / n/a | none | 83 KiB | 8 MiB | 0.07 ms | 31 ms + 59 ms | no |
-| MiniLM | 94.72% | n/a | 94.72% / n/a | 22 MiB | 203 KiB | 60 MiB | 1.92 ms | 356 ms + 57 ms | yes |
-| BERT base cased | 97.87% | n/a | 97.87% / n/a | 104 MiB | 396 KiB | 148 MiB | 26.05 ms | 591 ms + 85 ms | yes |
+| Basic | 90.55% | n/a | 90.81% / n/a | none | 83 KiB | 4 MiB | 0.06 ms | 31 ms + 58 ms | no |
+| MiniLM | 94.89% | n/a | 95.14% / n/a | 22 MiB | 2,721 KiB | 67 MiB | 5.47 ms | 408 ms + 56 ms | yes |
+| BERT base cased | 97.36% | n/a | 97.59% / n/a | 104 MiB | 5,360 KiB | 180 MiB | 24.50 ms | 641 ms + 57 ms | yes |
 <!-- model-table:end -->
 
 <!-- markdownlint-enable MD013 -->
 
 - ⚡ **basic** - No download, fastest; answers at the part-of-speech level (and the sense of a word with one sense).
-- ⚖️ **minilm** - The default encoder package: 22 MiB download; fine senses for the 20 trial words, `Basic` for the rest.
-- 🎯 **bert-base-cased** - Larger case-sensitive encoder, 104 MiB download; the most precise on the 20 trial words.
+- ⚖️ **minilm** - The default encoder package: 22 MiB download; fine senses for the 764 trained lemmas, `Basic` for the
+  rest.
+- 🎯 **bert-base-cased** - Larger case-sensitive encoder, 104 MiB download; the most precise on the trained lemmas.
 
-The columns measure the 984 held-out sentences of the 20 trial words (the whole table, all three models, is measured on
-the same sentences), so they say nothing about words that no model was trained for; the real-text columns are `n/a`
-until an independent evaluation (SemCor for senses, the English EWT treebank for parts of speech) is published. The
-held-out sentences were written by the same generator as the training sentences, so the numbers are optimistic. The
-levels of the encoder answers on these sentences (`docs/build_notes/trial-evaluation.md` has the full tables):
+The columns measure the 12,369 held-out sentences of the relabeled corpus and of the first reviewed batch (the whole
+table, all three models, is measured on the same sentences), so they say nothing about words that no model was trained
+for; the real-text columns are `n/a` until an independent evaluation (SemCor for senses, the English EWT treebank for
+parts of speech) is published. About 43% of the held-out sentences are real sentences (Tatoeba and Project
+Gutenberg), the others were written by a language model, and the sense of every sentence was judged by a model or mapped
+by rule, so the numbers are optimistic. The levels of the encoder answers on these sentences
+(`docs/build_notes/relabel-results.md` has the full tables):
 
 | Model | Sense (share, precision) | Group (share, precision) | Part of speech (share, precision) |
 | --- | ---: | ---: | ---: |
-| MiniLM | 50.2%, 96.2% | 8.1%, 97.5% | 41.7%, 88.5% |
-| BERT base cased | 81.5%, 96.6% | 5.4%, 98.1% | 13.1%, 87.6% |
+| MiniLM | 57.2%, 91.9% | 1.4%, 94.1% | 41.4%, 91.2% |
+| BERT base cased | 69.8%, 93.5% | 0.8%, 95.0% | 29.4%, 94.1% |
 
 The table is generated into `docs/build_notes/model-table.md`; the user guide explains how the numbers were measured
 and lists the confidence thresholds of each model. See also the [model comparison][link-model-comparison] and the

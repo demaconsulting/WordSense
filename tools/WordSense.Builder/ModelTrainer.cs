@@ -39,8 +39,8 @@ internal static class ModelTrainer
     /// <remarks>
     ///     The anchors and the holdout are read from the fine-sense folders of the corpus and checked against the sense
     ///     catalog of the word image; the legacy class-labeled folders are never read. Rows whose only problem is that
-    ///     their target word is no form of their lemma are reported as warnings and still train. Form choosers are not
-    ///     trained: the corpus has no rows for them yet.
+    ///     their target word is no form of their lemma are reported as warnings and still train. The form choosers are
+    ///     trained from <c>corpus/choosers</c> (rows of the form, the label and the sentence) and stored with the weights.
     /// </remarks>
     /// <param name="repository">The repository root.</param>
     /// <param name="corpus">The corpus directory.</param>
@@ -62,6 +62,9 @@ internal static class ModelTrainer
         var validation = SenseInventory.Validate(anchors, holdout);
         ReportWarnings(validation, output, info.Name);
         validation.ThrowIfInvalid();
+        var chooserAnchors = ChooserCorpus.ReadDirectory(Path.Join(corpus, "choosers", "anchors"));
+        var chooserHoldout = ChooserCorpus.ReadDirectory(Path.Join(corpus, "choosers", "holdout"));
+        ChooserCorpus.Validate(chooserAnchors, chooserHoldout).ThrowIfInvalid();
         var options = new TrainingOptions(Parallelism: TrainingOptions.DefaultParallelism, Solver: settings.Solver);
         var clock = Stopwatch.StartNew();
 
@@ -92,7 +95,7 @@ internal static class ModelTrainer
         using var encoder = model.OpenEncoder();
         var caching = new CachingEncoder(encoder.EncodeAsync, cache);
         var data = await TrainDataAsync(
-            info.Name, model.ModelId, WordLexicon.Current.InventoryHash.ToArray(), anchors, options, caching, frozenMean, fitCache, output, clock, cancellationToken, holdout).ConfigureAwait(false);
+            info.Name, model.ModelId, WordLexicon.Current.InventoryHash.ToArray(), anchors, options, caching, frozenMean, fitCache, output, clock, cancellationToken, holdout, chooserAnchors, chooserHoldout).ConfigureAwait(false);
 
         Directory.CreateDirectory(Path.GetDirectoryName(path)!);
         File.WriteAllBytes(path, WeightsBlobWriter.Write(data));
@@ -180,7 +183,9 @@ internal static class ModelTrainer
     /// <param name="clock">The clock of the whole run.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <param name="holdout">The held-out rows for the half-precision gate, or null to skip the gate.</param>
-    /// <returns>The full-precision weights.</returns>
+    /// <param name="chooserAnchors">The chooser training rows, or null for none.</param>
+    /// <param name="chooserHoldout">The chooser held-out rows that measure the choosers, or null for none.</param>
+    /// <returns>The full-precision weights, with the form choosers.</returns>
     /// <exception cref="InvalidDataException">Thrown when a target word has no tokens, the corpus is inconsistent or the half-precision gate fails.</exception>
     internal static async Task<WeightsData> TrainDataAsync(
         string name,
@@ -194,7 +199,9 @@ internal static class ModelTrainer
         TextWriter output,
         Stopwatch clock,
         CancellationToken cancellationToken,
-        IReadOnlyList<CorpusRow>? holdout = null)
+        IReadOnlyList<CorpusRow>? holdout = null,
+        IReadOnlyList<ChooserRow>? chooserAnchors = null,
+        IReadOnlyList<ChooserRow>? chooserHoldout = null)
     {
         var pooled = await EncodeAsync(name, "sentences", anchors, encoder, output, clock, cancellationToken).ConfigureAwait(false);
         output.WriteLine($"{name}: embeddings: {encoder.Hits} cache hits, {encoder.Misses} encoded in {encoder.EncodeTime:hh\\:mm\\:ss\\.fff} ({(encoder.Cache is null ? "cache off" : $"{encoder.Cache.Count} entries cached")}).");
@@ -209,6 +216,11 @@ internal static class ModelTrainer
         var fitClock = Stopwatch.StartNew();
         var trained = WeightsTrainer.TrainDense(modelId, inventoryHash, pooled, anchors, options, frozenMean, fitCache);
         var data = trained.Data;
+        if (chooserAnchors is { Count: > 0 })
+        {
+            data = await TrainChoosersAsync(name, data, chooserAnchors, chooserHoldout ?? [], options, encoder, fitCache, output, clock, cancellationToken).ConfigureAwait(false);
+        }
+
         if (fitCache is not null)
         {
             output.WriteLine($"{name}: lemma fits: {fitCache.Hits} reused, {fitCache.Misses} fitted in {fitClock.Elapsed:hh\\:mm\\:ss\\.fff}.");
@@ -244,17 +256,34 @@ internal static class ModelTrainer
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>The pooled vector of each row.</returns>
     /// <exception cref="InvalidDataException">Thrown when a target word has no tokens.</exception>
-    private static async Task<double[][]> EncodeAsync(string name, string what, IReadOnlyList<CorpusRow> rows, CachingEncoder encoder, TextWriter output, Stopwatch clock, CancellationToken cancellationToken)
+    private static Task<double[][]> EncodeAsync(string name, string what, IReadOnlyList<CorpusRow> rows, CachingEncoder encoder, TextWriter output, Stopwatch clock, CancellationToken cancellationToken) =>
+        EncodeAsync(name, what, rows.Count, i => (rows[i].Words, rows[i].TargetWordIndex, rows[i].Source, rows[i].Sentence), encoder, output, clock, cancellationToken);
+
+    /// <summary>
+    ///     Encodes the target word of every row through the caching encoder, saving the embedding cache as it grows and
+    ///     at the end.
+    /// </summary>
+    /// <param name="name">The model name used in messages.</param>
+    /// <param name="what">What the rows are called in the progress lines.</param>
+    /// <param name="count">The number of rows.</param>
+    /// <param name="row">Gives the words, the target index, the source file and the sentence of a row.</param>
+    /// <param name="encoder">The encoder, with its cache.</param>
+    /// <param name="output">Receives progress messages.</param>
+    /// <param name="clock">The clock of the whole run.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>The pooled vector of each row.</returns>
+    /// <exception cref="InvalidDataException">Thrown when a target word has no tokens.</exception>
+    private static async Task<double[][]> EncodeAsync(string name, string what, int count, Func<int, (IReadOnlyList<string> Words, int Target, string Source, string Sentence)> row, CachingEncoder encoder, TextWriter output, Stopwatch clock, CancellationToken cancellationToken)
     {
-        var pooled = new double[rows.Count][];
+        var pooled = new double[count][];
         var savedAtMisses = encoder.Misses;
         try
         {
-            for (var i = 0; i < rows.Count; i++)
+            for (var i = 0; i < count; i++)
             {
-                var row = rows[i];
-                pooled[i] = await encoder.EncodeAsync(row.Words, row.TargetWordIndex, cancellationToken).ConfigureAwait(false)
-                    ?? throw new InvalidDataException($"{row.Source}: the target word has no tokens: {row.Sentence}");
+                var (words, target, source, sentence) = row(i);
+                pooled[i] = await encoder.EncodeAsync(words, target, cancellationToken).ConfigureAwait(false)
+                    ?? throw new InvalidDataException($"{source}: the target word has no tokens: {sentence}");
                 if (encoder.Cache is not null && encoder.Misses - savedAtMisses >= CheckpointMisses)
                 {
                     // A long encode must not be lost when it is interrupted
@@ -264,7 +293,7 @@ internal static class ModelTrainer
 
                 if ((i + 1) % ProgressInterval == 0)
                 {
-                    output.WriteLine($"{name}: processed {i + 1} of {rows.Count} {what}: {encoder.Hits} cache hits, {encoder.Misses} encoded ({clock.Elapsed:hh\\:mm\\:ss}).");
+                    output.WriteLine($"{name}: processed {i + 1} of {count} {what}: {encoder.Hits} cache hits, {encoder.Misses} encoded ({clock.Elapsed:hh\\:mm\\:ss}).");
                 }
             }
         }
@@ -277,6 +306,113 @@ internal static class ModelTrainer
         }
 
         return pooled;
+    }
+
+    /// <summary>
+    ///     Trains the form choosers from the chooser rows, measures them on the held-out chooser rows and attaches them
+    ///     to the weights.
+    /// </summary>
+    /// <param name="name">The model name used in messages.</param>
+    /// <param name="data">The weights of the lemmas.</param>
+    /// <param name="anchors">The chooser training rows.</param>
+    /// <param name="holdout">The held-out chooser rows; they are only scored, never trained on.</param>
+    /// <param name="options">The settings.</param>
+    /// <param name="encoder">The encoder, with its cache.</param>
+    /// <param name="fitCache">The cache of fits, or null.</param>
+    /// <param name="output">Receives the report lines.</param>
+    /// <param name="clock">The clock of the whole run.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>The weights with the choosers.</returns>
+    /// <exception cref="InvalidDataException">Thrown when a target word has no tokens or a feature has no magnitude.</exception>
+    private static async Task<WeightsData> TrainChoosersAsync(
+        string name,
+        WeightsData data,
+        IReadOnlyList<ChooserRow> anchors,
+        IReadOnlyList<ChooserRow> holdout,
+        TrainingOptions options,
+        CachingEncoder encoder,
+        FitCache? fitCache,
+        TextWriter output,
+        Stopwatch clock,
+        CancellationToken cancellationToken)
+    {
+        var pooled = await EncodeAsync(name, "chooser sentences", anchors.Count, i => (anchors[i].Words, anchors[i].TargetWordIndex, anchors[i].Source, anchors[i].Sentence), encoder, output, clock, cancellationToken).ConfigureAwait(false);
+        var features = Features(pooled, data.Mean, anchors.Select(r => r.Source + ": " + r.Sentence).ToList());
+        var (withChoosers, report) = WeightsTrainer.AttachChoosers(data, anchors, features, options, fitCache);
+        output.WriteLine($"{name}: form choosers: {report.Trained.Count} trained from {anchors.Count} sentences, {report.Trained.Count(c => c.Weights.FineThreshold < LemmaWeights.Never)} with a fine threshold; {report.Skipped.Count} forms got none.");
+        foreach (var skipped in report.Skipped.Take(MaxLemmasListed))
+        {
+            output.WriteLine($"{name}:   no chooser for '{skipped.Form}': {skipped.Reason}.");
+        }
+
+        if (holdout.Count > 0 && report.Trained.Count > 0)
+        {
+            await MeasureChoosersAsync(name, report, data.Mean, holdout, encoder, output, clock, cancellationToken).ConfigureAwait(false);
+        }
+
+        return withChoosers;
+    }
+
+    /// <summary>
+    ///     Measures the choosers on the held-out chooser rows: the share answered at the threshold and the precision.
+    /// </summary>
+    /// <param name="name">The model name used in messages.</param>
+    /// <param name="report">The trained choosers.</param>
+    /// <param name="mean">The global mean of the weights.</param>
+    /// <param name="holdout">The held-out rows.</param>
+    /// <param name="encoder">The encoder, with its cache.</param>
+    /// <param name="output">Receives the report lines.</param>
+    /// <param name="clock">The clock of the whole run.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    private static async Task MeasureChoosersAsync(string name, ChooserTraining report, float[] mean, IReadOnlyList<ChooserRow> holdout, CachingEncoder encoder, TextWriter output, Stopwatch clock, CancellationToken cancellationToken)
+    {
+        var choosers = report.Trained.ToDictionary(c => c.Form, StringComparer.Ordinal);
+        var rows = holdout.Where(r => choosers.ContainsKey(r.Form)).ToList();
+        if (rows.Count == 0)
+        {
+            output.WriteLine($"{name}: form choosers: no held-out row belongs to a trained chooser.");
+            return;
+        }
+
+        var pooled = await EncodeAsync(name, "held-out chooser sentences", rows.Count, i => (rows[i].Words, rows[i].TargetWordIndex, rows[i].Source, rows[i].Sentence), encoder, output, clock, cancellationToken).ConfigureAwait(false);
+        var features = Features(pooled, mean, rows.Select(r => r.Source + ": " + r.Sentence).ToList());
+        int top1 = 0, answered = 0, answeredCorrect = 0;
+        for (var i = 0; i < rows.Count; i++)
+        {
+            var chooser = choosers[rows[i].Form];
+            var scores = new float[chooser.Weights.SenseCount];
+            chooser.Weights.Scores(features[i], scores);
+            var (best, margin) = LemmaWeights.Rank(scores);
+            var correct = string.Equals(chooser.Labels[best], rows[i].Label, StringComparison.Ordinal);
+            top1 += correct ? 1 : 0;
+            if (margin >= chooser.Weights.FineThreshold)
+            {
+                answered++;
+                answeredCorrect += correct ? 1 : 0;
+            }
+        }
+
+        var inv = CultureInfo.InvariantCulture;
+        output.WriteLine($"{name}: form choosers on {rows.Count} held-out sentences: top-1 {(100.0 * top1 / rows.Count).ToString("F2", inv)} %, answered at the threshold {(100.0 * answered / rows.Count).ToString("F2", inv)} % with precision {(answered == 0 ? "n/a" : (100.0 * answeredCorrect / answered).ToString("F2", inv) + " %")}.");
+    }
+
+    /// <summary>
+    ///     Centers the pooled vectors on the global mean and scales them to unit length.
+    /// </summary>
+    /// <param name="pooled">The pooled vectors.</param>
+    /// <param name="mean">The global mean.</param>
+    /// <param name="descriptions">A description of each row, for the message of a vector without magnitude.</param>
+    /// <returns>The features.</returns>
+    /// <exception cref="InvalidDataException">Thrown when a feature has no magnitude.</exception>
+    private static float[][] Features(double[][] pooled, float[] mean, IReadOnlyList<string> descriptions)
+    {
+        var features = new float[pooled.Length][];
+        for (var i = 0; i < pooled.Length; i++)
+        {
+            features[i] = FeatureExtractor.Center(pooled[i], mean) ?? throw new InvalidDataException($"The feature has no magnitude: {descriptions[i]}");
+        }
+
+        return features;
     }
 
     /// <summary>

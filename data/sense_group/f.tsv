@@ -3,5 +3,8 @@ first#group:first-in-order	first	n	first-in-order	curated	equivalent
 first#group:initial	first	a	initial	curated	related
 first#group:initially	first	r	initially	curated	equivalent
 first#group:top	first	a	top	curated	related
+fool#group:deception	fool	v	deception	curated	equivalent
 forward#group:ahead-in-time	forward	r	ahead-in-time	curated	equivalent
 forward#group:toward-front	forward	r	toward-front	curated	equivalent
+frame#group:enclosing	frame	v	enclosing	curated	equivalent
+function#group:formal-gathering	function	n	formal-gathering	curated	equivalent

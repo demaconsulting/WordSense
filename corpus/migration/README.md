@@ -8,8 +8,11 @@ several senses narrows the candidates that a judge chooses from, and the respell
 kept for the lemmas that have them.
 
 **The file is temporary and internal.** It is not part of the word data (`validate-data` does not read it), it is not
-shipped, published or listed in the appendix, and nothing promises users a mapping from the old class ids. It is deleted
-when the relabeling is done.
+shipped, published or listed in the appendix, and nothing promises users a mapping from the old class ids. **The
+relabeling of our own corpus is done** (see "Relabeled Legacy Corpus" in `../README.md`), but the file is not deleted
+yet: the Basic model still trains from the legacy corpus, and its trainer (`AnalysisLabels`) rolls the legacy labels up
+to analysis labels with this map. It is deleted together with `../legacy/` when the Basic model no longer needs the
+legacy corpus.
 
 **The file is now a committed record, not regenerated.** It was written once by the `legacy-class-map` builder command
 from the class tables, after the group data had its final form (a group exists only when curated, so a sense that is in
@@ -28,3 +31,7 @@ A group id would be `lemma#group:slug`. Group ids are versioned per data release
 empty in every row of this record and the relabeling uses the sense ids only.
 
 The kinds are `sense_group`, `no_oewn`, `unmapped`, `lemma_split` and `feature_only`; the last two are entry classes.
+
+**The `sense_id` column holds the labels that `label-senses` generated at the time of the map**, before the curation of
+the second batch changed 4,077 of the 6,256 ids it names. `sense-id-map.tsv` (`old_sense_id`, `sense_id`) gives the
+current id of each changed one; an id that is not in it did not change. The relabeling applied this translation.

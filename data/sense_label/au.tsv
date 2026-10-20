@@ -1,6 +1,6 @@
 sense_id	label	origin
 dema-aught-u-1	pronoun	project
-dema-augment-n-1	noun	project
+dema-augment-n-1	addition	project
 oewn-au__1.23.00..	noun	generated
 oewn-au__1.27.00..	noun	generated
 oewn-auberge__1.06.00..	noun	generated
@@ -70,8 +70,8 @@ oewn-auger__1.06.01..	plumber-s-snake	generated
 oewn-aught__1.23.00..	noun	generated
 oewn-augite__1.27.00..	noun	generated
 oewn-augitic__3.01.00..	adjective	generated
-oewn-augment__2.30.00..	grow	generated
-oewn-augment__2.30.01..	increase	generated
+oewn-augment__2.30.00..	grow	curated
+oewn-augment__2.30.01..	increase	curated
 oewn-augmentation__1.04.00..	increase	generated
 oewn-augmentation__1.10.00..	statement	generated
 oewn-augmentation__1.11.00..	increase-2	generated
@@ -84,8 +84,8 @@ oewn-augur__2.32.00..	auspicate	generated
 oewn-augur__2.32.01..	anticipate	generated
 oewn-augury__1.11.00..	noun	generated
 oewn-august__1.28.00..	noun	generated
-oewn-august__5.00.00.honorable.00	revered	generated
-oewn-august__5.00.00.noble.02	grand	generated
+oewn-august__5.00.00.honorable.00	revered	curated
+oewn-august__5.00.00.noble.02	grand	curated
 oewn-augustan__3.01.00..	adjective	generated
 oewn-augustinian__1.18.00..	noun	generated
 oewn-auk__1.05.00..	noun	generated

@@ -6,7 +6,7 @@ namespace DemaConsulting.WordSense.BertBaseCased.Tests;
 /// </summary>
 public class BertBaseCasedWordSenseModelTests
 {
-    private static readonly string[] Sentence = ["They", "will", "record", "the", "record", "."];
+    private static readonly string[] Sentence = ["They", "will", "shelter", "the", "shelter", "."];
 
     private static BertBaseCasedWordSenseModel Open(string? directory = null)
     {

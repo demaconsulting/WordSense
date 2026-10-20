@@ -49,8 +49,9 @@ internal sealed record TrainedWeights(WeightsData Data, IReadOnlyList<(string Le
 ///     <see cref="Thresholds.Choose"/> on the anchors alone.
 ///     </para>
 ///     <para>
-///     Form choosers (the small classifiers that pick the lemma of a form such as <c>left</c>) are not trained: the
-///     corpus has no rows for them yet, so the weights carry none (the blob format supports them).
+///     Form choosers (the small classifiers that pick the lemma, or the tense, of a form such as <c>left</c> or
+///     <c>read</c>) are trained from the chooser rows of the corpus by <see cref="AttachChoosers"/> and stored with a
+///     trained lemma of their form.
 ///     </para>
 /// </remarks>
 internal static class WeightsTrainer
@@ -263,4 +264,137 @@ internal static class WeightsTrainer
     /// <returns>The lemma with its classifier and thresholds.</returns>
     private static WeightedLemma Entry(string lemma, string[] senseIds, LemmaFit fit) =>
         new(lemma, senseIds, new LemmaWeights(fit.Weights, fit.Bias, fit.Dimension, fit.FineThreshold, fit.GroupThreshold));
+
+    /// <summary>
+    ///     Trains the form choosers from the chooser rows and stores each with a trained lemma of its form.
+    /// </summary>
+    /// <remarks>
+    ///     <para>
+    ///     For every form that has rows the labels are the distinct labels of its rows in ordinal order and the classifier
+    ///     is the same one-versus-rest L2 logistic regression as a lemma's, fitted on the features of the rows, with the
+    ///     fine threshold chosen by cross-validation on the rows of the form (a chooser has no groups). A form gets no
+    ///     chooser, and is answered from the lexicon, when its rows name fewer than two labels, when an analysis of the
+    ///     form has no label among them (the table refuses such a chooser at load) or when no lemma of the form has
+    ///     weights to store the chooser with.
+    ///     </para>
+    ///     <para>
+    ///     A chooser is stored with the first lemma of the form, in ordinal order, that has weights; the table finds it
+    ///     through its form whatever the lemma.
+    ///     </para>
+    /// </remarks>
+    /// <param name="data">The weights of the lemmas.</param>
+    /// <param name="rows">The chooser rows (anchors).</param>
+    /// <param name="features">The centered, unit-length feature of each row (centered on the mean of <paramref name="data"/>).</param>
+    /// <param name="options">The settings.</param>
+    /// <param name="fitCache">The cache of fits, or null.</param>
+    /// <returns>The weights with the choosers, and the report of the forms that got one and those that did not.</returns>
+    /// <exception cref="ArgumentException">Thrown when there is not one feature per row.</exception>
+    public static (WeightsData Data, ChooserTraining Report) AttachChoosers(WeightsData data, IReadOnlyList<ChooserRow> rows, float[][] features, TrainingOptions options, FitCache? fitCache = null)
+    {
+        ArgumentNullException.ThrowIfNull(data);
+        ArgumentNullException.ThrowIfNull(rows);
+        ArgumentNullException.ThrowIfNull(features);
+        ArgumentNullException.ThrowIfNull(options);
+        if (features.Length != rows.Count)
+        {
+            throw new ArgumentException("There must be one feature per chooser row.", nameof(features));
+        }
+
+        var trained = data.Lemmas.Select(l => l.Lemma).ToHashSet(StringComparer.Ordinal);
+        var forms = rows.Select((row, i) => (row, i)).GroupBy(t => t.row.Form, StringComparer.Ordinal)
+            .OrderBy(g => g.Key, StringComparer.Ordinal).ToList();
+        var results = new (string Host, FormChooser? Chooser, string? Skip)[forms.Count];
+        Parallel.For(0, forms.Count, new ParallelOptions { MaxDegreeOfParallelism = Math.Max(1, options.Parallelism) }, k =>
+        {
+            results[k] = TrainChooser(forms[k].Key, forms[k].Select(t => t.i).ToArray(), rows, features, trained, options, fitCache);
+        });
+
+        var byHost = new Dictionary<string, List<FormChooser>>(StringComparer.Ordinal);
+        var skipped = new List<(string Form, string Reason)>();
+        var made = new List<FormChooser>();
+        for (var k = 0; k < forms.Count; k++)
+        {
+            if (results[k].Chooser is { } chooser)
+            {
+                made.Add(chooser);
+                if (!byHost.TryGetValue(results[k].Host, out var list))
+                {
+                    list = [];
+                    byHost[results[k].Host] = list;
+                }
+
+                list.Add(chooser);
+            }
+            else
+            {
+                skipped.Add((forms[k].Key, results[k].Skip!));
+            }
+        }
+
+        var lemmas = data.Lemmas.Select(l => byHost.TryGetValue(l.Lemma, out var list) ? l with { Choosers = [.. l.Choosers, .. list] } : l).ToList();
+        return (data with { Lemmas = lemmas }, new ChooserTraining(made, skipped));
+    }
+
+    /// <summary>
+    ///     Trains the chooser of one form.
+    /// </summary>
+    /// <param name="form">The form.</param>
+    /// <param name="index">The indexes of the rows of the form.</param>
+    /// <param name="rows">All chooser rows.</param>
+    /// <param name="features">The feature of each row.</param>
+    /// <param name="trainedLemmas">The lemmas that have weights.</param>
+    /// <param name="options">The settings.</param>
+    /// <param name="fitCache">The cache of fits, or null.</param>
+    /// <returns>The lemma that stores the chooser and the chooser, or the reason the form got none.</returns>
+    private static (string Host, FormChooser? Chooser, string? Skip) TrainChooser(
+        string form,
+        int[] index,
+        IReadOnlyList<ChooserRow> rows,
+        float[][] features,
+        HashSet<string> trainedLemmas,
+        TrainingOptions options,
+        FitCache? fitCache)
+    {
+        var labels = index.Select(i => rows[i].Label).Distinct(StringComparer.Ordinal).Order(StringComparer.Ordinal).ToArray();
+        if (labels.Length < 2)
+        {
+            return (string.Empty, null, $"the rows name {labels.Length} label(s), a chooser needs two");
+        }
+
+        var analyses = ChooserCorpus.AnalysesOf(form);
+        if (analyses.FirstOrDefault(a => ChooserCorpus.LabelIndexOf(labels, a) < 0) is { } unlabeled)
+        {
+            return (string.Empty, null, $"no row has the label of the analysis {unlabeled.Lemma}/{unlabeled.PartOfSpeech}/{unlabeled.Features}");
+        }
+
+        var host = analyses.Select(a => a.Lemma).Distinct(StringComparer.Ordinal).Order(StringComparer.Ordinal).FirstOrDefault(trainedLemmas.Contains);
+        if (host is null)
+        {
+            return (string.Empty, null, "no lemma of the form has weights to store the chooser with");
+        }
+
+        var y = index.Select(i => Array.IndexOf(labels, rows[i].Label)).ToArray();
+        var x = index.Select(i => features[i]).ToArray();
+        var groups = new int[labels.Length];
+        Array.Fill(groups, -1);
+        var key = fitCache is null ? null : FitCache.KeyOf(options, "chooser:" + form, labels, groups, y, x);
+        if (key is not null && fitCache!.TryGet(key, out var cached))
+        {
+            return (host, new FormChooser(form, labels, new LemmaWeights(cached.Weights, cached.Bias, cached.Dimension, cached.FineThreshold)), null);
+        }
+
+        var fitter = new LemmaFitter(x, options.Solver);
+        var (weights, bias) = fitter.Fit(Enumerable.Range(0, x.Length).ToArray(), y, labels.Length, options.C);
+        var thresholds = Thresholds.Choose(form, x, y, labels.Length, groups, options, fitter);
+        var fit = new LemmaFit(weights, bias, thresholds.Fine, LemmaWeights.Never, x[0].Length);
+        fitCache?.Add(key!, fit);
+        return (host, new FormChooser(form, labels, new LemmaWeights(fit.Weights, fit.Bias, fit.Dimension, fit.FineThreshold)), null);
+    }
 }
+
+/// <summary>
+///     The form choosers of a training run and the forms that got none.
+/// </summary>
+/// <param name="Trained">The choosers that were trained, in ordinal order of the form.</param>
+/// <param name="Skipped">Each form with rows that got no chooser, with the reason.</param>
+internal sealed record ChooserTraining(IReadOnlyList<FormChooser> Trained, IReadOnlyList<(string Form, string Reason)> Skipped);

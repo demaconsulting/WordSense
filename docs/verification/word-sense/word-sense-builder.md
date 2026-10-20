@@ -13,7 +13,8 @@ writers against the readers of the shipped packages, `UdCountsTests.cs` covers t
 and `BasicTrainerTests.cs` covers its trainer, table writer, model data summary and hyper-parameters;
 `EmbeddingCacheTests.cs`, `FitCacheTests.cs` and `ModelTrainerTests.cs` cover the embedding cache, the lemma fit cache,
 the frozen mean and the thresholds with a stub encoder; `WeightsTrainerTests.cs` and `ThresholdsTests.cs` cover the fit
-and the choice of the thresholds on small synthetic features; `TiersTests.cs`, `SenseEvalTests.cs`,
+and the choice of the thresholds on small synthetic features; `ChooserCorpusTests.cs` and `ChooserTrainingTests.cs`
+cover the chooser rows and the training of the form choosers; `TiersTests.cs`, `SenseEvalTests.cs`,
 `RunningTextTests.cs` and `SuiteReaderTests.cs` cover the quota report, the two independent evaluations and the suite
 reader
 with small synthetic corpora and cached-file fixtures; `EvaluatorTests.cs` covers the per-level evaluation with a stub
@@ -130,6 +131,19 @@ All scenarios below pass on every platform and target framework of the CI matrix
   there are at least as many
   samples as features (`..._MoreSamplesThanDimensions_IsThePrimalSolver`). On the committed corpus the kernel fit
   gives identical answers on the held-out sentences and a gate difference of 0.00 points (see the fit-speed note).
+- **Form choosers** (`ChooserCorpusTests.cs`, `ChooserTrainingTests.cs`; real forms of the word image, hand-made
+  features, no encoder): a chooser row is read with its form, label and braced target, a label may be a lemma or
+  `lemma/features`, and a row that is not three columns, has an upper-case form, a target that is not the form, an
+  unknown form or a label of no analysis is described (`ChooserCorpus_ReadSentences_InvalidRows_AreDescribed`); a
+  sentence that occurs twice or in both sets is an error (`ChooserCorpus_Validate_DuplicateSentence_IsAnError`); the
+  label of an analysis is the exact `lemma/features` label, else the lemma
+  (`ChooserCorpus_LabelIndexOf_PrefersTheExactLabel`). A form of two lemmas gets a chooser with labels in ordinal order
+  that tells them apart and is stored with the first lemma of the form that has weights
+  (`WeightsTrainer_AttachChoosers_FormOfTwoLemmas_StoresTheChooserWithTheFirstTrainedLemma`, `..._OnlyTheSecondLemmaTrained_...`,
+  the blob read back by the real reader); the tense variants of one lemma get one label each
+  (`..._TenseVariants_GetOneLabelEach`); a form whose rows name one label, whose analysis has no label or that has no
+  trained lemma gets no chooser and a reason (`..._UnusableForms_AreSkippedWithAReason`); the result is the same bits
+  with one thread and with many (`..._IsDeterministic_AndNeedsOneFeaturePerRow`).
 - **Lemmas without enough anchored senses**: a lemma with a single anchored sense gets no weights
   (`WeightsTrainer_LemmaWithOneAnchoredSense_GetsNoWeights`), and a sense with a single anchor stays in the training of
   a lemma that has two anchored senses (`WeightsTrainer_SenseWithOneAnchor_StaysInTraining`).

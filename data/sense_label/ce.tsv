@@ -397,10 +397,10 @@ oewn-certainty__1.07.00..	foregone-conclusion	generated
 oewn-certainty__1.09.00..	cognitive-state	generated
 oewn-certifiable__5.00.00.certified.00	adjective	generated
 oewn-certifiable__5.00.00.insane.00	certified	generated
-oewn-certificate__1.10.00..	certification	generated
-oewn-certificate__1.21.00..	security	generated
-oewn-certificate__2.32.00..	authorise	generated
-oewn-certificate__2.40.00..	award	generated
+oewn-certificate__1.10.00..	attestation	curated
+oewn-certificate__1.21.00..	investment-certificate	curated
+oewn-certificate__2.32.00..	certify	curated
+oewn-certificate__2.40.00..	certificate-award	curated
 oewn-certificated__5.00.00.certified.00	adjective	generated
 oewn-certification__1.04.00..	enfranchisement	generated
 oewn-certification__1.04.01..	authentication	generated

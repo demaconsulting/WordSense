@@ -1,8 +1,10 @@
 # Curated sense inventory (input of `seed-inventory`)
 
-`senses.tsv` and `groups.tsv` are the reviewed curation of the first batch of lemmas (20 lemmas, 297 senses, 179 groups):
-`back`, `even`, `first`, `forward`, `go`, `help`, `home`, `however`, `just`, `little`, `long`, `only`, `own`, `please`,
-`pretty`, `review`, `right`, `still`, `test` and `well`. The ids of senses are public ids (`lemma#label`). The columns
+`senses.tsv` and `groups.tsv` are the reviewed curation of 758 lemmas: the first batch (20 lemmas, 297 senses, 179
+groups: `back`, `even`, `first`, `forward`, `go`, `help`, `home`, `however`, `just`, `little`, `long`, `only`, `own`,
+`please`, `pretty`, `review`, `right`, `still`, `test` and `well`) and the second batch (738 lemmas, 6,283 senses, the
+lemmas of the legacy corpus, see "Second batch" below), 6,580 senses in all. The ids of senses are public ids
+(`lemma#label`). The columns
 `tier`, `tag_count` and the others of `senses.tsv` are the per-sense data of the curation (the tier sizes the training
 data of the sense); `group_id` and `group_reason` of a sense record the curator's group of the sense (empty when the
 sense is in no group any more, see "Group changes" below) and `flag` is the curator's remark (`D` near-duplicate of
@@ -10,9 +12,26 @@ another sense, `R` rare). `seed-inventory` reads `sense_id`, `oewn_sense_id`, `p
 of `senses.tsv`, and `group_id`, `lemma`, `part_of_speech`, `member_sense_ids`, `kind` and `evidence` of `groups.tsv`.
 
 `dotnet run --project tools/WordSense.Builder -c Release -- seed-inventory` writes them into `data/` as the tables
-`sense_label` (origin `curated`, or `project` for the four senses that Open English WordNet does not have:
-`right#discourse-marker`, `well#discourse-marker`, `help#cry-for-aid` and `however#conjunction`) and `sense_group`
-and `group_sense` (origin `curated`). The run is idempotent: a second run changes nothing.
+`sense_label` (origin `curated`, or `project` for the senses that Open English WordNet does not have) and `sense_group`
+and `group_sense` (origin `curated`). A label that `label-senses` generated is replaced by the curated one (a generated
+label was never published); a curated or project label is never changed. The run is idempotent: a second run changes
+nothing.
+
+## Second batch (738 lemmas)
+
+The curated labels of the 738 lemmas of the legacy corpus come from a pass of `gpt-5.6-luna` over the generated labels
+(4,075 of the 6,283 labels changed), followed by a review sweep: a second `gpt-5.6-luna` pass flagged 63 labels that
+misdescribe their gloss, and 34 of them were changed by hand (the other flags were placeholder glosses such as `noun`,
+where the label cannot be judged). The `flag` column holds the `D` and `R` remarks of the pass. `missing-usages.tsv`
+lists 33 lemmas whose common usage (a phrasal verb, a discourse use) Open English WordNet lacks; each is only a
+candidate for a project sense.
+
+The groups of the second batch follow the admission rule below with the evidence available now: of the 120 groups the
+pass proposed, 84 are kept (77 with every member, 7 with a subset), all `equivalent` with the evidence
+`curated:gloss near-identical glosses` (a `gpt-5.6-luna` pass judged the full glosses of every group, and two groups it
+accepted were dropped by hand because their glosses differ in more than wording). The other 36 are dropped; they can
+return when the classifier's confusion data shows that their senses are mixed up. Their `group_id` in `senses.tsv` is
+empty.
 
 ## Part of speech of a curated sense
 
@@ -54,13 +73,16 @@ The importer applies these rules to the curated groups, in this order:
 - A group that remains needs a `kind` of the `group_kind` vocabulary of `data/schema.yaml`, non-empty `evidence` and a
   slug of lower-case ASCII letters, digits and hyphens; otherwise the import stops and writes nothing.
 
-The result is 56 groups of 138 senses: 26 `equivalent` and 30 `related`. The importer replaces the groups of the lemmas
-of the curation as a whole and removes any group row whose origin is not `curated` (the retired default groups). After
-the import the tables are edited in `data/` and these files are only the record of what was imported.
+The result is 140 groups of 307 senses: 110 `equivalent` and 30 `related` (the first batch has 56 groups of 138 senses,
+26
+`equivalent` and 30 `related`; the second batch 84 `equivalent` groups of 169 senses). The importer replaces the groups
+of the lemmas of the curation as a whole and removes any group row whose origin is not `curated` (the retired default
+groups). After the import the tables are edited in `data/` and these files are only the record of what was imported.
 
 ## Group changes
 
-The cleanup pass of the groups (the data had 68 groups of 164 senses before it) made these changes. Group ids changed in
+The sections below record the cleanup of the groups of the first batch (the second batch is described above). The cleanup
+pass of the groups (the data had 68 groups of 164 senses before it) made these changes. Group ids changed in
 the data from `lemma#label` (28 of them `lemma#label-related`, the suffix that resolved a clash with the id of a sense)
 to the scheme `lemma#group:slug`; they are not frozen, so this is recorded here and in the release notes of the release
 that publishes the groups.

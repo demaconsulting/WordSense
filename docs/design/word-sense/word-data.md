@@ -25,7 +25,8 @@ The subsystem contains seven units:
 
 The builder commands `import-oewn`, `import-wn30-counts`, `label-senses` and `validate-data` are the entry points; the
 bootstrap command `seed-inventory` adds the project senses of the closed-class entries and imports the curated labels
-and groups of the curation folder (`corpus/curation`), once (it is idempotent and never changes a label). The class
+and groups of the curation folder (`corpus/curation`), once (it is idempotent; it replaces a generated label, which was
+never published, by the curated one and never changes a curated or project label). The class
 tables of the earlier coarse inventory (`coarse_class`, `class_sense`, `class_entry`) and the per-form class scopes
 (`form_sense_scope`) are retired and are no longer part of the subsystem; the committed working file
 `corpus/migration/legacy-class-map.tsv` keeps their mapping for the relabeling of the corpus (see the data section

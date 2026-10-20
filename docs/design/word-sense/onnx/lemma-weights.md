@@ -25,8 +25,8 @@ and decides the level of an answer from the lemma's own thresholds.
 - `FormChooser(Form, Threshold, Labels, Biases, Weights)`: an optional per-form classifier of a lemma entry for a form
   whose analyses belong to several lemmas or to several tenses of one lemma. A label names the lemma of an analysis or,
   for the forms of one lemma that differ in tense, the analysis (lemma and features). It has one one-versus-rest row
-  and one bias per label and its own threshold. The chooser of a form is stored with the first lemma of the form in
-  ordinal order and is found through the form.
+  and one bias per label and its own threshold. The chooser of a form is stored with the first lemma of the form, in
+  ordinal order, that has weights, and is found through the form.
 - `WeightedLemmaTable`: the lemmas of the weights, found by lemma name, each with the indexes of its senses in the word
   image and the group of each sense (taken from the image, not stored in the blob); the choosers found by form.
 - Blob format `WSX3` (Brotli): the magic `WSX3`, the model id, the 32-byte inventory hash of the word image, the

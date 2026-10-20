@@ -1,7 +1,7 @@
 sense_id	label	origin
 dema-cuckoo-i-1	interjection	project
 dema-cum-p-1	preposition	project
-dema-curate-v-1	verb	project
+dema-curate-v-1	organize	project
 dema-curses-i-1	interjection	project
 oewn-cu__1.27.00..	noun	generated
 oewn-cub__1.05.00..	young-carnivore	generated
@@ -257,7 +257,7 @@ oewn-curandera__1.18.00..	noun	generated
 oewn-curandero__1.18.00..	noun	generated
 oewn-curare__1.27.00..	noun	generated
 oewn-curassow__1.05.00..	noun	generated
-oewn-curate__1.18.00..	noun	generated
+oewn-curate__1.18.00..	church-curate	curated
 oewn-curative__1.06.00..	noun	generated
 oewn-curative__5.00.00.healthful.00	adjective	generated
 oewn-curator__1.18.00..	noun	generated
@@ -280,11 +280,11 @@ oewn-curdle__2.30.02..	go-bad	generated
 oewn-curdled__5.00.00.thick.02	adjective	generated
 oewn-curdling__1.22.00..	noun	generated
 oewn-cure--all__1.06.00..	noun	generated
-oewn-cure__1.06.00..	noun	generated
-oewn-cure__2.29.00..	bring-around	generated
-oewn-cure__2.30.00..	keep	generated
-oewn-cure__2.30.01..	change	generated
-oewn-cure__2.30.02..	harden	generated
+oewn-cure__1.06.00..	treatment	curated
+oewn-cure__2.29.00..	heal	curated
+oewn-cure__2.30.00..	preserve-food	curated
+oewn-cure__2.30.01..	be-preserved	curated
+oewn-cure__2.30.02..	set-material	curated
 oewn-cured__5.00.00.processed.00	vulcanised	generated
 oewn-cured__5.00.00.seasoned.00	adjective	generated
 oewn-cured__5.00.00.well.01	healed	generated

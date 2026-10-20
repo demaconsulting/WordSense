@@ -1,4 +1,8 @@
 group_id	lemma	pos	label	origin	kind
+encounter#group:casual-meeting	encounter	n	casual-meeting	curated	equivalent
+entrance#group:act-of-entry	entrance	n	act-of-entry	curated	equivalent
+escape#group:fleeing	escape	v	fleeing	curated	equivalent
 even#group:emphasis	even	r	emphasis	curated	related
 even#group:equal	even	a	equal	curated	related
 even#group:level-regular	even	a	level-regular	curated	related
+experience#group:undergoing	experience	v	undergoing	curated	equivalent

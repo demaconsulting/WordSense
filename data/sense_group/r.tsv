@@ -1,4 +1,8 @@
 group_id	lemma	pos	label	origin	kind
+refresh#group:freshness-change	refresh	v	freshness-change	curated	equivalent
+rent#group:lease-terms	rent	v	lease-terms	curated	equivalent
+resign#group:quit-position	resign	v	quit-position	curated	equivalent
+return#group:returning	return	v	returning	curated	equivalent
 review#group:examination	review	n	examination	curated	related
 review#group:look-again	review	v	look-again	curated	related
 review#group:recap-practice	review	n	recap-practice	curated	equivalent
@@ -10,3 +14,4 @@ right#group:exactly-completely	right	r	exactly-completely	curated	equivalent
 right#group:proper-suitable	right	a	proper-suitable	curated	related
 right#group:right-hand-side	right	a	right-hand-side	curated	equivalent
 right#group:upright	right	v	upright	curated	related
+rise#group:upward-motion	rise	v	upward-motion	curated	equivalent

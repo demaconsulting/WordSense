@@ -149,6 +149,39 @@ public sealed class InventorySeederTests : IDisposable
     }
 
     /// <summary>
+    ///     A generated label was never published: the curation replaces it (and takes the sense over with the origin
+    ///     <c>curated</c>), a second run changes nothing and the data stays valid.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_InventorySeeder_Run_GeneratedLabel_IsReplacedByTheCuratedLabel()
+    {
+        // Arrange - the labels of the three bass nouns are generated first
+        var data = ThreeBassNounsSlice();
+        InventorySeeder.Run(data, null);
+        SenseLabelGenerator.Run(data);
+        var curation = Curation(
+            "bass#fish-food\toewn-bass__1.05.00..\tNoun\tthe flesh of a fish\toewn\t\n"
+            + "bass#fish-meat\toewn-bass__1.05.01..\tNoun\tthe meat of a fish\toewn\t\n"
+            + "bass#voice\toewn-bass__1.10.00..\tNoun\tthe lowest voice\toewn\t\n",
+            string.Empty);
+
+        // Act
+        var run = InventorySeeder.Run(data, curation);
+        var labels = DataFixture.Rows(data, "sense_label").Select(l => string.Join('|', l)).ToList();
+        var again = InventorySeeder.Run(data, curation);
+        var report = DataValidator.Validate(data);
+
+        // Assert
+        Assert.Equal(3, run.CuratedLabels);
+        Assert.Contains("oewn-bass__1.05.00..|fish-food|curated", labels);
+        Assert.Contains("oewn-bass__1.05.01..|fish-meat|curated", labels);
+        Assert.Contains("oewn-bass__1.10.00..|voice|curated", labels);
+        Assert.Equal(0, again.CuratedLabels);
+        Assert.Equal(labels, DataFixture.Rows(data, "sense_label").Select(l => string.Join('|', l)).ToList());
+        Assert.True(report.IsValid, string.Join("\n", report.Violations));
+    }
+
+    /// <summary>
     ///     A curated sense whose part of speech is not the one of its sense in the data is refused and nothing is written.
     /// </summary>
     [Fact]

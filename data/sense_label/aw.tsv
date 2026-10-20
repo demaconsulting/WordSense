@@ -13,11 +13,11 @@ oewn-awakened__3.00.00..	adjective	generated
 oewn-awakened__5.00.00.awake.00	adjective-2	generated
 oewn-awakening__1.04.00..	noun	generated
 oewn-award--winning__3.01.00..	adjective	generated
-oewn-award__1.04.00..	awarding	generated
-oewn-award__1.10.00..	accolade	generated
-oewn-award__1.21.00..	prize	generated
-oewn-award__2.40.00..	present	generated
-oewn-award__2.40.01..	grant	generated
+oewn-award__1.04.00..	court-grant	curated
+oewn-award__1.10.00..	accolade	curated
+oewn-award__1.21.00..	prize	curated
+oewn-award__2.40.00..	present	curated
+oewn-award__2.40.01..	grant	curated
 oewn-awarding__1.04.00..	noun	generated
 oewn-aware__3.00.00..	cognisant	generated
 oewn-aware__3.00.04..	mindful	generated

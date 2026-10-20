@@ -1,4 +1,12 @@
 group_id	sense_id
+refresh#group:freshness-change	oewn-refresh__2.29.00..
+refresh#group:freshness-change	oewn-refresh__2.29.02..
+rent#group:lease-terms	oewn-rent__2.40.01..
+rent#group:lease-terms	oewn-rent__2.41.01..
+resign#group:quit-position	oewn-resign__2.41.00..
+resign#group:quit-position	oewn-resign__2.41.05..
+return#group:returning	oewn-return__2.32.00..
+return#group:returning	oewn-return__2.38.00..
 review#group:examination	oewn-review__1.04.00..
 review#group:examination	oewn-review__1.04.02..
 review#group:examination	oewn-review__1.04.03..
@@ -29,3 +37,5 @@ right#group:right-hand-side	oewn-right__3.00.00..
 right#group:right-hand-side	oewn-right__5.00.00.right-handed.00
 right#group:upright	oewn-right__2.38.00..
 right#group:upright	oewn-right__2.38.03..
+rise#group:upward-motion	oewn-rise__2.38.00..
+rise#group:upward-motion	oewn-rise__2.42.00..

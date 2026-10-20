@@ -123,6 +123,32 @@ sections:
               - WordSenseBuilder_WeightsTrainer_LemmaWithOneAnchoredSense_GetsNoWeights
               - WordSenseBuilder_WeightsTrainer_SenseWithOneAnchor_StaysInTraining
 
+          - id: WordSense-WordSenseBuilder-FormChoosers
+            title: >-
+              The builder shall train a form chooser, deterministically, for every form whose rows in the chooser corpus
+              (form, label, sentence) name at least two labels and give every analysis of the form a label, with its
+              own fine threshold chosen by cross-validation on those rows only, shall store it with the first lemma of
+              the form that has weights, shall reject a chooser row whose label stands for no analysis of its form, and
+              shall report the forms that got no chooser and why.
+            tags: [unit]
+            justification: |
+              A form shared by several lemmas or tenses (`left`, `used`, `read`) can only be answered at the sense level
+              when a classifier first picks the lemma or the tense; the table refuses a chooser that does not cover
+              every analysis of its form, so the builder must not write one, and a form without a chooser must be
+              visible to the corpus author who has to supply the missing rows.
+            tests:
+              - WordSenseBuilder_ChooserCorpus_ReadSentences_ParsesRow
+              - WordSenseBuilder_ChooserCorpus_ReadSentences_LemmaAndFeaturesLabel_IsAccepted
+              - WordSenseBuilder_ChooserCorpus_ReadSentences_InvalidRows_AreDescribed
+              - WordSenseBuilder_ChooserCorpus_ReadDirectory_MalformedRow_Throws_AndMissingDirectoryIsEmpty
+              - WordSenseBuilder_ChooserCorpus_Validate_DuplicateSentence_IsAnError
+              - WordSenseBuilder_ChooserCorpus_LabelIndexOf_PrefersTheExactLabel
+              - WordSenseBuilder_WeightsTrainer_AttachChoosers_FormOfTwoLemmas_StoresTheChooserWithTheFirstTrainedLemma
+              - WordSenseBuilder_WeightsTrainer_AttachChoosers_OnlyTheSecondLemmaTrained_StoresItThere_AndTheBlobRoundTrips
+              - WordSenseBuilder_WeightsTrainer_AttachChoosers_TenseVariants_GetOneLabelEach
+              - WordSenseBuilder_WeightsTrainer_AttachChoosers_UnusableForms_AreSkippedWithAReason
+              - WordSenseBuilder_WeightsTrainer_AttachChoosers_IsDeterministic_AndNeedsOneFeaturePerRow
+
           - id: WordSense-WordSenseBuilder-Thresholds
             title: >-
               The builder shall choose for every trained lemma a fine threshold, and for a lemma that has groups also a
