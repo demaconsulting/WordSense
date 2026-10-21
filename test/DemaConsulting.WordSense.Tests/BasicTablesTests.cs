@@ -195,6 +195,24 @@ public class BasicTablesTests
     }
 
     /// <summary>
+    ///     A cue whose declared feature hashes need more weight bytes than the table holds is rejected as corrupt
+    ///     data before any weight block is allocated.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_CueWeightsPastEnd_ThrowsInvalidData()
+    {
+        // Arrange: the last cue declares 300 ascending feature hashes for two analyses but carries only four weights
+        var hashes = Enumerable.Range(1, 300).Select(h => (ushort)h).ToArray();
+        var blob = TestTables.Build(
+            [("record", 0, new int[PosTag.Count])],
+            [],
+            [("read", TestTables.ReadColumns(), hashes, [0, 0, 0, 0])]);
+
+        // Act and Assert: the size check reports the truncation as invalid data
+        Assert.Throws<InvalidDataException>(() => TestTables.Load(blob));
+    }
+
+    /// <summary>
     ///     Word counts whose sum exceeds the 32-bit range are rejected as corrupt data, not as an overflow.
     /// </summary>
     [Fact]

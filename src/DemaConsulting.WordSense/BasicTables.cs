@@ -616,7 +616,16 @@ internal sealed class BasicTables
 
             var analyses = ReadCueAnalyses(reader, analysisExists, lemma, analysisCount);
             var hashes = ReadFeatureHashes(reader);
-            var weights = new sbyte[checked(hashes.Length * analysisCount)];
+
+            // Size the weight block in 64-bit arithmetic and check it against the remaining bytes before
+            // allocating, so a corrupt hash count reports truncation rather than overflowing the multiplication
+            var weightCount = (long)hashes.Length * analysisCount;
+            if (weightCount > reader.Remaining)
+            {
+                throw new InvalidDataException("The basic table is truncated: a cue's weights extend past the end of the data.");
+            }
+
+            var weights = new sbyte[weightCount];
             for (var w = 0; w < weights.Length; w++)
             {
                 weights[w] = (sbyte)reader.ReadByte();
