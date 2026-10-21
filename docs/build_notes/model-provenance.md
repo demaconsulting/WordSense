@@ -61,7 +61,8 @@ Origin:
 
 License: the base model is licensed under the Apache License 2.0. The quantized derivative and the vocabulary are
 redistributed under the same license, with attribution to the sentence-transformers project and the original MiniLM
-authors.
+authors. The license text and the statement of the changes are in `model/all-MiniLM-L6-v2-int8/LICENSE` and its
+README.
 
 ## BertBaseCased (bert-base-cased-int8)
 
@@ -94,7 +95,8 @@ under the same license, with attribution to the authors of BERT.
 
 ## Adding a Model
 
-A further encoder gets its own `model/<model-id>/` folder (files, `SHA256SUMS` and a README), its own section in this
+A further encoder gets its own `model/<model-id>/` folder (files, `SHA256SUMS`, a `LICENSE` with the license text and a
+README), its own section in this
 note, a package that derives from `OnnxWordSenseModel`, and weights trained by the builder with `weights <modelId>`.
 
 ## Training Corpus Licences

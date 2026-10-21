@@ -1003,7 +1003,9 @@ through the sense frequency counts, from the Princeton WordNet 3.0 (its notice i
 of its `Basic` model, trained on our own CC0 corpora (the open part-of-speech corpus and the sentence corpus), with no
 treebank involved; no package contains CC BY-SA material. The MiniLM and BertBaseCased packages embed weights that are
 statistical summaries of those corpora, whose scores are corrected to the usage of the senses with the WordNet 3.0 counts
-(see "Working with an Encoder Model"). The `all-MiniLM-L6-v2` and
+(see "Working with an Encoder Model"); their `NOTICE.md` reproduces the WordNet 3.0 notice and records that the encoder
+model files are downloaded from this repository, with the Apache License 2.0 text in `model/<model-id>/LICENSE`. The
+`all-MiniLM-L6-v2` and
 `bert-base-cased` models (Apache License 2.0) and ONNX Runtime (MIT) are used under their own licenses.
 
 The word table is derived from Moby Part-of-Speech II by Grady Ward (<https://www.gutenberg.org/ebooks/3203>), which

@@ -11,6 +11,7 @@ was trained against.
 | `vocab.txt` | BERT uncased WordPiece vocabulary (30,522 entries) | Git LFS |
 | `tokenizer.json` | Reference tokenizer definition (used only to generate the tokenizer parity fixture) | Git LFS |
 | `SHA256SUMS` | Pinned SHA-256 digests of the three files above (of the real content, not the LFS pointers) | Git |
+| `LICENSE` | The Apache License 2.0 that covers the model files above | Git |
 | `README.md` | This file | Git |
 
 ## Provenance
@@ -25,8 +26,20 @@ was trained against.
   source is never used for it. See `docs/build_notes/model-provenance.md`.
 - `vocab.txt` is the standard BERT uncased vocabulary shipped with the base model.
 
-All downloadable assets (every file except this README and `SHA256SUMS`) are Git LFS objects, served from
+All downloadable assets (every file except this README, `LICENSE` and `SHA256SUMS`) are Git LFS objects, served from
 `https://media.githubusercontent.com/media/demaconsulting/WordSense/{ref}/model/all-MiniLM-L6-v2-int8/{file}`.
+
+## License
+
+The model files `model_int8.onnx`, `vocab.txt` and `tokenizer.json` are licensed under the Apache License 2.0; the full
+text is in [LICENSE](LICENSE). The copyright is held by the authors of the base model
+`sentence-transformers/all-MiniLM-L6-v2` (the sentence-transformers project and the authors of the models it derives
+from, see its model page above); this repository claims no copyright in them.
+
+Changes: `model_int8.onnx` is not the unchanged upstream file. The base model was exported to ONNX (output
+`last_hidden_state`) and quantized to int8 with ONNX Runtime dynamic quantization, so the weights are changed
+(quantized). `vocab.txt` and `tokenizer.json` are the files shipped with the base model. The authors of the base model
+do not endorse these files.
 
 ## Integrity
 

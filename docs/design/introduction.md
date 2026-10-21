@@ -132,7 +132,9 @@ form layers:
 - The **MiniLM** and **BertBaseCased** packages each add one public class that pins one encoder model, embeds the
   weights and thresholds trained for it and composes the encoder model with the core Basic model through the core
   `FallbackWordSenseModel`, so that a word the encoder does not score is answered by the Basic model. They reference
-  the core and Onnx packages.
+  the core and Onnx packages. Each ships a packed `NOTICE.md` with the Princeton WordNet 3.0 notice for the sense usage
+  prior of its weights and the record that the encoder model files (Apache License 2.0) are downloaded from this
+  repository, not shipped.
 
 The dependency rule is that a package may reference only the packages in layers below it: core references nothing,
 Onnx references core only, and MiniLM and BertBaseCased reference core and Onnx. No package
@@ -191,7 +193,8 @@ src/DemaConsulting.WordSense.BertBaseCased/        — bert-base-cased subsystem
 └── Resources/weights.bin                           — embedded weights of the bert-base-cased model
 
 model/<model-id>/                                  — model files (ONNX file, vocabulary, tokenizer and config files,
-                                                      SHA256SUMS) of each encoder model
+                                                      SHA256SUMS, the Apache License 2.0 LICENSE) of each encoder
+                                                      model
 tools/WordSense.Builder/                           — word-sense-builder unit (not shipped)
 tools/open-corpus/                                 — the scripts that built the open part-of-speech corpus (Python,
                                                       not shipped; downloads go to its git-ignored cache)

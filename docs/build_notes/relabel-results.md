@@ -36,7 +36,7 @@ sentence, the target and the full sense list of the lemma (id, part of speech, g
 `gpt-5.6-luna` is 2.64 points behind `gpt-6.1-sol`, more than the 1.0 point allowed, so **`gpt-6.1-sol` is the primary
 labeler**. Where sol and luna agree (895 rows) the answer is right 97.09% of the time; the 89 rows where they differ
 hold 53 right answers of sol (luna 27, neither 9), so a luna agreement filter would drop more correct rows (53) than
-errors (36). The local model server (`192.168.1.62`) accepted connections and listed `gemma4:26b`, but no chat request
+errors (36). The local model server accepted connections and listed `gemma4:26b`, but no chat request
 completed in two hours (even a request for eight tokens; the model is loaded with 1.2 GB of VRAM and the server was
 busy), so gemma could neither be calibrated nor used as a flag. The relabeling uses the primary labeler alone.
 

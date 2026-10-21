@@ -338,7 +338,10 @@ Package licenses:
   package. The former `DemaConsulting.WordSense.Basic` package is retired (before version 1.0): its model, `Basic`,
   moved into the core package.
 - **`DemaConsulting.WordSense.Onnx`, `DemaConsulting.WordSense.MiniLM` and `DemaConsulting.WordSense.BertBaseCased`**:
-  `MIT`. The weights are statistical summaries of the corpus and do not contain its sentences.
+  `MIT`. The weights are statistical summaries of the corpus and do not contain its sentences. They carry a sense usage
+  prior derived from the WordNet 3.0 sense counts (added to the stored biases), so the MiniLM and BertBaseCased packages
+  contain a `NOTICE.md` with the WordNet 3.0 notice. The encoder model files are not in the packages; they are
+  downloaded from this repository under the Apache License 2.0 (`model/<model-id>/LICENSE`).
 
 - **Moby Part-of-Speech List** (Grady Ward): public domain; the embedded dictionary is derived from it.
 - **Automatically Generated Inflection Database (AGID)** (Kevin Atkinson, 2000-2016,
@@ -375,7 +378,9 @@ Package licenses:
   the entries, glosses and examples are not in the image.
 - **WordNet 3.0** (Princeton University, <https://wordnet.princeton.edu>): the sense frequency counts of the word data
   (`data/sense_frequency`, from the WordNet 3.0 sense index `index.sense`) are used under the WordNet license: WordNet 3.0
-  Copyright 2006 by Princeton University, all rights reserved; the full notice is in `data/PROVENANCE.md`.
+  Copyright 2006 by Princeton University, all rights reserved; the full notice is in `data/PROVENANCE.md`. The prior
+  that corrects the scores of the encoder weights is derived from the same counts, so the `NOTICE.md` of the MiniLM and
+  BertBaseCased packages reproduces the notice too.
 - **SemCor 3.0** (the sense-annotated Brown Corpus text of the WordNet project): an evaluation source only. It is
   downloaded to a cache by the builder to measure the models, never committed, redistributed or used for training.
 

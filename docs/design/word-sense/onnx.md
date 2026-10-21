@@ -288,8 +288,9 @@ because it keeps the two levels consistent without a second set of rows.
 internal types (`ModelSpec`, `ModelFile`) are visible only to the in-repo packages, the builder and the tests. It is
 not a public extension point. A contributor adds a model as follows:
 
-1. Put the encoder files in `model/<model-id>/` (Git LFS) with `SHA256SUMS` and a README that records the source,
-   license and the preparation steps (for example `tools/model-prep/make-bert-encoder.py`).
+1. Put the encoder files in `model/<model-id>/` (Git LFS) with `SHA256SUMS`, a `LICENSE` (the text of the license of the
+   model, a plain Git file) and a README that records the source, license, the changes and the preparation steps (for
+   example `tools/model-prep/make-bert-encoder.py`).
 2. Create a package `DemaConsulting.WordSense.<Name>` that references `DemaConsulting.WordSense.Onnx` and
    `DemaConsulting.WordSense` (for the Basic model), with an internal sealed encoder class that derives from
    `OnnxWordSenseModel` and

@@ -40,3 +40,10 @@ sense, group or part-of-speech level its thresholds allow, listing the probabili
 every word for which the encoder scored no senses (the other ambiguous words) is answered by the Basic model, with the
 probabilities of its analyses, at the part of speech level (or at the sense level when its selected analysis has
 exactly one sense, which the Basic model names without scoring).
+
+The package ships a `NOTICE.md` (packed by the project file, as the core package does). The embedded weights carry a
+sense usage prior derived from the WordNet 3.0 sense counts (the builder adds it to the stored biases), so the notice
+reproduces the Princeton WordNet 3.0 license, states that the weights are statistical summaries of the CC0 corpora of
+this project, and records that the encoder model files are not in the package: they are downloaded from this repository
+(`model/bert-base-cased-int8/`, Apache License 2.0, with the license text in that folder) and are the int8 ONNX export
+of `bert-base-cased` cut at the last encoder layer.
