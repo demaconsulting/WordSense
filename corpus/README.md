@@ -44,8 +44,11 @@ Every file is UTF-8 without a byte-order mark, with LF line endings.
 
 **Two kinds of corpus, two uses.** The encoder corpus (`anchors/`, `holdout/`, `choosers/`, `realtext/`) is *targeted by
 nature*: each row was found or written for one sense or form, so the share of a sense in it says nothing about how often
-the sense occurs. It trains classifiers (the encoder weights and the Basic cue tables) and never feeds a usage statistic.
-Usage statistics (tag counts per word, tag transitions) come only from `open/representative/`.
+the sense occurs. It trains classifiers (the encoder weights and the Basic cue tables) and never feeds a usage statistic;
+the encoder weights even correct for it: the builder divides the share of each sense among the anchors of its lemma out
+of the classifier scores and multiplies in the WordNet 3.0 usage of the sense (the usage prior, see
+`docs/build_notes/frequency-prior.md`). Usage statistics (tag counts per word, tag transitions) come only from
+`open/representative/`.
 
 ## Sentence Files
 

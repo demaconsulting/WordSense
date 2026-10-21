@@ -57,9 +57,10 @@ internal static class Thresholds
     /// <param name="groups">The group index of each column, or -1 for a sense that is in no group.</param>
     /// <param name="options">The training settings: C, the folds, the precision target and the minimum number of answers.</param>
     /// <param name="fitter">The fitter of the anchors of the lemma (it shares its Gram matrix with the final fit), or null to create one.</param>
+    /// <param name="offsets">The usage-prior offset of each column (see <see cref="SensePrior"/>), added to the biases of every fold so that the margins are those of the corrected scores, or null for none.</param>
     /// <returns>The fine and the group threshold; either is <see cref="LemmaWeights.Never"/> when its level never reaches the target.</returns>
     /// <exception cref="ArgumentException">Thrown when the arrays disagree in length.</exception>
-    public static LemmaThresholds Choose(string lemma, float[][] features, int[] labels, int senseCount, int[] groups, TrainingOptions options, LemmaFitter? fitter = null)
+    public static LemmaThresholds Choose(string lemma, float[][] features, int[] labels, int senseCount, int[] groups, TrainingOptions options, LemmaFitter? fitter = null, IReadOnlyList<double>? offsets = null)
     {
         ArgumentNullException.ThrowIfNull(lemma);
         ArgumentNullException.ThrowIfNull(features);
@@ -71,7 +72,7 @@ internal static class Thresholds
             throw new ArgumentException("There must be one label per feature and one group index per column.", nameof(labels));
         }
 
-        var outOfFold = ScoreOutOfFold(lemma, features, labels, senseCount, options, fitter ?? new LemmaFitter(features, options.Solver, options.Parallelism));
+        var outOfFold = ScoreOutOfFold(lemma, features, labels, senseCount, options, fitter ?? new LemmaFitter(features, options.Solver, options.Parallelism), offsets);
         var fine = ChooseThreshold(outOfFold.Select(o => ((double)o.FineMargin, o.FineCorrect)).ToList(), options);
         if (!groups.Any(g => g >= 0))
         {
@@ -139,8 +140,9 @@ internal static class Thresholds
     /// <param name="senseCount">The number of columns.</param>
     /// <param name="options">The settings.</param>
     /// <param name="fitter">The fitter that trains the classifier of each fold.</param>
+    /// <param name="offsets">The usage-prior offsets added to the biases of each fold, or null.</param>
     /// <returns>For each tested anchor its scores over all columns, the best column, the fine margin and whether the best column is the true one.</returns>
-    private static List<OutOfFold> ScoreOutOfFold(string lemma, float[][] features, int[] labels, int senseCount, TrainingOptions options, LemmaFitter fitter)
+    private static List<OutOfFold> ScoreOutOfFold(string lemma, float[][] features, int[] labels, int senseCount, TrainingOptions options, LemmaFitter fitter, IReadOnlyList<double>? offsets)
     {
         var folds = Math.Max(2, options.Folds);
         var assignment = AssignFolds(lemma, labels, senseCount, folds);
@@ -158,8 +160,8 @@ internal static class Thresholds
             }
 
             var train = Enumerable.Range(0, features.Length).Where(i => assignment[i] != fold).ToArray();
-            var (weights, bias) = fitter.Fit(train, labels, senseCount, options.C);
-            var model = new LemmaWeights(weights, bias, features[0].Length);
+            var (weights, fitted) = fitter.Fit(train, labels, senseCount, options.C);
+            var model = new LemmaWeights(weights, SensePrior.Apply(fitted, offsets), features[0].Length);
             var scores = new float[senseCount];
             foreach (var i in test)
             {

@@ -5,7 +5,9 @@ pronunciations of English. They were imported once from **Open English WordNet 2
 is licensed under **CC BY 4.0** (<https://creativecommons.org/licenses/by/4.0/>), and keep that license; project-authored
 additions (source `dema`) are MIT. The sense frequency counts (`sense_frequency`) come from **WordNet 3.0**
 (Princeton University) and are used under its license (WordNet 3.0 Copyright 2006 by Princeton University; the full
-notice is in [PROVENANCE.md](PROVENANCE.md)). **SemCor** is an evaluation source only: it is never committed. See
+notice is in [PROVENANCE.md](PROVENANCE.md)); they order the senses of a lemma, set the quota of training sentences of
+each sense and, as a tempered prior, correct the scores of the encoder models to the usage of the senses. **SemCor** is
+an evaluation source only: it is never committed. See
 [PROVENANCE.md](PROVENANCE.md) for the source file, its hash and what was left out.
 
 The data is **authoritative once committed**: edit the tables by hand (or with a script) and run the validator. The

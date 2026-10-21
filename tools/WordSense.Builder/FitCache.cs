@@ -106,8 +106,9 @@ internal sealed class FitCache
     /// <param name="groups">The group index of each column, or -1 for a sense that is in no group.</param>
     /// <param name="labels">The column index of each feature.</param>
     /// <param name="features">The features.</param>
+    /// <param name="offsets">The usage-prior offset of each column (the stored bias contains it), or null when the lemma is trained without the prior.</param>
     /// <returns>The key as hexadecimal text.</returns>
-    public static string KeyOf(TrainingOptions options, string lemma, IReadOnlyList<string> senseIds, IReadOnlyList<int> groups, int[] labels, float[][] features)
+    public static string KeyOf(TrainingOptions options, string lemma, IReadOnlyList<string> senseIds, IReadOnlyList<int> groups, int[] labels, float[][] features, IReadOnlyList<double>? offsets = null)
     {
         using var hash = IncrementalHash.CreateHash(HashAlgorithmName.SHA256);
         var number = new byte[8];
@@ -147,6 +148,12 @@ internal sealed class FitCache
         foreach (var label in labels)
         {
             Append(label);
+        }
+
+        Append(offsets?.Count ?? -1);
+        foreach (var offset in offsets ?? [])
+        {
+            Append(BitConverter.DoubleToInt64Bits(offset));
         }
 
         Append(features.Length);

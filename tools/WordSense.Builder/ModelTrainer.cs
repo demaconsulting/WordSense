@@ -14,7 +14,17 @@ namespace WordSense.Builder;
 /// <param name="RecomputeMean">True to compute the global mean again instead of reusing the one of the existing weights.</param>
 /// <param name="Solver">The method that fits the classifiers; the kernel form is the default and the primal form is the slow reference.</param>
 /// <param name="CalibrationTarget">The precision that the answers of a level must reach on the real calibration sentences (see <see cref="RealCalibrator"/>). The default 0.97 is two points above the 95 percent aimed at on real test text: the measured gap between the lemma-level precision on the calibration rows and the precision of the whole pipeline (analysis and chooser errors) is about two points.</param>
-internal sealed record TrainSettings(string? CacheRoot, bool RecomputeMean = false, FitSolver Solver = FitSolver.Kernel, double CalibrationTarget = RealCalibrator.DefaultLemmaTarget)
+/// <param name="UsagePrior">True to correct the per-sense scores to the usage of the senses (see <see cref="SensePrior"/>); false (<c>--no-prior</c>) trains the raw balanced-anchor scores.</param>
+/// <param name="PriorAlpha">The exponent of the usage share in the prior (<c>--prior-alpha</c>).</param>
+/// <param name="PriorSmoothing">The constant added to every tag count in the prior (<c>--prior-smoothing</c>).</param>
+internal sealed record TrainSettings(
+    string? CacheRoot,
+    bool RecomputeMean = false,
+    FitSolver Solver = FitSolver.Kernel,
+    double CalibrationTarget = RealCalibrator.DefaultLemmaTarget,
+    bool UsagePrior = true,
+    double PriorAlpha = PriorSettings.DefaultAlpha,
+    double PriorSmoothing = PriorSettings.DefaultSmoothing)
 {
     /// <summary>
     ///     Gets the default cache folder of a repository.
@@ -67,6 +77,7 @@ internal static class ModelTrainer
         var chooserHoldout = ChooserCorpus.ReadDirectory(Path.Join(corpus, "choosers", "holdout"));
         ChooserCorpus.Validate(chooserAnchors, chooserHoldout).ThrowIfInvalid();
         var options = new TrainingOptions(Parallelism: TrainingOptions.DefaultParallelism, Solver: settings.Solver);
+        var usage = UsageOf(repository, settings, info.Name, output);
         var clock = Stopwatch.StartNew();
 
         using var composed = info.Create(Path.Join(repository, "model", info.ModelDirectory!));
@@ -97,12 +108,37 @@ internal static class ModelTrainer
         var caching = new CachingEncoder(encoder.EncodeAsync, cache);
         var data = await TrainDataAsync(
             info.Name, model.ModelId, WordLexicon.Current.InventoryHash.ToArray(), anchors, options, caching, frozenMean, fitCache, output, clock, cancellationToken, holdout, chooserAnchors, chooserHoldout,
-            RealSplit.Classify(corpus, holdout).Calibration, new CalibrationOptions(settings.CalibrationTarget)).ConfigureAwait(false);
+            RealSplit.Classify(corpus, holdout).Calibration, new CalibrationOptions(settings.CalibrationTarget), usage).ConfigureAwait(false);
 
         Directory.CreateDirectory(Path.GetDirectoryName(path)!);
         File.WriteAllBytes(path, WeightsBlobWriter.Write(data));
         output.WriteLine($"{info.Name}: trained {data.Lemmas.Count} lemmas in {clock.Elapsed:hh\\:mm\\:ss}; wrote {new FileInfo(path).Length} bytes to {path}.");
         return data.Lemmas.Count;
+    }
+
+    /// <summary>
+    ///     Reads the tag counts and builds the usage prior of a run, and says what it is.
+    /// </summary>
+    /// <param name="repository">The repository root (the counts are in its <c>data</c> folder).</param>
+    /// <param name="settings">The settings of the run.</param>
+    /// <param name="name">The model name used in messages.</param>
+    /// <param name="output">Receives the line that reports the prior.</param>
+    /// <returns>The usage, or null when the prior is switched off.</returns>
+    /// <exception cref="ArgumentException">Thrown when the exponent or the smoothing constant is out of range.</exception>
+    /// <exception cref="InvalidDataException">Thrown when the sense-frequency table has no counts.</exception>
+    private static SenseUsage? UsageOf(string repository, TrainSettings settings, string name, TextWriter output)
+    {
+        if (!settings.UsagePrior)
+        {
+            output.WriteLine($"{name}: usage prior: off (--no-prior); the scores are those of the balanced anchors.");
+            return null;
+        }
+
+        var prior = new PriorSettings(settings.PriorAlpha, settings.PriorSmoothing);
+        prior.Validate();
+        var counts = SensePrior.ReadCounts(Path.Join(repository, "data"));
+        output.WriteLine($"{name}: usage prior: p' ~ p / q * pi^alpha with alpha {prior.Alpha.ToString(CultureInfo.InvariantCulture)} and smoothing {prior.Smoothing.ToString(CultureInfo.InvariantCulture)} (q the share of the sense among the anchors of its lemma, pi its WordNet 3.0 tag count share); {counts.Count} tag counts read; folded into the stored biases.");
+        return new SenseUsage(counts, prior);
     }
 
     /// <summary>
@@ -189,6 +225,7 @@ internal static class ModelTrainer
     /// <param name="chooserHoldout">The chooser held-out rows that measure the choosers, or null for none.</param>
     /// <param name="calibration">The real held-out rows of the calibration documents that move the thresholds to the precision target, or null to keep the cross-validation thresholds.</param>
     /// <param name="calibrationOptions">The settings of the calibration, or null for the defaults.</param>
+    /// <param name="usage">The usage prior of the per-sense scores, or null to train without it.</param>
     /// <returns>The full-precision weights, with the form choosers.</returns>
     /// <exception cref="InvalidDataException">Thrown when a target word has no tokens, the corpus is inconsistent or the half-precision gate fails.</exception>
     internal static async Task<WeightsData> TrainDataAsync(
@@ -207,7 +244,8 @@ internal static class ModelTrainer
         IReadOnlyList<ChooserRow>? chooserAnchors = null,
         IReadOnlyList<ChooserRow>? chooserHoldout = null,
         IReadOnlyList<CorpusRow>? calibration = null,
-        CalibrationOptions? calibrationOptions = null)
+        CalibrationOptions? calibrationOptions = null,
+        SenseUsage? usage = null)
     {
         var pooled = await EncodeAsync(name, "sentences", anchors, encoder, output, clock, cancellationToken).ConfigureAwait(false);
         output.WriteLine($"{name}: embeddings: {encoder.Hits} cache hits, {encoder.Misses} encoded in {encoder.EncodeTime:hh\\:mm\\:ss\\.fff} ({(encoder.Cache is null ? "cache off" : $"{encoder.Cache.Count} entries cached")}).");
@@ -220,7 +258,7 @@ internal static class ModelTrainer
 
         output.WriteLine($"{name}: fitting the classifiers of {pooled.Length} sentences on {options.Parallelism} threads ({clock.Elapsed:hh\\:mm\\:ss}).");
         var fitClock = Stopwatch.StartNew();
-        var trained = WeightsTrainer.TrainDense(modelId, inventoryHash, pooled, anchors, options, frozenMean, fitCache);
+        var trained = WeightsTrainer.TrainDense(modelId, inventoryHash, pooled, anchors, options, frozenMean, fitCache, usage);
         var data = trained.Data;
         if (calibration is { Count: > 0 })
         {

@@ -257,14 +257,16 @@ sections:
         title: >-
           The system shall provide encoder-based models, the all-MiniLM-L6-v2 model (uncased) and the
           bert-base-cased model (cased), that choose among the fine senses of the trained lemmas from the sentence
-          context with trained per-lemma weights and per-lemma confidence thresholds embedded in the package, and
-          that answer the other ambiguous words at the part of speech level.
+          context with trained per-lemma weights and per-lemma confidence thresholds embedded in the package, whose
+          sense probabilities reflect how often the senses are used, and that answer the other ambiguous words at the
+          part of speech level.
         tags: [system]
         justification: |
           Context-aware models are more accurate than a dictionary alone; two encoders let callers trade size and
           speed (MiniLM) against accuracy and case sensitivity (BERT base cased), and embedding the weights keeps each
           package self-contained apart from the model files. Per-lemma thresholds make every lemma answer at the level
-          its own evidence supports.
+          its own evidence supports. Probabilities that reflect the usage of the senses make the usual sense the
+          answer when the context does not say otherwise.
         children:
           - WordSense-Onnx-Classify
           - WordSense-Onnx-Levels
@@ -275,6 +277,7 @@ sections:
           - WordSense-BertBaseCased-Model
           - WordSense-MiniLM-Composition
           - WordSense-BertBaseCased-Composition
+          - WordSense-WordSenseBuilder-UsagePrior
         tests:
           - OnnxEncoder_EncodeAsync_ValidTargets_ReturnsDeterministicVectors
           - BertBaseCasedWordSenseModel_Classify_AmbiguousWord_ReturnsBestSense

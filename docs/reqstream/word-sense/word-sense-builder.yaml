@@ -108,7 +108,7 @@ sections:
               Each encoder package needs classifiers trained for its own embedding space; training every model from
               the one shared corpus keeps the models comparable, and a lemma with nothing to choose between gets no
               classifier that could only guess. The fit in the feature space took 11.5 minutes for 20 lemmas of the
-              768-dimensional encoder, which does not scale to the planned corpus of about 740 lemmas; the
+              768-dimensional encoder, which does not scale to the corpus of 775 lemmas; the
               equivalent fit in the span of the anchors takes seconds.
             tests:
               - WordSenseBuilder_LogisticTrainer_SeparatesAndIsDeterministic
@@ -201,6 +201,39 @@ sections:
               - WordSenseBuilder_RealCalibrator_Apply_NeverStaysNever_AndIsDeterministic
               - WordSenseBuilder_RealCalibrator_Apply_GroupThreshold_MovesOnlyWithEnoughAnswers
               - WordSenseBuilder_ModelTrainer_TrainDataAsync_CalibrationRows_MoveTheThresholds
+
+          - id: WordSense-WordSenseBuilder-UsagePrior
+            title: >-
+              The builder shall train the per-sense scores of every lemma so that the sense probabilities of a model
+              reflect how often the senses are used, not how often the training sentences show them: it shall divide
+              out the share of each sense among the anchors of its lemma and multiply in the usage of the sense, the
+              WordNet 3.0 tag count with a constant added to every sense and tempered by an exponent (defaults 0.5 and
+              0.5), where a sense without a count (a project sense) gets the constant alone. The correction shall add
+              nothing to the size of the weights and nothing to the cost of classifying, shall give the same weights for
+              the same input whatever the number of threads, shall be applied to the scores from which the first
+              thresholds are chosen (so every threshold is derived from the corrected scores), shall be switched off or
+              tuned by builder options, and shall be reported in the summary of the run and documented.
+            tags: [unit]
+            justification: |
+              The classifiers are trained on anchors that are balanced by sense quota, so their raw probabilities carry
+              the proportions of the training data instead of those of real use. Measured against the same classifiers
+              without the correction, the correction raises the fine top-1 accuracy of the BertBaseCased model on
+              SemCor, an independent human-annotated corpus, from 56.9 to 60.9 percent and that of the MiniLM model from
+              47.5 to 53.8 percent, and the accuracy on real sentences weighted to the usage of the senses by 1.8 and
+              2.6 points; the real test split, which is balanced like the training data, loses one point for
+              BertBaseCased. An additive offset on the stored bias of each sense is exactly equivalent to rescaling the
+              probabilities, so the shipped model needs no new code and no new data.
+            tests:
+              - WordSenseBuilder_SensePrior_Offsets_FollowTheDocumentedFormula
+              - WordSenseBuilder_SensePrior_Offsets_SenseWithoutCount_UsesTheSmoothingAlone
+              - WordSenseBuilder_SensePrior_Offsets_AlphaZero_RemovesOnlyTheTrainingShare
+              - WordSenseBuilder_SensePrior_Offsets_AreDeterministic
+              - WordSenseBuilder_SensePrior_ReadCounts_ReadsTheFrequencyTable
+              - WordSenseBuilder_WeightsTrainer_TrainDense_UsagePrior_ShiftsTheBiasesByTheOffsets
+              - WordSenseBuilder_WeightsTrainer_TrainDense_UsagePrior_IsDeterministicAndKeepsTheSize
+              - WordSenseBuilder_Thresholds_Choose_Offsets_AreAppliedToTheOutOfFoldScores
+              - WordSenseBuilder_FitCache_KeyOf_DependsOnThePriorOffsets
+              - WordSenseBuilder_Program_TrainSettingsOf_ParsesThePriorOptions
 
           - id: WordSense-WordSenseBuilder-Tiers
             title: >-

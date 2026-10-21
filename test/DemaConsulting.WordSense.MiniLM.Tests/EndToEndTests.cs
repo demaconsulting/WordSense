@@ -131,6 +131,7 @@ public class EndToEndTests
             ["She", "turned", "right", "at", "the", "corner", "and", "walked", "home", "."],
             ["Please", "help", "me", "carry", "the", "test", "papers", "."],
             ["Neither", "side", "wanted", "to", "break", "the", "contract", "before", "it", "expired", "."],
+            ["Muscles", "contract", "when", "they", "receive", "a", "signal", "from", "the", "nerves", "."],
         ];
 
         // Act

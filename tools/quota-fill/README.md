@@ -26,6 +26,7 @@ All work files (the sentence pool, the labeling batches and their answers) live 
 | `chooser_harvest.py candidates\|select WAVE` | Harvest of chooser rows for the forms that lack a lemma |
 | `choosers.py status` | The forms whose chooser rows lack a lemma |
 | `coverage.py [WAVE]` | Writes `corpus/coverage/quota-coverage.tsv` and prints the counts |
+| `usage_weighted.py LABEL=OUTCOMES.tsv ...` | Diagnostic: re-weights the real test rows of `evaluate --outcomes` files by the harvest share of each sense (an independent usage prior) and prints the weighted fine top-1 and sense-level figures (see `docs/build_notes/frequency-prior.md`) |
 | `placeholder_glosses.py` | Detection and replacement of placeholder glosses of project senses (see `corpus/curation/README.md`) |
 | `prompts/` | The instructions given to the labeler, the writer, the lemma chooser and the gloss writer |
 

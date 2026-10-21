@@ -488,6 +488,10 @@ The previous release identified a sense by a pronunciation or part-of-speech cla
   previous release answered their first dictionary sense with a confidence of one over the number of senses.
 - **Models compose.** `FallbackWordSenseModel` combines two models; the encoder packages use it with the Basic model
   (see "Composing Models").
+- **Sense probabilities reflect usage.** The encoder models correct their per-sense scores to the usage of the senses
+  (WordNet 3.0 counts), so the most probable sense is the usual one unless the context says otherwise (see "Working with
+  an Encoder Model"); the release notes (build notes, "Changes Before Version 1.0") list the changes with the migration
+  steps.
 
 ## Input and Tokenization
 
@@ -643,6 +647,17 @@ the encoder.
 A form that belongs to several lemmas or tenses (`left`, `bases`, `rows`, `read`) first has its analysis chosen from the
 context by a small per-form classifier, and the fine classifier of the chosen lemma runs afterwards; when the choice is
 not clear the word is answered at the `PartOfSpeech` level.
+
+The probabilities of the fine senses reflect how often the senses are used, not how often the training sentences show
+them. The classifiers learn from sentences that are balanced by sense (every sense has about the same number of
+examples), so their raw output would favor rare senses; the build corrects it with a prior: the share of a sense among
+the training sentences of its lemma is divided out, and the share of the sense in the WordNet 3.0 counts (with 0.5 added
+to every count, and raised to the power 0.5, so that the prior only leans on the counts) is multiplied in. A sense
+without a count, such as a project sense, gets the added constant alone. The correction is part of the stored weights
+and costs nothing at run time. On SemCor it raised the share of words whose most probable sense is right (the *fine
+top-1* of the README table) for both encoder models, and it can lower the figure on a balanced set (a frequent sense is
+now favored where the test sentences show every sense equally often); `frequency-prior.md` of the build notes has the
+measurements.
 
 The public encoder models wrap an encoder model (`OnnxWordSenseModel`, which implements `IWordSenseModel`, has the
 public properties `HiddenSize` and `ModelId` and is not used directly) and the Basic model in a
@@ -981,11 +996,14 @@ ensure; cancelling does not stop the shared ensure (see "Threads and cancellatio
 # Licensing and Provenance
 
 WordSense is licensed under the MIT License. Because the packages embed derived data, their license expressions say
-so: the core package is `MIT AND CC-BY-4.0` and the Basic package `MIT`, and each carries a
+so: the core package is `MIT AND CC-BY-4.0` and the Onnx, MiniLM and BertBaseCased packages `MIT`, and each package that
+embeds derived data carries a
 `NOTICE.md` with the credits. The core package embeds data derived from Open English WordNet 2025 (CC BY 4.0) and,
-through the sense frequency counts, from the Princeton WordNet 3.0 (its notice is in the `NOTICE.md`); the Basic package
-embeds statistics trained on our own CC0 corpora (the open part-of-speech corpus and the sentence corpus), with no
-treebank involved. The `all-MiniLM-L6-v2` and
+through the sense frequency counts, from the Princeton WordNet 3.0 (its notice is in the `NOTICE.md`), and the statistics
+of its `Basic` model, trained on our own CC0 corpora (the open part-of-speech corpus and the sentence corpus), with no
+treebank involved; no package contains CC BY-SA material. The MiniLM and BertBaseCased packages embed weights that are
+statistical summaries of those corpora, whose scores are corrected to the usage of the senses with the WordNet 3.0 counts
+(see "Working with an Encoder Model"). The `all-MiniLM-L6-v2` and
 `bert-base-cased` models (Apache License 2.0) and ONNX Runtime (MIT) are used under their own licenses.
 
 The word table is derived from Moby Part-of-Speech II by Grady Ward (<https://www.gutenberg.org/ebooks/3203>), which

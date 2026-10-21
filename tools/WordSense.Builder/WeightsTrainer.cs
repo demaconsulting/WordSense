@@ -66,10 +66,11 @@ internal static class WeightsTrainer
     /// <param name="options">The trainer settings.</param>
     /// <param name="frozenMean">The global mean to center on, or null to compute it from <paramref name="pooled"/>.</param>
     /// <param name="fitCache">The cache of lemma fits, or null to fit every lemma.</param>
+    /// <param name="usage">The tag counts and settings of the usage prior (see <see cref="SensePrior"/>), or null to train without the correction.</param>
     /// <returns>The weights, with the lemmas that got none.</returns>
     /// <exception cref="InvalidDataException">Thrown when there are no anchors, a feature has no magnitude or an anchor names a sense that the catalog does not have.</exception>
     /// <exception cref="ArgumentException">Thrown when the frozen mean does not have the dimension of the vectors.</exception>
-    public static TrainedWeights TrainDense(string modelId, byte[] inventoryHash, double[][] pooled, IReadOnlyList<CorpusRow> anchors, TrainingOptions options, float[]? frozenMean = null, FitCache? fitCache = null)
+    public static TrainedWeights TrainDense(string modelId, byte[] inventoryHash, double[][] pooled, IReadOnlyList<CorpusRow> anchors, TrainingOptions options, float[]? frozenMean = null, FitCache? fitCache = null, SenseUsage? usage = null)
     {
         if (pooled.Length == 0)
         {
@@ -92,7 +93,7 @@ internal static class WeightsTrainer
                 ?? throw new InvalidDataException($"{anchors[i].Source}: the feature has no magnitude: {anchors[i].Sentence}");
         }
 
-        var (entries, untrained) = TrainAll(anchors, features, options, fitCache);
+        var (entries, untrained) = TrainAll(anchors, features, options, fitCache, usage);
         return new TrainedWeights(new WeightsData(modelId, inventoryHash, dim, mean, entries), untrained);
     }
 
@@ -135,12 +136,14 @@ internal static class WeightsTrainer
     /// <param name="features">The centered, unit-length feature of each row.</param>
     /// <param name="options">The settings.</param>
     /// <param name="fitCache">The cache of lemma fits, or null.</param>
+    /// <param name="usage">The usage prior, or null.</param>
     /// <returns>The trained lemmas in ordinal order of the lemma, and the lemmas without weights.</returns>
     private static (List<WeightedLemma> Entries, List<(string Lemma, int AnchoredSenses)> Untrained) TrainAll(
         IReadOnlyList<CorpusRow> anchors,
         float[][] features,
         TrainingOptions options,
-        FitCache? fitCache)
+        FitCache? fitCache,
+        SenseUsage? usage)
     {
         var lemmas = anchors.Select((row, i) => (row, i)).GroupBy(t => t.row.Lemma, StringComparer.Ordinal)
             .OrderBy(g => g.Key, StringComparer.Ordinal).ToList();
@@ -150,7 +153,7 @@ internal static class WeightsTrainer
         {
             Parallel.For(0, lemmas.Count, new ParallelOptions { MaxDegreeOfParallelism = Math.Max(1, options.Parallelism) }, k =>
             {
-                trained[k] = TrainLemma(lemmas[k].Key, lemmas[k].Select(t => t.i).ToArray(), anchors, features, options, fitCache, out anchoredSenses[k]);
+                trained[k] = TrainLemma(lemmas[k].Key, lemmas[k].Select(t => t.i).ToArray(), anchors, features, options, fitCache, usage, out anchoredSenses[k]);
             });
         }
         catch (AggregateException ex) when (ex.InnerExceptions.Count > 0)
@@ -186,6 +189,7 @@ internal static class WeightsTrainer
     /// <param name="features">The feature of each row.</param>
     /// <param name="options">The settings.</param>
     /// <param name="fitCache">The cache of lemma fits, or null.</param>
+    /// <param name="usage">The usage prior, or null.</param>
     /// <param name="anchored">Receives the number of senses of the lemma that have anchors.</param>
     /// <returns>The weights, or null when fewer than two senses have anchors.</returns>
     private static WeightedLemma? TrainLemma(
@@ -195,6 +199,7 @@ internal static class WeightsTrainer
         float[][] features,
         TrainingOptions options,
         FitCache? fitCache,
+        SenseUsage? usage,
         out int anchored)
     {
         // The columns are the anchored senses in inventory order; an anchor of a sense the catalog lacks is a data error
@@ -219,15 +224,19 @@ internal static class WeightsTrainer
         var labels = index.Select(i => Array.IndexOf(senseIds, anchors[i].SenseId)).ToArray();
         var x = index.Select(i => features[i]).ToArray();
 
-        var key = fitCache is null ? null : FitCache.KeyOf(options, lemma, senseIds, groups, labels, x);
+        // The usage prior is an offset on the score of each sense; it is folded into the stored bias
+        var anchorCounts = Enumerable.Range(0, columns.Count).Select(c => labels.Count(l => l == c)).ToArray();
+        var offsets = usage is null ? null : SensePrior.Offsets(columns, anchorCounts, usage);
+        var key = fitCache is null ? null : FitCache.KeyOf(options, lemma, senseIds, groups, labels, x, offsets);
         if (key is not null && fitCache!.TryGet(key, out var cached))
         {
             return Entry(lemma, senseIds, cached);
         }
 
         var fitter = new LemmaFitter(x, options.Solver, options.Parallelism);
-        var (weights, bias) = fitter.Fit(Enumerable.Range(0, x.Length).ToArray(), labels, senseIds.Length, options.C);
-        var thresholds = Thresholds.Choose(lemma, x, labels, senseIds.Length, groups, options, fitter);
+        var (weights, fitted) = fitter.Fit(Enumerable.Range(0, x.Length).ToArray(), labels, senseIds.Length, options.C);
+        var bias = SensePrior.Apply(fitted, offsets);
+        var thresholds = Thresholds.Choose(lemma, x, labels, senseIds.Length, groups, options, fitter, offsets);
         var fit = new LemmaFit(weights, bias, thresholds.Fine, thresholds.Group, x[0].Length);
         fitCache?.Add(key!, fit);
         return Entry(lemma, senseIds, fit);

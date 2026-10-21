@@ -15,7 +15,9 @@ tag counts of the Basic model and the reader of the open corpus, `TaggerEvaluato
 table writer, model data summary and hyper-parameters; `EmbeddingCacheTests.cs`, `FitCacheTests.cs` and
 `ModelTrainerTests.cs` cover the embedding cache, the lemma fit cache, the frozen mean and the thresholds with a stub
 encoder; `WeightsTrainerTests.cs` and `ThresholdsTests.cs` cover the fit and the choice of the thresholds on small
-synthetic features; `RealSplitTests.cs` and `RealCalibratorTests.cs` cover the split of the real held-out sentences by
+synthetic features; `SensePriorTests.cs` covers the usage prior (the offsets on a hand-computed fixture, their effect on
+the stored biases, the thresholds and the fit-cache key, and the options); `RealSplitTests.cs` and
+`RealCalibratorTests.cs` cover the split of the real held-out sentences by
 document and the real-text calibration of the thresholds on one-dimensional synthetic lemmas; `ChooserCorpusTests.cs`
 and `ChooserTrainingTests.cs` cover the chooser rows and the training of the form choosers; `TiersTests.cs`,
 `SenseEvaluatorTests.cs`, `RunningTextEvaluatorTests.cs`, `ChallengeSetFloorTests.cs`, `SuiteFileTests.cs`,
@@ -210,6 +212,30 @@ All scenarios below pass on every platform and target framework of the CI matrix
   precision never reaches the target gets no threshold for that level, so that level is never answered.
 - **Both thresholds are written** (`ModelTrainer_TrainDataAsync_WritesBothThresholdsPerLemma`): the weights blob
   holds `t_fine` of every trained lemma and `t_group` of every trained lemma that has groups.
+
+#### Usage prior
+
+- **Offset formula** (`SensePrior_Offsets_FollowTheDocumentedFormula`): on a fixture of three senses with known anchor
+  counts and tag counts, each offset equals `-ln q + alpha ln pi` computed by hand, and adding the offsets to the scores
+  gives the probabilities `p/q * pi^alpha` normalized.
+- **Sense without a count** (`SensePrior_Offsets_SenseWithoutCount_UsesTheSmoothingAlone`): a project sense (no sense
+  key) and a sense that the table does not list get the smoothing constant alone, the same as a sense with count 0.
+- **Alpha zero** (`SensePrior_Offsets_AlphaZero_RemovesOnlyTheTrainingShare`): without the exponent only the training
+  share is divided out.
+- **Deterministic** (`SensePrior_Offsets_AreDeterministic`): the same input gives the same offsets bit for bit.
+- **Counts file** (`SensePrior_ReadCounts_ReadsTheFrequencyTable`): the tag counts are read from the partitioned
+  `sense_frequency` table by sense key.
+- **Wired into the training** (`WeightsTrainer_TrainDense_UsagePrior_ShiftsTheBiasesByTheOffsets`,
+  `..._IsDeterministicAndKeepsTheSize`): the weights of a lemma trained with the prior equal those trained without it
+  and the biases differ by exactly the offsets; two runs give the same bits with one thread and with many, and the
+  number of biases and weights is unchanged.
+- **Thresholds on corrected scores** (`Thresholds_Choose_Offsets_AreAppliedToTheOutOfFoldScores`): offsets that
+  favor one sense change the out-of-fold margins and therefore the thresholds of a lemma, and zero offsets change
+  nothing.
+- **Fit cache** (`FitCache_KeyOf_DependsOnThePriorOffsets`): another offset gives another key.
+- **Options** (`Program_TrainSettingsOf_ParsesThePriorOptions`): `--prior-alpha` and `--prior-smoothing` are read and
+  checked (a negative value is an error), `--no-prior` switches the correction off, and the defaults are 0.5 and 0.5.
+- **Real runs** (not automated): the measured effect of the correction is in `docs/build_notes/frequency-prior.md`.
 
 #### Real-text calibration
 

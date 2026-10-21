@@ -83,7 +83,9 @@ implementation of the feature computation.
   and a sentence must occur once across both sets; it also finds the label of an analysis by the rule of the weights
   table (the exact `lemma/features` label, else the lemma).
 - `Thresholds`: chooses the first fine threshold of a lemma, and the first group threshold of a lemma that has groups,
-  by cross-validation on its anchors.
+  by cross-validation on its anchors, on the scores with the usage prior applied.
+- `SensePrior`, `PriorSettings`: the usage prior of the per-sense scores: reads the WordNet 3.0 tag counts from the
+  `sense_frequency` table and computes the additive offset of each sense of a lemma (see "Usage prior" below).
 - `RealSplit`, `RealCalibrator`: split the real-text held-out sentences by document into a calibration and a test
   split (from `corpus/provenance`) and move the thresholds of the trained lemmas to the precision target measured on
   the real calibration sentences (see "Real-text calibration" below).
@@ -146,11 +148,14 @@ instead of `--model`.
 - `import-moby --input FILE [--corpus DIR]`: derives `corpus/lexicon/lexicon.tsv` from the pinned Moby Part-of-Speech
   list after verifying its SHA-256, keeping every single lower-case word with all its parts of speech in source order
   and applying the committed corrections; it prints the counts.
-- `weights <modelId> [--corpus DIR] [--repository DIR] [--cache DIR] [--no-cache] [--recompute-mean]`: trains the
+- `weights <modelId> [--corpus DIR] [--repository DIR] [--cache DIR] [--no-cache] [--recompute-mean] [--no-prior]
+  [--prior-alpha A] [--prior-smoothing K]`: trains the
   weights of an encoder model (`minilm`, `bert-base-cased`) and writes its `weights.bin`. `--cache DIR` places the
   embedding cache (default `<repository>/.cache/embeddings`; the cache of a model is the subfolder named by its model
   id); `--no-cache` bypasses it (and cannot be combined with `--cache`); `--recompute-mean` computes the global mean
-  from the anchors instead of reusing the one of the existing weights. `--no-cache` and `--recompute-mean` are
+  from the anchors instead of reusing the one of the existing weights. `--no-prior` trains without the usage prior;
+  `--prior-alpha` (default 0.5, not negative) and `--prior-smoothing` (default 0.5, positive) set its exponent and its
+  add-k constant (see Usage prior below). `--no-cache`, `--recompute-mean` and `--no-prior` are
   switches: they take no value (an explicit `true` or `false` is accepted).
 - `evaluate <modelId> [--corpus DIR] [--repository DIR] [--output FILE] [--table FILE] [--outcomes FILE]`: measures a
   model (`minilm`, `bert-base-cased`, `basic`) on the holdout sentences and prints a Markdown table; `--table` writes
@@ -245,8 +250,9 @@ for at least two of its senses to get weights; a lemma with fewer is not an erro
    of the senses of the group), so no group weights are stored. The solver works in the span of the anchors (the
    *kernel* form, see below) whenever the training part has fewer anchors than the encoder has dimensions, and in the
    feature space otherwise.
-6. Choose the first thresholds of the lemma (see Thresholds below); after all lemmas are fitted, move them to the
-   real-text precision target (see Real-text calibration below).
+   Add the usage prior (see Usage prior below) to the fitted biases.
+6. Choose the first thresholds of the lemma (see Thresholds below), on the scores with the prior; after all lemmas are
+   fitted, move them to the real-text precision target (see Real-text calibration below).
 7. The lemmas are fitted concurrently (`TrainingOptions.DefaultParallelism`, the processors minus two, 2 to 16
    threads), and inside a lemma the senses of a fit and the folds of the cross-validation are fitted concurrently too;
    each result is written to its own slot, so the weights do not depend on the thread count. A lemma whose
@@ -281,6 +287,24 @@ fit and the folds run concurrently. `--solver primal` selects the feature-space 
 the reference: it reproduced the committed blobs byte for byte, and the kernel solver agrees with it to about 1e-6 in
 a weight with identical answers on the held-out sentences (see `docs/build_notes/fit-speed.md`). The solver is part of
 the key of the fit cache.
+
+**Usage prior (`SensePrior`).** The classifiers are fitted on anchors that are balanced by sense quota, so the
+probabilities they give carry the proportions of the training sentences, not those of real use. The correction is
+`p'(s|x) ~ p(s|x) / q(s) * pi(s)^alpha`, normalized over the senses of the lemma: `q(s)` is the share of the sense
+among the anchors of its lemma, and `pi(s)` is the usage share of the sense, its WordNet 3.0 tag count (the
+`sense_frequency` table, joined on the sense key) plus the smoothing constant `k`, divided by the sum over the senses
+of the lemma that have a column. A project sense has no sense key, so its count is 0 and it gets the constant alone. The
+defaults are `alpha = 0.5` (a tempered prior: the counts are small and from a different genre) and `k = 0.5`
+(`--prior-alpha`, `--prior-smoothing`; `--no-prior` trains without the correction). The scores of a lemma are
+one-versus-rest log-odds whose softmax is the probability, so the correction is the additive offset
+`-ln q(s) + alpha ln pi(s)` on the score of each sense, and it is stored by adding it to the bias of the sense: the
+weights keep their size, the run time keeps its code and the probabilities, the margins and the thresholds are all
+read from the corrected scores. The same offset is added to the out-of-fold scores of the cross-validation before the
+margins are taken, so the first thresholds are chosen on the corrected scores, and the real-text calibration scores
+with the stored biases, so it calibrates the corrected model. The offset is a function of the anchors and the tag
+counts only, so it is deterministic and part of the fit-cache key (the offsets themselves are hashed). The blob format
+has no slot for settings, so the settings are not stored in it; they are the defaults of the builder, printed in the
+summary of the run and documented in `docs/build_notes/frequency-prior.md`.
 
 **Thresholds (`Thresholds.Choose`).** For every trained lemma the anchors are split into k = 5 folds by a seeded,
 deterministic shuffle; each fold is scored by a fit on the other folds, which gives out-of-fold margins for every
@@ -342,9 +366,10 @@ atomically (a temporary file in the same folder, then renamed) at the end of the
 encoded sentences, so an interrupted run keeps its work. The cache does not know the encoder code: after a change of
 the pooling or tokenization that keeps the model files, delete the cache folder or run once with `--no-cache`.
 
-**Fit cache (`FitCache`).** Fitting the classifiers is the longest step once the encoding is cached (seconds with the
-kernel solver for the 20 trial lemmas, where the feature-space solver needed 77 seconds for MiniLM and 11.5 minutes for
-the 768-dimensional BertBaseCased), and the fit of a lemma depends on that lemma alone. `<cache>/<model-id>/fits.bin`
+**Fit cache (`FitCache`).** Fitting the classifiers is the longest step once the encoding is cached (about 1.5 minutes
+for the 775 lemmas of MiniLM and 2 minutes for BertBaseCased with the kernel solver; the feature-space solver needed 77
+seconds for MiniLM and 11.5 minutes for the 768-dimensional BertBaseCased on a measurement of only 20 lemmas, see
+`docs/build_notes/fit-speed.md`), and the fit of a lemma depends on that lemma alone. `<cache>/<model-id>/fits.bin`
 therefore stores the fitted weights, biases and thresholds of each lemma, keyed by the SHA-256 of the training settings
 (the threshold settings, the precision target, the solver and the seed included), the lemma, its sense ids, the label of
 each

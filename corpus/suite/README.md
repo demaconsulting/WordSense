@@ -113,6 +113,36 @@ expectation, so a regression fails the build while the known misses stay visible
    `evaluate-suite --write-expectations corpus/suite/expectations.tsv --overwrite true`, and the diff of the file is
    reviewed row by row: every row that goes down is explained, every row that goes up is welcome.
 
+### Deliberate model change: the usage prior (retraining of both encoder models)
+
+Both encoder models were retrained with the usage prior (the scores are corrected from the proportions of the balanced
+training sentences to the usage of the senses; see `docs/build_notes/frequency-prior.md`), and the expectation file was
+rewritten with `evaluate-suite --write-expectations` under rule 3. The change is a deliberate trade measured on
+independent text, not a hidden regression: on SemCor (human-annotated running text) the fine top-1 of MiniLM rose from
+47.5% to 53.8% and that of BertBaseCased from 56.9% to 60.9%. The Basic model is unchanged. Seven cells changed
+(348 rows; MiniLM 91.67% to 91.09% fine and 93.68% to 93.39% answered; BertBaseCased 94.25% to 94.54% fine, 95.69% answered
+as before). Each row was checked against the ranked senses the model now gives:
+
+<!-- markdownlint-disable MD013 -->
+
+| Row | Model | Before | Now | Why (a trade-off of the prior, not a defect) |
+| --- | --- | --- | --- | --- |
+| `H-second-5` (`I second the motion`) | MiniLM | fine | miss | The encoder chooses the part of speech from the mass of the senses of each part of speech. The noun senses of `second` carry more usage than the verb sense `second#support`, so the noun reading now wins (0.59 against 0.31) although the context is a verb. |
+| `H-detail-4` (`Her letter details the problems`) | MiniLM | fine | miss | The noun sense `detail#fact` has the larger count and the noun mass rises from about 0.40 to 0.64 against the verb senses. |
+| `H-conflict-3` (`the dates and the exam conflict`) | MiniLM | fine | miss | `conflict#incompatibility` has one anchor, so dividing out its small training share lifts its score the most; the noun mass rises from about 0.19 to 0.54. This is the effect of senses that still lack anchors (see the quota deficits in `docs/build_notes/quota-fill.md`). |
+| `C-bass-1` (`hooked a huge bass near the dock`) | MiniLM | fine | answer | The part of speech and the fish reading as a group are still right, but the top-ranked sense is now `bass#pitch` (0.39) before `bass#percoid` (0.33): the three fish senses split their mass while the musical sense has the larger count. |
+| `C-bow-3` (`The students bow to their teacher`) | MiniLM | miss | fine | The verb reading is now chosen (0.81 against 0.19 for the noun). |
+| `H-present-2` (`The present owner`) | MiniLM | miss | fine | The adjective reading is now chosen (0.65 against 0.34 for the noun). |
+| `C-tear-3` (`a small tear in the sleeve`) | BertBaseCased | answer | fine | The top-ranked sense is now `tear#torn-opening`. |
+
+<!-- markdownlint-enable MD013 -->
+
+The three MiniLM rows that went to `miss` are verb readings of lemmas whose noun senses are more frequent and the
+encoder's own part-of-speech choice was close to even (0.54 to 0.64 confidence); two other close rows moved the other way.
+The net effect on the MiniLM suite is two rows fine and one row answered (of 348), against a gain of six points
+of fine top-1 on SemCor. The expectation of these rows is the measurement of the retrained model; if a later change
+improves them, the policy raises the expectation again.
+
 ## Known misses
 
 The rows that all three models miss (the capitalized `Polish` rows and `polish` the shoe polish, `august` the

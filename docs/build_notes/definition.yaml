@@ -22,6 +22,7 @@ input-files:
   - docs/build_notes/model-comparison.md
   - docs/build_notes/basic-evaluation.md
   - docs/build_notes/tuning.md
+  - docs/build_notes/frequency-prior.md
   - docs/build_notes/api-quiz.md
   # new-lemma-results.md also documents corpus/audit/new-lemma-speech-map.tsv (sense-to-pronunciation map of the
   # Phase 4 lemmas: lemma, sense, pos, group, arpabet, anchors, holdout, source_mix, holdout_accuracy, status).

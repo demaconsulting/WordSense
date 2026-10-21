@@ -3,16 +3,23 @@
 - **project-name**: WordSense
 - **organization**: DEMA Consulting
 - **project-tagline**: Offline word-sense disambiguation for .NET
-- **description**: WordSense is a .NET library that assigns a sense label (for example noun or verb) to
-  ambiguous English words in context, offline. It ships as four layered NuGet packages: `DemaConsulting.WordSense`,
-  the core (public contracts, embedded lexicon with build-time inflections, and the built-in statistical
-  part-of-speech tagger and context-cue model `BasicWordSenseModel`; no ONNX dependency, no model files);
+- **description**: WordSense is a .NET library that identifies the meaning of an English word in context, offline: its
+  lemma, its part of speech and features and, where the senses allow, its sense (an Open English WordNet fine sense with
+  a readable id such as `bank#financial-institution`, linked to its WordNet sense key) or the group of closely related
+  senses it belongs to. Every answer states its level (sense, group or part of speech), carries a confidence for that
+  level and lists the candidate analyses with their probabilities and, where scored, the senses inside each. It ships as
+  four layered NuGet packages: `DemaConsulting.WordSense`,
+  the core (public contracts, embedded lexicon and sense catalog with build-time inflections, and the built-in
+  statistical part-of-speech tagger and context-cue model `BasicWordSenseModel`; no ONNX dependency, no model files);
   `DemaConsulting.WordSense.Onnx` (shared WordPiece tokenizer, ONNX encoder, verified model downloader with mirror
   support and lemma-weights machinery); and the two concrete models `DemaConsulting.WordSense.MiniLM` and
-  `DemaConsulting.WordSense.BertBaseCased`, each pinning its model files and embedding its own weights. Onnx
-  depends only on core; MiniLM and BertBaseCased depend on core and Onnx. (The former Basic package is retired.)
-- **languages**: C#, Python (one-off tokenizer fixture generator, the real-text harvest tool `tools/real-text` and the
-  open-corpus scripts `tools/open-corpus`)
+  `DemaConsulting.WordSense.BertBaseCased`, each pinning its model files and embedding its own weights (fine-sense
+  classifiers whose scores are corrected to the usage of the senses). Onnx
+  depends only on core; MiniLM and BertBaseCased depend on core and Onnx. (The former Basic package is retired.) No CC
+  BY-SA material is shipped; the training corpus is project-authored CC0 text and US public domain sources.
+- **languages**: C#, Python (one-off tokenizer fixture generator, the real-text harvest tool `tools/real-text`, the
+  quota-fill scripts `tools/quota-fill`, the model preparation scripts `tools/model-prep` and the open-corpus scripts
+  `tools/open-corpus`)
 - **technologies**: .NET, ONNX Runtime, Git LFS
 
 # Project Structure
@@ -29,6 +36,10 @@
 │   │                            evaluate-running, evaluate-suite, check-leakage, tiers, open-counts, train-basic,
 │   │                            tune-basic, evaluate-tagger, appendix)
 │   ├── open-corpus/            (Python scripts that built the open part-of-speech corpus corpus/open)
+│   ├── quota-fill/             (Python scripts that fill the per-sense quotas of the corpus, and the usage-weighted
+│   │                            evaluation diagnostic)
+│   ├── real-text/              (harvest of real sentences from public-domain sources)
+│   ├── model-prep/             (prepares the pinned encoder model files)
 │   └── tokenizer-fixture/      (one-off Python tokenizer parity fixture generator)
 ├── docs/
 │   ├── build_notes/

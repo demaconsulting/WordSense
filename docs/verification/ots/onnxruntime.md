@@ -2,7 +2,8 @@
 
 This document provides the verification evidence for the ONNX Runtime OTS software item. ONNX Runtime is a dependency
 of the Onnx package, `DemaConsulting.WordSense.Onnx`, and reaches the MiniLM and BertBaseCased packages through it; the
-core and Basic packages do not use it. Requirements for this OTS item are defined in the ONNX Runtime OTS Software
+core package, which holds the Basic model, does not use it. Requirements for this OTS item are defined in the ONNX
+Runtime OTS Software
 Requirements document.
 
 ### Required Functionality

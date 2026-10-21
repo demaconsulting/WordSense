@@ -19,7 +19,7 @@ namespace WordSense.Builder;
 ///     <item><description><c>rebuild-forms [--data DIR] [--corpus DIR] [--oewn FILE] [--agid FILE] [--output DIR]</c> regenerates the entry and form tables from the entries, the committed legacy analyses (<c>corpus/lexicon/form-frozen.tsv</c>), the irregular lists, the written forms of the Open English WordNet file and the dictionary; a generated inflection ships only when a second source corroborates it (the AGID <c>infl.txt</c> file attests forms). Both inputs must match their pinned SHA-256; the default places are <c>artifacts/inputs/english-wordnet-2025.xml.gz</c> and <c>artifacts/inputs/agid/agid-2016.01.19/infl.txt</c>. The result depends on nothing else, so it is reproducible.</description></item>
 ///     <item><description><c>import-agid --input FILE [--corpus DIR] [--output FILE]</c> derives the irregular forms of the dictionary words from the inflection database file <c>infl.txt</c>.</description></item>
 ///     <item><description><c>import-moby --input FILE [--corpus DIR] [--output FILE]</c> imports the pinned Moby Part-of-Speech II list into the dictionary word list of the corpus.</description></item>
-///     <item><description><c>weights &lt;modelId&gt; [--corpus DIR] [--repository DIR] [--cache DIR] [--no-cache] [--recompute-mean] [--solver kernel|primal] [--calibration-target P]</c> trains the fine-sense weights of an ONNX model (minilm, bert-base-cased) from <c>corpus/anchors</c> and writes them to its package; the thresholds of each lemma are first chosen by cross-validation on its anchors and then moved to the precision target measured on the real-text calibration sentences of <c>corpus/holdout</c> (the real held-out sentences of the calibration documents, see the real-text split; <c>--calibration-target P</c> sets the lemma-level target, 0.97 by default), and the half-precision storage is checked against <c>corpus/holdout</c>. Pooled vectors are cached in <c>DIR/&lt;model id&gt;</c> (default <c>.cache/embeddings</c> of the repository) so only new sentences are encoded; <c>--no-cache</c> bypasses the cache; the global mean of the existing weights is reused unless <c>--recompute-mean</c> is given. The classifiers are fitted by Newton's method in the span of the anchors of the lemma (<c>--solver kernel</c>, the default, which is fast when a lemma has fewer anchors than the encoder has dimensions); <c>--solver primal</c> is the slow reference in the feature space that finds the same optimum.</description></item>
+///     <item><description><c>weights &lt;modelId&gt; [--corpus DIR] [--repository DIR] [--cache DIR] [--no-cache] [--recompute-mean] [--solver kernel|primal] [--calibration-target P] [--no-prior] [--prior-alpha A] [--prior-smoothing K]</c> trains the fine-sense weights of an ONNX model (minilm, bert-base-cased) from <c>corpus/anchors</c> and writes them to its package; the scores are corrected to the usage of the senses (the usage prior: the share of the sense among the anchors of its lemma is divided out and its WordNet 3.0 tag count share, with <c>K</c> added to every count and raised to the exponent <c>A</c>, is multiplied in; the defaults are 0.5 and 0.5, <c>--no-prior</c> trains the raw balanced-anchor scores) by an offset that is folded into the stored biases; the thresholds of each lemma are first chosen by cross-validation on its anchors (on the corrected scores) and then moved to the precision target measured on the real-text calibration sentences of <c>corpus/holdout</c> (the real held-out sentences of the calibration documents, see the real-text split; <c>--calibration-target P</c> sets the lemma-level target, 0.97 by default), and the half-precision storage is checked against <c>corpus/holdout</c>. Pooled vectors are cached in <c>DIR/&lt;model id&gt;</c> (default <c>.cache/embeddings</c> of the repository) so only new sentences are encoded; <c>--no-cache</c> bypasses the cache; the global mean of the existing weights is reused unless <c>--recompute-mean</c> is given. The classifiers are fitted by Newton's method in the span of the anchors of the lemma (<c>--solver kernel</c>, the default, which is fast when a lemma has fewer anchors than the encoder has dimensions); <c>--solver primal</c> is the slow reference in the feature space that finds the same optimum.</description></item>
 ///     <item><description><c>evaluate &lt;modelId&gt; [--corpus DIR] [--repository DIR] [--output FILE] [--table FILE] [--outcomes FILE]</c> measures a shipped model (minilm, bert-base-cased, basic) on <c>corpus/holdout</c>: the share of the sentences answered at each level and the precision at each level; <c>--table</c> updates the row of the model in the model comparison table file; <c>--outcomes</c> writes the answer for every sentence.</description></item>
 ///     <item><description><c>open-counts [--corpus DIR] [--output DIR]</c> counts the tag statistics (word tag counts and tag n-gram counts) of the <c>train</c> split of the representative part of the open corpus (<c>corpus/open</c>; every token, whatever its consensus status) and writes them to <c>corpus/open/counts</c>; these are usage statistics, so no other part of the corpus is read.</description></item>
 ///     <item><description><c>train-basic [--corpus DIR] [--repository DIR] [--output FILE]</c> retrains the basic model completely and writes its table: the tagger statistics come from the counts of <c>corpus/open/counts</c> and the cue tables from the fine-sense anchors of <c>corpus/anchors</c>; run <c>open-counts</c> first when the open corpus changed.</description></item>
@@ -148,12 +148,12 @@ internal static partial class Program
         }
     }
 
-    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "split", "gold", "table", InputOption, "text", "top", "data", "sha256", "threshold", "overwrite", "outcomes", "oewn", "agid", "sample", "seed", "oracle", "adjudications", "max-error", "previous", "previous-release", "previous-sha256", "cache", "no-cache", "recompute-mean", "baseline", "curation", "solver", "calibration-target", "write-expectations"], StringComparer.Ordinal);
+    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "split", "gold", "table", InputOption, "text", "top", "data", "sha256", "threshold", "overwrite", "outcomes", "oewn", "agid", "sample", "seed", "oracle", "adjudications", "max-error", "previous", "previous-release", "previous-sha256", "cache", "no-cache", "recompute-mean", "baseline", "curation", "solver", "calibration-target", "write-expectations", "prior-alpha", "prior-smoothing"], StringComparer.Ordinal);
 
     /// <summary>
     ///     Options that are switches: they take no value, but accept a following <c>true</c> or <c>false</c>.
     /// </summary>
-    private static readonly HashSet<string> FlagOptions = new(["no-cache", "recompute-mean", "download"], StringComparer.Ordinal);
+    private static readonly HashSet<string> FlagOptions = new(["no-cache", "recompute-mean", "download", "no-prior"], StringComparer.Ordinal);
 
     /// <summary>
     ///     Builds the settings of a weights run from the options.
@@ -189,7 +189,21 @@ internal static partial class Program
             throw new ArgumentException($"The option --calibration-target must be a precision between 0.5 and 1, not '{targetText}'. {Usage}");
         }
 
-        return new TrainSettings(root, IsOn(options, "recompute-mean"), solver, calibrationTarget);
+        var priorAlpha = PriorSettings.DefaultAlpha;
+        if (options.TryGetValue("prior-alpha", out var alphaText)
+            && (!double.TryParse(alphaText, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out priorAlpha) || !double.IsFinite(priorAlpha) || priorAlpha < 0))
+        {
+            throw new ArgumentException($"The option --prior-alpha must be a number that is not negative, not '{alphaText}'. {Usage}");
+        }
+
+        var priorSmoothing = PriorSettings.DefaultSmoothing;
+        if (options.TryGetValue("prior-smoothing", out var smoothingText)
+            && (!double.TryParse(smoothingText, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out priorSmoothing) || !double.IsFinite(priorSmoothing) || priorSmoothing <= 0))
+        {
+            throw new ArgumentException($"The option --prior-smoothing must be a positive number, not '{smoothingText}'. {Usage}");
+        }
+
+        return new TrainSettings(root, IsOn(options, "recompute-mean"), solver, calibrationTarget, !IsOn(options, "no-prior"), priorAlpha, priorSmoothing);
     }
 
     private static bool IsOn(Dictionary<string, string> options, string name) =>
