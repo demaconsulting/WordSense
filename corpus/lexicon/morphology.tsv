@@ -1,6 +1,6 @@
-Plural	enabled	-s, -es and -ies of a noun base; judged by coverage of the Project Gutenberg sample and UD English-EWT attestation (see docs/build_notes/inflection-coverage.md)
+Plural	enabled	-s, -es and -ies of a noun base; judged by coverage of the Project Gutenberg sample and UD English-EWT attestation (see PROVENANCE.md, Morphology Rules)
 ThirdPerson	enabled	the same endings of a verb base; a verb form that is also a noun form shares the word
-PastTense	enabled	-ed, -d, -ied and doubled-consonant -ed of a verb base; regenerated with part-of-speech-aware bases, see the evidence in docs/build_notes/inflection-coverage.md
+PastTense	enabled	-ed, -d, -ied and doubled-consonant -ed of a verb base; regenerated with part-of-speech-aware bases, see the evidence in PROVENANCE.md (Morphology Rules)
 Gerund	enabled	-ing of a verb base with the dropped e, ying and doubled consonant
 Comparative	enabled	-er of an adjective of one or two syllables
 Superlative	enabled	-est of an adjective of one or two syllables

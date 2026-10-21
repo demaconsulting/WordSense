@@ -1,6 +1,7 @@
 """Extracts the text of the FAA documents that the owner accepted (17 U.S.C. 105, US federal government work) into the pool.
 
-  python faa.py extract      text/faa-*.txt in tools/real-text/cache/quota/ and faa-sources.tsv (read by pool.py)
+  python faa.py extract      text/faa-*.txt in tools/quota-fill/cache/quota/ and faa-sources.tsv (read by pool.py); the downloaded
+                             PDFs are read from tools/quota-fill/cache/faa (or the folder in FAA_SOURCE_DIR)
 
 Included: the Aviation Maintenance Technician Handbooks (General, Airframe, Powerplant), the Pilot's Handbook of
 Aeronautical Knowledge, the Airplane, Helicopter, Glider and Balloon Flying Handbooks, Plane Sense, AC 43.13-1B and
@@ -19,7 +20,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import qf
 
-SRC = r"C:\Users\mnixon\.copilot\session-state\217fb8fb-495d-4da7-89a1-b33f6a7805ad\files\faa\cache"
+SRC = os.environ.get("FAA_SOURCE_DIR", os.path.join(os.path.dirname(qf.QDIR), "faa"))  # the downloaded PDFs (git-ignored)
 BASIS = ("US federal government work, 17 U.S.C. \u00a7105 (public domain in the United States); text only, passages "
          "credited to a third party excluded; ")
 BASE = "https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/"
@@ -114,7 +115,7 @@ def main():
         with open(os.path.join(qf.QDIR, "text", doc_id + ".txt"), "rb") as handle:
             digest = hashlib.sha256(handle.read()).hexdigest()
         lines.append("\t".join([doc_id, "faa", title, url, "Federal Aviation Administration", year,
-                                BASIS + "document " + title + "; " + url, "https://www.faa.gov/about/website/copyright",
+                                BASIS + "document " + title + "; " + url, "https://www.law.cornell.edu/uscode/text/17/105",
                                 "2026-10-20", "", digest, ""]))
     with open(path, "w", encoding="utf-8", newline="\n") as handle:
         handle.write("\n".join(lines) + "\n")

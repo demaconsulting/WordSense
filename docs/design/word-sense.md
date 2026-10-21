@@ -86,7 +86,8 @@ from no treebank (no CC BY-SA material is shipped anywhere).
 - `WordLexicon.Lookup`, `TryLookup`, `Contains`, `FormsOf` (out): the analyses (`WordDetails`) of a word from the
   embedded word image.
 - `WordLexicon.SensesOf`, `TryGetSense`, `TryGetSenseByKey`, `TryGetGroup` (out): the sense catalog from the embedded
-  word image: the senses of a lemma and part of speech (most frequent first), a sense by its readable id or its OEWN
+  word image: the senses of a lemma and part of speech (in the order of Open English WordNet), a sense by its readable
+  id or its OEWN
   sense key, and a group with its member senses.
 - `WordLexicon.Version` (out): a string that identifies the sense inventory of the embedded image (the first 16
   lower-case hexadecimal digits of its inventory hash), to be compared for equality only.

@@ -39,13 +39,13 @@ Black Vernaculars	0	oewn-Black_Vernacular-n	Capitalization=Title+Number=Plur	dem
 Black and Tan	0	oewn-Black_and_Tan-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Black and Tans	0	oewn-Black_and_Tan-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Black man	0	oewn-Black_man-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
-Black mans	0	oewn-Black_man-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Black men	0	oewn-Black_man-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Black person	0	oewn-Black_person-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Black persons	0	oewn-Black_person-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Black race	0	oewn-Black_race-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Black races	0	oewn-Black_race-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Black woman	0	oewn-Black_woman-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
-Black womans	0	oewn-Black_woman-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Black women	0	oewn-Black_woman-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Blackburn	0	oewn-Blackburn-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Blackburnian warbler	0	oewn-Blackburnian_warbler-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Blackburnian warblers	0	oewn-Blackburnian_warbler-n	Capitalization=Exact+Number=Plur	dema	0			rule
@@ -537,7 +537,7 @@ blackbody radiation	0	oewn-blackbody_radiation-n	Number=Sing	dema	0			oewn_form
 blackbody radiations	0	oewn-blackbody_radiation-n	Number=Plur	dema	0			rule
 blackboy	0		Number=Sing	dema	0	blackboy	n	moby_reverse
 blackboys	0		Number=Plur	dema	0	blackboy	n	rule
-blackbuck	0	oewn-blackbuck-n	Number=Plur	dema	0			agid
+blackbuck	0	oewn-blackbuck-n	Number=Plur	dema	0			llm
 blackbuck	1	oewn-blackbuck-n	Number=Sing	dema	0			oewn_form
 blackbucks	0	oewn-blackbuck-n	Number=Plur	dema	0			rule_variant
 blackbutt	0		Number=Sing	dema	0	blackbutt	n	moby_reverse
@@ -575,8 +575,8 @@ blackening out	0	oewn-blacken_out-v	VerbForm=Ger	dema	0			rule
 blackenings	0	oewn-blackening-n	Number=Plur	dema	0			rule
 blackens	0	oewn-blacken-v	Person=3+Tense=Pres	dema	0			rule
 blackens out	0	oewn-blacken_out-v	Person=3+Tense=Pres	dema	0			rule
-blacker	0	oewn-black-a	Degree=Cmp	dema	0			rule
-blackest	0	oewn-black-a	Degree=Sup	dema	0			rule
+blacker	0	oewn-black-a	Degree=Cmp	dema	0			llm
+blackest	0	oewn-black-a	Degree=Sup	dema	0			llm
 blackface	0	oewn-blackface-n	Number=Sing	dema	0			oewn_form
 blackfaces	0	oewn-blackface-n	Number=Plur	dema	0			rule
 blackfellow	0		Number=Sing	dema	0	blackfellow	n	moby_reverse
@@ -628,7 +628,7 @@ blackjack oak	0	oewn-blackjack_oak-n	Number=Sing	dema	0			oewn_form
 blackjack oaks	0	oewn-blackjack_oak-n	Number=Plur	dema	0			rule
 blackjacked	0	oewn-blackjack-v	Tense=Past+VerbForm=Part	dema	0			rule
 blackjacking	0	oewn-blackjack-v	VerbForm=Ger	dema	0			rule
-blackjacks	0	oewn-blackjack-n	Number=Plur	dema	0			rule
+blackjacks	0	oewn-blackjack-n	Number=Plur	dema	0			llm
 blackjacks	1	oewn-blackjack-v	Person=3+Tense=Pres	dema	0			rule
 blacklead	0	oewn-blacklead-v	VerbForm=Inf	dema	0			oewn_form
 blackleading	0	oewn-blacklead-v	VerbForm=Ger	dema	0			rule
@@ -698,14 +698,12 @@ blacktongue	0		Number=Sing	dema	0	blacktongue	n	moby_reverse
 blacktongues	0		Number=Plur	dema	0	blacktongue	n	rule
 blacktop	0	oewn-blacktop-n	Number=Sing	dema	0			oewn_form
 blacktop	1	oewn-blacktop-v	VerbForm=Inf	dema	0			oewn_form
-blacktoped	0	oewn-blacktop-v	Tense=Past+VerbForm=Part	dema	0			rule
-blacktoping	0	oewn-blacktop-v	VerbForm=Ger	dema	0			rule
-blacktopped	0	oewn-blacktop-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+blacktopped	0	oewn-blacktop-v	Tense=Past+VerbForm=Part	dema	0			llm
 blacktopping	0	oewn-blacktopping-n	Number=Sing	dema	0			oewn_form
-blacktopping	1	oewn-blacktop-v	VerbForm=Ger	dema	0			rule_variant
+blacktopping	1	oewn-blacktop-v	VerbForm=Ger	dema	0			llm
 blacktoppings	0	oewn-blacktopping-n	Number=Plur	dema	0			rule
 blacktops	0	oewn-blacktop-n	Number=Plur	dema	0			rule
-blacktops	1	oewn-blacktop-v	Person=3+Tense=Pres	dema	0			rule
+blacktops	1	oewn-blacktop-v	Person=3+Tense=Pres	dema	0			llm
 blackwash	0	oewn-blackwash-n	Number=Sing	dema	0			oewn_form
 blackwash	1	oewn-blackwash-v	VerbForm=Inf	dema	0			oewn_form
 blackwashed	0	oewn-blackwash-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -831,8 +829,8 @@ blancs	0	oewn-blanc-n	Number=Plur	dema	0			rule
 bland	0	oewn-bland-a	Degree=Pos	dema	0			oewn_form
 bland diet	0	oewn-bland_diet-n	Number=Sing	dema	0			oewn_form
 bland diets	0	oewn-bland_diet-n	Number=Plur	dema	0			rule
-blander	0	oewn-bland-a	Degree=Cmp	dema	0			rule
-blandest	0	oewn-bland-a	Degree=Sup	dema	0			rule
+blander	0	oewn-bland-a	Degree=Cmp	dema	0			llm
+blandest	0	oewn-bland-a	Degree=Sup	dema	0			llm
 blandish	0	oewn-blandish-v	VerbForm=Inf	dema	0			oewn_form
 blandished	0	oewn-blandish-v	Tense=Past+VerbForm=Part	dema	0			rule
 blandisher	0		Number=Sing	dema	0	blandisher	n	moby_reverse
@@ -867,8 +865,8 @@ blankbook	0		Number=Sing	dema	0	blankbook	n	moby_reverse
 blankbooks	0		Number=Plur	dema	0	blankbook	n	rule
 blanked	0	oewn-blank-v	Tense=Past+VerbForm=Part	dema	0			rule
 blanked out	0	oewn-blank_out-v	Tense=Past+VerbForm=Part	dema	0			rule
-blanker	0	oewn-blank-a	Degree=Cmp	dema	0			rule
-blankest	0	oewn-blank-a	Degree=Sup	dema	0			rule
+blanker	0	oewn-blank-a	Degree=Cmp	dema	0			llm
+blankest	0	oewn-blank-a	Degree=Sup	dema	0			llm
 blanket	0	oewn-blanket-n	Number=Sing	dema	0			oewn_form
 blanket	1	oewn-blanket-v	VerbForm=Inf	dema	0			oewn_form
 blanket	2	oewn-blanket-a	Degree=Pos	dema	0			oewn_form
@@ -910,12 +908,12 @@ blanquillos	0	oewn-blanquillo-n	Number=Plur	dema	0			rule
 blare	0	oewn-blare-v	VerbForm=Inf	dema	0			oewn_form
 blare	1	oewn-blare-n	Number=Sing	dema	0			oewn_form
 blare out	0	oewn-blare_out-v	VerbForm=Inf	dema	0			oewn_form
-blared	0	oewn-blare-v	Tense=Past+VerbForm=Part	dema	0			rule
+blared	0	oewn-blare-v	Tense=Past+VerbForm=Part	dema	0			llm
 blared out	0	oewn-blare_out-v	Tense=Past+VerbForm=Part	dema	0			rule
-blares	0	oewn-blare-v	Person=3+Tense=Pres	dema	0			rule
+blares	0	oewn-blare-v	Person=3+Tense=Pres	dema	0			llm
 blares	1	oewn-blare-n	Number=Plur	dema	0			rule
 blares out	0	oewn-blare_out-v	Person=3+Tense=Pres	dema	0			rule
-blaring	0	oewn-blare-v	VerbForm=Ger	dema	0			rule
+blaring	0	oewn-blare-v	VerbForm=Ger	dema	0			llm
 blaring	1	oewn-blaring-n	Number=Sing	dema	0			oewn_form
 blaring	2	oewn-blaring-a	Degree=Pos	dema	0			oewn_form
 blaring out	0	oewn-blare_out-v	VerbForm=Ger	dema	0			rule
@@ -1137,8 +1135,8 @@ bleaching powder	0	oewn-bleaching_powder-n	Number=Sing	dema	0			oewn_form
 bleaching powders	0	oewn-bleaching_powder-n	Number=Plur	dema	0			rule
 bleak	0	oewn-bleak-a	Degree=Pos	dema	0			oewn_form
 bleak	1		Number=Sing	dema	0	bleak	n	moby_reverse
-bleaker	0	oewn-bleak-a	Degree=Cmp	dema	0			rule
-bleakest	0	oewn-bleak-a	Degree=Sup	dema	0			rule
+bleaker	0	oewn-bleak-a	Degree=Cmp	dema	0			llm
+bleakest	0	oewn-bleak-a	Degree=Sup	dema	0			llm
 bleakish	0		Degree=Pos	dema	0	bleakish	a	moby_reverse
 bleakly	0	oewn-bleakly-r	Degree=Pos	dema	0			oewn_form
 bleakness	0	oewn-bleakness-n	Number=Sing	dema	0			oewn_form
@@ -1148,8 +1146,8 @@ blear	1	oewn-blear-a	Degree=Pos	dema	0			oewn_form
 blear-eyed	0	oewn-blear-eyed-a	Degree=Pos	dema	0			oewn_form
 bleared	0	oewn-blear-v	Tense=Past+VerbForm=Part	dema	0			rule
 blearedness	0		Number=Sing	dema	0	blearedness	n	moby_reverse
-blearer	0	oewn-blear-a	Degree=Cmp	dema	0			rule
-blearest	0	oewn-blear-a	Degree=Sup	dema	0			rule
+blearer	0	oewn-blear-a	Degree=Cmp	dema	0			llm
+blearest	0	oewn-blear-a	Degree=Sup	dema	0			llm
 blearier	0	oewn-bleary-a	Degree=Cmp	dema	0			oewn_form
 bleariest	0	oewn-bleary-a	Degree=Sup	dema	0			oewn_form
 blearily	0		Degree=Pos	dema	0	blearily	r	moby_reverse
@@ -1162,12 +1160,12 @@ bleary-eyed	0	oewn-bleary-eyed-a	Degree=Pos	dema	0			oewn_form
 blearyeyedness	0		Number=Sing	dema	0	blearyeyedness	n	moby_reverse
 bleat	0	oewn-bleat-v	VerbForm=Inf	dema	0			oewn_form
 bleat	1	oewn-bleat-n	Number=Sing	dema	0			oewn_form
-bleated	0	oewn-bleat-v	Tense=Past+VerbForm=Part	dema	0			rule
+bleated	0	oewn-bleat-v	Tense=Past+VerbForm=Part	dema	0			llm
 bleater	0		Number=Sing	dema	0	bleater	n	moby_reverse
 bleaters	0		Number=Plur	dema	0	bleater	n	rule
-bleating	0	oewn-bleat-v	VerbForm=Ger	dema	0			rule
+bleating	0	oewn-bleat-v	VerbForm=Ger	dema	0			llm
 bleatingly	0		Degree=Pos	dema	0	bleatingly	r	moby_reverse
-bleats	0	oewn-bleat-v	Person=3+Tense=Pres	dema	0			rule
+bleats	0	oewn-bleat-v	Person=3+Tense=Pres	dema	0			llm
 bleats	1	oewn-bleat-n	Number=Plur	dema	0			rule
 bleaunt	0		Number=Sing	dema	0	bleaunt	n	moby_reverse
 bleaunts	0		Number=Plur	dema	0	bleaunt	n	rule
@@ -1182,7 +1180,7 @@ bleeder	0	oewn-bleeder-n	Number=Sing	dema	0			oewn_form
 bleeder's disease	0	oewn-bleeder-ap-s_disease-n	Number=Sing	dema	0			oewn_form
 bleeder's diseases	0	oewn-bleeder-ap-s_disease-n	Number=Plur	dema	0			rule
 bleeders	0	oewn-bleeder-n	Number=Plur	dema	0			rule
-bleeding	0	oewn-bleed-v	VerbForm=Ger	dema	0			rule
+bleeding	0	oewn-bleed-v	VerbForm=Ger	dema	0			llm
 bleeding	1		Degree=Pos	dema	0	bleeding	a	moby_reverse
 bleeding	2		Degree=Pos	dema	0	bleeding	r	moby_reverse
 bleeding	3	oewn-bleeding-n	Number=Sing	dema	0			oewn_form
@@ -1191,7 +1189,7 @@ bleeding hearts	0	oewn-bleeding_heart-n	Number=Plur	dema	0			rule
 bleeding tooth	0	oewn-bleeding_tooth-n	Number=Sing	dema	0			oewn_form
 bleeding tooths	0	oewn-bleeding_tooth-n	Number=Plur	dema	0			rule
 bleedings	0	oewn-bleeding-n	Number=Plur	dema	0			rule
-bleeds	0	oewn-bleed-v	Person=3+Tense=Pres	dema	0			rule
+bleeds	0	oewn-bleed-v	Person=3+Tense=Pres	dema	0			llm
 bleep	0	oewn-bleep-n	Number=Sing	dema	0			oewn_form
 bleep	1	oewn-bleep-v	VerbForm=Inf	dema	0			oewn_form
 bleeped	0	oewn-bleep-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -1220,7 +1218,7 @@ blend	0	oewn-blend-v	VerbForm=Inf	dema	0			oewn_form
 blend	1	oewn-blend-n	Number=Sing	dema	0			oewn_form
 blend in	0	oewn-blend_in-v	VerbForm=Inf	dema	0			oewn_form
 blende	0	oewn-blende-n	Number=Sing	dema	0			oewn_form
-blended	0	oewn-blend-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+blended	0	oewn-blend-v	Tense=Past+VerbForm=Part	dema	0			llm
 blended	1	oewn-blended-a	Degree=Pos	dema	0			oewn_form
 blended whiskey	0	oewn-blended_whiskey-n	Number=Sing	dema	0			oewn_form
 blended whiskeys	0	oewn-blended_whiskey-n	Number=Plur	dema	0			rule
@@ -1229,11 +1227,11 @@ blended whisky	0	oewn-blended_whisky-n	Number=Sing	dema	0			oewn_form
 blender	0	oewn-blender-n	Number=Sing	dema	0			oewn_form
 blenders	0	oewn-blender-n	Number=Plur	dema	0			rule
 blendes	0	oewn-blende-n	Number=Plur	dema	0			rule
-blending	0	oewn-blend-v	VerbForm=Ger	dema	0			rule
+blending	0	oewn-blend-v	VerbForm=Ger	dema	0			llm
 blending	1	oewn-blending-n	Number=Sing	dema	0			oewn_form
 blending in	0	oewn-blend_in-v	VerbForm=Ger	dema	0			rule
 blendings	0	oewn-blending-n	Number=Plur	dema	0			rule
-blends	0	oewn-blend-v	Person=3+Tense=Pres	dema	0			rule
+blends	0	oewn-blend-v	Person=3+Tense=Pres	dema	0			llm
 blends	1	oewn-blend-n	Number=Plur	dema	0			rule
 blends in	0	oewn-blend_in-v	Person=3+Tense=Pres	dema	0			rule
 blennies	0	oewn-blenny-n	Number=Plur	dema	0			rule
@@ -1243,7 +1241,10 @@ blennioid fish	0	oewn-blennioid_fish-n	Number=Sing	dema	0			oewn_form
 blennioid fishes	0	oewn-blennioid_fish-n	Number=Plur	dema	0			rule
 blennioids	0	oewn-blennioid-n	Number=Plur	dema	0			rule
 blenny	0	oewn-blenny-n	Number=Sing	dema	0			oewn_form
-blent	0	oewn-blend-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+blent	0		VerbForm=Inf	dema	0	blent	v	moby_reverse
+blented	0		Tense=Past+VerbForm=Part	dema	0	blent	v	rule
+blenting	0		VerbForm=Ger	dema	0	blent	v	rule
+blents	0		Person=3+Tense=Pres	dema	0	blent	v	rule
 blepharism	0	oewn-blepharism-n	Number=Sing	dema	0			oewn_form
 blepharisms	0	oewn-blepharism-n	Number=Plur	dema	0			rule
 blepharitic	0		Degree=Pos	dema	0	blepharitic	a	moby_reverse
@@ -1292,21 +1293,20 @@ bleu cheese dressings	0	oewn-bleu_cheese_dressing-n	Number=Plur	dema	0			rule
 bleus	0	oewn-bleu-n	Number=Plur	dema	0			rule
 blew	0	oewn-blow-v	Tense=Past	dema	0			hand
 blewits	0	oewn-blewits-n	Number=Sing	dema	0			oewn_form
-blewitses	0	oewn-blewits-n	Number=Plur	dema	0			rule
 blier	0		Degree=Pos	dema	0	blier	a	moby_reverse
 blight	0	oewn-blight-n	Number=Sing	dema	0			oewn_form
 blight	1	oewn-blight-v	VerbForm=Inf	dema	0			oewn_form
 blight canker	0	oewn-blight_canker-n	Number=Sing	dema	0			oewn_form
 blight cankers	0	oewn-blight_canker-n	Number=Plur	dema	0			rule
-blighted	0	oewn-blight-v	Tense=Past+VerbForm=Part	dema	0			rule
+blighted	0	oewn-blight-v	Tense=Past+VerbForm=Part	dema	0			llm
 blighted	1	oewn-blighted-a	Degree=Pos	dema	0			oewn_form
 blighter	0	oewn-blighter-n	Number=Sing	dema	0			oewn_form
 blighters	0	oewn-blighter-n	Number=Plur	dema	0			rule
 blighties	0		Number=Plur	dema	0	blighty	n	rule
-blighting	0	oewn-blight-v	VerbForm=Ger	dema	0			rule
+blighting	0	oewn-blight-v	VerbForm=Ger	dema	0			llm
 blightingly	0		Degree=Pos	dema	0	blightingly	a	moby_reverse
 blights	0	oewn-blight-n	Number=Plur	dema	0			rule
-blights	1	oewn-blight-v	Person=3+Tense=Pres	dema	0			rule
+blights	1	oewn-blight-v	Person=3+Tense=Pres	dema	0			llm
 blighty	0		Number=Sing	dema	0	blighty	n	moby_reverse
 blighty wound	0	oewn-blighty_wound-n	Number=Sing	dema	0			oewn_form
 blighty wounds	0	oewn-blighty_wound-n	Number=Plur	dema	0			rule
@@ -1364,9 +1364,9 @@ blindcats	0		Number=Plur	dema	0	blindcat	n	rule
 blinded	0	oewn-blind-v	Tense=Past+VerbForm=Part	dema	0			rule
 blinded	1	oewn-blinded-a	Degree=Pos	dema	0			oewn_form
 blinder	0	oewn-blinder-n	Number=Sing	dema	0			oewn_form
-blinder	1	oewn-blind-a	Degree=Cmp	dema	0			rule
+blinder	1	oewn-blind-a	Degree=Cmp	dema	0			llm
 blinders	0	oewn-blinder-n	Number=Plur	dema	0			rule
-blindest	0	oewn-blind-a	Degree=Sup	dema	0			rule
+blindest	0	oewn-blind-a	Degree=Sup	dema	0			llm
 blindfish	0		Number=Sing	dema	0	blindfish	n	moby_reverse
 blindfishes	0		Number=Plur	dema	0	blindfish	n	rule
 blindfold	0	oewn-blindfold-v	VerbForm=Inf	dema	0			oewn_form
@@ -1393,7 +1393,7 @@ blindman's bluffs	0	oewn-blindman-ap-s_bluff-n	Number=Plur	dema	0			rule
 blindman's buff	0	oewn-blindman-ap-s_buff-n	Number=Sing	dema	0			oewn_form
 blindman's buffs	0	oewn-blindman-ap-s_buff-n	Number=Plur	dema	0			rule
 blindness	0	oewn-blindness-n	Number=Sing	dema	0			oewn_form
-blindnesses	0	oewn-blindness-n	Number=Plur	dema	0			rule
+blindnesses	0	oewn-blindness-n	Number=Plur	dema	0			llm
 blinds	0	oewn-blind-v	Person=3+Tense=Pres	dema	0			rule
 blinds	1	oewn-blind-n	Number=Plur	dema	0			rule
 blindside	0	oewn-blindside-v	VerbForm=Inf	dema	0			oewn_form
@@ -1445,7 +1445,6 @@ blinks	1	oewn-blink-v	Person=3+Tense=Pres	dema	0			rule
 blinks	2	oewn-blink-n	Number=Plur	dema	0			rule
 blinks away	0	oewn-blink_away-v	Person=3+Tense=Pres	dema	0			rule
 blinks of an eye	0	oewn-blink_of_an_eye-n	Number=Plur	dema	0			rule
-blinkses	0	oewn-blinks-n	Number=Plur	dema	0			rule
 blintz	0	oewn-blintz-n	Number=Sing	dema	0			oewn_form
 blintze	0	oewn-blintze-n	Number=Sing	dema	0			oewn_form
 blintzes	0	oewn-blintz-n	Number=Plur	dema	0			rule
@@ -1640,9 +1639,9 @@ blonde	1	oewn-blonde-a	Degree=Pos	dema	0			oewn_form
 blonde lilian	0	oewn-blonde_lilian-n	Number=Sing	dema	0			oewn_form
 blonde lilians	0	oewn-blonde_lilian-n	Number=Plur	dema	0			rule
 blondeness	0		Number=Sing	dema	0	blondeness	n	moby_reverse
-blonder	0	oewn-blond-a	Degree=Cmp	dema	0			rule
+blonder	0	oewn-blond-a	Degree=Cmp	dema	0			llm
 blondes	0	oewn-blonde-n	Number=Plur	dema	0			rule
-blondest	0	oewn-blond-a	Degree=Sup	dema	0			rule
+blondest	0	oewn-blond-a	Degree=Sup	dema	0			llm
 blondish	0		Degree=Pos	dema	0	blondish	a	moby_reverse
 blondness	0	oewn-blondness-n	Number=Sing	dema	0			oewn_form
 blondnesses	0	oewn-blondness-n	Number=Plur	dema	0			rule
@@ -1795,7 +1794,7 @@ blooding	0		Number=Sing	dema	0	blooding	n	moby_reverse
 blooding	1	oewn-blood-v	VerbForm=Ger	dema	0			rule
 bloodings	0		Number=Plur	dema	0	blooding	n	rule
 bloodleaf	0	oewn-bloodleaf-n	Number=Sing	dema	0			oewn_form
-bloodleafs	0	oewn-bloodleaf-n	Number=Plur	dema	0			rule
+bloodleaves	0	oewn-bloodleaf-n	Number=Plur	dema	0			rule
 bloodless	0	oewn-bloodless-a	Degree=Pos	dema	0			oewn_form
 bloodlessly	0	oewn-bloodlessly-r	Degree=Pos	dema	0			oewn_form
 bloodlessness	0		Number=Sing	dema	0	bloodlessness	n	moby_reverse
@@ -2401,7 +2400,7 @@ bluest	1	oewn-blue-a	Degree=Sup	dema	0			oewn_form
 bluestem	0	oewn-bluestem-n	Number=Sing	dema	0			oewn_form
 bluestem wheatgrass	0	oewn-bluestem_wheatgrass-n	Number=Sing	dema	0			oewn_form
 bluestem wheatgrasses	0	oewn-bluestem_wheatgrass-n	Number=Plur	dema	0			rule
-bluestems	0	oewn-bluestem-n	Number=Plur	dema	0			rule
+bluestems	0	oewn-bluestem-n	Number=Plur	dema	0			llm
 bluestocking	0	oewn-bluestocking-n	Number=Sing	dema	0			oewn_form
 bluestockingism	0		Number=Sing	dema	0	bluestockingism	n	moby_reverse
 bluestockingisms	0		Number=Plur	dema	0	bluestockingism	n	rule
@@ -2437,9 +2436,9 @@ bluffable	0		Degree=Pos	dema	0	bluffable	a	moby_reverse
 bluffed	0	oewn-bluff-v	Tense=Past+VerbForm=Part	dema	0			rule
 bluffed out	0	oewn-bluff_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 bluffer	0	oewn-bluffer-n	Number=Sing	dema	0			oewn_form
-bluffer	1	oewn-bluff-a	Degree=Cmp	dema	0			rule
+bluffer	1	oewn-bluff-a	Degree=Cmp	dema	0			llm
 bluffers	0	oewn-bluffer-n	Number=Plur	dema	0			rule
-bluffest	0	oewn-bluff-a	Degree=Sup	dema	0			rule
+bluffest	0	oewn-bluff-a	Degree=Sup	dema	0			llm
 bluffing	0	oewn-bluff-v	VerbForm=Ger	dema	0			rule
 bluffing out	0	oewn-bluff_out-v	VerbForm=Ger	dema	0			rule
 bluffly	0	oewn-bluffly-r	Degree=Pos	dema	0			oewn_form
@@ -2496,8 +2495,8 @@ blunt-leaf heath	0	oewn-blunt-leaf_heath-n	Number=Sing	dema	0			oewn_form
 blunt-leaf heaths	0	oewn-blunt-leaf_heath-n	Number=Plur	dema	0			rule
 blunted	0	oewn-blunt-v	Tense=Past+VerbForm=Part	dema	0			rule
 blunted	1	oewn-blunted-a	Degree=Pos	dema	0			oewn_form
-blunter	0	oewn-blunt-a	Degree=Cmp	dema	0			rule
-bluntest	0	oewn-blunt-a	Degree=Sup	dema	0			rule
+blunter	0	oewn-blunt-a	Degree=Cmp	dema	0			llm
+bluntest	0	oewn-blunt-a	Degree=Sup	dema	0			llm
 blunting	0	oewn-blunt-v	VerbForm=Ger	dema	0			rule
 bluntly	0	oewn-bluntly-r	Degree=Pos	dema	0			oewn_form
 bluntness	0	oewn-bluntness-n	Number=Sing	dema	0			oewn_form
@@ -2513,8 +2512,8 @@ blurred	0	oewn-blur-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 blurred	1	oewn-blurred-a	Degree=Pos	dema	0			oewn_form
 blurredly	0		Degree=Pos	dema	0	blurredly	r	moby_reverse
 blurredness	0		Number=Sing	dema	0	blurredness	n	moby_reverse
-blurrier	0	oewn-blurry-a	Degree=Cmp	dema	0			rule
-blurriest	0	oewn-blurry-a	Degree=Sup	dema	0			rule
+blurrier	0	oewn-blurry-a	Degree=Cmp	dema	0			llm
+blurriest	0	oewn-blurry-a	Degree=Sup	dema	0			llm
 blurriness	0	oewn-blurriness-n	Number=Sing	dema	0			oewn_form
 blurrinesses	0	oewn-blurriness-n	Number=Plur	dema	0			rule
 blurring	0	oewn-blur-v	VerbForm=Ger	dema	0			oewn_form

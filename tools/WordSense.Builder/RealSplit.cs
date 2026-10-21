@@ -21,15 +21,15 @@ internal enum HoldoutSide
 /// <summary>
 ///     The origin of one sentence, read from a row of <c>corpus/provenance</c>.
 /// </summary>
-/// <param name="Origin">The origin column (<c>real</c>, <c>llm-corpus</c>, <c>authored</c>).</param>
-/// <param name="Source">The source column (<c>gutenberg</c>, <c>tatoeba-cc0</c>, <c>voa</c>, ...).</param>
+/// <param name="Source">The source column (<c>gutenberg</c>, <c>tatoeba-cc0</c>, <c>voa</c>, <c>llm-corpus</c>, ...; see
+/// <see cref="ProvenanceSources" />).</param>
 /// <param name="SourceKey">The source key column (<c>pg135#s6340</c>, a Tatoeba sentence id, ...).</param>
-internal sealed record ProvenanceEntry(string Origin, string Source, string SourceKey)
+internal sealed record ProvenanceEntry(string Source, string SourceKey)
 {
     /// <summary>
-    ///     Gets a value indicating whether the sentence is real text (not written by a model).
+    ///     Gets a value indicating whether the sentence is real text (not written for the project).
     /// </summary>
-    public bool IsReal => string.Equals(Origin, "real", StringComparison.Ordinal);
+    public bool IsReal => ProvenanceSources.IsReal(Source);
 
     /// <summary>
     ///     Gets the identifier of the document of the sentence: the source and the part of the source key before the
@@ -74,7 +74,8 @@ internal sealed record HoldoutSplit(
 ///     <c>document|&lt;document identifier&gt;</c> (0 calibration, 1 test), so every sentence of a document is on one
 ///     side and no seed is involved. Written sentences and rows without a provenance row are in neither split. The
 ///     provenance row of a corpus row is found by its id, the first 12 hexadecimal digits of the SHA-256 of
-///     <c>lemma|sentence</c> (the sentence with its braces).
+///     <c>lemma|sentence</c> (the sentence with its braces); its columns are <c>id</c>, <c>split</c>, <c>source</c> and
+///     <c>source_key</c>, and whether the sentence is real text follows from its source (<see cref="ProvenanceSources" />).
 ///     </para>
 /// </remarks>
 internal static class RealSplit
@@ -103,10 +104,9 @@ internal static class RealSplit
 
             var header = lines[0].Split('\t');
             var id = Array.IndexOf(header, "id");
-            var origin = Array.IndexOf(header, "origin");
             var source = Array.IndexOf(header, "source");
             var key = Array.IndexOf(header, "source_key");
-            if (id < 0 || origin < 0 || source < 0 || key < 0)
+            if (id < 0 || source < 0 || key < 0)
             {
                 continue;
             }
@@ -114,9 +114,9 @@ internal static class RealSplit
             foreach (var line in lines.Skip(1))
             {
                 var columns = line.Split('\t');
-                if (columns.Length > Math.Max(Math.Max(origin, source), key))
+                if (columns.Length > Math.Max(Math.Max(id, source), key))
                 {
-                    result[columns[id]] = new ProvenanceEntry(columns[origin], columns[source], columns[key]);
+                    result[columns[id]] = new ProvenanceEntry(columns[source], columns[key]);
                 }
             }
         }

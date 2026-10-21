@@ -13,13 +13,13 @@ namespace WordSense.Builder.Data;
 ///     dependency, nothing shipped from it) whether the spelling is an inflected form of the lemma. A disagreement is an error
 ///     unless the adjudications file records our own verdict, decided from our sources, that the row is valid (a valid rare word
 ///     that the oracle does not know); the forms of the oracle are never adopted or committed. The oracle shares no data with the generator, but the rows the
-///     generator admits were selected by the dictionary and the inflection database, so the rates describe the shipped rows,
+///     generator admits were selected by the dictionary and the authored forms, so the rates describe the shipped rows,
 ///     not the rule outputs before the corroboration.
 /// </remarks>
 internal static class FormAuditor
 {
     /// <summary>The provenance values that the generator derives by rule or by reverse rule; the gate applies to them.</summary>
-    public static readonly string[] GeneratedProvenance = ["rule", "rule_variant", "agid", "moby_reverse"];
+    public static readonly string[] GeneratedProvenance = ["rule", "rule_variant", "llm", "moby_reverse"];
 
     /// <summary>The oracle script, relative to the repository.</summary>
     public const string OracleScript = "tools/WordSense.Builder/audit/lemminflect_oracle.py";

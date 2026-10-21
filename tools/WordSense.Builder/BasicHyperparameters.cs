@@ -55,7 +55,7 @@ internal sealed record BasicHyperparameters(
     ///     The values the shipped table is trained with: the values of the original design. <c>tune-basic</c> (development
     ///     split of the representative open corpus and the anchor development subset only) finds at most +0.5 points on the
     ///     open development split for gamma 1.0 with beta 1.0, but that costs 1.8 points on the anchor development subset
-    ///     (the hard, targeted ambiguous words), so the defaults stay (see <c>docs/build_notes/basic-evaluation.md</c>).
+    ///     (the hard, targeted ambiguous words), so the defaults stay (see the user guide chapter on accuracy).
     /// </summary>
     public static readonly BasicHyperparameters Default = new(
         Gamma: 0.75,

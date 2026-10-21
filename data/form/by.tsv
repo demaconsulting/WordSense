@@ -95,8 +95,8 @@ bypassed	0	oewn-bypass-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 bypasser	0		Number=Sing	dema	0	bypasser	n	moby_reverse
 bypassers	0		Number=Plur	dema	0	bypasser	n	rule
 bypasses	0	oewn-bypass-n	Number=Plur	dema	0			rule
-bypasses	1	oewn-bypass-v	Person=3+Tense=Pres	dema	0			rule
-bypassing	0	oewn-bypass-v	VerbForm=Ger	dema	0			rule
+bypasses	1	oewn-bypass-v	Person=3+Tense=Pres	dema	0			llm
+bypassing	0	oewn-bypass-v	VerbForm=Ger	dema	0			llm
 bypast	0	oewn-bypass-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 bypast	1	oewn-bypast-a	Degree=Pos	dema	0			oewn_form
 bypath	0	oewn-bypath-n	Number=Sing	dema	0			oewn_form

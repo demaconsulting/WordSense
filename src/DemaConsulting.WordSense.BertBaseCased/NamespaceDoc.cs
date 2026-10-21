@@ -35,7 +35,7 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     <para>
 ///     Choose BertBaseCased when case-awareness matters and the larger download is acceptable: 104 MiB, and it keeps
 ///     the case of the text
-///     (https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-table.md; approximate and machine
+///     (https://github.com/demaconsulting/WordSense/blob/main/docs/user_guide/model-table.md; approximate and machine
 ///     dependent; the memory it adds does not include the 15 MiB of the word lexicon). Choose
 ///     <c>DemaConsulting.WordSense.MiniLM</c> (the default recommendation) for a small
 ///     model: 22 MiB. The statistical Basic model of the core package

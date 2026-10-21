@@ -32,5 +32,20 @@ All scenarios pass.
   adjective entry of the dictionary has its own analysis.
 - **Fact generation** (`Generate_IsDeterministicForSeed`, `Generate_MatchesCommittedFile`): the same seed gives the same
   facts and the committed generated fact file is the output of the command.
+- **Authored forms** (`WordSenseBuilder_AuthoredForms_*`, `OpenCorpusAttestation_*`, `FormGenerator_Run_Authored*`,
+  `FormGenerator_Run_AgreedNoPlural_StopsTheRegularPlural`, `Data_AuthoredForm_ShipsWithTheProvenanceLlm`,
+  `Data_AuthoredPlural_LeavesOutTheRegularSpelling`): the reader keys by lowercase lemma and part of speech, refuses a
+  bad level or an unknown rule and counts only a verdict `agree` with the result `none` as a veto; an end-to-end run on
+  a temporary corpus shows that an authored plural replaces the regular spelling, a variant ships as `rule_variant`, an
+  agreed NONE stops the regular plural, an authored plural stops the reverse rule of the dictionary, and a token of the
+  open corpus corroborates a comparative (`Run_OpenCorpusToken_CorroboratesTheComparative`). The committed table has
+  `llm` rows and no `agid` row.
+- **Rule defects** (`Data_RuleDefect_IsNotShipped`, `Data_RegularPlural_OfAWordThatOnlyEndsLikeACompound_IsShipped`):
+  the spellings that the earlier rules got wrong (`bagmens`, `icewomans`, `obsequys`, `superheros`, `hertzes`,
+  `birdiing`) are absent, and the regular plurals of
+  `-man` words that are no compounds of man stay.
 - **Rules** (`NounPlural_Regular_AddsSuffix`, `VerbThirdPerson_Regular_AddsSuffix`, `VerbRegular_Spellings`,
-  `AdjectiveDegrees_ShortAndLong`, `ReverseCandidates_Plural_ContainsSingular`).
+  `AdjectiveDegrees_ShortAndLong`, `ReverseCandidates_Plural_ContainsSingular`, `NounPlural_ManCompound_EndsInMen`,
+  `NounPlural_WordEndingInMan_KeepsTheRegularPlural`, `NounPlural_Compound_TakesThePluralOfItsLastNoun`,
+  `NounPlural_QuY_EndsInIes`, `VerbRegular_Doubling_FollowsTheLastSyllable`,
+  `VerbRegular_ListedDoubledSpelling_BecomesPrimary`, `VerbRegular_Ie_KeepsTheEOrTurnsToY`).

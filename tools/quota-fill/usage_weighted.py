@@ -12,7 +12,7 @@ over the senses of the lemma that have test rows. A row of a sense gets the weig
 lemma, so every lemma keeps its total weight and only the mix of its senses changes. It prints the fine top-1 accuracy, the
 share answered at the sense level and the precision of those answers, weighted and unweighted.
 
-The labels are LLM labels of harvested sentences (see `quota-fill.md`) and the harvest is not the training data, so the prior
+The labels are LLM labels of harvested sentences (see `corpus/README.md`, "Method of the quota filling") and the harvest is not the training data, so the prior
 is independent of the WordNet counts that the model's usage prior uses. The harvest cache is not committed; without it the
 script cannot run. The figures are a diagnostic, not a headline: the weights come from the same genres as the test sentences.
 """
@@ -79,7 +79,7 @@ def metrics(rows, w):
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     here = os.path.dirname(os.path.abspath(__file__))
-    parser.add_argument("--work", default=os.path.join(here, "..", "real-text", "cache", "quota", "work"))
+    parser.add_argument("--work", default=os.path.join(here, "cache", "quota", "work"))
     parser.add_argument("--smoothing", type=float, default=1.0)
     parser.add_argument("outcomes", nargs="+", help="LABEL=FILE of an evaluate --outcomes file")
     args = parser.parse_args()

@@ -47,7 +47,7 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     Choose MiniLM when download size and speed matter, the default recommendation: 22 MiB. The alternative
 ///     <c>DemaConsulting.WordSense.BertBaseCased</c> is larger (104 MiB) and case-aware. The sizes are approximate
 ///     and the figures of the model table are in
-///     https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-table.md.
+///     https://github.com/demaconsulting/WordSense/blob/main/docs/user_guide/model-table.md.
 ///     </para>
 ///     <para>
 ///     Sentences longer than the maximum sequence length are handled per target word from a window around the word. The

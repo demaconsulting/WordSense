@@ -12,7 +12,7 @@ Cs	3	oewn-Cs-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 cs	0	oewn-C-n	Number=Plur	dema	0			moby_reverse
 cs	1	oewn-c-n	Number=Plur	dema	0			rule
 csardas	0	oewn-csardas-n	Number=Sing	dema	0			oewn_form
-csardases	0	oewn-csardas-n	Number=Plur	dema	0			rule
+csardases	0	oewn-csardas-n	Number=Plur	dema	0			llm
 csc	0		Number=Sing	dema	0	csc	n	moby_reverse
 csch	0		Number=Sing	dema	0	csch	n	moby_reverse
 csches	0		Number=Plur	dema	0	csch	n	rule

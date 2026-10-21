@@ -82,6 +82,18 @@ Dependencies English-EWT treebank labels `the`, `a` and `an` determiner in over 
 | Interjection | candidate-only |
 | Determiner | candidate-only |
 
+The mode is the outcome of a precision gate: a word that has only that one part of speech must be answered right at
+least 95 percent of the time on running text. The gate was measured on the pooled train, dev and test parts of Universal
+Dependencies English-EWT (evaluation only; nothing derived from it is committed), with NOUN as Noun, VERB and AUX as
+Verb, ADP as Preposition, SCONJ accepted as Preposition or Conjunction, and PROPN, PUNCT, NUM, SYM, X, DET and PART not
+scored. The precision of the direct answers was Noun 97.61, Pronoun 99.89, Verb 97.79, Adjective 97.26, Adverb 97.01 and
+Preposition 99.86 percent; Conjunction (76.37) and Interjection (86.36) fail the gate. A `candidate-only` class is never
+the target of a trained model, but every word of it stays in the lexicon, as the answer for a word that has only that
+part of speech and as a candidate for a word that has others. The gate decides which part of speech a model may choose,
+never whether a word exists (an earlier version dropped 280 of the 143,992 words for that reason, which was wrong).
+Determiner is a part of speech of its own because `the`, `a` and `an` are the most frequent words of English and no
+other value fits them.
+
 ## Morphology Rules
 
 | Rule | State |
@@ -98,7 +110,8 @@ Dependencies English-EWT treebank labels `the`, `a` and `an` determiner in over 
 | Agent | enabled |
 | Manner | enabled |
 
-The evidence of every rule is in `morphology.tsv` and in `docs/build_notes/inflection-coverage.md`.
+The evidence of every rule is in `morphology.tsv` and in the coverage and audit sections of `data/PROVENANCE.md` and the
+design of the form generator.
 
 ## Inflection Data
 
@@ -106,11 +119,18 @@ The evidence of every rule is in `morphology.tsv` and in `docs/build_notes/infle
   data. License: same as the repository. (A list of irregular forms derived from a treebank used to sit beside it as a
   test oracle; it was removed together with the treebank counts, because the treebank is licensed CC BY-SA 4.0 and
   nothing derived from it may stay in the repository.)
-- `irregular-closed.tsv`, `agid-irregular.tsv`, `contractions.tsv`, `form-overrides.tsv`: the sources of the form
-  generator. `agid-irregular.tsv` is derived by `import-agid` from AGID (see `LICENSE-AGID.txt`); the others are
-  hand-written from general knowledge.
+- `irregular-closed.tsv`, `contractions.tsv`, `form-overrides.tsv`: the sources of the form generator, hand-written
+  from general knowledge.
+- `forms-authored.tsv` and `forms-authored-provenance.tsv`: the inflected forms (regular and irregular) of the lemmas
+  that the generator could not otherwise corroborate, written for this project and dedicated to the public domain
+  (`CC0 1.0 (project-authored)`). One model (gpt-5.6-luna) wrote each form from the lemma, part of speech and
+  category alone; a second model (gpt-6.1-sol) answered the same tasks blind; the sidecar records both models, the
+  verdict (`agree`, `regular-accepted`, `adjudicated`) and the licence per row. They replace the third-party inflection
+  database that earlier tables used (its derived list `agid-irregular.tsv` and its notice file are removed); the method,
+  the independence measures and the audit are in `data/PROVENANCE.md` and `tools/forms-audit/README.md`.
 - `form-corrections.tsv`: our corrections of generated analyses that the forms audit found wrong (typos of the OEWN
-  forms, AGID misspellings, wrong features), each with evidence from OEWN, AGID or Moby. LemmInflect, the dev-time
+  forms, misspellings of a former source, wrong features), each with evidence (the text of older rows names the former
+  third-party database; it is history, free text that no tool reads). LemmInflect, the dev-time
   checker of the audit, is not a source of it: the audit only flags rows, and nothing ships from the checker.
 - `form-frozen.tsv`: the reviewed analyses of the tables that were bootstrapped from the legacy corpus builder, the
   explicit input of the form generator (`frozen` rows with their rank, entry, features, source, review flag and scope

@@ -34,7 +34,7 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     </para>
 ///     <para>
 ///     Choose MiniLM for a small model, the default recommendation: 22 MiB download
-///     (https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-table.md; the memory it adds
+///     (https://github.com/demaconsulting/WordSense/blob/main/docs/user_guide/model-table.md; the memory it adds
 ///     does not include the 15 MiB of the word lexicon).
 ///     Choose <c>DemaConsulting.WordSense.BertBaseCased</c> when case-awareness matters more than size:
 ///     104 MiB. The statistical Basic model of the core package

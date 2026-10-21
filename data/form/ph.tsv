@@ -155,12 +155,8 @@ Pholistoma auritums	0	oewn-Pholistoma_auritum-n	Capitalization=Exact+Number=Plur
 Phoradendron flavescens	0	oewn-Phoradendron_flavescens-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Phoradendron serotinum	0	oewn-Phoradendron_serotinum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Phoradendron serotinums	0	oewn-Phoradendron_serotinum-n	Capitalization=Exact+Number=Plur	dema	0			rule
-Phosphori	0	oewn-phosphorus-n	Number=Plur	dema	0			rule_variant
-Phosphori	1	oewn-Phosphorus-n	Capitalization=Title+Number=Plur	dema	0			rule_variant
 Phosphorus	0	oewn-phosphorus-n	Number=Sing	dema	0			oewn_form
 Phosphorus	1	oewn-Phosphorus-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-Phosphoruses	0	oewn-phosphorus-n	Number=Plur	dema	0			rule_variant
-Phosphoruses	1	oewn-Phosphorus-n	Capitalization=Title+Number=Plur	dema	0			rule_variant
 Photinia arbutifolia	0	oewn-Photinia_arbutifolia-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Photinia arbutifolias	0	oewn-Photinia_arbutifolia-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Photoblepharon palpebratus	0	oewn-Photoblepharon_palpebratus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
@@ -170,7 +166,7 @@ Photostat	2	oewn-Photostat-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Photostat machine	0	oewn-Photostat_machine-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Photostat machines	0	oewn-Photostat_machine-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Photostats	0	oewn-photostat-n	Number=Plur	dema	0			rule
-Photostats	1	oewn-photostat-v	Person=3+Tense=Pres	dema	0			rule
+Photostats	1	oewn-photostat-v	Person=3+Tense=Pres	dema	0			llm
 Photostats	2	oewn-Photostat-n	Capitalization=Title+Number=Plur	dema	0			rule
 Phoxinus phoxinus	0	oewn-Phoxinus_phoxinus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Phragmites communis	0	oewn-Phragmites_communis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
@@ -275,6 +271,7 @@ phagomanias	0		Number=Plur	dema	0	phagomania	n	rule
 phagophobia	0		Number=Sing	dema	0	phagophobia	n	moby_reverse
 phagophobias	0		Number=Plur	dema	0	phagophobia	n	rule
 phaius	0	oewn-phaius-n	Number=Sing	dema	0			oewn_form
+phaiuses	0	oewn-phaius-n	Number=Plur	dema	0			llm
 phalacrosis	0	oewn-phalacrosis-n	Number=Sing	dema	0			oewn_form
 phalange	0		Number=Sing	dema	0	phalange	n	moby_reverse
 phalangeal	0	oewn-phalangeal-a	Degree=Pos	dema	0			oewn_form
@@ -431,7 +428,7 @@ pharmacopsychosis	0		Number=Sing	dema	0	pharmacopsychosis	n	moby_reverse
 pharmacy	0	oewn-pharmacy-n	Number=Sing	dema	0			oewn_form
 pharmas	0	oewn-pharma-n	Number=Plur	dema	0			rule
 pharos	0	oewn-pharos-n	Number=Sing	dema	0			oewn_form
-pharoses	0	oewn-pharos-n	Number=Plur	dema	0			rule
+pharoses	0	oewn-pharos-n	Number=Plur	dema	0			llm
 pharyngeal	0	oewn-pharyngeal-a	Degree=Pos	dema	0			oewn_form
 pharyngeal	1	oewn-pharyngeal-n	Number=Sing	dema	0			oewn_form
 pharyngeal consonant	0	oewn-pharyngeal_consonant-n	Number=Sing	dema	0			oewn_form
@@ -533,7 +530,7 @@ pheasant under glass	0	oewn-pheasant_under_glass-n	Number=Sing	dema	0			oewn_for
 pheasant under glasses	0	oewn-pheasant_under_glass-n	Number=Plur	dema	0			rule
 pheasant's-eye	0	oewn-pheasant-ap-s-eye-n	Number=Sing	dema	0			oewn_form
 pheasant's-eyes	0	oewn-pheasant-ap-s-eye-n	Number=Plur	dema	0			rule
-pheasants	0	oewn-pheasant-n	Number=Plur	dema	0			rule_variant
+pheasants	0	oewn-pheasant-n	Number=Plur	dema	0			llm
 phellem	0	oewn-phellem-n	Number=Sing	dema	0			oewn_form
 phellems	0	oewn-phellem-n	Number=Plur	dema	0			rule
 phelloderm	0		Number=Sing	dema	0	phelloderm	n	moby_reverse
@@ -712,6 +709,7 @@ pheochromocytoma	0	oewn-pheochromocytoma-n	Number=Sing	dema	0			oewn_form
 pheochromocytomas	0	oewn-pheochromocytoma-n	Number=Plur	dema	0			rule
 pheon	0		Number=Sing	dema	0	pheon	n	moby_reverse
 pheons	0		Number=Plur	dema	0	pheon	n	rule
+phereses	0	oewn-pheresis-n	Number=Plur	dema	0			llm
 pheresis	0	oewn-pheresis-n	Number=Sing	dema	0			oewn_form
 pheromone	0	oewn-pheromone-n	Number=Sing	dema	0			oewn_form
 pheromones	0	oewn-pheromone-n	Number=Plur	dema	0			rule
@@ -733,7 +731,7 @@ phil	0		Number=Sing	dema	0	phil	n	moby_reverse
 philabeg	0		Number=Sing	dema	0	philabeg	n	moby_reverse
 philabegs	0		Number=Plur	dema	0	philabeg	n	rule
 philadelphus	0	oewn-philadelphus-n	Number=Sing	dema	0			oewn_form
-philadelphuses	0	oewn-philadelphus-n	Number=Plur	dema	0			rule
+philadelphuses	0	oewn-philadelphus-n	Number=Plur	dema	0			llm
 philander	0	oewn-philander-v	VerbForm=Inf	dema	0			oewn_form
 philandered	0	oewn-philander-v	Tense=Past+VerbForm=Part	dema	0			rule
 philanderer	0	oewn-philanderer-n	Number=Sing	dema	0			oewn_form
@@ -932,8 +930,8 @@ phlegmatized	0		Degree=Pos	dema	0	phlegmatized	a	moby_reverse
 phlegmatized	1		VerbForm=Inf	dema	0	phlegmatized	v	moby_reverse
 phlegmatizer	0	oewn-phlegmatizer-n	Number=Sing	dema	0			oewn_form
 phlegmatizers	0	oewn-phlegmatizer-n	Number=Plur	dema	0			rule
-phlegmier	0	oewn-phlegmy-a	Degree=Cmp	dema	0			rule
-phlegmiest	0	oewn-phlegmy-a	Degree=Sup	dema	0			rule
+phlegmier	0	oewn-phlegmy-a	Degree=Cmp	dema	0			llm
+phlegmiest	0	oewn-phlegmy-a	Degree=Sup	dema	0			llm
 phlegmless	0		Degree=Pos	dema	0	phlegmless	a	moby_reverse
 phlegms	0	oewn-phlegm-n	Number=Plur	dema	0			rule
 phlegmy	0	oewn-phlegmy-a	Degree=Pos	dema	0			oewn_form
@@ -947,13 +945,14 @@ phlogopites	0	oewn-phlogopite-n	Number=Plur	dema	0			rule
 phlogosis	0		Number=Sing	dema	0	phlogosis	n	moby_reverse
 phlogotic	0		Degree=Pos	dema	0	phlogotic	a	moby_reverse
 phlomis	0	oewn-phlomis-n	Number=Sing	dema	0			oewn_form
+phlomises	0	oewn-phlomis-n	Number=Plur	dema	0			llm
 phlorizin	0		Number=Sing	dema	0	phlorizin	n	moby_reverse
 phlorizins	0		Number=Plur	dema	0	phlorizin	n	rule
 phloroglucinol	0		Number=Sing	dema	0	phloroglucinol	n	moby_reverse
 phloroglucinols	0		Number=Plur	dema	0	phloroglucinol	n	rule
-phlox	0	oewn-phlox-n	Number=Plur	dema	0			agid
+phlox	0	oewn-phlox-n	Number=Plur	dema	0			rule_variant
 phlox	1	oewn-phlox-n	Number=Sing	dema	0			oewn_form
-phloxes	0	oewn-phlox-n	Number=Plur	dema	0			rule_variant
+phloxes	0	oewn-phlox-n	Number=Plur	dema	0			llm
 phlyctaena	0		Number=Sing	dema	0	phlyctaena	n	moby_reverse
 phlyctaenae	0		Number=Sing	dema	0	phlyctaenae	n	moby_reverse
 phlyctaenaes	0		Number=Plur	dema	0	phlyctaenae	n	rule
@@ -1243,7 +1242,6 @@ phosphoresces	0	oewn-phosphoresce-v	Person=3+Tense=Pres	dema	0			rule
 phosphorescing	0	oewn-phosphoresce-v	VerbForm=Ger	dema	0			rule
 phosphoreted	0		Degree=Pos	dema	0	phosphoreted	a	moby_reverse
 phosphoreted	1		VerbForm=Inf	dema	0	phosphoreted	v	moby_reverse
-phosphori	0	oewn-phosphorus-n	Number=Plur	dema	0			rule_variant
 phosphoric	0	oewn-phosphoric-a	Degree=Pos	dema	0			oewn_form
 phosphoric acid	0	oewn-phosphoric_acid-n	Number=Sing	dema	0			oewn_form
 phosphoric acids	0	oewn-phosphoric_acid-n	Number=Plur	dema	0			rule
@@ -1264,7 +1262,6 @@ phosphorous acid	0	oewn-phosphorous_acid-n	Number=Sing	dema	0			oewn_form
 phosphorous acids	0	oewn-phosphorous_acid-n	Number=Plur	dema	0			rule
 phosphors	0	oewn-phosphor-n	Number=Plur	dema	0			rule
 phosphorus	0	oewn-phosphorus-n	Number=Sing	dema	0			oewn_form
-phosphoruses	0	oewn-phosphorus-n	Number=Plur	dema	0			rule_variant
 phosphorylase	0		Number=Sing	dema	0	phosphorylase	n	moby_reverse
 phosphorylases	0		Number=Plur	dema	0	phosphorylase	n	rule
 phosphorylate	0		VerbForm=Inf	dema	0	phosphorylate	v	moby_reverse
@@ -1611,8 +1608,8 @@ photoset	0		VerbForm=Inf	dema	0	photoset	v	moby_reverse
 photoseting	0		VerbForm=Ger	dema	0	photoset	v	rule
 photosets	0		Person=3+Tense=Pres	dema	0	photoset	v	rule
 photoshop	0	oewn-photoshop-v	VerbForm=Inf	dema	0			oewn_form
-photoshoped	0	oewn-photoshop-v	Tense=Past+VerbForm=Part	dema	0			rule
-photoshoping	0	oewn-photoshop-v	VerbForm=Ger	dema	0			rule
+photoshopped	0	oewn-photoshop-v	Tense=Past+VerbForm=Part	dema	0			rule
+photoshopping	0	oewn-photoshop-v	VerbForm=Ger	dema	0			rule
 photoshops	0	oewn-photoshop-v	Person=3+Tense=Pres	dema	0			rule
 photospectroscopic	0		Degree=Pos	dema	0	photospectroscopic	a	moby_reverse
 photospectroscopical	0		Degree=Pos	dema	0	photospectroscopical	a	moby_reverse
@@ -1623,18 +1620,16 @@ photospheres	0	oewn-photosphere-n	Number=Plur	dema	0			rule
 photospheric	0		Degree=Pos	dema	0	photospheric	a	moby_reverse
 photostat	0	oewn-photostat-n	Number=Sing	dema	0			oewn_form
 photostat	1	oewn-photostat-v	VerbForm=Inf	dema	0			oewn_form
-photostated	0	oewn-photostat-v	Tense=Past+VerbForm=Part	dema	0			rule
 photostater	0		Number=Sing	dema	0	photostater	n	moby_reverse
 photostaters	0		Number=Plur	dema	0	photostater	n	rule
 photostatic	0		Degree=Pos	dema	0	photostatic	a	moby_reverse
 photostatically	0		Degree=Pos	dema	0	photostatically	r	moby_reverse
-photostating	0	oewn-photostat-v	VerbForm=Ger	dema	0			rule
 photostats	0	oewn-photostat-n	Number=Plur	dema	0			rule
-photostats	1	oewn-photostat-v	Person=3+Tense=Pres	dema	0			rule
-photostatted	0	oewn-photostat-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+photostats	1	oewn-photostat-v	Person=3+Tense=Pres	dema	0			llm
+photostatted	0	oewn-photostat-v	Tense=Past+VerbForm=Part	dema	0			llm
 photostatter	0		Number=Sing	dema	0	photostatter	n	moby_reverse
 photostatters	0		Number=Plur	dema	0	photostatter	n	rule
-photostatting	0	oewn-photostat-v	VerbForm=Ger	dema	0			rule_variant
+photostatting	0	oewn-photostat-v	VerbForm=Ger	dema	0			llm
 photosynthate	0		Number=Sing	dema	0	photosynthate	n	moby_reverse
 photosynthates	0		Number=Plur	dema	0	photosynthate	n	rule
 photosynthesis	0	oewn-photosynthesis-n	Number=Sing	dema	0			oewn_form
@@ -1663,7 +1658,6 @@ phototherapy	0	oewn-phototherapy-n	Number=Sing	dema	0			oewn_form
 photothermic	0		Degree=Pos	dema	0	photothermic	a	moby_reverse
 phototonic	0		Degree=Pos	dema	0	phototonic	a	moby_reverse
 phototonus	0		Number=Sing	dema	0	phototonus	n	moby_reverse
-phototonuses	0		Number=Plur	dema	0	phototonus	n	rule
 phototopographic	0		Degree=Pos	dema	0	phototopographic	a	moby_reverse
 phototopographical	0		Degree=Pos	dema	0	phototopographical	a	moby_reverse
 phototopographies	0		Number=Plur	dema	0	phototopography	n	rule
@@ -1751,8 +1745,8 @@ phrenic nerves	0	oewn-phrenic_nerve-n	Number=Plur	dema	0			rule
 phrenic vein	0	oewn-phrenic_vein-n	Number=Sing	dema	0			oewn_form
 phrenic veins	0	oewn-phrenic_vein-n	Number=Plur	dema	0			rule
 phrenitic	0		Degree=Pos	dema	0	phrenitic	a	moby_reverse
+phrenitides	0	oewn-phrenitis-n	Number=Plur	dema	0			llm
 phrenitis	0	oewn-phrenitis-n	Number=Sing	dema	0			oewn_form
-phrenitises	0	oewn-phrenitis-n	Number=Plur	dema	0			rule
 phrenogastric	0		Degree=Pos	dema	0	phrenogastric	a	moby_reverse
 phrenogrady	0		Degree=Pos	dema	0	phrenogrady	a	moby_reverse
 phrenogrady	1		VerbForm=Inf	dema	0	phrenogrady	v	moby_reverse

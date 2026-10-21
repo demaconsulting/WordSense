@@ -35,7 +35,7 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     Choose BertBaseCased when case-awareness matters and the larger download is acceptable: 104 MiB; it
 ///     keeps the case of the text. The alternative <c>DemaConsulting.WordSense.MiniLM</c> is small (22 MiB); the
 ///     sizes are approximate and the figures of the model table are in
-///     https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-table.md.
+///     https://github.com/demaconsulting/WordSense/blob/main/docs/user_guide/model-table.md.
 ///     </para>
 ///     <para>
 ///     Two kinds of data are involved: the per-lemma classifier weights trained for this encoder are embedded in the

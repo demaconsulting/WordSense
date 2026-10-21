@@ -1,6 +1,6 @@
 """Builds the harvest pool: every clean sentence of the public-domain documents, deduplicated.
 
-Inputs (git-ignored cache, tools/real-text/cache/quota/):
+Inputs (git-ignored cache, tools/quota-fill/cache/quota/):
   text/<doc_id>.txt        extracted paragraphs of a document (Gutenberg between its START and END markers, VOA article
                            bodies, USGS, NPS and NWS prose); copied from the verified cache of the open-corpus project
   sources.tsv              one row per document with its family, title, URL, author, year and licence basis
@@ -21,7 +21,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import textutil
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-CACHE = os.path.join(ROOT, "tools", "real-text", "cache")
+CACHE = os.path.join(ROOT, "tools", "quota-fill", "cache")
 QUOTA = os.path.join(CACHE, "quota")
 POOL = os.path.join(QUOTA, "pool.tsv")
 DOCS = os.path.join(QUOTA, "documents.tsv")

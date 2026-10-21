@@ -18,15 +18,17 @@ Inputs, all read from `data/`:
 - `synset_relation`: the hypernym relation of a synset.
 - `sense_label`: the labels that exist, curated, generated or project, with their origin.
 - `sense_label_map`: the renames and retirements of earlier ids. The label part of every old id counts as used.
-- `sense_frequency`: the tag count that orders the senses of a lemma, when the table is present.
+- `sense_frequency`: the tag count that orders the senses of a lemma for the labels, when the table is present.
 
 Output: the complete `sense_label` table, the existing rows unchanged and one row for each sense of a one-token lemma
 that had no label: origin `generated`, or `project` for a sense without a sense key (the generator never writes
 `curated`). The generator never reads, creates, changes or removes a group: a group exists only when it is curated, and
 its id (`lemma#group:slug`) lives in its own namespace, so a group does not take a label of the lemma.
 
-Inventory order of the senses of a lemma: part of speech, then WordNet 3.0 tag count descending, then the UTF-8 bytes of
-the sense id. The order depends on the data only.
+Labeling order of the senses of a lemma: part of speech, then WordNet 3.0 tag count descending, then the UTF-8 bytes of
+the sense id. The order depends on the data only. It decides which sense gets the plain slug and which gets `-2`, `-3`,
+so it is fixed for the ids that exist (sense ids are frozen); it is not the order of the senses in the word image, which
+is the order of Open English WordNet (see the image compiler).
 
 The label of a sense without one is the first rule that gives a usable slug:
 

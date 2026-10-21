@@ -165,7 +165,8 @@ public sealed class BuilderTests : IDisposable
     }
 
     /// <summary>
-    ///     Each sense of a trained lemma is listed in inventory order with its id, group (none when it has no group),
+    ///     Each sense of a trained lemma is listed in inventory order (the order of Open English WordNet, the position of the
+    ///     sense in its entry) with its id, group (none when it has no group),
     ///     OEWN sense key (a project sense has none), respelling when it has one, and gloss.
     /// </summary>
     [Fact]
@@ -178,10 +179,10 @@ public sealed class BuilderTests : IDisposable
         var senses = Unwrapped(text).Where(l => l.StartsWith("  - `", StringComparison.Ordinal)).ToList();
         Assert.Equal(
             [
-                "  - `bank#incline` (noun); group: none; key: `bank%1:17:01::`; gloss: sloping land beside a body of water",
+                "  - `bank#coin-bank` (noun); group: `bank#group:depository`; key: `bank%1:06:01::`; gloss: a container for coins",
                 "  - `bank#banking-company` (noun); group: `bank#group:depository`; key: `bank%1:14:00::`; gloss: a financial institution that accepts deposits \\*and\\* lends money; a depository",
                 "  - `bank#ridge` (noun); group: none; key: `bank%1:17:00::`; respelling: `bangk`; gloss: a long ridge of land",
-                "  - `bank#coin-bank` (noun); group: `bank#group:depository`; key: `bank%1:06:01::`; gloss: a container for coins",
+                "  - `bank#incline` (noun); group: none; key: `bank%1:17:01::`; gloss: sloping land beside a body of water",
                 "  - `bank#close-in` (verb); group: none; key: `bank%2:35:00::`; gloss: tip laterally",
                 "  - `bank#cover` (verb); group: none; key: `bank%2:35:01::`; gloss: cover with ashes",
                 "  - `the#determiner` (determiner); group: none; key: project sense; gloss: the definite article",
@@ -419,7 +420,7 @@ public sealed class BuilderTests : IDisposable
     public async Task WordSenseBuilder_ModelTable_BasicRow_MatchesEvaluation()
     {
         var root = FindRepositoryRoot();
-        var committed = ModelTable.Read(Path.Join(root.FullName, "docs", "build_notes", "model-table.md"))["Basic"];
+        var committed = ModelTable.Read(Path.Join(root.FullName, "docs", "user_guide", "model-table.md"))["Basic"];
         using var progress = new StringWriter();
 
         var result = await Evaluator.RunAsync(root.FullName, Path.Join(root.FullName, "corpus"), ModelCatalog.Find("basic"), progress, TestContext.Current.CancellationToken);

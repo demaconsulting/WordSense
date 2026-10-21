@@ -21,8 +21,9 @@ The builder creates the data that the shipped packages embed and measures the sh
   development and test files of the English EWT treebank, which is downloaded for evaluation only);
 - the quota report of the training sentences (tiers) and the senses appendix of the user guide.
 
-It reads the sense catalog (the senses, their labels, groups, respellings, OEWN keys and WordNet 3.0 tag counts) from
-the word image, which is compiled from `data/`, and the repository's `corpus/` folder: the training sentences
+It reads the sense catalog (the senses, their labels, groups, respellings and OEWN keys, in the order of Open English
+WordNet) from the word image, which is compiled from `data/` (the WordNet 3.0 tag counts, for the usage prior and the
+tiers, come from the `sense_frequency` table of `data/`), and the repository's `corpus/` folder: the training sentences
 (`anchors/`, rows of a fine sense id), the holdout sentences (`holdout/`, never used for training or for thresholds),
 the chooser rows (`choosers/anchors` and `choosers/holdout`, the same sentences labeled with the lemma or tense of
 their form), their provenance (`provenance/`), the dictionary of all words with their parts of speech and the auxiliary
@@ -58,8 +59,8 @@ implementation of the feature computation.
 - `CoverageReport`: the `coverage` command; measures how many running words of a directory of text files the word
   table knows, how many of the known words have a lemma with trained fine senses, and lists the unknown words as names
   and others.
-- `ImageCompiler`: reads the tables of `data/` (entry, form, sense, sense label, sense group, group sense, respelling
-  and frequency) and the lexicon lists, and writes the flat word image (`WSI1` version 3, a 112-byte header: magic,
+- `ImageCompiler`: reads the tables of `data/` (entry, form, sense, sense label, sense group, group sense and respelling)
+  and the lexicon lists, and writes the flat word image (`WSI1` version 3, a 112-byte header: magic,
   version, section count, a reserved word, the SHA-256 of the data tables, the SHA-256 of all bytes from offset 112 and
   the 32-byte inventory hash; then a directory of 20-byte entries and the sections). The analysis sections are the
   UTF-8-byte-sorted spelling index, the features, the entries with their lemma and part of speech, one analysis row
@@ -69,8 +70,10 @@ implementation of the feature computation.
   sense in no group), the sense-to-respelling index (respelling index plus one, 0 for none) with the distinct
   respelling strings, the group ids (UTF-8 sorted) and group parts of speech, the group members (CSR in inventory
   order), the lemma and part-of-speech blocks (lemma bytes and part of speech sorted by lemma bytes then part of
-  speech, each with a CSR of sense indexes in inventory order: WordNet 3.0 tag count descending, project senses last,
-  then sense id bytes) and a key index (sense indexes sorted by full key bytes). Each section is Brotli-compressed. The
+  speech, each with a CSR of sense indexes in inventory order: the order of Open English WordNet, that is the position of
+  the sense in its entry, then the homograph number of the entry, with project senses last, then sense id bytes; the
+  WordNet 3.0 tag counts play no part) and a key index (sense indexes sorted by full key bytes). Each section is
+  Brotli-compressed. The
   inventory hash covers, as raw decompressed bytes with each section fed as id, length and bytes, the spelling,
   analysis, feature, entry lemma and part-of-speech, sense id, sense-group, group id, group part-of-speech and
   lemma-block sections, and is what the weights and `basic.bin` must match. The catalog sections are decoded lazily by
@@ -88,8 +91,11 @@ implementation of the feature computation.
 - `SensePrior`, `PriorSettings`: the usage prior of the per-sense scores: reads the WordNet 3.0 tag counts from the
   `sense_frequency` table and computes the additive offset of each sense of a lemma (see "Usage prior" below).
 - `RealSplit`, `RealCalibrator`: split the real-text held-out sentences by document into a calibration and a test
-  split (from `corpus/provenance`) and move the thresholds of the trained lemmas to the precision target measured on
-  the real calibration sentences (see "Real-text calibration" below).
+  split (from `corpus/provenance`, the columns `id`, `split`, `source` and `source_key`) and move the thresholds of the
+  trained lemmas to the precision target measured on the real calibration sentences (see "Real-text calibration"
+  below). `ProvenanceSources` is the one list of the allowed sources of a sentence (real text and sentences written for
+  the project): the licence gate that `CorpusLicenseTests` applies to the provenance, and the decision whether a source
+  is real text.
 - `Tiers`, `TierRow`: the per-sense quota of anchor and held-out sentences, the status of each sense and the report of
   the senses that fall short.
 - `EmbeddingCache` and `CachingEncoder`: the persistent cache of pooled vectors (one file per model, keyed by the
@@ -132,7 +138,8 @@ implementation of the feature computation.
 - `AppendixGenerator`: generates the senses appendix of the user guide.
 - `TextSplitter`: splits raw text into words and punctuation.
 
-Invariants: the order of the senses of a lemma is the inventory order (part of speech, tag count descending, sense id
+Invariants: the order of the senses of a lemma is the inventory order (part of speech, Open English WordNet position,
+homograph number, project senses last, sense id
 bytes) and the weight rows of every model follow it; equal input always gives equal output bytes (keys and lemmas are
 written in ordinal order and the trainer is deterministic).
 
@@ -204,7 +211,17 @@ instead of `--model`.
 3. Build the sense catalog: every single-token OEWN sense and every project sense, with its readable id (`lemma#label`),
    its group (none when it is in no group), its OEWN key (none for a project sense) and its respelling. The senses of
    each lemma and part of speech
-   are ranked by WordNet 3.0 tag count, then by the sense id bytes.
+   are ordered as Open English WordNet orders them: by the position of the sense in its entry, then the homograph number
+   of the entry, the project senses last, then by the sense id bytes (the WordNet 3.0 tag counts do not order the senses;
+   they only feed the usage prior of the encoder training and the tiers). The order was moved from the tag counts to
+   the OEWN order because a spike that compiled the image in that order and retrained and re-evaluated all three
+   models gave every figure identical to the last digit (the weights differed only in the order of their columns; the
+   SemCor first-sense baseline moved from 60.68% to 60.69%); of the 1,245 blocks of two or more senses of the 826
+   trained lemmas, 659 changed their order and 175 their first sense, in 126 of them because the old first sense had
+   the count 0 (an alphabetical tie) and in 48 because two counts were equal. The WordNet order is made from tag counts
+   that include SemCor, so the first-sense baseline of the independent evaluation stays optimistic. The counts still
+   number the slugs of senses that share a label (`SenseLabelGenerator`; sense ids are frozen, so that numbering must
+   not change).
 4. Check the invariants before writing: a sense without a label, a sense in two groups, a group of fewer than two senses
    or of all the senses of its lemma and part of speech, a group that
    mixes lemmas or parts of speech, and a group id that lacks the group marker (`lemma#group:label`) or equals a sense
@@ -286,7 +303,11 @@ fixed scalar order (only element-wise updates are vectorized), so the result is 
 the processor or the thread count. The same Gram matrix serves the five folds and the final fit, and the senses of a
 fit and the folds run concurrently. `--solver primal` selects the feature-space Newton method for every fit, which is
 the reference: it reproduced the committed blobs byte for byte, and the kernel solver agrees with it to about 1e-6 in
-a weight with identical answers on the held-out sentences (see `docs/build_notes/fit-speed.md`). The solver is part of
+a weight with identical answers on the held-out sentences (on the first batch of 20 lemmas the fit took 11.5 minutes
+in the feature space and about 9 seconds with the kernel solver and the parallel folds for BertBaseCased, with a
+difference of 0.00 points on every measured column, answers identical on all 984 held-out rows and a half-precision gate
+difference of 0.00; `KernelFitTests` check the basis, the weights, the biases, the thresholds and the bit-for-bit
+repetition). The solver is part of
 the key of the fit cache.
 
 **Usage prior (`SensePrior`).** The classifiers are fitted on anchors that are balanced by sense quota, so the
@@ -305,7 +326,12 @@ margins are taken, so the first thresholds are chosen on the corrected scores, a
 with the stored biases, so it calibrates the corrected model. The offset is a function of the anchors and the tag
 counts only, so it is deterministic and part of the fit-cache key (the offsets themselves are hashed). The blob format
 has no slot for settings, so the settings are not stored in it; they are the defaults of the builder, printed in the
-summary of the run and documented in `docs/build_notes/frequency-prior.md`.
+summary of the run and documented in the user guide chapter "Accuracy and Model Choice", which also records how the
+settings were chosen: the variants without the usage term (only the training share divided out), with an independent
+prior from the randomly harvested candidate sentences, and with larger exponents or smoothing were measured; the larger
+exponents raise the fine top-1 on SemCor further but lower the share of sense-level answers and the part of speech on
+the balanced real test sentences, so `alpha = 0.5` with `k = 0.5` is the setting that gains on SemCor and costs least.
+A run takes about two minutes when the embedding cache is warm, and `--no-prior` reproduces the uncorrected weights.
 
 **Thresholds (`Thresholds.Choose`).** For every trained lemma the anchors are split into k = 5 folds by a seeded,
 deterministic shuffle; each fold is scored by a fit on the other folds, which gives out-of-fold margins for every
@@ -320,8 +346,9 @@ thresholds: the anchors are balanced and partly written, so the answers above th
 text, and the real-text calibration below moves them. The thresholds decide the level of an answer; the confidence of
 an answer is the probability of the answered level.
 
-**Real-text calibration (`RealSplit`, `RealCalibrator`).** The real held-out sentences (provenance `origin = real`,
-joined to a corpus row by the first 12 hexadecimal digits of the SHA-256 of `lemma|sentence`) are split by *document*:
+**Real-text calibration (`RealSplit`, `RealCalibrator`).** The real held-out sentences (provenance rows whose source is
+real text, `ProvenanceSources.IsReal`, joined to a corpus row by the first 12 hexadecimal digits of the SHA-256 of
+`lemma|sentence`) are split by *document*:
 the document of a row is its source and the part of the source key before `#` (a Gutenberg book, a VOA article, a
 government page; a Tatoeba sentence is its own document), and the first bit of the SHA-256 of `document|<id>` (0
 calibration, 1 test) gives its side, so every sentence of a document is on one side and the split is fixed by the
@@ -336,7 +363,12 @@ threshold and a level that was never answered stays so. The group threshold move
 rows that fall through the final fine threshold and whose best sense is in a group, but only when at least 30 such
 answers exist to verify it (otherwise it is kept and the report says it is unverified). A calibration row whose sense
 has no anchor counts as a wrong answer. The test split and the written held-out sentences never reach the choice; the
-report of the run prints the rows used, the shift and the pooled precision before and after. `evaluate` reports the
+report of the run prints the rows used, the shift and the pooled precision before and after. The calibration target is
+0.97 (`--calibration-target`), two points above the 95% aimed at on the whole pipeline, because the precision of the
+pipeline (the analysis and the form chooser) on the same sentences is about two points below that of the lemma-level
+classifier (measured: 95.1% at the lemma level against 92.6% for the pipeline at the target 0.95 for MiniLM). Sweeping
+the target on the real test split showed that MiniLM saturates near 94% precision, because about 7% of the gold labels
+are wrong according to a blind judge, which caps the precision that can be measured. `evaluate` reports the
 real test split as the headline set.
 
 **Tiers (`Tiers`).** The quota of a sense follows its WordNet 3.0 tag count: five or more, 20 anchor and 5 held-out
@@ -369,8 +401,8 @@ the pooling or tokenization that keeps the model files, delete the cache folder 
 
 **Fit cache (`FitCache`).** Fitting the classifiers is the longest step once the encoding is cached (about 1.5 minutes
 for the 775 lemmas of MiniLM and 2 minutes for BertBaseCased with the kernel solver; the feature-space solver needed 77
-seconds for MiniLM and 11.5 minutes for the 768-dimensional BertBaseCased on a measurement of only 20 lemmas, see
-`docs/build_notes/fit-speed.md`), and the fit of a lemma depends on that lemma alone. `<cache>/<model-id>/fits.bin`
+seconds for MiniLM and 11.5 minutes for the 768-dimensional BertBaseCased on a measurement of only 20 lemmas), and the
+fit of a lemma depends on that lemma alone. `<cache>/<model-id>/fits.bin`
 therefore stores the fitted weights, biases and thresholds of each lemma, keyed by the SHA-256 of the training settings
 (the threshold settings, the precision target, the solver and the seed included), the lemma, its sense ids, the label of
 each
@@ -411,7 +443,7 @@ the precision target. The *test split* (the documents whose hash bit is 1) never
 choice and is the headline set that `evaluate` reports. The written held-out sentences and the rows without provenance
 belong to neither split and are reported as secondary sets. The result is *published* through the model table
 (`evaluate --table`): the real-text test split gives the sense share at its precision and the cost cells of the
-model's row of `docs/build_notes/model-table.md`, and the README table must equal that file (a doc-test checks it); the
+model's row of `docs/user_guide/model-table.md`, and the README table must equal that file (a doc-test checks it); the
 independent evaluations (SemCor, running text, the reviewed suite) fill their own cells. `basic` is evaluated the same
 way without weights and additionally reports the
 calibration of its confidence: the number and accuracy of the answers in the confidence buckets (below 0.4, 0.4 to
@@ -443,7 +475,8 @@ table against the reference accuracies of the other models.
    the part-of-speech accuracy and the most-frequent-sense baseline (the first sense of the lemma and part of speech of
    the gold sense in inventory order; the baseline knows the gold lemma and part of speech).
 
-The inventory order and the tiers come from WordNet 3.0 tag counts that include the counts of SemCor itself: this gives
+The tiers come from WordNet 3.0 tag counts that include the counts of SemCor itself, and the inventory order (the order
+of Open English WordNet) inherits most of its order from WordNet, whose senses are ordered by such counts: this gives
 the baseline an advantage (it has seen the answers) and the evaluation report says so; no SemCor sentence is in any
 training corpus.
 
@@ -464,7 +497,8 @@ the lexicon.
 
 #### Model table (`ModelTable`)
 
-`docs/build_notes/model-table.md` holds the table of the README: one row per model, one column per measurement. Each
+`docs/user_guide/model-table.md` holds the table of the README and is a chapter of the user guide: one row per model,
+one column per measurement. Each
 evaluation command writes its own cells (`evaluate`: the real-text sense share at its precision and the cost cells;
 `evaluate-running`: the open-corpus, treebank and challenge-set cells; `evaluate-senses`: the SemCor cell) with
 `--table`, and keeps the others; the README table must equal it (a doc-test checks it).
@@ -525,6 +559,21 @@ into a train and a dev part (the chooser anchors are left out of the tuned table
 labeled a second way). It reports the accuracy on the ambiguous tokens of the development split, the accuracy of the
 analysis on the anchor dev part and the table size. It never reads the test splits, the challenge set, the holdout or
 the real-text sentences and writes no file, so the reported evaluation stays honest.
+
+Workflow: change a value in `BasicHyperparameters.Default` (or add values to `Grid`) and run `tune-basic` to compare
+variants; put the chosen value into `Default`, run `train-basic` (the word image must be current, `compile-image`, because
+the dictionary is read from the core package), rebuild, run `evaluate basic` and compare its table with the previous
+run; commit `basic.bin` and the changed hyper-parameter file. Retraining is deterministic: the same inputs give a
+byte-identical table. The values that the runtime needs (gamma, beta, the three lambdas, the HMM weight and the inverse
+temperature) travel in the header of `basic.bin`, so changing them needs retraining but no runtime change; a change of
+the table format needs the reader in `BasicTables` and its tests to change too. Tune only against the development split
+and the anchor sample; never against the holdout, the real-text sentences, the test splits of the open corpus or its
+challenge set, or the treebank, which are the measurements (one real-text row is a fraction of a point, so a smaller
+move than a few rows is noise). To change the training data (anchors, sense inventory or open-corpus sentences), edit it
+and run `open-counts` (when the open corpus changed) and `train-basic`; `evaluate-tagger` measures the part of speech.
+The grid has been tried on the open-corpus tables: the best variants (gamma 1.0, beta 1.0, closed-class 3 / 0.8) gain
+about 0.5 points of ambiguous part of speech on the open development split and lose about 1.8 points on the anchor
+development subset (the hard, targeted ambiguous words), so the defaults stay.
 
 #### Tagger evaluation (`TaggerEvaluator.EvaluateAsync`)
 

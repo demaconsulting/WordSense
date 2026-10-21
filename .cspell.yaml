@@ -22,6 +22,89 @@ words:
   - bangk
   - tbangk
   - AGID
+  - worklist
+  - iing
+  - ises
+  - leatherleafs
+  - ombudsmans
+  - ripraped
+  - mispent
+  - policemans
+  - ventriloquys
+  - bufferred
+  - suntaned
+  - hogtiing
+  - colobi
+  - buncoes
+  - chilis
+  - ananas
+  - diestri
+  - deinonychi
+  - estri
+  - oestri
+  - vari
+  - anesthetises
+  - anesthetised
+  - anesthetising
+  - patas
+  - sisses
+  - sise
+  - pompani
+  - vomita
+  - shooes
+  - rhesi
+  - humata
+  - wiretaped
+  - aman
+  - backloged
+  - bagmens
+  - beflag
+  - beflagged
+  - beflagging
+  - behalfs
+  - birdiing
+  - caddieing
+  - ceriman
+  - dairywomens
+  - delf
+  - delfs
+  - ffer
+  - gauffered
+  - gauffering
+  - guelf
+  - highlife
+  - Hollandses
+  - hollandses
+  - icewoman
+  - icewomans
+  - icewomen
+  - ingerman
+  - itis
+  - kayakked
+  - liman
+  - musselman
+  - namedrop
+  - obsequys
+  - outvie
+  - outvied
+  - outvying
+  - quies
+  - saman
+  - shrinkwrapped
+  - shrinkwrapping
+  - squeg
+  - squegged
+  - squegging
+  - subecho
+  - subechoes
+  - takilman
+  - tgpt
+  - toman
+  - turcoman
+  - whelf
+  - yarraman
+  - yuman
+  - zaman
   - USGS
   - Jaccard
   - lexdata
@@ -153,8 +236,6 @@ words:
   - propn
   - powerplant
   - steprobe
-  - gapfinder
-  - techsenses
   - punct
   - multiword
   - unscored
@@ -253,7 +334,7 @@ ignorePaths:
   - package-lock.json
   - model/**
   - corpus/**
-  - tools/real-text/cache/**
+  - tools/quota-fill/cache/**
   - tools/tokenizer-fixture/**
   # Generated from the corpus (lemma inventory and real sentences contain many rare words and names)
   - docs/user_guide/appendix-senses.md

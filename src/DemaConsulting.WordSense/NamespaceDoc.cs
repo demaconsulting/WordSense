@@ -27,11 +27,11 @@ namespace DemaConsulting.WordSense;
 ///     https://github.com/demaconsulting/WordSense/tree/main/src/DemaConsulting.WordSense.BertBaseCased). The two
 ///     encoder packages share the ONNX plumbing of <c>DemaConsulting.WordSense.Onnx</c>, and each composes its encoder
 ///     with <see cref="BasicWordSenseModel"/> through <see cref="FallbackWordSenseModel"/>. The comparison of the models
-///     is in the build notes: https://github.com/demaconsulting/WordSense/tree/main/docs/build_notes.
+///     is in the user guide: https://github.com/demaconsulting/WordSense/blob/main/docs/user_guide/accuracy.md.
 ///     </para>
 ///     <para>
-///     Which model to choose. The comparison of the models is generated into the build notes
-///     (https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-table.md, which the README
+///     Which model to choose. The comparison of the models is generated into the user guide
+///     (https://github.com/demaconsulting/WordSense/blob/main/docs/user_guide/model-table.md, which the README
 ///     repeats exactly). The encoder packages score the fine senses of the lemmas of the relabeled corpus (see the
 ///     senses appendix of the user guide) and answer every other ambiguous word through the built-in model (they
 ///     compose it with <see cref="FallbackWordSenseModel"/>); the table shows the figures measured on the held-out
@@ -81,9 +81,9 @@ namespace DemaConsulting.WordSense;
 ///     lemmas and parts of speech and 1. An ambiguous word is never left undecided. This probability scale is specific
 ///     to this model: do not reuse a threshold from, or for, MiniLM or BertBaseCased, whose confidence is a margin
 ///     score. The value is a relative score, not a calibrated probability, but higher values are more often right; the
-///     recommended starting threshold for this model is 0.8 (see the build notes,
-///     https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/basic-evaluation.md, for the precision and
-///     coverage at each threshold).
+///     recommended starting threshold for this model is 0.8 (see the user guide,
+///     https://github.com/demaconsulting/WordSense/blob/main/docs/user_guide/accuracy.md, for how far the confidence can
+///     be relied on).
 ///     </para>
 ///     <para>
 ///     First-use costs (approximate, machine dependent): the lexicon opens on first use of <see cref="WordLexicon"/>

@@ -64,7 +64,7 @@ ROIS	0	oewn-ROI-n	Capitalization=Upper+Number=Plur	dema	0			rule
 ROM	0		Number=Sing	dema	0	rom	n	moby_reverse
 ROM	1	oewn-ROM-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 ROMS	0		Number=Plur	dema	0	rom	n	rule
-ROMS	1	oewn-ROM-n	Capitalization=Upper+Number=Plur	dema	0			rule
+ROMS	1	oewn-ROM-n	Capitalization=Upper+Number=Plur	dema	0			llm
 ROTC	0	oewn-ROTC-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 ROTCS	0	oewn-ROTC-n	Capitalization=Upper+Number=Plur	dema	0			rule
 RTLT	0	oewn-RTLT-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
@@ -239,7 +239,7 @@ Rebels	0	oewn-rebel-n	Number=Plur	dema	0			carried
 Rebels	1	oewn-rebel-v	Person=3+Tense=Pres	dema	0			carried
 Rebels	2	oewn-Rebel-n	Capitalization=Title+Number=Plur	dema	0			rule
 Rebs	0		Number=Plur	dema	0	reb	n	rule
-Rebs	1	oewn-Reb-n	Capitalization=Title+Number=Plur	dema	0			rule
+Rebs	1	oewn-Reb-n	Capitalization=Title+Number=Plur	dema	0			llm
 Received Pronunciation	0	oewn-Received_Pronunciation-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Received Pronunciation language	0	oewn-Received_Pronunciation_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Received Pronunciation languages	0	oewn-Received_Pronunciation_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
@@ -313,7 +313,7 @@ Remicades	0	oewn-Remicade-n	Capitalization=Title+Number=Plur	dema	0			rule
 Remilegia australis	0	oewn-Remilegia_australis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Renaissance	0	oewn-Renaissance-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Renaissance man	0	oewn-Renaissance_man-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
-Renaissance mans	0	oewn-Renaissance_man-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Renaissance men	0	oewn-Renaissance_man-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Renaissance revival	0	oewn-Renaissance_revival-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Renaissance revivals	0	oewn-Renaissance_revival-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Renaissances	0	oewn-Renaissance-n	Capitalization=Title+Number=Plur	dema	0			rule
@@ -371,7 +371,7 @@ Revolutionary calendars	0	oewn-Revolutionary_calendar-n	Capitalization=Exact+Num
 Rex	0		Number=Sing	dema	0	rex	n	moby_reverse
 Rex	1	oewn-Rex-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Rexes	0		Number=Plur	dema	0	rex	n	rule
-Rexes	1	oewn-Rex-n	Capitalization=Title+Number=Plur	dema	0			rule
+Rexes	1	oewn-Rex-n	Capitalization=Title+Number=Plur	dema	0			llm
 Reye's syndrome	0	oewn-Reye-ap-s_syndrome-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Reye's syndromes	0	oewn-Reye-ap-s_syndrome-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Reynard	0	oewn-Reynard-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
@@ -467,7 +467,7 @@ Rhodes scholar	0	oewn-Rhodes_scholar-n	Capitalization=Exact+Number=Sing	dema	0		
 Rhodes scholars	0	oewn-Rhodes_scholar-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Rhodesian	0	oewn-Rhodesian-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
 Rhodesian man	0	oewn-Rhodesian_man-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
-Rhodesian mans	0	oewn-Rhodesian_man-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Rhodesian men	0	oewn-Rhodesian_man-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Rhodesian ridgeback	0	oewn-Rhodesian_ridgeback-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Rhodesian ridgebacks	0	oewn-Rhodesian_ridgeback-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Rhododendron californicum	0	oewn-Rhododendron_californicum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
@@ -1105,9 +1105,8 @@ rabbinistical	0		Degree=Pos	dema	0	rabbinistical	a	moby_reverse
 rabbinitic	0		Degree=Pos	dema	0	rabbinitic	a	moby_reverse
 rabbins	0		Number=Plur	dema	0	rabbin	n	rule
 rabbis	0	oewn-rabbi-n	Number=Plur	dema	0			rule
-rabbit	0	oewn-rabbit-n	Number=Plur	dema	0			agid
-rabbit	1	oewn-rabbit-n	Number=Sing	dema	0			oewn_form
-rabbit	2	oewn-rabbit-v	VerbForm=Inf	dema	0			oewn_form
+rabbit	0	oewn-rabbit-n	Number=Sing	dema	0			oewn_form
+rabbit	1	oewn-rabbit-v	VerbForm=Inf	dema	0			oewn_form
 rabbit bandicoot	0	oewn-rabbit_bandicoot-n	Number=Sing	dema	0			oewn_form
 rabbit bandicoots	0	oewn-rabbit_bandicoot-n	Number=Plur	dema	0			rule
 rabbit brush	0	oewn-rabbit_brush-n	Number=Sing	dema	0			oewn_form
@@ -1157,7 +1156,7 @@ rabbitoh	0		Number=Sing	dema	0	rabbitoh	n	moby_reverse
 rabbitohs	0		Number=Plur	dema	0	rabbitoh	n	rule
 rabbitries	0		Number=Plur	dema	0	rabbitry	n	rule
 rabbitry	0		Number=Sing	dema	0	rabbitry	n	moby_reverse
-rabbits	0	oewn-rabbit-n	Number=Plur	dema	0			rule_variant
+rabbits	0	oewn-rabbit-n	Number=Plur	dema	0			rule
 rabbits	1	oewn-rabbit-v	Person=3+Tense=Pres	dema	0			rule
 rabbits on	0	oewn-rabbit_on-v	Person=3+Tense=Pres	dema	0			rule
 rabbitweed	0	oewn-rabbitweed-n	Number=Sing	dema	0			oewn_form
@@ -1184,16 +1183,14 @@ rabidity	0	oewn-rabidity-n	Number=Sing	dema	0			oewn_form
 rabidly	0	oewn-rabidly-r	Degree=Pos	dema	0			oewn_form
 rabidness	0	oewn-rabidness-n	Number=Sing	dema	0			oewn_form
 rabidnesses	0	oewn-rabidness-n	Number=Plur	dema	0			rule
-rabies	0	oewn-rabies-n	Number=Plur	dema	0			agid
-rabies	1	oewn-rabies-n	Number=Sing	dema	0			oewn_form
+rabies	0	oewn-rabies-n	Number=Sing	dema	0			oewn_form
 rabis	0		Number=Plur	dema	0	rabi	n	rule
-raccoon	0	oewn-raccoon-n	Number=Plur	dema	0			agid
-raccoon	1	oewn-raccoon-n	Number=Sing	dema	0			oewn_form
+raccoon	0	oewn-raccoon-n	Number=Sing	dema	0			oewn_form
 raccoon dog	0	oewn-raccoon_dog-n	Number=Sing	dema	0			oewn_form
 raccoon dogs	0	oewn-raccoon_dog-n	Number=Plur	dema	0			rule
 raccoon fox	0	oewn-raccoon_fox-n	Number=Sing	dema	0			oewn_form
 raccoon foxes	0	oewn-raccoon_fox-n	Number=Plur	dema	0			rule
-raccoons	0	oewn-raccoon-n	Number=Plur	dema	0			rule_variant
+raccoons	0	oewn-raccoon-n	Number=Plur	dema	0			rule
 race	0	oewn-race-n	Number=Sing	dema	0			oewn_form
 race	1	oewn-race-v	VerbForm=Inf	dema	0			oewn_form
 race car	0	oewn-race_car-n	Number=Sing	dema	0			oewn_form
@@ -1398,9 +1395,8 @@ radar fires	0	oewn-radar_fire-n	Number=Plur	dema	0			rule
 radar target	0	oewn-radar_target-n	Number=Sing	dema	0			oewn_form
 radar targets	0	oewn-radar_target-n	Number=Plur	dema	0			rule
 radarman	0		Number=Sing	dema	0	radarman	n	moby_reverse
-radarmans	0		Number=Plur	dema	0	radarman	n	rule
-radarmen	0		Number=Sing	dema	0	radarmen	n	moby_reverse
-radarmens	0		Number=Plur	dema	0	radarmen	n	rule
+radarmen	0		Number=Plur	dema	0	radarman	n	rule
+radarmen	1		Number=Sing	dema	0	radarmen	n	moby_reverse
 radars	0	oewn-radar-n	Number=Plur	dema	0			rule
 radarscope	0		Number=Sing	dema	0	radarscope	n	moby_reverse
 radarscopes	0		Number=Plur	dema	0	radarscope	n	rule
@@ -1409,9 +1405,8 @@ raddle	1	oewn-raddle-n	Number=Sing	dema	0			oewn_form
 raddled	0	oewn-raddle-v	Tense=Past+VerbForm=Part	dema	0			rule
 raddled	1	oewn-raddled-a	Degree=Pos	dema	0			oewn_form
 raddleman	0		Number=Sing	dema	0	raddleman	n	moby_reverse
-raddlemans	0		Number=Plur	dema	0	raddleman	n	rule
-raddlemen	0		Number=Sing	dema	0	raddlemen	n	moby_reverse
-raddlemens	0		Number=Plur	dema	0	raddlemen	n	rule
+raddlemen	0		Number=Plur	dema	0	raddleman	n	rule
+raddlemen	1		Number=Sing	dema	0	raddlemen	n	moby_reverse
 raddles	0	oewn-raddle-v	Person=3+Tense=Pres	dema	0			rule
 raddles	1	oewn-raddle-n	Number=Plur	dema	0			rule
 raddling	0	oewn-raddle-v	VerbForm=Ger	dema	0			rule
@@ -1685,7 +1680,7 @@ radiocommunication	0	oewn-radiocommunication-n	Number=Sing	dema	0			oewn_form
 radiocommunications	0	oewn-radiocommunication-n	Number=Plur	dema	0			rule
 radiodiagnoses	0		Number=Sing	dema	0	radiodiagnoses	n	moby_reverse
 radiodiagnosis	0		Number=Sing	dema	0	radiodiagnosis	n	moby_reverse
-radioed	0	oewn-radio-v	Tense=Past+VerbForm=Part	dema	0			rule
+radioed	0	oewn-radio-v	Tense=Past+VerbForm=Part	dema	0			llm
 radioelement	0		Number=Sing	dema	0	radioelement	n	moby_reverse
 radioelements	0		Number=Plur	dema	0	radioelement	n	rule
 radiofrequencies	0		Number=Plur	dema	0	radiofrequency	n	rule
@@ -1705,7 +1700,7 @@ radiography	0	oewn-radiography-n	Number=Sing	dema	0			oewn_form
 radioimmunoassay	0	oewn-radioimmunoassay-n	Number=Sing	dema	0			oewn_form
 radioimmunoassays	0	oewn-radioimmunoassay-n	Number=Plur	dema	0			rule
 radioing	0		Number=Sing	dema	0	radioing	n	moby_reverse
-radioing	1	oewn-radio-v	VerbForm=Ger	dema	0			rule
+radioing	1	oewn-radio-v	VerbForm=Ger	dema	0			llm
 radioings	0		Number=Plur	dema	0	radioing	n	rule
 radioiron	0		Number=Sing	dema	0	radioiron	n	moby_reverse
 radioirons	0		Number=Plur	dema	0	radioiron	n	rule
@@ -1738,9 +1733,8 @@ radioluminescences	0		Number=Plur	dema	0	radioluminescence	n	rule
 radioluminescent	0		Degree=Pos	dema	0	radioluminescent	a	moby_reverse
 radiolysis	0	oewn-radiolysis-n	Number=Sing	dema	0			oewn_form
 radioman	0		Number=Sing	dema	0	radioman	n	moby_reverse
-radiomans	0		Number=Plur	dema	0	radioman	n	rule
-radiomen	0		Number=Sing	dema	0	radiomen	n	moby_reverse
-radiomens	0		Number=Plur	dema	0	radiomen	n	rule
+radiomen	0		Number=Plur	dema	0	radioman	n	rule
+radiomen	1		Number=Sing	dema	0	radiomen	n	moby_reverse
 radiometeorograph	0		Number=Sing	dema	0	radiometeorograph	n	moby_reverse
 radiometeorographs	0		Number=Plur	dema	0	radiometeorograph	n	rule
 radiometer	0	oewn-radiometer-n	Number=Sing	dema	0			oewn_form
@@ -1773,6 +1767,7 @@ radiophotos	0	oewn-radiophoto-n	Number=Plur	dema	0			rule
 radioprotection	0	oewn-radioprotection-n	Number=Sing	dema	0			oewn_form
 radioprotections	0	oewn-radioprotection-n	Number=Plur	dema	0			rule
 radios	0	oewn-radio-n	Number=Plur	dema	0			rule
+radios	1	oewn-radio-v	Person=3+Tense=Pres	dema	0			llm
 radioscope	0		Number=Sing	dema	0	radioscope	n	moby_reverse
 radioscopes	0		Number=Plur	dema	0	radioscope	n	rule
 radioscopic	0		Degree=Pos	dema	0	radioscopic	a	moby_reverse
@@ -1894,7 +1889,7 @@ raft	0	oewn-raft-n	Number=Sing	dema	0			oewn_form
 raft	1	oewn-raft-v	VerbForm=Inf	dema	0			oewn_form
 raft foundation	0	oewn-raft_foundation-n	Number=Sing	dema	0			oewn_form
 raft foundations	0	oewn-raft_foundation-n	Number=Plur	dema	0			rule
-rafted	0	oewn-raft-v	Tense=Past+VerbForm=Part	dema	0			rule
+rafted	0	oewn-raft-v	Tense=Past+VerbForm=Part	dema	0			llm
 rafter	0	oewn-rafter-n	Number=Sing	dema	0			oewn_form
 rafter	1	oewn-rafter-v	VerbForm=Inf	dema	0			oewn_form
 raftered	0	oewn-rafter-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -1902,16 +1897,16 @@ raftered	1	oewn-raftered-a	Degree=Pos	dema	0			oewn_form
 raftering	0	oewn-rafter-v	VerbForm=Ger	dema	0			rule
 rafters	0	oewn-rafter-n	Number=Plur	dema	0			rule
 rafters	1	oewn-rafter-v	Person=3+Tense=Pres	dema	0			rule
-rafting	0	oewn-raft-v	VerbForm=Ger	dema	0			rule
+rafting	0	oewn-raft-v	VerbForm=Ger	dema	0			llm
 raftman	0	oewn-raftman-n	Number=Sing	dema	0			oewn_form
-raftmans	0	oewn-raftman-n	Number=Plur	dema	0			rule
+raftmen	0	oewn-raftman-n	Number=Plur	dema	0			rule
 rafts	0	oewn-raft-n	Number=Plur	dema	0			rule
-rafts	1	oewn-raft-v	Person=3+Tense=Pres	dema	0			rule
+rafts	1	oewn-raft-v	Person=3+Tense=Pres	dema	0			llm
 rafts	2	oewn-rafts-n	Number=Sing	dema	0			oewn_form
 raftsman	0	oewn-raftsman-n	Number=Sing	dema	0			oewn_form
-raftsmans	0	oewn-raftsman-n	Number=Plur	dema	0			rule
+raftsmen	0	oewn-raftsman-n	Number=Plur	dema	0			rule
 raftswoman	0	oewn-raftswoman-n	Number=Sing	dema	0			oewn_form
-raftswomans	0	oewn-raftswoman-n	Number=Plur	dema	0			rule
+raftswomen	0	oewn-raftswoman-n	Number=Plur	dema	0			rule
 rag	0	oewn-rag-n	Number=Sing	dema	0			oewn_form
 rag	1	oewn-rag-v	VerbForm=Inf	dema	0			oewn_form
 rag day	0	oewn-rag_day-n	Number=Sing	dema	0			oewn_form
@@ -1969,9 +1964,8 @@ raglan sleeve	0	oewn-raglan_sleeve-n	Number=Sing	dema	0			oewn_form
 raglan sleeves	0	oewn-raglan_sleeve-n	Number=Plur	dema	0			rule
 raglans	0	oewn-raglan-n	Number=Plur	dema	0			rule
 ragman	0		Number=Sing	dema	0	ragman	n	moby_reverse
-ragmans	0		Number=Plur	dema	0	ragman	n	rule
-ragmen	0		Number=Sing	dema	0	ragmen	n	moby_reverse
-ragmens	0		Number=Plur	dema	0	ragmen	n	rule
+ragmen	0		Number=Plur	dema	0	ragman	n	rule
+ragmen	1		Number=Sing	dema	0	ragmen	n	moby_reverse
 ragout	0	oewn-ragout-n	Number=Sing	dema	0			oewn_form
 ragout	1		VerbForm=Inf	dema	0	ragout	v	moby_reverse
 ragouts	0	oewn-ragout-n	Number=Plur	dema	0			rule
@@ -2058,7 +2052,7 @@ railroad flats	0	oewn-railroad_flat-n	Number=Plur	dema	0			rule
 railroad line	0	oewn-railroad_line-n	Number=Sing	dema	0			oewn_form
 railroad lines	0	oewn-railroad_line-n	Number=Plur	dema	0			rule
 railroad man	0	oewn-railroad_man-n	Number=Sing	dema	0			oewn_form
-railroad mans	0	oewn-railroad_man-n	Number=Plur	dema	0			rule
+railroad men	0	oewn-railroad_man-n	Number=Plur	dema	0			rule
 railroad siding	0	oewn-railroad_siding-n	Number=Sing	dema	0			oewn_form
 railroad sidings	0	oewn-railroad_siding-n	Number=Plur	dema	0			rule
 railroad station	0	oewn-railroad_station-n	Number=Sing	dema	0			oewn_form
@@ -2078,7 +2072,7 @@ railroad tunnels	0	oewn-railroad_tunnel-n	Number=Plur	dema	0			rule
 railroad vine	0	oewn-railroad_vine-n	Number=Sing	dema	0			oewn_form
 railroad vines	0	oewn-railroad_vine-n	Number=Plur	dema	0			rule
 railroad woman	0	oewn-railroad_woman-n	Number=Sing	dema	0			oewn_form
-railroad womans	0	oewn-railroad_woman-n	Number=Plur	dema	0			rule
+railroad women	0	oewn-railroad_woman-n	Number=Plur	dema	0			rule
 railroad worm	0	oewn-railroad_worm-n	Number=Sing	dema	0			oewn_form
 railroad worms	0	oewn-railroad_worm-n	Number=Plur	dema	0			rule
 railroaded	0	oewn-railroad-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -2104,22 +2098,23 @@ railway lines	0	oewn-railway_line-n	Number=Plur	dema	0			rule
 railway locomotive	0	oewn-railway_locomotive-n	Number=Sing	dema	0			oewn_form
 railway locomotives	0	oewn-railway_locomotive-n	Number=Plur	dema	0			rule
 railway man	0	oewn-railway_man-n	Number=Sing	dema	0			oewn_form
-railway mans	0	oewn-railway_man-n	Number=Plur	dema	0			rule
+railway men	0	oewn-railway_man-n	Number=Plur	dema	0			rule
 railway station	0	oewn-railway_station-n	Number=Sing	dema	0			oewn_form
 railway stations	0	oewn-railway_station-n	Number=Plur	dema	0			rule
 railway system	0	oewn-railway_system-n	Number=Sing	dema	0			oewn_form
 railway systems	0	oewn-railway_system-n	Number=Plur	dema	0			rule
 railway woman	0	oewn-railway_woman-n	Number=Sing	dema	0			oewn_form
-railway womans	0	oewn-railway_woman-n	Number=Plur	dema	0			rule
+railway women	0	oewn-railway_woman-n	Number=Plur	dema	0			rule
 railway yard	0	oewn-railway_yard-n	Number=Sing	dema	0			oewn_form
 railway yards	0	oewn-railway_yard-n	Number=Plur	dema	0			rule
 railwayed	0		Degree=Pos	dema	0	railwayed	a	moby_reverse
 railwayed	1		VerbForm=Inf	dema	0	railwayed	v	moby_reverse
 railwayless	0		Degree=Pos	dema	0	railwayless	a	moby_reverse
 railwayman	0	oewn-railwayman-n	Number=Sing	dema	0			oewn_form
+railwaymen	0	oewn-railwayman-n	Number=Plur	dema	0			llm
 railways	0	oewn-railway-n	Number=Plur	dema	0			rule
 railwaywoman	0	oewn-railwaywoman-n	Number=Sing	dema	0			oewn_form
-railwaywomans	0	oewn-railwaywoman-n	Number=Plur	dema	0			rule
+railwaywomen	0	oewn-railwaywoman-n	Number=Plur	dema	0			rule
 railyard	0	oewn-railyard-n	Number=Sing	dema	0			oewn_form
 railyards	0	oewn-railyard-n	Number=Plur	dema	0			rule
 raiment	0	oewn-raiment-n	Number=Sing	dema	0			oewn_form
@@ -2306,7 +2301,7 @@ rajanya	0	oewn-rajanya-n	Number=Sing	dema	0			oewn_form
 rajanyas	0	oewn-rajanya-n	Number=Plur	dema	0			rule
 rajas	0	oewn-raja-n	Number=Plur	dema	0			rule
 rajasic	0		Degree=Pos	dema	0	rajasic	a	moby_reverse
-rajes	0	oewn-raj-n	Number=Plur	dema	0			agid
+rajs	0	oewn-raj-n	Number=Plur	dema	0			llm
 rake	0	oewn-rake-n	Number=Sing	dema	0			oewn_form
 rake	1	oewn-rake-v	VerbForm=Inf	dema	0			oewn_form
 rake handle	0	oewn-rake_handle-n	Number=Sing	dema	0			oewn_form
@@ -2317,7 +2312,7 @@ rake up	0	oewn-rake_up-v	VerbForm=Inf	dema	0			oewn_form
 rake-off	0	oewn-rake-off-n	Number=Sing	dema	0			oewn_form
 rake-offs	0	oewn-rake-off-n	Number=Plur	dema	0			rule
 raked	0		Degree=Pos	dema	0	raked	a	moby_reverse
-raked	1	oewn-rake-v	Tense=Past+VerbForm=Part	dema	0			rule
+raked	1	oewn-rake-v	Tense=Past+VerbForm=Part	dema	0			llm
 raked in	0	oewn-rake_in-v	Tense=Past+VerbForm=Part	dema	0			rule
 raked off	0	oewn-rake_off-v	Tense=Past+VerbForm=Part	dema	0			rule
 raked up	0	oewn-rake_up-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -2330,12 +2325,12 @@ raker	0		Number=Sing	dema	0	raker	n	moby_reverse
 raker	1		VerbForm=Inf	dema	0	raker	v	moby_reverse
 rakers	0		Number=Plur	dema	0	raker	n	rule
 rakes	0	oewn-rake-n	Number=Plur	dema	0			rule
-rakes	1	oewn-rake-v	Person=3+Tense=Pres	dema	0			rule
+rakes	1	oewn-rake-v	Person=3+Tense=Pres	dema	0			llm
 rakes in	0	oewn-rake_in-v	Person=3+Tense=Pres	dema	0			rule
 rakes off	0	oewn-rake_off-v	Person=3+Tense=Pres	dema	0			rule
 rakes up	0	oewn-rake_up-v	Person=3+Tense=Pres	dema	0			rule
 raki	0		Number=Sing	dema	0	raki	n	moby_reverse
-raking	0	oewn-rake-v	VerbForm=Ger	dema	0			rule
+raking	0	oewn-rake-v	VerbForm=Ger	dema	0			llm
 raking in	0	oewn-rake_in-v	VerbForm=Ger	dema	0			rule
 raking off	0	oewn-rake_off-v	VerbForm=Ger	dema	0			rule
 raking up	0	oewn-rake_up-v	VerbForm=Ger	dema	0			rule
@@ -2536,9 +2531,8 @@ ranchings	0	oewn-ranching-n	Number=Plur	dema	0			rule
 ranchless	0		Degree=Pos	dema	0	ranchless	a	moby_reverse
 ranchlike	0		Degree=Pos	dema	0	ranchlike	a	moby_reverse
 ranchman	0		Number=Sing	dema	0	ranchman	n	moby_reverse
-ranchmans	0		Number=Plur	dema	0	ranchman	n	rule
-ranchmen	0		Number=Sing	dema	0	ranchmen	n	moby_reverse
-ranchmens	0		Number=Plur	dema	0	ranchmen	n	rule
+ranchmen	0		Number=Plur	dema	0	ranchman	n	rule
+ranchmen	1		Number=Sing	dema	0	ranchmen	n	moby_reverse
 rancho	0		Number=Sing	dema	0	rancho	n	moby_reverse
 ranchos	0		Number=Plur	dema	0	rancho	n	rule
 rancid	0	oewn-rancid-a	Degree=Pos	dema	0			oewn_form
@@ -2555,7 +2549,7 @@ rancorousnesses	0		Number=Plur	dema	0	rancorousness	n	rule
 rancors	0	oewn-rancor-n	Number=Plur	dema	0			rule
 rancour	0	oewn-rancour-n	Number=Sing	dema	0			oewn_form
 rancours	0	oewn-rancour-n	Number=Plur	dema	0			rule
-rand	0	oewn-rand-n	Number=Plur	dema	0			agid
+rand	0	oewn-rand-n	Number=Plur	dema	0			rule_variant
 rand	1	oewn-rand-n	Number=Sing	dema	0			oewn_form
 randan	0		Number=Sing	dema	0	randan	n	moby_reverse
 randans	0		Number=Plur	dema	0	randan	n	rule
@@ -2597,8 +2591,8 @@ randomizes	0	oewn-randomize-v	Person=3+Tense=Pres	dema	0			rule
 randomizing	0	oewn-randomize-v	VerbForm=Ger	dema	0			rule
 randomly	0	oewn-randomly-r	Degree=Pos	dema	0			oewn_form
 randomness	0	oewn-randomness-n	Number=Sing	dema	0			oewn_form
-randomnesses	0	oewn-randomness-n	Number=Plur	dema	0			rule
-rands	0	oewn-rand-n	Number=Plur	dema	0			rule_variant
+randomnesses	0	oewn-randomness-n	Number=Plur	dema	0			llm
+rands	0	oewn-rand-n	Number=Plur	dema	0			llm
 randy	0	oewn-randy-a	Degree=Pos	dema	0			oewn_form
 randy	1		Number=Sing	dema	0	randy	n	moby_reverse
 ranee	0	oewn-ranee-n	Number=Sing	dema	0			oewn_form
@@ -2671,9 +2665,9 @@ rank-smelling	0	oewn-rank-smelling-a	Degree=Pos	dema	0			oewn_form
 ranked	0	oewn-rank-v	Tense=Past+VerbForm=Part	dema	0			rule
 ranked	1	oewn-ranked-a	Degree=Pos	dema	0			oewn_form
 ranker	0	oewn-ranker-n	Number=Sing	dema	0			oewn_form
-ranker	1	oewn-rank-a	Degree=Cmp	dema	0			rule
+ranker	1	oewn-rank-a	Degree=Cmp	dema	0			llm
 rankers	0	oewn-ranker-n	Number=Plur	dema	0			rule
-rankest	0	oewn-rank-a	Degree=Sup	dema	0			rule
+rankest	0	oewn-rank-a	Degree=Sup	dema	0			llm
 ranking	0	oewn-ranking-a	Degree=Pos	dema	0			oewn_form
 ranking	1	oewn-ranking-n	Number=Sing	dema	0			oewn_form
 ranking	2	oewn-rank-v	VerbForm=Ger	dema	0			rule
@@ -2733,6 +2727,7 @@ ranulas	0	oewn-ranula-n	Number=Plur	dema	0			rule_variant
 ranunculaceous	0		Degree=Pos	dema	0	ranunculaceous	a	moby_reverse
 ranunculus	0		Number=Sing	dema	0	ranunculus	n	moby_reverse
 ranunculuses	0		Number=Plur	dema	0	ranunculus	n	rule
+ranunculuses	1		Number=Sing	dema	0	ranunculuses	n	moby_reverse
 raob	0		Number=Sing	dema	0	raob	n	moby_reverse
 raobs	0		Number=Plur	dema	0	raob	n	rule
 rap	0	oewn-rap-v	VerbForm=Inf	dema	0			oewn_form
@@ -2835,7 +2830,7 @@ rapprochements	0	oewn-rapprochement-n	Number=Plur	dema	0			rule
 raps	0	oewn-rap-v	Person=3+Tense=Pres	dema	0			rule
 raps	1	oewn-rap-n	Number=Plur	dema	0			rule
 rapscallion	0	oewn-rapscallion-n	Number=Sing	dema	0			oewn_form
-rapscallions	0	oewn-rapscallion-n	Number=Plur	dema	0			rule
+rapscallions	0	oewn-rapscallion-n	Number=Plur	dema	0			llm
 rapt	0	oewn-rapt-a	Degree=Pos	dema	0			oewn_form
 raptor	0	oewn-raptor-n	Number=Sing	dema	0			oewn_form
 raptorial	0	oewn-raptorial-a	Degree=Pos	dema	0			oewn_form
@@ -2880,10 +2875,10 @@ rarefying	0	oewn-rarefy-v	VerbForm=Ger	dema	0			rule
 rarely	0	oewn-rarely-r	Degree=Pos	dema	0			oewn_form
 rareness	0	oewn-rareness-n	Number=Sing	dema	0			oewn_form
 rarenesses	0	oewn-rareness-n	Number=Plur	dema	0			rule
-rarer	0	oewn-rare-a	Degree=Cmp	dema	0			moby_reverse
+rarer	0	oewn-rare-a	Degree=Cmp	dema	0			llm
 rareripe	0		Degree=Pos	dema	0	rareripe	a	moby_reverse
 rareripe	1		Number=Sing	dema	0	rareripe	n	moby_reverse
-rarest	0	oewn-rare-a	Degree=Sup	dema	0			moby_reverse
+rarest	0	oewn-rare-a	Degree=Sup	dema	0			llm
 rarified	0	oewn-rarify-v	Tense=Past+VerbForm=Part	dema	0			rule
 rarified	1	oewn-rarified-a	Degree=Pos	dema	0			oewn_form
 rarifies	0	oewn-rarify-v	Person=3+Tense=Pres	dema	0			rule
@@ -2917,10 +2912,10 @@ rases	0	oewn-rase-v	Person=3+Tense=Pres	dema	0			rule
 rash	0	oewn-rash-a	Degree=Pos	dema	0			oewn_form
 rash	1	oewn-rash-n	Number=Sing	dema	0			oewn_form
 rasher	0	oewn-rasher-n	Number=Sing	dema	0			oewn_form
-rasher	1	oewn-rash-a	Degree=Cmp	dema	0			rule
+rasher	1	oewn-rash-a	Degree=Cmp	dema	0			llm
 rashers	0	oewn-rasher-n	Number=Plur	dema	0			rule
 rashes	0	oewn-rash-n	Number=Plur	dema	0			rule
-rashest	0	oewn-rash-a	Degree=Sup	dema	0			rule
+rashest	0	oewn-rash-a	Degree=Sup	dema	0			llm
 rashlike	0		Degree=Pos	dema	0	rashlike	a	moby_reverse
 rashly	0	oewn-rashly-r	Degree=Pos	dema	0			oewn_form
 rashness	0	oewn-rashness-n	Number=Sing	dema	0			oewn_form
@@ -3197,7 +3192,7 @@ rationalizing	0	oewn-rationalize-v	VerbForm=Ger	dema	0			rule
 rationalizing away	0	oewn-rationalize_away-v	VerbForm=Ger	dema	0			rule
 rationally	0	oewn-rationally-r	Degree=Pos	dema	0			oewn_form
 rationalness	0	oewn-rationalness-n	Number=Sing	dema	0			oewn_form
-rationalnesses	0	oewn-rationalness-n	Number=Plur	dema	0			rule
+rationalnesses	0	oewn-rationalness-n	Number=Plur	dema	0			llm
 rationals	0	oewn-rational-n	Number=Plur	dema	0			rule
 rationed	0	oewn-ration-v	Tense=Past+VerbForm=Part	dema	0			rule
 rationed	1	oewn-rationed-a	Degree=Pos	dema	0			oewn_form
@@ -3388,7 +3383,7 @@ ravellings	0	oewn-ravelling-n	Number=Plur	dema	0			rule
 ravelly	0		Degree=Pos	dema	0	ravelly	a	moby_reverse
 ravelment	0		Number=Sing	dema	0	ravelment	n	moby_reverse
 ravelments	0		Number=Plur	dema	0	ravelment	n	rule
-ravels	0	oewn-ravel-v	Person=3+Tense=Pres	dema	0			rule
+ravels	0	oewn-ravel-v	Person=3+Tense=Pres	dema	0			llm
 ravels	1	oewn-ravel-n	Number=Plur	dema	0			rule
 ravels out	0	oewn-ravel_out-v	Person=3+Tense=Pres	dema	0			rule
 raven	0	oewn-raven-n	Number=Sing	dema	0			oewn_form
@@ -3476,8 +3471,8 @@ raw wound	0	oewn-raw_wound-n	Number=Sing	dema	0			oewn_form
 raw wounds	0	oewn-raw_wound-n	Number=Plur	dema	0			rule
 rawboned	0	oewn-rawboned-a	Degree=Pos	dema	0			oewn_form
 rawboned	1		VerbForm=Inf	dema	0	rawboned	v	moby_reverse
-rawer	0	oewn-raw-a	Degree=Cmp	dema	0			rule
-rawest	0	oewn-raw-a	Degree=Sup	dema	0			rule
+rawer	0	oewn-raw-a	Degree=Cmp	dema	0			llm
+rawest	0	oewn-raw-a	Degree=Sup	dema	0			llm
 rawhide	0	oewn-rawhide-n	Number=Sing	dema	0			oewn_form
 rawhides	0	oewn-rawhide-n	Number=Plur	dema	0			rule
 rawin	0		Number=Sing	dema	0	rawin	n	moby_reverse
@@ -3568,7 +3563,7 @@ razorfish	0		Number=Sing	dema	0	razorfish	n	moby_reverse
 razorfishes	0		Number=Plur	dema	0	razorfish	n	rule
 razoring	0	oewn-razor-v	VerbForm=Ger	dema	0			rule
 razorless	0		Degree=Pos	dema	0	razorless	a	moby_reverse
-razors	0	oewn-razor-n	Number=Plur	dema	0			rule
+razors	0	oewn-razor-n	Number=Plur	dema	0			llm
 razors	1	oewn-razor-v	Person=3+Tense=Pres	dema	0			rule
 razz	0	oewn-razz-v	VerbForm=Inf	dema	0			oewn_form
 razz	1	oewn-razz-n	Number=Sing	dema	0			oewn_form
@@ -3655,8 +3650,8 @@ re-entering	0	oewn-re-enter-v	VerbForm=Ger	dema	0			rule
 re-enters	0	oewn-re-enter-v	Person=3+Tense=Pres	dema	0			rule
 re-entrant	0	oewn-re-entrant-a	Degree=Pos	dema	0			oewn_form
 re-equip	0	oewn-re-equip-v	VerbForm=Inf	dema	0			oewn_form
-re-equiped	0	oewn-re-equip-v	Tense=Past+VerbForm=Part	dema	0			rule
-re-equiping	0	oewn-re-equip-v	VerbForm=Ger	dema	0			rule
+re-equipped	0	oewn-re-equip-v	Tense=Past+VerbForm=Part	dema	0			rule
+re-equipping	0	oewn-re-equip-v	VerbForm=Ger	dema	0			rule
 re-equips	0	oewn-re-equip-v	Person=3+Tense=Pres	dema	0			rule
 re-establishment	0	oewn-re-establishment-n	Number=Sing	dema	0			oewn_form
 re-establishments	0	oewn-re-establishment-n	Number=Plur	dema	0			rule
@@ -4424,7 +4419,6 @@ rearbitration	0		Number=Sing	dema	0	rearbitration	n	moby_reverse
 rearbitrations	0		Number=Plur	dema	0	rearbitration	n	rule
 reared	0	oewn-rear-v	Tense=Past+VerbForm=Part	dema	1			carried
 reared back	0	oewn-rear_back-v	Tense=Past+VerbForm=Part	dema	0			rule
-rearer	0	oewn-rear-a	Degree=Cmp	dema	0			rule
 rearguard	0	oewn-rearguard-n	Number=Sing	dema	0			oewn_form
 rearguards	0	oewn-rearguard-n	Number=Plur	dema	0			rule
 reargue	0		VerbForm=Inf	dema	0	reargue	v	moby_reverse
@@ -4685,8 +4679,8 @@ reauthorizes	0		Person=3+Tense=Pres	dema	0	reauthorize	v	rule
 reauthorizing	0		VerbForm=Ger	dema	0	reauthorize	v	rule
 reave	0	oewn-reave-v	VerbForm=Inf	dema	0			oewn_form
 reaved	0	oewn-reave-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
-reaves	0	oewn-reave-v	Person=3+Tense=Pres	dema	0			rule
-reaving	0	oewn-reave-v	VerbForm=Ger	dema	0			rule
+reaves	0	oewn-reave-v	Person=3+Tense=Pres	dema	0			llm
+reaving	0	oewn-reave-v	VerbForm=Ger	dema	0			llm
 reavow	0		VerbForm=Inf	dema	0	reavow	v	moby_reverse
 reavowal	0		Number=Sing	dema	0	reavowal	n	moby_reverse
 reavowals	0		Number=Plur	dema	0	reavowal	n	rule
@@ -4801,8 +4795,8 @@ rebilled	0		Tense=Past+VerbForm=Part	dema	0	rebill	v	rule
 rebilling	0		VerbForm=Ger	dema	0	rebill	v	rule
 rebills	0		Person=3+Tense=Pres	dema	0	rebill	v	rule
 rebind	0	oewn-rebind-v	VerbForm=Inf	dema	0			oewn_form
-rebinding	0	oewn-rebind-v	VerbForm=Ger	dema	0			rule
-rebinds	0	oewn-rebind-v	Person=3+Tense=Pres	dema	0			rule
+rebinding	0	oewn-rebind-v	VerbForm=Ger	dema	0			llm
+rebinds	0	oewn-rebind-v	Person=3+Tense=Pres	dema	0			llm
 rebirth	0	oewn-rebirth-n	Number=Sing	dema	0			oewn_form
 rebirths	0	oewn-rebirth-n	Number=Plur	dema	0			rule
 rebleach	0		VerbForm=Inf	dema	0	rebleach	v	moby_reverse
@@ -4901,11 +4895,11 @@ rebrightening	0		VerbForm=Ger	dema	0	rebrighten	v	rule
 rebrightens	0		Person=3+Tense=Pres	dema	0	rebrighten	v	rule
 rebroadcast	0	oewn-rebroadcast-n	Number=Sing	dema	0			oewn_form
 rebroadcast	1	oewn-rebroadcast-v	VerbForm=Inf	dema	0			oewn_form
-rebroadcast	2	oewn-rebroadcast-v	Tense=Past+VerbForm=Part	dema	0			agid
+rebroadcast	2	oewn-rebroadcast-v	Tense=Past+VerbForm=Part	dema	0			llm
 rebroadcasted	0	oewn-rebroadcast-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
-rebroadcasting	0	oewn-rebroadcast-v	VerbForm=Ger	dema	0			rule
+rebroadcasting	0	oewn-rebroadcast-v	VerbForm=Ger	dema	0			llm
 rebroadcasts	0	oewn-rebroadcast-n	Number=Plur	dema	0			rule
-rebroadcasts	1	oewn-rebroadcast-v	Person=3+Tense=Pres	dema	0			rule
+rebroadcasts	1	oewn-rebroadcast-v	Person=3+Tense=Pres	dema	0			llm
 rebroaden	0		VerbForm=Inf	dema	0	rebroaden	v	moby_reverse
 rebroadened	0		Tense=Past+VerbForm=Part	dema	0	rebroaden	v	rule
 rebroadening	0		VerbForm=Ger	dema	0	rebroaden	v	rule
@@ -4934,10 +4928,10 @@ rebuffs	1	oewn-rebuff-n	Number=Plur	dema	0			rule
 rebuild	0	oewn-rebuild-v	VerbForm=Inf	dema	0			oewn_form
 rebuilder	0		Number=Sing	dema	0	rebuilder	n	moby_reverse
 rebuilders	0		Number=Plur	dema	0	rebuilder	n	rule
-rebuilding	0	oewn-rebuild-v	VerbForm=Ger	dema	0			rule
+rebuilding	0	oewn-rebuild-v	VerbForm=Ger	dema	0			llm
 rebuilding	1	oewn-rebuilding-n	Number=Sing	dema	0			oewn_form
 rebuildings	0	oewn-rebuilding-n	Number=Plur	dema	0			rule
-rebuilds	0	oewn-rebuild-v	Person=3+Tense=Pres	dema	0			rule
+rebuilds	0	oewn-rebuild-v	Person=3+Tense=Pres	dema	0			llm
 rebuilt	0	oewn-rebuild-v	Tense=Past+VerbForm=Part	dema	0			hand
 rebuke	0	oewn-rebuke-v	VerbForm=Inf	dema	0			oewn_form
 rebuke	1	oewn-rebuke-n	Number=Sing	dema	0			oewn_form
@@ -4957,7 +4951,7 @@ reburying	0	oewn-rebury-v	VerbForm=Ger	dema	0			rule
 reburying	1	oewn-reburying-n	Number=Sing	dema	0			oewn_form
 reburyings	0	oewn-reburying-n	Number=Plur	dema	0			rule
 rebus	0	oewn-rebus-n	Number=Sing	dema	0			oewn_form
-rebuses	0	oewn-rebus-n	Number=Plur	dema	0			rule
+rebuses	0	oewn-rebus-n	Number=Plur	dema	0			llm
 rebut	0	oewn-rebut-v	VerbForm=Inf	dema	0			oewn_form
 rebuts	0	oewn-rebut-v	Person=3+Tense=Pres	dema	0			rule
 rebuttable	0		Degree=Pos	dema	0	rebuttable	a	moby_reverse
@@ -5092,10 +5086,10 @@ recast	1	oewn-recast-v	Tense=Past+VerbForm=Part	dema	0			hand
 recast	2		Number=Sing	dema	0	recast	n	moby_reverse
 recaster	0		Number=Sing	dema	0	recaster	n	moby_reverse
 recasters	0		Number=Plur	dema	0	recaster	n	rule
-recasting	0	oewn-recast-v	VerbForm=Ger	dema	0			rule
+recasting	0	oewn-recast-v	VerbForm=Ger	dema	0			llm
 recasting	1	oewn-recasting-n	Number=Sing	dema	0			oewn_form
 recastings	0	oewn-recasting-n	Number=Plur	dema	0			rule
-recasts	0	oewn-recast-v	Person=3+Tense=Pres	dema	0			rule
+recasts	0	oewn-recast-v	Person=3+Tense=Pres	dema	0			llm
 recatalog	0		VerbForm=Inf	dema	0	recatalog	v	moby_reverse
 recataloged	0		Tense=Past+VerbForm=Part	dema	0	recatalog	v	rule
 recataloging	0		VerbForm=Ger	dema	0	recatalog	v	rule
@@ -6413,13 +6407,13 @@ red line	0	oewn-red_line-n	Number=Sing	dema	0			oewn_form
 red lines	0	oewn-red_line-n	Number=Plur	dema	0			rule
 red maids	0	oewn-red_maids-n	Number=Sing	dema	0			oewn_form
 red man	0	oewn-red_man-n	Number=Sing	dema	0			oewn_form
-red mans	0	oewn-red_man-n	Number=Plur	dema	0			rule
 red maple	0	oewn-red_maple-n	Number=Sing	dema	0			oewn_form
 red maples	0	oewn-red_maple-n	Number=Plur	dema	0			rule
 red marrow	0	oewn-red_marrow-n	Number=Sing	dema	0			oewn_form
 red marrows	0	oewn-red_marrow-n	Number=Plur	dema	0			rule
 red meat	0	oewn-red_meat-n	Number=Sing	dema	0			oewn_form
 red meats	0	oewn-red_meat-n	Number=Plur	dema	0			rule
+red men	0	oewn-red_man-n	Number=Plur	dema	0			rule
 red morning-glories	0	oewn-red_morning-glory-n	Number=Plur	dema	0			rule
 red morning-glory	0	oewn-red_morning-glory-n	Number=Sing	dema	0			oewn_form
 red mulberries	0	oewn-red_mulberry-n	Number=Plur	dema	0			rule
@@ -6514,7 +6508,7 @@ red wines	0	oewn-red_wine-n	Number=Plur	dema	0			rule
 red wolf	0	oewn-red_wolf-n	Number=Sing	dema	0			oewn_form
 red wolves	0	oewn-red_wolf-n	Number=Plur	dema	0			rule
 red woman	0	oewn-red_woman-n	Number=Sing	dema	0			oewn_form
-red womans	0	oewn-red_woman-n	Number=Plur	dema	0			rule
+red women	0	oewn-red_woman-n	Number=Plur	dema	0			rule
 red worm	0	oewn-red_worm-n	Number=Sing	dema	0			oewn_form
 red worms	0	oewn-red_worm-n	Number=Plur	dema	0			rule
 red-backed lemming	0	oewn-red-backed_lemming-n	Number=Sing	dema	0			oewn_form
@@ -6706,9 +6700,8 @@ reddishnesses	0	oewn-reddishness-n	Number=Plur	dema	0			rule
 reddle	0	oewn-reddle-n	Number=Sing	dema	0			oewn_form
 reddle	1		VerbForm=Inf	dema	0	reddle	v	moby_reverse
 reddleman	0		Number=Sing	dema	0	reddleman	n	moby_reverse
-reddlemans	0		Number=Plur	dema	0	reddleman	n	rule
-reddlemen	0		Number=Sing	dema	0	reddlemen	n	moby_reverse
-reddlemens	0		Number=Plur	dema	0	reddlemen	n	rule
+reddlemen	0		Number=Plur	dema	0	reddleman	n	rule
+reddlemen	1		Number=Sing	dema	0	reddlemen	n	moby_reverse
 reddles	0	oewn-reddle-n	Number=Plur	dema	0			rule
 redds	0		Person=3+Tense=Pres	dema	0	redd	v	rule
 rede	0		Number=Sing	dema	0	rede	n	moby_reverse
@@ -6849,11 +6842,11 @@ redeployments	0	oewn-redeployment-n	Number=Plur	dema	0			rule
 redeploys	0	oewn-redeploy-v	Person=3+Tense=Pres	dema	0			rule
 redeposit	0	oewn-redeposit-v	VerbForm=Inf	dema	0			oewn_form
 redeposit	1		Number=Sing	dema	0	redeposit	n	moby_reverse
-redeposited	0	oewn-redeposit-v	Tense=Past+VerbForm=Part	dema	0			rule
-redepositing	0	oewn-redeposit-v	VerbForm=Ger	dema	0			rule
+redeposited	0	oewn-redeposit-v	Tense=Past+VerbForm=Part	dema	0			llm
+redepositing	0	oewn-redeposit-v	VerbForm=Ger	dema	0			llm
 redeposition	0	oewn-redeposition-n	Number=Sing	dema	0			oewn_form
 redepositions	0	oewn-redeposition-n	Number=Plur	dema	0			rule
-redeposits	0	oewn-redeposit-v	Person=3+Tense=Pres	dema	0			rule
+redeposits	0	oewn-redeposit-v	Person=3+Tense=Pres	dema	0			llm
 redepreciate	0		VerbForm=Inf	dema	0	redepreciate	v	moby_reverse
 redepreciated	0		Tense=Past+VerbForm=Part	dema	0	redepreciate	v	rule
 redepreciates	0		Person=3+Tense=Pres	dema	0	redepreciate	v	rule
@@ -6932,8 +6925,8 @@ redhorses	0	oewn-redhorse-n	Number=Plur	dema	0			rule
 redia	0		Number=Sing	dema	0	redia	n	moby_reverse
 redial	0	dema-redial-n	Number=Sing	dema	1			carried
 redial	1	dema-redial-v	VerbForm=Inf	dema	1			carried
-redialed	0	dema-redial-v	Tense=Past+VerbForm=Part	dema	0			rule
-redialing	0	dema-redial-v	VerbForm=Ger	dema	0			rule
+redialed	0	dema-redial-v	Tense=Past+VerbForm=Part	dema	0			llm
+redialing	0	dema-redial-v	VerbForm=Ger	dema	0			llm
 redialled	0	dema-redial-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 redialling	0	dema-redial-v	VerbForm=Ger	dema	0			rule_variant
 redials	0	dema-redial-n	Number=Plur	dema	1			carried
@@ -7336,12 +7329,12 @@ redwings	0	oewn-redwing-n	Number=Plur	dema	0			rule
 redwood	0	oewn-redwood-n	Number=Sing	dema	0			oewn_form
 redwood penstemon	0	oewn-redwood_penstemon-n	Number=Sing	dema	0			oewn_form
 redwood penstemons	0	oewn-redwood_penstemon-n	Number=Plur	dema	0			rule
-redwoods	0	oewn-redwood-n	Number=Plur	dema	0			rule
+redwoods	0	oewn-redwood-n	Number=Plur	dema	0			llm
 redye	0		VerbForm=Inf	dema	0	redye	v	moby_reverse
 redyed	0		Tense=Past+VerbForm=Part	dema	0	redye	v	rule
 redyeing	0		VerbForm=Ger	dema	0	redye	v	rule
 redyes	0		Person=3+Tense=Pres	dema	0	redye	v	rule
-redying	0		VerbForm=Ger	dema	0	redye	v	moby_reverse
+redying	0		VerbForm=Inf	dema	0	redying	v	moby_reverse
 reearn	0		VerbForm=Inf	dema	0	reearn	v	moby_reverse
 reearned	0		Tense=Past+VerbForm=Part	dema	0	reearn	v	rule
 reearning	0		VerbForm=Ger	dema	0	reearn	v	rule
@@ -7425,8 +7418,8 @@ reefer	0	oewn-reefer-n	Number=Sing	dema	0			oewn_form
 reefers	0	oewn-reefer-n	Number=Plur	dema	0			rule
 reeffish	0		Number=Sing	dema	0	reeffish	n	moby_reverse
 reeffishes	0		Number=Plur	dema	0	reeffish	n	rule
-reefier	0	oewn-reefy-a	Degree=Cmp	dema	0			rule
-reefiest	0	oewn-reefy-a	Degree=Sup	dema	0			rule
+reefier	0	oewn-reefy-a	Degree=Cmp	dema	0			llm
+reefiest	0	oewn-reefy-a	Degree=Sup	dema	0			llm
 reefing	0	oewn-reef-v	VerbForm=Ger	dema	0			rule
 reefing line	0	oewn-reefing_line-n	Number=Sing	dema	0			oewn_form
 reefing lines	0	oewn-reefing_line-n	Number=Plur	dema	0			rule
@@ -7661,10 +7654,8 @@ reenunciating	0		VerbForm=Ger	dema	0	reenunciate	v	rule
 reenunciation	0		Number=Sing	dema	0	reenunciation	n	moby_reverse
 reenunciations	0		Number=Plur	dema	0	reenunciation	n	rule
 reequip	0		VerbForm=Inf	dema	0	reequip	v	moby_reverse
-reequiped	0		Tense=Past+VerbForm=Part	dema	0	reequip	v	rule
-reequiping	0		VerbForm=Ger	dema	0	reequip	v	rule
-reequipped	0		Tense=Past+VerbForm=Part	dema	0	reequip	v	moby_reverse
-reequipping	0		VerbForm=Ger	dema	0	reequip	v	moby_reverse
+reequipped	0		Tense=Past+VerbForm=Part	dema	0	reequip	v	rule
+reequipping	0		VerbForm=Ger	dema	0	reequip	v	rule
 reequips	0		Person=3+Tense=Pres	dema	0	reequip	v	rule
 reerect	0		VerbForm=Inf	dema	0	reerect	v	moby_reverse
 reerected	0		Tense=Past+VerbForm=Part	dema	0	reerect	v	rule
@@ -7713,12 +7704,12 @@ reeve	0	oewn-reeve-n	Number=Sing	dema	0			oewn_form
 reeve	1	oewn-reeve-v	VerbForm=Inf	dema	0			oewn_form
 reeved	0	oewn-reeve-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 reeves	0	oewn-reeve-n	Number=Plur	dema	0			rule
-reeves	1	oewn-reeve-v	Person=3+Tense=Pres	dema	0			rule
+reeves	1	oewn-reeve-v	Person=3+Tense=Pres	dema	0			llm
 reevidence	0		VerbForm=Inf	dema	0	reevidence	v	moby_reverse
 reevidenced	0		Tense=Past+VerbForm=Part	dema	0	reevidence	v	rule
 reevidences	0		Person=3+Tense=Pres	dema	0	reevidence	v	rule
 reevidencing	0		VerbForm=Ger	dema	0	reevidence	v	rule
-reeving	0	oewn-reeve-v	VerbForm=Ger	dema	0			rule
+reeving	0	oewn-reeve-v	VerbForm=Ger	dema	0			llm
 reexamination	0	oewn-reexamination-n	Number=Sing	dema	0			oewn_form
 reexaminations	0	oewn-reexamination-n	Number=Plur	dema	0			rule
 reexamine	0	oewn-reexamine-v	VerbForm=Inf	dema	0			oewn_form
@@ -8072,7 +8063,7 @@ reflexive verbs	0	oewn-reflexive_verb-n	Number=Plur	dema	0			rule
 reflexively	0	oewn-reflexively-r	Degree=Pos	dema	0			oewn_form
 reflexiveness	0	oewn-reflexiveness-n	Number=Sing	dema	0			oewn_form
 reflexivenesses	0	oewn-reflexiveness-n	Number=Plur	dema	0			rule
-reflexives	0	oewn-reflexive-n	Number=Plur	dema	0			rule
+reflexives	0	oewn-reflexive-n	Number=Plur	dema	0			llm
 reflexivities	0	oewn-reflexivity-n	Number=Plur	dema	0			rule
 reflexivity	0	oewn-reflexivity-n	Number=Sing	dema	0			oewn_form
 reflexly	0	oewn-reflexly-r	Degree=Pos	dema	0			oewn_form
@@ -8104,13 +8095,12 @@ refluxes	0		Person=3+Tense=Pres	dema	0	reflux	v	rule
 refluxes	1	oewn-reflux-n	Number=Plur	dema	0			rule
 refluxing	0		VerbForm=Ger	dema	0	reflux	v	rule
 refocus	0	oewn-refocus-v	VerbForm=Inf	dema	0			oewn_form
-refocused	0	oewn-refocus-v	Tense=Past+VerbForm=Part	dema	0			rule
-refocuses	0	oewn-refocus-v	Person=3+Tense=Pres	dema	0			rule_variant
-refocusing	0	oewn-refocus-v	VerbForm=Ger	dema	0			rule
+refocused	0	oewn-refocus-v	Tense=Past+VerbForm=Part	dema	0			llm
+refocuses	0	oewn-refocus-v	Person=3+Tense=Pres	dema	0			llm
+refocusing	0	oewn-refocus-v	VerbForm=Ger	dema	0			llm
 refocusing	1	oewn-refocusing-n	Number=Sing	dema	0			oewn_form
 refocusings	0	oewn-refocusing-n	Number=Plur	dema	0			rule
 refocussed	0	oewn-refocus-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
-refocusses	0	oewn-refocus-v	Person=3+Tense=Pres	dema	0			rule_variant
 refocussing	0	oewn-refocus-v	VerbForm=Ger	dema	0			rule_variant
 refold	0		VerbForm=Inf	dema	0	refold	v	moby_reverse
 refolded	0		Tense=Past+VerbForm=Part	dema	0	refold	v	rule
@@ -8796,9 +8786,9 @@ regrouped	0	oewn-regroup-v	Tense=Past+VerbForm=Part	dema	0			rule
 regrouping	0	oewn-regroup-v	VerbForm=Ger	dema	0			rule
 regroups	0	oewn-regroup-v	Person=3+Tense=Pres	dema	0			rule
 regrow	0	oewn-regrow-v	VerbForm=Inf	dema	0			oewn_form
-regrowing	0	oewn-regrow-v	VerbForm=Ger	dema	0			rule
+regrowing	0	oewn-regrow-v	VerbForm=Ger	dema	0			llm
 regrown	0	oewn-regrow-v	VerbForm=Part	dema	0			hand
-regrows	0	oewn-regrow-v	Person=3+Tense=Pres	dema	0			rule
+regrows	0	oewn-regrow-v	Person=3+Tense=Pres	dema	0			llm
 regrowth	0		Number=Sing	dema	0	regrowth	n	moby_reverse
 regrowths	0		Number=Plur	dema	0	regrowth	n	rule
 regrs	0		Number=Plur	dema	0	regr	n	rule
@@ -8851,9 +8841,9 @@ regular tetrahedrons	0	oewn-regular_tetrahedron-n	Number=Plur	dema	0			rule
 regularisation	0	oewn-regularisation-n	Number=Sing	dema	0			oewn_form
 regularisations	0	oewn-regularisation-n	Number=Plur	dema	0			rule
 regularise	0	oewn-regularise-v	VerbForm=Inf	dema	0			oewn_form
-regularised	0	oewn-regularise-v	Tense=Past+VerbForm=Part	dema	0			rule
-regularises	0	oewn-regularise-v	Person=3+Tense=Pres	dema	0			rule
-regularising	0	oewn-regularise-v	VerbForm=Ger	dema	0			rule
+regularised	0	oewn-regularise-v	Tense=Past+VerbForm=Part	dema	0			llm
+regularises	0	oewn-regularise-v	Person=3+Tense=Pres	dema	0			llm
+regularising	0	oewn-regularise-v	VerbForm=Ger	dema	0			llm
 regularities	0	oewn-regularity-n	Number=Plur	dema	0			rule
 regularity	0	oewn-regularity-n	Number=Sing	dema	0			oewn_form
 regularization	0	oewn-regularization-n	Number=Sing	dema	0			oewn_form
@@ -8901,6 +8891,7 @@ reguline	0		Degree=Pos	dema	0	reguline	a	moby_reverse
 regulis	0		Number=Plur	dema	0	reguli	n	rule
 regulus	0		Number=Sing	dema	0	regulus	n	moby_reverse
 reguluses	0		Number=Plur	dema	0	regulus	n	rule
+reguluses	1		Number=Sing	dema	0	reguluses	n	moby_reverse
 regur	0	oewn-regur-n	Number=Sing	dema	0			oewn_form
 regur soil	0	oewn-regur_soil-n	Number=Sing	dema	0			oewn_form
 regur soils	0	oewn-regur_soil-n	Number=Plur	dema	0			rule
@@ -8931,8 +8922,8 @@ rehandles	0		Person=3+Tense=Pres	dema	0	rehandle	v	rule
 rehandling	0		VerbForm=Ger	dema	0	rehandle	v	rule
 rehang	0	dema-rehang-n	Number=Sing	dema	1			carried
 rehang	1	dema-rehang-v	VerbForm=Inf	dema	1			carried
-rehanged	0	dema-rehang-v	Tense=Past+VerbForm=Part	dema	0			irregular_list
-rehanging	0	dema-rehang-v	VerbForm=Ger	dema	0			rule
+rehanged	0		VerbForm=Inf	dema	0	rehanged	v	moby_reverse
+rehanging	0	dema-rehang-v	VerbForm=Ger	dema	0			llm
 rehangs	0	dema-rehang-n	Number=Plur	dema	1			carried
 rehangs	1	dema-rehang-v	Person=3+Tense=Pres	dema	1			carried
 reharden	0		VerbForm=Inf	dema	0	reharden	v	moby_reverse
@@ -8972,9 +8963,9 @@ rehauls	0		Person=3+Tense=Pres	dema	0	rehaul	v	rule
 rehear	0	oewn-rehear-v	VerbForm=Inf	dema	0			oewn_form
 reheard	0	oewn-rehear-v	Tense=Past+VerbForm=Part	dema	0			hand
 rehearing	0	oewn-rehearing-n	Number=Sing	dema	0			oewn_form
-rehearing	1	oewn-rehear-v	VerbForm=Ger	dema	0			rule
+rehearing	1	oewn-rehear-v	VerbForm=Ger	dema	0			llm
 rehearings	0	oewn-rehearing-n	Number=Plur	dema	0			rule
-rehears	0	oewn-rehear-v	Person=3+Tense=Pres	dema	0			rule
+rehears	0	oewn-rehear-v	Person=3+Tense=Pres	dema	0			llm
 rehearsable	0		Degree=Pos	dema	0	rehearsable	a	moby_reverse
 rehearsal	0	oewn-rehearsal-n	Number=Sing	dema	0			oewn_form
 rehearsals	0	oewn-rehearsal-n	Number=Plur	dema	0			rule
@@ -8986,10 +8977,10 @@ rehearses	0	oewn-rehearse-v	Person=3+Tense=Pres	dema	0			rule
 rehearsing	0	oewn-rehearse-v	VerbForm=Ger	dema	0			rule
 reheat	0	dema-reheat-n	Number=Sing	dema	1			carried
 reheat	1	oewn-reheat-v	VerbForm=Inf	dema	1			carried
-reheated	0	oewn-reheat-v	Tense=Past+VerbForm=Part	dema	0			rule
+reheated	0	oewn-reheat-v	Tense=Past+VerbForm=Part	dema	0			llm
 reheater	0		Number=Sing	dema	0	reheater	n	moby_reverse
 reheaters	0		Number=Plur	dema	0	reheater	n	rule
-reheating	0	oewn-reheat-v	VerbForm=Ger	dema	0			rule
+reheating	0	oewn-reheat-v	VerbForm=Ger	dema	0			llm
 reheating	1		Number=Sing	dema	0	reheating	n	moby_reverse
 reheatings	0		Number=Plur	dema	0	reheating	n	rule
 reheats	0	dema-reheat-n	Number=Plur	dema	1			carried
@@ -9219,13 +9210,12 @@ reincur	0		VerbForm=Inf	dema	0	reincur	v	moby_reverse
 reincurred	0		Tense=Past+VerbForm=Part	dema	0	reincur	v	rule
 reincurring	0		VerbForm=Ger	dema	0	reincur	v	rule
 reincurs	0		Person=3+Tense=Pres	dema	0	reincur	v	rule
-reindeer	0	oewn-reindeer-n	Number=Plur	dema	0			agid
-reindeer	1	oewn-reindeer-n	Number=Sing	dema	0			oewn_form
+reindeer	0	oewn-reindeer-n	Number=Sing	dema	0			oewn_form
 reindeer lichen	0	oewn-reindeer_lichen-n	Number=Sing	dema	0			oewn_form
 reindeer lichens	0	oewn-reindeer_lichen-n	Number=Plur	dema	0			rule
 reindeer moss	0	oewn-reindeer_moss-n	Number=Sing	dema	0			oewn_form
 reindeer mosses	0	oewn-reindeer_moss-n	Number=Plur	dema	0			rule
-reindeers	0	oewn-reindeer-n	Number=Plur	dema	0			rule_variant
+reindeers	0	oewn-reindeer-n	Number=Plur	dema	0			rule
 reindex	0		VerbForm=Inf	dema	0	reindex	v	moby_reverse
 reindexed	0		Tense=Past+VerbForm=Part	dema	0	reindex	v	rule
 reindexes	0		Person=3+Tense=Pres	dema	0	reindex	v	rule
@@ -9878,7 +9868,7 @@ relay stations	0	oewn-relay_station-n	Number=Plur	dema	0			rule
 relay transmitter	0	oewn-relay_transmitter-n	Number=Sing	dema	0			oewn_form
 relay transmitters	0	oewn-relay_transmitter-n	Number=Plur	dema	0			rule
 relayed	0	oewn-relay-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
-relaying	0	oewn-relay-v	VerbForm=Ger	dema	0			rule
+relaying	0	oewn-relay-v	VerbForm=Ger	dema	0			llm
 relays	0	oewn-relay-n	Number=Plur	dema	1			carried
 relays	1	oewn-relay-v	Person=3+Tense=Pres	dema	1			carried
 relead	0		VerbForm=Inf	dema	0	relead	v	moby_reverse
@@ -9886,20 +9876,21 @@ releading	0		VerbForm=Ger	dema	0	relead	v	rule
 releads	0		Person=3+Tense=Pres	dema	0	relead	v	rule
 relearn	0	oewn-relearn-v	VerbForm=Inf	dema	0			oewn_form
 relearned	0	oewn-relearn-v	Tense=Past+VerbForm=Part	dema	0			irregular_list
-relearning	0	oewn-relearn-v	VerbForm=Ger	dema	0			rule
-relearns	0	oewn-relearn-v	Person=3+Tense=Pres	dema	0			rule
+relearning	0	oewn-relearn-v	VerbForm=Ger	dema	0			llm
+relearns	0	oewn-relearn-v	Person=3+Tense=Pres	dema	0			llm
+relearnt	0	oewn-relearn-v	Tense=Past+VerbForm=Part	dema	0			hand
 releasabilities	0		Number=Plur	dema	0	releasability	n	rule
 releasability	0		Number=Sing	dema	0	releasability	n	moby_reverse
 releasable	0		Degree=Pos	dema	0	releasable	a	moby_reverse
 release	0	oewn-release-v	VerbForm=Inf	dema	0			oewn_form
 release	1	oewn-release-n	Number=Sing	dema	0			oewn_form
-released	0	oewn-release-v	Tense=Past+VerbForm=Part	dema	0			rule
+released	0	oewn-release-v	Tense=Past+VerbForm=Part	dema	0			llm
 releaser	0		Number=Sing	dema	0	releaser	n	moby_reverse
 releasers	0		Number=Plur	dema	0	releaser	n	rule
-releases	0	oewn-release-v	Person=3+Tense=Pres	dema	0			rule
+releases	0	oewn-release-v	Person=3+Tense=Pres	dema	0			llm
 releases	1	oewn-release-n	Number=Plur	dema	0			rule
 releasible	0		Degree=Pos	dema	0	releasible	a	moby_reverse
-releasing	0	oewn-release-v	VerbForm=Ger	dema	0			rule
+releasing	0	oewn-release-v	VerbForm=Ger	dema	0			llm
 releasing	1	oewn-releasing-a	Degree=Pos	dema	0			oewn_form
 releasing factor	0	oewn-releasing_factor-n	Number=Sing	dema	0			oewn_form
 releasing factors	0	oewn-releasing_factor-n	Number=Plur	dema	0			rule
@@ -9935,7 +9926,7 @@ reletter	0		VerbForm=Inf	dema	0	reletter	v	moby_reverse
 relettered	0		Tense=Past+VerbForm=Part	dema	0	reletter	v	rule
 relettering	0		VerbForm=Ger	dema	0	reletter	v	rule
 reletters	0		Person=3+Tense=Pres	dema	0	reletter	v	rule
-reletting	0	dema-relet-v	VerbForm=Ger	dema	0			rule
+reletting	0	dema-relet-v	VerbForm=Ger	dema	0			llm
 relevance	0	oewn-relevance-n	Number=Sing	dema	0			oewn_form
 relevances	0	oewn-relevance-n	Number=Plur	dema	0			rule
 relevancies	0	oewn-relevancy-n	Number=Plur	dema	0			rule
@@ -9958,7 +9949,7 @@ reliabilities	0	oewn-reliability-n	Number=Plur	dema	0			rule
 reliability	0	oewn-reliability-n	Number=Sing	dema	0			oewn_form
 reliable	0	oewn-reliable-a	Degree=Pos	dema	0			oewn_form
 reliableness	0	oewn-reliableness-n	Number=Sing	dema	0			oewn_form
-reliablenesses	0	oewn-reliableness-n	Number=Plur	dema	0			rule
+reliablenesses	0	oewn-reliableness-n	Number=Plur	dema	0			llm
 reliably	0	oewn-reliably-r	Degree=Pos	dema	0			oewn_form
 reliance	0	oewn-reliance-n	Number=Sing	dema	0			oewn_form
 reliances	0	oewn-reliance-n	Number=Plur	dema	0			rule
@@ -10032,7 +10023,7 @@ religiose	0		Degree=Pos	dema	0	religiose	a	moby_reverse
 religiosities	0	oewn-religiosity-n	Number=Plur	dema	0			rule
 religiosity	0	oewn-religiosity-n	Number=Sing	dema	0			oewn_form
 religious	0	oewn-religious-a	Degree=Pos	dema	0			oewn_form
-religious	1	oewn-religious-n	Number=Plur	dema	0			agid
+religious	1	oewn-religious-n	Number=Plur	dema	0			llm
 religious	2	oewn-religious-n	Number=Sing	dema	0			oewn_form
 religious belief	0	oewn-religious_belief-n	Number=Sing	dema	0			oewn_form
 religious beliefs	0	oewn-religious_belief-n	Number=Plur	dema	0			rule
@@ -10251,7 +10242,7 @@ remainder	1	oewn-remainder-v	VerbForm=Inf	dema	0			oewn_form
 remaindered	0	oewn-remainder-v	Tense=Past+VerbForm=Part	dema	0			rule
 remaindering	0	oewn-remainder-v	VerbForm=Ger	dema	0			rule
 remainderman	0		Number=Sing	dema	0	remainderman	n	moby_reverse
-remaindermans	0		Number=Plur	dema	0	remainderman	n	rule
+remaindermen	0		Number=Plur	dema	0	remainderman	n	rule
 remainders	0	oewn-remainder-n	Number=Plur	dema	0			rule
 remainders	1	oewn-remainder-v	Person=3+Tense=Pres	dema	0			rule
 remained	0	oewn-remain-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -10271,7 +10262,7 @@ remaker	0		Number=Sing	dema	0	remaker	n	moby_reverse
 remakers	0		Number=Plur	dema	0	remaker	n	rule
 remakes	0	oewn-remake-n	Number=Plur	dema	1			carried
 remakes	1	oewn-remake-v	Person=3+Tense=Pres	dema	1			carried
-remaking	0	oewn-remake-v	VerbForm=Ger	dema	0			rule
+remaking	0	oewn-remake-v	VerbForm=Ger	dema	0			llm
 remaking	1	oewn-remaking-n	Number=Sing	dema	0			oewn_form
 remakings	0	oewn-remaking-n	Number=Plur	dema	0			rule
 reman	0		VerbForm=Inf	dema	0	reman	v	moby_reverse
@@ -10373,7 +10364,7 @@ remediations	0	oewn-remediation-n	Number=Plur	dema	0			rule
 remedied	0		Number=Sing	dema	0	remedied	n	moby_reverse
 remedied	1	oewn-remedy-v	Tense=Past+VerbForm=Part	dema	0			rule
 remedieds	0		Number=Plur	dema	0	remedied	n	rule
-remedies	0	oewn-remedy-n	Number=Plur	dema	0			rule
+remedies	0	oewn-remedy-n	Number=Plur	dema	0			llm
 remedies	1	oewn-remedy-v	Person=3+Tense=Pres	dema	0			rule
 remediless	0		Degree=Pos	dema	0	remediless	a	moby_reverse
 remedy	0	oewn-remedy-n	Number=Sing	dema	0			oewn_form
@@ -10433,27 +10424,30 @@ remigrations	0		Number=Plur	dema	0	remigration	n	rule
 remilitarisation	0	oewn-remilitarisation-n	Number=Sing	dema	0			oewn_form
 remilitarisations	0	oewn-remilitarisation-n	Number=Plur	dema	0			rule
 remilitarise	0	oewn-remilitarise-v	VerbForm=Inf	dema	0			oewn_form
-remilitarised	0	oewn-remilitarise-v	Tense=Past+VerbForm=Part	dema	0			rule
-remilitarises	0	oewn-remilitarise-v	Person=3+Tense=Pres	dema	0			rule
-remilitarising	0	oewn-remilitarise-v	VerbForm=Ger	dema	0			rule
+remilitarised	0	oewn-remilitarise-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+remilitarises	0	oewn-remilitarise-v	Person=3+Tense=Pres	dema	0			rule_variant
+remilitarising	0	oewn-remilitarise-v	VerbForm=Ger	dema	0			rule_variant
 remilitarization	0	oewn-remilitarization-n	Number=Sing	dema	0			oewn_form
 remilitarizations	0	oewn-remilitarization-n	Number=Plur	dema	0			rule
 remilitarize	0	oewn-remilitarize-v	VerbForm=Inf	dema	0			oewn_form
 remilitarized	0	oewn-remilitarize-v	Tense=Past+VerbForm=Part	dema	0			rule
+remilitarized	1	oewn-remilitarise-v	Tense=Past+VerbForm=Part	dema	0			llm
 remilitarizes	0	oewn-remilitarize-v	Person=3+Tense=Pres	dema	0			rule
+remilitarizes	1	oewn-remilitarise-v	Person=3+Tense=Pres	dema	0			llm
 remilitarizing	0	oewn-remilitarize-v	VerbForm=Ger	dema	0			rule
+remilitarizing	1	oewn-remilitarise-v	VerbForm=Ger	dema	0			llm
 remill	0		VerbForm=Inf	dema	0	remill	v	moby_reverse
 remillable	0		Degree=Pos	dema	0	remillable	a	moby_reverse
 remilled	0		Tense=Past+VerbForm=Part	dema	0	remill	v	rule
 remilling	0		VerbForm=Ger	dema	0	remill	v	rule
 remills	0		Person=3+Tense=Pres	dema	0	remill	v	rule
 remind	0	oewn-remind-v	VerbForm=Inf	dema	0			oewn_form
-reminded	0	oewn-remind-v	Tense=Past+VerbForm=Part	dema	0			rule
+reminded	0	oewn-remind-v	Tense=Past+VerbForm=Part	dema	0			llm
 reminder	0	oewn-reminder-n	Number=Sing	dema	0			oewn_form
 reminders	0	oewn-reminder-n	Number=Plur	dema	0			rule
 remindful	0	oewn-remindful-a	Degree=Pos	dema	0			oewn_form
-reminding	0	oewn-remind-v	VerbForm=Ger	dema	0			rule
-reminds	0	oewn-remind-v	Person=3+Tense=Pres	dema	0			rule
+reminding	0	oewn-remind-v	VerbForm=Ger	dema	0			llm
+reminds	0	oewn-remind-v	Person=3+Tense=Pres	dema	0			llm
 remingle	0		VerbForm=Inf	dema	0	remingle	v	moby_reverse
 remingled	0		Tense=Past+VerbForm=Part	dema	0	remingle	v	rule
 remingles	0		Person=3+Tense=Pres	dema	0	remingle	v	rule
@@ -10503,11 +10497,11 @@ remittal	0	oewn-remittal-n	Number=Sing	dema	0			oewn_form
 remittals	0	oewn-remittal-n	Number=Plur	dema	0			rule
 remittance	0	oewn-remittance-n	Number=Sing	dema	0			oewn_form
 remittance man	0	oewn-remittance_man-n	Number=Sing	dema	0			oewn_form
-remittance mans	0	oewn-remittance_man-n	Number=Plur	dema	0			rule
+remittance men	0	oewn-remittance_man-n	Number=Plur	dema	0			rule
 remittance person	0	oewn-remittance_person-n	Number=Sing	dema	0			oewn_form
 remittance persons	0	oewn-remittance_person-n	Number=Plur	dema	0			rule
 remittance woman	0	oewn-remittance_woman-n	Number=Sing	dema	0			oewn_form
-remittance womans	0	oewn-remittance_woman-n	Number=Plur	dema	0			rule
+remittance women	0	oewn-remittance_woman-n	Number=Plur	dema	0			rule
 remittances	0	oewn-remittance-n	Number=Plur	dema	0			rule
 remitted	0	oewn-remit-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 remittee	0		Number=Sing	dema	0	remittee	n	moby_reverse
@@ -10632,9 +10626,9 @@ remote-controlled	0	oewn-remote-controlled-a	Degree=Pos	dema	0			oewn_form
 remotely	0	oewn-remotely-r	Degree=Pos	dema	0			oewn_form
 remoteness	0	oewn-remoteness-n	Number=Sing	dema	0			oewn_form
 remotenesses	0	oewn-remoteness-n	Number=Plur	dema	0			rule
-remoter	0	oewn-remote-a	Degree=Cmp	dema	0			moby_reverse
+remoter	0	oewn-remote-a	Degree=Cmp	dema	0			llm
 remotes	0	oewn-remote-n	Number=Plur	dema	0			rule
-remotest	0	oewn-remote-a	Degree=Sup	dema	0			moby_reverse
+remotest	0	oewn-remote-a	Degree=Sup	dema	0			llm
 remotion	0	oewn-remotion-n	Number=Sing	dema	0			oewn_form
 remotions	0	oewn-remotion-n	Number=Plur	dema	0			rule
 remoulade sauce	0	oewn-remoulade_sauce-n	Number=Sing	dema	0			oewn_form
@@ -10766,11 +10760,12 @@ rendering machines	0	oewn-rendering_machine-n	Number=Plur	dema	0			rule
 renderings	0	oewn-rendering-n	Number=Plur	dema	0			rule
 renders	0	oewn-render-v	Person=3+Tense=Pres	dema	0			rule
 renders	1	oewn-render-n	Number=Plur	dema	0			rule
-rendezvous	0	oewn-rendezvous-n	Number=Plur	dema	0			agid
+rendezvous	0	oewn-rendezvous-n	Number=Plur	dema	0			llm
 rendezvous	1	oewn-rendezvous-n	Number=Sing	dema	0			oewn_form
 rendezvous	2	oewn-rendezvous-v	VerbForm=Inf	dema	0			oewn_form
 rendezvoused	0	oewn-rendezvous-v	Tense=Past+VerbForm=Part	dema	0			rule
-rendezvouses	0	oewn-rendezvous-v	Person=3+Tense=Pres	dema	0			rule
+rendezvouses	0	oewn-rendezvous-n	Number=Plur	dema	0			rule_variant
+rendezvouses	1	oewn-rendezvous-v	Person=3+Tense=Pres	dema	0			rule
 rendezvousing	0	oewn-rendezvous-v	VerbForm=Ger	dema	0			rule
 rendible	0		Degree=Pos	dema	0	rendible	a	moby_reverse
 rending	0	oewn-rend-v	VerbForm=Ger	dema	0			rule
@@ -11126,7 +11121,7 @@ reoutlined	0		Tense=Past+VerbForm=Part	dema	0	reoutline	v	rule
 reoutlines	0		Person=3+Tense=Pres	dema	0	reoutline	v	rule
 reoutlining	0		VerbForm=Ger	dema	0	reoutline	v	rule
 reovirus	0	oewn-reovirus-n	Number=Sing	dema	0			oewn_form
-reoviruses	0	oewn-reovirus-n	Number=Plur	dema	0			rule
+reoviruses	0	oewn-reovirus-n	Number=Plur	dema	0			llm
 reoxidise	0		VerbForm=Inf	dema	0	reoxidise	v	moby_reverse
 reoxidised	0		Tense=Past+VerbForm=Part	dema	0	reoxidise	v	rule
 reoxidises	0		Person=3+Tense=Pres	dema	0	reoxidise	v	rule
@@ -11177,11 +11172,11 @@ repairer	0	oewn-repairer-n	Number=Sing	dema	0			oewn_form
 repairers	0	oewn-repairer-n	Number=Plur	dema	0			rule
 repairing	0	oewn-repair-v	VerbForm=Ger	dema	0			rule
 repairman	0	oewn-repairman-n	Number=Sing	dema	0			oewn_form
-repairmen	0	oewn-repairman-n	Number=Plur	dema	0			agid
+repairmen	0	oewn-repairman-n	Number=Plur	dema	0			llm
 repairs	0	oewn-repair-v	Person=3+Tense=Pres	dema	0			rule
 repairs	1	oewn-repair-n	Number=Plur	dema	0			rule
 repairwoman	0	oewn-repairwoman-n	Number=Sing	dema	0			oewn_form
-repairwomans	0	oewn-repairwoman-n	Number=Plur	dema	0			rule
+repairwomen	0	oewn-repairwoman-n	Number=Plur	dema	0			rule
 repand	0	oewn-repand-a	Degree=Pos	dema	0			oewn_form
 repanel	0		VerbForm=Inf	dema	0	repanel	v	moby_reverse
 repaneled	0		Tense=Past+VerbForm=Part	dema	0	repanel	v	rule
@@ -11254,12 +11249,12 @@ repawning	0		VerbForm=Ger	dema	0	repawn	v	rule
 repawns	0		Person=3+Tense=Pres	dema	0	repawn	v	rule
 repay	0	oewn-repay-v	VerbForm=Inf	dema	0			oewn_form
 repayable	0	oewn-repayable-a	Degree=Pos	dema	0			oewn_form
-repaying	0	oewn-repay-v	VerbForm=Ger	dema	0			rule
+repaying	0	oewn-repay-v	VerbForm=Ger	dema	0			llm
 repayment	0	oewn-repayment-n	Number=Sing	dema	0			oewn_form
 repayment rate	0	oewn-repayment_rate-n	Number=Sing	dema	0			oewn_form
 repayment rates	0	oewn-repayment_rate-n	Number=Plur	dema	0			rule
 repayments	0	oewn-repayment-n	Number=Plur	dema	0			rule
-repays	0	oewn-repay-v	Person=3+Tense=Pres	dema	0			rule
+repays	0	oewn-repay-v	Person=3+Tense=Pres	dema	0			llm
 repeal	0	oewn-repeal-v	VerbForm=Inf	dema	0			oewn_form
 repeal	1	oewn-repeal-n	Number=Sing	dema	0			oewn_form
 repealabilities	0		Number=Plur	dema	0	repealability	n	rule
@@ -11290,7 +11285,7 @@ repeating firearm	0	oewn-repeating_firearm-n	Number=Sing	dema	0			oewn_form
 repeating firearms	0	oewn-repeating_firearm-n	Number=Plur	dema	0			rule
 repeatings	0	oewn-repeating-n	Number=Plur	dema	0			rule
 repeats	0	oewn-repeat-v	Person=3+Tense=Pres	dema	0			rule
-repeats	1	oewn-repeat-n	Number=Plur	dema	0			rule
+repeats	1	oewn-repeat-n	Number=Plur	dema	0			llm
 repechage	0	oewn-repechage-n	Number=Sing	dema	0			oewn_form
 repechages	0	oewn-repechage-n	Number=Plur	dema	0			rule
 repeddle	0		VerbForm=Inf	dema	0	repeddle	v	moby_reverse
@@ -11450,8 +11445,8 @@ replates	0		Person=3+Tense=Pres	dema	0	replate	v	rule
 replating	0		VerbForm=Ger	dema	0	replate	v	rule
 replay	0	oewn-replay-n	Number=Sing	dema	1			carried
 replay	1	oewn-replay-v	VerbForm=Inf	dema	1			carried
-replayed	0	oewn-replay-v	Tense=Past+VerbForm=Part	dema	0			rule
-replaying	0	oewn-replay-v	VerbForm=Ger	dema	0			rule
+replayed	0	oewn-replay-v	Tense=Past+VerbForm=Part	dema	0			llm
+replaying	0	oewn-replay-v	VerbForm=Ger	dema	0			llm
 replays	0	oewn-replay-n	Number=Plur	dema	1			carried
 replays	1	oewn-replay-v	Person=3+Tense=Pres	dema	1			carried
 replead	0		VerbForm=Inf	dema	0	replead	v	moby_reverse
@@ -11615,8 +11610,8 @@ reposes on	0	oewn-repose_on-v	Person=3+Tense=Pres	dema	0			rule
 reposing	0	oewn-repose-v	VerbForm=Ger	dema	0			rule
 reposing on	0	oewn-repose_on-v	VerbForm=Ger	dema	0			rule
 reposit	0	oewn-reposit-v	VerbForm=Inf	dema	0			oewn_form
-reposited	0	oewn-reposit-v	Tense=Past+VerbForm=Part	dema	0			rule
-repositing	0	oewn-reposit-v	VerbForm=Ger	dema	0			rule
+reposited	0	oewn-reposit-v	Tense=Past+VerbForm=Part	dema	0			llm
+repositing	0	oewn-reposit-v	VerbForm=Ger	dema	0			llm
 repositing	1	oewn-repositing-n	Number=Sing	dema	0			oewn_form
 repositings	0	oewn-repositing-n	Number=Plur	dema	0			rule
 reposition	0	oewn-reposition-n	Number=Sing	dema	0			oewn_form
@@ -11629,7 +11624,7 @@ repositions	0	oewn-reposition-n	Number=Plur	dema	0			rule
 repositions	1	oewn-reposition-v	Person=3+Tense=Pres	dema	0			rule
 repositories	0	oewn-repository-n	Number=Plur	dema	0			rule
 repository	0	oewn-repository-n	Number=Sing	dema	0			oewn_form
-reposits	0	oewn-reposit-v	Person=3+Tense=Pres	dema	0			rule
+reposits	0	oewn-reposit-v	Person=3+Tense=Pres	dema	0			llm
 repossess	0	oewn-repossess-v	VerbForm=Inf	dema	0			oewn_form
 repossessed	0	oewn-repossess-v	Tense=Past+VerbForm=Part	dema	0			rule
 repossesses	0	oewn-repossess-v	Person=3+Tense=Pres	dema	0			rule
@@ -11788,10 +11783,10 @@ reprisal	0	oewn-reprisal-n	Number=Sing	dema	0			oewn_form
 reprisals	0	oewn-reprisal-n	Number=Plur	dema	0			rule
 reprise	0		Number=Sing	dema	0	reprise	n	moby_reverse
 reprise	1	oewn-reprise-v	VerbForm=Inf	dema	0			oewn_form
-reprised	0	oewn-reprise-v	Tense=Past+VerbForm=Part	dema	0			rule
+reprised	0	oewn-reprise-v	Tense=Past+VerbForm=Part	dema	0			llm
 reprises	0		Number=Plur	dema	0	reprise	n	rule
-reprises	1	oewn-reprise-v	Person=3+Tense=Pres	dema	0			rule
-reprising	0	oewn-reprise-v	VerbForm=Ger	dema	0			rule
+reprises	1	oewn-reprise-v	Person=3+Tense=Pres	dema	0			llm
+reprising	0	oewn-reprise-v	VerbForm=Ger	dema	0			llm
 reprize	0	oewn-reprize-v	VerbForm=Inf	dema	0			oewn_form
 reprized	0	oewn-reprize-v	Tense=Past+VerbForm=Part	dema	0			rule
 reprizes	0	oewn-reprize-v	Person=3+Tense=Pres	dema	0			rule
@@ -11875,8 +11870,8 @@ reproductively	0		Degree=Pos	dema	0	reproductively	r	moby_reverse
 reproductiveness	0		Number=Sing	dema	0	reproductiveness	n	moby_reverse
 reproductivenesses	0		Number=Plur	dema	0	reproductiveness	n	rule
 reprogram	0		VerbForm=Inf	dema	0	reprogram	v	moby_reverse
-reprogramed	0		Tense=Past+VerbForm=Part	dema	0	reprogram	v	rule
-reprograming	0		VerbForm=Ger	dema	0	reprogram	v	rule
+reprogrammed	0		Tense=Past+VerbForm=Part	dema	0	reprogram	v	rule
+reprogramming	0		VerbForm=Ger	dema	0	reprogram	v	rule
 reprograms	0		Person=3+Tense=Pres	dema	0	reprogram	v	rule
 reprographies	0		Number=Plur	dema	0	reprography	n	rule
 reprography	0		Number=Sing	dema	0	reprography	n	moby_reverse
@@ -12146,9 +12141,9 @@ requiters	0		Number=Plur	dema	0	requiter	n	rule
 requites	0	oewn-requite-v	Person=3+Tense=Pres	dema	0			rule
 requiting	0	oewn-requite-v	VerbForm=Ger	dema	0			rule
 requote	0	oewn-requote-v	VerbForm=Inf	dema	0			oewn_form
-requoted	0	oewn-requote-v	Tense=Past+VerbForm=Part	dema	0			rule
-requotes	0	oewn-requote-v	Person=3+Tense=Pres	dema	0			rule
-requoting	0	oewn-requote-v	VerbForm=Ger	dema	0			rule
+requoted	0	oewn-requote-v	Tense=Past+VerbForm=Part	dema	0			llm
+requotes	0	oewn-requote-v	Person=3+Tense=Pres	dema	0			llm
+requoting	0	oewn-requote-v	VerbForm=Ger	dema	0			llm
 reradiate	0		VerbForm=Inf	dema	0	reradiate	v	moby_reverse
 reradiated	0		Tense=Past+VerbForm=Part	dema	0	reradiate	v	rule
 reradiates	0		Person=3+Tense=Pres	dema	0	reradiate	v	rule
@@ -12166,12 +12161,12 @@ rerates	0		Person=3+Tense=Pres	dema	0	rerate	v	rule
 rerating	0		VerbForm=Ger	dema	0	rerate	v	rule
 reread	0	oewn-reread-v	Tense=Past	dema	1			carried
 reread	1	oewn-reread-v	Tense=Pres	dema	1			carried
-rereading	0	oewn-reread-v	VerbForm=Ger	dema	0			rule
+rereading	0	oewn-reread-v	VerbForm=Ger	dema	0			llm
 rereads	0	oewn-reread-v	Tense=Pres	dema	1			carried
 rerebrace	0	oewn-rerebrace-n	Number=Sing	dema	0			oewn_form
 rerebraces	0	oewn-rerebrace-n	Number=Plur	dema	0			rule
 reredos	0	oewn-reredos-n	Number=Sing	dema	0			oewn_form
-reredoses	0	oewn-reredos-n	Number=Plur	dema	0			rule
+reredoses	0	oewn-reredos-n	Number=Plur	dema	0			llm
 rereel	0		VerbForm=Inf	dema	0	rereel	v	moby_reverse
 rereeled	0		Tense=Past+VerbForm=Part	dema	0	rereel	v	rule
 rereeling	0		VerbForm=Ger	dema	0	rereel	v	rule
@@ -12370,9 +12365,9 @@ reseasoned	0		Tense=Past+VerbForm=Part	dema	0	reseason	v	rule
 reseasoning	0		VerbForm=Ger	dema	0	reseason	v	rule
 reseasons	0		Person=3+Tense=Pres	dema	0	reseason	v	rule
 reseat	0	oewn-reseat-v	VerbForm=Inf	dema	0			oewn_form
-reseated	0	oewn-reseat-v	Tense=Past+VerbForm=Part	dema	0			rule
-reseating	0	oewn-reseat-v	VerbForm=Ger	dema	0			rule
-reseats	0	oewn-reseat-v	Person=3+Tense=Pres	dema	0			rule
+reseated	0	oewn-reseat-v	Tense=Past+VerbForm=Part	dema	0			llm
+reseating	0	oewn-reseat-v	VerbForm=Ger	dema	0			llm
+reseats	0	oewn-reseat-v	Person=3+Tense=Pres	dema	0			llm
 reseau	0	oewn-reseau-n	Number=Sing	dema	0			oewn_form
 reseaus	0	oewn-reseau-n	Number=Plur	dema	0			rule_variant
 reseaux	0	oewn-reseau-n	Number=Plur	dema	0			oewn_form
@@ -12421,8 +12416,8 @@ reselects	0		Person=3+Tense=Pres	dema	0	reselect	v	rule
 resell	0	oewn-resell-v	VerbForm=Inf	dema	0			oewn_form
 reseller	0		Number=Sing	dema	0	reseller	n	moby_reverse
 resellers	0		Number=Plur	dema	0	reseller	n	rule
-reselling	0	oewn-resell-v	VerbForm=Ger	dema	0			rule
-resells	0	oewn-resell-v	Person=3+Tense=Pres	dema	0			rule
+reselling	0	oewn-resell-v	VerbForm=Ger	dema	0			llm
+resells	0	oewn-resell-v	Person=3+Tense=Pres	dema	0			llm
 resemblance	0	oewn-resemblance-n	Number=Sing	dema	0			oewn_form
 resemblances	0	oewn-resemblance-n	Number=Plur	dema	0			rule
 resemblant	0		Degree=Pos	dema	0	resemblant	a	moby_reverse
@@ -12518,12 +12513,9 @@ resettles	0	oewn-resettle-v	Person=3+Tense=Pres	dema	0			rule
 resettling	0	oewn-resettle-v	VerbForm=Ger	dema	0			rule
 resew	0	oewn-resew-v	VerbForm=Inf	dema	0			oewn_form
 resewed	0	oewn-resew-v	Tense=Past+VerbForm=Part	dema	0			irregular_list
-resewing	0	oewn-resew-v	VerbForm=Ger	dema	0			rule
-resewn	0		VerbForm=Inf	dema	0	resewn	v	moby_reverse
-resewned	0		Tense=Past+VerbForm=Part	dema	0	resewn	v	rule
-resewning	0		VerbForm=Ger	dema	0	resewn	v	rule
-resewns	0		Person=3+Tense=Pres	dema	0	resewn	v	rule
-resews	0	oewn-resew-v	Person=3+Tense=Pres	dema	0			rule
+resewing	0	oewn-resew-v	VerbForm=Ger	dema	0			llm
+resewn	0	oewn-resew-v	VerbForm=Part	dema	0			hand
+resews	0	oewn-resew-v	Person=3+Tense=Pres	dema	0			llm
 resh	0	oewn-resh-n	Number=Sing	dema	0			oewn_form
 reshake	0		VerbForm=Inf	dema	0	reshake	v	moby_reverse
 reshaken	0		VerbForm=Inf	dema	0	reshaken	v	moby_reverse
@@ -12583,8 +12575,8 @@ reshooked	0		Tense=Past+VerbForm=Part	dema	0	reshook	v	rule
 reshooking	0		VerbForm=Ger	dema	0	reshook	v	rule
 reshooks	0		Person=3+Tense=Pres	dema	0	reshook	v	rule
 reshoot	0	oewn-reshoot-v	VerbForm=Inf	dema	0			oewn_form
-reshooting	0	oewn-reshoot-v	VerbForm=Ger	dema	0			rule
-reshoots	0	oewn-reshoot-v	Person=3+Tense=Pres	dema	0			rule
+reshooting	0	oewn-reshoot-v	VerbForm=Ger	dema	0			llm
+reshoots	0	oewn-reshoot-v	Person=3+Tense=Pres	dema	0			llm
 reshorten	0		VerbForm=Inf	dema	0	reshorten	v	moby_reverse
 reshortened	0		Tense=Past+VerbForm=Part	dema	0	reshorten	v	rule
 reshortening	0		VerbForm=Ger	dema	0	reshorten	v	rule
@@ -12779,7 +12771,7 @@ resit	0	dema-resit-n	Number=Sing	dema	1			carried
 resit	1	dema-resit-v	VerbForm=Inf	dema	1			carried
 resits	0	dema-resit-n	Number=Plur	dema	1			carried
 resits	1	dema-resit-v	Person=3+Tense=Pres	dema	1			carried
-resitting	0	dema-resit-v	VerbForm=Ger	dema	0			rule
+resitting	0	dema-resit-v	VerbForm=Ger	dema	0			llm
 resituate	0		VerbForm=Inf	dema	0	resituate	v	moby_reverse
 resituated	0		Tense=Past+VerbForm=Part	dema	0	resituate	v	rule
 resituates	0		Person=3+Tense=Pres	dema	0	resituate	v	rule
@@ -13046,7 +13038,7 @@ respites	0	oewn-respite-n	Number=Plur	dema	0			rule
 respites	1	oewn-respite-v	Person=3+Tense=Pres	dema	0			rule
 respiting	0	oewn-respite-v	VerbForm=Ger	dema	0			rule
 resplend	0	oewn-resplend-v	VerbForm=Inf	dema	0			oewn_form
-resplended	0	oewn-resplend-v	Tense=Past+VerbForm=Part	dema	0			rule
+resplended	0	oewn-resplend-v	Tense=Past+VerbForm=Part	dema	0			llm
 resplendence	0	oewn-resplendence-n	Number=Sing	dema	0			oewn_form
 resplendences	0	oewn-resplendence-n	Number=Plur	dema	0			rule
 resplendencies	0	oewn-resplendency-n	Number=Plur	dema	0			rule
@@ -13057,8 +13049,8 @@ resplendent quetzals	0	oewn-resplendent_quetzal-n	Number=Plur	dema	0			rule
 resplendent trogon	0	oewn-resplendent_trogon-n	Number=Sing	dema	0			oewn_form
 resplendent trogons	0	oewn-resplendent_trogon-n	Number=Plur	dema	0			rule
 resplendently	0	oewn-resplendently-r	Degree=Pos	dema	0			oewn_form
-resplending	0	oewn-resplend-v	VerbForm=Ger	dema	0			rule
-resplends	0	oewn-resplend-v	Person=3+Tense=Pres	dema	0			rule
+resplending	0	oewn-resplend-v	VerbForm=Ger	dema	0			llm
+resplends	0	oewn-resplend-v	Person=3+Tense=Pres	dema	0			llm
 resplice	0		VerbForm=Inf	dema	0	resplice	v	moby_reverse
 respliced	0		Tense=Past+VerbForm=Part	dema	0	resplice	v	rule
 resplices	0		Person=3+Tense=Pres	dema	0	resplice	v	rule
@@ -13095,7 +13087,7 @@ responsions	0		Number=Plur	dema	0	responsion	n	rule
 responsive	0	oewn-responsive-a	Degree=Pos	dema	0			oewn_form
 responsively	0		Degree=Pos	dema	0	responsively	r	moby_reverse
 responsiveness	0	oewn-responsiveness-n	Number=Sing	dema	0			oewn_form
-responsivenesses	0	oewn-responsiveness-n	Number=Plur	dema	0			rule
+responsivenesses	0	oewn-responsiveness-n	Number=Plur	dema	0			llm
 responsor	0		Number=Sing	dema	0	responsor	n	moby_reverse
 responsories	0		Number=Plur	dema	0	responsory	n	rule
 responsors	0		Number=Plur	dema	0	responsor	n	rule
@@ -13133,9 +13125,9 @@ ressentiment	0		Number=Sing	dema	0	ressentiment	n	moby_reverse
 ressentiment	1		VerbForm=Inf	dema	0	ressentiment	v	moby_reverse
 ressentiments	0		Number=Plur	dema	0	ressentiment	n	rule
 resshot	0		VerbForm=Inf	dema	0	resshot	v	moby_reverse
-resshoted	0		Tense=Past+VerbForm=Part	dema	0	resshot	v	rule
-resshoting	0		VerbForm=Ger	dema	0	resshot	v	rule
 resshots	0		Person=3+Tense=Pres	dema	0	resshot	v	rule
+resshotted	0		Tense=Past+VerbForm=Part	dema	0	resshot	v	rule
+resshotting	0		VerbForm=Ger	dema	0	resshot	v	rule
 rest	0	oewn-rest-n	Number=Sing	dema	0			oewn_form
 rest	1	oewn-rest-v	VerbForm=Inf	dema	0			oewn_form
 rest area	0	oewn-rest_area-n	Number=Sing	dema	0			oewn_form
@@ -13664,7 +13656,7 @@ retaker	0		Number=Sing	dema	0	retaker	n	moby_reverse
 retakers	0		Number=Plur	dema	0	retaker	n	rule
 retakes	0	oewn-retake-n	Number=Plur	dema	1			carried
 retakes	1	oewn-retake-v	Person=3+Tense=Pres	dema	1			carried
-retaking	0	oewn-retake-v	VerbForm=Ger	dema	0			rule
+retaking	0	oewn-retake-v	VerbForm=Ger	dema	0			llm
 retaking	1	oewn-retaking-n	Number=Sing	dema	0			oewn_form
 retakings	0	oewn-retaking-n	Number=Plur	dema	0			rule
 retaliate	0	oewn-retaliate-v	VerbForm=Inf	dema	0			oewn_form
@@ -13773,8 +13765,8 @@ retelevised	0		Tense=Past+VerbForm=Part	dema	0	retelevise	v	rule
 retelevises	0		Person=3+Tense=Pres	dema	0	retelevise	v	rule
 retelevising	0		VerbForm=Ger	dema	0	retelevise	v	rule
 retell	0	oewn-retell-v	VerbForm=Inf	dema	0			oewn_form
-retelling	0	oewn-retell-v	VerbForm=Ger	dema	0			rule
-retells	0	oewn-retell-v	Person=3+Tense=Pres	dema	0			rule
+retelling	0	oewn-retell-v	VerbForm=Ger	dema	0			llm
+retells	0	oewn-retell-v	Person=3+Tense=Pres	dema	0			llm
 retem	0	oewn-retem-n	Number=Sing	dema	0			oewn_form
 retemper	0		VerbForm=Inf	dema	0	retemper	v	moby_reverse
 retempered	0		Tense=Past+VerbForm=Part	dema	0	retemper	v	rule
@@ -13828,7 +13820,7 @@ rethickening	0		VerbForm=Ger	dema	0	rethicken	v	rule
 rethickens	0		Person=3+Tense=Pres	dema	0	rethicken	v	rule
 rethink	0	oewn-rethink-n	Number=Sing	dema	1			carried
 rethink	1	oewn-rethink-v	VerbForm=Inf	dema	1			carried
-rethinking	0	oewn-rethink-v	VerbForm=Ger	dema	0			rule
+rethinking	0	oewn-rethink-v	VerbForm=Ger	dema	0			llm
 rethinks	0	oewn-rethink-n	Number=Plur	dema	1			carried
 rethinks	1	oewn-rethink-v	Person=3+Tense=Pres	dema	1			carried
 rethought	0	oewn-rethink-v	Tense=Past+VerbForm=Part	dema	0			hand
@@ -13846,7 +13838,6 @@ rethreshing	0		VerbForm=Ger	dema	0	rethresh	v	rule
 retia	0	oewn-rete-n	Number=Plur	dema	0			oewn_form
 retial	0		Degree=Pos	dema	0	retial	a	moby_reverse
 retiarius	0		Number=Sing	dema	0	retiarius	n	moby_reverse
-retiariuses	0		Number=Plur	dema	0	retiarius	n	rule
 retiary	0		Degree=Pos	dema	0	retiary	a	moby_reverse
 reticence	0	oewn-reticence-n	Number=Sing	dema	0			oewn_form
 reticences	0	oewn-reticence-n	Number=Plur	dema	0			rule
@@ -13885,8 +13876,8 @@ reticuloendothelial systems	0	oewn-reticuloendothelial_system-n	Number=Plur	dema
 reticulum	0	oewn-reticulum-n	Number=Sing	dema	0			oewn_form
 reticulums	0	oewn-reticulum-n	Number=Plur	dema	0			rule_variant
 retie	0	oewn-retie-v	VerbForm=Inf	dema	0			oewn_form
-retied	0	oewn-retie-v	Tense=Past+VerbForm=Part	dema	0			rule
-reties	0	oewn-retie-v	Person=3+Tense=Pres	dema	0			rule
+retied	0	oewn-retie-v	Tense=Past+VerbForm=Part	dema	0			llm
+reties	0	oewn-retie-v	Person=3+Tense=Pres	dema	0			llm
 retiform	0		Degree=Pos	dema	0	retiform	a	moby_reverse
 retighten	0		VerbForm=Inf	dema	0	retighten	v	moby_reverse
 retightened	0		Tense=Past+VerbForm=Part	dema	0	retighten	v	rule
@@ -13924,7 +13915,7 @@ retinal scannings	0	oewn-retinal_scanning-n	Number=Plur	dema	0			rule
 retinals	0	oewn-retinal-n	Number=Plur	dema	0			rule
 retinas	0	oewn-retina-n	Number=Plur	dema	0			rule_variant
 retinene	0	oewn-retinene-n	Number=Sing	dema	0			oewn_form
-retinenes	0	oewn-retinene-n	Number=Plur	dema	0			rule
+retinenes	0	oewn-retinene-n	Number=Plur	dema	0			llm
 retinge	0		VerbForm=Inf	dema	0	retinge	v	moby_reverse
 retinged	0		Tense=Past+VerbForm=Part	dema	0	retinge	v	rule
 retingeing	0		VerbForm=Inf	dema	0	retingeing	v	moby_reverse
@@ -14117,8 +14108,8 @@ retraverses	0		Person=3+Tense=Pres	dema	0	retraverse	v	rule
 retraversing	0		VerbForm=Ger	dema	0	retraverse	v	rule
 retread	0	oewn-retread-n	Number=Sing	dema	1			carried
 retread	1	oewn-retread-v	VerbForm=Inf	dema	1			carried
-retreaded	0	oewn-retread-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
-retreading	0	oewn-retread-v	VerbForm=Ger	dema	0			rule
+retreaded	0	oewn-retread-v	Tense=Past+VerbForm=Part	dema	0			llm
+retreading	0	oewn-retread-v	VerbForm=Ger	dema	0			llm
 retreads	0	oewn-retread-n	Number=Plur	dema	1			carried
 retreads	1	oewn-retread-v	Person=3+Tense=Pres	dema	1			carried
 retreat	0	oewn-retreat-n	Number=Sing	dema	1			carried
@@ -14182,8 +14173,6 @@ retrocessions	0		Number=Plur	dema	0	retrocession	n	rule
 retrocessive	0		Degree=Pos	dema	0	retrocessive	a	moby_reverse
 retrochoir	0		Number=Sing	dema	0	retrochoir	n	moby_reverse
 retrochoirs	0		Number=Plur	dema	0	retrochoir	n	rule
-retrod	0	oewn-retread-v	Tense=Past+VerbForm=Part	dema	0			hand
-retrodden	0	oewn-retread-v	VerbForm=Part	dema	0			hand
 retrodirective	0		Degree=Pos	dema	0	retrodirective	a	moby_reverse
 retrofire	0		Number=Sing	dema	0	retrofire	n	moby_reverse
 retrofires	0		Number=Plur	dema	0	retrofire	n	rule
@@ -14223,7 +14212,7 @@ retrogressed	0	oewn-retrogress-v	Tense=Past+VerbForm=Part	dema	0			rule
 retrogresses	0	oewn-retrogress-v	Person=3+Tense=Pres	dema	0			rule
 retrogressing	0	oewn-retrogress-v	VerbForm=Ger	dema	0			rule
 retrogression	0	oewn-retrogression-n	Number=Sing	dema	0			oewn_form
-retrogressions	0	oewn-retrogression-n	Number=Plur	dema	0			rule
+retrogressions	0	oewn-retrogression-n	Number=Plur	dema	0			llm
 retrogressive	0	oewn-retrogressive-a	Degree=Pos	dema	0			oewn_form
 retroject	0		VerbForm=Inf	dema	0	retroject	v	moby_reverse
 retrojected	0		Tense=Past+VerbForm=Part	dema	0	retroject	v	rule
@@ -14267,7 +14256,7 @@ retroverted	0	oewn-retrovert-v	Tense=Past+VerbForm=Part	dema	0			rule
 retroverting	0	oewn-retrovert-v	VerbForm=Ger	dema	0			rule
 retroverts	0	oewn-retrovert-v	Person=3+Tense=Pres	dema	0			rule
 retrovirus	0	oewn-retrovirus-n	Number=Sing	dema	0			oewn_form
-retroviruses	0	oewn-retrovirus-n	Number=Plur	dema	0			rule
+retroviruses	0	oewn-retrovirus-n	Number=Plur	dema	0			llm
 retrovision	0	oewn-retrovision-n	Number=Sing	dema	0			oewn_form
 retrovisions	0	oewn-retrovision-n	Number=Plur	dema	0			rule
 retrusion	0		Number=Sing	dema	0	retrusion	n	moby_reverse
@@ -14330,7 +14319,7 @@ retwist	0		VerbForm=Inf	dema	0	retwist	v	moby_reverse
 retwisted	0		Tense=Past+VerbForm=Part	dema	0	retwist	v	rule
 retwisting	0		VerbForm=Ger	dema	0	retwist	v	rule
 retwists	0		Person=3+Tense=Pres	dema	0	retwist	v	rule
-retying	0	oewn-retie-v	VerbForm=Ger	dema	0			agid
+retying	0	oewn-retie-v	VerbForm=Ger	dema	0			llm
 retype	0		VerbForm=Inf	dema	0	retype	v	moby_reverse
 retyped	0		Tense=Past+VerbForm=Part	dema	0	retype	v	rule
 retypes	0		Person=3+Tense=Pres	dema	0	retype	v	rule
@@ -14611,7 +14600,7 @@ reverifies	0		Person=3+Tense=Pres	dema	0	reverify	v	rule
 reverify	0		VerbForm=Inf	dema	0	reverify	v	moby_reverse
 reverifying	0		VerbForm=Ger	dema	0	reverify	v	rule
 revering	0	oewn-revere-v	VerbForm=Ger	dema	0			rule
-revers	0	oewn-revers-n	Number=Plur	dema	0			agid
+revers	0	oewn-revers-n	Number=Plur	dema	0			llm
 revers	1	oewn-revers-n	Number=Sing	dema	0			oewn_form
 reversal	0	oewn-reversal-n	Number=Sing	dema	0			oewn_form
 reversals	0	oewn-reversal-n	Number=Plur	dema	0			rule
@@ -15040,7 +15029,7 @@ rewidens	0		Person=3+Tense=Pres	dema	0	rewiden	v	rule
 rewin	0		VerbForm=Inf	dema	0	rewin	v	moby_reverse
 rewind	0	dema-rewind-n	Number=Sing	dema	1			carried
 rewind	1	oewn-rewind-v	VerbForm=Inf	dema	1			carried
-rewinding	0	oewn-rewind-v	VerbForm=Ger	dema	0			rule
+rewinding	0	oewn-rewind-v	VerbForm=Ger	dema	0			llm
 rewinds	0	dema-rewind-n	Number=Plur	dema	1			carried
 rewinds	1	oewn-rewind-v	Person=3+Tense=Pres	dema	1			carried
 rewinning	0		VerbForm=Ger	dema	0	rewin	v	rule
@@ -15068,14 +15057,14 @@ rewraps	0		Person=3+Tense=Pres	dema	0	rewrap	v	rule
 rewrite	0	oewn-rewrite-n	Number=Sing	dema	1			carried
 rewrite	1	oewn-rewrite-v	VerbForm=Inf	dema	1			carried
 rewrite man	0	oewn-rewrite_man-n	Number=Sing	dema	0			oewn_form
-rewrite mans	0	oewn-rewrite_man-n	Number=Plur	dema	0			rule
+rewrite men	0	oewn-rewrite_man-n	Number=Plur	dema	0			rule
 rewrite woman	0	oewn-rewrite_woman-n	Number=Sing	dema	0			oewn_form
-rewrite womans	0	oewn-rewrite_woman-n	Number=Plur	dema	0			rule
+rewrite women	0	oewn-rewrite_woman-n	Number=Plur	dema	0			rule
 rewriter	0	oewn-rewriter-n	Number=Sing	dema	0			oewn_form
 rewriters	0	oewn-rewriter-n	Number=Plur	dema	0			rule
 rewrites	0	oewn-rewrite-n	Number=Plur	dema	1			carried
 rewrites	1	oewn-rewrite-v	Person=3+Tense=Pres	dema	1			carried
-rewriting	0	oewn-rewrite-v	VerbForm=Ger	dema	0			rule
+rewriting	0	oewn-rewrite-v	VerbForm=Ger	dema	0			llm
 rewriting	1	oewn-rewriting-n	Number=Sing	dema	0			oewn_form
 rewritings	0	oewn-rewriting-n	Number=Plur	dema	0			rule
 rewritten	0	oewn-rewrite-v	VerbForm=Part	dema	0			hand
@@ -15128,7 +15117,7 @@ rhabdomyosarcomas	0	oewn-rhabdomyosarcoma-n	Number=Plur	dema	0			rule
 rhabdosarcoma	0	oewn-rhabdosarcoma-n	Number=Sing	dema	0			oewn_form
 rhabdosarcomas	0	oewn-rhabdosarcoma-n	Number=Plur	dema	0			rule
 rhabdovirus	0	oewn-rhabdovirus-n	Number=Sing	dema	0			oewn_form
-rhabdoviruses	0	oewn-rhabdovirus-n	Number=Plur	dema	0			rule
+rhabdoviruses	0	oewn-rhabdovirus-n	Number=Plur	dema	0			llm
 rhachis	0		Number=Sing	dema	0	rhachis	n	moby_reverse
 rhachises	0	oewn-rachis-n	Number=Plur	dema	0			oewn_form
 rhachises	1		Number=Plur	dema	0	rhachis	n	rule
@@ -15210,7 +15199,7 @@ rhesus factor	0	oewn-rhesus_factor-n	Number=Sing	dema	0			oewn_form
 rhesus factors	0	oewn-rhesus_factor-n	Number=Plur	dema	0			rule
 rhesus monkey	0	oewn-rhesus_monkey-n	Number=Sing	dema	0			oewn_form
 rhesus monkeys	0	oewn-rhesus_monkey-n	Number=Plur	dema	0			rule
-rhesuses	0	oewn-rhesus-n	Number=Plur	dema	0			rule
+rhesuses	0	oewn-rhesus-n	Number=Plur	dema	0			llm
 rhet	0		Number=Sing	dema	0	rhet	n	moby_reverse
 rhetor	0		Number=Sing	dema	0	rhetor	n	moby_reverse
 rhetoric	0	oewn-rhetoric-n	Number=Sing	dema	0			oewn_form
@@ -15254,8 +15243,8 @@ rheumatologist	0	oewn-rheumatologist-n	Number=Sing	dema	0			oewn_form
 rheumatologists	0	oewn-rheumatologist-n	Number=Plur	dema	0			rule
 rheumatology	0	oewn-rheumatology-n	Number=Sing	dema	0			oewn_form
 rheumic	0		Degree=Pos	dema	0	rheumic	a	moby_reverse
-rheumier	0	oewn-rheumy-a	Degree=Cmp	dema	0			rule
-rheumiest	0	oewn-rheumy-a	Degree=Sup	dema	0			rule
+rheumier	0	oewn-rheumy-a	Degree=Cmp	dema	0			llm
+rheumiest	0	oewn-rheumy-a	Degree=Sup	dema	0			llm
 rheumily	0		Degree=Pos	dema	0	rheumily	r	moby_reverse
 rheuminess	0		Number=Sing	dema	0	rheuminess	n	moby_reverse
 rheums	0	oewn-rheum-n	Number=Plur	dema	0			rule
@@ -15285,11 +15274,11 @@ rhinions	0	oewn-rhinion-n	Number=Plur	dema	0			rule
 rhinitis	0	oewn-rhinitis-n	Number=Sing	dema	0			oewn_form
 rhino	0	oewn-rhino-n	Number=Sing	dema	0			oewn_form
 rhinoceri	0	oewn-rhinoceros-n	Number=Plur	dema	0			rule_variant
-rhinoceros	0	oewn-rhinoceros-n	Number=Plur	dema	0			agid
+rhinoceros	0	oewn-rhinoceros-n	Number=Plur	dema	0			rule_variant
 rhinoceros	1	oewn-rhinoceros-n	Number=Sing	dema	0			oewn_form
 rhinoceros beetle	0	oewn-rhinoceros_beetle-n	Number=Sing	dema	0			oewn_form
 rhinoceros beetles	0	oewn-rhinoceros_beetle-n	Number=Plur	dema	0			rule
-rhinoceroses	0	oewn-rhinoceros-n	Number=Plur	dema	0			rule_variant
+rhinoceroses	0	oewn-rhinoceros-n	Number=Plur	dema	0			llm
 rhinocerotic	0		Degree=Pos	dema	0	rhinocerotic	a	moby_reverse
 rhinolaryngologies	0	oewn-rhinolaryngology-n	Number=Plur	dema	0			rule
 rhinolaryngologist	0	oewn-rhinolaryngologist-n	Number=Sing	dema	0			oewn_form
@@ -15321,7 +15310,7 @@ rhinotomies	0	oewn-rhinotomy-n	Number=Plur	dema	0			rule
 rhinotomy	0	oewn-rhinotomy-n	Number=Sing	dema	0			oewn_form
 rhinotracheitis	0	oewn-rhinotracheitis-n	Number=Sing	dema	0			oewn_form
 rhinovirus	0	oewn-rhinovirus-n	Number=Sing	dema	0			oewn_form
-rhinoviruses	0	oewn-rhinovirus-n	Number=Plur	dema	0			rule
+rhinoviruses	0	oewn-rhinovirus-n	Number=Plur	dema	0			llm
 rhizobium	0		Number=Sing	dema	0	rhizobium	n	moby_reverse
 rhizobiums	0		Number=Plur	dema	0	rhizobium	n	rule
 rhizocarpous	0		Degree=Pos	dema	0	rhizocarpous	a	moby_reverse
@@ -15346,6 +15335,7 @@ rhizomorph	0	oewn-rhizomorph-n	Number=Sing	dema	0			oewn_form
 rhizomorphous	0		Degree=Pos	dema	0	rhizomorphous	a	moby_reverse
 rhizomorphs	0	oewn-rhizomorph-n	Number=Plur	dema	0			rule
 rhizophagous	0		Degree=Pos	dema	0	rhizophagous	a	moby_reverse
+rhizopi	0	oewn-rhizopus-n	Number=Plur	dema	0			rule_variant
 rhizopod	0	oewn-rhizopod-n	Number=Sing	dema	0			oewn_form
 rhizopod	1		Degree=Pos	dema	0	rhizopod	a	moby_reverse
 rhizopodan	0		Degree=Pos	dema	0	rhizopodan	a	moby_reverse
@@ -15354,7 +15344,7 @@ rhizopodans	0	oewn-rhizopodan-n	Number=Plur	dema	0			rule
 rhizopodous	0		Degree=Pos	dema	0	rhizopodous	a	moby_reverse
 rhizopods	0	oewn-rhizopod-n	Number=Plur	dema	0			rule
 rhizopus	0	oewn-rhizopus-n	Number=Sing	dema	0			oewn_form
-rhizopuses	0	oewn-rhizopus-n	Number=Plur	dema	0			rule
+rhizopuses	0	oewn-rhizopus-n	Number=Plur	dema	0			llm
 rhizosphere	0		Number=Sing	dema	0	rhizosphere	n	moby_reverse
 rhizospheres	0		Number=Plur	dema	0	rhizosphere	n	rule
 rhizotomies	0	oewn-rhizotomy-n	Number=Plur	dema	0			rule
@@ -15614,17 +15604,17 @@ rices	1	oewn-rice-v	Person=3+Tense=Pres	dema	0			rule
 rich	0	oewn-rich-a	Degree=Pos	dema	0			oewn_form
 rich	1	oewn-rich-n	Number=Sing	dema	0			oewn_form
 rich man	0	oewn-rich_man-n	Number=Sing	dema	0			oewn_form
-rich mans	0	oewn-rich_man-n	Number=Plur	dema	0			rule
+rich men	0	oewn-rich_man-n	Number=Plur	dema	0			rule
 rich people	0	oewn-rich_people-n	Number=Sing	dema	0			oewn_form
 rich peoples	0	oewn-rich_people-n	Number=Plur	dema	0			rule
 rich person	0	oewn-rich_person-n	Number=Sing	dema	0			oewn_form
 rich persons	0	oewn-rich_person-n	Number=Plur	dema	0			rule
 rich woman	0	oewn-rich_woman-n	Number=Sing	dema	0			oewn_form
-rich womans	0	oewn-rich_woman-n	Number=Plur	dema	0			rule
-richer	0	oewn-rich-a	Degree=Cmp	dema	0			rule
+rich women	0	oewn-rich_woman-n	Number=Plur	dema	0			rule
+richer	0	oewn-rich-a	Degree=Cmp	dema	0			llm
 riches	0	oewn-riches-n	Number=Sing	dema	0			oewn_form
 riches	1	oewn-rich-n	Number=Plur	dema	0			rule
-richest	0	oewn-rich-a	Degree=Sup	dema	0			rule
+richest	0	oewn-rich-a	Degree=Sup	dema	0			llm
 richly	0	oewn-richly-r	Degree=Pos	dema	0			oewn_form
 richness	0	oewn-richness-n	Number=Sing	dema	0			oewn_form
 richnesses	0	oewn-richness-n	Number=Plur	dema	0			rule
@@ -15673,7 +15663,7 @@ ricochet	0	oewn-ricochet-v	VerbForm=Inf	dema	0			oewn_form
 ricochet	1	oewn-ricochet-n	Number=Sing	dema	0			oewn_form
 ricocheted	0	oewn-ricochet-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 ricocheting	0	oewn-ricochet-v	VerbForm=Ger	dema	0			rule_variant
-ricochets	0	oewn-ricochet-v	Person=3+Tense=Pres	dema	0			rule
+ricochets	0	oewn-ricochet-v	Person=3+Tense=Pres	dema	0			llm
 ricochets	1	oewn-ricochet-n	Number=Plur	dema	0			rule
 ricochetted	0	oewn-ricochet-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 ricochetting	0	oewn-ricochet-v	VerbForm=Ger	dema	0			oewn_form
@@ -15681,8 +15671,9 @@ ricotta	0	oewn-ricotta-n	Number=Sing	dema	0			oewn_form
 ricottas	0	oewn-ricotta-n	Number=Plur	dema	0			rule
 ricrac	0	oewn-ricrac-n	Number=Sing	dema	0			oewn_form
 ricracs	0	oewn-ricrac-n	Number=Plur	dema	0			rule
-rictus	0	oewn-rictus-n	Number=Sing	dema	0			oewn_form
-rictuses	0	oewn-rictus-n	Number=Plur	dema	0			rule
+rictus	0	oewn-rictus-n	Number=Plur	dema	0			rule_variant
+rictus	1	oewn-rictus-n	Number=Sing	dema	0			oewn_form
+rictuses	0	oewn-rictus-n	Number=Plur	dema	0			llm
 rid	0	oewn-rid-v	VerbForm=Inf	dema	0			oewn_form
 rid	1	oewn-rid-v	Tense=Past+VerbForm=Part	dema	0			hand
 rid of	0	oewn-rid_of-v	VerbForm=Inf	dema	0			oewn_form
@@ -15720,7 +15711,7 @@ rident	0		Degree=Pos	dema	0	rident	a	moby_reverse
 rider	0	oewn-rider-n	Number=Sing	dema	0			oewn_form
 rider plate	0	oewn-rider_plate-n	Number=Sing	dema	0			oewn_form
 rider plates	0	oewn-rider_plate-n	Number=Plur	dema	0			rule
-riders	0	oewn-rider-n	Number=Plur	dema	0			rule
+riders	0	oewn-rider-n	Number=Plur	dema	0			llm
 rides	0	oewn-ride-n	Number=Plur	dema	1			carried
 rides	1	oewn-ride-v	Person=3+Tense=Pres	dema	1			carried
 rides away	0	oewn-ride_away-v	Person=3+Tense=Pres	dema	0			rule
@@ -15871,7 +15862,7 @@ rifleman bird	0	oewn-rifleman_bird-n	Number=Sing	dema	0			oewn_form
 rifleman birds	0	oewn-rifleman_bird-n	Number=Plur	dema	0			rule
 riflemanship	0		Number=Sing	dema	0	riflemanship	n	moby_reverse
 riflemanships	0		Number=Plur	dema	0	riflemanship	n	rule
-riflemen	0	oewn-rifleman-n	Number=Plur	dema	0			agid
+riflemen	0	oewn-rifleman-n	Number=Plur	dema	0			llm
 rifler	0	oewn-rifler-n	Number=Sing	dema	0			oewn_form
 rifleries	0		Number=Plur	dema	0	riflery	n	rule
 riflers	0	oewn-rifler-n	Number=Plur	dema	0			rule
@@ -15879,7 +15870,7 @@ riflery	0		Number=Sing	dema	0	riflery	n	moby_reverse
 rifles	0	oewn-rifle-n	Number=Plur	dema	0			rule
 rifles	1	oewn-rifle-v	Person=3+Tense=Pres	dema	0			rule
 riflewoman	0	oewn-riflewoman-n	Number=Sing	dema	0			oewn_form
-riflewomans	0	oewn-riflewoman-n	Number=Plur	dema	0			rule
+riflewomen	0	oewn-riflewoman-n	Number=Plur	dema	0			llm
 rifling	0	oewn-rifling-n	Number=Sing	dema	0			oewn_form
 rifling	1	oewn-rifle-v	VerbForm=Ger	dema	0			rule
 riflings	0	oewn-rifling-n	Number=Plur	dema	0			rule
@@ -15897,8 +15888,7 @@ rigadoon	0		Number=Sing	dema	0	rigadoon	n	moby_reverse
 rigadoons	0		Number=Plur	dema	0	rigadoon	n	rule
 rigamarole	0	oewn-rigamarole-n	Number=Sing	dema	0			oewn_form
 rigamaroles	0	oewn-rigamarole-n	Number=Plur	dema	0			rule
-rigatoni	0	oewn-rigatoni-n	Number=Plur	dema	0			agid
-rigatoni	1	oewn-rigatoni-n	Number=Sing	dema	0			oewn_form
+rigatoni	0	oewn-rigatoni-n	Number=Sing	dema	0			oewn_form
 rigaudon	0		Number=Sing	dema	0	rigaudon	n	moby_reverse
 rigaudons	0		Number=Plur	dema	0	rigaudon	n	rule
 rigged	0	oewn-rig-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
@@ -15991,9 +15981,9 @@ right-down	1	oewn-right-down-r	Degree=Pos	dema	0			oewn_form
 right-eyed	0	oewn-right-eyed-a	Degree=Pos	dema	0			oewn_form
 right-hand	0	oewn-right-hand-a	Degree=Pos	dema	0			oewn_form
 right-hand man	0	oewn-right-hand_man-n	Number=Sing	dema	0			oewn_form
-right-hand mans	0	oewn-right-hand_man-n	Number=Plur	dema	0			rule
+right-hand men	0	oewn-right-hand_man-n	Number=Plur	dema	0			rule
 right-hand woman	0	oewn-right-hand_woman-n	Number=Sing	dema	0			oewn_form
-right-hand womans	0	oewn-right-hand_woman-n	Number=Plur	dema	0			rule
+right-hand women	0	oewn-right-hand_woman-n	Number=Plur	dema	0			rule
 right-handed	0	oewn-right-handed-a	Degree=Pos	dema	0			oewn_form
 right-handed pitcher	0	oewn-right-handed_pitcher-n	Number=Sing	dema	0			oewn_form
 right-handed pitchers	0	oewn-right-handed_pitcher-n	Number=Plur	dema	0			rule
@@ -16020,8 +16010,8 @@ righteous	0	oewn-righteous-a	Degree=Pos	dema	0			oewn_form
 righteously	0	oewn-righteously-r	Degree=Pos	dema	0			oewn_form
 righteousness	0	oewn-righteousness-n	Number=Sing	dema	0			oewn_form
 righteousnesses	0	oewn-righteousness-n	Number=Plur	dema	0			rule
-righter	0	oewn-right-a	Degree=Cmp	dema	0			rule
-rightest	0	oewn-right-a	Degree=Sup	dema	0			rule
+righter	0	oewn-right-a	Degree=Cmp	dema	0			llm
+rightest	0	oewn-right-a	Degree=Sup	dema	0			llm
 righteye flounder	0	oewn-righteye_flounder-n	Number=Sing	dema	0			oewn_form
 righteye flounders	0	oewn-righteye_flounder-n	Number=Plur	dema	0			rule
 righteyed flounder	0	oewn-righteyed_flounder-n	Number=Sing	dema	0			oewn_form
@@ -16288,9 +16278,10 @@ ringer	0	oewn-ringer-n	Number=Sing	dema	0			oewn_form
 ringers	0	oewn-ringer-n	Number=Plur	dema	0			rule
 ringgit	0	oewn-ringgit-n	Number=Sing	dema	0			oewn_form
 ringgits	0	oewn-ringgit-n	Number=Plur	dema	0			rule
-ringhals	0	oewn-ringhals-n	Number=Sing	dema	0			oewn_form
-ringhalses	0	oewn-ringhals-n	Number=Plur	dema	0			rule
-ringing	0	oewn-ring-v	VerbForm=Ger	dema	0			rule
+ringhals	0	oewn-ringhals-n	Number=Plur	dema	0			rule_variant
+ringhals	1	oewn-ringhals-n	Number=Sing	dema	0			oewn_form
+ringhalses	0	oewn-ringhals-n	Number=Plur	dema	0			llm
+ringing	0	oewn-ring-v	VerbForm=Ger	dema	0			llm
 ringing	1	oewn-ringing-n	Number=Sing	dema	0			oewn_form
 ringing out	0	oewn-ring_out-v	VerbForm=Ger	dema	0			rule
 ringing up	0	oewn-ring_up-v	VerbForm=Ger	dema	0			rule
@@ -16314,7 +16305,7 @@ ringneck snake	0	oewn-ringneck_snake-n	Number=Sing	dema	0			oewn_form
 ringneck snakes	0	oewn-ringneck_snake-n	Number=Plur	dema	0			rule
 ringnecks	0		Number=Plur	dema	0	ringneck	n	rule
 rings	0	oewn-ring-n	Number=Plur	dema	0			rule
-rings	1	oewn-ring-v	Person=3+Tense=Pres	dema	0			rule
+rings	1	oewn-ring-v	Person=3+Tense=Pres	dema	0			llm
 rings	2	oewn-rings-n	Number=Sing	dema	0			oewn_form
 rings of color	0	oewn-ring_of_color-n	Number=Plur	dema	0			rule
 rings out	0	oewn-ring_out-v	Person=3+Tense=Pres	dema	0			rule
@@ -16341,7 +16332,7 @@ ringworm shrubs	0	oewn-ringworm_shrub-n	Number=Plur	dema	0			rule
 ringworms	0	oewn-ringworm-n	Number=Plur	dema	0			rule
 rink	0	oewn-rink-n	Number=Sing	dema	0			oewn_form
 rinkhals	0	oewn-rinkhals-n	Number=Sing	dema	0			oewn_form
-rinkhalses	0	oewn-rinkhals-n	Number=Plur	dema	0			rule
+rinkhalses	0	oewn-rinkhals-n	Number=Plur	dema	0			llm
 rinks	0	oewn-rink-n	Number=Plur	dema	0			rule
 rins	0		Number=Plur	dema	0	rin	n	rule
 rinse	0	oewn-rinse-v	VerbForm=Inf	dema	0			oewn_form
@@ -16629,7 +16620,7 @@ rivalrous	0	oewn-rivalrous-a	Degree=Pos	dema	0			oewn_form
 rivalrousness	0		Number=Sing	dema	0	rivalrousness	n	moby_reverse
 rivalry	0	oewn-rivalry-n	Number=Sing	dema	0			oewn_form
 rivals	0	oewn-rival-n	Number=Plur	dema	0			rule
-rivals	1	oewn-rival-v	Person=3+Tense=Pres	dema	0			rule
+rivals	1	oewn-rival-v	Person=3+Tense=Pres	dema	0			llm
 rive	0	oewn-rive-v	VerbForm=Inf	dema	0			oewn_form
 rived	0	oewn-rive-v	Tense=Past+VerbForm=Part	dema	0			rule
 riven	0	oewn-rive-v	VerbForm=Part	dema	0			oewn_form
@@ -16716,15 +16707,14 @@ rmoulades	0		Number=Plur	dema	0	rmoulade	n	rule
 rms	0		Number=Plur	dema	0	rm	n	rule
 rms	1		Number=Sing	dema	0	rms	n	moby_reverse
 ro	0		Number=Sing	dema	0	ro	n	moby_reverse
-roach	0	oewn-roach-n	Number=Plur	dema	0			agid
-roach	1	oewn-roach-n	Number=Sing	dema	0			oewn_form
-roach	2	oewn-roach-v	VerbForm=Inf	dema	0			oewn_form
+roach	0	oewn-roach-n	Number=Sing	dema	0			oewn_form
+roach	1	oewn-roach-v	VerbForm=Inf	dema	0			oewn_form
 roach clip	0	oewn-roach_clip-n	Number=Sing	dema	0			oewn_form
 roach clips	0	oewn-roach_clip-n	Number=Plur	dema	0			rule
 roach holder	0	oewn-roach_holder-n	Number=Sing	dema	0			oewn_form
 roach holders	0	oewn-roach_holder-n	Number=Plur	dema	0			rule
 roached	0	oewn-roach-v	Tense=Past+VerbForm=Part	dema	0			rule
-roaches	0	oewn-roach-n	Number=Plur	dema	0			rule_variant
+roaches	0	oewn-roach-n	Number=Plur	dema	0			rule
 roaches	1	oewn-roach-v	Person=3+Tense=Pres	dema	0			rule
 roaching	0	oewn-roach-v	VerbForm=Ger	dema	0			rule
 road	0	oewn-road-n	Number=Sing	dema	0			oewn_form
@@ -16780,7 +16770,7 @@ roadkills	0	oewn-roadkill-n	Number=Plur	dema	0			rule
 roadless	0	oewn-roadless-a	Degree=Pos	dema	0			oewn_form
 roadlessness	0		Number=Sing	dema	0	roadlessness	n	moby_reverse
 roadman	0	oewn-roadman-n	Number=Sing	dema	0			oewn_form
-roadmans	0	oewn-roadman-n	Number=Plur	dema	0			rule
+roadmen	0	oewn-roadman-n	Number=Plur	dema	0			rule
 roadroller	0		Number=Sing	dema	0	roadroller	n	moby_reverse
 roadrollers	0		Number=Plur	dema	0	roadroller	n	rule
 roadrunner	0	oewn-roadrunner-n	Number=Sing	dema	0			oewn_form
@@ -16797,7 +16787,7 @@ roadsters	0	oewn-roadster-n	Number=Plur	dema	0			rule
 roadway	0	oewn-roadway-n	Number=Sing	dema	0			oewn_form
 roadways	0	oewn-roadway-n	Number=Plur	dema	0			rule
 roadwoman	0	oewn-roadwoman-n	Number=Sing	dema	0			oewn_form
-roadwomans	0	oewn-roadwoman-n	Number=Plur	dema	0			rule
+roadwomen	0	oewn-roadwoman-n	Number=Plur	dema	0			rule
 roadwork	0		Number=Sing	dema	0	roadwork	n	moby_reverse
 roadworks	0		Number=Plur	dema	0	roadwork	n	rule
 roadworthiness	0	oewn-roadworthiness-n	Number=Sing	dema	0			oewn_form
@@ -16849,7 +16839,6 @@ roastable	0		Degree=Pos	dema	0	roastable	a	moby_reverse
 roasted	0	oewn-roast-v	Tense=Past+VerbForm=Part	dema	0			rule
 roasted	1	oewn-roasted-a	Degree=Pos	dema	0			oewn_form
 roaster	0	oewn-roaster-n	Number=Sing	dema	0			oewn_form
-roaster	1	oewn-roast-a	Degree=Cmp	dema	0			rule
 roasters	0	oewn-roaster-n	Number=Plur	dema	0			rule
 roasting	0	oewn-roast-v	VerbForm=Ger	dema	0			rule
 roasting	1		Degree=Pos	dema	0	roasting	a	moby_reverse
@@ -17202,11 +17191,11 @@ rodomontaded	0		Tense=Past+VerbForm=Part	dema	0	rodomontade	v	moby_reverse
 rodomontades	0	oewn-rodomontade-n	Number=Plur	dema	0			rule
 rodomontading	0		VerbForm=Ger	dema	0	rodomontade	v	moby_reverse
 rods	0	oewn-rod-n	Number=Plur	dema	0			rule
-roe	0	oewn-roe-n	Number=Plur	dema	0			agid
+roe	0	oewn-roe-n	Number=Plur	dema	0			rule_variant
 roe	1	oewn-roe-n	Number=Sing	dema	0			oewn_form
 roe deer	0	oewn-roe_deer-n	Number=Sing	dema	0			oewn_form
 roe deers	0	oewn-roe_deer-n	Number=Plur	dema	0			rule
-roebuck	0	oewn-roebuck-n	Number=Plur	dema	0			agid
+roebuck	0	oewn-roebuck-n	Number=Plur	dema	0			llm
 roebuck	1	oewn-roebuck-n	Number=Sing	dema	0			oewn_form
 roebucks	0	oewn-roebuck-n	Number=Plur	dema	0			rule_variant
 roemer	0		Number=Sing	dema	0	roemer	n	moby_reverse
@@ -17246,7 +17235,7 @@ roentgenoscopy	0		Number=Sing	dema	0	roentgenoscopy	n	moby_reverse
 roentgenotherapies	0		Number=Plur	dema	0	roentgenotherapy	n	rule
 roentgenotherapy	0		Number=Sing	dema	0	roentgenotherapy	n	moby_reverse
 roentgens	0	oewn-roentgen-n	Number=Plur	dema	0			rule
-roes	0	oewn-roe-n	Number=Plur	dema	0			rule_variant
+roes	0	oewn-roe-n	Number=Plur	dema	0			llm
 rofecoxib	0	oewn-rofecoxib-n	Number=Sing	dema	0			oewn_form
 rofecoxibs	0	oewn-rofecoxib-n	Number=Plur	dema	0			rule
 rogation	0	oewn-rogation-n	Number=Sing	dema	0			oewn_form
@@ -17300,11 +17289,11 @@ role models	0	oewn-role_model-n	Number=Plur	dema	0			rule
 role player	0	oewn-role_player-n	Number=Sing	dema	0			oewn_form
 role players	0	oewn-role_player-n	Number=Plur	dema	0			rule
 roleplay	0	oewn-roleplay-v	VerbForm=Inf	dema	0			oewn_form
-roleplayed	0	oewn-roleplay-v	Tense=Past+VerbForm=Part	dema	0			rule
+roleplayed	0	oewn-roleplay-v	Tense=Past+VerbForm=Part	dema	0			llm
 roleplaying	0	oewn-roleplaying-n	Number=Sing	dema	0			oewn_form
-roleplaying	1	oewn-roleplay-v	VerbForm=Ger	dema	0			rule
+roleplaying	1	oewn-roleplay-v	VerbForm=Ger	dema	0			llm
 roleplayings	0	oewn-roleplaying-n	Number=Plur	dema	0			rule
-roleplays	0	oewn-roleplay-v	Person=3+Tense=Pres	dema	0			rule
+roleplays	0	oewn-roleplay-v	Person=3+Tense=Pres	dema	0			llm
 roles	0	oewn-role-n	Number=Plur	dema	0			rule
 roll	0	oewn-roll-n	Number=Sing	dema	1			carried
 roll	1	oewn-roll-v	VerbForm=Inf	dema	1			carried
@@ -18082,7 +18071,7 @@ rotatory	0	oewn-rotatory-a	Degree=Pos	dema	0			oewn_form
 rotatory joint	0	oewn-rotatory_joint-n	Number=Sing	dema	0			oewn_form
 rotatory joints	0	oewn-rotatory_joint-n	Number=Plur	dema	0			rule
 rotavirus	0	oewn-rotavirus-n	Number=Sing	dema	0			oewn_form
-rotaviruses	0	oewn-rotavirus-n	Number=Plur	dema	0			rule
+rotaviruses	0	oewn-rotavirus-n	Number=Plur	dema	0			llm
 rote	0	oewn-rote-n	Number=Sing	dema	0			oewn_form
 rote learning	0	oewn-rote_learning-n	Number=Sing	dema	0			oewn_form
 rote learnings	0	oewn-rote_learning-n	Number=Plur	dema	0			rule
@@ -18229,12 +18218,13 @@ roughages	0	oewn-roughage-n	Number=Plur	dema	0			rule
 roughcast	0	oewn-roughcast-n	Number=Sing	dema	0			oewn_form
 roughcast	1		Degree=Pos	dema	0	roughcast	a	moby_reverse
 roughcast	2	oewn-roughcast-v	VerbForm=Inf	dema	0			oewn_form
-roughcast	3	oewn-roughcast-v	Tense=Past+VerbForm=Part	dema	0			agid
+roughcast	3	oewn-roughcast-v	Tense=Past+VerbForm=Part	dema	0			llm
+roughcasted	0	oewn-roughcast-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 roughcaster	0		Number=Sing	dema	0	roughcaster	n	moby_reverse
 roughcasters	0		Number=Plur	dema	0	roughcaster	n	rule
-roughcasting	0	oewn-roughcast-v	VerbForm=Ger	dema	0			rule
+roughcasting	0	oewn-roughcast-v	VerbForm=Ger	dema	0			llm
 roughcasts	0	oewn-roughcast-n	Number=Plur	dema	0			rule
-roughcasts	1	oewn-roughcast-v	Person=3+Tense=Pres	dema	0			rule
+roughcasts	1	oewn-roughcast-v	Person=3+Tense=Pres	dema	0			llm
 roughdried	0	oewn-roughdried-a	Degree=Pos	dema	0			oewn_form
 roughed	0	oewn-rough-v	Tense=Past+VerbForm=Part	dema	0			rule
 roughed in	0	oewn-rough_in-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -18247,10 +18237,10 @@ roughener	0		Number=Sing	dema	0	roughener	n	moby_reverse
 rougheners	0		Number=Plur	dema	0	roughener	n	rule
 roughening	0	oewn-roughen-v	VerbForm=Ger	dema	0			rule
 roughens	0	oewn-roughen-v	Person=3+Tense=Pres	dema	0			rule
-rougher	0	oewn-rough-a	Degree=Cmp	dema	0			rule
+rougher	0	oewn-rough-a	Degree=Cmp	dema	0			llm
 rougher	1		Number=Sing	dema	0	rougher	n	moby_reverse
 roughers	0		Number=Plur	dema	0	rougher	n	rule
-roughest	0	oewn-rough-a	Degree=Sup	dema	0			rule
+roughest	0	oewn-rough-a	Degree=Sup	dema	0			llm
 roughhewn	0	oewn-roughhewn-a	Degree=Pos	dema	0			oewn_form
 roughhouse	0		Number=Sing	dema	0	roughhouse	n	moby_reverse
 roughhouse	1	oewn-roughhouse-v	VerbForm=Inf	dema	0			oewn_form
@@ -18404,10 +18394,10 @@ roundelay	0	oewn-roundelay-n	Number=Sing	dema	0			oewn_form
 roundelays	0	oewn-roundelay-n	Number=Plur	dema	0			rule
 roundels	0	oewn-roundel-n	Number=Plur	dema	0			rule
 rounder	0	oewn-rounder-n	Number=Sing	dema	0			oewn_form
-rounder	1	oewn-round-a	Degree=Cmp	dema	0			rule
+rounder	1	oewn-round-a	Degree=Cmp	dema	0			llm
 rounders	0	oewn-rounder-n	Number=Plur	dema	0			rule
 rounders	1	oewn-rounders-n	Number=Sing	dema	0			oewn_form
-roundest	0	oewn-round-a	Degree=Sup	dema	0			rule
+roundest	0	oewn-round-a	Degree=Sup	dema	0			llm
 roundhead	0	oewn-roundhead-n	Number=Sing	dema	0			oewn_form
 roundheaded	0	oewn-roundheaded-a	Degree=Pos	dema	0			oewn_form
 roundheaded	1		VerbForm=Inf	dema	0	roundheaded	v	moby_reverse
@@ -18435,7 +18425,7 @@ roundline	0		Number=Sing	dema	0	roundline	n	moby_reverse
 roundlines	0		Number=Plur	dema	0	roundline	n	rule
 roundly	0	oewn-roundly-r	Degree=Pos	dema	0			oewn_form
 roundness	0	oewn-roundness-n	Number=Sing	dema	0			oewn_form
-roundnesses	0	oewn-roundness-n	Number=Plur	dema	0			rule
+roundnesses	0	oewn-roundness-n	Number=Plur	dema	0			llm
 rounds	0	oewn-round-n	Number=Plur	dema	0			rule
 rounds	1	oewn-round-v	Person=3+Tense=Pres	dema	0			rule
 rounds down	0	oewn-round_down-v	Person=3+Tense=Pres	dema	0			rule
@@ -18445,10 +18435,11 @@ rounds off	0	oewn-round_off-v	Person=3+Tense=Pres	dema	0			rule
 rounds out	0	oewn-round_out-v	Person=3+Tense=Pres	dema	0			rule
 rounds up	0	oewn-round_up-v	Person=3+Tense=Pres	dema	0			rule
 roundsman	0	oewn-roundsman-n	Number=Sing	dema	0			oewn_form
+roundsmen	0	oewn-roundsman-n	Number=Plur	dema	0			llm
 roundsperson	0	oewn-roundsperson-n	Number=Sing	dema	0			oewn_form
 roundspersons	0	oewn-roundsperson-n	Number=Plur	dema	0			rule
 roundswoman	0	oewn-roundswoman-n	Number=Sing	dema	0			oewn_form
-roundswomans	0	oewn-roundswoman-n	Number=Plur	dema	0			rule
+roundswomen	0	oewn-roundswoman-n	Number=Plur	dema	0			rule
 roundtable	0	oewn-roundtable-n	Number=Sing	dema	0			oewn_form
 roundtables	0	oewn-roundtable-n	Number=Plur	dema	0			rule
 roundup	0	oewn-roundup-n	Number=Sing	dema	0			oewn_form
@@ -18495,12 +18486,11 @@ routed	1	oewn-route-v	Tense=Past+VerbForm=Part	dema	0			rule
 routed out	0	oewn-rout_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 routed up	0	oewn-rout_up-v	Tense=Past+VerbForm=Part	dema	0			rule
 routeman	0		Number=Sing	dema	0	routeman	n	moby_reverse
-routemans	0		Number=Plur	dema	0	routeman	n	rule
 routemarch	0	oewn-routemarch-n	Number=Sing	dema	0			oewn_form
 routemarch	1		VerbForm=Inf	dema	0	routemarch	v	moby_reverse
 routemarches	0	oewn-routemarch-n	Number=Plur	dema	0			rule
-routemen	0		Number=Sing	dema	0	routemen	n	moby_reverse
-routemens	0		Number=Plur	dema	0	routemen	n	rule
+routemen	0		Number=Plur	dema	0	routeman	n	rule
+routemen	1		Number=Sing	dema	0	routemen	n	moby_reverse
 router	0	oewn-router-n-1	Number=Sing	dema	0			oewn_form
 router	1	oewn-router-n-2	Number=Sing	dema	0			oewn_form
 router plane	0	oewn-router_plane-n	Number=Sing	dema	0			oewn_form
@@ -18721,7 +18711,7 @@ rubasse	1		Degree=Pos	dema	0	rubasse	r	moby_reverse
 rubasses	0		Number=Plur	dema	0	rubasse	n	rule
 rubati	0	oewn-rubato-n	Number=Plur	dema	0			rule_variant
 rubato	0	oewn-rubato-n	Number=Sing	dema	0			oewn_form
-rubatos	0	oewn-rubato-n	Number=Plur	dema	0			rule_variant
+rubatos	0	oewn-rubato-n	Number=Plur	dema	0			llm
 rubbed	0	oewn-rub-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 rubbed along	0	oewn-rub_along-v	Tense=Past+VerbForm=Part	dema	0			rule
 rubbed down	0	oewn-rub_down-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -18849,9 +18839,9 @@ rubidium-strontium datings	0	oewn-rubidium-strontium_dating-n	Number=Plur	dema	0
 rubidiums	0	oewn-rubidium-n	Number=Plur	dema	0			rule
 rubied	0		Degree=Pos	dema	0	rubied	a	moby_reverse
 rubied	1		VerbForm=Inf	dema	0	rubied	v	moby_reverse
-rubier	0	oewn-ruby-a	Degree=Cmp	dema	0			rule
+rubier	0	oewn-ruby-a	Degree=Cmp	dema	0			llm
 rubies	0	oewn-ruby-n	Number=Plur	dema	0			rule
-rubiest	0	oewn-ruby-a	Degree=Sup	dema	0			rule
+rubiest	0	oewn-ruby-a	Degree=Sup	dema	0			llm
 rubified	0	oewn-rubify-v	Tense=Past+VerbForm=Part	dema	0			rule
 rubifies	0	oewn-rubify-v	Person=3+Tense=Pres	dema	0			rule
 rubify	0		Degree=Pos	dema	0	rubify	a	moby_reverse
@@ -18922,7 +18912,7 @@ rucks up	0	oewn-ruck_up-v	Person=3+Tense=Pres	dema	0			rule
 rucksack	0	oewn-rucksack-n	Number=Sing	dema	0			oewn_form
 rucksacks	0	oewn-rucksack-n	Number=Plur	dema	0			rule
 ruckus	0	oewn-ruckus-n	Number=Sing	dema	0			oewn_form
-ruckuses	0	oewn-ruckus-n	Number=Plur	dema	0			rule
+ruckuses	0	oewn-ruckus-n	Number=Plur	dema	0			llm
 ruction	0	oewn-ruction-n	Number=Sing	dema	0			oewn_form
 ructions	0	oewn-ruction-n	Number=Plur	dema	0			rule
 rudaceous	0		Degree=Pos	dema	0	rudaceous	a	moby_reverse
@@ -18936,8 +18926,9 @@ rudder	0	oewn-rudder-n	Number=Sing	dema	0			oewn_form
 rudder blade	0	oewn-rudder_blade-n	Number=Sing	dema	0			oewn_form
 rudder blades	0	oewn-rudder_blade-n	Number=Plur	dema	0			rule
 rudder-like	0	oewn-rudder-like-a	Degree=Pos	dema	0			oewn_form
-rudderfish	0	oewn-rudderfish-n	Number=Plur	dema	0			agid
+rudderfish	0	oewn-rudderfish-n	Number=Plur	dema	0			llm
 rudderfish	1	oewn-rudderfish-n	Number=Sing	dema	0			oewn_form
+rudderfishes	0	oewn-rudderfish-n	Number=Plur	dema	0			rule_variant
 rudderhead	0		Number=Sing	dema	0	rudderhead	n	moby_reverse
 rudderheads	0		Number=Plur	dema	0	rudderhead	n	rule
 rudderless	0	oewn-rudderless-a	Degree=Pos	dema	0			oewn_form
@@ -18956,9 +18947,8 @@ ruddle	0	oewn-ruddle-v	VerbForm=Inf	dema	0			oewn_form
 ruddle	1	oewn-ruddle-n	Number=Sing	dema	0			oewn_form
 ruddled	0	oewn-ruddle-v	Tense=Past+VerbForm=Part	dema	0			rule
 ruddleman	0		Number=Sing	dema	0	ruddleman	n	moby_reverse
-ruddlemans	0		Number=Plur	dema	0	ruddleman	n	rule
-ruddlemen	0		Number=Sing	dema	0	ruddlemen	n	moby_reverse
-ruddlemens	0		Number=Plur	dema	0	ruddlemen	n	rule
+ruddlemen	0		Number=Plur	dema	0	ruddleman	n	rule
+ruddlemen	1		Number=Sing	dema	0	ruddlemen	n	moby_reverse
 ruddles	0	oewn-ruddle-v	Person=3+Tense=Pres	dema	0			rule
 ruddles	1	oewn-ruddle-n	Number=Plur	dema	0			rule
 ruddles	2	oewn-ruddles-n	Number=Sing	dema	0			oewn_form
@@ -19141,8 +19131,8 @@ rules of morphology	0	oewn-rule_of_morphology-n	Number=Plur	dema	0			rule
 rules of order	0	oewn-rules_of_order-n	Number=Sing	dema	0			oewn_form
 rules of thumb	0	oewn-rule_of_thumb-n	Number=Plur	dema	0			rule
 rules out	0	oewn-rule_out-v	Person=3+Tense=Pres	dema	0			rule
-rulier	0	oewn-ruly-a	Degree=Cmp	dema	0			rule
-ruliest	0	oewn-ruly-a	Degree=Sup	dema	0			rule
+rulier	0	oewn-ruly-a	Degree=Cmp	dema	0			llm
+ruliest	0	oewn-ruly-a	Degree=Sup	dema	0			llm
 ruling	0	oewn-rule-v	VerbForm=Ger	dema	1			carried
 ruling	1	oewn-ruling-a	Degree=Pos	dema	0			carried
 ruling	2	oewn-rule-n	Number=Sing+VerbForm=Ger	dema	1			carried
@@ -19219,12 +19209,12 @@ rummages	0	oewn-rummage-v	Person=3+Tense=Pres	dema	0			rule
 rummages	1	oewn-rummage-n	Number=Plur	dema	0			rule
 rummaging	0	oewn-rummage-v	VerbForm=Ger	dema	0			rule
 rummer	0	oewn-rummer-n	Number=Sing	dema	0			oewn_form
-rummer	1	oewn-rum-a	Degree=Cmp	dema	0			rule
+rummer	1	oewn-rum-a	Degree=Cmp	dema	0			llm
 rummers	0	oewn-rummer-n	Number=Plur	dema	0			rule
-rummest	0	oewn-rum-a	Degree=Sup	dema	0			rule
-rummier	0	oewn-rummy-a	Degree=Cmp	dema	0			rule
+rummest	0	oewn-rum-a	Degree=Sup	dema	0			llm
+rummier	0	oewn-rummy-a	Degree=Cmp	dema	0			llm
 rummies	0	oewn-rummy-n	Number=Plur	dema	0			rule
-rummiest	0	oewn-rummy-a	Degree=Sup	dema	0			rule
+rummiest	0	oewn-rummy-a	Degree=Sup	dema	0			llm
 rummy	0	oewn-rummy-n	Number=Sing	dema	0			oewn_form
 rummy	1	oewn-rummy-a	Degree=Pos	dema	0			oewn_form
 rumor	0	oewn-rumor-v	VerbForm=Inf	dema	0			oewn_form
@@ -19419,7 +19409,7 @@ running plays	0	oewn-running_play-n	Number=Plur	dema	0			rule
 running pop	0	oewn-running_pop-n	Number=Sing	dema	0			oewn_form
 running pops	0	oewn-running_pop-n	Number=Plur	dema	0			rule
 running postman	0	oewn-running_postman-n	Number=Sing	dema	0			oewn_form
-running postmans	0	oewn-running_postman-n	Number=Plur	dema	0			rule
+running postmen	0	oewn-running_postman-n	Number=Plur	dema	0			rule
 running roughshod	0	oewn-run_roughshod-v	VerbForm=Ger	dema	0			rule
 running shoe	0	oewn-running_shoe-n	Number=Sing	dema	0			oewn_form
 running shoes	0	oewn-running_shoe-n	Number=Plur	dema	0			rule
@@ -19494,7 +19484,7 @@ rupestrine plant	0	oewn-rupestrine_plant-n	Number=Sing	dema	0			oewn_form
 rupestrine plants	0	oewn-rupestrine_plant-n	Number=Plur	dema	0			rule
 rupiah	0	oewn-rupiah-n	Number=Plur	dema	0			rule_variant
 rupiah	1	oewn-rupiah-n	Number=Sing	dema	0			oewn_form
-rupiahs	0	oewn-rupiah-n	Number=Plur	dema	0			rule_variant
+rupiahs	0	oewn-rupiah-n	Number=Plur	dema	0			llm
 rupicolous	0	oewn-rupicolous-a	Degree=Pos	dema	0			oewn_form
 rupicolous plant	0	oewn-rupicolous_plant-n	Number=Sing	dema	0			oewn_form
 rupicolous plants	0	oewn-rupicolous_plant-n	Number=Plur	dema	0			rule

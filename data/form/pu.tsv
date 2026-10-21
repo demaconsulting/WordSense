@@ -80,8 +80,6 @@ Purple Hearts	1	oewn-Purple_Heart-n	Capitalization=Title+Number=Plur	dema	0			ru
 Pus	0	oewn-pus-n	Number=Sing	dema	0			oewn_form
 Pus	1	oewn-Pus-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Pus	2	oewn-Pu-n	Capitalization=Title+Number=Plur	dema	0			rule
-Puses	0	oewn-pus-n	Number=Plur	dema	0			rule
-Puses	1	oewn-Pus-n	Capitalization=Title+Number=Plur	dema	0			rule
 Puseyism	0	oewn-Puseyism-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Puseyisms	0	oewn-Puseyism-n	Capitalization=Title+Number=Plur	dema	0			rule
 Pushtun	0	oewn-Pushtun-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
@@ -98,9 +96,8 @@ pubertal	0	oewn-pubertal-a	Degree=Pos	dema	0			oewn_form
 puberties	0	oewn-puberty-n	Number=Plur	dema	0			rule
 puberty	0	oewn-puberty-n	Number=Sing	dema	0			oewn_form
 puberulent	0	oewn-puberulent-a	Degree=Pos	dema	0			oewn_form
-pubes	0	oewn-pubes-n	Number=Plur	dema	0			agid
-pubes	1	oewn-pubes-n	Number=Sing	dema	0			oewn_form
-pubes	2	oewn-pubis-n	Number=Plur	dema	0			oewn_form
+pubes	0	oewn-pubes-n	Number=Sing	dema	0			oewn_form
+pubes	1	oewn-pubis-n	Number=Plur	dema	0			oewn_form
 pubescence	0	oewn-pubescence-n	Number=Sing	dema	0			oewn_form
 pubescences	0	oewn-pubescence-n	Number=Plur	dema	0			rule
 pubescent	0	oewn-pubescent-a	Degree=Pos	dema	0			oewn_form
@@ -185,11 +182,11 @@ public record	0	oewn-public_record-n	Number=Sing	dema	0			oewn_form
 public records	0	oewn-public_record-n	Number=Plur	dema	0			rule
 public relations	0	oewn-public_relations-n	Number=Sing	dema	0			oewn_form
 public relations man	0	oewn-public_relations_man-n	Number=Sing	dema	0			oewn_form
-public relations mans	0	oewn-public_relations_man-n	Number=Plur	dema	0			rule
+public relations men	0	oewn-public_relations_man-n	Number=Plur	dema	0			rule
 public relations person	0	oewn-public_relations_person-n	Number=Sing	dema	0			oewn_form
 public relations persons	0	oewn-public_relations_person-n	Number=Plur	dema	0			rule
 public relations woman	0	oewn-public_relations_woman-n	Number=Sing	dema	0			oewn_form
-public relations womans	0	oewn-public_relations_woman-n	Number=Plur	dema	0			rule
+public relations women	0	oewn-public_relations_woman-n	Number=Plur	dema	0			rule
 public school	0	oewn-public_school-n	Number=Sing	dema	0			oewn_form
 public schools	0	oewn-public_school-n	Number=Plur	dema	0			rule
 public securities	0	oewn-public_security-n	Number=Plur	dema	0			rule
@@ -243,9 +240,9 @@ publicists	0	oewn-publicist-n	Number=Plur	dema	0			rule
 publicities	0	oewn-publicity-n	Number=Plur	dema	0			rule
 publicity	0	oewn-publicity-n	Number=Sing	dema	0			oewn_form
 publicity man	0	oewn-publicity_man-n	Number=Sing	dema	0			oewn_form
-publicity mans	0	oewn-publicity_man-n	Number=Plur	dema	0			rule
+publicity men	0	oewn-publicity_man-n	Number=Plur	dema	0			rule
 publicity woman	0	oewn-publicity_woman-n	Number=Sing	dema	0			oewn_form
-publicity womans	0	oewn-publicity_woman-n	Number=Plur	dema	0			rule
+publicity women	0	oewn-publicity_woman-n	Number=Plur	dema	0			rule
 publicize	0	oewn-publicize-v	VerbForm=Inf	dema	0			oewn_form
 publicized	0	oewn-publicize-v	Tense=Past+VerbForm=Part	dema	0			rule
 publicized	1	oewn-publicized-a	Degree=Pos	dema	0			oewn_form
@@ -329,13 +326,12 @@ pudding stones	0	oewn-pudding_stone-n	Number=Plur	dema	0			rule
 pudding-face	0	oewn-pudding-face-n	Number=Sing	dema	0			oewn_form
 pudding-faces	0	oewn-pudding-face-n	Number=Plur	dema	0			rule
 pudding-wife	0	oewn-pudding-wife-n	Number=Sing	dema	0			oewn_form
-pudding-wifes	0	oewn-pudding-wife-n	Number=Plur	dema	0			rule
+pudding-wives	0	oewn-pudding-wife-n	Number=Plur	dema	0			rule
 puddingheaded	0	oewn-puddingheaded-a	Degree=Pos	dema	0			oewn_form
 puddinglike	0		Degree=Pos	dema	0	puddinglike	a	moby_reverse
 puddings	0	oewn-pudding-n	Number=Plur	dema	0			rule
 puddingwife	0	oewn-puddingwife-n	Number=Sing	dema	0			oewn_form
-puddingwifes	0	oewn-puddingwife-n	Number=Plur	dema	0			rule
-puddingwives	0		Number=Sing	dema	0	puddingwives	n	moby_reverse
+puddingwives	0	oewn-puddingwife-n	Number=Plur	dema	0			rule
 puddle	0	oewn-puddle-n	Number=Sing	dema	0			oewn_form
 puddle	1	oewn-puddle-v	VerbForm=Inf	dema	0			oewn_form
 puddled	0	oewn-puddle-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -416,12 +412,13 @@ puffed up	0	oewn-puff_up-v	Tense=Past+VerbForm=Part	dema	0			rule
 puffed wheat	0	oewn-puffed_wheat-n	Number=Sing	dema	0			oewn_form
 puffed wheats	0	oewn-puffed_wheat-n	Number=Plur	dema	0			rule
 puffer	0	oewn-puffer-n	Number=Sing	dema	0			oewn_form
-puffer	1	oewn-puff-a	Degree=Cmp	dema	0			rule
+puffer	1	oewn-puff-a	Degree=Cmp	dema	0			llm
 pufferfish	0	oewn-pufferfish-n	Number=Sing	dema	0			oewn_form
 pufferfishes	0	oewn-pufferfish-n	Number=Plur	dema	0			rule
 pufferies	0	oewn-puffery-n	Number=Plur	dema	0			rule
 puffers	0	oewn-puffer-n	Number=Plur	dema	0			rule
 puffery	0	oewn-puffery-n	Number=Sing	dema	0			oewn_form
+puffest	0	oewn-puff-a	Degree=Sup	dema	0			llm
 puffier	0	oewn-puffy-a	Degree=Cmp	dema	0			oewn_form
 puffiest	0	oewn-puffy-a	Degree=Sup	dema	0			oewn_form
 puffin	0	oewn-puffin-n	Number=Sing	dema	0			oewn_form
@@ -678,11 +675,11 @@ pulls up stakes	0	oewn-pull_up_stakes-v	Person=3+Tense=Pres	dema	0			rule
 pulls wires	0	oewn-pull_wires-v	Person=3+Tense=Pres	dema	0			rule
 pullulate	0	oewn-pullulate-v	VerbForm=Inf	dema	0			oewn_form
 pullulate with	0	oewn-pullulate_with-v	VerbForm=Inf	dema	0			oewn_form
-pullulated	0	oewn-pullulate-v	Tense=Past+VerbForm=Part	dema	0			rule
+pullulated	0	oewn-pullulate-v	Tense=Past+VerbForm=Part	dema	0			llm
 pullulated with	0	oewn-pullulate_with-v	Tense=Past+VerbForm=Part	dema	0			rule
-pullulates	0	oewn-pullulate-v	Person=3+Tense=Pres	dema	0			rule
+pullulates	0	oewn-pullulate-v	Person=3+Tense=Pres	dema	0			llm
 pullulates with	0	oewn-pullulate_with-v	Person=3+Tense=Pres	dema	0			rule
-pullulating	0	oewn-pullulate-v	VerbForm=Ger	dema	0			rule
+pullulating	0	oewn-pullulate-v	VerbForm=Ger	dema	0			llm
 pullulating with	0	oewn-pullulate_with-v	VerbForm=Ger	dema	0			rule
 pullulation	0	oewn-pullulation-n	Number=Sing	dema	0			oewn_form
 pullulations	0	oewn-pullulation-n	Number=Plur	dema	0			rule
@@ -833,9 +830,8 @@ pulvinately	0		Degree=Pos	dema	0	pulvinately	r	moby_reverse
 pulvinni	0		Number=Sing	dema	0	pulvinni	n	moby_reverse
 pulvinnis	0		Number=Plur	dema	0	pulvinni	n	rule
 pulvinus	0		Number=Sing	dema	0	pulvinus	n	moby_reverse
-puma	0	oewn-puma-n	Number=Plur	dema	0			rule_variant
-puma	1	oewn-puma-n	Number=Sing	dema	0			oewn_form
-pumas	0	oewn-puma-n	Number=Plur	dema	0			rule_variant
+puma	0	oewn-puma-n	Number=Sing	dema	0			oewn_form
+pumas	0	oewn-puma-n	Number=Plur	dema	0			llm
 pumice	0	oewn-pumice-n	Number=Sing	dema	0			oewn_form
 pumice	1	oewn-pumice-v	VerbForm=Inf	dema	0			oewn_form
 pumice stone	0	oewn-pumice_stone-n	Number=Sing	dema	0			oewn_form
@@ -892,9 +888,8 @@ pumpkins	0	oewn-pumpkin-n	Number=Plur	dema	0			rule
 pumpkinseed	0	oewn-pumpkinseed-n	Number=Sing	dema	0			oewn_form
 pumpkinseeds	0	oewn-pumpkinseed-n	Number=Plur	dema	0			rule
 pumpman	0		Number=Sing	dema	0	pumpman	n	moby_reverse
-pumpmans	0		Number=Plur	dema	0	pumpman	n	rule
-pumpmen	0		Number=Sing	dema	0	pumpmen	n	moby_reverse
-pumpmens	0		Number=Plur	dema	0	pumpmen	n	rule
+pumpmen	0		Number=Plur	dema	0	pumpman	n	rule
+pumpmen	1		Number=Sing	dema	0	pumpmen	n	moby_reverse
 pumps	0	oewn-pump-n	Number=Plur	dema	1			carried
 pumps	1	oewn-pump-v	Person=3+Tense=Pres	dema	1			carried
 pumpwell	0		Number=Sing	dema	0	pumpwell	n	moby_reverse
@@ -1055,8 +1050,8 @@ punkah	0	oewn-punkah-n	Number=Sing	dema	0			oewn_form
 punkah	1		Degree=Pos	dema	0	punkah	a	moby_reverse
 punkahs	0	oewn-punkah-n	Number=Plur	dema	0			rule
 punkas	0		Number=Plur	dema	0	punka	n	rule
-punker	0	oewn-punk-a	Degree=Cmp	dema	0			rule
-punkest	0	oewn-punk-a	Degree=Sup	dema	0			rule
+punker	0	oewn-punk-a	Degree=Cmp	dema	0			llm
+punkest	0	oewn-punk-a	Degree=Sup	dema	0			llm
 punkey	0	oewn-punkey-n	Number=Sing	dema	0			oewn_form
 punkeys	0	oewn-punkey-n	Number=Plur	dema	0			rule
 punkie	0	oewn-punkie-n	Number=Sing	dema	0			oewn_form
@@ -1070,8 +1065,8 @@ punner	0		Number=Sing	dema	0	punner	n	moby_reverse
 punners	0		Number=Plur	dema	0	punner	n	rule
 punnet	0	oewn-punnet-n	Number=Sing	dema	0			oewn_form
 punnets	0	oewn-punnet-n	Number=Plur	dema	0			rule
-punnier	0	oewn-punny-a	Degree=Cmp	dema	0			rule
-punniest	0	oewn-punny-a	Degree=Sup	dema	0			rule
+punnier	0	oewn-punny-a	Degree=Cmp	dema	0			llm
+punniest	0	oewn-punny-a	Degree=Sup	dema	0			llm
 punning	0	oewn-pun-v	VerbForm=Ger	dema	0			oewn_form
 punning	1	oewn-punning-n	Number=Sing	dema	0			oewn_form
 punnings	0	oewn-punning-n	Number=Plur	dema	0			rule
@@ -1439,10 +1434,10 @@ purpleheart	0		Number=Sing	dema	0	purpleheart	n	moby_reverse
 purplehearts	0		Number=Plur	dema	0	purpleheart	n	rule
 purpleness	0	oewn-purpleness-n	Number=Sing	dema	0			oewn_form
 purplenesses	0	oewn-purpleness-n	Number=Plur	dema	0			rule
-purpler	0	oewn-purple-a	Degree=Cmp	dema	0			rule
+purpler	0	oewn-purple-a	Degree=Cmp	dema	0			llm
 purples	0	oewn-purple-n	Number=Plur	dema	0			rule
 purples	1	oewn-purple-v	Person=3+Tense=Pres	dema	0			rule
-purplest	0	oewn-purple-a	Degree=Sup	dema	0			rule
+purplest	0	oewn-purple-a	Degree=Sup	dema	0			llm
 purpling	0	oewn-purple-v	VerbForm=Ger	dema	0			rule
 purplish	0	oewn-purplish-a	Degree=Pos	dema	0			oewn_form
 purplish blue	0	oewn-purplish_blue-n	Number=Sing	dema	0			oewn_form
@@ -1589,7 +1584,6 @@ purviews	0	oewn-purview-n	Number=Plur	dema	0			rule
 pus	0	oewn-pus-n	Number=Sing	dema	0			oewn_form
 pus-forming bacteria	0	oewn-pus-forming_bacteria-n	Number=Sing	dema	0			oewn_form
 pus-forming bacterias	0	oewn-pus-forming_bacteria-n	Number=Plur	dema	0			rule
-puses	0	oewn-pus-n	Number=Plur	dema	0			rule
 push	0	oewn-push-n	Number=Sing	dema	1			carried
 push	1	oewn-push-v	VerbForm=Inf	dema	1			carried
 push around	0	oewn-push_around-v	VerbForm=Inf	dema	0			oewn_form
@@ -1859,7 +1853,7 @@ putt	0	oewn-putt-n	Number=Sing	dema	0			oewn_form
 putt	1	oewn-putt-v	VerbForm=Inf	dema	0			oewn_form
 putted	0	oewn-putt-v	Tense=Past+VerbForm=Part	dema	0			rule
 puttee	0	oewn-puttee-n	Number=Sing	dema	0			oewn_form
-puttees	0	oewn-puttee-n	Number=Plur	dema	0			rule
+puttees	0	oewn-puttee-n	Number=Plur	dema	0			llm
 putter	0	oewn-putter-n	Number=Sing	dema	0			oewn_form
 putter	1	oewn-putter-v	VerbForm=Inf	dema	0			oewn_form
 putter around	0	oewn-putter_around-v	VerbForm=Inf	dema	0			oewn_form

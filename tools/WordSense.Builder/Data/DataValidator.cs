@@ -690,7 +690,7 @@ internal sealed partial class DataValidator
 
     private static readonly HashSet<string> ClosedClass = new(["u", "p", "c", "i", "d", "x"], StringComparer.Ordinal);
 
-    private static readonly HashSet<string> SurfaceProvenance = new(["moby_reverse", "rule", "rule_variant", "agid", "irregular_list", "hand", "llm"], StringComparer.Ordinal);
+    private static readonly HashSet<string> SurfaceProvenance = new(["moby_reverse", "rule", "rule_variant", "irregular_list", "hand", "llm"], StringComparer.Ordinal);
 
     // ---- forms ----
 

@@ -130,7 +130,6 @@ skeletons	0	oewn-skeleton-n	Number=Plur	dema	0			rule
 skeletons in the closet	0	oewn-skeleton_in_the_closet-n	Number=Plur	dema	0			rule
 skeletons in the cupboard	0	oewn-skeleton_in_the_cupboard-n	Number=Plur	dema	0			rule
 skelf	0		Number=Sing	dema	0	skelf	n	moby_reverse
-skelfs	0		Number=Plur	dema	0	skelf	n	rule
 skellies	0		Number=Plur	dema	0	skelly	n	rule
 skellum	0		Number=Sing	dema	0	skellum	n	moby_reverse
 skellums	0		Number=Plur	dema	0	skellum	n	rule
@@ -141,6 +140,7 @@ skelp	1		Number=Sing	dema	0	skelp	n	moby_reverse
 skelped	0		Tense=Past+VerbForm=Part	dema	0	skelp	v	rule
 skelping	0		VerbForm=Ger	dema	0	skelp	v	rule
 skelps	0		Person=3+Tense=Pres	dema	0	skelp	v	rule
+skelves	0		Number=Plur	dema	0	skelf	n	rule
 sken	0		VerbForm=Inf	dema	0	sken	v	moby_reverse
 skene arch	0	oewn-skene_arch-n	Number=Sing	dema	0			oewn_form
 skene arches	0	oewn-skene_arch-n	Number=Plur	dema	0			rule
@@ -157,7 +157,8 @@ skeptical	0	oewn-skeptical-a	Degree=Pos	dema	0			oewn_form
 skeptically	0	oewn-skeptically-r	Degree=Pos	dema	0			oewn_form
 skepticism	0	oewn-skepticism-n	Number=Sing	dema	0			oewn_form
 skepticisms	0	oewn-skepticism-n	Number=Plur	dema	0			rule
-skeptics	0	oewn-skeptic-n	Number=Plur	dema	0			rule
+skeptics	0	oewn-sceptic-n	Number=Plur	dema	0			rule_variant
+skeptics	1	oewn-skeptic-n	Number=Plur	dema	0			rule
 skeptophylaxis	0		Number=Sing	dema	0	skeptophylaxis	n	moby_reverse
 skerrick	0		Number=Sing	dema	0	skerrick	n	moby_reverse
 skerricks	0		Number=Plur	dema	0	skerrick	n	rule
@@ -189,7 +190,7 @@ sketchier	0	oewn-sketchy-a	Degree=Cmp	dema	0			oewn_form
 sketchiest	0	oewn-sketchy-a	Degree=Sup	dema	0			oewn_form
 sketchily	0	oewn-sketchily-r	Degree=Pos	dema	0			oewn_form
 sketchiness	0	oewn-sketchiness-n	Number=Sing	dema	0			oewn_form
-sketchinesses	0	oewn-sketchiness-n	Number=Plur	dema	0			rule
+sketchinesses	0	oewn-sketchiness-n	Number=Plur	dema	0			llm
 sketching	0	oewn-sketch-v	VerbForm=Ger	dema	1			carried
 sketching	1	oewn-sketch-n	Number=Sing+VerbForm=Ger	dema	1			carried
 sketching out	0	oewn-sketch_out-v	VerbForm=Ger	dema	0			rule
@@ -232,10 +233,9 @@ skewings	0		Number=Plur	dema	0	skewing	n	rule
 skewness	0	oewn-skewness-n	Number=Sing	dema	0			oewn_form
 skewnesses	0	oewn-skewness-n	Number=Plur	dema	0			rule
 skews	0	oewn-skew-v	Person=3+Tense=Pres	dema	0			rule
-ski	0	oewn-ski-n	Number=Plur	dema	0			rule_variant
-ski	1	oewn-ski-n	Number=Sing	dema	0			oewn_form
-ski	2	oewn-ski-v	VerbForm=Inf	dema	0			oewn_form
-ski	3		Degree=Pos	dema	0	ski	a	moby_reverse
+ski	0	oewn-ski-n	Number=Sing	dema	0			oewn_form
+ski	1	oewn-ski-v	VerbForm=Inf	dema	0			oewn_form
+ski	2		Degree=Pos	dema	0	ski	a	moby_reverse
 ski binding	0	oewn-ski_binding-n	Number=Sing	dema	0			oewn_form
 ski bindings	0	oewn-ski_binding-n	Number=Plur	dema	0			rule
 ski boot	0	oewn-ski_boot-n	Number=Sing	dema	0			oewn_form
@@ -334,13 +334,13 @@ skidways	0		Number=Plur	dema	0	skidway	n	rule
 skiech	0		Degree=Pos	dema	0	skiech	a	moby_reverse
 skiech	1		Degree=Pos	dema	0	skiech	r	moby_reverse
 skied	0	oewn-ski-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
-skied	1	oewn-sky-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+skied	1	oewn-sky-v	Tense=Past+VerbForm=Part	dema	0			llm
 skied dive	0	oewn-sky_dive-v	Tense=Past+VerbForm=Part	dema	0			rule
 skied jump	0	oewn-ski_jump-v	Tense=Past+VerbForm=Part	dema	0			rule
 skier	0	oewn-skier-n	Number=Sing	dema	0			oewn_form
 skiers	0	oewn-skier-n	Number=Plur	dema	0			rule
 skies	0	oewn-sky-n	Number=Plur	dema	0			rule
-skies	1	oewn-sky-v	Person=3+Tense=Pres	dema	0			rule
+skies	1	oewn-sky-v	Person=3+Tense=Pres	dema	0			llm
 skies dive	0	oewn-sky_dive-v	Person=3+Tense=Pres	dema	0			rule
 skiff	0	oewn-skiff-n	Number=Sing	dema	0			oewn_form
 skiffle	0	oewn-skiffle-n	Number=Sing	dema	0			oewn_form
@@ -370,9 +370,9 @@ skilled	1		VerbForm=Inf	dema	0	skilled	v	moby_reverse
 skilled worker	0	oewn-skilled_worker-n	Number=Sing	dema	0			oewn_form
 skilled workers	0	oewn-skilled_worker-n	Number=Plur	dema	0			rule
 skilled workman	0	oewn-skilled_workman-n	Number=Sing	dema	0			oewn_form
-skilled workmans	0	oewn-skilled_workman-n	Number=Plur	dema	0			rule
+skilled workmen	0	oewn-skilled_workman-n	Number=Plur	dema	0			rule
 skilled workwoman	0	oewn-skilled_workwoman-n	Number=Sing	dema	0			oewn_form
-skilled workwomans	0	oewn-skilled_workwoman-n	Number=Plur	dema	0			rule
+skilled workwomen	0	oewn-skilled_workwoman-n	Number=Plur	dema	0			rule
 skillessness	0	oewn-skillessness-n	Number=Sing	dema	0			oewn_form
 skillessnesses	0	oewn-skillessness-n	Number=Plur	dema	0			rule
 skillet	0	oewn-skillet-n	Number=Sing	dema	0			oewn_form
@@ -384,7 +384,7 @@ skillet corn bread	0	oewn-skillet_corn_bread-n	Number=Sing	dema	0			oewn_form
 skillet corn breads	0	oewn-skillet_corn_bread-n	Number=Plur	dema	0			rule
 skillet fish	0	oewn-skillet_fish-n	Number=Sing	dema	0			oewn_form
 skillet fishes	0	oewn-skillet_fish-n	Number=Plur	dema	0			rule
-skilletfish	0	oewn-skilletfish-n	Number=Plur	dema	0			agid
+skilletfish	0	oewn-skilletfish-n	Number=Plur	dema	0			llm
 skilletfish	1	oewn-skilletfish-n	Number=Sing	dema	0			oewn_form
 skilletfishes	0	oewn-skilletfish-n	Number=Plur	dema	0			rule_variant
 skillets	0	oewn-skillet-n	Number=Plur	dema	0			rule
@@ -550,7 +550,6 @@ skins	1	oewn-skin-v	Person=3+Tense=Pres	dema	0			rule
 skins over	0	oewn-skin_over-v	Person=3+Tense=Pres	dema	0			rule
 skins pop	0	oewn-skin_pop-v	Person=3+Tense=Pres	dema	0			rule
 skint	0	oewn-skint-a	Degree=Pos	dema	0			oewn_form
-skintest	0	oewn-skint-a	Degree=Sup	dema	0			rule
 skintight	0	oewn-skintight-a	Degree=Pos	dema	0			oewn_form
 skintle	0		VerbForm=Inf	dema	0	skintle	v	moby_reverse
 skintled	0		Tense=Past+VerbForm=Part	dema	0	skintle	v	rule
@@ -644,7 +643,7 @@ skirtlike	0		Degree=Pos	dema	0	skirtlike	a	moby_reverse
 skirts	0	oewn-skirt-n	Number=Plur	dema	0			rule
 skirts	1	oewn-skirt-v	Person=3+Tense=Pres	dema	0			rule
 skirts of tasses	0	oewn-skirt_of_tasses-n	Number=Plur	dema	0			rule
-skis	0	oewn-ski-n	Number=Plur	dema	0			rule_variant
+skis	0	oewn-ski-n	Number=Plur	dema	0			rule
 skis	1	oewn-ski-v	Person=3+Tense=Pres	dema	0			rule
 skis jump	0	oewn-ski_jump-v	Person=3+Tense=Pres	dema	0			rule
 skit	0	oewn-skit-n	Number=Sing	dema	0			oewn_form
@@ -736,9 +735,8 @@ skullcaps	0	oewn-skullcap-n	Number=Plur	dema	0			rule
 skullduggeries	0	oewn-skullduggery-n	Number=Plur	dema	0			rule
 skullduggery	0	oewn-skullduggery-n	Number=Sing	dema	0			oewn_form
 skulls	0	oewn-skull-n	Number=Plur	dema	0			rule
-skunk	0	oewn-skunk-n	Number=Plur	dema	0			agid
-skunk	1	oewn-skunk-n	Number=Sing	dema	0			oewn_form
-skunk	2	oewn-skunk-v	VerbForm=Inf	dema	0			oewn_form
+skunk	0	oewn-skunk-n	Number=Sing	dema	0			oewn_form
+skunk	1	oewn-skunk-v	VerbForm=Inf	dema	0			oewn_form
 skunk bear	0	oewn-skunk_bear-n	Number=Sing	dema	0			oewn_form
 skunk bears	0	oewn-skunk_bear-n	Number=Plur	dema	0			rule
 skunk cabbage	0	oewn-skunk_cabbage-n	Number=Sing	dema	0			oewn_form
@@ -749,7 +747,7 @@ skunkbush	0	oewn-skunkbush-n	Number=Sing	dema	0			oewn_form
 skunkbushes	0	oewn-skunkbush-n	Number=Plur	dema	0			rule
 skunked	0	oewn-skunk-v	Tense=Past+VerbForm=Part	dema	0			rule
 skunking	0	oewn-skunk-v	VerbForm=Ger	dema	0			rule
-skunks	0	oewn-skunk-n	Number=Plur	dema	0			rule_variant
+skunks	0	oewn-skunk-n	Number=Plur	dema	0			rule
 skunks	1	oewn-skunk-v	Person=3+Tense=Pres	dema	0			rule
 skunkweed	0	oewn-skunkweed-n	Number=Sing	dema	0			oewn_form
 skunkweeds	0	oewn-skunkweed-n	Number=Plur	dema	0			rule
@@ -781,9 +779,9 @@ skydive	0	oewn-skydive-v	VerbForm=Inf	dema	0			oewn_form
 skydived	0	oewn-skydive-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 skydiver	0	oewn-skydiver-n	Number=Sing	dema	0			oewn_form
 skydivers	0	oewn-skydiver-n	Number=Plur	dema	0			rule
-skydives	0	oewn-skydive-v	Person=3+Tense=Pres	dema	0			rule
+skydives	0	oewn-skydive-v	Person=3+Tense=Pres	dema	0			llm
 skydiving	0	oewn-skydiving-n	Number=Sing	dema	0			oewn_form
-skydiving	1	oewn-skydive-v	VerbForm=Ger	dema	0			rule
+skydiving	1	oewn-skydive-v	VerbForm=Ger	dema	0			llm
 skydivings	0	oewn-skydiving-n	Number=Plur	dema	0			rule
 skydove	0	oewn-skydive-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 skyed	0	oewn-sky-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
@@ -791,7 +789,7 @@ skyey	0		Number=Sing	dema	0	skyey	n	moby_reverse
 skyeys	0		Number=Plur	dema	0	skyey	n	rule
 skyhook	0	oewn-skyhook-n	Number=Sing	dema	0			oewn_form
 skyhooks	0	oewn-skyhook-n	Number=Plur	dema	0			rule
-skying	0	oewn-sky-v	VerbForm=Ger	dema	0			rule
+skying	0	oewn-sky-v	VerbForm=Ger	dema	0			llm
 skying dive	0	oewn-sky_dive-v	VerbForm=Ger	dema	0			rule
 skyjack	0	oewn-skyjack-v	VerbForm=Inf	dema	0			oewn_form
 skyjacked	0	oewn-skyjack-v	Tense=Past+VerbForm=Part	dema	0			rule

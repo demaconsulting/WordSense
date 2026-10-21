@@ -55,7 +55,7 @@ sections:
           - WordLexicon_Lookup_KnownWord_ReturnsItsAnalyses
           - WordLexicon_Lookup_InflectedForm_ReturnsEntryLemmaAndFeatures
           - WordLexicon_Lookup_ClosedClassWord_HasItsPartOfSpeechAlone
-          - WordLexicon_SensesOf_LemmaAndPartOfSpeech_ListsMostFrequentFirst
+          - WordLexicon_SensesOf_LemmaAndPartOfSpeech_ListsInOewnOrder
 
       - id: WordSense-Lib-Senses
         title: >-

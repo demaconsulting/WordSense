@@ -347,13 +347,13 @@ atiptoe	0		Degree=Pos	dema	0	atiptoe	r	moby_reverse
 atiptoe	1		Degree=Pos	dema	0	atiptoe	a	moby_reverse
 atlantad	0		Degree=Pos	dema	0	atlantad	r	moby_reverse
 atlantal	0		Degree=Pos	dema	0	atlantal	a	moby_reverse
-atlantes	0	oewn-atlas-n	Number=Plur	dema	0			agid
+atlantes	0	oewn-atlas-n	Number=Plur	dema	0			rule_variant
 atlas	0	oewn-atlas-n	Number=Sing	dema	0			oewn_form
 atlas moth	0	oewn-atlas_moth-n	Number=Sing	dema	0			oewn_form
 atlas moths	0	oewn-atlas_moth-n	Number=Plur	dema	0			rule
 atlas vertebra	0	oewn-atlas_vertebra-n	Number=Sing	dema	0			oewn_form
 atlas vertebras	0	oewn-atlas_vertebra-n	Number=Plur	dema	0			rule
-atlases	0	oewn-atlas-n	Number=Plur	dema	0			rule_variant
+atlases	0	oewn-atlas-n	Number=Plur	dema	0			llm
 atm	0	oewn-atm-n	Number=Sing	dema	0			oewn_form
 atman	0		Number=Sing	dema	0	atman	n	moby_reverse
 atmans	0		Number=Plur	dema	0	atman	n	rule
@@ -710,15 +710,15 @@ attache	0	oewn-attache-n	Number=Sing	dema	0			oewn_form
 attache case	0	oewn-attache_case-n	Number=Sing	dema	0			oewn_form
 attache cases	0	oewn-attache_case-n	Number=Plur	dema	0			rule
 attached	0	oewn-attached-a	Degree=Pos	dema	0			oewn_form
-attached	1	oewn-attach-v	Tense=Past+VerbForm=Part	dema	0			rule
+attached	1	oewn-attach-v	Tense=Past+VerbForm=Part	dema	0			llm
 attached to	0	oewn-attach_to-v	Tense=Past+VerbForm=Part	dema	0			rule
 attacher	0		Number=Sing	dema	0	attacher	n	moby_reverse
 attachers	0		Number=Plur	dema	0	attacher	n	rule
 attaches	0		Number=Plur	dema	0	attach	n	rule
-attaches	1	oewn-attach-v	Person=3+Tense=Pres	dema	0			rule
+attaches	1	oewn-attach-v	Person=3+Tense=Pres	dema	0			llm
 attaches	2	oewn-attache-n	Number=Plur	dema	0			rule
 attaches to	0	oewn-attach_to-v	Person=3+Tense=Pres	dema	0			rule
-attaching	0	oewn-attach-v	VerbForm=Ger	dema	0			rule
+attaching	0	oewn-attach-v	VerbForm=Ger	dema	0			llm
 attaching to	0	oewn-attach_to-v	VerbForm=Ger	dema	0			rule
 attachment	0	oewn-attachment-n	Number=Sing	dema	0			oewn_form
 attachments	0	oewn-attachment-n	Number=Plur	dema	0			rule
@@ -904,7 +904,7 @@ attitudinizers	0		Number=Plur	dema	0	attitudinizer	n	rule
 attitudinizes	0	oewn-attitudinize-v	Person=3+Tense=Pres	dema	0			rule
 attitudinizing	0	oewn-attitudinize-v	VerbForm=Ger	dema	0			rule
 attorn	0	oewn-attorn-v	VerbForm=Inf	dema	0			oewn_form
-attorned	0	oewn-attorn-v	Tense=Past+VerbForm=Part	dema	0			rule
+attorned	0	oewn-attorn-v	Tense=Past+VerbForm=Part	dema	0			llm
 attorney	0	oewn-attorney-n	Number=Sing	dema	0			oewn_form
 attorney general	0	oewn-attorney_general-n	Number=Sing	dema	0			oewn_form
 attorney general of the United States	0	oewn-attorney_general_of_the_United_States-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
@@ -917,10 +917,10 @@ attorney-client relations	0	oewn-attorney-client_relation-n	Number=Plur	dema	0		
 attorneys	0	oewn-attorney-n	Number=Plur	dema	0			rule
 attorneyship	0	oewn-attorneyship-n	Number=Sing	dema	0			oewn_form
 attorneyships	0	oewn-attorneyship-n	Number=Plur	dema	0			rule
-attorning	0	oewn-attorn-v	VerbForm=Ger	dema	0			rule
+attorning	0	oewn-attorn-v	VerbForm=Ger	dema	0			llm
 attornment	0		Number=Sing	dema	0	attornment	n	moby_reverse
 attornments	0		Number=Plur	dema	0	attornment	n	rule
-attorns	0	oewn-attorn-v	Person=3+Tense=Pres	dema	0			rule
+attorns	0	oewn-attorn-v	Person=3+Tense=Pres	dema	0			llm
 attosecond	0	oewn-attosecond-n	Number=Sing	dema	0			oewn_form
 attoseconds	0	oewn-attosecond-n	Number=Plur	dema	0			rule
 attract	0	oewn-attract-v	VerbForm=Inf	dema	0			oewn_form

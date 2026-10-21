@@ -211,9 +211,8 @@ claims adjusters	0	oewn-claims_adjuster-n	Number=Plur	dema	0			rule
 claims adjustor	0	oewn-claims_adjustor-n	Number=Sing	dema	0			oewn_form
 claims adjustors	0	oewn-claims_adjustor-n	Number=Plur	dema	0			rule
 claimsman	0		Number=Sing	dema	0	claimsman	n	moby_reverse
-claimsmans	0		Number=Plur	dema	0	claimsman	n	rule
-claimsmen	0		Number=Sing	dema	0	claimsmen	n	moby_reverse
-claimsmens	0		Number=Plur	dema	0	claimsmen	n	rule
+claimsmen	0		Number=Plur	dema	0	claimsman	n	rule
+claimsmen	1		Number=Sing	dema	0	claimsmen	n	moby_reverse
 clairaudience	0		Number=Sing	dema	0	clairaudience	n	moby_reverse
 clairaudiences	0		Number=Plur	dema	0	clairaudience	n	rule
 clairseach	0		Number=Sing	dema	0	clairseach	n	moby_reverse
@@ -255,7 +254,7 @@ clammier	0	oewn-clammy-a	Degree=Cmp	dema	0			oewn_form
 clammiest	0	oewn-clammy-a	Degree=Sup	dema	0			oewn_form
 clammily	0	oewn-clammily-r	Degree=Pos	dema	0			oewn_form
 clamminess	0	oewn-clamminess-n	Number=Sing	dema	0			oewn_form
-clamminesses	0	oewn-clamminess-n	Number=Plur	dema	0			rule
+clamminesses	0	oewn-clamminess-n	Number=Plur	dema	0			llm
 clamming	0	oewn-clam-v	VerbForm=Ger	dema	0			oewn_form
 clamming up	0	oewn-clam_up-v	VerbForm=Ger	dema	0			rule
 clammy	0	oewn-clammy-a	Degree=Pos	dema	0			oewn_form
@@ -372,9 +371,9 @@ clans	0	oewn-clan-n	Number=Plur	dema	0			rule
 clansman	0	oewn-clansman-n	Number=Sing	dema	0			oewn_form
 clansmanship	0		Number=Sing	dema	0	clansmanship	n	moby_reverse
 clansmanships	0		Number=Plur	dema	0	clansmanship	n	rule
-clansmen	0	oewn-clansman-n	Number=Plur	dema	0			agid
+clansmen	0	oewn-clansman-n	Number=Plur	dema	0			llm
 clanswoman	0	oewn-clanswoman-n	Number=Sing	dema	0			oewn_form
-clanswomen	0	oewn-clanswoman-n	Number=Plur	dema	0			agid
+clanswomen	0	oewn-clanswoman-n	Number=Plur	dema	0			llm
 clap	0	oewn-clap-v	VerbForm=Inf	dema	0			oewn_form
 clap	1	oewn-clap-n	Number=Sing	dema	0			oewn_form
 clap on	0	oewn-clap_on-v	VerbForm=Inf	dema	0			oewn_form
@@ -800,7 +799,7 @@ claybank	0		Number=Sing	dema	0	claybank	n	moby_reverse
 claybanks	0		Number=Plur	dema	0	claybank	n	rule
 clayey	0	oewn-clayey-a	Degree=Pos	dema	0			oewn_form
 clayeyness	0	oewn-clayeyness-n	Number=Sing	dema	0			oewn_form
-clayeynesses	0	oewn-clayeyness-n	Number=Plur	dema	0			rule
+clayeynesses	0	oewn-clayeyness-n	Number=Plur	dema	0			llm
 clayiness	0	oewn-clayiness-n	Number=Sing	dema	0			oewn_form
 clayinesses	0	oewn-clayiness-n	Number=Plur	dema	0			rule
 clayish	0		Degree=Pos	dema	0	clayish	a	moby_reverse
@@ -846,10 +845,10 @@ clean-shaven	0	oewn-clean-shaven-a	Degree=Pos	dema	0			oewn_form
 cleanable	0	oewn-cleanable-a	Degree=Pos	dema	0			oewn_form
 cleaned	0	oewn-clean-v	Tense=Past+VerbForm=Part	dema	0			rule
 cleaner	0	oewn-cleaner-n	Number=Sing	dema	0			oewn_form
-cleaner	1	oewn-clean-a	Degree=Cmp	dema	0			rule
+cleaner	1	oewn-clean-a	Degree=Cmp	dema	0			llm
 cleaners	0	oewn-cleaner-n	Number=Plur	dema	0			rule
 cleaners	1	oewn-cleaners-n	Number=Sing	dema	0			oewn_form
-cleanest	0	oewn-clean-a	Degree=Sup	dema	0			rule
+cleanest	0	oewn-clean-a	Degree=Sup	dema	0			llm
 cleanhandedness	0		Number=Sing	dema	0	cleanhandedness	n	moby_reverse
 cleaning	0	oewn-cleaning-n	Number=Sing	dema	0			oewn_form
 cleaning	1	oewn-clean-v	VerbForm=Ger	dema	0			rule
@@ -865,13 +864,13 @@ cleaning implements	0	oewn-cleaning_implement-n	Number=Plur	dema	0			rule
 cleaning ladies	0	oewn-cleaning_lady-n	Number=Plur	dema	0			rule
 cleaning lady	0	oewn-cleaning_lady-n	Number=Sing	dema	0			oewn_form
 cleaning man	0	oewn-cleaning_man-n	Number=Sing	dema	0			oewn_form
-cleaning mans	0	oewn-cleaning_man-n	Number=Plur	dema	0			rule
+cleaning men	0	oewn-cleaning_man-n	Number=Plur	dema	0			rule
 cleaning out	0	oewn-clean_out-v	VerbForm=Ger	dema	0			rule
 cleaning pad	0	oewn-cleaning_pad-n	Number=Sing	dema	0			oewn_form
 cleaning pads	0	oewn-cleaning_pad-n	Number=Plur	dema	0			rule
 cleaning up	0	oewn-clean_up-v	VerbForm=Ger	dema	0			rule
 cleaning woman	0	oewn-cleaning_woman-n	Number=Sing	dema	0			oewn_form
-cleaning womans	0	oewn-cleaning_woman-n	Number=Plur	dema	0			rule
+cleaning women	0	oewn-cleaning_woman-n	Number=Plur	dema	0			rule
 cleanings	0	oewn-cleaning-n	Number=Plur	dema	0			rule
 cleanlier	0	oewn-cleanly-a	Degree=Cmp	dema	0			oewn_form
 cleanliest	0	oewn-cleanly-a	Degree=Sup	dema	0			oewn_form
@@ -953,10 +952,10 @@ cleared out	0	oewn-clear_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 cleared the air	0	oewn-clear_the_air-v	Tense=Past+VerbForm=Part	dema	0			rule
 cleared the throat	0	oewn-clear_the_throat-v	Tense=Past+VerbForm=Part	dema	0			rule
 cleared up	0	oewn-clear_up-v	Tense=Past+VerbForm=Part	dema	0			rule
-clearer	0	oewn-clear-a	Degree=Cmp	dema	0			rule
+clearer	0	oewn-clear-a	Degree=Cmp	dema	0			llm
 clearer	1		Number=Sing	dema	0	clearer	n	moby_reverse
 clearers	0		Number=Plur	dema	0	clearer	n	rule
-clearest	0	oewn-clear-a	Degree=Sup	dema	0			rule
+clearest	0	oewn-clear-a	Degree=Sup	dema	0			llm
 clearheaded	0	oewn-clearheaded-a	Degree=Pos	dema	0			oewn_form
 clearheaded	1		VerbForm=Inf	dema	0	clearheaded	v	moby_reverse
 clearheadedly	0		Degree=Pos	dema	0	clearheadedly	r	moby_reverse
@@ -997,15 +996,15 @@ clearstory	0	oewn-clearstory-n	Number=Sing	dema	0			oewn_form
 clearway	0	oewn-clearway-n	Number=Sing	dema	0			oewn_form
 clearways	0	oewn-clearway-n	Number=Plur	dema	0			rule
 clearweed	0	oewn-clearweed-n	Number=Sing	dema	0			oewn_form
-clearweeds	0	oewn-clearweed-n	Number=Plur	dema	0			rule
+clearweeds	0	oewn-clearweed-n	Number=Plur	dema	0			llm
 clearwing	0		Number=Sing	dema	0	clearwing	n	moby_reverse
 clearwings	0		Number=Plur	dema	0	clearwing	n	rule
 cleat	0	oewn-cleat-n	Number=Sing	dema	0			oewn_form
 cleat	1	oewn-cleat-v	VerbForm=Inf	dema	0			oewn_form
-cleated	0	oewn-cleat-v	Tense=Past+VerbForm=Part	dema	0			rule
-cleating	0	oewn-cleat-v	VerbForm=Ger	dema	0			rule
+cleated	0	oewn-cleat-v	Tense=Past+VerbForm=Part	dema	0			llm
+cleating	0	oewn-cleat-v	VerbForm=Ger	dema	0			llm
 cleats	0	oewn-cleat-n	Number=Plur	dema	0			rule
-cleats	1	oewn-cleat-v	Person=3+Tense=Pres	dema	0			rule
+cleats	1	oewn-cleat-v	Person=3+Tense=Pres	dema	0			llm
 cleats	2	oewn-cleats-n	Number=Sing	dema	0			oewn_form
 cleavabilities	0		Number=Plur	dema	0	cleavability	n	rule
 cleavability	0		Number=Sing	dema	0	cleavability	n	moby_reverse
@@ -1019,8 +1018,8 @@ cleaved	0	oewn-cleave-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 cleaver	0	oewn-cleaver-n	Number=Sing	dema	0			oewn_form
 cleavers	0	oewn-cleaver-n	Number=Plur	dema	0			rule
 cleavers	1	oewn-cleavers-n	Number=Sing	dema	0			oewn_form
-cleaves	0	oewn-cleave-v	Person=3+Tense=Pres	dema	0			rule
-cleaving	0	oewn-cleave-v	VerbForm=Ger	dema	0			rule
+cleaves	0	oewn-cleave-v	Person=3+Tense=Pres	dema	0			llm
+cleaving	0	oewn-cleave-v	VerbForm=Ger	dema	0			llm
 cleavingly	0		Degree=Pos	dema	0	cleavingly	r	moby_reverse
 cleck	0		VerbForm=Inf	dema	0	cleck	v	moby_reverse
 cleck	1		Number=Sing	dema	0	cleck	n	moby_reverse
@@ -1062,8 +1061,9 @@ cleistotcias	0		Number=Plur	dema	0	cleistotcia	n	rule
 cleistothecium	0	oewn-cleistothecium-n	Number=Sing	dema	0			oewn_form
 cleistotheciums	0	oewn-cleistothecium-n	Number=Plur	dema	0			rule
 clem	0		VerbForm=Inf	dema	0	clem	v	moby_reverse
-clematis	0	oewn-clematis-n	Number=Sing	dema	0			oewn_form
-clematises	0	oewn-clematis-n	Number=Plur	dema	0			rule
+clematis	0	oewn-clematis-n	Number=Plur	dema	0			rule_variant
+clematis	1	oewn-clematis-n	Number=Sing	dema	0			oewn_form
+clematises	0	oewn-clematis-n	Number=Plur	dema	0			llm
 clemencies	0	oewn-clemency-n	Number=Plur	dema	0			rule
 clemency	0	oewn-clemency-n	Number=Sing	dema	0			oewn_form
 clement	0	oewn-clement-a	Degree=Pos	dema	0			oewn_form
@@ -1114,9 +1114,9 @@ clergies	0	oewn-clergy-n	Number=Plur	dema	0			rule
 clergy	0	oewn-clergy-n	Number=Sing	dema	0			oewn_form
 clergylike	0		Degree=Pos	dema	0	clergylike	a	moby_reverse
 clergyman	0	oewn-clergyman-n	Number=Sing	dema	0			oewn_form
-clergymen	0	oewn-clergyman-n	Number=Plur	dema	0			agid
+clergymen	0	oewn-clergyman-n	Number=Plur	dema	0			llm
 clergywoman	0	oewn-clergywoman-n	Number=Sing	dema	0			oewn_form
-clergywomans	0	oewn-clergywoman-n	Number=Plur	dema	0			rule
+clergywomen	0	oewn-clergywoman-n	Number=Plur	dema	0			rule
 cleric	0	oewn-cleric-n	Number=Sing	dema	0			oewn_form
 clerical	0	oewn-clerical-a	Degree=Pos	dema	0			oewn_form
 clerical collar	0	oewn-clerical_collar-n	Number=Sing	dema	0			oewn_form
@@ -1180,7 +1180,7 @@ cleverly	0	oewn-cleverly-r	Degree=Pos	dema	0			oewn_form
 cleverness	0	oewn-cleverness-n	Number=Sing	dema	0			oewn_form
 clevernesses	0	oewn-cleverness-n	Number=Plur	dema	0			rule
 clevis	0	oewn-clevis-n	Number=Sing	dema	0			oewn_form
-clevises	0	oewn-clevis-n	Number=Plur	dema	0			rule
+clevises	0	oewn-clevis-n	Number=Plur	dema	0			llm
 clew	0	oewn-clew-n	Number=Sing	dema	0			oewn_form
 clew	1	oewn-clew-v	VerbForm=Inf	dema	0			oewn_form
 clewed	0	oewn-clew-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -1191,7 +1191,7 @@ clews	0	oewn-clew-n	Number=Plur	dema	0			rule
 clews	1	oewn-clew-v	Person=3+Tense=Pres	dema	0			rule
 clews	2	oewn-clews-n	Number=Sing	dema	0			oewn_form
 clianthus	0	oewn-clianthus-n	Number=Sing	dema	0			oewn_form
-clianthuses	0	oewn-clianthus-n	Number=Plur	dema	0			rule
+clianthuses	0	oewn-clianthus-n	Number=Plur	dema	0			llm
 clich	0		Number=Sing	dema	0	clich	n	moby_reverse
 cliche	0	oewn-cliche-n	Number=Sing	dema	0			oewn_form
 cliched	0	oewn-cliched-a	Degree=Pos	dema	0			oewn_form
@@ -1552,7 +1552,7 @@ clitoridectomies	0	oewn-clitoridectomy-n	Number=Plur	dema	0			rule
 clitoridectomy	0	oewn-clitoridectomy-n	Number=Sing	dema	0			oewn_form
 clitorides	0	oewn-clitoris-n	Number=Plur	dema	0			rule_variant
 clitoris	0	oewn-clitoris-n	Number=Sing	dema	0			oewn_form
-clitorises	0	oewn-clitoris-n	Number=Plur	dema	0			rule_variant
+clitorises	0	oewn-clitoris-n	Number=Plur	dema	0			llm
 clits	0	oewn-clit-n	Number=Plur	dema	0			rule
 clitter	0	oewn-clitter-v	VerbForm=Inf	dema	0			oewn_form
 clittered	0	oewn-clitter-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -1686,8 +1686,8 @@ clog up	0	oewn-clog_up-v	VerbForm=Inf	dema	0			oewn_form
 clogged	0	oewn-clog-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 clogged	1	oewn-clogged-a	Degree=Pos	dema	0			oewn_form
 clogged up	0	oewn-clog_up-v	Tense=Past+VerbForm=Part	dema	0			rule
-cloggier	0	oewn-cloggy-a	Degree=Cmp	dema	0			rule
-cloggiest	0	oewn-cloggy-a	Degree=Sup	dema	0			rule
+cloggier	0	oewn-cloggy-a	Degree=Cmp	dema	0			llm
+cloggiest	0	oewn-cloggy-a	Degree=Sup	dema	0			llm
 cloggily	0		Degree=Pos	dema	0	cloggily	r	moby_reverse
 clogginess	0		Number=Sing	dema	0	clogginess	n	moby_reverse
 clogginesses	0		Number=Plur	dema	0	clogginess	n	rule
@@ -1695,7 +1695,7 @@ clogging	0	oewn-clog-v	VerbForm=Ger	dema	0			oewn_form
 clogging	1	oewn-clogging-a	Degree=Pos	dema	0			oewn_form
 clogging up	0	oewn-clog_up-v	VerbForm=Ger	dema	0			rule
 cloggy	0	oewn-cloggy-a	Degree=Pos	dema	0			oewn_form
-clogs	0	oewn-clog-v	Person=3+Tense=Pres	dema	0			rule
+clogs	0	oewn-clog-v	Person=3+Tense=Pres	dema	0			llm
 clogs	1	oewn-clog-n	Number=Plur	dema	0			rule
 clogs up	0	oewn-clog_up-v	Person=3+Tense=Pres	dema	0			rule
 cloison	0		Number=Sing	dema	0	cloison	n	moby_reverse
@@ -1892,7 +1892,7 @@ closely knit	0	oewn-closely_knit-a	Degree=Pos	dema	0			oewn_form
 closely-held	0	oewn-closely-held-a	Degree=Pos	dema	0			oewn_form
 closemouthed	0	oewn-closemouthed-a	Degree=Pos	dema	0			oewn_form
 closeness	0	oewn-closeness-n	Number=Sing	dema	0			oewn_form
-closenesses	0	oewn-closeness-n	Number=Plur	dema	0			rule
+closenesses	0	oewn-closeness-n	Number=Plur	dema	0			llm
 closeout	0	oewn-closeout-n	Number=Sing	dema	0			oewn_form
 closeouts	0	oewn-closeout-n	Number=Plur	dema	0			rule
 closer	0	oewn-close-a	Degree=Cmp	dema	1			carried
@@ -1919,10 +1919,10 @@ closet drama	0	oewn-closet_drama-n	Number=Sing	dema	0			oewn_form
 closet dramas	0	oewn-closet_drama-n	Number=Plur	dema	0			rule
 closet queen	0	oewn-closet_queen-n	Number=Sing	dema	0			oewn_form
 closet queens	0	oewn-closet_queen-n	Number=Plur	dema	0			rule
-closeted	0	oewn-closet-v	Tense=Past+VerbForm=Part	dema	0			rule
-closeting	0	oewn-closet-v	VerbForm=Ger	dema	0			rule
+closeted	0	oewn-closet-v	Tense=Past+VerbForm=Part	dema	0			llm
+closeting	0	oewn-closet-v	VerbForm=Ger	dema	0			llm
 closets	0	oewn-closet-n	Number=Plur	dema	0			rule
-closets	1	oewn-closet-v	Person=3+Tense=Pres	dema	0			rule
+closets	1	oewn-closet-v	Person=3+Tense=Pres	dema	0			llm
 closeup	0	oewn-closeup-n	Number=Sing	dema	0			oewn_form
 closeup lens	0	oewn-closeup_lens-n	Number=Sing	dema	0			oewn_form
 closeups	0	oewn-closeup-n	Number=Plur	dema	0			rule
@@ -2132,8 +2132,7 @@ cloven hoof	0	oewn-cloven_hoof-n	Number=Sing	dema	0			oewn_form
 cloven hoofs	0	oewn-cloven_hoof-n	Number=Plur	dema	0			rule
 cloven-footed	0	oewn-cloven-footed-a	Degree=Pos	dema	0			oewn_form
 cloven-hoofed	0	oewn-cloven-hoofed-a	Degree=Pos	dema	0			oewn_form
-clover	0	oewn-clover-n	Number=Plur	dema	0			agid
-clover	1	oewn-clover-n	Number=Sing	dema	0			oewn_form
+clover	0	oewn-clover-n	Number=Sing	dema	0			oewn_form
 clover fern	0	oewn-clover_fern-n	Number=Sing	dema	0			oewn_form
 clover ferns	0	oewn-clover_fern-n	Number=Plur	dema	0			rule
 clover-leaf roll	0	oewn-clover-leaf_roll-n	Number=Sing	dema	0			oewn_form
@@ -2143,11 +2142,10 @@ clover-roots	0	oewn-clover-root-n	Number=Plur	dema	0			rule
 clovered	0		Degree=Pos	dema	0	clovered	a	moby_reverse
 clovered	1		VerbForm=Inf	dema	0	clovered	v	moby_reverse
 cloverleaf	0	oewn-cloverleaf-n	Number=Sing	dema	0			oewn_form
-cloverleafs	0	oewn-cloverleaf-n	Number=Plur	dema	0			rule_variant
 cloverleaves	0	oewn-cloverleaf-n	Number=Plur	dema	0			oewn_form
 cloveroot	0	oewn-cloveroot-n	Number=Sing	dema	0			oewn_form
 cloveroots	0	oewn-cloveroot-n	Number=Plur	dema	0			rule
-clovers	0	oewn-clover-n	Number=Plur	dema	0			rule_variant
+clovers	0	oewn-clover-n	Number=Plur	dema	0			rule
 clovery	0		Degree=Pos	dema	0	clovery	a	moby_reverse
 cloves	0	oewn-clove-n	Number=Plur	dema	0			rule
 clowder	0	oewn-clowder-n	Number=Sing	dema	0			oewn_form
@@ -2233,7 +2231,7 @@ clubbing	1	oewn-club-v	VerbForm=Ger	dema	0			oewn_form
 clubbings	0	oewn-clubbing-n	Number=Plur	dema	0			rule
 clubbish	0	oewn-clubbish-a	Degree=Pos	dema	0			oewn_form
 clubby	0	oewn-clubby-a	Degree=Pos	dema	0			oewn_form
-clubfeet	0	oewn-clubfoot-n	Number=Plur	dema	0			agid
+clubfeet	0	oewn-clubfoot-n	Number=Plur	dema	0			llm
 clubfoot	0	oewn-clubfoot-n	Number=Sing	dema	0			oewn_form
 clubfooted	0	oewn-clubfooted-a	Degree=Pos	dema	0			oewn_form
 clubfooted	1		VerbForm=Inf	dema	0	clubfooted	v	moby_reverse
@@ -2245,15 +2243,14 @@ clubhauled	0		Tense=Past+VerbForm=Part	dema	0	clubhaul	v	rule
 clubhauling	0		VerbForm=Ger	dema	0	clubhaul	v	rule
 clubhauls	0		Person=3+Tense=Pres	dema	0	clubhaul	v	rule
 clubhead	0	oewn-clubhead-n	Number=Sing	dema	0			oewn_form
-clubheads	0	oewn-clubhead-n	Number=Plur	dema	0			rule
+clubheads	0	oewn-clubhead-n	Number=Plur	dema	0			llm
 clubhouse	0	oewn-clubhouse-n	Number=Sing	dema	0			oewn_form
 clubhouses	0	oewn-clubhouse-n	Number=Plur	dema	0			rule
 clubland	0		Number=Sing	dema	0	clubland	n	moby_reverse
 clublands	0		Number=Plur	dema	0	clubland	n	rule
 clubman	0		Number=Sing	dema	0	clubman	n	moby_reverse
-clubmans	0		Number=Plur	dema	0	clubman	n	rule
-clubmen	0		Number=Sing	dema	0	clubmen	n	moby_reverse
-clubmens	0		Number=Plur	dema	0	clubmen	n	rule
+clubmen	0		Number=Plur	dema	0	clubman	n	rule
+clubmen	1		Number=Sing	dema	0	clubmen	n	moby_reverse
 clubroom	0	oewn-clubroom-n	Number=Sing	dema	0			oewn_form
 clubrooms	0	oewn-clubroom-n	Number=Plur	dema	0			rule
 clubroot	0		Number=Sing	dema	0	clubroot	n	moby_reverse
@@ -2262,9 +2259,8 @@ clubroots	0		Number=Plur	dema	0	clubroot	n	rule
 clubs	0	oewn-club-n	Number=Plur	dema	0			rule
 clubs	1	oewn-club-v	Person=3+Tense=Pres	dema	0			rule
 clubwoman	0		Number=Sing	dema	0	clubwoman	n	moby_reverse
-clubwomans	0		Number=Plur	dema	0	clubwoman	n	rule
-clubwomen	0		Number=Sing	dema	0	clubwomen	n	moby_reverse
-clubwomens	0		Number=Plur	dema	0	clubwomen	n	rule
+clubwomen	0		Number=Plur	dema	0	clubwoman	n	rule
+clubwomen	1		Number=Sing	dema	0	clubwomen	n	moby_reverse
 cluck	0	oewn-cluck-n	Number=Sing	dema	0			oewn_form
 cluck	1	oewn-cluck-v	VerbForm=Inf	dema	0			oewn_form
 clucked	0	oewn-cluck-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -2277,12 +2273,12 @@ clucky	0		Degree=Pos	dema	0	clucky	a	moby_reverse
 clue	0	oewn-clue-n	Number=Sing	dema	0			oewn_form
 clue	1	oewn-clue-v	VerbForm=Inf	dema	0			oewn_form
 clue in	0	oewn-clue_in-v	VerbForm=Inf	dema	0			oewn_form
-clued	0	oewn-clue-v	Tense=Past+VerbForm=Part	dema	0			rule
+clued	0	oewn-clue-v	Tense=Past+VerbForm=Part	dema	0			llm
 clued in	0	oewn-clue_in-v	Tense=Past+VerbForm=Part	dema	0			rule
-clueing	0	oewn-clue-v	VerbForm=Ger	dema	0			rule_variant
+clueing	0	oewn-clue-v	VerbForm=Ger	dema	0			llm
 clueless	0	oewn-clueless-a	Degree=Pos	dema	0			oewn_form
 clues	0	oewn-clue-n	Number=Plur	dema	0			rule
-clues	1	oewn-clue-v	Person=3+Tense=Pres	dema	0			rule
+clues	1	oewn-clue-v	Person=3+Tense=Pres	dema	0			llm
 clues in	0	oewn-clue_in-v	Person=3+Tense=Pres	dema	0			rule
 cluing	0	oewn-clue-v	VerbForm=Ger	dema	0			rule_variant
 cluing in	0	oewn-clue_in-v	VerbForm=Ger	dema	0			rule
@@ -2298,14 +2294,14 @@ clumping	1	oewn-clumping-n	Number=Sing	dema	0			oewn_form
 clumpings	0	oewn-clumping-n	Number=Plur	dema	0			rule
 clumpish	0		Degree=Pos	dema	0	clumpish	a	moby_reverse
 clumplike	0		Degree=Pos	dema	0	clumplike	a	moby_reverse
-clumps	0	oewn-clump-n	Number=Plur	dema	0			rule
+clumps	0	oewn-clump-n	Number=Plur	dema	0			llm
 clumps	1	oewn-clump-v	Person=3+Tense=Pres	dema	0			rule
 clumpy	0		Degree=Pos	dema	0	clumpy	a	moby_reverse
 clumsier	0	oewn-clumsy-a	Degree=Cmp	dema	0			oewn_form
 clumsiest	0	oewn-clumsy-a	Degree=Sup	dema	0			oewn_form
 clumsily	0	oewn-clumsily-r	Degree=Pos	dema	0			oewn_form
 clumsiness	0	oewn-clumsiness-n	Number=Sing	dema	0			oewn_form
-clumsinesses	0	oewn-clumsiness-n	Number=Plur	dema	0			rule
+clumsinesses	0	oewn-clumsiness-n	Number=Plur	dema	0			llm
 clumsy	0	oewn-clumsy-a	Degree=Pos	dema	0			oewn_form
 clumsy person	0	oewn-clumsy_person-n	Number=Sing	dema	0			oewn_form
 clumsy persons	0	oewn-clumsy_person-n	Number=Plur	dema	0			rule
@@ -2315,8 +2311,8 @@ clung	0	oewn-cling-v	Tense=Past+VerbForm=Part	dema	0			hand
 clunk	0	oewn-clunk-n	Number=Sing	dema	0			oewn_form
 clunk	1	oewn-clunk-v	VerbForm=Inf	dema	0			oewn_form
 clunked	0	oewn-clunk-v	Tense=Past+VerbForm=Part	dema	0			rule
-clunkier	0	oewn-clunky-a	Degree=Cmp	dema	0			rule
-clunkiest	0	oewn-clunky-a	Degree=Sup	dema	0			rule
+clunkier	0	oewn-clunky-a	Degree=Cmp	dema	0			llm
+clunkiest	0	oewn-clunky-a	Degree=Sup	dema	0			llm
 clunking	0	oewn-clunk-v	VerbForm=Ger	dema	0			rule
 clunking	1	oewn-clunking-n	Number=Sing	dema	0			oewn_form
 clunkings	0	oewn-clunking-n	Number=Plur	dema	0			rule

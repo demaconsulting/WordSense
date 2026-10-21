@@ -24,8 +24,8 @@ internal sealed record ImageResult(int Spellings, int Analyses, int Entries, int
 /// <remarks>
 ///     <para>
 ///     The image holds the <c>form</c> table (every analysis of every written form), the entries those forms refer to
-///     and the sense catalog: the sense labels, the groups, the sense keys, the respellings and the WordNet 3.0 tag
-///     counts that order the senses of a lemma; see <see cref="ImageFormat"/> for the layout. Spellings and entry lemmas
+///     and the sense catalog: the sense labels, the groups, the sense keys and the respellings; the senses of a lemma and
+///     part of speech are in the order of Open English WordNet (the WordNet 3.0 tag counts do not order them); see <see cref="ImageFormat"/> for the layout. Spellings and entry lemmas
 ///     are sorted by their UTF-8 bytes. Each section is Brotli-compressed at the highest quality, after a byte-plane
 ///     shuffle for fixed-width columns. The same data always gives the same sections; the compressed bytes can differ
 ///     between platforms when the Brotli library differs, so compare decompressed sections and the data hash, not the
@@ -49,8 +49,9 @@ internal static class ImageCompiler
     private const int MaxText = 255;
     private const string SurfacePrefix = "\u0001surface\t";
 
+    // The tables the image is compiled from; sense_frequency is not one of them (it feeds the prior of the encoder, not the order)
     private static readonly string[] HashedTables =
-        ["entry", "form", "sense", "sense_label", "sense_group", "group_sense", "sense_frequency", "sense_respelling"];
+        ["entry", "form", "sense", "sense_label", "sense_group", "group_sense", "sense_respelling"];
 
     private static readonly Comparer<string> Utf8 = Comparer<string>.Create(DataLayout.CompareUtf8);
 
@@ -231,8 +232,8 @@ internal static class ImageCompiler
         return (bySpelling.Count, usedEntries.Count);
     }
 
-    // One sense of the catalog, before it is numbered
-    private sealed record SenseEntry(string Id, string DataId, string Lemma, PartOfSpeech Pos, string? KeySuffix, string? Respelling, long Rank);
+    // One sense of the catalog, before it is numbered; Position and Homograph give its place in the Open English WordNet order
+    private sealed record SenseEntry(string Id, string DataId, string Lemma, PartOfSpeech Pos, string? KeySuffix, string? Respelling, int Position, int Homograph);
 
     // The senses, groups, lemma blocks, keys and respellings
     private static (int Senses, int Groups) AddCatalogSections(
@@ -244,7 +245,6 @@ internal static class ImageCompiler
         var errors = new List<string>();
         var senseRows = DataTables.Read(dataDirectory, schema.Table("sense")).ToDictionary(r => r[0], StringComparer.Ordinal);
         var labels = DataTables.Read(dataDirectory, schema.Table("sense_label")).ToDictionary(r => r[0], r => r[1], StringComparer.Ordinal);
-        var frequencies = DataTables.Read(dataDirectory, schema.Table("sense_frequency")).ToDictionary(r => r[0], r => long.Parse(r[1], CultureInfo.InvariantCulture), StringComparer.Ordinal);
         var respellings = DataTables.Read(dataDirectory, schema.Table("sense_respelling")).ToDictionary(r => r[0], r => r[1], StringComparer.Ordinal);
 
         foreach (var row in senseRows.Values.OrderBy(r => r[0], Utf8))
@@ -279,7 +279,8 @@ internal static class ImageCompiler
                 DataTables.PosOf(entry[2]),
                 key.Length == 0 ? null : key[(lemma.Length + 1)..],
                 respellings.GetValueOrDefault(dataId),
-                key.Length == 0 ? -1 : frequencies.GetValueOrDefault(key, 0)));
+                int.Parse(row[4], CultureInfo.InvariantCulture),
+                int.Parse(entry[3], CultureInfo.InvariantCulture)));
         }
 
         senses.Sort((a, b) => DataLayout.CompareUtf8(a.Id, b.Id));
@@ -297,12 +298,13 @@ internal static class ImageCompiler
             indexOfData[senses[i].DataId] = i;
         }
 
-        // Lemma blocks: the senses of a lemma and part of speech in inventory order (tag count descending, project senses
-        // last, then the id bytes)
+        // Lemma blocks: the senses of a lemma and part of speech in the order of Open English WordNet: the senses of the dictionary
+        // first by their position in the entry and the homograph number of the entry, the project senses (no sense key) last,
+        // then the id bytes. The order does not depend on the WordNet 3.0 tag counts, which only feed the prior of the encoder.
         var blocks = senses.Select((s, i) => (Sense: s, Index: i))
             .GroupBy(p => (p.Sense.Lemma, p.Sense.Pos))
             .OrderBy(g => g.Key.Lemma, Utf8).ThenBy(g => (int)g.Key.Pos)
-            .Select(g => g.OrderByDescending(p => p.Sense.Rank).ThenBy(p => p.Sense.Id, Utf8).Select(p => p.Index).ToList())
+            .Select(g => g.OrderBy(p => p.Sense.KeySuffix is null ? 1 : 0).ThenBy(p => p.Sense.Position).ThenBy(p => p.Sense.Homograph).ThenBy(p => p.Sense.Id, Utf8).Select(p => p.Index).ToList())
             .ToList();
         var blockOf = new int[senses.Count];
         var rankInBlock = new int[senses.Count];

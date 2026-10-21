@@ -216,9 +216,10 @@ Scotch woodcock	0	oewn-Scotch_woodcock-n	Capitalization=Exact+Number=Sing	dema	0
 Scotch woodcocks	0	oewn-Scotch_woodcock-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Scotchman	0		Number=Sing	dema	0	scotchman	n	moby_reverse
 Scotchman	1	oewn-Scotchman-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-Scotchmans	0	oewn-Scotchman-n	Capitalization=Title+Number=Plur	dema	0			rule
+Scotchmen	0		Number=Plur	dema	0	scotchman	n	rule
+Scotchmen	1	oewn-Scotchman-n	Capitalization=Title+Number=Plur	dema	0			rule
 Scotchwoman	0	oewn-Scotchwoman-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-Scotchwomans	0	oewn-Scotchwoman-n	Capitalization=Title+Number=Plur	dema	0			rule
+Scotchwomen	0	oewn-Scotchwoman-n	Capitalization=Title+Number=Plur	dema	0			rule
 Scotland Yard	0	oewn-Scotland_Yard-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Scotland Yards	0	oewn-Scotland_Yard-n	Capitalization=Title+Number=Plur	dema	0			rule
 Scots	0		Number=Plur	dema	0	scot	n	rule
@@ -236,9 +237,9 @@ Scots heathers	0	oewn-Scots_heather-n	Capitalization=Exact+Number=Plur	dema	0			
 Scots pine	0	oewn-Scots_pine-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Scots pines	0	oewn-Scots_pine-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Scotsman	0	oewn-Scotsman-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-Scotsmans	0	oewn-Scotsman-n	Capitalization=Title+Number=Plur	dema	0			rule
+Scotsmen	0	oewn-Scotsman-n	Capitalization=Title+Number=Plur	dema	0			rule
 Scotswoman	0	oewn-Scotswoman-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-Scotswomans	0	oewn-Scotswoman-n	Capitalization=Title+Number=Plur	dema	0			rule
+Scotswomen	0	oewn-Scotswoman-n	Capitalization=Title+Number=Plur	dema	0			rule
 Scott's spleenwort	0	oewn-Scott-ap-s_spleenwort-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Scott's spleenworts	0	oewn-Scott-ap-s_spleenwort-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Scottie	0	oewn-Scottie-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
@@ -325,7 +326,7 @@ scabiosa	0	oewn-scabiosa-n	Number=Sing	dema	0			oewn_form
 scabiosas	0	oewn-scabiosa-n	Number=Plur	dema	0			rule
 scabious	0		Degree=Pos	dema	0	scabious	a	moby_reverse
 scabious	1	oewn-scabious-n	Number=Sing	dema	0			oewn_form
-scabiouses	0	oewn-scabious-n	Number=Plur	dema	0			rule
+scabiouses	0	oewn-scabious-n	Number=Plur	dema	0			llm
 scabland	0		Number=Sing	dema	0	scabland	n	moby_reverse
 scablands	0		Number=Plur	dema	0	scabland	n	rule
 scablands	1	oewn-scablands-n	Number=Sing	dema	0			oewn_form
@@ -529,11 +530,10 @@ scampered	0	oewn-scamper-v	Tense=Past+VerbForm=Part	dema	0			rule
 scampering	0	oewn-scamper-v	VerbForm=Ger	dema	0			rule
 scampers	0	oewn-scamper-v	Person=3+Tense=Pres	dema	0			rule
 scampers	1	oewn-scamper-n	Number=Plur	dema	0			rule
-scampi	0	oewn-scampi-n	Number=Plur	dema	0			agid
-scampi	1	oewn-scampi-n	Number=Sing	dema	0			oewn_form
-scampies	0	oewn-scampi-n	Number=Plur	dema	0			rule_variant
+scampi	0	oewn-scampi-n	Number=Sing	dema	0			oewn_form
 scamping	0	oewn-scamp-v	VerbForm=Ger	dema	0			rule
 scampingly	0		Degree=Pos	dema	0	scampingly	r	moby_reverse
+scampis	0	oewn-scampi-n	Number=Plur	dema	0			rule
 scampish	0		Degree=Pos	dema	0	scampish	a	moby_reverse
 scampishly	0		Degree=Pos	dema	0	scampishly	r	moby_reverse
 scampishness	0		Number=Sing	dema	0	scampishness	n	moby_reverse
@@ -594,9 +594,9 @@ scansorial	0		Degree=Pos	dema	0	scansorial	a	moby_reverse
 scant	0	oewn-scant-a	Degree=Pos	dema	0			oewn_form
 scant	1	oewn-scant-v	VerbForm=Inf	dema	0			oewn_form
 scant	2		Degree=Pos	dema	0	scant	r	moby_reverse
-scanted	0	oewn-scant-v	Tense=Past+VerbForm=Part	dema	0			rule
-scanter	0	oewn-scant-a	Degree=Cmp	dema	0			rule
-scantest	0	oewn-scant-a	Degree=Sup	dema	0			rule
+scanted	0	oewn-scant-v	Tense=Past+VerbForm=Part	dema	0			llm
+scanter	0	oewn-scant-a	Degree=Cmp	dema	0			llm
+scantest	0	oewn-scant-a	Degree=Sup	dema	0			llm
 scantier	0	oewn-scanty-a	Degree=Cmp	dema	0			oewn_form
 scanties	0	oewn-scanty-n	Number=Plur	dema	0			rule
 scantiest	0	oewn-scanty-a	Degree=Sup	dema	0			oewn_form
@@ -604,13 +604,13 @@ scantily	0	oewn-scantily-r	Degree=Pos	dema	0			oewn_form
 scantily clad	0	oewn-scantily_clad-a	Degree=Pos	dema	0			oewn_form
 scantiness	0	oewn-scantiness-n	Number=Sing	dema	0			oewn_form
 scantinesses	0	oewn-scantiness-n	Number=Plur	dema	0			rule
-scanting	0	oewn-scant-v	VerbForm=Ger	dema	0			rule
+scanting	0	oewn-scant-v	VerbForm=Ger	dema	0			llm
 scantling	0	oewn-scantling-n	Number=Sing	dema	0			oewn_form
 scantlings	0	oewn-scantling-n	Number=Plur	dema	0			rule
 scantly	0		Degree=Pos	dema	0	scantly	r	moby_reverse
 scantness	0	oewn-scantness-n	Number=Sing	dema	0			oewn_form
 scantnesses	0	oewn-scantness-n	Number=Plur	dema	0			rule
-scants	0	oewn-scant-v	Person=3+Tense=Pres	dema	0			rule
+scants	0	oewn-scant-v	Person=3+Tense=Pres	dema	0			llm
 scanty	0	oewn-scanty-a	Degree=Pos	dema	0			oewn_form
 scanty	1	oewn-scanty-n	Number=Sing	dema	0			oewn_form
 scape	0	oewn-scape-n	Number=Sing	dema	0			oewn_form
@@ -672,8 +672,8 @@ scarcement	0		Number=Sing	dema	0	scarcement	n	moby_reverse
 scarcements	0		Number=Plur	dema	0	scarcement	n	rule
 scarceness	0	oewn-scarceness-n	Number=Sing	dema	0			oewn_form
 scarcenesses	0	oewn-scarceness-n	Number=Plur	dema	0			rule
-scarcer	0	oewn-scarce-a	Degree=Cmp	dema	0			moby_reverse
-scarcest	0	oewn-scarce-a	Degree=Sup	dema	0			moby_reverse
+scarcer	0	oewn-scarce-a	Degree=Cmp	dema	0			llm
+scarcest	0	oewn-scarce-a	Degree=Sup	dema	0			llm
 scarcities	0	oewn-scarcity-n	Number=Plur	dema	0			rule
 scarcity	0	oewn-scarcity-n	Number=Sing	dema	0			oewn_form
 scare	0	oewn-scare-v	VerbForm=Inf	dema	0			oewn_form
@@ -874,8 +874,8 @@ scatterings	0	oewn-scattering-n	Number=Plur	dema	0			rule
 scatters	0	oewn-scatter-v	Person=3+Tense=Pres	dema	0			rule
 scatters	1	oewn-scatter-n	Number=Plur	dema	0			rule
 scattershot	0	oewn-scattershot-a	Degree=Pos	dema	0			oewn_form
-scattier	0	oewn-scatty-a	Degree=Cmp	dema	0			rule
-scattiest	0	oewn-scatty-a	Degree=Sup	dema	0			rule
+scattier	0	oewn-scatty-a	Degree=Cmp	dema	0			llm
+scattiest	0	oewn-scatty-a	Degree=Sup	dema	0			llm
 scatting	0	oewn-scat-v	VerbForm=Ger	dema	0			oewn_form
 scatts	0		Number=Plur	dema	0	scatt	n	rule
 scatty	0	oewn-scatty-a	Degree=Pos	dema	0			oewn_form
@@ -967,7 +967,7 @@ sceptical	0	oewn-sceptical-a	Degree=Pos	dema	0			oewn_form
 sceptically	0	oewn-sceptically-r	Degree=Pos	dema	0			oewn_form
 scepticism	0	oewn-scepticism-n	Number=Sing	dema	0			oewn_form
 scepticisms	0	oewn-scepticism-n	Number=Plur	dema	0			rule
-sceptics	0	oewn-sceptic-n	Number=Plur	dema	0			rule
+sceptics	0	oewn-sceptic-n	Number=Plur	dema	0			llm
 sceptral	0		Degree=Pos	dema	0	sceptral	a	moby_reverse
 sceptre	0	oewn-sceptre-n	Number=Sing	dema	0			oewn_form
 sceptre	1		VerbForm=Inf	dema	0	sceptre	v	moby_reverse
@@ -1174,8 +1174,8 @@ schlockmeisters	0	oewn-schlockmeister-n	Number=Plur	dema	0			rule
 schlocks	0	oewn-schlock-n	Number=Plur	dema	0			rule
 schmaltz	0	oewn-schmaltz-n	Number=Sing	dema	0			oewn_form
 schmaltzes	0	oewn-schmaltz-n	Number=Plur	dema	0			rule
-schmaltzier	0	oewn-schmaltzy-a	Degree=Cmp	dema	0			rule
-schmaltziest	0	oewn-schmaltzy-a	Degree=Sup	dema	0			rule
+schmaltzier	0	oewn-schmaltzy-a	Degree=Cmp	dema	0			llm
+schmaltziest	0	oewn-schmaltzy-a	Degree=Sup	dema	0			llm
 schmaltzy	0	oewn-schmaltzy-a	Degree=Pos	dema	0			oewn_form
 schmalz	0	oewn-schmalz-n	Number=Sing	dema	0			oewn_form
 schmalzes	0	oewn-schmalz-n	Number=Plur	dema	0			rule
@@ -1203,14 +1203,16 @@ schmoozer	0	oewn-schmoozer-n	Number=Sing	dema	0			oewn_form
 schmoozers	0	oewn-schmoozer-n	Number=Plur	dema	0			rule
 schmoozes	0	oewn-schmooze-v	Person=3+Tense=Pres	dema	0			rule
 schmoozes	1	oewn-schmooze-n	Number=Plur	dema	0			rule
+schmoozes	2	oewn-shmooze-n	Number=Plur	dema	0			rule_variant
 schmoozing	0	oewn-schmooze-v	VerbForm=Ger	dema	0			rule
 schmos	0	oewn-schmo-n	Number=Plur	dema	0			rule_variant
 schmuck	0	oewn-schmuck-n	Number=Sing	dema	0			oewn_form
 schmucks	0	oewn-schmuck-n	Number=Plur	dema	0			rule
 schnapper	0		Number=Sing	dema	0	schnapper	n	moby_reverse
 schnappers	0		Number=Plur	dema	0	schnapper	n	rule
-schnapps	0	oewn-schnapps-n	Number=Plur	dema	0			agid
+schnapps	0	oewn-schnapps-n	Number=Plur	dema	0			llm
 schnapps	1	oewn-schnapps-n	Number=Sing	dema	0			oewn_form
+schnappses	0	oewn-schnapps-n	Number=Plur	dema	0			rule_variant
 schnaps	0	oewn-schnaps-n	Number=Sing	dema	0			oewn_form
 schnauzer	0	oewn-schnauzer-n	Number=Sing	dema	0			oewn_form
 schnauzers	0	oewn-schnauzer-n	Number=Plur	dema	0			rule
@@ -1328,7 +1330,7 @@ schoolboy	0	oewn-schoolboy-n	Number=Sing	dema	0			oewn_form
 schoolboyish	0	oewn-schoolboyish-a	Degree=Pos	dema	0			oewn_form
 schoolboys	0	oewn-schoolboy-n	Number=Plur	dema	0			rule
 schoolchild	0	oewn-schoolchild-n	Number=Sing	dema	0			oewn_form
-schoolchildren	0	oewn-schoolchild-n	Number=Plur	dema	0			agid
+schoolchildren	0	oewn-schoolchild-n	Number=Plur	dema	0			llm
 schooldays	0	oewn-schooldays-n	Number=Sing	dema	0			oewn_form
 schooled	0	oewn-school-v	Tense=Past+VerbForm=Part	dema	0			rule
 schoolfellow	0	oewn-schoolfellow-n	Number=Sing	dema	0			oewn_form
@@ -1357,7 +1359,7 @@ schoolmastership	0		Number=Sing	dema	0	schoolmastership	n	moby_reverse
 schoolmasterships	0		Number=Plur	dema	0	schoolmastership	n	rule
 schoolmate	0	oewn-schoolmate-n	Number=Sing	dema	0			oewn_form
 schoolmates	0	oewn-schoolmate-n	Number=Plur	dema	0			rule
-schoolmen	0	oewn-schoolman-n	Number=Plur	dema	0			agid
+schoolmen	0	oewn-schoolman-n	Number=Plur	dema	0			llm
 schoolmistress	0	oewn-schoolmistress-n	Number=Sing	dema	0			oewn_form
 schoolmistresses	0	oewn-schoolmistress-n	Number=Plur	dema	0			rule
 schoolroom	0	oewn-schoolroom-n	Number=Sing	dema	0			oewn_form
@@ -1371,12 +1373,12 @@ schools of music	0	oewn-school_of_music-n	Number=Plur	dema	0			rule
 schools of nursing	0	oewn-school_of_nursing-n	Number=Plur	dema	0			rule
 schools of thought	0	oewn-school_of_thought-n	Number=Plur	dema	0			rule
 schoolteacher	0	oewn-schoolteacher-n	Number=Sing	dema	0			oewn_form
-schoolteachers	0	oewn-schoolteacher-n	Number=Plur	dema	0			rule
+schoolteachers	0	oewn-schoolteacher-n	Number=Plur	dema	0			llm
 schooltime	0	oewn-schooltime-n	Number=Sing	dema	0			oewn_form
 schooltimes	0	oewn-schooltime-n	Number=Plur	dema	0			rule
 schoolwide	0	oewn-schoolwide-a	Degree=Pos	dema	0			oewn_form
 schoolwoman	0	oewn-schoolwoman-n	Number=Sing	dema	0			oewn_form
-schoolwomans	0	oewn-schoolwoman-n	Number=Plur	dema	0			rule
+schoolwomen	0	oewn-schoolwoman-n	Number=Plur	dema	0			llm
 schoolwork	0	oewn-schoolwork-n	Number=Sing	dema	0			oewn_form
 schoolworks	0	oewn-schoolwork-n	Number=Plur	dema	0			rule
 schoolyard	0	oewn-schoolyard-n	Number=Sing	dema	0			oewn_form
@@ -1617,8 +1619,8 @@ scleriasis	0		Number=Sing	dema	0	scleriasis	n	moby_reverse
 sclerite	0	oewn-sclerite-n	Number=Sing	dema	0			oewn_form
 sclerites	0	oewn-sclerite-n	Number=Plur	dema	0			rule
 scleritic	0		Degree=Pos	dema	0	scleritic	a	moby_reverse
+scleritides	0	oewn-scleritis-n	Number=Plur	dema	0			llm
 scleritis	0	oewn-scleritis-n	Number=Sing	dema	0			oewn_form
-scleritises	0	oewn-scleritis-n	Number=Plur	dema	0			rule
 scleroblast	0		Number=Sing	dema	0	scleroblast	n	moby_reverse
 scleroblastic	0		Degree=Pos	dema	0	scleroblastic	a	moby_reverse
 scleroblasts	0		Number=Plur	dema	0	scleroblast	n	rule
@@ -1709,8 +1711,9 @@ scolecite	0		Number=Sing	dema	0	scolecite	n	moby_reverse
 scolecites	0		Number=Plur	dema	0	scolecite	n	rule
 scolex	0		Number=Sing	dema	0	scolex	n	moby_reverse
 scolexes	0		Number=Plur	dema	0	scolex	n	rule
-scolia	0	oewn-scolion-n	Number=Plur	dema	0			agid
+scolia	0	oewn-scolion-n	Number=Plur	dema	0			llm
 scolion	0	oewn-scolion-n	Number=Sing	dema	0			oewn_form
+scolions	0	oewn-scolion-n	Number=Plur	dema	0			rule_variant
 scoliosis	0	oewn-scoliosis-n	Number=Sing	dema	0			oewn_form
 scollop	0	oewn-scollop-n	Number=Sing	dema	0			oewn_form
 scollop	1	oewn-scollop-v	VerbForm=Inf	dema	0			oewn_form
@@ -1899,8 +1902,9 @@ scorpion shell	0	oewn-scorpion_shell-n	Number=Sing	dema	0			oewn_form
 scorpion shells	0	oewn-scorpion_shell-n	Number=Plur	dema	0			rule
 scorpion weed	0	oewn-scorpion_weed-n	Number=Sing	dema	0			oewn_form
 scorpion weeds	0	oewn-scorpion_weed-n	Number=Plur	dema	0			rule
-scorpionfish	0	oewn-scorpionfish-n	Number=Plur	dema	0			agid
+scorpionfish	0	oewn-scorpionfish-n	Number=Plur	dema	0			llm
 scorpionfish	1	oewn-scorpionfish-n	Number=Sing	dema	0			oewn_form
+scorpionfishes	0	oewn-scorpionfish-n	Number=Plur	dema	0			rule_variant
 scorpionflies	0		Number=Plur	dema	0	scorpionfly	n	rule
 scorpionfly	0		Number=Sing	dema	0	scorpionfly	n	moby_reverse
 scorpionic	0		Degree=Pos	dema	0	scorpionic	a	moby_reverse
@@ -2021,8 +2025,8 @@ scrabbler	0		Number=Sing	dema	0	scrabbler	n	moby_reverse
 scrabblers	0		Number=Plur	dema	0	scrabbler	n	rule
 scrabbles	0	oewn-scrabble-v	Person=3+Tense=Pres	dema	0			rule
 scrabbles	1	oewn-scrabble-n	Number=Plur	dema	0			rule
-scrabblier	0	oewn-scrabbly-a	Degree=Cmp	dema	0			rule
-scrabbliest	0	oewn-scrabbly-a	Degree=Sup	dema	0			rule
+scrabblier	0	oewn-scrabbly-a	Degree=Cmp	dema	0			llm
+scrabbliest	0	oewn-scrabbly-a	Degree=Sup	dema	0			llm
 scrabbling	0	oewn-scrabble-v	VerbForm=Ger	dema	0			rule
 scrabbly	0	oewn-scrabbly-a	Degree=Pos	dema	0			oewn_form
 scrag	0	oewn-scrag-n	Number=Sing	dema	0			oewn_form
@@ -2243,8 +2247,8 @@ screecher	0	oewn-screecher-n	Number=Sing	dema	0			oewn_form
 screechers	0	oewn-screecher-n	Number=Plur	dema	0			rule
 screeches	0	oewn-screech-n	Number=Plur	dema	0			rule
 screeches	1	oewn-screech-v	Person=3+Tense=Pres	dema	0			rule
-screechier	0	oewn-screechy-a	Degree=Cmp	dema	0			rule
-screechiest	0	oewn-screechy-a	Degree=Sup	dema	0			rule
+screechier	0	oewn-screechy-a	Degree=Cmp	dema	0			llm
+screechiest	0	oewn-screechy-a	Degree=Sup	dema	0			llm
 screeching	0		Degree=Pos	dema	0	screeching	a	moby_reverse
 screeching	1	oewn-screeching-n	Number=Sing	dema	0			oewn_form
 screeching	2	oewn-screech-v	VerbForm=Ger	dema	0			rule
@@ -2294,9 +2298,10 @@ screens	1	oewn-screen-v	Person=3+Tense=Pres	dema	1			carried
 screens off	0	oewn-screen_off-v	Person=3+Tense=Pres	dema	0			rule
 screens out	0	oewn-screen_out-v	Person=3+Tense=Pres	dema	0			rule
 screenshot	0	oewn-screenshot-v	VerbForm=Inf	dema	0			oewn_form
-screenshoted	0	oewn-screenshot-v	Tense=Past+VerbForm=Part	dema	0			rule
-screenshoting	0	oewn-screenshot-v	VerbForm=Ger	dema	0			rule
-screenshots	0	oewn-screenshot-v	Person=3+Tense=Pres	dema	0			rule
+screenshot	1	oewn-screenshot-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+screenshots	0	oewn-screenshot-v	Person=3+Tense=Pres	dema	0			llm
+screenshotted	0	oewn-screenshot-v	Tense=Past+VerbForm=Part	dema	0			llm
+screenshotting	0	oewn-screenshot-v	VerbForm=Ger	dema	0			llm
 screenwriter	0	oewn-screenwriter-n	Number=Sing	dema	0			oewn_form
 screenwriters	0	oewn-screenwriter-n	Number=Plur	dema	0			rule
 screes	0	oewn-scree-n	Number=Plur	dema	0			rule
@@ -2464,7 +2469,7 @@ scrivened	0	oewn-scrivened-a	Degree=Pos	dema	0			oewn_form
 scrivener	0	oewn-scrivener-n	Number=Sing	dema	0			oewn_form
 scriveners	0	oewn-scrivener-n	Number=Plur	dema	0			rule
 scrobiculate	0		Degree=Pos	dema	0	scrobiculate	a	moby_reverse
-scrod	0	oewn-scrod-n	Number=Plur	dema	0			agid
+scrod	0	oewn-scrod-n	Number=Plur	dema	0			llm
 scrod	1	oewn-scrod-n	Number=Sing	dema	0			oewn_form
 scroddled	0		Degree=Pos	dema	0	scroddled	a	moby_reverse
 scroddled	1		VerbForm=Inf	dema	0	scroddled	v	moby_reverse
@@ -2569,9 +2574,8 @@ scrubs	1	oewn-scrub-n	Number=Plur	dema	0			rule
 scrubs	2	oewn-scrubs-n	Number=Sing	dema	0			oewn_form
 scrubs up	0	oewn-scrub_up-v	Person=3+Tense=Pres	dema	0			rule
 scrubwoman	0		Number=Sing	dema	0	scrubwoman	n	moby_reverse
-scrubwomans	0		Number=Plur	dema	0	scrubwoman	n	rule
-scrubwomen	0		Number=Sing	dema	0	scrubwomen	n	moby_reverse
-scrubwomens	0		Number=Plur	dema	0	scrubwomen	n	rule
+scrubwomen	0		Number=Plur	dema	0	scrubwoman	n	rule
+scrubwomen	1		Number=Sing	dema	0	scrubwomen	n	moby_reverse
 scruff	0	oewn-scruff-n	Number=Sing	dema	0			oewn_form
 scruffier	0	oewn-scruffy-a	Degree=Cmp	dema	0			oewn_form
 scruffiest	0	oewn-scruffy-a	Degree=Sup	dema	0			oewn_form
@@ -2705,26 +2709,26 @@ sculking	0		VerbForm=Ger	dema	0	sculk	v	rule
 sculks	0		Person=3+Tense=Pres	dema	0	sculk	v	rule
 scull	0	oewn-scull-n	Number=Sing	dema	0			oewn_form
 scull	1	oewn-scull-v	VerbForm=Inf	dema	0			oewn_form
-sculled	0	oewn-scull-v	Tense=Past+VerbForm=Part	dema	0			rule
+sculled	0	oewn-scull-v	Tense=Past+VerbForm=Part	dema	0			llm
 sculler	0	oewn-sculler-n	Number=Sing	dema	0			oewn_form
 sculleries	0	oewn-scullery-n	Number=Plur	dema	0			rule
 scullers	0	oewn-sculler-n	Number=Plur	dema	0			rule
 scullery	0	oewn-scullery-n	Number=Sing	dema	0			oewn_form
-sculling	0	oewn-scull-v	VerbForm=Ger	dema	0			rule
+sculling	0	oewn-scull-v	VerbForm=Ger	dema	0			llm
 sculling	1	oewn-sculling-n	Number=Sing	dema	0			oewn_form
 scullings	0	oewn-sculling-n	Number=Plur	dema	0			rule
 scullion	0	oewn-scullion-n	Number=Sing	dema	0			oewn_form
 scullions	0	oewn-scullion-n	Number=Plur	dema	0			rule
 sculls	0	oewn-scull-n	Number=Plur	dema	0			rule
-sculls	1	oewn-scull-v	Person=3+Tense=Pres	dema	0			rule
+sculls	1	oewn-scull-v	Person=3+Tense=Pres	dema	0			llm
 sculp	0		Number=Sing	dema	0	sculp	n	moby_reverse
 sculp	1		VerbForm=Inf	dema	0	sculp	v	moby_reverse
 sculpin	0	oewn-sculpin-n	Number=Sing	dema	0			oewn_form
 sculpins	0	oewn-sculpin-n	Number=Plur	dema	0			rule
 sculps	0		Number=Plur	dema	0	sculp	n	rule
 sculpsit	0		VerbForm=Inf	dema	0	sculpsit	v	moby_reverse
-sculpsiting	0		VerbForm=Ger	dema	0	sculpsit	v	rule
 sculpsits	0		Person=3+Tense=Pres	dema	0	sculpsit	v	rule
+sculpsitting	0		VerbForm=Ger	dema	0	sculpsit	v	rule
 sculpt	0	oewn-sculpt-v	VerbForm=Inf	dema	0			oewn_form
 sculpted	0	oewn-sculpt-v	Tense=Past+VerbForm=Part	dema	0			rule
 sculpted	1	oewn-sculpted-a	Degree=Pos	dema	0			oewn_form
@@ -2796,9 +2800,8 @@ scuppers	0	oewn-scupper-n	Number=Plur	dema	0			rule
 scuppers	1	oewn-scupper-v	Person=3+Tense=Pres	dema	0			rule
 scups	0	oewn-scup-n	Number=Plur	dema	0			rule
 scurf	0	oewn-scurf-n	Number=Sing	dema	0			oewn_form
-scurfier	0	oewn-scurfy-a	Degree=Cmp	dema	0			rule
-scurfiest	0	oewn-scurfy-a	Degree=Sup	dema	0			rule
-scurfs	0	oewn-scurf-n	Number=Plur	dema	0			rule
+scurfier	0	oewn-scurfy-a	Degree=Cmp	dema	0			llm
+scurfiest	0	oewn-scurfy-a	Degree=Sup	dema	0			llm
 scurfy	0	oewn-scurfy-a	Degree=Pos	dema	0			oewn_form
 scurried	0	oewn-scurry-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 scurries	0	oewn-scurry-v	Person=3+Tense=Pres	dema	0			rule

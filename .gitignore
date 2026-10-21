@@ -110,8 +110,8 @@ AGENT_REPORT_*.md
 
 audit-work/
 
-# Raw downloaded texts of the real-text harvest tool (only extracted sentences are committed)
-tools/real-text/cache/
+# Raw downloaded texts and work files of the quota-fill tools (only extracted sentences are committed)
+tools/quota-fill/cache/
 
 # Raw third-party downloads and scratch work of the open-corpus tools (hashes are recorded in corpus/open/sources/fetch_log.tsv);
 # nothing from Universal Dependencies is ever committed

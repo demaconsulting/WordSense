@@ -4,9 +4,10 @@
   python fill.py select WAVE            choose rows for the senses with a deficit, write the corpus files of the wave
                                         (anchors, holdout, provenance, choosers) named quota-w<WAVE>-real.tsv
 
-Every row written here is TARGETED by nature (a sentence found for a specific sense or form): its provenance row says
-`selection = targeted`, the reason (`sense=<id>`) and how it was found. The rows are for training and for classifier
-evaluation only, never for usage statistics.
+Every row written here is TARGETED by nature (a sentence found for a specific sense or form). The provenance row of a
+sentence has only the columns that the builder and these tools read (`id`, `split`, `source`, `source_key`); the licence
+of a sentence follows from its source (the allowed sources are in tools/WordSense.Builder/ProvenanceSources.cs). The rows
+are for training and for classifier evaluation only, never for usage statistics.
 """
 import argparse
 import collections
@@ -19,49 +20,31 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import choosers
 import lexindex
-import pool
 import qf
 import textutil
 
-PROV_COLUMNS = ["id", "lemma", "sense", "split", "source", "licence", "source_key", "url", "contributor", "origin",
-                "selection", "selection_reason", "found_by", "licence_basis"]
-PD_US = "Public domain in the United States"
-LABEL_MODEL = "gpt-6.1-sol"
+PROV_COLUMNS = ["id", "split", "source", "source_key"]
 SENSE_DOC_CAP = 3
 LEMMA_DOC_CAP = 10
-GOV = {"voa": ("voa", "VOA Learning English staff-written article (US federal employee work, 17 U.S.C. 105)"),
-       "usgs": ("usgs", "USGS web page (US federal employee work, 17 U.S.C. 105; USGS public-domain statement)"),
-       "nps": ("nps", "NPS web page (US federal employee work, 17 U.S.C. 105; NPS public-domain statement)"),
-       "noaa-nws": ("nws", "NWS web page (US federal employee work, 17 U.S.C. 105; NWS public-domain statement)"),
-       "faa": ("faa", "FAA publication (US federal employee work, 17 U.S.C. 105; credited third-party material excluded)")}
+# The source of a provenance row must be one of the allowed sources of tools/WordSense.Builder/ProvenanceSources.cs
+# (the licence gate: the test CorpusLicenseTests fails on any other source). Pool families that are named differently:
+SOURCE_OF = {"voa": "voa", "usgs": "usgs", "nps": "nps", "noaa-nws": "nws", "faa": "faa"}
+WRITTEN_SOURCE = "llm-corpus"  # sentences written by a model for the project (CC0 1.0, project-authored)
 
 
 def prov_id(lemma, sentence):
     return hashlib.sha256((lemma + "|" + sentence).encode("utf-8")).hexdigest()[:12]
 
 
-def licence_basis(doc_row, family):
-    """The licence basis of the document of a sentence, recorded for every row."""
-    basis = doc_row.get("license_basis", "").replace("\t", " ").strip()
-    if family == "tatoeba" or "public domain in the United States" in basis:
-        return basis
-    return f"{PD_US}: {basis}"
-
-
-def provenance_fields(doc_row, sid, family):
-    """(source, licence, source_key, url, contributor) of a pool sentence."""
+def provenance_fields(sid, family):
+    """(source, source_key) of a pool sentence: the source is an allowed source, the source key names the document
+    (a Tatoeba sentence is its own document; the other keys are the document and the sentence ordinal)."""
     if family == "tatoeba":
-        tid = sid.split("-", 1)[1]
-        return ("tatoeba-cc0", "CC0 1.0", tid, f"https://tatoeba.org/en/sentences/show/{tid}",
-                "Tatoeba contributor (official CC0 1.0 export)")
+        return "tatoeba-cc0", sid.split("-", 1)[1]
     doc, _, ordinal = sid.partition("#")
     if family == "gutenberg":
-        ebook = doc.split("-", 1)[1]
-        year = doc_row.get("year", "")
-        return ("gutenberg", PD_US, f"pg{ebook}#{ordinal}", f"https://www.gutenberg.org/ebooks/{ebook}",
-                f"{doc_row['author']}: {doc_row['title']} ({year}; published 1930 or earlier)")
-    source, contributor = GOV[family]
-    return (source, PD_US, f"{doc}#{ordinal}", doc_row["url"], contributor + ": " + doc_row["title"])
+        return "gutenberg", f"pg{doc.split('-', 1)[1]}#{ordinal}"
+    return SOURCE_OF[family], f"{doc}#{ordinal}"
 
 
 def wave_dir(wave):
@@ -179,7 +162,6 @@ def cmd_select(args):
     deficit = {r["sense_id"]: (max(0, r["anchor_quota"] - r["anchors"]), max(0, r["holdout_quota"] - r["holdout"]))
                for r in status}
     blocked = qf.corpus_keys()
-    _rows, docs = pool.load_pool()
     doc_splits = qf.real_documents_by_split() if kind == "real" else {}
     extra = qf.extra_real_wanted() if kind == "real" else {}
     if args.tech:
@@ -304,22 +286,10 @@ def cmd_select(args):
         lemma = s["lemma"]
         out[split].append("\t".join([lemma, sense, s["pos_name"], c["sentence"]]))
         if kind == "real":
-            doc = c["doc"]
-            doc_row = docs[doc]
-            src = provenance_fields(doc_row, c["sid"], c["family"])
-            found = (f"harvest: pool sentence with the form '{c['form']}' of the lemma, found in {doc}; "
-                     f"labeled {LABEL_MODEL} (high confidence, full sense list of the form)")
-            origin = "real"
-            basis = licence_basis(doc_row, c["family"])
+            src = provenance_fields(c["sid"], c["family"])
         else:
-            src = ("llm-corpus", "MIT (project-authored)", f"quota-w{args.wave}-written", "-",
-                   f"gpt-5.6-luna (LLM-written); verified by {LABEL_MODEL} blind label")
-            found = (f"written: gpt-5.6-luna wrote it for the sense (form '{c['form']}'); "
-                     f"{LABEL_MODEL} labeled it blind with the same sense (high confidence)")
-            origin = "llm-corpus"
-            basis = "project-authored (MIT); no third-party text"
-        out["prov"].append("\t".join([prov_id(lemma, c["sentence"]), lemma, sense, split, *src, origin, "targeted",
-                                      f"sense={sense}", found, basis]))
+            src = (WRITTEN_SOURCE, f"quota-w{args.wave}-written")
+        out["prov"].append("\t".join([prov_id(lemma, c["sentence"]), split, *src]))
         if c["form"] in ch_ok:
             out["ch_" + split].append("\t".join([c["form"], lemma, c["sentence"]]))
     for key, folder, header in (("anchors", "anchors", None), ("holdout", "holdout", None),

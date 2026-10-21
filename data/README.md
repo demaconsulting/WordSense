@@ -102,7 +102,9 @@ is 1) and every project sense.
   (the evidence is curation metadata and not a column of the data tables). The curator's judgment itself is not
   machine-checkable.
 - **Frequency.** `sense_frequency` has the WordNet 3.0 tag count of every sense that has a sense key, joined on the key
-  by `import-wn30-counts`; 0 when the sense index has no line for it. A project sense has no key and ranks as 0.
+  by `import-wn30-counts`; 0 when the sense index has no line for it. A project sense has no key and counts as 0. The
+  counts feed the usage prior and the tiers; the order of the senses of a lemma in the image is the order of Open English
+  WordNet (`sense.position`, then `entry.homograph_no`, project senses last).
 - **Respellings.** `sense_respelling` is filled when a lemma is curated (the earlier inventory kept them per class), so
   that a group never mixes two respellings.
 

@@ -16,8 +16,7 @@ namespace WordSense.Builder;
 ///     <list type="bullet">
 ///     <item><description><c>compile-image [--data DIR] [--corpus DIR] [--output FILE]</c> compiles the data tables into the word image of the core package (<c>Resources/wordsense.img</c>).</description></item>
 ///     <item><description><c>audit-forms [--data DIR] [--sample 300] [--seed N] [--oracle FILE] [--adjudications FILE] [--output FILE] [--max-error 0.01]</c> checks a seeded stratified sample of the inflected form rows per provenance against the LemmInflect oracle (a pip-installed checker, not shipped), reports the error rate with a 95% Wilson interval per stratum and fails when a generated stratum reaches the limit.</description></item>
-///     <item><description><c>rebuild-forms [--data DIR] [--corpus DIR] [--oewn FILE] [--agid FILE] [--output DIR]</c> regenerates the entry and form tables from the entries, the committed legacy analyses (<c>corpus/lexicon/form-frozen.tsv</c>), the irregular lists, the written forms of the Open English WordNet file and the dictionary; a generated inflection ships only when a second source corroborates it (the AGID <c>infl.txt</c> file attests forms). Both inputs must match their pinned SHA-256; the default places are <c>artifacts/inputs/english-wordnet-2025.xml.gz</c> and <c>artifacts/inputs/agid/agid-2016.01.19/infl.txt</c>. The result depends on nothing else, so it is reproducible.</description></item>
-///     <item><description><c>import-agid --input FILE [--corpus DIR] [--output FILE]</c> derives the irregular forms of the dictionary words from the inflection database file <c>infl.txt</c>.</description></item>
+///     <item><description><c>rebuild-forms [--data DIR] [--corpus DIR] [--oewn FILE] [--output DIR]</c> regenerates the entry and form tables from the entries, the committed legacy analyses (<c>corpus/lexicon/form-frozen.tsv</c>), the irregular lists, the forms written for the project (<c>corpus/lexicon/forms-authored.tsv</c>, CC0), the written forms of the Open English WordNet file and the dictionary; a generated inflection ships only when a second source corroborates it (the dictionary or the authored forms). The Open English WordNet file must match its pinned SHA-256; the default place is <c>artifacts/inputs/english-wordnet-2025.xml.gz</c>. The result depends on nothing else, so it is reproducible.</description></item>
 ///     <item><description><c>import-moby --input FILE [--corpus DIR] [--output FILE]</c> imports the pinned Moby Part-of-Speech II list into the dictionary word list of the corpus.</description></item>
 ///     <item><description><c>weights &lt;modelId&gt; [--corpus DIR] [--repository DIR] [--cache DIR] [--no-cache] [--recompute-mean] [--solver kernel|primal] [--calibration-target P] [--no-prior] [--prior-alpha A] [--prior-smoothing K]</c> trains the fine-sense weights of an ONNX model (minilm, bert-base-cased) from <c>corpus/anchors</c> and writes them to its package; the scores are corrected to the usage of the senses (the usage prior: the share of the sense among the anchors of its lemma is divided out and its WordNet 3.0 tag count share, with <c>K</c> added to every count and raised to the exponent <c>A</c>, is multiplied in; the defaults are 0.5 and 0.5, <c>--no-prior</c> trains the raw balanced-anchor scores) by an offset that is folded into the stored biases; the thresholds of each lemma are first chosen by cross-validation on its anchors (on the corrected scores) and then moved to the precision target measured on the real-text calibration sentences of <c>corpus/holdout</c> (the real held-out sentences of the calibration documents, see the real-text split; <c>--calibration-target P</c> sets the lemma-level target, 0.97 by default), and the half-precision storage is checked against <c>corpus/holdout</c>. Pooled vectors are cached in <c>DIR/&lt;model id&gt;</c> (default <c>.cache/embeddings</c> of the repository) so only new sentences are encoded; <c>--no-cache</c> bypasses the cache; the global mean of the existing weights is reused unless <c>--recompute-mean</c> is given. The classifiers are fitted by Newton's method in the span of the anchors of the lemma (<c>--solver kernel</c>, the default, which is fast when a lemma has fewer anchors than the encoder has dimensions); <c>--solver primal</c> is the slow reference in the feature space that finds the same optimum.</description></item>
 ///     <item><description><c>evaluate &lt;modelId&gt; [--corpus DIR] [--repository DIR] [--output FILE] [--table FILE] [--outcomes FILE]</c> measures a shipped model (minilm, bert-base-cased, basic) on <c>corpus/holdout</c>: the share of the sentences answered at each level and the precision at each level; <c>--table</c> updates the row of the model in the model comparison table file; <c>--outcomes</c> writes the answer for every sentence.</description></item>
@@ -41,7 +40,7 @@ namespace WordSense.Builder;
 /// </remarks>
 internal static partial class Program
 {
-    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: compile-image, rebuild-forms, audit-forms, generate-facts, import-agid, import-moby, weights <modelId>, evaluate <modelId>, evaluate-senses, evaluate-running, evaluate-suite, check-leakage, tiers, open-counts, evaluate-tagger, coverage, train-basic, tune-basic, appendix, import-oewn, import-wn30-counts, label-senses, seed-inventory, validate-data.";
+    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: compile-image, rebuild-forms, audit-forms, generate-facts, import-moby, weights <modelId>, evaluate <modelId>, evaluate-senses, evaluate-running, evaluate-suite, check-leakage, tiers, open-counts, evaluate-tagger, coverage, train-basic, tune-basic, appendix, import-oewn, import-wn30-counts, label-senses, seed-inventory, validate-data.";
 
     /// <summary>The name of the option that gives the input file of an import command.</summary>
     private const string InputOption = "input";
@@ -132,8 +131,6 @@ internal static partial class Program
                     return RunGenerateFacts(options, repository, corpus, output, error);
                 case "audit-forms":
                     return RunAuditForms(options, repository, output, error);
-                case "import-agid":
-                    return RunImportAgid(options, corpus, output);
                 case "appendix":
                     return RunAppendix(options, repository, corpus, output);
                 default:
@@ -148,7 +145,7 @@ internal static partial class Program
         }
     }
 
-    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "split", "gold", "table", InputOption, "text", "top", "data", "sha256", "threshold", "overwrite", "outcomes", "oewn", "agid", "sample", "seed", "oracle", "adjudications", "max-error", "previous", "previous-release", "previous-sha256", "cache", "no-cache", "recompute-mean", "baseline", "curation", "solver", "calibration-target", "write-expectations", "prior-alpha", "prior-smoothing"], StringComparer.Ordinal);
+    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "split", "gold", "table", InputOption, "text", "top", "data", "sha256", "threshold", "overwrite", "outcomes", "oewn", "sample", "seed", "oracle", "adjudications", "max-error", "previous", "previous-release", "previous-sha256", "cache", "no-cache", "recompute-mean", "baseline", "curation", "solver", "calibration-target", "write-expectations", "prior-alpha", "prior-smoothing"], StringComparer.Ordinal);
 
     /// <summary>
     ///     Options that are switches: they take no value, but accept a following <c>true</c> or <c>false</c>.
@@ -318,16 +315,8 @@ internal static partial class Program
     {
         var formsData = options.TryGetValue("data", out var bd) ? Path.GetFullPath(bd) : Path.Join(repository, "data");
         var oewnFile = FormInput(options, "oewn", Path.Join(repository, DefaultOewnInput), "Open English WordNet");
-        var agidFile = FormInput(options, "agid", Path.Join(repository, DefaultAgidInput), "inflection database");
-        var generated = Data.FormGenerator.Run(formsData, corpus, oewnFile, agidFile, options.TryGetValue("output", out var fo) ? Path.GetFullPath(fo) : null);
+        var generated = Data.FormGenerator.Run(formsData, corpus, oewnFile, options.TryGetValue("output", out var fo) ? Path.GetFullPath(fo) : null);
         output.Write(generated.Render());
-        return 0;
-    }
-
-    private static int RunImportAgid(Dictionary<string, string> options, string corpus, TextWriter output)
-    {
-        var agidOutput = options.TryGetValue("output", out var ao) ? ao : Path.Join(corpus, "lexicon", Data.IrregularSources.AgidFile);
-        output.WriteLine(Data.AgidImporter.Import(Require(options, InputOption), corpus, agidOutput));
         return 0;
     }
 
@@ -341,8 +330,6 @@ internal static partial class Program
     }
 
     private const string DefaultOewnInput = "artifacts/inputs/english-wordnet-2025.xml.gz";
-
-    private const string DefaultAgidInput = "artifacts/inputs/agid/agid-2016.01.19/infl.txt";
 
     // The pinned input of the form tables: the option, else the default place; a missing file is reported with where to get it
     private static string FormInput(Dictionary<string, string> options, string name, string fallback, string title)

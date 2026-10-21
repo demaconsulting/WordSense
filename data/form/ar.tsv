@@ -128,7 +128,7 @@ Arceuthobium pusillums	0	oewn-Arceuthobium_pusillum-n	Capitalization=Exact+Numbe
 Archaeopteryx lithographica	0	oewn-Archaeopteryx_lithographica-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Archaeopteryx lithographicas	0	oewn-Archaeopteryx_lithographica-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Archer	0	oewn-archer-n	Number=Sing	dema	0			oewn_form
-Archer	1	oewn-arch-a	Degree=Cmp	dema	0			rule
+Archer	1	oewn-arch-a	Degree=Cmp	dema	0			llm
 Archer	2	oewn-Archer-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Archers	0	oewn-archer-n	Number=Plur	dema	0			rule
 Archers	1	oewn-Archer-n	Capitalization=Title+Number=Plur	dema	0			rule
@@ -239,8 +239,8 @@ Argonauta argo	0	oewn-Argonauta_argo-n	Capitalization=Exact+Number=Sing	dema	0		
 Argonauta argos	0	oewn-Argonauta_argo-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Argus	0	oewn-argus-n	Number=Sing	dema	0			oewn_form
 Argus	1	oewn-Argus-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-Arguses	0	oewn-argus-n	Number=Plur	dema	0			rule
-Arguses	1	oewn-Argus-n	Capitalization=Title+Number=Plur	dema	0			rule
+Arguses	0	oewn-argus-n	Number=Plur	dema	0			llm
+Arguses	1	oewn-Argus-n	Capitalization=Title+Number=Plur	dema	0			llm
 Argyranthemum frutescens	0	oewn-Argyranthemum_frutescens-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Argyrol	0	oewn-Argyrol-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Argyrols	0	oewn-Argyrol-n	Capitalization=Title+Number=Plur	dema	0			rule
@@ -613,12 +613,12 @@ arbotas	0		Number=Plur	dema	0	arbota	n	rule
 arbour	0	oewn-arbour-n	Number=Sing	dema	0			oewn_form
 arbours	0	oewn-arbour-n	Number=Plur	dema	0			rule
 arbovirus	0	oewn-arbovirus-n	Number=Sing	dema	0			oewn_form
-arboviruses	0	oewn-arbovirus-n	Number=Plur	dema	0			rule
+arboviruses	0	oewn-arbovirus-n	Number=Plur	dema	0			llm
 arbs	0	oewn-arb-n	Number=Plur	dema	0			rule
 arbtrn	0		Number=Sing	dema	0	arbtrn	n	moby_reverse
 arbtrns	0		Number=Plur	dema	0	arbtrn	n	rule
 arbutus	0	oewn-arbutus-n	Number=Sing	dema	0			oewn_form
-arbutuses	0	oewn-arbutus-n	Number=Plur	dema	0			rule
+arbutuses	0	oewn-arbutus-n	Number=Plur	dema	0			llm
 arc	0	oewn-arc-n	Number=Sing	dema	0			oewn_form
 arc	1	oewn-arc-v	VerbForm=Inf	dema	0			oewn_form
 arc	2		Degree=Pos	dema	0	arc	a	moby_reverse
@@ -656,7 +656,6 @@ arcane	0	oewn-arcane-a	Degree=Pos	dema	0			oewn_form
 arcanist	0		Number=Sing	dema	0	arcanist	n	moby_reverse
 arcanists	0		Number=Plur	dema	0	arcanist	n	rule
 arcanum	0	oewn-arcanum-n	Number=Sing	dema	0			oewn_form
-arcanums	0	oewn-arcanum-n	Number=Plur	dema	0			rule_variant
 arcas	0		Number=Plur	dema	0	arca	n	rule
 arcature	0		Number=Sing	dema	0	arcature	n	moby_reverse
 arcatures	0		Number=Plur	dema	0	arcature	n	rule
@@ -686,7 +685,6 @@ archaebacterias	0	oewn-archaebacteria-n	Number=Plur	dema	0			rule
 archaebacterium	0	oewn-archaebacterium-n	Number=Sing	dema	0			oewn_form
 archaebacteriums	0	oewn-archaebacterium-n	Number=Plur	dema	0			rule
 archaeobacteria	0	oewn-archaeobacteria-n	Number=Sing	dema	0			oewn_form
-archaeobacterias	0	oewn-archaeobacteria-n	Number=Plur	dema	0			rule
 archaeocyte	0		Number=Sing	dema	0	archaeocyte	n	moby_reverse
 archaeocytes	0		Number=Plur	dema	0	archaeocyte	n	rule
 archaeol	0		Number=Sing	dema	0	archaeol	n	moby_reverse
@@ -795,7 +793,7 @@ archeopteryxes	0	oewn-archeopteryx-n	Number=Plur	dema	0			rule
 archeozoic	0	oewn-archeozoic-a	Degree=Pos	dema	0			oewn_form
 archepiscopal	0	oewn-archepiscopal-a	Degree=Pos	dema	0			oewn_form
 archer	0	oewn-archer-n	Number=Sing	dema	0			oewn_form
-archer	1	oewn-arch-a	Degree=Cmp	dema	0			rule
+archer	1	oewn-arch-a	Degree=Cmp	dema	0			llm
 archerfish	0	oewn-archerfish-n	Number=Sing	dema	0			oewn_form
 archerfishes	0	oewn-archerfish-n	Number=Plur	dema	0			oewn_form
 archeries	0	oewn-archery-n	Number=Plur	dema	0			rule
@@ -811,7 +809,7 @@ archesporial	0	oewn-archesporial-a	Degree=Pos	dema	0			oewn_form
 archesporium	0	oewn-archesporium-n	Number=Sing	dema	0			oewn_form
 archespsporia	0		Number=Sing	dema	0	archespsporia	n	moby_reverse
 archespsporias	0		Number=Plur	dema	0	archespsporia	n	rule
-archest	0	oewn-arch-a	Degree=Sup	dema	0			rule
+archest	0	oewn-arch-a	Degree=Sup	dema	0			llm
 archetto	0		Number=Sing	dema	0	archetto	n	moby_reverse
 archettos	0		Number=Plur	dema	0	archetto	n	rule
 archetypal	0	oewn-archetypal-a	Degree=Pos	dema	0			oewn_form
@@ -947,7 +945,7 @@ arcosoliulias	0		Number=Plur	dema	0	arcosoliulia	n	rule
 arcosolium	0		Number=Sing	dema	0	arcosolium	n	moby_reverse
 arcosoliums	0		Number=Plur	dema	0	arcosolium	n	rule
 arcs	0	oewn-arc-n	Number=Plur	dema	0			rule
-arcs	1	oewn-arc-v	Person=3+Tense=Pres	dema	0			rule
+arcs	1	oewn-arc-v	Person=3+Tense=Pres	dema	0			llm
 arcs-boutants	0	oewn-arc-boutant-n	Number=Plur	dema	0			oewn_form
 arcsec	0	oewn-arcsec-n	Number=Sing	dema	0			oewn_form
 arcsecant	0	oewn-arcsecant-n	Number=Sing	dema	0			oewn_form
@@ -993,10 +991,11 @@ arcuate veins of the kidney	0	oewn-arcuate_vein_of_the_kidney-n	Number=Plur	dema
 arcuately	0		Degree=Pos	dema	0	arcuately	r	moby_reverse
 arcuation	0		Number=Sing	dema	0	arcuation	n	moby_reverse
 arcuations	0		Number=Plur	dema	0	arcuation	n	rule
-arcus	0	oewn-arcus-n	Number=Sing	dema	0			oewn_form
+arcus	0	oewn-arcus-n	Number=Plur	dema	0			llm
+arcus	1	oewn-arcus-n	Number=Sing	dema	0			oewn_form
 arcus senilis	0	oewn-arcus_senilis-n	Number=Sing	dema	0			oewn_form
 arcus zygomaticus	0	oewn-arcus_zygomaticus-n	Number=Sing	dema	0			oewn_form
-arcuses	0	oewn-arcus-n	Number=Plur	dema	0			rule
+arcuses	0	oewn-arcus-n	Number=Plur	dema	0			rule_variant
 ard	0	oewn-ard-n	Number=Sing	dema	0			oewn_form
 ard plough	0	oewn-ard_plough-n	Number=Sing	dema	0			oewn_form
 ard ploughs	0	oewn-ard_plough-n	Number=Plur	dema	0			rule
@@ -1183,7 +1182,7 @@ argus	0	oewn-argus-n	Number=Sing	dema	0			oewn_form
 argus pheasant	0	oewn-argus_pheasant-n	Number=Sing	dema	0			oewn_form
 argus pheasants	0	oewn-argus_pheasant-n	Number=Plur	dema	0			rule
 argus-eyed	0	oewn-argus-eyed-a	Degree=Pos	dema	0			oewn_form
-arguses	0	oewn-argus-n	Number=Plur	dema	0			rule
+arguses	0	oewn-argus-n	Number=Plur	dema	0			llm
 arguta	0		Number=Sing	dema	0	arguta	n	moby_reverse
 argutas	0		Number=Plur	dema	0	arguta	n	rule
 argy-bargies	0	oewn-argy-bargy-n	Number=Plur	dema	0			rule
@@ -1207,7 +1206,7 @@ aridities	0	oewn-aridity-n	Number=Plur	dema	0			rule
 aridity	0	oewn-aridity-n	Number=Sing	dema	0			oewn_form
 aridly	0		Degree=Pos	dema	0	aridly	r	moby_reverse
 aridness	0	oewn-aridness-n	Number=Sing	dema	0			oewn_form
-aridnesses	0	oewn-aridness-n	Number=Plur	dema	0			rule
+aridnesses	0	oewn-aridness-n	Number=Plur	dema	0			llm
 ariel	0		Number=Sing	dema	0	ariel	n	moby_reverse
 ariels	0		Number=Plur	dema	0	ariel	n	rule
 arietta	0	oewn-arietta-n	Number=Sing	dema	0			oewn_form
@@ -1348,8 +1347,9 @@ armer	0		Number=Sing	dema	0	armer	n	moby_reverse
 armers	0		Number=Plur	dema	0	armer	n	rule
 armet	0	oewn-armet-n	Number=Sing	dema	0			oewn_form
 armets	0	oewn-armet-n	Number=Plur	dema	0			rule
-armful	0	oewn-armful-n	Number=Sing	dema	0			oewn_form
-armfuls	0	oewn-armful-n	Number=Plur	dema	0			rule_variant
+armful	0	oewn-armful-n	Number=Plur	dema	0			rule_variant
+armful	1	oewn-armful-n	Number=Sing	dema	0			oewn_form
+armfuls	0	oewn-armful-n	Number=Plur	dema	0			llm
 armguard	0	oewn-armguard-n	Number=Sing	dema	0			oewn_form
 armguards	0	oewn-armguard-n	Number=Plur	dema	0			rule
 armhole	0	oewn-armhole-n	Number=Sing	dema	0			oewn_form
@@ -1479,7 +1479,6 @@ arms race	0	oewn-arms_race-n	Number=Sing	dema	0			oewn_form
 arms races	0	oewn-arms_race-n	Number=Plur	dema	0			rule
 arms-runner	0	oewn-arms-runner-n	Number=Sing	dema	0			oewn_form
 arms-runners	0	oewn-arms-runner-n	Number=Plur	dema	0			rule
-armsful	0	oewn-armful-n	Number=Plur	dema	0			rule_variant
 armure	0		Number=Sing	dema	0	armure	n	moby_reverse
 armures	0		Number=Plur	dema	0	armure	n	rule
 army	0	oewn-army-n	Number=Sing	dema	0			oewn_form
@@ -1569,12 +1568,12 @@ arousable	0		Degree=Pos	dema	0	arousable	a	moby_reverse
 arousal	0	oewn-arousal-n	Number=Sing	dema	0			oewn_form
 arousals	0	oewn-arousal-n	Number=Plur	dema	0			rule
 arouse	0	oewn-arouse-v	VerbForm=Inf	dema	0			oewn_form
-aroused	0	oewn-arouse-v	Tense=Past+VerbForm=Part	dema	0			rule
+aroused	0	oewn-arouse-v	Tense=Past+VerbForm=Part	dema	0			llm
 aroused	1	oewn-aroused-a	Degree=Pos	dema	0			oewn_form
 arouser	0	oewn-arouser-n	Number=Sing	dema	0			oewn_form
 arousers	0	oewn-arouser-n	Number=Plur	dema	0			rule
-arouses	0	oewn-arouse-v	Person=3+Tense=Pres	dema	0			rule
-arousing	0	oewn-arouse-v	VerbForm=Ger	dema	0			rule
+arouses	0	oewn-arouse-v	Person=3+Tense=Pres	dema	0			llm
+arousing	0	oewn-arouse-v	VerbForm=Ger	dema	0			llm
 arpeggiated	0		Degree=Pos	dema	0	arpeggiated	a	moby_reverse
 arpeggiated	1		VerbForm=Inf	dema	0	arpeggiated	v	moby_reverse
 arpeggiation	0		Number=Sing	dema	0	arpeggiation	n	moby_reverse
@@ -1614,11 +1613,10 @@ arranging	1	oewn-arranging-n	Number=Sing	dema	0			oewn_form
 arrangings	0	oewn-arranging-n	Number=Plur	dema	0			rule
 arrant	0	oewn-arrant-a	Degree=Pos	dema	0			oewn_form
 arrantly	0		Degree=Pos	dema	0	arrantly	r	moby_reverse
-arras	0	oewn-arras-n	Number=Plur	dema	0			rule_variant
-arras	1	oewn-arras-n	Number=Sing	dema	0			oewn_form
+arras	0	oewn-arras-n	Number=Sing	dema	0			oewn_form
 arrased	0		Degree=Pos	dema	0	arrased	a	moby_reverse
 arrased	1		VerbForm=Inf	dema	0	arrased	v	moby_reverse
-arrases	0	oewn-arras-n	Number=Plur	dema	0			rule_variant
+arrases	0	oewn-arras-n	Number=Plur	dema	0			llm
 array	0	oewn-array-n	Number=Sing	dema	0			oewn_form
 array	1	oewn-array-v	VerbForm=Inf	dema	0			oewn_form
 arrayal	0		Number=Sing	dema	0	arrayal	n	moby_reverse
@@ -2050,8 +2048,8 @@ arteriosclerotic	0	oewn-arteriosclerotic-a	Degree=Pos	dema	0			oewn_form
 arteriotomies	0		Number=Plur	dema	0	arteriotomy	n	rule
 arteriotomy	0		Number=Sing	dema	0	arteriotomy	n	moby_reverse
 arteriovenous	0	oewn-arteriovenous-a	Degree=Pos	dema	0			oewn_form
+arteritides	0	oewn-arteritis-n	Number=Plur	dema	0			llm
 arteritis	0	oewn-arteritis-n	Number=Sing	dema	0			oewn_form
-arteritises	0	oewn-arteritis-n	Number=Plur	dema	0			rule
 artery	0	oewn-artery-n	Number=Sing	dema	0			oewn_form
 artery of the labyrinth	0	oewn-artery_of_the_labyrinth-n	Number=Sing	dema	0			oewn_form
 artery of the penis bulb	0	oewn-artery_of_the_penis_bulb-n	Number=Sing	dema	0			oewn_form
@@ -2259,9 +2257,9 @@ artillery shells	0	oewn-artillery_shell-n	Number=Plur	dema	0			rule
 artillery unit	0	oewn-artillery_unit-n	Number=Sing	dema	0			oewn_form
 artillery units	0	oewn-artillery_unit-n	Number=Plur	dema	0			rule
 artilleryman	0	oewn-artilleryman-n	Number=Sing	dema	0			oewn_form
-artillerymen	0	oewn-artilleryman-n	Number=Plur	dema	0			agid
+artillerymen	0	oewn-artilleryman-n	Number=Plur	dema	0			llm
 artillerywoman	0	oewn-artillerywoman-n	Number=Sing	dema	0			oewn_form
-artillerywomans	0	oewn-artillerywoman-n	Number=Plur	dema	0			rule
+artillerywomen	0	oewn-artillerywoman-n	Number=Plur	dema	0			rule
 artiness	0		Number=Sing	dema	0	artiness	n	moby_reverse
 artinesses	0		Number=Plur	dema	0	artiness	n	rule
 artiodactyl	0	oewn-artiodactyl-n	Number=Sing	dema	0			oewn_form

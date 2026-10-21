@@ -263,29 +263,27 @@ training sentences, the answers are right in 86.7% (BERT) and 85.6% (MiniLM) of 
 to a fine sense for a minority of the words (17.0% and 2.4% of the SemCor words). The probabilities of the fine senses
 are corrected to the usage of the senses (WordNet 3.0 counts);
 that raised the fine top-1 on SemCor from 56.9% to 60.9% (BERT) and from 47.5% to 53.8% (MiniLM) and lowers it slightly
-on the real test sentences, which are balanced by sense (`docs/build_notes/frequency-prior.md`). The sense choice of the
+on the real test sentences, which are balanced by sense (see [Accuracy and Model Choice][link-accuracy]). The sense
+choice of the
 encoders is not yet better than the most-frequent-sense baseline for the words they cover; the part of speech is the
 dependable part of an answer today. The RAM, latency and first-use columns were measured on one idle development
-machine (an Intel Core i7-13850HX laptop, Windows 11, .NET 10; see `docs/build_notes/model-table.md` for the
-conditions and the spread of repeated runs), so they are machine dependent: read them as the order of magnitude and the
+machine (an Intel Core i7-13850HX laptop, Windows 11, .NET 10; the conditions and the spread of repeated runs are in
+[Accuracy and Model Choice][link-accuracy]), so they are machine dependent: read them as the order of magnitude and the
 ratio between the models. The levels of the
-encoder answers on the real test sentences (`docs/build_notes/quota-fill.md` and `docs/build_notes/independent-evaluation.md`
-have the full tables and the sets that `evaluate` reports):
+encoder answers on the real test sentences (the sets that `evaluate` reports are listed in the same chapter):
 
 | Model | Sense (share, precision) | Group (share, precision) | Part of speech (share, precision) | Fine top-1 |
 | --- | ---: | ---: | ---: | ---: |
 | MiniLM | 3.1%, 87.7% | 0.9%, 77.8% | 96.1%, 93.6% | 56.4% |
 | BERT base cased | 15.7%, 94.2% | 0.7%, 100% | 83.6%, 95.6% | 65.8% |
 
-The table is generated into `docs/build_notes/model-table.md`; the user guide explains how the numbers were measured
-and lists the confidence thresholds of each model. A reviewed suite of 348 sentences about common ambiguous words
-(`corpus/suite`) guards each model against regressions. See also the [model comparison][link-model-comparison] and the
-[Basic evaluation][link-basic-evaluation] (both measure the earlier part-of-speech classes and are historical).
+The table is generated into [docs/user_guide/model-table.md][link-model-table]; the user guide chapter
+[Accuracy and Model Choice][link-accuracy] explains how the numbers were measured and how to read them. A reviewed suite
+of 348 sentences about common ambiguous words (`corpus/suite`) guards each model against regressions.
 
 ## Planned Improvements
 
-This version is a foundation, and these follow-ups are planned (the figures are from the build notes and the corpus
-reports):
+This version is a foundation, and these follow-ups are planned (the figures are from the corpus reports):
 
 - **More fine-sense training data.** Fill the per-sense quotas beyond the top 200 lemmas (waves 1 to 3 covered lemmas
   1 to 200), and refill the senses that lost sentences when the Tatoeba CC BY rows were removed from the corpus: at
@@ -301,18 +299,24 @@ reports):
   words.
 - **More genres for the tagger.** Add informal web-genre data (with a license that allows it) to the open part-of-speech
   corpus.
-- **A broader technical (STE) domain.** The senses still missing from the catalog or the corpus are listed in
-  `docs/build_notes/quota-fill.md`: bleed air, `torque` as a sense, a lock as a mechanism, a moment arm, a ground roll and
-  aerodynamically clean.
+- **A broader technical (STE) domain.** The senses still missing from the catalog or the corpus are listed in the
+  method of the quota filling in `corpus/README.md`: bleed air, `torque` as a sense, a lock as a mechanism, a moment arm,
+  a ground roll and aerodynamically clean.
 - **Participial adjectives.** A policy for the 105 participial adjective entries that are left without an adjective
   analysis (only 9 have it), with a relabeling of the corpus rows that name them.
 - **A stricter suite.** One-sense labels for the 174 suite rows that accept a set of senses, so that the rows become
   stricter.
 - **Open work items of the code base:** the clean-up of the static analysis findings, the hardening of the word image
   reader, typed exceptions for model and file failures, and the placement of `EnsureModelAsync` and `MirrorOptions`.
-- **The formal review backlog.** The first formal review of all 33 review-sets left compliance and hardening items open
-  (atomic requirements, test structure, packaging tests and the decomposition of the build-time tool); they are listed in
-  `docs/build_notes/formal-review-backlog.md`.
+- **Formal review follow-ups.** The first formal review of all 33 review-sets left compliance and hardening items open:
+  split the compound requirements into atomic ones and move requirements that prescribe the implementation into the
+  design documents; add typed method contracts to the unit designs; label the Arrange, Act and Assert steps in the
+  tests, link system and subsystem requirements to tests of the same level and make the CI acceptance run fail on skipped
+  model tests; add pack-and-inspect tests for the package metadata of all four packages; add direct tests for
+  `FeatureExtractor`, `VectorMath` and the catalog-wide invariants; harden the word image and the Basic table readers
+  (overlap and flags of the image directories, an immutable `BasicTables`, trailing bytes after the Brotli stream);
+  model the builder as a subsystem with its own units and the OTS items in SysML2; automate the reproducibility check of
+  the real weights and use the full digest as the inventory version.
 
 ## Documentation
 
@@ -387,7 +391,8 @@ Package licenses:
 ## Contributing
 
 Contributions are welcome. See [CONTRIBUTING.md][link-contributing] for development setup, coding
-standards, and the pull request process.
+standards, and the pull request process. The maintainer tools in `tools/` (the builder, the Python scripts for the
+corpus, the forms and the model preparation) are described in [tools/README.md][link-tools].
 
 ## License
 
@@ -418,5 +423,6 @@ By contributing to this project, you agree that your contributions will be licen
 [link-contributing]: https://github.com/demaconsulting/WordSense/blob/main/CONTRIBUTING.md
 [link-user-guide]: https://github.com/demaconsulting/WordSense/blob/main/docs/user_guide/introduction.md
 [link-appendix]: https://github.com/demaconsulting/WordSense/blob/main/docs/user_guide/appendix-senses.md
-[link-model-comparison]: https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-comparison.md
-[link-basic-evaluation]: https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/basic-evaluation.md
+[link-accuracy]: https://github.com/demaconsulting/WordSense/blob/main/docs/user_guide/accuracy.md
+[link-model-table]: https://github.com/demaconsulting/WordSense/blob/main/docs/user_guide/model-table.md
+[link-tools]: https://github.com/demaconsulting/WordSense/blob/main/tools/README.md

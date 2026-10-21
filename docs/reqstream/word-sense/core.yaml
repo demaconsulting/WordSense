@@ -30,8 +30,9 @@ sections:
           - id: WordSense-Core-Senses
             title: >-
               The core subsystem shall provide the sense catalog: look a sense up by its id or by its OEWN sense key,
-              list the senses of a lemma and part of speech with the most frequent first, look a group up by its id and
-              list the senses of a group, and identify the sense inventory of the embedded image by a version string.
+              list the senses of a lemma and part of speech in the order of Open English WordNet, look a group up by
+              its id and list the senses of a group, and identify the sense inventory of the embedded image by a
+              version string.
             tags: [subsystem]
             justification: |
               Every model answers with senses from the same inventory, and callers resolve an answer's ids (and attach
@@ -45,7 +46,7 @@ sections:
               - WordSense-Core-WordLexicon-Version
               - WordSense-Core-WordSenseContracts-SenseInfo
             tests:
-              - WordLexicon_SensesOf_LemmaAndPartOfSpeech_ListsMostFrequentFirst
+              - WordLexicon_SensesOf_LemmaAndPartOfSpeech_ListsInOewnOrder
               - WordLexicon_TryGetSense_ById_FindsSense
               - WordLexicon_TryGetGroup_ById_ListsMemberSenses
               - WordLexicon_Version_IsStableLowerCaseHex

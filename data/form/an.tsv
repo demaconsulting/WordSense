@@ -149,7 +149,7 @@ Angle	0	oewn-angle-n	Number=Sing	dema	0			oewn_form
 Angle	1	oewn-angle-v	VerbForm=Inf	dema	0			oewn_form
 Angle	2	oewn-Angle-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Angles	0	oewn-angle-n	Number=Plur	dema	0			rule
-Angles	1	oewn-angle-v	Person=3+Tense=Pres	dema	0			rule
+Angles	1	oewn-angle-v	Person=3+Tense=Pres	dema	0			llm
 Angles	2	oewn-Angle-n	Capitalization=Title+Number=Plur	dema	0			rule
 Anglian	0	oewn-Anglian-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Anglians	0	oewn-Anglian-n	Capitalization=Title+Number=Plur	dema	0			rule
@@ -198,7 +198,7 @@ Anglo-catholic	0	oewn-Anglo-catholic-a	Capitalization=Title+Degree=Pos	dema	0			
 Anglo-catholicisms	0	oewn-Anglo-Catholicism-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Anglo-frenches	0	oewn-Anglo-French-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Anglo-indians	0	oewn-Anglo-Indian-n	Capitalization=Exact+Number=Plur	dema	0			rule
-Anglo-normans	0	oewn-Anglo-Norman-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Anglo-normen	0	oewn-Anglo-Norman-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Anglo-saxons	0	oewn-Anglo-Saxon-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Anglomania	0	oewn-Anglomania-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Anglomanias	0	oewn-Anglomania-n	Capitalization=Title+Number=Plur	dema	0			rule
@@ -365,6 +365,7 @@ anabantid	1		Degree=Pos	dema	0	anabantid	a	moby_reverse
 anabantids	0		Number=Plur	dema	0	anabantid	n	rule
 anabas	0		Number=Sing	dema	0	anabas	n	moby_reverse
 anabases	0		Number=Plur	dema	0	anabas	n	rule
+anabases	1		Number=Sing	dema	0	anabases	n	moby_reverse
 anabasine	0		Number=Sing	dema	0	anabasine	n	moby_reverse
 anabasines	0		Number=Plur	dema	0	anabasine	n	rule
 anabasis	0		Number=Sing	dema	0	anabasis	n	moby_reverse
@@ -374,7 +375,6 @@ anabias	0		Number=Plur	dema	0	anabia	n	rule
 anabiosis	0	oewn-anabiosis-n	Number=Sing	dema	0			oewn_form
 anabiotic	0	oewn-anabiotic-a	Degree=Pos	dema	0			oewn_form
 anableps	0		Number=Sing	dema	0	anableps	n	moby_reverse
-anablepses	0		Number=Plur	dema	0	anableps	n	rule
 anabolic	0	oewn-anabolic-a	Degree=Pos	dema	0			oewn_form
 anabolic steroid	0	oewn-anabolic_steroid-n	Number=Sing	dema	0			oewn_form
 anabolic steroids	0	oewn-anabolic_steroid-n	Number=Plur	dema	0			rule
@@ -460,15 +460,18 @@ anaesthetic agent	0	oewn-anaesthetic_agent-n	Number=Sing	dema	0			oewn_form
 anaesthetic agents	0	oewn-anaesthetic_agent-n	Number=Plur	dema	0			rule
 anaesthetics	0	oewn-anaesthetic-n	Number=Plur	dema	0			rule
 anaesthetise	0	oewn-anaesthetise-v	VerbForm=Inf	dema	0			oewn_form
-anaesthetised	0	oewn-anaesthetise-v	Tense=Past+VerbForm=Part	dema	0			rule
-anaesthetises	0	oewn-anaesthetise-v	Person=3+Tense=Pres	dema	0			rule
-anaesthetising	0	oewn-anaesthetise-v	VerbForm=Ger	dema	0			rule
+anaesthetised	0	oewn-anaesthetize-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+anaesthetised	1	oewn-anaesthetise-v	Tense=Past+VerbForm=Part	dema	0			rule
+anaesthetises	0	oewn-anaesthetize-v	Person=3+Tense=Pres	dema	0			rule_variant
+anaesthetises	1	oewn-anaesthetise-v	Person=3+Tense=Pres	dema	0			rule
+anaesthetising	0	oewn-anaesthetize-v	VerbForm=Ger	dema	0			rule_variant
+anaesthetising	1	oewn-anaesthetise-v	VerbForm=Ger	dema	0			rule
 anaesthetist	0	oewn-anaesthetist-n	Number=Sing	dema	0			oewn_form
 anaesthetists	0	oewn-anaesthetist-n	Number=Plur	dema	0			rule
 anaesthetize	0	oewn-anaesthetize-v	VerbForm=Inf	dema	0			oewn_form
-anaesthetized	0	oewn-anaesthetize-v	Tense=Past+VerbForm=Part	dema	0			rule
-anaesthetizes	0	oewn-anaesthetize-v	Person=3+Tense=Pres	dema	0			rule
-anaesthetizing	0	oewn-anaesthetize-v	VerbForm=Ger	dema	0			rule
+anaesthetized	0	oewn-anaesthetize-v	Tense=Past+VerbForm=Part	dema	0			llm
+anaesthetizes	0	oewn-anaesthetize-v	Person=3+Tense=Pres	dema	0			llm
+anaesthetizing	0	oewn-anaesthetize-v	VerbForm=Ger	dema	0			llm
 anagenesis	0		Number=Sing	dema	0	anagenesis	n	moby_reverse
 anagenetic	0		Degree=Pos	dema	0	anagenetic	a	moby_reverse
 anagenetical	0		Degree=Pos	dema	0	anagenetical	a	moby_reverse
@@ -495,8 +498,6 @@ anagogical	0	oewn-anagogical-a	Degree=Pos	dema	0			oewn_form
 anagogically	0		Degree=Pos	dema	0	anagogically	r	moby_reverse
 anagram	0	oewn-anagram-n	Number=Sing	dema	0			oewn_form
 anagram	1	oewn-anagram-v	VerbForm=Inf	dema	0			oewn_form
-anagramed	0	oewn-anagram-v	Tense=Past+VerbForm=Part	dema	0			rule
-anagraming	0	oewn-anagram-v	VerbForm=Ger	dema	0			rule
 anagrammatic	0	oewn-anagrammatic-a	Degree=Pos	dema	0			oewn_form
 anagrammatical	0	oewn-anagrammatical-a	Degree=Pos	dema	0			oewn_form
 anagrammatically	0		Degree=Pos	dema	0	anagrammatically	r	moby_reverse
@@ -512,11 +513,11 @@ anagrammatize	0	oewn-anagrammatize-v	VerbForm=Inf	dema	0			oewn_form
 anagrammatized	0	oewn-anagrammatize-v	Tense=Past+VerbForm=Part	dema	0			rule
 anagrammatizes	0	oewn-anagrammatize-v	Person=3+Tense=Pres	dema	0			rule
 anagrammatizing	0	oewn-anagrammatize-v	VerbForm=Ger	dema	0			rule
-anagrammed	0	oewn-anagram-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
-anagramming	0	oewn-anagram-v	VerbForm=Ger	dema	0			rule_variant
+anagrammed	0	oewn-anagram-v	Tense=Past+VerbForm=Part	dema	0			llm
+anagramming	0	oewn-anagram-v	VerbForm=Ger	dema	0			llm
 anagrams	0	oewn-anagram-n	Number=Plur	dema	0			rule
 anagrams	1	oewn-anagrams-n	Number=Sing	dema	0			oewn_form
-anagrams	2	oewn-anagram-v	Person=3+Tense=Pres	dema	0			rule
+anagrams	2	oewn-anagram-v	Person=3+Tense=Pres	dema	0			llm
 anal	0	oewn-anal-a	Degree=Pos	dema	0			oewn_form
 anal intercourse	0	oewn-anal_intercourse-n	Number=Sing	dema	0			oewn_form
 anal intercourses	0	oewn-anal_intercourse-n	Number=Plur	dema	0			rule
@@ -676,7 +677,7 @@ anamorphoscopes	0		Number=Plur	dema	0	anamorphoscope	n	rule
 anamorphoses	0	oewn-anamorphosis-n	Number=Plur	dema	0			oewn_form
 anamorphosis	0	oewn-anamorphosis-n	Number=Sing	dema	0			oewn_form
 ananas	0	oewn-ananas-n	Number=Sing	dema	0			oewn_form
-ananases	0	oewn-ananas-n	Number=Plur	dema	0			rule
+ananases	0	oewn-ananas-n	Number=Plur	dema	0			llm
 anancasm	0	oewn-anancasm-n	Number=Sing	dema	0			oewn_form
 anancasms	0	oewn-anancasm-n	Number=Plur	dema	0			rule
 ananda	0		Number=Sing	dema	0	ananda	n	moby_reverse
@@ -821,7 +822,7 @@ anathemizes	0	oewn-anathemize-v	Person=3+Tense=Pres	dema	0			rule
 anathemizing	0	oewn-anathemize-v	VerbForm=Ger	dema	0			rule
 anatine	0		Degree=Pos	dema	0	anatine	a	moby_reverse
 anatman	0		Number=Sing	dema	0	anatman	n	moby_reverse
-anatmans	0		Number=Plur	dema	0	anatman	n	rule
+anatmen	0		Number=Plur	dema	0	anatman	n	rule
 anatomic	0	oewn-anatomic-a	Degree=Pos	dema	0			oewn_form
 anatomical	0	oewn-anatomical-a	Degree=Pos	dema	0			oewn_form
 anatomical	1	oewn-anatomical-n	Number=Sing	dema	0			oewn_form
@@ -915,19 +916,18 @@ anchoritisms	0		Number=Plur	dema	0	anchoritism	n	rule
 anchorless	0		Degree=Pos	dema	0	anchorless	a	moby_reverse
 anchorlike	0		Degree=Pos	dema	0	anchorlike	a	moby_reverse
 anchorman	0	oewn-anchorman-n	Number=Sing	dema	0			oewn_form
-anchormen	0	oewn-anchorman-n	Number=Plur	dema	0			agid
+anchormen	0	oewn-anchorman-n	Number=Plur	dema	0			llm
 anchorperson	0	oewn-anchorperson-n	Number=Sing	dema	0			oewn_form
 anchorpersons	0	oewn-anchorperson-n	Number=Plur	dema	0			rule
 anchors	0	oewn-anchor-n	Number=Plur	dema	0			rule
 anchors	1	oewn-anchor-v	Person=3+Tense=Pres	dema	0			rule
 anchorwoman	0	oewn-anchorwoman-n	Number=Sing	dema	0			oewn_form
-anchorwomans	0	oewn-anchorwoman-n	Number=Plur	dema	0			rule
+anchorwomen	0	oewn-anchorwoman-n	Number=Plur	dema	0			rule
 anchory	0		Degree=Pos	dema	0	anchory	a	moby_reverse
 anchoveta	0		Number=Sing	dema	0	anchoveta	n	moby_reverse
 anchovetas	0		Number=Plur	dema	0	anchoveta	n	rule
-anchovies	0	oewn-anchovy-n	Number=Plur	dema	0			rule_variant
-anchovy	0	oewn-anchovy-n	Number=Plur	dema	0			rule_variant
-anchovy	1	oewn-anchovy-n	Number=Sing	dema	0			oewn_form
+anchovies	0	oewn-anchovy-n	Number=Plur	dema	0			llm
+anchovy	0	oewn-anchovy-n	Number=Sing	dema	0			oewn_form
 anchovy butter	0	oewn-anchovy_butter-n	Number=Sing	dema	0			oewn_form
 anchovy butters	0	oewn-anchovy_butter-n	Number=Plur	dema	0			rule
 anchovy dressing	0	oewn-anchovy_dressing-n	Number=Sing	dema	0			oewn_form
@@ -1101,7 +1101,6 @@ ane	2		Number=Sing	dema	0	ane	n	moby_reverse
 ane	3	oewn-ane-a	Degree=Pos	dema	0			oewn_form
 anear	0	dema-anear-p		dema	0			carried
 anear	1		Degree=Pos	dema	0	anear	r	moby_reverse
-anecdota	0	oewn-anecdote-n	Number=Plur	dema	0			rule_variant
 anecdotage	0		Number=Sing	dema	0	anecdotage	n	moby_reverse
 anecdotages	0		Number=Plur	dema	0	anecdotage	n	rule
 anecdotal	0	oewn-anecdotal-a	Degree=Pos	dema	0			oewn_form
@@ -1111,7 +1110,7 @@ anecdotalist	0		Number=Sing	dema	0	anecdotalist	n	moby_reverse
 anecdotalists	0		Number=Plur	dema	0	anecdotalist	n	rule
 anecdotally	0		Degree=Pos	dema	0	anecdotally	r	moby_reverse
 anecdote	0	oewn-anecdote-n	Number=Sing	dema	0			oewn_form
-anecdotes	0	oewn-anecdote-n	Number=Plur	dema	0			rule_variant
+anecdotes	0	oewn-anecdote-n	Number=Plur	dema	0			llm
 anecdotic	0	oewn-anecdotic-a	Degree=Pos	dema	0			oewn_form
 anecdotical	0	oewn-anecdotical-a	Degree=Pos	dema	0			oewn_form
 anecdotically	0		Degree=Pos	dema	0	anecdotically	r	moby_reverse
@@ -1217,9 +1216,12 @@ anesthetists	0	oewn-anesthetist-n	Number=Plur	dema	0			rule
 anesthetization	0		Number=Sing	dema	0	anesthetization	n	moby_reverse
 anesthetizations	0		Number=Plur	dema	0	anesthetization	n	rule
 anesthetize	0	oewn-anesthetize-v	VerbForm=Inf	dema	0			oewn_form
-anesthetized	0	oewn-anesthetize-v	Tense=Past+VerbForm=Part	dema	0			rule
-anesthetizes	0	oewn-anesthetize-v	Person=3+Tense=Pres	dema	0			rule
-anesthetizing	0	oewn-anesthetize-v	VerbForm=Ger	dema	0			rule
+anesthetized	0	oewn-anaesthetize-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+anesthetized	1	oewn-anesthetize-v	Tense=Past+VerbForm=Part	dema	0			rule
+anesthetizes	0	oewn-anaesthetize-v	Person=3+Tense=Pres	dema	0			rule_variant
+anesthetizes	1	oewn-anesthetize-v	Person=3+Tense=Pres	dema	0			rule
+anesthetizing	0	oewn-anaesthetize-v	VerbForm=Ger	dema	0			rule_variant
+anesthetizing	1	oewn-anesthetize-v	VerbForm=Ger	dema	0			rule
 anesthyl	0	oewn-anesthyl-n	Number=Sing	dema	0			oewn_form
 anesthyls	0	oewn-anesthyl-n	Number=Plur	dema	0			rule
 anestric	0	oewn-anestric-a	Degree=Pos	dema	0			oewn_form
@@ -1227,7 +1229,7 @@ anestrous	0	oewn-anestrous-a	Degree=Pos	dema	0			oewn_form
 anestrum	0	oewn-anestrum-n	Number=Sing	dema	0			oewn_form
 anestrums	0	oewn-anestrum-n	Number=Plur	dema	0			rule
 anestrus	0	oewn-anestrus-n	Number=Sing	dema	0			oewn_form
-anestruses	0	oewn-anestrus-n	Number=Plur	dema	0			rule
+anestruses	0	oewn-anestrus-n	Number=Plur	dema	0			llm
 anethole	0	oewn-anethole-n	Number=Sing	dema	0			oewn_form
 anetholes	0	oewn-anethole-n	Number=Plur	dema	0			rule
 aneuch	0		Degree=Pos	dema	0	aneuch	a	moby_reverse
@@ -1296,7 +1298,7 @@ angels	0	oewn-angel-n	Number=Plur	dema	0			rule
 angelus	0	oewn-angelus-n	Number=Sing	dema	0			oewn_form
 angelus bell	0	oewn-angelus_bell-n	Number=Sing	dema	0			oewn_form
 angelus bells	0	oewn-angelus_bell-n	Number=Plur	dema	0			rule
-angeluses	0	oewn-angelus-n	Number=Plur	dema	0			rule
+angeluses	0	oewn-angelus-n	Number=Plur	dema	0			llm
 anger	0	oewn-anger-n	Number=Sing	dema	1			carried
 anger	1	oewn-anger-v	VerbForm=Inf	dema	1			carried
 angered	0	oewn-anger-v	Tense=Past+VerbForm=Part	dema	1			carried
@@ -1408,7 +1410,7 @@ angle-park	0	oewn-angle-park-v	VerbForm=Inf	dema	0			oewn_form
 angle-parked	0	oewn-angle-park-v	Tense=Past+VerbForm=Part	dema	0			rule
 angle-parking	0	oewn-angle-park-v	VerbForm=Ger	dema	0			rule
 angle-parks	0	oewn-angle-park-v	Person=3+Tense=Pres	dema	0			rule
-angled	0	oewn-angle-v	Tense=Past+VerbForm=Part	dema	0			rule
+angled	0	oewn-angle-v	Tense=Past+VerbForm=Part	dema	0			llm
 angled	1	oewn-angled-a	Degree=Pos	dema	0			oewn_form
 angled loofah	0	oewn-angled_loofah-n	Number=Sing	dema	0			oewn_form
 angled loofahs	0	oewn-angled_loofah-n	Number=Plur	dema	0			rule
@@ -1423,7 +1425,7 @@ anglerfish	0	oewn-anglerfish-n	Number=Sing	dema	0			oewn_form
 anglerfishes	0	oewn-anglerfish-n	Number=Plur	dema	0			rule
 anglers	0	oewn-angler-n	Number=Plur	dema	0			rule
 angles	0	oewn-angle-n	Number=Plur	dema	0			rule
-angles	1	oewn-angle-v	Person=3+Tense=Pres	dema	0			rule
+angles	1	oewn-angle-v	Person=3+Tense=Pres	dema	0			llm
 angles of attack	0	oewn-angle_of_attack-n	Number=Plur	dema	0			rule
 angles of dip	0	oewn-angle_of_dip-n	Number=Plur	dema	0			rule
 angles of extinction	0	oewn-angle_of_extinction-n	Number=Plur	dema	0			rule
@@ -1453,7 +1455,7 @@ anglicized	0	oewn-anglicize-v	Tense=Past+VerbForm=Part	dema	0			rule
 anglicizes	0	oewn-anglicize-v	Person=3+Tense=Pres	dema	0			rule
 anglicizing	0	oewn-anglicize-v	VerbForm=Ger	dema	0			rule
 angling	0	oewn-angling-n	Number=Sing	dema	0			oewn_form
-angling	1	oewn-angle-v	VerbForm=Ger	dema	0			rule
+angling	1	oewn-angle-v	VerbForm=Ger	dema	0			llm
 anglings	0	oewn-angling-n	Number=Plur	dema	0			rule
 anglophil	0	oewn-anglophil-n	Number=Sing	dema	0			oewn_form
 anglophile	0	oewn-anglophile-n	Number=Sing	dema	0			oewn_form
@@ -1479,7 +1481,7 @@ angrier	0	oewn-angry-a	Degree=Cmp	dema	0			oewn_form
 angriest	0	oewn-angry-a	Degree=Sup	dema	0			oewn_form
 angrily	0	oewn-angrily-r	Degree=Pos	dema	0			oewn_form
 angriness	0	oewn-angriness-n	Number=Sing	dema	0			oewn_form
-angrinesses	0	oewn-angriness-n	Number=Plur	dema	0			rule
+angrinesses	0	oewn-angriness-n	Number=Plur	dema	0			llm
 angry	0	oewn-angry-a	Degree=Pos	dema	0			oewn_form
 angry walk	0	oewn-angry_walk-n	Number=Sing	dema	0			oewn_form
 angry walks	0	oewn-angry_walk-n	Number=Plur	dema	0			rule
@@ -1583,7 +1585,6 @@ aniline oil	0	oewn-aniline_oil-n	Number=Sing	dema	0			oewn_form
 aniline oils	0	oewn-aniline_oil-n	Number=Plur	dema	0			rule
 anilines	0	oewn-aniline-n	Number=Plur	dema	0			rule
 anilingus	0		Number=Sing	dema	0	anilingus	n	moby_reverse
-anilinguses	0		Number=Plur	dema	0	anilingus	n	rule
 anilities	0		Number=Plur	dema	0	anility	n	rule
 anility	0		Number=Sing	dema	0	anility	n	moby_reverse
 anils	0	oewn-anil-n	Number=Plur	dema	0			rule
@@ -1722,6 +1723,7 @@ animators	0	oewn-animator-n	Number=Plur	dema	0			rule
 animatronics	0	oewn-animatronics-n	Number=Sing	dema	0			oewn_form
 anime	0	oewn-anime-n	Number=Sing	dema	0			oewn_form
 animes	0	oewn-anime-n	Number=Plur	dema	0			rule
+animi	0	oewn-animus-n	Number=Plur	dema	0			llm
 animise	0	oewn-animise-v	VerbForm=Inf	dema	0			oewn_form
 animised	0	oewn-animise-v	Tense=Past+VerbForm=Part	dema	0			rule
 animises	0	oewn-animise-v	Person=3+Tense=Pres	dema	0			rule
@@ -1740,7 +1742,7 @@ animosities	0	oewn-animosity-n	Number=Plur	dema	0			rule
 animosity	0	oewn-animosity-n	Number=Sing	dema	0			oewn_form
 anims	0		Number=Plur	dema	0	anim	n	rule
 animus	0	oewn-animus-n	Number=Sing	dema	0			oewn_form
-animuses	0	oewn-animus-n	Number=Plur	dema	0			rule
+animuses	0	oewn-animus-n	Number=Plur	dema	0			rule_variant
 anion	0	oewn-anion-n	Number=Sing	dema	0			oewn_form
 anion-exchange resin	0	oewn-anion-exchange_resin-n	Number=Sing	dema	0			oewn_form
 anion-exchange resins	0	oewn-anion-exchange_resin-n	Number=Plur	dema	0			rule
@@ -1844,9 +1846,10 @@ ankuses	0	oewn-ankus-n	Number=Plur	dema	0			rule
 ankyloglossia	0	oewn-ankyloglossia-n	Number=Sing	dema	0			oewn_form
 ankyloglossias	0	oewn-ankyloglossia-n	Number=Plur	dema	0			rule
 ankylosaur	0	oewn-ankylosaur-n	Number=Sing	dema	0			oewn_form
+ankylosauri	0	oewn-ankylosaurus-n	Number=Plur	dema	0			rule_variant
 ankylosaurs	0	oewn-ankylosaur-n	Number=Plur	dema	0			rule
 ankylosaurus	0	oewn-ankylosaurus-n	Number=Sing	dema	0			oewn_form
-ankylosauruses	0	oewn-ankylosaurus-n	Number=Plur	dema	0			rule
+ankylosauruses	0	oewn-ankylosaurus-n	Number=Plur	dema	0			llm
 ankylose	0	oewn-ankylose-v	VerbForm=Inf	dema	0			oewn_form
 ankylosed	0	oewn-ankylose-v	Tense=Past+VerbForm=Part	dema	0			rule
 ankyloses	0	oewn-ankylose-v	Person=3+Tense=Pres	dema	0			rule
@@ -2077,7 +2080,7 @@ anoestrous	0	oewn-anoestrous-a	Degree=Pos	dema	0			oewn_form
 anoestrum	0	oewn-anoestrum-n	Number=Sing	dema	0			oewn_form
 anoestrums	0	oewn-anoestrum-n	Number=Plur	dema	0			rule
 anoestrus	0	oewn-anoestrus-n	Number=Sing	dema	0			oewn_form
-anoestruses	0	oewn-anoestrus-n	Number=Plur	dema	0			rule
+anoestruses	0	oewn-anoestrus-n	Number=Plur	dema	0			llm
 anoetic	0		Degree=Pos	dema	0	anoetic	a	moby_reverse
 anoia	0		Number=Sing	dema	0	anoia	n	moby_reverse
 anoias	0		Number=Plur	dema	0	anoia	n	rule
@@ -2107,7 +2110,7 @@ anomalistic months	0	oewn-anomalistic_month-n	Number=Plur	dema	0			rule
 anomalistic year	0	oewn-anomalistic_year-n	Number=Sing	dema	0			oewn_form
 anomalistic years	0	oewn-anomalistic_year-n	Number=Plur	dema	0			rule
 anomalistically	0		Degree=Pos	dema	0	anomalistically	r	moby_reverse
-anomalists	0	oewn-anomalist-n	Number=Plur	dema	0			rule
+anomalists	0	oewn-anomalist-n	Number=Plur	dema	0			llm
 anomalops	0	oewn-anomalops-n	Number=Sing	dema	0			oewn_form
 anomalopteryx	0	oewn-anomalopteryx-n	Number=Sing	dema	0			oewn_form
 anomalopteryxes	0	oewn-anomalopteryx-n	Number=Plur	dema	0			rule
@@ -2297,7 +2300,7 @@ antagonized	0	oewn-antagonize-v	Tense=Past+VerbForm=Part	dema	0			rule
 antagonizes	0	oewn-antagonize-v	Person=3+Tense=Pres	dema	0			rule
 antagonizing	0	oewn-antagonize-v	VerbForm=Ger	dema	0			rule
 antalkali	0		Number=Sing	dema	0	antalkali	n	moby_reverse
-antalkalies	0		Number=Plur	dema	0	antalkali	n	moby_reverse
+antalkalies	0		Number=Sing	dema	0	antalkalies	n	moby_reverse
 antalkaline	0		Degree=Pos	dema	0	antalkaline	a	moby_reverse
 antalkaline	1		Number=Sing	dema	0	antalkaline	n	moby_reverse
 antalkalis	0		Number=Plur	dema	0	antalkali	n	rule
@@ -2350,7 +2353,7 @@ antechoirs	0		Number=Plur	dema	0	antechoir	n	rule
 antecourt	0		Number=Sing	dema	0	antecourt	n	moby_reverse
 antecourts	0		Number=Plur	dema	0	antecourt	n	rule
 antecubital	0	oewn-antecubital-a	Degree=Pos	dema	0			oewn_form
-anted	0	oewn-ante-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+anted	0	oewn-ante-v	Tense=Past+VerbForm=Part	dema	0			llm
 anted up	0	oewn-ante_up-v	Tense=Past+VerbForm=Part	dema	0			rule
 antedate	0	oewn-antedate-v	VerbForm=Inf	dema	0			oewn_form
 antedate	1		Number=Sing	dema	0	antedate	n	moby_reverse
@@ -2372,14 +2375,14 @@ anteflexion	0		Number=Sing	dema	0	anteflexion	n	moby_reverse
 anteflexions	0		Number=Plur	dema	0	anteflexion	n	rule
 antehall	0		Number=Sing	dema	0	antehall	n	moby_reverse
 antehalls	0		Number=Plur	dema	0	antehall	n	rule
-anteing	0	oewn-ante-v	VerbForm=Ger	dema	0			agid
-antelope	0	oewn-antelope-n	Number=Plur	dema	0			agid
+anteing	0	oewn-ante-v	VerbForm=Ger	dema	0			llm
+antelope	0	oewn-antelope-n	Number=Plur	dema	0			rule_variant
 antelope	1	oewn-antelope-n	Number=Sing	dema	0			oewn_form
 antelope chipmunk	0	oewn-antelope_chipmunk-n	Number=Sing	dema	0			oewn_form
 antelope chipmunks	0	oewn-antelope_chipmunk-n	Number=Plur	dema	0			rule
 antelope squirrel	0	oewn-antelope_squirrel-n	Number=Sing	dema	0			oewn_form
 antelope squirrels	0	oewn-antelope_squirrel-n	Number=Plur	dema	0			rule
-antelopes	0	oewn-antelope-n	Number=Plur	dema	0			rule_variant
+antelopes	0	oewn-antelope-n	Number=Plur	dema	0			llm
 antelopian	0		Degree=Pos	dema	0	antelopian	a	moby_reverse
 antelopine	0		Degree=Pos	dema	0	antelopine	a	moby_reverse
 antemeridian	0	oewn-antemeridian-a	Degree=Pos	dema	0			oewn_form
@@ -2473,7 +2476,7 @@ anteroom	0	oewn-anteroom-n	Number=Sing	dema	0			oewn_form
 anterooms	0	oewn-anteroom-n	Number=Plur	dema	0			rule
 anteroparietal	0		Degree=Pos	dema	0	anteroparietal	a	moby_reverse
 antes	0	oewn-ante-n	Number=Plur	dema	0			rule
-antes	1	oewn-ante-v	Person=3+Tense=Pres	dema	0			rule
+antes	1	oewn-ante-v	Person=3+Tense=Pres	dema	0			llm
 antes up	0	oewn-ante_up-v	Person=3+Tense=Pres	dema	0			rule
 antetype	0		Number=Sing	dema	0	antetype	n	moby_reverse
 antetypes	0		Number=Plur	dema	0	antetype	n	rule
@@ -2512,7 +2515,6 @@ antheridial	0	oewn-antheridial-a	Degree=Pos	dema	0			oewn_form
 antheridiophore	0	oewn-antheridiophore-n	Number=Sing	dema	0			oewn_form
 antheridiophores	0	oewn-antheridiophore-n	Number=Plur	dema	0			rule
 antheridium	0	oewn-antheridium-n	Number=Sing	dema	0			oewn_form
-antheridiums	0	oewn-antheridium-n	Number=Plur	dema	0			rule_variant
 antherless	0		Degree=Pos	dema	0	antherless	a	moby_reverse
 antherozoid	0	oewn-antherozoid-n	Number=Sing	dema	0			oewn_form
 antherozoids	0	oewn-antherozoid-n	Number=Plur	dema	0			rule
@@ -2760,8 +2762,7 @@ antiaggressive	0		Degree=Pos	dema	0	antiaggressive	a	moby_reverse
 antiaggressively	0		Degree=Pos	dema	0	antiaggressively	r	moby_reverse
 antiaggressiveness	0		Number=Sing	dema	0	antiaggressiveness	n	moby_reverse
 antiaircraft	0	oewn-antiaircraft-a	Degree=Pos	dema	0			oewn_form
-antiaircraft	1	oewn-antiaircraft-n	Number=Plur	dema	0			agid
-antiaircraft	2	oewn-antiaircraft-n	Number=Sing	dema	0			oewn_form
+antiaircraft	1	oewn-antiaircraft-n	Number=Sing	dema	0			oewn_form
 antiaircraft fire	0	oewn-antiaircraft_fire-n	Number=Sing	dema	0			oewn_form
 antiaircraft fires	0	oewn-antiaircraft_fire-n	Number=Plur	dema	0			rule
 antiaircraft gun	0	oewn-antiaircraft_gun-n	Number=Sing	dema	0			oewn_form
@@ -2813,7 +2814,6 @@ antibacchic	0		Degree=Pos	dema	0	antibacchic	a	moby_reverse
 antibacchii	0		Number=Sing	dema	0	antibacchii	n	moby_reverse
 antibacchiis	0		Number=Plur	dema	0	antibacchii	n	rule
 antibacchius	0		Number=Sing	dema	0	antibacchius	n	moby_reverse
-antibacchiuses	0		Number=Plur	dema	0	antibacchius	n	rule
 antibacterial	0	oewn-antibacterial-a	Degree=Pos	dema	0			oewn_form
 antibacterial	1	oewn-antibacterial-n	Number=Sing	dema	0			oewn_form
 antibacterial drug	0	oewn-antibacterial_drug-n	Number=Sing	dema	0			oewn_form
@@ -3740,7 +3740,7 @@ antiparliament	0		Degree=Pos	dema	0	antiparliament	a	moby_reverse
 antiparliamentary	0		Degree=Pos	dema	0	antiparliamentary	a	moby_reverse
 antiparticle	0	oewn-antiparticle-n	Number=Sing	dema	0			oewn_form
 antiparticles	0	oewn-antiparticle-n	Number=Plur	dema	0			rule
-antipasti	0	oewn-antipasto-n	Number=Plur	dema	0			agid
+antipasti	0	oewn-antipasto-n	Number=Plur	dema	0			llm
 antipasto	0	oewn-antipasto-n	Number=Sing	dema	0			oewn_form
 antipastos	0	oewn-antipasto-n	Number=Plur	dema	0			rule_variant
 antipathetic	0	oewn-antipathetic-a	Degree=Pos	dema	0			oewn_form
@@ -4352,8 +4352,8 @@ antrums	0	oewn-antrum-n	Number=Plur	dema	0			rule_variant
 ants	0	oewn-ant-n	Number=Plur	dema	0			rule
 antshrike	0		Number=Sing	dema	0	antshrike	n	moby_reverse
 antshrikes	0		Number=Plur	dema	0	antshrike	n	rule
-antsier	0	oewn-antsy-a	Degree=Cmp	dema	0			rule
-antsiest	0	oewn-antsy-a	Degree=Sup	dema	0			rule
+antsier	0	oewn-antsy-a	Degree=Cmp	dema	0			llm
+antsiest	0	oewn-antsy-a	Degree=Sup	dema	0			llm
 antsy	0	oewn-antsy-a	Degree=Pos	dema	0			oewn_form
 antthrush	0		Number=Sing	dema	0	antthrush	n	moby_reverse
 antthrushes	0		Number=Plur	dema	0	antthrush	n	rule
@@ -4368,7 +4368,7 @@ anurias	0	oewn-anuria-n	Number=Plur	dema	0			rule
 anuric	0	oewn-anuric-a	Degree=Pos	dema	0			oewn_form
 anurous	0	oewn-anurous-a	Degree=Pos	dema	0			oewn_form
 anus	0	oewn-anus-n	Number=Sing	dema	0			oewn_form
-anuses	0	oewn-anus-n	Number=Plur	dema	0			rule_variant
+anuses	0	oewn-anus-n	Number=Plur	dema	0			llm
 anvil	0	oewn-anvil-n	Number=Sing	dema	0			oewn_form
 anvils	0	oewn-anvil-n	Number=Plur	dema	0			rule
 anxieties	0	oewn-anxiety-n	Number=Plur	dema	0			rule
@@ -4390,7 +4390,7 @@ anxiolytics	0	oewn-anxiolytic-n	Number=Plur	dema	0			rule
 anxious	0	oewn-anxious-a	Degree=Pos	dema	0			oewn_form
 anxiously	0	oewn-anxiously-r	Degree=Pos	dema	0			oewn_form
 anxiousness	0	oewn-anxiousness-n	Number=Sing	dema	0			oewn_form
-anxiousnesses	0	oewn-anxiousness-n	Number=Plur	dema	0			rule
+anxiousnesses	0	oewn-anxiousness-n	Number=Plur	dema	0			llm
 any	0	dema-any-d		dema	0			carried
 any	1	oewn-any-r	Degree=Pos	dema	0			oewn_form
 any	2	oewn-any-a	Degree=Pos	dema	0			oewn_form

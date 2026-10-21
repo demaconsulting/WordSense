@@ -85,7 +85,8 @@ the common first step of every model.
 
 The two kinds of question are kept apart. `Lookup` answers a morphological question (which analyses can this spelling
 have) and never expands an analysis into its senses; `SensesOf` answers a semantic question (which senses does this
-lemma and part of speech have, most frequent first). A model combines them: it looks the spelling up, then asks for
+lemma and part of speech have, in the order of Open English WordNet). A model combines them: it looks the spelling up,
+then asks for
 the senses of each analysis.
 
 The catalog gives group ids a namespace of their own. A sense id is `lemma#label` and is frozen; a group id is

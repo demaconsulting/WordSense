@@ -330,8 +330,7 @@ zebibit	0	oewn-zebibit-n	Number=Sing	dema	0			oewn_form
 zebibits	0	oewn-zebibit-n	Number=Plur	dema	0			rule
 zebibyte	0	oewn-zebibyte-n	Number=Sing	dema	0			oewn_form
 zebibytes	0	oewn-zebibyte-n	Number=Plur	dema	0			rule
-zebra	0	oewn-zebra-n	Number=Plur	dema	0			agid
-zebra	1	oewn-zebra-n	Number=Sing	dema	0			oewn_form
+zebra	0	oewn-zebra-n	Number=Sing	dema	0			oewn_form
 zebra crossing	0	oewn-zebra_crossing-n	Number=Sing	dema	0			oewn_form
 zebra crossings	0	oewn-zebra_crossing-n	Number=Plur	dema	0			rule
 zebra finch	0	oewn-zebra_finch-n	Number=Sing	dema	0			oewn_form
@@ -346,7 +345,7 @@ zebrafish	0		Number=Sing	dema	0	zebrafish	n	moby_reverse
 zebrafishes	0		Number=Plur	dema	0	zebrafish	n	rule
 zebraic	0		Degree=Pos	dema	0	zebraic	a	moby_reverse
 zebralike	0		Degree=Pos	dema	0	zebralike	a	moby_reverse
-zebras	0	oewn-zebra-n	Number=Plur	dema	0			rule_variant
+zebras	0	oewn-zebra-n	Number=Plur	dema	0			rule
 zebrass	0		Number=Sing	dema	0	zebrass	n	moby_reverse
 zebrasses	0		Number=Plur	dema	0	zebrass	n	rule
 zebrawood	0	oewn-zebrawood-n	Number=Sing	dema	0			oewn_form
@@ -440,8 +439,8 @@ zestful	0	oewn-zestful-a	Degree=Pos	dema	0			oewn_form
 zestfully	0	oewn-zestfully-r	Degree=Pos	dema	0			oewn_form
 zestfulness	0	oewn-zestfulness-n	Number=Sing	dema	0			oewn_form
 zestfulnesses	0	oewn-zestfulness-n	Number=Plur	dema	0			rule
-zestier	0	oewn-zesty-a	Degree=Cmp	dema	0			rule
-zestiest	0	oewn-zesty-a	Degree=Sup	dema	0			rule
+zestier	0	oewn-zesty-a	Degree=Cmp	dema	0			llm
+zestiest	0	oewn-zesty-a	Degree=Sup	dema	0			llm
 zestily	0	oewn-zestily-r	Degree=Pos	dema	0			oewn_form
 zesting	0	oewn-zest-v	VerbForm=Ger	dema	0			rule
 zestless	0		Degree=Pos	dema	0	zestless	a	moby_reverse
@@ -508,11 +507,10 @@ zilas	0		Number=Plur	dema	0	zila	n	rule
 zilch	0	oewn-zilch-n	Number=Sing	dema	0			oewn_form
 zilches	0	oewn-zilch-n	Number=Plur	dema	0			rule
 zill	0	oewn-zill-n	Number=Sing	dema	0			oewn_form
-zillion	0	oewn-zillion-n	Number=Plur	dema	0			agid
-zillion	1	oewn-zillion-n	Number=Sing	dema	0			oewn_form
-zillion	2	dema-zillion-d		dema	0			carried
-zillion	3	oewn-zillion-a	Degree=Pos	dema	0			oewn_form
-zillions	0	oewn-zillion-n	Number=Plur	dema	0			rule_variant
+zillion	0	oewn-zillion-n	Number=Sing	dema	0			oewn_form
+zillion	1	dema-zillion-d		dema	0			carried
+zillion	2	oewn-zillion-a	Degree=Pos	dema	0			oewn_form
+zillions	0	oewn-zillion-n	Number=Plur	dema	0			llm
 zills	0	oewn-zill-n	Number=Plur	dema	0			rule
 zimarra	0		Number=Sing	dema	0	zimarra	n	moby_reverse
 zimarras	0		Number=Plur	dema	0	zimarra	n	rule
@@ -816,14 +814,14 @@ zoom in	0	oewn-zoom_in-v	VerbForm=Inf	dema	0			oewn_form
 zoom lens	0	oewn-zoom_lens-n	Number=Sing	dema	0			oewn_form
 zoomastigote	0	oewn-zoomastigote-n	Number=Sing	dema	0			oewn_form
 zoomastigotes	0	oewn-zoomastigote-n	Number=Plur	dema	0			rule
-zoomed	0	oewn-zoom-v	Tense=Past+VerbForm=Part	dema	0			rule
+zoomed	0	oewn-zoom-v	Tense=Past+VerbForm=Part	dema	0			llm
 zoomed along	0	oewn-zoom_along-v	Tense=Past+VerbForm=Part	dema	0			rule
 zoomed in	0	oewn-zoom_in-v	Tense=Past+VerbForm=Part	dema	0			rule
 zoometric	0		Degree=Pos	dema	0	zoometric	a	moby_reverse
 zoometrical	0		Degree=Pos	dema	0	zoometrical	a	moby_reverse
 zoometries	0		Number=Plur	dema	0	zoometry	n	rule
 zoometry	0		Number=Sing	dema	0	zoometry	n	moby_reverse
-zooming	0	oewn-zoom-v	VerbForm=Ger	dema	0			rule
+zooming	0	oewn-zoom-v	VerbForm=Ger	dema	0			llm
 zooming along	0	oewn-zoom_along-v	VerbForm=Ger	dema	0			rule
 zooming in	0	oewn-zoom_in-v	VerbForm=Ger	dema	0			rule
 zoomorph	0		Number=Sing	dema	0	zoomorph	n	moby_reverse
@@ -831,7 +829,7 @@ zoomorphic	0		Degree=Pos	dema	0	zoomorphic	a	moby_reverse
 zoomorphism	0	oewn-zoomorphism-n	Number=Sing	dema	0			oewn_form
 zoomorphisms	0	oewn-zoomorphism-n	Number=Plur	dema	0			rule
 zoomorphs	0		Number=Plur	dema	0	zoomorph	n	rule
-zooms	0	oewn-zoom-v	Person=3+Tense=Pres	dema	0			rule
+zooms	0	oewn-zoom-v	Person=3+Tense=Pres	dema	0			llm
 zooms	1	oewn-zoom-n	Number=Plur	dema	0			rule
 zooms along	0	oewn-zoom_along-v	Person=3+Tense=Pres	dema	0			rule
 zooms in	0	oewn-zoom_in-v	Person=3+Tense=Pres	dema	0			rule
@@ -898,9 +896,8 @@ zoysia	0	oewn-zoysia-n	Number=Sing	dema	0			oewn_form
 zoysias	0	oewn-zoysia-n	Number=Plur	dema	0			rule
 zucchetto	0		Number=Sing	dema	0	zucchetto	n	moby_reverse
 zucchettos	0		Number=Plur	dema	0	zucchetto	n	rule
-zucchini	0	oewn-zucchini-n	Number=Plur	dema	0			rule_variant
-zucchini	1	oewn-zucchini-n	Number=Sing	dema	0			oewn_form
-zucchinis	0	oewn-zucchini-n	Number=Plur	dema	0			rule_variant
+zucchini	0	oewn-zucchini-n	Number=Sing	dema	0			oewn_form
+zucchinis	0	oewn-zucchini-n	Number=Plur	dema	0			rule
 zugzwang	0		Number=Sing	dema	0	zugzwang	n	moby_reverse
 zugzwang	1		VerbForm=Inf	dema	0	zugzwang	v	moby_reverse
 zugzwangs	0		Number=Plur	dema	0	zugzwang	n	rule

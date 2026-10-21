@@ -30,8 +30,9 @@ namespace DemaConsulting.WordSense;
 ///     that is not in the lexicon (a number written with digits, most proper nouns or a misspelling) has no analysis.
 ///     </para>
 ///     <para>
-///     <see cref="SensesOf"/> answers the semantic question: which senses do a lemma and part of speech have, the most
-///     frequent first. A sense has a readable id (<c>bank#coin-bank</c>), an Open English WordNet sense key (none for a
+///     <see cref="SensesOf"/> answers the semantic question: which senses do a lemma and part of speech have, in the order
+///     of Open English WordNet (the position of the sense in its entry, which puts the commonly used senses first; the
+///     project senses come last). A sense has a readable id (<c>bank#coin-bank</c>), an Open English WordNet sense key (none for a
 ///     project sense that WordNet does not cover) and optionally a group of closely related senses; find a sense by id
 ///     with <see cref="TryGetSense"/>, by key with <see cref="TryGetSenseByKey"/> and a group with
 ///     <see cref="TryGetGroup"/>. The lexicon is read-only and safe for concurrent use.
@@ -45,7 +46,7 @@ namespace DemaConsulting.WordSense;
 ///         Console.WriteLine($"{analysis.Lemma}: {analysis.PartOfSpeech}, {analysis.Features}");
 ///     }
 ///
-///     // The senses of an analysis, the most frequent first
+///     // The senses of an analysis, in the order of Open English WordNet
 ///     foreach (SenseInfo sense in WordLexicon.SensesOf("bank", PartOfSpeech.Noun).Take(3))
 ///     {
 ///         Console.WriteLine($"{sense.SenseId} {sense.SenseKey}");
@@ -149,7 +150,7 @@ public static class WordLexicon
     /// </summary>
     /// <param name="lemma">The lemma exactly as it is written in the lexicon (the <see cref="WordDetails.Lemma"/> of an analysis).</param>
     /// <param name="pos">The part of speech (the <see cref="WordDetails.PartOfSpeech"/> of an analysis).</param>
-    /// <returns>The senses in inventory order, the most frequent first (by WordNet 3.0 tag count; project senses last); empty when the lemma and part of speech have no sense.</returns>
+    /// <returns>The senses in inventory order, the order of Open English WordNet (the position of the sense in its entry; project senses last); empty when the lemma and part of speech have no sense.</returns>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="lemma"/> is null.</exception>
     /// <exception cref="InvalidDataException">Thrown on first access when the embedded lexicon is missing or corrupt.</exception>
     public static ImmutableArray<SenseInfo> SensesOf(string lemma, PartOfSpeech pos) => Image.Value.SensesOf(lemma, pos);

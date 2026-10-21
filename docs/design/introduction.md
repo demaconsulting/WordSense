@@ -139,7 +139,18 @@ form layers:
 The dependency rule is that a package may reference only the packages in layers below it: core references nothing,
 Onnx references core only, and MiniLM and BertBaseCased reference core and Onnx. No package
 references a sibling model package other than these two. The builder
-tool references all four packages and is never shipped.
+tool references all four packages and is never shipped. Further rules of the split:
+
+- The core knows nothing of encoder models: it has no vectors, encoder weights, ONNX or tokenizer, and names no model
+  package in code. A model is anything that implements `IWordSenseModel`.
+- Weights belong to a model package: each encoder package embeds one `weights.bin` trained for its exact model files and
+  checked against their SHA-256 digests. Model files live in `model/<model-id>/`, which also names the mirror folder, the
+  per-user store folder and the GitHub LFS path.
+- The word table is shared: `WordLexicon` serves the analyses of all known spellings, including the inflections that the
+  builder materializes at build time, so no model needs morphology at run time.
+- `IWordSenseModel` is `IDisposable`: the model owns the ONNX session and the downloader state and so the lifetime
+  (the Basic model honors the same contract and releases nothing). The mirror configuration is the sealed record
+  `MirrorOptions` in the core, so every model package takes the same argument; models that need no files ignore it.
 
 ![WordSense system](WordSenseView.svg)
 
@@ -196,6 +207,9 @@ model/<model-id>/                                  — model files (ONNX file, v
                                                       SHA256SUMS, the Apache License 2.0 LICENSE) of each encoder
                                                       model
 tools/WordSense.Builder/                           — word-sense-builder unit (not shipped)
+tools/                                             — the other maintainer tools (not shipped): forms-audit,
+                                                      forms-audit, model-prep, quota-fill and tokenizer-fixture;
+                                                      tools/README.md describes each tool folder
 tools/open-corpus/                                 — the scripts that built the open part-of-speech corpus (Python,
                                                       not shipped; downloads go to its git-ignored cache)
 tools/WordSense.Builder/Data/                      — word-data subsystem units (DataSchema.cs and SchemaYaml.cs,

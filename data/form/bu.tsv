@@ -156,8 +156,8 @@ Bushido	0	oewn-Bushido-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Bushidos	0	oewn-Bushido-n	Capitalization=Title+Number=Plur	dema	0			rule
 Bushman	0	oewn-bushman-n	Number=Sing	dema	0			oewn_form
 Bushman	1	oewn-Bushman-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-Bushmen	0	oewn-bushman-n	Number=Plur	dema	0			agid
-Bushmen	1	oewn-Bushman-n	Capitalization=Title+Number=Plur	dema	0			agid
+Bushmen	0	oewn-bushman-n	Number=Plur	dema	0			llm
+Bushmen	1	oewn-Bushman-n	Capitalization=Title+Number=Plur	dema	0			llm
 Buspars	0	oewn-BuSpar-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Butazolidin	0	oewn-Butazolidin-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Butazolidins	0	oewn-Butazolidin-n	Capitalization=Title+Number=Plur	dema	0			rule
@@ -272,9 +272,8 @@ buchite	0		Number=Sing	dema	0	buchite	n	moby_reverse
 buchites	0		Number=Plur	dema	0	buchite	n	rule
 buchu	0		Number=Sing	dema	0	buchu	n	moby_reverse
 buchus	0		Number=Plur	dema	0	buchu	n	rule
-buck	0	oewn-buck-n	Number=Plur	dema	0			agid
-buck	1	oewn-buck-n	Number=Sing	dema	0			oewn_form
-buck	2	oewn-buck-v	VerbForm=Inf	dema	0			oewn_form
+buck	0	oewn-buck-n	Number=Sing	dema	0			oewn_form
+buck	1	oewn-buck-v	VerbForm=Inf	dema	0			oewn_form
 buck fever	0	oewn-buck_fever-n	Number=Sing	dema	0			oewn_form
 buck fevers	0	oewn-buck_fever-n	Number=Plur	dema	0			rule
 buck private	0	oewn-buck_private-n	Number=Sing	dema	0			oewn_form
@@ -373,18 +372,20 @@ bucklings	0		Number=Plur	dema	0	buckling	n	rule
 buckminsterfullerene	0	oewn-buckminsterfullerene-n	Number=Sing	dema	0			oewn_form
 buckminsterfullerenes	0	oewn-buckminsterfullerene-n	Number=Plur	dema	0			rule
 bucko	0		Number=Sing	dema	0	bucko	n	moby_reverse
-buckoes	0		Number=Plur	dema	0	bucko	n	moby_reverse
+buckoes	0		Number=Sing	dema	0	buckoes	n	moby_reverse
 buckos	0		Number=Plur	dema	0	bucko	n	rule
 buckra	0		Number=Sing	dema	0	buckra	n	moby_reverse
 buckram	0	oewn-buckram-n	Number=Sing	dema	0			oewn_form
 buckram	1	oewn-buckram-v	VerbForm=Inf	dema	0			oewn_form
 buckram	2	oewn-buckram-a	Degree=Pos	dema	0			oewn_form
-buckramed	0	oewn-buckram-v	Tense=Past+VerbForm=Part	dema	0			rule
-buckraming	0	oewn-buckram-v	VerbForm=Ger	dema	0			rule
+buckramed	0		VerbForm=Inf	dema	0	buckramed	v	moby_reverse
+buckraming	0		VerbForm=Inf	dema	0	buckraming	v	moby_reverse
+buckrammed	0	oewn-buckram-v	Tense=Past+VerbForm=Part	dema	0			rule
+buckramming	0	oewn-buckram-v	VerbForm=Ger	dema	0			rule
 buckrams	0	oewn-buckram-n	Number=Plur	dema	0			rule
 buckrams	1	oewn-buckram-v	Person=3+Tense=Pres	dema	0			rule
 buckras	0		Number=Plur	dema	0	buckra	n	rule
-bucks	0	oewn-buck-n	Number=Plur	dema	0			rule_variant
+bucks	0	oewn-buck-n	Number=Plur	dema	0			rule
 bucks	1	oewn-buck-v	Person=3+Tense=Pres	dema	0			rule
 bucks up	0	oewn-buck_up-v	Person=3+Tense=Pres	dema	0			rule
 bucksaw	0	oewn-bucksaw-n	Number=Sing	dema	0			oewn_form
@@ -525,12 +526,13 @@ buffalo nut	0	oewn-buffalo_nut-n	Number=Sing	dema	0			oewn_form
 buffalo nuts	0	oewn-buffalo_nut-n	Number=Plur	dema	0			rule
 buffalo wing	0	oewn-buffalo_wing-n	Number=Sing	dema	0			oewn_form
 buffalo wings	0	oewn-buffalo_wing-n	Number=Plur	dema	0			rule
-buffaloed	0	oewn-buffalo-v	Tense=Past+VerbForm=Part	dema	0			rule
+buffaloed	0	oewn-buffalo-v	Tense=Past+VerbForm=Part	dema	0			llm
 buffaloes	0	oewn-buffalo-n	Number=Plur	dema	0			oewn_form
-buffaloes	1	oewn-buffalo-v	Person=3+Tense=Pres	dema	0			rule_variant
-buffalofish	0	oewn-buffalofish-n	Number=Plur	dema	0			agid
+buffaloes	1	oewn-buffalo-v	Person=3+Tense=Pres	dema	0			llm
+buffalofish	0	oewn-buffalofish-n	Number=Plur	dema	0			llm
 buffalofish	1	oewn-buffalofish-n	Number=Sing	dema	0			oewn_form
-buffaloing	0	oewn-buffalo-v	VerbForm=Ger	dema	0			rule
+buffalofishes	0	oewn-buffalofish-n	Number=Plur	dema	0			rule_variant
+buffaloing	0	oewn-buffalo-v	VerbForm=Ger	dema	0			llm
 buffalos	0	oewn-buffalo-n	Number=Plur	dema	0			rule_variant
 buffalos	1	oewn-buffalo-v	Person=3+Tense=Pres	dema	0			rule_variant
 buffas	0		Number=Plur	dema	0	buffa	n	rule
@@ -553,10 +555,10 @@ buffer store	0	oewn-buffer_store-n	Number=Sing	dema	0			oewn_form
 buffer stores	0	oewn-buffer_store-n	Number=Plur	dema	0			rule
 buffer zone	0	oewn-buffer_zone-n	Number=Sing	dema	0			oewn_form
 buffer zones	0	oewn-buffer_zone-n	Number=Plur	dema	0			rule
+buffered	0	oewn-buffer-v	Tense=Past+VerbForm=Part	dema	0			rule
 buffered aspirin	0	oewn-buffered_aspirin-n	Number=Sing	dema	0			oewn_form
 buffered aspirins	0	oewn-buffered_aspirin-n	Number=Plur	dema	0			rule
-bufferred	0	oewn-buffer-v	Tense=Past+VerbForm=Part	dema	0			rule
-bufferring	0	oewn-buffer-v	VerbForm=Ger	dema	0			rule
+buffering	0	oewn-buffer-v	VerbForm=Ger	dema	0			rule
 buffers	0	oewn-buffer-n	Number=Plur	dema	0			rule
 buffers	1	oewn-buffer-v	Person=3+Tense=Pres	dema	0			rule
 buffes	0		Number=Plur	dema	0	buffe	n	rule
@@ -691,7 +693,7 @@ buildable	0		Degree=Pos	dema	0	buildable	a	moby_reverse
 builder	0	oewn-builder-n	Number=Sing	dema	0			oewn_form
 builders	0	oewn-builder-n	Number=Plur	dema	0			rule
 building	0	oewn-building-n	Number=Sing	dema	0			oewn_form
-building	1	oewn-build-v	VerbForm=Ger	dema	0			rule
+building	1	oewn-build-v	VerbForm=Ger	dema	0			llm
 building block	0	oewn-building_block-n	Number=Sing	dema	0			oewn_form
 building blocks	0	oewn-building_block-n	Number=Plur	dema	0			rule
 building code	0	oewn-building_code-n	Number=Sing	dema	0			oewn_form
@@ -718,7 +720,7 @@ building up	0	oewn-build_up-v	VerbForm=Ger	dema	0			rule
 building upon	0	oewn-build_upon-v	VerbForm=Ger	dema	0			rule
 buildingless	0		Degree=Pos	dema	0	buildingless	a	moby_reverse
 buildings	0	oewn-building-n	Number=Plur	dema	0			rule
-builds	0	oewn-build-v	Person=3+Tense=Pres	dema	0			rule
+builds	0	oewn-build-v	Person=3+Tense=Pres	dema	0			llm
 builds	1	oewn-build-n	Number=Plur	dema	0			rule
 builds in	0	oewn-build_in-v	Person=3+Tense=Pres	dema	0			rule
 builds on	0	oewn-build_on-v	Person=3+Tense=Pres	dema	0			rule
@@ -783,8 +785,8 @@ bulges	1	oewn-bulge-v	Person=3+Tense=Pres	dema	0			rule
 bulges out	0	oewn-bulge_out-v	Person=3+Tense=Pres	dema	0			rule
 bulghur	0	oewn-bulghur-n	Number=Sing	dema	0			oewn_form
 bulghurs	0	oewn-bulghur-n	Number=Plur	dema	0			rule
-bulgier	0	oewn-bulgy-a	Degree=Cmp	dema	0			rule
-bulgiest	0	oewn-bulgy-a	Degree=Sup	dema	0			rule
+bulgier	0	oewn-bulgy-a	Degree=Cmp	dema	0			llm
+bulgiest	0	oewn-bulgy-a	Degree=Sup	dema	0			llm
 bulginess	0	oewn-bulginess-n	Number=Sing	dema	0			oewn_form
 bulginesses	0	oewn-bulginess-n	Number=Plur	dema	0			rule
 bulging	0	oewn-bulge-v	VerbForm=Ger	dema	0			rule
@@ -975,11 +977,11 @@ bullied	0		Number=Sing	dema	0	bullied	n	moby_reverse
 bullied	1	oewn-bully-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 bullied off	0	oewn-bully_off-v	Tense=Past+VerbForm=Part	dema	0			rule
 bullieds	0		Number=Plur	dema	0	bullied	n	rule
-bullier	0	oewn-bully-a	Degree=Cmp	dema	0			rule
+bullier	0	oewn-bully-a	Degree=Cmp	dema	0			llm
 bullies	0	oewn-bully-n	Number=Plur	dema	0			rule
 bullies	1	oewn-bully-v	Person=3+Tense=Pres	dema	0			rule
 bullies off	0	oewn-bully_off-v	Person=3+Tense=Pres	dema	0			rule
-bulliest	0	oewn-bully-a	Degree=Sup	dema	0			rule
+bulliest	0	oewn-bully-a	Degree=Sup	dema	0			llm
 bulling	0	oewn-bull-v	VerbForm=Ger	dema	0			rule
 bulling through	0	oewn-bull_through-v	VerbForm=Ger	dema	0			rule
 bullion	0	oewn-bullion-n	Number=Sing	dema	0			oewn_form
@@ -1070,7 +1072,7 @@ bullyragged	0	oewn-bullyrag-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 bullyragger	0		Number=Sing	dema	0	bullyragger	n	moby_reverse
 bullyraggers	0		Number=Plur	dema	0	bullyragger	n	rule
 bullyragging	0	oewn-bullyrag-v	VerbForm=Ger	dema	0			oewn_form
-bullyrags	0	oewn-bullyrag-v	Person=3+Tense=Pres	dema	0			rule
+bullyrags	0	oewn-bullyrag-v	Person=3+Tense=Pres	dema	0			llm
 bulnbuln	0		Number=Sing	dema	0	bulnbuln	n	moby_reverse
 bulnbulns	0		Number=Plur	dema	0	bulnbuln	n	rule
 bulrush	0	oewn-bulrush-n	Number=Sing	dema	0			oewn_form
@@ -1114,9 +1116,8 @@ bumbling	2		Number=Sing	dema	0	bumbling	n	moby_reverse
 bumblingly	0		Degree=Pos	dema	0	bumblingly	r	moby_reverse
 bumboat	0	oewn-bumboat-n	Number=Sing	dema	0			oewn_form
 bumboatman	0		Number=Sing	dema	0	bumboatman	n	moby_reverse
-bumboatmans	0		Number=Plur	dema	0	bumboatman	n	rule
-bumboatmen	0		Number=Sing	dema	0	bumboatmen	n	moby_reverse
-bumboatmens	0		Number=Plur	dema	0	bumboatmen	n	rule
+bumboatmen	0		Number=Plur	dema	0	bumboatman	n	rule
+bumboatmen	1		Number=Sing	dema	0	bumboatmen	n	moby_reverse
 bumboats	0	oewn-bumboat-n	Number=Plur	dema	0			rule
 bumf	0	oewn-bumf-n	Number=Sing	dema	0			oewn_form
 bumfs	0	oewn-bumf-n	Number=Plur	dema	0			rule
@@ -1132,9 +1133,9 @@ bummed about	0	oewn-bum_about-v	Tense=Past+VerbForm=Part	dema	0			rule
 bummed around	0	oewn-bum_around-v	Tense=Past+VerbForm=Part	dema	0			rule
 bummeds	0		Number=Plur	dema	0	bummed	n	rule
 bummer	0	oewn-bummer-n	Number=Sing	dema	0			oewn_form
-bummer	1	oewn-bum-a	Degree=Cmp	dema	0			rule
+bummer	1	oewn-bum-a	Degree=Cmp	dema	0			llm
 bummers	0	oewn-bummer-n	Number=Plur	dema	0			rule
-bummest	0	oewn-bum-a	Degree=Sup	dema	0			rule
+bummest	0	oewn-bum-a	Degree=Sup	dema	0			llm
 bumming	0		Number=Sing	dema	0	bumming	n	moby_reverse
 bumming	1	oewn-bum-v	VerbForm=Ger	dema	0			oewn_form
 bumming about	0	oewn-bum_about-v	VerbForm=Ger	dema	0			rule
@@ -1245,15 +1246,16 @@ bunco	1	oewn-bunco-v	VerbForm=Inf	dema	0			oewn_form
 bunco game	0	oewn-bunco_game-n	Number=Sing	dema	0			oewn_form
 bunco games	0	oewn-bunco_game-n	Number=Plur	dema	0			rule
 buncoed	0		Number=Sing	dema	0	buncoed	n	moby_reverse
-buncoed	1	oewn-bunco-v	Tense=Past+VerbForm=Part	dema	0			rule
+buncoed	1	oewn-bunco-v	Tense=Past+VerbForm=Part	dema	0			llm
 buncoeds	0		Number=Plur	dema	0	buncoed	n	rule
+buncoes	0	oewn-bunco-v	Person=3+Tense=Pres	dema	0			rule_variant
 buncoing	0		Number=Sing	dema	0	buncoing	n	moby_reverse
-buncoing	1	oewn-bunco-v	VerbForm=Ger	dema	0			rule
+buncoing	1	oewn-bunco-v	VerbForm=Ger	dema	0			llm
 buncoings	0		Number=Plur	dema	0	buncoing	n	rule
 buncombe	0	oewn-buncombe-n	Number=Sing	dema	0			oewn_form
 buncombes	0	oewn-buncombe-n	Number=Plur	dema	0			rule
 buncos	0	oewn-bunco-n	Number=Plur	dema	0			rule
-buncos	1	oewn-bunco-v	Person=3+Tense=Pres	dema	0			agid
+buncos	1	oewn-bunco-v	Person=3+Tense=Pres	dema	0			llm
 bund	0		Number=Sing	dema	0	bund	n	moby_reverse
 bundh	0		Number=Sing	dema	0	bundh	n	moby_reverse
 bundhs	0		Number=Plur	dema	0	bundh	n	rule
@@ -1447,8 +1449,8 @@ burbled	0	oewn-burble-v	Tense=Past+VerbForm=Part	dema	0			rule
 burbler	0		Number=Sing	dema	0	burbler	n	moby_reverse
 burblers	0		Number=Plur	dema	0	burbler	n	rule
 burbles	0	oewn-burble-v	Person=3+Tense=Pres	dema	0			rule
-burblier	0	oewn-burbly-a	Degree=Cmp	dema	0			rule
-burbliest	0	oewn-burbly-a	Degree=Sup	dema	0			rule
+burblier	0	oewn-burbly-a	Degree=Cmp	dema	0			llm
+burbliest	0	oewn-burbly-a	Degree=Sup	dema	0			llm
 burbling	0	oewn-burble-v	VerbForm=Ger	dema	0			rule
 burbling	1	oewn-burbling-a	Degree=Pos	dema	0			oewn_form
 burbly	0		Degree=Pos	dema	0	burbly	r	moby_reverse
@@ -1699,7 +1701,7 @@ burnous	0	oewn-burnous-n	Number=Sing	dema	0			oewn_form
 burnouse	0	oewn-burnouse-n	Number=Sing	dema	0			oewn_form
 burnoused	0		Degree=Pos	dema	0	burnoused	a	moby_reverse
 burnoused	1		VerbForm=Inf	dema	0	burnoused	v	moby_reverse
-burnouses	0	oewn-burnous-n	Number=Plur	dema	0			rule
+burnouses	0	oewn-burnous-n	Number=Plur	dema	0			llm
 burnouses	1	oewn-burnouse-n	Number=Plur	dema	0			rule
 burnout	0		Number=Sing	dema	0	burnout	n	moby_reverse
 burnouts	0		Number=Plur	dema	0	burnout	n	rule
@@ -1752,7 +1754,7 @@ burrawongs	0	oewn-burrawong-n	Number=Plur	dema	0			rule
 burred	0	oewn-bur-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 burred	1	oewn-burr-v	Tense=Past+VerbForm=Part	dema	0			rule
 burred	2	oewn-burred-a	Degree=Pos	dema	0			oewn_form
-burrfish	0	oewn-burrfish-n	Number=Plur	dema	0			agid
+burrfish	0	oewn-burrfish-n	Number=Plur	dema	0			llm
 burrfish	1	oewn-burrfish-n	Number=Sing	dema	0			oewn_form
 burrfishes	0	oewn-burrfish-n	Number=Plur	dema	0			rule_variant
 burrhel	0		Number=Sing	dema	0	burrhel	n	moby_reverse
@@ -1800,8 +1802,8 @@ burseeds	0		Number=Plur	dema	0	burseed	n	rule
 burseraceous	0		Degree=Pos	dema	0	burseraceous	a	moby_reverse
 burses	0		Number=Plur	dema	0	burse	n	rule
 bursiform	0	oewn-bursiform-a	Degree=Pos	dema	0			oewn_form
+bursitides	0	oewn-bursitis-n	Number=Plur	dema	0			llm
 bursitis	0	oewn-bursitis-n	Number=Sing	dema	0			oewn_form
-bursitises	0	oewn-bursitis-n	Number=Plur	dema	0			rule
 burst	0	oewn-burst-v	VerbForm=Inf	dema	0			oewn_form
 burst	1	oewn-burst-v	Tense=Past+VerbForm=Part	dema	0			hand
 burst	2	oewn-burst-n	Number=Sing	dema	0			oewn_form
@@ -1811,7 +1813,7 @@ burst out	0	oewn-burst_out-v	VerbForm=Inf	dema	0			oewn_form
 burst upon	0	oewn-burst_upon-v	VerbForm=Inf	dema	0			oewn_form
 burster	0	oewn-burster-n	Number=Sing	dema	0			oewn_form
 bursters	0	oewn-burster-n	Number=Plur	dema	0			rule
-bursting	0	oewn-burst-v	VerbForm=Ger	dema	0			rule
+bursting	0	oewn-burst-v	VerbForm=Ger	dema	0			llm
 bursting charge	0	oewn-bursting_charge-n	Number=Sing	dema	0			oewn_form
 bursting charges	0	oewn-bursting_charge-n	Number=Plur	dema	0			rule
 bursting explosive	0	oewn-bursting_explosive-n	Number=Sing	dema	0			oewn_form
@@ -1822,7 +1824,7 @@ bursting out	0	oewn-burst_out-v	VerbForm=Ger	dema	0			rule
 bursting upon	0	oewn-burst_upon-v	VerbForm=Ger	dema	0			rule
 burstone	0		Number=Sing	dema	0	burstone	n	moby_reverse
 burstones	0		Number=Plur	dema	0	burstone	n	rule
-bursts	0	oewn-burst-v	Person=3+Tense=Pres	dema	0			rule
+bursts	0	oewn-burst-v	Person=3+Tense=Pres	dema	0			llm
 bursts	1	oewn-burst-n	Number=Plur	dema	0			rule
 bursts forth	0	oewn-burst_forth-v	Person=3+Tense=Pres	dema	0			rule
 bursts in on	0	oewn-burst_in_on-v	Person=3+Tense=Pres	dema	0			rule
@@ -1888,6 +1890,7 @@ busbies	0	oewn-busby-n	Number=Plur	dema	0			rule
 busboy	0	oewn-busboy-n	Number=Sing	dema	0			oewn_form
 busboys	0	oewn-busboy-n	Number=Plur	dema	0			rule
 busby	0	oewn-busby-n	Number=Sing	dema	0			oewn_form
+bused	0	oewn-bus-v	Tense=Past+VerbForm=Part	dema	0			llm
 busera	0		Number=Sing	dema	0	busera	n	moby_reverse
 buseras	0		Number=Plur	dema	0	busera	n	rule
 buses	0	oewn-bus-n	Number=Plur	dema	0			irregular_list
@@ -1936,7 +1939,7 @@ bushbashing	0		Number=Sing	dema	0	bushbashing	n	moby_reverse
 bushbashings	0		Number=Plur	dema	0	bushbashing	n	rule
 bushbeater	0		Number=Sing	dema	0	bushbeater	n	moby_reverse
 bushbeaters	0		Number=Plur	dema	0	bushbeater	n	rule
-bushbuck	0	oewn-bushbuck-n	Number=Plur	dema	0			agid
+bushbuck	0	oewn-bushbuck-n	Number=Plur	dema	0			llm
 bushbuck	1	oewn-bushbuck-n	Number=Sing	dema	0			oewn_form
 bushbucks	0	oewn-bushbuck-n	Number=Plur	dema	0			rule_variant
 bushcraft	0		Number=Sing	dema	0	bushcraft	n	moby_reverse
@@ -1961,17 +1964,17 @@ busheller	0		Number=Sing	dema	0	busheller	n	moby_reverse
 bushellers	0		Number=Plur	dema	0	busheller	n	rule
 bushelling	0	oewn-bushel-v	VerbForm=Ger	dema	0			oewn_form
 bushelman	0		Number=Sing	dema	0	bushelman	n	moby_reverse
-bushelmans	0		Number=Plur	dema	0	bushelman	n	rule
-bushelmen	0		Number=Sing	dema	0	bushelmen	n	moby_reverse
-bushelmens	0		Number=Plur	dema	0	bushelmen	n	rule
+bushelmen	0		Number=Plur	dema	0	bushelman	n	rule
+bushelmen	1		Number=Sing	dema	0	bushelmen	n	moby_reverse
 bushels	0	oewn-bushel-n	Number=Plur	dema	0			rule
 bushels	1	oewn-bushel-v	Person=3+Tense=Pres	dema	0			rule
 busher	0		Number=Sing	dema	0	busher	n	moby_reverse
-busher	1	oewn-bush-a	Degree=Cmp	dema	0			rule
+busher	1	oewn-bush-a	Degree=Cmp	dema	0			llm
 bushers	0		Number=Plur	dema	0	busher	n	rule
 bushes	0	oewn-bush-n	Number=Plur	dema	0			rule
 bushes	1	oewn-bush-v	Person=3+Tense=Pres	dema	0			rule
 bushes out	0	oewn-bush_out-v	Person=3+Tense=Pres	dema	0			rule
+bushest	0	oewn-bush-a	Degree=Sup	dema	0			llm
 bushfire	0		Number=Sing	dema	0	bushfire	n	moby_reverse
 bushfires	0		Number=Plur	dema	0	bushfire	n	rule
 bushhammer	0		Number=Sing	dema	0	bushhammer	n	moby_reverse
@@ -1994,7 +1997,7 @@ bushman's poison	0	oewn-bushman-ap-s_poison-n	Number=Sing	dema	0			oewn_form
 bushman's poisons	0	oewn-bushman-ap-s_poison-n	Number=Plur	dema	0			rule
 bushmaster	0		Number=Sing	dema	0	bushmaster	n	moby_reverse
 bushmasters	0		Number=Plur	dema	0	bushmaster	n	rule
-bushmen	0	oewn-bushman-n	Number=Plur	dema	0			agid
+bushmen	0	oewn-bushman-n	Number=Plur	dema	0			llm
 bushperson	0	oewn-bushperson-n	Number=Sing	dema	0			oewn_form
 bushpersons	0	oewn-bushperson-n	Number=Plur	dema	0			rule
 bushpig	0		Number=Sing	dema	0	bushpig	n	moby_reverse
@@ -2019,7 +2022,7 @@ bushwhacking	2	oewn-bushwhacking-a	Degree=Pos	dema	0			oewn_form
 bushwhackings	0		Number=Plur	dema	0	bushwhacking	n	rule
 bushwhacks	0	oewn-bushwhack-v	Person=3+Tense=Pres	dema	0			rule
 bushwoman	0	oewn-bushwoman-n	Number=Sing	dema	0			oewn_form
-bushwomans	0	oewn-bushwoman-n	Number=Plur	dema	0			rule
+bushwomen	0	oewn-bushwoman-n	Number=Plur	dema	0			rule
 bushy	0	oewn-bushy-a	Degree=Pos	dema	0			oewn_form
 bushy	1		Number=Sing	dema	0	bushy	n	moby_reverse
 bushy aster	0	oewn-bushy_aster-n	Number=Sing	dema	0			oewn_form
@@ -2029,7 +2032,7 @@ bushytail woodrats	0	oewn-bushytail_woodrat-n	Number=Plur	dema	0			rule
 busied	0		Degree=Pos	dema	0	busied	a	moby_reverse
 busied	1	oewn-busy-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 busier	0	oewn-busy-a	Degree=Cmp	dema	0			oewn_form
-busies	0	oewn-busy-v	Person=3+Tense=Pres	dema	0			rule
+busies	0	oewn-busy-v	Person=3+Tense=Pres	dema	0			llm
 busiest	0	oewn-busy-a	Degree=Sup	dema	0			oewn_form
 busily	0	oewn-busily-r	Degree=Pos	dema	0			oewn_form
 business	0	oewn-business-n	Number=Sing	dema	0			oewn_form
@@ -2117,15 +2120,15 @@ business travelers	0	oewn-business_traveler-n	Number=Plur	dema	0			rule
 businesses	0	oewn-business-n	Number=Plur	dema	0			rule
 businesslike	0	oewn-businesslike-a	Degree=Pos	dema	0			oewn_form
 businessman	0	oewn-businessman-n	Number=Sing	dema	0			oewn_form
-businessmen	0	oewn-businessman-n	Number=Plur	dema	0			agid
+businessmen	0	oewn-businessman-n	Number=Plur	dema	0			llm
 businessmen	1	oewn-businessmen-n	Number=Sing	dema	0			oewn_form
-businessmens	0	oewn-businessmen-n	Number=Plur	dema	0			rule
 businesspeople	0	oewn-businesspeople-n	Number=Sing	dema	0			oewn_form
 businesspeoples	0	oewn-businesspeople-n	Number=Plur	dema	0			rule
 businessperson	0	oewn-businessperson-n	Number=Sing	dema	0			oewn_form
 businesspersons	0	oewn-businessperson-n	Number=Plur	dema	0			rule
 businesswoman	0	oewn-businesswoman-n	Number=Sing	dema	0			oewn_form
-businesswomen	0	oewn-businesswoman-n	Number=Plur	dema	0			agid
+businesswomen	0	oewn-businesswoman-n	Number=Plur	dema	0			llm
+busing	0	oewn-bus-v	VerbForm=Ger	dema	0			llm
 busk	0		Number=Sing	dema	0	busk	n	moby_reverse
 busk	1	oewn-busk-v	VerbForm=Inf	dema	0			oewn_form
 busked	0		Degree=Pos	dema	0	busked	a	moby_reverse
@@ -2144,18 +2147,18 @@ busloads	0	oewn-busload-n	Number=Plur	dema	0			rule
 busman	0	oewn-busman-n	Number=Sing	dema	0			oewn_form
 busman's holiday	0	oewn-busman-ap-s_holiday-n	Number=Sing	dema	0			oewn_form
 busman's holidays	0	oewn-busman-ap-s_holiday-n	Number=Plur	dema	0			rule
-busmen	0	oewn-busman-n	Number=Plur	dema	0			agid
+busmen	0	oewn-busman-n	Number=Plur	dema	0			llm
 buspirone	0	oewn-buspirone-n	Number=Sing	dema	0			oewn_form
 buspirones	0	oewn-buspirone-n	Number=Plur	dema	0			rule
 buss	0	oewn-buss-n	Number=Sing	dema	0			oewn_form
 buss	1	oewn-buss-v	VerbForm=Inf	dema	0			oewn_form
-bussed	0	oewn-bus-v	Tense=Past+VerbForm=Part	dema	0			rule
+bussed	0	oewn-bus-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 bussed	1	oewn-buss-v	Tense=Past+VerbForm=Part	dema	0			rule
 busses	0	oewn-bus-n	Number=Plur	dema	0			irregular_list
 busses	1	oewn-buss-n	Number=Plur	dema	0			rule
-busses	2	oewn-bus-v	Person=3+Tense=Pres	dema	0			rule_variant
+busses	2	oewn-bus-v	Person=3+Tense=Pres	dema	0			llm
 busses	3	oewn-buss-v	Person=3+Tense=Pres	dema	0			rule
-bussing	0	oewn-bus-v	VerbForm=Ger	dema	0			rule
+bussing	0	oewn-bus-v	VerbForm=Ger	dema	0			rule_variant
 bussing	1	oewn-buss-v	VerbForm=Ger	dema	0			rule
 bust	0	oewn-bust-n	Number=Sing	dema	0			oewn_form
 bust	1	oewn-bust-v	VerbForm=Inf	dema	0			oewn_form
@@ -2170,7 +2173,7 @@ bustard	0	oewn-bustard-n	Number=Sing	dema	0			oewn_form
 bustard quail	0	oewn-bustard_quail-n	Number=Sing	dema	0			oewn_form
 bustard quails	0	oewn-bustard_quail-n	Number=Plur	dema	0			rule
 bustards	0	oewn-bustard-n	Number=Plur	dema	0			rule
-busted	0	oewn-bust-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+busted	0	oewn-bust-v	Tense=Past+VerbForm=Part	dema	0			llm
 busted	1	oewn-busted-a	Degree=Pos	dema	0			oewn_form
 busted up	0	oewn-bust_up-v	Tense=Past+VerbForm=Part	dema	0			rule
 bustee	0		Number=Sing	dema	0	bustee	n	moby_reverse
@@ -2184,7 +2187,7 @@ bustier	0	oewn-busty-a	Degree=Cmp	dema	0			oewn_form
 bustier	1	oewn-bustier-n	Number=Sing	dema	0			oewn_form
 bustiers	0	oewn-bustier-n	Number=Plur	dema	0			rule
 bustiest	0	oewn-busty-a	Degree=Sup	dema	0			oewn_form
-busting	0	oewn-bust-v	VerbForm=Ger	dema	0			rule
+busting	0	oewn-bust-v	VerbForm=Ger	dema	0			llm
 busting up	0	oewn-bust_up-v	VerbForm=Ger	dema	0			rule
 bustle	0	oewn-bustle-v	VerbForm=Inf	dema	0			oewn_form
 bustle	1	oewn-bustle-n	Number=Sing	dema	0			oewn_form
@@ -2202,7 +2205,7 @@ bustling	1	oewn-bustling-a	Degree=Pos	dema	0			oewn_form
 bustling about	0	oewn-bustle_about-v	VerbForm=Ger	dema	0			rule
 bustlingly	0		Degree=Pos	dema	0	bustlingly	r	moby_reverse
 busts	0	oewn-bust-n	Number=Plur	dema	0			rule
-busts	1	oewn-bust-v	Person=3+Tense=Pres	dema	0			rule
+busts	1	oewn-bust-v	Person=3+Tense=Pres	dema	0			llm
 busts up	0	oewn-bust_up-v	Person=3+Tense=Pres	dema	0			rule
 busty	0	oewn-busty-a	Degree=Pos	dema	0			oewn_form
 busuuti	0		Number=Sing	dema	0	busuuti	n	moby_reverse
@@ -2215,7 +2218,7 @@ busybodied	0	oewn-busybodied-a	Degree=Pos	dema	0			oewn_form
 busybodies	0	oewn-busybody-n	Number=Plur	dema	0			rule
 busybody	0	oewn-busybody-n	Number=Sing	dema	0			oewn_form
 busying	0		Degree=Pos	dema	0	busying	a	moby_reverse
-busying	1	oewn-busy-v	VerbForm=Ger	dema	0			rule
+busying	1	oewn-busy-v	VerbForm=Ger	dema	0			llm
 busyness	0	oewn-busyness-n	Number=Sing	dema	0			oewn_form
 busynesses	0	oewn-busyness-n	Number=Plur	dema	0			rule
 busywork	0	oewn-busywork-n	Number=Sing	dema	0			oewn_form
@@ -2243,7 +2246,7 @@ butats	0	oewn-butat-n	Number=Plur	dema	0			rule
 butch	0	oewn-butch-a	Degree=Pos	dema	0			oewn_form
 butch	1	oewn-butch-n	Number=Sing	dema	0			oewn_form
 butcher	0	oewn-butcher-n	Number=Sing	dema	0			oewn_form
-butcher	1	oewn-butch-a	Degree=Cmp	dema	0			rule
+butcher	1	oewn-butch-a	Degree=Cmp	dema	0			llm
 butcher	2	oewn-butcher-v	VerbForm=Inf	dema	0			oewn_form
 butcher block	0	oewn-butcher_block-n	Number=Sing	dema	0			oewn_form
 butcher blocks	0	oewn-butcher_block-n	Number=Plur	dema	0			rule
@@ -2272,7 +2275,7 @@ butchers	0	oewn-butcher-n	Number=Plur	dema	0			rule
 butchers	1	oewn-butcher-v	Person=3+Tense=Pres	dema	0			rule
 butchery	0	oewn-butchery-n	Number=Sing	dema	0			oewn_form
 butches	0	oewn-butch-n	Number=Plur	dema	0			rule
-butchest	0	oewn-butch-a	Degree=Sup	dema	0			rule
+butchest	0	oewn-butch-a	Degree=Sup	dema	0			llm
 butea gum	0	oewn-butea_gum-n	Number=Sing	dema	0			oewn_form
 butea gums	0	oewn-butea_gum-n	Number=Plur	dema	0			rule
 butea kino	0	oewn-butea_kino-n	Number=Sing	dema	0			oewn_form
@@ -2410,8 +2413,9 @@ butterfly valves	0	oewn-butterfly_valve-n	Number=Plur	dema	0			rule
 butterfly weed	0	oewn-butterfly_weed-n	Number=Sing	dema	0			oewn_form
 butterfly weeds	0	oewn-butterfly_weed-n	Number=Plur	dema	0			rule
 butterfly-shaped	0	oewn-butterfly-shaped-a	Degree=Pos	dema	0			oewn_form
-butterflyfish	0	oewn-butterflyfish-n	Number=Plur	dema	0			agid
+butterflyfish	0	oewn-butterflyfish-n	Number=Plur	dema	0			llm
 butterflyfish	1	oewn-butterflyfish-n	Number=Sing	dema	0			oewn_form
+butterflyfishes	0	oewn-butterflyfish-n	Number=Plur	dema	0			rule_variant
 butterflying	0		Number=Sing	dema	0	butterflying	n	moby_reverse
 butterflying	1	oewn-butterfly-v	VerbForm=Ger	dema	0			rule
 butterflyings	0		Number=Plur	dema	0	butterflying	n	rule

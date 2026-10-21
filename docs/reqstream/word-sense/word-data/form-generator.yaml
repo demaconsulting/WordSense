@@ -22,7 +22,40 @@ sections:
                   - WordSenseBuilder_FormGenerator_Data_RegularInflection_IsResolved
                   - WordSenseBuilder_FormGenerator_Data_AuditCorrections_AreApplied
                   - WordSenseBuilder_FormGenerator_Data_PhraseWithIrregularHead_HasNoRegularPast
-                  - WordSenseBuilder_FormGenerator_Data_AgidOnlyIrregularForm_IsNotShipped
+                  - WordSenseBuilder_FormGenerator_Data_RuleDefect_IsNotShipped
+                  - WordSenseBuilder_FormGenerator_Data_RegularPlural_OfAWordThatOnlyEndsLikeACompound_IsShipped
+                  - WordSenseBuilder_FormGenerator_Run_OpenCorpusToken_CorroboratesTheComparative
+
+              - id: WordSense-WordData-FormGenerator-AuthoredForms
+                title: >-
+                  FormGenerator shall read the forms written for the project (corpus/lexicon/forms-authored.tsv and
+                  its provenance) as a source of irregular forms with the provenance llm (variants as rule_variant),
+                  as an attestation of generated forms, and as an authority over the regular rules: a word with
+                  authored forms of a kind keeps the regular spelling only when the authors name it, the reverse rules
+                  of the dictionary do not trace a spelling to a lemma whose authored forms leave it out, and a decision
+                  of both authors that the form does not exist stops the rule that would generate it; it shall refuse
+                  an authored file with a level that is not 0 or 1 or with an unknown rule.
+                tags: [unit]
+                justification: |
+                  The authored forms replace the third-party inflection database: they are project-authored (CC0),
+                  written by one model and checked by an independent second pass, and the generator must not ship a
+                  regular spelling that both authors rejected or left out.
+                tests:
+                  - WordSenseBuilder_AuthoredForms_Read_Rows_FillFormsAndAttestation
+                  - WordSenseBuilder_AuthoredForms_Read_CapitalizedLemma_IsKeyedInLowerCase
+                  - WordSenseBuilder_AuthoredForms_Read_MissingFiles_GiveEmptyLists
+                  - WordSenseBuilder_AuthoredForms_Read_BadLevels_AreRefused
+                  - WordSenseBuilder_AuthoredForms_Read_UnknownRule_IsRefused
+                  - WordSenseBuilder_AuthoredForms_Read_Decisions_OnlyAgreedNoneIsAVeto
+                  - WordSenseBuilder_AuthoredForms_IrregularKeys_ListsOnlyFormsTheRulesDoNotGive
+                  - WordSenseBuilder_OpenCorpusAttestation_Read_Tokens_AttestSpellingsForTheirLemmas
+                  - WordSenseBuilder_OpenCorpusAttestation_Merge_AddsTheLemmasOfTheSecondSource
+                  - WordSenseBuilder_FormGenerator_Run_AuthoredPlural_ReplacesTheRegularSpelling
+                  - WordSenseBuilder_FormGenerator_Run_AuthoredVariant_ShipsAsRuleVariant
+                  - WordSenseBuilder_FormGenerator_Run_AgreedNoPlural_StopsTheRegularPlural
+                  - WordSenseBuilder_FormGenerator_Run_AuthoredPlural_StopsTheReverseRuleOfTheDictionary
+                  - WordSenseBuilder_FormGenerator_Data_AuthoredForm_ShipsWithTheProvenanceLlm
+                  - WordSenseBuilder_FormGenerator_Data_AuthoredPlural_LeavesOutTheRegularSpelling
 
               - id: WordSense-WordData-FormGenerator-Gerunds
                 title: >-
@@ -41,8 +74,8 @@ sections:
               - id: WordSense-WordData-FormGenerator-Reproducible
                 title: >-
                   FormGenerator shall give identical output bytes for the same inputs (the committed entry tables,
-                  the committed reviewed input, the lexicon lists and the Open English WordNet and
-                  inflection-database files named by their SHA-256 pins), in an order that depends on nothing but
+                  the committed reviewed input, the lexicon lists with the authored forms, the open corpus and the Open
+                  English WordNet file named by its SHA-256 pin), in an order that depends on nothing but
                   those inputs, and shall refuse an input that does not match its pin or that lists the same analysis
                   twice (a spelling, an entry and features repeated in the reviewed input).
                 tags: [unit]
@@ -91,7 +124,9 @@ sections:
                 title: >-
                   FormGenerator shall derive regular noun plurals, third-person verb forms, past and gerund forms and
                   adjective degrees by the spelling rules of English, including the doubling, dropping and changing of
-                  final letters.
+                  final letters, the plural in -men of man and woman and their compounds (not of human, german and the
+                  other words that merely end in -man), the plurals of the compounds of the nouns in -o, -f and -fe,
+                  of the nouns in -quy, and the gerund of the verbs in -ie.
                 tags: [unit]
                 justification: |
                   The regular forms are most of the table and have to be spelled correctly.
@@ -102,3 +137,10 @@ sections:
                   - WordSenseBuilder_InflectionRules_AdjectiveDegrees_ShortAndLong
                   - WordSenseBuilder_InflectionRules_ReverseCandidates_Plural_ContainsSingular
                   - WordSenseBuilder_FormGenerator_Data_VerbSpellingInS_IsThirdPerson
+                  - WordSenseBuilder_InflectionRules_NounPlural_ManCompound_EndsInMen
+                  - WordSenseBuilder_InflectionRules_NounPlural_WordEndingInMan_KeepsTheRegularPlural
+                  - WordSenseBuilder_InflectionRules_NounPlural_Compound_TakesThePluralOfItsLastNoun
+                  - WordSenseBuilder_InflectionRules_NounPlural_QuY_EndsInIes
+                  - WordSenseBuilder_InflectionRules_VerbRegular_Doubling_FollowsTheLastSyllable
+                  - WordSenseBuilder_InflectionRules_VerbRegular_ListedDoubledSpelling_BecomesPrimary
+                  - WordSenseBuilder_InflectionRules_VerbRegular_Ie_KeepsTheEOrTurnsToY

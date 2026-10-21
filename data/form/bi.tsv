@@ -102,7 +102,7 @@ biased	0	oewn-biased-a	Degree=Pos	dema	0			oewn_form
 biased	1	oewn-bias-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 biasedly	0		Degree=Pos	dema	0	biasedly	r	moby_reverse
 biases	0	oewn-bias-n	Number=Plur	dema	0			rule
-biases	1	oewn-bias-v	Person=3+Tense=Pres	dema	0			rule
+biases	1	oewn-bias-v	Person=3+Tense=Pres	dema	0			llm
 biasing	0	oewn-bias-v	VerbForm=Ger	dema	0			rule_variant
 biassed	0	oewn-bias-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 biassedly	0		Degree=Pos	dema	0	biassedly	r	moby_reverse
@@ -276,13 +276,13 @@ bicentennials	0	oewn-bicentennial-n	Number=Plur	dema	0			rule_variant
 bicentric	0	oewn-bicentric-a	Degree=Pos	dema	0			oewn_form
 bicentrically	0		Degree=Pos	dema	0	bicentrically	r	moby_reverse
 bicephalous	0	oewn-bicephalous-a	Degree=Pos	dema	0			oewn_form
-biceps	0	oewn-biceps-n	Number=Plur	dema	0			agid
+biceps	0	oewn-biceps-n	Number=Plur	dema	0			rule_variant
 biceps	1	oewn-biceps-n	Number=Sing	dema	0			oewn_form
 biceps brachii	0	oewn-biceps_brachii-n	Number=Sing	dema	0			oewn_form
 biceps brachiis	0	oewn-biceps_brachii-n	Number=Plur	dema	0			rule
 biceps humeri	0	oewn-biceps_humeri-n	Number=Sing	dema	0			oewn_form
 biceps humeris	0	oewn-biceps_humeri-n	Number=Plur	dema	0			rule
-bicepses	0	oewn-biceps-n	Number=Plur	dema	0			rule_variant
+bicepses	0	oewn-biceps-n	Number=Plur	dema	0			llm
 bices	0		Number=Plur	dema	0	bice	n	rule
 bichloride	0	oewn-bichloride-n	Number=Sing	dema	0			oewn_form
 bichloride of mercury	0	oewn-bichloride_of_mercury-n	Number=Sing	dema	0			oewn_form
@@ -401,18 +401,18 @@ bidding contests	0	oewn-bidding_contest-n	Number=Plur	dema	0			rule
 biddings	0	oewn-bidding-n	Number=Plur	dema	0			rule
 biddy	0	oewn-biddy-n	Number=Sing	dema	0			oewn_form
 bide	0	oewn-bide-v	VerbForm=Inf	dema	0			oewn_form
-bided	0	oewn-bide-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+bided	0	oewn-bide-v	Tense=Past+VerbForm=Part	dema	0			llm
 bidentate	0	oewn-bidentate-a	Degree=Pos	dema	0			oewn_form
 bidenticulate	0		Degree=Pos	dema	0	bidenticulate	a	moby_reverse
 bider	0		Number=Sing	dema	0	bider	n	moby_reverse
 biders	0		Number=Plur	dema	0	bider	n	rule
-bides	0	oewn-bide-v	Person=3+Tense=Pres	dema	0			rule
+bides	0	oewn-bide-v	Person=3+Tense=Pres	dema	0			llm
 bidet	0	oewn-bidet-n	Number=Sing	dema	0			oewn_form
 bidet tap	0	oewn-bidet_tap-n	Number=Sing	dema	0			oewn_form
 bidet taps	0	oewn-bidet_tap-n	Number=Plur	dema	0			rule
 bidets	0	oewn-bidet-n	Number=Plur	dema	0			rule
 bidi	0		Number=Sing	dema	0	bidi	n	moby_reverse
-biding	0	oewn-bide-v	VerbForm=Ger	dema	0			rule
+biding	0	oewn-bide-v	VerbForm=Ger	dema	0			llm
 bidirectional	0	oewn-bidirectional-a	Degree=Pos	dema	0			oewn_form
 bidis	0		Number=Plur	dema	0	bidi	n	rule
 bids	0	oewn-bid-v	Person=3+Tense=Pres	dema	0			rule
@@ -503,9 +503,9 @@ big bucks	0	oewn-big_bucks-n	Number=Sing	dema	0			oewn_form
 big business	0	oewn-big_business-n	Number=Sing	dema	0			oewn_form
 big businesses	0	oewn-big_business-n	Number=Plur	dema	0			rule
 big businessman	0	oewn-big_businessman-n	Number=Sing	dema	0			oewn_form
-big businessmans	0	oewn-big_businessman-n	Number=Plur	dema	0			rule
+big businessmen	0	oewn-big_businessman-n	Number=Plur	dema	0			rule
 big businesswoman	0	oewn-big_businesswoman-n	Number=Sing	dema	0			oewn_form
-big businesswomans	0	oewn-big_businesswoman-n	Number=Plur	dema	0			rule
+big businesswomen	0	oewn-big_businesswoman-n	Number=Plur	dema	0			rule
 big cat	0	oewn-big_cat-n	Number=Sing	dema	0			oewn_form
 big cats	0	oewn-big_cat-n	Number=Plur	dema	0			rule
 big cheese	0	oewn-big_cheese-n	Number=Sing	dema	0			oewn_form
@@ -633,11 +633,10 @@ bighearted	0	oewn-bighearted-a	Degree=Pos	dema	0			oewn_form
 bigheartedly	0		Degree=Pos	dema	0	bigheartedly	r	moby_reverse
 bigheartedness	0	oewn-bigheartedness-n	Number=Sing	dema	0			oewn_form
 bigheartednesses	0	oewn-bigheartedness-n	Number=Plur	dema	0			rule
-bighorn	0	oewn-bighorn-n	Number=Plur	dema	0			agid
-bighorn	1	oewn-bighorn-n	Number=Sing	dema	0			oewn_form
+bighorn	0	oewn-bighorn-n	Number=Sing	dema	0			oewn_form
 bighorn sheep	0	oewn-bighorn_sheep-n	Number=Sing	dema	0			oewn_form
 bighorn sheeps	0	oewn-bighorn_sheep-n	Number=Plur	dema	0			rule
-bighorns	0	oewn-bighorn-n	Number=Plur	dema	0			rule_variant
+bighorns	0	oewn-bighorn-n	Number=Plur	dema	0			rule
 bight	0	oewn-bight-n	Number=Sing	dema	0			oewn_form
 bight	1	oewn-bight-v	VerbForm=Inf	dema	0			oewn_form
 bighted	0	oewn-bight-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -656,7 +655,6 @@ bignoniad	0	oewn-bignoniad-n	Number=Sing	dema	0			oewn_form
 bignoniads	0	oewn-bignoniad-n	Number=Plur	dema	0			rule
 bignonias	0		Number=Plur	dema	0	bignonia	n	rule
 bigos	0	oewn-bigos-n	Number=Sing	dema	0			oewn_form
-bigoses	0	oewn-bigos-n	Number=Plur	dema	0			rule
 bigot	0	oewn-bigot-n	Number=Sing	dema	0			oewn_form
 bigoted	0	oewn-bigoted-a	Degree=Pos	dema	0			oewn_form
 bigoted	1		VerbForm=Inf	dema	0	bigoted	v	moby_reverse
@@ -903,31 +901,29 @@ billing	1	oewn-bill-v	VerbForm=Ger	dema	0			rule
 billings	0	oewn-billing-n	Number=Plur	dema	0			rule
 billingsgate	0	oewn-billingsgate-n	Number=Sing	dema	0			oewn_form
 billingsgates	0	oewn-billingsgate-n	Number=Plur	dema	0			rule
-billion	0	oewn-billion-n	Number=Plur	dema	0			agid
-billion	1	oewn-billion-n	Number=Sing	dema	0			oewn_form
-billion	2	dema-billion-d		dema	0			carried
-billion	3	oewn-billion-a	Degree=Pos	dema	0			oewn_form
+billion	0	oewn-billion-n	Number=Sing	dema	0			oewn_form
+billion	1	dema-billion-d		dema	0			carried
+billion	2	oewn-billion-a	Degree=Pos	dema	0			oewn_form
 billion floating point operations per second	0	oewn-billion_floating_point_operations_per_second-n	Number=Sing	dema	0			oewn_form
 billion floating point operations per seconds	0	oewn-billion_floating_point_operations_per_second-n	Number=Plur	dema	0			rule
 billion-dollar grass	0	oewn-billion-dollar_grass-n	Number=Sing	dema	0			oewn_form
 billion-dollar grasses	0	oewn-billion-dollar_grass-n	Number=Plur	dema	0			rule
 billionaire	0	oewn-billionaire-n	Number=Sing	dema	0			oewn_form
 billionaires	0	oewn-billionaire-n	Number=Plur	dema	0			rule
-billions	0	oewn-billion-n	Number=Plur	dema	0			rule_variant
+billions	0	oewn-billion-n	Number=Plur	dema	0			llm
 billionth	0	oewn-billionth-a	Degree=Pos	dema	0			oewn_form
 billionth	1	oewn-billionth-n	Number=Sing	dema	0			oewn_form
 billionths	0	oewn-billionth-n	Number=Plur	dema	0			rule
 billman	0		Number=Sing	dema	0	billman	n	moby_reverse
-billmans	0		Number=Plur	dema	0	billman	n	rule
-billmen	0		Number=Sing	dema	0	billmen	n	moby_reverse
-billmens	0		Number=Plur	dema	0	billmen	n	rule
+billmen	0		Number=Plur	dema	0	billman	n	rule
+billmen	1		Number=Sing	dema	0	billmen	n	moby_reverse
 billon	0		Number=Sing	dema	0	billon	n	moby_reverse
 billons	0		Number=Plur	dema	0	billon	n	rule
 billow	0	oewn-billow-n	Number=Sing	dema	0			oewn_form
 billow	1	oewn-billow-v	VerbForm=Inf	dema	0			oewn_form
 billowed	0	oewn-billow-v	Tense=Past+VerbForm=Part	dema	0			rule
-billowier	0	oewn-billowy-a	Degree=Cmp	dema	0			moby_reverse
-billowiest	0	oewn-billowy-a	Degree=Sup	dema	0			moby_reverse
+billowier	0	oewn-billowy-a	Degree=Cmp	dema	0			llm
+billowiest	0	oewn-billowy-a	Degree=Sup	dema	0			llm
 billowiness	0		Number=Sing	dema	0	billowiness	n	moby_reverse
 billowinesses	0		Number=Plur	dema	0	billowiness	n	rule
 billowing	0	oewn-billow-v	VerbForm=Ger	dema	0			rule
@@ -1430,9 +1426,9 @@ biometry	0	oewn-biometry-n	Number=Sing	dema	0			oewn_form
 biomorphic	0		Degree=Pos	dema	0	biomorphic	a	moby_reverse
 bionic	0	oewn-bionic-a	Degree=Pos	dema	0			oewn_form
 bionic man	0	oewn-bionic_man-n	Number=Sing	dema	0			oewn_form
-bionic mans	0	oewn-bionic_man-n	Number=Plur	dema	0			rule
+bionic men	0	oewn-bionic_man-n	Number=Plur	dema	0			rule
 bionic woman	0	oewn-bionic_woman-n	Number=Sing	dema	0			oewn_form
-bionic womans	0	oewn-bionic_woman-n	Number=Plur	dema	0			rule
+bionic women	0	oewn-bionic_woman-n	Number=Plur	dema	0			rule
 bionics	0	oewn-bionics-n	Number=Sing	dema	0			oewn_form
 bionomic	0	oewn-bionomic-a	Degree=Pos	dema	0			oewn_form
 bionomical	0	oewn-bionomical-a	Degree=Pos	dema	0			oewn_form
@@ -1708,11 +1704,10 @@ birdhouse	0	oewn-birdhouse-n	Number=Sing	dema	0			oewn_form
 birdhouses	0	oewn-birdhouse-n	Number=Plur	dema	0			rule
 birdie	0	oewn-birdie-n	Number=Sing	dema	0			oewn_form
 birdie	1	oewn-birdie-v	VerbForm=Inf	dema	0			oewn_form
-birdied	0	oewn-birdie-v	Tense=Past+VerbForm=Part	dema	0			rule
-birdieing	0	oewn-birdie-v	VerbForm=Ger	dema	0			moby_reverse
+birdied	0	oewn-birdie-v	Tense=Past+VerbForm=Part	dema	0			llm
+birdieing	0	oewn-birdie-v	VerbForm=Ger	dema	0			llm
 birdies	0	oewn-birdie-n	Number=Plur	dema	0			rule
-birdies	1	oewn-birdie-v	Person=3+Tense=Pres	dema	0			rule
-birdiing	0	oewn-birdie-v	VerbForm=Ger	dema	0			rule
+birdies	1	oewn-birdie-v	Person=3+Tense=Pres	dema	0			llm
 birding	0	oewn-bird-v	VerbForm=Ger	dema	0			rule
 birdless	0		Degree=Pos	dema	0	birdless	a	moby_reverse
 birdlike	0		Degree=Pos	dema	0	birdlike	a	moby_reverse
@@ -1723,9 +1718,8 @@ birdlimes	0	oewn-birdlime-n	Number=Plur	dema	0			rule
 birdlimes	1	oewn-birdlime-v	Person=3+Tense=Pres	dema	0			rule
 birdliming	0	oewn-birdlime-v	VerbForm=Ger	dema	0			rule
 birdman	0		Number=Sing	dema	0	birdman	n	moby_reverse
-birdmans	0		Number=Plur	dema	0	birdman	n	rule
-birdmen	0		Number=Sing	dema	0	birdmen	n	moby_reverse
-birdmens	0		Number=Plur	dema	0	birdmen	n	rule
+birdmen	0		Number=Plur	dema	0	birdman	n	rule
+birdmen	1		Number=Sing	dema	0	birdmen	n	moby_reverse
 birdnest	0	oewn-birdnest-n	Number=Sing	dema	0			oewn_form
 birdnest	1	oewn-birdnest-v	VerbForm=Inf	dema	0			oewn_form
 birdnested	0	oewn-birdnest-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -1754,9 +1748,8 @@ birdwatched	0	oewn-birdwatch-v	Tense=Past+VerbForm=Part	dema	0			rule
 birdwatches	0	oewn-birdwatch-v	Person=3+Tense=Pres	dema	0			rule
 birdwatching	0	oewn-birdwatch-v	VerbForm=Ger	dema	0			rule
 birdwoman	0		Number=Sing	dema	0	birdwoman	n	moby_reverse
-birdwomans	0		Number=Plur	dema	0	birdwoman	n	rule
-birdwomen	0		Number=Sing	dema	0	birdwomen	n	moby_reverse
-birdwomens	0		Number=Plur	dema	0	birdwomen	n	rule
+birdwomen	0		Number=Plur	dema	0	birdwoman	n	rule
+birdwomen	1		Number=Sing	dema	0	birdwomen	n	moby_reverse
 birectangular	0		Degree=Pos	dema	0	birectangular	a	moby_reverse
 birefringence	0	oewn-birefringence-n	Number=Sing	dema	0			oewn_form
 birefringences	0	oewn-birefringence-n	Number=Plur	dema	0			rule
@@ -1873,10 +1866,9 @@ biryani	0	oewn-biryani-n	Number=Sing	dema	0			oewn_form
 biryanis	0	oewn-biryani-n	Number=Plur	dema	0			rule
 bis	0		Degree=Pos	dema	0	bis	r	moby_reverse
 bis	1	dema-bis-i		dema	0			carried
-biscuit	0	oewn-biscuit-n	Number=Plur	dema	0			rule_variant
-biscuit	1	oewn-biscuit-n	Number=Sing	dema	0			oewn_form
+biscuit	0	oewn-biscuit-n	Number=Sing	dema	0			oewn_form
 biscuitlike	0		Degree=Pos	dema	0	biscuitlike	a	moby_reverse
-biscuits	0	oewn-biscuit-n	Number=Plur	dema	0			rule_variant
+biscuits	0	oewn-biscuit-n	Number=Plur	dema	0			llm
 bise	0	oewn-bise-n	Number=Sing	dema	0			oewn_form
 bisect	0	oewn-bisect-v	VerbForm=Inf	dema	0			oewn_form
 bisected	0	oewn-bisect-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -1963,9 +1955,8 @@ bismutite	0		Number=Sing	dema	0	bismutite	n	moby_reverse
 bismutites	0		Number=Plur	dema	0	bismutite	n	rule
 bisnaga	0		Number=Sing	dema	0	bisnaga	n	moby_reverse
 bisnagas	0		Number=Plur	dema	0	bisnaga	n	rule
-bison	0	oewn-bison-n	Number=Plur	dema	0			agid
-bison	1	oewn-bison-n	Number=Sing	dema	0			oewn_form
-bisons	0	oewn-bison-n	Number=Plur	dema	0			rule_variant
+bison	0	oewn-bison-n	Number=Sing	dema	0			oewn_form
+bisons	0	oewn-bison-n	Number=Plur	dema	0			rule
 bisontine	0	oewn-bisontine-a	Degree=Pos	dema	0			oewn_form
 bispak	0	oewn-bispak-n	Number=Sing	dema	0			oewn_form
 bispaks	0	oewn-bispak-n	Number=Plur	dema	0			rule
@@ -2261,7 +2252,7 @@ biz	0	oewn-biz-n	Number=Sing	dema	0			oewn_form
 bizarre	0	oewn-bizarre-a	Degree=Pos	dema	0			oewn_form
 bizarrely	0		Degree=Pos	dema	0	bizarrely	r	moby_reverse
 bizarreness	0	oewn-bizarreness-n	Number=Sing	dema	0			oewn_form
-bizarrenesses	0	oewn-bizarreness-n	Number=Plur	dema	0			rule
+bizarrenesses	0	oewn-bizarreness-n	Number=Plur	dema	0			llm
 bize	0	oewn-bize-n	Number=Sing	dema	0			oewn_form
 bizes	0	oewn-bize-n	Number=Plur	dema	0			rule
 biznaga	0		Number=Sing	dema	0	biznaga	n	moby_reverse

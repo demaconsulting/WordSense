@@ -173,7 +173,7 @@ Boselaphus tragocamelus	0	oewn-Boselaphus_tragocamelus-n	Capitalization=Exact+Nu
 Bosin's disease	0	oewn-Bosin-ap-s_disease-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Bosin's diseases	0	oewn-Bosin-ap-s_disease-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Boskop man	0	oewn-Boskop_man-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
-Boskop mans	0	oewn-Boskop_man-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Boskop men	0	oewn-Boskop_man-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Bosnian	0	oewn-Bosnian-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
 Bosnian-Herzegovinian monetary unit	0	oewn-Bosnian-Herzegovinian_monetary_unit-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Bosnian-Herzegovinian monetary units	0	oewn-Bosnian-Herzegovinian_monetary_unit-n	Capitalization=Exact+Number=Plur	dema	0			rule
@@ -414,13 +414,12 @@ boatloads	0	oewn-boatload-n	Number=Plur	dema	0			rule
 boatman	0	oewn-boatman-n	Number=Sing	dema	0			oewn_form
 boatmanship	0	oewn-boatmanship-n	Number=Sing	dema	0			oewn_form
 boatmanships	0	oewn-boatmanship-n	Number=Plur	dema	0			rule
-boatmen	0	oewn-boatman-n	Number=Plur	dema	0			agid
+boatmen	0	oewn-boatman-n	Number=Plur	dema	0			llm
 boats	0	oewn-boat-n	Number=Plur	dema	0			rule
 boats	1	oewn-boat-v	Person=3+Tense=Pres	dema	0			rule
 boatsman	0		Number=Sing	dema	0	boatsman	n	moby_reverse
-boatsmans	0		Number=Plur	dema	0	boatsman	n	rule
-boatsmen	0		Number=Sing	dema	0	boatsmen	n	moby_reverse
-boatsmens	0		Number=Plur	dema	0	boatsmen	n	rule
+boatsmen	0		Number=Plur	dema	0	boatsman	n	rule
+boatsmen	1		Number=Sing	dema	0	boatsmen	n	moby_reverse
 boatswain	0	oewn-boatswain-n	Number=Sing	dema	0			oewn_form
 boatswain bird	0	oewn-boatswain_bird-n	Number=Sing	dema	0			oewn_form
 boatswain birds	0	oewn-boatswain_bird-n	Number=Plur	dema	0			rule
@@ -430,14 +429,13 @@ boatswains	0	oewn-boatswain-n	Number=Plur	dema	0			rule
 boattail	0		Number=Sing	dema	0	boattail	n	moby_reverse
 boattails	0		Number=Plur	dema	0	boattail	n	rule
 boatwoman	0	oewn-boatwoman-n	Number=Sing	dema	0			oewn_form
-boatwomans	0	oewn-boatwoman-n	Number=Plur	dema	0			rule
+boatwomen	0	oewn-boatwoman-n	Number=Plur	dema	0			rule
 boatwright	0		Number=Sing	dema	0	boatwright	n	moby_reverse
 boatwrights	0		Number=Plur	dema	0	boatwright	n	rule
 boatyard	0	oewn-boatyard-n	Number=Sing	dema	0			oewn_form
 boatyards	0	oewn-boatyard-n	Number=Plur	dema	0			rule
 bob	0	oewn-bob-v	VerbForm=Inf	dema	0			oewn_form
-bob	1	oewn-bob-n	Number=Plur	dema	0			agid
-bob	2	oewn-bob-n	Number=Sing	dema	0			oewn_form
+bob	1	oewn-bob-n	Number=Sing	dema	0			oewn_form
 bob about	0	oewn-bob_about-v	VerbForm=Inf	dema	0			oewn_form
 bob around	0	oewn-bob_around-v	VerbForm=Inf	dema	0			oewn_form
 bob under	0	oewn-bob_under-v	VerbForm=Inf	dema	0			oewn_form
@@ -482,9 +480,8 @@ bobbysocks	0	oewn-bobbysocks-n	Number=Sing	dema	0			oewn_form
 bobbysocks	1	oewn-bobbysock-n	Number=Plur	dema	0			rule
 bobbysoxer	0	oewn-bobbysoxer-n	Number=Sing	dema	0			oewn_form
 bobbysoxers	0	oewn-bobbysoxer-n	Number=Plur	dema	0			rule
-bobcat	0	oewn-bobcat-n	Number=Plur	dema	0			agid
-bobcat	1	oewn-bobcat-n	Number=Sing	dema	0			oewn_form
-bobcats	0	oewn-bobcat-n	Number=Plur	dema	0			rule_variant
+bobcat	0	oewn-bobcat-n	Number=Sing	dema	0			oewn_form
+bobcats	0	oewn-bobcat-n	Number=Plur	dema	0			llm
 bobfloat	0	oewn-bobfloat-n	Number=Sing	dema	0			oewn_form
 bobfloats	0	oewn-bobfloat-n	Number=Plur	dema	0			rule
 boblet	0		Number=Sing	dema	0	boblet	n	moby_reverse
@@ -499,7 +496,7 @@ boboties	0		Number=Plur	dema	0	bobotie	n	rule
 bobowler	0		Number=Sing	dema	0	bobowler	n	moby_reverse
 bobowlers	0		Number=Plur	dema	0	bobowler	n	rule
 bobs	0	oewn-bob-v	Person=3+Tense=Pres	dema	0			rule
-bobs	1	oewn-bob-n	Number=Plur	dema	0			rule_variant
+bobs	1	oewn-bob-n	Number=Plur	dema	0			rule
 bobs	2		Degree=Pos	dema	0	bobs	a	moby_reverse
 bobs about	0	oewn-bob_about-v	Person=3+Tense=Pres	dema	0			rule
 bobs around	0	oewn-bob_around-v	Person=3+Tense=Pres	dema	0			rule
@@ -555,7 +552,7 @@ bock beers	0	oewn-bock_beer-n	Number=Plur	dema	0			rule
 bocks	0	oewn-bock-n	Number=Plur	dema	0			rule
 bod	0	oewn-bod-n	Number=Sing	dema	0			oewn_form
 bodacious	0	oewn-bodacious-a	Degree=Pos	dema	0			oewn_form
-bode	0	oewn-bide-v	Tense=Past+VerbForm=Part	dema	0			agid
+bode	0	oewn-bide-v	Tense=Past	dema	0			rule_variant
 bode	1	oewn-bode-v	VerbForm=Inf	dema	0			oewn_form
 boded	0	oewn-bode-v	Tense=Past+VerbForm=Part	dema	0			rule
 bodega	0	oewn-bodega-n	Number=Sing	dema	0			oewn_form
@@ -771,20 +768,22 @@ bogbeans	0	oewn-bogbean-n	Number=Plur	dema	0			rule
 bogey	0	oewn-bogey-n	Number=Sing	dema	0			oewn_form
 bogey	1	oewn-bogey-v	VerbForm=Inf	dema	0			oewn_form
 bogeyed	0		Number=Sing	dema	0	bogeyed	n	moby_reverse
-bogeyed	1	oewn-bogey-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+bogeyed	1	oewn-bogey-v	Tense=Past+VerbForm=Part	dema	0			llm
 bogeyeds	0		Number=Plur	dema	0	bogeyed	n	rule
 bogeying	0		Number=Sing	dema	0	bogeying	n	moby_reverse
-bogeying	1	oewn-bogey-v	VerbForm=Ger	dema	0			rule
+bogeying	1	oewn-bogey-v	VerbForm=Ger	dema	0			llm
 bogeyings	0		Number=Plur	dema	0	bogeying	n	rule
 bogeyman	0	oewn-bogeyman-n	Number=Sing	dema	0			oewn_form
+bogeymen	0	oewn-bogeyman-n	Number=Plur	dema	0			llm
+bogeymen	1	oewn-boogeyman-n	Number=Plur	dema	0			rule_variant
 bogeys	0	oewn-bogey-n	Number=Plur	dema	0			rule
-bogeys	1	oewn-bogey-v	Person=3+Tense=Pres	dema	0			rule
+bogeys	1	oewn-bogey-v	Person=3+Tense=Pres	dema	0			llm
 boggart	0		Number=Sing	dema	0	boggart	n	moby_reverse
 boggarts	0		Number=Plur	dema	0	boggart	n	rule
 bogged	0	oewn-bog-v	Tense=Past+VerbForm=Part	dema	0			rule
 bogged down	0	oewn-bog_down-v	Tense=Past+VerbForm=Part	dema	0			rule
-boggier	0	oewn-boggy-a	Degree=Cmp	dema	0			rule
-boggiest	0	oewn-boggy-a	Degree=Sup	dema	0			rule
+boggier	0	oewn-boggy-a	Degree=Cmp	dema	0			llm
+boggiest	0	oewn-boggy-a	Degree=Sup	dema	0			llm
 bogginess	0	oewn-bogginess-n	Number=Sing	dema	0			oewn_form
 bogginesses	0	oewn-bogginess-n	Number=Plur	dema	0			rule
 bogging	0	oewn-bog-v	VerbForm=Ger	dema	0			rule
@@ -799,7 +798,6 @@ boggling	0	oewn-boggle-v	VerbForm=Ger	dema	0			rule
 bogglingly	0		Degree=Pos	dema	0	bogglingly	r	moby_reverse
 boggy	0	oewn-boggy-a	Degree=Pos	dema	0			oewn_form
 bogie	0	oewn-bogie-n	Number=Sing	dema	0			oewn_form
-bogied	0	oewn-bogey-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 bogies	0	oewn-bogie-n	Number=Plur	dema	0			rule
 bogies	1	oewn-bogy-n	Number=Plur	dema	0			rule
 bogle	0		Number=Sing	dema	0	bogle	n	moby_reverse
@@ -907,8 +905,8 @@ bold	0	oewn-bold-a	Degree=Pos	dema	0			oewn_form
 bold	1	oewn-bold-n	Number=Sing	dema	0			oewn_form
 bold face	0	oewn-bold_face-n	Number=Sing	dema	0			oewn_form
 bold faces	0	oewn-bold_face-n	Number=Plur	dema	0			rule
-bolder	0	oewn-bold-a	Degree=Cmp	dema	0			rule
-boldest	0	oewn-bold-a	Degree=Sup	dema	0			rule
+bolder	0	oewn-bold-a	Degree=Cmp	dema	0			llm
+boldest	0	oewn-bold-a	Degree=Sup	dema	0			llm
 boldface	0	oewn-boldface-n	Number=Sing	dema	0			oewn_form
 boldface	1		Degree=Pos	dema	0	boldface	a	moby_reverse
 boldface	2	oewn-boldface-v	VerbForm=Inf	dema	0			oewn_form
@@ -942,6 +940,7 @@ bolete	0	oewn-bolete-n	Number=Sing	dema	0			oewn_form
 boletes	0	oewn-bolete-n	Number=Plur	dema	0			rule
 boletus	0		Number=Sing	dema	0	boletus	n	moby_reverse
 boletuses	0		Number=Plur	dema	0	boletus	n	rule
+boletuses	1		Number=Sing	dema	0	boletuses	n	moby_reverse
 bolide	0	oewn-bolide-n	Number=Sing	dema	0			oewn_form
 bolides	0	oewn-bolide-n	Number=Plur	dema	0			rule
 bolivar	0	oewn-bolivar-n	Number=Sing	dema	0			oewn_form
@@ -1247,19 +1246,19 @@ bondless	0		Degree=Pos	dema	0	bondless	a	moby_reverse
 bondmaid	0	oewn-bondmaid-n	Number=Sing	dema	0			oewn_form
 bondmaids	0	oewn-bondmaid-n	Number=Plur	dema	0			rule
 bondman	0	oewn-bondman-n	Number=Sing	dema	0			oewn_form
-bondmen	0	oewn-bondman-n	Number=Plur	dema	0			agid
+bondmen	0	oewn-bondman-n	Number=Plur	dema	0			llm
 bonds	0	oewn-bond-n	Number=Plur	dema	0			rule
 bonds	1	oewn-bond-v	Person=3+Tense=Pres	dema	0			rule
 bondservant	0		Number=Sing	dema	0	bondservant	n	moby_reverse
 bondservants	0		Number=Plur	dema	0	bondservant	n	rule
 bondsman	0	oewn-bondsman-n	Number=Sing	dema	0			oewn_form
-bondsmen	0	oewn-bondsman-n	Number=Plur	dema	0			agid
+bondsmen	0	oewn-bondsman-n	Number=Plur	dema	0			llm
 bondsperson	0	oewn-bondsperson-n	Number=Sing	dema	0			oewn_form
 bondspersons	0	oewn-bondsperson-n	Number=Plur	dema	0			rule
 bondstone	0		Number=Sing	dema	0	bondstone	n	moby_reverse
 bondstones	0		Number=Plur	dema	0	bondstone	n	rule
 bondswoman	0	oewn-bondswoman-n	Number=Sing	dema	0			oewn_form
-bondswomen	0	oewn-bondswoman-n	Number=Plur	dema	0			agid
+bondswomen	0	oewn-bondswoman-n	Number=Plur	dema	0			llm
 bonduc	0	oewn-bonduc-n	Number=Sing	dema	0			oewn_form
 bonduc nut	0	oewn-bonduc_nut-n	Number=Sing	dema	0			oewn_form
 bonduc nuts	0	oewn-bonduc_nut-n	Number=Plur	dema	0			rule
@@ -1267,7 +1266,7 @@ bonduc tree	0	oewn-bonduc_tree-n	Number=Sing	dema	0			oewn_form
 bonduc trees	0	oewn-bonduc_tree-n	Number=Plur	dema	0			rule
 bonducs	0	oewn-bonduc-n	Number=Plur	dema	0			rule
 bondwoman	0	oewn-bondwoman-n	Number=Sing	dema	0			oewn_form
-bondwomen	0	oewn-bondwoman-n	Number=Plur	dema	0			agid
+bondwomen	0	oewn-bondwoman-n	Number=Plur	dema	0			llm
 bone	0	oewn-bone-n	Number=Sing	dema	0			oewn_form
 bone	1	oewn-bone-v	VerbForm=Inf	dema	0			oewn_form
 bone	2	oewn-bone-a	Degree=Pos	dema	0			oewn_form
@@ -1339,8 +1338,6 @@ boneshakers	0	oewn-boneshaker-n	Number=Plur	dema	0			rule
 boney	0	oewn-boney-a	Degree=Pos	dema	0			oewn_form
 boneyard	0		Number=Sing	dema	0	boneyard	n	moby_reverse
 boneyards	0		Number=Plur	dema	0	boneyard	n	rule
-boneyer	0	oewn-boney-a	Degree=Cmp	dema	0			rule
-boneyest	0	oewn-boney-a	Degree=Sup	dema	0			rule
 bonfire	0	oewn-bonfire-n	Number=Sing	dema	0			oewn_form
 bonfires	0	oewn-bonfire-n	Number=Plur	dema	0			rule
 bong	0	oewn-bong-n	Number=Sing	dema	0			oewn_form
@@ -1362,7 +1359,9 @@ bonhomie	0	oewn-bonhomie-n	Number=Sing	dema	0			oewn_form
 bonhomies	0	oewn-bonhomie-n	Number=Plur	dema	0			rule
 bonhomous	0		Degree=Pos	dema	0	bonhomous	a	moby_reverse
 bonier	0	oewn-bony-a	Degree=Cmp	dema	0			oewn_form
+bonier	1	oewn-boney-a	Degree=Cmp	dema	0			llm
 boniest	0	oewn-bony-a	Degree=Sup	dema	0			oewn_form
+boniest	1	oewn-boney-a	Degree=Sup	dema	0			llm
 boniface	0	oewn-boniface-n	Number=Sing	dema	0			oewn_form
 bonifaces	0	oewn-boniface-n	Number=Plur	dema	0			rule
 boniness	0	oewn-boniness-n	Number=Sing	dema	0			oewn_form
@@ -1479,25 +1478,27 @@ boodlers	0		Number=Plur	dema	0	boodler	n	rule
 boodles	0	oewn-boodle-n	Number=Plur	dema	0			rule
 boodling	0		VerbForm=Ger	dema	0	boodle	v	moby_reverse
 boods	0		Number=Plur	dema	0	bood	n	rule
-booed	0	oewn-boo-v	Tense=Past+VerbForm=Part	dema	0			rule
+booed	0	oewn-boo-v	Tense=Past+VerbForm=Part	dema	0			llm
 booger	0	oewn-booger-n	Number=Sing	dema	0			oewn_form
 boogers	0	oewn-booger-n	Number=Plur	dema	0			rule
 boogeyman	0	oewn-boogeyman-n	Number=Sing	dema	0			oewn_form
-boogeymen	0	oewn-boogeyman-n	Number=Plur	dema	0			agid
+boogeymen	0	oewn-boogeyman-n	Number=Plur	dema	0			llm
 boogie	0	oewn-boogie-v	VerbForm=Inf	dema	0			oewn_form
 boogie	1	oewn-boogie-n	Number=Sing	dema	0			oewn_form
 boogie-woogie	0	oewn-boogie-woogie-n	Number=Sing	dema	0			oewn_form
 boogie-woogies	0	oewn-boogie-woogie-n	Number=Plur	dema	0			rule
-boogied	0	oewn-boogie-v	Tense=Past+VerbForm=Part	dema	0			rule
-boogies	0	oewn-boogie-v	Person=3+Tense=Pres	dema	0			rule
+boogied	0	oewn-boogie-v	Tense=Past+VerbForm=Part	dema	0			llm
+boogieing	0	oewn-boogie-v	VerbForm=Ger	dema	0			llm
+boogies	0	oewn-boogie-v	Person=3+Tense=Pres	dema	0			llm
 boogies	1	oewn-boogie-n	Number=Plur	dema	0			rule
+boogying	0	oewn-boogie-v	VerbForm=Ger	dema	0			rule_variant
 boohoo	0		VerbForm=Inf	dema	0	boohoo	v	moby_reverse
 boohoo	1		Number=Sing	dema	0	boohoo	n	moby_reverse
 boohooed	0		Tense=Past+VerbForm=Part	dema	0	boohoo	v	rule
 boohooes	0		Person=3+Tense=Pres	dema	0	boohoo	v	rule
 boohooing	0		VerbForm=Ger	dema	0	boohoo	v	rule
 boohoos	0		Person=3+Tense=Pres	dema	0	boohoo	v	moby_reverse
-booing	0	oewn-boo-v	VerbForm=Ger	dema	0			rule
+booing	0	oewn-boo-v	VerbForm=Ger	dema	0			llm
 boojum tree	0	oewn-boojum_tree-n	Number=Sing	dema	0			oewn_form
 boojum trees	0	oewn-boojum_tree-n	Number=Plur	dema	0			rule
 book	0	oewn-book-n	Number=Sing	dema	1			carried
@@ -1597,13 +1598,11 @@ bookmaking	0		Number=Sing	dema	0	bookmaking	n	moby_reverse
 bookmaking	1		Degree=Pos	dema	0	bookmaking	a	moby_reverse
 bookmakings	0		Number=Plur	dema	0	bookmaking	n	rule
 bookman	0	oewn-bookman-n	Number=Sing	dema	0			oewn_form
-bookmans	0	oewn-bookman-n	Number=Plur	dema	0			rule
 bookmark	0	oewn-bookmark-n	Number=Sing	dema	0			oewn_form
 bookmarker	0	oewn-bookmarker-n	Number=Sing	dema	0			oewn_form
 bookmarkers	0	oewn-bookmarker-n	Number=Plur	dema	0			rule
 bookmarks	0	oewn-bookmark-n	Number=Plur	dema	0			rule
-bookmen	0		Number=Sing	dema	0	bookmen	n	moby_reverse
-bookmens	0		Number=Plur	dema	0	bookmen	n	rule
+bookmen	0	oewn-bookman-n	Number=Plur	dema	0			rule
 bookmobile	0	oewn-bookmobile-n	Number=Sing	dema	0			oewn_form
 bookmobiles	0	oewn-bookmobile-n	Number=Plur	dema	0			rule
 bookplate	0	oewn-bookplate-n	Number=Sing	dema	0			oewn_form
@@ -1635,7 +1634,7 @@ bookstands	0		Number=Plur	dema	0	bookstand	n	rule
 bookstore	0	oewn-bookstore-n	Number=Sing	dema	0			oewn_form
 bookstores	0	oewn-bookstore-n	Number=Plur	dema	0			rule
 bookwoman	0	oewn-bookwoman-n	Number=Sing	dema	0			oewn_form
-bookwomans	0	oewn-bookwoman-n	Number=Plur	dema	0			rule
+bookwomen	0	oewn-bookwoman-n	Number=Plur	dema	0			rule
 bookwork	0		Number=Sing	dema	0	bookwork	n	moby_reverse
 bookworks	0		Number=Plur	dema	0	bookwork	n	rule
 bookworm	0	oewn-bookworm-n	Number=Sing	dema	0			oewn_form
@@ -1699,7 +1698,8 @@ boorishly	0	oewn-boorishly-r	Degree=Pos	dema	0			oewn_form
 boorishness	0	oewn-boorishness-n	Number=Sing	dema	0			oewn_form
 boorishnesses	0	oewn-boorishness-n	Number=Plur	dema	0			rule
 boors	0	oewn-boor-n	Number=Plur	dema	0			rule
-boos	0	oewn-boo-n	Number=Plur	dema	0			rule
+boos	0	oewn-boo-v	Person=3+Tense=Pres	dema	0			llm
+boos	1	oewn-boo-n	Number=Plur	dema	0			rule
 boost	0	oewn-boost-n	Number=Sing	dema	0			oewn_form
 boost	1	oewn-boost-v	VerbForm=Inf	dema	0			oewn_form
 boost up	0	oewn-boost_up-v	VerbForm=Inf	dema	0			oewn_form
@@ -1794,12 +1794,10 @@ boots	1	oewn-boot-v	Person=3+Tense=Pres	dema	0			rule
 boots out	0	oewn-boot_out-v	Person=3+Tense=Pres	dema	0			rule
 bootstrap	0	oewn-bootstrap-n	Number=Sing	dema	0			oewn_form
 bootstrap	1	oewn-bootstrap-v	VerbForm=Inf	dema	0			oewn_form
-bootstraped	0	oewn-bootstrap-v	Tense=Past+VerbForm=Part	dema	0			rule
-bootstraping	0	oewn-bootstrap-v	VerbForm=Ger	dema	0			rule
-bootstrapped	0	oewn-bootstrap-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
-bootstrapping	0	oewn-bootstrap-v	VerbForm=Ger	dema	0			rule_variant
+bootstrapped	0	oewn-bootstrap-v	Tense=Past+VerbForm=Part	dema	0			llm
+bootstrapping	0	oewn-bootstrap-v	VerbForm=Ger	dema	0			llm
 bootstraps	0	oewn-bootstrap-n	Number=Plur	dema	0			rule
-bootstraps	1	oewn-bootstrap-v	Person=3+Tense=Pres	dema	0			rule
+bootstraps	1	oewn-bootstrap-v	Person=3+Tense=Pres	dema	0			llm
 boottopping	0		Number=Sing	dema	0	boottopping	n	moby_reverse
 boottoppings	0		Number=Plur	dema	0	boottopping	n	rule
 booty	0	oewn-booty-n	Number=Sing	dema	0			oewn_form
@@ -1881,10 +1879,10 @@ border patrol	0	oewn-border_patrol-n	Number=Sing	dema	0			oewn_form
 border patroller	0	oewn-border_patroller-n	Number=Sing	dema	0			oewn_form
 border patrollers	0	oewn-border_patroller-n	Number=Plur	dema	0			rule
 border patrolman	0	oewn-border_patrolman-n	Number=Sing	dema	0			oewn_form
-border patrolmans	0	oewn-border_patrolman-n	Number=Plur	dema	0			rule
+border patrolmen	0	oewn-border_patrolman-n	Number=Plur	dema	0			rule
 border patrols	0	oewn-border_patrol-n	Number=Plur	dema	0			rule
 border patrolwoman	0	oewn-border_patrolwoman-n	Number=Sing	dema	0			oewn_form
-border patrolwomans	0	oewn-border_patrolwoman-n	Number=Plur	dema	0			rule
+border patrolwomen	0	oewn-border_patrolwoman-n	Number=Plur	dema	0			rule
 bordereau	0		Number=Sing	dema	0	bordereau	n	moby_reverse
 bordereaus	0		Number=Plur	dema	0	bordereau	n	rule
 bordereaux	0		Number=Sing	dema	0	bordereaux	n	moby_reverse
@@ -1924,6 +1922,7 @@ bore-holes	0	oewn-bore-hole-n	Number=Plur	dema	0			rule
 boreable	0		Degree=Pos	dema	0	boreable	a	moby_reverse
 boreal	0	oewn-boreal-a	Degree=Pos	dema	0			oewn_form
 boreas	0	oewn-boreas-n	Number=Sing	dema	0			oewn_form
+boreases	0	oewn-boreas-n	Number=Plur	dema	0			llm
 borecole	0	oewn-borecole-n	Number=Sing	dema	0			oewn_form
 borecoles	0	oewn-borecole-n	Number=Plur	dema	0			rule
 bored	0	oewn-bore-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -2099,11 +2098,11 @@ bossboy	0		Number=Sing	dema	0	bossboy	n	moby_reverse
 bossboys	0		Number=Plur	dema	0	bossboy	n	rule
 bossed	0	oewn-boss-v	Tense=Past+VerbForm=Part	dema	0			rule
 bossed around	0	oewn-boss_around-v	Tense=Past+VerbForm=Part	dema	0			rule
-bosser	0	oewn-boss-a	Degree=Cmp	dema	0			rule
+bosser	0	oewn-boss-a	Degree=Cmp	dema	0			llm
 bosses	0	oewn-boss-n	Number=Plur	dema	0			rule
 bosses	1	oewn-boss-v	Person=3+Tense=Pres	dema	0			rule
 bosses around	0	oewn-boss_around-v	Person=3+Tense=Pres	dema	0			rule
-bossest	0	oewn-boss-a	Degree=Sup	dema	0			rule
+bossest	0	oewn-boss-a	Degree=Sup	dema	0			llm
 bosseyed	0		Degree=Pos	dema	0	bosseyed	a	moby_reverse
 bosseyed	1		VerbForm=Inf	dema	0	bosseyed	v	moby_reverse
 bossier	0	oewn-bossy-a	Degree=Cmp	dema	0			oewn_form
@@ -2531,7 +2530,7 @@ boundingly	0		Degree=Pos	dema	0	boundingly	r	moby_reverse
 boundless	0	oewn-boundless-a	Degree=Pos	dema	0			oewn_form
 boundlessly	0	oewn-boundlessly-r	Degree=Pos	dema	0			oewn_form
 boundlessness	0	oewn-boundlessness-n	Number=Sing	dema	0			oewn_form
-boundlessnesses	0	oewn-boundlessness-n	Number=Plur	dema	0			rule
+boundlessnesses	0	oewn-boundlessness-n	Number=Plur	dema	0			llm
 boundness	0		Number=Sing	dema	0	boundness	n	moby_reverse
 bounds	0	oewn-bounds-n	Number=Sing	dema	0			oewn_form
 bounds	1	oewn-bound-v	Person=3+Tense=Pres	dema	0			rule
@@ -2561,12 +2560,11 @@ bourbons	0	oewn-bourbon-n	Number=Plur	dema	0			rule
 bourdon	0	oewn-bourdon-n	Number=Sing	dema	0			oewn_form
 bourdons	0	oewn-bourdon-n	Number=Plur	dema	0			rule
 bourg	0		Number=Sing	dema	0	bourg	n	moby_reverse
-bourgeois	0	oewn-bourgeois-n	Number=Plur	dema	0			agid
+bourgeois	0	oewn-bourgeois-n	Number=Plur	dema	0			irregular_list
 bourgeois	1	oewn-bourgeois-n	Number=Sing	dema	0			oewn_form
 bourgeois	2	oewn-bourgeois-a	Degree=Pos	dema	0			oewn_form
 bourgeoise	0		Number=Sing	dema	0	bourgeoise	n	moby_reverse
-bourgeoises	0	oewn-bourgeois-n	Number=Plur	dema	0			rule_variant
-bourgeoises	1		Number=Plur	dema	0	bourgeoise	n	rule
+bourgeoises	0		Number=Plur	dema	0	bourgeoise	n	rule
 bourgeoisie	0	oewn-bourgeoisie-n	Number=Sing	dema	0			oewn_form
 bourgeoisies	0	oewn-bourgeoisie-n	Number=Plur	dema	0			rule
 bourgeon	0		Number=Sing	dema	0	bourgeon	n	moby_reverse
@@ -2788,7 +2786,7 @@ bowls	1	oewn-bowls-n	Number=Sing	dema	0			oewn_form
 bowls	2	oewn-bowl-v	Person=3+Tense=Pres	dema	0			rule
 bowls over	0	oewn-bowl_over-v	Person=3+Tense=Pres	dema	0			rule
 bowman	0	oewn-bowman-n	Number=Sing	dema	0			oewn_form
-bowmen	0	oewn-bowman-n	Number=Plur	dema	0			agid
+bowmen	0	oewn-bowman-n	Number=Plur	dema	0			llm
 bown	0		VerbForm=Inf	dema	0	bown	v	moby_reverse
 bowned	0		Tense=Past+VerbForm=Part	dema	0	bown	v	rule
 bowning	0		VerbForm=Ger	dema	0	bown	v	rule
@@ -2829,16 +2827,15 @@ bowtie pasta	0	oewn-bowtie_pasta-n	Number=Sing	dema	0			oewn_form
 bowtie pastas	0	oewn-bowtie_pasta-n	Number=Plur	dema	0			rule
 bowties	0	oewn-bowtie-n	Number=Plur	dema	0			rule
 bowwoman	0	oewn-bowwoman-n	Number=Sing	dema	0			oewn_form
-bowwomans	0	oewn-bowwoman-n	Number=Plur	dema	0			rule
+bowwomen	0	oewn-bowwoman-n	Number=Plur	dema	0			llm
 bowwow	0		Number=Sing	dema	0	bowwow	n	moby_reverse
 bowwows	0		Number=Plur	dema	0	bowwow	n	rule
 bowyang	0		Number=Sing	dema	0	bowyang	n	moby_reverse
 bowyangs	0		Number=Plur	dema	0	bowyang	n	rule
 bowyer	0		Number=Sing	dema	0	bowyer	n	moby_reverse
 bowyers	0		Number=Plur	dema	0	bowyer	n	rule
-box	0	oewn-box-n	Number=Plur	dema	0			agid
-box	1	oewn-box-n	Number=Sing	dema	0			oewn_form
-box	2	oewn-box-v	VerbForm=Inf	dema	0			oewn_form
+box	0	oewn-box-n	Number=Sing	dema	0			oewn_form
+box	1	oewn-box-v	VerbForm=Inf	dema	0			oewn_form
 box Kodak	0	oewn-box_Kodak-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 box Kodaks	0	oewn-box_Kodak-n	Capitalization=Exact+Number=Plur	dema	0			rule
 box beam	0	oewn-box_beam-n	Number=Sing	dema	0			oewn_form
@@ -2899,7 +2896,7 @@ boxer	0	oewn-boxer-n	Number=Sing	dema	0			oewn_form
 boxers	0	oewn-boxer-n	Number=Plur	dema	0			rule
 boxers	1	oewn-boxers-n	Number=Sing	dema	0			oewn_form
 boxershorts	0	oewn-boxershorts-n	Number=Sing	dema	0			oewn_form
-boxes	0	oewn-box-n	Number=Plur	dema	0			rule_variant
+boxes	0	oewn-box-n	Number=Plur	dema	0			rule
 boxes	1	oewn-box-v	Person=3+Tense=Pres	dema	0			rule
 boxes in	0	oewn-box_in-v	Person=3+Tense=Pres	dema	0			rule
 boxes up	0	oewn-box_up-v	Person=3+Tense=Pres	dema	0			rule
@@ -2915,8 +2912,8 @@ boxhead	0		Number=Sing	dema	0	boxhead	n	moby_reverse
 boxheads	0		Number=Plur	dema	0	boxhead	n	rule
 boxholder	0		Number=Sing	dema	0	boxholder	n	moby_reverse
 boxholders	0		Number=Plur	dema	0	boxholder	n	rule
-boxier	0	oewn-boxy-a	Degree=Cmp	dema	0			rule
-boxiest	0	oewn-boxy-a	Degree=Sup	dema	0			rule
+boxier	0	oewn-boxy-a	Degree=Cmp	dema	0			llm
+boxiest	0	oewn-boxy-a	Degree=Sup	dema	0			llm
 boxing	0	oewn-boxing-n	Number=Sing	dema	0			oewn_form
 boxing	1	oewn-box-v	VerbForm=Ger	dema	0			rule
 boxing equipment	0	oewn-boxing_equipment-n	Number=Sing	dema	0			oewn_form
@@ -2967,7 +2964,7 @@ boyhoods	0	oewn-boyhood-n	Number=Plur	dema	0			rule
 boyish	0	oewn-boyish-a	Degree=Pos	dema	0			oewn_form
 boyishly	0	oewn-boyishly-r	Degree=Pos	dema	0			oewn_form
 boyishness	0	oewn-boyishness-n	Number=Sing	dema	0			oewn_form
-boyishnesses	0	oewn-boyishness-n	Number=Plur	dema	0			rule
+boyishnesses	0	oewn-boyishness-n	Number=Plur	dema	0			llm
 boyla	0		Number=Sing	dema	0	boyla	n	moby_reverse
 boylas	0		Number=Plur	dema	0	boyla	n	rule
 boylike	0	oewn-boylike-a	Degree=Pos	dema	0			oewn_form

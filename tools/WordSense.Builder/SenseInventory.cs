@@ -37,7 +37,7 @@ internal sealed record CorpusValidation(IReadOnlyList<string> Errors, IReadOnlyL
 ///     There is no inventory file any more: the senses, their parts of speech, groups and order come from the word
 ///     image that the library ships, so the training data, the trainer and the run time read one inventory. The
 ///     inventory order of the senses of a lemma is the part of speech in enumeration order, and within a part of speech
-///     the order of <see cref="WordLexicon.SensesOf"/> (most frequent first).
+///     the order of <see cref="WordLexicon.SensesOf"/> (the order of Open English WordNet).
 ///     </para>
 ///     <para>
 ///     A corpus row is valid when its lemma is lower-case, its sense exists in the catalog and belongs to the lemma of

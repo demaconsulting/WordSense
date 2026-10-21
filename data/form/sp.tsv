@@ -143,7 +143,7 @@ Sphinges	1	oewn-Sphinx-n	Capitalization=Title+Number=Plur	dema	0			rule_variant
 Sphinx	0	oewn-sphinx-n	Number=Sing	dema	0			oewn_form
 Sphinx	1	oewn-Sphinx-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Sphinxes	0	oewn-sphinx-n	Number=Plur	dema	0			rule_variant
-Sphinxes	1	oewn-Sphinx-n	Capitalization=Title+Number=Plur	dema	0			rule_variant
+Sphinxes	1	oewn-Sphinx-n	Capitalization=Title+Number=Plur	dema	0			llm
 Sphyraena barracuda	0	oewn-Sphyraena_barracuda-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Sphyraena barracudas	0	oewn-Sphyraena_barracuda-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Sphyrapicus varius	0	oewn-Sphyrapicus_varius-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
@@ -256,13 +256,12 @@ space-time continuums	0	oewn-space-time_continuum-n	Number=Plur	dema	0			rule
 space-times	0	oewn-space-time-n	Number=Plur	dema	0			rule
 spaceband	0		Number=Sing	dema	0	spaceband	n	moby_reverse
 spacebands	0		Number=Plur	dema	0	spaceband	n	rule
-spacecraft	0	oewn-spacecraft-n	Number=Plur	dema	0			agid
-spacecraft	1	oewn-spacecraft-n	Number=Sing	dema	0			oewn_form
+spacecraft	0	oewn-spacecraft-n	Number=Sing	dema	0			oewn_form
 spacecraft clock time	0	oewn-spacecraft_clock_time-n	Number=Sing	dema	0			oewn_form
 spacecraft clock times	0	oewn-spacecraft_clock_time-n	Number=Plur	dema	0			rule
 spacecraft event time	0	oewn-spacecraft_event_time-n	Number=Sing	dema	0			oewn_form
 spacecraft event times	0	oewn-spacecraft_event_time-n	Number=Plur	dema	0			rule
-spacecrafts	0	oewn-spacecraft-n	Number=Plur	dema	0			rule_variant
+spacecrafts	0	oewn-spacecraft-n	Number=Plur	dema	0			rule
 spaced	0	oewn-space-v	Tense=Past+VerbForm=Part	dema	0			rule
 spaced	1	oewn-spaced-a	Degree=Pos	dema	0			oewn_form
 spaced-out	0	oewn-spaced-out-a	Degree=Pos	dema	0			oewn_form
@@ -272,7 +271,7 @@ spaceflight	0	oewn-spaceflight-n	Number=Sing	dema	0			oewn_form
 spaceflights	0	oewn-spaceflight-n	Number=Plur	dema	0			rule
 spaceless	0		Degree=Pos	dema	0	spaceless	a	moby_reverse
 spaceman	0	oewn-spaceman-n	Number=Sing	dema	0			oewn_form
-spacemen	0	oewn-spaceman-n	Number=Plur	dema	0			agid
+spacemen	0	oewn-spaceman-n	Number=Plur	dema	0			llm
 spaceport	0		Number=Sing	dema	0	spaceport	n	moby_reverse
 spaceports	0		Number=Plur	dema	0	spaceport	n	rule
 spacer	0		Number=Sing	dema	0	spacer	n	moby_reverse
@@ -296,14 +295,14 @@ spacewalks	1	oewn-spacewalk-v	Person=3+Tense=Pres	dema	0			rule
 spaceward	0	oewn-spaceward-r	Degree=Pos	dema	0			oewn_form
 spacewards	0	oewn-spacewards-r	Degree=Pos	dema	0			oewn_form
 spacewoman	0	oewn-spacewoman-n	Number=Sing	dema	0			oewn_form
-spacewomans	0	oewn-spacewoman-n	Number=Plur	dema	0			rule
+spacewomen	0	oewn-spacewoman-n	Number=Plur	dema	0			rule
 spacey	0	oewn-spacey-a	Degree=Pos	dema	0			oewn_form
 spacial	0	oewn-spacial-a	Degree=Pos	dema	0			oewn_form
 spacialities	0		Number=Plur	dema	0	spaciality	n	rule
 spaciality	0		Number=Sing	dema	0	spaciality	n	moby_reverse
 spacially	0		Degree=Pos	dema	0	spacially	r	moby_reverse
-spacier	0	oewn-spacy-a	Degree=Cmp	dema	0			rule
-spaciest	0	oewn-spacy-a	Degree=Sup	dema	0			rule
+spacier	0	oewn-spacy-a	Degree=Cmp	dema	0			llm
+spaciest	0	oewn-spacy-a	Degree=Sup	dema	0			llm
 spacing	0	oewn-spacing-n	Number=Sing	dema	0			oewn_form
 spacing	1	oewn-space-v	VerbForm=Ger	dema	0			rule
 spacings	0	oewn-spacing-n	Number=Plur	dema	0			rule
@@ -412,8 +411,8 @@ spancel	0		Number=Sing	dema	0	spancel	n	moby_reverse
 spancel	1		VerbForm=Inf	dema	0	spancel	v	moby_reverse
 spanceled	0		Tense=Past+VerbForm=Part	dema	0	spancel	v	moby_reverse
 spanceling	0		VerbForm=Ger	dema	0	spancel	v	moby_reverse
-spancelled	0		VerbForm=Inf	dema	0	spancelled	v	moby_reverse
-spancelling	0		VerbForm=Inf	dema	0	spancelling	v	moby_reverse
+spancelled	0		Tense=Past+VerbForm=Part	dema	0	spancel	v	moby_reverse
+spancelling	0		VerbForm=Ger	dema	0	spancel	v	moby_reverse
 spancels	0		Number=Plur	dema	0	spancel	n	rule
 spandex	0	oewn-spandex-n	Number=Sing	dema	0			oewn_form
 spandexes	0	oewn-spandex-n	Number=Plur	dema	0			rule
@@ -432,8 +431,8 @@ spangled	0	oewn-spangle-v	Tense=Past+VerbForm=Part	dema	0			rule
 spangled	1	oewn-spangled-a	Degree=Pos	dema	0			oewn_form
 spangles	0	oewn-spangle-n	Number=Plur	dema	0			rule
 spangles	1	oewn-spangle-v	Person=3+Tense=Pres	dema	0			rule
-spanglier	0	oewn-spangly-a	Degree=Cmp	dema	0			rule
-spangliest	0	oewn-spangly-a	Degree=Sup	dema	0			rule
+spanglier	0	oewn-spangly-a	Degree=Cmp	dema	0			llm
+spangliest	0	oewn-spangly-a	Degree=Sup	dema	0			llm
 spangling	0	oewn-spangle-v	VerbForm=Ger	dema	0			rule
 spangly	0	oewn-spangly-a	Degree=Pos	dema	0			oewn_form
 spangs	0	oewn-spang-v	Person=3+Tense=Pres	dema	0			rule
@@ -564,8 +563,8 @@ sparkless	0		Degree=Pos	dema	0	sparkless	a	moby_reverse
 sparklessly	0		Degree=Pos	dema	0	sparklessly	r	moby_reverse
 sparklet	0		Number=Sing	dema	0	sparklet	n	moby_reverse
 sparklets	0		Number=Plur	dema	0	sparklet	n	rule
-sparklier	0	oewn-sparkly-a	Degree=Cmp	dema	0			rule
-sparkliest	0	oewn-sparkly-a	Degree=Sup	dema	0			rule
+sparklier	0	oewn-sparkly-a	Degree=Cmp	dema	0			llm
+sparkliest	0	oewn-sparkly-a	Degree=Sup	dema	0			llm
 sparklike	0		Degree=Pos	dema	0	sparklike	a	moby_reverse
 sparkling	0	oewn-sparkle-v	VerbForm=Ger	dema	0			rule
 sparkling	1	oewn-sparkling-n	Number=Sing	dema	0			oewn_form
@@ -618,8 +617,8 @@ sparse	0	oewn-sparse-a	Degree=Pos	dema	0			oewn_form
 sparsely	0	oewn-sparsely-r	Degree=Pos	dema	0			oewn_form
 sparseness	0	oewn-sparseness-n	Number=Sing	dema	0			oewn_form
 sparsenesses	0	oewn-sparseness-n	Number=Plur	dema	0			rule
-sparser	0	oewn-sparse-a	Degree=Cmp	dema	0			moby_reverse
-sparsest	0	oewn-sparse-a	Degree=Sup	dema	0			moby_reverse
+sparser	0	oewn-sparse-a	Degree=Cmp	dema	0			llm
+sparsest	0	oewn-sparse-a	Degree=Sup	dema	0			llm
 sparsities	0	oewn-sparsity-n	Number=Plur	dema	0			rule
 sparsity	0	oewn-sparsity-n	Number=Sing	dema	0			oewn_form
 spartan	0	oewn-spartan-a	Degree=Pos	dema	0			oewn_form
@@ -693,7 +692,7 @@ spatially	0	oewn-spatially-r	Degree=Pos	dema	0			oewn_form
 spatiographies	0		Number=Plur	dema	0	spatiography	n	rule
 spatiography	0		Number=Sing	dema	0	spatiography	n	moby_reverse
 spatiotemporal	0	oewn-spatiotemporal-a	Degree=Pos	dema	0			oewn_form
-spats	0	oewn-spat-n	Number=Plur	dema	0			rule_variant
+spats	0	oewn-spat-n	Number=Plur	dema	0			llm
 spats	1	oewn-spat-v	Person=3+Tense=Pres	dema	0			rule
 spatted	0	oewn-spat-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 spatter	0	oewn-spatter-v	VerbForm=Inf	dema	0			oewn_form
@@ -741,12 +740,12 @@ spawning	0	oewn-spawn-v	VerbForm=Ger	dema	0			rule
 spawns	0	oewn-spawn-n	Number=Plur	dema	0			rule
 spawns	1	oewn-spawn-v	Person=3+Tense=Pres	dema	0			rule
 spay	0	oewn-spay-v	VerbForm=Inf	dema	0			oewn_form
-spayed	0	oewn-spay-v	Tense=Past+VerbForm=Part	dema	0			rule
+spayed	0	oewn-spay-v	Tense=Past+VerbForm=Part	dema	0			llm
 spayed	1	oewn-spayed-a	Degree=Pos	dema	0			oewn_form
-spaying	0	oewn-spay-v	VerbForm=Ger	dema	0			rule
+spaying	0	oewn-spay-v	VerbForm=Ger	dema	0			llm
 spaying	1	oewn-spaying-n	Number=Sing	dema	0			oewn_form
 spayings	0	oewn-spaying-n	Number=Plur	dema	0			rule
-spays	0	oewn-spay-v	Person=3+Tense=Pres	dema	0			rule
+spays	0	oewn-spay-v	Person=3+Tense=Pres	dema	0			llm
 spaz	0	oewn-spaz-v	VerbForm=Inf	dema	0			oewn_form
 spazes	0	oewn-spaz-v	Person=3+Tense=Pres	dema	0			rule
 spazzed	0	oewn-spaz-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -823,9 +822,8 @@ spearheads	1	oewn-spearhead-v	Person=3+Tense=Pres	dema	0			rule
 spearing	0	oewn-spear-v	VerbForm=Ger	dema	0			rule
 spearing up	0	oewn-spear_up-v	VerbForm=Ger	dema	0			rule
 spearman	0		Number=Sing	dema	0	spearman	n	moby_reverse
-spearmans	0		Number=Plur	dema	0	spearman	n	rule
-spearmen	0		Number=Sing	dema	0	spearmen	n	moby_reverse
-spearmens	0		Number=Plur	dema	0	spearmen	n	rule
+spearmen	0		Number=Plur	dema	0	spearman	n	rule
+spearmen	1		Number=Sing	dema	0	spearmen	n	moby_reverse
 spearmint	0	oewn-spearmint-n	Number=Sing	dema	0			oewn_form
 spearmint oil	0	oewn-spearmint_oil-n	Number=Sing	dema	0			oewn_form
 spearmint oils	0	oewn-spearmint_oil-n	Number=Plur	dema	0			rule
@@ -911,7 +909,7 @@ specializes	0	oewn-specialize-v	Person=3+Tense=Pres	dema	0			rule
 specializing	0	oewn-specialize-v	VerbForm=Ger	dema	0			rule
 specially	0	oewn-specially-r	Degree=Pos	dema	0			oewn_form
 specialness	0	oewn-specialness-n	Number=Sing	dema	0			oewn_form
-specialnesses	0	oewn-specialness-n	Number=Plur	dema	0			rule
+specialnesses	0	oewn-specialness-n	Number=Plur	dema	0			llm
 specials	0	oewn-special-n	Number=Plur	dema	0			rule
 specialties	0	oewn-specialty-n	Number=Plur	dema	0			rule
 specialty	0	oewn-specialty-n	Number=Sing	dema	0			oewn_form
@@ -1173,7 +1171,7 @@ speechifying	0	oewn-speechify-v	VerbForm=Ger	dema	0			rule
 speechless	0	oewn-speechless-a	Degree=Pos	dema	0			oewn_form
 speechlessly	0	oewn-speechlessly-r	Degree=Pos	dema	0			oewn_form
 speechlessness	0	oewn-speechlessness-n	Number=Sing	dema	0			oewn_form
-speechlessnesses	0	oewn-speechlessness-n	Number=Plur	dema	0			rule
+speechlessnesses	0	oewn-speechlessness-n	Number=Plur	dema	0			llm
 speechmaker	0	oewn-speechmaker-n	Number=Sing	dema	0			oewn_form
 speechmakers	0	oewn-speechmaker-n	Number=Plur	dema	0			rule
 speechmaking	0	oewn-speechmaking-n	Number=Sing	dema	0			oewn_form
@@ -1550,7 +1548,7 @@ sphericalities	0		Number=Plur	dema	0	sphericality	n	rule
 sphericality	0		Number=Sing	dema	0	sphericality	n	moby_reverse
 spherically	0	oewn-spherically-r	Degree=Pos	dema	0			oewn_form
 sphericalness	0	oewn-sphericalness-n	Number=Sing	dema	0			oewn_form
-sphericalnesses	0	oewn-sphericalness-n	Number=Plur	dema	0			rule
+sphericalnesses	0	oewn-sphericalness-n	Number=Plur	dema	0			llm
 sphericities	0	oewn-sphericity-n	Number=Plur	dema	0			rule
 sphericity	0	oewn-sphericity-n	Number=Sing	dema	0			oewn_form
 spherics	0		Number=Sing	dema	0	spherics	n	moby_reverse
@@ -1611,7 +1609,6 @@ sphygmomanometer	0	oewn-sphygmomanometer-n	Number=Sing	dema	0			oewn_form
 sphygmomanometers	0	oewn-sphygmomanometer-n	Number=Plur	dema	0			rule
 sphygmomanometric	0		Degree=Pos	dema	0	sphygmomanometric	a	moby_reverse
 sphygmus	0		Number=Sing	dema	0	sphygmus	n	moby_reverse
-sphygmuses	0		Number=Plur	dema	0	sphygmus	n	rule
 spic	0	oewn-spic-n	Number=Sing	dema	0			oewn_form
 spic	1	oewn-spic-a	Degree=Pos	dema	0			oewn_form
 spic-and-span	0	oewn-spic-and-span-a	Degree=Pos	dema	0			oewn_form
@@ -1663,7 +1660,7 @@ spicier	0	oewn-spicy-a	Degree=Cmp	dema	0			oewn_form
 spiciest	0	oewn-spicy-a	Degree=Sup	dema	0			oewn_form
 spicily	0	oewn-spicily-r	Degree=Pos	dema	0			oewn_form
 spiciness	0	oewn-spiciness-n	Number=Sing	dema	0			oewn_form
-spicinesses	0	oewn-spiciness-n	Number=Plur	dema	0			rule
+spicinesses	0	oewn-spiciness-n	Number=Plur	dema	0			llm
 spicing	0	oewn-spice-v	VerbForm=Ger	dema	0			rule
 spicing up	0	oewn-spice_up-v	VerbForm=Ger	dema	0			rule
 spick	0	oewn-spick-n	Number=Sing	dema	0			oewn_form
@@ -1713,7 +1710,7 @@ spiderling	0		Number=Sing	dema	0	spiderling	n	moby_reverse
 spiderlings	0		Number=Plur	dema	0	spiderling	n	rule
 spiderly	0	oewn-spiderly-a	Degree=Pos	dema	0			oewn_form
 spiderman	0		Number=Sing	dema	0	spiderman	n	moby_reverse
-spidermans	0		Number=Plur	dema	0	spiderman	n	rule
+spidermen	0		Number=Plur	dema	0	spiderman	n	rule
 spiders	0	oewn-spider-n	Number=Plur	dema	0			rule
 spiderweb	0		VerbForm=Inf	dema	0	spiderweb	v	moby_reverse
 spiderwebbed	0		Tense=Past+VerbForm=Part	dema	0	spiderweb	v	rule
@@ -2131,7 +2128,7 @@ spiralled	0	oewn-spiral-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 spiralling	0	oewn-spiral-v	VerbForm=Ger	dema	0			oewn_form
 spiralling	1	oewn-spiralling-s	Degree=Pos	dema	0			oewn_form
 spirally	0	oewn-spirally-r	Degree=Pos	dema	0			oewn_form
-spirals	0	oewn-spiral-v	Person=3+Tense=Pres	dema	0			rule
+spirals	0	oewn-spiral-v	Person=3+Tense=Pres	dema	0			llm
 spirals	1	oewn-spiral-n	Number=Plur	dema	0			rule
 spirant	0	oewn-spirant-a	Degree=Pos	dema	0			oewn_form
 spirant	1	oewn-spirant-n	Number=Sing	dema	0			oewn_form
@@ -2446,13 +2443,13 @@ splatting	0	oewn-splat-v	VerbForm=Ger	dema	0			rule
 splay	0	oewn-splay-a	Degree=Pos	dema	0			oewn_form
 splay	1	oewn-splay-v	VerbForm=Inf	dema	0			oewn_form
 splay	2	oewn-splay-n	Number=Sing	dema	0			oewn_form
-splayed	0	oewn-splay-v	Tense=Past+VerbForm=Part	dema	0			rule
+splayed	0	oewn-splay-v	Tense=Past+VerbForm=Part	dema	0			llm
 splayfeet	0	oewn-splayfoot-n	Number=Plur	dema	0			oewn_form
 splayfoot	0	oewn-splayfoot-n	Number=Sing	dema	0			oewn_form
 splayfoot	1	oewn-splayfoot-a	Degree=Pos	dema	0			oewn_form
 splayfooted	0	oewn-splayfooted-a	Degree=Pos	dema	0			oewn_form
-splaying	0	oewn-splay-v	VerbForm=Ger	dema	0			rule
-splays	0	oewn-splay-v	Person=3+Tense=Pres	dema	0			rule
+splaying	0	oewn-splay-v	VerbForm=Ger	dema	0			llm
+splays	0	oewn-splay-v	Person=3+Tense=Pres	dema	0			llm
 splays	1	oewn-splay-n	Number=Plur	dema	0			rule
 spleen	0	oewn-spleen-n	Number=Sing	dema	0			oewn_form
 spleenful	0		Degree=Pos	dema	0	spleenful	a	moby_reverse
@@ -2503,7 +2500,6 @@ splenitis	0	oewn-splenitis-n	Number=Sing	dema	0			oewn_form
 splenius	0	oewn-splenius-n	Number=Sing	dema	0			oewn_form
 splenius muscle	0	oewn-splenius_muscle-n	Number=Sing	dema	0			oewn_form
 splenius muscles	0	oewn-splenius_muscle-n	Number=Plur	dema	0			rule
-spleniuses	0	oewn-splenius-n	Number=Plur	dema	0			rule_variant
 splenomegalies	0	oewn-splenomegaly-n	Number=Plur	dema	0			rule
 splenomegaly	0	oewn-splenomegaly-n	Number=Sing	dema	0			oewn_form
 spleuchan	0		Number=Sing	dema	0	spleuchan	n	moby_reverse
@@ -2665,7 +2661,7 @@ spoils	1	oewn-spoil-n	Number=Plur	dema	0			rule
 spoils system	0	oewn-spoils_system-n	Number=Sing	dema	0			oewn_form
 spoils systems	0	oewn-spoils_system-n	Number=Plur	dema	0			rule
 spoilsman	0		Number=Sing	dema	0	spoilsman	n	moby_reverse
-spoilsmans	0		Number=Plur	dema	0	spoilsman	n	rule
+spoilsmen	0		Number=Plur	dema	0	spoilsman	n	rule
 spoilsport	0	oewn-spoilsport-n	Number=Sing	dema	0			oewn_form
 spoilsports	0	oewn-spoilsport-n	Number=Plur	dema	0			rule
 spoilt	0	oewn-spoil-v	Tense=Past+VerbForm=Part	dema	0			irregular_list
@@ -2688,11 +2684,11 @@ spokes	0	oewn-spoke-n	Number=Plur	dema	0			rule
 spokeshave	0	oewn-spokeshave-n	Number=Sing	dema	0			oewn_form
 spokeshaves	0	oewn-spokeshave-n	Number=Plur	dema	0			rule
 spokesman	0	oewn-spokesman-n	Number=Sing	dema	0			oewn_form
-spokesmen	0	oewn-spokesman-n	Number=Plur	dema	0			agid
+spokesmen	0	oewn-spokesman-n	Number=Plur	dema	0			llm
 spokesperson	0	oewn-spokesperson-n	Number=Sing	dema	0			oewn_form
 spokespersons	0	oewn-spokesperson-n	Number=Plur	dema	0			rule
 spokeswoman	0	oewn-spokeswoman-n	Number=Sing	dema	0			oewn_form
-spokeswomen	0	oewn-spokeswoman-n	Number=Plur	dema	0			agid
+spokeswomen	0	oewn-spokeswoman-n	Number=Plur	dema	0			llm
 spokewise	0		Degree=Pos	dema	0	spokewise	r	moby_reverse
 spokewise	1		Degree=Pos	dema	0	spokewise	a	moby_reverse
 spoking	0		VerbForm=Ger	dema	0	spoke	v	moby_reverse
@@ -2719,7 +2715,6 @@ spondulixes	0		Number=Plur	dema	0	spondulix	n	rule
 spondylarthritis	0	oewn-spondylarthritis-n	Number=Sing	dema	0			oewn_form
 spondylitic	0		Degree=Pos	dema	0	spondylitic	a	moby_reverse
 spondylitis	0	oewn-spondylitis-n	Number=Sing	dema	0			oewn_form
-spondylitises	0	oewn-spondylitis-n	Number=Plur	dema	0			rule
 spondylolisthesis	0	oewn-spondylolisthesis-n	Number=Sing	dema	0			oewn_form
 sponge	0	oewn-sponge-n	Number=Sing	dema	0			oewn_form
 sponge	1	oewn-sponge-v	VerbForm=Inf	dema	0			oewn_form
@@ -2869,7 +2864,7 @@ spoonfeeds	0	oewn-spoonfeed-v	Person=3+Tense=Pres	dema	0			rule
 spoonflower	0	oewn-spoonflower-n	Number=Sing	dema	0			oewn_form
 spoonflowers	0	oewn-spoonflower-n	Number=Plur	dema	0			rule
 spoonful	0	oewn-spoonful-n	Number=Sing	dema	0			oewn_form
-spoonfuls	0	oewn-spoonful-n	Number=Plur	dema	0			rule_variant
+spoonfuls	0	oewn-spoonful-n	Number=Plur	dema	0			llm
 spoonie	0	oewn-spoonie-n	Number=Sing	dema	0			oewn_form
 spoonier	0		Degree=Cmp	dema	0	spoony	a	moby_reverse
 spoonies	0	oewn-spoonie-n	Number=Plur	dema	0			rule
@@ -3001,9 +2996,9 @@ sporting lady	0	oewn-sporting_lady-n	Number=Sing	dema	0			oewn_form
 sporting life	0	oewn-sporting_life-n	Number=Sing	dema	0			oewn_form
 sporting lives	0	oewn-sporting_life-n	Number=Plur	dema	0			rule
 sporting man	0	oewn-sporting_man-n	Number=Sing	dema	0			oewn_form
-sporting mans	0	oewn-sporting_man-n	Number=Plur	dema	0			rule
+sporting men	0	oewn-sporting_man-n	Number=Plur	dema	0			rule
 sporting woman	0	oewn-sporting_woman-n	Number=Sing	dema	0			oewn_form
-sporting womans	0	oewn-sporting_woman-n	Number=Plur	dema	0			rule
+sporting women	0	oewn-sporting_woman-n	Number=Plur	dema	0			rule
 sportingly	0	oewn-sportingly-r	Degree=Pos	dema	0			oewn_form
 sportive	0	oewn-sportive-a	Degree=Pos	dema	0			oewn_form
 sportively	0	oewn-sportively-r	Degree=Pos	dema	0			oewn_form
@@ -3061,10 +3056,11 @@ sportsmanliness	0		Number=Sing	dema	0	sportsmanliness	n	moby_reverse
 sportsmanly	0		Degree=Pos	dema	0	sportsmanly	a	moby_reverse
 sportsmanship	0	oewn-sportsmanship-n	Number=Sing	dema	0			oewn_form
 sportsmanships	0	oewn-sportsmanship-n	Number=Plur	dema	0			rule
-sportsmen	0	oewn-sportsman-n	Number=Plur	dema	0			agid
+sportsmen	0	oewn-sportsman-n	Number=Plur	dema	0			llm
 sportswear	0	oewn-sportswear-n	Number=Sing	dema	0			oewn_form
 sportswears	0	oewn-sportswear-n	Number=Plur	dema	0			rule
 sportswoman	0	oewn-sportswoman-n	Number=Sing	dema	0			oewn_form
+sportswomen	0	oewn-sportswoman-n	Number=Plur	dema	0			llm
 sportswriter	0	oewn-sportswriter-n	Number=Sing	dema	0			oewn_form
 sportswriters	0	oewn-sportswriter-n	Number=Plur	dema	0			rule
 sporty	0	oewn-sporty-a	Degree=Pos	dema	0			oewn_form
@@ -3118,9 +3114,9 @@ spotlessnesses	0	oewn-spotlessness-n	Number=Plur	dema	0			rule
 spotlight	0	oewn-spotlight-n	Number=Sing	dema	0			oewn_form
 spotlight	1	oewn-spotlight-v	VerbForm=Inf	dema	0			oewn_form
 spotlighted	0	oewn-spotlight-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
-spotlighting	0	oewn-spotlight-v	VerbForm=Ger	dema	0			rule
+spotlighting	0	oewn-spotlight-v	VerbForm=Ger	dema	0			llm
 spotlights	0	oewn-spotlight-n	Number=Plur	dema	0			rule
-spotlights	1	oewn-spotlight-v	Person=3+Tense=Pres	dema	0			rule
+spotlights	1	oewn-spotlight-v	Person=3+Tense=Pres	dema	0			llm
 spotlike	0		Degree=Pos	dema	0	spotlike	a	moby_reverse
 spotlit	0	oewn-spotlight-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 spots	0	oewn-spot-n	Number=Plur	dema	1			carried
@@ -3253,9 +3249,9 @@ spraining	0	oewn-sprain-v	VerbForm=Ger	dema	0			rule
 sprains	0	oewn-sprain-v	Person=3+Tense=Pres	dema	0			rule
 sprains	1	oewn-sprain-n	Number=Plur	dema	0			rule
 sprang	0	oewn-spring-v	Tense=Past	dema	0			hand
-sprat	0	oewn-sprat-n	Number=Plur	dema	0			agid
+sprat	0	oewn-sprat-n	Number=Plur	dema	0			rule_variant
 sprat	1	oewn-sprat-n	Number=Sing	dema	0			oewn_form
-sprats	0	oewn-sprat-n	Number=Plur	dema	0			rule_variant
+sprats	0	oewn-sprat-n	Number=Plur	dema	0			llm
 sprattle	0		Number=Sing	dema	0	sprattle	n	moby_reverse
 sprattles	0		Number=Plur	dema	0	sprattle	n	rule
 sprauchle	0		VerbForm=Inf	dema	0	sprauchle	v	moby_reverse
@@ -3267,8 +3263,8 @@ sprawl	1	oewn-sprawl-n	Number=Sing	dema	0			oewn_form
 sprawled	0	oewn-sprawl-v	Tense=Past+VerbForm=Part	dema	0			rule
 sprawler	0	oewn-sprawler-n	Number=Sing	dema	0			oewn_form
 sprawlers	0	oewn-sprawler-n	Number=Plur	dema	0			rule
-sprawlier	0	oewn-sprawly-a	Degree=Cmp	dema	0			rule
-sprawliest	0	oewn-sprawly-a	Degree=Sup	dema	0			rule
+sprawlier	0	oewn-sprawly-a	Degree=Cmp	dema	0			llm
+sprawliest	0	oewn-sprawly-a	Degree=Sup	dema	0			llm
 sprawling	0	oewn-sprawl-v	VerbForm=Ger	dema	0			rule
 sprawling	1	oewn-sprawling-n	Number=Sing	dema	0			oewn_form
 sprawling	2	oewn-sprawling-a	Degree=Pos	dema	0			oewn_form
@@ -3335,7 +3331,7 @@ spreader beams	0	oewn-spreader_beam-n	Number=Plur	dema	0			rule
 spreaders	0	oewn-spreader-n	Number=Plur	dema	0			rule
 spreadhead	0	oewn-spreadhead-n	Number=Sing	dema	0			oewn_form
 spreadheads	0	oewn-spreadhead-n	Number=Plur	dema	0			rule
-spreading	0	oewn-spread-v	VerbForm=Ger	dema	0			rule
+spreading	0	oewn-spread-v	VerbForm=Ger	dema	0			llm
 spreading	1	oewn-spreading-n	Number=Sing	dema	0			oewn_form
 spreading bellflower	0	oewn-spreading_bellflower-n	Number=Sing	dema	0			oewn_form
 spreading bellflowers	0	oewn-spreading_bellflower-n	Number=Plur	dema	0			rule
@@ -3350,7 +3346,7 @@ spreading over	0	oewn-spread_over-v	VerbForm=Ger	dema	0			rule
 spreading pogonia	0	oewn-spreading_pogonia-n	Number=Sing	dema	0			oewn_form
 spreading pogonias	0	oewn-spreading_pogonia-n	Number=Plur	dema	0			rule
 spreadings	0	oewn-spreading-n	Number=Plur	dema	0			rule
-spreads	0	oewn-spread-v	Person=3+Tense=Pres	dema	0			rule
+spreads	0	oewn-spread-v	Person=3+Tense=Pres	dema	0			llm
 spreads	1	oewn-spread-n	Number=Plur	dema	0			rule
 spreads out	0	oewn-spread_out-v	Person=3+Tense=Pres	dema	0			rule
 spreads over	0	oewn-spread_over-v	Person=3+Tense=Pres	dema	0			rule
@@ -3388,7 +3384,7 @@ sprightful	0		Degree=Pos	dema	0	sprightful	a	moby_reverse
 sprightlier	0	oewn-sprightly-a	Degree=Cmp	dema	0			oewn_form
 sprightliest	0	oewn-sprightly-a	Degree=Sup	dema	0			oewn_form
 sprightliness	0	oewn-sprightliness-n	Number=Sing	dema	0			oewn_form
-sprightlinesses	0	oewn-sprightliness-n	Number=Plur	dema	0			rule
+sprightlinesses	0	oewn-sprightliness-n	Number=Plur	dema	0			llm
 sprightly	0	oewn-sprightly-a	Degree=Pos	dema	0			oewn_form
 sprightly	1		Degree=Pos	dema	0	sprightly	r	moby_reverse
 sprigs	0	oewn-sprig-n	Number=Plur	dema	0			rule
@@ -3451,9 +3447,9 @@ springald	0		Number=Sing	dema	0	springald	n	moby_reverse
 springalds	0		Number=Plur	dema	0	springald	n	rule
 springboard	0	oewn-springboard-n	Number=Sing	dema	0			oewn_form
 springboards	0	oewn-springboard-n	Number=Plur	dema	0			rule
-springbok	0	oewn-springbok-n	Number=Plur	dema	0			agid
+springbok	0	oewn-springbok-n	Number=Plur	dema	0			rule_variant
 springbok	1	oewn-springbok-n	Number=Sing	dema	0			oewn_form
-springboks	0	oewn-springbok-n	Number=Plur	dema	0			rule_variant
+springboks	0	oewn-springbok-n	Number=Plur	dema	0			llm
 springbuck	0	oewn-springbuck-n	Number=Sing	dema	0			oewn_form
 springbucks	0	oewn-springbuck-n	Number=Plur	dema	0			rule
 springe	0		Number=Sing	dema	0	springe	n	moby_reverse
@@ -3518,12 +3514,12 @@ sprinklingly	0		Degree=Pos	dema	0	sprinklingly	r	moby_reverse
 sprinklings	0	oewn-sprinkling-n	Number=Plur	dema	0			rule
 sprint	0	oewn-sprint-n	Number=Sing	dema	0			oewn_form
 sprint	1	oewn-sprint-v	VerbForm=Inf	dema	0			oewn_form
-sprinted	0	oewn-sprint-v	Tense=Past+VerbForm=Part	dema	0			rule
+sprinted	0	oewn-sprint-v	Tense=Past+VerbForm=Part	dema	0			llm
 sprinter	0	oewn-sprinter-n	Number=Sing	dema	0			oewn_form
 sprinters	0	oewn-sprinter-n	Number=Plur	dema	0			rule
-sprinting	0	oewn-sprint-v	VerbForm=Ger	dema	0			rule
+sprinting	0	oewn-sprint-v	VerbForm=Ger	dema	0			llm
 sprints	0	oewn-sprint-n	Number=Plur	dema	0			rule
-sprints	1	oewn-sprint-v	Person=3+Tense=Pres	dema	0			rule
+sprints	1	oewn-sprint-v	Person=3+Tense=Pres	dema	0			llm
 sprit	0	oewn-sprit-n	Number=Sing	dema	0			oewn_form
 sprite	0	oewn-sprite-n	Number=Sing	dema	0			oewn_form
 spritehood	0		Number=Sing	dema	0	spritehood	n	moby_reverse
@@ -3582,12 +3578,12 @@ spruced up	1	oewn-spruced_up-a	Degree=Pos	dema	0			oewn_form
 sprucely	0	oewn-sprucely-r	Degree=Pos	dema	0			oewn_form
 spruceness	0	oewn-spruceness-n	Number=Sing	dema	0			oewn_form
 sprucenesses	0	oewn-spruceness-n	Number=Plur	dema	0			rule
-sprucer	0	oewn-spruce-a	Degree=Cmp	dema	0			moby_reverse
+sprucer	0	oewn-spruce-a	Degree=Cmp	dema	0			llm
 spruces	0	oewn-spruce-n	Number=Plur	dema	0			rule
 spruces	1	oewn-spruce-v	Person=3+Tense=Pres	dema	0			rule
 spruces up	0	oewn-spruce_up-v	Person=3+Tense=Pres	dema	0			rule
 sprucest	0		VerbForm=Inf	dema	0	sprucest	v	moby_reverse
-sprucest	1	oewn-spruce-a	Degree=Sup	dema	0			moby_reverse
+sprucest	1	oewn-spruce-a	Degree=Sup	dema	0			llm
 sprucested	0		Tense=Past+VerbForm=Part	dema	0	sprucest	v	rule
 sprucesting	0		VerbForm=Ger	dema	0	sprucest	v	rule
 sprucests	0		Person=3+Tense=Pres	dema	0	sprucest	v	rule
@@ -3633,8 +3629,8 @@ spumed	0	oewn-spume-v	Tense=Past+VerbForm=Part	dema	0			rule
 spumes	0	oewn-spume-n	Number=Plur	dema	0			rule
 spumes	1	oewn-spume-v	Person=3+Tense=Pres	dema	0			rule
 spumescent	0		Degree=Pos	dema	0	spumescent	a	moby_reverse
-spumier	0	oewn-spumy-a	Degree=Cmp	dema	0			rule
-spumiest	0	oewn-spumy-a	Degree=Sup	dema	0			rule
+spumier	0	oewn-spumy-a	Degree=Cmp	dema	0			llm
+spumiest	0	oewn-spumy-a	Degree=Sup	dema	0			llm
 spuming	0	oewn-spume-v	VerbForm=Ger	dema	0			rule
 spumone	0		Number=Sing	dema	0	spumone	n	moby_reverse
 spumones	0		Number=Plur	dema	0	spumone	n	rule

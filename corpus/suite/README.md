@@ -12,8 +12,8 @@ instructions, then reviewed one by one by a separate reviewer agent (all 348 row
 braced word exactly the expected reading; no row needed a changed label). They are project-authored content dedicated
 to the public domain under CC0 1.0 by the project owner, like every project-written row of the corpus. No sentence is
 taken from a third-party text. The expected labels were written and reviewed before any model was run on the suite; the
-expectation file is, in contrast, a measurement of the models at the time it was written (the first measurement is
-recorded in `docs/build_notes/independent-evaluation.md`).
+expectation file is, in contrast, a measurement of the models at the time it was written (the first measurement had Basic,
+MiniLM and BertBaseCased at 42.24%, 91.67% and 94.25% on the "fine" measure).
 
 The suite is evaluation data: no training step reads it, and the leakage check (`WordSense.Builder check-leakage`)
 verifies that no sentence of it is in the anchors, the held-out sentences, the real-text rows, the open corpus (the
@@ -126,7 +126,8 @@ expectation, so a regression fails the build while the known misses stay visible
 ### Deliberate model change: the usage prior (retraining of both encoder models)
 
 Both encoder models were retrained with the usage prior (the scores are corrected from the proportions of the balanced
-training sentences to the usage of the senses; see `docs/build_notes/frequency-prior.md`), and the expectation file was
+training sentences to the usage of the senses; see the user guide chapter "Accuracy and Model Choice"), and the
+expectation file was
 rewritten with `evaluate-suite --write-expectations` under rule 3. The change is a deliberate trade measured on
 independent text, not a hidden regression: on SemCor (human-annotated running text) the fine top-1 of MiniLM rose from
 47.5% to 53.8% and that of BertBaseCased from 56.9% to 60.9%. The Basic model is unchanged. Seven cells changed
@@ -139,7 +140,7 @@ as before). Each row was checked against the ranked senses the model now gives:
 | --- | --- | --- | --- | --- |
 | `H-second-5` (`I second the motion`) | MiniLM | fine | miss | The encoder chooses the part of speech from the mass of the senses of each part of speech. The noun senses of `second` carry more usage than the verb sense `second#support`, so the noun reading now wins (0.59 against 0.31) although the context is a verb. |
 | `H-detail-4` (`Her letter details the problems`) | MiniLM | fine | miss | The noun sense `detail#fact` has the larger count and the noun mass rises from about 0.40 to 0.64 against the verb senses. |
-| `H-conflict-3` (`the dates and the exam conflict`) | MiniLM | fine | miss | `conflict#incompatibility` has one anchor, so dividing out its small training share lifts its score the most; the noun mass rises from about 0.19 to 0.54. This is the effect of senses that still lack anchors (see the quota deficits in `docs/build_notes/quota-fill.md`). |
+| `H-conflict-3` (`the dates and the exam conflict`) | MiniLM | fine | miss | `conflict#incompatibility` has one anchor, so dividing out its small training share lifts its score the most; the noun mass rises from about 0.19 to 0.54. This is the effect of senses that still lack anchors (see the quota deficits in `coverage/README.md`). |
 | `C-bass-1` (`hooked a huge bass near the dock`) | MiniLM | fine | answer | The part of speech and the fish reading as a group are still right, but the top-ranked sense is now `bass#pitch` (0.39) before `bass#percoid` (0.33): the three fish senses split their mass while the musical sense has the larger count. |
 | `C-bow-3` (`The students bow to their teacher`) | MiniLM | miss | fine | The verb reading is now chosen (0.81 against 0.19 for the noun). |
 | `H-present-2` (`The present owner`) | MiniLM | miss | fine | The adjective reading is now chosen (0.65 against 0.34 for the noun). |
@@ -157,6 +158,6 @@ improves them, the policy raises the expectation again.
 
 The rows that all three models miss (the capitalized `Polish` rows and `polish` the shoe polish, `august` the
 adjective, `live` and `close` as adverbs, `way` as an adverb, `show` as a noun) are the real failures of the
-part-of-speech and sense choice that the suite is there to show; the current figures are in
-`docs/build_notes/independent-evaluation.md`. A frequent cause is the lexicon folding the capitalized entry into the
+part-of-speech and sense choice that the suite is there to show (the current grades are in `expectations.tsv`). A
+frequent cause is the lexicon folding the capitalized entry into the
 lower-case spelling (`august` finds the month `August` and the adjective with the same prior).

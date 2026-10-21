@@ -6,7 +6,7 @@ SVRS	0	oewn-SVR-n	Capitalization=Upper+Number=Plur	dema	0			rule
 Svengali	0	oewn-Svengali-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Svengalis	0	oewn-Svengali-n	Capitalization=Title+Number=Plur	dema	0			rule
 svelte	0	oewn-svelte-a	Degree=Pos	dema	0			oewn_form
-svelter	0	oewn-svelte-a	Degree=Cmp	dema	0			moby_reverse
-sveltest	0	oewn-svelte-a	Degree=Sup	dema	0			moby_reverse
+svelter	0		Degree=Pos	dema	0	svelter	a	moby_reverse
+sveltest	0		Degree=Pos	dema	0	sveltest	a	moby_reverse
 svoboda	0	oewn-svoboda-n	Number=Sing	dema	0			oewn_form
 svobodas	0	oewn-svoboda-n	Number=Plur	dema	0			rule

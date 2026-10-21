@@ -1,5 +1,0 @@
-class	n	p10_s_same	median_s_same	median_s_other
-correct	12021	0.7613	0.8699	0.7577
-coverage-gap	224	0.5958	0.7139	0.6965
-overlap	942	0.7999	0.8581	0.8569
-ambiguous	291	0.7451	0.8226	0.7808

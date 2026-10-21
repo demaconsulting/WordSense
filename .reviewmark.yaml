@@ -14,7 +14,6 @@ needs-review:
   - "docs/verification/**/*.md"  # Verification documentation files
   - "docs/user_guide/**/*.md"    # User guide documentation
   - "docs/sysml2/**/*.sysml"     # SysML2 architecture model
-  - "tools/real-text/**"          # Real-text harvest tooling
   - "tools/open-corpus/**"        # Scripts that built the open part-of-speech corpus
   - "corpus/provenance/**"        # Provenance of the sentences of the fine-sense corpus
   - "corpus/open/**"              # Open English POS corpus (CC0 1.0 annotations) and the Basic tagger counts
@@ -23,7 +22,6 @@ needs-review:
   - "data/README.md"              # Word data guide
   - "data/PROVENANCE.md"          # Word data provenance (Open English WordNet, CC BY 4.0)
   - "data/MAPPING.md"             # Coarse class mapping notes
-  - "!tools/real-text/cache/**"   # Exclude raw downloaded texts
   - "!tools/open-corpus/cache/**"  # Exclude raw downloaded texts
   - "!tools/open-corpus/work/**"   # Exclude scratch work
   - "!**/obj/**"                  # Exclude build output
@@ -142,8 +140,6 @@ reviews:
       - "!test/WordSense.Builder.Tests/Data/**"
       - "!test/WordSense.Builder.Tests/**/obj/**"
       - "!test/WordSense.Builder.Tests/**/bin/**"
-      - "tools/real-text/**"
-      - "!tools/real-text/cache/**"
       - "tools/open-corpus/**"
       - "!tools/open-corpus/cache/**"
       - "!tools/open-corpus/work/**"
@@ -228,11 +224,17 @@ reviews:
       - "tools/WordSense.Builder/Data/FormGenerator.cs"
       - "tools/WordSense.Builder/Data/FactGenerator.cs"
       - "tools/WordSense.Builder/Data/InflectionRules.cs"
-      - "tools/WordSense.Builder/Data/AgidImporter.cs"
+      - "tools/WordSense.Builder/Data/AuthoredForms.cs"
+      - "tools/WordSense.Builder/Data/OpenCorpusAttestation.cs"
       - "tools/WordSense.Builder/Data/IrregularSources.cs"
+      - "test/WordSense.Builder.Tests/Data/AuthoredFormsTests.cs"
+      - "test/WordSense.Builder.Tests/Data/OpenCorpusAttestationTests.cs"
+      - "test/WordSense.Builder.Tests/Data/FormGeneratorAuthoredTests.cs"
       - "test/WordSense.Builder.Tests/Data/FormGeneratorDataTests.cs"
       - "test/WordSense.Builder.Tests/Data/FormReproducibilityTests.cs"
       - "corpus/lexicon/form-frozen.tsv"
+      - "corpus/lexicon/forms-authored.tsv"
+      - "corpus/lexicon/forms-authored-provenance.tsv"
       - "test/WordSense.Builder.Tests/Data/FactGeneratorTests.cs"
       - "test/WordSense.Builder.Tests/Data/InflectionRulesTests.cs"
       - "test/DemaConsulting.WordSense.Tests/LexiconFactTests.cs"

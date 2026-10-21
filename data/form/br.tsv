@@ -112,7 +112,7 @@ Bren guns	0	oewn-Bren_gun-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Brens	0	oewn-Bren-n	Capitalization=Title+Number=Plur	dema	0			rule
 Brethren	0	oewn-brethren-n	Number=Sing	dema	0			oewn_form
 Brethren	1	oewn-brother-n	Number=Plur	dema	0			oewn_form
-Brethren	2	oewn-Brother-n	Capitalization=Title+Number=Plur	dema	0			agid
+Brethren	2	oewn-Brother-n	Capitalization=Title+Number=Plur	dema	0			rule_variant
 Breton	0	oewn-Breton-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Breton language	0	oewn-Breton_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Breton languages	0	oewn-Breton_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
@@ -137,9 +137,10 @@ Brioschis	0	oewn-Brioschi-n	Capitalization=Title+Number=Plur	dema	0			rule
 Bris	0	oewn-Bris-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Brisbane quandong	0	oewn-Brisbane_quandong-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Brisbane quandongs	0	oewn-Brisbane_quandong-n	Capitalization=Exact+Number=Plur	dema	0			rule
-Brises	0	oewn-Bris-n	Capitalization=Title+Number=Plur	dema	0			rule
+Brises	0	oewn-Bris-n	Capitalization=Title+Number=Plur	dema	0			llm
 Briss	0	oewn-Briss-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-Brisses	0	oewn-Briss-n	Capitalization=Title+Number=Plur	dema	0			rule
+Brisses	0	oewn-Bris-n	Capitalization=Title+Number=Plur	dema	0			rule_variant
+Brisses	1	oewn-Briss-n	Capitalization=Title+Number=Plur	dema	0			rule
 Brit	0	oewn-brit-n	Number=Sing	dema	0			oewn_form
 Brit	1	oewn-Brit-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Britannia metal	0	oewn-Britannia_metal-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
@@ -253,7 +254,7 @@ Brother	0	oewn-brother-n	Number=Sing	dema	0			oewn_form
 Brother	1	dema-brother-i		dema	0			carried
 Brother	2	oewn-Brother-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Brothers	0	oewn-brother-n	Number=Plur	dema	0			rule_variant
-Brothers	1	oewn-Brother-n	Capitalization=Title+Number=Plur	dema	0			rule_variant
+Brothers	1	oewn-Brother-n	Capitalization=Title+Number=Plur	dema	0			llm
 Broussonetia papyrifera	0	oewn-Broussonetia_papyrifera-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Broussonetia papyriferas	0	oewn-Broussonetia_papyrifera-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Brown Swiss	0	oewn-Brown_Swiss-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
@@ -341,7 +342,7 @@ braccia	0		Number=Sing	dema	0	braccia	n	moby_reverse
 braccias	0		Number=Plur	dema	0	braccia	n	rule
 braccio	0		Number=Sing	dema	0	braccio	n	moby_reverse
 braccios	0		Number=Plur	dema	0	braccio	n	rule
-brace	0	oewn-brace-n	Number=Plur	dema	0			agid
+brace	0	oewn-brace-n	Number=Plur	dema	0			rule_variant
 brace	1	oewn-brace-n	Number=Sing	dema	0			oewn_form
 brace	2	oewn-brace-v	VerbForm=Inf	dema	0			oewn_form
 brace and bit	0	oewn-brace_and_bit-n	Number=Sing	dema	0			oewn_form
@@ -364,7 +365,7 @@ bracer	0	oewn-bracer-n	Number=Sing	dema	0			oewn_form
 bracero	0	oewn-bracero-n	Number=Sing	dema	0			oewn_form
 braceros	0	oewn-bracero-n	Number=Plur	dema	0			rule
 bracers	0	oewn-bracer-n	Number=Plur	dema	0			rule
-braces	0	oewn-brace-n	Number=Plur	dema	0			rule_variant
+braces	0	oewn-brace-n	Number=Plur	dema	0			llm
 braces	1	oewn-braces-n	Number=Sing	dema	0			oewn_form
 braces	2	oewn-brace-v	Person=3+Tense=Pres	dema	0			rule
 braces oneself for	0	oewn-brace_oneself_for-v	Person=3+Tense=Pres	dema	0			rule
@@ -522,11 +523,11 @@ braggartly	0		Degree=Pos	dema	0	braggartly	r	moby_reverse
 braggarts	0	oewn-braggart-n	Number=Plur	dema	0			rule
 bragged	0	oewn-brag-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 bragger	0	oewn-bragger-n	Number=Sing	dema	0			oewn_form
-bragger	1	oewn-brag-a	Degree=Cmp	dema	0			rule
+bragger	1	oewn-brag-a	Degree=Cmp	dema	0			llm
 braggers	0	oewn-bragger-n	Number=Plur	dema	0			rule
-braggest	0	oewn-brag-a	Degree=Sup	dema	0			rule
-braggier	0	oewn-braggy-a	Degree=Cmp	dema	0			rule
-braggiest	0	oewn-braggy-a	Degree=Sup	dema	0			rule
+braggest	0	oewn-brag-a	Degree=Sup	dema	0			llm
+braggier	0	oewn-braggy-a	Degree=Cmp	dema	0			llm
+braggiest	0	oewn-braggy-a	Degree=Sup	dema	0			llm
 bragging	0	oewn-brag-v	VerbForm=Ger	dema	0			oewn_form
 bragging	1	oewn-bragging-n	Number=Sing	dema	0			oewn_form
 bragging	2	oewn-bragging-a	Degree=Pos	dema	0			oewn_form
@@ -715,20 +716,19 @@ brakeages	0		Number=Plur	dema	0	brakeage	n	rule
 braked	0	oewn-brake-v	Tense=Past+VerbForm=Part	dema	0			rule
 brakeless	0		Degree=Pos	dema	0	brakeless	a	moby_reverse
 brakeman	0	oewn-brakeman-n	Number=Sing	dema	0			oewn_form
-brakemen	0	oewn-brakeman-n	Number=Plur	dema	0			agid
+brakemen	0	oewn-brakeman-n	Number=Plur	dema	0			llm
 braker	0		Number=Sing	dema	0	braker	n	moby_reverse
 brakers	0		Number=Plur	dema	0	braker	n	rule
 brakes	0	oewn-brake-n	Number=Plur	dema	0			rule
 brakes	1	oewn-brake-v	Person=3+Tense=Pres	dema	0			rule
 brakes	2	oewn-brakes-n	Number=Sing	dema	0			oewn_form
 brakesman	0		Number=Sing	dema	0	brakesman	n	moby_reverse
-brakesmans	0		Number=Plur	dema	0	brakesman	n	rule
-brakesmen	0		Number=Sing	dema	0	brakesmen	n	moby_reverse
-brakesmens	0		Number=Plur	dema	0	brakesmen	n	rule
+brakesmen	0		Number=Plur	dema	0	brakesman	n	rule
+brakesmen	1		Number=Sing	dema	0	brakesmen	n	moby_reverse
 brakewoman	0	oewn-brakewoman-n	Number=Sing	dema	0			oewn_form
-brakewomans	0	oewn-brakewoman-n	Number=Plur	dema	0			rule
-brakier	0	oewn-braky-a	Degree=Cmp	dema	0			rule
-brakiest	0	oewn-braky-a	Degree=Sup	dema	0			rule
+brakewomen	0	oewn-brakewoman-n	Number=Plur	dema	0			rule
+brakier	0	oewn-braky-a	Degree=Cmp	dema	0			llm
+brakiest	0	oewn-braky-a	Degree=Sup	dema	0			llm
 braking	0	oewn-brake-v	VerbForm=Ger	dema	0			rule
 braky	0	oewn-braky-a	Degree=Pos	dema	0			oewn_form
 braless	0	oewn-braless-a	Degree=Pos	dema	0			oewn_form
@@ -775,8 +775,8 @@ branchial arches	0	oewn-branchial_arch-n	Number=Plur	dema	0			rule
 branchial cleft	0	oewn-branchial_cleft-n	Number=Sing	dema	0			oewn_form
 branchial clefts	0	oewn-branchial_cleft-n	Number=Plur	dema	0			rule
 branchiate	0	oewn-branchiate-a	Degree=Pos	dema	0			oewn_form
-branchier	0	oewn-branchy-a	Degree=Cmp	dema	0			rule
-branchiest	0	oewn-branchy-a	Degree=Sup	dema	0			rule
+branchier	0	oewn-branchy-a	Degree=Cmp	dema	0			llm
+branchiest	0	oewn-branchy-a	Degree=Sup	dema	0			llm
 branchiform	0		Degree=Pos	dema	0	branchiform	a	moby_reverse
 branching	0	oewn-branching-n	Number=Sing	dema	0			oewn_form
 branching	1	oewn-branch-v	VerbForm=Ger	dema	0			rule
@@ -895,8 +895,8 @@ brash	0	oewn-brash-a	Degree=Pos	dema	0			oewn_form
 brash	1		Number=Sing	dema	0	brash	n	moby_reverse
 brash oak	0	oewn-brash_oak-n	Number=Sing	dema	0			oewn_form
 brash oaks	0	oewn-brash_oak-n	Number=Plur	dema	0			rule
-brasher	0	oewn-brash-a	Degree=Cmp	dema	0			rule
-brashest	0	oewn-brash-a	Degree=Sup	dema	0			rule
+brasher	0	oewn-brash-a	Degree=Cmp	dema	0			llm
+brashest	0	oewn-brash-a	Degree=Sup	dema	0			llm
 brashier	0		Degree=Cmp	dema	0	brashy	a	moby_reverse
 brashiest	0		Degree=Sup	dema	0	brashy	a	moby_reverse
 brashiness	0		Number=Sing	dema	0	brashiness	n	moby_reverse
@@ -1008,13 +1008,13 @@ braved out	0	oewn-brave_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 bravely	0	oewn-bravely-r	Degree=Pos	dema	0			oewn_form
 braveness	0	oewn-braveness-n	Number=Sing	dema	0			oewn_form
 bravenesses	0	oewn-braveness-n	Number=Plur	dema	0			rule
-braver	0	oewn-brave-a	Degree=Cmp	dema	0			moby_reverse
+braver	0	oewn-brave-a	Degree=Cmp	dema	0			llm
 braveries	0	oewn-bravery-n	Number=Plur	dema	0			rule
 bravery	0	oewn-bravery-n	Number=Sing	dema	0			oewn_form
 braves	0	oewn-brave-n	Number=Plur	dema	0			rule
 braves	1	oewn-brave-v	Person=3+Tense=Pres	dema	0			rule
 braves out	0	oewn-brave_out-v	Person=3+Tense=Pres	dema	0			rule
-bravest	0	oewn-brave-a	Degree=Sup	dema	0			moby_reverse
+bravest	0	oewn-brave-a	Degree=Sup	dema	0			llm
 bravest	1		Number=Sing	dema	0	bravest	n	moby_reverse
 bravest	2		VerbForm=Inf	dema	0	bravest	v	moby_reverse
 bravests	0		Number=Plur	dema	0	bravest	n	rule
@@ -1035,8 +1035,8 @@ bravuras	0	oewn-bravura-n	Number=Plur	dema	0			rule
 bravure	0		Number=Sing	dema	0	bravure	n	moby_reverse
 bravures	0		Number=Plur	dema	0	bravure	n	rule
 braw	0	oewn-braw-a	Degree=Pos	dema	0			oewn_form
-brawer	0	oewn-braw-a	Degree=Cmp	dema	0			rule
-brawest	0	oewn-braw-a	Degree=Sup	dema	0			rule
+brawer	0	oewn-braw-a	Degree=Cmp	dema	0			llm
+brawest	0	oewn-braw-a	Degree=Sup	dema	0			llm
 brawl	0	oewn-brawl-n	Number=Sing	dema	0			oewn_form
 brawl	1	oewn-brawl-v	VerbForm=Inf	dema	0			oewn_form
 brawled	0	oewn-brawl-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -1829,9 +1829,8 @@ bridgeheads	0	oewn-bridgehead-n	Number=Plur	dema	0			rule
 bridgeless	0		Degree=Pos	dema	0	bridgeless	a	moby_reverse
 bridgelike	0		Degree=Pos	dema	0	bridgelike	a	moby_reverse
 bridgeman	0		Number=Sing	dema	0	bridgeman	n	moby_reverse
-bridgemans	0		Number=Plur	dema	0	bridgeman	n	rule
-bridgemen	0		Number=Sing	dema	0	bridgemen	n	moby_reverse
-bridgemens	0		Number=Plur	dema	0	bridgemen	n	rule
+bridgemen	0		Number=Plur	dema	0	bridgeman	n	rule
+bridgemen	1		Number=Sing	dema	0	bridgemen	n	moby_reverse
 bridges	0	oewn-bridge-n	Number=Plur	dema	0			rule
 bridges	1	oewn-bridge-v	Person=3+Tense=Pres	dema	0			rule
 bridges over	0	oewn-bridge_over-v	Person=3+Tense=Pres	dema	0			rule
@@ -1882,8 +1881,8 @@ briefcase computer	0	oewn-briefcase_computer-n	Number=Sing	dema	0			oewn_form
 briefcase computers	0	oewn-briefcase_computer-n	Number=Plur	dema	0			rule
 briefcases	0	oewn-briefcase-n	Number=Plur	dema	0			rule
 briefed	0	oewn-brief-v	Tense=Past+VerbForm=Part	dema	0			rule
-briefer	0	oewn-brief-a	Degree=Cmp	dema	0			rule
-briefest	0	oewn-brief-a	Degree=Sup	dema	0			rule
+briefer	0	oewn-brief-a	Degree=Cmp	dema	0			llm
+briefest	0	oewn-brief-a	Degree=Sup	dema	0			llm
 briefing	0	oewn-briefing-n	Number=Sing	dema	0			oewn_form
 briefing	1	oewn-brief-v	VerbForm=Ger	dema	0			rule
 briefings	0	oewn-briefing-n	Number=Plur	dema	0			rule
@@ -1892,7 +1891,7 @@ brieflessly	0		Degree=Pos	dema	0	brieflessly	r	moby_reverse
 brieflessness	0		Number=Sing	dema	0	brieflessness	n	moby_reverse
 briefly	0	oewn-briefly-r	Degree=Pos	dema	0			oewn_form
 briefness	0	oewn-briefness-n	Number=Sing	dema	0			oewn_form
-briefnesses	0	oewn-briefness-n	Number=Plur	dema	0			rule
+briefnesses	0	oewn-briefness-n	Number=Plur	dema	0			llm
 briefs	0	oewn-briefs-n	Number=Sing	dema	0			oewn_form
 briefs	1	oewn-brief-n	Number=Plur	dema	0			rule
 briefs	2	oewn-brief-v	Person=3+Tense=Pres	dema	0			rule
@@ -2141,8 +2140,8 @@ brisken	0	oewn-brisken-v	VerbForm=Inf	dema	0			oewn_form
 briskened	0	oewn-brisken-v	Tense=Past+VerbForm=Part	dema	0			rule
 briskening	0	oewn-brisken-v	VerbForm=Ger	dema	0			rule
 briskens	0	oewn-brisken-v	Person=3+Tense=Pres	dema	0			rule
-brisker	0	oewn-brisk-a	Degree=Cmp	dema	0			rule
-briskest	0	oewn-brisk-a	Degree=Sup	dema	0			rule
+brisker	0	oewn-brisk-a	Degree=Cmp	dema	0			llm
+briskest	0	oewn-brisk-a	Degree=Sup	dema	0			llm
 brisket	0	oewn-brisket-n	Number=Sing	dema	0			oewn_form
 briskets	0	oewn-brisket-n	Number=Plur	dema	0			rule
 brisking	0	oewn-brisk-v	VerbForm=Ger	dema	0			rule
@@ -2185,8 +2184,8 @@ bristles at	0	oewn-bristle_at-v	Person=3+Tense=Pres	dema	0			rule
 bristles up	0	oewn-bristle_up-v	Person=3+Tense=Pres	dema	0			rule
 bristletail	0	oewn-bristletail-n	Number=Sing	dema	0			oewn_form
 bristletails	0	oewn-bristletail-n	Number=Plur	dema	0			rule
-bristlier	0	oewn-bristly-a	Degree=Cmp	dema	0			rule
-bristliest	0	oewn-bristly-a	Degree=Sup	dema	0			rule
+bristlier	0	oewn-bristly-a	Degree=Cmp	dema	0			llm
+bristliest	0	oewn-bristly-a	Degree=Sup	dema	0			llm
 bristliness	0	oewn-bristliness-n	Number=Sing	dema	0			oewn_form
 bristlinesses	0	oewn-bristliness-n	Number=Plur	dema	0			rule
 bristling	0	oewn-bristle-v	VerbForm=Ger	dema	0			rule
@@ -2233,9 +2232,9 @@ brittlebush	0	oewn-brittlebush-n	Number=Sing	dema	0			oewn_form
 brittlebushes	0	oewn-brittlebush-n	Number=Plur	dema	0			rule
 brittleness	0	oewn-brittleness-n	Number=Sing	dema	0			oewn_form
 brittlenesses	0	oewn-brittleness-n	Number=Plur	dema	0			rule
-brittler	0	oewn-brittle-a	Degree=Cmp	dema	0			rule
+brittler	0	oewn-brittle-a	Degree=Cmp	dema	0			llm
 brittles	0	oewn-brittle-n	Number=Plur	dema	0			rule
-brittlest	0	oewn-brittle-a	Degree=Sup	dema	0			rule
+brittlest	0	oewn-brittle-a	Degree=Sup	dema	0			llm
 britts	0	oewn-britt-n	Number=Plur	dema	0			rule
 britzka	0		Number=Sing	dema	0	britzka	n	moby_reverse
 britzkas	0		Number=Plur	dema	0	britzka	n	rule
@@ -2311,10 +2310,9 @@ broadbills	0	oewn-broadbill-n	Number=Plur	dema	0			rule
 broadbrim	0		Number=Sing	dema	0	broadbrim	n	moby_reverse
 broadbrims	0		Number=Plur	dema	0	broadbrim	n	rule
 broadcast	0	oewn-broadcast-v	VerbForm=Inf	dema	0			oewn_form
-broadcast	1	oewn-broadcast-v	Tense=Past+VerbForm=Part	dema	0			agid
-broadcast	2	oewn-broadcast-n	Number=Sing	dema	0			oewn_form
-broadcast	3		Degree=Pos	dema	0	broadcast	a	moby_reverse
-broadcast	4		Degree=Pos	dema	0	broadcast	r	moby_reverse
+broadcast	1	oewn-broadcast-n	Number=Sing	dema	0			oewn_form
+broadcast	2		Degree=Pos	dema	0	broadcast	a	moby_reverse
+broadcast	3		Degree=Pos	dema	0	broadcast	r	moby_reverse
 broadcast area	0	oewn-broadcast_area-n	Number=Sing	dema	0			oewn_form
 broadcast areas	0	oewn-broadcast_area-n	Number=Plur	dema	0			rule
 broadcast journalist	0	oewn-broadcast_journalist-n	Number=Sing	dema	0			oewn_form
@@ -2327,7 +2325,7 @@ broadcast scheduling	0	oewn-broadcast_scheduling-n	Number=Sing	dema	0			oewn_for
 broadcast schedulings	0	oewn-broadcast_scheduling-n	Number=Plur	dema	0			rule
 broadcast station	0	oewn-broadcast_station-n	Number=Sing	dema	0			oewn_form
 broadcast stations	0	oewn-broadcast_station-n	Number=Plur	dema	0			rule
-broadcasted	0	oewn-broadcast-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+broadcasted	0	oewn-broadcast-v	Tense=Past+VerbForm=Part	dema	0			rule
 broadcaster	0	oewn-broadcaster-n	Number=Sing	dema	0			oewn_form
 broadcasters	0	oewn-broadcaster-n	Number=Plur	dema	0			rule
 broadcasting	0	oewn-broadcast-v	VerbForm=Ger	dema	0			rule
@@ -2349,15 +2347,14 @@ broadening	0	oewn-broaden-v	VerbForm=Ger	dema	0			rule
 broadening	1	oewn-broadening-n	Number=Sing	dema	0			oewn_form
 broadenings	0	oewn-broadening-n	Number=Plur	dema	0			rule
 broadens	0	oewn-broaden-v	Person=3+Tense=Pres	dema	0			rule
-broader	0	oewn-broad-a	Degree=Cmp	dema	0			rule
-broadest	0	oewn-broad-a	Degree=Sup	dema	0			rule
+broader	0	oewn-broad-a	Degree=Cmp	dema	0			llm
+broadest	0	oewn-broad-a	Degree=Sup	dema	0			llm
 broadhead	0		Number=Sing	dema	0	broadhead	n	moby_reverse
 broadheads	0		Number=Plur	dema	0	broadhead	n	rule
 broadish	0		Degree=Pos	dema	0	broadish	a	moby_reverse
 broadleaf	0		Number=Sing	dema	0	broadleaf	n	moby_reverse
 broadleaf	1	oewn-broadleaf-a	Degree=Pos	dema	0			oewn_form
-broadleafs	0		Number=Plur	dema	0	broadleaf	n	rule
-broadleaves	0		Number=Plur	dema	0	broadleaf	n	moby_reverse
+broadleaves	0		Number=Plur	dema	0	broadleaf	n	rule
 broadloom	0	oewn-broadloom-n	Number=Sing	dema	0			oewn_form
 broadloom	1	oewn-broadloom-a	Degree=Pos	dema	0			oewn_form
 broadlooms	0	oewn-broadloom-n	Number=Plur	dema	0			rule
@@ -2383,9 +2380,8 @@ broadswords	0	oewn-broadsword-n	Number=Plur	dema	0			rule
 broadtail	0	oewn-broadtail-n	Number=Sing	dema	0			oewn_form
 broadtails	0	oewn-broadtail-n	Number=Plur	dema	0			rule
 broadwife	0		Number=Sing	dema	0	broadwife	n	moby_reverse
-broadwifes	0		Number=Plur	dema	0	broadwife	n	rule
 broadwise	0	oewn-broadwise-r	Degree=Pos	dema	0			oewn_form
-broadwives	0		Number=Sing	dema	0	broadwives	n	moby_reverse
+broadwives	0		Number=Plur	dema	0	broadwife	n	rule
 brob	0		Number=Sing	dema	0	brob	n	moby_reverse
 brobs	0		Number=Plur	dema	0	brob	n	rule
 brocade	0	oewn-brocade-n	Number=Sing	dema	0			oewn_form
@@ -2606,8 +2602,8 @@ bronchiole	0	oewn-bronchiole-n	Number=Sing	dema	0			oewn_form
 bronchioles	0	oewn-bronchiole-n	Number=Plur	dema	0			rule
 bronchiolitis	0	oewn-bronchiolitis-n	Number=Sing	dema	0			oewn_form
 bronchitic	0	oewn-bronchitic-a	Degree=Pos	dema	0			oewn_form
+bronchitides	0	oewn-bronchitis-n	Number=Plur	dema	0			llm
 bronchitis	0	oewn-bronchitis-n	Number=Sing	dema	0			oewn_form
-bronchitises	0	oewn-bronchitis-n	Number=Plur	dema	0			rule
 broncho	0	oewn-broncho-n	Number=Sing	dema	0			oewn_form
 bronchobuster	0		Number=Sing	dema	0	bronchobuster	n	moby_reverse
 bronchobusters	0		Number=Plur	dema	0	bronchobuster	n	rule
@@ -2650,7 +2646,7 @@ brontosaur	0	oewn-brontosaur-n	Number=Sing	dema	0			oewn_form
 brontosauri	0	oewn-brontosaurus-n	Number=Plur	dema	0			rule_variant
 brontosaurs	0	oewn-brontosaur-n	Number=Plur	dema	0			rule
 brontosaurus	0	oewn-brontosaurus-n	Number=Sing	dema	0			oewn_form
-brontosauruses	0	oewn-brontosaurus-n	Number=Plur	dema	0			rule_variant
+brontosauruses	0	oewn-brontosaurus-n	Number=Plur	dema	0			llm
 brony	0	oewn-brony-n	Number=Sing	dema	0			oewn_form
 bronze	0	oewn-bronze-n	Number=Sing	dema	0			oewn_form
 bronze	1	oewn-bronze-a	Degree=Pos	dema	0			oewn_form
@@ -2670,8 +2666,8 @@ bronzer	0	oewn-bronzer-n	Number=Sing	dema	0			oewn_form
 bronzers	0	oewn-bronzer-n	Number=Plur	dema	0			rule
 bronzes	0	oewn-bronze-n	Number=Plur	dema	0			rule
 bronzes	1	oewn-bronze-v	Person=3+Tense=Pres	dema	0			rule
-bronzier	0	oewn-bronzy-a	Degree=Cmp	dema	0			rule
-bronziest	0	oewn-bronzy-a	Degree=Sup	dema	0			rule
+bronzier	0	oewn-bronzy-a	Degree=Cmp	dema	0			llm
+bronziest	0	oewn-bronzy-a	Degree=Sup	dema	0			llm
 bronzing	0		Number=Sing	dema	0	bronzing	n	moby_reverse
 bronzing	1	oewn-bronze-v	VerbForm=Ger	dema	0			rule
 bronzing powder	0	oewn-bronzing_powder-n	Number=Sing	dema	0			oewn_form
@@ -2735,7 +2731,7 @@ brooklets	0	oewn-brooklet-n	Number=Plur	dema	0			rule
 brooklike	0		Degree=Pos	dema	0	brooklike	a	moby_reverse
 brooklime	0	oewn-brooklime-n	Number=Sing	dema	0			oewn_form
 brooklimes	0	oewn-brooklime-n	Number=Plur	dema	0			rule
-brooks	0	oewn-brook-n	Number=Plur	dema	0			rule
+brooks	0	oewn-brook-n	Number=Plur	dema	0			llm
 brooks	1	oewn-brook-v	Person=3+Tense=Pres	dema	0			rule
 brookweed	0	oewn-brookweed-n	Number=Sing	dema	0			oewn_form
 brookweeds	0	oewn-brookweed-n	Number=Plur	dema	0			rule
@@ -2780,6 +2776,7 @@ broomweeds	0	oewn-broomweed-n	Number=Plur	dema	0			rule
 broomy	0		Degree=Pos	dema	0	broomy	a	moby_reverse
 broos	0		Number=Plur	dema	0	broo	n	rule
 bros	0		Number=Plur	dema	0	bro	n	rule
+bros	1		Number=Sing	dema	0	bros	n	moby_reverse
 brose	0		Number=Sing	dema	0	brose	n	moby_reverse
 broses	0		Number=Plur	dema	0	brose	n	rule
 brosy	0		Degree=Pos	dema	0	brosy	a	moby_reverse
@@ -2828,12 +2825,12 @@ browallias	0	oewn-browallia-n	Number=Plur	dema	0			rule
 browband	0		Number=Sing	dema	0	browband	n	moby_reverse
 browbands	0		Number=Plur	dema	0	browband	n	rule
 browbeat	0	oewn-browbeat-v	VerbForm=Inf	dema	0			oewn_form
-browbeat	1	oewn-browbeat-v	Tense=Past	dema	0			agid
+browbeat	1	oewn-browbeat-v	Tense=Past	dema	0			llm
 browbeaten	0	oewn-browbeat-v	VerbForm=Part	dema	0			oewn_form
 browbeater	0		Number=Sing	dema	0	browbeater	n	moby_reverse
 browbeaters	0		Number=Plur	dema	0	browbeater	n	rule
-browbeating	0	oewn-browbeat-v	VerbForm=Ger	dema	0			rule
-browbeats	0	oewn-browbeat-v	Person=3+Tense=Pres	dema	0			rule
+browbeating	0	oewn-browbeat-v	VerbForm=Ger	dema	0			llm
+browbeats	0	oewn-browbeat-v	Person=3+Tense=Pres	dema	0			llm
 browless	0		Degree=Pos	dema	0	browless	a	moby_reverse
 brown	0	oewn-brown-n	Number=Sing	dema	0			oewn_form
 brown	1	oewn-brown-a	Degree=Pos	dema	0			oewn_form
@@ -2920,8 +2917,8 @@ brown-tail moths	0	oewn-brown-tail_moth-n	Number=Plur	dema	0			rule
 browned	0	oewn-brown-v	Tense=Past+VerbForm=Part	dema	0			rule
 browned	1	oewn-browned-a	Degree=Pos	dema	0			oewn_form
 browned off	0	oewn-browned_off-a	Degree=Pos	dema	0			oewn_form
-browner	0	oewn-brown-a	Degree=Cmp	dema	0			rule
-brownest	0	oewn-brown-a	Degree=Sup	dema	0			rule
+browner	0	oewn-brown-a	Degree=Cmp	dema	0			llm
+brownest	0	oewn-brown-a	Degree=Sup	dema	0			llm
 brownie	0	oewn-brownie-n	Number=Sing	dema	0			oewn_form
 brownie mix	0	oewn-brownie_mix-n	Number=Sing	dema	0			oewn_form
 brownie mixes	0	oewn-brownie_mix-n	Number=Plur	dema	0			rule
@@ -3077,8 +3074,8 @@ brushes down	0	oewn-brush_down-v	Person=3+Tense=Pres	dema	0			rule
 brushes off	0	oewn-brush_off-v	Person=3+Tense=Pres	dema	0			rule
 brushes on	0	oewn-brush_on-v	Person=3+Tense=Pres	dema	0			rule
 brushes up	0	oewn-brush_up-v	Person=3+Tense=Pres	dema	0			rule
-brushier	0	oewn-brushy-a	Degree=Cmp	dema	0			rule
-brushiest	0	oewn-brushy-a	Degree=Sup	dema	0			rule
+brushier	0	oewn-brushy-a	Degree=Cmp	dema	0			llm
+brushiest	0	oewn-brushy-a	Degree=Sup	dema	0			llm
 brushiness	0		Number=Sing	dema	0	brushiness	n	moby_reverse
 brushinesses	0		Number=Plur	dema	0	brushiness	n	rule
 brushing	0	oewn-brush-v	VerbForm=Ger	dema	1			carried
@@ -3105,14 +3102,16 @@ brushwork	0	oewn-brushwork-n	Number=Sing	dema	0			oewn_form
 brushworks	0	oewn-brushwork-n	Number=Plur	dema	0			rule
 brushy	0	oewn-brushy-a	Degree=Pos	dema	0			oewn_form
 brusk	0	oewn-brusk-a	Degree=Pos	dema	0			oewn_form
-brusker	0	oewn-brusk-a	Degree=Cmp	dema	0			rule
-bruskest	0	oewn-brusk-a	Degree=Sup	dema	0			rule
+brusker	0	oewn-brusk-a	Degree=Cmp	dema	0			llm
+bruskest	0	oewn-brusk-a	Degree=Sup	dema	0			llm
 brusque	0	oewn-brusque-a	Degree=Pos	dema	0			oewn_form
 brusquely	0	oewn-brusquely-r	Degree=Pos	dema	0			oewn_form
 brusqueness	0	oewn-brusqueness-n	Number=Sing	dema	0			oewn_form
 brusquenesses	0	oewn-brusqueness-n	Number=Plur	dema	0			rule
+brusquer	0	oewn-brusk-a	Degree=Cmp	dema	0			rule_variant
 brusquerie	0		Number=Sing	dema	0	brusquerie	n	moby_reverse
 brusqueries	0		Number=Plur	dema	0	brusquerie	n	rule
+brusquest	0	oewn-brusk-a	Degree=Sup	dema	0			rule_variant
 brussels sprout	0	oewn-brussels_sprout-n	Number=Sing	dema	0			oewn_form
 brussels sprouts	0	oewn-brussels_sprout-n	Number=Plur	dema	0			rule
 brussels sprouts	1	oewn-brussels_sprouts-n	Number=Sing	dema	0			oewn_form

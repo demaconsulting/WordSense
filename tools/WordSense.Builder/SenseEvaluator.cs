@@ -101,7 +101,8 @@ internal sealed record SenseEvalResult(SenseEvalFunnel Funnel, IReadOnlyList<Sen
         }
 
         text.Append("\nSemCor is human-annotated running text that no training or tuning step reads. The sense inventory order, and so the\n");
-        text.Append("most-frequent-sense baseline, comes from WordNet 3.0 tag counts, which include the counts of SemCor itself: the baseline\n");
+        text.Append("most-frequent-sense baseline, is the order of Open English WordNet, which comes from WordNet and its tag counts, which include\n");
+        text.Append("the counts of SemCor itself: the baseline\n");
         text.Append("is therefore optimistic (it has seen the answers), and so is the quota tier of every sense; no SemCor sentence is\n");
         text.Append("in any training corpus. The words are the single-word annotations of the lemmas the models are trained for, so the\n");
         text.Append("figures say nothing about the other words.\n");

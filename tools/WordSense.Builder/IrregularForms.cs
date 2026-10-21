@@ -11,7 +11,7 @@ namespace WordSense.Builder;
 /// <param name="Pos">The part of speech of the forms.</param>
 /// <param name="Rule">The rule: <c>Past</c>, <c>Participle</c>, <c>Plural</c>, <c>Comparative</c>, <c>Superlative</c>, <c>Variant</c>, <c>Auxiliary</c> or <c>Modal</c>.</param>
 /// <param name="Forms">The forms.</param>
-/// <param name="Evidence">The evidence tokens of the row (one variant level per form in an AGID row).</param>
+/// <param name="Evidence">The evidence tokens of the row (one variant level per form in an authored row).</param>
 internal sealed record IrregularEntry(string Lemma, PartOfSpeech Pos, string Rule, string[] Forms, string[] Evidence);
 
 /// <summary>
@@ -21,7 +21,7 @@ internal sealed record IrregularEntry(string Lemma, PartOfSpeech Pos, string Rul
 /// <remarks>
 ///     <para>
 ///     The files of this kind have the columns lemma, part-of-speech letter, rule, space-separated forms and evidence; the
-///     evidence of an AGID row holds one variant level per form.
+///     evidence of an authored row holds one variant level per form.
 ///     </para>
 /// </remarks>
 internal static class IrregularForms

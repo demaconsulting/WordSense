@@ -34,6 +34,7 @@ akeakes	0		Number=Plur	dema	0	akeake	n	rule
 akebi	0		Number=Sing	dema	0	akebi	n	moby_reverse
 akebis	0		Number=Plur	dema	0	akebi	n	rule
 aked	0		Tense=Past+VerbForm=Part	dema	0	ake	v	rule
+aked	1		VerbForm=Inf	dema	0	aked	v	moby_reverse
 akee	0	oewn-akee-n	Number=Sing	dema	0			oewn_form
 akee tree	0	oewn-akee_tree-n	Number=Sing	dema	0			oewn_form
 akee trees	0	oewn-akee_tree-n	Number=Plur	dema	0			rule
@@ -42,7 +43,6 @@ akela	0		Number=Sing	dema	0	akela	n	moby_reverse
 akelas	0		Number=Plur	dema	0	akela	n	rule
 akene	0		Number=Sing	dema	0	akene	n	moby_reverse
 akenes	0		Number=Plur	dema	0	akene	n	rule
-akes	0		Person=3+Tense=Pres	dema	0	ake	v	rule
 aketon	0		Number=Sing	dema	0	aketon	n	moby_reverse
 aketons	0		Number=Plur	dema	0	aketon	n	rule
 akhara	0		Number=Sing	dema	0	akhara	n	moby_reverse
@@ -59,6 +59,7 @@ akinetic	0		Degree=Pos	dema	0	akinetic	a	moby_reverse
 akinetic epilepsies	0	oewn-akinetic_epilepsy-n	Number=Plur	dema	0			rule
 akinetic epilepsy	0	oewn-akinetic_epilepsy-n	Number=Sing	dema	0			oewn_form
 aking	0		VerbForm=Ger	dema	0	ake	v	rule
+aking	1		VerbForm=Inf	dema	0	aking	v	moby_reverse
 akroter	0		Number=Sing	dema	0	akroter	n	moby_reverse
 akroterion	0		Number=Sing	dema	0	akroterion	n	moby_reverse
 akroterions	0		Number=Plur	dema	0	akroterion	n	rule

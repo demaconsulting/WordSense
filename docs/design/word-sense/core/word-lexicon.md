@@ -44,8 +44,9 @@ respelling. Every model starts from it, and a word with one sense never needs co
   of speech, and a sense is in at most one group. Its id is `lemma#group:label`, in a namespace of its own: the
   `#group:` marker is required by the builder and the image reader, so a group id can never equal a sense id
   (`lemma#label`). Sense ids are frozen; group ids are versioned per data release.
-- Inventory order: the senses of a lemma and part of speech are ordered by WordNet 3.0 tag count, highest first, with
-  project senses after the counted ones and then by the bytes of the sense id; the order is part of the image, so every
+- Inventory order: the senses of a lemma and part of speech are in the order of Open English WordNet: the position of the
+  sense in its entry, then the homograph number of the entry, with project senses after the dictionary senses and then
+  by the bytes of the sense id; the WordNet 3.0 tag counts do not order them. The order is part of the image, so every
   model sees the same candidates.
 - Lookup tries the exact spelling first, then the lower-cased spelling (U+2019 maps to `'`) through the fold index,
   so case-sensitive entries win over the folded form. A capitalized spelling that has no entry of its own behaves like
@@ -62,8 +63,9 @@ respelling. Every model starts from it, and a word with one sense never needs co
 - `WordLexicon.Lookup(string)` and `TryLookup(string, out ImmutableArray<WordDetails>)`: the analyses of a word. The
   array is immutable and shared, so no caller can change what another caller sees.
 - `WordLexicon.Contains(string)`, `FormsOf(string lemma)` and `Count`.
-- `WordLexicon.SensesOf(string lemma, PartOfSpeech pos)`: the senses of a lemma and part of speech in inventory order,
-  the most frequent first; empty for a lemma or part of speech without senses; null lemma throws
+- `WordLexicon.SensesOf(string lemma, PartOfSpeech pos)`: the senses of a lemma and part of speech in inventory order
+  (the order of Open English WordNet, project senses last); empty for a lemma or part of speech without senses; null
+  lemma throws
   `ArgumentNullException`.
 - `WordLexicon.TryGetSense(string senseId, out SenseInfo)`: binary search over the sorted sense ids.
 - `WordLexicon.TryGetSenseByKey(string senseKey, out SenseInfo)`: binary search over the key index; the key is the

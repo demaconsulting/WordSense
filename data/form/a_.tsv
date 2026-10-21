@@ -6,7 +6,7 @@ A battery	0	oewn-A_battery-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 A level	0	oewn-A_level-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 A levels	0	oewn-A_level-n	Capitalization=Exact+Number=Plur	dema	0			rule
 A'man	0	oewn-A-ap-man-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-A'mans	0	oewn-A-ap-man-n	Capitalization=Title+Number=Plur	dema	0			rule
+A'men	0	oewn-A-ap-man-n	Capitalization=Title+Number=Plur	dema	0			rule
 A-bomb	0	oewn-A-bomb-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 A-bombs	0	oewn-A-bomb-n	Capitalization=Title+Number=Plur	dema	0			rule
 A-line	0	oewn-A-line-n	Capitalization=Title+Number=Sing	dema	0			oewn_form

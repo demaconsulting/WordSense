@@ -28,8 +28,8 @@ awakening	2	oewn-awakening-n	Number=Sing	dema	0			oewn_form
 awakeningly	0		Degree=Pos	dema	0	awakeningly	r	moby_reverse
 awakenings	0	oewn-awakening-n	Number=Plur	dema	0			rule
 awakens	0	oewn-awaken-v	Person=3+Tense=Pres	dema	0			rule
-awakes	0	oewn-awake-v	Person=3+Tense=Pres	dema	0			rule
-awaking	0	oewn-awake-v	VerbForm=Ger	dema	0			rule
+awakes	0	oewn-awake-v	Person=3+Tense=Pres	dema	0			llm
+awaking	0	oewn-awake-v	VerbForm=Ger	dema	0			llm
 award	0	oewn-award-n	Number=Sing	dema	1			carried
 award	1	oewn-award-v	VerbForm=Inf	dema	1			carried
 award-winning	0	oewn-award-winning-a	Degree=Pos	dema	0			oewn_form
@@ -104,8 +104,8 @@ awned	0	oewn-awned-a	Degree=Pos	dema	0			oewn_form
 awned	1		VerbForm=Inf	dema	0	awned	v	moby_reverse
 awner	0		Number=Sing	dema	0	awner	n	moby_reverse
 awners	0		Number=Plur	dema	0	awner	n	rule
-awnier	0	oewn-awny-a	Degree=Cmp	dema	0			rule
-awniest	0	oewn-awny-a	Degree=Sup	dema	0			rule
+awnier	0	oewn-awny-a	Degree=Cmp	dema	0			llm
+awniest	0	oewn-awny-a	Degree=Sup	dema	0			llm
 awning	0	oewn-awning-n	Number=Sing	dema	0			oewn_form
 awning deck	0	oewn-awning_deck-n	Number=Sing	dema	0			oewn_form
 awning decks	0	oewn-awning_deck-n	Number=Plur	dema	0			rule
@@ -120,7 +120,5 @@ awny	0	oewn-awny-a	Degree=Pos	dema	0			oewn_form
 awoke	0	oewn-awake-v	Tense=Past	dema	0			hand
 awoken	0	oewn-awake-v	VerbForm=Part	dema	0			hand
 awol	0	oewn-awol-a	Degree=Pos	dema	0			oewn_form
-awrier	0	oewn-awry-a	Degree=Cmp	dema	0			rule
-awriest	0	oewn-awry-a	Degree=Sup	dema	0			rule
 awry	0	oewn-awry-r	Degree=Pos	dema	0			oewn_form
 awry	1	oewn-awry-a	Degree=Pos	dema	0			oewn_form

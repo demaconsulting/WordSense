@@ -2,10 +2,10 @@
 
 # Annotation Quality
 
-Measured on 2026-10-20. Numbers come from `tools/open-corpus/scripts/evaluate.py` (`eval/ud_dev_scores.json` for accuracy, `eval/corpus_scores.json` for agreement on the corpus) and, for the history, from the archived score files under `eval/v1/` and `eval/v2/`.
+Measured on 2026-10-20. Numbers come from `tools/open-corpus/scripts/evaluate.py` (`eval/ud_dev_scores.json` for accuracy, `eval/corpus_scores.json` for agreement on the corpus).
 
 **Headline.** Against UD English-EWT dev (300 sentences, 3,597 tokens), gpt-6.1-sol alone with guideline v4 scores **95.05% UPOS / 96.02% collapsed after mapping the reference to the WordSense lexicon conventions** (raw: 90.63% / 91.60%).
-The mapped number is the headline because UD's conventions differ from the lexicon's in four documented ways (section 3). **The second-annotator cross-check is pending for 36.25% of the corpus** (section 6); the sol-alone figures apply to every token, including `unchecked` ones.
+The mapped number is the headline because UD's conventions differ from the lexicon's in four documented ways (section 3). **The second-annotator cross-check covers 63.75% of the tokens** (section 6; 36.25% are `unchecked`); the sol-alone figures apply to every token, including `unchecked` ones.
 
 ## 0. Scope: which part these numbers describe
 
@@ -17,34 +17,13 @@ The **`targeted/` part** (deliberately chosen sentences; so far the 32 simplifie
 
 - **Primary annotator: gpt-6.1-sol** (UPOS, lemma, features), general-purpose sub-agents of the GitHub Copilot CLI, batches of 60 sentences in parallel. The final tag is always its tag.
 - **Second annotator: gemma4:26b** (Ollama, UPOS only, temperature 0, seed 42). It is used only as a **flag**: a token where it disagrees gets consensus status `disputed`, where it agrees `unanimous`. For sentences it has not annotated yet the status is **`unchecked`**. There is **no adjudicator**.
-- Guideline: `GUIDELINE.md` version 4 (hard cases rebuilt from our own pilot disagreements, `guideline-derivation.md`; conventions checked against the WordSense lexicon).
+- Guideline: `GUIDELINE.md` version 4 (hard cases built from our own pilot disagreements, `README.md` section 2; conventions checked against the WordSense lexicon).
 
 ### Why no adjudicator and why gpt-6.1-sol is the primary
 
-Measured earlier (outside this folder, `llmtag/results-sol.md`, an exploratory measurement with an earlier guideline on a different 500-sentence sample of UD English-EWT dev; shown here only as the reason for the decision):
+In an exploratory measurement with an earlier guideline on a different 500-sentence sample of UD English-EWT dev, gpt-6.1-sol scored best (96.41% UPOS / 97.25% collapsed; claude-sonnet-5.5 95.49% / 96.31%, gpt-5.6-luna 92.54% / 93.51%, gemma4:26b 90.30% / 92.12%), and no tie-break or majority policy beat it alone (best alternative 96.04% / 96.83%).
 
-| Annotator | UPOS | Collapsed |
-| --- | --- | --- |
-| gpt-6.1-sol | 96.41% | 97.25% |
-| claude-sonnet-5.5 | 95.49% | 96.31% |
-| gpt-5.6-luna | 92.54% | 93.51% |
-| gemma4:26b | 90.30% | 92.12% |
-
-No tie-break or majority policy beat gpt-6.1-sol alone on that sample (sol alone 96.41 / 97.25; sol/sonnet with a gemma tie-break 96.04 / 96.83; luna+sonnet agree else sol 95.78 / 96.54; majority of sol, sonnet, luna 95.78 / 96.54).
-
-Our own earlier measurements in this folder agree: **keep-primary beat every adjudication policy that was tested.** On the 300-sentence UD sample, with claude-sonnet-5.5 as primary and earlier guidelines (raw accuracy, no convention map):
-
-| Policy (UD sample, 3,597 tokens) | UPOS | Collapsed |
-| --- | --- | --- |
-| Guideline v1: keep primary (sonnet) | 95.47% | 96.36% |
-| Guideline v1: blind gpt-5.6-luna adjudication | 94.88% | 96.00% |
-| Guideline v2: keep primary (sonnet) | 93.02% | 94.25% |
-| Guideline v2: blind gpt-5.6-luna adjudication | 92.72% | 94.02% |
-| Guideline v2: blind qwen3.8:27b (Apache-2.0 per Ollama) adjudication | 92.72% | 93.94% |
-| Guideline v2: blind gemma4:26b adjudication (it picked its own tag 92 times of 214) | 92.13% | 93.41% |
-
-(The gemma and qwen judge runs were completed before the owner decided to skip that experiment; they are reported because they point the same way. Files: `eval/v1/`, `eval/v2/`.)
-The judges were right less often than the primary on the disputed tokens (v2: primary 71.0%, luna 65.9%, qwen 65.9%, gemma 56.1%). The `disputed` status therefore keeps the primary tag and marks the token instead of overruling it.
+Our own measurements on the 300-sentence UD sample, with claude-sonnet-5.5 as primary and earlier guidelines (raw accuracy, no convention map), agree: **keep-primary beat every adjudication policy that was tested** (blind gpt-5.6-luna, qwen3.8:27b and gemma4:26b judges: 0.3 to 0.9 points lower UPOS accuracy). The judges were right less often than the primary on the disputed tokens (guideline v2: primary 71.0%, luna 65.9%, qwen 65.9%, gemma 56.1%). The `disputed` status therefore keeps the primary tag and marks the token instead of overruling it.
 
 ## 2. Method of the measurement
 
@@ -94,16 +73,9 @@ There is no `unchecked` row: every token of the evaluation sample had a second a
 Raw confusions (reference tag -> our tag): AUX->VERB 101, PRON->DET 50, VERB->ADJ 20, PROPN->NOUN 15, PROPN->X 15 (URLs and e-mail addresses are X for us), SCONJ->ADP 14, ADP->ADV 13, DET->PRON 10, ADJ->PROPN 9, NOUN->PROPN 7, PUNCT->SYM 6, ADJ->NOUN 6.
 After the map: VERB->ADJ 20 (participles), PROPN->NOUN 15, PROPN->X 15, DET->PRON 10, ADJ->PROPN 9, AUX->VERB 8 (helper `be` that the reference treats as copula and vice versa), NOUN->PROPN 7, ADP->ADV 6, PUNCT->SYM 6, ADJ->NOUN 6. These are genuine judgment calls and genre differences (EWT is weblogs, e-mail, reviews, answers, newsgroups; the corpus is other genres), not convention differences.
 
-## 4. History: guideline versions on the same sample (raw accuracy, no map)
+## 4. Guideline versions on the same sample
 
-| Run | Primary | Guideline | Primary UPOS / collapsed | Agreement with gemma (UPOS) |
-| --- | --- | --- | --- | --- |
-| first draft | claude-sonnet-5.5 | v1 (partly UD-informed, superseded) | 95.47% / 96.36% | 92.97% |
-| intermediate | claude-sonnet-5.5 | v2 (round 1 of our own pilot data) | 93.02% / 94.25% | 94.05% |
-| pilot | gpt-6.1-sol | v3 (round 2, with sol) | 93.08% / 94.16% | 93.91% |
-| **final** | **gpt-6.1-sol** | **v4 (`be` flipped to the lexicon convention)** | **90.63% / 91.60% raw; 95.05% / 96.02% mapped** | **92.97%** |
-
-The drop from v1 to v2 is the intended loss of closeness to UD's conventions (independence was the goal). The drop from v3 to v4 raw is the `be` flip: 93 copula tokens that v3 tagged AUX (as UD does) are VERB in v4; the convention map removes that difference, which is why the mapped figure is the one to compare against earlier work.
+The raw figures of earlier guideline versions on the same 300-sentence sample (claude-sonnet-5.5 as primary for v1 and v2, gpt-6.1-sol for v3 and v4) are 95.47% UPOS for v1 (partly UD-informed, superseded), 93.02% for v2 (our own pilot data, round 1), 93.08% for v3 (round 2) and 90.63% for the final v4 (95.05% mapped). The drop from v1 to v2 is the intended loss of closeness to UD's conventions (independence was the goal). The drop from v3 to v4 raw is the `be` flip: 93 copula tokens that v3 tagged AUX (as UD does) are VERB in v4; the convention map removes that difference, which is why the mapped figure is the one to compare against earlier work.
 
 ## 5. Why not simply compare raw numbers across versions
 
@@ -111,7 +83,7 @@ Every convention difference counts as an error in the raw figure, so the raw num
 
 ## 6. Inter-annotator agreement on the corpus
 
-Only the 10,449 sentences with a second annotation can be compared (166,802 tokens: all Tatoeba, all VOA but one sentence, all NWS and NPS, 870 of 1,670 USGS sentences; no Gutenberg sentence yet).
+Only the 10,449 sentences with a second annotation can be compared (166,802 tokens: all Tatoeba, all VOA but one sentence, all NWS and NPS, 870 of 1,670 USGS sentences; no Gutenberg sentence).
 
 | Data | Tokens compared | UPOS agreement | UPOS kappa | Collapsed agreement | Collapsed kappa |
 | --- | --- | --- | --- | --- | --- |
@@ -129,10 +101,10 @@ This is an extrapolation from a different genre mix, not a measurement on the co
 
 ## 8. Caveats
 
-- **The second-annotator cross-check is pending** for 36.25% of tokens (all literary text and 800 USGS sentences); see `README.md` section 7 for how to complete it. The accuracy of sol alone on the UD sample is the best estimate for those tokens.
+- **The second-annotator cross-check is partial**: 36.25% of tokens (all literary text and 800 USGS sentences) are `unchecked` (`README.md` section 7 has the method). The accuracy of sol alone on the UD sample is the best estimate for those tokens.
 - Annotators are LLMs; errors correlate (all models may have seen public treebanks in pretraining), and agreement cannot detect an error all of them share.
 - The second annotator checks UPOS only. A lemma that depends on the tag (a noun/verb pair such as `saw`) is not recomputed.
-- The sub-agent stages cannot set a temperature or seed, so the primary stage is not bit-reproducible; raw outputs are kept in `annotations/` and the ingest scripts are deterministic.
+- The sub-agent stages cannot set a temperature or seed, so the primary stage is not bit-reproducible, and the raw annotator outputs are not kept (`README.md` section 7).
 - The measurement sample also informed the choice between policies (keep-primary vs judges), and the `be` flip was decided from the lexicon, not from this sample; the differences between policies are a few tokens and should not be over-read.
 
 ## Challenge set (targeted part, test split)
@@ -141,4 +113,4 @@ The 32 simplified-technical-English sentences (`targeted/data/test.tsv`, selecti
 
 ## Use as training data of the Basic tagger
 
-The tag counts of the representative training split (`counts/`) train the Basic tagger. Measured on the convention-mapped UD-EWT development and test files and on the open test split (evaluation only; the treebank is not an input): see `docs/build_notes/basic-evaluation.md`. On tokens that the Basic classifier answers, the table trained on `counts/` scores 93.85% (91.48% on the ambiguous tokens) on the open test split, 91.76% (88.82%) on UD-EWT dev and 91.63% (88.58%) on UD-EWT test; the UD-trained table it replaces scored 89.88% (84.84%), 89.99% (86.05%) and 90.31% (86.52%). The part of that gain on the treebank that comes from the convention difference (the treebank tags the copula `be` AUX; we tag it VERB) is large, and the open test split shares annotator, guideline and genres with the training split, so the absolute numbers are optimistic.
+The tag counts of the representative training split (`counts/`) train the Basic tagger. Measured on the convention-mapped UD-EWT development and test files and on the open test split (evaluation only; the treebank is not an input): see the user guide chapter "Accuracy and Model Choice". On tokens that the Basic classifier answers, the table trained on `counts/` scores 93.85% (91.48% on the ambiguous tokens) on the open test split, 91.76% (88.82%) on UD-EWT dev and 91.63% (88.58%) on UD-EWT test; the UD-trained table it replaces scored 89.88% (84.84%), 89.99% (86.05%) and 90.31% (86.52%). The part of that gain on the treebank that comes from the convention difference (the treebank tags the copula `be` AUX; we tag it VERB) is large, and the open test split shares annotator, guideline and genres with the training split, so the absolute numbers are optimistic.

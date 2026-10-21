@@ -11,7 +11,7 @@ and the internal serialization types with synthetic data in temporary directorie
 commands and their usage and data errors, `ImageTests.cs` covers the word image and `WeightsBlobWriterTests.cs` the
 weights writers against the readers of the shipped packages, `TaggerCountsTests.cs` and `OpenCorpusTests.cs` cover the
 tag counts of the Basic model and the reader of the open corpus, `TaggerEvaluatorTests.cs` its accuracy measurement,
-`CorpusLicenseTests.cs` the licenses recorded for the committed corpus, and `BasicTrainerTests.cs` covers its trainer,
+`CorpusLicenseTests.cs` the sources recorded for the committed corpus, and `BasicTrainerTests.cs` covers its trainer,
 table writer, model data summary and hyper-parameters; `EmbeddingCacheTests.cs`, `FitCacheTests.cs` and
 `ModelTrainerTests.cs` cover the embedding cache, the lemma fit cache, the frozen mean and the thresholds with a stub
 encoder; `WeightsTrainerTests.cs` and `ThresholdsTests.cs` cover the fit and the choice of the thresholds on small
@@ -54,6 +54,12 @@ All scenarios below pass on every platform and target framework of the CI matrix
   included (`ImageCompiler_Build_IsDeterministic`, `ImageCompiler_Build_CatalogIsDeterministic`), and the committed
   image
   equals a fresh compilation (`Words_Committed_MatchesData`).
+- **Sense order is the Open English WordNet order**
+  (`ImageCompiler_Build_CatalogIsDeterministic`, `ImageCompiler_Build_SenseOrder_IsOewnPositionThenHomographThenProjectSenses`):
+  on a fixture whose WordNet 3.0 counts rank the senses the other way round, the senses of a lemma and part of speech
+  are in the order of their position in the entry; the sense of the entry with the higher homograph number follows the
+  sense of the same position in the first entry; a project sense (no key) is last whatever its position; and an image
+  compiled from a data folder with an empty frequency table has the same order.
 - **Invalid inventory fails the build**: a sense without a label, a sense in two groups, a group of one sense (or a
   declared group without any member) or of all
   the senses of its lemma and part of speech, a group that mixes
@@ -119,7 +125,7 @@ All scenarios below pass on every platform and target framework of the CI matrix
 #### Model table
 
 - **Basic row matches the evaluation** (`WordSenseBuilder_ModelTable_BasicRow_MatchesEvaluation`): the sense and size
-  cells of the Basic row of `docs/build_notes/model-table.md` equal a fresh evaluation of the Basic model.
+  cells of the Basic row of `docs/user_guide/model-table.md` equal a fresh evaluation of the Basic model.
 - **A command changes only its cells** (`WordSenseBuilder_ModelTable_Update_ChangesOnlyTheCellsOfItsCommand`): the other
   cells of the row and the rows of the other models stay; a cell never measured reads `not measured`; the models are in
   the order of the table; an unknown column is rejected (`WordSenseBuilder_ModelTable_Update_UnknownColumn_IsRejected`).
@@ -143,7 +149,7 @@ All scenarios below pass on every platform and target framework of the CI matrix
   (`..._KernelSolver_IsDeterministic`, `LemmaFitter_Fit_IsIndependentOfTheThreadCount`) and is the primal solver when
   there are at least as many
   samples as features (`..._MoreSamplesThanDimensions_IsThePrimalSolver`). On the committed corpus the kernel fit
-  gives identical answers on the held-out sentences and a gate difference of 0.00 points (see the fit-speed note).
+  gives identical answers on the held-out sentences and a gate difference of 0.00 points (see the design of the builder).
 - **Form choosers** (`ChooserCorpusTests.cs`, `ChooserTrainingTests.cs`; real forms of the word image, hand-made
   features, no encoder): a chooser row is read with its form, label and braced target, a label may be a lemma or
   `lemma/features`, and a row that is not three columns, has an upper-case form, a target that is not the form, an
@@ -237,15 +243,16 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Fit cache** (`FitCache_KeyOf_DependsOnThePriorOffsets`): another offset gives another key.
 - **Options** (`Program_TrainSettingsOf_ParsesThePriorOptions`): `--prior-alpha` and `--prior-smoothing` are read and
   checked (a negative value is an error), `--no-prior` switches the correction off, and the defaults are 0.5 and 0.5.
-- **Real runs** (not automated): the measured effect of the correction is in `docs/build_notes/frequency-prior.md`.
+- **Real runs** (not automated): the measured effect of the correction is in the user guide chapter "Accuracy and Model
+  Choice".
 
 #### Real-text calibration
 
 - **Split by document** (`RealSplit_Classify_SplitsRealRowsByDocument`): with a provenance file, the rows of one
   document (the same source and the same key before `#`) are all calibration or all test, both sides get rows, and a
   Tatoeba sentence is its own document.
-- **Only real rows are split** (`RealSplit_Classify_WrittenAndUnknownRows_AreNeverRealRows`): a row whose origin is
-  written, and a row without provenance, is in neither split.
+- **Only real rows are split** (`RealSplit_Classify_WrittenAndUnknownRows_AreNeverRealRows`): a row whose source is
+  written for the project, and a row without provenance, is in neither split.
 - **Anchor documents** (`RealSplit_Classify_ReportsTestRowsInDocumentsWithoutAnchors`): the test rows whose document
   supplies no anchor are listed apart.
 - **Pooled shift** (`RealCalibrator_Apply_RaisesThresholdsUntilThePooledPrecisionReachesTheTarget`): on calibration rows
@@ -438,10 +445,12 @@ All scenarios below pass on every platform and target framework of the CI matrix
 
 #### corpus licenses
 
-- **Recorded licenses**
-  (`WordSenseBuilder_CorpusLicenses_Provenance_RecordsOnlyCc0PublicDomainAndProjectAuthoredSentences`): every
-  provenance row of the committed corpus records CC0 1.0, public domain in the United States or a project-authored
-  sentence (CC0 1.0), and none a Tatoeba CC BY, Wikipedia, Wiktionary or treebank source.
+- **Allowed sources** (`WordSenseBuilder_CorpusLicenses_Provenance_NamesOnlyAllowedSources`): every provenance file of
+  the committed corpus has the columns `id`, `split`, `source` and `source_key`, and the source of every row is one of
+  the allowed sources (so none is a Tatoeba CC BY, Wikipedia, Wiktionary, treebank or other unlisted source).
+- **The list of sources** (`WordSenseBuilder_CorpusLicenses_ProvenanceSources_AllowsOnlyTheListedSources`): the seven
+  real-text sources and the two written sources are allowed, and an excluded or unknown source is refused; only the
+  written sources are not real text.
 - **Every sentence has an origin** (`WordSenseBuilder_CorpusLicenses_EverySentenceRow_HasProvenance`): the lemma, form
   or label and sentence of every row of the sense, chooser and real-text files hash to a provenance id.
 - **No treebank and no legacy corpus** (`WordSenseBuilder_CorpusLicenses_Corpus_HasNoTreebankDataAndNoLegacyFolders`):

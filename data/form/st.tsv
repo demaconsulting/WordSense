@@ -113,7 +113,7 @@ Statistical Commissions	0	oewn-Statistical_Commission-n	Capitalization=Title+Num
 Stayman	0	oewn-Stayman-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Stayman Winesap	0	oewn-Stayman_Winesap-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Stayman Winesaps	0	oewn-Stayman_Winesap-n	Capitalization=Title+Number=Plur	dema	0			rule
-Staymans	0	oewn-Stayman-n	Capitalization=Title+Number=Plur	dema	0			rule
+Staymen	0	oewn-Stayman-n	Capitalization=Title+Number=Plur	dema	0			rule
 Steatornis caripensis	0	oewn-Steatornis_caripensis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Steganopus tricolor	0	oewn-Steganopus_tricolor-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Steganopus tricolors	0	oewn-Steganopus_tricolor-n	Capitalization=Exact+Number=Plur	dema	0			rule
@@ -342,15 +342,15 @@ stablegirls	0	oewn-stablegirl-n	Number=Plur	dema	0			rule
 stableman	0	oewn-stableman-n	Number=Sing	dema	0			oewn_form
 stablemate	0	oewn-stablemate-n	Number=Sing	dema	0			oewn_form
 stablemates	0	oewn-stablemate-n	Number=Plur	dema	0			rule
-stablemen	0	oewn-stableman-n	Number=Plur	dema	0			agid
+stablemen	0	oewn-stableman-n	Number=Plur	dema	0			llm
 stableness	0	oewn-stableness-n	Number=Sing	dema	0			oewn_form
 stablenesses	0	oewn-stableness-n	Number=Plur	dema	0			rule
-stabler	0	oewn-stable-a	Degree=Cmp	dema	0			rule
+stabler	0	oewn-stable-a	Degree=Cmp	dema	0			llm
 stables	0	oewn-stable-n	Number=Plur	dema	0			rule
 stables	1	oewn-stable-v	Person=3+Tense=Pres	dema	0			rule
-stablest	0	oewn-stable-a	Degree=Sup	dema	0			rule
+stablest	0	oewn-stable-a	Degree=Sup	dema	0			llm
 stablewoman	0	oewn-stablewoman-n	Number=Sing	dema	0			oewn_form
-stablewomans	0	oewn-stablewoman-n	Number=Plur	dema	0			rule
+stablewomen	0	oewn-stablewoman-n	Number=Plur	dema	0			rule
 stabling	0	oewn-stabling-n	Number=Sing	dema	0			oewn_form
 stabling	1	oewn-stable-v	VerbForm=Ger	dema	0			rule
 stablings	0	oewn-stabling-n	Number=Plur	dema	0			rule
@@ -453,16 +453,14 @@ staffer	0	oewn-staffer-n	Number=Sing	dema	0			oewn_form
 staffers	0	oewn-staffer-n	Number=Plur	dema	0			rule
 staffing	0	oewn-staff-v	VerbForm=Ger	dema	0			rule
 staffman	0		Number=Sing	dema	0	staffman	n	moby_reverse
-staffmans	0		Number=Plur	dema	0	staffman	n	rule
-staffmen	0		Number=Sing	dema	0	staffmen	n	moby_reverse
-staffmens	0		Number=Plur	dema	0	staffmen	n	rule
+staffmen	0		Number=Plur	dema	0	staffman	n	rule
+staffmen	1		Number=Sing	dema	0	staffmen	n	moby_reverse
 staffs	0	oewn-staff-n	Number=Plur	dema	0			irregular_list
 staffs	1	oewn-staff-v	Person=3+Tense=Pres	dema	0			rule
 staffs of life	0	oewn-staff_of_life-n	Number=Plur	dema	0			rule
-stag	0	oewn-stag-n	Number=Plur	dema	0			rule_variant
-stag	1	oewn-stag-n	Number=Sing	dema	0			oewn_form
-stag	2		Degree=Pos	dema	0	stag	r	moby_reverse
-stag	3	oewn-stag-v	VerbForm=Inf	dema	0			oewn_form
+stag	0	oewn-stag-n	Number=Sing	dema	0			oewn_form
+stag	1		Degree=Pos	dema	0	stag	r	moby_reverse
+stag	2	oewn-stag-v	VerbForm=Inf	dema	0			oewn_form
 stag beetle	0	oewn-stag_beetle-n	Number=Sing	dema	0			oewn_form
 stag beetles	0	oewn-stag_beetle-n	Number=Plur	dema	0			rule
 stag parties	0	oewn-stag_party-n	Number=Plur	dema	0			rule
@@ -597,12 +595,12 @@ stagnating	0	oewn-stagnate-v	VerbForm=Ger	dema	0			rule
 stagnation	0	oewn-stagnation-n	Number=Sing	dema	0			oewn_form
 stagnations	0	oewn-stagnation-n	Number=Plur	dema	0			rule
 stagnatory	0		Degree=Pos	dema	0	stagnatory	a	moby_reverse
-stags	0	oewn-stag-n	Number=Plur	dema	0			rule_variant
+stags	0	oewn-stag-n	Number=Plur	dema	0			llm
 stags	1	oewn-stag-v	Person=3+Tense=Pres	dema	0			rule
 stagy	0	oewn-stagy-a	Degree=Pos	dema	0			oewn_form
 staid	0	oewn-staid-a	Degree=Pos	dema	0			oewn_form
-staider	0	oewn-staid-a	Degree=Cmp	dema	0			rule
-staidest	0	oewn-staid-a	Degree=Sup	dema	0			rule
+staider	0	oewn-staid-a	Degree=Cmp	dema	0			llm
+staidest	0	oewn-staid-a	Degree=Sup	dema	0			llm
 staidly	0	oewn-staidly-r	Degree=Pos	dema	0			oewn_form
 staidness	0	oewn-staidness-n	Number=Sing	dema	0			oewn_form
 staidnesses	0	oewn-staidness-n	Number=Plur	dema	0			rule
@@ -695,10 +693,10 @@ stalemates	0	oewn-stalemate-n	Number=Plur	dema	0			rule
 stalemates	1	oewn-stalemate-v	Person=3+Tense=Pres	dema	0			rule
 stalemating	0	oewn-stalemate-v	VerbForm=Ger	dema	0			rule
 staleness	0	oewn-staleness-n	Number=Sing	dema	0			oewn_form
-stalenesses	0	oewn-staleness-n	Number=Plur	dema	0			rule
-staler	0	oewn-stale-a	Degree=Cmp	dema	0			rule
+stalenesses	0	oewn-staleness-n	Number=Plur	dema	0			llm
+staler	0	oewn-stale-a	Degree=Cmp	dema	0			llm
 stales	0	oewn-stale-v	Person=3+Tense=Pres	dema	0			rule
-stalest	0	oewn-stale-a	Degree=Sup	dema	0			rule
+stalest	0	oewn-stale-a	Degree=Sup	dema	0			llm
 staling	0	oewn-stale-v	VerbForm=Ger	dema	0			rule
 stalinise	0	oewn-stalinise-v	VerbForm=Inf	dema	0			oewn_form
 stalinised	0	oewn-stalinise-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -1077,7 +1075,6 @@ stapedial	0		Degree=Pos	dema	0	stapedial	a	moby_reverse
 stapelia	0	oewn-stapelia-n	Number=Sing	dema	0			oewn_form
 stapelias	0	oewn-stapelia-n	Number=Plur	dema	0			rule
 stapes	0	oewn-stapes-n	Number=Sing	dema	0			oewn_form
-stapeses	0	oewn-stapes-n	Number=Plur	dema	0			rule_variant
 staph	0	oewn-staph-n	Number=Sing	dema	0			oewn_form
 staphs	0	oewn-staph-n	Number=Plur	dema	0			rule
 staphylococcal	0	oewn-staphylococcal-a	Degree=Pos	dema	0			oewn_form
@@ -1224,7 +1221,6 @@ stares	0	oewn-stare-n	Number=Plur	dema	1			carried
 stares	1	oewn-stare-v	Person=3+Tense=Pres	dema	1			carried
 stares down	0	oewn-stare_down-v	Person=3+Tense=Pres	dema	0			rule
 starets	0	oewn-starets-n	Number=Sing	dema	0			oewn_form
-staretses	0	oewn-starets-n	Number=Plur	dema	0			rule_variant
 staretsy	0	oewn-starets-n	Number=Plur	dema	0			oewn_form
 starfighter	0	oewn-starfighter-n	Number=Sing	dema	0			oewn_form
 starfighters	0	oewn-starfighter-n	Number=Plur	dema	0			rule
@@ -1251,9 +1247,9 @@ staringly	0		Degree=Pos	dema	0	staringly	r	moby_reverse
 stark	0	oewn-stark-a	Degree=Pos	dema	0			oewn_form
 stark	1	oewn-stark-r	Degree=Pos	dema	0			oewn_form
 stark naked	0	oewn-stark_naked-a	Degree=Pos	dema	0			oewn_form
-starker	0	oewn-stark-a	Degree=Cmp	dema	0			rule
+starker	0	oewn-stark-a	Degree=Cmp	dema	0			llm
 starkers	0	oewn-starkers-a	Degree=Pos	dema	0			oewn_form
-starkest	0	oewn-stark-a	Degree=Sup	dema	0			rule
+starkest	0	oewn-stark-a	Degree=Sup	dema	0			llm
 starkly	0	oewn-starkly-r	Degree=Pos	dema	0			oewn_form
 starkness	0	oewn-starkness-n	Number=Sing	dema	0			oewn_form
 starknesses	0	oewn-starkness-n	Number=Plur	dema	0			rule
@@ -1508,9 +1504,9 @@ statesmanlike	0	oewn-statesmanlike-a	Degree=Pos	dema	0			oewn_form
 statesmanly	0	oewn-statesmanly-a	Degree=Pos	dema	0			oewn_form
 statesmanship	0	oewn-statesmanship-n	Number=Sing	dema	0			oewn_form
 statesmanships	0	oewn-statesmanship-n	Number=Plur	dema	0			rule
-statesmen	0	oewn-statesman-n	Number=Plur	dema	0			agid
+statesmen	0	oewn-statesman-n	Number=Plur	dema	0			llm
 stateswoman	0	oewn-stateswoman-n	Number=Sing	dema	0			oewn_form
-stateswomans	0	oewn-stateswoman-n	Number=Plur	dema	0			rule
+stateswomen	0	oewn-stateswoman-n	Number=Plur	dema	0			llm
 statewide	0	oewn-statewide-a	Degree=Pos	dema	0			oewn_form
 statewide	1		Degree=Pos	dema	0	statewide	r	moby_reverse
 statfarad	0		Number=Sing	dema	0	statfarad	n	moby_reverse
@@ -1639,7 +1635,7 @@ status quo	0	oewn-status_quo-n	Number=Sing	dema	0			oewn_form
 status quos	0	oewn-status_quo-n	Number=Plur	dema	0			rule
 status seeking	0	oewn-status_seeking-n	Number=Sing	dema	0			oewn_form
 status seekings	0	oewn-status_seeking-n	Number=Plur	dema	0			rule
-statuses	0	oewn-status-n	Number=Plur	dema	0			rule
+statuses	0	oewn-status-n	Number=Plur	dema	0			llm
 statutable	0		Degree=Pos	dema	0	statutable	a	moby_reverse
 statute	0	oewn-statute-n	Number=Sing	dema	0			oewn_form
 statute	1	oewn-statute-a	Degree=Pos	dema	0			oewn_form
@@ -1672,9 +1668,9 @@ staunch	0	oewn-staunch-a	Degree=Pos	dema	0			oewn_form
 staunch	1	oewn-staunch-v	VerbForm=Inf	dema	0			oewn_form
 staunch	2		Number=Sing	dema	0	staunch	n	moby_reverse
 staunched	0	oewn-staunch-v	Tense=Past+VerbForm=Part	dema	0			rule
-stauncher	0	oewn-staunch-a	Degree=Cmp	dema	0			rule
+stauncher	0	oewn-staunch-a	Degree=Cmp	dema	0			llm
 staunches	0	oewn-staunch-v	Person=3+Tense=Pres	dema	0			rule
-staunchest	0	oewn-staunch-a	Degree=Sup	dema	0			rule
+staunchest	0	oewn-staunch-a	Degree=Sup	dema	0			llm
 staunching	0	oewn-staunch-v	VerbForm=Ger	dema	0			rule
 staunchly	0	oewn-staunchly-r	Degree=Pos	dema	0			oewn_form
 staunchness	0	oewn-staunchness-n	Number=Sing	dema	0			oewn_form
@@ -1785,7 +1781,7 @@ stead	1		VerbForm=Inf	dema	0	stead	v	moby_reverse
 steadfast	0	oewn-steadfast-a	Degree=Pos	dema	0			oewn_form
 steadfastly	0	oewn-steadfastly-r	Degree=Pos	dema	0			oewn_form
 steadfastness	0	oewn-steadfastness-n	Number=Sing	dema	0			oewn_form
-steadfastnesses	0	oewn-steadfastness-n	Number=Plur	dema	0			rule
+steadfastnesses	0	oewn-steadfastness-n	Number=Plur	dema	0			llm
 steadied	0	oewn-steady-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 steadied	1	oewn-steadied-a	Degree=Pos	dema	0			oewn_form
 steadied down	0	oewn-steady_down-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -1840,10 +1836,10 @@ stealages	0		Number=Plur	dema	0	stealage	n	rule
 stealer	0	oewn-stealer-n	Number=Sing	dema	0			oewn_form
 stealers	0	oewn-stealer-n	Number=Plur	dema	0			rule
 stealing	0	oewn-stealing-n	Number=Sing	dema	0			oewn_form
-stealing	1	oewn-steal-v	VerbForm=Ger	dema	0			rule
+stealing	1	oewn-steal-v	VerbForm=Ger	dema	0			llm
 stealing away	0	oewn-steal_away-v	VerbForm=Ger	dema	0			rule
 stealings	0	oewn-stealing-n	Number=Plur	dema	0			rule
-steals	0	oewn-steal-v	Person=3+Tense=Pres	dema	0			rule
+steals	0	oewn-steal-v	Person=3+Tense=Pres	dema	0			llm
 steals	1	oewn-steal-n	Number=Plur	dema	0			rule
 steals away	0	oewn-steal_away-v	Person=3+Tense=Pres	dema	0			rule
 stealth	0	oewn-stealth-n	Number=Sing	dema	0			oewn_form
@@ -2054,8 +2050,8 @@ steeled oneself against	0	oewn-steel_oneself_against-v	Tense=Past+VerbForm=Part	
 steeled oneself for	0	oewn-steel_oneself_for-v	Tense=Past+VerbForm=Part	dema	0			rule
 steelhead	0		Number=Sing	dema	0	steelhead	n	moby_reverse
 steelheads	0		Number=Plur	dema	0	steelhead	n	rule
-steelier	0	oewn-steely-a	Degree=Cmp	dema	0			rule
-steeliest	0	oewn-steely-a	Degree=Sup	dema	0			rule
+steelier	0	oewn-steely-a	Degree=Cmp	dema	0			llm
+steeliest	0	oewn-steely-a	Degree=Sup	dema	0			llm
 steeliness	0		Number=Sing	dema	0	steeliness	n	moby_reverse
 steelinesses	0		Number=Plur	dema	0	steeliness	n	rule
 steeling	0	oewn-steel-v	VerbForm=Ger	dema	0			rule
@@ -2068,13 +2064,13 @@ steelmakers	0	oewn-steelmaker-n	Number=Plur	dema	0			rule
 steelmaking	0		Number=Sing	dema	0	steelmaking	n	moby_reverse
 steelmakings	0		Number=Plur	dema	0	steelmaking	n	rule
 steelman	0	oewn-steelman-n	Number=Sing	dema	0			oewn_form
-steelmen	0	oewn-steelman-n	Number=Plur	dema	0			agid
+steelmen	0	oewn-steelman-n	Number=Plur	dema	0			llm
 steels	0	oewn-steel-n	Number=Plur	dema	0			rule
 steels	1	oewn-steel-v	Person=3+Tense=Pres	dema	0			rule
 steels oneself against	0	oewn-steel_oneself_against-v	Person=3+Tense=Pres	dema	0			rule
 steels oneself for	0	oewn-steel_oneself_for-v	Person=3+Tense=Pres	dema	0			rule
 steelwoman	0	oewn-steelwoman-n	Number=Sing	dema	0			oewn_form
-steelwomans	0	oewn-steelwoman-n	Number=Plur	dema	0			rule
+steelwomen	0	oewn-steelwoman-n	Number=Plur	dema	0			rule
 steelwork	0		Number=Sing	dema	0	steelwork	n	moby_reverse
 steelworker	0	oewn-steelworker-n	Number=Sing	dema	0			oewn_form
 steelworkers	0	oewn-steelworker-n	Number=Plur	dema	0			rule
@@ -2097,9 +2093,9 @@ steepened	0	oewn-steepen-v	Tense=Past+VerbForm=Part	dema	0			rule
 steepening	0	oewn-steepen-v	VerbForm=Ger	dema	0			rule
 steepens	0	oewn-steepen-v	Person=3+Tense=Pres	dema	0			rule
 steeper	0	oewn-steeper-n	Number=Sing	dema	0			oewn_form
-steeper	1	oewn-steep-a	Degree=Cmp	dema	0			rule
+steeper	1	oewn-steep-a	Degree=Cmp	dema	0			llm
 steepers	0	oewn-steeper-n	Number=Plur	dema	0			rule
-steepest	0	oewn-steep-a	Degree=Sup	dema	0			rule
+steepest	0	oewn-steep-a	Degree=Sup	dema	0			llm
 steeping	0	oewn-steep-v	VerbForm=Ger	dema	0			rule
 steepish	0	oewn-steepish-a	Degree=Pos	dema	0			oewn_form
 steeple	0	oewn-steeple-n	Number=Sing	dema	0			oewn_form
@@ -2126,8 +2122,7 @@ steepnesses	0	oewn-steepness-n	Number=Plur	dema	0			rule
 steeps	0	oewn-steep-v	Person=3+Tense=Pres	dema	0			rule
 steeps	1	oewn-steep-n	Number=Plur	dema	0			rule
 steer	0	oewn-steer-v	VerbForm=Inf	dema	0			oewn_form
-steer	1	oewn-steer-n	Number=Plur	dema	0			agid
-steer	2	oewn-steer-n	Number=Sing	dema	0			oewn_form
+steer	1	oewn-steer-n	Number=Sing	dema	0			oewn_form
 steer roping	0	oewn-steer_roping-n	Number=Sing	dema	0			oewn_form
 steer ropings	0	oewn-steer_roping-n	Number=Plur	dema	0			rule
 steerable	0	oewn-steerable-a	Degree=Pos	dema	0			oewn_form
@@ -2154,11 +2149,11 @@ steering wheel	0	oewn-steering_wheel-n	Number=Sing	dema	0			oewn_form
 steering wheels	0	oewn-steering_wheel-n	Number=Plur	dema	0			rule
 steerings	0	oewn-steering-n	Number=Plur	dema	0			rule
 steers	0	oewn-steer-v	Person=3+Tense=Pres	dema	0			rule
-steers	1	oewn-steer-n	Number=Plur	dema	0			rule_variant
+steers	1	oewn-steer-n	Number=Plur	dema	0			llm
 steersman	0	oewn-steersman-n	Number=Sing	dema	0			oewn_form
-steersmen	0	oewn-steersman-n	Number=Plur	dema	0			agid
+steersmen	0	oewn-steersman-n	Number=Plur	dema	0			llm
 steerswoman	0	oewn-steerswoman-n	Number=Sing	dema	0			oewn_form
-steerswomans	0	oewn-steerswoman-n	Number=Plur	dema	0			rule
+steerswomen	0	oewn-steerswoman-n	Number=Plur	dema	0			rule
 steeve	0		Number=Sing	dema	0	steeve	n	moby_reverse
 steeve	1		VerbForm=Inf	dema	0	steeve	v	moby_reverse
 steeved	0		Tense=Past+VerbForm=Part	dema	0	steeve	v	moby_reverse
@@ -2173,9 +2168,10 @@ stegodons	0		Number=Plur	dema	0	stegodon	n	rule
 stegomyia	0		Number=Sing	dema	0	stegomyia	n	moby_reverse
 stegomyias	0		Number=Plur	dema	0	stegomyia	n	rule
 stegosaur	0	oewn-stegosaur-n	Number=Sing	dema	0			oewn_form
+stegosauri	0	oewn-stegosaurus-n	Number=Plur	dema	0			rule_variant
 stegosaurs	0	oewn-stegosaur-n	Number=Plur	dema	0			rule
 stegosaurus	0	oewn-stegosaurus-n	Number=Sing	dema	0			oewn_form
-stegosauruses	0	oewn-stegosaurus-n	Number=Plur	dema	0			rule
+stegosauruses	0	oewn-stegosaurus-n	Number=Plur	dema	0			llm
 stein	0	oewn-stein-n	Number=Sing	dema	0			oewn_form
 steinbok	0	oewn-steinbok-n	Number=Sing	dema	0			oewn_form
 steinboks	0	oewn-steinbok-n	Number=Plur	dema	0			rule
@@ -2376,8 +2372,9 @@ stephanion	0	oewn-stephanion-n	Number=Sing	dema	0			oewn_form
 stephanions	0	oewn-stephanion-n	Number=Plur	dema	0			rule
 stephanite	0		Number=Sing	dema	0	stephanite	n	moby_reverse
 stephanites	0		Number=Plur	dema	0	stephanite	n	rule
-stephanotis	0	oewn-stephanotis-n	Number=Sing	dema	0			oewn_form
-stephanotises	0	oewn-stephanotis-n	Number=Plur	dema	0			rule
+stephanotis	0	oewn-stephanotis-n	Number=Plur	dema	0			rule_variant
+stephanotis	1	oewn-stephanotis-n	Number=Sing	dema	0			oewn_form
+stephanotises	0	oewn-stephanotis-n	Number=Plur	dema	0			llm
 stephead	0	oewn-stephead-n	Number=Sing	dema	0			oewn_form
 stepheads	0	oewn-stephead-n	Number=Plur	dema	0			rule
 stepladder	0	oewn-stepladder-n	Number=Sing	dema	0			oewn_form
@@ -2574,7 +2571,7 @@ sterilants	0		Number=Plur	dema	0	sterilant	n	rule
 sterile	0	oewn-sterile-a	Degree=Pos	dema	0			oewn_form
 sterilely	0		Degree=Pos	dema	0	sterilely	r	moby_reverse
 sterileness	0	oewn-sterileness-n	Number=Sing	dema	0			oewn_form
-sterilenesses	0	oewn-sterileness-n	Number=Plur	dema	0			rule
+sterilenesses	0	oewn-sterileness-n	Number=Plur	dema	0			llm
 sterilisabilities	0		Number=Plur	dema	0	sterilisability	n	rule
 sterilisability	0		Number=Sing	dema	0	sterilisability	n	moby_reverse
 sterilisable	0		Degree=Pos	dema	0	sterilisable	a	moby_reverse
@@ -2623,8 +2620,8 @@ sterna	0	oewn-sternum-n	Number=Plur	dema	0			oewn_form
 sternal	0	oewn-sternal-a	Degree=Pos	dema	0			oewn_form
 sternbergia	0		Number=Sing	dema	0	sternbergia	n	moby_reverse
 sternbergias	0		Number=Plur	dema	0	sternbergia	n	rule
-sterner	0	oewn-stern-a	Degree=Cmp	dema	0			rule
-sternest	0	oewn-stern-a	Degree=Sup	dema	0			rule
+sterner	0	oewn-stern-a	Degree=Cmp	dema	0			llm
+sternest	0	oewn-stern-a	Degree=Sup	dema	0			llm
 sternforemost	0		Degree=Pos	dema	0	sternforemost	r	moby_reverse
 sternite	0		Number=Sing	dema	0	sternite	n	moby_reverse
 sternites	0		Number=Plur	dema	0	sternite	n	rule
@@ -2879,9 +2876,9 @@ stickum	0		Number=Sing	dema	0	stickum	n	moby_reverse
 stickums	0		Number=Plur	dema	0	stickum	n	rule
 stickup	0	oewn-stickup-n	Number=Sing	dema	0			oewn_form
 stickup man	0	oewn-stickup_man-n	Number=Sing	dema	0			oewn_form
-stickup mans	0	oewn-stickup_man-n	Number=Plur	dema	0			rule
+stickup men	0	oewn-stickup_man-n	Number=Plur	dema	0			rule
 stickup woman	0	oewn-stickup_woman-n	Number=Sing	dema	0			oewn_form
-stickup womans	0	oewn-stickup_woman-n	Number=Plur	dema	0			rule
+stickup women	0	oewn-stickup_woman-n	Number=Plur	dema	0			rule
 stickups	0	oewn-stickup-n	Number=Plur	dema	0			rule
 stickweed	0	oewn-stickweed-n	Number=Sing	dema	0			oewn_form
 stickweeds	0	oewn-stickweed-n	Number=Plur	dema	0			rule
@@ -2924,14 +2921,14 @@ stiffening	0	oewn-stiffen-v	VerbForm=Ger	dema	0			rule
 stiffening	1	oewn-stiffening-n	Number=Sing	dema	0			oewn_form
 stiffenings	0	oewn-stiffening-n	Number=Plur	dema	0			rule
 stiffens	0	oewn-stiffen-v	Person=3+Tense=Pres	dema	0			rule
-stiffer	0	oewn-stiff-a	Degree=Cmp	dema	0			rule
-stiffest	0	oewn-stiff-a	Degree=Sup	dema	0			rule
+stiffer	0	oewn-stiff-a	Degree=Cmp	dema	0			llm
+stiffest	0	oewn-stiff-a	Degree=Sup	dema	0			llm
 stiffish	0		Degree=Pos	dema	0	stiffish	a	moby_reverse
 stiffly	0	oewn-stiffly-r	Degree=Pos	dema	0			oewn_form
 stiffneckedly	0		Degree=Pos	dema	0	stiffneckedly	r	moby_reverse
 stiffneckedness	0		Number=Sing	dema	0	stiffneckedness	n	moby_reverse
 stiffness	0	oewn-stiffness-n	Number=Sing	dema	0			oewn_form
-stiffnesses	0	oewn-stiffness-n	Number=Plur	dema	0			rule
+stiffnesses	0	oewn-stiffness-n	Number=Plur	dema	0			llm
 stiffs	0	oewn-stiff-n	Number=Plur	dema	0			rule
 stifle	0	oewn-stifle-v	VerbForm=Inf	dema	0			oewn_form
 stifle	1	oewn-stifle-n	Number=Sing	dema	0			oewn_form
@@ -2991,6 +2988,7 @@ stilboestrols	0	oewn-stilboestrol-n	Number=Plur	dema	0			rule
 stilbs	0		Number=Plur	dema	0	stilb	n	rule
 stile	0	oewn-stile-n	Number=Sing	dema	0			oewn_form
 stiles	0	oewn-stile-n	Number=Plur	dema	0			rule
+stiletti	0	oewn-stiletto-n	Number=Plur	dema	0			rule_variant
 stiletto	0	oewn-stiletto-n	Number=Sing	dema	0			oewn_form
 stiletto	1		VerbForm=Inf	dema	0	stiletto	v	moby_reverse
 stiletto heel	0	oewn-stiletto_heel-n	Number=Sing	dema	0			oewn_form
@@ -3000,7 +2998,7 @@ stilettoes	0	oewn-stiletto-n	Number=Plur	dema	0			rule_variant
 stilettoing	0		Number=Sing	dema	0	stilettoing	n	moby_reverse
 stilettoing	1		VerbForm=Ger	dema	0	stiletto	v	moby_reverse
 stilettoings	0		Number=Plur	dema	0	stilettoing	n	rule
-stilettos	0	oewn-stiletto-n	Number=Plur	dema	0			rule_variant
+stilettos	0	oewn-stiletto-n	Number=Plur	dema	0			llm
 still	0	oewn-still-a	Degree=Pos	dema	0			oewn_form
 still	1	oewn-still-r	Degree=Pos	dema	0			oewn_form
 still	2	oewn-still-n	Number=Sing	dema	0			oewn_form
@@ -3028,14 +3026,14 @@ stillborn	1		Number=Sing	dema	0	stillborn	n	moby_reverse
 stillborn infant	0	oewn-stillborn_infant-n	Number=Sing	dema	0			oewn_form
 stillborn infants	0	oewn-stillborn_infant-n	Number=Plur	dema	0			rule
 stilled	0	oewn-still-v	Tense=Past+VerbForm=Part	dema	0			rule
-stiller	0	oewn-still-a	Degree=Cmp	dema	0			rule
+stiller	0	oewn-still-a	Degree=Cmp	dema	0			llm
 stiller	1		Number=Sing	dema	0	stiller	n	moby_reverse
 stillers	0		Number=Plur	dema	0	stiller	n	rule
-stillest	0	oewn-still-a	Degree=Sup	dema	0			rule
+stillest	0	oewn-still-a	Degree=Sup	dema	0			llm
 stillicide	0		Number=Sing	dema	0	stillicide	n	moby_reverse
 stillicides	0		Number=Plur	dema	0	stillicide	n	rule
-stillier	0	oewn-stilly-a	Degree=Cmp	dema	0			rule
-stilliest	0	oewn-stilly-a	Degree=Sup	dema	0			rule
+stillier	0	oewn-stilly-a	Degree=Cmp	dema	0			llm
+stilliest	0	oewn-stilly-a	Degree=Sup	dema	0			llm
 stilliform	0		Degree=Pos	dema	0	stilliform	a	moby_reverse
 stilling	0	oewn-still-v	VerbForm=Ger	dema	0			rule
 stillness	0	oewn-stillness-n	Number=Sing	dema	0			oewn_form
@@ -3151,11 +3149,11 @@ stinkeroos	0		Number=Plur	dema	0	stinkeroo	n	rule
 stinkers	0	oewn-stinker-n	Number=Plur	dema	0			rule
 stinkhorn	0	oewn-stinkhorn-n	Number=Sing	dema	0			oewn_form
 stinkhorns	0	oewn-stinkhorn-n	Number=Plur	dema	0			rule
-stinkier	0	oewn-stinky-a	Degree=Cmp	dema	0			rule
-stinkiest	0	oewn-stinky-a	Degree=Sup	dema	0			rule
+stinkier	0	oewn-stinky-a	Degree=Cmp	dema	0			llm
+stinkiest	0	oewn-stinky-a	Degree=Sup	dema	0			llm
 stinkiness	0	oewn-stinkiness-n	Number=Sing	dema	0			oewn_form
-stinkinesses	0	oewn-stinkiness-n	Number=Plur	dema	0			rule
-stinking	0	oewn-stink-v	VerbForm=Ger	dema	0			rule
+stinkinesses	0	oewn-stinkiness-n	Number=Plur	dema	0			llm
+stinking	0	oewn-stink-v	VerbForm=Ger	dema	0			llm
 stinking	1	oewn-stinking-a	Degree=Pos	dema	0			oewn_form
 stinking	2		Degree=Pos	dema	0	stinking	r	moby_reverse
 stinking	3		Number=Sing	dema	0	stinking	n	moby_reverse
@@ -3195,7 +3193,7 @@ stinking yews	0	oewn-stinking_yew-n	Number=Plur	dema	0			rule
 stinko	0		Degree=Pos	dema	0	stinko	a	moby_reverse
 stinkpot	0	oewn-stinkpot-n	Number=Sing	dema	0			oewn_form
 stinkpots	0	oewn-stinkpot-n	Number=Plur	dema	0			rule
-stinks	0	oewn-stink-v	Person=3+Tense=Pres	dema	0			rule
+stinks	0	oewn-stink-v	Person=3+Tense=Pres	dema	0			llm
 stinks	1	oewn-stink-n	Number=Plur	dema	0			rule
 stinks out	0	oewn-stink_out-v	Person=3+Tense=Pres	dema	0			rule
 stinks up	0	oewn-stink_up-v	Person=3+Tense=Pres	dema	0			rule
@@ -3502,7 +3500,7 @@ stockjobbers	0	oewn-stockjobber-n	Number=Plur	dema	0			rule
 stockless	0		Degree=Pos	dema	0	stockless	a	moby_reverse
 stocklike	0		Degree=Pos	dema	0	stocklike	a	moby_reverse
 stockman	0	oewn-stockman-n	Number=Sing	dema	0			oewn_form
-stockmen	0	oewn-stockman-n	Number=Plur	dema	0			agid
+stockmen	0	oewn-stockman-n	Number=Plur	dema	0			llm
 stockpile	0	oewn-stockpile-v	VerbForm=Inf	dema	0			oewn_form
 stockpile	1	oewn-stockpile-n	Number=Sing	dema	0			oewn_form
 stockpiled	0	oewn-stockpile-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -3530,7 +3528,7 @@ stocktakes	0	oewn-stocktake-n	Number=Plur	dema	0			rule
 stocktaking	0	oewn-stocktaking-n	Number=Sing	dema	0			oewn_form
 stocktakings	0	oewn-stocktaking-n	Number=Plur	dema	0			rule
 stockwoman	0	oewn-stockwoman-n	Number=Sing	dema	0			oewn_form
-stockwomans	0	oewn-stockwoman-n	Number=Plur	dema	0			rule
+stockwomen	0	oewn-stockwoman-n	Number=Plur	dema	0			llm
 stocky	0	oewn-stocky-a	Degree=Pos	dema	0			oewn_form
 stockyard	0	oewn-stockyard-n	Number=Sing	dema	0			oewn_form
 stockyards	0	oewn-stockyard-n	Number=Plur	dema	0			rule
@@ -3607,7 +3605,7 @@ stoloniferous	0	oewn-stoloniferous-a	Degree=Pos	dema	0			oewn_form
 stoloniferously	0		Degree=Pos	dema	0	stoloniferously	r	moby_reverse
 stolonization	0		Number=Sing	dema	0	stolonization	n	moby_reverse
 stolonizations	0		Number=Plur	dema	0	stolonization	n	rule
-stolons	0	oewn-stolon-n	Number=Plur	dema	0			rule
+stolons	0	oewn-stolon-n	Number=Plur	dema	0			llm
 stoma	0	oewn-stoma-n	Number=Sing	dema	0			oewn_form
 stomach	0	oewn-stomach-n	Number=Sing	dema	0			oewn_form
 stomach	1	oewn-stomach-v	VerbForm=Inf	dema	0			oewn_form
@@ -3626,14 +3624,15 @@ stomach upsets	0	oewn-stomach_upset-n	Number=Plur	dema	0			rule
 stomachache	0	oewn-stomachache-n	Number=Sing	dema	0			oewn_form
 stomachaches	0	oewn-stomachache-n	Number=Plur	dema	0			rule
 stomachal	0	oewn-stomachal-a	Degree=Pos	dema	0			oewn_form
-stomached	0	oewn-stomach-v	Tense=Past+VerbForm=Part	dema	0			rule
+stomached	0	oewn-stomach-v	Tense=Past+VerbForm=Part	dema	0			llm
 stomacher	0	oewn-stomacher-n	Number=Sing	dema	0			oewn_form
 stomachers	0	oewn-stomacher-n	Number=Plur	dema	0			rule
 stomachic	0	oewn-stomachic-a	Degree=Pos	dema	0			oewn_form
 stomachic	1		Number=Sing	dema	0	stomachic	n	moby_reverse
 stomachically	0		Degree=Pos	dema	0	stomachically	r	moby_reverse
-stomaching	0	oewn-stomach-v	VerbForm=Ger	dema	0			rule
-stomachs	0	oewn-stomach-n	Number=Plur	dema	0			agid
+stomaching	0	oewn-stomach-v	VerbForm=Ger	dema	0			llm
+stomachs	0	oewn-stomach-n	Number=Plur	dema	0			llm
+stomachs	1	oewn-stomach-v	Person=3+Tense=Pres	dema	0			llm
 stomachy	0		Degree=Pos	dema	0	stomachy	a	moby_reverse
 stomack	0		Number=Sing	dema	0	stomack	n	moby_reverse
 stomacks	0		Number=Plur	dema	0	stomack	n	rule
@@ -3645,7 +3644,6 @@ stomates	0	oewn-stomate-n	Number=Plur	dema	0			rule
 stomatic	0		Degree=Pos	dema	0	stomatic	a	moby_reverse
 stomatitic	0		Degree=Pos	dema	0	stomatitic	a	moby_reverse
 stomatitis	0	oewn-stomatitis-n	Number=Sing	dema	0			oewn_form
-stomatitises	0	oewn-stomatitis-n	Number=Plur	dema	0			rule
 stomatologic	0		Degree=Pos	dema	0	stomatologic	a	moby_reverse
 stomatological	0		Degree=Pos	dema	0	stomatological	a	moby_reverse
 stomatologies	0		Number=Plur	dema	0	stomatology	n	rule
@@ -3682,11 +3680,10 @@ stompingly	0		Degree=Pos	dema	0	stompingly	r	moby_reverse
 stomps	0	oewn-stomp-v	Person=3+Tense=Pres	dema	0			rule
 stomps	1	oewn-stomp-n	Number=Plur	dema	0			rule
 stonable	0		Degree=Pos	dema	0	stonable	a	moby_reverse
-stone	0	oewn-stone-n	Number=Plur	dema	0			agid
-stone	1	oewn-stone-n	Number=Sing	dema	0			oewn_form
-stone	2		Degree=Pos	dema	0	stone	r	moby_reverse
-stone	3	oewn-stone-v	VerbForm=Inf	dema	0			oewn_form
-stone	4	oewn-stone-a	Degree=Pos	dema	0			oewn_form
+stone	0	oewn-stone-n	Number=Sing	dema	0			oewn_form
+stone	1		Degree=Pos	dema	0	stone	r	moby_reverse
+stone	2	oewn-stone-v	VerbForm=Inf	dema	0			oewn_form
+stone	3	oewn-stone-a	Degree=Pos	dema	0			oewn_form
 stone bass	0	oewn-stone_bass-n	Number=Sing	dema	0			oewn_form
 stone basses	0	oewn-stone_bass-n	Number=Plur	dema	0			rule
 stone bramble	0	oewn-stone_bramble-n	Number=Sing	dema	0			oewn_form
@@ -3787,7 +3784,7 @@ stonerollers	0		Number=Plur	dema	0	stoneroller	n	rule
 stoneroot	0	oewn-stoneroot-n	Number=Sing	dema	0			oewn_form
 stoneroots	0	oewn-stoneroot-n	Number=Plur	dema	0			rule
 stoners	0	oewn-stoner-n	Number=Plur	dema	0			rule
-stones	0	oewn-stone-n	Number=Plur	dema	0			rule_variant
+stones	0	oewn-stone-n	Number=Plur	dema	0			rule
 stones	1	oewn-stone-v	Person=3+Tense=Pres	dema	0			rule
 stonewall	0	oewn-stonewall-v	VerbForm=Inf	dema	0			oewn_form
 stonewalled	0	oewn-stonewall-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -4155,12 +4152,12 @@ stout	0	oewn-stout-a	Degree=Pos	dema	0			oewn_form
 stout	1	oewn-stout-n	Number=Sing	dema	0			oewn_form
 stout-billed	0	oewn-stout-billed-a	Degree=Pos	dema	0			oewn_form
 stout-stemmed	0	oewn-stout-stemmed-a	Degree=Pos	dema	0			oewn_form
-stouter	0	oewn-stout-a	Degree=Cmp	dema	0			rule
-stoutest	0	oewn-stout-a	Degree=Sup	dema	0			rule
+stouter	0	oewn-stout-a	Degree=Cmp	dema	0			llm
+stoutest	0	oewn-stout-a	Degree=Sup	dema	0			llm
 stouthearted	0	oewn-stouthearted-a	Degree=Pos	dema	0			oewn_form
 stouthearted	1		VerbForm=Inf	dema	0	stouthearted	v	moby_reverse
 stoutheartedness	0	oewn-stoutheartedness-n	Number=Sing	dema	0			oewn_form
-stoutheartednesses	0	oewn-stoutheartedness-n	Number=Plur	dema	0			rule
+stoutheartednesses	0	oewn-stoutheartedness-n	Number=Plur	dema	0			llm
 stoutish	0		Degree=Pos	dema	0	stoutish	a	moby_reverse
 stoutly	0	oewn-stoutly-r	Degree=Pos	dema	0			oewn_form
 stoutness	0	oewn-stoutness-n	Number=Sing	dema	0			oewn_form
@@ -4203,8 +4200,9 @@ stowps	0		Number=Plur	dema	0	stowp	n	rule
 stows	0	oewn-stow-v	Person=3+Tense=Pres	dema	0			rule
 stows away	0	oewn-stow_away-v	Person=3+Tense=Pres	dema	0			rule
 str	0		Number=Sing	dema	0	str	n	moby_reverse
+strabismi	0	oewn-strabismus-n	Number=Plur	dema	0			rule_variant
 strabismus	0	oewn-strabismus-n	Number=Sing	dema	0			oewn_form
-strabismuses	0	oewn-strabismus-n	Number=Plur	dema	0			rule
+strabismuses	0	oewn-strabismus-n	Number=Plur	dema	0			llm
 strabotomies	0	oewn-strabotomy-n	Number=Plur	dema	0			rule
 strabotomy	0	oewn-strabotomy-n	Number=Sing	dema	0			oewn_form
 straddle	0	oewn-straddle-v	VerbForm=Inf	dema	0			oewn_form
@@ -4231,8 +4229,8 @@ straggler	0	oewn-straggler-n	Number=Sing	dema	0			oewn_form
 stragglers	0	oewn-straggler-n	Number=Plur	dema	0			rule
 straggles	0	oewn-straggle-v	Person=3+Tense=Pres	dema	0			rule
 straggles	1	oewn-straggle-n	Number=Plur	dema	0			rule
-stragglier	0	oewn-straggly-a	Degree=Cmp	dema	0			rule
-straggliest	0	oewn-straggly-a	Degree=Sup	dema	0			rule
+stragglier	0	oewn-straggly-a	Degree=Cmp	dema	0			llm
+straggliest	0	oewn-straggly-a	Degree=Sup	dema	0			llm
 straggling	0	oewn-straggle-v	VerbForm=Ger	dema	0			rule
 straggling	1	oewn-straggling-a	Degree=Pos	dema	0			oewn_form
 stragglingly	0	oewn-stragglingly-r	Degree=Pos	dema	0			oewn_form
@@ -4267,7 +4265,7 @@ straight life insurances	0	oewn-straight_life_insurance-n	Number=Plur	dema	0			r
 straight line	0	oewn-straight_line-n	Number=Sing	dema	0			oewn_form
 straight lines	0	oewn-straight_line-n	Number=Plur	dema	0			rule
 straight man	0	oewn-straight_man-n	Number=Sing	dema	0			oewn_form
-straight mans	0	oewn-straight_man-n	Number=Plur	dema	0			rule
+straight men	0	oewn-straight_man-n	Number=Plur	dema	0			rule
 straight off	0	oewn-straight_off-r	Degree=Pos	dema	0			oewn_form
 straight person	0	oewn-straight_person-n	Number=Sing	dema	0			oewn_form
 straight persons	0	oewn-straight_person-n	Number=Plur	dema	0			rule
@@ -4286,7 +4284,7 @@ straight ticket	0	oewn-straight_ticket-n	Number=Sing	dema	0			oewn_form
 straight tickets	0	oewn-straight_ticket-n	Number=Plur	dema	0			rule
 straight up	0	oewn-straight_up-a	Degree=Pos	dema	0			oewn_form
 straight woman	0	oewn-straight_woman-n	Number=Sing	dema	0			oewn_form
-straight womans	0	oewn-straight_woman-n	Number=Plur	dema	0			rule
+straight women	0	oewn-straight_woman-n	Number=Plur	dema	0			rule
 straight-arm	0	oewn-straight-arm-n	Number=Sing	dema	0			oewn_form
 straight-arms	0	oewn-straight-arm-n	Number=Plur	dema	0			rule
 straight-arrow	0	oewn-straight-arrow-s	Degree=Pos	dema	0			oewn_form
@@ -4325,8 +4323,8 @@ straightening up	0	oewn-straighten_up-v	VerbForm=Ger	dema	0			rule
 straightens	0	oewn-straighten-v	Person=3+Tense=Pres	dema	0			rule
 straightens out	0	oewn-straighten_out-v	Person=3+Tense=Pres	dema	0			rule
 straightens up	0	oewn-straighten_up-v	Person=3+Tense=Pres	dema	0			rule
-straighter	0	oewn-straight-a	Degree=Cmp	dema	0			rule
-straightest	0	oewn-straight-a	Degree=Sup	dema	0			rule
+straighter	0	oewn-straight-a	Degree=Cmp	dema	0			llm
+straightest	0	oewn-straight-a	Degree=Sup	dema	0			llm
 straightforward	0	oewn-straightforward-a	Degree=Pos	dema	0			oewn_form
 straightforward	1		Degree=Pos	dema	0	straightforward	r	moby_reverse
 straightforwardly	0	oewn-straightforwardly-r	Degree=Pos	dema	0			oewn_form
@@ -4372,8 +4370,8 @@ straiten	0	oewn-straiten-v	VerbForm=Inf	dema	0			oewn_form
 straitened	0	oewn-straiten-v	Tense=Past+VerbForm=Part	dema	0			rule
 straitening	0	oewn-straiten-v	VerbForm=Ger	dema	0			rule
 straitens	0	oewn-straiten-v	Person=3+Tense=Pres	dema	0			rule
-straiter	0	oewn-strait-a	Degree=Cmp	dema	0			rule
-straitest	0	oewn-strait-a	Degree=Sup	dema	0			rule
+straiter	0	oewn-strait-a	Degree=Cmp	dema	0			llm
+straitest	0	oewn-strait-a	Degree=Sup	dema	0			llm
 straitjacket	0	oewn-straitjacket-n	Number=Sing	dema	0			oewn_form
 straitjackets	0	oewn-straitjacket-n	Number=Plur	dema	0			rule
 straitlaced	0	oewn-straitlaced-a	Degree=Pos	dema	0			oewn_form
@@ -4410,9 +4408,10 @@ strangely	0	oewn-strangely-r	Degree=Pos	dema	0			oewn_form
 strangeness	0	oewn-strangeness-n	Number=Sing	dema	0			oewn_form
 strangenesses	0	oewn-strangeness-n	Number=Plur	dema	0			rule
 stranger	0	oewn-stranger-n	Number=Sing	dema	0			oewn_form
+stranger	1	oewn-strange-a	Degree=Cmp	dema	0			llm
 strangerlike	0		Degree=Pos	dema	0	strangerlike	a	moby_reverse
 strangers	0	oewn-stranger-n	Number=Plur	dema	0			rule
-strangest	0	oewn-strange-a	Degree=Sup	dema	0			moby_reverse
+strangest	0	oewn-strange-a	Degree=Sup	dema	0			llm
 strangle	0	oewn-strangle-v	VerbForm=Inf	dema	0			oewn_form
 strangled	0	oewn-strangle-v	Tense=Past+VerbForm=Part	dema	0			rule
 strangled	1	oewn-strangled-a	Degree=Pos	dema	0			oewn_form
@@ -4574,7 +4573,7 @@ straw foxgloves	0	oewn-straw_foxglove-n	Number=Plur	dema	0			rule
 straw hat	0	oewn-straw_hat-n	Number=Sing	dema	0			oewn_form
 straw hats	0	oewn-straw_hat-n	Number=Plur	dema	0			rule
 straw man	0	oewn-straw_man-n	Number=Sing	dema	0			oewn_form
-straw mans	0	oewn-straw_man-n	Number=Plur	dema	0			rule
+straw men	0	oewn-straw_man-n	Number=Plur	dema	0			rule
 straw mushroom	0	oewn-straw_mushroom-n	Number=Sing	dema	0			oewn_form
 straw mushrooms	0	oewn-straw_mushroom-n	Number=Plur	dema	0			rule
 straw poll	0	oewn-straw_poll-n	Number=Sing	dema	0			oewn_form
@@ -4584,7 +4583,7 @@ straw votes	0	oewn-straw_vote-n	Number=Plur	dema	0			rule
 straw wine	0	oewn-straw_wine-n	Number=Sing	dema	0			oewn_form
 straw wines	0	oewn-straw_wine-n	Number=Plur	dema	0			rule
 straw woman	0	oewn-straw_woman-n	Number=Sing	dema	0			oewn_form
-straw womans	0	oewn-straw_woman-n	Number=Plur	dema	0			rule
+straw women	0	oewn-straw_woman-n	Number=Plur	dema	0			rule
 straw-colored	0	oewn-straw-colored-a	Degree=Pos	dema	0			oewn_form
 straw-coloured	0	oewn-straw-coloured-a	Degree=Pos	dema	0			oewn_form
 strawberries	0	oewn-strawberry-n	Number=Plur	dema	0			rule
@@ -4631,11 +4630,11 @@ strawing	0	oewn-straw-v	VerbForm=Ger	dema	0			rule
 strawless	0		Degree=Pos	dema	0	strawless	a	moby_reverse
 strawlike	0		Degree=Pos	dema	0	strawlike	a	moby_reverse
 strawman	0	oewn-strawman-n	Number=Sing	dema	0			oewn_form
-strawmans	0	oewn-strawman-n	Number=Plur	dema	0			rule
+strawmen	0	oewn-strawman-n	Number=Plur	dema	0			rule
 straws	0	oewn-straw-n	Number=Plur	dema	0			rule
 straws	1	oewn-straw-v	Person=3+Tense=Pres	dema	0			rule
 strawwoman	0	oewn-strawwoman-n	Number=Sing	dema	0			oewn_form
-strawwomans	0	oewn-strawwoman-n	Number=Plur	dema	0			rule
+strawwomen	0	oewn-strawwoman-n	Number=Plur	dema	0			rule
 strawworm	0	oewn-strawworm-n	Number=Sing	dema	0			oewn_form
 strawworms	0	oewn-strawworm-n	Number=Plur	dema	0			rule
 strawy	0		Number=Sing	dema	0	strawy	n	moby_reverse
@@ -4797,7 +4796,7 @@ strenuosity	0	oewn-strenuosity-n	Number=Sing	dema	0			oewn_form
 strenuous	0	oewn-strenuous-a	Degree=Pos	dema	0			oewn_form
 strenuously	0	oewn-strenuously-r	Degree=Pos	dema	0			oewn_form
 strenuousness	0	oewn-strenuousness-n	Number=Sing	dema	0			oewn_form
-strenuousnesses	0	oewn-strenuousness-n	Number=Plur	dema	0			rule
+strenuousnesses	0	oewn-strenuousness-n	Number=Plur	dema	0			llm
 strep	0	oewn-strep-n	Number=Sing	dema	0			oewn_form
 strep	1	oewn-strep-a	Degree=Pos	dema	0			oewn_form
 strep throat	0	oewn-strep_throat-n	Number=Sing	dema	0			oewn_form
@@ -4805,8 +4804,9 @@ strep throats	0	oewn-strep_throat-n	Number=Plur	dema	0			rule
 strepitous	0		Degree=Pos	dema	0	strepitous	a	moby_reverse
 streps	0	oewn-strep-n	Number=Plur	dema	0			rule
 streptobacillus	0	oewn-streptobacillus-n	Number=Sing	dema	0			oewn_form
+streptocarpi	0	oewn-streptocarpus-n	Number=Plur	dema	0			rule_variant
 streptocarpus	0	oewn-streptocarpus-n	Number=Sing	dema	0			oewn_form
-streptocarpuses	0	oewn-streptocarpus-n	Number=Plur	dema	0			rule
+streptocarpuses	0	oewn-streptocarpus-n	Number=Plur	dema	0			llm
 streptococcal	0	oewn-streptococcal-a	Degree=Pos	dema	0			oewn_form
 streptococcal sore throat	0	oewn-streptococcal_sore_throat-n	Number=Sing	dema	0			oewn_form
 streptococcal sore throats	0	oewn-streptococcal_sore_throat-n	Number=Plur	dema	0			rule
@@ -4903,12 +4903,12 @@ streuselkuchen	0		Number=Sing	dema	0	streuselkuchen	n	moby_reverse
 streuselkuchens	0		Number=Plur	dema	0	streuselkuchen	n	rule
 streusels	0	oewn-streusel-n	Number=Plur	dema	0			rule
 strew	0	oewn-strew-v	VerbForm=Inf	dema	0			oewn_form
-strewed	0	oewn-strew-v	Tense=Past+VerbForm=Part	dema	0			rule
-strewing	0	oewn-strew-v	VerbForm=Ger	dema	0			rule
+strewed	0	oewn-strew-v	Tense=Past+VerbForm=Part	dema	0			llm
+strewing	0	oewn-strew-v	VerbForm=Ger	dema	0			llm
 strewing	1	oewn-strewing-n	Number=Sing	dema	0			oewn_form
 strewings	0	oewn-strewing-n	Number=Plur	dema	0			rule
 strewn	0	oewn-strew-v	VerbForm=Part	dema	0			oewn_form
-strews	0	oewn-strew-v	Person=3+Tense=Pres	dema	0			rule
+strews	0	oewn-strew-v	Person=3+Tense=Pres	dema	0			llm
 strewth	0	dema-strewth-i		dema	0			carried
 stria	0	oewn-stria-n	Number=Sing	dema	0			oewn_form
 striae	0	oewn-stria-n	Number=Plur	dema	0			oewn_form
@@ -4948,8 +4948,8 @@ strickles	1	oewn-strickle-v	Person=3+Tense=Pres	dema	0			rule
 strickling	0	oewn-strickle-v	VerbForm=Ger	dema	0			rule
 stricks	0		Number=Plur	dema	0	strick	n	rule
 strict	0	oewn-strict-a	Degree=Pos	dema	0			oewn_form
-stricter	0	oewn-strict-a	Degree=Cmp	dema	0			rule
-strictest	0	oewn-strict-a	Degree=Sup	dema	0			rule
+stricter	0	oewn-strict-a	Degree=Cmp	dema	0			llm
+strictest	0	oewn-strict-a	Degree=Sup	dema	0			llm
 striction	0		Number=Sing	dema	0	striction	n	moby_reverse
 strictions	0		Number=Plur	dema	0	striction	n	rule
 strictly	0	oewn-strictly-r	Degree=Pos	dema	0			oewn_form
@@ -5265,8 +5265,8 @@ strived	0	oewn-strive-v	Tense=Past+VerbForm=Part	dema	0			irregular_list
 striven	0	oewn-strive-v	VerbForm=Part	dema	0			hand
 striver	0	oewn-striver-n	Number=Sing	dema	0			oewn_form
 strivers	0	oewn-striver-n	Number=Plur	dema	0			rule
-strives	0	oewn-strive-v	Person=3+Tense=Pres	dema	0			rule
-striving	0	oewn-strive-v	VerbForm=Ger	dema	0			rule
+strives	0	oewn-strive-v	Person=3+Tense=Pres	dema	0			llm
+striving	0	oewn-strive-v	VerbForm=Ger	dema	0			llm
 striving	1	oewn-striving-n	Number=Sing	dema	0			oewn_form
 strivingly	0		Degree=Pos	dema	0	strivingly	r	moby_reverse
 strivings	0	oewn-striving-n	Number=Plur	dema	0			rule
@@ -5389,13 +5389,14 @@ strongholds	0	oewn-stronghold-n	Number=Plur	dema	0			rule
 strongish	0		Degree=Pos	dema	0	strongish	a	moby_reverse
 strongly	0	oewn-strongly-r	Degree=Pos	dema	0			oewn_form
 strongman	0	oewn-strongman-n	Number=Sing	dema	0			oewn_form
+strongmen	0	oewn-strongman-n	Number=Plur	dema	0			llm
 strongness	0		Number=Sing	dema	0	strongness	n	moby_reverse
 strongpoint	0		Number=Sing	dema	0	strongpoint	n	moby_reverse
 strongpoints	0		Number=Plur	dema	0	strongpoint	n	rule
 strongroom	0	oewn-strongroom-n	Number=Sing	dema	0			oewn_form
 strongrooms	0	oewn-strongroom-n	Number=Plur	dema	0			rule
 strongwoman	0	oewn-strongwoman-n	Number=Sing	dema	0			oewn_form
-strongwomans	0	oewn-strongwoman-n	Number=Plur	dema	0			rule
+strongwomen	0	oewn-strongwoman-n	Number=Plur	dema	0			rule
 strongyle	0		Number=Sing	dema	0	strongyle	n	moby_reverse
 strongyles	0		Number=Plur	dema	0	strongyle	n	rule
 strongylosis	0		Number=Sing	dema	0	strongylosis	n	moby_reverse
@@ -5414,10 +5415,11 @@ strooking	0		VerbForm=Ger	dema	0	strook	v	rule
 strooks	0		Person=3+Tense=Pres	dema	0	strook	v	rule
 strop	0	oewn-strop-n	Number=Sing	dema	0			oewn_form
 strop	1	oewn-strop-v	VerbForm=Inf	dema	0			oewn_form
+strophanthi	0	oewn-strophanthus-n	Number=Plur	dema	0			rule_variant
 strophanthin	0	oewn-strophanthin-n	Number=Sing	dema	0			oewn_form
 strophanthins	0	oewn-strophanthin-n	Number=Plur	dema	0			rule
 strophanthus	0	oewn-strophanthus-n	Number=Sing	dema	0			oewn_form
-strophanthuses	0	oewn-strophanthus-n	Number=Plur	dema	0			rule
+strophanthuses	0	oewn-strophanthus-n	Number=Plur	dema	0			llm
 strophe	0	oewn-strophe-n	Number=Sing	dema	0			oewn_form
 strophes	0	oewn-strophe-n	Number=Plur	dema	0			rule
 strophic	0		Degree=Pos	dema	0	strophic	a	moby_reverse
@@ -5425,7 +5427,6 @@ strophically	0		Degree=Pos	dema	0	strophically	r	moby_reverse
 strophoid	0		Number=Sing	dema	0	strophoid	n	moby_reverse
 strophoids	0		Number=Plur	dema	0	strophoid	n	rule
 strophulus	0		Number=Sing	dema	0	strophulus	n	moby_reverse
-strophuluses	0		Number=Plur	dema	0	strophulus	n	rule
 stropped	0	oewn-strop-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 stroppier	0	oewn-stroppy-a	Degree=Cmp	dema	0			oewn_form
 stroppiest	0	oewn-stroppy-a	Degree=Sup	dema	0			oewn_form
@@ -5526,7 +5527,7 @@ strut	0	oewn-strut-v	VerbForm=Inf	dema	0			oewn_form
 strut	1	oewn-strut-n	Number=Sing	dema	0			oewn_form
 struthiomimus	0	oewn-struthiomimus-n	Number=Sing	dema	0			oewn_form
 struthious	0		Degree=Pos	dema	0	struthious	a	moby_reverse
-struts	0	oewn-strut-v	Person=3+Tense=Pres	dema	0			rule
+struts	0	oewn-strut-v	Person=3+Tense=Pres	dema	0			llm
 struts	1	oewn-strut-n	Number=Plur	dema	0			rule
 strutted	0	oewn-strut-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 strutter	0		Number=Sing	dema	0	strutter	n	moby_reverse
@@ -5550,8 +5551,8 @@ stubbed out	0	oewn-stub_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 stubbeds	0		Number=Plur	dema	0	stubbed	n	rule
 stubber	0		Number=Sing	dema	0	stubber	n	moby_reverse
 stubbers	0		Number=Plur	dema	0	stubber	n	rule
-stubbier	0	oewn-stubby-a	Degree=Cmp	dema	0			rule
-stubbiest	0	oewn-stubby-a	Degree=Sup	dema	0			rule
+stubbier	0	oewn-stubby-a	Degree=Cmp	dema	0			llm
+stubbiest	0	oewn-stubby-a	Degree=Sup	dema	0			llm
 stubbiness	0	oewn-stubbiness-n	Number=Sing	dema	0			oewn_form
 stubbinesses	0	oewn-stubbiness-n	Number=Plur	dema	0			rule
 stubbing	0	oewn-stub-v	VerbForm=Ger	dema	0			oewn_form
@@ -5560,8 +5561,8 @@ stubble	0	oewn-stubble-n	Number=Sing	dema	0			oewn_form
 stubbled	0	oewn-stubbled-a	Degree=Pos	dema	0			oewn_form
 stubbled	1		VerbForm=Inf	dema	0	stubbled	v	moby_reverse
 stubbles	0	oewn-stubble-n	Number=Plur	dema	0			rule
-stubblier	0	oewn-stubbly-a	Degree=Cmp	dema	0			rule
-stubbliest	0	oewn-stubbly-a	Degree=Sup	dema	0			rule
+stubblier	0	oewn-stubbly-a	Degree=Cmp	dema	0			llm
+stubbliest	0	oewn-stubbly-a	Degree=Sup	dema	0			llm
 stubbly	0	oewn-stubbly-a	Degree=Pos	dema	0			oewn_form
 stubborn	0	oewn-stubborn-a	Degree=Pos	dema	0			oewn_form
 stubbornly	0	oewn-stubbornly-r	Degree=Pos	dema	0			oewn_form
@@ -5575,12 +5576,12 @@ stubs out	0	oewn-stub_out-v	Person=3+Tense=Pres	dema	0			rule
 stucco	0	oewn-stucco-n	Number=Sing	dema	0			oewn_form
 stucco	1	oewn-stucco-v	VerbForm=Inf	dema	0			oewn_form
 stuccoed	0		Number=Sing	dema	0	stuccoed	n	moby_reverse
-stuccoed	1	oewn-stucco-v	Tense=Past+VerbForm=Part	dema	0			rule
+stuccoed	1	oewn-stucco-v	Tense=Past+VerbForm=Part	dema	0			llm
 stuccoeds	0		Number=Plur	dema	0	stuccoed	n	rule
 stuccoes	0	oewn-stucco-n	Number=Plur	dema	0			oewn_form
-stuccoes	1	oewn-stucco-v	Person=3+Tense=Pres	dema	0			rule_variant
+stuccoes	1	oewn-stucco-v	Person=3+Tense=Pres	dema	0			llm
 stuccoing	0		Number=Sing	dema	0	stuccoing	n	moby_reverse
-stuccoing	1	oewn-stucco-v	VerbForm=Ger	dema	0			rule
+stuccoing	1	oewn-stucco-v	VerbForm=Ger	dema	0			llm
 stuccoings	0		Number=Plur	dema	0	stuccoing	n	rule
 stuccos	0	oewn-stucco-n	Number=Plur	dema	0			rule_variant
 stuccos	1	oewn-stucco-v	Person=3+Tense=Pres	dema	0			rule_variant
@@ -5791,11 +5792,11 @@ stunt flyings	0	oewn-stunt_flying-n	Number=Plur	dema	0			rule
 stunt kite	0	oewn-stunt_kite-n	Number=Sing	dema	0			oewn_form
 stunt kites	0	oewn-stunt_kite-n	Number=Plur	dema	0			rule
 stunt man	0	oewn-stunt_man-n	Number=Sing	dema	0			oewn_form
-stunt mans	0	oewn-stunt_man-n	Number=Plur	dema	0			rule
+stunt men	0	oewn-stunt_man-n	Number=Plur	dema	0			rule
 stunt pilot	0	oewn-stunt_pilot-n	Number=Sing	dema	0			oewn_form
 stunt pilots	0	oewn-stunt_pilot-n	Number=Plur	dema	0			rule
 stunt woman	0	oewn-stunt_woman-n	Number=Sing	dema	0			oewn_form
-stunt womans	0	oewn-stunt_woman-n	Number=Plur	dema	0			rule
+stunt women	0	oewn-stunt_woman-n	Number=Plur	dema	0			rule
 stunted	0	oewn-stunt-v	Tense=Past+VerbForm=Part	dema	0			rule
 stunted	1	oewn-stunted-a	Degree=Pos	dema	0			oewn_form
 stuntedness	0	oewn-stuntedness-n	Number=Sing	dema	0			oewn_form
@@ -5849,9 +5850,8 @@ sturdiness	0	oewn-sturdiness-n	Number=Sing	dema	0			oewn_form
 sturdinesses	0	oewn-sturdiness-n	Number=Plur	dema	0			rule
 sturdy	0	oewn-sturdy-a	Degree=Pos	dema	0			oewn_form
 sturdy	1		Number=Sing	dema	0	sturdy	n	moby_reverse
-sturgeon	0	oewn-sturgeon-n	Number=Plur	dema	0			agid
-sturgeon	1	oewn-sturgeon-n	Number=Sing	dema	0			oewn_form
-sturgeons	0	oewn-sturgeon-n	Number=Plur	dema	0			rule_variant
+sturgeon	0	oewn-sturgeon-n	Number=Sing	dema	0			oewn_form
+sturgeons	0	oewn-sturgeon-n	Number=Plur	dema	0			rule
 sturt	0		Number=Sing	dema	0	sturt	n	moby_reverse
 sturt	1		VerbForm=Inf	dema	0	sturt	v	moby_reverse
 sturts	0		Number=Plur	dema	0	sturt	n	rule
@@ -5899,6 +5899,7 @@ styling	1	oewn-styling-n	Number=Sing	dema	0			oewn_form
 stylings	0	oewn-styling-n	Number=Plur	dema	0			rule
 stylisation	0	oewn-stylisation-n	Number=Sing	dema	0			oewn_form
 stylisations	0	oewn-stylisation-n	Number=Plur	dema	0			rule
+stylisations	1	oewn-stylization-n	Number=Plur	dema	0			rule_variant
 stylise	0	oewn-stylise-v	VerbForm=Inf	dema	0			oewn_form
 stylised	0	oewn-stylise-v	Tense=Past+VerbForm=Part	dema	0			rule
 stylised	1	oewn-stylised-a	Degree=Pos	dema	0			oewn_form
@@ -5918,7 +5919,7 @@ stylite	0	oewn-stylite-n	Number=Sing	dema	0			oewn_form
 stylites	0	oewn-stylite-n	Number=Plur	dema	0			rule
 stylitic	0		Degree=Pos	dema	0	stylitic	a	moby_reverse
 stylization	0	oewn-stylization-n	Number=Sing	dema	0			oewn_form
-stylizations	0	oewn-stylization-n	Number=Plur	dema	0			rule
+stylizations	0	oewn-stylization-n	Number=Plur	dema	0			llm
 stylize	0	oewn-stylize-v	VerbForm=Inf	dema	0			oewn_form
 stylized	0	oewn-stylize-v	Tense=Past+VerbForm=Part	dema	0			rule
 stylized	1	oewn-stylized-a	Degree=Pos	dema	0			oewn_form
@@ -5977,7 +5978,6 @@ stymying	1		Number=Sing	dema	0	stymying	n	moby_reverse
 stymying	2	oewn-stymy-v	VerbForm=Ger	dema	0			rule
 stymyings	0		Number=Plur	dema	0	stymying	n	rule
 stypsis	0	oewn-stypsis-n	Number=Sing	dema	0			oewn_form
-stypsises	0	oewn-stypsis-n	Number=Plur	dema	0			rule
 styptic	0	oewn-styptic-a	Degree=Pos	dema	0			oewn_form
 styptic	1	oewn-styptic-n	Number=Sing	dema	0			oewn_form
 styptic weed	0	oewn-styptic_weed-n	Number=Sing	dema	0			oewn_form

@@ -25,8 +25,9 @@ KO	0	oewn-KO-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 KO punch	0	oewn-KO_punch-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 KO punches	0	oewn-KO_punch-n	Capitalization=Exact+Number=Plur	dema	0			rule
 KO'd	0	oewn-KO-ap-d-a	Capitalization=Exact+Degree=Pos	dema	0			oewn_form
-KOS	0	oewn-kos-n	Number=Sing	dema	0			oewn_form
-KOS	1	oewn-KO-n	Capitalization=Upper+Number=Plur	dema	0			rule
+KOS	0	oewn-kos-n	Number=Plur	dema	0			llm
+KOS	1	oewn-kos-n	Number=Sing	dema	0			oewn_form
+KOS	2	oewn-KO-n	Capitalization=Upper+Number=Plur	dema	0			rule
 KP	0	oewn-KP-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 KPS	0	oewn-KP-n	Capitalization=Upper+Number=Plur	dema	0			rule
 Kabala	0	oewn-kabala-n	Number=Sing	dema	0			oewn_form
@@ -498,7 +499,7 @@ Kiwi	1	oewn-Kiwi-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Kiwis	0	oewn-kiwi-n	Number=Plur	dema	0			rule
 Kiwis	1	oewn-Kiwi-n	Capitalization=Title+Number=Plur	dema	0			rule
 Klansman	0	oewn-Klansman-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-Klansmans	0	oewn-Klansman-n	Capitalization=Title+Number=Plur	dema	0			rule
+Klansmen	0	oewn-Klansman-n	Capitalization=Title+Number=Plur	dema	0			rule
 Klavier	0		Number=Sing	dema	0	klavier	n	moby_reverse
 Klavier	1	oewn-Klavier-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Klaviers	0		Number=Plur	dema	0	klavier	n	rule
@@ -902,7 +903,6 @@ kalpak	0		Number=Sing	dema	0	kalpak	n	moby_reverse
 kalpaks	0		Number=Plur	dema	0	kalpak	n	rule
 kalpas	0		Number=Plur	dema	0	kalpa	n	rule
 kalpis	0		Number=Sing	dema	0	kalpis	n	moby_reverse
-kalpises	0		Number=Plur	dema	0	kalpis	n	rule
 kalsomine	0		Number=Sing	dema	0	kalsomine	n	moby_reverse
 kalsomined	0		VerbForm=Inf	dema	0	kalsomined	v	moby_reverse
 kalsominer	0		Number=Sing	dema	0	kalsominer	n	moby_reverse
@@ -956,9 +956,8 @@ kaneelharts	0		Number=Plur	dema	0	kaneelhart	n	rule
 kanes	0		Number=Plur	dema	0	kane	n	rule
 kang	0		Number=Sing	dema	0	kang	n	moby_reverse
 kanga	0		Number=Sing	dema	0	kanga	n	moby_reverse
-kangaroo	0	oewn-kangaroo-n	Number=Plur	dema	0			agid
-kangaroo	1	oewn-kangaroo-n	Number=Sing	dema	0			oewn_form
-kangaroo	2		VerbForm=Inf	dema	0	kangaroo	v	moby_reverse
+kangaroo	0	oewn-kangaroo-n	Number=Sing	dema	0			oewn_form
+kangaroo	1		VerbForm=Inf	dema	0	kangaroo	v	moby_reverse
 kangaroo apple	0	oewn-kangaroo_apple-n	Number=Sing	dema	0			oewn_form
 kangaroo apples	0	oewn-kangaroo_apple-n	Number=Plur	dema	0			rule
 kangaroo bear	0	oewn-kangaroo_bear-n	Number=Sing	dema	0			oewn_form
@@ -985,7 +984,7 @@ kangarooing	0		Number=Sing	dema	0	kangarooing	n	moby_reverse
 kangarooing	1		VerbForm=Ger	dema	0	kangaroo	v	moby_reverse
 kangarooings	0		Number=Plur	dema	0	kangarooing	n	rule
 kangaroolike	0		Degree=Pos	dema	0	kangaroolike	a	moby_reverse
-kangaroos	0	oewn-kangaroo-n	Number=Plur	dema	0			rule_variant
+kangaroos	0	oewn-kangaroo-n	Number=Plur	dema	0			llm
 kangas	0		Number=Plur	dema	0	kanga	n	rule
 kangs	0		Number=Plur	dema	0	kang	n	rule
 kanji	0		Number=Sing	dema	0	kanji	n	moby_reverse
@@ -1210,16 +1209,18 @@ kawaka	0	oewn-kawaka-n	Number=Sing	dema	0			oewn_form
 kawakas	0	oewn-kawaka-n	Number=Plur	dema	0			rule
 kayak	0	oewn-kayak-n	Number=Sing	dema	0			oewn_form
 kayak	1	oewn-kayak-v	VerbForm=Inf	dema	0			oewn_form
-kayakked	0	oewn-kayak-v	Tense=Past+VerbForm=Part	dema	0			rule
-kayakking	0	oewn-kayak-v	VerbForm=Ger	dema	0			rule
+kayaked	0	oewn-kayak-v	Tense=Past+VerbForm=Part	dema	0			rule
+kayaking	0	oewn-kayak-v	VerbForm=Ger	dema	0			rule
 kayaks	0	oewn-kayak-n	Number=Plur	dema	0			rule
 kayaks	1	oewn-kayak-v	Person=3+Tense=Pres	dema	0			rule
 kayo	0	oewn-kayo-n	Number=Sing	dema	0			oewn_form
 kayo	1	oewn-kayo-v	VerbForm=Inf	dema	0			oewn_form
-kayoed	0	oewn-kayo-v	Tense=Past+VerbForm=Part	dema	0			rule
+kayoed	0	oewn-kayo-v	Tense=Past+VerbForm=Part	dema	0			llm
 kayoed	1	oewn-kayoed-a	Degree=Pos	dema	0			oewn_form
-kayoing	0	oewn-kayo-v	VerbForm=Ger	dema	0			rule
+kayoes	0	oewn-kayo-v	Person=3+Tense=Pres	dema	0			rule_variant
+kayoing	0	oewn-kayo-v	VerbForm=Ger	dema	0			llm
 kayos	0	oewn-kayo-n	Number=Plur	dema	0			rule
+kayos	1	oewn-kayo-v	Person=3+Tense=Pres	dema	0			llm
 kazachki	0		Number=Sing	dema	0	kazachki	n	moby_reverse
 kazachkis	0		Number=Plur	dema	0	kazachki	n	rule
 kazachok	0		Number=Sing	dema	0	kazachok	n	moby_reverse
@@ -1289,9 +1290,8 @@ keelage	0		Number=Sing	dema	0	keelage	n	moby_reverse
 keelages	0		Number=Plur	dema	0	keelage	n	rule
 keelboat	0	oewn-keelboat-n	Number=Sing	dema	0			oewn_form
 keelboatman	0		Number=Sing	dema	0	keelboatman	n	moby_reverse
-keelboatmans	0		Number=Plur	dema	0	keelboatman	n	rule
-keelboatmen	0		Number=Sing	dema	0	keelboatmen	n	moby_reverse
-keelboatmens	0		Number=Plur	dema	0	keelboatmen	n	rule
+keelboatmen	0		Number=Plur	dema	0	keelboatman	n	rule
+keelboatmen	1		Number=Sing	dema	0	keelboatmen	n	moby_reverse
 keelboats	0	oewn-keelboat-n	Number=Plur	dema	0			rule
 keeled	0	oewn-keel-v	Tense=Past+VerbForm=Part	dema	0			rule
 keeled	1	oewn-keeled-a	Degree=Pos	dema	0			oewn_form
@@ -1316,10 +1316,10 @@ keen	2	oewn-keen-n	Number=Sing	dema	0			oewn_form
 keen-eyed	0	oewn-keen-eyed-a	Degree=Pos	dema	0			oewn_form
 keen-sighted	0	oewn-keen-sighted-a	Degree=Pos	dema	0			oewn_form
 keened	0	oewn-keen-v	Tense=Past+VerbForm=Part	dema	0			rule
-keener	0	oewn-keen-a	Degree=Cmp	dema	0			rule
+keener	0	oewn-keen-a	Degree=Cmp	dema	0			llm
 keener	1		Number=Sing	dema	0	keener	n	moby_reverse
 keeners	0		Number=Plur	dema	0	keener	n	rule
-keenest	0	oewn-keen-a	Degree=Sup	dema	0			rule
+keenest	0	oewn-keen-a	Degree=Sup	dema	0			llm
 keening	0		Number=Sing	dema	0	keening	n	moby_reverse
 keening	1	oewn-keen-v	VerbForm=Ger	dema	0			rule
 keenings	0		Number=Plur	dema	0	keening	n	rule
@@ -1579,10 +1579,10 @@ keps	0		Person=3+Tense=Pres	dema	0	kep	v	rule
 kept	0	oewn-keep-v	Tense=Past+VerbForm=Part	dema	0			hand
 kept	1	oewn-kept-a	Degree=Pos	dema	0			oewn_form
 kept man	0	oewn-kept_man-n	Number=Sing	dema	0			oewn_form
-kept mans	0	oewn-kept_man-n	Number=Plur	dema	0			rule
+kept men	0	oewn-kept_man-n	Number=Plur	dema	0			rule
 kept up	0	oewn-kept_up-a	Degree=Pos	dema	0			oewn_form
 kept woman	0	oewn-kept_woman-n	Number=Sing	dema	0			oewn_form
-kept womans	0	oewn-kept_woman-n	Number=Plur	dema	0			rule
+kept women	0	oewn-kept_woman-n	Number=Plur	dema	0			rule
 keramic	0		Degree=Pos	dema	0	keramic	a	moby_reverse
 keramics	0		Number=Sing	dema	0	keramics	n	moby_reverse
 keratalgia	0	oewn-keratalgia-n	Number=Sing	dema	0			oewn_form
@@ -1613,9 +1613,10 @@ keratocele	0	oewn-keratocele-n	Number=Sing	dema	0			oewn_form
 keratoceles	0	oewn-keratocele-n	Number=Plur	dema	0			rule
 keratocni	0		Number=Sing	dema	0	keratocni	n	moby_reverse
 keratocnis	0		Number=Plur	dema	0	keratocni	n	rule
+keratoconjunctivitides	0	oewn-keratoconjunctivitis-n	Number=Plur	dema	0			llm
 keratoconjunctivitis	0	oewn-keratoconjunctivitis-n	Number=Sing	dema	0			oewn_form
-keratoconjunctivitises	0	oewn-keratoconjunctivitis-n	Number=Plur	dema	0			rule
 keratoconus	0	oewn-keratoconus-n	Number=Sing	dema	0			oewn_form
+keratoconuses	0	oewn-keratoconus-n	Number=Plur	dema	0			llm
 keratode	0		Number=Sing	dema	0	keratode	n	moby_reverse
 keratoderma	0	oewn-keratoderma-n	Number=Sing	dema	0			oewn_form
 keratoderma blennorrhagica	0	oewn-keratoderma_blennorrhagica-n	Number=Sing	dema	0			oewn_form
@@ -1652,7 +1653,7 @@ keratoscopes	0	oewn-keratoscope-n	Number=Plur	dema	0			rule
 keratoscopies	0	oewn-keratoscopy-n	Number=Plur	dema	0			rule
 keratoscopy	0	oewn-keratoscopy-n	Number=Sing	dema	0			oewn_form
 keratose	0		Degree=Pos	dema	0	keratose	a	moby_reverse
-keratoses	0	oewn-keratosis-n	Number=Plur	dema	0			agid
+keratoses	0	oewn-keratosis-n	Number=Plur	dema	0			llm
 keratosic	0		Degree=Pos	dema	0	keratosic	a	moby_reverse
 keratosis	0	oewn-keratosis-n	Number=Sing	dema	0			oewn_form
 keratosis blennorrhagica	0	oewn-keratosis_blennorrhagica-n	Number=Sing	dema	0			oewn_form
@@ -1678,7 +1679,7 @@ kerbstones	0	oewn-kerbstone-n	Number=Plur	dema	0			rule
 kerchief	0	oewn-kerchief-n	Number=Sing	dema	0			oewn_form
 kerchiefed	0		Degree=Pos	dema	0	kerchiefed	a	moby_reverse
 kerchiefed	1		VerbForm=Inf	dema	0	kerchiefed	v	moby_reverse
-kerchiefs	0	oewn-kerchief-n	Number=Plur	dema	0			rule_variant
+kerchiefs	0	oewn-kerchief-n	Number=Plur	dema	0			llm
 kerchieft	0		Degree=Pos	dema	0	kerchieft	a	moby_reverse
 kerchieves	0	oewn-kerchief-n	Number=Plur	dema	0			rule_variant
 kerf	0		Number=Sing	dema	0	kerf	n	moby_reverse
@@ -1692,7 +1693,6 @@ kerions	0	oewn-kerion-n	Number=Plur	dema	0			rule
 kerite	0	oewn-kerite-n	Number=Sing	dema	0			oewn_form
 kerites	0	oewn-kerite-n	Number=Plur	dema	0			rule
 kermes	0		Number=Sing	dema	0	kermes	n	moby_reverse
-kermeses	0		Number=Plur	dema	0	kermes	n	rule
 kermesite	0		Number=Sing	dema	0	kermesite	n	moby_reverse
 kermesites	0		Number=Plur	dema	0	kermesite	n	rule
 kermis	0		Number=Sing	dema	0	kermis	n	moby_reverse
@@ -1897,9 +1897,8 @@ keying	0	oewn-key-v	VerbForm=Ger	dema	0			rule
 keying out	0	oewn-key_out-v	VerbForm=Ger	dema	0			rule
 keyless	0	oewn-keyless-a	Degree=Pos	dema	0			oewn_form
 keyman	0		Number=Sing	dema	0	keyman	n	moby_reverse
-keymans	0		Number=Plur	dema	0	keyman	n	rule
-keymen	0		Number=Sing	dema	0	keymen	n	moby_reverse
-keymens	0		Number=Plur	dema	0	keymen	n	rule
+keymen	0		Number=Plur	dema	0	keyman	n	rule
+keymen	1		Number=Sing	dema	0	keymen	n	moby_reverse
 keynote	0	oewn-keynote-n	Number=Sing	dema	0			oewn_form
 keynote	1	oewn-keynote-v	VerbForm=Inf	dema	0			oewn_form
 keynote address	0	oewn-keynote_address-n	Number=Sing	dema	0			oewn_form
@@ -1998,7 +1997,6 @@ khoums	0	oewn-khoum-n	Number=Plur	dema	0			rule
 khukuri	0	oewn-khukuri-n	Number=Sing	dema	0			oewn_form
 khukuris	0	oewn-khukuri-n	Number=Plur	dema	0			rule
 khuskhus	0		Number=Sing	dema	0	khuskhus	n	moby_reverse
-khuskhuses	0		Number=Plur	dema	0	khuskhus	n	rule
 khzes	0	oewn-kHz-n	Capitalization=Exact+Number=Plur	dema	0			rule
 ki	0	oewn-ki-n	Number=Sing	dema	0			oewn_form
 kia quen	0	oewn-kia_quen-n	Number=Sing	dema	0			oewn_form
@@ -2177,10 +2175,10 @@ kiddy porn	0	oewn-kiddy_porn-n	Number=Sing	dema	0			oewn_form
 kiddy porns	0	oewn-kiddy_porn-n	Number=Plur	dema	0			rule
 kidlike	0		Degree=Pos	dema	0	kidlike	a	moby_reverse
 kidnap	0	oewn-kidnap-v	VerbForm=Inf	dema	0			oewn_form
-kidnaped	0	oewn-kidnap-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+kidnaped	0		VerbForm=Inf	dema	0	kidnaped	v	moby_reverse
 kidnaper	0	oewn-kidnaper-n	Number=Sing	dema	0			oewn_form
 kidnapers	0	oewn-kidnaper-n	Number=Plur	dema	0			rule
-kidnaping	0	oewn-kidnap-v	VerbForm=Ger	dema	0			rule_variant
+kidnaping	0		VerbForm=Inf	dema	0	kidnaping	v	moby_reverse
 kidnapped	0	oewn-kidnap-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 kidnapper	0	oewn-kidnapper-n	Number=Sing	dema	0			oewn_form
 kidnappers	0	oewn-kidnapper-n	Number=Plur	dema	0			rule
@@ -2253,7 +2251,7 @@ kill zone	0	oewn-kill_zone-n	Number=Sing	dema	0			oewn_form
 kill zones	0	oewn-kill_zone-n	Number=Plur	dema	0			rule
 killable	0	oewn-killable-a	Degree=Pos	dema	0			oewn_form
 killdee	0		Number=Sing	dema	0	killdee	n	moby_reverse
-killdeer	0	oewn-killdeer-n	Number=Plur	dema	0			rule_variant
+killdeer	0	oewn-killdeer-n	Number=Plur	dema	0			llm
 killdeer	1	oewn-killdeer-n	Number=Sing	dema	0			oewn_form
 killdeer plover	0	oewn-killdeer_plover-n	Number=Sing	dema	0			oewn_form
 killdeer plovers	0	oewn-killdeer_plover-n	Number=Plur	dema	0			rule
@@ -2334,9 +2332,8 @@ kilogram calories	0	oewn-kilogram_calorie-n	Number=Plur	dema	0			rule
 kilogram-meter	0	oewn-kilogram-meter-n	Number=Sing	dema	0			oewn_form
 kilogram-meters	0	oewn-kilogram-meter-n	Number=Plur	dema	0			rule
 kilograms	0	oewn-kilogram-n	Number=Plur	dema	0			rule
-kilohertz	0	oewn-kilohertz-n	Number=Plur	dema	0			agid
+kilohertz	0	oewn-kilohertz-n	Number=Plur	dema	0			irregular_list
 kilohertz	1	oewn-kilohertz-n	Number=Sing	dema	0			oewn_form
-kilohertzes	0	oewn-kilohertz-n	Number=Plur	dema	0			rule_variant
 kilohm	0		Number=Sing	dema	0	kilohm	n	moby_reverse
 kilohms	0		Number=Plur	dema	0	kilohm	n	rule
 kilojoule	0		Number=Sing	dema	0	kilojoule	n	moby_reverse
@@ -2415,9 +2412,8 @@ kimono	0	oewn-kimono-n	Number=Sing	dema	0			oewn_form
 kimonoed	0		Degree=Pos	dema	0	kimonoed	a	moby_reverse
 kimonoed	1		VerbForm=Inf	dema	0	kimonoed	v	moby_reverse
 kimonos	0	oewn-kimono-n	Number=Plur	dema	0			rule
-kin	0	oewn-kin-n	Number=Plur	dema	0			agid
-kin	1	oewn-kin-n	Number=Sing	dema	0			oewn_form
-kin	2	oewn-kin-a	Degree=Pos	dema	0			oewn_form
+kin	0	oewn-kin-n	Number=Sing	dema	0			oewn_form
+kin	1	oewn-kin-a	Degree=Pos	dema	0			oewn_form
 kin group	0	oewn-kin_group-n	Number=Sing	dema	0			oewn_form
 kin groups	0	oewn-kin_group-n	Number=Plur	dema	0			rule
 kina	0	oewn-kina-n	Number=Sing	dema	0			oewn_form
@@ -2442,14 +2438,14 @@ kind-hearted	0	oewn-kind-hearted-a	Degree=Pos	dema	0			oewn_form
 kind-heartedness	0	oewn-kind-heartedness-n	Number=Sing	dema	0			oewn_form
 kind-heartednesses	0	oewn-kind-heartedness-n	Number=Plur	dema	0			rule
 kinda	0	oewn-kinda-r	Degree=Pos	dema	0			oewn_form
-kinder	0	oewn-kind-a	Degree=Cmp	dema	0			rule
+kinder	0	oewn-kind-a	Degree=Cmp	dema	0			llm
 kindergarten	0	oewn-kindergarten-n	Number=Sing	dema	0			oewn_form
 kindergartener	0	oewn-kindergartener-n	Number=Sing	dema	0			oewn_form
 kindergarteners	0	oewn-kindergartener-n	Number=Plur	dema	0			rule
 kindergartens	0	oewn-kindergarten-n	Number=Plur	dema	0			rule
 kindergartner	0	oewn-kindergartner-n	Number=Sing	dema	0			oewn_form
 kindergartners	0	oewn-kindergartner-n	Number=Plur	dema	0			rule
-kindest	0	oewn-kind-a	Degree=Sup	dema	0			rule
+kindest	0	oewn-kind-a	Degree=Sup	dema	0			llm
 kindhearted	0	oewn-kindhearted-a	Degree=Pos	dema	0			oewn_form
 kindhearted	1		VerbForm=Inf	dema	0	kindhearted	v	moby_reverse
 kindheartedly	0		Degree=Pos	dema	0	kindheartedly	r	moby_reverse
@@ -2486,8 +2482,7 @@ kindreds	0	oewn-kindred-n	Number=Plur	dema	0			rule
 kindredship	0		Number=Sing	dema	0	kindredship	n	moby_reverse
 kindredships	0		Number=Plur	dema	0	kindredship	n	rule
 kinds	0	oewn-kind-n	Number=Plur	dema	0			rule
-kine	0	oewn-cow-n	Number=Plur	dema	0			rule_variant
-kine	1	oewn-kine-n	Number=Sing	dema	0			oewn_form
+kine	0	oewn-kine-n	Number=Sing	dema	0			oewn_form
 kinema	0		Number=Sing	dema	0	kinema	n	moby_reverse
 kinemas	0		Number=Plur	dema	0	kinema	n	rule
 kinematic	0		Degree=Pos	dema	0	kinematic	a	moby_reverse
@@ -2547,9 +2542,8 @@ kinetoscope	0		Number=Sing	dema	0	kinetoscope	n	moby_reverse
 kinetoscopes	0		Number=Plur	dema	0	kinetoscope	n	rule
 kinetoscopic	0		Degree=Pos	dema	0	kinetoscopic	a	moby_reverse
 kinetosis	0	oewn-kinetosis-n	Number=Sing	dema	0			oewn_form
-kinfolk	0	oewn-kinfolk-n	Number=Plur	dema	0			agid
-kinfolk	1	oewn-kinfolk-n	Number=Sing	dema	0			oewn_form
-kinfolks	0	oewn-kinfolk-n	Number=Plur	dema	0			rule_variant
+kinfolk	0	oewn-kinfolk-n	Number=Sing	dema	0			oewn_form
+kinfolks	0	oewn-kinfolk-n	Number=Plur	dema	0			rule
 king	0	oewn-king-n	Number=Sing	dema	0			oewn_form
 king	1		VerbForm=Inf	dema	0	king	v	moby_reverse
 king begonia	0	oewn-king_begonia-n	Number=Sing	dema	0			oewn_form
@@ -2678,10 +2672,8 @@ kino gums	0	oewn-kino_gum-n	Number=Plur	dema	0			rule
 kinoo	0		Number=Sing	dema	0	kinoo	n	moby_reverse
 kinoos	0		Number=Plur	dema	0	kinoo	n	rule
 kinos	0	oewn-kino-n	Number=Plur	dema	0			rule
-kins	0	oewn-kin-n	Number=Plur	dema	0			rule_variant
-kinsfolk	0	oewn-kinsfolk-n	Number=Plur	dema	0			agid
-kinsfolk	1	oewn-kinsfolk-n	Number=Sing	dema	0			oewn_form
-kinsfolks	0	oewn-kinsfolk-n	Number=Plur	dema	0			rule_variant
+kins	0	oewn-kin-n	Number=Plur	dema	0			rule
+kinsfolk	0	oewn-kinsfolk-n	Number=Sing	dema	0			oewn_form
 kinship	0	oewn-kinship-n	Number=Sing	dema	0			oewn_form
 kinship group	0	oewn-kinship_group-n	Number=Sing	dema	0			oewn_form
 kinship groups	0	oewn-kinship_group-n	Number=Plur	dema	0			rule
@@ -2689,11 +2681,11 @@ kinship system	0	oewn-kinship_system-n	Number=Sing	dema	0			oewn_form
 kinship systems	0	oewn-kinship_system-n	Number=Plur	dema	0			rule
 kinships	0	oewn-kinship-n	Number=Plur	dema	0			rule
 kinsman	0	oewn-kinsman-n	Number=Sing	dema	0			oewn_form
-kinsmen	0	oewn-kinsman-n	Number=Plur	dema	0			agid
+kinsmen	0	oewn-kinsman-n	Number=Plur	dema	0			llm
 kinsperson	0	oewn-kinsperson-n	Number=Sing	dema	0			oewn_form
 kinspersons	0	oewn-kinsperson-n	Number=Plur	dema	0			rule
 kinswoman	0	oewn-kinswoman-n	Number=Sing	dema	0			oewn_form
-kinswomen	0	oewn-kinswoman-n	Number=Plur	dema	0			agid
+kinswomen	0	oewn-kinswoman-n	Number=Plur	dema	0			llm
 kionectomies	0		Number=Plur	dema	0	kionectomy	n	rule
 kionectomy	0		Number=Sing	dema	0	kionectomy	n	moby_reverse
 kionotomies	0		Number=Plur	dema	0	kionotomy	n	rule
@@ -2702,9 +2694,8 @@ kiosk	0	oewn-kiosk-n	Number=Sing	dema	0			oewn_form
 kiosks	0	oewn-kiosk-n	Number=Plur	dema	0			rule
 kiotomies	0		Number=Plur	dema	0	kiotomy	n	rule
 kiotomy	0		Number=Sing	dema	0	kiotomy	n	moby_reverse
-kip	0	oewn-kip-n	Number=Plur	dema	0			agid
-kip	1	oewn-kip-n	Number=Sing	dema	0			oewn_form
-kip	2	oewn-kip-v	VerbForm=Inf	dema	0			oewn_form
+kip	0	oewn-kip-n	Number=Sing	dema	0			oewn_form
+kip	1	oewn-kip-v	VerbForm=Inf	dema	0			oewn_form
 kip down	0	oewn-kip_down-v	VerbForm=Inf	dema	0			oewn_form
 kipped	0	oewn-kip-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 kipped down	0	oewn-kip_down-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -2721,8 +2712,8 @@ kippered salmons	0	oewn-kippered_salmon-n	Number=Plur	dema	0			rule
 kippers	0	oewn-kipper-n	Number=Plur	dema	0			rule
 kipping	0	oewn-kip-v	VerbForm=Ger	dema	0			oewn_form
 kipping down	0	oewn-kip_down-v	VerbForm=Ger	dema	0			rule
-kips	0	oewn-kip-n	Number=Plur	dema	0			rule_variant
-kips	1	oewn-kip-v	Person=3+Tense=Pres	dema	0			rule
+kips	0	oewn-kip-n	Number=Plur	dema	0			llm
+kips	1	oewn-kip-v	Person=3+Tense=Pres	dema	0			llm
 kips down	0	oewn-kip_down-v	Person=3+Tense=Pres	dema	0			rule
 kipuka	0		Number=Sing	dema	0	kipuka	n	moby_reverse
 kipukas	0		Number=Plur	dema	0	kipuka	n	rule
@@ -2733,9 +2724,8 @@ kirigamis	0		Number=Plur	dema	0	kirigami	n	rule
 kirk	0	oewn-kirk-n	Number=Sing	dema	0			oewn_form
 kirklike	0		Degree=Pos	dema	0	kirklike	a	moby_reverse
 kirkman	0		Number=Sing	dema	0	kirkman	n	moby_reverse
-kirkmans	0		Number=Plur	dema	0	kirkman	n	rule
-kirkmen	0		Number=Sing	dema	0	kirkmen	n	moby_reverse
-kirkmens	0		Number=Plur	dema	0	kirkmen	n	rule
+kirkmen	0		Number=Plur	dema	0	kirkman	n	rule
+kirkmen	1		Number=Sing	dema	0	kirkmen	n	moby_reverse
 kirks	0	oewn-kirk-n	Number=Plur	dema	0			rule
 kirmess	0		Number=Sing	dema	0	kirmess	n	moby_reverse
 kirmesses	0		Number=Plur	dema	0	kirmess	n	rule
@@ -2895,8 +2885,8 @@ kits out	0	oewn-kit_out-v	Person=3+Tense=Pres	dema	0			rule
 kits up	0	oewn-kit_up-v	Person=3+Tense=Pres	dema	0			rule
 kitsch	0	oewn-kitsch-n	Number=Sing	dema	0			oewn_form
 kitsches	0	oewn-kitsch-n	Number=Plur	dema	0			rule
-kitschier	0	oewn-kitschy-a	Degree=Cmp	dema	0			rule
-kitschiest	0	oewn-kitschy-a	Degree=Sup	dema	0			rule
+kitschier	0	oewn-kitschy-a	Degree=Cmp	dema	0			llm
+kitschiest	0	oewn-kitschy-a	Degree=Sup	dema	0			llm
 kitschy	0	oewn-kitschy-a	Degree=Pos	dema	0			oewn_form
 kitted	0	oewn-kit-v	Tense=Past+VerbForm=Part	dema	0			rule
 kitted out	0	oewn-kit_out-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -3008,7 +2998,7 @@ klongs	0		Number=Plur	dema	0	klong	n	rule
 kloof	0		Number=Sing	dema	0	kloof	n	moby_reverse
 kloofs	0		Number=Plur	dema	0	kloof	n	rule
 klootchman	0		Number=Sing	dema	0	klootchman	n	moby_reverse
-klootchmans	0		Number=Plur	dema	0	klootchman	n	rule
+klootchmen	0		Number=Plur	dema	0	klootchman	n	rule
 kluck	0		VerbForm=Inf	dema	0	kluck	v	moby_reverse
 kluck	1		Number=Sing	dema	0	kluck	n	moby_reverse
 klucked	0		Tense=Past+VerbForm=Part	dema	0	kluck	v	rule
@@ -3133,11 +3123,11 @@ kneel	1	oewn-kneel-n	Number=Sing	dema	0			oewn_form
 kneeled	0	oewn-kneel-v	Tense=Past+VerbForm=Part	dema	0			irregular_list
 kneeler	0	oewn-kneeler-n	Number=Sing	dema	0			oewn_form
 kneelers	0	oewn-kneeler-n	Number=Plur	dema	0			rule
-kneeling	0	oewn-kneel-v	VerbForm=Ger	dema	0			rule
+kneeling	0	oewn-kneel-v	VerbForm=Ger	dema	0			llm
 kneeling	1	oewn-kneeling-n	Number=Sing	dema	0			oewn_form
 kneelingly	0		Degree=Pos	dema	0	kneelingly	r	moby_reverse
 kneelings	0	oewn-kneeling-n	Number=Plur	dema	0			rule
-kneels	0	oewn-kneel-v	Person=3+Tense=Pres	dema	0			rule
+kneels	0	oewn-kneel-v	Person=3+Tense=Pres	dema	0			llm
 kneels	1	oewn-kneel-n	Number=Plur	dema	0			rule
 kneepad	0		Number=Sing	dema	0	kneepad	n	moby_reverse
 kneepads	0		Number=Plur	dema	0	kneepad	n	rule
@@ -3212,10 +3202,10 @@ knighthood	0	oewn-knighthood-n	Number=Sing	dema	0			oewn_form
 knighthoods	0	oewn-knighthood-n	Number=Plur	dema	0			rule
 knighting	0	oewn-knight-v	VerbForm=Ger	dema	0			rule
 knightless	0		Degree=Pos	dema	0	knightless	a	moby_reverse
-knightlier	0	oewn-knightly-a	Degree=Cmp	dema	0			rule
-knightliest	0	oewn-knightly-a	Degree=Sup	dema	0			rule
+knightlier	0	oewn-knightly-a	Degree=Cmp	dema	0			llm
+knightliest	0	oewn-knightly-a	Degree=Sup	dema	0			llm
 knightliness	0	oewn-knightliness-n	Number=Sing	dema	0			oewn_form
-knightlinesses	0	oewn-knightliness-n	Number=Plur	dema	0			rule
+knightlinesses	0	oewn-knightliness-n	Number=Plur	dema	0			llm
 knightly	0	oewn-knightly-a	Degree=Pos	dema	0			oewn_form
 knights	0	oewn-knight-n	Number=Plur	dema	0			rule
 knights	1	oewn-knight-v	Person=3+Tense=Pres	dema	0			rule
@@ -3267,8 +3257,8 @@ knobbler	0		Number=Sing	dema	0	knobbler	n	moby_reverse
 knobblers	0		Number=Plur	dema	0	knobbler	n	rule
 knobbles	0		Person=3+Tense=Pres	dema	0	knobble	v	rule
 knobbles	1	oewn-knobble-n	Number=Plur	dema	0			rule
-knobblier	0	oewn-knobbly-a	Degree=Cmp	dema	0			rule
-knobbliest	0	oewn-knobbly-a	Degree=Sup	dema	0			rule
+knobblier	0	oewn-knobbly-a	Degree=Cmp	dema	0			llm
+knobbliest	0	oewn-knobbly-a	Degree=Sup	dema	0			llm
 knobbling	0		VerbForm=Ger	dema	0	knobble	v	rule
 knobbly	0	oewn-knobbly-a	Degree=Pos	dema	0			oewn_form
 knobby	0	oewn-knobby-a	Degree=Pos	dema	0			oewn_form
@@ -3382,7 +3372,7 @@ knotlike	0		Degree=Pos	dema	0	knotlike	a	moby_reverse
 knotroot	0		Number=Sing	dema	0	knotroot	n	moby_reverse
 knotroots	0		Number=Plur	dema	0	knotroot	n	rule
 knots	0	oewn-knot-n	Number=Plur	dema	0			rule
-knots	1	oewn-knot-v	Person=3+Tense=Pres	dema	0			rule
+knots	1	oewn-knot-v	Person=3+Tense=Pres	dema	0			llm
 knotted	0	oewn-knotted-a	Degree=Pos	dema	0			oewn_form
 knotted	1	oewn-knot-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 knotted marjoram	0	oewn-knotted_marjoram-n	Number=Sing	dema	0			oewn_form
@@ -3655,8 +3645,8 @@ koruna	0	oewn-koruna-n	Number=Sing	dema	0			oewn_form
 korunas	0	oewn-koruna-n	Number=Plur	dema	0			rule
 korunies	0		Number=Plur	dema	0	koruny	n	rule
 koruny	0		Number=Sing	dema	0	koruny	n	moby_reverse
-kos	0	oewn-kos-n	Number=Sing	dema	0			oewn_form
-koses	0	oewn-kos-n	Number=Plur	dema	0			rule
+kos	0	oewn-kos-n	Number=Plur	dema	0			llm
+kos	1	oewn-kos-n	Number=Sing	dema	0			oewn_form
 kosha	0		Number=Sing	dema	0	kosha	n	moby_reverse
 koshas	0		Number=Plur	dema	0	kosha	n	rule
 kosher	0	oewn-kosher-a	Degree=Pos	dema	0			oewn_form

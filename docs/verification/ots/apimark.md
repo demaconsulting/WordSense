@@ -84,6 +84,39 @@ and `BertBaseCasedWordSense_XmlDocExamples_Compile`).
 **Requirement coverage**: supporting evidence for `WordSense-OTS-ApiMark-RenderExamples`, because
 the rendered examples are only useful to a reader if they are correct.
 
+### Manual Check: API Documentation Quiz
+
+The automated scenarios prove that pages are generated; they do not prove that the generated documentation is enough to
+use the library. That is checked by a repeatable manual quiz (not part of the automated test run):
+
+1. Delete the generated API documents of all packages (`src/*/generated/api`, untracked build output).
+2. Build the solution once in the Release configuration, so that ApiMark rewrites them.
+3. Copy the generated API documents of the four packages (`DemaConsulting.WordSense`, `.Onnx`, `.MiniLM` and
+   `.BertBaseCased`) to a fresh temporary folder, and nothing else: no source, README, user guide or build notes.
+4. Start an isolated reader that can read only that folder. It answers each question below from the documents alone,
+   quotes the supporting document and marks the answer PASS (complete, specific and consistent) or GAP (missing, vague or
+   contradictory, with what is missing).
+5. Verify every GAP against the code (never document a guess), fix it in the XML documentation, the namespace
+   documentation, the README or the user guide, and repeat from step 1 until every question is PASS.
+
+The questions: (1) classify end to end with each of the three models, including the packages, `EnsureModelAsync` with the
+default download, a mirror and an offline model directory, `ClassifyAsync` and how to read `Details` and `Confidence`;
+(2) list the candidates of a word such as `read` with `WordLexicon`, including the keys, a missing word and the entries;
+(3) choose a model, with the measured accuracy, download size, latency and memory, and when Basic is enough; (4) threshold
+the confidence, including its meaning per model, the special values 0 and 1 and whether a threshold can be reused across
+models; (5) unknown words and unresolved ambiguity, with an example of each; (6) thread safety, disposal and the cost of
+first use; (7) offline use and failures, including the store location, the environment variables, the files verified
+against SHA-256 and the exceptions of `EnsureModelAsync`; (8) tokenization, including punctuation, contractions, hyphens,
+curly apostrophes, sentences per call and the maximum input length; (9) disposal and ownership, including disposal during
+a download and after disposal; (10) laziness of the model files and of the ensure, including concurrent callers and retry
+after a failure; (11) the public contract of `IWordSenseModel` and what a third-party implementation must honor.
+
+Five rounds were run. Round 1 found gaps in every question, round 2 left minor gaps and one gap in tokenization, and the
+later rounds, with questions 9 to 11 added, found consistency gaps in disposal, cancellation, thresholds, environment
+variable rules and the contract for implementers; every real gap was verified against the code and fixed in the
+documentation. The last round was not repeated after its fixes, so the quiz should be run again after any change to the
+public API documentation and before a release that changes it.
+
 ### Requirements Coverage
 
 - **`WordSense-OTS-ApiMark-Generate`**: ApiMark_ApiIndex

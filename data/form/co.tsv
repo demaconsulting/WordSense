@@ -4,11 +4,10 @@ CO	1	oewn-CO-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 CO2	0	oewn-CO2-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 COBOL	0	oewn-COBOL-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 COBOLS	0	oewn-COBOL-n	Capitalization=Upper+Number=Plur	dema	0			rule
-COD	0	oewn-cod-n	Number=Plur	dema	0			agid
-COD	1	oewn-cod-n	Number=Sing	dema	0			oewn_form
-COD	2	oewn-cod-v	VerbForm=Inf	dema	0			oewn_form
-COD	3	oewn-cod-a	Degree=Pos	dema	0			oewn_form
-COD	4	oewn-COD-r	Capitalization=Upper+Degree=Pos	dema	0			oewn_form
+COD	0	oewn-cod-n	Number=Sing	dema	0			oewn_form
+COD	1	oewn-cod-v	VerbForm=Inf	dema	0			oewn_form
+COD	2	oewn-cod-a	Degree=Pos	dema	0			oewn_form
+COD	3	oewn-COD-r	Capitalization=Upper+Degree=Pos	dema	0			oewn_form
 COMINT	0	oewn-COMINT-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 COMINTS	0	oewn-COMINT-n	Capitalization=Upper+Number=Plur	dema	0			rule
 CORE	0	oewn-core-n	Number=Sing	dema	0			oewn_form
@@ -484,9 +483,9 @@ Cornish pasties	0	oewn-Cornish_pasty-n	Capitalization=Exact+Number=Plur	dema	0		
 Cornish pasty	0	oewn-Cornish_pasty-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Cornishes	0	oewn-Cornish-n	Capitalization=Title+Number=Plur	dema	0			rule
 Cornishman	0	oewn-Cornishman-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-Cornishmans	0	oewn-Cornishman-n	Capitalization=Title+Number=Plur	dema	0			rule
+Cornishmen	0	oewn-Cornishman-n	Capitalization=Title+Number=Plur	dema	0			rule
 Cornishwoman	0	oewn-Cornishwoman-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-Cornishwomans	0	oewn-Cornishwoman-n	Capitalization=Title+Number=Plur	dema	0			rule
+Cornishwomen	0	oewn-Cornishwoman-n	Capitalization=Title+Number=Plur	dema	0			rule
 Cornu aspersum	0	oewn-Cornu_aspersum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Cornu aspersums	0	oewn-Cornu_aspersum-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Cornus amomum	0	oewn-Cornus_amomum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
@@ -755,13 +754,13 @@ coachings	0	oewn-coaching-n	Number=Plur	dema	0			rule
 coachman	0	oewn-coachman-n	Number=Sing	dema	0			oewn_form
 coachmanship	0		Number=Sing	dema	0	coachmanship	n	moby_reverse
 coachmanships	0		Number=Plur	dema	0	coachmanship	n	rule
-coachmen	0	oewn-coachman-n	Number=Plur	dema	0			agid
+coachmen	0	oewn-coachman-n	Number=Plur	dema	0			llm
 coachwhip	0	oewn-coachwhip-n	Number=Sing	dema	0			oewn_form
 coachwhip snake	0	oewn-coachwhip_snake-n	Number=Sing	dema	0			oewn_form
 coachwhip snakes	0	oewn-coachwhip_snake-n	Number=Plur	dema	0			rule
 coachwhips	0	oewn-coachwhip-n	Number=Plur	dema	0			rule
 coachwoman	0	oewn-coachwoman-n	Number=Sing	dema	0			oewn_form
-coachwomans	0	oewn-coachwoman-n	Number=Plur	dema	0			rule
+coachwomen	0	oewn-coachwoman-n	Number=Plur	dema	0			rule
 coachwood	0		Number=Sing	dema	0	coachwood	n	moby_reverse
 coachwoods	0		Number=Plur	dema	0	coachwood	n	rule
 coachwork	0		Number=Sing	dema	0	coachwork	n	moby_reverse
@@ -904,13 +903,13 @@ coalitionists	0		Number=Plur	dema	0	coalitionist	n	rule
 coalitions	0	oewn-coalition-n	Number=Plur	dema	0			rule
 coalless	0		Degree=Pos	dema	0	coalless	a	moby_reverse
 coalman	0	oewn-coalman-n	Number=Sing	dema	0			oewn_form
-coalmans	0	oewn-coalman-n	Number=Plur	dema	0			rule
+coalmen	0	oewn-coalman-n	Number=Plur	dema	0			rule
 coalpit	0	oewn-coalpit-n	Number=Sing	dema	0			oewn_form
 coalpits	0	oewn-coalpit-n	Number=Plur	dema	0			rule
 coals	0	oewn-coal-n	Number=Plur	dema	0			rule
 coals	1	oewn-coal-v	Person=3+Tense=Pres	dema	0			rule
 coalwoman	0	oewn-coalwoman-n	Number=Sing	dema	0			oewn_form
-coalwomans	0	oewn-coalwoman-n	Number=Plur	dema	0			rule
+coalwomen	0	oewn-coalwoman-n	Number=Plur	dema	0			rule
 coaly	0		Degree=Pos	dema	0	coaly	a	moby_reverse
 coaming	0	oewn-coaming-n	Number=Sing	dema	0			oewn_form
 coamings	0	oewn-coaming-n	Number=Plur	dema	0			rule
@@ -936,8 +935,8 @@ coarseness	0	oewn-coarseness-n	Number=Sing	dema	0			oewn_form
 coarsenesses	0	oewn-coarseness-n	Number=Plur	dema	0			rule
 coarsening	0	oewn-coarsen-v	VerbForm=Ger	dema	0			rule
 coarsens	0	oewn-coarsen-v	Person=3+Tense=Pres	dema	0			rule
-coarser	0	oewn-coarse-a	Degree=Cmp	dema	0			moby_reverse
-coarsest	0	oewn-coarse-a	Degree=Sup	dema	0			moby_reverse
+coarser	0	oewn-coarse-a	Degree=Cmp	dema	0			llm
+coarsest	0	oewn-coarse-a	Degree=Sup	dema	0			llm
 coarticulation	0		Number=Sing	dema	0	coarticulation	n	moby_reverse
 coarticulations	0		Number=Plur	dema	0	coarticulation	n	rule
 coast	0	oewn-coast-n	Number=Sing	dema	0			oewn_form
@@ -976,9 +975,9 @@ coasters	0	oewn-coaster-n	Number=Plur	dema	0			rule
 coastguard	0	oewn-coastguard-n	Number=Sing	dema	0			oewn_form
 coastguards	0	oewn-coastguard-n	Number=Plur	dema	0			rule
 coastguardsman	0	oewn-coastguardsman-n	Number=Sing	dema	0			oewn_form
-coastguardsmen	0	oewn-coastguardsman-n	Number=Plur	dema	0			agid
+coastguardsmen	0	oewn-coastguardsman-n	Number=Plur	dema	0			llm
 coastguardswoman	0	oewn-coastguardswoman-n	Number=Sing	dema	0			oewn_form
-coastguardswomans	0	oewn-coastguardswoman-n	Number=Plur	dema	0			rule
+coastguardswomen	0	oewn-coastguardswoman-n	Number=Plur	dema	0			rule
 coasting	0	oewn-coast-v	VerbForm=Ger	dema	0			rule
 coastland	0	oewn-coastland-n	Number=Sing	dema	0			oewn_form
 coastlands	0	oewn-coastland-n	Number=Plur	dema	0			rule
@@ -1197,9 +1196,8 @@ coccyx	0	oewn-coccyx-n	Number=Sing	dema	0			oewn_form
 coccyxes	0	oewn-coccyx-n	Number=Plur	dema	0			rule_variant
 coch	0		Number=Sing	dema	0	coch	n	moby_reverse
 cochairman	0		Number=Sing	dema	0	cochairman	n	moby_reverse
-cochairmans	0		Number=Plur	dema	0	cochairman	n	rule
-cochairmen	0		Number=Sing	dema	0	cochairmen	n	moby_reverse
-cochairmens	0		Number=Plur	dema	0	cochairmen	n	rule
+cochairmen	0		Number=Plur	dema	0	cochairman	n	rule
+cochairmen	1		Number=Sing	dema	0	cochairmen	n	moby_reverse
 coches	0		Number=Plur	dema	0	coch	n	rule
 cochin	0	oewn-cochin-n	Number=Sing	dema	0			oewn_form
 cochin china	0	oewn-cochin_china-n	Number=Sing	dema	0			oewn_form
@@ -1466,10 +1464,9 @@ cocozelle	0	oewn-cocozelle-n	Number=Sing	dema	0			oewn_form
 cocozelles	0	oewn-cocozelle-n	Number=Plur	dema	0			rule
 cocuswood	0	oewn-cocuswood-n	Number=Sing	dema	0			oewn_form
 cocuswoods	0	oewn-cocuswood-n	Number=Plur	dema	0			rule
-cod	0	oewn-cod-n	Number=Plur	dema	0			agid
-cod	1	oewn-cod-n	Number=Sing	dema	0			oewn_form
-cod	2	oewn-cod-v	VerbForm=Inf	dema	0			oewn_form
-cod	3	oewn-cod-a	Degree=Pos	dema	0			oewn_form
+cod	0	oewn-cod-n	Number=Sing	dema	0			oewn_form
+cod	1	oewn-cod-v	VerbForm=Inf	dema	0			oewn_form
+cod	2	oewn-cod-a	Degree=Pos	dema	0			oewn_form
 cod liver oil	0	oewn-cod_liver_oil-n	Number=Sing	dema	0			oewn_form
 cod liver oils	0	oewn-cod_liver_oil-n	Number=Plur	dema	0			rule
 cod oil	0	oewn-cod_oil-n	Number=Sing	dema	0			oewn_form
@@ -1565,7 +1562,7 @@ codon	0	oewn-codon-n	Number=Sing	dema	0			oewn_form
 codons	0	oewn-codon-n	Number=Plur	dema	0			rule
 codpiece	0	oewn-codpiece-n	Number=Sing	dema	0			oewn_form
 codpieces	0	oewn-codpiece-n	Number=Plur	dema	0			rule
-cods	0	oewn-cod-n	Number=Plur	dema	0			rule_variant
+cods	0	oewn-cod-n	Number=Plur	dema	0			rule
 cods	1	oewn-cod-v	Person=3+Tense=Pres	dema	0			rule
 codswallop	0	oewn-codswallop-n	Number=Sing	dema	0			oewn_form
 codswallops	0	oewn-codswallop-n	Number=Plur	dema	0			rule
@@ -2016,7 +2013,7 @@ cohesive	0	oewn-cohesive-a	Degree=Pos	dema	0			oewn_form
 cohesively	0		Degree=Pos	dema	0	cohesively	r	moby_reverse
 cohesiveness	0	oewn-cohesiveness-n	Number=Sing	dema	0			oewn_form
 cohesivenesses	0	oewn-cohesiveness-n	Number=Plur	dema	0			rule
-coho	0	oewn-coho-n	Number=Plur	dema	0			agid
+coho	0	oewn-coho-n	Number=Plur	dema	0			llm
 coho	1	oewn-coho-n	Number=Sing	dema	0			oewn_form
 coho salmon	0	oewn-coho_salmon-n	Number=Sing	dema	0			oewn_form
 coho salmons	0	oewn-coho_salmon-n	Number=Plur	dema	0			rule
@@ -2069,7 +2066,7 @@ coiffures	1	oewn-coiffure-v	Person=3+Tense=Pres	dema	0			rule
 coiffuring	0	oewn-coiffure-v	VerbForm=Ger	dema	0			rule
 coifing	0	oewn-coif-v	VerbForm=Ger	dema	0			rule_variant
 coifs	0	oewn-coif-n	Number=Plur	dema	0			rule
-coifs	1	oewn-coif-v	Person=3+Tense=Pres	dema	0			rule
+coifs	1	oewn-coif-v	Person=3+Tense=Pres	dema	0			llm
 coign	0	oewn-coign-n	Number=Sing	dema	0			oewn_form
 coigne	0	oewn-coigne-n	Number=Sing	dema	0			oewn_form
 coigne	1		VerbForm=Inf	dema	0	coigne	v	moby_reverse
@@ -2154,9 +2151,10 @@ coital	0	oewn-coital-a	Degree=Pos	dema	0			oewn_form
 coition	0	oewn-coition-n	Number=Sing	dema	0			oewn_form
 coitions	0	oewn-coition-n	Number=Plur	dema	0			rule
 coits	0		Number=Plur	dema	0	coit	n	rule
-coitus	0	oewn-coitus-n	Number=Sing	dema	0			oewn_form
+coitus	0	oewn-coitus-n	Number=Plur	dema	0			rule_variant
+coitus	1	oewn-coitus-n	Number=Sing	dema	0			oewn_form
 coitus interruptus	0	oewn-coitus_interruptus-n	Number=Sing	dema	0			oewn_form
-coituses	0	oewn-coitus-n	Number=Plur	dema	0			rule
+coituses	0	oewn-coitus-n	Number=Plur	dema	0			llm
 coke	0	oewn-coke-n	Number=Sing	dema	0			oewn_form
 coke	1	oewn-coke-v	VerbForm=Inf	dema	0			oewn_form
 coked	0	oewn-coke-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -2282,8 +2280,8 @@ coldcocks	0	oewn-coldcock-v	Person=3+Tense=Pres	dema	0			rule
 coldcream	0	oewn-coldcream-n	Number=Sing	dema	0			oewn_form
 coldcreams	0	oewn-coldcream-n	Number=Plur	dema	0			rule
 colded work	0	oewn-cold_work-v	Tense=Past+VerbForm=Part	dema	0			rule
-colder	0	oewn-cold-a	Degree=Cmp	dema	0			rule
-coldest	0	oewn-cold-a	Degree=Sup	dema	0			rule
+colder	0	oewn-cold-a	Degree=Cmp	dema	0			llm
+coldest	0	oewn-cold-a	Degree=Sup	dema	0			llm
 coldhearted	0	oewn-coldhearted-a	Degree=Pos	dema	0			oewn_form
 coldheartedness	0	oewn-coldheartedness-n	Number=Sing	dema	0			oewn_form
 coldheartednesses	0	oewn-coldheartedness-n	Number=Plur	dema	0			rule
@@ -2358,8 +2356,8 @@ coliphages	0	oewn-coliphage-n	Number=Plur	dema	0			rule
 coliseum	0	oewn-coliseum-n	Number=Sing	dema	0			oewn_form
 coliseums	0	oewn-coliseum-n	Number=Plur	dema	0			rule
 colitic	0		Degree=Pos	dema	0	colitic	a	moby_reverse
+colitides	0	oewn-colitis-n	Number=Plur	dema	0			llm
 colitis	0	oewn-colitis-n	Number=Sing	dema	0			oewn_form
-colitises	0	oewn-colitis-n	Number=Plur	dema	0			rule
 coll	0		Number=Sing	dema	0	coll	n	moby_reverse
 colla	0		Number=Sing	dema	0	colla	n	moby_reverse
 collab	0		Number=Sing	dema	0	collab	n	moby_reverse
@@ -2561,7 +2559,7 @@ college girls	0	oewn-college_girl-n	Number=Plur	dema	0			rule
 college level	0	oewn-college_level-n	Number=Sing	dema	0			oewn_form
 college levels	0	oewn-college_level-n	Number=Plur	dema	0			rule
 college man	0	oewn-college_man-n	Number=Sing	dema	0			oewn_form
-college mans	0	oewn-college_man-n	Number=Plur	dema	0			rule
+college men	0	oewn-college_man-n	Number=Plur	dema	0			rule
 college student	0	oewn-college_student-n	Number=Sing	dema	0			oewn_form
 college students	0	oewn-college_student-n	Number=Plur	dema	0			rule
 colleger	0		Number=Sing	dema	0	colleger	n	moby_reverse
@@ -2635,7 +2633,7 @@ collinearities	0		Number=Plur	dema	0	collinearity	n	rule
 collinearity	0		Number=Sing	dema	0	collinearity	n	moby_reverse
 collinearly	0		Degree=Pos	dema	0	collinearly	r	moby_reverse
 collins	0	oewn-collins-n	Number=Sing	dema	0			oewn_form
-collinses	0	oewn-collins-n	Number=Plur	dema	0			rule
+collinses	0	oewn-collins-n	Number=Plur	dema	0			llm
 collinsia	0		Number=Sing	dema	0	collinsia	n	moby_reverse
 collinsias	0		Number=Plur	dema	0	collinsia	n	rule
 collision	0	oewn-collision-n	Number=Sing	dema	0			oewn_form
@@ -2696,7 +2694,7 @@ colloquialists	0		Number=Plur	dema	0	colloquialist	n	rule
 colloquially	0	oewn-colloquially-r	Degree=Pos	dema	0			oewn_form
 colloquialness	0		Number=Sing	dema	0	colloquialness	n	moby_reverse
 colloquialnesses	0		Number=Plur	dema	0	colloquialness	n	rule
-colloquies	0	oewn-colloquy-n	Number=Plur	dema	0			agid
+colloquies	0	oewn-colloquy-n	Number=Plur	dema	0			llm
 colloquist	0		Number=Sing	dema	0	colloquist	n	moby_reverse
 colloquists	0		Number=Plur	dema	0	colloquist	n	rule
 colloquium	0	oewn-colloquium-n	Number=Sing	dema	0			oewn_form
@@ -2753,11 +2751,13 @@ collywobbles	0	oewn-collywobbles-n	Number=Sing	dema	0			oewn_form
 colnaria	0		Number=Sing	dema	0	colnaria	n	moby_reverse
 colnarias	0		Number=Plur	dema	0	colnaria	n	rule
 colob	0		Number=Sing	dema	0	colob	n	moby_reverse
+colobi	0	oewn-colobus-n	Number=Plur	dema	0			rule_variant
 colobs	0		Number=Plur	dema	0	colob	n	rule
-colobus	0	oewn-colobus-n	Number=Sing	dema	0			oewn_form
+colobus	0	oewn-colobus-n	Number=Plur	dema	0			rule_variant
+colobus	1	oewn-colobus-n	Number=Sing	dema	0			oewn_form
 colobus monkey	0	oewn-colobus_monkey-n	Number=Sing	dema	0			oewn_form
 colobus monkeys	0	oewn-colobus_monkey-n	Number=Plur	dema	0			rule
-colobuses	0	oewn-colobus-n	Number=Plur	dema	0			rule
+colobuses	0	oewn-colobus-n	Number=Plur	dema	0			llm
 colocynth	0		Number=Sing	dema	0	colocynth	n	moby_reverse
 colocynths	0		Number=Plur	dema	0	colocynth	n	rule
 colog	0		Number=Sing	dema	0	colog	n	moby_reverse
@@ -2831,7 +2831,6 @@ colonising	0	oewn-colonise-v	VerbForm=Ger	dema	0			rule
 colonist	0	oewn-colonist-n	Number=Sing	dema	0			oewn_form
 colonists	0	oewn-colonist-n	Number=Plur	dema	0			rule
 colonitis	0		Number=Sing	dema	0	colonitis	n	moby_reverse
-colonitises	0		Number=Plur	dema	0	colonitis	n	rule
 colonizabilities	0		Number=Plur	dema	0	colonizability	n	rule
 colonizability	0		Number=Sing	dema	0	colonizability	n	moby_reverse
 colonizable	0		Degree=Pos	dema	0	colonizable	a	moby_reverse
@@ -2948,10 +2947,11 @@ colorbearer	0		Number=Sing	dema	0	colorbearer	n	moby_reverse
 colorbearers	0		Number=Plur	dema	0	colorbearer	n	rule
 colorcast	0	oewn-colorcast-n	Number=Sing	dema	0			oewn_form
 colorcast	1	oewn-colorcast-v	VerbForm=Inf	dema	0			oewn_form
-colorcast	2	oewn-colorcast-v	Tense=Past+VerbForm=Part	dema	0			agid
-colorcasting	0	oewn-colorcast-v	VerbForm=Ger	dema	0			rule
+colorcast	2	oewn-colorcast-v	Tense=Past+VerbForm=Part	dema	0			llm
+colorcasted	0	oewn-colorcast-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+colorcasting	0	oewn-colorcast-v	VerbForm=Ger	dema	0			llm
 colorcasts	0	oewn-colorcast-n	Number=Plur	dema	0			rule
-colorcasts	1	oewn-colorcast-v	Person=3+Tense=Pres	dema	0			rule
+colorcasts	1	oewn-colorcast-v	Person=3+Tense=Pres	dema	0			llm
 colorectal	0	oewn-colorectal-a	Degree=Pos	dema	0			oewn_form
 colored	0	oewn-colored-a	Degree=Pos	dema	0			oewn_form
 colored	1	oewn-color-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -3007,7 +3007,7 @@ colorlessly	0		Degree=Pos	dema	0	colorlessly	r	moby_reverse
 colorlessness	0	oewn-colorlessness-n	Number=Sing	dema	0			oewn_form
 colorlessnesses	0	oewn-colorlessness-n	Number=Plur	dema	0			rule
 colorman	0		Number=Sing	dema	0	colorman	n	moby_reverse
-colormans	0		Number=Plur	dema	0	colorman	n	rule
+colormen	0		Number=Plur	dema	0	colorman	n	rule
 colors	0	oewn-color-n	Number=Plur	dema	0			rule
 colors	1	oewn-colors-n	Number=Sing	dema	0			oewn_form
 colors	2	oewn-color-v	Person=3+Tense=Pres	dema	0			rule
@@ -3095,9 +3095,9 @@ colouring material	0	oewn-colouring_material-n	Number=Sing	dema	0			oewn_form
 colouring materials	0	oewn-colouring_material-n	Number=Plur	dema	0			rule
 colourings	0	oewn-colouring-n	Number=Plur	dema	0			rule
 colourise	0	oewn-colourise-v	VerbForm=Inf	dema	0			oewn_form
-colourised	0	oewn-colourise-v	Tense=Past+VerbForm=Part	dema	0			rule
-colourises	0	oewn-colourise-v	Person=3+Tense=Pres	dema	0			rule
-colourising	0	oewn-colourise-v	VerbForm=Ger	dema	0			rule
+colourised	0	oewn-colourise-v	Tense=Past+VerbForm=Part	dema	0			llm
+colourises	0	oewn-colourise-v	Person=3+Tense=Pres	dema	0			llm
+colourising	0	oewn-colourise-v	VerbForm=Ger	dema	0			llm
 colourist	0		Number=Sing	dema	0	colourist	n	moby_reverse
 colouristic	0		Degree=Pos	dema	0	colouristic	a	moby_reverse
 colourists	0		Number=Plur	dema	0	colourist	n	rule
@@ -3113,8 +3113,8 @@ colours	0	oewn-colour-n	Number=Plur	dema	1			carried
 colours	1	oewn-colour-v	Person=3+Tense=Pres	dema	1			carried
 colours in	0	oewn-colour_in-v	Person=3+Tense=Pres	dema	0			rule
 colours of law	0	oewn-colour_of_law-n	Number=Plur	dema	0			rule
+colpitides	0	oewn-colpitis-n	Number=Plur	dema	0			llm
 colpitis	0	oewn-colpitis-n	Number=Sing	dema	0			oewn_form
-colpitises	0	oewn-colpitis-n	Number=Plur	dema	0			rule
 colpocele	0	oewn-colpocele-n	Number=Sing	dema	0			oewn_form
 colpoceles	0	oewn-colpocele-n	Number=Plur	dema	0			rule
 colpocystitis	0	oewn-colpocystitis-n	Number=Sing	dema	0			oewn_form
@@ -3153,7 +3153,7 @@ colubrid snakes	0	oewn-colubrid_snake-n	Number=Plur	dema	0			rule
 colubrids	0	oewn-colubrid-n	Number=Plur	dema	0			rule
 colubrine	0		Degree=Pos	dema	0	colubrine	a	moby_reverse
 colugo	0	oewn-colugo-n	Number=Sing	dema	0			oewn_form
-colugos	0	oewn-colugo-n	Number=Plur	dema	0			rule
+colugos	0	oewn-colugo-n	Number=Plur	dema	0			llm
 columbaria	0	oewn-columbarium-n	Number=Plur	dema	0			oewn_form
 columbaries	0	oewn-columbary-n	Number=Plur	dema	0			rule
 columbarium	0	oewn-columbarium-n	Number=Sing	dema	0			oewn_form
@@ -3237,7 +3237,7 @@ comatic	0		Degree=Pos	dema	0	comatic	a	moby_reverse
 comatose	0	oewn-comatose-a	Degree=Pos	dema	0			oewn_form
 comatosely	0		Degree=Pos	dema	0	comatosely	r	moby_reverse
 comatoseness	0	oewn-comatoseness-n	Number=Sing	dema	0			oewn_form
-comatosenesses	0	oewn-comatoseness-n	Number=Plur	dema	0			rule
+comatosenesses	0	oewn-comatoseness-n	Number=Plur	dema	0			llm
 comatosities	0		Number=Plur	dema	0	comatosity	n	rule
 comatosity	0		Number=Sing	dema	0	comatosity	n	moby_reverse
 comatulid	0	oewn-comatulid-n	Number=Sing	dema	0			oewn_form
@@ -3556,10 +3556,10 @@ comfily	0		Degree=Pos	dema	0	comfily	r	moby_reverse
 comfiness	0		Number=Sing	dema	0	comfiness	n	moby_reverse
 comfit	0	oewn-comfit-n	Number=Sing	dema	0			oewn_form
 comfit	1	oewn-comfit-v	VerbForm=Inf	dema	0			oewn_form
-comfited	0	oewn-comfit-v	Tense=Past+VerbForm=Part	dema	0			rule
-comfiting	0	oewn-comfit-v	VerbForm=Ger	dema	0			rule
 comfits	0	oewn-comfit-n	Number=Plur	dema	0			rule
 comfits	1	oewn-comfit-v	Person=3+Tense=Pres	dema	0			rule
+comfitted	0	oewn-comfit-v	Tense=Past+VerbForm=Part	dema	0			rule
+comfitting	0	oewn-comfit-v	VerbForm=Ger	dema	0			rule
 comfort	0	oewn-comfort-n	Number=Sing	dema	0			oewn_form
 comfort	1	oewn-comfort-v	VerbForm=Inf	dema	0			oewn_form
 comfort food	0	oewn-comfort_food-n	Number=Sing	dema	0			oewn_form
@@ -3567,7 +3567,7 @@ comfort foods	0	oewn-comfort_food-n	Number=Plur	dema	0			rule
 comfort station	0	oewn-comfort_station-n	Number=Sing	dema	0			oewn_form
 comfort stations	0	oewn-comfort_station-n	Number=Plur	dema	0			rule
 comfort woman	0	oewn-comfort_woman-n	Number=Sing	dema	0			oewn_form
-comfort womans	0	oewn-comfort_woman-n	Number=Plur	dema	0			rule
+comfort women	0	oewn-comfort_woman-n	Number=Plur	dema	0			rule
 comfort zone	0	oewn-comfort_zone-n	Number=Sing	dema	0			oewn_form
 comfort zones	0	oewn-comfort_zone-n	Number=Plur	dema	0			rule
 comfortable	0	oewn-comfortable-a	Degree=Pos	dema	0			oewn_form
@@ -4012,12 +4012,12 @@ committee members	0	oewn-committee_member-n	Number=Plur	dema	0			rule
 committeeism	0		Number=Sing	dema	0	committeeism	n	moby_reverse
 committeeisms	0		Number=Plur	dema	0	committeeism	n	rule
 committeeman	0	oewn-committeeman-n	Number=Sing	dema	0			oewn_form
-committeemen	0	oewn-committeeman-n	Number=Plur	dema	0			agid
+committeemen	0	oewn-committeeman-n	Number=Plur	dema	0			llm
 committees	0	oewn-committee-n	Number=Plur	dema	0			rule
 committeeship	0		Number=Sing	dema	0	committeeship	n	moby_reverse
 committeeships	0		Number=Plur	dema	0	committeeship	n	rule
 committeewoman	0	oewn-committeewoman-n	Number=Sing	dema	0			oewn_form
-committeewomen	0	oewn-committeewoman-n	Number=Plur	dema	0			agid
+committeewomen	0	oewn-committeewoman-n	Number=Plur	dema	0			llm
 committer	0		Number=Sing	dema	0	committer	n	moby_reverse
 committers	0		Number=Plur	dema	0	committer	n	rule
 committing	0	oewn-commit-v	VerbForm=Ger	dema	0			oewn_form
@@ -4270,13 +4270,13 @@ common maidenhairs	0	oewn-common_maidenhair-n	Number=Plur	dema	0			rule
 common mallow	0	oewn-common_mallow-n	Number=Sing	dema	0			oewn_form
 common mallows	0	oewn-common_mallow-n	Number=Plur	dema	0			rule
 common man	0	oewn-common_man-n	Number=Sing	dema	0			oewn_form
-common mans	0	oewn-common_man-n	Number=Plur	dema	0			rule
 common marigold	0	oewn-common_marigold-n	Number=Sing	dema	0			oewn_form
 common marigolds	0	oewn-common_marigold-n	Number=Plur	dema	0			rule
 common matrimony vine	0	oewn-common_matrimony_vine-n	Number=Sing	dema	0			oewn_form
 common matrimony vines	0	oewn-common_matrimony_vine-n	Number=Plur	dema	0			rule
 common measure	0	oewn-common_measure-n	Number=Sing	dema	0			oewn_form
 common measures	0	oewn-common_measure-n	Number=Plur	dema	0			rule
+common men	0	oewn-common_man-n	Number=Plur	dema	0			rule
 common meter	0	oewn-common_meter-n	Number=Sing	dema	0			oewn_form
 common meters	0	oewn-common_meter-n	Number=Plur	dema	0			rule
 common milkwort	0	oewn-common_milkwort-n	Number=Sing	dema	0			oewn_form
@@ -4453,7 +4453,7 @@ common winterberry holly	0	oewn-common_winterberry_holly-n	Number=Sing	dema	0			
 common wolffia	0	oewn-common_wolffia-n	Number=Sing	dema	0			oewn_form
 common wolffias	0	oewn-common_wolffia-n	Number=Plur	dema	0			rule
 common woman	0	oewn-common_woman-n	Number=Sing	dema	0			oewn_form
-common womans	0	oewn-common_woman-n	Number=Plur	dema	0			rule
+common women	0	oewn-common_woman-n	Number=Plur	dema	0			rule
 common wood sorrel	0	oewn-common_wood_sorrel-n	Number=Sing	dema	0			oewn_form
 common wood sorrels	0	oewn-common_wood_sorrel-n	Number=Plur	dema	0			rule
 common wormwood	0	oewn-common_wormwood-n	Number=Sing	dema	0			oewn_form
@@ -4471,7 +4471,7 @@ common-law marriage	0	oewn-common-law_marriage-n	Number=Sing	dema	0			oewn_form
 common-law marriages	0	oewn-common-law_marriage-n	Number=Plur	dema	0			rule
 commonable	0		Degree=Pos	dema	0	commonable	a	moby_reverse
 commonage	0	oewn-commonage-n	Number=Sing	dema	0			oewn_form
-commonages	0	oewn-commonage-n	Number=Plur	dema	0			rule
+commonages	0	oewn-commonage-n	Number=Plur	dema	0			llm
 commonalities	0	oewn-commonality-n	Number=Plur	dema	0			rule
 commonality	0	oewn-commonality-n	Number=Sing	dema	0			oewn_form
 commonalties	0	oewn-commonalty-n	Number=Plur	dema	0			rule
@@ -4761,7 +4761,7 @@ companionways	0	oewn-companionway-n	Number=Plur	dema	0			rule
 company	0	oewn-company-n	Number=Sing	dema	0			oewn_form
 company	1	oewn-company-v	VerbForm=Inf	dema	0			oewn_form
 company man	0	oewn-company_man-n	Number=Sing	dema	0			oewn_form
-company mans	0	oewn-company_man-n	Number=Plur	dema	0			rule
+company men	0	oewn-company_man-n	Number=Plur	dema	0			rule
 company name	0	oewn-company_name-n	Number=Sing	dema	0			oewn_form
 company names	0	oewn-company_name-n	Number=Plur	dema	0			rule
 company operator	0	oewn-company_operator-n	Number=Sing	dema	0			oewn_form
@@ -4771,7 +4771,7 @@ company persons	0	oewn-company_person-n	Number=Plur	dema	0			rule
 company union	0	oewn-company_union-n	Number=Sing	dema	0			oewn_form
 company unions	0	oewn-company_union-n	Number=Plur	dema	0			rule
 company woman	0	oewn-company_woman-n	Number=Sing	dema	0			oewn_form
-company womans	0	oewn-company_woman-n	Number=Plur	dema	0			rule
+company women	0	oewn-company_woman-n	Number=Plur	dema	0			rule
 companying	0		Number=Sing	dema	0	companying	n	moby_reverse
 companying	1	oewn-company-v	VerbForm=Ger	dema	0			rule
 companyings	0		Number=Plur	dema	0	companying	n	rule
@@ -4821,7 +4821,7 @@ comparison-shop	0	oewn-comparison-shop-v	VerbForm=Inf	dema	0			oewn_form
 comparison-shoped	0	oewn-comparison-shop-v	Tense=Past+VerbForm=Part	dema	0			rule
 comparison-shoping	0	oewn-comparison-shop-v	VerbForm=Ger	dema	0			rule
 comparison-shops	0	oewn-comparison-shop-v	Person=3+Tense=Pres	dema	0			rule
-comparisons	0	oewn-comparison-n	Number=Plur	dema	0			rule
+comparisons	0	oewn-comparison-n	Number=Plur	dema	0			llm
 compars	0		Number=Plur	dema	0	compar	n	rule
 comparsa	0		Number=Sing	dema	0	comparsa	n	moby_reverse
 comparsas	0		Number=Plur	dema	0	comparsa	n	rule
@@ -4931,7 +4931,7 @@ compendiously	0		Degree=Pos	dema	0	compendiously	r	moby_reverse
 compendiousness	0		Number=Sing	dema	0	compendiousness	n	moby_reverse
 compendiousnesses	0		Number=Plur	dema	0	compendiousness	n	rule
 compendium	0	oewn-compendium-n	Number=Sing	dema	0			oewn_form
-compendiums	0	oewn-compendium-n	Number=Plur	dema	0			rule_variant
+compendiums	0	oewn-compendium-n	Number=Plur	dema	0			llm
 compensable	0	oewn-compensable-a	Degree=Pos	dema	0			oewn_form
 compensate	0	oewn-compensate-v	VerbForm=Inf	dema	0			oewn_form
 compensated	0	oewn-compensate-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -5589,13 +5589,14 @@ computer-aided designs	0	oewn-computer-aided_design-n	Number=Plur	dema	0			rule
 computer-oriented language	0	oewn-computer-oriented_language-n	Number=Sing	dema	0			oewn_form
 computer-oriented languages	0	oewn-computer-oriented_language-n	Number=Plur	dema	0			rule
 computerise	0	oewn-computerise-v	VerbForm=Inf	dema	0			oewn_form
-computerised	0	oewn-computerise-v	Tense=Past+VerbForm=Part	dema	0			rule
-computerises	0	oewn-computerise-v	Person=3+Tense=Pres	dema	0			rule
-computerising	0	oewn-computerise-v	VerbForm=Ger	dema	0			rule
+computerised	0	oewn-computerise-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+computerises	0	oewn-computerise-v	Person=3+Tense=Pres	dema	0			rule_variant
+computerising	0	oewn-computerise-v	VerbForm=Ger	dema	0			rule_variant
 computerization	0	oewn-computerization-n	Number=Sing	dema	0			oewn_form
 computerizations	0	oewn-computerization-n	Number=Plur	dema	0			rule
 computerize	0	oewn-computerize-v	VerbForm=Inf	dema	0			oewn_form
 computerized	0	oewn-computerize-v	Tense=Past+VerbForm=Part	dema	0			rule
+computerized	1	oewn-computerise-v	Tense=Past+VerbForm=Part	dema	0			llm
 computerized axial tomographies	0	oewn-computerized_axial_tomography-n	Number=Plur	dema	0			rule
 computerized axial tomography	0	oewn-computerized_axial_tomography-n	Number=Sing	dema	0			oewn_form
 computerized axial tomography scanner	0	oewn-computerized_axial_tomography_scanner-n	Number=Sing	dema	0			oewn_form
@@ -5603,7 +5604,9 @@ computerized axial tomography scanners	0	oewn-computerized_axial_tomography_scan
 computerized tomographies	0	oewn-computerized_tomography-n	Number=Plur	dema	0			rule
 computerized tomography	0	oewn-computerized_tomography-n	Number=Sing	dema	0			oewn_form
 computerizes	0	oewn-computerize-v	Person=3+Tense=Pres	dema	0			rule
+computerizes	1	oewn-computerise-v	Person=3+Tense=Pres	dema	0			llm
 computerizing	0	oewn-computerize-v	VerbForm=Ger	dema	0			rule
+computerizing	1	oewn-computerise-v	VerbForm=Ger	dema	0			llm
 computers	0	oewn-computer-n	Number=Plur	dema	0			rule
 computes	0	oewn-compute-v	Person=3+Tense=Pres	dema	0			rule
 computing	0	oewn-compute-v	VerbForm=Ger	dema	0			rule
@@ -5646,9 +5649,9 @@ con brio	1	oewn-con_brio-r	Degree=Pos	dema	0			oewn_form
 con game	0	oewn-con_game-n	Number=Sing	dema	0			oewn_form
 con games	0	oewn-con_game-n	Number=Plur	dema	0			rule
 con man	0	oewn-con_man-n	Number=Sing	dema	0			oewn_form
-con mans	0	oewn-con_man-n	Number=Plur	dema	0			rule
+con men	0	oewn-con_man-n	Number=Plur	dema	0			rule
 con woman	0	oewn-con_woman-n	Number=Sing	dema	0			oewn_form
-con womans	0	oewn-con_woman-n	Number=Plur	dema	0			rule
+con women	0	oewn-con_woman-n	Number=Plur	dema	0			rule
 conacaste	0	oewn-conacaste-n	Number=Sing	dema	0			oewn_form
 conacastes	0	oewn-conacaste-n	Number=Plur	dema	0			rule
 conation	0		Number=Sing	dema	0	conation	n	moby_reverse
@@ -5809,7 +5812,7 @@ conceptualizes	0	oewn-conceptualize-v	Person=3+Tense=Pres	dema	0			rule
 conceptualizing	0	oewn-conceptualize-v	VerbForm=Ger	dema	0			rule
 conceptually	0	oewn-conceptually-r	Degree=Pos	dema	0			oewn_form
 conceptus	0	oewn-conceptus-n	Number=Sing	dema	0			oewn_form
-conceptuses	0	oewn-conceptus-n	Number=Plur	dema	0			rule
+conceptuses	0	oewn-conceptus-n	Number=Plur	dema	0			llm
 concern	0	oewn-concern-v	VerbForm=Inf	dema	0			oewn_form
 concern	1	oewn-concern-n	Number=Sing	dema	0			oewn_form
 concerned	0	oewn-concern-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -5914,8 +5917,9 @@ conchate	0		Degree=Pos	dema	0	conchate	a	moby_reverse
 conched	0		Degree=Pos	dema	0	conched	a	moby_reverse
 conched	1		VerbForm=Inf	dema	0	conched	v	moby_reverse
 conches	0	oewn-conch-n	Number=Plur	dema	0			rule_variant
-conchfish	0	oewn-conchfish-n	Number=Plur	dema	0			agid
+conchfish	0	oewn-conchfish-n	Number=Plur	dema	0			llm
 conchfish	1	oewn-conchfish-n	Number=Sing	dema	0			oewn_form
+conchfishes	0	oewn-conchfish-n	Number=Plur	dema	0			rule_variant
 conchie	0		Number=Sing	dema	0	conchie	n	moby_reverse
 conchies	0		Number=Plur	dema	0	conchie	n	rule
 conchies	1		Number=Plur	dema	0	conchy	n	rule
@@ -5934,7 +5938,7 @@ conchologies	0	oewn-conchology-n	Number=Plur	dema	0			rule
 conchologist	0	oewn-conchologist-n	Number=Sing	dema	0			oewn_form
 conchologists	0	oewn-conchologist-n	Number=Plur	dema	0			rule
 conchology	0	oewn-conchology-n	Number=Sing	dema	0			oewn_form
-conchs	0	oewn-conch-n	Number=Plur	dema	0			agid
+conchs	0	oewn-conch-n	Number=Plur	dema	0			llm
 conchy	0		Number=Sing	dema	0	conchy	n	moby_reverse
 concierge	0	oewn-concierge-n	Number=Sing	dema	0			oewn_form
 concierges	0	oewn-concierge-n	Number=Plur	dema	0			rule
@@ -6061,9 +6065,9 @@ concretion	0	oewn-concretion-n	Number=Sing	dema	0			oewn_form
 concretionary	0		Degree=Pos	dema	0	concretionary	a	moby_reverse
 concretions	0	oewn-concretion-n	Number=Plur	dema	0			rule
 concretise	0	oewn-concretise-v	VerbForm=Inf	dema	0			oewn_form
-concretised	0	oewn-concretise-v	Tense=Past+VerbForm=Part	dema	0			rule
-concretises	0	oewn-concretise-v	Person=3+Tense=Pres	dema	0			rule
-concretising	0	oewn-concretise-v	VerbForm=Ger	dema	0			rule
+concretised	0	oewn-concretise-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+concretises	0	oewn-concretise-v	Person=3+Tense=Pres	dema	0			rule_variant
+concretising	0	oewn-concretise-v	VerbForm=Ger	dema	0			rule_variant
 concretism	0	oewn-concretism-n	Number=Sing	dema	0			oewn_form
 concretisms	0	oewn-concretism-n	Number=Plur	dema	0			rule
 concretistic	0	oewn-concretistic-a	Degree=Pos	dema	0			oewn_form
@@ -6073,8 +6077,11 @@ concretization	0		Number=Sing	dema	0	concretization	n	moby_reverse
 concretizations	0		Number=Plur	dema	0	concretization	n	rule
 concretize	0	oewn-concretize-v	VerbForm=Inf	dema	0			oewn_form
 concretized	0	oewn-concretize-v	Tense=Past+VerbForm=Part	dema	0			rule
+concretized	1	oewn-concretise-v	Tense=Past+VerbForm=Part	dema	0			llm
 concretizes	0	oewn-concretize-v	Person=3+Tense=Pres	dema	0			rule
+concretizes	1	oewn-concretise-v	Person=3+Tense=Pres	dema	0			llm
 concretizing	0	oewn-concretize-v	VerbForm=Ger	dema	0			rule
+concretizing	1	oewn-concretise-v	VerbForm=Ger	dema	0			llm
 concs	0		Number=Plur	dema	0	conc	n	rule
 concubinage	0	oewn-concubinage-n	Number=Sing	dema	0			oewn_form
 concubinages	0	oewn-concubinage-n	Number=Plur	dema	0			rule
@@ -6539,11 +6546,11 @@ confidence	0	oewn-confidence-n	Number=Sing	dema	0			oewn_form
 confidence game	0	oewn-confidence_game-n	Number=Sing	dema	0			oewn_form
 confidence games	0	oewn-confidence_game-n	Number=Plur	dema	0			rule
 confidence man	0	oewn-confidence_man-n	Number=Sing	dema	0			oewn_form
-confidence mans	0	oewn-confidence_man-n	Number=Plur	dema	0			rule
+confidence men	0	oewn-confidence_man-n	Number=Plur	dema	0			rule
 confidence trick	0	oewn-confidence_trick-n	Number=Sing	dema	0			oewn_form
 confidence tricks	0	oewn-confidence_trick-n	Number=Plur	dema	0			rule
 confidence woman	0	oewn-confidence_woman-n	Number=Sing	dema	0			oewn_form
-confidence womans	0	oewn-confidence_woman-n	Number=Plur	dema	0			rule
+confidence women	0	oewn-confidence_woman-n	Number=Plur	dema	0			rule
 confidences	0	oewn-confidence-n	Number=Plur	dema	0			rule
 confident	0	oewn-confident-a	Degree=Pos	dema	0			oewn_form
 confident	1		Number=Sing	dema	0	confident	n	moby_reverse
@@ -6859,7 +6866,8 @@ congenitalnesses	0		Number=Plur	dema	0	congenitalness	n	rule
 conger	0	oewn-conger-n	Number=Sing	dema	0			oewn_form
 conger eel	0	oewn-conger_eel-n	Number=Sing	dema	0			oewn_form
 conger eels	0	oewn-conger_eel-n	Number=Plur	dema	0			rule
-congeries	0	oewn-congeries-n	Number=Sing	dema	0			oewn_form
+congeries	0	oewn-congeries-n	Number=Plur	dema	0			llm
+congeries	1	oewn-congeries-n	Number=Sing	dema	0			oewn_form
 congers	0	oewn-conger-n	Number=Plur	dema	0			rule
 conges	0	oewn-conge-n	Number=Plur	dema	0			rule
 conges	1	oewn-conge-v	Person=3+Tense=Pres	dema	0			rule
@@ -6919,10 +6927,9 @@ congo red	0	oewn-congo_red-n	Number=Sing	dema	0			oewn_form
 congo reds	0	oewn-congo_red-n	Number=Plur	dema	0			rule
 congo snake	0	oewn-congo_snake-n	Number=Sing	dema	0			oewn_form
 congo snakes	0	oewn-congo_snake-n	Number=Plur	dema	0			rule
-congoes	0	oewn-congo-n	Number=Plur	dema	0			agid
 congoo mallee	0	oewn-congoo_mallee-n	Number=Sing	dema	0			oewn_form
 congoo mallees	0	oewn-congoo_mallee-n	Number=Plur	dema	0			rule
-congos	0	oewn-congo-n	Number=Plur	dema	0			rule_variant
+congos	0	oewn-congo-n	Number=Plur	dema	0			llm
 congou	0	oewn-congou-n	Number=Sing	dema	0			oewn_form
 congou tea	0	oewn-congou_tea-n	Number=Sing	dema	0			oewn_form
 congou teas	0	oewn-congou_tea-n	Number=Plur	dema	0			rule
@@ -6986,9 +6993,9 @@ congressionalist	0		Number=Sing	dema	0	congressionalist	n	moby_reverse
 congressionalists	0		Number=Plur	dema	0	congressionalist	n	rule
 congressionally	0		Degree=Pos	dema	0	congressionally	r	moby_reverse
 congressman	0	oewn-congressman-n	Number=Sing	dema	0			oewn_form
-congressmen	0	oewn-congressman-n	Number=Plur	dema	0			agid
+congressmen	0	oewn-congressman-n	Number=Plur	dema	0			llm
 congresswoman	0	oewn-congresswoman-n	Number=Sing	dema	0			oewn_form
-congresswomen	0	oewn-congresswoman-n	Number=Plur	dema	0			agid
+congresswomen	0	oewn-congresswoman-n	Number=Plur	dema	0			llm
 congruence	0	oewn-congruence-n	Number=Sing	dema	0			oewn_form
 congruences	0	oewn-congruence-n	Number=Plur	dema	0			rule
 congruencies	0		Number=Plur	dema	0	congruency	n	rule
@@ -7139,7 +7146,6 @@ conjunctives	0	oewn-conjunctive-n	Number=Plur	dema	0			rule
 conjunctivitis	0	oewn-conjunctivitis-n	Number=Sing	dema	0			oewn_form
 conjunctivitis arida	0	oewn-conjunctivitis_arida-n	Number=Sing	dema	0			oewn_form
 conjunctivitis aridas	0	oewn-conjunctivitis_arida-n	Number=Plur	dema	0			rule
-conjunctivitises	0	oewn-conjunctivitis-n	Number=Plur	dema	0			rule
 conjunctly	0		Degree=Pos	dema	0	conjunctly	r	moby_reverse
 conjuncts	0	dema-conjunct-n	Number=Plur	dema	1			carried
 conjunctural	0		Degree=Pos	dema	0	conjunctural	a	moby_reverse
@@ -7151,10 +7157,10 @@ conjurator	0		Number=Sing	dema	0	conjurator	n	moby_reverse
 conjurators	0		Number=Plur	dema	0	conjurator	n	rule
 conjure	0	oewn-conjure-v	VerbForm=Inf	dema	0			oewn_form
 conjure man	0	oewn-conjure_man-n	Number=Sing	dema	0			oewn_form
-conjure mans	0	oewn-conjure_man-n	Number=Plur	dema	0			rule
+conjure men	0	oewn-conjure_man-n	Number=Plur	dema	0			rule
 conjure up	0	oewn-conjure_up-v	VerbForm=Inf	dema	0			oewn_form
 conjure woman	0	oewn-conjure_woman-n	Number=Sing	dema	0			oewn_form
-conjure womans	0	oewn-conjure_woman-n	Number=Plur	dema	0			rule
+conjure women	0	oewn-conjure_woman-n	Number=Plur	dema	0			rule
 conjured	0	oewn-conjure-v	Tense=Past+VerbForm=Part	dema	0			rule
 conjured up	0	oewn-conjure_up-v	Tense=Past+VerbForm=Part	dema	0			rule
 conjurer	0	oewn-conjurer-n	Number=Sing	dema	0			oewn_form
@@ -8006,15 +8012,18 @@ containerboards	0		Number=Plur	dema	0	containerboard	n	rule
 containerful	0	oewn-containerful-n	Number=Sing	dema	0			oewn_form
 containerfuls	0	oewn-containerful-n	Number=Plur	dema	0			rule
 containerise	0	oewn-containerise-v	VerbForm=Inf	dema	0			oewn_form
-containerised	0	oewn-containerise-v	Tense=Past+VerbForm=Part	dema	0			rule
-containerises	0	oewn-containerise-v	Person=3+Tense=Pres	dema	0			rule
-containerising	0	oewn-containerise-v	VerbForm=Ger	dema	0			rule
+containerised	0	oewn-containerise-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+containerises	0	oewn-containerise-v	Person=3+Tense=Pres	dema	0			rule_variant
+containerising	0	oewn-containerise-v	VerbForm=Ger	dema	0			rule_variant
 containerization	0		Number=Sing	dema	0	containerization	n	moby_reverse
 containerizations	0		Number=Plur	dema	0	containerization	n	rule
 containerize	0	oewn-containerize-v	VerbForm=Inf	dema	0			oewn_form
 containerized	0	oewn-containerize-v	Tense=Past+VerbForm=Part	dema	0			rule
+containerized	1	oewn-containerise-v	Tense=Past+VerbForm=Part	dema	0			llm
 containerizes	0	oewn-containerize-v	Person=3+Tense=Pres	dema	0			rule
+containerizes	1	oewn-containerise-v	Person=3+Tense=Pres	dema	0			llm
 containerizing	0	oewn-containerize-v	VerbForm=Ger	dema	0			rule
+containerizing	1	oewn-containerise-v	VerbForm=Ger	dema	0			llm
 containers	0	oewn-container-n	Number=Plur	dema	0			rule
 containership	0	oewn-containership-n	Number=Sing	dema	0			oewn_form
 containerships	0	oewn-containership-n	Number=Plur	dema	0			rule
@@ -8073,7 +8082,7 @@ contemplative	0	oewn-contemplative-a	Degree=Pos	dema	0			oewn_form
 contemplative	1	oewn-contemplative-n	Number=Sing	dema	0			oewn_form
 contemplatively	0		Degree=Pos	dema	0	contemplatively	r	moby_reverse
 contemplativeness	0	oewn-contemplativeness-n	Number=Sing	dema	0			oewn_form
-contemplativenesses	0	oewn-contemplativeness-n	Number=Plur	dema	0			rule
+contemplativenesses	0	oewn-contemplativeness-n	Number=Plur	dema	0			llm
 contemplatives	0	oewn-contemplative-n	Number=Plur	dema	0			rule
 contemplator	0		Number=Sing	dema	0	contemplator	n	moby_reverse
 contemplators	0		Number=Plur	dema	0	contemplator	n	rule
@@ -8143,7 +8152,7 @@ contentions	0	oewn-contention-n	Number=Plur	dema	0			rule
 contentious	0	oewn-contentious-a	Degree=Pos	dema	0			oewn_form
 contentiously	0		Degree=Pos	dema	0	contentiously	r	moby_reverse
 contentiousness	0	oewn-contentiousness-n	Number=Sing	dema	0			oewn_form
-contentiousnesses	0	oewn-contentiousness-n	Number=Plur	dema	0			rule
+contentiousnesses	0	oewn-contentiousness-n	Number=Plur	dema	0			llm
 contently	0		Degree=Pos	dema	0	contently	r	moby_reverse
 contentment	0	oewn-contentment-n	Number=Sing	dema	0			oewn_form
 contentments	0	oewn-contentment-n	Number=Plur	dema	0			rule
@@ -8310,7 +8319,7 @@ continuous tense	0	oewn-continuous_tense-n	Number=Sing	dema	0			oewn_form
 continuous tenses	0	oewn-continuous_tense-n	Number=Plur	dema	0			rule
 continuously	0	oewn-continuously-r	Degree=Pos	dema	0			oewn_form
 continuousness	0	oewn-continuousness-n	Number=Sing	dema	0			oewn_form
-continuousnesses	0	oewn-continuousness-n	Number=Plur	dema	0			rule
+continuousnesses	0	oewn-continuousness-n	Number=Plur	dema	0			llm
 continuum	0	oewn-continuum-n	Number=Sing	dema	0			oewn_form
 continuums	0	oewn-continuum-n	Number=Plur	dema	0			rule_variant
 conto	0	oewn-conto-n	Number=Sing	dema	0			oewn_form
@@ -8594,7 +8603,7 @@ contredansed	0	oewn-contredanse-v	Tense=Past+VerbForm=Part	dema	0			rule
 contredanses	0	oewn-contredanse-n	Number=Plur	dema	0			rule
 contredanses	1	oewn-contredanse-v	Person=3+Tense=Pres	dema	0			rule
 contredansing	0	oewn-contredanse-v	VerbForm=Ger	dema	0			rule
-contretemps	0	oewn-contretemps-n	Number=Plur	dema	0			agid
+contretemps	0	oewn-contretemps-n	Number=Plur	dema	0			llm
 contretemps	1	oewn-contretemps-n	Number=Sing	dema	0			oewn_form
 contrib	0		Number=Sing	dema	0	contrib	n	moby_reverse
 contribs	0		Number=Plur	dema	0	contrib	n	rule
@@ -8990,7 +8999,7 @@ convict fish	0	oewn-convict_fish-n	Number=Sing	dema	0			oewn_form
 convict fishes	0	oewn-convict_fish-n	Number=Plur	dema	0			rule
 convictable	0		Degree=Pos	dema	0	convictable	a	moby_reverse
 convicted	0	oewn-convict-v	Tense=Past+VerbForm=Part	dema	0			rule
-convictfish	0	oewn-convictfish-n	Number=Plur	dema	0			agid
+convictfish	0	oewn-convictfish-n	Number=Plur	dema	0			llm
 convictfish	1	oewn-convictfish-n	Number=Sing	dema	0			oewn_form
 convictfishes	0	oewn-convictfish-n	Number=Plur	dema	0			rule_variant
 convictible	0		Degree=Pos	dema	0	convictible	a	moby_reverse
@@ -9109,7 +9118,7 @@ cooccurs	0	oewn-cooccur-v	Person=3+Tense=Pres	dema	0			rule
 cooccurs with	0	oewn-cooccur_with-v	Person=3+Tense=Pres	dema	0			rule
 cooch	0		Number=Sing	dema	0	cooch	n	moby_reverse
 cooches	0		Number=Plur	dema	0	cooch	n	rule
-cooed	0	oewn-coo-v	Tense=Past+VerbForm=Part	dema	0			rule
+cooed	0	oewn-coo-v	Tense=Past+VerbForm=Part	dema	0			llm
 cooee	0	dema-cooee-i		dema	0			carried
 cooee	1		VerbForm=Inf	dema	0	cooee	v	moby_reverse
 cooeed	0		Tense=Past+VerbForm=Part	dema	0	cooee	v	moby_reverse
@@ -9124,7 +9133,7 @@ cooeyings	0		Number=Plur	dema	0	cooeying	n	rule
 cooeys	0		Number=Plur	dema	0	cooey	n	rule
 coof	0		Number=Sing	dema	0	coof	n	moby_reverse
 coofs	0		Number=Plur	dema	0	coof	n	rule
-cooing	0	oewn-coo-v	VerbForm=Ger	dema	0			rule
+cooing	0	oewn-coo-v	VerbForm=Ger	dema	0			llm
 cooingly	0		Degree=Pos	dema	0	cooingly	r	moby_reverse
 cook	0	oewn-cook-n	Number=Sing	dema	0			oewn_form
 cook	1	oewn-cook-v	VerbForm=Inf	dema	0			oewn_form
@@ -9221,9 +9230,9 @@ cooled it	0	oewn-cool_it-v	Tense=Past+VerbForm=Part	dema	0			rule
 cooled off	0	oewn-cool_off-v	Tense=Past+VerbForm=Part	dema	0			rule
 cooled one's heels	0	oewn-cool_one-ap-s_heels-v	Tense=Past+VerbForm=Part	dema	0			rule
 cooler	0	oewn-cooler-n	Number=Sing	dema	0			oewn_form
-cooler	1	oewn-cool-a	Degree=Cmp	dema	0			rule
+cooler	1	oewn-cool-a	Degree=Cmp	dema	0			llm
 coolers	0	oewn-cooler-n	Number=Plur	dema	0			rule
-coolest	0	oewn-cool-a	Degree=Sup	dema	0			rule
+coolest	0	oewn-cool-a	Degree=Sup	dema	0			llm
 coolheaded	0	oewn-coolheaded-a	Degree=Pos	dema	0			oewn_form
 coolie	0	oewn-coolie-n	Number=Sing	dema	0			oewn_form
 coolies	0	oewn-coolie-n	Number=Plur	dema	0			rule
@@ -9273,7 +9282,7 @@ cooner	0		Number=Sing	dema	0	cooner	n	moby_reverse
 cooners	0		Number=Plur	dema	0	cooner	n	rule
 coonhound	0	oewn-coonhound-n	Number=Sing	dema	0			oewn_form
 coonhounds	0	oewn-coonhound-n	Number=Plur	dema	0			rule
-coons	0	oewn-coon-n	Number=Plur	dema	0			rule
+coons	0	oewn-coon-n	Number=Plur	dema	0			llm
 coonskin	0	oewn-coonskin-n	Number=Sing	dema	0			oewn_form
 coonskin cap	0	oewn-coonskin_cap-n	Number=Sing	dema	0			oewn_form
 coonskin caps	0	oewn-coonskin_cap-n	Number=Plur	dema	0			rule
@@ -9358,7 +9367,8 @@ coordinations	0	oewn-coordination-n	Number=Plur	dema	0			rule
 coordinative	0	oewn-coordinative-a	Degree=Pos	dema	0			oewn_form
 coordinator	0	oewn-coordinator-n	Number=Sing	dema	0			oewn_form
 coordinators	0	oewn-coordinator-n	Number=Plur	dema	0			rule
-coos	0	oewn-coo-n	Number=Plur	dema	0			rule
+coos	0	oewn-coo-v	Person=3+Tense=Pres	dema	0			llm
+coos	1	oewn-coo-n	Number=Plur	dema	0			rule
 coot	0	oewn-coot-n	Number=Sing	dema	0			oewn_form
 cootch	0		Number=Sing	dema	0	cootch	n	moby_reverse
 cootch	1		VerbForm=Inf	dema	0	cootch	v	moby_reverse
@@ -9446,15 +9456,18 @@ coplanarities	0		Number=Plur	dema	0	coplanarity	n	rule
 coplanarity	0		Number=Sing	dema	0	coplanarity	n	moby_reverse
 copolymer	0	oewn-copolymer-n	Number=Sing	dema	0			oewn_form
 copolymerise	0	oewn-copolymerise-v	VerbForm=Inf	dema	0			oewn_form
-copolymerised	0	oewn-copolymerise-v	Tense=Past+VerbForm=Part	dema	0			rule
-copolymerises	0	oewn-copolymerise-v	Person=3+Tense=Pres	dema	0			rule
-copolymerising	0	oewn-copolymerise-v	VerbForm=Ger	dema	0			rule
+copolymerised	0	oewn-copolymerise-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+copolymerises	0	oewn-copolymerise-v	Person=3+Tense=Pres	dema	0			rule_variant
+copolymerising	0	oewn-copolymerise-v	VerbForm=Ger	dema	0			rule_variant
 copolymerization	0		Number=Sing	dema	0	copolymerization	n	moby_reverse
 copolymerizations	0		Number=Plur	dema	0	copolymerization	n	rule
 copolymerize	0	oewn-copolymerize-v	VerbForm=Inf	dema	0			oewn_form
 copolymerized	0	oewn-copolymerize-v	Tense=Past+VerbForm=Part	dema	0			rule
+copolymerized	1	oewn-copolymerise-v	Tense=Past+VerbForm=Part	dema	0			llm
 copolymerizes	0	oewn-copolymerize-v	Person=3+Tense=Pres	dema	0			rule
+copolymerizes	1	oewn-copolymerise-v	Person=3+Tense=Pres	dema	0			llm
 copolymerizing	0	oewn-copolymerize-v	VerbForm=Ger	dema	0			rule
+copolymerizing	1	oewn-copolymerise-v	VerbForm=Ger	dema	0			llm
 copolymers	0	oewn-copolymer-n	Number=Plur	dema	0			rule
 copout	0	oewn-copout-n	Number=Sing	dema	0			oewn_form
 copouts	0	oewn-copout-n	Number=Plur	dema	0			rule
@@ -9629,11 +9642,11 @@ copyings	0	oewn-copying-n	Number=Plur	dema	0			rule
 copyist	0	oewn-copyist-n	Number=Sing	dema	0			oewn_form
 copyists	0	oewn-copyist-n	Number=Plur	dema	0			rule
 copyread	0	oewn-copyread-v	VerbForm=Inf	dema	0			oewn_form
-copyread	1	oewn-copyread-v	Tense=Past+VerbForm=Part	dema	0			agid
+copyread	1	oewn-copyread-v	Tense=Past+VerbForm=Part	dema	0			llm
 copyreader	0	oewn-copyreader-n	Number=Sing	dema	0			oewn_form
 copyreaders	0	oewn-copyreader-n	Number=Plur	dema	0			rule
-copyreading	0	oewn-copyread-v	VerbForm=Ger	dema	0			rule
-copyreads	0	oewn-copyread-v	Person=3+Tense=Pres	dema	0			rule
+copyreading	0	oewn-copyread-v	VerbForm=Ger	dema	0			llm
+copyreads	0	oewn-copyread-v	Person=3+Tense=Pres	dema	0			llm
 copyright	0	oewn-copyright-n	Number=Sing	dema	0			oewn_form
 copyright	1		Degree=Pos	dema	0	copyright	a	moby_reverse
 copyright	2	oewn-copyright-v	VerbForm=Inf	dema	0			oewn_form
@@ -9755,7 +9768,7 @@ coralwoods	0	oewn-coralwood-n	Number=Plur	dema	0			rule
 coralwort	0	oewn-coralwort-n	Number=Sing	dema	0			oewn_form
 coralworts	0	oewn-coralwort-n	Number=Plur	dema	0			rule
 coranto	0		Number=Sing	dema	0	coranto	n	moby_reverse
-corantoes	0		Number=Plur	dema	0	coranto	n	moby_reverse
+corantoes	0		Number=Sing	dema	0	corantoes	n	moby_reverse
 corantos	0		Number=Plur	dema	0	coranto	n	rule
 corban	0		Number=Sing	dema	0	corban	n	moby_reverse
 corbans	0		Number=Plur	dema	0	corban	n	rule
@@ -9769,17 +9782,17 @@ corbel arch	0	oewn-corbel_arch-n	Number=Sing	dema	0			oewn_form
 corbel arches	0	oewn-corbel_arch-n	Number=Plur	dema	0			rule
 corbel step	0	oewn-corbel_step-n	Number=Sing	dema	0			oewn_form
 corbel steps	0	oewn-corbel_step-n	Number=Plur	dema	0			rule
-corbeled	0	oewn-corbel-v	Tense=Past+VerbForm=Part	dema	0			moby_reverse
+corbeled	0	oewn-corbel-v	Tense=Past+VerbForm=Part	dema	0			llm
 corbeling	0		Number=Sing	dema	0	corbeling	n	moby_reverse
-corbeling	1	oewn-corbel-v	VerbForm=Ger	dema	0			moby_reverse
+corbeling	1	oewn-corbel-v	VerbForm=Ger	dema	0			llm
 corbelings	0		Number=Plur	dema	0	corbeling	n	rule
-corbelled	0	oewn-corbel-v	Tense=Past+VerbForm=Part	dema	0			rule
+corbelled	0	oewn-corbel-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 corbelled	1	oewn-corbelled-a	Degree=Pos	dema	0			oewn_form
 corbelling	0		Number=Sing	dema	0	corbelling	n	moby_reverse
-corbelling	1	oewn-corbel-v	VerbForm=Ger	dema	0			rule
+corbelling	1	oewn-corbel-v	VerbForm=Ger	dema	0			rule_variant
 corbellings	0		Number=Plur	dema	0	corbelling	n	rule
 corbels	0	oewn-corbel-n	Number=Plur	dema	0			rule
-corbels	1	oewn-corbel-v	Person=3+Tense=Pres	dema	0			rule
+corbels	1	oewn-corbel-v	Person=3+Tense=Pres	dema	0			llm
 corbicula	0		Number=Sing	dema	0	corbicula	n	moby_reverse
 corbiculas	0		Number=Plur	dema	0	corbicula	n	rule
 corbiculate	0		Degree=Pos	dema	0	corbiculate	a	moby_reverse
@@ -9927,8 +9940,8 @@ coremium	0		Number=Sing	dema	0	coremium	n	moby_reverse
 coremiumia	0		Number=Sing	dema	0	coremiumia	n	moby_reverse
 coremiumias	0		Number=Plur	dema	0	coremiumia	n	rule
 coremiums	0		Number=Plur	dema	0	coremium	n	rule
+coreopses	0	oewn-coreopsis-n	Number=Plur	dema	0			llm
 coreopsis	0	oewn-coreopsis-n	Number=Sing	dema	0			oewn_form
-coreopsises	0	oewn-coreopsis-n	Number=Plur	dema	0			rule
 corer	0	oewn-corer-n	Number=Sing	dema	0			oewn_form
 corers	0	oewn-corer-n	Number=Plur	dema	0			rule
 cores	0	oewn-core-n	Number=Plur	dema	0			rule
@@ -10147,7 +10160,7 @@ corner cabinets	0	oewn-corner_cabinet-n	Number=Plur	dema	0			rule
 corner kick	0	oewn-corner_kick-n	Number=Sing	dema	0			oewn_form
 corner kicks	0	oewn-corner_kick-n	Number=Plur	dema	0			rule
 corner man	0	oewn-corner_man-n	Number=Sing	dema	0			oewn_form
-corner mans	0	oewn-corner_man-n	Number=Plur	dema	0			rule
+corner men	0	oewn-corner_man-n	Number=Plur	dema	0			rule
 corner pocket	0	oewn-corner_pocket-n	Number=Sing	dema	0			oewn_form
 corner pockets	0	oewn-corner_pocket-n	Number=Plur	dema	0			rule
 corner post	0	oewn-corner_post-n	Number=Sing	dema	0			oewn_form
@@ -10165,8 +10178,9 @@ cornerwise	0		Degree=Pos	dema	0	cornerwise	r	moby_reverse
 cornet	0	oewn-cornet-n	Number=Sing	dema	0			oewn_form
 cornetcies	0		Number=Plur	dema	0	cornetcy	n	rule
 cornetcy	0		Number=Sing	dema	0	cornetcy	n	moby_reverse
-cornetfish	0	oewn-cornetfish-n	Number=Plur	dema	0			agid
+cornetfish	0	oewn-cornetfish-n	Number=Plur	dema	0			llm
 cornetfish	1	oewn-cornetfish-n	Number=Sing	dema	0			oewn_form
+cornetfishes	0	oewn-cornetfish-n	Number=Plur	dema	0			rule_variant
 cornetist	0	oewn-cornetist-n	Number=Sing	dema	0			oewn_form
 cornetists	0	oewn-cornetist-n	Number=Plur	dema	0			rule
 cornets	0	oewn-cornet-n	Number=Plur	dema	0			rule
@@ -10264,7 +10278,7 @@ corona	0	oewn-corona-n	Number=Sing	dema	0			oewn_form
 corona discharge	0	oewn-corona_discharge-n	Number=Sing	dema	0			oewn_form
 corona discharges	0	oewn-corona_discharge-n	Number=Plur	dema	0			rule
 coronach	0	oewn-coronach-n	Number=Sing	dema	0			oewn_form
-coronachs	0	oewn-coronach-n	Number=Plur	dema	0			agid
+coronachs	0	oewn-coronach-n	Number=Plur	dema	0			llm
 coronae	0	oewn-corona-n	Number=Plur	dema	0			oewn_form
 coronagraph	0		Number=Sing	dema	0	coronagraph	n	moby_reverse
 coronagraphic	0		Degree=Pos	dema	0	coronagraphic	a	moby_reverse
@@ -10405,17 +10419,15 @@ corporeity	0		Number=Sing	dema	0	corporeity	n	moby_reverse
 corposant	0	oewn-corposant-n	Number=Sing	dema	0			oewn_form
 corposants	0	oewn-corposant-n	Number=Plur	dema	0			rule
 corps	0	oewn-corp-n	Number=Plur	dema	0			rule
-corps	1	oewn-corps-n	Number=Plur	dema	0			agid
-corps	2	oewn-corps-n	Number=Sing	dema	0			oewn_form
+corps	1	oewn-corps-n	Number=Sing	dema	0			oewn_form
 corps de ballet	0	oewn-corps_de_ballet-n	Number=Sing	dema	0			oewn_form
 corps diplomatique	0	oewn-corps_diplomatique-n	Number=Sing	dema	0			oewn_form
 corps diplomatiques	0	oewn-corps_diplomatique-n	Number=Plur	dema	0			rule
 corpse	0	oewn-corpse-n	Number=Sing	dema	0			oewn_form
 corpses	0	oewn-corpse-n	Number=Plur	dema	0			rule
 corpsman	0		Number=Sing	dema	0	corpsman	n	moby_reverse
-corpsmans	0		Number=Plur	dema	0	corpsman	n	rule
-corpsmen	0		Number=Sing	dema	0	corpsmen	n	moby_reverse
-corpsmens	0		Number=Plur	dema	0	corpsmen	n	rule
+corpsmen	0		Number=Plur	dema	0	corpsman	n	rule
+corpsmen	1		Number=Sing	dema	0	corpsmen	n	moby_reverse
 corpulence	0	oewn-corpulence-n	Number=Sing	dema	0			oewn_form
 corpulences	0	oewn-corpulence-n	Number=Plur	dema	0			rule
 corpulencies	0	oewn-corpulency-n	Number=Plur	dema	0			rule
@@ -10690,15 +10702,15 @@ corselets	0	oewn-corselet-n	Number=Plur	dema	0			rule
 corses	0		Number=Plur	dema	0	corse	n	rule
 corset	0	oewn-corset-n	Number=Sing	dema	0			oewn_form
 corset	1	oewn-corset-v	VerbForm=Inf	dema	0			oewn_form
-corseted	0	oewn-corset-v	Tense=Past+VerbForm=Part	dema	0			rule
-corseting	0	oewn-corset-v	VerbForm=Ger	dema	0			rule
+corseted	0	oewn-corset-v	Tense=Past+VerbForm=Part	dema	0			llm
+corseting	0	oewn-corset-v	VerbForm=Ger	dema	0			llm
 corsetior	0		Number=Sing	dema	0	corsetior	n	moby_reverse
 corsetiors	0		Number=Plur	dema	0	corsetior	n	rule
 corsetless	0		Degree=Pos	dema	0	corsetless	a	moby_reverse
 corsetries	0		Number=Plur	dema	0	corsetry	n	rule
 corsetry	0		Number=Sing	dema	0	corsetry	n	moby_reverse
 corsets	0	oewn-corset-n	Number=Plur	dema	0			rule
-corsets	1	oewn-corset-v	Person=3+Tense=Pres	dema	0			rule
+corsets	1	oewn-corset-v	Person=3+Tense=Pres	dema	0			llm
 corslet	0	oewn-corslet-n	Number=Sing	dema	0			oewn_form
 corslets	0	oewn-corslet-n	Number=Plur	dema	0			rule
 cort	0		Number=Sing	dema	0	cort	n	moby_reverse
@@ -10778,7 +10790,7 @@ corvos	0		Number=Plur	dema	0	corvo	n	rule
 corvs	0		Number=Plur	dema	0	corv	n	rule
 corybantic	0		Degree=Pos	dema	0	corybantic	a	moby_reverse
 corydalis	0	oewn-corydalis-n	Number=Sing	dema	0			oewn_form
-corydalises	0	oewn-corydalis-n	Number=Plur	dema	0			rule
+corydalises	0	oewn-corydalis-n	Number=Plur	dema	0			llm
 corymb	0	oewn-corymb-n	Number=Sing	dema	0			oewn_form
 corymbed	0		Degree=Pos	dema	0	corymbed	a	moby_reverse
 corymbed	1		VerbForm=Inf	dema	0	corymbed	v	moby_reverse
@@ -10819,8 +10831,7 @@ cosed	0		Tense=Past+VerbForm=Part	dema	0	cose	v	rule
 coseismal	0	oewn-coseismal-a	Degree=Pos	dema	0			oewn_form
 coseismal	1		Number=Sing	dema	0	coseismal	n	moby_reverse
 coseismic	0	oewn-coseismic-a	Degree=Pos	dema	0			oewn_form
-coses	0	oewn-cos-n	Number=Plur	dema	0			rule
-coses	1		Person=3+Tense=Pres	dema	0	cose	v	rule
+coses	0		Person=3+Tense=Pres	dema	0	cose	v	rule
 coset	0		Number=Sing	dema	0	coset	n	moby_reverse
 cosets	0		Number=Plur	dema	0	coset	n	rule
 cosey	0		Degree=Pos	dema	0	cosey	a	moby_reverse
@@ -10982,9 +10993,8 @@ cosmopolitisms	0		Number=Plur	dema	0	cosmopolitism	n	rule
 cosmorama	0		Number=Sing	dema	0	cosmorama	n	moby_reverse
 cosmoramas	0		Number=Plur	dema	0	cosmorama	n	rule
 cosmoramic	0		Degree=Pos	dema	0	cosmoramic	a	moby_reverse
-cosmos	0	oewn-cosmos-n	Number=Plur	dema	0			agid
-cosmos	1	oewn-cosmos-n	Number=Sing	dema	0			oewn_form
-cosmoses	0	oewn-cosmos-n	Number=Plur	dema	0			rule_variant
+cosmos	0	oewn-cosmos-n	Number=Sing	dema	0			oewn_form
+cosmoses	0	oewn-cosmos-n	Number=Plur	dema	0			rule
 cosmotron	0	oewn-cosmotron-n	Number=Sing	dema	0			oewn_form
 cosmotrons	0	oewn-cosmotron-n	Number=Plur	dema	0			rule
 cosplay	0	oewn-cosplay-v	VerbForm=Inf	dema	0			oewn_form
@@ -11000,9 +11010,11 @@ coss	0	oewn-coss-n	Number=Sing	dema	0			oewn_form
 cosses	0	oewn-coss-n	Number=Plur	dema	0			rule
 cosset	0	oewn-cosset-v	VerbForm=Inf	dema	0			oewn_form
 cosset	1		Number=Sing	dema	0	cosset	n	moby_reverse
-cosseted	0	oewn-cosset-v	Tense=Past+VerbForm=Part	dema	0			rule
-cosseting	0	oewn-cosset-v	VerbForm=Ger	dema	0			rule
-cossets	0	oewn-cosset-v	Person=3+Tense=Pres	dema	0			rule
+cosseted	0	oewn-cosset-v	Tense=Past+VerbForm=Part	dema	0			llm
+cosseting	0	oewn-cosset-v	VerbForm=Ger	dema	0			llm
+cossets	0	oewn-cosset-v	Person=3+Tense=Pres	dema	0			llm
+cossetted	0	oewn-cosset-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+cossetting	0	oewn-cosset-v	VerbForm=Ger	dema	0			rule_variant
 cossie	0		Number=Sing	dema	0	cossie	n	moby_reverse
 cossies	0		Number=Plur	dema	0	cossie	n	rule
 cost	0	oewn-cost-n	Number=Sing	dema	0			oewn_form
@@ -11062,7 +11074,7 @@ costers	0		Number=Plur	dema	0	coster	n	rule
 costia	0	oewn-costia-n	Number=Sing	dema	0			oewn_form
 costias	0	oewn-costia-n	Number=Plur	dema	0			rule
 costiasis	0	oewn-costiasis-n	Number=Sing	dema	0			oewn_form
-costing	0	oewn-cost-v	VerbForm=Ger	dema	0			rule
+costing	0	oewn-cost-v	VerbForm=Ger	dema	0			llm
 costing	1	oewn-costing-n	Number=Sing	dema	0			oewn_form
 costings	0	oewn-costing-n	Number=Plur	dema	0			rule
 costive	0	oewn-costive-a	Degree=Pos	dema	0			oewn_form
@@ -11091,7 +11103,7 @@ costotomy	0		Number=Sing	dema	0	costotomy	n	moby_reverse
 costrel	0		Number=Sing	dema	0	costrel	n	moby_reverse
 costrels	0		Number=Plur	dema	0	costrel	n	rule
 costs	0	oewn-cost-n	Number=Plur	dema	0			rule
-costs	1	oewn-cost-v	Person=3+Tense=Pres	dema	0			rule
+costs	1	oewn-cost-v	Person=3+Tense=Pres	dema	0			llm
 costs	2	oewn-costs-n	Number=Sing	dema	0			oewn_form
 costs of capital	0	oewn-cost_of_capital-n	Number=Plur	dema	0			rule
 costs of living	0	oewn-cost_of_living-n	Number=Plur	dema	0			rule
@@ -11280,13 +11292,12 @@ cottons	0	oewn-cotton-n	Number=Plur	dema	0			rule
 cottons	1	oewn-cotton-v	Person=3+Tense=Pres	dema	0			rule
 cottons on	0	oewn-cotton_on-v	Person=3+Tense=Pres	dema	0			rule
 cottons up	0	oewn-cotton_up-v	Person=3+Tense=Pres	dema	0			rule
-cottonseed	0	oewn-cottonseed-n	Number=Plur	dema	0			agid
-cottonseed	1	oewn-cottonseed-n	Number=Sing	dema	0			oewn_form
+cottonseed	0	oewn-cottonseed-n	Number=Sing	dema	0			oewn_form
 cottonseed cake	0	oewn-cottonseed_cake-n	Number=Sing	dema	0			oewn_form
 cottonseed cakes	0	oewn-cottonseed_cake-n	Number=Plur	dema	0			rule
 cottonseed oil	0	oewn-cottonseed_oil-n	Number=Sing	dema	0			oewn_form
 cottonseed oils	0	oewn-cottonseed_oil-n	Number=Plur	dema	0			rule
-cottonseeds	0	oewn-cottonseed-n	Number=Plur	dema	0			rule_variant
+cottonseeds	0	oewn-cottonseed-n	Number=Plur	dema	0			llm
 cottontail	0	oewn-cottontail-n	Number=Sing	dema	0			oewn_form
 cottontail rabbit	0	oewn-cottontail_rabbit-n	Number=Sing	dema	0			oewn_form
 cottontail rabbits	0	oewn-cottontail_rabbit-n	Number=Plur	dema	0			rule
@@ -11342,9 +11353,8 @@ coude system	0	oewn-coude_system-n	Number=Sing	dema	0			oewn_form
 coude systems	0	oewn-coude_system-n	Number=Plur	dema	0			rule
 coude telescope	0	oewn-coude_telescope-n	Number=Sing	dema	0			oewn_form
 coude telescopes	0	oewn-coude_telescope-n	Number=Plur	dema	0			rule
-cougar	0	oewn-cougar-n	Number=Plur	dema	0			agid
-cougar	1	oewn-cougar-n	Number=Sing	dema	0			oewn_form
-cougars	0	oewn-cougar-n	Number=Plur	dema	0			rule_variant
+cougar	0	oewn-cougar-n	Number=Sing	dema	0			oewn_form
+cougars	0	oewn-cougar-n	Number=Plur	dema	0			llm
 cough	0	oewn-cough-v	VerbForm=Inf	dema	0			oewn_form
 cough	1	oewn-cough-n	Number=Sing	dema	0			oewn_form
 cough drop	0	oewn-cough_drop-n	Number=Sing	dema	0			oewn_form
@@ -11419,7 +11429,7 @@ councillorship	0	oewn-councillorship-n	Number=Sing	dema	0			oewn_form
 councillorships	0	oewn-councillorship-n	Number=Plur	dema	0			rule
 councilman	0	oewn-councilman-n	Number=Sing	dema	0			oewn_form
 councilmanic	0		Degree=Pos	dema	0	councilmanic	a	moby_reverse
-councilmen	0	oewn-councilman-n	Number=Plur	dema	0			agid
+councilmen	0	oewn-councilman-n	Number=Plur	dema	0			llm
 councilor	0		Number=Sing	dema	0	councilor	n	moby_reverse
 councilors	0		Number=Plur	dema	0	councilor	n	rule
 councilorship	0	oewn-councilorship-n	Number=Sing	dema	0			oewn_form
@@ -11427,7 +11437,7 @@ councilorships	0	oewn-councilorship-n	Number=Plur	dema	0			rule
 councils	0	oewn-council-n	Number=Plur	dema	0			rule
 councils of elders	0	oewn-council_of_elders-n	Number=Plur	dema	0			rule
 councilwoman	0	oewn-councilwoman-n	Number=Sing	dema	0			oewn_form
-councilwomen	0	oewn-councilwoman-n	Number=Plur	dema	0			agid
+councilwomen	0	oewn-councilwoman-n	Number=Plur	dema	0			llm
 counsel	0	oewn-counsel-n	Number=Sing	dema	0			oewn_form
 counsel	1	oewn-counsel-v	VerbForm=Inf	dema	0			oewn_form
 counselable	0		Degree=Pos	dema	0	counselable	a	moby_reverse
@@ -11689,7 +11699,7 @@ countermark	1		VerbForm=Inf	dema	0	countermark	v	moby_reverse
 countermarks	0		Number=Plur	dema	0	countermark	n	rule
 countermeasure	0	oewn-countermeasure-n	Number=Sing	dema	0			oewn_form
 countermeasures	0	oewn-countermeasure-n	Number=Plur	dema	0			rule
-countermen	0	oewn-counterman-n	Number=Plur	dema	0			agid
+countermen	0	oewn-counterman-n	Number=Plur	dema	0			llm
 countermine	0	oewn-countermine-n	Number=Sing	dema	0			oewn_form
 countermine	1	oewn-countermine-v	VerbForm=Inf	dema	0			oewn_form
 countermined	0	oewn-countermine-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -11819,10 +11829,10 @@ countersink	0	oewn-countersink-v	VerbForm=Inf	dema	0			oewn_form
 countersink	1	oewn-countersink-n	Number=Sing	dema	0			oewn_form
 countersink bit	0	oewn-countersink_bit-n	Number=Sing	dema	0			oewn_form
 countersink bits	0	oewn-countersink_bit-n	Number=Plur	dema	0			rule
-countersinking	0	oewn-countersink-v	VerbForm=Ger	dema	0			rule
-countersinks	0	oewn-countersink-v	Person=3+Tense=Pres	dema	0			rule
+countersinking	0	oewn-countersink-v	VerbForm=Ger	dema	0			llm
+countersinks	0	oewn-countersink-v	Person=3+Tense=Pres	dema	0			llm
 countersinks	1	oewn-countersink-n	Number=Plur	dema	0			rule
-counterspies	0	oewn-counterspy-n	Number=Plur	dema	0			rule
+counterspies	0	oewn-counterspy-n	Number=Plur	dema	0			llm
 counterspy	0	oewn-counterspy-n	Number=Sing	dema	0			oewn_form
 counterstain	0	oewn-counterstain-n	Number=Sing	dema	0			oewn_form
 counterstain	1		VerbForm=Inf	dema	0	counterstain	v	moby_reverse
@@ -11833,16 +11843,17 @@ counterstamps	0		Number=Plur	dema	0	counterstamp	n	rule
 counterstatement	0		Number=Sing	dema	0	counterstatement	n	moby_reverse
 counterstatements	0		Number=Plur	dema	0	counterstatement	n	rule
 counterstrike	0	oewn-counterstrike-v	VerbForm=Inf	dema	0			oewn_form
-counterstrikes	0	oewn-counterstrike-v	Person=3+Tense=Pres	dema	0			rule
-counterstriking	0	oewn-counterstrike-v	VerbForm=Ger	dema	0			rule
+counterstrikes	0	oewn-counterstrike-v	Person=3+Tense=Pres	dema	0			llm
+counterstriking	0	oewn-counterstrike-v	VerbForm=Ger	dema	0			llm
 counterstroke	0		Number=Sing	dema	0	counterstroke	n	moby_reverse
 counterstrokes	0		Number=Plur	dema	0	counterstroke	n	rule
+counterstruck	0	oewn-counterstrike-v	Tense=Past+VerbForm=Part	dema	0			hand
 countersubject	0		Number=Sing	dema	0	countersubject	n	moby_reverse
 countersubjects	0		Number=Plur	dema	0	countersubject	n	rule
 countersubversion	0	oewn-countersubversion-n	Number=Sing	dema	0			oewn_form
 countersubversions	0	oewn-countersubversion-n	Number=Plur	dema	0			rule
 countersuit	0	oewn-countersuit-n	Number=Sing	dema	0			oewn_form
-countersuits	0	oewn-countersuit-n	Number=Plur	dema	0			rule
+countersuits	0	oewn-countersuit-n	Number=Plur	dema	0			llm
 countersunk	0	oewn-countersink-v	Tense=Past+VerbForm=Part	dema	0			hand
 countertendencies	0		Number=Plur	dema	0	countertendency	n	rule
 countertendency	0		Number=Sing	dema	0	countertendency	n	moby_reverse
@@ -11887,7 +11898,7 @@ counterweighting	0	oewn-counterweight-v	VerbForm=Ger	dema	0			rule
 counterweights	0	oewn-counterweight-n	Number=Plur	dema	0			rule
 counterweights	1	oewn-counterweight-v	Person=3+Tense=Pres	dema	0			rule
 counterwoman	0	oewn-counterwoman-n	Number=Sing	dema	0			oewn_form
-counterwomans	0	oewn-counterwoman-n	Number=Plur	dema	0			rule
+counterwomen	0	oewn-counterwoman-n	Number=Plur	dema	0			rule
 counterword	0		Number=Sing	dema	0	counterword	n	moby_reverse
 counterwords	0		Number=Plur	dema	0	counterword	n	rule
 counterwork	0		Number=Sing	dema	0	counterwork	n	moby_reverse
@@ -11946,7 +11957,7 @@ countryfiedness	0		Number=Sing	dema	0	countryfiedness	n	moby_reverse
 countryfolk	0	oewn-countryfolk-n	Number=Sing	dema	0			oewn_form
 countryfolks	0	oewn-countryfolk-n	Number=Plur	dema	0			rule
 countryman	0	oewn-countryman-n	Number=Sing	dema	0			oewn_form
-countrymen	0	oewn-countryman-n	Number=Plur	dema	0			agid
+countrymen	0	oewn-countryman-n	Number=Plur	dema	0			llm
 countrypeople	0		Number=Sing	dema	0	countrypeople	n	moby_reverse
 countrypeoples	0		Number=Plur	dema	0	countrypeople	n	rule
 countryseat	0	oewn-countryseat-n	Number=Sing	dema	0			oewn_form
@@ -11955,7 +11966,7 @@ countryside	0	oewn-countryside-n	Number=Sing	dema	0			oewn_form
 countrysides	0	oewn-countryside-n	Number=Plur	dema	0			rule
 countrywide	0	oewn-countrywide-a	Degree=Pos	dema	0			oewn_form
 countrywoman	0	oewn-countrywoman-n	Number=Sing	dema	0			oewn_form
-countrywomen	0	oewn-countrywoman-n	Number=Plur	dema	0			agid
+countrywomen	0	oewn-countrywoman-n	Number=Plur	dema	0			llm
 counts	0	oewn-count-v	Person=3+Tense=Pres	dema	0			rule
 counts	1	oewn-count-n	Number=Plur	dema	0			rule
 counts down	0	oewn-count_down-v	Person=3+Tense=Pres	dema	0			rule
@@ -12155,11 +12166,11 @@ courtships	0	oewn-courtship-n	Number=Plur	dema	0			rule
 courtyard	0	oewn-courtyard-n	Number=Sing	dema	0			oewn_form
 courtyards	0	oewn-courtyard-n	Number=Plur	dema	0			rule
 couscous	0	oewn-couscous-n	Number=Sing	dema	0			oewn_form
-couscouses	0	oewn-couscous-n	Number=Plur	dema	0			rule
+couscouses	0	oewn-couscous-n	Number=Plur	dema	0			llm
 cousin	0	oewn-cousin-n	Number=Sing	dema	0			oewn_form
 cousin	1		Degree=Pos	dema	0	cousin	r	moby_reverse
 cousin-german	0	oewn-cousin-german-n	Number=Sing	dema	0			oewn_form
-cousin-germans	0	oewn-cousin-german-n	Number=Plur	dema	0			rule
+cousin-germen	0	oewn-cousin-german-n	Number=Plur	dema	0			rule
 cousinage	0		Number=Sing	dema	0	cousinage	n	moby_reverse
 cousinages	0		Number=Plur	dema	0	cousinage	n	rule
 cousinhood	0		Number=Sing	dema	0	cousinhood	n	moby_reverse
@@ -12177,11 +12188,11 @@ couter	0		Number=Sing	dema	0	couter	n	moby_reverse
 couters	0		Number=Plur	dema	0	couter	n	rule
 couth	0	oewn-couth-a	Degree=Pos	dema	0			oewn_form
 couth	1	oewn-couth-n	Number=Sing	dema	0			oewn_form
-couther	0	oewn-couth-a	Degree=Cmp	dema	0			rule
-couthest	0	oewn-couth-a	Degree=Sup	dema	0			rule
+couther	0	oewn-couth-a	Degree=Cmp	dema	0			llm
+couthest	0	oewn-couth-a	Degree=Sup	dema	0			llm
 couthie	0	oewn-couthie-a	Degree=Pos	dema	0			oewn_form
-couthier	0	oewn-couthy-a	Degree=Cmp	dema	0			rule
-couthiest	0	oewn-couthy-a	Degree=Sup	dema	0			rule
+couthier	0	oewn-couthy-a	Degree=Cmp	dema	0			llm
+couthiest	0	oewn-couthy-a	Degree=Sup	dema	0			llm
 couthily	0		Degree=Pos	dema	0	couthily	a	moby_reverse
 couthiness	0		Number=Sing	dema	0	couthiness	n	moby_reverse
 couths	0	oewn-couth-n	Number=Plur	dema	0			rule
@@ -12347,9 +12358,9 @@ cow dungs	0	oewn-cow_dung-n	Number=Plur	dema	0			rule
 cow lilies	0	oewn-cow_lily-n	Number=Plur	dema	0			rule
 cow lily	0	oewn-cow_lily-n	Number=Sing	dema	0			oewn_form
 cow man	0	oewn-cow_man-n	Number=Sing	dema	0			oewn_form
-cow mans	0	oewn-cow_man-n	Number=Plur	dema	0			rule
 cow manure	0	oewn-cow_manure-n	Number=Sing	dema	0			oewn_form
 cow manures	0	oewn-cow_manure-n	Number=Plur	dema	0			rule
+cow men	0	oewn-cow_man-n	Number=Plur	dema	0			rule
 cow oak	0	oewn-cow_oak-n	Number=Sing	dema	0			oewn_form
 cow oaks	0	oewn-cow_oak-n	Number=Plur	dema	0			rule
 cow parsley	0	oewn-cow_parsley-n	Number=Sing	dema	0			oewn_form
@@ -12456,7 +12467,7 @@ cowls	1	oewn-cowl-v	Person=3+Tense=Pres	dema	0			rule
 cowlstaff	0		Number=Sing	dema	0	cowlstaff	n	moby_reverse
 cowlstaffs	0		Number=Plur	dema	0	cowlstaff	n	rule
 cowman	0	oewn-cowman-n	Number=Sing	dema	0			oewn_form
-cowmen	0	oewn-cowman-n	Number=Plur	dema	0			agid
+cowmen	0	oewn-cowman-n	Number=Plur	dema	0			llm
 cownose ray	0	oewn-cownose_ray-n	Number=Sing	dema	0			oewn_form
 cownose rays	0	oewn-cownose_ray-n	Number=Plur	dema	0			rule
 cowpat	0		Number=Sing	dema	0	cowpat	n	moby_reverse
@@ -12479,7 +12490,7 @@ cowrie	0	oewn-cowrie-n	Number=Sing	dema	0			oewn_form
 cowries	0	oewn-cowrie-n	Number=Plur	dema	0			rule
 cowries	1	oewn-cowry-n	Number=Plur	dema	0			rule
 cowry	0	oewn-cowry-n	Number=Sing	dema	0			oewn_form
-cows	0	oewn-cow-n	Number=Plur	dema	0			rule_variant
+cows	0	oewn-cow-n	Number=Plur	dema	0			llm
 cows	1	oewn-cow-v	Person=3+Tense=Pres	dema	0			rule
 cows	2	oewn-cows-n	Number=Sing	dema	0			oewn_form
 cows' milk	0	oewn-cows-ap-_milk-n	Number=Sing	dema	0			oewn_form
@@ -12516,19 +12527,19 @@ coxes	0	oewn-cox-n	Number=Plur	dema	0			rule
 coxes	1	oewn-cox-v	Person=3+Tense=Pres	dema	0			rule
 coxing	0	oewn-cox-v	VerbForm=Ger	dema	0			rule
 coxsackievirus	0	oewn-coxsackievirus-n	Number=Sing	dema	0			oewn_form
-coxsackieviruses	0	oewn-coxsackievirus-n	Number=Plur	dema	0			rule
+coxsackieviruses	0	oewn-coxsackievirus-n	Number=Plur	dema	0			llm
 coxswain	0	oewn-coxswain-n	Number=Sing	dema	0			oewn_form
 coxswains	0	oewn-coxswain-n	Number=Plur	dema	0			rule
 coy	0	oewn-coy-a	Degree=Pos	dema	0			oewn_form
 coydog	0	oewn-coydog-n	Number=Sing	dema	0			oewn_form
 coydogs	0	oewn-coydog-n	Number=Plur	dema	0			rule
-coyer	0	oewn-coy-a	Degree=Cmp	dema	0			rule
-coyest	0	oewn-coy-a	Degree=Sup	dema	0			rule
+coyer	0	oewn-coy-a	Degree=Cmp	dema	0			llm
+coyest	0	oewn-coy-a	Degree=Sup	dema	0			llm
 coyish	0		Degree=Pos	dema	0	coyish	a	moby_reverse
 coyishness	0		Number=Sing	dema	0	coyishness	n	moby_reverse
 coyly	0	oewn-coyly-r	Degree=Pos	dema	0			oewn_form
 coyness	0	oewn-coyness-n	Number=Sing	dema	0			oewn_form
-coynesses	0	oewn-coyness-n	Number=Plur	dema	0			rule
+coynesses	0	oewn-coyness-n	Number=Plur	dema	0			llm
 coyol	0	oewn-coyol-n	Number=Sing	dema	0			oewn_form
 coyol palm	0	oewn-coyol_palm-n	Number=Sing	dema	0			oewn_form
 coyol palms	0	oewn-coyol_palm-n	Number=Plur	dema	0			rule
@@ -12567,7 +12578,7 @@ cozies up	0	oewn-cozy_up-v	Person=3+Tense=Pres	dema	0			rule
 coziest	0	oewn-cozy-a	Degree=Sup	dema	0			oewn_form
 cozily	0	oewn-cozily-r	Degree=Pos	dema	0			oewn_form
 coziness	0	oewn-coziness-n	Number=Sing	dema	0			oewn_form
-cozinesses	0	oewn-coziness-n	Number=Plur	dema	0			rule
+cozinesses	0	oewn-coziness-n	Number=Plur	dema	0			llm
 cozing	0		VerbForm=Ger	dema	0	coze	v	rule
 cozy	0	oewn-cozy-a	Degree=Pos	dema	0			oewn_form
 cozy	1	oewn-cozy-n	Number=Sing	dema	0			oewn_form

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Split the final annotation into train/dev/test files by DOCUMENT, for one of the two parts of the corpus.
 
-  split_data.py --sentences build/sentences_final.tsv --workdir annotations                       (representative part, default)
+  split_data.py --sentences build/sentences_final.tsv --workdir DIR                               (representative part, default)
   split_data.py --part targeted --sentences FILE.tsv --workdir DIR                                (targeted part)
 
 representative: writes representative/data/{train,dev,test}.tsv. The split of a document is a function of its source_id only:

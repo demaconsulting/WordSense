@@ -27,20 +27,17 @@ before the quota filling and before the removal of the Tatoeba CC BY rows); the 
 files in `../README.md`) came
 from a corpus that was never sized by tier, so they cover the frequent senses and few of the rare ones.
 
-## Quota filling (progress)
+## Quota filling
 
-`quota-coverage.tsv` has the same columns measured on the corpus as it is now (after the filling of the waves done so
-far and after the removal of the Tatoeba CC BY rows; `tools/quota-fill/coverage.py` writes it) and `quota-unfilled.tsv`
-lists the senses of the lemmas of the finished waves that the harvest and the writing could not bring to their quota,
-with the number of sentences written for them and how many of those the blind labeler placed in the intended sense. Such
-senses cannot be filled credibly by this method (a near-duplicate of a sibling sense, or a gloss too thin to write to) and
-are candidates for the review of the senses and groups. `quota-unfilled.tsv` is a record of the end of wave 3 (232
-senses) and was **not** recomputed after the license filter, because the senses that fell short only for lack of the
-removed rows are not unfillable. The waves, the method and the progress table are in `docs/build_notes/quota-fill.md`.
-After wave 3 and the removal of the Tatoeba CC BY rows: 2,825 of 7,036 senses meet their quota (2,769 short, 1,442
-empty); 24,823 anchors and 7,621 held-out sentences are missing, 3,730 and 1,255 of them in the lemmas of waves 1-3
-(before the removal: 3,837 senses met their quota, 19,968 and 5,537 missing, 1,550 and 230 in the lemmas of waves 1-3).
-After wave 2 it was 2,673 senses that met their quota of 6,856 (28,221 anchors and 7,731 held-out sentences missing),
-after wave 1 1,775 (37,585 and 10,132). The scope grew by the 176 senses of the 12 technical lemmas and the 6 project
-senses (`corpus/curation/README.md`). All quota-filled sentences are targeted (see "Quota-Filled Rows (targeted)" in
-`../README.md`).
+`quota-coverage.tsv` has the same columns measured on the corpus as it is now (`tools/quota-fill/coverage.py` writes it)
+and `quota-unfilled.tsv` lists the senses of the lemmas of the finished waves that the harvest and the writing could not
+bring to their quota, with the number of sentences written for them and how many of those the blind labeler placed in the
+intended sense. Such senses cannot be filled credibly by this method (a near-duplicate of a sibling sense, or a gloss too
+thin to write to) and are candidates for the review of the senses and groups. `quota-unfilled.tsv` (232 senses) was **not**
+recomputed after the Tatoeba CC BY rows were removed, because the senses that fell short only for lack of the removed rows
+are not unfillable. The method is in the "Method of the quota filling" section of `../README.md`.
+
+Current state of `quota-coverage.tsv`: 2,825 of 7,036 senses meet their quota (2,769 short, 1,442 empty); 24,823 anchors
+and 7,621 held-out sentences are missing, 3,730 and 1,255 of them in the lemmas of waves 1-3. The scope includes the 176
+senses of the 12 technical lemmas and the 6 project senses (`../curation/README.md`). All quota-filled sentences are
+targeted (see "Quota-Filled Rows (targeted)" in `../README.md`).

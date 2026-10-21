@@ -15,7 +15,7 @@ Czechoslovakians	0	oewn-Czechoslovakian-n	Capitalization=Title+Number=Plur	dema	
 Czechoslovaks	0	oewn-Czechoslovak-n	Capitalization=Title+Number=Plur	dema	0			rule
 czar	0	oewn-czar-n	Number=Sing	dema	0			oewn_form
 czardas	0	oewn-czardas-n	Number=Sing	dema	0			oewn_form
-czardases	0	oewn-czardas-n	Number=Plur	dema	0			rule
+czardases	0	oewn-czardas-n	Number=Plur	dema	0			llm
 czardom	0		Number=Sing	dema	0	czardom	n	moby_reverse
 czardoms	0		Number=Plur	dema	0	czardom	n	rule
 czarevitch	0		Number=Sing	dema	0	czarevitch	n	moby_reverse
@@ -23,7 +23,7 @@ czarevitches	0		Number=Plur	dema	0	czarevitch	n	rule
 czarevna	0		Number=Sing	dema	0	czarevna	n	moby_reverse
 czarevnas	0		Number=Plur	dema	0	czarevna	n	rule
 czarina	0	oewn-czarina-n	Number=Sing	dema	0			oewn_form
-czarinas	0	oewn-czarina-n	Number=Plur	dema	0			rule
+czarinas	0	oewn-czarina-n	Number=Plur	dema	0			llm
 czarism	0		Number=Sing	dema	0	czarism	n	moby_reverse
 czarisms	0		Number=Plur	dema	0	czarism	n	rule
 czarist	0	oewn-czarist-a	Degree=Pos	dema	0			oewn_form

@@ -29,6 +29,7 @@ This user guide covers:
 - The word table and the sense catalog of the core package, including the lookup of a sense by its OEWN sense key and
   the version of the sense inventory
 - Changes from the previous release
+- Accuracy and model choice, with the model comparison table
 - Model download, mirrors and offline use
 - Limitations
 - Licensing and provenance of the data
@@ -142,26 +143,25 @@ not trained for with the Basic model of the core. (Before version 1.0 the Basic 
 - Use **BertBaseCased** when the larger, cased encoder gives better results on your texts. The accuracy of each model
   is measured on SemCor (sense accuracy at each level) and on running text (part of speech), neither of which is used
   for training or tuning; the figures, with the share of words answered at each level, are in the model table of the
-  README and in the build notes (`independent-evaluation.md`, with `model-comparison.md` and `basic-evaluation.md`,
-  which measure the earlier part-of-speech classes).
+  README and in the chapter "Accuracy and Model Choice".
 
-The measured size and speed (rounded; the exact table is `model-table.md` of the build notes and the README, and
+The measured size and speed (rounded; the exact table is the chapter "Model Comparison Table" and the README, and
 latency, first-use time and memory are approximate and machine dependent). The numbers come from the repository's
 build tool (`evaluate <model> --table`), run once per model on one machine with at most two ONNX threads, so use the
 absolute times and memory as relative figures. "Download needed: yes" in the table means that the files are downloaded
 the first time a classification needs the encoder (lazily by `ClassifyAsync`, or earlier by `EnsureModelAsync`); a
 model whose encoder is never needed is never downloaded.
 
-| Model | Download | Latency per sentence | Memory added |
-| ----- | -------: | -------------------: | -----------: |
-| Basic | none (embedded table) | under 0.1 ms | about 2 MiB |
-| MiniLM | 22 MiB | about 2 ms | about 64 MiB |
-| BertBaseCased | 104 MiB | about 9 ms | about 150 MiB |
+| Model | Download | Latency per sentence |
+| ----- | -------: | -------------------: |
+| Basic | none (embedded table) | under 0.1 ms |
+| MiniLM | 22 MiB | about 2 ms |
+| BertBaseCased | 104 MiB | about 9 ms |
 
-The memory column is measured as the larger of the growth of the private memory of the process and the growth of the
-managed heap (both after a full garbage collection) from before the model was created to after it classified warm-up
-sentences, so it is not a count of the model's own data: for Basic the about 2 MiB are the decoded tables and working
-buffers. The word lexicon and sense catalog were loaded before and are not included.
+The memory a model adds (the "RAM" column) is only in the generated model table (the chapter "Model Comparison Table"):
+it is measured as the larger of the growth of the private memory of the process and the growth of the managed heap (both
+after a full garbage collection) from before the model was created to after it classified warm-up sentences, so it is
+not a count of the model's own data, and the word lexicon and sense catalog, which were loaded before, are not included.
 
 **Basic is enough** when nothing may be downloaded, startup time and memory must stay small, or ONNX Runtime cannot be
 shipped, and the part of speech is the precision you need. Otherwise start with MiniLM and move to BertBaseCased if
@@ -352,10 +352,10 @@ grows with the margin
 of the model's evidence, but it is comparable only within one result: do not compare it across models, across words or
 across levels as if it were calibrated, and tune any threshold per model and level on your own text. The precision that
 the models reach on real held-out text (the test split of the corpus, never seen by the weights or the thresholds) is
-published per level in the README model table and in `docs/build_notes/quota-fill.md`; it is measured on a balanced
+published per level in the README model table and in the chapter "Accuracy and Model Choice"; it is measured on a balanced
 corpus, so it is not the precision on typical running text. The independent text (SemCor) is the check for that, and it
-shows that the sense answers are less precise there than the thresholds aimed for (see
-`docs/build_notes/independent-evaluation.md`): treat the sense level as a candidate to check, and the part of speech as
+shows that the sense answers are less precise there than the thresholds aimed for (see "Accuracy and Model Choice"):
+treat the sense level as a candidate to check, and the part of speech as
 the dependable part of the answer.
 
 The `Level` is what to test. A `PartOfSpeech` result from an encoder model for a trained lemma still lists the ranked
@@ -452,8 +452,9 @@ if (answer.GroupId is { } groupId && WordLexicon.TryGetGroup(groupId, out SenseG
 Console.WriteLine(WordLexicon.Version);
 ```
 
-`SensesOf` lists the senses of a lemma and part of speech in inventory order, the most frequent first (by the WordNet
-3.0 sense counts). `TryGetSense` and `TryGetSenseByKey` find the same sense through its id or its key; a project sense
+`SensesOf` lists the senses of a lemma and part of speech in inventory order, which is the order of Open English WordNet
+(the position of the sense in its entry, which puts the commonly used senses first; project senses come last).
+`TryGetSense` and `TryGetSenseByKey` find the same sense through its id or its key; a project sense
 has no key and is found only by its id. A sense is in at most one group of the same lemma and part of speech, and a
 group lists at least two senses and never all the senses of its lemma and part of speech. A group id (`lemma#group:label`)
 is in a namespace of its own and never equals a sense id. `WordLexicon.Version` is a string that identifies the sense
@@ -490,8 +491,7 @@ The previous release identified a sense by a pronunciation or part-of-speech cla
   (see "Composing Models").
 - **Sense probabilities reflect usage.** The encoder models correct their per-sense scores to the usage of the senses
   (WordNet 3.0 counts), so the most probable sense is the usual one unless the context says otherwise (see "Working with
-  an Encoder Model"); the release notes (build notes, "Changes Before Version 1.0") list the changes with the migration
-  steps.
+  an Encoder Model"); the chapter "Accuracy and Model Choice" gives the measured effect.
 
 ## Input and Tokenization
 
@@ -605,7 +605,7 @@ probability of that lemma and part of speech, 1 for a word with only one), it ne
 the `Senses`
 of its analyses are empty except for the one sense of such a single-sense analysis (probability 1), because it scores
 analyses and not fine senses. The measured
-quality is in the build notes (`basic-evaluation.md`). First use costs about 55 ms for the word table and about 22 ms for
+quality is in the chapter "Accuracy and Model Choice". First use costs about 55 ms for the word table and about 22 ms for
 the statistical table (approximate, machine dependent); after that a sentence takes well under a millisecond.
 
 ```csharp
@@ -631,7 +631,7 @@ another value (8 to 512) is possible but unvalidated.
 encoder (hidden size 768, cased) with its own embedded weights and thresholds, composed with the Basic model in the same
 way as MiniLM. The file `model_int8.onnx` of this model
 is the encoder derived from the upstream masked-language-model export, with the language-model head removed (see
-`model-provenance.md` in the build notes).
+`model/bert-base-cased-int8/README.md` in the repository).
 
 ## Working with an Encoder Model
 
@@ -656,7 +656,7 @@ to every count, and raised to the power 0.5, so that the prior only leans on the
 without a count, such as a project sense, gets the added constant alone. The correction is part of the stored weights
 and costs nothing at run time. On SemCor it raised the share of words whose most probable sense is right (the *fine
 top-1* of the README table) for both encoder models, and it can lower the figure on a balanced set (a frequent sense is
-now favored where the test sentences show every sense equally often); `frequency-prior.md` of the build notes has the
+now favored where the test sentences show every sense equally often); the chapter "Accuracy and Model Choice" has the
 measurements.
 
 The public encoder models wrap an encoder model (`OnnxWordSenseModel`, which implements `IWordSenseModel`, has the
@@ -810,8 +810,8 @@ foreach (var result in results.Where(r => r.IsKnown))
 Because the confidence is relative to the level, a confidence of 0.9 at the `Group` level and one of 0.9 at the `Sense`
 level mean different things: first look at the `Level`, then at the `Confidence`. Do not reuse a threshold across
 models. The share of the words of a text that each model answers at each level, and the precision at each level,
-measured on SemCor (trained lemmas only) and on running text, are in the README model table and in
-`independent-evaluation.md` of the build notes.
+measured on SemCor (trained lemmas only) and on running text, are in the README model table and in the chapter
+"Accuracy and Model Choice".
 
 # Model Files
 
@@ -830,7 +830,8 @@ repository (`media.githubusercontent.com`); there is no other source.
 | BertBaseCased | `bert-base-cased-int8` | `config.json` | 639 |
 | BertBaseCased | `bert-base-cased-int8` | `tokenizer.json` | 668,923 |
 
-The SHA-256 values are in `model-provenance.md` of the build notes and below. **All files of a model are verified**,
+The SHA-256 values are in `SHA256SUMS` of each model folder (`model/<model-id>/`) and below. **All files of a model are
+verified**,
 including `config.json` and `tokenizer.json` of BertBaseCased (the runtime reads only the ONNX file and `vocab.txt`; the
 other two are provenance files that must still match).
 
@@ -1024,24 +1025,26 @@ models are measured, is downloaded to a cache by the builder, never committed, a
 credited here as the evaluation source. Project-authored additions to the data (the readable sense labels, the groups,
 the project senses) are MIT.
 The training corpus is not shipped in the NuGet packages; only the derived weights are embedded. Every corpus sentence
-has a row in `corpus/provenance/*.tsv` recording its source, license, URL and contributor. The licenses in use are
-`CC0 1.0` (Tatoeba sentences of the official CC0 export), `Public domain in the United States` (Project Gutenberg books
-published 1930 or earlier and works of US federal agencies, 17 U.S.C. §105) and `CC0 1.0 (project-authored)` (the
-sentences written for this project, including those written by language models, which the project owner dedicates to
-the public domain under CC0 1.0). Sentences under CC BY, CC BY-SA or any other attribution-bound license are not
+has a row in `corpus/provenance/*.tsv` that names its source, and the licence follows from the source: the allowed
+sources are Tatoeba sentences of the official CC0 export (`CC0 1.0`), Project Gutenberg books published 1930 or earlier
+and works of US federal agencies (VOA Learning English staff articles, USGS, NPS, National Weather Service and FAA
+documents; public domain in the United States, 17 U.S.C. §105) and the sentences written for this project, including
+those written by language models, which the project owner dedicates to the public domain under CC0 1.0. The sources and
+the evidence for each are in `corpus/README.md` ("Sources"), and a test fails on any other source. Sentences under CC BY,
+CC BY-SA or any other attribution-bound license are not
 used, and neither is any Wikipedia, Wiktionary or Universal Dependencies text; the Universal Dependencies English-EWT
 treebank is downloaded for evaluation only, never committed, and trains nothing. The open part-of-speech corpus
 `corpus/open` is released under CC0 1.0 for our annotations and selection; its underlying sentences are public domain in
 the United States or CC0 per source (`corpus/open/sources.tsv`). The shipped weights are statistical summaries of many
-sentences and do not contain the sentences; this is the project's reading and not legal advice. The build notes
-(`model-provenance.md`) describe how the model files were produced, and `model-comparison.md` and
-`basic-evaluation.md` give the measured quality of each model.
+sentences and do not contain the sentences; this is the project's reading and not legal advice. The README of each model
+folder (`model/<model-id>/README.md`) describes how the model files were produced, and the chapter "Accuracy and Model
+Choice" gives the measured quality of each model.
 
 # Extending the Corpus
 
 The word table and the model weights are generated by the non-shipped builder `tools/WordSense.Builder` from the files
-in `corpus/`; the format of the files is described in `corpus/README.md` and the harvest of real sentences in
-`tools/real-text/README.md`. All commands run from the repository root with
+in `corpus/`; the format of the files is described in `corpus/README.md` and the filling of the quotas with real and
+written sentences in `tools/quota-fill/README.md`. All commands run from the repository root with
 `dotnet run --project tools/WordSense.Builder -c Release -- <command> [--name value]`:
 
 <!-- markdownlint-disable MD013 -->
@@ -1050,10 +1053,9 @@ in `corpus/`; the format of the files is described in `corpus/README.md` and the
 | ------- | ------------ |
 | `import-moby` | Rebuilds `corpus/lexicon/lexicon.tsv` from the pinned Moby file given by `--input` |
 | `compile-image` | Compiles the tables of `data/` into the embedded word image (`wordsense.img`), with inflections |
-| `rebuild-forms` | Regenerates the form tables from the committed inputs and the pinned files in `artifacts/inputs` |
+| `rebuild-forms` | Regenerates the form tables from the committed inputs (including the authored forms) and the pinned file in `artifacts/inputs` |
 | `audit-forms [--seed N]` | Audits a seeded stratified sample of generated forms against a checker; fails at 1% error |
 | `generate-facts [--seed N]` | Derives the source-derived lexicon facts and checks them against the word table |
-| `import-agid --input FILE` | Derives the irregular forms of dictionary words from the inflection database `infl.txt` |
 | `coverage --text DIR [--top N]` | Reports the token coverage of the `*.txt` files of `DIR`, the share of known words with trained senses and the top unknown words |
 | `import-wn30-counts --input FILE` | Imports the WordNet 3.0 sense counts into the sense frequency table (pinned input) |
 | `label-senses` | Generates the readable labels of the senses that have none and never changes a published label |
@@ -1089,7 +1091,7 @@ repository layout.
   for (or `lemma/features` for one analysis of a lemma whose analyses of the form differ in tense); the per-form
   chooser is trained from them (the Basic model reads their anchors for its context cues too).
 - `provenance/*.tsv` has one row per sentence: `id` (first 12 hex characters of the SHA-256 of `lemma|sentence`),
-  `lemma`, `sense`, `split`, `source`, `licence`, `source_key`, `url`, `contributor` and `origin`.
+  `split`, `source` and `source_key`; the source must be one of the allowed sources listed in `corpus/README.md`.
 - `realtext/relabel-realtext.tsv` holds real sentences that are used for evaluation only and never for training.
 - `open/` is the open English part-of-speech corpus (see `corpus/open/README.md`): `representative/` is a random sample
   that is the only input of usage statistics (the tag counts of the Basic tagger in `open/counts`) and of the real-text
@@ -1113,9 +1115,9 @@ repository layout.
    reports it: 20 for a frequent sense, 10 for a rare one and 5 for a sense that WordNet 3.0 has never seen), with
    different holdout sentences (ideally from different sources) in `holdout/my-batch.tsv`. The braced target may be any
    form.
-3. Add a provenance row for every sentence to `provenance/my-batch.tsv`: source, license from the list above (only
-   `CC0 1.0`, `Public domain in the United States` and `CC0 1.0 (project-authored)` are accepted),
-   a URL for web sources and the origin (`real`, `authored` or `user-supplied`).
+3. Add a provenance row for every sentence to `provenance/my-batch.tsv` (columns `id`, `split`, `source`, `source_key`):
+   the source must be one of the allowed sources of `corpus/README.md` ("Sources": for example `llm-corpus` or `authored`
+   for sentences that you write and dedicate to CC0 1.0), and the source key names the document or the batch.
 4. Rebuild the word table, retrain each encoder model (this also chooses the thresholds of the lemma) and measure the
    result:
 

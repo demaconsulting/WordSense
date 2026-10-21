@@ -79,6 +79,7 @@ pneumonic	0	oewn-pneumonic-a	Degree=Pos	dema	0			oewn_form
 pneumonic plague	0	oewn-pneumonic_plague-n	Number=Sing	dema	0			oewn_form
 pneumonic plagues	0	oewn-pneumonic_plague-n	Number=Plur	dema	0			rule
 pneumonitis	0	oewn-pneumonitis-n	Number=Sing	dema	0			oewn_form
+pneumonoconioses	0	oewn-pneumonoconiosis-n	Number=Plur	dema	0			llm
 pneumonoconiosis	0	oewn-pneumonoconiosis-n	Number=Sing	dema	0			oewn_form
 pneumonoultramicroscopicsilicovolcanoconiosis	0		Number=Sing	dema	0	pneumonoultramicroscopicsilicovolcanoconiosis	n	moby_reverse
 pneumothorax	0	oewn-pneumothorax-n	Number=Sing	dema	0			oewn_form

@@ -288,14 +288,12 @@ Harpy	0	oewn-harpy-n	Number=Sing	dema	0			oewn_form
 Harpy	1	oewn-Harpy-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Harris Tweed	0	oewn-Harris_Tweed-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Harris Tweeds	0	oewn-Harris_Tweed-n	Capitalization=Title+Number=Plur	dema	0			rule
-Hart	0	oewn-hart-n	Number=Plur	dema	0			agid
-Hart	1	oewn-hart-n	Number=Sing	dema	0			oewn_form
-Hart	2	oewn-Hart-n	Capitalization=Title+Number=Plur	dema	0			agid
-Hart	3	oewn-Hart-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Hart	0	oewn-hart-n	Number=Sing	dema	0			oewn_form
+Hart	1	oewn-Hart-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Hartford fern	0	oewn-Hartford_fern-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Hartford ferns	0	oewn-Hartford_fern-n	Capitalization=Exact+Number=Plur	dema	0			rule
-Harts	0	oewn-hart-n	Number=Plur	dema	0			rule_variant
-Harts	1	oewn-Hart-n	Capitalization=Title+Number=Plur	dema	0			rule_variant
+Harts	0	oewn-hart-n	Number=Plur	dema	0			llm
+Harts	1	oewn-Hart-n	Capitalization=Title+Number=Plur	dema	0			llm
 Harvey Wallbanger	0	oewn-Harvey_Wallbanger-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Harvey Wallbangers	0	oewn-Harvey_Wallbanger-n	Capitalization=Title+Number=Plur	dema	0			rule
 Hashimoto's disease	0	oewn-Hashimoto-ap-s_disease-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
@@ -396,7 +394,7 @@ Hegelian	0	oewn-Hegelian-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Hegelian	1	oewn-Hegelian-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
 Hegelians	0	oewn-Hegelian-n	Capitalization=Title+Number=Plur	dema	0			rule
 Heidelberg man	0	oewn-Heidelberg_man-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
-Heidelberg mans	0	oewn-Heidelberg_man-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Heidelberg men	0	oewn-Heidelberg_man-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Heimlich maneuver	0	oewn-Heimlich_maneuver-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Heimlich maneuvers	0	oewn-Heimlich_maneuver-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Heimlich manoeuvre	0	oewn-Heimlich_manoeuvre-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
@@ -793,7 +791,6 @@ Hollander	0	oewn-Hollander-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Hollanders	0	oewn-Hollander-n	Capitalization=Title+Number=Plur	dema	0			rule
 Hollands	0		Number=Plur	dema	0	holland	n	rule
 Hollands	1	oewn-Hollands-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-Hollandses	0	oewn-Hollands-n	Capitalization=Title+Number=Plur	dema	0			rule
 Hollerith card	0	oewn-Hollerith_card-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Hollerith cards	0	oewn-Hollerith_card-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Hollywood	0	oewn-Hollywood-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
@@ -1110,8 +1107,6 @@ Hydnocarpus wightiana	0	oewn-Hydnocarpus_wightiana-n	Capitalization=Exact+Number
 Hydnocarpus wightianas	0	oewn-Hydnocarpus_wightiana-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Hydra	0	oewn-hydra-n	Number=Sing	dema	0			oewn_form
 Hydra	1	oewn-Hydra-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-Hydrae	0	oewn-hydra-n	Number=Plur	dema	0			oewn_form
-Hydrae	1	oewn-Hydra-n	Capitalization=Title+Number=Plur	dema	0			rule_variant
 Hydrangea anomala	0	oewn-Hydrangea_anomala-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Hydrangea anomalas	0	oewn-Hydrangea_anomala-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Hydrangea arborescens	0	oewn-Hydrangea_arborescens-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
@@ -1120,7 +1115,7 @@ Hydrangea paniculata	0	oewn-Hydrangea_paniculata-n	Capitalization=Exact+Number=S
 Hydrangea paniculatas	0	oewn-Hydrangea_paniculata-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Hydrangea petiolaris	0	oewn-Hydrangea_petiolaris-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Hydras	0	oewn-hydra-n	Number=Plur	dema	0			rule_variant
-Hydras	1	oewn-Hydra-n	Capitalization=Title+Number=Plur	dema	0			rule_variant
+Hydras	1	oewn-Hydra-n	Capitalization=Title+Number=Plur	dema	0			rule
 Hydrastis canadensis	0	oewn-Hydrastis_canadensis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Hydrilla verticillata	0	oewn-Hydrilla_verticillata-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Hydrilla verticillatas	0	oewn-Hydrilla_verticillata-n	Capitalization=Exact+Number=Plur	dema	0			rule
@@ -1387,11 +1382,10 @@ hackles	2	oewn-hackle-v	Person=3+Tense=Pres	dema	0			rule
 hackling	0	oewn-hackle-v	VerbForm=Ger	dema	0			rule
 hackly	0		Degree=Pos	dema	0	hackly	a	moby_reverse
 hackman	0		Number=Sing	dema	0	hackman	n	moby_reverse
-hackmans	0		Number=Plur	dema	0	hackman	n	rule
 hackmatack	0	oewn-hackmatack-n	Number=Sing	dema	0			oewn_form
 hackmatacks	0	oewn-hackmatack-n	Number=Plur	dema	0			rule
-hackmen	0		Number=Sing	dema	0	hackmen	n	moby_reverse
-hackmens	0		Number=Plur	dema	0	hackmen	n	rule
+hackmen	0		Number=Plur	dema	0	hackman	n	rule
+hackmen	1		Number=Sing	dema	0	hackmen	n	moby_reverse
 hackney	0	oewn-hackney-n	Number=Sing	dema	0			oewn_form
 hackney	1		VerbForm=Inf	dema	0	hackney	v	moby_reverse
 hackney carriage	0	oewn-hackney_carriage-n	Number=Sing	dema	0			oewn_form
@@ -1420,9 +1414,8 @@ hadarims	0		Number=Plur	dema	0	hadarim	n	rule
 hadaway	0	dema-hadaway-i		dema	0			carried
 hadded best	0	oewn-had_best-v	Tense=Past+VerbForm=Part	dema	0			rule
 hadding best	0	oewn-had_best-v	VerbForm=Ger	dema	0			rule
-haddock	0	oewn-haddock-n	Number=Plur	dema	0			agid
-haddock	1	oewn-haddock-n	Number=Sing	dema	0			oewn_form
-haddocks	0	oewn-haddock-n	Number=Plur	dema	0			rule_variant
+haddock	0	oewn-haddock-n	Number=Sing	dema	0			oewn_form
+haddocks	0	oewn-haddock-n	Number=Plur	dema	0			rule
 hade	0		Number=Sing	dema	0	hade	n	moby_reverse
 hade	1		VerbForm=Inf	dema	0	hade	v	moby_reverse
 haded	0		VerbForm=Inf	dema	0	haded	v	moby_reverse
@@ -1450,7 +1443,6 @@ haec	0		Degree=Pos	dema	0	haec	a	moby_reverse
 haec	1	dema-haec-u		dema	0			carried
 haecceities	0	oewn-haecceity-n	Number=Plur	dema	0			rule
 haecceity	0	oewn-haecceity-n	Number=Sing	dema	0			oewn_form
-haed	0		Tense=Past+VerbForm=Part	dema	0	hae	v	rule
 haem	0	oewn-haem-n	Number=Sing	dema	0			oewn_form
 haemachrome	0		Number=Sing	dema	0	haemachrome	n	moby_reverse
 haemachromes	0		Number=Plur	dema	0	haemachrome	n	rule
@@ -1493,10 +1485,11 @@ haematoblast	0		Number=Sing	dema	0	haematoblast	n	moby_reverse
 haematoblasts	0		Number=Plur	dema	0	haematoblast	n	rule
 haematocele	0	oewn-haematocele-n	Number=Sing	dema	0			oewn_form
 haematoceles	0	oewn-haematocele-n	Number=Plur	dema	0			rule
+haematoceles	1	oewn-haematocoele-n	Number=Plur	dema	0			rule_variant
 haematochezia	0	oewn-haematochezia-n	Number=Sing	dema	0			oewn_form
 haematochezias	0	oewn-haematochezia-n	Number=Plur	dema	0			rule
 haematocoele	0	oewn-haematocoele-n	Number=Sing	dema	0			oewn_form
-haematocoeles	0	oewn-haematocoele-n	Number=Plur	dema	0			rule
+haematocoeles	0	oewn-haematocoele-n	Number=Plur	dema	0			llm
 haematocolpometra	0	oewn-haematocolpometra-n	Number=Sing	dema	0			oewn_form
 haematocolpometras	0	oewn-haematocolpometra-n	Number=Plur	dema	0			rule
 haematocolpos	0	oewn-haematocolpos-n	Number=Sing	dema	0			oewn_form
@@ -1693,7 +1686,7 @@ haggardly	0	oewn-haggardly-r	Degree=Pos	dema	0			oewn_form
 haggardness	0		Number=Sing	dema	0	haggardness	n	moby_reverse
 haggardnesses	0		Number=Plur	dema	0	haggardness	n	rule
 haggis	0	oewn-haggis-n	Number=Sing	dema	0			oewn_form
-haggises	0	oewn-haggis-n	Number=Plur	dema	0			rule
+haggises	0	oewn-haggis-n	Number=Plur	dema	0			llm
 haggish	0		Degree=Pos	dema	0	haggish	a	moby_reverse
 haggishly	0		Degree=Pos	dema	0	haggishly	r	moby_reverse
 haggishness	0		Number=Sing	dema	0	haggishness	n	moby_reverse
@@ -1763,8 +1756,9 @@ haikais	0		Number=Plur	dema	0	haikai	n	rule
 haikal	0		Number=Sing	dema	0	haikal	n	moby_reverse
 haikals	0		Number=Plur	dema	0	haikal	n	rule
 haiks	0	oewn-haik-n	Number=Plur	dema	0			rule
-haiku	0	oewn-haiku-n	Number=Plur	dema	0			agid
+haiku	0	oewn-haiku-n	Number=Plur	dema	0			llm
 haiku	1	oewn-haiku-n	Number=Sing	dema	0			oewn_form
+haikus	0	oewn-haiku-n	Number=Plur	dema	0			rule_variant
 hail	0	oewn-hail-n	Number=Sing	dema	0			oewn_form
 hail	1	oewn-hail-v	VerbForm=Inf	dema	0			oewn_form
 hail	2	dema-hail-i		dema	0			carried
@@ -1883,7 +1877,7 @@ hairiest	0	oewn-hairy-a	Degree=Sup	dema	0			oewn_form
 hairif	0		Number=Sing	dema	0	hairif	n	moby_reverse
 hairifs	0		Number=Plur	dema	0	hairif	n	rule
 hairiness	0	oewn-hairiness-n	Number=Sing	dema	0			oewn_form
-hairinesses	0	oewn-hairiness-n	Number=Plur	dema	0			rule
+hairinesses	0	oewn-hairiness-n	Number=Plur	dema	0			llm
 hairless	0	oewn-hairless-a	Degree=Pos	dema	0			oewn_form
 hairlessness	0	oewn-hairlessness-n	Number=Sing	dema	0			oewn_form
 hairlessnesses	0	oewn-hairlessness-n	Number=Plur	dema	0			rule
@@ -1958,13 +1952,12 @@ hajjes	0	oewn-hajj-n	Number=Plur	dema	0			oewn_form
 hajji	0	oewn-hajji-n	Number=Sing	dema	0			oewn_form
 hajjis	0	oewn-hajji-n	Number=Plur	dema	0			rule
 hajs	0	oewn-haj-n	Number=Plur	dema	0			rule
-hake	0	oewn-hake-n	Number=Plur	dema	0			agid
-hake	1	oewn-hake-n	Number=Sing	dema	0			oewn_form
+hake	0	oewn-hake-n	Number=Sing	dema	0			oewn_form
 hakea	0		Number=Sing	dema	0	hakea	n	moby_reverse
 hakeas	0		Number=Plur	dema	0	hakea	n	rule
 hakeem	0	oewn-hakeem-n	Number=Sing	dema	0			oewn_form
 hakeems	0	oewn-hakeem-n	Number=Plur	dema	0			rule
-hakes	0	oewn-hake-n	Number=Plur	dema	0			rule_variant
+hakes	0	oewn-hake-n	Number=Plur	dema	0			rule
 hakim	0	oewn-hakim-n	Number=Sing	dema	0			oewn_form
 hakims	0	oewn-hakim-n	Number=Plur	dema	0			rule
 halakist	0		Number=Sing	dema	0	halakist	n	moby_reverse
@@ -2066,7 +2059,7 @@ half-and-half	1	oewn-half-and-half-a	Degree=Pos	dema	0			oewn_form
 half-and-half	2	oewn-half-and-half-r	Degree=Pos	dema	0			oewn_form
 half-and-half dressing	0	oewn-half-and-half_dressing-n	Number=Sing	dema	0			oewn_form
 half-and-half dressings	0	oewn-half-and-half_dressing-n	Number=Plur	dema	0			rule
-half-and-halfs	0	oewn-half-and-half-n	Number=Plur	dema	0			rule
+half-and-halves	0	oewn-half-and-half-n	Number=Plur	dema	0			rule
 half-baked	0	oewn-half-baked-a	Degree=Pos	dema	0			oewn_form
 half-bastion	0	oewn-half-bastion-n	Number=Sing	dema	0			oewn_form
 half-bastions	0	oewn-half-bastion-n	Number=Plur	dema	0			rule
@@ -2109,9 +2102,9 @@ half-length	0	oewn-half-length-n	Number=Sing	dema	0			oewn_form
 half-length	1	oewn-half-length-a	Degree=Pos	dema	0			oewn_form
 half-lengths	0	oewn-half-length-n	Number=Plur	dema	0			rule
 half-life	0	oewn-half-life-n	Number=Sing	dema	0			oewn_form
-half-lifes	0	oewn-half-life-n	Number=Plur	dema	0			rule
 half-light	0	oewn-half-light-n	Number=Sing	dema	0			oewn_form
 half-lights	0	oewn-half-light-n	Number=Plur	dema	0			rule
+half-lives	0	oewn-half-life-n	Number=Plur	dema	0			rule
 half-mast	0	oewn-half-mast-n	Number=Sing	dema	0			oewn_form
 half-masts	0	oewn-half-mast-n	Number=Plur	dema	0			rule
 half-moon	0	oewn-half-moon-n	Number=Sing	dema	0			oewn_form
@@ -2181,7 +2174,7 @@ halfway	0	oewn-halfway-r	Degree=Pos	dema	0			oewn_form
 halfway	1	oewn-halfway-a	Degree=Pos	dema	0			oewn_form
 halfwit	0		Number=Sing	dema	0	halfwit	n	moby_reverse
 halfwits	0		Number=Plur	dema	0	halfwit	n	rule
-halibut	0	oewn-halibut-n	Number=Plur	dema	0			agid
+halibut	0	oewn-halibut-n	Number=Plur	dema	0			llm
 halibut	1	oewn-halibut-n	Number=Sing	dema	0			oewn_form
 halibut-liver oil	0	oewn-halibut-liver_oil-n	Number=Sing	dema	0			oewn_form
 halibut-liver oils	0	oewn-halibut-liver_oil-n	Number=Plur	dema	0			rule
@@ -2230,9 +2223,10 @@ halloed	0		Tense=Past+VerbForm=Part	dema	0	hallo	v	moby_reverse
 halloing	0		VerbForm=Ger	dema	0	hallo	v	moby_reverse
 halloo	0	oewn-halloo-n	Number=Sing	dema	0			oewn_form
 halloo	1	oewn-halloo-v	VerbForm=Inf	dema	0			oewn_form
-hallooed	0	oewn-halloo-v	Tense=Past+VerbForm=Part	dema	0			rule
-hallooing	0	oewn-halloo-v	VerbForm=Ger	dema	0			rule
+hallooed	0	oewn-halloo-v	Tense=Past+VerbForm=Part	dema	0			llm
+hallooing	0	oewn-halloo-v	VerbForm=Ger	dema	0			llm
 halloos	0	oewn-halloo-n	Number=Plur	dema	0			rule
+halloos	1	oewn-halloo-v	Person=3+Tense=Pres	dema	0			llm
 hallot	0	oewn-hallah-n	Number=Plur	dema	0			oewn_form
 halloth	0	oewn-hallah-n	Number=Plur	dema	0			oewn_form
 hallow	0	oewn-hallow-v	VerbForm=Inf	dema	0			oewn_form
@@ -2731,7 +2725,7 @@ handfastings	0		Number=Plur	dema	0	handfasting	n	rule
 handfasts	0		Number=Plur	dema	0	handfast	n	rule
 handfeed	0		VerbForm=Inf	dema	0	handfeed	v	moby_reverse
 handful	0	oewn-handful-n	Number=Sing	dema	0			oewn_form
-handfuls	0	oewn-handful-n	Number=Plur	dema	0			rule_variant
+handfuls	0	oewn-handful-n	Number=Plur	dema	0			llm
 handgrip	0	oewn-handgrip-n	Number=Sing	dema	0			oewn_form
 handgrips	0	oewn-handgrip-n	Number=Plur	dema	0			rule
 handgun	0	oewn-handgun-n	Number=Sing	dema	0			oewn_form
@@ -2765,11 +2759,10 @@ handicrafts	0	oewn-handicraft-n	Number=Plur	dema	0			rule
 handicraftship	0		Number=Sing	dema	0	handicraftship	n	moby_reverse
 handicraftships	0		Number=Plur	dema	0	handicraftship	n	rule
 handicraftsman	0		Number=Sing	dema	0	handicraftsman	n	moby_reverse
-handicraftsmans	0		Number=Plur	dema	0	handicraftsman	n	rule
 handicraftsmanship	0		Number=Sing	dema	0	handicraftsmanship	n	moby_reverse
 handicraftsmanships	0		Number=Plur	dema	0	handicraftsmanship	n	rule
-handicraftsmen	0		Number=Sing	dema	0	handicraftsmen	n	moby_reverse
-handicraftsmens	0		Number=Plur	dema	0	handicraftsmen	n	rule
+handicraftsmen	0		Number=Plur	dema	0	handicraftsman	n	rule
+handicraftsmen	1		Number=Sing	dema	0	handicraftsmen	n	moby_reverse
 handier	0	oewn-handy-a	Degree=Cmp	dema	0			oewn_form
 handiest	0	oewn-handy-a	Degree=Sup	dema	0			oewn_form
 handily	0	oewn-handily-r	Degree=Pos	dema	0			oewn_form
@@ -2785,7 +2778,7 @@ handing overs	0	oewn-handing_over-n	Number=Plur	dema	0			rule
 handiwork	0	oewn-handiwork-n	Number=Sing	dema	0			oewn_form
 handiworks	0	oewn-handiwork-n	Number=Plur	dema	0			rule
 handkerchief	0	oewn-handkerchief-n	Number=Sing	dema	0			oewn_form
-handkerchiefs	0	oewn-handkerchief-n	Number=Plur	dema	0			rule_variant
+handkerchiefs	0	oewn-handkerchief-n	Number=Plur	dema	0			llm
 handkerchieves	0	oewn-handkerchief-n	Number=Plur	dema	0			rule_variant
 handle	0	oewn-handle-n	Number=Sing	dema	1			carried
 handle	1	oewn-handle-v	VerbForm=Inf	dema	1			carried
@@ -2875,10 +2868,10 @@ handsewing	0		VerbForm=Ger	dema	0	handsew	v	rule
 handsewn	0	oewn-handsewn-a	Degree=Pos	dema	0			oewn_form
 handsews	0		Person=3+Tense=Pres	dema	0	handsew	v	rule
 handsful	0	oewn-handful-n	Number=Plur	dema	0			rule_variant
-handshake	0	oewn-handshake-n	Number=Plur	dema	0			agid
-handshake	1	oewn-handshake-n	Number=Sing	dema	0			oewn_form
+handshake	0	oewn-handshake-n	Number=Sing	dema	0			oewn_form
 handshaker	0		Number=Sing	dema	0	handshaker	n	moby_reverse
 handshakers	0		Number=Plur	dema	0	handshaker	n	rule
+handshakes	0	oewn-handshake-n	Number=Plur	dema	0			llm
 handshaking	0	oewn-handshaking-n	Number=Sing	dema	0			oewn_form
 handshakings	0	oewn-handshaking-n	Number=Plur	dema	0			rule
 handsome	0	oewn-handsome-a	Degree=Pos	dema	0			oewn_form
@@ -2886,8 +2879,8 @@ handsomeish	0		Degree=Pos	dema	0	handsomeish	a	moby_reverse
 handsomely	0	oewn-handsomely-r	Degree=Pos	dema	0			oewn_form
 handsomeness	0	oewn-handsomeness-n	Number=Sing	dema	0			oewn_form
 handsomenesses	0	oewn-handsomeness-n	Number=Plur	dema	0			rule
-handsomer	0	oewn-handsome-a	Degree=Cmp	dema	0			moby_reverse
-handsomest	0	oewn-handsome-a	Degree=Sup	dema	0			moby_reverse
+handsomer	0	oewn-handsome-a	Degree=Cmp	dema	0			llm
+handsomest	0	oewn-handsome-a	Degree=Sup	dema	0			llm
 handspike	0	oewn-handspike-n	Number=Sing	dema	0			oewn_form
 handspikes	0	oewn-handspike-n	Number=Plur	dema	0			rule
 handspring	0	oewn-handspring-n	Number=Sing	dema	0			oewn_form
@@ -2918,24 +2911,24 @@ handworked	0		Degree=Pos	dema	0	handworked	a	moby_reverse
 handworked	1		VerbForm=Inf	dema	0	handworked	v	moby_reverse
 handworks	0	oewn-handwork-n	Number=Plur	dema	0			rule
 handwoven	0	oewn-handwoven-a	Degree=Pos	dema	0			oewn_form
-handwrit	0	oewn-handwrite-v	VerbForm=Part	dema	0			rule_variant
 handwrite	0	oewn-handwrite-v	VerbForm=Inf	dema	0			oewn_form
-handwrites	0	oewn-handwrite-v	Person=3+Tense=Pres	dema	0			rule
+handwrites	0	oewn-handwrite-v	Person=3+Tense=Pres	dema	0			llm
 handwriting	0	oewn-handwriting-n	Number=Sing	dema	0			oewn_form
-handwriting	1	oewn-handwrite-v	VerbForm=Ger	dema	0			rule
+handwriting	1	oewn-handwrite-v	VerbForm=Ger	dema	0			llm
 handwriting expert	0	oewn-handwriting_expert-n	Number=Sing	dema	0			oewn_form
 handwriting experts	0	oewn-handwriting_expert-n	Number=Plur	dema	0			rule
 handwritings	0	oewn-handwriting-n	Number=Plur	dema	0			rule
-handwritten	0	oewn-handwrite-v	VerbForm=Part	dema	0			agid
+handwritten	0	oewn-handwrite-v	VerbForm=Part	dema	0			llm
 handwritten	1	oewn-handwritten-a	Degree=Pos	dema	0			oewn_form
+handwrote	0	oewn-handwrite-v	Tense=Past	dema	0			llm
 handwrought	0		Degree=Pos	dema	0	handwrought	a	moby_reverse
 handy	0	oewn-handy-a	Degree=Pos	dema	0			oewn_form
 handybillies	0		Number=Plur	dema	0	handybilly	n	rule
 handybilly	0		Number=Sing	dema	0	handybilly	n	moby_reverse
 handyman	0	oewn-handyman-n	Number=Sing	dema	0			oewn_form
-handymen	0	oewn-handyman-n	Number=Plur	dema	0			agid
+handymen	0	oewn-handyman-n	Number=Plur	dema	0			llm
 handywoman	0	oewn-handywoman-n	Number=Sing	dema	0			oewn_form
-handywomans	0	oewn-handywoman-n	Number=Plur	dema	0			rule
+handywomen	0	oewn-handywoman-n	Number=Plur	dema	0			rule
 hanefiyeh	0		Number=Sing	dema	0	hanefiyeh	n	moby_reverse
 hanefiyehs	0		Number=Plur	dema	0	hanefiyeh	n	rule
 hang	0	oewn-hang-v	VerbForm=Inf	dema	0			oewn_form
@@ -3002,7 +2995,7 @@ hangman's halter	0	oewn-hangman-ap-s_halter-n	Number=Sing	dema	0			oewn_form
 hangman's halters	0	oewn-hangman-ap-s_halter-n	Number=Plur	dema	0			rule
 hangman's rope	0	oewn-hangman-ap-s_rope-n	Number=Sing	dema	0			oewn_form
 hangman's ropes	0	oewn-hangman-ap-s_rope-n	Number=Plur	dema	0			rule
-hangmen	0	oewn-hangman-n	Number=Plur	dema	0			agid
+hangmen	0	oewn-hangman-n	Number=Plur	dema	0			llm
 hangnail	0	oewn-hangnail-n	Number=Sing	dema	0			oewn_form
 hangnails	0	oewn-hangnail-n	Number=Plur	dema	0			rule
 hangout	0	oewn-hangout-n	Number=Sing	dema	0			oewn_form
@@ -3022,7 +3015,7 @@ hangs out	0	oewn-hang_out-v	Person=3+Tense=Pres	dema	0			rule
 hangs together	0	oewn-hang_together-v	Person=3+Tense=Pres	dema	0			rule
 hangs up	0	oewn-hang_up-v	Person=3+Tense=Pres	dema	0			rule
 hangwoman	0	oewn-hangwoman-n	Number=Sing	dema	0			oewn_form
-hangwomans	0	oewn-hangwoman-n	Number=Plur	dema	0			rule
+hangwomen	0	oewn-hangwoman-n	Number=Plur	dema	0			rule
 hank	0	oewn-hank-n	Number=Sing	dema	0			oewn_form
 hank	1		VerbForm=Inf	dema	0	hank	v	moby_reverse
 hank pankies	0	oewn-hank_panky-n	Number=Plur	dema	0			rule
@@ -3394,7 +3387,7 @@ hardhearted	0	oewn-hardhearted-a	Degree=Pos	dema	0			oewn_form
 hardhearted	1		VerbForm=Inf	dema	0	hardhearted	v	moby_reverse
 hardheartedly	0		Degree=Pos	dema	0	hardheartedly	r	moby_reverse
 hardheartedness	0	oewn-hardheartedness-n	Number=Sing	dema	0			oewn_form
-hardheartednesses	0	oewn-hardheartedness-n	Number=Plur	dema	0			rule
+hardheartednesses	0	oewn-hardheartedness-n	Number=Plur	dema	0			llm
 hardie	0		Number=Sing	dema	0	hardie	n	moby_reverse
 hardier	0	oewn-hardy-a	Degree=Cmp	dema	0			oewn_form
 hardies	0		Number=Plur	dema	0	hardie	n	rule
@@ -3444,18 +3437,17 @@ hardware errors	0	oewn-hardware_error-n	Number=Plur	dema	0			rule
 hardware store	0	oewn-hardware_store-n	Number=Sing	dema	0			oewn_form
 hardware stores	0	oewn-hardware_store-n	Number=Plur	dema	0			rule
 hardware woman	0	oewn-hardware_woman-n	Number=Sing	dema	0			oewn_form
-hardware womans	0	oewn-hardware_woman-n	Number=Plur	dema	0			rule
+hardware women	0	oewn-hardware_woman-n	Number=Plur	dema	0			rule
 hardwareman	0	oewn-hardwareman-n	Number=Sing	dema	0			oewn_form
-hardwaremans	0	oewn-hardwareman-n	Number=Plur	dema	0			rule
+hardwaremen	0	oewn-hardwareman-n	Number=Plur	dema	0			rule
 hardwares	0	oewn-hardware-n	Number=Plur	dema	0			rule
 hardwood	0	oewn-hardwood-n	Number=Sing	dema	0			oewn_form
 hardwoods	0	oewn-hardwood-n	Number=Plur	dema	0			rule
 hardworking	0	oewn-hardworking-a	Degree=Pos	dema	0			oewn_form
 hardy	0	oewn-hardy-a	Degree=Pos	dema	0			oewn_form
 hardy	1		Number=Sing	dema	0	hardy	n	moby_reverse
-hare	0	oewn-hare-n	Number=Plur	dema	0			agid
-hare	1	oewn-hare-n	Number=Sing	dema	0			oewn_form
-hare	2	oewn-hare-v	VerbForm=Inf	dema	0			oewn_form
+hare	0	oewn-hare-n	Number=Sing	dema	0			oewn_form
+hare	1	oewn-hare-v	VerbForm=Inf	dema	0			oewn_form
 hare and hounds	0	oewn-hare_and_hounds-n	Number=Sing	dema	0			oewn_form
 hare wallabies	0	oewn-hare_wallaby-n	Number=Plur	dema	0			rule
 hare wallaby	0	oewn-hare_wallaby-n	Number=Sing	dema	0			oewn_form
@@ -3479,7 +3471,7 @@ harelipped	1		VerbForm=Inf	dema	0	harelipped	v	moby_reverse
 harelips	0	oewn-harelip-n	Number=Plur	dema	0			rule
 harem	0	oewn-harem-n	Number=Sing	dema	0			oewn_form
 harems	0	oewn-harem-n	Number=Plur	dema	0			rule
-hares	0	oewn-hare-n	Number=Plur	dema	0			rule_variant
+hares	0	oewn-hare-n	Number=Plur	dema	0			rule
 hares	1	oewn-hare-v	Person=3+Tense=Pres	dema	0			rule
 harewood	0		Number=Sing	dema	0	harewood	n	moby_reverse
 harewoods	0		Number=Plur	dema	0	harewood	n	rule
@@ -3723,9 +3715,9 @@ harshen	0	oewn-harshen-v	VerbForm=Inf	dema	0			oewn_form
 harshened	0	oewn-harshen-v	Tense=Past+VerbForm=Part	dema	0			rule
 harshening	0	oewn-harshen-v	VerbForm=Ger	dema	0			rule
 harshens	0	oewn-harshen-v	Person=3+Tense=Pres	dema	0			rule
-harsher	0	oewn-harsh-a	Degree=Cmp	dema	0			rule
+harsher	0	oewn-harsh-a	Degree=Cmp	dema	0			llm
 harshes on	0	oewn-harsh_on-v	Person=3+Tense=Pres	dema	0			rule
-harshest	0	oewn-harsh-a	Degree=Sup	dema	0			rule
+harshest	0	oewn-harsh-a	Degree=Sup	dema	0			llm
 harshing on	0	oewn-harsh_on-v	VerbForm=Ger	dema	0			rule
 harshly	0	oewn-harshly-r	Degree=Pos	dema	0			oewn_form
 harshness	0	oewn-harshness-n	Number=Sing	dema	0			oewn_form
@@ -3735,8 +3727,7 @@ harslets	0		Number=Plur	dema	0	harslet	n	rule
 harst	0		Number=Sing	dema	0	harst	n	moby_reverse
 harst	1		VerbForm=Inf	dema	0	harst	v	moby_reverse
 harsts	0		Number=Plur	dema	0	harst	n	rule
-hart	0	oewn-hart-n	Number=Plur	dema	0			agid
-hart	1	oewn-hart-n	Number=Sing	dema	0			oewn_form
+hart	0	oewn-hart-n	Number=Sing	dema	0			oewn_form
 hart's-tongue	0	oewn-hart-ap-s-tongue-n	Number=Sing	dema	0			oewn_form
 hart's-tongue fern	0	oewn-hart-ap-s-tongue_fern-n	Number=Sing	dema	0			oewn_form
 hart's-tongue ferns	0	oewn-hart-ap-s-tongue_fern-n	Number=Plur	dema	0			rule
@@ -3747,7 +3738,7 @@ hartebeest	0	oewn-hartebeest-n	Number=Sing	dema	0			oewn_form
 hartebeests	0	oewn-hartebeest-n	Number=Plur	dema	0			rule
 hartley	0	oewn-hartley-n	Number=Sing	dema	0			oewn_form
 hartleys	0	oewn-hartley-n	Number=Plur	dema	0			rule
-harts	0	oewn-hart-n	Number=Plur	dema	0			rule_variant
+harts	0	oewn-hart-n	Number=Plur	dema	0			llm
 hartshorn	0		Number=Sing	dema	0	hartshorn	n	moby_reverse
 hartshorns	0		Number=Plur	dema	0	hartshorn	n	rule
 harum-scarum	0	oewn-harum-scarum-n	Number=Sing	dema	0			oewn_form
@@ -3779,14 +3770,15 @@ harvest-lices	0	oewn-harvest-lice-n	Number=Plur	dema	0			rule
 harvested	0	oewn-harvest-v	Tense=Past+VerbForm=Part	dema	0			rule
 harvester	0	oewn-harvester-n	Number=Sing	dema	0			oewn_form
 harvesters	0	oewn-harvester-n	Number=Plur	dema	0			rule
-harvestfish	0	oewn-harvestfish-n	Number=Plur	dema	0			agid
+harvestfish	0	oewn-harvestfish-n	Number=Plur	dema	0			llm
 harvestfish	1	oewn-harvestfish-n	Number=Sing	dema	0			oewn_form
+harvestfishes	0	oewn-harvestfish-n	Number=Plur	dema	0			rule_variant
 harvesting	0	oewn-harvest-v	VerbForm=Ger	dema	0			rule
 harvesting	1	oewn-harvesting-n	Number=Sing	dema	0			oewn_form
 harvestings	0	oewn-harvesting-n	Number=Plur	dema	0			rule
 harvestless	0		Degree=Pos	dema	0	harvestless	a	moby_reverse
 harvestman	0	oewn-harvestman-n	Number=Sing	dema	0			oewn_form
-harvestmen	0	oewn-harvestman-n	Number=Plur	dema	0			agid
+harvestmen	0	oewn-harvestman-n	Number=Plur	dema	0			llm
 harvests	0	oewn-harvest-n	Number=Plur	dema	0			rule
 harvests	1	oewn-harvest-v	Person=3+Tense=Pres	dema	0			rule
 harynges	0		Number=Sing	dema	0	harynges	n	moby_reverse
@@ -3931,9 +3923,9 @@ hatchet	0	oewn-hatchet-n	Number=Sing	dema	0			oewn_form
 hatchet job	0	oewn-hatchet_job-n	Number=Sing	dema	0			oewn_form
 hatchet jobs	0	oewn-hatchet_job-n	Number=Plur	dema	0			rule
 hatchet man	0	oewn-hatchet_man-n	Number=Sing	dema	0			oewn_form
-hatchet mans	0	oewn-hatchet_man-n	Number=Plur	dema	0			rule
+hatchet men	0	oewn-hatchet_man-n	Number=Plur	dema	0			rule
 hatchet woman	0	oewn-hatchet_woman-n	Number=Sing	dema	0			oewn_form
-hatchet womans	0	oewn-hatchet_woman-n	Number=Plur	dema	0			rule
+hatchet women	0	oewn-hatchet_woman-n	Number=Plur	dema	0			rule
 hatchetfaced	0		Degree=Pos	dema	0	hatchetfaced	a	moby_reverse
 hatchetfaced	1		VerbForm=Inf	dema	0	hatchetfaced	v	moby_reverse
 hatchetfish	0		Number=Sing	dema	0	hatchetfish	n	moby_reverse
@@ -4420,7 +4412,7 @@ he-goats	0	oewn-he-goat-n	Number=Plur	dema	0			rule
 he-huckleberries	0	oewn-he-huckleberry-n	Number=Plur	dema	0			rule
 he-huckleberry	0	oewn-he-huckleberry-n	Number=Sing	dema	0			oewn_form
 he-man	0	oewn-he-man-n	Number=Sing	dema	0			oewn_form
-he-mans	0	oewn-he-man-n	Number=Plur	dema	0			rule
+he-men	0	oewn-he-man-n	Number=Plur	dema	0			rule
 head	0	oewn-head-n	Number=Sing	dema	1			carried
 head	1	oewn-head-v	VerbForm=Inf	dema	1			carried
 head ache	0	oewn-head_ache-n	Number=Sing	dema	0			oewn_form
@@ -4457,11 +4449,11 @@ head lices	0	oewn-head_lice-n	Number=Plur	dema	0			rule
 head line	0	oewn-head_line-n	Number=Sing	dema	0			oewn_form
 head lines	0	oewn-head_line-n	Number=Plur	dema	0			rule
 head linesman	0	oewn-head_linesman-n	Number=Sing	dema	0			oewn_form
-head linesmans	0	oewn-head_linesman-n	Number=Plur	dema	0			rule
+head linesmen	0	oewn-head_linesman-n	Number=Plur	dema	0			rule
 head linesperson	0	oewn-head_linesperson-n	Number=Sing	dema	0			oewn_form
 head linespersons	0	oewn-head_linesperson-n	Number=Plur	dema	0			rule
 head lineswoman	0	oewn-head_lineswoman-n	Number=Sing	dema	0			oewn_form
-head lineswomans	0	oewn-head_lineswoman-n	Number=Plur	dema	0			rule
+head lineswomen	0	oewn-head_lineswoman-n	Number=Plur	dema	0			rule
 head louse	0	oewn-head_louse-n	Number=Sing	dema	0			oewn_form
 head louses	0	oewn-head_louse-n	Number=Plur	dema	0			rule
 head nurse	0	oewn-head_nurse-n	Number=Sing	dema	0			oewn_form
@@ -4542,8 +4534,9 @@ headfast	0	oewn-headfast-n	Number=Sing	dema	0			oewn_form
 headfasts	0	oewn-headfast-n	Number=Plur	dema	0			rule
 headfirst	0	oewn-headfirst-a	Degree=Pos	dema	0			oewn_form
 headfirst	1	oewn-headfirst-r	Degree=Pos	dema	0			oewn_form
-headfish	0	oewn-headfish-n	Number=Plur	dema	0			agid
+headfish	0	oewn-headfish-n	Number=Plur	dema	0			llm
 headfish	1	oewn-headfish-n	Number=Sing	dema	0			oewn_form
+headfishes	0	oewn-headfish-n	Number=Plur	dema	0			rule_variant
 headforemost	0		Degree=Pos	dema	0	headforemost	r	moby_reverse
 headframe	0		Number=Sing	dema	0	headframe	n	moby_reverse
 headframes	0		Number=Plur	dema	0	headframe	n	rule
@@ -4606,7 +4599,7 @@ headmasterly	0		Degree=Pos	dema	0	headmasterly	a	moby_reverse
 headmasters	0	oewn-headmaster-n	Number=Plur	dema	0			rule
 headmastership	0	oewn-headmastership-n	Number=Sing	dema	0			oewn_form
 headmasterships	0	oewn-headmastership-n	Number=Plur	dema	0			rule
-headmen	0	oewn-headman-n	Number=Plur	dema	0			agid
+headmen	0	oewn-headman-n	Number=Plur	dema	0			llm
 headmistress	0	oewn-headmistress-n	Number=Sing	dema	0			oewn_form
 headmistresses	0	oewn-headmistress-n	Number=Plur	dema	0			rule
 headmistressship	0	oewn-headmistressship-n	Number=Sing	dema	0			oewn_form
@@ -4661,6 +4654,8 @@ headsails	0	oewn-headsail-n	Number=Plur	dema	0			rule
 headsaw	0		Number=Sing	dema	0	headsaw	n	moby_reverse
 headsaws	0		Number=Plur	dema	0	headsaw	n	rule
 headscarf	0	oewn-headscarf-n	Number=Sing	dema	0			oewn_form
+headscarfs	0	oewn-headscarf-n	Number=Plur	dema	0			rule_variant
+headscarves	0	oewn-headscarf-n	Number=Plur	dema	0			llm
 headset	0	oewn-headset-n	Number=Sing	dema	0			oewn_form
 headsets	0	oewn-headset-n	Number=Plur	dema	0			rule
 headshake	0	oewn-headshake-n	Number=Sing	dema	0			oewn_form
@@ -4676,7 +4671,7 @@ headshots	0	oewn-headshot-n	Number=Plur	dema	0			rule
 headshrinker	0		Number=Sing	dema	0	headshrinker	n	moby_reverse
 headshrinkers	0		Number=Plur	dema	0	headshrinker	n	rule
 headsman	0	oewn-headsman-n	Number=Sing	dema	0			oewn_form
-headsmen	0	oewn-headsman-n	Number=Plur	dema	0			agid
+headsmen	0	oewn-headsman-n	Number=Plur	dema	0			llm
 headspace	0	oewn-headspace-n	Number=Sing	dema	0			oewn_form
 headspaces	0	oewn-headspace-n	Number=Plur	dema	0			rule
 headspring	0	oewn-headspring-n	Number=Sing	dema	0			oewn_form
@@ -4700,7 +4695,7 @@ headstrongly	0		Degree=Pos	dema	0	headstrongly	r	moby_reverse
 headstrongness	0		Number=Sing	dema	0	headstrongness	n	moby_reverse
 headstrongnesses	0		Number=Plur	dema	0	headstrongness	n	rule
 headswoman	0	oewn-headswoman-n	Number=Sing	dema	0			oewn_form
-headswomans	0	oewn-headswoman-n	Number=Plur	dema	0			rule
+headswomen	0	oewn-headswoman-n	Number=Plur	dema	0			rule
 headwaiter	0	oewn-headwaiter-n	Number=Sing	dema	0			oewn_form
 headwaiters	0	oewn-headwaiter-n	Number=Plur	dema	0			rule
 headward	0		Degree=Pos	dema	0	headward	a	moby_reverse
@@ -4713,7 +4708,7 @@ headways	0	oewn-headway-n	Number=Plur	dema	0			rule
 headwind	0	oewn-headwind-n	Number=Sing	dema	0			oewn_form
 headwinds	0	oewn-headwind-n	Number=Plur	dema	0			rule
 headwoman	0	oewn-headwoman-n	Number=Sing	dema	0			oewn_form
-headwomans	0	oewn-headwoman-n	Number=Plur	dema	0			rule
+headwomen	0	oewn-headwoman-n	Number=Plur	dema	0			rule
 headword	0	oewn-headword-n	Number=Sing	dema	0			oewn_form
 headwords	0	oewn-headword-n	Number=Plur	dema	0			rule
 headwork	0		Number=Sing	dema	0	headwork	n	moby_reverse
@@ -4903,9 +4898,9 @@ heart ventricle	0	oewn-heart_ventricle-n	Number=Sing	dema	0			oewn_form
 heart ventricles	0	oewn-heart_ventricle-n	Number=Plur	dema	0			rule
 heart-healthy	0	oewn-heart-healthy-a	Degree=Pos	dema	0			oewn_form
 heart-leaf	0	oewn-heart-leaf-n	Number=Sing	dema	0			oewn_form
-heart-leafs	0	oewn-heart-leaf-n	Number=Plur	dema	0			rule
 heart-leaved aster	0	oewn-heart-leaved_aster-n	Number=Sing	dema	0			oewn_form
 heart-leaved asters	0	oewn-heart-leaved_aster-n	Number=Plur	dema	0			rule
+heart-leaves	0	oewn-heart-leaf-n	Number=Plur	dema	0			rule
 heart-lung machine	0	oewn-heart-lung_machine-n	Number=Sing	dema	0			oewn_form
 heart-lung machines	0	oewn-heart-lung_machine-n	Number=Plur	dema	0			rule
 heart-shaped	0	oewn-heart-shaped-a	Degree=Pos	dema	0			oewn_form
@@ -4953,7 +4948,7 @@ hearth moneys	0	oewn-hearth_money-n	Number=Plur	dema	0			rule
 hearthless	0		Degree=Pos	dema	0	hearthless	a	moby_reverse
 hearthrug	0	oewn-hearthrug-n	Number=Sing	dema	0			oewn_form
 hearthrugs	0	oewn-hearthrug-n	Number=Plur	dema	0			rule
-hearths	0	oewn-hearth-n	Number=Plur	dema	0			rule
+hearths	0	oewn-hearth-n	Number=Plur	dema	0			llm
 hearthside	0		Number=Sing	dema	0	hearthside	n	moby_reverse
 hearthsides	0		Number=Plur	dema	0	hearthside	n	rule
 hearthstead	0		Number=Sing	dema	0	hearthstead	n	moby_reverse
@@ -4976,11 +4971,11 @@ heartleaf arnica	0	oewn-heartleaf_arnica-n	Number=Sing	dema	0			oewn_form
 heartleaf arnicas	0	oewn-heartleaf_arnica-n	Number=Plur	dema	0			rule
 heartleaf manzanita	0	oewn-heartleaf_manzanita-n	Number=Sing	dema	0			oewn_form
 heartleaf manzanitas	0	oewn-heartleaf_manzanita-n	Number=Plur	dema	0			rule
-heartleafs	0	oewn-heartleaf-n	Number=Plur	dema	0			rule
+heartleaves	0	oewn-heartleaf-n	Number=Plur	dema	0			rule
 heartless	0	oewn-heartless-a	Degree=Pos	dema	0			oewn_form
 heartlessly	0	oewn-heartlessly-r	Degree=Pos	dema	0			oewn_form
 heartlessness	0	oewn-heartlessness-n	Number=Sing	dema	0			oewn_form
-heartlessnesses	0	oewn-heartlessness-n	Number=Plur	dema	0			rule
+heartlessnesses	0	oewn-heartlessness-n	Number=Plur	dema	0			llm
 heartrending	0	oewn-heartrending-a	Degree=Pos	dema	0			oewn_form
 heartrending	1		VerbForm=Inf	dema	0	heartrending	v	moby_reverse
 heartrendingly	0		Degree=Pos	dema	0	heartrendingly	r	moby_reverse
@@ -5120,7 +5115,7 @@ heathenizing	0		VerbForm=Ger	dema	0	heathenize	v	rule
 heathenness	0		Number=Sing	dema	0	heathenness	n	moby_reverse
 heathenries	0		Number=Plur	dema	0	heathenry	n	rule
 heathenry	0		Number=Sing	dema	0	heathenry	n	moby_reverse
-heathens	0	oewn-heathen-n	Number=Plur	dema	0			rule_variant
+heathens	0	oewn-heathen-n	Number=Plur	dema	0			llm
 heathenship	0		Number=Sing	dema	0	heathenship	n	moby_reverse
 heathenships	0		Number=Plur	dema	0	heathenship	n	rule
 heather	0	oewn-heather-n	Number=Sing	dema	0			oewn_form
@@ -5134,8 +5129,9 @@ heathered	1		VerbForm=Inf	dema	0	heathered	v	moby_reverse
 heatheriness	0		Number=Sing	dema	0	heatheriness	n	moby_reverse
 heathers	0	oewn-heather-n	Number=Plur	dema	0			rule
 heathery	0		Degree=Pos	dema	0	heathery	a	moby_reverse
-heathfowl	0	oewn-heathfowl-n	Number=Plur	dema	0			agid
+heathfowl	0	oewn-heathfowl-n	Number=Plur	dema	0			llm
 heathfowl	1	oewn-heathfowl-n	Number=Sing	dema	0			oewn_form
+heathfowls	0	oewn-heathfowl-n	Number=Plur	dema	0			rule_variant
 heathier	0		Degree=Cmp	dema	0	heathy	a	moby_reverse
 heathiest	0		Degree=Sup	dema	0	heathy	a	moby_reverse
 heathland	0	oewn-heathland-n	Number=Sing	dema	0			oewn_form
@@ -5214,7 +5210,7 @@ heaviest	0	oewn-heavy-a	Degree=Sup	dema	0			oewn_form
 heavily	0	oewn-heavily-r	Degree=Pos	dema	0			oewn_form
 heavily traveled	0	oewn-heavily_traveled-a	Degree=Pos	dema	0			oewn_form
 heaviness	0	oewn-heaviness-n	Number=Sing	dema	0			oewn_form
-heavinesses	0	oewn-heaviness-n	Number=Plur	dema	0			rule
+heavinesses	0	oewn-heaviness-n	Number=Plur	dema	0			llm
 heaving	0	oewn-heave-v	VerbForm=Ger	dema	0			rule
 heaving	1	oewn-heaving-n	Number=Sing	dema	0			oewn_form
 heaving line	0	oewn-heaving_line-n	Number=Sing	dema	0			oewn_form
@@ -5316,7 +5312,7 @@ heckling	0	oewn-heckle-v	VerbForm=Ger	dema	0			rule
 heckling	1	oewn-heckling-n	Number=Sing	dema	0			oewn_form
 hecklings	0	oewn-heckling-n	Number=Plur	dema	0			rule
 hectare	0	oewn-hectare-n	Number=Sing	dema	0			oewn_form
-hectares	0	oewn-hectare-n	Number=Plur	dema	0			rule
+hectares	0	oewn-hectare-n	Number=Plur	dema	0			llm
 hectic	0	oewn-hectic-a	Degree=Pos	dema	0			oewn_form
 hectic	1		Number=Sing	dema	0	hectic	n	moby_reverse
 hectically	0	oewn-hectically-r	Degree=Pos	dema	0			oewn_form
@@ -5344,9 +5340,9 @@ hectometre	0	oewn-hectometre-n	Number=Sing	dema	0			oewn_form
 hectometres	0	oewn-hectometre-n	Number=Plur	dema	0			rule
 hector	0	oewn-hector-v	VerbForm=Inf	dema	0			oewn_form
 hector	1		Number=Sing	dema	0	hector	n	moby_reverse
-hectored	0	oewn-hector-v	Tense=Past+VerbForm=Part	dema	0			rule
-hectoring	0	oewn-hector-v	VerbForm=Ger	dema	0			rule
-hectors	0	oewn-hector-v	Person=3+Tense=Pres	dema	0			rule
+hectored	0	oewn-hector-v	Tense=Past+VerbForm=Part	dema	0			llm
+hectoring	0	oewn-hector-v	VerbForm=Ger	dema	0			llm
+hectors	0	oewn-hector-v	Person=3+Tense=Pres	dema	0			llm
 hectostere	0		Number=Sing	dema	0	hectostere	n	moby_reverse
 hectosteres	0		Number=Plur	dema	0	hectostere	n	rule
 hectyli	0		Number=Sing	dema	0	hectyli	n	moby_reverse
@@ -5443,7 +5439,7 @@ heeders	0		Number=Plur	dema	0	heeder	n	rule
 heedful	0	oewn-heedful-a	Degree=Pos	dema	0			oewn_form
 heedfully	0	oewn-heedfully-r	Degree=Pos	dema	0			oewn_form
 heedfulness	0	oewn-heedfulness-n	Number=Sing	dema	0			oewn_form
-heedfulnesses	0	oewn-heedfulness-n	Number=Plur	dema	0			rule
+heedfulnesses	0	oewn-heedfulness-n	Number=Plur	dema	0			llm
 heeding	0	oewn-heed-v	VerbForm=Ger	dema	0			rule
 heedless	0	oewn-heedless-a	Degree=Pos	dema	0			oewn_form
 heedlessly	0	oewn-heedlessly-r	Degree=Pos	dema	0			oewn_form
@@ -5758,7 +5754,7 @@ helldivers	0		Number=Plur	dema	0	helldiver	n	rule
 hellebore	0	oewn-hellebore-n	Number=Sing	dema	0			oewn_form
 helleborein	0		Number=Sing	dema	0	helleborein	n	moby_reverse
 helleboreins	0		Number=Plur	dema	0	helleborein	n	rule
-hellebores	0	oewn-hellebore-n	Number=Plur	dema	0			rule
+hellebores	0	oewn-hellebore-n	Number=Plur	dema	0			llm
 helleborin	0		Number=Sing	dema	0	helleborin	n	moby_reverse
 helleborine	0	oewn-helleborine-n	Number=Sing	dema	0			oewn_form
 helleborines	0	oewn-helleborine-n	Number=Plur	dema	0			rule
@@ -5829,9 +5825,9 @@ helms	1	oewn-helm-v	Person=3+Tense=Pres	dema	0			rule
 helmsman	0	oewn-helmsman-n	Number=Sing	dema	0			oewn_form
 helmsmanship	0		Number=Sing	dema	0	helmsmanship	n	moby_reverse
 helmsmanships	0		Number=Plur	dema	0	helmsmanship	n	rule
-helmsmen	0	oewn-helmsman-n	Number=Plur	dema	0			agid
+helmsmen	0	oewn-helmsman-n	Number=Plur	dema	0			llm
 helmswoman	0	oewn-helmswoman-n	Number=Sing	dema	0			oewn_form
-helmswomans	0	oewn-helmswoman-n	Number=Plur	dema	0			rule
+helmswomen	0	oewn-helmswoman-n	Number=Plur	dema	0			rule
 helot	0	oewn-helot-n	Number=Sing	dema	0			oewn_form
 helotage	0		Number=Sing	dema	0	helotage	n	moby_reverse
 helotages	0		Number=Plur	dema	0	helotage	n	rule
@@ -5941,12 +5937,14 @@ hematoblast	0		Number=Sing	dema	0	hematoblast	n	moby_reverse
 hematoblasts	0		Number=Plur	dema	0	hematoblast	n	rule
 hematocele	0	oewn-hematocele-n	Number=Sing	dema	0			oewn_form
 hematoceles	0	oewn-hematocele-n	Number=Plur	dema	0			rule
+hematoceles	1	oewn-haematocoele-n	Number=Plur	dema	0			rule_variant
 hematochezia	0	oewn-hematochezia-n	Number=Sing	dema	0			oewn_form
 hematochezias	0	oewn-hematochezia-n	Number=Plur	dema	0			rule
 hematochrome	0	oewn-hematochrome-n	Number=Sing	dema	0			oewn_form
 hematochromes	0	oewn-hematochrome-n	Number=Plur	dema	0			rule
 hematocoele	0	oewn-hematocoele-n	Number=Sing	dema	0			oewn_form
-hematocoeles	0	oewn-hematocoele-n	Number=Plur	dema	0			rule
+hematocoeles	0	oewn-haematocoele-n	Number=Plur	dema	0			rule_variant
+hematocoeles	1	oewn-hematocoele-n	Number=Plur	dema	0			rule
 hematocolpometra	0	oewn-hematocolpometra-n	Number=Sing	dema	0			oewn_form
 hematocolpometras	0	oewn-hematocolpometra-n	Number=Plur	dema	0			rule
 hematocolpos	0	oewn-hematocolpos-n	Number=Sing	dema	0			oewn_form
@@ -6321,9 +6319,9 @@ henceforward	0	oewn-henceforward-r	Degree=Pos	dema	0			oewn_form
 henchman	0	oewn-henchman-n	Number=Sing	dema	0			oewn_form
 henchmanship	0		Number=Sing	dema	0	henchmanship	n	moby_reverse
 henchmanships	0		Number=Plur	dema	0	henchmanship	n	rule
-henchmen	0	oewn-henchman-n	Number=Plur	dema	0			agid
+henchmen	0	oewn-henchman-n	Number=Plur	dema	0			llm
 henchwoman	0	oewn-henchwoman-n	Number=Sing	dema	0			oewn_form
-henchwomans	0	oewn-henchwoman-n	Number=Plur	dema	0			rule
+henchwomen	0	oewn-henchwoman-n	Number=Plur	dema	0			llm
 hencoop	0	oewn-hencoop-n	Number=Sing	dema	0			oewn_form
 hencoops	0	oewn-hencoop-n	Number=Plur	dema	0			rule
 hendecagon	0		Number=Sing	dema	0	hendecagon	n	moby_reverse
@@ -6339,7 +6337,7 @@ hendecasyllables	0		Number=Plur	dema	0	hendecasyllable	n	rule
 hendedra	0		Number=Sing	dema	0	hendedra	n	moby_reverse
 hendedras	0		Number=Plur	dema	0	hendedra	n	rule
 hendiadys	0	oewn-hendiadys-n	Number=Sing	dema	0			oewn_form
-hendiadyses	0	oewn-hendiadys-n	Number=Plur	dema	0			rule
+hendiadyses	0	oewn-hendiadys-n	Number=Plur	dema	0			llm
 henequen	0		Number=Sing	dema	0	henequen	n	moby_reverse
 henequens	0		Number=Plur	dema	0	henequen	n	rule
 henge	0		Number=Sing	dema	0	henge	n	moby_reverse
@@ -6630,15 +6628,14 @@ herdic	0		Number=Sing	dema	0	herdic	n	moby_reverse
 herdics	0		Number=Plur	dema	0	herdic	n	rule
 herding	0	oewn-herd-v	VerbForm=Ger	dema	0			rule
 herdman	0		Number=Sing	dema	0	herdman	n	moby_reverse
-herdmans	0		Number=Plur	dema	0	herdman	n	rule
-herdmen	0		Number=Sing	dema	0	herdmen	n	moby_reverse
-herdmens	0		Number=Plur	dema	0	herdmen	n	rule
+herdmen	0		Number=Plur	dema	0	herdman	n	rule
+herdmen	1		Number=Sing	dema	0	herdmen	n	moby_reverse
 herds	0	oewn-herd-n	Number=Plur	dema	0			rule
 herds	1	oewn-herd-v	Person=3+Tense=Pres	dema	0			rule
 herdsman	0	oewn-herdsman-n	Number=Sing	dema	0			oewn_form
-herdsmen	0	oewn-herdsman-n	Number=Plur	dema	0			agid
+herdsmen	0	oewn-herdsman-n	Number=Plur	dema	0			llm
 herdswoman	0	oewn-herdswoman-n	Number=Sing	dema	0			oewn_form
-herdswomans	0	oewn-herdswoman-n	Number=Plur	dema	0			rule
+herdswomen	0	oewn-herdswoman-n	Number=Plur	dema	0			rule
 here	0	oewn-here-r	Degree=Pos	dema	0			oewn_form
 here	1	oewn-here-n	Number=Sing	dema	0			oewn_form
 here	2	oewn-here-a	Degree=Pos	dema	0			oewn_form
@@ -6690,7 +6687,7 @@ hereinto	0		Degree=Pos	dema	0	hereinto	r	moby_reverse
 herem	0		Number=Sing	dema	0	herem	n	moby_reverse
 herems	0		Number=Plur	dema	0	herem	n	rule
 hereness	0	oewn-hereness-n	Number=Sing	dema	0			oewn_form
-herenesses	0	oewn-hereness-n	Number=Plur	dema	0			rule
+herenesses	0	oewn-hereness-n	Number=Plur	dema	0			llm
 hereof	0	oewn-hereof-r	Degree=Pos	dema	0			oewn_form
 hereon	0		Degree=Pos	dema	0	hereon	r	moby_reverse
 heres	0	oewn-here-n	Number=Plur	dema	0			rule
@@ -6883,7 +6880,6 @@ herpes virus	0	oewn-herpes_virus-n	Number=Sing	dema	0			oewn_form
 herpes zoster	0	oewn-herpes_zoster-n	Number=Sing	dema	0			oewn_form
 herpes zoster virus	0	oewn-herpes_zoster_virus-n	Number=Sing	dema	0			oewn_form
 herpes zosters	0	oewn-herpes_zoster-n	Number=Plur	dema	0			rule
-herpeses	0	oewn-herpes-n	Number=Plur	dema	0			rule
 herpetic	0		Degree=Pos	dema	0	herpetic	a	moby_reverse
 herpetologic	0		Degree=Pos	dema	0	herpetologic	a	moby_reverse
 herpetological	0		Degree=Pos	dema	0	herpetological	a	moby_reverse
@@ -6900,7 +6896,7 @@ herrerasaurs	0	oewn-herrerasaur-n	Number=Plur	dema	0			rule
 herrerasaurus	0	oewn-herrerasaurus-n	Number=Sing	dema	0			oewn_form
 herried	0		Tense=Past+VerbForm=Part	dema	0	herry	v	rule
 herries	0		Person=3+Tense=Pres	dema	0	herry	v	rule
-herring	0	oewn-herring-n	Number=Plur	dema	0			agid
+herring	0	oewn-herring-n	Number=Plur	dema	0			llm
 herring	1	oewn-herring-n	Number=Sing	dema	0			oewn_form
 herring gull	0	oewn-herring_gull-n	Number=Sing	dema	0			oewn_form
 herring gulls	0	oewn-herring_gull-n	Number=Plur	dema	0			rule
@@ -6921,9 +6917,8 @@ herryment	0		Number=Sing	dema	0	herryment	n	moby_reverse
 herryments	0		Number=Plur	dema	0	herryment	n	rule
 hers	0	dema-hers-u		dema	0			carried
 herself	0	dema-herself-u		dema	0			carried
-hertz	0	oewn-hertz-n	Number=Plur	dema	0			agid
+hertz	0	oewn-hertz-n	Number=Plur	dema	0			irregular_list
 hertz	1	oewn-hertz-n	Number=Sing	dema	0			oewn_form
-hertzes	0	oewn-hertz-n	Number=Plur	dema	0			rule_variant
 hes	0	oewn-he-n	Number=Plur	dema	0			rule
 hesitance	0	oewn-hesitance-n	Number=Sing	dema	0			oewn_form
 hesitances	0	oewn-hesitance-n	Number=Plur	dema	0			rule
@@ -7192,7 +7187,8 @@ heths	0	oewn-heth-n	Number=Plur	dema	0			rule
 hetman	0		Number=Sing	dema	0	hetman	n	moby_reverse
 hetmanate	0		Number=Sing	dema	0	hetmanate	n	moby_reverse
 hetmanates	0		Number=Plur	dema	0	hetmanate	n	rule
-hetmans	0		Number=Plur	dema	0	hetman	n	rule
+hetmans	0		Number=Sing	dema	0	hetmans	n	moby_reverse
+hetmen	0		Number=Plur	dema	0	hetman	n	rule
 heugh	0		Number=Sing	dema	0	heugh	n	moby_reverse
 heughs	0		Number=Plur	dema	0	heugh	n	rule
 heulandite	0	oewn-heulandite-n	Number=Sing	dema	0			oewn_form
@@ -7400,7 +7396,7 @@ hiatus	0	oewn-hiatus-n	Number=Plur	dema	0			rule_variant
 hiatus	1	oewn-hiatus-n	Number=Sing	dema	0			oewn_form
 hiatus hernia	0	oewn-hiatus_hernia-n	Number=Sing	dema	0			oewn_form
 hiatus hernias	0	oewn-hiatus_hernia-n	Number=Plur	dema	0			rule
-hiatuses	0	oewn-hiatus-n	Number=Plur	dema	0			rule_variant
+hiatuses	0	oewn-hiatus-n	Number=Plur	dema	0			llm
 hiba arborvitae	0	oewn-hiba_arborvitae-n	Number=Sing	dema	0			oewn_form
 hiba arborvitaes	0	oewn-hiba_arborvitae-n	Number=Plur	dema	0			rule
 hibachi	0	oewn-hibachi-n	Number=Sing	dema	0			oewn_form
@@ -7506,11 +7502,11 @@ hideout	0	oewn-hideout-n	Number=Sing	dema	0			oewn_form
 hideouts	0	oewn-hideout-n	Number=Plur	dema	0			rule
 hider	0		Number=Sing	dema	0	hider	n	moby_reverse
 hiders	0		Number=Plur	dema	0	hider	n	rule
-hides	0	oewn-hide-v	Person=3+Tense=Pres	dema	0			rule
+hides	0	oewn-hide-v	Person=3+Tense=Pres	dema	0			llm
 hides	1	oewn-hide-n	Number=Plur	dema	0			rule
 hides out	0	oewn-hide_out-v	Person=3+Tense=Pres	dema	0			rule
 hiding	0	oewn-hiding-n	Number=Sing	dema	0			oewn_form
-hiding	1	oewn-hide-v	VerbForm=Ger	dema	0			rule
+hiding	1	oewn-hide-v	VerbForm=Ger	dema	0			llm
 hiding out	0	oewn-hide_out-v	VerbForm=Ger	dema	0			rule
 hiding place	0	oewn-hiding_place-n	Number=Sing	dema	0			oewn_form
 hiding places	0	oewn-hiding_place-n	Number=Plur	dema	0			rule
@@ -7520,8 +7516,8 @@ hidropoietic	0		Degree=Pos	dema	0	hidropoietic	a	moby_reverse
 hidrosis	0	oewn-hidrosis-n	Number=Sing	dema	0			oewn_form
 hidrotic	0	oewn-hidrotic-a	Degree=Pos	dema	0			oewn_form
 hie	0	oewn-hie-v	VerbForm=Inf	dema	0			oewn_form
-hied	0	oewn-hie-v	Tense=Past+VerbForm=Part	dema	0			rule
-hieing	0	oewn-hie-v	VerbForm=Ger	dema	0			agid
+hied	0	oewn-hie-v	Tense=Past+VerbForm=Part	dema	0			llm
+hieing	0	oewn-hie-v	VerbForm=Ger	dema	0			llm
 hielamon	0		Number=Sing	dema	0	hielamon	n	moby_reverse
 hielamons	0		Number=Plur	dema	0	hielamon	n	rule
 hieland	0		Degree=Pos	dema	0	hieland	a	moby_reverse
@@ -7559,7 +7555,7 @@ hierarchize	0		VerbForm=Inf	dema	0	hierarchize	v	moby_reverse
 hierarchized	0		Tense=Past+VerbForm=Part	dema	0	hierarchize	v	rule
 hierarchizes	0		Person=3+Tense=Pres	dema	0	hierarchize	v	rule
 hierarchizing	0		VerbForm=Ger	dema	0	hierarchize	v	rule
-hierarchs	0	oewn-hierarch-n	Number=Plur	dema	0			agid
+hierarchs	0	oewn-hierarch-n	Number=Plur	dema	0			llm
 hierarchy	0	oewn-hierarchy-n	Number=Sing	dema	0			oewn_form
 hieratic	0	oewn-hieratic-a	Degree=Pos	dema	0			oewn_form
 hieratic	1	oewn-hieratic-n	Number=Sing	dema	0			oewn_form
@@ -7617,7 +7613,7 @@ hierophants	0		Number=Plur	dema	0	hierophant	n	rule
 hierurgical	0		Degree=Pos	dema	0	hierurgical	a	moby_reverse
 hierurgies	0		Number=Plur	dema	0	hierurgy	n	rule
 hierurgy	0		Number=Sing	dema	0	hierurgy	n	moby_reverse
-hies	0	oewn-hie-v	Person=3+Tense=Pres	dema	0			rule
+hies	0	oewn-hie-v	Person=3+Tense=Pres	dema	0			llm
 hifalutin	0	oewn-hifalutin-a	Degree=Pos	dema	0			oewn_form
 higgle	0	oewn-higgle-v	VerbForm=Inf	dema	0			oewn_form
 higgled	0	oewn-higgle-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -7884,7 +7880,7 @@ highchairs	0	oewn-highchair-n	Number=Plur	dema	0			rule
 highdaddies	0		Number=Plur	dema	0	highdaddy	n	rule
 highdaddy	0		Number=Sing	dema	0	highdaddy	n	moby_reverse
 higher	0	oewn-high-a	Degree=Cmp	dema	0			rule
-higher	1	oewn-high-r	Degree=Cmp	dema	0			rule
+higher	1	oewn-high-r	Degree=Cmp	dema	0			llm
 higher	2	oewn-higher-a	Degree=Pos	dema	0			oewn_form
 higher cognitive process	0	oewn-higher_cognitive_process-n	Number=Sing	dema	0			oewn_form
 higher cognitive processes	0	oewn-higher_cognitive_process-n	Number=Plur	dema	0			rule
@@ -7902,7 +7898,7 @@ higher-ranking	0	oewn-higher-ranking-a	Degree=Pos	dema	0			oewn_form
 higher-up	0	oewn-higher-up-n	Number=Sing	dema	0			oewn_form
 higher-ups	0	oewn-higher-up-n	Number=Plur	dema	0			rule
 highest	0	oewn-high-a	Degree=Sup	dema	0			rule
-highest	1	oewn-high-r	Degree=Sup	dema	0			rule
+highest	1	oewn-high-r	Degree=Sup	dema	0			llm
 highest common factor	0	oewn-highest_common_factor-n	Number=Sing	dema	0			oewn_form
 highest common factors	0	oewn-highest_common_factor-n	Number=Plur	dema	0			rule
 highfalutin	0	oewn-highfalutin-a	Degree=Pos	dema	0			oewn_form
@@ -7985,10 +7981,10 @@ highway robbery	0	oewn-highway_robbery-n	Number=Sing	dema	0			oewn_form
 highway system	0	oewn-highway_system-n	Number=Sing	dema	0			oewn_form
 highway systems	0	oewn-highway_system-n	Number=Plur	dema	0			rule
 highwayman	0	oewn-highwayman-n	Number=Sing	dema	0			oewn_form
-highwaymen	0	oewn-highwayman-n	Number=Plur	dema	0			agid
+highwaymen	0	oewn-highwayman-n	Number=Plur	dema	0			llm
 highways	0	oewn-highway-n	Number=Plur	dema	0			rule
 highwaywoman	0	oewn-highwaywoman-n	Number=Sing	dema	0			oewn_form
-highwaywomans	0	oewn-highwaywoman-n	Number=Plur	dema	0			rule
+highwaywomen	0	oewn-highwaywoman-n	Number=Plur	dema	0			rule
 hijab	0	oewn-hijab-n	Number=Sing	dema	0			oewn_form
 hijabs	0	oewn-hijab-n	Number=Plur	dema	0			rule
 hijack	0	oewn-hijack-v	VerbForm=Inf	dema	0			oewn_form
@@ -8084,8 +8080,7 @@ himations	0		Number=Plur	dema	0	himation	n	rule
 himself	0	dema-himself-u		dema	0			carried
 hin	0	oewn-hin-n	Number=Sing	dema	0			oewn_form
 hind	0	oewn-hind-a	Degree=Pos	dema	0			oewn_form
-hind	1	oewn-hind-n	Number=Plur	dema	0			agid
-hind	2	oewn-hind-n	Number=Sing	dema	0			oewn_form
+hind	1	oewn-hind-n	Number=Sing	dema	0			oewn_form
 hind end	0	oewn-hind_end-n	Number=Sing	dema	0			oewn_form
 hind ends	0	oewn-hind_end-n	Number=Plur	dema	0			rule
 hind leg	0	oewn-hind_leg-n	Number=Sing	dema	0			oewn_form
@@ -8121,7 +8116,7 @@ hindquarters	0	oewn-hindquarter-n	Number=Plur	dema	0			rule
 hindquarters	1	oewn-hindquarters-n	Number=Sing	dema	0			oewn_form
 hindrance	0	oewn-hindrance-n	Number=Sing	dema	0			oewn_form
 hindrances	0	oewn-hindrance-n	Number=Plur	dema	0			rule
-hinds	0	oewn-hind-n	Number=Plur	dema	0			rule_variant
+hinds	0	oewn-hind-n	Number=Plur	dema	0			llm
 hindshank	0	oewn-hindshank-n	Number=Sing	dema	0			oewn_form
 hindshanks	0	oewn-hindshank-n	Number=Plur	dema	0			rule
 hindsight	0	oewn-hindsight-n	Number=Sing	dema	0			oewn_form
@@ -8134,16 +8129,16 @@ hinge joint	0	oewn-hinge_joint-n	Number=Sing	dema	0			oewn_form
 hinge joints	0	oewn-hinge_joint-n	Number=Plur	dema	0			rule
 hinge on	0	oewn-hinge_on-v	VerbForm=Inf	dema	0			oewn_form
 hinge upon	0	oewn-hinge_upon-v	VerbForm=Inf	dema	0			oewn_form
-hinged	0	oewn-hinge-v	Tense=Past+VerbForm=Part	dema	0			rule
+hinged	0	oewn-hinge-v	Tense=Past+VerbForm=Part	dema	0			llm
 hinged on	0	oewn-hinge_on-v	Tense=Past+VerbForm=Part	dema	0			rule
 hinged upon	0	oewn-hinge_upon-v	Tense=Past+VerbForm=Part	dema	0			rule
 hingeless	0		Degree=Pos	dema	0	hingeless	a	moby_reverse
 hingelike	0		Degree=Pos	dema	0	hingelike	a	moby_reverse
 hinges	0	oewn-hinge-n	Number=Plur	dema	0			rule
-hinges	1	oewn-hinge-v	Person=3+Tense=Pres	dema	0			rule
+hinges	1	oewn-hinge-v	Person=3+Tense=Pres	dema	0			llm
 hinges on	0	oewn-hinge_on-v	Person=3+Tense=Pres	dema	0			rule
 hinges upon	0	oewn-hinge_upon-v	Person=3+Tense=Pres	dema	0			rule
-hinging	0	oewn-hinge-v	VerbForm=Ger	dema	0			rule
+hinging	0	oewn-hinge-v	VerbForm=Ger	dema	0			llm
 hinging on	0	oewn-hinge_on-v	VerbForm=Ger	dema	0			rule
 hinging post	0	oewn-hinging_post-n	Number=Sing	dema	0			oewn_form
 hinging posts	0	oewn-hinging_post-n	Number=Plur	dema	0			rule
@@ -8236,7 +8231,6 @@ hippocampal	0		Degree=Pos	dema	0	hippocampal	a	moby_reverse
 hippocampi	0	oewn-hippocampus-n	Number=Plur	dema	0			oewn_form
 hippocampus	0	oewn-hippocampus-n	Number=Sing	dema	0			oewn_form
 hippocras	0		Number=Sing	dema	0	hippocras	n	moby_reverse
-hippocrases	0		Number=Plur	dema	0	hippocras	n	rule
 hippodrome	0	oewn-hippodrome-n	Number=Sing	dema	0			oewn_form
 hippodromes	0	oewn-hippodrome-n	Number=Plur	dema	0			rule
 hippodromic	0		Degree=Pos	dema	0	hippodromic	a	moby_reverse
@@ -8289,10 +8283,10 @@ hired hands	0	oewn-hired_hand-n	Number=Plur	dema	0			rule
 hired help	0	oewn-hired_help-n	Number=Sing	dema	0			oewn_form
 hired helps	0	oewn-hired_help-n	Number=Plur	dema	0			rule
 hired man	0	oewn-hired_man-n	Number=Sing	dema	0			oewn_form
-hired mans	0	oewn-hired_man-n	Number=Plur	dema	0			rule
+hired men	0	oewn-hired_man-n	Number=Plur	dema	0			rule
 hired out	0	oewn-hire_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 hired woman	0	oewn-hired_woman-n	Number=Sing	dema	0			oewn_form
-hired womans	0	oewn-hired_woman-n	Number=Plur	dema	0			rule
+hired women	0	oewn-hired_woman-n	Number=Plur	dema	0			rule
 hireling	0	oewn-hireling-n	Number=Sing	dema	0			oewn_form
 hirelings	0	oewn-hireling-n	Number=Plur	dema	0			rule
 hirer	0	oewn-hirer-n	Number=Sing	dema	0			oewn_form
@@ -8318,7 +8312,7 @@ hirsling	0		VerbForm=Ger	dema	0	hirsle	v	rule
 hirstie	0		Degree=Pos	dema	0	hirstie	a	moby_reverse
 hirsute	0	oewn-hirsute-a	Degree=Pos	dema	0			oewn_form
 hirsuteness	0	oewn-hirsuteness-n	Number=Sing	dema	0			oewn_form
-hirsutenesses	0	oewn-hirsuteness-n	Number=Plur	dema	0			rule
+hirsutenesses	0	oewn-hirsuteness-n	Number=Plur	dema	0			llm
 hirsutism	0	oewn-hirsutism-n	Number=Sing	dema	0			oewn_form
 hirsutisms	0	oewn-hirsutism-n	Number=Plur	dema	0			rule
 hirtellous	0		Degree=Pos	dema	0	hirtellous	a	moby_reverse
@@ -8497,7 +8491,7 @@ hit it up	0	oewn-hit_it_up-v	VerbForm=Inf	dema	0			oewn_form
 hit list	0	oewn-hit_list-n	Number=Sing	dema	0			oewn_form
 hit lists	0	oewn-hit_list-n	Number=Plur	dema	0			rule
 hit man	0	oewn-hit_man-n	Number=Sing	dema	0			oewn_form
-hit mans	0	oewn-hit_man-n	Number=Plur	dema	0			rule
+hit men	0	oewn-hit_man-n	Number=Plur	dema	0			rule
 hit parade	0	oewn-hit_parade-n	Number=Sing	dema	0			oewn_form
 hit parades	0	oewn-hit_parade-n	Number=Plur	dema	0			rule
 hit squad	0	oewn-hit_squad-n	Number=Sing	dema	0			oewn_form
@@ -8512,7 +8506,7 @@ hit the jackpot	0	oewn-hit_the_jackpot-v	VerbForm=Inf	dema	0			oewn_form
 hit the roof	0	oewn-hit_the_roof-v	VerbForm=Inf	dema	0			oewn_form
 hit the sack	0	oewn-hit_the_sack-v	VerbForm=Inf	dema	0			oewn_form
 hit woman	0	oewn-hit_woman-n	Number=Sing	dema	0			oewn_form
-hit womans	0	oewn-hit_woman-n	Number=Plur	dema	0			rule
+hit women	0	oewn-hit_woman-n	Number=Plur	dema	0			rule
 hit-and-run	0	oewn-hit-and-run-a	Degree=Pos	dema	0			oewn_form
 hit-or-miss	0	oewn-hit-or-miss-a	Degree=Pos	dema	0			oewn_form
 hitch	0	oewn-hitch-v	VerbForm=Inf	dema	0			oewn_form
@@ -8552,7 +8546,7 @@ hitherto	0	oewn-hitherto-r	Degree=Pos	dema	0			oewn_form
 hitherward	0		Degree=Pos	dema	0	hitherward	r	moby_reverse
 hitless	0	oewn-hitless-a	Degree=Pos	dema	0			oewn_form
 hitman	0	oewn-hitman-n	Number=Sing	dema	0			oewn_form
-hitmans	0	oewn-hitman-n	Number=Plur	dema	0			rule
+hitmen	0	oewn-hitman-n	Number=Plur	dema	0			rule
 hits	0	oewn-hit-v	Person=3+Tense=Pres	dema	0			rule
 hits	1	oewn-hit-n	Number=Plur	dema	0			rule
 hits home	0	oewn-hit_home-v	Person=3+Tense=Pres	dema	0			rule
@@ -8588,7 +8582,7 @@ hitting the roof	0	oewn-hit_the_roof-v	VerbForm=Ger	dema	0			rule
 hitting the sack	0	oewn-hit_the_sack-v	VerbForm=Ger	dema	0			rule
 hittings	0	oewn-hitting-n	Number=Plur	dema	0			rule
 hitwoman	0	oewn-hitwoman-n	Number=Sing	dema	0			oewn_form
-hitwomans	0	oewn-hitwoman-n	Number=Plur	dema	0			rule
+hitwomen	0	oewn-hitwoman-n	Number=Plur	dema	0			rule
 hive	0	oewn-hive-n	Number=Sing	dema	0			oewn_form
 hive	1	oewn-hive-v	VerbForm=Inf	dema	0			oewn_form
 hive away	0	oewn-hive_away-v	VerbForm=Inf	dema	0			oewn_form
@@ -8704,7 +8698,7 @@ hobblebush	0		Number=Sing	dema	0	hobblebush	n	moby_reverse
 hobblebushes	0		Number=Plur	dema	0	hobblebush	n	rule
 hobbled	0	oewn-hobble-v	Tense=Past+VerbForm=Part	dema	0			rule
 hobbledehoy	0	oewn-hobbledehoy-n	Number=Sing	dema	0			oewn_form
-hobbledehoys	0	oewn-hobbledehoy-n	Number=Plur	dema	0			rule
+hobbledehoys	0	oewn-hobbledehoy-n	Number=Plur	dema	0			llm
 hobbler	0	oewn-hobbler-n	Number=Sing	dema	0			oewn_form
 hobblers	0	oewn-hobbler-n	Number=Plur	dema	0			rule
 hobbles	0	oewn-hobble-v	Person=3+Tense=Pres	dema	0			rule
@@ -8806,7 +8800,7 @@ hodgepodge	0	oewn-hodgepodge-n	Number=Sing	dema	0			oewn_form
 hodgepodges	0	oewn-hodgepodge-n	Number=Plur	dema	0			rule
 hodges	0		Number=Plur	dema	0	hodge	n	rule
 hodman	0	oewn-hodman-n	Number=Sing	dema	0			oewn_form
-hodmen	0	oewn-hodman-n	Number=Plur	dema	0			agid
+hodmen	0	oewn-hodman-n	Number=Plur	dema	0			llm
 hodograph	0		Number=Sing	dema	0	hodograph	n	moby_reverse
 hodographs	0		Number=Plur	dema	0	hodograph	n	rule
 hodometer	0	oewn-hodometer-n	Number=Sing	dema	0			oewn_form
@@ -8860,7 +8854,7 @@ hog-nosed skunks	0	oewn-hog-nosed_skunk-n	Number=Plur	dema	0			rule
 hog-tie	0	oewn-hog-tie-v	VerbForm=Inf	dema	0			oewn_form
 hog-tied	0	oewn-hog-tie-v	Tense=Past+VerbForm=Part	dema	0			rule
 hog-ties	0	oewn-hog-tie-v	Person=3+Tense=Pres	dema	0			rule
-hog-tiing	0	oewn-hog-tie-v	VerbForm=Ger	dema	0			rule
+hog-tying	0	oewn-hog-tie-v	VerbForm=Ger	dema	0			rule
 hogan	0	oewn-hogan-n	Number=Sing	dema	0			oewn_form
 hogans	0	oewn-hogan-n	Number=Plur	dema	0			rule
 hogback	0	oewn-hogback-n	Number=Sing	dema	0			oewn_form
@@ -8904,8 +8898,7 @@ hogsheads	0	oewn-hogshead-n	Number=Plur	dema	0			rule
 hogtie	0		VerbForm=Inf	dema	0	hogtie	v	moby_reverse
 hogtied	0		Tense=Past+VerbForm=Part	dema	0	hogtie	v	rule
 hogties	0		Person=3+Tense=Pres	dema	0	hogtie	v	rule
-hogtiing	0		VerbForm=Ger	dema	0	hogtie	v	rule
-hogtying	0		VerbForm=Ger	dema	0	hogtie	v	moby_reverse
+hogtying	0		VerbForm=Ger	dema	0	hogtie	v	rule
 hogwash	0	oewn-hogwash-n	Number=Sing	dema	0			oewn_form
 hogwashes	0	oewn-hogwash-n	Number=Plur	dema	0			rule
 hogweed	0	oewn-hogweed-n	Number=Sing	dema	0			oewn_form
@@ -9053,9 +9046,9 @@ holds up	0	oewn-hold_up-v	Person=3+Tense=Pres	dema	0			rule
 holds water	0	oewn-hold_water-v	Person=3+Tense=Pres	dema	0			rule
 holdup	0	oewn-holdup-n	Number=Sing	dema	0			oewn_form
 holdup man	0	oewn-holdup_man-n	Number=Sing	dema	0			oewn_form
-holdup mans	0	oewn-holdup_man-n	Number=Plur	dema	0			rule
+holdup men	0	oewn-holdup_man-n	Number=Plur	dema	0			rule
 holdup woman	0	oewn-holdup_woman-n	Number=Sing	dema	0			oewn_form
-holdup womans	0	oewn-holdup_woman-n	Number=Plur	dema	0			rule
+holdup women	0	oewn-holdup_woman-n	Number=Plur	dema	0			rule
 holdups	0	oewn-holdup-n	Number=Plur	dema	0			rule
 hole	0	oewn-hole-n	Number=Sing	dema	0			oewn_form
 hole	1	oewn-hole-v	VerbForm=Inf	dema	0			oewn_form
@@ -9143,11 +9136,11 @@ hollo	1	dema-hollo-i		dema	0			carried
 hollo	2	oewn-hollo-v	VerbForm=Inf	dema	0			oewn_form
 holloa	0	oewn-holloa-n	Number=Sing	dema	0			oewn_form
 holloas	0	oewn-holloa-n	Number=Plur	dema	0			rule
-holloed	0	oewn-hollo-v	Tense=Past+VerbForm=Part	dema	0			rule
-holloes	0	oewn-hollo-n	Number=Plur	dema	0			agid
-holloes	1	oewn-hollo-v	Person=3+Tense=Pres	dema	0			rule_variant
-holloing	0	oewn-hollo-v	VerbForm=Ger	dema	0			rule
-hollos	0	oewn-hollo-n	Number=Plur	dema	0			rule_variant
+holloed	0	oewn-hollo-v	Tense=Past+VerbForm=Part	dema	0			llm
+holloes	0	oewn-hollo-v	Person=3+Tense=Pres	dema	0			llm
+holloing	0	oewn-hollo-v	VerbForm=Ger	dema	0			llm
+hollos	0	oewn-hollo-n	Number=Plur	dema	0			llm
+hollos	1	oewn-hollo-v	Person=3+Tense=Pres	dema	0			rule_variant
 hollow	0	oewn-hollow-a	Degree=Pos	dema	0			oewn_form
 hollow	1	oewn-hollow-n	Number=Sing	dema	0			oewn_form
 hollow	2	oewn-hollow-v	VerbForm=Inf	dema	0			oewn_form
@@ -9160,8 +9153,8 @@ holloware	0	oewn-holloware-n	Number=Sing	dema	0			oewn_form
 hollowares	0	oewn-holloware-n	Number=Plur	dema	0			rule
 hollowed	0	oewn-hollow-v	Tense=Past+VerbForm=Part	dema	0			rule
 hollowed out	0	oewn-hollow_out-v	Tense=Past+VerbForm=Part	dema	0			rule
-hollower	0	oewn-hollow-a	Degree=Cmp	dema	0			rule
-hollowest	0	oewn-hollow-a	Degree=Sup	dema	0			rule
+hollower	0	oewn-hollow-a	Degree=Cmp	dema	0			llm
+hollowest	0	oewn-hollow-a	Degree=Sup	dema	0			llm
 hollowhearted	0		Degree=Pos	dema	0	hollowhearted	a	moby_reverse
 hollowhearted	1		VerbForm=Inf	dema	0	hollowhearted	v	moby_reverse
 hollowheartedness	0		Number=Sing	dema	0	hollowheartedness	n	moby_reverse
@@ -9297,7 +9290,7 @@ holy day of obligation	0	oewn-holy_day_of_obligation-n	Number=Sing	dema	0			oewn
 holy days	0	oewn-holy_day-n	Number=Plur	dema	0			rule
 holy days of obligation	0	oewn-holy_day_of_obligation-n	Number=Plur	dema	0			rule
 holy man	0	oewn-holy_man-n	Number=Sing	dema	0			oewn_form
-holy mans	0	oewn-holy_man-n	Number=Plur	dema	0			rule
+holy men	0	oewn-holy_man-n	Number=Plur	dema	0			rule
 holy of holies	0	oewn-holy_of_holies-n	Number=Sing	dema	0			oewn_form
 holy oil	0	oewn-holy_oil-n	Number=Sing	dema	0			oewn_form
 holy oils	0	oewn-holy_oil-n	Number=Plur	dema	0			rule
@@ -9314,7 +9307,7 @@ holy thistles	0	oewn-holy_thistle-n	Number=Plur	dema	0			rule
 holy water	0	oewn-holy_water-n	Number=Sing	dema	0			oewn_form
 holy waters	0	oewn-holy_water-n	Number=Plur	dema	0			rule
 holy woman	0	oewn-holy_woman-n	Number=Sing	dema	0			oewn_form
-holy womans	0	oewn-holy_woman-n	Number=Plur	dema	0			rule
+holy women	0	oewn-holy_woman-n	Number=Plur	dema	0			rule
 holystone	0	oewn-holystone-n	Number=Sing	dema	0			oewn_form
 holystone	1	oewn-holystone-v	VerbForm=Inf	dema	0			oewn_form
 holystoned	0	oewn-holystone-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -9506,6 +9499,7 @@ homeopathy	0	oewn-homeopathy-n	Number=Sing	dema	0			oewn_form
 homeoplasia	0		Number=Sing	dema	0	homeoplasia	n	moby_reverse
 homeoplasias	0		Number=Plur	dema	0	homeoplasia	n	rule
 homeoplastic	0		Degree=Pos	dema	0	homeoplastic	a	moby_reverse
+homeostases	0	oewn-homeostasis-n	Number=Plur	dema	0			llm
 homeostasis	0	oewn-homeostasis-n	Number=Sing	dema	0			oewn_form
 homeostatic	0	oewn-homeostatic-a	Degree=Pos	dema	0			oewn_form
 homeostatically	0	oewn-homeostatically-r	Degree=Pos	dema	0			oewn_form
@@ -9541,7 +9535,6 @@ homes	1	oewn-home-v	Person=3+Tense=Pres	dema	0			rule
 homes in	0	oewn-home_in-v	Person=3+Tense=Pres	dema	0			rule
 homesick	0	oewn-homesick-a	Degree=Pos	dema	0			oewn_form
 homesickness	0	oewn-homesickness-n	Number=Sing	dema	0			oewn_form
-homesicknesses	0	oewn-homesickness-n	Number=Plur	dema	0			rule
 homesite	0		Number=Sing	dema	0	homesite	n	moby_reverse
 homesites	0		Number=Plur	dema	0	homesite	n	rule
 homespun	0	oewn-homespun-a	Degree=Pos	dema	0			oewn_form
@@ -9623,7 +9616,6 @@ hominy grits	0	oewn-hominy_grits-n	Number=Sing	dema	0			oewn_form
 hommock	0		Number=Sing	dema	0	hommock	n	moby_reverse
 hommocks	0		Number=Plur	dema	0	hommock	n	rule
 hommos	0	oewn-hommos-n	Number=Sing	dema	0			oewn_form
-hommoses	0	oewn-hommos-n	Number=Plur	dema	0			rule
 homo	0	oewn-homo-n	Number=Sing	dema	0			oewn_form
 homobront	0		Number=Sing	dema	0	homobront	n	moby_reverse
 homobronts	0		Number=Plur	dema	0	homobront	n	rule
@@ -9685,21 +9677,24 @@ homogenies	0	oewn-homogeny-n	Number=Plur	dema	0			rule
 homogenisation	0	oewn-homogenisation-n	Number=Sing	dema	0			oewn_form
 homogenisations	0	oewn-homogenisation-n	Number=Plur	dema	0			rule
 homogenise	0	oewn-homogenise-v	VerbForm=Inf	dema	0			oewn_form
-homogenised	0	oewn-homogenise-v	Tense=Past+VerbForm=Part	dema	0			rule
+homogenised	0	oewn-homogenise-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 homogenised	1	oewn-homogenised-a	Degree=Pos	dema	0			oewn_form
-homogenises	0	oewn-homogenise-v	Person=3+Tense=Pres	dema	0			rule
-homogenising	0	oewn-homogenise-v	VerbForm=Ger	dema	0			rule
+homogenises	0	oewn-homogenise-v	Person=3+Tense=Pres	dema	0			rule_variant
+homogenising	0	oewn-homogenise-v	VerbForm=Ger	dema	0			rule_variant
 homogenization	0	oewn-homogenization-n	Number=Sing	dema	0			oewn_form
 homogenizations	0	oewn-homogenization-n	Number=Plur	dema	0			rule
 homogenize	0	oewn-homogenize-v	VerbForm=Inf	dema	0			oewn_form
 homogenized	0	oewn-homogenize-v	Tense=Past+VerbForm=Part	dema	0			rule
-homogenized	1	oewn-homogenized-a	Degree=Pos	dema	0			oewn_form
+homogenized	1	oewn-homogenise-v	Tense=Past+VerbForm=Part	dema	0			llm
+homogenized	2	oewn-homogenized-a	Degree=Pos	dema	0			oewn_form
 homogenized milk	0	oewn-homogenized_milk-n	Number=Sing	dema	0			oewn_form
 homogenized milks	0	oewn-homogenized_milk-n	Number=Plur	dema	0			rule
 homogenizer	0		Number=Sing	dema	0	homogenizer	n	moby_reverse
 homogenizers	0		Number=Plur	dema	0	homogenizer	n	rule
 homogenizes	0	oewn-homogenize-v	Person=3+Tense=Pres	dema	0			rule
+homogenizes	1	oewn-homogenise-v	Person=3+Tense=Pres	dema	0			llm
 homogenizing	0	oewn-homogenize-v	VerbForm=Ger	dema	0			rule
+homogenizing	1	oewn-homogenise-v	VerbForm=Ger	dema	0			llm
 homogenous	0	oewn-homogenous-a	Degree=Pos	dema	0			oewn_form
 homogentisic acid	0	oewn-homogentisic_acid-n	Number=Sing	dema	0			oewn_form
 homogentisic acids	0	oewn-homogentisic_acid-n	Number=Plur	dema	0			rule
@@ -9876,9 +9871,9 @@ hones	0	oewn-hone-n	Number=Plur	dema	0			rule
 hones	1	oewn-hone-v	Person=3+Tense=Pres	dema	0			rule
 honest	0	oewn-honest-a	Degree=Pos	dema	0			oewn_form
 honest man	0	oewn-honest_man-n	Number=Sing	dema	0			oewn_form
-honest mans	0	oewn-honest_man-n	Number=Plur	dema	0			rule
+honest men	0	oewn-honest_man-n	Number=Plur	dema	0			rule
 honest woman	0	oewn-honest_woman-n	Number=Sing	dema	0			oewn_form
-honest womans	0	oewn-honest_woman-n	Number=Plur	dema	0			rule
+honest women	0	oewn-honest_woman-n	Number=Plur	dema	0			rule
 honest-to-god	0	oewn-honest-to-god-a	Degree=Pos	dema	0			oewn_form
 honest-to-goodness	0	oewn-honest-to-goodness-a	Degree=Pos	dema	0			oewn_form
 honesties	0	oewn-honesty-n	Number=Plur	dema	0			rule
@@ -10026,7 +10021,7 @@ honorable discharges	0	oewn-honorable_discharge-n	Number=Plur	dema	0			rule
 honorable mention	0	oewn-honorable_mention-n	Number=Sing	dema	0			oewn_form
 honorable mentions	0	oewn-honorable_mention-n	Number=Plur	dema	0			rule
 honorableness	0	oewn-honorableness-n	Number=Sing	dema	0			oewn_form
-honorablenesses	0	oewn-honorableness-n	Number=Plur	dema	0			rule
+honorablenesses	0	oewn-honorableness-n	Number=Plur	dema	0			llm
 honorably	0	oewn-honorably-r	Degree=Pos	dema	0			oewn_form
 honorand	0		Number=Sing	dema	0	honorand	n	moby_reverse
 honorands	0		Number=Plur	dema	0	honorand	n	rule
@@ -10127,9 +10122,8 @@ hoodlumism	0		Number=Sing	dema	0	hoodlumism	n	moby_reverse
 hoodlumisms	0		Number=Plur	dema	0	hoodlumism	n	rule
 hoodlums	0	oewn-hoodlum-n	Number=Plur	dema	0			rule
 hoodman	0		Number=Sing	dema	0	hoodman	n	moby_reverse
-hoodmans	0		Number=Plur	dema	0	hoodman	n	rule
-hoodmen	0		Number=Sing	dema	0	hoodmen	n	moby_reverse
-hoodmens	0		Number=Plur	dema	0	hoodmen	n	rule
+hoodmen	0		Number=Plur	dema	0	hoodman	n	rule
+hoodmen	1		Number=Sing	dema	0	hoodmen	n	moby_reverse
 hoodmold	0	oewn-hoodmold-n	Number=Sing	dema	0			oewn_form
 hoodmolds	0	oewn-hoodmold-n	Number=Plur	dema	0			rule
 hoodmould	0	oewn-hoodmould-n	Number=Sing	dema	0			oewn_form
@@ -10138,14 +10132,15 @@ hoodoes	0		Number=Sing	dema	0	hoodoes	n	moby_reverse
 hoodoo	0	oewn-hoodoo-n	Number=Sing	dema	0			oewn_form
 hoodoo	1	oewn-hoodoo-v	VerbForm=Inf	dema	0			oewn_form
 hoodooed	0		Number=Sing	dema	0	hoodooed	n	moby_reverse
-hoodooed	1	oewn-hoodoo-v	Tense=Past+VerbForm=Part	dema	0			rule
+hoodooed	1	oewn-hoodoo-v	Tense=Past+VerbForm=Part	dema	0			llm
 hoodooeds	0		Number=Plur	dema	0	hoodooed	n	rule
 hoodooing	0		Number=Sing	dema	0	hoodooing	n	moby_reverse
-hoodooing	1	oewn-hoodoo-v	VerbForm=Ger	dema	0			rule
+hoodooing	1	oewn-hoodoo-v	VerbForm=Ger	dema	0			llm
 hoodooings	0		Number=Plur	dema	0	hoodooing	n	rule
 hoodooism	0	oewn-hoodooism-n	Number=Sing	dema	0			oewn_form
 hoodooisms	0	oewn-hoodooism-n	Number=Plur	dema	0			rule
 hoodoos	0	oewn-hoodoo-n	Number=Plur	dema	0			rule
+hoodoos	1	oewn-hoodoo-v	Person=3+Tense=Pres	dema	0			llm
 hoods	0	oewn-hood-n	Number=Plur	dema	0			rule
 hoods	1	oewn-hood-v	Person=3+Tense=Pres	dema	0			rule
 hoodwink	0	oewn-hoodwink-v	VerbForm=Inf	dema	0			oewn_form
@@ -10260,7 +10255,7 @@ hooly	0		Number=Sing	dema	0	hooly	n	moby_reverse
 hooly	1		Degree=Pos	dema	0	hooly	a	moby_reverse
 hooly	2		Degree=Pos	dema	0	hooly	r	moby_reverse
 hooman	0	oewn-hooman-n	Number=Sing	dema	0			oewn_form
-hoomans	0	oewn-hooman-n	Number=Plur	dema	0			rule
+hoomen	0	oewn-hooman-n	Number=Plur	dema	0			rule
 hoop	0	oewn-hoop-n	Number=Sing	dema	0			oewn_form
 hoop	1	oewn-hoop-v	VerbForm=Inf	dema	0			oewn_form
 hoop ash	0	oewn-hoop_ash-n	Number=Sing	dema	0			oewn_form
@@ -10278,9 +10273,8 @@ hooplas	0	oewn-hoopla-n	Number=Plur	dema	0			rule
 hoopless	0		Degree=Pos	dema	0	hoopless	a	moby_reverse
 hooplike	0		Degree=Pos	dema	0	hooplike	a	moby_reverse
 hoopman	0		Number=Sing	dema	0	hoopman	n	moby_reverse
-hoopmans	0		Number=Plur	dema	0	hoopman	n	rule
-hoopmen	0		Number=Sing	dema	0	hoopmen	n	moby_reverse
-hoopmens	0		Number=Plur	dema	0	hoopmen	n	rule
+hoopmen	0		Number=Plur	dema	0	hoopman	n	rule
+hoopmen	1		Number=Sing	dema	0	hoopmen	n	moby_reverse
 hoopoe	0	oewn-hoopoe-n	Number=Sing	dema	0			oewn_form
 hoopoes	0	oewn-hoopoe-n	Number=Plur	dema	0			rule
 hoopoo	0	oewn-hoopoo-n	Number=Sing	dema	0			oewn_form
@@ -10365,7 +10359,7 @@ hopefuls	0	oewn-hopeful-n	Number=Plur	dema	0			rule
 hopeless	0	oewn-hopeless-a	Degree=Pos	dema	0			oewn_form
 hopelessly	0	oewn-hopelessly-r	Degree=Pos	dema	0			oewn_form
 hopelessness	0	oewn-hopelessness-n	Number=Sing	dema	0			oewn_form
-hopelessnesses	0	oewn-hopelessness-n	Number=Plur	dema	0			rule
+hopelessnesses	0	oewn-hopelessness-n	Number=Plur	dema	0			llm
 hoper	0	oewn-hoper-n	Number=Sing	dema	0			oewn_form
 hopers	0	oewn-hoper-n	Number=Plur	dema	0			rule
 hopes	0	oewn-hope-n	Number=Plur	dema	1			carried
@@ -10430,7 +10424,9 @@ horde	1		VerbForm=Inf	dema	0	horde	v	moby_reverse
 horded	0		Tense=Past+VerbForm=Part	dema	0	horde	v	moby_reverse
 hordein	0		Number=Sing	dema	0	hordein	n	moby_reverse
 hordeins	0		Number=Plur	dema	0	hordein	n	rule
+hordeola	0	oewn-hordeolum-n	Number=Plur	dema	0			llm
 hordeolum	0	oewn-hordeolum-n	Number=Sing	dema	0			oewn_form
+hordeolums	0	oewn-hordeolum-n	Number=Plur	dema	0			rule_variant
 hordes	0	oewn-horde-n	Number=Plur	dema	0			rule
 hording	0		VerbForm=Ger	dema	0	horde	v	moby_reverse
 horehound	0	oewn-horehound-n	Number=Sing	dema	0			oewn_form
@@ -10545,7 +10541,7 @@ hornets	0	oewn-hornet-n	Number=Plur	dema	0			rule
 hornets' nest	0	oewn-hornets-ap-_nest-n	Number=Sing	dema	0			oewn_form
 hornets' nests	0	oewn-hornets-ap-_nest-n	Number=Plur	dema	0			rule
 hornfels	0	oewn-hornfels-n	Number=Sing	dema	0			oewn_form
-hornfelses	0	oewn-hornfels-n	Number=Plur	dema	0			rule
+hornfelses	0	oewn-hornfels-n	Number=Plur	dema	0			llm
 hornier	0	oewn-horny-a	Degree=Cmp	dema	0			oewn_form
 horniest	0	oewn-horny-a	Degree=Sup	dema	0			oewn_form
 hornily	0		Degree=Pos	dema	0	hornily	r	moby_reverse
@@ -10656,9 +10652,8 @@ horrors	0	oewn-horror-n	Number=Plur	dema	0			rule
 horrors	1	dema-horrors-i		dema	0			carried
 hors d'oeuvre	0	oewn-hors_d-ap-oeuvre-n	Number=Sing	dema	0			oewn_form
 hors d'oeuvres	0	oewn-hors_d-ap-oeuvre-n	Number=Plur	dema	0			rule
-horse	0	oewn-horse-n	Number=Plur	dema	0			agid
-horse	1	oewn-horse-n	Number=Sing	dema	0			oewn_form
-horse	2	oewn-horse-v	VerbForm=Inf	dema	0			oewn_form
+horse	0	oewn-horse-n	Number=Sing	dema	0			oewn_form
+horse	1	oewn-horse-v	VerbForm=Inf	dema	0			oewn_form
 horse around	0	oewn-horse_around-v	VerbForm=Inf	dema	0			oewn_form
 horse balm	0	oewn-horse_balm-n	Number=Sing	dema	0			oewn_form
 horse balms	0	oewn-horse_balm-n	Number=Plur	dema	0			rule
@@ -10782,10 +10777,10 @@ horsed around	0	oewn-horse_around-v	Tense=Past+VerbForm=Part	dema	0			rule
 horseds	0		Number=Plur	dema	0	horsed	n	rule
 horsefeathers	0		Number=Sing	dema	0	horsefeathers	n	moby_reverse
 horsefeathers	1	dema-horsefeathers-i		dema	0			carried
-horsefish	0	oewn-horsefish-n	Number=Plur	dema	0			agid
+horsefish	0	oewn-horsefish-n	Number=Plur	dema	0			llm
 horsefish	1	oewn-horsefish-n	Number=Sing	dema	0			oewn_form
-horseflesh	0	oewn-horseflesh-n	Number=Plur	dema	0			agid
-horseflesh	1	oewn-horseflesh-n	Number=Sing	dema	0			oewn_form
+horsefishes	0	oewn-horsefish-n	Number=Plur	dema	0			rule_variant
+horseflesh	0	oewn-horseflesh-n	Number=Sing	dema	0			oewn_form
 horseflies	0	oewn-horsefly-n	Number=Plur	dema	0			rule
 horsefly	0	oewn-horsefly-n	Number=Sing	dema	0			oewn_form
 horsefly weed	0	oewn-horsefly_weed-n	Number=Sing	dema	0			oewn_form
@@ -10817,7 +10812,7 @@ horsemanship	0	oewn-horsemanship-n	Number=Sing	dema	0			oewn_form
 horsemanships	0	oewn-horsemanship-n	Number=Plur	dema	0			rule
 horsemeat	0	oewn-horsemeat-n	Number=Sing	dema	0			oewn_form
 horsemeats	0	oewn-horsemeat-n	Number=Plur	dema	0			rule
-horsemen	0	oewn-horseman-n	Number=Plur	dema	0			agid
+horsemen	0	oewn-horseman-n	Number=Plur	dema	0			llm
 horsemint	0	oewn-horsemint-n	Number=Sing	dema	0			oewn_form
 horsemints	0	oewn-horsemint-n	Number=Plur	dema	0			rule
 horseplay	0	oewn-horseplay-n	Number=Sing	dema	0			oewn_form
@@ -10827,10 +10822,11 @@ horseplayful	0		Degree=Pos	dema	0	horseplayful	a	moby_reverse
 horseplays	0	oewn-horseplay-n	Number=Plur	dema	0			rule
 horsepond	0	oewn-horsepond-n	Number=Sing	dema	0			oewn_form
 horseponds	0	oewn-horsepond-n	Number=Plur	dema	0			rule
-horsepower	0	oewn-horsepower-n	Number=Plur	dema	0			agid
+horsepower	0	oewn-horsepower-n	Number=Plur	dema	0			llm
 horsepower	1	oewn-horsepower-n	Number=Sing	dema	0			oewn_form
 horsepower-hour	0	oewn-horsepower-hour-n	Number=Sing	dema	0			oewn_form
 horsepower-hours	0	oewn-horsepower-hour-n	Number=Plur	dema	0			rule
+horsepowers	0	oewn-horsepower-n	Number=Plur	dema	0			rule_variant
 horsepox	0		Number=Sing	dema	0	horsepox	n	moby_reverse
 horsepoxes	0		Number=Plur	dema	0	horsepox	n	rule
 horseradish	0	oewn-horseradish-n	Number=Sing	dema	0			oewn_form
@@ -10841,7 +10837,7 @@ horseradish roots	0	oewn-horseradish_root-n	Number=Plur	dema	0			rule
 horseradish sauce	0	oewn-horseradish_sauce-n	Number=Sing	dema	0			oewn_form
 horseradish sauces	0	oewn-horseradish_sauce-n	Number=Plur	dema	0			rule
 horseradishes	0	oewn-horseradish-n	Number=Plur	dema	0			rule
-horses	0	oewn-horse-n	Number=Plur	dema	0			rule_variant
+horses	0	oewn-horse-n	Number=Plur	dema	0			rule
 horses	1	oewn-horse-v	Person=3+Tense=Pres	dema	0			rule
 horses around	0	oewn-horse_around-v	Person=3+Tense=Pres	dema	0			rule
 horses of the wood	0	oewn-horse_of_the_wood-n	Number=Plur	dema	0			rule
@@ -10889,7 +10885,7 @@ horsewhips	1	oewn-horsewhip-v	Person=3+Tense=Pres	dema	0			rule
 horsewoman	0	oewn-horsewoman-n	Number=Sing	dema	0			oewn_form
 horsewomanship	0		Number=Sing	dema	0	horsewomanship	n	moby_reverse
 horsewomanships	0		Number=Plur	dema	0	horsewomanship	n	rule
-horsewomen	0	oewn-horsewoman-n	Number=Plur	dema	0			agid
+horsewomen	0	oewn-horsewoman-n	Number=Plur	dema	0			llm
 horsey	0		Degree=Pos	dema	0	horsey	a	moby_reverse
 horsey set	0	oewn-horsey_set-n	Number=Sing	dema	0			oewn_form
 horsey sets	0	oewn-horsey_set-n	Number=Plur	dema	0			rule
@@ -10927,7 +10923,7 @@ hosanna	1	oewn-hosanna-n	Number=Sing	dema	0			oewn_form
 hosannaed	0		VerbForm=Inf	dema	0	hosannaed	v	moby_reverse
 hosannaing	0		VerbForm=Inf	dema	0	hosannaing	v	moby_reverse
 hosannas	0	oewn-hosanna-n	Number=Plur	dema	0			rule
-hose	0	oewn-hose-n	Number=Plur	dema	0			agid
+hose	0	oewn-hose-n	Number=Plur	dema	0			rule_variant
 hose	1	oewn-hose-n	Number=Sing	dema	0			oewn_form
 hose	2	oewn-hose-v	VerbForm=Inf	dema	0			oewn_form
 hose down	0	oewn-hose_down-v	VerbForm=Inf	dema	0			oewn_form
@@ -10941,7 +10937,7 @@ hoselike	0		Degree=Pos	dema	0	hoselike	a	moby_reverse
 hosels	0		Number=Plur	dema	0	hosel	n	rule
 hosepipe	0	oewn-hosepipe-n	Number=Sing	dema	0			oewn_form
 hosepipes	0	oewn-hosepipe-n	Number=Plur	dema	0			rule
-hoses	0	oewn-hose-n	Number=Plur	dema	0			rule_variant
+hoses	0	oewn-hose-n	Number=Plur	dema	0			llm
 hoses	1	oewn-hose-v	Person=3+Tense=Pres	dema	0			rule
 hoses down	0	oewn-hose_down-v	Person=3+Tense=Pres	dema	0			rule
 hosier	0	oewn-hosier-n	Number=Sing	dema	0			oewn_form
@@ -10955,7 +10951,7 @@ hospice	0	oewn-hospice-n	Number=Sing	dema	0			oewn_form
 hospices	0	oewn-hospice-n	Number=Plur	dema	0			rule
 hospitable	0	oewn-hospitable-a	Degree=Pos	dema	0			oewn_form
 hospitableness	0	oewn-hospitableness-n	Number=Sing	dema	0			oewn_form
-hospitablenesses	0	oewn-hospitableness-n	Number=Plur	dema	0			rule
+hospitablenesses	0	oewn-hospitableness-n	Number=Plur	dema	0			llm
 hospitably	0	oewn-hospitably-r	Degree=Pos	dema	0			oewn_form
 hospital	0	oewn-hospital-n	Number=Sing	dema	0			oewn_form
 hospital attendant	0	oewn-hospital_attendant-n	Number=Sing	dema	0			oewn_form
@@ -10997,9 +10993,8 @@ hospitalizing	0	oewn-hospitalize-v	VerbForm=Ger	dema	0			rule
 hospitaller	0	oewn-hospitaller-n	Number=Sing	dema	0			oewn_form
 hospitallers	0	oewn-hospitaller-n	Number=Plur	dema	0			rule
 hospitalman	0		Number=Sing	dema	0	hospitalman	n	moby_reverse
-hospitalmans	0		Number=Plur	dema	0	hospitalman	n	rule
-hospitalmen	0		Number=Sing	dema	0	hospitalmen	n	moby_reverse
-hospitalmens	0		Number=Plur	dema	0	hospitalmen	n	rule
+hospitalmen	0		Number=Plur	dema	0	hospitalman	n	rule
+hospitalmen	1		Number=Sing	dema	0	hospitalmen	n	moby_reverse
 hospitals	0	oewn-hospital-n	Number=Plur	dema	0			rule
 hospitia	0		Number=Sing	dema	0	hospitia	n	moby_reverse
 hospitias	0		Number=Plur	dema	0	hospitia	n	rule
@@ -11205,10 +11200,10 @@ hotelkeeper	0	oewn-hotelkeeper-n	Number=Sing	dema	0			oewn_form
 hotelkeepers	0	oewn-hotelkeeper-n	Number=Plur	dema	0			rule
 hotelless	0		Degree=Pos	dema	0	hotelless	a	moby_reverse
 hotelman	0	oewn-hotelman-n	Number=Sing	dema	0			oewn_form
-hotelmen	0	oewn-hotelman-n	Number=Plur	dema	0			agid
+hotelmen	0	oewn-hotelman-n	Number=Plur	dema	0			llm
 hotels	0	oewn-hotel-n	Number=Plur	dema	0			rule
 hotelwoman	0	oewn-hotelwoman-n	Number=Sing	dema	0			oewn_form
-hotelwomans	0	oewn-hotelwoman-n	Number=Plur	dema	0			rule
+hotelwomen	0	oewn-hotelwoman-n	Number=Plur	dema	0			rule
 hotfoot	0		Degree=Pos	dema	0	hotfoot	a	moby_reverse
 hotfoot	1	oewn-hotfoot-v	VerbForm=Inf	dema	0			oewn_form
 hotfoot	2	oewn-hotfoot-n	Number=Sing	dema	0			oewn_form
@@ -11267,7 +11262,6 @@ houghs	0		Number=Plur	dema	0	hough	n	rule
 houhere	0	oewn-houhere-n	Number=Sing	dema	0			oewn_form
 houheres	0	oewn-houhere-n	Number=Plur	dema	0			rule
 hoummos	0	oewn-hoummos-n	Number=Sing	dema	0			oewn_form
-hoummoses	0	oewn-hoummos-n	Number=Plur	dema	0			rule
 houmous	0		Number=Sing	dema	0	houmous	n	moby_reverse
 hound	0	oewn-hound-n	Number=Sing	dema	0			oewn_form
 hound	1	oewn-hound-v	VerbForm=Inf	dema	0			oewn_form
@@ -11395,24 +11389,24 @@ housebreak	0	oewn-housebreak-v	VerbForm=Inf	dema	0			oewn_form
 housebreaker	0	oewn-housebreaker-n	Number=Sing	dema	0			oewn_form
 housebreakers	0	oewn-housebreaker-n	Number=Plur	dema	0			rule
 housebreaking	0	oewn-housebreaking-n	Number=Sing	dema	0			oewn_form
-housebreaking	1	oewn-housebreak-v	VerbForm=Ger	dema	0			rule
+housebreaking	1	oewn-housebreak-v	VerbForm=Ger	dema	0			llm
 housebreakings	0	oewn-housebreaking-n	Number=Plur	dema	0			rule
-housebreaks	0	oewn-housebreak-v	Person=3+Tense=Pres	dema	0			rule
-housebroke	0	oewn-housebreak-v	Tense=Past	dema	0			agid
-housebroken	0	oewn-housebreak-v	VerbForm=Part	dema	0			agid
+housebreaks	0	oewn-housebreak-v	Person=3+Tense=Pres	dema	0			llm
+housebroke	0	oewn-housebreak-v	Tense=Past	dema	0			llm
+housebroken	0	oewn-housebreak-v	VerbForm=Part	dema	0			llm
 housebroken	1	oewn-housebroken-a	Degree=Pos	dema	0			oewn_form
 housebuilder	0	oewn-housebuilder-n	Number=Sing	dema	0			oewn_form
 housebuilders	0	oewn-housebuilder-n	Number=Plur	dema	0			rule
 housecarl	0		Number=Sing	dema	0	housecarl	n	moby_reverse
 housecarls	0		Number=Plur	dema	0	housecarl	n	rule
 houseclean	0	oewn-houseclean-v	VerbForm=Inf	dema	0			oewn_form
-housecleaned	0	oewn-houseclean-v	Tense=Past+VerbForm=Part	dema	0			rule
+housecleaned	0	oewn-houseclean-v	Tense=Past+VerbForm=Part	dema	0			llm
 housecleaner	0		Number=Sing	dema	0	housecleaner	n	moby_reverse
 housecleaners	0		Number=Plur	dema	0	housecleaner	n	rule
 housecleaning	0	oewn-housecleaning-n	Number=Sing	dema	0			oewn_form
-housecleaning	1	oewn-houseclean-v	VerbForm=Ger	dema	0			rule
+housecleaning	1	oewn-houseclean-v	VerbForm=Ger	dema	0			llm
 housecleanings	0	oewn-housecleaning-n	Number=Plur	dema	0			rule
-housecleans	0	oewn-houseclean-v	Person=3+Tense=Pres	dema	0			rule
+housecleans	0	oewn-houseclean-v	Person=3+Tense=Pres	dema	0			llm
 housecoat	0	oewn-housecoat-n	Number=Sing	dema	0			oewn_form
 housecoats	0	oewn-housecoat-n	Number=Plur	dema	0			rule
 housecraft	0	oewn-housecraft-n	Number=Sing	dema	0			oewn_form
@@ -11482,7 +11476,7 @@ housemastership	0		Number=Sing	dema	0	housemastership	n	moby_reverse
 housemasterships	0		Number=Plur	dema	0	housemastership	n	rule
 housemate	0	oewn-housemate-n	Number=Sing	dema	0			oewn_form
 housemates	0	oewn-housemate-n	Number=Plur	dema	0			rule
-housemen	0	oewn-houseman-n	Number=Plur	dema	0			agid
+housemen	0	oewn-houseman-n	Number=Plur	dema	0			llm
 housemother	0	oewn-housemother-n	Number=Sing	dema	0			oewn_form
 housemotherly	0		Degree=Pos	dema	0	housemotherly	a	moby_reverse
 housemothers	0	oewn-housemother-n	Number=Plur	dema	0			rule
@@ -11559,8 +11553,9 @@ hover	0	oewn-hover-v	VerbForm=Inf	dema	0			oewn_form
 hover	1		Number=Sing	dema	0	hover	n	moby_reverse
 hoverboard	0	oewn-hoverboard-n	Number=Sing	dema	0			oewn_form
 hoverboards	0	oewn-hoverboard-n	Number=Plur	dema	0			rule
-hovercraft	0	oewn-hovercraft-n	Number=Plur	dema	0			agid
+hovercraft	0	oewn-hovercraft-n	Number=Plur	dema	0			llm
 hovercraft	1	oewn-hovercraft-n	Number=Sing	dema	0			oewn_form
+hovercrafts	0	oewn-hovercraft-n	Number=Plur	dema	0			rule_variant
 hovered	0	oewn-hover-v	Tense=Past+VerbForm=Part	dema	0			rule
 hoverer	0		Number=Sing	dema	0	hoverer	n	moby_reverse
 hoverers	0		Number=Plur	dema	0	hoverer	n	rule
@@ -11677,7 +11672,6 @@ hubby	0	oewn-hubby-n	Number=Sing	dema	0			oewn_form
 hubcap	0	oewn-hubcap-n	Number=Sing	dema	0			oewn_form
 hubcaps	0	oewn-hubcap-n	Number=Plur	dema	0			rule
 hubris	0	oewn-hubris-n	Number=Sing	dema	0			oewn_form
-hubrises	0	oewn-hubris-n	Number=Plur	dema	0			rule
 hubs	0	oewn-hub-n	Number=Plur	dema	0			rule
 huck	0	oewn-huck-n	Number=Sing	dema	0			oewn_form
 huckaback	0	oewn-huckaback-n	Number=Sing	dema	0			oewn_form
@@ -11763,8 +11757,8 @@ hugeness	0		Number=Sing	dema	0	hugeness	n	moby_reverse
 hugenesses	0		Number=Plur	dema	0	hugeness	n	rule
 hugeously	0		Degree=Pos	dema	0	hugeously	r	moby_reverse
 hugeousness	0		Number=Sing	dema	0	hugeousness	n	moby_reverse
-huger	0	oewn-huge-a	Degree=Cmp	dema	0			moby_reverse
-hugest	0	oewn-huge-a	Degree=Sup	dema	0			moby_reverse
+huger	0	oewn-huge-a	Degree=Cmp	dema	0			llm
+hugest	0	oewn-huge-a	Degree=Sup	dema	0			llm
 huggable	0		Degree=Pos	dema	0	huggable	a	moby_reverse
 hugged	0	oewn-hug-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 hugger	0	oewn-hugger-n	Number=Sing	dema	0			oewn_form
@@ -11934,11 +11928,11 @@ humanity	0	oewn-humanity-n	Number=Sing	dema	0			oewn_form
 humanization	0	oewn-humanization-n	Number=Sing	dema	0			oewn_form
 humanizations	0	oewn-humanization-n	Number=Plur	dema	0			rule
 humanize	0	oewn-humanize-v	VerbForm=Inf	dema	0			oewn_form
-humanized	0	oewn-humanize-v	Tense=Past+VerbForm=Part	dema	0			rule
+humanized	0	oewn-humanize-v	Tense=Past+VerbForm=Part	dema	0			llm
 humanizer	0		Number=Sing	dema	0	humanizer	n	moby_reverse
 humanizers	0		Number=Plur	dema	0	humanizer	n	rule
-humanizes	0	oewn-humanize-v	Person=3+Tense=Pres	dema	0			rule
-humanizing	0	oewn-humanize-v	VerbForm=Ger	dema	0			rule
+humanizes	0	oewn-humanize-v	Person=3+Tense=Pres	dema	0			llm
+humanizing	0	oewn-humanize-v	VerbForm=Ger	dema	0			llm
 humankind	0	oewn-humankind-n	Number=Sing	dema	0			oewn_form
 humankinds	0	oewn-humankind-n	Number=Plur	dema	0			rule
 humanlike	0	oewn-humanlike-a	Degree=Pos	dema	0			oewn_form
@@ -11959,14 +11953,14 @@ humble plants	0	oewn-humble_plant-n	Number=Plur	dema	0			rule
 humblebee	0	oewn-humblebee-n	Number=Sing	dema	0			oewn_form
 humblebees	0	oewn-humblebee-n	Number=Plur	dema	0			rule
 humbled	0	oewn-humbled-a	Degree=Pos	dema	0			oewn_form
-humbled	1	oewn-humble-v	Tense=Past+VerbForm=Part	dema	0			rule
+humbled	1	oewn-humble-v	Tense=Past+VerbForm=Part	dema	0			llm
 humbleness	0	oewn-humbleness-n	Number=Sing	dema	0			oewn_form
 humblenesses	0	oewn-humbleness-n	Number=Plur	dema	0			rule
 humbler	0	oewn-humble-a	Degree=Cmp	dema	0			rule
-humbles	0	oewn-humble-v	Person=3+Tense=Pres	dema	0			rule
+humbles	0	oewn-humble-v	Person=3+Tense=Pres	dema	0			llm
 humblest	0	oewn-humble-a	Degree=Sup	dema	0			rule
 humbling	0	oewn-humbling-a	Degree=Pos	dema	0			oewn_form
-humbling	1	oewn-humble-v	VerbForm=Ger	dema	0			rule
+humbling	1	oewn-humble-v	VerbForm=Ger	dema	0			llm
 humblingly	0		Degree=Pos	dema	0	humblingly	r	moby_reverse
 humbly	0	oewn-humbly-r	Degree=Pos	dema	0			oewn_form
 humbug	0	oewn-humbug-n	Number=Sing	dema	0			oewn_form
@@ -12065,7 +12059,7 @@ hummock	0	oewn-hummock-n	Number=Sing	dema	0			oewn_form
 hummocks	0	oewn-hummock-n	Number=Plur	dema	0			rule
 hummocky	0		Degree=Pos	dema	0	hummocky	a	moby_reverse
 hummus	0	oewn-hummus-n	Number=Sing	dema	0			oewn_form
-hummuses	0	oewn-hummus-n	Number=Plur	dema	0			rule
+hummuses	0	oewn-hummus-n	Number=Plur	dema	0			llm
 humongous	0	oewn-humongous-a	Degree=Pos	dema	0			oewn_form
 humor	0	oewn-humor-n	Number=Sing	dema	0			oewn_form
 humor	1	oewn-humor-v	VerbForm=Inf	dema	0			oewn_form
@@ -12142,7 +12136,7 @@ humuhumunukunukuapuaas	0		Number=Plur	dema	0	humuhumunukunukuapuaa	n	rule
 humulon	0		Number=Sing	dema	0	humulon	n	moby_reverse
 humulons	0		Number=Plur	dema	0	humulon	n	rule
 humus	0	oewn-humus-n	Number=Sing	dema	0			oewn_form
-humuses	0	oewn-humus-n	Number=Plur	dema	0			rule
+humuses	0	oewn-humus-n	Number=Plur	dema	0			llm
 humuslike	0		Degree=Pos	dema	0	humuslike	a	moby_reverse
 hunch	0	oewn-hunch-n	Number=Sing	dema	0			oewn_form
 hunch	1	oewn-hunch-v	VerbForm=Inf	dema	0			oewn_form
@@ -12164,10 +12158,9 @@ hunching	0	oewn-hunch-v	VerbForm=Ger	dema	0			rule
 hunching forward	0	oewn-hunch_forward-v	VerbForm=Ger	dema	0			rule
 hunching over	0	oewn-hunch_over-v	VerbForm=Ger	dema	0			rule
 hund	0		Number=Sing	dema	0	hund	n	moby_reverse
-hundred	0	oewn-hundred-n	Number=Plur	dema	0			agid
-hundred	1	oewn-hundred-n	Number=Sing	dema	0			oewn_form
-hundred	2	dema-hundred-d		dema	0			carried
-hundred	3	oewn-hundred-a	Degree=Pos	dema	0			oewn_form
+hundred	0	oewn-hundred-n	Number=Sing	dema	0			oewn_form
+hundred	1	dema-hundred-d		dema	0			carried
+hundred	2	oewn-hundred-a	Degree=Pos	dema	0			oewn_form
 hundred and one	0	oewn-hundred_and_one-a	Degree=Pos	dema	0			oewn_form
 hundred dollar bill	0	oewn-hundred_dollar_bill-n	Number=Sing	dema	0			oewn_form
 hundred dollar bills	0	oewn-hundred_dollar_bill-n	Number=Plur	dema	0			rule
@@ -12196,13 +12189,13 @@ hundred-percenter	0	oewn-hundred-percenter-n	Number=Sing	dema	0			oewn_form
 hundred-percenters	0	oewn-hundred-percenter-n	Number=Plur	dema	0			rule
 hundredfold	0		Degree=Pos	dema	0	hundredfold	a	moby_reverse
 hundredfold	1	oewn-hundredfold-r	Degree=Pos	dema	0			oewn_form
-hundreds	0	oewn-hundred-n	Number=Plur	dema	0			rule_variant
+hundreds	0	oewn-hundred-n	Number=Plur	dema	0			rule
 hundredth	0	oewn-hundredth-a	Degree=Pos	dema	0			oewn_form
 hundredth	1	oewn-hundredth-n	Number=Sing	dema	0			oewn_form
 hundredths	0	oewn-hundredth-n	Number=Plur	dema	0			rule
-hundredweight	0	oewn-hundredweight-n	Number=Plur	dema	0			agid
+hundredweight	0	oewn-hundredweight-n	Number=Plur	dema	0			rule_variant
 hundredweight	1	oewn-hundredweight-n	Number=Sing	dema	0			oewn_form
-hundredweights	0	oewn-hundredweight-n	Number=Plur	dema	0			rule_variant
+hundredweights	0	oewn-hundredweight-n	Number=Plur	dema	0			llm
 hunds	0		Number=Plur	dema	0	hund	n	rule
 hung	0	oewn-hang-v	Tense=Past+VerbForm=Part	dema	0			hand
 hung	1		Degree=Pos	dema	0	hung	a	moby_reverse
@@ -12321,9 +12314,9 @@ huntsman's horns	0	oewn-huntsman-ap-s_horn-n	Number=Plur	dema	0			rule
 huntsman's horns	1	oewn-huntsman-ap-s_horns-n	Number=Sing	dema	0			oewn_form
 huntsmanship	0		Number=Sing	dema	0	huntsmanship	n	moby_reverse
 huntsmanships	0		Number=Plur	dema	0	huntsmanship	n	rule
-huntsmen	0	oewn-huntsman-n	Number=Plur	dema	0			agid
+huntsmen	0	oewn-huntsman-n	Number=Plur	dema	0			llm
 huntswoman	0	oewn-huntswoman-n	Number=Sing	dema	0			oewn_form
-huntswomans	0	oewn-huntswoman-n	Number=Plur	dema	0			rule
+huntswomen	0	oewn-huntswoman-n	Number=Plur	dema	0			rule
 huon pine	0	oewn-huon_pine-n	Number=Sing	dema	0			oewn_form
 huon pines	0	oewn-huon_pine-n	Number=Plur	dema	0			rule
 huppah	0		Number=Sing	dema	0	huppah	n	moby_reverse
@@ -12441,13 +12434,13 @@ husbanding	0	oewn-husband-v	VerbForm=Ger	dema	0			rule
 husbandless	0		Degree=Pos	dema	0	husbandless	a	moby_reverse
 husbandly	0	oewn-husbandly-a	Degree=Pos	dema	0			oewn_form
 husbandman	0	oewn-husbandman-n	Number=Sing	dema	0			oewn_form
-husbandmen	0	oewn-husbandman-n	Number=Plur	dema	0			agid
+husbandmen	0	oewn-husbandman-n	Number=Plur	dema	0			llm
 husbandries	0	oewn-husbandry-n	Number=Plur	dema	0			rule
 husbandry	0	oewn-husbandry-n	Number=Sing	dema	0			oewn_form
 husbands	0	oewn-husband-n	Number=Plur	dema	0			rule
 husbands	1	oewn-husband-v	Person=3+Tense=Pres	dema	0			rule
 husbandwoman	0	oewn-husbandwoman-n	Number=Sing	dema	0			oewn_form
-husbandwomans	0	oewn-husbandwoman-n	Number=Plur	dema	0			rule
+husbandwomen	0	oewn-husbandwoman-n	Number=Plur	dema	0			rule
 hush	0	oewn-hush-v	VerbForm=Inf	dema	0			oewn_form
 hush	1	oewn-hush-n	Number=Sing	dema	0			oewn_form
 hush	2	dema-hush-i		dema	0			carried
@@ -12791,7 +12784,7 @@ hydrocephalic	0	oewn-hydrocephalic-a	Degree=Pos	dema	0			oewn_form
 hydrocephalies	0	oewn-hydrocephaly-n	Number=Plur	dema	0			rule
 hydrocephaloid	0		Degree=Pos	dema	0	hydrocephaloid	a	moby_reverse
 hydrocephalus	0	oewn-hydrocephalus-n	Number=Sing	dema	0			oewn_form
-hydrocephaluses	0	oewn-hydrocephalus-n	Number=Plur	dema	0			rule_variant
+hydrocephaluses	0	oewn-hydrocephalus-n	Number=Plur	dema	0			llm
 hydrocephaly	0	oewn-hydrocephaly-n	Number=Sing	dema	0			oewn_form
 hydrochloric	0		Degree=Pos	dema	0	hydrochloric	a	moby_reverse
 hydrochloric acid	0	oewn-hydrochloric_acid-n	Number=Sing	dema	0			oewn_form
@@ -12961,7 +12954,7 @@ hydrolyse	0	oewn-hydrolyse-v	VerbForm=Inf	dema	0			oewn_form
 hydrolysed	0	oewn-hydrolyse-v	Tense=Past+VerbForm=Part	dema	0			rule
 hydrolyser	0		Number=Sing	dema	0	hydrolyser	n	moby_reverse
 hydrolysers	0		Number=Plur	dema	0	hydrolyser	n	rule
-hydrolyses	0	oewn-hydrolysis-n	Number=Plur	dema	0			agid
+hydrolyses	0	oewn-hydrolysis-n	Number=Plur	dema	0			llm
 hydrolyses	1	oewn-hydrolyse-v	Person=3+Tense=Pres	dema	0			rule
 hydrolysing	0	oewn-hydrolyse-v	VerbForm=Ger	dema	0			rule
 hydrolysis	0	oewn-hydrolysis-n	Number=Sing	dema	0			oewn_form
@@ -13073,7 +13066,7 @@ hydropower industries	0	oewn-hydropower_industry-n	Number=Plur	dema	0			rule
 hydropower industry	0	oewn-hydropower_industry-n	Number=Sing	dema	0			oewn_form
 hydropowers	0		Number=Plur	dema	0	hydropower	n	rule
 hydrops	0	oewn-hydrops-n	Number=Sing	dema	0			oewn_form
-hydropses	0	oewn-hydrops-n	Number=Plur	dema	0			rule
+hydropses	0	oewn-hydrops-n	Number=Plur	dema	0			llm
 hydroptic	0		Degree=Pos	dema	0	hydroptic	a	moby_reverse
 hydroquinone	0		Number=Sing	dema	0	hydroquinone	n	moby_reverse
 hydroquinones	0		Number=Plur	dema	0	hydroquinone	n	rule
@@ -13261,7 +13254,7 @@ hygrostat	0		Number=Sing	dema	0	hygrostat	n	moby_reverse
 hygrostats	0		Number=Plur	dema	0	hygrostat	n	rule
 hygrothermograph	0		Number=Sing	dema	0	hygrothermograph	n	moby_reverse
 hygrothermographs	0		Number=Plur	dema	0	hygrothermograph	n	rule
-hying	0	oewn-hie-v	VerbForm=Ger	dema	0			agid
+hying	0	oewn-hie-v	VerbForm=Ger	dema	0			rule_variant
 hyla	0		Number=Sing	dema	0	hyla	n	moby_reverse
 hylas	0		Number=Plur	dema	0	hyla	n	rule
 hyli	0		Number=Sing	dema	0	hyli	n	moby_reverse
@@ -13385,7 +13378,6 @@ hypallages	0	oewn-hypallage-n	Number=Plur	dema	0			rule
 hypanthia	0	oewn-hypanthium-n	Number=Plur	dema	0			oewn_form
 hypanthial	0		Degree=Pos	dema	0	hypanthial	a	moby_reverse
 hypanthium	0	oewn-hypanthium-n	Number=Sing	dema	0			oewn_form
-hypanthiums	0	oewn-hypanthium-n	Number=Plur	dema	0			rule_variant
 hypaspist	0		Number=Sing	dema	0	hypaspist	n	moby_reverse
 hypaspists	0		Number=Plur	dema	0	hypaspist	n	rule
 hype	0	oewn-hype-n	Number=Sing	dema	0			oewn_form
@@ -13490,7 +13482,7 @@ hyperbilirubinemias	0	oewn-hyperbilirubinemia-n	Number=Plur	dema	0			rule
 hyperbilirubinemias of the newborn	0	oewn-hyperbilirubinemia_of_the_newborn-n	Number=Plur	dema	0			rule
 hyperbola	0	oewn-hyperbola-n	Number=Sing	dema	0			oewn_form
 hyperbolae	0	oewn-hyperbola-n	Number=Plur	dema	0			rule_variant
-hyperbolas	0	oewn-hyperbola-n	Number=Plur	dema	0			rule_variant
+hyperbolas	0	oewn-hyperbola-n	Number=Plur	dema	0			llm
 hyperbole	0	oewn-hyperbole-n	Number=Sing	dema	0			oewn_form
 hyperboles	0	oewn-hyperbole-n	Number=Plur	dema	0			rule
 hyperbolic	0	oewn-hyperbolic-a	Degree=Pos	dema	0			oewn_form
@@ -13666,7 +13658,7 @@ hyperemesis gravidarum	0	oewn-hyperemesis_gravidarum-n	Number=Sing	dema	0			oewn
 hyperemesis gravidarums	0	oewn-hyperemesis_gravidarum-n	Number=Plur	dema	0			rule
 hyperemetic	0		Degree=Pos	dema	0	hyperemetic	a	moby_reverse
 hyperemia	0	oewn-hyperemia-n	Number=Sing	dema	0			oewn_form
-hyperemias	0	oewn-hyperemia-n	Number=Plur	dema	0			rule
+hyperemias	0	oewn-hyperemia-n	Number=Plur	dema	0			llm
 hyperemic	0	oewn-hyperemic-a	Degree=Pos	dema	0			oewn_form
 hyperemization	0		Number=Sing	dema	0	hyperemization	n	moby_reverse
 hyperemizations	0		Number=Plur	dema	0	hyperemization	n	rule
@@ -14485,7 +14477,7 @@ hypodermic syringes	0	oewn-hypodermic_syringe-n	Number=Plur	dema	0			rule
 hypodermically	0		Degree=Pos	dema	0	hypodermically	r	moby_reverse
 hypodermics	0	oewn-hypodermic-n	Number=Plur	dema	0			rule
 hypodermis	0	oewn-hypodermis-n	Number=Sing	dema	0			oewn_form
-hypodermises	0	oewn-hypodermis-n	Number=Plur	dema	0			rule
+hypodermises	0	oewn-hypodermis-n	Number=Plur	dema	0			llm
 hypoderms	0		Number=Plur	dema	0	hypoderm	n	rule
 hypodynamia	0		Number=Sing	dema	0	hypodynamia	n	moby_reverse
 hypodynamias	0		Number=Plur	dema	0	hypodynamia	n	rule
@@ -14718,15 +14710,13 @@ hyposensitizing	0		VerbForm=Ger	dema	0	hyposensitize	v	rule
 hyposmia	0	oewn-hyposmia-n	Number=Sing	dema	0			oewn_form
 hyposmias	0	oewn-hyposmia-n	Number=Plur	dema	0			rule
 hypospadias	0	oewn-hypospadias-n	Number=Sing	dema	0			oewn_form
-hypospadiases	0	oewn-hypospadias-n	Number=Plur	dema	0			rule
 hypospray	0		Number=Sing	dema	0	hypospray	n	moby_reverse
 hyposprays	0		Number=Plur	dema	0	hypospray	n	rule
 hypostases	0	oewn-hypostasis-n	Number=Plur	dema	0			oewn_form
 hypostasis	0	oewn-hypostasis-n	Number=Sing	dema	0			oewn_form
 hypostasise	0		VerbForm=Inf	dema	0	hypostasise	v	moby_reverse
 hypostasised	0		Tense=Past+VerbForm=Part	dema	0	hypostasise	v	rule
-hypostasises	0	oewn-hypostasis-n	Number=Plur	dema	0			rule_variant
-hypostasises	1		Person=3+Tense=Pres	dema	0	hypostasise	v	rule
+hypostasises	0		Person=3+Tense=Pres	dema	0	hypostasise	v	rule
 hypostasising	0		VerbForm=Ger	dema	0	hypostasise	v	rule
 hypostasize	0		VerbForm=Inf	dema	0	hypostasize	v	moby_reverse
 hypostasized	0		Tense=Past+VerbForm=Part	dema	0	hypostasize	v	rule

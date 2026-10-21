@@ -150,17 +150,14 @@ swaging	0	oewn-swage-v	VerbForm=Ger	dema	0			rule
 swaging machine	0	oewn-swaging_machine-n	Number=Sing	dema	0			oewn_form
 swaging machines	0	oewn-swaging_machine-n	Number=Plur	dema	0			rule
 swagman	0	oewn-swagman-n	Number=Sing	dema	0			oewn_form
-swagmans	0	oewn-swagman-n	Number=Plur	dema	0			rule
-swagmen	0		Number=Sing	dema	0	swagmen	n	moby_reverse
-swagmens	0		Number=Plur	dema	0	swagmen	n	rule
+swagmen	0	oewn-swagman-n	Number=Plur	dema	0			rule
 swags	0	oewn-swag-n	Number=Plur	dema	0			rule
 swags	1	oewn-swag-v	Person=3+Tense=Pres	dema	0			rule
 swagsman	0		Number=Sing	dema	0	swagsman	n	moby_reverse
-swagsmans	0		Number=Plur	dema	0	swagsman	n	rule
-swagsmen	0		Number=Sing	dema	0	swagsmen	n	moby_reverse
-swagsmens	0		Number=Plur	dema	0	swagsmen	n	rule
+swagsmen	0		Number=Plur	dema	0	swagsman	n	rule
+swagsmen	1		Number=Sing	dema	0	swagsmen	n	moby_reverse
 swagwoman	0	oewn-swagwoman-n	Number=Sing	dema	0			oewn_form
-swagwomans	0	oewn-swagwoman-n	Number=Plur	dema	0			rule
+swagwomen	0	oewn-swagwoman-n	Number=Plur	dema	0			llm
 swain	0	oewn-swain-n	Number=Sing	dema	0			oewn_form
 swainish	0		Degree=Pos	dema	0	swainish	a	moby_reverse
 swains	0	oewn-swain-n	Number=Plur	dema	0			rule
@@ -298,9 +295,8 @@ swamps	1	oewn-swamp-v	Person=3+Tense=Pres	dema	0			rule
 swampy	0	oewn-swampy-a	Degree=Pos	dema	0			oewn_form
 swampy beggar-ticks	0	oewn-swampy_beggar-ticks-n	Number=Sing	dema	0			oewn_form
 swamy	0		Number=Sing	dema	0	swamy	n	moby_reverse
-swan	0	oewn-swan-n	Number=Plur	dema	0			rule_variant
-swan	1	oewn-swan-n	Number=Sing	dema	0			oewn_form
-swan	2	oewn-swan-v	VerbForm=Inf	dema	0			oewn_form
+swan	0	oewn-swan-n	Number=Sing	dema	0			oewn_form
+swan	1	oewn-swan-v	VerbForm=Inf	dema	0			oewn_form
 swan dive	0	oewn-swan_dive-n	Number=Sing	dema	0			oewn_form
 swan dives	0	oewn-swan_dive-n	Number=Plur	dema	0			rule
 swan orchid	0	oewn-swan_orchid-n	Number=Sing	dema	0			oewn_form
@@ -325,8 +321,8 @@ swank	0	oewn-swank-v	VerbForm=Inf	dema	0			oewn_form
 swank	1	oewn-swank-n	Number=Sing	dema	0			oewn_form
 swank	2	oewn-swank-a	Degree=Pos	dema	0			oewn_form
 swanked	0	oewn-swank-v	Tense=Past+VerbForm=Part	dema	0			rule
-swanker	0	oewn-swank-a	Degree=Cmp	dema	0			rule
-swankest	0	oewn-swank-a	Degree=Sup	dema	0			rule
+swanker	0	oewn-swank-a	Degree=Cmp	dema	0			llm
+swankest	0	oewn-swank-a	Degree=Sup	dema	0			llm
 swankier	0	oewn-swanky-a	Degree=Cmp	dema	0			oewn_form
 swankiest	0	oewn-swanky-a	Degree=Sup	dema	0			oewn_form
 swankily	0		Degree=Pos	dema	0	swankily	r	moby_reverse
@@ -342,7 +338,7 @@ swanned	0	oewn-swan-v	Tense=Past+VerbForm=Part	dema	0			rule
 swanneries	0		Number=Plur	dema	0	swannery	n	rule
 swannery	0		Number=Sing	dema	0	swannery	n	moby_reverse
 swanning	0	oewn-swan-v	VerbForm=Ger	dema	0			rule
-swans	0	oewn-swan-n	Number=Plur	dema	0			rule_variant
+swans	0	oewn-swan-n	Number=Plur	dema	0			llm
 swans	1	oewn-swan-v	Person=3+Tense=Pres	dema	0			rule
 swanskin	0		Number=Sing	dema	0	swanskin	n	moby_reverse
 swanskins	0		Number=Plur	dema	0	swanskin	n	rule
@@ -474,7 +470,6 @@ swearword	0	oewn-swearword-n	Number=Sing	dema	0			oewn_form
 swearwords	0	oewn-swearword-n	Number=Plur	dema	0			rule
 sweat	0	oewn-sweat-n	Number=Sing	dema	0			oewn_form
 sweat	1	oewn-sweat-v	VerbForm=Inf	dema	0			oewn_form
-sweat	2	oewn-sweat-v	Tense=Past+VerbForm=Part	dema	0			agid
 sweat bag	0	oewn-sweat_bag-n	Number=Sing	dema	0			oewn_form
 sweat bags	0	oewn-sweat_bag-n	Number=Plur	dema	0			rule
 sweat duct	0	oewn-sweat_duct-n	Number=Sing	dema	0			oewn_form
@@ -496,7 +491,7 @@ sweatbands	0	oewn-sweatband-n	Number=Plur	dema	0			rule
 sweatbox	0	oewn-sweatbox-n	Number=Sing	dema	0			oewn_form
 sweatboxes	0	oewn-sweatbox-n	Number=Plur	dema	0			rule
 sweated	0		Degree=Pos	dema	0	sweated	a	moby_reverse
-sweated	1	oewn-sweat-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+sweated	1	oewn-sweat-v	Tense=Past+VerbForm=Part	dema	0			rule
 sweater	0	oewn-sweater-n	Number=Sing	dema	0			oewn_form
 sweater girl	0	oewn-sweater_girl-n	Number=Sing	dema	0			oewn_form
 sweater girls	0	oewn-sweater_girl-n	Number=Plur	dema	0			rule
@@ -755,28 +750,28 @@ sweetening	0	oewn-sweetening-n	Number=Sing	dema	0			oewn_form
 sweetening	1	oewn-sweeten-v	VerbForm=Ger	dema	0			rule
 sweetenings	0	oewn-sweetening-n	Number=Plur	dema	0			rule
 sweetens	0	oewn-sweeten-v	Person=3+Tense=Pres	dema	0			rule
-sweeter	0	oewn-sweet-a	Degree=Cmp	dema	0			rule
-sweetest	0	oewn-sweet-a	Degree=Sup	dema	0			rule
+sweeter	0	oewn-sweet-a	Degree=Cmp	dema	0			llm
+sweetest	0	oewn-sweet-a	Degree=Sup	dema	0			llm
 sweetheart	0	oewn-sweetheart-n	Number=Sing	dema	0			oewn_form
 sweetheart	1	oewn-sweetheart-a	Degree=Pos	dema	0			oewn_form
 sweethearts	0	oewn-sweetheart-n	Number=Plur	dema	0			rule
 sweetie	0	oewn-sweetie-n	Number=Sing	dema	0			oewn_form
 sweeties	0	oewn-sweetie-n	Number=Plur	dema	0			rule
 sweetiewife	0		Number=Sing	dema	0	sweetiewife	n	moby_reverse
-sweetiewifes	0		Number=Plur	dema	0	sweetiewife	n	rule
+sweetiewives	0		Number=Plur	dema	0	sweetiewife	n	rule
 sweeting	0		Number=Sing	dema	0	sweeting	n	moby_reverse
 sweetings	0		Number=Plur	dema	0	sweeting	n	rule
 sweetish	0	oewn-sweetish-a	Degree=Pos	dema	0			oewn_form
 sweetleaf	0	oewn-sweetleaf-n	Number=Sing	dema	0			oewn_form
-sweetleafs	0	oewn-sweetleaf-n	Number=Plur	dema	0			rule
+sweetleaves	0	oewn-sweetleaf-n	Number=Plur	dema	0			rule
 sweetless	0		Degree=Pos	dema	0	sweetless	a	moby_reverse
 sweetlike	0		Degree=Pos	dema	0	sweetlike	a	moby_reverse
 sweetly	0	oewn-sweetly-r	Degree=Pos	dema	0			oewn_form
 sweetman	0		Number=Sing	dema	0	sweetman	n	moby_reverse
-sweetmans	0		Number=Plur	dema	0	sweetman	n	rule
 sweetmeal	0		Degree=Pos	dema	0	sweetmeal	a	moby_reverse
 sweetmeat	0	oewn-sweetmeat-n	Number=Sing	dema	0			oewn_form
 sweetmeats	0	oewn-sweetmeat-n	Number=Plur	dema	0			rule
+sweetmen	0		Number=Plur	dema	0	sweetman	n	rule
 sweetness	0	oewn-sweetness-n	Number=Sing	dema	0			oewn_form
 sweetness and light	0	oewn-sweetness_and_light-n	Number=Sing	dema	0			oewn_form
 sweetness and lights	0	oewn-sweetness_and_light-n	Number=Plur	dema	0			rule
@@ -800,8 +795,8 @@ swelled	0	oewn-swell-v	Tense=Past+VerbForm=Part	dema	0			irregular_list
 swelled	1	oewn-swelled-a	Degree=Pos	dema	0			oewn_form
 swelled head	0	oewn-swelled_head-n	Number=Sing	dema	0			oewn_form
 swelled heads	0	oewn-swelled_head-n	Number=Plur	dema	0			rule
-sweller	0	oewn-swell-a	Degree=Cmp	dema	0			rule
-swellest	0	oewn-swell-a	Degree=Sup	dema	0			rule
+sweller	0	oewn-swell-a	Degree=Cmp	dema	0			llm
+swellest	0	oewn-swell-a	Degree=Sup	dema	0			llm
 swellfish	0		Number=Sing	dema	0	swellfish	n	moby_reverse
 swellfishes	0		Number=Plur	dema	0	swellfish	n	rule
 swellhead	0		VerbForm=Inf	dema	0	swellhead	v	moby_reverse
@@ -827,8 +822,8 @@ sweltering	0	oewn-swelter-v	VerbForm=Ger	dema	0			rule
 sweltering	1	oewn-sweltering-a	Degree=Pos	dema	0			oewn_form
 swelteringly	0		Degree=Pos	dema	0	swelteringly	r	moby_reverse
 swelters	0	oewn-swelter-v	Person=3+Tense=Pres	dema	0			rule
-sweltrier	0	oewn-sweltry-a	Degree=Cmp	dema	0			rule
-sweltriest	0	oewn-sweltry-a	Degree=Sup	dema	0			rule
+sweltrier	0	oewn-sweltry-a	Degree=Cmp	dema	0			llm
+sweltriest	0	oewn-sweltry-a	Degree=Sup	dema	0			llm
 sweltry	0	oewn-sweltry-a	Degree=Pos	dema	0			oewn_form
 swept	0	oewn-sweep-v	Tense=Past+VerbForm=Part	dema	0			hand
 swept	1	oewn-swept-a	Degree=Pos	dema	0			oewn_form
@@ -848,15 +843,14 @@ swerving	1	oewn-swerving-n	Number=Sing	dema	0			oewn_form
 swervings	0	oewn-swerving-n	Number=Plur	dema	0			rule
 sweven	0		Number=Sing	dema	0	sweven	n	moby_reverse
 swevens	0		Number=Plur	dema	0	sweven	n	rule
-swies	0		Number=Plur	dema	0	swy	n	rule
 swift	0	oewn-swift-a	Degree=Pos	dema	0			oewn_form
 swift	1		Degree=Pos	dema	0	swift	r	moby_reverse
 swift	2	oewn-swift-n	Number=Sing	dema	0			oewn_form
 swift-footed	0	oewn-swift-footed-a	Degree=Pos	dema	0			oewn_form
-swifter	0	oewn-swift-a	Degree=Cmp	dema	0			rule
+swifter	0	oewn-swift-a	Degree=Cmp	dema	0			llm
 swifter	1		Number=Sing	dema	0	swifter	n	moby_reverse
 swifters	0		Number=Plur	dema	0	swifter	n	rule
-swiftest	0	oewn-swift-a	Degree=Sup	dema	0			rule
+swiftest	0	oewn-swift-a	Degree=Sup	dema	0			llm
 swiftie	0	oewn-swiftie-n	Number=Sing	dema	0			oewn_form
 swifties	0	oewn-swiftie-n	Number=Plur	dema	0			rule
 swiftlet	0	oewn-swiftlet-n	Number=Sing	dema	0			oewn_form
@@ -876,15 +870,15 @@ swigs	1	oewn-swig-v	Person=3+Tense=Pres	dema	0			rule
 swill	0	oewn-swill-v	VerbForm=Inf	dema	0			oewn_form
 swill	1	oewn-swill-n	Number=Sing	dema	0			oewn_form
 swill down	0	oewn-swill_down-v	VerbForm=Inf	dema	0			oewn_form
-swilled	0	oewn-swill-v	Tense=Past+VerbForm=Part	dema	0			rule
+swilled	0	oewn-swill-v	Tense=Past+VerbForm=Part	dema	0			llm
 swilled down	0	oewn-swill_down-v	Tense=Past+VerbForm=Part	dema	0			rule
 swiller	0		Number=Sing	dema	0	swiller	n	moby_reverse
 swillers	0		Number=Plur	dema	0	swiller	n	rule
-swilling	0	oewn-swill-v	VerbForm=Ger	dema	0			rule
+swilling	0	oewn-swill-v	VerbForm=Ger	dema	0			llm
 swilling	1	oewn-swilling-n	Number=Sing	dema	0			oewn_form
 swilling down	0	oewn-swill_down-v	VerbForm=Ger	dema	0			rule
 swillings	0	oewn-swilling-n	Number=Plur	dema	0			rule
-swills	0	oewn-swill-v	Person=3+Tense=Pres	dema	0			rule
+swills	0	oewn-swill-v	Person=3+Tense=Pres	dema	0			llm
 swills	1	oewn-swill-n	Number=Plur	dema	0			rule
 swills down	0	oewn-swill_down-v	Person=3+Tense=Pres	dema	0			rule
 swim	0	oewn-swim-v	VerbForm=Inf	dema	0			oewn_form
@@ -977,19 +971,18 @@ swingboat	0		Number=Sing	dema	0	swingboat	n	moby_reverse
 swingboats	0		Number=Plur	dema	0	swingboat	n	rule
 swinge	0	oewn-swinge-v	VerbForm=Inf	dema	0			oewn_form
 swinged	0	oewn-swing-v	Tense=Past+VerbForm=Part	dema	1			carried
-swingeing	0	oewn-swinge-v	VerbForm=Ger	dema	0			agid
+swingeing	0	oewn-swinge-v	VerbForm=Ger	dema	0			llm
 swingeing	1	oewn-swingeing-a	Degree=Pos	dema	0			oewn_form
 swingeingly	0		Degree=Pos	dema	0	swingeingly	r	moby_reverse
 swinger	0	oewn-swinger-n	Number=Sing	dema	0			oewn_form
 swingers	0	oewn-swinger-n	Number=Plur	dema	0			rule
-swinges	0	oewn-swinge-v	Person=3+Tense=Pres	dema	0			rule
-swingier	0	oewn-swingy-a	Degree=Cmp	dema	0			rule
-swingiest	0	oewn-swingy-a	Degree=Sup	dema	0			rule
+swinges	0	oewn-swinge-v	Person=3+Tense=Pres	dema	0			llm
+swingier	0	oewn-swingy-a	Degree=Cmp	dema	0			llm
+swingiest	0	oewn-swingy-a	Degree=Sup	dema	0			llm
 swinging	0	oewn-swing-v	VerbForm=Ger	dema	1			carried
 swinging	1	oewn-swing-n	Number=Sing+VerbForm=Ger	dema	1			carried
-swinging	2	oewn-swinge-v	VerbForm=Ger	dema	0			rule_variant
-swinging	3	oewn-swinging-a	Degree=Pos	dema	0			oewn_form
-swinging	4	oewn-swinging-n	Number=Sing	dema	0			oewn_form
+swinging	2	oewn-swinging-a	Degree=Pos	dema	0			oewn_form
+swinging	3	oewn-swinging-n	Number=Sing	dema	0			oewn_form
 swinging about	0	oewn-swing_about-v	VerbForm=Ger	dema	0			rule
 swinging around	0	oewn-swing_around-v	VerbForm=Ger	dema	0			rule
 swinging chad	0	oewn-swinging_chad-n	Number=Sing	dema	0			oewn_form
@@ -1117,7 +1110,7 @@ switching up	0	oewn-switch_up-v	VerbForm=Ger	dema	0			rule
 switchings	0	oewn-switching-n	Number=Plur	dema	0			rule
 switchlike	0		Degree=Pos	dema	0	switchlike	a	moby_reverse
 switchman	0	oewn-switchman-n	Number=Sing	dema	0			oewn_form
-switchmen	0	oewn-switchman-n	Number=Plur	dema	0			agid
+switchmen	0	oewn-switchman-n	Number=Plur	dema	0			llm
 switchover	0		Number=Sing	dema	0	switchover	n	moby_reverse
 switchovers	0		Number=Plur	dema	0	switchover	n	rule
 switchyard	0		Number=Sing	dema	0	switchyard	n	moby_reverse
@@ -1243,11 +1236,10 @@ swordfishes	0	oewn-swordfish-n	Number=Plur	dema	0			oewn_form
 swordless	0		Degree=Pos	dema	0	swordless	a	moby_reverse
 swordlike	0	oewn-swordlike-a	Degree=Pos	dema	0			oewn_form
 swordman	0		Number=Sing	dema	0	swordman	n	moby_reverse
-swordmans	0		Number=Plur	dema	0	swordman	n	rule
 swordmanship	0		Number=Sing	dema	0	swordmanship	n	moby_reverse
 swordmanships	0		Number=Plur	dema	0	swordmanship	n	rule
-swordmen	0		Number=Sing	dema	0	swordmen	n	moby_reverse
-swordmens	0		Number=Plur	dema	0	swordmen	n	rule
+swordmen	0		Number=Plur	dema	0	swordman	n	rule
+swordmen	1		Number=Sing	dema	0	swordmen	n	moby_reverse
 swordplay	0	oewn-swordplay-n	Number=Sing	dema	0			oewn_form
 swordplayer	0		Number=Sing	dema	0	swordplayer	n	moby_reverse
 swordplayers	0		Number=Plur	dema	0	swordplayer	n	rule
@@ -1257,11 +1249,11 @@ swords of Damocles	0	oewn-sword_of_Damocles-n	Capitalization=Exact+Number=Plur	d
 swordsman	0	oewn-swordsman-n	Number=Sing	dema	0			oewn_form
 swordsmanship	0	oewn-swordsmanship-n	Number=Sing	dema	0			oewn_form
 swordsmanships	0	oewn-swordsmanship-n	Number=Plur	dema	0			rule
-swordsmen	0	oewn-swordsman-n	Number=Plur	dema	0			agid
+swordsmen	0	oewn-swordsman-n	Number=Plur	dema	0			llm
 swordstick	0		Number=Sing	dema	0	swordstick	n	moby_reverse
 swordsticks	0		Number=Plur	dema	0	swordstick	n	rule
 swordswoman	0	oewn-swordswoman-n	Number=Sing	dema	0			oewn_form
-swordswomans	0	oewn-swordswoman-n	Number=Plur	dema	0			rule
+swordswomen	0	oewn-swordswoman-n	Number=Plur	dema	0			rule
 swordtail	0	oewn-swordtail-n	Number=Sing	dema	0			oewn_form
 swordtails	0	oewn-swordtail-n	Number=Plur	dema	0			rule
 swore	0	oewn-swear-v	Tense=Past	dema	0			hand

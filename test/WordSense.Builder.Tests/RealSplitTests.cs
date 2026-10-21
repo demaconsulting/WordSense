@@ -18,11 +18,11 @@ public sealed class RealSplitTests : IDisposable
 
     private string Corpus => Path.Join(_dir.Root, "corpus");
 
-    private static string Provenance(CorpusRow row, string source, string key, string origin) =>
-        string.Join('\t', RealSplit.IdOf(row), row.Lemma, row.SenseId, "holdout", source, "Public domain", key, "-", "contributor", origin);
+    private static string Provenance(CorpusRow row, string source, string key) =>
+        string.Join('\t', RealSplit.IdOf(row), "holdout", source, key);
 
     private void WriteProvenance(IEnumerable<string> rows) =>
-        _dir.Write("corpus/provenance/p.tsv", "id\tlemma\tsense\tsplit\tsource\tlicence\tsource_key\turl\tcontributor\torigin\n" + string.Concat(rows.Select(r => r + "\n")));
+        _dir.Write("corpus/provenance/p.tsv", "id\tsplit\tsource\tsource_key\n" + string.Concat(rows.Select(r => r + "\n")));
 
     /// <summary>
     ///     Every sentence of a document is on one side, both sides get documents, and a Tatoeba sentence is its own
@@ -42,7 +42,7 @@ public sealed class RealSplitTests : IDisposable
             {
                 var row = SenseFixtures.Row(sense, number++);
                 rows.Add(row);
-                provenance.Add(Provenance(row, "gutenberg", $"pg{book.ToString(CultureInfo.InvariantCulture)}#s{s.ToString(CultureInfo.InvariantCulture)}", "real"));
+                provenance.Add(Provenance(row, "gutenberg", $"pg{book.ToString(CultureInfo.InvariantCulture)}#s{s.ToString(CultureInfo.InvariantCulture)}"));
             }
         }
 
@@ -50,7 +50,7 @@ public sealed class RealSplitTests : IDisposable
         {
             var row = SenseFixtures.Row(sense, number++);
             rows.Add(row);
-            provenance.Add(Provenance(row, "tatoeba-cc0", t.ToString(CultureInfo.InvariantCulture), "real"));
+            provenance.Add(Provenance(row, "tatoeba-cc0", t.ToString(CultureInfo.InvariantCulture)));
         }
 
         WriteProvenance(provenance);
@@ -81,7 +81,7 @@ public sealed class RealSplitTests : IDisposable
         var real = SenseFixtures.Row(sense, 1);
         var written = SenseFixtures.Row(sense, 2);
         var unknown = SenseFixtures.Row(sense, 3);
-        WriteProvenance([Provenance(real, "gutenberg", "pg1#s1", "real"), Provenance(written, "llm-corpus", "quota-w1-written", "llm-corpus")]);
+        WriteProvenance([Provenance(real, "gutenberg", "pg1#s1"), Provenance(written, "llm-corpus", "quota-w1-written")]);
 
         // Act
         var split = RealSplit.Classify(Corpus, [real, written, unknown]);
@@ -107,9 +107,9 @@ public sealed class RealSplitTests : IDisposable
         var holdoutFree = SenseFixtures.Row(sense, 3);
         WriteProvenance(
         [
-            Provenance(withAnchor, "gutenberg", $"pg{books[0].ToString(CultureInfo.InvariantCulture)}#s1", "real"),
-            Provenance(holdoutWithAnchorDocument, "gutenberg", $"pg{books[0].ToString(CultureInfo.InvariantCulture)}#s2", "real"),
-            Provenance(holdoutFree, "gutenberg", $"pg{books[1].ToString(CultureInfo.InvariantCulture)}#s1", "real"),
+            Provenance(withAnchor, "gutenberg", $"pg{books[0].ToString(CultureInfo.InvariantCulture)}#s1"),
+            Provenance(holdoutWithAnchorDocument, "gutenberg", $"pg{books[0].ToString(CultureInfo.InvariantCulture)}#s2"),
+            Provenance(holdoutFree, "gutenberg", $"pg{books[1].ToString(CultureInfo.InvariantCulture)}#s1"),
         ]);
 
         // Act
