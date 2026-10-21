@@ -73,6 +73,9 @@ internal static partial class FormGenerator
 
         public HashSet<string> FrozenSpellings { get; } = new(StringComparer.Ordinal);
 
+        /// <summary>Gets the spellings whose adjective entry keeps its own analysis beside a reviewed analysis of a verb form.</summary>
+        public HashSet<string> OwnAdjectives { get; } = new(StringComparer.Ordinal);
+
         /// <summary>Gets the spellings that also take the corroborated generated analyses of other entries.</summary>
         public HashSet<string> OpenSpellings { get; } = new(StringComparer.Ordinal);
 
@@ -119,6 +122,7 @@ internal static partial class FormGenerator
                 if (item.EntryId is { } entryId && (!(FrozenEntries.TryGetValue(item.Spelling, out var have) && have.Contains(entryId)) || MissesListedForm(item, entryId))
                     && ((OpenSpellings.Contains(item.Spelling) && IsInflected(item) && Corroborated(this, item))
                         || (!IsInflected(item) && item.Spelling.EndsWith("ing", StringComparison.Ordinal) && string.Equals(Entries[entryId][1], item.Spelling, StringComparison.OrdinalIgnoreCase))
+                        || (!IsInflected(item) && item.Provenance == "oewn_form" && OwnAdjectives.Contains(item.Spelling) && Entries[entryId][2] == "a" && string.Equals(Entries[entryId][1], item.Spelling, StringComparison.Ordinal))
                         || item.Provenance is "hand" or "irregular_list"))
                 {
                     if (!FrozenExtras.TryGetValue(item.Spelling, out var extras))
@@ -178,6 +182,14 @@ internal static partial class FormGenerator
         }
 
         var sources = IrregularSources.Read(Path.Join(corpus, "lexicon"));
+        var ownAdjectivesPath = Path.Join(corpus, "lexicon", "own-adjectives.tsv");
+        if (File.Exists(ownAdjectivesPath))
+        {
+            foreach (var line in File.ReadAllLines(ownAdjectivesPath, Encoding.UTF8).Where(l => l.Length > 0 && l[0] != '#'))
+            {
+                context.OwnAdjectives.Add(line.TrimEnd('\r').Split('\t')[0]);
+            }
+        }
         var correctionsPath = Path.Join(corpus, "lexicon", "form-corrections.tsv");
         if (File.Exists(correctionsPath))
         {

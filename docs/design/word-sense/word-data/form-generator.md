@@ -37,6 +37,16 @@ An -ing noun does not get a plural spelled like its singular from the inflection
 `catling`, `feeling`); the plural of the rules is generated instead. The invariant names (`herring`, `offspring`, `ling`,
 `whiting`) keep theirs.
 
+A spelling that an earlier reviewed analysis carries (`damaged` as the past participle of `damage`) keeps the reviewed
+analyses exactly, with two kinds of own entry added after them: an -ing entry, and an adjective entry whose lemma is the
+spelling when `corpus/lexicon/own-adjectives.tsv` names it (`damaged` as the adjective of `a damaged seal`, `drained`,
+`drilled`, `alloyed`). The list is short on purpose: Open English WordNet has 114 such participial adjective entries
+whose analysis a reviewed verb row had hidden, but giving all of them an analysis made the common participles (`based`,
+`covered`, `changed`, `driven`) compete with the verb in the real-text evaluation (the fine top-1 fell about two points,
+because the corpus labels those forms with the verb senses only), so only the adjectives that technical text uses are
+listed. Verbs that the dictionary lacks come from `corpus/lexicon/additions.tsv` (`torque` is an added verb: `torque`,
+`torques`, `torqued`, `torquing` are generated like those of any verb, as surface-only analyses).
+
 Rank policy: the rank of an analysis is a frequency prior, not the answer for a sentence. The order is deterministic: the
 position of the part of speech in the Moby letters of the lemma, then explicit tie-breaks on lemma, entry and features,
 so no rank is taken from an earlier table. A gerund of a verb leads with

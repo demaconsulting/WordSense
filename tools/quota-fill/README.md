@@ -15,6 +15,9 @@ All work files (the sentence pool, the labeling batches and their answers) live 
 | `textutil.py` | Sentence splitting, the sentence filter and the duplicate key of the builder (`Corpus.Normalize`) |
 | `pool.py build` | Builds the harvest pool from the public-domain documents and the CC0 Tatoeba export |
 | `faa.py extract` | Extracts the text of the accepted FAA handbooks (credited pages dropped) into the pool documents |
+| `curate_new.py export\|apply` | Adds lemmas (labels reviewed by a luna pass) and project senses to `corpus/curation/senses.tsv` |
+| `techsenses.py export\|apply` | The technical senses and their extra anchors (`corpus/curation/tech-senses.tsv`) |
+| `gapfinder.py export\|report` | Finds meanings that the catalog lacks in the FAA sentences the labeler could not place |
 | `harvest.py candidates WAVE` | Samples candidate sentences for the lemmas of a wave and writes the labeling batches (`--family`, `--only-lemmas`, `--first-batch` add a supplementary batch) |
 | `confusion.py WAVE` | Chooses the senses that get extra real anchors from the calibration-split errors |
 | `migrate_prov.py` | One-time migration of the wave 1 provenance rows to the licence basis column |

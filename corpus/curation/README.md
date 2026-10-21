@@ -3,7 +3,8 @@
 `senses.tsv` and `groups.tsv` are the reviewed curation of 758 lemmas: the first batch (20 lemmas, 297 senses, 179
 groups: `back`, `even`, `first`, `forward`, `go`, `help`, `home`, `however`, `just`, `little`, `long`, `only`, `own`,
 `please`, `pretty`, `review`, `right`, `still`, `test` and `well`) and the second batch (738 lemmas, 6,283 senses, the
-lemmas of the legacy corpus, see "Second batch" below), 6,580 senses in all. The ids of senses are public ids
+lemmas of the legacy corpus, see "Second batch" below), 6,580 senses in all, and the 12 technical lemmas of wave 3 (176
+senses and 6 project senses, see "Technical lemmas (wave 3)" below). The ids of senses are public ids
 (`lemma#label`). The columns
 `tier`, `tag_count` and the others of `senses.tsv` are the per-sense data of the curation (the tier sizes the training
 data of the sense); `group_id` and `group_reason` of a sense record the curator's group of the sense (empty when the
@@ -47,6 +48,36 @@ old gloss, new gloss). The glosses are stored where the seeder and the compiler 
 `data/gloss` (the rows of the `dema-syn-*` synsets only; no gloss of an Open English WordNet synset was touched, and
 OEWN glosses stay verbatim) and, for the 135 project senses that this curation lists, the `gloss` column of
 `senses.tsv`, which `seed-inventory` writes into `data/`. No placeholder gloss remains (`detect` reports 0).
+
+## Technical lemmas (wave 3)
+
+Technical instructions (aircraft and machine maintenance, written in plain "STE-style" English: "Mount the bracket to the
+frame.", "Torque the bolts to 25 N m.") use words whose technical senses the encoders had not seen. A probe of 30 such
+sentences (see `docs/build_notes/quota-fill.md`) found three kinds of gap, and wave 3 closed them:
+
+- **Lemmas that were not curated.** `mount`, `bearing`, `bleed`, `torque`, `run`, `position`, `support`, `install`,
+  `remove`, `attach`, `inspect` and `clean` (176 senses of the data) were added to `senses.tsv` with `tools/quota-fill/
+  curate_new.py`: the Open English WordNet sense, its gloss and tag count (the tier follows the tag count: 5 or more C,
+  1 to 4 U, none R), and a public label that a `gpt-5.6-luna` pass reviewed (a label that the generator wrote stays when
+  it was good; for example `mount#gem-setting` instead of `mount#setting`, `bearing#rotating-support`).
+- **Project senses of a word the dictionary has** (source `project`, no key). `seed-inventory` adds a sense of the existing
+  entry (the sense id `dema-<lemma>-<pos>-1`, the synset `dema-syn-<lemma>-<pos>-1`) when the curation lists a project
+  sense whose entry has no keyless sense yet: `mount#mounting-fixture` (a bracket or support that holds equipment),
+  `bleed#vent` (release trapped air or fluid from a system), `arm#prime-system` (to arm an alarm or a fire suppression
+  system), `lead#electrical-lead` (a conductor with a terminal), `flush#fluid-flush` (a cleaning operation that passes
+  liquid through a system) and `tap#tapping-point` (a connection point in a line or circuit).
+- **Analyses that were missing** (not senses): the verb `torque` (`torque`, `torques`, `torqued`, `torquing`; added in
+  `corpus/lexicon/additions.tsv`, so it is a surface-only analysis without a sense) and the adjective analysis of the
+  participial adjectives that technical text uses (`damaged`, `drained`, `drilled`, `alloyed`; listed in
+  `corpus/lexicon/own-adjectives.tsv`), which a reviewed analysis of the verb form had hidden (`FormGenerator`,
+  requirement `WordSense-WordData-FormGenerator-OwnEntries`). 114 such adjective entries exist; the other 110 (`based`,
+  `covered`, `changed`, `driven`, ...) were left out on purpose, see `docs/build_notes/quota-fill.md`.
+
+`tech-senses.tsv` lists the 62 senses that technical text uses (picked by `gpt-6.1-sol` from the senses of 19 technical
+lemmas, with the note of their technical use) and the number of **extra anchors** that wave 3 brings for each (14 for a
+core meaning, 8 for a minor one): real FAA text first, then written technical sentences. Gaps that remain are listed in
+`docs/build_notes/quota-fill.md` (for example the noun `bleed`, the verb `torque` as a sense, the noun `lock` as a
+mechanism, `arm` as a moment arm and `clean` as aerodynamically clean).
 
 ## Part of speech of a curated sense
 

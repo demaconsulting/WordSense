@@ -17,8 +17,16 @@ WORK = os.path.join(QDIR, "work")
 POS_LETTER = {"Noun": "n", "Verb": "v", "Adjective": "a", "Adverb": "r", "Pronoun": "u", "Preposition": "p",
               "Conjunction": "c", "Interjection": "i", "Determiner": "d", "Auxiliary": "x"}
 
-# Waves by the rank of a lemma (total WordNet 3.0 tag count of its senses, ties by name).
-WAVE_CUTS = [50, 120, 250, 500, 10 ** 6]
+# Waves by the rank of a lemma (total WordNet 3.0 tag count of its senses, ties by name). The last wave of this branch is
+# wave 3 (ranks 121-200); the later cuts are for follow-up work.
+WAVE_CUTS = [50, 120, 200, 500, 10 ** 6]
+
+# The technical lemmas of wave 3 (maintenance and engineering instructions): the first group is new to the curation
+# (curate_new.py) and outside the ranking, the second group is ranked but also gets technical-sense sentences.
+TECH_NEW = "mount bearing bleed torque run position support install remove attach inspect clean".split()
+TECH_RANKED = "arm seal check lead flush tap lock".split()
+TECH_ALL = TECH_NEW + TECH_RANKED
+LAST_WAVE = 3
 
 EVAL_DOCUMENT_SHARE = 4  # one document in four is an evaluation document (held-out rows only)
 
@@ -37,6 +45,15 @@ def is_eval_document(prov_doc):
     """Role of a document: an evaluation document supplies held-out rows only, every other document anchors only."""
     import hashlib
     return hashlib.sha256(("evaldoc|" + prov_doc).encode("utf-8")).digest()[0] % EVAL_DOCUMENT_SHARE == 0
+
+
+def doc_role(pdoc, doc_splits):
+    """The role of a document for new rows: "eval" (held-out rows only), "train" (anchors only) or None (the document
+    already supplies the other kind of row, so it supplies no new rows)."""
+    splits = doc_splits.get(pdoc, set())
+    if is_eval_document(pdoc):
+        return "eval" if "anchors" not in splits else None
+    return "train" if "holdout" not in splits else None
 
 
 def real_anchor_counts():
@@ -101,8 +118,18 @@ def load_world():
 
 
 def lemma_ranking(world):
-    tags = {l: sum(world["senses"][s]["tag_count"] for s in ids) for l, ids in world["by_lemma"].items()}
+    tags = {l: sum(world["senses"][s]["tag_count"] for s in ids) for l, ids in world["by_lemma"].items()
+            if l not in TECH_NEW}
     return sorted(tags, key=lambda l: (-tags[l], l)), tags
+
+
+def lemmas_up_to(world, wave):
+    """The lemmas of the waves up to `wave` (from wave 3 on, with the technical lemmas)."""
+    ranking, _tags = lemma_ranking(world)
+    result = {l for i, l in enumerate(ranking) if wave_of_rank(i) <= wave}
+    if wave >= LAST_WAVE:
+        result |= {l for l in TECH_ALL if l in world["by_lemma"]}
+    return result
 
 
 def wave_of_rank(rank0):
@@ -140,6 +167,17 @@ def corpus_keys():
             for r in csv.DictReader(handle, delimiter="\t", quoting=csv.QUOTE_NONE):
                 keys.add(textutil.key_of(r["sentence"]))
     return keys
+
+
+def read_tech_targets():
+    """sense id -> number of extra anchors for the technical senses (corpus/curation/tech-senses.tsv)."""
+    path = os.path.join(CORPUS, "curation", "tech-senses.tsv")
+    result = {}
+    if os.path.exists(path):
+        with open(path, encoding="utf-8", newline="") as handle:
+            for row in csv.DictReader(handle, delimiter="\t", quoting=csv.QUOTE_NONE):
+                result[row["sense_id"]] = int(row["extra_anchors"])
+    return result
 
 
 def sense_line(world, sid):

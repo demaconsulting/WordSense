@@ -847,6 +847,7 @@ sigmoidoscopies	0	oewn-sigmoidoscopy-n	Number=Plur	dema	0			rule
 sigmoidoscopy	0	oewn-sigmoidoscopy-n	Number=Sing	dema	0			oewn_form
 sign	0	oewn-sign-n	Number=Sing	dema	1			carried
 sign	1	oewn-sign-v	VerbForm=Inf	dema	1			carried
+sign	2	oewn-sign-a	Degree=Pos	dema	0			oewn_form
 sign away	0	oewn-sign_away-v	VerbForm=Inf	dema	0			oewn_form
 sign in	0	oewn-sign_in-v	VerbForm=Inf	dema	0			oewn_form
 sign industries	0	oewn-sign_industry-n	Number=Plur	dema	0			rule

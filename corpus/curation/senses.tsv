@@ -6579,3 +6579,183 @@ wrong#incorrectly	oewn-wrong__4.02.00..	wrong%4:02:00::	oewn-00205553-r	r	Adverb
 wrong#wrongfulness	oewn-wrong__1.07.01..	wrong%1:07:01::	oewn-04861835-n	n	Noun	that which is contrary to the principles of justice or law	3	U	wn30-tag-count	oewn				wrong,wronging,wrongs
 wrong#damage	oewn-wrong__1.04.00..	wrong%1:04:00::	oewn-00745429-n	n	Noun	any harm or injury resulting from a violation of a legal right	2	U	wn30-tag-count	oewn				wrong,wronging,wrongs
 wrong#mistreat	oewn-wrong__2.41.00..	wrong%2:41:00::	oewn-02519655-v	v	Verb	treat unjustly; do wrong to	1	U	wn30-tag-count	oewn				wrong,wronged,wronging,wrongs
+mount#riding-horse	oewn-mount__1.05.00..	mount%1:05:00::	oewn-02380355-n	n	Noun	a lightweight horse kept for riding only	4	U	wn30-tag-count	oewn				mount,mounted,mounting,mounts
+mount#climbing	oewn-mount__1.04.00..	mount%1:04:00::	oewn-00325936-n	n	Noun	the act of climbing something	1	U	wn30-tag-count	oewn				mount,mounted,mounting,mounts
+mount#backing	oewn-mount__1.06.00..	mount%1:06:00::	oewn-02772465-n	n	Noun	something forming a back that is added for strengthening	0	R	wn30-tag-count	oewn				mount,mounted,mounting,mounts
+mount#mountain	oewn-mount__1.17.00..	mount%1:17:00::	oewn-09382700-n	n	Noun	a land mass that projects well above its surroundings; higher than a hill	0	R	wn30-tag-count	oewn				mount,mounted,mounting,mounts
+mount#gem-setting	oewn-mount__1.06.01..	mount%1:06:01::	oewn-03798059-n	n	Noun	a mounting consisting of a piece of metal (as in a ring or other jewelry) that holds a gem in place	0	R	wn30-tag-count	oewn				mount,mounted,mounting,mounts
+mount#attach	oewn-mount__2.35.00..	mount%2:35:00::	oewn-01345886-v	v	Verb	attach to a support	10	C	wn30-tag-count	oewn				mount,mounted,mounting,mounts
+mount#advance	oewn-mount__2.30.00..	mount%2:30:00::	oewn-00434185-v	v	Verb	go up or advance	8	C	wn30-tag-count	oewn				mount,mounted,mounting,mounts
+mount#secure	oewn-mount__2.30.01..	mount%2:30:01::	oewn-00408558-v	v	Verb	fix onto a backing, setting, or support	6	C	wn30-tag-count	oewn				mount,mounted,mounting,mounts
+mount#launch	oewn-mount__2.36.00..	mount%2:36:00::	oewn-01652666-v	v	Verb	put up or launch	4	U	wn30-tag-count	oewn				mount,mounted,mounting,mounts
+mount#ascend	oewn-mount__2.38.00..	mount%2:38:00::	oewn-01925957-v	v	Verb	go upward with gradual or continuous progress	3	U	wn30-tag-count	oewn				mount,mounted,mounting,mounts
+mount#mount-animal	oewn-mount__2.38.01..	mount%2:38:01::	oewn-01927367-v	v	Verb	get up on the back of	3	U	wn30-tag-count	oewn				mount,mounted,mounting,mounts
+mount#equip	oewn-mount__2.36.01..	mount%2:36:01::	oewn-01652793-v	v	Verb	prepare and supply with the necessary equipment for execution or performance	0	R	wn30-tag-count	oewn				mount,mounted,mounting,mounts
+mount#copulate	oewn-mount__2.35.07..	mount%2:35:07::	oewn-01431955-v	v	Verb	copulate with	0	R	wn30-tag-count	oewn				mount,mounted,mounting,mounts
+mount#mounting-fixture				n	Noun	a fixture, bracket, or support that holds a component or piece of equipment in place (an engine mount, a motor mount)		U	project sense: found by the technical-writing probe (mount as a fixture)	project				mount,mounted,mounting,mounts
+bearing#load-bearing	oewn-bearing__3.00.00..	bearing%3:00:00::	oewn-00218889-a	a	Adjective	(of a structural member) withstanding a weight or strain	0	R	wn30-tag-count	oewn				bearing,bearings
+bearing#direction	oewn-bearing__1.15.00..	bearing%1:15:00::	oewn-08698626-n	n	Noun	the direction or path along which something moves or along which it lies	1	U	wn30-tag-count	oewn				bearing,bearings
+bearing#comportment	oewn-bearing__1.07.00..	bearing%1:07:00::	oewn-04917554-n	n	Noun	dignified manner or conduct	1	U	wn30-tag-count	oewn				bearing,bearings
+bearing#connection	oewn-bearing__1.24.01..	bearing%1:24:01::	oewn-13817907-n	n	Noun	relevant relation or interconnection	1	U	wn30-tag-count	oewn				bearing,bearings
+bearing#coat-of-arms	oewn-bearing__1.06.01..	bearing%1:06:01::	oewn-03012169-n	n	Noun	heraldry consisting of a design or image depicted on a shield	0	R	wn30-tag-count	oewn				bearing,bearings
+bearing#posture	oewn-bearing__1.07.01..	bearing%1:07:01::	oewn-05009987-n	n	Noun	characteristic way of bearing one's body	0	R	wn30-tag-count	oewn				bearing,bearings
+bearing#rotating-support	oewn-bearing__1.06.00..	bearing%1:06:00::	oewn-02820166-n	n	Noun	a rotating support placed between moving parts to allow them to move easily	0	R	wn30-tag-count	oewn				bearing,bearings
+bleed#hemorrhage	oewn-bleed__2.29.00..	bleed%2:29:00::	oewn-00074587-v	v	Verb	lose blood from one's body	10	C	wn30-tag-count	oewn				bled,bleed,bleeding,bleeds
+bleed#leech	oewn-bleed__2.29.01..	bleed%2:29:01::	oewn-00085829-v	v	Verb	draw blood	2	U	wn30-tag-count	oewn				bled,bleed,bleeding,bleeds
+bleed#drain	oewn-bleed__2.30.00..	bleed%2:30:00::	oewn-00450108-v	v	Verb	drain of liquid or steam	0	R	wn30-tag-count	oewn				bled,bleed,bleeding,bleeds
+bleed#extort	oewn-bleed__2.40.09..	bleed%2:40:09::	oewn-02365002-v	v	Verb	get or extort (money or other possessions) from someone	0	R	wn30-tag-count	oewn				bled,bleed,bleeding,bleeds
+bleed#spread	oewn-bleed__2.38.00..	bleed%2:38:00::	oewn-02064720-v	v	Verb	be diffused	0	R	wn30-tag-count	oewn				bled,bleed,bleeding,bleeds
+bleed#vent				v	Verb	release trapped air, gas, or fluid from a closed system, such as brake lines, a radiator, or an engine (to bleed the air)		U	project sense: found by the technical-writing probe (bleed air from a system)	project				bled,bleed,bleeding,bleeds
+torque#twisting-force	oewn-torque__1.19.00..	torque%1:19:00::	oewn-11540135-n	n	Noun	a twisting force	0	R	wn30-tag-count	oewn				torque,torqued,torques,torquing
+run#baseball-run	oewn-run__1.04.01..	run%1:04:01::	oewn-00190414-n	n	Noun	a score in baseball made by a runner touching all four bases safely	18	C	wn30-tag-count	oewn				ran,run,running,runs
+run#testing	oewn-run__1.04.06..	run%1:04:06::	oewn-00792739-n	n	Noun	the act of testing something	5	C	wn30-tag-count	oewn				ran,run,running,runs
+run#foot-race	oewn-run__1.11.02..	run%1:11:02::	oewn-07475061-n	n	Noun	a race run on foot	2	U	wn30-tag-count	oewn				ran,run,running,runs
+run#running	oewn-run__1.04.00..	run%1:04:00::	oewn-00294760-n	n	Noun	the act of running; traveling on foot at a fast pace	1	U	wn30-tag-count	oewn				ran,run,running,runs
+run#football-run	oewn-run__1.04.02..	run%1:04:02::	oewn-00559920-n	n	Noun	(American football) a play in which a player attempts to carry the ball through or past the opposing team	1	U	wn30-tag-count	oewn				ran,run,running,runs
+run#streak	oewn-run__1.14.00..	run%1:14:00::	oewn-08477596-n	n	Noun	an unbroken series of events	1	U	wn30-tag-count	oewn				ran,run,running,runs
+run#regular-trip	oewn-run__1.04.04..	run%1:04:04::	oewn-00309697-n	n	Noun	a regular trip	1	U	wn30-tag-count	oewn				ran,run,running,runs
+run#election-race	oewn-run__1.11.03..	run%1:11:03::	oewn-07488069-n	n	Noun	a race between candidates for elective office	0	R	wn30-tag-count	oewn				ran,run,running,runs
+run#chronological-sequence	oewn-run__1.07.00..	run%1:07:00::	oewn-05052992-n	n	Noun	an unbroken chronological sequence	0	R	wn30-tag-count	oewn				ran,run,running,runs
+run#fluid-discharge	oewn-run__1.11.00..	run%1:11:00::	oewn-07422377-n	n	Noun	the pouring forth of a fluid	0	R	wn30-tag-count	oewn				ran,run,running,runs
+run#production-output	oewn-run__1.23.00..	run%1:23:00::	oewn-13782269-n	n	Noun	the production achieved during a continuous period of operation (of a machine or factory etc.)	0	R	wn30-tag-count	oewn				ran,run,running,runs
+run#ladder-stitches	oewn-run__1.11.01..	run%1:11:01::	oewn-07457610-n	n	Noun	a row of unravelled stitches	0	R	wn30-tag-count	oewn				ran,run,running,runs
+run#use-freedom	oewn-run__1.26.00..	run%1:26:00::	oewn-14019420-n	n	Noun	unrestricted freedom to use	0	R	wn30-tag-count	oewn				ran,run,running,runs
+run#operating-period	oewn-run__1.28.00..	run%1:28:00::	oewn-15286931-n	n	Noun	the continuous period of time during which something (a machine or a factory) operates or continues in operation	0	R	wn30-tag-count	oewn				ran,run,running,runs
+run#small-stream	oewn-run__1.17.00..	run%1:17:00::	oewn-09438816-n	n	Noun	a small stream	0	R	wn30-tag-count	oewn				ran,run,running,runs
+run#short-trip	oewn-run__1.04.05..	run%1:04:05::	oewn-00309837-n	n	Noun	a short trip	0	R	wn30-tag-count	oewn				ran,run,running,runs
+run#move-fast	oewn-run__2.38.00..	run%2:38:00::	oewn-01930264-v	v	Verb	move fast by using one's feet, with one foot off the ground at any given time	106	C	wn30-tag-count	oewn				ran,run,running,runs
+run#flee	oewn-run__2.38.04..	run%2:38:04::	oewn-02079296-v	v	Verb	flee; take to one's heels; cut and run	38	C	wn30-tag-count	oewn				ran,run,running,runs
+run#span	oewn-run__2.42.00..	run%2:42:00::	oewn-02691775-v	v	Verb	stretch out over a distance, space, time, or scope; run or extend between two points or beyond a certain point	21	C	wn30-tag-count	oewn				ran,run,running,runs
+run#manage	oewn-run__2.41.02..	run%2:41:02::	oewn-02448714-v	v	Verb	direct or control; projects, businesses, etc.	20	C	wn30-tag-count	oewn				ran,run,running,runs
+run#have-form	oewn-run__2.42.04..	run%2:42:04::	oewn-02727159-v	v	Verb	have a particular form	10	C	wn30-tag-count	oewn				ran,run,running,runs
+run#liquid-flow	oewn-run__2.38.01..	run%2:38:01::	oewn-02070867-v	v	Verb	move along, of liquids	9	C	wn30-tag-count	oewn				ran,run,running,runs
+run#work	oewn-run__2.35.00..	run%2:35:00::	oewn-01528454-v	v	Verb	perform as expected when applied	8	C	wn30-tag-count	oewn				ran,run,running,runs
+run#seek-office	oewn-run__2.33.06..	run%2:33:06::	oewn-01096497-v	v	Verb	run, stand, or compete for an office or a position	7	C	wn30-tag-count	oewn				ran,run,running,runs
+run#vary	oewn-run__2.42.07..	run%2:42:07::	oewn-02732914-v	v	Verb	change or be different within limits	7	C	wn30-tag-count	oewn				ran,run,running,runs
+run#play-recording	oewn-run__2.36.01..	run%2:36:01::	oewn-01721028-v	v	Verb	cause to emit recorded audio or video	5	C	wn30-tag-count	oewn				ran,run,running,runs
+run#roam	oewn-run__2.38.11..	run%2:38:11::	oewn-02104107-v	v	Verb	move about freely and without restraint, or act as if running around in an uncontrolled way	4	U	wn30-tag-count	oewn				ran,run,running,runs
+run#tend	oewn-run__2.42.01..	run%2:42:01::	oewn-02725274-v	v	Verb	have a tendency or disposition to do or be something; be inclined	3	U	wn30-tag-count	oewn				ran,run,running,runs
+run#change-state	oewn-run__2.30.03..	run%2:30:03::	oewn-00550143-v	v	Verb	change from one state to another	3	U	wn30-tag-count	oewn				ran,run,running,runs
+run#operate	oewn-run__2.35.04..	run%2:35:04::	oewn-01529078-v	v	Verb	be operating, running or functioning	3	U	wn30-tag-count	oewn				ran,run,running,runs
+run#activate	oewn-run__2.30.07..	run%2:30:07::	oewn-00518609-v	v	Verb	cause to perform	3	U	wn30-tag-count	oewn				ran,run,running,runs
+run#complete	oewn-run__2.36.00..	run%2:36:00::	oewn-01645087-v	v	Verb	conduct to completion	2	U	wn30-tag-count	oewn				ran,run,running,runs
+run#broadcast	oewn-run__2.36.02..	run%2:36:02::	oewn-01750167-v	v	Verb	include as the content; broadcast or publicize	2	U	wn30-tag-count	oewn				ran,run,running,runs
+run#persist	oewn-run__2.42.03..	run%2:42:03::	oewn-02653599-v	v	Verb	continue to exist	2	U	wn30-tag-count	oewn				ran,run,running,runs
+run#cross	oewn-run__2.35.01..	run%2:35:01::	oewn-01214794-v	v	Verb	pass over, across, or through	2	U	wn30-tag-count	oewn				ran,run,running,runs
+run#execute	oewn-run__2.41.00..	run%2:41:00::	oewn-02569242-v	v	Verb	carry out a process or program, as on a computer or a machine	2	U	wn30-tag-count	oewn				ran,run,running,runs
+run#undergo	oewn-run__2.42.02..	run%2:42:02::	oewn-02726779-v	v	Verb	be affected by; be subjected to	2	U	wn30-tag-count	oewn				ran,run,running,runs
+run#recur	oewn-run__2.42.06..	run%2:42:06::	oewn-02618269-v	v	Verb	occur persistently	2	U	wn30-tag-count	oewn				ran,run,running,runs
+run#illicit-trade	oewn-run__2.40.06..	run%2:40:06::	oewn-02247038-v	v	Verb	deal in illegally, such as arms or liquor	1	U	wn30-tag-count	oewn				ran,run,running,runs
+run#diffuse	oewn-run__2.38.08..	run%2:38:08::	oewn-02064720-v	v	Verb	be diffused	1	U	wn30-tag-count	oewn				ran,run,running,runs
+run#succeed	oewn-run__2.41.01..	run%2:41:01::	oewn-02530978-v	v	Verb	make without a miss	1	U	wn30-tag-count	oewn				ran,run,running,runs
+run#drive-animal	oewn-run__2.38.10..	run%2:38:10::	oewn-02096576-v	v	Verb	cause an animal to move fast	1	U	wn30-tag-count	oewn				ran,run,running,runs
+run#direct	oewn-run__2.42.08..	run%2:42:08::	oewn-02692467-v	v	Verb	cause something to pass or lead somewhere	1	U	wn30-tag-count	oewn				ran,run,running,runs
+run#cover-distance	oewn-run__2.38.05..	run%2:38:05::	oewn-01918940-v	v	Verb	cover by running; run a certain distance	1	U	wn30-tag-count	oewn				ran,run,running,runs
+run#run-before-wind	oewn-run__2.38.03..	run%2:38:03::	oewn-01931856-v	v	Verb	sail before the wind	1	U	wn30-tag-count	oewn				ran,run,running,runs
+run#associate	oewn-run__2.38.02..	run%2:38:02::	oewn-01931700-v	v	Verb	keep company	0	R	wn30-tag-count	oewn				ran,run,running,runs
+run#pasture-animals	oewn-run__2.41.04..	run%2:41:04::	oewn-02427021-v	v	Verb	set animals loose to graze	0	R	wn30-tag-count	oewn				ran,run,running,runs
+run#progress-through-change	oewn-run__2.30.02..	run%2:30:02::	oewn-00540190-v	v	Verb	progress by being changed	0	R	wn30-tag-count	oewn				ran,run,running,runs
+run#travel-rapidly	oewn-run__2.38.13..	run%2:38:13::	oewn-01930937-v	v	Verb	travel rapidly, by any (unspecified) means	0	R	wn30-tag-count	oewn				ran,run,running,runs
+run#pursue-game	oewn-run__2.33.02..	run%2:33:02::	oewn-01146304-v	v	Verb	pursue for food or sport (as of wild animals)	0	R	wn30-tag-count	oewn				ran,run,running,runs
+run#unravel	oewn-run__2.30.01..	run%2:30:01::	oewn-00335613-v	v	Verb	come unraveled or undone as if by snagging	0	R	wn30-tag-count	oewn				ran,run,running,runs
+run#liquefy	oewn-run__2.30.00..	run%2:30:00::	oewn-00445584-v	v	Verb	reduce or cause to be reduced from a solid to a liquid state, usually by heating	0	R	wn30-tag-count	oewn				ran,run,running,runs
+run#travel-route	oewn-run__2.38.09..	run%2:38:09::	oewn-01868024-v	v	Verb	travel a route regularly	0	R	wn30-tag-count	oewn				ran,run,running,runs
+run#compete	oewn-run__2.33.01..	run%2:33:01::	oewn-01088514-v	v	Verb	compete in a race	0	R	wn30-tag-count	oewn				ran,run,running,runs
+run#last	oewn-run__2.42.05..	run%2:42:05::	oewn-02654212-v	v	Verb	extend or continue for a certain period of time	0	R	wn30-tag-count	oewn				ran,run,running,runs
+run#come-undone	oewn-run__2.30.04..	run%2:30:04::	oewn-00333482-v	v	Verb	become undone	0	R	wn30-tag-count	oewn				ran,run,running,runs
+run#carry-ball	oewn-run__2.38.06..	run%2:38:06::	oewn-01931400-v	v	Verb	run with the ball; in such sports as football	0	R	wn30-tag-count	oewn				ran,run,running,runs
+position#place	oewn-position__1.15.00..	position%1:15:00::	oewn-08639173-n	n	Noun	the particular portion of space occupied by something	34	C	wn30-tag-count	oewn				position,positioned,positioning,positions
+position#military-position	oewn-position__1.15.02..	position%1:15:02::	oewn-08640161-n	n	Noun	a point occupied by troops for tactical reasons	18	C	wn30-tag-count	oewn				position,positioned,positioning,positions
+position#perspective	oewn-position__1.09.00..	position%1:09:00::	oewn-06218486-n	n	Noun	a way of regarding situations or topics etc.	18	C	wn30-tag-count	oewn				position,positioned,positioning,positions
+position#body-posture	oewn-position__1.07.01..	position%1:07:01::	oewn-05087073-n	n	Noun	the arrangement of the body and its limbs	14	C	wn30-tag-count	oewn				position,positioned,positioning,positions
+position#job	oewn-position__1.04.01..	position%1:04:01::	oewn-00587299-n	n	Noun	a job in an organization	12	C	wn30-tag-count	oewn				position,positioned,positioning,positions
+position#status	oewn-position__1.26.00..	position%1:26:00::	oewn-13968971-n	n	Noun	the relative position or standing of things or especially persons in a society	12	C	wn30-tag-count	oewn				position,positioned,positioning,positions
+position#spatial-relation	oewn-position__1.07.00..	position%1:07:00::	oewn-05081943-n	n	Noun	the spatial property of a place where or way in which something is situated	7	C	wn30-tag-count	oewn				position,positioned,positioning,positions
+position#customary-place	oewn-position__1.15.03..	position%1:15:03::	oewn-08639776-n	n	Noun	the appropriate or customary location	3	U	wn30-tag-count	oewn				position,positioned,positioning,positions
+position#player-role	oewn-position__1.04.02..	position%1:04:02::	oewn-00723730-n	n	Noun	(in team sports) the role assigned to an individual player	3	U	wn30-tag-count	oewn				position,positioned,positioning,positions
+position#placement	oewn-position__1.04.00..	position%1:04:00::	oewn-01053255-n	n	Noun	the act of putting something in a certain place	2	U	wn30-tag-count	oewn				position,positioned,positioning,positions
+position#mental-stance	oewn-position__1.09.01..	position%1:09:01::	oewn-06206019-n	n	Noun	a rationalized mental attitude	1	U	wn30-tag-count	oewn				position,positioned,positioning,positions
+position#situation	oewn-position__1.26.02..	position%1:26:02::	oewn-13948785-n	n	Noun	a condition or position in which you find yourself	1	U	wn30-tag-count	oewn				position,positioned,positioning,positions
+position#assumption	oewn-position__1.04.04..	position%1:04:04::	oewn-00084268-n	n	Noun	the act of positing; an assumption taken as a postulate or axiom	0	R	wn30-tag-count	oewn				position,positioned,positioning,positions
+position#replacement-post	oewn-position__1.04.03..	position%1:04:03::	oewn-00722683-n	n	Noun	the post or function properly or customarily occupied or served by another	0	R	wn30-tag-count	oewn				position,positioned,positioning,positions
+position#list-item	oewn-position__1.10.01..	position%1:10:01::	oewn-06495143-n	n	Noun	an item on a list or in a sequence	0	R	wn30-tag-count	oewn				position,positioned,positioning,positions
+position#opposing-opinion	oewn-position__1.10.00..	position%1:10:00::	oewn-06796122-n	n	Noun	an opinion that is held in opposition to another in an argument or dispute	0	R	wn30-tag-count	oewn				position,positioned,positioning,positions
+position#put-in-place	oewn-position__2.38.00..	position%2:38:00::	oewn-01991174-v	v	Verb	cause to be in an appropriate place, state, or relation	2	U	wn30-tag-count	oewn				position,positioned,positioning,positions
+position#locate	oewn-position__2.35.00..	position%2:35:00::	oewn-01496967-v	v	Verb	put into a certain place or abstract location	1	U	wn30-tag-count	oewn				position,positioned,positioning,positions
+support#maintenance	oewn-support__1.04.04..	support%1:04:04::	oewn-01218392-n	n	Noun	the activity of providing for or maintaining by supplying with money or necessities	15	C	wn30-tag-count	oewn				support,supported,supporting,supports
+support#aid	oewn-support__1.04.00..	support%1:04:00::	oewn-01215009-n	n	Noun	aiding the cause or policy or interests of	9	C	wn30-tag-count	oewn				support,supported,supporting,supports
+support#influence	oewn-support__1.09.00..	support%1:09:00::	oewn-05701884-n	n	Noun	something providing immaterial assistance to a person or cause or interest	4	U	wn30-tag-count	oewn				support,supported,supporting,supports
+support#reinforcement	oewn-support__1.04.03..	support%1:04:03::	oewn-00973567-n	n	Noun	a military operation (often involving new supplies of men and materiel) to strengthen a military force or aid in the performance of its mission	4	U	wn30-tag-count	oewn				support,supported,supporting,supports
+support#documentation	oewn-support__1.04.02..	support%1:04:02::	oewn-00155253-n	n	Noun	documentary validation	3	U	wn30-tag-count	oewn				support,supported,supporting,supports
+support#livelihood	oewn-support__1.21.00..	support%1:21:00::	oewn-13386459-n	n	Noun	the financial means whereby one lives	2	U	wn30-tag-count	oewn				support,supported,supporting,supports
+support#bearing-weight	oewn-support__1.04.01..	support%1:04:01::	oewn-01019262-n	n	Noun	the act of bearing the weight of or strengthening	2	U	wn30-tag-count	oewn				support,supported,supporting,supports
+support#support-structure	oewn-support__1.06.01..	support%1:06:01::	oewn-04367588-n	n	Noun	supporting structure that holds up or provides a foundation	2	U	wn30-tag-count	oewn				support,supported,supporting,supports
+support#accompaniment	oewn-support__1.10.01..	support%1:10:01::	oewn-07045239-n	n	Noun	a musical part (vocal or instrumental) that supports or provides background for other musical parts	1	U	wn30-tag-count	oewn				support,supported,supporting,supports
+support#support-device	oewn-support__1.06.00..	support%1:06:00::	oewn-04366676-n	n	Noun	any device that bears the weight of another thing	1	U	wn30-tag-count	oewn				support,supported,supporting,supports
+support#project-funding	oewn-support__1.21.01..	support%1:21:01::	oewn-13386871-n	n	Noun	financial resources provided to make some project possible	0	R	wn30-tag-count	oewn				support,supported,supporting,supports
+support#encourage	oewn-support__2.41.00..	support%2:41:00::	oewn-02561834-v	v	Verb	give moral or psychological support, aid, or courage to	26	C	wn30-tag-count	oewn				support,supported,supporting,supports
+support#provide-for	oewn-support__2.40.00..	support%2:40:00::	oewn-02223876-v	v	Verb	support materially or financially	16	C	wn30-tag-count	oewn				support,supported,supporting,supports
+support#endorse	oewn-support__2.41.01..	support%2:41:01::	oewn-02459338-v	v	Verb	be behind; approve of	14	C	wn30-tag-count	oewn				support,supported,supporting,supports
+support#bear-weight	oewn-support__2.35.00..	support%2:35:00::	oewn-01219607-v	v	Verb	be the physical support of; carry the weight of	14	C	wn30-tag-count	oewn				support,supported,supporting,supports
+support#substantiate	oewn-support__2.31.00..	support%2:31:00::	oewn-00667804-v	v	Verb	establish or strengthen as with new evidence or facts	6	C	wn30-tag-count	oewn				support,supported,supporting,supports
+support#believe	oewn-support__2.32.00..	support%2:32:00::	oewn-00807976-v	v	Verb	adopt as a belief	3	U	wn30-tag-count	oewn				support,supported,supporting,supports
+support#corroborate	oewn-support__2.42.00..	support%2:42:00::	oewn-02669418-v	v	Verb	support with evidence or authority or make more certain or confirm	2	U	wn30-tag-count	oewn				support,supported,supporting,supports
+support#defend	oewn-support__2.32.01..	support%2:32:01::	oewn-00896689-v	v	Verb	argue or speak in defense of	2	U	wn30-tag-count	oewn				support,supported,supporting,supports
+support#tolerate	oewn-support__2.31.04..	support%2:31:04::	oewn-00670017-v	v	Verb	put up with something or somebody unpleasant	0	R	wn30-tag-count	oewn				support,supported,supporting,supports
+support#subordinate-role	oewn-support__2.36.00..	support%2:36:00::	oewn-01724650-v	v	Verb	play a subordinate role to (another performer)	0	R	wn30-tag-count	oewn				support,supported,supporting,supports
+support#patronize	oewn-support__2.32.02..	support%2:32:02::	oewn-00910574-v	v	Verb	be a regular customer or client of	0	R	wn30-tag-count	oewn				support,supported,supporting,supports
+install#set-up	oewn-install__2.35.00..	install%2:35:00::	oewn-01572394-v	v	Verb	set up for use	28	C	wn30-tag-count	oewn				install,installed,installing,installs
+install#appoint	oewn-install__2.41.00..	install%2:41:00::	oewn-02389183-v	v	Verb	put into an office or a position	1	U	wn30-tag-count	oewn				install,installed,installing,installs
+install#put-in-place	oewn-install__2.35.01..	install%2:35:01::	oewn-01572936-v	v	Verb	place	0	R	wn30-tag-count	oewn				install,installed,installing,installs
+remove#distance	oewn-remove__1.07.00..	remove%1:07:00::	oewn-05097462-n	n	Noun	degree of figurative distance or separation	0	R	wn30-tag-count	oewn				remove,removed,removes,removing
+remove#take-away	oewn-remove__2.30.00..	remove%2:30:00::	oewn-00173351-v	v	Verb	remove something concrete, as by lifting, pushing, or taking off, or remove something abstract	86	C	wn30-tag-count	oewn				remove,removed,removes,removing
+remove#dismiss	oewn-remove__2.41.00..	remove%2:41:00::	oewn-02409366-v	v	Verb	remove from a position or an office	4	U	wn30-tag-count	oewn				remove,removed,removes,removing
+remove#dispose-of	oewn-remove__2.40.00..	remove%2:40:00::	oewn-02228837-v	v	Verb	dispose of	4	U	wn30-tag-count	oewn				remove,removed,removes,removing
+remove#expel	oewn-remove__2.41.02..	remove%2:41:02::	oewn-02410046-v	v	Verb	cause to leave	3	U	wn30-tag-count	oewn				remove,removed,removes,removing
+remove#transfer	oewn-remove__2.38.00..	remove%2:38:00::	oewn-02090707-v	v	Verb	shift the position or location of, as for business, legal, educational, or military purposes	3	U	wn30-tag-count	oewn				remove,removed,removes,removing
+remove#stay-away	oewn-remove__2.30.01..	remove%2:30:01::	oewn-00422488-v	v	Verb	stay away or leave	2	U	wn30-tag-count	oewn				remove,removed,removes,removing
+remove#bump-off	oewn-remove__2.41.01..	remove%2:41:01::	oewn-02488014-v	v	Verb	kill intentionally and with premeditation	0	R	wn30-tag-count	oewn				remove,removed,removes,removing
+remove#eliminate	oewn-remove__2.30.02..	remove%2:30:02::	oewn-00572138-v	v	Verb	get rid of something abstract	0	R	wn30-tag-count	oewn				remove,removed,removes,removing
+attach#connect	oewn-attach__2.35.01..	attach%2:35:01::	oewn-01299048-v	v	Verb	cause to be attached	22	C	wn30-tag-count	oewn				attach,attached,attaches,attaching
+attach#be-attached	oewn-attach__2.35.02..	attach%2:35:02::	oewn-01292858-v	v	Verb	be attached; be in contact with	4	U	wn30-tag-count	oewn				attach,attached,attaches,attaching
+attach#become-attached	oewn-attach__2.35.00..	attach%2:35:00::	oewn-01293025-v	v	Verb	become attached	3	U	wn30-tag-count	oewn				attach,attached,attaches,attaching
+attach#bond	oewn-attach__2.41.03..	attach%2:41:03::	oewn-02543752-v	v	Verb	create social or emotional ties	0	R	wn30-tag-count	oewn				attach,attached,attaches,attaching
+attach#seize	oewn-attach__2.40.00..	attach%2:40:00::	oewn-02278138-v	v	Verb	take temporary possession of as a security, by legal authority	0	R	wn30-tag-count	oewn				attach,attached,attaches,attaching
+inspect#examine	oewn-inspect__2.39.00..	inspect%2:39:00::	oewn-02169987-v	v	Verb	look over carefully	13	C	wn30-tag-count	oewn				inspect,inspected,inspecting,inspects
+inspect#official-visit	oewn-inspect__2.38.00..	inspect%2:38:00::	oewn-01847990-v	v	Verb	come to see in an official or professional capacity	1	U	wn30-tag-count	oewn				inspect,inspected,inspecting,inspects
+inspect#verify-accuracy	oewn-inspect__2.31.00..	inspect%2:31:00::	oewn-00698828-v	v	Verb	examine carefully for accuracy with the intent of verification	0	R	wn30-tag-count	oewn				inspect,inspected,inspecting,inspects
+clean#hygienic	oewn-clean__3.00.01..	clean%3:00:01::	oewn-00418932-a	a	Adjective	free from dirt or impurities; or having clean habits	17	C	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#unrestricted	oewn-clean__5.00.00.unqualified.02	clean%5:00:00:unqualified:02	oewn-01920489-s	a	Adjective	free of restrictions or qualifications	2	U	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#unblemished	oewn-clean__5.00.00.perfect.00	clean%5:00:00:perfect:00	oewn-01754399-s	a	Adjective	(of a record) having no marks of discredit or offense	1	U	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#undimmed	oewn-clean__5.00.01.pure.02	clean%5:00:01:pure:02	oewn-01912661-s	a	Adjective	(of sound or color) free from anything that dulls or dims	1	U	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#impurity-free	oewn-clean__5.00.00.pure.02	clean%5:00:00:pure:02	oewn-01912517-s	a	Adjective	free from impurities	1	U	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#ritually-pure	oewn-clean__3.00.04..	clean%3:00:04::	oewn-00428828-a	a	Adjective	ritually clean or pure	0	R	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#complete	oewn-clean__5.00.00.complete.00	clean%5:00:00:complete:00	oewn-00524165-s	a	Adjective	thorough and without qualification	0	R	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#trouble-free	oewn-clean__5.00.00.easy.01	clean%5:00:00:easy:01	oewn-00753551-s	a	Adjective	without difficulties or problems	0	R	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#drug-free	oewn-clean__5.00.00.unaddicted.00	clean%5:00:00:unaddicted:00	oewn-00047873-s	a	Adjective	free of drugs	0	R	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#unarmed	oewn-clean__5.00.00.unarmed.01	clean%5:00:00:unarmed:01	oewn-00144562-s	a	Adjective	not carrying concealed weapons	0	R	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#blank	oewn-clean__5.00.00.empty.00	clean%5:00:00:empty:00	oewn-01090782-s	a	Adjective	(of a surface) not written or printed on	0	R	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#clean-living	oewn-clean__5.00.00.moral.00	clean%5:00:00:moral:00	oewn-01552957-s	a	Adjective	morally pure	0	R	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#unaltered	oewn-clean__5.00.00.legible.00	clean%5:00:00:legible:00	oewn-01407924-s	a	Adjective	(of a manuscript) having few alterations or corrections	0	R	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#deft	oewn-clean__5.00.00.adroit.00	clean%5:00:00:adroit:00	oewn-00061923-s	a	Adjective	free from clumsiness; precisely or deftly executed	0	R	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#fair-play	oewn-clean__5.00.00.fair.03	clean%5:00:00:fair:03	oewn-00959923-s	a	Adjective	exhibiting or calling for sportsmanship or fair play	0	R	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#nonpolluting	oewn-clean__3.00.03..	clean%3:00:03::	oewn-00427844-a	a	Adjective	not spreading pollution or contamination; especially radioactive contamination	0	R	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#uninfected	oewn-clean__5.00.00.antiseptic.00	clean%5:00:00:antiseptic:00	oewn-02123753-s	a	Adjective	free from sepsis or infection	0	R	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#inoffensive	oewn-clean__3.00.02..	clean%3:00:02::	oewn-00425527-a	a	Adjective	(of behavior or especially language) free from objectionable elements; fit for all observers	0	R	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#clean-and-jerk	oewn-clean__1.04.00..	clean%1:04:00::	oewn-00628078-n	n	Noun	a weightlift in which the barbell is lifted to shoulder height and then jerked overhead	1	U	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#completely	oewn-clean__4.02.04..	clean%4:02:04::	oewn-00009835-r	r	Adverb	completely; used as intensifiers	1	U	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#fairly	oewn-clean__4.02.00..	clean%4:02:00::	oewn-00286521-r	r	Adverb	in conformity with the rules or laws and without fraud or cheating	0	R	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#remove-dirt	oewn-clean__2.35.00..	clean%2:35:00::	oewn-01535377-v	v	Verb	make clean by removing dirt, filth, or unwanted substances from	16	C	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#remove-impurities	oewn-clean__2.30.01..	clean%2:30:01::	oewn-00177724-v	v	Verb	remove unwanted substances from, such as feathers or pits	3	U	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#tidy-house	oewn-clean__2.35.01..	clean%2:35:01::	oewn-01536230-v	v	Verb	clean and tidy up the house	2	U	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#wash	oewn-clean__2.29.00..	clean%2:29:00::	oewn-00035769-v	v	Verb	clean one's body or parts thereof, as by washing	1	U	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#cleanable	oewn-clean__2.42.00..	clean%2:42:00::	oewn-02747835-v	v	Verb	be cleanable	0	R	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#take-everything	oewn-clean__2.35.12..	clean%2:35:12::	oewn-01611855-v	v	Verb	deprive wholly of money in a gambling game, robbery, etc.	0	R	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#shell	oewn-clean__2.30.02..	clean%2:30:02::	oewn-00177871-v	v	Verb	remove shells or husks from	0	R	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#remove	oewn-clean__2.35.02..	clean%2:35:02::	oewn-01535222-v	v	Verb	remove while making clean	0	R	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#purge	oewn-clean__2.30.00..	clean%2:30:00::	oewn-00180982-v	v	Verb	remove unwanted substances from	0	R	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+clean#empty-out	oewn-clean__2.35.04..	clean%2:35:04::	oewn-01611610-v	v	Verb	remove all contents or possession from, or empty completely	0	R	wn30-tag-count	oewn				clean,cleaned,cleaner,cleanest,cleaning,cleans
+arm#prime-system				v	Verb	make a device or system ready for operation or activation (to arm the alarm, to arm the fire suppression system)		U	project sense: found by the technical-writing probe (arm a system)	project				arm,armed,arming,arms
+lead#electrical-lead				n	Noun	an electrical conductor or wire with a terminal that connects a component, instrument, or circuit (a meter lead, a test lead)		U	project sense: found by the technical-writing probe (lead as a conductor)	project				LED,lead,leading,leads,led
+flush#fluid-flush				n	Noun	a procedure that cleans or clears a system by passing liquid through it (a cooling-system flush)		U	project sense: found by the technical-writing probe (flush as a cleaning operation)	project				flush,flushed,flusher,flushes,flushest,flushing
+tap#tapping-point				n	Noun	a connection point in a line, circuit, or winding from which pressure, signal, or current is taken (a pressure tap, a 24 V tap)		U	project sense: found by the technical-writing probe (tap as a connection point)	project				tap,tapped,tapping,taps

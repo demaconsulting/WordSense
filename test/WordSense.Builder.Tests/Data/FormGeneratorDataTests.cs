@@ -80,6 +80,62 @@ public sealed class FormGeneratorDataTests
     }
 
     /// <summary>
+    ///     A participial adjective of the dictionary keeps its own analysis beside the verb form that an earlier
+    ///     reviewed analysis gave the spelling (damaged as the adjective in a damaged seal).
+    /// </summary>
+    /// <param name="spelling">The spelling.</param>
+    /// <param name="entry">The entry of the adjective.</param>
+    [Theory]
+    [InlineData("damaged", "oewn-damaged-a")]
+    [InlineData("drained", "oewn-drained-a")]
+    [InlineData("drilled", "oewn-drilled-a")]
+    [InlineData("alloyed", "oewn-alloyed-a")]
+    public void WordSenseBuilder_FormGenerator_Data_OwnAdjectiveEntry_HasItsAnalysis(string spelling, string entry)
+    {
+        Assert.Contains(Rows(spelling), r => r[2] == entry && r[3] == "Degree=Pos");
+    }
+
+    /// <summary>
+    ///     Only the participial adjectives of the list <c>own-adjectives.tsv</c> get the analysis: the common participles
+    ///     (covered, changed, based) stay verb forms, as the reviewed analyses have them.
+    /// </summary>
+    /// <param name="spelling">The spelling.</param>
+    /// <param name="entry">The entry of the adjective.</param>
+    [Theory]
+    [InlineData("covered", "oewn-covered-a")]
+    [InlineData("changed", "oewn-changed-a")]
+    [InlineData("based", "oewn-based-a")]
+    public void WordSenseBuilder_FormGenerator_Data_UnlistedParticipialAdjective_KeepsTheReviewedAnalysis(string spelling, string entry)
+    {
+        Assert.DoesNotContain(Rows(spelling), r => r[2] == entry);
+    }
+
+    /// <summary>
+    ///     Every spelling of <c>own-adjectives.tsv</c> has the analysis of its adjective entry.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_FormGenerator_Data_AdjectiveEntries_AreReachable()
+    {
+        var data = RepositoryData();
+        var listed = File.ReadAllLines(Path.Join(data, "..", "corpus", "lexicon", "own-adjectives.tsv"))
+            .Where(l => l.Length > 0 && l[0] != '#').Select(l => l.Split('\t')[0]).ToList();
+        Assert.NotEmpty(listed);
+        var lost = listed.Where(s => !Rows(s).Any(r => r[2] == "oewn-" + s + "-a")).ToList();
+        Assert.Empty(lost);
+    }
+
+    /// <summary>
+    ///     A verb that the dictionary lacks but the additions list has verb forms (torque a bolt).
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_FormGenerator_Data_AddedVerb_HasItsForms()
+    {
+        Assert.Contains(Rows("torque"), r => r[7] == "v" && r[3] == "VerbForm=Inf");
+        Assert.Contains(Rows("torqued"), r => r[7] == "v" && r[3].Contains("Tense=Past", StringComparison.Ordinal));
+        Assert.Contains(Rows("torquing"), r => r[7] == "v" && r[3] == "VerbForm=Ger");
+    }
+
+    /// <summary>
     ///     The analyses that our own sources showed wrong are gone or retyped.
     /// </summary>
     [Fact]

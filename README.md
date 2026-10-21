@@ -159,7 +159,7 @@ an        Determiner   Sense        1.00  an#determiner
 arrow     Noun         PartOfSpeech 1.00
 from      Preposition  Sense        1.00  from#preposition
 his       Determiner   Sense        1.00  his#determiner
-bow       Noun         PartOfSpeech 1.00                 Verb 0.00
+bow       Noun         Sense        1.00  bow#archery-bow Verb 0.00
 at        Preposition  Sense        1.00  at#preposition Noun 0.00
 a         Determiner   Sense        1.00  a#determiner
 deer      Noun         Sense        1.00  deer#noun
@@ -183,7 +183,8 @@ with its id and sense key in the catalog, and also for a word whose lemma and pa
 as `the`), `Group` is a group of closely related senses (`GroupId`; MiniLM and BertBaseCased answer `back` at that level),
 and `PartOfSpeech` is the analysis only: the model could not tell the senses apart with the precision its thresholds ask
 for (the thresholds are calibrated on real text, so the encoder models answer most ambiguous words at this level: MiniLM
-answers `bow`, `record`, `go` and `home` at that level and BertBaseCased `bow`, `record`, `go` and `home`), and the
+answers `bow`, `record`, `go` and `home` at that level and BertBaseCased `record`, `go` and `home`; it answers `bow` as
+the archery bow at the `Sense` level), and the
 ranked
 senses of each analysis in `Analyses` still show how the
 evidence spreads. `Analyses` lists every possible analysis (lemma, part of speech and features) with its probability,
@@ -206,22 +207,22 @@ Tokenize the text yourself, one sentence per call: punctuation is a token of its
 <!-- model-table:begin -->
 | Model | Real-text best analysis (test split) | Real-text part of speech (test split) | Written-holdout best analysis (secondary) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Basic | 91.66% | 91.94% | 88.97% | none | 83 KiB | 4 MiB | 0.15 ms | 45 ms + 83 ms | no |
-| MiniLM | 95.80% | 95.91% | 96.40% | 22 MiB | 3,836 KiB | 76 MiB | 3.57 ms | 697 ms + 84 ms | yes |
-| BERT base cased | 97.41% | 97.52% | 99.08% | 104 MiB | 7,526 KiB | 198 MiB | 27.66 ms | 1,139 ms + 109 ms | yes |
+| Basic | 91.52% | 91.84% | 88.97% | none | 83 KiB | 4 MiB | 0.12 ms | 44 ms + 79 ms | no |
+| MiniLM | 95.71% | 95.84% | 96.71% | 22 MiB | 4,358 KiB | 92 MiB | 2.26 ms | 684 ms + 59 ms | yes |
+| BERT base cased | 97.55% | 97.71% | 99.10% | 104 MiB | 8,537 KiB | 199 MiB | 11.38 ms | 873 ms + 80 ms | yes |
 <!-- model-table:end -->
 
 <!-- markdownlint-enable MD013 -->
 
 - ⚡ **basic** - No download, fastest; answers at the part-of-speech level (and the sense of a word with one sense).
-- ⚖️ **minilm** - The default encoder package: 22 MiB download; fine senses for the 768 trained lemmas, `Basic` for the
+- ⚖️ **minilm** - The default encoder package: 22 MiB download; fine senses for the 780 trained lemmas, `Basic` for the
   rest.
 - 🎯 **bert-base-cased** - Larger case-sensitive encoder, 104 MiB download; the most precise on the trained lemmas.
 
-**The headline figures are measured on real text**: the 3,623 real held-out sentences (Project Gutenberg, Tatoeba, VOA
+**The headline figures are measured on real text**: the 3,751 real held-out sentences (Project Gutenberg, Tatoeba, VOA
 and US federal government text, public domain in the United States) of the *test documents*, a half of the real
 held-out sentences that is split off by document and that no weight or threshold has seen (the other half, the
-calibration documents, chooses the per-lemma thresholds). The written held-out sentences (9,780, written by a language
+calibration documents, chooses the per-lemma thresholds). The written held-out sentences (12,261, written by a language
 model) are easier and are shown only as a secondary column.
 Neither is representative running text: the held-out sentences were found or written for specific senses with the quotas
 of the tiers, so the figures measure the classifier on a balanced corpus, they say nothing about words that no model was
@@ -231,8 +232,8 @@ answers; `docs/build_notes/quota-fill.md` has the full tables and the sets that 
 
 | Model | Sense (share, precision) | Group (share, precision) | Part of speech (share, precision) | Fine top-1 |
 | --- | ---: | ---: | ---: | ---: |
-| MiniLM | 10.9%, 94.2% | 1.0%, 85.7% | 88.2%, 95.7% | 66.9% |
-| BERT base cased | 22.7%, 96.6% | 0.9%, 90.3% | 76.5%, 96.9% | 75.4% |
+| MiniLM | 10.3%, 95.3% | 0.9%, 91.4% | 88.8%, 95.6% | 66.8% |
+| BERT base cased | 23.4%, 96.6% | 0.7%, 100% | 75.9%, 97.2% | 75.7% |
 
 The table is generated into `docs/build_notes/model-table.md`; the user guide explains how the numbers were measured
 and lists the confidence thresholds of each model. See also the [model comparison][link-model-comparison] and the

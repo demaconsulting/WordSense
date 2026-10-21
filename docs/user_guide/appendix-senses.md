@@ -26,10 +26,10 @@ word that has several. The table counts the trained lemmas and senses of each pa
 
 | Part of speech | Lemmas | Senses |
 | -------------- | -----: | -----: |
-| `Noun`         |    728 |   2982 |
-| `Verb`         |    729 |   3241 |
-| `Adjective`    |    193 |    477 |
-| `Adverb`       |     34 |    101 |
+| `Noun`         |    736 |   3043 |
+| `Verb`         |    739 |   3339 |
+| `Adjective`    |    197 |    500 |
+| `Adverb`       |     35 |    103 |
 | `Preposition`  |      3 |      3 |
 | `Conjunction`  |      2 |      2 |
 | `Interjection` |     14 |     14 |
@@ -57,18 +57,18 @@ in the table is unknown and is never analyzed.
 
 ### Dictionary Words
 
-The word table knows 365,502 spellings (lemmas and inflected forms) of 223,951 entries, and its sense catalog lists
-129,427 senses in 140 curated groups. Besides the lemmas listed below, every other word of the table is a dictionary
+The word table knows 365,504 spellings (lemmas and inflected forms) of 223,958 entries, and its sense catalog lists
+129,433 senses in 140 curated groups. Besides the lemmas listed below, every other word of the table is a dictionary
 word: it has no trained classifier, a word with one part of speech is answered directly with confidence 1, and a word
 with several parts of speech returns them as candidates, most frequent first (the encoder models answer it with the
 first one; the basic model chooses by tagger and context). A capitalized word is lower-cased before it is looked up.
 
-The lemmas listed below are the 829 trained lemmas (the lemmas that have anchor sentences), with 6,822 senses (140 of
+The lemmas listed below are the 843 trained lemmas (the lemmas that have anchor sentences), with 7,006 senses (146 of
 them project senses) and 140 groups.
 
 ## Supported Lemmas
 
-The library supports 829 lemmas with 6,822 senses in total, listed alphabetically. Each lemma lists its parts of speech
+The library supports 843 lemmas with 7,006 senses in total, listed alphabetically. Each lemma lists its parts of speech
 and the forms it recognizes. Under it, every sense gives its id and part of speech, its group, its Open English WordNet
 sense key (a project sense has none), its respelling when it has one and its gloss, in inventory order (the most
 frequent sense of a part of speech first).
@@ -484,6 +484,8 @@ frequent sense of a part of speech first).
     and that provides a cloth covering for the arm
   - `arm#build-up` (verb); group: none; key: `arm%2:33:00::`; gloss: prepare oneself for a military confrontation
   - `arm#furnish` (verb); group: none; key: `arm%2:40:00::`; gloss: supply with arms
+  - `arm#prime-system` (verb); group: none; key: project sense; gloss: make a device or system ready for operation or
+    activation (to arm the alarm, to arm the fire suppression system)
 - **armed**; parts of speech: adjective; no other forms
   - `armed#adjective` (adjective); group: none; key: `armed%3:00:01::`; gloss: (used of persons or the military)
     characterized by having or bearing arms
@@ -548,6 +550,13 @@ frequent sense of a part of speech first).
     action
   - `associate#junior` (adjective); group: none; key: `associate%5:00:00:subordinate:01`; gloss: having partial rights
     and privileges or subordinate status
+- **attach**; parts of speech: verb; forms: attached, attaches, attaching
+  - `attach#connect` (verb); group: none; key: `attach%2:35:01::`; gloss: cause to be attached
+  - `attach#be-attached` (verb); group: none; key: `attach%2:35:02::`; gloss: be attached; be in contact with
+  - `attach#become-attached` (verb); group: none; key: `attach%2:35:00::`; gloss: become attached
+  - `attach#bond` (verb); group: none; key: `attach%2:41:03::`; gloss: create social or emotional ties
+  - `attach#seize` (verb); group: none; key: `attach%2:40:00::`; gloss: take temporary possession of as a security, by
+    legal authority
 - **attenuate**; parts of speech: verb, adjective; forms: attenuated, attenuates, attenuating
   - `attenuate#rarefy` (verb); group: none; key: `attenuate%2:30:01::`; gloss: weaken the consistency of (a chemical
     substance)
@@ -755,6 +764,18 @@ frequent sense of a part of speech first).
   - `bear#hold` (verb); group: none; key: `bear%2:40:00::`; gloss: have rightfully; of rights, titles, and offices
   - `bear#pregnant-with` (verb); group: none; key: `bear%2:29:00::`; gloss: be pregnant with
   - `bear#support` (verb); group: none; key: `bear%2:35:01::`; gloss: support or hold in a certain manner
+- **bearing**; parts of speech: noun, adjective; forms: bearings
+  - `bearing#comportment` (noun); group: none; key: `bearing%1:07:00::`; gloss: dignified manner or conduct
+  - `bearing#connection` (noun); group: none; key: `bearing%1:24:01::`; gloss: relevant relation or interconnection
+  - `bearing#direction` (noun); group: none; key: `bearing%1:15:00::`; gloss: the direction or path along which
+    something moves or along which it lies
+  - `bearing#coat-of-arms` (noun); group: none; key: `bearing%1:06:01::`; gloss: heraldry consisting of a design or
+    image depicted on a shield
+  - `bearing#posture` (noun); group: none; key: `bearing%1:07:01::`; gloss: characteristic way of bearing one's body
+  - `bearing#rotating-support` (noun); group: none; key: `bearing%1:06:00::`; gloss: a rotating support placed between
+    moving parts to allow them to move easily
+  - `bearing#load-bearing` (adjective); group: none; key: `bearing%3:00:00::`; gloss: (of a structural member)
+    withstanding a weight or strain
 - **beat**; parts of speech: noun, verb, adjective; forms: beated, beaten, beater, beating, beats
   - `beat#heartbeat` (noun); group: none; key: `beat%1:11:00::`; gloss: the rhythmic contraction and expansion of the
     arteries with each beat of the heart
@@ -839,6 +860,15 @@ frequent sense of a part of speech first).
   - `bite#burn` (verb); group: none; key: `bite%2:39:00::`; gloss: cause a sharp or stinging pain or discomfort
   - `bite#pierce` (verb); group: none; key: `bite%2:35:01::`; gloss: penetrate or cut, as with a knife
   - `bite#prick` (verb); group: none; key: `bite%2:35:02::`; gloss: deliver a sting to
+- **bleed**; parts of speech: verb; forms: bled, bleeding, bleeds
+  - `bleed#hemorrhage` (verb); group: none; key: `bleed%2:29:00::`; gloss: lose blood from one's body
+  - `bleed#leech` (verb); group: none; key: `bleed%2:29:01::`; gloss: draw blood
+  - `bleed#drain` (verb); group: none; key: `bleed%2:30:00::`; gloss: drain of liquid or steam
+  - `bleed#extort` (verb); group: none; key: `bleed%2:40:09::`; gloss: get or extort (money or other possessions) from
+    someone
+  - `bleed#spread` (verb); group: none; key: `bleed%2:38:00::`; gloss: be diffused
+  - `bleed#vent` (verb); group: none; key: project sense; gloss: release trapped air, gas, or fluid from a closed
+    system, such as brake lines, a radiator, or an engine (to bleed the air)
 - **bless**; parts of speech: verb; forms: Blessed, blessed, blesses, blessing, blest
   - `bless#arouse` (verb); group: none; key: `bless%2:32:00::`; gloss: give a benediction to
   - `bless#bestow` (verb); group: none; key: `bless%2:40:00::`; gloss: confer prosperity or happiness on
@@ -1577,6 +1607,56 @@ frequent sense of a part of speech first).
   - `check#write-check` (verb); group: none; key: `check%2:32:07::`; gloss: write out a check on a bank account
   - `check#check-interjection` (interjection); group: none; key: project sense; gloss: used to acknowledge agreement or
     completion, or to announce an attack on a king in chess
+- **clean**; parts of speech: noun, verb, adjective, adverb; forms: cleaned, cleaner, cleanest, cleaning, cleans
+  - `clean#clean-and-jerk` (noun); group: none; key: `clean%1:04:00::`; gloss: a weightlift in which the barbell is
+    lifted to shoulder height and then jerked overhead
+  - `clean#remove-dirt` (verb); group: none; key: `clean%2:35:00::`; gloss: make clean by removing dirt, filth, or
+    unwanted substances from
+  - `clean#remove-impurities` (verb); group: none; key: `clean%2:30:01::`; gloss: remove unwanted substances from, such
+    as feathers or pits
+  - `clean#tidy-house` (verb); group: none; key: `clean%2:35:01::`; gloss: clean and tidy up the house
+  - `clean#wash` (verb); group: none; key: `clean%2:29:00::`; gloss: clean one's body or parts thereof, as by washing
+  - `clean#cleanable` (verb); group: none; key: `clean%2:42:00::`; gloss: be cleanable
+  - `clean#empty-out` (verb); group: none; key: `clean%2:35:04::`; gloss: remove all contents or possession from, or
+    empty completely
+  - `clean#purge` (verb); group: none; key: `clean%2:30:00::`; gloss: remove unwanted substances from
+  - `clean#remove` (verb); group: none; key: `clean%2:35:02::`; gloss: remove while making clean
+  - `clean#shell` (verb); group: none; key: `clean%2:30:02::`; gloss: remove shells or husks from
+  - `clean#take-everything` (verb); group: none; key: `clean%2:35:12::`; gloss: deprive wholly of money in a gambling
+    game, robbery, etc.
+  - `clean#hygienic` (adjective); group: none; key: `clean%3:00:01::`; gloss: free from dirt or impurities; or having
+    clean habits
+  - `clean#unrestricted` (adjective); group: none; key: `clean%5:00:00:unqualified:02`; gloss: free of restrictions or
+    qualifications
+  - `clean#impurity-free` (adjective); group: none; key: `clean%5:00:00:pure:02`; gloss: free from impurities
+  - `clean#unblemished` (adjective); group: none; key: `clean%5:00:00:perfect:00`; gloss: (of a record) having no marks
+    of discredit or offense
+  - `clean#undimmed` (adjective); group: none; key: `clean%5:00:01:pure:02`; gloss: (of sound or color) free from
+    anything that dulls or dims
+  - `clean#blank` (adjective); group: none; key: `clean%5:00:00:empty:00`; gloss: (of a surface) not written or printed
+    on
+  - `clean#clean-living` (adjective); group: none; key: `clean%5:00:00:moral:00`; gloss: morally pure
+  - `clean#complete` (adjective); group: none; key: `clean%5:00:00:complete:00`; gloss: thorough and without
+    qualification
+  - `clean#deft` (adjective); group: none; key: `clean%5:00:00:adroit:00`; gloss: free from clumsiness; precisely or
+    deftly executed
+  - `clean#drug-free` (adjective); group: none; key: `clean%5:00:00:unaddicted:00`; gloss: free of drugs
+  - `clean#fair-play` (adjective); group: none; key: `clean%5:00:00:fair:03`; gloss: exhibiting or calling for
+    sportsmanship or fair play
+  - `clean#inoffensive` (adjective); group: none; key: `clean%3:00:02::`; gloss: (of behavior or especially language)
+    free from objectionable elements; fit for all observers
+  - `clean#nonpolluting` (adjective); group: none; key: `clean%3:00:03::`; gloss: not spreading pollution or
+    contamination; especially radioactive contamination
+  - `clean#ritually-pure` (adjective); group: none; key: `clean%3:00:04::`; gloss: ritually clean or pure
+  - `clean#trouble-free` (adjective); group: none; key: `clean%5:00:00:easy:01`; gloss: without difficulties or problems
+  - `clean#unaltered` (adjective); group: none; key: `clean%5:00:00:legible:00`; gloss: (of a manuscript) having few
+    alterations or corrections
+  - `clean#unarmed` (adjective); group: none; key: `clean%5:00:00:unarmed:01`; gloss: not carrying concealed weapons
+  - `clean#uninfected` (adjective); group: none; key: `clean%5:00:00:antiseptic:00`; gloss: free from sepsis or
+    infection
+  - `clean#completely` (adverb); group: none; key: `clean%4:02:04::`; gloss: completely; used as intensifiers
+  - `clean#fairly` (adverb); group: none; key: `clean%4:02:00::`; gloss: in conformity with the rules or laws and
+    without fraud or cheating
 - **cleanly**; parts of speech: adjective, adverb; forms: cleanlier, cleanliest
   - `cleanly#clean-habit` (adjective); group: none; key: `cleanly%5:00:00:clean:01`; gloss: habitually clean
   - `cleanly#deftly` (adverb); group: none; key: `cleanly%4:02:00::`; gloss: smoothly and without difficulty; precisely
@@ -3695,6 +3775,8 @@ frequent sense of a part of speech first).
   - `flush#poker-flush` (noun); group: none; key: `flush%1:14:00::`; gloss: a poker hand with all 5 cards in the same
     suit
   - `flush#release` (noun); group: none; key: `flush%1:12:00::`; gloss: the swift release of a store of affective force
+  - `flush#fluid-flush` (noun); group: none; key: project sense; gloss: a procedure that cleans or clears a system by
+    passing liquid through it (a cooling-system flush)
   - `flush#redden` (verb); group: none; key: `flush%2:29:00::`; gloss: turn red, as if in embarrassment or shame
   - `flush#channel` (verb); group: none; key: `flush%2:30:00::`; gloss: cause to flow through something
   - `flush#flood` (verb); group: none; key: `flush%2:30:03::`; gloss: cause to flow or flood with or as if with water
@@ -4653,6 +4735,16 @@ frequent sense of a part of speech first).
   - `inside#privately` (adverb); group: none; key: `inside%4:02:03::`; gloss: with respect to private feelings
   - `inside#within-preposition` (preposition); group: none; key: project sense; gloss: within the interior or boundaries
     of something
+- **inspect**; parts of speech: verb; forms: inspected, inspecting, inspects
+  - `inspect#examine` (verb); group: none; key: `inspect%2:39:00::`; gloss: look over carefully
+  - `inspect#official-visit` (verb); group: none; key: `inspect%2:38:00::`; gloss: come to see in an official or
+    professional capacity
+  - `inspect#verify-accuracy` (verb); group: none; key: `inspect%2:31:00::`; gloss: examine carefully for accuracy with
+    the intent of verification
+- **install**; parts of speech: verb; forms: installed, installing, installs
+  - `install#set-up` (verb); group: none; key: `install%2:35:00::`; gloss: set up for use
+  - `install#appoint` (verb); group: none; key: `install%2:41:00::`; gloss: put into an office or a position
+  - `install#put-in-place` (verb); group: none; key: `install%2:35:01::`; gloss: place
 - **insult**; parts of speech: noun, verb; forms: insulted, insulting, insults
   - `insult#abuse` (noun); group: none; key: `insult%1:10:00::`; gloss: a rude expression intended to offend or hurt
   - `insult#affront` (noun); group: none; key: `insult%1:04:00::`; gloss: a deliberately offensive act or something
@@ -5053,6 +5145,8 @@ frequent sense of a part of speech first).
   - `lead#tip` (noun); group: none; key: `lead%1:10:02::`; gloss: an indication of potential opportunity
   - `lead#winning-score` (noun); group: none; key: `lead%1:23:00::`; gloss: (sports) the score by which a team or
     individual is winning
+  - `lead#electrical-lead` (noun); group: none; key: project sense; gloss: an electrical conductor or wire with a
+    terminal that connects a component, instrument, or circuit (a meter lead, a test lead)
   - `lead#guide` (verb); group: none; key: `lead%2:38:01::`; gloss: take somebody somewhere
   - `lead#leave-residue` (verb); group: none; key: `lead%2:42:04::`; gloss: produce as a result or residue
   - `lead#result-in` (verb); group: none; key: `lead%2:42:12::`; gloss: tend to or result in
@@ -5722,6 +5816,26 @@ frequent sense of a part of speech first).
 - **moped**; parts of speech: noun; forms: mopeds
   - `moped#pedal-motorbike` (noun); group: none; key: `moped%1:06:00::`; gloss: a motorbike that can be pedaled or
     driven by a low-powered gasoline engine
+- **mount**; parts of speech: noun, verb; forms: mounted, mounting, mounts
+  - `mount#riding-horse` (noun); group: none; key: `mount%1:05:00::`; gloss: a lightweight horse kept for riding only
+  - `mount#climbing` (noun); group: none; key: `mount%1:04:00::`; gloss: the act of climbing something
+  - `mount#backing` (noun); group: none; key: `mount%1:06:00::`; gloss: something forming a back that is added for
+    strengthening
+  - `mount#gem-setting` (noun); group: none; key: `mount%1:06:01::`; gloss: a mounting consisting of a piece of metal
+    (as in a ring or other jewelry) that holds a gem in place
+  - `mount#mountain` (noun); group: none; key: `mount%1:17:00::`; gloss: a land mass that projects well above its
+    surroundings; higher than a hill
+  - `mount#mounting-fixture` (noun); group: none; key: project sense; gloss: a fixture, bracket, or support that holds a
+    component or piece of equipment in place (an engine mount, a motor mount)
+  - `mount#attach` (verb); group: none; key: `mount%2:35:00::`; gloss: attach to a support
+  - `mount#advance` (verb); group: none; key: `mount%2:30:00::`; gloss: go up or advance
+  - `mount#secure` (verb); group: none; key: `mount%2:30:01::`; gloss: fix onto a backing, setting, or support
+  - `mount#launch` (verb); group: none; key: `mount%2:36:00::`; gloss: put up or launch
+  - `mount#ascend` (verb); group: none; key: `mount%2:38:00::`; gloss: go upward with gradual or continuous progress
+  - `mount#mount-animal` (verb); group: none; key: `mount%2:38:01::`; gloss: get up on the back of
+  - `mount#copulate` (verb); group: none; key: `mount%2:35:07::`; gloss: copulate with
+  - `mount#equip` (verb); group: none; key: `mount%2:36:01::`; gloss: prepare and supply with the necessary equipment
+    for execution or performance
 - **mouth**; parts of speech: noun, verb; forms: mouthed, mouthing, mouths
   - `mouth#oral-cavity` (noun); group: none; key: `mouth%1:08:01::`; gloss: the opening through which food is taken in
     and vocalizations emerge
@@ -6836,6 +6950,40 @@ frequent sense of a part of speech first).
   - `pop#with-pop` (adverb); group: none; key: `pop%4:02:00::`; gloss: like a pop or with a pop
   - `pop#exclamation` (interjection); group: none; key: project sense; gloss: used to imitate a short, sharp explosive
     sound
+- **position**; parts of speech: noun, verb; forms: positioned, positioning, positions
+  - `position#place` (noun); group: none; key: `position%1:15:00::`; gloss: the particular portion of space occupied by
+    something
+  - `position#military-position` (noun); group: none; key: `position%1:15:02::`; gloss: a point occupied by troops for
+    tactical reasons
+  - `position#perspective` (noun); group: none; key: `position%1:09:00::`; gloss: a way of regarding situations or
+    topics etc.
+  - `position#body-posture` (noun); group: none; key: `position%1:07:01::`; gloss: the arrangement of the body and its
+    limbs
+  - `position#job` (noun); group: none; key: `position%1:04:01::`; gloss: a job in an organization
+  - `position#status` (noun); group: none; key: `position%1:26:00::`; gloss: the relative position or standing of things
+    or especially persons in a society
+  - `position#spatial-relation` (noun); group: none; key: `position%1:07:00::`; gloss: the spatial property of a place
+    where or way in which something is situated
+  - `position#customary-place` (noun); group: none; key: `position%1:15:03::`; gloss: the appropriate or customary
+    location
+  - `position#player-role` (noun); group: none; key: `position%1:04:02::`; gloss: (in team sports) the role assigned to
+    an individual player
+  - `position#placement` (noun); group: none; key: `position%1:04:00::`; gloss: the act of putting something in a
+    certain place
+  - `position#mental-stance` (noun); group: none; key: `position%1:09:01::`; gloss: a rationalized mental attitude
+  - `position#situation` (noun); group: none; key: `position%1:26:02::`; gloss: a condition or position in which you
+    find yourself
+  - `position#assumption` (noun); group: none; key: `position%1:04:04::`; gloss: the act of positing; an assumption
+    taken as a postulate or axiom
+  - `position#list-item` (noun); group: none; key: `position%1:10:01::`; gloss: an item on a list or in a sequence
+  - `position#opposing-opinion` (noun); group: none; key: `position%1:10:00::`; gloss: an opinion that is held in
+    opposition to another in an argument or dispute
+  - `position#replacement-post` (noun); group: none; key: `position%1:04:03::`; gloss: the post or function properly or
+    customarily occupied or served by another
+  - `position#put-in-place` (verb); group: none; key: `position%2:38:00::`; gloss: cause to be in an appropriate place,
+    state, or relation
+  - `position#locate` (verb); group: none; key: `position%2:35:00::`; gloss: put into a certain place or abstract
+    location
 - **post**; parts of speech: noun, verb; forms: posted, posting, posts
   - `post#berth` (noun); group: none; key: `post%1:04:00::`; gloss: a job in an organization
   - `post#military-post` (noun); group: none; key: `post%1:06:01::`; gloss: military installation at which a body of
@@ -7773,6 +7921,18 @@ frequent sense of a part of speech first).
   - `remount#provide-fresh-horses` (verb); group: none; key: `remount%2:34:00::`; gloss: provide with fresh horses
   - `remount#reassemble` (verb); group: none; key: `remount%2:35:00::`; gloss: mount again, as after disassembling
     something
+- **remove**; parts of speech: noun, verb; forms: removed, removes, removing
+  - `remove#distance` (noun); group: none; key: `remove%1:07:00::`; gloss: degree of figurative distance or separation
+  - `remove#take-away` (verb); group: none; key: `remove%2:30:00::`; gloss: remove something concrete, as by lifting,
+    pushing, or taking off, or remove something abstract
+  - `remove#dismiss` (verb); group: none; key: `remove%2:41:00::`; gloss: remove from a position or an office
+  - `remove#dispose-of` (verb); group: none; key: `remove%2:40:00::`; gloss: dispose of
+  - `remove#expel` (verb); group: none; key: `remove%2:41:02::`; gloss: cause to leave
+  - `remove#transfer` (verb); group: none; key: `remove%2:38:00::`; gloss: shift the position or location of, as for
+    business, legal, educational, or military purposes
+  - `remove#stay-away` (verb); group: none; key: `remove%2:30:01::`; gloss: stay away or leave
+  - `remove#bump-off` (verb); group: none; key: `remove%2:41:01::`; gloss: kill intentionally and with premeditation
+  - `remove#eliminate` (verb); group: none; key: `remove%2:30:02::`; gloss: get rid of something abstract
 - **rent**; parts of speech: noun, verb; forms: rented, renting, rents
   - `rent#rent-payment` (noun); group: none; key: `rent%1:21:00::`; gloss: a payment or series of payments made by the
     lessee to an owner for use of some property, facility, equipment, or service
@@ -8437,6 +8597,75 @@ frequent sense of a part of speech first).
   - `rule#draw-line` (verb); group: none; key: `rule%2:36:00::`; gloss: mark or draw with a ruler
   - `rule#excel` (verb); group: none; key: `rule%2:42:05::`; gloss: be excellent or outstanding
   - `rule#restrain` (verb); group: none; key: `rule%2:30:00::`; gloss: keep in check
+- **run**; parts of speech: noun, verb; forms: ran, running, runs
+  - `run#baseball-run` (noun); group: none; key: `run%1:04:01::`; gloss: a score in baseball made by a runner touching
+    all four bases safely
+  - `run#testing` (noun); group: none; key: `run%1:04:06::`; gloss: the act of testing something
+  - `run#foot-race` (noun); group: none; key: `run%1:11:02::`; gloss: a race run on foot
+  - `run#football-run` (noun); group: none; key: `run%1:04:02::`; gloss: (American football) a play in which a player
+    attempts to carry the ball through or past the opposing team
+  - `run#regular-trip` (noun); group: none; key: `run%1:04:04::`; gloss: a regular trip
+  - `run#running` (noun); group: none; key: `run%1:04:00::`; gloss: the act of running; traveling on foot at a fast pace
+  - `run#streak` (noun); group: none; key: `run%1:14:00::`; gloss: an unbroken series of events
+  - `run#chronological-sequence` (noun); group: none; key: `run%1:07:00::`; gloss: an unbroken chronological sequence
+  - `run#election-race` (noun); group: none; key: `run%1:11:03::`; gloss: a race between candidates for elective office
+  - `run#fluid-discharge` (noun); group: none; key: `run%1:11:00::`; gloss: the pouring forth of a fluid
+  - `run#ladder-stitches` (noun); group: none; key: `run%1:11:01::`; gloss: a row of unravelled stitches
+  - `run#operating-period` (noun); group: none; key: `run%1:28:00::`; gloss: the continuous period of time during which
+    something (a machine or a factory) operates or continues in operation
+  - `run#production-output` (noun); group: none; key: `run%1:23:00::`; gloss: the production achieved during a
+    continuous period of operation (of a machine or factory etc.)
+  - `run#short-trip` (noun); group: none; key: `run%1:04:05::`; gloss: a short trip
+  - `run#small-stream` (noun); group: none; key: `run%1:17:00::`; gloss: a small stream
+  - `run#use-freedom` (noun); group: none; key: `run%1:26:00::`; gloss: unrestricted freedom to use
+  - `run#move-fast` (verb); group: none; key: `run%2:38:00::`; gloss: move fast by using one's feet, with one foot off
+    the ground at any given time
+  - `run#flee` (verb); group: none; key: `run%2:38:04::`; gloss: flee; take to one's heels; cut and run
+  - `run#span` (verb); group: none; key: `run%2:42:00::`; gloss: stretch out over a distance, space, time, or scope; run
+    or extend between two points or beyond a certain point
+  - `run#manage` (verb); group: none; key: `run%2:41:02::`; gloss: direct or control; projects, businesses, etc.
+  - `run#have-form` (verb); group: none; key: `run%2:42:04::`; gloss: have a particular form
+  - `run#liquid-flow` (verb); group: none; key: `run%2:38:01::`; gloss: move along, of liquids
+  - `run#work` (verb); group: none; key: `run%2:35:00::`; gloss: perform as expected when applied
+  - `run#seek-office` (verb); group: none; key: `run%2:33:06::`; gloss: run, stand, or compete for an office or a
+    position
+  - `run#vary` (verb); group: none; key: `run%2:42:07::`; gloss: change or be different within limits
+  - `run#play-recording` (verb); group: none; key: `run%2:36:01::`; gloss: cause to emit recorded audio or video
+  - `run#roam` (verb); group: none; key: `run%2:38:11::`; gloss: move about freely and without restraint, or act as if
+    running around in an uncontrolled way
+  - `run#activate` (verb); group: none; key: `run%2:30:07::`; gloss: cause to perform
+  - `run#change-state` (verb); group: none; key: `run%2:30:03::`; gloss: change from one state to another
+  - `run#operate` (verb); group: none; key: `run%2:35:04::`; gloss: be operating, running or functioning
+  - `run#tend` (verb); group: none; key: `run%2:42:01::`; gloss: have a tendency or disposition to do or be something;
+    be inclined
+  - `run#broadcast` (verb); group: none; key: `run%2:36:02::`; gloss: include as the content; broadcast or publicize
+  - `run#complete` (verb); group: none; key: `run%2:36:00::`; gloss: conduct to completion
+  - `run#cross` (verb); group: none; key: `run%2:35:01::`; gloss: pass over, across, or through
+  - `run#execute` (verb); group: none; key: `run%2:41:00::`; gloss: carry out a process or program, as on a computer or
+    a machine
+  - `run#persist` (verb); group: none; key: `run%2:42:03::`; gloss: continue to exist
+  - `run#recur` (verb); group: none; key: `run%2:42:06::`; gloss: occur persistently
+  - `run#undergo` (verb); group: none; key: `run%2:42:02::`; gloss: be affected by; be subjected to
+  - `run#cover-distance` (verb); group: none; key: `run%2:38:05::`; gloss: cover by running; run a certain distance
+  - `run#diffuse` (verb); group: none; key: `run%2:38:08::`; gloss: be diffused
+  - `run#direct` (verb); group: none; key: `run%2:42:08::`; gloss: cause something to pass or lead somewhere
+  - `run#drive-animal` (verb); group: none; key: `run%2:38:10::`; gloss: cause an animal to move fast
+  - `run#illicit-trade` (verb); group: none; key: `run%2:40:06::`; gloss: deal in illegally, such as arms or liquor
+  - `run#run-before-wind` (verb); group: none; key: `run%2:38:03::`; gloss: sail before the wind
+  - `run#succeed` (verb); group: none; key: `run%2:41:01::`; gloss: make without a miss
+  - `run#associate` (verb); group: none; key: `run%2:38:02::`; gloss: keep company
+  - `run#carry-ball` (verb); group: none; key: `run%2:38:06::`; gloss: run with the ball; in such sports as football
+  - `run#come-undone` (verb); group: none; key: `run%2:30:04::`; gloss: become undone
+  - `run#compete` (verb); group: none; key: `run%2:33:01::`; gloss: compete in a race
+  - `run#last` (verb); group: none; key: `run%2:42:05::`; gloss: extend or continue for a certain period of time
+  - `run#liquefy` (verb); group: none; key: `run%2:30:00::`; gloss: reduce or cause to be reduced from a solid to a
+    liquid state, usually by heating
+  - `run#pasture-animals` (verb); group: none; key: `run%2:41:04::`; gloss: set animals loose to graze
+  - `run#progress-through-change` (verb); group: none; key: `run%2:30:02::`; gloss: progress by being changed
+  - `run#pursue-game` (verb); group: none; key: `run%2:33:02::`; gloss: pursue for food or sport (as of wild animals)
+  - `run#travel-rapidly` (verb); group: none; key: `run%2:38:13::`; gloss: travel rapidly, by any (unspecified) means
+  - `run#travel-route` (verb); group: none; key: `run%2:38:09::`; gloss: travel a route regularly
+  - `run#unravel` (verb); group: none; key: `run%2:30:01::`; gloss: come unraveled or undone as if by snagging
 
 ### Lemmas Starting With S
 
@@ -9190,6 +9419,9 @@ frequent sense of a part of speech first).
   - `spot#mark` (verb); group: none; key: `spot%2:30:00::`; gloss: mark with a spot or spots so as to allow easy
     recognition
   - `spot#spot-mark` (verb); group: none; key: `spot%2:35:00::`; gloss: make a spot or mark onto
+- **spotted**; parts of speech: adjective; no other forms
+  - `spotted#adjective` (adjective); group: none; key: `spotted%5:00:00:patterned:00`; gloss: having spots or patches
+    (small areas of contrasting color or texture)
 - **spray**; parts of speech: noun, verb; forms: sprayed, spraying, sprays
   - `spray#spray-mixture` (noun); group: none; key: `spray%1:27:01::`; gloss: a pesticide in suspension or solution;
     intended for spraying
@@ -9810,6 +10042,43 @@ frequent sense of a part of speech first).
   - `supply#cater` (verb); group: none; key: `supply%2:34:00::`; gloss: give what is desired or needed, especially
     support, food or sustenance
   - `supply#elaborate` (verb); group: none; key: `supply%2:32:00::`; gloss: state or say further
+- **support**; parts of speech: noun, verb; forms: supported, supporting, supports
+  - `support#maintenance` (noun); group: none; key: `support%1:04:04::`; gloss: the activity of providing for or
+    maintaining by supplying with money or necessities
+  - `support#aid` (noun); group: none; key: `support%1:04:00::`; gloss: aiding the cause or policy or interests of
+  - `support#influence` (noun); group: none; key: `support%1:09:00::`; gloss: something providing immaterial assistance
+    to a person or cause or interest
+  - `support#reinforcement` (noun); group: none; key: `support%1:04:03::`; gloss: a military operation (often involving
+    new supplies of men and materiel) to strengthen a military force or aid in the performance of its mission
+  - `support#documentation` (noun); group: none; key: `support%1:04:02::`; gloss: documentary validation
+  - `support#bearing-weight` (noun); group: none; key: `support%1:04:01::`; gloss: the act of bearing the weight of or
+    strengthening
+  - `support#livelihood` (noun); group: none; key: `support%1:21:00::`; gloss: the financial means whereby one lives
+  - `support#support-structure` (noun); group: none; key: `support%1:06:01::`; gloss: supporting structure that holds up
+    or provides a foundation
+  - `support#accompaniment` (noun); group: none; key: `support%1:10:01::`; gloss: a musical part (vocal or instrumental)
+    that supports or provides background for other musical parts
+  - `support#support-device` (noun); group: none; key: `support%1:06:00::`; gloss: any device that bears the weight of
+    another thing
+  - `support#project-funding` (noun); group: none; key: `support%1:21:01::`; gloss: financial resources provided to make
+    some project possible
+  - `support#encourage` (verb); group: none; key: `support%2:41:00::`; gloss: give moral or psychological support, aid,
+    or courage to
+  - `support#provide-for` (verb); group: none; key: `support%2:40:00::`; gloss: support materially or financially
+  - `support#bear-weight` (verb); group: none; key: `support%2:35:00::`; gloss: be the physical support of; carry the
+    weight of
+  - `support#endorse` (verb); group: none; key: `support%2:41:01::`; gloss: be behind; approve of
+  - `support#substantiate` (verb); group: none; key: `support%2:31:00::`; gloss: establish or strengthen as with new
+    evidence or facts
+  - `support#believe` (verb); group: none; key: `support%2:32:00::`; gloss: adopt as a belief
+  - `support#corroborate` (verb); group: none; key: `support%2:42:00::`; gloss: support with evidence or authority or
+    make more certain or confirm
+  - `support#defend` (verb); group: none; key: `support%2:32:01::`; gloss: argue or speak in defense of
+  - `support#patronize` (verb); group: none; key: `support%2:32:02::`; gloss: be a regular customer or client of
+  - `support#subordinate-role` (verb); group: none; key: `support%2:36:00::`; gloss: play a subordinate role to (another
+    performer)
+  - `support#tolerate` (verb); group: none; key: `support%2:31:04::`; gloss: put up with something or somebody
+    unpleasant
 - **suppose**; parts of speech: verb; forms: supposed, supposes, supposing
   - `suppose#say` (verb); group: none; key: `suppose%2:32:00::`; gloss: express a supposition
   - `suppose#guess` (verb); group: none; key: `suppose%2:31:00::`; gloss: expect, believe, or suppose
@@ -9961,6 +10230,8 @@ frequent sense of a part of speech first).
   - `tap#tool` (noun); group: none; key: `tap%1:06:02::`; gloss: a tool for cutting female (internal) screw threads
   - `tap#wiretap` (noun); group: none; key: `tap%1:04:01::`; gloss: the act of tapping a telephone or telegraph line to
     get information
+  - `tap#tapping-point` (noun); group: none; key: project sense; gloss: a connection point in a line, circuit, or
+    winding from which pressure, signal, or current is taken (a pressure tap, a 24 V tap)
   - `tap#cut` (verb); group: none; key: `tap%2:35:02::`; gloss: cut a female screw thread with a tap
   - `tap#draw` (verb); group: none; key: `tap%2:40:00::`; gloss: draw from or dip into to get something
   - `tap#exploit` (verb); group: none; key: `tap%2:34:00::`; gloss: draw from; make good use of
@@ -10140,6 +10411,8 @@ frequent sense of a part of speech first).
     injury
   - `torn#adjective` (adjective); group: none; key: `torn%5:00:00:divided:00`; gloss: disrupted by the pull of contrary
     forces
+- **torque**; parts of speech: noun; forms: torqued, torques, torquing
+  - `torque#twisting-force` (noun); group: none; key: `torque%1:19:00::`; gloss: a twisting force
 - **torture**; parts of speech: noun, verb; forms: tortured, tortures, torturing
   - `torture#anguish` (noun); group: `torture#group:severe-suffering`; key: `torture%1:12:02::`; gloss: extreme mental
     distress
@@ -10704,6 +10977,10 @@ frequent sense of a part of speech first).
   - `use#exploit` (verb); group: none; key: `use%2:41:14::`; gloss: seek or achieve an end by using to one's advantage
   - `use#used-to` (verb); group: none; key: `use%2:41:03::`; gloss: habitually do something or be in a certain state or
     place (use only in the past tense)
+- **used**; parts of speech: adjective; no other forms
+  - `used#employed` (adjective); group: none; key: `used%3:00:00::`; gloss: employed in accomplishing something
+  - `used#exploited` (adjective); group: none; key: `used%5:00:02:misused:00`; gloss: (of persons) taken advantage of
+  - `used#secondhand` (adjective); group: none; key: `used%5:00:00:old:01`; gloss: previously used or owned by another
 
 ### Lemmas Starting With V
 

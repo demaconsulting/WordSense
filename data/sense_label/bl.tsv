@@ -1,5 +1,6 @@
 sense_id	label	origin
 dema-blast-i-1	interjection	project
+dema-bleed-v-1	vent	project
 dema-blimey-i-1	interjection	project
 dema-blimy-i-1	interjection	project
 oewn-blab__2.32.00..	babble	generated
@@ -338,11 +339,11 @@ oewn-bleb__1.08.00..	noun	generated
 oewn-blebbed__5.00.00.blemished.00	adjective	generated
 oewn-blebby__5.00.00.blemished.00	blebbed	generated
 oewn-blebby__5.00.00.unhealthy.00	blistery	generated
-oewn-bleed__2.29.00..	hemorrhage	generated
-oewn-bleed__2.29.01..	leech	generated
-oewn-bleed__2.30.00..	empty	generated
-oewn-bleed__2.38.00..	run	generated
-oewn-bleed__2.40.09..	extort	generated
+oewn-bleed__2.29.00..	hemorrhage	curated
+oewn-bleed__2.29.01..	leech	curated
+oewn-bleed__2.30.00..	drain	curated
+oewn-bleed__2.38.00..	spread	curated
+oewn-bleed__2.40.09..	extort	curated
 oewn-bleeder__1.18.00..	noun	generated
 oewn-bleeding__1.26.00..	noun	generated
 oewn-bleep__1.11.00..	noun	generated

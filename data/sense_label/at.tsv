@@ -176,11 +176,11 @@ oewn-atsugewi__1.18.00..	hoka	generated
 oewn-attacapa__1.10.00..	noun	generated
 oewn-attacapan__1.10.00..	atakapa	generated
 oewn-attacapan__1.18.00..	atakapa-2	generated
-oewn-attach__2.35.00..	conjoin	generated
-oewn-attach__2.35.01..	connect	generated
-oewn-attach__2.35.02..	adjoin	generated
-oewn-attach__2.40.00..	confiscate	generated
-oewn-attach__2.41.03..	bind	generated
+oewn-attach__2.35.00..	become-attached	curated
+oewn-attach__2.35.01..	connect	curated
+oewn-attach__2.35.02..	be-attached	curated
+oewn-attach__2.40.00..	seize	curated
+oewn-attach__2.41.03..	bond	curated
 oewn-attachable__3.00.00..	adjective	generated
 oewn-attache__1.06.00..	attache-case	generated
 oewn-attache__1.18.00..	specialiser	generated

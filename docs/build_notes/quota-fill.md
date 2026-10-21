@@ -94,6 +94,7 @@ the open part-of-speech corpus and SemCor.
 | 0 (relabeled corpus) | 845 in scope | 0 | 0 | 2,293 + 1,066 | 1,066 / 3,174 / 2,616 | 45,434 / 12,231 | 80.21% | 85.44% |
 | 1 | 1-50 (most frequent) | 3,361 + 1,400 | 4,488 + 699 | 4,942 + 1,525 | 1,775 / 2,896 / 2,185 | 37,585 / 10,132 | 76.71% | 83.74% |
 | 2 | 51-120, plus extra real anchors of rare and confused senses | 3,407 + 359 | 6,589 + 2,042 | 2,594 + 715 | 2,673 / 2,507 / 1,676 | 28,221 / 7,731 | 76.46% | 84.74% |
+| 3 (last of this branch) | 121-200 and the technical lemmas (19, of which 12 are new), the senses of waves 1-2 that stayed short | 2,583 + 256 | 8,730 + 2,481 | 3,494 + 813 | 3,837 / 1,995 / 1,204 (all 7,036) | 19,968 / 5,537 | 75.70% | 84.98% |
 
 <!-- markdownlint-enable MD013 -->
 
@@ -112,16 +113,20 @@ The headline since the calibration is the **real-text test split**:
 | 1 (calibrated) | BERT base cased | 3,413 | 16.26%, 96.58% | 73.01% | 97.07% | 89.70% |
 | 2 | MiniLM | 3,623 | 10.87%, 94.16% | 66.91% | 95.80% | 81.04% |
 | 2 | BERT base cased | 3,623 | 22.69%, 96.59% | 75.43% | 97.41% | 88.88% |
+| 3 | MiniLM | 3,751 | 10.29%, 95.34% | 66.76% | 95.71% | 79.07% |
+| 3 | BERT base cased | 3,751 | 23.38%, 96.58% | 75.71% | 97.55% | 88.43% |
 
 <!-- markdownlint-enable MD013 -->
 
-The wave 2 test split has 210 more rows (the evaluation documents of the new harvest are test or calibration documents
-by hash, 359 new real held-out rows in all), so the two waves are measured on nearly the same sentences. The sense share
-grows by 3 (MiniLM) and 6.4 points (BERT) at an unchanged precision, the fine top-1 by 1.6 and 2.4 points: the new
-real anchors and written senses of the 70 lemmas of ranks 51-120 raise the share of answered sentences, since the
-thresholds are calibrated on real text. The written held-out figures fall slightly because that set grew by 2,042 rows
-of harder, rarer senses. The target of 95% sense precision on the real test split is met by BERT (96.6%); MiniLM stays
-at 94.2%.
+The held-out sets of the two later rows differ: the wave 2 test split has 210 more rows than wave 1, the wave 3 split 128
+more than wave 2 (the real held-out sentences come from the evaluation documents of each harvest, and the technical
+text of wave 3 adds hard rows), so the lines compare nearly, not exactly, the same sentences. Wave 3 added far fewer real
+test rows than wave 2 because the harvest of the lemmas of ranks 121-200 finds few sentences per lemma. The sense share
+and precision meet the 95% target for both encoders (MiniLM 95.3%, BERT 96.6%); the fine top-1 stays flat for the old
+lemmas (what grows is the share of the sentences that the encoder answers at the sense level, 23.4% for BERT).
+From wave 1 to wave 2 the sense share grew by 3 (MiniLM) and 6.4 points (BERT) at an unchanged precision and the fine top-1
+by 1.6 and 2.4 points (the new real anchors and written senses of the lemmas of ranks 51-120, with the thresholds
+calibrated on real text); the written held-out figures fall because that set grows with harder, rarer senses.
 
 ## Real-text threshold calibration
 
@@ -259,3 +264,104 @@ Lemmas of ranks 51-120 (by WordNet 3.0 tag count) with a deficit, plus the sense
 - **Not filled**: after waves 1-2, 153 short and 30 empty senses of the 2,023 senses of the 120 lemmas (1,128 anchors
   and 150 held-out sentences missing; `corpus/coverage/quota-unfilled.tsv` lists 183 senses). Over all senses 2,673 meet
   the quota, 2,507 are short and 1,676 empty (28,221 anchors and 7,731 held-out sentences missing).
+
+## Wave 3 in detail (the last wave of this branch)
+
+Wave 3 has three parts: the lemmas of ranks 121-200 (80 lemmas), a second round for the senses of waves 1-2 that stayed
+short, and the **technical lemmas** (owner priority; see the next section). Later waves (ranks 201 and on) are follow-up
+work.
+
+- **Real harvest**: the 80 wave lemmas, the 19 technical lemmas and the lemmas with extra real anchors (the extras are
+  chosen again from the calibration-split errors of the wave 2 encoders: 2,840 senses, 915 of them confused, 7,797 real
+  anchors wanted): 6,450 candidates in 29 batches, plus 3,891 FAA candidates for the technical lemmas in 17 more batches
+  (a document cap of 60 per lemma, because a handbook is one long document): 10,341 candidates, 8,505 labeled by
+  `gpt-6.1-sol` (82.2%; 8,085 high, 420 low) and 1,836 `unsure` (17.8%, the technical words are harder). Selected: 2,170
+  anchors and 256 held-out sentences (FAA 773, Tatoeba 840, VOA 296, NPS 177, USGS 176, NWS 85, Gutenberg 79).
+- **Written**: 19,665 sentences asked for 1,152 senses in 94 batches of `gpt-5.6-luna`; 19,410 passed the checks (187
+  non-ASCII, 67 form not allowed); in 85 blind batches of sol 16,527 (85.1%) got the intended sense (15,794 high), 1,373
+  another sense, 1,510 `unsure`. All verified sentences were kept: 7,755 anchors and 2,419 held-out sentences.
+- **Second round for the senses that stayed short** (waves 1-2, 181 senses): a different writer prompt
+  (`prompts/sentence-writer-retry.md`: find the feature that separates the sense from its nearest sibling and build every
+  sentence around cue words that fit only the intended sense). 2,384 sentences in 12 batches, 2,350 valid, only 837
+  (35.6%) got the intended sense in the blind pass (734 high) against 33% for the old prompt: the blocking factor is the
+  sibling sense, not the wording of the prompt. Selected 441 anchors and 52 held-out sentences; 196 slots stay open.
+- **Choosers**: roles now apply to the chooser rows too (a document gives either anchors or held-out rows, so the 741
+  rows of wave 2 that broke the rule were removed and the file regenerated). 80 forms in 13 batches of the lemma-choice
+  harvest (2,810 items, 2,381 high) gave 347 + 23 rows after the roles; 62 written (form, lemma) pairs (496 sentences,
+  3 luna and 3 sol batches) gave 144 + 50 rows; the sentences of the fine-sense rows added 460 + 58 (real), 2,167 + 654
+  (written), 124 + 24 (round 2) and 252 + 4 (technical). 416 of the 462 forms with chooser rows are complete (33 lack a
+  lemma). Form choosers on 3,491 held-out chooser sentences: MiniLM top-1 91.86% (answered 80.21% at precision 96.21%),
+  BERT 95.88% (92.27% at 97.61%).
+- **Retrain**: 780 lemmas per encoder (MiniLM: fine threshold for 713, never for 67; BERT 749 and 31). Half-precision
+  gate on 19,453 held-out rows: MiniLM 75.70%, BERT 84.98%.
+- **Suite** (348 rows): fine MiniLM 92.2% (H 92.4, M 96.0, C 87.0; 92.0% before), BERT base cased 95.4% (H 96.2, M 96.8,
+  C 92.4; 94.8% before); part of speech of the selected analysis: Basic 91.7%, MiniLM 94.5%, BERT 97.1%.
+- **Batches** (whole wave): `gpt-6.1-sol` 46 + 101 + 16 + 2 = 165 (harvest, blind labels, lemma choice, the technical pick
+  and the gap finder), `gpt-5.6-luna` 94 + 12 + 5 + 5 + 3 = 119 (writers, the technical writer, the label review and the
+  chooser writer).
+- **Not filled**: after waves 1-3, over all 7,036 senses 3,837 meet the quota, 1,995 are short and 1,204 empty (19,968
+  anchors and 5,537 held-out sentences missing). In the 216 lemmas of waves 1-3 (and the technical lemmas) 193 senses are
+  short and 39 empty (1,550 anchors and 230 held-out sentences missing); `corpus/coverage/quota-unfilled.tsv` lists the
+  232 senses with the number of sentences written and confirmed. They are the senses whose nearest sibling the blind
+  labeler prefers; they are candidates for the group and curation review of the follow-up work.
+
+## Technical (STE-style) lemmas
+
+Maintenance and engineering instructions ("Mount the bracket to the frame.", "Torque the bolts to 25 N m.") use words
+in senses that the encoders had not seen. A probe (30 simplified-technical-English sentences and the two owner sentences,
+272 tokens; the result tables are in the session files `steprobe/report.md`) found that `arm`, `seal`, `check`, `lead`,
+`flush` and `tap` were answered with their common sense, that `mount`, `bearing`, `bleed` and `run` had no classifier at
+all, that the verb `torque` and the adjective `damaged` had no analysis, and that two meanings (the noun `mount` as a
+fixture, `bleed` as releasing air) were not in the catalog. Wave 3 closes these gaps in the data first:
+
+- **Analyses** (`corpus/lexicon`): the verb `torque` (`additions.tsv`) and the adjective `damaged` with `drained`, `drilled`
+  and `alloyed` (`own-adjectives.tsv`, read by `rebuild-forms`; the form generator now keeps the analysis of an adjective
+  entry that a reviewed verb row hid). Giving all 114 such participial adjective entries their analysis first was
+  measured and **reverted**: the real-text fine top-1 fell about two points, because the 248 test sentences whose target
+  form gained an adjective analysis (`based`, `covered`, `changed`, `driven`, ...) fell to 28-37% (the evaluation corpus
+  labels those forms with the verb senses only), so only the adjectives that technical text uses are listed (plus
+  `advance`, `beat`, `chance`, `sign` and `stretch`, whose adjective senses the written sentences of this wave use).
+- **Curation** (`corpus/curation`): 12 technical lemmas (`mount`, `bearing`, `bleed`, `torque`, `run`, `position`,
+  `support`, `install`, `remove`, `attach`, `inspect`, `clean`: 176 senses) joined the curation, and six project senses
+  were added to existing entries by `seed-inventory` (it now adds a keyless sense to the entry of a word the dictionary
+  has): `mount#mounting-fixture`, `bleed#vent`, `arm#prime-system`, `lead#electrical-lead`, `flush#fluid-flush` and
+  `tap#tapping-point`. `tech-senses.tsv` lists the 62 senses that technical text uses and their extra anchors.
+- **Training data**: 413 real FAA anchors for the technical senses (the FAA documents of the pool; a document supplies
+  at most 8 sentences of a sense) and 544 written technical sentences (`prompts/sentence-writer-ste.md`: imperative
+  steps, descriptions, warnings and checks with concrete parts and quantities; 85.4% of the 1,013 written got the
+  intended sense in the blind pass, much higher than the average because the technical senses are distinct), at least 8
+  written sentences per technical sense.
+
+**The probe before and after** (the same 272 tokens; "before" is the wave 2 build, "after" the wave 3 build):
+
+<!-- markdownlint-disable MD013 -->
+
+| Measure | Basic | MiniLM | BERT base cased |
+| --- | --- | --- | --- |
+| Part of speech of the 227 words (before -> after) | 94.7% -> 96.0% | 95.6% -> 97.4% | 94.3% -> 97.4% |
+| Words whose gold part of speech the lexicon lacks | 3 -> 0 | 3 -> 0 | 3 -> 0 |
+| First verb of an instruction (28 sentences) | 26 -> 27 | 26 -> 28 | 24 -> 28 |
+| Technical senses (24 tokens): the most probable sense is right | n/a | 14 -> 22 | 10 -> 20 |
+| Technical senses answered at the Sense level and right | 0 -> 0 | 0 -> 1 | 0 -> 2 |
+| Technical tokens whose sense the catalog lacked | 3 -> 0 | 3 -> 0 | 3 -> 0 |
+
+<!-- markdownlint-enable MD013 -->
+
+The most probable sense is now right for 22 (MiniLM) and 20 (BERT) of the 24 technical tokens (equivalent senses
+accepted: `bearing#rotating-support` for the bearing of a shaft, `mount#mount-animal` for riding, `run#activate` for
+running a pump). The remaining misses are `seal` as a stamp, `arm` as an armrest and `home` as on target (BERT), and
+`run#activate` against the gold `run#process`. **The sense-level answers stay rare** (1 and 2 of 24): the thresholds are
+calibrated on real text at the 97% target and nearly every technical token answers at the part-of-speech level, although
+its most probable sense is right. A lower, domain-specific threshold (calibration on technical text) would turn those
+answers into sense-level ones; that is follow-up work, as is the labeled technical real text that it needs. The
+unchanged categories of the probe are the copula plus participle states (`is closed`, `is not cracked`: 20 of 24 tokens
+right) and the particle `on`.
+
+**Gaps that remain** (found by the 30-sentence probe and by a `gpt-6.1-sol` review of the FAA sentences that the labeler
+could not place, `tools/quota-fill/gapfinder.py`): the noun `bleed` (engine bleed air, an idle air bleed), the verb `torque`
+as a sense (it has the verb analysis, but no entry, so no sense), the noun `lock` as a mechanism (a ground lock), the noun
+`arm` as a moment arm, the noun `bearing` as a contact stress, the noun `run` as a ground roll, the adjective `clean` as
+aerodynamically clean, the adjective `run` ("running landing"), the verb `support` as sustaining a process, the verb `tap`
+as making a branch connection (the noun `tap` is covered by the project sense), and `position` as a determination of
+location. Most of them need a project sense on an existing entry (supported by the seeder) or an entry for a part of
+speech that has none, which the form generator would have to mint.

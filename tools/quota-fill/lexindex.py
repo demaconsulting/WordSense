@@ -45,13 +45,19 @@ def corpus_rows(folder):
 
 
 def read_scope():
-    """Lemmas in scope = the lemmas of the curation (the senses of the coverage report)."""
+    """Lemmas in scope = the senses of the coverage report of the relabeled corpus plus the senses of the curation."""
     path = os.path.join(lexdata.CORPUS, "coverage", "relabel-coverage.tsv")
     ids = []
     with open(path, encoding="utf-8") as handle:
         next(handle)
         for line in handle:
             ids.append(line.split("\t", 1)[0])
+    seen = set(ids)
+    with open(os.path.join(lexdata.CORPUS, "curation", "senses.tsv"), encoding="utf-8", newline="") as handle:
+        for row in csv.DictReader(handle, delimiter="\t", quoting=csv.QUOTE_NONE):
+            if row["sense_id"] not in seen:
+                seen.add(row["sense_id"])
+                ids.append(row["sense_id"])
     return ids
 
 

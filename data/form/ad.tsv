@@ -1041,6 +1041,7 @@ aduncity	0		Number=Sing	dema	0	aduncity	n	moby_reverse
 adust	0	oewn-adust-a	Degree=Pos	dema	0			oewn_form
 advance	0	oewn-advance-n	Number=Sing	dema	1			carried
 advance	1	oewn-advance-v	VerbForm=Inf	dema	1			carried
+advance	2	oewn-advance-a	Degree=Pos	dema	0			oewn_form
 advance death benefit	0	oewn-advance_death_benefit-n	Number=Sing	dema	0			oewn_form
 advance death benefits	0	oewn-advance_death_benefit-n	Number=Plur	dema	0			rule
 advanced	0	oewn-advance-v	Tense=Past+VerbForm=Part	dema	1			carried

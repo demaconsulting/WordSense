@@ -1,0 +1,132 @@
+arming	arm	Verify that the warning indicator is green before {arming} the alarm panel.
+arming	arm	{Arming} the beacon enables its automatic activation on impact.
+arming	arm	Do not move the selector while {arming} the ignition system.
+armed	arm	The system remains {armed} while the access door is closed and latched.
+armed	arm	The technician {armed} the circuit only after replacing the fuse.
+armed	arm	The starter logic remains {armed} for ten seconds after the start command.
+armed	arm	The controller cannot be {armed} when the access cover sensor is open.
+attached	attach	The sensor remains {attached} to the manifold during the pressure test.
+attached	attach	When installed, the filter housing is {attached} to the intake duct.
+attached	attach	The drain hose remains {attached} to the collection tank during service.
+attached	attach	The inspection cover is {attached} to the hinge along its lower edge.
+attached	attach	The actuator rod is {attached} to the lever throughout the stroke.
+attached	attach	The foil shield is {attached} to the connector shell at both ends.
+attached	attach	The identification label is {attached} to the panel beside switch S2.
+attached	attach	The bonding wire is {attached} to the terminal and cannot move freely.
+attached	attach	The loose sensor becomes {attached} to the magnetic fixture when current is applied.
+attaches	attach	During assembly, the grounding braid {attaches} to the foil surface under pressure.
+attached	attach	The suction cup becomes {attached} to the glass after air evacuation.
+attaches	attach	The cable end {attaches} to the terminal when the spring clip closes.
+attached	attach	When heated, the repair patch becomes {attached} to the pipe surface.
+attached	attach	The test lead becomes {attached} to the contact pad when the clamp closes.
+attaches	attach	The metal chip {attaches} to the magnetic pickup during shaft rotation.
+attaches	attach	The seal ring {attaches} to the seat while the solvent evaporates.
+attached	attach	The technician {attached} the ground cable to the designated chassis stud.
+attaches	attach	The clamp {attaches} the exhaust duct to the engine outlet.
+attaches	attach	The coupling sleeve {attaches} the drive shaft to the gearbox input.
+bearing	bearing	Record the aircraft's {bearing} from the runway centerline before taxi.
+bearing	bearing	Read the magnetic {bearing} on the compass at each inspection marker.
+bearing	bearing	The radar displays the target's {bearing} and range on the screen.
+bearing	bearing	Calculate the vessel's {bearing} from the two GPS positions.
+bearing	bearing	The robot changes {bearing} when the guide beacon moves.
+bearing	bearing	Mark the cable route and its {bearing} on the installation drawing.
+bearing	bearing	Compare the measured {bearing} with the runway heading.
+bearing	bearing	The drone maintains its assigned {bearing} until it reaches waypoint 4.
+bearing	bearing	The {bearing} strut transfers landing loads into the fuselage frame.
+bearing	bearing	Never route a pipe through the {bearing} web without engineering approval.
+bearing	bearing	The crane hook must hang from a {bearing} lug.
+bearing	bearing	The {bearing} frame limits deflection to 2 mm under full load.
+bearing	bearing	Do not remove the {bearing} wall until temporary supports are in place.
+bearing	bearing	The {bearing} bracket carries the 450 kg motor assembly.
+bearing	bearing	Inspect each {bearing} member for buckling after the impact.
+bearing	bearing	Add a {bearing} plate under the column base.
+bearing	bearing	The motor {bearing} runs hot when lubricant is insufficient.
+bearing	bearing	Keep the {bearing} aligned with the shaft during installation.
+bearing	bearing	A sealed {bearing} supports the fan rotor at 3,000 rpm.
+bearing	bearing	Measure radial play in each {bearing} with a dial indicator.
+bearing	bearing	Do not strike the {bearing} directly with a steel hammer.
+bearing	bearing	Heat the housing, not the {bearing}, during removal.
+bearing	bearing	Verify that the new {bearing} matches part number BR-204.
+bleeding	bleed	{Bleeding} the gearbox removes the old lubricant from the sump.
+bleeding	bleed	{Bleeding} the fuel rail removes vapor after filter replacement.
+checked	check	{Checked} whether the pump reached 1,500 rpm before proceeding.
+checked	check	We {checked} whether the actuator moved after the command.
+checked	check	{Checked} that the access panel was latched before taxi.
+checked	check	{Checked} that the emergency stop reset before enabling automatic mode.
+checked	check	The operator {checked} that the software backup completed before updating firmware.
+checked	check	The inspector {checked} the weld for cracks under bright light.
+checked	check	The crew {checked} the landing light before flight.
+cleaning	clean	{Cleaning} the transfer line removes trapped solvent before calibration.
+cleaning	clean	{Cleaning} the pump exterior prevents dirt from entering the service port.
+flushed	flush	At 40 psi, the pump {flushed} fluid through the return hose.
+flushed	flush	An internal passage {flushed} lubricant through the gearbox during rotation.
+flushed	flush	The technician {flushed} the old coolant from the radiator.
+flushed	flush	The mechanic {flushed} the reservoir with fresh hydraulic oil.
+installed	install	The mechanic {installed} the bracket on the left engine mount.
+installing	install	{Installing} the sensor in the marked hole requires a 6 mm wrench.
+installed	install	The crew {installed} the access panel over the avionics bay.
+installing	install	{Installing} the cable clamp at the indicated hole prevents movement.
+installed	install	The crew {installed} the pipe support beneath the manifold.
+installing	install	{Installing} the valve actuator on the stem completes the hardware placement.
+installed	install	The electrician {installed} the terminal block on the DIN rail.
+installed	install	The technician {installed} the beacon bracket on the fuselage.
+installed	install	The technician {installed} the pump and configured its speed limit before the first test.
+installing	install	The technician is {installing} the networked sensor for automatic operation.
+installing	install	{Installing} the backup generator includes wiring the transfer switch and setting the controller.
+installed	install	After the electrician {installed} the charging station, he configured the current limit.
+led	lead	The trench {led} rainwater toward the sump during the pressure test.
+led	lead	The groove {led} the lubricant into the bearing during initial rotation.
+removed	remove	{Removed} from the test stand, the actuator must remain capped.
+removed	remove	{Removed} from the housing, the cracked bearing is ready for disposal.
+running	run	{Running} the motor at low speed checks the new drive belt.
+running	run	{Running} the pump intermittently reduces heat during the priming procedure.
+running	run	{Running} the update script requires external power and a stable network link.
+running	run	{Running} the control algorithm at 100 Hz prevents delayed actuator commands.
+running	run	{Running} the firmware test places the controller in a restricted operating mode.
+running	run	{Running} the log analysis utility identifies missing time stamps.
+running	run	Do not leave the compressor {running} while the service cover is removed.
+running	run	If the pressure falls below 20 psi, the relief pump stops {running}.
+running	run	Make sure that the cooling circuit is {running} before opening the bypass.
+running	run	The backup battery keeps the monitoring unit {running} during a power interruption.
+seals	seal	The installer {seals} the inspection window with a transparent protective film.
+seals	seal	The technician {seals} the battery compartment after checking the vent line.
+sealed	seal	The operator {sealed} the temporary duct opening with reinforced tape.
+seal	seal	{Seal} the inspection opening with the approved adhesive-backed closure patch.
+sealing	seal	{Sealing} the access hatch with the specified strip completes the enclosure assembly.
+seal	seal	{Seal} the sampling port with a clean cap before moving the container.
+seals	seal	The repair crew {seals} the removed panel back into the fuselage skin.
+sealing	seal	{Sealing} the service aperture prevents unauthorized access to the adjustment screw.
+seal	seal	The replacement {seal} must fit tightly in the machined groove.
+seal	seal	Check that the {seal} remains seated after tightening the four cover bolts.
+seal	seal	Use a new {seal} whenever the pressure regulator is disassembled.
+seal	seal	The door {seal} compresses against the frame when the latches engage.
+seal	seal	Measure the {seal} diameter before ordering a replacement part.
+seal	seal	Do not install a {seal} that has hardened or changed shape.
+seal	seal	The {seal} around the fuel cap prevents vapor escape during storage.
+seal	seal	Apply a thin film of lubricant to the {seal} before insertion.
+seal	seal	Apply one even {seal} to the exposed wood before fitting the exterior panel.
+seal	seal	Remove loose paint before applying the moisture-resistant {seal}.
+seal	seal	Allow the {seal} to cure for 24 hours before exposing the panel to water.
+seal	seal	Apply the second {seal} after the first coat becomes tack-free.
+seal	seal	Brush the {seal} across the concrete joint in a single direction.
+seal	seal	Inspect the dried {seal} after the water spray test is complete.
+seal	seal	{Seal} the hose connection before pressurizing the hydraulic circuit.
+seals	seal	The installer {seals} the window frame against wind and rain.
+sealing	seal	{Sealing} the drain plug with thread compound prevents oil leakage.
+seal	seal	{Seal} the pipe joint after removing all oil from its threads.
+seals	seal	The technician {seals} the sensor penetration with a flexible elastomer.
+sealing	seal	{Sealing} the seam now prevents moisture from reaching the steel reinforcement.
+sealed	seal	The repair compound {sealed} the crack and stopped the coolant leak.
+sealed	seal	{Sealed} correctly, the enclosure withstands the specified water spray test.
+supporting	support	{Supporting} the pipe near the valve prevents stress on the threaded joint.
+supported	support	The crossbeam {supported} the platform while the hoist was repositioned.
+supporting	support	{Supporting} the cable tray at 600 mm intervals prevents sagging.
+supported	support	{Supported} by two brackets, the duct remains clear of the rotating fan.
+tapping	tap	Use a guide bushing when {tapping} the thin sheet-metal bracket.
+tapping	tap	The operator is {tapping} the holes in sequence to keep the bolt pattern accurate.
+tapping	tap	The fixture holds the workpiece while the machine is {tapping} the mounting holes.
+tapped	tap	The technician {tapped} the threaded insert to restore its damaged internal thread.
+tapped	tap	The machinist {tapped} four holes in the steel flange using a rigid guide.
+tapped	tap	The repair crew {tapped} the stripped hole one size larger for a new fastener.
+tapped	tap	The technician {tapped} the connector lightly before repeating the continuity test.
+tapped	tap	The technician {tapped} the dust filter to remove loose particles before inspection.

@@ -20,8 +20,7 @@ import qf
 def main():
     wave = int(sys.argv[1])
     world = qf.load_world()
-    ranking, _ = qf.lemma_ranking(world)
-    in_wave = {l for i, l in enumerate(ranking) if qf.wave_of_rank(i) <= wave}
+    in_wave = qf.lemmas_up_to(world, wave)
     errors = collections.Counter()
     pairs = collections.Counter()
     rows = 0

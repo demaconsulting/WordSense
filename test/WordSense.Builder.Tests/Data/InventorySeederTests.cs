@@ -114,6 +114,36 @@ public sealed class InventorySeederTests : IDisposable
     }
 
     /// <summary>
+    ///     A curated project sense of a word and part of speech that the dictionary has (a use Open English WordNet
+    ///     lacks) becomes a sense of the existing entry, with a synset and the authored gloss; a second run adds nothing.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_InventorySeeder_Run_ProjectSenseOfADictionaryEntry_IsAddedToTheEntry()
+    {
+        // Arrange - bass has two nouns in the slice; the curated project sense is a third, without a sense key
+        var data = ThreeBassNounsSlice();
+        var curation = Curation(
+            "bass#fish-food\toewn-bass__1.05.00..\tNoun\tthe flesh of a fish\toewn\t\n"
+            + "bass#instrument\t\tNoun\tan instrument that plays the low notes\tproject\t\n",
+            string.Empty);
+
+        // Act
+        var run = InventorySeeder.Run(data, curation);
+        SenseLabelGenerator.Run(data);
+        var again = InventorySeeder.Run(data, curation);
+        var report = DataValidator.Validate(data);
+
+        // Assert
+        Assert.Equal(3, run.ProjectSenses); // two closed-class entries and the dictionary entry
+        Assert.Equal(0, again.ProjectSenses);
+        Assert.Contains(DataFixture.Rows(data, "sense"), s => s[0] == "dema-bass-n-1" && s[1].Length == 0 && s[2] == "oewn-bass-n" && s[3] == "dema-syn-bass-n-1" && s[4] == "3");
+        Assert.Contains(DataFixture.Rows(data, "synset"), s => s[0] == "dema-syn-bass-n-1" && s[1] == "n");
+        Assert.Contains(DataFixture.Rows(data, "gloss"), g => g[0] == "dema-syn-bass-n-1" && g[2] == "an instrument that plays the low notes");
+        Assert.Contains(DataFixture.Rows(data, "sense_label"), l => l[0] == "dema-bass-n-1" && l[1] == "instrument" && l[2] == "project");
+        Assert.True(report.IsValid, string.Join("\n", report.Violations));
+    }
+
+    /// <summary>
     ///     A second run changes nothing, and a curated label that would change a published one is refused.
     /// </summary>
     [Fact]

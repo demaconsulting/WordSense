@@ -1,0 +1,63 @@
+sense_id	extra_anchors	note
+arm#branch	14	A projecting mechanical member, such as a robot or lever arm.
+attach#be-attached	8	A component being connected to or in contact with another.
+attach#become-attached	8	A component becoming fastened or connected during assembly.
+attach#connect	14	Fasten or connect a component, cable, or tool.
+bearing#direction	8	A measured direction used for navigation or alignment.
+bearing#load-bearing	8	A structural member that withstands weight or strain.
+bearing#rotating-support	14	A shaft support that permits low-friction movement.
+bleed#drain	8	Drain liquid or steam from equipment.
+bleed#vent	14	Release trapped air or fluid from a closed system.
+check#determine	8	Determine a setting, value, or operating condition.
+check#ensure	14	Make certain that equipment meets a required condition.
+check#inspect	14	Examine a component, fluid level, or measurement for condition or accuracy.
+check#inspection	14	An equipment inspection or verification procedure.
+clean#hygienic	14	A surface or component free from dirt and contamination.
+clean#impurity-free	14	A fluid or material free from impurities.
+clean#purge	8	Remove unwanted substances from equipment or passages.
+clean#remove-dirt	14	Remove dirt, grease, or unwanted substances from a component.
+flush#channel	8	Cause cleaning fluid to flow through equipment.
+flush#coplanar	8	In the same plane as the surrounding surface.
+flush#even-surface	14	A surface exactly even with an adjoining surface.
+flush#rinse	14	Clean or empty a system by passing liquid through it.
+inspect#examine	14	Examine equipment carefully for wear, damage, or defects.
+inspect#verify-accuracy	14	Examine an installation or measurement to verify accuracy.
+install#put-in-place	14	Place a component in its assembly location.
+install#set-up	14	Set up equipment or a component for use.
+lead#ignition-timing	8	Ignition timing relative to engine piston position.
+lead#jumper-cable	14	A short wire used to connect points in a circuit.
+lead#metal	8	The heavy metal encountered in batteries, solder, or shielding.
+lead#route	8	Route a cable, pipe, or hose along a specified path.
+lock#become-rigid	8	A mechanism becoming immovable or seized.
+lock#engaged	14	Keep a mechanism or component engaged.
+lock#lock-together	14	Hold parts in a locking position.
+lock#secure	14	Fasten a door, guard, or isolator with a lock.
+mount#attach	14	Attach a component to its support or frame.
+mount#mounting-fixture	14	An engine mount or bracket that holds equipment in place.
+mount#secure	14	Fix equipment securely onto a backing or support.
+position#locate	8	Put a part at a specified location.
+position#place	14	The location occupied by a component or control.
+position#put-in-place	14	Place a component in the required location or relation.
+position#spatial-relation	14	The location or orientation of a part relative to others.
+remove#take-away	14	Take off a component or clear material from equipment.
+run#activate	14	Cause a pump, engine, or machine to operate.
+run#execute	14	Carry out a diagnostic program or machine process.
+run#operate	14	A pump, engine, or machine functioning.
+run#testing	8	A test performed to verify equipment operation.
+seal#close	8	Close an opening with a seal.
+seal#closure-fastener	14	A closure that prevents leakage at a joint or opening.
+seal#moisture-coat	8	A protective finishing coat that excludes moisture.
+seal#seal-tight	14	Make a joint or enclosure tight against leakage.
+support#bear-weight	14	Carry the weight of a component during maintenance.
+support#bearing-weight	8	The action of carrying or strengthening a load.
+support#support-device	14	A stand, jack, or fixture that carries another component.
+support#support-structure	14	A structure that holds up equipment or provides its foundation.
+tap#cut	14	Cut internal screw threads in a drilled hole.
+tap#hydrant	8	A faucet used to control liquid drawn from a pipe.
+tap#tip	8	Strike a housing or component lightly during fitting or removal.
+tap#tool	14	A tool for cutting internal screw threads.
+torque#twisting-force	14	The specified twisting force applied to a fastener or shaft.
+arm#prime-system	14	Make a system or device ready for activation (project sense found by the probe).
+lead#electrical-lead	14	A wire or conductor with a terminal that connects an instrument or circuit (project sense).
+flush#fluid-flush	14	A cleaning operation that passes liquid through a system (project sense).
+tap#tapping-point	14	A connection point in a line or circuit from which pressure or current is taken (project sense).

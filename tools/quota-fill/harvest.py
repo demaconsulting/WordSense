@@ -147,7 +147,14 @@ def lemma_plan(world, rank_wave):
     for r in status:
         lemma = world["senses"][r["sense_id"]]["lemma"]
         missing[lemma] += max(0, r["anchor_quota"] - r["anchors"]) + max(0, r["holdout_quota"] - r["holdout"])
-    return [(l, tags[l], missing[l]) for i, l in enumerate(ranking) if qf.wave_of_rank(i) == rank_wave], missing
+    plan = [(l, tags[l], missing[l]) for i, l in enumerate(ranking) if qf.wave_of_rank(i) == rank_wave]
+    if rank_wave == qf.LAST_WAVE:
+        # the technical lemmas belong to the last wave; the ranked ones are in the plan of their rank already
+        have = {p[0] for p in plan}
+        for lemma in qf.TECH_ALL:
+            if lemma in world["by_lemma"] and lemma not in have and (lemma in qf.TECH_NEW or missing[lemma] > 0):
+                plan.append((lemma, sum(world["senses"][s]["tag_count"] for s in world["by_lemma"][lemma]), missing[lemma]))
+    return plan, missing
 
 
 def load_used(wave_dir):
@@ -174,6 +181,9 @@ def read_extras():
 
 
 def cmd_candidates(args):
+    global DOC_CAP
+    if args.doc_cap:
+        DOC_CAP = args.doc_cap
     world = qf.load_world()
     plan, missing = lemma_plan(world, args.wave)
     wave_dir = os.path.join(qf.WORK, f"w{args.wave}")
@@ -311,6 +321,7 @@ if __name__ == "__main__":
     c.add_argument("--family", default="", help="restrict the pool to one family (supplementary batch)")
     c.add_argument("--only-lemmas", default="", help="comma-separated lemmas that replace the wave plan")
     c.add_argument("--first-batch", type=int, default=1, help="number of the first batch (appends to a wave)")
+    c.add_argument("--doc-cap", type=int, default=0, help="candidates per document and lemma (default 5)")
     s = sub.add_parser("status")
     s.add_argument("wave", type=int)
     a = ap.parse_args()

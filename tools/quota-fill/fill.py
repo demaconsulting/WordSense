@@ -153,6 +153,13 @@ def chooser_forms_ok(fl):
     return ok
 
 
+def doc_cap(family, normal, faa):
+    """Sentences of one document that a sense (or a lemma) may take: a handbook is a long document of its own."""
+    if family in ("tatoeba", "written"):
+        return 10 ** 6
+    return faa if family == "faa" else normal
+
+
 def spaced(n, h):
     """h evenly spaced indices of range(n)."""
     return {int((j + 0.5) * n / h) for j in range(h)} if h else set()
@@ -175,6 +182,19 @@ def cmd_select(args):
     _rows, docs = pool.load_pool()
     doc_splits = qf.real_documents_by_split() if kind == "real" else {}
     extra = qf.extra_real_wanted() if kind == "real" else {}
+    if args.tech:
+        # the technical senses: extra anchors beyond the quota; the written ones fill what real FAA text did not
+        extra = dict(qf.read_tech_targets())
+        if kind == "written":
+            real_file = os.path.join(qf.CORPUS, "anchors", f"quota-w{args.wave}-real.tsv")
+            have = collections.Counter()
+            if os.path.exists(real_file):
+                with open(real_file, encoding="utf-8") as handle:
+                    for line in handle:
+                        parts = line.rstrip("\n").split("\t")
+                        if len(parts) == 4:
+                            have[parts[1]] += 1
+            extra = {s: max(8, n - have[s]) for s, n in extra.items()}
     labeled = collections.defaultdict(list)
     if kind == "real":
         paths = sorted(glob.glob(os.path.join(qf.WORK, "w*", "labeled.tsv")))
@@ -201,6 +221,8 @@ def cmd_select(args):
                         continue
                 if conf != "high" or sense not in deficit:
                     continue
+                if args.tech and kind == "real" and family != "faa":
+                    continue
                 s = senses[sense]
                 if (s["lemma"], s["pos"]) not in world["index"].get(form, ()):
                     continue
@@ -220,7 +242,7 @@ def cmd_select(args):
     order = sorted(labeled, key=lambda s: (senses[s]["lemma"], s))
     for sense in order:
         da, dh = deficit[sense]
-        if kind == "real":
+        if kind == "real" or args.tech:
             da += extra.get(sense, 0)
         if da + dh == 0:
             continue
@@ -238,9 +260,9 @@ def cmd_select(args):
                 for c in pool_:
                     if c["key"] in taken:
                         continue
-                    if doc_count[c["doc"]] >= (SENSE_DOC_CAP if c["family"] not in ("tatoeba", "written") else 10 ** 6):
+                    if doc_count[c["doc"]] >= doc_cap(c["family"], SENSE_DOC_CAP, 8):
                         continue
-                    if lemma_doc[lemma][c["doc"]] >= (LEMMA_DOC_CAP if c["family"] not in ("tatoeba", "written") else 10 ** 6):
+                    if lemma_doc[lemma][c["doc"]] >= doc_cap(c["family"], LEMMA_DOC_CAP, 60):
                         continue
                     score = (form_count[c["form"]], doc_count[c["doc"]], 0 if c["family"] != "gutenberg" else 1)
                     if best_score is None or score < best_score:
@@ -327,5 +349,6 @@ if __name__ == "__main__":
         p.add_argument("wave", type=int)
         if name == "select":
             p.add_argument("--kind", choices=("real", "written"), default="real")
+            p.add_argument("--tech", action="store_true", help="the technical senses: extra anchors of tech-senses.tsv, real rows from FAA text only")
     a = ap.parse_args()
     {"ingest": cmd_ingest, "select": cmd_select}[a.cmd](a)

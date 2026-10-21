@@ -34,8 +34,7 @@ def blind_agreement():
 
 def write_unfilled(world, rows, wave):
     """The senses that the harvest and the writing could not bring to their quota (corpus/coverage/quota-unfilled.tsv)."""
-    ranking, _ = qf.lemma_ranking(world)
-    in_wave = {l for i, l in enumerate(ranking) if qf.wave_of_rank(i) <= wave}
+    in_wave = qf.lemmas_up_to(world, wave)
     stat = blind_agreement()
     path = os.path.join(qf.CORPUS, "coverage", "quota-unfilled.tsv")
     with open(path, "w", encoding="utf-8", newline="\n") as handle:
@@ -60,8 +59,7 @@ def main():
     print("all:", dict(c), "missing anchors", ma, "missing holdout", mh)
     if len(sys.argv) > 1:
         wave = int(sys.argv[1])
-        ranking, _ = qf.lemma_ranking(world)
-        in_wave = {l for i, l in enumerate(ranking) if qf.wave_of_rank(i) <= wave}
+        in_wave = qf.lemmas_up_to(world, wave)
         sub = [r for r in rows if world["senses"][r["sense_id"]]["lemma"] in in_wave]
         c, ma, mh = counts(sub)
         print(f"waves 1-{wave}:", len(in_wave), "lemmas,", dict(c), "missing anchors", ma, "missing holdout", mh)

@@ -3181,9 +3181,9 @@ oewn-insomuch__4.02.00..	adverb	generated
 oewn-insouciance__1.12.00..	noun	generated
 oewn-insouciant__5.00.00.unconcerned.00	adjective	generated
 oewn-inspan__2.35.00..	verb	generated
-oewn-inspect__2.31.00..	audit	generated
-oewn-inspect__2.38.00..	visit	generated
-oewn-inspect__2.39.00..	examine	generated
+oewn-inspect__2.31.00..	verify-accuracy	curated
+oewn-inspect__2.38.00..	official-visit	curated
+oewn-inspect__2.39.00..	examine	curated
 oewn-inspection__1.04.00..	noun	generated
 oewn-inspector__1.18.00..	examiner	generated
 oewn-inspector__1.18.01..	officer	generated
@@ -3226,9 +3226,9 @@ oewn-instal__2.35.01..	establish	generated
 oewn-instal__2.41.00..	install-2	generated
 oewn-instalike__1.06.01..	noun	generated
 oewn-instalike__2.41.01..	verb	generated
-oewn-install__2.35.00..	instal	generated
-oewn-install__2.35.01..	establish	generated
-oewn-install__2.41.00..	instal-2	generated
+oewn-install__2.35.00..	set-up	curated
+oewn-install__2.35.01..	put-in-place	curated
+oewn-install__2.41.00..	appoint	curated
 oewn-installation__1.04.00..	installing	generated
 oewn-installation__1.06.00..	facility	generated
 oewn-installation__1.11.00..	induction	generated

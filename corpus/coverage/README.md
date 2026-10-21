@@ -32,9 +32,10 @@ far; `tools/quota-fill/coverage.py` writes it) and `quota-unfilled.tsv` lists th
 waves that the harvest and the writing could not bring to their quota, with the number of sentences written for them and
 how many of those the blind labeler placed in the intended sense. Such senses cannot be filled credibly by this method
 (a near-duplicate of a sibling sense, or a gloss too thin to write to) and are candidates for the review of the senses and
-groups. The waves, the method and the progress table are in `docs/build_notes/quota-fill.md`. After wave 2 (the 120 most
-frequent lemmas, plus extra real anchors for rare and confused senses): 2,673 of 6,856 senses meet their quota (2,507
-short, 1,676 empty); 28,221 anchors and 7,731 held-out sentences are still missing, 1,128 and 150 of them in the lemmas
-of waves 1 and 2 (183 senses are listed in `quota-unfilled.tsv`). After wave 1 it was 1,775 senses that met their quota
-(2,896 short, 2,185 empty; 37,585 anchors and 10,132 held-out sentences missing). All quota-filled sentences are
-targeted (see "Quota-Filled Rows (targeted)" in `../README.md`).
+groups. The waves, the method and the progress table are in `docs/build_notes/quota-fill.md`. After wave 3 (the 200 most
+frequent lemmas, the technical lemmas and the senses of waves 1-2 that stayed short): 3,837 of 7,036 senses meet their
+quota (1,995 short, 1,204 empty); 19,968 anchors and 5,537 held-out sentences are still missing, 1,550 and 230 of them in
+the lemmas of waves 1-3 (232 senses are listed in `quota-unfilled.tsv`). After wave 2 it was 2,673 senses that met their
+quota of 6,856 (28,221 anchors and 7,731 held-out sentences missing), after wave 1 1,775 (37,585 and 10,132). The scope
+grew by the 176 senses of the 12 technical lemmas and the 6 project senses (`corpus/curation/README.md`). All
+quota-filled sentences are targeted (see "Quota-Filled Rows (targeted)" in `../README.md`).

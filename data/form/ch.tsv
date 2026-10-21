@@ -1273,6 +1273,7 @@ chanar	0	oewn-chanar-n	Number=Sing	dema	0			oewn_form
 chanars	0	oewn-chanar-n	Number=Plur	dema	0			rule
 chance	0	oewn-chance-n	Number=Sing	dema	1			carried
 chance	1	oewn-chance-v	VerbForm=Inf	dema	1			carried
+chance	2	oewn-chance-a	Degree=Pos	dema	0			oewn_form
 chance event	0	oewn-chance_event-n	Number=Sing	dema	0			oewn_form
 chance events	0	oewn-chance_event-n	Number=Plur	dema	0			rule
 chance music	0	oewn-chance_music-n	Number=Sing	dema	0			oewn_form

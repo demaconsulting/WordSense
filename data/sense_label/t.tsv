@@ -3,6 +3,7 @@ dema-ta-i-1	interjection	project
 dema-tae-p-1	preposition	project
 dema-tails-i-1	interjection	project
 dema-tallyho-i-1	interjection	project
+dema-tap-n-1	tapping-point	project
 dema-ten-d-1	determiner	project
 dema-thae-u-1	pronoun	project
 dema-than-c-1	conjunction	project
@@ -4024,7 +4025,7 @@ oewn-torpidly__4.02.00..	adverb	generated
 oewn-torpidness__1.07.00..	noun	generated
 oewn-torpor__1.07.00..	listlessness	generated
 oewn-torpor__1.26.00..	torpidity	generated
-oewn-torque__1.19.00..	noun	generated
+oewn-torque__1.19.00..	twisting-force	curated
 oewn-torr__1.23.00..	noun	generated
 oewn-torrent__1.11.00..	violent-stream	generated
 oewn-torrent__1.19.01..	cloudburst	generated

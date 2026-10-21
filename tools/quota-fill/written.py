@@ -39,15 +39,34 @@ def allowed_forms(world, lemma, pos):
 def cmd_export(args):
     world = qf.load_world()
     senses = world["senses"]
-    ranking, _tags = qf.lemma_ranking(world)
-    in_wave = {l for i, l in enumerate(ranking) if qf.wave_of_rank(i) <= (args.lemmas_up_to or args.wave)}
     status = lexindex.quota_status(senses, world["scope"])
+    wanted = qf.lemmas_up_to(world, args.lemmas_up_to or args.wave)
+    if args.skip_up_to:
+        wanted -= qf.lemmas_up_to(world, args.skip_up_to) - set(qf.TECH_ALL)
+    only = set(args.only_lemmas.split(",")) if args.only_lemmas else None
+    tech = qf.read_tech_targets() if args.tech else {}
+    if args.tech:
+        # the written STE-style sentences complete the real FAA rows to the target, and are at least 8 per sense
+        real_file = os.path.join(qf.CORPUS, "anchors", f"quota-w{args.wave}-real.tsv")
+        have = collections.Counter()
+        if os.path.exists(real_file):
+            with open(real_file, encoding="utf-8") as handle:
+                for line in handle:
+                    parts = line.rstrip("\n").split("\t")
+                    if len(parts) == 4:
+                        have[parts[1]] += 1
+        tech = {s: max(8, n - have[s]) for s, n in tech.items()}
     todo = []
     for r in status:
         s = senses[r["sense_id"]]
-        if s["lemma"] not in in_wave:
+        if only is not None:
+            if s["lemma"] not in only:
+                continue
+        elif s["lemma"] not in wanted:
             continue
         short = max(0, r["anchor_quota"] - r["anchors"]) + max(0, r["holdout_quota"] - r["holdout"])
+        if args.tech:
+            short = tech.get(r["sense_id"], 0)
         if short > 0:
             todo.append((r["sense_id"], short))
     wdir = wave_dir(args.wave)
@@ -62,8 +81,11 @@ def cmd_export(args):
             cur, total = [], 0
         forms = allowed_forms(world, s["lemma"], s["pos"])
         others = [qf.sense_line(world, o) for o in world["by_lemma"][s["lemma"]] if o != sid][:25]
-        cur.append({"sense": sid, "lemma": s["lemma"], "pos": s["pos_name"], "gloss": s["gloss"],
-                    "examples": s["examples"][:3], "forms": forms[:14], "others": others, "count": n})
+        entry = {"sense": sid, "lemma": s["lemma"], "pos": s["pos_name"], "gloss": s["gloss"],
+                 "examples": s["examples"][:3], "forms": forms[:14], "others": others, "count": n}
+        if args.tech and sid in tech:
+            entry["domain"] = "technical instructions (maintenance, engineering, operation of machines)"
+        cur.append(entry)
         total += n
     if cur:
         batches.append(cur)
@@ -235,5 +257,9 @@ if __name__ == "__main__":
         if name == "export":
             p.add_argument("--lemmas-up-to", type=int, default=0,
                            help="include the lemmas of every wave up to this one (a later round of an earlier wave)")
+            p.add_argument("--skip-up-to", type=int, default=0, help="leave out the lemmas of the waves up to this one")
+            p.add_argument("--only-lemmas", default="", help="comma-separated lemmas that replace the wave set")
+            p.add_argument("--tech", action="store_true", help="the technical senses of tech-senses.tsv (STE-style sentences)")
+            p.add_argument("--retry", action="store_true", help="second round for senses that stayed short (another prompt)")
     a = ap.parse_args()
     {"export": cmd_export, "ingest": cmd_ingest, "labeled": cmd_labeled}[a.cmd](a)

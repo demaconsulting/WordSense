@@ -177,8 +177,9 @@ sections:
             title: >-
               The word data subsystem shall declare the senses that Open English WordNet does not provide, one for
               each determiner, pronoun, preposition, conjunction, interjection or auxiliary analysis (including the
-              conjunction or and every auxiliary of the closed list) and the curated discourse senses, as project
-              senses without a sense key, each with an authored gloss.
+              conjunction or and every auxiliary of the closed list), the curated discourse senses and the curated
+              senses of a dictionary word that Open English WordNet lacks (a mount as the fixture that holds
+              equipment), as project senses without a sense key, each with an authored gloss.
             tags: [subsystem]
             justification: |
               Closed-class and discourse uses are among the most frequent words of English but are not WordNet senses;
@@ -188,3 +189,4 @@ sections:
               - WordSenseBuilder_DataEndToEnd_CommittedData_ProjectSensesHaveNoKeyAndAGloss
               - WordSenseBuilder_DataEndToEnd_CommittedData_ClosedClassAnalysesHaveAProjectSense
               - WordSenseBuilder_DataEndToEnd_CommittedData_OrAndTheAuxiliariesHaveClosedClassAnalyses
+              - WordSenseBuilder_InventorySeeder_Run_ProjectSenseOfADictionaryEntry_IsAddedToTheEntry

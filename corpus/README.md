@@ -134,6 +134,13 @@ the United States` (or `CC0 1.0` for Tatoeba), the `licence_basis` column the re
 document, "US federal government work, 17 U.S.C. §105 (public domain in the United States)" with the document number,
 edition and URL), and the contributor column the document.
 
+**Wave 3 files.** `quota-w3-*` fills the lemmas of ranks 121-200 and the technical lemmas, `quota-w32-written.tsv` is the
+second round for senses that stayed short (written with another prompt), and `quota-w33-real.tsv` and
+`quota-w33-written.tsv` are the technical senses of `curation/tech-senses.tsv` (real FAA text, and simplified-technical-
+English instructions written by `gpt-5.6-luna` and verified blind by `gpt-6.1-sol`). `quota-w<N>-forms*.tsv` are chooser
+rows of a form; they follow the document roles like the fine-sense rows (an evaluation document gives held-out rows only,
+every other document anchors only), so a chooser row cannot link anchors and the real held-out split of one document.
+
 **The encoder corpus is a balanced classifier corpus.** `anchors/`, `holdout/` and `choosers/` (all of them, not only
 the quota-filled files) hold the number of sentences that the quota of a sense asks for, not a sample of running text:
 the share of a sense in them says nothing about how often the sense occurs. They must **never** be used for usage

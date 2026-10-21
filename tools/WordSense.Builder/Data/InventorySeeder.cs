@@ -82,6 +82,10 @@ internal static class InventorySeeder
         var synsets = DataTables.Read(dataDirectory, schema.Table("synset")).ToList();
         var glosses = DataTables.Read(dataDirectory, schema.Table("gloss")).ToList();
         var added = AddProjectSenses(entries, senses, synsets, glosses, posNames);
+        if (curationDirectory is not null)
+        {
+            added += AddCuratedProjectSenses(curationDirectory, entries, senses, synsets, posNames);
+        }
 
         var labels = DataTables.Read(dataDirectory, schema.Table("sense_label")).ToList();
         var groups = DataTables.Read(dataDirectory, schema.Table("sense_group")).ToList();
@@ -137,6 +141,51 @@ internal static class InventorySeeder
             senses.Add([senseId, string.Empty, entry[0], synsetId, "1"]);
             synsets.Add([synsetId, entry[2], string.Empty, string.Empty]);
             glosses.Add([synsetId, "1", $"The {name} \"{entry[1]}\"; a project sense, because Open English WordNet has no {name} sense of this word."]);
+            added++;
+        }
+
+        return added;
+    }
+
+    /// <summary>
+    ///     Adds the project senses that the curation lists for a word the dictionary has, in a part of speech whose entry has
+    ///     no sense without a key yet: a use that Open English WordNet lacks (a mount as the fixture that holds equipment, to
+    ///     bleed air from a system). The sense belongs to the existing entry of the lemma and the part of speech.
+    /// </summary>
+    private static int AddCuratedProjectSenses(
+        string folder,
+        Dictionary<string, string[]> entries,
+        List<string[]> senses,
+        List<string[]> synsets,
+        IReadOnlyDictionary<string, string> posNames)
+    {
+        var added = 0;
+        foreach (var row in ReadTsv(Path.Join(folder, "senses.tsv")).Where(r => r.GetValueOrDefault("source") == "project" && r.GetValueOrDefault("oewn_sense_id", string.Empty).Length == 0 && r.GetValueOrDefault("sense_key", string.Empty).Length == 0))
+        {
+            var cut = row["sense_id"].IndexOf('#', StringComparison.Ordinal);
+            var lemma = row["sense_id"][..cut];
+            var letter = posNames.FirstOrDefault(p => string.Equals(p.Value, row["part_of_speech"], StringComparison.OrdinalIgnoreCase)).Key;
+            if (letter is null)
+            {
+                continue;
+            }
+
+            var entry = entries.Values.Where(e => e[1] == lemma && e[2] == letter).OrderBy(e => e[0], StringComparer.Ordinal).FirstOrDefault();
+            if (entry is null || senses.Any(s => s[2] == entry[0] && s[1].Length == 0))
+            {
+                continue;
+            }
+
+            var stem = entry[0];
+            var prefix = new[] { "dema-", "oewn-" }.FirstOrDefault(p => stem.StartsWith(p, StringComparison.Ordinal));
+            if (prefix is not null)
+            {
+                stem = stem[prefix.Length..];
+            }
+            var position = senses.Where(s => s[2] == entry[0]).Select(s => int.Parse(s[4], CultureInfo.InvariantCulture)).DefaultIfEmpty(0).Max() + 1;
+            var synsetId = "dema-syn-" + stem + "-1";
+            senses.Add(["dema-" + stem + "-1", string.Empty, entry[0], synsetId, position.ToString(CultureInfo.InvariantCulture)]);
+            synsets.Add([synsetId, letter, string.Empty, string.Empty]);
             added++;
         }
 

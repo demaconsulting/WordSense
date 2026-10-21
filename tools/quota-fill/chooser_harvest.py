@@ -125,6 +125,8 @@ def cmd_select(args):
             os.remove(old)
     _rows, docs = pool.load_pool()
     blocked = qf.corpus_keys()
+    doc_splits = qf.real_documents_by_split()
+    current = choosers.form_lemmas()
     cands = collections.defaultdict(list)
     stats = collections.Counter()
     for meta_path in sorted(glob.glob(os.path.join(wdir, "ch-meta", "*.json"))):
@@ -148,28 +150,36 @@ def cmd_select(args):
                 if lemma not in meta["groups"][item["group"] - 1] or conf != "high":
                     stats["dropped"] += 1
                     continue
+                if lemma not in current.get(item["form"], ()):
+                    stats["lemma is no longer a lemma of the form"] += 1
+                    continue
                 if textutil.key_of(item["sentence"]) in blocked:
                     continue
                 stats["labeled high"] += 1
+                item["role"] = qf.doc_role(qf.prov_document(item["sid"], item["doc"], item["family"]), doc_splits)
+                if item["role"] is None:
+                    stats["document has the other split"] += 1
+                    continue
                 cands[(item["form"], lemma)].append(item)
     out_rows = {"anchors": [], "holdout": [], "prov": []}
     for (form, lemma), items in sorted(cands.items()):
         rng = random.Random(int(hashlib.sha1((form + "|" + lemma).encode()).hexdigest()[:12], 16))
         rng.shuffle(items)
         doc_counts, chosen = collections.Counter(), []
+        # evaluation documents give held-out rows (up to a quarter), the other documents anchors
+        limit = {"eval": max(1, MAX_PER_LABEL // 4), "train": MAX_PER_LABEL - MAX_PER_LABEL // 4}
+        taken = collections.Counter()
         for it in items:
-            if len(chosen) >= MAX_PER_LABEL:
-                break
+            if taken[it["role"]] >= limit[it["role"]]:
+                continue
             cap = 10 ** 6 if it["doc"] == "tatoeba-cc0" else DOC_CAP_FORM
             if doc_counts[it["doc"]] >= cap:
                 continue
             doc_counts[it["doc"]] += 1
+            taken[it["role"]] += 1
             chosen.append(it)
-        n = len(chosen)
-        h = max(1, round(n * 0.25)) if n >= 4 else 0
-        hold = fill.spaced(n, h)
-        for i, it in enumerate(chosen):
-            split = "holdout" if i in hold else "anchors"
+        for it in chosen:
+            split = "holdout" if it["role"] == "eval" else "anchors"
             out_rows[split].append("\t".join([form, lemma, it["sentence"]]))
             src = fill.provenance_fields(docs[it["doc"]], it["sid"], it["family"])
             found = (f"harvest: pool sentence with the form '{form}'; the lemma was chosen by {fill.LABEL_MODEL} "
@@ -289,6 +299,7 @@ def cmd_write_select(args):
         if os.path.exists(old):
             os.remove(old)
     blocked = qf.corpus_keys()
+    current = choosers.form_lemmas()
     cands = collections.defaultdict(list)
     stats = collections.Counter()
     for meta_path in sorted(glob.glob(os.path.join(wdir, "chw-label", "*.meta.json"))):
@@ -309,6 +320,9 @@ def cmd_write_select(args):
                     stats["not confirmed"] += 1
                     continue
                 if textutil.key_of(item["sentence"]) in blocked:
+                    continue
+                if item["intended"] not in current.get(item["form"], ()):
+                    stats["lemma is no longer a lemma of the form"] += 1
                     continue
                 stats["confirmed"] += 1
                 cands[(item["form"], item["intended"])].append(item)
