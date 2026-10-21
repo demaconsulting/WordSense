@@ -38,7 +38,7 @@ tests:
     description: "The shared terminology remarks survive into the generated API reference"
     tags: [api-docs]
     files:
-      - pattern: "src/DemaConsulting.WordSense/generated/api/DemaConsulting.WordSense/WordSense.md"
+      - pattern: "src/DemaConsulting.WordSense/generated/api/DemaConsulting.WordSense/ClassifyResult.md"
         count: 1
         text:
           - contains: "confidence"
