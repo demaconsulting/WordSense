@@ -193,7 +193,11 @@ example `so`). The senses belong to a lemma and a part of speech, not to its fea
 and a plural of one noun, so its two analyses share the probability of the noun and the confidence is 1.00, not split
 in two.
 The probabilities are
-comparable only within one result, never across models. A model never answers an untrained word at the sense level
+comparable only within one result, never across models. The numbers are approximate across machines: the int8 encoder
+arithmetic differs slightly between CPUs and operating systems, so the confidences move a little, and a word whose
+margin lies close to its threshold can be answered one level more or less precisely (BertBaseCased answers `back` at
+the sense level on one CPU and at its group `back#group:return` on another). A model never answers an untrained word at
+the sense level
 unless its lemma and part of speech have a single sense. The modal and helping verbs (`will`, `can`, `is`, `have`) have
 an `Auxiliary` analysis. A word that is not in the dictionary has `IsKnown` false, `Details` of `null`, the level
 `None` and a confidence of 0.

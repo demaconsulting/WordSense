@@ -143,8 +143,13 @@ internal static partial class DocSampleText
     /// <remarks>
     ///     Each line is <c>word pos level confidence [sense] [runner-up]</c> separated by spaces. The confidences of an
     ///     encoder model come from an int8 ONNX graph whose output differs slightly between CPUs and operating systems,
-    ///     so they are approximate, and so is every other number on the line (the runner-up's probability); the word,
-    ///     the part of speech, the level and the sense are decisions and must match exactly.
+    ///     so they are approximate, and so is every other number on the line (the runner-up's probability). The word and
+    ///     the part of speech are decisions and must match exactly. The level is a decision against a per-lemma
+    ///     threshold, so a word whose margin lies close to its threshold may be answered one step more or less
+    ///     specifically on another CPU: a documented sense may come out as its own group or at the part-of-speech level,
+    ///     and a documented group as one of its senses or at the part-of-speech level. Such a line is accepted only when
+    ///     the answers are consistent (same part of speech, the sense belongs to the group); its confidence and
+    ///     runner-up then refer to a different level and are not compared. Any other difference fails.
     /// </remarks>
     /// <param name="documented">The output block of the README, the single source of truth.</param>
     /// <param name="actual">The output the sample wrote.</param>
@@ -158,13 +163,26 @@ internal static partial class DocSampleText
         {
             var expected = expectedLines[i].Split(' ', StringSplitOptions.RemoveEmptyEntries);
             var found = actualLines[i].Split(' ', StringSplitOptions.RemoveEmptyEntries);
-            Assert.True(expected.Length >= 4 && found.Length == expected.Length, $"Line {i + 1}: expected '{expectedLines[i]}' but found '{actualLines[i]}'.");
+            Assert.True(expected.Length >= 4 && found.Length >= 4, $"Line {i + 1}: expected '{expectedLines[i]}' but found '{actualLines[i]}'.");
 
-            // Word, part of speech and level exactly; the sense and the runner-up exactly except their numbers, which,
-            // like the confidence in the fourth column, are probabilities that move slightly between CPUs
+            // The word and the part of speech are decisions and must match exactly
             Assert.Equal(expected[0], found[0]);
             Assert.Equal(expected[1], found[1]);
-            Assert.Equal(expected[2], found[2]);
+
+            // A level one step away is accepted when the answers are consistent; the rest of the line then refers to
+            // a different level and is not compared
+            if (expected[2] != found[2])
+            {
+                Assert.True(
+                    LevelsAreConsistent(expected[2], IdentifierOf(expected), found[2], IdentifierOf(found)),
+                    $"Line {i + 1}: '{found[0]}' was answered at level {found[2]} ({IdentifierOf(found) ?? "no id"}), "
+                    + $"which is not consistent with the documented level {expected[2]} ({IdentifierOf(expected) ?? "no id"}).");
+                continue;
+            }
+
+            // Same level: the sense and the runner-up exactly except their numbers, which, like the confidence in the
+            // fourth column, are probabilities that move slightly between CPUs
+            Assert.True(found.Length == expected.Length, $"Line {i + 1}: expected '{expectedLines[i]}' but found '{actualLines[i]}'.");
             for (var c = 4; c < expected.Length; c++)
             {
                 if (TryParseProbability(expected[c], out var documentedValue) && TryParseProbability(found[c], out var foundValue))
@@ -185,6 +203,40 @@ internal static partial class DocSampleText
                 Math.Abs(expectedConfidence - foundConfidence) <= tolerance,
                 $"Line {i + 1}: the confidence {found[3]} of '{found[0]}' differs from the documented {expected[3]} by more than {tolerance}.");
         }
+    }
+
+    /// <summary>
+    ///     Finds the sense or group identifier of a sample line: the first column after the confidence that contains
+    ///     the <c>#</c> of a <c>lemma#id</c> identifier.
+    /// </summary>
+    /// <param name="columns">The columns of the line.</param>
+    /// <returns>The identifier, or <c>null</c> when the line answers at the part-of-speech level.</returns>
+    private static string? IdentifierOf(string[] columns) =>
+        columns.Skip(4).FirstOrDefault(c => c.Contains('#', StringComparison.Ordinal));
+
+    /// <summary>
+    ///     Decides whether two answers of the same word and part of speech at different levels are consistent, i.e.
+    ///     one is a less specific form of the other.
+    /// </summary>
+    /// <param name="levelA">The level of the first answer.</param>
+    /// <param name="idA">The sense or group identifier of the first answer, or <c>null</c>.</param>
+    /// <param name="levelB">The level of the second answer.</param>
+    /// <param name="idB">The sense or group identifier of the second answer, or <c>null</c>.</param>
+    /// <returns><c>true</c> when the answers are consistent; otherwise <c>false</c>.</returns>
+    private static bool LevelsAreConsistent(string levelA, string? idA, string levelB, string? idB)
+    {
+        // Either answer at the part-of-speech level is consistent, because the parts of speech were already compared
+        if (levelA == nameof(SenseLevel.PartOfSpeech) || levelB == nameof(SenseLevel.PartOfSpeech))
+        {
+            return true;
+        }
+
+        // A sense and a group are consistent when the sense belongs to the group
+        var (senseId, groupId) = levelA == nameof(SenseLevel.Sense) ? (idA, idB) : (idB, idA);
+        return senseId is not null
+            && groupId is not null
+            && WordLexicon.TryGetGroup(groupId, out var group)
+            && group.SenseIds.Contains(senseId);
     }
 
     /// <summary>
