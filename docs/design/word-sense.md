@@ -67,8 +67,8 @@ never a mixture of the two. Model packages never reference each other otherwise,
 it wants. The contracts in core are the seam between callers and models: a caller programs against `IWordSenseModel`
 and can swap models without code changes. The licenses follow the embedded data: the core package is licensed
 `MIT AND CC-BY-4.0` and ships a `NOTICE.md` with the Open English WordNet 2025 (CC BY 4.0) attribution and the Princeton
-WordNet 3.0 notice, and the Basic package is licensed `MIT AND CC-BY-SA-4.0` and ships a `NOTICE.md` for the UD
-English-EWT treebank (CC BY-SA 4.0) that its statistics derive from.
+WordNet 3.0 notice, and the Basic package is licensed `MIT` and ships a `NOTICE.md` that records that its statistics come
+from our own CC0 corpora and from no treebank.
 
 ## External Interfaces
 
@@ -95,10 +95,10 @@ English-EWT treebank (CC BY-SA 4.0) that its statistics derive from.
 - Mirror and GitHub LFS source (in): HTTP(S) `GET <base>/<model-id>/<file>`; SHA-256 verified, credentials sent to
   the mirror's own origin only.
 - Builder command line (in/out): `compile-image`, `import-moby`, `weights`, `evaluate`, `evaluate-senses`,
-  `evaluate-running`, `ud-counts`, `ud-irregular`, `coverage`, `train-basic`, `tune-basic`, `label-senses`,
-  `import-wn30-counts`, `tiers` and `appendix`; build time only, never shipped. The two evaluation commands download
-  their independent texts (SemCor and the Universal Dependencies English-EWT test file) to a cache after verifying
-  their pinned checksums; the texts are never committed.
+  `evaluate-running`, `open-counts`, `evaluate-tagger`, `coverage`, `train-basic`, `tune-basic`, `label-senses`,
+  `import-wn30-counts`, `tiers` and `appendix`; build time only, never shipped. The evaluation commands that use an
+  independent text (SemCor) download it to a cache after verifying its pinned checksum; the texts are never committed,
+  and the Universal Dependencies English-EWT treebank is only ever an evaluation source in the same way.
 
 ## Dependencies
 

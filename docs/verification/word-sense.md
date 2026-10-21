@@ -178,6 +178,6 @@ every keyed sense has a frequency and the project senses have no key
 ### Builder Commands
 
 The builder verification document describes the commands `compile-image`, `import-moby`, `weights`, `evaluate`,
-`evaluate-senses`, `evaluate-running`, `ud-counts`, `ud-irregular`, `coverage`, `train-basic`, `tune-basic`,
+`evaluate-senses`, `evaluate-running`, `open-counts`, `evaluate-tagger`, `coverage`, `train-basic`, `tune-basic`,
 `label-senses`, `import-wn30-counts`, `tiers` and `appendix`. Together they regenerate the data that is committed in the
 packages, and the committed appendix of the user guide is compared with a regenerated one.

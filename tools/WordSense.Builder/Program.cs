@@ -21,10 +21,10 @@ namespace WordSense.Builder;
 ///     <item><description><c>import-moby --input FILE [--corpus DIR] [--output FILE]</c> imports the pinned Moby Part-of-Speech II list into the dictionary word list of the corpus.</description></item>
 ///     <item><description><c>weights &lt;modelId&gt; [--corpus DIR] [--repository DIR] [--cache DIR] [--no-cache] [--recompute-mean] [--solver kernel|primal] [--calibration-target P]</c> trains the fine-sense weights of an ONNX model (minilm, bert-base-cased) from <c>corpus/anchors</c> and writes them to its package; the thresholds of each lemma are first chosen by cross-validation on its anchors and then moved to the precision target measured on the real-text calibration sentences of <c>corpus/holdout</c> (the real held-out sentences of the calibration documents, see the real-text split; <c>--calibration-target P</c> sets the lemma-level target, 0.97 by default), and the half-precision storage is checked against <c>corpus/holdout</c>. Pooled vectors are cached in <c>DIR/&lt;model id&gt;</c> (default <c>.cache/embeddings</c> of the repository) so only new sentences are encoded; <c>--no-cache</c> bypasses the cache; the global mean of the existing weights is reused unless <c>--recompute-mean</c> is given. The classifiers are fitted by Newton's method in the span of the anchors of the lemma (<c>--solver kernel</c>, the default, which is fast when a lemma has fewer anchors than the encoder has dimensions); <c>--solver primal</c> is the slow reference in the feature space that finds the same optimum.</description></item>
 ///     <item><description><c>evaluate &lt;modelId&gt; [--corpus DIR] [--repository DIR] [--output FILE] [--table FILE] [--outcomes FILE]</c> measures a shipped model (minilm, bert-base-cased, basic) on <c>corpus/holdout</c>: the share of the sentences answered at each level and the precision at each level; <c>--table</c> updates the row of the model in the model comparison table file; <c>--outcomes</c> writes the answer for every sentence.</description></item>
-///     <item><description><c>ud-counts [--ud DIR] [--corpus DIR] [--output DIR]</c> downloads and verifies the pinned treebank files and writes the count files of <c>corpus/ud</c>.</description></item>
-///     <item><description><c>train-basic [--corpus DIR] [--repository DIR] [--ud DIR] [--refresh-ud true] [--output FILE]</c> retrains the basic model completely and writes its table; it reads the legacy class-labeled data of <c>corpus/legacy</c> (anchors, holdout, senses, forms) because the shipped table was trained from it, and regenerates the treebank counts first when they are missing or <c>--refresh-ud true</c> is given.</description></item>
-///     <item><description><c>tune-basic [--corpus DIR] [--repository DIR] [--ud DIR]</c> scores the hyper-parameter grid on the treebank development file and the legacy anchor dev sentences; it writes nothing.</description></item>
-///     <item><description><c>ud-irregular [--ud DIR] [--corpus DIR] [--output FILE]</c> derives the irregular inflected forms of the dictionary words from the pinned treebank training and development files.</description></item>
+///     <item><description><c>open-counts [--corpus DIR] [--output DIR]</c> counts the tag statistics (word tag counts and tag n-gram counts) of the <c>train</c> split of the representative part of the open corpus (<c>corpus/open</c>; every token, whatever its consensus status) and writes them to <c>corpus/open/counts</c>; these are usage statistics, so no other part of the corpus is read.</description></item>
+///     <item><description><c>train-basic [--corpus DIR] [--repository DIR] [--output FILE]</c> retrains the basic model completely and writes its table: the tagger statistics come from the counts of <c>corpus/open/counts</c> and the cue tables from the fine-sense anchors of <c>corpus/anchors</c>; run <c>open-counts</c> first when the open corpus changed.</description></item>
+///     <item><description><c>tune-basic [--corpus DIR] [--repository DIR]</c> scores the hyper-parameter grid on the development split of the representative open corpus and the anchor development subset; it writes nothing.</description></item>
+///     <item><description><c>evaluate-tagger [--input FILE] [--corpus DIR] [--repository DIR] [--split test] [--gold FILE] [--output FILE]</c> measures the part-of-speech accuracy of the basic classifier with the table <c>FILE</c> (default the shipped <c>basic.bin</c>) on a split of the representative open corpus (the headline), on the test split of the targeted challenge set (reported on its own line) and on an optional external gold file (<c>sentence id</c>, form and tag letter per line).</description></item>
 ///     <item><description><c>coverage --text DIR [--corpus DIR] [--top N] [--output FILE]</c> reports how many of the running words of the text files of a directory the word table knows, the share of the known words whose lemma is trained (a lemma that has sentences in <c>corpus/anchors</c>), and lists the most frequent unknown words, split into name-like and other words.</description></item>
 ///     <item><description><c>appendix [--corpus DIR] [--data DIR] [--output FILE]</c> writes the generated senses appendix of the user guide: the senses of the trained lemmas of <c>corpus/anchors</c> with id, group, sense key, gloss and respelling, from the data folder (default <c>data</c>).</description></item>
 ///     <item><description><c>import-oewn --input FILE [--output DIR] [--sha256 HEX|none] [--threshold N] [--overwrite true]</c> imports the pinned Open English WordNet release into the table files of the data folder (default <c>data</c>) and refuses to replace existing tables unless <c>--overwrite true</c> is given; <c>import-oewn --previous FILE [--previous-release ID] [--previous-sha256 HEX|none] [--output DIR]</c> instead writes the identifier map from a previous release.</description></item>
@@ -36,7 +36,7 @@ namespace WordSense.Builder;
 /// </remarks>
 internal static class Program
 {
-    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: compile-image, rebuild-forms, audit-forms, generate-facts, import-agid, import-moby, weights <modelId>, evaluate <modelId>, ud-counts, ud-irregular, coverage, train-basic, tune-basic, appendix, import-oewn, import-wn30-counts, label-senses, seed-inventory, validate-data.";
+    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: compile-image, rebuild-forms, audit-forms, generate-facts, import-agid, import-moby, weights <modelId>, evaluate <modelId>, open-counts, evaluate-tagger, coverage, train-basic, tune-basic, appendix, import-oewn, import-wn30-counts, label-senses, seed-inventory, validate-data.";
 
     /// <summary>The name of the option that gives the input file of an import command.</summary>
     private const string InputOption = "input";
@@ -88,18 +88,17 @@ internal static class Program
                 case "weights":
                     await ModelTrainer.TrainAsync(repository, corpus, ModelCatalog.Find(Require(options, "model")), TrainSettingsOf(options, repository), output, cancellationToken).ConfigureAwait(false);
                     return 0;
-                case "ud-counts":
-                    return await RunUdCountsAsync(options, repository, corpus, output, cancellationToken).ConfigureAwait(false);
+                case "open-counts":
+                    return RunOpenCounts(options, corpus, output);
                 case "train-basic":
                     return await RunTrainBasicAsync(options, repository, corpus, output, cancellationToken).ConfigureAwait(false);
                 case "tune-basic":
-                    var tuneCache = options.TryGetValue("ud", out var ud3) ? Path.GetFullPath(ud3) : BasicModelBuilder.DefaultUdCache(repository);
-                    output.Write(await BasicTuner.RunAsync(corpus, tuneCache, output, cancellationToken).ConfigureAwait(false));
+                    output.Write(await BasicTuner.RunAsync(corpus, output, cancellationToken).ConfigureAwait(false));
                     return 0;
+                case "evaluate-tagger":
+                    return await RunEvaluateTaggerAsync(options, repository, corpus, output, cancellationToken).ConfigureAwait(false);
                 case "evaluate":
                     return await RunEvaluateAsync(options, repository, corpus, output, cancellationToken).ConfigureAwait(false);
-                case "ud-irregular":
-                    return RunUdIrregular(options, repository, corpus, output);
                 case "coverage":
                     return RunCoverage(options, corpus, output);
                 case "import-oewn":
@@ -134,7 +133,7 @@ internal static class Program
         }
     }
 
-    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "ud", "refresh-ud", "table", InputOption, "text", "top", "data", "sha256", "threshold", "overwrite", "outcomes", "oewn", "agid", "sample", "seed", "oracle", "adjudications", "max-error", "previous", "previous-release", "previous-sha256", "cache", "no-cache", "recompute-mean", "baseline", "curation", "solver", "calibration-target"], StringComparer.Ordinal);
+    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "split", "gold", "table", InputOption, "text", "top", "data", "sha256", "threshold", "overwrite", "outcomes", "oewn", "agid", "sample", "seed", "oracle", "adjudications", "max-error", "previous", "previous-release", "previous-sha256", "cache", "no-cache", "recompute-mean", "baseline", "curation", "solver", "calibration-target"], StringComparer.Ordinal);
 
     /// <summary>
     ///     Options that are switches: they take no value, but accept a following <c>true</c> or <c>false</c>.
@@ -199,20 +198,47 @@ internal static class Program
         return 0;
     }
 
-    private static async Task<int> RunUdCountsAsync(Dictionary<string, string> options, string repository, string corpus, TextWriter output, CancellationToken cancellationToken)
+    private static int RunOpenCounts(Dictionary<string, string> options, string corpus, TextWriter output)
     {
-        var udDirectory = options.TryGetValue("ud", out var ud) ? Path.GetFullPath(ud) : BasicModelBuilder.DefaultUdCache(repository);
-        var countsOutput = options.TryGetValue("output", out var co) ? Path.GetFullPath(co) : Path.Join(corpus, "ud");
-        output.WriteLine(await BasicModelBuilder.WriteUdCountsAsync(udDirectory, countsOutput, cancellationToken).ConfigureAwait(false));
+        var countsOutput = options.TryGetValue("output", out var co) ? Path.GetFullPath(co) : OpenCorpus.CountsDirectory(corpus);
+        output.WriteLine(BasicModelBuilder.WriteCounts(corpus, countsOutput));
         return 0;
     }
 
     private static async Task<int> RunTrainBasicAsync(Dictionary<string, string> options, string repository, string corpus, TextWriter output, CancellationToken cancellationToken)
     {
-        var cache = options.TryGetValue("ud", out var ud) ? Path.GetFullPath(ud) : BasicModelBuilder.DefaultUdCache(repository);
-        var refresh = options.TryGetValue("refresh-ud", out var r) && string.Equals(r, "true", StringComparison.OrdinalIgnoreCase);
         var tablePath = options.TryGetValue("output", out var to) ? to : BasicModelBuilder.DefaultOutput;
-        await BasicModelBuilder.TrainAsync(repository, corpus, cache, refresh, tablePath, output, cancellationToken).ConfigureAwait(false);
+        await BasicModelBuilder.TrainAsync(repository, corpus, tablePath, output, cancellationToken).ConfigureAwait(false);
+        return 0;
+    }
+
+    private static async Task<int> RunEvaluateTaggerAsync(Dictionary<string, string> options, string repository, string corpus, TextWriter output, CancellationToken cancellationToken)
+    {
+        var tablePath = options.TryGetValue(InputOption, out var input) ? input : Path.Join(repository, BasicModelBuilder.DefaultOutput);
+        var split = options.GetValueOrDefault("split", "test");
+        var tables = DemaConsulting.WordSense.Basic.BasicTables.Load(File.ReadAllBytes(tablePath), DemaConsulting.WordSense.WordLexicon.Current);
+        var scores = new List<TaggerScore>
+        {
+            await TaggerEvaluator.EvaluateAsync($"open corpus {split} (representative)", tables, [.. OpenCorpus.ReadSplit(corpus, OpenCorpus.Representative, split).Select(OpenCorpus.ToTagged)], cancellationToken).ConfigureAwait(false),
+        };
+        var challenge = OpenCorpus.DataFile(corpus, OpenCorpus.Targeted, "test");
+        if (File.Exists(challenge))
+        {
+            scores.Add(await TaggerEvaluator.EvaluateAsync("targeted test (challenge set)", tables, [.. OpenCorpus.ReadFile(challenge).Select(OpenCorpus.ToTagged)], cancellationToken).ConfigureAwait(false));
+        }
+
+        if (options.TryGetValue("gold", out var gold))
+        {
+            scores.Add(await TaggerEvaluator.EvaluateAsync(Path.GetFileNameWithoutExtension(gold), tables, TaggerEvaluator.ReadGold(gold), cancellationToken).ConfigureAwait(false));
+        }
+
+        var text = TaggerEvaluator.Render(scores);
+        output.Write(text);
+        if (options.TryGetValue("output", out var report))
+        {
+            File.WriteAllText(report, text, new System.Text.UTF8Encoding(false));
+        }
+
         return 0;
     }
 
@@ -231,14 +257,6 @@ internal static class Program
             result.UpdateTableFile(tableFile);
         }
 
-        return 0;
-    }
-
-    private static int RunUdIrregular(Dictionary<string, string> options, string repository, string corpus, TextWriter output)
-    {
-        var irregularCache = options.TryGetValue("ud", out var ud) ? Path.GetFullPath(ud) : BasicModelBuilder.DefaultUdCache(repository);
-        var irregularOutput = options.TryGetValue("output", out var io) ? io : Path.Join(corpus, "lexicon", IrregularForms.DerivedFile);
-        output.WriteLine(IrregularForms.Derive(irregularCache, corpus, irregularOutput));
         return 0;
     }
 

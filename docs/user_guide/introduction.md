@@ -582,8 +582,9 @@ once and checks nothing, `ClassifyAsync` works with or without it, a mirror is i
 releases nothing but is still honored: afterwards `EnsureModelAsync` and `ClassifyAsync` throw
 `ObjectDisposedException`. It
 decides the analysis of a word with several analyses with a small statistical table that is
-embedded in the package: a part-of-speech tagger (a hidden Markov model trained on the Universal Dependencies English
-web treebank, limited to the parts of speech that the word table allows) and, for lemmas that have enough training
+embedded in the package: a part-of-speech tagger (a hidden Markov model trained on the tag statistics of the open
+English part-of-speech corpus of this project, limited to the parts of speech that the word table allows) and, for
+lemmas that have enough training
 sentences, context cues that separate analyses of the same part of speech (for example the past participle and the
 present of `read`, or the lemmas of `left`). It always answers a word with several analyses, at the `PartOfSpeech`
 level, and lists every analysis in `Analyses` with its probability; the confidence is the
@@ -976,10 +977,11 @@ ensure; cancelling does not stop the shared ensure (see "Threads and cancellatio
 # Licensing and Provenance
 
 WordSense is licensed under the MIT License. Because the packages embed derived data, their license expressions say
-so: the core package is `MIT AND CC-BY-4.0` and the Basic package `MIT AND CC-BY-SA-4.0`, and each carries a
+so: the core package is `MIT AND CC-BY-4.0` and the Basic package `MIT`, and each carries a
 `NOTICE.md` with the credits. The core package embeds data derived from Open English WordNet 2025 (CC BY 4.0) and,
 through the sense frequency counts, from the Princeton WordNet 3.0 (its notice is in the `NOTICE.md`); the Basic package
-embeds statistics trained on the Universal Dependencies English-EWT treebank (CC BY-SA 4.0). The `all-MiniLM-L6-v2` and
+embeds statistics trained on our own CC0 corpora (the open part-of-speech corpus and the sentence corpus), with no
+treebank involved. The `all-MiniLM-L6-v2` and
 `bert-base-cased` models (Apache License 2.0) and ONNX Runtime (MIT) are used under their own licenses.
 
 The word table is derived from Moby Part-of-Speech II by Grady Ward (<https://www.gutenberg.org/ebooks/3203>), which
@@ -997,10 +999,14 @@ credited here as the evaluation source. Project-authored additions to the data (
 the project senses) are MIT.
 The training corpus is not shipped in the NuGet packages; only the derived weights are embedded. Every corpus sentence
 has a row in `corpus/provenance/*.tsv` recording its source, license, URL and contributor. The licenses in use are
-`CC0 1.0`, `Public domain`, `CC BY 2.0 FR` (Tatoeba, with the contributor recorded), `CC BY-SA 4.0` (Wikipedia and
-Universal Dependencies English EWT sentences), `MIT (project-authored)` and, as a last resort for a handful of senses,
-`web-excerpt`. Sentences under `CC BY-SA 4.0` keep that license: if you redistribute the corpus (not the package),
-those rows must be shared under the same terms with attribution. The shipped weights are statistical summaries of many
+`CC0 1.0` (Tatoeba sentences of the official CC0 export), `Public domain in the United States` (Project Gutenberg books
+published 1930 or earlier and works of US federal agencies, 17 U.S.C. §105) and `CC0 1.0 (project-authored)` (the
+sentences written for this project, including those written by language models, which the project owner dedicates to
+the public domain under CC0 1.0). Sentences under CC BY, CC BY-SA or any other attribution-bound license are not
+used, and neither is any Wikipedia, Wiktionary or Universal Dependencies text; the Universal Dependencies English-EWT
+treebank is downloaded for evaluation only, never committed, and trains nothing. The open part-of-speech corpus
+`corpus/open` is released under CC0 1.0 for our annotations and selection; its underlying sentences are public domain in
+the United States or CC0 per source (`corpus/open/sources.tsv`). The shipped weights are statistical summaries of many
 sentences and do not contain the sentences; this is the project's reading and not legal advice. The build notes
 (`model-provenance.md`) describe how the model files were produced, and `model-comparison.md` and
 `basic-evaluation.md` give the measured quality of each model.
@@ -1029,10 +1035,11 @@ in `corpus/`; the format of the files is described in `corpus/README.md` and the
 | `weights <modelId>` | Trains the fine-sense weights and the per-lemma thresholds of an encoder model (`minilm` or `bert-base-cased`) |
 | `evaluate <modelId>` | Measures a model (`minilm`, `bert-base-cased` or `basic`) on holdout and real text, at each answer level |
 | `evaluate-senses <modelId> --cache DIR` | Measures a model on SemCor 3.0 (downloaded to the cache, never committed) |
-| `evaluate-running <modelId> --cache DIR` | Measures the part-of-speech accuracy of a model on the UD English-EWT test file |
-| `ud-counts` | Counts the tag statistics of the pinned UD English-EWT treebank into `corpus/ud` |
-| `train-basic` | Retrains the whole Basic model and writes its table (`Resources/basic.bin`) |
-| `tune-basic` | Compares hyperparameter variants of Basic on UD development and anchor subsets; writes nothing |
+| `evaluate-running <modelId> --cache DIR` | Measures the part-of-speech accuracy of a model on running text |
+| `open-counts` | Counts the tag statistics of the training split of the open part-of-speech corpus into `corpus/open/counts` |
+| `train-basic` | Retrains the whole Basic model from those counts and the anchors, and writes its table (`Resources/basic.bin`) |
+| `tune-basic` | Compares hyperparameter variants of Basic on the development split of the open corpus and an anchor subset; writes nothing |
+| `evaluate-tagger [--gold FILE]` | Measures the part-of-speech accuracy of Basic on the open corpus test split (headline), the targeted challenge set and an optional gold file |
 | `appendix` | Regenerates the generated senses appendix of this guide |
 
 <!-- markdownlint-enable MD013 -->
@@ -1052,14 +1059,14 @@ repository layout.
 - `choosers/anchors/*.tsv` and `choosers/holdout/*.tsv` hold the rows of the form choosers (`form`, `label`,
   `sentence`): the same sentences as the fine-sense rows, labeled with the lemma of the analyses of the form they stand
   for (or `lemma/features` for one analysis of a lemma whose analyses of the form differ in tense); the per-form
-  chooser is trained from them. The form lists of the former corpus wait in `legacy/forms/`.
+  chooser is trained from them (the Basic model reads their anchors for its context cues too).
 - `provenance/*.tsv` has one row per sentence: `id` (first 12 hex characters of the SHA-256 of `lemma|sentence`),
   `lemma`, `sense`, `split`, `source`, `licence`, `source_key`, `url`, `contributor` and `origin`.
-- `realtext/eval-seed.tsv` holds real sentences that are used for evaluation only and never for training. It is not
-  part of this version either: the real sentences of the former corpus wait in `legacy/realtext/` for their relabeling.
-- `legacy/` holds the former class-labeled corpus (`anchors`, `holdout`, `realtext`, `senses`, `forms`, `provenance`),
-  which the encoder models no longer read and the Basic model commands still do, until it is relabeled to fine senses
-  (see `corpus/legacy/README.md`).
+- `realtext/relabel-realtext.tsv` holds real sentences that are used for evaluation only and never for training.
+- `open/` is the open English part-of-speech corpus (see `corpus/open/README.md`): `representative/` is a random sample
+  that is the only input of usage statistics (the tag counts of the Basic tagger in `open/counts`) and of the real-text
+  part-of-speech evaluation, and `targeted/` holds deliberately chosen sentences (its test split, which includes the
+  simplified-technical-English instructions, is a challenge set that is reported on its own).
 - `suite/suite.tsv` and `suite/expected.tsv` hold the reviewed suite sentences and the expectation of each model for
   each row; the test suite of each model fails when an expected pass regresses.
 
@@ -1076,10 +1083,10 @@ repository layout.
    reports it: 20 for a frequent sense, 10 for a rare one and 5 for a sense that WordNet 3.0 has never seen), with
    different holdout sentences (ideally from different sources) in `holdout/my-batch.tsv`. The braced target may be any
    form.
-3. Add every braced form of a lemma that shares its spelling with another lemma or tense to `forms/speech.tsv`.
-4. Add a provenance row for every sentence to `provenance/my-batch.tsv`: source, license from the list above,
+3. Add a provenance row for every sentence to `provenance/my-batch.tsv`: source, license from the list above (only
+   `CC0 1.0`, `Public domain in the United States` and `CC0 1.0 (project-authored)` are accepted),
    a URL for web sources and the origin (`real`, `authored` or `user-supplied`).
-5. Rebuild the word table, retrain each encoder model (this also chooses the thresholds of the lemma) and measure the
+4. Rebuild the word table, retrain each encoder model (this also chooses the thresholds of the lemma) and measure the
    result:
 
    ```text
@@ -1093,7 +1100,7 @@ repository layout.
    dotnet run --project tools/WordSense.Builder -c Release -- appendix
    ```
 
-6. Check the reports, run `pwsh ./build.ps1` and commit the corpus files, the data, the tables, the weights and the
+5. Check the reports, run `pwsh ./build.ps1` and commit the corpus files, the data, the tables, the weights and the
    appendix together.
 
 # Troubleshooting

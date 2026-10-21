@@ -52,14 +52,10 @@ internal sealed record BasicHyperparameters(
     public const int AnchorDevModulus = 5;
 
     /// <summary>
-    ///     The most sentences of the UD development file the tuner scores.
-    /// </summary>
-    public const int UdDevSentences = 2002;
-
-    /// <summary>
-    ///     The values the shipped table is trained with: the values of the original design. <c>tune-basic</c> (UD
-    ///     development file and anchor development subset only) found only differences below one point for gamma 1.0
-    ///     and HMM weight 2.0, which did not carry over to a better holdout or real-text score, so the defaults stay.
+    ///     The values the shipped table is trained with: the values of the original design. <c>tune-basic</c> (development
+    ///     split of the representative open corpus and the anchor development subset only) finds at most +0.5 points on the
+    ///     open development split for gamma 1.0 with beta 1.0, but that costs 1.8 points on the anchor development subset
+    ///     (the hard, targeted ambiguous words), so the defaults stay (see <c>docs/build_notes/basic-evaluation.md</c>).
     /// </summary>
     public static readonly BasicHyperparameters Default = new(
         Gamma: 0.75,
@@ -88,6 +84,7 @@ internal sealed record BasicHyperparameters(
         ("hmm-weight", [.. new[] { 0.5, 1.0, 1.5, 2.0 }.Select(v => Default with { HmmWeight = v })]),
         ("temperature", [.. new[] { 2.0, 4.0, 8.0 }.Select(v => Default with { Temperature = v })]),
         ("cue-alpha", [.. new[] { 0.05, 0.1, 0.5 }.Select(v => Default with { CueAlpha = v })]),
+        ("combined", [Default with { Gamma = 1.0, Beta = 1.0 }, Default with { Gamma = 1.0, Beta = 1.0, ClosedMinCount = 3, ClosedShare = 0.8 }]),
     ];
 
     /// <summary>

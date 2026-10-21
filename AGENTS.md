@@ -11,18 +11,22 @@
   support and lemma-weights machinery); and the two concrete models `DemaConsulting.WordSense.MiniLM` and
   `DemaConsulting.WordSense.BertBaseCased`, each pinning its model files and embedding its own weights. Basic and Onnx
   depend only on core; MiniLM and BertBaseCased depend on Onnx.
-- **languages**: C#, Python (one-off tokenizer fixture generator and the real-text harvest tool `tools/real-text`)
+- **languages**: C#, Python (one-off tokenizer fixture generator, the real-text harvest tool `tools/real-text` and the
+  open-corpus scripts `tools/open-corpus`)
 - **technologies**: .NET, ONNX Runtime, Git LFS
 
 # Project Structure
 
 ```text
-├── corpus/                     (training anchors, holdout sentences, form maps)
+├── corpus/                     (training anchors, holdout sentences, form maps; corpus/open is the open
+│                                part-of-speech corpus and the tag counts of the Basic tagger)
 ├── data/                       (word data TSV tables from Open English WordNet, schema.yaml)
 ├── model/                      (one folder per model: model/<model-id>/ with ONNX encoder, vocabulary, tokenizer,
 │                                SHA256SUMS and README; stored in Git LFS)
 ├── tools/
-│   ├── WordSense.Builder/      (non-shipped builder: compile-image, weights, evaluate, train-basic, tune-basic, appendix)
+│   ├── WordSense.Builder/      (non-shipped builder: compile-image, weights, evaluate, open-counts, train-basic,
+│   │                            tune-basic, evaluate-tagger, appendix)
+│   ├── open-corpus/            (Python scripts that built the open part-of-speech corpus corpus/open)
 │   └── tokenizer-fixture/      (one-off Python tokenizer parity fixture generator)
 ├── docs/
 │   ├── build_notes/

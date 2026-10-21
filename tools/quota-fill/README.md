@@ -38,6 +38,7 @@ NPS and the National Weather Service, and the FAA handbooks and advisory circula
 passage credited to a third party), and the Tatoeba sentences of the CC0 export. Wikipedia, Wiktionary, CC BY-SA text,
 Universal Dependencies data, news sites, NOS, NASA, the FAA documents with third-party rights (the Parachute Rigger
 Handbook, the Aviation Weather Handbook, Aerodynamics for Naval Aviators, the MC-4 manual) and the Tatoeba CC BY
-sentences are never used.
+sentences are never used. (The earlier waves read the Tatoeba CC BY sentences too; `license_filter.py` removed them, see
+`corpus/README.md`.)
 
 Every row written by these scripts is targeted (found or written for one sense or form) and its provenance row says so.

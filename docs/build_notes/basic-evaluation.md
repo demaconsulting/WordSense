@@ -11,11 +11,14 @@ two statistical parts that are fused for every ambiguous word:
 
 1. **Part-of-speech tagger.** A second-order hidden Markov model over thirteen tags (noun, pronoun, verb, adjective,
    adverb, preposition, conjunction, interjection, determiner, auxiliary, infinitive "to", punctuation, other). The
-   transition counts and the counts of the closed-class words and of the word suffixes come from the Universal
-   Dependencies English-EWT treebank (training part). The dictionary of the core package limits the tags an open-class
+   transition counts and the counts of the closed-class words and of the word suffixes come from the tag counts of the
+   training split of the representative part of the open English part-of-speech corpus (`corpus/open`, CC0 1.0; since
+   the open-corpus retraining below, formerly the Universal Dependencies English-EWT treebank). The dictionary of the
+   core package limits the tags an open-class
    word may take. The forward-backward algorithm gives a posterior over the tags for every word of a sentence.
 2. **Context cues.** For each lemma with at least two senses, a naive Bayes model over the words in a window of five on
-   each side and the words directly before and after the target. It is trained on the training anchors only, and it
+   each side and the words directly before and after the target. It is trained on the training anchors (and the
+   form-chooser anchors) only, and it
    separates senses that share a part of speech (for example `bass`, `tear` and `row`).
 
 The fusion adds the weighted logarithm of the tag posterior and the scaled cue score of each candidate sense and turns
@@ -24,8 +27,9 @@ probability is the confidence; the model answers every ambiguous word and never 
 
 ## Training and hyperparameters
 
-`train-basic` retrains everything from the committed counts in `corpus/ud`, the word table of the core package, and
-the anchors and sense inventory in `corpus`. Every tunable value is in one place, `BasicHyperparameters.cs` of the
+`train-basic` retrains everything from the committed counts in `corpus/open/counts`, the word table of the core
+package, and the anchors and chooser anchors in `corpus`. Every tunable value is in one place,
+`BasicHyperparameters.cs` of the
 builder; the values the runtime needs travel in the header of the table. The values of the shipped table are the
 defaults of that file.
 
@@ -42,11 +46,62 @@ defaults of that file.
 | cue alpha | 0.1 | Additive smoothing of the cue likelihoods |
 | cue minimum feature count | 2 | Fewest anchors a context feature needs to enter the vocabulary of a lemma |
 
-The hyperparameters were chosen on data that is not used for the reported results: the treebank development part, and
+The hyperparameters were chosen on data that is not used for the reported results: the development split of the
+representative open corpus (earlier: the treebank development part), and
 a fixed-seed sample of 5,000 training anchors split into a training and a development subset (one sentence in five,
 by a hash of its text, is development). The holdout and the real-text sentences are never used for tuning.
 
-## Results
+## Open-corpus training (current table)
+
+The tagger statistics of the shipped table no longer come from the Universal Dependencies English-EWT treebank (CC
+BY-SA 4.0) but from the open English part-of-speech corpus of this project (`corpus/open`, annotations CC0 1.0): the
+tag counts are taken from the `train` split of the representative part (every token, including the `disputed` and the
+`unchecked` ones; the measurement of `open a` below showed that leaving them out gains nothing), after joining a split
+contraction (`do` and `n't`) into one token as an application passes it. The context cues are trained from the
+fine-sense anchors and the form-chooser anchors of `corpus` (the legacy class-labeled corpus is gone), with the same
+prior for every analysis because the anchors are a balanced corpus. The treebank is used for evaluation only.
+
+Part-of-speech accuracy of the whole classifier (`evaluate-tagger`: tokens that the classifier answers whose gold tag is
+a word class; "ambiguous" means at least two parts of speech in the lexicon). The treebank files are mapped to the
+lexicon conventions (possessives are determiners, a copula `be` is a verb, the particle of a phrasal verb is an
+adverb, a
+subordinating conjunction before a gerund or noun phrase is a preposition) by `tools/open-corpus/scripts/convention_map.py`:
+
+| Table | Open test (all / ambiguous) | UD dev (all / ambiguous) | UD test (all / ambiguous) |
+| --- | ---: | ---: | ---: |
+| Treebank-trained (previous) | 89.88% / 84.84% | 89.99% / 86.05% | 90.31% / 86.52% |
+| Open-corpus-trained (this build) | 93.85% / 91.48% | 91.76% / 88.82% | 91.63% / 88.58% |
+
+The open test split has 21,481 scored tokens (12,810 ambiguous), UD dev 19,816 (12,697) and UD test 19,472 (12,482).
+Most of the gain on the treebank is the convention (the treebank-trained tagger tags the copula `be` as an auxiliary like
+the treebank, the lexicon and our corpus tag it as a verb); with the auxiliary and the verb merged the open-corpus
+table is about 1 point below the treebank-trained one on the treebank's own web genres and about 2 points above it on
+the open test split (`open-hmm` measurement of 2026-10-20, not repeated here). The open test split shares annotator,
+guideline and genres with the training split, so its absolute numbers are optimistic and the 89.9% of the treebank-trained
+table on it is the cross-domain figure. 36% of the tokens of the corpus have no second annotation (`unchecked`).
+
+The 32 simplified-technical-English sentences of the targeted challenge set (imperative maintenance instructions with
+component names, part numbers and units; reported on their own, never merged into the headline): 98.65% of 222 scored
+tokens (97.83% of 138 ambiguous tokens); the treebank-trained table scored 95.95% and 93.48%.
+
+`tune-basic` on the open development split (11,990 training sentences, 1,489 development sentences) and the anchor
+development subset:
+
+| Variant | Open dev ambiguous POS | Anchor dev analysis |
+| --- | ---: | ---: |
+| default (shipped) | 91.76% | 90.15% |
+| gamma 1.0 | 92.11% | 89.07% |
+| beta 1.0 | 92.11% | 89.27% |
+| gamma 1.0, beta 1.0 | 92.26% | 88.49% |
+| gamma 1.0, beta 1.0, closed 3 / 0.8 | 92.28% | 88.39% |
+| HMM weight 1.0 | 91.76% | 90.44% |
+
+The best variants gain 0.5 points on the open development split and lose 1.8 points on the anchor development subset (the
+hard, targeted ambiguous words), so the defaults stay. Results of the whole table on the holdout (the Tatoeba CC BY rows
+were removed from it first): real-text test split best analysis 92.24% and part of speech 92.74%, written holdout 93.12%
+(the cues are now trained on the same kind of sentences); see `model-table.md`. The table is 148,787 bytes (145 KiB).
+
+## Results (earlier table, trained on the treebank counts and the legacy corpus; historical)
 
 `evaluate basic` prints the same comparison table on every run, so that two runs can be compared line by line. The
 reference rows are fixed values of earlier measurements; the first row is the current table. The table

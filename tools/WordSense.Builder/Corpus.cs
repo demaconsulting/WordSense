@@ -22,8 +22,7 @@ internal sealed record CorpusRow(string Lemma, string SenseId, PartOfSpeech Part
 ///     A row has four tab-separated fields and no header: the lower-case lemma, the sense id, the name of the part of
 ///     speech and the sentence with the target word in one pair of braces. The reader checks the format and, through
 ///     <see cref="SenseInventory"/>, that the sense exists in the catalog of the word image, belongs to the lemma of the
-///     row and has the part of speech of the row. The rows of the retired class labels are read by
-///     <see cref="LegacyCorpus"/>.
+///     row and has the part of speech of the row.
 /// </remarks>
 internal static class Corpus
 {
@@ -158,38 +157,6 @@ internal static class Corpus
         }
 
         return (rows, errors);
-    }
-
-    /// <summary>
-    ///     Reads a legacy forms file: <c>form</c>, <c>lemma</c>, <c>labels</c> with a header line. Only the Basic model
-    ///     commands still use it, through <see cref="LegacyCorpus"/>.
-    /// </summary>
-    /// <param name="path">The file path.</param>
-    /// <returns>Form, lemma and label list per row.</returns>
-    /// <exception cref="InvalidDataException">Thrown when a row has fewer than two columns.</exception>
-    public static List<(string Form, string Lemma, string[] Labels)> ReadForms(string path)
-    {
-        var forms = new List<(string, string, string[])>();
-        var lines = File.ReadAllLines(path, new UTF8Encoding(false));
-        for (var i = 1; i < lines.Length; i++)
-        {
-            var line = lines[i].TrimEnd('\r');
-            if (line.Length == 0)
-            {
-                continue;
-            }
-
-            var columns = line.Split('\t');
-            if (columns.Length < 2)
-            {
-                throw new InvalidDataException($"{Path.GetFileName(path)}:{i + 1}: expected form and lemma columns.");
-            }
-
-            var labels = columns.Length > 2 ? columns[2].Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries) : [];
-            forms.Add((columns[0].Trim().ToLowerInvariant(), columns[1].Trim().ToLowerInvariant(), labels));
-        }
-
-        return forms;
     }
 
     /// <summary>

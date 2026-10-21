@@ -3,6 +3,8 @@
 > **Historical.** This page records an earlier phase of the project. The builder commands it names (for example
 > `real-import`, `real-judge-*`, `validate-provenance`, `nounverb-*`, `learning-curve`, `error-diagnosis`,
 > `weak-lemmas`) were removed from `WordSense.Builder`; the results stay as the record of how the data was built.
+> The page also names sources (Tatoeba CC BY 2.0 FR, Wikipedia, Wiktionary, UD) that were later removed from the corpus
+> for licensing reasons: none of their text is in the repository now (`corpus/README.md`).
 
 All figures on this page come from one run of the builder command `real-eval` on the committed corpus and the
 committed embedded table (format v3, 744 lemmas, 1,521 senses; the three lemmas `conjunct`, `overhead` and `uptown`

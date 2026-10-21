@@ -2,7 +2,7 @@
 """Harvest candidate real sentences for the WordSense corpus (Python standard library only).
 
 Sources (open or public domain only):
-  * Tatoeba English exports (CC0 subset and CC BY 2.0 FR, contributor recorded).
+  * Tatoeba English exports (the CC0 subset only; the CC BY sentences are skipped).
   * Project Gutenberg works from the allow-list gutenberg-works.tsv (US public domain; the Project Gutenberg
     header and licence block are stripped, only the sentences between the START and END markers are read).
 
@@ -217,37 +217,16 @@ def read_targets(path):
     return targets
 
 
-def ud_sentences():
-    """Yield (text, sent_id) from the cached Universal Dependencies English EWT treebank files (CC BY-SA 4.0)."""
-    for part in ("train", "dev", "test"):
-        path = os.path.join(CACHE, f"en_ewt-ud-{part}.conllu")
-        if not os.path.exists(path):
-            continue
-        sent_id = None
-        with open(path, encoding="utf-8") as f:
-            for line in f:
-                if line.startswith("# sent_id = "):
-                    sent_id = line[12:].strip()
-                elif line.startswith("# text = ") and sent_id:
-                    yield normalize(line[9:].strip()), sent_id
-
-
 def sources(include_gutenberg=True):
-    """Yield (sentence, source, licence, source_key, url, contributor, is_pd_or_cc0)."""
-    for text, sent_id in ud_sentences():
-        if acceptable(text, 4):
-            unit = re.sub(r"-\d+$", "", sent_id)
-            yield (text, "ud-ewt", "CC BY-SA 4.0", sent_id, "https://github.com/UniversalDependencies/UD_English-EWT",
-                   f"UD English EWT: {unit}")
+    """Yield (sentence, source, licence, source_key, url, contributor). Only CC0 and US public-domain text is read."""
     for sid, text, user, is_cc0 in tatoeba_sentences():
-        if acceptable(text, 4):
-            yield (text, "tatoeba-cc0" if is_cc0 else "tatoeba-by", "CC0 1.0" if is_cc0 else "CC BY 2.0 FR",
-                   sid, f"https://tatoeba.org/en/sentences/show/{sid}", user or "unknown")
+        if is_cc0 and acceptable(text, 4):
+            yield (text, "tatoeba-cc0", "CC0 1.0", sid, f"https://tatoeba.org/en/sentences/show/{sid}", user or "unknown")
     if include_gutenberg:
         for work in gutenberg_works():
             for info, index, sentence in gutenberg_sentences(work):
                 if acceptable(sentence, 6):
-                    yield (sentence, "gutenberg", "Public domain", f"pg{info['id']}#p{index}",
+                    yield (sentence, "gutenberg", "Public domain in the United States", f"pg{info['id']}#p{index}",
                            f"https://www.gutenberg.org/ebooks/{info['id']}", f"{info['author']}: {info['title']}")
 
 
@@ -256,14 +235,14 @@ def brace(sentence, match):
 
 
 def quota_pick(rows, cap, rng):
-    """Prefer public-domain and CC0 sources, then Tatoeba BY; random within each source."""
-    by_source = {"tatoeba-cc0": [], "gutenberg": [], "tatoeba-by": [], "ud-ewt": []}
+    """A third from each of the two sources first, then random from the rest."""
+    by_source = {"tatoeba-cc0": [], "gutenberg": []}
     for row in rows:
         by_source[row["source"]].append(row)
     for group in by_source.values():
         rng.shuffle(group)
     picked = by_source["tatoeba-cc0"][:max(1, cap // 3)] + by_source["gutenberg"][:max(1, cap // 3)]
-    rest = by_source["tatoeba-by"] + by_source["ud-ewt"] + by_source["tatoeba-cc0"][max(1, cap // 3):] + by_source["gutenberg"][max(1, cap // 3):]
+    rest = by_source["tatoeba-cc0"][max(1, cap // 3):] + by_source["gutenberg"][max(1, cap // 3):]
     rng.shuffle(rest)
     picked.extend(rest[:max(0, cap - len(picked))])
     return picked[:cap]
@@ -315,63 +294,6 @@ def command_extract(args):
             out.append(r)
     write_candidates(args.out, out)
     print(f"wrote {len(out)} candidates to {args.out}")
-
-
-def wiki_get(params):
-    url = "https://en.wikipedia.org/w/api.php?" + urllib.parse.urlencode(dict(params, format="json", formatversion="2"))
-    request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    with urllib.request.urlopen(request, timeout=60) as response:
-        return json.load(response)
-
-
-def command_wiki(args):
-    """Targeted Wikipedia fallback: search for a word, then take at most one short sentence from each hit article.
-
-    Wikipedia text is CC BY-SA 4.0; the article title is the attribution unit and the page URL is recorded.
-    The command makes one search request and one extract request per article (never a bulk crawl).
-    """
-    known = known_sentences(args.corpus)
-    seen = read_seen(args.seen)
-    word = re.compile(r"(?<![\w-])(?:" + args.pattern + r")(?![\w-])", 0 if args.case else re.I)
-    ctx = re.compile(args.ctx, re.I) if args.ctx else None
-    found = wiki_get({"action": "query", "list": "search", "srsearch": args.query, "srlimit": str(args.articles), "srnamespace": "0"})
-    out = []
-    taken = set()
-    for hit in found["query"]["search"]:
-        title = hit["title"]
-        time.sleep(0.5)
-        page = wiki_get({"action": "query", "prop": "extracts|info", "explaintext": "1", "titles": title, "inprop": "url", "redirects": "1"})
-        info = page["query"]["pages"][0]
-        text = info.get("extract", "")
-        for paragraph in text.split("\n"):
-            paragraph = normalize(paragraph)
-            for sentence in split_sentences(paragraph):
-                sentence = sentence.strip()
-                matches = list(word.finditer(sentence))
-                plain = plain_key(sentence)
-                if len(matches) != 1 or not acceptable(sentence, 6) or plain in known or plain in taken:
-                    continue
-                if ctx and not ctx.search(sentence):
-                    continue
-                braced = brace(sentence, matches[0])
-                cid = cand_id(args.lemma, braced)
-                if cid in seen:
-                    continue
-                taken.add(plain)
-                out.append({"cand_id": cid, "lemma": args.lemma, "hint": args.hint, "sentence": braced, "source": "wikipedia",
-                            "licence": "CC BY-SA 4.0", "source_key": f"wiki:{title}", "url": info.get("fullurl", "https://en.wikipedia.org/wiki/" + urllib.parse.quote(title.replace(" ", "_"))),
-                            "contributor": f"Wikipedia: {title}"})
-                break
-            else:
-                continue
-            break
-    mode = "a" if os.path.exists(args.out) else "w"
-    if mode == "w":
-        write_candidates(args.out, [])
-    with open(args.out, "a", encoding="utf-8", newline="\n") as f:
-        for row in out:
-            f.write("\t".join(row[c] for c in HEADER) + "\n")
-    print(f"{args.lemma} {args.hint}: {len(found['query']['search'])} articles, {len(out)} candidates appended to {args.out}")
 
 
 def command_stats(args):
@@ -441,17 +363,6 @@ def main():
     p.add_argument("--seen")
     p.add_argument("--seed", type=int, default=7)
     p.add_argument("--no-gutenberg", action="store_true")
-    p = sub.add_parser("wiki")
-    p.add_argument("--corpus", required=True)
-    p.add_argument("--lemma", required=True)
-    p.add_argument("--hint", default="any")
-    p.add_argument("--query", required=True)
-    p.add_argument("--pattern", required=True)
-    p.add_argument("--ctx")
-    p.add_argument("--case", action="store_true")
-    p.add_argument("--articles", type=int, default=30)
-    p.add_argument("--out", required=True)
-    p.add_argument("--seen")
     p = sub.add_parser("stats")
     p.add_argument("--targets", required=True)
     p.add_argument("--no-gutenberg", action="store_true")
@@ -463,7 +374,7 @@ def main():
     p.add_argument("--per-source", type=int, default=15)
     p.add_argument("--seed", type=int, default=11)
     args = parser.parse_args()
-    {"fetch": command_fetch, "extract": command_extract, "stats": command_stats, "wiki": command_wiki, "eval-sample": command_eval_sample}[args.command](args)
+    {"fetch": command_fetch, "extract": command_extract, "stats": command_stats, "eval-sample": command_eval_sample}[args.command](args)
 
 
 if __name__ == "__main__":

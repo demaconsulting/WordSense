@@ -12,7 +12,7 @@
     <Authors>DEMA Consulting</Authors>
     <Company>DEMA Consulting</Company>
     <Description>Basic statistical word-sense model for DemaConsulting.WordSense: a part-of-speech tagger (hidden Markov model) and a context cue model choose the analysis (lemma, part of speech, features) of ambiguous English words, with no neural network, no ONNX Runtime and no model download. Small and fast.</Description>
-    <PackageLicenseExpression>MIT AND CC-BY-SA-4.0</PackageLicenseExpression>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/demaconsulting/WordSense</PackageProjectUrl>
     <RepositoryUrl>https://github.com/demaconsulting/WordSense</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>

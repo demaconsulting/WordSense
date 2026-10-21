@@ -2,9 +2,9 @@
 
 > The class tables `coarse_class`, `class_sense` and `class_entry` and the table `form_sense_scope` of the earlier coarse
 > sense inventory are **retired**: they are no longer in `data/` or in `schema.yaml`. The sense inventory (labels,
-> optional curated groups and project senses, see [README.md](README.md)) replaces them. The temporary record
-> `corpus/migration/legacy-class-map.tsv` keeps what each class mapped to, for the relabeling of our own corpus; it is
-> internal and is deleted when the relabeling is done. This page keeps the decisions that made the supplementary `dema`
+> optional curated groups and project senses, see [README.md](README.md)) replaces them. The temporary record of what
+> each class mapped to, for the relabeling of our own corpus, was deleted when the relabeling was done. This page keeps
+> the decisions that made the supplementary `dema`
 > entries and the corrected forms.
 
 The class tables mapped the labeled senses of `corpus/senses` (1,521 labels of 744 lemmas) onto the Open English WordNet

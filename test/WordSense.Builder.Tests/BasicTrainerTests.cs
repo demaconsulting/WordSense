@@ -10,8 +10,6 @@ namespace WordSense.Builder.Tests;
 /// </summary>
 public class BasicTrainerTests
 {
-    private const string MigrationHeader = "class_id\tkind\tlemma\tpos\tmeaning\trespelling\tsense_count\tsense_id\tgroup_id\tentry_id\tentry_lemma\tentry_pos\tfeatures\n";
-
     private static readonly WordDetails Noun = new("record", PartOfSpeech.Noun, "Number=Sing");
     private static readonly WordDetails Verb = new("record", PartOfSpeech.Verb, "VerbForm=Inf");
     private static readonly byte[] ToyHash = SHA256.HashData("builder toy inventory"u8);
@@ -22,55 +20,35 @@ public class BasicTrainerTests
         ["cat"] = [new("cat", PartOfSpeech.Noun, "Number=Sing")],
     };
 
-    private static UdCounts Counts()
+    private static TaggerCounts Counts()
     {
-        var sentences = new List<UdSentence>();
+        var sentences = new List<TaggedSentence>();
         for (var i = 0; i < 6; i++)
         {
-            sentences.Add(new UdSentence(["the", "cat", "zorped", "the", "record", "."], [PosTag.Determiner, PosTag.Noun, PosTag.Verb, PosTag.Determiner, PosTag.Noun, PosTag.Punctuation]));
-            sentences.Add(new UdSentence(["they", "record"], [PosTag.Pronoun, PosTag.Verb]));
+            sentences.Add(new TaggedSentence(["the", "cat", "zorped", "the", "record", "."], [PosTag.Determiner, PosTag.Noun, PosTag.Verb, PosTag.Determiner, PosTag.Noun, PosTag.Punctuation]));
+            sentences.Add(new TaggedSentence(["they", "record"], [PosTag.Pronoun, PosTag.Verb]));
         }
 
-        return UdCounts.Count(sentences);
+        return TaggerCounts.Count(sentences);
     }
 
-    private static LegacySenseInventory Inventory() => new(
+    private static CorpusRow Row(string lemma, PartOfSpeech pos, params string[] words) =>
+        new(lemma, $"{lemma}#{pos.ToString().ToLowerInvariant()}", pos, string.Join(' ', words), "a.tsv", words, Array.IndexOf(words, lemma));
+
+    private static List<CorpusRow> Anchors() =>
     [
-        new InventoryRow("record", "noun", PartOfSpeech.Noun, "noun", null, "s.tsv"),
-        new InventoryRow("record", "verb", PartOfSpeech.Verb, "verb", null, "s.tsv"),
-    ]);
-
-    /// <summary>
-    ///     Reads the analysis labels of an inventory and the rows of a legacy class map written to a temporary corpus
-    ///     directory, which is deleted again.
-    /// </summary>
-    /// <param name="inventory">The inventory.</param>
-    /// <param name="migrationRows">The rows of the legacy class map below its header.</param>
-    /// <returns>The labels.</returns>
-    private static AnalysisLabels Labels(LegacySenseInventory inventory, params string[] migrationRows)
-    {
-        using var dir = new TestDirectory();
-        dir.Write(Path.Join("corpus", AnalysisLabels.MigrationFile), MigrationHeader + string.Concat(migrationRows.Select(r => r + "\n")));
-        return AnalysisLabels.Load(inventory, Path.Join(dir.Root, "corpus"));
-    }
-
-    private static LegacyRow Row(string lemma, string sense, params string[] words) =>
-        new(lemma, sense, string.Join(' ', words), "a.tsv", words, Array.IndexOf(words, lemma));
-
-    private static List<LegacyRow> Anchors() =>
-    [
-        Row("record", "noun", "the", "river", "record", "swims"),
-        Row("record", "noun", "a", "river", "record", "bites"),
-        Row("record", "verb", "the", "guitar", "record", "thumps"),
-        Row("record", "verb", "a", "guitar", "record", "booms"),
-        Row("record", "verb", "a", "guitar", "record", "plays", ".", "river", "runs"),
+        Row("record", PartOfSpeech.Noun, "the", "river", "record", "swims"),
+        Row("record", PartOfSpeech.Noun, "a", "river", "record", "bites"),
+        Row("record", PartOfSpeech.Verb, "the", "guitar", "record", "thumps"),
+        Row("record", PartOfSpeech.Verb, "a", "guitar", "record", "booms"),
+        Row("record", PartOfSpeech.Verb, "a", "guitar", "record", "plays", ".", "river", "runs"),
     ];
 
-    private static BasicModelData Train(BasicHyperparameters? hp = null)
-    {
-        var inventory = Inventory();
-        return BasicTrainer.Train(Counts(), w => Lexicon.TryGetValue(w, out var found) ? found : default, Anchors(), inventory, Labels(inventory), hp ?? BasicHyperparameters.Default);
-    }
+    private static ChooserRow Chooser(string form, string label, params string[] words) =>
+        new(form, label, string.Join(' ', words), "c.tsv", words, Array.IndexOf(words, form));
+
+    private static BasicModelData Train(IReadOnlyList<CorpusRow>? anchors = null, BasicHyperparameters? hp = null, IReadOnlyList<ChooserRow>? choosers = null) =>
+        BasicTrainer.Train(Counts(), w => Lexicon.TryGetValue(w, out var found) ? found : default, anchors ?? Anchors(), choosers ?? [], hp ?? BasicHyperparameters.Default);
 
     private static byte[] Write(BasicModelData data) => BasicTablesWriter.Write(data, ToyHash);
 
@@ -135,108 +113,118 @@ public class BasicTrainerTests
         Assert.True(river >= 0);
         Assert.True(cue.Weights[river * 2] > cue.Weights[(river * 2) + 1]);
         Assert.All(cue.Weights, w => Assert.True(w <= 0));
-        Assert.True(cue.Analyses[1].Prior > cue.Analyses[0].Prior, "The verb has three anchors, the noun two.");
         Assert.Equal(cue.Hashes.Order().ToArray(), cue.Hashes);
-        Assert.Equal(0, data.SkippedAnchors);
     }
 
     /// <summary>
-    ///     The labels of the anchors are rolled up to analyses: classes of senses stand for the analysis of the lemma and
-    ///     part of speech, a class of one tense stands for the verb with that tense, a class that stands for exactly one
-    ///     entry of a lemma split stands for that entry, and the anchors of a class that stands for several entries are
-    ///     skipped and counted.
+    ///     The anchors are a balanced classifier corpus, so the number of anchors of an analysis does not make it more
+    ///     probable: every column of a cue table has the same prior.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_BasicTrainer_Train_AnalysisLabelsAreRolledUpFromSenses()
+    public void WordSenseBuilder_BasicTrainer_Train_AnalysisPriorIgnoresAnchorCounts()
     {
-        // Arrange: a lemma with two classes of senses (two parts of speech), a verb with two tenses, and a form that
-        // spans two lemmas with one class that stands for both
-        var inventory = new LegacySenseInventory(
+        var data = Train();
+
+        var cue = Assert.Single(data.Cues);
+        Assert.Equal(cue.Analyses[0].Prior, cue.Analyses[1].Prior);
+    }
+
+    /// <summary>
+    ///     The columns of a cue table are the lemma and part of speech of the senses of the rows, not the senses: two
+    ///     noun senses share one column, and a lemma whose senses are all of one part of speech gets no table.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BasicTrainer_Train_ColumnsAreLemmaAndPartOfSpeech()
+    {
+        List<CorpusRow> anchors =
         [
-            new InventoryRow("bank", "money", PartOfSpeech.Noun, "money", null, "s.tsv"),
-            new InventoryRow("bank", "slope", PartOfSpeech.Noun, "slope", null, "s.tsv"),
-            new InventoryRow("bank", "tilt", PartOfSpeech.Verb, "tilt", null, "s.tsv"),
-            new InventoryRow("read", "past", PartOfSpeech.Verb, "past", null, "s.tsv"),
-            new InventoryRow("read", "present", PartOfSpeech.Verb, "present", null, "s.tsv"),
-            new InventoryRow("bases", "base", PartOfSpeech.Noun, "base", null, "s.tsv"),
-            new InventoryRow("bases", "basis", PartOfSpeech.Noun, "basis", null, "s.tsv"),
-            new InventoryRow("bases", "both", PartOfSpeech.Noun, "both", null, "s.tsv"),
-        ]);
-        var labels = Labels(
-            inventory,
-            "read#past\tfeature_only\tread\tv\tverb\t\t0\t\t\toewn-read-v\tread\tv\tTense=Past",
-            "read#present\tfeature_only\tread\tv\tverb\t\t0\t\t\toewn-read-v\tread\tv\tTense=Pres",
-            "bases#base\tlemma_split\tbases\tn\tnoun\t\t0\t\t\toewn-base-n\tbase\tn\t",
-            "bases#basis\tlemma_split\tbases\tn\tnoun\t\t0\t\t\toewn-basis-n\tbasis\tn\t",
-            "bases#both\tlemma_split\tbases\tn\tnoun\t\t0\t\t\toewn-base-n\tbase\tn\t",
-            "bases#both\tlemma_split\tbases\tn\tnoun\t\t0\t\t\toewn-basis-n\tbasis\tn\t");
-        List<LegacyRow> anchors =
+            Row("record", PartOfSpeech.Noun, "the", "record", "pays"),
+            Row("record", PartOfSpeech.Noun, "a", "record", "lends"),
+            Row("record", PartOfSpeech.Verb, "they", "record", "left"),
+            Row("cat", PartOfSpeech.Noun, "the", "cat", "sleeps"),
+            Row("cat", PartOfSpeech.Noun, "a", "cat", "purrs"),
+        ];
+
+        var data = Train(anchors);
+
+        var cue = Assert.Single(data.Cues);
+        Assert.Equal("record", cue.Lemma);
+        Assert.Equal(2, cue.Analyses.Length);
+    }
+
+    /// <summary>
+    ///     A form-chooser label that names a tense of a verb makes a cue table keyed by the form, with a column per
+    ///     tense, and a sense sentence of a lemma with the same key goes to the one column of its slot or is left out when
+    ///     the tenses split the slot.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BasicTrainer_Train_ChooserRowsMakeFormTablesWithTenseColumns()
+    {
+        // Arrange: the form read in two tenses, one noun sentence and two verb sentences of the lemma, and a lemma label
+        const string past = "read/Tense=Past+VerbForm=Part";
+        const string present = "read/Tense=Pres";
+        List<ChooserRow> choosers =
         [
-            Row("bank", "money", "the", "bank", "pays"),
-            Row("bank", "money", "a", "bank", "lends"),
-            Row("bank", "slope", "the", "bank", "erodes"),
-            Row("bank", "tilt", "they", "bank", "left"),
-            Row("read", "past", "he", "read", "yesterday"),
-            Row("read", "past", "she", "read", "yesterday"),
-            Row("read", "present", "he", "read", "tomorrow"),
-            Row("bases", "base", "the", "bases", "ached"),
-            Row("bases", "basis", "the", "bases", "argue"),
-            Row("bases", "both", "the", "bases", "of"),
-            Row("bases", "both", "all", "bases", "covered"),
+            Chooser("read", past, "he", "read", "it", "yesterday"),
+            Chooser("read", past, "she", "read", "it", "yesterday"),
+            Chooser("read", present, "they", "read", "it", "daily"),
+            Chooser("read", present, "we", "read", "it", "daily"),
+        ];
+        List<CorpusRow> anchors =
+        [
+            Row("read", PartOfSpeech.Noun, "a", "good", "read", "indeed"),
+            Row("read", PartOfSpeech.Verb, "they", "read", "books"),
+            Row("read", PartOfSpeech.Verb, "we", "read", "books"),
         ];
 
         // Act
-        var data = BasicTrainer.Train(Counts(), w => Lexicon.TryGetValue(w, out var found) ? found : default, anchors, inventory, labels, BasicHyperparameters.Default);
+        var data = Train(anchors, choosers: choosers);
 
-        // Assert: one table per lemma in ordinal order, with the columns the labels roll up to
-        Assert.Equal(["bank", "bases", "read"], data.Cues.Select(c => c.Lemma));
+        // Assert: one table keyed by the form with the noun column of the senses and the two tenses; the verb sentences of
+        // the senses cannot say which tense and are counted as skipped
+        var cue = Assert.Single(data.Cues);
+        Assert.Equal("read", cue.Lemma);
         Assert.Equal(
-            [("bank", PartOfSpeech.Noun, string.Empty), ("bank", PartOfSpeech.Verb, string.Empty)],
-            data.Cues[0].Analyses.Select(a => (a.Lemma, a.PartOfSpeech, a.Features)));
-        Assert.Equal(
-            [("base", PartOfSpeech.Noun, string.Empty), ("basis", PartOfSpeech.Noun, string.Empty)],
-            data.Cues[1].Analyses.Select(a => (a.Lemma, a.PartOfSpeech, a.Features)));
-        Assert.Equal(
-            [("read", PartOfSpeech.Verb, "Tense=Past"), ("read", PartOfSpeech.Verb, "Tense=Pres")],
-            data.Cues[2].Analyses.Select(a => (a.Lemma, a.PartOfSpeech, a.Features)));
-
-        // The two anchors of the class that stands for two entries are skipped and counted; the others are counted by analysis
-        Assert.Equal(2, data.SkippedAnchors);
-        Assert.Contains("2 anchors skipped", data.Summary(), StringComparison.Ordinal);
-        Assert.True(data.Cues[0].Analyses[0].Prior > data.Cues[0].Analyses[1].Prior, "Three bank anchors are nouns, one is a verb.");
-        Assert.True(data.Cues[2].Analyses[0].Prior > data.Cues[2].Analyses[1].Prior, "Two read anchors are past, one is present.");
+            [("read", PartOfSpeech.Noun, string.Empty), ("read", PartOfSpeech.Verb, "Tense=Past+VerbForm=Part"), ("read", PartOfSpeech.Verb, "Tense=Pres")],
+            cue.Analyses.Select(a => (a.Lemma, a.PartOfSpeech, a.Features)));
+        Assert.Equal(2, data.Skipped);
+        var yesterday = Array.IndexOf(cue.Hashes, new FeatureRef(CueModel.Window, "yesterday").Hash);
+        Assert.True(yesterday >= 0);
+        Assert.True(cue.Weights[(yesterday * 3) + 1] > cue.Weights[(yesterday * 3) + 2], "yesterday goes with the past tense.");
     }
 
     /// <summary>
-    ///     A lemma that has fewer than two distinct analyses gets no cue table.
+    ///     A chooser label that stands for no single analysis of the form is left out and counted.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_BasicTrainer_Train_SingleAnalysisLemma_HasNoCueTable()
+    public void WordSenseBuilder_BasicTrainer_KeyOf_ChooserLabel_StandsForOneAnalysisOrNone()
     {
-        var inventory = new LegacySenseInventory(
-        [
-            new InventoryRow("bank", "money", PartOfSpeech.Noun, "money", null, "s.tsv"),
-            new InventoryRow("bank", "slope", PartOfSpeech.Noun, "slope", null, "s.tsv"),
-        ]);
-        List<LegacyRow> anchors = [Row("bank", "money", "the", "bank", "pays"), Row("bank", "slope", "the", "bank", "erodes")];
+        var past = BasicTrainer.KeyOf(Chooser("read", "read/Tense=Past+VerbForm=Part", "he", "read"));
+        var unknown = BasicTrainer.KeyOf(Chooser("read", "read/Tense=Fut", "he", "read"));
+        var split = BasicTrainer.KeyOf(Chooser("record", "record", "the", "record"));
+        var single = BasicTrainer.KeyOf(Chooser("went", "go", "he", "went"));
 
-        var data = BasicTrainer.Train(Counts(), w => Lexicon.TryGetValue(w, out var found) ? found : default, anchors, inventory, Labels(inventory), BasicHyperparameters.Default);
-
-        Assert.Empty(data.Cues);
+        Assert.Equal(new AnalysisKey("read", PartOfSpeech.Verb, "Tense=Past+VerbForm=Part"), past);
+        Assert.Null(unknown);
+        Assert.Null(split);
+        Assert.Equal(new AnalysisKey("go", PartOfSpeech.Verb, string.Empty), single);
     }
 
     /// <summary>
-    ///     An anchor whose label the inventory does not know is rejected.
+    ///     A fine-sense row stands for the analysis of its lemma and part of speech, whatever the features; a key with
+    ///     features matches only an analysis that has them.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_BasicTrainer_Train_UnknownLabel_Throws()
+    public void WordSenseBuilder_BasicTrainer_KeyOf_RollsTheRowUpToLemmaAndPartOfSpeech()
     {
-        var inventory = Inventory();
-        var labels = Labels(inventory);
-        List<LegacyRow> anchors = [.. Anchors(), Row("record", "bogus", "the", "record")];
+        var key = BasicTrainer.KeyOf(Row("record", PartOfSpeech.Noun, "the", "record"));
 
-        Assert.Throws<InvalidDataException>(() =>
-            BasicTrainer.Train(Counts(), w => Lexicon.TryGetValue(w, out var found) ? found : default, anchors, inventory, labels, BasicHyperparameters.Default));
+        Assert.Equal(new AnalysisKey("record", PartOfSpeech.Noun, string.Empty), key);
+        Assert.True(key.Matches(Noun));
+        Assert.False(key.Matches(Verb));
+        Assert.True(new AnalysisKey("record", PartOfSpeech.Noun, "Number=Sing").Matches(Noun));
+        Assert.False(new AnalysisKey("record", PartOfSpeech.Noun, "Number=Plur").Matches(Noun));
+        Assert.Equal("zzyzx", AnalysisKey.Resolve(new AnalysisKey("zzyzx", PartOfSpeech.Noun, string.Empty)).Lemma);
     }
 
     /// <summary>
@@ -247,7 +235,7 @@ public class BasicTrainerTests
     {
         var first = Write(Train());
         var second = Write(Train());
-        var other = Write(Train(BasicHyperparameters.Default with { HmmWeight = 0.5, Temperature = 4 }));
+        var other = Write(Train(hp: BasicHyperparameters.Default with { HmmWeight = 0.5, Temperature = 4 }));
 
         Assert.Equal(first, second);
         Assert.NotEqual(first, other);
@@ -282,8 +270,28 @@ public class BasicTrainerTests
         var summary = Train().Summary();
 
         Assert.Contains("2 words", summary, StringComparison.Ordinal);
-        Assert.Contains("1 cue lemmas", summary, StringComparison.Ordinal);
-        Assert.Contains("0 anchors skipped", summary, StringComparison.Ordinal);
+        Assert.Contains("1 cue tables", summary, StringComparison.Ordinal);
+        Assert.Contains("0 hash collisions", summary, StringComparison.Ordinal);
+        Assert.Contains("0 cue sentences skipped", summary, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The tagger score counts the tokens that have several parts of speech in the lexicon and a gold tag among them.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BasicTuner_ScoreTagger_CountsAmbiguousTokens()
+    {
+        var tables = Read(Write(Train()));
+        TaggedSentence[] sentences =
+        [
+            new(["the", "record", "."], [PosTag.Determiner, PosTag.Noun, PosTag.Punctuation]),
+            new(["the", "cat", "."], [PosTag.Determiner, PosTag.Noun, PosTag.Punctuation]),
+        ];
+
+        var (rows, correct) = BasicTuner.ScoreTagger(tables, sentences, w => Lexicon.TryGetValue(w, out var found) ? found : default);
+
+        Assert.Equal(1, rows);
+        Assert.Equal(1, correct);
     }
 
     /// <summary>
@@ -293,7 +301,7 @@ public class BasicTrainerTests
     public void WordSenseBuilder_BasicTuner_SplitAnchors_IsDeterministicAndDisjoint()
     {
         var anchors = Enumerable.Range(0, 200)
-            .Select(i => new LegacyRow("bass", "fish", $"sentence number {i} bass", "a.tsv", ["sentence", "number", i.ToString(System.Globalization.CultureInfo.InvariantCulture), "bass"], 3))
+            .Select(i => new CorpusRow("bass", "bass#fish", PartOfSpeech.Noun, $"sentence number {i} bass", "a.tsv", ["sentence", "number", i.ToString(System.Globalization.CultureInfo.InvariantCulture), "bass"], 3))
             .ToList();
 
         var (train1, dev1) = BasicTuner.SplitAnchors(anchors);
@@ -309,16 +317,14 @@ public class BasicTrainerTests
     }
 
     /// <summary>
-    ///     The tuning reports a missing treebank development file.
+    ///     The tuning reports missing tag counts.
     /// </summary>
     [Fact]
-    public async Task WordSenseBuilder_BasicTuner_RunAsync_MissingDevFile_Throws()
+    public async Task WordSenseBuilder_BasicTuner_RunAsync_MissingCounts_Throws()
     {
         using var dir = new TestDirectory();
-        var corpus = Path.Join(dir.Root, "corpus");
-        UdCounts.Count([new UdSentence(["the", "cat"], [PosTag.Determiner, PosTag.Noun])]).Write(Path.Join(corpus, "ud"));
 
-        await Assert.ThrowsAsync<FileNotFoundException>(() => BasicTuner.RunAsync(corpus, Path.Join(dir.Root, "cache"), TextWriter.Null, TestContext.Current.CancellationToken));
+        await Assert.ThrowsAnyAsync<IOException>(() => BasicTuner.RunAsync(Path.Join(dir.Root, "corpus"), TextWriter.Null, TestContext.Current.CancellationToken));
     }
 
     /// <summary>

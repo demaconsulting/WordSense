@@ -1,0 +1,6 @@
+# corpus = open English POS corpus, TARGETED part (sentences chosen on purpose; never use for usage statistics; test = challenge set)
+# license = annotations and selection CC0 1.0; sentences public domain or CC0 per source, see sources.tsv
+# columns = id form lemma upos collapsed feats consensus
+# consensus = unanimous | disputed | unchecked
+# sentence comments = sent_id, source_id, selection (required), query (required), text
+

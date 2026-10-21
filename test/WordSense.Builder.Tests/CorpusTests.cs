@@ -172,23 +172,6 @@ public sealed class CorpusTests : IDisposable
     }
 
     /// <summary>
-    ///     The forms file is read with its header skipped (the legacy Basic model still uses it).
-    /// </summary>
-    [Fact]
-    public void WordSenseBuilder_Corpus_ReadForms_ParsesLabels()
-    {
-        var path = Write("forms.tsv", "form\tlemma\tlabels\nBanks\tbank\tmoney,river\nbank\tbank\n");
-
-        var forms = Corpus.ReadForms(path);
-
-        Assert.Equal(2, forms.Count);
-        Assert.Equal(("banks", "bank"), (forms[0].Form, forms[0].Lemma));
-        Assert.Equal(["money", "river"], forms[0].Labels);
-        Assert.Empty(forms[1].Labels);
-        Assert.Throws<InvalidDataException>(() => Corpus.ReadForms(Write("bad-forms.tsv", "form\tlemma\nonly\n")));
-    }
-
-    /// <summary>
     ///     The lemmas of a directory are the first columns of its rows, read without validation.
     /// </summary>
     [Fact]

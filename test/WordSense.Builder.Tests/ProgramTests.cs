@@ -24,15 +24,6 @@ public sealed class ProgramTests : IDisposable
         return (code, output.ToString(), error.ToString());
     }
 
-    private string PrepareLegacyCorpus()
-    {
-        _dir.Write("corpus/legacy/senses/s.tsv", TestDirectory.SensesHeader + "walk\tnoun\tnoun\t\t\nwalk\tverb\tverb\t\t\n");
-        _dir.Write("corpus/migration/legacy-class-map.tsv", "class_id\tkind\tlemma\tpos\tmeaning\trespelling\tsense_count\tsense_id\tgroup_id\tentry_id\tentry_lemma\tentry_pos\tfeatures\n");
-        _dir.Write("corpus/legacy/anchors/a.tsv", "walk\tverb\tThey will {walk} home.\nwalk\tnoun\tThe {walk} was long.\n");
-        _dir.Write("corpus/legacy/holdout/h.tsv", "walk\tverb\tYou should {walk} more.\n");
-        return Path.Join(_dir.Root, "corpus");
-    }
-
     private string PrepareCorpus()
     {
         var verb = SenseFixtures.Senses("walk", PartOfSpeech.Verb, 1)[0];
@@ -51,7 +42,7 @@ public sealed class ProgramTests : IDisposable
         var (code, _, error) = await RunAsync();
 
         Assert.Equal(1, code);
-        foreach (var command in new[] { "compile-image", "import-moby", "weights", "evaluate", "ud-counts", "ud-irregular", "coverage", "train-basic", "tune-basic", "appendix" })
+        foreach (var command in new[] { "compile-image", "import-moby", "weights", "evaluate", "open-counts", "evaluate-tagger", "coverage", "train-basic", "tune-basic", "appendix" })
         {
             Assert.Contains(command, error, StringComparison.Ordinal);
         }
@@ -113,6 +104,8 @@ public sealed class ProgramTests : IDisposable
     [InlineData("train")]
     [InlineData("generate-appendix")]
     [InlineData("validate-pos")]
+    [InlineData("ud-counts")]
+    [InlineData("ud-irregular")]
     public async Task WordSenseBuilder_Program_RemovedCommand_IsUnknown(string command)
     {
         var (code, _, error) = await RunAsync(command);
@@ -224,44 +217,69 @@ public sealed class ProgramTests : IDisposable
         Assert.False(off.RecomputeMean);
     }
 
+    private const string OpenHeader = "# corpus = test\n# columns = id form lemma upos collapsed feats consensus\n\n";
+
+    private string PrepareOpenCorpus()
+    {
+        var corpus = PrepareCorpus();
+        const string train =
+            "# sent_id = s1\n# source_id = d1\n# text = They walk.\n1\tThey\tthey\tPRON\tR\t_\tunanimous\n2\twalk\twalk\tVERB\tV\t_\tunanimous\n3\t.\t.\tPUNCT\tO\t_\tunanimous\n\n" +
+            "# sent_id = s2\n# source_id = d2\n# text = The walk is long.\n1\tThe\tthe\tDET\tD\t_\tunanimous\n2\twalk\twalk\tNOUN\tN\t_\tunanimous\n3\tis\tbe\tVERB\tV\t_\tunanimous\n4\tlong\tlong\tADJ\tJ\t_\tunanimous\n5\t.\t.\tPUNCT\tO\t_\tunanimous\n";
+        _dir.Write("corpus/open/representative/data/train.tsv", OpenHeader + train);
+        _dir.Write("corpus/open/representative/data/test.tsv", OpenHeader + train);
+        return corpus;
+    }
+
     /// <summary>
-    ///     The train-basic command trains a loadable table from a tiny legacy corpus and treebank counts.
+    ///     The open-counts command counts the training split of the representative part into the counts folder.
     /// </summary>
     [Fact]
-    public async Task WordSenseBuilder_Program_TrainBasic_TinyCorpus_WritesLoadableTable()
+    public async Task WordSenseBuilder_Program_OpenCounts_WritesCountFiles()
     {
-        var corpus = PrepareLegacyCorpus();
-        var sentences = new List<UdSentence>();
-        for (var i = 0; i < 4; i++)
-        {
-            sentences.Add(new UdSentence(["they", "walk", "."], [PosTag.Pronoun, PosTag.Verb, PosTag.Punctuation]));
-            sentences.Add(new UdSentence(["the", "walk", "."], [PosTag.Determiner, PosTag.Noun, PosTag.Punctuation]));
-        }
+        var corpus = PrepareOpenCorpus();
 
-        UdCounts.Count(sentences).Write(Path.Join(corpus, "ud"));
+        var (code, output, error) = await RunAsync("open-counts", "--corpus", corpus);
+
+        Assert.Equal(0, code);
+        Assert.Empty(error);
+        Assert.Contains("Counted 2 sentences (8 tokens)", output, StringComparison.Ordinal);
+        Assert.True(File.Exists(Path.Join(corpus, "open", "counts", TaggerCounts.NgramsFile)));
+        Assert.Equal(1, TaggerCounts.Read(Path.Join(corpus, "open", "counts")).Words["walk"][PosTag.Noun]);
+    }
+
+    /// <summary>
+    ///     The train-basic command trains a loadable table from the open-corpus counts and the fine-sense anchors, and
+    ///     the evaluate-tagger command scores it on the test split.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseBuilder_Program_TrainBasicAndEvaluateTagger_TinyCorpus_WriteAndScoreTable()
+    {
+        var corpus = PrepareOpenCorpus();
         var table = Path.Join(_dir.Root, "out", "basic.bin");
+        await RunAsync("open-counts", "--corpus", corpus);
 
         var (code, output, error) = await RunAsync("train-basic", "--repository", _dir.Root, "--corpus", corpus, "--output", table);
+        var (scoreCode, scores, scoreError) = await RunAsync("evaluate-tagger", "--repository", _dir.Root, "--corpus", corpus, "--input", table);
 
         Assert.True(code == 0, error);
         Assert.Contains("Trained", output, StringComparison.Ordinal);
         Assert.True(BasicTables.Load(await File.ReadAllBytesAsync(table, TestContext.Current.CancellationToken)).Words.Count > 0);
+        Assert.True(scoreCode == 0, scoreError);
+        Assert.Contains("| open corpus test (representative) | 2 |", scores, StringComparison.Ordinal);
     }
 
     /// <summary>
-    ///     A legacy corpus whose anchors name a class that the inventory lacks makes train-basic fail with an error.
+    ///     Without the count files train-basic fails and names the command that makes them.
     /// </summary>
     [Fact]
-    public async Task WordSenseBuilder_Program_TrainBasic_InconsistentCorpus_ReportsError()
+    public async Task WordSenseBuilder_Program_TrainBasic_WithoutCounts_ReportsError()
     {
-        var corpus = PrepareLegacyCorpus();
-        _dir.Write("corpus/legacy/anchors/a.tsv", "walk\tbogus\tThey will {walk} home.\n");
-        UdCounts.Count([new UdSentence(["the", "walk"], [PosTag.Determiner, PosTag.Noun])]).Write(Path.Join(corpus, "ud"));
+        var corpus = PrepareCorpus();
 
         var (code, _, error) = await RunAsync("train-basic", "--repository", _dir.Root, "--corpus", corpus, "--output", Path.Join(_dir.Root, "basic.bin"));
 
         Assert.Equal(1, code);
-        Assert.NotEmpty(error);
+        Assert.Contains("open-counts", error, StringComparison.Ordinal);
     }
 
     /// <summary>

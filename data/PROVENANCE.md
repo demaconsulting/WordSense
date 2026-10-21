@@ -116,7 +116,7 @@ a curated label and an authored gloss (`corpus/curation`).
   data release and not frozen, unlike the ids of senses. `sense_label_map` and `sense_respelling` start empty: no label
   has been published yet, and the respellings of the earlier class inventory are carried when each lemma is curated.
 - The class tables of the earlier inventory (`coarse_class`, `class_sense`, `class_entry`) and `form_sense_scope` are
-  retired; `corpus/migration/legacy-class-map.tsv` is the temporary record of their mapping (see MAPPING.md).
+  retired; the temporary record of their mapping was deleted with the relabeling of our own corpus (see MAPPING.md).
 
 ## Forms (written forms and their analyses)
 
@@ -142,8 +142,7 @@ archive (SHA-256 below). Both files are checked against their pins before anythi
   (public domain) read in reverse; and the Automatically Generated Inflection Database (AGID 2016.01.19,
   Kevin Atkinson, permission notice; SHA-256 `3B614BB15416D97D3B3ABB0D384939BF46F5B50E2EF920D41BDD11EC1D07BAE5` of
   `infl.txt`). The AGID notice, with the Princeton WordNet 1.6 and UK Advanced Cryptics Dictionary (J Ross Beresford)
-  notices it carries, is in `corpus/lexicon/LICENSE-AGID.txt`. The UD irregular-form list is a test oracle only and is
-  not a source of the table.
+  notices it carries, is in `corpus/lexicon/LICENSE-AGID.txt`. No treebank-derived list is a source of the table.
 - Corroboration: a generated row is written only when two independent sources support it (a regular rule plus the
   word list or AGID), except that a regular -s, -ed or -ing form of a real lemma stands on the rule and its base.
   Uncorroborated candidates (about 12,000) are left out, so those spellings stay unknown.

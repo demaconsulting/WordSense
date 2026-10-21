@@ -15,16 +15,17 @@ needs-review:
   - "docs/user_guide/**/*.md"    # User guide documentation
   - "docs/sysml2/**/*.sysml"     # SysML2 architecture model
   - "tools/real-text/**"          # Real-text harvest tooling
+  - "tools/open-corpus/**"        # Scripts that built the open part-of-speech corpus
   - "corpus/provenance/**"        # Provenance of the sentences of the fine-sense corpus
-  - "corpus/legacy/provenance/**"  # Provenance of the real sentences of the legacy corpus
-  - "corpus/legacy/realtext/**"   # Real-text evaluation sentences of the legacy corpus
+  - "corpus/open/**"              # Open English POS corpus (CC0 1.0 annotations) and the Basic tagger counts
   - "corpus/lexicon/**"           # Derived part-of-speech lexicon (Moby, public domain) and its provenance
-  - "corpus/ud/**"                # Universal Dependencies tag and word-tag counts for the Basic model
   - "data/schema.yaml"            # Word data schema
   - "data/README.md"              # Word data guide
   - "data/PROVENANCE.md"          # Word data provenance (Open English WordNet, CC BY 4.0)
   - "data/MAPPING.md"             # Coarse class mapping notes
   - "!tools/real-text/cache/**"   # Exclude raw downloaded texts
+  - "!tools/open-corpus/cache/**"  # Exclude raw downloaded texts
+  - "!tools/open-corpus/work/**"   # Exclude scratch work
   - "!**/obj/**"                  # Exclude build output
   - "!**/bin/**"                  # Exclude build output
   - "!**/generated/**"            # Exclude generated documentation
@@ -143,11 +144,12 @@ reviews:
       - "!test/WordSense.Builder.Tests/**/bin/**"
       - "tools/real-text/**"
       - "!tools/real-text/cache/**"
+      - "tools/open-corpus/**"
+      - "!tools/open-corpus/cache/**"
+      - "!tools/open-corpus/work/**"
       - "corpus/provenance/**"
-      - "corpus/legacy/provenance/**"
-      - "corpus/legacy/realtext/**"
+      - "corpus/open/**"
       - "corpus/lexicon/**"
-      - "corpus/ud/**"
 
   # WordSense-WordData Review (one per subsystem)
   - id: WordSense-WordData

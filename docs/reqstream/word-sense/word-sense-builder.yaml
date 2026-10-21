@@ -324,50 +324,69 @@ sections:
               - WordSenseBuilder_ModelTable_BasicRow_MatchesEvaluation
               - WordSenseBuilder_EvaluationResult_Render_FormatsSetsAndMeasurements
 
-          - id: WordSense-WordSenseBuilder-UdCounts
+          - id: WordSense-WordSenseBuilder-OpenCounts
             title: >-
-              The builder shall count part-of-speech tag n-grams and word-tag pairs from the pinned Universal
-              Dependencies English-EWT training file, after verifying its checksum (and the development file used for
-              tuning), and write the
+              The builder shall count part-of-speech tag n-grams and word-tag pairs from the training split of the
+              representative part of the open English part-of-speech corpus (every token, whatever its consensus status,
+              with a split contraction joined into one token), read no other part of the corpus for them, and write the
               counts deterministically to the corpus.
             tags: [unit]
             justification: |
-              The statistics of the basic model must come from committed, verifiable inputs and be reproducible.
+              The statistics of the basic model are usage statistics, so they must come from an unbiased sample of text
+              (the representative part, never the targeted part or the balanced sentence corpus), and from a corpus
+              whose annotations we own and release under CC0 1.0, so that the shipped table carries no share-alike
+              license.
+              The inputs are committed and the counts reproducible.
             tests:
-              - WordSenseBuilder_UdCounts_ReadConllu_RangeTokensAndEmptyNodes
-              - WordSenseBuilder_UdCounts_ReadConllu_ShortLine_Throws
-              - WordSenseBuilder_UdCounts_MapTag_MapsUniversalTags
-              - WordSenseBuilder_UdCounts_KeyOf_AcceptsLettersAndApostrophes
-              - WordSenseBuilder_UdCounts_Count_CountsNgramsAndWords
-              - WordSenseBuilder_UdCounts_WriteAndRead_RoundTripsDeterministically
-              - WordSenseBuilder_UdCounts_Read_BadHeader_Throws
-              - WordSenseBuilder_UdSource_Verify_ComparesChecksum
+              - WordSenseBuilder_OpenCorpus_ReadFile_ReadsSentencesAndTokens
+              - WordSenseBuilder_OpenCorpus_ReadSplit_FindsTheFileOfAPart
+              - WordSenseBuilder_OpenCorpus_ReadFile_MissingFileAndMalformedLine_Throw
+              - WordSenseBuilder_OpenCorpus_ToTagged_JoinsContractionsButNotPossessives
+              - WordSenseBuilder_OpenCorpus_ToTagged_KeepsClitics_WhenTheJoinedFormIsNotInTheText
+              - WordSenseBuilder_OpenCorpus_Committed_ReadsEverySplitAndKeepsTheStePartInTheChallengeSet
+              - WordSenseBuilder_TaggerCounts_MapTag_MapsUniversalTags
+              - WordSenseBuilder_TaggerCounts_KeyOf_AcceptsLettersAndApostrophes
+              - WordSenseBuilder_TaggerCounts_Count_CountsNgramsAndWords
+              - WordSenseBuilder_TaggerCounts_WriteAndRead_RoundTripsDeterministically
+              - WordSenseBuilder_TaggerCounts_Read_MalformedFiles_Throw
+              - WordSenseBuilder_Program_OpenCounts_WritesCountFiles
 
           - id: WordSense-WordSenseBuilder-TrainBasic
             title: >-
-              The builder shall retrain the whole basic model with one command, regenerating the tag counts first
-              when they are missing or when asked, rolling the analysis labels of its training sentences up from the
-              fine senses of the corpus, and shall write the embedded table of the basic package deterministically.
+              The builder shall retrain the whole basic model with one command from the committed tag counts of the
+              open corpus, the fine-sense anchors and the form-chooser anchors, rolling the analysis labels of the
+              training sentences of the context cues up from the fine senses (a lemma and a part of speech) and from the
+              chooser labels (a lemma or a tense of a form) without any analysis prior, and shall write the embedded
+              table of the basic package deterministically; it shall name the command that makes the counts when they
+              are missing.
             tags: [unit]
             justification: |
-              One command from committed inputs to the shipped table lets reviewers reproduce and verify the model;
-              the Basic model chooses analyses, so its labels follow from the senses without a second labeling.
+              One command from committed inputs to the shipped table lets reviewers reproduce and verify the model.
+              The Basic model chooses analyses, so its labels follow from the senses and the choosers without a second
+              labeling. The anchors are a balanced classifier corpus whose counts say nothing about how often an
+              analysis occurs, so they must not set a prior.
             tests:
               - WordSenseBuilder_BasicTrainer_ClosedMaskOf_AppliesThresholds
               - WordSenseBuilder_BasicTrainer_Train_SelectsWordsAndSuffixes
               - WordSenseBuilder_BasicTrainer_Train_CueTablePrefersSeenAnalysis
-              - WordSenseBuilder_BasicTrainer_Train_AnalysisLabelsAreRolledUpFromSenses
+              - WordSenseBuilder_BasicTrainer_Train_AnalysisPriorIgnoresAnchorCounts
+              - WordSenseBuilder_BasicTrainer_Train_ColumnsAreLemmaAndPartOfSpeech
+              - WordSenseBuilder_BasicTrainer_Train_ChooserRowsMakeFormTablesWithTenseColumns
+              - WordSenseBuilder_BasicTrainer_KeyOf_RollsTheRowUpToLemmaAndPartOfSpeech
+              - WordSenseBuilder_BasicTrainer_KeyOf_ChooserLabel_StandsForOneAnalysisOrNone
               - WordSenseBuilder_BasicTablesWriter_Write_IsDeterministicAndReadsBack
+              - WordSenseBuilder_BasicTablesWriter_Write_ShortHash_Throws
               - WordSenseBuilder_BasicModelData_Summary_NamesSizes
               - WordSenseBuilder_Program_Weights_BasicModel_PointsToTrainBasic
-              - WordSenseBuilder_Program_TrainBasic_TinyCorpus_WritesLoadableTable
-              - WordSenseBuilder_Program_TrainBasic_InconsistentCorpus_ReportsError
+              - WordSenseBuilder_Program_TrainBasicAndEvaluateTagger_TinyCorpus_WriteAndScoreTable
+              - WordSenseBuilder_Program_TrainBasic_WithoutCounts_ReportsError
 
           - id: WordSense-WordSenseBuilder-TuneBasic
             title: >-
-              The builder shall score a grid of basic-model hyperparameters on the Universal Dependencies development
-              data and the anchor sentences only, print a stable table, write nothing, and never read the held-out
-              or real-text sentences.
+              The builder shall score a grid of basic-model hyperparameters on the development split of the
+              representative open corpus and on the development subset of the anchor sentences only, print a stable
+              table, write nothing, and never read the test splits, the targeted challenge set, the held-out or the
+              real-text sentences.
             tags: [unit]
             justification: |
               Tuning on data that is also used for the final accuracy measurement would make the reported accuracy
@@ -375,7 +394,41 @@ sections:
             tests:
               - WordSenseBuilder_BasicHyperparameters_Default_IsConsistent
               - WordSenseBuilder_BasicTuner_SplitAnchors_IsDeterministicAndDisjoint
-              - WordSenseBuilder_BasicTuner_RunAsync_MissingDevFile_Throws
+              - WordSenseBuilder_BasicTuner_ScoreTagger_CountsAmbiguousTokens
+              - WordSenseBuilder_BasicTuner_RunAsync_MissingCounts_Throws
+
+          - id: WordSense-WordSenseBuilder-EvaluateTagger
+            title: >-
+              The builder shall measure the part-of-speech accuracy of the basic classifier on the test split of the
+              representative open corpus as the headline, report the test split of the targeted challenge set on its own
+              line and an optional external gold file (the convention-mapped development and test files of a treebank
+              that is downloaded for evaluation only) as a further line, with the share of ambiguous tokens, the
+              tokens that are not answered and the tokens that are excluded, and print a stable table.
+            tags: [unit]
+            justification: |
+              The accuracy of a tagger is only meaningful on running text that no count, threshold or weight has seen;
+              the deliberately chosen challenge sentences must never be merged into the headline, and the external
+              treebank is an evaluation source only: it is never committed and never trains anything.
+            tests:
+              - WordSenseBuilder_TaggerEvaluator_EvaluateAsync_ScoresAnsweredWordTokens
+              - WordSenseBuilder_TaggerEvaluator_ReadGold_GroupsTokensBySentence
+              - WordSenseBuilder_TaggerEvaluator_ReadGold_MalformedLine_Throws
+              - WordSenseBuilder_TaggerEvaluator_Render_FormatsRows
+
+          - id: WordSense-WordSenseBuilder-CorpusLicenses
+            title: >-
+              The committed training corpus shall contain only sentences whose recorded license is CC0 1.0, public
+              domain in the United States or project-authored (dedicated to CC0 1.0), shall record a provenance row for
+              every sentence of the sense, chooser and real-text files, and shall contain no treebank data and no
+              retired class-labeled corpus.
+            tags: [unit]
+            justification: |
+              The shipped data must be free of share-alike and attribution-bound text, and a sentence of unknown origin
+              cannot be shown to be free. The treebank is used for evaluation only, so it must not be in the corpus.
+            tests:
+              - WordSenseBuilder_CorpusLicenses_Provenance_RecordsOnlyCc0PublicDomainAndProjectAuthoredSentences
+              - WordSenseBuilder_CorpusLicenses_EverySentenceRow_HasProvenance
+              - WordSenseBuilder_CorpusLicenses_Corpus_HasNoTreebankDataAndNoLegacyFolders
 
           - id: WordSense-WordSenseBuilder-Hyperparameters
             title: >-
@@ -421,7 +474,6 @@ sections:
               - WordSenseBuilder_Corpus_ReadSentences_PartOfSpeechDisagreeingWithSense_IsRejected
               - WordSenseBuilder_Corpus_DirectoryAndDisjointness
               - WordSenseBuilder_Corpus_Disjointness_CoversSuiteEvaluationAndOewnExamples
-              - WordSenseBuilder_Corpus_ReadForms_ParsesLabels
               - WordSenseBuilder_Corpus_ReadSentences_SplitsCompoundTarget
 
           - id: WordSense-WordSenseBuilder-SenseEval
@@ -475,9 +527,10 @@ sections:
           - id: WordSense-WordSenseBuilder-Usage
             title: >-
               The builder shall provide the commands compile-image, import-moby, weights, evaluate, evaluate-senses,
-              evaluate-running, ud-counts, ud-irregular, coverage, train-basic, tune-basic, label-senses,
+              evaluate-running, open-counts, evaluate-tagger, coverage, train-basic, tune-basic, label-senses,
               import-wn30-counts, tiers and appendix, print usage when given no arguments, and shall report an
-              unknown or removed command, a malformed option or a data error with a message and a non-zero exit code.
+              unknown or removed command (the treebank commands ud-counts and ud-irregular included), a malformed option
+              or a data error with a message and a non-zero exit code.
             tags: [unit]
             justification: |
               A build tool used in scripts must fail visibly and say why.

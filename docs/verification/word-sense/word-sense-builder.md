@@ -9,7 +9,9 @@ measures the shipped models.
 Tests in `test/WordSense.Builder.Tests` call the command entry point (`Program.RunAsync`) with explicit output writers
 and the internal serialization types with synthetic data in temporary directories: `ProgramTests.cs` covers the commands
 and their usage and data errors, `ImageTests.cs` covers the word image and `WeightsBlobWriterTests.cs` the weights
-writers against the readers of the shipped packages, `UdCountsTests.cs` covers the treebank counts of the Basic model,
+writers against the readers of the shipped packages, `TaggerCountsTests.cs` and `OpenCorpusTests.cs` cover the tag counts
+of the Basic model and the reader of the open corpus, `TaggerEvaluatorTests.cs` its accuracy measurement,
+`CorpusLicenseTests.cs` the licenses recorded for the committed corpus,
 and `BasicTrainerTests.cs` covers its trainer, table writer, model data summary and hyper-parameters;
 `EmbeddingCacheTests.cs`, `FitCacheTests.cs` and `ModelTrainerTests.cs` cover the embedding cache, the lemma fit cache,
 the frozen mean and the thresholds with a stub encoder; `WeightsTrainerTests.cs` and `ThresholdsTests.cs` cover the fit
@@ -25,7 +27,7 @@ Commands that need a real encoder (`weights`, `evaluate`, `evaluate-senses` and 
 models) are verified through the data they produce: the weights embedded in the model packages are loaded and matched
 in the MiniLM and BertBaseCased tests, the expectations of the suite are checked by the `SuiteTests` of the three model
 test projects, and the accuracy figures are recorded in the build notes, not asserted here. The downloads of SemCor and
-of the treebank are verified with a small fixture file and its checksum; no network is used.
+of the treebank (an evaluation source only) are verified with a small fixture file and its checksum; no network is used.
 
 ### Test Environment
 
@@ -287,24 +289,33 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - The expected passes of the committed suite are asserted by the `SuiteTests` of the Basic, MiniLM and BertBaseCased
   test projects (see their verification documents); the encoder tests skip when the model files are not present.
 
-#### ud-counts
+#### open-counts
 
-- **Reader keeps multi-word tokens** (`WordSenseBuilder_UdCounts_ReadConllu_RangeTokensAndEmptyNodes`): a CoNLL-U range
-  such as `1-2` is one token tagged like its first word, and empty nodes are skipped.
-- **Malformed line** (`WordSenseBuilder_UdCounts_ReadConllu_ShortLine_Throws`): a line with fewer than four fields
-  throws `InvalidDataException`.
-- **Tag mapping** (`WordSenseBuilder_UdCounts_MapTag_MapsUniversalTags`): the universal tags map onto the tags of the
+- **Corpus reader** (`WordSenseBuilder_OpenCorpus_ReadFile_ReadsSentencesAndTokens`,
+  `WordSenseBuilder_OpenCorpus_ReadSplit_FindsTheFileOfAPart`,
+  `WordSenseBuilder_OpenCorpus_ReadFile_MissingFileAndMalformedLine_Throw`): the header comments and the targeted
+  comments are skipped, the sentence comments and the seven-column token lines are read, a split is found by part and
+  name, and a missing file and a malformed token line are errors.
+- **Joined contractions** (`WordSenseBuilder_OpenCorpus_ToTagged_JoinsContractionsButNotPossessives`,
+  `WordSenseBuilder_OpenCorpus_ToTagged_KeepsClitics_WhenTheJoinedFormIsNotInTheText`): `do` and `n't`, `ca` and `n't`,
+  and `it` and `'s` are one token with the tag of the first part, and a possessive `'s`, a joined form that is not in
+  the text and a clitic after punctuation stay as they are.
+- **Committed corpus** (`WordSenseBuilder_OpenCorpus_Committed_ReadsEverySplitAndKeepsTheStePartInTheChallengeSet`):
+  every split of the committed corpus reads, the splits of the representative part have no document in common, the 32
+  simplified-technical-English sentences are in the test split of the targeted part, and the targeted part shares no
+  sentence with the representative part.
+- **Tag mapping** (`WordSenseBuilder_TaggerCounts_MapTag_MapsUniversalTags`): the universal tags map onto the tags of the
   tagger, with the particle `to` told apart.
-- **Word keys** (`WordSenseBuilder_UdCounts_KeyOf_AcceptsLettersAndApostrophes`): only tokens made of letters and
+- **Word keys** (`WordSenseBuilder_TaggerCounts_KeyOf_AcceptsLettersAndApostrophes`): only tokens made of letters and
   apostrophes get a word key.
-- **Counts** (`WordSenseBuilder_UdCounts_Count_CountsNgramsAndWords`): the counts include the sentence boundaries and
+- **Counts** (`WordSenseBuilder_TaggerCounts_Count_CountsNgramsAndWords`): the counts include the sentence boundaries and
   the word rows.
-- **Round trip** (`WordSenseBuilder_UdCounts_WriteAndRead_RoundTripsDeterministically`): the count files read back as
+- **Round trip** (`WordSenseBuilder_TaggerCounts_WriteAndRead_RoundTripsDeterministically`): the count files read back as
   written and are byte-identical on a repeat run.
-- **Bad header** (`WordSenseBuilder_UdCounts_Read_BadHeader_Throws`): a count file with a wrong header throws
-  `InvalidDataException`.
-- **Pinned checksum** (`WordSenseBuilder_UdSource_Verify_ComparesChecksum`): a file is accepted with its checksum and
-  rejected with another.
+- **Malformed files** (`WordSenseBuilder_TaggerCounts_Read_MalformedFiles_Throw`): a count file with a wrong header, a
+  malformed word line or a malformed n-gram line throws `InvalidDataException`.
+- **Command** (`WordSenseBuilder_Program_OpenCounts_WritesCountFiles`): the command counts the training split of the
+  representative part of a tiny corpus into the counts folder.
 
 #### train-basic and tune-basic
 
@@ -314,25 +325,59 @@ All scenarios below pass on every platform and target framework of the CI matrix
   and the ambiguous words, and the suffixes of words the lexicon lacks.
 - **Cue table** (`WordSenseBuilder_BasicTrainer_Train_CueTablePrefersSeenAnalysis`): the cue table of a word prefers the
   analysis its context words occurred with.
-- **Labels from senses** (`WordSenseBuilder_BasicTrainer_Train_AnalysisLabelsAreRolledUpFromSenses`): the analysis
-  label of an anchor is the lemma and part of speech of its fine sense; anchors of two senses of one analysis train the
-  same analysis.
-- **Writer** (`WordSenseBuilder_BasicTablesWriter_Write_IsDeterministicAndReadsBack`): equal inputs give identical
-  table bytes that `BasicTables` reads back, and a changed hyper-parameter changes the header.
+- **No prior from the anchors** (`WordSenseBuilder_BasicTrainer_Train_AnalysisPriorIgnoresAnchorCounts`): every column of
+  a table has the same prior, however many anchors it has.
+- **Labels from senses** (`WordSenseBuilder_BasicTrainer_Train_ColumnsAreLemmaAndPartOfSpeech`,
+  `WordSenseBuilder_BasicTrainer_KeyOf_RollsTheRowUpToLemmaAndPartOfSpeech`): the analysis label of an anchor is the lemma
+  and part of speech of its fine sense; anchors of two senses of one analysis train the same column, and a lemma with
+  one part of speech gets no table.
+- **Choosers** (`WordSenseBuilder_BasicTrainer_Train_ChooserRowsMakeFormTablesWithTenseColumns`,
+  `WordSenseBuilder_BasicTrainer_KeyOf_ChooserLabel_StandsForOneAnalysisOrNone`): chooser rows make a table keyed by the
+  form with a column per tense, the sense sentences of the same key go to the column of their slot or are left out and
+  counted when the tenses split it, and a label that stands for no single analysis is left out.
+- **Writer** (`WordSenseBuilder_BasicTablesWriter_Write_IsDeterministicAndReadsBack`,
+  `WordSenseBuilder_BasicTablesWriter_Write_ShortHash_Throws`): equal inputs give identical table bytes that
+  `BasicTables` reads back, a changed hyper-parameter changes the header, and a short inventory hash is rejected.
 - **Summary** (`WordSenseBuilder_BasicModelData_Summary_NamesSizes`): the summary names the sizes of the trained data.
 - **Hyper-parameters** (`WordSenseBuilder_BasicHyperparameters_Default_IsConsistent`): the defaults carry the values
   the runtime reads and the tuning grid includes them.
 - **Tuning** (`WordSenseBuilder_BasicTuner_SplitAnchors_IsDeterministicAndDisjoint`,
-  `WordSenseBuilder_BasicTuner_RunAsync_MissingDevFile_Throws`): the anchor split is deterministic and its parts are
-  disjoint, and a missing treebank development file is an error.
+  `WordSenseBuilder_BasicTuner_ScoreTagger_CountsAmbiguousTokens`,
+  `WordSenseBuilder_BasicTuner_RunAsync_MissingCounts_Throws`): the anchor split is deterministic and its parts are
+  disjoint, the tagger score counts the tokens that have several parts of speech with the gold tag among them, and
+  missing tag counts are an error.
 - **Statistical model has no weights command** (`WordSenseBuilder_Program_Weights_BasicModel_PointsToTrainBasic`):
   `weights basic` exits with code 1 and the message names `train-basic`.
-- **Command** (`WordSenseBuilder_Program_TrainBasic_TinyCorpus_WritesLoadableTable`,
-  `WordSenseBuilder_Program_TrainBasic_InconsistentCorpus_ReportsError`): a tiny corpus gives a table that `BasicTables`
-  loads; an inconsistent corpus exits with code 1 and writes no file.
-- **Tuning reads no evaluation data**: `tune-basic` uses only the treebank development file and the anchors, and
-  writes no file; this is a property of the implementation that review verifies, because the command needs the real
-  treebank.
+- **Command** (`WordSenseBuilder_Program_TrainBasicAndEvaluateTagger_TinyCorpus_WriteAndScoreTable`,
+  `WordSenseBuilder_Program_TrainBasic_WithoutCounts_ReportsError`): a tiny corpus gives a table that `BasicTables`
+  loads and that `evaluate-tagger` scores; without the count files the command exits with code 1 and names
+  `open-counts`.
+- **Tuning reads no evaluation data**: `tune-basic` uses only the development split of the representative part and the
+  anchors, and writes no file; this is a property of the implementation that review verifies, because the command needs
+  the real corpus.
+
+#### evaluate-tagger
+
+- **Scoring** (`WordSenseBuilder_TaggerEvaluator_EvaluateAsync_ScoresAnsweredWordTokens`): a token is scored when the
+  classifier answers it and its gold tag is a word class; punctuation and other gold tags are excluded, tokens that are
+  not answered are counted apart, and the ambiguous tokens are counted on their own.
+- **Gold file** (`WordSenseBuilder_TaggerEvaluator_ReadGold_GroupsTokensBySentence`,
+  `WordSenseBuilder_TaggerEvaluator_ReadGold_MalformedLine_Throws`): the tokens are grouped by sentence id and a line
+  that is not three columns with a tag letter is rejected.
+- **Table** (`WordSenseBuilder_TaggerEvaluator_Render_FormatsRows`): one row per set with the accuracy, and n/a for an
+  empty set.
+- **Command** (`WordSenseBuilder_Program_TrainBasicAndEvaluateTagger_TinyCorpus_WriteAndScoreTable`): the command prints
+  the headline row for the test split of the representative part.
+
+#### corpus licenses
+
+- **Recorded licenses** (`WordSenseBuilder_CorpusLicenses_Provenance_RecordsOnlyCc0PublicDomainAndProjectAuthoredSentences`):
+  every provenance row of the committed corpus records CC0 1.0, public domain in the United States or a project-authored
+  sentence (CC0 1.0), and none a Tatoeba CC BY, Wikipedia, Wiktionary or treebank source.
+- **Every sentence has an origin** (`WordSenseBuilder_CorpusLicenses_EverySentenceRow_HasProvenance`): the lemma, form or
+  label and sentence of every row of the sense, chooser and real-text files hash to a provenance id.
+- **No treebank and no legacy corpus** (`WordSenseBuilder_CorpusLicenses_Corpus_HasNoTreebankDataAndNoLegacyFolders`):
+  the corpus folder holds no CoNLL-U file and none of the retired folders.
 
 #### appendix
 
@@ -360,17 +405,17 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Disjointness** (`Corpus_DirectoryAndDisjointness`, `Corpus_Disjointness_CoversSuiteEvaluationAndOewnExamples`):
   anchors that share a normalized sentence or an 8-gram with a holdout, real-text, suite, evaluation or Open English
   WordNet example sentence are rejected, each with the pair that overlaps.
-- **Forms** (`Corpus_ReadForms_ParsesLabels`): the form files are parsed with their labels.
 
 #### Command line
 
 - **No arguments or unknown command**: exit code 1 and the usage text listing `compile-image`, `import-moby`,
-  `weights <modelId>`, `evaluate <modelId>`, `evaluate-senses <modelId>`, `evaluate-running <modelId>`, `ud-counts`,
-  `ud-irregular`, `coverage`, `train-basic`, `tune-basic`, `label-senses`, `import-wn30-counts`, `tiers` and `appendix`
+  `weights <modelId>`, `evaluate <modelId>`, `evaluate-senses <modelId>`, `evaluate-running <modelId>`, `open-counts`,
+  `evaluate-tagger`, `coverage`, `train-basic`, `tune-basic`, `label-senses`, `import-wn30-counts`, `tiers` and `appendix`
   (`Program_NoArguments_PrintsUsage`, `Program_UnknownCommand_ReportsCommandAndUsage`,
   `Program_Usage_ListsTheSenseCommands`).
 - **Removed command** (`Program_RemovedCommand_IsUnknown`): the old command names (`build`, `train`,
-  `generate-appendix`, `validate-pos`) are unknown commands and exit with code 1.
+  `generate-appendix`, `validate-pos`) and the treebank commands (`ud-counts`, `ud-irregular`) are unknown commands and
+  exit with code 1.
 - **Option errors** (`Program_MalformedOptions_ReportUsage`): an option without a value, an option whose
   value is another option, and a value without a name exit with code 1 and the message "Expected '--name value'".
 - **Defaults**: without `--repository` and `--corpus` the paths default to the repository layout below the current

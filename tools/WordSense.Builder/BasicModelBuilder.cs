@@ -8,8 +8,8 @@ using DemaConsulting.WordSense.Basic;
 namespace WordSense.Builder;
 
 /// <summary>
-///     The commands that create the table of the basic model: <c>ud-counts</c> (the treebank statistics) and
-///     <c>train-basic</c> (the complete retraining, the one command to run after changing anything).
+///     The commands that create the table of the basic model: <c>open-counts</c> (the tag statistics of the open corpus)
+///     and <c>train-basic</c> (the complete retraining, the one command to run after changing anything).
 /// </summary>
 internal static class BasicModelBuilder
 {
@@ -19,26 +19,20 @@ internal static class BasicModelBuilder
     public static readonly string DefaultOutput = Path.Join("src", "DemaConsulting.WordSense.Basic", "Resources", "basic.bin");
 
     /// <summary>
-    ///     Gets the default directory of the cached treebank files, below the repository root.
+    ///     Counts the tag statistics of the <c>train</c> split of the representative part of the open corpus (every token,
+    ///     whatever its consensus status) and writes the count files.
     /// </summary>
-    /// <param name="repository">The repository root.</param>
-    /// <returns>The directory.</returns>
-    public static string DefaultUdCache(string repository) => Path.Join(repository, "tools", "real-text", "cache");
-
-    /// <summary>
-    ///     Downloads and verifies the pinned treebank files and writes the count files.
-    /// </summary>
-    /// <param name="udCache">The directory of the treebank files.</param>
-    /// <param name="outputDirectory">The directory of the count files (<c>corpus/ud</c>).</param>
-    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <param name="corpus">The corpus directory.</param>
+    /// <param name="outputDirectory">The directory of the count files (<c>corpus/open/counts</c>).</param>
     /// <returns>A one-line summary.</returns>
-    public static async Task<string> WriteUdCountsAsync(string udCache, string outputDirectory, CancellationToken cancellationToken)
+    /// <exception cref="FileNotFoundException">Thrown when the training split does not exist.</exception>
+    public static string WriteCounts(string corpus, string outputDirectory)
     {
-        await UdSource.EnsureAsync(udCache, cancellationToken).ConfigureAwait(false);
-        var sentences = UdCounts.ReadConllu(Path.Join(udCache, "en_ewt-ud-train.conllu"));
-        var counts = UdCounts.Count(sentences);
+        var sentences = OpenCorpus.ReadSplit(corpus, OpenCorpus.Representative, "train");
+        var counts = TaggerCounts.Count(sentences.Select(OpenCorpus.ToTagged));
         counts.Write(outputDirectory);
-        return $"Counted {sentences.Count.ToString(CultureInfo.InvariantCulture)} sentences into {counts.Words.Count.ToString(CultureInfo.InvariantCulture)} words in {outputDirectory}.";
+        var tokens = counts.Unigrams.Take(PosTag.Count).Sum();
+        return $"Counted {sentences.Count.ToString(CultureInfo.InvariantCulture)} sentences ({tokens.ToString(CultureInfo.InvariantCulture)} tokens) into {counts.Words.Count.ToString(CultureInfo.InvariantCulture)} words in {outputDirectory}.";
     }
 
     /// <summary>
@@ -46,34 +40,22 @@ internal static class BasicModelBuilder
     /// </summary>
     /// <param name="repository">The repository root.</param>
     /// <param name="corpus">The corpus directory.</param>
-    /// <param name="udCache">The directory of the treebank files.</param>
-    /// <param name="refreshUd">True to regenerate the count files from the treebank even when they exist.</param>
     /// <param name="outputPath">The table path.</param>
     /// <param name="output">Receives messages.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task that completes when the table is written.</returns>
-    /// <exception cref="InvalidDataException">Thrown when the corpus is inconsistent.</exception>
-    public static async Task TrainAsync(string repository, string corpus, string udCache, bool refreshUd, string outputPath, TextWriter output, CancellationToken cancellationToken)
+    /// <exception cref="InvalidDataException">Thrown when the corpus is inconsistent or the count files are missing.</exception>
+    public static async Task TrainAsync(string repository, string corpus, string outputPath, TextWriter output, CancellationToken cancellationToken)
     {
-        var udDirectory = Path.Join(corpus, "ud");
-        var hasCounts = File.Exists(Path.Join(udDirectory, UdCounts.NgramsFile)) && File.Exists(Path.Join(udDirectory, UdCounts.WordsFile));
-        if (refreshUd || !hasCounts)
+        var countsDirectory = OpenCorpus.CountsDirectory(corpus);
+        if (!File.Exists(Path.Join(countsDirectory, TaggerCounts.NgramsFile)) || !File.Exists(Path.Join(countsDirectory, TaggerCounts.WordsFile)))
         {
-            output.WriteLine(await WriteUdCountsAsync(udCache, udDirectory, cancellationToken).ConfigureAwait(false));
+            throw new InvalidDataException($"The tag counts are missing in {countsDirectory}; run the 'open-counts' command first.");
         }
 
-        var inventory = LegacySenseInventory.ReadDirectory(Path.Join(corpus, BasicTuner.LegacyFolder, "senses"));
-        var labels = AnalysisLabels.Load(inventory, corpus);
-        var anchors = LegacyCorpus.ReadDirectory(Path.Join(corpus, BasicTuner.LegacyFolder, "anchors"));
-        var holdout = LegacyCorpus.ReadDirectory(Path.Join(corpus, BasicTuner.LegacyFolder, "holdout"));
-        var formsDirectory = Path.Join(corpus, BasicTuner.LegacyFolder, "forms");
-        var forms = Directory.Exists(formsDirectory)
-            ? Directory.GetFiles(formsDirectory, "*.tsv").OrderBy(f => f, StringComparer.Ordinal).SelectMany(Corpus.ReadForms).ToList()
-            : [];
-        LegacyCorpus.EnsureDisjoint(anchors, holdout);
-        inventory.Validate(anchors, holdout, forms);
-
-        var data = BasicTrainer.Train(UdCounts.Read(udDirectory), key => WordLexicon.TryLookup(key, out var found) ? found : [], anchors, inventory, labels, BasicHyperparameters.Default);
+        var anchors = Corpus.ReadDirectory(Path.Join(corpus, "anchors"));
+        var choosers = ChooserCorpus.ReadDirectory(Path.Join(corpus, "choosers", "anchors"));
+        var data = BasicTrainer.Train(TaggerCounts.Read(countsDirectory), key => WordLexicon.TryLookup(key, out var found) ? found : [], anchors, choosers, BasicHyperparameters.Default);
         var blob = BasicTablesWriter.Write(data, WordLexicon.Current.InventoryHash);
         _ = BasicTables.Load(blob, WordLexicon.Current);
         var path = Path.IsPathRooted(outputPath) ? outputPath : Path.Join(repository, outputPath);

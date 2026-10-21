@@ -49,9 +49,11 @@ unit documents).
 #### Context Chooses the Part of Speech
 
 The same word is a noun after a determiner and a verb after a pronoun, because the tagger weighs the whole sentence
-(see the `PosTagger` and `BasicClassifier` unit documents). A modal or primary auxiliary (`we will record`, `she is
-here`) is answered `Auxiliary`, while `his last will and testament`, `the can is empty` and `the will` stay nouns:
-the Auxiliary analysis is not chosen directly after an article or possessive.
+(see the `PosTagger` and `BasicClassifier` unit documents). A modal or a helper (`we will record`, `she is running`)
+is answered `Auxiliary`, a form of `be` that is the main verb of its clause (`she is here`) is answered `Verb` (the
+open corpus the statistics come from, like the lexicon, treats the copula as a main verb), while `his last will and
+testament`, `the can is empty` and `the will` stay nouns: the Auxiliary analysis is not chosen directly after an article
+or possessive.
 
 #### Cues Separate Analyses of One Part of Speech
 

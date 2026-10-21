@@ -92,7 +92,7 @@ public class BasicWordSenseModelTests
     [InlineData("they can see it", 1)]
     [InlineData("you may go now", 1)]
     [InlineData("we must go", 1)]
-    [InlineData("she is here", 1)]
+    [InlineData("she is running now", 1)]
     [InlineData("he has gone", 1)]
     [InlineData("she did not go", 1)]
     public async Task BasicWordSenseModel_ClassifyAsync_AuxiliaryContext_AnswersAuxiliary(string sentence, int index)
@@ -103,6 +103,21 @@ public class BasicWordSenseModelTests
 
         Assert.Equal(PartOfSpeech.Auxiliary, results[index].Details?.PartOfSpeech);
         Assert.True(results[index].Confidence > 0.9, $"The confidence of '{results[index].Word}' is {results[index].Confidence}.");
+    }
+
+    /// <summary>
+    ///     A form of <c>be</c> that is the main verb of its clause (the copula) is a verb, as in the open corpus the
+    ///     statistics come from; as a helper of another verb it is an auxiliary.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicWordSenseModel_ClassifyAsync_CopulaBe_AnswersMainVerb()
+    {
+        using var model = new BasicWordSenseModel();
+
+        var results = await model.ClassifyAsync("she is here".Split(' '), TestContext.Current.CancellationToken);
+
+        Assert.Equal(PartOfSpeech.Verb, results[1].Details?.PartOfSpeech);
     }
 
     /// <summary>

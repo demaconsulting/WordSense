@@ -13,10 +13,11 @@ The builder creates the data that the shipped packages embed and measures the sh
   (the words, their analyses and the sense catalog);
 - the weights blob `weights.bin` embedded in each encoder package (MiniLM, BertBaseCased): the per-lemma fine-sense
   classifiers with their thresholds;
-- the statistics table `basic.bin` embedded in the Basic package, and the treebank count files of `corpus/ud` it is
+- the statistics table `basic.bin` embedded in the Basic package, and the tag count files of `corpus/open/counts` it is
   trained from;
 - accuracy reports of the models at each answer level, measured on the held-out sentences, on SemCor 3.0
-  (senses) and on the test file of the English EWT treebank (part of speech);
+  (senses) and on the part-of-speech corpora (the test split of the open English corpus, with the convention-mapped
+  development and test files of the English EWT treebank, which is downloaded for evaluation only);
 - the quota report of the training sentences (tiers) and the senses appendix of the user guide.
 
 It reads the sense catalog (the senses, their labels, groups, respellings, OEWN keys and WordNet 3.0 tag counts) from
@@ -25,10 +26,12 @@ the word image, which is compiled from `data/`, and the repository's `corpus/` f
 the chooser rows (`choosers/anchors` and `choosers/holdout`, the same sentences labeled with the lemma or tense of
 their form), their provenance (`provenance/`), the dictionary of all words with their parts of speech and the auxiliary
 list
-(`lexicon/`), the reviewed suite (`suite/`, with the independent evaluation sets of a later increment) and the
-vendored Universal Dependencies counts (`ud/`: tag n-gram and per-word tag counts of the English EWT treebank
-training file). The former class-labeled sentences, inventory and form lists wait in `legacy/` for their relabeling and
-only the Basic model commands read them. It references all five packages
+(`lexicon/`), the reviewed suite (`suite/`, with the independent evaluation sets of a later increment) and the open
+English part-of-speech corpus (`open/`: the representative part, a random sample that is the only input of usage
+statistics and of the real-text part-of-speech evaluation, the targeted part, whose test split is a challenge set,
+and the tag n-gram and per-word tag counts of the representative training split in `open/counts`). Every sentence of
+the training corpus is CC0 1.0, public domain in the United States or project-authored (and dedicated to CC0 1.0);
+no treebank data and no retired class-labeled corpus is in the repository. It references all five packages
 and uses internal members of them through `InternalsVisibleTo`, so that training and inference share one
 implementation of the feature computation.
 
@@ -42,14 +45,14 @@ implementation of the feature computation.
   that the training sentences are disjoint from every sentence they must not resemble (see Corpus validation).
 - `SenseInventory`: the authority on which senses exist, read from the sense catalog of the word image (the data of
   `data/` as compiled): for each lemma the senses in inventory order with part of speech, group, OEWN key (none for a
-  project sense) and respelling; it checks the rows of the corpus against it. `LegacyCorpus` and `LegacySenseInventory`
-  read the class-labeled data of `corpus/legacy` that the Basic model commands still train from.
-- `SenseDefinition`, `LemmaEntry`: the validated definition of one sense and of one lemma.
+  project sense) and respelling; it checks the rows of the corpus against it.
+- `AnalysisKey`: an analysis that a training row stands for (a lemma, a part of speech and the features that must be
+  present); `Resolve` finds the spelling of the lemma that the word image uses.
 - `LexiconSource`: reads the dictionary word list (`word<TAB>letters`, ascending by word, parts of speech as the
   letters `NRVJBPCID`, the first letter being the first analysis) and the auxiliary list.
 - `LexiconImporter`: derives the word list from the pinned Moby list (checksum, source order of the parts of speech,
   corrections, participle and gerund rule) and writes `lexicon.tsv`.
-- `IrregularForms`: reads the irregular form lists and derives the treebank list (`ud-irregular`).
+- `IrregularForms`: reads the irregular form lists.
 - `CoverageReport`: the `coverage` command; measures how many running words of a directory of text files the word
   table knows, how many of the known words have a lemma with trained fine senses, and lists the unknown words as names
   and others.
@@ -94,19 +97,26 @@ implementation of the feature computation.
   the most-frequent-sense baseline).
 - `RunningText`: the part-of-speech evaluation on the test file of the English EWT treebank, with the convention map.
 - `Suite`: reads the reviewed suite rows and the expectation of each model for each row.
-- `UdSource`, `UdCounts`, `UdSentence`: the pinned treebank source (commit and SHA-256 checksums; download and
-  verification) and the tag statistics: a CoNLL-U reader that keeps a multi-word token as one token tagged like its
-  first
-  word and skips empty nodes, the mapping of the universal tags onto the 13 tags of the tagger, the n-gram and per-word
-  counts, and the deterministic count files `tag-ngrams.tsv` and `word-tags.tsv`.
+- `OpenCorpus`, `OpenSentence`, `OpenToken`: read the open English part-of-speech corpus (`corpus/open`: header
+  comments, the sentence comment lines and one seven-column token line per token) and turn a sentence into the tokens and
+  tags that the tagger works with: a contraction that the corpus splits (`do` and `n't`, `it` and `'s`) is joined again
+  when the joined form is in the sentence text (the possessive `'s` stays a token of its own), so that the counts and the
+  evaluation present the classifier the tokens an application passes it.
+- `TaggerCounts`, `TaggedSentence`: the tag statistics: the mapping of the universal tags onto the 13 tags of the
+  tagger, the n-gram and per-word counts, and the deterministic count files `tag-ngrams.tsv` and `word-tags.tsv` of
+  `corpus/open/counts`. They are usage statistics, so they are counted from the training split of the representative
+  part only.
+- `TaggerEvaluator`, `TaggerScore`: the part-of-speech accuracy of the basic classifier on gold sentences, and the reader
+  of an external gold file.
 - `BasicHyperparameters`: every tunable number of the Basic model in one place (the runtime values that travel in the
   table header, the training choices, and the grid and sample sizes of the tuner).
 - `BasicTrainer`, `BasicModelData`: select the tabled words (closed-class words and the most frequent
   dictionary-ambiguous words), the suffixes and the closed-class masks from the counts, and train the cue tables from
-  the anchors, with the analysis label of each anchor rolled up from its fine sense.
+  the anchors and the form-chooser anchors, with the analysis label of each sentence rolled up from its fine sense or
+  chooser label.
 - `BasicTablesWriter`: serializes the model data into the `WSB3` blob, deterministically.
 - `BasicTuner`: scores the hyper-parameter grid.
-- `BasicModelBuilder`: the commands `ud-counts` and `train-basic`.
+- `BasicModelBuilder`: the commands `open-counts` and `train-basic`.
 - `AppendixGenerator`: generates the senses appendix of the user guide.
 - `TextSplitter`: splits raw text into words and punctuation.
 
@@ -140,16 +150,18 @@ instead of `--model`.
 - `evaluate-running <modelId> --cache DIR [--corpus DIR] [--repository DIR] [--output FILE]`: measures the
   part-of-speech accuracy of a model on the test file of the English EWT treebank, downloaded to the cache when it is
   missing.
-- `ud-counts [--ud DIR] [--corpus DIR] [--output DIR]`: downloads (when missing) and verifies the pinned treebank files
-  and writes the count files of `corpus/ud`.
-- `ud-irregular`: derives the treebank list of irregular forms from the committed irregular lists.
+- `open-counts [--corpus DIR] [--output DIR]`: counts the tag statistics of the training split of the representative
+  open corpus (every token, whatever its consensus status) and writes the count files of `corpus/open/counts`.
+- `evaluate-tagger [--input FILE] [--corpus DIR] [--repository DIR] [--split test] [--gold FILE] [--output FILE]`:
+  measures the part-of-speech accuracy of the basic classifier with the table `FILE` (default the shipped `basic.bin`)
+  on a split of the representative open corpus (the headline), on the test split of the targeted challenge set (its own
+  line) and on an optional external gold file, and prints a Markdown table.
 - `coverage --text DIR [--output FILE]`: reports the known, trained and unknown share of the running words of a
   directory of plain-text files.
-- `train-basic [--corpus DIR] [--repository DIR] [--ud DIR] [--refresh-ud true] [--output FILE]`: retrains the whole
-  Basic model with the default hyper-parameters and writes `Resources/basic.bin` of the Basic package. It regenerates
-  the count files first when they are missing or `--refresh-ud true` is given.
-- `tune-basic [--corpus DIR] [--repository DIR] [--ud DIR]`: scores the hyper-parameter grid and prints a table; it
-  writes nothing.
+- `train-basic [--corpus DIR] [--repository DIR] [--output FILE]`: retrains the whole Basic model with the default
+  hyper-parameters from the committed counts of `corpus/open/counts`, the anchors and the chooser anchors, and writes
+  `Resources/basic.bin` of the Basic package; it names `open-counts` when the counts are missing.
+- `tune-basic [--corpus DIR] [--repository DIR]`: scores the hyper-parameter grid and prints a table; it writes nothing.
 - `label-senses [--data DIR]`: gives every sense without a label a generated label (the SenseLabelGenerator unit of the
   WordData subsystem).
 - `import-wn30-counts --input FILE [--data DIR] [--sha256 HEX|none]`: imports the pinned WordNet 3.0 sense frequency
@@ -193,7 +205,7 @@ the tiers report.
 1. Read the anchors and the holdout and check them against the sense catalog of the word image: every row has a sense
    that exists, belongs to the lemma of the row and has the part of speech of the row (an error), and its braced target
    word is analyzed by the lexicon as that lemma and part of speech (a warning that is reported and still trains); the
-   anchors and the holdout shall be disjoint (by normalized sentence). The legacy class-labeled folders are never read.
+   anchors and the holdout shall be disjoint (by normalized sentence).
 2. Open the model on the verified files of `model/<model-id>/`, and open the embedding cache (see below) unless
    `--no-cache` is given. Take the global mean from the existing weights blob of the model when it exists, reads, names
    the same model id and is not overridden by `--recompute-mean` (the *frozen mean*); the reason is printed whenever the
@@ -380,32 +392,49 @@ present (Git LFS).
 
 #### Basic training (`BasicModelBuilder.TrainAsync`)
 
-1. Regenerate the count files of `corpus/ud` from the verified treebank when they are missing or `--refresh-ud true` is
-   given (`ud-counts` does the same on its own).
-2. Read and validate the legacy inventory, anchors, holdout and forms of `corpus/legacy` as for the weights of the earlier
-   release (the shipped table was trained from this class-labeled data); the holdout is not used further. The command
-   moves to the fine-sense corpus when the tables are retrained for it.
-3. `BasicTrainer.Train` selects from the counts the closed-class words (enough occurrences and a dominant closed-class
+1. Read the tag counts of `corpus/open/counts` (made by `open-counts` from the training split of the representative open
+   corpus; the command stops with the name of `open-counts` when they are missing), the fine-sense anchors of
+   `corpus/anchors` and the chooser anchors of `corpus/choosers/anchors`. The holdout, the test splits, the targeted part
+   and the treebank are not read.
+2. `BasicTrainer.Train` selects from the counts the closed-class words (enough occurrences and a dominant closed-class
    share), the most frequent dictionary-ambiguous words and the suffixes of one to three characters of words the lexicon
-   lacks, and trains the naive Bayes cue tables from the anchors, keyed by training lemma (a form that spans lemmas, such
-   as `left` or `bases`, gets a table of its own), whose columns are analyses (lemma, part of speech and features): a
-   column with empty features stands for every analysis of that lemma and part of speech, and a column with features
-   (for example `read`'s `Tense=Past+VerbForm=Part` and `Tense=Pres`) matches that analysis exactly. The features are
-   extracted
+   lacks, and trains the naive Bayes cue tables from the anchors. A table is keyed by a lemma (the fine-sense anchors)
+   or by a form that a chooser decides (the chooser anchors: `left` as a form of `leave` or of the adjective `left`,
+   `read` as a past or a present verb; the classifier finds the table of the form before the table of the lemma). The
+   columns are analyses (lemma, part of speech and features): a sense sentence stands for its lemma and part of speech
+   with no required features, and a chooser sentence for the one analysis its label names (`lemma/features` names the
+   analysis with exactly those features, a bare lemma its only part of speech; a label that stands for several parts of
+   speech names no single analysis and the sentence is left out and counted). When a key has both kinds of sentences, a
+   sense sentence goes to the one chooser column of its lemma and part of speech, is left out when the chooser columns split
+   that slot by features, and keeps its own column when no chooser column has the slot. The features are extracted
    with the same feature extraction and 16-bit hash as the runtime; hash collisions keep the more frequent feature, and
-   weights and
-   priors are quantized to 1/8 nat. The analysis label of each anchor is rolled up from its fine sense (the lemma and
-   part of speech of the sense), so the anchors are labeled only once. All numbers come from `BasicHyperparameters`.
-4. `BasicTablesWriter.Write` serializes the table, `BasicTables.Load` checks that it reads back, and the file is
+   weights are quantized to 1/8 nat. The anchors are a balanced classifier corpus whose counts say nothing about how often
+   an analysis occurs, so every column of a table gets the same prior and the frequencies come from the tagger counts
+   alone. All numbers come from `BasicHyperparameters`.
+3. `BasicTablesWriter.Write` serializes the table, `BasicTables.Load` checks that it reads back, and the file is
    written with its size and SHA-256 reported. The table carries the inventory hash of the word image that it was
    trained against and is rebuilt whenever the inventory changes.
 
 #### Basic tuning (`BasicTuner.RunAsync`)
 
-Trains and scores each variant of the hyper-parameter grid (one parameter at a time around the default) on the
-treebank development file and on a deterministic sample of the anchors split into a train and a dev part. It reports
-the accuracy on the ambiguous treebank tokens, the accuracy of the analysis on the anchor dev part and the table size.
-It never reads the holdout or the real-text sentences and writes no file, so the reported evaluation stays honest.
+Trains and scores each variant of the hyper-parameter grid (one parameter at a time around the default, and two combined
+variants) on the development split of the representative open corpus and on a deterministic sample of the anchors split
+into a train and a dev part (the chooser anchors are left out of the tuned tables, because they are the same sentences
+labeled a second way). It reports the accuracy on the ambiguous tokens of the development split, the accuracy of the
+analysis on the anchor dev part and the table size. It never reads the test splits, the challenge set, the holdout or
+the real-text sentences and writes no file, so the reported evaluation stays honest.
+
+#### Tagger evaluation (`TaggerEvaluator.EvaluateAsync`)
+
+Classifies the sentences of a split with `BasicClassifier` and the given table, the path an application uses, and
+compares the part of speech of the selected analysis with the gold tag. A token is scored when the classifier answers
+it (the lexicon knows the word) and its gold tag is a word class; the infinitive marker `to` counts as a preposition,
+and punctuation and other gold tags are excluded and counted. The accuracy of the tokens that have at least two parts of
+speech in the lexicon is reported on its own, because an unambiguous word is right by construction. The headline set is
+the test split of the representative part; the targeted test split is a challenge set and is reported on its own line.
+An external gold file (`sentence id`, form and tag letter per line, for example the development and test files of a
+treebank mapped to the lexicon conventions by `tools/open-corpus/scripts/prepare_tagger_eval.py`, which are used for
+evaluation only and never committed) adds a line.
 
 #### Appendix (`AppendixGenerator.Write`)
 
@@ -435,7 +464,8 @@ fails before the output step.
 - Onnx: `OnnxWordSenseModel`, `OnnxEncoder`, the weights data types (read for the frozen mean) and `FeatureExtractor`.
 - MiniLM and BertBaseCased: the two model classes.
 - The WordData subsystem (`DataSchema`, `DataLayout`, `DataTables` and the validated tables of `data/`).
-- The corpus files and the model files under `model/`; SemCor 3.0 and the English EWT treebank files in their caches.
+- The corpus files and the model files under `model/`; SemCor 3.0 and the English EWT treebank files in their caches
+  (the treebank for evaluation only).
 
 ### Callers
 

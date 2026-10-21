@@ -103,10 +103,9 @@ The evidence of every rule is in `morphology.tsv` and in `docs/build_notes/infle
 ## Inflection Data
 
 - `irregular-forms.tsv`: hand-written closed list of irregular English forms, general knowledge, no third-party
-  data. License: same as the repository.
-- `irregular-ud.tsv`: derived by `ud-irregular` from UD English-EWT train and development (pairs seen twice,
-  dictionary-filtered; the test part is never read). It is a test oracle only: the form generator never reads it.
-  License: CC BY-SA 4.0 (see `corpus/ud/PROVENANCE.md`).
+  data. License: same as the repository. (A list of irregular forms derived from a treebank used to sit beside it as a
+  test oracle; it was removed together with the treebank counts, because the treebank is licensed CC BY-SA 4.0 and
+  nothing derived from it may stay in the repository.)
 - `irregular-closed.tsv`, `agid-irregular.tsv`, `contractions.tsv`, `form-overrides.tsv`: the sources of the form
   generator. `agid-irregular.tsv` is derived by `import-agid` from AGID (see `LICENSE-AGID.txt`); the others are
   hand-written from general knowledge.

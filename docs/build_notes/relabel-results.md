@@ -131,11 +131,10 @@ train yet (`used`: the adjective `used` has no rows; `dove`, `polish`) and the c
 
 - **Gemma flag**: the free second labeler could not run (see above); the relabeling is primary-only (sol, 93.7% on the
   calibration set). Run gemma again when the server answers, to flag the 25,373 judged rows.
-- **CC BY-SA rows**: the 3,054 rows are excluded from the encoder corpus and copied (not moved) to
-  `corpus/legacy/excluded-cc-by-sa/`, because the Basic table is trained from the unchanged legacy files (its table must
-  stay reproducible). Retrain Basic without them, or keep it as it is.
-- **Legacy folder and class map** stay (Basic trains from them; the class map is read by its trainer). They go together
-  when Basic no longer needs them.
+- **CC BY-SA rows**: the 3,054 rows were excluded from the encoder corpus and copied to `corpus/legacy/excluded-cc-by-sa/`
+  so that the Basic table stayed reproducible. *Resolved later*: Basic now trains from the open corpus and the CC0 anchors,
+  and the legacy folder, the copy and the class map are deleted (`corpus/README.md`).
+- **Legacy folder and class map**: deleted together with the legacy corpus (Basic no longer reads them).
 - **Choosers** need rows for the other lemma of every participle form (243 forms): the quota filling is the place
   (wave 1 did it, see `quota-fill.md`: 340 forms have a chooser now, 17 have none). The figures of this note are those of
   the relabeled corpus before the quota filling; the later figures are in `quota-fill.md`.

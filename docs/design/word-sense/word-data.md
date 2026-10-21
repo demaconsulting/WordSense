@@ -28,9 +28,8 @@ bootstrap command `seed-inventory` adds the project senses of the closed-class e
 and groups of the curation folder (`corpus/curation`), once (it is idempotent; it replaces a generated label, which was
 never published, by the curated one and never changes a curated or project label). The class
 tables of the earlier coarse inventory (`coarse_class`, `class_sense`, `class_entry`) and the per-form class scopes
-(`form_sense_scope`) are retired and are no longer part of the subsystem; the committed working file
-`corpus/migration/legacy-class-map.tsv` keeps their mapping for the relabeling of the corpus (see the data section
-below).
+(`form_sense_scope`) are retired and are no longer part of the subsystem. The temporary file that kept their mapping for
+the relabeling of the corpus has been deleted with the retired class-labeled corpus.
 Boundaries: the subsystem does not change the corpus or any package; the image is compiled from the tables by the
 builder (see the WordSenseBuilder unit), not by the subsystem.
 
@@ -121,10 +120,9 @@ from its entries to their senses.
 verb).
 
 The class tables of the retired coarse inventory and the per-form class scopes are gone from the schema and the data.
-A map from the retired class ids to the new groups and senses is not part of the data: it is a temporary working file
-of the corpus relabeling (`corpus/migration/legacy-class-map.tsv`, committed as a record; the command that wrote it was
-removed with the class tables) that is deleted when the relabeling is done, and it is neither validated by
-`validate-data`, nor shipped, nor documented as a feature.
+A map from the retired class ids to the new groups and senses is not part of the data: it was a temporary working file
+of the corpus relabeling (`corpus/migration/legacy-class-map.tsv`), deleted when the relabeling was done together with the
+retired class-labeled corpus, and it was neither validated by `validate-data`, nor shipped, nor documented as a feature.
 
 The importer and the validator share `DataSchema` and `DataLayout`, so they cannot disagree on shape, order or
 placement.

@@ -11,46 +11,32 @@ namespace WordSense.Builder;
 
 /// <summary>
 ///     Tries the hyper-parameter grid of <see cref="BasicHyperparameters"/> one parameter at a time and prints how each
-///     variant scores. It reads only data that is safe to tune against: the development file of the treebank and a
-///     deterministic sample of the anchor sentences split into a train and a dev part. It never reads the holdout or the
-///     real-text sentences, and it writes no file.
+///     variant scores. It reads only data that is safe to tune against: the development split of the representative part
+///     of the open corpus and a deterministic sample of the fine-sense anchors split into a train and a dev part. It never
+///     reads the test splits, the targeted challenge set, the holdout or the real-text sentences, and it writes no file.
+///     The form-chooser sentences are left out of the tuned tables: they are the same sentences as the anchors, labeled a
+///     second way, so they would leak the anchor development sentences into the tables.
 /// </summary>
 internal static class BasicTuner
 {
     /// <summary>
-    ///     The folder of the corpus that holds the class-labeled data the Basic model is still trained from.
-    /// </summary>
-    internal const string LegacyFolder = "legacy";
-
-    /// <summary>
     ///     Runs the tuning.
     /// </summary>
-    /// <param name="corpus">The corpus directory (the legacy anchors and senses, the legacy class map and the vendored treebank counts).</param>
-    /// <param name="udCache">The directory that holds the verified treebank development file.</param>
+    /// <param name="corpus">The corpus directory (the open corpus with its tag counts, and the fine-sense anchors).</param>
     /// <param name="progress">Receives progress messages.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>The rendered Markdown table.</returns>
-    public static async Task<string> RunAsync(string corpus, string udCache, TextWriter progress, CancellationToken cancellationToken)
+    public static async Task<string> RunAsync(string corpus, TextWriter progress, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(progress);
-        var counts = UdCounts.Read(Path.Join(corpus, "ud"));
-        const string devName = "en_ewt-ud-dev.conllu";
-        var devPath = Path.Join(udCache, devName);
-        if (!File.Exists(devPath))
-        {
-            throw new FileNotFoundException($"The treebank development file is missing; run 'ud-counts' or 'train-basic --refresh-ud true' first. Expected: {devPath}");
-        }
-
-        UdSource.Verify(devPath, UdSource.Files[devName]);
-        var dev = UdCounts.ReadConllu(devPath).Take(BasicHyperparameters.UdDevSentences).ToList();
+        var counts = TaggerCounts.Read(OpenCorpus.CountsDirectory(corpus));
+        var dev = OpenCorpus.ReadSplit(corpus, OpenCorpus.Representative, "dev").Select(OpenCorpus.ToTagged).ToList();
         var lexicon = (Func<string, ImmutableArray<WordDetails>>)(key => WordLexicon.TryLookup(key, out var found) ? found : []);
-        var inventory = LegacySenseInventory.ReadDirectory(Path.Join(corpus, LegacyFolder, "senses"));
-        var labels = AnalysisLabels.Load(inventory, corpus);
-        var (train, anchorDev) = SplitAnchors(LegacyCorpus.ReadDirectory(Path.Join(corpus, LegacyFolder, "anchors")));
-        progress.WriteLine($"Tuning on {dev.Count} treebank dev sentences, {train.Count} anchor train and {anchorDev.Count} anchor dev sentences.");
+        var (train, anchorDev) = SplitAnchors(Corpus.ReadDirectory(Path.Join(corpus, "anchors")));
+        progress.WriteLine($"Tuning on {dev.Count} open-corpus dev sentences, {train.Count} anchor train and {anchorDev.Count} anchor dev sentences.");
 
         var text = new StringBuilder();
-        text.Append("| Variant | UD dev ambiguous POS | Anchor dev analysis | Table size |\n");
+        text.Append("| Variant | Open dev ambiguous POS | Anchor dev analysis | Table size |\n");
         text.Append("| --- | ---: | ---: | ---: |\n");
         var seen = new HashSet<BasicHyperparameters>();
         var variants = new List<(string Label, BasicHyperparameters Parameters)> { ("default", BasicHyperparameters.Default) };
@@ -66,11 +52,11 @@ internal static class BasicTuner
         foreach (var (label, hp) in variants)
         {
             cancellationToken.ThrowIfCancellationRequested();
-            var data = BasicTrainer.Train(counts, lexicon, train, inventory, labels, hp);
+            var data = BasicTrainer.Train(counts, lexicon, train, [], hp);
             var blob = BasicTablesWriter.Write(data, WordLexicon.Current.InventoryHash, CompressionLevel.Fastest);
             var tables = BasicTables.Load(blob, WordLexicon.Current);
-            var (ambiguous, ambiguousCorrect) = ScoreTreebank(tables, dev, lexicon);
-            var (anchorRows, anchorCorrect) = await ScoreAnchorsAsync(tables, anchorDev, lexicon, labels, cancellationToken).ConfigureAwait(false);
+            var (ambiguous, ambiguousCorrect) = ScoreTagger(tables, dev, lexicon);
+            var (anchorRows, anchorCorrect) = await ScoreAnchorsAsync(tables, anchorDev, lexicon, cancellationToken).ConfigureAwait(false);
             text.Append("| ").Append(label)
                 .Append(" | ").Append(Percent(ambiguousCorrect, ambiguous))
                 .Append(" | ").Append(Percent(anchorCorrect, anchorRows))
@@ -86,7 +72,7 @@ internal static class BasicTuner
     /// </summary>
     /// <param name="anchors">All anchor sentences.</param>
     /// <returns>The train and the dev rows; a sentence is a dev row when a hash of its text modulo <see cref="BasicHyperparameters.AnchorDevModulus"/> is zero.</returns>
-    internal static (List<LegacyRow> Train, List<LegacyRow> Dev) SplitAnchors(IReadOnlyList<LegacyRow> anchors)
+    internal static (List<CorpusRow> Train, List<CorpusRow> Dev) SplitAnchors(IReadOnlyList<CorpusRow> anchors)
     {
         ArgumentNullException.ThrowIfNull(anchors);
         var order = Enumerable.Range(0, anchors.Count).ToArray();
@@ -100,8 +86,8 @@ internal static class BasicTuner
             (order[i], order[j]) = (order[j], order[i]);
         }
 
-        var train = new List<LegacyRow>();
-        var dev = new List<LegacyRow>();
+        var train = new List<CorpusRow>();
+        var dev = new List<CorpusRow>();
         foreach (var index in order.Take(BasicHyperparameters.AnchorSample).Order())
         {
             var row = anchors[index];
@@ -130,11 +116,24 @@ internal static class BasicTuner
         }
     }
 
-    private static string Describe(BasicHyperparameters hp) => string.Create(
+    /// <summary>
+    ///     Describes the hyper-parameters of a variant in one line.
+    /// </summary>
+    /// <param name="hp">The hyper-parameters.</param>
+    /// <returns>The description.</returns>
+    internal static string Describe(BasicHyperparameters hp) => string.Create(
         CultureInfo.InvariantCulture,
         $"gamma {hp.Gamma}, beta {hp.Beta}, closed {hp.ClosedMinCount}/{hp.ClosedShare}, hmm weight {hp.HmmWeight}, temperature {hp.Temperature}, cue alpha {hp.CueAlpha}");
 
-    private static (int Rows, int Correct) ScoreTreebank(BasicTables tables, List<UdSentence> sentences, Func<string, ImmutableArray<WordDetails>> lexicon)
+    /// <summary>
+    ///     Scores the tagger alone on sentences: every token that has several parts of speech in the lexicon, among which
+    ///     the gold tag, counts, and it is right when the most probable tag of the tagger is the gold tag.
+    /// </summary>
+    /// <param name="tables">The statistics.</param>
+    /// <param name="sentences">The gold sentences.</param>
+    /// <param name="lexicon">The lexicon.</param>
+    /// <returns>The number of scored tokens and the number of right ones.</returns>
+    internal static (int Rows, int Correct) ScoreTagger(BasicTables tables, IReadOnlyList<TaggedSentence> sentences, Func<string, ImmutableArray<WordDetails>> lexicon)
     {
         var rows = 0;
         var correct = 0;
@@ -177,18 +176,17 @@ internal static class BasicTuner
 
     private static async Task<(int Rows, int Correct)> ScoreAnchorsAsync(
         BasicTables tables,
-        List<LegacyRow> rows,
+        List<CorpusRow> rows,
         Func<string, ImmutableArray<WordDetails>> lexicon,
-        AnalysisLabels labels,
         CancellationToken cancellationToken)
     {
         var classifier = new BasicClassifier(tables, lexicon, (lemma, pos) => WordLexicon.Current.SenseCountOf(lemma, pos), WordLexicon.SensesOf);
         var correct = 0;
         foreach (var row in rows)
         {
-            // The answer is right when it is one of the analyses that the label of the row stands for
+            // The answer is right when it is an analysis of the lemma and the part of speech of the sense of the row
             var results = await classifier.ClassifyAsync(row.Words, cancellationToken).ConfigureAwait(false);
-            correct += labels.IsRight(row.Lemma, row.Sense, results[row.TargetWordIndex].Details) ? 1 : 0;
+            correct += results[row.TargetWordIndex].Details is { } details && BasicTrainer.KeyOf(row).Matches(details) ? 1 : 0;
         }
 
         return (rows.Count, correct);

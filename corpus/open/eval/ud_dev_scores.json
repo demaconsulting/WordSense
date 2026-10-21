@@ -1,0 +1,206 @@
+{
+ "tokens": 3597,
+ "sentences": 300,
+ "agreement": {
+  "upos_percent": 92.97,
+  "upos_kappa": 0.922,
+  "collapsed_percent": 93.97,
+  "collapsed_kappa": 0.9313
+ },
+ "status": {
+  "disputed": {
+   "tokens": 253,
+   "percent": 7.03
+  },
+  "unanimous": {
+   "tokens": 3344,
+   "percent": 92.97
+  }
+ },
+ "accuracy_vs_gold": {
+  "primary": 90.63,
+  "second": 87.43,
+  "final": 90.63,
+  "primary_collapsed": 91.6,
+  "second_collapsed": 89.02,
+  "final_collapsed": 91.6,
+  "lemma_primary": 98.36
+ },
+ "accuracy_by_status": {
+  "disputed": {
+   "tokens": 253,
+   "upos_percent": 70.75,
+   "collapsed_percent": 74.31
+  },
+  "unanimous": {
+   "tokens": 3344,
+   "upos_percent": 92.14,
+   "collapsed_percent": 92.91
+  }
+ },
+ "accuracy_excluding_unresolved": {
+  "tokens": 3597,
+  "upos_percent": 90.63,
+  "collapsed_percent": 91.6
+ },
+ "disagreement_tokens_vs_gold": {
+  "tokens": 253,
+  "primary_correct": 179,
+  "second_correct": 64,
+  "neither_correct": 10,
+  "final_correct": 179
+ },
+ "top_confusions_gold_to_final": [
+  [
+   "AUX->VERB",
+   101
+  ],
+  [
+   "PRON->DET",
+   50
+  ],
+  [
+   "VERB->ADJ",
+   20
+  ],
+  [
+   "PROPN->NOUN",
+   15
+  ],
+  [
+   "PROPN->X",
+   15
+  ],
+  [
+   "SCONJ->ADP",
+   14
+  ],
+  [
+   "ADP->ADV",
+   13
+  ],
+  [
+   "DET->PRON",
+   10
+  ],
+  [
+   "ADJ->PROPN",
+   9
+  ],
+  [
+   "NOUN->PROPN",
+   7
+  ],
+  [
+   "PUNCT->SYM",
+   6
+  ],
+  [
+   "ADJ->NOUN",
+   6
+  ],
+  [
+   "VERB->ADP",
+   5
+  ],
+  [
+   "NOUN->INTJ",
+   5
+  ],
+  [
+   "NOUN->ADJ",
+   5
+  ]
+ ],
+ "accuracy_vs_gold_convention_mapped": {
+  "upos_percent": 95.05,
+  "collapsed_percent": 96.02,
+  "reference_tokens_remapped": {
+   "possessive_det": 48,
+   "copula_be_verb": 93,
+   "particle_adv": 7,
+   "preposition_adp": 13
+  },
+  "reference_tokens_remapped_total": 161,
+  "by_status": {
+   "disputed": {
+    "tokens": 253,
+    "upos_percent": 75.1,
+    "collapsed_percent": 78.66
+   },
+   "unanimous": {
+    "tokens": 3344,
+    "upos_percent": 96.56,
+    "collapsed_percent": 97.34
+   }
+  },
+  "second_annotator_alone_upos_percent": 91.21,
+  "disagreement_tokens": {
+   "tokens": 253,
+   "primary_correct": 190,
+   "second_correct": 52
+  },
+  "top_confusions": [
+   [
+    "VERB->ADJ",
+    20
+   ],
+   [
+    "PROPN->NOUN",
+    15
+   ],
+   [
+    "PROPN->X",
+    15
+   ],
+   [
+    "DET->PRON",
+    10
+   ],
+   [
+    "ADJ->PROPN",
+    9
+   ],
+   [
+    "AUX->VERB",
+    8
+   ],
+   [
+    "NOUN->PROPN",
+    7
+   ],
+   [
+    "ADP->ADV",
+    6
+   ],
+   [
+    "PUNCT->SYM",
+    6
+   ],
+   [
+    "ADJ->NOUN",
+    6
+   ],
+   [
+    "VERB->ADP",
+    5
+   ],
+   [
+    "NOUN->INTJ",
+    5
+   ],
+   [
+    "NOUN->ADJ",
+    5
+   ],
+   [
+    "NUM->PRON",
+    4
+   ],
+   [
+    "SYM->PUNCT",
+    4
+   ]
+  ]
+ }
+}

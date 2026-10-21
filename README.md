@@ -109,16 +109,16 @@ bow       Noun         PartOfSpeech 1.00                 Verb 0.00
 at        Preposition  Sense        1.00  at#preposition Noun 0.00
 a         Determiner   Sense        1.00  a#determiner
 deer      Noun         Sense        1.00  deer#noun
-so        Conjunction  Sense        0.61  so#conjunction Adverb 0.39
+so        Conjunction  Sense        0.54  so#conjunction Adverb 0.46
 we        Pronoun      Sense        1.00  we#pronoun
-will      Auxiliary    Sense        1.00  will#auxiliary Noun 0.00
+will      Auxiliary    Sense        1.00  will#auxiliary Verb 0.00
 record    Verb         PartOfSpeech 1.00                 Noun 0.00
 a         Determiner   Sense        1.00  a#determiner
 record    Noun         PartOfSpeech 1.00                 Verb 0.00
 then      Adverb       PartOfSpeech 0.99                 Noun 0.01
 go        Verb         PartOfSpeech 1.00                 Noun 0.00
-back      Adverb       PartOfSpeech 0.66                 Noun 0.27
-home      Noun         PartOfSpeech 0.65                 Adverb 0.35
+back      Adverb       PartOfSpeech 0.96                 Noun 0.02
+home      Noun         PartOfSpeech 0.64                 Adverb 0.30
 ```
 
 Output with the `MiniLM` model:
@@ -136,15 +136,15 @@ bow       Noun         PartOfSpeech 1.00                 Verb 0.00
 at        Preposition  Sense        1.00  at#preposition Noun 0.00
 a         Determiner   Sense        1.00  a#determiner
 deer      Noun         Sense        1.00  deer#noun
-so        Conjunction  Sense        0.61  so#conjunction Adverb 0.39
+so        Conjunction  Sense        0.54  so#conjunction Adverb 0.46
 we        Pronoun      Sense        1.00  we#pronoun
-will      Auxiliary    Sense        1.00  will#auxiliary Noun 0.00
+will      Auxiliary    Sense        1.00  will#auxiliary Verb 0.00
 record    Verb         PartOfSpeech 0.95                 Noun 0.05
 a         Determiner   Sense        1.00  a#determiner
 record    Noun         PartOfSpeech 0.96                 Verb 0.04
 then      Adverb       PartOfSpeech 0.99                 Noun 0.01
 go        Verb         PartOfSpeech 0.94                 Noun 0.05
-back      Adverb       Group        1.00  back#group:return Noun 0.00
+back      Adverb       Group        0.99  back#group:return Noun 0.00
 home      Noun         PartOfSpeech 0.71                 Adverb 0.28
 ```
 
@@ -159,13 +159,13 @@ an        Determiner   Sense        1.00  an#determiner
 arrow     Noun         PartOfSpeech 1.00
 from      Preposition  Sense        1.00  from#preposition
 his       Determiner   Sense        1.00  his#determiner
-bow       Noun         Sense        1.00  bow#archery-bow Verb 0.00
+bow       Noun         PartOfSpeech 1.00                 Verb 0.00
 at        Preposition  Sense        1.00  at#preposition Noun 0.00
 a         Determiner   Sense        1.00  a#determiner
 deer      Noun         Sense        1.00  deer#noun
-so        Conjunction  Sense        0.61  so#conjunction Adverb 0.39
+so        Conjunction  Sense        0.54  so#conjunction Adverb 0.46
 we        Pronoun      Sense        1.00  we#pronoun
-will      Auxiliary    Sense        1.00  will#auxiliary Noun 0.00
+will      Auxiliary    Sense        1.00  will#auxiliary Verb 0.00
 record    Verb         PartOfSpeech 0.99                 Noun 0.01
 a         Determiner   Sense        1.00  a#determiner
 record    Noun         PartOfSpeech 0.90                 Verb 0.10
@@ -183,8 +183,7 @@ with its id and sense key in the catalog, and also for a word whose lemma and pa
 as `the`), `Group` is a group of closely related senses (`GroupId`; MiniLM and BertBaseCased answer `back` at that level),
 and `PartOfSpeech` is the analysis only: the model could not tell the senses apart with the precision its thresholds ask
 for (the thresholds are calibrated on real text, so the encoder models answer most ambiguous words at this level: MiniLM
-answers `bow`, `record`, `go` and `home` at that level and BertBaseCased `record`, `go` and `home`; it answers `bow` as
-the archery bow at the `Sense` level), and the
+answers `bow`, `record`, `go` and `home` at that level and BertBaseCased `bow`, `record`, `go` and `home`), and the
 ranked
 senses of each analysis in `Analyses` still show how the
 evidence spreads. `Analyses` lists every possible analysis (lemma, part of speech and features) with its probability,
@@ -207,20 +206,21 @@ Tokenize the text yourself, one sentence per call: punctuation is a token of its
 <!-- model-table:begin -->
 | Model | Real-text best analysis (test split) | Real-text part of speech (test split) | Written-holdout best analysis (secondary) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Basic | 91.52% | 91.84% | 88.97% | none | 83 KiB | 4 MiB | 0.12 ms | 44 ms + 79 ms | no |
-| MiniLM | 95.71% | 95.84% | 96.71% | 22 MiB | 4,358 KiB | 92 MiB | 2.26 ms | 684 ms + 59 ms | yes |
-| BERT base cased | 97.55% | 97.71% | 99.10% | 104 MiB | 8,537 KiB | 199 MiB | 11.38 ms | 873 ms + 80 ms | yes |
+| Basic | 92.24% | 92.74% | 93.12% | none | 145 KiB | 4 MiB | 0.15 ms | 45 ms + 83 ms | no |
+| MiniLM | 94.87% | 95.05% | 96.71% | 22 MiB | 4,161 KiB | 99 MiB | 2.05 ms | 583 ms + 55 ms | yes |
+| BERT base cased | 97.19% | 97.46% | 99.10% | 104 MiB | 8,152 KiB | 206 MiB | 10.15 ms | 713 ms + 56 ms | yes |
 <!-- model-table:end -->
 
 <!-- markdownlint-enable MD013 -->
 
 - ⚡ **basic** - No download, fastest; answers at the part-of-speech level (and the sense of a word with one sense).
-- ⚖️ **minilm** - The default encoder package: 22 MiB download; fine senses for the 780 trained lemmas, `Basic` for the
+- ⚖️ **minilm** - The default encoder package: 22 MiB download; fine senses for the 775 trained lemmas, `Basic` for the
   rest.
 - 🎯 **bert-base-cased** - Larger case-sensitive encoder, 104 MiB download; the most precise on the trained lemmas.
 
-**The headline figures are measured on real text**: the 3,751 real held-out sentences (Project Gutenberg, Tatoeba, VOA
-and US federal government text, public domain in the United States) of the *test documents*, a half of the real
+**The headline figures are measured on real text**: the 2,204 real held-out sentences (Project Gutenberg, VOA, USGS, NPS
+and NWS text, and Tatoeba sentences under CC0; public domain in the United States or CC0) of the *test documents*, a half
+of the real
 held-out sentences that is split off by document and that no weight or threshold has seen (the other half, the
 calibration documents, chooses the per-lemma thresholds). The written held-out sentences (12,261, written by a language
 model) are easier and are shown only as a secondary column.
@@ -232,8 +232,8 @@ answers; `docs/build_notes/quota-fill.md` has the full tables and the sets that 
 
 | Model | Sense (share, precision) | Group (share, precision) | Part of speech (share, precision) | Fine top-1 |
 | --- | ---: | ---: | ---: | ---: |
-| MiniLM | 10.3%, 95.3% | 0.9%, 91.4% | 88.8%, 95.6% | 66.8% |
-| BERT base cased | 23.4%, 96.6% | 0.7%, 100% | 75.9%, 97.2% | 75.7% |
+| MiniLM | 8.1%, 92.7% | 0.8%, 88.2% | 91.1%, 95.0% | 61.7% |
+| BERT base cased | 18.7%, 94.9% | 0.7%, 100% | 80.6%, 97.1% | 71.6% |
 
 The table is generated into `docs/build_notes/model-table.md`; the user guide explains how the numbers were measured
 and lists the confidence thresholds of each model. See also the [model comparison][link-model-comparison] and the
@@ -258,8 +258,8 @@ Package licenses:
 - **`DemaConsulting.WordSense`** (core): `MIT AND CC-BY-4.0`. The code and the project-authored data are MIT; the
   embedded word image is derived from Open English WordNet 2025 (CC BY 4.0). The package contains a `NOTICE.md` with the
   attribution and the notices of Open English WordNet, WordNet 3.0, AGID and the Moby list.
-- **`DemaConsulting.WordSense.Basic`**: `MIT AND CC-BY-SA-4.0`. The code is MIT; the embedded statistical table is
-  derived from the UD English-EWT treebank (CC BY-SA 4.0). The package contains a `NOTICE.md` with the attribution.
+- **`DemaConsulting.WordSense.Basic`**: `MIT`. The code is MIT; the embedded statistical table is derived from our own
+  CC0 1.0 corpora (the open part-of-speech corpus and the sentence corpus below). The package contains a `NOTICE.md`.
 - **`DemaConsulting.WordSense.Onnx`, `DemaConsulting.WordSense.MiniLM` and `DemaConsulting.WordSense.BertBaseCased`**:
   `MIT`. The weights are statistical summaries of the corpus and do not contain its sentences.
 
@@ -270,15 +270,22 @@ Package licenses:
   AGID carries the **Princeton WordNet 1.6** notice (Copyright 1997 by Princeton University) and the **UK Advanced
   Cryptics Dictionary** notice (Copyright (c) J Ross Beresford 1993-1999); the full texts are in
   `corpus/lexicon/LICENSE-AGID.txt` and apply to the embedded forms.
-- **Project-authored words, senses, meanings, respellings and sentences**: MIT License.
-- **Tatoeba sentences** (<https://tatoeba.org>): CC0 1.0, or CC BY 2.0 FR with the contributor recorded.
-- **Wikipedia and Wiktionary example sentences** (<https://www.wikipedia.org>, <https://www.wiktionary.org>):
-  CC BY-SA 4.0, with the article URL recorded.
-- **Universal Dependencies English corpora** (EWT and others, <https://universaldependencies.org>): CC BY-SA 4.0.
-  The tag statistics of the UD English-EWT treebank (<https://github.com/UniversalDependencies/UD_English-EWT>,
-  CC BY-SA 4.0) train the statistical model of the `Basic` package; see `corpus/ud/PROVENANCE.md`.
-- **Project Gutenberg works** (<https://www.gutenberg.org>): US public domain.
-- **Corpus redistribution**: rows under CC BY-SA 4.0 keep that license if the corpus itself is redistributed.
+- **Project-authored words, senses, meanings and respellings**: MIT License.
+- **Project-authored sentences and annotations** (the sentences written by language models for this project, our
+  labels, the selection of the real sentences and the open part-of-speech corpus `corpus/open`): dedicated to the public
+  domain under CC0 1.0 by the project owner. The underlying real sentences are not ours; their sources and licenses
+  are below.
+- **Tatoeba sentences** (<https://tatoeba.org>): only the sentences of the official CC0 1.0 export are used. Tatoeba
+  sentences that are licensed CC BY are not used anywhere.
+- **Project Gutenberg works** (<https://www.gutenberg.org>): public domain in the United States (published 1930 or
+  earlier; the Project Gutenberg boilerplate and trademark are removed).
+- **Works of US federal agencies** (Voice of America Learning English staff-written articles, USGS, National Park
+  Service, NOAA National Weather Service and FAA publications): public domain in the United States (17 U.S.C. §105)
+  and by the policy statement of each agency; third-party passages are excluded.
+- **Universal Dependencies English-EWT treebank** (<https://github.com/UniversalDependencies/UD_English-EWT>, CC BY-SA
+  4.0): used to evaluate the part-of-speech tagger only. It is downloaded to a git-ignored cache, never committed or
+  redistributed, and no model, table or corpus here is trained from it.
+- **Wikipedia and Wiktionary text**: not used.
 - **sentence-transformers/all-MiniLM-L6-v2** (<https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2>): Apache
   License 2.0; the int8 ONNX export is redistributed under the same license.
 - **bert-base-cased** (Google, <https://huggingface.co/google-bert/bert-base-cased>): Apache License 2.0; the int8 ONNX

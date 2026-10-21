@@ -358,13 +358,15 @@ sections:
           - WordSense-WordSenseBuilder-FitCache
           - WordSense-WordSenseBuilder-FrozenMean
           - WordSense-WordSenseBuilder-Evaluate
-          - WordSense-WordSenseBuilder-UdCounts
+          - WordSense-WordSenseBuilder-OpenCounts
           - WordSense-WordSenseBuilder-TrainBasic
           - WordSense-WordSenseBuilder-TuneBasic
+          - WordSense-WordSenseBuilder-EvaluateTagger
           - WordSense-WordSenseBuilder-Hyperparameters
           - WordSense-WordSenseBuilder-Appendix
           - WordSense-WordSenseBuilder-Coverage
           - WordSense-WordSenseBuilder-Corpus
+          - WordSense-WordSenseBuilder-CorpusLicenses
           - WordSense-WordSenseBuilder-Usage
           - WordSense-WordData-FormGenerator-Reproducible
           - WordSense-WordData-SenseLabelGenerator-Reproducible
@@ -379,14 +381,14 @@ sections:
           Each of the five packages shall ship XML documentation with a namespace summary and verified examples,
           NuGet metadata and a README; each package that embeds derived data carries the credits and licenses in its
           package readme and in a packed NOTICE file, and declares the license expression that covers the embedded
-          data (the core package MIT AND CC-BY-4.0, the Basic package MIT AND CC-BY-SA-4.0).
+          data (the core package MIT AND CC-BY-4.0, the Basic package MIT).
         tags: [system]
         justification: |
           Consumers learn the API from the package itself; examples that are compiled by the test suite cannot go
           stale (the tests verify the documentation examples; NuGet metadata and the package readme are produced
           and checked by the pack step), and the credits, notices and license expressions in the package satisfy the
-          licenses of the embedded data (Open English WordNet and Princeton WordNet in the core package, the
-          UD English-EWT treebank in the Basic package) and models.
+          licenses of the embedded data (Open English WordNet and Princeton WordNet in the core package; the tables of
+          the Basic package come from our own CC0 corpora) and models.
         children:
           - WordSense-Core-Packaging
           - WordSense-Basic-Packaging

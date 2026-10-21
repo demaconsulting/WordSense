@@ -123,8 +123,9 @@ form layers:
   package license expression is `MIT AND CC-BY-4.0` and a packed `NOTICE.md` carries the attribution of the data
   embedded in it (Open English WordNet 2025 under CC BY 4.0, and the Princeton WordNet 3.0 notice).
 - The **Basic** package implements the contracts with a statistical tagger and cue model that answers at the part of
-  speech level. It references the core package only. Its package license expression is `MIT AND CC-BY-SA-4.0` and a
-  packed `NOTICE.md` carries the attribution of the statistics trained on UD English-EWT (CC BY-SA 4.0).
+  speech level. It references the core package only. Its package license expression is `MIT` and a packed `NOTICE.md`
+  records that its statistics come from our own CC0 corpora (the open part-of-speech corpus and the sentence corpus) and
+  from no treebank.
 - The **Onnx** package implements the contracts for any BERT-style encoder: model file management, encoder,
   tokenizer, weights, thresholds and scoring of the fine senses. It references the core package and ONNX Runtime, and
   nothing else: its abstract encoder model is usable on its own and answers from the lexicon and the encoder alone.
@@ -195,14 +196,19 @@ src/DemaConsulting.WordSense.BertBaseCased/        — bert-base-cased subsystem
 model/<model-id>/                                  — model files (ONNX file, vocabulary, tokenizer and config files,
                                                       SHA256SUMS) of each encoder model
 tools/WordSense.Builder/                           — word-sense-builder unit (not shipped)
+tools/open-corpus/                                 — the scripts that built the open part-of-speech corpus (Python,
+                                                      not shipped; downloads go to its git-ignored cache)
 tools/WordSense.Builder/Data/                      — word-data subsystem units (DataSchema.cs and SchemaYaml.cs,
                                                       DataLayout.cs and PartitionResolver.cs, OewnImporter.cs,
                                                       FormGenerator.cs and its helpers, FormAuditor.cs,
                                                       DataValidator.cs, SenseLabelGenerator.cs)
 data/                                              — word-data tables (TSV), schema.yaml, README.md, PROVENANCE.md
 corpus/                                            — builder inputs: anchor and holdout sentences (fine-sense rows) with
-                                                      their provenance, the legacy class-labeled corpus awaiting
-                                                      relabeling (corpus/legacy), dictionary lexicon, the suite
+                                                      their provenance (CC0 1.0, public domain in the United States or
+                                                      project-authored), dictionary lexicon, the suite
+corpus/open/                                       — the open English part-of-speech corpus (CC0 1.0 annotations):
+                                                      the representative part, the targeted part and the tag counts
+                                                      (corpus/open/counts) that train the Basic tagger
 ```
 
 The `generated/` folders of the packages hold the generated API reference and are not committed. The corpus files

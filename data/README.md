@@ -51,8 +51,8 @@ speech that forms refer to); an entry of source `oewn` always has senses; an ent
 `form.spelling` is the exact written form; the table is partitioned by the spelling like entries by the lemma.
 
 The class tables of the earlier coarse inventory (`coarse_class`, `class_sense`, `class_entry`) and the table of
-per-form class scopes (`form_sense_scope`) are retired and no longer part of the data. The temporary record
-`corpus/migration/legacy-class-map.tsv` keeps their mapping for the relabeling of our own corpus (see
+per-form class scopes (`form_sense_scope`) are retired and no longer part of the data. The temporary record of their
+mapping for the relabeling of our own corpus was deleted when the relabeling was done (see
 [MAPPING.md](MAPPING.md)).
 
 ## The sense inventory

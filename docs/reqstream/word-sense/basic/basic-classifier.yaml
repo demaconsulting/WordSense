@@ -55,6 +55,7 @@ sections:
                   - BasicClassifier_ClassifyAsync_SingleAnalysisWithManySenses_AnswersItWithConfidenceOne
                   - BasicClassifier_ClassifyAsync_SingleAnalysisWord_SharesItsAnalysesArray
                   - BasicWordSenseModel_ClassifyAsync_AuxiliaryContext_AnswersAuxiliary
+                  - BasicWordSenseModel_ClassifyAsync_CopulaBe_AnswersMainVerb
                   - BasicWordSenseModel_ClassifyAsync_NounContext_StaysNoun
                   - BasicWordSenseModel_ClassifyAsync_NeedAsMainVerb_IsNotAuxiliary
                   - SenseFusion_Fuse_AuxiliaryPosterior_SelectsAuxiliaryAnalysis

@@ -1,0 +1,41 @@
+{
+ "tokens": 3597,
+ "disagreement_tokens": 214,
+ "second_alone_upos_percent": 90.21,
+ "oracle_upos_percent": 94.44,
+ "policies": {
+  "keep-primary": {
+   "disagreement_correct": 152,
+   "disagreement_percent": 71.03,
+   "final_upos_percent": 93.02,
+   "final_collapsed_percent": 94.25
+  },
+  "luna": {
+   "picked_primary_tag": 180,
+   "picked_second_tag": 34,
+   "unresolved": 0,
+   "disagreement_correct": 141,
+   "disagreement_percent": 65.89,
+   "final_upos_percent": 92.72,
+   "final_collapsed_percent": 94.02
+  },
+  "gemma": {
+   "picked_primary_tag": 122,
+   "picked_second_tag": 92,
+   "unresolved": 0,
+   "disagreement_correct": 120,
+   "disagreement_percent": 56.07,
+   "final_upos_percent": 92.13,
+   "final_collapsed_percent": 93.41
+  },
+  "qwen": {
+   "picked_primary_tag": 169,
+   "picked_second_tag": 45,
+   "unresolved": 0,
+   "disagreement_correct": 141,
+   "disagreement_percent": 65.89,
+   "final_upos_percent": 92.72,
+   "final_collapsed_percent": 93.94
+  }
+ }
+}

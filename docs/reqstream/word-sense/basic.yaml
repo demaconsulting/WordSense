@@ -131,13 +131,13 @@ sections:
           - id: WordSense-Basic-Packaging
             title: >-
               The Basic package shall ship its XML documentation with a namespace summary and verified examples, its
-              NuGet metadata with the license expression MIT AND CC-BY-SA-4.0, and a README and a packed NOTICE file
-              that carry the credits and license of the statistics it embeds (derived from UD English-EWT under
-              CC BY-SA 4.0).
+              NuGet metadata with the license expression MIT, and a README and a packed NOTICE file that carry the
+              credits and license of the statistics it embeds (derived from the CC0 open part-of-speech corpus and the
+              CC0 sentence corpus of this project).
             tags: [subsystem]
             justification: |
-              The embedded statistics are trained on a share-alike treebank, whose license requires attribution and
-              is carried by the package; consumers learn the API from the package, and verified examples cannot go
-              stale.
+              The embedded statistics are trained on our own CC0 corpora, so the package needs no share-alike or
+              attribution-bound license; the notice records where they come from and that no treebank was used, and
+              consumers learn the API from the package, and verified examples cannot go stale.
             tests:
               - BasicWordSense_XmlDocExamples_Compile

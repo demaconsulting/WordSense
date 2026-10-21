@@ -25,12 +25,11 @@ without network access. The SHA-256 values below are of the real content, not of
 a megabyte or less) is trained by the builder command `train-basic` and compiled into the package. The table is
 derived from:
 
-- the tag counts in `corpus/ud`, which `ud-counts` produces from the Universal Dependencies English-EWT treebank
-  (training and development parts only), pinned to the commit `4a4d77f599ea53cc405f85d0cec4b2f14f81d42b`:
-  `en_ewt-ud-train.conllu` with SHA-256 `D68E06122A702464C613076523D56740F047E5BBE89DD90EC32737E04D952143` and
-  `en_ewt-ud-dev.conllu` with SHA-256 `39239E0A60DB3AE68F4B7036189F11B6692741D10FF8240DD91F74F2760D90F8`. The
-  treebank is licensed under CC BY-SA 4.0; see `corpus/ud/PROVENANCE.md`.
-- the word table of the core package, and the training anchors and sense inventory of `corpus/`.
+- the tag counts in `corpus/open/counts`, which `open-counts` produces from the `train` split of the representative part
+  of the open English part-of-speech corpus (`corpus/open`, annotations CC0 1.0, see its README for the sources and
+  their licenses). The Universal Dependencies English-EWT treebank (CC BY-SA 4.0, pinned to the commit
+  `4a4d77f599ea53cc405f85d0cec4b2f14f81d42b`) is not an input: it is used to evaluate the tagger only.
+- the word table of the core package, and the training anchors and form-chooser anchors of `corpus/`.
 
 The SHA-256 of the committed `basic.bin` is printed by `train-basic` and recorded in `basic-evaluation.md`.
 
@@ -103,13 +102,19 @@ The sentence corpus under `corpus/` is not shipped in the NuGet packages; only t
 Every real sentence has a row in `corpus/provenance/*.tsv` (hash id, source, licence, URL, contributor or work,
 origin `real`, `authored` or `llm-corpus`). Accepted sources:
 
-- Public domain: Project Gutenberg works of US public-domain titles (header and licence block stripped).
-- CC0: the Tatoeba CC0 subset.
-- Open licences with attribution recorded: Tatoeba sentences under CC BY 2.0 FR (contributor recorded),
-  Wikipedia example sentences (CC BY-SA 4.0, article URL recorded) and Universal Dependencies English EWT
-  sentences (CC BY-SA 4.0). These are isolated single sentences used as labeled examples.
-- Single web excerpts (`web-excerpt`) are allowed only as a last resort; none were used.
+- Public domain in the United States: Project Gutenberg works published 1930 or earlier (header and licence block
+  stripped) and works of US federal agencies (VOA Learning English staff-written articles, USGS, NPS, NWS and FAA
+  pages and publications; 17 U.S.C. §105 and the agency's own statement).
+- CC0: the Tatoeba CC0 export.
+- Project-authored sentences (written by language models for this project and checked blind by a second model): dedicated
+  to CC0 1.0 by the project owner.
 
-Project-written sentences carry `MIT (project-authored)`. Bulk scraping of a copyrighted site, continuous text of
+Sentences under CC BY, CC BY-SA or any other attribution-bound license are not used: the Tatoeba CC BY 2.0 FR sentences
+(9,296 rows of the relabeled legacy corpus: 5,907 anchors, 3,080 held-out and 309 real-text sentences, and 1,032 chooser
+rows) were removed on 2026-10-21, and the Wikipedia, Wiktionary and Universal Dependencies rows were removed before
+(`corpus/legacy/excluded-cc-by-sa`, since deleted together with the legacy corpus). `tools/quota-fill/license_filter.py`
+applies the rule and `CorpusLicenseTests` checks it. Single web excerpts (`web-excerpt`) were never used.
+
+Project-written sentences carry `CC0 1.0 (project-authored)`. Bulk scraping of a copyrighted site, continuous text of
 more than one sentence, and paywalled or terms-prohibited sources are not used. Raw downloads are kept in a
 git-ignored cache and are never committed.
