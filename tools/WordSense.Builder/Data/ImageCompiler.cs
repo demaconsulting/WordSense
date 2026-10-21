@@ -362,6 +362,12 @@ internal static class ImageCompiler
         var declared = DataTables.Read(dataDirectory, schema.Table("sense_group")).ToDictionary(r => r[0], StringComparer.Ordinal);
         var senseIds = senses.Select(s => s.Id).ToHashSet(StringComparer.Ordinal);
         var result = new List<(string, PartOfSpeech, List<int>)>();
+
+        // A declared group without any member would be left out of the image silently, so it is an error
+        foreach (var id in declared.Keys.Where(k => !members.ContainsKey(k)).OrderBy(k => k, Utf8))
+        {
+            errors.Add($"group '{id}': a group needs at least two senses, but it has none in group_sense.");
+        }
         foreach (var (id, list) in members.OrderBy(p => p.Key, Utf8))
         {
             if (!declared.TryGetValue(id, out var row))

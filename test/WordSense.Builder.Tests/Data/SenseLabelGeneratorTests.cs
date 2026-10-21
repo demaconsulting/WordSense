@@ -139,6 +139,81 @@ public sealed partial class SenseLabelGeneratorTests : IDisposable
     }
 
     /// <summary>
+    ///     When the first member of the first hypernym synset has the slug of the lemma itself, the next usable member of
+    ///     that same synset gives the label, not the head of another hypernym.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_SenseLabelGenerator_Generate_FirstHypernymMemberIsSelf_UsesNextMemberOfThatHypernym()
+    {
+        // Arrange - h-a holds a sense of "tuna" (sorted first, so it is the lemma itself) and one of "fish"; h-b holds "food"
+        var hypernyms = new Dictionary<string, IReadOnlyList<string>> { ["y1"] = ["h-b", "h-a"], ["y2"] = [] };
+        var inputs = Inputs(
+            [
+                Sense("t1", "tuna", "n", "y1"),
+                Sense("t2", "tuna", "n", "y2"),
+                Sense("a1", "Tuna", "n", "h-a"),
+                Sense("a2", "fish", "n", "h-a"),
+                Sense("g1", "food", "n", "h-b"),
+            ],
+            hypernyms);
+
+        // Act
+        var labels = LabelsOf(SenseLabelGenerator.Generate(inputs));
+
+        // Assert
+        Assert.Equal("fish", labels["t1"]);
+    }
+
+    /// <summary>
+    ///     A count that is not a number, and a row of the wrong width, throw an <see cref="InvalidDataException"/> that
+    ///     names the file and the line, and nothing is written.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_SenseLabelGenerator_Run_UnreadableRows_ThrowInvalidDataWithLocation()
+    {
+        // Arrange - a frequency file with a text count on line 2, and a copy whose sense row lost a cell
+        var badCount = DataFixture.ImportSlice(_dir, "count");
+        DataFixture.Write(badCount, "sense_frequency/b.tsv", "sense_key\ttag_count\tsource\nbass%1:05:00::\tmany\twn30\n");
+        var shortRow = DataFixture.ImportSlice(_dir, "short");
+        DataFixture.Replace(shortRow, "sense/b.tsv", "oewn-bass__1.05.00..\tbass%1:05:00::\toewn-bass-n\toewn-00000001-n\t1", "oewn-bass__1.05.00..\tbass%1:05:00::");
+
+        // Act
+        var count = Assert.Throws<InvalidDataException>(() => SenseLabelGenerator.Run(badCount));
+        var width = Assert.Throws<InvalidDataException>(() => SenseLabelGenerator.Run(shortRow));
+
+        // Assert
+        Assert.Contains("b.tsv:2:", count.Message, StringComparison.Ordinal);
+        Assert.Contains("'many'", count.Message, StringComparison.Ordinal);
+        Assert.Contains("b.tsv:", width.Message, StringComparison.Ordinal);
+        Assert.Contains("cells", width.Message, StringComparison.Ordinal);
+        Assert.False(Directory.Exists(Path.Join(badCount, "sense_label")));
+        Assert.False(Directory.Exists(Path.Join(shortRow, "sense_label")));
+    }
+
+    /// <summary>
+    ///     Labels that exist are written back with the same value and origin, exactly once, and the new labels are added.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_SenseLabelGenerator_Run_ExistingLabels_KeepValueAndOrigin()
+    {
+        // Arrange - the first noun of bass has a curated label that differs from the generated one
+        var data = DataFixture.ImportSlice(_dir);
+        DataFixture.Write(data, "sense_label/b.tsv", "sense_id\tlabel\torigin\noewn-bass__1.05.00..\tlow-voice\tcurated\n");
+
+        // Act
+        var run = SenseLabelGenerator.Run(data);
+        var rows = DataFixture.Rows(data, "sense_label");
+
+        // Assert
+        Assert.Equal(1, run.Kept);
+        Assert.Equal(11, run.Generated);
+        Assert.Single(rows, r => r[0] == "oewn-bass__1.05.00..");
+        Assert.Equal(["oewn-bass__1.05.00..", "low-voice", "curated"], rows.Single(r => r[0] == "oewn-bass__1.05.00.."));
+        Assert.Equal(12, rows.Count);
+        Assert.All(rows.Where(r => r[0] != "oewn-bass__1.05.00.."), r => Assert.Equal("generated", r[2]));
+    }
+
+    /// <summary>
     ///     Senses with the same slug get the plain slug and then -2, -3 in inventory order (the tag count decides).
     /// </summary>
     [Fact]

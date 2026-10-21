@@ -28,7 +28,7 @@ internal static partial class Program
 
         var (sentences, counts) = SemCor.ReadArchive(archive, SemCor.ArchiveSha256);
         var trained = Corpus.ReadLemmas(Path.Join(corpus, "anchors"));
-        var sample = options.TryGetValue("sample", out var sampleText) ? int.Parse(sampleText, CultureInfo.InvariantCulture) : 1;
+        var sample = IntOption(options, "sample", 1, 1);
         var data = options.TryGetValue("data", out var dataFolder) ? Path.GetFullPath(dataFolder) : Path.Join(repository, "data");
         var known = new HashSet<string>(LeakageCheck.Load(corpus, data).SelectMany(s => s.Sentences.Select(x => Corpus.Normalize(x.Sentence))), StringComparer.Ordinal);
         var (selected, funnel) = SenseEvaluator.Select(sentences, counts, trained, sample, known);

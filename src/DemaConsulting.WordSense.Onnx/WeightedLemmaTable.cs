@@ -80,7 +80,8 @@ internal sealed class WeightedLemmaTable
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="data"/> is null.</exception>
     /// <exception cref="InvalidDataException">
     ///     Thrown when the weights were trained for another inventory, a lemma or a sense occurs twice, a sense is
-    ///     unknown to the word image or belongs to another lemma, or the sense ids and the weights of a lemma disagree.
+    ///     unknown to the word image or belongs to another lemma, the sense ids and the weights of a lemma disagree, or a
+    ///     lemma has a group threshold although none of its senses is in a group.
     /// </exception>
     public WeightedLemmaTable(WeightsData data)
     {
@@ -128,6 +129,10 @@ internal sealed class WeightedLemmaTable
                 resolved.Add(sense);
             }
 
+            if (entry.Weights.GroupThreshold < LemmaWeights.Never && resolved.All(s => s.GroupId is null))
+            {
+                throw new InvalidDataException($"The weights of '{entry.Lemma}' have a group threshold, but none of its senses is in a group.");
+            }
             if (!lemmas.TryAdd(entry.Lemma, new ResolvedLemma(entry, resolved.MoveToImmutable())))
             {
                 throw new InvalidDataException($"The weights have the lemma '{entry.Lemma}' twice.");

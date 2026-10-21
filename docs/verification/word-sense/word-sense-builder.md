@@ -54,12 +54,14 @@ All scenarios below pass on every platform and target framework of the CI matrix
   included (`ImageCompiler_Build_IsDeterministic`, `ImageCompiler_Build_CatalogIsDeterministic`), and the committed
   image
   equals a fresh compilation (`Words_Committed_MatchesData`).
-- **Invalid inventory fails the build**: a sense without a label, a sense in two groups, a group of one sense or of all
+- **Invalid inventory fails the build**: a sense without a label, a sense in two groups, a group of one sense (or a
+  declared group without any member) or of all
   the senses of its lemma and part of speech, a group that mixes
   parts of speech, and a group id without the `#group:` marker or equal to a sense id are each rejected with an error
   that names the sense or group, and no file is written
   (`ImageCompiler_Build_SenseWithoutLabel_Fails`, `ImageCompiler_Build_SenseInTwoGroups_Fails`,
-  `ImageCompiler_Build_GroupOfOneSenseOrAllSenses_Fails`, `ImageCompiler_Build_GroupMixingPartsOfSpeech_Fails`,
+  `ImageCompiler_Build_GroupOfOneSenseOrAllSenses_Fails`, `ImageCompiler_Build_GroupWithoutMembers_Fails`,
+  `ImageCompiler_Build_GroupMixingPartsOfSpeech_Fails`,
   `ImageCompiler_Build_GroupIdWithoutMarkerOrEqualToSenseId_Fails`).
 - **Every dictionary word is kept** (`Words_Committed_HoldsEveryDictionaryWord`): the committed image holds every
   word of the committed dictionary with each of its parts of speech, without exception.
@@ -494,6 +496,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
   exit with code 1.
 - **Option errors** (`Program_MalformedOptions_ReportUsage`): an option without a value, an option whose
   value is another option, and a value without a name exit with code 1 and the message "Expected '--name value'".
+- **Number options** (`Program_MalformedNumberOption_ReportsOneLineError`): a `--top`, `--sample`, `--seed`,
+  `--threshold` or `--max-error` value that is not a number (or an integer out of range) exits with code 1 and a
+  one-line message that names the option and the value, without a stack trace.
 - **Defaults**: without `--repository` and `--corpus` the paths default to the repository layout below the current
   directory. This is by inspection of the option parser; no dedicated test exercises it, because every test passes the
   paths explicitly.

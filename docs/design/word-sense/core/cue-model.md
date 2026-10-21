@@ -38,8 +38,8 @@ the tagger cannot.
 
 #### Error Handling
 
-A null table or analysis array throws `ArgumentNullException`. Missing analyses and unknown features are normal and
-give `NaN` and no contribution.
+A null table or a default (uninitialized) analysis array throws `ArgumentNullException`. Missing analyses and unknown
+features are normal and give `NaN` and no contribution.
 
 #### Determinism and Thread Safety
 
@@ -48,7 +48,7 @@ call them. They use the stack for scratch space.
 
 #### Dependencies
 
-`BasicTables` types (`FeatureRef`, `LemmaCue`) and the core `WordDetails`.
+`BasicTables` types (`LemmaCue`), `FeatureRef` (declared with `CueModel`) and the core `WordDetails`.
 
 #### Callers
 

@@ -5,7 +5,8 @@ for this OTS item are defined in the ApiMark OTS Software Requirements document.
 
 ### Required Functionality
 
-DemaConsulting.ApiMark generates the API reference for the WordSense package from its XML doc
+DemaConsulting.ApiMark generates the API reference for the four WordSense packages (core, Onnx, MiniLM and
+BertBaseCased) from their XML doc
 comments, organized for gradual disclosure. A documented example must render as a fenced code
 block and the terminology remarks must survive into the generated pages. ApiMark is also relied
 upon to enforce documentation coverage: `ApiMarkEnforceDocs=Public` with severity `Error` fails
@@ -42,9 +43,9 @@ still hide examples rendered as prose or dropped remarks.
 
 #### ApiMark_TerminologyDocumented
 
-**Scenario**: The shared terminology remarks on `WordSense` are generated.
+**Scenario**: The shared terminology remarks on `ClassifyResult` are generated.
 
-**Expected**: The `WordSense` type page contains the term "confidence".
+**Expected**: The `ClassifyResult` type page contains the term "confidence".
 
 **Requirement coverage**: `WordSense-OTS-ApiMark-RenderExamples`.
 
@@ -73,8 +74,10 @@ public property was temporarily added. That observation is not an automated test
 
 #### WordSense_XmlDocExamples_Compile
 
-**Scenario**: Every `<example><code>` block in the shipped XML documentation file is compiled with
-Roslyn against the real compiled API (xUnit test in the main test project).
+**Scenario**: Every `<example><code>` block in the shipped XML documentation file of a package is compiled with
+Roslyn against the real compiled API (an xUnit test in the test project of each package:
+`WordSense_XmlDocExamples_Compile`, `OnnxWordSense_XmlDocExamples_Compile`, `MiniLMWordSense_XmlDocExamples_Compile`
+and `BertBaseCasedWordSense_XmlDocExamples_Compile`).
 
 **Expected**: All documented examples compile without errors.
 
@@ -85,6 +88,7 @@ the rendered examples are only useful to a reader if they are correct.
 
 - **`WordSense-OTS-ApiMark-Generate`**: ApiMark_ApiIndex
 - **`WordSense-OTS-ApiMark-RenderExamples`**: ApiMark_ExampleCodeRendered,
-  ApiMark_TerminologyDocumented, WordSense_XmlDocExamples_Compile
+  ApiMark_TerminologyDocumented, WordSense_XmlDocExamples_Compile, OnnxWordSense_XmlDocExamples_Compile,
+  MiniLMWordSense_XmlDocExamples_Compile, BertBaseCasedWordSense_XmlDocExamples_Compile
 - **`WordSense-OTS-ApiMark-EnforceDocs`**: ApiMark_ModelContractDocumented, ApiMark_BasicModelDocumented,
   ApiMark_OnnxModelDocumented, ApiMark_MiniLMModelDocumented, ApiMark_BertBaseCasedModelDocumented

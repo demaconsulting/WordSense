@@ -196,7 +196,13 @@ internal sealed partial class DataValidator
         }
 
         var retired = maps.Select(m => m.Row[0]).ToHashSet(StringComparer.Ordinal);
-        var bySense = publicIds.ToDictionary(p => p.Value, p => p.Key, StringComparer.Ordinal);
+        // Two senses may share a public id when the data is invalid (the unique rule reports it); the first sense id holds it here
+        var bySense = new Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (var pair in publicIds.OrderBy(p => p.Key, StringComparer.Ordinal))
+        {
+            bySense.TryAdd(pair.Value, pair.Key);
+        }
+
         var path = Path.Join(_root, TableSenseLabel);
         foreach (var (senseId, oldId) in published.OrderBy(p => p.Key, StringComparer.Ordinal))
         {
@@ -260,7 +266,13 @@ internal sealed partial class DataValidator
 
     private void CheckGroups(List<(string Path, int Line, string[] Row)> groups, Dictionary<string, SenseFacts> senses)
     {
-        var groupRows = groups.ToDictionary(g => g.Row[0], g => g.Row, StringComparer.Ordinal);
+        // A duplicated group id is reported by the primary-key rule; the first row of the id is the one the members are checked against
+        var groupRows = new Dictionary<string, string[]>(StringComparer.Ordinal);
+        foreach (var (_, _, groupRow) in groups)
+        {
+            groupRows.TryAdd(groupRow[0], groupRow);
+        }
+
         var respelling = Rows("sense_respelling").GroupBy(r => r[0], StringComparer.Ordinal).ToDictionary(g => g.Key, g => g.Last()[1], StringComparer.Ordinal);
         var senseCounts = senses.Values.GroupBy(s => (s.Lemma, s.Pos)).ToDictionary(g => g.Key, g => g.Count());
         var members = new Dictionary<string, List<string>>(StringComparer.Ordinal);

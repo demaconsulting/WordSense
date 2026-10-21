@@ -118,7 +118,8 @@ sections:
                   mismatch, invalid section, a sense that names a group or a respelling that does not exist, a
                   duplicate sense id, a group id without the group marker (lemma#group:label), a group with fewer than
                   two members or with all the senses of its lemma and part of speech, a group that mixes lemmas or
-                  parts of speech, or group members that disagree with the sense-to-group index).
+                  parts of speech, or group members that disagree with the sense-to-group index, or that list a sense
+                  twice, or a key index that is not in strict key order).
                 tags: [unit]
                 justification: |
                   A damaged image must fail loudly instead of producing wrong senses.
@@ -131,6 +132,10 @@ sections:
                   - WordSenseBuilder_Image_GroupOfOneSenseOrAllSenses_IsRejected
                   - WordSenseBuilder_Image_GroupIdWithoutMarker_IsRejected
                   - WordSenseBuilder_Image_DuplicateSenseId_IsRejected
+                  - WordLexicon_Image_GroupListingASenseTwice_IsRejected
+                  - WordLexicon_Image_KeyIndexOutOfOrder_IsRejected
+                  - WordLexicon_Image_KeyIndexWithDuplicate_IsRejected
+                  - WordLexicon_Image_RebuiltWithoutDamage_IsAccepted
 
               - id: WordSense-Core-WordLexicon-Senses
                 title: >-

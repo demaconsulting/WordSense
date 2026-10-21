@@ -309,6 +309,28 @@ public class ContractsTests
     }
 
     /// <summary>
+    ///     Group records are equal when their values and the sequence of their member ids are equal, and their hash codes
+    ///     agree; a different member or a different order makes them different.
+    /// </summary>
+    [Fact]
+    public void WordSenseContracts_SenseGroup_SameMembers_AreEqual()
+    {
+        // Arrange
+        var first = new SenseGroup("back#group:football", "back", PartOfSpeech.Noun, ["back#football-back", "back#football-position"], null);
+        var same = new SenseGroup("back#group:football", "back", PartOfSpeech.Noun, ["back#football-back", "back#football-position"], null);
+        var otherMember = new SenseGroup("back#group:football", "back", PartOfSpeech.Noun, ["back#football-back", "back#other"], null);
+        var otherOrder = new SenseGroup("back#group:football", "back", PartOfSpeech.Noun, ["back#football-position", "back#football-back"], null);
+
+        // Act and Assert
+        Assert.Equal(first, same);
+        Assert.True(first == same);
+        Assert.Equal(first.GetHashCode(), same.GetHashCode());
+        Assert.NotEqual(first, otherMember);
+        Assert.NotEqual(first, otherOrder);
+        Assert.Single(new[] { first, same }.Distinct());
+    }
+
+    /// <summary>
     ///     The model contract owns the lifetime, so it is disposable, and it is the only classification contract: the
     ///     removed classifier interface no longer exists.
     /// </summary>

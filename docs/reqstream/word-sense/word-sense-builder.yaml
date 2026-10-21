@@ -19,8 +19,9 @@ sections:
               and its respelling, the senses of each lemma and part of speech ranked by WordNet 3.0 frequency; and
               shall write it in the compact binary format that the core package reads. The committed image shall be
               the compilation of the committed data, a dictionary word shall never be lost, and a sense without a
-              label, a sense in two groups, a group of fewer than two senses or of all the senses of its lemma and part
-              of speech, a group that mixes lemmas or parts of speech, or a group id that lacks the group marker
+              label, a sense in two groups, a group of fewer than two senses (a declared group without any member
+              included) or of all the senses of its lemma and part of speech, a group that mixes lemmas or parts of
+              speech, or a group id that lacks the group marker
               (lemma#group:label) or equals a sense id shall fail
               the build. A modal or primary auxiliary listed in the committed auxiliary list shall gain an auxiliary
               analysis.
@@ -36,6 +37,7 @@ sections:
               - WordSenseBuilder_ImageCompiler_Build_SenseWithoutLabel_Fails
               - WordSenseBuilder_ImageCompiler_Build_SenseInTwoGroups_Fails
               - WordSenseBuilder_ImageCompiler_Build_GroupOfOneSenseOrAllSenses_Fails
+              - WordSenseBuilder_ImageCompiler_Build_GroupWithoutMembers_Fails
               - WordSenseBuilder_ImageCompiler_Build_GroupMixingPartsOfSpeech_Fails
               - WordSenseBuilder_ImageCompiler_Build_GroupIdWithoutMarkerOrEqualToSenseId_Fails
               - WordSenseBuilder_Image_Spellings_AreSortedByUtf8Bytes
@@ -599,7 +601,8 @@ sections:
               evaluate-running, evaluate-suite, check-leakage, tiers, open-counts, evaluate-tagger, coverage,
               train-basic, tune-basic, label-senses, import-wn30-counts and appendix, print usage when given no
               arguments, and shall report an unknown or removed command (the treebank commands ud-counts and
-              ud-irregular included), a malformed option or a data error with a message and a non-zero exit code.
+              ud-irregular included), a malformed option, an option value that is not a valid number or is out of range
+              (as a one-line message without a stack trace) or a data error with a message and a non-zero exit code.
             tags: [unit]
             justification: |
               A build tool used in scripts must fail visibly and say why.
@@ -609,5 +612,6 @@ sections:
               - WordSenseBuilder_Program_ModelCommandWithoutModel_ReportsUsage
               - WordSenseBuilder_Program_CompileImage_MissingData_Fails
               - WordSenseBuilder_Program_MalformedOptions_ReportUsage
+              - WordSenseBuilder_Program_MalformedNumberOption_ReportsOneLineError
               - WordSenseBuilder_Program_UnknownCommand_ReportsCommandAndUsage
               - WordSenseBuilder_Program_Usage_ListsTheSenseCommands

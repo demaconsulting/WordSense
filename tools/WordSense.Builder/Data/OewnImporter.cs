@@ -26,6 +26,13 @@ namespace WordSense.Builder.Data;
 ///     once with the smaller id first. Fields that are not imported are listed in <c>data/PROVENANCE.md</c>.
 ///     </para>
 ///     <para>
+///     The import is all or nothing: it reads and checks the whole input (including that every relation joins two
+///     things the file holds), writes the tables, the new split plan of the schema and (when missing) the empty id map of
+///     the sense labels to a staging folder next to the output, and only then replaces the existing files in one step that
+///     is undone completely when any move fails, so neither an input with a defect nor a failing move leaves the
+///     committed data changed or mixed.
+///     </para>
+///     <para>
 ///     The type is stateless and thread-safe; each call reads the whole file in memory (about 200 MB peak for the
 ///     full release).
 ///     </para>
@@ -98,14 +105,15 @@ internal static partial class OewnImporter
     /// <param name="expectedSha256">The SHA-256 the input file must have, or null to skip the check.</param>
     /// <param name="splitThreshold">The entry count above which a first letter is split by two letters.</param>
     /// <param name="overwrite">True to replace existing table files; false to refuse when any exists.</param>
+    /// <param name="beforeMove">A test seam called with the source and the target before every move of the final replacement (a failure it throws is handled like a failing move), or null.</param>
     /// <returns>The counts of the import.</returns>
     /// <exception cref="InvalidDataException">Thrown when the hash does not match, the XML is malformed or inconsistent, or the output already holds tables and <paramref name="overwrite"/> is false.</exception>
-    public static ImportResult Import(string input, string output, string schemaPath, string? expectedSha256 = PinnedSha256, int splitThreshold = DefaultSplitThreshold, bool overwrite = false)
+    public static ImportResult Import(string input, string output, string schemaPath, string? expectedSha256 = PinnedSha256, int splitThreshold = DefaultSplitThreshold, bool overwrite = false, Action<string, string>? beforeMove = null)
     {
         // Verify the pin first so that a wrong or changed file never produces data
         CheckHash(input, expectedSha256);
         var schema = DataSchema.Load(schemaPath);
-        PrepareOutput(schema, output, overwrite);
+        CheckOutput(schema, output, overwrite);
 
         // Read the XML into memory, translating malformed XML into the one error type the builder reports
         OewnDocument document;
@@ -122,7 +130,6 @@ internal static partial class OewnImporter
         var cleaner = new Cleaner();
         var tables = Derive(document, schema, cleaner, out var missing, out var selfRelations);
         var split = ChooseSplit(tables.Entries, splitThreshold);
-        DataSchema.WriteFileSplit(schemaPath, split);
         var resolver = new PartitionResolver(split);
         foreach (var row in tables.Entries)
         {
@@ -134,21 +141,44 @@ internal static partial class OewnImporter
             resolver.AddSense(row[0], row[2], row[3], row[1]);
         }
 
-        // Write every table to its files
+        // Write every table, the new split plan and (when missing) the empty id map of the sense labels to a staging folder
+        // first: the existing files are replaced only when the whole input was read, derived and written without a defect,
+        // and the replacement itself can be undone, so a bad input or a failing move never leaves a mixed dataset
+        var staging = StagingFolder(output);
         var rows = new Dictionary<string, int>(StringComparer.Ordinal);
         var files = new Dictionary<string, int>(StringComparer.Ordinal);
-        foreach (var (name, list) in tables.All())
+        try
         {
-            files[name] = WriteTable(schema.Table(name), list, resolver, output);
-            rows[name] = list.Count;
-        }
+            var items = new List<(string Staged, string Target, bool IsDirectory)>();
+            foreach (var (name, list) in tables.All())
+            {
+                var table = schema.Table(name);
+                files[name] = WriteTable(table, list, resolver, staging);
+                rows[name] = list.Count;
+                items.Add((TablePath(table, staging), TablePath(table, output), table.Partition != PartitionKind.None));
+            }
 
-        // The id map of the sense labels starts empty; an existing one holds published decisions and is never touched
-        var labelMap = schema.Table("sense_label_map");
-        var labelMapPath = DataLayout.FilePath(output, labelMap, string.Empty);
-        if (!File.Exists(labelMapPath))
+            var stagedSchema = Path.Join(staging, Path.GetFileName(schemaPath));
+            File.Copy(schemaPath, stagedSchema);
+            DataSchema.WriteFileSplit(stagedSchema, split);
+            items.Add((stagedSchema, schemaPath, false));
+
+            // An existing id map holds published decisions and is never touched
+            var labelMap = schema.Table("sense_label_map");
+            var labelMapPath = DataLayout.FilePath(output, labelMap, string.Empty);
+            if (!File.Exists(labelMapPath))
+            {
+                var stagedMap = DataLayout.FilePath(staging, labelMap, string.Empty);
+                DataLayout.WriteTable(stagedMap, labelMap.Columns.Select(c => c.Name).ToArray(), []);
+                items.Add((stagedMap, labelMapPath, false));
+            }
+
+            Directory.CreateDirectory(output);
+            Commit(items, staging + ".backup", beforeMove);
+        }
+        finally
         {
-            DataLayout.WriteTable(labelMapPath, labelMap.Columns.Select(c => c.Name).ToArray(), []);
+            TryDelete(staging);
         }
 
         return new ImportResult(rows, files, split, missing, selfRelations, cleaner.Count);
@@ -169,32 +199,157 @@ internal static partial class OewnImporter
         }
     }
 
-    private static void PrepareOutput(DataSchema schema, string output, bool overwrite)
+    private static string TablePath(TableDef table, string folder) =>
+        table.Partition == PartitionKind.None ? Path.Join(folder, table.Name + DataLayout.Extension) : Path.Join(folder, table.Name);
+
+    private static bool TableExists(TableDef table, string folder)
     {
-        // Only the tables this import writes are checked and cleared; tables of other sources are left alone
+        var path = TablePath(table, folder);
+        return table.Partition == PartitionKind.None ? File.Exists(path) : Directory.Exists(path) && Directory.EnumerateFiles(path).Any();
+    }
+
+    private static void CheckOutput(DataSchema schema, string output, bool overwrite)
+    {
+        // Only the tables this import writes are checked; tables of other sources are left alone
+        if (overwrite)
+        {
+            return;
+        }
+
         foreach (var name in OewnTables)
         {
             var table = schema.Table(name);
-            var path = table.Partition == PartitionKind.None ? Path.Join(output, name + DataLayout.Extension) : Path.Join(output, name);
-            var exists = table.Partition == PartitionKind.None ? File.Exists(path) : Directory.Exists(path) && Directory.EnumerateFiles(path).Any();
-            if (!exists)
+            if (TableExists(table, output))
             {
-                continue;
+                throw new InvalidDataException($"{TablePath(table, output)} already exists; the committed data is authoritative. Use --overwrite true to replace it.");
+            }
+        }
+    }
+
+    // A sibling of the output folder, on the same volume, so that moving a staged table into place is a rename
+    private static string StagingFolder(string output)
+    {
+        var full = Path.TrimEndingDirectorySeparator(Path.GetFullPath(output));
+        return full + ".import-" + Guid.NewGuid().ToString("N");
+    }
+
+    // One file or folder that the commit replaces: what happened to it, so that the commit can be undone
+    private sealed class Step(string target, bool isDirectory)
+    {
+        public string Target { get; } = target;
+
+        public bool IsDirectory { get; } = isDirectory;
+
+        public string? Backup { get; set; }
+
+        public bool Placed { get; set; }
+    }
+
+    // Replaces the targets with the staged items as one protected step: each existing target is first moved to the backup
+    // folder, then the staged item is moved in. When any move fails, every move is undone (the placed items are removed
+    // and the backups are moved back) and the original failure is rethrown; the backup is deleted only when the data is
+    // back as it was or the new data is complete, never when the restore itself failed.
+    private static void Commit(IReadOnlyList<(string Staged, string Target, bool IsDirectory)> items, string backupRoot, Action<string, string>? beforeMove)
+    {
+        Directory.CreateDirectory(backupRoot);
+        var steps = new List<Step>();
+        try
+        {
+            for (var i = 0; i < items.Count; i++)
+            {
+                var (staged, target, isDirectory) = items[i];
+                var step = new Step(target, isDirectory);
+                steps.Add(step);
+                if (isDirectory ? Directory.Exists(target) : File.Exists(target))
+                {
+                    var backup = Path.Join(backupRoot, i.ToString(CultureInfo.InvariantCulture));
+                    Move(target, backup, isDirectory, beforeMove);
+                    step.Backup = backup;
+                }
+
+                if (isDirectory ? Directory.Exists(staged) : File.Exists(staged))
+                {
+                    Move(staged, target, isDirectory, beforeMove);
+                    step.Placed = true;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            var failures = Rollback(steps);
+            if (failures.Count > 0)
+            {
+                throw new IOException($"{ex.Message} The previous data could not be fully restored ({string.Join("; ", failures)}); the originals are in '{backupRoot}'.", ex);
             }
 
-            if (!overwrite)
-            {
-                throw new InvalidDataException($"{path} already exists; the committed data is authoritative. Use --overwrite true to replace it.");
-            }
+            TryDelete(backupRoot);
+            throw;
+        }
 
-            if (table.Partition == PartitionKind.None)
+        TryDelete(backupRoot);
+    }
+
+    private static void Move(string from, string to, bool isDirectory, Action<string, string>? beforeMove)
+    {
+        beforeMove?.Invoke(from, to);
+        if (isDirectory)
+        {
+            Directory.Move(from, to);
+        }
+        else
+        {
+            File.Move(from, to);
+        }
+    }
+
+    private static List<string> Rollback(List<Step> steps)
+    {
+        var failures = new List<string>();
+        for (var i = steps.Count - 1; i >= 0; i--)
+        {
+            var step = steps[i];
+            try
             {
-                File.Delete(path);
+                if (step.Placed)
+                {
+                    // The item at the target is the one this import moved in
+                    if (step.IsDirectory)
+                    {
+                        Directory.Delete(step.Target, true);
+                    }
+                    else
+                    {
+                        File.Delete(step.Target);
+                    }
+                }
+
+                if (step.Backup is not null)
+                {
+                    Move(step.Backup, step.Target, step.IsDirectory, null);
+                }
             }
-            else
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
             {
-                Directory.Delete(path, true);
+                failures.Add($"{step.Target}: {ex.Message}");
             }
+        }
+
+        return failures;
+    }
+
+    // Removes a staging or backup folder; a failure to clean up must never hide the result or the original exception
+    private static void TryDelete(string folder)
+    {
+        try
+        {
+            if (Directory.Exists(folder))
+            {
+                Directory.Delete(folder, true);
+            }
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+        {
+            // Left behind in the temporary place next to the output; nothing depends on it
         }
     }
 
@@ -483,6 +638,7 @@ internal static partial class OewnImporter
         var synsetPos = document.Synsets.ToDictionary(s => s.Id, s => s.Pos, StringComparer.Ordinal);
         DeriveEntries(document, tables, cleaner, synsetPos);
         DeriveSynsets(document, tables, cleaner, synsetPos);
+        CheckRelationEndpoints(document, synsetPos);
         var synsetLevel = document.Synsets.SelectMany(s => s.Relations.Select(r => (From: s.Id, r.Rel, Sub: string.Empty, To: r.Target)));
         var senseLevel = document.Entries.SelectMany(e => e.Senses).SelectMany(s => s.Relations.Select(r => (From: s.Id, r.Rel, Sub: r.Subtype, To: r.Target)));
         var first = NormalizeRelations(synsetLevel, schema.RelationTypes("synset_relation_type"), out var missingSynset, out var selfSynset);
@@ -492,6 +648,34 @@ internal static partial class OewnImporter
         missing = missingSynset + missingSense;
         selfRelations = selfSynset + selfSense;
         return tables;
+    }
+
+    // A relation must join two things the file holds; a dangling target would only be found later, as a foreign key
+    // violation of the committed data, far from the input that caused it
+    private static void CheckRelationEndpoints(OewnDocument document, Dictionary<string, string> synsetPos)
+    {
+        foreach (var synset in document.Synsets)
+        {
+            foreach (var (rel, target) in synset.Relations)
+            {
+                if (!synsetPos.ContainsKey(target))
+                {
+                    throw new InvalidDataException($"The synset '{synset.Id}' has a '{rel}' relation to the missing synset '{target}'.");
+                }
+            }
+        }
+
+        var senseIds = document.Entries.SelectMany(e => e.Senses).Select(s => s.Id).ToHashSet(StringComparer.Ordinal);
+        foreach (var sense in document.Entries.SelectMany(e => e.Senses))
+        {
+            foreach (var (rel, target, _) in sense.Relations)
+            {
+                if (!senseIds.Contains(target))
+                {
+                    throw new InvalidDataException($"The sense '{sense.Id}' has a '{rel}' relation to the missing sense '{target}'.");
+                }
+            }
+        }
     }
 
     private static void DeriveEntries(OewnDocument document, DerivedTables tables, Cleaner cleaner, Dictionary<string, string> synsetPos)

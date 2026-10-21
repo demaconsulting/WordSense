@@ -92,6 +92,12 @@ All scenarios below pass on every platform and target framework of the CI matrix
   a group of all the senses of its lemma
   and part of speech, a group that mixes lemmas or parts of speech and group members that disagree with the
   sense-to-group index are rejected.
+- **Catalog invariants beyond the structure** (`WordLexicon_Image_GroupListingASenseTwice_IsRejected`,
+  `WordLexicon_Image_KeyIndexOutOfOrder_IsRejected`, `WordLexicon_Image_KeyIndexWithDuplicate_IsRejected`,
+  `WordLexicon_Image_RebuiltWithoutDamage_IsAccepted`): tests in the core test project rebuild the embedded image with
+  one raw section changed. A group that lists the same sense twice, and a key index with two entries swapped or with a
+  repeated entry, are rejected when the catalog is first read (not only by a validation tool), while the same rebuild
+  without damage is accepted.
 - **Complete dictionary**: the builder tests `Words_Committed_HoldsEveryDictionaryWord` and
   `Words_Committed_CatalogHoldsEveryOewnAndProjectSense` show that no dictionary word and no sense is absent from the
   image.

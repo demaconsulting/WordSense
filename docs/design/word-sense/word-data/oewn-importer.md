@@ -33,8 +33,24 @@ counts are used under the WordNet license notice, which `data/PROVENANCE.md`, th
 #### Key Methods
 
 - `Import(input, output, schemaPath, expectedSha256, splitThreshold, overwrite)`: checks the SHA-256 against the pin,
-  parses, derives, chooses the split plan, writes the tables in sorted order and updates the file split line.
+  refuses existing tables without `overwrite`, parses, derives (every relation must join a synset or sense of the file),
+  chooses the split plan and writes the tables in sorted order to a staging folder next to the output, together with a
+  copy of the schema that carries the new `file_split` line and, when the output has none, the empty `sense_label_map`.
+  The replacement is one protected step: each existing target is moved to a backup folder, then the staged item is moved
+  in. If any move fails, every move is undone (placed items removed, backups moved back) and the original exception is
+  rethrown, so the tables, the schema and the id map are all either the new set or the old one. The staging and backup
+  folders are deleted afterwards without hiding the original exception; the backup is kept only when the restore itself
+  failed, and the error then names it. An internal `beforeMove` parameter lets a test make a chosen move fail.
   Returns an `ImportResult` with the counts.
+- `ReadForms(input, expectedSha256)`: checks the SHA-256, reads the file and returns the cleaned `Form` spellings by
+  entry identifier in file order; an entry without a `Form` is absent. The form generator uses it for the spellings
+  that the source lists.
+- `ImportPrevious(previous, data, release, expectedSha256)`: checks the SHA-256 of an earlier release, then writes
+  `id_map` for it. A sense identifier that the data still has is unchanged and gets no row; a changed one maps by its
+  sense key when exactly one current sense has that key. An entry identifier that the data still has gets no row;
+  otherwise it maps to the entry of the majority of its mapped senses, or to the only entry with its lemma and part of
+  speech. An identifier without a unique successor gets no row and is counted as removed (no candidate) or ambiguous (a
+  tie). Two current senses with one sense key are an error. Returns an `IdMapResult` with the counts.
 - `ImportCounts(input, data, expectedSha256)`: checks the SHA-256 of the counts file against the pin before reading it,
   reads the `sense` table of `data`, joins the counts on the sense key and writes `sense_frequency` in sorted order.
   Returns the number of senses with a count, with count 0 and the number of unmatched lines.
@@ -43,10 +59,14 @@ counts are used under the WordNet license notice, which `data/PROVENANCE.md`, th
 
 #### Error Handling
 
-A wrong hash, malformed XML, no lexicon, an unknown relation type, a satellite without head, a missing referenced
-synset, a previous release in which two current senses derive the same key, or existing tables without `overwrite`
-throws before any file is written. `ImportCounts` throws in the same way for a wrong hash, and for a line that does not
-have four fields or whose count is not a non-negative integer, so no table is written from a damaged file.
+A wrong hash, malformed XML, no lexicon, an unknown relation type, a relation to a synset or sense that the file does
+not hold, a satellite without head, a missing referenced synset, a previous release in which two current senses derive
+the same key, or existing tables without `overwrite` throws before any existing file is changed: the import writes to a
+staging folder and replaces the files in one step that is undone when a move fails, so with `overwrite` an input with a
+defect, or a move that fails (a locked file), leaves the committed tables, the schema and the id map byte-identical (the
+staging folder is removed in every case). `ImportCounts` throws in the
+same way for a wrong hash, and for a line that does not have four fields or whose count is not a non-negative integer,
+so no table is written from a damaged file.
 
 #### Dependencies
 

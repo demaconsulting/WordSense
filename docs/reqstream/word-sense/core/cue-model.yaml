@@ -25,11 +25,13 @@ sections:
               - id: WordSense-Core-CueModel-Score
                 title: >-
                   CueModel shall score each candidate analysis of a form from the stored weights of the cues, mark
-                  analyses without statistics, and give the prior score when no cue is known.
+                  analyses without statistics, and give the prior score when no cue is known, and reject a null table
+                  or a default (uninitialized) analysis array with an argument-null error.
                 tags: [unit]
                 justification: |
                   Analyses that share a part of speech are separated by the cues alone; without cues the answer must
-                  fall back to the analysis frequencies.
+                  fall back to the analysis frequencies; misuse must fail fast with the documented exception.
                 tests:
                   - CueModel_Score_UsesWeightsAndMarksMissingAnalyses
                   - CueModel_Score_UnknownFeature_GivesPrior
+                  - CueModel_Score_NullTableOrDefaultAnalyses_Throws

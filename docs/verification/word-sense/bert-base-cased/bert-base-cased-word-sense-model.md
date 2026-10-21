@@ -30,10 +30,11 @@ All scenarios below pass on every platform and target framework of the CI matrix
   the committed model
   classifies the words of "They will record the record." with the verb analysis for the first `record` and the noun
   analysis for the second, each at a level that the result states, with a group id only where the level and the sense
-  carry one; once the encoder scores fine senses, a trained lemma is answered at a sense, group or part-of-speech level.
+  carry one; a trained lemma is answered by the encoder at a sense, group or part-of-speech level.
 - **Untrained ambiguous word is answered by Basic** (`Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback`): a word
   with several senses that the encoder does not score gets the complete result of the Basic model (the same analyses,
-  probabilities, selected analysis, level and confidence as `BasicWordSenseModel` gives for the same text), never a
+  probabilities, selected analysis, level and confidence as `BasicWordSenseModel` gives for the same text; the level is
+  the part of speech, or the sense when the selected analysis has exactly one sense), never a
   mixture, with no ensure of the model files.
 - **Composition references** (`Assembly_ReferencesCoreAndOnnx`): the assembly references the core and Onnx
   assemblies (the Basic model is in the core).

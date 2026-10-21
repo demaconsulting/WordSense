@@ -78,6 +78,31 @@ public class FallbackWordSenseModelTests
     }
 
     /// <summary>
+    ///     When the ensure step of the primary model fails (synchronously or asynchronously), the fallback model still gets
+    ///     its ensure step, and the failure of the primary model is reported after both ran.
+    /// </summary>
+    /// <param name="synchronous">Whether the primary model throws before it returns a task.</param>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public async Task WordSenseContracts_FallbackWordSenseModel_EnsureModelAsync_PrimaryFails_StillEnsuresFallback(bool synchronous)
+    {
+        // Arrange
+        var primary = new StubModel { EnsureFailure = synchronous ? EnsureFailureKind.Synchronous : EnsureFailureKind.Asynchronous };
+        var fallback = new StubModel();
+        using var model = new FallbackWordSenseModel(primary, fallback);
+
+        // Act
+        var failure = await Assert.ThrowsAsync<InvalidOperationException>(() => model.EnsureModelAsync(null, TestContext.Current.CancellationToken));
+
+        // Assert
+        Assert.Equal("Ensure failed.", failure.Message);
+        Assert.Equal(1, primary.EnsureCalls);
+        Assert.Equal(1, fallback.EnsureCalls);
+    }
+
+    /// <summary>
     ///     Disposing the composite disposes each model once, however often it is called, and a model that throws on
     ///     disposal does not keep the other from being disposed.
     /// </summary>
@@ -136,6 +161,13 @@ public class FallbackWordSenseModelTests
     private static ClassifyResult Result(string word, ImmutableArray<AnalysisCandidate> analyses, WordDetails details, SenseLevel level) =>
         new(word, true, analyses, details, level, 1, null, null);
 
+    private enum EnsureFailureKind
+    {
+        None,
+        Synchronous,
+        Asynchronous,
+    }
+
     private sealed class StubModel(params ClassifyResult[] results) : IWordSenseModel
     {
         private int _disposeCalls;
@@ -148,11 +180,18 @@ public class FallbackWordSenseModelTests
 
         public bool ThrowOnDispose { get; init; }
 
+        public EnsureFailureKind EnsureFailure { get; init; }
+
         public Task EnsureModelAsync(MirrorOptions? mirror = null, CancellationToken cancellationToken = default)
         {
             EnsureCalls++;
             EnsuredWith = mirror;
-            return Task.CompletedTask;
+            return EnsureFailure switch
+            {
+                EnsureFailureKind.Synchronous => throw new InvalidOperationException("Ensure failed."),
+                EnsureFailureKind.Asynchronous => Task.FromException(new InvalidOperationException("Ensure failed.")),
+                _ => Task.CompletedTask,
+            };
         }
 
         public Task<ClassifyResult[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default) =>

@@ -7,7 +7,8 @@
 `SenseLabelGenerator` gives every sense of a lemma of one token (`entry.token_count` 1) that has no label a readable,
 deterministic label, so that every sense of every word has a public id `lemma#label` and callers can store it. It writes
 the `sense_label` table; it never changes a label that already exists. The senses of a multi-word lemma are not
-labeled, because the library classifies single words.
+labeled, because the library classifies single words; the one exception is a project sense (a sense without a sense
+key), which is labeled whatever the token count of its lemma, because the project authors it for the inventory.
 
 #### Data Model
 
@@ -33,8 +34,10 @@ The label of a sense without one is the first rule that gives a usable slug:
    `pronoun`, `preposition`, `conjunction`, `interjection`, `determiner`, `auxiliary`), so the id is `lemma#noun`.
 2. The first synonym: the lemma of the first other sense of the same synset, in the order of the UTF-8 bytes of the
    sense id, whose slug is not the slug of the lemma itself.
-3. The hypernym head: the lemma of the first sense (in the order of the UTF-8 bytes of the sense id) of the first
-   hypernym synset (in the order of the synset id) whose slug is not the slug of the lemma itself.
+3. The hypernym head: the first hypernym synset (in the order of the synset id) that has a usable member gives the
+   label: the lemma of its first member (in the order of the UTF-8 bytes of the sense id) whose slug is not empty and
+   not the slug of the lemma itself. A first member that is the lemma itself is skipped in favor of the next member of
+   the same synset; a hypernym synset with no usable member is skipped in favor of the next hypernym synset.
 4. The part of speech name, when neither a synonym nor a hypernym gives a slug.
 
 A slug is the lower-case, NFC-normalized text with the accents removed (the canonical decomposition without its
@@ -66,8 +69,9 @@ input rows were read.
 
 #### Error Handling
 
-A missing input table, an unreadable row, or two existing labels of one lemma that are equal throws
-`InvalidDataException` with the file and the line, and nothing is written (the output is built in memory first).
+A missing input table, an unreadable file (an I/O or encoding failure), a row with the wrong number of cells, a count
+that is not a non-negative integer, or two existing labels of one lemma that are equal throws `InvalidDataException`
+(with `path:line:` for a row or a count), and nothing is written (the output is built in memory first).
 A sense for which no rule gives a free label cannot occur, because the suffix always finds a free number. A label whose
 sense no longer exists is kept: removing it is a data decision that goes through `sense_label_map`.
 

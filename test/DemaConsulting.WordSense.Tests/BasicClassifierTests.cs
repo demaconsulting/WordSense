@@ -318,28 +318,29 @@ public class BasicClassifierTests
     }
 
     /// <summary>
-    ///     The analyses array of a word with a single analysis is built once: two results for the word, also in
-    ///     different case, hold the same underlying array.
+    ///     The analyses array of a word with a single analysis is built once and reused for the next result for the word
+    ///     (a cache hit), also in different case; this is an optimization and not part of the contract, so the words
+    ///     are classified one after the other and no other word is in between that could evict the entry.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
     public async Task BasicClassifier_ClassifyAsync_SingleAnalysisWord_SharesItsAnalysesArray()
     {
-        var results = await Run("cat", "bank", "Cat", "bank", "zzqxjw", "zzqxjw");
+        var results = await Run("cat", "Cat", "bank", "bank", "zzqxjw", "zzqxjw");
 
         Assert.Same(
             ImmutableCollectionsMarshal.AsArray(results[0].Analyses),
-            ImmutableCollectionsMarshal.AsArray(results[2].Analyses));
+            ImmutableCollectionsMarshal.AsArray(results[1].Analyses));
         Assert.Same(
-            ImmutableCollectionsMarshal.AsArray(results[1].Analyses),
+            ImmutableCollectionsMarshal.AsArray(results[2].Analyses),
             ImmutableCollectionsMarshal.AsArray(results[3].Analyses));
         Assert.NotSame(
             ImmutableCollectionsMarshal.AsArray(results[0].Analyses),
-            ImmutableCollectionsMarshal.AsArray(results[1].Analyses));
+            ImmutableCollectionsMarshal.AsArray(results[2].Analyses));
         Assert.Same(
             ImmutableCollectionsMarshal.AsArray(results[4].Analyses),
             ImmutableCollectionsMarshal.AsArray(results[5].Analyses));
-        Assert.Equal("Cat", results[2].Word);
+        Assert.Equal("Cat", results[1].Word);
     }
 
     /// <summary>
@@ -620,5 +621,26 @@ public class BasicClassifierTests
 
         await Assert.ThrowsAnyAsync<OperationCanceledException>(
             () => Create().ClassifyAsync(["a"], cancelled.Token));
+    }
+
+    /// <summary>
+    ///     A cancellation that happens while a lazy sequence is materialized is honored before any word is classified.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_CancelledWhileReadingWords_Throws()
+    {
+        // Arrange
+        using var source = new CancellationTokenSource();
+        IEnumerable<string> Lazy()
+        {
+            yield return "the";
+            source.Cancel();
+            yield return "cat";
+        }
+
+        // Act and Assert
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(
+            () => Create().ClassifyAsync(Lazy(), source.Token));
     }
 }

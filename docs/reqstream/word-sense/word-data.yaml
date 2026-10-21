@@ -36,6 +36,7 @@ sections:
               - WordSense-WordData-DataLayout-FileFor
               - WordSense-WordData-DataLayout-Order
               - WordSense-WordData-DataLayout-Write
+              - WordSense-WordData-DataLayout-Partition
             tests:
               - WordSenseBuilder_DataLayout_FileFor_SplitLetter_UsesTwoLetters
 
@@ -43,8 +44,9 @@ sections:
             title: >-
               The word data subsystem shall import the pinned Open English WordNet release into the tables
               deterministically, keeping its sense, synset, gloss, example, relation and pronunciation data, shall
-              import the pinned WordNet 3.0 sense frequency counts joined on the sense key, and shall refuse to
-              overwrite existing tables or to read a file whose hash differs from the pin.
+              import the pinned WordNet 3.0 sense frequency counts joined on the sense key, shall read the written
+              forms of the release and map the identifiers of an earlier release to the current ones, and shall
+              refuse to overwrite existing tables or to read a file whose hash differs from the pin.
             tags: [subsystem]
             justification: |
               The import is a one-time, reproducible bootstrap of data that is edited afterwards; it must be exact,
@@ -54,6 +56,8 @@ sections:
               - WordSense-WordData-OewnImporter-Derived
               - WordSense-WordData-OewnImporter-Frequency
               - WordSense-WordData-OewnImporter-Safety
+              - WordSense-WordData-OewnImporter-Forms
+              - WordSense-WordData-OewnImporter-PreviousIds
             tests:
               - WordSenseBuilder_OewnImporter_Import_Slice_CountsRows
               - WordSenseBuilder_DataCommands_ImportThenValidate_Succeeds

@@ -36,6 +36,7 @@ package WordSense {
         // (each composes its encoder model with the core Basic model through the core FallbackWordSenseModel).
         dependency miniLMUsesOnnx from miniLM to onnx;
         dependency miniLMUsesCore from miniLM to core;
+        dependency onnxUsesCore from onnx to core;
         dependency bertBaseCasedUsesOnnx from bertBaseCased to onnx;
         dependency bertBaseCasedUsesCore from bertBaseCased to core;
     }

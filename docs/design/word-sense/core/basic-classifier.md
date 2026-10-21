@@ -44,7 +44,8 @@ classifier produces three of the four levels:
 
 #### Key Methods
 
-`ClassifyAsync(words, cancellationToken)` validates the arguments, checks cancellation and then works synchronously
+`ClassifyAsync(words, cancellationToken)` validates the arguments, checks cancellation before and for every element
+while it materializes the input (so a long or lazy sequence stays cancelable) and then works synchronously
 and returns a completed task. An empty list gives an empty array. Otherwise it rents the token and posterior buffers
 from `ArrayPool` (returned in a `finally`) and walks the list segment by segment; a segment ends after a `.`, `!` or `?`
 token and the cancellation token is checked per segment. For each segment it builds the tagger tokens, calls
@@ -55,8 +56,9 @@ returns the analyses of the form (one per lemma, part of speech and features, ne
    presence of an analysis, not the kind of token, so a number word such as `one` or `twenty` is answered with
    details; only a token without a letter (a digit string, punctuation) is unknown;
 2. one analysis: it has probability 1. The answer is built once per word and cached together with its one-element
-   analyses array, which every result for that word then shares (reference identity of arrays is not part of the
-   contract). The sense count of its lemma and part of speech decides: with exactly one sense the analysis lists it with
+   analyses array, which results for that word may then share (a cache hit; reference identity of arrays is not
+   part of the contract, and an entry may be evicted). The sense count of its lemma and part of speech decides: with
+   exactly one sense the analysis lists it with
    probability 1 and the answer is at the sense level with that sense id, no group id (unless the sense has one) and
    confidence 1, whatever the case of the word; with several senses the analysis lists no senses and the answer is at the
    part of speech level with confidence 1, because the statistics cannot choose a sense;
@@ -96,8 +98,10 @@ surfaces as the `InvalidDataException` of `BasicTables.Default` on first use.
 
 #### Determinism and Thread Safety
 
-The classifier keeps no mutable state: the results depend only on the input words, and every scratch buffer is local
-to the call. One instance may be used from many threads at once, and the same words always give the same results.
+The only shared mutable state is the single-analysis answer cache described in the data model: its entries are
+immutable and a racing writer can only replace one valid entry with another, so the results never depend on timing. The
+results depend only on the input words, and every scratch buffer is local to the call. One instance may be used from
+many threads at once, and the same words always give the same results.
 
 #### Dependencies
 

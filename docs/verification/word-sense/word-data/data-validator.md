@@ -24,7 +24,7 @@ All scenarios below pass.
   `MissingSourceFile_ViolatesFileSet`, `EmptyPartitionFile_Violates`, `SplitPlanMismatch_ViolatesFileSet`).
 - **Format and cells** (`FormatDefects_AreReported`, `CellDefects_AreReported`, `EmptyRequiredCell_Violates`,
   `SenseTableFeatures_AreChecked`): the last one checks the features of an analysis of the form table against the
-  feature vocabulary.
+  feature vocabulary, including a feature name that is listed twice.
 - **Keys and order** (`UnsortedRows_ViolateSort`, `DuplicateHomograph_ViolatesUnique`,
   `DanglingReference_ViolatesForeignKey`,
   `RowInWrongFile_ViolatesPlacement`, `RelationDefects_AreReported`).
@@ -32,7 +32,7 @@ All scenarios below pass.
   `SenseKeyOfOtherPartOfSpeech_ViolatesSense`, `EntryWithoutSense_Violates`, `ExampleOfOtherSynset_Violates`,
   `SynsetWithoutGloss_Violates`): the part of speech of an entry and the ss_type of a sense key must fit the part of
   speech of the synset of the sense (an adjective satellite counts as an adjective).
-- **Sense labels** (`SenseWithoutLabel_Violates`, `DuplicateLabelInLemma_ViolatesUnique`,
+- **Sense labels** (`SenseWithoutLabel_Violates`, `DuplicateLabelInLemma_ViolatesUnique`, `DuplicateIds_AreReportedNotThrown`,
   `SenseIdEqualToGroupId_Violates`, `ChangedPublishedLabel_ViolatesStability`, `ChangedGroupId_IsNotAStabilityViolation`,
   `ReusedRetiredId_Violates`, `ProjectSenseWithKey_Violates`): a sense without a label, a label twice in a lemma, a
   sense label with the marker that makes its id equal to a group id, a label that differs from the baseline without a map
@@ -49,7 +49,7 @@ All scenarios below pass.
   `group_kind` vocabulary are each reported; both kinds are valid. A lemma needs no group, so data without any group is
   valid (`CuratedGroupOfSomeSenses_IsValid` first checks the labeled slice without a group). The slice has only two
   nouns of bass, so the tests add a third one to make a group of some, but not all, senses possible.
-- **Reporting** (`ManyViolations_AreCappedPerRule`).
+- **Reporting** (`ManyViolations_AreCappedPerRule`): at most 20 listed per rule, while the total counts all.
 - **More inventory cases** (`MalformedLabel_Violates`, `PublishedIdTakenByAnotherSense_ViolatesStability`,
   `MissingBaseline_ReportsStability`, `ProjectSenseWithoutGloss_Violates`): a label that is not lower-case ASCII, a
   published id that another sense now has, a baseline folder that does not exist and a project sense without a gloss.

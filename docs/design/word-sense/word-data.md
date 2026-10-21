@@ -69,8 +69,11 @@ The sense inventory is a layer of tables over the imported senses. The library c
 covers the senses of the lemmas of one token (`entry.token_count` 1); the senses of a multi-word lemma have no label or
 group. Every such sense has one readable label
 (`sense_label`), and its public id is `lemma#label`. The label is unique among the senses of its lemma, is frozen once
-published and is never reused: a rename or a retirement is recorded in `sense_label_map`, so a caller that stored an
-old id finds where it went. Curated labels and project labels are written by hand; `SenseLabelGenerator` writes a
+published and is never reused: a rename or a retirement is recorded in `sense_label_map`. That table is build-time
+stability metadata only: the validator uses it to accept a deliberate change of a published label and to refuse the
+reuse of a retired id, and it is not compiled into the image. The library has no runtime API that migrates a stored
+old id to its successor; the map is available to a caller only as the committed table in the repository. Curated labels
+and project labels are written by hand; `SenseLabelGenerator` writes a
 label for every other sense and never changes one that exists.
 
 The levels of an answer nest: none, then the part of speech (a lemma and part of speech), then an optional group, then
@@ -130,10 +133,12 @@ placement.
 ### Error Handling
 
 The importer throws `InvalidDataException` for a malformed, incomplete or inconsistent source (a count line that cannot
-be read included) and for a hash that differs from the pin, and refuses to overwrite existing tables. The label
+be read, or a relation to something the file does not hold, included) and for a hash that differs from the pin, and
+refuses to overwrite existing tables; it stages its output and replaces the tables only after the whole input was
+accepted. The label
 generator throws for an input table it cannot read and writes nothing. The validator never throws for bad data: it
 reports each violation with the file, line, rule and value (at most 20 per rule are listed, with the total counted) and
-the command exits with 1.
+the command exits with 1. The table writer is atomic (a temporary file replaces the target only when complete).
 
 ### Dependencies
 

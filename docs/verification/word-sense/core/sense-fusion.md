@@ -24,8 +24,12 @@ All scenarios below pass on every platform and target framework of the CI matrix
   that share a part of speech get the same tagger share and are ordered by their cue scores.
 - **No posterior mass** (`SenseFusion_Fuse_NoPosMass_IsUniform`): when the tagger gives no mass to any candidate, the
   candidates are equally likely before the cues.
-- **Extreme scores** (`SenseFusion_Fuse_ExtremeScores_StayFinite`): extreme scores do not produce non-finite
-  probabilities, and every probability is greater than 0 and at most 1.
+- **Extreme scores** (`SenseFusion_Fuse_ExtremeScores_StayFinite`,
+  `SenseFusion_Fuse_ExtremeScores_StayAboveZeroAndSumToOne`): extreme scores do not produce non-finite
+  probabilities, a candidate whose weight would underflow keeps a probability greater than 0, and the probabilities
+  sum to 1.
+- **Default analyses** (`SenseFusion_Fuse_DefaultAnalyses_Throws`): a default analysis array throws
+  `ArgumentNullException` and the cue scores are not modified.
 - **Tie** (`SenseFusion_Winner_Tie_PicksFirst`): equal probabilities pick the first candidate (the lowest index).
 - **Missing cue** (`SenseFusion_Fuse_MissingCue_IsFilledWithMeanOfOthers`): a NaN cue behaves like the mean of the
   finite cues.

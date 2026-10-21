@@ -22,24 +22,31 @@ internal static class SenseFusion
 {
     private const double PosteriorFloor = 1e-6;
 
+    // The smallest relative weight of a candidate before normalization, so that no probability underflows to zero
+    private const double MinimumWeight = 1e-300;
+
     /// <summary>
     ///     Computes the fused probability of each candidate.
     /// </summary>
     /// <param name="posteriors">The tagger posterior of the word, <see cref="PosTag.Count"/> values.</param>
     /// <param name="analyses">The candidate analyses.</param>
-    /// <param name="cues">The cue score of each candidate, <see cref="double.NaN"/> when missing; modified in place.</param>
+    /// <param name="cues">The cue score of each candidate, <see cref="double.NaN"/> when missing; not modified.</param>
     /// <param name="tagWeight">The weight of the logarithm of the part-of-speech posterior.</param>
     /// <param name="invTemperature">The factor on the cue scores.</param>
-    /// <param name="probabilities">Receives the probability of each candidate; the values sum to 1.</param>
+    /// <param name="probabilities">Receives the probability of each candidate, all above zero; the values sum to 1.</param>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="analyses"/> is the default array.</exception>
     public static void Fuse(
         ReadOnlySpan<double> posteriors,
         ImmutableArray<WordDetails> analyses,
-        Span<double> cues,
+        ReadOnlySpan<double> cues,
         double tagWeight,
         double invTemperature,
         Span<double> probabilities)
     {
-        ArgumentOutOfRangeException.ThrowIfEqual(analyses.IsDefault, true);
+        if (analyses.IsDefault)
+        {
+            throw new ArgumentNullException(nameof(analyses));
+        }
         var count = analyses.Length;
         Span<double> mass = stackalloc double[PosTag.Count];
         mass.Clear();
@@ -79,7 +86,8 @@ internal static class SenseFusion
         var sum = 0.0;
         for (var j = 0; j < count; j++)
         {
-            probabilities[j] = Math.Exp(probabilities[j] - best);
+            // The weight never underflows to zero: every candidate keeps a probability above zero
+            probabilities[j] = Math.Max(Math.Exp(probabilities[j] - best), MinimumWeight);
         }
 
         // The candidates of one slot without a cue score share the weight of one candidate

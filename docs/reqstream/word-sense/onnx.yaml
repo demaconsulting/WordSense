@@ -13,7 +13,8 @@ sections:
               lexicon alone, and a word whose lemma has trained weights and several senses by running the encoder only
               for such words, scoring only the fine senses of the word's own analyses, giving each analysis a
               probability per lemma and part of speech (the feature variants of one sharing it)
-              and choosing the analysis of a form that belongs to several lemmas or tenses from its context.
+              and choosing the analysis of a form that belongs to several lemmas or tenses from its context (a form of
+              several lemmas without a chooser is answered from the lexicon alone).
             tags: [subsystem]
             justification: |
               Encoder inference is the expensive step; running it only for words that need context keeps
@@ -62,8 +63,9 @@ sections:
               The Onnx subsystem shall list, for a trained lemma, in the Senses of every analysis of the word the ranked
               senses of the analysis with probabilities given the analysis that sum to one, whatever the level
               answered, so that a result with scored senses makes a composite model use the encoder, and shall list no
-              scored senses for a word without trained weights (the one sense of an analysis with a single sense
-              excepted).
+              scored senses for a word without trained weights (a lexical singleton, the one sense of an analysis whose
+              lemma and part of speech have exactly one sense, is listed with probability 1 although the encoder did
+              not score it).
             tags: [subsystem]
             justification: |
               The fine scores are computed for every decision; exposing them ranked lets a consumer group the senses
@@ -83,9 +85,11 @@ sections:
               The Onnx subsystem shall answer a known word whose senses it does not score (its lemma has no usable
               trained weights, or the encoder produced no usable vector) from the lexicon alone, with its analyses (a
               single analysis with probability 1, several lemmas and parts of speech equally likely, the feature
-              variants of one sharing its probability), no scored senses and the part of speech
+              variants of one sharing its probability), no encoder-scored senses and the part of speech
               level, and never with a guessed fine sense, leaving the choice between the analyses to the fallback
-              model of a composition, and shall not depend on any other model package.
+              model of a composition, and shall not depend on any other model package. The one exception is a lexical
+              singleton: a word with a single analysis whose lemma and part of speech have exactly one sense is
+              answered at the sense level with that sense listed with probability 1, which no encoder scored.
             tags: [subsystem]
             justification: |
               A word must never vanish because a model was not trained for it, and a first-sense guess dressed as a

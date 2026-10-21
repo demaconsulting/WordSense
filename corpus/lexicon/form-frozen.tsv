@@ -3815,7 +3815,6 @@ frozen	supplying	0	oewn-supply-v	VerbForm=Ger	dema	1	open	supply#verb
 frozen	supplying	1	oewn-supply-n	Number=Sing+VerbForm=Ger	dema	1	open	supply#noun
 frozen	supposed	0	oewn-supposed-a	Degree=Pos	dema	1		supposed#supposed-adj
 frozen	supposed	1	oewn-suppose-v	Tense=Past+VerbForm=Part	dema	1		supposed#supposed-past
-frozen	supposed	2	oewn-supposed-a	Degree=Pos	dema	1		supposed#supposed-to
 frozen	supposedly	0	oewn-supposed-a		dema	1		supposed#supposed-adj
 frozen	supposedly	1	oewn-supposedly-r	Degree=Pos	dema	0		
 frozen	supposes	0	oewn-suppose-v	Person=3+Tense=Pres	dema	1		supposed#supposed-past

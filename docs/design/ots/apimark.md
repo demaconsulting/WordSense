@@ -22,13 +22,14 @@ the code it describes.
   in the namespace, which is ApiMark's documented convention; ApiMark recognizes it by that shape and omits it
   from the type list and from enforcement; its XML summary, remarks and example become the namespace page; without
   it the namespace shows "No description provided"). The carrier's XML documentation is written to cover the
-  quickstart, package and target frameworks, offline and mirror setup, the `WordSense`, `WordDetails`,
-  `PartOfSpeech` and `Pronunciation` result model, a glossary, confidence (margin and runner-up), tokenization
-  and context window, thread safety and examples. The carrier and the example-compile test are in the
+  quickstart, package and target frameworks, offline and mirror setup, the `ClassifyResult`, `WordDetails`,
+  `PartOfSpeech` and `SenseLevel` result model, a glossary, confidence (the probability of the answered level),
+  tokenization and context window, thread safety and examples. The carrier and the example-compile test are in the
   OTS-ApiMark review set because they are ApiMark's inputs and evidence. FileAssert does not assert that
-  content of the namespace page (it asserts only the index, the model example block, the terminology on
-  `WordSense` and the
-  `WordLexicon` page); the carrier's examples are compiled by `WordSense_XmlDocExamples_Compile`. References to
+  content of the namespace page (it asserts only the index, the fenced example blocks on the `WordLexicon`, model
+  and `IWordSenseModel` pages, and the term "confidence" on the `ClassifyResult` page); the examples of each package
+  are compiled by its own `XmlDocExamples_Compile` test (`WordSense_XmlDocExamples_Compile` and the Onnx, MiniLM and
+  BertBaseCased counterparts). References to
   repository documents in
   XML docs use absolute GitHub URLs, because the packaged API reference has no access to repository files.
 

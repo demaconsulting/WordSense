@@ -10,8 +10,10 @@
 
 `ValidationReport`: the violations listed (file, line, rule, message), the total number of violations, the row count
 of every table and `IsValid`. Rule tags: schema, file-set, header, cell-count, format, cell, sort, empty-file,
-placement, unique, foreign-key, relation, entry, synset, sense, example, label, stability, group. At most 20
-violations are listed per rule; the total is still counted.
+placement, unique, foreign-key, relation, entry, synset, sense, example, label, stability, group. The emission is
+capped: at most 20 violations are listed per rule (`MaxPerRule`), in discovery order, while the total counts every
+violation, listed or not, so `IsValid` is false exactly when the total is above zero. A defect is therefore always
+counted once, and listed unless its rule already listed 20.
 
 #### Key Methods
 
@@ -50,7 +52,9 @@ violations are listed per rule; the total is still counted.
 #### Error Handling
 
 The validator reports instead of throwing: a schema that cannot load is one `schema` violation; an unreadable file is a
-violation of that file; a baseline that cannot be read is a `stability` violation.
+violation of that file; a baseline that cannot be read is a `stability` violation; duplicated keys (two rows with one
+group id, two senses with one label) are reported by the key rules, and the inventory rules keep checking with the first
+row of the key instead of failing. A cell of the features column must list each feature name once (sorted, unique).
 
 #### Dependencies
 

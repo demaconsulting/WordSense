@@ -1,7 +1,7 @@
 namespace DemaConsulting.WordSense.MiniLM.Tests;
 
 /// <summary>
-///     Tests for <see cref="MiniLMWordSenseModel"/>. Most need no model files and no network access; the two that
+///     Tests for <see cref="MiniLMWordSenseModel"/>. Most need no model files and no network access; the three that
 ///     use the real model files are skipped when the Git LFS files are absent.
 /// </summary>
 public class MiniLMWordSenseModelTests

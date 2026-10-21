@@ -25,3 +25,5 @@ All scenarios below pass on every platform and target framework of the CI matrix
   follow the quantized weights and priors, and an analysis the table lacks scores `NaN`.
 - **Unknown feature** (`CueModel_Score_UnknownFeature_GivesPrior`): features without a table entry add nothing, so the
   score is the prior.
+- **Invalid arguments** (`CueModel_Score_NullTableOrDefaultAnalyses_Throws`): a null table and a default analysis
+  array throw `ArgumentNullException`.

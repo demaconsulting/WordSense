@@ -1,6 +1,6 @@
 # Introduction
 
-This document provides the verification design for the WordSense, a .NET library
+This document provides the verification design for WordSense, a .NET library
 that identifies the sense of ambiguous English words in context (the part of speech and, where the model can tell,
 the fine sense or the group of senses, with the level at which the answer was made) and the part of speech of
 common English words from an embedded dictionary.

@@ -82,7 +82,10 @@ the sample, and the command fails when one lacks its own analysis.
 #### Error Handling
 
 A missing input, or an Open English WordNet or inflection-database file whose SHA-256 differs from its pin, throws
-before any file is written.
+before any file is written. A reviewed input (`form-frozen.tsv`) with a row that has the wrong number of columns, or
+with two rows of one kind that repeat a spelling, an entry and features (the same analysis twice, whatever the other
+columns say), throws `InvalidDataException` with the file and the line of the repeat and of the first row; the
+generator does not dedupe silently, because a repeated analysis is an error of the reviewed input.
 
 #### Dependencies
 

@@ -175,7 +175,8 @@ sections:
               - id: WordSense-Onnx-OnnxClassifier-Untrained
                 title: >-
                   OnnxClassifier shall answer a known word whose senses it does not score (its lemma has no usable
-                  trained weights) from the lexicon alone: a single analysis with probability 1 (at the sense level with
+                  trained weights, and no form chooser applies to it) from the lexicon alone: a single analysis with
+                  probability 1 (at the sense level with
                   that sense listed with probability 1 when its lemma and part of speech have exactly one sense, else at
                   the part of speech level), and several analyses with the uniform probability 1/s for each of the s
                   lemmas and parts of speech, shared equally by the analyses of one of them that differ only in
@@ -209,20 +210,31 @@ sections:
 
               - id: WordSense-Onnx-OnnxClassifier-MultiLemmaForm
                 title: >-
-                  OnnxClassifier shall, for a form whose analyses belong to several lemmas (left, bases, rows, found)
-                  or to several tenses of one lemma (read, reread), give each analysis a probability from the sentence
-                  context, select the best analysis of the most probable one and list the senses of each analysis,
-                  and shall answer at
-                  the part of speech level when the choice is not confident.
+                  OnnxClassifier shall answer a form whose analyses belong to several lemmas (left, bases, rows,
+                  found) or to several tenses of one lemma (read, reread) that has a chooser from the sentence
+                  context: the chooser gives each of its labels (a lemma, or a lemma and its features) a
+                  probability, which is shared among the lemma-and-part-of-speech slots of the analyses of the label
+                  by the mass of their scored senses (equally when none of them has scored senses, as for a lemma
+                  without trained weights, whose analyses list no scored senses) and, inside a slot, equally among
+                  its analyses; the selected analysis is the best analysis of the most probable slot; the level is the
+                  part of speech, with the probability of that slot as confidence, when the chooser is not confident
+                  (its margin is below its threshold) or when the lemma of the selected analysis has no scored senses,
+                  and otherwise the sense, group or part of speech level decided with the thresholds of the lemma of
+                  the selected analysis, with the probability of that level as confidence. A form of several lemmas
+                  that has no chooser is answered from the lexicon alone, as a word without trained weights.
                 tags: [unit]
                 justification: |
                   One classifier per lemma cannot be applied before the lemma is known; a form such as left is a
                   verb of leave or an adjective of left, and the wrong lemma would answer with senses the word does not
-                  have in that sentence.
+                  have in that sentence. Naming what happens when only one of the lemmas of a form has trained weights
+                  keeps the probabilities of one result consistent: an untrained lemma never gets a guessed sense.
                 tests:
                   - OnnxClassifier_ClassifyAsync_FormOfTwoLemmas_ChoosesTheLemmaFromContext
                   - OnnxClassifier_ClassifyAsync_ReadPastVersusPresent_ChoosesTheTenseFeatures
                   - OnnxClassifier_ClassifyAsync_FormChooserBelowThreshold_AnswersPartOfSpeech
+                  - OnnxClassifier_ClassifyAsync_FormOfTrainedAndUntrainedLemma_ChooserPicksTrained_AnswersTheSense
+                  - OnnxClassifier_ClassifyAsync_FormOfTrainedAndUntrainedLemma_ChooserPicksUntrained_AnswersPartOfSpeech
+                  - OnnxClassifier_ClassifyAsync_FormOfSeveralLemmasWithoutChooser_IsAnsweredFromTheLexicon
 
               - id: WordSense-Onnx-OnnxClassifier-Validation
                 title: >-

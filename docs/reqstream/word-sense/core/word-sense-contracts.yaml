@@ -125,7 +125,8 @@ sections:
                   with both, answer each word with the complete result of the primary model when the primary model
                   scored senses for it (its selected analysis lists scored senses, or its level is Group or Sense) and
                   otherwise with the complete result of the fallback model, never a mixture of the two, ensure both
-                  models concurrently, dispose both models once, reject a null model, a null list and a null element,
+                  models concurrently (both always run their ensure step, and a failure of either is reported after
+                  both ran), dispose both models once, reject a null model, a null list and a null element,
                   and reject a model whose result array is not parallel to the input.
                 tags: [unit]
                 justification: |
@@ -137,6 +138,7 @@ sections:
                   - WordSenseContracts_FallbackWordSenseModel_PrimaryScoredSenses_UsesPrimary
                   - WordSenseContracts_FallbackWordSenseModel_PrimaryChoseOnlyAnalysis_UsesFallback
                   - WordSenseContracts_FallbackWordSenseModel_EnsureModelAsync_EnsuresBoth
+                  - WordSenseContracts_FallbackWordSenseModel_EnsureModelAsync_PrimaryFails_StillEnsuresFallback
                   - WordSenseContracts_FallbackWordSenseModel_Dispose_DisposesBothOnce
                   - WordSenseContracts_FallbackWordSenseModel_ClassifyAsync_InvalidArguments_Throw
                   - WordSenseContracts_FallbackWordSenseModel_ClassifyAsync_ResultNotParallel_Throws
@@ -206,7 +208,8 @@ sections:
                   group), its lemma, its part of speech, its OEWN sense key (none for a project sense) and an optional
                   respelling, and SenseGroup shall describe a group by its id (lemma#group:label), its lemma, its part
                   of speech, the ids of its senses in inventory order (at least two, never all the senses of its lemma
-                  and part of speech) and an optional respelling, both as immutable values with value equality.
+                  of its lemma and part of speech) and an optional respelling, both as immutable values with value
+                  equality (a group compares the content and order of its member ids).
                 tags: [unit]
                 justification: |
                   Callers resolve the ids of an answer to a sense or a group and read what they need (the key to reach
@@ -217,6 +220,7 @@ sections:
                   - WordSenseContracts_SenseInfo_ProjectSense_HasNoKey
                   - WordSenseContracts_SenseGroup_Construct_ExposesMembers
                   - WordSenseContracts_SenseInfo_SameValues_AreEqual
+                  - WordSenseContracts_SenseGroup_SameMembers_AreEqual
 
               - id: WordSense-Core-WordSenseContracts-Independent
                 title: The core assembly shall reference no ONNX Runtime, weights or vector library.

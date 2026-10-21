@@ -39,21 +39,21 @@ sections:
               - id: WordSense-Core-BasicClassifier-Resolve
                 title: >-
                   BasicClassifier shall give every word with several analyses a probability for each analysis from the
-                  fused part-of-speech and context-cue evidence, with the analysis of the largest probability as the
-                  selected analysis and its probability as the confidence, and shall give a word with a single analysis
-                  that analysis with probability 1 and confidence 1, sharing one analyses array between all results for
-                  such a word.
+                  fused part-of-speech and context-cue evidence, with the best analysis of the most probable lemma and
+                  part of speech (slot) as the selected analysis and the probability of that slot (the sum of the
+                  probabilities of its feature variants) as the confidence, and shall give a word with a single
+                  analysis that analysis with probability 1 and confidence 1.
                 tags: [unit]
                 justification: |
                   This is the statistical disambiguation that the package provides; the probabilities let callers apply
                   their own policy instead of the classifier abstaining, and a word with one analysis needs no
-                  evidence, so its answer is built once.
+                  evidence. The confidence is the probability of the slot because the slot owns the senses and the
+                  split of a slot among feature variants must not lower it.
                 tests:
                   - BasicClassifier_ClassifyAsync_AmbiguousWord_AlwaysAnswersWithProbability
                   - BasicClassifier_ClassifyAsync_Context_ChoosesPartOfSpeech
                   - BasicClassifier_ClassifyAsync_Context_SelectsTheMostProbableAnalysis
                   - BasicClassifier_ClassifyAsync_SingleAnalysisWithManySenses_AnswersItWithConfidenceOne
-                  - BasicClassifier_ClassifyAsync_SingleAnalysisWord_SharesItsAnalysesArray
                   - BasicWordSenseModel_ClassifyAsync_AuxiliaryContext_AnswersAuxiliary
                   - BasicWordSenseModel_ClassifyAsync_CopulaBe_AnswersMainVerb
                   - BasicWordSenseModel_ClassifyAsync_NounContext_StaysNoun
@@ -120,7 +120,8 @@ sections:
                   from several threads at once.
                 tags: [unit]
                 justification: |
-                  A classifier without mutable shared state can be shared by all callers of an application.
+                  A classifier whose only shared state is a cache of immutable entries can be shared by all callers of
+                  an application.
                 tests:
                   - BasicClassifier_ClassifyAsync_IsDeterministicAndThreadSafe
 
@@ -138,7 +139,8 @@ sections:
               - id: WordSense-Core-BasicClassifier-Validation
                 title: >-
                   BasicClassifier shall return an empty array for an empty list, keep results parallel to the input,
-                  and reject a null list, a null element and a cancelled call.
+                  and reject a null list, a null element and a cancelled call, also when the cancellation happens
+                  while the words are read.
                 tags: [unit]
                 justification: |
                   Misuse must fail fast with a documented exception, and results must map onto the input by index.
@@ -148,3 +150,4 @@ sections:
                   - BasicClassifier_ClassifyAsync_NullWords_Throws
                   - BasicClassifier_ClassifyAsync_NullElement_Throws
                   - BasicClassifier_ClassifyAsync_Cancelled_Throws
+                  - BasicClassifier_ClassifyAsync_CancelledWhileReadingWords_Throws

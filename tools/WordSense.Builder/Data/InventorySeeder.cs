@@ -47,7 +47,10 @@ internal sealed record SeedRun(
 ///     </para>
 ///     <para>
 ///     A group exists only when it is needed: a set of at least two, but not all, senses of one lemma and one part of
-///     speech. A curated group that mixes two parts of speech is split by part of speech; a group with one sense, and a
+///     speech. A curated group that mixes two parts of speech is split by part of speech, and its <c>part_of_speech</c>
+///     must then name every part of speech of its members as a slash-separated list (<c>Interjection/Adverb</c>; the first
+///     one keeps the plain label); a member of a part of speech that the list lacks, or a name that is not a part of
+///     speech, is refused. A group with one sense, and a
 ///     group with every sense of its lemma and part of speech, is left out. A group that is written needs a
 ///     <c>kind</c> of the <c>group_kind</c> vocabulary and non-empty <c>evidence</c> (the admission rule: the
 ///     curator's same-meaning judgment plus observed confusion or near-identical glosses); the evidence is curation
@@ -56,7 +59,9 @@ internal sealed record SeedRun(
 ///     </para>
 ///     <para>
 ///     The run is idempotent. It replaces a generated label (which was never published) by the curated one and
-///     refuses to change a curated or project label that a sense already has. It is stateless and thread-safe.
+///     refuses to change a curated or project label that a sense already has. It is stateless but not safe to run
+///     concurrently on one data folder, because it rewrites several tables in place; every check of the curation happens
+///     before the first table is written, so a curation with a defect leaves the data unchanged.
 ///     </para>
 /// </remarks>
 internal static class InventorySeeder
@@ -65,6 +70,10 @@ internal static class InventorySeeder
     public const string GroupMarker = "group:";
 
     private const string ClosedClass = "upcidx";
+
+    private static readonly string[] SenseColumns = ["sense_id", "oewn_sense_id", "part_of_speech", "gloss", "source"];
+
+    private static readonly string[] GroupColumns = ["group_id", "lemma", "part_of_speech", "member_sense_ids", "kind", "evidence"];
 
     /// <summary>
     ///     Adds the project senses and imports the curated labels and groups.
@@ -160,7 +169,7 @@ internal static class InventorySeeder
         IReadOnlyDictionary<string, string> posNames)
     {
         var added = 0;
-        foreach (var row in ReadTsv(Path.Join(folder, "senses.tsv")).Where(r => r.GetValueOrDefault("source") == "project" && r.GetValueOrDefault("oewn_sense_id", string.Empty).Length == 0 && r.GetValueOrDefault("sense_key", string.Empty).Length == 0))
+        foreach (var row in ReadTsv(Path.Join(folder, "senses.tsv"), SenseColumns, ["sense_id"]).Where(r => r.GetValueOrDefault("source") == "project" && r.GetValueOrDefault("oewn_sense_id", string.Empty).Length == 0 && r.GetValueOrDefault("sense_key", string.Empty).Length == 0))
         {
             var cut = row["sense_id"].IndexOf('#', StringComparison.Ordinal);
             var lemma = row["sense_id"][..cut];
@@ -203,8 +212,8 @@ internal static class InventorySeeder
         IReadOnlyDictionary<string, string> posNames,
         IReadOnlyDictionary<string, string> kinds)
     {
-        var curatedSenses = ReadTsv(Path.Join(folder, "senses.tsv"));
-        var curatedGroups = ReadTsv(Path.Join(folder, "groups.tsv"));
+        var curatedSenses = ReadTsv(Path.Join(folder, "senses.tsv"), SenseColumns, ["sense_id"]);
+        var curatedGroups = ReadTsv(Path.Join(folder, "groups.tsv"), GroupColumns, ["group_id"]);
         var byLemmaPos = senses.GroupBy(s => (Lemma: entries[s[2]][1], Pos: entries[s[2]][2])).ToDictionary(g => g.Key, g => g.Select(s => s[0]).OrderBy(s => s, Comparer<string>.Create(DataLayout.CompareUtf8)).ToList());
         var senseRow = senses.ToDictionary(s => s[0], s => s, StringComparer.Ordinal);
         var dataId = new Dictionary<string, string>(StringComparer.Ordinal);
@@ -324,6 +333,7 @@ internal static class InventorySeeder
             var lemma = group["lemma"];
             var baseLabel = group["group_id"][(group["group_id"].IndexOf('#', StringComparison.Ordinal) + 1)..];
             var listed = group["member_sense_ids"].Split(',');
+            CheckMembers(group, listed, lemma, entries, senseRow, dataId, posNames);
             var byPos = listed.GroupBy(m => entries[senseRow[dataId[m]][2]][2]).ToList();
             var primary = PrimaryPos(group["part_of_speech"], posNames, byPos.Select(p => p.Key).ToList()) ?? byPos[0].Key;
             split += byPos.Count > 1 ? 1 : 0;
@@ -374,6 +384,55 @@ internal static class InventorySeeder
         return new GroupImport(0, written, split, singletons, wholePos);
     }
 
+    // Every member of a curated group must be a curated sense, listed once, of the lemma of the group, and of a part of
+    // speech that the group names. The group names its parts of speech as a slash-separated list (Adverb/Interjection), the
+    // first one being the one that keeps the plain label when the group is split by part of speech; a part of speech that is
+    // not in the list would write a subgroup that the curator never declared, and a name that is not a part of speech is a
+    // typo
+    private static void CheckMembers(
+        Dictionary<string, string> group,
+        string[] listed,
+        string lemma,
+        Dictionary<string, string[]> entries,
+        Dictionary<string, string[]> senseRow,
+        Dictionary<string, string> dataId,
+        IReadOnlyDictionary<string, string> posNames)
+    {
+        var groupId = group["group_id"];
+        var named = group["part_of_speech"].Split('/').Select(n => n.Trim()).ToList();
+        var unknown = named.FirstOrDefault(n => !posNames.Values.Any(v => string.Equals(v, n, StringComparison.OrdinalIgnoreCase)));
+        if (unknown is not null)
+        {
+            throw new InvalidDataException($"The curated group '{groupId}' names the unknown part of speech '{unknown}'.");
+        }
+
+        var seen = new HashSet<string>(StringComparer.Ordinal);
+        foreach (var member in listed)
+        {
+            if (!dataId.TryGetValue(member, out var senseId))
+            {
+                throw new InvalidDataException($"The curated group '{groupId}' lists the member '{member}', which is not a sense of the curation.");
+            }
+
+            if (!seen.Add(member))
+            {
+                throw new InvalidDataException($"The curated group '{groupId}' lists the member '{member}' more than once.");
+            }
+
+            var entry = entries[senseRow[senseId][2]];
+            if (entry[1] != lemma)
+            {
+                throw new InvalidDataException($"The curated group '{groupId}' is a group of '{lemma}' but its member '{member}' is a sense of '{entry[1]}'.");
+            }
+
+            var posName = posNames.GetValueOrDefault(entry[2], entry[2]);
+            if (!named.Any(n => string.Equals(n, posName, StringComparison.OrdinalIgnoreCase)))
+            {
+                throw new InvalidDataException($"The curated group '{groupId}' names the part of speech '{group["part_of_speech"]}' but its member '{member}' has the part of speech {posName.ToLowerInvariant()}; list every part of speech of the group, for example 'Adverb/Interjection'.");
+            }
+        }
+    }
+
     // The part of speech that keeps the label of a split group: the first one the group names that its senses have
     private static string? PrimaryPos(string listed, IReadOnlyDictionary<string, string> posNames, List<string> present)
     {
@@ -389,23 +448,64 @@ internal static class InventorySeeder
         return null;
     }
 
-    private static List<Dictionary<string, string>> ReadTsv(string path)
+    private static List<Dictionary<string, string>> ReadTsv(string path, string[] required, string[] publicIdColumns)
     {
         if (!File.Exists(path))
         {
             throw new InvalidDataException($"The curation file '{path}' does not exist.");
         }
 
-        var lines = File.ReadAllLines(path, new UTF8Encoding(false, true));
-        var header = lines[0].Split('\t');
-        var rows = new List<Dictionary<string, string>>();
-        foreach (var line in lines.Skip(1).Where(l => l.Length > 0))
+        string[] lines;
+        try
         {
+            lines = File.ReadAllLines(path, new UTF8Encoding(false, true));
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or DecoderFallbackException)
+        {
+            throw new InvalidDataException($"The curation file '{path}' cannot be read: {ex.Message}", ex);
+        }
+
+        if (lines.Length == 0)
+        {
+            throw new InvalidDataException($"{path}:1: the curation file is empty; it needs a header line with the columns {string.Join(", ", required)}.");
+        }
+
+        var header = lines[0].Split('\t');
+        var missing = required.Where(c => Array.IndexOf(header, c) < 0).ToList();
+        if (missing.Count > 0)
+        {
+            throw new InvalidDataException($"{path}:1: the header lacks the column(s) {string.Join(", ", missing)}.");
+        }
+
+        var rows = new List<Dictionary<string, string>>();
+        for (var number = 2; number <= lines.Length; number++)
+        {
+            var line = lines[number - 1];
+            if (line.Length == 0)
+            {
+                continue;
+            }
+
+            // A row may omit trailing empty cells, but it must not have more cells than the header has columns
             var cells = line.Split('\t');
+            if (cells.Length > header.Length)
+            {
+                throw new InvalidDataException($"{path}:{number.ToString(CultureInfo.InvariantCulture)}: the row has {cells.Length.ToString(CultureInfo.InvariantCulture)} cells but the header has {header.Length.ToString(CultureInfo.InvariantCulture)} columns.");
+            }
+
             var row = new Dictionary<string, string>(StringComparer.Ordinal);
             for (var i = 0; i < header.Length; i++)
             {
                 row[header[i]] = i < cells.Length ? cells[i] : string.Empty;
+            }
+
+            foreach (var column in publicIdColumns)
+            {
+                var cut = row[column].IndexOf('#', StringComparison.Ordinal);
+                if (cut <= 0 || cut == row[column].Length - 1)
+                {
+                    throw new InvalidDataException($"{path}:{number.ToString(CultureInfo.InvariantCulture)}: the {column} '{row[column]}' is not a public id of the form lemma#label.");
+                }
             }
 
             rows.Add(row);

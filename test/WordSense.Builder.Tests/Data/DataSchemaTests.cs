@@ -163,6 +163,8 @@ public sealed class DataSchemaTests : IDisposable
     [InlineData("source_id: source.source_id", "foreign key", "source_id: nowhere.source_id")]
     [InlineData("primary_key: [entry_id]", "unknown column", "primary_key: [no_such_column]")]
     [InlineData("      inverse: hypernym\n      symmetric: false\n      stored: false", "one direction", "      inverse: hypernym\n      symmetric: false\n      stored: true")]
+    [InlineData("schema_version: 4\n", "not a non-negative integer", "schema_version: four\n")]
+    [InlineData("schema_version: 4\n", "not supported", "schema_version: 9\n")]
     public void WordSenseBuilder_DataSchema_Load_Damaged_Throws(string original, string reason, string changed)
     {
         // Arrange
@@ -175,6 +177,29 @@ public sealed class DataSchemaTests : IDisposable
 
         // Assert
         Assert.Contains(reason, ex.Message, StringComparison.OrdinalIgnoreCase);
+    }
+
+    /// <summary>
+    ///     A bad schema version and an inconsistent relation pair are reported with the real line, never line 0.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_DataSchema_Load_VersionAndRelationDefects_ReportTheirLine()
+    {
+        // Arrange - the version on its line, and the first relation whose inverse stores the same direction
+        var text = SchemaText();
+        var lines = text.Split('\n');
+        var versionLine = Array.FindIndex(lines, l => l.StartsWith("schema_version:", StringComparison.Ordinal)) + 1;
+        var hypernymLine = Array.FindIndex(lines, l => l == "    hypernym:") + 1;
+        var badVersion = text.Replace("schema_version: 4\n", "schema_version: nope\n", StringComparison.Ordinal);
+        var badRelation = text.Replace("      inverse: hypernym\n      symmetric: false\n      stored: false", "      inverse: hypernym\n      symmetric: false\n      stored: true", StringComparison.Ordinal);
+
+        // Act
+        var versionError = Assert.Throws<InvalidDataException>(() => LoadText(badVersion));
+        var relationError = Assert.Throws<InvalidDataException>(() => LoadText(badRelation));
+
+        // Assert - a mapping reports the line of its first key, which is the line below the name of the relation type
+        Assert.Contains($"schema.yaml:{versionLine}:", versionError.Message, StringComparison.Ordinal);
+        Assert.Contains($"schema.yaml:{hypernymLine + 1}:", relationError.Message, StringComparison.Ordinal);
     }
 
     /// <summary>

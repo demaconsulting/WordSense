@@ -58,4 +58,50 @@ public sealed record SenseGroup(
     string Lemma,
     PartOfSpeech PartOfSpeech,
     ImmutableArray<string> SenseIds,
-    string? Respelling);
+    string? Respelling)
+{
+    /// <summary>
+    ///     Tells whether another group has the same values; the sense identifiers are compared as a sequence.
+    /// </summary>
+    /// <param name="other">The other group.</param>
+    /// <returns>True when all values are equal, including the content and order of <see cref="SenseIds"/>.</returns>
+    public bool Equals(SenseGroup? other) =>
+        other is not null
+        && string.Equals(GroupId, other.GroupId, StringComparison.Ordinal)
+        && string.Equals(Lemma, other.Lemma, StringComparison.Ordinal)
+        && PartOfSpeech == other.PartOfSpeech
+        && string.Equals(Respelling, other.Respelling, StringComparison.Ordinal)
+        && SameSenseIds(SenseIds, other.SenseIds);
+
+    /// <summary>
+    ///     Gets a hash code that is consistent with <see cref="Equals(SenseGroup?)"/>.
+    /// </summary>
+    /// <returns>The hash code, which includes the content of <see cref="SenseIds"/>.</returns>
+    public override int GetHashCode()
+    {
+        var hash = new HashCode();
+        hash.Add(GroupId, StringComparer.Ordinal);
+        hash.Add(Lemma, StringComparer.Ordinal);
+        hash.Add(PartOfSpeech);
+        hash.Add(Respelling, StringComparer.Ordinal);
+        if (!SenseIds.IsDefault)
+        {
+            foreach (var id in SenseIds)
+            {
+                hash.Add(id, StringComparer.Ordinal);
+            }
+        }
+
+        return hash.ToHashCode();
+    }
+
+    private static bool SameSenseIds(ImmutableArray<string> a, ImmutableArray<string> b)
+    {
+        if (a.IsDefault || b.IsDefault)
+        {
+            return a.IsDefault && b.IsDefault;
+        }
+
+        return a.AsSpan().SequenceEqual(b.AsSpan());
+    }
+}

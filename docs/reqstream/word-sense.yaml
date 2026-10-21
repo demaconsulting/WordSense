@@ -132,7 +132,9 @@ sections:
           The system shall list, for every known word, its analyses ranked by probability, the probabilities summing to
           one and none left out, and, for each analysis whose senses the model scores, the senses ranked by their
           probability given the analysis, summing to one, so that a consumer can apply its own grouping of the senses,
-          and shall list no senses for an analysis whose senses the model does not score.
+          and shall list no senses for an analysis whose senses the model does not score, except that an analysis whose
+          lemma and part of speech have exactly one sense lists that sense with probability 1 even where the model
+          does not score it.
         tags: [system]
         justification: |
           A model that answers at the part-of-speech or the group level still knows how likely each analysis and each

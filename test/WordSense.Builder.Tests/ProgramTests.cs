@@ -281,6 +281,43 @@ public sealed class ProgramTests : IDisposable
     }
 
     /// <summary>
+    ///     A number option that is not a number, or is out of range, is a one-line error with exit code 1, not an
+    ///     unhandled exception with a stack trace.
+    /// </summary>
+    /// <param name="command">The command.</param>
+    /// <param name="option">The option.</param>
+    /// <param name="value">The value.</param>
+    /// <param name="expected">The text the message must contain.</param>
+    [Theory]
+    [InlineData("coverage", "--top", "nope", "--top must be an integer of at least 1, not 'nope'")]
+    [InlineData("coverage", "--top", "0", "--top must be an integer of at least 1, not '0'")]
+    [InlineData("generate-facts", "--sample", "x1", "--sample must be an integer of at least 1, not 'x1'")]
+    [InlineData("generate-facts", "--seed", "1.5", "--seed must be an integer, not '1.5'")]
+    [InlineData("audit-forms", "--max-error", "high", "--max-error must be a number, not 'high'")]
+    [InlineData("audit-forms", "--seed", "99999999999", "--seed must be an integer, not '99999999999'")]
+    [InlineData("import-oewn", "--threshold", "-3", "--threshold must be an integer of at least 0, not '-3'")]
+    public async Task WordSenseBuilder_Program_MalformedNumberOption_ReportsOneLineError(string command, string option, string value, string expected)
+    {
+        // Arrange
+        var text = _dir.Write("text/t.txt", "x\n");
+        string[] args = command switch
+        {
+            "coverage" => [command, "--text", Path.GetDirectoryName(text)!, option, value],
+            "import-oewn" => [command, "--input", text, option, value],
+            _ => [command, option, value],
+        };
+
+        // Act
+        var (code, _, error) = await RunAsync(args);
+
+        // Assert
+        Assert.Equal(1, code);
+        Assert.Contains(expected, error, StringComparison.Ordinal);
+        Assert.DoesNotContain("   at ", error, StringComparison.Ordinal);
+        Assert.Single(error.Split('\n', StringSplitOptions.RemoveEmptyEntries));
+    }
+
+    /// <summary>
     ///     A malformed option list is a usage error.
     /// </summary>
     /// <param name="option">The option that lacks a value.</param>

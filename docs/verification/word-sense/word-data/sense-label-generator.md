@@ -22,22 +22,24 @@ All scenarios below pass.
   speech with one sense is labeled with the part of speech name (`lemma#noun`).
 - **First synonym** (`Generate_UsesTheFirstSynonym`): a sense of a synset with a synonym takes the slug of the first
   synonym, and a synonym that slugs to the lemma itself is skipped.
-- **Hypernym head** (`Generate_NoSynonym_UsesTheHypernymHead`): a sense with no usable synonym takes the head lemma
-  of its hypernym.
+- **Hypernym head** (`Generate_NoSynonym_UsesTheHypernymHead`, `Generate_FirstHypernymMemberIsSelf_UsesNextMemberOfThatHypernym`):
+  a sense with no usable synonym takes the first usable member of its first hypernym synset; when the first member is
+  the lemma itself the next member of the same synset is used, not another hypernym.
 - **Duplicates** (`Generate_DuplicateLabels_GetNumericSuffixes`): two senses with the same slug are labeled `slug` and
   `slug-2` in inventory order; a third gets `slug-3`.
 - **Well-formed labels** (`Generate_LabelsAreWellFormedAndUniquePerLemma`): spaces, apostrophes, capitals and non-ASCII
   letters in a candidate give a label of lower-case ASCII letters, digits and hyphens, and no two labels of a lemma
   are equal.
-- **Existing labels are kept** (`Generate_ExistingLabels_AreKept`): curated and generated rows come back unchanged,
-  with their origin.
+- **Existing labels are kept** (`Generate_ExistingLabels_AreKept`, `Run_ExistingLabels_KeepValueAndOrigin`): curated and
+  generated rows come back unchanged, with their value and origin, exactly once in the written table.
 - **Never a used or retired label** (`Generate_NewSenseOfLemma_NeverTakesAnExistingOrRetiredLabel`): a new sense of a
   lemma whose slug equals a label in use, or the label of an old id of `sense_label_map`, receives a suffix.
 - **Source data change** (`Generate_ChangedSourceData_KeepsPublishedLabels`): after the synonym or hypernym of a sense
   has changed, a second run leaves its published label as it was.
 - **Project senses and groups** (`Generate_ProjectSenseAndMultiWordLemma_GetTheRightOrigin`,
   `Run_Slice_LabelsOneTokenSensesAndCreatesNoGroup`, `Run_ExistingGroup_IsKeptAndItsLabelStaysAvailable`,
-  `Slug_GivesLowerCaseAsciiWords`, `Generate_EqualExistingLabels_Throws`, `Run_MissingInputTable_Throws`): a sense without
+  `Slug_GivesLowerCaseAsciiWords`, `Generate_EqualExistingLabels_Throws`, `Run_MissingInputTable_Throws`,
+  `Run_UnreadableRows_ThrowInvalidDataWithLocation`): a sense without
   a key gets the origin `project`, a multi-word lemma gets no label, the run creates no group and leaves an existing one
   as it is, the label of a group (`lemma#group:label`, its own namespace) does not stop a sense from having the same
   label, and a damaged input throws.

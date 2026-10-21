@@ -309,6 +309,9 @@ reviews:
       - "src/DemaConsulting.WordSense/WordImage.Catalog.cs"
       - "src/DemaConsulting.WordSense/ImageFormat.cs"
       - "test/DemaConsulting.WordSense.Tests/WordLexiconTests.cs"
+      - "test/DemaConsulting.WordSense.Tests/LexiconFactTests.cs"
+      - "test/WordSense.Builder.Tests/ImageTests.cs"
+      - "test/WordSense.Builder.Tests/BuilderTests.cs"
 
   # WordSense-Core-WordSenseContracts Review (one per unit)
   - id: WordSense-Core-WordSenseContracts

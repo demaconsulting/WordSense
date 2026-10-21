@@ -25,6 +25,9 @@ All scenarios below pass.
   the form scopes are no longer declared (schema version 4, which adds the group `kind`; the committed schema loads as
   version 4).
 - **Damaged schema is rejected** (`Load_Damaged_Throws`): unsupported syntax, an unknown type, a dangling key or foreign
-  key, a relation whose inverse stores the same direction; the message names the line.
+  key, a relation whose inverse stores the same direction, a `schema_version` that is not a number or is not the
+  supported version; the message names the line.
+- **Lines are real** (`Load_VersionAndRelationDefects_ReportTheirLine`): the bad version and the inconsistent relation
+  pair are reported with the line of the offending key, not line 0.
 - **Missing file throws** (`Load_MissingFile_Throws`).
 - **Split line rewrite** (`WriteFileSplit_ReplacesOnlyThatLine`, `..._EmptyPlan_RoundTrips`).

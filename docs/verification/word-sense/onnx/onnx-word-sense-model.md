@@ -31,10 +31,11 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Lexicon-only words never touch model files** (`LexiconOnlyWords_NeverTouchesModelFiles`): `ClassifyAsync` on words
   with at most one sense, on a model whose directory does not exist, returns the lexicon answers without any ensure.
 - **Untrained ambiguous words need no model**
-  (`UntrainedAmbiguousWords_AnswerPartOfSpeechWithoutModelFiles`): `ClassifyAsync(["so", "will"])` on a model whose
-  directory does not exist returns for each word its lexicon analyses (every lemma and part of speech equally likely,
-  the first analysis selected) at the part of speech level, with no scored senses, no group or sense id and the
-  probability of the slot of the selected analysis as
+  (`UntrainedAmbiguousWords_AnswerPartOfSpeechWithoutModelFiles`): `ClassifyAsync(["They", "will", "record", "the",
+  "record", "."])` on a model whose directory does not exist returns for each `record` (a lemma without weights, with a
+  noun and a verb analysis) its lexicon analyses (every lemma and part of speech equally likely, the first analysis
+  selected) at the part of speech level, with no scored senses, no group or sense id and the probability of the slot of
+  the selected analysis as
   confidence, with no ensure and no first-sense guess; the same holds for every ambiguous word whose lemma has no
   trained weights, while a word with several senses and weights (`back`) ensures the files
   (`MissingDirectory_ThrowsFileNotFound`).

@@ -32,7 +32,8 @@ senses; several candidates may share a lemma and a part of speech (a slot, the u
    the number of its feature variants: a noun with one analysis and a verb with three variants are equally likely when
    the evidence is, not one in four and three in four. Candidates that have cue scores keep their own weights (the
    naive Bayes classes of the cue table already split the prior of a part of speech among their variants). The
-   probabilities sum to 1.
+   probabilities sum to 1. A weight never underflows to zero: it has a floor of 1e-300 before the normalization, so
+   every probability stays above 0 even for extreme scores.
 
 `Winner(probabilities)` returns the index of the largest probability and the lowest index on a tie; the classifier
 orders the slots by the sum of the probabilities of their analyses and the analyses of a slot by their own probability
@@ -42,7 +43,8 @@ confidence that the classifier reports is therefore greater than 0 and at most 1
 
 #### Error Handling
 
-A null analysis array throws `ArgumentNullException`. No numeric input produces a non-finite probability.
+A default (uninitialized) analysis array throws `ArgumentNullException`; `cues` is read and never modified. No numeric
+input produces a non-finite probability.
 
 #### Determinism and Thread Safety
 

@@ -48,7 +48,8 @@ sections:
                 title: >-
                   BertBaseCasedWordSenseModel shall wrap a FallbackWordSenseModel of its encoder model (primary) and a
                   BasicWordSenseModel (fallback), answer every ambiguous word that the encoder does not score with the
-                  complete result of the Basic model (the analyses chosen in context at the part of speech level), make
+                  complete result of the Basic model (the analyses chosen in context, at the part of speech level or at
+                  the sense level when the selected analysis has exactly one sense), make
                   EnsureModelAsync ensure the encoder files (the Basic model needs none) and make Dispose dispose both
                   models.
                 tags: [unit]

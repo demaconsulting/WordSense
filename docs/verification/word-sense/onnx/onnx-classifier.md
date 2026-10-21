@@ -27,7 +27,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Single analysis and single sense** (`SingleAnalysisSingleSense_AnswersTheSense`, `SingleSenseWord_DoesNotEncode`): a
   word with one analysis whose lemma and part of speech have one sense, a determiner such as `the` among them, is
   answered at the `Sense` level with that analysis (probability 1), that sense (probability 1), no group id (a group
-  never holds all the senses of its lemma and part of speech) and confidence 1, and the encoder is not asked for it.
+  never holds all the senses of its lemma and part of speech) and confidence 1, and the encoder is not asked for it. This
+  lexical singleton sense is listed with probability 1 but is not encoder-scored; it is the only sense that a result
+  lists without a scored lemma.
 - **Single analysis, several senses** (`SingleAnalysisSeveralSenses_AnswersPartOfSpeech`): a word with one analysis
   and several senses and no weights is answered at the `PartOfSpeech` level with that analysis, no scored senses, no ids
   and confidence 1.
@@ -90,11 +92,20 @@ All scenarios below pass on every platform and target framework of the CI matrix
   increment): a form such as `left` is answered
   with the senses of the analysis that its chooser picks from the sentence; `read` gets its tense features from the
   chooser, and the verb as a whole (both tenses) is the slot whose probability the confidence is built on; a chooser
-  margin below its threshold gives the `PartOfSpeech` level. The shipped weights carry the choosers of the forms whose
-  chooser rows cover every analysis (the builder trains them from `corpus/choosers`); the test that every form of the
-  lexicon whose analyses belong to several lemmas has a chooser (`EveryMultiLemmaForm_HasAChooser`) stays deferred until
-  the quota filling of the corpus gives every such form rows for each of its lemmas; until then a form without a
-  chooser is answered from the lexicon.
+  margin below its threshold gives the `PartOfSpeech` level.
+- **Form of a trained and an untrained lemma**
+  (`FormOfTrainedAndUntrainedLemma_ChooserPicksTrained_AnswersTheSense`,
+  `FormOfTrainedAndUntrainedLemma_ChooserPicksUntrained_AnswersPartOfSpeech`): when only one lemma of a form has
+  weights, the chooser still splits the probability between the lemmas. If it prefers the trained lemma, the answer is
+  at the level of its sense scores and the analyses of the untrained lemma share the rest of the probability and list no
+  scored senses. If it prefers the untrained lemma, the answer is at the `PartOfSpeech` level with no sense or group id,
+  the confidence is the probability of the selected slot (the label probability shared equally by the slots of the
+  untrained lemma) and no analysis lists scored senses.
+- **Form of several lemmas without a chooser** (`FormOfSeveralLemmasWithoutChooser_IsAnsweredFromTheLexicon`): the
+  encoder is not run and the form is answered from the lexicon alone, at the `PartOfSpeech` level without scored
+  senses. The shipped weights carry the choosers of the forms whose chooser rows cover every analysis (the builder
+  trains them from `corpus/choosers`); not every form of several lemmas has one yet, which is why this lexicon-only
+  answer exists.
 - **Words are returned as written**: the result array is parallel to the input, holds each word as given, and is
   case-insensitive in lookup (including the curly apostrophe).
 - **Empty list and argument validation** (`EmptyList_ReturnsEmpty`, `NullWords_Throws`, `NullElement_Throws`,

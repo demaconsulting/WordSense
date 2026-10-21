@@ -48,8 +48,9 @@ and decides the level of an answer from the lemma's own thresholds.
 - `WeightsBlob.Read`: decodes and validates the blob. It does not check the inventory hash against an image; it returns
   it, and `WeightedLemmaTable` checks it.
 - `WeightedLemmaTable.LoadEmbedded(assembly, resource, modelId, hiddenSize)`: reads the blob and resolves every sense
-  id against the word image; a different inventory hash, an unknown or duplicate sense or lemma, or a sense count that
-  differs from the weights is a load failure (`InvalidDataException`). Nothing is dropped.
+  id against the word image; a different inventory hash, an unknown or duplicate sense or lemma, a sense count that
+  differs from the weights, or a group threshold for a lemma none of whose senses is in a group is a load failure
+  (`InvalidDataException`). Nothing is dropped.
 - `FeatureExtractor.Center(vector, mean)`: the feature of a pooled vector.
 - Scoring:
   - `Scores` gives the fine scores of a lemma: for each sense the dot product of its row with the feature plus its
@@ -60,10 +61,11 @@ and decides the level of an answer from the lemma's own thresholds.
     the candidates' fine scores and sums the probabilities of the senses of each group (a sense in no group stands
     alone). The groups are ranked and their margin is the
     difference of the best two group scores; a single group has an infinite margin. No group rows are stored.
-  - `Candidates` ranks the senses of the lemma and part of speech of an analysis by the softmax of their fine
-    scores: the probabilities sum to one over the listed senses and equal probabilities keep inventory order. They become
-    the `Senses` of the `AnalysisCandidate` of that analysis (the probability of a sense given its analysis, the
-    renormalization within the analysis being done by the classifier).
+  - `Softmax` turns the fine scores of the candidate senses of a lemma into probabilities that sum to one. The
+    classifier ranks the senses of the lemma and part of speech of an analysis by them (`LemmaScores.Ranked` of
+    `OnnxClassifier`, which does the renormalization within the analysis): equal probabilities keep inventory order, and
+    they become the `Senses` of the `AnalysisCandidate` of that analysis (the probability of a sense given its
+    analysis).
   - `Confidence(margin, threshold)` is a monotonic function of the margin, bounded to 0 to 1, 0 for a non-numeric
     margin and 1 for an infinite one; the confidence of a result is the probability of its answer at its level (see
     _OnnxClassifier Unit Design_), which this function orders but does not replace.
@@ -78,7 +80,9 @@ and decides the level of an answer from the lemma's own thresholds.
 `InvalidDataException` for a missing resource, a model id or dimension that differs from the expected one, an unknown
 magic or a wrong version, a sparse flag, a corrupt, truncated, inconsistent or non-finite blob, a lemma with fewer than
 two senses, an empty or duplicate sense id, a negative threshold, a malformed UTF-8 lemma, a zero dimension, a count
-that disagrees with the data present, or trailing data. A feature of the wrong dimension is reported as a mismatch to
+that disagrees with the data present, or trailing data. The `LemmaWeights` constructor itself throws
+`ArgumentException` for a dimension that is not positive, shapes that do not match, non-finite values and a negative or
+non-finite threshold. A feature of the wrong dimension is reported as a mismatch to
 the caller, which then gives the word the lexicon-only answer.
 
 #### Dependencies

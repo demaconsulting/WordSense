@@ -56,10 +56,11 @@ public class LemmaWeightsTests
     [Fact]
     public void LemmaWeights_Constructor_InvalidShape_Throws()
     {
-        // Arrange / Act / Assert: one row only, a wrong weight count, a negative dimension, NaN and infinite values
+        // Arrange / Act / Assert: one row only, a wrong weight count, a zero or negative dimension, NaN and infinite values
         Assert.Throws<ArgumentException>(() => new LemmaWeights([1f], [0f], 1));
         Assert.Throws<ArgumentException>(() => new LemmaWeights([1f, 1f, 1f], [0f, 0f], 2));
         Assert.Throws<ArgumentException>(() => new LemmaWeights([], [0f, 0f], -1));
+        Assert.Throws<ArgumentException>(() => new LemmaWeights([], [0f, 0f], 0));
         Assert.Throws<ArgumentException>(() => new LemmaWeights([1f, float.NaN], [0f, 0f], 1));
         Assert.Throws<ArgumentException>(() => new LemmaWeights([1f, 1f], [0f, float.PositiveInfinity], 1));
         Assert.Throws<ArgumentNullException>(() => new LemmaWeights(null!, [0f, 0f], 1));

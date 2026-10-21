@@ -112,6 +112,24 @@ public sealed class ImageCompilerTests : IDisposable
     }
 
     /// <summary>
+    ///     A declared group that has no member in <c>group_sense</c> fails the compilation instead of being left out of
+    ///     the image silently.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_ImageCompiler_Build_GroupWithoutMembers_Fails()
+    {
+        // Arrange - the group is declared, and no sense is listed in it
+        var data = WriteData(_dir.Root, members: []);
+
+        // Act
+        var error = Assert.Throws<InvalidDataException>(() => ImageCompiler.Build(data));
+
+        // Assert
+        Assert.Contains("bank#group:depository", error.Message, StringComparison.Ordinal);
+        Assert.Contains("at least two senses", error.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
     ///     A group that mixes parts of speech fails the compilation.
     /// </summary>
     [Fact]

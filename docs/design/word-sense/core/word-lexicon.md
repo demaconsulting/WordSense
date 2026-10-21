@@ -91,9 +91,11 @@ If the embedded resource is missing or the image is corrupt (wrong magic or vers
 section or reference, a sense that names a group or respelling that does not exist, a duplicate sense id, a group id
 without the `#group:` marker or equal to a sense id, a group with
 fewer than two members or with all the senses of its lemma and part of speech, a group that mixes lemmas or parts of
-speech, or group members that disagree with the sense-to-group index), the first
+speech, a group that lists a sense twice, group members that disagree with the sense-to-group index, or a key index that
+is not in strict key order), the first
 access throws `InvalidDataException`. Because the lazy value caches the failure, every later access throws as well. The
-catalog sections report their own corruption on their first use in the same way.
+catalog sections are decoded and checked on their first use (the catalog checks include the order of the key index and
+that every sense that names a group is listed exactly once by that group); a corruption is reported in the same way.
 
 #### Dependencies
 

@@ -160,8 +160,13 @@ project).
 
 ### Published Evaluation and Suite
 
-The README model table is parsed and compared with the committed evaluation figures, so a published number that no
-longer matches the measurement fails the build (`WordSense_Readme_ModelTable_MatchesPublishedEvaluation`). The reviewed
+The README model table is compared with the generated table file `docs/build_notes/model-table.md`, so a README table
+that differs from the file fails the build (`ModelTable_Readme_MatchesGeneratedFile`), and the file has the header, the
+separator and one row for each of the three models (`ModelTable_GeneratedFile_HasRowForEachModel`). The Basic row of the
+file is also checked against a new measurement of the evaluator on the committed holdout set, for the sense, download,
+weights and needed cells only, because the timing cells depend on the machine
+(`WordSenseBuilder_ModelTable_BasicRow_MatchesEvaluation`); the encoder rows are written by the builder from measured
+values and are not re-measured by a test. The reviewed
 suite sentences carry the expected sense, group or part of speech and the expectation of each model (pass or known
 miss); the Basic, MiniLM and BertBaseCased test projects run every row against their model and fail when an expected
 pass no longer passes (`BasicSuite_ExpectedPasses_StillPass`, `MiniLMSuite_ExpectedPasses_StillPass`,

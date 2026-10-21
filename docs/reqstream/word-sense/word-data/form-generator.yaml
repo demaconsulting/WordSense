@@ -43,15 +43,18 @@ sections:
                   FormGenerator shall give identical output bytes for the same inputs (the committed entry tables,
                   the committed reviewed input, the lexicon lists and the Open English WordNet and
                   inflection-database files named by their SHA-256 pins), in an order that depends on nothing but
-                  those inputs, and shall refuse an input that does not match its pin.
+                  those inputs, and shall refuse an input that does not match its pin or that lists the same analysis
+                  twice (a spelling, an entry and features repeated in the reviewed input).
                 tags: [unit]
                 justification: |
                   Tables that cannot be regenerated from the committed inputs cannot be reviewed; rerunning the
-                  generator then shows any drift as a normal data diff.
+                  generator then shows any drift as a normal data diff. A repeated analysis would give a spelling two
+                  identical answers, so it is an error in the input and not something to remove silently.
                 tests:
                   - WordSenseBuilder_FormGenerator_Run_SameInputs_GiveIdenticalBytes
                   - WordSenseBuilder_FormGenerator_Run_ReorderedInput_GivesIdenticalBytes
                   - WordSenseBuilder_FormGenerator_Run_UnpinnedInput_IsRefused
+                  - WordSenseBuilder_FormGenerator_Run_RepeatedFrozenAnalysis_IsRefused
 
               - id: WordSense-WordData-FormGenerator-OwnEntries
                 title: >-

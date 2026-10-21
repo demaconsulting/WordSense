@@ -292,7 +292,7 @@ internal static partial class Program
     private static int RunCoverage(Dictionary<string, string> options, string corpus, TextWriter output)
     {
         var textDirectory = Path.GetFullPath(Require(options, "text"));
-        var topCount = options.TryGetValue("top", out var tp) ? int.Parse(tp, CultureInfo.InvariantCulture) : 100;
+        var topCount = IntOption(options, "top", 100, 1);
         var anchorsDirectory = Path.Join(corpus, "anchors");
         if (!Directory.Exists(anchorsDirectory))
         {
@@ -365,7 +365,7 @@ internal static partial class Program
         }
 
         var sha = options.TryGetValue("sha256", out var s) ? s : Data.OewnImporter.PinnedSha256;
-        var threshold = options.TryGetValue("threshold", out var t) ? int.Parse(t, CultureInfo.InvariantCulture) : Data.OewnImporter.DefaultSplitThreshold;
+        var threshold = IntOption(options, "threshold", Data.OewnImporter.DefaultSplitThreshold, 0);
         var overwrite = options.TryGetValue("overwrite", out var w) && string.Equals(w, "true", StringComparison.OrdinalIgnoreCase);
         var result = Data.OewnImporter.Import(Require(options, InputOption), data, Path.Join(data, "schema.yaml"), string.Equals(sha, "none", StringComparison.OrdinalIgnoreCase) ? null : sha, threshold, overwrite);
         output.Write(result.Render());
@@ -375,8 +375,8 @@ internal static partial class Program
     private static int RunGenerateFacts(Dictionary<string, string> options, string repository, string corpus, TextWriter output, TextWriter error)
     {
         var data = options.TryGetValue("data", out var d) ? Path.GetFullPath(d) : Path.Join(repository, "data");
-        var sample = options.TryGetValue("sample", out var sm) ? int.Parse(sm, CultureInfo.InvariantCulture) : Data.FactGenerator.DefaultSample;
-        var seed = options.TryGetValue("seed", out var sd) ? int.Parse(sd, CultureInfo.InvariantCulture) : Data.FactGenerator.DefaultSeed;
+        var sample = IntOption(options, "sample", Data.FactGenerator.DefaultSample, 1);
+        var seed = IntOption(options, "seed", Data.FactGenerator.DefaultSeed);
         var generated = Data.FactGenerator.Generate(data, corpus, seed, sample);
         var failures = Data.FactGenerator.Check(generated.Facts);
         var (checkedCount, withGerund, missing) = Data.FactGenerator.CheckIngEntries(data);
@@ -400,9 +400,9 @@ internal static partial class Program
     private static int RunAuditForms(Dictionary<string, string> options, string repository, TextWriter output, TextWriter error)
     {
         var data = options.TryGetValue("data", out var d) ? Path.GetFullPath(d) : Path.Join(repository, "data");
-        var sample = options.TryGetValue("sample", out var sm) ? int.Parse(sm, CultureInfo.InvariantCulture) : 300;
-        var seed = options.TryGetValue("seed", out var sd) ? int.Parse(sd, CultureInfo.InvariantCulture) : 20240601;
-        var maxError = options.TryGetValue("max-error", out var me) ? double.Parse(me, CultureInfo.InvariantCulture) : 0.01;
+        var sample = IntOption(options, "sample", 300);
+        var seed = IntOption(options, "seed", 20240601);
+        var maxError = NumberOption(options, "max-error", 0.01);
         if (sample <= 0)
         {
             throw new ArgumentException("The --sample value must be a positive number of rows per stratum.");
@@ -529,4 +529,49 @@ internal static partial class Program
     /// <exception cref="ArgumentException">Thrown when the option is missing.</exception>
     private static string Require(Dictionary<string, string> options, string name) =>
         options.TryGetValue(name, out var value) ? value : throw new ArgumentException($"The option --{name} is required. {Usage}");
+
+    /// <summary>
+    ///     Gets an integer option, or the default when it is absent.
+    /// </summary>
+    /// <param name="options">The options.</param>
+    /// <param name="name">The option name.</param>
+    /// <param name="fallback">The value when the option is absent.</param>
+    /// <param name="minimum">The smallest allowed value.</param>
+    /// <returns>The value.</returns>
+    /// <exception cref="ArgumentException">Thrown with a one-line message when the value is not an integer of at least <paramref name="minimum"/>.</exception>
+    internal static int IntOption(Dictionary<string, string> options, string name, int fallback, int minimum = int.MinValue)
+    {
+        if (!options.TryGetValue(name, out var text))
+        {
+            return fallback;
+        }
+
+        if (!int.TryParse(text, NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture, out var value) || value < minimum)
+        {
+            var limit = minimum == int.MinValue ? string.Empty : " of at least " + minimum.ToString(CultureInfo.InvariantCulture);
+            throw new ArgumentException($"The option --{name} must be an integer{limit}, not '{text}'.");
+        }
+
+        return value;
+    }
+
+    /// <summary>
+    ///     Gets a finite number option, or the default when it is absent.
+    /// </summary>
+    /// <param name="options">The options.</param>
+    /// <param name="name">The option name.</param>
+    /// <param name="fallback">The value when the option is absent.</param>
+    /// <returns>The value.</returns>
+    /// <exception cref="ArgumentException">Thrown with a one-line message when the value is not a finite number.</exception>
+    internal static double NumberOption(Dictionary<string, string> options, string name, double fallback)
+    {
+        if (!options.TryGetValue(name, out var text))
+        {
+            return fallback;
+        }
+
+        return double.TryParse(text, NumberStyles.Float, CultureInfo.InvariantCulture, out var value) && double.IsFinite(value)
+            ? value
+            : throw new ArgumentException($"The option --{name} must be a number, not '{text}'.");
+    }
 }

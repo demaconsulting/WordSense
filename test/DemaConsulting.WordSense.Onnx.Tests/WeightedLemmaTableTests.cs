@@ -200,6 +200,34 @@ public class WeightedLemmaTableTests
     }
 
     /// <summary>
+    ///     A group threshold for a lemma none of whose senses is in a group is an error, while the never threshold
+    ///     of such a lemma and a group threshold of a lemma with groups are accepted.
+    /// </summary>
+    [Fact]
+    public void WeightedLemmaTable_Constructor_GroupThresholdWithoutGroupedSenses_Throws()
+    {
+        // Arrange: a lemma with several senses and no group, and one with groups
+        var ungrouped = WordLexicon.Current.AllSenses()
+            .GroupBy(s => s.Lemma, StringComparer.Ordinal)
+            .First(g => Fixtures.Senses(g.Key).Length >= 2 && Fixtures.Senses(g.Key).All(s => s.GroupId is null))
+            .Key;
+        var finite = Fixtures.Lemma(ungrouped, fine: 1f, group: 0.5f);
+        var never = Fixtures.Lemma(ungrouped, fine: 1f, group: LemmaWeights.Never);
+        var grouped = Fixtures.Lemma("just", fine: 1f, group: 0.5f);
+
+        // Act
+        var ex = Assert.Throws<InvalidDataException>(() => new WeightedLemmaTable(Data(finite)));
+        var neverTable = new WeightedLemmaTable(Data(never));
+        var groupedTable = new WeightedLemmaTable(Data(grouped));
+
+        // Assert
+        Assert.Contains(ungrouped, ex.Message, StringComparison.Ordinal);
+        Assert.Contains("group threshold", ex.Message, StringComparison.Ordinal);
+        Assert.NotNull(neverTable.Find(ungrouped));
+        Assert.NotNull(groupedTable.Find("just"));
+    }
+
+    /// <summary>
     ///     A null weights object is rejected.
     /// </summary>
     [Fact]

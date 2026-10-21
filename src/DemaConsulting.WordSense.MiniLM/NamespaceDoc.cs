@@ -24,7 +24,8 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     <c>MiniLMWordSenseModel</c> composes its encoder model with the Basic model as the fallback (see
 ///     <c>FallbackWordSenseModel</c>). The encoder model scores the fine senses of the lemmas that this version has
 ///     weights for and answers them at the sense, group or part-of-speech level, whichever its per-lemma thresholds
-///     support; every other ambiguous word is answered by the Basic model at the part-of-speech level. A text that has no
+///     support; every other ambiguous word is answered by the Basic model, at the part-of-speech level (or at the sense
+///     level when its selected analysis has exactly one sense). A text that has no
 ///     trained lemma with several senses is classified without reading the model files, and a text that has one ensures
 ///     them on first use. The files are described in the repository at
 ///     https://github.com/demaconsulting/WordSense/tree/main/model/all-MiniLM-L6-v2-int8. The model identifier
@@ -66,7 +67,8 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     <c>Sense</c> level with confidence 1; a trained lemma by the encoder model at the <c>Sense</c>, <c>Group</c> or
 ///     <c>PartOfSpeech</c> level with the probability of the answer at that level as the confidence, and its ranked
 ///     senses listed in every analysis; every other known word by the Basic model at the <c>PartOfSpeech</c>
-///     level with the probability of its selected analysis as the confidence (not the scale of the encoder, so do not
+///     level (or the <c>Sense</c> level when its selected analysis has exactly one sense)
+///     with the probability of its selected analysis as the confidence (not the scale of the encoder, so do not
 ///     tune a threshold on it for another model), without scored senses. An unknown word has no
 ///     <c>Details</c>, the <c>None</c> level and confidence 0. A low confidence still carries the best part of speech.
 ///     </para>

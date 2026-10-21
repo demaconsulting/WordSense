@@ -32,8 +32,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Single analysis with many senses** (`..._SingleAnalysisWithManySenses_AnswersItWithConfidenceOne`): a word with one
   analysis and several senses is answered with that analysis at the part of speech level, without group or sense id,
   and confidence 1.
-- **Single analysis shares its array** (`..._SingleAnalysisWord_SharesItsAnalysesArray`): two results for the same word
-  with one analysis carry the same analyses (equal contents; the array is built once and shared).
+- **Single analysis shares its array** (`..._SingleAnalysisWord_SharesItsAnalysesArray`): two consecutive results for
+  the same word with one analysis carry the same analyses array (a cache hit). This checks the allocation
+  optimization of the design; it is not a requirement, because the cache may evict an entry.
 - **Ambiguous word always answers** (`..._AmbiguousWord_AlwaysAnswersWithProbability`): a word with several analyses
   has details and a confidence greater than 0, at least one over the number of lemmas and parts of speech and at most 1.
 - **Ambiguous word level** (`..._AmbiguousWord_AnswersPartOfSpeechLevel`): the answer states the level part of speech,
@@ -76,4 +77,5 @@ All scenarios below pass on every platform and target framework of the CI matrix
   time, also from many threads at once.
 - **Argument validation** (`..._NullWords_Throws`, `..._NullElement_Throws`): a null word list and a null word in the
   list throw.
-- **Cancelled token** (`..._Cancelled_Throws`): a cancelled token throws `OperationCanceledException`.
+- **Cancelled token** (`..._Cancelled_Throws`, `..._CancelledWhileReadingWords_Throws`): a cancelled token throws
+  `OperationCanceledException`, also when the token is cancelled while a lazy word sequence is read.

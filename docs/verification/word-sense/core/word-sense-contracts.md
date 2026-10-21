@@ -53,10 +53,12 @@ All scenarios below pass on every platform and target framework of the CI matrix
   preposition, conjunction, interjection, determiner and auxiliary; a modal or primary auxiliary lists `Auxiliary` as
   its last analysis.
 - **SenseInfo and SenseGroup records** (`SenseInfo_Construct_ExposesMembers`, `SenseInfo_ProjectSense_HasNoKey`,
-  `SenseInfo_SameValues_AreEqual`, `SenseGroup_Construct_ExposesMembers`): a sense exposes its id, group id (null when
+  `SenseInfo_SameValues_AreEqual`, `SenseGroup_Construct_ExposesMembers`, `SenseGroup_SameMembers_AreEqual`): a sense
+  exposes its id, group id (null when
   the sense is in no group), lemma,
   part of speech, key and respelling; a project sense has a null key; equal values are equal; a group exposes its
-  member sense ids.
+  member sense ids, and two groups are equal when their values and the sequence of their member ids are equal (content
+  and order, with equal hash codes), not merely when they share the same array.
 - **Fallback uses the primary result when it scored senses**
   (`FallbackWordSenseModel_PrimaryScoredSenses_UsesPrimary`): for a word whose primary result has a selected analysis
   with scored senses, or the level group or sense, the composite returns exactly the primary result (the same analyses,
@@ -66,9 +68,13 @@ All scenarios below pass on every platform and target framework of the CI matrix
   composite returns the complete fallback result; in a list with both kinds of word each position takes its own
   result, and no result is a mixture of the two.
 - **Fallback ensures and disposes both models**
-  (`FallbackWordSenseModel_EnsureModelAsync_EnsuresBoth`, `FallbackWordSenseModel_Dispose_DisposesBothOnce`): one
+  (`FallbackWordSenseModel_EnsureModelAsync_EnsuresBoth`,
+  `FallbackWordSenseModel_EnsureModelAsync_PrimaryFails_StillEnsuresFallback`,
+  `FallbackWordSenseModel_Dispose_DisposesBothOnce`): one
   ensure call starts the ensure of both models with the same mirror before either completes and completes when both
-  have; disposing twice disposes each model once, and an ensure or a classification after the disposal throws
+  have; when the primary model fails (by throwing before it returns a task, or by a faulted task) the fallback model is
+  still ensured and the failure is reported afterwards; disposing twice disposes each model once, and an ensure or a
+  classification after the disposal throws
   `ObjectDisposedException`.
 - **Fallback validates its arguments and the parallel results**
   (`FallbackWordSenseModel_ClassifyAsync_InvalidArguments_Throw`, `FallbackWordSenseModel_ClassifyAsync_ResultNotParallel_Throws`):

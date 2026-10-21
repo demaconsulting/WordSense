@@ -57,8 +57,12 @@ All scenarios below pass on every platform and target framework of the CI matrix
   and the reader applies the same rule.
 - **Resolution at load** (`WeightedLemmaTable_Constructor_KnownSenses_AreFoundById`,
   `OtherInventoryHash_ThrowsNamingBothHashes`, `UnknownSense_Throws`, `DuplicateSense_Throws`, `DuplicateLemma_Throws`,
-  `SenseCountMismatch_Throws`): every sense of the weights is found in the word image by id; another inventory hash (the
-  message names both hashes), an unknown sense, a duplicate sense or lemma and a sense count mismatch each throw.
+  `SenseCountMismatch_Throws`, `GroupThresholdWithoutGroupedSenses_Throws`): every sense of the weights is found in the
+  word image by id; another inventory hash (the
+  message names both hashes), an unknown sense, a duplicate sense or lemma, a sense count mismatch and a group
+  threshold for a lemma none of whose senses is in a group each throw.
+- **Weight shapes** (`LemmaWeights_Constructor_InvalidShape_Throws`): a dimension that is zero or negative, one row,
+  a mismatching weight count and non-finite values are rejected with `ArgumentException`.
 - **Embedded weights are checked on load** (`WeightedLemmaTable_LoadEmbedded_WrongModelId_Throws`): weights trained for
   another model id, another dimension or another inventory are refused with `InvalidDataException`, and a missing
   resource is reported.

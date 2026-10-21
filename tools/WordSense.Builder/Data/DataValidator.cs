@@ -369,6 +369,12 @@ internal sealed partial class DataValidator
             {
                 return "Feature items must be sorted and unique.";
             }
+
+            // Sorted items with one name twice (Case=Acc+Case=Nom) are well ordered but contradict themselves
+            if (i > 0 && string.Equals(items[i - 1].Split('=')[0], parts[0], StringComparison.Ordinal))
+            {
+                return $"The feature '{parts[0]}' is named more than once.";
+            }
         }
 
         return null;

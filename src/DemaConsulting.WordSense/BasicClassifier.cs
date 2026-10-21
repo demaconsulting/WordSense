@@ -42,8 +42,9 @@ namespace DemaConsulting.WordSense;
 ///     (a small thread-safe cache), so classifying common words does not allocate it again.
 ///     </para>
 ///     <para>
-///     The classifier holds no mutable state, so one instance may be used from many threads at once, and the result
-///     depends only on the input words. It is internal: <see cref="BasicWordSenseModel"/> delegates to it.
+///     The classifier holds no mutable state except that cache of immutable entries, so one instance may be used from
+///     many threads at once, and the result depends only on the input words. It is internal:
+///     <see cref="BasicWordSenseModel"/> delegates to it.
 ///     </para>
 /// </remarks>
 internal sealed class BasicClassifier
@@ -100,10 +101,18 @@ internal sealed class BasicClassifier
     public Task<ClassifyResult[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(words);
-        var list = words.ToList();
-        if (list.Any(w => w is null))
+        cancellationToken.ThrowIfCancellationRequested();
+        var list = new List<string>();
+        foreach (var word in words)
         {
-            throw new ArgumentException("A word must not be null.", nameof(words));
+            // A long or lazy sequence stays cancelable while it is materialized
+            cancellationToken.ThrowIfCancellationRequested();
+            if (word is null)
+            {
+                throw new ArgumentException("A word must not be null.", nameof(words));
+            }
+
+            list.Add(word);
         }
 
         cancellationToken.ThrowIfCancellationRequested();

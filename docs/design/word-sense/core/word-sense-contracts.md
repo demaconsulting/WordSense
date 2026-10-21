@@ -77,7 +77,8 @@ model for another without code changes, and the composite `FallbackWordSenseMode
 - `SenseGroup(GroupId, Lemma, PartOfSpeech, SenseIds, Respelling)`: a sealed record that describes a group of senses of
   one lemma and part of speech; `GroupId` is `lemma#group:label`, in a namespace of its own that can never equal a
   sense id; `SenseIds` is an immutable array in inventory order with at least two senses and never all the senses of
-  its lemma and part of speech, and `Respelling` is optional.
+  its lemma and part of speech, and `Respelling` is optional. Its equality is by value and compares `SenseIds` as a
+  sequence (content and order), with a hash code that is consistent with it.
 - `IWordSenseModel : IDisposable`: `EnsureModelAsync(MirrorOptions? mirror, CancellationToken)` prepares the model
   (files, download). `ClassifyAsync(IEnumerable<string> words, CancellationToken)` returns `Task<ClassifyResult[]>`
   with one result per input word in input order; empty input gives an empty array. The input is one running text whose
@@ -104,9 +105,12 @@ whether an id is null: a result at the `PartOfSpeech` level is a valid answer th
 
 `FallbackWordSenseModel` implements `IWordSenseModel` as follows:
 
-- `EnsureModelAsync(mirror, token)`: throws `ObjectDisposedException` when disposed; otherwise starts the ensure of
-  both models with the same mirror and token and completes when both have completed (`Task.WhenAll`), so both are
-  ensured concurrently; a failure of either is a failure of the call.
+- `EnsureModelAsync(mirror, token)`: throws `ObjectDisposedException` from the call when disposed; otherwise starts
+  the ensure of
+  both models with the same mirror and token (a model that throws before it returns a task is treated like one that
+  returns a faulted task, so the other model is always started too) and completes when both have completed
+  (`Task.WhenAll`), so both are ensured concurrently; a failure of either is a failure of the call, reported after both
+  ran.
 - `ClassifyAsync(words, token)`: an async method, so every exception below is reported through the returned task
   (`EnsureModelAsync` throws `ObjectDisposedException` from the call). It throws `ObjectDisposedException` when
   disposed, `ArgumentNullException` for a null list

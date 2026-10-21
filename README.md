@@ -18,7 +18,7 @@ word, or only a noun. Every word is looked up in an embedded dictionary of over 
 has several analyses does a model choose from the sentence: the `Basic` model, which is part of the core package (a
 small statistical tagger that needs nothing else, no download and no ONNX Runtime, and answers with the part of speech),
 or an ONNX encoder package (`MiniLM` or `BertBaseCased`) that runs on ONNX Runtime and scores the fine senses of the
-words it was trained for. In this version the encoders know 775 lemmas (the senses appendix lists them); every other
+words it was trained for. In this version the encoders know 826 lemmas (the senses appendix lists them); every other
 ambiguous word is answered by the `Basic` model at the part-of-speech level, and more words follow in later versions.
 
 ## Features
@@ -201,7 +201,9 @@ the sense level
 unless its lemma and part of speech have a single sense. The modal and helping verbs (`will`, `can`, `is`, `have`) have
 an `Auxiliary` analysis. A word that is not in the dictionary has `IsKnown` false, `Details` of `null`, the level
 `None` and a confidence of 0.
-Tokenize the text yourself, one sentence per call: punctuation is a token of its own. See the
+Tokenize the text yourself, and classify one sentence per call where you can: punctuation is a token of its own, and a
+call may hold several sentences (Basic splits them at `.`, `!` and `?`; an encoder reads the whole list as one text).
+See the
 [user guide][link-user-guide] for tokenizing, confidence thresholds, mirrors, disposal and threading.
 
 ## Choosing a model
@@ -223,8 +225,9 @@ Tokenize the text yourself, one sentence per call: punctuation is a token of its
 
 - ⚡ **Basic** (core package, no download, 0.11 ms a sentence): the part of speech of every word, and the sense of a
   word that has one. Use it when the part of speech is all you need, and as the fallback of the other two.
-- 🎯 **BertBaseCased** (104 MiB download, about 8 ms a sentence): the model for **fine senses**. For the 775 trained
-  lemmas it commits to a fine sense on 15.7% of the real test sentences (17.0% of the SemCor words) and is right in 94.2%
+- 🎯 **BertBaseCased** (104 MiB download, about 8 ms a sentence): the model for **fine senses**. For the 826 trained
+  lemmas it commits to a fine sense on 15.7% of the real test sentences (17.0% of the SemCor words, the SemCor subset of
+  775 of those lemmas) and is right in 94.2%
   (86.7% on SemCor) of those answers; its most probable sense is right for 60.9% of the SemCor words, about as often as
   always choosing the most frequent sense (60.7%, an optimistic baseline).
 - ⚖️ **MiniLM** (22 MiB download, about 1.5 ms a sentence): mostly part of speech and groups. It commits to a fine
@@ -244,7 +247,8 @@ Tokenize the text yourself, one sentence per call: punctuation is a token of its
 - *UD-EWT test part of speech*: the same on the test file of the English EWT treebank (19,472 scored tokens), mapped to
   the conventions of the dictionary (possessive determiners, the copula *be*, phrasal-verb particles, prepositions
   before gerunds); the treebank is downloaded for evaluation only and is never committed.
-- *Independent sense evaluation (SemCor)*: the 31,490 single-word annotations of the 775 trained lemmas in SemCor 3.0 (the
+- *Independent sense evaluation (SemCor)*: the 31,490 single-word annotations of the 775 of the 826 trained lemmas that
+  SemCor 3.0 can evaluate (the
   sense-annotated Brown Corpus, WordNet 3.0 keys mapped to the senses of the catalog; 97.7% of the keys map): the share
   answered at the sense level and the precision of those answers, and the *fine top-1*, the share of the words whose most
   probable sense is right. For comparison, always choosing the first (most frequent) sense of the right lemma and part of
@@ -306,6 +310,9 @@ reports):
   stricter.
 - **Open work items of the code base:** the clean-up of the static analysis findings, the hardening of the word image
   reader, typed exceptions for model and file failures, and the placement of `EnsureModelAsync` and `MirrorOptions`.
+- **The formal review backlog.** The first formal review of all 33 review-sets left compliance and hardening items open
+  (atomic requirements, test structure, packaging tests and the decomposition of the build-time tool); they are listed in
+  `docs/build_notes/formal-review-backlog.md`.
 
 ## Documentation
 

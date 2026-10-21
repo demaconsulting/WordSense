@@ -55,6 +55,7 @@ public sealed class DataValidatorTests : IDisposable
     [InlineData("Tense=Fut", false)]
     [InlineData("VerbForm=Part+Tense=Past", false)]
     [InlineData("Tense", false)]
+    [InlineData("Tense=Past+Tense=Pres", false)]
     public void WordSenseBuilder_DataValidator_Validate_SenseTableFeatures_AreChecked(string features, bool valid)
     {
         // Arrange
@@ -706,6 +707,33 @@ public sealed class DataValidatorTests : IDisposable
 
         // Act / Assert
         AssertViolation(data, "label");
+    }
+
+    /// <summary>
+    ///     A duplicated group id and two senses with one label are reported as violations, with and without a baseline,
+    ///     and never thrown.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_DataValidator_Validate_DuplicateIds_AreReportedNotThrown()
+    {
+        // Arrange - the group row of the first group is written twice; both nouns of bass are called fish
+        var data = LabeledWithThreeBassNouns();
+        var baseline = LabeledWithThreeBassNouns("baseline");
+        WriteBassGroup(data, "high", "n", "oewn-bass__1.05.00..", "oewn-bass__1.05.01..");
+        var groupFile = Path.Join(data, "sense_group", "b.tsv");
+        var groupLines = File.ReadAllLines(groupFile, Encoding.UTF8);
+        DataFixture.Write(data, "sense_group/b.tsv", string.Join('\n', groupLines.Append(groupLines[1])) + "\n");
+        DataFixture.Replace(data, "sense_label/b.tsv", "oewn-bass__1.10.00..\tnoun\tgenerated", "oewn-bass__1.10.00..\tfish\tgenerated");
+
+        // Act
+        var withoutBaseline = DataValidator.Validate(data);
+        var withBaseline = DataValidator.Validate(data, baseline);
+
+        // Assert
+        Assert.False(withoutBaseline.IsValid);
+        Assert.Contains("[unique]", Messages(withoutBaseline), StringComparison.Ordinal);
+        Assert.False(withBaseline.IsValid);
+        Assert.Contains("[unique]", Messages(withBaseline), StringComparison.Ordinal);
     }
 
     /// <summary>

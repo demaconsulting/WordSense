@@ -22,9 +22,10 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     per-lemma thresholds support: the <see cref="SenseLevel.Sense"/> level with the sense id, the
 ///     <see cref="SenseLevel.Group"/> level with the group id, or the <see cref="SenseLevel.PartOfSpeech"/> level; the
 ///     ranked senses of every analysis are listed whatever the level. A word with one analysis and one sense is answered
-///     at the <see cref="SenseLevel.Sense"/> level. Every other ambiguous word is answered by the Basic fallback at the
-///     <see cref="SenseLevel.PartOfSpeech"/> level: it chooses the analysis (the part of speech) from the context, the
-///     analyses of the result carry its probabilities, and no sense is scored. The composition rules (which model answers a word,
+///     at the <see cref="SenseLevel.Sense"/> level. Every other ambiguous word is answered by the Basic fallback: it
+///     chooses the analysis (the part of speech) from the context, the analyses of the result carry its probabilities,
+///     no sense is scored, and the level is <see cref="SenseLevel.PartOfSpeech"/>, or <see cref="SenseLevel.Sense"/> when
+///     its selected analysis has exactly one sense. The composition rules (which model answers a word,
 ///     and that a result always belongs completely to one of the two models) are those of
 ///     <see cref="FallbackWordSenseModel"/>. <see cref="ClassifyAsync"/> needs the encoder files only for a text that
 ///     contains a trained lemma with several senses (it ensures them on first use), and never downloads a file or fails
@@ -155,16 +156,24 @@ public sealed class MiniLMWordSenseModel : IWordSenseModel
         _model.EnsureModelAsync(mirror, cancellationToken);
 
     /// <summary>
-    ///     Classifies every word of a tokenized sentence or text; every ambiguous word is answered by the Basic fallback model.
+    ///     Classifies every word of a tokenized sentence or text; the encoder scores the senses of the lemmas it was
+    ///     trained for, and the Basic fallback model answers every other word.
     /// </summary>
     /// <param name="words">The words in order, including punctuation tokens, each as its own element.</param>
     /// <param name="cancellationToken">A token that cancels the operation.</param>
     /// <returns>A non-null array parallel to <paramref name="words"/>; empty for an empty list.</returns>
     /// <remarks>
-    ///     A word with one analysis and one sense is answered by the encoder model at the
-    ///     <see cref="SenseLevel.Sense"/> level and every other known word by the Basic model at the
-    ///     <see cref="SenseLevel.PartOfSpeech"/> level, as described in the remarks of the type. The call needs no model
-    ///     file. An unknown word has no analysis, the level <see cref="SenseLevel.None"/> and confidence 0.
+    ///     <para>
+    ///     A word with one analysis and one sense is answered by the encoder model at the <see cref="SenseLevel.Sense"/>
+    ///     level without running the encoder. A word whose lemma has trained weights and several senses is answered by the
+    ///     encoder at the sense, group or part-of-speech level its thresholds allow, with the ranked senses of its
+    ///     analyses; the first call with such a word ensures the model files itself (it may download them, see
+    ///     <see cref="EnsureModelAsync"/>). A word whose lemma has no trained weights is answered by the Basic model: at
+    ///     the <see cref="SenseLevel.PartOfSpeech"/> level with the probabilities of its analyses and no scored senses, or
+    ///     at the <see cref="SenseLevel.Sense"/> level when its selected analysis has exactly one sense, which the Basic
+    ///     model names without scoring. A text without a trained lemma needs no model file. An unknown word has no
+    ///     analysis, the level <see cref="SenseLevel.None"/> and confidence 0.
+    ///     </para>
     /// </remarks>
     /// <exception cref="ArgumentNullException">Thrown when the list is null.</exception>
     /// <exception cref="ArgumentException">Thrown when an element is null.</exception>

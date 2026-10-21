@@ -104,7 +104,9 @@ namespace DemaConsulting.WordSense;
 ///     (<c>'</c> or the curly U+2019) and hyphens, so a contraction (<c>don't</c>), a possessive (<c>dog's</c>) and a
 ///     hyphenated word (<c>well-known</c>) are one token; every other non-space character (punctuation, quotes, dashes,
 ///     symbols) is a token of its own; a decimal or a number with thousands separators (<c>3.5</c>, <c>1,000</c>) is
-///     best kept as one token. One sentence per call. The reference tokenizer in the example below does exactly
+///     best kept as one token. Classify one sentence per call where you can: a call may hold several sentences (the
+///     Basic model segments the list at the tokens <c>.</c>, <c>!</c> and <c>?</c>), but an encoder model reads the
+///     whole list as one text. The reference tokenizer in the example below does exactly
 ///     that (it is verified by a unit test of this repository), with one limitation: it knows nothing about
 ///     abbreviations, so <c>Mr.</c> and <c>U.S.</c> are split at every period (see the table). The tokens are not trimmed or lower-cased by you; the
 ///     models do that for the lookup.

@@ -134,15 +134,12 @@ internal sealed partial class WordImage
     }
 
     /// <summary>
-    ///     Decodes the catalog when that has not happened yet and checks it fully, including the order of the key index
-    ///     (for tests and tools; the reader itself checks the structure and the order of the ids only).
+    ///     Decodes the catalog when that has not happened yet, which checks it fully (for tests and tools): the reader
+    ///     validates the structure, the order of the ids, the groups and the order of the key index when it first reads
+    ///     the catalog.
     /// </summary>
     /// <exception cref="InvalidDataException">Thrown when the catalog is corrupt.</exception>
-    public void ValidateCatalog()
-    {
-        var catalog = GetCatalog();
-        catalog.ValidateKeyOrder();
-    }
+    public void ValidateCatalog() => _ = GetCatalog();
 
     private Catalog GetCatalog()
     {
@@ -323,7 +320,7 @@ internal sealed partial class WordImage
                 shared == 0 ? null : _respellings[(int)shared - 1]);
         }
 
-        public void ValidateKeyOrder()
+        private void ValidateKeyOrder()
         {
             byte[]? previous = null;
             foreach (var index in _keyIndex)
@@ -478,6 +475,7 @@ internal sealed partial class WordImage
             }
 
             var grouped = 0;
+            var listed = new bool[_senseCount];
             for (var g = 0; g < groupCount; g++)
             {
                 if (g > 0 && CompareBytes(_groupIdBytes.AsSpan((int)_groupIdOffset[g - 1], (int)(_groupIdOffset[g] - _groupIdOffset[g - 1])), _groupIdBytes.AsSpan((int)_groupIdOffset[g], (int)(_groupIdOffset[g + 1] - _groupIdOffset[g]))) >= 0)
@@ -501,6 +499,12 @@ internal sealed partial class WordImage
                         throw Bad("the members of a group do not agree with the senses");
                     }
 
+                    if (listed[member])
+                    {
+                        throw Bad("a group lists a sense twice");
+                    }
+
+                    listed[member] = true;
                     block = _senseBlock[member];
                 }
 
@@ -536,6 +540,8 @@ internal sealed partial class WordImage
             {
                 throw Bad("the key index does not list the keyed senses");
             }
+
+            ValidateKeyOrder();
         }
     }
 }

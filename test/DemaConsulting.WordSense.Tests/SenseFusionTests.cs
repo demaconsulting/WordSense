@@ -100,6 +100,48 @@ public class SenseFusionTests
     }
 
     /// <summary>
+    ///     A candidate whose weight would underflow keeps a probability above zero, and the probabilities sum to one.
+    /// </summary>
+    [Fact]
+    public void SenseFusion_Fuse_ExtremeScores_StayAboveZeroAndSumToOne()
+    {
+        // Arrange
+        var posteriors = new double[PosTag.Count];
+        posteriors[PosTag.Verb] = 1.0;
+        var probabilities = new double[3];
+
+        // Act
+        SenseFusion.Fuse(
+            posteriors,
+            [TestTables.ReadPast, TestTables.ReadPres, TestTables.ReadPastParticiple],
+            [-1e6, 0, -1e9],
+            1.5,
+            1.0,
+            probabilities);
+
+        // Assert
+        Assert.All(probabilities, p => Assert.True(p > 0 && double.IsFinite(p)));
+        Assert.Equal(1.0, probabilities.Sum(), 9);
+        Assert.Equal(1, SenseFusion.Winner(probabilities));
+    }
+
+    /// <summary>
+    ///     A default analysis array is rejected with an argument-null error and the cue scores are not modified.
+    /// </summary>
+    [Fact]
+    public void SenseFusion_Fuse_DefaultAnalyses_Throws()
+    {
+        // Arrange
+        var posteriors = new double[PosTag.Count];
+        var cues = new[] { 1.0 };
+        var probabilities = new double[1];
+
+        // Act and Assert
+        Assert.Throws<ArgumentNullException>(() => SenseFusion.Fuse(posteriors, default, cues, 1.5, 0.5, probabilities));
+        Assert.Equal(1.0, cues[0]);
+    }
+
+    /// <summary>
     ///     Equal probabilities pick the first candidate.
     /// </summary>
     [Fact]

@@ -27,8 +27,9 @@ namespace DemaConsulting.WordSense;
 ///     <para>
 ///     The composite owns both models: <see cref="EnsureModelAsync"/> ensures both (concurrently, with the same mirror),
 ///     and <see cref="Dispose"/> disposes both. Disposal is idempotent and thread-safe; after it, both methods throw
-///     <see cref="ObjectDisposedException"/>. If either model throws, the call throws. The result array is parallel to the
-///     input, as for every model.
+///     <see cref="ObjectDisposedException"/>. If either model throws, the call throws; <see cref="EnsureModelAsync"/>
+///     always runs the ensure step of both models first, even when one of them fails, and then reports the failure.
+///     The result array is parallel to the input, as for every model.
 ///     </para>
 /// </remarks>
 /// <example>
@@ -67,7 +68,15 @@ public sealed class FallbackWordSenseModel : IWordSenseModel
     public Task EnsureModelAsync(MirrorOptions? mirror = null, CancellationToken cancellationToken = default)
     {
         ObjectDisposedException.ThrowIf(Volatile.Read(ref _disposed) != 0, this);
-        return Task.WhenAll(_primary.EnsureModelAsync(mirror, cancellationToken), _fallback.EnsureModelAsync(mirror, cancellationToken));
+        return EnsureBothAsync(mirror, cancellationToken);
+    }
+
+    private async Task EnsureBothAsync(MirrorOptions? mirror, CancellationToken cancellationToken)
+    {
+        // Both models always get to run their ensure step, even when one of them fails synchronously or asynchronously
+        var primaryTask = StartEnsure(_primary, mirror, cancellationToken);
+        var fallbackTask = StartEnsure(_fallback, mirror, cancellationToken);
+        await Task.WhenAll(primaryTask, fallbackTask).ConfigureAwait(false);
     }
 
     /// <summary>
@@ -126,6 +135,18 @@ public sealed class FallbackWordSenseModel : IWordSenseModel
         finally
         {
             _fallback.Dispose();
+        }
+    }
+
+    private static Task StartEnsure(IWordSenseModel model, MirrorOptions? mirror, CancellationToken cancellationToken)
+    {
+        try
+        {
+            return model.EnsureModelAsync(mirror, cancellationToken);
+        }
+        catch (Exception ex)
+        {
+            return Task.FromException(ex);
         }
     }
 

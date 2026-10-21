@@ -70,8 +70,9 @@ internal sealed record LabelRun(int Kept, int Generated, int Suffixed, int Fallb
 /// <remarks>
 ///     <para>
 ///     The public id of a sense is <c>lemma#label</c>. A label is the first usable slug of: the part of speech name
-///     (the only sense of its lemma and part of speech), the first synonym of the synset, the head lemma of the first
-///     hypernym, the part of speech name; a numeric suffix makes it unique among the labels of the lemma. Labels that
+///     (the only sense of its lemma and part of speech), the first synonym of the synset, the first usable member of the
+///     first hypernym synset that has one (a member whose slug is empty or the slug of the lemma itself is skipped), the
+///     part of speech name; a numeric suffix makes it unique among the labels of the lemma. Labels that
 ///     exist, and the labels of the old ids of the id map, are never changed, removed or taken again. Every order that
 ///     could change the result is fixed by the data (sense ids and synset ids by their UTF-8 bytes, the tag count),
 ///     never by the order in which rows were read, so the same data always gives the same files.
@@ -110,42 +111,18 @@ internal static class SenseLabelGenerator
         RequireFolder(dataDirectory, entryTable);
         RequireFolder(dataDirectory, senseTable);
         RequireFolder(dataDirectory, schema.Table("synset_relation"));
-        var entries = DataTables.Read(dataDirectory, entryTable).ToDictionary(r => r[0], r => r, StringComparer.Ordinal);
-        var senseRows = DataTables.Read(dataDirectory, senseTable).ToList();
-        var senses = new List<LabelSense>(senseRows.Count);
-        foreach (var row in senseRows)
+        Dictionary<string, string[]> entries;
+        List<string[]> senseRows;
+        LabelInputs inputs;
+        try
         {
-            if (!entries.TryGetValue(row[2], out var entry))
-            {
-                throw new InvalidDataException($"The sense '{row[0]}' refers to the entry '{row[2]}', which does not exist.");
-            }
-
-            senses.Add(new LabelSense(row[0], row[1], entry[1], entry[2], int.Parse(entry[4], CultureInfo.InvariantCulture), row[3]));
+            (entries, senseRows, inputs) = Load(dataDirectory, schema);
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or DecoderFallbackException)
+        {
+            throw new InvalidDataException($"The tables in {dataDirectory} cannot be read: {ex.Message}", ex);
         }
 
-        var hypernyms = new Dictionary<string, List<string>>(StringComparer.Ordinal);
-        foreach (var row in DataTables.Read(dataDirectory, schema.Table("synset_relation")).Where(r => r[1] == "hypernym"))
-        {
-            if (!hypernyms.TryGetValue(row[0], out var list))
-            {
-                hypernyms[row[0]] = list = [];
-            }
-
-            list.Add(row[2]);
-        }
-
-        var labels = DataTables.Read(dataDirectory, schema.Table("sense_label")).ToList();
-        var retired = DataTables.Read(dataDirectory, schema.Table("sense_label_map")).Select(r => r[0]).ToList();
-        var counts = DataTables.Read(dataDirectory, schema.Table("sense_frequency"))
-            .ToDictionary(r => r[0], r => int.Parse(r[1], CultureInfo.InvariantCulture), StringComparer.Ordinal);
-        var posNames = schema.Vocabulary("pos");
-        var inputs = new LabelInputs(
-            senses,
-            hypernyms.ToDictionary(p => p.Key, p => (IReadOnlyList<string>)p.Value, StringComparer.Ordinal),
-            labels,
-            retired,
-            counts,
-            posNames);
         var output = Generate(inputs);
 
         // Everything is computed in memory first, so a failure leaves the files as they were
@@ -161,9 +138,81 @@ internal static class SenseLabelGenerator
         }
 
         var target = outputDirectory ?? dataDirectory;
-        DataTables.Write(target, schema.Table("sense_label"), [.. labels, .. output.Rows], resolver);
-        return new LabelRun(labels.Count, output.Rows.Count, output.Suffixed, output.Fallbacks);
+        DataTables.Write(target, schema.Table("sense_label"), [.. inputs.Labels, .. output.Rows], resolver);
+        return new LabelRun(inputs.Labels.Count, output.Rows.Count, output.Suffixed, output.Fallbacks);
     }
+
+    // Reads the tables the generator needs; a row of the wrong width or a number that cannot be read is reported with the
+    // file and the line instead of surfacing as an index or format exception
+    private static (Dictionary<string, string[]> Entries, List<string[]> SenseRows, LabelInputs Inputs) Load(string dataDirectory, DataSchema schema)
+    {
+        var entries = new Dictionary<string, string[]>(StringComparer.Ordinal);
+        var tokenCounts = new Dictionary<string, int>(StringComparer.Ordinal);
+        foreach (var (path, line, row) in ReadRows(dataDirectory, schema.Table("entry")))
+        {
+            entries[row[0]] = row;
+            tokenCounts[row[0]] = ParseCount(row[4], path, line);
+        }
+
+        var senseRows = ReadRows(dataDirectory, schema.Table("sense")).Select(r => r.Row).ToList();
+        var senses = new List<LabelSense>(senseRows.Count);
+        foreach (var row in senseRows)
+        {
+            if (!entries.TryGetValue(row[2], out var entry))
+            {
+                throw new InvalidDataException($"The sense '{row[0]}' refers to the entry '{row[2]}', which does not exist.");
+            }
+
+            senses.Add(new LabelSense(row[0], row[1], entry[1], entry[2], tokenCounts[row[2]], row[3]));
+        }
+
+        var hypernyms = new Dictionary<string, List<string>>(StringComparer.Ordinal);
+        foreach (var (_, _, row) in ReadRows(dataDirectory, schema.Table("synset_relation")).Where(r => r.Row[1] == "hypernym"))
+        {
+            if (!hypernyms.TryGetValue(row[0], out var list))
+            {
+                hypernyms[row[0]] = list = [];
+            }
+
+            list.Add(row[2]);
+        }
+
+        var labels = ReadRows(dataDirectory, schema.Table("sense_label")).Select(r => r.Row).ToList();
+        var retired = ReadRows(dataDirectory, schema.Table("sense_label_map")).Select(r => r.Row[0]).ToList();
+        var counts = new Dictionary<string, int>(StringComparer.Ordinal);
+        foreach (var (path, line, row) in ReadRows(dataDirectory, schema.Table("sense_frequency")))
+        {
+            counts[row[0]] = ParseCount(row[1], path, line);
+        }
+
+        var inputs = new LabelInputs(
+            senses,
+            hypernyms.ToDictionary(p => p.Key, p => (IReadOnlyList<string>)p.Value, StringComparer.Ordinal),
+            labels,
+            retired,
+            counts,
+            schema.Vocabulary("pos"));
+        return (entries, senseRows, inputs);
+    }
+
+    private static List<(string Path, int Line, string[] Row)> ReadRows(string dataDirectory, TableDef table)
+    {
+        var rows = DataTables.ReadLocated(dataDirectory, table).ToList();
+        foreach (var (path, line, row) in rows)
+        {
+            if (row.Length != table.Columns.Count)
+            {
+                throw new InvalidDataException($"{path}:{line.ToString(CultureInfo.InvariantCulture)}: the row has {row.Length.ToString(CultureInfo.InvariantCulture)} cells but the table '{table.Name}' has {table.Columns.Count.ToString(CultureInfo.InvariantCulture)} columns.");
+            }
+        }
+
+        return rows;
+    }
+
+    private static int ParseCount(string text, string path, int line) =>
+        int.TryParse(text, NumberStyles.None, CultureInfo.InvariantCulture, out var value)
+            ? value
+            : throw new InvalidDataException($"{path}:{line.ToString(CultureInfo.InvariantCulture)}: '{text}' is not a non-negative integer.");
 
     /// <summary>
     ///     Computes the labels of the senses of the inventory that have none; the pure part of the generator.
@@ -261,10 +310,12 @@ internal static class SenseLabelGenerator
             yield return synonym;
         }
 
+        // The first hypernym synset (by id) that has a usable member gives the head: its first member (by sense id) whose
+        // slug is not empty and not the slug of the lemma itself
         var head = inputs.Hypernyms.GetValueOrDefault(sense.SynsetId, [])
             .OrderBy(h => h, Utf8Order)
-            .Select(h => synsetMembers.TryGetValue(h, out var members) && members.Count > 0 ? Slug(members[0].Lemma) : string.Empty)
-            .FirstOrDefault(s => s.Length > 0 && s != own);
+            .Select(h => synsetMembers.GetValueOrDefault(h, []).Select(m => Slug(m.Lemma)).FirstOrDefault(s => s.Length > 0 && s != own))
+            .FirstOrDefault(s => s is not null);
         if (head is not null)
         {
             yield return head;

@@ -12,9 +12,10 @@ sections:
                 title: >-
                   SenseLabelGenerator shall give every sense that has no curated label a readable, deterministic label
                   that is unique among the senses of its lemma: the part of speech name for the only sense of a lemma
-                  and part of speech (lemma#noun), otherwise the first synonym of its synset, otherwise the head lemma
-                  of its hypernym, made unique by a numeric suffix where two senses would otherwise share one; it
-                  shall create no group.
+                  and part of speech (lemma#noun), otherwise the first synonym of its synset, otherwise the first
+                  usable member of its first hypernym synset that has one, made unique by a numeric suffix where two
+                  senses would otherwise share one; it shall create no group, and shall report a table it cannot read
+                  as invalid data with the file and line.
                 tags: [unit]
                 justification: |
                   Callers can use any sense of any word, not only the curated ones, so every sense needs an id that
@@ -24,9 +25,11 @@ sections:
                   - WordSenseBuilder_SenseLabelGenerator_Generate_OnlySenseOfPartOfSpeech_UsesThePartOfSpeechName
                   - WordSenseBuilder_SenseLabelGenerator_Generate_UsesTheFirstSynonym
                   - WordSenseBuilder_SenseLabelGenerator_Generate_NoSynonym_UsesTheHypernymHead
+                  - WordSenseBuilder_SenseLabelGenerator_Generate_FirstHypernymMemberIsSelf_UsesNextMemberOfThatHypernym
                   - WordSenseBuilder_SenseLabelGenerator_Generate_DuplicateLabels_GetNumericSuffixes
                   - WordSenseBuilder_SenseLabelGenerator_Generate_LabelsAreWellFormedAndUniquePerLemma
                   - WordSenseBuilder_SenseLabelGenerator_Run_Slice_LabelsOneTokenSensesAndCreatesNoGroup
+                  - WordSenseBuilder_SenseLabelGenerator_Run_UnreadableRows_ThrowInvalidDataWithLocation
 
               - id: WordSense-WordData-SenseLabelGenerator-Preserve
                 title: >-
@@ -39,6 +42,7 @@ sections:
                   namespace, so a group never takes a sense label and is left as it is.
                 tests:
                   - WordSenseBuilder_SenseLabelGenerator_Generate_ExistingLabels_AreKept
+                  - WordSenseBuilder_SenseLabelGenerator_Run_ExistingLabels_KeepValueAndOrigin
                   - WordSenseBuilder_SenseLabelGenerator_Generate_NewSenseOfLemma_NeverTakesAnExistingOrRetiredLabel
                   - WordSenseBuilder_SenseLabelGenerator_Generate_ChangedSourceData_KeepsPublishedLabels
                   - WordSenseBuilder_SenseLabelGenerator_Run_ExistingGroup_IsKeptAndItsLabelStaysAvailable

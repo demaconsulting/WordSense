@@ -55,7 +55,7 @@ internal sealed class LemmaWeights
     /// <param name="dimension">The dense dimension.</param>
     /// <param name="fineThreshold">The fine threshold: a finite margin that is not negative, or <see cref="Never"/>.</param>
     /// <param name="groupThreshold">The group threshold: a finite margin that is not negative, or <see cref="Never"/>.</param>
-    /// <exception cref="ArgumentException">Thrown when the shapes are inconsistent, a value is not finite or a threshold is negative.</exception>
+    /// <exception cref="ArgumentException">Thrown when the shapes are inconsistent, the dimension is not positive, a value is not finite or a threshold is negative.</exception>
     public LemmaWeights(float[] weights, float[] bias, int dimension, float fineThreshold = Never, float groupThreshold = Never)
     {
         ArgumentNullException.ThrowIfNull(weights);
@@ -65,9 +65,9 @@ internal sealed class LemmaWeights
             throw new ArgumentException("A lemma needs at least two weight rows.", nameof(bias));
         }
 
-        if (dimension < 0 || weights.Length != bias.Length * dimension)
+        if (dimension <= 0 || weights.Length != bias.Length * dimension)
         {
-            throw new ArgumentException("Weight and bias shapes do not match the dimension.", nameof(weights));
+            throw new ArgumentException("The dimension must be positive and the weight and bias shapes must match it.", nameof(weights));
         }
 
         if (weights.Any(w => !float.IsFinite(w)) || bias.Any(b => !float.IsFinite(b)))

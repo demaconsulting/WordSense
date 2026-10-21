@@ -284,6 +284,193 @@ public sealed class OewnImporterTests : IDisposable
     }
 
     /// <summary>
+    ///     A rejected input leaves the existing tables byte-identical, also with overwrite: the import stages its output
+    ///     and replaces the tables only when the whole input was accepted.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_OewnImporter_Import_OverwriteWithInvalidInput_KeepsExistingTables()
+    {
+        // Arrange - imported data, and an input whose sense points to a missing synset
+        var data = DataFixture.ImportSlice(_dir);
+        var before = Snapshot(data);
+        var xml = File.ReadAllText(DataFixture.SlicePath).Replace("synset=\"oewn-00000002-n\"", "synset=\"oewn-99999999-n\"", StringComparison.Ordinal);
+        var input = _dir.Write("invalid.xml", xml);
+
+        // Act
+        var ex = Assert.Throws<InvalidDataException>(() => OewnImporter.Import(input, data, Path.Join(data, "schema.yaml"), null, overwrite: true));
+
+        // Assert
+        Assert.Contains("missing synset", ex.Message, StringComparison.Ordinal);
+        var after = Snapshot(data);
+        Assert.Equal(before.Keys.Order(StringComparer.Ordinal), after.Keys.Order(StringComparer.Ordinal));
+        foreach (var (file, bytes) in before)
+        {
+            Assert.Equal(bytes, after[file]);
+        }
+
+        Assert.DoesNotContain(Directory.GetDirectories(_dir.Root), d => d.Contains(".import-", StringComparison.Ordinal));
+    }
+
+    private static Dictionary<string, byte[]> Snapshot(string folder) =>
+        Directory.GetFiles(folder, "*", SearchOption.AllDirectories).ToDictionary(f => Path.GetRelativePath(folder, f), File.ReadAllBytes, StringComparer.Ordinal);
+
+    /// <summary>
+    ///     A move that fails in the middle of the replacement (a locked file) undoes every move, including the schema split
+    ///     update and the id map of the sense labels: the original files are byte-identical afterwards, no table of the new
+    ///     import is left behind and no staging or backup folder remains.
+    /// </summary>
+    /// <param name="removeLabelMap">True to start without the id map file, so that the import creates it.</param>
+    /// <param name="failAt">The move that fails: a positive number counts from the first move, a negative one from the last.</param>
+    [Theory]
+    [InlineData(false, 1)]
+    [InlineData(false, 8)]
+    [InlineData(false, -2)]
+    [InlineData(false, -1)]
+    [InlineData(true, -1)]
+    public void WordSenseBuilder_OewnImporter_Import_FailingMoveMidReplace_RestoresEveryOriginalFile(bool removeLabelMap, int failAt)
+    {
+        // Arrange - count the moves of a successful import of the same shape (a split threshold of 1 changes the split
+        // plan in the schema, so a schema that is not restored shows), then fail one of them
+        var total = 0;
+        var counted = DataFixture.ImportSlice(_dir, "counted");
+        if (removeLabelMap)
+        {
+            File.Delete(Path.Join(counted, "sense_label_map.tsv"));
+        }
+
+        OewnImporter.Import(DataFixture.SlicePath, counted, Path.Join(counted, "schema.yaml"), null, splitThreshold: 1, overwrite: true, beforeMove: (_, _) => total++);
+        var data = DataFixture.ImportSlice(_dir, "data");
+        if (removeLabelMap)
+        {
+            File.Delete(Path.Join(data, "sense_label_map.tsv"));
+        }
+
+        var before = Snapshot(data);
+        var moves = 0;
+        var failing = failAt > 0 ? failAt : total + failAt + 1;
+
+        // Act
+        var ex = Assert.Throws<IOException>(() => OewnImporter.Import(
+            DataFixture.SlicePath,
+            data,
+            Path.Join(data, "schema.yaml"),
+            null,
+            splitThreshold: 1,
+            overwrite: true,
+            beforeMove: (_, _) =>
+            {
+                if (++moves == failing)
+                {
+                    throw new IOException("locked");
+                }
+            }));
+
+        // Assert
+        Assert.Equal("locked", ex.Message);
+        var after = Snapshot(data);
+        Assert.Equal(before.Keys.Order(StringComparer.Ordinal), after.Keys.Order(StringComparer.Ordinal));
+        foreach (var (file, bytes) in before)
+        {
+            Assert.Equal(bytes, after[file]);
+        }
+
+        Assert.DoesNotContain(Directory.GetDirectories(_dir.Root), d => d.Contains(".import-", StringComparison.Ordinal) || d.EndsWith(".backup", StringComparison.Ordinal));
+    }
+
+    /// <summary>
+    ///     A relation to a synset or a sense that the file does not hold is an error that names the relation, not a
+    ///     dangling reference in the data.
+    /// </summary>
+    [Theory]
+    [InlineData("<SynsetRelation relType=\"hypernym\" target=\"oewn-00000002-n\"/>", "<SynsetRelation relType=\"hypernym\" target=\"oewn-99999999-n\"/>", "missing synset")]
+    [InlineData("relType=\"pertainym\" target=\"oewn-music__1.10.00..\"", "relType=\"pertainym\" target=\"oewn-nothing__1.10.00..\"", "missing sense")]
+    public void WordSenseBuilder_OewnImporter_Import_RelationToMissingEndpoint_Throws(string original, string changed, string expected)
+    {
+        // Arrange
+        var text = File.ReadAllText(DataFixture.SlicePath);
+        Assert.Contains(original, text, StringComparison.Ordinal);
+        var xml = text.Replace(original, changed, StringComparison.Ordinal);
+
+        // Act
+        var ex = Assert.Throws<InvalidDataException>(() => ImportText(xml));
+
+        // Assert
+        Assert.Contains(expected, ex.Message, StringComparison.Ordinal);
+    }
+
+    private const string FormsXml = "<LexicalResource><Lexicon id=\"x\" label=\"l\" language=\"en\" version=\"1\">"
+        + "<LexicalEntry id=\"e-color\"><Lemma writtenForm=\"color\" partOfSpeech=\"n\"/><Form writtenForm=\"colour\"/><Form writtenForm=\" col\tour \"/></LexicalEntry>"
+        + "<LexicalEntry id=\"e-plain\"><Lemma writtenForm=\"plain\" partOfSpeech=\"a\"/></LexicalEntry>"
+        + "</Lexicon></LexicalResource>";
+
+    /// <summary>
+    ///     The written forms are read per entry in file order and cleaned like every other text; an entry without a form
+    ///     is absent.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_OewnImporter_ReadForms_ReturnsCleanedFormsPerEntry()
+    {
+        // Arrange
+        var input = _dir.Write("forms.xml", FormsXml);
+
+        // Act
+        var forms = OewnImporter.ReadForms(input, null);
+
+        // Assert
+        Assert.Equal(["e-color"], forms.Keys);
+        Assert.Equal(["colour", "col our"], forms["e-color"]);
+    }
+
+    /// <summary>
+    ///     The forms of a file whose SHA-256 differs from the pin, or of malformed XML, are refused.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_OewnImporter_ReadForms_WrongHashOrMalformedXml_Throws()
+    {
+        // Arrange
+        var input = _dir.Write("forms.xml", FormsXml);
+        var broken = _dir.Write("broken.xml", "<LexicalResource><Lexicon id=\"x\">");
+
+        // Act
+        var hash = Assert.Throws<InvalidDataException>(() => OewnImporter.ReadForms(input));
+        var xml = Assert.Throws<InvalidDataException>(() => OewnImporter.ReadForms(broken, null));
+
+        // Assert
+        Assert.Contains("SHA-256", hash.Message, StringComparison.Ordinal);
+        Assert.Contains("well-formed", xml.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A changed sense id maps by its sense key, a changed entry id maps to the entry of its mapped senses, an id the
+    ///     data still has gets no row and an id without a successor is counted as removed.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_OewnImporter_ImportPrevious_ChangedIds_MapBySenseKeyAndMajority()
+    {
+        // Arrange - the earlier release called the fish sense and entry differently and had another sense of big
+        var data = DataFixture.ImportSlice(_dir);
+        var previousXml = File.ReadAllText(DataFixture.SlicePath)
+            .Replace("oewn-fish__1.05.00..", "oewn-fishy__1.05.00..", StringComparison.Ordinal)
+            .Replace("oewn-fish-n", "oewn-fishy-n", StringComparison.Ordinal)
+            .Replace("oewn-big__3.00.00..", "oewn-gone__9.99.00..", StringComparison.Ordinal);
+        var previous = _dir.Write("previous.xml", previousXml);
+
+        // Act
+        var result = OewnImporter.ImportPrevious(previous, data, "test", null);
+
+        // Assert
+        Assert.Equal(1, result.SenseRows);
+        Assert.Equal(1, result.EntryRows);
+        Assert.Equal(1, result.Removed);
+        Assert.Equal(0, result.Ambiguous);
+        var rows = DataFixture.Rows(data, "id_map");
+        Assert.Contains(rows, r => r.SequenceEqual(["oewn-fishy__1.05.00..", "oewn-fish__1.05.00..", "test"]));
+        Assert.Contains(rows, r => r.SequenceEqual(["oewn-fishy-n", "oewn-fish-n", "test"]));
+        Assert.Equal(2, rows.Count);
+        Assert.True(DataValidator.Validate(data).IsValid);
+    }
+
+    /// <summary>
     ///     The identifier map import fails when two current senses have the same sense key, instead of letting one
     ///     overwrite the other.
     /// </summary>

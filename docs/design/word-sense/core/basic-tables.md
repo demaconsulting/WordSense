@@ -12,8 +12,9 @@ word image by the hash of the analysis inventory.
 #### Data Model
 
 - `PosTag`: the 13 tags (noun, pronoun, verb, adjective, adverb, preposition, conjunction, interjection, determiner,
-  auxiliary, infinitive marker, punctuation, other) and the sentence boundary pseudo tag (index 13). The first eight
-  have the numeric values of `PartOfSpeech`. Open classes are noun, verb, adjective and adverb.
+  auxiliary, infinitive marker, punctuation, other) and the sentence boundary pseudo tag (index 13). The first ten
+  (noun to auxiliary) have the numeric values of `PartOfSpeech`; infinitive marker, punctuation and other have no part of
+  speech. Open classes are noun, verb, adjective and adverb.
 - `BasicTables`: the header values `Gamma`, `Beta`, `Lambda1` to `Lambda3`, `HmmWeight` and `InvTemperature`; the
   unigram, bigram and trigram counts; the derived `Transition` (interpolated trigram, bigram and unigram probabilities,
   row-major over 14 x 14 x 14), `TagPrior` and `SuffixFallback`; the `Words` (`WordEntry`: closed-class mask and per-tag

@@ -12,7 +12,9 @@ sections:
                 title: >-
                   DataValidator shall check the file set, the header, the cell count, the byte-order mark, line ends,
                   the final line feed, blank lines, UTF-8 validity, Unicode normalization, edge spaces, cell types,
-                  enumerations and features of every table file, and report a violation per defect.
+                  enumerations and features (sorted, unique, one value per feature) of every table file, and report
+                  each defect as a violation; at most 20 violations are listed per rule while the total counts every
+                  defect.
                 tags: [unit]
                 justification: |
                   A file that deviates from the format would break the determinism that makes the data reviewable.
@@ -68,7 +70,8 @@ sections:
               - id: WordSense-WordData-DataValidator-Senses
                 title: >-
                   DataValidator shall check that every sense has exactly one label, that the labels of the senses of a
-                  lemma are unique and well formed, that a sense id never collides with the id of a group, that a
+                  lemma are unique and well formed (a duplicated id or label is reported, never thrown), that a sense
+                  id never collides with the id of a group, that a
                   published sense label is neither changed nor reused unless the id map records it (group ids are
                   versioned per data release and are never compared with the baseline), and that a project sense has no
                   sense key and an authored gloss.
@@ -80,6 +83,7 @@ sections:
                 tests:
                   - WordSenseBuilder_DataValidator_Validate_SenseWithoutLabel_Violates
                   - WordSenseBuilder_DataValidator_Validate_DuplicateLabelInLemma_ViolatesUnique
+                  - WordSenseBuilder_DataValidator_Validate_DuplicateIds_AreReportedNotThrown
                   - WordSenseBuilder_DataValidator_Validate_SenseIdEqualToGroupId_Violates
                   - WordSenseBuilder_DataValidator_Validate_ChangedPublishedLabel_ViolatesStability
                   - WordSenseBuilder_DataValidator_Validate_ChangedGroupId_IsNotAStabilityViolation

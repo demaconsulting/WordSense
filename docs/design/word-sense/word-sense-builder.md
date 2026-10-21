@@ -50,7 +50,8 @@ implementation of the feature computation.
 - `AnalysisKey`: an analysis that a training row stands for (a lemma, a part of speech and the features that must be
   present); `Resolve` finds the spelling of the lemma that the word image uses.
 - `LexiconSource`: reads the dictionary word list (`word<TAB>letters`, ascending by word, parts of speech as the
-  letters `NRVJBPCID`, the first letter being the first analysis) and the auxiliary list.
+  letters `NRVJBPCIDA` (noun, pronoun, verb, adjective, adverb, preposition, conjunction, interjection, determiner and
+  auxiliary: the letter `A`), the first letter being the first analysis) and the auxiliary list.
 - `LexiconImporter`: derives the word list from the pinned Moby list (checksum, source order of the parts of speech,
   corrections, participle and gerund rule) and writes `lexicon.tsv`.
 - `IrregularForms`: reads the irregular form lists.
@@ -386,8 +387,9 @@ require a second scoring path.
 
 #### Evaluation (`Evaluator.RunAsync`)
 
-Creates the model on the verified files, classifies the sentences of `corpus/holdout` (the real-text sentences carry
-the labels of the retired classes and are no longer measured), and reports per set the rows, the share of answers at
+Creates the model on the verified files, classifies the sentences of `corpus/holdout` (the held-out sentences of the
+fine senses: real text and written sentences, each with its sense id), and reports per set the rows, the share of
+answers at
 each level (sense, group, part of speech, and none for an unknown word) and the accuracy at each level (the share of
 the sense-level answers with the right sense, of the group-level answers with the group of the sense of the row, and
 of the part-of-speech answers with the right part of speech), the share of rows that are right at the level they were
@@ -401,7 +403,17 @@ see Real-text calibration), the same sentences restricted to the documents that 
 calibration split** (diagnostic: the thresholds were chosen on it), **LLM-written** held-out sentences (secondary:
 about 17 points easier than real text) and the whole held-out set. No set is representative real text (the held-out
 sentences are balanced and selected or written per sense), and the report says so; the representative measurements are
-the independent evaluations. `basic` is evaluated the same way without weights and additionally reports the
+the independent evaluations.
+
+The protocol keeps the choices apart from the measurement. The *calibration split* (the real held-out sentences of the
+documents whose hash bit is 0) is used only by `RealCalibrator` when the weights are trained, to move the thresholds to
+the precision target. The *test split* (the documents whose hash bit is 1) never reaches a threshold, a weight or a
+choice and is the headline set that `evaluate` reports. The written held-out sentences and the rows without provenance
+belong to neither split and are reported as secondary sets. The result is *published* through the model table
+(`evaluate --table`): the real-text test split gives the sense share at its precision and the cost cells of the
+model's row of `docs/build_notes/model-table.md`, and the README table must equal that file (a doc-test checks it); the
+independent evaluations (SemCor, running text, the reviewed suite) fill their own cells. `basic` is evaluated the same
+way without weights and additionally reports the
 calibration of its confidence: the number and accuracy of the answers in the confidence buckets (below 0.4, 0.4 to
 0.6, 0.6 to 0.7, 0.7 to 0.8, 0.8 to 0.9 and at least 0.9), the coverage and precision at the thresholds 0.6, 0.8 and
 0.9, the size of the embedded table, the cold load time, the latency per word and per sentence, and a fixed comparison

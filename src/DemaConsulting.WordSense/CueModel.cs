@@ -34,6 +34,12 @@ internal readonly record struct FeatureRef(int Kind, string Token)
         }
     }
 
+    /// <summary>
+    ///     Folds one UTF-16 code unit into a running 32-bit FNV-1a hash: the low byte first, then the high byte.
+    /// </summary>
+    /// <param name="h">The running hash.</param>
+    /// <param name="ch">The code unit to add.</param>
+    /// <returns>The updated hash.</returns>
     private static uint Mix(uint h, char ch)
     {
         unchecked
@@ -147,10 +153,14 @@ internal static class CueModel
     /// <param name="features">The features of the target.</param>
     /// <param name="analyses">The candidate analyses (lemma, part of speech and features), each matched to its column with <see cref="LemmaCue.RowOf"/>.</param>
     /// <param name="scores">Receives one log score per candidate (the prior plus the weights of the target's features); <see cref="double.NaN"/> for a candidate the table has no column for.</param>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="cue"/> is null or <paramref name="analyses"/> is the default array.</exception>
     public static void Score(LemmaCue cue, ReadOnlySpan<FeatureRef> features, ImmutableArray<WordDetails> analyses, Span<double> scores)
     {
         ArgumentNullException.ThrowIfNull(cue);
-        ArgumentOutOfRangeException.ThrowIfEqual(analyses.IsDefault, true);
+        if (analyses.IsDefault)
+        {
+            throw new ArgumentNullException(nameof(analyses));
+        }
         Span<int> rows = features.Length <= MaxFeatures ? stackalloc int[MaxFeatures] : new int[features.Length];
         var found = 0;
         foreach (var feature in features)

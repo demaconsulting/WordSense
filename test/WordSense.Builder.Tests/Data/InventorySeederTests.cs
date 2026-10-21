@@ -281,6 +281,88 @@ public sealed class InventorySeederTests : IDisposable
     }
 
     /// <summary>
+    ///     A curated group whose member is unknown, listed twice, a sense of another lemma, or of a part of speech that the
+    ///     group does not name is refused with a message that names the group and the member, and nothing is written.
+    /// </summary>
+    [Theory]
+    [InlineData("Noun", "bass#fish-food,bass#nowhere", "not a sense of the curation")]
+    [InlineData("Noun", "bass#fish-food,bass#fish-meat,bass#fish-food", "more than once")]
+    [InlineData("Noun", "bass#fish-food,big#large", "is a sense of 'big'")]
+    [InlineData("Verb", "bass#fish-food,bass#fish-meat", "has the part of speech noun")]
+    [InlineData("Noun/Nonsense", "bass#fish-food,bass#fish-meat", "unknown part of speech 'Nonsense'")]
+    public void WordSenseBuilder_InventorySeeder_Run_GroupWithBadMember_IsRefused(string partOfSpeech, string members, string expected)
+    {
+        // Arrange
+        var data = ThreeBassNounsSlice();
+        var curation = Curation(
+            "bass#fish-food\toewn-bass__1.05.00..\tNoun\tthe flesh of a fish\toewn\t\n"
+            + "bass#fish-meat\toewn-bass__1.05.01..\tNoun\tthe meat of a fish\toewn\t\n"
+            + "bass#voice\toewn-bass__1.10.00..\tNoun\tthe lowest voice\toewn\t\n"
+            + "big#large\toewn-big__3.00.00..\tAdjective\tabove average in size\toewn\t\n",
+            $"bass#fish-food\tbass\t{partOfSpeech}\t{members}\trelated\tgloss:near-identical\n");
+
+        // Act
+        var ex = Assert.Throws<InvalidDataException>(() => InventorySeeder.Run(data, curation));
+
+        // Assert
+        Assert.Contains("bass#fish-food", ex.Message, StringComparison.Ordinal);
+        Assert.Contains(expected, ex.Message, StringComparison.Ordinal);
+        Assert.False(Directory.Exists(Path.Join(data, "sense_label")));
+        Assert.False(Directory.Exists(Path.Join(data, "sense_group")));
+    }
+
+    /// <summary>
+    ///     A malformed curation file (no header, a missing column, an id without a label, a row with too many cells) is an
+    ///     <see cref="InvalidDataException"/> that names the file and the line, not an index or key exception.
+    /// </summary>
+    [Theory]
+    [InlineData("", "the curation file is empty")]
+    [InlineData("sense_id\toewn_sense_id\tpart_of_speech\tsource\n", "lacks the column(s) gloss")]
+    [InlineData("sense_id\toewn_sense_id\tpart_of_speech\tgloss\tsource\n" + "no-hash-sign\toewn-bass__1.05.00..\tNoun\tx\toewn\n", "senses.tsv:2:")]
+    [InlineData("sense_id\toewn_sense_id\tpart_of_speech\tgloss\tsource\n" + "bass#fish\toewn-bass__1.05.00..\tNoun\tx\toewn\textra\n", "has 6 cells but the header has 5")]
+    public void WordSenseBuilder_InventorySeeder_Run_MalformedCurationFile_IsInvalidData(string senses, string expected)
+    {
+        // Arrange
+        var data = ThreeBassNounsSlice();
+        _dir.Write("curation/senses.tsv", senses);
+        _dir.Write("curation/groups.tsv", GroupsHeader);
+
+        // Act
+        var ex = Assert.Throws<InvalidDataException>(() => InventorySeeder.Run(data, Path.Join(_dir.Root, "curation")));
+
+        // Assert
+        Assert.Contains("senses.tsv", ex.Message, StringComparison.Ordinal);
+        Assert.Contains(expected, ex.Message, StringComparison.Ordinal);
+        Assert.False(Directory.Exists(Path.Join(data, "sense_label")));
+    }
+
+    /// <summary>
+    ///     A group of one lemma with members of two parts of speech must name both: a noun group with an adjective member
+    ///     is refused instead of writing an adjective subgroup that the curator never declared, and the slash-separated
+    ///     list names the part of speech that keeps the plain label.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_InventorySeeder_Run_GroupMemberOfUnlistedPartOfSpeech_IsRefused()
+    {
+        // Arrange - big has an adjective and a project interjection; the group names only the adjective
+        var data = ThreeBassNounsSlice();
+        var senses = "big#large\toewn-big__3.00.00..\tAdjective\tabove average in size\toewn\t\n"
+            + "big#wow\t\tInterjection\tan exclamation of wonder\tproject\t\n";
+        var curation = Curation(senses, "big#size\tbig\tAdjective\tbig#large,big#wow\trelated\tgloss:near-identical\n");
+
+        // Act
+        var ex = Assert.Throws<InvalidDataException>(() => InventorySeeder.Run(data, curation));
+        var declared = Curation(senses, "big#size\tbig\tAdjective/Interjection\tbig#large,big#wow\trelated\tgloss:near-identical\n");
+        var run = InventorySeeder.Run(data, declared);
+
+        // Assert
+        Assert.Contains("big#size", ex.Message, StringComparison.Ordinal);
+        Assert.Contains("'big#wow' has the part of speech interjection", ex.Message, StringComparison.Ordinal);
+        Assert.Equal(1, run.SplitGroups);
+        Assert.Equal(2, run.DroppedSingletons);
+    }
+
+    /// <summary>
     ///     A group that has every sense of its lemma and part of speech is left out, because the part of speech is the
     ///     next level.
     /// </summary>

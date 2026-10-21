@@ -1,8 +1,8 @@
 namespace DemaConsulting.WordSense.BertBaseCased.Tests;
 
 /// <summary>
-///     Tests for <see cref="BertBaseCasedWordSenseModel"/>. Most need no model files and no network access; the two
-///     that classify with the real model are skipped when the Git LFS files are absent.
+///     Tests for <see cref="BertBaseCasedWordSenseModel"/>. Most need no model files and no network access; the four
+///     that use the real model files are skipped when the Git LFS files are absent.
 /// </summary>
 public class BertBaseCasedWordSenseModelTests
 {

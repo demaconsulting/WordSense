@@ -36,9 +36,11 @@ nothing in the schema refers to a class. Schema version 4 adds the `kind` column
 #### Key Methods
 
 - `Load(path)`: parses and checks the schema, the sense inventory tables and their vocabularies included; throws
-  `InvalidDataException` with `path:line:` on a defect.
+  `InvalidDataException` with `path:line:` on a defect. The `schema_version` must be an integer and equal to the
+  supported version (4); another value is rejected with the line of the `schema_version` key.
 - Consistency checks: every key, foreign key, partition column, vocabulary and relation inverse refers to something that
-  exists; a relation and its inverse store exactly one direction.
+  exists; a relation and its inverse store exactly one direction. A relation defect names the line of the relation
+  type in the vocabulary, not line 0.
 - `WriteFileSplit(path, letters)`: replaces only the `file_split:` line.
 
 #### Error Handling

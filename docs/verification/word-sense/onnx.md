@@ -53,7 +53,9 @@ the level none.
 
 A trained lemma lists every analysis of the word with its probability (summing to one) and, inside each analysis, the
 ranked senses of its lemma and part of speech with their probabilities given the analysis (summing to one), whatever
-the level answered; a single-sense word and a lemma without weights list no scored senses
+the level answered; a lemma without weights lists no scored senses, and a lexical singleton (a word with a single
+analysis whose lemma and part of speech have exactly one sense) lists that sense with probability 1 although the
+encoder did not score it
 (`OnnxClassifier_ClassifyAsync_TrainedLemma_ListsRankedCandidatesSummingToOne`,
 `OnnxClassifier_ClassifyAsync_SingleSenseWord_ListsNoCandidates`,
 `OnnxClassifier_ClassifyAsync_LemmaWithoutWeights_ListsNoCandidates`).
@@ -62,8 +64,9 @@ the level answered; a single-sense word and a lemma without weights list no scor
 
 A known word whose lemma has no usable weights is answered from the lexicon alone: its lemmas and parts of speech are
 equally likely (the feature variants of one share its probability), the first analysis is selected, no senses are
-scored and the level is the part of speech, never a guessed fine sense (a word
-with a single analysis is certain about it, and at the sense level when its lemma and part of speech have exactly one
+scored and the level is the part of speech, never a guessed fine sense (the exception is the lexical singleton: a word
+with a single analysis is certain about it, and is answered at the sense level, with that sense listed with
+probability 1 but not encoder-scored, when its lemma and part of speech have exactly one
 sense), and without any other model package
 (`OnnxClassifier_ClassifyAsync_LemmaWithoutWeights_AnswersAnalysesWithoutScoredSenses`,
 `OnnxClassifier_ClassifyAsync_VariantsOfTheOnlySlot_AreConfidentAtThePartOfSpeech`,
@@ -82,7 +85,12 @@ documents).
 #### A Form of Several Lemmas Gets Its Lemma from the Context
 
 A form such as `left` is answered with the senses of the lemma that the form chooser picks from the sentence
-(`OnnxClassifier_ClassifyAsync_FormOfTwoLemmas_ChoosesTheLemmaFromContext`).
+(`OnnxClassifier_ClassifyAsync_FormOfTwoLemmas_ChoosesTheLemmaFromContext`). When only one lemma of the form has
+weights the chooser still splits the probability, and a preference for the untrained lemma is answered at the part of
+speech level without scored senses
+(`OnnxClassifier_ClassifyAsync_FormOfTrainedAndUntrainedLemma_ChooserPicksTrained_AnswersTheSense`,
+`OnnxClassifier_ClassifyAsync_FormOfTrainedAndUntrainedLemma_ChooserPicksUntrained_AnswersPartOfSpeech`); a form
+without a chooser is answered from the lexicon alone.
 
 #### Weights Match the Word Image
 

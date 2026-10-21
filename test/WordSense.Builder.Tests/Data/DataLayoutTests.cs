@@ -187,4 +187,58 @@ public sealed class DataLayoutTests : IDisposable
         // Act / Assert
         Assert.Throws<InvalidDataException>(() => DataLayout.WriteTable(path, ["a"], [["x\ty"]]));
     }
+
+    /// <summary>
+    ///     A row that is refused half way through leaves an existing file unchanged and no temporary file behind.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_DataLayout_WriteTable_FailureHalfWay_KeepsExistingFile()
+    {
+        // Arrange - an existing table, then a write whose second row has a bad cell
+        var path = Path.Join(_dir.Root, "keep", "t.tsv");
+        DataLayout.WriteTable(path, ["a"], [["old"]]);
+        var before = File.ReadAllBytes(path);
+
+        // Act
+        Assert.Throws<InvalidDataException>(() => DataLayout.WriteTable(path, ["a"], [["new"], ["bad\tcell"]]));
+
+        // Assert
+        Assert.Equal(before, File.ReadAllBytes(path));
+        Assert.Equal([path], Directory.GetFiles(Path.GetDirectoryName(path)!));
+    }
+
+    /// <summary>
+    ///     The partition resolver places a row by the lemma of its entry, sense, synset or sense key, and gives no key for
+    ///     a row whose parent is unknown.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_PartitionResolver_KeyFor_FollowsTheParents()
+    {
+        // Arrange - an entry of "zebra" with one sense that has a key, and an entry of "apple" in the same synset
+        var schema = DataSchema.Load(Path.Join(DataFixture.RepositoryRoot(), "data", "schema.yaml"));
+        var resolver = new PartitionResolver(['a']);
+        resolver.AddEntry("e-zebra", "Zebra");
+        resolver.AddEntry("e-apple", "apple");
+        resolver.AddSense("s-zebra", "e-zebra", "syn-1", "zebra%1:05:00::");
+        resolver.AddSense("s-apple", "e-apple", "syn-1", "apple%1:13:00::");
+
+        string? KeyOf(string table, string value)
+        {
+            var definition = schema.Table(table);
+            var row = new string[definition.Columns.Count];
+            Array.Fill(row, string.Empty);
+            row[definition.IndexOf(definition.PartitionColumn!)] = value;
+            return resolver.KeyFor(definition, row);
+        }
+
+        // Act / Assert
+        Assert.Equal("z", KeyOf("sense", "e-zebra"));
+        Assert.Equal("z", KeyOf("sense_label", "s-zebra"));
+        Assert.Equal("ap", KeyOf("sense_label", "s-apple"));
+        Assert.Equal("ap", KeyOf("gloss", "syn-1"));
+        Assert.Equal("z", KeyOf("sense_frequency", "zebra%1:05:00::"));
+        Assert.Null(KeyOf("sense_label", "s-unknown"));
+        Assert.Null(KeyOf("gloss", "syn-unknown"));
+        Assert.Equal(string.Empty, resolver.KeyFor(schema.Table("source"), new string[schema.Table("source").Columns.Count]));
+    }
 }

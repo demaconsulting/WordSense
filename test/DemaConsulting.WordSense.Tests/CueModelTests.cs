@@ -97,4 +97,20 @@ public class CueModelTests
         Assert.Equal(-8 * CueModel.Quantum, scores[0], 9);
         Assert.Equal(-8 * CueModel.Quantum, scores[1], 9);
     }
+
+    /// <summary>
+    ///     A null table and a default analysis array are rejected with an argument-null error.
+    /// </summary>
+    [Fact]
+    public void CueModel_Score_NullTableOrDefaultAnalyses_Throws()
+    {
+        // Arrange
+        var tables = TestTables.Load(TestTables.Default());
+        var cue = tables.Cues["read"];
+        var scores = new double[2];
+
+        // Act and Assert
+        Assert.Throws<ArgumentNullException>(() => CueModel.Score(null!, [], [TestTables.ReadPast], scores));
+        Assert.Throws<ArgumentNullException>(() => CueModel.Score(cue, [], default, scores));
+    }
 }

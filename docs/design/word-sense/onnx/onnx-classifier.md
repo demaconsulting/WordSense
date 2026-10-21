@@ -90,7 +90,10 @@ The probabilities are computed per slot, never per variant:
    margin is
    below the threshold the answer is the selected analysis at the `PartOfSpeech` level with the probability of its slot
    as the
-   (low) confidence. A selected lemma without weights is answered at the `PartOfSpeech` level in the same way. A form
+   (low) confidence. A selected lemma without weights is answered at the `PartOfSpeech` level in the same way: its
+   slots count with the mass 1 when a label shares its probability, so the analyses of an untrained lemma of a form
+   share their label's probability equally by slot, list no scored senses, and the confidence is the probability of the
+   selected slot (the probability of its label divided among the slots). A form
    without a trained chooser (its chooser rows do not cover every analysis of the form, or it has none) is answered
    from the lexicon (step 8): the builder reports the forms that got no chooser and why.
 6. **Levels, analyses and senses.** `LemmaWeights` scores the senses (one-versus-rest activation per fine sense) and

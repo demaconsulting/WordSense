@@ -48,8 +48,9 @@ the known misses stay documented. The test skips when the model files are not pr
 #### Untrained Ambiguous Words Are Answered by the Basic Model
 
 A word with several senses that the encoder does not score is answered with the complete result of the Basic model of
-the composition (its analyses with their probabilities, the selected analysis, the level part of speech and no group or
-sense id), and disposing the model disposes the encoder model and the Basic model
+the composition (its analyses with their probabilities, the selected analysis, the level part of speech, or sense when
+the selected analysis has exactly one sense, and no group id), and disposing the model disposes the encoder model and
+the Basic model
 (`MiniLMWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback`,
 `MiniLMWordSenseModel_Dispose_DisposesEncoderAndFallback`). The assembly references the core and Onnx packages
 (`MiniLMWordSenseModel_Assembly_ReferencesCoreAndOnnx`).

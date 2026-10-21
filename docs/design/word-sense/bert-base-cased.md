@@ -37,6 +37,6 @@ were trained by the builder for exactly this model: they hold the fine-sense cla
 choosers and the per-lemma fine and group thresholds measured on the embeddings of this encoder, and they are matched
 against the shipped word image at load. The encoder scores the senses of the trained lemmas and answers them at the
 sense, group or part-of-speech level its thresholds allow, listing the probabilities of their analyses and senses;
-every word for which the encoder scored no senses (the other ambiguous words) is answered by the Basic model at the part
-of speech level, with the probabilities of its analyses. In the current version the encoder does not yet score fine
-senses, so every ambiguous word is answered by the Basic model.
+every word for which the encoder scored no senses (the other ambiguous words) is answered by the Basic model, with the
+probabilities of its analyses, at the part of speech level (or at the sense level when its selected analysis has
+exactly one sense, which the Basic model names without scoring).

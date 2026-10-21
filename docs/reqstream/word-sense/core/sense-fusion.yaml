@@ -11,11 +11,13 @@ sections:
               - id: WordSense-Core-SenseFusion-Fuse
                 title: >-
                   SenseFusion shall combine the part-of-speech probabilities and the cue scores of the candidate
-                  analyses into one probability per analysis, choose the most probable analysis, and report its
-                  probability as the confidence, greater than 0 and at most 1, with ties going to the lowest index;
-                  the candidates of one lemma and part of speech that have no cue score are not separated by the
+                  analyses into one probability per analysis, each greater than 0 and at most 1 and summing to 1,
+                  and identify the most probable analysis (the winner), with ties going to the lowest index; the
+                  candidates of one lemma and part of speech that have no cue score are not separated by the
                   context, so together they shall weigh as one candidate, and a part of speech shall never be favored
-                  merely because its analyses differ in features.
+                  merely because its analyses differ in features. The confidence of a result is built from these
+                  probabilities by the classifier, as the probability of the lemma and part of speech of the selected
+                  analysis.
                 tags: [unit]
                 justification: |
                   Both kinds of evidence are needed: part of speech separates analyses of different parts of speech and
@@ -32,9 +34,13 @@ sections:
 
               - id: WordSense-Core-SenseFusion-Stable
                 title: >-
-                  SenseFusion shall give finite probabilities for extreme scores.
+                  SenseFusion shall give finite probabilities that stay above 0 and sum to 1 for extreme scores, and
+                  shall reject a default (uninitialized) analysis array with an argument-null error.
                 tags: [unit]
                 justification: |
-                  Large score differences must not produce invalid confidences.
+                  Large score differences must not produce invalid confidences or a probability of exactly zero, and
+                  misuse must fail fast with the documented exception.
                 tests:
                   - SenseFusion_Fuse_ExtremeScores_StayFinite
+                  - SenseFusion_Fuse_ExtremeScores_StayAboveZeroAndSumToOne
+                  - SenseFusion_Fuse_DefaultAnalyses_Throws

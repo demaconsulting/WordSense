@@ -628,8 +628,8 @@ public class OnnxClassifierTests
     }
 
     /// <summary>
-    ///     A lemma without groups steps from the sense straight to the part of speech, even with a group threshold that
-    ///     any margin passes.
+    ///     A lemma without groups steps from the sense straight to the part of speech. Its weights carry no group
+    ///     threshold (the table refuses one for a lemma without groups).
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
@@ -638,7 +638,7 @@ public class OnnxClassifierTests
         // Arrange: "pleasant" is an adjective with two senses and no group
         var ids = Fixtures.SenseIds("pleasant");
         Assert.All(Fixtures.Senses("pleasant"), s => Assert.Null(s.GroupId));
-        var table = Fixtures.Table(Fixtures.Lemma("pleasant", fine: 1f, group: 0f));
+        var table = Fixtures.Table(Fixtures.Lemma("pleasant", fine: 1f));
         var vector = Fixtures.Feature("pleasant", (ids[0], 0.5));
 
         // Act
@@ -1071,6 +1071,66 @@ public class OnnxClassifierTests
     }
 
     /// <summary>
+    ///     A form of two lemmas of which only one has trained weights: when the chooser prefers the trained lemma the
+    ///     answer is at the level of its sense scores, and the analyses of the untrained lemma share the rest of the
+    ///     probability without scored senses.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxClassifier_ClassifyAsync_FormOfTrainedAndUntrainedLemma_ChooserPicksTrained_AnswersTheSense()
+    {
+        // Arrange: "left" is a form of "leave" (trained, with the chooser) and "left" (untrained)
+        var table = LeaveOnlyTable();
+        var verb = WordLexicon.SensesOf("leave", PartOfSpeech.Verb);
+        var vector = Fixtures.Feature((Fixtures.Column("leave", verb[0].SenseId), 3), (Fixtures.Label(0), 4));
+
+        // Act
+        var result = await RunAsync(table, vector, "left");
+
+        // Assert: the chooser splits the probability between the lemmas, the trained lemma answers at the sense level
+        var leave = Math.Exp(4) / (Math.Exp(4) + 1);
+        Assert.Equal("leave", result.Details!.Lemma);
+        Assert.Equal(SenseLevel.Sense, result.Level);
+        Assert.Equal(verb[0].SenseId, result.SenseId);
+        Assert.Equal(leave, result.Analyses[0].Probability, Tolerance);
+        Assert.Equal(leave * Math.Exp(3) / (Math.Exp(3) + verb.Length - 1), result.Confidence, Tolerance);
+        Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 9);
+        var untrained = result.Analyses.Where(a => a.Details.Lemma == "left").ToArray();
+        Assert.NotEmpty(untrained);
+        Assert.All(untrained, a => Assert.True(a.Senses.IsEmpty));
+        Assert.Equal(1 - leave, untrained.Sum(a => a.Probability), Tolerance);
+    }
+
+    /// <summary>
+    ///     A form of two lemmas of which only one has trained weights: when the chooser prefers the untrained lemma the
+    ///     answer is at the part of speech level, without a sense or a group, with the probability of the selected slot of
+    ///     the untrained lemma (the label probability shared equally by its slots) as confidence.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxClassifier_ClassifyAsync_FormOfTrainedAndUntrainedLemma_ChooserPicksUntrained_AnswersPartOfSpeech()
+    {
+        // Arrange
+        var table = LeaveOnlyTable();
+        var vector = Fixtures.Feature((Fixtures.Label(1), 4));
+
+        // Act
+        var result = await RunAsync(table, vector, "left");
+
+        // Assert
+        var left = Math.Exp(4) / (Math.Exp(4) + 1);
+        var untrained = result.Analyses.Where(a => a.Details.Lemma == "left").ToArray();
+        Assert.Equal("left", result.Details!.Lemma);
+        Assert.Equal(SenseLevel.PartOfSpeech, result.Level);
+        Assert.Null(result.SenseId);
+        Assert.Null(result.GroupId);
+        Assert.All(untrained, a => Assert.True(a.Senses.IsEmpty));
+        Assert.Equal(left, untrained.Sum(a => a.Probability), Tolerance);
+        Assert.Equal(left / untrained.Length, result.Confidence, Tolerance);
+        Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 9);
+    }
+
+    /// <summary>
     ///     A form of several lemmas that has no chooser is answered from the lexicon without running the encoder.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
@@ -1133,6 +1193,9 @@ public class OnnxClassifierTests
         Assert.Throws<OperationCanceledException>(() => OnnxClassifier.ResolveWithoutModel(Sentence, cancelled.Token));
         Assert.Throws<ArgumentNullException>(() => OnnxClassifier.ResolveWithoutModel(null!, CancellationToken.None));
     }
+
+    private static WeightedLemmaTable LeaveOnlyTable() => Fixtures.Table(
+        Fixtures.Lemma("leave", fine: 1f, choosers: [Fixtures.Chooser("left", ["leave", "left"], 0.5f)]));
 
     private static WeightedLemmaTable LeftTable(float chooserThreshold) => Fixtures.Table(
         Fixtures.Lemma("leave", fine: 1f, choosers: [Fixtures.Chooser("left", ["leave", "left"], chooserThreshold)]),
