@@ -166,8 +166,6 @@ reviews:
       - "data/PROVENANCE.md"
       - "data/MAPPING.md"
       - "tools/WordSense.Builder/Data/DataTables.cs"
-      - "tools/WordSense.Builder/Data/FeatureInference.cs"
-      - "tools/WordSense.Builder/Data/FormBootstrap.cs"
       - "tools/WordSense.Builder/Data/ImageCompiler.cs"
       - "tools/WordSense.Builder/Data/InventorySeeder.cs"
       - "test/WordSense.Builder.Tests/Data/DataEndToEndTests.cs"
@@ -214,6 +212,7 @@ reviews:
       - "docs/verification/word-sense/word-data/oewn-importer.md"
       - "tools/WordSense.Builder/Data/OewnImporter.cs"
       - "tools/WordSense.Builder/Data/OewnImporter.Counts.cs"
+      - "tools/WordSense.Builder/Data/OewnImporter.Releases.cs"
       - "test/WordSense.Builder.Tests/Data/OewnImporterTests.cs"
 
   # WordSense-WordData-FormGenerator Review (one per unit)
@@ -293,6 +292,7 @@ reviews:
       - "test/DemaConsulting.WordSense.Tests/ReferenceTokenizerTests.cs"
       - "test/DemaConsulting.WordSense.Tests/XmlDocExampleTests.cs"
       - "test/DemaConsulting.WordSense.Tests/TestTables.cs"
+      - "test/DemaConsulting.WordSense.Tests/BasicSuiteTests.cs"
 
   # WordSense-Core-WordLexicon Review (one per unit)
   - id: WordSense-Core-WordLexicon
@@ -423,6 +423,8 @@ reviews:
       - "src/DemaConsulting.WordSense.Onnx/NamespaceDoc.cs"
       - "test/DemaConsulting.WordSense.Onnx.Tests/EmbeddedWeightsTests.cs"
       - "test/DemaConsulting.WordSense.Onnx.Tests/ModelAssets.cs"
+      - "test/DemaConsulting.WordSense.Onnx.Tests/ModelFileCheck.cs"
+      - "test/DemaConsulting.WordSense.Onnx.Tests/ModelFileCheckTests.cs"
 
   # WordSense-Onnx-OnnxWordSenseModel Review (one per unit)
   - id: WordSense-Onnx-OnnxWordSenseModel
@@ -541,7 +543,7 @@ reviews:
       - "docs/verification/word-sense/mini-lm.md"
       - "src/DemaConsulting.WordSense.MiniLM/NamespaceDoc.cs"
       - "test/DemaConsulting.WordSense.MiniLM.Tests/EndToEndTests.cs"
-      - "test/DemaConsulting.WordSense.MiniLM.Tests/SuiteTests.cs"
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/MiniLMSuiteTests.cs"
 
   # WordSense-MiniLM-MiniLMWordSenseModel Review (one per unit)
   - id: WordSense-MiniLM-MiniLMWordSenseModel
@@ -569,7 +571,7 @@ reviews:
       - "docs/design/word-sense/bert-base-cased.md"
       - "docs/verification/word-sense/bert-base-cased.md"
       - "src/DemaConsulting.WordSense.BertBaseCased/NamespaceDoc.cs"
-      - "test/DemaConsulting.WordSense.BertBaseCased.Tests/SuiteTests.cs"
+      - "test/DemaConsulting.WordSense.BertBaseCased.Tests/BertBaseCasedSuiteTests.cs"
 
   # WordSense-BertBaseCased-BertBaseCasedWordSenseModel Review (one per unit)
   - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel
