@@ -25,15 +25,14 @@ This document is intended for:
 This document covers the verification design for the WordSense system and its
 constituent software items, specifically:
 
-- **WordSense (System)** — The five layered packages of WordSense, which the units and subsystems below make up
+- **WordSense (System)** — The four layered packages of WordSense, which the units and subsystems below make up
 - **WordSenseBuilder** (non-shipped tool Unit) of the system, which generates the embedded lexicon, weights and appendix
-- **Core**, **Basic**, **Onnx**, **MiniLM** and **BertBaseCased** (Subsystems) — the packages `DemaConsulting.WordSense`,
-  `DemaConsulting.WordSense.Basic`, `DemaConsulting.WordSense.Onnx`, `DemaConsulting.WordSense.MiniLM` and
+- **Core**, **Onnx**, **MiniLM** and **BertBaseCased** (Subsystems) — the packages `DemaConsulting.WordSense`,
+  `DemaConsulting.WordSense.Onnx`, `DemaConsulting.WordSense.MiniLM` and
   `DemaConsulting.WordSense.BertBaseCased`
-- **WordLexicon** and **WordSenseContracts** (Units) of the Core subsystem
-- **BasicWordSenseModel**, **BasicClassifier**, **BasicTables**, **PosTagger**, **CueModel** and **SenseFusion**
-  (Units) of
-  the Basic subsystem
+- **WordLexicon**, **WordSenseContracts**, **BasicWordSenseModel**, **BasicClassifier**, **BasicTables**,
+  **PosTagger**, **CueModel** and **SenseFusion** (Units) of the Core subsystem (the last six are the statistical
+  model that was the separate Basic package before version 1.0)
 - **OnnxWordSenseModel**, **OnnxClassifier**, **OnnxEncoder**, **WordPieceTokenizer**, **ModelDownloader**,
   **DownloadMirror** and **LemmaWeights** (Units) of the Onnx subsystem
 - **MiniLMWordSenseModel** (Unit) of the MiniLM subsystem
@@ -76,7 +75,7 @@ trees. In-house items have artifacts in these parallel locations:
 - Design docs: `docs/design/{system}/.../{item}.md` (kebab-case)
 - Verification design: `docs/verification/{system}/.../{item}.md` (kebab-case)
 - Source code: `src/{Package}/.../{Item}.cs` (PascalCase for C#; the package folders are `DemaConsulting.WordSense`,
-  `DemaConsulting.WordSense.Basic`, `DemaConsulting.WordSense.Onnx`, `DemaConsulting.WordSense.MiniLM` and
+  `DemaConsulting.WordSense.Onnx`, `DemaConsulting.WordSense.MiniLM` and
   `DemaConsulting.WordSense.BertBaseCased`, and the builder is `tools/WordSense.Builder`)
 - Tests: `test/{Package}.Tests/.../{Item}Tests.cs` (PascalCase for C#; the builder tests are in
   `test/WordSense.Builder.Tests`)

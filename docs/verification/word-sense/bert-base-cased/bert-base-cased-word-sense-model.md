@@ -35,8 +35,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
   with several senses that the encoder does not score gets the complete result of the Basic model (the same analyses,
   probabilities, selected analysis, level and confidence as `BasicWordSenseModel` gives for the same text), never a
   mixture, with no ensure of the model files.
-- **Composition references** (`Assembly_ReferencesCoreOnnxAndBasic`): the assembly references the core, Onnx and Basic
-  assemblies.
+- **Composition references** (`Assembly_ReferencesCoreAndOnnx`): the assembly references the core and Onnx
+  assemblies (the Basic model is in the core).
 - **Disposal** (`Dispose_DisposesEncoderAndFallback`): disposing disposes the encoder model and the Basic model, and
   `EnsureModelAsync` and `ClassifyAsync` after disposal throw `ObjectDisposedException`.
 - **Constructor validation**: a maximum sequence length outside 8 to 512 throws `ArgumentOutOfRangeException`.

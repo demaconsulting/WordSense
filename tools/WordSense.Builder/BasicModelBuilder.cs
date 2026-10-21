@@ -1,7 +1,6 @@
 using System.Globalization;
 using System.Security.Cryptography;
 using DemaConsulting.WordSense;
-using DemaConsulting.WordSense.Basic;
 
 #pragma warning disable S6966 // the tool writes small console and file outputs; asynchronous writes add nothing
 
@@ -16,7 +15,7 @@ internal static class BasicModelBuilder
     /// <summary>
     ///     The path of the table below the repository root.
     /// </summary>
-    public static readonly string DefaultOutput = Path.Join("src", "DemaConsulting.WordSense.Basic", "Resources", "basic.bin");
+    public static readonly string DefaultOutput = Path.Join("src", "DemaConsulting.WordSense", "Resources", "basic.bin");
 
     /// <summary>
     ///     Counts the tag statistics of the <c>train</c> split of the representative part of the open corpus (every token,

@@ -10,14 +10,14 @@ weights and per-lemma thresholds trained and calibrated for it, and composes the
 The encoder behavior lives in the Onnx package (this package derives an internal encoder model that states which
 model it is) and the composition in the core `FallbackWordSenseModel`.
 
-The subsystem contains one unit, **MiniLMWordSenseModel**. It references the core, Onnx and Basic packages.
+The subsystem contains one unit, **MiniLMWordSenseModel**. It references the core and Onnx packages.
 
 ### Interfaces
 
 It exposes `MiniLMWordSenseModel` with the constructor `(string? modelDirectory = null, int maxSequenceLength = 128)`,
 the properties `HiddenSize` and `ModelId` and the methods `EnsureModelAsync`, `ClassifyAsync` and `Dispose` of
 `IWordSenseModel`. It consumes the internal model description type of the Onnx package, the `FallbackWordSenseModel`
-of the core package, `BasicWordSenseModel` of the Basic package and the weights embedded in its own assembly.
+of the core package, `BasicWordSenseModel` (also of the core package) and the weights embedded in its own assembly.
 
 ### Design
 

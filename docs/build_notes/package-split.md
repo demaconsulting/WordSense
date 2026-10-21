@@ -1,35 +1,38 @@
 # Package Split
 
-This note records the split of WordSense into five NuGet packages and the rules behind it.
+This note records the split of WordSense into NuGet packages and the rules behind it. It described five packages until
+the statistical `DemaConsulting.WordSense.Basic` package was merged into the core package (before version 1.0, so no
+released package is affected): the core now answers every word in context with `BasicWordSenseModel`, with no download
+and no ONNX Runtime, and the encoder packages compose it with their encoder through `FallbackWordSenseModel`.
 
 ## Packages
 
 Package dependencies:
 
 - `DemaConsulting.WordSense` (core): `IWordSenseModel`, `MirrorOptions`, `WordSense`,
-  `WordDetails`, `PartOfSpeech` and `WordLexicon`. Depends on nothing.
-- `DemaConsulting.WordSense.Basic`: `BasicWordSenseModel` with a small embedded statistical table (part-of-speech
-  tagger and context cues); no files.
-  Depends on the core.
+  `WordDetails`, `PartOfSpeech` and `WordLexicon`, the composite `FallbackWordSenseModel` and `BasicWordSenseModel`
+  with its small embedded statistical table (part-of-speech tagger and context cues); no files. Depends on nothing.
 - `DemaConsulting.WordSense.Onnx`: the abstract `OnnxWordSenseModel`, the encoder, the tokenizer, the downloader and
   the weights reader. Depends on the core and ONNX Runtime.
-- `DemaConsulting.WordSense.MiniLM`: `MiniLMWordSenseModel` with embedded weights. Depends on Onnx.
-- `DemaConsulting.WordSense.BertBaseCased`: `BertBaseCasedWordSenseModel` with embedded weights. Depends on Onnx.
+- `DemaConsulting.WordSense.MiniLM`: `MiniLMWordSenseModel` with embedded weights. Depends on Onnx and the core.
+- `DemaConsulting.WordSense.BertBaseCased`: `BertBaseCasedWordSenseModel` with embedded weights. Depends on Onnx and
+  the core.
 
 ```text
 WordSense.MiniLM ───────┐
-                        ├──> WordSense.Onnx ──> WordSense (core)
+                        ├──> WordSense.Onnx ──> WordSense (core, with the Basic model)
 WordSense.BertBaseCased ┘                            ^
-WordSense.Basic ─────────────────────────────────────┘
+(both also use the core Basic model) ────────────────┘
 ```
 
 The namespace of each package equals the package name.
 
 ## Rules
 
-- **The core knows nothing of models.** It has no vectors, weights, ONNX or tokenizer, and it names no model package
-  in code. A model is anything that implements `IWordSenseModel`.
-- **Basic and Onnx depend on the core only.** The encoder packages depend on `Onnx`; nothing depends on an encoder
+- **The core knows nothing of encoder models.** It has no vectors, encoder weights, ONNX or tokenizer, and it names no
+  model package in code. A model is anything that implements `IWordSenseModel`; the core supplies the statistical
+  `BasicWordSenseModel`.
+- **Onnx depends on the core only.** The encoder packages depend on `Onnx` and the core; nothing depends on an encoder
   package.
 - **Weights belong to a model package.** Each encoder package embeds one `weights.bin` that was trained for its exact
   model files (dense `WSX1` format) and is checked against their SHA-256 digests.
@@ -52,7 +55,7 @@ weights format is supported.
 ## Superseded History
 
 An earlier split divided the single package into a core and a MiniLM package, with `WordSenseClassifier`,
-`WordAnalysis`, `AnswerBasis` and the `MiniLMWordSense` factory. That design is replaced by the five packages above,
+`WordAnalysis`, `AnswerBasis` and the `MiniLMWordSense` factory. That design is replaced by the packages above,
 and its accuracy figures (a byte-identical before and after comparison of the split, about 97 percent best-sense
 accuracy on the holdout) are history and not a statement about the current packages; the current figures are in
 `model-comparison.md` and `basic-evaluation.md`.

@@ -1,6 +1,7 @@
 # Basic Model Evaluation
 
-This note records how the statistical model `DemaConsulting.WordSense.Basic` is trained and measured. The figures are
+This note records how the statistical model `BasicWordSenseModel` (in the core package `DemaConsulting.WordSense`; it was
+the separate package `DemaConsulting.WordSense.Basic` before version 1.0) is trained and measured. The figures are
 the output of the builder commands `train-basic` and `evaluate basic`; how to retrain and re-measure it is in
 `tuning.md`.
 

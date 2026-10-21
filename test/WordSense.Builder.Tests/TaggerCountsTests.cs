@@ -1,4 +1,4 @@
-using DemaConsulting.WordSense.Basic;
+using DemaConsulting.WordSense;
 
 namespace WordSense.Builder.Tests;
 

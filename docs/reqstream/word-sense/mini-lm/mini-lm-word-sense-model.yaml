@@ -57,7 +57,7 @@ sections:
                   composition lives in the model package so that the encoder base class needs no Basic model.
                 tests:
                   - MiniLMWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback
-                  - MiniLMWordSenseModel_Assembly_ReferencesCoreOnnxAndBasic
+                  - MiniLMWordSenseModel_Assembly_ReferencesCoreAndOnnx
                   - MiniLMWordSenseModel_Dispose_DisposesEncoderAndFallback
 
               - id: WordSense-MiniLM-MiniLMWordSenseModel-Options

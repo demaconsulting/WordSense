@@ -58,9 +58,9 @@ reviews:
       - "test/DemaConsulting.WordSense.MiniLM.Tests/ReadmeSample.cs"       # README sample code, compiled and run
       - "test/DemaConsulting.WordSense.MiniLM.Tests/ReadmeSampleTests.cs"  # keeps README code and output in sync
       - "test/DemaConsulting.WordSense.MiniLM.Tests/DocSampleText.cs"      # text helpers of the doc-check tests
-      - "test/DemaConsulting.WordSense.Basic.Tests/BasicReadmeSample.cs"       # Basic README sample, compiled and run
-      - "test/DemaConsulting.WordSense.Basic.Tests/BasicReadmeSampleTests.cs"  # keeps Basic README in sync
-      - "test/DemaConsulting.WordSense.Basic.Tests/ModelTableReadmeTests.cs"  # keeps README model table in sync
+      - "test/DemaConsulting.WordSense.Tests/BasicReadmeSample.cs"       # Basic README sample, compiled and run
+      - "test/DemaConsulting.WordSense.Tests/BasicReadmeSampleTests.cs"  # keeps Basic README in sync
+      - "test/DemaConsulting.WordSense.Tests/ModelTableReadmeTests.cs"  # keeps README model table in sync
 
   # Decomposition Review (only one per repository)
   - id: Decomposition
@@ -291,6 +291,8 @@ reviews:
       - "src/DemaConsulting.WordSense/NamespaceDoc.cs"
       - "test/DemaConsulting.WordSense.Tests/ContractsTests.cs"
       - "test/DemaConsulting.WordSense.Tests/ReferenceTokenizerTests.cs"
+      - "test/DemaConsulting.WordSense.Tests/XmlDocExampleTests.cs"
+      - "test/DemaConsulting.WordSense.Tests/TestTables.cs"
 
   # WordSense-Core-WordLexicon Review (one per unit)
   - id: WordSense-Core-WordLexicon
@@ -329,99 +331,84 @@ reviews:
       - "test/DemaConsulting.WordSense.Tests/ContractsTests.cs"
       - "test/DemaConsulting.WordSense.Tests/FallbackWordSenseModelTests.cs"
 
-  # WordSense-Basic Review (one per subsystem)
-  - id: WordSense-Basic
-    title: Review that WordSense Basic Subsystem Satisfies Requirements
-    context:
-      - "docs/design/word-sense.md"
-      - "docs/reqstream/word-sense.yaml"
-    paths:
-      - "docs/reqstream/word-sense/basic.yaml"
-      - "docs/design/word-sense/basic.md"
-      - "docs/verification/word-sense/basic.md"
-      - "src/DemaConsulting.WordSense.Basic/NamespaceDoc.cs"
-      - "test/DemaConsulting.WordSense.Basic.Tests/XmlDocExampleTests.cs"
-      - "test/DemaConsulting.WordSense.Basic.Tests/SuiteTests.cs"
-      - "test/DemaConsulting.WordSense.Basic.Tests/TestTables.cs"
-
-  # WordSense-Basic-BasicWordSenseModel Review (one per unit)
-  - id: WordSense-Basic-BasicWordSenseModel
+  # WordSense-Core-BasicWordSenseModel Review (one per unit)
+  - id: WordSense-Core-BasicWordSenseModel
     title: Review that WordSense BasicWordSenseModel Implementation is Correct
     context:
-      - "docs/design/word-sense/basic.md"
-      - "docs/reqstream/word-sense/basic.yaml"
+      - "docs/design/word-sense/core.md"
+      - "docs/reqstream/word-sense/core.yaml"
     paths:
-      - "docs/reqstream/word-sense/basic/basic-word-sense-model.yaml"
-      - "docs/design/word-sense/basic/basic-word-sense-model.md"
-      - "docs/verification/word-sense/basic/basic-word-sense-model.md"
-      - "src/DemaConsulting.WordSense.Basic/BasicWordSenseModel.cs"
-      - "test/DemaConsulting.WordSense.Basic.Tests/BasicWordSenseModelTests.cs"
+      - "docs/reqstream/word-sense/core/basic-word-sense-model.yaml"
+      - "docs/design/word-sense/core/basic-word-sense-model.md"
+      - "docs/verification/word-sense/core/basic-word-sense-model.md"
+      - "src/DemaConsulting.WordSense/BasicWordSenseModel.cs"
+      - "test/DemaConsulting.WordSense.Tests/BasicWordSenseModelTests.cs"
 
-  # WordSense-Basic-BasicClassifier Review (one per unit)
-  - id: WordSense-Basic-BasicClassifier
+  # WordSense-Core-BasicClassifier Review (one per unit)
+  - id: WordSense-Core-BasicClassifier
     title: Review that WordSense BasicClassifier Implementation is Correct
     context:
-      - "docs/design/word-sense/basic.md"
-      - "docs/reqstream/word-sense/basic.yaml"
+      - "docs/design/word-sense/core.md"
+      - "docs/reqstream/word-sense/core.yaml"
     paths:
-      - "docs/reqstream/word-sense/basic/basic-classifier.yaml"
-      - "docs/design/word-sense/basic/basic-classifier.md"
-      - "docs/verification/word-sense/basic/basic-classifier.md"
-      - "src/DemaConsulting.WordSense.Basic/BasicClassifier.cs"
-      - "test/DemaConsulting.WordSense.Basic.Tests/BasicClassifierTests.cs"
+      - "docs/reqstream/word-sense/core/basic-classifier.yaml"
+      - "docs/design/word-sense/core/basic-classifier.md"
+      - "docs/verification/word-sense/core/basic-classifier.md"
+      - "src/DemaConsulting.WordSense/BasicClassifier.cs"
+      - "test/DemaConsulting.WordSense.Tests/BasicClassifierTests.cs"
 
-  # WordSense-Basic-BasicTables Review (one per unit)
-  - id: WordSense-Basic-BasicTables
+  # WordSense-Core-BasicTables Review (one per unit)
+  - id: WordSense-Core-BasicTables
     title: Review that WordSense BasicTables Implementation is Correct
     context:
-      - "docs/design/word-sense/basic.md"
-      - "docs/reqstream/word-sense/basic.yaml"
+      - "docs/design/word-sense/core.md"
+      - "docs/reqstream/word-sense/core.yaml"
     paths:
-      - "docs/reqstream/word-sense/basic/basic-tables.yaml"
-      - "docs/design/word-sense/basic/basic-tables.md"
-      - "docs/verification/word-sense/basic/basic-tables.md"
-      - "src/DemaConsulting.WordSense.Basic/BasicTables.cs"
-      - "test/DemaConsulting.WordSense.Basic.Tests/BasicTablesTests.cs"
+      - "docs/reqstream/word-sense/core/basic-tables.yaml"
+      - "docs/design/word-sense/core/basic-tables.md"
+      - "docs/verification/word-sense/core/basic-tables.md"
+      - "src/DemaConsulting.WordSense/BasicTables.cs"
+      - "test/DemaConsulting.WordSense.Tests/BasicTablesTests.cs"
 
-  # WordSense-Basic-PosTagger Review (one per unit)
-  - id: WordSense-Basic-PosTagger
+  # WordSense-Core-PosTagger Review (one per unit)
+  - id: WordSense-Core-PosTagger
     title: Review that WordSense PosTagger Implementation is Correct
     context:
-      - "docs/design/word-sense/basic.md"
-      - "docs/reqstream/word-sense/basic.yaml"
+      - "docs/design/word-sense/core.md"
+      - "docs/reqstream/word-sense/core.yaml"
     paths:
-      - "docs/reqstream/word-sense/basic/pos-tagger.yaml"
-      - "docs/design/word-sense/basic/pos-tagger.md"
-      - "docs/verification/word-sense/basic/pos-tagger.md"
-      - "src/DemaConsulting.WordSense.Basic/PosTagger.cs"
-      - "src/DemaConsulting.WordSense.Basic/PosTag.cs"
-      - "test/DemaConsulting.WordSense.Basic.Tests/PosTaggerTests.cs"
+      - "docs/reqstream/word-sense/core/pos-tagger.yaml"
+      - "docs/design/word-sense/core/pos-tagger.md"
+      - "docs/verification/word-sense/core/pos-tagger.md"
+      - "src/DemaConsulting.WordSense/PosTagger.cs"
+      - "src/DemaConsulting.WordSense/PosTag.cs"
+      - "test/DemaConsulting.WordSense.Tests/PosTaggerTests.cs"
 
-  # WordSense-Basic-CueModel Review (one per unit)
-  - id: WordSense-Basic-CueModel
+  # WordSense-Core-CueModel Review (one per unit)
+  - id: WordSense-Core-CueModel
     title: Review that WordSense CueModel Implementation is Correct
     context:
-      - "docs/design/word-sense/basic.md"
-      - "docs/reqstream/word-sense/basic.yaml"
+      - "docs/design/word-sense/core.md"
+      - "docs/reqstream/word-sense/core.yaml"
     paths:
-      - "docs/reqstream/word-sense/basic/cue-model.yaml"
-      - "docs/design/word-sense/basic/cue-model.md"
-      - "docs/verification/word-sense/basic/cue-model.md"
-      - "src/DemaConsulting.WordSense.Basic/CueModel.cs"
-      - "test/DemaConsulting.WordSense.Basic.Tests/CueModelTests.cs"
+      - "docs/reqstream/word-sense/core/cue-model.yaml"
+      - "docs/design/word-sense/core/cue-model.md"
+      - "docs/verification/word-sense/core/cue-model.md"
+      - "src/DemaConsulting.WordSense/CueModel.cs"
+      - "test/DemaConsulting.WordSense.Tests/CueModelTests.cs"
 
-  # WordSense-Basic-SenseFusion Review (one per unit)
-  - id: WordSense-Basic-SenseFusion
+  # WordSense-Core-SenseFusion Review (one per unit)
+  - id: WordSense-Core-SenseFusion
     title: Review that WordSense SenseFusion Implementation is Correct
     context:
-      - "docs/design/word-sense/basic.md"
-      - "docs/reqstream/word-sense/basic.yaml"
+      - "docs/design/word-sense/core.md"
+      - "docs/reqstream/word-sense/core.yaml"
     paths:
-      - "docs/reqstream/word-sense/basic/sense-fusion.yaml"
-      - "docs/design/word-sense/basic/sense-fusion.md"
-      - "docs/verification/word-sense/basic/sense-fusion.md"
-      - "src/DemaConsulting.WordSense.Basic/SenseFusion.cs"
-      - "test/DemaConsulting.WordSense.Basic.Tests/SenseFusionTests.cs"
+      - "docs/reqstream/word-sense/core/sense-fusion.yaml"
+      - "docs/design/word-sense/core/sense-fusion.md"
+      - "docs/verification/word-sense/core/sense-fusion.md"
+      - "src/DemaConsulting.WordSense/SenseFusion.cs"
+      - "test/DemaConsulting.WordSense.Tests/SenseFusionTests.cs"
 
   # WordSense-Onnx Review (one per subsystem)
   - id: WordSense-Onnx
@@ -607,14 +594,12 @@ reviews:
       - "docs/reqstream/ots/apimark.yaml"                                  # OTS requirements
       - "docs/design/ots/apimark.md"                                       # OTS integration design
       - "docs/verification/ots/apimark.md"                                 # OTS verification
-      - "src/DemaConsulting.WordSense/NamespaceDoc.cs"                     # core API reference text
-      - "src/DemaConsulting.WordSense.Basic/NamespaceDoc.cs"               # Basic API reference text
+      - "src/DemaConsulting.WordSense/NamespaceDoc.cs"                     # core API reference text, with Basic
       - "src/DemaConsulting.WordSense.Onnx/NamespaceDoc.cs"                # Onnx API reference text
       - "src/DemaConsulting.WordSense.MiniLM/NamespaceDoc.cs"              # MiniLM API reference text
       - "src/DemaConsulting.WordSense.BertBaseCased/NamespaceDoc.cs"       # BertBaseCased API reference text
       - "test/DemaConsulting.WordSense.Tests/XmlDocExampleVerifier.cs"     # compiles documented examples
       - "test/DemaConsulting.WordSense.Tests/XmlDocExampleTests.cs"        # example compile test
-      - "test/DemaConsulting.WordSense.Basic.Tests/XmlDocExampleTests.cs"  # Basic example test
       - "test/DemaConsulting.WordSense.Onnx.Tests/XmlDocExampleTests.cs"   # Onnx example test
       - "test/DemaConsulting.WordSense.MiniLM.Tests/XmlDocExampleTests.cs"  # MiniLM example test
       - "test/DemaConsulting.WordSense.BertBaseCased.Tests/XmlDocExampleTests.cs"  # BertBaseCased example test

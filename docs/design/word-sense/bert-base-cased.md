@@ -12,14 +12,14 @@ text, capitalization is part of the context the model sees. The encoder behavior
 package derives an internal encoder model that states which model it is) and the composition in the core
 `FallbackWordSenseModel`.
 
-The subsystem contains one unit, **BertBaseCasedWordSenseModel**. It references the core, Onnx and Basic packages.
+The subsystem contains one unit, **BertBaseCasedWordSenseModel**. It references the core and Onnx packages.
 
 ### Interfaces
 
 It exposes `BertBaseCasedWordSenseModel` with the constructor `(string? modelDirectory = null,
 int maxSequenceLength = 128)`, the properties `HiddenSize` and `ModelId` and the methods `EnsureModelAsync`,
 `ClassifyAsync` and `Dispose` of `IWordSenseModel`. It consumes the internal model description type of the Onnx
-package, the `FallbackWordSenseModel` of the core package, `BasicWordSenseModel` of the Basic package and the weights
+package, the `FallbackWordSenseModel` and `BasicWordSenseModel` of the core package and the weights
 embedded in its own assembly.
 
 ### Design

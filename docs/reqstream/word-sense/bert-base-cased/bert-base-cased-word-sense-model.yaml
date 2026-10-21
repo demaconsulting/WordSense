@@ -57,7 +57,7 @@ sections:
                   composition lives in the model package so that the encoder base class needs no Basic model.
                 tests:
                   - BertBaseCasedWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback
-                  - BertBaseCasedWordSenseModel_Assembly_ReferencesCoreOnnxAndBasic
+                  - BertBaseCasedWordSenseModel_Assembly_ReferencesCoreAndOnnx
                   - BertBaseCasedWordSenseModel_Dispose_DisposesEncoderAndFallback
 
               - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Options

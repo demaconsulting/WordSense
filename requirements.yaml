@@ -13,6 +13,12 @@ includes:
   - docs/reqstream/word-sense/core.yaml
   - docs/reqstream/word-sense/core/word-lexicon.yaml
   - docs/reqstream/word-sense/core/word-sense-contracts.yaml
+  - docs/reqstream/word-sense/core/basic-word-sense-model.yaml
+  - docs/reqstream/word-sense/core/basic-classifier.yaml
+  - docs/reqstream/word-sense/core/basic-tables.yaml
+  - docs/reqstream/word-sense/core/pos-tagger.yaml
+  - docs/reqstream/word-sense/core/cue-model.yaml
+  - docs/reqstream/word-sense/core/sense-fusion.yaml
   - docs/reqstream/word-sense/word-data.yaml
   - docs/reqstream/word-sense/word-data/data-schema.yaml
   - docs/reqstream/word-sense/word-data/data-layout.yaml
@@ -21,13 +27,6 @@ includes:
   - docs/reqstream/word-sense/word-data/form-auditor.yaml
   - docs/reqstream/word-sense/word-data/sense-label-generator.yaml
   - docs/reqstream/word-sense/word-data/data-validator.yaml
-  - docs/reqstream/word-sense/basic.yaml
-  - docs/reqstream/word-sense/basic/basic-word-sense-model.yaml
-  - docs/reqstream/word-sense/basic/basic-classifier.yaml
-  - docs/reqstream/word-sense/basic/basic-tables.yaml
-  - docs/reqstream/word-sense/basic/pos-tagger.yaml
-  - docs/reqstream/word-sense/basic/cue-model.yaml
-  - docs/reqstream/word-sense/basic/sense-fusion.yaml
   - docs/reqstream/word-sense/onnx.yaml
   - docs/reqstream/word-sense/onnx/onnx-word-sense-model.yaml
   - docs/reqstream/word-sense/onnx/onnx-classifier.yaml

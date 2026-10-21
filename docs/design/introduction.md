@@ -29,16 +29,15 @@ This document is intended for:
 This document covers the detailed design of the WordSense system and its constituent
 software items, specifically:
 
-- **WordSense (System)** — the whole library, delivered as five layered NuGet packages
-- **Core (Subsystem)** — the package `DemaConsulting.WordSense`: the embedded word lexicon and sense catalog and the
-  public model interface; it has no third-party dependency
+- **WordSense (System)** — the whole library, delivered as four layered NuGet packages
+- **Core (Subsystem)** — the package `DemaConsulting.WordSense`: the embedded word lexicon and sense catalog, the
+  public model interface and the built-in statistical model (the former Basic package); it has no third-party
+  dependency
   - **WordLexicon (Unit)** — the embedded lexicon of known words (their analyses) and the sense catalog (senses and
     groups), including the internal reader of the lexicon blob
   - **WordSenseContracts (Unit)** — the model interface, the composite `FallbackWordSenseModel`, the mirror options,
     the answer values (`ClassifyResult`, `AnalysisCandidate`, `SenseCandidate`), the answer level and the sense and
     group records
-- **Basic (Subsystem)** — the package `DemaConsulting.WordSense.Basic`: a statistical model (part-of-speech tagger and
-  context cues) that needs no model files; it references only the core package
   - **BasicWordSenseModel (Unit)** — the public statistical model
   - **BasicClassifier (Unit)** — lexicon lookup, sentence segmentation and the driving of the statistical units
   - **BasicTables (Unit)** — the embedded statistics table and its reader
@@ -56,13 +55,13 @@ software items, specifically:
   - **DownloadMirror (Unit)** — validated mirror configuration
   - **LemmaWeights (Unit)** — per-lemma weights and thresholds, their blob reader, matching to the lexicon and the
     feature computation
-- **MiniLM (Subsystem)** — the package `DemaConsulting.WordSense.MiniLM`; it references the core, Onnx and Basic
-  packages
-  - **MiniLMWordSenseModel (Unit)** — the all-MiniLM-L6-v2 int8 model, its encoder model composed with the Basic model
-- **BertBaseCased (Subsystem)** — the package `DemaConsulting.WordSense.BertBaseCased`; it references the core, Onnx and
-  Basic packages
-  - **BertBaseCasedWordSenseModel (Unit)** — the bert-base-cased int8 model, its encoder model composed with the Basic
+- **MiniLM (Subsystem)** — the package `DemaConsulting.WordSense.MiniLM`; it references the core and Onnx packages
+  - **MiniLMWordSenseModel (Unit)** — the all-MiniLM-L6-v2 int8 model, its encoder model composed with the core Basic
     model
+- **BertBaseCased (Subsystem)** — the package `DemaConsulting.WordSense.BertBaseCased`; it references the core and Onnx
+  packages
+  - **BertBaseCasedWordSenseModel (Unit)** — the bert-base-cased int8 model, its encoder model composed with the core
+    Basic model
 - **WordSenseBuilder (Unit)** — the non-shipped build-time tool that creates the lexicon blob and the weights blobs,
   chooses the thresholds and measures the models
 - **WordData (Subsystem)** — the TSV word data under `data/` (imported from Open English WordNet, CC BY 4.0, with the
@@ -71,8 +70,8 @@ software items, specifically:
     **SenseLabelGenerator (Units)** — the schema, the file layout, the import, the generated forms and their audit,
     the validation and the readable sense labels
 
-The ONNX Runtime OTS runtime dependency of the Onnx package is also covered. The core package and the Basic package
-have no third-party runtime dependency.
+The ONNX Runtime OTS runtime dependency of the Onnx package is also covered. The core package has no third-party
+runtime dependency.
 
 OTS items are intentionally outside the SysML2 model: the model describes only the software items of
 WordSense (the system, its subsystems and units), while the OTS items are documented by their own design,
@@ -113,31 +112,32 @@ diagram or the prose below.
 
 ![Software Structure](SoftwareStructureView.svg)
 
-WordSense ships as five NuGet packages, each modeled as one subsystem of the single WordSense system. The packages
+WordSense ships as four NuGet packages, each modeled as one subsystem of the single WordSense system (the statistical
+Basic model, which was a fifth package before version 1.0, is part of the core subsystem). The packages
 form layers:
 
 - The **core** package defines the vocabulary: the lexicon of known words with their analyses, the sense catalog (every
   fine sense and, where curated, its group) and the contracts (`IWordSenseModel`, `FallbackWordSenseModel`,
   `ClassifyResult`, `AnalysisCandidate`, `SenseCandidate`, `SenseLevel`, `WordDetails`,
-  `PartOfSpeech`, `SenseInfo`, `SenseGroup`, `MirrorOptions`). It holds no vectors, no weights and no ONNX code. Its
+  `PartOfSpeech`, `SenseInfo`, `SenseGroup`, `MirrorOptions`), and it implements the contracts with the built-in
+  `BasicWordSenseModel`, a statistical tagger and cue model that answers at the part of speech level (and the sense
+  level where the lemma and part of speech have one sense). It holds no encoder weights and no ONNX code. Its
   package license expression is `MIT AND CC-BY-4.0` and a packed `NOTICE.md` carries the attribution of the data
-  embedded in it (Open English WordNet 2025 under CC BY 4.0, and the Princeton WordNet 3.0 notice).
-- The **Basic** package implements the contracts with a statistical tagger and cue model that answers at the part of
-  speech level. It references the core package only. Its package license expression is `MIT` and a packed `NOTICE.md`
-  records that its statistics come from our own CC0 corpora (the open part-of-speech corpus and the sentence corpus) and
-  from no treebank.
+  embedded in it (Open English WordNet 2025 under CC BY 4.0, and the Princeton WordNet 3.0 notice) and records that the
+  statistics of the built-in model come from our own CC0 corpora (the open part-of-speech corpus and the sentence
+  corpus) and from no treebank.
 - The **Onnx** package implements the contracts for any BERT-style encoder: model file management, encoder,
   tokenizer, weights, thresholds and scoring of the fine senses. It references the core package and ONNX Runtime, and
   nothing else: its abstract encoder model is usable on its own and answers from the lexicon and the encoder alone.
 - The **MiniLM** and **BertBaseCased** packages each add one public class that pins one encoder model, embeds the
-  weights and thresholds trained for it and composes the encoder model with the Basic model through the core
+  weights and thresholds trained for it and composes the encoder model with the core Basic model through the core
   `FallbackWordSenseModel`, so that a word the encoder does not score is answered by the Basic model. They reference
-  the core, Onnx and Basic packages.
+  the core and Onnx packages.
 
 The dependency rule is that a package may reference only the packages in layers below it: core references nothing,
-Basic and Onnx reference core only, and MiniLM and BertBaseCased reference core, Onnx and Basic. No package
-references a sibling model package other than these two compositions, and Onnx never references Basic. The builder
-tool references all five packages and is never shipped.
+Onnx references core only, and MiniLM and BertBaseCased reference core and Onnx. No package
+references a sibling model package other than these two. The builder
+tool references all four packages and is never shipped.
 
 ![WordSense system](WordSenseView.svg)
 
@@ -159,10 +159,6 @@ src/DemaConsulting.WordSense/                      — core subsystem
 ├── IWordSenseModel.cs (also MirrorOptions), FallbackWordSenseModel.cs, ClassifyResult.cs,
 │   AnalysisCandidate.cs, SenseCandidate.cs, WordDetails.cs (also PartOfSpeech), SenseInfo.cs (also SenseGroup),
 │   SenseLevel.cs                                   — word-sense-contracts unit
-├── NamespaceDoc.cs                                 — namespace description for the generated API reference (no code)
-└── Resources/wordsense.img                         — embedded flat word image (resource of the word-lexicon unit)
-
-src/DemaConsulting.WordSense.Basic/                — basic subsystem
 ├── BasicWordSenseModel.cs                          — basic-word-sense-model unit
 ├── BasicClassifier.cs                              — basic-classifier unit
 ├── BasicTables.cs                                  — basic-tables unit (tables and the feature hash)
@@ -170,7 +166,8 @@ src/DemaConsulting.WordSense.Basic/                — basic subsystem
 ├── PosTagger.cs                                    — pos-tagger unit
 ├── CueModel.cs                                     — cue-model unit
 ├── SenseFusion.cs                                  — sense-fusion unit
-├── NamespaceDoc.cs
+├── NamespaceDoc.cs                                 — namespace description for the generated API reference (no code)
+├── Resources/wordsense.img                         — embedded flat word image (resource of the word-lexicon unit)
 └── Resources/basic.bin                             — embedded statistics table (resource of the basic-tables unit)
 
 src/DemaConsulting.WordSense.Onnx/                 — onnx subsystem

@@ -34,7 +34,6 @@ namespace DemaConsulting.WordSense;
 /// <example>
 ///     <code>
 ///     using DemaConsulting.WordSense;
-///     using DemaConsulting.WordSense.Basic;
 ///
 ///     // The composition that the MiniLM and BertBaseCased packages build for you, written out for any primary model
 ///     static IWordSenseModel Compose(IWordSenseModel primary) => new FallbackWordSenseModel(primary, new BasicWordSenseModel());

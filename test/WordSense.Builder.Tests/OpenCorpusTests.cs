@@ -88,8 +88,8 @@ public sealed class OpenCorpusTests : IDisposable
         Assert.Equal(["We", "don't", "know", "John", "'s", "car", ",", "but", "it's", "red", "and", "I", "can't", "go", "."], tagged.Words);
         Assert.Equal(tagged.Words.Length, tagged.Tags.Length);
         var possessive = Array.IndexOf(tagged.Words, "'s");
-        Assert.Equal(DemaConsulting.WordSense.Basic.PosTag.Other, tagged.Tags[possessive]);
-        Assert.Equal(DemaConsulting.WordSense.Basic.PosTag.Auxiliary, tagged.Tags[Array.IndexOf(tagged.Words, "don't")]);
+        Assert.Equal(DemaConsulting.WordSense.PosTag.Other, tagged.Tags[possessive]);
+        Assert.Equal(DemaConsulting.WordSense.PosTag.Auxiliary, tagged.Tags[Array.IndexOf(tagged.Words, "don't")]);
     }
 
     /// <summary>

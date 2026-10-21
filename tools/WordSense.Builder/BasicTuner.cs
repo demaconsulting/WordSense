@@ -3,7 +3,6 @@ using System.Globalization;
 using System.IO.Compression;
 using System.Text;
 using DemaConsulting.WordSense;
-using DemaConsulting.WordSense.Basic;
 
 #pragma warning disable S6966 // the tool writes small console and file outputs; asynchronous writes add nothing
 

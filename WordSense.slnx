@@ -1,14 +1,12 @@
 <Solution>
   <Folder Name="/src/">
     <Project Path="src/DemaConsulting.WordSense/DemaConsulting.WordSense.csproj" />
-    <Project Path="src/DemaConsulting.WordSense.Basic/DemaConsulting.WordSense.Basic.csproj" />
     <Project Path="src/DemaConsulting.WordSense.Onnx/DemaConsulting.WordSense.Onnx.csproj" />
     <Project Path="src/DemaConsulting.WordSense.MiniLM/DemaConsulting.WordSense.MiniLM.csproj" />
     <Project Path="src/DemaConsulting.WordSense.BertBaseCased/DemaConsulting.WordSense.BertBaseCased.csproj" />
   </Folder>
   <Folder Name="/test/">
     <Project Path="test/DemaConsulting.WordSense.Tests/DemaConsulting.WordSense.Tests.csproj" />
-    <Project Path="test/DemaConsulting.WordSense.Basic.Tests/DemaConsulting.WordSense.Basic.Tests.csproj" />
     <Project Path="test/DemaConsulting.WordSense.Onnx.Tests/DemaConsulting.WordSense.Onnx.Tests.csproj" />
     <Project Path="test/DemaConsulting.WordSense.MiniLM.Tests/DemaConsulting.WordSense.MiniLM.Tests.csproj" />
     <Project Path="test/DemaConsulting.WordSense.BertBaseCased.Tests/DemaConsulting.WordSense.BertBaseCased.Tests.csproj" />

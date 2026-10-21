@@ -1,6 +1,6 @@
 using System.Globalization;
 using System.Text;
-using DemaConsulting.WordSense.Basic;
+using DemaConsulting.WordSense;
 
 namespace WordSense.Builder;
 

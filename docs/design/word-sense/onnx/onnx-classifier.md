@@ -17,8 +17,8 @@ to 7), without changing the lifecycle code of `OnnxWordSenseModel`.
 
 An internal sealed class that holds no mutable state; it holds the weights table (`WeightedLemmaTable`) and the
 encoder as a delegate (`PooledEncode`; the model supplies its shared `OnnxEncoder`, tests supply a fake, and a classifier
-without an encoder answers every word from the lexicon). It uses no other model: it never references the Basic
-package. Per call it builds one result per word and work lists: words answered at once, words pending an encoder
+without an encoder answers every word from the lexicon). It uses no other model: it never uses the Basic
+model. Per call it builds one result per word and work lists: words answered at once, words pending an encoder
 decision and words answered from the lexicon alone.
 
 A result is a core `ClassifyResult(Word, IsKnown, Analyses, Details, Level, Confidence, GroupId, SenseId)`; the
@@ -153,7 +153,7 @@ gets the lexicon-only answer. Encoder failures propagate.
 #### Dependencies
 
 `WordLexicon`, the core contracts, `OnnxEncoder` (through the `PooledEncode` delegate) and `LemmaWeights` (weights
-table, feature computation, scoring, levels). No other model: the classifier does not reference the Basic package.
+table, feature computation, scoring, levels). No other model: the classifier does not use the Basic model.
 
 #### Callers
 

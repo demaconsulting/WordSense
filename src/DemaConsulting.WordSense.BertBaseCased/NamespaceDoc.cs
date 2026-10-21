@@ -9,8 +9,8 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     Package: the NuGet package <c>DemaConsulting.WordSense.BertBaseCased</c>, which targets <c>net8.0</c>,
 ///     <c>net9.0</c> and <c>net10.0</c>; it is built on <c>DemaConsulting.WordSense.Onnx</c> (the shared tokenizer, ONNX
 ///     encoder, verified downloader and abstract <c>OnnxWordSenseModel</c>, which the encoder model inside
-///     <c>BertBaseCasedWordSenseModel</c> extends) and depends on <c>DemaConsulting.WordSense</c>,
-///     <c>DemaConsulting.WordSense.Basic</c> and ONNX Runtime. Install it with
+///     <c>BertBaseCasedWordSenseModel</c> extends) and depends on <c>DemaConsulting.WordSense</c> (which holds the built-in
+///     Basic model) and ONNX Runtime. Install it with
 ///     <c>dotnet add package DemaConsulting.WordSense.BertBaseCased</c>. Two kinds of data are involved: the per-lemma
 ///     classifier weights trained for this model are embedded in the assembly (nothing to download), while the encoder
 ///     files (<c>model_int8.onnx</c> of 103.5 MiB, plus <c>vocab.txt</c>, <c>config.json</c> and
@@ -37,8 +37,8 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     (https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-table.md; approximate and machine
 ///     dependent; the memory it adds does not include the 15 MiB of the word lexicon). Choose
 ///     <c>DemaConsulting.WordSense.MiniLM</c> (the default recommendation) for a small
-///     model: 22 MiB. The statistical Basic model
-///     (<c>DemaConsulting.WordSense.Basic</c>, no download) is enough when nothing may be
+///     model: 22 MiB. The statistical Basic model of the core package
+///     (<c>BasicWordSenseModel</c>, no download) is enough when nothing may be
 ///     downloaded.
 ///     </para>
 ///     <para>

@@ -78,7 +78,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\DemaConsulting.WordSense\DemaConsulting.WordSense.csproj" />
     <ProjectReference Include="..\..\src\DemaConsulting.WordSense.Onnx\DemaConsulting.WordSense.Onnx.csproj" />
-    <ProjectReference Include="..\..\src\DemaConsulting.WordSense.Basic\DemaConsulting.WordSense.Basic.csproj" />
     <ProjectReference Include="..\..\src\DemaConsulting.WordSense.MiniLM\DemaConsulting.WordSense.MiniLM.csproj" />
     <ProjectReference Include="..\..\src\DemaConsulting.WordSense.BertBaseCased\DemaConsulting.WordSense.BertBaseCased.csproj" />
   </ItemGroup>

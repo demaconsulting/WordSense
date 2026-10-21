@@ -5,7 +5,7 @@ using System.Text;
 namespace WordSense.Builder;
 
 /// <summary>
-///     Writes the table of the basic model (<c>basic.bin</c>) that <c>DemaConsulting.WordSense.Basic</c> embeds.
+///     Writes the table of the basic model (<c>basic.bin</c>) that <c>DemaConsulting.WordSense</c> embeds.
 /// </summary>
 /// <remarks>
 ///     The layout is described on <c>BasicTables</c>, the only reader. Words, suffixes and lemmas are written in the
@@ -41,7 +41,7 @@ internal static class BasicTablesWriter
             WriteDouble(raw, value);
         }
 
-        WriteVarint(raw, DemaConsulting.WordSense.Basic.PosTag.Count);
+        WriteVarint(raw, DemaConsulting.WordSense.PosTag.Count);
         foreach (var count in data.Unigrams.Concat(data.Bigrams).Concat(data.Trigrams))
         {
             WriteVarint(raw, count);

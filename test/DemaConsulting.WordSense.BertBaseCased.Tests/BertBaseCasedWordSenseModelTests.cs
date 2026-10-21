@@ -122,18 +122,18 @@ public class BertBaseCasedWordSenseModelTests
         }
 
         // The answer is the one of the Basic model, not the uniform answer of the encoder model
-        using var basic = new Basic.BasicWordSenseModel();
+        using var basic = new BasicWordSenseModel();
         var expected = await basic.ClassifyAsync(Sentence, TestContext.Current.CancellationToken);
         Assert.Equal(expected[2], results[2]);
         Assert.Equal(expected[4], results[4]);
     }
 
     /// <summary>
-    ///     The assembly builds on the core, the Onnx and the Basic packages and on nothing else of the WordSense family:
-    ///     besides the framework and the ONNX Runtime it references exactly those three.
+    ///     The assembly builds on the core and the Onnx packages and on nothing else of the WordSense family:
+    ///     besides the framework and the ONNX Runtime it references exactly those two (the Basic model is in the core).
     /// </summary>
     [Fact]
-    public void BertBaseCasedWordSenseModel_Assembly_ReferencesCoreOnnxAndBasic()
+    public void BertBaseCasedWordSenseModel_Assembly_ReferencesCoreAndOnnx()
     {
         // Arrange: the names of the assemblies that the BertBaseCased assembly references
         var references = typeof(BertBaseCasedWordSenseModel).Assembly.GetReferencedAssemblies()
@@ -150,7 +150,7 @@ public class BertBaseCasedWordSenseModelTests
             .ToList();
 
         // Assert
-        Assert.Equal(["DemaConsulting.WordSense", "DemaConsulting.WordSense.Basic", "DemaConsulting.WordSense.Onnx"], others);
+        Assert.Equal(["DemaConsulting.WordSense", "DemaConsulting.WordSense.Onnx"], others);
     }
 
     /// <summary>

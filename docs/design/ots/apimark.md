@@ -2,7 +2,7 @@
 
 ### Purpose
 
-DemaConsulting.ApiMark generates the API reference for each of the five WordSense packages (core, Basic, Onnx, MiniLM and
+DemaConsulting.ApiMark generates the API reference for each of the four WordSense packages (core, Onnx, MiniLM and
 BertBaseCased) from their XML doc
 comments. It was chosen because its output is organized for *gradual disclosure* (an index page,
 then a page per namespace, type, and member), which matches the stated audience: a coding agent

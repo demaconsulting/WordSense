@@ -1,5 +1,4 @@
 using DemaConsulting.WordSense;
-using DemaConsulting.WordSense.Basic;
 using DemaConsulting.WordSense.BertBaseCased;
 using DemaConsulting.WordSense.MiniLM;
 using DemaConsulting.WordSense.Onnx;
@@ -45,7 +44,7 @@ internal static class ModelCatalog
     [
         new("minilm", "DemaConsulting.WordSense.MiniLM", "all-MiniLM-L6-v2-int8", dir => Throttle(new MiniLMWordSenseModel(dir), m => m.Encoder)),
         new("bert-base-cased", "DemaConsulting.WordSense.BertBaseCased", "bert-base-cased-int8", dir => Throttle(new BertBaseCasedWordSenseModel(dir), m => m.Encoder)),
-        new("basic", "DemaConsulting.WordSense.Basic", null, _ => new BasicWordSenseModel()),
+        new("basic", "DemaConsulting.WordSense", null, _ => new BasicWordSenseModel()),
     ];
 
     /// <summary>

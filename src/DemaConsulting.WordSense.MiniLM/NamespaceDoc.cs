@@ -10,7 +10,7 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     <c>net10.0</c>; it is built on <c>DemaConsulting.WordSense.Onnx</c> (the shared tokenizer, ONNX encoder, verified
 ///     downloader and abstract <c>OnnxWordSenseModel</c>, which the encoder model inside <c>MiniLMWordSenseModel</c>
 ///     extends) and depends on
-///     <c>DemaConsulting.WordSense</c>, <c>DemaConsulting.WordSense.Basic</c> and ONNX Runtime. Install it with
+///     <c>DemaConsulting.WordSense</c> (which holds the built-in Basic model) and ONNX Runtime. Install it with
 ///     <c>dotnet add package DemaConsulting.WordSense.MiniLM</c>; no native or other setup is needed. Two kinds of
 ///     data are involved: the per-lemma classifier weights trained for the model are embedded in the assembly (nothing
 ///     to download), while the encoder files (<c>model_int8.onnx</c>, 21.9 MiB or 22,972,370
@@ -36,8 +36,8 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     (https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-table.md; the memory it adds
 ///     does not include the 15 MiB of the word lexicon).
 ///     Choose <c>DemaConsulting.WordSense.BertBaseCased</c> when case-awareness matters more than size:
-///     104 MiB. The statistical Basic model
-///     (<c>DemaConsulting.WordSense.Basic</c>, no download) is enough when nothing may be
+///     104 MiB. The statistical Basic model of the core package
+///     (<c>BasicWordSenseModel</c>, no download) is enough when nothing may be
 ///     downloaded. Latency, first-use time and memory are approximate and machine dependent.
 ///     </para>
 ///     <para>

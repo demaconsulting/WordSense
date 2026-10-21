@@ -2,7 +2,6 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Text;
 using DemaConsulting.WordSense;
-using DemaConsulting.WordSense.Basic;
 using DemaConsulting.WordSense.BertBaseCased;
 using DemaConsulting.WordSense.MiniLM;
 

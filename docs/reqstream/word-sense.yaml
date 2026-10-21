@@ -1,9 +1,10 @@
 ---
 # Software System Requirements for WordSense
 #
-# WordSense is delivered as five layered NuGet packages: the core package (DemaConsulting.WordSense: contracts, the
-# word lexicon and the sense catalog), the statistical Basic package, the shared Onnx package and the two encoder
-# model packages MiniLM and BertBaseCased. These requirements describe the externally visible behavior of the system
+# WordSense is delivered as four layered NuGet packages: the core package (DemaConsulting.WordSense: contracts, the
+# word lexicon, the sense catalog and the built-in statistical Basic model), the shared Onnx package and the two encoder
+# model packages MiniLM and BertBaseCased. (Before version 1.0 the Basic model was a package of its own; it is part of
+# the core package now.) These requirements describe the externally visible behavior of the system
 # from the perspective of its consumers, without specifying implementation details. Each requirement is decomposed
 # into the subsystem requirements under docs/reqstream/word-sense/.
 #
@@ -30,7 +31,7 @@ sections:
           still map one to one onto the words they passed in.
         children:
           - WordSense-Core-Contracts
-          - WordSense-Basic-Classify
+          - WordSense-Core-Classify
           - WordSense-Onnx-Classify
           - WordSense-Onnx-Levels
         tests:
@@ -119,7 +120,7 @@ sections:
           what it is worth, for example to choose a pronunciation only where the group fixes it.
         children:
           - WordSense-Core-Contracts
-          - WordSense-Basic-Classify
+          - WordSense-Core-Classify
           - WordSense-Onnx-Levels
           - WordSense-Onnx-Untrained
         tests:
@@ -142,7 +143,7 @@ sections:
           list, makes the result the single source of truth from which the summary is derived.
         children:
           - WordSense-Core-Contracts
-          - WordSense-Basic-Candidates
+          - WordSense-Core-Candidates
           - WordSense-Onnx-Candidates
         tests:
           - WordSense_Classifier_EndToEnd_AnalysesAreRankedAndSumToOne
@@ -153,8 +154,8 @@ sections:
           The system shall let two models be composed so that each word is answered by the first model where it scored
           senses for the word and otherwise by the second, with the complete result of one model and never a mixture,
           and the encoder model packages shall answer, by default, with their encoder model composed with the Basic
-          model, so that every ambiguous word that the encoder does not score is answered at the part of speech level
-          by the Basic model.
+          model of the core package, so that every ambiguous word that the encoder does not score is answered at the
+          part of speech level by the Basic model.
         tags: [system]
         justification: |
           An encoder scores fine senses only for the lemmas it was trained for, while the Basic model chooses the part
@@ -200,20 +201,22 @@ sections:
 
       - id: WordSense-Lib-Layered
         title: >-
-          The system shall be delivered as five layered packages, in which the core package carries no ONNX
-          Runtime, weights or vector dependency, the Basic package and the Onnx package depend only on the core
-          package, and the MiniLM and BertBaseCased packages depend on the core, Onnx and Basic packages.
+          The system shall be delivered as four layered packages, in which the core package carries the lexicon, the
+          sense catalog, the contracts and the built-in statistical Basic model and no ONNX Runtime, encoder weights
+          or vector dependency, the Onnx package depends only on the core package, and the MiniLM and BertBaseCased
+          packages depend on the core and Onnx packages.
         tags: [system]
         justification: |
           Callers that need only the lexicon, the statistical Basic model or the bare encoder model must not pay for
           anything they do not use (a native runtime, a model file, another model); layering lets each caller take
           exactly the packages it needs, and lets a third party implement the core contracts with its own model. The
-          encoder models answer words they were not trained for with the Basic model, so the two model packages that
-          ship an encoder bring the Basic package along and compose the two, while the Onnx package itself stays
+          core package answers every word with the Basic model by itself, so a caller that cannot download a model
+          needs nothing else; the encoder models answer words they were not trained for with that Basic model, so the
+          two model packages that ship an encoder compose it with their encoder, while the Onnx package itself stays
           independent of it.
         children:
           - WordSense-Core-Independent
-          - WordSense-Basic-Offline
+          - WordSense-Core-Offline
           - WordSense-Onnx-Lifecycle
           - WordSense-Onnx-Untrained
           - WordSense-MiniLM-Composition
@@ -223,8 +226,8 @@ sections:
         tests:
           - WordSenseContracts_CoreAssembly_HasNoOnnxOrWeightsReferences
           - OnnxWordSense_Assembly_ReferencesOnlyCore
-          - MiniLMWordSenseModel_Assembly_ReferencesCoreOnnxAndBasic
-          - BertBaseCasedWordSenseModel_Assembly_ReferencesCoreOnnxAndBasic
+          - MiniLMWordSenseModel_Assembly_ReferencesCoreAndOnnx
+          - BertBaseCasedWordSenseModel_Assembly_ReferencesCoreAndOnnx
           - WordSense_Classifier_EndToEnd_ClassifiesRecord
 
       - id: WordSense-Lib-BasicModel
@@ -239,12 +242,12 @@ sections:
           them decide which answers to trust, and stating the part of speech level honestly keeps it from naming fine
           senses it cannot tell apart.
         children:
-          - WordSense-Basic-Classify
-          - WordSense-Basic-Tagger
-          - WordSense-Basic-Cues
-          - WordSense-Basic-Fusion
-          - WordSense-Basic-Deterministic
-          - WordSense-Basic-Offline
+          - WordSense-Core-Classify
+          - WordSense-Core-Tagger
+          - WordSense-Core-Cues
+          - WordSense-Core-Fusion
+          - WordSense-Core-Deterministic
+          - WordSense-Core-Offline
         tests:
           - BasicClassifier_ClassifyAsync_Context_ChoosesPartOfSpeech
           - BasicClassifier_ClassifyAsync_AmbiguousWord_AlwaysAnswersWithProbability
@@ -292,8 +295,8 @@ sections:
           no decision (an unknown word), let them do so. The scale is not calibrated across models, words or levels,
           so each caller tunes its own threshold per model and level.
         children:
-          - WordSense-Basic-Fusion
-          - WordSense-Basic-BasicClassifier-Unknown
+          - WordSense-Core-Fusion
+          - WordSense-Core-BasicClassifier-Unknown
           - WordSense-Onnx-Confidence
           - WordSense-Core-Contracts
         tests:
@@ -378,26 +381,24 @@ sections:
 
       - id: WordSense-Lib-Packaging
         title: >-
-          Each of the five packages shall ship XML documentation with a namespace summary and verified examples,
+          Each of the four packages shall ship XML documentation with a namespace summary and verified examples,
           NuGet metadata and a README; each package that embeds derived data carries the credits and licenses in its
           package readme and in a packed NOTICE file, and declares the license expression that covers the embedded
-          data (the core package MIT AND CC-BY-4.0, the Basic package MIT).
+          data (the core package MIT AND CC-BY-4.0, including the CC0 statistics of its built-in model).
         tags: [system]
         justification: |
           Consumers learn the API from the package itself; examples that are compiled by the test suite cannot go
           stale (the tests verify the documentation examples; NuGet metadata and the package readme are produced
           and checked by the pack step), and the credits, notices and license expressions in the package satisfy the
           licenses of the embedded data (Open English WordNet and Princeton WordNet in the core package; the tables of
-          the Basic package come from our own CC0 corpora) and models.
+          the built-in model come from our own CC0 corpora) and models.
         children:
           - WordSense-Core-Packaging
-          - WordSense-Basic-Packaging
           - WordSense-Onnx-Packaging
           - WordSense-MiniLM-Packaging
           - WordSense-BertBaseCased-Packaging
         tests:
           - WordSense_XmlDocExamples_Compile
-          - BasicWordSense_XmlDocExamples_Compile
           - OnnxWordSense_XmlDocExamples_Compile
           - MiniLMWordSense_XmlDocExamples_Compile
           - BertBaseCasedWordSense_XmlDocExamples_Compile

@@ -63,15 +63,15 @@ The units collaborate as follows:
 Training and inference share the feature computation, so the builder and the classifier cannot diverge. The encoder
 and the weights are shared by all callers of one model and are released when the model is disposed.
 
-Layer rule: this package references the core package and ONNX Runtime only; it never references the Basic package.
-The MiniLM and BertBaseCased packages reference this package, the Basic package and the core package, and compose the
+Layer rule: this package references the core package and ONNX Runtime only; it never uses the Basic model.
+The MiniLM and BertBaseCased packages reference this package and the core package, and compose the
 two models.
 
 ### Classification Approach
 
 This section describes how the encoder models (MiniLM and BertBaseCased) decide the sense of a word and at which
 level they answer. The Basic model does not use embeddings at all: it tags the sentence with a hidden Markov model and
-weighs context cues, and it answers the part of speech (see _Basic Subsystem Design_). The scoring of fine senses with
+weighs context cues, and it answers the part of speech (see _Core Subsystem Design_). The scoring of fine senses with
 the encoder is specified here and implemented by `OnnxClassifier` (see _Classification (Run Time)_).
 
 #### Vocabulary
@@ -291,7 +291,8 @@ not a public extension point. A contributor adds a model as follows:
 1. Put the encoder files in `model/<model-id>/` (Git LFS) with `SHA256SUMS` and a README that records the source,
    license and the preparation steps (for example `tools/model-prep/make-bert-encoder.py`).
 2. Create a package `DemaConsulting.WordSense.<Name>` that references `DemaConsulting.WordSense.Onnx` and
-   `DemaConsulting.WordSense.Basic`, with an internal sealed encoder class that derives from `OnnxWordSenseModel` and
+   `DemaConsulting.WordSense` (for the Basic model), with an internal sealed encoder class that derives from
+   `OnnxWordSenseModel` and
    passes a `ModelSpec` (model id, each `ModelFile` with its SHA-256 and
    exact length, ONNX and vocabulary file names, whether the tokenizer lower-cases, the weights assembly and resource
    name, the hidden size) and a default maximum sequence length of 128, and a public sealed model class that wraps a

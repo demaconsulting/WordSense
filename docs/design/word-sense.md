@@ -34,23 +34,24 @@ slot being a lemma and a part of speech: the senses belong to a slot, and the an
 features, such as `cut` as an infinitive and as a past tense, share its probability), `Level`
 (`SenseLevel`) is the level at which the model was confident enough to answer (the fine sense, the group, or the part
 of speech alone; none only for a word that is not in the lexicon), `Confidence` is the probability of the answer at
-that level, and `GroupId` and `SenseId` name the answered group and sense. The system is delivered as five layered NuGet
+that level, and `GroupId` and `SenseId` name the answered group and sense. The system is delivered as four layered NuGet
 packages, each modeled as a subsystem, plus a non-shipped build-time tool:
 
 - **Core** (`DemaConsulting.WordSense`): the word lexicon (the analyses of every spelling), the sense catalog (senses,
-  groups, lookups by id and by OEWN key, the version of the inventory), the contracts and the composite
-  `FallbackWordSenseModel`. It has no vectors, weights, ONNX code or third-party dependency. See _Core Design_.
-- **Basic** (`DemaConsulting.WordSense.Basic`): a model that chooses the analysis of an ambiguous word with a
-  statistical part-of-speech tagger and context cues, answers at the part of speech level (at the sense level only
-  where the selected analysis has one sense), and needs no files, weights or network. See _Basic Design_.
+  groups, lookups by id and by OEWN key, the version of the inventory), the contracts, the composite
+  `FallbackWordSenseModel` and the built-in statistical model `BasicWordSenseModel`, which chooses the analysis of an
+  ambiguous word with a statistical part-of-speech tagger and context cues, answers at the part of speech level (at the
+  sense level only where the selected analysis has one sense), and needs no files, weights or network. (The statistical
+  model was the separate package `DemaConsulting.WordSense.Basic` before version 1.0; that package is retired.) The core
+  package has no ONNX code, encoder weights or third-party dependency. See _Core Design_.
 - **Onnx** (`DemaConsulting.WordSense.Onnx`): the machinery shared by the encoder models: model file download and
   verification, the ONNX encoder and tokenizer, per-lemma weights and thresholds, and the classifier that scores the
   fine senses and chooses the answer level. It references only the core package and is usable on its own; words whose
   senses it does not score are answered from the lexicon alone. See _Onnx Design_.
 - **MiniLM** (`DemaConsulting.WordSense.MiniLM`): the all-MiniLM-L6-v2 int8 encoder (uncased) with its embedded
-  weights and thresholds, composed with the Basic model. See _MiniLM Design_.
+  weights and thresholds, composed with the core Basic model. See _MiniLM Design_.
 - **BertBaseCased** (`DemaConsulting.WordSense.BertBaseCased`): the bert-base-cased int8 encoder (cased) with its
-  embedded weights and thresholds, composed with the Basic model. See _BertBaseCased Design_.
+  embedded weights and thresholds, composed with the core Basic model. See _BertBaseCased Design_.
 - **WordSenseBuilder** (unit, `tools/WordSense.Builder`): builds the lexicon blob, trains the weights of each encoder
   model, chooses the thresholds and measures the models on independent text. It is never shipped. See _WordSenseBuilder
   Unit Design_.
@@ -59,16 +60,16 @@ packages, each modeled as a subsystem, plus a non-shipped build-time tool:
   it. It is the source of the lexicon and the sense catalog that the builder compiles into the core package. See
   _WordData Subsystem Design_.
 
-The layering is strict. Core references nothing. Basic references only core. Onnx references only core (and ONNX
-Runtime). MiniLM and BertBaseCased reference core, Onnx and Basic. The composition of an encoder model with the Basic
+The layering is strict. Core references nothing. Onnx references only core (and ONNX
+Runtime). MiniLM and BertBaseCased reference core and Onnx. The composition of an encoder model with the Basic
 model is made in the model packages with the core `FallbackWordSenseModel`: the primary model (the encoder) answers a
-word when it scored senses for it, and the fallback model (Basic) answers every other word with its complete result,
-never a mixture of the two. Model packages never reference each other otherwise, so a consumer installs only the model
-it wants. The contracts in core are the seam between callers and models: a caller programs against `IWordSenseModel`
-and can swap models without code changes. The licenses follow the embedded data: the core package is licensed
-`MIT AND CC-BY-4.0` and ships a `NOTICE.md` with the Open English WordNet 2025 (CC BY 4.0) attribution and the Princeton
-WordNet 3.0 notice, and the Basic package is licensed `MIT` and ships a `NOTICE.md` that records that its statistics come
-from our own CC0 corpora and from no treebank.
+word when it scored senses for it, and the fallback model (Basic, from core) answers every other word with its complete
+result, never a mixture of the two. Model packages never reference each other otherwise, so a consumer installs only
+the model it wants. The contracts in core are the seam between callers and models: a caller programs against
+`IWordSenseModel` and can swap models without code changes. The licenses follow the embedded data: the core package is
+licensed `MIT AND CC-BY-4.0` and ships a `NOTICE.md` with the Open English WordNet 2025 (CC BY 4.0) attribution, the
+Princeton WordNet 3.0 notice and the record that the statistics of its built-in model come from our own CC0 corpora and
+from no treebank (no CC BY-SA material is shipped anywhere).
 
 ## External Interfaces
 
@@ -105,10 +106,9 @@ from our own CC0 corpora and from no treebank.
 The packages have these runtime dependencies:
 
 - Core: none besides the .NET base class library.
-- Basic: the core package only.
 - Onnx: the core package only, and the OTS item **ONNX Runtime** (see _OnnxRuntime Integration Design_ in the OTS
   design).
-- MiniLM and BertBaseCased: the core, Onnx and Basic packages.
+- MiniLM and BertBaseCased: the core and Onnx packages.
 
 The following OTS items are used to build and verify the system and are not consumed at runtime: **ApiMark**,
 **BuildMark**, **FileAssert**, **Pandoc**, **ReqStream**, **ReviewMark**, **SarifMark**, **SonarMark**,

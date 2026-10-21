@@ -1,7 +1,7 @@
 # System Verification Design
 
-This document describes the system-level verification strategy for WordSense, the set of five layered NuGet packages
-`DemaConsulting.WordSense` (core), `DemaConsulting.WordSense.Basic`, `DemaConsulting.WordSense.Onnx`,
+This document describes the system-level verification strategy for WordSense, the set of four layered NuGet packages
+`DemaConsulting.WordSense` (core, with the built-in Basic model), `DemaConsulting.WordSense.Onnx`,
 `DemaConsulting.WordSense.MiniLM` and `DemaConsulting.WordSense.BertBaseCased`, together with the non-shipped builder
 tool that generates their embedded data.
 
@@ -11,10 +11,9 @@ The system is verified in layers that follow the package layers. Each package ha
 test project verifies the subsystem of that package through its public API and its units through the internal API
 (made visible to the test project by `InternalsVisibleTo`):
 
-- `test/DemaConsulting.WordSense.Tests` verifies the core package with the embedded word lexicon only. It needs no
-  model, no model file and no network access.
-- `test/DemaConsulting.WordSense.Basic.Tests` verifies the statistical model against the embedded word lexicon, toy
-  statistical tables and the embedded table.
+- `test/DemaConsulting.WordSense.Tests` verifies the core package with the embedded word lexicon only: the lexicon,
+  the catalog, the contracts and the built-in statistical model (the Basic model, against the embedded word lexicon,
+  toy statistical tables and the embedded table). It needs no model, no model file and no network access.
 - `test/DemaConsulting.WordSense.Onnx.Tests` verifies the shared encoder implementation with small substitutes:
   hand-built vocabularies, fake weights and a loopback `HttpListener` for downloads. Its model-level tests
   (`OnnxWordSenseModelTests`, `OnnxClassifierTests`, `OnnxEncoderTests`) use test doubles or the committed int8 model.
@@ -34,7 +33,8 @@ subsystem documents, with substitutes where a real model is not needed.
 - **Framework**: xUnit v3 running under the .NET SDK on net8.0, net9.0 and net10.0
 - **Execution**: `dotnet test` invoked by `build.ps1` and the CI pipeline (Git LFS content is fetched)
 - **Platforms**: Windows, Linux and macOS in the CI matrix
-- **Dependencies**: the core, Basic and tokenizer tests have none. The real-model tests need the Git LFS files under
+- **Dependencies**: the core (including Basic) and tokenizer tests have none. The real-model tests need the Git LFS
+  files under
   `model/all-MiniLM-L6-v2-int8/` (`model_int8.onnx`, `vocab.txt`) and `model/bert-base-cased-int8/`
   (`model_int8.onnx`, `vocab.txt`, `config.json`, `tokenizer.json`); no network access. Tests that need a model are
   skipped, not failed, when the LFS content is absent.
@@ -87,7 +87,7 @@ level the result is answered at, the senses of the selected analysis are the sen
 ranked by their probability given the analysis with the most probable first, and their probabilities sum to one within a
 small tolerance, so that a consumer can sum `analysis.Probability * sense.Probability` per category of its own
 (`WordSense_Classifier_EndToEnd_SensesAreRankedAndSumToOne`, run for MiniLM and BertBaseCased once the encoder scores
-fine senses; the Basic model lists senses only for an analysis with exactly one sense, as the Basic unit document
+fine senses; the Basic model lists senses only for an analysis with exactly one sense, as the Basic unit documents
 shows).
 
 ### Composition of Two Models
@@ -114,7 +114,7 @@ hexadecimal digits
 
 ### Lexicon-Only Classification with the Basic Model
 
-The Basic test project classifies a short word list through `BasicWordSenseModel`, with no model files: a word whose
+The core test project classifies a short word list through `BasicWordSenseModel`, with no model files: a word whose
 lemma and part of speech have one sense is answered at the sense level with confidence 1, a word without a lexicon
 entry is unknown at level none with confidence 0 and no analysis, and a word with several analyses lists every analysis
 with its probability and is answered at the part of speech level with the probability of its selected analysis. Repeated
@@ -123,15 +123,15 @@ calls give identical results, and the embedded statistics table loads on first u
 ### Core Package Has No ONNX Dependency
 
 The core package must not reference ONNX Runtime or any model package. This is verified by inspecting the project
-references of the core project: its only references are the framework and build-time analyzers. The Basic package
-references only the core package; the Onnx package references only the core package and ONNX Runtime
-(`OnnxWordSense_Assembly_ReferencesOnlyCore`); the MiniLM and BertBaseCased packages reference the core, Onnx and Basic
-packages (`MiniLMWordSenseModel_Assembly_ReferencesCoreOnnxAndBasic`,
-`BertBaseCasedWordSenseModel_Assembly_ReferencesCoreOnnxAndBasic`).
+references of the core project: its only references are the framework and build-time analyzers (the Basic model is part
+of it). The Onnx package references only the core package and ONNX Runtime
+(`OnnxWordSense_Assembly_ReferencesOnlyCore`); the MiniLM and BertBaseCased packages reference the core and Onnx
+packages (`MiniLMWordSenseModel_Assembly_ReferencesCoreAndOnnx`,
+`BertBaseCasedWordSenseModel_Assembly_ReferencesCoreAndOnnx`).
 
 ### Packages Share One Contract
 
-A model of each package (Basic, MiniLM, BertBaseCased) is used through `IWordSenseModel`
+A model of each package (Basic in the core package, MiniLM, BertBaseCased) is used through `IWordSenseModel`
 only. For a word whose lemma and part of speech have a single sense every package gives the same answer, the sense at
 level sense with confidence 1 and one analysis and one sense with probability 1 (this includes the determiners such as
 `the`, in any case); for an unknown word every

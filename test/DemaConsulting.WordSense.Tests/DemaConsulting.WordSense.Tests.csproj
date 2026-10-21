@@ -74,8 +74,6 @@
   <!-- Project References -->
   <ItemGroup>
     <ProjectReference Include="..\..\src\DemaConsulting.WordSense\DemaConsulting.WordSense.csproj" />
-    <!-- The documented examples of the core package use the Basic model; only the example verifier needs it -->
-    <ProjectReference Include="..\..\src\DemaConsulting.WordSense.Basic\DemaConsulting.WordSense.Basic.csproj" />
   </ItemGroup>
 
 </Project>

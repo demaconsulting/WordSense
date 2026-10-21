@@ -1,8 +1,9 @@
 namespace DemaConsulting.WordSense;
 
 /// <summary>
-///     The core of DemaConsulting.WordSense: the English word lexicon and the model contract (the interface that every
-///     word-sense model package implements).
+///     The core of DemaConsulting.WordSense: the English word lexicon, the sense catalog, the model contract (the
+///     interface that every word-sense model implements) and the built-in statistical model that answers every word
+///     without a model download.
 /// </summary>
 /// <remarks>
 ///     <para>
@@ -13,38 +14,86 @@ namespace DemaConsulting.WordSense;
 ///     <see cref="WordDetails"/>, <see cref="PartOfSpeech"/>, <see cref="SenseInfo"/> and <see cref="SenseGroup"/>, the
 ///     model interface <see cref="IWordSenseModel"/>
 ///     and the types <see cref="MirrorOptions"/>, <see cref="ClassifyResult"/>, <see cref="SenseLevel"/> and
-///     <see cref="SenseCandidate"/>. It cannot
-///     disambiguate a word in context by itself: add one of the model packages for that.
+///     <see cref="SenseCandidate"/>, the composite <see cref="FallbackWordSenseModel"/> and the built-in model
+///     <see cref="BasicWordSenseModel"/>. <see cref="BasicWordSenseModel"/> disambiguates a word in context at the
+///     part-of-speech level (and at the sense level where the lemma and part of speech have a single sense) with a
+///     statistical part-of-speech tagger and a context cue model whose small tables are embedded; there is nothing to
+///     download and no ONNX Runtime. Add one of the encoder packages to separate the fine senses of the common words.
 ///     </para>
 ///     <para>
-///     Model packages: <c>DemaConsulting.WordSense.Basic</c> (statistical tagger, no model files, no ONNX; see
-///     https://github.com/demaconsulting/WordSense/tree/main/src/DemaConsulting.WordSense.Basic),
-///     <c>DemaConsulting.WordSense.MiniLM</c> (a small encoder; see
+///     Encoder packages: <c>DemaConsulting.WordSense.MiniLM</c> (a small encoder; see
 ///     https://github.com/demaconsulting/WordSense/tree/main/src/DemaConsulting.WordSense.MiniLM) and
 ///     <c>DemaConsulting.WordSense.BertBaseCased</c> (a larger, case-aware encoder; see
 ///     https://github.com/demaconsulting/WordSense/tree/main/src/DemaConsulting.WordSense.BertBaseCased). The two
-///     encoder packages share the ONNX plumbing of <c>DemaConsulting.WordSense.Onnx</c>. The comparison of the models is
-///     in the build notes: https://github.com/demaconsulting/WordSense/tree/main/docs/build_notes.
+///     encoder packages share the ONNX plumbing of <c>DemaConsulting.WordSense.Onnx</c>, and each composes its encoder
+///     with <see cref="BasicWordSenseModel"/> through <see cref="FallbackWordSenseModel"/>. The comparison of the models
+///     is in the build notes: https://github.com/demaconsulting/WordSense/tree/main/docs/build_notes.
 ///     </para>
 ///     <para>
 ///     Which model to choose. The comparison of the models is generated into the build notes
 ///     (https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-table.md, which the README
 ///     repeats exactly). The encoder packages score the fine senses of the lemmas of the relabeled corpus (see the
-///     senses appendix of the user guide) and answer every other ambiguous word through the Basic model (they compose it
-///     with <see cref="FallbackWordSenseModel"/>); the table shows the figures measured on the held-out sentences of
-///     that batch. Choose
-///     <c>DemaConsulting.WordSense.Basic</c> unless you need the encoders: it has no model files, no ONNX Runtime and
-///     the smallest startup and memory cost. "Real text" means sentences from openly licensed or public-domain sources
-///     and is the realistic expectation; the holdout was written together with the training sentences and is
-///     optimistic.
+///     senses appendix of the user guide) and answer every other ambiguous word through the built-in model (they
+///     compose it with <see cref="FallbackWordSenseModel"/>); the table shows the figures measured on the held-out
+///     sentences of that batch. Use <see cref="BasicWordSenseModel"/> unless you need the encoders: it has no model
+///     files, no ONNX Runtime and the smallest startup and memory cost. "Real text" means sentences from openly licensed
+///     or public-domain sources and is the realistic expectation; the holdout was written together with the training
+///     sentences and is optimistic.
+///     </para>
+///     <para>
+///     The built-in model, <see cref="BasicWordSenseModel"/>. Create it and call <c>ClassifyAsync</c>;
+///     <c>EnsureModelAsync</c> is optional for this model (it completes at once and checks nothing, because there are
+///     no files). Dispose the model with <c>using</c> like every <see cref="IWordSenseModel"/> (it holds nothing to
+///     release, but afterwards <c>EnsureModelAsync</c> and <c>ClassifyAsync</c> throw
+///     <see cref="ObjectDisposedException"/>, from the call itself, not through a returned task, and before any other
+///     check, so even with an already cancelled token). Disposing while a classification is running is safe: new calls
+///     throw at once, and a call that is already running completes normally. The model throws every exception of
+///     <c>ClassifyAsync</c> (null list, null element, <see cref="OperationCanceledException"/> for a token that is
+///     cancelled at the start or between sentence segments) from the call itself. With a token that is already
+///     cancelled, <c>EnsureModelAsync</c> returns a cancelled task; otherwise the token is ignored. It does everything
+///     synchronously on the calling thread (the returned task is already complete) and needs no files and no network,
+///     so the mirror, the model-directory and the <c>WORDSENSE_MIRROR_*</c> environment settings of the encoder
+///     packages do not apply to it. It is safe for concurrent use.
+///     </para>
+///     <para>
+///     What the built-in model does. The model splits a list into sentence segments at the tokens <c>"."</c>,
+///     <c>"!"</c> and <c>"?"</c>, tags each segment with a hidden Markov model over the part of speech (trained on the
+///     open English part-of-speech corpus of this project, CC0 1.0), and uses the five words on each side of the target
+///     as context for the cues that separate analyses of one part of speech (the past and the present of <c>read</c>,
+///     the lemmas of <c>left</c>); there is no length limit. Keep a contraction such as <c>don't</c> or a hyphenated
+///     word as one token. <see cref="ClassifyResult.Analyses"/> lists every analysis of the word (lemma, part of speech
+///     and features) with its probability, the largest first, summing to one; <c>Details</c> is the first of them, the
+///     selected analysis. The model scores analyses, not fine senses: the <see cref="AnalysisCandidate.Senses"/> of an
+///     analysis list its one sense with probability 1 when its lemma and part of speech have exactly one sense, and are
+///     empty otherwise. A consumer that wants the model's decision reads the summary (<c>Level</c>, <c>Confidence</c>,
+///     <c>SenseId</c>); one that wants its own decision reads the analyses. The model answers at two of the four
+///     <see cref="SenseLevel"/> values for a known word: the <see cref="SenseLevel.Sense"/> level when the selected
+///     analysis has a lemma and part of speech with exactly one sense (<c>SenseId</c>, and <c>GroupId</c> when the sense
+///     is in a group), and otherwise the <see cref="SenseLevel.PartOfSpeech"/> level with its analysis in
+///     <c>Details</c> and no sense or group id, however low the confidence is; an unknown word is answered at the
+///     <see cref="SenseLevel.None"/> level. It never answers at the <see cref="SenseLevel.Group"/> level.
+///     </para>
+///     <para>
+///     Confidence of the built-in model: 0 means the word is unknown to the lexicon (<c>Details</c> is null), 1 means
+///     the word has a single lemma and part of speech in the lexicon, and a word with several of them gets the
+///     probability of the lemma and part of speech of the selected analysis (the analyses that differ only in features,
+///     such as the singular and the plural of <c>deer</c>, share it and never lower it), between one over the number of
+///     lemmas and parts of speech and 1. An ambiguous word is never left undecided. This probability scale is specific
+///     to this model: do not reuse a threshold from, or for, MiniLM or BertBaseCased, whose confidence is a margin
+///     score. The value is a relative score, not a calibrated probability, but higher values are more often right; the
+///     recommended starting threshold for this model is 0.8 (see the build notes,
+///     https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/basic-evaluation.md, for the precision and
+///     coverage at each threshold).
 ///     </para>
 ///     <para>
 ///     First-use costs (approximate, machine dependent): the lexicon opens on first use of <see cref="WordLexicon"/>
-///     (about 55 ms, about 15 MiB); Basic then loads its table in about 22 ms; an encoder model opens its ONNX
+///     (about 55 ms, about 15 MiB); the built-in model then loads its table (145 KiB, embedded) in about 22 ms on the
+///     first classification of a non-empty list and adds about 2 MiB of memory, after which a sentence takes about
+///     0.03 ms; an encoder model opens its ONNX
 ///     session on the first classification that needs it (about 0.4 s for MiniLM, about 0.5 s for BertBaseCased), after
 ///     the files are ensured: <c>ClassifyAsync</c> does that itself when a word needs the model (with the default
 ///     mirror settings), or call <c>EnsureModelAsync</c> first. A word list without an ambiguous word never touches
-///     model files. The Basic model has no files, so it needs no
+///     model files. The built-in model has no files, so it needs no
 ///     preceding <c>EnsureModelAsync</c>; for the encoder models it is optional too (call it to fail early or to pass a
 ///     <see cref="MirrorOptions"/>). Hashing the model files takes about 30 ms (MiniLM) and about 110 ms (BertBaseCased)
 ///     with a warm file cache. The encoder models run on the CPU only.
@@ -140,7 +189,6 @@ namespace DemaConsulting.WordSense;
 ///     Look a word up without any model, then classify a sentence with a model package.
 ///     <code>
 ///     using DemaConsulting.WordSense;
-///     using DemaConsulting.WordSense.Basic;
 ///
 ///     foreach (WordDetails analysis in WordLexicon.Lookup("record"))
 ///     {

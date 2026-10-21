@@ -216,7 +216,7 @@ internal static class Program
     {
         var tablePath = options.TryGetValue(InputOption, out var input) ? input : Path.Join(repository, BasicModelBuilder.DefaultOutput);
         var split = options.GetValueOrDefault("split", "test");
-        var tables = DemaConsulting.WordSense.Basic.BasicTables.Load(File.ReadAllBytes(tablePath), DemaConsulting.WordSense.WordLexicon.Current);
+        var tables = DemaConsulting.WordSense.BasicTables.Load(File.ReadAllBytes(tablePath), DemaConsulting.WordSense.WordLexicon.Current);
         var scores = new List<TaggerScore>
         {
             await TaggerEvaluator.EvaluateAsync($"open corpus {split} (representative)", tables, [.. OpenCorpus.ReadSplit(corpus, OpenCorpus.Representative, split).Select(OpenCorpus.ToTagged)], cancellationToken).ConfigureAwait(false),

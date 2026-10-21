@@ -1,4 +1,3 @@
-using DemaConsulting.WordSense.Basic;
 using DemaConsulting.WordSense.Onnx;
 
 namespace DemaConsulting.WordSense.MiniLM;
@@ -10,7 +9,7 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     <para>
 ///     This model is built on <c>DemaConsulting.WordSense.Onnx</c>: it wraps an encoder model (an
 ///     <see cref="OnnxWordSenseModel"/> with the identity of this encoder: its pinned files and its embedded weights)
-///     and the Basic model (<c>DemaConsulting.WordSense.Basic</c>) in a <see cref="FallbackWordSenseModel"/>, and
+///     and the Basic model (<see cref="BasicWordSenseModel"/> of the core package) in a <see cref="FallbackWordSenseModel"/>, and
 ///     implements <see cref="IWordSenseModel"/>. <see cref="EnsureModelAsync"/> ensures the encoder files (mirror
 ///     precedence, verification, retry and cancellation behavior are those described for
 ///     <see cref="OnnxWordSenseModel.EnsureModelAsync"/>) and <see cref="Dispose"/> disposes both models; dispose the

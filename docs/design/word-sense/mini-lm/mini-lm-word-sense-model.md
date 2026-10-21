@@ -35,7 +35,7 @@ sequence length outside 8 to 512 from the constructor.
 
 #### Dependencies
 
-`FallbackWordSenseModel` (core), `OnnxWordSenseModel` (Onnx), `BasicWordSenseModel` (Basic) and the core contracts.
+`FallbackWordSenseModel` (core), `OnnxWordSenseModel` (Onnx), `BasicWordSenseModel` (core) and the core contracts.
 
 #### Callers
 

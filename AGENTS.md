@@ -4,13 +4,13 @@
 - **organization**: DEMA Consulting
 - **project-tagline**: Offline word-sense disambiguation for .NET
 - **description**: WordSense is a .NET library that assigns a sense label (for example noun or verb) to
-  ambiguous English words in context, offline. It ships as five layered NuGet packages: `DemaConsulting.WordSense`,
-  the core (public contracts, embedded lexicon with build-time inflections; no ONNX dependency, no model);
-  `DemaConsulting.WordSense.Basic` (statistical part-of-speech tagger and context-cue model; no model files);
+  ambiguous English words in context, offline. It ships as four layered NuGet packages: `DemaConsulting.WordSense`,
+  the core (public contracts, embedded lexicon with build-time inflections, and the built-in statistical
+  part-of-speech tagger and context-cue model `BasicWordSenseModel`; no ONNX dependency, no model files);
   `DemaConsulting.WordSense.Onnx` (shared WordPiece tokenizer, ONNX encoder, verified model downloader with mirror
   support and lemma-weights machinery); and the two concrete models `DemaConsulting.WordSense.MiniLM` and
-  `DemaConsulting.WordSense.BertBaseCased`, each pinning its model files and embedding its own weights. Basic and Onnx
-  depend only on core; MiniLM and BertBaseCased depend on Onnx.
+  `DemaConsulting.WordSense.BertBaseCased`, each pinning its model files and embedding its own weights. Onnx
+  depends only on core; MiniLM and BertBaseCased depend on core and Onnx. (The former Basic package is retired.)
 - **languages**: C#, Python (one-off tokenizer fixture generator, the real-text harvest tool `tools/real-text` and the
   open-corpus scripts `tools/open-corpus`)
 - **technologies**: .NET, ONNX Runtime, Git LFS
@@ -41,14 +41,13 @@
 │   ├── user_guide/
 │   └── verification/
 ├── src/
-│   ├── DemaConsulting.WordSense/                (core: contracts, WordLexicon, embedded wordsense.img)
-│   ├── DemaConsulting.WordSense.Basic/          (statistical model; no files, no network)
+│   ├── DemaConsulting.WordSense/                (core: contracts, WordLexicon, embedded wordsense.img, the Basic
+│   │                                             statistical model and its embedded basic.bin; no files, no network)
 │   ├── DemaConsulting.WordSense.Onnx/           (tokenizer, encoder, downloader, lemma weights, abstract model)
 │   ├── DemaConsulting.WordSense.MiniLM/         (MiniLM model: pinned files, embedded weights)
 │   └── DemaConsulting.WordSense.BertBaseCased/  (BERT base cased model: pinned files, embedded weights)
 └── test/
     ├── DemaConsulting.WordSense.Tests/
-    ├── DemaConsulting.WordSense.Basic.Tests/
     ├── DemaConsulting.WordSense.Onnx.Tests/
     ├── DemaConsulting.WordSense.MiniLM.Tests/
     ├── DemaConsulting.WordSense.BertBaseCased.Tests/

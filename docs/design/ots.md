@@ -4,7 +4,7 @@ This document describes the overall Off-The-Shelf (OTS) integration strategy for
 
 ## Overview
 
-The WordSense core package and the Basic package have no third-party runtime dependency. The Onnx package,
+The WordSense core package (which includes the Basic model) has no third-party runtime dependency. The Onnx package,
 `DemaConsulting.WordSense.Onnx`, has exactly one third-party runtime NuGet dependency, Microsoft.ML.OnnxRuntime,
 which is shipped with the Onnx package as a dependency; the MiniLM and BertBaseCased packages receive it through the
 Onnx package. All other OTS items listed below are

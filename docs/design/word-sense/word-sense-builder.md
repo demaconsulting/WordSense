@@ -13,7 +13,8 @@ The builder creates the data that the shipped packages embed and measures the sh
   (the words, their analyses and the sense catalog);
 - the weights blob `weights.bin` embedded in each encoder package (MiniLM, BertBaseCased): the per-lemma fine-sense
   classifiers with their thresholds;
-- the statistics table `basic.bin` embedded in the Basic package, and the tag count files of `corpus/open/counts` it is
+- the statistics table `basic.bin` embedded in the core package (for `BasicWordSenseModel`), and the tag count files of
+  `corpus/open/counts` it is
   trained from;
 - accuracy reports of the models at each answer level, measured on the held-out sentences, on SemCor 3.0
   (senses) and on the part-of-speech corpora (the test split of the open English corpus, with the convention-mapped
@@ -31,7 +32,7 @@ English part-of-speech corpus (`open/`: the representative part, a random sample
 statistics and of the real-text part-of-speech evaluation, the targeted part, whose test split is a challenge set,
 and the tag n-gram and per-word tag counts of the representative training split in `open/counts`). Every sentence of
 the training corpus is CC0 1.0, public domain in the United States or project-authored (and dedicated to CC0 1.0);
-no treebank data and no retired class-labeled corpus is in the repository. It references all five packages
+no treebank data and no retired class-labeled corpus is in the repository. It references all four packages
 and uses internal members of them through `InternalsVisibleTo`, so that training and inference share one
 implementation of the feature computation.
 
@@ -160,7 +161,7 @@ instead of `--model`.
   directory of plain-text files.
 - `train-basic [--corpus DIR] [--repository DIR] [--output FILE]`: retrains the whole Basic model with the default
   hyper-parameters from the committed counts of `corpus/open/counts`, the anchors and the chooser anchors, and writes
-  `Resources/basic.bin` of the Basic package; it names `open-counts` when the counts are missing.
+  `Resources/basic.bin` of the core package; it names `open-counts` when the counts are missing.
 - `tune-basic [--corpus DIR] [--repository DIR]`: scores the hyper-parameter grid and prints a table; it writes nothing.
 - `label-senses [--data DIR]`: gives every sense without a label a generated label (the SenseLabelGenerator unit of the
   WordData subsystem).

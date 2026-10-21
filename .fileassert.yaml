@@ -64,11 +64,11 @@ tests:
           - contains: "```csharp"
 
   - name: ApiMark_BasicModelDocumented
-    description: "The Basic model class is documented and generated with an example"
+    description: "The Basic model class (in the core package) is documented and generated with an example"
     tags: [api-docs]
     files:
       - pattern: >-
-          src/DemaConsulting.WordSense.Basic/generated/api/DemaConsulting.WordSense.Basic/BasicWordSenseModel.md
+          src/DemaConsulting.WordSense/generated/api/DemaConsulting.WordSense/BasicWordSenseModel.md
         count: 1
         text:
           - contains: "```csharp"

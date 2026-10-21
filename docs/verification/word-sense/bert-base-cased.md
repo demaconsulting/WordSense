@@ -2,11 +2,12 @@
 
 This document describes the verification of the BertBaseCased subsystem, the package
 `DemaConsulting.WordSense.BertBaseCased`: the `bert-base-cased-int8` encoder (cased, hidden size 768) with the weights
-trained for it embedded in the assembly, composed with the Basic model.
+trained for it embedded in the assembly, composed with the Basic model of the core package.
 
 ### Verification Approach
 
-The subsystem is a thin layer on the Onnx and Basic packages, so verification concentrates on what the layer adds: the
+The subsystem is a thin layer on the Onnx package and the core Basic model, so verification concentrates on what the
+layer adds: the
 pinned model identity with four files, the cased tokenizer setting, the embedded weights and the composition with the
 Basic model. Tests in
 `test/DemaConsulting.WordSense.BertBaseCased.Tests` run the real int8 model (Git LFS) from `model/bert-base-cased-int8/`
@@ -43,8 +44,8 @@ A word with several senses that the encoder does not score is answered with the 
 the composition (its analyses with their probabilities, the selected analysis, the level part of speech and no group or
 sense id), and disposing the model disposes the encoder model and the Basic model
 (`BertBaseCasedWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback`,
-`BertBaseCasedWordSenseModel_Dispose_DisposesEncoderAndFallback`). The assembly references the core, Onnx and Basic
-packages (`BertBaseCasedWordSenseModel_Assembly_ReferencesCoreOnnxAndBasic`).
+`BertBaseCasedWordSenseModel_Dispose_DisposesEncoderAndFallback`). The assembly references the core and Onnx
+packages (`BertBaseCasedWordSenseModel_Assembly_ReferencesCoreAndOnnx`).
 
 #### Embedded Weights Match the Word Image
 

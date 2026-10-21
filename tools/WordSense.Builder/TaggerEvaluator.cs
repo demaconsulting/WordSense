@@ -2,7 +2,6 @@ using System.Collections.Immutable;
 using System.Globalization;
 using System.Text;
 using DemaConsulting.WordSense;
-using DemaConsulting.WordSense.Basic;
 
 namespace WordSense.Builder;
 

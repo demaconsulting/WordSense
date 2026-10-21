@@ -28,20 +28,20 @@ sections:
 
           - id: WordSense-MiniLM-Composition
             title: >-
-              The MiniLM package shall depend on the core, Onnx and Basic packages, and its public model shall be the
-              core FallbackWordSenseModel of its own encoder model (primary) and the Basic model (fallback), so that
-              every ambiguous word that the encoder does not score is answered by the Basic model, and shall ensure and
-              dispose both models.
+              The MiniLM package shall depend on the core and Onnx packages, and its public model shall be the
+              core FallbackWordSenseModel of its own encoder model (primary) and the core Basic model (fallback), so
+              that every ambiguous word that the encoder does not score is answered by the Basic model, and shall
+              ensure and dispose both models.
             tags: [subsystem]
             justification: |
               The encoder scores fine senses only for the lemmas it was trained for; pairing it with the Basic model
-              inside the package gives callers one model that answers every word, while the Onnx package itself stays
-              free of a dependency on the Basic package.
+              of the core package gives callers one model that answers every word, while the Onnx package itself stays
+              free of a dependency on the Basic model.
             children:
               - WordSense-MiniLM-MiniLMWordSenseModel-Composition
             tests:
               - MiniLMWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback
-              - MiniLMWordSenseModel_Assembly_ReferencesCoreOnnxAndBasic
+              - MiniLMWordSenseModel_Assembly_ReferencesCoreAndOnnx
 
           - id: WordSense-MiniLM-Packaging
             title: >-

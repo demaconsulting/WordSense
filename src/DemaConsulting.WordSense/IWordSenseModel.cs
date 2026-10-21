@@ -7,8 +7,8 @@ namespace DemaConsulting.WordSense;
 /// </summary>
 /// <remarks>
 ///     <para>
-///     Model packages provide implementations: <c>DemaConsulting.WordSense.Basic</c> chooses senses with a small
-///     statistical model and needs no model files; <c>DemaConsulting.WordSense.MiniLM</c> and
+///     Model implementations: <c>BasicWordSenseModel</c>, which is part of this package, chooses the analysis of every
+///     word with a small statistical model and needs no model files; <c>DemaConsulting.WordSense.MiniLM</c> and
 ///     <c>DemaConsulting.WordSense.BertBaseCased</c> run an encoder model and download its files once. The usual
 ///     sequence is to call <see cref="EnsureModelAsync"/> once, then <see cref="ClassifyAsync"/> as many times as
 ///     needed. <see cref="EnsureModelAsync"/> is optional for every model: call it to fail early (for an encoder model
@@ -89,8 +89,8 @@ namespace DemaConsulting.WordSense;
 ///     call, except that <c>EnsureModelAsync</c> returns a cancelled task for an already cancelled token;
 ///     <c>OnnxWordSenseModel</c> throws <see cref="ObjectDisposedException"/> from <c>EnsureModelAsync</c> and reports
 ///     every other exception of it, and every exception of <c>ClassifyAsync</c>, through the returned task), so callers
-///     should <c>await</c> inside a <c>try</c>. The supplied implementations are <c>BasicWordSenseModel</c> (package
-///     <c>DemaConsulting.WordSense.Basic</c>) and <c>OnnxWordSenseModel</c> (package
+///     should <c>await</c> inside a <c>try</c>. The supplied implementations are <c>BasicWordSenseModel</c> (in the core
+///     package <c>DemaConsulting.WordSense</c>) and <c>OnnxWordSenseModel</c> (package
 ///     <c>DemaConsulting.WordSense.Onnx</c>), which is used through <c>MiniLMWordSenseModel</c> and
 ///     <c>BertBaseCasedWordSenseModel</c>. <c>BasicWordSenseModel</c>, <c>MiniLMWordSenseModel</c> and
 ///     <c>BertBaseCasedWordSenseModel</c> are sealed; <c>OnnxWordSenseModel</c> is abstract but cannot be subclassed
@@ -111,7 +111,7 @@ namespace DemaConsulting.WordSense;
 /// </remarks>
 /// <example>
 ///     <code>
-///     IWordSenseModel model = new DemaConsulting.WordSense.Basic.BasicWordSenseModel();
+///     IWordSenseModel model = new BasicWordSenseModel();
 ///     using (model)
 ///     {
 ///         await model.EnsureModelAsync();

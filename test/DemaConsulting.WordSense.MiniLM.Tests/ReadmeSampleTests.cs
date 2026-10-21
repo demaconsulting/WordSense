@@ -14,7 +14,7 @@ namespace DemaConsulting.WordSense.MiniLM.Tests;
 /// </remarks>
 public class ReadmeSampleTests
 {
-    private const string Usings = "using DemaConsulting.WordSense;\nusing DemaConsulting.WordSense.Basic;\n\n";
+    private const string Usings = "using DemaConsulting.WordSense;\n\n";
 
     /// <summary>
     ///     The allowed difference of a documented Basic confidence: the Basic model is deterministic managed code, so

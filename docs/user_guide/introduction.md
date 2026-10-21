@@ -14,8 +14,8 @@ is a noun when it can tell no more. Every answer also lists the probability of e
 the model scored them, the ranked fine senses inside each analysis, so you can apply a grouping of your own. Every
 word is looked up in an embedded word table; a word with several meanings
 is decided from its sentence by
-a model that you choose. The library comes as five NuGet packages: the core `DemaConsulting.WordSense` (API, word
-table and sense catalog, no model), the statistical model `DemaConsulting.WordSense.Basic` (no files, no network), and
+a model that you choose. The library comes as four NuGet packages: the core `DemaConsulting.WordSense` (API, word
+table, sense catalog and the statistical `BasicWordSenseModel`, which needs no files and no network), and
 two encoder models, `DemaConsulting.WordSense.MiniLM` and `DemaConsulting.WordSense.BertBaseCased`, which share the
 machinery of `DemaConsulting.WordSense.Onnx` and answer the words they were not trained for with the Basic model.
 
@@ -116,16 +116,16 @@ test suite for each of the three models; the samples in this guide are reviewed 
 
 # Choosing a Package
 
-All packages target `net8.0`, `net9.0` and `net10.0`. The core package is a dependency of every other package; the
-two encoder packages also bring the Onnx package and the Basic package, and answer the words that the encoder was not
-trained for with the Basic model.
+All packages target `net8.0`, `net9.0` and `net10.0`. The core package is a dependency of every other package and
+holds the Basic model; the two encoder packages also bring the Onnx package, and answer the words that the encoder was
+not trained for with the Basic model of the core. (Before version 1.0 the Basic model was a package of its own,
+`DemaConsulting.WordSense.Basic`; that package is retired and `BasicWordSenseModel` is now in `DemaConsulting.WordSense`.)
 
 <!-- markdownlint-disable MD013 -->
 
 | Package | Decides a multi-sense word by | Answers at | Needs files or network | Native dependency | Casing |
 | ------- | ----------------------------- | ---------- | ---------------------- | ----------------- | ------ |
-| `DemaConsulting.WordSense` | nothing (word table and sense catalog only) | sense (one-sense words) | no | no | lower-cased |
-| `DemaConsulting.WordSense.Basic` | small statistical tagger and context cues | part of speech | no | no | lower-cased |
+| `DemaConsulting.WordSense` | statistical tagger and context cues (the Basic model); word table and sense catalog | sense (one-sense words), otherwise part of speech | no | no | lower-cased |
 | `DemaConsulting.WordSense.MiniLM` | all-MiniLM-L6-v2 encoder, fine-sense weights; Basic for the other words | sense, group or part of speech | 22 MiB, once | ONNX Runtime | uncased |
 | `DemaConsulting.WordSense.BertBaseCased` | bert-base-cased encoder; Basic for the other words | sense, group or part of speech | 104 MiB, once | ONNX Runtime | cased |
 
@@ -134,7 +134,8 @@ trained for with the Basic model.
 - Use **core** alone to look up the possible analyses and senses of a word (`WordLexicon.Lookup`,
   `WordLexicon.SensesOf`), to resolve a sense id or an OEWN sense key, and to answer words that have one sense, in your
   own code.
-- Use **Basic** when you want a fast, dependency-free answer at the part of speech level and can accept that it never
+- Use **Basic** (`BasicWordSenseModel`, in the core package) when you want a fast, dependency-free answer at the part
+  of speech level and can accept that it never
   names a fine sense or a group (except for an analysis whose lemma and part of speech have only one sense).
 - Use **MiniLM** for the best size-to-quality trade-off: the smallest download and the fastest encoder. It is the
   default recommendation.
@@ -176,9 +177,9 @@ encoder packages combine it with the Basic model (see "Composing Models").
 dotnet add package DemaConsulting.WordSense.MiniLM
 ```
 
-Installing a model package brings the core (and, for an encoder model, the Onnx and Basic packages) with it. Install
-`DemaConsulting.WordSense.Basic` or `DemaConsulting.WordSense.BertBaseCased` in the same way, and
-`DemaConsulting.WordSense` alone for the word table and the sense catalog.
+Installing a model package brings the core (which holds the Basic model) and, for an encoder model, the Onnx package
+with it. Install `DemaConsulting.WordSense.BertBaseCased` in the same way, and
+`DemaConsulting.WordSense` alone for the word table, the sense catalog and the Basic model.
 
 ## Requirements
 
@@ -186,7 +187,7 @@ Installing a model package brings the core (and, for an encoder model, the Onnx 
 - For an encoder model, disk space in a per-user directory for the model files (see "Model Files") that are downloaded
   on first use, and the ONNX Runtime native libraries for the target platform. The NuGet package contains the trained
   weights but not the model files. A machine that cannot reach the internet needs a mirror or a model directory (see
-  "Offline and Air-Gapped Use"). The core and Basic packages need neither.
+  "Offline and Air-Gapped Use"). The core package (with the Basic model) needs neither.
 - Contributors who clone the repository also need [Git LFS](https://git-lfs.com): the files in `model/` are stored
   in Git LFS (`git lfs install` once, then `git lfs pull`).
 
@@ -577,7 +578,8 @@ apostrophe U+2019 counts as `'`) and looked up again. The first lookup takes abo
 
 ## Basic
 
-`BasicWordSenseModel` needs no files, no network and no ONNX Runtime. `EnsureModelAsync` is optional: it completes at
+`BasicWordSenseModel` (in the core package `DemaConsulting.WordSense`) needs no files, no network and no ONNX Runtime.
+`EnsureModelAsync` is optional: it completes at
 once and checks nothing, `ClassifyAsync` works with or without it, a mirror is ignored, and disposing the model (with `using`)
 releases nothing but is still honored: afterwards `EnsureModelAsync` and `ClassifyAsync` throw
 `ObjectDisposedException`. It
@@ -600,7 +602,6 @@ the statistical table (approximate, machine dependent); after that a sentence ta
 
 ```csharp
 using DemaConsulting.WordSense;
-using DemaConsulting.WordSense.Basic;
 
 using var model = new BasicWordSenseModel();
 await model.EnsureModelAsync();
@@ -739,7 +740,6 @@ example your own with the Basic model:
 
 ```csharp
 using DemaConsulting.WordSense;
-using DemaConsulting.WordSense.Basic;
 
 // Any model can be the primary one: it answers the words it scores, and the Basic model answers every other word
 static async Task<ClassifyResult[]> ClassifyWithBasicAsync(IWordSenseModel primary, string[] words)

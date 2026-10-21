@@ -15,12 +15,11 @@ the senses allow, its sense: an Open English WordNet (OEWN) fine sense with a re
 answer states the level it was made at (sense, group or part of speech), carries a confidence for that level and lists
 the candidate analyses with their probabilities, so you know whether "bank" is the money kind, at least a financial
 word, or only a noun. Every word is looked up in an embedded dictionary of over 140,000 common words. Only where a word
-has several analyses does a model choose from the sentence: the `Basic` model, a small statistical tagger that needs
-nothing else and answers with the part of speech, or an ONNX encoder package (`MiniLM` or `BertBaseCased`) that runs on
-ONNX Runtime and scores the fine senses of the words it was trained for. In this first version that is a trial of 20
-words (`back`, `even`, `first`, `forward`, `go`, `help`, `home`, `however`, `just`, `little`, `long`, `only`, `own`,
-`please`, `pretty`, `review`, `right`, `still`, `test` and `well`, 294 senses); every other ambiguous word is answered
-by the `Basic` model at the part-of-speech level, and more words follow in later versions.
+has several analyses does a model choose from the sentence: the `Basic` model, which is part of the core package (a
+small statistical tagger that needs nothing else, no download and no ONNX Runtime, and answers with the part of speech),
+or an ONNX encoder package (`MiniLM` or `BertBaseCased`) that runs on ONNX Runtime and scores the fine senses of the
+words it was trained for. In this version the encoders know 775 lemmas (the senses appendix lists them); every other
+ambiguous word is answered by the `Basic` model at the part-of-speech level, and more words follow in later versions.
 
 ## Features
 
@@ -29,25 +28,25 @@ by the `Basic` model at the part-of-speech level, and more words follow in later
 - 🏷️ **Fine Senses and Groups** - Open English WordNet senses with readable ids, WordNet sense keys and coarse groups
 - 🎚️ **Answer Levels** - Each answer says whether it is a sense, a group or a part of speech
 - 📊 **Confidence** - Every answer carries a confidence from 0 to 1 that applies to its level
-- 📦 **Layered Packages** - Small core, dependency-free Basic, optional ONNX models
+- 📦 **Layered Packages** - Core with a dependency-free Basic model, optional ONNX encoder models
 - 🔒 **Verified Models** - Downloads are checked against pinned SHA-256 digests
 - 🌍 **Multi-Platform** - Windows, Linux and macOS; .NET 8, 9 and 10
 - ✅ **Continuous Compliance** - Evidence on every CI run ([method][link-continuous-compliance])
 
 ## Installation
 
-Pick the model package that fits; each one brings the core package `DemaConsulting.WordSense` with it.
+The core package already answers every word in context with its `Basic` model; the encoder packages add the fine senses
+of the common words and bring the core package with them.
 
 ```bash
-dotnet add package DemaConsulting.WordSense.Basic          # small statistical model: no model files, no ONNX Runtime
+dotnet add package DemaConsulting.WordSense                # dictionary, senses and the Basic model; no download
 dotnet add package DemaConsulting.WordSense.MiniLM         # small and fast encoder (22 MiB model files)
 dotnet add package DemaConsulting.WordSense.BertBaseCased  # larger, case-sensitive encoder
 ```
 
 | Package | Contents | Needs |
 | :--- | :--- | :--- |
-| `DemaConsulting.WordSense` | The model interface and the dictionary (`WordLexicon`) | Nothing |
-| `DemaConsulting.WordSense.Basic` | Statistical model (part-of-speech tagger and context cues) | Nothing |
+| `DemaConsulting.WordSense` | Dictionary (`WordLexicon`), model interface and the `Basic` statistical model | Nothing |
 | `DemaConsulting.WordSense.MiniLM` | MiniLM model and its weights | Model files, downloaded on first use |
 | `DemaConsulting.WordSense.BertBaseCased` | BERT base cased model and weights | Model files, downloaded on first use |
 | `DemaConsulting.WordSense.Onnx` | Shared ONNX implementation (brought in by the encoder packages) | ONNX Runtime |
@@ -63,9 +62,9 @@ three models. The [user guide][link-user-guide] covers the rest of the API, mirr
 <!-- sample:readme -->
 ```csharp
 using DemaConsulting.WordSense;
-using DemaConsulting.WordSense.Basic;
 
-// Basic needs no download; MiniLM and BertBaseCased need their package and using, and download on first use
+// Basic is part of the core package and needs no download; MiniLM and BertBaseCased need their package and using,
+// and download on first use
 using var model = new BasicWordSenseModel();
 // using var model = new MiniLMWordSenseModel();         // using DemaConsulting.WordSense.MiniLM;
 // using var model = new BertBaseCasedWordSenseModel();  // using DemaConsulting.WordSense.BertBaseCased;
@@ -248,18 +247,20 @@ and lists the confidence thresholds of each model. See also the [model compariso
 
 ## Credits and licenses
 
-The packages that embed derived data (`DemaConsulting.WordSense`, `DemaConsulting.WordSense.Basic`,
-`DemaConsulting.WordSense.MiniLM` and `DemaConsulting.WordSense.BertBaseCased`) carry this section in their package
+The packages that embed derived data (`DemaConsulting.WordSense`, `DemaConsulting.WordSense.MiniLM` and
+`DemaConsulting.WordSense.BertBaseCased`) carry this section in their package
 readme. The corpus itself is not shipped in the packages, only the derived tables and weights; every real sentence is
 recorded with its source, license and URL in `corpus/provenance/`.
 
 Package licenses:
 
-- **`DemaConsulting.WordSense`** (core): `MIT AND CC-BY-4.0`. The code and the project-authored data are MIT; the
-  embedded word image is derived from Open English WordNet 2025 (CC BY 4.0). The package contains a `NOTICE.md` with the
-  attribution and the notices of Open English WordNet, WordNet 3.0, AGID and the Moby list.
-- **`DemaConsulting.WordSense.Basic`**: `MIT`. The code is MIT; the embedded statistical table is derived from our own
-  CC0 1.0 corpora (the open part-of-speech corpus and the sentence corpus below). The package contains a `NOTICE.md`.
+- **`DemaConsulting.WordSense`** (core): `MIT AND CC-BY-4.0`. The code and the project-authored word data are MIT; the
+  embedded word image is derived from Open English WordNet 2025 (CC BY 4.0), with the WordNet 3.0 sense counts under the
+  Princeton license; the embedded statistical table of the `Basic` model is derived from our own CC0 1.0 corpora (the
+  open part-of-speech corpus and the sentence corpus below). The package contains a `NOTICE.md` with the attribution
+  and the notices of Open English WordNet, WordNet 3.0, AGID and the Moby list. There is no CC BY-SA material in any
+  package. The former `DemaConsulting.WordSense.Basic` package is retired (before version 1.0): its model, `Basic`,
+  moved into the core package.
 - **`DemaConsulting.WordSense.Onnx`, `DemaConsulting.WordSense.MiniLM` and `DemaConsulting.WordSense.BertBaseCased`**:
   `MIT`. The weights are statistical summaries of the corpus and do not contain its sentences.
 

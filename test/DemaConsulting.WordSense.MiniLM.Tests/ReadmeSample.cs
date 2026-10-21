@@ -42,7 +42,8 @@ internal sealed class ReadmeSample
         // The sample shows the alternative model lines as comments on purpose
 #pragma warning disable S125
         // <sample:readme>
-        // Basic needs no download; MiniLM and BertBaseCased need their package and using, and download on first use
+        // Basic is part of the core package and needs no download; MiniLM and BertBaseCased need their package and using,
+        // and download on first use
         using var model = new BasicWordSenseModel();
         // using var model = new MiniLMWordSenseModel();         // using DemaConsulting.WordSense.MiniLM;
         // using var model = new BertBaseCasedWordSenseModel();  // using DemaConsulting.WordSense.BertBaseCased;
@@ -82,7 +83,7 @@ internal sealed class ReadmeSample
     {
         private readonly IWordSenseModel _model = CurrentModel.Value switch
         {
-            "basic" => new DemaConsulting.WordSense.Basic.BasicWordSenseModel(),
+            "basic" => new DemaConsulting.WordSense.BasicWordSenseModel(),
             "minilm" => new DemaConsulting.WordSense.MiniLM.MiniLMWordSenseModel(
                 DocSampleText.RequireModelDirectory("all-MiniLM-L6-v2-int8")),
             "bertbasecased" => new DemaConsulting.WordSense.BertBaseCased.BertBaseCasedWordSenseModel(

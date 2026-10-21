@@ -1,6 +1,7 @@
 # Tuning the Basic Model
 
-The statistical tables of the `DemaConsulting.WordSense.Basic` package can be retrained and re-measured with two
+The statistical tables of the Basic model (in the core package `DemaConsulting.WordSense`) can be retrained and
+re-measured with two
 commands. This page describes the workflow and which data it is safe to tune against.
 
 ## Commands
@@ -12,7 +13,7 @@ dotnet run --project tools/WordSense.Builder -c Release -- train-basic
 dotnet run --project tools/WordSense.Builder -c Release -- evaluate basic
 ```
 
-- `train-basic` retrains the whole model and writes `src/DemaConsulting.WordSense.Basic/Resources/basic.bin`. It reads
+- `train-basic` retrains the whole model and writes `src/DemaConsulting.WordSense/Resources/basic.bin`. It reads
   the tag counts in `corpus/open/counts` (made by `open-counts` from the training split of the representative open
   corpus), the word table of the core package, and the anchors and chooser anchors in `corpus`. When the counts are
   missing it stops and names `open-counts`. It prints the sizes of the new table and its SHA-256.

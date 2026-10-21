@@ -57,7 +57,8 @@ still hide examples rendered as prose or dropped remarks.
 
 #### ApiMark_BasicModelDocumented, ApiMark_OnnxModelDocumented, ApiMark_MiniLMModelDocumented, ApiMark_BertBaseCasedModelDocumented
 
-**Scenario**: The model class of each of the other four packages is documented and its page is generated.
+**Scenario**: The model class of each of the other packages (the Basic model of the core package, Onnx, MiniLM and
+BertBaseCased) is documented and its page is generated.
 
 **Expected**: The `BasicWordSenseModel`, `OnnxWordSenseModel`, `MiniLMWordSenseModel` and
 `BertBaseCasedWordSenseModel` type pages exist and each contains a fenced `csharp` example.

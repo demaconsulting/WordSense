@@ -1,6 +1,5 @@
 using System.Collections.Immutable;
 using DemaConsulting.WordSense;
-using DemaConsulting.WordSense.Basic;
 
 namespace WordSense.Builder;
 
