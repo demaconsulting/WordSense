@@ -75,6 +75,30 @@ public sealed class FormReproducibilityTests : IDisposable
     }
 
     /// <summary>
+    ///     Two legacy analyses of one spelling with the same entry and features are rejected with the lines of both, so a
+    ///     table never lists the same analysis twice (the committed file once held such a pair for "supposed").
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_FormGenerator_Run_RepeatedFrozenAnalysis_IsRefused()
+    {
+        // Arrange - a corpus whose frozen file repeats an analysis that differs only in its retired class column
+        var oewn = TinyInputs(out var agid);
+        _dir.Write("corpus/lexicon/form-frozen.tsv",
+            "frozen\tsupposed\t0\toewn-supposed-a\tDegree=Pos\tdema\t1\t\tsupposed#supposed-adj\n"
+            + "frozen\tsupposed\t1\toewn-suppose-v\tTense=Past+VerbForm=Part\tdema\t1\t\tsupposed#supposed-past\n"
+            + "frozen\tsupposed\t2\toewn-supposed-a\tDegree=Pos\tdema\t1\t\tsupposed#supposed-to\n");
+        var root = DataFixture.RepositoryRoot();
+
+        // Act
+        var ex = Assert.Throws<InvalidDataException>(() => FormGenerator.Run(Path.Join(root, "data"), Path.Join(_dir.Root, "corpus"), oewn, agid, Path.Join(_dir.Root, "out"), null, null));
+
+        // Assert
+        Assert.Contains("form-frozen.tsv:3:", ex.Message, StringComparison.Ordinal);
+        Assert.Contains("line 1", ex.Message, StringComparison.Ordinal);
+        Assert.Contains("supposed", ex.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
     ///     An input that does not match its SHA-256 pin is refused before anything is generated.
     /// </summary>
     [Fact]

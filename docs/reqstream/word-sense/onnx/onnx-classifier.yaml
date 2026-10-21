@@ -10,18 +10,29 @@ sections:
             requirements:
               - id: WordSense-Onnx-OnnxClassifier-Lookup
                 title: >-
-                  OnnxClassifier shall look a word up without regard to its case, answer a word with no lexicon entry
-                  with no details and confidence 0, and answer a word with exactly one sense (a determiner such as
-                  the, for example) with that sense and confidence 1, without running the encoder.
+                  OnnxClassifier shall look a word up without regard to its case, and answer a word with no lexicon
+                  entry as unknown: not known, no analysis, no details, level none and confidence 0.
                 tags: [unit]
                 justification: |
                   Words that need no context must cost no inference and must be answered identically in every model,
                   whatever their capitalization.
                 tests:
-                  - OnnxClassifier_ClassifyAsync_UnknownWord_ReturnsNoDetails
-                  - OnnxClassifier_ClassifyAsync_SingleSenseWord_ReturnsEntryWithFullConfidence
+                  - OnnxClassifier_ClassifyAsync_UnknownWord_IsAnsweredAsUnknown
                   - OnnxClassifier_ClassifyAsync_CapitalizedWord_ResolvesLikeLowerCase
                   - OnnxWordSenseModel_ClassifyAsync_LexiconOnlyWords_NeverTouchesModelFiles
+
+              - id: WordSense-Onnx-OnnxClassifier-SingleSense
+                title: >-
+                  OnnxClassifier shall answer a word with exactly one analysis whose lemma and part of speech have
+                  exactly one sense (a determiner such as the, for example) at the sense level with that analysis
+                  (probability 1), that sense (probability 1) and confidence 1, without running the encoder.
+                tags: [unit]
+                justification: |
+                  A word without ambiguity needs no context; it must cost no inference and must be answered
+                  identically in every model.
+                tests:
+                  - OnnxClassifier_ClassifyAsync_SingleAnalysisSingleSense_AnswersTheSense
+                  - OnnxClassifier_ClassifyAsync_SingleSenseWord_DoesNotEncode
 
               - id: WordSense-Onnx-OnnxClassifier-Encode
                 title: >-
@@ -35,65 +46,195 @@ sections:
                   - OnnxClassifier_ClassifyAsync_AmbiguousWords_UseTheEncoder
                   - OnnxClassifier_ClassifyAsync_OnlyAmbiguousWordsAreEncoded
 
-              - id: WordSense-Onnx-OnnxClassifier-Candidates
+              - id: WordSense-Onnx-OnnxClassifier-AnalysisSenses
                 title: >-
-                  OnnxClassifier shall rank only the senses that the looked-up word itself has, not every sense of its
-                  lemma.
+                  OnnxClassifier shall score the fine senses of every analysis of the looked-up word, so that a sense
+                  of each part of speech the word can have is reachable (a preposition use of like beside its verb
+                  and noun senses, for example), and no sense of any other lemma, and shall derive the probability of
+                  each analysis from the same scores, so that the senses of an analysis are its probabilities given
+                  the analysis.
                 tags: [unit]
                 justification: |
-                  An inflected form can have fewer senses than its lemma; answering with a sense the form cannot have
-                  would be wrong.
+                  A word that is a verb, a noun and a preposition must be able to be answered as each; answering with a
+                  sense of a lemma that the word cannot be would be wrong. Deriving the analysis probabilities from the
+                  sense scores keeps the analyses and the senses of one result consistent with each other.
                 tests:
-                  - OnnxClassifier_ClassifyAsync_FormWithFewerSenses_RanksOnlyItsOwnSenses
+                  - OnnxClassifier_ClassifyAsync_WordWithSeveralAnalyses_RanksTheSensesOfEveryAnalysis
+                  - OnnxClassifier_ClassifyAsync_PrepositionUseOfLike_IsReachable
+                  - OnnxClassifier_ClassifyAsync_InflectedForm_RanksTheSensesOfItsLemma
+
+              - id: WordSense-Onnx-OnnxClassifier-Candidates
+                title: >-
+                  OnnxClassifier shall list, for a trained lemma, the senses of every analysis of the word in the
+                  Senses of that analysis, ranked by the softmax-normalized per-lemma fine scores given the analysis so
+                  that their probabilities sum to one, keeping the inventory order on equal probabilities, never
+                  truncated and whatever level is answered, and shall list no scored senses for a lemma without
+                  weights (the single sense with probability 1 of an analysis with exactly one sense excepted).
+                tags: [unit]
+                justification: |
+                  The fine scores exist for every sense whatever level is answered; listing them ranked inside their
+                  analyses lets a consumer apply its own grouping, and a lemma without scores has nothing honest to
+                  list. A non-empty list for the selected analysis is also what makes a composite model use the result
+                  of the encoder instead of its fallback.
+                tests:
+                  - OnnxClassifier_ClassifyAsync_TrainedLemma_ListsRankedCandidatesSummingToOne
+                  - OnnxClassifier_ClassifyAsync_SingleSenseWord_ListsNoCandidates
+                  - OnnxClassifier_ClassifyAsync_LemmaWithoutWeights_ListsNoCandidates
+
+              - id: WordSense-Onnx-OnnxClassifier-Slots
+                title: >-
+                  OnnxClassifier shall compute the probabilities per lemma and part of speech (a slot), never per
+                  feature variant: the probability of a slot is the mass of its senses (for a form with a chooser,
+                  the share of the chooser's labels that its analyses carry), the probability of a sense given its slot
+                  is its mass renormalized in the slot, the analyses of one slot that differ only in features split the
+                  probability of the slot (by the chooser when it has a label for each of them, otherwise equally,
+                  ties in lexicon order), and the selected analysis is the best variant of the most probable slot, so
+                  that the number of feature variants never lowers a confidence and never moves the selection to
+                  another part of speech.
+                tags: [unit]
+                justification: |
+                  The senses belong to a lemma and a part of speech, not to a feature variant (cut as an infinitive and
+                  as a past tense, deer as a singular and a plural). Dividing the mass of a slot by its number of
+                  variants halved the confidence in a sense for no reason in the evidence and let a part of speech with
+                  one analysis beat a more probable one with several.
+                tests:
+                  - OnnxClassifier_ClassifyAsync_FeaturesOfOneLemmaAndPartOfSpeech_ShareTheSlotProbability
+                  - OnnxClassifier_ClassifyAsync_SlotWithSeveralVariants_IsSelectedByItsTotalProbability
+                  - OnnxClassifier_ClassifyAsync_VariantsOfTheOnlySlot_AreConfidentAtThePartOfSpeech
+                  - OnnxClassifier_ClassifyAsync_ReadPastVersusPresent_ChoosesTheTenseFeatures
 
               - id: WordSense-Onnx-OnnxClassifier-Confidence
                 title: >-
-                  OnnxClassifier shall report a confidence from 0 to 1 that grows monotonically with the margin
-                  between the best and the second-best score relative to the lemma's abstain margin.
+                  OnnxClassifier shall report the confidence of an answer as the probability of its level (the
+                  probability of the slot of the selected analysis, times the probability of the answered sense or the
+                  summed probability of the member senses of the answered group, within that slot), from 0 to 1,
+                  growing monotonically with the margin of the best fine score over the others.
                 tags: [unit]
                 justification: |
-                  A monotonic confidence lets a caller choose a threshold; the abstain margin ties it to the measured
-                  behavior of each lemma.
+                  A monotonic confidence lets a caller choose a threshold, and defining it from the probabilities that
+                  the result also lists keeps the summary and the full answer consistent.
                 tests:
                   - OnnxClassifier_ClassifyAsync_LargerMargin_GivesHigherConfidence
                   - OnnxClassifier_ClassifyAsync_ConfidenceIsWithinZeroAndOne
 
               - id: WordSense-Onnx-OnnxClassifier-BestCandidate
                 title: >-
-                  OnnxClassifier shall return the best-scoring candidate as the details even when its confidence is
-                  low.
+                  OnnxClassifier shall keep the best sense and the best group of a trained lemma visible, in the ranked
+                  Senses of the selected analysis, whatever level it answers, so that a coarser answer still tells
+                  which senses and groups are likely.
                 tags: [unit]
                 justification: |
-                  Callers that accept low-confidence answers must not lose the model's best guess.
+                  Callers that accept a coarser answer, or that group the senses their own way, must not lose the
+                  model's ranking because the model stepped up to a coarser level.
                 tests:
-                  - OnnxClassifier_ClassifyAsync_LowMargin_ReturnsBestCandidateWithLowConfidence
+                  - OnnxClassifier_ClassifyAsync_LowMargin_KeepsTheBestSenseAndGroupVisibleInTheRankedSenses
 
-              - id: WordSense-Onnx-OnnxClassifier-MissingWeights
+              - id: WordSense-Onnx-OnnxClassifier-FineThreshold
                 title: >-
-                  OnnxClassifier shall answer a word with several senses whose lemma has no usable trained weights with
-                  its first lexicon sense and a confidence of one over the number of its senses, and shall rank only
-                  the trained senses of a lemma that the lexicon extends with further parts of speech.
+                  OnnxClassifier shall answer the best fine sense at the sense level, with the sense id and, when the
+                  sense is in a group, its group id, when the margin of the best fine sense reaches the lemma's fine
+                  threshold, and the best sense lies in the selected analysis.
                 tags: [unit]
                 justification: |
-                  A word must never vanish because a model was not trained for it: the first lexicon sense is the most
-                  frequent part of speech, and the low confidence tells the caller that the answer is a guess.
+                  The fine threshold is the lemma's own measured point above which a fine answer meets the precision
+                  target; at or above it the model is allowed to name the sense.
                 tests:
-                  - OnnxClassifier_ClassifyAsync_LemmaWithoutWeights_FallsBackToFirstSense
-                  - OnnxClassifier_ResolveWithoutModel_TrailingAuxiliarySense_IsIgnored
-                  - OnnxClassifier_HasMultiSenseWord_OnlyAuxiliaryAmbiguity_IsFalse
-                  - OnnxClassifier_Pick_ExtraDictionarySenses_AreNeverRanked
-                  - OnnxClassifier_Pick_FormWithOwnExtraOfAnotherLemma_RanksTrainedSensesOnly
+                  - OnnxClassifier_ClassifyAsync_MarginAboveFineThreshold_AnswersSense
+                  - OnnxClassifier_ClassifyAsync_MarginAtFineThreshold_AnswersSense
+
+              - id: WordSense-Onnx-OnnxClassifier-GroupThreshold
+                title: >-
+                  OnnxClassifier shall, for a lemma that has groups, when the fine threshold is not met but the best
+                  sense is in a group and the margin of that group reaches the lemma's group threshold, answer the
+                  group at the group level, with the group id only (the member senses stay listed in the Senses of the
+                  selected analysis).
+                tags: [unit]
+                justification: |
+                  Two close fine senses of one group are often not separable, but the group is; naming the group is
+                  more useful than a coin toss between its senses. A lemma without groups has no group to name.
+                tests:
+                  - OnnxClassifier_ClassifyAsync_FineBelowAndGroupAboveThreshold_AnswersGroup
+
+              - id: WordSense-Onnx-OnnxClassifier-StepToPartOfSpeech
+                title: >-
+                  OnnxClassifier shall, when the fine threshold is not met and no group can be answered (the lemma has
+                  no groups, the best sense is in no group, or the group margin does not reach the group threshold),
+                  answer at the part of speech level with the selected analysis and its probability as the confidence,
+                  never as unknown, and shall never answer at the group level for a lemma that has no groups or for a
+                  group whose threshold is not met.
+                tags: [unit]
+                justification: |
+                  Levels nest as part of speech, group and sense, and a group exists only where it was curated; a
+                  model that is unsure between senses, and not sure of their shared group either, can honestly state
+                  only the part of speech, while the ranked senses of the analysis still show which senses and groups
+                  are likely. Such a model must never invent a group or name one that missed its precision target.
+                tests:
+                  - OnnxClassifier_ClassifyAsync_LemmaWithoutGroups_StepsFromSenseToPartOfSpeech
+                  - OnnxClassifier_ClassifyAsync_BothBelowThreshold_AnswersPartOfSpeech
+
+              - id: WordSense-Onnx-OnnxClassifier-Untrained
+                title: >-
+                  OnnxClassifier shall answer a known word whose senses it does not score (its lemma has no usable
+                  trained weights, and no form chooser applies to it) from the lexicon alone: a single analysis with
+                  probability 1 (at the sense level with
+                  that sense listed with probability 1 when its lemma and part of speech have exactly one sense, else at
+                  the part of speech level), and several analyses with the uniform probability 1/s for each of the s
+                  lemmas and parts of speech, shared equally by the analyses of one of them that differ only in
+                  features, listed by lemma and part of speech in lexicon order with the first analysis as the
+                  selected analysis, at the part of speech level with the probability of the lemma and part of speech
+                  of the selected analysis as confidence and no scored senses, and never a guessed fine sense.
+                tags: [unit]
+                justification: |
+                  A word must never vanish because a model was not trained for it, and a first-sense guess presented as
+                  a sense misleads callers; the encoder model owns no statistical model, so it states honestly what the
+                  lexicon says and leaves the choice between analyses to the fallback model of a composition, whose
+                  turn it is exactly when no senses were scored.
+                tests:
+                  - OnnxClassifier_ClassifyAsync_LemmaWithoutWeights_AnswersAnalysesWithoutScoredSenses
+                  - OnnxClassifier_ClassifyAsync_LemmaWithoutWeights_NeverAnswersAFineSense
+                  - OnnxClassifier_ClassifyAsync_SingleAnalysisSeveralSenses_AnswersPartOfSpeech
+                  - OnnxClassifier_ClassifyAsync_SeveralAnalysesFirstWithOneSense_StaysAtPartOfSpeech
+                  - OnnxClassifier_ClassifyAsync_SeveralAnalysesLaterWithOneSense_StaysAtPartOfSpeech
+                  - OnnxClassifier_ClassifyAsync_VariantsOfTheOnlySlot_AreConfidentAtThePartOfSpeech
 
               - id: WordSense-Onnx-OnnxClassifier-NoVector
                 title: >-
-                  OnnxClassifier shall answer a word that has trained weights but no usable encoder vector with no
-                  details and confidence 0.
+                  OnnxClassifier shall answer a word that has trained weights but no usable encoder vector like a word
+                  without trained weights, from the lexicon at the part of speech level, not as unknown.
                 tags: [unit]
                 justification: |
-                  Without evidence for a word that a trained classifier should decide, a guess would look like a
-                  trained answer; the caller must be able to see that no decision was made.
+                  Without evidence for the fine decision a guess would look like a trained answer; the analyses are
+                  still known, and the level tells the caller that no sense was decided.
                 tests:
-                  - OnnxClassifier_ClassifyAsync_DimensionMismatch_Abstains
+                  - OnnxClassifier_ClassifyAsync_DimensionMismatch_FallsBackToPartOfSpeech
+
+              - id: WordSense-Onnx-OnnxClassifier-MultiLemmaForm
+                title: >-
+                  OnnxClassifier shall answer a form whose analyses belong to several lemmas (left, bases, rows,
+                  found) or to several tenses of one lemma (read, reread) that has a chooser from the sentence
+                  context: the chooser gives each of its labels (a lemma, or a lemma and its features) a
+                  probability, which is shared among the lemma-and-part-of-speech slots of the analyses of the label
+                  by the mass of their scored senses (equally when none of them has scored senses, as for a lemma
+                  without trained weights, whose analyses list no scored senses) and, inside a slot, equally among
+                  its analyses; the selected analysis is the best analysis of the most probable slot; the level is the
+                  part of speech, with the probability of that slot as confidence, when the chooser is not confident
+                  (its margin is below its threshold) or when the lemma of the selected analysis has no scored senses,
+                  and otherwise the sense, group or part of speech level decided with the thresholds of the lemma of
+                  the selected analysis, with the probability of that level as confidence. A form of several lemmas
+                  that has no chooser is answered from the lexicon alone, as a word without trained weights.
+                tags: [unit]
+                justification: |
+                  One classifier per lemma cannot be applied before the lemma is known; a form such as left is a
+                  verb of leave or an adjective of left, and the wrong lemma would answer with senses the word does not
+                  have in that sentence. Naming what happens when only one of the lemmas of a form has trained weights
+                  keeps the probabilities of one result consistent: an untrained lemma never gets a guessed sense.
+                tests:
+                  - OnnxClassifier_ClassifyAsync_FormOfTwoLemmas_ChoosesTheLemmaFromContext
+                  - OnnxClassifier_ClassifyAsync_ReadPastVersusPresent_ChoosesTheTenseFeatures
+                  - OnnxClassifier_ClassifyAsync_FormChooserBelowThreshold_AnswersPartOfSpeech
+                  - OnnxClassifier_ClassifyAsync_FormOfTrainedAndUntrainedLemma_ChooserPicksTrained_AnswersTheSense
+                  - OnnxClassifier_ClassifyAsync_FormOfTrainedAndUntrainedLemma_ChooserPicksUntrained_AnswersPartOfSpeech
+                  - OnnxClassifier_ClassifyAsync_FormOfSeveralLemmasWithoutChooser_IsAnsweredFromTheLexicon
 
               - id: WordSense-Onnx-OnnxClassifier-Validation
                 title: >-

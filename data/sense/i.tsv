@@ -1,14 +1,28 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-i-u-1		dema-i-u	dema-syn-i-u-1	1
+dema-idem-u-1		dema-idem-u	dema-syn-idem-u-1	1
+dema-if-c-1		dema-if-c	dema-syn-if-c-1	1
+dema-ilka-u-1		dema-ilka-u	dema-syn-ilka-u-1	1
+dema-immediately-c-1		dema-immediately-c	dema-syn-immediately-c-1	1
 dema-implicate-n-1		dema-implicate-n	dema-syn-implicate-n-1	1
+dema-in-p-1		dema-in-p	dema-syn-in-p-1	1
+dema-inby-p-1		dema-inby-p	dema-syn-inby-p-1	1
+dema-indeed-i-1		dema-indeed-i	dema-syn-indeed-i-1	1
 dema-inebriate-a-1		dema-inebriate-a	dema-syn-inebriate-a-1	1
+dema-inside-p-1		dema-inside-p	dema-syn-inside-p-1	1
 dema-intergrade-n-1		dema-intergrade-n	dema-syn-intergrade-n-1	1
 dema-intergrade-v-1		dema-intergrade-v	dema-syn-intergrade-v-1	1
 dema-interlay-n-1		dema-interlay-n	dema-syn-interlay-n-1	1
 dema-interlay-v-1		dema-interlay-v	dema-syn-interlay-v-1	1
 dema-interspace-n-1		dema-interspace-n	dema-syn-interspace-n-1	1
 dema-interspace-v-1		dema-interspace-v	dema-syn-interspace-v-1	1
+dema-into-p-1		dema-into-p	dema-syn-into-p-1	1
 dema-invert-n-1		dema-invert-n	dema-syn-invert-n-1	1
+dema-is-x-1		dema-is-x	dema-syn-is-x-1	1
 dema-isolate-n-1		dema-isolate-n	dema-syn-isolate-n-1	1
+dema-it-u-1		dema-it-u	dema-syn-it-u-1	1
+dema-its-d-1		dema-its-d	dema-syn-its-d-1	1
+dema-itself-u-1		dema-itself-u	dema-syn-itself-u-1	1
 oewn-i--beam__1.06.00..	i-beam%1:06:00::	oewn-I-beam-n	oewn-03561353-n	1
 oewn-i-sol-o_device__1.06.01..	i/o_device%1:06:01::	oewn-I-sl-O_device-n	oewn-92461040-n	1
 oewn-i.d.__1.10.00..	i.d.%1:10:00::	oewn-I.D.-n	oewn-06900328-n	1

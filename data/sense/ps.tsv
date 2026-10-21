@@ -1,4 +1,6 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-pshaw-i-1		dema-pshaw-i	dema-syn-pshaw-i-1	1
+dema-psst-i-1		dema-psst-i	dema-syn-psst-i-1	1
 oewn-ps__1.10.00..	ps%1:10:00::	oewn-PS-n	oewn-06777334-n	1
 oewn-psa__1.27.00..	psa%1:27:00::	oewn-PSA-n	oewn-14760689-n	1
 oewn-psa_blood_test__1.09.00..	psa_blood_test%1:09:00::	oewn-PSA_blood_test-n	oewn-05750648-n	1

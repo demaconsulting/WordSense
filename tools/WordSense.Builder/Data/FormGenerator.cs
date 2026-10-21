@@ -13,7 +13,6 @@ namespace WordSense.Builder.Data;
 /// <param name="Analyses">The analyses written.</param>
 /// <param name="SurfaceOnly">The analyses without an entry.</param>
 /// <param name="Frozen">The analyses carried unchanged from the reviewed rows.</param>
-/// <param name="ScopeRows">The scope rows written.</param>
 /// <param name="Provenance">The analyses by provenance.</param>
 /// <param name="Notes">Further named counts of the run.</param>
 internal sealed record FormGeneratorResult(
@@ -22,7 +21,6 @@ internal sealed record FormGeneratorResult(
     int Analyses,
     int SurfaceOnly,
     int Frozen,
-    int ScopeRows,
     SortedDictionary<string, int> Provenance,
     SortedDictionary<string, int> Notes)
 {
@@ -33,7 +31,7 @@ internal sealed record FormGeneratorResult(
     public string Render()
     {
         var text = new StringBuilder();
-        text.Append(CultureInfo.InvariantCulture, $"Entries: {Entries}; spellings: {Spellings}; analyses: {Analyses} ({SurfaceOnly} surface-only, {Frozen} frozen); scope rows: {ScopeRows}.\n");
+        text.Append(CultureInfo.InvariantCulture, $"Entries: {Entries}; spellings: {Spellings}; analyses: {Analyses} ({SurfaceOnly} surface-only, {Frozen} frozen).\n");
         text.Append("Provenance: ").AppendJoin(", ", Provenance.Select(p => $"{p.Key} {p.Value.ToString(CultureInfo.InvariantCulture)}")).Append('\n');
         text.Append("Notes: ").AppendJoin(", ", Notes.Select(p => $"{p.Key} {p.Value.ToString(CultureInfo.InvariantCulture)}")).Append('\n');
         return text.ToString();
@@ -59,8 +57,8 @@ internal static partial class FormGenerator
 
     private sealed record Old(string Spelling, int Rank, string EntryId, string Features, string Source, string Reviewed, string Provenance);
 
-    // The committed legacy analyses: the frozen rows with their sense scopes, the closed-class rows and the two flags of a spelling
-    private sealed record Legacy(List<Old> Frozen, List<Old> Closed, List<string[]> Scopes, HashSet<string> Open, HashSet<string> ClosedOnly);
+    // The committed legacy analyses: the frozen rows, the closed-class rows and the two flags of a spelling
+    private sealed record Legacy(List<Old> Frozen, List<Old> Closed, HashSet<string> Open, HashSet<string> ClosedOnly);
 
     // Auto: the item is a plain regular inflection (or a primary listed form) of a real lemma, which the rule and the lemma attest together
     private sealed record Item(string Spelling, string? EntryId, string? Lemma, string? PosLetter, string Features, string Provenance, string Reviewed, bool Twin = false, bool Auto = false);
@@ -74,6 +72,9 @@ internal static partial class FormGenerator
         public Dictionary<string, List<Item>> Items { get; } = new(StringComparer.Ordinal);
 
         public HashSet<string> FrozenSpellings { get; } = new(StringComparer.Ordinal);
+
+        /// <summary>Gets the spellings whose adjective entry keeps its own analysis beside a reviewed analysis of a verb form.</summary>
+        public HashSet<string> OwnAdjectives { get; } = new(StringComparer.Ordinal);
 
         /// <summary>Gets the spellings that also take the corroborated generated analyses of other entries.</summary>
         public HashSet<string> OpenSpellings { get; } = new(StringComparer.Ordinal);
@@ -121,6 +122,7 @@ internal static partial class FormGenerator
                 if (item.EntryId is { } entryId && (!(FrozenEntries.TryGetValue(item.Spelling, out var have) && have.Contains(entryId)) || MissesListedForm(item, entryId))
                     && ((OpenSpellings.Contains(item.Spelling) && IsInflected(item) && Corroborated(this, item))
                         || (!IsInflected(item) && item.Spelling.EndsWith("ing", StringComparison.Ordinal) && string.Equals(Entries[entryId][1], item.Spelling, StringComparison.OrdinalIgnoreCase))
+                        || (!IsInflected(item) && item.Provenance == "oewn_form" && OwnAdjectives.Contains(item.Spelling) && Entries[entryId][2] == "a" && string.Equals(Entries[entryId][1], item.Spelling, StringComparison.Ordinal))
                         || item.Provenance is "hand" or "irregular_list"))
                 {
                     if (!FrozenExtras.TryGetValue(item.Spelling, out var extras))
@@ -147,15 +149,15 @@ internal static partial class FormGenerator
     }
 
     /// <summary>
-    ///     Regenerates the entry, form and form_sense_scope tables from the entries, the committed legacy analyses
+    ///     Regenerates the entry and form tables from the entries, the committed legacy analyses
     ///     (<c>form-frozen.tsv</c>) and the pinned sources; the output depends on nothing else, so the same inputs give the same
     ///     bytes.
     /// </summary>
-    /// <param name="data">The data directory with the schema and the entry, sense and class_entry tables that are read.</param>
+    /// <param name="data">The data directory with the schema and the entry and sense tables that are read.</param>
     /// <param name="corpus">The corpus directory with the dictionary and the source lists.</param>
     /// <param name="oewn">The Open English WordNet file with the written forms; its SHA-256 must match the pin.</param>
     /// <param name="agid">The inflection database file <c>infl.txt</c> that corroborates generated forms; its SHA-256 must match the pin.</param>
-    /// <param name="output">The directory that receives the entry, form and form_sense_scope tables, or null for the data directory.</param>
+    /// <param name="output">The directory that receives the entry and form tables, or null for the data directory.</param>
     /// <param name="oewnSha256">The expected SHA-256 of the written-forms file, or null to skip the check (tests only).</param>
     /// <param name="agidSha256">The expected SHA-256 of the inflection database file, or null to skip the check (tests only).</param>
     /// <returns>The counts.</returns>
@@ -167,7 +169,6 @@ internal static partial class FormGenerator
         var context = new Context();
         context.Attested = AgidImporter.ReadAttested(agid, agidSha256);
         var legacy = ReadLegacy(Path.Join(corpus, "lexicon", LegacyFile));
-        var scopes = legacy.Scopes;
         context.OpenSpellings.UnionWith(legacy.Open);
         context.ClosedOnly.UnionWith(legacy.ClosedOnly);
         foreach (var row in DataTables.Read(data, schema.Table("entry")))
@@ -180,8 +181,15 @@ internal static partial class FormGenerator
             context.Sensed.Add(row[2]);
         }
 
-        var classEntries = DataTables.Read(data, schema.Table("class_entry")).Select(r => r[1]).ToHashSet(StringComparer.Ordinal);
         var sources = IrregularSources.Read(Path.Join(corpus, "lexicon"));
+        var ownAdjectivesPath = Path.Join(corpus, "lexicon", "own-adjectives.tsv");
+        if (File.Exists(ownAdjectivesPath))
+        {
+            foreach (var line in File.ReadAllLines(ownAdjectivesPath, Encoding.UTF8).Where(l => l.Length > 0 && l[0] != '#'))
+            {
+                context.OwnAdjectives.Add(line.TrimEnd('\r').Split('\t')[0]);
+            }
+        }
         var correctionsPath = Path.Join(corpus, "lexicon", "form-corrections.tsv");
         if (File.Exists(correctionsPath))
         {
@@ -239,7 +247,7 @@ internal static partial class FormGenerator
 
         var frozenSpellings = context.FrozenSpellings;
         var keep = new HashSet<string>(StringComparer.Ordinal);
-        foreach (var e in context.Entries.Values.Where(e => context.Sensed.Contains(e[0]) || ClosedPos.Contains(e[2], StringComparison.Ordinal) || classEntries.Contains(e[0])))
+        foreach (var e in context.Entries.Values.Where(e => context.Sensed.Contains(e[0]) || ClosedPos.Contains(e[2], StringComparison.Ordinal)))
         {
             keep.Add(e[0]);
         }
@@ -310,7 +318,7 @@ internal static partial class FormGenerator
         Prune(context);
         ClassifyMoby(context, moby, byLemma, overridden, ReadAdded(Path.Join(corpus, "lexicon", LexiconSource.AdditionsFile)), sources);
         Prune(context);
-        var result = Write(output ?? data, schema, formTable, context, frozen, scopes, keep);
+        var result = Write(output ?? data, schema, formTable, context, frozen, keep);
         return result;
     }
 
@@ -416,10 +424,10 @@ internal static partial class FormGenerator
 
         var frozen = new List<Old>();
         var closed = new List<Old>();
-        var scopes = new List<string[]>();
         var open = new HashSet<string>(StringComparer.Ordinal);
         var closedOnly = new HashSet<string>(StringComparer.Ordinal);
         var lineNumber = 0;
+        var seen = new Dictionary<(string Kind, string Spelling, string EntryId, string Features), int>();
         foreach (var line in File.ReadAllLines(path, Encoding.UTF8))
         {
             lineNumber++;
@@ -432,6 +440,12 @@ internal static partial class FormGenerator
             if (c.Length != 9 || c[0] is not ("frozen" or "closed"))
             {
                 throw new InvalidDataException($"{path}:{lineNumber}: a legacy analysis has 9 columns and the kind frozen or closed");
+            }
+
+            // Two rows of one spelling with the same entry and features would be the same analysis twice
+            if (!seen.TryAdd((c[0], c[1], c[3], c[4]), lineNumber))
+            {
+                throw new InvalidDataException($"{path}:{lineNumber}: the {c[0]} analysis of '{c[1]}' for the entry '{c[3]}' with the features '{c[4]}' repeats the one on line {seen[(c[0], c[1], c[3], c[4])]}");
             }
 
             if (c[0] == "closed")
@@ -451,14 +465,9 @@ internal static partial class FormGenerator
             {
                 open.Add(c[1]);
             }
-
-            foreach (var scope in c[8].Split(' ', StringSplitOptions.RemoveEmptyEntries))
-            {
-                scopes.Add([c[1], c[2], scope]);
-            }
         }
 
-        return new Legacy(frozen, closed, scopes, open, closedOnly);
+        return new Legacy(frozen, closed, open, closedOnly);
     }
 
     private static string Cap(string lemma)
@@ -1186,7 +1195,6 @@ internal static partial class FormGenerator
         TableDef formTable,
         Context context,
         List<Old> frozen,
-        List<string[]> scopes,
         HashSet<string> keep)
     {
         var rows = new List<string[]>();
@@ -1329,8 +1337,6 @@ internal static partial class FormGenerator
             }
         }
 
-        var frozenSet = context.FrozenSpellings;
-        var scopeRows = scopes.Where(s => frozenSet.Contains(s[0])).ToList();
         var resolver = new PartitionResolver(schema.FileSplit);
         var entries = keep.Select(id => context.Entries[id]).ToList();
         foreach (var e in entries)
@@ -1341,8 +1347,7 @@ internal static partial class FormGenerator
         var before = context.Entries.Count;
         DataTables.Write(data, schema.Table("entry"), entries, resolver);
         DataTables.Write(data, formTable, rows, resolver);
-        DataTables.Write(data, schema.Table("form_sense_scope"), scopeRows, resolver);
         context.Stats["entries_removed"] = before - entries.Count;
-        return new FormGeneratorResult(entries.Count, spellings.Count, rows.Count, surfaceOnly, frozen.Count, scopeRows.Count, provenance, new SortedDictionary<string, int>(context.Stats, StringComparer.Ordinal));
+        return new FormGeneratorResult(entries.Count, spellings.Count, rows.Count, surfaceOnly, frozen.Count, provenance, new SortedDictionary<string, int>(context.Stats, StringComparer.Ordinal));
     }
 }

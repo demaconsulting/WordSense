@@ -1,6 +1,45 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-fab-i-1		dema-fab-i	dema-syn-fab-i-1	1
 dema-fail-n-1		dema-fail-n	dema-syn-fail-n-1	1
+dema-failing-p-1		dema-failing-p	dema-syn-failing-p-1	1
+dema-faith-i-1		dema-faith-i	dema-syn-faith-i-1	1
+dema-fancy-i-1		dema-fancy-i	dema-syn-fancy-i-1	1
+dema-far-i-1		dema-far-i	dema-syn-far-i-1	1
+dema-fast-i-1		dema-fast-i	dema-syn-fast-i-1	1
+dema-faugh-i-1		dema-faugh-i	dema-syn-faugh-i-1	1
+dema-fer-c-1		dema-fer-c	dema-syn-fer-c-1	1
+dema-fer-p-1		dema-fer-p	dema-syn-fer-p-1	1
+dema-few-d-1		dema-few-d	dema-syn-few-d-1	1
+dema-fewer-u-1		dema-fewer-u	dema-syn-fewer-u-1	1
+dema-fiddlestick-i-1		dema-fiddlestick-i	dema-syn-fiddlestick-i-1	1
+dema-fiddlesticks-i-1		dema-fiddlesticks-i	dema-syn-fiddlesticks-i-1	1
+dema-fie-i-1		dema-fie-i	dema-syn-fie-i-1	1
+dema-fifteen-d-1		dema-fifteen-d	dema-syn-fifteen-d-1	1
+dema-fifty-d-1		dema-fifty-d	dema-syn-fifty-d-1	1
+dema-five-d-1		dema-five-d	dema-syn-five-d-1	1
+dema-flush-n-1		oewn-flush-n	dema-syn-flush-n-1	8
+dema-foh-i-1		dema-foh-i	dema-syn-foh-i-1	1
+dema-for-c-1		dema-for-c	dema-syn-for-c-1	1
+dema-for-p-1		dema-for-p	dema-syn-for-p-1	1
+dema-forasmuch-c-1		dema-forasmuch-c	dema-syn-forasmuch-c-1	1
+dema-forby-p-1		dema-forby-p	dema-syn-forby-p-1	1
+dema-fore-c-1		dema-fore-c	dema-syn-fore-c-1	1
+dema-fore-i-1		dema-fore-i	dema-syn-fore-i-1	1
+dema-fore-p-1		dema-fore-p	dema-syn-fore-p-1	1
 dema-foretoken-v-1		dema-foretoken-v	dema-syn-foretoken-v-1	1
+dema-fornenst-p-1		dema-fornenst-p	dema-syn-fornenst-p-1	1
+dema-fornent-p-1		dema-fornent-p	dema-syn-fornent-p-1	1
+dema-forth-p-1		dema-forth-p	dema-syn-forth-p-1	1
+dema-forty-d-1		dema-forty-d	dema-syn-forty-d-1	1
+dema-forwhy-c-1		dema-forwhy-c	dema-syn-forwhy-c-1	1
+dema-four-d-1		dema-four-d	dema-syn-four-d-1	1
+dema-fourscore-d-1		dema-fourscore-d	dema-syn-fourscore-d-1	1
+dema-fourteen-d-1		dema-fourteen-d	dema-syn-fourteen-d-1	1
+dema-frae-p-1		dema-frae-p	dema-syn-frae-p-1	1
+dema-from-p-1		dema-from-p	dema-syn-from-p-1	1
+dema-fuck-i-1		dema-fuck-i	dema-syn-fuck-i-1	1
+dema-fucking-i-1		dema-fucking-i	dema-syn-fucking-i-1	1
+dema-fudge-i-1		dema-fudge-i	dema-syn-fudge-i-1	1
 oewn-f--actin__1.27.01..	f-actin%1:27:01::	oewn-F-actin-n	oewn-92462871-n	1
 oewn-f.i.s.c.__1.14.00..	f.i.s.c.%1:14:00::	oewn-F.I.S.C.-n	oewn-08349412-n	1
 oewn-f__1.10.00..	f%1:10:00::	oewn-F-n	oewn-06844762-n	4

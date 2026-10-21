@@ -1,0 +1,37 @@
+---
+# CueModel unit requirements (context cues of the Basic model)
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: Core Requirements
+        sections:
+          - title: CueModel Requirements
+            requirements:
+              - id: WordSense-Core-CueModel-Extract
+                title: >-
+                  CueModel shall extract the context cues of a target word from its immediate neighbors and the words
+                  within a limited window around it, listing each cue once and handling targets at either edge of a
+                  segment.
+                tags: [unit]
+                justification: |
+                  The words around a target carry the evidence for its meaning; bounding and deduplicating them keeps
+                  the evidence balanced.
+                tests:
+                  - CueModel_Extract_WindowAndNeighbors
+                  - CueModel_Extract_DedupesAndLimitsWindow
+                  - CueModel_Extract_Edges
+
+              - id: WordSense-Core-CueModel-Score
+                title: >-
+                  CueModel shall score each candidate analysis of a form from the stored weights of the cues, mark
+                  analyses without statistics, and give the prior score when no cue is known, and reject a null table
+                  or a default (uninitialized) analysis array with an argument-null error.
+                tags: [unit]
+                justification: |
+                  Analyses that share a part of speech are separated by the cues alone; without cues the answer must
+                  fall back to the analysis frequencies; misuse must fail fast with the documented exception.
+                tests:
+                  - CueModel_Score_UsesWeightsAndMarksMissingAnalyses
+                  - CueModel_Score_UnknownFeature_GivesPrior
+                  - CueModel_Score_NullTableOrDefaultAnalyses_Throws

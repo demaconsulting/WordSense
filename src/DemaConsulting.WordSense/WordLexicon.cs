@@ -1,9 +1,10 @@
 using System.Collections.Immutable;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DemaConsulting.WordSense;
 
 /// <summary>
-///     The word lexicon: every known written form of English with its possible analyses.
+///     The word lexicon: every known written form of English with its possible analyses, and the sense catalog.
 /// </summary>
 /// <remarks>
 ///     <para>
@@ -13,7 +14,8 @@ namespace DemaConsulting.WordSense;
 ///     morphology runs at run time: <c>record</c>, <c>records</c> and <c>recorded</c> are all there.
 ///     </para>
 ///     <para>
-///     <see cref="Lookup"/> and <see cref="TryLookup"/> take the word as written. They look for the exact spelling first
+///     <see cref="Lookup"/> and <see cref="TryLookup"/> take the word as written and answer the morphological question:
+///     which analyses (lemma, part of speech and features) can this spelling have. They look for the exact spelling first
 ///     and, when there is none, for the lower-case spelling and the spellings that differ only in case, so
 ///     <c>Record</c> finds <c>record</c>; the curly apostrophe U+2019 counts as <c>'</c>. A possessive that is not stored
 ///     (<c>dog's</c>, <c>dogs'</c>) gets the noun and pronoun analyses of its stem with <c>Poss=Yes</c> added to the
@@ -21,24 +23,38 @@ namespace DemaConsulting.WordSense;
 ///     The reference tokenizer of the models keeps an apostrophe between letters inside the word, so <c>dog's</c> is one token and
 ///     reaches this lookup whole, but a trailing apostrophe is a token of its own (<c>dogs'</c> becomes <c>dogs</c> and <c>'</c>); a
 ///     caller that wants the plural possessive resolved has to pass <c>dogs'</c> as one word itself.
-///     The analyses of a word are in a
-///     fixed order that is part of the lexicon (for a word with several analyses the first is the most frequent) and
-///     use the ten values of <see cref="PartOfSpeech"/>. A word that is not in the lexicon (a number written with digits, most proper
-///     nouns or a misspelling) has no analysis. The lexicon is read-only and safe for concurrent use.
+///     There is one analysis for each lemma, part of speech and features of a spelling, never one for each sense; the
+///     analyses of a word are in a fixed order that is part of the lexicon (for a word with several analyses the first is
+///     the most frequent) and use the ten values of <see cref="PartOfSpeech"/>. A capitalized or inflected spelling
+///     behaves like its base form: <c>Polish</c>, <c>using</c> and <c>paid</c> have the analyses of their lemmas. A word
+///     that is not in the lexicon (a number written with digits, most proper nouns or a misspelling) has no analysis.
+///     </para>
+///     <para>
+///     <see cref="SensesOf"/> answers the semantic question: which senses do a lemma and part of speech have, the most
+///     frequent first. A sense has a readable id (<c>bank#coin-bank</c>), an Open English WordNet sense key (none for a
+///     project sense that WordNet does not cover) and optionally a group of closely related senses; find a sense by id
+///     with <see cref="TryGetSense"/>, by key with <see cref="TryGetSenseByKey"/> and a group with
+///     <see cref="TryGetGroup"/>. The lexicon is read-only and safe for concurrent use.
 ///     </para>
 /// </remarks>
 /// <example>
 ///     <code>
-///     // "read" has analyses with the senses "read#past" and "read#present"
-///     foreach (WordDetails sense in WordLexicon.Lookup("read"))
+///     // "read" has two verb analyses (past and present) and a noun analysis
+///     foreach (WordDetails analysis in WordLexicon.Lookup("read"))
 ///     {
-///         Console.WriteLine($"{sense.SenseId ?? "-"}: {sense.Lemma}, {sense.PartOfSpeech}, {sense.Features}");
+///         Console.WriteLine($"{analysis.Lemma}: {analysis.PartOfSpeech}, {analysis.Features}");
+///     }
+///
+///     // The senses of an analysis, the most frequent first
+///     foreach (SenseInfo sense in WordLexicon.SensesOf("bank", PartOfSpeech.Noun).Take(3))
+///     {
+///         Console.WriteLine($"{sense.SenseId} {sense.SenseKey}");
 ///     }
 ///
 ///     // A word that is not in the lexicon has no analysis, so use TryLookup for text from users
-///     if (WordLexicon.TryLookup("zyzzyva", out var senses))
+///     if (WordLexicon.TryLookup("zyzzyva", out var analyses))
 ///     {
-///         Console.WriteLine($"zyzzyva: {senses.Length} analyses");
+///         Console.WriteLine($"zyzzyva: {analyses.Length} analyses");
 ///     }
 ///     else
 ///     {
@@ -61,6 +77,18 @@ public static class WordLexicon
     /// </summary>
     /// <exception cref="InvalidDataException">Thrown on first access when the embedded lexicon is missing or corrupt.</exception>
     public static int Count => Image.Value.SpellingCount;
+
+    /// <summary>
+    ///     Gets an identifier of the sense inventory of the embedded lexicon: it changes whenever an analysis, a sense or
+    ///     a group of the catalog changes, so a consumer that stores sense or group ids can detect that the catalog it
+    ///     saw is not the one it runs against.
+    /// </summary>
+    /// <remarks>
+    ///     The value is the first 16 hexadecimal digits (lower case) of the inventory hash of the image, the hash the
+    ///     models are trained against. It is not a version number: compare for equality only.
+    /// </remarks>
+    /// <exception cref="InvalidDataException">Thrown on first access when the embedded lexicon is missing or corrupt.</exception>
+    public static string Version => Convert.ToHexString(Image.Value.InventoryHash[..8]).ToLowerInvariant();
 
     /// <summary>
     ///     Looks a word up.
@@ -115,6 +143,61 @@ public static class WordLexicon
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="lemma"/> is null.</exception>
     /// <exception cref="InvalidDataException">Thrown on first access when the embedded lexicon is missing or corrupt.</exception>
     public static IReadOnlyList<string> FormsOf(string lemma) => Image.Value.FormsOf(lemma);
+
+    /// <summary>
+    ///     Lists the senses of a lemma and part of speech.
+    /// </summary>
+    /// <param name="lemma">The lemma exactly as it is written in the lexicon (the <see cref="WordDetails.Lemma"/> of an analysis).</param>
+    /// <param name="pos">The part of speech (the <see cref="WordDetails.PartOfSpeech"/> of an analysis).</param>
+    /// <returns>The senses in inventory order, the most frequent first (by WordNet 3.0 tag count; project senses last); empty when the lemma and part of speech have no sense.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="lemma"/> is null.</exception>
+    /// <exception cref="InvalidDataException">Thrown on first access when the embedded lexicon is missing or corrupt.</exception>
+    public static ImmutableArray<SenseInfo> SensesOf(string lemma, PartOfSpeech pos) => Image.Value.SensesOf(lemma, pos);
+
+    /// <summary>
+    ///     Finds a sense by its readable id.
+    /// </summary>
+    /// <param name="senseId">The id, <c>lemma#label</c>.</param>
+    /// <param name="sense">Receives the sense; null when it is not found.</param>
+    /// <returns><see langword="true"/> when the sense exists.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="senseId"/> is null.</exception>
+    /// <exception cref="InvalidDataException">Thrown on first access when the embedded lexicon is missing or corrupt.</exception>
+    public static bool TryGetSense(string senseId, [NotNullWhen(true)] out SenseInfo? sense)
+    {
+        var found = Image.Value.TryGetSense(senseId, out var info);
+        sense = found ? info : null;
+        return found;
+    }
+
+    /// <summary>
+    ///     Finds a sense by its Open English WordNet sense key, the attach point for glossaries and thesauri that use WordNet keys.
+    /// </summary>
+    /// <param name="senseKey">The full sense key, for example <c>bow%1:06:02::</c>.</param>
+    /// <param name="sense">Receives the sense; null when it is not found.</param>
+    /// <returns><see langword="true"/> when a sense has the key; a project sense has no key and is never found.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="senseKey"/> is null.</exception>
+    /// <exception cref="InvalidDataException">Thrown on first access when the embedded lexicon is missing or corrupt.</exception>
+    public static bool TryGetSenseByKey(string senseKey, [NotNullWhen(true)] out SenseInfo? sense)
+    {
+        var found = Image.Value.TryGetSenseByKey(senseKey, out var info);
+        sense = found ? info : null;
+        return found;
+    }
+
+    /// <summary>
+    ///     Finds a group of closely related senses by its readable id.
+    /// </summary>
+    /// <param name="groupId">The id, <c>lemma#group:slug</c>. Group ids are opaque and versioned per data release.</param>
+    /// <param name="group">Receives the group; null when it is not found.</param>
+    /// <returns><see langword="true"/> when the group exists.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="groupId"/> is null.</exception>
+    /// <exception cref="InvalidDataException">Thrown on first access when the embedded lexicon is missing or corrupt.</exception>
+    public static bool TryGetGroup(string groupId, [NotNullWhen(true)] out SenseGroup? group)
+    {
+        var found = Image.Value.TryGetGroup(groupId, out var info);
+        group = found ? info : null;
+        return found;
+    }
 
     /// <summary>
     ///     Gets the opened image (for tests and tools of this repository).

@@ -40,16 +40,17 @@ sections:
                   OnnxWordSenseModel shall classify with one shared encoder session and one set of weights, shall
                   ensure its model files lazily on first need (with the default and environment mirror settings,
                   sharing one ensure between concurrent callers and allowing a failed ensure to be retried), and shall
-                  answer words that need no model (unknown, single-sense, or several senses without trained weights)
-                  without touching model files or the encoder, a word with several senses but no weights getting its
-                  first sense.
+                  answer words that need no model (unknown, single-sense, or ambiguous without trained weights)
+                  without touching model files or the encoder, an ambiguous word without weights getting the
+                  lexicon analyses at the part of speech level (every lemma and part of speech equally likely, the
+                  feature variants of one sharing its probability, no scored senses).
                 tags: [unit]
                 justification: |
                   Loading a session and weights is expensive and must happen once; a model that is never needed must
                   never be downloaded, and callers should not have to sequence preparation and use themselves.
                 tests:
                   - OnnxWordSenseModel_ClassifyAsync_LexiconOnlyWords_NeverTouchesModelFiles
-                  - OnnxWordSenseModel_ClassifyAsync_MultiSenseWordsWithoutWeights_FallBackWithoutModelFiles
+                  - OnnxWordSenseModel_ClassifyAsync_UntrainedAmbiguousWords_AnswerPartOfSpeechWithoutModelFiles
                   - OnnxWordSenseModel_ClassifyAsync_WithoutEnsure_EnsuresLazily
                   - OnnxWordSenseModel_ClassifyAsync_Concurrent_ShareOneLazyEnsure
                   - OnnxWordSenseModel_ClassifyAsync_AfterFailedLazyEnsure_CanBeRetried

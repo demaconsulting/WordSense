@@ -1,6 +1,6 @@
 ---
-# WordSenseContracts unit requirements (IWordSenseModel, MirrorOptions, WordSense,
-# WordDetails and PartOfSpeech)
+# WordSenseContracts unit requirements (IWordSenseModel, FallbackWordSenseModel, MirrorOptions, ClassifyResult,
+# AnalysisCandidate, SenseCandidate, SenseLevel, WordDetails, PartOfSpeech, SenseInfo and SenseGroup)
 
 sections:
   - title: WordSense Requirements
@@ -30,15 +30,118 @@ sections:
 
               - id: WordSense-Core-WordSenseContracts-Result
                 title: >-
-                  WordSense shall be a value type carrying the word as given, the chosen details (or none) and a
-                  confidence, with value equality.
+                  ClassifyResult shall be an immutable value type carrying the word as given, whether the word is
+                  known, the analyses with their probabilities, the selected analysis (none for an unknown word), the
+                  level answered, a confidence at that level, and the group id and the sense id where the level carries
+                  them (the sense id only at the sense level, the group id at the group level and at the sense level
+                  when the sense is in a group, otherwise none), with value equality, plain properties that serialize
+                  without custom code, and a default value that is valid (empty word, empty arrays).
                 tags: [unit]
                 justification: |
-                  A value result is cheap to produce for every word, and equality makes results easy to compare and
-                  test.
+                  A value result is cheap to produce for every word, equality makes results easy to compare and test,
+                  and ids that are present exactly where the level carries them let callers test the level instead of
+                  guessing from a missing value. A default value that does not throw lets callers keep results in
+                  arrays and fields without null checks. The result type is not named like its namespace, so a caller
+                  never confuses the two.
                 tests:
-                  - WordSenseContracts_WordSense_SameValues_AreEqual
-                  - WordSenseContracts_WordSense_NoDetails_HasNullDetails
+                  - WordSenseContracts_ClassifyResult_SameValues_AreEqual
+                  - WordSenseContracts_ClassifyResult_NoDetails_HasNullDetails
+                  - WordSenseContracts_ClassifyResult_LevelDecidesWhichIdsAreSet
+                  - WordSenseContracts_ClassifyResult_Default_HasEmptyArraysAndDoesNotThrow
+
+              - id: WordSense-Core-WordSenseContracts-Candidates
+                title: >-
+                  ClassifyResult shall expose its analyses as an immutable array of AnalysisCandidate (the analysis
+                  with lemma, part of speech and features, its probability and, where the model scored them, its senses
+                  as an immutable array of SenseCandidate, a sense id with its probability given the analysis), the
+                  analyses sorted by the probability of their lemma and part of speech (the sum of the probabilities of
+                  the analyses that share them, which differ only in features), largest first, and inside one lemma
+                  and part of speech by their own probability, largest first, with ties in the order of the lexicon,
+                  the probabilities from 0 to 1 and summing to one over the analyses of a word (and over the senses of
+                  an analysis), never truncated, with the analyses empty only for an unknown word and the senses empty
+                  when they were not scored; it shall reuse shared empty arrays for an unknown word and for a missing
+                  list, never expose a default array, and compare the analyses and senses item by item in its equality.
+                tags: [unit]
+                justification: |
+                  The analyses are the single source of truth of a result: a consumer that wants its own decision, for
+                  example one that maps senses to categories of its own and sums analysis.Probability times
+                  sense.Probability per category, needs every analysis and sense with its probability in rank order;
+                  the senses belong to a lemma and part of speech, so the feature variants of one of them are listed
+                  together and share its probability, and the first analysis is the best variant of the most probable
+                  lemma and part of speech;
+                  arrays that are never default need no null check, shared empty arrays keep unknown and
+                  single-analysis words free of allocations, and equality that compares the contents keeps results
+                  comparable in tests.
+                tests:
+                  - WordSenseContracts_ClassifyResult_Analyses_AreKeptInOrder
+                  - WordSenseContracts_ClassifyResult_SameAnalyses_AreEqual
+                  - WordSenseContracts_ClassifyResult_DifferentAnalyses_AreNotEqual
+                  - WordSenseContracts_ClassifyResult_Unknown_SharesEmptyArrays
+                  - WordSenseContracts_AnalysisCandidate_Senses_DefaultIsEmpty
+                  - WordSenseContracts_AnalysisCandidate_SameValues_AreEqual
+                  - WordSenseContracts_SenseCandidate_SameValues_AreEqual
+
+              - id: WordSense-Core-WordSenseContracts-Level
+                title: >-
+                  SenseLevel shall name the four answer levels, None (unknown word), PartOfSpeech, Group and Sense,
+                  in order of increasing precision, nested so that a group exists only between a part of speech and its
+                  senses, and ClassifyResult shall use them so that None is only for an unknown word (not known, no
+                  analysis, confidence 0), a known but uncertain word is at least at PartOfSpeech with a low
+                  confidence, and the Group and Sense levels name a group or sense that lies in the selected analysis.
+                tags: [unit]
+                justification: |
+                  Callers compare levels to decide how far to trust an answer; a fixed, ordered vocabulary makes the
+                  comparison meaningful for every model, and a known word that is never reported as unknown lets a
+                  caller tell a word the lexicon lacks from a word the model is unsure about.
+                tests:
+                  - WordSenseContracts_SenseLevel_Values_AreTheFourLevels
+                  - WordSenseContracts_SenseLevel_Order_IncreasesWithPrecision
+                  - WordSenseContracts_ClassifyResult_LevelDecidesWhichIdsAreSet
+
+              - id: WordSense-Core-WordSenseContracts-Confidence
+                title: >-
+                  ClassifyResult.Confidence shall be the probability of the answer at its level, built on the
+                  probability of the lemma and part of speech (the slot) of the selected analysis, which is the sum of
+                  the probabilities of the analyses that share them and differ only in features, so that the split of
+                  a slot among its feature variants never lowers it: for the part of speech level the probability of
+                  that slot, for the group level that probability times the sum of the probabilities, within the slot,
+                  of the member senses of the group, and for the sense level that probability times the probability of
+                  the answered sense within the slot; it is 0 for an unknown word and 1 for a word with one lemma and
+                  part of speech and one sense, and is comparable only within one result.
+                tags: [unit]
+                justification: |
+                  A single number per answer lets callers apply a threshold, and defining it from the slot and sense
+                  probabilities that the result also lists keeps the summary and the full answer consistent; the
+                  senses belong to a lemma and a part of speech and not to a feature variant, so the confidence in a
+                  sense must not fall because the lexicon lists a form (cut, deer) in several variants; the
+                  scale is not calibrated across models, words or levels, so each caller tunes its own threshold.
+                tests:
+                  - WordSenseContracts_ClassifyResult_LevelDecidesWhichIdsAreSet
+                  - WordSenseContracts_ClassifyResult_NoDetails_HasNullDetails
+
+              - id: WordSense-Core-WordSenseContracts-Fallback
+                title: >-
+                  FallbackWordSenseModel shall compose a primary and a fallback model: classify the whole word list
+                  with both, answer each word with the complete result of the primary model when the primary model
+                  scored senses for it (its selected analysis lists scored senses, or its level is Group or Sense) and
+                  otherwise with the complete result of the fallback model, never a mixture of the two, ensure both
+                  models concurrently (both always run their ensure step, and a failure of either is reported after
+                  both ran), dispose both models once, reject a null model, a null list and a null element,
+                  and reject a model whose result array is not parallel to the input.
+                tags: [unit]
+                justification: |
+                  An encoder model scores fine senses only for the lemmas it was trained for, while a statistical
+                  model chooses the analysis of every ambiguous word; composing them lets a caller use one model that
+                  answers every word as precisely as it can, and a result that always belongs completely to one model
+                  keeps its probabilities, level and confidence consistent.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_PrimaryScoredSenses_UsesPrimary
+                  - WordSenseContracts_FallbackWordSenseModel_PrimaryChoseOnlyAnalysis_UsesFallback
+                  - WordSenseContracts_FallbackWordSenseModel_EnsureModelAsync_EnsuresBoth
+                  - WordSenseContracts_FallbackWordSenseModel_EnsureModelAsync_PrimaryFails_StillEnsuresFallback
+                  - WordSenseContracts_FallbackWordSenseModel_Dispose_DisposesBothOnce
+                  - WordSenseContracts_FallbackWordSenseModel_ClassifyAsync_InvalidArguments_Throw
+                  - WordSenseContracts_FallbackWordSenseModel_ClassifyAsync_ResultNotParallel_Throws
 
               - id: WordSense-Core-WordSenseContracts-Model
                 title: >-
@@ -80,21 +183,44 @@ sections:
 
               - id: WordSense-Core-WordSenseContracts-Details
                 title: >-
-                  WordDetails shall describe one analysis by optional sense id, lemma, part of speech and inflection
-                  features, and PartOfSpeech shall name ten parts of speech: the eight traditional ones,
-                  determiner and auxiliary.
+                  WordDetails shall describe one analysis by lemma, part of speech and inflection features, without
+                  a sense id, shall find the value of a named feature (such as Tense) in its features, and
+                  PartOfSpeech shall name ten parts of speech: the eight traditional ones, determiner and auxiliary.
                 tags: [unit]
                 justification: |
-                  Callers (for example a text-to-speech front end) need the part of speech first, then the sense id
-                  that fixes the pronunciation of a heteronym. The articles and possessives (the, a, his) are
-                  among the most frequent words of English and fit none of the eight traditional values; modal and
-                  primary auxiliaries (will, can, is, has) are told apart from the content verb and noun senses by
-                  a trailing auxiliary sense.
+                  Callers (for example a text-to-speech front end) need the part of speech and the lemma first; the
+                  sense is a separate, level-dependent part of the answer, and a feature lookup spares every caller
+                  from parsing the feature string. The articles and possessives (the, a, his)
+                  are among the most frequent words of English and fit none of the eight traditional values; modal and
+                  primary auxiliaries (will, can, is, has) are told apart from the content verb and noun uses by an
+                  auxiliary analysis.
                 tests:
                   - WordSenseContracts_WordDetails_Construct_ExposesMembers
                   - WordSenseContracts_WordDetails_SameValues_AreEqual
+                  - WordSenseContracts_WordDetails_TryGetFeature_FindsValue
+                  - WordSenseContracts_WordDetails_TryGetFeature_MissingFeature_ReturnsFalse
                   - WordSenseContracts_PartOfSpeech_Values_AreTheTenClasses
-                  - WordLexicon_Lookup_Auxiliaries_HaveTrailingAuxiliaryAnalysis
+                  - WordLexicon_Lookup_Auxiliaries_HaveAnAuxiliaryAnalysis
+
+              - id: WordSense-Core-WordSenseContracts-SenseInfo
+                title: >-
+                  SenseInfo shall describe a sense by its id (lemma#label), its group id (none when the sense is in no
+                  group), its lemma, its part of speech, its OEWN sense key (none for a project sense) and an optional
+                  respelling, and SenseGroup shall describe a group by its id (lemma#group:label), its lemma, its part
+                  of speech, the ids of its senses in inventory order (at least two, never all the senses of its lemma
+                  of its lemma and part of speech) and an optional respelling, both as immutable values with value
+                  equality (a group compares the content and order of its member ids).
+                tags: [unit]
+                justification: |
+                  Callers resolve the ids of an answer to a sense or a group and read what they need (the key to reach
+                  WordNet-keyed resources, the respelling for pronunciation, the member senses of a group answer)
+                  without a model.
+                tests:
+                  - WordSenseContracts_SenseInfo_Construct_ExposesMembers
+                  - WordSenseContracts_SenseInfo_ProjectSense_HasNoKey
+                  - WordSenseContracts_SenseGroup_Construct_ExposesMembers
+                  - WordSenseContracts_SenseInfo_SameValues_AreEqual
+                  - WordSenseContracts_SenseGroup_SameMembers_AreEqual
 
               - id: WordSense-Core-WordSenseContracts-Independent
                 title: The core assembly shall reference no ONNX Runtime, weights or vector library.

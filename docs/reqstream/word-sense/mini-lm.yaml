@@ -9,11 +9,13 @@ sections:
           - id: WordSense-MiniLM-Model
             title: >-
               The MiniLM subsystem shall provide a word-sense model on the all-MiniLM-L6-v2 (int8) encoder, an uncased
-              model with hidden size 384, with its trained weights embedded in the package.
+              model with hidden size 384, with its trained fine-sense weights and per-lemma thresholds, calibrated for
+              this encoder, embedded in the package.
             tags: [subsystem]
             justification: |
               MiniLM is the small, fast encoder: its 22 MiB model file and low latency suit interactive callers, and
-              embedding the weights leaves only the model file to be obtained.
+              embedding the weights leaves only the model file to be obtained; its thresholds are measured on its own
+              embeddings, so its levels are decided for this encoder.
             children:
               - WordSense-MiniLM-MiniLMWordSenseModel-Identity
               - WordSense-MiniLM-MiniLMWordSenseModel-Files
@@ -22,13 +24,37 @@ sections:
             tests:
               - MiniLMWordSenseModel_Classify_AmbiguousWord_ReturnsDeterministicResults
               - WordSense_Classifier_EndToEnd_ClassifiesRecord
+              - MiniLMWordSenseModel_Classify_TrainedLemma_AnswersAtASenseOrGroupLevel
+
+          - id: WordSense-MiniLM-Composition
+            title: >-
+              The MiniLM package shall depend on the core and Onnx packages, and its public model shall be the
+              core FallbackWordSenseModel of its own encoder model (primary) and the core Basic model (fallback), so
+              that every ambiguous word that the encoder does not score is answered by the Basic model, and shall
+              ensure and dispose both models.
+            tags: [subsystem]
+            justification: |
+              The encoder scores fine senses only for the lemmas it was trained for; pairing it with the Basic model
+              of the core package gives callers one model that answers every word, while the Onnx package itself stays
+              free of a dependency on the Basic model.
+            children:
+              - WordSense-MiniLM-MiniLMWordSenseModel-Composition
+            tests:
+              - MiniLMWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback
+              - MiniLMWordSenseModel_Assembly_ReferencesCoreAndOnnx
 
           - id: WordSense-MiniLM-Packaging
             title: >-
               The MiniLM package shall ship its XML documentation with a namespace summary and verified examples, its
-              NuGet metadata, and a README that carries the credits and licenses of the model it describes.
+              NuGet metadata, a README that carries the credits and licenses of the model it describes, and a packed
+              NOTICE file that reproduces the Princeton WordNet 3.0 notice for the sense usage prior of its embedded
+              weights and records that the encoder model files are not in the package (they are downloaded from this
+              repository under the Apache License 2.0).
             tags: [subsystem]
             justification: |
-              The model carries its own license and attribution; consumers learn the API from the package.
+              The model carries its own license and attribution; consumers learn the API from the package. The
+              embedded weights carry a prior derived from the WordNet 3.0 sense counts, and the WordNet license
+              requires its notice on every copy and modification, so the package ships the notice like the core
+              package does.
             tests:
               - MiniLMWordSense_XmlDocExamples_Compile

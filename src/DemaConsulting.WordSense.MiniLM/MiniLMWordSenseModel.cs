@@ -3,36 +3,51 @@ using DemaConsulting.WordSense.Onnx;
 namespace DemaConsulting.WordSense.MiniLM;
 
 /// <summary>
-///     The all-MiniLM-L6-v2 (int8) encoder as a word-sense model.
+///     The all-MiniLM-L6-v2 (int8) encoder as a word-sense model, composed with the Basic model as its fallback.
 /// </summary>
 /// <remarks>
 ///     <para>
-///     This model is built on <c>DemaConsulting.WordSense.Onnx</c>: it derives from <see cref="OnnxWordSenseModel"/>,
-///     which provides the tokenizer, the ONNX session, the verified downloader and the classification, and adds only the
-///     identity of this encoder (its pinned files and its embedded weights). Everything described for
-///     <see cref="OnnxWordSenseModel"/> applies: <c>EnsureModelAsync</c> (mirror precedence, verification, retry and
-///     cancellation behavior), <c>ClassifyAsync</c> (lazy ensure), the confidence of a result (recommended starting threshold 0.8), and the requirement to dispose the model with <c>using</c> (disposing while
-///     a classification runs is safe: the running calls complete and the ONNX session is released after the last one).
+///     This model is built on <c>DemaConsulting.WordSense.Onnx</c>: it wraps an encoder model (an
+///     <see cref="OnnxWordSenseModel"/> with the identity of this encoder: its pinned files and its embedded weights)
+///     and the Basic model (<see cref="BasicWordSenseModel"/> of the core package) in a <see cref="FallbackWordSenseModel"/>, and
+///     implements <see cref="IWordSenseModel"/>. <see cref="EnsureModelAsync"/> ensures the encoder files (mirror
+///     precedence, verification, retry and cancellation behavior are those described for
+///     <see cref="OnnxWordSenseModel.EnsureModelAsync"/>) and <see cref="Dispose"/> disposes both models; dispose the
+///     model with <c>using</c> (disposing while a classification runs is safe: the running calls complete and the
+///     resources are released after the last one).
+///     </para>
+///     <para>
+///     Classification. The encoder model scores the fine senses of the lemmas that this version has weights for
+///     (the lemmas of the relabeled corpus, listed in the senses appendix of the user guide) and answers each of them at the finest level its
+///     per-lemma thresholds support: the <see cref="SenseLevel.Sense"/> level with the sense id, the
+///     <see cref="SenseLevel.Group"/> level with the group id, or the <see cref="SenseLevel.PartOfSpeech"/> level; the
+///     ranked senses of every analysis are listed whatever the level. A word with one analysis and one sense is answered
+///     at the <see cref="SenseLevel.Sense"/> level. Every other ambiguous word is answered by the Basic fallback: it
+///     chooses the analysis (the part of speech) from the context, the analyses of the result carry its probabilities,
+///     no sense is scored, and the level is <see cref="SenseLevel.PartOfSpeech"/>, or <see cref="SenseLevel.Sense"/> when
+///     its selected analysis has exactly one sense. The composition rules (which model answers a word,
+///     and that a result always belongs completely to one of the two models) are those of
+///     <see cref="FallbackWordSenseModel"/>. <see cref="ClassifyAsync"/> needs the encoder files only for a text that
+///     contains a trained lemma with several senses (it ensures them on first use), and never downloads a file or fails
+///     because a file is missing for any other text.
 ///     </para>
 ///     <para>
 ///     Two kinds of data are involved: the per-lemma classifier weights trained for this encoder are embedded in the
 ///     assembly (nothing to download), while the encoder files (<c>model_int8.onnx</c>,
 ///     21.9 MiB or 22,972,370 bytes, and <c>vocab.txt</c>, 0.2 MiB or 231,508 bytes; 22 MiB in total) are downloaded
-///     once by <see cref="OnnxWordSenseModel.EnsureModelAsync"/>, verified
+///     once by <see cref="EnsureModelAsync"/>, verified
 ///     against pinned SHA-256 digests and cached per user; pass a model directory to the constructor to use files you
-///     supply, in which case no network access happens at all. The files are described in the repository at
+///     supply, in which case no network access happens at all. The first classification that needs the encoder opens
+///     the ONNX session and checks the embedded weights against the word image. The files are described in the repository at
 ///     https://github.com/demaconsulting/WordSense/tree/main/model/all-MiniLM-L6-v2-int8. The identifier of this model
-///     (<see cref="OnnxWordSenseModel.ModelId"/>) is <c>all-MiniLM-L6-v2-int8</c>; it names the store folder and the
+///     (<see cref="ModelId"/>) is <c>all-MiniLM-L6-v2-int8</c>; it names the store folder and the
 ///     folder on a mirror.
 ///     </para>
 ///     <para>
-///     Choose MiniLM when download size and speed matter, the default recommendation: 22 MiB and about 2 ms per
-///     sentence, with about 97% best-sense accuracy on the holdout and about 93% on real text. The alternative
-///     <c>DemaConsulting.WordSense.BertBaseCased</c> is larger (104 MiB, about 9 ms per sentence) and case-aware
-///     but more accurate (about 99% and 97%); the figures are from
-///     https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-table.md and are
-///     approximate and machine dependent. The memory the model adds (about 64 MiB) does not include the 15 MiB of the
-///     word lexicon.
+///     Choose MiniLM when download size and speed matter, the default recommendation: 22 MiB. The alternative
+///     <c>DemaConsulting.WordSense.BertBaseCased</c> is larger (104 MiB) and case-aware. The sizes are approximate
+///     and the figures of the model table are in
+///     https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-table.md.
 ///     </para>
 ///     <para>
 ///     Sentences longer than the maximum sequence length are handled per target word from a window around the word. The
@@ -41,9 +56,8 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     <para>
 ///     When you supply a model directory, it must hold <c>model_int8.onnx</c> and <c>vocab.txt</c> directly (no
 ///     <c>{model-id}</c> subfolder). <c>EnsureModelAsync</c> is optional but recommended: it verifies both files against
-///     their pinned SHA-256 digests without any network access and fails early; without it, <c>ClassifyAsync</c>
-///     verifies lazily and may throw the same <see cref="FileNotFoundException"/> or
-///     <see cref="InvalidDataException"/>. Dispose the model when you no longer need it; disposing while calls are running is safe.
+///     their pinned SHA-256 digests without any network access and fails early with a
+///     <see cref="FileNotFoundException"/> or <see cref="InvalidDataException"/>. Dispose the model when you no longer need it; disposing while calls are running is safe.
 ///     </para>
 /// </remarks>
 /// <example>
@@ -56,11 +70,11 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     await model.EnsureModelAsync();
 ///
 ///     string[] words = ["They", "will", "record", "the", "record", "."];
-///     WordSense[] senses = await model.ClassifyAsync(words);
+///     ClassifyResult[] results = await model.ClassifyAsync(words);
 ///
 ///     for (var i = 0; i &lt; words.Length; i++)
 ///     {
-///         Console.WriteLine($"{words[i]}: {senses[i].Details?.PartOfSpeech.ToString() ?? "-"} ({senses[i].Confidence:0.00})");
+///         Console.WriteLine($"{words[i]}: {results[i].Details?.PartOfSpeech.ToString() ?? "-"} {results[i].Level} ({results[i].Confidence:0.00})");
 ///     }
 ///     </code>
 ///     Download through a mirror (files at <c>{mirror}/all-MiniLM-L6-v2-int8/{file}</c>) instead of the public source.
@@ -82,36 +96,98 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     var offlineSenses = await offline.ClassifyAsync(["They", "will", "record", "the", "record", "."]);
 ///     </code>
 /// </example>
-public sealed class MiniLMWordSenseModel : OnnxWordSenseModel
+public sealed class MiniLMWordSenseModel : IWordSenseModel
 {
-    private static readonly ModelSpec Definition = new(
-        "all-MiniLM-L6-v2-int8",
-        [
-            new ModelFile("model_int8.onnx", "afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1", 22972370),
-            new ModelFile("vocab.txt", "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3", 231508),
-        ],
-        "model_int8.onnx",
-        "vocab.txt",
-        true,
-        typeof(MiniLMWordSenseModel).Assembly,
-        "DemaConsulting.WordSense.MiniLM.weights.bin",
-        384);
+    private readonly FallbackWordSenseModel _model;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="MiniLMWordSenseModel"/> class.
     /// </summary>
     /// <param name="modelDirectory">
     ///     A directory that holds <c>model_int8.onnx</c> and <c>vocab.txt</c>, or null to use the per-user store that
-    ///     <see cref="OnnxWordSenseModel.EnsureModelAsync"/> fills.
+    ///     <see cref="EnsureModelAsync"/> fills.
     /// </param>
     /// <param name="maxSequenceLength">The maximum sequence length including special tokens; 8 to 512.</param>
     /// <remarks>
     ///     The constructor does not touch the file system: a directory that does not exist, a missing file or a file
-    ///     with a wrong SHA-256 is reported by <see cref="OnnxWordSenseModel.EnsureModelAsync"/>.
+    ///     with a wrong SHA-256 is reported by <see cref="EnsureModelAsync"/>.
     /// </remarks>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="maxSequenceLength"/> is outside 8 to 512.</exception>
     public MiniLMWordSenseModel(string? modelDirectory = null, int maxSequenceLength = 128)
-        : base(Definition, modelDirectory, maxSequenceLength)
     {
+        Encoder = new MiniLMEncoderModel(modelDirectory, maxSequenceLength);
+        Fallback = new BasicWordSenseModel();
+        _model = new FallbackWordSenseModel(Encoder, Fallback);
     }
+
+    /// <summary>
+    ///     Gets the identifier of the model, which names its folder in the repository, on a mirror and in the store.
+    /// </summary>
+    public string ModelId => Encoder.ModelId;
+
+    /// <summary>
+    ///     Gets the hidden size (feature dimension) of the encoder; known before <see cref="EnsureModelAsync"/>.
+    /// </summary>
+    public int HiddenSize => Encoder.HiddenSize;
+
+    /// <summary>
+    ///     Gets the encoder model that this model wraps; it is the primary model of the composition.
+    /// </summary>
+    internal OnnxWordSenseModel Encoder { get; }
+
+    /// <summary>
+    ///     Gets the Basic model that answers the words the encoder model does not score; it is the fallback of the composition.
+    /// </summary>
+    internal IWordSenseModel Fallback { get; }
+
+    /// <summary>
+    ///     Makes sure every file of the encoder is available and verified: from the directory given to the constructor,
+    ///     or from the per-user store, downloading what is missing.
+    /// </summary>
+    /// <param name="mirror">A mirror to try before the public source; see <see cref="OnnxWordSenseModel.EnsureModelAsync"/>.</param>
+    /// <param name="cancellationToken">A token that cancels the wait of this call.</param>
+    /// <returns>A task that completes when the model files are ready.</returns>
+    /// <remarks>
+    ///     The behavior (verification, mirror precedence, shared in-flight ensure, retry and cancellation) is that of
+    ///     <see cref="OnnxWordSenseModel.EnsureModelAsync"/>; the Basic model needs no file.
+    /// </remarks>
+    /// <exception cref="ObjectDisposedException">Thrown (from the call itself) when the model has been disposed.</exception>
+    public Task EnsureModelAsync(MirrorOptions? mirror = null, CancellationToken cancellationToken = default) =>
+        _model.EnsureModelAsync(mirror, cancellationToken);
+
+    /// <summary>
+    ///     Classifies every word of a tokenized sentence or text; the encoder scores the senses of the lemmas it was
+    ///     trained for, and the Basic fallback model answers every other word.
+    /// </summary>
+    /// <param name="words">The words in order, including punctuation tokens, each as its own element.</param>
+    /// <param name="cancellationToken">A token that cancels the operation.</param>
+    /// <returns>A non-null array parallel to <paramref name="words"/>; empty for an empty list.</returns>
+    /// <remarks>
+    ///     <para>
+    ///     A word with one analysis and one sense is answered by the encoder model at the <see cref="SenseLevel.Sense"/>
+    ///     level without running the encoder. A word whose lemma has trained weights and several senses is answered by the
+    ///     encoder at the sense, group or part-of-speech level its thresholds allow, with the ranked senses of its
+    ///     analyses; the first call with such a word ensures the model files itself (it may download them, see
+    ///     <see cref="EnsureModelAsync"/>). A word whose lemma has no trained weights is answered by the Basic model: at
+    ///     the <see cref="SenseLevel.PartOfSpeech"/> level with the probabilities of its analyses and no scored senses, or
+    ///     at the <see cref="SenseLevel.Sense"/> level when its selected analysis has exactly one sense, which the Basic
+    ///     model names without scoring. A text without a trained lemma needs no model file. An unknown word has no
+    ///     analysis, the level <see cref="SenseLevel.None"/> and confidence 0.
+    ///     </para>
+    /// </remarks>
+    /// <exception cref="ArgumentNullException">Thrown when the list is null.</exception>
+    /// <exception cref="ArgumentException">Thrown when an element is null.</exception>
+    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
+    /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed.</exception>
+    public Task<ClassifyResult[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default) =>
+        _model.ClassifyAsync(words, cancellationToken);
+
+    /// <summary>
+    ///     Disposes the encoder model and the Basic model and cancels a download that <see cref="EnsureModelAsync"/> has in flight.
+    /// </summary>
+    /// <remarks>
+    ///     Calling it more than once, or from several threads at once, is harmless. Disposing while a classification is
+    ///     running is safe; new calls throw <see cref="ObjectDisposedException"/>.
+    /// </remarks>
+    public void Dispose() => _model.Dispose();
 }

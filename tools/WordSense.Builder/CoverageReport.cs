@@ -30,6 +30,8 @@ internal sealed partial class CoverageReport
 
     private readonly Dictionary<string, (int Total, int Capitalized, int Lower)> _unknown = new(StringComparer.Ordinal);
     private readonly HashSet<string> _knownTypes = new(StringComparer.Ordinal);
+    private readonly HashSet<string> _trainedTypes = new(StringComparer.Ordinal);
+    private bool _hasTrained;
 
     [GeneratedRegex("[A-Za-z]+(?:['’][A-Za-z]+)*")]
     private static partial Regex TokenPattern();
@@ -55,9 +57,24 @@ internal sealed partial class CoverageReport
     public long ApostropheTokens { get; private set; }
 
     /// <summary>
+    ///     Gets the number of known tokens whose lemma has trained fine senses.
+    /// </summary>
+    public long TrainedTokens { get; private set; }
+
+    /// <summary>
     ///     Gets the number of distinct lower-case words of the known tokens.
     /// </summary>
     public int KnownTypes => _knownTypes.Count;
+
+    /// <summary>
+    ///     Gets the number of distinct lower-case words of the known tokens whose lemma has trained fine senses.
+    /// </summary>
+    public int TrainedTypes => _trainedTypes.Count;
+
+    /// <summary>
+    ///     Gets the percentage of the known tokens whose lemma has trained fine senses.
+    /// </summary>
+    public double TrainedShare => KnownTokens == 0 ? 0 : 100.0 * TrainedTokens / KnownTokens;
 
     /// <summary>
     ///     Gets the unknown words that are not name-like, with their token counts, most frequent first.
@@ -110,9 +127,10 @@ internal sealed partial class CoverageReport
     /// </summary>
     /// <param name="directory">The directory; every <c>*.txt</c> file in it is read.</param>
     /// <param name="known">Tells whether a lower-case word is known.</param>
+    /// <param name="trained">Tells whether a known lower-case word has a lemma with trained fine senses, or null to leave the trained share out.</param>
     /// <returns>The report.</returns>
     /// <exception cref="InvalidDataException">Thrown when the directory does not exist or holds no text file.</exception>
-    public static CoverageReport Read(string directory, Func<string, bool> known)
+    public static CoverageReport Read(string directory, Func<string, bool> known, Func<string, bool>? trained = null)
     {
         if (!Directory.Exists(directory))
         {
@@ -128,7 +146,7 @@ internal sealed partial class CoverageReport
         var report = new CoverageReport();
         foreach (var file in files)
         {
-            report.AddText(Body(File.ReadAllLines(file, Encoding.UTF8)), known);
+            report.AddText(Body(File.ReadAllLines(file, Encoding.UTF8)), known, trained);
         }
 
         return report;
@@ -139,9 +157,11 @@ internal sealed partial class CoverageReport
     /// </summary>
     /// <param name="lines">The lines.</param>
     /// <param name="known">Tells whether a lower-case word is known.</param>
-    public void AddText(IEnumerable<string> lines, Func<string, bool> known)
+    /// <param name="trained">Tells whether a known lower-case word has a lemma with trained fine senses, or null to leave the trained share out.</param>
+    public void AddText(IEnumerable<string> lines, Func<string, bool> known, Func<string, bool>? trained = null)
     {
         Files++;
+        _hasTrained |= trained is not null;
         foreach (var line in lines)
         {
             foreach (var match in TokenPattern().EnumerateMatches(line))
@@ -159,6 +179,12 @@ internal sealed partial class CoverageReport
                 {
                     KnownTokens++;
                     _knownTypes.Add(lower);
+                    if (trained is not null && trained(lower))
+                    {
+                        TrainedTokens++;
+                        _trainedTypes.Add(lower);
+                    }
+
                     continue;
                 }
 
@@ -193,6 +219,12 @@ internal sealed partial class CoverageReport
         text.AppendLine($"| Name-like unknown tokens | {names.Sum(n => (long)n.Count).ToString("N0", inv)} in {names.Count.ToString("N0", inv)} words |");
         text.AppendLine($"| Other unknown tokens | {other.Sum(n => (long)n.Count).ToString("N0", inv)} in {other.Count.ToString("N0", inv)} words |");
         text.AppendLine($"| Known words (types) | {KnownTypes.ToString("N0", inv)} |");
+        if (_hasTrained)
+        {
+            text.AppendLine($"| Known tokens of trained lemmas | {TrainedTokens.ToString("N0", inv)} ({TrainedShare.ToString("F2", inv)} percent of the known tokens) |");
+            text.AppendLine($"| Known words (types) of trained lemmas | {TrainedTypes.ToString("N0", inv)} |");
+        }
+
         text.AppendLine();
         Append(text, "Top other unknown words", other, top);
         Append(text, "Top name-like unknown words", names, top);

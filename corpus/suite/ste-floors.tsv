@@ -1,0 +1,4 @@
+model	all_tokens	ambiguous_tokens
+basic	98.6	97.8
+minilm	98.1	97.1
+bert-base-cased	98.1	97.1

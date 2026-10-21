@@ -1,4 +1,8 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-blast-i-1		dema-blast-i	dema-syn-blast-i-1	1
+dema-bleed-v-1		oewn-bleed-v	dema-syn-bleed-v-1	6
+dema-blimey-i-1		dema-blimey-i	dema-syn-blimey-i-1	1
+dema-blimy-i-1		dema-blimy-i	dema-syn-blimy-i-1	1
 oewn-blab__2.32.00..	blab%2:32:00::	oewn-blab-v	oewn-00939238-v	1
 oewn-blab__2.32.02..	blab%2:32:02::	oewn-blab-v	oewn-01038676-v	2
 oewn-blab_out__2.32.00..	blab_out%2:32:00::	oewn-blab_out-v	oewn-00939238-v	1

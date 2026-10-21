@@ -1,7 +1,47 @@
 synset_id	pos	head_synset_id	lexfile
+dema-syn-oars-i-1	i		
 dema-syn-obverse-a-1	a		
+dema-syn-och-i-1	i		
+dema-syn-ochone-i-1	i		
+dema-syn-of-p-1	p		
+dema-syn-off-p-1	p		
+dema-syn-oh-i-1	i		
+dema-syn-oho-i-1	i		
+dema-syn-ohone-i-1	i		
+dema-syn-oink-i-1	i		
+dema-syn-ol-i-1	i		
+dema-syn-on-p-1	p		
+dema-syn-once-c-1	c		
+dema-syn-one-d-1	d		
+dema-syn-one-u-1	u		
+dema-syn-oneself-u-1	u		
+dema-syn-onto-p-1	p		
+dema-syn-ooh-i-1	i		
+dema-syn-oops-i-1	i		
 dema-syn-opiate-v-1	v		
+dema-syn-opposite-p-1	p		
+dema-syn-opuscule-c-1	c		
+dema-syn-opuscule-p-1	p		
+dema-syn-or-c-1	c		
+dema-syn-order-i-1	i		
+dema-syn-other-d-1	d		
+dema-syn-other-u-1	u		
+dema-syn-otherwise-c-1	c		
+dema-syn-otherwise-u-1	u		
+dema-syn-ouch-i-1	i		
+dema-syn-ought-x-1	x		
+dema-syn-our-d-1	d		
+dema-syn-ours-u-1	u		
+dema-syn-ourself-u-1	u		
+dema-syn-ourselves-u-1	u		
+dema-syn-out-i-1	i		
+dema-syn-out-p-1	p		
+dema-syn-outasight-i-1	i		
 dema-syn-outreach-v-1	v		
+dema-syn-outshout-p-1	p		
+dema-syn-outside-p-1	p		
+dema-syn-outwith-p-1	p		
+dema-syn-over-p-1	p		
 dema-syn-overall-r-1	r		
 dema-syn-overcall-v-1	v		
 dema-syn-overdose-n-1	n		
@@ -13,6 +53,10 @@ dema-syn-overspend-n-1	n
 dema-syn-oversteer-v-1	v		
 dema-syn-overstock-n-1	n		
 dema-syn-overweight-v-1	v		
+dema-syn-ow-i-1	i		
+dema-syn-own-d-1	d		
+dema-syn-owt-u-1	u		
+dema-syn-oyez-i-1	i		
 oewn-00002684-n	n		noun.Tops
 oewn-00011221-r	r		adv.all
 oewn-00011376-r	r		adv.all

@@ -43,8 +43,8 @@ internal enum PartitionKind
     /// <summary>By the lemma of the first sense of the synset named in the column.</summary>
     Synset,
 
-    /// <summary>By the lemma of the coarse class named in the column.</summary>
-    Class,
+    /// <summary>By the lemma of the entry of the sense whose sense key is named in the column.</summary>
+    Key,
 }
 
 /// <summary>
@@ -123,6 +123,11 @@ internal sealed record TableDef(
 /// </remarks>
 internal sealed class DataSchema
 {
+    /// <summary>
+    ///     The schema format version this tool reads and writes.
+    /// </summary>
+    public const int SupportedVersion = 4;
+
     private readonly Dictionary<string, TableDef> _tables;
     private readonly Dictionary<string, IReadOnlyDictionary<string, string>> _vocabularies;
     private readonly Dictionary<string, IReadOnlyDictionary<string, RelationType>> _relationTypes;
@@ -278,7 +283,17 @@ internal sealed class DataSchema
     private static DataSchema Build(SchemaYaml.Node root)
     {
         var map = root.AsMap();
-        var version = int.Parse(map.Require("schema_version").AsScalar(), CultureInfo.InvariantCulture);
+        var versionNode = map.Require("schema_version");
+        if (!int.TryParse(versionNode.AsScalar(), NumberStyles.None, CultureInfo.InvariantCulture, out var version))
+        {
+            throw new SchemaException(versionNode.Line, $"schema_version '{versionNode.AsScalar()}' is not a non-negative integer.");
+        }
+
+        if (version != SupportedVersion)
+        {
+            throw new SchemaException(versionNode.Line, $"schema_version {version.ToString(CultureInfo.InvariantCulture)} is not supported; this tool reads version {SupportedVersion.ToString(CultureInfo.InvariantCulture)}.");
+        }
+
         var release = map.Require("data_release").AsScalar();
         var split = ReadSplit(map.Require("file_split"));
         var vocabularies = new Dictionary<string, IReadOnlyDictionary<string, string>>(StringComparer.Ordinal);
@@ -292,7 +307,7 @@ internal sealed class DataSchema
         }
 
         var schema = new DataSchema(version, release, split, tables, vocabularies, relations, features);
-        schema.CheckConsistency(map.Require("tables"));
+        schema.CheckConsistency(map.Require("tables"), map.Require("vocabularies"));
         return schema;
     }
 
@@ -419,7 +434,7 @@ internal sealed class DataSchema
             "entry" => PartitionKind.Entry,
             "sense" => PartitionKind.Sense,
             "synset" => PartitionKind.Synset,
-            "class" => PartitionKind.Class,
+            "key" => PartitionKind.Key,
             var other => throw new SchemaException(by.Line, $"Unknown partition kind '{other}'."),
         };
         return (kind, kind == PartitionKind.None ? null : partition.Require("column").AsScalar());
@@ -455,7 +470,8 @@ internal sealed class DataSchema
     ///     that exists, so a typo in the schema fails when it is loaded and not when data is validated.
     /// </summary>
     /// <param name="tablesNode">The tables node, for line numbers.</param>
-    private void CheckConsistency(SchemaYaml.Node tablesNode)
+    /// <param name="vocabulariesNode">The vocabularies node, for the line numbers of the relation types.</param>
+    private void CheckConsistency(SchemaYaml.Node tablesNode, SchemaYaml.Node vocabulariesNode)
     {
         var lines = tablesNode.AsMap();
         foreach (var table in _tables.Values)
@@ -463,11 +479,13 @@ internal sealed class DataSchema
             CheckTable(table, lines.Require(table.Name).Line);
         }
 
+        var vocabularyLines = vocabulariesNode.AsMap();
         foreach (var (level, types) in _relationTypes)
         {
+            var typeLines = vocabularyLines.Require(level).AsMap();
             foreach (var type in types.Values)
             {
-                CheckRelationType(level, types, type);
+                CheckRelationType(level, types, type, typeLines.Require(type.Name).Line);
             }
         }
     }
@@ -502,13 +520,13 @@ internal sealed class DataSchema
         }
     }
 
-    private static void CheckRelationType(string level, IReadOnlyDictionary<string, RelationType> types, RelationType type)
+    private static void CheckRelationType(string level, IReadOnlyDictionary<string, RelationType> types, RelationType type, int line)
     {
         if (type.Inverse is null)
         {
             if (type.Symmetric || !type.Stored)
             {
-                throw new SchemaException(0, $"{level} '{type.Name}' has no inverse, so it must be stored and not symmetric.");
+                throw new SchemaException(line, $"{level} '{type.Name}' has no inverse, so it must be stored and not symmetric.");
             }
 
             return;
@@ -516,13 +534,13 @@ internal sealed class DataSchema
 
         if (!types.TryGetValue(type.Inverse, out var inverse) || inverse.Inverse != type.Name)
         {
-            throw new SchemaException(0, $"{level} '{type.Name}' has inverse '{type.Inverse}', which does not point back to it.");
+            throw new SchemaException(line, $"{level} '{type.Name}' has inverse '{type.Inverse}', which does not point back to it.");
         }
 
         var consistent = type.Symmetric ? type.Stored && inverse == type : type.Stored != inverse.Stored;
         if (!consistent)
         {
-            throw new SchemaException(0, $"{level} '{type.Name}' and its inverse '{type.Inverse}' must store exactly one direction (a symmetric type stores itself).");
+            throw new SchemaException(line, $"{level} '{type.Name}' and its inverse '{type.Inverse}' must store exactly one direction (a symmetric type stores itself).");
         }
     }
 }

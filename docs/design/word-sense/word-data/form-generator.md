@@ -4,8 +4,10 @@
 
 #### Purpose
 
-`FormGenerator` writes the `form` and `form_sense_scope` tables, the inflected spellings of the dictionary entries and
-their analyses (lemma, part of speech, features, provenance), and a statistics report. `InflectionRules` holds the
+`FormGenerator` writes the `entry` and `form` tables, the inflected spellings of the dictionary entries and their analyses
+(lemma, part of speech, features, provenance), and a statistics report. The candidate senses of a word come from the
+entries of its analyses, so the tables carry no sense scope (the `form_sense_scope` table and the class tables that fed
+it are retired, and the generator reads and writes neither). `InflectionRules` holds the
 spelling rules; `AgidImporter` and `IrregularSources` read the closed lists and the inflection database.
 
 #### Data Model
@@ -26,17 +28,30 @@ and the generator never reads its own output: the tables are a function of the e
 lists, the corrections file and the two pinned external sources. A frozen spelling with the flag `open` takes the
 generated analyses of other entries after the frozen ones; a spelling without it stays as reviewed (`bowed` is only the
 bend verb); a closed-class spelling with the flag `only` keeps only its closed-class analyses. Frozen rows count as
-`carried` in the provenance statistics.
+`carried` in the provenance statistics. The class column of a frozen row (the class ids of the retired inventory) is not
+read. A closed word that the dictionary lists only as an open-class word is given its analysis by a frozen row of its
+project entry (`or` has the conjunction `dema-or-c` first, followed by the noun and adjective analyses of the
+dictionary).
 
 An -ing noun does not get a plural spelled like its singular from the inflection database (the mass nouns `bowling`,
 `catling`, `feeling`); the plural of the rules is generated instead. The invariant names (`herring`, `offspring`, `ling`,
 `whiting`) keep theirs.
 
+A spelling that an earlier reviewed analysis carries (`damaged` as the past participle of `damage`) keeps the reviewed
+analyses exactly, with two kinds of own entry added after them: an -ing entry, and an adjective entry whose lemma is the
+spelling when `corpus/lexicon/own-adjectives.tsv` names it (`damaged` as the adjective of `a damaged seal`, `drained`,
+`drilled`, `alloyed`). The list is short on purpose: Open English WordNet has 114 such participial adjective entries
+whose analysis a reviewed verb row had hidden, but giving all of them an analysis made the common participles (`based`,
+`covered`, `changed`, `driven`) compete with the verb in the real-text evaluation (the fine top-1 fell about two points,
+because the corpus labels those forms with the verb senses only), so only the adjectives that technical text uses are
+listed. Verbs that the dictionary lacks come from `corpus/lexicon/additions.tsv` (`torque` is an added verb: `torque`,
+`torques`, `torqued`, `torquing` are generated like those of any verb, as surface-only analyses).
+
 Rank policy: the rank of an analysis is a frequency prior, not the answer for a sentence. The order is deterministic: the
 position of the part of speech in the Moby letters of the lemma, then explicit tie-breaks on lemma, entry and features,
 so no rank is taken from an earlier table. A gerund of a verb leads with
-the verb analysis because that is the most frequent use of an -ing form; a gerund noun that a sense label needs, the
-adjective and the noun entry of the same spelling follow it. `walking` is a verb gerund, an adjective (a walking stick)
+the verb analysis because that is the most frequent use of an -ing form; the adjective and the noun entry of the same
+spelling follow it. `walking` is a verb gerund, an adjective (a walking stick)
 and a noun, and all analyses are present; choosing among them is the job of the tagger. The policy is tested
 deliberately and separately from the linguistic facts (`Data_IngForm_LeadsWithVerb`), and the facts assert only that
 the analyses exist.
@@ -67,7 +82,10 @@ the sample, and the command fails when one lacks its own analysis.
 #### Error Handling
 
 A missing input, or an Open English WordNet or inflection-database file whose SHA-256 differs from its pin, throws
-before any file is written.
+before any file is written. A reviewed input (`form-frozen.tsv`) with a row that has the wrong number of columns, or
+with two rows of one kind that repeat a spelling, an entry and features (the same analysis twice, whatever the other
+columns say), throws `InvalidDataException` with the file and the line of the repeat and of the first row; the
+generator does not dedupe silently, because a repeated analysis is an error of the reviewed input.
 
 #### Dependencies
 

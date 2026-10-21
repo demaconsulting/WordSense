@@ -20,10 +20,6 @@ package WordSense {
         expose WordDataSubsystem;
     }
 
-    view BasicView {
-        expose BasicSubsystem;
-    }
-
     view OnnxView {
         expose OnnxSubsystem;
     }

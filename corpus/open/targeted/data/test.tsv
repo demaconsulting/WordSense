@@ -1,0 +1,469 @@
+# corpus = open English POS corpus, TARGETED part (sentences chosen on purpose; never use for usage statistics; test = challenge set)
+# license = annotations and selection CC0 1.0; sentences public domain or CC0 per source, see sources.tsv
+# columns = id form lemma upos collapsed feats consensus
+# consensus = unanimous | disputed | unchecked
+# sentence comments = sent_id, source_id, selection (required), query (required), text
+
+# sent_id = wordsense-ste-probe-s1
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Mount the Theta Arm to the Gantry Robot.
+1	Mount	mount	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+2	the	the	DET	D	PronType=Art	unanimous
+3	Theta	theta	NOUN	N	Number=Sing	unanimous
+4	Arm	arm	NOUN	N	Number=Sing	unanimous
+5	to	to	ADP	P	_	unanimous
+6	the	the	DET	D	PronType=Art	unanimous
+7	Gantry	gantry	NOUN	N	Number=Sing	unanimous
+8	Robot	robot	NOUN	N	Number=Sing	unanimous
+9	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s2
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Install the seal (P/N 4471-20) in the Hydraulic Pump Assembly.
+1	Install	install	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+2	the	the	DET	D	PronType=Art	unanimous
+3	seal	seal	NOUN	N	Number=Sing	unanimous
+4	(	(	PUNCT	O	_	unanimous
+5	P	p	NOUN	N	_	unanimous
+6	/	/	PUNCT	O	_	unanimous
+7	N	n	NOUN	N	_	unanimous
+8	4471-20	4471-20	NUM	U	_	unanimous
+9	)	)	PUNCT	O	_	unanimous
+10	in	in	ADP	P	_	unanimous
+11	the	the	DET	D	PronType=Art	unanimous
+12	Hydraulic	hydraulic	ADJ	J	_	unanimous
+13	Pump	pump	NOUN	N	Number=Sing	unanimous
+14	Assembly	assembly	NOUN	N	Number=Sing	unanimous
+15	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s3
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Remove the Main Control Panel from the frame.
+1	Remove	remove	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+2	the	the	DET	D	PronType=Art	unanimous
+3	Main	main	ADJ	J	_	unanimous
+4	Control	control	NOUN	N	Number=Sing	unanimous
+5	Panel	panel	NOUN	N	Number=Sing	unanimous
+6	from	from	ADP	P	_	unanimous
+7	the	the	DET	D	PronType=Art	unanimous
+8	frame	frame	NOUN	N	Number=Sing	unanimous
+9	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s4
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Check the oil level.
+1	Check	check	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+2	the	the	DET	D	PronType=Art	unanimous
+3	oil	oil	NOUN	N	Number=Sing	unanimous
+4	level	level	NOUN	N	Number=Sing	unanimous
+5	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s5
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Torque the bolts to 25 N·m.
+1	Torque	torque	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+2	the	the	DET	D	PronType=Art	unanimous
+3	bolts	bolt	NOUN	N	Number=Plur	unanimous
+4	to	to	ADP	P	_	unanimous
+5	25	25	NUM	U	_	unanimous
+6	N	n	NOUN	N	_	unanimous
+7	·	·	SYM	O	_	unanimous
+8	m	m	NOUN	N	_	unanimous
+9	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s6
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Clean the surface with a dry cloth.
+1	Clean	clean	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+2	the	the	DET	D	PronType=Art	unanimous
+3	surface	surface	NOUN	N	Number=Sing	unanimous
+4	with	with	ADP	P	_	unanimous
+5	a	a	DET	D	Number=Sing|PronType=Art	unanimous
+6	dry	dry	ADJ	J	_	unanimous
+7	cloth	cloth	NOUN	N	Number=Sing	unanimous
+8	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s7
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Lift the Z-Axis Carriage with a hoist.
+1	Lift	lift	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+2	the	the	DET	D	PronType=Art	unanimous
+3	Z-Axis	z-axis	NOUN	N	Number=Sing	unanimous
+4	Carriage	carriage	NOUN	N	Number=Sing	unanimous
+5	with	with	ADP	P	_	unanimous
+6	a	a	DET	D	Number=Sing|PronType=Art	unanimous
+7	hoist	hoist	NOUN	N	Number=Sing	unanimous
+8	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s8
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Turn the knob clockwise until it stops.
+1	Turn	turn	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+2	the	the	DET	D	PronType=Art	unanimous
+3	knob	knob	NOUN	N	Number=Sing	unanimous
+4	clockwise	clockwise	ADV	B	_	unanimous
+5	until	until	SCONJ	C	_	unanimous
+6	it	it	PRON	R	Number=Sing|Person=3|PronType=Prs	unanimous
+7	stops	stop	VERB	V	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin	unanimous
+8	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s9
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Set the pressure to 3000 psi.
+1	Set	set	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+2	the	the	DET	D	PronType=Art	unanimous
+3	pressure	pressure	NOUN	N	Number=Sing	unanimous
+4	to	to	ADP	P	_	unanimous
+5	3000	3000	NUM	U	_	unanimous
+6	psi	psi	NOUN	N	_	unanimous
+7	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s10
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Lock the Theta Arm in position.
+1	Lock	lock	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+2	the	the	DET	D	PronType=Art	unanimous
+3	Theta	theta	NOUN	N	Number=Sing	unanimous
+4	Arm	arm	NOUN	N	Number=Sing	unanimous
+5	in	in	ADP	P	_	unanimous
+6	position	position	NOUN	N	Number=Sing	unanimous
+7	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s11
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Support the load with a jack.
+1	Support	support	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+2	the	the	DET	D	PronType=Art	unanimous
+3	load	load	NOUN	N	Number=Sing	unanimous
+4	with	with	ADP	P	_	unanimous
+5	a	a	DET	D	Number=Sing|PronType=Art	unanimous
+6	jack	jack	NOUN	N	Number=Sing	unanimous
+7	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s12
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Position the bearing in the housing.
+1	Position	position	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+2	the	the	DET	D	PronType=Art	unanimous
+3	bearing	bearing	NOUN	N	Number=Sing	unanimous
+4	in	in	ADP	P	_	unanimous
+5	the	the	DET	D	PronType=Art	unanimous
+6	housing	housing	NOUN	N	Number=Sing	unanimous
+7	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s13
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Attach the cable to the Gantry Robot.
+1	Attach	attach	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+2	the	the	DET	D	PronType=Art	unanimous
+3	cable	cable	NOUN	N	Number=Sing	unanimous
+4	to	to	ADP	P	_	unanimous
+5	the	the	DET	D	PronType=Art	unanimous
+6	Gantry	gantry	NOUN	N	Number=Sing	unanimous
+7	Robot	robot	NOUN	N	Number=Sing	unanimous
+8	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s14
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Record the readings in the log.
+1	Record	record	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+2	the	the	DET	D	PronType=Art	unanimous
+3	readings	reading	NOUN	N	Number=Plur	unanimous
+4	in	in	ADP	P	_	unanimous
+5	the	the	DET	D	PronType=Art	unanimous
+6	log	log	NOUN	N	Number=Sing	unanimous
+7	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s15
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Do not touch the hot surface.
+1	Do	do	AUX	A	Mood=Imp|VerbForm=Fin	unanimous
+2	not	not	PART	T	_	unanimous
+3	touch	touch	VERB	V	VerbForm=Inf	unanimous
+4	the	the	DET	D	PronType=Art	unanimous
+5	hot	hot	ADJ	J	_	unanimous
+6	surface	surface	NOUN	N	Number=Sing	unanimous
+7	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s16
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = WARNING: Do not operate the motor without the guard.
+1	WARNING	warning	NOUN	N	Number=Sing	unanimous
+2	:	:	PUNCT	O	_	unanimous
+3	Do	do	AUX	A	Mood=Imp|VerbForm=Fin	unanimous
+4	not	not	PART	T	_	unanimous
+5	operate	operate	VERB	V	VerbForm=Inf	unanimous
+6	the	the	DET	D	PronType=Art	unanimous
+7	motor	motor	NOUN	N	Number=Sing	unanimous
+8	without	without	ADP	P	_	unanimous
+9	the	the	DET	D	PronType=Art	unanimous
+10	guard	guard	NOUN	N	Number=Sing	unanimous
+11	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s17
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Make sure that the valve is closed.
+1	Make	make	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+2	sure	sure	ADJ	J	_	unanimous
+3	that	that	SCONJ	C	_	unanimous
+4	the	the	DET	D	PronType=Art	unanimous
+5	valve	valve	NOUN	N	Number=Sing	unanimous
+6	is	be	VERB	V	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin	unanimous
+7	closed	closed	ADJ	J	_	unanimous
+8	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s18
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Make sure that the arm does not touch the frame.
+1	Make	make	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+2	sure	sure	ADJ	J	_	unanimous
+3	that	that	SCONJ	C	_	unanimous
+4	the	the	DET	D	PronType=Art	unanimous
+5	arm	arm	NOUN	N	Number=Sing	unanimous
+6	does	do	AUX	A	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin	unanimous
+7	not	not	PART	T	_	unanimous
+8	touch	touch	VERB	V	VerbForm=Inf	unanimous
+9	the	the	DET	D	PronType=Art	unanimous
+10	frame	frame	NOUN	N	Number=Sing	unanimous
+11	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s19
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = If the indicator light comes on, stop the motor.
+1	If	if	SCONJ	C	_	unanimous
+2	the	the	DET	D	PronType=Art	unanimous
+3	indicator	indicator	NOUN	N	Number=Sing	unanimous
+4	light	light	NOUN	N	Number=Sing	unanimous
+5	comes	come	VERB	V	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin	unanimous
+6	on	on	ADV	B	_	unanimous
+7	,	,	PUNCT	O	_	unanimous
+8	stop	stop	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+9	the	the	DET	D	PronType=Art	unanimous
+10	motor	motor	NOUN	N	Number=Sing	unanimous
+11	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s20
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Flush the system with clean fluid.
+1	Flush	flush	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+2	the	the	DET	D	PronType=Art	unanimous
+3	system	system	NOUN	N	Number=Sing	unanimous
+4	with	with	ADP	P	_	unanimous
+5	clean	clean	ADJ	J	_	unanimous
+6	fluid	fluid	NOUN	N	Number=Sing	unanimous
+7	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s21
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Bleed the air from the brake line.
+1	Bleed	bleed	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+2	the	the	DET	D	PronType=Art	unanimous
+3	air	air	NOUN	N	Number=Sing	unanimous
+4	from	from	ADP	P	_	unanimous
+5	the	the	DET	D	PronType=Art	unanimous
+6	brake	brake	NOUN	N	Number=Sing	unanimous
+7	line	line	NOUN	N	Number=Sing	unanimous
+8	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s22
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Tap the housing lightly to seat the bearing.
+1	Tap	tap	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+2	the	the	DET	D	PronType=Art	unanimous
+3	housing	housing	NOUN	N	Number=Sing	unanimous
+4	lightly	lightly	ADV	B	_	unanimous
+5	to	to	PART	T	_	unanimous
+6	seat	seat	VERB	V	VerbForm=Inf	unanimous
+7	the	the	DET	D	PronType=Art	unanimous
+8	bearing	bearing	NOUN	N	Number=Sing	unanimous
+9	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s23
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Run the pump for 5 minutes.
+1	Run	run	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+2	the	the	DET	D	PronType=Art	unanimous
+3	pump	pump	NOUN	N	Number=Sing	unanimous
+4	for	for	ADP	P	_	unanimous
+5	5	5	NUM	U	_	unanimous
+6	minutes	minute	NOUN	N	Number=Plur	unanimous
+7	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s24
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Connect the lead to the terminal.
+1	Connect	connect	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+2	the	the	DET	D	PronType=Art	unanimous
+3	lead	lead	NOUN	N	Number=Sing	unanimous
+4	to	to	ADP	P	_	unanimous
+5	the	the	DET	D	PronType=Art	unanimous
+6	terminal	terminal	NOUN	N	Number=Sing	unanimous
+7	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s25
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Do not use a damaged seal.
+1	Do	do	AUX	A	Mood=Imp|VerbForm=Fin	unanimous
+2	not	not	PART	T	_	unanimous
+3	use	use	VERB	V	VerbForm=Inf	unanimous
+4	a	a	DET	D	Number=Sing|PronType=Art	unanimous
+5	damaged	damaged	ADJ	J	_	unanimous
+6	seal	seal	NOUN	N	Number=Sing	unanimous
+7	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s26
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Tighten the nut by hand, then torque it to 12 N·m.
+1	Tighten	tighten	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+2	the	the	DET	D	PronType=Art	unanimous
+3	nut	nut	NOUN	N	Number=Sing	unanimous
+4	by	by	ADP	P	_	unanimous
+5	hand	hand	NOUN	N	Number=Sing	unanimous
+6	,	,	PUNCT	O	_	unanimous
+7	then	then	ADV	B	_	unanimous
+8	torque	torque	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+9	it	it	PRON	R	Number=Sing|Person=3|PronType=Prs	unanimous
+10	to	to	ADP	P	_	unanimous
+11	12	12	NUM	U	_	unanimous
+12	N	n	NOUN	N	_	unanimous
+13	·	·	SYM	O	_	unanimous
+14	m	m	NOUN	N	_	unanimous
+15	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s27
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Apply grease to the mount.
+1	Apply	apply	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+2	grease	grease	NOUN	N	Number=Sing	unanimous
+3	to	to	ADP	P	_	unanimous
+4	the	the	DET	D	PronType=Art	unanimous
+5	mount	mount	NOUN	N	Number=Sing	unanimous
+6	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s28
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Remove the mount from the Theta Arm.
+1	Remove	remove	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+2	the	the	DET	D	PronType=Art	unanimous
+3	mount	mount	NOUN	N	Number=Sing	unanimous
+4	from	from	ADP	P	_	unanimous
+5	the	the	DET	D	PronType=Art	unanimous
+6	Theta	theta	NOUN	N	Number=Sing	unanimous
+7	Arm	arm	NOUN	N	Number=Sing	unanimous
+8	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s29
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Check that the seal is not cracked.
+1	Check	check	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+2	that	that	SCONJ	C	_	unanimous
+3	the	the	DET	D	PronType=Art	unanimous
+4	seal	seal	NOUN	N	Number=Sing	unanimous
+5	is	be	VERB	V	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin	unanimous
+6	not	not	PART	T	_	unanimous
+7	cracked	cracked	ADJ	J	_	unanimous
+8	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s30
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Set the Hydraulic Pump Assembly to the OFF position.
+1	Set	set	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+2	the	the	DET	D	PronType=Art	unanimous
+3	Hydraulic	hydraulic	ADJ	J	_	unanimous
+4	Pump	pump	NOUN	N	Number=Sing	unanimous
+5	Assembly	assembly	NOUN	N	Number=Sing	unanimous
+6	to	to	ADP	P	_	unanimous
+7	the	the	DET	D	PronType=Art	unanimous
+8	OFF	off	ADJ	J	_	unanimous
+9	position	position	NOUN	N	Number=Sing	unanimous
+10	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s31
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Mount the robot arm and slide it home.
+1	Mount	mount	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+2	the	the	DET	D	PronType=Art	unanimous
+3	robot	robot	NOUN	N	Number=Sing	unanimous
+4	arm	arm	NOUN	N	Number=Sing	unanimous
+5	and	and	CCONJ	C	_	unanimous
+6	slide	slide	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+7	it	it	PRON	R	Number=Sing|Person=3|PronType=Prs	unanimous
+8	home	home	ADV	B	_	unanimous
+9	.	.	PUNCT	O	_	unanimous
+
+# sent_id = wordsense-ste-probe-s32
+# source_id = wordsense-ste-probe
+# selection = genre=technical-instructions
+# query = written:ste-probe
+# text = Mount the wild horse and ride it home.
+1	Mount	mount	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+2	the	the	DET	D	PronType=Art	unanimous
+3	wild	wild	ADJ	J	_	unanimous
+4	horse	horse	NOUN	N	Number=Sing	unanimous
+5	and	and	CCONJ	C	_	unanimous
+6	ride	ride	VERB	V	Mood=Imp|VerbForm=Fin	unanimous
+7	it	it	PRON	R	Number=Sing|Person=3|PronType=Prs	unanimous
+8	home	home	ADV	B	_	unanimous
+9	.	.	PUNCT	O	_	unanimous

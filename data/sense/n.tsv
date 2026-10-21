@@ -1,5 +1,35 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-n-d-1		dema-n-d	dema-syn-n-d-1	1
+dema-nane-u-1		dema-nane-u	dema-syn-nane-u-1	1
+dema-natheless-p-1		dema-natheless-p	dema-syn-natheless-p-1	1
+dema-near-p-1		dema-near-p	dema-syn-near-p-1	1
+dema-neath-p-1		dema-neath-p	dema-syn-neath-p-1	1
+dema-need-x-1		dema-need-x	dema-syn-need-x-1	1
+dema-neither-c-1		dema-neither-c	dema-syn-neither-c-1	1
+dema-neither-d-1		dema-neither-d	dema-syn-neither-d-1	1
+dema-nerts-i-1		dema-nerts-i	dema-syn-nerts-i-1	1
+dema-nethermost-d-1		dema-nethermost-d	dema-syn-nethermost-d-1	1
+dema-never-i-1		dema-never-i	dema-syn-never-i-1	1
+dema-nevertheless-c-1		dema-nevertheless-c	dema-syn-nevertheless-c-1	1
+dema-next-p-1		dema-next-p	dema-syn-next-p-1	1
+dema-nigh-p-1		dema-nigh-p	dema-syn-nigh-p-1	1
+dema-nine-d-1		dema-nine-d	dema-syn-nine-d-1	1
+dema-nineteen-d-1		dema-nineteen-d	dema-syn-nineteen-d-1	1
+dema-ninety-d-1		dema-ninety-d	dema-syn-ninety-d-1	1
+dema-nix-i-1		dema-nix-i	dema-syn-nix-i-1	1
+dema-no-d-1		dema-no-d	dema-syn-no-d-1	1
+dema-noblewoman-u-1		dema-noblewoman-u	dema-syn-noblewoman-u-1	1
+dema-nobody-u-1		dema-nobody-u	dema-syn-nobody-u-1	1
 dema-nominate-a-1		dema-nominate-a	dema-syn-nominate-a-1	1
+dema-none-u-1		dema-none-u	dema-syn-none-u-1	1
+dema-nonetheless-c-1		dema-nonetheless-c	dema-syn-nonetheless-c-1	1
+dema-nonsense-i-1		dema-nonsense-i	dema-syn-nonsense-i-1	1
+dema-nor-c-1		dema-nor-c	dema-syn-nor-c-1	1
+dema-nothing-u-1		dema-nothing-u	dema-syn-nothing-u-1	1
+dema-notwithstanding-c-1		dema-notwithstanding-c	dema-syn-notwithstanding-c-1	1
+dema-notwithstanding-p-1		dema-notwithstanding-p	dema-syn-notwithstanding-p-1	1
+dema-now-c-1		dema-now-c	dema-syn-now-c-1	1
+dema-nuts-i-1		dema-nuts-i	dema-syn-nuts-i-1	1
 oewn-n--th__5.00.00.ordinal.00	n-th%5:00:00:ordinal:00	oewn-n-th-a	oewn-02220813-s	1
 oewn-n--type_semiconductor__1.06.00..	n-type_semiconductor%1:06:00::	oewn-n-type_semiconductor-n	oewn-03839290-n	1
 oewn-n.b.__1.10.00..	n.b.%1:10:00::	oewn-N.B.-n	oewn-06777091-n	1

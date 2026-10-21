@@ -1,7 +1,8 @@
 # Introduction
 
-This document provides the verification design for the WordSense, a .NET library
-that tells the part of speech and pronunciation of ambiguous English words in context and the part of speech of
+This document provides the verification design for WordSense, a .NET library
+that identifies the sense of ambiguous English words in context (the part of speech and, where the model can tell,
+the fine sense or the group of senses, with the level at which the answer was made) and the part of speech of
 common English words from an embedded dictionary.
 
 ## Purpose
@@ -24,20 +25,20 @@ This document is intended for:
 This document covers the verification design for the WordSense system and its
 constituent software items, specifically:
 
-- **WordSense (System)** — The five layered packages of WordSense, which the units and subsystems below make up
+- **WordSense (System)** — The four layered packages of WordSense, which the units and subsystems below make up
 - **WordSenseBuilder** (non-shipped tool Unit) of the system, which generates the embedded lexicon, weights and appendix
-- **Core**, **Basic**, **Onnx**, **MiniLM** and **BertBaseCased** (Subsystems) — the packages `DemaConsulting.WordSense`,
-  `DemaConsulting.WordSense.Basic`, `DemaConsulting.WordSense.Onnx`, `DemaConsulting.WordSense.MiniLM` and
+- **Core**, **Onnx**, **MiniLM** and **BertBaseCased** (Subsystems) — the packages `DemaConsulting.WordSense`,
+  `DemaConsulting.WordSense.Onnx`, `DemaConsulting.WordSense.MiniLM` and
   `DemaConsulting.WordSense.BertBaseCased`
-- **WordLexicon** and **WordSenseContracts** (Units) of the Core subsystem
-- **BasicWordSenseModel**, **BasicClassifier**, **BasicTables**, **PosTagger**, **CueModel** and **SenseFusion**
-  (Units) of
-  the Basic subsystem
+- **WordLexicon**, **WordSenseContracts**, **BasicWordSenseModel**, **BasicClassifier**, **BasicTables**,
+  **PosTagger**, **CueModel** and **SenseFusion** (Units) of the Core subsystem (the last six are the statistical
+  model that was the separate Basic package before version 1.0)
 - **OnnxWordSenseModel**, **OnnxClassifier**, **OnnxEncoder**, **WordPieceTokenizer**, **ModelDownloader**,
   **DownloadMirror** and **LemmaWeights** (Units) of the Onnx subsystem
 - **MiniLMWordSenseModel** (Unit) of the MiniLM subsystem
 - **BertBaseCasedWordSenseModel** (Unit) of the BertBaseCased subsystem
-- **WordData** (Subsystem) and its units **DataSchema**, **DataLayout**, **OewnImporter** and **DataValidator**
+- **WordData** (Subsystem) and its units **DataSchema**, **DataLayout**, **OewnImporter**, **FormGenerator**,
+  **FormAuditor**, **DataValidator** and **SenseLabelGenerator**
 
 The OnnxRuntime OTS runtime dependency of the Onnx package is also covered.
 
@@ -74,7 +75,7 @@ trees. In-house items have artifacts in these parallel locations:
 - Design docs: `docs/design/{system}/.../{item}.md` (kebab-case)
 - Verification design: `docs/verification/{system}/.../{item}.md` (kebab-case)
 - Source code: `src/{Package}/.../{Item}.cs` (PascalCase for C#; the package folders are `DemaConsulting.WordSense`,
-  `DemaConsulting.WordSense.Basic`, `DemaConsulting.WordSense.Onnx`, `DemaConsulting.WordSense.MiniLM` and
+  `DemaConsulting.WordSense.Onnx`, `DemaConsulting.WordSense.MiniLM` and
   `DemaConsulting.WordSense.BertBaseCased`, and the builder is `tools/WordSense.Builder`)
 - Tests: `test/{Package}.Tests/.../{Item}Tests.cs` (PascalCase for C#; the builder tests are in
   `test/WordSense.Builder.Tests`)

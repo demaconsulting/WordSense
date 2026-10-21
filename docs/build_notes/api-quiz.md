@@ -1,6 +1,6 @@
 # API Documentation Quiz
 
-This note is a repeatable check that the generated API documentation of the five packages is enough to use the library
+This note is a repeatable check that the generated API documentation of the four packages is enough to use the library
 without reading the source. An isolated reader gets only the generated API documents and answers eleven questions; every
 answer that is missing, vague or contradictory is a gap that is fixed in the XML documentation, the namespace
 documentation, the README or the user guide. The check is repeated until every question is PASS.
@@ -9,8 +9,9 @@ documentation, the README or the user guide. The check is repeated until every q
 
 1. Delete the generated API documents of all packages: `src/*/generated/api` (untracked build output).
 2. Build the solution once in Release configuration, so that the documentation generator rewrites the API documents.
-3. Copy the generated API documents of all five packages (`DemaConsulting.WordSense`, `.Basic`, `.Onnx`, `.MiniLM` and
-   `.BertBaseCased`) to a fresh temporary folder, for example `%TEMP%\ws-docs-rN`. Copy nothing else: no source, no
+3. Copy the generated API documents of all four packages (`DemaConsulting.WordSense`, `.Onnx`, `.MiniLM` and
+   `.BertBaseCased`; the earlier rounds also copied the retired `.Basic` package, whose model is now in the core) to
+   a fresh temporary folder, for example `%TEMP%\ws-docs-rN`. Copy nothing else: no source, no
    README, no user guide, no build notes.
 4. Start an isolated agent that can read only that folder, give it the questions below and ask it to answer each one
    from the documents alone, quoting the document that supports the answer, and to mark the answer PASS (complete,

@@ -1,4 +1,9 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-plenty-d-1		dema-plenty-d	dema-syn-plenty-d-1	1
+dema-plonk-i-1		dema-plonk-i	dema-syn-plonk-i-1	1
+dema-plop-i-1		dema-plop-i	dema-syn-plop-i-1	1
+dema-plunk-i-1		dema-plunk-i	dema-syn-plunk-i-1	1
+dema-plus-p-1		dema-plus-p	dema-syn-plus-p-1	1
 oewn-placable__3.00.00..	placable%3:00:00::	oewn-placable-a	oewn-01789339-a	1
 oewn-placard__1.10.00..	placard%1:10:00::	oewn-placard-n	oewn-06806283-n	1
 oewn-placard__2.32.00..	placard%2:32:00::	oewn-placard-v	oewn-00993932-v	2

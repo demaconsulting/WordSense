@@ -1533,6 +1533,7 @@ damageability	0		Number=Sing	dema	0	damageability	n	moby_reverse
 damageable	0		Degree=Pos	dema	0	damageable	a	moby_reverse
 damageableness	0		Number=Sing	dema	0	damageableness	n	moby_reverse
 damaged	0	oewn-damage-v	Tense=Past+VerbForm=Part	dema	1			carried
+damaged	1	oewn-damaged-a	Degree=Pos	dema	0			oewn_form
 damager	0		Number=Sing	dema	0	damager	n	moby_reverse
 damagers	0		Number=Plur	dema	0	damager	n	rule
 damages	0	oewn-damage-n	Number=Plur	dema	1			carried
@@ -16859,6 +16860,7 @@ drainageways	0		Number=Plur	dema	0	drainageway	n	rule
 drainboard	0	oewn-drainboard-n	Number=Sing	dema	0			oewn_form
 drainboards	0	oewn-drainboard-n	Number=Plur	dema	0			rule
 drained	0	oewn-drain-v	Tense=Past+VerbForm=Part	dema	1			carried
+drained	1	oewn-drained-a	Degree=Pos	dema	0			oewn_form
 drained the cup	0	oewn-drain_the_cup-v	Tense=Past+VerbForm=Part	dema	0			rule
 drainer	0		Number=Sing	dema	0	drainer	n	moby_reverse
 drainers	0		Number=Plur	dema	0	drainer	n	rule
@@ -17488,6 +17490,7 @@ drillable	0		Degree=Pos	dema	0	drillable	a	moby_reverse
 drillbit	0		Number=Sing	dema	0	drillbit	n	moby_reverse
 drillbits	0		Number=Plur	dema	0	drillbit	n	rule
 drilled	0	oewn-drill-v	Tense=Past+VerbForm=Part	dema	1			carried
+drilled	1	oewn-drilled-a	Degree=Pos	dema	0			oewn_form
 drilled in	0	oewn-drill_in-v	Tense=Past+VerbForm=Part	dema	0			rule
 driller	0		Number=Sing	dema	0	driller	n	moby_reverse
 drillers	0		Number=Plur	dema	0	driller	n	rule

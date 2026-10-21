@@ -1,0 +1,8 @@
+sense_key	tag_count	source
+cpa%1:18:00::	0	wn30
+cpi%1:10:00::	0	wn30
+cpi%1:10:01::	0	wn30
+cpr%1:04:00::	0	wn30
+cps%1:28:00::	3	wn30
+cpu%1:06:00::	0	wn30
+cpu_board%1:06:00::	0	wn30

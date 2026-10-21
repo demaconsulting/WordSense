@@ -10,25 +10,31 @@ sections:
             requirements:
               - id: WordSense-Onnx-LemmaWeights-Format
                 title: >-
-                  The weights reader shall read the binary weights blob of a model: its model identifier, the class
-                  hash of the word image, dimension, mean vector and, per lemma, its class ids, bias, abstain margin and
-                  weights.
+                  The weights reader shall read the binary weights blob of a model: its model identifier, the
+                  inventory hash of the word image the weights were trained for, dimension, mean vector and, per
+                  lemma, its sense
+                  ids, bias, the weights of every sense, its thresholds and its optional form chooser, and the
+                  reduced precision in which the weights are stored shall change the measured fine accuracy of a model
+                  by no more than 0.2 percentage point.
                 tags: [unit]
                 justification: |
-                  The trained classifiers ship as one compact blob per model; the reader must reproduce exactly what
-                  the build tool wrote.
+                  The trained classifiers ship as one compact blob per model; the reader must reproduce what the build
+                  tool wrote, and the storage precision that keeps the package small must not cost accuracy.
                 tests:
                   - WordSenseBuilder_WeightsBlobWriter_Write_RoundTripsThroughTheReader
                   - WordSenseBuilder_WeightsBlobWriter_Write_NoLemmas_RoundTrips
-                  - WeightsBlob_Read_OneVersusRestLemma_KeepsClassIds
+                  - WeightsBlob_Read_FineSenseLemma_KeepsSenseIds
                   - WeightsBlob_Read_NoLemmas_ReturnsEmptyWeights
+                  - WeightsBlob_Read_FormChooser_IsKept
+                  - WordSenseBuilder_WeightsBlobWriter_ReducedPrecision_StaysWithinTheAccuracyGate
 
               - id: WordSense-Onnx-LemmaWeights-Integrity
                 title: >-
-                  The weights reader shall reject a corrupt, truncated or foreign blob, a lemma whose class count does
-                  not fit its kind (a Binary lemma needs exactly two classes), an empty or duplicate class id, a zero
-                  dimension and trailing bytes, and the reader and the writer shall reject any lemma, of every model
-                  kind, whose number of class ids differs from the sense count of its weights.
+                  The weights reader shall reject a corrupt, truncated or foreign blob, a lemma with fewer than two
+                  senses, an empty or duplicate sense id, a negative threshold, a zero or negative dimension and
+                  trailing bytes,
+                  and the reader and the writer shall reject any lemma whose number of sense ids differs from the
+                  number of weight rows.
                 tags: [unit]
                 justification: |
                   A damaged blob must fail loudly instead of producing silently wrong answers.
@@ -36,9 +42,9 @@ sections:
                   - WeightsBlob_Read_NotCompressed_Throws
                   - WeightsBlob_Read_UnknownMagic_Throws
                   - WeightsBlob_Read_Truncated_Throws
-                  - WeightsBlob_Read_WrongSenseCountForKind_Throws
-                  - WeightsBlob_Read_BinaryLemmaWithTwoClasses_IsAccepted
-                  - WeightsBlob_Read_EmptyOrDuplicateClassId_Throws
+                  - WeightsBlob_Read_LemmaWithOneSense_Throws
+                  - WeightsBlob_Read_EmptyOrDuplicateSenseId_Throws
+                  - WeightsBlob_Read_NegativeThreshold_Throws
                   - WeightsBlob_Read_MalformedUtf8Lemma_Throws
                   - WeightsBlob_Read_ZeroDimension_Throws
                   - WeightsBlob_Read_TrailingBytes_Throws
@@ -46,52 +52,68 @@ sections:
                   - WeightsBlob_Read_TruncatedAtEveryLength_Throws
                   - WeightsBlob_Read_CountMismatch_Throws
                   - WeightsBlob_Read_WrongVersionOrFlag_Throws
-                  - WeightsBlob_Read_AnyClassHash_IsReturnedUnchecked
-                  - WordSenseBuilder_WeightsBlobWriter_Write_BinaryWithThreeSenses_Throws
-                  - WordSenseBuilder_WeightsBlobWriter_Write_BinaryWithOneSense_ThrowsAndTwoSensesAreAccepted
-                  - WordSenseBuilder_WeightsBlobWriter_Write_OneVersusRestClassCountMismatch_Throws
+                  - WeightsBlob_Read_AnyInventoryHash_IsReturnedUnchecked
+                  - WordSenseBuilder_WeightsBlobWriter_Write_SenseCountMismatch_Throws
+                  - LemmaWeights_Constructor_InvalidShape_Throws
 
               - id: WordSense-Onnx-LemmaWeights-Match
                 title: >-
-                  The weighted lemma table shall resolve the class ids of the weights against the word image at load,
-                  shall refuse weights trained for another class inventory (class hash), an unknown class, a duplicate
-                  class or lemma, and a class count that differs from the weights.
+                  The weighted lemma table shall resolve the sense ids of the weights against the word image at load,
+                  shall refuse weights trained for another inventory (inventory hash), an unknown sense,
+                  a duplicate sense or lemma, a sense count that differs from the weights, and a group threshold for
+                  a lemma none of whose senses is in a group.
                 tags: [unit]
                 justification: |
-                  Weights score senses by class; a table that silently disagreed with the image would assign scores to
+                  Weights score senses by id; a table that silently disagreed with the image would assign scores to
                   the wrong senses, so every disagreement must fail loudly at load.
                 tests:
-                  - WeightedLemmaTable_Constructor_KnownClasses_AreFoundById
-                  - WeightedLemmaTable_Constructor_OtherClassHash_ThrowsNamingBothHashes
-                  - WeightedLemmaTable_Constructor_UnknownClass_Throws
-                  - WeightedLemmaTable_Constructor_DuplicateClass_Throws
+                  - WeightedLemmaTable_Constructor_KnownSenses_AreFoundById
+                  - WeightedLemmaTable_Constructor_OtherInventoryHash_ThrowsNamingBothHashes
+                  - WeightedLemmaTable_Constructor_UnknownSense_Throws
+                  - WeightedLemmaTable_Constructor_DuplicateSense_Throws
                   - WeightedLemmaTable_Constructor_DuplicateLemma_Throws
-                  - WeightedLemmaTable_Constructor_ClassCountMismatch_Throws
+                  - WeightedLemmaTable_Constructor_SenseCountMismatch_Throws
+                  - WeightedLemmaTable_Constructor_GroupThresholdWithoutGroupedSenses_Throws
                   - WeightedLemmaTable_LoadEmbedded_WrongModelId_Throws
 
               - id: WordSense-Onnx-LemmaWeights-Scoring
                 title: >-
-                  Lemma weights shall score each sense of a lemma for a feature vector, rank the senses, and map the
-                  margin between the best and the second-best score to a confidence that is monotonic in the margin
-                  and bounded to 0 to 1.
+                  Lemma weights shall score each fine sense of a lemma for a feature vector, normalize the scores to
+                  probabilities that sum to one, rank the senses, derive a score for each group of the lemma from the
+                  scores of its senses, and map the margin between the best and the second-best candidate of a level to
+                  a confidence that is monotonic in the margin and bounded to 0 to 1.
                 tags: [unit]
                 justification: |
-                  The confidence is the contract callers rely on; a monotonic, bounded mapping makes thresholds
-                  meaningful.
+                  The normalized probabilities are what the result lists as the senses of an analysis, and a monotonic,
+                  bounded confidence makes thresholds meaningful; group scores that follow from the fine scores keep
+                  the two levels consistent.
                 tests:
-                  - LemmaWeights_Scores_Binary_ReturnsSymmetricScores
                   - LemmaWeights_Scores_OneVersusRest_ReturnsOneScorePerRow
                   - LemmaWeights_Rank_ReturnsBestAndMargin
+                  - LemmaWeights_GroupScores_SumTheFineProbabilitiesOfTheGroup
                   - LemmaWeights_Confidence_IsMonotonicAndClamped
+
+              - id: WordSense-Onnx-LemmaWeights-Thresholds
+                title: >-
+                  Lemma weights shall carry for each lemma a fine threshold and, only for a lemma that has groups, a
+                  group threshold, and shall apply the lemma's own thresholds, not shared ones, when they decide the
+                  level of an answer.
+                tags: [unit]
+                justification: |
+                  Senses of one lemma may be easy to tell apart and senses of another may not; thresholds measured per
+                  lemma give each lemma its own point at which the precision target is met.
+                tests:
+                  - WeightsBlob_Read_Thresholds_AreKept
+                  - LemmaWeights_Level_UsesTheLemmasOwnThresholds
 
               - id: WordSense-Onnx-LemmaWeights-Embedded
                 title: >-
                   The weights embedded in each model package shall resolve completely against the shipped word image:
-                  the class hash matches and every class of every lemma is known.
+                  the inventory hash matches and every sense of every lemma is known.
                 tags: [unit]
                 justification: |
-                  A weights blob trained against another class inventory would score the wrong senses; the shipped image
-                  and weights must always have been built together.
+                  A weights blob trained against another inventory would score the wrong senses; the shipped
+                  image and weights must always have been built together.
                 tests:
                   - EmbeddedWeights_MiniLM_MatchesWordImage
                   - EmbeddedWeights_BertBaseCased_MatchesWordImage

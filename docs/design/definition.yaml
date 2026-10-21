@@ -10,6 +10,12 @@ input-files:
   - docs/design/word-sense/core.md
   - docs/design/word-sense/core/word-lexicon.md
   - docs/design/word-sense/core/word-sense-contracts.md
+  - docs/design/word-sense/core/basic-word-sense-model.md
+  - docs/design/word-sense/core/basic-classifier.md
+  - docs/design/word-sense/core/basic-tables.md
+  - docs/design/word-sense/core/pos-tagger.md
+  - docs/design/word-sense/core/cue-model.md
+  - docs/design/word-sense/core/sense-fusion.md
   - docs/design/word-sense/word-data.md
   - docs/design/word-sense/word-data/data-schema.md
   - docs/design/word-sense/word-data/data-layout.md
@@ -17,13 +23,6 @@ input-files:
   - docs/design/word-sense/word-data/form-generator.md
   - docs/design/word-sense/word-data/form-auditor.md
   - docs/design/word-sense/word-data/data-validator.md
-  - docs/design/word-sense/basic.md
-  - docs/design/word-sense/basic/basic-word-sense-model.md
-  - docs/design/word-sense/basic/basic-classifier.md
-  - docs/design/word-sense/basic/basic-tables.md
-  - docs/design/word-sense/basic/pos-tagger.md
-  - docs/design/word-sense/basic/cue-model.md
-  - docs/design/word-sense/basic/sense-fusion.md
   - docs/design/word-sense/onnx.md
   - docs/design/word-sense/onnx/onnx-word-sense-model.md
   - docs/design/word-sense/onnx/onnx-classifier.md

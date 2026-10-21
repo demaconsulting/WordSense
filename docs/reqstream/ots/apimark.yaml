@@ -29,7 +29,7 @@ sections:
               reference.
             justification: |
               An agent learning the library needs the worked examples and the shared terminology
-              (lemma, heteronym, pronunciation, margin, abstain), not only signatures. Two facts are
+              (lemma, heteronym, part of speech, confidence, sense level), not only signatures. Two facts are
               asserted because both are load-bearing: an example renders as a fenced code block a
               reader can copy, and the terminology remarks survive into the generated pages.
             tags: [ots]
@@ -37,6 +37,9 @@ sections:
               - ApiMark_ExampleCodeRendered
               - ApiMark_TerminologyDocumented
               - WordSense_XmlDocExamples_Compile
+              - OnnxWordSense_XmlDocExamples_Compile
+              - MiniLMWordSense_XmlDocExamples_Compile
+              - BertBaseCasedWordSense_XmlDocExamples_Compile
 
           - id: WordSense-OTS-ApiMark-EnforceDocs
             title: >-

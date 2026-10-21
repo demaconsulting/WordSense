@@ -9,15 +9,22 @@ sections:
       - title: ONNX Runtime Requirements
         requirements:
           - id: WordSense-OTS-OnnxRuntime-Inference
-            title: ONNX Runtime shall execute the pinned quantized transformer model and return its hidden states.
+            title: >-
+              ONNX Runtime shall execute the pinned quantized transformer models of the MiniLM
+              (all-MiniLM-L6-v2-int8) and BertBaseCased (bert-base-cased-int8) packages and return their hidden states.
             justification: |
               Microsoft.ML.OnnxRuntime is the only third-party runtime dependency of the Onnx package, and through
-              it of the MiniLM and BertBaseCased packages (the core and Basic packages have none). It loads the
-              int8 encoder model and computes the contextual embeddings used for the sense decision.
-              A passing end-to-end test proves the runtime loads the model and produces usable output
-              on the platform under test.
+              it of the MiniLM and BertBaseCased packages (the core package, which holds the Basic model, has none). It
+              loads the
+              int8 encoder models and computes the contextual embeddings used for the sense decision.
+              A passing end-to-end test per model proves the runtime loads that model and produces usable output
+              on the platform under test. The int8 arithmetic is deterministic on one machine but may differ between
+              CPUs and operating systems (probabilities by up to about 0.02), so the tests assert the answered
+              part of speech and tolerate such differences rather than exact probabilities.
             tags: [ots]
             tests:
               - OnnxEncoder_EncodeAsync_ValidTargets_ReturnsDeterministicVectors
               - WordSense_Classifier_EndToEnd_ClassifiesRecord
               - BertBaseCased_Classifier_EndToEnd_ClassifiesRecord
+              - MiniLMWordSenseModel_Classify_TrainedLemma_AnswersAtASenseOrGroupLevel
+              - BertBaseCasedWordSenseModel_Classify_TrainedLemma_AnswersAtASenseOrGroupLevel

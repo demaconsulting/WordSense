@@ -1,5 +1,5 @@
 ---
-# WordLexicon unit requirements (the lexicon and its embedded blob reader)
+# WordLexicon unit requirements (the lexicon, the sense catalog and their embedded blob reader)
 
 sections:
   - title: WordSense Requirements
@@ -12,13 +12,17 @@ sections:
                 title: >-
                   WordLexicon shall map each known spelling, including the inflected forms (plural,
                   verb, comparative and adverb forms, irregular forms included) of every dictionary word generated at
-                  build time, to the immutable list of analyses (sense id, lemma, part of speech and features) it can
-                  have, so that a caller cannot change what any other caller sees, and shall find a word by its exact
-                  spelling first and by its lower-case folding second.
+                  build time, to the immutable list of analyses (lemma, part of speech and features) it can have, with
+                  one analysis for each lemma, part of speech and features of the spelling and none for each sense, so
+                  that a caller cannot change what any other caller sees, shall find a word by its exact spelling first
+                  and by its lower-case folding second, and shall give a capitalized or inflected spelling the analyses
+                  of its lower-case base form where the dictionary has no entry of its own for it.
                 tags: [unit]
                 justification: |
                   Callers and models look words up by their surface form; resolving inflections at build time keeps
-                  look-up a binary search, and the lexicon is shared by every caller in the process.
+                  look-up a binary search, and the lexicon is shared by every caller in the process. An analysis is
+                  morphological truth; repeating it once per sense would give a model the same candidate many times and
+                  hide which analyses a word really has.
                 tests:
                   - WordLexicon_Lookup_KnownWord_ReturnsItsAnalyses
                   - WordLexicon_Lookup_InflectedForm_ReturnsEntryLemmaAndFeatures
@@ -30,6 +34,8 @@ sections:
                   - WordLexicon_Lookup_UnknownWord_IsAbsent
                   - WordLexicon_Lookup_NullWord_Throws
                   - WordLexicon_FormsOf_Lemma_ListsItsForms
+                  - WordLexicon_Lookup_FormWithManySenses_ReturnsOneAnalysisPerLemmaPartAndFeatures
+                  - WordLexicon_Lookup_CapitalizedAndInflectedForms_BehaveLikeTheirBase
                   - WordSenseBuilder_Image_Spellings_AreSortedByUtf8Bytes
                   - WordSenseBuilder_Image_Find_ReturnsOwnIndex
 
@@ -68,27 +74,25 @@ sections:
                 title: >-
                   WordLexicon shall hold every word of the dictionary the library is built from, including the
                   determiners, the conjunctions and the interjections, each with all of its parts of speech, whatever
-                  the accuracy of any model for them, and every sense of a word shall have the lemma of its first sense
-                  or be the word's own extra (the word itself as lemma, no sense id).
+                  the accuracy of any model for them, shall give a form that belongs to several lemmas (lives, left,
+                  bases, rows) or to several tenses of one lemma (read, reread) an analysis for each, and shall hold in
+                  its sense catalog every single-token OEWN sense and every project sense of the dictionary.
                 tags: [unit]
                 justification: |
-                  A model's accuracy decides which sense it may choose, never whether a word exists; a word that the
-                  lexicon lacks cannot be classified by any model, and the single lemma of the trained senses lets the
-                  weights of one lemma cover its word. A form may have several lemmas (<c>lives</c> is a verb of
-                  <c>live</c> and the plural of <c>life</c>), so a part of speech that its labels do not cover is
-                  an untrained extra of the form itself, never a sense of the lemma that the labels excluded.
+                  A model's accuracy decides which sense it may choose, never whether a word or a sense exists; a word
+                  or sense that the lexicon lacks cannot be classified or looked up by any model. A form may have
+                  several lemmas (<c>lives</c> is a verb of <c>live</c> and the plural of <c>life</c>), so each
+                  analysis must be listed for a model or a caller to choose from.
                 tests:
                   - WordLexicon_Lookup_ClosedClassWord_HasItsPartOfSpeechAlone
                   - WordLexicon_Lookup_SoAndWill_ListTheirParts
                   - WordLexicon_Lookup_FormWithSeveralLemmas_ListsEach
-                  - WordLexicon_Lookup_FormOfHeteronym_HasOnlyItsSenses
-                  - WordLexicon_Lookup_ReadForms_SplitBySense
-                  - WordLexicon_Lookup_RestrictedForm_NeverOffersExcludedSense
-                  - WordLexicon_Lookup_FormsWithTrainedLemmaDifferentFromEntry_UseFixedLemmas
-                  - WordLexicon_Lookup_Auxiliaries_HaveTrailingAuxiliaryAnalysis
+                  - WordLexicon_Lookup_ReadForms_HaveThePastAndThePresentAnalysis
+                  - WordLexicon_Lookup_Auxiliaries_HaveAnAuxiliaryAnalysis
+                  - WordLexicon_SensesOf_EverySingleTokenOewnSense_IsInTheCatalog
+                  - WordLexicon_SensesOf_ProjectSenses_AreInTheCatalog
                   - WordSenseBuilder_Words_Committed_HoldsEveryDictionaryWord
-                  - WordSenseBuilder_Words_Committed_FormSensesFollowLabelsThenOwnExtras
-                  - WordSenseBuilder_Words_Committed_RestrictedFormsGainTheirOwnExtra
+                  - WordSenseBuilder_Words_Committed_CatalogHoldsEveryOewnAndProjectSense
 
               - id: WordSense-Core-WordLexicon-Embedded
                 title: WordLexicon shall read its data from a resource embedded in the core assembly.
@@ -111,7 +115,11 @@ sections:
               - id: WordSense-Core-WordLexicon-Format
                 title: >-
                   WordLexicon shall reject a corrupt or foreign word image (wrong magic or version, content hash
-                  mismatch, invalid section).
+                  mismatch, invalid section, a sense that names a group or a respelling that does not exist, a
+                  duplicate sense id, a group id without the group marker (lemma#group:label), a group with fewer than
+                  two members or with all the senses of its lemma and part of speech, a group that mixes lemmas or
+                  parts of speech, or group members that disagree with the sense-to-group index, or that list a sense
+                  twice, or a key index that is not in strict key order).
                 tags: [unit]
                 justification: |
                   A damaged image must fail loudly instead of producing wrong senses.
@@ -120,3 +128,76 @@ sections:
                   - WordSenseBuilder_Image_TruncatedAtEverySectionBoundary_IsRejected
                   - WordSenseBuilder_Image_WrongHash_IsRejectedByContentHashOnly
                   - WordSenseBuilder_Image_CountMismatch_IsRejected
+                  - WordSenseBuilder_Image_SenseWithUnknownGroup_IsRejected
+                  - WordSenseBuilder_Image_GroupOfOneSenseOrAllSenses_IsRejected
+                  - WordSenseBuilder_Image_GroupIdWithoutMarker_IsRejected
+                  - WordSenseBuilder_Image_DuplicateSenseId_IsRejected
+                  - WordLexicon_Image_GroupListingASenseTwice_IsRejected
+                  - WordLexicon_Image_KeyIndexOutOfOrder_IsRejected
+                  - WordLexicon_Image_KeyIndexWithDuplicate_IsRejected
+                  - WordLexicon_Image_RebuiltWithoutDamage_IsAccepted
+
+              - id: WordSense-Core-WordLexicon-Senses
+                title: >-
+                  WordLexicon shall list the senses of a lemma and part of speech in inventory order, the most frequent
+                  first, shall return an empty list for a lemma or part of speech without senses, and shall reject a
+                  null lemma.
+                tags: [unit]
+                justification: |
+                  Models choose among the senses of an analysis; a fixed, frequency-ranked order gives every model the
+                  same candidates and the same most-frequent-sense baseline.
+                tests:
+                  - WordLexicon_SensesOf_LemmaAndPartOfSpeech_ListsMostFrequentFirst
+                  - WordLexicon_SensesOf_UnknownLemma_IsEmpty
+                  - WordLexicon_SensesOf_NullLemma_Throws
+                  - WordLexicon_SensesOf_SingleSenseLemma_ListsOneSense
+
+              - id: WordSense-Core-WordLexicon-SenseLookup
+                title: >-
+                  WordLexicon shall find a sense by its readable id and by its OEWN sense key, and shall report
+                  absence for an unknown id, for an unknown key and for any key of a project sense.
+                tags: [unit]
+                justification: |
+                  The key is the attach point for glossaries and thesauri that use WordNet keys; the id is what callers
+                  store. Both must lead to the same sense, and a project sense has no key to find it by.
+                tests:
+                  - WordLexicon_TryGetSense_ById_FindsSense
+                  - WordLexicon_TryGetSense_UnknownId_IsFalse
+                  - WordLexicon_TryGetSenseByKey_FindsTheSameSenseAsItsId
+                  - WordLexicon_TryGetSenseByKey_UnknownKey_IsFalse
+                  - WordLexicon_TryGetSenseByKey_ProjectSense_IsNeverFound
+
+              - id: WordSense-Core-WordLexicon-Groups
+                title: >-
+                  WordLexicon shall find a group by its readable id (lemma#group:label, a namespace of its own, so
+                  that a
+                  group id never equals a sense id), list the senses of the group in inventory order, keep every sense
+                  in at most one group, and keep every group to one lemma and one part of speech with at least two, but
+                  not all, of the senses of that lemma and part of speech.
+                tags: [unit]
+                justification: |
+                  A group answer must lead to the senses it stands for, so that a caller can degrade the answer to its
+                  member senses; a sense in two groups would make a group answer ambiguous; a group of one sense or of
+                  every sense would add nothing, because groups exist only to set confusable senses apart from the rest;
+                  and a group id that can never be mistaken for a sense id lets callers store both kinds of id
+                  side by side.
+                tests:
+                  - WordLexicon_TryGetGroup_ById_ListsMemberSenses
+                  - WordLexicon_TryGetGroup_UnknownId_IsFalse
+                  - WordLexicon_Groups_EverySense_BelongsToAtMostOneGroup
+                  - WordLexicon_Groups_EveryGroup_HasOneLemmaAndOnePartOfSpeech
+                  - WordLexicon_Groups_EveryGroup_HasAtLeastTwoSensesAndNotAllOfThem
+                  - WordLexicon_Groups_EveryGroupId_HasGroupMarkerAndNeverEqualsASenseId
+
+              - id: WordSense-Core-WordLexicon-Version
+                title: >-
+                  WordLexicon shall expose a version string that identifies the sense inventory of the embedded image
+                  (the first 16 lower-case hexadecimal digits of the inventory hash), the same on every call and
+                  different whenever an analysis, a sense or a group of the catalog changes.
+                tags: [unit]
+                justification: |
+                  Sense ids are frozen but group ids are versioned per data release; a caller that stores group ids
+                  saves the version with them and can tell, by comparing for equality, that the catalog it runs against
+                  is not the one it stored them for.
+                tests:
+                  - WordLexicon_Version_IsStableLowerCaseHex

@@ -1,18 +1,37 @@
 ## WordSenseBuilder Verification
 
 This document describes the verification of the `WordSenseBuilder` unit, the non-shipped build-time tool in
-`tools/WordSense.Builder` that generates the word lexicon, the model weights and the generated user guide appendix.
+`tools/WordSense.Builder` that generates the word image, the model weights and the generated user guide appendix, and
+measures the shipped models.
 
 ### Verification Approach
 
 Tests in `test/WordSense.Builder.Tests` call the command entry point (`Program.RunAsync`) with explicit output writers
-and the internal serialization types with synthetic data in temporary directories: `ProgramTests.cs` covers the commands
-and their usage and data errors, `ImageTests.cs` covers the word image and `WeightsBlobWriterTests.cs` the weights
-writers against the readers of the shipped packages, `UdCountsTests.cs` covers the treebank counts of the Basic model,
-and `BasicTrainerTests.cs` covers its trainer, table writer, model data summary and hyper-parameters.
-Commands that need a real encoder (`weights` and `evaluate` for the encoder models) are verified through the data they
-produce: the weights embedded in the model packages are loaded and matched in the MiniLM and BertBaseCased tests, and
-the accuracy figures are recorded in the build notes, not asserted here.
+and the internal serialization types with synthetic data in temporary directories: `ProgramTests.cs` covers the
+commands and their usage and data errors, `ImageTests.cs` covers the word image and `WeightsBlobWriterTests.cs` the
+weights writers against the readers of the shipped packages, `TaggerCountsTests.cs` and `OpenCorpusTests.cs` cover the
+tag counts of the Basic model and the reader of the open corpus, `TaggerEvaluatorTests.cs` its accuracy measurement,
+`CorpusLicenseTests.cs` the licenses recorded for the committed corpus, and `BasicTrainerTests.cs` covers its trainer,
+table writer, model data summary and hyper-parameters; `EmbeddingCacheTests.cs`, `FitCacheTests.cs` and
+`ModelTrainerTests.cs` cover the embedding cache, the lemma fit cache, the frozen mean and the thresholds with a stub
+encoder; `WeightsTrainerTests.cs` and `ThresholdsTests.cs` cover the fit and the choice of the thresholds on small
+synthetic features; `SensePriorTests.cs` covers the usage prior (the offsets on a hand-computed fixture, their effect on
+the stored biases, the thresholds and the fit-cache key, and the options); `RealSplitTests.cs` and
+`RealCalibratorTests.cs` cover the split of the real held-out sentences by
+document and the real-text calibration of the thresholds on one-dimensional synthetic lemmas; `ChooserCorpusTests.cs`
+and `ChooserTrainingTests.cs` cover the chooser rows and the training of the form choosers; `TiersTests.cs`,
+`SenseEvaluatorTests.cs`, `RunningTextEvaluatorTests.cs`, `ChallengeSetFloorTests.cs`, `SuiteFileTests.cs`,
+`LeakageCheckTests.cs` and `ModelTableTests.cs` cover the quota report, the two independent evaluations, the suite
+reader and its grading, the leakage check and the model table file with small synthetic corpora, a stub model and
+cached-file fixtures; `EvaluatorTests.cs` covers the per-level evaluation with a stub model. Commands that need a real
+encoder (`weights`, `evaluate`, `evaluate-senses`, `evaluate-running` and `evaluate-suite` for the encoder models) are
+verified through the data they produce: the weights embedded in the model packages are loaded and matched in the
+MiniLM and BertBaseCased tests, the expectations of the suite are checked by the suite tests of the three model test
+projects (`BasicSuiteTests`, `MiniLMSuiteTests`, `BertBaseCasedSuiteTests`) and the floors of the challenge set by
+`ChallengeSetFloorTests` (both skip when the model files are not present), and the accuracy figures are recorded in
+the build notes, not asserted here. The download of SemCor (an evaluation source only) is verified with a stub HTTP
+handler, a fixture archive and its checksum; no network is used. The treebank is prepared by a script of
+`tools/open-corpus`, which verifies its checksum itself.
 
 ### Test Environment
 
@@ -25,46 +44,49 @@ All scenarios below pass on every platform and target framework of the CI matrix
 
 ### Test Scenarios
 
-#### words
+#### compile-image
 
 - **Compile-image command writes the image**: `compile-image --data DIR --corpus DIR --output FILE` on the committed
   data writes the word image and reports the counts; a missing data directory fails with a message
   (`Program_CompileImage_WritesImage`, `Program_CompileImage_MissingData_Fails`). The image is read back by the
-  core reader. It is deterministic (`ImageCompiler_Build_IsDeterministic`), and the committed image equals a fresh
-  compilation (`Words_Committed_MatchesData`) and agrees with the legacy word table (`Words_Committed_MatchesLegacyTable`).
-- **Inflections are materialized for every dictionary word**: the written lexicon contains the plural, third person,
-  past, -ing, comparative, superlative, adverb and derived forms of every dictionary word and trained lemma as
-  lower-case keys with the senses of their lemma, with the spelling rules of English (`GeneratesForms`,
-  `AppliesSpellingRules`), so the shipped reader needs no morphology.
-- **Irregular forms replace the regular form** (`UsesIrregularForms`): `went`, `took` and `children` are keys and
-  `goed`, `taked` and `childs` are not; an existing word is never replaced (`RespectsKnownWordsAndDisabledRules`).
-- **Generated forms of a trained lemma** (`GeneratedFormOfTrainedLemma_KeepsAllTrainedSenses`): a generated form that
-  can be several parts of speech (`banks`, noun and verb) answers with all trained senses of its lemma, meanings
-  included; a form that can only be one part of speech (`banked`) has one plain sense of its base (the known limit).
-- **Precedence of sources**: a lemma's own senses win over forms, dictionary words and generated forms, and the
-  dictionary's other parts of speech of the same word follow them (`MergesDictionaryPartsOfSpeechAfterTrainedSenses`).
-- **Listed forms are restricted by their labels** (`ListedFormWithLabels_GetsOnlyThoseSenses`,
-  `ListedFormLabelsOutOfOrder_UsesLemmaOrder`, `ListedFormWithAllLabels_ReusesLemmaSenses`,
-  `RestrictedFormWithDictionaryPos_AppendsUntrainedExtraAfterSubset`, `SelfRowWithAllLabels_IsAccepted`): a form gets
-  only the named senses in lemma order and the same `WordDetails` instances; an all-labels row shares the lemma's
-  array. Unknown, duplicate and empty labels and a restricted self row fail the build and every error is listed
-  (`InvalidFormLabels_ThrowsListingAllErrors`, `CheckForms_ReportsEveryViolation`). `FormSenseIndexes_FollowsLemmaOrder`,
-  `Validate_SentenceWithSenseOutsideFormLabels_IsReported`, `Validate_CommittedCorpus_IsConsistent` and
-  `Words_Committed_MatchesLegacyTable` show that the anchors, holdout and committed lexicon agree
-  with the labels.
-- **Every dictionary word is kept** (`Words_Committed_HoldsEveryDictionaryWord`): the committed lexicon holds every
+  core reader.
+- **Output is deterministic**: two compilations of the same data give byte-identical files, the catalog sections
+  included (`ImageCompiler_Build_IsDeterministic`, `ImageCompiler_Build_CatalogIsDeterministic`), and the committed
+  image
+  equals a fresh compilation (`Words_Committed_MatchesData`).
+- **Invalid inventory fails the build**: a sense without a label, a sense in two groups, a group of one sense (or a
+  declared group without any member) or of all
+  the senses of its lemma and part of speech, a group that mixes
+  parts of speech, and a group id without the `#group:` marker or equal to a sense id are each rejected with an error
+  that names the sense or group, and no file is written
+  (`ImageCompiler_Build_SenseWithoutLabel_Fails`, `ImageCompiler_Build_SenseInTwoGroups_Fails`,
+  `ImageCompiler_Build_GroupOfOneSenseOrAllSenses_Fails`, `ImageCompiler_Build_GroupWithoutMembers_Fails`,
+  `ImageCompiler_Build_GroupMixingPartsOfSpeech_Fails`,
+  `ImageCompiler_Build_GroupIdWithoutMarkerOrEqualToSenseId_Fails`).
+- **Every dictionary word is kept** (`Words_Committed_HoldsEveryDictionaryWord`): the committed image holds every
   word of the committed dictionary with each of its parts of speech, without exception.
-- **Form senses are the labels, then the form's own extras**
-  (`Words_Committed_FormSensesFollowLabelsThenOwnExtras`): the trained senses of a listed form are exactly the ones its
-  labels name; every further sense covers a dictionary part of speech that the labels do not cover, has the form
-  itself as lemma and has no meaning and no respelling. `Words_Committed_RestrictedFormsGainTheirOwnExtra` names the
-  eight verb-only forms (`bent`, `chanced`, `drove`, `flew`, `limited`, `rode`, `scored`, `shook`) whose lemma has a
-  noun (or adjective) sense that the labels exclude, and asserts that shape; `drove` is the verb of `drive` plus a
-  noun of its own, not the noun sense of `drive`.
-- **Output is deterministic**: two runs on the same corpus give byte-identical files.
-- **Writer and reader agree**: every key and sense written by the writer is read back unchanged, and the reader rejects
-  a tampered file (see the `WordLexicon` unit document).
-- **Invalid corpus**: an inconsistent sense inventory exits with code 1 and an error message and writes no file.
+- **The catalog is complete** (`Words_Committed_CatalogHoldsEveryOewnAndProjectSense`): every single-token OEWN sense
+  and every project sense of the committed data is in the catalog with its id, group (when it is in one), key (none for
+  a project sense) and respelling.
+- **Auxiliaries** (`Words_Committed_AuxiliariesGainTheirAnalysis`,
+  `LexiconSource_ReadAuxiliaries_ReadsWordsAndRejectsBadLines`,
+  `LexiconSource_Letters_CoverTheTenParts`): each word of `corpus/lexicon/auxiliaries.tsv` gains an auxiliary
+  analysis; the file reader rejects malformed lines and repeats, and the letters cover all ten parts of speech.
+- **Spellings and lookup** (`Image_Spellings_AreSortedByUtf8Bytes`, `Image_Find_ReturnsOwnIndex`): the spelling index is
+  sorted by the UTF-8 bytes and finds each spelling at its own index.
+- **Damaged images are rejected** (`Image_Corruption_IsRejected`, `Image_TruncatedAtEverySectionBoundary_IsRejected`,
+  `Image_WrongHash_IsRejectedByContentHashOnly`, `Image_CountMismatch_IsRejected`,
+  `Image_SenseWithUnknownGroup_IsRejected`, `Image_GroupOfOneSenseOrAllSenses_IsRejected`,
+  `Image_GroupIdWithoutMarker_IsRejected`): the reader rejects a
+  tampered file, a file cut off at any section boundary (the 112-byte header of version 3, the directory of 20-byte
+  entries and each section) and a section count that does not match; a wrong hash is detected by the content hash
+  alone; a sense that names an unknown group, a group id without the `#group:` marker, a group with fewer than two
+  members, a group of all the senses of its
+  lemma and part of speech, a group that mixes lemmas or parts of speech and group members that disagree with the
+  sense-to-group index are rejected.
+- **Sense inventory rules** (`SenseInventory_ValidateRules_FlagsViolations`,
+  `SenseInventory_Validate_CommittedCorpus_IsConsistent`): the inventory rules flag each violation, and the committed
+  corpus agrees with the committed inventory.
 
 #### coverage
 
@@ -73,8 +95,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
   tokens are counted apart (`AddText_ClassifiesTokens`).
 - **Directory and rendering**: every `.txt` file of a directory is read and the report lists the figures and the unknown
   words; a missing or empty directory is rejected (`ReadAndRender_ListsFigures`, `Read_BadDirectory_Throws`).
+- **Trained share** (`ReadAndRender_ListsTheTrainedShare`): the report states the share of the known words whose lemma
+  has trained fine senses.
 - **Command**: `coverage --text DIR` prints the report and `--output` writes it; the text option is required
-  (`Program_Coverage_*`).
+  (`Program_Coverage_ReportsAndWritesFile`, `Program_Coverage_WithoutText_Fails`).
 - **Regression on an authored sample** (`AuthoredSample_IsFullyKnown`): a small authored paragraph of inflected
   English (no licensed text) is fully known by the committed lexicon. The figure of the real-text sample is
   in the build notes, not asserted here.
@@ -82,67 +106,283 @@ All scenarios below pass on every platform and target framework of the CI matrix
 #### import-moby
 
 - **Every word kept in source order**: single lower-case words keep all their parts of speech in the order of the
-  source, determiner, conjunction-only and interjection-only words included (`LexiconImporterTests`).
+  source, determiner, conjunction-only and interjection-only words included (`LexiconImporterTests`,
+  `Import_KeepsEveryWordInCodeOrder`).
 - **Rules and corrections**: the participle and gerund rule and the committed corrections are applied; a malformed
-  correction is rejected.
-- **Pinned input**: input whose SHA-256 differs from the pin is rejected, and the command without `--input` reports a
-  usage error (`WordSenseBuilder_Program_ImportMoby_RequiresPinnedInput`).
-- **Auxiliaries**: each word of `corpus/lexicon/auxiliaries.tsv` gains an `Auxiliary` sense after all its other senses
-  (`Build_AppendsAuxiliarySenseLast`); a word missing from the table is an error (`Build_UnknownAuxiliary_Throws`); the
-  file reader rejects malformed lines and repeats (`ReadAuxiliaries_ReadsWordsAndRejectsBadLines`), the letters cover
-  all ten parts of speech (`Letters_CoverTheTenParts`), and a sense inventory that trains `auxiliary` is rejected.
+  correction is rejected (`Import_AppliesParticipleAndGerundRule`, `Import_AppliesCorrections`,
+  `Import_RejectsBadCorrection`).
+- **Pinned input**: input whose SHA-256 differs from the pin is rejected (`Import_ChecksHash`), and the command without
+  `--input` reports a usage error (`Program_ImportMoby_RequiresPinnedInput`).
 - **Reader**: the dictionary reader keeps the order of the letters, accepts the determiner letter and rejects bad
-  files.
+  files (`LexiconSource_ReadWords_KeepsSenseOrderAndKnowsDeterminer`).
 
 #### Model table
 
-- **Basic row matches the evaluation** (`WordSenseBuilder_ModelTable_BasicRow_MatchesEvaluation`): the accuracy
-  numbers of the Basic row of `docs/build_notes/model-table.md` equal a fresh evaluation of the Basic model.
+- **Basic row matches the evaluation** (`WordSenseBuilder_ModelTable_BasicRow_MatchesEvaluation`): the sense and size
+  cells of the Basic row of `docs/build_notes/model-table.md` equal a fresh evaluation of the Basic model.
+- **A command changes only its cells** (`WordSenseBuilder_ModelTable_Update_ChangesOnlyTheCellsOfItsCommand`): the other
+  cells of the row and the rows of the other models stay; a cell never measured reads `not measured`; the models are in
+  the order of the table; an unknown column is rejected (`WordSenseBuilder_ModelTable_Update_UnknownColumn_IsRejected`).
 
 #### weights
 
 - **Model name is required and checked**: `weights` without a model id, and with an unknown id, exit with code 1 and a
   message that lists the known models (`minilm`, `bert-base-cased`); the id may be given as the second argument or with
-  `--model`.
+  `--model` (`Program_Weights_UnknownModel_ListsTheModels`, `Program_ModelCommandWithoutModel_ReportsUsage`).
 - **Weights file round trip**: the weights writer produces a blob that `WeightsBlob` reads back with the same model id,
-  dimension, mean vector, senses and weights. The writer refuses an entry whose class ids do not match its sense count
-  with an `ArgumentException`, so a binary entry (always two senses) with one or three class ids is rejected
-  (`WeightsBlobWriter_Write_BinaryWithThreeSenses_Throws`, `..._BinaryWithOneSense_ThrowsAndTwoSensesAreAccepted`).
+  dimension, mean vector, the sense ids of each lemma, the weights and both thresholds
+  (`WeightsBlobWriter_Write_RoundTripsThroughTheReader`).
 - **Training is deterministic**: the logistic trainer separates a small data set and gives identical weights on a repeat
-  run.
+  run (`LogisticTrainer_SeparatesAndIsDeterministic`).
+- **Kernel solver is equivalent and deterministic** (`KernelFitTests.cs`): the coordinates of the kernel basis keep the
+  inner products of the samples, a duplicate adds no coordinate and the expansion gives the same activations
+  (`KernelBasis_Create_KeepsInnerProductsAndDropsDuplicates`, `..._Subset_UsesTheSubsetOnly`); the kernel solver finds
+  the weights, biases and cross-validated thresholds of the primal reference solver, also with duplicate samples
+  (`WeightsTrainer_Fit_KernelSolver_FindsThePrimalOptimum`, `Thresholds_Choose_KernelSolver_FindsThePrimalThresholds`),
+  repeats bit for bit and gives the same bits with one thread and with many
+  (`..._KernelSolver_IsDeterministic`, `LemmaFitter_Fit_IsIndependentOfTheThreadCount`) and is the primal solver when
+  there are at least as many
+  samples as features (`..._MoreSamplesThanDimensions_IsThePrimalSolver`). On the committed corpus the kernel fit
+  gives identical answers on the held-out sentences and a gate difference of 0.00 points (see the fit-speed note).
+- **Form choosers** (`ChooserCorpusTests.cs`, `ChooserTrainingTests.cs`; real forms of the word image, hand-made
+  features, no encoder): a chooser row is read with its form, label and braced target, a label may be a lemma or
+  `lemma/features`, and a row that is not three columns, has an upper-case form, a target that is not the form, an
+  unknown form or a label of no analysis is described (`ChooserCorpus_ReadSentences_InvalidRows_AreDescribed`); a
+  sentence that occurs twice or in both sets is an error (`ChooserCorpus_Validate_DuplicateSentence_IsAnError`); the
+  label of an analysis is the exact `lemma/features` label, else the lemma
+  (`ChooserCorpus_LabelIndexOf_PrefersTheExactLabel`). A form of two lemmas gets a chooser with labels in ordinal
+  order that tells them apart and is stored with the first lemma of the form that has weights
+  (`WeightsTrainer_AttachChoosers_FormOfTwoLemmas_StoresTheChooserWithTheFirstTrainedLemma`,
+  `..._OnlyTheSecondLemmaTrained_...`, the blob read back by the real reader); the tense variants of one lemma get one
+  label each (`..._TenseVariants_GetOneLabelEach`); a form whose rows name one label, whose analysis has no label or
+  that has no trained lemma gets no chooser and a reason (`..._UnusableForms_AreSkippedWithAReason`); the result is
+  the same bits with one thread and with many (`..._IsDeterministic_AndNeedsOneFeaturePerRow`).
+- **Lemmas without enough anchored senses**: a lemma with a single anchored sense gets no weights
+  (`WeightsTrainer_LemmaWithOneAnchoredSense_GetsNoWeights`), and a sense with a single anchor stays in the training of
+  a lemma that has two anchored senses (`WeightsTrainer_SenseWithOneAnchor_StaysInTraining`).
 - **Weights match the lexicon**: weights trained for the committed corpus are loaded by each model package with zero
   dropped lemmas (verified in the MiniLM and BertBaseCased tests).
+- **Embedding cache** (`EmbeddingCacheTests.cs`, `ModelTrainerTests.cs`; a stub encoder, no model files): vectors read
+  back bit-identical (`EmbeddingCache_SaveAndOpen_RoundTripsBitIdentical`); the key depends on every word and the
+  target index (`KeyOf_DependsOnWordsAndTarget`, `ComputeDigest_DependsOnEveryInput`); a second run over unchanged
+  anchors encodes nothing and gives byte-identical weights
+  (`ModelTrainer_TrainDataAsync_SecondRun_EncodesNothingAndReproducesBytes`); added sentences are the only ones encoded
+  (`..._AddedSentences_AreTheOnlyOnesEncoded`); a changed model digest drops the cache
+  (`EmbeddingCache_Open_OtherModelDigest_IsInvalidated`, `..._ChangedModelDigest_EncodesEverythingAgain`); a corrupt
+  entry, a cut-off file and a damaged header are ignored and encoded again without an exception, and the weights equal
+  those of a run without a cache (`Open_CorruptEntry_*`, `Open_TruncatedFile_*`, `Open_DamagedHeader_*`,
+  `Open_MissingFile_IsEmpty`, `ModelTrainer_TrainDataAsync_CorruptEntry_IsEncodedAgain`); an entry of another
+  dimension is
+  refused (`Add_OtherDimension_Throws`); the caching encoder asks the cache first and always encodes without a cache or
+  without tokens (`CachingEncoder_EncodeAsync_*`); a failed save leaves no temporary file
+  (`Save_Failure_LeavesNoTemporaryFile`); the progress output names the hits and the encoded sentences.
+- **Frozen mean** (`ModelTrainerTests.cs`): with the stored mean, adding anchors to one lemma leaves the weights, biases
+  and thresholds of the other lemma equal and the mean unchanged
+  (`..._FrozenMean_EditingOneLemmaLeavesOthersUnchanged`);
+  without it the other lemma changes (`..._RecomputedMean_CouplesTheLemmas`); the stored mean is read from the weights
+  of the same model, and a missing, other-model or unreadable blob gives none (`ReadFrozenMean_*`); a stored mean of
+  another dimension is not used (`..._FrozenMeanOfOtherDimension_IsComputedInstead`).
+- **Fit cache** (`FitCacheTests.cs`, `ModelTrainerTests.cs`): the key depends on the settings (the threshold settings
+  and the solver included, `FitCache_KeyOf_DependsOnTheThresholdSettings`), lemma, senses, labels and every feature
+  number but not on
+  the thread count (`FitCache_KeyOf_*`); fits read back bit-identical and a save
+  writes only the fits used (`SaveAndOpen_*`, `Save_WritesOnlyUsedFits`); a damaged entry drops itself and the rest, and
+  a cut-off file, damaged header or garbage never throws (`Open_CorruptEntry_*`, `Open_DamagedFile_*`); unchanged
+  anchors
+  reuse every lemma fit with byte-identical weights, with the frozen mean an edited lemma is the only one fitted and the
+  weights equal those of a run without a cache, and a recomputed mean fits every lemma again
+  (`ModelTrainer_TrainDataAsync_UnchangedAnchors_*`, `..._FrozenMeanAndEditedLemma_*`,
+  `..._RecomputedMean_FitsEveryLemmaAgain`).
+- **Options** (`ProgramTests.cs`): `--no-cache` and `--recompute-mean` need no value; `--cache` with `--no-cache` is an
+  error; the cache folder defaults to `<repository>/.cache/embeddings` (`Program_TrainSettingsOf_ResolvesCacheAndMean`,
+  `Program_Weights_SwitchOptions_AreAcceptedWithoutValue`, `Program_Weights_CacheAndNoCache_AreRejected`).
+- **Real runs** (not automated, they need the model files): `weights minilm` and `weights bert-base-cased` run twice
+  must leave the committed `weights.bin` byte-identical; the second run reports no encoded sentence.
+- **Evaluate is uncached**: `evaluate` classifies through `ClassifyAsync` of the shipped model and does not use the
+  embedding cache, by design.
+
+#### Thresholds
+
+- **Precision target on out-of-fold answers** (`Thresholds_Choose_MeetPrecisionTargetOnOutOfFoldAnswers`): on a
+  synthetic lemma with separable and overlapping senses, the answers at or above each chosen threshold reach the
+  precision target on the out-of-fold anchors.
+- **Deterministic** (`Thresholds_Choose_IsDeterministicForSeed`): the same anchors and seed give the same thresholds
+  and another seed may differ.
+- **Only anchors are read** (`Thresholds_Choose_NeverReadsHoldoutOrEvaluationSentences`): the choice takes the anchors
+  only, and a corpus whose holdout, real-text and suite sentences are changed gives the same thresholds.
+- **Unreachable target** (`Thresholds_Choose_TargetNeverReached_NeverAnswersThatLevel`): a lemma whose out-of-fold
+  precision never reaches the target gets no threshold for that level, so that level is never answered.
+- **Both thresholds are written** (`ModelTrainer_TrainDataAsync_WritesBothThresholdsPerLemma`): the weights blob
+  holds `t_fine` of every trained lemma and `t_group` of every trained lemma that has groups.
+
+#### Usage prior
+
+- **Offset formula** (`SensePrior_Offsets_FollowTheDocumentedFormula`): on a fixture of three senses with known anchor
+  counts and tag counts, each offset equals `-ln q + alpha ln pi` computed by hand, and adding the offsets to the scores
+  gives the probabilities `p/q * pi^alpha` normalized.
+- **Sense without a count** (`SensePrior_Offsets_SenseWithoutCount_UsesTheSmoothingAlone`): a project sense (no sense
+  key) and a sense that the table does not list get the smoothing constant alone, the same as a sense with count 0.
+- **Alpha zero** (`SensePrior_Offsets_AlphaZero_RemovesOnlyTheTrainingShare`): without the exponent only the training
+  share is divided out.
+- **Deterministic** (`SensePrior_Offsets_AreDeterministic`): the same input gives the same offsets bit for bit.
+- **Counts file** (`SensePrior_ReadCounts_ReadsTheFrequencyTable`): the tag counts are read from the partitioned
+  `sense_frequency` table by sense key.
+- **Wired into the training** (`WeightsTrainer_TrainDense_UsagePrior_ShiftsTheBiasesByTheOffsets`,
+  `..._IsDeterministicAndKeepsTheSize`): the weights of a lemma trained with the prior equal those trained without it
+  and the biases differ by exactly the offsets; two runs give the same bits with one thread and with many, and the
+  number of biases and weights is unchanged.
+- **Thresholds on corrected scores** (`Thresholds_Choose_Offsets_AreAppliedToTheOutOfFoldScores`): offsets that
+  favor one sense change the out-of-fold margins and therefore the thresholds of a lemma, and zero offsets change
+  nothing.
+- **Fit cache** (`FitCache_KeyOf_DependsOnThePriorOffsets`): another offset gives another key.
+- **Options** (`Program_TrainSettingsOf_ParsesThePriorOptions`): `--prior-alpha` and `--prior-smoothing` are read and
+  checked (a negative value is an error), `--no-prior` switches the correction off, and the defaults are 0.5 and 0.5.
+- **Real runs** (not automated): the measured effect of the correction is in `docs/build_notes/frequency-prior.md`.
+
+#### Real-text calibration
+
+- **Split by document** (`RealSplit_Classify_SplitsRealRowsByDocument`): with a provenance file, the rows of one
+  document (the same source and the same key before `#`) are all calibration or all test, both sides get rows, and a
+  Tatoeba sentence is its own document.
+- **Only real rows are split** (`RealSplit_Classify_WrittenAndUnknownRows_AreNeverRealRows`): a row whose origin is
+  written, and a row without provenance, is in neither split.
+- **Anchor documents** (`RealSplit_Classify_ReportsTestRowsInDocumentsWithoutAnchors`): the test rows whose document
+  supplies no anchor are listed apart.
+- **Pooled shift** (`RealCalibrator_Apply_RaisesThresholdsUntilThePooledPrecisionReachesTheTarget`): on calibration rows
+  where the cross-validation thresholds are too low, the thresholds are raised by one shift and the pooled precision of
+  the answers reaches the target; thresholds that already meet it are not moved.
+- **Own threshold** (`RealCalibrator_Apply_LemmaWithEnoughRows_KeepsTheHigherOfItsOwnAndTheAdjustedThreshold`): a lemma
+  with at least 20 calibration rows keeps the higher of its own threshold and the adjusted one; a lemma with fewer rows
+  gets the pooled shift.
+- **No rows** (`RealCalibrator_Apply_NoCalibrationRows_KeepsTheThresholds`): without calibration rows every
+  threshold is unchanged.
+- **Never and determinism** (`RealCalibrator_Apply_NeverStaysNever_AndIsDeterministic`): a level that was never
+  answered stays never answered, and two runs give the same thresholds.
+- **Group level** (`RealCalibrator_Apply_GroupThreshold_MovesOnlyWithEnoughAnswers`): the group threshold moves only
+  when at least 30 calibration answers can verify it.
+- **Wired into the training** (`ModelTrainer_TrainDataAsync_CalibrationRows_MoveTheThresholds`): with calibration rows
+  the trained thresholds are at least the cross-validation ones, and without them they are equal.
+
+#### tiers
+
+- **Quota follows the tag count** (`WordSenseBuilder_Tiers_Quota_FollowsTheTagCount`): five or more gives 20 anchor
+  and 5 held-out sentences, one to four (and a project sense) gives 10 and 3, none gives 5 and 2.
+- **Report** (`WordSenseBuilder_Tiers_Report_ListsShortAndEmptySensesWithTheMissingSentences`): every sense of a trained
+  lemma has its tier and status; a sense with fewer sentences than its quota is `short`, one without any is `empty` and
+  both are listed with the missing sentences; a sense that meets its quota is `met`.
+- **Command** (`WordSenseBuilder_Program_Tiers_WritesReport`): `tiers` prints the summary and writes the report to the
+  file given with `--output`.
 
 #### evaluate
 
 - **Model name is required and checked**: `evaluate` accepts `minilm`, `bert-base-cased` and `basic` and rejects any
-  other id with exit code 1.
-- **Report is rendered and written**: the result is written to the standard output, and to the file given with `--output`.
+  other id with exit code 1 (`Program_Evaluate_UnknownModel_ReportsError`).
+- **Report is rendered and written**: the result is written to the standard output, and to the file given with
+  `--output` (`EvaluationResult_Render_FormatsSetsAndMeasurements`).
+- **Shares and accuracy per level** (`Evaluator_RunAsync_ReportsShareAndAccuracyPerLevel`): with a stub model that
+  answers rows at each level, the report gives the share answered at the sense, group and part-of-speech level, the
+  accuracy at each level and the part-of-speech accuracy.
+- **Real test split first** (`Evaluator_RunAsync_ProvenanceNamesTheOrigin_ReportsTheRealTestSplitFirst`): with a
+  provenance file that marks held-out rows as real and written, the report has the real test split as its first
+  (headline) set, then the test rows of documents without anchors, the calibration split, the written rows and the whole
+  holdout (their rows and correct answers are counted separately) and states that the figures are not the accuracy on
+  representative text.
 - **Basic evaluation needs no model**: `evaluate basic` runs on a synthetic corpus without model files, counts the
   holdout rows and prints the accuracy and coverage measurements together with the calibration buckets, the confidence
   thresholds, the table size, the latency and the fixed comparison table
-  (`WordSenseBuilder_Program_Evaluate_BasicModel_PrintsMeasurements`,
-  `WordSenseBuilder_Evaluator_RunAsync_BasicModel_CountsHoldoutRows`,
-  `WordSenseBuilder_EvaluationResult_Render_FormatsSetsAndMeasurements`).
+  (`Program_Evaluate_BasicModel_PrintsMeasurements`, `Evaluator_RunAsync_BasicModel_CountsHoldoutRows`).
 
-#### ud-counts
+#### evaluate-senses
 
-- **Reader keeps multi-word tokens** (`WordSenseBuilder_UdCounts_ReadConllu_RangeTokensAndEmptyNodes`): a CoNLL-U range
-  such as `1-2` is one token tagged like its first word, and empty nodes are skipped.
-- **Malformed line** (`WordSenseBuilder_UdCounts_ReadConllu_ShortLine_Throws`): a line with fewer than four fields
-  throws `InvalidDataException`.
-- **Tag mapping** (`WordSenseBuilder_UdCounts_MapTag_MapsUniversalTags`): the universal tags map onto the tags of the
-  tagger, with the particle `to` told apart.
-- **Word keys** (`WordSenseBuilder_UdCounts_KeyOf_AcceptsLettersAndApostrophes`): only tokens made of letters and
+- **Reader** (`WordSenseBuilder_SenseEval_Parse_ReadsSingleWordAnnotationsAndCountsTheRest`): the single-word
+  annotations become targets with the keys `lemma%lexsn`, punctuation stays as words, and multiword expressions and
+  senses dropped by the mapping are counted and left out.
+- **Key mapping** (`WordSenseBuilder_SenseEval_MapKeys_WordNet30KeyToOewnSense`): a WordNet 3.0 sense key maps to the
+  sense of the catalog that has it; a word with several keys is left out, a key without a sense is counted as
+  unmapped, a word of an untrained lemma is not an evaluation word, and a sentence that is in the corpus is left out.
+- **Figures** (`WordSenseBuilder_SenseEval_Run_ReportsShareAndPrecisionPerLevelAndBaseline`): on a small annotated
+  fixture and a stub model, the report gives for the words of trained lemmas the share answered and the precision at
+  each level, the fine top-1, the part-of-speech accuracy, the accuracy of the most-frequent-sense baseline and the
+  mapping coverage (`WordSenseBuilder_SenseEval_Render_FormatsTheFunnel`).
+- **Pinned checksum** (`WordSenseBuilder_SenseEval_Download_WrongHash_IsRejected`,
+  `WordSenseBuilder_SenseEval_ReadArchive_VerifiesTheHashAndReadsTheTagFiles`): a downloaded or cached archive with
+  another SHA-256 is rejected and leaves no file; the tag files of a gzip-compressed tar are read.
+- **Command** (`WordSenseBuilder_Program_EvaluateSenses_WithoutCache_ReportsUsage`): without the archive in the cache
+  and without `--download` the command reports how to get it and exits with code 1.
+
+#### evaluate-running
+
+- **Test file only** (`WordSenseBuilder_RunningText_DefaultGold_IsTheTestFileAndNotTheDevelopmentFile`): the default
+  gold file is the converted test file, never the development file.
+- **Sets** (`WordSenseBuilder_RunningText_Load_ReadsTheSetsAndNotesAMissingGoldFile`): the representative test split,
+  the gold file and the challenge set are read; a missing gold file leaves its set out with a note that says how to
+  make it.
+- **Figures for any model** (`WordSenseBuilder_RunningText_Run_ReportsAllAndAmbiguousTokensForAModel`): with a stub
+  model, the accuracy on all scored tokens and on the ambiguous tokens, the tokens that are not answered and the
+  excluded tokens are counted and rendered, and the table cells carry both accuracies.
+- **Command** (`WordSenseBuilder_Program_EvaluateRunning_Basic_PrintsTableAndWritesTheCells`): on the committed corpus
+  the Basic model is measured, the left-out treebank set is noted, and the cells of the model table are written.
+- **Challenge-set floor** (`WordSenseBuilder_ChallengeSet_Basic_StaysAboveItsFloor`,
+  `WordSenseBuilder_ChallengeSet_MiniLM_StaysAboveItsFloor`,
+  `WordSenseBuilder_ChallengeSet_BertBaseCased_StaysAboveItsFloor`): the accuracy of each model on the challenge set
+  is not below the floor of `corpus/suite/ste-floors.tsv` (the encoder tests skip when the model files are not
+  present).
+- The treebank convention map and the checksum of its files belong to
+  `tools/open-corpus/scripts/prepare_tagger_eval.py`, which is verified by running it (it exits with an error when a
+  file has another SHA-256).
+
+#### suite
+
+- **Rows and expectations** (`WordSenseBuilder_Suite_Read_ParsesRowsAndExpectations`): a well-formed suite gives the
+  sentences with their expected analysis and acceptable senses and the expectation (fine, answer or miss) of each model.
+- **Missing expectation** (`WordSenseBuilder_Suite_Read_RowWithoutModelExpectation_IsRejected`): a row with no
+  expectation for a model, a value that is no expectation, a header without a model and an unknown row are rejected.
+- **Unknown sense** (`WordSenseBuilder_Suite_Read_UnknownSenseOrSenseOfAnotherLemma_IsRejected`): a sense that is not in
+  the catalog, or is a sense of another lemma or part of speech than the analysis, is rejected.
+- **Malformed rows** (`WordSenseBuilder_Suite_Read_MalformedRow_IsRejected`,
+  `WordSenseBuilder_Suite_Read_RepeatedIdOrWrongHeader_IsRejected`): a wrong number of columns, an analysis that is not
+  `lemma/Part`, features without a value, a target that is not at its index or not single, a repeated id and a wrong
+  header are rejected with the line.
+- **Grading** (`WordSenseBuilder_Suite_Grade_JudgesTheAnswerAtItsOwnLevel`,
+  `WordSenseBuilder_Suite_Grade_AnalysisOnlyRow_ChecksLemmaPartOfSpeechAndFeatures`,
+  `WordSenseBuilder_Suite_GradeAsync_ClassifiesTheSentenceOfEveryRow`): a sense, group or part-of-speech answer is
+  judged at its own level; the grade is fine only when the most probable ranked sense is acceptable; a row without
+  senses asks for the analysis only.
+- **Regressions** (`WordSenseBuilder_Suite_Regressions_ListRowsBelowTheirExpectation_AndExpectationsRoundTrip`): the
+  rows below their expectation are listed, and the expectation file written from grades reads back.
+- **Committed suite** (`WordSenseBuilder_Suite_Committed_ReadsWithAnExpectationForEveryRow`): the 348 rows read and
+  every model has an expectation for every row.
+- The expected passes of the committed suite are asserted by `BasicSuite_ExpectedPasses_StillPass`,
+  `MiniLMSuite_ExpectedPasses_StillPass` and `BertBaseCasedSuite_ExpectedPasses_StillPass` in the test projects of the
+  models (see their verification documents); the encoder tests skip when the model files are not present.
+
+#### open-counts
+
+- **Corpus reader** (`WordSenseBuilder_OpenCorpus_ReadFile_ReadsSentencesAndTokens`,
+  `WordSenseBuilder_OpenCorpus_ReadSplit_FindsTheFileOfAPart`,
+  `WordSenseBuilder_OpenCorpus_ReadFile_MissingFileAndMalformedLine_Throw`): the header comments and the targeted
+  comments are skipped, the sentence comments and the seven-column token lines are read, a split is found by part and
+  name, and a missing file and a malformed token line are errors.
+- **Joined contractions** (`WordSenseBuilder_OpenCorpus_ToTagged_JoinsContractionsButNotPossessives`,
+  `WordSenseBuilder_OpenCorpus_ToTagged_KeepsClitics_WhenTheJoinedFormIsNotInTheText`): `do` and `n't`, `ca` and `n't`,
+  and `it` and `'s` are one token with the tag of the first part, and a possessive `'s`, a joined form that is not in
+  the text and a clitic after punctuation stay as they are.
+- **Committed corpus** (`WordSenseBuilder_OpenCorpus_Committed_ReadsEverySplitAndKeepsTheStePartInTheChallengeSet`):
+  every split of the committed corpus reads, the splits of the representative part have no document in common, the 32
+  simplified-technical-English sentences are in the test split of the targeted part, and the targeted part shares no
+  sentence with the representative part.
+- **Tag mapping** (`WordSenseBuilder_TaggerCounts_MapTag_MapsUniversalTags`): the universal tags map onto the tags of
+  the tagger, with the particle `to` told apart.
+- **Word keys** (`WordSenseBuilder_TaggerCounts_KeyOf_AcceptsLettersAndApostrophes`): only tokens made of letters and
   apostrophes get a word key.
-- **Counts** (`WordSenseBuilder_UdCounts_Count_CountsNgramsAndWords`): the counts include the sentence boundaries and
-  the word rows.
-- **Round trip** (`WordSenseBuilder_UdCounts_WriteAndRead_RoundTripsDeterministically`): the count files read back as
-  written and are byte-identical on a repeat run.
-- **Bad header** (`WordSenseBuilder_UdCounts_Read_BadHeader_Throws`): a count file with a wrong header throws
-  `InvalidDataException`.
-- **Pinned checksum** (`WordSenseBuilder_UdSource_Verify_ComparesChecksum`): a file is accepted with its checksum and
-  rejected with another.
+- **Counts** (`WordSenseBuilder_TaggerCounts_Count_CountsNgramsAndWords`): the counts include the sentence boundaries
+  and the word rows.
+- **Round trip** (`WordSenseBuilder_TaggerCounts_WriteAndRead_RoundTripsDeterministically`): the count files read back
+  as written and are byte-identical on a repeat run.
+- **Malformed files** (`WordSenseBuilder_TaggerCounts_Read_MalformedFiles_Throw`): a count file with a wrong header, a
+  malformed word line or a malformed n-gram line throws `InvalidDataException`.
+- **Command** (`WordSenseBuilder_Program_OpenCounts_WritesCountFiles`): the command counts the training split of the
+  representative part of a tiny corpus into the counts folder.
 
 #### train-basic and tune-basic
 
@@ -150,40 +390,115 @@ All scenarios below pass on every platform and target framework of the CI matrix
   only with enough occurrences and a dominant closed-class share.
 - **Selection** (`WordSenseBuilder_BasicTrainer_Train_SelectsWordsAndSuffixes`): the table holds the closed-class words
   and the ambiguous words, and the suffixes of words the lexicon lacks.
-- **Cue table** (`WordSenseBuilder_BasicTrainer_Train_CueTablePrefersSeenSense`): the cue table of a lemma prefers the
-  sense its context words occurred with.
-- **Writer** (`WordSenseBuilder_BasicTablesWriter_Write_IsDeterministicAndReadsBack`): equal inputs give identical
-  table bytes that `BasicTables` reads back, and a changed hyper-parameter changes the header.
+- **Cue table** (`WordSenseBuilder_BasicTrainer_Train_CueTablePrefersSeenAnalysis`): the cue table of a word prefers the
+  analysis its context words occurred with.
+- **No prior from the anchors** (`WordSenseBuilder_BasicTrainer_Train_AnalysisPriorIgnoresAnchorCounts`): every column
+  of a table has the same prior, however many anchors it has.
+- **Labels from senses** (`WordSenseBuilder_BasicTrainer_Train_ColumnsAreLemmaAndPartOfSpeech`,
+  `WordSenseBuilder_BasicTrainer_KeyOf_RollsTheRowUpToLemmaAndPartOfSpeech`): the analysis label of an anchor is the
+  lemma and part of speech of its fine sense; anchors of two senses of one analysis train the same column, and a lemma
+  with one part of speech gets no table.
+- **Choosers** (`WordSenseBuilder_BasicTrainer_Train_ChooserRowsMakeFormTablesWithTenseColumns`,
+  `WordSenseBuilder_BasicTrainer_KeyOf_ChooserLabel_StandsForOneAnalysisOrNone`): chooser rows make a table keyed by the
+  form with a column per tense, the sense sentences of the same key go to the column of their slot or are left out and
+  counted when the tenses split it, and a label that stands for no single analysis is left out.
+- **Writer** (`WordSenseBuilder_BasicTablesWriter_Write_IsDeterministicAndReadsBack`,
+  `WordSenseBuilder_BasicTablesWriter_Write_ShortHash_Throws`): equal inputs give identical table bytes that
+  `BasicTables` reads back, a changed hyper-parameter changes the header, and a short inventory hash is rejected.
 - **Summary** (`WordSenseBuilder_BasicModelData_Summary_NamesSizes`): the summary names the sizes of the trained data.
 - **Hyper-parameters** (`WordSenseBuilder_BasicHyperparameters_Default_IsConsistent`): the defaults carry the values
   the runtime reads and the tuning grid includes them.
+- **Tuning** (`WordSenseBuilder_BasicTuner_SplitAnchors_IsDeterministicAndDisjoint`,
+  `WordSenseBuilder_BasicTuner_ScoreTagger_CountsAmbiguousTokens`,
+  `WordSenseBuilder_BasicTuner_RunAsync_MissingCounts_Throws`): the anchor split is deterministic and its parts are
+  disjoint, the tagger score counts the tokens that have several parts of speech with the gold tag among them, and
+  missing tag counts are an error.
 - **Statistical model has no weights command** (`WordSenseBuilder_Program_Weights_BasicModel_PointsToTrainBasic`):
   `weights basic` exits with code 1 and the message names `train-basic`.
-- **Tuning reads no evaluation data**: `tune-basic` uses only the treebank development file and the anchors, and
-  writes no file; this is a property of the implementation that review verifies, because the command needs the real
-  treebank.
+- **Command** (`WordSenseBuilder_Program_TrainBasicAndEvaluateTagger_TinyCorpus_WriteAndScoreTable`,
+  `WordSenseBuilder_Program_TrainBasic_WithoutCounts_ReportsError`): a tiny corpus gives a table that `BasicTables`
+  loads and that `evaluate-tagger` scores; without the count files the command exits with code 1 and names
+  `open-counts`.
+- **Tuning reads no evaluation data**: `tune-basic` uses only the development split of the representative part and the
+  anchors, and writes no file; this is a property of the implementation that review verifies, because the command needs
+  the real corpus.
+
+#### evaluate-tagger
+
+- **Scoring** (`WordSenseBuilder_TaggerEvaluator_EvaluateAsync_ScoresAnsweredWordTokens`): a token is scored when the
+  classifier answers it and its gold tag is a word class; punctuation and other gold tags are excluded, tokens that are
+  not answered are counted apart, and the ambiguous tokens are counted on their own.
+- **Gold file** (`WordSenseBuilder_TaggerEvaluator_ReadGold_GroupsTokensBySentence`,
+  `WordSenseBuilder_TaggerEvaluator_ReadGold_MalformedLine_Throws`): the tokens are grouped by sentence id and a line
+  that is not three columns with a tag letter is rejected.
+- **Table** (`WordSenseBuilder_TaggerEvaluator_Render_FormatsRows`): one row per set with the accuracy, and n/a for an
+  empty set.
+- **Command** (`WordSenseBuilder_Program_TrainBasicAndEvaluateTagger_TinyCorpus_WriteAndScoreTable`): the command prints
+  the headline row for the test split of the representative part.
+
+#### corpus licenses
+
+- **Recorded licenses**
+  (`WordSenseBuilder_CorpusLicenses_Provenance_RecordsOnlyCc0PublicDomainAndProjectAuthoredSentences`): every
+  provenance row of the committed corpus records CC0 1.0, public domain in the United States or a project-authored
+  sentence (CC0 1.0), and none a Tatoeba CC BY, Wikipedia, Wiktionary or treebank source.
+- **Every sentence has an origin** (`WordSenseBuilder_CorpusLicenses_EverySentenceRow_HasProvenance`): the lemma, form
+  or label and sentence of every row of the sense, chooser and real-text files hash to a provenance id.
+- **No treebank and no legacy corpus** (`WordSenseBuilder_CorpusLicenses_Corpus_HasNoTreebankDataAndNoLegacyFolders`):
+  the corpus folder holds no CoNLL-U file and none of the retired folders.
 
 #### appendix
 
-- **Appendix lists lemmas senses and forms**: a synthetic corpus gives an appendix with the parts-of-speech overview, the
-  lemmas in alphabetical order, the senses with part of speech, meaning and respelling, and an example sentence for
-  each sense; markdown characters are escaped, lines are wrapped, line endings are LF and the output repeats byte for
+- **Appendix lists lemmas senses and forms** (`Appendix_Generate_ListsLemmasSensesAndForms`): a synthetic corpus and
+  inventory give an appendix with the parts-of-speech overview, the lemmas in alphabetical order, their senses and
+  their forms; markdown characters are escaped, lines are wrapped, line endings are LF and the output repeats byte for
   byte.
-- **Incomplete input is rejected**: a missing forms or anchors directory, a sense without an anchor sentence, a form
-  label that is not a sense and an empty inventory are each rejected with an error that names the problem.
-- **Committed appendix is current**: the appendix regenerated from the committed corpus equals
-  `docs/user_guide/appendix-senses.md` (line endings normalized), so the committed appendix cannot go stale; `lint.ps1`
-  performs the same comparison.
+- **Senses carry group key gloss and respelling** (`Appendix_Generate_ListsSensesWithGroupKeyGlossAndRespelling`): each
+  sense is listed with its id, group, OEWN sense key (none for a project sense), gloss and respelling.
+- **Incomplete input is rejected** (`Appendix_Generate_RejectsIncompleteInput`, `Program_Appendix_MissingCorpus_Fails`):
+  a missing anchors directory, a trained sense without an anchor sentence and an empty inventory are each rejected with
+  an error that names the problem, and the command exits with code 1.
+- **Command** (`Program_Appendix_WritesFile`): `appendix` writes the file given with `--output`.
+- **Committed appendix is current** (`Appendix_Committed_MatchesCorpus`): the appendix regenerated from the committed
+  corpus and data equals `docs/user_guide/appendix-senses.md` (line endings normalized), so the committed appendix
+  cannot go stale; `lint.ps1` performs the same comparison.
+
+#### corpus
+
+- **Row format** (`Corpus_ReadSentences_ParsesRow`, `Corpus_ReadSentences_RejectsMalformedRow`): a row of lemma, sense
+  id, part of speech and sentence is parsed; a row with another number of fields is rejected.
+- **Part of speech agrees with the sense** (`Corpus_ReadSentences_PartOfSpeechDisagreeingWithSense_IsRejected`): a row
+  whose part of speech differs from the one of its sense is rejected with an error that names the row.
+- **Compound targets** (`Corpus_ReadSentences_SplitsCompoundTarget`): a compound target is split into its words.
+- **Disjointness** (`WordSenseBuilder_Corpus_DirectoryAndDisjointness`,
+  `WordSenseBuilder_Corpus_Leakage_TrainingSentenceInAnEvaluationPart_IsALeak`,
+  `WordSenseBuilder_Corpus_Leakage_OnlyRealLeaksFail`,
+  `WordSenseBuilder_Corpus_Leakage_SharedRunOfWords_IsInformational`): a sentence that a training part shares with an
+  evaluation part (whatever its case, spacing and punctuation) is a leak that the report names; two training parts, a
+  chooser part and its sense part, and an external set are not leaks; two evaluation parts and a corpus sentence of
+  five words or more that is a dictionary example are; a shared run of eight words is informational.
+- **Committed corpus** (`WordSenseBuilder_Corpus_Disjointness_CoversSuiteEvaluationAndOewnExamples`): the anchors,
+  chooser, held-out and real-text sentences, the suite, the open corpus development and test splits, the challenge set
+  and the Open English WordNet examples of the repository share no sentence in a way that leaks.
+- **Command** (`WordSenseBuilder_Program_CheckLeakage_ExitsWithOneOnALeak`): `check-leakage` prints the report and
+  exits with code 1 when a part shares a sentence with an evaluation part, and 0 otherwise.
 
 #### Command line
 
-- **No arguments or unknown command**: exit code 1 and the usage text listing `words`, `import-moby`,
-  `weights <modelId>`,
-  `evaluate <modelId>`, `ud-counts`, `train-basic`, `tune-basic` and `appendix`.
-- **Removed command** (`WordSenseBuilder_Program_RemovedCommand_IsUnknown`): the old command names (`build`, `train`,
-  `generate-appendix`, `validate-pos`) are unknown commands and exit with code 1.
-- **Option errors** (`WordSenseBuilder_Program_MalformedOptions_ReportUsage`): an option without a value, an option whose
+- **No arguments or unknown command**: exit code 1 and the usage text listing `compile-image`, `import-moby`,
+  `weights <modelId>`, `evaluate <modelId>`, `evaluate-senses`, `evaluate-running`, `evaluate-suite`, `check-leakage`,
+  `tiers`, `open-counts`, `evaluate-tagger`, `coverage`, `train-basic`, `tune-basic`, `label-senses`,
+  `import-wn30-counts` and `appendix`
+  (`Program_NoArguments_PrintsUsage`, `Program_UnknownCommand_ReportsCommandAndUsage`,
+  `Program_Usage_ListsTheSenseCommands`).
+- **Removed command** (`Program_RemovedCommand_IsUnknown`): the old command names (`build`, `train`,
+  `generate-appendix`, `validate-pos`) and the treebank commands (`ud-counts`, `ud-irregular`) are unknown commands and
+  exit with code 1.
+- **Option errors** (`Program_MalformedOptions_ReportUsage`): an option without a value, an option whose
   value is another option, and a value without a name exit with code 1 and the message "Expected '--name value'".
+- **Number options** (`Program_MalformedNumberOption_ReportsOneLineError`): a `--top`, `--sample`, `--seed`,
+  `--threshold` or `--max-error` value that is not a number (or an integer out of range) exits with code 1 and a
+  one-line message that names the option and the value, without a stack trace.
 - **Defaults**: without `--repository` and `--corpus` the paths default to the repository layout below the current
   directory. This is by inspection of the option parser; no dedicated test exercises it, because every test passes the
   paths explicitly.

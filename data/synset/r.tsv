@@ -1,4 +1,8 @@
 synset_id	pos	head_synset_id	lexfile
+dema-syn-rah-i-1	i		
+dema-syn-rats-i-1	i		
+dema-syn-re-p-1	p		
+dema-syn-really-i-1	i		
 dema-syn-rebid-n-1	n		
 dema-syn-rebid-v-1	v		
 dema-syn-reboot-n-1	n		
@@ -10,7 +14,9 @@ dema-syn-redial-v-1	v
 dema-syn-redirect-n-1	n		
 dema-syn-redo-n-1	n		
 dema-syn-redraft-v-1	v		
+dema-syn-reference-p-1	p		
 dema-syn-refresh-n-1	n		
+dema-syn-regarding-p-1	p		
 dema-syn-regift-n-1	n		
 dema-syn-rehang-n-1	n		
 dema-syn-rehang-v-1	v		
@@ -31,6 +37,7 @@ dema-syn-resit-n-1	n
 dema-syn-resit-v-1	v		
 dema-syn-respawn-n-1	n		
 dema-syn-respawn-v-1	v		
+dema-syn-respecting-p-1	p		
 dema-syn-respray-n-1	n		
 dema-syn-respray-v-1	v		
 dema-syn-restart-n-1	n		
@@ -42,6 +49,12 @@ dema-syn-reuse-n-1	n
 dema-syn-revamp-n-1	n		
 dema-syn-revert-n-1	n		
 dema-syn-rewind-n-1	n		
+dema-syn-rhubarb-i-1	i		
+dema-syn-right-i-1	i		
+dema-syn-righto-i-1	i		
+dema-syn-roger-i-1	i		
+dema-syn-round-p-1	p		
+dema-syn-roundabout-p-1	p		
 oewn-00002325-v	v		verb.body
 oewn-00002573-v	v		verb.body
 oewn-00006263-s	s	oewn-00006050-a	adj.all

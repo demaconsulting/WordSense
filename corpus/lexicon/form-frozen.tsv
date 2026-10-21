@@ -2236,6 +2236,7 @@ frozen	opiate	1	dema-opiate-v	VerbForm=Inf	dema	1		opiate#verb
 frozen	opiate	2	dema-opiate-a	Degree=Pos	dema	0		
 frozen	opiates	0	oewn-opiate-n	Number=Plur	dema	1		opiate#noun
 frozen	opiates	1	dema-opiate-v	Person=3+Tense=Pres	dema	1		opiate#verb
+frozen	or	0	dema-or-c		dema	0		
 frozen	orbit	0	oewn-orbit-n	Number=Sing	dema	1		orbit#noun
 frozen	orbit	1	oewn-orbit-v	VerbForm=Inf	dema	1		orbit#verb
 frozen	orbited	0	oewn-orbit-v	Tense=Past+VerbForm=Part	dema	1		orbit#verb
@@ -3814,7 +3815,6 @@ frozen	supplying	0	oewn-supply-v	VerbForm=Ger	dema	1	open	supply#verb
 frozen	supplying	1	oewn-supply-n	Number=Sing+VerbForm=Ger	dema	1	open	supply#noun
 frozen	supposed	0	oewn-supposed-a	Degree=Pos	dema	1		supposed#supposed-adj
 frozen	supposed	1	oewn-suppose-v	Tense=Past+VerbForm=Part	dema	1		supposed#supposed-past
-frozen	supposed	2	oewn-supposed-a	Degree=Pos	dema	1		supposed#supposed-to
 frozen	supposedly	0	oewn-supposed-a		dema	1		supposed#supposed-adj
 frozen	supposedly	1	oewn-supposedly-r	Degree=Pos	dema	0		
 frozen	supposes	0	oewn-suppose-v	Person=3+Tense=Pres	dema	1		supposed#supposed-past

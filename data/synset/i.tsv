@@ -1,14 +1,28 @@
 synset_id	pos	head_synset_id	lexfile
+dema-syn-i-u-1	u		
+dema-syn-idem-u-1	u		
+dema-syn-if-c-1	c		
+dema-syn-ilka-u-1	u		
+dema-syn-immediately-c-1	c		
 dema-syn-implicate-n-1	n		
+dema-syn-in-p-1	p		
+dema-syn-inby-p-1	p		
+dema-syn-indeed-i-1	i		
 dema-syn-inebriate-a-1	a		
+dema-syn-inside-p-1	p		
 dema-syn-intergrade-n-1	n		
 dema-syn-intergrade-v-1	v		
 dema-syn-interlay-n-1	n		
 dema-syn-interlay-v-1	v		
 dema-syn-interspace-n-1	n		
 dema-syn-interspace-v-1	v		
+dema-syn-into-p-1	p		
 dema-syn-invert-n-1	n		
+dema-syn-is-x-1	x		
 dema-syn-isolate-n-1	n		
+dema-syn-it-u-1	u		
+dema-syn-its-d-1	d		
+dema-syn-itself-u-1	u		
 oewn-00005598-s	s	oewn-00005204-a	adj.all
 oewn-00005717-s	s	oewn-00005204-a	adj.all
 oewn-00006160-r	r		adv.all

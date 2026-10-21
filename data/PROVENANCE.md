@@ -8,7 +8,8 @@
 - File: `english-wordnet-2025.xml.gz` (the LMF file of the release; **not committed**), SHA-256
   `9CA6D1DCB75F822FDD66617F7D9DA48142ACE38DD544D6AD5E2FECA1674AD3FE`, checked by `import-oewn` against the pin
   `OewnImporter.PinnedSha256`.
-- Imported with the `import-oewn` command of `tools/WordSense.Builder` (split threshold 8000 rows per first letter).
+- Imported with the `import-oewn` command of `tools/WordSense.Builder` (split threshold 8000 rows per first letter). The
+  WordNet 3.0 sense frequency counts are a second source; see the section below.
 
 ## Imported
 
@@ -38,17 +39,110 @@ Subcategorization frames, adjective position, syntactic behaviour, ILI definitio
 
 Rows with `source_id` `dema` (MIT, project-authored) are added to cover words and senses that Open English WordNet
 does not have: 120 entries, each with one synset, sense and gloss. See [MAPPING.md](MAPPING.md) for how they and the
-coarse classes were made.
+coarse classes were made. The sense inventory adds 821 project senses, one for each closed-class entry (determiner,
+pronoun, preposition, conjunction, interjection, auxiliary; the entries `dema-or-c` and `dema-having-x` were added with
+the lexicon fixes), each with a `dema` synset, a generated gloss and no sense
+key; four of them (`right#discourse-marker`, `well#discourse-marker`, `help#cry-for-aid` and `however#conjunction`) have
+a curated label and an authored gloss (`corpus/curation`).
+
+## WordNet 3.0 sense frequency counts
+
+- **WordNet 3.0** (Princeton University, <https://wordnet.princeton.edu>), the file `dict/index.sense` of the Princeton
+  distribution `WordNet-3.0.tar.gz` (<https://wordnetcode.princeton.edu/3.0/WordNet-3.0.tar.gz>, SHA-256
+  `640DB279C949A88F61F851DD54EBBB22D003F8B90B85267042EF85A3781D3A52`). The SHA-256 of `index.sense` is
+  `68B3A468CDDFD8E92134B9B0624339A02A1B837159243C297C5F138A3D618392` (206,941 lines), checked by `import-wn30-counts`
+  against the pin `OewnImporter.PinnedCountsSha256`. The file is not committed; extract it from the tarball into
+  `artifacts/inputs/wn30`.
+- Only the tag count of each line (the fourth field) is used. The count is joined to the `sense` table on the sense key
+  and written to `sense_frequency` with the source `wn30`: 185,129 rows (one for each sense that has a key), 34,842 with
+  a count above 0 and 150,287 with the count 0 (the file lists no line, or lists 0). 27,255 lines of the file match no
+  sense key of Open English WordNet 2025 (636 of them with a count above 0, 4,270 of the 249,492 tags), because
+  the 2025 release changed some keys; those counts are not used.
+- The counts rank the senses of a lemma (most frequent first) and size the training data of each sense; they are never
+  a sense label. SemCor 3.0, the sense-annotated text whose tags WordNet counts come from, is an **evaluation source
+  only**: the builder downloads it to a cache to measure the models; it is never committed, redistributed or used for
+  training.
+- **License notice of WordNet 3.0**, reproduced as the license requires:
+
+  ```text
+  WordNet Release 3.0
+
+  This software and database is being provided to you, the LICENSEE, by
+  Princeton University under the following license.  By obtaining, using
+  and/or copying this software and database, you agree that you have
+  read, understood, and will comply with these terms and conditions.:
+
+  Permission to use, copy, modify and distribute this software and
+  database and its documentation for any purpose and without fee or
+  royalty is hereby granted, provided that you agree to comply with
+  the following copyright notice and statements, including the disclaimer,
+  and that the same appear on ALL copies of the software, database and
+  documentation, including modifications that you make for internal
+  use or for distribution.
+
+  WordNet 3.0 Copyright 2006 by Princeton University.  All rights reserved.
+
+  THIS SOFTWARE AND DATABASE IS PROVIDED "AS IS" AND PRINCETON
+  UNIVERSITY MAKES NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR
+  IMPLIED.  BY WAY OF EXAMPLE, BUT NOT LIMITATION, PRINCETON
+  UNIVERSITY MAKES NO REPRESENTATIONS OR WARRANTIES OF MERCHANT-
+  ABILITY OR FITNESS FOR ANY PARTICULAR PURPOSE OR THAT THE USE
+  OF THE LICENSED SOFTWARE, DATABASE OR DOCUMENTATION WILL NOT
+  INFRINGE ANY THIRD PARTY PATENTS, COPYRIGHTS, TRADEMARKS OR
+  OTHER RIGHTS.
+
+  The name of Princeton University or Princeton may not be used in
+  advertising or publicity pertaining to distribution of the software
+  and/or database.  Title to copyright in this software, database and
+  any associated documentation shall at all times remain with
+  Princeton University and LICENSEE agrees to preserve same.
+  ```
+
+- **SemCor 3.0 (evaluation only).** The archive `semcor3.0.tar.gz`
+  (<https://web.eecs.umich.edu/~mihalcea/downloads/semcor/semcor3.0.tar.gz>, SHA-256
+  `A8000014D6FC864F8BD9D83C62BE601151CADD617C6554A39A1AD38B4B3F017B`, checked by `evaluate-senses` against the pin
+  `SemCor.ArchiveSha256`) holds 352 sense-annotated texts of the Brown Corpus: Rada Mihalcea's automatic mapping to
+  WordNet 3.0 of the Princeton SemCor 1.6 ("SemCor 1.6 was created and is property of Princeton University"). Its terms
+  are those of WordNet: the archive carries the Princeton license of WordNet 1.6 and the Semantic Concordance (the text
+  of the notice above with "WordNet 1.6 Copyright 1997 by Princeton University. All rights reserved."), and its README
+  says "In agreement with the license from Princeton University, you are granted permission to use, copy, modify and
+  distribute this database for any purpose and without fee and royalty is hereby granted, provided that you agree to
+  comply with the Princeton copyright notice and statements, including the disclaimer, and that the same appear on ALL
+  copies". That is permissive for the evaluation use made of it here. The builder downloads the archive to the
+  git-ignored cache `tools/open-corpus/cache`, reads it, reports scores and never writes a sentence of it to any file
+  of the repository; the notices stay in the archive, and are reproduced here for credit. SemCor is not used for
+  training or tuning anything; the mapping from WordNet 1.6 to 3.0 is automatic (some senses were dropped, `wnsn=0`)
+  and the Open English WordNet 2025 changed some sense keys, so the evaluation reports how many annotations it could
+  map.
+
+## Sense inventory (labels, groups, project senses)
+
+- `sense_label` has 129,433 rows: every sense of a lemma of one token (128,486 of Open English WordNet) and every
+  project sense (947, six of them added to entries of the dictionary for technical text). 6,615 labels are curated
+  (`corpus/curation`: 770 lemmas, 6,760 senses of the curation file including the project senses); the other 121,871
+  labels are generated by `label-senses` (they were never published: a curated label replaces a generated one). The
+  senses of lemmas of several tokens have no label or group. (The counts of the groups below are those of the first
+  stage; the 140 groups of 307 senses are in `corpus/curation/README.md`.)
+- `sense_group` and `group_sense` have the 56 curated groups of 138 senses (26 `equivalent`, 30 `related`) and nothing
+  else: a group exists only when it is curated, with the curator's same-meaning judgment and evidence (observed confusion
+  or near-identical glosses), as a set of at least two, but not all, confusable senses of one lemma and part of speech.
+  Of the 194 groups that the curation of the 20 lemmas gave (191 reviewed groups, three of them split by part of
+  speech), 122 had one sense and 4 had every sense of their lemma and part of speech; they are left out, and so are the
+  83,727 default groups that the first version of the inventory made for the other lemmas, and 12 curated groups that
+  the cleanup pass dropped (`corpus/curation/README.md`). The id of a group is `lemma#group:slug`; it is versioned per
+  data release and not frozen, unlike the ids of senses. `sense_label_map` and `sense_respelling` start empty: no label
+  has been published yet, and the respellings of the earlier class inventory are carried when each lemma is curated.
+- The class tables of the earlier inventory (`coarse_class`, `class_sense`, `class_entry`) and `form_sense_scope` are
+  retired; the temporary record of their mapping was deleted with the relabeling of our own corpus (see MAPPING.md).
 
 ## Forms (written forms and their analyses)
 
-The `form` and `form_sense_scope` tables are regenerated by the `rebuild-forms` command (`FormGenerator`) from the
-entries, the Open English WordNet forms, the closed lists of `corpus/lexicon` and the build-time sources below. Each
-`form` row records its provenance (`oewn_form`, `irregular_list`, `contraction`, `hand`, `carried`, `rule`,
-`rule_variant`, `agid`, `moby_reverse`). The current table has 365,503 spellings, 400,205 analyses (131,449 of them
-surface-only: a spelling with a lemma and part of speech but no entry) and about 4,000 scope rows. Provenance counts: oewn_form
-138,969; rule 164,143; moby_reverse 88,881; carried 5,222; rule_variant 1,584; agid 641; hand 509; irregular_list 165;
-contraction 91.
+The `form` table is regenerated by the `rebuild-forms` command (`FormGenerator`) from the entries, the Open English
+WordNet forms, the closed lists of `corpus/lexicon` and the build-time sources below. Each `form` row records its
+provenance (`oewn_form`, `irregular_list`, `contraction`, `hand`, `carried`, `rule`, `rule_variant`, `agid`,
+`moby_reverse`). The current table has 365,504 spellings and 400,216 analyses (131,448 of them surface-only: a spelling
+with a lemma and part of speech but no entry). Provenance counts: oewn_form 138,978; rule 164,144; moby_reverse 88,880;
+carried 5,224; rule_variant 1,584; agid 641; hand 509; irregular_list 165; contraction 91.
 
 The regeneration is reproducible: the same inputs give identical bytes (a unit test on small fixture inputs checks it),
 so `rebuild-forms` is idempotent. To regenerate, fetch the two inputs below, run
@@ -65,8 +159,7 @@ archive (SHA-256 below). Both files are checked against their pins before anythi
   (public domain) read in reverse; and the Automatically Generated Inflection Database (AGID 2016.01.19,
   Kevin Atkinson, permission notice; SHA-256 `3B614BB15416D97D3B3ABB0D384939BF46F5B50E2EF920D41BDD11EC1D07BAE5` of
   `infl.txt`). The AGID notice, with the Princeton WordNet 1.6 and UK Advanced Cryptics Dictionary (J Ross Beresford)
-  notices it carries, is in `corpus/lexicon/LICENSE-AGID.txt`. The UD irregular-form list is a test oracle only and is
-  not a source of the table.
+  notices it carries, is in `corpus/lexicon/LICENSE-AGID.txt`. No treebank-derived list is a source of the table.
 - Corroboration: a generated row is written only when two independent sources support it (a regular rule plus the
   word list or AGID), except that a regular -s, -ed or -ing form of a real lemma stands on the rule and its base.
   Uncorroborated candidates (about 12,000) are left out, so those spellings stay unknown.
@@ -88,13 +181,17 @@ rows that the rules can still derive are `carried`.
   `dema` and the id `dema-<lemma>-<pos>`, with no sense (167,583 entries). These entries exist only so that forms
   refer to a lemma; they are not WordNet data.
 - `features` are inferred from the regular English endings (`Number=Plur`, `Person=3+Tense=Pres`, `VerbForm=Ger`,
-  `Degree=Cmp`, ...) unless a class link states them; a row that is inferred, or that has no class, has
-  `reviewed` 0. A row of a labeled class has `reviewed` 1. Irregular forms without a class can have empty features.
+  `Degree=Cmp`, ...); a row that is inferred has `reviewed` 0, and a row of a labeled class of the earlier inventory
+  had `reviewed` 1. Irregular forms can have empty features.
 - The corpus listed 19 inflected forms under a lemma that cannot produce them (see MAPPING.md). `wick`, `wicks` and
   `wicking` now use a verb `wick`, and `re-sign`, `re-signs`, `re-signed` and `re-signing` a verb `re-sign` (new `dema`
-  entries, `reviewed` 0, the class of the legacy answer kept). `supposes`, `supposing`, `blesses` and `blessing` use
-  `suppose` and `bless` through the class link of their lemma-split class. For `conjuncts`, `pustulates`, `tiered`,
+  entries, `reviewed` 0). `supposes`, `supposing`, `blesses` and `blessing` use `suppose` and `bless` (the entries of
+  their lemma-split class of the earlier inventory). For `conjuncts`, `pustulates`, `tiered`,
   `exited`, `exiting`, `ironed`, `ironing` and `stricken` the lemma of the legacy answer was already a valid lemma of
   an entry (OEWN or `dema`), so the analysis uses it unchanged.
-- An `unmapped` class is never an answer. A lemma-split class with several linked entries of the right part of speech
-  uses the entry whose lemma the class label names, else the alphabetically first lemma.
+- A lemma-split class of the earlier inventory with several linked entries of the right part of speech used the entry
+  whose lemma the class label names, else the alphabetically first lemma.
+- `or` has the conjunction analysis `dema-or-c` first (a `frozen` row of `form-frozen.tsv`), followed by the surface
+  analyses of the dictionary; each of the 27 auxiliary verbs of `corpus/lexicon/auxiliaries.tsv` has its entry
+  `dema-<word>-x` with the project sense `<word>#auxiliary`, and an Auxiliary analysis (the inflected forms `am`, `is`,
+  `was`, `has`, `having`, `does`, ... analyse as the auxiliary lemma `be`, `have` or `do`).

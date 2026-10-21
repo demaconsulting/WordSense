@@ -36,22 +36,28 @@ sections:
               - WordSense-WordData-DataLayout-FileFor
               - WordSense-WordData-DataLayout-Order
               - WordSense-WordData-DataLayout-Write
+              - WordSense-WordData-DataLayout-Partition
             tests:
               - WordSenseBuilder_DataLayout_FileFor_SplitLetter_UsesTwoLetters
 
           - id: WordSense-WordData-Import
             title: >-
               The word data subsystem shall import the pinned Open English WordNet release into the tables
-              deterministically, keeping its sense, synset, gloss, example, relation and pronunciation data, and
-              refusing to overwrite existing tables or to read a file whose hash differs from the pin.
+              deterministically, keeping its sense, synset, gloss, example, relation and pronunciation data, shall
+              import the pinned WordNet 3.0 sense frequency counts joined on the sense key, shall read the written
+              forms of the release and map the identifiers of an earlier release to the current ones, and shall
+              refuse to overwrite existing tables or to read a file whose hash differs from the pin.
             tags: [subsystem]
             justification: |
               The import is a one-time, reproducible bootstrap of data that is edited afterwards; it must be exact,
-              repeatable and unable to destroy edits by accident.
+              repeatable and unable to destroy edits by accident, and the frequency counts rank the senses.
             children:
               - WordSense-WordData-OewnImporter-Tables
               - WordSense-WordData-OewnImporter-Derived
+              - WordSense-WordData-OewnImporter-Frequency
               - WordSense-WordData-OewnImporter-Safety
+              - WordSense-WordData-OewnImporter-Forms
+              - WordSense-WordData-OewnImporter-PreviousIds
             tests:
               - WordSenseBuilder_OewnImporter_Import_Slice_CountsRows
               - WordSenseBuilder_DataCommands_ImportThenValidate_Succeeds
@@ -91,19 +97,100 @@ sections:
               - WordSense-WordData-DataValidator-Format
               - WordSense-WordData-DataValidator-Integrity
               - WordSense-WordData-DataValidator-Consistency
+              - WordSense-WordData-DataValidator-Senses
+              - WordSense-WordData-DataValidator-Groups
             tests:
               - WordSenseBuilder_DataEndToEnd_CommittedData_IsValid
-              - WordSenseBuilder_DataEndToEnd_CommittedData_HasCoarseMapping
+              - WordSenseBuilder_DataEndToEnd_CommittedData_HasSenseLabelsAndGroups
+              - WordSenseBuilder_DataEndToEnd_CommittedData_HasNoRetiredClassTables
               - WordSenseBuilder_DataCommands_Validate_InvalidData_ListsViolations
 
           - id: WordSense-WordData-Attribution
             title: >-
-              The repository shall credit Open English WordNet (CC BY 4.0) as the source of the word data in the
-              README, in the data folder README and in the provenance record, with the release and the hash of the
-              imported file.
+              The repository shall credit Open English WordNet (CC BY 4.0) as the source of the word data, and
+              WordNet 3.0 (under its license notice) as the source of the sense frequency counts, in the README, in
+              the data folder README and in the provenance record, with the release and the hash of each imported
+              file, and shall name SemCor as an evaluation source only.
             tags: [subsystem]
             justification: |
-              The license of Open English WordNet requires attribution, and the provenance record lets anyone
-              reproduce the import and see what was left out.
+              The licenses of Open English WordNet and WordNet 3.0 require attribution, and the provenance record lets
+              anyone reproduce the import and see what was left out; SemCor is never redistributed, so it is credited
+              only as the evaluation text.
             tests:
               - WordSenseBuilder_DataEndToEnd_Attribution_NamesLicenseAndSource
+              - WordSenseBuilder_DataEndToEnd_Attribution_NamesWordNetCountsAndSemCorUse
+
+          - id: WordSense-WordData-Senses
+            title: >-
+              The word data subsystem shall give every sense of a one-word lemma one readable label, unique among the
+              senses of its lemma, so that the public id is lemma#label, shall keep a published sense label unchanged
+              and never reuse it, and shall record every rename or retirement of a sense id in an id map.
+            tags: [subsystem]
+            justification: |
+              Callers store sense ids; an id that changed meaning, or that was reused for another sense, would corrupt
+              their data silently, so sense labels are frozen once published and any change is explicit. Group ids are
+              not part of this promise: they are versioned per data release.
+            children:
+              - WordSense-WordData-SenseLabelGenerator-Generate
+              - WordSense-WordData-SenseLabelGenerator-Preserve
+              - WordSense-WordData-DataValidator-Senses
+            tests:
+              - WordSenseBuilder_DataEndToEnd_CommittedData_EverySenseHasOneUniqueLabel
+              - WordSenseBuilder_DataEndToEnd_CommittedData_PublishedLabelsAreNeverChangedOrReused
+
+          - id: WordSense-WordData-Groups
+            title: >-
+              The word data subsystem shall let a lemma and part of speech have curated groups only, each a set of at
+              least two, but not all, of its closely related and confusable senses, with one lemma, one part of speech,
+              a readable label, a kind (equivalent or related) and an id lemma#group:label that can never be the id of a
+              sense, a sense in at most one group and no two respellings in one group, shall version group ids per data
+              release without freezing them, and shall create no group of one sense, no group of a whole part of speech
+              and no default group.
+            tags: [subsystem]
+            justification: |
+              The levels nest: none, part of speech, an optional group, sense; when a classifier is unsure between
+              senses it steps up to the next level that exists. A group is therefore only useful for senses that are
+              close and confusable; a sense in two groups, a group across parts of speech, a group that mixes
+              pronunciations, or a group that adds nothing to its part of speech would make the answer meaningless to
+              the caller. The marker in the id keeps a group answer from being mistaken for a sense answer, the kind
+              tells a caller whether the members are near-duplicates or a family of meanings, and because a group can be
+              re-cut when the evidence changes, its id is versioned with the data release and the caller keeps the
+              member sense ids, which are frozen.
+            children:
+              - WordSense-WordData-DataValidator-Groups
+            tests:
+              - WordSenseBuilder_DataEndToEnd_CommittedData_GroupsAreSetsOfSomeSensesOfOnePartOfSpeech
+              - WordSenseBuilder_DataEndToEnd_CommittedData_GroupsHaveAMarkerIdAKindAndCuratedEvidence
+              - WordSenseBuilder_DataEndToEnd_CommittedData_SensesNeedNoGroup
+
+          - id: WordSense-WordData-Frequency
+            title: >-
+              The word data subsystem shall record for every sense that has an OEWN sense key its WordNet 3.0 tag
+              count, zero where the sense has no count, with the source of the count named; a project sense has no
+              key and ranks as zero.
+            tags: [subsystem]
+            justification: |
+              The counts rank the senses of a lemma and size the training data of each sense; a missing count is a
+              count of zero, never a missing value.
+            children:
+              - WordSense-WordData-OewnImporter-Frequency
+            tests:
+              - WordSenseBuilder_DataEndToEnd_CommittedData_EveryKeyedSenseHasAFrequency
+
+          - id: WordSense-WordData-ProjectSenses
+            title: >-
+              The word data subsystem shall declare the senses that Open English WordNet does not provide, one for
+              each determiner, pronoun, preposition, conjunction, interjection or auxiliary analysis (including the
+              conjunction or and every auxiliary of the closed list), the curated discourse senses and the curated
+              senses of a dictionary word that Open English WordNet lacks (a mount as the fixture that holds
+              equipment), as project senses without a sense key, each with an authored gloss.
+            tags: [subsystem]
+            justification: |
+              Closed-class and discourse uses are among the most frequent words of English but are not WordNet senses;
+              declaring them as project senses lets every word be answered at a sense level without pretending that
+              they have an OEWN key.
+            tests:
+              - WordSenseBuilder_DataEndToEnd_CommittedData_ProjectSensesHaveNoKeyAndAGloss
+              - WordSenseBuilder_DataEndToEnd_CommittedData_ClosedClassAnalysesHaveAProjectSense
+              - WordSenseBuilder_DataEndToEnd_CommittedData_OrAndTheAuxiliariesHaveClosedClassAnalyses
+              - WordSenseBuilder_InventorySeeder_Run_ProjectSenseOfADictionaryEntry_IsAddedToTheEntry

@@ -1,4 +1,12 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-pace-p-1		dema-pace-p	dema-syn-pace-p-1	1
+dema-pah-i-1		dema-pah-i	dema-syn-pah-i-1	1
+dema-pardi-i-1		dema-pardi-i	dema-syn-pardi-i-1	1
+dema-pardon-i-1		dema-pardon-i	dema-syn-pardon-i-1	1
+dema-pardy-i-1		dema-pardy-i	dema-syn-pardy-i-1	1
+dema-pass-i-1		dema-pass-i	dema-syn-pass-i-1	1
+dema-past-p-1		dema-past-p	dema-syn-past-p-1	1
+dema-pax-i-1		dema-pax-i	dema-syn-pax-i-1	1
 oewn-pa-apos-anga__1.23.00..	pa'anga%1:23:00::	oewn-pa-ap-anga-n	oewn-13712214-n	1
 oewn-pa__1.06.00..	pa%1:06:00::	oewn-PA-n	oewn-04024549-n	1
 oewn-pa__1.18.00..	pa%1:18:00::	oewn-pa-n	oewn-10007601-n	1

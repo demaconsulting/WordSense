@@ -5,7 +5,7 @@ using System.Text;
 namespace WordSense.Builder;
 
 /// <summary>
-///     Writes the table of the basic model (<c>basic.bin</c>) that <c>DemaConsulting.WordSense.Basic</c> embeds.
+///     Writes the table of the basic model (<c>basic.bin</c>) that <c>DemaConsulting.WordSense</c> embeds.
 /// </summary>
 /// <remarks>
 ///     The layout is described on <c>BasicTables</c>, the only reader. Words, suffixes and lemmas are written in the
@@ -15,33 +15,33 @@ namespace WordSense.Builder;
 /// </remarks>
 internal static class BasicTablesWriter
 {
-    private static readonly byte[] Magic = "WSB2"u8.ToArray();
+    private static readonly byte[] Magic = "WSB3"u8.ToArray();
 
     /// <summary>
     ///     Serializes the model data.
     /// </summary>
     /// <param name="data">The data.</param>
-    /// <param name="classHash">The class hash of the word image the data was trained for (<c>WordImage.ClassHash</c>); 32 bytes.</param>
+    /// <param name="inventoryHash">The analysis inventory hash of the word image the data was trained for (<c>WordImage.InventoryHash</c>); 32 bytes.</param>
     /// <param name="level">The Brotli compression level; the shipped file uses the smallest size, the tuner a fast level.</param>
     /// <returns>The compressed blob.</returns>
-    public static byte[] Write(BasicModelData data, ReadOnlySpan<byte> classHash, CompressionLevel level = CompressionLevel.SmallestSize)
+    public static byte[] Write(BasicModelData data, ReadOnlySpan<byte> inventoryHash, CompressionLevel level = CompressionLevel.SmallestSize)
     {
         ArgumentNullException.ThrowIfNull(data);
-        if (classHash.Length != 32)
+        if (inventoryHash.Length != 32)
         {
-            throw new ArgumentException("The class hash needs 32 bytes.", nameof(classHash));
+            throw new ArgumentException("The inventory hash needs 32 bytes.", nameof(inventoryHash));
         }
 
         using var raw = new MemoryStream();
         raw.Write(Magic);
-        raw.Write(classHash);
+        raw.Write(inventoryHash);
         var hp = data.Hyperparameters;
         foreach (var value in new[] { hp.Gamma, hp.Beta, hp.Lambda1, hp.Lambda2, hp.Lambda3, hp.HmmWeight, hp.InvTemperature })
         {
             WriteDouble(raw, value);
         }
 
-        WriteVarint(raw, DemaConsulting.WordSense.Basic.PosTag.Count);
+        WriteVarint(raw, DemaConsulting.WordSense.PosTag.Count);
         foreach (var count in data.Unigrams.Concat(data.Bigrams).Concat(data.Trigrams))
         {
             WriteVarint(raw, count);
@@ -88,12 +88,13 @@ internal static class BasicTablesWriter
         foreach (var cue in data.Cues)
         {
             WriteString(raw, cue.Lemma);
-            WriteVarint(raw, cue.Senses.Length);
-            foreach (var sense in cue.Senses)
+            WriteVarint(raw, cue.Analyses.Length);
+            foreach (var analysis in cue.Analyses)
             {
-                WriteString(raw, sense.ClassId);
-                raw.WriteByte((byte)sense.Prior);
-                raw.WriteByte(sense.HasMeaning ? (byte)1 : (byte)0);
+                WriteString(raw, analysis.Lemma);
+                raw.WriteByte((byte)analysis.PartOfSpeech);
+                WriteString(raw, analysis.Features);
+                raw.WriteByte((byte)analysis.Prior);
             }
 
             WriteVarint(raw, cue.Hashes.Length);

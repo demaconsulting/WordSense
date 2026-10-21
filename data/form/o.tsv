@@ -39,15 +39,13 @@ OPEC	0	oewn-OPEC-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 OPECS	0	oewn-OPEC-n	Capitalization=Upper+Number=Plur	dema	0			rule
 OPV	0	oewn-OPV-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 OPVS	0	oewn-OPV-n	Capitalization=Upper+Number=Plur	dema	0			rule
-OR	0		Number=Sing	dema	0	or	n	moby_reverse
-OR	1		Degree=Pos	dema	0	or	a	moby_reverse
-OR	2	oewn-OR-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+OR	0	dema-or-c		dema	0			carried
+OR	1	oewn-OR-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 OR circuit	0	oewn-OR_circuit-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 OR circuits	0	oewn-OR_circuit-n	Capitalization=Exact+Number=Plur	dema	0			rule
 OR gate	0	oewn-OR_gate-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 OR gates	0	oewn-OR_gate-n	Capitalization=Exact+Number=Plur	dema	0			rule
-ORS	0		Number=Plur	dema	0	or	n	rule
-ORS	1	oewn-OR-n	Capitalization=Upper+Number=Plur	dema	0			rule
+ORS	0	oewn-OR-n	Capitalization=Upper+Number=Plur	dema	0			rule
 OS	0	oewn-o-n	Number=Plur	dema	0			rule
 OS	1	oewn-os-n	Number=Sing	dema	0			oewn_form
 OS	2	oewn-OS-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
@@ -4305,8 +4303,9 @@ opuscules	0		Number=Plur	dema	0	opuscule	n	rule
 opuses	0	oewn-opus-n	Number=Plur	dema	0			irregular_list
 oquassa	0		Number=Sing	dema	0	oquassa	n	moby_reverse
 oquassas	0		Number=Plur	dema	0	oquassa	n	rule
-or	0		Number=Sing	dema	0	or	n	moby_reverse
-or	1		Degree=Pos	dema	0	or	a	moby_reverse
+or	0	dema-or-c		dema	0			carried
+or	1	oewn-OR-n	Number=Sing	dema	0			moby_reverse
+or	2		Degree=Pos	dema	0	or	a	moby_reverse
 or else	0	oewn-or_else-r	Degree=Pos	dema	0			oewn_form
 or so	0	oewn-or_so-r	Degree=Pos	dema	0			oewn_form
 ora	0	oewn-os-n	Number=Plur	dema	0			oewn_form
@@ -5158,7 +5157,6 @@ orrises	0	oewn-orris-n	Number=Plur	dema	0			rule
 orrisroot	0	oewn-orrisroot-n	Number=Sing	dema	0			oewn_form
 orrisroots	0	oewn-orrisroot-n	Number=Plur	dema	0			rule
 orrow	0		Degree=Pos	dema	0	orrow	a	moby_reverse
-ors	0		Number=Plur	dema	0	or	n	rule
 orseille	0		Number=Sing	dema	0	orseille	n	moby_reverse
 orseilles	0		Number=Plur	dema	0	orseille	n	rule
 ortanique	0		Number=Sing	dema	0	ortanique	n	moby_reverse

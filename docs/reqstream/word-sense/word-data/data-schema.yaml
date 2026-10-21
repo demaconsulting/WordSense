@@ -12,26 +12,30 @@ sections:
                 title: >-
                   DataSchema shall load the tables, columns (with type and nullability), primary and unique keys,
                   foreign keys, vocabularies, relation types, feature vocabulary and partition rules from the schema
-                  file, and reject an unsupported or malformed file with a message that names the line.
+                  file, and reject an unsupported (not version 4) or malformed file with a message that names the
+                  line, including a version that is not a number and a relation pair that contradicts itself.
                 tags: [unit]
                 justification: |
                   The schema is the contract of the data; a typo in it must fail loudly with a place to look.
                 tests:
                   - WordSenseBuilder_DataSchema_Load_CommittedSchema_DeclaresTables
                   - WordSenseBuilder_DataSchema_Load_CommittedSchema_DeclaresVocabularies
+                  - WordSenseBuilder_DataSchema_Load_CommittedSchema_DeclaresSenseGroupAndFrequencyTables
                   - WordSenseBuilder_DataSchema_Load_Damaged_Throws
+                  - WordSenseBuilder_DataSchema_Load_VersionAndRelationDefects_ReportTheirLine
                   - WordSenseBuilder_DataSchema_Load_MissingFile_Throws
 
               - id: WordSense-WordData-DataSchema-Consistency
                 title: >-
                   DataSchema shall check that keys, foreign keys, partition columns, vocabularies and the relation
                   inverses refer to things that exist and that each relation and its inverse store exactly one
-                  direction.
+                  direction, naming the line of the relation type that is inconsistent.
                 tags: [unit]
                 justification: |
                   A schema that contradicts itself would make the importer and the validator disagree.
                 tests:
                   - WordSenseBuilder_DataSchema_Load_Damaged_Throws
+                  - WordSenseBuilder_DataSchema_Load_VersionAndRelationDefects_ReportTheirLine
 
               - id: WordSense-WordData-DataSchema-Split
                 title: >-

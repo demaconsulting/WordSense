@@ -1,29 +1,29 @@
-# Coarse class mapping
+# Coarse class mapping (retired)
 
-The tables `coarse_class`, `class_sense` and `class_entry` map the labeled senses of `corpus/senses` (1,521 labels of
-744 lemmas) onto the Open English WordNet senses of `data/`. They were produced from a reviewed proposal
-(embedding, pronunciation and corpus-sentence evidence; a 80-lemma stratified sample was hand-reviewed with 100%
-agreement on the trivial lemmas and 95% on the others) and are authoritative now: edit them by hand.
+> The class tables `coarse_class`, `class_sense` and `class_entry` and the table `form_sense_scope` of the earlier coarse
+> sense inventory are **retired**: they are no longer in `data/` or in `schema.yaml`. The sense inventory (labels,
+> optional curated groups and project senses, see [README.md](README.md)) replaces them. The temporary record of what
+> each class mapped to, for the relabeling of our own corpus, was deleted when the relabeling was done. This page keeps
+> the decisions that made the supplementary `dema`
+> entries and the corrected forms.
 
-## Classes
+The class tables mapped the labeled senses of `corpus/senses` (1,521 labels of 744 lemmas) onto the Open English WordNet
+senses of `data/`. They were produced from a reviewed proposal (embedding, pronunciation and corpus-sentence evidence;
+a 80-lemma stratified sample was hand-reviewed with 100% agreement on the trivial lemmas and 95% on the others). The 1,601
+classes were of these kinds:
 
 | Kind | Count | Meaning |
 | --- | --- | --- |
-| `sense_group` | 1,365 | a group of OEWN senses; for 1,315 of them the whole part of speech of the lemma is one class |
+| `sense_group` | 1,365 | a group of OEWN senses; for 1,315 the whole part of speech of the lemma was one class |
 | `no_oewn` | 120 | no OEWN sense; a supplementary `dema` entry, synset, gloss and sense stands for it |
-| `unmapped` | 80 | the senses of a lemma and part of speech that no other class covers (the explicit "other" bucket) |
-| `lemma_split` | 32 | the "lemma" is an inflected form; `class_entry` links the base entries |
+| `unmapped` | 80 | the senses of a lemma and part of speech that no other class covered (the "other" bucket) |
+| `lemma_split` | 32 | the "lemma" was an inflected form; `class_entry` linked the base entries |
 | `feature_only` | 4 | `read` and `reread`: past or present is a feature (`Tense=Past`, `Tense=Pres`), not a sense |
 
-The class id is `<lemma>#<label>`; the bucket label is `unmapped-<pos>`.
-
-## Partition rule
-
-When a lemma and part of speech has a class of kind `sense_group`, `no_oewn` or `unmapped`, every sense of that lemma and
-part of speech (OEWN and supplementary) is in exactly one class (`validate-data` checks it, and that a sense is in at
-most one class). Of the 80 `unmapped` buckets, 72 hold the OEWN senses of a part of speech of a mapped lemma that has no
-coarse class at all (for example `advance` as an adjective), and 8 hold senses that a class of the same part of speech
-left over.
+The class id was `<lemma>#<label>`; the bucket label was `unmapped-<pos>`. Their partition rule (every sense of a mapped
+lemma in exactly one class) does not carry over: in the sense inventory a group is optional, covers only some senses
+of a lemma and part of speech, has the id `lemma#group:slug` (which can never be a sense id) and is versioned per data
+release, not frozen.
 
 ## Decisions on the reviewed proposal
 

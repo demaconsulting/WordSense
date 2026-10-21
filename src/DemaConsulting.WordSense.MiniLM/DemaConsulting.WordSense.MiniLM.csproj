@@ -11,7 +11,7 @@
     <Version>0.0.0</Version>
     <Authors>DEMA Consulting</Authors>
     <Company>DEMA Consulting</Company>
-    <Description>MiniLM encoder for DemaConsulting.WordSense: classifies ambiguous English words (for example noun versus verb) in context with an int8 ONNX all-MiniLM-L6-v2 encoder and the weights trained for it. The roughly 22 MiB model is downloaded once on first use and verified by SHA-256.</Description>
+    <Description>MiniLM encoder package for DemaConsulting.WordSense: an int8 ONNX all-MiniLM-L6-v2 encoder composed with the built-in model of the core package. It scores the fine senses of the trained lemmas with weights embedded in the package and answers every other ambiguous word through the built-in statistical model. The roughly 22 MiB model is downloaded once on first use and verified by SHA-256.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/demaconsulting/WordSense</PackageProjectUrl>
     <RepositoryUrl>https://github.com/demaconsulting/WordSense</RepositoryUrl>
@@ -71,6 +71,7 @@
 
   <ItemGroup>
     <InternalsVisibleTo Include="DemaConsulting.WordSense.MiniLM.Tests" />
+    <InternalsVisibleTo Include="DemaConsulting.WordSense.Onnx.Tests" />
     <InternalsVisibleTo Include="WordSense.Builder" />
     <InternalsVisibleTo Include="WordSense.Builder.Tests" />
   </ItemGroup>
@@ -78,6 +79,7 @@
   <ItemGroup>
     <None Include="..\..\README.md" Pack="true" PackagePath="\" />
     <None Include="..\..\Icon.png" Pack="true" PackagePath="\" />
+    <None Include="NOTICE.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <!-- Runtime Dependencies -->

@@ -1,4 +1,6 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-aw-i-1		dema-aw-i	dema-syn-aw-i-1	1
+dema-away-i-1		dema-away-i	dema-syn-away-i-1	1
 oewn-await__2.31.00..	await%2:31:00::	oewn-await-v	oewn-00721987-v	1
 oewn-awaited__5.00.00.expected.00	awaited%5:00:00:expected:00	oewn-awaited-a	oewn-00933056-s	1
 oewn-awake__2.29.00..	awake%2:29:00::	oewn-awake-v	oewn-00018519-v	1

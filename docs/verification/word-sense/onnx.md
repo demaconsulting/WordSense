@@ -10,8 +10,10 @@ The subsystem is verified at three levels. The pure units (`WordPieceTokenizer`,
 `DownloadMirror`) are verified with hand-built inputs. The `ModelDownloader` is verified against a loopback
 `HttpListener` (`LocalServer`) that serves small files, failures, corrupt files and redirects; pinned digests are
 substituted for the test files, so no test reaches a public host. The model-level units (`OnnxWordSenseModel`,
-`OnnxClassifier`, `OnnxEncoder`) are verified with fake weights and either a fake encoder input or the committed int8
-model through the helper `ModelAssets`, which skips a test when the Git LFS content is absent. Tests live in
+`OnnxClassifier`, `OnnxEncoder`) are verified with fake weights (with chosen thresholds, so that each answer level is
+reached), a test double standing in for a fallback model where a scenario needs one, and either a fake encoder input or
+the committed int8 model through the
+helper `ModelAssets`, which skips a test when the Git LFS content is absent. Tests live in
 `test/DemaConsulting.WordSense.Onnx.Tests`; the concrete model packages are verified in their own subsystem documents.
 
 ### Test Environment
@@ -30,25 +32,82 @@ seven units pass.
 
 #### Words Resolve Only As Far As Needed
 
-A text with single-sense words, unknown words and one heteronym runs the encoder only for the heteronym, and a text
-without a heteronym never runs the encoder (see the `OnnxClassifier` unit document).
+A text with single-sense words, unknown words, untrained ambiguous words and one trained ambiguous word runs the
+encoder only for the trained word, and a text without a trained ambiguous word never runs the encoder and needs no model
+file (`OnnxClassifier_ClassifyAsync_OnlyAmbiguousWordsAreEncoded`; see the `OnnxClassifier` and `OnnxWordSenseModel`
+unit documents).
+
+#### Words Are Answered at the Level the Lemma's Thresholds Allow
+
+A trained word is answered at the sense level when its fine margin reaches the lemma's fine threshold
+(`OnnxClassifier_ClassifyAsync_MarginAboveFineThreshold_AnswersSense`), otherwise, for a lemma that has groups and a
+best sense in a group, at the group level, with the group id only, when its group
+margin reaches the group threshold
+(`OnnxClassifier_ClassifyAsync_FineBelowAndGroupAboveThreshold_AnswersGroup`) and otherwise at the part of speech level
+(`OnnxClassifier_ClassifyAsync_BothBelowThreshold_AnswersPartOfSpeech`); a lemma without groups steps from
+the sense to the part of speech, never to a group
+(`OnnxClassifier_ClassifyAsync_LemmaWithoutGroups_StepsFromSenseToPartOfSpeech`). A known word is never answered at
+the level none.
+
+#### Analyses and Senses Are Ranked and Sum to One
+
+A trained lemma lists every analysis of the word with its probability (summing to one) and, inside each analysis, the
+ranked senses of its lemma and part of speech with their probabilities given the analysis (summing to one), whatever
+the level answered; a lemma without weights lists no scored senses, and a lexical singleton (a word with a single
+analysis whose lemma and part of speech have exactly one sense) lists that sense with probability 1 although the
+encoder did not score it
+(`OnnxClassifier_ClassifyAsync_TrainedLemma_ListsRankedCandidatesSummingToOne`,
+`OnnxClassifier_ClassifyAsync_SingleSenseWord_ListsNoCandidates`,
+`OnnxClassifier_ClassifyAsync_LemmaWithoutWeights_ListsNoCandidates`).
+
+#### Words Without Scored Senses Are Answered from the Lexicon
+
+A known word whose lemma has no usable weights is answered from the lexicon alone: its lemmas and parts of speech are
+equally likely (the feature variants of one share its probability), the first analysis is selected, no senses are
+scored and the level is the part of speech, never a guessed fine sense (the exception is the lexical singleton: a word
+with a single analysis is certain about it, and is answered at the sense level, with that sense listed with
+probability 1 but not encoder-scored, when its lemma and part of speech have exactly one
+sense), and without any other model package
+(`OnnxClassifier_ClassifyAsync_LemmaWithoutWeights_AnswersAnalysesWithoutScoredSenses`,
+`OnnxClassifier_ClassifyAsync_VariantsOfTheOnlySlot_AreConfidentAtThePartOfSpeech`,
+`OnnxClassifier_ClassifyAsync_SingleAnalysisSeveralSenses_AnswersPartOfSpeech`,
+`OnnxClassifier_ClassifyAsync_SeveralAnalysesFirstWithOneSense_StaysAtPartOfSpeech`,
+`OnnxClassifier_ClassifyAsync_SeveralAnalysesLaterWithOneSense_StaysAtPartOfSpeech`). The package references only the
+core package (`OnnxWordSense_Assembly_ReferencesOnlyCore`).
 
 #### Confidence Grows with the Margin
 
-The confidence of a context-resolved word is monotonic in the margin between the best and second-best sense (see the
-`OnnxClassifier` unit document).
+The confidence of a context-resolved word is the probability of its answer at its level and is monotonic in the margin
+of the answered level
+(`OnnxClassifier_ClassifyAsync_LargerMargin_GivesHigherConfidence`; see the `OnnxClassifier` and `LemmaWeights` unit
+documents).
 
-#### Weights Match the Lexicon Per Lemma
+#### A Form of Several Lemmas Gets Its Lemma from the Context
 
-A lemma whose trained senses are not the first senses of its lexicon entry loses its weights and is answered with its
-first sense at low confidence (see the `LemmaWeights` unit document). Dictionary senses after the trained ones are
-allowed and are never ranked.
+A form such as `left` is answered with the senses of the lemma that the form chooser picks from the sentence
+(`OnnxClassifier_ClassifyAsync_FormOfTwoLemmas_ChoosesTheLemmaFromContext`). When only one lemma of the form has
+weights the chooser still splits the probability, and a preference for the untrained lemma is answered at the part of
+speech level without scored senses
+(`OnnxClassifier_ClassifyAsync_FormOfTrainedAndUntrainedLemma_ChooserPicksTrained_AnswersTheSense`,
+`OnnxClassifier_ClassifyAsync_FormOfTrainedAndUntrainedLemma_ChooserPicksUntrained_AnswersPartOfSpeech`); a form
+without a chooser is answered from the lexicon alone.
+
+#### Weights Match the Word Image
+
+Weights are matched to the word image by sense id and by the inventory hash of the image; any
+mismatch is a load failure and nothing is dropped. The weights embedded in the model packages resolve completely against
+the shipped image (`EmbeddedWeights_MiniLM_MatchesWordImage`; see the `LemmaWeights` unit document).
 
 #### Model Files Come From a Verified Source
 
 Model files are obtained from the mirror and then GitHub LFS, verified against their SHA-256 digest, stored atomically
 under `<store>/<model-id>/`, and downloaded once even when requested concurrently (see the `ModelDownloader` and
 `DownloadMirror` unit documents).
+
+#### Disposal Releases the Encoder
+
+Disposing a model releases the encoder session, deferring the release while a classification runs, and is harmless when
+repeated (`OnnxWordSenseModel_Dispose_CalledTwice_IsHarmless`; see the `OnnxWordSenseModel` unit document).
 
 #### Tokenization Equals the Reference
 

@@ -1,0 +1,47 @@
+{
+ "by_group": {
+  "conversational": 3750,
+  "literary": 3750,
+  "news": 3750,
+  "technical": 3750
+ },
+ "cap_per_document": 30,
+ "documents": 5311,
+ "literary_candidate_sentences": 531710,
+ "literary_documents": 177,
+ "literary_dropped": {
+  "UD": 107,
+  "WordSense corpus": 3529,
+  "duplicate": 5716
+ },
+ "literary_room_under_cap": 5031,
+ "literary_shortfall": 0,
+ "news_candidate_sentences": 16465,
+ "news_documents": 381,
+ "news_dropped": {
+  "UD": 25,
+  "WordSense corpus": 1,
+  "duplicate": 1925
+ },
+ "news_room_under_cap": 10723,
+ "news_shortfall": 0,
+ "per_group_target": 3750,
+ "pilot_sentences_dropped_by_exclusion_filters": 13,
+ "pilot_sentences_kept": 948,
+ "selected": 15000,
+ "tatoeba_candidates_after_filters": 35254,
+ "tatoeba_dropped": {
+  "WordSense corpus": 2748,
+  "duplicate": 258
+ },
+ "technical_candidate_sentences": 26352,
+ "technical_documents": 1114,
+ "technical_dropped": {
+  "UD": 2,
+  "duplicate": 4567
+ },
+ "technical_room_under_cap": 17625,
+ "technical_shortfall": 0,
+ "ud_sentence_keys": 13367,
+ "wordsense_corpus_sentence_keys": 42396
+}

@@ -1,4 +1,6 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-snap-i-1		dema-snap-i	dema-syn-snap-i-1	1
+dema-snip-i-1		dema-snip-i	dema-syn-snip-i-1	1
 oewn-sn__1.27.00..	sn%1:27:00::	oewn-Sn-n	oewn-14683034-n	1
 oewn-snack__1.13.00..	snack%1:13:00::	oewn-snack-n	oewn-07592939-n	1
 oewn-snack__2.34.00..	snack%2:34:00::	oewn-snack-v	oewn-01175702-v	1

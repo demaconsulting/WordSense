@@ -1,0 +1,10 @@
+bleed	bleed#drain	Verb	The operator {bled} condensate from the refrigeration coil.
+bleed	bleed#drain	Verb	{Bleed} residual coolant from the radiator before removing its lower hose.
+clean	clean#remove-dirt	Verb	{Cleaning} the drain screen removes accumulated lint and sludge.
+install	install#put-in-place	Verb	The service team {installed} new tires on the landing gear.
+install	install#put-in-place	Verb	{Install} the new seal in the machined recess.
+position	position#place	Noun	The {position} of the bearing center is marked on the assembly drawing.
+position	position#spatial-relation	Noun	The {position} of the two shafts must remain coaxial during coupling.
+run	run#activate	Verb	The technician {runs} the valve actuator from fully closed to fully open.
+run	run#activate	Verb	{Running} the generator at rated speed confirms that the voltage regulator responds.
+run	run#activate	Verb	{Running} the alternator with the load disconnected verifies its basic output.

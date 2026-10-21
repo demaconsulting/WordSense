@@ -16,24 +16,32 @@ namespace WordSense.Builder;
 ///     <list type="bullet">
 ///     <item><description><c>compile-image [--data DIR] [--corpus DIR] [--output FILE]</c> compiles the data tables into the word image of the core package (<c>Resources/wordsense.img</c>).</description></item>
 ///     <item><description><c>audit-forms [--data DIR] [--sample 300] [--seed N] [--oracle FILE] [--adjudications FILE] [--output FILE] [--max-error 0.01]</c> checks a seeded stratified sample of the inflected form rows per provenance against the LemmInflect oracle (a pip-installed checker, not shipped), reports the error rate with a 95% Wilson interval per stratum and fails when a generated stratum reaches the limit.</description></item>
-///     <item><description><c>rebuild-forms [--data DIR] [--corpus DIR] [--oewn FILE] [--agid FILE] [--output DIR]</c> regenerates the entry, form and form_sense_scope tables from the entries, the committed legacy analyses (<c>corpus/lexicon/form-frozen.tsv</c>), the irregular lists, the written forms of the Open English WordNet file and the dictionary; a generated inflection ships only when a second source corroborates it (the AGID <c>infl.txt</c> file attests forms). Both inputs must match their pinned SHA-256; the default places are <c>artifacts/inputs/english-wordnet-2025.xml.gz</c> and <c>artifacts/inputs/agid/agid-2016.01.19/infl.txt</c>. The result depends on nothing else, so it is reproducible.</description></item>
+///     <item><description><c>rebuild-forms [--data DIR] [--corpus DIR] [--oewn FILE] [--agid FILE] [--output DIR]</c> regenerates the entry and form tables from the entries, the committed legacy analyses (<c>corpus/lexicon/form-frozen.tsv</c>), the irregular lists, the written forms of the Open English WordNet file and the dictionary; a generated inflection ships only when a second source corroborates it (the AGID <c>infl.txt</c> file attests forms). Both inputs must match their pinned SHA-256; the default places are <c>artifacts/inputs/english-wordnet-2025.xml.gz</c> and <c>artifacts/inputs/agid/agid-2016.01.19/infl.txt</c>. The result depends on nothing else, so it is reproducible.</description></item>
 ///     <item><description><c>import-agid --input FILE [--corpus DIR] [--output FILE]</c> derives the irregular forms of the dictionary words from the inflection database file <c>infl.txt</c>.</description></item>
 ///     <item><description><c>import-moby --input FILE [--corpus DIR] [--output FILE]</c> imports the pinned Moby Part-of-Speech II list into the dictionary word list of the corpus.</description></item>
-///     <item><description><c>weights &lt;modelId&gt; [--corpus DIR] [--repository DIR]</c> trains the weights of an ONNX model (minilm, bert-base-cased) and writes them to its package.</description></item>
-///     <item><description><c>evaluate &lt;modelId&gt; [--corpus DIR] [--repository DIR] [--output FILE] [--table FILE] [--outcomes FILE]</c> measures a shipped model (minilm, bert-base-cased, basic); <c>--table</c> updates the row of the model in the model comparison table file; <c>--outcomes</c> writes the answer for every sentence.</description></item>
-///     <item><description><c>ud-counts [--ud DIR] [--corpus DIR] [--output DIR]</c> downloads and verifies the pinned treebank files and writes the count files of <c>corpus/ud</c>.</description></item>
-///     <item><description><c>train-basic [--corpus DIR] [--repository DIR] [--ud DIR] [--refresh-ud true] [--output FILE]</c> retrains the basic model completely and writes its table; it regenerates the treebank counts first when they are missing or <c>--refresh-ud true</c> is given.</description></item>
-///     <item><description><c>tune-basic [--corpus DIR] [--repository DIR] [--ud DIR]</c> scores the hyper-parameter grid on the treebank development file and the anchor dev sentences; it writes nothing.</description></item>
-///     <item><description><c>ud-irregular [--ud DIR] [--corpus DIR] [--output FILE]</c> derives the irregular inflected forms of the dictionary words from the pinned treebank training and development files.</description></item>
-///     <item><description><c>coverage --text DIR [--corpus DIR] [--top N] [--output FILE]</c> reports how many of the running words of the text files of a directory the word table knows and lists the most frequent unknown words, split into name-like and other words.</description></item>
-///     <item><description><c>appendix [--corpus DIR] [--output FILE]</c> writes the generated senses appendix of the user guide.</description></item>
+///     <item><description><c>weights &lt;modelId&gt; [--corpus DIR] [--repository DIR] [--cache DIR] [--no-cache] [--recompute-mean] [--solver kernel|primal] [--calibration-target P] [--no-prior] [--prior-alpha A] [--prior-smoothing K]</c> trains the fine-sense weights of an ONNX model (minilm, bert-base-cased) from <c>corpus/anchors</c> and writes them to its package; the scores are corrected to the usage of the senses (the usage prior: the share of the sense among the anchors of its lemma is divided out and its WordNet 3.0 tag count share, with <c>K</c> added to every count and raised to the exponent <c>A</c>, is multiplied in; the defaults are 0.5 and 0.5, <c>--no-prior</c> trains the raw balanced-anchor scores) by an offset that is folded into the stored biases; the thresholds of each lemma are first chosen by cross-validation on its anchors (on the corrected scores) and then moved to the precision target measured on the real-text calibration sentences of <c>corpus/holdout</c> (the real held-out sentences of the calibration documents, see the real-text split; <c>--calibration-target P</c> sets the lemma-level target, 0.97 by default), and the half-precision storage is checked against <c>corpus/holdout</c>. Pooled vectors are cached in <c>DIR/&lt;model id&gt;</c> (default <c>.cache/embeddings</c> of the repository) so only new sentences are encoded; <c>--no-cache</c> bypasses the cache; the global mean of the existing weights is reused unless <c>--recompute-mean</c> is given. The classifiers are fitted by Newton's method in the span of the anchors of the lemma (<c>--solver kernel</c>, the default, which is fast when a lemma has fewer anchors than the encoder has dimensions); <c>--solver primal</c> is the slow reference in the feature space that finds the same optimum.</description></item>
+///     <item><description><c>evaluate &lt;modelId&gt; [--corpus DIR] [--repository DIR] [--output FILE] [--table FILE] [--outcomes FILE]</c> measures a shipped model (minilm, bert-base-cased, basic) on <c>corpus/holdout</c>: the share of the sentences answered at each level and the precision at each level; <c>--table</c> updates the row of the model in the model comparison table file; <c>--outcomes</c> writes the answer for every sentence.</description></item>
+///     <item><description><c>open-counts [--corpus DIR] [--output DIR]</c> counts the tag statistics (word tag counts and tag n-gram counts) of the <c>train</c> split of the representative part of the open corpus (<c>corpus/open</c>; every token, whatever its consensus status) and writes them to <c>corpus/open/counts</c>; these are usage statistics, so no other part of the corpus is read.</description></item>
+///     <item><description><c>train-basic [--corpus DIR] [--repository DIR] [--output FILE]</c> retrains the basic model completely and writes its table: the tagger statistics come from the counts of <c>corpus/open/counts</c> and the cue tables from the fine-sense anchors of <c>corpus/anchors</c>; run <c>open-counts</c> first when the open corpus changed.</description></item>
+///     <item><description><c>tune-basic [--corpus DIR] [--repository DIR]</c> scores the hyper-parameter grid on the development split of the representative open corpus and the anchor development subset; it writes nothing.</description></item>
+///     <item><description><c>evaluate-tagger [--input FILE] [--corpus DIR] [--repository DIR] [--split test] [--gold FILE] [--output FILE]</c> measures the part-of-speech accuracy of the basic classifier with the table <c>FILE</c> (default the shipped <c>basic.bin</c>) on a split of the representative open corpus (the headline), on the test split of the targeted challenge set (reported on its own line) and on an optional external gold file (<c>sentence id</c>, form and tag letter per line).</description></item>
+///     <item><description><c>coverage --text DIR [--corpus DIR] [--top N] [--output FILE]</c> reports how many of the running words of the text files of a directory the word table knows, the share of the known words whose lemma is trained (a lemma that has sentences in <c>corpus/anchors</c>), and lists the most frequent unknown words, split into name-like and other words.</description></item>
+///     <item><description><c>appendix [--corpus DIR] [--data DIR] [--output FILE]</c> writes the generated senses appendix of the user guide: the senses of the trained lemmas of <c>corpus/anchors</c> with id, group, sense key, gloss and respelling, from the data folder (default <c>data</c>).</description></item>
+///     <item><description><c>evaluate-senses [--model all] [--cache DIR] [--download] [--sample N] [--output FILE] [--table FILE]</c> measures the models on SemCor 3.0, an independent human-annotated sense corpus: the archive is read from the cache (default <c>tools/open-corpus/cache</c>, ignored by git) or, with <c>--download</c>, downloaded after verifying its pinned SHA-256; WordNet 3.0 sense keys are mapped to the senses of the catalog, and for the words of the trained lemmas the command reports the mapping coverage, the share answered at each level, the precision at each level, the part-of-speech accuracy and the most-frequent-sense baseline. SemCor is used for evaluation only, never committed and never trained on.</description></item>
+///     <item><description><c>evaluate-running [--model all] [--split test] [--gold FILE] [--output FILE] [--table FILE]</c> measures the part-of-speech accuracy of the models on running text: the test split of the representative open corpus (the headline), the convention-mapped test file of the English EWT treebank (<c>--gold</c>, default <c>tools/open-corpus/work/tagger-eval/ud_test.tsv</c>, written by <c>prepare_tagger_eval.py</c>; skipped with a note when it does not exist) and the targeted challenge set on its own line, with the accuracy on all tokens and on the ambiguous tokens.</description></item>
+///     <item><description><c>evaluate-suite [--output FILE] [--write-expectations FILE] [--overwrite true]</c> runs the reviewed suite (<c>corpus/suite</c>) against the three models, reports the pass rates and the rows that fall below the expectation of a model; <c>--write-expectations</c> writes the expectation file for a new suite or model.</description></item>
+///     <item><description><c>check-leakage [--data DIR] [--gold FILE] [--cache DIR] [--output FILE]</c> checks that the anchors, held-out, chooser, real-text, suite, open-corpus development and test, challenge and Open English WordNet example sentences (and SemCor and the treebank test file when present) share no normalized sentence, and exits with 1 when an evaluation sentence is also in another part.</description></item>
+///     <item><description><c>tiers [--data DIR] [--output FILE]</c> reports how many anchors and held-out sentences each sense of the trained lemmas should have (the tier of its WordNet 3.0 tag count), which senses fall short and how many sentences are missing; <c>--output</c> writes one line for every sense.</description></item>
 ///     <item><description><c>import-oewn --input FILE [--output DIR] [--sha256 HEX|none] [--threshold N] [--overwrite true]</c> imports the pinned Open English WordNet release into the table files of the data folder (default <c>data</c>) and refuses to replace existing tables unless <c>--overwrite true</c> is given; <c>import-oewn --previous FILE [--previous-release ID] [--previous-sha256 HEX|none] [--output DIR]</c> instead writes the identifier map from a previous release.</description></item>
-///     <item><description><c>validate-data [--data DIR]</c> validates the table files of the data folder against its <c>schema.yaml</c>; it exits with 1 and lists the violations when the data is not valid.</description></item>
+///     <item><description><c>import-wn30-counts --input FILE [--data DIR] [--sha256 HEX|none]</c> imports the pinned WordNet 3.0 sense index (<c>index.sense</c>) into the <c>sense_frequency</c> table, joined on the sense key, with the count 0 for a sense that has no line.</description></item>
+///     <item><description><c>label-senses [--data DIR]</c> gives every sense of the inventory that has no label a readable label; labels that exist are never changed and no group is created.</description></item>
+///     <item><description><c>seed-inventory [--data DIR] [--curation DIR]</c> adds a project sense to every closed-class entry that has none and imports the curated labels and groups of the curation folder (default <c>corpus/curation</c>), leaving out a group with one sense and a group with every sense of its lemma and part of speech; it is the bootstrap of the inventory and is idempotent.</description></item>
+///     <item><description><c>validate-data [--data DIR] [--baseline DIR]</c> validates the table files of the data folder against its <c>schema.yaml</c> and, with a baseline (the data folder of the last release), checks that published sense labels are neither changed nor reused; it exits with 1 and lists the violations when the data is not valid.</description></item>
 ///     </list>
 /// </remarks>
-internal static class Program
+internal static partial class Program
 {
-    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: compile-image, rebuild-forms, audit-forms, generate-facts, import-agid, import-moby, weights <modelId>, evaluate <modelId>, ud-counts, ud-irregular, coverage, train-basic, tune-basic, appendix, import-oewn, validate-data.";
+    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: compile-image, rebuild-forms, audit-forms, generate-facts, import-agid, import-moby, weights <modelId>, evaluate <modelId>, evaluate-senses, evaluate-running, evaluate-suite, check-leakage, tiers, open-counts, evaluate-tagger, coverage, train-basic, tune-basic, appendix, import-oewn, import-wn30-counts, label-senses, seed-inventory, validate-data.";
 
     /// <summary>The name of the option that gives the input file of an import command.</summary>
     private const string InputOption = "input";
@@ -83,26 +91,41 @@ internal static class Program
                 case "import-moby":
                     return RunImportMoby(options, corpus, output);
                 case "weights":
-                    await ModelTrainer.TrainAsync(repository, corpus, ModelCatalog.Find(Require(options, "model")), output, cancellationToken).ConfigureAwait(false);
+                    await ModelTrainer.TrainAsync(repository, corpus, ModelCatalog.Find(Require(options, "model")), TrainSettingsOf(options, repository), output, cancellationToken).ConfigureAwait(false);
                     return 0;
-                case "ud-counts":
-                    return await RunUdCountsAsync(options, repository, corpus, output, cancellationToken).ConfigureAwait(false);
+                case "open-counts":
+                    return RunOpenCounts(options, corpus, output);
                 case "train-basic":
                     return await RunTrainBasicAsync(options, repository, corpus, output, cancellationToken).ConfigureAwait(false);
                 case "tune-basic":
-                    var tuneCache = options.TryGetValue("ud", out var ud3) ? Path.GetFullPath(ud3) : BasicModelBuilder.DefaultUdCache(repository);
-                    output.Write(await BasicTuner.RunAsync(corpus, tuneCache, output, cancellationToken).ConfigureAwait(false));
+                    output.Write(await BasicTuner.RunAsync(corpus, output, cancellationToken).ConfigureAwait(false));
                     return 0;
+                case "evaluate-tagger":
+                    return await RunEvaluateTaggerAsync(options, repository, corpus, output, cancellationToken).ConfigureAwait(false);
                 case "evaluate":
                     return await RunEvaluateAsync(options, repository, corpus, output, cancellationToken).ConfigureAwait(false);
-                case "ud-irregular":
-                    return RunUdIrregular(options, repository, corpus, output);
+                case "evaluate-senses":
+                    return await RunEvaluateSensesAsync(options, repository, corpus, output, cancellationToken).ConfigureAwait(false);
+                case "evaluate-running":
+                    return await RunEvaluateRunningAsync(options, repository, corpus, output, cancellationToken).ConfigureAwait(false);
+                case "evaluate-suite":
+                    return await RunEvaluateSuiteAsync(options, repository, corpus, output, cancellationToken).ConfigureAwait(false);
+                case "check-leakage":
+                    return RunCheckLeakage(options, repository, corpus, output);
+                case "tiers":
+                    return RunTiers(options, repository, corpus, output);
                 case "coverage":
-                    return RunCoverage(options, output);
+                    return RunCoverage(options, corpus, output);
                 case "import-oewn":
                     return RunImportOewn(options, repository, output);
                 case "validate-data":
                     return RunValidateData(options, repository, output, error);
+                case "import-wn30-counts":
+                    return RunImportWn30Counts(options, repository, output);
+                case "label-senses":
+                    return RunLabelSenses(options, repository, output);
+                case "seed-inventory":
+                    return RunSeedInventory(options, repository, corpus, output);
                 case "rebuild-forms":
                     return RunRebuildForms(options, repository, corpus, output);
                 case "generate-facts":
@@ -125,14 +148,73 @@ internal static class Program
         }
     }
 
-    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "ud", "refresh-ud", "table", InputOption, "text", "top", "data", "sha256", "threshold", "overwrite", "outcomes", "oewn", "agid", "sample", "seed", "oracle", "adjudications", "max-error", "previous", "previous-release", "previous-sha256"], StringComparer.Ordinal);
+    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "split", "gold", "table", InputOption, "text", "top", "data", "sha256", "threshold", "overwrite", "outcomes", "oewn", "agid", "sample", "seed", "oracle", "adjudications", "max-error", "previous", "previous-release", "previous-sha256", "cache", "no-cache", "recompute-mean", "baseline", "curation", "solver", "calibration-target", "write-expectations", "prior-alpha", "prior-smoothing"], StringComparer.Ordinal);
+
+    /// <summary>
+    ///     Options that are switches: they take no value, but accept a following <c>true</c> or <c>false</c>.
+    /// </summary>
+    private static readonly HashSet<string> FlagOptions = new(["no-cache", "recompute-mean", "download", "no-prior"], StringComparer.Ordinal);
+
+    /// <summary>
+    ///     Builds the settings of a weights run from the options.
+    /// </summary>
+    /// <param name="options">The options.</param>
+    /// <param name="repository">The repository root.</param>
+    /// <returns>The settings.</returns>
+    /// <exception cref="ArgumentException">Thrown when <c>--cache</c> and <c>--no-cache</c> are both given.</exception>
+    internal static TrainSettings TrainSettingsOf(Dictionary<string, string> options, string repository)
+    {
+        var noCache = IsOn(options, "no-cache");
+        if (noCache && options.ContainsKey("cache"))
+        {
+            throw new ArgumentException($"The options --cache and --no-cache cannot be combined. {Usage}");
+        }
+
+        string? root = null;
+        if (!noCache)
+        {
+            root = options.TryGetValue("cache", out var cache) ? Path.GetFullPath(cache) : TrainSettings.DefaultCacheRoot(repository);
+        }
+
+        var solver = FitSolver.Kernel;
+        if (options.TryGetValue("solver", out var solverName) && !Enum.TryParse(solverName, true, out solver))
+        {
+            throw new ArgumentException($"The option --solver must be 'kernel' or 'primal', not '{solverName}'. {Usage}");
+        }
+
+        var calibrationTarget = RealCalibrator.DefaultLemmaTarget;
+        if (options.TryGetValue("calibration-target", out var targetText)
+            && (!double.TryParse(targetText, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out calibrationTarget) || calibrationTarget is <= 0.5 or >= 1))
+        {
+            throw new ArgumentException($"The option --calibration-target must be a precision between 0.5 and 1, not '{targetText}'. {Usage}");
+        }
+
+        var priorAlpha = PriorSettings.DefaultAlpha;
+        if (options.TryGetValue("prior-alpha", out var alphaText)
+            && (!double.TryParse(alphaText, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out priorAlpha) || !double.IsFinite(priorAlpha) || priorAlpha < 0))
+        {
+            throw new ArgumentException($"The option --prior-alpha must be a number that is not negative, not '{alphaText}'. {Usage}");
+        }
+
+        var priorSmoothing = PriorSettings.DefaultSmoothing;
+        if (options.TryGetValue("prior-smoothing", out var smoothingText)
+            && (!double.TryParse(smoothingText, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out priorSmoothing) || !double.IsFinite(priorSmoothing) || priorSmoothing <= 0))
+        {
+            throw new ArgumentException($"The option --prior-smoothing must be a positive number, not '{smoothingText}'. {Usage}");
+        }
+
+        return new TrainSettings(root, IsOn(options, "recompute-mean"), solver, calibrationTarget, !IsOn(options, "no-prior"), priorAlpha, priorSmoothing);
+    }
+
+    private static bool IsOn(Dictionary<string, string> options, string name) =>
+        options.TryGetValue(name, out var value) && !string.Equals(value, "false", StringComparison.Ordinal);
 
     private static int RunCompileImage(Dictionary<string, string> options, string repository, TextWriter output)
     {
         var dataFolder = options.TryGetValue("data", out var cd) ? Path.GetFullPath(cd) : Path.Join(repository, "data");
         var imageOutput = options.TryGetValue("output", out var imo) ? imo : Path.Join(repository, Data.ImageCompiler.DefaultOutput);
         var image = Data.ImageCompiler.Compile(dataFolder, imageOutput);
-        output.WriteLine($"Wrote the word image to {imageOutput}: {image.Spellings.ToString(CultureInfo.InvariantCulture)} spellings, {image.Analyses.ToString(CultureInfo.InvariantCulture)} analyses, {image.Entries.ToString(CultureInfo.InvariantCulture)} entries, {image.Bytes.ToString(CultureInfo.InvariantCulture)} bytes.");
+        output.WriteLine($"Wrote the word image to {imageOutput}: {image.Spellings.ToString(CultureInfo.InvariantCulture)} spellings, {image.Analyses.ToString(CultureInfo.InvariantCulture)} analyses, {image.Entries.ToString(CultureInfo.InvariantCulture)} entries, {image.Senses.ToString(CultureInfo.InvariantCulture)} senses, {image.Groups.ToString(CultureInfo.InvariantCulture)} groups, {image.Bytes.ToString(CultureInfo.InvariantCulture)} bytes.");
         return 0;
     }
 
@@ -145,20 +227,47 @@ internal static class Program
         return 0;
     }
 
-    private static async Task<int> RunUdCountsAsync(Dictionary<string, string> options, string repository, string corpus, TextWriter output, CancellationToken cancellationToken)
+    private static int RunOpenCounts(Dictionary<string, string> options, string corpus, TextWriter output)
     {
-        var udDirectory = options.TryGetValue("ud", out var ud) ? Path.GetFullPath(ud) : BasicModelBuilder.DefaultUdCache(repository);
-        var countsOutput = options.TryGetValue("output", out var co) ? Path.GetFullPath(co) : Path.Join(corpus, "ud");
-        output.WriteLine(await BasicModelBuilder.WriteUdCountsAsync(udDirectory, countsOutput, cancellationToken).ConfigureAwait(false));
+        var countsOutput = options.TryGetValue("output", out var co) ? Path.GetFullPath(co) : OpenCorpus.CountsDirectory(corpus);
+        output.WriteLine(BasicModelBuilder.WriteCounts(corpus, countsOutput));
         return 0;
     }
 
     private static async Task<int> RunTrainBasicAsync(Dictionary<string, string> options, string repository, string corpus, TextWriter output, CancellationToken cancellationToken)
     {
-        var cache = options.TryGetValue("ud", out var ud) ? Path.GetFullPath(ud) : BasicModelBuilder.DefaultUdCache(repository);
-        var refresh = options.TryGetValue("refresh-ud", out var r) && string.Equals(r, "true", StringComparison.OrdinalIgnoreCase);
         var tablePath = options.TryGetValue("output", out var to) ? to : BasicModelBuilder.DefaultOutput;
-        await BasicModelBuilder.TrainAsync(repository, corpus, cache, refresh, tablePath, output, cancellationToken).ConfigureAwait(false);
+        await BasicModelBuilder.TrainAsync(repository, corpus, tablePath, output, cancellationToken).ConfigureAwait(false);
+        return 0;
+    }
+
+    private static async Task<int> RunEvaluateTaggerAsync(Dictionary<string, string> options, string repository, string corpus, TextWriter output, CancellationToken cancellationToken)
+    {
+        var tablePath = options.TryGetValue(InputOption, out var input) ? input : Path.Join(repository, BasicModelBuilder.DefaultOutput);
+        var split = options.GetValueOrDefault("split", "test");
+        var tables = DemaConsulting.WordSense.BasicTables.Load(File.ReadAllBytes(tablePath), DemaConsulting.WordSense.WordLexicon.Current);
+        var scores = new List<TaggerScore>
+        {
+            await TaggerEvaluator.EvaluateAsync($"open corpus {split} (representative)", tables, [.. OpenCorpus.ReadSplit(corpus, OpenCorpus.Representative, split).Select(OpenCorpus.ToTagged)], cancellationToken).ConfigureAwait(false),
+        };
+        var challenge = OpenCorpus.DataFile(corpus, OpenCorpus.Targeted, "test");
+        if (File.Exists(challenge))
+        {
+            scores.Add(await TaggerEvaluator.EvaluateAsync("targeted test (challenge set)", tables, [.. OpenCorpus.ReadFile(challenge).Select(OpenCorpus.ToTagged)], cancellationToken).ConfigureAwait(false));
+        }
+
+        if (options.TryGetValue("gold", out var gold))
+        {
+            scores.Add(await TaggerEvaluator.EvaluateAsync(Path.GetFileNameWithoutExtension(gold), tables, TaggerEvaluator.ReadGold(gold), cancellationToken).ConfigureAwait(false));
+        }
+
+        var text = TaggerEvaluator.Render(scores);
+        output.Write(text);
+        if (options.TryGetValue("output", out var report))
+        {
+            File.WriteAllText(report, text, new System.Text.UTF8Encoding(false));
+        }
+
         return 0;
     }
 
@@ -180,20 +289,22 @@ internal static class Program
         return 0;
     }
 
-    private static int RunUdIrregular(Dictionary<string, string> options, string repository, string corpus, TextWriter output)
-    {
-        var irregularCache = options.TryGetValue("ud", out var ud) ? Path.GetFullPath(ud) : BasicModelBuilder.DefaultUdCache(repository);
-        var irregularOutput = options.TryGetValue("output", out var io) ? io : Path.Join(corpus, "lexicon", IrregularForms.DerivedFile);
-        output.WriteLine(IrregularForms.Derive(irregularCache, corpus, irregularOutput));
-        return 0;
-    }
-
-    private static int RunCoverage(Dictionary<string, string> options, TextWriter output)
+    private static int RunCoverage(Dictionary<string, string> options, string corpus, TextWriter output)
     {
         var textDirectory = Path.GetFullPath(Require(options, "text"));
-        var topCount = options.TryGetValue("top", out var tp) ? int.Parse(tp, CultureInfo.InvariantCulture) : 100;
+        var topCount = IntOption(options, "top", 100, 1);
+        var anchorsDirectory = Path.Join(corpus, "anchors");
+        if (!Directory.Exists(anchorsDirectory))
+        {
+            throw new InvalidDataException($"The directory '{anchorsDirectory}' was not found.");
+        }
+
+        var trainedLemmas = Corpus.ReadLemmas(anchorsDirectory);
         var table = DemaConsulting.WordSense.WordLexicon.Current;
-        var coverage = CoverageReport.Read(textDirectory, w => table.TryLookup(w, out _)).Render(topCount);
+        var coverage = CoverageReport.Read(
+            textDirectory,
+            w => table.TryLookup(w, out _),
+            w => table.TryLookup(w, out var analyses) && analyses.Any(a => trainedLemmas.Contains(a.Lemma))).Render(topCount);
         output.Write(coverage);
         if (options.TryGetValue("output", out var coverageFile))
         {
@@ -223,7 +334,8 @@ internal static class Program
     private static int RunAppendix(Dictionary<string, string> options, string repository, string corpus, TextWriter output)
     {
         var appendix = options.TryGetValue("output", out var a) ? a : Path.Join(repository, "docs", "user_guide", "appendix-senses.md");
-        var lemmas = AppendixGenerator.Write(corpus, appendix);
+        var data = options.TryGetValue("data", out var d) ? Path.GetFullPath(d) : Path.Join(repository, "data");
+        var lemmas = AppendixGenerator.Write(corpus, data, appendix);
         output.WriteLine($"Wrote the appendix of {lemmas.ToString(CultureInfo.InvariantCulture)} lemmas to {appendix}.");
         return 0;
     }
@@ -253,7 +365,7 @@ internal static class Program
         }
 
         var sha = options.TryGetValue("sha256", out var s) ? s : Data.OewnImporter.PinnedSha256;
-        var threshold = options.TryGetValue("threshold", out var t) ? int.Parse(t, CultureInfo.InvariantCulture) : Data.OewnImporter.DefaultSplitThreshold;
+        var threshold = IntOption(options, "threshold", Data.OewnImporter.DefaultSplitThreshold, 0);
         var overwrite = options.TryGetValue("overwrite", out var w) && string.Equals(w, "true", StringComparison.OrdinalIgnoreCase);
         var result = Data.OewnImporter.Import(Require(options, InputOption), data, Path.Join(data, "schema.yaml"), string.Equals(sha, "none", StringComparison.OrdinalIgnoreCase) ? null : sha, threshold, overwrite);
         output.Write(result.Render());
@@ -263,8 +375,8 @@ internal static class Program
     private static int RunGenerateFacts(Dictionary<string, string> options, string repository, string corpus, TextWriter output, TextWriter error)
     {
         var data = options.TryGetValue("data", out var d) ? Path.GetFullPath(d) : Path.Join(repository, "data");
-        var sample = options.TryGetValue("sample", out var sm) ? int.Parse(sm, CultureInfo.InvariantCulture) : Data.FactGenerator.DefaultSample;
-        var seed = options.TryGetValue("seed", out var sd) ? int.Parse(sd, CultureInfo.InvariantCulture) : Data.FactGenerator.DefaultSeed;
+        var sample = IntOption(options, "sample", Data.FactGenerator.DefaultSample, 1);
+        var seed = IntOption(options, "seed", Data.FactGenerator.DefaultSeed);
         var generated = Data.FactGenerator.Generate(data, corpus, seed, sample);
         var failures = Data.FactGenerator.Check(generated.Facts);
         var (checkedCount, withGerund, missing) = Data.FactGenerator.CheckIngEntries(data);
@@ -288,9 +400,9 @@ internal static class Program
     private static int RunAuditForms(Dictionary<string, string> options, string repository, TextWriter output, TextWriter error)
     {
         var data = options.TryGetValue("data", out var d) ? Path.GetFullPath(d) : Path.Join(repository, "data");
-        var sample = options.TryGetValue("sample", out var sm) ? int.Parse(sm, CultureInfo.InvariantCulture) : 300;
-        var seed = options.TryGetValue("seed", out var sd) ? int.Parse(sd, CultureInfo.InvariantCulture) : 20240601;
-        var maxError = options.TryGetValue("max-error", out var me) ? double.Parse(me, CultureInfo.InvariantCulture) : 0.01;
+        var sample = IntOption(options, "sample", 300);
+        var seed = IntOption(options, "seed", 20240601);
+        var maxError = NumberOption(options, "max-error", 0.01);
         if (sample <= 0)
         {
             throw new ArgumentException("The --sample value must be a positive number of rows per stratum.");
@@ -322,10 +434,34 @@ internal static class Program
         return 0;
     }
 
+    private static int RunImportWn30Counts(Dictionary<string, string> options, string repository, TextWriter output)
+    {
+        var data = options.TryGetValue("data", out var d) ? Path.GetFullPath(d) : Path.Join(repository, "data");
+        var sha = options.TryGetValue("sha256", out var s) ? s : Data.OewnImporter.PinnedCountsSha256;
+        var result = Data.OewnImporter.ImportCounts(Require(options, InputOption), data, string.Equals(sha, "none", StringComparison.OrdinalIgnoreCase) ? null : sha);
+        output.WriteLine(Data.OewnImporter.Describe(result));
+        return 0;
+    }
+
+    private static int RunLabelSenses(Dictionary<string, string> options, string repository, TextWriter output)
+    {
+        var data = options.TryGetValue("data", out var d) ? Path.GetFullPath(d) : Path.Join(repository, "data");
+        output.WriteLine(Data.SenseLabelGenerator.Run(data).Render());
+        return 0;
+    }
+
+    private static int RunSeedInventory(Dictionary<string, string> options, string repository, string corpus, TextWriter output)
+    {
+        var data = options.TryGetValue("data", out var d) ? Path.GetFullPath(d) : Path.Join(repository, "data");
+        var curation = options.TryGetValue("curation", out var c) ? Path.GetFullPath(c) : Path.Join(corpus, "curation");
+        output.WriteLine(Data.InventorySeeder.Run(data, Directory.Exists(curation) ? curation : null).Render());
+        return 0;
+    }
+
     private static int RunValidateData(Dictionary<string, string> options, string repository, TextWriter output, TextWriter error)
     {
         var data = options.TryGetValue("data", out var d) ? Path.GetFullPath(d) : Path.Join(repository, "data");
-        var report = Data.DataValidator.Validate(data);
+        var report = Data.DataValidator.Validate(data, options.TryGetValue("baseline", out var b) ? Path.GetFullPath(b) : null);
         foreach (var violation in report.Violations)
         {
             error.WriteLine(violation);
@@ -342,7 +478,7 @@ internal static class Program
     }
 
     /// <summary>
-    ///     Parses <c>--name value</c> pairs.
+    ///     Parses <c>--name value</c> pairs; the switches <c>--no-cache</c> and <c>--recompute-mean</c> need no value.
     /// </summary>
     /// <param name="args">The arguments after the command.</param>
     /// <returns>The options by name.</returns>
@@ -350,19 +486,35 @@ internal static class Program
     private static Dictionary<string, string> ParseOptions(string[] args)
     {
         var options = new Dictionary<string, string>(StringComparer.Ordinal);
-        for (var i = 0; i < args.Length; i += 2)
+        var i = 0;
+        while (i < args.Length)
         {
-            if (!args[i].StartsWith("--", StringComparison.Ordinal) || i + 1 >= args.Length || args[i + 1].StartsWith("--", StringComparison.Ordinal))
+            if (!args[i].StartsWith("--", StringComparison.Ordinal))
             {
                 throw new ArgumentException($"Expected '--name value' but found '{args[i]}'. {Usage}");
             }
 
-            if (!KnownOptions.Contains(args[i][2..]))
+            var name = args[i][2..];
+            if (FlagOptions.Contains(name))
+            {
+                var explicitValue = i + 1 < args.Length && args[i + 1] is "true" or "false";
+                options[name] = explicitValue ? args[i + 1] : "true";
+                i += explicitValue ? 2 : 1;
+                continue;
+            }
+
+            if (i + 1 >= args.Length || args[i + 1].StartsWith("--", StringComparison.Ordinal))
+            {
+                throw new ArgumentException($"Expected '--name value' but found '{args[i]}'. {Usage}");
+            }
+
+            if (!KnownOptions.Contains(name))
             {
                 throw new ArgumentException($"Unknown option '{args[i]}'. {Usage}");
             }
 
-            options[args[i][2..]] = args[i + 1];
+            options[name] = args[i + 1];
+            i += 2;
         }
 
         return options;
@@ -377,4 +529,49 @@ internal static class Program
     /// <exception cref="ArgumentException">Thrown when the option is missing.</exception>
     private static string Require(Dictionary<string, string> options, string name) =>
         options.TryGetValue(name, out var value) ? value : throw new ArgumentException($"The option --{name} is required. {Usage}");
+
+    /// <summary>
+    ///     Gets an integer option, or the default when it is absent.
+    /// </summary>
+    /// <param name="options">The options.</param>
+    /// <param name="name">The option name.</param>
+    /// <param name="fallback">The value when the option is absent.</param>
+    /// <param name="minimum">The smallest allowed value.</param>
+    /// <returns>The value.</returns>
+    /// <exception cref="ArgumentException">Thrown with a one-line message when the value is not an integer of at least <paramref name="minimum"/>.</exception>
+    internal static int IntOption(Dictionary<string, string> options, string name, int fallback, int minimum = int.MinValue)
+    {
+        if (!options.TryGetValue(name, out var text))
+        {
+            return fallback;
+        }
+
+        if (!int.TryParse(text, NumberStyles.AllowLeadingSign, CultureInfo.InvariantCulture, out var value) || value < minimum)
+        {
+            var limit = minimum == int.MinValue ? string.Empty : " of at least " + minimum.ToString(CultureInfo.InvariantCulture);
+            throw new ArgumentException($"The option --{name} must be an integer{limit}, not '{text}'.");
+        }
+
+        return value;
+    }
+
+    /// <summary>
+    ///     Gets a finite number option, or the default when it is absent.
+    /// </summary>
+    /// <param name="options">The options.</param>
+    /// <param name="name">The option name.</param>
+    /// <param name="fallback">The value when the option is absent.</param>
+    /// <returns>The value.</returns>
+    /// <exception cref="ArgumentException">Thrown with a one-line message when the value is not a finite number.</exception>
+    internal static double NumberOption(Dictionary<string, string> options, string name, double fallback)
+    {
+        if (!options.TryGetValue(name, out var text))
+        {
+            return fallback;
+        }
+
+        return double.TryParse(text, NumberStyles.Float, CultureInfo.InvariantCulture, out var value) && double.IsFinite(value)
+            ? value
+            : throw new ArgumentException($"The option --{name} must be a number, not '{text}'.");
+    }
 }

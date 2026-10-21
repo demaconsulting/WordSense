@@ -1,4 +1,8 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-adieu-i-1		dema-adieu-i	dema-syn-adieu-i-1	1
+dema-adios-i-1		dema-adios-i	dema-syn-adios-i-1	1
+dema-adown-p-1		dema-adown-p	dema-syn-adown-p-1	1
+dema-adsum-i-1		dema-adsum-i	dema-syn-adsum-i-1	1
 oewn-ad--lib__1.10.00..	ad-lib%1:10:00::	oewn-ad-lib-n	oewn-06727636-n	1
 oewn-ad--lib__2.36.00..	ad-lib%2:36:00::	oewn-ad-lib-v	oewn-01732719-v	1
 oewn-ad--lib__5.00.00.unprepared.00	ad-lib%5:00:00:unprepared:00	oewn-ad-lib-a	oewn-01851375-s	1

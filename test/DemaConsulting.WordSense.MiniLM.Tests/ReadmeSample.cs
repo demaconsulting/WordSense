@@ -42,22 +42,33 @@ internal sealed class ReadmeSample
         // The sample shows the alternative model lines as comments on purpose
 #pragma warning disable S125
         // <sample:readme>
-        // Basic needs no download; MiniLM and BertBaseCased need their package and using, and download on first use
+        // Basic is part of the core package and needs no download; MiniLM and BertBaseCased need their package and using,
+        // and download on first use
         using var model = new BasicWordSenseModel();
         // using var model = new MiniLMWordSenseModel();         // using DemaConsulting.WordSense.MiniLM;
         // using var model = new BertBaseCasedWordSenseModel();  // using DemaConsulting.WordSense.BertBaseCased;
         await model.EnsureModelAsync();
 
-        // Classify the words of a sentence whose "bow" and "record" are heteronyms
-        var words = "The hunter fired an arrow from his bow at a deer so we will record a record".Split(' ');
+        // Classify the words of a sentence whose "bow" and "record" are heteronyms and whose "go", "back" and "home"
+        // are among the trained words of the encoder models
+        var words = "The hunter fired an arrow from his bow at a deer so we will record a record then go back home".Split(' ');
         var results = await model.ClassifyAsync(words);
 
-        // Print the part of speech (or unknown), the confidence and, for a heteronym, the sense id
+        // Print the part of speech (or unknown), the level, the confidence, the sense id (at the sense level) or the
+        // group id (at the group level) and the runner-up part of speech with its probability, when the word has one
+        // (the analyses that share a part of speech, such as the singular and the plural of "deer", share its probability)
         foreach (var result in results)
         {
             var pos = result.Details?.PartOfSpeech.ToString() ?? "unknown";
-            var say = result.Details?.SenseId ?? "";
-            Console.WriteLine($"{result.Word,-9} {pos,-12} {result.Confidence,4:F2}  {say}".TrimEnd());
+            var sense = result.SenseId ?? result.GroupId ?? "";
+            var next = result.Analyses
+                .Where(a => a.Details.PartOfSpeech != result.Details?.PartOfSpeech)
+                .GroupBy(a => a.Details.PartOfSpeech)
+                .Select(g => (Pos: g.Key, Probability: g.Sum(a => a.Probability)))
+                .OrderByDescending(g => g.Probability)
+                .Select(g => $"{g.Pos} {g.Probability:F2}")
+                .FirstOrDefault("");
+            Console.WriteLine($"{result.Word,-9} {pos,-12} {result.Level,-12} {result.Confidence,4:F2}  {sense,-14} {next}".TrimEnd());
         }
 
         // </sample:readme>
@@ -72,7 +83,7 @@ internal sealed class ReadmeSample
     {
         private readonly IWordSenseModel _model = CurrentModel.Value switch
         {
-            "basic" => new DemaConsulting.WordSense.Basic.BasicWordSenseModel(),
+            "basic" => new DemaConsulting.WordSense.BasicWordSenseModel(),
             "minilm" => new DemaConsulting.WordSense.MiniLM.MiniLMWordSenseModel(
                 DocSampleText.RequireModelDirectory("all-MiniLM-L6-v2-int8")),
             "bertbasecased" => new DemaConsulting.WordSense.BertBaseCased.BertBaseCasedWordSenseModel(
@@ -85,7 +96,7 @@ internal sealed class ReadmeSample
             _model.EnsureModelAsync(mirror, cancellationToken);
 
         /// <inheritdoc />
-        public Task<WordSense[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default) =>
+        public Task<ClassifyResult[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default) =>
             _model.ClassifyAsync(words, cancellationToken);
 
         /// <inheritdoc />

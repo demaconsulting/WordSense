@@ -1,5 +1,4 @@
 using DemaConsulting.WordSense;
-using DemaConsulting.WordSense.Basic;
 using DemaConsulting.WordSense.BertBaseCased;
 using DemaConsulting.WordSense.MiniLM;
 using DemaConsulting.WordSense.Onnx;
@@ -43,9 +42,9 @@ internal static class ModelCatalog
     /// </summary>
     public static readonly IReadOnlyList<ModelInfo> All =
     [
-        new("minilm", "DemaConsulting.WordSense.MiniLM", "all-MiniLM-L6-v2-int8", dir => Throttle(new MiniLMWordSenseModel(dir))),
-        new("bert-base-cased", "DemaConsulting.WordSense.BertBaseCased", "bert-base-cased-int8", dir => Throttle(new BertBaseCasedWordSenseModel(dir))),
-        new("basic", "DemaConsulting.WordSense.Basic", null, _ => new BasicWordSenseModel()),
+        new("minilm", "DemaConsulting.WordSense.MiniLM", "all-MiniLM-L6-v2-int8", dir => Throttle(new MiniLMWordSenseModel(dir), m => m.Encoder)),
+        new("bert-base-cased", "DemaConsulting.WordSense.BertBaseCased", "bert-base-cased-int8", dir => Throttle(new BertBaseCasedWordSenseModel(dir), m => m.Encoder)),
+        new("basic", "DemaConsulting.WordSense", null, _ => new BasicWordSenseModel()),
     ];
 
     /// <summary>
@@ -58,9 +57,44 @@ internal static class ModelCatalog
         All.FirstOrDefault(m => string.Equals(m.Name, name, StringComparison.Ordinal))
         ?? throw new ArgumentException($"Unknown model '{name}'; use one of: {string.Join(", ", All.Select(m => m.Name))}.");
 
-    private static OnnxWordSenseModel Throttle(OnnxWordSenseModel model)
+    /// <summary>
+    ///     Selects the models of a command that evaluates several: one by name, or every model in the order of the model table.
+    /// </summary>
+    /// <param name="name">The command-line name of a model, <c>all</c> or null for every model.</param>
+    /// <returns>The models.</returns>
+    /// <exception cref="ArgumentException">Thrown when the name is unknown.</exception>
+    public static IReadOnlyList<ModelInfo> Select(string? name) =>
+        name is null or "all" ? [Find("basic"), Find("minilm"), Find("bert-base-cased")] : [Find(name)];
+
+    /// <summary>
+    ///     Creates a model on the model folder of the repository.
+    /// </summary>
+    /// <param name="info">The model.</param>
+    /// <param name="repository">The repository root.</param>
+    /// <returns>The model.</returns>
+    public static IWordSenseModel Open(ModelInfo info, string repository)
     {
-        model.IntraOpThreads = IntraOpThreads;
+        ArgumentNullException.ThrowIfNull(info);
+        return info.Create(info.ModelDirectory is null ? null : Path.Join(repository, "model", info.ModelDirectory));
+    }
+
+    /// <summary>
+    ///     Gets the encoder model inside a composed encoder model (the model of a package wraps its encoder, which owns the
+    ///     pinned files and the embedded weights), so the trainer can open the encoder; the composed model keeps owning it.
+    /// </summary>
+    /// <param name="model">A model created from a <see cref="ModelInfo"/> that has an encoder.</param>
+    /// <returns>The encoder model.</returns>
+    /// <exception cref="ArgumentException">Thrown when the model has no encoder.</exception>
+    public static OnnxWordSenseModel EncoderOf(IWordSenseModel model) => model switch
+    {
+        MiniLMWordSenseModel minilm => minilm.Encoder,
+        BertBaseCasedWordSenseModel bert => bert.Encoder,
+        _ => throw new ArgumentException($"The model {model.GetType().Name} has no encoder."),
+    };
+
+    private static T Throttle<T>(T model, Func<T, OnnxWordSenseModel> encoder)
+    {
+        encoder(model).IntraOpThreads = IntraOpThreads;
         return model;
     }
 }

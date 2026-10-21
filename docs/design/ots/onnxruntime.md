@@ -5,7 +5,7 @@
 Microsoft.ML.OnnxRuntime (MIT license) is the inference engine that runs the int8-quantized encoder models
 (`all-MiniLM-L6-v2` and `bert-base-cased`). It is the only third-party runtime (shipped) dependency of the system
 and belongs to the `DemaConsulting.WordSense.Onnx` package; the MiniLM and BertBaseCased packages receive it through
-the Onnx package, while the core `DemaConsulting.WordSense` package and the Basic package have no third-party
+the Onnx package, while the core `DemaConsulting.WordSense` package (with the Basic model) has no third-party
 runtime dependency. It was chosen because it executes the model files directly, supports Windows, Linux and macOS,
 and needs no Python runtime.
 

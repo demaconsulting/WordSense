@@ -1,4 +1,6 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-across-p-1		dema-across-p	dema-syn-across-p-1	1
+dema-action-i-1		dema-action-i	dema-syn-action-i-1	1
 oewn-ac__1.19.00..	ac%1:19:00::	oewn-AC-n	oewn-11444066-n	1
 oewn-ac__1.27.00..	ac%1:27:00::	oewn-Ac-n	oewn-14651833-n	1
 oewn-acacia__1.20.00..	acacia%1:20:00::	oewn-acacia-n	oewn-11776561-n	1

@@ -1,4 +1,26 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-be-x-1		dema-be-x	dema-syn-be-x-1	1
+dema-beaut-i-1		dema-beaut-i	dema-syn-beaut-i-1	1
+dema-beauty-i-1		dema-beauty-i	dema-syn-beauty-i-1	1
+dema-because-c-1		dema-because-c	dema-syn-because-c-1	1
+dema-been-x-1		dema-been-x	dema-syn-been-x-1	1
+dema-before-c-1		dema-before-c	dema-syn-before-c-1	1
+dema-before-p-1		dema-before-p	dema-syn-before-p-1	1
+dema-begad-i-1		dema-begad-i	dema-syn-begad-i-1	1
+dema-begone-i-1		dema-begone-i	dema-syn-begone-i-1	1
+dema-begorra-i-1		dema-begorra-i	dema-syn-begorra-i-1	1
+dema-behind-p-1		dema-behind-p	dema-syn-behind-p-1	1
+dema-being-x-1		dema-being-x	dema-syn-being-x-1	1
+dema-bejabers-i-1		dema-bejabers-i	dema-syn-bejabers-i-1	1
+dema-below-p-1		dema-below-p	dema-syn-below-p-1	1
+dema-ben-p-1		dema-ben-p	dema-syn-ben-p-1	1
+dema-beneath-p-1		dema-beneath-p	dema-syn-beneath-p-1	1
+dema-benedicite-i-1		dema-benedicite-i	dema-syn-benedicite-i-1	1
+dema-beside-p-1		dema-beside-p	dema-syn-beside-p-1	1
+dema-besides-p-1		dema-besides-p	dema-syn-besides-p-1	1
+dema-between-p-1		dema-between-p	dema-syn-between-p-1	1
+dema-betwixt-p-1		dema-betwixt-p	dema-syn-betwixt-p-1	1
+dema-beyond-p-1		dema-beyond-p	dema-syn-beyond-p-1	1
 oewn-be--all_and_end--all__1.09.00..	be-all_and_end-all%1:09:00::	oewn-be-all_and_end-all-n	oewn-05874038-n	1
 oewn-be__1.27.00..	be%1:27:00::	oewn-Be-n	oewn-14655473-n	1
 oewn-be__2.40.00..	be%2:40:00::	oewn-be-v	oewn-02273091-v	9

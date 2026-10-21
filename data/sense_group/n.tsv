@@ -1,0 +1,4 @@
+group_id	lemma	pos	label	origin	kind
+nominate#group:candidate-nomination	nominate	v	candidate-nomination	curated	equivalent
+nominate#group:role-assignment	nominate	v	role-assignment	curated	equivalent
+notice#group:perception	notice	v	perception	curated	equivalent

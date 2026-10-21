@@ -1,14 +1,28 @@
 synset_id	seq	text
-dema-syn-implicate-n-1	1	noun
-dema-syn-inebriate-a-1	1	adjective-noun
-dema-syn-intergrade-n-1	1	noun
-dema-syn-intergrade-v-1	1	verb
-dema-syn-interlay-n-1	1	noun
-dema-syn-interlay-v-1	1	verb
-dema-syn-interspace-n-1	1	noun
-dema-syn-interspace-v-1	1	verb
-dema-syn-invert-n-1	1	noun
-dema-syn-isolate-n-1	1	noun
+dema-syn-i-u-1	1	refers to the speaker or writer as the subject of a clause
+dema-syn-idem-u-1	1	refers to the same person or thing previously mentioned, especially an author in a citation
+dema-syn-if-c-1	1	introduces a condition, a hypothetical situation, or an indirect yes-or-no question
+dema-syn-ilka-u-1	1	each one; every individual member of a group (Scots)
+dema-syn-immediately-c-1	1	introduces a clause meaning as soon as; at the very moment that
+dema-syn-implicate-n-1	1	a proposition that follows logically from another proposition
+dema-syn-in-p-1	1	within the boundaries of a place, period, condition, or activity
+dema-syn-inby-p-1	1	on the inner side of; farther inward than (Scots)
+dema-syn-indeed-i-1	1	used to express surprise, skepticism, irony, or emphatic agreement
+dema-syn-inebriate-a-1	1	intoxicated with alcohol; drunk
+dema-syn-inside-p-1	1	within the interior or boundaries of something
+dema-syn-intergrade-n-1	1	an intermediate form linking two distinct types or populations
+dema-syn-intergrade-v-1	1	merge gradually through a series of intermediate forms or stages
+dema-syn-interlay-n-1	1	a layer of material placed between other layers
+dema-syn-interlay-v-1	1	place a layer or material between other layers or things
+dema-syn-interspace-n-1	1	a space or gap between things
+dema-syn-interspace-v-1	1	arrange with spaces or intervals between
+dema-syn-into-p-1	1	expresses movement to the inside of something or a change to a new state
+dema-syn-invert-n-1	1	the lowest interior surface of a drain, channel, sewer, or tunnel
+dema-syn-is-x-1	1	third-person singular present form of be, used to form progressive tenses or the passive voice
+dema-syn-isolate-n-1	1	a person, organism, or substance separated from others or obtained in isolation
+dema-syn-it-u-1	1	refers to a thing, animal, or situation, or serves as a subject without a specific referent
+dema-syn-its-d-1	1	marks something as belonging to or associated with a previously mentioned thing or animal
+dema-syn-itself-u-1	1	refers back to a thing or animal as the object of its own action or emphasizes its identity
 oewn-00005598-s	1	being without doubt or reserve
 oewn-00005717-s	1	total and all-embracing
 oewn-00006160-r	1	to an exceedingly great extent or degree

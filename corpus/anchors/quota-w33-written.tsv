@@ -1,0 +1,534 @@
+arm	arm#branch	Noun	Attach the selector {arm} to the shaft with the supplied pin.
+arm	arm#branch	Noun	Lubricate the pivot where the throttle {arm} meets the control bracket.
+arm	arm#branch	Noun	The antenna support {arms} extend from the mast to the equipment rack.
+arm	arm#branch	Noun	During overhaul, the governor {arm} connects the spring to the fuel rack.
+arm	arm#branch	Noun	Set the linkage {arm} at 90 degrees to the actuator rod.
+arm	arm#branch	Noun	Inspect the hinge {arm} for cracks before installing the access panel.
+arm	arm#branch	Noun	The robot has two {arms} that position components on the assembly fixture.
+arm	arm#branch	Noun	Align the counterweight with the crank {arm} before tightening the retaining nut.
+arm	arm#prime-system	Verb	The operator {arms} the overspeed trip before starting the turbine.
+arm	arm#prime-system	Verb	Do not {arm} the explosive squib circuit during maintenance.
+arm	arm#prime-system	Verb	Verify that the warning indicator is green before {arming} the alarm panel.
+arm	arm#prime-system	Verb	The flight computer {arms} the landing gear warning automatically below 50 knots.
+arm	arm#prime-system	Verb	Press switch S4 to {arm} the backup fuel pump.
+arm	arm#prime-system	Verb	{Arming} the beacon enables its automatic activation on impact.
+arm	arm#prime-system	Verb	The control unit {arms} the backup battery when primary power falls below 22 V.
+arm	arm#prime-system	Verb	Do not move the selector while {arming} the ignition system.
+arm	arm#prime-system	Verb	{Arm} the pressure relief monitor before applying compressed air.
+arm	arm#prime-system	Verb	Before flight, {arm} the fire bottles and record the switch positions.
+arm	arm#prime-system	Verb	The system remains {armed} while the access door is closed and latched.
+arm	arm#prime-system	Verb	The technician {armed} the circuit only after replacing the fuse.
+arm	arm#prime-system	Verb	The starter logic remains {armed} for ten seconds after the start command.
+arm	arm#prime-system	Verb	The controller cannot be {armed} when the access cover sensor is open.
+attach	attach#be-attached	Verb	The sensor remains {attached} to the manifold during the pressure test.
+attach	attach#be-attached	Verb	When installed, the filter housing is {attached} to the intake duct.
+attach	attach#be-attached	Verb	The drain hose remains {attached} to the collection tank during service.
+attach	attach#be-attached	Verb	The inspection cover is {attached} to the hinge along its lower edge.
+attach	attach#be-attached	Verb	The actuator rod is {attached} to the lever throughout the stroke.
+attach	attach#be-attached	Verb	The foil shield is {attached} to the connector shell at both ends.
+attach	attach#be-attached	Verb	The identification label is {attached} to the panel beside switch S2.
+attach	attach#be-attached	Verb	The bonding wire is {attached} to the terminal and cannot move freely.
+attach	attach#become-attached	Verb	The loose sensor becomes {attached} to the magnetic fixture when current is applied.
+attach	attach#become-attached	Verb	During assembly, the grounding braid {attaches} to the foil surface under pressure.
+attach	attach#become-attached	Verb	The suction cup becomes {attached} to the glass after air evacuation.
+attach	attach#become-attached	Verb	The cable end {attaches} to the terminal when the spring clip closes.
+attach	attach#become-attached	Verb	When heated, the repair patch becomes {attached} to the pipe surface.
+attach	attach#become-attached	Verb	The test lead becomes {attached} to the contact pad when the clamp closes.
+attach	attach#become-attached	Verb	The metal chip {attaches} to the magnetic pickup during shaft rotation.
+attach	attach#become-attached	Verb	The seal ring {attaches} to the seat while the solvent evaporates.
+attach	attach#connect	Verb	The technician {attached} the ground cable to the designated chassis stud.
+attach	attach#connect	Verb	{Attach} the grounding strap to a clean, unpainted surface.
+attach	attach#connect	Verb	Apply sealant before {attaching} the inspection window to the housing.
+attach	attach#connect	Verb	The clamp {attaches} the exhaust duct to the engine outlet.
+attach	attach#connect	Verb	{Attach} cable W12 to terminal 6 and tighten the screw.
+attach	attach#connect	Verb	The coupling sleeve {attaches} the drive shaft to the gearbox input.
+attach	attach#connect	Verb	After {attaching} the panel, connect its lighting cable.
+attach	attach#connect	Verb	{Attach} both ducts to the manifold before installing the cover.
+bearing	bearing#direction	Noun	Record the aircraft's {bearing} from the runway centerline before taxi.
+bearing	bearing#direction	Noun	Read the magnetic {bearing} on the compass at each inspection marker.
+bearing	bearing#direction	Noun	The radar displays the target's {bearing} and range on the screen.
+bearing	bearing#direction	Noun	Calculate the vessel's {bearing} from the two GPS positions.
+bearing	bearing#direction	Noun	The robot changes {bearing} when the guide beacon moves.
+bearing	bearing#direction	Noun	Mark the cable route and its {bearing} on the installation drawing.
+bearing	bearing#direction	Noun	Compare the measured {bearing} with the runway heading.
+bearing	bearing#direction	Noun	The drone maintains its assigned {bearing} until it reaches waypoint 4.
+bearing	bearing#load-bearing	Adjective	The {bearing} strut transfers landing loads into the fuselage frame.
+bearing	bearing#load-bearing	Adjective	Never route a pipe through the {bearing} web without engineering approval.
+bearing	bearing#load-bearing	Adjective	The crane hook must hang from a {bearing} lug.
+bearing	bearing#load-bearing	Adjective	The {bearing} frame limits deflection to 2 mm under full load.
+bearing	bearing#load-bearing	Adjective	Do not remove the {bearing} wall until temporary supports are in place.
+bearing	bearing#load-bearing	Adjective	The {bearing} bracket carries the 450 kg motor assembly.
+bearing	bearing#load-bearing	Adjective	Inspect each {bearing} member for buckling after the impact.
+bearing	bearing#load-bearing	Adjective	Add a {bearing} plate under the column base.
+bearing	bearing#rotating-support	Noun	The motor {bearing} runs hot when lubricant is insufficient.
+bearing	bearing#rotating-support	Noun	Keep the {bearing} aligned with the shaft during installation.
+bearing	bearing#rotating-support	Noun	A sealed {bearing} supports the fan rotor at 3,000 rpm.
+bearing	bearing#rotating-support	Noun	Measure radial play in each {bearing} with a dial indicator.
+bearing	bearing#rotating-support	Noun	Do not strike the {bearing} directly with a steel hammer.
+bearing	bearing#rotating-support	Noun	Heat the housing, not the {bearing}, during removal.
+bearing	bearing#rotating-support	Noun	Verify that the new {bearing} matches part number BR-204.
+bearing	bearing#rotating-support	Noun	The gearbox contains two tapered roller {bearings}.
+bleed	bleed#drain	Verb	Open valve V2 to {bleed} coolant from the heat exchanger.
+bleed	bleed#drain	Verb	The mechanic {bled} steam from the separator through the drain line.
+bleed	bleed#drain	Verb	The pump housing was {bled} of oil before disassembly.
+bleed	bleed#drain	Verb	{Bleeding} the gearbox removes the old lubricant from the sump.
+bleed	bleed#drain	Verb	The service hose {bleeds} fuel into a grounded recovery tank.
+bleed	bleed#drain	Verb	{Bleed} water from the compressed-air receiver using the bottom valve.
+bleed	bleed#drain	Verb	Open the petcock and {bleed} the cylinder of hydraulic fluid.
+bleed	bleed#drain	Verb	The technician {bleeds} solvent from the process line before changing the pump.
+bleed	bleed#vent	Verb	{Bleeding} the fuel rail removes vapor after filter replacement.
+bleed	bleed#vent	Verb	The compressor line must be {bled} before the regulator is removed.
+bleed	bleed#vent	Verb	{Bleed} the pressure vessel through valve V7 until the gauge reads zero.
+bleed	bleed#vent	Verb	The mechanic {bleeds} air from the clutch circuit using a clear tube.
+bleed	bleed#vent	Verb	{Bleed} the pneumatic cylinder before disconnecting its supply hose.
+bleed	bleed#vent	Verb	The pump {bleeds} trapped gas through an automatic separator during startup.
+bleed	bleed#vent	Verb	After filling, {bleed} the steering circuit until no bubbles remain.
+bleed	bleed#vent	Verb	A blocked bleed screw prevents the line from being properly {bled}.
+check	check#determine	Verb	{Check} how long the battery runs under the specified load.
+check	check#determine	Verb	Use a continuity meter to {check} whether the circuit is complete.
+check	check#determine	Verb	{Checking} if the relay clicks confirms that its coil receives power.
+check	check#determine	Verb	The controller {checks} whether the door switch changes state.
+check	check#determine	Verb	The operator {checks} which channel carries the fault signal.
+check	check#determine	Verb	{Checking} when the alarm activates identifies the configured delay.
+check	check#determine	Verb	{Checked} whether the pump reached 1,500 rpm before proceeding.
+check	check#determine	Verb	We {checked} whether the actuator moved after the command.
+check	check#ensure	Verb	Always {check} that the grounding strap contacts bare metal.
+check	check#ensure	Verb	Before welding, {check} that the gas cylinder valve is open.
+check	check#ensure	Verb	{Check} that both landing gear indicators show DOWN before touchdown.
+check	check#ensure	Verb	The safety procedure requires technicians to {check} that ventilation is operating.
+check	check#ensure	Verb	The operator {checks} that all guards are installed before startup.
+check	check#ensure	Verb	The controller {checks} that the temperature remains within limits.
+check	check#ensure	Verb	{Checking} that the filter arrow points downstream ensures correct installation.
+check	check#ensure	Verb	The technician {checks} that no tools remain inside the engine bay.
+check	check#ensure	Verb	The startup sequence {checks} that coolant flow is available.
+check	check#ensure	Verb	{Checking} that the panel is de-energized is mandatory.
+check	check#ensure	Verb	{Checking} that the nozzle is clean prevents an uneven spray pattern.
+check	check#ensure	Verb	{Checked} that the access panel was latched before taxi.
+check	check#ensure	Verb	{Checked} that the emergency stop reset before enabling automatic mode.
+check	check#ensure	Verb	The operator {checked} that the software backup completed before updating firmware.
+check	check#inspect	Verb	{Check} each connector for corrosion and bent contacts.
+check	check#inspect	Verb	{Check} the circuit board under magnification for lifted tracks.
+check	check#inspect	Verb	{Check} the torque wrench calibration against the reference standard.
+check	check#inspect	Verb	{Checking} the filter element revealed metal particles in the pleats.
+check	check#inspect	Verb	The mechanic {checks} the tire tread depth with a gauge.
+check	check#inspect	Verb	{Checking} the hose reveals a cut near the clamp.
+check	check#inspect	Verb	The inspector {checked} the weld for cracks under bright light.
+check	check#inspect	Verb	The crew {checked} the landing light before flight.
+check	check#inspection	Noun	Record the final {check} in the maintenance log.
+check	check#inspection	Noun	A leak was found during the overnight {check} of the fuel system.
+check	check#inspection	Noun	The control unit requires a safety {check} after firmware installation.
+check	check#inspection	Noun	The operator stopped the machine after a failed temperature {check}.
+check	check#inspection	Noun	A second {check} confirmed that the valve position was correct.
+check	check#inspection	Noun	Carry out the insulation resistance {check} before connecting the motor.
+check	check#inspection	Noun	The aircraft returned to service after the post-repair {check}.
+check	check#inspection	Noun	Document each {check} beside the corresponding procedure step.
+clean	clean#hygienic	Adjective	A {clean} instrument tray prevents transfer of grease to exposed bearings.
+clean	clean#hygienic	Adjective	Wash until your hands are {clean} before opening the sealed sensor package.
+clean	clean#hygienic	Adjective	The operator's {clean} coveralls are required inside the contamination-controlled bay.
+clean	clean#hygienic	Adjective	Keep the sampling probe {clean} between measurements to prevent handling contamination.
+clean	clean#hygienic	Adjective	The service crew uses {clean} tools when working on the sterilizer chamber.
+clean	clean#hygienic	Adjective	{Clean} hands are mandatory before installing the sterile catheter line.
+clean	clean#hygienic	Adjective	Store {clean} protective sleeves in the closed cabinet, away from used sleeves.
+clean	clean#hygienic	Adjective	A {clean} workbench is required before the medical pump is opened.
+clean	clean#impurity-free	Adjective	{Clean} steam prevents residue on the sterilization chamber walls.
+clean	clean#impurity-free	Adjective	Use {clean} air to prevent oil contamination inside the actuator.
+clean	clean#impurity-free	Adjective	The service bulletin specifies {clean} diesel with no visible water.
+clean	clean#impurity-free	Adjective	Replace the cartridge if the outlet water is not {clean}.
+clean	clean#impurity-free	Adjective	Drain the line until {clean} fluid reaches the collection bottle.
+clean	clean#impurity-free	Adjective	A {clean} electrolyte prevents deposits on the battery plates.
+clean	clean#impurity-free	Adjective	Keep the {cleanest} solvent in the marked bottle for final rinsing.
+clean	clean#impurity-free	Adjective	Use the {cleanest} reagent for the reference calibration.
+clean	clean#impurity-free	Adjective	Maintain {clean} compressed air for the instrument purge circuit.
+clean	clean#impurity-free	Adjective	The filter produces {clean} coolant with less than 10 ppm solids.
+clean	clean#impurity-free	Adjective	Verify that the nitrogen supply is {clean} before connecting the analyzer.
+clean	clean#impurity-free	Adjective	Use {clean} grease free of abrasive particles on the bearing.
+clean	clean#impurity-free	Adjective	The analyzer reports {clean} carrier gas when the hydrocarbon reading is zero.
+clean	clean#purge	Verb	{Clean} the fuel manifold of vapor before removing the injector.
+clean	clean#purge	Verb	{Clean} the pneumatic circuit with filtered air until no moisture exits.
+clean	clean#purge	Verb	After shutdown, {clean} the manifold of remaining fuel vapor.
+clean	clean#purge	Verb	The purge valve {cleans} the sample path between analyses.
+clean	clean#purge	Verb	The technician {cleaned} the oxygen line of oil vapor.
+clean	clean#purge	Verb	{Cleaning} the transfer line removes trapped solvent before calibration.
+clean	clean#purge	Verb	The maintenance cycle {cleaned} the reactor feed line of residual chemicals.
+clean	clean#remove-dirt	Verb	{Clean} the fan guard with a lint-free cloth before inspection.
+clean	clean#remove-dirt	Verb	{Clean} the filter bowl, then install a new element.
+clean	clean#remove-dirt	Verb	Do not {clean} the energized panel with liquid.
+clean	clean#remove-dirt	Verb	{Clean} the mating faces until no old gasket material remains.
+clean	clean#remove-dirt	Verb	The operator {cleans} the robot gripper pads after each shift.
+clean	clean#remove-dirt	Verb	{Cleaning} the pump exterior prevents dirt from entering the service port.
+clean	clean#remove-dirt	Verb	The technician {cleaned} surfaces before applying the sealant.
+clean	clean#remove-dirt	Verb	The technician {cleaned} the wheel well after the aircraft landed on a wet runway.
+flush	flush#channel	Verb	The auxiliary pump {flushes} oil through the bearing circuit during startup.
+flush	flush#channel	Verb	{Flushing} water through the pipe confirms that the bypass route is open.
+flush	flush#channel	Verb	The manifold {flushes} nitrogen through the sensor chamber during calibration.
+flush	flush#channel	Verb	{Flushing} air through the conduit checks the direction of flow.
+flush	flush#channel	Verb	At 40 psi, the pump {flushed} fluid through the return hose.
+flush	flush#channel	Verb	An internal passage {flushed} lubricant through the gearbox during rotation.
+flush	flush#channel	Verb	Open valve V-12 to {flush} hydraulic fluid through the manifold.
+flush	flush#channel	Verb	{Flush} the test oil through the filter housing before sampling.
+flush	flush#coplanar	Adverb	Seat the access panel {flush} with the surrounding skin.
+flush	flush#coplanar	Adverb	Drive the rivet head {flush} with the wing surface.
+flush	flush#coplanar	Adverb	Set the shim {flush} with the bracket edge.
+flush	flush#coplanar	Adverb	Position the sensor {flush} with the reference plane.
+flush	flush#coplanar	Adverb	Install the inspection plate {flush} with the fuselage panel.
+flush	flush#coplanar	Adverb	Align the guide rail {flush} with the mounting datum.
+flush	flush#coplanar	Adverb	Fit the replacement tile {flush} with adjacent tiles.
+flush	flush#coplanar	Adverb	Install the drain plug {flush} with the sump surface.
+flush	flush#even-surface	Adjective	The access panel is {flush} with the fuselage skin after tightening all screws.
+flush	flush#even-surface	Adjective	Keep the bolt head {flush} with the countersunk bracket.
+flush	flush#even-surface	Adjective	An {flush} cover reduces airflow disturbance around the sensor.
+flush	flush#even-surface	Adjective	The display bezel is {flush} with the instrument panel.
+flush	flush#even-surface	Adjective	The gasket groove leaves the seal {flush} with the manifold face.
+flush	flush#even-surface	Adjective	Check that the repaired pipe surface is {flush} with the surrounding insulation.
+flush	flush#even-surface	Adjective	The robotic gripper pad must be {flush} with the reference plate.
+flush	flush#even-surface	Adjective	A {flush} floor panel prevents a wheel from catching on the joint.
+flush	flush#fluid-flush	Noun	Complete a final {flush} before returning the pump to service.
+flush	flush#fluid-flush	Noun	An extended {flush} is needed when sealant enters the manifold.
+flush	flush#fluid-flush	Noun	The filter element is replaced after every third hydraulic {flush}.
+flush	flush#fluid-flush	Noun	Set the collection tank below the outlet for the {flush}.
+flush	flush#fluid-flush	Noun	Perform a {flush} of the cooling loop with deionized water.
+flush	flush#fluid-flush	Noun	The scheduled coolant {flush} removes corrosion products from the radiator.
+flush	flush#fluid-flush	Noun	During the {flush}, collect outlet liquid until it runs clear.
+flush	flush#fluid-flush	Noun	The technician stopped the {flush} when the return pressure exceeded 20 psi.
+flush	flush#fluid-flush	Noun	The maintenance card specifies a {flush} before installing the new filter.
+flush	flush#fluid-flush	Noun	The {flush} clears metal debris from the servo valve passages.
+flush	flush#fluid-flush	Noun	After the chemical {flush}, rinse the line with clean water.
+flush	flush#fluid-flush	Noun	Measure the pH of the liquid during the battery cooling {flush}.
+flush	flush#fluid-flush	Noun	The operator must vent the pump before beginning the {flush}.
+flush	flush#fluid-flush	Noun	The first {flush} produced dark oil from the bearing housing.
+flush	flush#rinse	Verb	{Flush} the hydraulic hose with approved fluid before installation.
+flush	flush#rinse	Verb	{Flush} the chemical feed line until the effluent is clear.
+flush	flush#rinse	Verb	{Flush} each syringe channel with 10 mL of sterile water.
+flush	flush#rinse	Verb	{Flush} the heat exchanger until no foam leaves the outlet.
+flush	flush#rinse	Verb	After replacement, {flush} the filter housing to remove assembly debris.
+flush	flush#rinse	Verb	The operator {flushes} the pump casing with clean water after maintenance.
+flush	flush#rinse	Verb	The technician {flushed} the old coolant from the radiator.
+flush	flush#rinse	Verb	The mechanic {flushed} the reservoir with fresh hydraulic oil.
+inspect	inspect#examine	Verb	The technician {inspected} the cable insulation under a bright lamp.
+inspect	inspect#examine	Verb	{Inspecting} the pump seal revealed a cut on its outer lip.
+inspect	inspect#examine	Verb	The mechanic {inspects} each hose for abrasion during the weekly service.
+inspect	inspect#examine	Verb	{Inspect} the circuit board for burned components and lifted tracks.
+inspect	inspect#examine	Verb	The crew {inspected} the aircraft door hinges after the hard landing.
+inspect	inspect#examine	Verb	The operator {inspects} the filter element during every pressure check.
+inspect	inspect#examine	Verb	{Inspecting} the fan blades is required after an overspeed event.
+inspect	inspect#examine	Verb	{Inspect} the drain plug and surrounding seal for oil leakage.
+inspect	inspect#verify-accuracy	Verb	{Inspect} the torque wrench setting against the calibration certificate before use.
+inspect	inspect#verify-accuracy	Verb	The technician {inspected} the pressure gauge for accuracy against a 100 psi standard.
+inspect	inspect#verify-accuracy	Verb	{Inspecting} the temperature probe against the reference bath confirmed a 0.2 C offset.
+inspect	inspect#verify-accuracy	Verb	The controller {inspects} each sensor value for accuracy before accepting the data.
+inspect	inspect#verify-accuracy	Verb	The laboratory {inspected} the fuel measurement records against the test standard.
+inspect	inspect#verify-accuracy	Verb	{Inspecting} the timer against the frequency standard revealed a two-second error.
+inspect	inspect#verify-accuracy	Verb	{Inspect} the wiring diagram against the installed terminal numbers for accuracy.
+inspect	inspect#verify-accuracy	Verb	The quality engineer {inspected} the test results against acceptance limits.
+inspect	inspect#verify-accuracy	Verb	The software {inspects} the measured voltage against the programmed limit.
+inspect	inspect#verify-accuracy	Verb	{Inspect} the ruler markings against the certified dimensional standard.
+inspect	inspect#verify-accuracy	Verb	The operator {inspected} the tachometer reading against a handheld reference.
+inspect	inspect#verify-accuracy	Verb	The technician {inspects} the pressure log for transcription errors.
+inspect	inspect#verify-accuracy	Verb	{Inspecting} the sample weight against the balance display found a mismatch.
+inspect	inspect#verify-accuracy	Verb	{Inspect} the valve timing against the engine timing chart.
+install	install#put-in-place	Verb	{Install} the new filter element in the housing.
+install	install#put-in-place	Verb	The mechanic {installed} the bracket on the left engine mount.
+install	install#put-in-place	Verb	{Installing} the sensor in the marked hole requires a 6 mm wrench.
+install	install#put-in-place	Verb	{Install} the replacement fuse in position F4.
+install	install#put-in-place	Verb	The technician {installs} the gasket between the flange faces.
+install	install#put-in-place	Verb	{Install} the drain plug in the threaded sump opening.
+install	install#put-in-place	Verb	The crew {installed} the access panel over the avionics bay.
+install	install#put-in-place	Verb	The robot arm {installs} the gripper pad on the tool plate.
+install	install#put-in-place	Verb	{Installing} the cable clamp at the indicated hole prevents movement.
+install	install#put-in-place	Verb	{Install} the nozzle into the injector body without twisting the seal.
+install	install#put-in-place	Verb	{Install} the guard over the exposed coupling.
+install	install#put-in-place	Verb	The technician {installs} the thermocouple through the boss on the pipe.
+install	install#put-in-place	Verb	{Install} the replacement window in the cabin frame.
+install	install#put-in-place	Verb	The crew {installed} the pipe support beneath the manifold.
+install	install#put-in-place	Verb	{Installing} the valve actuator on the stem completes the hardware placement.
+install	install#put-in-place	Verb	The electrician {installed} the terminal block on the DIN rail.
+install	install#put-in-place	Verb	{Install} the shield plate between the battery and controller.
+install	install#put-in-place	Verb	The mechanic {installs} the impeller on the pump shaft.
+install	install#put-in-place	Verb	The technician {installed} the beacon bracket on the fuselage.
+install	install#set-up	Verb	The technician {installed} the pump and configured its speed limit before the first test.
+install	install#set-up	Verb	The technician is {installing} the networked sensor for automatic operation.
+install	install#set-up	Verb	{Install} the analyzer, connect the gas lines, and run its startup routine.
+install	install#set-up	Verb	The crew {installs} the robot cell and programs its travel limits.
+install	install#set-up	Verb	{Installing} the backup generator includes wiring the transfer switch and setting the controller.
+install	install#set-up	Verb	{Install} the valve assembly and adjust the actuator feedback before operation.
+install	install#set-up	Verb	The technician {installs} the drive unit, then performs its alignment procedure.
+install	install#set-up	Verb	After the electrician {installed} the charging station, he configured the current limit.
+lead	lead#electrical-lead	Noun	Inspect each {lead} for damaged insulation before you energize the control cabinet.
+lead	lead#electrical-lead	Noun	The meter {lead} carries the measured voltage from the test point to the multimeter.
+lead	lead#electrical-lead	Noun	Secure the loose {lead} against the wiring harness with two cable ties.
+lead	lead#electrical-lead	Noun	Do not connect a {lead} to a terminal that exceeds its rated voltage.
+lead	lead#electrical-lead	Noun	Replace the {lead} if its terminal lug is cracked or discolored.
+lead	lead#electrical-lead	Noun	Route the thermocouple {lead} away from the ignition coil and exhaust manifold.
+lead	lead#electrical-lead	Noun	Make sure that each {lead} is fully inserted into its spring terminal.
+lead	lead#electrical-lead	Noun	The test {lead} must remain clear of the rotating fan and drive belt.
+lead	lead#ignition-timing	Noun	Set the ignition {lead} to 8 degrees before top dead center.
+lead	lead#ignition-timing	Noun	Adjust the spark {lead} after installing the replacement crankshaft sensor.
+lead	lead#ignition-timing	Noun	The service data specifies 12 degrees of {lead} at 900 revolutions per minute.
+lead	lead#ignition-timing	Noun	Reduce the ignition {lead} if the engine knocks during the load test.
+lead	lead#ignition-timing	Noun	Incorrect spark {lead} can raise exhaust temperature and damage the turbine.
+lead	lead#ignition-timing	Noun	Record the measured {lead} before you alter the distributor position.
+lead	lead#ignition-timing	Noun	A retarded spark {lead} may cause hard starting in cold conditions.
+lead	lead#ignition-timing	Noun	Do not adjust ignition {lead} while the engine is running without guards.
+lead	lead#jumper-cable	Noun	Keep the jumper {lead} clear of the cooling fan while starting the engine.
+lead	lead#jumper-cable	Noun	Replace the jumper {lead} if the copper strands are exposed near either clamp.
+lead	lead#jumper-cable	Noun	Disconnect the black {lead} from the chassis before disconnecting the donor battery.
+lead	lead#jumper-cable	Noun	The maintenance kit contains a red battery {lead} for emergency starting.
+lead	lead#jumper-cable	Noun	Do not use a wet {lead} to connect batteries in an electrical compartment.
+lead	lead#jumper-cable	Noun	Inspect the clamp on each booster {lead} for loose jaws or corrosion.
+lead	lead#jumper-cable	Noun	Connect the red battery {lead} to the positive terminal of the disabled vehicle.
+lead	lead#jumper-cable	Noun	Attach one end of the black {lead} to the donor battery negative post.
+lead	lead#jumper-cable	Noun	A damaged booster {lead} can overheat when the starter motor draws current.
+lead	lead#jumper-cable	Noun	Place the clamp of the negative {lead} on an unpainted engine bracket.
+lead	lead#metal	Noun	Wear gloves when you handle the {lead} counterweights removed from the control surface.
+lead	lead#metal	Noun	Collect all {lead} fragments in the marked hazardous-material container.
+lead	lead#metal	Noun	The radiation shield contains a dense {lead} plate around the inspection source.
+lead	lead#metal	Noun	The machinist cuts the {lead} strip with a guarded shear.
+lead	lead#metal	Noun	Inspect the {lead} flashing for cracks before installing it around the cable entry.
+lead	lead#metal	Noun	A layer of {lead} blocks much of the gamma radiation from the instrument.
+lead	lead#metal	Noun	The battery terminal uses a small {lead} alloy insert for corrosion resistance.
+lead	lead#metal	Noun	The {lead} gasket material must not contact potable water in this assembly.
+lead	lead#route	Verb	The guide vanes {lead} airflow through the compressor inlet.
+lead	lead#route	Verb	The marked conduit {leads} the sensor wiring into the upper junction box.
+lead	lead#route	Verb	A flexible hose {leads} fuel vapor from the tank to the carbon canister.
+lead	lead#route	Verb	The transfer line {leads} oil through the filter before it reaches the bearing.
+lead	lead#route	Verb	The cable tray {leads} all control wires along the starboard frame.
+lead	lead#route	Verb	A dedicated duct {leads} cooling air to the inverter enclosure.
+lead	lead#route	Verb	The trench {led} rainwater toward the sump during the pressure test.
+lead	lead#route	Verb	The groove {led} the lubricant into the bearing during initial rotation.
+lock	lock#become-rigid	Verb	The bearing {locked} after its grease leaked from the damaged seal.
+lock	lock#become-rigid	Verb	The pump shaft {locked} during the run because the inlet filter was blocked.
+lock	lock#become-rigid	Verb	The gearbox {locked} when a broken tooth entered the gear mesh.
+lock	lock#become-rigid	Verb	The frozen actuator rod may {lock} when moisture enters the exposed cylinder.
+lock	lock#become-rigid	Verb	A seized hinge can {lock} in place before the access door reaches its stop.
+lock	lock#become-rigid	Verb	The valve stem {locks} when corrosion builds up inside the guide sleeve.
+lock	lock#become-rigid	Verb	The latch pin can {lock} after ice forms around the exposed mechanism.
+lock	lock#become-rigid	Verb	A dry pivot {locks} as its bushing temperature rises during operation.
+lock	lock#engaged	Verb	The relay {locked} the heater circuit engaged during the defrost cycle.
+lock	lock#engaged	Verb	Keep the clutch pedal released so the spring {locks} the coupling engaged.
+lock	lock#engaged	Verb	The pawl {locks} the drive gear engaged when the hoist carries a load.
+lock	lock#engaged	Verb	Check that the interlock {locks} the guard circuit engaged before starting the motor.
+lock	lock#engaged	Verb	When energized, the relay {locks} the bypass circuit engaged.
+lock	lock#engaged	Verb	Press the lever until the detent {locks} the pump clutch engaged.
+lock	lock#engaged	Verb	A spring-loaded pin {locks} the selector engaged at the selected speed.
+lock	lock#engaged	Verb	Verify that the dog clutch {locks} the auxiliary drive engaged under load.
+lock	lock#engaged	Verb	The control logic {locks} the safety circuit engaged until the reset button is pressed.
+lock	lock#engaged	Verb	The cam {locks} the feed mechanism engaged for the next indexing stroke.
+lock	lock#engaged	Verb	A mechanical detent {locks} the valve control engaged at the calibrated setting.
+lock	lock#engaged	Verb	The latch {locks} the stabilizer deployed and engaged before flight.
+lock	lock#engaged	Verb	The interlock must {lock} the cutter engaged before the guard can open.
+lock	lock#engaged	Verb	The selector catch {locks} the transmission range engaged after the lever moves.
+lock	lock#secure	Verb	{Lock} the fuel filler door with its service key before returning the vehicle.
+lock	lock#secure	Verb	The operator {locks} the chemical store with the restricted-area key.
+lock	lock#secure	Verb	Secure the instrument case and {lock} it before transporting the calibration equipment.
+lock	lock#secure	Verb	{Lock} the valve cabinet after closing both isolation valves.
+lock	lock#secure	Verb	The supervisor {locks} the server rack after removing the diagnostic tablet.
+lock	lock#secure	Verb	The inspector {locks} the hazardous-material locker at the end of the shift.
+lock	lock#secure	Verb	{Lock} the engine access panel and check the red security indicator.
+lock	lock#secure	Verb	{Lock} the tool container before moving it across the worksite.
+lock	lock#secure	Verb	The service engineer {locks} the remote enclosure after resetting the controller.
+lock	lock#secure	Verb	The technician {locked} the tool drawer with a numbered padlock.
+lock	lock#secure	Verb	The maintenance worker {locked} the rolling service cart to prevent unauthorized access.
+lock	lock#secure	Verb	The crew {locked} the spare-parts cabinet before the night shift.
+lock	lock#secure	Verb	The operator {locked} the mobile generator cabinet with its padlock.
+lock	lock#secure	Verb	The mechanic {locked} the wheel-equipment cabinet after inventory.
+mount	mount#mounting-fixture	Noun	Inspect the engine {mount} for cracks before starting the aircraft auxiliary unit.
+mount	mount#mounting-fixture	Noun	The sensor {mount} holds the probe at a fixed angle beside the duct.
+mount	mount#mounting-fixture	Noun	Check each pump {mount} for loose bolts and distorted rubber inserts.
+mount	mount#mounting-fixture	Noun	A cracked instrument {mount} can allow the display to vibrate against its panel.
+mount	mount#mounting-fixture	Noun	The antenna {mount} uses four studs to attach the assembly to the roof.
+mount	mount#mounting-fixture	Noun	Measure the motor {mount} height before aligning the drive coupling.
+mount	mount#mounting-fixture	Noun	Inspect the landing-gear {mount} where it joins the airframe spar.
+mount	mount#mounting-fixture	Noun	Tighten the bolts on the fan {mount} to the specified torque.
+position	position#place	Noun	The sensor occupies a fixed {position} 25 mm below the upper mounting hole.
+position	position#place	Noun	The {position} of the drain port at the lowest point prevents fluid retention.
+position	position#place	Noun	The {position} of the hydraulic port determines which hose can reach it.
+position	position#place	Noun	Measure the actuator's {position} in three axes after the alignment check.
+position	position#spatial-relation	Noun	The {position} of the antenna is horizontal and parallel to the roof surface.
+position	position#spatial-relation	Noun	Record the {position} of the piston relative to the top dead center mark.
+position	position#spatial-relation	Noun	Check the {position} of the selector arrow against the engraved range marks.
+position	position#spatial-relation	Noun	The {position} of the connector key determines the correct insertion direction.
+position	position#spatial-relation	Noun	Document the {position} of the sensor face relative to the passing gear teeth.
+position	position#spatial-relation	Noun	The {position} of the drain tube slopes downward toward the collection tank.
+remove	remove#take-away	Verb	{Remove} all metal chips from the gearbox before fitting the new seal.
+remove	remove#take-away	Verb	{Remove} the temporary shipping bracket before you cycle the landing gear.
+remove	remove#take-away	Verb	The service crew {removes} the old filter before flushing the fuel line.
+remove	remove#take-away	Verb	{Removing} the damaged hose exposes the manifold connection for inspection.
+remove	remove#take-away	Verb	{Removed} from the test stand, the actuator must remain capped.
+remove	remove#take-away	Verb	{Removing} the loose insulation prevents it from entering the cooling fan.
+remove	remove#take-away	Verb	{Removed} from the housing, the cracked bearing is ready for disposal.
+remove	remove#take-away	Verb	The mechanic {removes} the access cover after isolating the battery.
+run	run#activate	Verb	{Run} the hydraulic pump for two minutes to circulate the flushing fluid.
+run	run#activate	Verb	The controller {runs} the cooling fan when cabinet temperature exceeds 40 degrees C.
+run	run#activate	Verb	{Run} the engine at 1,200 rpm until the oil pressure stabilizes.
+run	run#activate	Verb	The operator {runs} the conveyor after confirming that the guard is locked.
+run	run#activate	Verb	{Run} the heater for ten minutes before measuring the chamber temperature.
+run	run#activate	Verb	{Run} the gearbox under no load before connecting the driven shaft.
+run	run#activate	Verb	The controller {runs} the purge fan for thirty seconds after shutdown.
+run	run#activate	Verb	The operator {runs} the lathe at 600 rpm for the surface inspection.
+run	run#activate	Verb	{Run} the actuator once with the emergency stop within reach.
+run	run#activate	Verb	{Running} the motor at low speed checks the new drive belt.
+run	run#activate	Verb	{Running} the pump intermittently reduces heat during the priming procedure.
+run	run#execute	Verb	{Run} the diagnostic program from the maintenance console.
+run	run#execute	Verb	The service computer {runs} a checksum utility against the firmware image.
+run	run#execute	Verb	{Run} the simulation with the new valve parameters and save the results.
+run	run#execute	Verb	The embedded unit {runs} the startup sequence when the master switch closes.
+run	run#execute	Verb	{Run} the data conversion tool on a copy of the measurement file.
+run	run#execute	Verb	The computer {runs} the encoding routine after detecting a valid memory card.
+run	run#execute	Verb	{Run} the sensor diagnostic twice and compare the reported temperatures.
+run	run#execute	Verb	The navigation unit {runs} the alignment calculation from stored gyro data.
+run	run#execute	Verb	{Run} the communications test with the remote unit disconnected.
+run	run#execute	Verb	The controller {runs} the shutdown procedure when the coolant level is low.
+run	run#execute	Verb	{Running} the update script requires external power and a stable network link.
+run	run#execute	Verb	{Running} the control algorithm at 100 Hz prevents delayed actuator commands.
+run	run#execute	Verb	{Running} the firmware test places the controller in a restricted operating mode.
+run	run#execute	Verb	{Running} the log analysis utility identifies missing time stamps.
+run	run#operate	Verb	The generator {runs} normally when its output breaker is closed.
+run	run#operate	Verb	The indicator lamp shows that the auxiliary heater {runs}.
+run	run#operate	Verb	The hydraulic motor {runs} smoothly after the filter has been replaced.
+run	run#operate	Verb	The actuator {runs} for three seconds, then returns to its home position.
+run	run#operate	Verb	Do not leave the compressor {running} while the service cover is removed.
+run	run#operate	Verb	If the pressure falls below 20 psi, the relief pump stops {running}.
+run	run#operate	Verb	Make sure that the cooling circuit is {running} before opening the bypass.
+run	run#operate	Verb	The backup battery keeps the monitoring unit {running} during a power interruption.
+run	run#testing	Noun	Complete one {run} with the test valve closed and one with it open.
+run	run#testing	Noun	The first {run} showed a pressure drop of 4 psi across the filter.
+run	run#testing	Noun	Record the motor current after each {run} of the endurance test.
+run	run#testing	Noun	A {run} at 80 percent load checks the generator temperature.
+run	run#testing	Noun	The acceptance {run} measures leakage at three pressure settings.
+run	run#testing	Noun	Compare the vibration trace from this {run} with the baseline trace.
+run	run#testing	Noun	An unloaded {run} verifies that the replacement coupling turns freely.
+run	run#testing	Noun	The final {run} passed after the technician tightened the terminal screws.
+seal	seal#close	Verb	The installer {seals} the inspection window with a transparent protective film.
+seal	seal#close	Verb	The technician {seals} the battery compartment after checking the vent line.
+seal	seal#close	Verb	The operator {sealed} the temporary duct opening with reinforced tape.
+seal	seal#close	Verb	{Seal} the inspection opening with the approved adhesive-backed closure patch.
+seal	seal#close	Verb	{Sealing} the access hatch with the specified strip completes the enclosure assembly.
+seal	seal#close	Verb	{Seal} the sampling port with a clean cap before moving the container.
+seal	seal#close	Verb	The repair crew {seals} the removed panel back into the fuselage skin.
+seal	seal#close	Verb	{Sealing} the service aperture prevents unauthorized access to the adjustment screw.
+seal	seal#closure-fastener	Noun	The replacement {seal} must fit tightly in the machined groove.
+seal	seal#closure-fastener	Noun	Check that the {seal} remains seated after tightening the four cover bolts.
+seal	seal#closure-fastener	Noun	Use a new {seal} whenever the pressure regulator is disassembled.
+seal	seal#closure-fastener	Noun	The door {seal} compresses against the frame when the latches engage.
+seal	seal#closure-fastener	Noun	Measure the {seal} diameter before ordering a replacement part.
+seal	seal#closure-fastener	Noun	Do not install a {seal} that has hardened or changed shape.
+seal	seal#closure-fastener	Noun	The {seal} around the fuel cap prevents vapor escape during storage.
+seal	seal#closure-fastener	Noun	Apply a thin film of lubricant to the {seal} before insertion.
+seal	seal#moisture-coat	Noun	Apply one even {seal} to the exposed wood before fitting the exterior panel.
+seal	seal#moisture-coat	Noun	Remove loose paint before applying the moisture-resistant {seal}.
+seal	seal#moisture-coat	Noun	Allow the {seal} to cure for 24 hours before exposing the panel to water.
+seal	seal#moisture-coat	Noun	Apply the second {seal} after the first coat becomes tack-free.
+seal	seal#moisture-coat	Noun	Brush the {seal} across the concrete joint in a single direction.
+seal	seal#moisture-coat	Noun	Inspect the dried {seal} after the water spray test is complete.
+seal	seal#seal-tight	Verb	{Seal} the hose connection before pressurizing the hydraulic circuit.
+seal	seal#seal-tight	Verb	The installer {seals} the window frame against wind and rain.
+seal	seal#seal-tight	Verb	{Sealing} the drain plug with thread compound prevents oil leakage.
+seal	seal#seal-tight	Verb	{Seal} the pipe joint after removing all oil from its threads.
+seal	seal#seal-tight	Verb	The technician {seals} the sensor penetration with a flexible elastomer.
+seal	seal#seal-tight	Verb	{Sealing} the seam now prevents moisture from reaching the steel reinforcement.
+seal	seal#seal-tight	Verb	The repair compound {sealed} the crack and stopped the coolant leak.
+seal	seal#seal-tight	Verb	{Sealed} correctly, the enclosure withstands the specified water spray test.
+support	support#bear-weight	Verb	The aluminum bracket {supports} the instrument panel at four attachment points.
+support	support#bear-weight	Verb	{Support} the open hatch with its brace before entering the compartment.
+support	support#bear-weight	Verb	The steel frame {supports} the pressure vessel above the floor.
+support	support#bear-weight	Verb	{Support} the actuator body while disconnecting the hydraulic lines.
+support	support#bear-weight	Verb	{Supporting} the pipe near the valve prevents stress on the threaded joint.
+support	support#bear-weight	Verb	The crossbeam {supported} the platform while the hoist was repositioned.
+support	support#bear-weight	Verb	{Supporting} the cable tray at 600 mm intervals prevents sagging.
+support	support#bear-weight	Verb	{Supported} by two brackets, the duct remains clear of the rotating fan.
+support	support#bearing-weight	Noun	The damaged landing gear requires additional {support} before technicians remove the wheel assembly.
+support	support#bearing-weight	Noun	The pressure plate provides {support} for the seal during the hydraulic test.
+support	support#bearing-weight	Noun	Check that the engine mount has enough {support} for the 240 kilogram load.
+support	support#bearing-weight	Noun	Proper {support} keeps the hose coupling aligned during pressure cycling.
+support	support#bearing-weight	Noun	A bonded doubler improves {support} around the damaged access opening.
+support	support#bearing-weight	Noun	The platform lost {support} when corrosion weakened its lower frame.
+support	support#bearing-weight	Noun	The reinforced joint gives better {support} during repeated landing impacts.
+support	support#bearing-weight	Noun	Confirm adequate {support} before placing the loaded container on the platform.
+support	support#support-device	Noun	Replace the bent {support} beneath the fuel tank with part 7A-214.
+support	support#support-device	Noun	Position each {support} directly below the gearbox lifting points.
+support	support#support-device	Noun	The adjustable {support} holds the exhaust pipe 35 mm above the frame.
+support	support#support-device	Noun	Tighten the clamp around the pipe {support} to 18 N m.
+support	support#support-device	Noun	Do not remove the temporary {support} until the overhead actuator is secured.
+support	support#support-device	Noun	Fit a second {support} beneath the long conduit before routing cables.
+support	support#support-device	Noun	The landing-gear {support} includes a locking pin and a height adjustment screw.
+support	support#support-device	Noun	Check that both {supports} contact the chassis evenly before loading the vehicle.
+support	support#support-device	Noun	Replace any {support} that has collapsed under the battery tray.
+support	support#support-device	Noun	A threaded {support} permits fine adjustment of the antenna height.
+support	support#support-device	Noun	The test stand has four {supports} for the robotic arm assembly.
+support	support#support-device	Noun	Do not use a wooden {support} near the hot exhaust manifold.
+support	support#support-device	Noun	The hydraulic {support} has a swivel base for uneven workshop floors.
+support	support#support-device	Noun	Use the folding {support} when servicing the underside of the vehicle.
+support	support#support-structure	Noun	Inspect the wing {support} for corrosion at every riveted joint.
+support	support#support-structure	Noun	The concrete {support} forms the foundation for the vertical storage tank.
+support	support#support-structure	Noun	Remove loose paint from the frame {support} before applying primer.
+support	support#support-structure	Noun	The bridge {support} transfers vehicle loads into the reinforced concrete piers.
+support	support#support-structure	Noun	Check the tower {support} for distortion after the high-wind event.
+support	support#support-structure	Noun	Do not drill through the main {support} without engineering approval.
+support	support#support-structure	Noun	Measure settlement beneath the tank {support} after filling the vessel.
+support	support#support-structure	Noun	The gantry {support} surrounds the robot work envelope and carries the rails.
+support	support#support-structure	Noun	The pipe rack {support} keeps the process lines above the access route.
+support	support#support-structure	Noun	Inspect each weld on the boiler {support} during the annual shutdown.
+support	support#support-structure	Noun	Install the diagonal brace between the two frame {supports}.
+support	support#support-structure	Noun	Check the masonry {support} beneath the chimney for water damage.
+support	support#support-structure	Noun	The pipeline {support} transfers thermal expansion forces into the foundation.
+support	support#support-structure	Noun	Replace the damaged floor {support} before positioning the press.
+tap	tap#cut	Verb	Use a guide bushing when {tapping} the thin sheet-metal bracket.
+tap	tap#cut	Verb	Ensure that the tap is lubricated before the tool {taps} the final hole.
+tap	tap#cut	Verb	{Tap} the 6 mm pilot hole with an M8 by 1.25 spiral-flute tap.
+tap	tap#cut	Verb	{Tap} the mounting plate square to the surface before fitting the bolt.
+tap	tap#cut	Verb	{Tap} each blind hole with a bottoming tap after drilling the pilot diameter.
+tap	tap#cut	Verb	{Tap} the brass manifold with an M10 tool and inspect the finished thread.
+tap	tap#cut	Verb	The operator is {tapping} the holes in sequence to keep the bolt pattern accurate.
+tap	tap#cut	Verb	The fixture holds the workpiece while the machine is {tapping} the mounting holes.
+tap	tap#cut	Verb	This powered head {taps} twelve holes in the gearbox cover during one cycle.
+tap	tap#cut	Verb	The technician {tapped} the threaded insert to restore its damaged internal thread.
+tap	tap#cut	Verb	The machinist {tapped} four holes in the steel flange using a rigid guide.
+tap	tap#cut	Verb	The repair crew {tapped} the stripped hole one size larger for a new fastener.
+tap	tap#cut	Verb	The tapping head {taps} the holes to the programmed depth and stops automatically.
+tap	tap#cut	Verb	The repair procedure {taps} the replacement sleeve before it enters the cylinder.
+tap	tap#hydrant	Noun	Inspect the {tap} gasket for leakage after the hose is disconnected.
+tap	tap#hydrant	Noun	Turn the {tap} fully clockwise to stop water flow from the service pipe.
+tap	tap#hydrant	Noun	The drain {tap} is mounted at the lowest point of the storage tank.
+tap	tap#hydrant	Noun	Replace the corroded {tap} before reconnecting the potable-water hose.
+tap	tap#hydrant	Noun	The two {taps} feed separate hoses during engine wash operations.
+tap	tap#hydrant	Noun	Check that both {taps} are closed before pressurizing the distribution line.
+tap	tap#hydrant	Noun	A frozen {tap} can split the pipe when water expands inside the valve body.
+tap	tap#hydrant	Noun	Install a protective cap on the {tap} after draining the service hose.
+tap	tap#tapping-point	Noun	Connect the pressure gauge to the test {tap} on the hydraulic manifold.
+tap	tap#tapping-point	Noun	The pressure {tap} reads 3,000 psi when the pump reaches operating speed.
+tap	tap#tapping-point	Noun	Install a blanking plug in the unused {tap} before starting the pressure test.
+tap	tap#tapping-point	Noun	The electrical {tap} supplies 24 V to the warning-light circuit.
+tap	tap#tapping-point	Noun	Measure voltage at the battery {tap} before replacing the control module.
+tap	tap#tapping-point	Noun	The transformer has three {taps} for selecting the required output voltage.
+tap	tap#tapping-point	Noun	Check all winding {taps} for loose connections and heat damage.
+tap	tap#tapping-point	Noun	The signal {tap} sends a position reference to the servo controller.
+tap	tap#tapping-point	Noun	The test {tap} allows pressure measurement without removing the hose.
+tap	tap#tapping-point	Noun	Install a cap on every unused hydraulic {tap} to prevent contamination.
+tap	tap#tapping-point	Noun	Select the high-voltage {tap} only when the converter is fully isolated.
+tap	tap#tapping-point	Noun	The manifold contains separate {taps} for inlet pressure and outlet pressure.
+tap	tap#tapping-point	Noun	Tighten the fitting at the instrument {tap} to 12 N m.
+tap	tap#tapping-point	Noun	The current {tap} connects the ammeter to the motor supply conductor.
+tap	tap#tip	Verb	{Tap} the bearing seal gently with a plastic handle until it seats evenly.
+tap	tap#tip	Verb	The actuator {taps} the limit switch when the carriage reaches its end position.
+tap	tap#tip	Verb	The test probe {taps} the contact surface without damaging the coating.
+tap	tap#tip	Verb	Do not {tap} the glass lens with a metal tool.
+tap	tap#tip	Verb	{Tap} the float arm gently and verify that the fuel indication changes.
+tap	tap#tip	Verb	The solenoid plunger {taps} the stop at low voltage and produces a clicking sound.
+tap	tap#tip	Verb	The technician {tapped} the connector lightly before repeating the continuity test.
+tap	tap#tip	Verb	The technician {tapped} the dust filter to remove loose particles before inspection.
+tap	tap#tool	Noun	Select a size M6 {tap} for the predrilled hole in the bracket.
+tap	tap#tool	Noun	Apply cutting oil to the {tap} before starting the internal thread.
+tap	tap#tool	Noun	The machine {tap} is held in a collet and aligned with the spindle.
+tap	tap#tool	Noun	Choose a plug {tap} when the pilot hole has already received a taper thread.
+tap	tap#tool	Noun	Clean the {tap} with a brush; do not wipe its sharp flutes by hand.
+tap	tap#tool	Noun	The three-piece set contains taper, plug, and bottoming {taps}.
+tap	tap#tool	Noun	A carbide {tap} is required for the hardened insert specified in this repair.
+tap	tap#tool	Noun	Keep the {tap} perpendicular to the work surface throughout the cutting operation.
+torque	torque#twisting-force	Noun	Apply 45 N m of {torque} to the crankshaft pulley bolt.
+torque	torque#twisting-force	Noun	Increase the {torque} gradually while monitoring the gearbox output shaft.
+torque	torque#twisting-force	Noun	The motor produces maximum {torque} at 1,800 revolutions per minute.
+torque	torque#twisting-force	Noun	The two drive shafts transmit equal {torques} to the differential.
+torque	torque#twisting-force	Noun	Compare the measured {torques} with the values in Table 4.
+torque	torque#twisting-force	Noun	A reaction arm prevents the housing from turning under applied {torque}.
+torque	torque#twisting-force	Noun	The actuator generates sufficient {torque} to move the valve against line pressure.
+torque	torque#twisting-force	Noun	Verify that both fasteners receive the same {torque} during installation.

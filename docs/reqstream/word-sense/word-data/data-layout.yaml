@@ -37,13 +37,26 @@ sections:
 
               - id: WordSense-WordData-DataLayout-Write
                 title: >-
-                  DataLayout shall write a table file with LF line ends and no byte-order mark, and shall refuse a cell
-                  that contains a tab or a line break.
+                  DataLayout shall write a table file atomically (a temporary file that replaces the target only when
+                  every row was written) with LF line ends and no byte-order mark, and shall refuse a cell that
+                  contains a tab or a line break without changing an existing file.
                 tags: [unit]
                 justification: |
                   A cell that breaks the format would corrupt the table silently; the writer is the last place it can
-                  be caught.
+                  be caught, and a refused write must not leave a half-written table.
                 tests:
                   - WordSenseBuilder_DataLayout_CheckCell_Separators_AreRejected
                   - WordSenseBuilder_DataLayout_WriteTable_WritesLfWithoutBom
                   - WordSenseBuilder_DataLayout_WriteTable_BadCell_Throws
+                  - WordSenseBuilder_DataLayout_WriteTable_FailureHalfWay_KeepsExistingFile
+
+              - id: WordSense-WordData-DataLayout-Partition
+                title: >-
+                  DataLayout shall place a row of a partitioned table in the file of the lemma it reaches through its
+                  entry, sense, synset or sense key, and shall give no file for a row whose parent is unknown.
+                tags: [unit]
+                justification: |
+                  The importer and the validator must place rows by one rule, so that a change to one lemma stays in
+                  one file and a dangling reference is reported as a foreign key problem.
+                tests:
+                  - WordSenseBuilder_PartitionResolver_KeyFor_FollowsTheParents

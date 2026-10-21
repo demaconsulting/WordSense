@@ -5,42 +5,46 @@ using System.Text;
 namespace DemaConsulting.WordSense.Onnx;
 
 /// <summary>
-///     The trained weights of one model: the feature space description and one classifier per ambiguous lemma.
+///     The trained weights of one model: the feature space description and one classifier per trained lemma.
 /// </summary>
 /// <param name="ModelId">The identifier of the model the weights were trained for.</param>
-/// <param name="ClassHash">The SHA-256 of the class table of the word image the weights were trained for (<c>WordImage.ClassHash</c>).</param>
+/// <param name="InventoryHash">The 32-byte hash of the sense inventory of the word image the weights were trained for (<c>WordImage.InventoryHash</c>); the reader returns it unchecked.</param>
 /// <param name="Dimension">The dense feature dimension, which is the hidden size of the encoder.</param>
 /// <param name="Mean">The global mean vector subtracted from a pooled vector before scoring; length <paramref name="Dimension"/>.</param>
-/// <param name="Lemmas">The classifiers, one per lemma group.</param>
-internal sealed record WeightsData(string ModelId, byte[] ClassHash, int Dimension, float[] Mean, IReadOnlyList<WeightedLemma> Lemmas);
+/// <param name="Lemmas">The classifiers, one per trained lemma.</param>
+internal sealed record WeightsData(string ModelId, byte[] InventoryHash, int Dimension, float[] Mean, IReadOnlyList<WeightedLemma> Lemmas);
 
 /// <summary>
-///     Reads the binary weights of an encoder model (<c>WSX2</c>, Brotli-compressed). The writer lives in the
+///     Reads the binary weights of an encoder model (<c>WSX3</c>, Brotli-compressed). The writer lives in the
 ///     repository's build tool.
 /// </summary>
 /// <remarks>
 ///     <para>
-///     Content after the Brotli layer: the magic <c>WSX2</c>; the model id as a length-prefixed UTF-8 string; the
-///     32-byte class hash (SHA-256 of the class table of the word image the weights were trained for); the dimension as
-///     a varint; a flag byte that is always 0 (dense weights); the mean as little-endian 32-bit floats;
-///     the lemma group count as a varint; then per group, in ordinal order of the name: the name, the abstain margin (float), the
-///     model kind (byte: 1 binary, 2 one-versus-rest), the sense count (varint), per sense the class id as a string, then
-///     the bias floats (one per row) and the weight floats (row-major). A binary model has exactly two senses.
+///     Content after the Brotli layer: the magic <c>WSX3</c>; the model id as a length-prefixed UTF-8 string; the
+///     32-byte inventory hash (SHA-256 of the sense inventory of the word image the weights were trained for); the
+///     dimension as a varint; a flag byte that is always 0 (dense weights); the mean as little-endian 32-bit floats;
+///     the lemma count as a varint; then per lemma, in ordinal order of the lemma: the lemma, the fine threshold and the
+///     group threshold (floats), the sense count <c>n</c> (varint, at least two), the <c>n</c> sense ids as strings, the
+///     <c>n</c> biases (floats), the <c>n × dimension</c> weights as little-endian half-precision floats (row-major),
+///     the chooser count (varint) and per chooser: the form, its threshold (float), its label count <c>k</c> (varint, at
+///     least two), the labels, the <c>k</c> biases (floats) and the <c>k × dimension</c> weights (halves). The reader
+///     widens every half to a float.
 ///     </para>
 ///     <para>
-///     The reader checks the structure only: every class id must be non-empty and used by one group at most. That the
-///     ids exist in the word image and that the hash matches is checked by <see cref="WeightedLemmaTable"/>.
-///     Varints are 7-bit little-endian groups; strings are a varint byte length followed by UTF-8 bytes.
+///     The reader checks the structure only: every sense id must be non-empty and used once in the whole blob, a
+///     threshold must be finite and not negative, and every value must be finite. The hash is returned as read;
+///     <see cref="WeightedLemmaTable"/> checks the blob against the word image. Varints are 7-bit little-endian groups;
+///     strings are a varint byte length followed by UTF-8 bytes.
 ///     </para>
 /// </remarks>
 internal static class WeightsBlob
 {
     /// <summary>
-    ///     The size of the class hash.
+    ///     The size of the inventory hash.
     /// </summary>
     public const int HashSize = 32;
 
-    private static readonly byte[] Magic = "WSX2"u8.ToArray();
+    private static readonly byte[] Magic = "WSX3"u8.ToArray();
 
     /// <summary>
     ///     UTF-8 decoding that throws on malformed bytes instead of substituting replacement characters.
@@ -65,7 +69,7 @@ internal static class WeightsBlob
         var p = Magic.Length;
         var modelId = ReadString(span, ref p);
         Need(span, p, HashSize);
-        var classHash = span.Slice(p, HashSize).ToArray();
+        var inventoryHash = span.Slice(p, HashSize).ToArray();
         p += HashSize;
         var dimension = ReadVarint(span, ref p);
         if (ReadByte(span, ref p) != 0)
@@ -82,12 +86,13 @@ internal static class WeightsBlob
         var count = ReadVarint(span, ref p);
         var lemmas = new List<WeightedLemma>(Math.Min(count, 65536));
         var seen = new HashSet<string>(StringComparer.Ordinal);
-        var seenClasses = new HashSet<string>(StringComparer.Ordinal);
+        var seenSenses = new HashSet<string>(StringComparer.Ordinal);
+        var seenForms = new HashSet<string>(StringComparer.Ordinal);
         try
         {
             for (var i = 0; i < count; i++)
             {
-                lemmas.Add(ReadLemma(span, ref p, dimension, seen, seenClasses));
+                lemmas.Add(ReadLemma(span, ref p, dimension, seen, seenSenses, seenForms));
             }
         }
         catch (Exception ex) when (ex is ArgumentException or OverflowException)
@@ -96,7 +101,7 @@ internal static class WeightsBlob
         }
 
         return p == span.Length
-            ? new WeightsData(modelId, classHash, dimension, mean, lemmas)
+            ? new WeightsData(modelId, inventoryHash, dimension, mean, lemmas)
             : throw new InvalidDataException("The weights have trailing data.");
     }
 
@@ -123,16 +128,17 @@ internal static class WeightsBlob
     }
 
     /// <summary>
-    ///     Reads the classifier of one lemma.
+    ///     Reads the classifier of one lemma with its choosers.
     /// </summary>
     /// <param name="span">The data.</param>
     /// <param name="p">The read position, advanced past the lemma.</param>
     /// <param name="dimension">The dense feature dimension.</param>
     /// <param name="seen">The lemmas read so far; the new lemma is added.</param>
-    /// <param name="seenClasses">The class ids read so far; the new class ids are added.</param>
+    /// <param name="seenSenses">The sense ids read so far; the new sense ids are added.</param>
+    /// <param name="seenForms">The forms of the choosers read so far; the new forms are added.</param>
     /// <returns>The lemma with its classifier.</returns>
     /// <exception cref="InvalidDataException">Thrown when the lemma is duplicated or inconsistent.</exception>
-    private static WeightedLemma ReadLemma(ReadOnlySpan<byte> span, ref int p, int dimension, HashSet<string> seen, HashSet<string> seenClasses)
+    private static WeightedLemma ReadLemma(ReadOnlySpan<byte> span, ref int p, int dimension, HashSet<string> seen, HashSet<string> seenSenses, HashSet<string> seenForms)
     {
         var lemma = ReadString(span, ref p);
         if (!seen.Add(lemma))
@@ -140,36 +146,95 @@ internal static class WeightsBlob
             throw new InvalidDataException("The weights have a duplicate lemma.");
         }
 
-        var abstain = ReadFloats(span, ref p, 1)[0];
-        var kind = (LemmaModelKind)ReadByte(span, ref p);
+        var thresholds = ReadFloats(span, ref p, 2);
         var senseCount = ReadVarint(span, ref p);
-        if (kind == LemmaModelKind.Binary && senseCount != 2)
+        if (senseCount < 2)
         {
-            throw new InvalidDataException($"The weights of '{lemma}' are binary but have {senseCount} senses; a binary model needs exactly two.");
+            throw new InvalidDataException($"The weights of '{lemma}' have {senseCount} senses; a lemma needs at least two.");
         }
 
-        var classIds = new List<string>(Math.Min(senseCount, 255));
+        var senseIds = new List<string>(Math.Min(senseCount, 255));
         for (var s = 0; s < senseCount; s++)
         {
-            var classId = ReadString(span, ref p);
-            if (classId.Length == 0 || !seenClasses.Add(classId))
+            var senseId = ReadString(span, ref p);
+            if (senseId.Length == 0 || !seenSenses.Add(senseId))
             {
-                throw new InvalidDataException($"The weights have an empty or duplicate class id in '{lemma}'.");
+                throw new InvalidDataException($"The weights have an empty or duplicate sense id in '{lemma}'.");
             }
 
-            classIds.Add(classId);
+            senseIds.Add(senseId);
         }
 
-        var rows = kind == LemmaModelKind.Binary ? 1 : senseCount;
-        var bias = ReadFloats(span, ref p, rows);
-        var weights = ReadFloats(span, ref p, checked(rows * dimension));
-        var lemmaWeights = new LemmaWeights(kind, weights, bias, abstain, dimension);
-        if (classIds.Count != lemmaWeights.SenseCount)
+        var weights = ReadRows(span, ref p, senseCount, dimension, thresholds[0], thresholds[1]);
+        var choosers = new List<FormChooser>();
+        var chooserCount = ReadVarint(span, ref p);
+        for (var c = 0; c < chooserCount; c++)
         {
-            throw new InvalidDataException($"The weights of '{lemma}' have {lemmaWeights.SenseCount} senses but name {classIds.Count} classes.");
+            choosers.Add(ReadChooser(span, ref p, dimension, seenForms));
         }
 
-        return new WeightedLemma(lemma, classIds, lemmaWeights);
+        return new WeightedLemma(lemma, senseIds, weights, choosers);
+    }
+
+    /// <summary>
+    ///     Reads one form chooser.
+    /// </summary>
+    /// <param name="span">The data.</param>
+    /// <param name="p">The read position, advanced past the chooser.</param>
+    /// <param name="dimension">The dense feature dimension.</param>
+    /// <param name="seenForms">The forms read so far; the new form is added.</param>
+    /// <returns>The chooser.</returns>
+    /// <exception cref="InvalidDataException">Thrown when the chooser is duplicated or inconsistent.</exception>
+    private static FormChooser ReadChooser(ReadOnlySpan<byte> span, ref int p, int dimension, HashSet<string> seenForms)
+    {
+        var form = ReadString(span, ref p);
+        if (form.Length == 0 || !seenForms.Add(form))
+        {
+            throw new InvalidDataException("The weights have an empty or duplicate form chooser.");
+        }
+
+        var threshold = ReadFloats(span, ref p, 1)[0];
+        var labelCount = ReadVarint(span, ref p);
+        if (labelCount < 2)
+        {
+            throw new InvalidDataException($"The chooser of '{form}' has {labelCount} labels; it needs at least two.");
+        }
+
+        var labels = new List<string>(Math.Min(labelCount, 255));
+        for (var i = 0; i < labelCount; i++)
+        {
+            var label = ReadString(span, ref p);
+            if (label.Length == 0 || labels.Contains(label, StringComparer.Ordinal))
+            {
+                throw new InvalidDataException($"The chooser of '{form}' has an empty or duplicate label.");
+            }
+
+            labels.Add(label);
+        }
+
+        return new FormChooser(form, labels, ReadRows(span, ref p, labelCount, dimension, threshold, LemmaWeights.Never));
+    }
+
+    /// <summary>
+    ///     Reads the biases and the half-precision weight rows of a classifier.
+    /// </summary>
+    /// <param name="span">The data.</param>
+    /// <param name="p">The read position, advanced.</param>
+    /// <param name="rows">The number of rows.</param>
+    /// <param name="dimension">The dense feature dimension.</param>
+    /// <param name="fineThreshold">The fine threshold.</param>
+    /// <param name="groupThreshold">The group threshold.</param>
+    /// <returns>The classifier.</returns>
+    private static LemmaWeights ReadRows(ReadOnlySpan<byte> span, ref int p, int rows, int dimension, float fineThreshold, float groupThreshold)
+    {
+        var bias = ReadFloats(span, ref p, rows);
+        var weights = ReadHalves(span, ref p, checked(rows * dimension));
+        if (!float.IsFinite(fineThreshold) || fineThreshold < 0 || !float.IsFinite(groupThreshold) || groupThreshold < 0)
+        {
+            throw new InvalidDataException("The weights have a threshold that is not a finite margin that is not negative.");
+        }
+
+        return new LemmaWeights(weights, bias, dimension, fineThreshold, groupThreshold);
     }
 
     /// <summary>
@@ -256,6 +321,30 @@ internal static class WeightsBlob
         {
             values[i] = BinaryPrimitives.ReadSingleLittleEndian(span.Slice(position, 4));
             position += 4;
+        }
+
+        return values;
+    }
+
+    /// <summary>
+    ///     Reads little-endian 16-bit half-precision floats and widens them to 32-bit floats.
+    /// </summary>
+    /// <param name="span">The data.</param>
+    /// <param name="position">The read position, advanced.</param>
+    /// <param name="count">The number of values.</param>
+    /// <returns>The values.</returns>
+    private static float[] ReadHalves(ReadOnlySpan<byte> span, ref int position, int count)
+    {
+        if (count < 0 || count > (span.Length - position) / 2)
+        {
+            throw new InvalidDataException("The weights are truncated.");
+        }
+
+        var values = new float[count];
+        for (var i = 0; i < count; i++)
+        {
+            values[i] = (float)BinaryPrimitives.ReadHalfLittleEndian(span.Slice(position, 2));
+            position += 2;
         }
 
         return values;

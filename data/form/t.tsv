@@ -11555,11 +11555,15 @@ torporific	0		Degree=Pos	dema	0	torporific	a	moby_reverse
 torpors	0	oewn-torpor-n	Number=Plur	dema	0			rule
 torquate	0		Degree=Pos	dema	0	torquate	a	moby_reverse
 torque	0	oewn-torque-n	Number=Sing	dema	0			oewn_form
+torque	1		VerbForm=Inf	dema	0	torque	v	moby_reverse
 torque converter	0	oewn-torque_converter-n	Number=Sing	dema	0			oewn_form
 torque converters	0	oewn-torque_converter-n	Number=Plur	dema	0			rule
 torque wrench	0	oewn-torque_wrench-n	Number=Sing	dema	0			oewn_form
 torque wrenches	0	oewn-torque_wrench-n	Number=Plur	dema	0			rule
+torqued	0		Tense=Past+VerbForm=Part	dema	0	torque	v	rule
 torques	0	oewn-torque-n	Number=Plur	dema	0			rule
+torques	1		Person=3+Tense=Pres	dema	0	torque	v	rule
+torquing	0		VerbForm=Ger	dema	0	torque	v	rule
 torr	0	oewn-torr-n	Number=Sing	dema	0			oewn_form
 torrefied	0		Tense=Past+VerbForm=Part	dema	0	torrefy	v	rule
 torrefies	0		Person=3+Tense=Pres	dema	0	torrefy	v	rule

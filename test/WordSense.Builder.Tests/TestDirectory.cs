@@ -8,11 +8,6 @@ namespace WordSense.Builder.Tests;
 internal sealed class TestDirectory : IDisposable
 {
     /// <summary>
-    ///     The header of a sense inventory file, with its line feed.
-    /// </summary>
-    public const string SensesHeader = "lemma\tlabel\tpos\tmeaning\trespelling\n";
-
-    /// <summary>
     ///     Initializes a new instance of the <see cref="TestDirectory"/> class.
     /// </summary>
     public TestDirectory()

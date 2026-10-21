@@ -8,37 +8,117 @@ sections:
         requirements:
           - id: WordSense-Onnx-Classify
             title: >-
-              The Onnx subsystem shall classify words from the core lexicon, running the encoder only when a word has
-              several senses and trained weights, and scoring only that word's trained candidate senses.
+              The Onnx subsystem shall classify words from the core lexicon: an unknown word as unknown, a word with
+              one analysis and one sense directly with that sense, a known word whose senses it does not score from the
+              lexicon alone, and a word whose lemma has trained weights and several senses by running the encoder only
+              for such words, scoring only the fine senses of the word's own analyses, giving each analysis a
+              probability per lemma and part of speech (the feature variants of one sharing it)
+              and choosing the analysis of a form that belongs to several lemmas or tenses from its context (a form of
+              several lemmas without a chooser is answered from the lexicon alone).
             tags: [subsystem]
             justification: |
               Encoder inference is the expensive step; running it only for words that need context keeps
-              classification fast, and scoring only the candidates keeps answers consistent with the lexicon.
+              classification fast, and scoring only the senses of the word's own analyses keeps answers consistent with
+              the lexicon.
             children:
               - WordSense-Onnx-OnnxClassifier-Lookup
               - WordSense-Onnx-OnnxClassifier-Encode
-              - WordSense-Onnx-OnnxClassifier-Candidates
+              - WordSense-Onnx-OnnxClassifier-AnalysisSenses
+              - WordSense-Onnx-OnnxClassifier-Slots
+              - WordSense-Onnx-OnnxClassifier-SingleSense
+              - WordSense-Onnx-OnnxClassifier-MultiLemmaForm
               - WordSense-Onnx-OnnxClassifier-Validation
               - WordSense-Onnx-OnnxWordSenseModel-Classify
             tests:
               - OnnxClassifier_ClassifyAsync_OnlyAmbiguousWordsAreEncoded
+              - OnnxClassifier_ClassifyAsync_FormOfTwoLemmas_ChoosesTheLemmaFromContext
+
+          - id: WordSense-Onnx-Levels
+            title: >-
+              The Onnx subsystem shall answer a word whose lemma has trained weights at the finest level that passes
+              the lemma's own threshold for that level: the fine sense when the fine threshold is met, otherwise, for a
+              lemma that has groups and a best sense in a group, the group when the group threshold is met, and
+              otherwise the part of speech; it shall never answer at a level whose threshold is not met, never at the
+              group level for a lemma without groups, and never as unknown for a known word.
+            tags: [subsystem]
+            justification: |
+              Each lemma has senses that are easy and senses that are hard to tell apart; per-lemma thresholds let each
+              lemma answer as precisely as its own evidence allows, and the level tells the caller which precision
+              target was reached. Groups exist only where curated, so a model unsure between senses steps up to their
+              shared group when there is one and the evidence supports it, and otherwise to the part of speech, with
+              the ranked senses still listed.
+            children:
+              - WordSense-Onnx-OnnxClassifier-FineThreshold
+              - WordSense-Onnx-OnnxClassifier-GroupThreshold
+              - WordSense-Onnx-OnnxClassifier-StepToPartOfSpeech
+              - WordSense-Onnx-LemmaWeights-Thresholds
+            tests:
+              - OnnxClassifier_ClassifyAsync_MarginAboveFineThreshold_AnswersSense
+              - OnnxClassifier_ClassifyAsync_FineBelowAndGroupAboveThreshold_AnswersGroup
+              - OnnxClassifier_ClassifyAsync_BothBelowThreshold_AnswersPartOfSpeech
+              - OnnxClassifier_ClassifyAsync_LemmaWithoutGroups_StepsFromSenseToPartOfSpeech
+
+          - id: WordSense-Onnx-Candidates
+            title: >-
+              The Onnx subsystem shall list, for a trained lemma, in the Senses of every analysis of the word the ranked
+              senses of the analysis with probabilities given the analysis that sum to one, whatever the level
+              answered, so that a result with scored senses makes a composite model use the encoder, and shall list no
+              scored senses for a word without trained weights (a lexical singleton, the one sense of an analysis whose
+              lemma and part of speech have exactly one sense, is listed with probability 1 although the encoder did
+              not score it).
+            tags: [subsystem]
+            justification: |
+              The fine scores are computed for every decision; exposing them ranked lets a consumer group the senses
+              its own way, for example by summing, over the analyses, the products of analysis and sense probabilities
+              of
+              the senses it treats as one category.
+            children:
+              - WordSense-Onnx-OnnxClassifier-Candidates
+              - WordSense-Onnx-OnnxClassifier-BestCandidate
+            tests:
+              - OnnxClassifier_ClassifyAsync_TrainedLemma_ListsRankedCandidatesSummingToOne
+              - OnnxClassifier_ClassifyAsync_SingleSenseWord_ListsNoCandidates
+              - OnnxClassifier_ClassifyAsync_LemmaWithoutWeights_ListsNoCandidates
+
+          - id: WordSense-Onnx-Untrained
+            title: >-
+              The Onnx subsystem shall answer a known word whose senses it does not score (its lemma has no usable
+              trained weights, or the encoder produced no usable vector) from the lexicon alone, with its analyses (a
+              single analysis with probability 1, several lemmas and parts of speech equally likely, the feature
+              variants of one sharing its probability), no encoder-scored senses and the part of speech
+              level, and never with a guessed fine sense, leaving the choice between the analyses to the fallback
+              model of a composition, and shall not depend on any other model package. The one exception is a lexical
+              singleton: a word with a single analysis whose lemma and part of speech have exactly one sense is
+              answered at the sense level with that sense listed with probability 1, which no encoder scored.
+            tags: [subsystem]
+            justification: |
+              A word must never vanish because a model was not trained for it, and a first-sense guess dressed as a
+              sense is worse than an honest part of speech; the Onnx package builds on the core contracts only, so the
+              statistical choice of the analysis is made by the model that a composition pairs it with.
+            children:
+              - WordSense-Onnx-OnnxClassifier-Untrained
+              - WordSense-Onnx-OnnxClassifier-NoVector
+              - WordSense-Onnx-OnnxWordSenseModel-Classify
+            tests:
+              - OnnxClassifier_ClassifyAsync_LemmaWithoutWeights_AnswersAnalysesWithoutScoredSenses
+              - OnnxWordSense_Assembly_ReferencesOnlyCore
 
           - id: WordSense-Onnx-Confidence
             title: >-
-              The Onnx subsystem shall report a confidence that grows monotonically with the score margin between the
-              best and the second-best candidate relative to the lemma's abstain margin, clamped to 0 to 1, shall
-              give the best candidate even when the confidence is low, shall answer a multi-sense word without
-              trained weights with its first lexicon sense and a confidence of one over its number of senses, and
-              shall give no details and confidence 0 only when the encoder produced no usable vector.
+              The Onnx subsystem shall report a confidence that is the probability of the answered level (the
+              probability of the lemma and part of speech of the selected analysis, which its feature variants share,
+              times the probability of the answered sense, or of the answered
+              group, within it), from 0 to 1, growing monotonically with the score margin, shall keep the
+              best sense and group visible in the ranked senses even when the confidence is low, and shall answer with
+              the lexicon analyses, not as unknown, when the encoder produced no usable vector.
             tags: [subsystem]
             justification: |
-              A monotonic, bounded confidence lets callers apply a threshold; returning the best candidate even at
-              low confidence lets them still use it, and a word that no model was trained for still gets its most
-              frequent sense instead of vanishing.
+              A monotonic, bounded confidence lets callers apply a threshold; keeping the ranked senses even at low
+              confidence lets them still use them, and a word that the encoder cannot judge still gets its analyses
+              instead of vanishing.
             children:
               - WordSense-Onnx-OnnxClassifier-Confidence
               - WordSense-Onnx-OnnxClassifier-BestCandidate
-              - WordSense-Onnx-OnnxClassifier-MissingWeights
               - WordSense-Onnx-OnnxClassifier-NoVector
               - WordSense-Onnx-LemmaWeights-Scoring
             tests:
@@ -47,17 +127,20 @@ sections:
           - id: WordSense-Onnx-Weights
             title: >-
               The Onnx subsystem shall read trained per-lemma weights from a binary blob embedded in the model
-              package and match each lemma to the word lexicon by lemma, part of speech and meaning, keeping the
-              weights of a lemma only when its trained senses are the first senses of the lexicon entry.
+              package (the fine senses of the lemma, its thresholds (a group threshold only for a lemma that has
+              groups) and, where needed, its form chooser) and match
+              each lemma to the sense catalog by its sense and group ids, keeping the weights of a lemma only when its
+              senses are the senses of the catalog.
             tags: [subsystem]
             justification: |
-              A stale or mismatched weights blob must never give a wrong answer; matching per lemma turns any
-              mismatch into the first-sense answer instead.
+              A stale or mismatched weights blob must never give a wrong answer; matching against the catalog turns
+              any mismatch into a load failure instead of a wrong sense.
             children:
               - WordSense-Onnx-LemmaWeights-Format
               - WordSense-Onnx-LemmaWeights-Integrity
               - WordSense-Onnx-LemmaWeights-Match
               - WordSense-Onnx-LemmaWeights-Scoring
+              - WordSense-Onnx-LemmaWeights-Thresholds
               - WordSense-Onnx-LemmaWeights-Embedded
             tests:
               - EmbeddedWeights_MiniLM_MatchesWordImage
@@ -133,13 +216,16 @@ sections:
 
           - id: WordSense-Onnx-Lifecycle
             title: >-
-              The Onnx subsystem shall provide one abstract, disposable base class for encoder models, with the model
-              identifier and hidden size known before any download, and with the encoder session released on
-              disposal.
+              The Onnx subsystem shall provide one abstract, disposable base class for encoder models, usable on its
+              own as a word-sense model, with the model identifier and hidden size known before any download, with the
+              encoder session that it owns released on disposal, and with no reference to any package other than the
+              core package.
             tags: [subsystem]
             justification: |
               The model packages differ only in their model description; a shared base keeps their behavior
-              identical, and disposal releases the native session.
+              identical, and disposal releases the native session. The base answers from the lexicon and the encoder
+              alone, so it composes with any other model (the packages MiniLM and BertBaseCased pair it with the Basic
+              model) without the Onnx package depending on one.
             children:
               - WordSense-Onnx-OnnxWordSenseModel-Dispose
               - WordSense-Onnx-OnnxWordSenseModel-Identity
@@ -147,6 +233,7 @@ sections:
             tests:
               - OnnxWordSenseModel_Dispose_CalledTwice_IsHarmless
               - OnnxWordSenseModel_Dispose_DuringEnsure_CancelsDownload
+              - OnnxWordSense_Assembly_ReferencesOnlyCore
 
           - id: WordSense-Onnx-Packaging
             title: >-

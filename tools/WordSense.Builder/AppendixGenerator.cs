@@ -1,17 +1,30 @@
+using System.Globalization;
 using System.Text;
+using DemaConsulting.WordSense;
+using WordSense.Builder.Data;
 
 namespace WordSense.Builder;
 
 /// <summary>
-///     Generates the senses appendix of the user guide from the sense inventory and the forms of the corpus.
+///     Generates the senses appendix of the user guide from the sense catalog of the data and the trained lemmas of the
+///     corpus.
 /// </summary>
 /// <remarks>
-///     The appendix lists every supported lemma with its parts of speech, pronunciation meanings, senses (with one
-///     example sentence) and the
-///     inflected forms it recognizes. The output is deterministic: it depends only on the content of
-///     <c>corpus/senses</c>, <c>corpus/forms</c> and <c>corpus/anchors</c>, uses ordinal ordering throughout, ends
-///     lines with LF and wraps text at <see cref="LineLimit"/> characters so the file passes the markdown line-length
-///     rule without an exemption.
+///     <para>
+///     The appendix lists every trained lemma (a lemma that has sentences in <c>corpus/anchors</c>)
+///     with its senses in inventory order, the most frequent first: the id, the group (none when the sense is in no
+///     group), the Open English WordNet sense key (a project sense has none), the respelling when there is one and the
+///     gloss. The senses come from the word image that <see cref="ImageCompiler"/> compiles from the data folder, so
+///     the appendix lists exactly what the library answers; the glosses are not in the image and are read from the
+///     <c>sense</c>, <c>sense_label</c>, <c>entry</c> and <c>gloss</c> tables. The recognized forms of a lemma come from
+///     the image too.
+///     </para>
+///     <para>
+///     The tier and anchor counts of the senses are not listed: the tier report (<c>tiers</c>) is the place for them.
+///     The output is deterministic, uses ordinal ordering
+///     throughout, ends lines with LF and wraps text at <see cref="LineLimit"/> characters so the file passes the
+///     markdown line-length rule without an exemption.
+///     </para>
 /// </remarks>
 internal static class AppendixGenerator
 {
@@ -20,26 +33,27 @@ internal static class AppendixGenerator
     /// </summary>
     public const int LineLimit = 120;
 
+    private static readonly CultureInfo Inv = CultureInfo.InvariantCulture;
+
     /// <summary>
-    ///     The shortest example sentence preferred, in characters; shorter sentences are rarely informative.
+    ///     One sense of a trained lemma with its gloss.
     /// </summary>
-    private const int MinimumExampleLength = 30;
+    private sealed record Listed(SenseInfo Sense, string Gloss);
 
     /// <summary>
     ///     Generates the appendix text.
     /// </summary>
-    /// <param name="corpus">The corpus directory with the <c>senses</c>, <c>forms</c> and <c>anchors</c> subdirectories.</param>
+    /// <param name="corpus">The corpus directory with the <c>anchors</c> subdirectory whose lemmas are the trained lemmas.</param>
+    /// <param name="data">The data folder with the tables of the sense catalog.</param>
     /// <returns>The markdown text, with LF line endings and a final line feed.</returns>
     /// <exception cref="InvalidDataException">Thrown with every problem found when the input is incomplete or inconsistent.</exception>
-    public static string Generate(string corpus)
+    public static string Generate(string corpus, string data)
     {
-        var sensesDirectory = Path.Join(corpus, "senses");
-        var formsDirectory = Path.Join(corpus, "forms");
         var anchorsDirectory = Path.Join(corpus, "anchors");
         var errors = new List<string>();
-        foreach (var directory in new[] { sensesDirectory, formsDirectory, anchorsDirectory }.Where(d => !Directory.Exists(d)))
+        foreach (var directory in new[] { anchorsDirectory, data }.Where(d => !Directory.Exists(d)))
         {
-            errors.Add($"The corpus directory '{directory}' was not found.");
+            errors.Add($"The directory '{directory}' was not found.");
         }
 
         if (errors.Count > 0)
@@ -47,37 +61,60 @@ internal static class AppendixGenerator
             throw new InvalidDataException(string.Join(Environment.NewLine, errors));
         }
 
-        var inventory = SenseInventory.ReadDirectory(sensesDirectory);
-        var rows = inventory.Rows.ToList();
-        if (rows.Count == 0)
+        var trained = Corpus.ReadLemmas(anchorsDirectory).Order(StringComparer.Ordinal).ToList();
+        if (trained.Count == 0)
         {
-            throw new InvalidDataException($"The sense inventory '{sensesDirectory}' contains no senses.");
+            throw new InvalidDataException($"The anchors '{anchorsDirectory}' contain no sentences.");
         }
 
-        var forms = Directory.GetFiles(formsDirectory, "*.tsv").OrderBy(f => f, StringComparer.Ordinal)
-            .SelectMany(Corpus.ReadForms).ToList();
-        errors.AddRange(inventory.CheckForms(forms));
+        var (bytes, _) = ImageCompiler.Build(data);
+        var image = WordImage.Open(bytes);
+        var senses = new Dictionary<string, List<SenseInfo>>(StringComparer.Ordinal);
+        var missing = new List<string>();
+        foreach (var lemma in trained)
+        {
+            var found = Enum.GetValues<PartOfSpeech>().SelectMany(pos => image.SensesOf(lemma, pos)).ToList();
+            if (found.Count == 0)
+            {
+                missing.Add(lemma);
+            }
+            else
+            {
+                senses[lemma] = found;
+            }
+        }
 
-        var examples = FindExamples(Corpus.ReadDirectory(anchorsDirectory));
-        errors.AddRange(rows.Where(r => !examples.ContainsKey((r.Lemma, r.Label)))
-            .Select(r => $"The sense '{r.Lemma}/{r.Label}' has no anchor sentence to use as an example."));
+        if (senses.Count == 0)
+        {
+            throw new InvalidDataException($"None of the trained lemmas of '{anchorsDirectory}' has a sense in the data '{data}'.");
+        }
+
+        var glosses = ReadGlosses(data, [.. senses.Keys]);
+        foreach (var sense in senses.Values.SelectMany(s => s).Where(s => !glosses.ContainsKey(s.SenseId)))
+        {
+            errors.Add($"The sense '{sense.SenseId}' has no gloss.");
+        }
+
         if (errors.Count > 0)
         {
             throw new InvalidDataException(string.Join(Environment.NewLine, errors));
         }
 
-        return Render(corpus, rows, forms, examples);
+        var listed = senses.Keys.Order(StringComparer.Ordinal)
+            .Select(l => (Lemma: l, Senses: senses[l].Select(s => new Listed(s, glosses[s.SenseId])).ToList())).ToList();
+        return Render(image, listed, missing);
     }
 
     /// <summary>
     ///     Writes the appendix to a file: UTF-8 without a byte-order mark, LF line endings.
     /// </summary>
     /// <param name="corpus">The corpus directory.</param>
+    /// <param name="data">The data folder.</param>
     /// <param name="output">The file to write.</param>
     /// <returns>The number of lemmas listed.</returns>
-    public static int Write(string corpus, string output)
+    public static int Write(string corpus, string data, string output)
     {
-        var text = Generate(corpus);
+        var text = Generate(corpus, data);
         var directory = Path.GetDirectoryName(Path.GetFullPath(output));
         if (!string.IsNullOrEmpty(directory))
         {
@@ -89,214 +126,205 @@ internal static class AppendixGenerator
     }
 
     /// <summary>
-    ///     Picks one example sentence per sense: the shortest anchor of at least <see cref="MinimumExampleLength"/>
-    ///     characters (ties broken ordinally), or the longest anchor when none is that long.
+    ///     Reads the glosses of the senses of some lemmas from the data tables.
     /// </summary>
-    /// <param name="anchors">The training rows.</param>
-    /// <returns>The braced example sentence by lemma and sense.</returns>
-    private static Dictionary<(string Lemma, string Sense), string> FindExamples(IEnumerable<CorpusRow> anchors)
+    /// <param name="data">The data folder.</param>
+    /// <param name="lemmas">The lemmas.</param>
+    /// <returns>The definitions of the synset of each sense joined with a semicolon, by public sense id.</returns>
+    private static Dictionary<string, string> ReadGlosses(string data, List<string> lemmas)
     {
-        return anchors.GroupBy(r => (r.Lemma, r.Sense)).ToDictionary(
-            g => g.Key,
-            g =>
+        var schema = DataSchema.Load(Path.Join(data, "schema.yaml"));
+        var wanted = new HashSet<string>(lemmas, StringComparer.Ordinal);
+        var entries = DataTables.Read(data, schema.Table("entry"))
+            .Where(r => wanted.Contains(r[1]))
+            .ToDictionary(r => r[0], r => r[1], StringComparer.Ordinal);
+        var labels = DataTables.Read(data, schema.Table("sense_label")).ToDictionary(r => r[0], r => r[1], StringComparer.Ordinal);
+        var synsetOf = new Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (var row in DataTables.Read(data, schema.Table("sense")))
+        {
+            if (entries.TryGetValue(row[2], out var lemma) && labels.TryGetValue(row[0], out var label))
             {
-                var sentences = g.Select(r => r.Sentence).ToList();
-                var candidates = sentences.Where(s => s.Length >= MinimumExampleLength).ToList();
-                return candidates.Count > 0
-                    ? candidates.OrderBy(s => s.Length).ThenBy(s => s, StringComparer.Ordinal).First()
-                    : sentences.OrderByDescending(s => s.Length).ThenBy(s => s, StringComparer.Ordinal).First();
-            });
+                synsetOf[lemma + "#" + label] = row[3];
+            }
+        }
+
+        var needed = new HashSet<string>(synsetOf.Values, StringComparer.Ordinal);
+        var definitions = DataTables.Read(data, schema.Table("gloss"))
+            .Where(r => needed.Contains(r[0]))
+            .GroupBy(r => r[0], StringComparer.Ordinal)
+            .ToDictionary(
+                g => g.Key,
+                g => string.Join("; ", g.OrderBy(r => int.Parse(r[1], Inv)).Select(r => r[2].Trim())),
+                StringComparer.Ordinal);
+        var glosses = new Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (var (id, synset) in synsetOf)
+        {
+            if (definitions.TryGetValue(synset, out var text) && text.Length > 0)
+            {
+                glosses[id] = text;
+            }
+        }
+
+        return glosses;
     }
 
     /// <summary>
     ///     Renders the document.
     /// </summary>
-    private static string Render(
-        string corpus,
-        List<InventoryRow> rows,
-        List<(string Form, string Lemma, string[] Labels)> forms,
-        Dictionary<(string Lemma, string Sense), string> examples)
+    private static string Render(WordImage image, List<(string Lemma, List<Listed> Senses)> lemmas, List<string> missing)
     {
         var lines = new List<string>
         {
             "# Appendix: Supported Senses",
             string.Empty,
-            "<!-- Generated by 'WordSense.Builder appendix' from corpus/senses and corpus/forms. Do not edit. -->",
+            "<!-- Generated by 'WordSense.Builder appendix' from data and corpus/anchors. Do not edit. -->",
             string.Empty,
         };
 
-        var lemmas = rows.GroupBy(r => r.Lemma).OrderBy(g => g.Key, StringComparer.Ordinal).ToList();
-        AddExplanation(lines, rows, lemmas.Count);
-        AddLexicon(lines, corpus, rows, forms);
-        AddLemmas(lines, lemmas, forms, examples);
+        AddExplanation(lines, lemmas);
+        AddDictionary(lines, image, lemmas, missing);
+        AddLemmas(lines, image, lemmas);
 
         return string.Join('\n', lines) + "\n";
     }
 
     /// <summary>
-    ///     Adds the summary of the dictionary words, when the corpus has a lexicon: the counts per part-of-speech set and
-    ///     the state of the morphology rules. The words themselves are not listed.
+    ///     Adds the explanation of parts of speech, pronunciations, groups and forms.
     /// </summary>
-    private static void AddLexicon(
-        List<string> lines,
-        string corpus,
-        List<InventoryRow> rows,
-        List<(string Form, string Lemma, string[] Labels)> forms)
+    private static void AddExplanation(List<string> lines, List<(string Lemma, List<Listed> Senses)> lemmas)
     {
-        var lexiconDirectory = Path.Join(corpus, "lexicon");
-        var lexiconPath = Path.Join(lexiconDirectory, LexiconSource.LexiconFile);
-        if (!File.Exists(lexiconPath))
-        {
-            return;
-        }
-
-        var words = LexiconSource.ReadWords(lexiconPath);
-        var taken = new HashSet<string>(rows.Select(r => r.Lemma), StringComparer.Ordinal);
-        taken.UnionWith(forms.Select(f => f.Form));
-        var all = words.Count.ToString("N0", System.Globalization.CultureInfo.InvariantCulture);
-        var embedded = words.Count(w => !taken.Contains(w.Word)).ToString("N0", System.Globalization.CultureInfo.InvariantCulture);
-        var sets = words
-            .GroupBy(w => LexiconSource.ToLetters(w.Mask))
-            .Select(g => (Letters: g.Key, Count: g.Count(), Name: SetName(g.Key)))
-            .OrderByDescending(s => s.Count)
-            .ThenBy(s => s.Name, StringComparer.Ordinal)
-            .ToList();
-
-        lines.Add("### Dictionary Words");
-        lines.Add(string.Empty);
-        AddParagraph(lines,
-            $"Besides the lemmas listed below, the lexicon list has {all:N0} words (derived from the " +
-            "public-domain Moby Part-of-Speech II list, see `corpus/lexicon/PROVENANCE.md`), of which " +
-            $"{embedded:N0} are embedded as dictionary words. A dictionary word has no " +
-            "trained classifier: a word with one part of speech is answered directly with confidence 1, and a word with several parts " +
-            "of speech returns them as candidates, most frequent first (the encoder models answer it with the first " +
-            "one and a confidence of one over the number of senses; the basic model chooses by tagger and context). A word that a lemma or a form of the list below spells is not " +
-            "embedded as a dictionary word, because the lemma takes precedence; it only gains the parts of speech " +
-            "that the dictionary lists and the trained senses lack. A capitalized word is " +
-            "lower-cased before it is looked up. The words are not " +
-            "listed here; this is how many words of the lexicon list have each set of parts of speech:");
-        var width = Math.Max(sets.Max(s => s.Name.Length), "Parts of speech".Length);
-        lines.Add($"| {"Parts of speech".PadRight(width)} | {"Words",7} |");
-        lines.Add($"|{new string('-', width + 2)}|{new string('-', 9)}|");
-        foreach (var set in sets)
-        {
-            lines.Add($"| {set.Name.PadRight(width)} | {set.Count,7} |");
-        }
-
-        lines.Add(string.Empty);
-
-        var morphology = LexiconSource.ReadMorphologyIfPresent(lexiconDirectory);
-        if (morphology is not null)
-        {
-            var enabled = morphology.Where(m => m.Enabled).Select(m => $"`{m.Rule}`").ToList();
-            var disabled = morphology.Where(m => !m.Enabled).Select(m => $"`{m.Rule}`").ToList();
-            AddParagraph(lines,
-                "The word table also holds the inflected forms that suffix rules generate from dictionary words. Rules enabled: " +
-                (enabled.Count == 0 ? "none" : string.Join(", ", enabled)) + ". Rules disabled because they did not " +
-                "reach 95 percent precision on real text: " + (disabled.Count == 0 ? "none" : string.Join(", ", disabled)) + ".");
-        }
-    }
-
-    /// <summary>
-    ///     Names a set of parts of speech given as letters.
-    /// </summary>
-    private static string SetName(string letters)
-    {
-        var names = letters.Select(c => ((DemaConsulting.WordSense.PartOfSpeech)LexiconSource.Letters.IndexOf(c, StringComparison.Ordinal)).ToString());
-        return string.Join(", ", names);
-    }
-
-    /// <summary>
-    ///     Adds the explanation of parts of speech, pronunciations and forms.
-    /// </summary>
-    private static void AddExplanation(List<string> lines, List<InventoryRow> rows, int lemmaCount)
-    {
+        var all = lemmas.SelectMany(l => l.Senses).Select(s => s.Sense).ToList();
         lines.Add("## How Answers Work");
         lines.Add(string.Empty);
-        AddParagraph(lines,
-            "WordSense decides which **part of speech** a word carries in its sentence and, for a heteronym, which " +
-            "**pronunciation**. The lemma is the dictionary form of the word (for example `record`); a word such as " +
-            "`records` is matched to its lemma through the forms listed below. The answer for a word is a lemma, a " +
-            "part of speech and, for a heteronym only, a pronunciation.");
+        AddParagraph(
+            lines,
+            "WordSense identifies the sense of a word in its sentence. The inventory of senses is the one of Open English " +
+            "WordNet for the lemmas of one word, plus a few project senses for the words that Open English WordNet does " +
+            "not cover (for example `the#determiner`). The lemma is the dictionary form of the word (for example " +
+            "`record`); a word such as `records` is matched to its lemma through the forms listed below. An answer is a " +
+            "lemma, a part of speech and, where the model is trained for the lemma, a sense or a group of senses.");
+
+        lines.Add("### Senses");
+        lines.Add(string.Empty);
+        AddParagraph(
+            lines,
+            "Every sense has a readable id of the form `lemma#label` (for example `bank#coin-bank`) that is stable and " +
+            "never reused for another meaning, and is linked to one Open English WordNet sense key. A project sense has " +
+            "no key. The senses of a lemma and part of speech are listed most frequent first, by the WordNet 3.0 tag " +
+            "count of the sense key; a project sense ranks last. Each sense is listed with its gloss, the definition of " +
+            "its Open English WordNet synset.");
 
         lines.Add("### Parts of Speech");
         lines.Add(string.Empty);
-        var posCount = rows.Select(r => r.Pos).Distinct().Count();
-        var posWord = posCount is >= 0 and <= 8
-            ? new[] { "none", "one", "two", "three", "four", "five", "six", "seven", "eight" }[posCount]
-            : posCount.ToString(System.Globalization.CultureInfo.InvariantCulture);
-        var posNames = string.Join(", ", rows.Select(r => r.Pos).Distinct().Order().Select(p => $"`{p}`"));
-        AddParagraph(lines,
-            "The `PartOfSpeech` enumeration defines ten parts of speech: the eight classic ones, `Determiner` and `Auxiliary`. " +
-            $"The trained senses listed " +
-            $"here, which give the context answers, cover {posWord} of them ({posNames}). A dictionary answer can " +
-            "also be a `Pronoun`, a `Preposition`, a `Conjunction`, an `Interjection`, a `Determiner` or an `Auxiliary`, " +
-            "as the answer for a word with one part of speech or as a candidate of a " +
-            "word that has several. The table counts the trained " +
-            "senses of each part of speech:");
-        lines.Add("| Part of speech | Senses |");
-        lines.Add("| -------------- | -----: |");
-        foreach (var pos in rows.Select(r => r.Pos).Distinct().Order())
+        var parts = all.Select(s => s.PartOfSpeech).Distinct().Order().ToList();
+        AddParagraph(
+            lines,
+            "The `PartOfSpeech` enumeration defines ten parts of speech: the eight classic ones, `Determiner` and " +
+            "`Auxiliary`. The trained lemmas listed here, which give the context answers, have senses of " +
+            $"{parts.Count.ToString(Inv)} of them. A dictionary answer can also be a part of speech of a lemma that is " +
+            "not listed, as the answer for a word with one part of speech or as a candidate of a word that has several. " +
+            "The table counts the trained lemmas and senses of each part of speech:");
+        lines.Add("| Part of speech | Lemmas | Senses |");
+        lines.Add("| -------------- | -----: | -----: |");
+        foreach (var pos in parts)
         {
-            lines.Add($"| {"`" + pos + "`",-14} | {rows.Count(r => r.Pos == pos),6} |");
+            var lemmaCount = lemmas.Count(l => l.Senses.Any(s => s.Sense.PartOfSpeech == pos));
+            lines.Add($"| {"`" + pos + "`",-14} | {lemmaCount,6} | {all.Count(s => s.PartOfSpeech == pos),6} |");
         }
 
         lines.Add(string.Empty);
 
-        lines.Add("### Pronunciation Meanings");
+        lines.Add("### Groups");
         lines.Add(string.Empty);
-        AddParagraph(lines,
-            "A lemma is a **heteronym** when it has at least two distinct pronunciation meanings. Only then does an " +
-            "answer carry a pronunciation: a short meaning id such as `guide` or `metal` for `lead`, and optionally a " +
-            "plain respelling. The library has no phonetic data of its own; a consumer such as a speech synthesizer " +
-            "keeps its own pronunciations keyed by (lemma, meaning). A lemma that is not a heteronym has no " +
-            "pronunciation in its answers.");
+        AddParagraph(
+            lines,
+            "A **group** is optional. It exists only where it was curated: a set of at least two, but not all, senses of " +
+            "one lemma and part of speech that are closely related in meaning and that a reader can confuse. A sense is " +
+            "in at most one group and needs none; the sense lines below show `none` for a sense in no group. When the " +
+            "model cannot tell the senses of a group apart it answers with the group, which is the level between the part " +
+            "of speech and the sense.");
+
+        lines.Add("### Pronunciations");
+        lines.Add(string.Empty);
+        AddParagraph(
+            lines,
+            "A sense has a **respelling**, a short plain spelling of its pronunciation, only when its pronunciation " +
+            "differs from the other senses of its lemma, for example the noun and the verb of a heteronym. " +
+            "The library has no phonetic data of its own; a consumer such as a speech synthesizer keeps its own " +
+            "pronunciations keyed by sense id. A sense without a respelling shows none below, and a group never mixes " +
+            "two respellings.");
 
         lines.Add("### Forms");
         lines.Add(string.Empty);
-        AddParagraph(lines,
-            "Inflected forms are mapped to their lemma by the forms map (`corpus/forms`), so `presents` is " +
-            "classified as a form of `present`. A form may be restricted to some senses of the " +
-            "lemma, for example `led` can only be a form of the verb of `lead`; such a restriction is " +
-            "shown in parentheses after the form. Forms that are not listed are unknown and are never classified.");
+        AddParagraph(
+            lines,
+            "Inflected forms are mapped to their lemma by the forms of the word table, so `presents` is analyzed as a " +
+            "form of `present`. Each lemma below lists the forms the word table recognizes, other than the lemma itself. " +
+            "A form that is not in the table is unknown and is never analyzed.");
+    }
 
-        lines.Add("## Supported Lemmas");
+    /// <summary>
+    ///     Adds the summary of the dictionary words: the size of the word table and the share of its senses that are trained.
+    /// </summary>
+    private static void AddDictionary(List<string> lines, WordImage image, List<(string Lemma, List<Listed> Senses)> lemmas, List<string> missing)
+    {
+        var trainedSenses = lemmas.Sum(l => l.Senses.Count);
+        var trainedGroups = lemmas.SelectMany(l => l.Senses).Select(s => s.Sense.GroupId).Where(g => g is not null).Distinct(StringComparer.Ordinal).Count();
+        var project = lemmas.SelectMany(l => l.Senses).Count(s => s.Sense.SenseKey is null);
+        lines.Add("### Dictionary Words");
         lines.Add(string.Empty);
-        AddParagraph(lines,
-            $"The library supports {lemmaCount} lemmas with {rows.Count} senses in total, listed alphabetically. Each " +
-            "lemma lists its parts of speech and, for a heteronym, its pronunciation meanings and the inflected forms " +
-            "it recognizes. Under it, every sense gives its part of speech, its meaning and respelling when it has " +
-            "them, and an example sentence in which the classified word is shown in bold.");
+        AddParagraph(
+            lines,
+            $"The word table knows {image.SpellingCount.ToString("N0", Inv)} spellings (lemmas and inflected forms) of " +
+            $"{image.EntryCount.ToString("N0", Inv)} entries, and its sense catalog lists {image.SenseCount.ToString("N0", Inv)} " +
+            $"senses in {image.GroupCount.ToString("N0", Inv)} curated groups. Besides the lemmas listed below, every " +
+            "other word of the table is a dictionary word: it has no trained classifier, a word with one part of speech " +
+            "is answered directly with confidence 1, and a word with several parts of speech returns them as candidates, " +
+            "most frequent first (the encoder models answer it with the first one; the basic model chooses by tagger " +
+            "and context). A capitalized word is lower-cased before it is looked up.");
+        AddParagraph(
+            lines,
+            $"The lemmas listed below are the {lemmas.Count.ToString("N0", Inv)} trained lemmas (the lemmas that have " +
+            $"anchor sentences), with {trainedSenses.ToString("N0", Inv)} senses ({project.ToString("N0", Inv)} of them " +
+            $"project senses) and {trainedGroups.ToString("N0", Inv)} groups.");
+        if (missing.Count > 0)
+        {
+            AddParagraph(
+                lines,
+                $"{missing.Count.ToString(Inv)} lemmas have anchor sentences but no sense in the data and are " +
+                "therefore not listed: " +
+                string.Join(", ", missing.Select(m => $"`{m}`")) + ".");
+        }
     }
 
     /// <summary>
     ///     Adds the alphabetical lemma list.
     /// </summary>
-    private static void AddLemmas(
-        List<string> lines,
-        List<IGrouping<string, InventoryRow>> lemmas,
-        List<(string Form, string Lemma, string[] Labels)> forms,
-        Dictionary<(string Lemma, string Sense), string> examples)
+    private static void AddLemmas(List<string> lines, WordImage image, List<(string Lemma, List<Listed> Senses)> lemmas)
     {
-        var formsByLemma = forms.GroupBy(f => f.Lemma).ToDictionary(g => g.Key, g => g.ToList());
-        foreach (var letter in lemmas.GroupBy(l => char.ToUpperInvariant(l.Key[0])).OrderBy(g => g.Key))
+        lines.Add("## Supported Lemmas");
+        lines.Add(string.Empty);
+        AddParagraph(
+            lines,
+            $"The library supports {lemmas.Count.ToString("N0", Inv)} lemmas with " +
+            $"{lemmas.Sum(l => l.Senses.Count).ToString("N0", Inv)} senses in total, listed alphabetically. Each lemma lists " +
+            "its parts of speech and the forms it recognizes. Under it, every sense gives its id and part of speech, its " +
+            "group, its Open English WordNet sense key (a project sense has none), its respelling when it has one and " +
+            "its gloss, in inventory order (the most frequent sense of a part of speech first).");
+
+        foreach (var letter in lemmas.GroupBy(l => char.ToUpperInvariant(l.Lemma[0])).OrderBy(g => g.Key))
         {
             lines.Add($"### Lemmas Starting With {letter.Key}");
             lines.Add(string.Empty);
-            foreach (var lemma in letter)
+            foreach (var (lemma, senses) in letter)
             {
-                var senses = lemma.OrderBy(r => r.Label, StringComparer.Ordinal).ToList();
-                var formText = DescribeForms(lemma.Key, senses, formsByLemma.GetValueOrDefault(lemma.Key));
-                var posText = string.Join(", ", senses.Select(s => s.Pos).Distinct().Order().Select(p => p.ToString().ToLowerInvariant()));
-                var meanings = senses.Where(s => s.Meaning is not null).Select(s => s.Meaning!).Distinct(StringComparer.Ordinal).ToList();
-                var meaningText = meanings.Count == 0 ? string.Empty : $"; heteronym, meanings: {string.Join(", ", meanings)}";
-                lines.AddRange(Wrap("- ", $"**{lemma.Key}**; parts of speech: {posText}{meaningText}; {formText}", "  "));
-                foreach (var sense in senses)
+                var posText = string.Join(", ", senses.Select(s => s.Sense.PartOfSpeech).Distinct().Order().Select(p => p.ToString().ToLowerInvariant()));
+                var forms = image.FormsOf(lemma).Where(f => f != lemma).Select(Escape).ToList();
+                var formText = forms.Count == 0 ? "no other forms" : "forms: " + string.Join(", ", forms);
+                lines.AddRange(Wrap("- ", $"**{lemma}**; parts of speech: {posText}; {formText}", "  "));
+                foreach (var listed in senses)
                 {
-                    var text = $"{Describe(sense)}; example: " +
-                        Escape(examples[(sense.Lemma, sense.Label)]).Replace("{", "**", StringComparison.Ordinal)
-                            .Replace("}", "**", StringComparison.Ordinal);
-                    lines.AddRange(Wrap("  - ", text, "    "));
+                    lines.AddRange(Wrap("  - ", Describe(listed), "    "));
                 }
             }
 
@@ -308,45 +336,20 @@ internal static class AppendixGenerator
     }
 
     /// <summary>
-    ///     Describes a sense by its part of speech, meaning and respelling.
+    ///     Describes a sense by its id, part of speech, group, key, respelling and gloss.
     /// </summary>
-    private static string Describe(InventoryRow sense)
+    private static string Describe(Listed listed)
     {
-        var text = $"`{sense.Pos.ToString().ToLowerInvariant()}`";
-        if (sense.Meaning is not null)
-        {
-            text += $"; meaning: `{sense.Meaning}`";
-        }
-
+        var sense = listed.Sense;
+        var text = $"`{sense.SenseId}` ({sense.PartOfSpeech.ToString().ToLowerInvariant()}); group: " +
+            (sense.GroupId is null ? "none" : $"`{sense.GroupId}`") + "; key: " +
+            (sense.SenseKey is null ? "project sense" : $"`{sense.SenseKey}`");
         if (sense.Respelling is not null)
         {
             text += $"; respelling: `{sense.Respelling}`";
         }
 
-        return text;
-    }
-
-    /// <summary>
-    ///     Describes the inflected forms of a lemma, other than the lemma itself.
-    /// </summary>
-    private static string DescribeForms(
-        string lemma,
-        List<InventoryRow> senses,
-        List<(string Form, string Lemma, string[] Labels)>? forms)
-    {
-        var byForm = (forms ?? [])
-            .Where(f => f.Form != lemma)
-            .GroupBy(f => f.Form, StringComparer.Ordinal)
-            .OrderBy(g => g.Key, StringComparer.Ordinal)
-            .Select(g =>
-            {
-                var labels = g.SelectMany(f => f.Labels).Distinct(StringComparer.Ordinal).Order(StringComparer.Ordinal).ToList();
-                var restricted = labels.Count > 0 && labels.Count < senses.Count && !g.Any(f => f.Labels.Length == 0);
-                var named = labels.Select(l => senses.First(s => s.Label == l)).Select(s => s.Meaning is null ? s.Pos.ToString().ToLowerInvariant() : $"{s.Pos.ToString().ToLowerInvariant()} {s.Meaning}");
-                return restricted ? $"{g.Key} ({string.Join(", ", named)})" : g.Key;
-            })
-            .ToList();
-        return byForm.Count == 0 ? "no other forms" : "forms: " + string.Join(", ", byForm);
+        return text + "; gloss: " + Escape(listed.Gloss);
     }
 
     /// <summary>

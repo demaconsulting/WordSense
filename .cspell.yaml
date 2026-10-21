@@ -14,7 +14,19 @@ language: en,en-GB
 
 # Project-specific technical terms and tool names
 words:
+  - lxml
+  - pypdf
+  - mscorlib
+  - zzyzx
+  - nzzyzx
+  - bangk
+  - tbangk
   - AGID
+  - USGS
+  - Jaccard
+  - lexdata
+  - lexindex
+  - textutil
   - abye
   - araglis
   - cercariae
@@ -139,6 +151,10 @@ words:
   - cconj
   - intj
   - propn
+  - powerplant
+  - steprobe
+  - gapfinder
+  - techsenses
   - punct
   - multiword
   - unscored
@@ -207,6 +223,17 @@ words:
   - frobnicate
   - nosuchmodel
   - Finalizers
+  - semcor
+  - lexsn
+  - wnsn
+  - punc
+  - snum
+  - pnum
+  - contextfile
+  - tagfiles
+  - Rada
+  - Mihalcea
+  - Xenova
 
 # Exclude common build artifacts, dependencies, and vendored third-party code
 ignorePaths:

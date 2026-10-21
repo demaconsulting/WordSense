@@ -1,4 +1,25 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-la-i-1		dema-la-i	dema-syn-la-i-1	1
+dema-lackaday-i-1		dema-lackaday-i	dema-syn-lackaday-i-1	1
+dema-lacking-p-1		dema-lacking-p	dema-syn-lacking-p-1	1
+dema-lawks-i-1		dema-lawks-i	dema-syn-lawks-i-1	1
+dema-lead-n-1-1		oewn-lead-n-1	dema-syn-lead-n-1-1	16
+dema-least-d-1		dema-least-d	dema-syn-least-d-1	1
+dema-less-d-1		dema-less-d	dema-syn-less-d-1	1
+dema-less-p-1		dema-less-p	dema-syn-less-p-1	1
+dema-lest-c-1		dema-lest-c	dema-syn-lest-c-1	1
+dema-like-c-1		dema-like-c	dema-syn-like-c-1	1
+dema-like-p-1		dema-like-p	dema-syn-like-p-1	1
+dema-little-d-1		dema-little-d	dema-syn-little-d-1	1
+dema-littler-d-1		dema-littler-d	dema-syn-littler-d-1	1
+dema-littlest-d-1		dema-littlest-d	dema-syn-littlest-d-1	1
+dema-lo-i-1		dema-lo-i	dema-syn-lo-i-1	1
+dema-looky-i-1		dema-looky-i	dema-syn-looky-i-1	1
+dema-lor-i-1		dema-lor-i	dema-syn-lor-i-1	1
+dema-lordy-i-1		dema-lordy-i	dema-syn-lordy-i-1	1
+dema-lot-u-1		dema-lot-u	dema-syn-lot-u-1	1
+dema-lud-i-1		dema-lud-i	dema-syn-lud-i-1	1
+dema-lumme-i-1		dema-lumme-i	dema-syn-lumme-i-1	1
 dema-lunged-a-1		dema-lunged-a	dema-syn-lunged-a-1	1
 oewn-l--beam__1.06.01..	l-beam%1:06:01::	oewn-L-beam-n	oewn-92447749-n	1
 oewn-l--dopa__1.27.00..	l-dopa%1:27:00::	oewn-L-dopa-n	oewn-14629310-n	1

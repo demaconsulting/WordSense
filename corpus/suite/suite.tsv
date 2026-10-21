@@ -1,0 +1,349 @@
+id	list	lemma	analysis	senses	target_index	sentence	note
+H-use-1	H	use	use/Noun	use#consumption|use#employment|use#enjoyment|use#function|use#habit|use#manipulation|use#usefulness	4	Nobody could find a {use} for the strange brass gadget .	
+H-use-2	H	use	use/Noun	use#consumption|use#employment|use#enjoyment|use#function|use#habit|use#manipulation|use#usefulness	2	The many {uses} of baking soda surprised her .	
+H-use-3	H	use	use/Verb	use#apply|use#avail-oneself|use#consume|use#exploit|use#use-regularly|use#used-to	2	You can {use} my pen if yours ran out of ink .	
+H-use-4	H	use	use/Verb	use#apply|use#avail-oneself|use#consume|use#exploit|use#use-regularly|use#used-to	2	My grandfather {uses} a magnifying glass to read small print .	
+H-live-1	H	live	live/Verb	live#be-alive|live#experience|live#live-lifestyle|live#reside|live#subsist|live#survive|live#thrive	2	Many students {live} in the dormitory near the library .	
+H-live-2	H	live	live/Verb	live#be-alive|live#experience|live#live-lifestyle|live#reside|live#subsist|live#survive|live#thrive	2	My aunt {lives} in a small town by the sea .	'lives' only has the verb sense id (unambiguous form).
+H-live-3	H	live	live/Adjective	live#alive|live#current|live#elastic|live#electrically-charged|live#energized|live#eruptive|live#explosive|live#lively|live#performed-live|live#ready-for-use|live#resonant	5	The radio station aired a {live} recording of the jazz festival .	
+H-live-4	H	live	live/Adjective	live#alive|live#current|live#elastic|live#electrically-charged|live#energized|live#eruptive|live#explosive|live#lively|live#performed-live|live#ready-for-use|live#resonant	5	The band put on a {live} show for hundreds of fans .	
+H-live-5	H	live	live/Adverb	live#in-real-time	5	The concert will be broadcast {live} on the radio tonight .	
+H-live-6	H	live	live/Adverb	live#in-real-time	4	The interview was streamed {live} to thousands of viewers .	
+H-used-1	H	used	use/Verb	use#used-to	1	We {used} to walk along the beach every morning .	Habitual "used to" (the verb sense use#used-to).
+H-used-2	H	used	use/Verb	use#used-to	2	Our neighbors {used} to throw a big party each July .	Habitual "used to" (the verb sense use#used-to).
+H-used-3	H	used	use/Verb	use#apply|use#avail-oneself|use#consume|use#exploit|use#use-regularly	2	The carpenter {used} a sharp chisel to carve the groove .	Ordinary past tense of "use": any verb sense of use except use#used-to.
+H-used-4	H	used	use/Verb	use#apply|use#avail-oneself|use#consume|use#exploit|use#use-regularly	1	She {used} her spare key to enter the empty office .	Ordinary past tense of "use": any verb sense of use except use#used-to.
+H-read-1	H	read	read/Verb/Tense=Past		2	Yesterday I {read} the whole report from beginning to end .	
+H-read-2	H	read	read/Verb/Tense=Past		3	Last night she {read} the final chapter before going to sleep .	
+H-read-3	H	read	read/Verb/Tense=Pres		3	Tomorrow I will {read} the whole report before the meeting .	
+H-read-4	H	read	read/Verb/Tense=Pres		3	Every morning he {reads} the newspaper over a cup of coffee .	'reads' only has the present sense id (unambiguous form).
+H-house-1	H	house	house/Noun	house#casino-management|house#company|house#facility|house#home|house#household|house#legislature|house#lineage|house#pretend-family-play|house#religious-community|house#theater|house#theater-audience|house#zodiac-house	6	The family lived in a tall {house} with a green door .	
+H-house-2	H	house	house/Noun	house#casino-management|house#company|house#facility|house#home|house#household|house#legislature|house#lineage|house#pretend-family-play|house#religious-community|house#theater|house#theater-audience|house#zodiac-house	2	The old {houses} along the street were painted in bright colors .	
+H-house-3	H	house	house/Verb	house#accommodate-person|house#contain	3	The stadium can {house} more than fifty thousand fans .	
+H-house-4	H	house	house/Verb	house#accommodate-person|house#contain	2	This building {houses} the offices of the city council .	
+H-close-1	H	close	close/Adjective	close#close-relation|close#crowded|close#evenly-matched|close#frugal|close#guarded|close#hair-close|close#near|close#nearby|close#private-only|close#secretive|close#snug|close#strict|close#stuffy|close#textile-tight|close#true-to-source	3	He remained a {close} companion of the family for decades .	
+H-close-2	H	close	close/Adjective	close#close-relation|close#crowded|close#evenly-matched|close#frugal|close#guarded|close#hair-close|close#near|close#nearby|close#private-only|close#secretive|close#snug|close#strict|close#stuffy|close#textile-tight|close#true-to-source	6	The two teams were in a {close} race until the final lap .	
+H-close-3	H	close	close/Adverb	close#attentively|close#near-in-place	3	The children crowded {close} around the fire to stay warm .	Adverb of position; the lexicon pronunciation is the same as the adjective (klohs).
+H-close-4	H	close	close/Adverb	close#attentively|close#near-in-place	4	The two hikers walked {close} together along the narrow ledge .	
+H-close-5	H	close	close/Verb	close#assemble-parts|close#bar-access|close#become-closed|close#bring-edges-together|close#cease-operation|close#close-quarters|close#close-window|close#closing-price|close#come-to-close|close#draw-near|close#embrace|close#finalize-deal|close#save-lead|close#shift-stance|close#shut-opening|close#stop-up|close#terminate-event	1	Please {close} the door before you leave the room .	
+H-close-6	H	close	close/Verb	close#assemble-parts|close#bar-access|close#become-closed|close#bring-edges-together|close#cease-operation|close#close-quarters|close#close-window|close#closing-price|close#come-to-close|close#draw-near|close#embrace|close#finalize-deal|close#save-lead|close#shift-stance|close#shut-opening|close#stop-up|close#terminate-event	2	The shop {closes} at nine every evening .	'closes' only has the verb sense id (unambiguous form).
+H-minute-1	H	minute	minute/Noun	minute#arcminute|minute#brief-note|minute#moment|minute#point-in-time|minute#sixty-seconds|minute#travel-distance	7	The kettle will boil in about a {minute} .	
+H-minute-2	H	minute	minute/Noun	minute#arcminute|minute#brief-note|minute#moment|minute#point-in-time|minute#sixty-seconds|minute#travel-distance	5	The meeting only lasted twenty {minutes} this morning .	
+H-minute-3	H	minute	minute/Adjective	minute#infinitesimal|minute#meticulous	4	The detective found a {minute} trace of dust on the glove .	minute = extremely small (my-NOOT).
+H-minute-4	H	minute	minute/Adjective	minute#infinitesimal|minute#meticulous	4	The jeweler examined every {minute} scratch on the old watch .	minute = extremely small (my-NOOT).
+H-second-1	H	second	second/Noun	second#arcsecond|second#duel-second|second#instant|second#irregular-goods|second#motion-second|second#second-base|second#second-gear|second#second-place|second#short-time|second#time-unit	3	Wait just a {second} while I grab my coat .	
+H-second-2	H	second	second/Noun	second#arcsecond|second#duel-second|second#instant|second#irregular-goods|second#motion-second|second#second-base|second#second-gear|second#second-place|second#short-time|second#time-unit	8	The runner won the race by half a {second} .	
+H-second-3	H	second	second/Adjective	second#lower-part|second#ordinal	5	Our office is on the {second} floor of the building .	
+H-second-4	H	second	second/Adjective	second#lower-part|second#ordinal	5	She finished the marathon in {second} place last year .	
+H-second-5	H	second	second/Verb	second#support	1	I {second} the motion to end the meeting early .	To support a motion.
+H-second-6	H	second	second/Verb	second#support	1	Maria {seconded} the proposal and the board voted .	'seconded' also has second-transfer; context (a proposal) makes it support.
+H-second-7	H	second	second/Verb	second#temporary-transfer	3	The nurse was {seconded} to another hospital for six months .	To transfer temporarily (secondment); 'seconded' also has second-support.
+H-second-8	H	second	second/Verb	second#temporary-transfer	3	Several engineers were {seconded} to the new research project .	Temporary transfer (secondment).
+H-address-1	H	address	address/Noun	address#computer-address|address#delivery|address#geographic-point|address#savoir-faire|address#speech|address#stance|address#street-sign|address#written-directions	4	Please write your home {address} on the envelope .	
+H-address-2	H	address	address/Noun	address#computer-address|address#delivery|address#geographic-point|address#savoir-faire|address#speech|address#stance|address#street-sign|address#written-directions	1	The {addresses} on these old letters are hard to read .	
+H-address-3	H	address	address/Verb	address#access|address#accost|address#adjust|address#aim|address#apply|address#direct|address#greet|address#speak|address#treat-verbally|address#turn-to	3	The senator will {address} the crowd outside the courthouse .	
+H-address-4	H	address	address/Verb	address#access|address#accost|address#adjust|address#aim|address#apply|address#direct|address#greet|address#speak|address#treat-verbally|address#turn-to	1	She {addressed} the envelope to her grandmother .	'addressed' only has the verb sense id (unambiguous form).
+H-contact-1	H	contact	contact/Noun	contact#coming-together|contact#communication|contact#contact-lens|contact#contact-person|contact#electrical-junction|contact#interaction|contact#liaison|contact#touching-act|contact#touching-state	2	I lost {contact} with my old roommate years ago .	
+H-contact-2	H	contact	contact/Noun	contact#coming-together|contact#communication|contact#contact-lens|contact#contact-person|contact#electrical-junction|contact#interaction|contact#liaison|contact#touching-act|contact#touching-state	6	She keeps a list of useful {contacts} for her work .	
+H-contact-3	H	contact	contact/Verb	contact#communicate|contact#touch	1	Please {contact} the office if you have any questions .	
+H-contact-4	H	contact	contact/Verb	contact#communicate|contact#touch	1	He {contacted} the landlord about the broken heater .	'contacted' only has the verb sense id (unambiguous form).
+H-lead-1	H	lead	lead/Noun	lead#graphite|lead#metal	8	The heavy fishing weights were made of solid {lead} .	The metal (led).
+H-lead-2	H	lead	lead/Noun	lead#graphite|lead#metal	4	Old pipes made of {lead} can contaminate drinking water .	The metal (led).
+H-lead-3	H	lead	lead/Noun	lead#aim-correction|lead#animal-leash|lead#base-runner-position|lead#clue|lead#ignition-timing|lead#introduction|lead#jumper-cable|lead#leadership|lead#main-actor|lead#main-story|lead#opening-card|lead#printing-strip|lead#race-advantage|lead#tip|lead#winning-score	5	The detective followed a promising {lead} to the old warehouse .	lead = clue, pronounced leed.
+H-lead-4	H	lead	lead/Noun	lead#aim-correction|lead#animal-leash|lead#base-runner-position|lead#clue|lead#ignition-timing|lead#introduction|lead#jumper-cable|lead#leadership|lead#main-actor|lead#main-story|lead#opening-card|lead#printing-strip|lead#race-advantage|lead#tip|lead#winning-score	6	The home team held a narrow {lead} at halftime .	lead = advantage in a contest, pronounced leed.
+H-lead-5	H	lead	lead/Verb	lead#be-first|lead#cause-action|lead#command|lead#contribute|lead#direct-music|lead#go-ahead|lead#guide|lead#leave-residue|lead#precede|lead#preside|lead#provide-access|lead#result-in|lead#route|lead#span	2	She will {lead} the hikers up the mountain trail .	
+H-lead-6	H	lead	lead/Verb	lead#be-first|lead#cause-action|lead#command|lead#contribute|lead#direct-music|lead#go-ahead|lead#guide|lead#leave-residue|lead#precede|lead#preside|lead#provide-access|lead#result-in|lead#route|lead#span	2	Our manager {led} the team through a difficult year .	'led' only has the guide-verb sense id (unambiguous form).
+H-contract-1	H	contract	contract/Noun	contract#bridge-contract|contract#contract-bridge|contract#written-agreement	6	Neither side wanted to break the {contract} before it expired .	
+H-contract-2	H	contract	contract/Noun	contract#bridge-contract|contract#contract-bridge|contract#written-agreement	1	The {contracts} must be reviewed by a lawyer .	
+H-contract-3	H	contract	contract/Verb	contract#catch-illness|contract#concentrate|contract#enter-agreement|contract#narrow|contract#press-together|contract#reduce|contract#shorten|contract#shrink|contract#sign-agreement	1	Muscles {contract} when they receive a signal from the nerves .	contract = to shrink or tighten (kun-TRAKT).
+H-contract-4	H	contract	contract/Verb	contract#catch-illness|contract#concentrate|contract#enter-agreement|contract#narrow|contract#press-together|contract#reduce|contract#shorten|contract#shrink|contract#sign-agreement	1	Metal {contracts} as it cools down in the winter .	contract = to shrink.
+H-project-1	H	project	project/Noun	project#planned-project|project#undertaking	5	The students finished their science {project} on time .	
+H-project-2	H	project	project/Noun	project#planned-project|project#undertaking	2	Several building {projects} in the city were delayed .	
+H-project-3	H	project	project/Verb	project#cast-forward|project#communicate-vividly|project#devise|project#display-on-screen|project#envision|project#extend-outward|project#make-projection|project#objectify|project#project-sound|project#propose|project#throw-forward|project#transfer-ideas	4	The actor learned to {project} his voice to the back row .	
+H-project-4	H	project	project/Verb	project#cast-forward|project#communicate-vividly|project#devise|project#display-on-screen|project#envision|project#extend-outward|project#make-projection|project#objectify|project#project-sound|project#propose|project#throw-forward|project#transfer-ideas	1	He {projects} confidence even when he feels nervous .	
+H-increase-1	H	increase	increase/Noun	increase#addition|increase#growth|increase#increase-action|increase#increase-change|increase#increment	4	Experts predict a steady {increase} in the number of tourists .	
+H-increase-2	H	increase	increase/Noun	increase#addition|increase#growth|increase#increase-action|increase#increase-change|increase#increment	2	The recent {increases} in rent worried many tenants .	
+H-increase-3	H	increase	increase/Verb	increase#grow-larger|increase#increase	2	Exercise can {increase} your energy and improve your mood .	
+H-increase-4	H	increase	increase/Verb	increase#grow-larger|increase#increase	1	Prices {increase} every year around the holidays .	
+H-record-1	H	record	record/Noun	record#best-performance|record#criminal-record|record#disc|record#evidence|record#fact-compilation|record#legal-document|record#track-record|record#win-loss-record	4	She broke the world {record} in the hundred meter sprint .	
+H-record-2	H	record	record/Noun	record#best-performance|record#criminal-record|record#disc|record#evidence|record#fact-compilation|record#legal-document|record#track-record|record#win-loss-record	2	The old {records} in the basement were damaged by water .	
+H-record-3	H	record	record/Verb	record#electronic-recording|record#enter|record#indicate-reading|record#notice	1	Please {record} the meeting so absent members can listen later .	
+H-record-4	H	record	record/Verb	record#electronic-recording|record#enter|record#indicate-reading|record#notice	2	The band {records} its albums in a small studio .	
+H-subject-1	H	subject	subject/Noun	subject#artistic-content|subject#experimental-subject|subject#field|subject#issue|subject#logical-subject|subject#national|subject#sentence-topic|subject#theme	4	Math is her favorite {subject} at school .	
+H-subject-2	H	subject	subject/Noun	subject#artistic-content|subject#experimental-subject|subject#field|subject#issue|subject#logical-subject|subject#national|subject#sentence-topic|subject#theme	2	Several controversial {subjects} came up at dinner .	
+H-subject-3	H	subject	subject/Verb	subject#expose|subject#hold-responsible|subject#subjugate	4	The new rules would {subject} workers to constant surveillance .	subject = to expose (sub-JEKT).
+H-subject-4	H	subject	subject/Verb	subject#expose|subject#hold-responsible|subject#subjugate	1	Never {subject} the fragile fabric to extreme heat .	subject = to expose (sub-JEKT).
+H-inside-1	H	inside	inside/Adjective	inside#building-interior|inside#exclusive|inside#inner-side|inside#inward	1	The {inside} lane of the track is shorter than the outer ones .	
+H-inside-2	H	inside	inside/Adjective	inside#building-interior|inside#exclusive|inside#inner-side|inside#inward	1	The {inside} walls of the cave were covered with paintings .	
+H-inside-3	H	inside	inside/Adverb	inside#actually|inside#indoors|inside#inside|inside#privately	7	It started to rain so we went {inside} .	
+H-inside-4	H	inside	inside/Adverb	inside#actually|inside#indoors|inside#inside|inside#privately	9	When the storm began the farmer led the cows {inside} .	
+H-perfect-1	H	perfect	perfect/Noun	perfect#perfect-tense	9	The grammar book explains the use of the present {perfect} .	Grammatical term (the perfect tense) used as a noun; reviewer should confirm.
+H-perfect-2	H	perfect	perfect/Noun	perfect#perfect-tense	3	In Latin the {perfect} is formed with a different stem .	Grammatical term as a noun; reviewer should confirm.
+H-perfect-3	H	perfect	perfect/Verb	perfect#complete	4	He practices daily to {perfect} his tennis serve .	
+H-perfect-4	H	perfect	perfect/Verb	perfect#complete	4	The pianist wanted to {perfect} the difficult passage before the concert .	
+H-update-1	H	update	update/Noun	update#info-update|update#updating	2	The software {update} will be released next week .	
+H-update-2	H	update	update/Noun	update#info-update|update#updating	6	I will send you a brief {update} tomorrow morning .	
+H-update-3	H	update	update/Verb	update#bring-current|update#inform|update#modernize	1	Please {update} your password every few months .	
+H-update-4	H	update	update/Verb	update#bring-current|update#inform|update#modernize	1	She {updated} the website before the meeting .	'updated' only has the verb sense id (unambiguous form).
+H-estimate-1	H	estimate	estimate/Noun	estimate#approximation|estimate#assessment|estimate#cost-quote|estimate#esteem|estimate#valuation-report	6	The mechanic gave us a rough {estimate} of the repair cost .	
+H-estimate-2	H	estimate	estimate/Noun	estimate#approximation|estimate#assessment|estimate#cost-quote|estimate#esteem|estimate#valuation-report	2	The two {estimates} differed by about ten percent .	
+H-estimate-3	H	estimate	estimate/Verb	estimate#approximate|estimate#predict	1	Scientists {estimate} that the glacier is shrinking by ten meters yearly .	
+H-estimate-4	H	estimate	estimate/Verb	estimate#approximate|estimate#predict	2	We cannot {estimate} the damage until the water recedes .	
+H-associate-1	H	associate	associate/Noun	associate#accompaniment|associate#associate-degree|associate#companion|associate#compeer|associate#subordinate-member	6	She introduced me to a longtime {associate} from her old firm .	
+H-associate-2	H	associate	associate/Noun	associate#accompaniment|associate#associate-degree|associate#companion|associate#compeer|associate#subordinate-member	2	Her closest {associates} attended the funeral .	
+H-associate-3	H	associate	associate/Verb	associate#affiliate|associate#colligate|associate#consociate	2	Many people {associate} the smell of pine with Christmas .	
+H-associate-4	H	associate	associate/Verb	associate#affiliate|associate#colligate|associate#consociate	2	I always {associate} that song with my first summer job .	
+H-detail-1	H	detail	detail/Noun	detail#discourse|detail#fact|detail#military-unit|detail#part|detail#task-crew	4	She described every small {detail} of the accident .	
+H-detail-2	H	detail	detail/Noun	detail#discourse|detail#fact|detail#military-unit|detail#part|detail#task-crew	1	The {details} of the plan are still secret .	
+H-detail-3	H	detail	detail/Verb	detail#assign|detail#elaborate	3	The manual will {detail} each step of the installation .	
+H-detail-4	H	detail	detail/Verb	detail#assign|detail#elaborate	2	Her letter {details} the problems with the new schedule .	
+H-refuse-1	H	refuse	refuse/Noun	refuse#discarded-food	4	Workers hauled away the {refuse} that had piled up behind the market .	refuse = garbage (REF-yoos).
+H-refuse-2	H	refuse	refuse/Noun	refuse#discarded-food	2	Piles of {refuse} filled the alley behind the restaurant .	refuse = garbage (REF-yoos).
+H-refuse-3	H	refuse	refuse/Verb	refuse#baffle|refuse#bar-entry|refuse#decline|refuse#deny|refuse#deny-as-true|refuse#immune-rejection	2	Many customers {refuse} to pay the extra fee .	
+H-refuse-4	H	refuse	refuse/Verb	refuse#baffle|refuse#bar-entry|refuse#decline|refuse#deny|refuse#deny-as-true|refuse#immune-rejection	1	He {refuses} to wear a coat even in winter .	
+H-separate-1	H	separate	separate/Adjective	separate#disjoined|separate#freestanding|separate#independent|separate#segregated	4	The twins sleep in {separate} rooms at night .	
+H-separate-2	H	separate	separate/Adjective	separate#disjoined|separate#freestanding|separate#independent|separate#segregated	10	The recipe says to store the dry ingredients in a {separate} bowl .	
+H-separate-3	H	separate	separate/Verb	separate#assort|separate#branch|separate#carve-up|separate#decompose|separate#differentiate|separate#discriminate|separate#disunite|separate#divide|separate#fragment|separate#go-apart|separate#make-division|separate#move-apart|separate#part-ways	1	Please {separate} the eggs before you mix the batter .	
+H-separate-4	H	separate	separate/Verb	separate#assort|separate#branch|separate#carve-up|separate#decompose|separate#differentiate|separate#discriminate|separate#disunite|separate#divide|separate#fragment|separate#go-apart|separate#make-division|separate#move-apart|separate#part-ways	4	A tall wooden fence {separates} our garden from the neighbors .	
+H-present-1	H	present	present/Adjective	present#current|present#located-here	3	Every student was {present} at the morning assembly .	
+H-present-2	H	present	present/Adjective	present#current|present#located-here	1	The {present} owner bought the house in 1990 .	
+H-present-3	H	present	present/Noun	present#gift|present#present-tense|present#present-time	4	She wrapped a birthday {present} for her brother .	present = gift.
+H-present-4	H	present	present/Noun	present#gift|present#present-tense|present#present-time	6	The shop sells ideas for wedding {presents} under twenty dollars .	present = gift.
+H-present-5	H	present	present/Verb	present#award|present#bring-to-mind|present#confront|present#deliver-speech|present#demonstrate|present#depict|present#give-as-gift|present#introduce|present#present-formally|present#propose|present#salute|present#stage-performance|present#submit	3	The students will {present} their findings to the whole school .	
+H-present-6	H	present	present/Verb	present#award|present#bring-to-mind|present#confront|present#deliver-speech|present#demonstrate|present#depict|present#give-as-gift|present#introduce|present#present-formally|present#propose|present#salute|present#stage-performance|present#submit	1	She {presents} the evening news on television .	
+H-august-1	H	august	August/Noun	August#noun	6	We usually take our vacation in {August} .	Capitalized month name; the lexicon lower-cases lookups. Converted: the month (the capitalized entry August has the sense August#noun).
+H-august-2	H	august	August/Noun	August#noun	3	The heat in {August} can be unbearable .	Capitalized month name. Converted: the month (the capitalized entry August has the sense August#noun).
+H-august-3	H	august	august/Adjective	august#grand|august#revered	5	The old professor had an {august} presence that quieted the room .	august = majestic (aw-GUST); lower case adjective.
+H-august-4	H	august	august/Adjective	august#grand|august#revered	6	The ceremony took place in the {august} halls of the old parliament .	august = majestic.
+H-overall-1	H	overall	overall/Adjective	overall#comprehensive|overall#general	1	The {overall} cost of the trip was higher than expected .	
+H-overall-2	H	overall	overall/Adjective	overall#comprehensive|overall#general	1	Her {overall} grade improved after the final exam .	
+H-overall-3	H	overall	overall/Adverb	overall#generally	0	{Overall} , the company performed better than we expected .	Sentence-initial, capitalized.
+H-overall-4	H	overall	overall/Adverb	overall#generally	3	The play was {overall} well received by the critics .	
+H-graduate-1	H	graduate	graduate/Noun	graduate#degree-holder|graduate#graduated-measure	5	Her brother is a recent {graduate} of the law school .	
+H-graduate-2	H	graduate	graduate/Noun	graduate#degree-holder|graduate#graduated-measure	1	The {graduates} threw their caps into the air .	
+H-graduate-3	H	graduate	graduate/Verb	graduate#award-degree|graduate#calibrate|graduate#earn-degree	5	Most of the students will {graduate} in June .	
+H-graduate-4	H	graduate	graduate/Verb	graduate#award-degree|graduate#calibrate|graduate#earn-degree	2	My brother {graduates} from college next spring .	
+H-conflict-1	H	conflict	conflict/Noun	conflict#clash|conflict#disagreement|conflict#dramatic-opposition|conflict#incompatibility|conflict#inner-conflict|conflict#military-battle|conflict#opposition	2	The long {conflict} between the two countries finally ended .	
+H-conflict-2	H	conflict	conflict/Noun	conflict#clash|conflict#disagreement|conflict#dramatic-opposition|conflict#incompatibility|conflict#inner-conflict|conflict#military-battle|conflict#opposition	4	Their schedules caused a {conflict} on Friday afternoon .	
+H-conflict-3	H	conflict	conflict/Verb	conflict#contrast|conflict#violate	8	The dates of the wedding and the exam {conflict} .	
+H-conflict-4	H	conflict	conflict/Verb	conflict#contrast|conflict#violate	2	His statement {conflicts} with the evidence found at the scene .	
+H-defense-1	H	defense	defense/Noun	defense#act-of-defense|defense#defenders-organization|defense#defensive-structure|defense#justification|defense#legal-defense-team|defense#legal-plea|defense#military-defense|defense#protection|defense#psychological-defense|defense#rebuttal	5	The lawyer prepared a strong {defense} for the trial .	General sense (dih-FENS).
+H-defense-2	H	defense	defense/Noun	defense#act-of-defense|defense#defenders-organization|defense#defensive-structure|defense#justification|defense#legal-defense-team|defense#legal-plea|defense#military-defense|defense#protection|defense#psychological-defense|defense#rebuttal	6	The country spent more money on {defense} this year .	General sense: military defense.
+H-defense-3	H	defense	defense/Noun	defense#sports-defense	1	Their {defense} allowed only three points in the whole game .	Sports team sense (DEE-fens).
+H-defense-4	H	defense	defense/Noun	defense#sports-defense	4	The linebackers on the {defense} stopped every running play .	Sports team sense (DEE-fens).
+M-work-1	M	work	work/Noun		5	She has a lot of {work} to finish before Friday .	
+M-work-2	M	work	work/Noun		4	The museum displays the {works} of several local painters .	
+M-work-3	M	work	work/Verb		1	I {work} at a bakery near the train station .	
+M-work-4	M	work	work/Verb		1	He {worked} late every night to meet the deadline .	
+M-call-1	M	call	call/Noun		3	I got a {call} from my sister this morning .	
+M-call-2	M	call	call/Noun		3	She missed three {calls} while she was in the shower .	
+M-call-3	M	call	call/Verb		1	Please {call} me when you arrive at the airport .	
+M-call-4	M	call	call/Verb		1	They {called} the doctor right away .	
+M-need-1	M	need	need/Noun		4	There is a great {need} for clean water in the region .	
+M-need-2	M	need	need/Noun		3	Meeting the basic {needs} of children is our first priority .	
+M-need-3	M	need	need/Verb		1	You {need} a ticket to enter the museum .	
+M-need-4	M	need	need/Verb		1	She {needs} more time to finish the report .	
+M-only-1	M	only	only/Adjective		3	She is the {only} person who knows the password .	
+M-only-2	M	only	only/Adjective		3	It was the {only} restaurant open in the village .	
+M-only-3	M	only	only/Adverb		1	I {only} want a quick cup of tea .	
+M-only-4	M	only	only/Adverb		2	We could {only} watch as the boat drifted away .	
+M-place-1	M	place	place/Noun		4	This is my favorite {place} to read on weekends .	
+M-place-2	M	place	place/Noun		4	They visited many interesting {places} during their trip .	
+M-place-3	M	place	place/Verb		1	Please {place} the vase gently on the table .	
+M-place-4	M	place	place/Verb		1	She {placed} the letter inside a drawer .	
+M-back-1	M	back	back/Noun		1	My {back} hurts after carrying the heavy boxes .	
+M-back-2	M	back	back/Noun		6	He patted the horse on its {back} .	
+M-back-3	M	back	back/Verb		2	Many voters {back} the plan to build a new park .	back = support.
+M-back-4	M	back	back/Verb		2	The mayor {backed} the proposal after the meeting .	back = support.
+M-back-5	M	back	back/Adverb		5	She turned around and walked {back} to the car .	
+M-back-6	M	back	back/Adverb		2	Please come {back} tomorrow when the shop is open .	
+M-look-1	M	look	look/Noun		3	Take a good {look} at this old photograph .	
+M-look-2	M	look	look/Noun		5	She gave him a worried {look} across the table .	
+M-look-3	M	look	look/Verb		1	Please {look} carefully before you cross the street .	
+M-look-4	M	look	look/Verb		1	They {looked} everywhere for the missing keys .	
+M-way-1	M	way	way/Noun		4	She found a clever {way} to fix the leak .	
+M-way-2	M	way	way/Noun		1	Which {way} is the nearest train station ?	
+M-way-3	M	way	way/Adverb		3	That suitcase is {way} too heavy for me .	Informal intensifier 'way too'.
+M-way-4	M	way	way/Adverb		2	He finished {way} ahead of the other runners .	Informal intensifier.
+M-help-1	M	help	help/Noun		3	She called for {help} when the car broke down .	
+M-help-2	M	help	help/Noun		3	Thanks for your {help} with the heavy boxes .	
+M-help-3	M	help	help/Verb		2	Can you {help} me carry these bags upstairs ?	
+M-help-4	M	help	help/Verb		1	He {helps} his father in the garden every weekend .	
+M-state-1	M	state	state/Noun		3	Ohio is a {state} in the Midwest .	
+M-state-2	M	state	state/Noun		7	The old house was in a terrible {state} after the storm .	state = condition.
+M-state-3	M	state	state/Verb		1	Please {state} your full name and address .	
+M-state-4	M	state	state/Verb		2	The report {states} that the bridge is unsafe .	
+M-first-1	M	first	first/Adjective		3	This is my {first} day at the new school .	
+M-first-2	M	first	first/Adjective		3	She remembered the {first} time she saw snow .	
+M-first-3	M	first	first/Adverb		0	{First} , wash your hands with warm water .	Sentence-initial, capitalized.
+M-first-4	M	first	first/Adverb		5	Mix the flour and sugar {first} before adding the eggs .	
+M-change-1	M	change	change/Noun		4	There was a big {change} in the weather this week .	
+M-change-2	M	change	change/Noun		5	Do you have any spare {change} for the parking meter ?	change = coins.
+M-change-3	M	change	change/Verb		3	I want to {change} my flight to Tuesday .	
+M-change-4	M	change	change/Verb		2	The leaves {change} color in the fall .	
+M-right-1	M	right	right/Noun		3	Everyone has the {right} to a fair trial .	
+M-right-2	M	right	right/Noun		4	Voting is a basic {right} in a democracy .	
+M-right-3	M	right	right/Adjective		3	That is the {right} answer to the question .	
+M-right-4	M	right	right/Adjective		3	You made the {right} choice by waiting .	
+M-right-5	M	right	right/Adverb		3	The ball landed {right} in the middle of the table .	
+M-right-6	M	right	right/Adverb		4	I will call you {right} after the meeting .	
+M-long-1	M	long	long/Adjective		3	It was a {long} walk back to the village .	
+M-long-2	M	long	long/Adjective		2	She has {long} brown hair that reaches her waist .	
+M-long-3	M	long	long/Adverb		4	We did not wait {long} before the bus arrived .	
+M-long-4	M	long	long/Adverb		5	She has not lived here {long} , so she knows few people .	
+M-feel-1	M	feel	feel/Noun		4	I love the soft {feel} of the new blanket .	
+M-feel-2	M	feel	feel/Noun		5	The room has a cozy {feel} thanks to the lamps .	
+M-feel-3	M	feel	feel/Verb		1	I {feel} very tired after the long flight .	
+M-feel-4	M	feel	feel/Verb		1	She {feels} proud of her daughter .	
+M-name-1	M	name	name/Noun		3	What is the {name} of your favorite book ?	
+M-name-2	M	name	name/Noun		3	Please write your {name} at the top of the page .	
+M-name-3	M	name	name/Verb		3	They plan to {name} the puppy Max .	
+M-name-4	M	name	name/Verb		3	The committee will {name} a new director on Monday .	
+M-order-1	M	order	order/Noun		6	Please put the books in alphabetical {order} on the shelf .	
+M-order-2	M	order	order/Noun		3	I placed an {order} for two pizzas .	
+M-order-3	M	order	order/Verb		2	I will {order} a large pizza for dinner .	
+M-order-4	M	order	order/Verb		1	She {ordered} a cup of tea at the cafe .	
+M-little-1	M	little	little/Adjective		1	A {little} girl waved from the window of the bus .	
+M-little-2	M	little	little/Adjective		4	They live in a {little} house near the river .	
+M-little-3	M	little	little/Adverb		3	He slept very {little} during the long trip .	
+M-little-4	M	little	little/Adverb		4	The old theory is {little} known outside the university .	
+M-point-1	M	point	point/Noun		4	That is a good {point} and we should discuss it .	
+M-point-2	M	point	point/Noun		6	The pencil has a very sharp {point} .	
+M-point-3	M	point	point/Verb		1	Please {point} to the picture you like best .	
+M-point-4	M	point	point/Verb		1	He {pointed} at the map and smiled .	
+M-start-1	M	start	start/Noun		7	The race got off to a slow {start} .	
+M-start-2	M	start	start/Noun		5	She was nervous from the {start} of the interview .	
+M-start-3	M	start	start/Verb		3	The movie will {start} at seven tonight .	
+M-start-4	M	start	start/Verb		1	We {started} the engine and drove off .	
+M-love-1	M	love	love/Noun		1	Her {love} for music began as a child .	
+M-love-2	M	love	love/Noun		6	He wrote a poem about his {love} for the sea .	
+M-love-3	M	love	love/Verb		1	I {love} hot chocolate on cold days .	
+M-love-4	M	love	love/Verb		1	They {loved} the old house from the moment they saw it .	
+M-own-1	M	own	own/Verb		2	My uncle {owns} a small farm near the border .	
+M-own-2	M	own	own/Verb		1	They {own} three cars and a motorboat .	
+M-own-3	M	own	own/Adjective		6	She baked the bread in her {own} kitchen .	
+M-own-4	M	own	own/Adjective		5	He wants to start his {own} business someday .	
+M-experience-1	M	experience	experience/Noun		5	She has ten years of {experience} as a nurse .	
+M-experience-2	M	experience	experience/Noun		5	Visiting Japan was a wonderful {experience} for us .	
+M-experience-3	M	experience	experience/Verb		2	Travelers may {experience} delays during the holiday weekend .	
+M-experience-4	M	experience	experience/Verb		2	Many patients {experience} mild pain after the surgery .	
+M-home-1	M	home	home/Noun		4	They bought their first {home} near the lake .	
+M-home-2	M	home	home/Noun		1	Their {home} was painted bright yellow last summer .	
+M-home-3	M	home	home/Adverb		2	She walked {home} after the movie ended .	
+M-home-4	M	home	home/Adverb		2	He drove {home} slowly in the heavy rain .	
+M-show-1	M	show	show/Noun		4	We watched a funny {show} on television last night .	
+M-show-2	M	show	show/Noun		2	The art {show} opens at the gallery on Friday .	
+M-show-3	M	show	show/Verb		2	Let me {show} you how the camera works .	
+M-show-4	M	show	show/Verb		1	She {showed} her friends the photos from the trip .	
+M-report-1	M	report	report/Noun		4	She wrote a long {report} about the flood .	
+M-report-2	M	report	report/Noun		2	The news {report} described the fire in detail .	
+M-report-3	M	report	report/Verb		1	Please {report} any problems to the front desk .	
+M-report-4	M	report	report/Verb		1	Witnesses {reported} a loud noise near the station .	
+M-issue-1	M	issue	issue/Noun		2	The main {issue} is the cost of the repairs .	
+M-issue-2	M	issue	issue/Noun		4	She raised an important {issue} at the meeting .	
+M-issue-3	M	issue	issue/Verb		3	The bank will {issue} new cards next month .	
+M-issue-4	M	issue	issue/Verb		2	The mayor {issued} a statement about the flood .	
+M-deal-1	M	deal	deal/Noun		3	We made a {deal} to share the cost .	
+M-deal-2	M	deal	deal/Noun		4	They finally signed the {deal} with the supplier .	
+M-deal-3	M	deal	deal/Verb		2	Doctors must {deal} with many emergencies every day .	
+M-deal-4	M	deal	deal/Verb		1	She {deals} the cards to each player .	
+M-end-1	M	end	end/Noun		4	We waited until the {end} of the movie .	
+M-end-2	M	end	end/Noun		1	The {end} of the road was covered in snow .	
+M-end-3	M	end	end/Verb		3	The game will {end} before midnight .	
+M-end-4	M	end	end/Verb		2	The meeting {ended} at five in the afternoon .	
+M-review-1	M	review	review/Noun		5	The critic wrote a glowing {review} of the new film .	
+M-review-2	M	review	review/Noun		3	I read the {review} before booking the hotel .	
+M-review-3	M	review	review/Verb		2	We should {review} the notes before the exam .	
+M-review-4	M	review	review/Verb		3	The committee will {review} the application on Friday .	
+C-content-1	C	content	content/Noun	content#capacity|content#cognitive-content|content#contents|content#depicted-object|content#message|content#proportion	1	The {contents} of the box surprised everyone in the room .	Things inside (KON-tent); 'contents' only has the noun sense id (unambiguous form).
+C-content-2	C	content	content/Noun	content#capacity|content#cognitive-content|content#contents|content#depicted-object|content#message|content#proportion	4	The website removed all {content} that broke the rules .	Material (KON-tent).
+C-content-3	C	content	content/Adjective	content#satisfied	3	The cat looked {content} lying in the warm sunlight .	Satisfied (kun-TENT). content#adj and content#verb share one meaning id and respelling, so only part of speech separates them.
+C-content-4	C	content	content/Adjective	content#satisfied	3	She seemed perfectly {content} with her quiet life in the village .	Satisfied (kun-TENT).
+C-content-5	C	content	content/Verb	content#satisfy|content#satisfy-partly	3	They had to {content} themselves with cold sandwiches for dinner .	To satisfy (kun-TENT); shares its respelling with content#adj.
+C-content-6	C	content	content/Verb	content#satisfy|content#satisfy-partly	5	A small raise will not {content} the angry workers .	To satisfy (kun-TENT); shares its respelling with content#adj.
+C-produce-1	C	produce	produce/Noun	produce#fresh-produce	4	The market sells fresh {produce} from local farms every Saturday .	Fruit and vegetables (PROH-doos).
+C-produce-2	C	produce	produce/Noun	produce#fresh-produce	5	The grocery store keeps its {produce} cold in a separate section .	Fruit and vegetables (PROH-doos).
+C-produce-3	C	produce	produce/Verb	produce#cause|produce#cultivate|produce#develop-attributes|produce#display|produce#manufacture|produce#market|produce#yield	4	Factories in this region {produce} thousands of cars every year .	Make (pruh-DOOS).
+C-produce-4	C	produce	produce/Verb	produce#cause|produce#cultivate|produce#develop-attributes|produce#display|produce#manufacture|produce#market|produce#yield	3	This small farm {produces} enough milk for the whole village .	Make (pruh-DOOS).
+C-row-1	C	row	row/Noun	row#angry-dispute	4	They had a furious {row} about who should pay the bill .	Quarrel (rhymes with cow).
+C-row-2	C	row	row/Noun	row#angry-dispute	5	My parents had a terrible {row} about money this morning .	Quarrel (rhymes with cow).
+C-row-3	C	row	row/Noun	row#chronological-sequence|row#horizontal-strip|row#linear-array|row#masonry-course|row#row-line|row#rowing	6	Our seats were in the third {row} near the stage .	Line of things (rhymes with go). Plural 'rows' is not used: the lexicon gives it ids prefixed 'rows#', not 'row#'.
+C-row-4	C	row	row/Noun	row#chronological-sequence|row#horizontal-strip|row#linear-array|row#masonry-course|row#row-line|row#rowing	8	The farmer planted corn in a long straight {row} along the fence .	Line of things (rhymes with go).
+C-row-5	C	row	row/Verb	row#oar-propel	2	We will {row} out to the island if the water stays calm .	Paddle (rhymes with go).
+C-row-6	C	row	row/Verb	row#oar-propel	3	The two brothers {row} the small boat across the bay each morning .	Paddle (rhymes with go).
+C-resume-1	C	resume	resume/Noun	resume#curriculum-vitae|resume#sketch	3	She updated her {resume} before applying for the new job .	CV (REZ-oo-may).
+C-resume-2	C	resume	resume/Noun	resume#curriculum-vitae|resume#sketch	4	He sent out ten {resumes} last week and got two calls .	CV (REZ-oo-may).
+C-resume-3	C	resume	resume/Verb	resume#assume-again|resume#begin-again|resume#return-to|resume#summarize	3	The meeting will {resume} after a short lunch break .	Continue (rih-ZOOM).
+C-resume-4	C	resume	resume/Verb	resume#assume-again|resume#begin-again|resume#return-to|resume#summarize	2	Train service {resumes} as soon as the snow stops falling .	Continue (rih-ZOOM).
+C-object-1	C	object	object/Noun	object#aim|object#cognitive-content|object#constituent|object#physical-object|object#software-entity	6	The museum displayed a strange metal {object} found in the sea .	Thing (OB-jekt).
+C-object-2	C	object	object/Noun	object#aim|object#cognitive-content|object#constituent|object#physical-object|object#software-entity	2	Several small {objects} floated past the window of the space station .	Things (OB-jekt).
+C-object-3	C	object	object/Verb	object#disapprove|object#dislike	2	Several voters {object} to the new tax on bottled water .	Protest (ub-JEKT).
+C-object-4	C	object	object/Verb	object#disapprove|object#dislike	3	The lawyer will {object} if the question is unfair .	Protest (ub-JEKT).
+C-excuse-1	C	excuse	excuse/Noun	excuse#absence-note|excuse#defense|excuse#poor-example	5	Forgetting is not a good {excuse} for missing the deadline .	Reason given (ik-SKYOOS).
+C-excuse-2	C	excuse	excuse/Noun	excuse#absence-note|excuse#defense|excuse#poor-example	4	He gave a weak {excuse} for being late again .	Reason given (ik-SKYOOS).
+C-excuse-3	C	excuse	excuse/Verb	excuse#defend|excuse#exempt|excuse#forgive|excuse#justify|excuse#overlook|excuse#withdraw	1	Please {excuse} my mess while I finish painting the room .	Pardon (ik-SKYOOZ).
+C-excuse-4	C	excuse	excuse/Verb	excuse#defend|excuse#exempt|excuse#forgive|excuse#justify|excuse#overlook|excuse#withdraw	4	The judge agreed to {excuse} the sick juror from duty .	Release from a duty (ik-SKYOOZ).
+C-tear-1	C	tear	tear/Noun	tear#teardrop	3	She wiped a {tear} from her eye and smiled at the photograph .	Eye tear (teer).
+C-tear-2	C	tear	tear/Noun	tear#teardrop	4	His eyes filled with {tears} when he heard the news .	Eye tears (teer).
+C-tear-3	C	tear	tear/Noun	tear#binge|tear#tearing-act|tear#torn-opening	4	There was a small {tear} in the sleeve of his jacket .	A rip (tair).
+C-tear-4	C	tear	tear/Noun	tear#binge|tear#tearing-act|tear#torn-opening	4	She noticed a long {tear} in the canvas after the storm .	A rip (tair).
+C-tear-5	C	tear	tear/Verb	tear#abrupt-separation|tear#force-separation|tear#remove-feathers|tear#violent-movement	4	Be careful not to {tear} the old map when you unfold it .	
+C-tear-6	C	tear	tear/Verb	tear#abrupt-separation|tear#force-separation|tear#remove-feathers|tear#violent-movement	2	The puppy {tore} the newspaper into tiny pieces .	'tore' only has the rip-verb sense id (unambiguous form).
+C-wind-1	C	wind	wind/Noun	wind#air-current|wind#breathing-out|wind#flatulence|wind#idle-words|wind#influence|wind#tip|wind#wind-instrument	2	A cold {wind} blew across the empty field all night .	
+C-wind-2	C	wind	wind/Noun	wind#air-current|wind#breathing-out|wind#flatulence|wind#idle-words|wind#influence|wind#tip|wind#wind-instrument	2	The strong {winds} knocked down several trees near the river .	
+C-wind-3	C	wind	wind/Verb	wind#curve|wind#hoist|wind#meander|wind#roll|wind#wind-up|wind#wreathe	3	You have to {wind} the old clock every night before bed .	To turn or coil (wynd).
+C-wind-4	C	wind	wind/Verb	wind#curve|wind#hoist|wind#meander|wind#roll|wind#wind-up|wind#wreathe	3	The narrow path {winds} through the hills toward the village .	To curve or twist (wynd).
+C-wound-1	C	wound	wound/Noun	wound#combat-injury|wound#emotional-injury|wound#lesion|wound#wounding	2	The deep {wound} was still bleeding when the medics arrived .	
+C-wound-2	C	wound	wound/Noun	wound#combat-injury|wound#emotional-injury|wound#lesion|wound#wounding	1	Several {wounds} on the soldier needed stitches right away .	'wounds' only has the injury sense id (unambiguous form).
+C-wound-3	C	wound	wind/Verb		1	He {wound} the long scarf twice around his neck against the cold .	Past tense of 'wind' (wound, rhymes with sound); the lexicon reports lemma 'wind' for wound#past.
+C-wound-4	C	wound	wind/Verb		2	The river {wound} through the valley for many miles .	Past tense of 'wind' (to curve).
+C-console-1	C	console	console/Noun	console#bracket|console#cabinet|console#console-table|console#scientific-instrument	7	The pilot pressed a button on the {console} in front of her .	Control panel (KON-sohl).
+C-console-2	C	console	console/Noun	console#bracket|console#cabinet|console#console-table|console#scientific-instrument	7	The kids played video games on the {console} in the living room .	Game machine (KON-sohl).
+C-console-3	C	console	console/Verb	console#comfort	3	I tried to {console} my friend after she lost her job .	Comfort (kun-SOHL).
+C-console-4	C	console	console/Verb	console#comfort	4	The kind nurse gently {consoles} the frightened child .	Comfort (kun-SOHL).
+C-dove-1	C	dove	dove/Noun	dove#pacifist|dove#peace-symbol|dove#pigeon|dove#pigeon-meat	2	A gray {dove} sat quietly on the garden wall at dawn .	Bird (duv).
+C-dove-2	C	dove	dove/Noun	dove#pacifist|dove#peace-symbol|dove#pigeon|dove#pigeon-meat	1	Two {doves} were cooing softly in the tree outside my room .	'doves' only has the noun sense id (unambiguous form).
+C-dove-3	C	dove	dive/Verb		2	The swimmer {dove} into the pool and crossed to the far end .	Past tense of 'dive' (dohv); the lexicon reports lemma 'dive' for dove#verb.
+C-dove-4	C	dove	dive/Verb		4	Last summer the children {dove} from the rocks into the clear lake .	Past tense of 'dive' (dohv).
+C-desert-1	C	desert	desert/Noun	desert#desert	8	Camels can travel for days across the hot {desert} .	Dry region (DEZ-urt).
+C-desert-2	C	desert	desert/Noun	desert#desert	6	Very little rain falls in the {deserts} of northern Africa .	Dry region (DEZ-urt).
+C-desert-3	C	desert	desert/Verb	desert#abandon|desert#leave-behind|desert#switch-sides	4	A guard who would {desert} the castle during the siege faced execution .	Abandon (dih-ZURT).
+C-desert-4	C	desert	desert/Verb	desert#abandon|desert#leave-behind|desert#switch-sides	3	He would never {desert} a friend who needed help .	Abandon (dih-ZURT).
+C-digest-1	C	digest	digest/Noun	digest#compilation|digest#periodical	5	The magazine published a monthly {digest} of the top news stories .	Summary (DY-jest).
+C-digest-2	C	digest	digest/Noun	digest#compilation|digest#periodical	6	The library keeps shelves of legal {digests} for visiting lawyers .	Summaries (DY-jest).
+C-digest-3	C	digest	digest/Verb	digest#assimilate|digest#assimilate-body|digest#chemical-breakdown|digest#condense|digest#decompose|digest#digest-food|digest#systematize|digest#tolerate	3	Some people cannot {digest} milk without feeling sick .	Process food (dy-JEST).
+C-digest-4	C	digest	digest/Verb	digest#assimilate|digest#assimilate-body|digest#chemical-breakdown|digest#condense|digest#decompose|digest#digest-food|digest#systematize|digest#tolerate	7	It takes hours for the stomach to {digest} a heavy meal .	Process food (dy-JEST).
+C-entrance-1	C	entrance	entrance/Noun	entrance#doorway|entrance#entry|entrance#entry-act	7	Please wait for me at the main {entrance} of the museum .	Way in (EN-truns).
+C-entrance-2	C	entrance	entrance/Noun	entrance#doorway|entrance#entry|entrance#entry-act	2	The grand {entrance} of the hotel was lined with flowers .	Way in (EN-truns).
+C-entrance-3	C	entrance	entrance/Verb	entrance#enchant|entrance#mesmerize	5	Her beautiful singing voice will {entrance} the whole audience .	Charm (en-TRANS).
+C-entrance-4	C	entrance	entrance/Verb	entrance#enchant|entrance#mesmerize	4	The final magic trick {entrances} every child in the front rows .	Charm (en-TRANS).
+C-sow-1	C	sow	sow/Noun	sow#female-pig	4	The farmer fed the {sow} and her seven piglets .	Female pig (rhymes with cow).
+C-sow-2	C	sow	sow/Noun	sow#female-pig	2	A large {sow} rolled in the mud near the barn .	Female pig (rhymes with cow).
+C-sow-3	C	sow	sow/Verb	sow#introduce|sow#plant-seeds|sow#seed	1	Farmers {sow} the field with wheat in early autumn .	Plant seed (rhymes with go).
+C-sow-4	C	sow	sow/Verb	sow#introduce|sow#plant-seeds|sow#seed	1	He {sows} seeds along the garden fence every April .	Plant seed (rhymes with go).
+C-bass-1	C	bass	bass/Noun	bass#freshwater-bass|bass#percoid|bass#sea-bass	5	My uncle hooked a huge {bass} near the old dock yesterday .	Fish (bas).
+C-bass-2	C	bass	bass/Noun	bass#freshwater-bass|bass#percoid|bass#sea-bass	4	We grilled the fresh {bass} with lemon and herbs .	Fish (bas).
+C-bass-3	C	bass	bass/Noun	bass#bass-part|bass#bass-voice|bass#basso|bass#instrument|bass#pitch	1	The {bass} in that song made the floor shake .	Low sound (bays).
+C-bass-4	C	bass	bass/Noun	bass#bass-part|bass#bass-voice|bass#basso|bass#instrument|bass#pitch	8	Our band still needs someone to play the {bass} on Friday .	Instrument (bays).
+C-buffet-1	C	buffet	buffet/Noun	buffet#counter|buffet#meal|buffet#snack-bar	7	Dinner at the lodge is a long {buffet} with soups and salads .	Self-service meal (buh-FAY).
+C-buffet-2	C	buffet	buffet/Noun	buffet#counter|buffet#meal|buffet#snack-bar	8	Everyone piled their plates high at the lunch {buffet} on Sunday .	Self-service meal (buh-FAY).
+C-buffet-3	C	buffet	buffet/Verb	buffet#strike-forcefully|buffet#strike-repeatedly	3	Gale force gusts {buffet} the lighthouse on the rocky cliff .	Batter (BUF-it).
+C-buffet-4	C	buffet	buffet/Verb	buffet#strike-forcefully|buffet#strike-repeatedly	2	The storm {buffets} the fishing village every autumn .	Batter (BUF-it).
+C-polish-1	C	polish	Polish/Adjective	Polish#adjective	1	The {Polish} delegation arrived in Warsaw late on Monday .	Of Poland (POH-lish). polish#adj and polish#language share one meaning id and respelling; the lexicon gives no sense ids for the capitalized token 'Polish', only for lower-case 'polish'. Converted: of Poland (the capitalized entry Polish has the sense Polish#adjective).
+C-polish-2	C	polish	Polish/Adjective	Polish#adjective	5	Her grandmother cooked a traditional {Polish} soup for the whole family .	Of Poland (POH-lish); capitalized, see the note above. Converted: of Poland (the capitalized entry Polish has the sense Polish#adjective).
+C-polish-3	C	polish	Polish/Noun	Polish#noun	4	My neighbor speaks fluent {Polish} and a little German .	The language (POH-lish); capitalized, see the note on polish#adj. Converted: the Polish language (Polish#noun).
+C-polish-4	C	polish	Polish/Noun	Polish#noun	6	The novel was first written in {Polish} and later translated into English .	The language (POH-lish); capitalized, see the note on polish#adj. Converted: the Polish language (Polish#noun).
+C-polish-5	C	polish	polish/Noun	polish#polish-preparation|polish#refinement|polish#smooth-shine	3	Apply a little {polish} to the leather shoes before the wedding .	Shine product (POL-ish). polish#noun and polish#verb share one meaning id and respelling. Converted: shine or preparation (polish#refinement is the same pronunciation).
+C-polish-6	C	polish	polish/Noun	polish#polish-preparation|polish#refinement|polish#smooth-shine	4	The shop sells silver {polish} in small tins .	Shine product (POL-ish). Converted: shine or preparation (polish#refinement is the same pronunciation).
+C-polish-7	C	polish	polish/Verb	polish#polish-refine|polish#refine|polish#shine	2	I will {polish} the silver before the guests arrive .	To shine (POL-ish).
+C-polish-8	C	polish	polish/Verb	polish#polish-refine|polish#refine|polish#shine	2	My father {polishes} his shoes every night before he goes to bed .	To shine (POL-ish).
+C-bow-1	C	bow	bow/Noun	bow#curtain-call|bow#respectful-bow|bow#vessel-front	4	Waves crashed over the {bow} of the ship during the storm .	Ship's bow (rhymes with cow); bow#bend-noun covers the front of a boat and the bending gesture (same respelling, one id).
+C-bow-2	C	bow	bow/Noun	bow#curtain-call|bow#respectful-bow|bow#vessel-front	5	The pianist took a deep {bow} as the audience applauded .	Bending of the body (rhymes with cow).
+C-bow-3	C	bow	bow/Verb	bow#accede|bow#bow-down|bow#greeting-bow|bow#waist-bend	2	The students {bow} to their teacher at the start of class .	
+C-bow-4	C	bow	bow/Verb	bow#accede|bow#bow-down|bow#greeting-bow|bow#waist-bend	2	The actors {bowed} deeply before the cheering crowd .	'bowed' only has the bend-verb sense id (unambiguous form).
+C-bow-5	C	bow	bow/Noun	bow#archery-bow|bow#bow-stroke|bow#bowknot|bow#curve|bow#ribbon-bow|bow#violin-bow	4	The archer drew his {bow} and aimed at the distant target .	Weapon (rhymes with go).
+C-bow-6	C	bow	bow/Noun	bow#archery-bow|bow#bow-stroke|bow#bowknot|bow#curve|bow#ribbon-bow|bow#violin-bow	4	The violinist drew her {bow} gently across the strings .	Violin bow (rhymes with go); the inventory has no separate id for ribbon or violin bows, so they carry bow#weapon (same respelling, boh).
+C-invalid-1	C	invalid	invalid/Adjective	invalid#legally-invalid|invalid#no-longer-valid	9	The system refused the form because the date was {invalid} .	Not valid (in-VAL-id).
+C-invalid-2	C	invalid	invalid/Adjective	invalid#legally-invalid|invalid#no-longer-valid	4	The computer rejected the {invalid} password .	Not valid (in-VAL-id).
+C-invalid-3	C	invalid	invalid/Noun	invalid#chronically-ill	5	Her aunt lived as an {invalid} for years after the long illness .	Sick person (IN-vuh-lid).
+C-invalid-4	C	invalid	invalid/Noun	invalid#chronically-ill	6	The nurse brought tea to the {invalid} in the small back room .	Sick person (IN-vuh-lid).

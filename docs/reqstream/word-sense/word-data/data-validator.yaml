@@ -12,7 +12,9 @@ sections:
                 title: >-
                   DataValidator shall check the file set, the header, the cell count, the byte-order mark, line ends,
                   the final line feed, blank lines, UTF-8 validity, Unicode normalization, edge spaces, cell types,
-                  enumerations and features of every table file, and report a violation per defect.
+                  enumerations and features (sorted, unique, one value per feature) of every table file, and report
+                  each defect as a violation; at most 20 violations are listed per rule while the total counts every
+                  defect.
                 tags: [unit]
                 justification: |
                   A file that deviates from the format would break the determinism that makes the data reviewable.
@@ -26,7 +28,7 @@ sections:
                   - WordSenseBuilder_DataValidator_Validate_FormatDefects_AreReported
                   - WordSenseBuilder_DataValidator_Validate_CellDefects_AreReported
                   - WordSenseBuilder_DataValidator_Validate_EmptyRequiredCell_Violates
-                  - WordSenseBuilder_DataValidator_Validate_ClassEntryFeatures_AreChecked
+                  - WordSenseBuilder_DataValidator_Validate_SenseTableFeatures_AreChecked
                   - WordSenseBuilder_DataValidator_Validate_ManyViolations_AreCappedPerRule
 
               - id: WordSense-WordData-DataValidator-Integrity
@@ -49,8 +51,9 @@ sections:
                 title: >-
                   DataValidator shall check the cross-table rules: satellite synsets have an adjective head and others
                   have none, every entry and synset has a sense and a gloss, sense positions are 1 to n, parts of speech
-                  of entries and synsets fit, token counts and head indexes fit the lemma, examples name senses of their
-                  own synset, and the senses of a mapped lemma are partitioned among its classes.
+                  of entries and synsets fit (an adjective satellite counts as an adjective) and the ss_type of every
+                  sense key names the part of speech of the synset of the sense, token counts and head indexes fit the
+                  lemma, and examples name senses of their own synset.
                 tags: [unit]
                 justification: |
                   These rules catch the edits that are well-formed but wrong, which is what a reviewer cannot see in a
@@ -59,9 +62,55 @@ sections:
                   - WordSenseBuilder_DataValidator_Validate_HeadDefects_ViolateSynset
                   - WordSenseBuilder_DataValidator_Validate_TokenDefects_ViolateEntry
                   - WordSenseBuilder_DataValidator_Validate_SenseDefects_ViolateSense
+                  - WordSenseBuilder_DataValidator_Validate_SenseKeyOfOtherPartOfSpeech_ViolatesSense
                   - WordSenseBuilder_DataValidator_Validate_EntryWithoutSense_Violates
                   - WordSenseBuilder_DataValidator_Validate_ExampleOfOtherSynset_Violates
                   - WordSenseBuilder_DataValidator_Validate_SynsetWithoutGloss_Violates
-                  - WordSenseBuilder_DataValidator_Validate_CompletePartition_IsValid
-                  - WordSenseBuilder_DataValidator_Validate_UncoveredSense_ViolatesPartition
-                  - WordSenseBuilder_DataValidator_Validate_SenseInTwoClasses_ViolatesUnique
+
+              - id: WordSense-WordData-DataValidator-Senses
+                title: >-
+                  DataValidator shall check that every sense has exactly one label, that the labels of the senses of a
+                  lemma are unique and well formed (a duplicated id or label is reported, never thrown), that a sense
+                  id never collides with the id of a group, that a
+                  published sense label is neither changed nor reused unless the id map records it (group ids are
+                  versioned per data release and are never compared with the baseline), and that a project sense has no
+                  sense key and an authored gloss.
+                tags: [unit]
+                justification: |
+                  Sense ids are stored by callers; the rules that keep them readable, unique, stable and unambiguous
+                  must fail a pull request, not a user. Group ids may change between releases, so a changed group must
+                  not fail the stability check.
+                tests:
+                  - WordSenseBuilder_DataValidator_Validate_SenseWithoutLabel_Violates
+                  - WordSenseBuilder_DataValidator_Validate_DuplicateLabelInLemma_ViolatesUnique
+                  - WordSenseBuilder_DataValidator_Validate_DuplicateIds_AreReportedNotThrown
+                  - WordSenseBuilder_DataValidator_Validate_SenseIdEqualToGroupId_Violates
+                  - WordSenseBuilder_DataValidator_Validate_ChangedPublishedLabel_ViolatesStability
+                  - WordSenseBuilder_DataValidator_Validate_ChangedGroupId_IsNotAStabilityViolation
+                  - WordSenseBuilder_DataValidator_Validate_ReusedRetiredId_Violates
+                  - WordSenseBuilder_DataValidator_Validate_ProjectSenseWithKey_Violates
+
+              - id: WordSense-WordData-DataValidator-Groups
+                title: >-
+                  DataValidator shall check that every group has at least two, but not all, of the senses of its lemma
+                  and part of speech, one lemma, one part of speech and no two respellings, that a sense is in at most
+                  one group, that the id of a group is its lemma, the marker group: and its slug label, that the origin
+                  of a group is curated and its kind is equivalent or related; a sense needs no group.
+                tags: [unit]
+                justification: |
+                  A group answer must be unambiguous and must add something to its part of speech; the rules are what
+                  make it so, and they cannot be seen in a diff of rows. The marker keeps a group id from ever being a
+                  sense id, and the kind lets a consumer know what the group claims.
+                tests:
+                  - WordSenseBuilder_DataValidator_Validate_CuratedGroupOfSomeSenses_IsValid
+                  - WordSenseBuilder_DataValidator_Validate_GroupOfOneSense_Violates
+                  - WordSenseBuilder_DataValidator_Validate_GroupOfAllSensesOfPartOfSpeech_Violates
+                  - WordSenseBuilder_DataValidator_Validate_SenseInTwoGroups_ViolatesUnique
+                  - WordSenseBuilder_DataValidator_Validate_GroupAcrossPartsOfSpeech_Violates
+                  - WordSenseBuilder_DataValidator_Validate_GroupAcrossLemmas_Violates
+                  - WordSenseBuilder_DataValidator_Validate_GroupWithTwoRespellings_Violates
+                  - WordSenseBuilder_DataValidator_Validate_DefaultGroupOrigin_Violates
+                  - WordSenseBuilder_DataValidator_Validate_GroupIdWithoutMarker_Violates
+                  - WordSenseBuilder_DataValidator_Validate_GroupIdOfAnotherLemma_Violates
+                  - WordSenseBuilder_DataValidator_Validate_GroupLabelNotASlug_Violates
+                  - WordSenseBuilder_DataValidator_Validate_GroupKind_MustBeInTheVocabulary

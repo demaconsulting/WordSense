@@ -95,8 +95,7 @@ internal sealed record OverrideRow(string Spelling, string Lemma, string Pos, st
 ///     the forms of the Automatically Generated Inflection Database, the contractions and the overrides.
 /// </summary>
 /// <remarks>
-///     Every list is a plain file of the lexicon directory. The list derived from the Universal Dependencies treebank
-///     (<c>irregular-ud.tsv</c>) is never read.
+///     Every list is a plain file of the lexicon directory.
 /// </remarks>
 internal sealed class IrregularSources
 {

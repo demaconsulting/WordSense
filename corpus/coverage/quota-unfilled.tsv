@@ -1,0 +1,233 @@
+sense_id	part_of_speech	tier	anchors	anchor_quota	holdout	holdout_quota	written	confirmed_blind	gloss
+address#turn-to	Verb	C	1	20	0	5	2	0	speak to
+address#accost	Verb	R	0	5	0	2	0	0	speak to someone
+address#greet	Verb	R	4	5	2	2	5	5	greet, as with a prescribed form, title, or name
+advance#advanced	Adjective	R	0	5	0	2	0	0	situated ahead or going before
+advance#progress	Noun	C	1	20	0	5	0	0	a movement forward
+advance#forward-movement	Noun	U	1	10	0	3	0	0	the act of moving forward (as toward a goal)
+advance#gain	Verb	U	4	10	3	3	19	6	obtain advantages, such as points, etc.
+aid#help	Verb	U	1	10	3	3	11	2	improve the condition of
+aim#design	Noun	C	7	20	2	5	0	0	an anticipated outcome that is intended or that guides your planned actions
+aim#object	Noun	U	5	10	3	3	7	2	the goal intended to be attained (and which is believed to be attainable)
+aim#drive	Verb	C	5	20	5	5	32	10	move into a desired direction of discourse
+aim#aim-toward	Verb	U	5	10	3	3	11	1	intend (something) to move towards a certain goal
+amount#sum	Noun	C	15	20	5	5	42	20	a quantity obtained by the addition of a group of numbers
+analysis#analytic-thinking	Noun	C	0	20	0	5	30	0	the abstract separation of a whole into its constituent parts in order to study the parts and their relations
+analysis#expressive-style	Noun	R	0	5	0	2	9	0	the use of closed-class words instead of inflections: e.g., ‘the father of the bride’ instead of ‘the bride's father’
+base#immoral	Adjective	R	1	5	2	2	8	3	not adhering to ethical or moral principles
+beat#pound	Verb	U	3	10	1	3	15	1	move rhythmically
+beat#drum	Verb	U	0	10	2	3	21	2	make a rhythmic sound
+beat#flap	Verb	U	9	10	3	3	22	12	move with a thrashing motion
+beat#flutter	Verb	R	0	5	2	2	12	2	move with a flapping motion
+block#blockage	Noun	R	0	5	0	2	13	0	an obstruction in a pipe or tube
+block#bar	Verb	C	4	20	5	5	2	1	render unsuitable for passage
+block#halt	Verb	U	3	10	2	3	15	2	stop from happening or developing
+block#close-up	Verb	R	0	5	0	2	0	0	block passage through
+board#room	Verb	U	0	10	0	3	0	0	live and take one's meals at or in
+board#live	Verb	R	0	5	0	2	0	0	lodge and take meals (at)
+break#breakage	Noun	U	6	10	3	3	26	9	the act of breaking something
+break#disruption	Noun	R	2	5	2	2	15	3	an act of delaying or interrupting the continuity
+break#terminate	Verb	C	3	20	5	5	60	8	terminate or end
+break#ruin-completely	Verb	C	0	20	5	5	66	5	ruin completely
+break#come-into-being	Verb	U	0	10	3	3	22	2	come into being
+break#happen	Verb	R	0	5	0	2	4	0	happen
+break#occur	Verb	R	0	5	0	2	2	0	happen or take place
+break#shatter	Verb	R	0	5	0	2	17	0	go to pieces
+break#interjection	Interjection	U	0	10	0	3	0	0	used to order a pause or separation, especially of boxers in a clinch
+brush#rub	Verb	C	5	20	5	5	37	8	rub with a brush, or as if with a brush
+brush#clean	Verb	C	8	20	3	5	23	0	clean with a brush
+brush#sweep	Verb	U	3	10	3	3	19	5	sweep across or over
+call#decide	Verb	R	0	5	0	2	51	0	indicate a decision in regard to
+care#worry	Verb	U	0	10	0	3	22	0	be concerned with
+check#chipped-mark	Noun	R	3	5	2	2	7	5	a mark left after a small piece has been chopped or broken off of something
+check#mark-complete	Verb	U	7	10	3	3	16	10	put a check mark on or near or next to
+check#hold-back	Verb	R	4	5	2	2	12	6	hold back, as of a danger or an enemy; check the expansion or influence of
+check#train-self-control	Verb	R	0	5	2	2	13	2	develop (a child's or animal's) behavior by instruction and practice; especially to teach self-control
+check#write-check	Verb	R	0	5	2	2	9	2	write out a check on a bank account
+change#different-thing	Noun	U	4	10	3	3	80	7	a thing that is different
+contact#contact-call	Interjection	U	0	10	0	3	0	0	used to announce that an aircraft's ignition is on and its engine is ready to be started (aviation)
+collect#gather-items	Verb	C	16	20	8	5	0	0	get or gather together
+collect#assemble	Verb	C	1	20	1	5	0	0	assemble or get together
+collect#bring-together	Verb	C	0	20	0	5	0	0	get or bring together
+collect#call-together	Verb	U	0	10	0	3	0	0	gather or collect
+court#courtroom	Noun	C	13	20	5	5	37	16	a room in which a law court sits
+court#royal-residence	Noun	R	3	5	2	2	9	5	the residence of a sovereign or nobleman
+court#romance	Verb	C	10	20	5	5	14	9	make amorous advances towards
+cover#concealing-cover	Noun	U	0	10	0	3	29	0	the act of concealing the existence of something by obstructing the view of it
+cover#provide-for	Verb	C	16	20	5	5	50	20	provide for
+cry#call	Noun	C	10	20	5	5	19	9	a loud utterance; often in protest or opposition
+cry#battle-cry	Noun	U	0	10	1	3	2	1	a slogan used to rally support for a cause
+cry#sudden-loud-cry	Verb	C	15	20	5	5	29	20	utter a sudden loud cry
+cry#cry-aloud	Verb	C	7	20	5	5	5	3	utter aloud; often with surprise, horror, or joy
+dance#dance-party	Noun	U	0	10	0	3	1	0	a party of people assembled for dancing
+dance#social-dance-event	Noun	R	0	5	1	2	0	0	a party for social dancing
+dance#dance-gracefully	Verb	C	11	20	5	5	34	14	move in a graceful and rhythmical way
+deal#manage-course	Verb	R	0	5	0	2	18	0	direct the course of; manage or control
+demand#act-of-demanding	Noun	U	0	10	2	3	41	2	the act of demanding
+desire#ask-for	Verb	U	6	10	3	3	16	5	express a desire for
+draw#random-lot	Noun	R	3	5	1	2	0	0	anything (straws or pebbles etc.) taken or chosen at random
+draw#derive	Verb	C	17	20	5	5	48	16	get or derive
+draw#describe	Verb	C	9	20	5	5	66	14	give a description of
+drive#drive-away	Verb	C	9	20	5	5	53	11	cause someone or something to move by driving
+drive#coerce	Verb	C	16	20	5	5	36	19	to compel or force or urge relentlessly or exert coercive pressure on, or motivate strongly
+drive#travel-by-vehicle	Verb	R	1	5	0	2	11	0	proceed along in a vehicle
+dust#debris	Noun	C	14	20	5	5	29	16	the remains of something that has been destroyed or broken up
+effect#produce	Verb	C	19	20	5	5	26	15	produce
+escape#avoidance	Noun	U	9	10	3	3	10	7	an avoidance of danger or difficulty
+escape#elude	Verb	U	9	10	3	3	7	7	be incomprehensible to; escape understanding by
+feed#nourish	Verb	C	5	20	1	5	57	0	provide as food
+feel#discover-by-search	Verb	U	1	10	3	3	79	4	find by testing or cautious exploration
+fly#swat	Verb	R	0	5	0	2	0	0	hit a fly
+force#impel	Verb	C	10	20	5	5	65	14	urge or force (a person) to an action; constrain or motivate
+force#force-action	Verb	U	1	10	2	3	38	2	do forcibly; exert force
+function#formal-ceremony	Noun	R	0	5	0	2	0	0	a formal or official social gathering or ceremony
+function#social-event	Noun	R	0	5	0	2	0	0	a formal or official social gathering or ceremony of people
+gain#derive	Verb	C	18	20	5	5	13	5	obtain
+gain#benefit	Verb	C	3	20	2	5	33	1	derive a benefit from
+help#means-of-serving	Noun	U	9	10	3	3	65	11	a means of serving
+help#change-better	Verb	U	5	10	2	3	38	0	improve; change for the better
+handle#treat	Verb	C	19	20	5	5	33	24	interact in a certain way
+hate#express-hatred	Verb	R	0	5	1	2	11	1	to have and express negative sentiments about a person
+head#lead-group	Verb	U	3	10	3	3	65	6	be the first or leading member of (a group) and excel
+honor#chastity	Noun	R	0	5	2	2	2	2	a woman's virtue or chastity
+hope#hopeful-sign	Noun	C	4	20	5	5	49	4	grounds for feeling hopeful about the future
+hope#be-hopeful	Verb	C	0	20	2	5	74	0	be optimistic; be full of hope; have hopes
+increase#addition	Noun	C	9	20	5	5	70	12	a quantity that is added
+influence#causation	Noun	C	3	20	2	5	21	1	causing something without any direct or apparent effort
+lead#leave-residue	Verb	C	0	20	0	5	79	0	produce as a result or residue
+lead#contribute	Verb	C	0	20	0	5	184	0	be conducive to
+lift#rise-wave	Noun	R	3	5	2	2	11	5	a wave that lifts the surface of the water or ground
+lift#move-up	Verb	U	1	10	0	3	1	0	move upwards
+lift#rise	Verb	U	2	10	1	3	0	0	move upward
+lift#remove	Verb	U	7	10	3	3	22	10	take off or away by decreasing
+lift#rear-up	Verb	R	3	5	2	2	7	5	rise up
+limit#maximum-reach	Noun	U	8	10	3	3	6	2	as far as something can go
+limit#define	Verb	R	0	5	0	2	10	0	decide upon or fix definitely
+line#fabric-reinforcement	Verb	R	4	5	2	2	34	6	reinforce with fabric
+list#name-items	Verb	C	14	20	5	5	0	0	give or make a list of; name individually; give the names of
+list#enumerate	Verb	R	1	5	0	2	0	0	enumerate
+mark#crosshatch	Noun	R	1	5	2	2	13	3	a marking that consists of lines that cross each other
+mark#honor	Verb	C	19	20	5	5	21	21	celebrate by some ceremony or observation
+mark#check-off	Verb	R	4	5	2	2	7	6	put a check mark on or near or next to
+mark#underscore	Verb	R	0	5	1	2	5	1	make underscoring marks
+mention#refer-to	Verb	C	15	20	7	5	0	0	make reference to
+mention#make-mention	Verb	C	0	20	0	5	0	0	make mention of
+mind#remember	Verb	R	4	5	2	2	7	5	keep in mind
+move#arouse-compassion	Verb	U	8	10	3	3	33	8	arouse sympathy or compassion in
+nod#communicate	Verb	C	19	20	5	5	17	9	lower and raise the head, as to indicate assent or agreement or confirmation
+nod#sleepy-nod	Verb	U	4	10	2	3	2	1	let the head fall forward through drowsiness
+nod#drowse	Verb	R	2	5	1	2	0	0	be almost asleep
+notice#acknowledge	Verb	R	4	5	2	2	7	4	express recognition of the presence or existence of, or acquaintance with
+own#determiner	Determiner	U	0	10	0	3	0	0	emphasizes that something belongs specifically or exclusively to the person indicated by a possessive
+offer#furnish	Verb	C	15	20	5	5	16	4	give something useful or necessary to
+only#ultimately	Adverb	C	16	20	4	5	28	2	in the final outcome
+pass#move-past	Verb	C	18	20	4	5	0	0	move past
+pass#travel-past	Verb	C	0	20	2	5	0	0	travel past
+pass#cause-to-pass	Verb	R	0	5	0	2	26	0	cause to pass
+part#instance	Noun	R	1	5	0	2	33	0	an item that is an instance of some type
+pause#inactivity	Noun	U	6	10	3	3	12	3	temporary inactivity
+pay#discharge-debt	Verb	C	1	20	0	5	11	0	cancel or discharge a debt
+pay#dedicate	Verb	U	5	10	1	3	66	1	dedicate
+picture#situation	Noun	C	18	20	5	5	44	20	a situation treated as an observable object
+place#assign-location	Verb	U	2	10	3	3	70	4	assign a location to
+place#aim	Verb	U	8	10	3	3	45	11	intend (something) to move towards a certain goal
+play#toy	Verb	U	4	10	3	3	73	7	engage in an activity as if it were a game rather than take it seriously
+point#gunpoint	Noun	R	3	5	2	2	5	5	the gun muzzle's direction
+point#pointedness	Noun	R	1	5	2	2	34	3	the property of a shape that tapers to a sharp tip
+point#position	Verb	R	1	5	2	2	35	3	be positionable in a specified manner
+produce#cultivate	Verb	C	19	20	5	5	55	23	cultivate by growing, often involving improvements by means of agricultural techniques
+project#planned-project	Noun	U	6	10	1	3	0	0	a planned undertaking
+project#cast-forward	Verb	R	3	5	2	2	9	5	put or send forth
+pull#steer	Verb	U	7	10	3	3	18	9	steer into a certain direction
+range#graze	Verb	R	2	5	2	2	21	4	feed as in a meadow or pasture
+reach#accomplish	Verb	C	6	20	5	5	118	11	to gain with effort
+read#wording	Verb	C	19	20	5	5	36	22	have or contain a certain wording or form
+reason#cause	Noun	U	6	10	1	3	22	0	a justification for something existing or happening
+recall#return-to-earlier	Verb	U	0	10	0	3	12	0	go back to something earlier
+recall#withdraw-sale	Verb	R	2	5	2	2	5	4	make unavailable; bar from sale or distribution
+record#notice	Verb	R	0	5	1	2	5	1	be aware of
+refuse#baffle	Verb	C	0	20	0	5	26	0	elude, especially in a baffling way
+rise#ascent	Noun	U	5	10	3	3	11	8	the act of changing location in an upward direction
+rise#upward-movement	Noun	U	0	10	0	3	1	0	a movement upward; rise above the ground
+rise#surface	Verb	C	9	20	5	5	62	12	come to the surface
+roll#swaying-walk	Noun	R	4	5	2	2	12	6	walking with a swaying gait
+roll#turn-over	Verb	C	10	20	2	5	18	2	move by turning over or rotating
+separate#offprint	Noun	R	0	5	0	2	0	0	a separately printed article that originally appeared in a larger publication
+separate#separate-garment	Noun	R	0	5	0	2	0	0	a garment that can be purchased separately and worn in combinations with other garments
+separate#make-division	Verb	U	9	10	3	3	21	12	make a division or separation
+shake#shake-up	Verb	U	7	10	3	3	28	9	bring to a specified condition by or as if by shaking
+shift#change-over	Verb	C	7	20	5	5	36	10	make a shift in or exchange of
+shift#swap	Verb	U	1	10	3	3	19	2	move and exchange for another
+shift#lurch	Verb	R	1	5	2	2	10	3	move abruptly
+shout#exclaim	Verb	U	9	10	2	3	0	0	utter aloud; often with surprise, horror, or joy
+side#face	Noun	C	7	20	4	5	5	1	a surface forming part of the outside of an object
+side#surface	Noun	C	11	20	5	5	29	12	an extended outer surface of an object
+sign#signboard	Noun	U	6	10	3	3	18	9	structure displaying a board on which advertisements can be posted
+sign#omen	Noun	U	8	10	3	3	19	11	an event that is experienced as indicating important things to come
+sound#make-noise	Verb	C	0	20	0	5	5	0	make a certain noise or sound
+sound#emit-sound	Verb	C	1	20	2	5	15	0	give off a certain sound or sounds
+sound#signal	Verb	U	3	10	3	3	31	6	announce by means of a sound
+spot#detect	Verb	R	4	5	2	2	8	3	detect with the senses
+spring#groundwater-source	Noun	U	2	10	0	3	0	0	a natural flow of ground water
+spring#elasticity	Noun	U	1	10	0	3	0	0	the elasticity of something that can be stretched and returns to its original length
+spring#water-source	Noun	U	1	10	0	3	0	0	a point at which water issues forth
+stare#gaze	Verb	C	17	20	8	5	0	0	look at with fixed eyes
+stare#fixated-look	Verb	U	0	10	0	3	0	0	fixate one's eyes
+stretch#raceway-straight	Noun	U	8	10	3	3	17	11	a straightaway section of a racetrack
+stretch#stretch-limbs	Verb	C	4	20	3	5	1	0	extend one's limbs or muscles, or the entire body
+stretch#extend-body	Verb	R	3	5	2	2	0	0	extend one's body or limbs
+study#attend-school	Verb	C	9	20	5	5	101	8	be a student; follow a course of study; be enrolled at an institute of learning
+subject#issue	Noun	C	3	20	5	5	36	8	some situation or event that is thought about
+supply#elaborate	Verb	U	2	10	3	3	11	5	state or say further
+suppose#presuppose	Verb	R	2	5	2	2	12	3	require as a necessary antecedent or precondition
+swing#sway	Verb	C	15	20	5	5	23	11	move or walk in a swinging or swaying manner
+swing#live-lively	Verb	U	7	10	3	3	16	10	live in a lively, modern, and relaxed style
+touch#signature	Noun	U	8	10	3	3	22	11	a distinguishing style
+touch#bear-on	Verb	U	5	10	3	3	21	8	be relevant to
+touch#disturb	Verb	U	7	10	3	3	18	10	tamper with
+tap#dab	Noun	R	2	5	2	2	4	3	a light touch or stroke
+tap#draw	Verb	U	9	10	3	3	19	10	draw from or dip into to get something
+tap#draw-liquor	Verb	R	2	5	2	2	12	4	draw (liquor) from a tap
+transfer#transference	Noun	U	7	10	3	3	18	8	the act of transferring something from one form to another
+transfer#shift	Verb	C	11	20	6	5	25	6	move around
+use#habit	Noun	U	4	10	3	3	52	7	(psychology) an automatic pattern of behavior in reaction to a specific situation; may be inherited or acquired through frequent repetition
+visit#travel-to	Verb	C	15	20	5	5	15	4	go to certain places as for sightseeing
+voice#articulation	Noun	C	10	20	5	5	47	15	expressing in coherent verbal form
+voice#communication-medium	Noun	U	8	10	3	3	19	9	something suggestive of speech in being a medium of expression
+vote#express	Verb	C	0	20	0	5	40	0	express one's choice or preference by vote
+vote#state-choice	Verb	U	6	10	3	3	14	9	express a choice or opinion
+walk#walking	Noun	U	2	10	1	3	15	1	the act of traveling by foot
+watch#ascertain	Verb	R	0	5	0	2	44	0	find out, learn, or determine with certainty, usually by making an inquiry or other effort
+wave#rise	Noun	U	7	10	3	3	20	6	something that rises rapidly
+work#forge	Verb	R	0	5	1	2	11	0	make something, usually for a specific function
+wrong#faulty	Adjective	R	3	5	2	2	7	5	characterized by errors; not agreeing with a model or not following established rules
+wrong#ill-timed	Adjective	R	3	5	2	2	8	4	badly timed
+wrong#incorrectly	Adverb	U	4	10	3	3	0	0	in an incorrect manner
+wrong#damage	Noun	U	9	10	3	3	8	5	any harm or injury resulting from a violation of a legal right
+mount#attach	Verb	C	37	20	2	5	0	0	attach to a support
+mount#secure	Verb	C	14	20	5	5	24	18	fix onto a backing, setting, or support
+run#foot-race	Noun	U	5	10	3	3	17	8	a race run on foot
+run#chronological-sequence	Noun	R	0	5	0	2	13	0	an unbroken chronological sequence
+run#production-output	Noun	R	4	5	2	2	10	4	the production achieved during a continuous period of operation (of a machine or factory etc.)
+run#have-form	Verb	C	13	20	5	5	32	18	have a particular form
+run#change-state	Verb	U	9	10	3	3	19	11	change from one state to another
+run#persist	Verb	U	3	10	3	3	17	6	continue to exist
+run#undergo	Verb	U	9	10	3	3	17	12	be affected by; be subjected to
+run#recur	Verb	U	8	10	3	3	20	11	occur persistently
+run#succeed	Verb	U	0	10	1	3	17	1	make without a miss
+run#progress-through-change	Verb	R	1	5	2	2	7	3	progress by being changed
+run#come-undone	Verb	R	0	5	1	2	10	1	become undone
+position#perspective	Noun	C	17	20	5	5	30	22	a way of regarding situations or topics etc.
+position#placement	Noun	U	7	10	3	3	10	10	the act of putting something in a certain place
+position#replacement-post	Noun	R	3	5	2	2	10	5	the post or function properly or customarily occupied or served by another
+position#put-in-place	Verb	U	27	10	0	3	0	0	cause to be in an appropriate place, state, or relation
+position#locate	Verb	U	21	10	1	3	0	0	put into a certain place or abstract location
+support#influence	Noun	U	8	10	3	3	8	2	something providing immaterial assistance to a person or cause or interest
+support#substantiate	Verb	C	1	20	1	5	5	0	establish or strengthen as with new evidence or facts
+support#believe	Verb	U	4	10	3	3	15	7	adopt as a belief
+support#corroborate	Verb	U	0	10	1	3	3	1	support with evidence or authority or make more certain or confirm
+support#defend	Verb	U	2	10	3	3	7	4	argue or speak in defense of
+remove#dispose-of	Verb	U	2	10	3	3	19	5	dispose of
+remove#bump-off	Verb	R	4	5	2	2	7	6	kill intentionally and with premeditation
+clean#unrestricted	Adjective	U	8	10	3	3	13	11	free of restrictions or qualifications
+clean#unarmed	Adjective	R	0	5	2	2	10	2	not carrying concealed weapons

@@ -1,15 +1,15 @@
 namespace WordSense.Builder.Data;
 
 /// <summary>
-///     Computes the file key of a row of any table from the entry, sense, synset and class tables, so that the
+///     Computes the file key of a row of any table from the entry, sense and synset tables, so that the
 ///     importer places rows and the validator checks placement with the same rule.
 /// </summary>
 /// <remarks>
 ///     <para>
 ///     Child tables use the key of their parent so a change to one lemma stays in one file: an entry by its lemma, a
-///     sense by its entry, a synset by the smallest lower-case lemma among its senses (ties by sense id, both by UTF-8
-///     bytes), and a coarse class by its own lemma. Parents must be added before children (entries, then senses,
-///     then classes). Not thread-safe while filling; read-only afterwards.
+///     sense by its entry and a synset by the smallest lower-case lemma among its senses (ties by sense id, both by
+///     UTF-8 bytes). Parents must be added before children (entries, then senses). Not thread-safe while filling;
+///     read-only afterwards.
 ///     </para>
 /// </remarks>
 internal sealed class PartitionResolver
@@ -18,7 +18,7 @@ internal sealed class PartitionResolver
     private readonly Dictionary<string, string> _entryLemma = new(StringComparer.Ordinal);
     private readonly Dictionary<string, string> _senseEntry = new(StringComparer.Ordinal);
     private readonly Dictionary<string, (string Lemma, string SenseId)> _synsetFirst = new(StringComparer.Ordinal);
-    private readonly Dictionary<string, string> _classLemma = new(StringComparer.Ordinal);
+    private readonly Dictionary<string, string> _keyEntry = new(StringComparer.Ordinal);
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="PartitionResolver"/> class.
@@ -42,9 +42,15 @@ internal sealed class PartitionResolver
     /// <param name="senseId">The sense id.</param>
     /// <param name="entryId">The entry it belongs to.</param>
     /// <param name="synsetId">The synset it belongs to.</param>
-    public void AddSense(string senseId, string entryId, string synsetId)
+    /// <param name="senseKey">The sense key, or null or empty for a sense without one.</param>
+    public void AddSense(string senseId, string entryId, string synsetId, string? senseKey = null)
     {
         _senseEntry[senseId] = entryId;
+        if (!string.IsNullOrEmpty(senseKey))
+        {
+            _keyEntry[senseKey] = entryId;
+        }
+
         if (!_entryLemma.TryGetValue(entryId, out var lemma))
         {
             return;
@@ -56,13 +62,6 @@ internal sealed class PartitionResolver
             _synsetFirst[synsetId] = (folded, senseId);
         }
     }
-
-    /// <summary>
-    ///     Registers a coarse class.
-    /// </summary>
-    /// <param name="classId">The class id.</param>
-    /// <param name="lemma">The lemma of the class.</param>
-    public void AddClass(string classId, string lemma) => _classLemma[classId] = lemma;
 
     /// <summary>
     ///     Gets the file key of a synset.
@@ -91,7 +90,7 @@ internal sealed class PartitionResolver
             PartitionKind.Lemma => value,
             PartitionKind.Entry => Lookup(_entryLemma, value),
             PartitionKind.Sense => _senseEntry.TryGetValue(value, out var entry) ? Lookup(_entryLemma, entry) : null,
-            PartitionKind.Class => Lookup(_classLemma, value),
+            PartitionKind.Key => _keyEntry.TryGetValue(value, out var keyEntry) ? Lookup(_entryLemma, keyEntry) : null,
             _ => null,
         };
         if (table.Partition == PartitionKind.Synset)

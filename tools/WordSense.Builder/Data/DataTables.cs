@@ -17,7 +17,15 @@ internal static class DataTables
     /// <param name="root">The data directory.</param>
     /// <param name="table">The table.</param>
     /// <returns>The rows without the header.</returns>
-    public static IEnumerable<string[]> Read(string root, TableDef table)
+    public static IEnumerable<string[]> Read(string root, TableDef table) => ReadLocated(root, table).Select(r => r.Row);
+
+    /// <summary>
+    ///     Reads every row of a table with the file and the one-based line it came from (the header is line 1).
+    /// </summary>
+    /// <param name="root">The data directory.</param>
+    /// <param name="table">The table.</param>
+    /// <returns>The rows without the header, each with its file and line.</returns>
+    public static IEnumerable<(string Path, int Line, string[] Row)> ReadLocated(string root, TableDef table)
     {
         string[] files;
         if (table.Partition == PartitionKind.None)
@@ -34,16 +42,16 @@ internal static class DataTables
 
         foreach (var file in files.Where(File.Exists))
         {
-            var first = true;
-            foreach (var line in File.ReadLines(file, Utf8))
+            var line = 0;
+            foreach (var text in File.ReadLines(file, Utf8))
             {
-                if (first)
+                line++;
+                if (line == 1)
                 {
-                    first = false;
                     continue;
                 }
 
-                yield return line.Split('\t');
+                yield return (file, line, text.Split('\t'));
             }
         }
     }

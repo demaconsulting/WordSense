@@ -1,0 +1,7 @@
+sense_id	label	origin
+oewn-cpa__1.18.00..	noun	generated
+oewn-cpi__1.10.00..	consumer-price-index	generated
+oewn-cpi__1.10.01..	california-personality-inventory	generated
+oewn-cpr__1.04.00..	noun	generated
+oewn-cps__1.28.00..	noun	generated
+oewn-cpu__1.06.00..	noun	generated

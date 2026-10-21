@@ -4852,6 +4852,7 @@ stressor	0	oewn-stressor-n	Number=Sing	dema	0			oewn_form
 stressors	0	oewn-stressor-n	Number=Plur	dema	0			rule
 stretch	0	oewn-stretch-n	Number=Sing	dema	1			carried
 stretch	1	oewn-stretch-v	VerbForm=Inf	dema	1			carried
+stretch	2	oewn-stretch-a	Degree=Pos	dema	0			oewn_form
 stretch along	0	oewn-stretch_along-v	VerbForm=Inf	dema	0			oewn_form
 stretch forth	0	oewn-stretch_forth-v	VerbForm=Inf	dema	0			oewn_form
 stretch mark	0	oewn-stretch_mark-n	Number=Sing	dema	0			oewn_form

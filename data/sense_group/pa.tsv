@@ -1,0 +1,4 @@
+group_id	lemma	pos	label	origin	kind
+pain#group:bodily-pain	pain	n	bodily-pain	curated	equivalent
+paint#group:painting-creation	paint	v	painting-creation	curated	equivalent
+patch#group:repairing	patch	v	repairing	curated	equivalent

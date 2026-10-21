@@ -3,6 +3,8 @@
 > **Historical.** This page records an earlier phase of the project. The builder commands it names (for example
 > `real-import`, `real-judge-*`, `validate-provenance`, `nounverb-*`, `learning-curve`, `error-diagnosis`,
 > `weak-lemmas`) were removed from `WordSense.Builder`; the results stay as the record of how the data was built.
+> The page also names sources (Tatoeba CC BY 2.0 FR, Wikipedia, Wiktionary, UD) that were later removed from the corpus
+> for licensing reasons: none of their text is in the repository now (`corpus/README.md`).
 
 The diagnosis in `learning-curve-and-diagnosis.md` ranks 126 weak lemmas and gives each a recommendation:
 `more-sentences` (18), `consumer-rule` (47), `stronger-encoder` (55) and `fix-labels` (6). This page records what

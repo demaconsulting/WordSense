@@ -69,13 +69,13 @@
   <!-- Test fixtures -->
   <ItemGroup>
     <None Include="Fixtures\**\*" CopyToOutputDirectory="PreserveNewest" />
+    <!-- The reader and the grading rule of the reviewed suite are those of the builder -->
+    <Compile Include="..\..\tools\WordSense.Builder\Suite.cs" Link="Suite.cs" />
   </ItemGroup>
 
   <!-- Project References -->
   <ItemGroup>
     <ProjectReference Include="..\..\src\DemaConsulting.WordSense\DemaConsulting.WordSense.csproj" />
-    <!-- The documented examples of the core package use the Basic model; only the example verifier needs it -->
-    <ProjectReference Include="..\..\src\DemaConsulting.WordSense.Basic\DemaConsulting.WordSense.Basic.csproj" />
   </ItemGroup>
 
 </Project>

@@ -185,7 +185,9 @@ internal static class DataLayout
     /// </summary>
     /// <remarks>
     ///     The rows are written in the order given; callers sort them with <see cref="RowComparer"/> first. The
-    ///     directory is created when missing.
+    ///     directory is created when missing. The file is written atomically: the content goes to a temporary file in the
+    ///     same directory, which replaces the target only when every row was written, so a row that is not allowed
+    ///     leaves an existing file untouched and no partial file behind.
     /// </remarks>
     /// <param name="path">The file to write.</param>
     /// <param name="header">The column names.</param>
@@ -193,26 +195,40 @@ internal static class DataLayout
     /// <exception cref="InvalidDataException">Thrown when a row has the wrong width or a cell is not allowed.</exception>
     public static void WriteTable(string path, IReadOnlyList<string> header, IEnumerable<string[]> rows)
     {
-        Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(path))!);
-        using var writer = new StreamWriter(path, false, new UTF8Encoding(false)) { NewLine = "\n" };
-        writer.WriteLine(string.Join('\t', header));
-        foreach (var row in rows)
+        var full = Path.GetFullPath(path);
+        Directory.CreateDirectory(Path.GetDirectoryName(full)!);
+        var temporary = full + "." + Guid.NewGuid().ToString("N") + ".tmp";
+        try
         {
-            if (row.Length != header.Count)
+            using (var writer = new StreamWriter(temporary, false, new UTF8Encoding(false)) { NewLine = "\n" })
             {
-                throw new InvalidDataException($"A row for {path} has {row.Length.ToString(CultureInfo.InvariantCulture)} cells; expected {header.Count.ToString(CultureInfo.InvariantCulture)}.");
-            }
-
-            foreach (var cell in row)
-            {
-                var problem = CheckCell(cell);
-                if (problem is not null)
+                writer.WriteLine(string.Join('\t', header));
+                foreach (var row in rows)
                 {
-                    throw new InvalidDataException($"A cell of {path} {problem}: '{cell}'.");
+                    if (row.Length != header.Count)
+                    {
+                        throw new InvalidDataException($"A row for {path} has {row.Length.ToString(CultureInfo.InvariantCulture)} cells; expected {header.Count.ToString(CultureInfo.InvariantCulture)}.");
+                    }
+
+                    foreach (var cell in row)
+                    {
+                        var problem = CheckCell(cell);
+                        if (problem is not null)
+                        {
+                            throw new InvalidDataException($"A cell of {path} {problem}: '{cell}'.");
+                        }
+                    }
+
+                    writer.WriteLine(string.Join('\t', row));
                 }
             }
 
-            writer.WriteLine(string.Join('\t', row));
+            File.Move(temporary, full, true);
+        }
+        catch
+        {
+            File.Delete(temporary);
+            throw;
         }
     }
 

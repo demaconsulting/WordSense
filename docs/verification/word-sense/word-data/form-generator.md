@@ -24,7 +24,9 @@ All scenarios pass.
 - **Reproducibility** (`FormReproducibilityTests.cs`): on the small committed Open English WordNet slice and a small
   inflection list, two runs give identical bytes (`Run_SameInputs_GiveIdenticalBytes`) and a run from a differently
   ordered input gives the same bytes (`Run_ReorderedInput_GivesIdenticalBytes`); an input that does not match its pin
-  is refused (`Run_UnpinnedInput_IsRefused`). No download is needed. Drift of the committed tables against the pinned
+  is refused (`Run_UnpinnedInput_IsRefused`); a reviewed input that repeats an analysis (the same spelling, entry and
+  features on two lines) is refused with both line numbers (`Run_RepeatedFrozenAnalysis_IsRefused`), and the committed
+  reviewed input is accepted by every run above. No download is needed. Drift of the committed tables against the pinned
   files is seen by rerunning `rebuild-forms` (see `data/PROVENANCE.md`) and reading `git diff`.
 - **Own entries kept** (`Check_AllFactsAndIngEntriesHold`): every generated fact holds and every -ing noun or
   adjective entry of the dictionary has its own analysis.

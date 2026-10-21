@@ -1,7 +1,7 @@
 # Hand-written additions to the Moby-derived dictionary: valid common English words (or parts of speech) that the lower-case Moby list lacks.
 # Columns: word <TAB> part-of-speech letters <TAB> evidence
 # A word that exists gains the listed parts of speech after its own; a new word is added. The inflections of an added word are generated like any other.
-# Evidence: gutenberg = ordinary word frequent in the Project Gutenberg sample of tools/real-text; british = British spelling of a word the list has in US spelling; archaic = archaic spelling; proper = day, month, nationality or country name that the lower-case list lacks.
+# Evidence: gutenberg = ordinary word frequent in the Project Gutenberg sample of tools/real-text; british = British spelling of a word the list has in US spelling; archaic = archaic spelling; proper = day, month, nationality or country name that the lower-case list lacks; technical = verb of maintenance and engineering instructions that the list lacks (torque a bolt; found by the technical-writing probe, no STE data is used).
 other	N	gutenberg
 fond	J	gutenberg
 utter	J	gutenberg
@@ -259,3 +259,4 @@ englishman	N	proper
 frenchman	N	proper
 irishman	N	proper
 scotchman	N	proper
+torque	V	technical

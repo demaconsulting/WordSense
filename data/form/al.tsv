@@ -1660,6 +1660,7 @@ alloy irons	0	oewn-alloy_iron-n	Number=Plur	dema	0			rule
 alloy steel	0	oewn-alloy_steel-n	Number=Sing	dema	0			oewn_form
 alloy steels	0	oewn-alloy_steel-n	Number=Plur	dema	0			rule
 alloyed	0	oewn-alloy-v	Tense=Past+VerbForm=Part	dema	1			carried
+alloyed	1	oewn-alloyed-a	Degree=Pos	dema	0			oewn_form
 alloying	0	oewn-alloy-v	VerbForm=Ger	dema	1			carried
 alloys	0	oewn-alloy-n	Number=Plur	dema	1			carried
 alloys	1	oewn-alloy-v	Person=3+Tense=Pres	dema	1			carried

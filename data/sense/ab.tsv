@@ -1,4 +1,10 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-abaft-p-1		dema-abaft-p	dema-syn-abaft-p-1	1
+dema-aboard-p-1		dema-aboard-p	dema-syn-aboard-p-1	1
+dema-aboon-p-1		dema-aboon-p	dema-syn-aboon-p-1	1
+dema-about-p-1		dema-about-p	dema-syn-about-p-1	1
+dema-above-p-1		dema-above-p	dema-syn-above-p-1	1
+dema-abracadabra-i-1		dema-abracadabra-i	dema-syn-abracadabra-i-1	1
 oewn-ab__1.08.00..	ab%1:08:00::	oewn-AB-n	oewn-05408439-n	2
 oewn-ab__1.08.01..	ab%1:08:01::	oewn-ab-n	oewn-05564972-n	1
 oewn-ab__1.10.00..	ab%1:10:00::	oewn-AB-n	oewn-06711403-n	1

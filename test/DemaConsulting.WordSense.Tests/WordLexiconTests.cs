@@ -138,60 +138,64 @@ public class WordLexiconTests
     }
 
     /// <summary>
-    ///     A form answers only with the senses it can have: <c>bowed</c> only bends, <c>bows</c> names all three senses of
-    ///     <c>bow</c>, and every sense has an id of the trained lemma.
+    ///     A form with many senses has one analysis for each lemma, part of speech and features, never one for each sense:
+    ///     <c>go</c> has dozens of senses and a handful of analyses, and no analysis occurs twice.
     /// </summary>
     [Fact]
-    public void WordLexicon_Lookup_FormOfHeteronym_HasOnlyItsSenses()
+    public void WordLexicon_Lookup_FormWithManySenses_ReturnsOneAnalysisPerLemmaPartAndFeatures()
     {
-        var bowed = Assert.Single(WordLexicon.Lookup("bowed"));
-        Assert.Equal(PartOfSpeech.Verb, bowed.PartOfSpeech);
-        Assert.Equal("bow#bend-verb", bowed.SenseId);
-        Assert.Equal("Tense=Past+VerbForm=Part", bowed.Features);
-
+        var go = WordLexicon.Lookup("go");
         var bows = WordLexicon.Lookup("bows");
-        Assert.Equal(
-            [(PartOfSpeech.Noun, "bow#bend-noun"), (PartOfSpeech.Verb, "bow#bend-verb"), (PartOfSpeech.Noun, "bow#weapon")],
-            bows.Select(b => (b.PartOfSpeech, b.SenseId)));
-        Assert.Equal(3, bows.Select(b => b.SenseId).Distinct().Count());
-        Assert.All(bows, b => Assert.StartsWith("bow#", b.SenseId, StringComparison.Ordinal));
-        Assert.Equal(3, WordLexicon.Lookup("bow").Count(b => b.SenseId is not null));
+
+        Assert.True(WordLexicon.SensesOf("go", PartOfSpeech.Verb).Length > 20, "go has many senses");
+        Assert.InRange(go.Length, 2, 8);
+        Assert.Equal(go.Length, go.Distinct().Count());
+        Assert.Equal(bows.Length, bows.Distinct().Count());
+        Assert.Contains(bows, s => s.Lemma == "bow" && s.PartOfSpeech == PartOfSpeech.Noun && s.Features == "Number=Plur");
+        Assert.Contains(bows, s => s.Lemma == "bow" && s.PartOfSpeech == PartOfSpeech.Verb && s.Features == "Person=3+Tense=Pres");
+        Assert.All(go, s => Assert.NotEmpty(WordLexicon.SensesOf(s.Lemma, s.PartOfSpeech)));
     }
 
     /// <summary>
-    ///     The present-tense <c>reads</c> has only the present sense, while <c>read</c> keeps both its past and present
-    ///     senses.
+    ///     A capitalized or inflected spelling behaves like its base: <c>Record</c> finds <c>record</c>, and <c>Polish</c>,
+    ///     <c>August</c>, <c>using</c>, <c>left</c> and <c>paid</c> have analyses whose lemma and part of speech have senses.
+    /// </summary>
+    [Theory]
+    [InlineData("Polish", "Polish", PartOfSpeech.Adjective)]
+    [InlineData("Polish", "polish", PartOfSpeech.Verb)]
+    [InlineData("August", "August", PartOfSpeech.Noun)]
+    [InlineData("using", "use", PartOfSpeech.Verb)]
+    [InlineData("left", "leave", PartOfSpeech.Verb)]
+    [InlineData("left", "left", PartOfSpeech.Adjective)]
+    [InlineData("paid", "pay", PartOfSpeech.Verb)]
+    [InlineData("Records", "record", PartOfSpeech.Noun)]
+    public void WordLexicon_Lookup_CapitalizedAndInflectedForms_BehaveLikeTheirBase(string word, string lemma, PartOfSpeech pos)
+    {
+        var analysis = Assert.Single(WordLexicon.Lookup(word).Where(s => s.Lemma == lemma && s.PartOfSpeech == pos).Take(1));
+
+        Assert.NotEmpty(WordLexicon.SensesOf(analysis.Lemma, analysis.PartOfSpeech));
+        Assert.Equal(WordLexicon.Lookup("record"), WordLexicon.Lookup("Record"));
+    }
+
+    /// <summary>
+    ///     The past and the present of <c>read</c> are analyses of one entry that differ in their features, and the form
+    ///     <c>reads</c> is the present only.
     /// </summary>
     [Fact]
-    public void WordLexicon_Lookup_ReadForms_SplitBySense()
+    public void WordLexicon_Lookup_ReadForms_HaveThePastAndThePresentAnalysis()
     {
-        var reads = Assert.Single(WordLexicon.Lookup("reads"));
-        Assert.Equal("read#present", reads.SenseId);
+        var read = WordLexicon.Lookup("read").Where(s => s.Lemma == "read" && s.PartOfSpeech == PartOfSpeech.Verb).ToList();
 
-        var read = WordLexicon.Lookup("read").Select(s => s.SenseId).Where(id => id is not null);
-        Assert.Equal(["read#past", "read#present"], read.Order(StringComparer.Ordinal));
+        Assert.Contains(read, s => s.Features.Contains("Tense=Past", StringComparison.Ordinal));
+        Assert.Contains(read, s => s.Features.Contains("Tense=Pres", StringComparison.Ordinal));
+        Assert.Equal(2, read.Count);
+
+        var reads = Assert.Single(WordLexicon.Lookup("reads"), s => s.PartOfSpeech == PartOfSpeech.Verb);
+        Assert.Equal("Tense=Pres", reads.Features);
     }
 
     /// <summary>
-    ///     The trained senses of a restricted form come first; <c>lives</c> starts with the verb sense and never offers
-    ///     the adverb or adjective sense, <c>wounds</c> only the injury.
-    /// </summary>
-    [Fact]
-    public void WordLexicon_Lookup_RestrictedForm_NeverOffersExcludedSense()
-    {
-        var lives = WordLexicon.Lookup("lives");
-        Assert.Equal(PartOfSpeech.Verb, lives[0].PartOfSpeech);
-        Assert.Equal("live#verb", lives[0].SenseId);
-        Assert.DoesNotContain(lives, s => s.PartOfSpeech is PartOfSpeech.Adjective or PartOfSpeech.Adverb);
-
-        var wounds = Assert.Single(WordLexicon.Lookup("wounds"));
-        Assert.Equal(PartOfSpeech.Noun, wounds.PartOfSpeech);
-        Assert.Equal("wound#injury", wounds.SenseId);
-    }
-
-    /// <summary>
-    ///     A form of a trained lemma that the entry lemma does not spell the same is still keyed by the trained lemma
-    ///     (<c>axes</c> is a form of the entry <c>ax</c>), and the 19 wrong-lemma forms point at the right entry.
+    ///     A form of a lemma that the entry spells differently (<c>wicks</c>) is analyzed through the right entry.
     /// </summary>
     [Fact]
     public void WordLexicon_Lookup_FormsWithTrainedLemmaDifferentFromEntry_UseFixedLemmas()
@@ -247,7 +251,7 @@ public class WordLexiconTests
     ///     The auxiliary verbs have an Auxiliary analysis after the analyses they had, and their forms do not gain it.
     /// </summary>
     [Fact]
-    public void WordLexicon_Lookup_Auxiliaries_HaveTrailingAuxiliaryAnalysis()
+    public void WordLexicon_Lookup_Auxiliaries_HaveAnAuxiliaryAnalysis()
     {
         Assert.Equal(
             [PartOfSpeech.Verb, PartOfSpeech.Noun, PartOfSpeech.Auxiliary],
@@ -375,5 +379,253 @@ public class WordLexiconTests
         var results = Enumerable.Range(0, 32).AsParallel().Select(_ => WordLexicon.Lookup("record").Length).Distinct().ToList();
 
         Assert.Single(results);
+    }
+
+    /// <summary>
+    ///     The senses of a lemma and part of speech are listed most frequent first: <c>bank</c> as a noun starts with the
+    ///     sloping land, then the financial institution, as the WordNet 3.0 tag counts rank them.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_SensesOf_LemmaAndPartOfSpeech_ListsMostFrequentFirst()
+    {
+        var senses = WordLexicon.SensesOf("bank", PartOfSpeech.Noun);
+
+        Assert.True(senses.Length >= 10);
+        Assert.Equal("bank%1:17:01::", senses[0].SenseKey);
+        Assert.Equal("bank%1:14:00::", senses[1].SenseKey);
+        Assert.All(senses, s => Assert.Equal(("bank", PartOfSpeech.Noun), (s.Lemma, s.PartOfSpeech)));
+        Assert.Equal(senses.Length, senses.Select(s => s.SenseId).Distinct().Count());
+        Assert.All(senses, s => Assert.StartsWith("bank#", s.SenseId, StringComparison.Ordinal));
+    }
+
+    /// <summary>
+    ///     A lemma or part of speech without senses has an empty list.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_SensesOf_UnknownLemma_IsEmpty()
+    {
+        Assert.Empty(WordLexicon.SensesOf("zzqxjw", PartOfSpeech.Noun));
+        Assert.Empty(WordLexicon.SensesOf("bank", PartOfSpeech.Interjection));
+        Assert.Empty(WordLexicon.SensesOf(string.Empty, PartOfSpeech.Noun));
+        Assert.Empty(WordLexicon.SensesOf(new string('a', 400), PartOfSpeech.Noun));
+    }
+
+    /// <summary>
+    ///     A null lemma throws.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_SensesOf_NullLemma_Throws()
+    {
+        Assert.Throws<ArgumentNullException>(() => WordLexicon.SensesOf(null!, PartOfSpeech.Noun));
+    }
+
+    /// <summary>
+    ///     A lemma and part of speech with one sense lists exactly that sense.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_SensesOf_SingleSenseLemma_ListsOneSense()
+    {
+        var the = Assert.Single(WordLexicon.SensesOf("the", PartOfSpeech.Determiner));
+
+        Assert.Equal("the#determiner", the.SenseId);
+        Assert.Null(the.GroupId);
+    }
+
+    /// <summary>
+    ///     The catalog holds the sense keys of Open English WordNet: every sense of the dictionary that has a key can be
+    ///     found by it, and the catalog holds at least the 129 thousand senses of the single-token entries.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_SensesOf_EverySingleTokenOewnSense_IsInTheCatalog()
+    {
+        var senses = WordLexicon.Current.AllSenses().ToList();
+        var keyed = senses.Where(s => s.SenseKey is not null).ToList();
+
+        Assert.True(keyed.Count >= 128_000, $"{keyed.Count} keyed senses");
+        Assert.All(keyed, s => Assert.StartsWith(s.Lemma.ToLowerInvariant() + "%", s.SenseKey, StringComparison.Ordinal));
+        Assert.Equal(keyed.Count, keyed.Select(s => s.SenseKey).Distinct().Count());
+        Assert.All(senses, s => Assert.Contains(s, WordLexicon.SensesOf(s.Lemma, s.PartOfSpeech)));
+    }
+
+    /// <summary>
+    ///     The project senses (the closed classes, the auxiliaries and the discourse senses) are in the catalog with no key.
+    /// </summary>
+    [Theory]
+    [InlineData("the", PartOfSpeech.Determiner, "the#determiner")]
+    [InlineData("or", PartOfSpeech.Conjunction, "or#conjunction")]
+    [InlineData("will", PartOfSpeech.Auxiliary, "will#auxiliary")]
+    [InlineData("well", PartOfSpeech.Interjection, "well#discourse-marker")]
+    public void WordLexicon_SensesOf_ProjectSenses_AreInTheCatalog(string lemma, PartOfSpeech pos, string id)
+    {
+        var sense = Assert.Single(WordLexicon.SensesOf(lemma, pos), s => s.SenseId == id);
+
+        Assert.Null(sense.SenseKey);
+        Assert.False(WordLexicon.TryGetSenseByKey(lemma + "%1:00:00::", out _));
+    }
+
+    /// <summary>
+    ///     A sense is found by its readable id, with its key, group and part of speech.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_TryGetSense_ById_FindsSense()
+    {
+        Assert.True(WordLexicon.TryGetSense("back#football-position", out var sense));
+
+        Assert.Equal("back", sense.Lemma);
+        Assert.Equal(PartOfSpeech.Noun, sense.PartOfSpeech);
+        Assert.Equal("back%1:04:00::", sense.SenseKey);
+        Assert.Equal("back#group:football", sense.GroupId);
+        Assert.Contains(sense, WordLexicon.SensesOf("back", PartOfSpeech.Noun));
+    }
+
+    /// <summary>
+    ///     An unknown id, an empty id and an id that is too long are not found; a null id throws.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_TryGetSense_UnknownId_IsFalse()
+    {
+        Assert.False(WordLexicon.TryGetSense("back#no-such-sense", out var sense));
+        Assert.Null(sense);
+        Assert.False(WordLexicon.TryGetSense(string.Empty, out _));
+        Assert.False(WordLexicon.TryGetSense(new string('a', 400), out _));
+        Assert.Throws<ArgumentNullException>(() => WordLexicon.TryGetSense(null!, out _));
+    }
+
+    /// <summary>
+    ///     The key leads to the same sense as the id.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_TryGetSenseByKey_FindsTheSameSenseAsItsId()
+    {
+        Assert.True(WordLexicon.TryGetSense("back#football-position", out var byId));
+
+        Assert.True(WordLexicon.TryGetSenseByKey("back%1:04:00::", out var byKey));
+        Assert.Equal(byId, byKey);
+    }
+
+    /// <summary>
+    ///     An unknown key, an empty key and a key that is too long are not found; a null key throws.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_TryGetSenseByKey_UnknownKey_IsFalse()
+    {
+        Assert.False(WordLexicon.TryGetSenseByKey("back%9:99:99::", out var sense));
+        Assert.Null(sense);
+        Assert.False(WordLexicon.TryGetSenseByKey(string.Empty, out _));
+        Assert.False(WordLexicon.TryGetSenseByKey("zzqxjw%1:00:00::", out _));
+        Assert.Throws<ArgumentNullException>(() => WordLexicon.TryGetSenseByKey(null!, out _));
+    }
+
+    /// <summary>
+    ///     A project sense has no key, so no key finds it, and the senses found by their keys all have one.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_TryGetSenseByKey_ProjectSense_IsNeverFound()
+    {
+        var project = WordLexicon.Current.AllSenses().Where(s => s.SenseKey is null).ToList();
+
+        Assert.True(project.Count >= 900);
+        Assert.All(project, s => Assert.False(WordLexicon.TryGetSenseByKey(s.Lemma + "%", out _)));
+        Assert.All(
+            WordLexicon.SensesOf("back", PartOfSpeech.Noun),
+            s => Assert.True(WordLexicon.TryGetSenseByKey(s.SenseKey!, out var found) && found.SenseId == s.SenseId));
+    }
+
+    /// <summary>
+    ///     A group is found by its id and lists the senses it holds in inventory order.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_TryGetGroup_ById_ListsMemberSenses()
+    {
+        Assert.True(WordLexicon.TryGetGroup("back#group:football", out var group));
+
+        Assert.Equal(("back", PartOfSpeech.Noun), (group.Lemma, group.PartOfSpeech));
+        Assert.Equal(["back#football-back", "back#football-position"], group.SenseIds.Order(StringComparer.Ordinal));
+        Assert.All(group.SenseIds, id => Assert.True(WordLexicon.TryGetSense(id, out var sense) && sense.GroupId == "back#group:football"));
+    }
+
+    /// <summary>
+    ///     An unknown group id is not found; a null id throws.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_TryGetGroup_UnknownId_IsFalse()
+    {
+        Assert.False(WordLexicon.TryGetGroup("back#group:no-such-group", out var group));
+        Assert.Null(group);
+        Assert.False(WordLexicon.TryGetGroup(string.Empty, out _));
+        Assert.Throws<ArgumentNullException>(() => WordLexicon.TryGetGroup(null!, out _));
+    }
+
+    /// <summary>
+    ///     A sense is in at most one group: the group a sense names lists the sense, and the groups together list exactly
+    ///     the senses that name a group.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Groups_EverySense_BelongsToAtMostOneGroup()
+    {
+        var senses = WordLexicon.Current.AllSenses().ToList();
+        var groups = WordLexicon.Current.AllGroups().ToList();
+
+        var listed = groups.SelectMany(g => g.SenseIds).ToList();
+        Assert.Equal(listed.Count, listed.Distinct().Count());
+        Assert.Equal(senses.Count(s => s.GroupId is not null), listed.Count);
+        Assert.All(senses.Where(s => s.GroupId is not null), s => Assert.Contains(s.SenseId, groups.Single(g => g.GroupId == s.GroupId).SenseIds));
+    }
+
+    /// <summary>
+    ///     A group has the lemma and the part of speech of all its senses.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Groups_EveryGroup_HasOneLemmaAndOnePartOfSpeech()
+    {
+        foreach (var group in WordLexicon.Current.AllGroups())
+        {
+            foreach (var id in group.SenseIds)
+            {
+                Assert.True(WordLexicon.TryGetSense(id, out var sense));
+                Assert.Equal((group.Lemma, group.PartOfSpeech), (sense.Lemma, sense.PartOfSpeech));
+            }
+        }
+    }
+
+    /// <summary>
+    ///     A group exists only where it was curated: it has at least two senses and never all the senses of its lemma and
+    ///     part of speech.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Groups_EveryGroup_HasAtLeastTwoSensesAndNotAllOfThem()
+    {
+        var groups = WordLexicon.Current.AllGroups().ToList();
+
+        Assert.NotEmpty(groups);
+        Assert.All(groups, g => Assert.True(g.SenseIds.Length >= 2, g.GroupId));
+        Assert.All(groups, g => Assert.True(g.SenseIds.Length < WordLexicon.SensesOf(g.Lemma, g.PartOfSpeech).Length, g.GroupId));
+    }
+
+    /// <summary>
+    ///     A group id is the lemma, the group marker and a slug, so it can never equal a sense id.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Groups_EveryGroupId_HasGroupMarkerAndNeverEqualsASenseId()
+    {
+        var senseIds = WordLexicon.Current.AllSenses().Select(s => s.SenseId).ToHashSet(StringComparer.Ordinal);
+        var groups = WordLexicon.Current.AllGroups().ToList();
+
+        Assert.All(groups, g => Assert.StartsWith(g.Lemma + "#group:", g.GroupId, StringComparison.Ordinal));
+        Assert.All(groups, g => Assert.DoesNotContain(g.GroupId, senseIds));
+        Assert.DoesNotContain(senseIds, id => id.Contains("#group:", StringComparison.Ordinal));
+    }
+
+    /// <summary>
+    ///     The version of the inventory is 16 lower-case hexadecimal digits and does not change between calls.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Version_IsStableLowerCaseHex()
+    {
+        var version = WordLexicon.Version;
+
+        Assert.Equal(16, version.Length);
+        Assert.All(version, c => Assert.True(char.IsAsciiHexDigitLower(c), version));
+        Assert.Equal(version, WordLexicon.Version);
     }
 }

@@ -1,5 +1,7 @@
 ---
-# WordSense data schema, version 1.
+# WordSense data schema, version 4 (version 3 plus the column kind of sense_group and the group id scheme
+# lemma#group:label; version 3 was version 2 without the retired class tables and the form scopes; version 2 was
+# version 1 plus the sense inventory: labels, groups, frequencies, respellings).
 #
 # The committed tables under data/ are the authoritative word data: they are validated by `validate-data`, never
 # regenerated over edits. This file is a restricted YAML subset (block mappings, block sequences, flow sequences of
@@ -9,7 +11,7 @@
 # (set of Feature=Value items joined by '+'). A trailing '?' allows an empty cell (NULL). An empty cell in a primary
 # key column is allowed only for a nullable column and sorts first.
 # Rows are sorted by the primary key columns in the order listed, by UTF-8 bytes (int columns numerically).
-schema_version: 1
+schema_version: 4
 data_release: oewn-2025
 
 # First letters whose files are split by the first two letters of the lemma (data/<table>/sa.tsv, s_.tsv, ...).
@@ -36,7 +38,7 @@ vocabularies:
     agid: a form that the Automatically Generated Inflection Database adds to the other sources
     moby_reverse: a form of the Moby word list that a reverse rule traces to its base word
     contraction: a form of the closed list of contractions
-    carried: an analysis kept unchanged from the earlier table because a class, a scope or a review depends on it
+    carried: an analysis kept unchanged from the earlier table because a review depends on it
     hand: a form of a hand-written list of project decisions
     llm: an analysis decided by a language model and kept for review
   synset_pos:
@@ -45,6 +47,23 @@ vocabularies:
     a: adjective
     r: adverb
     s: adjective satellite
+    u: pronoun (a project sense)
+    p: preposition (a project sense)
+    c: conjunction (a project sense)
+    i: interjection (a project sense)
+    d: determiner (a project sense)
+    x: auxiliary (a project sense)
+  label_origin:
+    curated: a label chosen by hand for a curated lemma
+    generated: a label written by the label generator for a sense of Open English WordNet
+    project: the label of a project sense, a sense that Open English WordNet does not provide
+  group_origin:
+    curated: a group chosen by hand, two or more but not all confusable senses of a lemma and part of speech
+  group_kind:
+    equivalent: near-duplicate senses, which the source splits finely but which have effectively one meaning
+    related: a genuine family of meanings that are close but not one meaning
+  frequency_source:
+    wn30: the WordNet 3.0 tag count of the sense key
   relation_subtype:
     agent: the agent of an event
     body_part: a body part
@@ -60,12 +79,6 @@ vocabularies:
     undergoer: the undergoer of an event
     uses: what something is used for
     vehicle: the vehicle of an event
-  class_kind:
-    sense_group: a group of senses of one lemma
-    no_oewn: a class that has no sense in OEWN, covered by a supplementary entry
-    lemma_split: a class whose lemma is an inflected form of other entries
-    feature_only: a class that is a grammatical feature of an entry, not a sense
-    unmapped: the senses of a lemma and part of speech that no class covers
   synset_relation_type:
     hypernym:
       inverse: hyponym
@@ -189,7 +202,7 @@ vocabularies:
       symmetric: false
       stored: true
 
-# The closed feature vocabulary of the analysis (form) table and of class_entry.
+# The closed feature vocabulary of the analysis (form) table.
 features:
   Number: [Sing, Plur]
   Tense: [Pres, Past]
@@ -346,50 +359,6 @@ tables:
     partition:
       by: none
 
-  coarse_class:
-    description: A class of the coarse sense inventory of the shipped models, as a group of senses.
-    columns:
-      class_id: id
-      lemma: text
-      label: text
-      pos: enum:pos
-      kind: enum:class_kind
-    primary_key: [class_id]
-    unique:
-      - [lemma, label]
-    partition:
-      by: lemma
-      column: lemma
-
-  class_sense:
-    description: Assigns a sense to a coarse class; every sense is in at most one class.
-    columns:
-      class_id: id
-      sense_id: id
-    primary_key: [class_id, sense_id]
-    unique:
-      - [sense_id]
-    foreign_keys:
-      class_id: coarse_class.class_id
-      sense_id: sense.sense_id
-    partition:
-      by: class
-      column: class_id
-
-  class_entry:
-    description: Links a class that is an inflected form or a feature to the entry it stands for.
-    columns:
-      class_id: id
-      entry_id: id
-      features: features?
-    primary_key: [class_id, entry_id, features]
-    foreign_keys:
-      class_id: coarse_class.class_id
-      entry_id: entry.entry_id
-    partition:
-      by: class
-      column: class_id
-
   form:
     description: One analysis of a written form, with its entry or surface lemma, features, answer rank and provenance.
     columns:
@@ -410,15 +379,88 @@ tables:
       by: lemma
       column: spelling
 
-  form_sense_scope:
-    description: The classes an analysis stands for, one answer per class; no row means one answer without a sense id.
+  # ---- the sense inventory: readable labels, groups, frequencies and respellings ----
+  # The library classifies single words, so the inventory covers the senses of lemmas of one token (entry.token_count 1)
+  # and every project sense. The public id of a sense is lemma#label; the id of a group is lemma#group:label of the
+  # group,
+  # so a group id can never be the id of a sense. Sense ids are frozen once published; group ids are versioned per data
+  # release and are not frozen.
+
+  sense_label:
+    description: The readable label of a sense (public id lemma#label), unique in its lemma and frozen once published.
     columns:
-      spelling: text
-      rank: int
-      class_id: id
-    primary_key: [spelling, rank, class_id]
+      sense_id: id
+      label: id
+      origin: enum:label_origin
+    primary_key: [sense_id]
     foreign_keys:
-      class_id: coarse_class.class_id
+      sense_id: sense.sense_id
+    partition:
+      by: sense
+      column: sense_id
+
+  sense_label_map:
+    description: Renames and retirements of public sense ids (an empty new_id retires the id); an old id is not reused.
+    columns:
+      old_id: id
+      new_id: id?
+      release: text
+    primary_key: [old_id, release]
+    partition:
+      by: none
+
+  sense_group:
+    description: A curated group of 2+, but not all, confusable senses of a part of speech; id lemma#group:label
+    columns:
+      group_id: id
+      lemma: text
+      pos: enum:pos
+      label: id
+      origin: enum:group_origin
+      kind: enum:group_kind
+    primary_key: [group_id]
+    unique:
+      - [lemma, label]
     partition:
       by: lemma
-      column: spelling
+      column: lemma
+
+  group_sense:
+    description: Assigns a sense to its group; a sense is in at most one group and needs none.
+    columns:
+      group_id: id
+      sense_id: id
+    primary_key: [group_id, sense_id]
+    unique:
+      - [sense_id]
+    foreign_keys:
+      group_id: sense_group.group_id
+      sense_id: sense.sense_id
+    partition:
+      by: sense
+      column: sense_id
+
+  sense_frequency:
+    description: The WordNet 3.0 tag count of a sense key, 0 for a sense that the counts file does not list.
+    columns:
+      sense_key: text
+      tag_count: int
+      source: enum:frequency_source
+    primary_key: [sense_key]
+    foreign_keys:
+      sense_key: sense.sense_key
+    partition:
+      by: key
+      column: sense_key
+
+  sense_respelling:
+    description: The respelling of a sense whose pronunciation differs from the other senses of its lemma.
+    columns:
+      sense_id: id
+      respelling: text
+    primary_key: [sense_id]
+    foreign_keys:
+      sense_id: sense.sense_id
+    partition:
+      by: sense
+      column: sense_id

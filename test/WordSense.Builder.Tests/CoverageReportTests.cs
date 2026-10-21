@@ -76,6 +76,31 @@ public sealed class CoverageReportTests : IDisposable
     }
 
     /// <summary>
+    ///     The report states the share of the known tokens whose lemma is trained, in tokens and in words, and leaves the
+    ///     figure out when no trained lemmas are given.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_CoverageReport_ReadAndRender_ListsTheTrainedShare()
+    {
+        _dir.Write("text/a.txt", "the dog ran and the dog ran again, then a cat ran\n");
+        var text = Path.Join(_dir.Root, "text");
+        string[] known = ["the", "dog", "ran", "and", "cat"];
+
+        var report = CoverageReport.Read(text, known.Contains, w => w is "dog" or "ran");
+        var markdown = report.Render(10);
+        var without = CoverageReport.Read(text, known.Contains).Render(10);
+
+        Assert.Equal(12, report.Tokens);
+        Assert.Equal(9, report.KnownTokens);
+        Assert.Equal(5, report.TrainedTokens);
+        Assert.Equal(2, report.TrainedTypes);
+        Assert.Equal(100.0 * 5 / 9, report.TrainedShare, 6);
+        Assert.Contains("| Known tokens of trained lemmas | 5 (55.56 percent of the known tokens) |", markdown, StringComparison.Ordinal);
+        Assert.Contains("| Known words (types) of trained lemmas | 2 |", markdown, StringComparison.Ordinal);
+        Assert.DoesNotContain("trained lemmas", without, StringComparison.Ordinal);
+    }
+
+    /// <summary>
     ///     A missing directory and a directory without text files are rejected.
     /// </summary>
     [Fact]

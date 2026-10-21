@@ -1,0 +1,16 @@
+# Participial adjectives that keep their own analysis beside the verb form (read by `rebuild-forms`).
+# Columns: spelling <TAB> evidence
+# Open English WordNet has an adjective entry for each spelling, but a reviewed analysis of the verb form (the past
+# participle) carried the spelling and hid the adjective analysis, so that the senses of the entry could not be reached.
+# Only the adjectives that technical texts use as adjectives are listed: a general rule for all 114 such entries made
+# the common participles (based, covered, changed, driven) compete with the verb in the real-text evaluation, because
+# the evaluation corpus labels them with the verb senses only.
+damaged	a damaged seal, a damaged cable (maintenance texts)
+drained	a drained battery, a drained system
+drilled	a drilled hole, a drilled bracket
+alloyed	an alloyed metal, an alloyed steel
+advance	advance payment, advance notice (the wave 3 corpus rows use it)
+beat	beat after a long shift (the wave 3 corpus rows use it)
+chance	a chance meeting, a chance shot (the wave 3 corpus rows use it)
+sign	sign language (the wave 3 corpus rows use it)
+stretch	a stretch waistband, stretch fabric (the wave 3 corpus rows use it)

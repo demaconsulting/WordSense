@@ -1,0 +1,21 @@
+# sent_ids of the pilot (version 1 selection) sentences used as few-shot examples; excluded from the selection pool
+tatoeba-10092699
+voa-7972740-s0007
+tatoeba-12116553
+tatoeba-12771343
+tatoeba-11998685
+tatoeba-11350834
+voa-7940837-s0012
+tatoeba-10163167
+tatoeba-10361304
+tatoeba-10122173
+tatoeba-9805239
+tatoeba-10107585
+tatoeba-11844643
+voa-7998765-s0015
+voa-7979814-s0014
+tatoeba-9734595
+tatoeba-12149112
+tatoeba-11271704
+tatoeba-11601008
+tatoeba-11179830

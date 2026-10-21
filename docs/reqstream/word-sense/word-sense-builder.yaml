@@ -11,24 +11,35 @@ sections:
           - id: WordSense-WordSenseBuilder-Words
             title: >-
               The builder shall compile the flat word image of the core package deterministically from the
-              authoritative tables of the data (entry, form, form_sense_scope and coarse_class) and the sense
-              meanings of the corpus, with every word of the dictionary (determiners, conjunctions and interjections
-              included), every sense of a trained lemma and the inflected forms of every dictionary word
-              and trained lemma (the generation of the forms is specified by the FormGenerator requirements), and
+              authoritative tables of the data (entry, form, sense, group, sense label, respelling and sense
+              frequency), holding every word of the dictionary (determiners, conjunctions and interjections included)
+              with all its parts of speech, the inflected forms of every dictionary word (the generation of the forms
+              is specified by the FormGenerator requirements), and the sense catalog: every single-token OEWN sense
+              and its group (none when it is in no group), its OEWN sense key (none for a project sense)
+              and its respelling, the senses of each lemma and part of speech ranked by WordNet 3.0 frequency; and
               shall write it in the compact binary format that the core package reads. The committed image shall be
-              the compilation of the committed data, and a dictionary word shall never be lost; a trained lemma
-              shall keep the trained senses first. A listed form of a trained lemma shall have the senses its labels
-              name followed by its own analyses, and an unknown, duplicate or empty label, or a restricted row for
-              the lemma itself, shall fail the build. A modal or primary
-              auxiliary listed in the committed auxiliary list shall gain an Auxiliary sense after all its other
-              senses, and an Auxiliary sense shall never be trained.
+              the compilation of the committed data, a dictionary word shall never be lost, and a sense without a
+              label, a sense in two groups, a group of fewer than two senses (a declared group without any member
+              included) or of all the senses of its lemma and part of speech, a group that mixes lemmas or parts of
+              speech, or a group id that lacks the group marker
+              (lemma#group:label) or equals a sense id shall fail
+              the build. A modal or primary auxiliary listed in the committed auxiliary list shall gain an auxiliary
+              analysis.
             tags: [unit]
             justification: |
-              The shipped lexicon must be reproducible from committed inputs so that reviewers can verify it, and it
-              must never lose a dictionary word or a part of speech because of what was trained. Running text uses
-              inflected forms far more often than lemmas, so every form of every word has to be known.
+              The shipped lexicon and catalog must be reproducible from committed inputs so that reviewers can verify
+              them, and must never lose a dictionary word, a part of speech or a sense because of what was trained.
+              Running text uses inflected forms far more often than lemmas, so every form of every word has to be
+              known.
             tests:
               - WordSenseBuilder_ImageCompiler_Build_IsDeterministic
+              - WordSenseBuilder_ImageCompiler_Build_CatalogIsDeterministic
+              - WordSenseBuilder_ImageCompiler_Build_SenseWithoutLabel_Fails
+              - WordSenseBuilder_ImageCompiler_Build_SenseInTwoGroups_Fails
+              - WordSenseBuilder_ImageCompiler_Build_GroupOfOneSenseOrAllSenses_Fails
+              - WordSenseBuilder_ImageCompiler_Build_GroupWithoutMembers_Fails
+              - WordSenseBuilder_ImageCompiler_Build_GroupMixingPartsOfSpeech_Fails
+              - WordSenseBuilder_ImageCompiler_Build_GroupIdWithoutMarkerOrEqualToSenseId_Fails
               - WordSenseBuilder_Image_Spellings_AreSortedByUtf8Bytes
               - WordSenseBuilder_Image_Find_ReturnsOwnIndex
               - WordSenseBuilder_Image_Corruption_IsRejected
@@ -38,30 +49,29 @@ sections:
               - WordSenseBuilder_LexiconSource_ReadAuxiliaries_ReadsWordsAndRejectsBadLines
               - WordSenseBuilder_LexiconSource_Letters_CoverTheTenParts
               - WordSenseBuilder_Words_Committed_MatchesData
-              - WordSenseBuilder_Words_Committed_AuxiliarySenseComesLast
+              - WordSenseBuilder_Words_Committed_AuxiliariesGainTheirAnalysis
               - WordSenseBuilder_Program_CompileImage_WritesImage
               - WordSenseBuilder_SenseInventory_ValidateRules_FlagsViolations
-              - WordSenseBuilder_SenseInventory_CheckForms_ReportsEveryViolation
-              - WordSenseBuilder_SenseInventory_FormSenseIndexes_FollowsLemmaOrder
-              - WordSenseBuilder_SenseInventory_Validate_SentenceWithSenseOutsideFormLabels_IsReported
               - WordSenseBuilder_SenseInventory_Validate_CommittedCorpus_IsConsistent
               - WordSenseBuilder_Words_Committed_HoldsEveryDictionaryWord
-              - WordSenseBuilder_Words_Committed_FormSensesFollowLabelsThenOwnExtras
-              - WordSenseBuilder_Words_Committed_RestrictedFormsGainTheirOwnExtra
+              - WordSenseBuilder_Words_Committed_CatalogHoldsEveryOewnAndProjectSense
 
           - id: WordSense-WordSenseBuilder-Coverage
             title: >-
               The builder shall report, for a directory of plain-text files, the share of the running words that the
-              word table knows (excluding the Project Gutenberg header and footer), and list the unknown words,
-              separating likely names from other words, most frequent first.
+              word table knows (excluding the Project Gutenberg header and footer), the share of the known words whose
+              lemma has trained fine senses, and list the unknown words, separating likely names from other words,
+              most frequent first.
             tags: [unit]
             justification: |
               The completeness of the word table must be measured on real text, not assumed; a repeatable report is
-              how obviously valid unknown words are found and how a regression is detected.
+              how obviously valid unknown words are found and how a regression is detected, and the trained share shows
+              how much of real text a model can answer at a sense level.
             tests:
               - WordSenseBuilder_CoverageReport_Body_CutsAtMarkers
               - WordSenseBuilder_CoverageReport_AddText_ClassifiesTokens
               - WordSenseBuilder_CoverageReport_ReadAndRender_ListsFigures
+              - WordSenseBuilder_CoverageReport_ReadAndRender_ListsTheTrainedShare
               - WordSenseBuilder_CoverageReport_Read_BadDirectory_Throws
               - WordSenseBuilder_CoverageReport_AuthoredSample_IsFullyKnown
               - WordSenseBuilder_Program_Coverage_ReportsAndWritesFile
@@ -89,75 +99,331 @@ sections:
           - id: WordSense-WordSenseBuilder-Weights
             title: >-
               The builder shall train, for a named encoder model and the shared corpus, one set of per-lemma weights
-              deterministically, and shall write it, naming the model, to the package of that model.
+              deterministically (the same input gives byte-identical weights whatever the number of threads), scoring
+              each fine sense of every lemma that has two or more senses with anchors
+              (a sense with a single anchor still takes part in training, a lemma with fewer than two anchored senses
+              gets no weights), in the span of the anchors of the lemma when it has fewer anchors than the encoder has
+              dimensions (an exact reformulation of the feature-space fit, which stays available as the reference
+              solver), and shall write it, naming the model, to the package of that model.
             tags: [unit]
             justification: |
               Each encoder package needs classifiers trained for its own embedding space; training every model from
-              the one shared corpus keeps the models comparable.
+              the one shared corpus keeps the models comparable, and a lemma with nothing to choose between gets no
+              classifier that could only guess. The fit in the feature space took 11.5 minutes for 20 lemmas of the
+              768-dimensional encoder, which does not scale to the corpus of 775 lemmas; the
+              equivalent fit in the span of the anchors takes seconds.
             tests:
               - WordSenseBuilder_LogisticTrainer_SeparatesAndIsDeterministic
+              - WordSenseBuilder_KernelBasis_Create_KeepsInnerProductsAndDropsDuplicates
+              - WordSenseBuilder_KernelBasis_Create_Subset_UsesTheSubsetOnly
+              - WordSenseBuilder_WeightsTrainer_Fit_KernelSolver_FindsThePrimalOptimum
+              - WordSenseBuilder_WeightsTrainer_Fit_KernelSolver_IsDeterministic
+              - WordSenseBuilder_LemmaFitter_Fit_IsIndependentOfTheThreadCount
+              - WordSenseBuilder_WeightsTrainer_Fit_MoreSamplesThanDimensions_IsThePrimalSolver
               - WordSenseBuilder_WeightsBlobWriter_Write_RoundTripsThroughTheReader
               - WordSenseBuilder_Program_Weights_UnknownModel_ListsTheModels
+              - WordSenseBuilder_WeightsTrainer_LemmaWithOneAnchoredSense_GetsNoWeights
+              - WordSenseBuilder_WeightsTrainer_SenseWithOneAnchor_StaysInTraining
+
+          - id: WordSense-WordSenseBuilder-FormChoosers
+            title: >-
+              The builder shall train a form chooser, deterministically, for every form whose rows in the chooser corpus
+              (form, label, sentence) name at least two labels and give every analysis of the form a label, with its
+              own fine threshold chosen by cross-validation on those rows only, shall store it with the first lemma of
+              the form that has weights, shall reject a chooser row whose label stands for no analysis of its form, and
+              shall report the forms that got no chooser and why.
+            tags: [unit]
+            justification: |
+              A form shared by several lemmas or tenses (`left`, `used`, `read`) can only be answered at the sense level
+              when a classifier first picks the lemma or the tense; the table refuses a chooser that does not cover
+              every analysis of its form, so the builder must not write one, and a form without a chooser must be
+              visible to the corpus author who has to supply the missing rows.
+            tests:
+              - WordSenseBuilder_ChooserCorpus_ReadSentences_ParsesRow
+              - WordSenseBuilder_ChooserCorpus_ReadSentences_LemmaAndFeaturesLabel_IsAccepted
+              - WordSenseBuilder_ChooserCorpus_ReadSentences_InvalidRows_AreDescribed
+              - WordSenseBuilder_ChooserCorpus_ReadDirectory_MalformedRow_Throws_AndMissingDirectoryIsEmpty
+              - WordSenseBuilder_ChooserCorpus_Validate_DuplicateSentence_IsAnError
+              - WordSenseBuilder_ChooserCorpus_LabelIndexOf_PrefersTheExactLabel
+              - WordSenseBuilder_WeightsTrainer_AttachChoosers_FormOfTwoLemmas_StoresTheChooserWithTheFirstTrainedLemma
+              - WordSenseBuilder_WeightsTrainer_AttachChoosers_OnlyTheSecondLemmaTrained_StoresItThere_AndTheBlobRoundTrips
+              - WordSenseBuilder_WeightsTrainer_AttachChoosers_TenseVariants_GetOneLabelEach
+              - WordSenseBuilder_WeightsTrainer_AttachChoosers_UnusableForms_AreSkippedWithAReason
+              - WordSenseBuilder_WeightsTrainer_AttachChoosers_IsDeterministic_AndNeedsOneFeaturePerRow
+
+          - id: WordSense-WordSenseBuilder-Thresholds
+            title: >-
+              The builder shall choose for every trained lemma a first fine threshold, and for a lemma that has groups
+              also a first group threshold, by cross-validation on the anchors of the lemma only, so that the answers
+              above each threshold reach a configured precision target (95 percent by default), deterministically; a
+              level for which no threshold reaches the target shall never be answered for that lemma. These first
+              thresholds are the input of the real-text calibration (WordSense-WordSenseBuilder-RealCalibration), which
+              is the only step that may read held-out sentences to move them.
+            tags: [unit]
+            justification: |
+              Per-lemma thresholds make the confidence of each answer mean the same thing for every lemma and every
+              model, and never answering a level that cannot meet the target keeps the promise honest. The anchor
+              cross-validation is the conservative starting point and a lemma with no real calibration rows keeps it;
+              it is optimistic on real text (its anchors are balanced and partly written), which is why the real-text
+              calibration follows.
+            tests:
+              - WordSenseBuilder_Thresholds_Choose_MeetPrecisionTargetOnOutOfFoldAnswers
+              - WordSenseBuilder_Thresholds_Choose_IsDeterministicForSeed
+              - WordSenseBuilder_Thresholds_Choose_NeverReadsHoldoutOrEvaluationSentences
+              - WordSenseBuilder_Thresholds_Choose_TargetNeverReached_NeverAnswersThatLevel
+              - WordSenseBuilder_ModelTrainer_TrainDataAsync_WritesBothThresholdsPerLemma
+
+          - id: WordSense-WordSenseBuilder-RealCalibration
+            title: >-
+              The builder shall split the real-text held-out sentences (provenance origin real) by document into a
+              calibration split and a test split with a fixed, recorded rule (the first bit of the SHA-256 of the
+              document identifier; a Tatoeba sentence is its own document), and shall move the thresholds of the
+              trained lemmas so that the answers on the real calibration sentences reach the precision target: a
+              lemma with enough calibration rows gets a threshold of its own that is never lower than its adjusted
+              cross-validation threshold, every other lemma gets its cross-validation threshold plus one pooled shift
+              that is fitted on the calibration rows of all those lemmas, a level that was never answered stays never
+              answered, and the group threshold moves the same way only when the calibration rows can verify it. The
+              test split and the written held-out sentences shall never influence a threshold, and the calibration shall
+              be deterministic.
+            tags: [unit]
+            justification: |
+              Thresholds chosen by cross-validation on the anchors are calibrated on a balanced corpus that is partly
+              written, so on real text the sense answers fall about ten points short of the target (85.7 to 87.5
+              percent against 95 percent measured on the held-out real sentences). Calibrating on held-out real
+              sentences whose documents are disjoint from the test split keeps the headline real-text figures
+              independent of the thresholds, and one pooled shift is the robust choice because a lemma has only a few
+              calibration rows.
+            tests:
+              - WordSenseBuilder_RealSplit_Classify_SplitsRealRowsByDocument
+              - WordSenseBuilder_RealSplit_Classify_WrittenAndUnknownRows_AreNeverRealRows
+              - WordSenseBuilder_RealSplit_Classify_ReportsTestRowsInDocumentsWithoutAnchors
+              - WordSenseBuilder_RealCalibrator_Apply_RaisesThresholdsUntilThePooledPrecisionReachesTheTarget
+              - WordSenseBuilder_RealCalibrator_Apply_LemmaWithEnoughRows_KeepsTheHigherOfItsOwnAndTheAdjustedThreshold
+              - WordSenseBuilder_RealCalibrator_Apply_NoCalibrationRows_KeepsTheThresholds
+              - WordSenseBuilder_RealCalibrator_Apply_NeverStaysNever_AndIsDeterministic
+              - WordSenseBuilder_RealCalibrator_Apply_GroupThreshold_MovesOnlyWithEnoughAnswers
+              - WordSenseBuilder_ModelTrainer_TrainDataAsync_CalibrationRows_MoveTheThresholds
+
+          - id: WordSense-WordSenseBuilder-UsagePrior
+            title: >-
+              The builder shall train the per-sense scores of every lemma so that the sense probabilities of a model
+              reflect how often the senses are used, not how often the training sentences show them: it shall divide
+              out the share of each sense among the anchors of its lemma and multiply in the usage of the sense, the
+              WordNet 3.0 tag count with a constant added to every sense and tempered by an exponent (defaults 0.5 and
+              0.5), where a sense without a count (a project sense) gets the constant alone. The correction shall add
+              nothing to the size of the weights and nothing to the cost of classifying, shall give the same weights for
+              the same input whatever the number of threads, shall be applied to the scores from which the first
+              thresholds are chosen (so every threshold is derived from the corrected scores), shall be switched off or
+              tuned by builder options, and shall be reported in the summary of the run and documented.
+            tags: [unit]
+            justification: |
+              The classifiers are trained on anchors that are balanced by sense quota, so their raw probabilities carry
+              the proportions of the training data instead of those of real use. Measured against the same classifiers
+              without the correction, the correction raises the fine top-1 accuracy of the BertBaseCased model on
+              SemCor, an independent human-annotated corpus, from 56.9 to 60.9 percent and that of the MiniLM model from
+              47.5 to 53.8 percent, and the accuracy on real sentences weighted to the usage of the senses by 1.8 and
+              2.6 points; the real test split, which is balanced like the training data, loses one point for
+              BertBaseCased. An additive offset on the stored bias of each sense is exactly equivalent to rescaling the
+              probabilities, so the shipped model needs no new code and no new data.
+            tests:
+              - WordSenseBuilder_SensePrior_Offsets_FollowTheDocumentedFormula
+              - WordSenseBuilder_SensePrior_Offsets_SenseWithoutCount_UsesTheSmoothingAlone
+              - WordSenseBuilder_SensePrior_Offsets_AlphaZero_RemovesOnlyTheTrainingShare
+              - WordSenseBuilder_SensePrior_Offsets_AreDeterministic
+              - WordSenseBuilder_SensePrior_ReadCounts_ReadsTheFrequencyTable
+              - WordSenseBuilder_WeightsTrainer_TrainDense_UsagePrior_ShiftsTheBiasesByTheOffsets
+              - WordSenseBuilder_WeightsTrainer_TrainDense_UsagePrior_IsDeterministicAndKeepsTheSize
+              - WordSenseBuilder_Thresholds_Choose_Offsets_AreAppliedToTheOutOfFoldScores
+              - WordSenseBuilder_FitCache_KeyOf_DependsOnThePriorOffsets
+              - WordSenseBuilder_Program_TrainSettingsOf_ParsesThePriorOptions
+
+          - id: WordSense-WordSenseBuilder-Tiers
+            title: >-
+              The builder shall report, for every sense of every trained lemma, the number of anchor and held-out
+              sentences it should have, derived from its WordNet 3.0 tag count (five or more: 20 and 5; one to four, and
+              a project sense: 10 and 3; none: 5 and 2), with the status of the sense (met, short or empty), and list
+              the senses that fall short of their quota with the sentences that are missing.
+            tags: [unit]
+            justification: |
+              Frequent senses need more evidence than rare ones, and the corpus can only be extended where it is
+              known to be short; a repeatable quota report is how the authoring of the corpus is planned and how a
+              sense that cannot be trained is made visible instead of silently missing.
+            tests:
+              - WordSenseBuilder_Tiers_Quota_FollowsTheTagCount
+              - WordSenseBuilder_Tiers_Report_ListsShortAndEmptySensesWithTheMissingSentences
+              - WordSenseBuilder_Program_Tiers_WritesReport
+
+          - id: WordSense-WordSenseBuilder-EmbeddingCache
+            title: >-
+              When retraining the weights of an encoder model, the builder shall reuse the pooled vectors it computed
+              before and encode only the sentences that are new or changed. A cached vector shall be bit-identical to
+              a fresh encode, shall be valid only for the model files it was computed with, and a corrupt cache entry
+              shall be ignored and encoded again without failing the run. The builder shall report the cache hits,
+              the encoded sentences and the time, and shall let the cache be moved (--cache) or bypassed (--no-cache).
+            tags: [unit]
+            justification: |
+              The encoder is deterministic for given model files, so encoding all anchor sentences on every run is
+              wasted time; adding a few sentences to one lemma must not cost a full encode of the corpus, and a stale
+              or damaged cache must never change the shipped weights.
+            tests:
+              - WordSenseBuilder_EmbeddingCache_KeyOf_DependsOnWordsAndTarget
+              - WordSenseBuilder_EmbeddingCache_ComputeDigest_DependsOnEveryInput
+              - WordSenseBuilder_EmbeddingCache_SaveAndOpen_RoundTripsBitIdentical
+              - WordSenseBuilder_EmbeddingCache_Open_MissingFile_IsEmpty
+              - WordSenseBuilder_EmbeddingCache_Open_OtherModelDigest_IsInvalidated
+              - WordSenseBuilder_EmbeddingCache_Open_CorruptEntry_IsDiscardedAndOthersSurvive
+              - WordSenseBuilder_EmbeddingCache_Open_TruncatedFile_KeepsCompleteEntries
+              - WordSenseBuilder_EmbeddingCache_Open_DamagedHeader_IsEmptyAndInvalidated
+              - WordSenseBuilder_EmbeddingCache_Add_OtherDimension_Throws
+              - WordSenseBuilder_EmbeddingCache_Save_Failure_LeavesNoTemporaryFile
+              - WordSenseBuilder_CachingEncoder_EncodeAsync_SecondCallIsAHitAndBitIdentical
+              - WordSenseBuilder_CachingEncoder_EncodeAsync_NoCacheOrNoTokens_AlwaysEncodes
+              - WordSenseBuilder_ModelTrainer_TrainDataAsync_SecondRun_EncodesNothingAndReproducesBytes
+              - WordSenseBuilder_ModelTrainer_TrainDataAsync_AddedSentences_AreTheOnlyOnesEncoded
+              - WordSenseBuilder_ModelTrainer_TrainDataAsync_ChangedModelDigest_EncodesEverythingAgain
+              - WordSenseBuilder_ModelTrainer_TrainDataAsync_CorruptEntry_IsEncodedAgain
+              - WordSenseBuilder_ModelTrainer_TrainDataAsync_Progress_ReportsHitsAndMisses
+              - WordSenseBuilder_Program_Weights_SwitchOptions_AreAcceptedWithoutValue
+              - WordSenseBuilder_Program_Weights_CacheAndNoCache_AreRejected
+              - WordSenseBuilder_Program_TrainSettingsOf_ResolvesCacheAndMean
+
+          - id: WordSense-WordSenseBuilder-FitCache
+            title: >-
+              When retraining the weights of an encoder model, the builder shall fit again only the lemmas whose
+              features, labels or training settings (the threshold settings included) changed and reuse the stored fit
+              of every other lemma, so that
+              changing the anchors of one lemma (with the frozen mean) costs the fit of that lemma only. A reused fit
+              shall be bit-identical to a fresh one, a damaged cache entry shall be ignored and fitted again without
+              failing the run, and the fits shall be independent of the number of threads that train the lemmas.
+            tags: [unit]
+            justification: |
+              With the encoder output cached, fitting the classifiers of all lemmas becomes the longest step of a
+              retraining; because the fit of a lemma depends on that lemma alone, it need not be repeated for the
+              lemmas that did not change.
+            tests:
+              - WordSenseBuilder_FitCache_KeyOf_DependsOnEverythingTheFitDependsOn
+              - WordSenseBuilder_FitCache_KeyOf_DependsOnTheThresholdSettings
+              - WordSenseBuilder_FitCache_SaveAndOpen_RoundTripsBitIdentical
+              - WordSenseBuilder_FitCache_Save_WritesOnlyUsedFits
+              - WordSenseBuilder_FitCache_Open_CorruptEntry_DropsItAndTheRest
+              - WordSenseBuilder_FitCache_Open_DamagedFile_IsHandled
+              - WordSenseBuilder_FitCache_Save_Failure_LeavesNoTemporaryFile
+              - WordSenseBuilder_ModelTrainer_TrainDataAsync_UnchangedAnchors_ReusesEveryLemmaFit
+              - WordSenseBuilder_ModelTrainer_TrainDataAsync_FrozenMeanAndEditedLemma_FitsOnlyThatLemma
+              - WordSenseBuilder_ModelTrainer_TrainDataAsync_RecomputedMean_FitsEveryLemmaAgain
+              - WordSenseBuilder_ModelTrainer_TrainDataAsync_Progress_ReportsHitsAndMisses
+
+          - id: WordSense-WordSenseBuilder-FrozenMean
+            title: >-
+              When retraining the weights of an encoder model, the builder shall reuse the global mean stored in the
+              existing weights of that model instead of recomputing it, unless asked to recompute it (--recompute-mean),
+              so that changing the anchors of one lemma changes the weights of that lemma only and unchanged anchors
+              reproduce the committed weights byte for byte. It shall compute the mean from the anchors when there are
+              no existing weights, they are unreadable, or they name another model or dimension.
+            tags: [unit]
+            justification: |
+              A mean over all anchors couples every lemma to every other; freezing it keeps an edit local, keeps the
+              shipped weights of untouched lemmas stable, and makes the retraining reproducible.
+            tests:
+              - WordSenseBuilder_ModelTrainer_TrainDataAsync_FrozenMean_EditingOneLemmaLeavesOthersUnchanged
+              - WordSenseBuilder_ModelTrainer_TrainDataAsync_RecomputedMean_CouplesTheLemmas
+              - WordSenseBuilder_ModelTrainer_TrainDataAsync_FrozenMeanOfOtherDimension_IsComputedInstead
+              - WordSenseBuilder_ModelTrainer_ReadFrozenMean_SameModel_ReturnsStoredMean
+              - WordSenseBuilder_ModelTrainer_ReadFrozenMean_MissingOtherOrUnreadable_ReturnsNull
+              - WordSenseBuilder_Program_TrainSettingsOf_ResolvesCacheAndMean
+              - WordSenseBuilder_Program_Weights_SwitchOptions_AreAcceptedWithoutValue
 
           - id: WordSense-WordSenseBuilder-Evaluate
             title: >-
-              The builder shall measure a shipped model (an encoder model or the basic model) on the held-out and
-              real-text sentences of the corpus, and report accuracy and coverage; for the basic model it shall also
-              report calibration, confidence thresholds, table size, latency and a fixed comparison table printed on
-              every run.
+              The builder shall measure a shipped model (an encoder model or the basic model) on the held-out
+              sentences of the corpus, and report accuracy and coverage at each answer level (the share
+              answered at the sense, group and part of speech level, and the accuracy at each level) and for
+              the part of speech, with the real-text test split (the real held-out sentences of the test documents) as
+              the headline set and the real calibration split, the written held-out sentences and the whole held-out
+              set only as clearly labeled secondary sets, with a diagnostic set of the test sentences whose document
+              supplies no anchor, and with a statement that no held-out set is representative running text; for the
+              basic model it shall also report calibration, confidence thresholds, table
+              size, latency and a fixed comparison table printed on every run.
             tags: [unit]
             justification: |
               Each model's accuracy claim must be checkable against a repeatable measurement on sentences that were
-              never used for training.
+              never used for training or for the thresholds, and an answer that carries a level must be measured at that
+              level. The written held-out sentences are about 17 points easier than real ones, so they must never be
+              the headline.
             tests:
               - WordSenseBuilder_Evaluator_RunAsync_BasicModel_CountsHoldoutRows
+              - WordSenseBuilder_Evaluator_RunAsync_ReportsShareAndAccuracyPerLevel
+              - WordSenseBuilder_Evaluator_RunAsync_ProvenanceNamesTheOrigin_ReportsTheRealTestSplitFirst
               - WordSenseBuilder_Program_Evaluate_BasicModel_PrintsMeasurements
               - WordSenseBuilder_Program_Evaluate_UnknownModel_ReportsError
               - WordSenseBuilder_ModelTable_BasicRow_MatchesEvaluation
+              - WordSenseBuilder_ModelTable_Update_ChangesOnlyTheCellsOfItsCommand
+              - WordSenseBuilder_ModelTable_Update_UnknownColumn_IsRejected
               - WordSenseBuilder_EvaluationResult_Render_FormatsSetsAndMeasurements
 
-          - id: WordSense-WordSenseBuilder-UdCounts
+          - id: WordSense-WordSenseBuilder-OpenCounts
             title: >-
-              The builder shall count part-of-speech tag n-grams and word-tag pairs from the pinned Universal
-              Dependencies English-EWT training file, after verifying its checksum (and the development file used for
-              tuning), and write the
+              The builder shall count part-of-speech tag n-grams and word-tag pairs from the training split of the
+              representative part of the open English part-of-speech corpus (every token, whatever its consensus status,
+              with a split contraction joined into one token), read no other part of the corpus for them, and write the
               counts deterministically to the corpus.
             tags: [unit]
             justification: |
-              The statistics of the basic model must come from committed, verifiable inputs and be reproducible.
+              The statistics of the basic model are usage statistics, so they must come from an unbiased sample of text
+              (the representative part, never the targeted part or the balanced sentence corpus), and from a corpus
+              whose annotations we own and release under CC0 1.0, so that the shipped table carries no share-alike
+              license.
+              The inputs are committed and the counts reproducible.
             tests:
-              - WordSenseBuilder_UdCounts_ReadConllu_RangeTokensAndEmptyNodes
-              - WordSenseBuilder_UdCounts_ReadConllu_ShortLine_Throws
-              - WordSenseBuilder_UdCounts_MapTag_MapsUniversalTags
-              - WordSenseBuilder_UdCounts_KeyOf_AcceptsLettersAndApostrophes
-              - WordSenseBuilder_UdCounts_Count_CountsNgramsAndWords
-              - WordSenseBuilder_UdCounts_WriteAndRead_RoundTripsDeterministically
-              - WordSenseBuilder_UdCounts_Read_BadHeader_Throws
-              - WordSenseBuilder_UdSource_Verify_ComparesChecksum
+              - WordSenseBuilder_OpenCorpus_ReadFile_ReadsSentencesAndTokens
+              - WordSenseBuilder_OpenCorpus_ReadSplit_FindsTheFileOfAPart
+              - WordSenseBuilder_OpenCorpus_ReadFile_MissingFileAndMalformedLine_Throw
+              - WordSenseBuilder_OpenCorpus_ToTagged_JoinsContractionsButNotPossessives
+              - WordSenseBuilder_OpenCorpus_ToTagged_KeepsClitics_WhenTheJoinedFormIsNotInTheText
+              - WordSenseBuilder_OpenCorpus_Committed_ReadsEverySplitAndKeepsTheStePartInTheChallengeSet
+              - WordSenseBuilder_TaggerCounts_MapTag_MapsUniversalTags
+              - WordSenseBuilder_TaggerCounts_KeyOf_AcceptsLettersAndApostrophes
+              - WordSenseBuilder_TaggerCounts_Count_CountsNgramsAndWords
+              - WordSenseBuilder_TaggerCounts_WriteAndRead_RoundTripsDeterministically
+              - WordSenseBuilder_TaggerCounts_Read_MalformedFiles_Throw
+              - WordSenseBuilder_Program_OpenCounts_WritesCountFiles
 
           - id: WordSense-WordSenseBuilder-TrainBasic
             title: >-
-              The builder shall retrain the whole basic model with one command, regenerating the tag counts first
-              when they are missing or when asked, and shall write the embedded table of the basic package
-              deterministically.
+              The builder shall retrain the whole basic model with one command from the committed tag counts of the
+              open corpus, the fine-sense anchors and the form-chooser anchors, rolling the analysis labels of the
+              training sentences of the context cues up from the fine senses (a lemma and a part of speech) and from the
+              chooser labels (a lemma or a tense of a form) without any analysis prior, and shall write the embedded
+              table of the basic package deterministically; it shall name the command that makes the counts when they
+              are missing.
             tags: [unit]
             justification: |
               One command from committed inputs to the shipped table lets reviewers reproduce and verify the model.
+              The Basic model chooses analyses, so its labels follow from the senses and the choosers without a second
+              labeling. The anchors are a balanced classifier corpus whose counts say nothing about how often an
+              analysis occurs, so they must not set a prior.
             tests:
               - WordSenseBuilder_BasicTrainer_ClosedMaskOf_AppliesThresholds
               - WordSenseBuilder_BasicTrainer_Train_SelectsWordsAndSuffixes
-              - WordSenseBuilder_BasicTrainer_Train_CueTablePrefersSeenSense
+              - WordSenseBuilder_BasicTrainer_Train_CueTablePrefersSeenAnalysis
+              - WordSenseBuilder_BasicTrainer_Train_AnalysisPriorIgnoresAnchorCounts
+              - WordSenseBuilder_BasicTrainer_Train_ColumnsAreLemmaAndPartOfSpeech
+              - WordSenseBuilder_BasicTrainer_Train_ChooserRowsMakeFormTablesWithTenseColumns
+              - WordSenseBuilder_BasicTrainer_KeyOf_RollsTheRowUpToLemmaAndPartOfSpeech
+              - WordSenseBuilder_BasicTrainer_KeyOf_ChooserLabel_StandsForOneAnalysisOrNone
               - WordSenseBuilder_BasicTablesWriter_Write_IsDeterministicAndReadsBack
+              - WordSenseBuilder_BasicTablesWriter_Write_ShortHash_Throws
               - WordSenseBuilder_BasicModelData_Summary_NamesSizes
               - WordSenseBuilder_Program_Weights_BasicModel_PointsToTrainBasic
-              - WordSenseBuilder_Program_TrainBasic_TinyCorpus_WritesLoadableTable
-              - WordSenseBuilder_Program_TrainBasic_InconsistentCorpus_ReportsError
+              - WordSenseBuilder_Program_TrainBasicAndEvaluateTagger_TinyCorpus_WriteAndScoreTable
+              - WordSenseBuilder_Program_TrainBasic_WithoutCounts_ReportsError
 
           - id: WordSense-WordSenseBuilder-TuneBasic
             title: >-
-              The builder shall score a grid of basic-model hyperparameters on the Universal Dependencies development
-              data and the anchor sentences only, print a stable table, write nothing, and never read the held-out
-              or real-text sentences.
+              The builder shall score a grid of basic-model hyperparameters on the development split of the
+              representative open corpus and on the development subset of the anchor sentences only, print a stable
+              table, write nothing, and never read the test splits, the targeted challenge set, the held-out or the
+              real-text sentences.
             tags: [unit]
             justification: |
               Tuning on data that is also used for the final accuracy measurement would make the reported accuracy
@@ -165,7 +431,41 @@ sections:
             tests:
               - WordSenseBuilder_BasicHyperparameters_Default_IsConsistent
               - WordSenseBuilder_BasicTuner_SplitAnchors_IsDeterministicAndDisjoint
-              - WordSenseBuilder_BasicTuner_RunAsync_MissingDevFile_Throws
+              - WordSenseBuilder_BasicTuner_ScoreTagger_CountsAmbiguousTokens
+              - WordSenseBuilder_BasicTuner_RunAsync_MissingCounts_Throws
+
+          - id: WordSense-WordSenseBuilder-EvaluateTagger
+            title: >-
+              The builder shall measure the part-of-speech accuracy of the basic classifier on the test split of the
+              representative open corpus as the headline, report the test split of the targeted challenge set on its own
+              line and an optional external gold file (the convention-mapped development and test files of a treebank
+              that is downloaded for evaluation only) as a further line, with the share of ambiguous tokens, the
+              tokens that are not answered and the tokens that are excluded, and print a stable table.
+            tags: [unit]
+            justification: |
+              The accuracy of a tagger is only meaningful on running text that no count, threshold or weight has seen;
+              the deliberately chosen challenge sentences must never be merged into the headline, and the external
+              treebank is an evaluation source only: it is never committed and never trains anything.
+            tests:
+              - WordSenseBuilder_TaggerEvaluator_EvaluateAsync_ScoresAnsweredWordTokens
+              - WordSenseBuilder_TaggerEvaluator_ReadGold_GroupsTokensBySentence
+              - WordSenseBuilder_TaggerEvaluator_ReadGold_MalformedLine_Throws
+              - WordSenseBuilder_TaggerEvaluator_Render_FormatsRows
+
+          - id: WordSense-WordSenseBuilder-CorpusLicenses
+            title: >-
+              The committed training corpus shall contain only sentences whose recorded license is CC0 1.0, public
+              domain in the United States or project-authored (dedicated to CC0 1.0), shall record a provenance row for
+              every sentence of the sense, chooser and real-text files, and shall contain no treebank data and no
+              retired class-labeled corpus.
+            tags: [unit]
+            justification: |
+              The shipped data must be free of share-alike and attribution-bound text, and a sentence of unknown origin
+              cannot be shown to be free. The treebank is used for evaluation only, so it must not be in the corpus.
+            tests:
+              - WordSenseBuilder_CorpusLicenses_Provenance_RecordsOnlyCc0PublicDomainAndProjectAuthoredSentences
+              - WordSenseBuilder_CorpusLicenses_EverySentenceRow_HasProvenance
+              - WordSenseBuilder_CorpusLicenses_Corpus_HasNoTreebankDataAndNoLegacyFolders
 
           - id: WordSense-WordSenseBuilder-Hyperparameters
             title: >-
@@ -180,39 +480,129 @@ sections:
           - id: WordSense-WordSenseBuilder-Appendix
             title: >-
               The builder shall generate the senses appendix of the user guide deterministically from the sense
-              inventory, the forms and the anchor sentences, shall reject incomplete input, and the committed
-              appendix shall equal the generated one.
+              catalog of the data (each trained lemma's senses with id, group, OEWN sense key, gloss and respelling),
+              the forms and the anchor sentences, shall reject incomplete input, and the committed appendix shall equal
+              the generated one.
             tags: [unit]
             justification: |
-              The list of supported lemmas with their parts of speech, meanings, respellings and forms must always
-              describe the trained corpus; generating it, and failing when the committed file is stale, makes drift
-              impossible.
+              The list of supported lemmas with their senses, groups, keys, respellings and forms must always describe
+              the trained corpus; generating it, and failing when the committed file is stale, makes drift impossible.
             tests:
               - WordSenseBuilder_Appendix_Generate_ListsLemmasSensesAndForms
+              - WordSenseBuilder_Appendix_Generate_ListsSensesWithGroupKeyGlossAndRespelling
               - WordSenseBuilder_Appendix_Generate_RejectsIncompleteInput
               - WordSenseBuilder_Program_Appendix_WritesFile
               - WordSenseBuilder_Program_Appendix_MissingCorpus_Fails
               - WordSenseBuilder_Appendix_Committed_MatchesCorpus
 
           - id: WordSense-WordSenseBuilder-Corpus
-            title: The builder shall validate corpus format and the disjointness of training and evaluation data.
+            title: >-
+              The builder shall validate the corpus format (a lemma, a sense id, a part of speech and a sentence for
+              every row), the agreement of the part of speech of a row with its sense, and, by normalized sentence, the
+              disjointness of the training sentences (the anchors, the chooser anchors and the training split of the
+              open corpus) from the held-out, chooser held-out, real-text and suite sentences, the development and test
+              splits and the challenge set of the open corpus, the independent evaluation sentences and the example
+              sentences of Open English WordNet, and of those evaluation sentences from each other; it shall report the
+              sentences that two parts share and a run of eight words that they share, and fail when a sentence is
+              shared by a training part and an evaluation part, by two evaluation parts, or by the corpus and a
+              dictionary example of five words or more.
             tags: [unit]
             justification: |
-              Leaked or malformed sentences invalidate the accuracy measurement.
+              Leaked or malformed sentences invalidate the accuracy measurement, and a row whose part of speech
+              disagrees with its sense is a labeling error that would train a wrong answer. A sentence of the CC0 corpus
+              that is a CC BY dictionary example would break the license of the corpus.
             tests:
               - WordSenseBuilder_Corpus_ReadSentences_ParsesRow
               - WordSenseBuilder_Corpus_ReadSentences_RejectsMalformedRow
+              - WordSenseBuilder_Corpus_ReadSentences_PartOfSpeechDisagreeingWithSense_IsRejected
               - WordSenseBuilder_Corpus_DirectoryAndDisjointness
-              - WordSenseBuilder_Corpus_ReadForms_ParsesLabels
+              - WordSenseBuilder_Corpus_Leakage_TrainingSentenceInAnEvaluationPart_IsALeak
+              - WordSenseBuilder_Corpus_Leakage_OnlyRealLeaksFail
+              - WordSenseBuilder_Corpus_Leakage_SharedRunOfWords_IsInformational
+              - WordSenseBuilder_Corpus_Disjointness_CoversSuiteEvaluationAndOewnExamples
+              - WordSenseBuilder_Program_CheckLeakage_ExitsWithOneOnALeak
               - WordSenseBuilder_Corpus_ReadSentences_SplitsCompoundTarget
+
+          - id: WordSense-WordSenseBuilder-SenseEval
+            title: >-
+              The builder shall measure a model on SemCor 3.0, downloaded to a cache that is not part of the repository
+              after verifying its pinned checksum and never committed, with the WordNet 3.0 sense keys mapped to the
+              senses of the catalog, leaving out a sentence that is also in the corpus or is an example of Open English
+              WordNet, and report for the words of the trained lemmas the mapping coverage, the share answered at each
+              level, the precision at each level, the accuracy of the most probable sense and of its group, the
+              part-of-speech accuracy and the accuracy of the most-frequent-sense baseline.
+            tags: [unit]
+            justification: |
+              SemCor is human-annotated running text that no training or tuning step reads, so figures measured on it
+              are the honest published accuracy; reporting them per level and against the baseline shows what the
+              model adds, and the mapping coverage says how much of SemCor the figures describe.
+            tests:
+              - WordSenseBuilder_SenseEval_Parse_ReadsSingleWordAnnotationsAndCountsTheRest
+              - WordSenseBuilder_SenseEval_MapKeys_WordNet30KeyToOewnSense
+              - WordSenseBuilder_SenseEval_Run_ReportsShareAndPrecisionPerLevelAndBaseline
+              - WordSenseBuilder_SenseEval_Render_FormatsTheFunnel
+              - WordSenseBuilder_SenseEval_Download_WrongHash_IsRejected
+              - WordSenseBuilder_SenseEval_ReadArchive_VerifiesTheHashAndReadsTheTagFiles
+              - WordSenseBuilder_Program_EvaluateSenses_WithoutCache_ReportsUsage
+
+          - id: WordSense-WordSenseBuilder-RunningText
+            title: >-
+              The builder shall measure the part-of-speech accuracy of every model through its public interface on the
+              test split of the representative open corpus (the headline), on the test file of the Universal
+              Dependencies English-EWT corpus after the preparation script has verified its checksum and mapped its
+              tags to the parts of speech of the library by a published convention (the development file being the one
+              used for selection, never the one measured), and on the challenge set on its own line, report the
+              accuracy on all tokens and on the ambiguous tokens, the tokens that are not answered and the tokens that
+              the convention excludes, and keep each model above a recorded floor on the challenge set.
+            tags: [unit]
+            justification: |
+              Part-of-speech accuracy on independent running text is the published measure for the models that answer
+              at the part of speech level; a stated convention and the report of what it excludes keep the figure
+              comparable and honest, and a floor on the challenge set keeps a model from regressing on its hard cases.
+            tests:
+              - WordSenseBuilder_RunningText_DefaultGold_IsTheTestFileAndNotTheDevelopmentFile
+              - WordSenseBuilder_RunningText_Load_ReadsTheSetsAndNotesAMissingGoldFile
+              - WordSenseBuilder_RunningText_Run_ReportsAllAndAmbiguousTokensForAModel
+              - WordSenseBuilder_Program_EvaluateRunning_Basic_PrintsTableAndWritesTheCells
+              - WordSenseBuilder_ChallengeSet_Basic_StaysAboveItsFloor
+              - WordSenseBuilder_ChallengeSet_MiniLM_StaysAboveItsFloor
+              - WordSenseBuilder_ChallengeSet_BertBaseCased_StaysAboveItsFloor
+
+          - id: WordSense-WordSenseBuilder-Suite
+            title: >-
+              The builder shall read the reviewed suite sentences, each with its expected analysis (lemma, part of
+              speech and features) and acceptable fine senses, and the expectation of each model for each row (fine,
+              answer or known miss), shall grade the answer of a model at the level it answered, and shall reject a
+              malformed row, a row without an expectation for a model, and a sense that is not in the catalog or does
+              not belong to the expected lemma and part of speech; the test project of each model shall fail when a
+              row falls below the expectation of that model.
+            tags: [unit]
+            justification: |
+              A reviewed suite with explicit per-model expectations lets the test projects fail the build when an
+              expected pass regresses, while known misses stay visible instead of being forgotten.
+            tests:
+              - WordSenseBuilder_Suite_Read_ParsesRowsAndExpectations
+              - WordSenseBuilder_Suite_Read_RowWithoutModelExpectation_IsRejected
+              - WordSenseBuilder_Suite_Read_UnknownSenseOrSenseOfAnotherLemma_IsRejected
+              - WordSenseBuilder_Suite_Read_MalformedRow_IsRejected
+              - WordSenseBuilder_Suite_Read_RepeatedIdOrWrongHeader_IsRejected
+              - WordSenseBuilder_Suite_Grade_JudgesTheAnswerAtItsOwnLevel
+              - WordSenseBuilder_Suite_Grade_AnalysisOnlyRow_ChecksLemmaPartOfSpeechAndFeatures
+              - WordSenseBuilder_Suite_Regressions_ListRowsBelowTheirExpectation_AndExpectationsRoundTrip
+              - WordSenseBuilder_Suite_Committed_ReadsWithAnExpectationForEveryRow
+              - WordSenseBuilder_Suite_GradeAsync_ClassifiesTheSentenceOfEveryRow
+              - BasicSuite_ExpectedPasses_StillPass
+              - MiniLMSuite_ExpectedPasses_StillPass
+              - BertBaseCasedSuite_ExpectedPasses_StillPass
 
           - id: WordSense-WordSenseBuilder-Usage
             title: >-
-              The builder shall provide the commands compile-image, import-moby, weights, evaluate, ud-counts,
-              ud-irregular,
-              coverage, train-basic, tune-basic and appendix, print usage when given no arguments, and shall report an
-              unknown or removed command, a
-              malformed option or a data error with a message and a non-zero exit code.
+              The builder shall provide the commands compile-image, import-moby, weights, evaluate, evaluate-senses,
+              evaluate-running, evaluate-suite, check-leakage, tiers, open-counts, evaluate-tagger, coverage,
+              train-basic, tune-basic, label-senses, import-wn30-counts and appendix, print usage when given no
+              arguments, and shall report an unknown or removed command (the treebank commands ud-counts and
+              ud-irregular included), a malformed option, an option value that is not a valid number or is out of range
+              (as a one-line message without a stack trace) or a data error with a message and a non-zero exit code.
             tags: [unit]
             justification: |
               A build tool used in scripts must fail visibly and say why.
@@ -222,4 +612,6 @@ sections:
               - WordSenseBuilder_Program_ModelCommandWithoutModel_ReportsUsage
               - WordSenseBuilder_Program_CompileImage_MissingData_Fails
               - WordSenseBuilder_Program_MalformedOptions_ReportUsage
+              - WordSenseBuilder_Program_MalformedNumberOption_ReportsOneLineError
               - WordSenseBuilder_Program_UnknownCommand_ReportsCommandAndUsage
+              - WordSenseBuilder_Program_Usage_ListsTheSenseCommands

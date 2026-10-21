@@ -1,4 +1,9 @@
 synset_id	seq	text
+dema-syn-aff-p-1	1	off or away from (Scots)
+dema-syn-afore-c-1	1	introduces an event before which another event occurs (archaic or dialectal)
+dema-syn-afore-p-1	1	before in time or in front of in position (archaic or dialectal)
+dema-syn-after-c-1	1	introduces an event that precedes the event in the main clause
+dema-syn-after-p-1	1	later than in time; behind in position or following in pursuit
 oewn-00019441-v	1	act physically on; have an effect upon
 oewn-00061741-r	1	happening at a time subsequent to a reference time
 oewn-00066927-r	1	in an affected manner

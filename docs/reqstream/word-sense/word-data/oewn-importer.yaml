@@ -39,26 +39,75 @@ sections:
                   - WordSenseBuilder_OewnImporter_Import_Relations_StoredOnce
                   - WordSenseBuilder_OewnImporter_Import_TabInText_IsCleaned
 
+              - id: WordSense-WordData-OewnImporter-Frequency
+                title: >-
+                  OewnImporter shall import the WordNet 3.0 sense frequency counts (the pinned index.sense file, its
+                  SHA-256 checked first) into the sense frequency table, joined to the senses on the sense key, with
+                  the count 0 for a sense that has no entry, and shall reject a count line it cannot read.
+                tags: [unit]
+                justification: |
+                  The counts rank the senses of a lemma and decide how much training data each sense receives; a sense
+                  that is rare in WordNet must be recorded as such, never left without a value.
+                tests:
+                  - WordSenseBuilder_OewnImporter_ImportCounts_JoinsOnSenseKey
+                  - WordSenseBuilder_OewnImporter_ImportCounts_SenseWithoutEntry_HasCountZero
+                  - WordSenseBuilder_OewnImporter_ImportCounts_HashPin_IsChecked
+                  - WordSenseBuilder_OewnImporter_ImportCounts_MalformedLine_Throws
+                  - WordSenseBuilder_DataCommands_ImportWn30Counts_WritesTheTable
+
               - id: WordSense-WordData-OewnImporter-Safety
                 title: >-
                   OewnImporter shall produce byte-identical files for the same input, check the SHA-256 of the input
-                  against the pin before writing anything, refuse to overwrite existing tables unless told to, and
-                  reject malformed, incomplete or inconsistent input, and a previous release that gives two current
-                  senses the same derived key, with an error.
+                  against the pin before writing anything, refuse to overwrite existing tables unless told to, stage its
+                  output (tables, split plan of the schema and the empty id map) and replace existing files in one step
+                  that is undone completely when a move fails, and reject malformed,
+                  incomplete or inconsistent input (including a relation to a synset or sense that the file does not
+                  hold) with an error that leaves existing tables unchanged.
                 tags: [unit]
                 justification: |
                   Once the tables are edited they are authoritative; a re-import must never silently replace them, and a
-                  wrong or damaged source must never produce data.
+                  wrong or damaged source must never produce data or destroy the data that exists.
                 tests:
                   - WordSenseBuilder_OewnImporter_Import_Twice_IsByteIdentical
                   - WordSenseBuilder_OewnImporter_Import_HashPin_IsChecked
                   - WordSenseBuilder_OewnImporter_Import_ExistingTables_RefusesWithoutOverwrite
+                  - WordSenseBuilder_OewnImporter_Import_OverwriteWithInvalidInput_KeepsExistingTables
+                  - WordSenseBuilder_OewnImporter_Import_FailingMoveMidReplace_RestoresEveryOriginalFile
                   - WordSenseBuilder_OewnImporter_Import_MalformedXml_Throws
                   - WordSenseBuilder_OewnImporter_Import_NoLexicon_Throws
                   - WordSenseBuilder_OewnImporter_Import_UnknownRelation_Throws
                   - WordSenseBuilder_OewnImporter_Import_SatelliteWithoutHead_Throws
                   - WordSenseBuilder_OewnImporter_Import_MissingSynset_Throws
-                  - WordSenseBuilder_OewnImporter_ImportPrevious_DuplicateSenseKey_Throws
+                  - WordSenseBuilder_OewnImporter_Import_RelationToMissingEndpoint_Throws
                   - WordSenseBuilder_DataCommands_Import_PinnedHash_RejectsOtherFile
                   - WordSenseBuilder_DataCommands_Import_ExistingTables_NeedsOverwrite
                   - WordSenseBuilder_DataCommands_Import_NoInput_ReportsUsage
+
+              - id: WordSense-WordData-OewnImporter-Forms
+                title: >-
+                  OewnImporter shall read the written forms (Form elements) of every lexical entry of an Open English
+                  WordNet file, checking its SHA-256 against the pin first, and return them cleaned and in file order by
+                  entry identifier, leaving out entries without a form.
+                tags: [unit]
+                justification: |
+                  The form generator takes the spellings that the source lists for an entry from this reader; a wrong or
+                  damaged file must be refused and the spellings must be cleaned like the rest of the data.
+                tests:
+                  - WordSenseBuilder_OewnImporter_ReadForms_ReturnsCleanedFormsPerEntry
+                  - WordSenseBuilder_OewnImporter_ReadForms_WrongHashOrMalformedXml_Throws
+
+              - id: WordSense-WordData-OewnImporter-PreviousIds
+                title: >-
+                  OewnImporter shall write the identifier map from an earlier release to the data: a sense identifier
+                  that changed maps by its sense key when exactly one current sense has that key, an entry identifier
+                  that changed maps to the entry of the majority of its mapped senses (or to the only entry with its
+                  lemma and part of speech), an identifier the data still has gets no row, an identifier without a
+                  unique successor gets no row and is counted, and two current senses with the same key are an error.
+                tags: [unit]
+                justification: |
+                  Callers that stored identifiers of the earlier release need a deterministic successor, and a mapping
+                  that depended on row order or guessed between candidates would be wrong silently.
+                tests:
+                  - WordSenseBuilder_OewnImporter_ImportPrevious_ChangedIds_MapBySenseKeyAndMajority
+                  - WordSenseBuilder_OewnImporter_ImportPrevious_UniqueSenseKeys_Imports
+                  - WordSenseBuilder_OewnImporter_ImportPrevious_DuplicateSenseKey_Throws
