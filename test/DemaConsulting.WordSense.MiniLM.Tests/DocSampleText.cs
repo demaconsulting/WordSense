@@ -143,8 +143,8 @@ internal static partial class DocSampleText
     /// <remarks>
     ///     Each line is <c>word pos level confidence [sense] [runner-up]</c> separated by spaces. The confidences of an
     ///     encoder model come from an int8 ONNX graph whose output differs slightly between CPUs and operating systems,
-    ///     so they are approximate; the word, the part of speech, the level and the sense are decisions and must match
-    ///     exactly.
+    ///     so they are approximate, and so is every other number on the line (the runner-up's probability); the word,
+    ///     the part of speech, the level and the sense are decisions and must match exactly.
     /// </remarks>
     /// <param name="documented">The output block of the README, the single source of truth.</param>
     /// <param name="actual">The output the sample wrote.</param>
@@ -160,11 +160,25 @@ internal static partial class DocSampleText
             var found = actualLines[i].Split(' ', StringSplitOptions.RemoveEmptyEntries);
             Assert.True(expected.Length >= 4 && found.Length == expected.Length, $"Line {i + 1}: expected '{expectedLines[i]}' but found '{actualLines[i]}'.");
 
-            // Word, part of speech, level, sense and runner-up exactly; the confidence (fourth column) within the tolerance
+            // Word, part of speech and level exactly; the sense and the runner-up exactly except their numbers, which,
+            // like the confidence in the fourth column, are probabilities that move slightly between CPUs
             Assert.Equal(expected[0], found[0]);
             Assert.Equal(expected[1], found[1]);
             Assert.Equal(expected[2], found[2]);
-            Assert.Equal(string.Join(' ', expected.Skip(4)), string.Join(' ', found.Skip(4)));
+            for (var c = 4; c < expected.Length; c++)
+            {
+                if (TryParseProbability(expected[c], out var documentedValue) && TryParseProbability(found[c], out var foundValue))
+                {
+                    Assert.True(
+                        Math.Abs(documentedValue - foundValue) <= tolerance,
+                        $"Line {i + 1}: the number {found[c]} in column {c + 1} differs from the documented {expected[c]} by more than {tolerance}.");
+                }
+                else
+                {
+                    Assert.Equal(expected[c], found[c]);
+                }
+            }
+
             var expectedConfidence = decimal.Parse(expected[3], System.Globalization.CultureInfo.InvariantCulture);
             var foundConfidence = decimal.Parse(found[3], System.Globalization.CultureInfo.InvariantCulture);
             Assert.True(
@@ -172,6 +186,15 @@ internal static partial class DocSampleText
                 $"Line {i + 1}: the confidence {found[3]} of '{found[0]}' differs from the documented {expected[3]} by more than {tolerance}.");
         }
     }
+
+    /// <summary>
+    ///     Parses a column of a sample line as a probability, so that numeric columns are compared within the tolerance.
+    /// </summary>
+    /// <param name="text">The column text.</param>
+    /// <param name="value">The parsed value when the column is a number.</param>
+    /// <returns><c>true</c> when the column is a decimal number; otherwise <c>false</c>.</returns>
+    private static bool TryParseProbability(string text, out decimal value) =>
+        decimal.TryParse(text, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.CultureInfo.InvariantCulture, out value);
 
     [GeneratedRegex(@"<!-- sample:([a-z0-9-]+) -->")]
     private static partial Regex Marker();

@@ -112,6 +112,16 @@ expectation, so a regression fails the build while the known misses stay visible
 3. A model that is retrained (a final retraining before a release, a new model) writes a new file with
    `evaluate-suite --write-expectations corpus/suite/expectations.tsv --overwrite true`, and the diff of the file is
    reviewed row by row: every row that goes down is explained, every row that goes up is welcome.
+4. A row whose grade differs between the CI platforms is **platform-sensitive**: the int8 encoder arithmetic differs
+   slightly between CPUs (instruction sets) and operating systems, which can flip a near tie. Such a row is recorded at
+   the weakest grade it reaches on any CI platform and listed under *Platform-sensitive rows* with the platforms; this
+   is a property of the arithmetic, not a regression.
+
+### Platform-sensitive rows
+
+| Row | Model | Grade on the development machine | Grade on CI (Windows x64, macOS arm64) | Recorded |
+| --- | --- | --- | --- | --- |
+| `C-content-6` (`A small raise will not content the angry workers`) | BertBaseCased | fine | miss | miss |
 
 ### Deliberate model change: the usage prior (retraining of both encoder models)
 
