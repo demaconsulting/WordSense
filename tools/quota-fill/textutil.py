@@ -58,6 +58,8 @@ def acceptable(text, min_words=6, max_words=34):
         return False
     if re.search(r"[A-Z][a-z]+(?: [A-Z][a-z]+){4,}", text):
         return False
+    if re.search(r"(?:\b\w ){4,}\w\b", text):
+        return False
     return True
 
 

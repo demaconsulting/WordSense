@@ -14,7 +14,10 @@ All work files (the sentence pool, the labeling batches and their answers) live 
 | `lexdata.py`, `lexindex.py`, `qf.py` | Read `data/` (senses, glosses, forms), the quota status of every sense, the waves |
 | `textutil.py` | Sentence splitting, the sentence filter and the duplicate key of the builder (`Corpus.Normalize`) |
 | `pool.py build` | Builds the harvest pool from the public-domain documents and the CC0 Tatoeba export |
-| `harvest.py candidates WAVE` | Samples candidate sentences for the lemmas of a wave and writes the labeling batches |
+| `faa.py extract` | Extracts the text of the accepted FAA handbooks (credited pages dropped) into the pool documents |
+| `harvest.py candidates WAVE` | Samples candidate sentences for the lemmas of a wave and writes the labeling batches (`--family`, `--only-lemmas`, `--first-batch` add a supplementary batch) |
+| `confusion.py WAVE` | Chooses the senses that get extra real anchors from the calibration-split errors |
+| `migrate_prov.py` | One-time migration of the wave 1 provenance rows to the licence basis column |
 | `fill.py ingest WAVE`, `fill.py select WAVE [--kind real\|written]` | Reads the labels, picks the rows that fill the deficits and writes the corpus files |
 | `written.py export\|ingest\|labeled WAVE` | The top-up by writing: writer batches, validation, blind-label batches |
 | `chooser_harvest.py candidates\|select WAVE` | Harvest of chooser rows for the forms that lack a lemma |
@@ -26,9 +29,12 @@ All work files (the sentence pool, the labeling batches and their answers) live 
 <!-- markdownlint-enable MD013 -->
 
 The pool documents are the ones of the open English part-of-speech corpus: Project Gutenberg books published 1930 or
-earlier (header, footer and licence stripped), VOA Learning English staff-written articles and pages of USGS, NPS and
-the National Weather Service (each states that its material is in the public domain), and the Tatoeba sentences of the
-CC0 export. Wikipedia, Wiktionary, CC BY-SA text, Universal Dependencies data, news sites, NOS, FAA, NASA and the
-Tatoeba CC BY sentences are never used.
+earlier (header, footer and licence stripped), works of US federal employees that are in the public domain in the
+United States under 17 U.S.C. §105 and the agency policy (VOA Learning English staff-written articles, pages of USGS,
+NPS and the National Weather Service, and the FAA handbooks and advisory circulars listed in `faa.py`, without any
+passage credited to a third party), and the Tatoeba sentences of the CC0 export. Wikipedia, Wiktionary, CC BY-SA text,
+Universal Dependencies data, news sites, NOS, NASA, the FAA documents with third-party rights (the Parachute Rigger
+Handbook, the Aviation Weather Handbook, Aerodynamics for Naval Aviators, the MC-4 manual) and the Tatoeba CC BY
+sentences are never used.
 
 Every row written by these scripts is targeted (found or written for one sense or form) and its provenance row says so.

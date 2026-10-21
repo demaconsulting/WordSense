@@ -24,18 +24,28 @@ import qf
 import textutil
 
 PROV_COLUMNS = ["id", "lemma", "sense", "split", "source", "licence", "source_key", "url", "contributor", "origin",
-                "selection", "selection_reason", "found_by"]
+                "selection", "selection_reason", "found_by", "licence_basis"]
+PD_US = "Public domain in the United States"
 LABEL_MODEL = "gpt-6.1-sol"
 SENSE_DOC_CAP = 3
 LEMMA_DOC_CAP = 10
-GOV = {"voa": ("voa", "VOA Learning English staff-written article (US government work, 17 U.S.C. 105)"),
-       "usgs": ("usgs", "USGS web page (US government work, USGS public-domain statement)"),
-       "nps": ("nps", "NPS web page (US government work, NPS public-domain statement)"),
-       "noaa-nws": ("nws", "NWS web page (US government work, NWS public-domain statement)")}
+GOV = {"voa": ("voa", "VOA Learning English staff-written article (US federal employee work, 17 U.S.C. 105)"),
+       "usgs": ("usgs", "USGS web page (US federal employee work, 17 U.S.C. 105; USGS public-domain statement)"),
+       "nps": ("nps", "NPS web page (US federal employee work, 17 U.S.C. 105; NPS public-domain statement)"),
+       "noaa-nws": ("nws", "NWS web page (US federal employee work, 17 U.S.C. 105; NWS public-domain statement)"),
+       "faa": ("faa", "FAA publication (US federal employee work, 17 U.S.C. 105; credited third-party material excluded)")}
 
 
 def prov_id(lemma, sentence):
     return hashlib.sha256((lemma + "|" + sentence).encode("utf-8")).hexdigest()[:12]
+
+
+def licence_basis(doc_row, family):
+    """The licence basis of the document of a sentence, recorded for every row."""
+    basis = doc_row.get("license_basis", "").replace("\t", " ").strip()
+    if family == "tatoeba" or "public domain in the United States" in basis:
+        return basis
+    return f"{PD_US}: {basis}"
 
 
 def provenance_fields(doc_row, sid, family):
@@ -48,10 +58,10 @@ def provenance_fields(doc_row, sid, family):
     if family == "gutenberg":
         ebook = doc.split("-", 1)[1]
         year = doc_row.get("year", "")
-        return ("gutenberg", "Public domain", f"pg{ebook}#{ordinal}", f"https://www.gutenberg.org/ebooks/{ebook}",
-                f"{doc_row['author']}: {doc_row['title']} ({year}; US public domain, published 1930 or earlier)")
+        return ("gutenberg", PD_US, f"pg{ebook}#{ordinal}", f"https://www.gutenberg.org/ebooks/{ebook}",
+                f"{doc_row['author']}: {doc_row['title']} ({year}; published 1930 or earlier)")
     source, contributor = GOV[family]
-    return (source, "Public domain", f"{doc}#{ordinal}", doc_row["url"], contributor + ": " + doc_row["title"])
+    return (source, PD_US, f"{doc}#{ordinal}", doc_row["url"], contributor + ": " + doc_row["title"])
 
 
 def wave_dir(wave):
@@ -163,6 +173,8 @@ def cmd_select(args):
                for r in status}
     blocked = qf.corpus_keys()
     _rows, docs = pool.load_pool()
+    doc_splits = qf.real_documents_by_split() if kind == "real" else {}
+    extra = qf.extra_real_wanted() if kind == "real" else {}
     labeled = collections.defaultdict(list)
     if kind == "real":
         paths = sorted(glob.glob(os.path.join(qf.WORK, "w*", "labeled.tsv")))
@@ -172,8 +184,17 @@ def cmd_select(args):
         with open(path, encoding="utf-8") as handle:
             for line in handle:
                 parts = line.rstrip("\n").split("\t")
+                role = None
                 if kind == "real":
-                    sid, form, tl, sense, conf, doc, family, sentence = parts
+                    sid, form, tl, sense, conf, doc, family, sentence = parts[:8]
+                    pdoc = qf.prov_document(sid, doc, family)
+                    splits = doc_splits.get(pdoc, set())
+                    if qf.is_eval_document(pdoc):
+                        role = "eval" if "anchors" not in splits else None
+                    else:
+                        role = "train" if "holdout" not in splits else None
+                    if role is None:
+                        continue
                 else:
                     sid, form, intended, sense, conf, doc, family, sentence = parts
                     if sense != intended:
@@ -187,7 +208,8 @@ def cmd_select(args):
                 if key in blocked:
                     continue
                 labeled[sense].append({"sid": sid, "form": form, "sense": sense, "doc": doc, "family": family,
-                                       "sentence": sentence, "key": key, "tokens": textutil.jaccard_tokens(sentence)})
+                                       "sentence": sentence, "key": key, "tokens": textutil.jaccard_tokens(sentence),
+                                       "role": role})
     lemmas = {senses[s]["lemma"] for s in labeled}
     existing = existing_token_sets(lemmas)
     suite = suite_token_sets()
@@ -198,43 +220,58 @@ def cmd_select(args):
     order = sorted(labeled, key=lambda s: (senses[s]["lemma"], s))
     for sense in order:
         da, dh = deficit[sense]
-        need = da + dh
-        if need == 0:
+        if kind == "real":
+            da += extra.get(sense, 0)
+        if da + dh == 0:
             continue
         lemma = senses[sense]["lemma"]
         rng = random.Random(int(hashlib.sha1(sense.encode()).hexdigest()[:12], 16))
         cands = labeled[sense][:]
         rng.shuffle(cands)
         sets = list(existing[lemma]) + suite[lemma]
-        form_count, doc_count = collections.Counter(), collections.Counter()
-        chosen = []
-        while len(chosen) < need:
-            best, best_score = None, None
-            for c in cands:
-                if c["key"] in taken:
-                    continue
-                if doc_count[c["doc"]] >= (SENSE_DOC_CAP if c["family"] not in ("tatoeba", "written") else 10 ** 6):
-                    continue
-                if lemma_doc[lemma][c["doc"]] >= (LEMMA_DOC_CAP if c["family"] not in ("tatoeba", "written") else 10 ** 6):
-                    continue
-                score = (form_count[c["form"]], doc_count[c["doc"]], 0 if c["family"] != "gutenberg" else 1)
-                if best_score is None or score < best_score:
-                    if any(textutil.jaccard(c["tokens"], t) >= 0.8 for t in sets):
+
+        def pick(pool_, need):
+            form_count, doc_count = collections.Counter(), collections.Counter()
+            chosen_ = []
+            while len(chosen_) < need:
+                best, best_score = None, None
+                for c in pool_:
+                    if c["key"] in taken:
                         continue
-                    best, best_score = c, score
-            if best is None:
-                break
-            taken.add(best["key"])
-            sets.append(best["tokens"])
-            form_count[best["form"]] += 1
-            doc_count[best["doc"]] += 1
-            lemma_doc[lemma][best["doc"]] += 1
-            chosen.append(best)
-        h = min(dh, len(chosen))
-        hold = spaced(len(chosen), h)
-        for i, c in enumerate(chosen):
-            picked.append((sense, "holdout" if i in hold else "anchors", c))
-        short[sense] = need - len(chosen)
+                    if doc_count[c["doc"]] >= (SENSE_DOC_CAP if c["family"] not in ("tatoeba", "written") else 10 ** 6):
+                        continue
+                    if lemma_doc[lemma][c["doc"]] >= (LEMMA_DOC_CAP if c["family"] not in ("tatoeba", "written") else 10 ** 6):
+                        continue
+                    score = (form_count[c["form"]], doc_count[c["doc"]], 0 if c["family"] != "gutenberg" else 1)
+                    if best_score is None or score < best_score:
+                        if any(textutil.jaccard(c["tokens"], t) >= 0.8 for t in sets):
+                            continue
+                        best, best_score = c, score
+                if best is None:
+                    break
+                taken.add(best["key"])
+                sets.append(best["tokens"])
+                form_count[best["form"]] += 1
+                doc_count[best["doc"]] += 1
+                lemma_doc[lemma][best["doc"]] += 1
+                chosen_.append(best)
+            return chosen_
+
+        if kind == "real":
+            # evaluation documents supply held-out rows only, every other document anchors only
+            hold_rows = pick([c for c in cands if c["role"] == "eval"], dh)
+            anchor_rows = pick([c for c in cands if c["role"] == "train"], da)
+            for c in hold_rows:
+                picked.append((sense, "holdout", c))
+            for c in anchor_rows:
+                picked.append((sense, "anchors", c))
+            short[sense] = da + dh - len(hold_rows) - len(anchor_rows)
+        else:
+            chosen = pick(cands, da + dh)
+            hold = spaced(len(chosen), min(dh, len(chosen)))
+            for i, c in enumerate(chosen):
+                picked.append((sense, "holdout" if i in hold else "anchors", c))
+            short[sense] = da + dh - len(chosen)
     # write files
     fl = choosers.form_lemmas()
     ch_ok = chooser_forms_ok(fl)
@@ -251,14 +288,16 @@ def cmd_select(args):
             found = (f"harvest: pool sentence with the form '{c['form']}' of the lemma, found in {doc}; "
                      f"labeled {LABEL_MODEL} (high confidence, full sense list of the form)")
             origin = "real"
+            basis = licence_basis(doc_row, c["family"])
         else:
             src = ("llm-corpus", "MIT (project-authored)", f"quota-w{args.wave}-written", "-",
                    f"gpt-5.6-luna (LLM-written); verified by {LABEL_MODEL} blind label")
             found = (f"written: gpt-5.6-luna wrote it for the sense (form '{c['form']}'); "
                      f"{LABEL_MODEL} labeled it blind with the same sense (high confidence)")
             origin = "llm-corpus"
+            basis = "project-authored (MIT); no third-party text"
         out["prov"].append("\t".join([prov_id(lemma, c["sentence"]), lemma, sense, split, *src, origin, "targeted",
-                                      f"sense={sense}", found]))
+                                      f"sense={sense}", found, basis]))
         if c["form"] in ch_ok:
             out["ch_" + split].append("\t".join([c["form"], lemma, c["sentence"]]))
     for key, folder, header in (("anchors", "anchors", None), ("holdout", "holdout", None),

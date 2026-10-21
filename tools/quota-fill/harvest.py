@@ -165,13 +165,23 @@ def save_used(used):
             handle.write(sid + "\n")
 
 
+def read_extras():
+    """lemma -> number of extra real anchors still wanted (see qf.extra_real_wanted)."""
+    result = collections.Counter()
+    for sense, n in qf.extra_real_wanted().items():
+        result[sense.split("#")[0]] += n
+    return result
+
+
 def cmd_candidates(args):
     world = qf.load_world()
-    plan, _missing = lemma_plan(world, args.wave)
+    plan, missing = lemma_plan(world, args.wave)
     wave_dir = os.path.join(qf.WORK, f"w{args.wave}")
     for sub in ("in", "out", "meta"):
         os.makedirs(os.path.join(wave_dir, sub), exist_ok=True)
     rows, _docs = pool.load_pool()
+    if args.family:
+        rows = [r for r in rows if r[2] == args.family]
     blocked = qf.corpus_keys()
     keep = [i for i, r in enumerate(rows) if textutil.key_of(r[3]) not in blocked]
     rows = [rows[i] for i in keep]
@@ -183,15 +193,37 @@ def cmd_candidates(args):
             continue
         for lemma, _pos in pairs:
             lemma_forms[lemma].add(form)
-    targets = [(l, tags, miss) for (l, tags, miss) in plan if miss > 0]
+    extras_by_lemma = read_extras()
+    planned = {l for l, _t, _m in plan}
+    tags_of = {l: t for l, t, _m in plan}
+    targets = [(l, tags, miss) for (l, tags, miss) in plan if miss > 0 or extras_by_lemma.get(l, 0) > 0]
+    targets += [(l, 0, 0) for l in sorted(extras_by_lemma) if l not in planned and l in world["by_lemma"]]
+    if args.only_lemmas:
+        names = [x for x in args.only_lemmas.split(",") if x in world["by_lemma"]]
+        targets = [(l, 0, missing[l]) for l in names if missing[l] > 0 or extras_by_lemma.get(l, 0) > 0]
     wanted = set()
     for l, _t, _m in targets:
         wanted |= lemma_forms[l]
     hits = scan_pool(rows, wanted)
     print(len(targets), "lemmas;", sum(len(v) for v in hits.values()), "hits of", len(hits), "forms", flush=True)
-    selected = []  # (lemma, form, row index, start, end)
+    doc_splits = qf.real_documents_by_split()
+    role_cache = {}
+
+    def role_of(h):
+        sid, doc, family = rows[h[0]][0], rows[h[0]][1], rows[h[0]][2]
+        pdoc = qf.prov_document(sid, doc, family)
+        if pdoc not in role_cache:
+            splits = doc_splits.get(pdoc, set())
+            if qf.is_eval_document(pdoc):
+                role_cache[pdoc] = "eval" if "anchors" not in splits else None
+            else:
+                role_cache[pdoc] = "train" if "holdout" not in splits else None
+        return role_cache[pdoc]
+
+    selected = []  # (lemma, form, row index, start, end, role)
+    extras = read_extras()
     for lemma, _tags, miss in targets:
-        n_total = max(args.min, min(args.cap, 4 * miss))
+        n_total = max(args.min, min(args.cap, 4 * (miss + extras.get(lemma, 0))))
         rng = random.Random(int(hashlib.sha1(("w%d|%s" % (args.wave, lemma)).encode()).hexdigest()[:12], 16))
         forms = sorted(f for f in lemma_forms[lemma] if hits.get(f))
         if not forms:
@@ -203,15 +235,24 @@ def cmd_candidates(args):
         for f in forms:
             if alloc[f] <= 0:
                 continue
-            for h in pick_for_form(rng, hits[f], rows, alloc[f], doc_counts, used):
-                selected.append((lemma, f, h[0], h[1], h[2]))
+            by_role = {"eval": [], "train": []}
+            for h in hits[f]:
+                r = role_of(h)
+                if r:
+                    by_role[r].append(h)
+            n_eval = int(round(alloc[f] * 0.25))
+            for role, n in (("eval", n_eval), ("train", alloc[f] - n_eval)):
+                if n <= 0 or not by_role[role]:
+                    continue
+                for h in pick_for_form(rng, by_role[role], rows, n, doc_counts, used):
+                    selected.append((lemma, f, h[0], h[1], h[2], role))
     print(len(selected), "candidates", flush=True)
     # batches
     groups = collections.defaultdict(list)
-    for lemma, f, i, s, e in selected:
+    for lemma, f, i, s, e, role in selected:
         key = group_key(world, f)
         if key:
-            groups[key].append((lemma, f, i, s, e))
+            groups[key].append((lemma, f, i, s, e, role))
     batches, cur, cur_items, cur_senses = [], [], 0, 0
     for key in sorted(groups):
         sense_ids = senses_of_pairs(world, key)
@@ -231,18 +272,18 @@ def cmd_candidates(args):
     if cur:
         batches.append(cur)
     total = 0
-    for b, batch in enumerate(batches, 1):
+    for b, batch in enumerate(batches, args.first_batch):
         bid = f"w{args.wave}b{b:03d}"
         groups_json, meta, n = [], {}, 0
         for gi, (key, sense_ids, part) in enumerate(batch, 1):
             items = []
-            for lemma, f, i, s, e in part:
+            for lemma, f, i, s, e, role in part:
                 n += 1
                 sid, doc, family, text = rows[i]
                 braced = text[:s] + "{" + text[s:e] + "}" + text[e:]
                 items.append({"n": n, "sentence": braced})
                 meta[str(n)] = {"sid": sid, "form": f, "doc": doc, "family": family, "sentence": braced,
-                                "lemma": lemma, "group": gi}
+                                "lemma": lemma, "group": gi, "role": role}
             groups_json.append({"senses": [qf.sense_line(world, x) for x in sense_ids], "items": items})
         qf.write_json(os.path.join(wave_dir, "in", bid + ".json"), {"batch": bid, "groups": groups_json})
         qf.write_json(os.path.join(wave_dir, "meta", bid + ".json"),
@@ -267,6 +308,9 @@ if __name__ == "__main__":
     c.add_argument("wave", type=int)
     c.add_argument("--cap", type=int, default=450)
     c.add_argument("--min", type=int, default=150)
+    c.add_argument("--family", default="", help="restrict the pool to one family (supplementary batch)")
+    c.add_argument("--only-lemmas", default="", help="comma-separated lemmas that replace the wave plan")
+    c.add_argument("--first-batch", type=int, default=1, help="number of the first batch (appends to a wave)")
     s = sub.add_parser("status")
     s.add_argument("wave", type=int)
     a = ap.parse_args()

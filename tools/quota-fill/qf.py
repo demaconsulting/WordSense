@@ -18,7 +18,75 @@ POS_LETTER = {"Noun": "n", "Verb": "v", "Adjective": "a", "Adverb": "r", "Pronou
               "Conjunction": "c", "Interjection": "i", "Determiner": "d", "Auxiliary": "x"}
 
 # Waves by the rank of a lemma (total WordNet 3.0 tag count of its senses, ties by name).
-WAVE_CUTS = [50, 200, 500, 10 ** 6]
+WAVE_CUTS = [50, 120, 250, 500, 10 ** 6]
+
+EVAL_DOCUMENT_SHARE = 4  # one document in four is an evaluation document (held-out rows only)
+
+
+def prov_document(sid, doc, family):
+    """The document id of a pool sentence in the form the provenance rows use (RealSplit.Document)."""
+    if family == "tatoeba":
+        return "tatoeba-cc0:" + sid.split("-", 1)[1]
+    if family == "gutenberg":
+        return "gutenberg:pg" + doc.split("-", 1)[1]
+    source = {"noaa-nws": "nws"}.get(family, family)
+    return source + ":" + doc
+
+
+def is_eval_document(prov_doc):
+    """Role of a document: an evaluation document supplies held-out rows only, every other document anchors only."""
+    import hashlib
+    return hashlib.sha256(("evaldoc|" + prov_doc).encode("utf-8")).digest()[0] % EVAL_DOCUMENT_SHARE == 0
+
+
+def real_anchor_counts():
+    """sense id -> number of real anchors (provenance origin real, split anchors)."""
+    result = {}
+    for path in glob.glob(os.path.join(CORPUS, "provenance", "*.tsv")):
+        with open(path, encoding="utf-8", newline="") as handle:
+            reader = csv.reader(handle, delimiter="\t", quoting=csv.QUOTE_NONE)
+            header = next(reader, None)
+            if not header or "origin" not in header or "sense" not in header:
+                continue
+            o, se, sp = header.index("origin"), header.index("sense"), header.index("split")
+            for row in reader:
+                if len(row) > max(o, se, sp) and row[o] == "real" and row[sp] == "anchors":
+                    result[row[se]] = result.get(row[se], 0) + 1
+    return result
+
+
+def extra_real_wanted():
+    """sense id -> number of extra real anchors still wanted: the real target of work/extra-real.tsv (sense, target)
+    minus the real anchors the sense has now."""
+    path = os.path.join(WORK, "extra-real.tsv")
+    wanted = {}
+    if os.path.exists(path):
+        have = real_anchor_counts()
+        with open(path, encoding="utf-8") as handle:
+            for line in handle:
+                p = line.rstrip("\n").split("\t")
+                if len(p) >= 2 and p[1].isdigit():
+                    wanted[p[0]] = max(0, int(p[1]) - have.get(p[0], 0))
+    return {k: v for k, v in wanted.items() if v > 0}
+
+
+def real_documents_by_split():
+    """prov document -> set of splits ('anchors', 'holdout') in which the corpus already has a real row of it."""
+    result = {}
+    for path in glob.glob(os.path.join(CORPUS, "provenance", "*.tsv")):
+        with open(path, encoding="utf-8", newline="") as handle:
+            reader = csv.reader(handle, delimiter="\t", quoting=csv.QUOTE_NONE)
+            header = next(reader, None)
+            if not header or "origin" not in header or "source_key" not in header:
+                continue
+            o, s, k, sp = (header.index(c) for c in ("origin", "source", "source_key", "split"))
+            for row in reader:
+                if len(row) <= max(o, s, k, sp) or row[o] != "real":
+                    continue
+                key = row[k]
+                doc = row[s] + ":" + (key if row[s].startswith("tatoeba") else key.split("#")[0])
+                result.setdefault(doc, set()).add(row[sp])
+    return result
 
 
 def load_world():

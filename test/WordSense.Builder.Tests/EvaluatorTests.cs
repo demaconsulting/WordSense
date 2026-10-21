@@ -162,7 +162,8 @@ public sealed class EvaluatorTests : IDisposable
         var lines = await File.ReadAllLinesAsync(outcomes, TestContext.Current.CancellationToken);
         Assert.Equal(7, lines.Length);
         Assert.StartsWith($"holdout\t0\t{a1.SenseId}\tSense:{a1.SenseId}\t0.800000\t1", lines[0], StringComparison.Ordinal);
-        Assert.EndsWith("\tNone\t0.000000\t0", lines[6], StringComparison.Ordinal);
+        Assert.Contains("\tNone\t0.000000\t0\t\t", lines[6], StringComparison.Ordinal);
+        Assert.EndsWith("A {test} 6 here.", lines[6], StringComparison.Ordinal);
     }
 
     /// <summary>

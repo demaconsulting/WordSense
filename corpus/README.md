@@ -124,10 +124,15 @@ specific form), never drawn at random from a text. Its provenance row says so in
 `selection` (`targeted`), `selection_reason` (`sense=<sense id>`, or `form=<form>` for a chooser row) and `found_by`
 (how it was found: `harvest: pool sentence with the form '...' of the lemma, found in <document>; labeled gpt-6.1-sol
 (high confidence, full sense list of the form)`, or `written: gpt-5.6-luna wrote it for the sense; gpt-6.1-sol labeled it
-blind with the same sense`). The real sentences come only from public-domain or CC0 text (Project Gutenberg books
-published 1930 or earlier, Tatoeba sentences of the CC0 export, VOA Learning English staff-written articles and the
-USGS, NPS and National Weather Service pages, whose agencies state that their material is in the public domain); the
-licence column names the basis and the contributor column the document.
+blind with the same sense`), and a last column `licence_basis` with the licence basis of the document of the sentence.
+The real sentences come only from text that is **public domain in the United States** or CC0: Project Gutenberg books
+published 1930 or earlier, Tatoeba sentences of the CC0 export, and works of US federal employees, which are in the
+public domain in the United States under 17 U.S.C. §105 and the policy of the agency (VOA Learning English staff-written
+articles, USGS, NPS and National Weather Service pages, and from wave 2 the FAA handbooks and advisory circulars that
+carry no third-party material; credited third-party passages are excluded). The licence column holds `Public domain in
+the United States` (or `CC0 1.0` for Tatoeba), the `licence_basis` column the reason and the document (for an FAA
+document, "US federal government work, 17 U.S.C. §105 (public domain in the United States)" with the document number,
+edition and URL), and the contributor column the document.
 
 **The encoder corpus is a balanced classifier corpus.** `anchors/`, `holdout/` and `choosers/` (all of them, not only
 the quota-filled files) hold the number of sentences that the quota of a sense asks for, not a sample of running text:
@@ -139,7 +144,8 @@ for measuring the classifier, but a figure measured on them is not the accuracy 
 the *test* half never influences a weight or a threshold and is the headline of `evaluate`, which also reports the
 calibration half, the written held-out sentences and the whole holdout as secondary or diagnostic sets. The documents of
 the two halves are disjoint; from wave 2 on, the harvest also keeps the documents that supply held-out rows apart from
-the documents that supply anchors (an *evaluation document* is chosen by a hash, one in four). The older rows share 401
+the documents that supply anchors (an *evaluation document* is chosen by the hash `SHA-256("evaldoc|" + document)`, one
+in four; the other documents supply anchors only). The older rows share 401
 documents between anchors and held-out sentences; `evaluate` reports the test rows of documents without anchors apart. The
 representative measurements are the open English part-of-speech corpus and SemCor (the independent evaluation).
 

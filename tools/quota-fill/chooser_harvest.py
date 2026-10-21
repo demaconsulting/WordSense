@@ -175,7 +175,8 @@ def cmd_select(args):
             found = (f"harvest: pool sentence with the form '{form}'; the lemma was chosen by {fill.LABEL_MODEL} "
                      f"(high confidence) among all lemmas of the form")
             out_rows["prov"].append("\t".join([fill.prov_id(form, it["sentence"]), lemma, "-", split, *src, "real",
-                                               "targeted", f"form={form}", found]))
+                                               "targeted", f"form={form}", found,
+                                               fill.licence_basis(docs[it["doc"]], it["family"])]))
         stats[f"rows {lemma}"] += 0
     fill.write_lines(os.path.join(qf.CORPUS, "choosers", "anchors", tag), sorted(out_rows["anchors"]))
     fill.write_lines(os.path.join(qf.CORPUS, "choosers", "holdout", tag), sorted(out_rows["holdout"]))
@@ -324,7 +325,8 @@ def cmd_write_select(args):
             found = (f"written: gpt-5.6-luna wrote it for the form '{form}' as a form of '{lemma}'; "
                      f"{fill.LABEL_MODEL} chose the same lemma blind (high confidence)")
             out_rows["prov"].append("\t".join([fill.prov_id(form, it["sentence"]), lemma, "-", split, *src, "llm-corpus",
-                                               "targeted", f"form={form}", found]))
+                                               "targeted", f"form={form}", found,
+                                               "project-authored (MIT); no third-party text"]))
     fill.write_lines(os.path.join(qf.CORPUS, "choosers", "anchors", tag), sorted(out_rows["anchors"]))
     fill.write_lines(os.path.join(qf.CORPUS, "choosers", "holdout", tag), sorted(out_rows["holdout"]))
     fill.write_lines(os.path.join(qf.CORPUS, "provenance", tag), out_rows["prov"], "\t".join(fill.PROV_COLUMNS))

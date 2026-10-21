@@ -447,7 +447,16 @@ internal static class Evaluator
         var holdoutSplit = RealSplit.Classify(corpus, holdout, Corpus.ReadDirectory(Path.Join(corpus, "anchors")));
         var subsetSpecs = SubsetsOf(holdoutSplit);
         var overallName = subsetSpecs.Count == 0 ? "holdout" : EvaluationResult.AllRowsSetName;
-        var (holdoutResult, subsetResults) = await ScoreAsync(overallName, holdout, classifier, outcomesLog, subsetSpecs, cancellationToken).ConfigureAwait(false);
+        var sides = new Dictionary<CorpusRow, string>(ReferenceEqualityComparer.Instance as IEqualityComparer<CorpusRow>);
+        foreach (var (rowsOfSide, side) in new[] { (holdoutSplit.Calibration, "calibration"), (holdoutSplit.Test, "test"), (holdoutSplit.Written, "written") })
+        {
+            foreach (var r in rowsOfSide)
+            {
+                sides[r] = side;
+            }
+        }
+
+        var (holdoutResult, subsetResults) = await ScoreAsync(overallName, holdout, classifier, outcomesLog, subsetSpecs, r => sides.GetValueOrDefault(r, "other"), cancellationToken).ConfigureAwait(false);
         clock.Stop();
         var latency = holdout.Count == 0 ? 0 : clock.Elapsed.TotalMilliseconds / holdout.Count;
         progress.WriteLine($"{info.Name}: holdout done.");
@@ -476,7 +485,8 @@ internal static class Evaluator
     /// <param name="PosCorrect">Whether the selected analysis has the part of speech of the row.</param>
     /// <param name="AnalysisCorrect">Whether the selected analysis has the lemma and the part of speech of the row.</param>
     /// <param name="Confidence">The confidence of the answer.</param>
-    internal readonly record struct Verdict(SenseLevel Level, bool CorrectAtLevel, bool Ranked, bool FineTop1, bool PosCorrect, bool AnalysisCorrect, double Confidence);
+    /// <param name="BestSense">The most probable ranked sense (the fine top-1), or null when the result ranks none.</param>
+    internal readonly record struct Verdict(SenseLevel Level, bool CorrectAtLevel, bool Ranked, bool FineTop1, bool PosCorrect, bool AnalysisCorrect, double Confidence, string? BestSense = null);
 
     /// <summary>
     ///     Judges the result of the target word of a row.
@@ -527,7 +537,7 @@ internal static class Evaluator
             }
         }
 
-        return new Verdict(result.Level, correct, best is not null, string.Equals(best, row.SenseId, StringComparison.Ordinal), posRight, analysisRight, result.Confidence);
+        return new Verdict(result.Level, correct, best is not null, string.Equals(best, row.SenseId, StringComparison.Ordinal), posRight, analysisRight, result.Confidence, best);
     }
 
     /// <summary>
@@ -588,6 +598,7 @@ internal static class Evaluator
         IWordSenseModel classifier,
         TextWriter? outcomesLog,
         List<(string Name, Func<CorpusRow, bool> Member)> subsets,
+        Func<CorpusRow, string>? sideOf,
         CancellationToken cancellationToken)
     {
         var tallies = new List<Tally> { new(name, true) };
@@ -607,7 +618,7 @@ internal static class Evaluator
                 }
             }
 
-            outcomesLog?.WriteLine(string.Join('\t', name, index, row.SenseId, Answer(actual), actual.Confidence.ToString("F6", CultureInfo.InvariantCulture), verdict.CorrectAtLevel ? "1" : "0"));
+            outcomesLog?.WriteLine(string.Join('\t', name, index, row.SenseId, Answer(actual), actual.Confidence.ToString("F6", CultureInfo.InvariantCulture), verdict.CorrectAtLevel ? "1" : "0", verdict.BestSense ?? string.Empty, sideOf?.Invoke(row) ?? string.Empty, row.Sentence));
             index++;
         }
 

@@ -29,14 +29,30 @@ generic text was written by the seeder into the data table, which is the committ
 
 ## Pool of real text
 
-Only public-domain or CC0 text is used (the evidence of every document is in the open English part-of-speech corpus
-project: terms pages with their hashes, the book-by-book publication years): 175 Project Gutenberg books published 1930
-or earlier (header, footer and licence stripped), 379 VOA Learning English staff-written articles, 443 USGS, 363 NPS and
-200 National Weather Service pages (each agency states that its material is in the public domain) and the Tatoeba
-sentences of the CC0 export. Excluded: Wikipedia, Wiktionary, any CC BY-SA text, Universal Dependencies data, news
-sites, NOS, FAA, NASA and the Tatoeba CC BY sentences. The pool (`pool.py build`) holds **533,123 sentences** (465,525
-Gutenberg, 28,315 Tatoeba, 14,779 VOA, 11,257 NPS, 9,050 USGS, 4,197 NWS) of 6 to 34 words, deduplicated; the sentences
-that the corpus or the suite already contains are never candidates.
+Only text that is in the public domain in the United States, or CC0, is used (the evidence of every document is in the
+open English part-of-speech corpus project: terms pages with their hashes, the book-by-book publication years): 175
+Project Gutenberg books published 1930 or earlier (header, footer and licence stripped), and the works of US federal
+employees, which are in the public domain in the United States under 17 U.S.C. §105 and the policy of the agency: 379
+VOA Learning English staff-written articles, 443 USGS, 363 NPS and 200 National Weather Service pages, and (from wave 2)
+11 FAA publications; the Tatoeba sentences of the CC0 export are CC0 1.0. Excluded: Wikipedia, Wiktionary, any CC BY-SA
+text, Universal Dependencies data, news sites, NOS, NASA, the FAA documents with third-party rights (see below) and the
+Tatoeba CC BY sentences. The pool (`pool.py build`) holds **599,677 sentences** (465,525 Gutenberg, 66,556 FAA, 28,315
+Tatoeba, 14,779 VOA, 11,257 NPS, 9,050 USGS, 4,195 NWS) of 6 to 34 words, deduplicated; the sentences that the corpus or
+the suite already contains are never candidates. Every provenance row records the licence basis of its document in the
+column `licence_basis` ("Public domain in the United States: ..." with the reason).
+
+**FAA text** (`tools/quota-fill/faa.py`). Included, under 17 U.S.C. §105 (works of the US government, third-party
+material excluded): the Aviation Maintenance Technician Handbooks (General FAA-H-8083-30B, Airframe FAA-H-8083-31B,
+Powerplant FAA-H-8083-32B), the Pilot's Handbook of Aeronautical Knowledge (FAA-H-8083-25C), the Airplane (FAA-H-8083-3C),
+Helicopter (FAA-H-8083-21B), Glider (FAA-H-8083-13B) and Balloon (FAA-H-8083-11B) Flying Handbooks, Plane Sense
+(FAA-H-8083-19A) and Advisory Circulars 43.13-1B and 43.13-2B. Excluded entirely: the Parachute Rigger Handbook (third-party
+copyright), the Aviation Weather Handbook (UCAR copyright), Aerodynamics for Naval Aviators and the MC-4 manual (they
+restrict reproduction). Text only: the front matter is skipped, and every page that carries a credit marker ("courtesy
+of", "used with permission", a copyright notice or sign, "reproduced", a photo credit) is dropped whole, so no passage
+that is credited to a third party remains; figure captions are removed by the sentence filter. Each handbook is one
+document in the pool (family `faa`, document id and URL in `sources.tsv`), so the document roles below apply to it as a
+whole. The FAA text helps the technical senses (`arm`, `seal`, `bearing`, `bleed`, `torque`, `run`, `check`, `lead`,
+`flush`, `tap`), which the other text rarely shows.
 
 ## Method
 
@@ -77,13 +93,35 @@ the open part-of-speech corpus and SemCor.
 | --- | --- | ---: | ---: | ---: | --- | --- | ---: | ---: |
 | 0 (relabeled corpus) | 845 in scope | 0 | 0 | 2,293 + 1,066 | 1,066 / 3,174 / 2,616 | 45,434 / 12,231 | 80.21% | 85.44% |
 | 1 | 1-50 (most frequent) | 3,361 + 1,400 | 4,488 + 699 | 4,942 + 1,525 | 1,775 / 2,896 / 2,185 | 37,585 / 10,132 | 76.71% | 83.74% |
+| 2 | 51-120, plus extra real anchors of rare and confused senses | 3,407 + 359 | 6,589 + 2,042 | 2,594 + 715 | 2,673 / 2,507 / 1,676 | 28,221 / 7,731 | 76.46% | 84.74% |
 
 <!-- markdownlint-enable MD013 -->
 
 The fine top-1 of the wave 1 row is on 14,319 held-out sentences of the trained lemmas, measured before the thresholds
 were calibrated on real text (the held-out set grew by 2,000 sentences, mostly of rare senses that the earlier set did
-not have, which is why the figure falls although the models improved). The headline since the calibration is the
-**real-text test split** (next section).
+not have, which is why the figure falls although the models improved); the wave 2 row is on 16,721 held-out sentences.
+The headline since the calibration is the **real-text test split**:
+
+### Real-text progress (headline)
+
+<!-- markdownlint-disable MD013 -->
+
+| After wave | Model | Real test rows | Sense (share, precision) | Fine top-1 | Best analysis | Written holdout fine top-1 (reference) |
+| --- | --- | ---: | --- | ---: | ---: | ---: |
+| 1 (calibrated) | MiniLM | 3,413 | 7.94%, 94.10% | 65.28% | 95.69% | 83.56% |
+| 1 (calibrated) | BERT base cased | 3,413 | 16.26%, 96.58% | 73.01% | 97.07% | 89.70% |
+| 2 | MiniLM | 3,623 | 10.87%, 94.16% | 66.91% | 95.80% | 81.04% |
+| 2 | BERT base cased | 3,623 | 22.69%, 96.59% | 75.43% | 97.41% | 88.88% |
+
+<!-- markdownlint-enable MD013 -->
+
+The wave 2 test split has 210 more rows (the evaluation documents of the new harvest are test or calibration documents
+by hash, 359 new real held-out rows in all), so the two waves are measured on nearly the same sentences. The sense share
+grows by 3 (MiniLM) and 6.4 points (BERT) at an unchanged precision, the fine top-1 by 1.6 and 2.4 points: the new
+real anchors and written senses of the 70 lemmas of ranks 51-120 raise the share of answered sentences, since the
+thresholds are calibrated on real text. The written held-out figures fall slightly because that set grew by 2,042 rows
+of harder, rarer senses. The target of 95% sense precision on the real test split is met by BERT (96.6%); MiniLM stays
+at 94.2%.
 
 ## Real-text threshold calibration
 
@@ -115,7 +153,7 @@ design in `docs/design/word-sense/word-sense-builder.md`):
   94.1%, 0.98: 5.2% at 93.8%; BERT 0.95: 37.5% at 93.4%, 0.97: 16.3% at 96.6%. MiniLM saturates near 94%: about 7% of
   the gold labels are wrong (the ablation's blind judge), which caps the measurable precision of a level.
 
-### Real-text test split (headline)
+### Real-text test split after wave 1 (snapshot)
 
 <!-- markdownlint-disable MD013 -->
 
@@ -182,3 +220,42 @@ before), Basic 91.7% (part of speech). Part of speech of the selected analysis: 
   the blind labeler confirmed (for example `call#decide`: 25 written, none confirmed). They cannot be filled credibly
   with this method (the sense is a near-duplicate of a sibling, or the gloss is too thin to write to); they are
   candidates for the group and curation review.
+
+## Wave 2 in detail
+
+Lemmas of ranks 51-120 (by WordNet 3.0 tag count) with a deficit, plus the senses that need extra **real** anchors.
+
+- **Extra real anchors** (`confusion.py`): from the answers of both encoders on the real *calibration* rows only (never
+  the test split), every sense that took part in a fine top-1 error (as the gold or as the predicted sense) gets a target
+  of 8 real anchors (5 when it took part in one error only), and a sense of a lemma of waves 1-2 with fewer than 3 real
+  anchors gets 3 (the rare senses); 1,893 senses are targeted (655 confused, 5,709 real anchors wanted). Real text filled
+  1,316 of the wanted anchors in wave 2; 4,393 for 1,332 senses remain for the later waves (the pool rarely has a
+  sentence of a rare sense).
+- **Document roles**: a document that supplies anchors never supplies held-out rows and the other way round. A new
+  document gets one role by the hash of its id: a quarter of the documents are evaluation documents (held-out rows
+  only), the others supply anchors only, so the new held-out rows are disjoint from the anchors by document. Most
+  Gutenberg books already supply both and were therefore little used (146 rows); the sentences came from Tatoeba CC0
+  (1,217), the FAA (582), VOA (581), USGS (504), NPS (468) and NWS (268).
+- **Harvest**: 70 wave lemmas and 50 earlier lemmas with extras, 12,259 candidates in 54 batches of `gpt-6.1-sol`, and
+  1,783 FAA candidates for 47 technical lemmas (arm, seal, mount, bearing, bleed, torque, run, check, lead, flush, tap,
+  ...) in 8 more batches: 14,042 candidates, 12,308 labeled (87.7%; 11,399 high, 909 low), 1,734 `unsure`. Selected:
+  3,407 anchors and 359 held-out sentences (anchors: FAA 555, Tatoeba 1,016, VOA 550, NPS 440, NWS 235, USGS 469,
+  Gutenberg 142; held-out: Tatoeba 201, NWS 33, USGS 35, VOA 31, NPS 28, FAA 27, Gutenberg 4). The FAA handbooks of the
+  evaluation role are Plane Sense and AC 43.13-2B; the others supply anchors.
+- **Written**: 17,179 sentences asked for 963 senses in 82 batches of `gpt-5.6-luna`; 16,972 passed the checks (178
+  non-ASCII, 15 form not allowed, 13 braces, 1 near-duplicate); in 74 blind batches of sol 13,852 (81.6%) got the intended
+  sense (13,036 with high confidence), 1,740 another sense, 1,380 `unsure`. Selected **all** verified written anchors
+  (no cap): 6,589 anchors and 2,042 held-out sentences (flagged as written by their provenance `origin`).
+- **Choosers**: sentences of the fine-sense rows of shared forms: 504 + 31 (real), 1,662 + 546 (written); 39 forms
+  that still lacked a lemma, 1,260 candidates in 6 batches (1,001 high, 252 `unsure`, 7 dropped): 428 + 138 rows. Forms
+  with chooser rows now: 399, of which 355 are complete (31 forms lack a lemma, most of them proper nouns or
+  abbreviations such as `LED`, `State` and `SEAL`, or a form whose second lemma has no real sentence). MiniLM form
+  choosers on 3,041 held-out chooser sentences: top-1 91.02% (answered 76.72% at precision 96.23%).
+- **Batches**: `gpt-6.1-sol` 62 + 74 + 6 = 142, `gpt-5.6-luna` 82.
+- **Retrain**: 768 lemmas per encoder (MiniLM: fine threshold for 690, never for 78; 61 lemmas with one anchored sense
+  have no weights). Half-precision gate: MiniLM 76.46% on 16,721 held-out rows, BERT 84.74%.
+- **Suite** (348 rows): fine MiniLM 92.0% (H 91.7, M 96.0, C 87.0; 91.7% before), BERT base cased 94.8% (H 94.7, M
+  96.8, C 92.4; unchanged); part of speech of the selected analysis: Basic 91.7%, MiniLM 94.5%, BERT 97.4%.
+- **Not filled**: after waves 1-2, 153 short and 30 empty senses of the 2,023 senses of the 120 lemmas (1,128 anchors
+  and 150 held-out sentences missing; `corpus/coverage/quota-unfilled.tsv` lists 183 senses). Over all senses 2,673 meet
+  the quota, 2,507 are short and 1,676 empty (28,221 anchors and 7,731 held-out sentences missing).
