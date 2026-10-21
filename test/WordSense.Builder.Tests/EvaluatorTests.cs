@@ -250,6 +250,7 @@ public sealed class EvaluatorTests : IDisposable
         Assert.Equal([1, 1, 1, 1, 3], result.Sets.Select(s => s.Rows));
         Assert.Equal([1, 1, 1, 0, 2], result.Sets.Select(s => s.Sense.Correct));
         Assert.Contains("not the accuracy on representative text", result.Render(), StringComparison.Ordinal);
-        Assert.StartsWith("| fake | 100.00% | 100.00% | 100.00% |", result.RenderTableRow(), StringComparison.Ordinal);
+        Assert.Equal("100.00% @ 100.00%", result.TableCells()[ModelTable.RealSenseColumn]);
+        Assert.Equal("none", result.TableCells()[ModelTable.DownloadColumn]);
     }
 }

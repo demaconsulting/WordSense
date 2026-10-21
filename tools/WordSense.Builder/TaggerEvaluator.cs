@@ -47,16 +47,36 @@ internal static class TaggerEvaluator
     /// <param name="sentences">The gold sentences.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>The score.</returns>
-    public static async Task<TaggerScore> EvaluateAsync(string name, BasicTables tables, IReadOnlyList<TaggedSentence> sentences, CancellationToken cancellationToken)
+    public static Task<TaggerScore> EvaluateAsync(string name, BasicTables tables, IReadOnlyList<TaggedSentence> sentences, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(tables);
         ArgumentNullException.ThrowIfNull(sentences);
         var lexicon = (Func<string, ImmutableArray<WordDetails>>)(key => WordLexicon.TryLookup(key, out var found) ? found : []);
         var classifier = new BasicClassifier(tables, lexicon, (lemma, pos) => WordLexicon.Current.SenseCountOf(lemma, pos), WordLexicon.SensesOf);
+        return ScoreAsync(name, sentences, classifier.ClassifyAsync, cancellationToken);
+    }
+
+    /// <summary>
+    ///     Evaluates a model through its public interface, the way an application uses it.
+    /// </summary>
+    /// <param name="name">The name of the set.</param>
+    /// <param name="model">The model.</param>
+    /// <param name="sentences">The gold sentences.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>The score.</returns>
+    public static Task<TaggerScore> EvaluateAsync(string name, IWordSenseModel model, IReadOnlyList<TaggedSentence> sentences, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(model);
+        ArgumentNullException.ThrowIfNull(sentences);
+        return ScoreAsync(name, sentences, model.ClassifyAsync, cancellationToken);
+    }
+
+    private static async Task<TaggerScore> ScoreAsync(string name, IReadOnlyList<TaggedSentence> sentences, Func<IEnumerable<string>, CancellationToken, Task<ClassifyResult[]>> classify, CancellationToken cancellationToken)
+    {
         int scored = 0, correct = 0, ambiguous = 0, ambiguousCorrect = 0, unanswered = 0, excluded = 0;
         foreach (var sentence in sentences)
         {
-            var results = await classifier.ClassifyAsync(sentence.Words, cancellationToken).ConfigureAwait(false);
+            var results = await classify(sentence.Words, cancellationToken).ConfigureAwait(false);
             for (var i = 0; i < results.Length; i++)
             {
                 var gold = sentence.Tags[i];
@@ -76,7 +96,7 @@ internal static class TaggerEvaluator
                 var right = PosTag.Of(details.PartOfSpeech) == gold;
                 scored++;
                 correct += right ? 1 : 0;
-                var partsOfSpeech = lexicon(BasicClassifier.Normalize(sentence.Words[i])).Select(a => a.PartOfSpeech).Distinct().Count();
+                var partsOfSpeech = WordLexicon.Lookup(BasicClassifier.Normalize(sentence.Words[i])).Select(a => a.PartOfSpeech).Distinct().Count();
                 if (partsOfSpeech >= 2)
                 {
                     ambiguous++;

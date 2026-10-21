@@ -27,6 +27,11 @@ namespace WordSense.Builder;
 ///     <item><description><c>evaluate-tagger [--input FILE] [--corpus DIR] [--repository DIR] [--split test] [--gold FILE] [--output FILE]</c> measures the part-of-speech accuracy of the basic classifier with the table <c>FILE</c> (default the shipped <c>basic.bin</c>) on a split of the representative open corpus (the headline), on the test split of the targeted challenge set (reported on its own line) and on an optional external gold file (<c>sentence id</c>, form and tag letter per line).</description></item>
 ///     <item><description><c>coverage --text DIR [--corpus DIR] [--top N] [--output FILE]</c> reports how many of the running words of the text files of a directory the word table knows, the share of the known words whose lemma is trained (a lemma that has sentences in <c>corpus/anchors</c>), and lists the most frequent unknown words, split into name-like and other words.</description></item>
 ///     <item><description><c>appendix [--corpus DIR] [--data DIR] [--output FILE]</c> writes the generated senses appendix of the user guide: the senses of the trained lemmas of <c>corpus/anchors</c> with id, group, sense key, gloss and respelling, from the data folder (default <c>data</c>).</description></item>
+///     <item><description><c>evaluate-senses [--model all] [--cache DIR] [--download] [--sample N] [--output FILE] [--table FILE]</c> measures the models on SemCor 3.0, an independent human-annotated sense corpus: the archive is read from the cache (default <c>tools/open-corpus/cache</c>, ignored by git) or, with <c>--download</c>, downloaded after verifying its pinned SHA-256; WordNet 3.0 sense keys are mapped to the senses of the catalog, and for the words of the trained lemmas the command reports the mapping coverage, the share answered at each level, the precision at each level, the part-of-speech accuracy and the most-frequent-sense baseline. SemCor is used for evaluation only, never committed and never trained on.</description></item>
+///     <item><description><c>evaluate-running [--model all] [--split test] [--gold FILE] [--output FILE] [--table FILE]</c> measures the part-of-speech accuracy of the models on running text: the test split of the representative open corpus (the headline), the convention-mapped test file of the English EWT treebank (<c>--gold</c>, default <c>tools/open-corpus/work/tagger-eval/ud_test.tsv</c>, written by <c>prepare_tagger_eval.py</c>; skipped with a note when it does not exist) and the targeted challenge set on its own line, with the accuracy on all tokens and on the ambiguous tokens.</description></item>
+///     <item><description><c>evaluate-suite [--output FILE] [--write-expectations FILE] [--overwrite true]</c> runs the reviewed suite (<c>corpus/suite</c>) against the three models, reports the pass rates and the rows that fall below the expectation of a model; <c>--write-expectations</c> writes the expectation file for a new suite or model.</description></item>
+///     <item><description><c>check-leakage [--data DIR] [--gold FILE] [--cache DIR] [--output FILE]</c> checks that the anchors, held-out, chooser, real-text, suite, open-corpus development and test, challenge and Open English WordNet example sentences (and SemCor and the treebank test file when present) share no normalized sentence, and exits with 1 when an evaluation sentence is also in another part.</description></item>
+///     <item><description><c>tiers [--data DIR] [--output FILE]</c> reports how many anchors and held-out sentences each sense of the trained lemmas should have (the tier of its WordNet 3.0 tag count), which senses fall short and how many sentences are missing; <c>--output</c> writes one line for every sense.</description></item>
 ///     <item><description><c>import-oewn --input FILE [--output DIR] [--sha256 HEX|none] [--threshold N] [--overwrite true]</c> imports the pinned Open English WordNet release into the table files of the data folder (default <c>data</c>) and refuses to replace existing tables unless <c>--overwrite true</c> is given; <c>import-oewn --previous FILE [--previous-release ID] [--previous-sha256 HEX|none] [--output DIR]</c> instead writes the identifier map from a previous release.</description></item>
 ///     <item><description><c>import-wn30-counts --input FILE [--data DIR] [--sha256 HEX|none]</c> imports the pinned WordNet 3.0 sense index (<c>index.sense</c>) into the <c>sense_frequency</c> table, joined on the sense key, with the count 0 for a sense that has no line.</description></item>
 ///     <item><description><c>label-senses [--data DIR]</c> gives every sense of the inventory that has no label a readable label; labels that exist are never changed and no group is created.</description></item>
@@ -34,9 +39,9 @@ namespace WordSense.Builder;
 ///     <item><description><c>validate-data [--data DIR] [--baseline DIR]</c> validates the table files of the data folder against its <c>schema.yaml</c> and, with a baseline (the data folder of the last release), checks that published sense labels are neither changed nor reused; it exits with 1 and lists the violations when the data is not valid.</description></item>
 ///     </list>
 /// </remarks>
-internal static class Program
+internal static partial class Program
 {
-    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: compile-image, rebuild-forms, audit-forms, generate-facts, import-agid, import-moby, weights <modelId>, evaluate <modelId>, open-counts, evaluate-tagger, coverage, train-basic, tune-basic, appendix, import-oewn, import-wn30-counts, label-senses, seed-inventory, validate-data.";
+    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: compile-image, rebuild-forms, audit-forms, generate-facts, import-agid, import-moby, weights <modelId>, evaluate <modelId>, evaluate-senses, evaluate-running, evaluate-suite, check-leakage, tiers, open-counts, evaluate-tagger, coverage, train-basic, tune-basic, appendix, import-oewn, import-wn30-counts, label-senses, seed-inventory, validate-data.";
 
     /// <summary>The name of the option that gives the input file of an import command.</summary>
     private const string InputOption = "input";
@@ -99,6 +104,16 @@ internal static class Program
                     return await RunEvaluateTaggerAsync(options, repository, corpus, output, cancellationToken).ConfigureAwait(false);
                 case "evaluate":
                     return await RunEvaluateAsync(options, repository, corpus, output, cancellationToken).ConfigureAwait(false);
+                case "evaluate-senses":
+                    return await RunEvaluateSensesAsync(options, repository, corpus, output, cancellationToken).ConfigureAwait(false);
+                case "evaluate-running":
+                    return await RunEvaluateRunningAsync(options, repository, corpus, output, cancellationToken).ConfigureAwait(false);
+                case "evaluate-suite":
+                    return await RunEvaluateSuiteAsync(options, repository, corpus, output, cancellationToken).ConfigureAwait(false);
+                case "check-leakage":
+                    return RunCheckLeakage(options, repository, corpus, output);
+                case "tiers":
+                    return RunTiers(options, repository, corpus, output);
                 case "coverage":
                     return RunCoverage(options, corpus, output);
                 case "import-oewn":
@@ -133,12 +148,12 @@ internal static class Program
         }
     }
 
-    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "split", "gold", "table", InputOption, "text", "top", "data", "sha256", "threshold", "overwrite", "outcomes", "oewn", "agid", "sample", "seed", "oracle", "adjudications", "max-error", "previous", "previous-release", "previous-sha256", "cache", "no-cache", "recompute-mean", "baseline", "curation", "solver", "calibration-target"], StringComparer.Ordinal);
+    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "split", "gold", "table", InputOption, "text", "top", "data", "sha256", "threshold", "overwrite", "outcomes", "oewn", "agid", "sample", "seed", "oracle", "adjudications", "max-error", "previous", "previous-release", "previous-sha256", "cache", "no-cache", "recompute-mean", "baseline", "curation", "solver", "calibration-target", "write-expectations"], StringComparer.Ordinal);
 
     /// <summary>
     ///     Options that are switches: they take no value, but accept a following <c>true</c> or <c>false</c>.
     /// </summary>
-    private static readonly HashSet<string> FlagOptions = new(["no-cache", "recompute-mean"], StringComparer.Ordinal);
+    private static readonly HashSet<string> FlagOptions = new(["no-cache", "recompute-mean", "download"], StringComparer.Ordinal);
 
     /// <summary>
     ///     Builds the settings of a weights run from the options.

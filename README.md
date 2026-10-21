@@ -138,9 +138,9 @@ deer      Noun         Sense        1.00  deer#noun
 so        Conjunction  Sense        0.54  so#conjunction Adverb 0.46
 we        Pronoun      Sense        1.00  we#pronoun
 will      Auxiliary    Sense        1.00  will#auxiliary Verb 0.00
-record    Verb         PartOfSpeech 0.95                 Noun 0.05
+record    Verb         PartOfSpeech 0.94                 Noun 0.06
 a         Determiner   Sense        1.00  a#determiner
-record    Noun         PartOfSpeech 0.96                 Verb 0.04
+record    Noun         PartOfSpeech 0.95                 Verb 0.05
 then      Adverb       PartOfSpeech 0.99                 Noun 0.01
 go        Verb         PartOfSpeech 0.94                 Noun 0.05
 back      Adverb       Group        0.99  back#group:return Noun 0.00
@@ -158,7 +158,7 @@ an        Determiner   Sense        1.00  an#determiner
 arrow     Noun         PartOfSpeech 1.00
 from      Preposition  Sense        1.00  from#preposition
 his       Determiner   Sense        1.00  his#determiner
-bow       Noun         PartOfSpeech 1.00                 Verb 0.00
+bow       Noun         Sense        1.00  bow#archery-bow Verb 0.00
 at        Preposition  Sense        1.00  at#preposition Noun 0.00
 a         Determiner   Sense        1.00  a#determiner
 deer      Noun         Sense        1.00  deer#noun
@@ -167,11 +167,11 @@ we        Pronoun      Sense        1.00  we#pronoun
 will      Auxiliary    Sense        1.00  will#auxiliary Verb 0.00
 record    Verb         PartOfSpeech 0.99                 Noun 0.01
 a         Determiner   Sense        1.00  a#determiner
-record    Noun         PartOfSpeech 0.90                 Verb 0.10
+record    Noun         PartOfSpeech 0.92                 Verb 0.08
 then      Adverb       PartOfSpeech 0.99                 Noun 0.01
 go        Verb         PartOfSpeech 0.99                 Noun 0.01
 back      Adverb       Group        1.00  back#group:return Noun 0.00
-home      Adverb       PartOfSpeech 0.59                 Noun 0.16
+home      Adverb       PartOfSpeech 0.61                 Noun 0.17
 ```
 
 The words `bow`, `record`, `go`, `back` and `home` are trained by the encoder models in this version (the senses
@@ -182,7 +182,8 @@ with its id and sense key in the catalog, and also for a word whose lemma and pa
 as `the`), `Group` is a group of closely related senses (`GroupId`; MiniLM and BertBaseCased answer `back` at that level),
 and `PartOfSpeech` is the analysis only: the model could not tell the senses apart with the precision its thresholds ask
 for (the thresholds are calibrated on real text, so the encoder models answer most ambiguous words at this level: MiniLM
-answers `bow`, `record`, `go` and `home` at that level and BertBaseCased `bow`, `record`, `go` and `home`), and the
+answers `bow`, `record`, `go` and `home` at that level and BertBaseCased `record`, `go` and `home`, and BertBaseCased
+answers `bow` at the sense level, `bow#archery-bow`), and the
 ranked
 senses of each analysis in `Analyses` still show how the
 evidence spreads. `Analyses` lists every possible analysis (lemma, part of speech and features) with its probability,
@@ -203,11 +204,11 @@ Tokenize the text yourself, one sentence per call: punctuation is a token of its
 <!-- markdownlint-disable MD013 -->
 
 <!-- model-table:begin -->
-| Model | Real-text best analysis (test split) | Real-text part of speech (test split) | Written-holdout best analysis (secondary) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Basic | 92.24% | 92.74% | 93.12% | none | 145 KiB | 4 MiB | 0.15 ms | 45 ms + 83 ms | no |
-| MiniLM | 94.87% | 95.05% | 96.71% | 22 MiB | 4,161 KiB | 99 MiB | 2.05 ms | 583 ms + 55 ms | yes |
-| BERT base cased | 97.19% | 97.46% | 99.10% | 104 MiB | 8,152 KiB | 206 MiB | 10.15 ms | 713 ms + 56 ms | yes |
+| Model | Real-text sense (share @ precision) | Running-text part of speech (open corpus test) | UD-EWT test part of speech (convention-mapped) | Independent sense evaluation (SemCor) | STE challenge set (part of speech) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| Basic | 4.71% @ 74.75% | 93.85% (ambiguous 91.48%) | 91.60% (ambiguous 88.54%) | 3.32% @ 67.34% (top-1 2.51%) | 98.65% (ambiguous 97.83%) | none | 145 KiB | 4 MiB | 0.12 ms | 33 ms + 56 ms | no |
+| MiniLM | 3.14% @ 86.36% | 93.72% (ambiguous 91.28%) | 91.60% (ambiguous 88.54%) | 1.65% @ 76.69% (top-1 47.46%) | 98.20% (ambiguous 97.10%) | 22 MiB | 4,158 KiB | 97 MiB | 1.57 ms | 589 ms + 78 ms | yes |
+| BERT base cased | 15.18% @ 93.73% | 93.98% (ambiguous 91.70%) | 91.85% (ambiguous 88.93%) | 12.55% @ 83.02% (top-1 56.92%) | 98.20% (ambiguous 97.10%) | 104 MiB | 8,147 KiB | 220 MiB | 8.29 ms | 688 ms + 55 ms | yes |
 <!-- model-table:end -->
 
 <!-- markdownlint-enable MD013 -->
@@ -217,25 +218,44 @@ Tokenize the text yourself, one sentence per call: punctuation is a token of its
   rest.
 - 🎯 **bert-base-cased** - Larger case-sensitive encoder, 104 MiB download; the most precise on the trained lemmas.
 
-**The headline figures are measured on real text**: the 2,204 real held-out sentences (Project Gutenberg, VOA, USGS, NPS
-and NWS text, and Tatoeba sentences under CC0; public domain in the United States or CC0) of the *test documents*, a half
-of the real
-held-out sentences that is split off by document and that no weight or threshold has seen (the other half, the
-calibration documents, chooses the per-lemma thresholds). The written held-out sentences (12,261, written by a language
-model) are easier and are shown only as a secondary column.
-Neither is representative running text: the held-out sentences were found or written for specific senses with the quotas
-of the tiers, so the figures measure the classifier on a balanced corpus, they say nothing about words that no model was
-trained for, and an independent evaluation (SemCor for senses, the English EWT treebank for parts of speech) is still to
-come. The levels of the encoder answers on the real test sentences (the thresholds aim at 95% precision of the sense
-answers; `docs/build_notes/quota-fill.md` has the full tables and the sets that `evaluate` reports):
+**What the columns measure.**
+
+- *Real-text sense (share @ precision)*: of the 2,102 real held-out sentences of the *test documents* (Project
+  Gutenberg, VOA, USGS, NPS and NWS text, and Tatoeba sentences under CC0; a half of the real held-out sentences that is
+  split off by document and that no weight or threshold has seen), the share that the model answers at the sense level
+  and the share of those answers that are right. The held-out sentences were found or written for specific senses, so
+  this is a classifier measure on a balanced corpus; the written held-out sentences are easier and are not in the table.
+- *Running-text part of speech (open corpus test)*: the part of speech of the selected analysis on the 1,501 sentences of
+  the test split of the representative open corpus (random CC0 text, 21,481 scored tokens), on all tokens and, in
+  brackets, on the 12,810 tokens whose word has two or more parts of speech in the dictionary.
+- *UD-EWT test part of speech*: the same on the test file of the English EWT treebank (19,472 scored tokens), mapped to
+  the conventions of the dictionary (possessive determiners, the copula *be*, phrasal-verb particles, prepositions
+  before gerunds); the treebank is downloaded for evaluation only and is never committed.
+- *Independent sense evaluation (SemCor)*: the 31,490 single-word annotations of the 775 trained lemmas in SemCor 3.0 (the
+  sense-annotated Brown Corpus, WordNet 3.0 keys mapped to the senses of the catalog; 97.7% of the keys map): the share
+  answered at the sense level and the precision of those answers, and the *fine top-1*, the share of the words whose most
+  probable sense is right. For comparison, always choosing the first (most frequent) sense of the right lemma and part of
+  speech is right for 60.7% of these words; that baseline is optimistic because the order of the senses comes from
+  WordNet counts that include SemCor itself.
+- *STE challenge set*: the 32 hard sentences of simplified technical English of the open corpus, scored like the running
+  text; it is small and chosen for its hard cases, so read it as a regression check and not as accuracy.
+
+The sense-level answers are far from the precision they were calibrated for (95%) on SemCor: 83% for the BERT model on
+text that is very unlike its training sentences, and the sense choice is not yet better than the most-frequent-sense
+baseline for the words it covers; the part of speech is the dependable part of an answer today. The RAM, latency and
+first-use columns come from the last `evaluate` run on a development machine and are to be remeasured on a quiet machine
+in the final increment. The levels of the
+encoder answers on the real test sentences (`docs/build_notes/quota-fill.md` and `docs/build_notes/independent-evaluation.md`
+have the full tables and the sets that `evaluate` reports):
 
 | Model | Sense (share, precision) | Group (share, precision) | Part of speech (share, precision) | Fine top-1 |
 | --- | ---: | ---: | ---: | ---: |
-| MiniLM | 8.1%, 92.7% | 0.8%, 88.2% | 91.1%, 95.0% | 61.7% |
-| BERT base cased | 18.7%, 94.9% | 0.7%, 100% | 80.6%, 97.1% | 71.6% |
+| MiniLM | 3.1%, 86.4% | 1.1%, 81.8% | 95.8%, 93.6% | 56.4% |
+| BERT base cased | 15.2%, 93.7% | 0.6%, 100% | 84.2%, 95.9% | 66.9% |
 
 The table is generated into `docs/build_notes/model-table.md`; the user guide explains how the numbers were measured
-and lists the confidence thresholds of each model. See also the [model comparison][link-model-comparison] and the
+and lists the confidence thresholds of each model. A reviewed suite of 348 sentences about common ambiguous words
+(`corpus/suite`) guards each model against regressions. See also the [model comparison][link-model-comparison] and the
 [Basic evaluation][link-basic-evaluation] (both measure the earlier part-of-speech classes and are historical).
 
 ## Documentation

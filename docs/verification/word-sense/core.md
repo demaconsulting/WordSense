@@ -96,6 +96,13 @@ or possessive.
 Analyses that share a part of speech, such as the past and the present of `read` or the lemmas of `left`, are told
 apart by the words around the target (see the `CueModel`, `SenseFusion` and `BasicClassifier` unit documents).
 
+#### Reviewed Suite Does Not Regress
+
+The Basic model answers the 348 sentences of the reviewed suite (`corpus/suite`) at least as well as the expectation file
+records for it: no row falls below its expectation (`fine`, `answer` or `miss`), so a regression fails the build while
+the known misses (the heteronym rows that need a sense, which Basic does not rank) stay documented
+(`BasicSuiteTests`, `BasicSuite_ExpectedPasses_StillPass`).
+
 #### Answer Level Is Stated Honestly
 
 An ambiguous word is answered at the part of speech level without a group or sense id, with all its analyses listed and

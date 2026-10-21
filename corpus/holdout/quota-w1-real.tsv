@@ -6,10 +6,7 @@ call	call#animal-call	Verb	During this period, they form very large "choruses" o
 call	call#announce	Verb	I started to protest, but at that moment his Honor was {calling} the name of the next hobo on the list.
 call	call#announce	Verb	I {called} out to him yesterday, that I was no use here, and that he had better let me send for Mrs Richards.
 call	call#assign	Verb	My bleeding country {calls} me and I go!
-call	call#assign	Verb	The Secretary's Order {calls} on the USGS to map and inventory publicly owned mine waste resources as a first step in identifying opportunities to recover critical minerals from these wastes.
 call	call#bird-call	Noun	After a little more maneuvering, and amid the happy, reassuring {calls} of her mate, she entered the nest cavity and remained, and I was as well pleased as was her mate.
-call	call#bird-call	Noun	Makes two distinctive {calls}, "chicka-dee-dee-de" and another that sounds strikingly like "cheeseburger!"
-call	call#bird-call	Noun	Costumed technicians taught the chicks how to find food, purred or played brood {calls} to the chicks like their parents would, and introduced them to wetland habitats.
 call	call#communicate	Verb	For about five minutes the despatcher had been {calling} me for orders, and in a trembling voice I asked them to let me answer and take the order.
 call	call#communicate	Verb	The American television show Saturday Night Live has used video {calling} in its most recent programs.
 call	call#communicate	Verb	And the store owner would possibly be fined for {calling} in a false report.
@@ -21,7 +18,6 @@ call	call#dock	Verb	Trade Town is the next place where you may now {call} for ca
 call	call#dock	Verb	When we got our complement of Krumen on board, we proceeded down Coast with the intention of {calling} off Accra.
 call	call#label	Verb	I dare say no words she could have uttered would have affected me so much, then, as her {calling} me her child.
 call	call#label	Verb	Don't normalize reactionary extremists by {calling} them "conservatives."
-call	call#label	Verb	Water delivered to homes is called "public-supplied deliveries" and water that people supply themselves is {called} "self supplied", and is almost always from groundwater.
 call	call#label	Verb	So, we can safely {call} Hill a tree hugger.
 call	call#lure	Verb	Moose {calling} has almost every attribute of true sport.
 call	call#name	Verb	As the temperature of water vapor (a gas) decreases, it will reach the point at which it turns into a liquid ({called} the dew point, or the point at which dew forms).
@@ -33,13 +29,11 @@ call	call#order	Verb	It has {called} for the delay so that more doses can be mad
 call	call#phone	Verb	A moment of rigid immobility and she had whirled back to the telephone and {called} up a near-by livery stable.
 call	call#phone	Verb	Thank you for {calling} Jackson & Jackson, can you hold, please?
 call	call#phone	Verb	Persons who use a telecommunications device for the deaf (TDD) may {call} the Federal Relay Service (FRS) at 1--800--877--8339 to contact Mr. Mosley during normal business hours.
-call	call#phone-call	Noun	For quality assurance, this {call} may be recorded.
 call	call#phone-call	Noun	First, close your eyes and imagine a telephone {call} between two friends going to the movies.
 call	call#predict	Verb	Forecasters are {calling} for a near-normal Atlantic hurricane season this year.
 call	call#predict	Verb	This year the NOAA forecast {calls} for 13 to 19 named storms, of which six to 10 could become hurricanes with three to six of those being major hurricanes.
 call	call#question	Verb	If his right was {called} in question there was a fight for it, and the survivor took the first lot, and so they went on through the parish.
 call	call#question	Verb	Are you {calling} my eligibility into question?
-call	call#regard	Verb	The most widespread crayfish species in Kentucky (Cambarus tenebrosus) {calls} the Green River its home.
 call	call#regard	Verb	She found what she {called} a "small but significant" difference in reading text from screen versus paper.
 call	call#request	Noun	He knew their position, and if he could send out one {call} for help it would undoubtedly be answered, as there were plenty of ships in these waters.
 call	call#social-visit	Noun	His late afternoon {calls} on Ruth were rarer now, for June was approaching, when she would take her degree and finish with the university.
@@ -98,7 +92,6 @@ change	change#change-clothes	Verb	After {changing} my clothes I went next door a
 change	change#change-clothes	Verb	Arriving at the shore of Windy City Lake we {changed} into wet suits for the swim across the chilly (50° F) water.
 change	change#change-covering	Verb	Tom has never {changed} a diaper.
 change	change#change-feature	Verb	Over time, as fashion trends {changed} and visitation grew, and many cave visitors started utilizing what is described as a 'cave costume' making them better equipped for cave exploration.
-change	change#change-feature	Verb	Daily and regional weather patterns may cause conditions to {change} rapidly so checking monitors for hourly pollutant patterns can help inform activities during your visit.
 change	change#change-feature	Verb	Invariant virtue appears to be as mechanical as uninterrupted vice, for true excellence {changes} with conditions.
 change	change#change-feature	Verb	So, the amount and location of surface water {changes} over time and space, whether naturally or with human help.
 change	change#change-feature	Verb	This date {changes} from year to year.
@@ -114,7 +107,6 @@ change	change#exchange-equivalent	Verb	Cookie's litter box needs to be {changed}
 change	change#exchange-equivalent	Verb	Can you help me {change} out the litter?
 change	change#fresh-clothes	Noun	On leaving Talavera our clothes had been completely threadbare, and now, through having no {change} for so long we were smothered with vermin.
 change	change#fresh-clothes	Noun	The waiter retired; the breakfast concluded; and the travellers ascended to their respective bedrooms, to prepare a {change} of clothing, to take with them on their approaching expedition.
-change	change#fresh-clothes	Noun	I don't have a {change} of clothes.
 change	change#make-different	Verb	Extreme droughts and, inversely, extreme rainfall are {changing} landscapes and what scientists understand about wildfires.
 change	change#make-different	Verb	After your physical growth has stopped, the brain loses some of its ability to {change} the way it controls the muscles of the mouth.
 change	change#mutual-exchange	Verb	"My good heavens--how we are {changing} places!"
@@ -124,10 +116,7 @@ change	change#switch-away	Verb	I thought that Captain Nemo, by {changing} his co
 change	change#switch-away	Verb	I heard a story only yesterday about a girl {changing} her mind on the way out.
 change	change#switch-away	Verb	Leaving his sentence unfinished, he seized pen and paper and wrote to Jo, telling her that he could not settle to anything while there was the least hope of her {changing} her mind.
 change	change#switch-away	Verb	Tom tried to {change} the subject by talking about cats.
-change	change#transformation	Noun	Even in an industry with as long a history as coal has had, it's important to Adams that the information provided by EIA keeps pace with the {changes} that are occurring.
-change	change#transformation	Noun	In a fractured rock environment, {changes} in groundwater levels can be caused by the unclogging, widening, or narrowing of a fracture, or the creation of new fractures.
 end	end#boundary	Noun	This was Tess Durbeyfield's habit, her temple pressing the milcher's flank, her eyes fixed on the far {end} of the meadow with the quiet of one lost in meditation.
-end	end#boundary	Noun	Big Bend National Park is located at the northern {end} of the Chihuahuan Desert.
 end	end#closing	Noun	And that bring us to the {end} of our road and this episode of Words and Their Stories!
 end	end#closing	Noun	Is there a "happily ever after" {ending}?
 end	end#communication-end	Noun	He was to have a message even if she were not reported, so that he might be sure that there was a watch being kept at the other {end} of the wire.
@@ -150,7 +139,6 @@ end	end#ending	Noun	We use discourse markers to signal a beginning or {end} of a
 end	end#endpoint	Noun	There is a great depression or hole in the floor of the north {end} of the room and into this the rocks had tumbled until they had formed the side of a mountain.
 end	end#endpoint	Noun	Storms that occur in England, located near the {end} of the Gulf Stream, bring large pressure changes.
 end	end#endpoint	Noun	On the low end of the scale, AR Cat 1 events rated as primarily beneficial and at the high {end}, AR Cat 5 events primarily hazardous.
-end	end#endpoint	Noun	The geophysical survey will focus near South Pass at the southern {end} of the Wind River Range and on the Granite Mountains west of Pathfinder Reservoir.
 end	end#endpoint	Noun	Her father told her that she was looking for a pot of gold at the {end} of the rainbow.
 end	end#final-section	Noun	Four sides of incoherent and interjectional beginnings of sentences, that had no {end}, except blots, were inadequate to afford her any relief.
 end	end#final-section	Noun	The sentence is missing a period at the {end}. Please check your sentences to make sure more of them aren't missing one.
@@ -159,7 +147,6 @@ end	end#final-section	Noun	We can expand them by adding another word, such as bo
 end	end#final-section	Noun	We use "though" a lot in spoken English, and it is very common at the {end} of a sentence, like in the example I like him, though.
 end	end#finale	Noun	He whistled to himself, softly, first with surprise, and then, at the {end}, with admiration.
 end	end#finale	Noun	At the {end} of his life, Muir and the Sierra Club fought a bitter and ultimately unsuccessful crusade against construction of the O'Shaughnessy Dam in the Hetch Hetchy Valley in Yosemite National Park.
-end	end#finale	Noun	Your teacher, Professor Eleazar Fig, dies at the {end} of Hogwarts Legacy. This happens in all possible endings and can't be changed. Oh, and Rookwood is the one who cursed Anne.
 end	end#finale	Noun	Post-fire debris flow assessments are typically completed toward the {end} of wildfire suppression efforts and in advance of forecasted heavy rainfall.
 end	end#finale	Noun	Today we talk about the sweet dish at the {end} of a meal -- the dessert.
 end	end#finish	Verb	If the sentence {ended} with stuff, the meaning might not be clear to the listener.
@@ -170,7 +157,6 @@ end	end#halt	Verb	The French-brokered agreement seeks to {end} a four-month rebe
 end	end#objective	Noun	But the only manner in which these seemingly irreconcilable {ends} could be attained, would be by the use of language which should be self-adjusting to the capacity of the reader.
 end	end#objective	Noun	This was a gain on our part, for now we shall attain the {end} in a shorter time than would have been possible otherwise.
 end	end#objective	Noun	The threat of moral bankruptcy, real as it is, can only be averted through a steady devotion to ideal {ends}.
-end	end#objective	Noun	If you are running in circles you are wasting time doing an activity that has no purpose or {end}.
 eye	eye#attention	Noun	He was now close enough to the top to get a good look around, and he cast his {eyes} about eagerly, hoping to catch sight of some of his friends, or their campfire.
 eye	eye#attention	Noun	He did not go skipping and prancing, but moved with a dignified swagger as became a pirate who felt that the public {eye} was on him.
 eye	eye#attention	Noun	Both wild turkey and white-tailed deer are common sights along roadways in the park, so make sure to keep an {eye} out as you drive through.
@@ -216,7 +202,6 @@ face	face#orient	Verb	He now turned quite from the moon and {faced} me.
 face	face#orient	Verb	The hollow {faced} the East, and the bright sun, shining into their eyes, awakened them at last.
 face	face#orient	Verb	Roon had a room at the other end of the hall from yours, on the corner, {facing} the road and also looking toward the cross-roads.
 face	face#outer-side	Noun	Thus are you and all creatures attached to the {face} of the earth, and it seems as if great heights were forbidden to our curiosity.
-face	face#outer-side	Noun	Pecking was the most common method used and was accomplished by a direct blow with a hammerstone or indirectly by striking a stone held against the rock {face} with a second stone or hammerstone.
 face	face#outer-side	Noun	Tuesday June 2nd, 1891 Elmer & I put two shots in the Lost Cabin tunnel today & took out about two feet of the {face}.
 face	face#person	Noun	The queerest thing of all was that although there was such a crowd of persons, and although fresh {faces} were pouring in, every moment, there was no telling where they came from.
 face	face#person	Noun	"Do the pale {faces} love their children less in the morning than at night?" asked the Indian, coldly.
@@ -277,7 +262,6 @@ fight	fight#campaign	Verb	She continues to work as a journalist and {fight} for 
 fight	fight#competitiveness	Noun	Hal had no {fight} left in him.
 fight	fight#resist	Verb	Although Galveston is entirely surrounded by water, the pipe-lines for {fighting} fire at this time extended only to Avenue H, ten blocks from the Strand.
 fight	fight#resist	Verb	I said it was nerves, and I {fought} against it.
-fight	fight#resist	Verb	It's been a sad phenomenon of the last 100 years that Jews are chased to Israel by people who believe they're {fighting} Zionism.
 fight	fight#resist	Verb	But the men {fought} the seas bravely, with all their strength.
 fight	fight#resist	Verb	The researchers found that antibodies produced to {fight} COVID-19 may mistakenly target cells that line the brain's blood vessels.
 fight	fight#struggle	Verb	Jo {fights} it out at his crossing among the mud and wheels, the horses, whips, and umbrellas, and gets but a scanty sum to pay for the unsavoury shelter of Tom-all-Alone's.
@@ -313,7 +297,6 @@ figure	figure#figure-of-speech	Noun	I haven't a red cent in my pocket, which is 
 figure	figure#illustration	Noun	The Hook-billed duck is highly remarkable (see {figure} 39, of skull); and its peculiar beak has been inherited at least since the year 1676.
 figure	figure#illustration	Noun	Their troughs should be in little divisions, like cups, to hold the water separately, {figure} 25.
 figure	figure#illustration	Noun	Mr. Stuart has given us the {figures} of a number observed by him in the Mediterranean: all with some particulars which make for my opinion, if well drawn.
-figure	figure#illustration	Noun	The plant is at present so scarce as not to be enumerated in the Catalogue of the Cambridge Garden; nor has any {figure} of it, to our knowledge, been before published.
 figure	figure#illustration	Noun	The interactive {figures} display the results by species, state, or elevation.
 figure	figure#impression	Noun	Think what a {figure} you will make when you are asked, 'How do they execute at Rome?' and you reply, 'I do not know!'
 figure	figure#impression	Noun	"Pretty {figures} we shall cut on ponies while Aramis and Porthos caracole on their steeds."
@@ -324,7 +307,6 @@ figure	figure#monetary-amount	Noun	The construction companies, by which these ro
 figure	figure#monetary-amount	Noun	Unfortunately there are no {figures} available for the French Sudan which would represent the real value of the trade; the total value of trade is, however, considerable.
 figure	figure#monetary-amount	Noun	How the German population can afford to buy anything at {figures} so exaggerated in marks is a mystery.
 figure	figure#monetary-amount	Noun	A great deal of very hot port wine was consumed at his call; and, considering the {figure}, I should think the Inner Temple must have made a profit by it.
-figure	figure#monetary-amount	Noun	Mr. Reuter says that while no one knows how much money is actually laundered through banks globally, the {figure} could be as large as $700 billion per year.
 figure	figure#notable-person	Noun	Hilda, struggling with her hat-pins, felt her dress brushed by various lean hands of the bazaar, and observed herself the central {figure} in yet another situation.
 figure	figure#notable-person	Noun	He cannot claim, any more than Goethe, to rank as a principal {figure} in the history of evolution.
 figure	figure#notable-person	Noun	Mr Poulter, it appeared, had been a conspicuous {figure} at Talavera, and had contributed not a little to the peculiar terror with which his regiment of infantry was regarded by the enemy.
@@ -343,19 +325,15 @@ figure	figure#shape	Noun	The phenomena of these stars has been explained in a ve
 figure	figure#shape	Noun	The doctrine is maintained by almost all the distinguished astronomers and writers who have flourished since the true {figure} of the earth was determined.
 figure	figure#shape	Noun	Proportions of numbers and geometrical {figures} rest at the bottom of the whole.
 first	first#foremost	Adjective	It has the {first} claim on me, much as I would fain serve you.
-first	first#foremost	Adjective	The {first} rule of driving should always be look where you are going!
 go	go#have-form	Verb	As the song {goes}: sometimes you're the windshield/sometimes you're the bug.
 hand	hand#assistance	Noun	I have trouble getting ashore so Hank climbs in and bears a {hand} while Russ tows from his aqueous position.
-hand	hand#assistance	Noun	I could really use a helping {hand}.
 hand	hand#card-hand	Noun	This gives us two similar idioms -- to show your {hand} and to lay your cards on the table.
 hand	hand#card-hand	Noun	We can also say play the {hand} we are dealt.
-hand	hand#card-hand	Noun	We feel as though life has dealt us a bad {hand}, and we must struggle and fight to gain anything at all.
 hand	hand#clock-hand	Noun	For more accurate results, have the student use stop watches or the second {hand} of a clock.
 hand	hand#clock-hand	Noun	For example, digital number readouts have long replaced the {hands} on many clocks.
 hand	hand#deckhand	Noun	All {hands} were brought on deck, life-belts were adjusted, and boats' crews stood by.
 hand	hand#escort	Verb	'The strange young man,' said Quilp, {handing} Dick Swiveller forward, 'is too susceptible himself not to understand me well.
 hand	hand#farm-worker	Noun	Simon Celaya, originally from San Luis, Potosi, Mexico, worked for many years as a ranch {hand} for Coleman Babb at the K-Bar ranch.
-hand	hand#farm-worker	Noun	He was so impressed with his week's visit that he decided to return the following year, finding work as a ranch {hand}, as he settled in the area.
 hand	hand#forepaw	Noun	Among the things to see there is a model of the moving {hand} used in the popular 1933 movie King Kong.
 hand	hand#handbreadth	Noun	Their height, at the withers, was about ten {hands} and a half.
 hand	hand#handwriting	Noun	It was traced on ruled lines, in the cramped, conventional, copy-book character technically termed "small {hand}."
@@ -364,7 +342,6 @@ hand	hand#side	Noun	Taking the right {hand} pit lead, we dropped 16-feet down a 
 hand	hand#side	Noun	We then climbed back up to the left {hand} bellycrawl.
 hand	hand#skill	Noun	He was now keeping his {hand} in with me, who, unhappily, purported to belong to the very class he was used to victimise, and, moreover, had a gold watch, and, doubtless, a full purse.
 hand	hand#skill	Noun	After dinner I concluded that I would try my {hand} at snaring a prairie dog.
-hand	hand#viewpoint	Noun	On the other {hand}, thunderstorms are uncommon in the Pacific northwest, and are virtually unheard of during the winter months.
 hand	hand#viewpoint	Noun	In French, I manage to fend myself; in Kabyle, on the other {hand}, the road will be longer.
 hand	hand#viewpoint	Noun	On the other {hand}, high-intensity atmospheric rivers can be as destructive as hurricanes and lead to widespread flooding, landslides, and debris flows.
 head	head#body-head	Noun	With broad, large {heads} and hidden rudimentary eyes, they have adapted to survive in a lightless environment.
@@ -374,7 +351,6 @@ head	head#brain	Noun	But how to get that appallingly absurd notion into the {hea
 head	head#brain	Noun	In your {head}, try to name each object in your surroundings.
 head	head#brain	Noun	"I've had students tell me that they label everything in their room or their apartments so that these English words, kind of, stick in their {heads}."
 head	head#coin-face	Noun	It's {heads} I win and tails you lose.
-head	head#coin-face	Noun	So, naturally, we call the Washington side {head} and the other side tail.
 head	head#decapitate	Verb	When the fish are to be dried, they are conveyed in boats to the shore, where they are {headed}, cleansed, and salted, upon stages or scaffolds erected for that purpose.
 head	head#drum-skin	Noun	They are manufactured into shoes, {heads} for drums, and, when varnished over in a peculiar manner, are cut into leaves for pocket-books.
 head	head#flower-cluster	Noun	DOWN by the streamlet in the Frying Pan, in the heavy clay soil of the bank, I see this morning the flower-scapes of the coltsfoot are lifting betimes their curious bent {heads}.
@@ -383,7 +359,6 @@ head	head#front-or-top	Verb	By this time, of course, the list of the missing at 
 head	head#heading	Noun	Page 376, {heading} added for "GREEN PEAS." to match rest of book's layout.
 head	head#heading	Noun	He ran his eyes over the lines under the black-lettered {heading} of the first page.
 head	head#headland	Noun	The variable airs sporting lightly with the vast semicircle of waters within the {head} of Azuera could not baffle the steam power of their excellent fleet.
-head	head#headword	Noun	Mine takes the place of the noun {head} word.
 head	head#issue	Noun	"Why, indeed, he does seem to have had some filial scruples on that {head}, as you will hear."
 head	head#joint-head	Noun	To avoid the difficulties of disarticulation, Skey recommends cutting off the {head} of the second metatarsal with a pair of pliers.
 head	head#joint-head	Noun	Cases of limited tumours affecting merely the {head} and upper third of the bone, and non-malignant in character.
@@ -394,8 +369,6 @@ head	head#lead	Verb	The internationally known horticulturist who {heads} the Bot
 head	head#lead	Verb	In the past 15 years he has {headed} USGS and NOAA teams that mapped faults off the island's north coast, but the sea floor close to the south coast was largely unexplored.
 head	head#leader	Noun	Dick Lewis, henceforth to be referred to as Looie, is in charge of the group and is also {head} of one of the two mapping projects for which the trip is being made.
 head	head#leader	Noun	Last month, the {head} of South Korea's Ministry of Oceans and Fisheries (MOF), Kim Young-suk, told local broadcaster KBS the salvage may not be completed this year "in a worst-case scenario."
-head	head#leader	Noun	Grimm most recently served as the senior career executive in the Federal Insurance and Mitigation Administration at the Federal Emergency Management Agency and as {head} of FIMA's Risk Management Directorate and Mitigation Directorate.
-head	head#leader	Noun	Yes, even the fictional {head} of an organized crime family can teach you about English grammar!
 head	head#leader	Noun	Rangga Aditya Elias is the {head} of international relations at Binus University in Indonesia.
 head	head#person	Noun	My fellow-citizen here would have it forty-two; ten more {heads} are worth having.
 head	head#precede	Verb	The procession was {headed} by several hundred infantry soldiers, marching without the least semblance of order, and followed by cuirassed cavalrymen mounted on microscopic ponies in the manner above described.
@@ -431,7 +404,6 @@ lay	lay#place	Verb	I rekindled up my sleepy fire; {lay} in contact the exfoliate
 lay	lay#put-down	Verb	There can be no peace if national policy adopts as a deliberate instrument the dispersion all over the world of millions of helpless and persecuted wanderers with no place to {lay} their heads.
 lay	lay#put-down	Verb	I'm going to {lay} down my weapons.
 lead	lead#be-first	Verb	"Jack Ferris still {leads}!" yelled Luke Stout.
-lead	lead#be-first	Verb	In 2016, these five states {led} the pack in mineral production, accounting for about one third of the total mineral production value for the entire country.
 lead	lead#be-first	Verb	Considering that the United States and Turkey {lead} the world in boron production, California's contribution is significant.
 lead	lead#be-first	Verb	Much of the value of Nevada's mineral industry comes from its precious metal production, as it {leads} the Nation in gold mining.
 lead	lead#be-first	Verb	This year, he {leads} all of baseball, hitting 58 home runs.
@@ -442,7 +414,6 @@ lead	lead#command	Verb	Every ten years, Saguaro National Park {leads} a citizen 
 lead	lead#command	Verb	Can they {lead} the revolution to victory?
 lead	lead#command	Verb	The USGS Alaska Science Center {leads} long--term research on polar bears to inform local, state, national and international policy makers regarding conservation of the species and its habitat.
 lead	lead#command	Verb	Established in 2015, this multi-national, multi-agency bat-tracking program, {led} by the USGS, is critical for evaluating potential impacts of the many stressors on bat populations.
-lead	lead#command	Verb	The other was the Confederate Army of Northern Virginia {led} by General Robert E. Lee.
 lead	lead#go-ahead	Verb	My lady {led} the way back.
 lead	lead#go-ahead	Verb	We reached Pine Knot late in the afternoon, but as he was eager for a walk we started off, he {leading}, as if walking for a wager.
 lead	lead#go-ahead	Verb	Sam threw the painted tops into a corner, and {led} the way through a dark passage, and up a wide staircase.
@@ -456,7 +427,6 @@ lead	lead#precede	Verb	As I shut it, Saint Paul's, and all the many church-clock
 lead	lead#precede	Verb	Please follow the links below for more details about the Sekigahara Timeline, Battle of Sekigahara, and the events {leading} up to it.
 lead	lead#precede	Verb	Today, hundreds of thousands of African-Americans across the U.S. observe Kwanzaa during the week {leading} up to New Year's Day on January 1.
 lead	lead#preside	Verb	There is still a chasm between Ukraine and Russia after days of video talks which have been {led} by Ukraine's defense minister Oleksii Reznikov and Ukrainian presidential adviser Mykhailo Podolyak.
-lead	lead#preside	Verb	My coworker Karen {led} a very confusing meeting.
 lead	lead#provide-access	Verb	The subterranean miner that works in us all, how can one tell whither {leads} his shaft by the ever shifting, muffled sound of his pick?
 lead	lead#provide-access	Verb	It {led} into a chamber, vaulted and old, like that from which they had come, but not so spacious, and having only one other little room attached.
 lead	lead#provide-access	Verb	A minute might have been consumed in the ascertaining of these points, when Miss Fanny, who, from her seat in the carriage, commanded the long narrow passage {leading} to the Lodge, flushed indignantly.
@@ -473,7 +443,6 @@ leave	leave#abandon	Verb	Do you think I forget your always coming home to sell a
 leave	leave#abandon	Verb	After some consideration, it was decided that he had {left} the gentleman above, for dead, and had adopted this stratagem to divert suspicion or pursuit.
 leave	leave#abandon	Verb	After a few words with Dick and Looie I {leave} them to bail, and head back to look over the other route.
 leave	leave#allow	Verb	At last they implored him to go away and attend to his own affairs and {leave} them to mind theirs.
-leave	leave#allow	Verb	What drug in our pharmacopoeia cures any single disease, or do other than, by attacking and relieving symptoms, {leave} nature to remove the morbid lesion?
 leave	leave#allow	Verb	Then add the vegetables, cut into neat dice, parboiled, and {left} to cool.
 leave	leave#allow	Verb	Enclose each dumpling in one of these, {leaving} room to swell, and tie it up, bag-wise, with a stout string.
 leave	leave#allow	Verb	We relieve our conscience by the confession, at all events {leaving} it to exercise its authority as it may see fit.
@@ -488,7 +457,6 @@ leave	leave#entrust	Verb	He whipped out of sight in a moment, {leaving} Silver t
 leave	leave#entrust	Verb	But its safety, its continued existence as an enterprise, giving a return to men--to strangers, comparative strangers--who invest money in it, is {left} altogether in my hands.
 leave	leave#entrust	Verb	If he'd only employ a decent, steady, well-trained animal, pay him good wages, and {leave} everything to him, he'd get on all right.
 leave	leave#entrust	Verb	'My dear,' said the Reverend Frank aside to his good little wife, 'I think I will {leave} it to somebody else.
-leave	leave#entrust	Verb	As an old Kabyle saying goes: "Help those who are in need. As for God, {leave} him to others."
 leave	leave#exit	Verb	He reproached himself bitterly for not having visited the lighter carefully before {leaving} the wharf.
 leave	leave#exit	Verb	The logging crews which did the cutting and hauling {left} Isle Royale two weeks ago and the lumber camp, which had accommodated 150 or more men throughout the winter, broke up.
 leave	leave#farewell	Noun	By this medium, then, Everell had taken {leave} of his former host with due expressions of thanks, both in words and in gold, and had obtained the cloak-bag containing his travelling equipment.
@@ -519,7 +487,6 @@ leave	leave#remain	Verb	There are 26 pupils in a class. The teacher has 8 litres
 leave	leave#withdraw	Verb	Porthos {left} the service, and in the course of the following year married Mme.
 leave	leave#withdraw	Verb	After having well beaten him, he forbade him to {leave} his service without his permission.
 leave	leave#withdraw	Verb	Megan Phelps-Roper used to be a rude, hateful bigot. Since {leaving} the Westboro Baptist Church, she has become a polite, hateful bigot.
-leave	leave#withdraw	Verb	Immigration could be a way to lessen the effect of boomers {leaving} their jobs, Eren says.
 leave	leave#withdraw	Verb	Biden's decision to {leave} the 2024 race followed rising calls from Democrats urging him to "pass the torch" to a new generation.
 lie	lie#be	Verb	How long it may have {lain} upon the ground she knows not, but it lies where it fell when a servant stands before her announcing the young man of the name of Guppy.
 lie	lie#be	Verb	The rock layers visible in the park today were once buried by over a mile of other rock that had to erode first to expose what {lied} beneath.
@@ -563,10 +530,7 @@ like	like#be-fond	Verb	He had been engaged by Mr. Candy under rather peculiar ci
 like	like#be-fond	Verb	And he might be a perfectly good partner for someone else -- someone who doesn't {like} dogs.
 like	like#comparison-conjunction	Conjunction	I felt it more than I had hoped I should once when a child said, "Mother, why is the lady not a pretty lady now {like} she used to be?"
 like	like#comparison-conjunction	Conjunction	It's {like} you said: It's great!
-like	like#comparison-conjunction	Conjunction	This plant has a disproportionate and crazy growth. It's {like} it doesn't know how to grow anymore.
-like	like#comparison-preposition	Preposition	Many tired, hungry travelers have probably said, "This looks {like} a great place to eat!"
 like	like#comparison-preposition	Preposition	{Like} the colorful fall season, these phrasal verbs have colorful meanings.
-like	like#comparison-preposition	Preposition	The EMTs will find you frozen solid {like} a block of ice!!
 like	like#enjoy	Verb	She was angry with herself afterwards, thinking that he, unaware of her grave reasons for {liking} this seclusion, might have mistaken her meaning.
 like	like#enjoy	Verb	A robin peered down at the preparations from the nearest tree, and, not {liking} the sinister look of the scene, flew away, though hungry.
 like	like#enjoy	Verb	Tom likes salad but doesn't {like} tomatoes; Betty likes pizza.
@@ -579,14 +543,11 @@ line	line#boundary-mark	Noun	Neither the referee nor linesman saw the ball cross
 line	line#cable	Noun	Not only must he be an expert telegrapher, but he must thoroughly understand {line}, battery and switch board work, and his executive ability must be of the highest order.
 line	line#cable	Noun	A wire was run direct to Washington, {lines} run to all the camps, and Jack and I each carried a little pocket instrument on our person.
 line	line#cable	Noun	At those wind speeds, the weight of the air molecules creates the force that knocks down phone and power {lines}, trees, vehicles, and people.
-line	line#cable	Noun	The storms tore roofs off homes, toppled trees, downed power {lines} and created so much debris that cleanup crews had to use a snowplow to clear one highway in Ohio.
-line	line#cable	Noun	Do not shelter under bridges, overpasses, power {lines}, or traffic signs.
 line	line#common-carrier	Noun	They all profit by it, more or less, but their profits are enormously in excess of the trifling losses due to the shrinkage of values of the shares of the main {line}.
 line	line#common-carrier	Noun	The other steamboat lines that visit Loanda are the African and British-African of Liverpool, which run monthly, in connection with the other South-west African ports; and the Woermann {line} from Hamburg.
 line	line#common-carrier	Noun	He was evidently unwilling to lose so many passengers, who would have taken a private conveyance, or perhaps the other {line} of stages, the next day.
 line	line#communication-channel	Noun	It would flutter and live till the last {line} of communication was broken, and after that who was to say how much longer it might continue to flutter and live?
 line	line#communication-channel	Noun	Now that our {lines} of communication were clear of the Raiders food was coming through again from India.
-line	line#compliance	Noun	Pew surveyor Katerina Eva Matsa said this falls in {line} with years of research on political attitudes toward news media in general.
 line	line#cord	Noun	And again dodging the boom, I ran to the colour {lines}, handed down their cursed black flag, and chucked it overboard.
 line	line#cord	Noun	The {line} should be a small-sized waterproofed silk one.
 line	line#cord	Noun	Haddock, whiting, flounders, &c., are captured by means of long {lines} as well as hand lines.
@@ -594,7 +555,6 @@ line	line#distinction	Noun	Such class {lines} are by no means fixed; they vary, 
 line	line#distinction	Noun	They walk the {line} between strength and grace.
 line	line#file	Noun	The long {line} of carriages moved slowly forward, at a crawling foot-pace.
 line	line#file	Noun	The Seven Years' War (1756--1763) marked the definite adoption of the "frigate" as a standard class of vessel, coming next to ships of the {line}, and used for cruising and scouting purposes.
-line	line#file	Noun	Now, with the unprecedented nationwide lockdown because of the coronavirus, life has been restricted to two poles--home and the regimented {lines} at the nearest food store, where people are spaced 1 meter apart.
 line	line#file	Noun	A "breadline" is a {line} of people seeking food from a charity or government agency.
 line	line#file	Noun	They had to wait in long {lines} and some could not get into the store to speak with the writer.
 line	line#fill-plentifully	Verb	Carpetbaggers and rascals from the North {lined} their pockets with gold and brought shame upon their party and torture and death to the ignorant black men who followed them.
@@ -623,7 +583,6 @@ line	line#line-of-text	Noun	For instance, a man bereaved by one of the tragedies
 line	line#line-of-text	Noun	Tom carefully read each {line} of the website's terms of service and privacy policy before deciding whether he really wanted to create an account.
 line	line#lineage	Noun	Filiation by the female {line} seems to be generally adopted, not only in Polynesia, but in many Melanesian or Micronesian archipelagoes.
 line	line#linear-location	Noun	Their {line} of march is seldom interrupted, even by considerable rivers, across which they swim, without fear or hesitation, nearly in the order in which they traverse the plains.
-line	line#linear-location	Noun	The result of this tidal pull is a bulge in the ocean water on either side of the Earth, almost in {line} with the position of the Moon.
 line	line#linear-location	Noun	If precipitation is expected on the equator side of this {line}, then the precipitation would be liquid.
 line	line#linear-location	Noun	This online map shows the approximate location of planned flight {lines} along with areas completed during past surveys.
 line	line#linear-location	Noun	According to a Report of the Secretary of War, dated October 31, 1865, Wirz established a 'dead {line}' around the prison.
@@ -656,8 +615,6 @@ line	line#spectral-line	Noun	This general statement is true of every fixed star,
 line	line#stroke	Noun	One feature of this instrument which renders the square system very practical, consists of the division and sub-division of the squares by dotted lines and dash {lines}.
 line	line#stroke	Noun	With high-pressure systems, the value of air pressure along each isobar increases toward the center with each concentric {line}.
 line	line#stroke	Noun	Troughs are typically indicated by brown dashed {lines} with ridges indicated by brown zig-zag lines.
-line	line#stroke	Noun	Here, transpiration of groundwater commonly results in a drawdown of the water table much like the effect of a pumped well (cone of depression--the dotted {line} surrounding the plant roots in the diagram).
-line	line#stroke	Noun	Remember that when we write compound adjectives, we must put a hyphen, or short {line}, connecting the two adjectives.
 line	line#telephone-connection	Noun	Indian migrant doctors in Australia are dispensing medical advice through phone {lines} and via the internet, about hospital treatment and drugs to help patients in India fend off coronavirus infections.
 line	line#telephone-connection	Noun	Thank you for holding; we apologize for the delay. All of our representatives are currently assisting other customers. Please stay on the {line} and someone will be with you shortly.
 little	little#determiner	Determiner	Dish it, put the rice round as a border, pour a {little} parsley and butter over the fowl, and the remainder send to table in a tureen.
@@ -683,7 +640,6 @@ live	live#thrive	Verb	It brought to life and light my whole nature: in his prese
 mean	mean#assign	Verb	The result is phrases like ladies room -- not lady room, for a room {meant} for women and girls, and bean soup but not beans soup for a soup made of beans.
 mean	mean#entail	Verb	This {means} that they grow faster, which is all to the financial interest of the coon raiser.
 mean	mean#entail	Verb	When the water cools to a point where sea ice forms, the salts are extracted ({meaning} sea ice is fresh-water ice).
-mean	mean#entail	Verb	Moving west across the International Date Line, {means} moving from the -12 UTC time zone to the +12 UTC time zone.
 mean	mean#entail	Verb	This {meant} that the displaced water measured his volume exactly.
 mean	mean#ignoble	Adjective	The falser he, the truer Joe; the {meaner} he, the nobler Joe.
 mean	mean#ignoble	Adjective	Was there ever a {meaner} return for an act of pure charity than that?
@@ -724,14 +680,11 @@ move	move#change-residence	Verb	I learned French in order to {move} to Canada, b
 move	move#change-residence	Verb	Writer Jean Kwok shares the experience of her family {moving} from Hong Kong to New York City.
 move	move#decision	Noun	He laid his plan and calculated all his {moves} with the fervid deliberation of a chess-player in the days of his first ardor, and was amazed himself at his sudden genius as a tactician.
 move	move#displace	Verb	{Move} the fore hoss aside, Bobby; here's som'at coming...
-move	move#displace	Verb	The machine {moves} the hot well-water through one pipe next to another filled with a cooling material called refrigerant.
 move	move#displace	Verb	The atmosphere is the superhighway in the sky that {moves} water everywhere over the Earth.
 move	move#displace	Verb	In fact, to prevent moss from growing on stones in your garden, you can just {move} the rocks around, turning them over now and then.
 move	move#emotional-impact	Verb	Mrs. Yeobright tried to speak severely; but the account of her son's state had {moved} her more than she cared to show.
 move	move#emotional-impact	Verb	The diplomas which thus {moved} Ring's wrath were imposing documents, certifying that the holder was authorised to vaccinate, intended to be framed and exhibited in the shop or parlour.
-move	move#go	Verb	The deeper the water, the faster they {move}.
 move	move#go	Verb	No longer frozen, some of these slopes could start to {move}, possibly resulting in landslides.
-move	move#go	Verb	Water {moves} between the atmosphere and the surface through evaporation, evapotranspiration, and precipitation.
 move	move#go	Verb	In most places in the world, a green light is a sign to {move} ahead.
 move	move#live	Verb	The Lord St. Simon marriage, and its curious termination, have long ceased to be a subject of interest in those exalted circles in which the unfortunate bridegroom {moves}.
 move	move#live	Verb	Mr Boffin glanced about him, as accepting under that inclusive denomination the French gentleman and the circle in which he didn't {move}, and repeated, 'The present company.'
@@ -746,29 +699,22 @@ move	move#progress-change	Verb	Many African economies appear to have turned the 
 move	move#propose-motion	Verb	I {move} that the House agree to the Lords' amendment.
 move	move#relocation	Noun	For that night there was to be a dinner, the first since the {move}.
 move	move#take-action	Verb	Great forces and fierce anatgonisms seemed to be {moving}, obscurely, about the royal cradle.
-move	move#take-action	Verb	Joining you will be a myriad of reptiles; ectotherms that soak up the sun to warm up internally and get {moving}.
 move	move#travel-between	Verb	I fell down the conlang rabbit hole after learning Esperanto, {moving} on to Interlingua, Ido, Toki Pona, and eventually Klingon.
 move	move#travel-between	Verb	It is time to {move} on to other topics.
 move	move#travel-between	Verb	Let us {move} on to the future perfect.
 move	move#travel-between	Verb	OK, let's {move} to full-service restaurants.
-move	move#travel-between	Verb	And finally, we {move} to adjectives that end in -ing, also known as present participial adjectives.
 part	part#component	Noun	In this way no one species is able to dominate, but rather exists as {part} of a complex food web that is more or less "balanced".
 part	part#component	Noun	Yelverton produced a moderately successful historical novel about Yosemite, as {part} of her international literary resume, while dealing with the scandal of an unsuccessful marriage to a British peer.
-part	part#component	Noun	As a part of the water cycle, Earth's surface-water bodies are generally thought of as renewable resources, although they are very dependent on other {parts} of the water cycle.
 part	part#contribution	Noun	He took no {part} in the conversation for a long while but listened, with an air of calm enmity, while his friends discussed the Jesuits.
 part	part#contribution	Noun	By the time Amy came in, Jo was able to take her {part} in the family jubilation, not quite as heartily as usual, perhaps, but without repinings at Amy's good fortune.
-part	part#contribution	Noun	Shawn Cheshire is a blind cyclist who competed in the 2016 Paralympics in Rio de Janeiro, Brazil. She hopes to take {part} again in 2020 in Tokyo, Japan.
 part	part#division	Noun	It is divided horizontally into two {parts} by a strong membrane, and each of these parts is again subdivided, by vertical membranes, into numerous cells, which communicate with each other, and contain the spermaceti.
 part	part#division	Noun	Dryden's general quality and a large {part} of his achievement are happily summarized in Lowell's epigram that he 'was the greatest poet who ever was or ever could be made wholly out of prose.'
 part	part#division	Noun	Many amphibians spend the early {part} their life cycle entirely in water as larva before metamorphosing into adults.
-part	part#division	Noun	In the second {part} of the 1900s, industrialized nations reduced their use of mules to transport heavy loads.
 part	part#dramatic-role	Noun	Throwing himself thoroughly into the {part}, the Ensign got up and proceeded to give an elaborate monologue, in falsetto, punctuated with mincing steps and frequent rearrangement of an imaginary coiffure.
 part	part#dramatic-role	Noun	Apparently women never acted; men and boys took the women's {parts}.
-part	part#dramatic-role	Noun	'To act a Lover's or a Roman's {part}.'
 part	part#end-association	Verb	Perhaps as we couldn't conscientiously marry at first in the old-fashioned way, we ought to have {parted}.
 part	part#end-association	Verb	I cannot {part} with Antonia, therefore the one and indivisible Republic of Costaguana must be made to part with its western province.
 part	part#force-apart	Verb	The sound came nearer and nearer; the thick mists were dimly {parted} by a huge, vague form.
-part	part#natural-piece	Noun	A huge spread of shoulders and a chest like a barrel were the other {parts} of him which appeared above the table, save for two enormous hands covered with long black hair.
 part	part#natural-piece	Noun	It is only when forced by the pain in the over-distended {parts} that she can summon courage to permit of their being emptied.
 part	part#natural-piece	Noun	A tsunami arrives at a coast as a series of successive crests (highest {parts} of the wave) and troughs (lowest parts of the wave).
 part	part#partly	Adverb	In fact, of the 47 mineral commodities that the United States is more than 50 percent reliant on foreign sources, 24 came in {part} from China.
@@ -786,7 +732,6 @@ part	part#role-function	Noun	The Majority Socialists refused with equal firmness
 part	part#role-function	Noun	Historians say the beaver had an important {part} to play in the European settlement of North America.
 part	part#role-function	Noun	It plays a leading {part} in researching and developing plants like trees, shrubs, flowers, and grasses.
 part	part#spatial-region	Noun	No pleasures of the chase in this {part} of the country?
-part	part#spatial-region	Noun	The northern most {parts} of the park and upland areas are ruled by Dryas tundra or scree with scattered forbs.
 part	part#spatial-region	Noun	If you live in a {part} of the world that is experiencing winter right now, it might be snowing.
 part	part#split-apart	Verb	For nearly ten minutes he stood there, motionless, with {parted} lips and eyes strangely bright.
 pay	pay#be-worthwhile	Verb	I tell you, it {pays} to stay away sometimes, they think such a lot more of you!
@@ -794,10 +739,7 @@ pay	pay#be-worthwhile	Verb	It's not the first half, but the second half of a col
 pay	pay#be-worthwhile	Verb	Both passages came together in about 60 feet and then I left Ernest and went on to see whether or not it would {pay} to put a string in the passage.
 pay	pay#bear-cost	Verb	Septimus Severus was very nearly {paying} with his head for one of those superstitious curiosities that brought the ambitious of the time to the astrologer.
 pay	pay#bestow	Verb	As a rule, the native {pays} no attention to these sores, and from neglect the ulceration extends both on the surface and to the deeper tissues, exposing the tendons and the metatarsal bones.
-pay	pay#bestow	Verb	You can also help the park, yourself, and the people and pets you care about by knowing your limits when hiking and {paying} attention to weather and trail conditions.
-pay	pay#bestow	Verb	When you read news stories or listen to English speakers, {pay} careful attention to how they use will and would.
 pay	pay#pay-money	Verb	When residents were removed from their land for Mammoth Cave to become a national park, they were {paid} fair market value for their properties.
-pay	pay#pay-money	Verb	I usually {pay} someone to do the job for me.
 pay	pay#render	Verb	IN RECEIVING MORNING CALLS, the foregoing description of the etiquette to be observed in {paying} them, will be of considerable service.
 pay	pay#render	Verb	The Irish gentleman doctor of my boyhood, who took nothing less than a guinea, though he might {pay} you four visits for it, seems to have no equivalent nowadays in English society.
 pay	pay#render	Verb	His visits are {paid}, of course, during the night, and shoes and stockings are, with the hopefulness of youth, left by the bedside for him to fill.
@@ -825,7 +767,6 @@ place	place#list-position	Noun	In the first {place}, a number of circumstances i
 place	place#list-position	Noun	At the death of a man, his property does not go to his wife or children, but to his maternal family, and in the first {place} to his brothers and sisters.
 place	place#list-position	Noun	California ranks number 4 overall, up two {places} from 2015.
 place	place#locality	Noun	This is a sacred {place} for their people.
-place	place#locality	Noun	The driest {place} in the world is the Atacama Desert near the Andes in South America.
 place	place#locality	Noun	The speed at which the entire cluster of thunderstorms move downstream can make a huge difference in the amount of rain any one {place} receives.
 place	place#locality	Noun	Several {places} in the Northeast received severe flooding from Ida.
 place	place#locality	Noun	Experts at the Merriam-Webster online dictionary define a nomad as a "member of a group of people who move from place to {place}."
@@ -851,7 +792,6 @@ place	place#situate	Verb	Any student born before July was put in group A, and an
 place	place#situation	Noun	"What should you do in my {place}?"
 place	place#situation	Noun	"I was only thinking that my lines have fallen in pleasant {places}."
 place	place#social-position	Noun	Among novelists he occupies something the same {place} which Browning, a person of very different temperament and ideas, holds among poets.
-place	place#social-position	Noun	Today we find the descendants of the original settlers of the Big Bend taking their rightful {place} in society.
 place	place#social-position	Noun	A woman's {place} is wherever she wants to be.
 place	place#space-occupied	Noun	And the abbé, casting away his coverlet, resumed his {place}, and continued his calculations.
 place	place#space-occupied	Noun	And with overpowering compliments her handsome cavalier led her back to the {place} whence he had taken her, and where Luigi awaited her.
@@ -868,13 +808,11 @@ place	place#stead	Noun	There is a sort of linguistic supersessionism prevalent a
 play	play#assume-role	Verb	But for this, she might have been a child {playing} at washing and imitating a poor working-woman with a quick observation of the truth.
 play	play#assume-role	Verb	We {played} robber now and then about a month, and then I resigned.
 play	play#be-presented	Verb	Frequent the theatre whenever Corneille, Racine, and Moliere's pieces are {played}.
-play	play#behave	Verb	{Play} it smart, play it safe.
 play	play#behave	Verb	Two of the most common uses might be in the terms "act cool" and "{play} it cool."
 play	play#behave	Verb	"When mom comes in, we have to {play} it cool, or she will start to suspect something!"
 play	play#caper	Noun	Have regular hours for work and {play}, make each day both useful and pleasant, and prove that you understand the worth of time by employing it well.
 play	play#caper	Noun	He bit a man last night, and a woman the night before, and last Tuesday he killed a child--but that was in {play}.
 play	play#cause	Verb	It had {played} him a scurvy trick when it fashioned him into the thing he was, and it had played him scurvy tricks ever since.
-play	play#cause	Verb	A prank or practical joke {played} on a friend might seem harmless.
 play	play#children-play	Noun	In the daytime nobody was seen there but mendicants devouring their crusts, and children at {play}.
 play	play#children-play	Noun	Some of the youngest I always play with; and, indeed, children from three to five are only fit for {play}.
 play	play#children-play	Noun	When it was discreet to stop the {play}, Betty Higden said 'Go to your seats Toddles and Poddles,' and they returned hand-in-hand across country, seeming to find the brooks rather swollen by late rains.
@@ -890,9 +828,7 @@ play	play#free-rein	Noun	And was not Rome the place in all the world to give fre
 play	play#gambling	Noun	Therefore lay it down as an invariable rule never to play with men, but only with women of fashion, at low {play}, or with women and men mixed.
 play	play#gambling	Noun	"When do you intend to give up {play}, George, as you have promised me, any time these hundred years?"
 play	play#have-effect	Verb	While these tiny critters may not receive the same attention as the park's larger wildlife, they {play} vital roles in maintaining the natural balance.
-play	play#have-effect	Verb	Preservation {plays} a very important role in extending the life of museum artifacts.
 play	play#have-effect	Verb	Bangladesh is one of the fastest growing country in the world and aim to {play} a leading role in this emerging market of Bangladesh through development of a platform for the manufacturing industry.
-play	play#have-effect	Verb	Fire {plays} an important role in the ecological landscape of the southeastern United States, where prescribed, or planned, burning is used to manage more than 8 million acres of land every year.
 play	play#have-effect	Verb	Barium's emerald hues in fireworks continue to enchant audiences while also {playing} a crucial role in the oil and gas industry.
 play	play#looseness	Noun	Leaving just room enough for the {play} of the oars, she kept alongside, drifting when we drifted, and pulling a stroke or two when we pulled.
 play	play#make-move	Verb	That's a match you are {playing} with his Eminence; this letter is your game.
@@ -931,7 +867,6 @@ play	play#portray-role	Verb	In the movie, Hugh Jackman {plays} the part of P.T. 
 play	play#pretend	Verb	You can punch your brother when he {plays} the martyr, but you've got to love your wife.
 play	play#pretend	Verb	{Playing} dead is an involuntary reaction to a threat.
 play	play#pretend	Verb	The fact that possums are not playing or acting at all has not changed the way we use the expression "{playing} possum."
-play	play#pretend	Verb	In the Comments Section, describe a time when you {played} possum or someone played possum with you.
 play	play#recreate	Verb	John {played} until Bert had split an armful, then John carried it about two rods to the shed, where Mary took it out of his arms and piled it inside.
 play	play#recreate	Verb	If you live, work, or {play} on the coast, you should prepare for tsunamis.
 play	play#recreate	Verb	We {play} on our coasts and in our oceans, harvest seafood from them, buy and sell products transported by ocean-going ships, and depend on oceans for the production of energy, minerals, and living resources.
@@ -942,14 +877,12 @@ play	play#replay-melody	Verb	They'll {play} duets at the start of each show, the
 play	play#replay-melody	Verb	The royal orchestra began to {play} a waltz.
 play	play#run-recording	Verb	But musicians here are grappling with an even more basic truth: most radio and TV stations {play} their music but do not pay royalty fees.
 play	play#run-recording	Verb	In an appeal to Pathos, Zelenskyy {played} a video showing injured Ukrainian children to the U.S. Congress to appeal to our emotions.
-play	play#run-recording	Verb	{Play} music and have students throw the balls around the room to each other.
 play	play#show	Noun	During the three terrible hours that the {play} had lasted, he had lived centuries of pain, aeon upon aeon of torture.
 play	play#show	Noun	We should say that he had succeeded in seeing the {play} without exactly seeing the point.
 play	play#treat-lightly	Verb	"Are you {playing} with justice, accused, and do you dare set your fellow-citizens an example of disorder which even in these times has never been equalled?"
 play	play#treat-lightly	Verb	She felt that Haig was {playing} with Huntington, and biding his time.
 play	play#treat-lightly	Verb	"She's only {playing} with the man."
 point	point#aim	Noun	I finally carried my {point} and engaged the carriers, but, alas! it was only by committing the only act of perfidy which I can lay to my conscience in all my dealings with natives.
-point	point#aim	Noun	People ask me what the {point} is in saving one little plant.
 point	point#aim	Noun	Why does there need to be a {point} to learning constructed languages?
 point	point#aim	Noun	What's the {point} of waiting any longer?
 point	point#aim	Noun	The {point} of this conversation is to show you how some Americans disagree with each other in everyday conversation.
@@ -984,9 +917,7 @@ point	point#geometric-point	Noun	This will provide the first ever national basel
 point	point#import	Noun	I had to recall him to the {point}.
 point	point#import	Noun	In any case, the vital {point} is that by refusing to punish the powerful we soon lost the very idea of punishment; and turned our police into a mere persecution of the poor.
 point	point#import	Noun	It is short, concise, and straight to the {point} so that the viewer will be able to get their daily dose of news in less time.
-point	point#import	Noun	It describes the effect of the violence, and notes the important {point} Trump wants to make: in his opinion, the world is not a safe place because there have been recent terrorist attacks.
 point	point#item	Noun	The chief {points} to be attended to are prevention of death from shock and hæmorrhage, and very careful stitching up of the wound.
-point	point#item	Noun	The people who came up with your talking {points} also hate you.
 point	point#item	Noun	Don't just regurgitate the same old talking {points}.
 point	point#location	Noun	The law reducing railroad rates to the basis which competitive {points} enjoyed left nothing to pay fixed charges.
 point	point#location	Noun	We load the boats and they shove off to a vantage {point} observing the Class 2 rapid below Cross Canyon.
@@ -1003,7 +934,6 @@ point	point#point-in-time	Noun	There is also the potential threat of exotic plan
 point	point#point-in-time	Noun	The shore of this inland finger of the Gulf was much closer to Vicksburg at this {point}, as the sea retreated south.
 point	point#point-in-time	Noun	Let me know if you sign up at any {point}.
 point	point#point-in-time	Noun	Computer programming was devalued as a women's job until it became lucrative, at which {point} women were sidelined.
-point	point#point-in-time	Noun	Honestly, at this {point}, I'm sick of Tom.
 point	point#point-out-game	Verb	When a pup has been born to {point} partridges there's no use trying to run a fox with him.
 point	point#point-out-game	Verb	For example, the accomplishment of {pointing} at game, although a pure result of education, appears in the young pups brought up apart from their parents and kind.
 point	point#sharp-end	Noun	Outer covering splitting into star-like {points}, Geaster, earth star.
@@ -1012,7 +942,6 @@ point	point#sharp-end	Noun	Obsidian projectile {points}/arrowheads, come in a la
 point	point#signal	Verb	If the plainest evidence in the world pointed one way, and if nothing but Rachel's word of honour {pointed} the other, I would take her word before the evidence, lawyer as I am!
 point	point#signal	Verb	In rare instances symptoms {pointing} to visceral involvement, to cerebral invasion, and to heart complications have been observed.
 point	point#signal	Verb	A constant error {points} to some constant defect of observation; whether it may be instrumental or otherwise, I must leave to the judgment of my nautical readers. . . . .
-point	point#unit	Noun	The USGS mapping challenges are fun, and you can use them to collect {points} toward winning your own patch.
 point	point#unit	Noun	Judges award {points} based on strength, speed, rhythm and balance.
 point	point#unit	Noun	They receive {points} for performing "tricks" like jumping and turning in the air.
 present	present#award	Verb	But the Emperor overlooked his impetuosity, and a week later rewarded him for his service by {presenting} him with his baton, and a month later created him Duke of Reggio.
@@ -1027,19 +956,15 @@ present	present#located-here	Adjective	Kokaly explained that hyperspectral data 
 present	present#present-tense	Noun	Third, the negative adverb "never" requires the {present} perfect.
 present	present#present-tense	Noun	Thomas asks his beginning-level students to describe their day using the simple {present} verb form.
 present	present#propose	Verb	If it were possible to doubt this, our very doubt would be thought, constituting and {presenting} as evidence the very existence doubted of.
-present	present#propose	Verb	Planning: Yosemite's staff researches and {presents} many of its projects for public review.
 present	present#submit	Verb	In the lower apartment you see a man with a long slip of paper {presenting} it to another, who shakes his fists, threatens and vows that it is monstrous.
 present	present#submit	Verb	When, therefore, on 2nd June, 1808, Sir THOMAS TURTON {presented} the petition, FULLER sprang to his feet and denounced it, saying a grosser forgery had never been submitted to the House.
 reach	reach#achieve	Verb	Goals are set for the prescribed fire, and then fire effects monitoring data tell us if the goals were {reached}.
 reach	reach#achieve	Verb	Who can help you {reach} your goals?
 reach	reach#achieve	Verb	How does your mental health condition prevent you from {reaching} your goals?
 reach	reach#achieve	Verb	We still have such a long way to go to {reach} our goal in this world!
-reach	reach#achieve	Verb	It means to try to {reach} a goal by any method or any means possible.
 reach	reach#attain	Verb	Jet streams vary in height of four to eight miles and can {reach} speeds of more than 275 mph (239 kts / 442 km/h).
 reach	reach#attain	Verb	After a raindrop {reaches} 10 mm, it becomes so large that it breaks up into smaller drops.
-reach	reach#attain	Verb	Once the tropical cyclone {reaches} winds of at least 39 mph (63 km/h), they are typically called a "tropical storm" and assigned a name.
 reach	reach#attain	Verb	Golden eagles generally don't {reach} adulthood until about their fifth year.
-reach	reach#attain	Verb	One of the more active data providers to {reach} the top award, the Squadron of Biplane Spectators, goes by the handle of 'rjerrard.'
 reach	reach#capability-limit	Noun	The Secret which I had believed until this moment to be within my grasp seemed now farther from my {reach} than ever.
 reach	reach#contact	Verb	I speak freely, and I leave the use of my material to your own discretion, Mr. McArdle, since it is through your hands that this report must pass before it {reaches} the world.
 reach	reach#contact	Verb	Rode is clearly a busy person, but she still finds time to respond to the many budding scientists who {reach} out to her for advice.
@@ -1054,7 +979,6 @@ reach	reach#extend	Verb	Storm surge is predicted to overwash, or {reach} the top
 reach	reach#hand-over	Verb	These last now hoist the bucket within grasp of the Indian, to whom another person has {reached} up a very long pole.
 reach	reach#reach-out	Verb	When it's passed around you don't want to be bashful, but {reach} right out and take a big helping every time, for I want you to get your share.
 reach	reach#reach-out	Verb	'A dear old friend,' said I. 'Thank you, Trotwood,' returned Mr. Dick, laughing, and {reaching} across in high glee to shake hands with me.
-reach	reach#reach-out	Verb	The long arm of the law will still {reach} out and uphold the law.
 result	result#come-about	Verb	Flooding can also {result} from the failure of a water control structure, such as a levee or dam.
 result	result#consequence	Noun	If we knew all the laws of Nature, we should need only one fact, or the description of one actual phenomenon, to infer all the particular {results} at that point.
 result	result#consequence	Noun	I know it is difficult for people in these instructed times to believe in uncle Pullet's ignorance; but let them reflect on the remarkable {results} of a great natural faculty under favouring circumstances.
@@ -1073,7 +997,6 @@ return	return#answer-back	Verb	"How danger?" he {returned}, with a little hesita
 return	return#bring-back	Verb	The risk is lessened and the result improved by stitching up the wound in the mucous membrane before the protruded portion of bowel is {returned}.
 return	return#bring-back	Verb	Most prisoners who tried swimming or clinging to wooden objects never made it to shore; some were rescued and {returned} to the island, others drowned.
 return	return#bring-back	Verb	Some of this water is {returned} to the air by transpiration.
-return	return#give-back	Verb	Tom didn't {return} his library book on time and had to pay a late fee.
 return	return#give-back	Verb	I can't {return} the product without a receipt.
 return	return#give-back	Verb	However, since we are talking about more than 500 books that were {returned}, this is one of the most important recoveries in our investigations to reconstruct the compendium of the library.
 return	return#give-back	Verb	He picked it up and, following her, {returned} it.
@@ -1086,7 +1009,6 @@ return	return#reappearance	Noun	His distance at successive {returns} to our midn
 return	return#reappearance	Noun	The {return} of Mr Casby with his daughter Flora, put an end to these meditations.
 return	return#reciprocate	Verb	The rest of the evening was spent in conjecturing how soon he would {return} Mr. Bennet's visit, and determining when they should ask him to dinner.
 return	return#reciprocate	Verb	Chrystie tittered as she {returned} the bow.
-return	return#reciprocate	Verb	"To owe someone a favor" means that you will {return} a kindness or service to someone because they have done something for you.
 return	return#recovery	Noun	He was two months behind with his type-writer, and the agency was clamoring for payment or for the {return} of the machine.
 return	return#recovery	Noun	Decolonization is, first and foremost, the physical {return} of land and property to the colonized.
 return	return#recovery	Noun	Egypt is celebrating the {return} of the long-lost mummy that has spent more than a century across the Atlantic.
@@ -1096,7 +1018,6 @@ return	return#regress	Verb	Mercury, that has been 61 times distilled and shaken,
 return	return#regress	Verb	The Mercury {returns} out of the Powder into which it was turned by the Fire.
 return	return#regress	Verb	The pressure could have risen then fallen, remained steady, or fallen then {returned} to what was observed three hours previously.
 return	return#regress	Verb	The peatlands eventually {returned} to being net carbon sinks on timescales of multiple centuries to millennia.
-return	return#regress	Verb	The rescued turtles were then transported to Gulf World Marine Institute, where they were rehabilitated until water temperatures {returned} to safe levels for the turtles.
 return	return#repay	Verb	Among the strangers whom he received under his roof, there were some who {returned} his kindness with ingratitude.
 return	return#restore	Verb	It is probable that if any of them discontinued the medicine the seizures would {return}.
 return	return#restore	Verb	"Am I?" said Maggie, the pleasure {returning} in a deeper flush.
@@ -1130,34 +1051,27 @@ show	show#depict	Verb	The information is {shown} on multi-layered digital maps o
 show	show#designate	Verb	She ses to me she ses 'can you {show} me all them places?'
 show	show#designate	Verb	He {shows} us the farm of the Hills just across the county line in Baker,--a widow and two strapping sons, who raised ten bales (one need not add "cotton" down here) last year.
 show	show#designate	Verb	Mathias was really interested in surveying the tight pit lead next to the Candlelight Tour trail in the Chamber de Norcutt that I had {showed} him a couple of months previously.
-show	show#designate	Verb	Up to now Stephen's inclination towards Leonard had been vague, nebulous; but now that theory {showed} a way to its utilisation it forthwith began to become, first definite, then concrete, then substantial.
-show	show#designate	Verb	First, it {shows} the reader (in this case, Dr. Jill Robbins) that she needs to pause her voice.
 show	show#display	Noun	Indeed, there was a frankness in his face, an honesty, and an undisguised {show} of his pride in her, and his love for her, which were, to me, the best of good looks.
 show	show#display	Noun	An air of splendour, sufficiently faded to be melancholy, and sufficiently dazzling to clog and embarrass the details of life with a {show} of state, reigned in these rooms.
 show	show#document	Verb	The progress in the development of electric incandescent lamps is {shown} in the following table, where the dates and values are more or less approximate.
-show	show#document	Verb	She says data {show} within the continent, 70 percent of the overall migration is Intra-African; that is, Africans moving from one African country to another.
 show	show#document	Verb	French Socialists cheered their resounding victory, as election results {showed} they will hold a commanding majority in the lower house of parliament.
 show	show#document	Verb	The data {showed} the presence of molecules linked to water, as well as the substance hydroxyl.
 show	show#exhibit	Verb	George thought the music might do him good--said music often soothed the nerves and took away a headache; and he twanged two or three notes, just to {show} Harris what it was like.
 show	show#exhibit	Verb	We will go and see the lions for an hour or two--it's something to have a fresh fellow like you to {show} them to, Copperfield--and then we'll journey out to Highgate by the coach.'
 show	show#exhibit	Verb	Of the three dual polarization base products, correlation coefficient (CC) is likely to be the most used, and may even be {shown} on television at times.
 show	show#exhibit	Verb	The series became a huge hit and ran until 1966 and is still {shown} in reruns.
-show	show#exhibit	Verb	One night, Mary Kay was {showing} products at the home of Ova Heath Spoonemore.
 show	show#express	Verb	Therefore Mrs Skewton asked no questions, and {showed} no curiosity.
 show	show#express	Verb	The commissioner's decision sustains that the land is not mineral but orders that the homestead entry of McDonald be cancelled, holding that he had not {shown} good faith in his occupancy of his homestead.
 show	show#express	Verb	To {show} her how special she is to him, he takes her to a baseball game.
-show	show#performance	Noun	You will hear native English speakers use reciprocal pronouns in many other films, television {shows}, and news stories.
 show	show#pretense	Noun	It was as unreal as everything else--as the philanthropic pretence of the whole concern, as their talk, as their government, as their {show} of work.
 show	show#pretense	Noun	Whilst his Twelve Cases make a {show} of inquiry, they bear no trace of extensive or critical research.
 show	show#reveal	Verb	Coggan, who, no less than the panting horses, had latterly {shown} signs of weariness, again scrutinized the mystic characters.
 show	show#reveal	Verb	Then she turned, and her face was {shown} in the clear burst of moonlight and by the lamp, which had now no quiver from Van Helsing's iron nerves.
 show	show#reveal	Verb	We got a commencement of 9 claims staked & all {showing} good mineral.
-show	show#reveal	Verb	Sometimes a tsunami arrives trough first, and, before the water rushes on land, it suddenly recedes, {showing} the ocean floor, reefs, and fish like a very low tide.
 show	show#testify	Verb	That it is quite possible to survive such injuries has been frequently {shown} in cases of accident when the scapula along with the arm has been torn off, and yet the patient recovered.
 show	show#testify	Verb	The incident {shows} how different those passionate, intense, and bitter-feeling times were from ours, and how the spread of the magazines and the illustrated papers has broadened and mellowed the feelings of the people.
 show	show#testify	Verb	Exceptionally well-preserved fossils have {shown} that pterosaurs were covered with hair.
 show	show#testify	Verb	However, the recent discoveries of large colonies of over 86,000 green crabs in Lummi Sea Ponds {show} how vulnerable the Puget Sound and Washington's coast are to a major infestation.
-show	show#testify	Verb	This progression {shows} an improvement in many skills: fine motor skills, hand-eye coordination, space and object awareness, and more.
 show	show#usher	Verb	She struck a gong upon the table, and I was {shown} out by the page.
 show	show#usher	Verb	Just as it had fluttered to the ground, there was a knock at my door, and Sir Percival's solicitor, Mr. Merriman, was {shown} in.
 show	show#usher	Verb	"Benito, why don't you {show} the gentleman into the parlor?"
@@ -1169,7 +1083,6 @@ stand	stand#erect	Verb	Drain, and {stand} upon the large ends in a row about the
 stand	stand#grandstand	Noun	The great {stands} were black with people, and thousands more were perched upon the rocks which rose above the level in which the ball grounds are laid out.
 stand	stand#have-height	Verb	He {stood} about five foot three in his pumps, had a nice pinky complexion, pretty wavy hair, and a curly mustache.
 stand	stand#have-height	Verb	Why should it {stand} so high at the shoulders?
-stand	stand#have-height	Verb	CCC volunteers were required to be between the ages of 18 and 35, {stand} five feet to six feet, eight inches tall, weigh at least 107 pounds, and have no less than three teeth.
 stand	stand#hold-ground	Verb	I like a girl who {stands} up for her stock.
 stand	stand#hold-ground	Verb	Wherefore take unto you the whole armour of God, that ye may be able to withstand in the evil day, and having done all to {stand}.
 stand	stand#hold-ground	Verb	I {stand} firm in my resolve.
@@ -1179,7 +1092,6 @@ stand	stand#occupy-place	Verb	The cottage was one of a small lonely cluster {sta
 stand	stand#occupy-place	Verb	Villages that had {stood} for centuries disappeared.
 stand	stand#occupy-place	Verb	You're standing, and everyone is {standing}, in a watershed.
 stand	stand#remain-valid	Verb	Still thinking of the sanction which the Constitution gives to slavery, he says, "Because it was part of the original compact,--let it {stand}."
-stand	stand#remain-valid	Verb	This was truly an extraordinary rain record that will {stand} for tens of decades if not centuries.
 stand	stand#resistance	Noun	That part of the rabble he was pursuing seemed to think of making a {stand} under the house; a volley fired by his followers from behind an aloe hedge made the rascals fly.
 stand	stand#sales-stand	Noun	Tom went to the concession {stand}.
 stand	stand#stand-table	Noun	Then suddenly Jasniff pulled himself away and caught up a water pitcher that was on a {stand}.
@@ -1197,7 +1109,6 @@ stand	stand#tolerate	Verb	And then, unable to {stand} their brutal jibes any lon
 stand	stand#tolerate	Verb	Joe could not {stand} this, and running forward he touched Luke Stout on the shoulder.
 stand	stand#tolerate	Verb	I can't {stand} the taste of milk.
 stand	stand#tolerate	Verb	I can't {stand} being around Tom's friends because they're incredibly obnoxious.
-stand	stand#tolerate	Verb	Someone I can't {stand} lent me that book, funny enough.
 stand	stand#tree-stand	Noun	Saguaro National Park was established in 1933 to protect the famous {stand} of saguaros at the base of the Rincon Mountains east of Tucson.
 stand	stand#tree-stand	Noun	Pure {stands} of red fir and lodgepole pine are typical of this forest.
 stand	stand#tree-stand	Noun	If you are in a forest, stay near a lower {stand} of trees.
@@ -1207,7 +1118,6 @@ stand	stand#withstand	Verb	You had to {stand} stress and strain of wind and weat
 stand	stand#withstand	Verb	They built a friendship that {stood} the test of time.
 standing	standing#adjective-3	Adjective	Villefort took a chair, but Valentine remained {standing} by her father's side, and Franz before him, holding the mysterious paper in his hand.
 standing	standing#adjective-3	Adjective	Richelieu remained {standing}, leaning against the mantelpiece; a table was between him and D'Artagnan.
-standing	standing#adjective-4	Adjective	The reason you kill Nazis is so they don't get {standing} ovations from the Canadian parliament when they're 98.
 standing	standing#adjective-4	Adjective	He received {standing} ovations from the crowd of piano lovers gathered at Texas Christian University.
 standing	standing#adjective-5	Adjective	Wondji said control efforts, such as eliminating mosquito larvae that inhabit {standing} pools of water, can also be redoubled.
 standing	standing#adjective-6	Adjective	There are two or three {standing} quarrels in the forecastle.
@@ -1215,10 +1125,7 @@ standing	standing#position	Noun	"Is it possible that a man of your {standing} sh
 standing	standing#position	Noun	In Michigan (Bay City) thirty-five years ago the wasters used to boast that Bay City was going to outrival New York City in size, intellect, money wealth, social {standing}, etc., in a few years.
 standing	standing#position	Noun	They would use their savings either to send back to their family in Europe, return to Europe themselves in better financial {standing}, or settle in the United States.
 state	state#condition	Noun	Take the word of one who has tried both {states}: there are charms in the wild; the ever-increasing, never-satisfied needs of the tame my soul cannot away with.
-state	state#condition	Noun	This is undoubtedly true with respect to certain morbid {states} of the body--such as scrofula; but it is far from being universally true.
-state	state#condition	Noun	These are qualities or {states} of being.
 state	state#government	Noun	Hungary recently adopted a new method of making passenger and freight tariffs for its {state} lines.
-state	state#government	Noun	The administration altered decades of policy and compelled {states} to opt in to the program.
 state	state#government	Noun	American corporations would rather lobby {states} to legalize child labor than pay their workers a single extra cent.
 state	state#government	Noun	"It's a fantastic opportunity to partner with the {states} to bring our understanding of the Nation's geologic story to the next level."
 state	state#matter-state	Noun	Everything can exist in these three {states} under different conditions of heat and pressure.
@@ -1260,7 +1167,6 @@ study	study#field	Noun	There was so much that was more important than Latin, so 
 study	study#field	Noun	The institute's director and founder, psychiatrist Joseph Loizzo, also holds a doctorate in religion and Buddhist {studies}.
 study	study#field	Noun	Your university program's advisors should be helpful in identifying the best certificate programs for your area of {study}.
 study	study#hit-the-books	Verb	Is Teddy {studying} so hard that he can't find time to write to his friends?
-study	study#hit-the-books	Verb	I wish I {studied} harder for the entrance exam.
 study	study#learn	Verb	He {studies} music history in his spare time.
 study	study#learn	Verb	My dream is to {study} Yiddish in Montreal.
 study	study#learn	Verb	My dream is to {study} Klingon on Kronos.
@@ -1268,7 +1174,6 @@ study	study#learning	Noun	But all the other young gentlemen had similar sensatio
 study	study#report	Noun	The {study} said some businesses were "potentially non-compliant" while others were doing the bare minimum.
 study	study#report	Noun	There is an upbeat side to the {study}. Its authors suggest the atmospheric concentrations of pollutants can be quickly and drastically reduced using currently-available technologies.
 study	study#report	Noun	The {study} is entitled "A Recently Discovered Trachyte-Hosted Rare Earth Element-Niobium-Zirconium Occurrence in Northern Maine, USA" and is published in the scientific journal Economic Geology.
-study	study#report	Noun	One proposal in the {study} is to select a random sample within a population and survey those individuals for symptoms, such as elevated temperature, in order to gather more representative data on asymptomatic cases.
 study	study#report	Noun	John Mustard is a planetary expert at Brown University and was a co-writer of the {study}.
 study	study#sketch	Noun	"You'll give McKee a letter of introduction to your husband, so he can do some {studies} of him."
 study	study#study-room	Noun	He went home pale and dejected, and called Angel into his {study}.
@@ -1290,20 +1195,16 @@ use	use#use-regularly	Verb	Good fresh milk should be {used} daily, while tea and
 use	use#usefulness	Noun	Here's a piece o' figured muslin now, what's the {use} o' you lookin' at it?
 walk	walk#accompany	Verb	He {walked} me up to my room slowly and gravely--I am certain he had a delight in that formal parade of executing justice--and when we got there, suddenly twisted my head under his arm.
 walk	walk#behave	Verb	They {walk} through life with quiet determination.
-walk	walk#behave	Verb	You {walk} through life with a quiet strength.
 walk	walk#compel	Verb	She {walked} me on faster yet.
-walk	walk#compel	Verb	For example, "I fed my dog, and then I {walked} my dog."
 walk	walk#cover	Verb	'You have been {walking} a long way,' said the schoolmaster.
 walk	walk#cover	Verb	On the bay's Cape San Blas, teams of scientists, wildlife workers and specially-trained and licensed volunteers {walk} the beaches and marshes, picking up cold-stunned turtles from the shoreline and loading them onto kayaks.
 walk	walk#gait	Noun	He made his horse bound into a gallop almost from a {walk} in his haste to go upon his mission.
 walk	walk#go	Verb	I {walk} to work every day.
-walk	walk#go	Verb	On most days, Mark Lindenberg either drives or {walks} over to visit with Boots, his beloved cat who died in 2020 at 17 years old.
 walk	walk#manner-of-walking	Noun	However, it could not be helped, and turning, and bending himself to a rapid {walk}, he dismissed the subject from his mind.
 walk	walk#manner-of-walking	Noun	He journeyed onward, not quickly or decisively, but in the slow {walk} of one who has been awakened from a stupefying sleep.
 walk	walk#manner-of-walking	Noun	The doctor, arriving with his sharp, jerky {walk}, found that the master had retired into his own room with orders not to be disturbed on any account.
 walk	walk#pace	Verb	As soon as I and my box were in the cart, and the carrier seated, the lazy horse {walked} away with us all at his accustomed pace.
 walk	walk#paseo	Noun	When Dorothea was out on the gravel {walks}, she lingered among the nearer clumps of trees, hesitating, as she had done once before, though from a different cause.
-walk	walk#paseo	Noun	When they had paced the more secluded {walks} of the garden some fifteen minutes, speaking of anything but that which was most in Everell's mind, Georgiana suddenly reverted to the question of his safety.
 walk	walk#paseo	Noun	There was an inoculation hospital erected on Sewell's Point, which juts into Charles River, remote by a mile and a half from the common road, and situated in pleasant grounds with trees and {walks}.
 walk	walk#take-the-air	Verb	Meg spoke as if to herself, and glanced out at the lane where she had often seen lovers {walking} together in the summer twilight.
 walk	walk#take-the-air	Verb	Going out that night to {walk} (for I kept retired while it was light), I found a crowd assembled round a placard posted at Whitehall.
@@ -1311,7 +1212,6 @@ walk	walk#walk-of-life	Noun	Its influence was at once felt in all {walks} of lif
 walk	walk#walk-of-life	Noun	It is a mistake to suppose that hard-working women in the lower {walks} of life attend with impunity to their ordinary duties a few days after confinement.
 walking	walking#adjective	Adjective	The store is within {walking} distance of my apartment.
 watch	watch#catch	Verb	Her interest in her line of work was sparked by reading National Geographic and {watching} Jacques Cousteau's "Rediscovery of the World".
-watch	watch#catch	Verb	The next time you are {watching} English language movies or television shows, record examples of how the speakers use verbs of perception.
 watch	watch#duty-period	Noun	A sailor on {watch} hailed the boat; the boat replied.
 watch	watch#duty-period	Noun	He was largely occupied with getting everything running smoothly aboard ship, during his {watches} on deck, and except at mealtime he kept to his stateroom at work over maps and papers.
 watch	watch#duty-period	Noun	At his leisure, he employed the interval in braiding something very carefully in his {watches} below.
@@ -1323,8 +1223,6 @@ watch	watch#follow	Verb	Like many of you, we've been {watching} the flooding in 
 watch	watch#look	Verb	She feels differently in his presence; she {watches} him with other eyes than she has for the rest of men.
 watch	watch#look	Verb	Night-sky {watching} in Arches remains a democratic joy, available to all and open every night from dusk to dawn.
 watch	watch#look	Verb	Have you ever {watched} a raindrop hit the ground during a large rainstorm and wondered how big the drop is and how fast it is falling?
-watch	watch#look	Verb	But {watching} dozens of hot air balloons fly over the ocean as the sun sets is a once-in-a-lifetime experience.
-watch	watch#look	Verb	Four other men {watched} the Wright brothers' first flights.
 watch	watch#look-on	Verb	The agonized whale goes into his flurry; the tow-line is slackened, and the pitchpoler dropping astern, folds his hands, and mutely {watches} the monster die.
 watch	watch#look-on	Verb	Chrystie lifted her eyes from the violets to the bench opposite from which two Italian women were {watching} with deep interest this coquetting of the lordlings.
 watch	watch#look-on	Verb	I immediately unhooked my shirt and rolled off the boulder and said to Aaron, who {watched} it happen, "I just dreamed about this two days ago."
@@ -1346,7 +1244,6 @@ work	work#act-upon	Verb	The ferment of the revolution was {working} in her natur
 work	work#activate	Verb	The key there was {worked} by Colonel Montgomery, so if there ever was an official wire this was one.
 work	work#activate	Verb	It is also supplied with a powerful armament of Hotchkiss and Gatling guns, and a strong electric search-light so arranged as to be {worked} either from the conning-tower or from the deck.
 work	work#activity	Noun	{Works} on a deviation were in progress, and in a short digression down stream I sighted another lighter-building yard.
-work	work#activity	Noun	{Work} should inspire creativity and innovation.
 work	work#activity	Noun	All affected USGS scientists are alive and well, and our flood {work} continues...
 work	work#body-of-work	Noun	I'd have a stable full of Arabian steeds, rooms piled high with books, and I'd write out of a magic inkstand, so that my {works} should be as famous as Laurie's music.
 work	work#body-of-work	Noun	Salvador Dali was a Spanish surrealist painter whose {works} often represent a strange, dream-like world.
@@ -1375,7 +1272,6 @@ work	work#function	Verb	The most amazing thing was that it still {worked}.
 work	work#function	Verb	I couldn't print the handouts because the printer wasn't {working}.
 work	work#function	Verb	If capitalism {works}, why is there a need for all these corporate subsidies?
 work	work#function	Verb	"This was an early demonstration that earthquake early warning {worked}, but that processing needed to speed up for it to be more useful."
-work	work#function	Verb	As an expression, thunder {works} the same way.
 work	work#knead	Verb	{Work} the paste until it is quite smooth, and divide it into six pieces.
 work	work#knead	Verb	Boil and mash the potatoes, {working} in salt and butter and an egg or two--beaten light.
 work	work#mechanical-work	Noun	The respiratory organs or the muscular during the day do so many foot-pounds of {work}.

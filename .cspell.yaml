@@ -223,6 +223,16 @@ words:
   - frobnicate
   - nosuchmodel
   - Finalizers
+  - semcor
+  - lexsn
+  - wnsn
+  - punc
+  - snum
+  - pnum
+  - contextfile
+  - tagfiles
+  - Rada
+  - Mihalcea
 
 # Exclude common build artifacts, dependencies, and vendored third-party code
 ignorePaths:

@@ -69,6 +69,8 @@
   <!-- Test fixtures -->
   <ItemGroup>
     <None Include="Fixtures\**\*" CopyToOutputDirectory="PreserveNewest" />
+    <!-- The reader and the grading rule of the reviewed suite are those of the builder -->
+    <Compile Include="..\..\tools\WordSense.Builder\Suite.cs" Link="Suite.cs" />
   </ItemGroup>
 
   <!-- Project References -->

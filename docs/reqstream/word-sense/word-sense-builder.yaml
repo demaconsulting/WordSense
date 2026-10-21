@@ -205,9 +205,9 @@ sections:
           - id: WordSense-WordSenseBuilder-Tiers
             title: >-
               The builder shall report, for every sense of every trained lemma, the number of anchor and held-out
-              sentences it should have, derived from its WordNet 3.0 tag count (five or more: 20 and 5; one to four:
-              10 and 3; none: 5 and 2), and list the senses that fall short of their quota and the senses that are
-              excluded, each with the reason.
+              sentences it should have, derived from its WordNet 3.0 tag count (five or more: 20 and 5; one to four, and
+              a project sense: 10 and 3; none: 5 and 2), with the status of the sense (met, short or empty), and list
+              the senses that fall short of their quota with the sentences that are missing.
             tags: [unit]
             justification: |
               Frequent senses need more evidence than rare ones, and the corpus can only be extended where it is
@@ -215,7 +215,7 @@ sections:
               sense that cannot be trained is made visible instead of silently missing.
             tests:
               - WordSenseBuilder_Tiers_Quota_FollowsTheTagCount
-              - WordSenseBuilder_Tiers_Report_ListsShortAndExcludedSenses
+              - WordSenseBuilder_Tiers_Report_ListsShortAndEmptySensesWithTheMissingSentences
               - WordSenseBuilder_Program_Tiers_WritesReport
 
           - id: WordSense-WordSenseBuilder-EmbeddingCache
@@ -322,6 +322,8 @@ sections:
               - WordSenseBuilder_Program_Evaluate_BasicModel_PrintsMeasurements
               - WordSenseBuilder_Program_Evaluate_UnknownModel_ReportsError
               - WordSenseBuilder_ModelTable_BasicRow_MatchesEvaluation
+              - WordSenseBuilder_ModelTable_Update_ChangesOnlyTheCellsOfItsCommand
+              - WordSenseBuilder_ModelTable_Update_UnknownColumn_IsRejected
               - WordSenseBuilder_EvaluationResult_Render_FormatsSetsAndMeasurements
 
           - id: WordSense-WordSenseBuilder-OpenCounts
@@ -461,60 +463,84 @@ sections:
           - id: WordSense-WordSenseBuilder-Corpus
             title: >-
               The builder shall validate the corpus format (a lemma, a sense id, a part of speech and a sentence for
-              every row), the agreement of the part of speech of a row with its sense, and the disjointness of the
-              training sentences from the held-out, real-text and suite sentences, the independent evaluation
-              sentences and the example sentences of Open English WordNet.
+              every row), the agreement of the part of speech of a row with its sense, and, by normalized sentence, the
+              disjointness of the training sentences (the anchors, the chooser anchors and the training split of the
+              open corpus) from the held-out, chooser held-out, real-text and suite sentences, the development and test
+              splits and the challenge set of the open corpus, the independent evaluation sentences and the example
+              sentences of Open English WordNet, and of those evaluation sentences from each other; it shall report the
+              sentences that two parts share and a run of eight words that they share, and fail when a sentence is
+              shared by a training part and an evaluation part, by two evaluation parts, or by the corpus and a
+              dictionary example of five words or more.
             tags: [unit]
             justification: |
               Leaked or malformed sentences invalidate the accuracy measurement, and a row whose part of speech
-              disagrees with its sense is a labeling error that would train a wrong answer.
+              disagrees with its sense is a labeling error that would train a wrong answer. A sentence of the CC0 corpus
+              that is a CC BY dictionary example would break the license of the corpus.
             tests:
               - WordSenseBuilder_Corpus_ReadSentences_ParsesRow
               - WordSenseBuilder_Corpus_ReadSentences_RejectsMalformedRow
               - WordSenseBuilder_Corpus_ReadSentences_PartOfSpeechDisagreeingWithSense_IsRejected
               - WordSenseBuilder_Corpus_DirectoryAndDisjointness
+              - WordSenseBuilder_Corpus_Leakage_TrainingSentenceInAnEvaluationPart_IsALeak
+              - WordSenseBuilder_Corpus_Leakage_OnlyRealLeaksFail
+              - WordSenseBuilder_Corpus_Leakage_SharedRunOfWords_IsInformational
               - WordSenseBuilder_Corpus_Disjointness_CoversSuiteEvaluationAndOewnExamples
+              - WordSenseBuilder_Program_CheckLeakage_ExitsWithOneOnALeak
               - WordSenseBuilder_Corpus_ReadSentences_SplitsCompoundTarget
 
           - id: WordSense-WordSenseBuilder-SenseEval
             title: >-
-              The builder shall measure a model on SemCor 3.0, downloaded to a cache after verifying its pinned
-              checksum and never committed, with the WordNet 3.0 sense keys mapped to OEWN senses, and report for the
-              tokens of the trained lemmas the share answered at each level, the precision at each level, the
+              The builder shall measure a model on SemCor 3.0, downloaded to a cache that is not part of the repository
+              after verifying its pinned checksum and never committed, with the WordNet 3.0 sense keys mapped to the
+              senses of the catalog, leaving out a sentence that is also in the corpus or is an example of Open English
+              WordNet, and report for the words of the trained lemmas the mapping coverage, the share answered at each
+              level, the precision at each level, the accuracy of the most probable sense and of its group, the
               part-of-speech accuracy and the accuracy of the most-frequent-sense baseline.
             tags: [unit]
             justification: |
               SemCor is human-annotated running text that no training or tuning step reads, so figures measured on it
               are the honest published accuracy; reporting them per level and against the baseline shows what the
-              model adds.
+              model adds, and the mapping coverage says how much of SemCor the figures describe.
             tests:
+              - WordSenseBuilder_SenseEval_Parse_ReadsSingleWordAnnotationsAndCountsTheRest
               - WordSenseBuilder_SenseEval_MapKeys_WordNet30KeyToOewnSense
               - WordSenseBuilder_SenseEval_Run_ReportsShareAndPrecisionPerLevelAndBaseline
+              - WordSenseBuilder_SenseEval_Render_FormatsTheFunnel
               - WordSenseBuilder_SenseEval_Download_WrongHash_IsRejected
+              - WordSenseBuilder_SenseEval_ReadArchive_VerifiesTheHashAndReadsTheTagFiles
               - WordSenseBuilder_Program_EvaluateSenses_WithoutCache_ReportsUsage
 
           - id: WordSense-WordSenseBuilder-RunningText
             title: >-
-              The builder shall measure the part-of-speech accuracy of a model on the test file of the Universal
-              Dependencies English-EWT corpus (the development file being the one used for selection), after
-              verifying its checksum, mapping its tags to the parts of speech of the library by a published
-              convention and reporting the tokens that the convention excludes.
+              The builder shall measure the part-of-speech accuracy of every model through its public interface on the
+              test split of the representative open corpus (the headline), on the test file of the Universal
+              Dependencies English-EWT corpus after the preparation script has verified its checksum and mapped its
+              tags to the parts of speech of the library by a published convention (the development file being the one
+              used for selection, never the one measured), and on the challenge set on its own line, report the
+              accuracy on all tokens and on the ambiguous tokens, the tokens that are not answered and the tokens that
+              the convention excludes, and keep each model above a recorded floor on the challenge set.
             tags: [unit]
             justification: |
               Part-of-speech accuracy on independent running text is the published measure for the models that answer
               at the part of speech level; a stated convention and the report of what it excludes keep the figure
-              comparable and honest.
+              comparable and honest, and a floor on the challenge set keeps a model from regressing on its hard cases.
             tests:
-              - WordSenseBuilder_RunningText_ConventionMap_MapsTagsAndReportsExclusions
-              - WordSenseBuilder_RunningText_Run_UsesTheTestFileAndNotTheDevelopmentFile
-              - WordSenseBuilder_Program_EvaluateRunning_WithoutCache_ReportsUsage
+              - WordSenseBuilder_RunningText_DefaultGold_IsTheTestFileAndNotTheDevelopmentFile
+              - WordSenseBuilder_RunningText_Load_ReadsTheSetsAndNotesAMissingGoldFile
+              - WordSenseBuilder_RunningText_Run_ReportsAllAndAmbiguousTokensForAModel
+              - WordSenseBuilder_Program_EvaluateRunning_Basic_PrintsTableAndWritesTheCells
+              - WordSenseBuilder_ChallengeSet_Basic_StaysAboveItsFloor
+              - WordSenseBuilder_ChallengeSet_MiniLM_StaysAboveItsFloor
+              - WordSenseBuilder_ChallengeSet_BertBaseCased_StaysAboveItsFloor
 
           - id: WordSense-WordSenseBuilder-Suite
             title: >-
-              The builder shall read the reviewed suite sentences, each with its expected sense, group or part of
-              speech, and the expectation of each model for each row (pass or known miss), and shall reject a
-              malformed row, a row without an expectation for a model and an expectation that names an unknown
-              sense or group.
+              The builder shall read the reviewed suite sentences, each with its expected analysis (lemma, part of
+              speech and features) and acceptable fine senses, and the expectation of each model for each row (fine,
+              answer or known miss), shall grade the answer of a model at the level it answered, and shall reject a
+              malformed row, a row without an expectation for a model, and a sense that is not in the catalog or does
+              not belong to the expected lemma and part of speech; the test project of each model shall fail when a
+              row falls below the expectation of that model.
             tags: [unit]
             justification: |
               A reviewed suite with explicit per-model expectations lets the test projects fail the build when an
@@ -522,15 +548,25 @@ sections:
             tests:
               - WordSenseBuilder_Suite_Read_ParsesRowsAndExpectations
               - WordSenseBuilder_Suite_Read_RowWithoutModelExpectation_IsRejected
-              - WordSenseBuilder_Suite_Read_UnknownSenseOrGroup_IsRejected
+              - WordSenseBuilder_Suite_Read_UnknownSenseOrSenseOfAnotherLemma_IsRejected
+              - WordSenseBuilder_Suite_Read_MalformedRow_IsRejected
+              - WordSenseBuilder_Suite_Read_RepeatedIdOrWrongHeader_IsRejected
+              - WordSenseBuilder_Suite_Grade_JudgesTheAnswerAtItsOwnLevel
+              - WordSenseBuilder_Suite_Grade_AnalysisOnlyRow_ChecksLemmaPartOfSpeechAndFeatures
+              - WordSenseBuilder_Suite_Regressions_ListRowsBelowTheirExpectation_AndExpectationsRoundTrip
+              - WordSenseBuilder_Suite_Committed_ReadsWithAnExpectationForEveryRow
+              - WordSenseBuilder_Suite_GradeAsync_ClassifiesTheSentenceOfEveryRow
+              - BasicSuite_ExpectedPasses_StillPass
+              - MiniLMSuite_ExpectedPasses_StillPass
+              - BertBaseCasedSuite_ExpectedPasses_StillPass
 
           - id: WordSense-WordSenseBuilder-Usage
             title: >-
               The builder shall provide the commands compile-image, import-moby, weights, evaluate, evaluate-senses,
-              evaluate-running, open-counts, evaluate-tagger, coverage, train-basic, tune-basic, label-senses,
-              import-wn30-counts, tiers and appendix, print usage when given no arguments, and shall report an
-              unknown or removed command (the treebank commands ud-counts and ud-irregular included), a malformed option
-              or a data error with a message and a non-zero exit code.
+              evaluate-running, evaluate-suite, check-leakage, tiers, open-counts, evaluate-tagger, coverage,
+              train-basic, tune-basic, label-senses, import-wn30-counts and appendix, print usage when given no
+              arguments, and shall report an unknown or removed command (the treebank commands ud-counts and
+              ud-irregular included), a malformed option or a data error with a message and a non-zero exit code.
             tags: [unit]
             justification: |
               A build tool used in scripts must fail visibly and say why.

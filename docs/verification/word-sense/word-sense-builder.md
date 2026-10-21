@@ -7,27 +7,29 @@ measures the shipped models.
 ### Verification Approach
 
 Tests in `test/WordSense.Builder.Tests` call the command entry point (`Program.RunAsync`) with explicit output writers
-and the internal serialization types with synthetic data in temporary directories: `ProgramTests.cs` covers the commands
-and their usage and data errors, `ImageTests.cs` covers the word image and `WeightsBlobWriterTests.cs` the weights
-writers against the readers of the shipped packages, `TaggerCountsTests.cs` and `OpenCorpusTests.cs` cover the tag counts
-of the Basic model and the reader of the open corpus, `TaggerEvaluatorTests.cs` its accuracy measurement,
-`CorpusLicenseTests.cs` the licenses recorded for the committed corpus,
-and `BasicTrainerTests.cs` covers its trainer, table writer, model data summary and hyper-parameters;
-`EmbeddingCacheTests.cs`, `FitCacheTests.cs` and `ModelTrainerTests.cs` cover the embedding cache, the lemma fit cache,
-the frozen mean and the thresholds with a stub encoder; `WeightsTrainerTests.cs` and `ThresholdsTests.cs` cover the fit
-and the choice of the thresholds on small synthetic features; `RealSplitTests.cs` and `RealCalibratorTests.cs` cover the
-split of the real held-out sentences by document and the real-text calibration of the thresholds on one-dimensional
-synthetic lemmas; `ChooserCorpusTests.cs` and `ChooserTrainingTests.cs`
-cover the chooser rows and the training of the form choosers; `TiersTests.cs`, `SenseEvalTests.cs`,
-`RunningTextTests.cs` and `SuiteReaderTests.cs` cover the quota report, the two independent evaluations and the suite
-reader
-with small synthetic corpora and cached-file fixtures; `EvaluatorTests.cs` covers the per-level evaluation with a stub
-model.
-Commands that need a real encoder (`weights`, `evaluate`, `evaluate-senses` and `evaluate-running` for the encoder
-models) are verified through the data they produce: the weights embedded in the model packages are loaded and matched
-in the MiniLM and BertBaseCased tests, the expectations of the suite are checked by the `SuiteTests` of the three model
-test projects, and the accuracy figures are recorded in the build notes, not asserted here. The downloads of SemCor and
-of the treebank (an evaluation source only) are verified with a small fixture file and its checksum; no network is used.
+and the internal serialization types with synthetic data in temporary directories: `ProgramTests.cs` covers the
+commands and their usage and data errors, `ImageTests.cs` covers the word image and `WeightsBlobWriterTests.cs` the
+weights writers against the readers of the shipped packages, `TaggerCountsTests.cs` and `OpenCorpusTests.cs` cover the
+tag counts of the Basic model and the reader of the open corpus, `TaggerEvaluatorTests.cs` its accuracy measurement,
+`CorpusLicenseTests.cs` the licenses recorded for the committed corpus, and `BasicTrainerTests.cs` covers its trainer,
+table writer, model data summary and hyper-parameters; `EmbeddingCacheTests.cs`, `FitCacheTests.cs` and
+`ModelTrainerTests.cs` cover the embedding cache, the lemma fit cache, the frozen mean and the thresholds with a stub
+encoder; `WeightsTrainerTests.cs` and `ThresholdsTests.cs` cover the fit and the choice of the thresholds on small
+synthetic features; `RealSplitTests.cs` and `RealCalibratorTests.cs` cover the split of the real held-out sentences by
+document and the real-text calibration of the thresholds on one-dimensional synthetic lemmas; `ChooserCorpusTests.cs`
+and `ChooserTrainingTests.cs` cover the chooser rows and the training of the form choosers; `TiersTests.cs`,
+`SenseEvaluatorTests.cs`, `RunningTextEvaluatorTests.cs`, `ChallengeSetFloorTests.cs`, `SuiteFileTests.cs`,
+`LeakageCheckTests.cs` and `ModelTableTests.cs` cover the quota report, the two independent evaluations, the suite
+reader and its grading, the leakage check and the model table file with small synthetic corpora, a stub model and
+cached-file fixtures; `EvaluatorTests.cs` covers the per-level evaluation with a stub model. Commands that need a real
+encoder (`weights`, `evaluate`, `evaluate-senses`, `evaluate-running` and `evaluate-suite` for the encoder models) are
+verified through the data they produce: the weights embedded in the model packages are loaded and matched in the
+MiniLM and BertBaseCased tests, the expectations of the suite are checked by the suite tests of the three model test
+projects (`BasicSuiteTests`, `MiniLMSuiteTests`, `BertBaseCasedSuiteTests`) and the floors of the challenge set by
+`ChallengeSetFloorTests` (both skip when the model files are not present), and the accuracy figures are recorded in
+the build notes, not asserted here. The download of SemCor (an evaluation source only) is verified with a stub HTTP
+handler, a fixture archive and its checksum; no network is used. The treebank is prepared by a script of
+`tools/open-corpus`, which verifies its checksum itself.
 
 ### Test Environment
 
@@ -112,8 +114,11 @@ All scenarios below pass on every platform and target framework of the CI matrix
 
 #### Model table
 
-- **Basic row matches the evaluation** (`WordSenseBuilder_ModelTable_BasicRow_MatchesEvaluation`): the accuracy
-  numbers of the Basic row of `docs/build_notes/model-table.md` equal a fresh evaluation of the Basic model.
+- **Basic row matches the evaluation** (`WordSenseBuilder_ModelTable_BasicRow_MatchesEvaluation`): the sense and size
+  cells of the Basic row of `docs/build_notes/model-table.md` equal a fresh evaluation of the Basic model.
+- **A command changes only its cells** (`WordSenseBuilder_ModelTable_Update_ChangesOnlyTheCellsOfItsCommand`): the other
+  cells of the row and the rows of the other models stay; a cell never measured reads `not measured`; the models are in
+  the order of the table; an unknown column is rejected (`WordSenseBuilder_ModelTable_Update_UnknownColumn_IsRejected`).
 
 #### weights
 
@@ -141,13 +146,13 @@ All scenarios below pass on every platform and target framework of the CI matrix
   unknown form or a label of no analysis is described (`ChooserCorpus_ReadSentences_InvalidRows_AreDescribed`); a
   sentence that occurs twice or in both sets is an error (`ChooserCorpus_Validate_DuplicateSentence_IsAnError`); the
   label of an analysis is the exact `lemma/features` label, else the lemma
-  (`ChooserCorpus_LabelIndexOf_PrefersTheExactLabel`). A form of two lemmas gets a chooser with labels in ordinal order
-  that tells them apart and is stored with the first lemma of the form that has weights
-  (`WeightsTrainer_AttachChoosers_FormOfTwoLemmas_StoresTheChooserWithTheFirstTrainedLemma`, `..._OnlyTheSecondLemmaTrained_...`,
-  the blob read back by the real reader); the tense variants of one lemma get one label each
-  (`..._TenseVariants_GetOneLabelEach`); a form whose rows name one label, whose analysis has no label or that has no
-  trained lemma gets no chooser and a reason (`..._UnusableForms_AreSkippedWithAReason`); the result is the same bits
-  with one thread and with many (`..._IsDeterministic_AndNeedsOneFeaturePerRow`).
+  (`ChooserCorpus_LabelIndexOf_PrefersTheExactLabel`). A form of two lemmas gets a chooser with labels in ordinal
+  order that tells them apart and is stored with the first lemma of the form that has weights
+  (`WeightsTrainer_AttachChoosers_FormOfTwoLemmas_StoresTheChooserWithTheFirstTrainedLemma`,
+  `..._OnlyTheSecondLemmaTrained_...`, the blob read back by the real reader); the tense variants of one lemma get one
+  label each (`..._TenseVariants_GetOneLabelEach`); a form whose rows name one label, whose analysis has no label or
+  that has no trained lemma gets no chooser and a reason (`..._UnusableForms_AreSkippedWithAReason`); the result is
+  the same bits with one thread and with many (`..._IsDeterministic_AndNeedsOneFeaturePerRow`).
 - **Lemmas without enough anchored senses**: a lemma with a single anchored sense gets no weights
   (`WeightsTrainer_LemmaWithOneAnchoredSense_GetsNoWeights`), and a sense with a single anchor stays in the training of
   a lemma that has two anchored senses (`WeightsTrainer_SenseWithOneAnchor_StaysInTraining`).
@@ -232,11 +237,13 @@ All scenarios below pass on every platform and target framework of the CI matrix
 
 #### tiers
 
-- **Quota follows the tag count** (`Tiers_Quota_FollowsTheTagCount`): five or more gives 20 anchor and 5 held-out
-  sentences, one to four gives 10 and 3, none gives 5 and 2.
-- **Report** (`Tiers_Report_ListsShortAndExcludedSenses`): a sense with fewer sentences than its quota and a sense that
-  is excluded are each listed with the reason; a sense that meets its quota is not.
-- **Command** (`Program_Tiers_WritesReport`): `tiers` writes the report to the file given with `--output`.
+- **Quota follows the tag count** (`WordSenseBuilder_Tiers_Quota_FollowsTheTagCount`): five or more gives 20 anchor
+  and 5 held-out sentences, one to four (and a project sense) gives 10 and 3, none gives 5 and 2.
+- **Report** (`WordSenseBuilder_Tiers_Report_ListsShortAndEmptySensesWithTheMissingSentences`): every sense of a trained
+  lemma has its tier and status; a sense with fewer sentences than its quota is `short`, one without any is `empty` and
+  both are listed with the missing sentences; a sense that meets its quota is `met`.
+- **Command** (`WordSenseBuilder_Program_Tiers_WritesReport`): `tiers` prints the summary and writes the report to the
+  file given with `--output`.
 
 #### evaluate
 
@@ -259,35 +266,67 @@ All scenarios below pass on every platform and target framework of the CI matrix
 
 #### evaluate-senses
 
-- **Key mapping** (`SenseEval_MapKeys_WordNet30KeyToOewnSense`): a WordNet 3.0 sense key maps to the OEWN sense through
-  `sense_key` and `id_map`; a key without an OEWN sense is skipped and counted.
-- **Figures** (`SenseEval_Run_ReportsShareAndPrecisionPerLevelAndBaseline`): on a small annotated fixture and a stub
-  model, the report gives for the tokens of trained lemmas the share answered and the precision at each level, the
-  part-of-speech accuracy and the accuracy of the most-frequent-sense baseline.
-- **Pinned checksum** (`SenseEval_Download_WrongHash_IsRejected`): a cached or downloaded file with another SHA-256 is
-  rejected.
-- **Command** (`Program_EvaluateSenses_WithoutCache_ReportsUsage`): without the model or the cache folder the command
-  reports the usage and exits with code 1.
+- **Reader** (`WordSenseBuilder_SenseEval_Parse_ReadsSingleWordAnnotationsAndCountsTheRest`): the single-word
+  annotations become targets with the keys `lemma%lexsn`, punctuation stays as words, and multiword expressions and
+  senses dropped by the mapping are counted and left out.
+- **Key mapping** (`WordSenseBuilder_SenseEval_MapKeys_WordNet30KeyToOewnSense`): a WordNet 3.0 sense key maps to the
+  sense of the catalog that has it; a word with several keys is left out, a key without a sense is counted as
+  unmapped, a word of an untrained lemma is not an evaluation word, and a sentence that is in the corpus is left out.
+- **Figures** (`WordSenseBuilder_SenseEval_Run_ReportsShareAndPrecisionPerLevelAndBaseline`): on a small annotated
+  fixture and a stub model, the report gives for the words of trained lemmas the share answered and the precision at
+  each level, the fine top-1, the part-of-speech accuracy, the accuracy of the most-frequent-sense baseline and the
+  mapping coverage (`WordSenseBuilder_SenseEval_Render_FormatsTheFunnel`).
+- **Pinned checksum** (`WordSenseBuilder_SenseEval_Download_WrongHash_IsRejected`,
+  `WordSenseBuilder_SenseEval_ReadArchive_VerifiesTheHashAndReadsTheTagFiles`): a downloaded or cached archive with
+  another SHA-256 is rejected and leaves no file; the tag files of a gzip-compressed tar are read.
+- **Command** (`WordSenseBuilder_Program_EvaluateSenses_WithoutCache_ReportsUsage`): without the archive in the cache
+  and without `--download` the command reports how to get it and exits with code 1.
 
 #### evaluate-running
 
-- **Convention map** (`RunningText_ConventionMap_MapsTagsAndReportsExclusions`): a possessive pronoun maps to a
-  determiner, and `NUM`, `PART`, `SYM` and `X` tokens are excluded and counted in the report.
-- **Test file only** (`RunningText_Run_UsesTheTestFileAndNotTheDevelopmentFile`): the accuracy is measured on the test
-  file; a development file with other content changes nothing.
-- **Command** (`Program_EvaluateRunning_WithoutCache_ReportsUsage`): without the model or the cache folder the command
-  reports the usage and exits with code 1.
+- **Test file only** (`WordSenseBuilder_RunningText_DefaultGold_IsTheTestFileAndNotTheDevelopmentFile`): the default
+  gold file is the converted test file, never the development file.
+- **Sets** (`WordSenseBuilder_RunningText_Load_ReadsTheSetsAndNotesAMissingGoldFile`): the representative test split,
+  the gold file and the challenge set are read; a missing gold file leaves its set out with a note that says how to
+  make it.
+- **Figures for any model** (`WordSenseBuilder_RunningText_Run_ReportsAllAndAmbiguousTokensForAModel`): with a stub
+  model, the accuracy on all scored tokens and on the ambiguous tokens, the tokens that are not answered and the
+  excluded tokens are counted and rendered, and the table cells carry both accuracies.
+- **Command** (`WordSenseBuilder_Program_EvaluateRunning_Basic_PrintsTableAndWritesTheCells`): on the committed corpus
+  the Basic model is measured, the left-out treebank set is noted, and the cells of the model table are written.
+- **Challenge-set floor** (`WordSenseBuilder_ChallengeSet_Basic_StaysAboveItsFloor`,
+  `WordSenseBuilder_ChallengeSet_MiniLM_StaysAboveItsFloor`,
+  `WordSenseBuilder_ChallengeSet_BertBaseCased_StaysAboveItsFloor`): the accuracy of each model on the challenge set
+  is not below the floor of `corpus/suite/ste-floors.tsv` (the encoder tests skip when the model files are not
+  present).
+- The treebank convention map and the checksum of its files belong to
+  `tools/open-corpus/scripts/prepare_tagger_eval.py`, which is verified by running it (it exits with an error when a
+  file has another SHA-256).
 
 #### suite
 
-- **Rows and expectations** (`Suite_Read_ParsesRowsAndExpectations`): a well-formed suite gives the sentences with their
-  expected sense, group or part of speech and the expectation (pass or known miss) of each model.
-- **Missing expectation** (`Suite_Read_RowWithoutModelExpectation_IsRejected`): a row with no expectation for a model is
-  rejected, and so is a malformed row.
-- **Unknown sense or group** (`Suite_Read_UnknownSenseOrGroup_IsRejected`): an expectation that names a sense or group
-  that is not in the inventory is rejected.
-- The expected passes of the committed suite are asserted by the `SuiteTests` of the Basic, MiniLM and BertBaseCased
-  test projects (see their verification documents); the encoder tests skip when the model files are not present.
+- **Rows and expectations** (`WordSenseBuilder_Suite_Read_ParsesRowsAndExpectations`): a well-formed suite gives the
+  sentences with their expected analysis and acceptable senses and the expectation (fine, answer or miss) of each model.
+- **Missing expectation** (`WordSenseBuilder_Suite_Read_RowWithoutModelExpectation_IsRejected`): a row with no
+  expectation for a model, a value that is no expectation, a header without a model and an unknown row are rejected.
+- **Unknown sense** (`WordSenseBuilder_Suite_Read_UnknownSenseOrSenseOfAnotherLemma_IsRejected`): a sense that is not in
+  the catalog, or is a sense of another lemma or part of speech than the analysis, is rejected.
+- **Malformed rows** (`WordSenseBuilder_Suite_Read_MalformedRow_IsRejected`,
+  `WordSenseBuilder_Suite_Read_RepeatedIdOrWrongHeader_IsRejected`): a wrong number of columns, an analysis that is not
+  `lemma/Part`, features without a value, a target that is not at its index or not single, a repeated id and a wrong
+  header are rejected with the line.
+- **Grading** (`WordSenseBuilder_Suite_Grade_JudgesTheAnswerAtItsOwnLevel`,
+  `WordSenseBuilder_Suite_Grade_AnalysisOnlyRow_ChecksLemmaPartOfSpeechAndFeatures`,
+  `WordSenseBuilder_Suite_GradeAsync_ClassifiesTheSentenceOfEveryRow`): a sense, group or part-of-speech answer is
+  judged at its own level; the grade is fine only when the most probable ranked sense is acceptable; a row without
+  senses asks for the analysis only.
+- **Regressions** (`WordSenseBuilder_Suite_Regressions_ListRowsBelowTheirExpectation_AndExpectationsRoundTrip`): the
+  rows below their expectation are listed, and the expectation file written from grades reads back.
+- **Committed suite** (`WordSenseBuilder_Suite_Committed_ReadsWithAnExpectationForEveryRow`): the 348 rows read and
+  every model has an expectation for every row.
+- The expected passes of the committed suite are asserted by `BasicSuite_ExpectedPasses_StillPass`,
+  `MiniLMSuite_ExpectedPasses_StillPass` and `BertBaseCasedSuite_ExpectedPasses_StillPass` in the test projects of the
+  models (see their verification documents); the encoder tests skip when the model files are not present.
 
 #### open-counts
 
@@ -304,14 +343,14 @@ All scenarios below pass on every platform and target framework of the CI matrix
   every split of the committed corpus reads, the splits of the representative part have no document in common, the 32
   simplified-technical-English sentences are in the test split of the targeted part, and the targeted part shares no
   sentence with the representative part.
-- **Tag mapping** (`WordSenseBuilder_TaggerCounts_MapTag_MapsUniversalTags`): the universal tags map onto the tags of the
-  tagger, with the particle `to` told apart.
+- **Tag mapping** (`WordSenseBuilder_TaggerCounts_MapTag_MapsUniversalTags`): the universal tags map onto the tags of
+  the tagger, with the particle `to` told apart.
 - **Word keys** (`WordSenseBuilder_TaggerCounts_KeyOf_AcceptsLettersAndApostrophes`): only tokens made of letters and
   apostrophes get a word key.
-- **Counts** (`WordSenseBuilder_TaggerCounts_Count_CountsNgramsAndWords`): the counts include the sentence boundaries and
-  the word rows.
-- **Round trip** (`WordSenseBuilder_TaggerCounts_WriteAndRead_RoundTripsDeterministically`): the count files read back as
-  written and are byte-identical on a repeat run.
+- **Counts** (`WordSenseBuilder_TaggerCounts_Count_CountsNgramsAndWords`): the counts include the sentence boundaries
+  and the word rows.
+- **Round trip** (`WordSenseBuilder_TaggerCounts_WriteAndRead_RoundTripsDeterministically`): the count files read back
+  as written and are byte-identical on a repeat run.
 - **Malformed files** (`WordSenseBuilder_TaggerCounts_Read_MalformedFiles_Throw`): a count file with a wrong header, a
   malformed word line or a malformed n-gram line throws `InvalidDataException`.
 - **Command** (`WordSenseBuilder_Program_OpenCounts_WritesCountFiles`): the command counts the training split of the
@@ -325,12 +364,12 @@ All scenarios below pass on every platform and target framework of the CI matrix
   and the ambiguous words, and the suffixes of words the lexicon lacks.
 - **Cue table** (`WordSenseBuilder_BasicTrainer_Train_CueTablePrefersSeenAnalysis`): the cue table of a word prefers the
   analysis its context words occurred with.
-- **No prior from the anchors** (`WordSenseBuilder_BasicTrainer_Train_AnalysisPriorIgnoresAnchorCounts`): every column of
-  a table has the same prior, however many anchors it has.
+- **No prior from the anchors** (`WordSenseBuilder_BasicTrainer_Train_AnalysisPriorIgnoresAnchorCounts`): every column
+  of a table has the same prior, however many anchors it has.
 - **Labels from senses** (`WordSenseBuilder_BasicTrainer_Train_ColumnsAreLemmaAndPartOfSpeech`,
-  `WordSenseBuilder_BasicTrainer_KeyOf_RollsTheRowUpToLemmaAndPartOfSpeech`): the analysis label of an anchor is the lemma
-  and part of speech of its fine sense; anchors of two senses of one analysis train the same column, and a lemma with
-  one part of speech gets no table.
+  `WordSenseBuilder_BasicTrainer_KeyOf_RollsTheRowUpToLemmaAndPartOfSpeech`): the analysis label of an anchor is the
+  lemma and part of speech of its fine sense; anchors of two senses of one analysis train the same column, and a lemma
+  with one part of speech gets no table.
 - **Choosers** (`WordSenseBuilder_BasicTrainer_Train_ChooserRowsMakeFormTablesWithTenseColumns`,
   `WordSenseBuilder_BasicTrainer_KeyOf_ChooserLabel_StandsForOneAnalysisOrNone`): chooser rows make a table keyed by the
   form with a column per tense, the sense sentences of the same key go to the column of their slot or are left out and
@@ -371,11 +410,12 @@ All scenarios below pass on every platform and target framework of the CI matrix
 
 #### corpus licenses
 
-- **Recorded licenses** (`WordSenseBuilder_CorpusLicenses_Provenance_RecordsOnlyCc0PublicDomainAndProjectAuthoredSentences`):
-  every provenance row of the committed corpus records CC0 1.0, public domain in the United States or a project-authored
+- **Recorded licenses**
+  (`WordSenseBuilder_CorpusLicenses_Provenance_RecordsOnlyCc0PublicDomainAndProjectAuthoredSentences`): every
+  provenance row of the committed corpus records CC0 1.0, public domain in the United States or a project-authored
   sentence (CC0 1.0), and none a Tatoeba CC BY, Wikipedia, Wiktionary or treebank source.
-- **Every sentence has an origin** (`WordSenseBuilder_CorpusLicenses_EverySentenceRow_HasProvenance`): the lemma, form or
-  label and sentence of every row of the sense, chooser and real-text files hash to a provenance id.
+- **Every sentence has an origin** (`WordSenseBuilder_CorpusLicenses_EverySentenceRow_HasProvenance`): the lemma, form
+  or label and sentence of every row of the sense, chooser and real-text files hash to a provenance id.
 - **No treebank and no legacy corpus** (`WordSenseBuilder_CorpusLicenses_Corpus_HasNoTreebankDataAndNoLegacyFolders`):
   the corpus folder holds no CoNLL-U file and none of the retired folders.
 
@@ -402,15 +442,25 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Part of speech agrees with the sense** (`Corpus_ReadSentences_PartOfSpeechDisagreeingWithSense_IsRejected`): a row
   whose part of speech differs from the one of its sense is rejected with an error that names the row.
 - **Compound targets** (`Corpus_ReadSentences_SplitsCompoundTarget`): a compound target is split into its words.
-- **Disjointness** (`Corpus_DirectoryAndDisjointness`, `Corpus_Disjointness_CoversSuiteEvaluationAndOewnExamples`):
-  anchors that share a normalized sentence or an 8-gram with a holdout, real-text, suite, evaluation or Open English
-  WordNet example sentence are rejected, each with the pair that overlaps.
+- **Disjointness** (`WordSenseBuilder_Corpus_DirectoryAndDisjointness`,
+  `WordSenseBuilder_Corpus_Leakage_TrainingSentenceInAnEvaluationPart_IsALeak`,
+  `WordSenseBuilder_Corpus_Leakage_OnlyRealLeaksFail`,
+  `WordSenseBuilder_Corpus_Leakage_SharedRunOfWords_IsInformational`): a sentence that a training part shares with an
+  evaluation part (whatever its case, spacing and punctuation) is a leak that the report names; two training parts, a
+  chooser part and its sense part, and an external set are not leaks; two evaluation parts and a corpus sentence of
+  five words or more that is a dictionary example are; a shared run of eight words is informational.
+- **Committed corpus** (`WordSenseBuilder_Corpus_Disjointness_CoversSuiteEvaluationAndOewnExamples`): the anchors,
+  chooser, held-out and real-text sentences, the suite, the open corpus development and test splits, the challenge set
+  and the Open English WordNet examples of the repository share no sentence in a way that leaks.
+- **Command** (`WordSenseBuilder_Program_CheckLeakage_ExitsWithOneOnALeak`): `check-leakage` prints the report and
+  exits with code 1 when a part shares a sentence with an evaluation part, and 0 otherwise.
 
 #### Command line
 
 - **No arguments or unknown command**: exit code 1 and the usage text listing `compile-image`, `import-moby`,
-  `weights <modelId>`, `evaluate <modelId>`, `evaluate-senses <modelId>`, `evaluate-running <modelId>`, `open-counts`,
-  `evaluate-tagger`, `coverage`, `train-basic`, `tune-basic`, `label-senses`, `import-wn30-counts`, `tiers` and `appendix`
+  `weights <modelId>`, `evaluate <modelId>`, `evaluate-senses`, `evaluate-running`, `evaluate-suite`, `check-leakage`,
+  `tiers`, `open-counts`, `evaluate-tagger`, `coverage`, `train-basic`, `tune-basic`, `label-senses`,
+  `import-wn30-counts` and `appendix`
   (`Program_NoArguments_PrintsUsage`, `Program_UnknownCommand_ReportsCommandAndUsage`,
   `Program_Usage_ListsTheSenseCommands`).
 - **Removed command** (`Program_RemovedCommand_IsUnknown`): the old command names (`build`, `train`,

@@ -37,6 +37,7 @@ corpus had already been excluded when it was relabeled to fine senses; that corp
 | `curation/` | `*.tsv`, `README.md` | The reviewed senses and groups (the input of `seed-inventory`) |
 | `lexicon/` | `*.tsv` | The dictionary word list, the auxiliaries and the form rules (inputs of `compile-image`) |
 | `open/` | see `open/README.md` | The open English part-of-speech corpus (CC0 annotations over public-domain text): `representative/` (random; the only input of usage statistics, such as the Basic tagger counts in `open/counts/`, and the headline real-text evaluation) and `targeted/` (deliberate selections; a challenge set) |
+| `suite/` | `*.tsv`, `README.md` | The reviewed suite of 348 sentences about common ambiguous words, the expectation of each model for each row (a regression test) and the floors of the challenge set; project-authored, CC0 1.0, evaluation only |
 | `audit/` | `*.tsv`, `*.md` | Records of earlier audits (identifiers and decisions, no sentences) |
 
 Every file is UTF-8 without a byte-order mark, with LF line endings.
@@ -149,6 +150,21 @@ the licence filter. `audit/` keeps the records of earlier audits and analyses (b
 speech and the sense, the relabeling decisions, the learning curve and the weak lemmas); they hold identifiers and
 decisions, not sentences, and the commands that produced most of them are retired (see
 `docs/build_notes/pos-audit.md`, `docs/build_notes/learning-curve-and-diagnosis.md`).
+
+## Disjointness of the Parts
+
+The parts of the corpus must not share a sentence in a way that leaks an evaluation sentence into training:
+`WordSense.Builder check-leakage` compares the normalized sentences (case, spacing and punctuation do not make a sentence
+new) of the anchors, the chooser anchors and the training split of the open corpus (training) with the held-out,
+chooser held-out and real-text sentences, the reviewed suite (`suite/`), the development and test splits and the
+challenge set of the open corpus, the example sentences of Open English WordNet (CC BY 4.0, so none may be in this
+CC0 corpus) and, when present in their git-ignored caches, SemCor and the treebank test file; it exits with 1 on a leak.
+`CorpusTests` runs the same check on the committed corpus. The first check of this kind found, and the fix removed
+(rows of the training copy, or of the held-out copy where the open corpus is the other side; their provenance rows go with
+them): 209 anchor and 58 chooser anchor rows that are sentences of the open development and test splits (or an example
+of Open English WordNet), and 182 held-out and 69 chooser held-out rows that are sentences of the open training,
+development and test splits (or an example); the models were retrained afterwards. See
+`docs/build_notes/independent-evaluation.md`.
 
 ## Label Reconciliation
 

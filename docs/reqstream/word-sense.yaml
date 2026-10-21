@@ -320,7 +320,9 @@ sections:
           - WordSense-WordSenseBuilder-RunningText
           - WordSense-WordSenseBuilder-Suite
         tests:
-          - WordSense_Readme_ModelTable_MatchesPublishedEvaluation
+          - ModelTable_Readme_MatchesGeneratedFile
+          - ModelTable_GeneratedFile_HasRowForEachModel
+          - WordSenseBuilder_ModelTable_BasicRow_MatchesEvaluation
           - BasicSuite_ExpectedPasses_StillPass
           - MiniLMSuite_ExpectedPasses_StillPass
           - BertBaseCasedSuite_ExpectedPasses_StillPass

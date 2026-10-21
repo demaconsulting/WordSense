@@ -2418,7 +2418,6 @@ fail	fail#malfunction	Verb	The tractor {failed} in the middle of the muddy field
 fail	fail#malfunction	Verb	The cooling fan {failed}, causing the server cabinet to overheat.
 fail	fail#malfunction	Verb	The furnace {fails} whenever the outside temperature drops below freezing.
 fail	fail#omit	Verb	She {failed} to attach the receipt before submitting her expense report.
-fail	fail#omit	Verb	The secretary {failed} to call the customer, and the company lost the account.
 fail	fail#omit	Verb	He {failed} to mention the leak during the apartment inspection.
 fail	fail#omit	Verb	We {failed} to invite the neighbors to the planning meeting.
 fail	fail#omit	Verb	The driver {failed} to signal before turning across the bicycle lane.

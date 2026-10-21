@@ -72,6 +72,8 @@
     <Compile Include="..\DemaConsulting.WordSense.Tests\XmlDocExampleVerifier.cs" Link="XmlDocExampleVerifier.cs" />
     <!-- The model folder check is shared with the Onnx test project -->
     <Compile Include="..\DemaConsulting.WordSense.Onnx.Tests\ModelFileCheck.cs" Link="ModelFileCheck.cs" />
+    <!-- The reader and the grading rule of the reviewed suite are those of the builder -->
+    <Compile Include="..\..\tools\WordSense.Builder\Suite.cs" Link="Suite.cs" />
   </ItemGroup>
 
   <!-- Project References -->

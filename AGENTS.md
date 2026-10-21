@@ -19,12 +19,14 @@
 
 ```text
 ├── corpus/                     (training anchors, holdout sentences, form maps; corpus/open is the open
-│                                part-of-speech corpus and the tag counts of the Basic tagger)
+│                                part-of-speech corpus and the tag counts of the Basic tagger; corpus/suite is the
+│                                reviewed suite with the expectation of each model)
 ├── data/                       (word data TSV tables from Open English WordNet, schema.yaml)
 ├── model/                      (one folder per model: model/<model-id>/ with ONNX encoder, vocabulary, tokenizer,
 │                                SHA256SUMS and README; stored in Git LFS)
 ├── tools/
-│   ├── WordSense.Builder/      (non-shipped builder: compile-image, weights, evaluate, open-counts, train-basic,
+│   ├── WordSense.Builder/      (non-shipped builder: compile-image, weights, evaluate, evaluate-senses,
+│   │                            evaluate-running, evaluate-suite, check-leakage, tiers, open-counts, train-basic,
 │   │                            tune-basic, evaluate-tagger, appendix)
 │   ├── open-corpus/            (Python scripts that built the open part-of-speech corpus corpus/open)
 │   └── tokenizer-fixture/      (one-off Python tokenizer parity fixture generator)

@@ -98,6 +98,23 @@ a curated label and an authored gloss (`corpus/curation`).
   Princeton University and LICENSEE agrees to preserve same.
   ```
 
+- **SemCor 3.0 (evaluation only).** The archive `semcor3.0.tar.gz`
+  (<https://web.eecs.umich.edu/~mihalcea/downloads/semcor/semcor3.0.tar.gz>, SHA-256
+  `A8000014D6FC864F8BD9D83C62BE601151CADD617C6554A39A1AD38B4B3F017B`, checked by `evaluate-senses` against the pin
+  `SemCor.ArchiveSha256`) holds 352 sense-annotated texts of the Brown Corpus: Rada Mihalcea's automatic mapping to
+  WordNet 3.0 of the Princeton SemCor 1.6 ("SemCor 1.6 was created and is property of Princeton University"). Its terms
+  are those of WordNet: the archive carries the Princeton license of WordNet 1.6 and the Semantic Concordance (the text
+  of the notice above with "WordNet 1.6 Copyright 1997 by Princeton University. All rights reserved."), and its README
+  says "In agreement with the license from Princeton University, you are granted permission to use, copy, modify and
+  distribute this database for any purpose and without fee and royalty is hereby granted, provided that you agree to
+  comply with the Princeton copyright notice and statements, including the disclaimer, and that the same appear on ALL
+  copies". That is permissive for the evaluation use made of it here. The builder downloads the archive to the
+  git-ignored cache `tools/open-corpus/cache`, reads it, reports scores and never writes a sentence of it to any file
+  of the repository; the notices stay in the archive, and are reproduced here for credit. SemCor is not used for
+  training or tuning anything; the mapping from WordNet 1.6 to 3.0 is automatic (some senses were dropped, `wnsn=0`)
+  and the Open English WordNet 2025 changed some sense keys, so the evaluation reports how many annotations it could
+  map.
+
 ## Sense inventory (labels, groups, project senses)
 
 - `sense_label` has 129,433 rows: every sense of a lemma of one token (128,486 of Open English WordNet) and every

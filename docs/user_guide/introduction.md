@@ -142,7 +142,8 @@ not trained for with the Basic model of the core. (Before version 1.0 the Basic 
 - Use **BertBaseCased** when the larger, cased encoder gives better results on your texts. The accuracy of each model
   is measured on SemCor (sense accuracy at each level) and on running text (part of speech), neither of which is used
   for training or tuning; the figures, with the share of words answered at each level, are in the model table of the
-  README and in the build notes (`model-comparison.md` and `basic-evaluation.md`).
+  README and in the build notes (`independent-evaluation.md`, with `model-comparison.md` and `basic-evaluation.md`,
+  which measure the earlier part-of-speech classes).
 
 The measured size and speed (rounded; the exact table is `model-table.md` of the build notes and the README, and
 latency, first-use time and memory are approximate and machine dependent). The numbers come from the repository's
@@ -352,7 +353,10 @@ of the model's evidence, but it is comparable only within one result: do not com
 across levels as if it were calibrated, and tune any threshold per model and level on your own text. The precision that
 the models reach on real held-out text (the test split of the corpus, never seen by the weights or the thresholds) is
 published per level in the README model table and in `docs/build_notes/quota-fill.md`; it is measured on a balanced
-corpus, so it is not the precision on typical running text, and the independent text (SemCor) is the check for that.
+corpus, so it is not the precision on typical running text. The independent text (SemCor) is the check for that, and it
+shows that the sense answers are less precise there than the thresholds aimed for (see
+`docs/build_notes/independent-evaluation.md`): treat the sense level as a candidate to check, and the part of speech as
+the dependable part of the answer.
 
 The `Level` is what to test. A `PartOfSpeech` result from an encoder model for a trained lemma still lists the ranked
 senses of its analysis: use the best of them as a guess, or treat the word as unresolved.
@@ -792,7 +796,7 @@ Because the confidence is relative to the level, a confidence of 0.9 at the `Gro
 level mean different things: first look at the `Level`, then at the `Confidence`. Do not reuse a threshold across
 models. The share of the words of a text that each model answers at each level, and the precision at each level,
 measured on SemCor (trained lemmas only) and on running text, are in the README model table and in
-`model-comparison.md` of the build notes.
+`independent-evaluation.md` of the build notes.
 
 # Model Files
 
@@ -993,7 +997,9 @@ The word data under `data/` is imported from Open English WordNet 2025 (<https:/
 under CC BY 4.0; that data keeps the license and is credited here as the license requires. Its source file, pinned
 SHA-256 and what was left out are recorded in `data/PROVENANCE.md`. The sense frequency counts that rank the senses of
 a lemma and size the training data of each sense come from the WordNet 3.0 sense index (Princeton University, under the
-WordNet license, whose notice is reproduced in `data/PROVENANCE.md`). SemCor 3.0, the sense-annotated text on which the
+WordNet license, whose notice is reproduced in `data/PROVENANCE.md`). SemCor 3.0 (the sense-annotated Brown Corpus
+subset, a mapping to WordNet 3.0 of the Princeton SemCor 1.6; the WordNet license applies and its notice is reproduced in
+`data/PROVENANCE.md`), the sense-annotated text on which the
 models are measured, is downloaded to a cache by the builder, never committed, and used for evaluation only; it is
 credited here as the evaluation source. Project-authored additions to the data (the readable sense labels, the groups,
 the project senses) are MIT.
@@ -1031,11 +1037,13 @@ in `corpus/`; the format of the files is described in `corpus/README.md` and the
 | `coverage --text DIR [--top N]` | Reports the token coverage of the `*.txt` files of `DIR`, the share of known words with trained senses and the top unknown words |
 | `import-wn30-counts --input FILE` | Imports the WordNet 3.0 sense counts into the sense frequency table (pinned input) |
 | `label-senses` | Generates the readable labels of the senses that have none and never changes a published label |
-| `tiers` | Reports the quota of anchor and holdout sentences of each sense of the trained lemmas and the senses that fall short |
+| `tiers` | Reports the quota of anchor and holdout sentences of each sense of the trained lemmas, the senses that fall short and the sentences that are missing |
 | `weights <modelId>` | Trains the fine-sense weights and the per-lemma thresholds of an encoder model (`minilm` or `bert-base-cased`) |
 | `evaluate <modelId>` | Measures a model (`minilm`, `bert-base-cased` or `basic`) on holdout and real text, at each answer level |
-| `evaluate-senses <modelId> --cache DIR` | Measures a model on SemCor 3.0 (downloaded to the cache, never committed) |
-| `evaluate-running <modelId> --cache DIR` | Measures the part-of-speech accuracy of a model on running text |
+| `evaluate-senses [--model all] [--download]` | Measures the models on SemCor 3.0 (from the git-ignored cache, or downloaded after verifying its SHA-256; never committed) |
+| `evaluate-running [--model all] [--gold FILE]` | Measures the part-of-speech accuracy of the models on the open corpus test split, the convention-mapped treebank test file and the challenge set |
+| `evaluate-suite` | Runs the reviewed suite against the three models and reports the pass rates and the regressions |
+| `check-leakage` | Checks that no sentence is shared by a training part and an evaluation part, by two evaluation parts, or by the corpus and an Open English WordNet example |
 | `open-counts` | Counts the tag statistics of the training split of the open part-of-speech corpus into `corpus/open/counts` |
 | `train-basic` | Retrains the whole Basic model from those counts and the anchors, and writes its table (`Resources/basic.bin`) |
 | `tune-basic` | Compares hyperparameter variants of Basic on the development split of the open corpus and an anchor subset; writes nothing |
@@ -1067,8 +1075,10 @@ repository layout.
   that is the only input of usage statistics (the tag counts of the Basic tagger in `open/counts`) and of the real-text
   part-of-speech evaluation, and `targeted/` holds deliberately chosen sentences (its test split, which includes the
   simplified-technical-English instructions, is a challenge set that is reported on its own).
-- `suite/suite.tsv` and `suite/expected.tsv` hold the reviewed suite sentences and the expectation of each model for
-  each row; the test suite of each model fails when an expected pass regresses.
+- `suite/suite.tsv` and `suite/expectations.tsv` hold the reviewed suite sentences (with the expected analysis and the
+  acceptable fine senses of the target word) and the strongest grade each model is expected to keep for each row; the
+  test suite of each model fails when a row falls below its expectation (`corpus/suite/README.md` has the grading and the
+  policy: an expectation is raised for an improvement and never lowered to hide a regression).
 
 ## Adding a Word
 
@@ -1100,7 +1110,8 @@ repository layout.
    dotnet run --project tools/WordSense.Builder -c Release -- appendix
    ```
 
-5. Check the reports, run `pwsh ./build.ps1` and commit the corpus files, the data, the tables, the weights and the
+5. Check the reports (`check-leakage` must pass: a new sentence must not be in an evaluation part), run
+   `pwsh ./build.ps1` and commit the corpus files, the data, the tables, the weights and the
    appendix together.
 
 # Troubleshooting

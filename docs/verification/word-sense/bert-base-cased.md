@@ -38,6 +38,13 @@ is answered by the encoder at a sense or group level that the result states, wit
 whatever the level (`BertBaseCasedWordSenseModelTests`, `EndToEndTests`;
 `BertBaseCasedWordSenseModel_Classify_TrainedLemma_AnswersAtASenseOrGroupLevel`).
 
+#### Reviewed Suite Does Not Regress
+
+The model answers the 348 sentences of the reviewed suite (`corpus/suite`) at least as well as the expectation file
+records for it: no row falls below its expectation (`fine`, `answer` or `miss`), so a regression fails the build while
+the known misses stay documented. The test skips when the model files are not present
+(`BertBaseCasedSuiteTests`, `BertBaseCasedSuite_ExpectedPasses_StillPass`).
+
 #### Untrained Ambiguous Words Are Answered by the Basic Model
 
 A word with several senses that the encoder does not score is answered with the complete result of the Basic model of

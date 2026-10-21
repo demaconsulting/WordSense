@@ -92,13 +92,6 @@ internal sealed record EvaluationResult(
     long RamBytes = 0,
     double FirstUseMilliseconds = 0)
 {
-    private const string TableBegin = "<!-- model-table:begin -->";
-    private const string TableEnd = "<!-- model-table:end -->";
-
-    private const string TableHeader =
-        "| Model | Real-text best analysis (test split) | Real-text part of speech (test split) | Written-holdout best analysis (secondary) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |\n" +
-        "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |\n";
-
     /// <summary>
     ///     Gets the name of the set of all held-out rows when the corpus names the origin of its rows.
     /// </summary>
@@ -125,85 +118,50 @@ internal sealed record EvaluationResult(
     internal const string WrittenSetName = "written holdout (secondary)";
 
     /// <summary>
-    ///     Renders the row of this model for the model comparison table of the README.
+    ///     Gets the cells of the model comparison table that this measurement fills: the sense share and precision on the
+    ///     real-text test split, and the cost columns.
     /// </summary>
     /// <remarks>
-    ///     The columns are those of the table of the README. The best analysis is the selected analysis having the lemma and
-    ///     the part of speech of the sense of the row. The headline columns are measured on the real-text test split; the
-    ///     written held-out sentences are secondary (they are easier) and a set that the corpus does not have reads n/a.
+    ///     The headline cell is measured on the real-text test split: the share of its sentences that the model answers at
+    ///     the sense level and the precision of those answers. A set that the corpus does not have reads n/a.
     /// </remarks>
-    /// <returns>The table row, ending with a line feed.</returns>
-    public string RenderTableRow()
+    /// <returns>The cells by column name.</returns>
+    public Dictionary<string, string> TableCells()
     {
         var inv = CultureInfo.InvariantCulture;
         var real = Sets.FirstOrDefault(s => s.Name == RealTestSetName);
-        var written = Sets.FirstOrDefault(s => s.Name == WrittenSetName);
         var weights = Basic is null ? WeightsBytes : Basic.TableBytes;
         var latency = Basic is null ? MillisecondsPerSentence : Basic.MicrosecondsPerSentence / 1000.0;
         var download = DownloadBytes == 0 ? "none" : (DownloadBytes / 1048576.0).ToString("N0", inv) + " MiB";
-        return "| " + DisplayName(Model) +
-               " | " + (real is null ? "n/a" : Percent(real.AnalysisCorrect, real.Rows)) +
-               " | " + (real is null ? "n/a" : Percent(real.PosCorrect, real.Rows)) +
-               " | " + (written is null ? "n/a" : Percent(written.AnalysisCorrect, written.Rows)) +
-               " | " + download +
-               " | " + (weights / 1024.0).ToString("N0", inv) + " KiB" +
-               " | " + (RamBytes < 1048576 ? "< 1 MiB" : (RamBytes / 1048576.0).ToString("N0", inv) + " MiB") +
-               " | " + latency.ToString("N2", inv) + " ms" +
-               " | " + FirstUseMilliseconds.ToString("N0", inv) + " ms + " + WordsLoadMilliseconds.ToString("N0", inv) + " ms" +
-               " | " + (DownloadBytes == 0 ? "no" : "yes") + " |\n";
+        return new Dictionary<string, string>(StringComparer.Ordinal)
+        {
+            [ModelTable.RealSenseColumn] = real is null ? "n/a" : ShareAtPrecision(real.Sense.Answered, real.Sense.Correct, real.Rows),
+            [ModelTable.DownloadColumn] = download,
+            [ModelTable.WeightsColumn] = (weights / 1024.0).ToString("N0", inv) + " KiB",
+            [ModelTable.RamColumn] = RamBytes < 1048576 ? "< 1 MiB" : (RamBytes / 1048576.0).ToString("N0", inv) + " MiB",
+            [ModelTable.LatencyColumn] = latency.ToString("N2", inv) + " ms",
+            [ModelTable.FirstUseColumn] = FirstUseMilliseconds.ToString("N0", inv) + " ms + " + WordsLoadMilliseconds.ToString("N0", inv) + " ms",
+            [ModelTable.NeededColumn] = DownloadBytes == 0 ? "no" : "yes",
+        };
     }
 
     /// <summary>
-    ///     Writes the model comparison table file, replacing the row of this model and keeping the rows of the others.
+    ///     Writes the cells of this measurement into the model comparison table file (see <see cref="ModelTable"/>).
     /// </summary>
     /// <param name="path">The table file.</param>
-    public void UpdateTableFile(string path)
-    {
-        var rows = new Dictionary<string, string>(StringComparer.Ordinal);
-        if (File.Exists(path))
-        {
-            foreach (var line in File.ReadAllLines(path))
-            {
-                var cells = line.Split('|');
-                if (line.StartsWith("| ", StringComparison.Ordinal) && cells.Length > 2 && !line.StartsWith("| Model ", StringComparison.Ordinal) && !line.StartsWith("| ---", StringComparison.Ordinal))
-                {
-                    rows[cells[1].Trim()] = line + "\n";
-                }
-            }
-        }
+    public void UpdateTableFile(string path) => ModelTable.Update(path, Model, TableCells());
 
-        rows[DisplayName(Model)] = RenderTableRow();
-        // The table lists the models from the simplest to the most accurate (not in catalog order)
-        var order = PreferredModelOrder
-            .Concat(ModelCatalog.All.Select(m => m.Name))
-            .Distinct(StringComparer.Ordinal)
-            .Select(DisplayName)
-            .ToList();
-        var text = new StringBuilder();
-        text.Append("# Model comparison table\n\n");
-        text.Append("This file is generated by `WordSense.Builder evaluate <model> --table docs/build_notes/model-table.md`.\n");
-        text.Append("Do not edit it by hand: the table of the root README must equal the table below (a doc-test checks it).\n\n");
-        text.Append("<!-- markdownlint-disable MD013 -->\n\n");
-        text.Append(TableBegin).Append('\n').Append(TableHeader);
-        foreach (var name in order.Where(rows.ContainsKey).Concat(rows.Keys.Where(k => !order.Contains(k))))
-        {
-            text.Append(rows[name]);
-        }
-
-        text.Append(TableEnd).Append("\n\n<!-- markdownlint-enable MD013 -->\n");
-        File.WriteAllText(path, text.ToString(), new UTF8Encoding(false));
-    }
-
-    private static string DisplayName(string model) => model switch
-    {
-        "basic" => "Basic",
-        "minilm" => "MiniLM",
-        "bert-base-cased" => "BERT base cased",
-        _ => model,
-    };
+    /// <summary>
+    ///     Formats the share of the rows answered at a level and the precision of those answers, for example <c>23.4% @ 96.6%</c>.
+    /// </summary>
+    /// <param name="answered">The rows answered at the level.</param>
+    /// <param name="correct">The answered rows that are right.</param>
+    /// <param name="rows">All rows.</param>
+    /// <returns>The text.</returns>
+    internal static string ShareAtPrecision(int answered, int correct, int rows) =>
+        rows == 0 ? "n/a" : Percent(answered, rows) + " @ " + Percent(correct, answered);
 
     private static readonly double[] BucketEdges = [0.4, 0.6, 0.7, 0.8, 0.9];
-    private static readonly string[] PreferredModelOrder = ["basic", "minilm", "bert-base-cased"];
     private static readonly double[] Thresholds = [0.6, 0.8, 0.9];
 
     /// <summary>
@@ -269,7 +227,7 @@ internal sealed record EvaluationResult(
         return text.ToString();
     }
 
-    private static string Percent(int part, int whole) => whole == 0 ? "n/a" : (100.0 * part / whole).ToString("0.00", CultureInfo.InvariantCulture) + "%";
+    internal static string Percent(int part, int whole) => whole == 0 ? "n/a" : (100.0 * part / whole).ToString("0.00", CultureInfo.InvariantCulture) + "%";
 
     private static string Bucket(int index) => index switch
     {
@@ -514,28 +472,8 @@ internal static class Evaluator
             _ => false,
         };
 
-        // Sum analysis probability x sense probability per sense id: analyses that share a lemma and part of speech
-        // (and differ in features) list the same senses, and a consumer maps senses to categories this way
-        var scores = new Dictionary<string, double>(StringComparer.Ordinal);
-        foreach (var analysis in result.Analyses)
-        {
-            foreach (var sense in analysis.Senses)
-            {
-                scores[sense.SenseId] = scores.GetValueOrDefault(sense.SenseId) + (analysis.Probability * sense.Probability);
-            }
-        }
-
-        string? best = null;
-        var bestScore = double.NegativeInfinity;
-        foreach (var (senseId, score) in scores)
-        {
-            if (score > bestScore)
-            {
-                bestScore = score;
-                best = senseId;
-            }
-        }
-
+        // The most probable sense sums analysis probability x sense probability per sense id (see SuiteFile.BestSense)
+        var best = SuiteFile.BestSense(result);
         return new Verdict(result.Level, correct, best is not null, string.Equals(best, row.SenseId, StringComparison.Ordinal), posRight, analysisRight, result.Confidence, best);
     }
 
@@ -622,6 +560,24 @@ internal static class Evaluator
         }
 
         return (tallies[0].ToResult(), tallies.Skip(1).Select(t => t.ToResult()).ToList());
+    }
+
+    /// <summary>
+    ///     Totals the verdicts of a set of rows into the counts of a set.
+    /// </summary>
+    /// <param name="name">The name of the set.</param>
+    /// <param name="verdicts">The verdicts, one for each row.</param>
+    /// <returns>The counts.</returns>
+    internal static SetResult Summarize(string name, IEnumerable<Verdict> verdicts)
+    {
+        ArgumentNullException.ThrowIfNull(verdicts);
+        var tally = new Tally(name, false);
+        foreach (var verdict in verdicts)
+        {
+            tally.Add(verdict);
+        }
+
+        return tally.ToResult();
     }
 
     /// <summary>

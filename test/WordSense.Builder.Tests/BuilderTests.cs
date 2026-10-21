@@ -412,22 +412,23 @@ public sealed class BuilderTests : IDisposable
 
     /// <summary>
     ///     The Basic row of the README model table equals the measurement of the evaluator on the committed holdout set
-    ///     (the accuracy columns; the timing columns depend on the machine). The real-text cells read n/a because that
-    ///     set is no longer measured.
+    ///     (the sense cell and the size cells; the timing cells depend on the machine).
     /// </summary>
     /// <returns>A task that completes when the check is done.</returns>
     [Fact]
     public async Task WordSenseBuilder_ModelTable_BasicRow_MatchesEvaluation()
     {
         var root = FindRepositoryRoot();
-        var table = await File.ReadAllLinesAsync(Path.Join(root.FullName, "docs", "build_notes", "model-table.md"), TestContext.Current.CancellationToken);
-        var committed = Assert.Single(table, l => l.StartsWith("| Basic |", StringComparison.Ordinal)).Split('|')[..6];
+        var committed = ModelTable.Read(Path.Join(root.FullName, "docs", "build_notes", "model-table.md"))["Basic"];
         using var progress = new StringWriter();
 
         var result = await Evaluator.RunAsync(root.FullName, Path.Join(root.FullName, "corpus"), ModelCatalog.Find("basic"), progress, TestContext.Current.CancellationToken);
 
-        var measured = result.RenderTableRow().Split('|')[..6];
-        Assert.Equal(measured, committed);
+        var measured = result.TableCells();
+        foreach (var column in new[] { ModelTable.RealSenseColumn, ModelTable.DownloadColumn, ModelTable.WeightsColumn, ModelTable.NeededColumn })
+        {
+            Assert.Equal(measured[column], committed[column]);
+        }
     }
 
     /// <summary>

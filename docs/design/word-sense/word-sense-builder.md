@@ -27,7 +27,7 @@ the word image, which is compiled from `data/`, and the repository's `corpus/` f
 the chooser rows (`choosers/anchors` and `choosers/holdout`, the same sentences labeled with the lemma or tense of
 their form), their provenance (`provenance/`), the dictionary of all words with their parts of speech and the auxiliary
 list
-(`lexicon/`), the reviewed suite (`suite/`, with the independent evaluation sets of a later increment) and the open
+(`lexicon/`), the reviewed suite (`suite/`) and the open
 English part-of-speech corpus (`open/`: the representative part, a random sample that is the only input of usage
 statistics and of the real-text part-of-speech evaluation, the targeted part, whose test split is a challenge set,
 and the tag n-gram and per-word tag counts of the representative training split in `open/counts`). Every sentence of
@@ -82,33 +82,41 @@ implementation of the feature computation.
   the form differ in tense) and the sentence with the form in braces. A label must stand for an analysis of the form
   and a sentence must occur once across both sets; it also finds the label of an analysis by the rule of the weights
   table (the exact `lemma/features` label, else the lemma).
-- `Thresholds`: chooses the first fine threshold of a lemma, and the first group threshold of a lemma that has groups, by
-  cross-validation on its anchors.
+- `Thresholds`: chooses the first fine threshold of a lemma, and the first group threshold of a lemma that has groups,
+  by cross-validation on its anchors.
 - `RealSplit`, `RealCalibrator`: split the real-text held-out sentences by document into a calibration and a test
   split (from `corpus/provenance`) and move the thresholds of the trained lemmas to the precision target measured on
   the real calibration sentences (see "Real-text calibration" below).
-- `Tiers`: the per-sense quota of anchor and held-out sentences and the report of the senses that fall short.
+- `Tiers`, `TierRow`: the per-sense quota of anchor and held-out sentences, the status of each sense and the report of
+  the senses that fall short.
 - `EmbeddingCache` and `CachingEncoder`: the persistent cache of pooled vectors (one file per model, keyed by the
   words and the target index, valid for one digest of the model files, per-entry checksums, atomic save) and the
   wrapper that asks the cache before the encoder; `FitCache` stores the fitted classifier of each lemma, keyed by its
   exact features and its training and threshold settings; `TrainSettings` carries the cache folder and the mean choice.
 - `Evaluator`, `SetResult`, `EvaluationResult`: measure a shipped model on the holdout sentences, at
   each answer level.
-- `SenseEval`: the SemCor 3.0 evaluation (download to a cache with a pinned checksum, key mapping, per-level figures and
+- `ModelTable`: the model comparison table file (one row per model, one column per measurement, each written by the
+  command that measures it).
+- `SemCor`, `SemCorSentence`, `SemCorTarget`, `SemCorCounts`, `SenseEvaluator`, `SenseEvalResult`: the SemCor 3.0
+  evaluation (reader of the tag files, download to a cache with a pinned checksum, key mapping, per-level figures and
   the most-frequent-sense baseline).
-- `RunningText`: the part-of-speech evaluation on the test file of the English EWT treebank, with the convention map.
-- `Suite`: reads the reviewed suite rows and the expectation of each model for each row.
+- `RunningTextEvaluator`: the part-of-speech evaluation of every model on the test split of the open corpus, the
+  convention-mapped treebank test file and the challenge set.
+- `SuiteFile`, `SuiteRow`, `SuiteData`, `SuiteGrade`, `SuiteEvaluator`: read the reviewed suite rows and the expectation
+  of each model for each row, grade an answer, and report the pass rates (the first four are compiled into the test
+  projects of the models).
+- `LeakageCheck`, `LeakageSet`, `LeakageReport`: the check that the parts of the corpus share no sentence.
 - `OpenCorpus`, `OpenSentence`, `OpenToken`: read the open English part-of-speech corpus (`corpus/open`: header
-  comments, the sentence comment lines and one seven-column token line per token) and turn a sentence into the tokens and
-  tags that the tagger works with: a contraction that the corpus splits (`do` and `n't`, `it` and `'s`) is joined again
-  when the joined form is in the sentence text (the possessive `'s` stays a token of its own), so that the counts and the
-  evaluation present the classifier the tokens an application passes it.
+  comments, the sentence comment lines and one seven-column token line per token) and turn a sentence into the tokens
+  and tags that the tagger works with: a contraction that the corpus splits (`do` and `n't`, `it` and `'s`) is joined
+  again when the joined form is in the sentence text (the possessive `'s` stays a token of its own), so that the
+  counts and the evaluation present the classifier the tokens an application passes it.
 - `TaggerCounts`, `TaggedSentence`: the tag statistics: the mapping of the universal tags onto the 13 tags of the
   tagger, the n-gram and per-word counts, and the deterministic count files `tag-ngrams.tsv` and `word-tags.tsv` of
   `corpus/open/counts`. They are usage statistics, so they are counted from the training split of the representative
   part only.
-- `TaggerEvaluator`, `TaggerScore`: the part-of-speech accuracy of the basic classifier on gold sentences, and the reader
-  of an external gold file.
+- `TaggerEvaluator`, `TaggerScore`: the part-of-speech accuracy of the basic classifier on gold sentences, and the
+  reader of an external gold file.
 - `BasicHyperparameters`: every tunable number of the Basic model in one place (the runtime values that travel in the
   table header, the training choices, and the grid and sample sizes of the tuner).
 - `BasicTrainer`, `BasicModelData`: select the tabled words (closed-class words and the most frequent
@@ -144,13 +152,19 @@ instead of `--model`.
   id); `--no-cache` bypasses it (and cannot be combined with `--cache`); `--recompute-mean` computes the global mean
   from the anchors instead of reusing the one of the existing weights. `--no-cache` and `--recompute-mean` are
   switches: they take no value (an explicit `true` or `false` is accepted).
-- `evaluate <modelId> [--corpus DIR] [--repository DIR] [--output FILE]`: measures a model (`minilm`,
-  `bert-base-cased`, `basic`) on the holdout sentences and prints a Markdown table.
-- `evaluate-senses <modelId> --cache DIR [--corpus DIR] [--repository DIR] [--output FILE]`: measures a model on
-  SemCor 3.0, downloaded to the cache when it is missing.
-- `evaluate-running <modelId> --cache DIR [--corpus DIR] [--repository DIR] [--output FILE]`: measures the
-  part-of-speech accuracy of a model on the test file of the English EWT treebank, downloaded to the cache when it is
-  missing.
+- `evaluate <modelId> [--corpus DIR] [--repository DIR] [--output FILE] [--table FILE] [--outcomes FILE]`: measures a
+  model (`minilm`, `bert-base-cased`, `basic`) on the holdout sentences and prints a Markdown table; `--table` writes
+  the real-text sense cell and the cost cells of the model into the model comparison table file.
+- `evaluate-senses [--model all|NAME] [--cache DIR] [--download] [--sample N] [--output FILE] [--table FILE]`: measures
+  the models on SemCor 3.0 (read from the cache, downloaded with `--download` after verifying its pinned SHA-256).
+- `evaluate-running [--model all|NAME] [--split test] [--gold FILE] [--output FILE] [--table FILE]`: measures the
+  part-of-speech accuracy of the models on the representative test split of the open corpus, the convention-mapped
+  treebank test file and the challenge set.
+- `evaluate-suite [--output FILE] [--write-expectations FILE] [--overwrite true]`: runs the reviewed suite against the
+  three models and reports the pass rates and the regressions against the expectation file.
+- `check-leakage [--data DIR] [--gold FILE] [--cache DIR] [--output FILE]`: checks that no sentence is shared by a
+  training part and an evaluation part, by two evaluation parts, or by the corpus and an example of Open English
+  WordNet; it exits with 1 when one is.
 - `open-counts [--corpus DIR] [--output DIR]`: counts the tag statistics of the training split of the representative
   open corpus (every token, whatever its consensus status) and writes the count files of `corpus/open/counts`.
 - `evaluate-tagger [--input FILE] [--corpus DIR] [--repository DIR] [--split test] [--gold FILE] [--output FILE]`:
@@ -167,7 +181,8 @@ instead of `--model`.
   WordData subsystem).
 - `import-wn30-counts --input FILE [--data DIR] [--sha256 HEX|none]`: imports the pinned WordNet 3.0 sense frequency
   counts (the OewnImporter unit of the WordData subsystem).
-- `tiers [--corpus DIR] [--data DIR] [--output FILE]`: writes the quota report of the training sentences.
+- `tiers [--data DIR] [--output FILE]`: reports the quota of every sense of the trained lemmas (the tier of its tag
+  count, its status and the sentences that are missing) and, with `--output`, writes one line for every sense.
 - `appendix [--corpus DIR] [--data DIR] [--output FILE]`: writes the senses appendix of the user guide.
 - `import-oewn`, `validate-data`, `rebuild-forms`, `audit-forms` and `generate-facts`: the commands of the WordData
   subsystem (see its design).
@@ -193,13 +208,20 @@ instead of `--model`.
 
 #### Corpus validation (`Corpus`, `SenseInventory`)
 
-Every row of the anchors and the holdout sentences must have four fields, a sense id that exists in the
-inventory, the lemma of that sense, and the part of speech of that sense. The training sentences must be disjoint from
-the holdout, real-text and suite sentences, from the SemCor and treebank test sentences (when their cached files are
-present) and from the example sentences of Open English WordNet, under two keys: the normalized sentence and every
-8-gram of its words. A sentence that the writers saw as a gloss example therefore cannot train a classifier.
-A lemma needs anchors for at least two of its senses to get weights; a lemma with fewer is not an error and is listed by
-the tiers report.
+Every row of the anchors and the holdout sentences must have four fields, a sense id that exists in the inventory, the
+lemma of that sense, and the part of speech of that sense. The leakage check (`LeakageCheck`, the `check-leakage`
+command) compares the normalized sentences (`Corpus.Normalize`: case, spacing and punctuation do not make a sentence
+new) of every part of the corpus: the anchors, the chooser anchors and the training split of the open corpus
+(training); the holdout, chooser holdout and real-text sentences, the reviewed suite, the development and test splits
+and the challenge set of the open corpus (evaluation); and the example sentences of Open English WordNet (reference
+text of another license). The SemCor sentences and the treebank test file (external evaluation sets, read from their
+caches when present) are compared too, and the sense evaluation leaves out every SemCor sentence that is in the corpus
+or is an example. A sentence shared by a training part and an evaluation part, by two evaluation parts (except a
+chooser part and the sense part it is a view of), or by the corpus and an example sentence of five words or more fails
+the check; two training parts may share a sentence (a duplicate, nothing is evaluated on it). The sentences that share
+a run of eight words are counted and reported but do not fail the check, because a stock phrase can be shared by
+chance. A sentence that the writers saw as a gloss example therefore cannot train a classifier. A lemma needs anchors
+for at least two of its senses to get weights; a lemma with fewer is not an error and is listed by the tiers report.
 
 #### Weights training (`ModelTrainer.TrainAsync`)
 
@@ -216,11 +238,11 @@ the tiers report.
    encoded, the elapsed time and, at the end, the time spent in the encoder.
 4. Without a frozen mean, compute the global mean of the pooled vectors. Center every vector on the mean and scale it
    to unit length with the same feature computation the classifier uses.
-5. Per lemma that has two or more senses with anchors, fit a one-versus-rest L2-regularized logistic regression
-   (C = 100) over its fine senses with a deterministic Newton solver. A sense with a single anchor still takes part in
-   the training; a lemma with fewer than two anchored senses gets no weights. The columns are the senses in inventory
-   order. The group score of a lemma that has groups is derived from the fine scores (the sum of the normalized scores of
-   the senses of the group), so no group weights are stored. The solver works in the span of the anchors (the
+5. Per lemma that has two or more senses with anchors, fit a one-versus-rest L2-regularized logistic regression (C =
+   100) over its fine senses with a deterministic Newton solver. A sense with a single anchor still takes part in the
+   training; a lemma with fewer than two anchored senses gets no weights. The columns are the senses in inventory
+   order. The group score of a lemma that has groups is derived from the fine scores (the sum of the normalized scores
+   of the senses of the group), so no group weights are stored. The solver works in the span of the anchors (the
    *kernel* form, see below) whenever the training part has fewer anchors than the encoder has dimensions, and in the
    feature space otherwise.
 6. Choose the first thresholds of the lemma (see Thresholds below); after all lemmas are fitted, move them to the
@@ -229,16 +251,16 @@ the tiers report.
    threads), and inside a lemma the senses of a fit and the folds of the cross-validation are fitted concurrently too;
    each result is written to its own slot, so the weights do not depend on the thread count. A lemma whose
    fit is in the fit cache (see below) is not fitted again.
-8. Form choosers (for a form whose analyses span lemmas, such as `left`, `bases`, `rows`, or whose verb analyses differ
-   in tense, such as `read`) are trained from the chooser rows of `corpus/choosers` (see `ChooserCorpus` below), after
-   the lemmas: the rows of a form are encoded through the same cache, centered on the same mean, and fitted by the same
-   one-versus-rest logistic regression over the labels of the rows (a chooser has no groups, only a fine threshold,
-   chosen by the same cross-validation on its rows). A form gets no chooser, and is answered from the lexicon alone, when
-   its rows name fewer than two labels, when an analysis of the form has no label among them (the table refuses such a
-   chooser when the weights load) or when no lemma of the form has weights; the summary lists those forms with the
-   reason. A chooser is stored with the first lemma of the form, in ordinal order, that has weights. The held-out chooser
-   rows are only scored: the summary prints the top-1 accuracy of the choosers, the share of the sentences answered at
-   the thresholds and the precision of those answers.
+8. Form choosers (for a form whose analyses span lemmas, such as `left`, `bases`, `rows`, or whose verb analyses
+   differ in tense, such as `read`) are trained from the chooser rows of `corpus/choosers` (see `ChooserCorpus`
+   below), after the lemmas: the rows of a form are encoded through the same cache, centered on the same mean, and
+   fitted by the same one-versus-rest logistic regression over the labels of the rows (a chooser has no groups, only a
+   fine threshold, chosen by the same cross-validation on its rows). A form gets no chooser, and is answered from the
+   lexicon alone, when its rows name fewer than two labels, when an analysis of the form has no label among them (the
+   table refuses such a chooser when the weights load) or when no lemma of the form has weights; the summary lists
+   those forms with the reason. A chooser is stored with the first lemma of the form, in ordinal order, that has
+   weights. The held-out chooser rows are only scored: the summary prints the top-1 accuracy of the choosers, the
+   share of the sentences answered at the thresholds and the precision of those answers.
 9. Check the half-precision storage: encode the held-out rows of the trained lemmas through the same cache, score them
    with the full-precision weights and with the weights read back from the written blob, print both fine top-1
    accuracies, and fail without writing when they differ by more than 0.2 percentage point. Then write the weights blob
@@ -247,18 +269,18 @@ the tiers report.
 
 **Kernel solver (`KernelBasis`, `LemmaFitter`, `LogisticTrainer`).** The weight vector of an L2-regularized logistic
 regression lies in the span of its training samples, so with fewer samples n than features (a lemma has 50 to 500
-anchors, the encoders 384 or 768 dimensions) the Newton iteration can run in the n coordinates of that span instead of in
-the feature space, which cuts one iteration from the cube of the dimension to the cube of n. `KernelBasis` computes the
-Gram matrix of the anchors once per lemma, takes the Cholesky factor of the Gram matrix of the training part (a
+anchors, the encoders 384 or 768 dimensions) the Newton iteration can run in the n coordinates of that span instead of
+in the feature space, which cuts one iteration from the cube of the dimension to the cube of n. `KernelBasis` computes
+the Gram matrix of the anchors once per lemma, takes the Cholesky factor of the Gram matrix of the training part (a
 duplicate sentence adds no coordinate), and uses its rows as the coordinates: they have the same inner products as the
 features, which is all the loss and the penalty see, so the Newton iterates are those of the feature space and the
 optimum is the same; `Expand` turns the solution back into the weight vector over the features. All sums run in a
 fixed scalar order (only element-wise updates are vectorized), so the result is deterministic and does not depend on
 the processor or the thread count. The same Gram matrix serves the five folds and the final fit, and the senses of a
-fit and the folds run concurrently. `--solver primal` selects the feature-space Newton method for every fit, which is the
-reference: it reproduced the committed blobs byte for byte, and the kernel solver agrees with it to about 1e-6 in a
-weight with identical answers on the held-out sentences (see `docs/build_notes/fit-speed.md`). The solver is part of the
-key of the fit cache.
+fit and the folds run concurrently. `--solver primal` selects the feature-space Newton method for every fit, which is
+the reference: it reproduced the committed blobs byte for byte, and the kernel solver agrees with it to about 1e-6 in
+a weight with identical answers on the held-out sentences (see `docs/build_notes/fit-speed.md`). The solver is part of
+the key of the fit cache.
 
 **Thresholds (`Thresholds.Choose`).** For every trained lemma the anchors are split into k = 5 folds by a seeded,
 deterministic shuffle; each fold is scored by a fit on the other folds, which gives out-of-fold margins for every
@@ -267,29 +289,30 @@ reach the precision target on the out-of-fold anchors (95 percent by default) wi
 is chosen in the same way on the group answers, only for a lemma that has groups and over the anchors whose best sense
 is in a group and whose fine margin is below `t_fine` (the rows that fall through to the group level; every anchor
 when `t_fine` is "never"), with the group margin defined as at run time (the group probability minus the largest
-probability of any other group or ungrouped sense). A
-level for which no threshold reaches the target gets no threshold and is never answered
-for that lemma. Only the anchors are read by this step. These are the first thresholds: the anchors are balanced and partly
-written, so the answers above them fall short of the target on real text, and the real-text calibration below moves them.
-The thresholds decide the level of an answer; the confidence of an answer is the probability of the answered level.
+probability of any other group or ungrouped sense). A level for which no threshold reaches the target gets no
+threshold and is never answered for that lemma. Only the anchors are read by this step. These are the first
+thresholds: the anchors are balanced and partly written, so the answers above them fall short of the target on real
+text, and the real-text calibration below moves them. The thresholds decide the level of an answer; the confidence of
+an answer is the probability of the answered level.
 
-**Real-text calibration (`RealSplit`, `RealCalibrator`).** The real held-out sentences (provenance `origin = real`, joined
-to a corpus row by the first 12 hexadecimal digits of the SHA-256 of `lemma|sentence`) are split by *document*: the
-document of a row is its source and the part of the source key before `#` (a Gutenberg book, a VOA article, a government
-page; a Tatoeba sentence is its own document), and the first bit of the SHA-256 of `document|<id>` (0 calibration, 1 test)
-gives its side, so every sentence of a document is on one side and the split is fixed by the data, not by a seed. The
-written held-out sentences and the rows without provenance are never in either split. The calibration rows of the trained
-lemmas are encoded through the same cache and scored by the final full-precision weights. For the fine level, a lemma with
-at least 20 calibration rows gets a threshold of its own (the lowest margin that reaches the precision target with at
-least five answers); every lemma that has a finite first threshold and no threshold of its own gets one pooled shift
-`s >= 0`, the lowest shift such that the calibration answers of all those lemmas with margin at least `t_cv + s` reach the
-target with at least 30 answers (when no shift reaches it, the largest shift that keeps 30 answers). The final fine
-threshold is `max(t_cv + s, t_own)`, so calibration only raises a threshold and a level that was never answered stays so.
-The group threshold moves the same way, over the calibration rows that fall through the final fine threshold and whose
-best sense is in a group, but only when at least 30 such answers exist to verify it (otherwise it is kept and the report
-says it is unverified). A calibration row whose sense has no anchor counts as a wrong answer. The test split and the
-written held-out sentences never reach the choice; the report of the run prints the rows used, the shift and the pooled
-precision before and after. `evaluate` reports the real test split as the headline set.
+**Real-text calibration (`RealSplit`, `RealCalibrator`).** The real held-out sentences (provenance `origin = real`,
+joined to a corpus row by the first 12 hexadecimal digits of the SHA-256 of `lemma|sentence`) are split by *document*:
+the document of a row is its source and the part of the source key before `#` (a Gutenberg book, a VOA article, a
+government page; a Tatoeba sentence is its own document), and the first bit of the SHA-256 of `document|<id>` (0
+calibration, 1 test) gives its side, so every sentence of a document is on one side and the split is fixed by the
+data, not by a seed. The written held-out sentences and the rows without provenance are never in either split. The
+calibration rows of the trained lemmas are encoded through the same cache and scored by the final full-precision
+weights. For the fine level, a lemma with at least 20 calibration rows gets a threshold of its own (the lowest margin
+that reaches the precision target with at least five answers); every lemma that has a finite first threshold and no
+threshold of its own gets one pooled shift `s >= 0`, the lowest shift such that the calibration answers of all those
+lemmas with margin at least `t_cv + s` reach the target with at least 30 answers (when no shift reaches it, the
+largest shift that keeps 30 answers). The final fine threshold is `max(t_cv + s, t_own)`, so calibration only raises a
+threshold and a level that was never answered stays so. The group threshold moves the same way, over the calibration
+rows that fall through the final fine threshold and whose best sense is in a group, but only when at least 30 such
+answers exist to verify it (otherwise it is kept and the report says it is unverified). A calibration row whose sense
+has no anchor counts as a wrong answer. The test split and the written held-out sentences never reach the choice; the
+report of the run prints the rows used, the shift and the pooled precision before and after. `evaluate` reports the
+real test split as the headline set.
 
 **Tiers (`Tiers`).** The quota of a sense follows its WordNet 3.0 tag count: five or more, 20 anchor and 5 held-out
 sentences; one to four, 10 and 3; none, 5 and 2. The report lists every sense of every trained lemma with its counts
@@ -340,78 +363,119 @@ require a second scoring path.
 
 Creates the model on the verified files, classifies the sentences of `corpus/holdout` (the real-text sentences carry
 the labels of the retired classes and are no longer measured), and reports per set the rows, the share of answers at
-each level (sense, group, part of speech, and none for an unknown word) and the accuracy at each level (the
-share of the sense-level answers with the right sense, of the group-level answers with the group of the sense of the row,
-and of the part-of-speech answers with the right part of speech), the share of rows that are right at the level they
-were answered, the top-1 fine accuracy (the sense with the largest product of the probability of its analysis and its
-own probability; over all rows and over the rows that rank senses), the part-of-speech accuracy of the selected
-analysis, plus the weights size, the latency per
-sentence and the first-use time and memory of the lexicon. When `corpus/provenance` names the origin of the held-out
-sentences (the first 12 hexadecimal digits of the SHA-256 of `lemma|sentence` join a provenance row to a row), the same
-classification is scored for these sets, each reported on its own, in this order: **real text, test split** (the headline
-set: real held-out sentences of the test documents, see Real-text calibration), the same sentences restricted to the
-documents that supply no anchor, **real text, calibration split** (diagnostic: the thresholds were chosen on it),
-**LLM-written** held-out sentences (secondary: about 17 points easier than real text) and the whole held-out set. No set
-is representative real text (the held-out sentences are balanced and selected or written per sense), and the report
-says so; the representative measurements are the independent evaluations. `basic` is evaluated the same way without
-weights and
-additionally reports the calibration of its confidence: the number and accuracy of the answers in the confidence
-buckets (below 0.4, 0.4 to 0.6, 0.6 to 0.7, 0.7 to 0.8, 0.8 to 0.9 and at least 0.9), the coverage and precision at
-the thresholds 0.6, 0.8 and 0.9, the size of the embedded table, the cold load time, the latency per word and per
-sentence, and a fixed comparison table against the reference accuracies of the other models.
+each level (sense, group, part of speech, and none for an unknown word) and the accuracy at each level (the share of
+the sense-level answers with the right sense, of the group-level answers with the group of the sense of the row, and
+of the part-of-speech answers with the right part of speech), the share of rows that are right at the level they were
+answered, the top-1 fine accuracy (the sense with the largest product of the probability of its analysis and its own
+probability; over all rows and over the rows that rank senses), the part-of-speech accuracy of the selected analysis,
+plus the weights size, the latency per sentence and the first-use time and memory of the lexicon. When
+`corpus/provenance` names the origin of the held-out sentences (the first 12 hexadecimal digits of the SHA-256 of
+`lemma|sentence` join a provenance row to a row), the same classification is scored for these sets, each reported on
+its own, in this order: **real text, test split** (the headline set: real held-out sentences of the test documents,
+see Real-text calibration), the same sentences restricted to the documents that supply no anchor, **real text,
+calibration split** (diagnostic: the thresholds were chosen on it), **LLM-written** held-out sentences (secondary:
+about 17 points easier than real text) and the whole held-out set. No set is representative real text (the held-out
+sentences are balanced and selected or written per sense), and the report says so; the representative measurements are
+the independent evaluations. `basic` is evaluated the same way without weights and additionally reports the
+calibration of its confidence: the number and accuracy of the answers in the confidence buckets (below 0.4, 0.4 to
+0.6, 0.6 to 0.7, 0.7 to 0.8, 0.8 to 0.9 and at least 0.9), the coverage and precision at the thresholds 0.6, 0.8 and
+0.9, the size of the embedded table, the cold load time, the latency per word and per sentence, and a fixed comparison
+table against the reference accuracies of the other models.
 
-#### Independent sense evaluation (`SenseEval.RunAsync`)
+#### Independent sense evaluation (`SemCor`, `SenseEvaluator`)
 
-1. Download SemCor 3.0 into the cache when it is missing and verify its pinned SHA-256; a file with another checksum is
-   rejected. SemCor is never committed.
-2. Map the WordNet 3.0 sense keys of the annotated tokens to OEWN senses through the `sense_key` and `id_map` tables.
-   A token whose key has no OEWN sense is skipped and counted.
-3. Classify the sentences through the shipped model and report, for the tokens of the trained lemmas, the share
-   answered at each level, the precision at each level, the part-of-speech accuracy and the accuracy of the
-   most-frequent-sense baseline (the first sense of the lemma and part of speech in inventory order).
+1. Read SemCor 3.0 (`semcor3.0.tar.gz`) from the cache (`tools/open-corpus/cache`, ignored by git); with `--download`
+   download it first. `SemCor.Verify` rejects an archive whose SHA-256 differs from the pin and `DownloadAsync`
+   deletes a download with another hash. SemCor is never committed. Its license is the Princeton WordNet license (use,
+   copy, modify and distribute for any purpose without fee, with the copyright notice and disclaimer kept on every
+   copy); the notice is in `data/PROVENANCE.md`.
+2. `SemCor.Parse` reads the tag files: every `<wf>` word and `<punc>` mark is a word of the sentence (a contraction
+   clitic is joined to the word before it unless that word is annotated, a multiword expression is split at its
+   underscores and left out as a target), and an annotated single word becomes a target whose WordNet 3.0 sense keys
+   are `lemma%lexsn`. Words whose sense the mapping from WordNet 1.6 dropped (`wnsn=0`) and multiword expressions are
+   counted and left out.
+3. `SenseEvaluator.Select` maps a key to the sense of the catalog that has it (`WordLexicon.TryGetSenseByKey`; the
+   catalog keeps the Open English WordNet keys, which are the WordNet 3.0 keys of every sense the 2025 release did not
+   change), leaves out a word with several keys, keeps the words whose lemma is trained and leaves out the sentences
+   that are in the corpus or are examples of Open English WordNet. The mapping coverage and the most frequent unmapped
+   keys are reported.
+4. `SenseEvaluator.MeasureAsync` classifies each remaining sentence once through the public interface of the model and
+   judges every target like a held-out row (`Evaluator.Judge`): the answer is right at its own level; the report has the
+   share answered at each level, the precision at each level, the fine top-1 (the most probable ranked sense), the group
+   top-1 (the most probable ranked sense is in the group of the gold sense, for words whose gold sense is in a group),
+   the part-of-speech accuracy and the most-frequent-sense baseline (the first sense of the lemma and part of speech of
+   the gold sense in inventory order; the baseline knows the gold lemma and part of speech).
 
-The tiers come from WordNet 3.0 tag counts that include SemCor; this gives a frequency prior and no sentence leakage,
-and the evaluation report says so.
+The inventory order and the tiers come from WordNet 3.0 tag counts that include the counts of SemCor itself: this gives
+the baseline an advantage (it has seen the answers) and the evaluation report says so; no SemCor sentence is in any
+training corpus.
 
-#### Running-text evaluation (`RunningText.RunAsync`)
+#### Running-text evaluation (`RunningTextEvaluator`)
 
-Downloads the English EWT treebank into the cache when it is missing, verifies the pinned checksum and classifies the
-sentences of the test file; the development file is the one used to select hyper-parameters and is never used here.
-The universal tags are mapped to the parts of speech of the library by a published convention: a possessive pronoun
-(`PRON` with `Poss=Yes`) is a determiner, and `NUM`, `PART`, `SYM` and `X` are excluded; the report lists the excluded
-tokens and their number.
+`RunningTextEvaluator.Load` reads the sets: the `test` split of the representative open corpus (the headline), the gold
+file of the treebank test file and the test split of the targeted part (the challenge set, on its own line). The gold
+file `tools/open-corpus/work/tagger-eval/ud_test.tsv` is written by `tools/open-corpus/scripts/prepare_tagger_eval.py`,
+which verifies the pinned SHA-256 of the downloaded treebank files, applies the published convention map (a possessive
+pronoun is a determiner, the copula `be` is a verb, a phrasal-verb particle is an adverb, a preposition before a gerund
+or noun phrase is a preposition) and writes the tag letter of every token; the development file is the one used to
+select settings and is never the default here. A missing gold file is reported as a note and the set is left out.
+`RunningTextEvaluator.RunAsync` scores every model through its public interface with the scoring rule of
+`TaggerEvaluator` (the part of speech of the selected analysis against the gold tag; tokens that the corpus or the
+convention tags as punctuation or other are excluded and counted; a token the model does not answer is counted), and
+reports the accuracy on all scored tokens and on the ambiguous tokens, whose word has at least two parts of speech in
+the lexicon.
 
-#### Suite (`Suite.Read`)
+#### Model table (`ModelTable`)
 
-`corpus/suite/suite.tsv` holds the reviewed sentences, each with its expected sense, group or part of speech, and
-`corpus/suite/expected.tsv` holds the expectation of each model for each row (`pass` or `known-miss`). The reader
-rejects
-a malformed row, a row without an expectation for a model and an expectation that names a sense or group that is not
-in the inventory. The xUnit `SuiteTests` of the Basic, MiniLM and BertBaseCased test projects read the suite through
-the builder's reader and fail when an expected pass regresses; the encoder tests skip when the model files are not
-present (Git LFS).
+`docs/build_notes/model-table.md` holds the table of the README: one row per model, one column per measurement. Each
+evaluation command writes its own cells (`evaluate`: the real-text sense share at its precision and the cost cells;
+`evaluate-running`: the open-corpus, treebank and challenge-set cells; `evaluate-senses`: the SemCor cell) with
+`--table`, and keeps the others; the README table must equal it (a doc-test checks it).
+
+#### Suite (`SuiteFile`)
+
+`corpus/suite/suite.tsv` holds the reviewed sentences, each with its expected analysis (lemma, part of speech and
+features) and its acceptable fine senses, and `corpus/suite/expectations.tsv` holds the strongest grade each model is
+expected to keep for each row (`fine`, `answer` or `miss`; see `corpus/suite/README.md`). The reader rejects a malformed
+row, a row without an expectation for a model and a sense that is not in the catalog or does not belong to the expected
+lemma and part of speech. `SuiteFile.Grade` judges the answer of a model at the level it answered; the grade is `fine`
+when, besides, the most probable ranked sense is acceptable. `SuiteFile` has no other dependency of the builder, so the
+test projects of the three models compile it (`Suite.cs` is linked into them): `BasicSuite_ExpectedPasses_StillPass`,
+`MiniLMSuite_ExpectedPasses_StillPass` and `BertBaseCasedSuite_ExpectedPasses_StillPass` fail when a row falls below its
+expectation; the encoder tests skip when the model files are not present (Git LFS). The expectations are raised in a
+reviewed commit and never lowered to hide a regression. `evaluate-suite` reports the pass rates and writes the
+expectations of a new suite or model. The challenge set has a floor test of the same kind
+(`ChallengeSetFloorTests`, `corpus/suite/ste-floors.tsv`).
+
+#### Quota report (`Tiers`)
+
+Reads the tag counts of the senses from the `sense_frequency` table of `data/`, the anchors and the held-out
+sentences, and for every sense of every lemma that has anchors computes the tier (`C`: five or more tags, 20 anchors
+and 5 held-out sentences; `U`: one to four tags or a project sense, 10 and 3; `R`: none, 5 and 2), the counts and the
+status (`met`, `short`, `empty`); the summary lists the totals per tier, the sentences that are missing and the senses
+that fall short, most frequent first.
 
 #### Basic training (`BasicModelBuilder.TrainAsync`)
 
-1. Read the tag counts of `corpus/open/counts` (made by `open-counts` from the training split of the representative open
-   corpus; the command stops with the name of `open-counts` when they are missing), the fine-sense anchors of
-   `corpus/anchors` and the chooser anchors of `corpus/choosers/anchors`. The holdout, the test splits, the targeted part
-   and the treebank are not read.
+1. Read the tag counts of `corpus/open/counts` (made by `open-counts` from the training split of the representative
+   open corpus; the command stops with the name of `open-counts` when they are missing), the fine-sense anchors of
+   `corpus/anchors` and the chooser anchors of `corpus/choosers/anchors`. The holdout, the test splits, the targeted
+   part and the treebank are not read.
 2. `BasicTrainer.Train` selects from the counts the closed-class words (enough occurrences and a dominant closed-class
-   share), the most frequent dictionary-ambiguous words and the suffixes of one to three characters of words the lexicon
-   lacks, and trains the naive Bayes cue tables from the anchors. A table is keyed by a lemma (the fine-sense anchors)
-   or by a form that a chooser decides (the chooser anchors: `left` as a form of `leave` or of the adjective `left`,
-   `read` as a past or a present verb; the classifier finds the table of the form before the table of the lemma). The
-   columns are analyses (lemma, part of speech and features): a sense sentence stands for its lemma and part of speech
-   with no required features, and a chooser sentence for the one analysis its label names (`lemma/features` names the
-   analysis with exactly those features, a bare lemma its only part of speech; a label that stands for several parts of
-   speech names no single analysis and the sentence is left out and counted). When a key has both kinds of sentences, a
-   sense sentence goes to the one chooser column of its lemma and part of speech, is left out when the chooser columns split
-   that slot by features, and keeps its own column when no chooser column has the slot. The features are extracted
-   with the same feature extraction and 16-bit hash as the runtime; hash collisions keep the more frequent feature, and
-   weights are quantized to 1/8 nat. The anchors are a balanced classifier corpus whose counts say nothing about how often
-   an analysis occurs, so every column of a table gets the same prior and the frequencies come from the tagger counts
-   alone. All numbers come from `BasicHyperparameters`.
+   share), the most frequent dictionary-ambiguous words and the suffixes of one to three characters of words the
+   lexicon lacks, and trains the naive Bayes cue tables from the anchors. A table is keyed by a lemma (the fine-sense
+   anchors) or by a form that a chooser decides (the chooser anchors: `left` as a form of `leave` or of the adjective
+   `left`, `read` as a past or a present verb; the classifier finds the table of the form before the table of the
+   lemma). The columns are analyses (lemma, part of speech and features): a sense sentence stands for its lemma and
+   part of speech with no required features, and a chooser sentence for the one analysis its label names
+   (`lemma/features` names the analysis with exactly those features, a bare lemma its only part of speech; a label
+   that stands for several parts of speech names no single analysis and the sentence is left out and counted). When a
+   key has both kinds of sentences, a sense sentence goes to the one chooser column of its lemma and part of speech,
+   is left out when the chooser columns split that slot by features, and keeps its own column when no chooser column
+   has the slot. The features are extracted with the same feature extraction and 16-bit hash as the runtime; hash
+   collisions keep the more frequent feature, and weights are quantized to 1/8 nat. The anchors are a balanced
+   classifier corpus whose counts say nothing about how often an analysis occurs, so every column of a table gets the
+   same prior and the frequencies come from the tagger counts alone. All numbers come from `BasicHyperparameters`.
 3. `BasicTablesWriter.Write` serializes the table, `BasicTables.Load` checks that it reads back, and the file is
    written with its size and SHA-256 reported. The table carries the inventory hash of the word image that it was
    trained against and is rebuilt whenever the inventory changes.

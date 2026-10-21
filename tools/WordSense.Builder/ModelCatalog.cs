@@ -58,6 +58,27 @@ internal static class ModelCatalog
         ?? throw new ArgumentException($"Unknown model '{name}'; use one of: {string.Join(", ", All.Select(m => m.Name))}.");
 
     /// <summary>
+    ///     Selects the models of a command that evaluates several: one by name, or every model in the order of the model table.
+    /// </summary>
+    /// <param name="name">The command-line name of a model, <c>all</c> or null for every model.</param>
+    /// <returns>The models.</returns>
+    /// <exception cref="ArgumentException">Thrown when the name is unknown.</exception>
+    public static IReadOnlyList<ModelInfo> Select(string? name) =>
+        name is null or "all" ? [Find("basic"), Find("minilm"), Find("bert-base-cased")] : [Find(name)];
+
+    /// <summary>
+    ///     Creates a model on the model folder of the repository.
+    /// </summary>
+    /// <param name="info">The model.</param>
+    /// <param name="repository">The repository root.</param>
+    /// <returns>The model.</returns>
+    public static IWordSenseModel Open(ModelInfo info, string repository)
+    {
+        ArgumentNullException.ThrowIfNull(info);
+        return info.Create(info.ModelDirectory is null ? null : Path.Join(repository, "model", info.ModelDirectory));
+    }
+
+    /// <summary>
     ///     Gets the encoder model inside a composed encoder model (the model of a package wraps its encoder, which owns the
     ///     pinned files and the embedded weights), so the trainer can open the encoder; the composed model keeps owning it.
     /// </summary>
