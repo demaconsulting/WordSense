@@ -189,13 +189,29 @@ sections:
               - WordSense-Onnx-ModelDownloader-Options
               - WordSense-Onnx-OnnxWordSenseModel-Ensure
               - WordSense-Onnx-OnnxWordSenseModel-Concurrent
+              - WordSense-Onnx-OnnxWordSenseModel-Downloadable
             tests:
               - ModelDownloader_EnsureAsync_MirrorFails_FallsBackToGitHub
               - ModelDownloader_EnsureAsync_HashMismatch_FallsThroughAndKeepsNothingBad
 
+          - id: WordSense-Onnx-Failures
+            title: >-
+              The Onnx subsystem shall report a failure to obtain, verify or configure the files of a model with the
+              typed exceptions of the core package (ModelUnavailableException, ModelIntegrityException and
+              DownloadConfigurationException), keeping the original exception as inner exception.
+            tags: [subsystem]
+            justification: |
+              Callers of the encoder packages handle the failures of the download by cause, without catching the
+              platform exception types of each source, and without losing the detail of what went wrong.
+            children:
+              - WordSense-Onnx-OnnxWordSenseModel-Failures
+            tests:
+              - OnnxWordSenseModel_EnsureModelAsync_AllSourcesFail_ThrowsModelUnavailable
+              - OnnxWordSenseModel_EnsureModelAsync_InvalidOptions_ThrowsDownloadConfiguration
+
           - id: WordSense-Onnx-Mirror
             title: >-
-              The Onnx subsystem shall support a user download mirror, set by MirrorOptions or the WORDSENSE_MIRROR_*
+              The Onnx subsystem shall support a user download mirror, set by DownloadOptions or the WORDSENSE_MIRROR_*
               environment variables, laid out as the mirror address followed by the model identifier and the file
               name, and shall send mirror credentials only to the mirror's own origin.
             tags: [subsystem]

@@ -23,9 +23,14 @@ All scenarios below pass on every platform and target framework of the CI matrix
 
 - **Identity is known before setup**: `ModelId` and `HiddenSize` return the values of the spec before `EnsureModelAsync`
   is called.
-- **Explicit directory is verified, not downloaded**: with a model directory, `EnsureModelAsync` checks every file's
-  SHA-256 and makes no network request; a missing file throws `FileNotFoundException` and an altered file throws
-  `InvalidDataException`.
+- **Model is downloadable** (`OnnxWordSenseModel_IsDownloadable`): the model, held as `IWordSenseModel`, is also an
+  `IDownloadableWordSenseModel`, so its `EnsureModelAsync` is reached through the capability interface.
+- **Explicit directory is verified, not downloaded**
+  (`OnnxWordSenseModel_EnsureModelAsync_MissingFile_ThrowsModelUnavailable`,
+  `OnnxWordSenseModel_EnsureModelAsync_AlteredFile_ThrowsModelIntegrity`): with a model directory,
+  `EnsureModelAsync` checks every file's SHA-256 and makes no network request; a missing file throws
+  `ModelUnavailableException` with the original `FileNotFoundException` as inner exception, and an altered file throws
+  `ModelIntegrityException` with the original `InvalidDataException` as inner exception.
 - **Store is used without a directory**: without a model directory the files are obtained through the downloader into
   `<store>/<model-id>/`.
 - **Lexicon-only words never touch model files** (`LexiconOnlyWords_NeverTouchesModelFiles`): `ClassifyAsync` on words
@@ -38,13 +43,37 @@ All scenarios below pass on every platform and target framework of the CI matrix
   the selected analysis as
   confidence, with no ensure and no first-sense guess; the same holds for every ambiguous word whose lemma has no
   trained weights, while a word with several senses and weights (`back`) ensures the files
-  (`MissingDirectory_ThrowsFileNotFound`).
+  (`OnnxWordSenseModel_ClassifyAsync_MissingDirectory_ThrowsModelUnavailable`).
 - **Lazy ensure** (scoring increment): `ClassifyAsync` on an ambiguous word without a prior `EnsureModelAsync` ensures
-  the files by itself (default settings) and classifies; a missing directory throws `FileNotFoundException`.
+  the files by itself (default settings) and classifies; a missing directory throws `ModelUnavailableException`.
 - **Concurrent EnsureModelAsync calls share one download**: parallel calls produce one set of requests; parallel
   `ClassifyAsync` calls share one lazy ensure (scoring increment).
-- **Failed EnsureModelAsync can be retried**: after all sources fail, a second call (or `ClassifyAsync`) starts a new
-  attempt and succeeds when a source works.
+- **Failed EnsureModelAsync can be retried**
+  (`OnnxWordSenseModel_EnsureModelAsync_AllSourcesFail_ThrowsModelUnavailable`): after all sources fail, the call
+  throws `ModelUnavailableException` with the original `HttpRequestException` as inner exception, and a second call (or
+  `ClassifyAsync`) starts a new attempt and succeeds when a source works.
+- **Downloaded bytes with a wrong hash are a failed source**
+  (`OnnxWordSenseModel_EnsureModelAsync_DownloadedHashMismatch_ThrowsModelUnavailable`): a source that serves bytes
+  with a wrong SHA-256 has its file discarded like any other failed source, and when no source delivers a verified file
+  the failure is `ModelUnavailableException`, not `ModelIntegrityException`.
+- **Invalid download settings** (`OnnxWordSenseModel_EnsureModelAsync_InvalidOptions_ThrowsDownloadConfiguration`,
+  theory over a relative address, another scheme, a query, a token with credentials, credentials over HTTP, a zero and a
+  negative timeout and an empty store root;
+  `OnnxWordSenseModel_EnsureModelAsync_InvalidEnvironment_ThrowsDownloadConfiguration`;
+  `OnnxWordSenseModel_ClassifyAsync_InvalidMirrorEnvironment_ThrowsDownloadConfiguration`): invalid options, or an
+  invalid `WORDSENSE_MIRROR_*` setting (a user without a password), throw `DownloadConfigurationException`, from the
+  explicit ensure and from the lazy ensure of `ClassifyAsync`, which is not an `ArgumentException` and keeps the
+  original `ArgumentException` (or `ArgumentOutOfRangeException` for a timeout) as inner exception; a failed call can be
+  retried with valid settings.
+- **Model directory ignores the options** (`OnnxWordSenseModel_EnsureModelAsync_ModelDirectory_IgnoresInvalidOptions`):
+  with a model directory the download options are not read, so invalid options throw nothing.
+- **Damaged model is an integrity failure**
+  (`OnnxWordSenseModel_ClassifyAsync_WeightsOfAnotherImage_ThrowsModelIntegrity`,
+  `OnnxWordSenseModel_ClassifyAsync_UnreadableOnnxFile_ThrowsModelIntegrity`): weights that do not belong to the word
+  image (a sense that does not exist) throw `ModelIntegrityException` with the original `InvalidDataException` as inner
+  exception, before any model file is needed; an ONNX file that passes its pinned digest but cannot be opened as a model
+  throws `ModelIntegrityException` carrying the original exception of the ONNX runtime, and the failed open leaves the
+  encoder released. Cancellation, disposal and argument exceptions are not changed by the mapping.
 - **A caller can stop waiting**: a cancelled token ends the wait of that caller with `OperationCanceledException`
   without cancelling the shared work; a later call succeeds.
 - **Canceled token before any work**: `ClassifyAsync` with an already canceled token faults with

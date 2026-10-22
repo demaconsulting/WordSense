@@ -36,9 +36,9 @@ public sealed class ChallengeSetFloorTests
         using var model = ModelCatalog.Open(ModelCatalog.Find(modelName), root);
         try
         {
-            await model.EnsureModelAsync(null, cancellationToken);
+            await ModelCatalog.EnsureAsync(model, cancellationToken);
         }
-        catch (Exception ex) when (ex is FileNotFoundException or InvalidDataException)
+        catch (Exception ex) when (ex is ModelUnavailableException or ModelIntegrityException)
         {
             ModelFileCheck.Unavailable("The model files are not available: " + ex.Message);
         }

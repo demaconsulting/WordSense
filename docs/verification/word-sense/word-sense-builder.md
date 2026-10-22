@@ -75,7 +75,7 @@ All scenarios below pass on every platform and target framework of the CI matrix
   word of the committed dictionary with each of its parts of speech, without exception.
 - **The catalog is complete** (`Words_Committed_CatalogHoldsEveryOewnAndProjectSense`): every single-token OEWN sense
   and every project sense of the committed data is in the catalog with its id, group (when it is in one), key (none for
-  a project sense) and respelling.
+  a project sense).
 - **Auxiliaries** (`Words_Committed_AuxiliariesGainTheirAnalysis`,
   `LexiconSource_ReadAuxiliaries_ReadsWordsAndRejectsBadLines`,
   `LexiconSource_Letters_CoverTheTenParts`): each word of `corpus/lexicon/auxiliaries.tsv` gains an auxiliary
@@ -137,6 +137,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Model name is required and checked**: `weights` without a model id, and with an unknown id, exit with code 1 and a
   message that lists the known models (`minilm`, `bert-base-cased`); the id may be given as the second argument or with
   `--model` (`Program_Weights_UnknownModel_ListsTheModels`, `Program_ModelCommandWithoutModel_ReportsUsage`).
+- **Ensure helper prepares only downloadable models**
+  (`WordSenseBuilder_ModelCatalog_EnsureAsync_EnsuresOnlyDownloadableModels`): `ModelCatalog.EnsureAsync` calls
+  `EnsureModelAsync` once on a model that implements `IDownloadableWordSenseModel` and does nothing for the Basic model,
+  which has no such capability; a null model throws `ArgumentNullException`.
 - **Weights file round trip**: the weights writer produces a blob that `WeightsBlob` reads back with the same model id,
   dimension, mean vector, the sense ids of each lemma, the weights and both thresholds
   (`WeightsBlobWriter_Write_RoundTripsThroughTheReader`).
@@ -340,7 +344,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `WordSenseBuilder_ChallengeSet_MiniLM_StaysAboveItsFloor`,
   `WordSenseBuilder_ChallengeSet_BertBaseCased_StaysAboveItsFloor`): the accuracy of each model on the challenge set
   is not below the floor of `corpus/suite/ste-floors.tsv` (the encoder tests skip when the model files are not
-  present).
+  present: the ensure step of the model reports `ModelUnavailableException` or `ModelIntegrityException`, which the
+  test turns into the skip, or into a failure when `WORDSENSE_REQUIRE_MODELS` is set).
 - The treebank convention map and the checksum of its files belong to
   `tools/open-corpus/scripts/prepare_tagger_eval.py`, which is verified by running it (it exits with an error when a
   file has another SHA-256).
@@ -469,8 +474,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
   inventory give an appendix with the parts-of-speech overview, the lemmas in alphabetical order, their senses and
   their forms; markdown characters are escaped, lines are wrapped, line endings are LF and the output repeats byte for
   byte.
-- **Senses carry group key gloss and respelling** (`Appendix_Generate_ListsSensesWithGroupKeyGlossAndRespelling`): each
-  sense is listed with its id, group, OEWN sense key (none for a project sense), gloss and respelling.
+- **Senses carry group key and gloss** (`Appendix_Generate_ListsSensesWithGroupKeyAndGloss`): each sense is listed
+  with its id, group, OEWN sense key (none for a project sense) and gloss, and the appendix does not mention a
+  respelling.
 - **Incomplete input is rejected** (`Appendix_Generate_RejectsIncompleteInput`, `Program_Appendix_MissingCorpus_Fails`):
   a missing anchors directory, a trained sense without an anchor sentence and an empty inventory are each rejected with
   an error that names the problem, and the command exits with code 1.

@@ -36,7 +36,7 @@ internal static partial class Program
         foreach (var info in ModelCatalog.Select(options.GetValueOrDefault("model")))
         {
             using var model = ModelCatalog.Open(info, repository);
-            await model.EnsureModelAsync(null, cancellationToken).ConfigureAwait(false);
+            await ModelCatalog.EnsureAsync(model, cancellationToken).ConfigureAwait(false);
             measured.Add(await SenseEvaluator.MeasureAsync(ModelTable.DisplayName(info.Name), model, selected, output, cancellationToken).ConfigureAwait(false));
         }
 
@@ -63,7 +63,7 @@ internal static partial class Program
         foreach (var info in ModelCatalog.Select(options.GetValueOrDefault("model")))
         {
             using var model = ModelCatalog.Open(info, repository);
-            await model.EnsureModelAsync(null, cancellationToken).ConfigureAwait(false);
+            await ModelCatalog.EnsureAsync(model, cancellationToken).ConfigureAwait(false);
             var scores = await RunningTextEvaluator.RunAsync(model, sets, cancellationToken).ConfigureAwait(false);
             scoresByModel.Add((ModelTable.DisplayName(info.Name), scores));
             output.WriteLine($"{info.Name}: running text done.");

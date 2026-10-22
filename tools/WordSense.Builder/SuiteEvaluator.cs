@@ -37,7 +37,7 @@ internal static class SuiteEvaluator
         {
             var info = ModelCatalog.Find(name);
             using var model = ModelCatalog.Open(info, repository);
-            await model.EnsureModelAsync(null, cancellationToken).ConfigureAwait(false);
+            await ModelCatalog.EnsureAsync(model, cancellationToken).ConfigureAwait(false);
             grades[name] = await SuiteFile.GradeAsync(model, rows, cancellationToken).ConfigureAwait(false);
             progress.WriteLine($"{name}: suite done.");
         }

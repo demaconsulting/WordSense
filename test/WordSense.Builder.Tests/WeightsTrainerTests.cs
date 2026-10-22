@@ -256,4 +256,42 @@ public sealed class WeightsTrainerTests
             minilm.WeightsPath("repo"));
         Assert.Throws<ArgumentException>(() => ModelCatalog.Find("unknown"));
     }
+
+    /// <summary>
+    ///     The ensure helper prepares a downloadable model and skips a model without files.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_ModelCatalog_EnsureAsync_EnsuresOnlyDownloadableModels()
+    {
+        // Arrange: a model with the capability and the Basic model without it
+        using var downloadable = new EnsureCountingModel();
+        using var basic = new BasicWordSenseModel();
+
+        // Act
+        await ModelCatalog.EnsureAsync(downloadable, TestContext.Current.CancellationToken);
+        await ModelCatalog.EnsureAsync(basic, TestContext.Current.CancellationToken);
+
+        // Assert: the capable model was ensured once, the Basic model needed nothing
+        Assert.Equal(1, downloadable.EnsureCalls);
+        await Assert.ThrowsAsync<ArgumentNullException>(() => ModelCatalog.EnsureAsync(null!, TestContext.Current.CancellationToken));
+    }
+
+    private sealed class EnsureCountingModel : IDownloadableWordSenseModel
+    {
+        public int EnsureCalls { get; private set; }
+
+        public Task EnsureModelAsync(DownloadOptions? options = null, CancellationToken cancellationToken = default)
+        {
+            EnsureCalls++;
+            return Task.CompletedTask;
+        }
+
+        public Task<ClassifyResult[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default) =>
+            Task.FromResult(words.Select(ClassifyResult.Unknown).ToArray());
+
+        public void Dispose()
+        {
+        }
+    }
 }

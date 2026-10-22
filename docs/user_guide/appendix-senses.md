@@ -43,13 +43,6 @@ and part of speech that are closely related in meaning and that a reader can con
 and needs none; the sense lines below show `none` for a sense in no group. When the model cannot tell the senses of a
 group apart it answers with the group, which is the level between the part of speech and the sense.
 
-### Pronunciations
-
-A sense has a **respelling**, a short plain spelling of its pronunciation, only when its pronunciation differs from the
-other senses of its lemma, for example the noun and the verb of a heteronym. The library has no phonetic data of its
-own; a consumer such as a speech synthesizer keeps its own pronunciations keyed by sense id. A sense without a
-respelling shows none below, and a group never mixes two respellings.
-
 ### Forms
 
 Inflected forms are mapped to their lemma by the forms of the word table, so `presents` is analyzed as a form of
@@ -71,8 +64,8 @@ them project senses) and 140 groups.
 
 The library supports 826 lemmas with 6,969 senses in total, listed alphabetically. Each lemma lists its parts of speech
 and the forms it recognizes. Under it, every sense gives its id and part of speech, its group, its Open English WordNet
-sense key (a project sense has none), its respelling when it has one and its gloss, in inventory order (the order of
-Open English WordNet within a part of speech, project senses last).
+sense key (a project sense has none) and its gloss, in inventory order (the order of Open English WordNet within a part
+of speech, project senses last).
 
 ### Lemmas Starting With A
 

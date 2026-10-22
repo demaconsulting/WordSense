@@ -47,7 +47,6 @@ internal sealed class ReadmeSample
         using var model = new BasicWordSenseModel();
         // using var model = new MiniLMWordSenseModel();         // using DemaConsulting.WordSense.MiniLM;
         // using var model = new BertBaseCasedWordSenseModel();  // using DemaConsulting.WordSense.BertBaseCased;
-        await model.EnsureModelAsync();
 
         // Classify the words of a sentence whose "bow" and "record" are heteronyms and whose "go", "back" and "home"
         // are among the trained words of the encoder models
@@ -76,6 +75,43 @@ internal sealed class ReadmeSample
     }
 
     /// <summary>
+    ///     The README sample that fetches and verifies the model files up front. It is compiled but never run, because
+    ///     it would use the network; the README code block must equal it (see <see cref="ReadmeSampleTests"/>).
+    /// </summary>
+    /// <returns>A task that completes when the sample has run.</returns>
+    internal static async Task DownloadAsync()
+    {
+        // <sample:download>
+        // The concrete model type has the method: call it directly. It is optional, because ClassifyAsync ensures the
+        // files lazily; use it to control when the download happens (startup, before going offline) and to handle
+        // failures up front (ModelUnavailableException, ModelIntegrityException, DownloadConfigurationException)
+        using var model = new MiniLMWordSenseModel();
+        await model.EnsureModelAsync();
+
+        // Through a mirror, when the public download host is blocked
+        await model.EnsureModelAsync(new DownloadOptions(new Uri("https://models.example.com/wordsense")));
+        // </sample:download>
+    }
+
+    /// <summary>
+    ///     The README sample for code that holds only an <see cref="IWordSenseModel"/>. It is compiled but never run,
+    ///     because it would use the network; the README code block must equal it (see <see cref="ReadmeSampleTests"/>).
+    /// </summary>
+    /// <returns>A task that completes when the sample has run.</returns>
+    internal static async Task CapabilityAsync()
+    {
+        // <sample:capability>
+        // Code that holds only an IWordSenseModel (Basic, MiniLM, BertBaseCased or your own) asks for the capability:
+        // Basic has no files and does not offer EnsureModelAsync
+        using IWordSenseModel model = new MiniLMWordSenseModel();
+        if (model is IDownloadableWordSenseModel downloadable)
+        {
+            await downloadable.EnsureModelAsync();
+        }
+        // </sample:capability>
+    }
+
+    /// <summary>
     ///     Stands in for the model class of the sample, so that the sample runs against every model without a
     ///     download.
     /// </summary>
@@ -90,10 +126,6 @@ internal sealed class ReadmeSample
                 DocSampleText.RequireModelDirectory("bert-base-cased-int8")),
             _ => throw new InvalidOperationException("Unknown model for the README sample."),
         };
-
-        /// <inheritdoc />
-        public Task EnsureModelAsync(MirrorOptions? mirror = null, CancellationToken cancellationToken = default) =>
-            _model.EnsureModelAsync(mirror, cancellationToken);
 
         /// <inheritdoc />
         public Task<ClassifyResult[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default) =>

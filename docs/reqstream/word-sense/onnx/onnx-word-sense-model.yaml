@@ -19,8 +19,47 @@ sections:
                   silently produce wrong senses.
                 tests:
                   - OnnxWordSenseModel_EnsureModelAsync_ModelDirectory_VerifiesEveryFile
-                  - OnnxWordSenseModel_EnsureModelAsync_MissingFile_Throws
-                  - OnnxWordSenseModel_EnsureModelAsync_AlteredFile_Throws
+                  - OnnxWordSenseModel_EnsureModelAsync_MissingFile_ThrowsModelUnavailable
+                  - OnnxWordSenseModel_EnsureModelAsync_AlteredFile_ThrowsModelIntegrity
+
+              - id: WordSense-Onnx-OnnxWordSenseModel-Downloadable
+                title: >-
+                  OnnxWordSenseModel shall implement IDownloadableWordSenseModel, so that its preparation step is
+                  available through the capability interface to code that holds only an IWordSenseModel.
+                tags: [unit]
+                justification: |
+                  The encoder models are the models that have files; the capability interface is how callers that are
+                  written against the contract reach the optional up-front preparation.
+                tests:
+                  - OnnxWordSenseModel_IsDownloadable
+
+              - id: WordSense-Onnx-OnnxWordSenseModel-Failures
+                title: >-
+                  OnnxWordSenseModel shall report, from its preparation step and from the lazy preparation of
+                  ClassifyAsync, a model file that no source could deliver, or that is missing from a supplied
+                  directory, as ModelUnavailableException, a file that fails its pinned SHA-256 in a supplied
+                  directory, a corrupt or foreign embedded weights resource and an ONNX file that cannot be opened as
+                  ModelIntegrityException, and an invalid mirror address, credential, timeout, store location or
+                  WORDSENSE_MIRROR_* environment setting as DownloadConfigurationException, each carrying the original
+                  exception as inner exception, and shall leave cancellation, disposal and argument exceptions
+                  unchanged.
+                tags: [unit]
+                justification: |
+                  Callers handle a failure by its cause: retry or switch to a directory when files are unavailable,
+                  reinstall when they are damaged, fix the setting when it is wrong. A hash mismatch of a download is a
+                  failed source, and the next source is tried, so it surfaces as unavailable when none delivers.
+                tests:
+                  - OnnxWordSenseModel_EnsureModelAsync_MissingFile_ThrowsModelUnavailable
+                  - OnnxWordSenseModel_EnsureModelAsync_AlteredFile_ThrowsModelIntegrity
+                  - OnnxWordSenseModel_EnsureModelAsync_AllSourcesFail_ThrowsModelUnavailable
+                  - OnnxWordSenseModel_EnsureModelAsync_DownloadedHashMismatch_ThrowsModelUnavailable
+                  - OnnxWordSenseModel_EnsureModelAsync_InvalidOptions_ThrowsDownloadConfiguration
+                  - OnnxWordSenseModel_EnsureModelAsync_InvalidEnvironment_ThrowsDownloadConfiguration
+                  - OnnxWordSenseModel_EnsureModelAsync_ModelDirectory_IgnoresInvalidOptions
+                  - OnnxWordSenseModel_ClassifyAsync_MissingDirectory_ThrowsModelUnavailable
+                  - OnnxWordSenseModel_ClassifyAsync_InvalidMirrorEnvironment_ThrowsDownloadConfiguration
+                  - OnnxWordSenseModel_ClassifyAsync_WeightsOfAnotherImage_ThrowsModelIntegrity
+                  - OnnxWordSenseModel_ClassifyAsync_UnreadableOnnxFile_ThrowsModelIntegrity
 
               - id: WordSense-Onnx-OnnxWordSenseModel-Concurrent
                 title: >-
@@ -32,7 +71,7 @@ sections:
                   transient network failure.
                 tests:
                   - OnnxWordSenseModel_EnsureModelAsync_Concurrent_SharesOneDownload
-                  - OnnxWordSenseModel_EnsureModelAsync_AfterFailure_CanBeRetried
+                  - OnnxWordSenseModel_EnsureModelAsync_AllSourcesFail_ThrowsModelUnavailable
                   - OnnxWordSenseModel_EnsureModelAsync_CancelledCaller_DoesNotCancelSharedWork
 
               - id: WordSense-Onnx-OnnxWordSenseModel-Classify
@@ -54,7 +93,7 @@ sections:
                   - OnnxWordSenseModel_ClassifyAsync_WithoutEnsure_EnsuresLazily
                   - OnnxWordSenseModel_ClassifyAsync_Concurrent_ShareOneLazyEnsure
                   - OnnxWordSenseModel_ClassifyAsync_AfterFailedLazyEnsure_CanBeRetried
-                  - OnnxWordSenseModel_ClassifyAsync_MissingDirectory_ThrowsFileNotFound
+                  - OnnxWordSenseModel_ClassifyAsync_MissingDirectory_ThrowsModelUnavailable
                   - OnnxWordSenseModel_ClassifyAsync_Repeated_ShareTheEncoder
 
               - id: WordSense-Onnx-OnnxWordSenseModel-Dispose

@@ -256,14 +256,13 @@ public class ContractsTests
     [Fact]
     public void WordSenseContracts_SenseInfo_Construct_ExposesMembers()
     {
-        var sense = new SenseInfo("bow#archery", "bow#group:weapon", "bow", PartOfSpeech.Noun, "bow%1:06:03::", "boh");
+        var sense = new SenseInfo("bow#archery", "bow#group:weapon", "bow", PartOfSpeech.Noun, "bow%1:06:03::");
 
         Assert.Equal("bow#archery", sense.SenseId);
         Assert.Equal("bow#group:weapon", sense.GroupId);
         Assert.Equal("bow", sense.Lemma);
         Assert.Equal(PartOfSpeech.Noun, sense.PartOfSpeech);
         Assert.Equal("bow%1:06:03::", sense.SenseKey);
-        Assert.Equal("boh", sense.Respelling);
     }
 
     /// <summary>
@@ -272,11 +271,28 @@ public class ContractsTests
     [Fact]
     public void WordSenseContracts_SenseInfo_ProjectSense_HasNoKey()
     {
-        var sense = new SenseInfo("the#determiner", null, "the", PartOfSpeech.Determiner, null, null);
+        var sense = new SenseInfo("the#determiner", null, "the", PartOfSpeech.Determiner, null);
 
         Assert.Null(sense.SenseKey);
         Assert.Null(sense.GroupId);
-        Assert.Null(sense.Respelling);
+    }
+
+    /// <summary>
+    ///     The sense and group records no longer expose a respelling: it was removed from the public surface.
+    /// </summary>
+    [Fact]
+    public void WordSenseContracts_SenseInfo_HasNoRespellingMember()
+    {
+        // Arrange: the public records of the sense catalog
+        var types = new[] { typeof(SenseInfo), typeof(SenseGroup) };
+
+        // Act: look for a respelling member, by property and by constructor parameter
+        var properties = types.Select(t => t.GetProperty("Respelling")).ToList();
+        var parameters = types.SelectMany(t => t.GetConstructors().SelectMany(c => c.GetParameters())).Select(p => p.Name).ToList();
+
+        // Assert: neither exists
+        Assert.All(properties, Assert.Null);
+        Assert.DoesNotContain("Respelling", parameters);
     }
 
     /// <summary>
@@ -285,13 +301,12 @@ public class ContractsTests
     [Fact]
     public void WordSenseContracts_SenseGroup_Construct_ExposesMembers()
     {
-        var group = new SenseGroup("back#group:football", "back", PartOfSpeech.Noun, ["back#football-back", "back#football-position"], null);
+        var group = new SenseGroup("back#group:football", "back", PartOfSpeech.Noun, ["back#football-back", "back#football-position"]);
 
         Assert.Equal("back#group:football", group.GroupId);
         Assert.Equal("back", group.Lemma);
         Assert.Equal(PartOfSpeech.Noun, group.PartOfSpeech);
         Assert.Equal(2, group.SenseIds.Length);
-        Assert.Null(group.Respelling);
     }
 
     /// <summary>
@@ -301,11 +316,11 @@ public class ContractsTests
     public void WordSenseContracts_SenseInfo_SameValues_AreEqual()
     {
         Assert.Equal(
-            new SenseInfo("bow#archery", null, "bow", PartOfSpeech.Noun, "bow%1:06:03::", null),
-            new SenseInfo("bow#archery", null, "bow", PartOfSpeech.Noun, "bow%1:06:03::", null));
+            new SenseInfo("bow#archery", null, "bow", PartOfSpeech.Noun, "bow%1:06:03::"),
+            new SenseInfo("bow#archery", null, "bow", PartOfSpeech.Noun, "bow%1:06:03::"));
         Assert.NotEqual(
-            new SenseInfo("bow#archery", null, "bow", PartOfSpeech.Noun, "bow%1:06:03::", null),
-            new SenseInfo("bow#archery", null, "bow", PartOfSpeech.Noun, "bow%1:06:03::", "boh"));
+            new SenseInfo("bow#archery", null, "bow", PartOfSpeech.Noun, "bow%1:06:03::"),
+            new SenseInfo("bow#archery", null, "bow", PartOfSpeech.Noun, "bow%1:06:04::"));
     }
 
     /// <summary>
@@ -316,10 +331,10 @@ public class ContractsTests
     public void WordSenseContracts_SenseGroup_SameMembers_AreEqual()
     {
         // Arrange
-        var first = new SenseGroup("back#group:football", "back", PartOfSpeech.Noun, ["back#football-back", "back#football-position"], null);
-        var same = new SenseGroup("back#group:football", "back", PartOfSpeech.Noun, ["back#football-back", "back#football-position"], null);
-        var otherMember = new SenseGroup("back#group:football", "back", PartOfSpeech.Noun, ["back#football-back", "back#other"], null);
-        var otherOrder = new SenseGroup("back#group:football", "back", PartOfSpeech.Noun, ["back#football-position", "back#football-back"], null);
+        var first = new SenseGroup("back#group:football", "back", PartOfSpeech.Noun, ["back#football-back", "back#football-position"]);
+        var same = new SenseGroup("back#group:football", "back", PartOfSpeech.Noun, ["back#football-back", "back#football-position"]);
+        var otherMember = new SenseGroup("back#group:football", "back", PartOfSpeech.Noun, ["back#football-back", "back#other"]);
+        var otherOrder = new SenseGroup("back#group:football", "back", PartOfSpeech.Noun, ["back#football-position", "back#football-back"]);
 
         // Act and Assert
         Assert.Equal(first, same);
@@ -344,23 +359,94 @@ public class ContractsTests
     }
 
     /// <summary>
+    ///     The model contract is the classification contract only: it declares no ensure member and no member that
+    ///     mentions the download options.
+    /// </summary>
+    [Fact]
+    public void WordSenseContracts_IWordSenseModel_HasNoEnsureMember()
+    {
+        // Arrange: the members the interface declares itself (not the inherited Dispose)
+        var members = typeof(IWordSenseModel).GetMembers(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
+
+        // Act: the names of the declared members
+        var names = members.Select(m => m.Name).ToList();
+
+        // Assert: only the classification method is declared
+        Assert.Equal(["ClassifyAsync"], names);
+        Assert.Null(typeof(IWordSenseModel).GetMethod("EnsureModelAsync"));
+    }
+
+    /// <summary>
+    ///     The downloadable capability extends the model contract with the ensure step, in the core package.
+    /// </summary>
+    [Fact]
+    public void WordSenseContracts_IDownloadableWordSenseModel_ExtendsIWordSenseModel()
+    {
+        // Arrange
+        var capability = typeof(IDownloadableWordSenseModel);
+
+        // Act
+        var ensure = capability.GetMethod("EnsureModelAsync");
+
+        // Assert: an interface of the core assembly that extends the contract, with the options as optional first parameter
+        Assert.True(capability.IsInterface);
+        Assert.True(typeof(IWordSenseModel).IsAssignableFrom(capability));
+        Assert.Same(typeof(IWordSenseModel).Assembly, capability.Assembly);
+        Assert.NotNull(ensure);
+        Assert.Equal(typeof(Task), ensure.ReturnType);
+        var parameters = ensure.GetParameters();
+        Assert.Equal(typeof(DownloadOptions), parameters[0].ParameterType);
+        Assert.Equal("options", parameters[0].Name);
+        Assert.True(parameters[0].IsOptional);
+        Assert.Equal(typeof(CancellationToken), parameters[1].ParameterType);
+        Assert.True(parameters[1].IsOptional);
+    }
+
+    /// <summary>
     ///     A test double implements the model contract without any model package: the contract is usable on its own.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
     public async Task WordSenseContracts_IWordSenseModel_TestDouble_IsUsableThroughTheInterface()
     {
-        var model = new FakeModel();
+        var model = new ClassifyOnlyModel();
         IWordSenseModel contract = model;
 
-        await contract.EnsureModelAsync(null, TestContext.Current.CancellationToken);
         var result = await contract.ClassifyAsync(["a", "record"], TestContext.Current.CancellationToken);
         contract.Dispose();
 
-        Assert.True(model.Ensured);
         Assert.True(model.Disposed);
         Assert.Equal(2, result.Length);
         Assert.Equal("record", result[1].Word);
+        Assert.False(contract is IDownloadableWordSenseModel);
+    }
+
+    /// <summary>
+    ///     A test double implements the capability without any model package, and code that holds only the model
+    ///     contract reaches it with a type check.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_IDownloadableWordSenseModel_TestDouble_IsUsableThroughTheInterface()
+    {
+        // Arrange: a double behind the plain contract, and options to pass
+        var model = new DownloadableModel();
+        IWordSenseModel contract = model;
+        var options = new DownloadOptions(new Uri("https://models.example.com/"));
+
+        // Act: the capability pattern for code that holds only an IWordSenseModel
+        if (contract is IDownloadableWordSenseModel downloadable)
+        {
+            await downloadable.EnsureModelAsync(options, TestContext.Current.CancellationToken);
+        }
+
+        var result = await contract.ClassifyAsync(["a", "record"], TestContext.Current.CancellationToken);
+        contract.Dispose();
+
+        // Assert
+        Assert.Same(options, model.EnsuredWith);
+        Assert.True(model.Disposed);
+        Assert.Equal(2, result.Length);
     }
 
     /// <summary>
@@ -375,22 +461,23 @@ public class ContractsTests
     }
 
     /// <summary>
-    ///     The mirror options are a sealed record.
+    ///     The download options are a sealed record.
     /// </summary>
     [Fact]
-    public void WordSenseContracts_MirrorOptions_IsSealedRecord()
+    public void WordSenseContracts_DownloadOptions_IsSealedRecord()
     {
-        Assert.True(typeof(MirrorOptions).IsSealed);
-        Assert.NotNull(typeof(MirrorOptions).GetMethod("<Clone>$", BindingFlags.Public | BindingFlags.Instance));
+        Assert.True(typeof(DownloadOptions).IsSealed);
+        Assert.NotNull(typeof(DownloadOptions).GetMethod("<Clone>$", BindingFlags.Public | BindingFlags.Instance));
+        Assert.Null(typeof(IWordSenseModel).Assembly.GetType("DemaConsulting.WordSense.MirrorOptions"));
     }
 
     /// <summary>
-    ///     The mirror options default every optional value to null.
+    ///     The download options default every optional value to null.
     /// </summary>
     [Fact]
-    public void WordSenseContracts_MirrorOptions_Defaults_AreNull()
+    public void WordSenseContracts_DownloadOptions_Defaults_AreNull()
     {
-        var options = new MirrorOptions(new Uri("http://localhost:8000/"));
+        var options = new DownloadOptions(new Uri("http://localhost:8000/"));
 
         Assert.Equal(new Uri("http://localhost:8000/"), options.BaseUri);
         Assert.Null(options.BearerToken);
@@ -400,13 +487,37 @@ public class ContractsTests
     }
 
     /// <summary>
-    ///     Converting mirror options to text never reveals a token or a credential.
+    ///     The record accepts any value: validation is the job of the model that uses the options, so an invalid value
+    ///     is not rejected by the constructor.
     /// </summary>
     [Fact]
-    public void WordSenseContracts_MirrorOptions_ToString_RedactsSecrets()
+    public void WordSenseContracts_DownloadOptions_InvalidValues_AreNotRejectedByTheConstructor()
     {
-        var options = new MirrorOptions(new Uri("https://models.example.com/"), BearerToken: "s3cret-token");
-        var credentials = new MirrorOptions(new Uri("https://models.example.com/"), Credentials: new System.Net.NetworkCredential("user", "s3cret-password"));
+        // Arrange / Act: a relative address, a token together with credentials, a zero and a negative timeout
+        var relative = new DownloadOptions(new Uri("relative/path", UriKind.Relative));
+        var both = new DownloadOptions(
+            new Uri("https://models.example.com/"),
+            BearerToken: "token",
+            Credentials: new System.Net.NetworkCredential("user", "password"));
+        var zero = new DownloadOptions(new Uri("https://models.example.com/"), Timeout: TimeSpan.Zero);
+        var negative = new DownloadOptions(new Uri("https://models.example.com/"), Timeout: TimeSpan.FromSeconds(-1));
+
+        // Assert: all of them were constructed with the values given
+        Assert.False(relative.BaseUri.IsAbsoluteUri);
+        Assert.NotNull(both.BearerToken);
+        Assert.NotNull(both.Credentials);
+        Assert.Equal(TimeSpan.Zero, zero.Timeout);
+        Assert.Equal(TimeSpan.FromSeconds(-1), negative.Timeout);
+    }
+
+    /// <summary>
+    ///     Converting download options to text never reveals a token or a credential.
+    /// </summary>
+    [Fact]
+    public void WordSenseContracts_DownloadOptions_ToString_RedactsSecrets()
+    {
+        var options = new DownloadOptions(new Uri("https://models.example.com/"), BearerToken: "s3cret-token");
+        var credentials = new DownloadOptions(new Uri("https://models.example.com/"), Credentials: new System.Net.NetworkCredential("user", "s3cret-password"));
 
         Assert.DoesNotContain("s3cret-token", options.ToString(), StringComparison.Ordinal);
         Assert.DoesNotContain("s3cret-password", credentials.ToString(), StringComparison.Ordinal);
@@ -414,12 +525,12 @@ public class ContractsTests
     }
 
     /// <summary>
-    ///     Converting mirror options to text hides user-info, query and fragment of the base address.
+    ///     Converting download options to text hides user-info, query and fragment of the base address.
     /// </summary>
     [Fact]
-    public void WordSenseContracts_MirrorOptions_ToString_HidesUserInfoQueryAndFragment()
+    public void WordSenseContracts_DownloadOptions_ToString_HidesUserInfoQueryAndFragment()
     {
-        var options = new MirrorOptions(new Uri("https://alice:hunter2@models.example.com:8443/wordsense?sig=abc123#frag-secret"));
+        var options = new DownloadOptions(new Uri("https://alice:hunter2@models.example.com:8443/wordsense?sig=abc123#frag-secret"));
 
         var text = options.ToString();
 
@@ -435,10 +546,10 @@ public class ContractsTests
     ///     even with every other member set.
     /// </summary>
     [Fact]
-    public void WordSenseContracts_MirrorOptions_ToString_NeverPrintsTokenOrCredentials()
+    public void WordSenseContracts_DownloadOptions_ToString_NeverPrintsTokenOrCredentials()
     {
-        var token = new MirrorOptions(new Uri("https://m.example/"), "tok-9f8e7d", null, "C:\\store", TimeSpan.FromSeconds(30));
-        var basic = new MirrorOptions(
+        var token = new DownloadOptions(new Uri("https://m.example/"), "tok-9f8e7d", null, "C:\\store", TimeSpan.FromSeconds(30));
+        var basic = new DownloadOptions(
             new Uri("https://m.example/"),
             Credentials: new System.Net.NetworkCredential("svc-user", "pw-1a2b3c"),
             StoreRoot: "C:\\store");
@@ -483,15 +594,25 @@ public class ContractsTests
         Assert.Equal(9, (int)PartOfSpeech.Auxiliary);
     }
 
-    private sealed class FakeModel : IWordSenseModel
+    private sealed class ClassifyOnlyModel : IWordSenseModel
     {
-        public bool Ensured { get; private set; }
+        public bool Disposed { get; private set; }
+
+        public Task<ClassifyResult[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default) =>
+            Task.FromResult(words.Select(ClassifyResult.Unknown).ToArray());
+
+        public void Dispose() => Disposed = true;
+    }
+
+    private sealed class DownloadableModel : IDownloadableWordSenseModel
+    {
+        public DownloadOptions? EnsuredWith { get; private set; }
 
         public bool Disposed { get; private set; }
 
-        public Task EnsureModelAsync(MirrorOptions? mirror = null, CancellationToken cancellationToken = default)
+        public Task EnsureModelAsync(DownloadOptions? options = null, CancellationToken cancellationToken = default)
         {
-            Ensured = true;
+            EnsuredWith = options;
             return Task.CompletedTask;
         }
 

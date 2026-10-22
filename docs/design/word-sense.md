@@ -67,7 +67,9 @@ model is made in the model packages with the core `FallbackWordSenseModel`: the 
 word when it scored senses for it, and the fallback model (Basic, from core) answers every other word with its complete
 result, never a mixture of the two. Model packages never reference each other otherwise, so a consumer installs only
 the model it wants. The contracts in core are the seam between callers and models: a caller programs against
-`IWordSenseModel` and can swap models without code changes. The licenses follow the embedded data: the core package is
+`IWordSenseModel` and can swap models without code changes; a caller that wants to control when the files of a model
+are downloaded tests for the optional `IDownloadableWordSenseModel`. The licenses follow the embedded data: the core
+package is
 licensed `MIT AND CC-BY-4.0` and ships a `NOTICE.md` that enumerates what it embeds: Open English WordNet 2025
 (CC BY 4.0) with the Princeton WordNet notice that it requires, the Moby Part-of-Speech List (public domain), the
 inflected forms authored by the project (CC0 1.0), the statistics of the built-in model (CC0 1.0, from our own corpora
@@ -78,16 +80,25 @@ their weights hold Open English WordNet sense ids, and their notices add the Wor
 
 ## External Interfaces
 
-- `IWordSenseModel.EnsureModelAsync` (in): optional `MirrorOptions` and a cancellation token. Idempotent; a no-op for
-  the Basic model.
+- `IDownloadableWordSenseModel.EnsureModelAsync` (in): optional `DownloadOptions` and a cancellation token. The
+  explicit ensure is optional (`ClassifyAsync` ensures lazily); it controls when the download happens and lets the
+  caller handle failures up front. Idempotent, thread-safe (concurrent calls share one ensure) and retryable after a
+  failure. An already cancelled token returns a cancelled task; a disposed model throws `ObjectDisposedException`
+  from the call. The Basic model does not implement it (it needs no files). A caller that holds only an
+  `IWordSenseModel` tests the capability: `if (model is IDownloadableWordSenseModel downloadable)`.
 - `IWordSenseModel.ClassifyAsync` (in/out): tokenized words in, a parallel `ClassifyResult[]` out, one result per word
   in input order (the word, `IsKnown`, the `Analyses` with their probabilities and the senses inside them, the
   selected analysis `Details` (`WordDetails` of lemma, part of speech and features), the `SenseLevel`, the confidence
   of that level and the group and sense ids). The words are one running text with punctuation as
   its own elements. An encoder model ensures its
-  files lazily (default and environment mirror settings) when some word needs the encoder.
+  files lazily (default and environment download settings) when some word needs the encoder.
 - `FallbackWordSenseModel` (in/out): a model that composes two `IWordSenseModel` instances (primary and fallback) and
-  implements the interface itself.
+  implements `IDownloadableWordSenseModel` itself: its ensure forwards to the members that have the capability.
+- Typed exceptions (out): `ModelUnavailableException` (the model files are missing or cannot be downloaded),
+  `ModelIntegrityException` (a model file, embedded table or word image is damaged or does not fit) and
+  `DownloadConfigurationException` (the download options or `WORDSENSE_MIRROR_*` settings are invalid), all deriving
+  from `WordSenseException`, with the original exception as the inner exception (see _WordSenseContracts Unit
+  Design_).
 - `WordLexicon.Lookup`, `TryLookup`, `Contains`, `FormsOf` (out): the analyses (`WordDetails`) of a word from the
   embedded word image.
 - `WordLexicon.SensesOf`, `TryGetSense`, `TryGetSenseByKey`, `TryGetGroup` (out): the sense catalog from the embedded
@@ -97,7 +108,7 @@ their weights hold Open English WordNet sense ids, and their notices add the Wor
 - `WordLexicon.Version` (out): a string that identifies the sense inventory of the embedded image (the first 16
   lower-case hexadecimal digits of its inventory hash), to be compared for equality only.
 - Environment variables (in): `WORDSENSE_MIRROR_URL`, `WORDSENSE_MIRROR_USER`, `WORDSENSE_MIRROR_PASSWORD` and
-  `WORDSENSE_MIRROR_BEARER_TOKEN`; used only when no mirror option is passed.
+  `WORDSENSE_MIRROR_BEARER_TOKEN`; used only when no download option is passed.
 - Model store (in/out): `<store>/<model-id>/<file>` in a per-user directory unless `StoreRoot` is given.
 - Mirror and GitHub LFS source (in): HTTP(S) `GET <base>/<model-id>/<file>`; SHA-256 verified, credentials sent to
   the mirror's own origin only.
@@ -133,15 +144,20 @@ analyses at the part of speech level, and the Basic model of a composition choos
 ## Data Flow
 
 1. The caller creates a model (`BasicWordSenseModel`, `MiniLMWordSenseModel` or `BertBaseCasedWordSenseModel`) and
-   calls `EnsureModelAsync` (optional for words the lexicon alone resolves: `ClassifyAsync` ensures lazily with the
-   default and environment mirror settings, and a model that is never needed is never downloaded). The Basic model
-   returns immediately. An encoder model uses the files of its model
+   calls `EnsureModelAsync` when the model is an `IDownloadableWordSenseModel` (optional, and for words the lexicon
+   alone resolves `ClassifyAsync` ensures lazily with the
+   default and environment download settings, and a model that is never needed is never downloaded). The Basic model
+   is not downloadable and needs no files. An encoder model uses the files of its model
    directory when one was given, otherwise reuses valid files in the per-user store, otherwise downloads each missing
    file from the mirror (explicit option or environment variables) and then from the GitHub LFS copy, verifying every
-   file against its pinned SHA-256. A composite model ensures both of its models concurrently.
+   file against its pinned SHA-256. A composite model ensures all of its downloadable members concurrently. A failure
+   is reported as a `ModelUnavailableException` (no source could provide a file), a `ModelIntegrityException` (a
+   supplied file does not match its digest) or a `DownloadConfigurationException` (invalid options or environment
+   settings); the original exception is its inner exception.
 2. The caller passes the tokenized words to `ClassifyAsync`. An encoder model loads its embedded weights, matches
    them to the lexicon and opens the ONNX session on first need; the session and weights are shared by all callers
-   of the model. A composite model classifies the whole text with both of its models.
+   of the model; embedded weights that are missing, damaged or not for this lexicon are reported as a
+   `ModelIntegrityException`. A composite model classifies the whole text with both of its models.
 3. The words are one running text joined by single spaces.
 4. For every word the model lower-cases it and looks it up in `WordLexicon`, which returns the analyses of the word
    (lemma, part of speech and features), and then lists the fine senses of each analysis from the sense catalog:
@@ -194,13 +210,14 @@ blobs (with their thresholds) embedded in the encoder packages.
 - **Thread safety**: the lexicon and the models are safe for concurrent use. `IWordSenseModel` is
   `IDisposable` and owns the lifetime (the ONNX session and the downloader state); dispose it when it is no longer
   needed (disposing while calls are running is safe, they complete), and disposal is idempotent and thread-safe.
-  `EnsureModelAsync` and `ClassifyAsync`
+  `EnsureModelAsync` (of a downloadable model) and `ClassifyAsync`
   throw `ObjectDisposedException` after the model is disposed.
 - **Security**: downloaded files are accepted only when they match their pinned SHA-256; mirror credentials are
   sent only to the mirror's own origin and are rejected for plain http except on a loopback host; redirects are
   followed manually so credentials never cross origins; credentials never appear in a printed option value.
 - **Public surface**: the packages expose only the types needed by a caller: the contracts (including
-  `ClassifyResult`, `AnalysisCandidate`, `SenseCandidate` and `FallbackWordSenseModel`) and `WordLexicon` in
+  `ClassifyResult`, `AnalysisCandidate`, `SenseCandidate`, `DownloadOptions`, the typed exceptions and
+  `FallbackWordSenseModel`) and `WordLexicon` in
   core, `BasicWordSenseModel`, the abstract `OnnxWordSenseModel`, `MiniLMWordSenseModel` and
   `BertBaseCasedWordSenseModel`. Everything else is internal and visible only to the builder and the test projects.
   The result types are immutable, expose plain properties (so they serialize without custom code) and have a valid
@@ -224,8 +241,9 @@ blobs (with their thresholds) embedded in the encoder packages.
 - The published accuracy figures are measured on SemCor and on running text, which the training never reads; the
   held-out sentences of the corpus come from the same generator as the anchors and are optimistic, so they are reported
   only as such.
-- `MirrorOptions` is a sealed record; its validation happens when a model uses it (see _DownloadMirror Unit
-  Design_), not in the record.
+- `DownloadOptions` is a sealed record; its validation happens when a model uses it (see _DownloadMirror Unit
+  Design_), not in the record, and an invalid value reaches the caller as a `DownloadConfigurationException` (which is
+  not an `ArgumentException`).
 - `IWordSenseModel` is `IDisposable` and owns the lifetime; the Basic model's `Dispose` only marks the model as
   disposed. Disposing a model while a classification is running is safe for every model: the running call completes,
   new calls throw `ObjectDisposedException`, and an encoder model releases its ONNX session after the last running

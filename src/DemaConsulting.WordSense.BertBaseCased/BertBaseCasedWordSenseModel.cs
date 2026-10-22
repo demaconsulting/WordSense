@@ -10,7 +10,7 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     This model is built on <c>DemaConsulting.WordSense.Onnx</c>: it wraps an encoder model (an
 ///     <see cref="OnnxWordSenseModel"/> with the identity of this encoder: its pinned files and its embedded weights)
 ///     and the Basic model (<see cref="BasicWordSenseModel"/> of the core package) in a <see cref="FallbackWordSenseModel"/>, and
-///     implements <see cref="IWordSenseModel"/>. <see cref="EnsureModelAsync"/> ensures the encoder files (mirror
+///     implements <see cref="IDownloadableWordSenseModel"/> (and so <see cref="IWordSenseModel"/>). <see cref="EnsureModelAsync"/> ensures the encoder files (download-options
 ///     precedence, verification, retry and cancellation behavior are those described for
 ///     <see cref="OnnxWordSenseModel.EnsureModelAsync"/>) and <see cref="Dispose"/> disposes both models; dispose the
 ///     model with <c>using</c> (disposing while a classification runs is safe: the running calls complete and the
@@ -54,7 +54,9 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     A supplied model directory must hold all four files directly (no <c>{model-id}</c> subfolder).
 ///     <c>EnsureModelAsync</c> is optional but recommended: it verifies every one of them, not only the ONNX file,
 ///     against the pinned SHA-256 digests listed in the namespace documentation, with no network access, and fails
-///     early with a <see cref="FileNotFoundException"/> or <see cref="InvalidDataException"/>. Dispose the model when you no longer need it; disposing while
+///     early with a <see cref="ModelUnavailableException"/> (a missing file or directory) or a
+///     <see cref="ModelIntegrityException"/> (a wrong digest); both are <see cref="WordSenseException"/>s that carry the
+///     original exception as inner exception. Dispose the model when you no longer need it; disposing while
 ///     calls are running is safe.
 ///     </para>
 ///     <para>
@@ -85,9 +87,9 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     using DemaConsulting.WordSense;
 ///     using DemaConsulting.WordSense.BertBaseCased;
 ///
-///     var mirror = new MirrorOptions(new Uri("https://models.example.com/wordsense"));
+///     var options = new DownloadOptions(new Uri("https://models.example.com/wordsense"));
 ///     using var mirrored = new BertBaseCasedWordSenseModel();
-///     await mirrored.EnsureModelAsync(mirror);
+///     await mirrored.EnsureModelAsync(options);
 ///     var mirroredSenses = await mirrored.ClassifyAsync(["They", "will", "record", "the", "record", "."]);
 ///     </code>
 ///     Offline: the four files are in one flat directory, for example <c>/opt/models/bert</c>.
@@ -99,7 +101,7 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     var offlineSenses = await offline.ClassifyAsync(["They", "will", "record", "the", "record", "."]);
 ///     </code>
 /// </example>
-public sealed class BertBaseCasedWordSenseModel : IWordSenseModel
+public sealed class BertBaseCasedWordSenseModel : IDownloadableWordSenseModel
 {
     private readonly FallbackWordSenseModel _model;
 
@@ -147,16 +149,20 @@ public sealed class BertBaseCasedWordSenseModel : IWordSenseModel
     ///     Makes sure every file of the encoder is available and verified: from the directory given to the constructor,
     ///     or from the per-user store, downloading what is missing.
     /// </summary>
-    /// <param name="mirror">A mirror to try before the public source; see <see cref="OnnxWordSenseModel.EnsureModelAsync"/>.</param>
+    /// <param name="options">The download options (a mirror to try before the public source, the store location, the timeout); see <see cref="OnnxWordSenseModel.EnsureModelAsync"/>.</param>
     /// <param name="cancellationToken">A token that cancels the wait of this call.</param>
     /// <returns>A task that completes when the model files are ready.</returns>
     /// <remarks>
-    ///     The behavior (verification, mirror precedence, shared in-flight ensure, retry and cancellation) is that of
-    ///     <see cref="OnnxWordSenseModel.EnsureModelAsync"/>; the Basic model needs no file.
+    ///     The behavior (verification, options precedence, shared in-flight ensure, retry and cancellation) is that of
+    ///     <see cref="OnnxWordSenseModel.EnsureModelAsync"/>; the Basic model needs no file and is skipped. The call is
+    ///     optional: <see cref="ClassifyAsync"/> ensures lazily.
     /// </remarks>
     /// <exception cref="ObjectDisposedException">Thrown (from the call itself) when the model has been disposed.</exception>
-    public Task EnsureModelAsync(MirrorOptions? mirror = null, CancellationToken cancellationToken = default) =>
-        _model.EnsureModelAsync(mirror, cancellationToken);
+    /// <exception cref="ModelUnavailableException">Reported through the returned task when a file is missing from the supplied directory or no source delivered it.</exception>
+    /// <exception cref="ModelIntegrityException">Reported through the returned task when a file of the supplied directory fails its pinned SHA-256.</exception>
+    /// <exception cref="DownloadConfigurationException">Reported through the returned task when the download options or environment settings are invalid.</exception>
+    public Task EnsureModelAsync(DownloadOptions? options = null, CancellationToken cancellationToken = default) =>
+        _model.EnsureModelAsync(options, cancellationToken);
 
     /// <summary>
     ///     Classifies every word of a tokenized sentence or text; the encoder scores the senses of the lemmas it was
@@ -182,6 +188,9 @@ public sealed class BertBaseCasedWordSenseModel : IWordSenseModel
     /// <exception cref="ArgumentException">Thrown when an element is null.</exception>
     /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
     /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed.</exception>
+    /// <exception cref="ModelUnavailableException">Reported through the returned task by the lazy ensure when the model files could not be obtained.</exception>
+    /// <exception cref="ModelIntegrityException">Reported through the returned task when a model file or an embedded resource is damaged.</exception>
+    /// <exception cref="DownloadConfigurationException">Reported through the returned task by the lazy ensure when the <c>WORDSENSE_MIRROR_*</c> settings are invalid.</exception>
     public Task<ClassifyResult[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default) =>
         _model.ClassifyAsync(words, cancellationToken);
 

@@ -1,6 +1,6 @@
 package WordSense {
     part def DownloadMirror {
-        doc /* Validated configuration of a user-supplied download mirror, built from mirror options or from environment variables. */
+        doc /* Validated configuration of a user-supplied download mirror, built from download options or from environment variables. */
 
         comment sourceRef /* Source: src/DemaConsulting.WordSense.Onnx/DownloadMirror.cs */
         comment testRef /* Test: test/DemaConsulting.WordSense.Onnx.Tests/DownloadMirrorTests.cs */

@@ -327,6 +327,12 @@ reviews:
       - "docs/design/word-sense/core/word-sense-contracts.md"
       - "docs/verification/word-sense/core/word-sense-contracts.md"
       - "src/DemaConsulting.WordSense/IWordSenseModel.cs"
+      - "src/DemaConsulting.WordSense/IDownloadableWordSenseModel.cs"
+      - "src/DemaConsulting.WordSense/DownloadOptions.cs"
+      - "src/DemaConsulting.WordSense/WordSenseException.cs"
+      - "src/DemaConsulting.WordSense/ModelUnavailableException.cs"
+      - "src/DemaConsulting.WordSense/ModelIntegrityException.cs"
+      - "src/DemaConsulting.WordSense/DownloadConfigurationException.cs"
       - "src/DemaConsulting.WordSense/ClassifyResult.cs"
       - "src/DemaConsulting.WordSense/AnalysisCandidate.cs"
       - "src/DemaConsulting.WordSense/FallbackWordSenseModel.cs"
@@ -336,6 +342,7 @@ reviews:
       - "src/DemaConsulting.WordSense/SenseCandidate.cs"
       - "test/DemaConsulting.WordSense.Tests/ContractsTests.cs"
       - "test/DemaConsulting.WordSense.Tests/FallbackWordSenseModelTests.cs"
+      - "test/DemaConsulting.WordSense.Tests/WordSenseExceptionTests.cs"
 
   # WordSense-Core-BasicWordSenseModel Review (one per unit)
   - id: WordSense-Core-BasicWordSenseModel

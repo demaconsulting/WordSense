@@ -11,7 +11,8 @@ selected analysis has one sense (its lemma and part of speech have exactly one s
 
 The lexicon, the catalog and the contracts are verified through the public API with the embedded lexicon and catalog.
 No model, fake or file is needed: the contracts are plain types and interfaces, and the lexicon and catalog are read
-from the assembly resource. Tests in `test/DemaConsulting.WordSense.Tests` (`WordLexiconTests`, `ContractsTests`)
+from the assembly resource. Tests in `test/DemaConsulting.WordSense.Tests` (`WordLexiconTests`, `ContractsTests`,
+`FallbackWordSenseModelTests`, `WordSenseExceptionTests`)
 verify the units `WordLexicon` and `WordSenseContracts`. The boundary to the encoder packages is verified by those
 packages themselves, which implement the contracts.
 
@@ -61,8 +62,12 @@ scenarios are detailed in the `WordLexicon` unit document.
 #### Contracts Are Usable Without a Model Package
 
 `ClassifyResult`, `AnalysisCandidate`, `SenseCandidate`, `SenseLevel`, `WordDetails`, `PartOfSpeech`, `SenseInfo`,
-`SenseGroup`, `MirrorOptions`, `IWordSenseModel` and `FallbackWordSenseModel` can be used by a test double with no
-model package referenced (`ContractsTests`). The scenarios are
+`SenseGroup`, `DownloadOptions`, `IWordSenseModel`, `IDownloadableWordSenseModel`, `FallbackWordSenseModel` and the
+typed exceptions can be used by a test double with no
+model package referenced (`ContractsTests`, `FallbackWordSenseModelTests`, `WordSenseExceptionTests`). A model that has
+files offers the optional capability `IDownloadableWordSenseModel`, which extends `IWordSenseModel` with
+`EnsureModelAsync`; the model contract itself only classifies, and a caller that holds it reaches the capability with a
+type check. The scenarios are
 detailed in the `WordSenseContracts` unit document.
 
 #### No ONNX Dependency
@@ -73,8 +78,20 @@ is why the core test project runs without model files.
 
 #### Model Needs No Setup
 
-`EnsureModelAsync` of the statistical model completes immediately without touching the file system or the network,
-ignores a mirror, and `ClassifyAsync` returns a working answer at once (see the `BasicWordSenseModel` unit document).
+The statistical model has no preparation step: `BasicWordSenseModel` does not implement `IDownloadableWordSenseModel`
+(`BasicWordSenseModel_IsNotDownloadable`) and `ClassifyAsync` returns a working answer at once, without any call before
+it (see the `BasicWordSenseModel` unit document).
+
+#### Failures Are Typed
+
+The core defines the abstract `WordSenseException` and the sealed `ModelUnavailableException`,
+`ModelIntegrityException` and `DownloadConfigurationException`, each keeping the original exception as inner exception
+(`WordSenseExceptionTests`, see the `WordSenseContracts` unit document). A missing or damaged embedded resource, the
+word image and sense catalog of the lexicon or the statistics table of the built-in model, is reported as
+`ModelIntegrityException` carrying the original `InvalidDataException` (see the `WordLexicon` and `BasicTables` unit
+documents; `WordSenseExceptions_Hierarchy_DerivesFromWordSenseException`,
+`WordLexicon_OpenImage_MissingResource_ThrowsModelIntegrity` and
+`BasicTables_LoadEmbedded_MissingResource_ThrowsModelIntegrity` verify the subsystem requirement).
 
 #### Ambiguous Words Are Always Answered
 
@@ -122,7 +139,9 @@ encoder packages. A number word such as `one` has details.
 #### Embedded Table Is Valid
 
 The table embedded in the assembly loads and a malformed table, a table built for another analysis inventory and a table
-with an unknown or duplicate analysis are rejected with `InvalidDataException` (see the `BasicTables` unit document).
+with an unknown or duplicate analysis are rejected with `InvalidDataException` when read from a stream; a missing,
+corrupt or foreign embedded table is reported as `ModelIntegrityException` carrying that `InvalidDataException` (see the
+`BasicTables` unit document).
 
 #### Deterministic and Thread-Safe
 

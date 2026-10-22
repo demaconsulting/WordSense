@@ -12,9 +12,12 @@ namespace DemaConsulting.WordSense;
 ///     analyses, lemma, part of speech and grammatical features, and the catalog of the senses and groups of every lemma,
 ///     opened in place from an embedded image on first use), the types
 ///     <see cref="WordDetails"/>, <see cref="PartOfSpeech"/>, <see cref="SenseInfo"/> and <see cref="SenseGroup"/>, the
-///     model interface <see cref="IWordSenseModel"/>
-///     and the types <see cref="MirrorOptions"/>, <see cref="ClassifyResult"/>, <see cref="SenseLevel"/> and
-///     <see cref="SenseCandidate"/>, the composite <see cref="FallbackWordSenseModel"/> and the built-in model
+///     model interface <see cref="IWordSenseModel"/> (classification and disposal), its optional capability
+///     <see cref="IDownloadableWordSenseModel"/> (for models that need files: <c>EnsureModelAsync</c>),
+///     the types <see cref="DownloadOptions"/>, <see cref="ClassifyResult"/>, <see cref="SenseLevel"/> and
+///     <see cref="SenseCandidate"/>, the exceptions <see cref="WordSenseException"/> (the abstract base),
+///     <see cref="ModelUnavailableException"/>, <see cref="ModelIntegrityException"/> and
+///     <see cref="DownloadConfigurationException"/>, the composite <see cref="FallbackWordSenseModel"/> and the built-in model
 ///     <see cref="BasicWordSenseModel"/>. <see cref="BasicWordSenseModel"/> disambiguates a word in context at the
 ///     part-of-speech level (and at the sense level where the lemma and part of speech have a single sense) with a
 ///     statistical part-of-speech tagger and a context cue model whose small tables are embedded; there is nothing to
@@ -41,19 +44,31 @@ namespace DemaConsulting.WordSense;
 ///     sentences and is optimistic.
 ///     </para>
 ///     <para>
-///     The built-in model, <see cref="BasicWordSenseModel"/>. Create it and call <c>ClassifyAsync</c>;
-///     <c>EnsureModelAsync</c> is optional for this model (it completes at once and checks nothing, because there are
-///     no files). Dispose the model with <c>using</c> like every <see cref="IWordSenseModel"/> (it holds nothing to
-///     release, but afterwards <c>EnsureModelAsync</c> and <c>ClassifyAsync</c> throw
+///     The built-in model, <see cref="BasicWordSenseModel"/>. Create it and call <c>ClassifyAsync</c>; the model
+///     needs no files and no preparation step, so it does not implement <see cref="IDownloadableWordSenseModel"/> and has
+///     no <c>EnsureModelAsync</c>. Dispose the model with <c>using</c> like every <see cref="IWordSenseModel"/> (it holds nothing to
+///     release, but afterwards <c>ClassifyAsync</c> throws
 ///     <see cref="ObjectDisposedException"/>, from the call itself, not through a returned task, and before any other
 ///     check, so even with an already cancelled token). Disposing while a classification is running is safe: new calls
 ///     throw at once, and a call that is already running completes normally. The model throws every exception of
 ///     <c>ClassifyAsync</c> (null list, null element, <see cref="OperationCanceledException"/> for a token that is
-///     cancelled at the start or between sentence segments) from the call itself. With a token that is already
-///     cancelled, <c>EnsureModelAsync</c> returns a cancelled task; otherwise the token is ignored. It does everything
+///     cancelled at the start or between sentence segments) from the call itself. It does everything
 ///     synchronously on the calling thread (the returned task is already complete) and needs no files and no network,
-///     so the mirror, the model-directory and the <c>WORDSENSE_MIRROR_*</c> environment settings of the encoder
+///     so the download options, the model-directory and the <c>WORDSENSE_MIRROR_*</c> environment settings of the encoder
 ///     packages do not apply to it. It is safe for concurrent use.
+///     </para>
+///     <para>
+///     The optional capability and the typed exceptions. A model that needs files (MiniLM and BertBaseCased)
+///     implements <see cref="IDownloadableWordSenseModel"/>. Where you hold the concrete type, call
+///     <c>await model.EnsureModelAsync();</c> directly; where you hold only an <see cref="IWordSenseModel"/>, ask for the
+///     capability: <c>if (model is IDownloadableWordSenseModel downloadable) { await downloadable.EnsureModelAsync(); }</c>.
+///     The explicit call is optional, because <c>ClassifyAsync</c> ensures lazily; it is for controlling when the
+///     download happens (at startup, before going offline, through a mirror with <see cref="DownloadOptions"/>) and for
+///     handling failures up front. The failures are <see cref="WordSenseException"/>s that keep the original exception
+///     as <see cref="Exception.InnerException"/>: <see cref="ModelUnavailableException"/> (the files could not be
+///     obtained), <see cref="ModelIntegrityException"/> (a file or embedded resource is damaged or does not match its
+///     pinned SHA-256) and <see cref="DownloadConfigurationException"/> (invalid download settings; not an
+///     <see cref="ArgumentException"/>). Mistakes in a call keep the usual .NET exceptions.
 ///     </para>
 ///     <para>
 ///     What the built-in model does. The model splits a list into sentence segments at the tokens <c>"."</c>,
@@ -95,10 +110,10 @@ namespace DemaConsulting.WordSense;
 ///     0.03 ms; an encoder model opens its ONNX
 ///     session on the first classification that needs it (about 0.4 s for MiniLM, about 0.5 s for BertBaseCased), after
 ///     the files are ensured: <c>ClassifyAsync</c> does that itself when a word needs the model (with the default
-///     mirror settings), or call <c>EnsureModelAsync</c> first. A word list without an ambiguous word never touches
+///     download settings), or call <c>EnsureModelAsync</c> of the model first. A word list without an ambiguous word never touches
 ///     model files. The built-in model has no files, so it needs no
-///     preceding <c>EnsureModelAsync</c>; for the encoder models it is optional too (call it to fail early or to pass a
-///     <see cref="MirrorOptions"/>). Hashing the model files takes about 30 ms (MiniLM) and about 110 ms (BertBaseCased)
+///     preparation; for the encoder models the explicit <c>EnsureModelAsync</c> is optional too (call it to fail early or to pass
+///     <see cref="DownloadOptions"/>). Hashing the model files takes about 30 ms (MiniLM) and about 110 ms (BertBaseCased)
 ///     with a warm file cache. The encoder models run on the CPU only.
 ///     </para>
 ///     <para>
@@ -201,7 +216,6 @@ namespace DemaConsulting.WordSense;
 ///     }
 ///
 ///     using IWordSenseModel model = new BasicWordSenseModel();
-///     await model.EnsureModelAsync();
 ///     ClassifyResult[] results = await model.ClassifyAsync(["They", "will", "record", "the", "record", "."]);
 ///     </code>
 ///     Tokenizing text: a reference tokenizer (a word, a number with separators, or one other character per token).

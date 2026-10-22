@@ -243,6 +243,57 @@ public class BasicTablesTests
     }
 
     /// <summary>
+    ///     The embedded table loads from its own resource stream.
+    /// </summary>
+    [Fact]
+    public void BasicTables_LoadEmbedded_EmbeddedResource_Loads()
+    {
+        // Arrange
+        using var stream = typeof(BasicTables).Assembly.GetManifestResourceStream(BasicTables.ResourceName);
+
+        // Act
+        var tables = BasicTables.LoadEmbedded(stream);
+
+        // Assert
+        Assert.NotEmpty(tables.Words);
+    }
+
+    /// <summary>
+    ///     A missing embedded table is reported as <see cref="ModelIntegrityException"/> that carries the original
+    ///     <see cref="InvalidDataException"/>.
+    /// </summary>
+    [Fact]
+    public void BasicTables_LoadEmbedded_MissingResource_ThrowsModelIntegrity()
+    {
+        // Arrange / Act
+        var failure = Assert.Throws<ModelIntegrityException>(() => BasicTables.LoadEmbedded(null));
+
+        // Assert
+        Assert.IsType<InvalidDataException>(failure.InnerException);
+        Assert.Contains("missing", failure.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A corrupt or foreign embedded table (bytes that are not a table, and a table of another inventory) is reported
+    ///     as <see cref="ModelIntegrityException"/> that carries the original <see cref="InvalidDataException"/>.
+    /// </summary>
+    /// <param name="toyTable">Whether to use a well-formed table for another inventory, instead of bytes that are not a table.</param>
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void BasicTables_LoadEmbedded_CorruptOrForeignResource_ThrowsModelIntegrity(bool toyTable)
+    {
+        // Arrange
+        using var corrupt = new MemoryStream(toyTable ? TestTables.Default() : "not a table at all"u8.ToArray());
+
+        // Act
+        var failure = Assert.Throws<ModelIntegrityException>(() => BasicTables.LoadEmbedded(corrupt));
+
+        // Assert: the original exception is kept
+        Assert.IsType<InvalidDataException>(failure.InnerException);
+    }
+
+    /// <summary>
     ///     A table trained for another analysis inventory is rejected, and the message names both hashes.
     /// </summary>
     [Fact]

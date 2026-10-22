@@ -84,7 +84,21 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Image order and lookup** (`Image_Spellings_AreSortedByUtf8Bytes`, `Image_Find_ReturnsOwnIndex`): the spelling index
   is sorted by UTF-8 bytes and every spelling is found at its own index.
 - **Corrupt image is rejected** (`Image_Corruption_IsRejected`): a wrong magic number, an unsupported version, a
-  flipped byte and a truncated image each throw `InvalidDataException`.
+  flipped byte and a truncated image each throw `InvalidDataException` from the image reader; `WordLexicon` reports the
+  same damage of its embedded resource as `ModelIntegrityException` (see the next scenarios).
+- **Embedded image opens** (`WordLexicon_OpenImage_EmbeddedResource_Opens`): the image opens from its own resource
+  stream and has spellings.
+- **Missing or corrupt embedded image** (`WordLexicon_OpenImage_MissingResource_ThrowsModelIntegrity`,
+  `WordLexicon_OpenImage_CorruptResource_ThrowsModelIntegrity`, theory): a missing resource stream throws
+  `ModelIntegrityException` whose message says the image is missing; bytes that are not an image, and a real image with
+  a flipped byte, throw `ModelIntegrityException`; the inner exception is the original `InvalidDataException`.
+- **Damaged catalog** (`WordLexicon_ReadCatalog_DamagedCatalog_ThrowsModelIntegrity`): a read of the sense catalog that
+  fails with `InvalidDataException` is reported as `ModelIntegrityException` carrying that exception, while another
+  exception passes unchanged and a successful read returns its value.
+- **Senses carry no respelling** (`WordLexicon_SensesOf_RealImage_ReturnsSensesWithoutRespelling`): the senses of `bank`
+  as a noun are listed from the real image through the integrity mapping, one has an OEWN key and the first is found
+  again by its id and equals the listed one; the image format and its respelling sections are unchanged and only the
+  public records no longer expose the respelling.
 - **Image failure matrix** (`Image_TruncatedAtEverySectionBoundary_IsRejected`, `Image_WrongHash_IsRejectedByContentHashOnly`,
   `Image_CountMismatch_IsRejected`, `Image_SenseWithUnknownGroup_IsRejected`,
   `Image_GroupOfOneSenseOrAllSenses_IsRejected`, `Image_GroupIdWithoutMarker_IsRejected`,

@@ -334,7 +334,8 @@ sections:
 
       - id: WordSense-Lib-ModelFiles
         title: >-
-          The system shall obtain the files of an encoder model on first use from a user-supplied mirror or the
+          The system shall obtain the files of an encoder model on first use (or when the caller ensures the model
+          up front with DownloadOptions) from a user-supplied mirror or the
           public repository copy, verify each against its pinned SHA-256 digest, store them in a per-user location
           and use them offline afterwards.
         tags: [system]
@@ -347,6 +348,23 @@ sections:
         tests:
           - ModelDownloader_EnsureAsync_MirrorFails_FallsBackToGitHub
           - ModelDownloader_EnsureAsync_HashMismatch_FallsThroughAndKeepsNothingBad
+
+      - id: WordSense-Lib-Failures
+        title: >-
+          The system shall report a model whose files cannot be obtained, fail verification or are configured wrongly
+          with typed exceptions that derive from one base exception and keep the original exception as inner
+          exception.
+        tags: [system]
+        justification: |
+          Callers of any model package handle the failures of the model files and of the download settings by cause,
+          in one place, without depending on the platform exception types of the sources.
+        children:
+          - WordSense-Core-Failures
+          - WordSense-Onnx-Failures
+        tests:
+          - MiniLMWordSenseModel_EnsureModelAsync_MissingDirectory_ThrowsModelUnavailable
+          - OnnxWordSenseModel_EnsureModelAsync_AlteredFile_ThrowsModelIntegrity
+          - OnnxWordSenseModel_EnsureModelAsync_InvalidOptions_ThrowsDownloadConfiguration
 
       - id: WordSense-Lib-ReproducibleBuild
         title: >-
@@ -419,8 +437,10 @@ sections:
       - id: WordSense-Lib-Documentation
         title: >-
           The documentation shall show a README usage sample whose code and output for each model are verified against
-          the library, and an appendix that lists every trained lemma with its senses (id, group, OEWN key, gloss and
-          respelling) and the forms of the lemma, and is never stale.
+          the library, README samples for the optional preparation step of a model (called on the concrete model type
+          and through the capability interface) that are compiled against the library, and an appendix that lists
+          every trained lemma with its senses (id, group, OEWN key and gloss) and the forms of the lemma, and is never
+          stale.
         tags: [system]
         justification: |
           A usage example that no longer compiles or prints something else misleads new users, and a hand-written
@@ -430,6 +450,8 @@ sections:
           - WordSense-WordSenseBuilder-Appendix
         tests:
           - WordSense_Readme_CodeBlocks_MatchCompiledSamples
+          - WordSense_Readme_DownloadBlock_MatchesCompiledSample
+          - WordSense_Readme_CapabilityBlock_MatchesCompiledSample
           - WordSense_Readme_BasicOutput_MatchesReadme
           - WordSense_Readme_MiniLMOutput_MatchesReadme
           - WordSense_Readme_BertBaseCasedOutput_MatchesReadme

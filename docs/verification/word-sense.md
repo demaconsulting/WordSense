@@ -56,8 +56,9 @@ project references show the layering. Requirements-to-test coverage is tracked b
 
 ### End-to-End Classification with a Real Model
 
-The MiniLM and BertBaseCased test projects each create the model from the committed model directory, call
-`EnsureModelAsync` and `ClassifyAsync`, and classify the words of "They will record the record." The first `record`
+The MiniLM and BertBaseCased test projects each create the model from the committed model directory, call the optional
+`EnsureModelAsync` of the concrete model and `ClassifyAsync`, and classify the words of "They will record the record."
+The first `record`
 must be a verb and the second a noun (`WordSense_Classifier_EndToEnd_ClassifiesRecord`). The result of each word
 carries `IsKnown`, its analyses, the selected analysis, its level, the group and sense ids that the level allows and a
 confidence (`WordSense_Classifier_EndToEnd_ResultCarriesAnalysisLevelAndSense`). This scenario is run on each CI
@@ -104,7 +105,25 @@ model scored is answered by the primary result and every other word by the compl
 `WordSenseContracts_FallbackWordSenseModel_PrimaryChoseOnlyAnalysis_UsesFallback`). The MiniLM and BertBaseCased test
 projects classify an ambiguous word that the encoder does not score and find the result of the Basic model
 (`MiniLMWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback`,
-`BertBaseCasedWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback`).
+`BertBaseCasedWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback`). The composition is itself an
+`IDownloadableWordSenseModel` and forwards the optional ensure only to the members that have the capability (the encoder
+model, not the Basic model), starting every capable member before any failure is reported and reporting the first
+failure unchanged
+(`WordSenseContracts_FallbackWordSenseModel_EnsureModelAsync_OnlyCapableMemberEnsured`,
+`WordSenseContracts_FallbackWordSenseModel_EnsureModelAsync_BothFail_ReportsAfterBothRan`).
+
+### Model Failures Are Typed
+
+A failure of the model files or of the download settings is reported by every model package with typed exceptions that
+derive from the abstract `WordSenseException` and keep the original exception as inner exception (system requirement
+`WordSense-Lib-Failures`). A model directory that does not exist is `ModelUnavailableException` through the public
+MiniLM model (`MiniLMWordSenseModel_EnsureModelAsync_MissingDirectory_ThrowsModelUnavailable`); a file of a supplied
+directory with the wrong content is `ModelIntegrityException`
+(`OnnxWordSenseModel_EnsureModelAsync_AlteredFile_ThrowsModelIntegrity`); an invalid option is
+`DownloadConfigurationException`, which is not an `ArgumentException`
+(`OnnxWordSenseModel_EnsureModelAsync_InvalidOptions_ThrowsDownloadConfiguration`). The core package reports a damaged
+or missing embedded resource as `ModelIntegrityException`, and the hierarchy itself is verified in
+`WordSenseExceptions_Hierarchy_DerivesFromWordSenseException` (see the core and Onnx subsystem documents).
 
 ### Sense Catalog Is Consistent
 
@@ -138,7 +157,12 @@ packages (`MiniLMWordSenseModel_Assembly_ReferencesCoreAndOnnx`,
 ### Packages Share One Contract
 
 A model of each package (Basic in the core package, MiniLM, BertBaseCased) is used through `IWordSenseModel`
-only. For a word whose lemma and part of speech have a single sense every package gives the same answer, the sense at
+only, which declares classification and disposal. The preparation step is the optional capability
+`IDownloadableWordSenseModel`: the encoder models have it and the Basic model does not
+(`BasicWordSenseModel_IsNotDownloadable`, `OnnxWordSenseModel_IsDownloadable`, `MiniLMWordSenseModel_IsDownloadable`,
+`BertBaseCasedWordSenseModel_IsDownloadable`), and the contract itself has no ensure member
+(`WordSenseContracts_IWordSenseModel_HasNoEnsureMember`). For a word whose lemma and part of speech have a single sense
+every package gives the same answer, the sense at
 level sense with confidence 1 and one analysis and one sense with probability 1 (this includes the determiners such as
 `the`, in any case); for an unknown word every
 package gives the word, not known, no analyses, no details, level none and confidence 0.
@@ -153,7 +177,13 @@ for another model id, dimension or sense inventory is refused when loaded.
 
 The README sample is extracted by marker from `README.md` and compared with the compiled copies in the test projects
 after normalizing line
-endings and trailing white space. The set of markers must equal the set of checked samples. The sample runs against
+endings and trailing white space. The Quick Start sample does not call `EnsureModelAsync`, because `ClassifyAsync`
+prepares the model on first need. Two more compile-only samples show the optional preparation step: the sample marked
+`download` calls `await model.EnsureModelAsync();` (and the overload with `DownloadOptions`) on the concrete MiniLM
+model, and the sample marked `capability` asks an `IWordSenseModel` for `IDownloadableWordSenseModel` with a type check
+(`WordSense_Readme_DownloadBlock_MatchesCompiledSample`, `WordSense_Readme_CapabilityBlock_MatchesCompiledSample`). The
+set of markers (`readme`, `download`, `capability`) must equal the set of checked samples
+(`WordSense_Readme_SampleMarkers_AreAllChecked`). The Quick Start sample runs against
 each model (a stand-in model class wraps Basic, or the committed MiniLM or BertBaseCased model) and gives the output
 documented for it. The word, part of speech, level and sense id of every output line must match the README exactly; the
 confidence is compared numerically, within 0.01 for Basic (deterministic managed code) and within 0.10 for the encoder

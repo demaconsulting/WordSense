@@ -1,6 +1,6 @@
 package WordSense {
     part def OnnxWordSenseModel {
-        doc /* The public abstract base of the encoder models, usable on its own: it makes the model files available and verified, opens the ONNX encoder and embedded weights on first use, and classifies (ensuring the files lazily when a word needs the encoder); it references only the core package, and disposing it releases the encoder and cancels a download in flight. */
+        doc /* The public abstract base of the encoder models, usable on its own and implementing IDownloadableWordSenseModel: it makes the model files available and verified, opens the ONNX encoder and embedded weights on first use, and classifies (ensuring the files lazily when a word needs the encoder), reporting its failures as the typed core exceptions (ModelUnavailableException, ModelIntegrityException, DownloadConfigurationException); it references only the core package, and disposing it releases the encoder and cancels a download in flight. */
 
         comment sourceRef /* Source: src/DemaConsulting.WordSense.Onnx/OnnxWordSenseModel.cs */
         comment testRef /* Test: test/DemaConsulting.WordSense.Onnx.Tests/OnnxWordSenseModelTests.cs */

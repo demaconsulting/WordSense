@@ -14,7 +14,7 @@ namespace WordSense.Builder;
 ///     The appendix lists every trained lemma (a lemma that has sentences in <c>corpus/anchors</c>)
 ///     with its senses in inventory order, the order of Open English WordNet (the position of the sense in its entry, the
 ///     project senses last): the id, the group (none when the sense is in no
-///     group), the Open English WordNet sense key (a project sense has none), the respelling when there is one and the
+///     group), the Open English WordNet sense key (a project sense has none) and the
 ///     gloss. The senses come from the word image that <see cref="ImageCompiler"/> compiles from the data folder, so
 ///     the appendix lists exactly what the library answers; the glosses are not in the image and are read from the
 ///     <c>sense</c>, <c>sense_label</c>, <c>entry</c> and <c>gloss</c> tables. The recognized forms of a lemma come from
@@ -246,16 +246,6 @@ internal static class AppendixGenerator
             "model cannot tell the senses of a group apart it answers with the group, which is the level between the part " +
             "of speech and the sense.");
 
-        lines.Add("### Pronunciations");
-        lines.Add(string.Empty);
-        AddParagraph(
-            lines,
-            "A sense has a **respelling**, a short plain spelling of its pronunciation, only when its pronunciation " +
-            "differs from the other senses of its lemma, for example the noun and the verb of a heteronym. " +
-            "The library has no phonetic data of its own; a consumer such as a speech synthesizer keeps its own " +
-            "pronunciations keyed by sense id. A sense without a respelling shows none below, and a group never mixes " +
-            "two respellings.");
-
         lines.Add("### Forms");
         lines.Add(string.Empty);
         AddParagraph(
@@ -311,7 +301,7 @@ internal static class AppendixGenerator
             $"The library supports {lemmas.Count.ToString("N0", Inv)} lemmas with " +
             $"{lemmas.Sum(l => l.Senses.Count).ToString("N0", Inv)} senses in total, listed alphabetically. Each lemma lists " +
             "its parts of speech and the forms it recognizes. Under it, every sense gives its id and part of speech, its " +
-            "group, its Open English WordNet sense key (a project sense has none), its respelling when it has one and " +
+            "group, its Open English WordNet sense key (a project sense has none) and " +
             "its gloss, in inventory order (the order of Open English WordNet within a part of speech, project senses last).");
 
         foreach (var letter in lemmas.GroupBy(l => char.ToUpperInvariant(l.Lemma[0])).OrderBy(g => g.Key))
@@ -338,7 +328,7 @@ internal static class AppendixGenerator
     }
 
     /// <summary>
-    ///     Describes a sense by its id, part of speech, group, key, respelling and gloss.
+    ///     Describes a sense by its id, part of speech, group, key and gloss.
     /// </summary>
     private static string Describe(Listed listed)
     {
@@ -346,11 +336,6 @@ internal static class AppendixGenerator
         var text = $"`{sense.SenseId}` ({sense.PartOfSpeech.ToString().ToLowerInvariant()}); group: " +
             (sense.GroupId is null ? "none" : $"`{sense.GroupId}`") + "; key: " +
             (sense.SenseKey is null ? "project sense" : $"`{sense.SenseKey}`");
-        if (sense.Respelling is not null)
-        {
-            text += $"; respelling: `{sense.Respelling}`";
-        }
-
         return text + "; gloss: " + Escape(listed.Gloss);
     }
 

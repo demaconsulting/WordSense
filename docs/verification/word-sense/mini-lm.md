@@ -62,14 +62,29 @@ The weights embedded for `all-MiniLM-L6-v2-int8` load for the model id and hidde
 image: the inventory hash is the one of the shipped image and every sense of every lemma resolves, with nothing
 dropped (`EmbeddedWeights_MiniLM_MatchesWordImage`).
 
+#### Model Offers the Optional Preparation Step
+
+The model is an `IDownloadableWordSenseModel` (`MiniLMWordSenseModel_IsDownloadable`), so a caller that holds only an
+`IWordSenseModel` can ask for the capability with a type check; `EnsureModelAsync` forwards to the encoder model, and a
+model directory that does not exist is reported as `ModelUnavailableException`
+(`MiniLMWordSenseModel_EnsureModelAsync_MissingDirectory_ThrowsModelUnavailable`). The download behavior itself is
+verified once for all models in the Onnx subsystem.
+
 #### README Sample Matches and Runs
 
 The code block marked `<!-- sample:readme -->` in `README.md` equals the compiled README sample after normalizing line
 endings and trailing white space, and the compiled sample runs with the Basic model, with the committed MiniLM model
 and with the committed BertBaseCased model; the lines it writes equal the blocks marked `<!-- output:basic -->`,
-`<!-- output:minilm -->` and `<!-- output:bertbasecased -->`. The two commented alternatives in the sample name model
-classes that exist and can be created. The set of markers in `README.md` must equal the set of checked samples
-(`ReadmeSampleTests`).
+`<!-- output:minilm -->` and `<!-- output:bertbasecased -->`. The Quick Start sample does not call
+`EnsureModelAsync`: `ClassifyAsync` prepares the model on first need. The two commented alternatives in the sample name
+model classes that exist and can be created. Two further compile-only samples show the optional preparation step: the
+block marked `<!-- sample:download -->` calls `await model.EnsureModelAsync();` (and the overload with
+`DownloadOptions`) directly on the concrete MiniLM model, and the block marked `<!-- sample:capability -->` asks an
+`IWordSenseModel` for the capability with `if (model is IDownloadableWordSenseModel downloadable)` and calls
+`await downloadable.EnsureModelAsync();`; each equals its compiled sample
+(`WordSense_Readme_DownloadBlock_MatchesCompiledSample`, `WordSense_Readme_CapabilityBlock_MatchesCompiledSample`).
+The set of markers in `README.md` (`readme`, `download`, `capability`) must equal the set of checked samples
+(`WordSense_Readme_SampleMarkers_AreAllChecked`, `ReadmeSampleTests`).
 
 #### XML Documentation Examples Compile
 

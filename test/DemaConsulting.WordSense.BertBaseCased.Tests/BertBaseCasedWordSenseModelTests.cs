@@ -190,6 +190,41 @@ public class BertBaseCasedWordSenseModelTests
     }
 
     /// <summary>
+    ///     The model has the downloadable capability, so the explicit ensure is available through the interface.
+    /// </summary>
+    [Fact]
+    public void BertBaseCasedWordSenseModel_IsDownloadable()
+    {
+        // Arrange
+        using var model = new BertBaseCasedWordSenseModel();
+
+        // Act
+        IWordSenseModel contract = model;
+
+        // Assert
+        Assert.IsAssignableFrom<IDownloadableWordSenseModel>(contract);
+    }
+
+    /// <summary>
+    ///     A model directory that does not exist is reported by the public ensure as
+    ///     <see cref="ModelUnavailableException"/>: the typed exception of the encoder reaches the caller through the
+    ///     composition.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BertBaseCasedWordSenseModel_EnsureModelAsync_MissingDirectory_ThrowsModelUnavailable()
+    {
+        // Arrange
+        using var model = new BertBaseCasedWordSenseModel(Path.Join(Path.GetTempPath(), "wordsense-missing-" + Guid.NewGuid().ToString("N")));
+
+        // Act
+        var failure = await Assert.ThrowsAsync<ModelUnavailableException>(() => model.EnsureModelAsync(null, TestContext.Current.CancellationToken));
+
+        // Assert: the original exception is kept
+        Assert.IsAssignableFrom<IOException>(failure.InnerException);
+    }
+
+    /// <summary>
     ///     A disposed model rejects <c>ClassifyAsync</c> and disposing again is harmless.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>

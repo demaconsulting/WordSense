@@ -54,3 +54,16 @@ sections:
                 tests:
                   - BasicTables_Default_LoadsEmbeddedTable
                   - BasicTables_Default_ShippedTable_ResolvesEveryCueClass
+
+              - id: WordSense-Core-BasicTables-Integrity
+                title: >-
+                  BasicTables shall report a missing, corrupt or foreign embedded table as ModelIntegrityException that
+                  carries the original InvalidDataException as inner exception.
+                tags: [unit]
+                justification: |
+                  The embedded table is part of the built-in model; a damaged or mismatched package must surface as the
+                  typed integrity failure that callers handle.
+                tests:
+                  - BasicTables_LoadEmbedded_EmbeddedResource_Loads
+                  - BasicTables_LoadEmbedded_MissingResource_ThrowsModelIntegrity
+                  - BasicTables_LoadEmbedded_CorruptOrForeignResource_ThrowsModelIntegrity

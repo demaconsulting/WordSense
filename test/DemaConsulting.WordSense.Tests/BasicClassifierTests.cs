@@ -14,7 +14,7 @@ public class BasicClassifierTests
     private static readonly WordDetails DeerSing = new("deer", PartOfSpeech.Noun, "Number=Sing");
     private static readonly WordDetails DeerPlur = new("deer", PartOfSpeech.Noun, "Number=Plur");
 
-    private static readonly SenseInfo CatSense = new("cat#feline", null, "cat", PartOfSpeech.Noun, "cat%1:05:00::", null);
+    private static readonly SenseInfo CatSense = new("cat#feline", null, "cat", PartOfSpeech.Noun, "cat%1:05:00::");
 
     private static readonly Dictionary<string, ImmutableArray<WordDetails>> Lexicon = new(StringComparer.Ordinal)
     {
@@ -33,12 +33,12 @@ public class BasicClassifierTests
     private static readonly Dictionary<(string Lemma, PartOfSpeech Pos), ImmutableArray<SenseInfo>> Senses = new()
     {
         [("cat", PartOfSpeech.Noun)] = [CatSense],
-        [("deer", PartOfSpeech.Noun)] = [new("deer#animal", null, "deer", PartOfSpeech.Noun, "deer%1:05:00::", null)],
+        [("deer", PartOfSpeech.Noun)] = [new("deer#animal", null, "deer", PartOfSpeech.Noun, "deer%1:05:00::")],
         [("bank", PartOfSpeech.Noun)] =
         [
-            new("bank#institution", "bank#money", "bank", PartOfSpeech.Noun, null, null),
-            new("bank#building", "bank#money", "bank", PartOfSpeech.Noun, null, null),
-            new("bank#slope", null, "bank", PartOfSpeech.Noun, null, null),
+            new("bank#institution", "bank#money", "bank", PartOfSpeech.Noun, null),
+            new("bank#building", "bank#money", "bank", PartOfSpeech.Noun, null),
+            new("bank#slope", null, "bank", PartOfSpeech.Noun, null),
         ],
     };
 

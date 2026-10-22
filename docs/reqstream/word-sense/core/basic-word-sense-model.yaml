@@ -10,26 +10,26 @@ sections:
             requirements:
               - id: WordSense-Core-BasicWordSenseModel-NoFiles
                 title: >-
-                  BasicWordSenseModel shall complete its preparation step without files or network access, ignore any
-                  mirror, and report cancellation requested before the call.
+                  BasicWordSenseModel shall need no files, no network access and no preparation step, and shall not
+                  offer the downloadable-model capability.
                 tags: [unit]
                 justification: |
-                  The model has nothing to obtain, so preparation must never touch the network or the file system.
+                  The model has nothing to obtain, so it must never touch the network or the file system, and a
+                  preparation step that does nothing would only mislead callers.
                 tests:
-                  - BasicWordSenseModel_EnsureModelAsync_CompletesWithoutFiles
-                  - BasicWordSenseModel_EnsureModelAsync_IgnoresMirror
-                  - BasicWordSenseModel_EnsureModelAsync_Cancelled_ReturnsCanceledTask
+                  - BasicWordSenseModel_IsNotDownloadable
+                  - BasicWordSenseModel_ClassifyAsync_WithoutPreparation_Works
 
               - id: WordSense-Core-BasicWordSenseModel-Classify
                 title: >-
-                  BasicWordSenseModel shall classify on demand, with or without a prior preparation call, answering
-                  lexicon-only words without any preparation, and shall be safe for concurrent use.
+                  BasicWordSenseModel shall classify on demand, answering lexicon-only words without any
+                  preparation, and shall be safe for concurrent use.
                 tags: [unit]
                 justification: |
                   A model without resources should be as simple to use as a plain object.
                 tests:
                   - BasicWordSenseModel_ClassifyAsync_ReturnsParallelResults
-                  - BasicWordSenseModel_ClassifyAsync_WithoutEnsure_Works
+                  - BasicWordSenseModel_ClassifyAsync_WithoutPreparation_Works
                   - BasicWordSenseModel_ClassifyAsync_LexiconOnlyWords_NeverNeedEnsure
                   - BasicWordSenseModel_ClassifyAsync_IsThreadSafe
                   - BasicWordSenseModel_ClassifyAsync_NullWords_Throws
@@ -38,8 +38,8 @@ sections:
               - id: WordSense-Core-BasicWordSenseModel-Dispose
                 title: >-
                   BasicWordSenseModel shall tolerate repeated and concurrent disposal, let a classification that is
-                  already running complete, and after disposal shall throw ObjectDisposedException from its
-                  preparation step and from ClassifyAsync.
+                  already running complete, and after disposal shall throw ObjectDisposedException from
+                  ClassifyAsync.
                 tags: [unit]
                 justification: |
                   The model honors the disposal contract of IWordSenseModel, so code that handles any model behaves the
@@ -49,4 +49,3 @@ sections:
                   - BasicWordSenseModel_Dispose_Concurrent_IsHarmless
                   - BasicWordSenseModel_Dispose_DuringClassification_RunningCallCompletes
                   - BasicWordSenseModel_ClassifyAsync_AfterDispose_ThrowsObjectDisposed
-                  - BasicWordSenseModel_EnsureModelAsync_AfterDispose_ThrowsObjectDisposed

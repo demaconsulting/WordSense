@@ -217,3 +217,19 @@ sections:
                   is not the one it stored them for.
                 tests:
                   - WordLexicon_Version_IsStableLowerCaseHex
+
+              - id: WordSense-Core-WordLexicon-Integrity
+                title: >-
+                  WordLexicon shall report a missing or corrupt embedded word image or sense catalog as
+                  ModelIntegrityException that carries the original InvalidDataException as inner exception.
+                tags: [unit]
+                justification: |
+                  The embedded image is part of the model; a damaged or mismatched package must surface as the typed
+                  integrity failure that callers handle, not as a platform exception type that says nothing about the
+                  cause.
+                tests:
+                  - WordLexicon_OpenImage_EmbeddedResource_Opens
+                  - WordLexicon_OpenImage_MissingResource_ThrowsModelIntegrity
+                  - WordLexicon_OpenImage_CorruptResource_ThrowsModelIntegrity
+                  - WordLexicon_ReadCatalog_DamagedCatalog_ThrowsModelIntegrity
+                  - WordLexicon_SensesOf_RealImage_ReturnsSensesWithoutRespelling

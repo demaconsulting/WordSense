@@ -1,6 +1,7 @@
 ---
-# WordSenseContracts unit requirements (IWordSenseModel, FallbackWordSenseModel, MirrorOptions, ClassifyResult,
-# AnalysisCandidate, SenseCandidate, SenseLevel, WordDetails, PartOfSpeech, SenseInfo and SenseGroup)
+# WordSenseContracts unit requirements (IWordSenseModel, IDownloadableWordSenseModel, FallbackWordSenseModel,
+# DownloadOptions, the typed exceptions, ClassifyResult, AnalysisCandidate, SenseCandidate, SenseLevel, WordDetails,
+# PartOfSpeech, SenseInfo and SenseGroup)
 
 sections:
   - title: WordSense Requirements
@@ -125,9 +126,10 @@ sections:
                   FallbackWordSenseModel shall compose a primary and a fallback model: classify the whole word list
                   with both, answer each word with the complete result of the primary model when the primary model
                   scored senses for it (its selected analysis lists scored senses, or its level is Group or Sense) and
-                  otherwise with the complete result of the fallback model, never a mixture of the two, ensure both
-                  models concurrently (both always run their ensure step, and a failure of either is reported after
-                  both ran), dispose both models once, reject a null model, a null list and a null element,
+                  otherwise with the complete result of the fallback model, never a mixture of the two, ensure its
+                  members as WordSense-Core-WordSenseContracts-FallbackEnsure states (every member that can be
+                  prepared is prepared concurrently, and a failure of one is reported after all ran), dispose both
+                  models once, reject a null model, a null list and a null element,
                   and reject a model whose result array is not parallel to the input.
                 tags: [unit]
                 justification: |
@@ -144,43 +146,103 @@ sections:
                   - WordSenseContracts_FallbackWordSenseModel_ClassifyAsync_InvalidArguments_Throw
                   - WordSenseContracts_FallbackWordSenseModel_ClassifyAsync_ResultNotParallel_Throws
 
-              - id: WordSense-Core-WordSenseContracts-Model
+              - id: WordSense-Core-WordSenseContracts-FallbackEnsure
                 title: >-
-                  IWordSenseModel shall provide an asynchronous preparation step and a classification method that
-                  ensures the model lazily on first need, and shall be disposable so that the model owns the lifetime
-                  of its resources, with idempotent thread-safe disposal after which both methods throw
-                  ObjectDisposedException.
+                  FallbackWordSenseModel shall implement IDownloadableWordSenseModel and forward its ensure step, with
+                  the same download options and token, only to the members that implement
+                  IDownloadableWordSenseModel (starting every such member before any failure is reported, and reporting
+                  the exception of the first failed member unchanged), shall skip a member that lacks the capability,
+                  and shall complete at once (or return a cancelled task for an already cancelled token) when no member
+                  has it.
                 tags: [unit]
                 justification: |
-                  A single contract serves models with no files and models that download files; the model
-                  owns the encoder session and downloader state, so one disposal point serves every model without
-                  casts, and callers never need to know which model they hold.
+                  The composition of an encoder model and the Basic model must offer the ensure step of the encoder
+                  without forcing the Basic model to pretend to have files, and a typed failure of a member must reach
+                  the caller unchanged so that it can be handled by type.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_IsDownloadable
+                  - WordSenseContracts_FallbackWordSenseModel_EnsureModelAsync_OnlyCapableMemberEnsured
+                  - WordSenseContracts_FallbackWordSenseModel_EnsureModelAsync_NoCapableMember_CompletesImmediately
+                  - WordSenseContracts_FallbackWordSenseModel_EnsureModelAsync_NoCapableMemberCancelled_ReturnsCanceledTask
+                  - WordSenseContracts_FallbackWordSenseModel_EnsureModelAsync_BothFail_ReportsAfterBothRan
+
+              - id: WordSense-Core-WordSenseContracts-Model
+                title: >-
+                  IWordSenseModel shall provide a classification method that ensures what the model needs lazily on
+                  first need and shall be disposable so that the model owns the lifetime of its resources, with
+                  idempotent thread-safe disposal after which ClassifyAsync throws ObjectDisposedException, and
+                  shall declare no preparation step.
+                tags: [unit]
+                justification: |
+                  A single classification contract serves models with no files and models that download files; the
+                  model owns the encoder session and downloader state, so one disposal point serves every model
+                  without casts, and a model that needs no files is not forced to offer a preparation step that does
+                  nothing.
                 tests:
                   - WordSenseContracts_IWordSenseModel_IsDisposable
+                  - WordSenseContracts_IWordSenseModel_HasNoEnsureMember
                   - WordSenseContracts_IWordSenseModel_TestDouble_IsUsableThroughTheInterface
                   - BasicWordSenseModel_ClassifyAsync_ReturnsParallelResults
                   - BasicWordSenseModel_Dispose_CalledTwice_IsHarmless
                   - BasicWordSenseModel_ClassifyAsync_AfterDispose_ThrowsObjectDisposed
-                  - BasicWordSenseModel_EnsureModelAsync_AfterDispose_ThrowsObjectDisposed
                   - OnnxWordSenseModel_Dispose_CalledTwice_IsHarmless
                   - OnnxWordSenseModel_ClassifyAsync_AfterDispose_ThrowsObjectDisposed
-                  - OnnxWordSenseModel_EnsureModelAsync_AfterDispose_ThrowsObjectDisposed
 
-              - id: WordSense-Core-WordSenseContracts-Mirror
+              - id: WordSense-Core-WordSenseContracts-Downloadable
                 title: >-
-                  MirrorOptions shall be an immutable sealed record describing a mirror base address, optional
-                  credentials or bearer token, store location and timeout, and shall never reveal secrets when
-                  converted to text.
+                  IDownloadableWordSenseModel shall extend IWordSenseModel with an asynchronous EnsureModelAsync that
+                  takes optional DownloadOptions and a cancellation token and makes the files of the model available
+                  and verified, so that a caller that holds only an IWordSenseModel can ask for the capability with a
+                  type check, and a model that needs no files shall not offer it.
                 tags: [unit]
                 justification: |
-                  Logs and exception messages must not leak passwords or tokens, and an immutable value is safe to
-                  share between models.
+                  Preparing files up front is optional (ClassifyAsync ensures lazily) and only meaningful for a model
+                  that has files; a separate capability interface keeps the classification contract small, lets the
+                  Basic model stay free of a no-op member, and lets code that is written against the contract reach the
+                  preparation step without a concrete type.
                 tests:
-                  - WordSenseContracts_MirrorOptions_ToString_RedactsSecrets
-                  - WordSenseContracts_MirrorOptions_ToString_HidesUserInfoQueryAndFragment
-                  - WordSenseContracts_MirrorOptions_ToString_NeverPrintsTokenOrCredentials
-                  - WordSenseContracts_MirrorOptions_IsSealedRecord
-                  - WordSenseContracts_MirrorOptions_Defaults_AreNull
+                  - WordSenseContracts_IDownloadableWordSenseModel_ExtendsIWordSenseModel
+                  - WordSenseContracts_IDownloadableWordSenseModel_TestDouble_IsUsableThroughTheInterface
+                  - BasicWordSenseModel_IsNotDownloadable
+                  - OnnxWordSenseModel_IsDownloadable
+                  - OnnxWordSenseModel_EnsureModelAsync_AfterDispose_ThrowsObjectDisposed
+
+              - id: WordSense-Core-WordSenseContracts-DownloadOptions
+                title: >-
+                  DownloadOptions shall be an immutable sealed record describing a mirror base address, optional
+                  credentials or bearer token, store location and timeout, shall accept any values at construction
+                  (the model that uses them validates them), and shall never reveal secrets when converted to text.
+                tags: [unit]
+                justification: |
+                  Logs and exception messages must not leak passwords or tokens, an immutable value is safe to share
+                  between models, and validating in the model that uses the options (where the typed configuration
+                  exception is produced) keeps one place that knows the rules.
+                tests:
+                  - WordSenseContracts_DownloadOptions_ToString_RedactsSecrets
+                  - WordSenseContracts_DownloadOptions_ToString_HidesUserInfoQueryAndFragment
+                  - WordSenseContracts_DownloadOptions_ToString_NeverPrintsTokenOrCredentials
+                  - WordSenseContracts_DownloadOptions_IsSealedRecord
+                  - WordSenseContracts_DownloadOptions_Defaults_AreNull
+                  - WordSenseContracts_DownloadOptions_InvalidValues_AreNotRejectedByTheConstructor
+
+              - id: WordSense-Core-WordSenseContracts-Exceptions
+                title: >-
+                  The core shall define the abstract WordSenseException and its three sealed derived types
+                  ModelUnavailableException, ModelIntegrityException and DownloadConfigurationException (none of them
+                  an ArgumentException), each with the constructors (), (string) and (string, Exception), so that a
+                  failure of the model files or the download settings can be caught as one type or by cause and the
+                  original exception is kept as the inner exception.
+                tags: [unit]
+                justification: |
+                  Callers need to tell an unreachable model, a damaged model and a wrong setting apart without parsing
+                  messages or catching platform exception types that differ between sources; one base type lets them
+                  handle every such failure in one place, and keeping the original exception loses no detail.
+                tests:
+                  - WordSenseExceptions_WordSenseException_IsAbstractPublicException
+                  - WordSenseExceptions_Hierarchy_DerivesFromWordSenseException
+                  - WordSenseExceptions_Constructors_AreTheThreeStandardOnes
+                  - WordSenseExceptions_Constructors_KeepMessageAndInnerException
+                  - WordSenseExceptions_CatchBase_CatchesEveryTypedException
 
               - id: WordSense-Core-WordSenseContracts-Details
                 title: >-
@@ -206,19 +268,20 @@ sections:
               - id: WordSense-Core-WordSenseContracts-SenseInfo
                 title: >-
                   SenseInfo shall describe a sense by its id (lemma#label), its group id (none when the sense is in no
-                  group), its lemma, its part of speech, its OEWN sense key (none for a project sense) and an optional
-                  respelling, and SenseGroup shall describe a group by its id (lemma#group:label), its lemma, its part
-                  of speech, the ids of its senses in inventory order (at least two, never all the senses of its lemma
-                  of its lemma and part of speech) and an optional respelling, both as immutable values with value
-                  equality (a group compares the content and order of its member ids).
+                  group), its lemma, its part of speech and its OEWN sense key (none for a project sense), and
+                  SenseGroup shall describe a group by its id (lemma#group:label), its lemma, its part
+                  of speech and the ids of its senses in inventory order (at least two, never all the senses of its
+                  lemma and part of speech), both as immutable values with value equality (a group compares the
+                  content and order of its member ids), and neither shall expose a respelling.
                 tags: [unit]
                 justification: |
                   Callers resolve the ids of an answer to a sense or a group and read what they need (the key to reach
-                  WordNet-keyed resources, the respelling for pronunciation, the member senses of a group answer)
-                  without a model.
+                  WordNet-keyed resources, the member senses of a group answer) without a model; the pronunciation-era
+                  respelling has no data and is no part of the public surface.
                 tests:
                   - WordSenseContracts_SenseInfo_Construct_ExposesMembers
                   - WordSenseContracts_SenseInfo_ProjectSense_HasNoKey
+                  - WordSenseContracts_SenseInfo_HasNoRespellingMember
                   - WordSenseContracts_SenseGroup_Construct_ExposesMembers
                   - WordSenseContracts_SenseInfo_SameValues_AreEqual
                   - WordSenseContracts_SenseGroup_SameMembers_AreEqual

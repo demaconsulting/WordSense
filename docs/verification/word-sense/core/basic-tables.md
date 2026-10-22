@@ -43,8 +43,16 @@ All scenarios below pass on every platform and target framework of the CI matrix
   (for example the past participle and the present of `read`) resolve to different columns: the column whose feature
   items are all contained in the features of the analysis and that has the most items wins; an analysis without a
   column of its own uses the column with empty features (any features) of its lemma and part of speech.
-- **Embedded table loads** (`BasicTables_Default_LoadsEmbeddedTable`): the table embedded in the assembly loads and has
+- **Embedded table loads** (`BasicTables_Default_LoadsEmbeddedTable`,
+  `BasicTables_LoadEmbedded_EmbeddedResource_Loads`):
+  the table embedded in the assembly loads, from the default access and from its own resource stream, and has
   statistics (words, suffixes and cue tables).
+- **Missing embedded table** (`BasicTables_LoadEmbedded_MissingResource_ThrowsModelIntegrity`): a missing resource
+  stream throws `ModelIntegrityException` whose message says the table is missing and whose inner exception is the
+  original `InvalidDataException`.
+- **Corrupt or foreign embedded table** (`BasicTables_LoadEmbedded_CorruptOrForeignResource_ThrowsModelIntegrity`,
+  theory): bytes that are not a table, and a well-formed table of another inventory, each throw
+  `ModelIntegrityException` that carries the original `InvalidDataException`.
 - **Shipped table resolves** (`BasicTables_Default_ShippedTable_ResolvesEveryCueClass`): every cue analysis of the
   shipped table resolves to an analysis of the embedded word image.
 - **Feature hash** (`FeatureRef_Hash_PrefixAndDeterminism`): the hash of an immediate-neighbor feature equals the hash

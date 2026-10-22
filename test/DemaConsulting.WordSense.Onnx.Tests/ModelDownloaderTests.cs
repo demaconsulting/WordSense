@@ -50,7 +50,7 @@ public sealed class ModelDownloaderTests : IDisposable
 
     private static bool IsMirror(HttpListenerContext context) => context.Request.Url!.AbsolutePath.StartsWith("/mirror/", StringComparison.Ordinal);
 
-    private MirrorOptions Mirror(LocalServer server, string? bearer = null) =>
+    private DownloadOptions Mirror(LocalServer server, string? bearer = null) =>
         new(new Uri(server.BaseUri, "/mirror/"), BearerToken: bearer, StoreRoot: _store, Timeout: TimeSpan.FromSeconds(30));
 
     private static Uri Lfs(LocalServer server) => new(server.BaseUri, "/lfs/");
@@ -199,7 +199,7 @@ public sealed class ModelDownloaderTests : IDisposable
     [Fact]
     public void ModelDownloader_BuildSources_MirrorThenGitHub_UsesDocumentedLayout()
     {
-        var mirror = DownloadMirror.FromOptions(new MirrorOptions(new Uri("http://mirror.example/base/")));
+        var mirror = DownloadMirror.FromOptions(new DownloadOptions(new Uri("http://mirror.example/base/")));
 
         var sources = ModelDownloader.BuildSources(Spec, mirror, ModelDownloader.GitHubBaseUri, Spec.Files[0]);
 
@@ -497,7 +497,7 @@ public sealed class ModelDownloaderTests : IDisposable
             return new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(file == "model.onnx" ? OnnxText : VocabText) };
         });
         using var client = new HttpClient(handler);
-        var options = new MirrorOptions(new Uri("https://mirror.test:8443/mirror/"), BearerToken: "tok-123", StoreRoot: _store, Timeout: TimeSpan.FromSeconds(30));
+        var options = new DownloadOptions(new Uri("https://mirror.test:8443/mirror/"), BearerToken: "tok-123", StoreRoot: _store, Timeout: TimeSpan.FromSeconds(30));
 
         // Act
         var directory = await ModelDownloader.EnsureAsync(Spec, options, TestContext.Current.CancellationToken, client, new Uri("https://lfs.test/lfs/"), _ => null);

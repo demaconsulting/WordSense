@@ -676,4 +676,103 @@ public class WordLexiconTests
         Assert.All(version, c => Assert.True(char.IsAsciiHexDigitLower(c), version));
         Assert.Equal(version, WordLexicon.Version);
     }
+
+    /// <summary>
+    ///     The embedded image opens from its own resource stream.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_OpenImage_EmbeddedResource_Opens()
+    {
+        // Arrange
+        using var stream = typeof(WordLexicon).Assembly.GetManifestResourceStream("DemaConsulting.WordSense.wordsense.img");
+
+        // Act
+        var image = WordLexicon.OpenImage(stream);
+
+        // Assert
+        Assert.True(image.SpellingCount > 0);
+    }
+
+    /// <summary>
+    ///     A missing resource is reported as <see cref="ModelIntegrityException"/> that carries the original
+    ///     <see cref="InvalidDataException"/>.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_OpenImage_MissingResource_ThrowsModelIntegrity()
+    {
+        // Arrange / Act
+        var failure = Assert.Throws<ModelIntegrityException>(() => WordLexicon.OpenImage(null));
+
+        // Assert
+        Assert.IsType<InvalidDataException>(failure.InnerException);
+        Assert.Contains("missing", failure.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A corrupt image (bytes that are not an image, and a real image with a flipped byte) is reported as
+    ///     <see cref="ModelIntegrityException"/> that carries the original <see cref="InvalidDataException"/>.
+    /// </summary>
+    /// <param name="flipRealImage">Whether to flip one byte of the real image, instead of using bytes that are not an image.</param>
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void WordLexicon_OpenImage_CorruptResource_ThrowsModelIntegrity(bool flipRealImage)
+    {
+        // Arrange: a stream that is not an image, or the real image with one byte flipped
+        byte[] bytes;
+        if (flipRealImage)
+        {
+            using var stream = typeof(WordLexicon).Assembly.GetManifestResourceStream("DemaConsulting.WordSense.wordsense.img")!;
+            bytes = new byte[stream.Length];
+            stream.ReadExactly(bytes);
+            bytes[^1] ^= 0xFF;
+        }
+        else
+        {
+            bytes = "this is not a word image"u8.ToArray();
+        }
+
+        using var corrupt = new MemoryStream(bytes);
+
+        // Act
+        var failure = Assert.Throws<ModelIntegrityException>(() => WordLexicon.OpenImage(corrupt));
+
+        // Assert: the original exception is kept
+        Assert.IsType<InvalidDataException>(failure.InnerException);
+    }
+
+    /// <summary>
+    ///     A damaged sense catalog found while reading it is reported as <see cref="ModelIntegrityException"/> that
+    ///     carries the original exception; other exceptions are not changed.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_ReadCatalog_DamagedCatalog_ThrowsModelIntegrity()
+    {
+        // Arrange: reads that fail the way a damaged catalog does, and the way a caller mistake does
+        var damaged = new InvalidDataException("The word image has an invalid catalog: a sense table has the wrong length.");
+
+        // Act
+        var failure = Assert.Throws<ModelIntegrityException>(() => WordLexicon.ReadCatalog<int>(_ => throw damaged));
+
+        // Assert
+        Assert.Same(damaged, failure.InnerException);
+        Assert.Throws<InvalidOperationException>(() => WordLexicon.ReadCatalog<int>(_ => throw new InvalidOperationException("A caller mistake.")));
+        Assert.Equal(7, WordLexicon.ReadCatalog(_ => 7));
+    }
+
+    /// <summary>
+    ///     The sense catalog of the real image reads through the integrity mapping without changing its answers.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_SensesOf_RealImage_ReturnsSensesWithoutRespelling()
+    {
+        // Arrange / Act
+        var senses = WordLexicon.SensesOf("bank", PartOfSpeech.Noun);
+
+        // Assert
+        Assert.NotEmpty(senses);
+        Assert.Contains(senses, s => s.SenseKey is not null);
+        Assert.True(WordLexicon.TryGetSense(senses[0].SenseId, out var found));
+        Assert.Equal(senses[0], found);
+    }
 }

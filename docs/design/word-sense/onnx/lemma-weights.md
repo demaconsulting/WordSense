@@ -82,7 +82,9 @@ magic or a wrong version, a sparse flag, a corrupt, truncated, inconsistent or n
 two senses, an empty or duplicate sense id, a negative threshold, a malformed UTF-8 lemma, a zero dimension, a count
 that disagrees with the data present, or trailing data. The `LemmaWeights` constructor itself throws
 `ArgumentException` for a dimension that is not positive, shapes that do not match, non-finite values and a negative or
-non-finite threshold. A feature of the wrong dimension is reported as a mismatch to
+non-finite threshold. These are the raw exceptions of the unit; `OnnxWordSenseModel` reports an
+`InvalidDataException` of the embedded weights as a `ModelIntegrityException` (original as inner exception). A feature
+of the wrong dimension is reported as a mismatch to
 the caller, which then gives the word the lexicon-only answer.
 
 #### Dependencies

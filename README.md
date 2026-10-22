@@ -68,7 +68,6 @@ using DemaConsulting.WordSense;
 using var model = new BasicWordSenseModel();
 // using var model = new MiniLMWordSenseModel();         // using DemaConsulting.WordSense.MiniLM;
 // using var model = new BertBaseCasedWordSenseModel();  // using DemaConsulting.WordSense.BertBaseCased;
-await model.EnsureModelAsync();
 
 // Classify the words of a sentence whose "bow" and "record" are heteronyms and whose "go", "back" and "home"
 // are among the trained words of the encoder models
@@ -206,6 +205,53 @@ call may hold several sentences (Basic splits them at `.`, `!` and `?`; an encod
 See the
 [user guide][link-user-guide] for tokenizing, confidence thresholds, mirrors, disposal and threading.
 
+### Preparing a model up front (optional)
+
+`Basic` needs no files, so it has no preparation step. The encoder models (`MiniLM` and `BertBaseCased`) fetch and
+verify their model files the first time a word needs them. To control *when* that happens (at startup, before going
+offline, through a mirror) and to handle the failures up front, call `EnsureModelAsync`; it is optional, because
+`ClassifyAsync` ensures the files lazily. Where you hold the concrete model type, call it directly:
+
+<!-- sample:download -->
+```csharp
+using DemaConsulting.WordSense;
+using DemaConsulting.WordSense.MiniLM;
+
+// The concrete model type has the method: call it directly. It is optional, because ClassifyAsync ensures the
+// files lazily; use it to control when the download happens (startup, before going offline) and to handle
+// failures up front (ModelUnavailableException, ModelIntegrityException, DownloadConfigurationException)
+using var model = new MiniLMWordSenseModel();
+await model.EnsureModelAsync();
+
+// Through a mirror, when the public download host is blocked
+await model.EnsureModelAsync(new DownloadOptions(new Uri("https://models.example.com/wordsense")));
+```
+
+`EnsureModelAsync` is not a member of `IWordSenseModel`: that interface only classifies and disposes. It belongs to the
+capability interface `IDownloadableWordSenseModel`, which the encoder models and `FallbackWordSenseModel` implement and
+`Basic` does not. Code that holds only an `IWordSenseModel` (for example when the model is chosen at run time) asks for
+the capability:
+
+<!-- sample:capability -->
+```csharp
+using DemaConsulting.WordSense;
+using DemaConsulting.WordSense.MiniLM;
+
+// Code that holds only an IWordSenseModel (Basic, MiniLM, BertBaseCased or your own) asks for the capability:
+// Basic has no files and does not offer EnsureModelAsync
+using IWordSenseModel model = new MiniLMWordSenseModel();
+if (model is IDownloadableWordSenseModel downloadable)
+{
+    await downloadable.EnsureModelAsync();
+}
+```
+
+The failures of the model files and of the download settings are typed: `ModelUnavailableException` (no source delivered
+a file, or a file is missing from the directory you supplied), `ModelIntegrityException` (a file fails its SHA-256, or an
+embedded resource is damaged) and `DownloadConfigurationException` (an invalid mirror, credential, timeout or
+`WORDSENSE_MIRROR_*` setting). All derive from the abstract `WordSenseException` and keep the original exception as
+`InnerException`.
+
 ## Choosing a model
 
 <!-- markdownlint-disable MD013 -->
@@ -309,8 +355,8 @@ This version is a foundation, and these follow-ups are planned (the figures are 
   stricter.
 - **Open work items of the code base:** the clean-up of the static analysis findings, the hardening of the word image
   and the Basic table readers (overlap and flags of the image directories, an immutable `BasicTables`, trailing bytes
-  after the Brotli stream), typed exceptions for model and file failures, the placement of `EnsureModelAsync` and
-  `MirrorOptions`, and a decision on `SenseInfo.Respelling`, which still carries the pronunciation-era model.
+  after the Brotli stream) and the clean-up of the pronunciation-era data tables (`sense_respelling`), which no longer
+  have an API.
 - **Formal review follow-ups.** The first formal review of all 33 review-sets left compliance items open: split the
   compound requirements into atomic ones and move requirements that prescribe the implementation into the design
   documents; add typed method contracts to the unit designs; label the Arrange, Act and Assert steps in the tests and
@@ -322,7 +368,7 @@ This version is a foundation, and these follow-ups are planned (the figures are 
 ## Documentation
 
 - **User Guide**: usage, configuration, limitations, licensing and troubleshooting ([user guide][link-user-guide])
-- **Senses appendix**: every supported lemma with its senses, groups, OEWN keys and respellings
+- **Senses appendix**: every supported lemma with its senses, groups and OEWN keys
   ([appendix][link-appendix])
 - **Design, Verification and Requirements**: generated from `docs/`
 

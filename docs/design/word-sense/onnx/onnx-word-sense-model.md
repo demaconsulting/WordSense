@@ -4,7 +4,8 @@
 
 #### Purpose
 
-`OnnxWordSenseModel` is the public abstract base of the encoder models. It prepares the model files, loads the
+`OnnxWordSenseModel` is the public abstract base of the encoder models. It implements `IDownloadableWordSenseModel` (the
+classification contract plus the optional explicit ensure). It prepares the model files, loads the
 encoder and weights lazily, and classifies words with them (lazily ensuring the files when a word needs the encoder).
 It is usable on its own and depends only on the core package: it owns no other model, so a word whose senses it does
 not score is answered from the lexicon alone, and the choice among the analyses of such a word is left to the model it
@@ -17,7 +18,7 @@ the weights are used only for a text with a trained lemma.
 - The private protected constructor takes the model description (`ModelSpec`), an optional model directory (converted
   to a full path) and the maximum sequence length, which shall be from 8 to 512.
 - Public properties: `HiddenSize` and `ModelId`. They are public on purpose: callers and the model packages read them
-  (for example to show which model and encoder size is in use) before `EnsureModelAsync` has run.
+  (for example to show which model and encoder size is in use) before an explicit ensure has run.
 - State: the in-flight (or finished) ensure task, the shared classifier, the encoder and the weights table (opened and
   loaded on first need), the disposed flag and an in-flight tracker that counts running classifications, all
   guarded by a lock, plus a cancellation source that disposal cancels and then disposes (the download holds a copy of
@@ -27,13 +28,16 @@ the weights are used only for a text with a trained lemma.
 
 #### Key Methods
 
-- `EnsureModelAsync(mirror, cancellationToken)`: starts one shared task (run on the thread pool with no token of its own)
+- `EnsureModelAsync(options, cancellationToken)` (the `IDownloadableWordSenseModel` member, optional because
+  `ClassifyAsync` ensures lazily): starts one shared task (run on the thread pool with no token of its own)
   when none exists or the previous one faulted or was canceled (retry after failure); concurrent callers share that
-  task, and the next call while it runs joins it (its `mirror` is ignored). A caller's token only cancels that caller's
-  wait (`WaitAsync`): the shared work keeps running even when no waiter is left, and only disposal cancels it. An
-  already canceled token returns a canceled task rather than throwing. With a model directory the task only
+  task, and the next call while it runs joins it (its `options` are ignored). A caller's token only cancels that
+  caller's wait (`WaitAsync`): the shared work keeps running even when no waiter is left, and only disposal cancels it.
+  An already canceled token returns a canceled task rather than throwing. With a model directory the task only
   verifies the files
-  (`ModelDownloader.Verify`, no network); otherwise it calls `ModelDownloader.EnsureAsync` with the disposal token.
+  (`ModelDownloader.Verify`, no network, and the options and the environment are ignored); otherwise it calls
+  `ModelDownloader.EnsureAsync` with the disposal token. The shared task wraps the raw exceptions of the downloader
+  at this public boundary (see _Error Handling_).
 - `ClassifyAsync(words, cancellationToken)`: checks the disposed flag, validates the words, throws
   `OperationCanceledException` (through the returned task) for an already canceled token, even for an empty list or a
   list that needs no model. It then loads the embedded weights table (no model file and no ONNX; cached) and, when no
@@ -41,7 +45,7 @@ the weights are used only for a text with a trained lemma.
   chooser), answers from the lexicon alone without any model file: unknown words are `ClassifyResult.Unknown`, a word
   with one analysis and one sense is answered at the sense level, and every other known word with its analyses equally
   likely at the part of speech level and no scored senses (no first-sense guess). Only when a word is pending does it
-  await `EnsureModelAsync(null, cancellationToken)` (the default and environment mirror settings; concurrent
+  await `EnsureModelAsync(null, cancellationToken)` (the default and environment download settings; concurrent
   callers share one ensure and a failed ensure is retried by the next call), register with the in-flight tracker, open
   the encoder on first need (cached) and run the shared `OnnxClassifier` over the encoder and the weights table; the
   registration is released in a `finally`. It is safe for concurrent use.
@@ -67,17 +71,36 @@ the weights are used only for a text with a trained lemma.
   one. Inference itself is not serialized: the shared session serves concurrent calls in parallel.
 - A constructor sequence length outside 8 to 512 throws `ArgumentOutOfRangeException` (a null spec throws
   `ArgumentNullException`).
-- Download and verification failures propagate from `ModelDownloader` (see that unit); a failed ensure can be
-  retried. They surface through the returned task, not synchronously.
-- A missing or inconsistent weights resource throws `InvalidDataException` from `ClassifyAsync` (once the weights are
-  loaded by the classification); weights requested before the files were ensured throw
+- Download and verification failures propagate from `ModelDownloader` (see that unit) and are reported by the shared
+  ensure task, not synchronously, as typed exceptions of the core with the original exception as the inner exception
+  (the downloader, `DownloadMirror` and `WeightedLemmaTable` keep their raw exceptions as internal vocabulary; the
+  wrapping is done here, at the public boundary). A failed ensure can be retried. The mapping is:
+  - `FileNotFoundException` or `DirectoryNotFoundException` (the model directory is missing or lacks a file) and
+    `HttpRequestException` (every download source failed, including a source that served bytes with a wrong SHA-256,
+    because the next source is tried) become `ModelUnavailableException`;
+  - `InvalidDataException` from `ModelDownloader.Verify` (a pinned SHA-256 mismatch of a file of a supplied model
+    directory) becomes `ModelIntegrityException`;
+  - `ArgumentException`, including `ArgumentOutOfRangeException` (a relative, non-http(s), query, fragment or user-info
+    base URI, a token together with credentials, credentials over plain http to a non-loopback host, a timeout that is
+    zero, negative or above about 49 days, an invalid store root path, invalid `WORDSENSE_MIRROR_*` environment
+    settings) become `DownloadConfigurationException`; it is not thrown when a model directory is supplied;
+  - `IOException` and `UnauthorizedAccessException` of an unwritable store are not wrapped;
+    `OperationCanceledException` (a canceled caller, or disposal during a download) is unchanged.
+- `ClassifyAsync` wraps at the points where it loads its own resources (`LoadTable` for `GetTable` and `GetClassifier`,
+  and the encoder opening): an `InvalidDataException` of `WeightedLemmaTable` (embedded weights missing, corrupt or not
+  for this word image or dimension) and of the classifier (weights and image inconsistent) becomes a
+  `ModelIntegrityException`; an `OnnxRuntimeException` or `InvalidDataException` of the encoder constructor (an ONNX
+  file that passed its SHA-256 but cannot be opened) becomes a `ModelIntegrityException`; a
+  `FileNotFoundException` or `DirectoryNotFoundException` when opening a verified model file that is gone becomes a
+  `ModelUnavailableException`. Weights requested before the files were ensured throw
   `InvalidOperationException("The model files are not available.")` (an internal guard that the public call sequence
   cannot reach).
 
 #### Dependencies
 
 `ModelDownloader`, `DownloadMirror` (through the downloader), `LemmaWeights` (weights table), `OnnxEncoder`,
-`OnnxClassifier` and the core contracts. No other model package.
+`OnnxClassifier` and the core contracts (`IDownloadableWordSenseModel`, `DownloadOptions` and the typed exceptions).
+No other model package.
 
 #### Callers
 

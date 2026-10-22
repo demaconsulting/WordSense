@@ -16,7 +16,8 @@ The subsystem contains one unit, **MiniLMWordSenseModel**. It references the cor
 
 It exposes `MiniLMWordSenseModel` with the constructor `(string? modelDirectory = null, int maxSequenceLength = 128)`,
 the properties `HiddenSize` and `ModelId` and the methods `EnsureModelAsync`, `ClassifyAsync` and `Dispose` of
-`IWordSenseModel`. It consumes the internal model description type of the Onnx package, the `FallbackWordSenseModel`
+`IDownloadableWordSenseModel` (and so `IWordSenseModel`). It consumes the internal model description type of the Onnx
+package, the `FallbackWordSenseModel`
 of the core package, `BasicWordSenseModel` (also of the core package) and the weights embedded in its own assembly.
 
 ### Design
@@ -27,7 +28,8 @@ model description (model id `all-MiniLM-L6-v2-int8`; files `model_int8.onnx` and
 the embedded weights resource of this assembly; hidden size 384). It adds no members and no logic. The public
 `MiniLMWordSenseModel` creates an encoder model and a `BasicWordSenseModel` and wraps them in a
 `FallbackWordSenseModel` (the encoder is the primary model and Basic the fallback), to which it delegates
-`EnsureModelAsync` (so the encoder files are ensured and Basic needs none), `ClassifyAsync` and `Dispose` (so both
+`EnsureModelAsync` (optional; the composite forwards it to the encoder, which is downloadable, and skips Basic, which
+is not), `ClassifyAsync` and `Dispose` (so both
 models are disposed). The weights embedded in the assembly (the format `WSX3`) were trained by the builder for
 exactly this model: they hold the fine-sense classifiers of the trained lemmas, the form choosers and the per-lemma fine
 and group thresholds measured on the embeddings of this encoder, and they are matched against the shipped word image at

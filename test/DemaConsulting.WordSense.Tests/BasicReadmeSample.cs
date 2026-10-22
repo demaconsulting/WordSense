@@ -36,7 +36,6 @@ internal sealed class BasicReadmeSample
         using var model = new BasicWordSenseModel();
         // using var model = new MiniLMWordSenseModel();         // using DemaConsulting.WordSense.MiniLM;
         // using var model = new BertBaseCasedWordSenseModel();  // using DemaConsulting.WordSense.BertBaseCased;
-        await model.EnsureModelAsync();
 
         // Classify the words of a sentence whose "bow" and "record" are heteronyms and whose "go", "back" and "home"
         // are among the trained words of the encoder models

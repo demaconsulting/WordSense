@@ -105,13 +105,13 @@ internal static class ImageFormat
     /// <summary>The group of each sense as the group index plus one, 0 for no group (<c>uint[]</c>).</summary>
     public const int SectionSenseGroup = 23;
 
-    /// <summary>The respelling of each sense as the respelling index plus one, 0 for none (<c>uint[]</c>).</summary>
+    /// <summary>The respelling of each sense as the respelling index plus one, 0 for none (<c>uint[]</c>). Retained in the image format and validated, but not exposed by the API.</summary>
     public const int SectionSenseRespelling = 24;
 
-    /// <summary>The byte length of each distinct respelling.</summary>
+    /// <summary>The byte length of each distinct respelling. Retained in the image format and validated, but not exposed by the API.</summary>
     public const int SectionRespellingLength = 25;
 
-    /// <summary>The UTF-8 bytes of the distinct respellings.</summary>
+    /// <summary>The UTF-8 bytes of the distinct respellings. Retained in the image format and validated, but not exposed by the API.</summary>
     public const int SectionRespellingBytes = 26;
 
     /// <summary>The byte length of each group id; groups are in UTF-8 byte order of their ids.</summary>

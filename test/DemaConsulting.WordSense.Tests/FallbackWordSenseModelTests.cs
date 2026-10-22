@@ -55,7 +55,23 @@ public class FallbackWordSenseModelTests
     }
 
     /// <summary>
-    ///     Ensuring the composite ensures both models, with the same mirror.
+    ///     The composite has the downloadable capability, so code that holds only the model contract can ask for it.
+    /// </summary>
+    [Fact]
+    public void WordSenseContracts_FallbackWordSenseModel_IsDownloadable()
+    {
+        // Arrange
+        using var model = new FallbackWordSenseModel(new PlainModel(), new PlainModel());
+
+        // Act
+        IWordSenseModel contract = model;
+
+        // Assert
+        Assert.IsAssignableFrom<IDownloadableWordSenseModel>(contract);
+    }
+
+    /// <summary>
+    ///     Ensuring the composite ensures both capable models, with the same options.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
@@ -65,16 +81,81 @@ public class FallbackWordSenseModelTests
         var primary = new StubModel();
         var fallback = new StubModel();
         using var model = new FallbackWordSenseModel(primary, fallback);
-        var mirror = new MirrorOptions(new Uri("https://models.example.com/"));
+        var options = new DownloadOptions(new Uri("https://models.example.com/"));
 
         // Act
-        await model.EnsureModelAsync(mirror, TestContext.Current.CancellationToken);
+        await model.EnsureModelAsync(options, TestContext.Current.CancellationToken);
 
         // Assert
-        Assert.Same(mirror, primary.EnsuredWith);
-        Assert.Same(mirror, fallback.EnsuredWith);
+        Assert.Same(options, primary.EnsuredWith);
+        Assert.Same(options, fallback.EnsuredWith);
         Assert.Equal(1, primary.EnsureCalls);
         Assert.Equal(1, fallback.EnsureCalls);
+    }
+
+    /// <summary>
+    ///     Only the members that have the capability are ensured; a member without it is skipped, in either position.
+    /// </summary>
+    /// <param name="capablePrimary">Whether the primary model is the capable one.</param>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public async Task WordSenseContracts_FallbackWordSenseModel_EnsureModelAsync_OnlyCapableMemberEnsured(bool capablePrimary)
+    {
+        // Arrange
+        var capable = new StubModel();
+        var plain = new PlainModel();
+        using var model = capablePrimary ? new FallbackWordSenseModel(capable, plain) : new FallbackWordSenseModel(plain, capable);
+        var options = new DownloadOptions(new Uri("https://models.example.com/"));
+        using var cts = new CancellationTokenSource();
+
+        // Act
+        await model.EnsureModelAsync(options, cts.Token);
+
+        // Assert: the capable member got the options and the token, the plain member was never asked
+        Assert.Same(options, capable.EnsuredWith);
+        Assert.Equal(cts.Token, capable.EnsuredToken);
+        Assert.Equal(1, capable.EnsureCalls);
+    }
+
+    /// <summary>
+    ///     When no member has the capability, the call completes at once.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_EnsureModelAsync_NoCapableMember_CompletesImmediately()
+    {
+        // Arrange
+        using var model = new FallbackWordSenseModel(new PlainModel(), new PlainModel());
+
+        // Act
+        var task = model.EnsureModelAsync(new DownloadOptions(new Uri("https://models.example.com/")), TestContext.Current.CancellationToken);
+        await task;
+
+        // Assert
+        Assert.True(task.IsCompletedSuccessfully);
+    }
+
+    /// <summary>
+    ///     When no member has the capability, an already cancelled token gives a cancelled task, not an exception from
+    ///     the call.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_EnsureModelAsync_NoCapableMemberCancelled_ReturnsCanceledTask()
+    {
+        // Arrange
+        using var model = new FallbackWordSenseModel(new PlainModel(), new PlainModel());
+        using var cts = new CancellationTokenSource();
+        await cts.CancelAsync();
+
+        // Act
+        var task = model.EnsureModelAsync(null, cts.Token);
+
+        // Assert
+        Assert.True(task.IsCanceled);
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(() => task);
     }
 
     /// <summary>
@@ -98,6 +179,30 @@ public class FallbackWordSenseModelTests
 
         // Assert
         Assert.Equal("Ensure failed.", failure.Message);
+        Assert.Equal(1, primary.EnsureCalls);
+        Assert.Equal(1, fallback.EnsureCalls);
+    }
+
+    /// <summary>
+    ///     When both capable members fail with typed exceptions, both ran, and the typed exception of the primary member
+    ///     reaches the caller unchanged.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_EnsureModelAsync_BothFail_ReportsAfterBothRan()
+    {
+        // Arrange
+        var unavailable = new ModelUnavailableException("No source delivered the file.", new HttpRequestException("offline"));
+        var primary = new StubModel { EnsureFailure = EnsureFailureKind.Asynchronous, Failure = unavailable };
+        var fallback = new StubModel { EnsureFailure = EnsureFailureKind.Asynchronous, Failure = new ModelIntegrityException("Damaged.") };
+        using var model = new FallbackWordSenseModel(primary, fallback);
+
+        // Act
+        var failure = await Assert.ThrowsAsync<ModelUnavailableException>(() => model.EnsureModelAsync(null, TestContext.Current.CancellationToken));
+
+        // Assert: both ensure steps ran, and the original exception and its inner exception are preserved
+        Assert.Same(unavailable, failure);
+        Assert.IsType<HttpRequestException>(failure.InnerException);
         Assert.Equal(1, primary.EnsureCalls);
         Assert.Equal(1, fallback.EnsureCalls);
     }
@@ -168,11 +273,13 @@ public class FallbackWordSenseModelTests
         Asynchronous,
     }
 
-    private sealed class StubModel(params ClassifyResult[] results) : IWordSenseModel
+    private sealed class StubModel(params ClassifyResult[] results) : IDownloadableWordSenseModel
     {
         private int _disposeCalls;
 
-        public MirrorOptions? EnsuredWith { get; private set; }
+        public DownloadOptions? EnsuredWith { get; private set; }
+
+        public CancellationToken EnsuredToken { get; private set; }
 
         public int EnsureCalls { get; private set; }
 
@@ -182,14 +289,17 @@ public class FallbackWordSenseModelTests
 
         public EnsureFailureKind EnsureFailure { get; init; }
 
-        public Task EnsureModelAsync(MirrorOptions? mirror = null, CancellationToken cancellationToken = default)
+        public Exception Failure { get; init; } = new InvalidOperationException("Ensure failed.");
+
+        public Task EnsureModelAsync(DownloadOptions? options = null, CancellationToken cancellationToken = default)
         {
             EnsureCalls++;
-            EnsuredWith = mirror;
+            EnsuredWith = options;
+            EnsuredToken = cancellationToken;
             return EnsureFailure switch
             {
-                EnsureFailureKind.Synchronous => throw new InvalidOperationException("Ensure failed."),
-                EnsureFailureKind.Asynchronous => Task.FromException(new InvalidOperationException("Ensure failed.")),
+                EnsureFailureKind.Synchronous => throw Failure,
+                EnsureFailureKind.Asynchronous => Task.FromException(Failure),
                 _ => Task.CompletedTask,
             };
         }
@@ -207,5 +317,15 @@ public class FallbackWordSenseModelTests
         }
 
         private static void FailDisposal() => throw new InvalidOperationException("Disposal failed.");
+    }
+
+    private sealed class PlainModel(params ClassifyResult[] results) : IWordSenseModel
+    {
+        public Task<ClassifyResult[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default) =>
+            Task.FromResult(results);
+
+        public void Dispose()
+        {
+        }
     }
 }

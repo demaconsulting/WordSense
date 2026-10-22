@@ -123,7 +123,7 @@ internal static class ModelDownloader
     ///     Ensures that every file of a model is present and verified in the store, downloading what is missing.
     /// </summary>
     /// <param name="spec">The model.</param>
-    /// <param name="mirror">The mirror to try first, or null to use the environment's mirror (if any).</param>
+    /// <param name="options">The download options (mirror, store root, timeout), or null to use the environment's mirror (if any).</param>
     /// <param name="cancellationToken">A token that cancels the operation.</param>
     /// <param name="client">The HTTP client to use, or null to create one that follows redirects manually.</param>
     /// <param name="gitHubBaseUri">The GitHub LFS base location, or null for the default.</param>
@@ -133,25 +133,25 @@ internal static class ModelDownloader
     /// <exception cref="ArgumentException">Thrown when the mirror configuration is invalid.</exception>
     public static async Task<string> EnsureAsync(
         ModelSpec spec,
-        MirrorOptions? mirror,
+        DownloadOptions? options,
         CancellationToken cancellationToken,
         HttpClient? client = null,
         Uri? gitHubBaseUri = null,
         Func<string, string?>? getEnvironmentVariable = null)
     {
         ArgumentNullException.ThrowIfNull(spec);
-        var timeout = mirror?.Timeout ?? DefaultTimeout;
+        var timeout = options?.Timeout ?? DefaultTimeout;
         if (timeout != Timeout.InfiniteTimeSpan && (timeout <= TimeSpan.Zero || timeout.TotalMilliseconds > uint.MaxValue - 1))
         {
-            throw new ArgumentOutOfRangeException(nameof(mirror), timeout, "The timeout must be positive (or infinite) and no longer than about 49 days.");
+            throw new ArgumentOutOfRangeException(nameof(options), timeout, "The timeout must be positive (or infinite) and no longer than about 49 days.");
         }
 
-        // An explicit mirror beats the environment; an invalid configuration fails fast
-        var effective = mirror is not null
-            ? DownloadMirror.FromOptions(mirror)
+        // Explicit options beat the environment; an invalid configuration fails fast
+        var effective = options is not null
+            ? DownloadMirror.FromOptions(options)
             : DownloadMirror.FromEnvironment(getEnvironmentVariable ?? Environment.GetEnvironmentVariable);
 
-        var directory = Path.Join(Path.GetFullPath(mirror?.StoreRoot ?? DefaultStoreRoot()), spec.ModelId);
+        var directory = Path.Join(Path.GetFullPath(options?.StoreRoot ?? DefaultStoreRoot()), spec.ModelId);
         Directory.CreateDirectory(directory);
 
         // The private client never follows redirects itself, so credentials are attached per hop
