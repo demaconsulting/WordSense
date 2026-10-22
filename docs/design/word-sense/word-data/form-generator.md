@@ -130,7 +130,13 @@ before any file is written. A malformed authored file (a level that is not 0 or 
 is not exact, a row without its ten non-empty columns, a licence other than `CC0 1.0 (project-authored)`, an unknown
 rule, a verdict and result that do not go together (`agree` or `adjudicated` with `forms` or `none`;
 `regular-accepted` with `forms`) or a second decision for the same lemma, part of speech and rule throws
-`InvalidDataException` with the path and the line. A token line of a training split of the open corpus that is short,
+`InvalidDataException` with the path and the line. The two files are cross-checked by lemma, part of speech and rule (the
+sidecar does not record the forms): the sidecar holds exactly one decision, with the result `forms`, for every authored
+row, and every decision with the result `forms` needs its authored row; an authored row without a decision, an authored
+row whose decision says that the form does not exist, and a decision for forms without an authored row throw
+`InvalidDataException` naming both files and the key. A decision that the form does not exist (`none`) has no authored row
+and is not cross-checked, because nothing in the repository lists the tasks that were given, so a missing one cannot be
+detected. A token line of a training split of the open corpus that is short,
 outside a sentence or without a form, lemma or tag throws the same way (the attestation reads the corpus with the
 strict `OpenCorpus` reader); it is never skipped.
 A reviewed input (`form-frozen.tsv`) with a row that has the wrong number of

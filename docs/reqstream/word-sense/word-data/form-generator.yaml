@@ -38,7 +38,10 @@ sections:
                   rule, that would generate it; it shall refuse an authored file with a level that is not 0 or 1 or
                   with an unknown rule, authored forms without their provenance file, a provenance file that is
                   malformed (not the exact header, an empty field, a licence other than CC0 1.0, an invalid verdict and
-                  result, a repeated decision), and an open-corpus token line that is malformed, each with the file and
+                  result, a repeated decision), an authored row without its decision or whose decision says that the
+                  form does not exist, a decision for forms without an authored row (the provenance holds one decision
+                  for every authored row, plus the decisions that a form does not exist, which have no authored row and
+                  are not cross-checked), and an open-corpus token line that is malformed, each with the file and
                   line.
                 tags: [unit]
                 justification: |
@@ -57,6 +60,8 @@ sections:
                   - WordSenseBuilder_AuthoredForms_Read_FormsWithoutSidecar_AreRefused
                   - WordSenseBuilder_AuthoredForms_Read_MalformedSidecar_IsRefusedWithPathAndLine
                   - WordSenseBuilder_AuthoredForms_Read_LemmaNamedLemma_IsADecision
+                  - WordSenseBuilder_AuthoredForms_Read_MissingOrOrphanedDecision_IsRefusedNamingBothFiles
+                  - WordSenseBuilder_AuthoredForms_Read_NoneDecisionWithoutAuthoredRow_IsAccepted
                   - WordSenseBuilder_AuthoredForms_IrregularKeys_ListsOnlyFormsTheRulesDoNotGive
                   - WordSenseBuilder_OpenCorpusAttestation_Read_Tokens_AttestSpellingsForTheirLemmas
                   - WordSenseBuilder_OpenCorpusAttestation_Read_MalformedTokenLine_IsRefusedWithFileAndLine

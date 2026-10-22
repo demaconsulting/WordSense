@@ -228,6 +228,7 @@ reviews:
       - "tools/WordSense.Builder/Data/OpenCorpusAttestation.cs"
       - "tools/WordSense.Builder/Data/IrregularSources.cs"
       - "test/WordSense.Builder.Tests/Data/AuthoredFormsTests.cs"
+      - "test/WordSense.Builder.Tests/Data/AuthoredFixtures.cs"
       - "test/WordSense.Builder.Tests/Data/OpenCorpusAttestationTests.cs"
       - "test/WordSense.Builder.Tests/Data/FormGeneratorAuthoredTests.cs"
       - "test/WordSense.Builder.Tests/Data/FormGeneratorDataTests.cs"

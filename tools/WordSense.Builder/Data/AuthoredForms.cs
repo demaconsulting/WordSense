@@ -18,8 +18,13 @@ namespace WordSense.Builder.Data;
 ///     authors wrote it.
 ///     </para>
 ///     <para>
-///     The provenance sidecar (<c>forms-authored-provenance.tsv</c>) holds one row per decision, including the answer that the
-///     form does not exist. A decision on which both authors agreed that there is no such form is read as a veto: the regular rules
+///     The provenance sidecar (<c>forms-authored-provenance.tsv</c>) holds one decision for every authored row (lemma, part of speech
+///     and rule) whose result is the forms, and the decisions of both authors that the form does not exist (the result none). It does
+///     not record the forms themselves, so the two files are cross-checked by lemma, part of speech and rule: every authored row needs
+///     exactly one decision whose result is a form, and every decision whose result is a form needs its authored row; a violation is
+///     refused with both file names and the key. A decision that the form does not exist has no authored row and is not
+///     cross-checked: a missing one cannot be detected, because the repository does not keep the list of the tasks that were given.
+///     A decision on which both authors agreed that there is no such form is read as a veto: the regular rules
 ///     do not generate that form for the lemma. The sidecar is required whenever authored forms exist, and it is read strictly: the
 ///     exact header, ten non-empty columns, the CC0 licence, a valid verdict and result, and one decision for each lemma, part of
 ///     speech and rule.
@@ -69,10 +74,12 @@ internal sealed class AuthoredForms
     public static AuthoredForms Read(string lexicon)
     {
         var authored = new AuthoredForms();
+        var authoredKeys = new HashSet<(string Lemma, string Pos, string Rule)>();
         foreach (var entry in IrregularForms.ReadFile(Path.Join(lexicon, FormsFile)))
         {
             var pos = IrregularSources.Letter(entry.Pos);
             var lemma = entry.Lemma.ToLowerInvariant();
+            authoredKeys.Add((lemma, pos, entry.Rule));
             if (!authored.Forms.TryGetValue((lemma, pos), out var kinds))
             {
                 authored.Forms[(lemma, pos)] = kinds = new IrregularKinds();
@@ -99,8 +106,40 @@ internal sealed class AuthoredForms
             }
         }
 
-        authored.ReadDecisions(Path.Join(lexicon, ProvenanceFile));
+        var decisions = authored.ReadDecisions(Path.Join(lexicon, ProvenanceFile));
+        CrossCheck(authoredKeys, decisions, Path.Join(lexicon, FormsFile), Path.Join(lexicon, ProvenanceFile));
         return authored;
+    }
+
+    // Every authored row needs exactly one decision whose result is a form, and every decision whose result is a form needs its authored
+    // row. The sidecar does not record the forms themselves, so the match is by lemma, part of speech and rule. A decision that the form
+    // does not exist (NONE) has no authored row and is not cross-checked: nothing in the repository lists the tasks that were given.
+    private static void CrossCheck(
+        HashSet<(string Lemma, string Pos, string Rule)> authoredKeys,
+        Dictionary<(string Lemma, string Pos, string Rule), (string Result, int Line)> decisions,
+        string formsPath,
+        string provenancePath)
+    {
+        foreach (var key in authoredKeys.OrderBy(k => k.Lemma, StringComparer.Ordinal).ThenBy(k => k.Pos, StringComparer.Ordinal).ThenBy(k => k.Rule, StringComparer.Ordinal))
+        {
+            if (!decisions.TryGetValue(key, out var decision))
+            {
+                throw new InvalidDataException($"{formsPath}: the authored forms of '{key.Lemma}' ({key.Pos}, {key.Rule}) have no decision in {provenancePath}.");
+            }
+
+            if (decision.Result != "forms")
+            {
+                throw new InvalidDataException($"{provenancePath}:{decision.Line.ToString(CultureInfo.InvariantCulture)}: the decision on '{key.Lemma}' ({key.Pos}, {key.Rule}) says that the form does not exist, but {formsPath} has authored forms for it.");
+            }
+        }
+
+        foreach (var (key, decision) in decisions.OrderBy(d => d.Value.Line))
+        {
+            if (decision.Result == "forms" && !authoredKeys.Contains(key))
+            {
+                throw new InvalidDataException($"{provenancePath}:{decision.Line.ToString(CultureInfo.InvariantCulture)}: the decision on '{key.Lemma}' ({key.Pos}, {key.Rule}) records authored forms, but {formsPath} has no row for them.");
+            }
+        }
     }
 
     /// <summary>
@@ -133,8 +172,9 @@ internal sealed class AuthoredForms
             || kinds.Superlative.Any(f => degrees is null || f.Form != degrees.Value.Superlative);
     }
 
-    private void ReadDecisions(string path)
+    private Dictionary<(string Lemma, string Pos, string Rule), (string Result, int Line)> ReadDecisions(string path)
     {
+        var seen = new Dictionary<(string Lemma, string Pos, string Rule), (string Result, int Line)>();
         if (!File.Exists(path))
         {
             // The sidecar is the evidence of the authored forms: forms without it are refused
@@ -143,12 +183,11 @@ internal sealed class AuthoredForms
                 throw new InvalidDataException($"{path}: the provenance of the authored forms is missing.");
             }
 
-            return;
+            return seen;
         }
 
         var number = 0;
         var headerSeen = false;
-        var seen = new Dictionary<(string Lemma, string Pos, string Rule), int>();
         foreach (var raw in File.ReadAllLines(path, Encoding.UTF8))
         {
             number++;
@@ -195,9 +234,9 @@ internal sealed class AuthoredForms
 
             var pos = IrregularSources.Letter((DemaConsulting.WordSense.PartOfSpeech)LexiconSource.Letters.IndexOf(columns[1][0]));
             var key = (columns[0].ToLowerInvariant(), pos, columns[2]);
-            if (!seen.TryAdd(key, number))
+            if (!seen.TryAdd(key, (columns[7], number)))
             {
-                throw new InvalidDataException($"{where}: the decision on '{columns[0]}' ({columns[2]}) repeats the one on line {seen[key].ToString(CultureInfo.InvariantCulture)}.");
+                throw new InvalidDataException($"{where}: the decision on '{columns[0]}' ({columns[2]}) repeats the one on line {seen[key].Line.ToString(CultureInfo.InvariantCulture)}.");
             }
 
             if (columns[6] == "agree" && columns[7] == "none")
@@ -210,5 +249,7 @@ internal sealed class AuthoredForms
         {
             throw new InvalidDataException($"{path}: the header line is missing.");
         }
+
+        return seen;
     }
 }

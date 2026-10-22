@@ -36,7 +36,9 @@ All scenarios pass.
   `OpenCorpus_ReadFile_TokenWithEmptyField_*`, `FormGenerator_Run_Authored*`, `FormGenerator_Run_AgreedNoPlural_*`,
   `Data_AuthoredForm_ShipsWithTheProvenanceLlm`, `Data_AuthoredPlural_LeavesOutTheRegularSpelling`): the reader keys by
   lowercase lemma and part of speech, refuses a bad level or an unknown rule, authored forms without their sidecar and a
-  malformed sidecar (header, empty field, licence, verdict and result, repeated decision) with the path and line, and
+  malformed sidecar (header, empty field, licence, verdict and result, repeated decision) with the path and line, a
+  missing or orphaned decision (an authored row without its decision, a decision for forms without an authored row; the
+  `none` decisions are not cross-checked) with both file names and the key, and
   counts only a verdict `agree` with the result `none` as a veto; the attestation refuses a malformed token line of the
   open corpus with its file and line; an end-to-end run on a temporary corpus shows that an authored plural replaces
   the regular spelling, that authored forms join the written forms of the lexicon and the hand list instead of being

@@ -12,18 +12,20 @@ public sealed class AuthoredFormsTests : IDisposable
 
     private const string Licence = "CC0 1.0 (project-authored)";
 
+    private const string Auto = "<decisions of the authored rows>";
+
     private readonly TestDirectory _dir = new();
 
     /// <inheritdoc />
     public void Dispose() => _dir.Dispose();
 
-    // The sidecar defaults to a header only; null leaves it out
-    private string Lexicon(string forms, string? provenance = Header)
+    // The sidecar defaults to one agreed decision for every authored row; null leaves it out
+    private string Lexicon(string forms, string? provenance = Auto)
     {
         _dir.Write("lexicon/forms-authored.tsv", forms);
         if (provenance is not null)
         {
-            _dir.Write("lexicon/forms-authored-provenance.tsv", provenance);
+            _dir.Write("lexicon/forms-authored-provenance.tsv", provenance == Auto ? AuthoredFixtures.Sidecar(forms) : provenance);
         }
 
         return Path.Join(_dir.Root, "lexicon");
@@ -151,14 +153,59 @@ public sealed class AuthoredFormsTests : IDisposable
     [Fact]
     public void WordSenseBuilder_AuthoredForms_Read_LemmaNamedLemma_IsADecision()
     {
-        // Arrange
-        var lexicon = Lexicon("lemma\tN\tPlural\tlemmata\t0\n", Header + Row("lemma", "agree", "none"));
+        // Arrange: the sidecar has the decision of the authored row and a decision on the lemma named lemma
+        var lexicon = Lexicon("table\tN\tPlural\ttables\t0\n", Header + Row() + Row("lemma", "agree", "none"));
 
         // Act
         var authored = AuthoredForms.Read(lexicon);
 
         // Assert
         Assert.Contains(("lemma", "n", "Plural"), authored.NoForm);
+    }
+
+    /// <summary>
+    ///     An authored row without a decision, an authored row whose decision says that the form does not exist and a decision
+    ///     for forms without an authored row are refused with both file names and the key; a decision that a form does not
+    ///     exist needs no authored row.
+    /// </summary>
+    /// <param name="provenance">The rows of the sidecar after the header.</param>
+    /// <param name="named">The text that the message must contain besides the two file names.</param>
+    [Theory]
+    [InlineData("", "'table' (n, Plural) have no decision")]
+    [InlineData("chair\tN\tPlural\ta1+v1\tw\tv\tagree\tforms\tCC0 1.0 (project-authored)\t-\n", "'table' (n, Plural) have no decision")]
+    [InlineData("table\tN\tPlural\ta1+v1\tw\tv\tagree\tnone\tCC0 1.0 (project-authored)\t-\n", "'table' (n, Plural) says that the form does not exist")]
+    [InlineData("table\tN\tPlural\ta1+v1\tw\tv\tagree\tforms\tCC0 1.0 (project-authored)\t-\nchair\tN\tPlural\ta1+v1\tw\tv\tagree\tforms\tCC0 1.0 (project-authored)\t-\n", "'chair' (n, Plural) records authored forms")]
+    [InlineData("Table\tN\tPlural\ta1+v1\tw\tv\tagree\tforms\tCC0 1.0 (project-authored)\t-\ntable\tN\tThird\ta1+v1\tw\tv\tagree\tforms\tCC0 1.0 (project-authored)\t-\n", "'table' (n, Third) records authored forms")]
+    public void WordSenseBuilder_AuthoredForms_Read_MissingOrOrphanedDecision_IsRefusedNamingBothFiles(string provenance, string named)
+    {
+        // Arrange: one authored row, for the plural of table
+        var lexicon = Lexicon("table\tN\tPlural\ttables\t0\n", Header + provenance);
+
+        // Act
+        var ex = Assert.Throws<InvalidDataException>(() => AuthoredForms.Read(lexicon));
+
+        // Assert
+        Assert.Contains(AuthoredForms.FormsFile, ex.Message, StringComparison.Ordinal);
+        Assert.Contains(AuthoredForms.ProvenanceFile, ex.Message, StringComparison.Ordinal);
+        Assert.Contains(named, ex.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A decision that a form does not exist is not cross-checked: it needs no authored row, and an empty list of authored forms
+    ///     with only such decisions is accepted.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_AuthoredForms_Read_NoneDecisionWithoutAuthoredRow_IsAccepted()
+    {
+        // Arrange
+        var lexicon = Lexicon(string.Empty, Header + Row("scurf", "agree", "none"));
+
+        // Act
+        var authored = AuthoredForms.Read(lexicon);
+
+        // Assert
+        Assert.Empty(authored.Forms);
+        Assert.Contains(("scurf", "n", "Plural"), authored.NoForm);
     }
 
     /// <summary>

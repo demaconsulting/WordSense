@@ -40,10 +40,10 @@ public sealed class FormGeneratorAuthoredTests : IDisposable
             _dir.Write($"{name}/corpus/lexicon/{AuthoredForms.FormsFile}", authored);
         }
 
-        // The authored forms need their provenance file; a header only is an empty list of decisions
+        // The authored forms need their provenance file with a decision for every row
         if (authored is not null || provenance is not null)
         {
-            _dir.Write($"{name}/corpus/lexicon/{AuthoredForms.ProvenanceFile}", provenance ?? ProvenanceHeader);
+            _dir.Write($"{name}/corpus/lexicon/{AuthoredForms.ProvenanceFile}", provenance ?? AuthoredFixtures.Sidecar(authored!));
         }
 
         var oewn = Path.Join(_dir.Root, name, "oewn.xml");
