@@ -26,13 +26,14 @@ The subsystem contains seven units:
 - **OnnxEncoder**: tokenization, inference and mean pooling.
 - **WordPieceTokenizer**: the BERT WordPiece tokenizer, uncased or cased.
 - **ModelDownloader**: ordered, verified download of model files.
-- **DownloadMirror**: validated mirror configuration.
+- **DownloadMirror**: validated download source configuration (the mirror settings of `DownloadOptions`).
 - **LemmaWeights**: the weights blob reader, the matching to the word image, the feature computation, the scoring, the
   group scores and the levels.
 
 ### Interfaces
 
-It exposes the abstract `OnnxWordSenseModel` (implements `IWordSenseModel`, which is `IDisposable`) with the properties
+It exposes the abstract `OnnxWordSenseModel` (implements `IDownloadableWordSenseModel`, and so `IWordSenseModel`, which
+is `IDisposable`) with the properties
 `HiddenSize` and `ModelId`. Its constructor is private protected, so only the WordSense model packages can derive.
 It consumes the core contracts and the `WordLexicon` (analyses, senses, groups), the ONNX Runtime inference API,
 HTTP(S) for downloads, the file system for the model store, and the embedded
@@ -48,8 +49,12 @@ resource name of the weights, and the hidden size.
 The units collaborate as follows:
 
 1. `OnnxWordSenseModel.EnsureModelAsync` verifies an explicit model directory with `ModelDownloader.Verify`, or calls
-   `ModelDownloader.EnsureAsync`, which builds the mirror with `DownloadMirror` (from `MirrorOptions` or the
-   environment), reuses valid files from the store and downloads the others.
+   `ModelDownloader.EnsureAsync`, which builds the mirror with `DownloadMirror` (from `DownloadOptions` or the
+   environment), reuses valid files from the store and downloads the others. The downloader units keep their raw
+   exceptions as internal vocabulary; `OnnxWordSenseModel` wraps them at the public boundary as
+   `ModelUnavailableException`, `ModelIntegrityException` or `DownloadConfigurationException` (see _OnnxWordSenseModel
+   Unit Design_), and likewise reports a damaged embedded weights resource or ONNX file from `ClassifyAsync` as a
+   `ModelIntegrityException`.
 2. `OnnxWordSenseModel.ClassifyAsync` (lazily ensuring first when a word needs the encoder) loads the embedded weights
    once through `LemmaWeights` (blob reader and all-or-nothing match to the word image), opens one `OnnxEncoder` once
    (which builds a `WordPieceTokenizer` and the ONNX session) and runs an `OnnxClassifier` over the shared encoder and

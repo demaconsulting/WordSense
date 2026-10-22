@@ -33,8 +33,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Single in-flight download with retry**: concurrent requests for the same model share one download, and a request after
   a failure starts a new attempt (verified through the `OnnxWordSenseModel` scenarios and the request logs).
 - **Environment mirror**: a mirror configured by `WORDSENSE_MIRROR_URL` (with the user, password or bearer-token
-  variables) is used first, a mirror given in `MirrorOptions` takes precedence, and an invalid environment throws
-  `ArgumentException` before any request, even when the cache is valid.
+  variables) is used first, a mirror given in `DownloadOptions` takes precedence, and an invalid environment throws
+  `ArgumentException` before any request, even when the cache is valid (the downloader keeps the raw exception;
+  `OnnxWordSenseModel` maps it to `DownloadConfigurationException`, see its unit document).
 - **Credentials only to the mirror**: a bearer token or Basic credentials are sent to the mirror and never to GitHub
   LFS.
 - **Same-origin credentials**: a mirror redirect to another origin is followed without credentials, a redirect within the
@@ -45,12 +46,16 @@ All scenarios below pass on every platform and target framework of the CI matrix
   (the limit covers the body); an invalid timeout (zero, negative,
   oversized) throws before any request; an infinite timeout succeeds; a cancelled caller throws
   `OperationCanceledException`.
+- **Invalid store root** (`ModelDownloader_EnsureAsync_InvalidStoreRoot_ThrowsBeforeRequests`): an empty, a
+  whitespace-only and an invalid-character store root throw an `ArgumentException` named `StoreRoot` before any request.
 - **Partial downloads**: a body that ends before its declared length, or stalls, falls through to the next source and
   leaves no temporary file; a body larger than the pinned size is refused with or without a declared length. The
   downloader does not resume: each attempt writes a new temporary file, and a stale `.part` file of an earlier run is
   neither used nor removed.
 - **Explicit directory**: `Verify` of a model directory throws for a missing file (`FileNotFoundException`) and for an
-  altered file (`InvalidDataException`).
+  altered file (`InvalidDataException`); the downloader keeps these raw exceptions, and `OnnxWordSenseModel` reports
+  them as `ModelUnavailableException` and `ModelIntegrityException` with the originals as inner exceptions.
 - **Default store root**: the default store is beneath the user's local application data, in
   `DemaConsulting/WordSense/models`.
-- **Failed sources are reported**: every source failing throws `HttpRequestException` whose message names each source.
+- **Failed sources are reported**: every source failing throws `HttpRequestException` whose message names each source
+  (`OnnxWordSenseModel` reports it as `ModelUnavailableException` with this exception as inner exception).

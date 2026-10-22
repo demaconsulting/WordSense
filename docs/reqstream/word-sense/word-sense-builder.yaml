@@ -15,8 +15,9 @@ sections:
               word of the dictionary (determiners, conjunctions and interjections included)
               with all its parts of speech, the inflected forms of every dictionary word (the generation of the forms
               is specified by the FormGenerator requirements), and the sense catalog: every single-token OEWN sense
-              and its group (none when it is in no group), its OEWN sense key (none for a project sense)
-              and its respelling, the senses of each lemma and part of speech in the order of Open English WordNet (the
+              and its group (none when it is in no group) and its OEWN sense key (none for a project sense), without
+              any respelling (the respelling sections of the format are retained but empty, because the data has no
+              respelling rows), the senses of each lemma and part of speech in the order of Open English WordNet (the
               position of the sense in its entry, then the homograph number of the entry, project senses last, then the
               sense id bytes; the WordNet 3.0 frequencies shall not order them); and
               shall write it in the compact binary format that the core package reads. The committed image shall be
@@ -493,16 +494,16 @@ sections:
           - id: WordSense-WordSenseBuilder-Appendix
             title: >-
               The builder shall generate the senses appendix of the user guide deterministically from the sense
-              catalog of the data (each trained lemma's senses with id, group, OEWN sense key, gloss and respelling),
+              catalog of the data (each trained lemma's senses with id, group, OEWN sense key and gloss),
               the forms and the anchor sentences, shall reject incomplete input, and the committed appendix shall equal
               the generated one.
             tags: [unit]
             justification: |
-              The list of supported lemmas with their senses, groups, keys, respellings and forms must always describe
+              The list of supported lemmas with their senses, groups, keys and forms must always describe
               the trained corpus; generating it, and failing when the committed file is stale, makes drift impossible.
             tests:
               - WordSenseBuilder_Appendix_Generate_ListsLemmasSensesAndForms
-              - WordSenseBuilder_Appendix_Generate_ListsSensesWithGroupKeyGlossAndRespelling
+              - WordSenseBuilder_Appendix_Generate_ListsSensesWithGroupKeyAndGloss
               - WordSenseBuilder_Appendix_Generate_RejectsIncompleteInput
               - WordSenseBuilder_Program_Appendix_WritesFile
               - WordSenseBuilder_Program_Appendix_MissingCorpus_Fails

@@ -57,8 +57,9 @@ sections:
               The core subsystem shall define the public contracts through which callers classify words with a
               model and receive results: one result per word with the analyses of the word and their probabilities
               (and, where scored, the probabilities of the senses inside each analysis), the selected analysis, the
-              level at which the word was answered, its group and sense ids and its confidence, and the records that
-              describe a sense and a group.
+              level at which the word was answered, its group and sense ids and its confidence, the records that
+              describe a sense and a group, the optional capability that prepares the files of a model up front and
+              the options that describe a download.
             tags: [subsystem]
             justification: |
               Callers program against one small set of contracts and can swap model packages, or supply their own
@@ -70,19 +71,22 @@ sections:
               - WordSense-Core-WordSenseContracts-Confidence
               - WordSense-Core-WordSenseContracts-Candidates
               - WordSense-Core-WordSenseContracts-Model
-              - WordSense-Core-WordSenseContracts-Mirror
+              - WordSense-Core-WordSenseContracts-Downloadable
+              - WordSense-Core-WordSenseContracts-DownloadOptions
               - WordSense-Core-WordSenseContracts-Details
               - WordSense-Core-WordSenseContracts-SenseInfo
             tests:
               - WordSenseContracts_ClassifyResult_SameValues_AreEqual
               - WordSenseContracts_SenseLevel_Values_AreTheFourLevels
               - WordSenseContracts_ClassifyResult_Analyses_AreKeptInOrder
+              - WordSenseContracts_IDownloadableWordSenseModel_ExtendsIWordSenseModel
 
           - id: WordSense-Core-Fallback
             title: >-
               The core subsystem shall provide a public composite model that combines two models, answering each word
               with the complete result of the primary model where it scored senses for the word and otherwise with
-              the complete result of the fallback model, and owning the lifetime of both.
+              the complete result of the fallback model, preparing the members that can be prepared, and owning the
+              lifetime of both.
             tags: [subsystem]
             justification: |
               Model packages differ in what they can score; a composite in the core package lets any pair of
@@ -90,9 +94,29 @@ sections:
               package, and lets the encoder packages offer one model that answers every word.
             children:
               - WordSense-Core-WordSenseContracts-Fallback
+              - WordSense-Core-WordSenseContracts-FallbackEnsure
             tests:
               - WordSenseContracts_FallbackWordSenseModel_PrimaryScoredSenses_UsesPrimary
               - WordSenseContracts_FallbackWordSenseModel_PrimaryChoseOnlyAnalysis_UsesFallback
+              - WordSenseContracts_FallbackWordSenseModel_EnsureModelAsync_OnlyCapableMemberEnsured
+
+          - id: WordSense-Core-Failures
+            title: >-
+              The core subsystem shall define the typed exceptions for failures of model files and download
+              settings and shall report a missing or damaged embedded resource (the word image, the statistics table of
+              the built-in model) as ModelIntegrityException that carries the original exception.
+            tags: [subsystem]
+            justification: |
+              Callers handle failures by type, not by message; the embedded resources are part of the model, so a
+              damaged package surfaces as the same integrity failure as a damaged model file.
+            children:
+              - WordSense-Core-WordSenseContracts-Exceptions
+              - WordSense-Core-WordLexicon-Integrity
+              - WordSense-Core-BasicTables-Integrity
+            tests:
+              - WordSenseExceptions_Hierarchy_DerivesFromWordSenseException
+              - WordLexicon_OpenImage_MissingResource_ThrowsModelIntegrity
+              - BasicTables_LoadEmbedded_MissingResource_ThrowsModelIntegrity
 
           - id: WordSense-Core-Classify
             title: >-
@@ -206,8 +230,7 @@ sections:
           - id: WordSense-Core-Offline
             title: >-
               The core subsystem shall use only statistics embedded in the package, and need no model file, no
-              network access and no native runtime, and the preparation step of its built-in model shall complete
-              immediately.
+              network access and no native runtime, and its built-in model shall need no preparation step.
             tags: [subsystem]
             justification: |
               The core package exists for callers that cannot or will not download or ship a model; the encoder
@@ -217,7 +240,7 @@ sections:
               - WordSense-Core-BasicTables-Load
               - WordSense-Core-BasicTables-Embedded
             tests:
-              - BasicWordSenseModel_EnsureModelAsync_CompletesWithoutFiles
+              - BasicWordSenseModel_IsNotDownloadable
               - BasicTables_Default_LoadsEmbeddedTable
 
           - id: WordSense-Core-Independent

@@ -29,8 +29,8 @@ sections:
                 tests:
                   - MiniLMWordSenseModel_Files_ArePinnedBySha256
                   - MiniLMWordSenseModel_EnsureModelAsync_ModelDirectory_VerifiesPinnedFiles
-                  - OnnxWordSenseModel_EnsureModelAsync_MissingFile_Throws
-                  - OnnxWordSenseModel_EnsureModelAsync_AlteredFile_Throws
+                  - OnnxWordSenseModel_EnsureModelAsync_MissingFile_ThrowsModelUnavailable
+                  - OnnxWordSenseModel_EnsureModelAsync_AlteredFile_ThrowsModelIntegrity
 
               - id: WordSense-MiniLM-MiniLMWordSenseModel-Weights
                 title: >-
@@ -49,8 +49,9 @@ sections:
                   MiniLMWordSenseModel shall wrap a FallbackWordSenseModel of its encoder model (primary) and a
                   BasicWordSenseModel (fallback), answer every ambiguous word that the encoder does not score with the
                   complete result of the Basic model (the analyses chosen in context, at the part of speech level or at
-                  the sense level when the selected analysis has exactly one sense), make
-                  EnsureModelAsync ensure the encoder files (the Basic model needs none) and make Dispose dispose both
+                  the sense level when the selected analysis has exactly one sense), implement
+                  IDownloadableWordSenseModel so that EnsureModelAsync ensures the encoder files (the Basic model needs
+                  none) and reports its failures with the typed exceptions of the encoder, and make Dispose dispose both
                   models.
                 tags: [unit]
                 justification: |
@@ -60,6 +61,8 @@ sections:
                   - MiniLMWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback
                   - MiniLMWordSenseModel_Assembly_ReferencesCoreAndOnnx
                   - MiniLMWordSenseModel_Dispose_DisposesEncoderAndFallback
+                  - MiniLMWordSenseModel_IsDownloadable
+                  - MiniLMWordSenseModel_EnsureModelAsync_MissingDirectory_ThrowsModelUnavailable
 
               - id: WordSense-MiniLM-MiniLMWordSenseModel-Options
                 title: >-

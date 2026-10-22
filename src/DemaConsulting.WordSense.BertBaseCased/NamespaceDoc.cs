@@ -19,7 +19,9 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     supply, in which case no network access happens at all.
 ///     </para>
 ///     <para>
-///     Start with <see cref="BertBaseCasedWordSenseModel"/>: create it, call <c>EnsureModelAsync</c>, then
+///     Start with <see cref="BertBaseCasedWordSenseModel"/>: create it, optionally call <c>EnsureModelAsync</c> (a member
+///     of <see cref="IDownloadableWordSenseModel"/>, which the model implements; <c>ClassifyAsync</c> ensures lazily
+///     otherwise), then
 ///     <c>ClassifyAsync</c>. <c>BertBaseCasedWordSenseModel</c> composes its encoder model with the Basic model as the
 ///     fallback (see <c>FallbackWordSenseModel</c>). The encoder model scores the fine senses of the lemmas that this
 ///     version has weights for and answers them at the sense, group or part-of-speech level, whichever its per-lemma
@@ -56,8 +58,11 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     model is disposed nevertheless). Downloaded files are kept. The
 ///     model is safe for concurrent use: concurrent classifications run in parallel. It
 ///     runs on the CPU only. <c>EnsureModelAsync</c> is optional for classification; you need it to fetch or verify the
-///     model files, or to pass a <see cref="MirrorOptions"/>, which is
-///     ignored while an ensure is already in flight. Cancelling the token of <c>EnsureModelAsync</c> cancels the wait
+///     model files up front, or to pass <see cref="DownloadOptions"/>, which are
+///     ignored while an ensure is already in flight. Failures of the model files and settings are
+///     <see cref="WordSenseException"/>s that keep the original exception as inner exception:
+///     <see cref="ModelUnavailableException"/>, <see cref="ModelIntegrityException"/> and
+///     <see cref="DownloadConfigurationException"/>. Cancelling the token of <c>EnsureModelAsync</c> cancels the wait
 ///     of that call only (the returned task is cancelled, also for an already cancelled token unless the ensure has
 ///     already completed, in which case the completed task is returned; nothing is thrown from
 ///     the call); the shared ensure keeps running even when no caller waits any more, and the next call joins it.
@@ -77,7 +82,7 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     <c>Details</c>, the <c>None</c> level and confidence 0. A low confidence still carries the best part of speech.
 ///     </para>
 ///     <para>
-///     Mirrors: a <see cref="MirrorOptions"/> passed to <c>EnsureModelAsync</c> takes precedence over the
+///     Mirrors: a <see cref="DownloadOptions"/> passed to <c>EnsureModelAsync</c> takes precedence over the
 ///     <c>WORDSENSE_MIRROR_*</c> variables; the mirror is tried before the public source for each file that is missing
 ///     or invalid and is not contacted when every file is already present. The mirror holds the files at
 ///     <c>{mirror}/{model-id}/{file}</c>, where the model id is the <c>ModelId</c> of the model, for example
@@ -85,8 +90,8 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     <c>{StoreRoot}/bert-base-cased-int8/</c>; the default store root is
 ///     <c>%LOCALAPPDATA%\DemaConsulting\WordSense\models</c> on Windows and
 ///     <c>~/.local/share/DemaConsulting/WordSense/models</c> on Linux and macOS (beneath <c>$XDG_DATA_HOME</c> when that
-///     variable is set); only <see cref="MirrorOptions.StoreRoot"/> relocates the store (no
-///     environment variable does, and a <see cref="MirrorOptions"/> needs a mirror base URI; a relative store root is
+///     variable is set); only <see cref="DownloadOptions.StoreRoot"/> relocates the store (no
+///     environment variable does, and <see cref="DownloadOptions"/> need a mirror base URI; a relative store root is
 ///     resolved against the current directory of the process). Offline route through the store: copy all four files
 ///     into <c>{StoreRoot}/bert-base-cased-int8/</c> (or the default store); files that match their pinned SHA-256 are
 ///     kept and never requested, so nothing is downloaded when all are valid. Network notes: downloads use the default
@@ -108,18 +113,22 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     <c>https://media.githubusercontent.com/media/demaconsulting/WordSense/main/model/bert-base-cased-int8/{file}</c>,
 ///     put them directly in one directory (no <c>{model-id}</c> subfolder) and pass it to the constructor. Calling
 ///     <c>EnsureModelAsync</c> is optional but recommended: it verifies the digests above up front without network
-///     access; a missing file
-///     throws <see cref="FileNotFoundException"/> and a wrong digest <see cref="InvalidDataException"/>. For a corporate
+///     access; a missing file or directory is a <see cref="ModelUnavailableException"/> and a wrong digest a
+///     <see cref="ModelIntegrityException"/>. For a corporate
 ///     mirror pass a
-///     <see cref="MirrorOptions"/> to <c>EnsureModelAsync</c> or set <c>WORDSENSE_MIRROR_URL</c> (with the optional
+///     <see cref="DownloadOptions"/> to <c>EnsureModelAsync</c> or set <c>WORDSENSE_MIRROR_URL</c> (with the optional
 ///     <c>WORDSENSE_MIRROR_USER</c>, <c>WORDSENSE_MIRROR_PASSWORD</c> or <c>WORDSENSE_MIRROR_BEARER_TOKEN</c>); files are
 ///     requested at <c>{mirror}/bert-base-cased-int8/{file}</c>. A file that fails verification is never used. Variable
 ///     details: a blank variable counts as unset; a user without a password (or the reverse), or a user, password or
-///     token without <c>WORDSENSE_MIRROR_URL</c>, throws <see cref="ArgumentException"/>; none of this applies, and
-///     the variables are never read, when a model directory was supplied or a <see cref="MirrorOptions"/> is passed;
-///     a <see cref="MirrorOptions.Timeout"/> that is zero, negative or longer than about 49 days throws
-///     <see cref="ArgumentOutOfRangeException"/> (<c>Timeout.InfiniteTimeSpan</c> means no limit); a mirror URL that is
-///     relative, not http or https, or has a query, a fragment or user-info throws <see cref="ArgumentException"/>.
+///     token without <c>WORDSENSE_MIRROR_URL</c>, is a <see cref="DownloadConfigurationException"/>; none of this applies, and
+///     the variables are never read, when a model directory was supplied or a <see cref="DownloadOptions"/> is passed;
+///     a <see cref="DownloadOptions.Timeout"/> that is zero, negative or longer than about 49 days is a
+///     <see cref="DownloadConfigurationException"/> (its inner exception is an <see cref="ArgumentOutOfRangeException"/>;
+///     <c>Timeout.InfiniteTimeSpan</c> means no limit); a mirror URL that is
+///     relative, not http or https, or has a query, a fragment or user-info is a <see cref="DownloadConfigurationException"/> too.
+///     The explicit call is optional (<c>ClassifyAsync</c> ensures lazily): it controls when the download happens and
+///     lets you handle these failures up front. Code that holds only an <see cref="IWordSenseModel"/> asks for the
+///     capability with <c>model is IDownloadableWordSenseModel</c>.
 ///     </para>
 ///     <para>
 ///     Input: one sentence per call; split punctuation into tokens of their own; keep a contraction such as
@@ -154,9 +163,9 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     using DemaConsulting.WordSense;
 ///     using DemaConsulting.WordSense.BertBaseCased;
 ///
-///     var mirror = new MirrorOptions(new Uri("https://models.example.com/wordsense"));
+///     var options = new DownloadOptions(new Uri("https://models.example.com/wordsense"));
 ///     using var mirrored = new BertBaseCasedWordSenseModel();
-///     await mirrored.EnsureModelAsync(mirror);
+///     await mirrored.EnsureModelAsync(options);
 ///     var mirroredSenses = await mirrored.ClassifyAsync(["They", "will", "record", "the", "record", "."]);
 ///     </code>
 ///     Offline: the four files are in one flat directory, for example <c>/opt/models/bert</c>.

@@ -5,9 +5,8 @@
 #### Purpose
 
 `WordLexicon` provides the embedded lexicon of known English words, with the possible analyses of every known
-spelling, and the sense catalog: every fine sense of every lemma with its group (when it is in one), its OEWN sense key
-and its optional
-respelling. Every model starts from it, and a word with one sense never needs context.
+spelling, and the sense catalog: every fine sense of every lemma with its group (when it is in one) and its OEWN sense
+key. Every model starts from it, and a word with one sense never needs context.
 
 #### Data Model
 
@@ -22,10 +21,12 @@ respelling. Every model starts from it, and a word with one sense never needs co
   CSR and the fold index. The catalog sections are: the sense ids sorted by UTF-8 bytes (a sense index is its
   position); the OEWN key suffix of each sense (the part of the key after `lemma%`, empty for a project sense, so the
   full key is the lower-case lemma, `%` and the suffix); the sense-to-group index (group index plus one, 0 for a sense in
-  no group); the sense-to-respelling index (respelling index plus one, 0 for none) with the distinct respelling strings;
+  no group); the sense-to-respelling index (respelling index plus one, 0 for none) with the distinct respelling strings
+  (retained in the format and checked by the catalog reader, but empty in the data and not exposed by the catalog
+  records, so neither a sense nor a group has a respelling in the API);
   the group ids (UTF-8 sorted) and the part of speech of each group; the group members (CSR of sense indexes in
-  inventory order; the lemma of a group comes from its members, and its respelling is the respelling its members
-  share); the lemma and part-of-speech blocks (the lemma bytes and the part of speech, sorted by lemma UTF-8 bytes and
+  inventory order; the lemma of a group comes from its members, and a group has no respelling of its own);
+  the lemma and part-of-speech blocks (the lemma bytes and the part of speech, sorted by lemma UTF-8 bytes and
   then part of speech, each with a CSR of its sense indexes in inventory order); and a key index (the sense indexes
   sorted by full key bytes). The inventory hash covers, as the raw decompressed bytes of the sections each fed as id,
   length and bytes, the spelling, analysis, feature, entry lemma and part of speech, sense id, sense-group, group id,
@@ -36,10 +37,10 @@ respelling. Every model starts from it, and a word with one sense never needs co
 - `WordDetails(Lemma, PartOfSpeech, Features)`: one analysis. `Features` is the inflection as `Key=Value` pairs joined
   by `+` (for example `Person=3+Tense=Pres`), or empty. A form that belongs to several lemmas or tenses (`left`,
   `bases`, `rows`, `read`) has one analysis for each.
-- `SenseInfo(SenseId, GroupId, Lemma, PartOfSpeech, SenseKey, Respelling)`: a sense of the catalog. `SenseId` is
+- `SenseInfo(SenseId, GroupId, Lemma, PartOfSpeech, SenseKey)`: a sense of the catalog. `SenseId` is
   `lemma#label`; `GroupId` is null when the sense is in no group; `SenseKey` is the OEWN sense key (for example
   `bow%1:06:02::`) and is null for a project sense.
-- `SenseGroup(GroupId, Lemma, PartOfSpeech, SenseIds, Respelling)`: a group of senses of one lemma and part of speech.
+- `SenseGroup(GroupId, Lemma, PartOfSpeech, SenseIds)`: a group of senses of one lemma and part of speech.
   A group exists only where it was curated: it has at least two senses and never all the senses of its lemma and part
   of speech, and a sense is in at most one group. Its id is `lemma#group:label`, in a namespace of its own: the
   `#group:` marker is required by the builder and the image reader, so a group id can never equal a sense id
@@ -84,7 +85,7 @@ respelling. Every model starts from it, and a word with one sense never needs co
   lemma and part of speech, its id has the `#group:` marker and never equals a sense id, and its members agree with the
   sense-to-group index; the image reader checks this when it decodes the catalog.
 - `WordLexicon.Version`: the first 16 lower-case hexadecimal digits of the inventory hash of the image, computed from
-  the opened image (the first access throws `InvalidDataException` for a missing or corrupt image). It identifies the
+  the opened image (the first access throws `ModelIntegrityException` for a missing or corrupt image). It identifies the
   sense inventory: it changes whenever an analysis, a sense or a group changes, and is the same on every call. It is not
   a version number; consumers compare it for equality only, for example to detect that stored group ids were saved
   against another catalog.
@@ -103,9 +104,14 @@ without the `#group:` marker or equal to a sense id, a group with
 fewer than two members or with all the senses of its lemma and part of speech, a group that mixes lemmas or parts of
 speech, a group that lists a sense twice, group members that disagree with the sense-to-group index, or a key index that
 is not in strict key order), the first
-access throws `InvalidDataException`. Because the lazy value caches the failure, every later access throws as well. The
-catalog sections are decoded and checked on their first use (the catalog checks include the order of the key index and
-that every sense that names a group is listed exactly once by that group); a corruption is reported in the same way.
+access throws `ModelIntegrityException` (the original `InvalidDataException` of `WordImage.Open` is its inner
+exception; `WordLexicon.OpenImage(Stream?)` does the mapping, and a missing embedded resource is reported the same
+way). `WordImage.Open` itself still throws `InvalidDataException`, which the builder and the tests use directly.
+Because the lazy value caches the failure, every later access throws as well. The
+catalog sections are decoded and checked on their first use through `WordLexicon.ReadCatalog<T>(Func<WordImage, T>)`,
+which `SensesOf`, `TryGetSense`, `TryGetSenseByKey` and `TryGetGroup` use and which maps a damaged catalog to a
+`ModelIntegrityException` in the same way (the catalog checks include the order of the key index, that every sense that
+names a group is listed exactly once by that group, and the structure and range of the retained respelling sections).
 
 #### Dependencies
 

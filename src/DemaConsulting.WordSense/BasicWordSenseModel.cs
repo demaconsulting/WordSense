@@ -24,23 +24,20 @@ namespace DemaConsulting.WordSense;
 ///     unless its lemma and part of speech have exactly one sense (then that sense, with probability 1). A word that is
 ///     not in the lexicon is not known (<see cref="ClassifyResult.IsKnown"/> is false). Its small statistical
 ///     tables are embedded in the assembly: there are no model
-///     files, no ONNX Runtime dependency, <see cref="EnsureModelAsync"/> returns immediately and nothing is ever
-///     downloaded. It is small and fast, and less accurate than the encoder models of
+///     files, no ONNX Runtime dependency and nothing is ever downloaded, so the model does not implement
+///     <see cref="IDownloadableWordSenseModel"/> and needs no preparation step. It is small and fast, and less accurate than the encoder models of
 ///     <c>DemaConsulting.WordSense.MiniLM</c> and <c>DemaConsulting.WordSense.BertBaseCased</c>; its accuracy is
-///     reported in the model comparison table of the user guide (<c>docs/user_guide/model-table.md</c>).
+///     reported in the model comparison table of the user guide (<c>docs/user_guide/model-table.md</c>). A damaged
+///     embedded table is reported as <see cref="ModelIntegrityException"/>.
 ///     </para>
 ///     <para>
 ///     The model holds no native resources, so its <see cref="Dispose"/> releases nothing; it only marks the model as
-///     disposed, for the same rules as every <see cref="IWordSenseModel"/>: afterwards <see cref="EnsureModelAsync"/>
-///     and <see cref="ClassifyAsync"/> throw <see cref="ObjectDisposedException"/> (from the call itself, not through
+///     disposed, for the same rules as every <see cref="IWordSenseModel"/>: afterwards <see cref="ClassifyAsync"/>
+///     throws <see cref="ObjectDisposedException"/> (from the call itself, not through
 ///     a returned task, and before any other check, so also when the token is already cancelled). Disposing while a
 ///     classification is running is safe: nothing is released, so the running call completes. Dispose it with <c>using</c> like
-///     any other model. One instance can be shared by any number of threads. <see cref="EnsureModelAsync"/> is optional
-///     (it only returns a completed task) and <see cref="ClassifyAsync"/> needs no preceding call: there is nothing
-///     to ensure, so its lazy ensure is a no-op. If the token passed to <see cref="EnsureModelAsync"/> is
-///     already cancelled, the returned task is always cancelled (awaiting it throws <see cref="OperationCanceledException"/>,
-///     the same rule as for every model; see <see cref="IWordSenseModel.EnsureModelAsync"/>);
-///     any other token is ignored. See the namespace documentation for first-use costs,
+///     any other model. One instance can be shared by any number of threads. <see cref="ClassifyAsync"/> needs no
+///     preceding call: there is nothing to ensure. See the namespace documentation for first-use costs,
 ///     tokenization, the meaning of the confidence (a probability, with a scale of its own) and when this model is
 ///     enough.
 ///     </para>
@@ -50,7 +47,6 @@ namespace DemaConsulting.WordSense;
 ///     using DemaConsulting.WordSense;
 ///
 ///     using var model = new BasicWordSenseModel();
-///     await model.EnsureModelAsync();
 ///
 ///     string[] words = ["They", "will", "record", "the", "record", "."];
 ///     ClassifyResult[] results = await model.ClassifyAsync(words);
@@ -78,28 +74,16 @@ public sealed class BasicWordSenseModel : IWordSenseModel
     }
 
     /// <summary>
-    ///     Completes immediately: the model needs no files, so nothing is checked or downloaded.
-    /// </summary>
-    /// <param name="mirror">Ignored.</param>
-    /// <param name="cancellationToken">A token; a task that is already cancelled is returned when it is cancelled.</param>
-    /// <returns>A completed task, or a cancelled task when <paramref name="cancellationToken"/> is already cancelled.</returns>
-    /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed.</exception>
-    public Task EnsureModelAsync(MirrorOptions? mirror = null, CancellationToken cancellationToken = default)
-    {
-        ThrowIfDisposed();
-        return cancellationToken.IsCancellationRequested ? Task.FromCanceled(cancellationToken) : Task.CompletedTask;
-    }
-
-    /// <summary>
     ///     Classifies every word of a tokenized sentence or text with the embedded statistics.
     /// </summary>
     /// <param name="words">The words in order, including punctuation tokens, each as its own element.</param>
     /// <param name="cancellationToken">A token that cancels the operation.</param>
-    /// <returns>A non-null array parallel to <paramref name="words"/>. Unlike the encoder models, it needs no preceding ensure (there is nothing to ensure); the first call loads the word lexicon (about 55 ms, approximate). Everything runs synchronously on the calling thread and the returned task is already complete (offload the call yourself if the caller must not block); the token is checked when the call starts and between sentence segments. An empty element is unknown (<see cref="ClassifyResult.IsKnown"/> is false, level none, no analysis, no details, confidence 0); an element that contains a space is not split and is unknown too.</returns>
+    /// <returns>A non-null array parallel to <paramref name="words"/>. Unlike the encoder models, it needs no preparation (there is nothing to ensure); the first call loads the word lexicon (about 55 ms, approximate). Everything runs synchronously on the calling thread and the returned task is already complete (offload the call yourself if the caller must not block); the token is checked when the call starts and between sentence segments. An empty element is unknown (<see cref="ClassifyResult.IsKnown"/> is false, level none, no analysis, no details, confidence 0); an element that contains a space is not split and is unknown too.</returns>
     /// <exception cref="ArgumentNullException">Thrown (from the call itself) when the list is null.</exception>
     /// <exception cref="ArgumentException">Thrown (from the call itself) when an element is null.</exception>
     /// <exception cref="OperationCanceledException">Thrown (from the call itself) when <paramref name="cancellationToken"/> is already cancelled when the call starts, or is cancelled between two sentence segments.</exception>
     /// <exception cref="ObjectDisposedException">Thrown (from the call itself, before any other check) when the model has been disposed.</exception>
+    /// <exception cref="ModelIntegrityException">Thrown (from the call itself) on first use when the embedded word image or statistics table is missing or corrupt; the inner exception is the original <see cref="InvalidDataException"/>.</exception>
     public Task<ClassifyResult[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default)
     {
         ThrowIfDisposed();

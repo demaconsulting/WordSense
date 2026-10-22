@@ -18,7 +18,8 @@ The subsystem contains one unit, **BertBaseCasedWordSenseModel**. It references 
 
 It exposes `BertBaseCasedWordSenseModel` with the constructor `(string? modelDirectory = null,
 int maxSequenceLength = 128)`, the properties `HiddenSize` and `ModelId` and the methods `EnsureModelAsync`,
-`ClassifyAsync` and `Dispose` of `IWordSenseModel`. It consumes the internal model description type of the Onnx
+`ClassifyAsync` and `Dispose` of `IDownloadableWordSenseModel` (and so `IWordSenseModel`). It consumes the internal
+model description type of the Onnx
 package, the `FallbackWordSenseModel` and `BasicWordSenseModel` of the core package and the weights
 embedded in its own assembly.
 
@@ -31,7 +32,8 @@ case-preserving tokenizer; the embedded weights resource of this assembly; hidde
 logic. The `model_int8.onnx` file is the derived encoder export of the
 model, not the upstream masked language model export. The public `BertBaseCasedWordSenseModel` creates an encoder model
 and a `BasicWordSenseModel` and wraps them in a `FallbackWordSenseModel` (the encoder is the primary model and Basic the
-fallback), to which it delegates `EnsureModelAsync` (so the encoder files are ensured and Basic needs none),
+fallback), to which it delegates `EnsureModelAsync` (optional; the composite forwards it to the encoder, which is
+downloadable, and skips Basic, which is not),
 `ClassifyAsync` and `Dispose` (so both models are disposed). The weights embedded in the assembly (the format `WSX3`)
 were trained by the builder for exactly this model: they hold the fine-sense classifiers of the trained lemmas, the form
 choosers and the per-lemma fine and group thresholds measured on the embeddings of this encoder, and they are matched

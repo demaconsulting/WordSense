@@ -21,7 +21,7 @@ The builder creates the data that the shipped packages embed and measures the sh
   development and test files of the English EWT treebank, which is downloaded for evaluation only);
 - the quota report of the training sentences (tiers) and the senses appendix of the user guide.
 
-It reads the sense catalog (the senses, their labels, groups, respellings and OEWN keys, in the order of Open English
+It reads the sense catalog (the senses, their labels, groups and OEWN keys, in the order of Open English
 WordNet) from the word image, which is compiled from `data/` (the WordNet 3.0 tag counts, for the usage prior and the
 tiers, come from the `sense_frequency` table of `data/`), and the repository's `corpus/` folder: the training sentences
 (`anchors/`, rows of a fine sense id), the holdout sentences (`holdout/`, never used for training or for thresholds),
@@ -41,13 +41,16 @@ implementation of the feature computation.
 
 - `Program`: command-line entry point; parses `--name value` options and dispatches the commands.
 - `ModelCatalog`: the models the builder knows (`minilm`, `bert-base-cased`, `basic`) with their package and model
-  folder; sets the ONNX intra-op threads to 2.
+  folder; sets the ONNX intra-op threads to 2. `EnsureAsync(model, cancellationToken)` awaits
+  `EnsureModelAsync(null, cancellationToken)` only when the model is an `IDownloadableWordSenseModel` (the Basic model
+  is skipped, because it needs no files).
 - `Corpus`, `CorpusRow`: read and validate the sentence and form files. A sentence row is `lemma`, `sense_id`,
   `part_of_speech` and `sentence`. The reader checks that the part of speech of a row is the one of its sense, and
   that the training sentences are disjoint from every sentence they must not resemble (see Corpus validation).
 - `SenseInventory`: the authority on which senses exist, read from the sense catalog of the word image (the data of
   `data/` as compiled): for each lemma the senses in inventory order with part of speech, group, OEWN key (none for a
-  project sense) and respelling; it checks the rows of the corpus against it.
+  project sense); it checks the rows of the corpus against it. It does not read respellings: the public catalog
+  records no longer carry them.
 - `AnalysisKey`: an analysis that a training row stands for (a lemma, a part of speech and the features that must be
   present); `Resolve` finds the spelling of the lemma that the word image uses.
 - `LexiconSource`: reads the dictionary word list (`word<TAB>letters`, ascending by word, parts of speech as the
@@ -211,7 +214,8 @@ instead of `--model`.
    auxiliary list gains an auxiliary analysis. The forms of every dictionary word come from the `form` table, so no
    morphology runs at run time.
 3. Build the sense catalog: every single-token OEWN sense and every project sense, with its readable id (`lemma#label`),
-   its group (none when it is in no group), its OEWN key (none for a project sense) and its respelling. The senses of
+   its group (none when it is in no group), its OEWN key (none for a project sense) and its respelling (the data has no
+   respelling rows, so the respelling sections of the image are always empty; the format retains them). The senses of
    each lemma and part of speech
    are ordered as Open English WordNet orders them: by the position of the sense in its entry, then the homograph number
    of the entry, the project senses last, then by the sense id bytes (the WordNet 3.0 tag counts do not order the senses;
@@ -592,9 +596,10 @@ evaluation only and never committed) adds a line.
 
 #### Appendix (`AppendixGenerator.Write`)
 
-Writes a deterministic Markdown appendix: the explanation of parts of speech, pronunciations, groups and forms, the
+Writes a deterministic Markdown appendix: the explanation of parts of speech, groups and forms, the
 summary of the dictionary words, an alphabetical list of the trained lemmas, each with its senses (id, group, OEWN sense
-key, gloss and respelling), the tier and anchor counts of each sense and their recognized forms. Lines are wrapped to
+key and gloss), the tier and anchor counts of each sense and their recognized forms (there is no pronunciation section
+and no respelling line). Lines are wrapped to
 the repository's
 markdown line limit.
 
@@ -602,7 +607,8 @@ markdown line limit.
 
 The `Main` method returns 0 on success and 1 for a usage or data error. An unknown or removed command, a missing or
 malformed option, an unknown model name, an invalid or inconsistent corpus or inventory (`InvalidDataException`), a
-missing file, a download whose checksum differs from the pin or an I/O failure is reported as a one-line message on the
+missing file, a download whose checksum differs from the pin, an I/O failure or a typed failure of a model
+(`WordSenseException`: model unavailable, damaged or misconfigured) is reported as a one-line message on the
 error stream. The corpus validation is strict: a malformed row, a sense id that does not exist, a part of speech that
 disagrees with the sense and a sentence that is not disjoint from the sets it must not resemble are errors. The image
 compilation fails on a sense without a label, a sense in two groups, a group of fewer than two senses or of all the
@@ -612,7 +618,8 @@ fails before the output step.
 
 ### Dependencies
 
-- Core: `WordLexicon`, `WordDetails`, `PartOfSpeech`, `SenseLevel`, `ClassifyResult`, `IWordSenseModel`.
+- Core: `WordLexicon`, `WordDetails`, `PartOfSpeech`, `SenseLevel`, `ClassifyResult`, `IWordSenseModel`,
+  `IDownloadableWordSenseModel` and `WordSenseException`.
 - Basic: `BasicTables`, `BasicClassifier`, `CueModel` and `PosTag` (the format, the tag set, the feature extraction and
   hash, and the segmentation shared with training).
 - Onnx: `OnnxWordSenseModel`, `OnnxEncoder`, the weights data types (read for the frozen mean) and `FeatureExtractor`.

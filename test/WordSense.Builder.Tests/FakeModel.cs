@@ -19,9 +19,6 @@ internal sealed class FakeModel : IWordSenseModel
     }
 
     /// <inheritdoc />
-    public Task EnsureModelAsync(MirrorOptions? mirror = null, CancellationToken cancellationToken = default) => Task.CompletedTask;
-
-    /// <inheritdoc />
     public Task<ClassifyResult[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default) =>
         Task.FromResult(_classify([.. words]));
 

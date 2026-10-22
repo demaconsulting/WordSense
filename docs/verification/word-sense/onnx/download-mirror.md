@@ -36,5 +36,6 @@ All scenarios below pass on every platform and target framework of the CI matrix
   count as unset.
 - **DownloadMirror_ToString_RedactsSecrets**: neither the password, the user name nor the token appears; a credential
   and a token are shown as `***` and an absent one as `null`.
-- **Mirror from options**: a mirror built from `MirrorOptions` (base address, bearer token or credentials) is validated
-  by the same rules, so an invalid option set throws `ArgumentException`.
+- **Mirror from options**: a mirror built from `DownloadOptions` (base address, bearer token or credentials) is
+  validated by the same rules, so an invalid option set throws `ArgumentException` (`OnnxWordSenseModel` reports it as
+  `DownloadConfigurationException` with this exception as inner exception).

@@ -13,7 +13,7 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     files from an internal location. Files are requested at <c>{BaseUri}/{model-id}/{file-name}</c> where the
 ///     model id is the literal folder name of the model (for example <c>all-MiniLM-L6-v2-int8</c>). Each file must
 ///     match its pinned SHA-256; a mirror copy that does not match is discarded and the next source is tried. The
-///     mirror comes from a <c>MirrorOptions</c> value or, when none is given, from the environment variables named by
+///     mirror comes from a <c>DownloadOptions</c> value or, when none is given, from the environment variables named by
 ///     <see cref="UrlEnvironmentVariable"/>, <see cref="UserEnvironmentVariable"/>,
 ///     <see cref="PasswordEnvironmentVariable"/> and <see cref="BearerTokenEnvironmentVariable"/>.
 ///     </para>
@@ -129,10 +129,10 @@ internal sealed record DownloadMirror
     /// <summary>
     ///     Builds a mirror from the options a caller passed.
     /// </summary>
-    /// <param name="options">The mirror options.</param>
+    /// <param name="options">The download options.</param>
     /// <returns>The validated mirror.</returns>
     /// <exception cref="ArgumentException">Thrown when the options are invalid.</exception>
-    public static DownloadMirror FromOptions(MirrorOptions options)
+    public static DownloadMirror FromOptions(DownloadOptions options)
     {
         ArgumentNullException.ThrowIfNull(options);
         return new DownloadMirror(options.BaseUri, options.Credentials as NetworkCredential ?? ToNetworkCredential(options), options.BearerToken);
@@ -141,9 +141,9 @@ internal sealed record DownloadMirror
     /// <summary>
     ///     Gets the credential of the options for the base URI as a basic-auth credential, when it has one.
     /// </summary>
-    /// <param name="options">The mirror options.</param>
+    /// <param name="options">The download options.</param>
     /// <returns>The credential, or null.</returns>
-    private static NetworkCredential? ToNetworkCredential(MirrorOptions options) =>
+    private static NetworkCredential? ToNetworkCredential(DownloadOptions options) =>
         options.Credentials?.GetCredential(options.BaseUri, "Basic");
 
     /// <summary>

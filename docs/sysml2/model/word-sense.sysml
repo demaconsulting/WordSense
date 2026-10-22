@@ -7,7 +7,7 @@ package WordSense {
      * which the word was answered, the ranked analyses of the word and, where the model scored them, the ranked
      * senses of each analysis. It ships as four
      * layered NuGet packages. The core package DemaConsulting.WordSense holds the embedded word lexicon, the sense
-     * catalog, the contracts (model, composite fallback model, mirror options, answer values) and the built-in Basic
+     * catalog, the contracts (model, optional downloadable-model capability, composite fallback model, download options, typed exceptions, answer values) and the built-in Basic
      * model, which chooses the analysis of a word with a statistical tagger and context cues, and has no
      * third-party dependency. Model
      * packages build on it: Onnx

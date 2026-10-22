@@ -4,8 +4,8 @@
 
 #### Purpose
 
-`BasicWordSenseModel` is the public entry point of the statistical model in the core package: an `IWordSenseModel` that
-needs nothing to
+`BasicWordSenseModel` is the public entry point of the statistical model in the core package: an `IWordSenseModel` (and
+nothing more: it is not downloadable) that needs nothing to
 prepare and classifies with the statistical classifier, which lists every analysis of a known word with its probability
 and answers at the part of speech level (the sense level only where the selected analysis has one sense).
 
@@ -16,20 +16,20 @@ statistics live in the process-wide `BasicTables.Default`, which the classifier 
 
 #### Key Methods
 
-- `EnsureModelAsync(mirror, cancellationToken)`: throws `ObjectDisposedException` after disposal; otherwise ignores the
-  mirror and returns a completed task, or a canceled task when the token is already canceled.
 - `ClassifyAsync(words, cancellationToken)`: throws `ObjectDisposedException` after disposal; otherwise classifies with
-  the embedded statistics and the core lexicon. It may be called at any time, with or without `EnsureModelAsync` (the
-  lazy ensure is trivial), and is safe for concurrent use.
+  the embedded statistics and the core lexicon. It may be called at any time, needs no ensure (the model implements
+  only `IWordSenseModel`, not `IDownloadableWordSenseModel`: it has no `EnsureModelAsync`), and is safe for concurrent
+  use. A damaged package is reported from the call on first use as a `ModelIntegrityException`.
 - `Dispose()`: sets the flag; idempotent and thread-safe; releases nothing, so a classification that is already
   running completes normally (the Onnx model defers its release for the same guarantee).
 
 #### Error Handling
 
-No exceptions other than the cancellation of `EnsureModelAsync` and `ClassifyAsync`, `ObjectDisposedException`
+No exceptions other than the cancellation of `ClassifyAsync`, `ObjectDisposedException`
 after `Dispose`, and the argument errors of `ClassifyAsync` (`ArgumentNullException` for a null list,
-`ArgumentException` for a null element). A corrupt
-embedded table is reported by the first classification, not by the model.
+`ArgumentException` for a null element). A missing, corrupt or foreign embedded table (or word image) is reported by
+the first classification as a `ModelIntegrityException` (the original `InvalidDataException` is its inner exception),
+not by the constructor.
 
 #### Dependencies
 

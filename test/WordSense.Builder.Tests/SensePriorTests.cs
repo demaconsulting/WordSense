@@ -58,10 +58,10 @@ public sealed class SensePriorTests
     public void WordSenseBuilder_SensePrior_Offsets_SenseWithoutCount_UsesTheSmoothingAlone()
     {
         // Arrange
-        var counted = new SenseInfo("w#counted", null, "w", PartOfSpeech.Noun, "w%1:00:00::", null);
-        var zero = new SenseInfo("w#zero", null, "w", PartOfSpeech.Noun, "w%1:00:01::", null);
-        var unlisted = new SenseInfo("w#unlisted", null, "w", PartOfSpeech.Noun, "w%1:00:02::", null);
-        var project = new SenseInfo("w#project", null, "w", PartOfSpeech.Noun, null, null);
+        var counted = new SenseInfo("w#counted", null, "w", PartOfSpeech.Noun, "w%1:00:00::");
+        var zero = new SenseInfo("w#zero", null, "w", PartOfSpeech.Noun, "w%1:00:01::");
+        var unlisted = new SenseInfo("w#unlisted", null, "w", PartOfSpeech.Noun, "w%1:00:02::");
+        var project = new SenseInfo("w#project", null, "w", PartOfSpeech.Noun, null);
         var usage = new SenseUsage(new Dictionary<string, int> { ["w%1:00:00::"] = 8, ["w%1:00:01::"] = 0 }, Defaults);
 
         // Act

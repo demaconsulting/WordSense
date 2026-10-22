@@ -79,6 +79,20 @@ internal static class ModelCatalog
     }
 
     /// <summary>
+    ///     Ensures the files of a model when the model can be prepared; a model without files (the Basic model) is skipped.
+    /// </summary>
+    /// <param name="model">The model.</param>
+    /// <param name="cancellationToken">A token that cancels the operation.</param>
+    /// <returns>A task that completes when the model is ready.</returns>
+    public static Task EnsureAsync(IWordSenseModel model, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(model);
+        return model is IDownloadableWordSenseModel downloadable
+            ? downloadable.EnsureModelAsync(null, cancellationToken)
+            : Task.CompletedTask;
+    }
+
+    /// <summary>
     ///     Gets the encoder model inside a composed encoder model (the model of a package wraps its encoder, which owns the
     ///     pinned files and the embedded weights), so the trainer can open the encoder; the composed model keeps owning it.
     /// </summary>

@@ -24,14 +24,12 @@ namespace DemaConsulting.WordSense;
 /// <param name="Lemma">The lemma of the sense.</param>
 /// <param name="PartOfSpeech">The part of speech of the sense.</param>
 /// <param name="SenseKey">The Open English WordNet sense key (for example <c>bow%1:06:02::</c>), or <see langword="null"/> for a project sense.</param>
-/// <param name="Respelling">The respelling of the sense when its pronunciation differs from the other senses of its lemma, otherwise <see langword="null"/>.</param>
 public sealed record SenseInfo(
     string SenseId,
     string? GroupId,
     string Lemma,
     PartOfSpeech PartOfSpeech,
-    string? SenseKey,
-    string? Respelling);
+    string? SenseKey);
 
 /// <summary>
 ///     A group of closely related and easily confused senses of one lemma and part of speech.
@@ -52,13 +50,11 @@ public sealed record SenseInfo(
 /// <param name="Lemma">The lemma of the senses of the group.</param>
 /// <param name="PartOfSpeech">The part of speech of the senses of the group.</param>
 /// <param name="SenseIds">The identifiers of the senses of the group in inventory order (the order of Open English WordNet); at least two.</param>
-/// <param name="Respelling">The respelling the senses of the group share, or <see langword="null"/> when they have none.</param>
 public sealed record SenseGroup(
     string GroupId,
     string Lemma,
     PartOfSpeech PartOfSpeech,
-    ImmutableArray<string> SenseIds,
-    string? Respelling)
+    ImmutableArray<string> SenseIds)
 {
     /// <summary>
     ///     Tells whether another group has the same values; the sense identifiers are compared as a sequence.
@@ -70,7 +66,6 @@ public sealed record SenseGroup(
         && string.Equals(GroupId, other.GroupId, StringComparison.Ordinal)
         && string.Equals(Lemma, other.Lemma, StringComparison.Ordinal)
         && PartOfSpeech == other.PartOfSpeech
-        && string.Equals(Respelling, other.Respelling, StringComparison.Ordinal)
         && SameSenseIds(SenseIds, other.SenseIds);
 
     /// <summary>
@@ -83,7 +78,6 @@ public sealed record SenseGroup(
         hash.Add(GroupId, StringComparer.Ordinal);
         hash.Add(Lemma, StringComparer.Ordinal);
         hash.Add(PartOfSpeech);
-        hash.Add(Respelling, StringComparer.Ordinal);
         if (!SenseIds.IsDefault)
         {
             foreach (var id in SenseIds)

@@ -6,61 +6,32 @@ namespace DemaConsulting.WordSense.Tests;
 public class BasicWordSenseModelTests
 {
     /// <summary>
-    ///     Making the model ready needs no resources and completes immediately.
+    ///     The model needs no files and no preparation step, so it does not offer the downloadable capability and has no
+    ///     ensure member.
     /// </summary>
-    /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task BasicWordSenseModel_EnsureModelAsync_CompletesWithoutFiles()
+    public void BasicWordSenseModel_IsNotDownloadable()
     {
-        var model = new BasicWordSenseModel();
+        // Arrange
+        using var model = new BasicWordSenseModel();
 
-        var task = model.EnsureModelAsync(null, TestContext.Current.CancellationToken);
+        // Act
+        IWordSenseModel contract = model;
 
-        Assert.True(task.IsCompletedSuccessfully);
-        await task;
+        // Assert: neither by type check nor by reflection
+        Assert.False(contract is IDownloadableWordSenseModel);
+        Assert.False(typeof(IDownloadableWordSenseModel).IsAssignableFrom(typeof(BasicWordSenseModel)));
+        Assert.Null(typeof(BasicWordSenseModel).GetMethod("EnsureModelAsync"));
     }
 
     /// <summary>
-    ///     A mirror is ignored: nothing is requested from it.
-    /// </summary>
-    /// <returns>A task that completes when the check has run.</returns>
-    [Fact]
-    public async Task BasicWordSenseModel_EnsureModelAsync_IgnoresMirror()
-    {
-        var model = new BasicWordSenseModel();
-        var mirror = new MirrorOptions(new Uri("http://127.0.0.1:1/unreachable"));
-
-        var task = model.EnsureModelAsync(mirror, TestContext.Current.CancellationToken);
-
-        Assert.True(task.IsCompletedSuccessfully);
-        await task;
-    }
-
-    /// <summary>
-    ///     A token cancelled before the call gives a cancelled task.
-    /// </summary>
-    /// <returns>A task that completes when the check has run.</returns>
-    [Fact]
-    public async Task BasicWordSenseModel_EnsureModelAsync_Cancelled_ReturnsCanceledTask()
-    {
-        var model = new BasicWordSenseModel();
-        using var cancelled = new CancellationTokenSource();
-        await cancelled.CancelAsync();
-
-        var task = model.EnsureModelAsync(null, cancelled.Token);
-
-        Assert.True(task.IsCanceled);
-    }
-
-    /// <summary>
-    ///     The model classifies after the ensure call.
+    ///     The model classifies.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
     public async Task BasicWordSenseModel_ClassifyAsync_ReturnsParallelResults()
     {
         IWordSenseModel model = new BasicWordSenseModel();
-        await model.EnsureModelAsync(null, TestContext.Current.CancellationToken);
 
         var results = await model.ClassifyAsync(["Hello", "world"], TestContext.Current.CancellationToken);
 
@@ -68,11 +39,11 @@ public class BasicWordSenseModelTests
     }
 
     /// <summary>
-    ///     The model classifies without a preparation call.
+    ///     The model classifies without any preparation call.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task BasicWordSenseModel_ClassifyAsync_WithoutEnsure_Works()
+    public async Task BasicWordSenseModel_ClassifyAsync_WithoutPreparation_Works()
     {
         using var model = new BasicWordSenseModel();
 
@@ -225,19 +196,6 @@ public class BasicWordSenseModelTests
 
         Assert.Empty(exceptions);
         await Assert.ThrowsAsync<ObjectDisposedException>(() => model.ClassifyAsync(["a"], TestContext.Current.CancellationToken));
-    }
-
-    /// <summary>
-    ///     Preparing after disposal is rejected.
-    /// </summary>
-    /// <returns>A task that completes when the check has run.</returns>
-    [Fact]
-    public async Task BasicWordSenseModel_EnsureModelAsync_AfterDispose_ThrowsObjectDisposed()
-    {
-        var model = new BasicWordSenseModel();
-        model.Dispose();
-
-        await Assert.ThrowsAsync<ObjectDisposedException>(() => model.EnsureModelAsync(null, TestContext.Current.CancellationToken));
     }
 
     /// <summary>

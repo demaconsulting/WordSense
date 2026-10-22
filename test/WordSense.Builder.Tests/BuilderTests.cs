@@ -126,7 +126,7 @@ public sealed class BuilderTests : IDisposable
     }
 
     /// <summary>
-    ///     The appendix explains the parts of speech, groups, pronunciations and forms, lists the trained lemmas
+    ///     The appendix explains the parts of speech, groups and forms, lists the trained lemmas
     ///     alphabetically with their parts of speech and forms, keeps every line within the limit, escapes markdown
     ///     characters, leaves out a trained lemma that has no sense in the data and is byte-identical on repeat.
     /// </summary>
@@ -148,7 +148,8 @@ public sealed class BuilderTests : IDisposable
         Assert.DoesNotContain("\n\n\n", text, StringComparison.Ordinal);
         Assert.All(text.Split('\n'), line => Assert.True(line.Length <= AppendixGenerator.LineLimit, line));
         Assert.Contains("### Groups\n", text, StringComparison.Ordinal);
-        Assert.Contains("### Pronunciations\n", text, StringComparison.Ordinal);
+        Assert.DoesNotContain("Pronunciations", text, StringComparison.Ordinal);
+        Assert.DoesNotContain("respelling", text, StringComparison.OrdinalIgnoreCase);
         Assert.Contains("### Forms\n", text, StringComparison.Ordinal);
         Assert.Contains($"| {"`Noun`",-14} | {1,6} | {4,6} |", text, StringComparison.Ordinal);
         Assert.Contains($"| {"`Verb`",-14} | {1,6} | {2,6} |", text, StringComparison.Ordinal);
@@ -167,10 +168,10 @@ public sealed class BuilderTests : IDisposable
     /// <summary>
     ///     Each sense of a trained lemma is listed in inventory order (the order of Open English WordNet, the position of the
     ///     sense in its entry) with its id, group (none when it has no group),
-    ///     OEWN sense key (a project sense has none), respelling when it has one, and gloss.
+    ///     OEWN sense key (a project sense has none), and gloss.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_Appendix_Generate_ListsSensesWithGroupKeyGlossAndRespelling()
+    public void WordSenseBuilder_Appendix_Generate_ListsSensesWithGroupKeyAndGloss()
     {
         var (corpus, data) = WriteAppendixInput();
 
@@ -181,7 +182,7 @@ public sealed class BuilderTests : IDisposable
             [
                 "  - `bank#coin-bank` (noun); group: `bank#group:depository`; key: `bank%1:06:01::`; gloss: a container for coins",
                 "  - `bank#banking-company` (noun); group: `bank#group:depository`; key: `bank%1:14:00::`; gloss: a financial institution that accepts deposits \\*and\\* lends money; a depository",
-                "  - `bank#ridge` (noun); group: none; key: `bank%1:17:00::`; respelling: `bangk`; gloss: a long ridge of land",
+                "  - `bank#ridge` (noun); group: none; key: `bank%1:17:00::`; gloss: a long ridge of land",
                 "  - `bank#incline` (noun); group: none; key: `bank%1:17:01::`; gloss: sloping land beside a body of water",
                 "  - `bank#close-in` (verb); group: none; key: `bank%2:35:00::`; gloss: tip laterally",
                 "  - `bank#cover` (verb); group: none; key: `bank%2:35:01::`; gloss: cover with ashes",

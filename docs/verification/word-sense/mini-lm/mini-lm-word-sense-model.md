@@ -21,8 +21,14 @@ All scenarios below pass on every platform and target framework of the CI matrix
 
 - **Pinned identity**: `ModelId` is `all-MiniLM-L6-v2-int8`, `HiddenSize` is 384 and the vocabulary is uncased before any
   setup; the two files are pinned by SHA-256 digests.
-- **Model directory is verified**: a directory with `model_int8.onnx` and `vocab.txt` passes `EnsureModelAsync`; a missing
-  or altered file is refused (verified for every model through this class in `OnnxWordSenseModelTests`).
+- **Model is downloadable** (`MiniLMWordSenseModel_IsDownloadable`): the model, held as `IWordSenseModel`, is also an
+  `IDownloadableWordSenseModel`, so the optional `EnsureModelAsync` is available through the capability interface (the
+  composition forwards it to the encoder model only, the Basic model needs none).
+- **Model directory is verified**: a directory with `model_int8.onnx` and `vocab.txt` passes `EnsureModelAsync`
+  (`MiniLMWordSenseModel_EnsureModelAsync_ModelDirectory_VerifiesPinnedFiles`); a missing or altered file is refused,
+  verified for every model through this class in `OnnxWordSenseModelTests`, and a directory that does not exist throws
+  `ModelUnavailableException` through the composition, carrying the original exception as inner exception
+  (`MiniLMWordSenseModel_EnsureModelAsync_MissingDirectory_ThrowsModelUnavailable`).
 - **Embedded weights resolve against the word image** (`EmbeddedWeights_MiniLM_MatchesWordImage`, in the Onnx test
   project): the weights embedded in the assembly load for the model id and hidden size, carry the inventory hash of the
   shipped word image and every sense of every lemma resolves.

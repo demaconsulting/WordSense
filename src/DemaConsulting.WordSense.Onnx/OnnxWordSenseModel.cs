@@ -1,3 +1,5 @@
+using Microsoft.ML.OnnxRuntime;
+
 namespace DemaConsulting.WordSense.Onnx;
 
 /// <summary>
@@ -10,7 +12,8 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     trained weights embedded in its own assembly. The constructor is not accessible outside the WordSense assemblies,
 ///     so this class is extended only by the packages of this repository (<c>DemaConsulting.WordSense.MiniLM</c> and
 ///     <c>DemaConsulting.WordSense.BertBaseCased</c>, which wrap it, composed with the Basic model as the fallback, in
-///     their public models); use those packages, or the interface <see cref="IWordSenseModel"/>, rather than deriving
+///     their public models); use those packages, or the interfaces <see cref="IWordSenseModel"/> and
+///     <see cref="IDownloadableWordSenseModel"/>, rather than deriving
 ///     from it.
 ///     </para>
 ///     <para>
@@ -31,12 +34,12 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     a model file is missing. The model files come from the directory
 ///     given to the model's constructor (every file verified against its pinned SHA-256, with no network access) or,
 ///     when none was given, from the per-user store, which a mirror or the GitHub copy of the repository fills on first
-///     use. Concurrent <see cref="EnsureModelAsync"/> calls share one in-flight ensure (the mirror of a later call is
+///     use. Concurrent <see cref="EnsureModelAsync"/> calls share one in-flight ensure (the options of a later call are
 ///     ignored while one is running), and a failed call can be repeated. Cancelling a token only stops that caller from
 ///     waiting: its returned task is cancelled, but the shared ensure is not cancelled, it keeps running even when no
 ///     caller is waiting any more (only disposing the model cancels it), and the next call joins it while it runs
-///     (its <see cref="MirrorOptions"/> are ignored), returns at once when it has succeeded, and starts a new ensure
-///     with its own <see cref="MirrorOptions"/> only after a failed one. A download in progress writes to temporary
+///     (its <see cref="DownloadOptions"/> are ignored), returns at once when it has succeeded, and starts a new ensure
+///     with its own <see cref="DownloadOptions"/> only after a failed one. A download in progress writes to temporary
 ///     files that are never visible under a final file name, so a failed or abandoned download leaves no partial model file.
 ///     <see cref="ClassifyAsync"/> is thread-safe. The model owns the downloader state, so it is
 ///     <see cref="IDisposable"/> (through <see cref="IWordSenseModel"/>).
@@ -55,13 +58,22 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     <para>
 ///     State of the ensure: the ensured state belongs to the instance, not to the process. After one successful
 ///     <see cref="EnsureModelAsync"/> the instance remembers the directory it verified (including the
-///     <see cref="MirrorOptions.StoreRoot"/> of the <see cref="MirrorOptions"/> passed to that call), and later calls
+///     <see cref="DownloadOptions.StoreRoot"/> of the <see cref="DownloadOptions"/> passed to that call), and later calls
 ///     reuse it without hashing again; a new instance starts not yet ensured and
 ///     hashes the files again. Only after a failed ensure does the next call start a new one (an ensure cancelled by
 ///     disposal is never restarted: every later call throws <see cref="ObjectDisposedException"/>). Each ensure is
-///     shared by concurrent callers, and a <see cref="MirrorOptions"/> passed
-///     while an ensure is already in flight is ignored. After the model is ensured, passing another mirror has no
+///     shared by concurrent callers, and <see cref="DownloadOptions"/> passed
+///     while an ensure is already in flight are ignored. After the model is ensured, passing other options has no
 ///     effect.
+///     </para>
+///     <para>
+///     Typed failures: the failures of the ensure and of the classification that concern the model are reported as
+///     <see cref="WordSenseException"/>s that carry the original exception as <see cref="Exception.InnerException"/>:
+///     <see cref="ModelUnavailableException"/> (a model file that no source delivered, or that is missing from a
+///     supplied directory), <see cref="ModelIntegrityException"/> (a file that fails its pinned SHA-256 in a supplied
+///     directory, damaged embedded weights, an ONNX file that cannot be opened) and
+///     <see cref="DownloadConfigurationException"/> (invalid download options or <c>WORDSENSE_MIRROR_*</c> settings).
+///     Cancellation, disposal and argument exceptions keep their usual types.
 ///     </para>
 ///     <para>
 ///     Concurrency: <see cref="ClassifyAsync"/> calls are not serialized; they run in parallel. The ONNX models run on
@@ -100,10 +112,14 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     using DemaConsulting.WordSense;
 ///     using DemaConsulting.WordSense.MiniLM;
 ///
-///     // Any ONNX encoder model works through the interface; here the MiniLM model.
+///     // Any downloadable model works through the capability interface; here the MiniLM model.
 ///     static async Task&lt;ClassifyResult[]&gt; ClassifyAsync(IWordSenseModel model, string[] words)
 ///     {
-///         await model.EnsureModelAsync();   // optional: fails early, or takes a MirrorOptions
+///         if (model is IDownloadableWordSenseModel downloadable)
+///         {
+///             await downloadable.EnsureModelAsync();   // optional: fails early, or takes DownloadOptions
+///         }
+///
 ///         return await model.ClassifyAsync(words);
 ///     }
 ///
@@ -111,7 +127,7 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     ClassifyResult[] results = await ClassifyAsync(model, ["They", "will", "record", "the", "record", "."]);
 ///     </code>
 /// </example>
-public abstract class OnnxWordSenseModel : IWordSenseModel
+public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel
 {
     private readonly ModelSpec _spec;
     private readonly string? _modelDirectory;
@@ -171,16 +187,17 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     ///     Makes sure every file of the model is available and verified: from the directory given to the constructor,
     ///     or from the per-user store, downloading what is missing.
     /// </summary>
-    /// <param name="mirror">
-    ///     A mirror to try before the public source; it takes precedence over the <c>WORDSENSE_MIRROR_*</c> environment
-    ///     variables. Pass <see langword="null"/> to use the environment's mirror, if any. A mirror passed while an
-    ///     earlier call is still running is ignored, and a mirror is never used when a model directory was supplied.
+    /// <param name="options">
+    ///     The download options: a mirror to try before the public source (they take precedence over the
+    ///     <c>WORDSENSE_MIRROR_*</c> environment variables), the store location and the timeout. Pass
+    ///     <see langword="null"/> to use the environment's mirror, if any. Options passed while an
+    ///     earlier call is still running are ignored, and options are never used when a model directory was supplied.
     /// </param>
     /// <param name="cancellationToken">A token that cancels the wait of this call (the returned task is cancelled); the shared ensure itself is not cancelled by it.</param>
     /// <returns>A task that completes when the model files are ready.</returns>
     /// <remarks>
     ///     When a model directory was supplied, this call is optional but useful: it verifies the files up front, and no
-    ///     network access happens (it throws <see cref="FileNotFoundException"/> or <see cref="InvalidDataException"/>
+    ///     network access happens (it throws <see cref="ModelUnavailableException"/> or <see cref="ModelIntegrityException"/>
     ///     through the task when a file is missing or altered). Every file
     ///     must exist directly in that directory (a flat layout; there is no <c>{model-id}</c> subfolder) and match its
     ///     pinned SHA-256, and all files of the model are verified (for BertBaseCased that includes
@@ -195,30 +212,30 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     ///     Calling the method again after it completed is cheap and harmless. Cancelling a token stops only that caller
     ///     from waiting: the task returned to it is cancelled, but the shared ensure is not cancelled and keeps running
     ///     even when no caller is waiting any more (only disposing the model cancels it). The next call joins an ensure
-    ///     that is still running (its <see cref="MirrorOptions"/> are ignored), returns at once when it has succeeded
-    ///     in the meantime, and starts a new ensure with its own <see cref="MirrorOptions"/> only when the earlier one
+    ///     that is still running (its <see cref="DownloadOptions"/> are ignored), returns at once when it has succeeded
+    ///     in the meantime, and starts a new ensure with its own <see cref="DownloadOptions"/> only when the earlier one
     ///     failed; a failed download leaves no partial file under a final file name, so the call can simply be
     ///     repeated. A token that is already cancelled does not make the call throw: the call returns a cancelled task
-    ///     (awaiting it throws <see cref="OperationCanceledException"/>), as the Basic model does, except that a
+    ///     (awaiting it throws <see cref="OperationCanceledException"/>), except that a
     ///     task that has already completed (the ensure succeeded earlier) is returned as it is; otherwise the shared ensure is still started (or joined) and
     ///     continues, although the task returned to this caller is cancelled. Only a disposed model throws from the call itself (even for an already cancelled token). The only environment variables are the four
     ///     <c>WORDSENSE_MIRROR_*</c> mirror variables; none of them sets the store location, which only
-    ///     <see cref="MirrorOptions.StoreRoot"/> changes (and a <see cref="MirrorOptions"/> needs a mirror base URI;
-    ///     a relative <see cref="MirrorOptions.StoreRoot"/> is resolved against the current directory of the process).
+    ///     <see cref="DownloadOptions.StoreRoot"/> changes (and <see cref="DownloadOptions"/> need a mirror base URI;
+    ///     a relative <see cref="DownloadOptions.StoreRoot"/> is resolved against the current directory of the process).
     ///     Offline route through the store: copy the model files into <c>{StoreRoot}/{ModelId}/</c> (or the default
     ///     store); files that match their pinned SHA-256 are kept and never requested, so nothing is downloaded when all
     ///     are valid.
     ///     Environment details: a blank variable counts as unset; user without password (or the reverse), or a user,
-    ///     password or token without <c>WORDSENSE_MIRROR_URL</c>, throws <see cref="ArgumentException"/> through the
-    ///     task, and so does a <c>WORDSENSE_MIRROR_URL</c> or <see cref="MirrorOptions.BaseUri"/> that is relative,
+    ///     password or token without <c>WORDSENSE_MIRROR_URL</c>, is a <see cref="DownloadConfigurationException"/> reported through the
+    ///     task, and so is a <c>WORDSENSE_MIRROR_URL</c> or <see cref="DownloadOptions.BaseUri"/> that is relative,
     ///     not http or https, or has a query, a fragment or user-info; the environment is not read at all when a model
     ///     directory was supplied (then an invalid setting is
-    ///     ignored without an exception) or when a <see cref="MirrorOptions"/> is passed. A
-    ///     <see cref="MirrorOptions.Timeout"/> that is zero, negative or longer than about 49 days throws
-    ///     <see cref="ArgumentOutOfRangeException"/> (infinite is allowed); it is ignored when a model directory was
-    ///     supplied (so no <see cref="ArgumentException"/> is thrown for an invalid <see cref="MirrorOptions"/> then). A download that exceeds the timeout is not
+    ///     ignored without an exception) or when <see cref="DownloadOptions"/> are passed. A
+    ///     <see cref="DownloadOptions.Timeout"/> that is zero, negative or longer than about 49 days is a
+    ///     <see cref="DownloadConfigurationException"/> too (its inner exception is an <see cref="ArgumentOutOfRangeException"/>; infinite is allowed); it is ignored when a model directory was
+    ///     supplied (so no <see cref="DownloadConfigurationException"/> is thrown for invalid <see cref="DownloadOptions"/> then). A download that exceeds the timeout is not
     ///     reported as an exception of its own: that source is discarded, the next is tried, and when none delivers the
-    ///     file the task fails with <see cref="HttpRequestException"/>.
+    ///     file the task fails with <see cref="ModelUnavailableException"/> (its inner exception is the <see cref="HttpRequestException"/> that lists every source tried).
     ///     Network notes: downloads use <c>HttpClient</c> with the default proxy behavior of .NET (the system proxy
     ///     settings, and the <c>HTTP_PROXY</c>, <c>HTTPS_PROXY</c> and <c>NO_PROXY</c> variables on Linux and macOS),
     ///     with no proxy credentials of its own. Allow-list the host of your mirror, if any, and for the public source
@@ -229,15 +246,15 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     ///     Several processes (or instances) may share one store: each download goes to its own uniquely named temporary
     ///     file, is verified, and then moved into place, so a reader never sees a partial file and the processes at
     ///     worst download the same file twice. A file in the store that is missing or fails its SHA-256 check (corrupt,
-    ///     truncated or tampered) is downloaded again and replaced; it is never used.
+    ///     truncated or tampered) is downloaded again and replaced; it is never used. An unwritable store reports the
+    ///     file system exception of the platform (<see cref="IOException"/> or <see cref="UnauthorizedAccessException"/>) unchanged.
     /// </remarks>
     /// <exception cref="ObjectDisposedException">Thrown (from the call itself) when the model has been disposed.</exception>
-    /// <exception cref="ArgumentException">Reported through the returned task when the mirror configuration is invalid (including <see cref="ArgumentOutOfRangeException"/> for an invalid timeout).</exception>
-    /// <exception cref="FileNotFoundException">Reported through the returned task when a supplied model directory lacks a model file (or does not exist).</exception>
-    /// <exception cref="InvalidDataException">Reported through the returned task when a file of a supplied model directory does not match its pinned SHA-256.</exception>
-    /// <exception cref="HttpRequestException">Reported through the returned task when a file could not be obtained and verified from any source.</exception>
+    /// <exception cref="DownloadConfigurationException">Reported through the returned task when the download configuration is invalid (the inner exception is the <see cref="ArgumentException"/>, or the <see cref="ArgumentOutOfRangeException"/> for an invalid timeout).</exception>
+    /// <exception cref="ModelUnavailableException">Reported through the returned task when a supplied model directory lacks a model file (or does not exist), or when a file could not be obtained and verified from any source.</exception>
+    /// <exception cref="ModelIntegrityException">Reported through the returned task when a file of a supplied model directory does not match its pinned SHA-256.</exception>
     /// <exception cref="OperationCanceledException">Reported through the returned task (not thrown from the call, also not for an already cancelled token) when <paramref name="cancellationToken"/> is cancelled, or when the model is disposed during a download.</exception>
-    public Task EnsureModelAsync(MirrorOptions? mirror = null, CancellationToken cancellationToken = default)
+    public Task EnsureModelAsync(DownloadOptions? options = null, CancellationToken cancellationToken = default)
     {
         Task task;
         lock (_gate)
@@ -246,7 +263,7 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
             if (_ensure is null || _ensure.IsFaulted || _ensure.IsCanceled)
             {
                 // Run on the thread pool so that hashing and file work never block the caller or the gate
-                _ensure = Task.Run(() => EnsureCoreAsync(mirror), CancellationToken.None);
+                _ensure = Task.Run(() => EnsureCoreAsync(options), CancellationToken.None);
             }
 
             task = _ensure;
@@ -278,7 +295,7 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     ///     A list in which no word needs the encoder is answered without any model file: nothing is ensured,
     ///     downloaded or verified, so it works before <see cref="EnsureModelAsync"/> and when the model directory does
     ///     not exist. A word that needs the encoder ensures the model lazily (with the default and environment mirror
-    ///     settings; call <see cref="EnsureModelAsync"/> yourself first to pass a <see cref="MirrorOptions"/>), shared
+    ///     settings; call <see cref="EnsureModelAsync"/> yourself first to pass <see cref="DownloadOptions"/>), shared
     ///     with concurrent callers; a failed ensure can be retried by the next call. The method is
     ///     thread-safe. Every exception, including <see cref="ObjectDisposedException"/>, is reported through the
     ///     returned task, so an <c>await</c> in a <c>try</c> catches it; a disposed model wins over an already cancelled
@@ -291,11 +308,11 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     ///     containing a space is looked up as one key, which no lexicon entry has, so it is unknown too.
     /// </remarks>
     /// <exception cref="ArgumentNullException">Thrown when the list is null.</exception>
-    /// <exception cref="ArgumentException">Thrown when an element is null, or by the lazy ensure when the mirror settings of the <c>WORDSENSE_MIRROR_*</c> environment variables are invalid.</exception>
+    /// <exception cref="ArgumentException">Thrown when an element is null.</exception>
     /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled, or when the model is disposed during the lazy ensure.</exception>
-    /// <exception cref="InvalidDataException">Thrown when a file of a supplied model directory does not match its pinned SHA-256 (lazy ensure), the embedded weights are corrupt or do not match the word image, or the ONNX model cannot be read.</exception>
-    /// <exception cref="HttpRequestException">Thrown by the lazy ensure when a file could not be obtained and verified.</exception>
-    /// <exception cref="FileNotFoundException">Thrown by the lazy ensure when a supplied model directory lacks a model file.</exception>
+    /// <exception cref="ModelIntegrityException">Thrown when a file of a supplied model directory does not match its pinned SHA-256 (lazy ensure), the embedded weights are corrupt or do not match the word image, or the ONNX model cannot be read.</exception>
+    /// <exception cref="ModelUnavailableException">Thrown by the lazy ensure when a file could not be obtained and verified, or a supplied model directory does not exist or lacks a model file.</exception>
+    /// <exception cref="DownloadConfigurationException">Thrown by the lazy ensure when the settings of the <c>WORDSENSE_MIRROR_*</c> environment variables are invalid.</exception>
     /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed, whatever the words.</exception>
     public async Task<ClassifyResult[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default)
     {
@@ -310,23 +327,31 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
         // Honor an already canceled token before any work, whatever the words (a disposed model wins, above)
         cancellationToken.ThrowIfCancellationRequested();
 
-        // A word needs the model only when its lemma has trained weights and several scored senses; the weights are
-        // embedded in the assembly, so deciding this needs no model file, download or ONNX session
-        if (!OnnxClassifier.NeedsModel(list, GetTable()))
-        {
-            return OnnxClassifier.ResolveWithoutModel(list, cancellationToken);
-        }
-
-        // Ambiguous words need the model: ensure it lazily (shared with concurrent callers), then open the resources
-        await EnsureModelAsync(null, cancellationToken).ConfigureAwait(false);
-        var classifier = AcquireClassifier();
         try
         {
-            return await classifier.ClassifyAsync(list, cancellationToken).ConfigureAwait(false);
+            // A word needs the model only when its lemma has trained weights and several scored senses; the weights are
+            // embedded in the assembly, so deciding this needs no model file, download or ONNX session
+            if (!OnnxClassifier.NeedsModel(list, GetTable()))
+            {
+                return OnnxClassifier.ResolveWithoutModel(list, cancellationToken);
+            }
+
+            // Ambiguous words need the model: ensure it lazily (shared with concurrent callers), then open the resources
+            await EnsureModelAsync(null, cancellationToken).ConfigureAwait(false);
+            var classifier = AcquireClassifier();
+            try
+            {
+                return await classifier.ClassifyAsync(list, cancellationToken).ConfigureAwait(false);
+            }
+            finally
+            {
+                ReleaseClassifier();
+            }
         }
-        finally
+        catch (InvalidDataException ex)
         {
-            ReleaseClassifier();
+            // The weights and the word image disagree: a damaged or mismatched resource of this model
+            throw new ModelIntegrityException($"The weights of the model '{_spec.ModelId}' do not match the word image: {ex.Message}", ex);
         }
     }
 
@@ -351,7 +376,7 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     /// <returns>The classifier.</returns>
     /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed.</exception>
     /// <exception cref="InvalidOperationException">Thrown when the model files are not available.</exception>
-    /// <exception cref="InvalidDataException">Thrown when the embedded weights are corrupt or the ONNX model cannot be read.</exception>
+    /// <exception cref="ModelIntegrityException">Thrown when the embedded weights are corrupt or the ONNX model cannot be read.</exception>
     internal OnnxClassifier AcquireClassifier()
     {
         _inFlight.Enter();
@@ -392,12 +417,13 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     ///     Gets the embedded weights, loading and checking them on first use (no model file is needed).
     /// </summary>
     /// <returns>The table.</returns>
+    /// <exception cref="ModelIntegrityException">Thrown when the embedded weights are missing, corrupt or not for this model and word image.</exception>
     private WeightedLemmaTable GetTable()
     {
         lock (_gate)
         {
             ObjectDisposedException.ThrowIf(_disposed, this);
-            return _table ??= WeightedLemmaTable.LoadEmbedded(_spec.WeightsAssembly, _spec.WeightsResourceName, _spec.ModelId, _spec.HiddenSize);
+            return _table ??= LoadTable();
         }
     }
 
@@ -405,6 +431,8 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     ///     Gets the classifier, opening the encoder and loading the weights on first use.
     /// </summary>
     /// <returns>The classifier.</returns>
+    /// <exception cref="ModelUnavailableException">Thrown when a model file that was verified is gone.</exception>
+    /// <exception cref="ModelIntegrityException">Thrown when the embedded weights are damaged or the ONNX model cannot be opened.</exception>
     private OnnxClassifier GetClassifier()
     {
         lock (_gate)
@@ -413,14 +441,76 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
             if (_classifier is null)
             {
                 var directory = _directory ?? throw new InvalidOperationException("The model files are not available; call EnsureModelAsync first.");
-                _table ??= WeightedLemmaTable.LoadEmbedded(_spec.WeightsAssembly, _spec.WeightsResourceName, _spec.ModelId, _spec.HiddenSize);
-                _encoder ??= OpenEncoderCore(directory);
+                _table ??= LoadTable();
+                _encoder ??= OpenEncoderChecked(directory);
                 _classifier = new OnnxClassifier(_table, _encoder.EncodeAsync);
             }
 
             return _classifier;
         }
     }
+
+    /// <summary>
+    ///     Loads the embedded weights, reporting a damaged resource as <see cref="ModelIntegrityException"/>.
+    /// </summary>
+    /// <returns>The table.</returns>
+    /// <exception cref="ModelIntegrityException">Thrown when the weights are missing, corrupt or not for this model and word image.</exception>
+    private WeightedLemmaTable LoadTable()
+    {
+        try
+        {
+            return WeightedLemmaTable.LoadEmbedded(_spec.WeightsAssembly, _spec.WeightsResourceName, _spec.ModelId, _spec.HiddenSize);
+        }
+        catch (InvalidDataException ex)
+        {
+            throw new ModelIntegrityException($"The embedded weights of the model '{_spec.ModelId}' are damaged or do not match the word image: {ex.Message}", ex);
+        }
+    }
+
+    /// <summary>
+    ///     Opens the encoder on a verified directory, reporting an unusable ONNX or vocabulary file with a typed exception.
+    /// </summary>
+    /// <param name="directory">The directory that holds the verified model files.</param>
+    /// <returns>The encoder.</returns>
+    /// <exception cref="ModelUnavailableException">Thrown when a model file is gone.</exception>
+    /// <exception cref="ModelIntegrityException">
+    ///     Thrown when the ONNX model or the vocabulary cannot be used: the structure of a verified file is rejected
+    ///     (an <see cref="ArgumentException"/> such as a vocabulary without a required token,
+    ///     <see cref="InvalidOperationException"/>, <see cref="IndexOutOfRangeException"/>,
+    ///     <see cref="FormatException"/>, <see cref="InvalidDataException"/> or an <see cref="OnnxRuntimeException"/>),
+    ///     or the hidden size of the ONNX model differs from the one of the model description.
+    /// </exception>
+    private OnnxEncoder OpenEncoderChecked(string directory)
+    {
+        try
+        {
+            return OpenEncoderCore(directory);
+        }
+        catch (Exception ex) when (ex is FileNotFoundException or DirectoryNotFoundException)
+        {
+            throw new ModelUnavailableException($"A file of the model '{_spec.ModelId}' is gone after it was verified: {ex.Message}", ex);
+        }
+        catch (Exception ex) when (IsUnusableFileFailure(ex))
+        {
+            throw new ModelIntegrityException($"The files of the model '{_spec.ModelId}' (the ONNX model or the vocabulary) cannot be used: {ex.Message}", ex);
+        }
+    }
+
+    /// <summary>
+    ///     Determines whether an exception of the encoder open means that a verified file has an unusable structure.
+    /// </summary>
+    /// <param name="ex">The exception.</param>
+    /// <returns>True for a structural parse or metadata failure; false for cancellation, disposal, a failure of our own
+    /// arguments and an exception that is already typed.</returns>
+    private static bool IsUnusableFileFailure(Exception ex) => ex switch
+    {
+        // Never re-wrap a typed failure; cancellation and disposal are not file problems (disposal is an
+        // InvalidOperationException, so it has to be excluded before that case)
+        WordSenseException or OperationCanceledException or ObjectDisposedException or ArgumentNullException => false,
+        ArgumentException or InvalidOperationException or IndexOutOfRangeException or FormatException
+            or InvalidDataException or OnnxRuntimeException => true,
+        _ => false,
+    };
 
     /// <summary>
     ///     Gets the hidden size (feature dimension) of the encoder; known before <see cref="EnsureModelAsync"/>.
@@ -491,6 +581,7 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     /// </summary>
     /// <returns>The encoder.</returns>
     /// <exception cref="InvalidOperationException">Thrown when the model files are not available.</exception>
+    /// <exception cref="InvalidDataException">Thrown when the hidden size of the ONNX model differs from the one of the model description.</exception>
     internal OnnxEncoder OpenEncoder()
     {
         string directory;
@@ -509,11 +600,34 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     internal ModelSpec Spec => _spec;
 
     /// <summary>
-    ///     Makes the model files available and verified.
+    ///     Makes the model files available and verified; failures are reported with the typed exceptions.
     /// </summary>
-    /// <param name="mirror">The mirror, or null.</param>
+    /// <param name="options">The download options, or null.</param>
     /// <returns>A task that completes when the files are ready.</returns>
-    private async Task EnsureCoreAsync(MirrorOptions? mirror)
+    /// <exception cref="ModelUnavailableException">Thrown when a file is missing from the supplied directory or no source delivered it.</exception>
+    /// <exception cref="ModelIntegrityException">Thrown when a file of the supplied directory fails its pinned SHA-256.</exception>
+    /// <exception cref="DownloadConfigurationException">Thrown when the options or the environment settings are invalid.</exception>
+    private async Task EnsureCoreAsync(DownloadOptions? options)
+    {
+        try
+        {
+            await EnsureFilesAsync(options).ConfigureAwait(false);
+        }
+        catch (Exception ex) when (ex is FileNotFoundException or DirectoryNotFoundException or HttpRequestException)
+        {
+            throw new ModelUnavailableException($"The files of the model '{_spec.ModelId}' are not available: {ex.Message}", ex);
+        }
+        catch (InvalidDataException ex)
+        {
+            throw new ModelIntegrityException($"A file of the model '{_spec.ModelId}' is damaged: {ex.Message}", ex);
+        }
+        catch (ArgumentException ex)
+        {
+            throw new DownloadConfigurationException($"The download settings for the model '{_spec.ModelId}' are invalid: {ex.Message}", ex);
+        }
+    }
+
+    private async Task EnsureFilesAsync(DownloadOptions? options)
     {
         string directory;
         if (_modelDirectory is not null)
@@ -526,7 +640,7 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
         {
             try
             {
-                directory = await ModelDownloader.EnsureAsync(_spec, mirror, _disposeToken, HttpClient, GitHubBaseUri, GetEnvironmentVariable).ConfigureAwait(false);
+                directory = await ModelDownloader.EnsureAsync(_spec, options, _disposeToken, HttpClient, GitHubBaseUri, GetEnvironmentVariable).ConfigureAwait(false);
             }
             catch (Exception ex) when (_disposeToken.IsCancellationRequested && ex is not OperationCanceledException)
             {
@@ -545,11 +659,30 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     ///     Opens an encoder on a verified directory.
     /// </summary>
     /// <param name="directory">The directory that holds the model files.</param>
-    /// <returns>The encoder.</returns>
-    private OnnxEncoder OpenEncoderCore(string directory) => new(
-        Path.Join(directory, _spec.OnnxFileName),
-        Path.Join(directory, _spec.VocabularyFileName),
-        _spec.LowerCase,
-        _maxSequenceLength,
-        IntraOpThreads);
+    /// <returns>The encoder, whose hidden size equals the one of the model description.</returns>
+    /// <exception cref="InvalidDataException">
+    ///     Thrown when the hidden size of the opened ONNX model differs from the one of the model description (and of
+    ///     the embedded weights); the encoder is disposed first.
+    /// </exception>
+    private OnnxEncoder OpenEncoderCore(string directory)
+    {
+        var encoder = new OnnxEncoder(
+            Path.Join(directory, _spec.OnnxFileName),
+            Path.Join(directory, _spec.VocabularyFileName),
+            _spec.LowerCase,
+            _maxSequenceLength,
+            IntraOpThreads);
+
+        // The weights are trained and checked for the hidden size of the description; an ONNX file of another size
+        // would make every feature unusable, so it is rejected here rather than silently answered from the lexicon
+        if (encoder.HiddenSize != _spec.HiddenSize)
+        {
+            var actual = encoder.HiddenSize;
+            encoder.Dispose();
+            throw new InvalidDataException(
+                $"The ONNX model of '{_spec.ModelId}' has a hidden size of {actual}, but the model description and its weights expect {_spec.HiddenSize}.");
+        }
+
+        return encoder;
+    }
 }

@@ -33,7 +33,8 @@ All downloadable assets (every file except this README, `LICENSE` and `SHA256SUM
 `https://media.githubusercontent.com/media/demaconsulting/WordSense/{ref}/model/bert-base-cased-int8/{file}`.
 The model ID `bert-base-cased-int8` names this folder everywhere: `<mirror>/<model-id>/` on a mirror,
 `<store>/<model-id>/` in the per-user store and `<ref>/model/<model-id>/` on the LFS endpoint. A missing file is requested
-from the mirror first (the argument of `EnsureModelAsync` or the `WORDSENSE_MIRROR_URL` environment variable), then from
+from the mirror first (the `DownloadOptions` passed to `EnsureModelAsync` or the `WORDSENSE_MIRROR_URL` environment
+variable), then from
 the LFS endpoint; Hugging Face is not a download source. The weights embedded in the package are valid only for the exact
 `model_int8.onnx` listed in `SHA256SUMS`, and all four files are pinned and downloaded.
 

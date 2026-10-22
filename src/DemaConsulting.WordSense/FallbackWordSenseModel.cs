@@ -25,11 +25,16 @@ namespace DemaConsulting.WordSense;
 ///     compose exactly this by default.
 ///     </para>
 ///     <para>
-///     The composite owns both models: <see cref="EnsureModelAsync"/> ensures both (concurrently, with the same mirror),
-///     and <see cref="Dispose"/> disposes both. Disposal is idempotent and thread-safe; after it, both methods throw
+///     The composite owns both models: <see cref="EnsureModelAsync"/> ensures the members that implement
+///     <see cref="IDownloadableWordSenseModel"/> (concurrently, with the same options) and skips the others, and
+///     <see cref="Dispose"/> disposes both. Disposal is idempotent and thread-safe; after it, both methods throw
 ///     <see cref="ObjectDisposedException"/>. If either model throws, the call throws; <see cref="EnsureModelAsync"/>
-///     always runs the ensure step of both models first, even when one of them fails, and then reports the failure.
-///     The result array is parallel to the input, as for every model.
+///     always starts the ensure step of every capable member first, even when one of them fails, and then reports the
+///     failure (the exception of the first failed member, unchanged: a <see cref="WordSenseException"/> of a member
+///     reaches the caller as it is). <see cref="ClassifyAsync"/> needs no preceding ensure: a member that needs files
+///     ensures them lazily when its own <see cref="IWordSenseModel.ClassifyAsync"/> needs them. The composite
+///     implements <see cref="IDownloadableWordSenseModel"/> also when no member has the capability (the call then
+///     completes at once). The result array is parallel to the input, as for every model.
 ///     </para>
 /// </remarks>
 /// <example>
@@ -37,10 +42,10 @@ namespace DemaConsulting.WordSense;
 ///     using DemaConsulting.WordSense;
 ///
 ///     // The composition that the MiniLM and BertBaseCased packages build for you, written out for any primary model
-///     static IWordSenseModel Compose(IWordSenseModel primary) => new FallbackWordSenseModel(primary, new BasicWordSenseModel());
+///     static IDownloadableWordSenseModel Compose(IWordSenseModel primary) => new FallbackWordSenseModel(primary, new BasicWordSenseModel());
 ///     </code>
 /// </example>
-public sealed class FallbackWordSenseModel : IWordSenseModel
+public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
 {
     private readonly IWordSenseModel _primary;
     private readonly IWordSenseModel _fallback;
@@ -59,23 +64,32 @@ public sealed class FallbackWordSenseModel : IWordSenseModel
     }
 
     /// <summary>
-    ///     Makes sure both models have what they need.
+    ///     Makes sure the members that can be prepared have what they need; members without the
+    ///     <see cref="IDownloadableWordSenseModel"/> capability are skipped.
     /// </summary>
-    /// <param name="mirror">A mirror to try before the public source, passed to both models.</param>
+    /// <param name="options">The download options, passed to every member that has the capability.</param>
     /// <param name="cancellationToken">A token that cancels the operation.</param>
-    /// <returns>A task that completes when both models are ready.</returns>
+    /// <returns>A task that completes when every capable member is ready; when no member has the capability it is a completed task, or a cancelled task when <paramref name="cancellationToken"/> is already cancelled.</returns>
     /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed.</exception>
-    public Task EnsureModelAsync(MirrorOptions? mirror = null, CancellationToken cancellationToken = default)
+    /// <exception cref="ModelUnavailableException">Reported through the returned task when a member could not obtain its files.</exception>
+    /// <exception cref="ModelIntegrityException">Reported through the returned task when the files of a member are damaged.</exception>
+    /// <exception cref="DownloadConfigurationException">Reported through the returned task when the download settings are invalid.</exception>
+    public Task EnsureModelAsync(DownloadOptions? options = null, CancellationToken cancellationToken = default)
     {
         ObjectDisposedException.ThrowIf(Volatile.Read(ref _disposed) != 0, this);
-        return EnsureBothAsync(mirror, cancellationToken);
+        if (_primary is not IDownloadableWordSenseModel && _fallback is not IDownloadableWordSenseModel)
+        {
+            return cancellationToken.IsCancellationRequested ? Task.FromCanceled(cancellationToken) : Task.CompletedTask;
+        }
+
+        return EnsureMembersAsync(options, cancellationToken);
     }
 
-    private async Task EnsureBothAsync(MirrorOptions? mirror, CancellationToken cancellationToken)
+    private async Task EnsureMembersAsync(DownloadOptions? options, CancellationToken cancellationToken)
     {
-        // Both models always get to run their ensure step, even when one of them fails synchronously or asynchronously
-        var primaryTask = StartEnsure(_primary, mirror, cancellationToken);
-        var fallbackTask = StartEnsure(_fallback, mirror, cancellationToken);
+        // Every capable member always gets to run its ensure step, even when another one fails synchronously or asynchronously
+        var primaryTask = StartEnsure(_primary, options, cancellationToken);
+        var fallbackTask = StartEnsure(_fallback, options, cancellationToken);
         await Task.WhenAll(primaryTask, fallbackTask).ConfigureAwait(false);
     }
 
@@ -89,6 +103,7 @@ public sealed class FallbackWordSenseModel : IWordSenseModel
     /// <exception cref="ArgumentException">Thrown when an element is null.</exception>
     /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed.</exception>
     /// <exception cref="InvalidDataException">Thrown when a model returns an array of another length than the input.</exception>
+    /// <exception cref="WordSenseException">Thrown (as <see cref="ModelUnavailableException"/>, <see cref="ModelIntegrityException"/> or <see cref="DownloadConfigurationException"/>) when a member cannot obtain, verify or configure what it needs, unchanged from the member.</exception>
     public async Task<ClassifyResult[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default)
     {
         ObjectDisposedException.ThrowIf(Volatile.Read(ref _disposed) != 0, this);
@@ -138,11 +153,16 @@ public sealed class FallbackWordSenseModel : IWordSenseModel
         }
     }
 
-    private static Task StartEnsure(IWordSenseModel model, MirrorOptions? mirror, CancellationToken cancellationToken)
+    private static Task StartEnsure(IWordSenseModel model, DownloadOptions? options, CancellationToken cancellationToken)
     {
+        if (model is not IDownloadableWordSenseModel downloadable)
+        {
+            return Task.CompletedTask;
+        }
+
         try
         {
-            return model.EnsureModelAsync(mirror, cancellationToken);
+            return downloadable.EnsureModelAsync(options, cancellationToken);
         }
         catch (Exception ex)
         {

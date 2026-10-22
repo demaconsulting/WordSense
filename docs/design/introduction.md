@@ -35,9 +35,10 @@ software items, specifically:
   dependency
   - **WordLexicon (Unit)** — the embedded lexicon of known words (their analyses) and the sense catalog (senses and
     groups), including the internal reader of the lexicon blob
-  - **WordSenseContracts (Unit)** — the model interface, the composite `FallbackWordSenseModel`, the mirror options,
-    the answer values (`ClassifyResult`, `AnalysisCandidate`, `SenseCandidate`), the answer level and the sense and
-    group records
+  - **WordSenseContracts (Unit)** — the model interfaces (the classification contract and the optional downloadable
+    capability), the composite `FallbackWordSenseModel`, the download options, the typed exceptions
+    (`WordSenseException` and its three sealed subtypes), the answer values (`ClassifyResult`, `AnalysisCandidate`,
+    `SenseCandidate`), the answer level and the sense and group records
   - **BasicWordSenseModel (Unit)** — the public statistical model
   - **BasicClassifier (Unit)** — lexicon lookup, sentence segmentation and the driving of the statistical units
   - **BasicTables (Unit)** — the embedded statistics table and its reader
@@ -52,7 +53,7 @@ software items, specifically:
   - **OnnxEncoder (Unit)** — ONNX inference session and mean pooling per word
   - **WordPieceTokenizer (Unit)** — BERT WordPiece tokenizer, uncased or cased
   - **ModelDownloader (Unit)** — ordered, verified download of model files
-  - **DownloadMirror (Unit)** — validated mirror configuration
+  - **DownloadMirror (Unit)** — validated download source configuration (the mirror settings of `DownloadOptions`)
   - **LemmaWeights (Unit)** — per-lemma weights and thresholds, their blob reader, matching to the lexicon and the
     feature computation
 - **MiniLM (Subsystem)** — the package `DemaConsulting.WordSense.MiniLM`; it references the core and Onnx packages
@@ -117,9 +118,11 @@ Basic model, which was a fifth package before version 1.0, is part of the core s
 form layers:
 
 - The **core** package defines the vocabulary: the lexicon of known words with their analyses, the sense catalog (every
-  fine sense and, where curated, its group) and the contracts (`IWordSenseModel`, `FallbackWordSenseModel`,
-  `ClassifyResult`, `AnalysisCandidate`, `SenseCandidate`, `SenseLevel`, `WordDetails`,
-  `PartOfSpeech`, `SenseInfo`, `SenseGroup`, `MirrorOptions`), and it implements the contracts with the built-in
+  fine sense and, where curated, its group) and the contracts (`IWordSenseModel`, `IDownloadableWordSenseModel`,
+  `FallbackWordSenseModel`, `ClassifyResult`, `AnalysisCandidate`, `SenseCandidate`, `SenseLevel`, `WordDetails`,
+  `PartOfSpeech`, `SenseInfo`, `SenseGroup`, `DownloadOptions`, and the typed exceptions `WordSenseException`,
+  `ModelUnavailableException`, `ModelIntegrityException` and `DownloadConfigurationException`), and it implements the
+  contracts with the built-in
   `BasicWordSenseModel`, a statistical tagger and cue model that answers at the part of speech level (and the sense
   level where the lemma and part of speech have one sense). It holds no encoder weights and no ONNX code. Its
   package license expression is `MIT AND CC-BY-4.0` and a packed `NOTICE.md` carries the attribution of the data
@@ -153,14 +156,21 @@ tool references all four packages and is never shipped. Further rules of the spl
   per-user store folder and the GitHub LFS path.
 - The word table is shared: `WordLexicon` serves the analyses of all known spellings, including the inflections that the
   builder materializes at build time, so no model needs morphology at run time.
-- `IWordSenseModel` is `IDisposable`: the model owns the ONNX session and the downloader state and so the lifetime
-  (the Basic model honors the same contract and releases nothing). The mirror configuration is the sealed record
-  `MirrorOptions` in the core, so every model package takes the same argument; models that need no files ignore it.
+- `IWordSenseModel` is the classification contract only (`ClassifyAsync`) and is `IDisposable`: the model owns the
+  ONNX session and the downloader state and so the lifetime (the Basic model honors the same contract and releases
+  nothing). A model that needs files additionally implements the core `IDownloadableWordSenseModel`, whose optional
+  `EnsureModelAsync` takes the download configuration, the sealed record `DownloadOptions` in the core, so every
+  model package takes the same argument; the Basic model needs no files and is not downloadable.
+- Failures that a caller can act on are reported as the typed exceptions of the core (`ModelUnavailableException`,
+  `ModelIntegrityException`, `DownloadConfigurationException`, all deriving from `WordSenseException`) with the
+  original exception as the inner exception; the wrapping happens at the public boundary of a model or of the
+  lexicon, not inside the internal units.
 
 ![WordSense system](WordSenseView.svg)
 
-The data flows from the contracts upward: a caller obtains an `IWordSenseModel` from a model package, calls
-`EnsureModelAsync` once (optional: `ClassifyAsync` ensures lazily when a word needs the model) and classifies
+The data flows from the contracts upward: a caller obtains an `IWordSenseModel` from a model package, optionally
+calls `EnsureModelAsync` once when the model is an `IDownloadableWordSenseModel` (`ClassifyAsync` ensures lazily when
+a word needs the model; the explicit call only controls when the download happens) and classifies
 tokenized text, receiving one `ClassifyResult` per word in input order. Every model looks each word up in
 `WordLexicon` first; only a word with several senses needs the model's context decision, and each answer states the
 level (part of speech, group or sense) at which it was made. The result is built from its `Analyses` (the probability
@@ -174,9 +184,11 @@ The source code folder structure mirrors the packages, and the packages mirror t
 ```text
 src/DemaConsulting.WordSense/                      — core subsystem
 ├── WordLexicon.cs, WordImage.cs, ImageFormat.cs   — word-lexicon unit
-├── IWordSenseModel.cs (also MirrorOptions), FallbackWordSenseModel.cs, ClassifyResult.cs,
-│   AnalysisCandidate.cs, SenseCandidate.cs, WordDetails.cs (also PartOfSpeech), SenseInfo.cs (also SenseGroup),
-│   SenseLevel.cs                                   — word-sense-contracts unit
+├── IWordSenseModel.cs (the classification contract only), IDownloadableWordSenseModel.cs, DownloadOptions.cs,
+│   FallbackWordSenseModel.cs, ClassifyResult.cs, AnalysisCandidate.cs, SenseCandidate.cs,
+│   WordDetails.cs (also PartOfSpeech), SenseInfo.cs (also SenseGroup), SenseLevel.cs,
+│   WordSenseException.cs, ModelUnavailableException.cs, ModelIntegrityException.cs,
+│   DownloadConfigurationException.cs                — word-sense-contracts unit
 ├── BasicWordSenseModel.cs                          — basic-word-sense-model unit
 ├── BasicClassifier.cs                              — basic-classifier unit
 ├── BasicTables.cs                                  — basic-tables unit (tables and the feature hash)

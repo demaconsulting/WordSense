@@ -227,7 +227,7 @@ internal sealed class BasicTables
     private const int HashSize = 32;
     private static readonly byte[] Magic = "WSB3"u8.ToArray();
 
-    private static readonly Lazy<BasicTables> DefaultTables = new(LoadEmbedded, LazyThreadSafetyMode.ExecutionAndPublication);
+    private static readonly Lazy<BasicTables> DefaultTables = new(LoadEmbeddedResource, LazyThreadSafetyMode.ExecutionAndPublication);
 
     private readonly string[] _suffixKeys;
     private readonly double[][] _suffixProbabilities;
@@ -266,7 +266,7 @@ internal sealed class BasicTables
     /// <summary>
     ///     Gets the table embedded in the assembly, loaded on first use.
     /// </summary>
-    /// <exception cref="InvalidDataException">Thrown on first access when the embedded table is missing or corrupt.</exception>
+    /// <exception cref="ModelIntegrityException">Thrown on first access when the embedded table is missing or corrupt (the inner exception is the original <see cref="InvalidDataException"/>).</exception>
     public static BasicTables Default => DefaultTables.Value;
 
     /// <summary>
@@ -484,13 +484,37 @@ internal sealed class BasicTables
         return null;
     }
 
-    private static BasicTables LoadEmbedded()
+    /// <summary>
+    ///     Reads the table from the stream of the embedded resource, reporting a missing or damaged table as <see cref="ModelIntegrityException"/>.
+    /// </summary>
+    /// <param name="stream">The resource stream, or null when the resource is missing.</param>
+    /// <returns>The table.</returns>
+    /// <exception cref="ModelIntegrityException">Thrown when the stream is null or the table is corrupt or not for the embedded word image; the original <see cref="InvalidDataException"/> is the inner exception.</exception>
+    internal static BasicTables LoadEmbedded(Stream? stream)
     {
-        using var stream = typeof(BasicTables).Assembly.GetManifestResourceStream(ResourceName)
-            ?? throw new InvalidDataException("The embedded basic table is missing from the assembly.");
-        using var buffer = new MemoryStream();
-        stream.CopyTo(buffer);
-        return Load(buffer.GetBuffer().AsSpan(0, (int)buffer.Length), WordLexicon.Current);
+        if (stream is null)
+        {
+            throw new ModelIntegrityException(
+                "The embedded basic table is missing from the assembly.",
+                new InvalidDataException("The embedded basic table is missing from the assembly."));
+        }
+
+        try
+        {
+            using var buffer = new MemoryStream();
+            stream.CopyTo(buffer);
+            return Load(buffer.GetBuffer().AsSpan(0, (int)buffer.Length), WordLexicon.Current);
+        }
+        catch (InvalidDataException ex)
+        {
+            throw new ModelIntegrityException($"The embedded basic table is damaged: {ex.Message}", ex);
+        }
+    }
+
+    private static BasicTables LoadEmbeddedResource()
+    {
+        using var stream = typeof(BasicTables).Assembly.GetManifestResourceStream(ResourceName);
+        return LoadEmbedded(stream);
     }
 
     private static byte[] Decompress(ReadOnlySpan<byte> blob)

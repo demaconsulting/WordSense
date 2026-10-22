@@ -143,10 +143,12 @@ sections:
                   - ModelDownloader_EnsureModel_RedirectLoop_FallsThrough
 
               - id: WordSense-Onnx-ModelDownloader-Options
-                title: The downloader shall reject an invalid request timeout before any request.
+                title: The downloader shall reject an invalid request timeout or store root before any request.
                 tags: [unit]
                 justification: |
-                  A zero or negative timeout can never work and must fail clearly.
+                  A zero or negative timeout, and an empty, whitespace-only or unparsable store root, can never work and
+                  must fail clearly.
                 tests:
                   - ModelDownloader_EnsureAsync_InvalidTimeout_ThrowsBeforeRequests
+                  - ModelDownloader_EnsureAsync_InvalidStoreRoot_ThrowsBeforeRequests
                   - ModelDownloader_EnsureModel_InfiniteRequestTimeout_Succeeds

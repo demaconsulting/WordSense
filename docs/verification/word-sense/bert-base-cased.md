@@ -62,6 +62,14 @@ The weights embedded for `bert-base-cased-int8` load for the model id and hidden
 image: the inventory hash is the one of the shipped image and every sense of every lemma resolves, with nothing
 dropped (`EmbeddedWeights_BertBaseCased_MatchesWordImage`).
 
+#### Model Offers the Optional Preparation Step
+
+The model is an `IDownloadableWordSenseModel` (`BertBaseCasedWordSenseModel_IsDownloadable`), so a caller that holds
+only an `IWordSenseModel` can ask for the capability with a type check; `EnsureModelAsync` forwards to the encoder
+model, and a model directory that does not exist is reported as `ModelUnavailableException`
+(`BertBaseCasedWordSenseModel_EnsureModelAsync_MissingDirectory_ThrowsModelUnavailable`). The download behavior itself
+is verified once for all models in the Onnx subsystem.
+
 #### Case Is Part of the Context
 
 The model keeps the case of the text: its model description is cased (the lower-casing setting is off,

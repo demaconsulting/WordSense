@@ -367,7 +367,7 @@ internal static class Evaluator
         var modelDirectory = info.ModelDirectory is null ? null : Path.Join(repository, "model", info.ModelDirectory);
         var firstUse = Stopwatch.StartNew();
         using var model = info.Create(modelDirectory);
-        await model.EnsureModelAsync(null, cancellationToken).ConfigureAwait(false);
+        await ModelCatalog.EnsureAsync(model, cancellationToken).ConfigureAwait(false);
         IWordSenseModel classifier = model;
 
         foreach (var row in holdout.Take(1))

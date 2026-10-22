@@ -170,7 +170,6 @@ internal sealed partial class WordImage
         private readonly uint[] _keyOffset;
         private readonly uint[] _senseGroup;
         private readonly uint[] _senseRespelling;
-        private readonly string[] _respellings;
         private readonly byte[] _groupIdBytes;
         private readonly uint[] _groupIdOffset;
         private readonly byte[] _groupPos;
@@ -202,7 +201,8 @@ internal sealed partial class WordImage
                 throw Bad("a sense table has the wrong length");
             }
 
-            _respellings = image.Strings(ImageFormat.SectionRespellingLength, ImageFormat.SectionRespellingBytes, respellingCount);
+            // The respelling strings are no longer exposed, but a damaged table must still be rejected: validate them and discard the result
+            _ = image.Strings(ImageFormat.SectionRespellingLength, ImageFormat.SectionRespellingBytes, respellingCount);
             _groupIdBytes = image.Section(ImageFormat.SectionGroupIdBytes);
             _groupIdOffset = Offsets(image.Section(ImageFormat.SectionGroupIdLength), groupCount, _groupIdBytes.Length, "group id");
             _groupPos = image.Section(ImageFormat.SectionGroupPos);
@@ -287,37 +287,28 @@ internal sealed partial class WordImage
             var block = _senseBlock[index];
             var lemma = BlockLemma(block);
             var group = _senseGroup[index];
-            var respelling = _senseRespelling[index];
             return new SenseInfo(
                 Encoding.UTF8.GetString(IdSpan(index)),
                 group == 0 ? null : GroupId((int)group - 1),
                 lemma,
                 (PartOfSpeech)_blockPos[block],
-                KeyOf(index, lemma),
-                respelling == 0 ? null : _respellings[(int)respelling - 1]);
+                KeyOf(index, lemma));
         }
 
         public SenseGroup Group(int index)
         {
             var first = (int)_groupMembers[_groupStart[index]];
             var members = ImmutableArray.CreateBuilder<string>((int)(_groupStart[index + 1] - _groupStart[index]));
-            uint shared = _senseRespelling[first];
             for (var k = _groupStart[index]; k < _groupStart[index + 1]; k++)
             {
-                var member = (int)_groupMembers[k];
-                members.Add(Encoding.UTF8.GetString(IdSpan(member)));
-                if (_senseRespelling[member] != shared)
-                {
-                    shared = 0;
-                }
+                members.Add(Encoding.UTF8.GetString(IdSpan((int)_groupMembers[k])));
             }
 
             return new SenseGroup(
                 GroupId(index),
                 BlockLemma(_senseBlock[first]),
                 (PartOfSpeech)_groupPos[index],
-                members.MoveToImmutable(),
-                shared == 0 ? null : _respellings[(int)shared - 1]);
+                members.MoveToImmutable());
         }
 
         private void ValidateKeyOrder()

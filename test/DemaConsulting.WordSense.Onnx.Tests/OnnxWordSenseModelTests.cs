@@ -21,6 +21,17 @@ public class OnnxWordSenseModelTests
 
     private static string MissingDirectory() => Path.Join(Path.GetTempPath(), "wordsense-missing-" + Guid.NewGuid().ToString("N"));
 
+    private static Func<string, string?> MirrorEnvironment(string? user = null, string? password = null)
+    {
+        var values = new Dictionary<string, string?>
+        {
+            ["WORDSENSE_MIRROR_URL"] = "https://models.example.com/wordsense",
+            ["WORDSENSE_MIRROR_USER"] = user,
+            ["WORDSENSE_MIRROR_PASSWORD"] = password,
+        };
+        return name => values.GetValueOrDefault(name);
+    }
+
     private static Task ServeModel(HttpListenerContext context, string directory) =>
         LocalServer.SendFileAsync(context, Path.Join(directory, Path.GetFileName(context.Request.Url!.AbsolutePath)));
 
@@ -168,12 +179,14 @@ public class OnnxWordSenseModelTests
     }
 
     /// <summary>
-    ///     A missing file in the supplied directory is rejected.
+    ///     A missing file in the supplied directory is reported as <see cref="ModelUnavailableException"/>, with the
+    ///     original <see cref="FileNotFoundException"/> as the inner exception.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task OnnxWordSenseModel_EnsureModelAsync_MissingFile_Throws()
+    public async Task OnnxWordSenseModel_EnsureModelAsync_MissingFile_ThrowsModelUnavailable()
     {
+        // Arrange: a directory without the ONNX file
         var source = ModelAssets.RequireModelDirectory();
         var directory = Path.Join(Path.GetTempPath(), "wordsense-model-" + Guid.NewGuid().ToString("N"));
         Directory.CreateDirectory(directory);
@@ -182,7 +195,12 @@ public class OnnxWordSenseModelTests
             File.Copy(Path.Join(source, "vocab.txt"), Path.Join(directory, "vocab.txt"));
             using var model = Open(directory);
 
-            await Assert.ThrowsAsync<FileNotFoundException>(() => model.EnsureModelAsync(null, TestContext.Current.CancellationToken));
+            // Act
+            var failure = await Assert.ThrowsAsync<ModelUnavailableException>(() => model.EnsureModelAsync(null, TestContext.Current.CancellationToken));
+
+            // Assert: the original exception is kept
+            Assert.IsType<FileNotFoundException>(failure.InnerException);
+            Assert.Contains("model_int8.onnx", failure.Message, StringComparison.Ordinal);
         }
         finally
         {
@@ -191,12 +209,14 @@ public class OnnxWordSenseModelTests
     }
 
     /// <summary>
-    ///     A file with the wrong content in the supplied directory is rejected.
+    ///     A file with the wrong content in the supplied directory is reported as <see cref="ModelIntegrityException"/>,
+    ///     with the original <see cref="InvalidDataException"/> as the inner exception.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task OnnxWordSenseModel_EnsureModelAsync_AlteredFile_Throws()
+    public async Task OnnxWordSenseModel_EnsureModelAsync_AlteredFile_ThrowsModelIntegrity()
     {
+        // Arrange: a directory whose ONNX file has the wrong content
         var source = ModelAssets.RequireModelDirectory();
         var directory = Path.Join(Path.GetTempPath(), "wordsense-model-" + Guid.NewGuid().ToString("N"));
         Directory.CreateDirectory(directory);
@@ -206,7 +226,12 @@ public class OnnxWordSenseModelTests
             await File.WriteAllTextAsync(Path.Join(directory, "model_int8.onnx"), "altered", TestContext.Current.CancellationToken);
             using var model = Open(directory);
 
-            await Assert.ThrowsAsync<InvalidDataException>(() => model.EnsureModelAsync(null, TestContext.Current.CancellationToken));
+            // Act
+            var failure = await Assert.ThrowsAsync<ModelIntegrityException>(() => model.EnsureModelAsync(null, TestContext.Current.CancellationToken));
+
+            // Assert: the original exception is kept, and the message names the file
+            Assert.IsType<InvalidDataException>(failure.InnerException);
+            Assert.Contains("model_int8.onnx", failure.Message, StringComparison.Ordinal);
         }
         finally
         {
@@ -227,7 +252,7 @@ public class OnnxWordSenseModelTests
         {
             using var server = new LocalServer(c => ServeModel(c, source));
             using var model = Open();
-            var mirror = new MirrorOptions(new Uri(server.BaseUri, "/mirror/"), StoreRoot: store);
+            var mirror = new DownloadOptions(new Uri(server.BaseUri, "/mirror/"), StoreRoot: store);
 
             await Task.WhenAll(Enumerable.Range(0, 4).Select(_ => model.EnsureModelAsync(mirror, TestContext.Current.CancellationToken)));
 
@@ -243,28 +268,32 @@ public class OnnxWordSenseModelTests
     }
 
     /// <summary>
-    ///     A failed preparation can be retried.
+    ///     A preparation that no source can serve is reported as <see cref="ModelUnavailableException"/> with the
+    ///     <see cref="HttpRequestException"/> as the inner exception, and a failed preparation can be retried.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task OnnxWordSenseModel_EnsureModelAsync_AfterFailure_CanBeRetried()
+    public async Task OnnxWordSenseModel_EnsureModelAsync_AllSourcesFail_ThrowsModelUnavailable()
     {
         var source = ModelAssets.RequireModelDirectory();
         var store = Path.Join(Path.GetTempPath(), "wordsense-store-" + Guid.NewGuid().ToString("N"));
         try
         {
+            // Arrange: the mirror and the public source both answer with an error until the server is healthy
             var healthy = false;
             using var server = new LocalServer(c => healthy ? ServeModel(c, source) : LocalServer.SendAsync(c, 500, "broken"));
             using var model = Open();
             model.GitHubBaseUri = new Uri(server.BaseUri, "/lfs/");
             model.GetEnvironmentVariable = _ => null;
-            var mirror = new MirrorOptions(new Uri(server.BaseUri, "/mirror/"), StoreRoot: store);
+            var mirror = new DownloadOptions(new Uri(server.BaseUri, "/mirror/"), StoreRoot: store);
 
-            await Assert.ThrowsAsync<HttpRequestException>(() => model.EnsureModelAsync(mirror, TestContext.Current.CancellationToken));
+            // Act
+            var failure = await Assert.ThrowsAsync<ModelUnavailableException>(() => model.EnsureModelAsync(mirror, TestContext.Current.CancellationToken));
             healthy = true;
             await model.EnsureModelAsync(mirror, TestContext.Current.CancellationToken);
 
-            // The retry downloaded and verified every file
+            // Assert: the original exception is kept, and the retry downloaded and verified every file
+            Assert.IsType<HttpRequestException>(failure.InnerException);
             Assert.NotEmpty(Directory.GetFiles(store, "*", SearchOption.AllDirectories));
         }
         finally
@@ -274,6 +303,134 @@ public class OnnxWordSenseModelTests
                 Directory.Delete(store, true);
             }
         }
+    }
+
+    /// <summary>
+    ///     When a source serves bytes with a wrong SHA-256, the file is discarded like any other failed source, and when
+    ///     no source delivers a verified file the failure is <see cref="ModelUnavailableException"/> (not an integrity
+    ///     failure): a hash mismatch of a download is a download failure.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxWordSenseModel_EnsureModelAsync_DownloadedHashMismatch_ThrowsModelUnavailable()
+    {
+        var store = Path.Join(Path.GetTempPath(), "wordsense-store-" + Guid.NewGuid().ToString("N"));
+        try
+        {
+            // Arrange: every source serves wrong bytes
+            using var server = new LocalServer(c => LocalServer.SendAsync(c, 200, "wrong bytes"));
+            using var model = Open();
+            model.GitHubBaseUri = new Uri(server.BaseUri, "/lfs/");
+            model.GetEnvironmentVariable = _ => null;
+            var mirror = new DownloadOptions(new Uri(server.BaseUri, "/mirror/"), StoreRoot: store);
+
+            // Act
+            var failure = await Assert.ThrowsAsync<ModelUnavailableException>(() => model.EnsureModelAsync(mirror, TestContext.Current.CancellationToken));
+
+            // Assert: no wrong file was kept
+            Assert.IsType<HttpRequestException>(failure.InnerException);
+            Assert.Empty(Directory.Exists(store) ? Directory.GetFiles(store, "*", SearchOption.AllDirectories) : []);
+        }
+        finally
+        {
+            if (Directory.Exists(store))
+            {
+                Directory.Delete(store, true);
+            }
+        }
+    }
+
+    /// <summary>
+    ///     Invalid download options are reported as <see cref="DownloadConfigurationException"/> that is not an
+    ///     <see cref="ArgumentException"/> and keeps the original <see cref="ArgumentException"/> (or its subclass
+    ///     <see cref="ArgumentOutOfRangeException"/> for a timeout) as the inner exception, and a failed call can be
+    ///     retried with valid options.
+    /// </summary>
+    /// <param name="kind">The invalid setting.</param>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Theory]
+    [InlineData("relative")]
+    [InlineData("scheme")]
+    [InlineData("query")]
+    [InlineData("tokenAndCredentials")]
+    [InlineData("credentialsOverHttp")]
+    [InlineData("zeroTimeout")]
+    [InlineData("negativeTimeout")]
+    [InlineData("emptyStoreRoot")]
+    [InlineData("whitespaceStoreRoot")]
+    [InlineData("invalidCharacterStoreRoot")]
+    public async Task OnnxWordSenseModel_EnsureModelAsync_InvalidOptions_ThrowsDownloadConfiguration(string kind)
+    {
+        // Arrange: a model that downloads, and options that are invalid in one way
+        using var model = Open();
+        model.GetEnvironmentVariable = _ => null;
+        var https = new Uri("https://models.example.com/wordsense");
+        var options = kind switch
+        {
+            "relative" => new DownloadOptions(new Uri("relative/path", UriKind.Relative)),
+            "scheme" => new DownloadOptions(new Uri("ftp://models.example.com/wordsense")),
+            "query" => new DownloadOptions(new Uri("https://models.example.com/wordsense?sig=abc")),
+            "tokenAndCredentials" => new DownloadOptions(https, BearerToken: "token", Credentials: new NetworkCredential("user", "password")),
+            "credentialsOverHttp" => new DownloadOptions(new Uri("http://models.example.com/wordsense"), BearerToken: "token"),
+            "zeroTimeout" => new DownloadOptions(https, Timeout: TimeSpan.Zero),
+            "negativeTimeout" => new DownloadOptions(https, Timeout: TimeSpan.FromSeconds(-1)),
+            "emptyStoreRoot" => new DownloadOptions(https, StoreRoot: string.Empty),
+            "whitespaceStoreRoot" => new DownloadOptions(https, StoreRoot: "  \t "),
+            "invalidCharacterStoreRoot" => new DownloadOptions(https, StoreRoot: "store\0root"),
+            _ => throw new ArgumentOutOfRangeException(nameof(kind), kind, "Unknown kind."),
+        };
+
+        // Act
+        var failure = await Assert.ThrowsAsync<DownloadConfigurationException>(() => model.EnsureModelAsync(options, TestContext.Current.CancellationToken));
+
+        // Assert: a typed exception that is not an ArgumentException, with the original one as the inner exception
+        Assert.False((object)failure is ArgumentException);
+        Assert.IsAssignableFrom<WordSenseException>(failure);
+        Assert.IsAssignableFrom<ArgumentException>(failure.InnerException);
+        if (kind.EndsWith("Timeout", StringComparison.Ordinal))
+        {
+            Assert.IsType<ArgumentOutOfRangeException>(failure.InnerException);
+        }
+
+        if (kind.EndsWith("StoreRoot", StringComparison.Ordinal))
+        {
+            Assert.Equal("StoreRoot", ((ArgumentException)failure.InnerException!).ParamName);
+        }
+    }
+
+    /// <summary>
+    ///     Invalid <c>WORDSENSE_MIRROR_*</c> settings are reported by the explicit ensure as
+    ///     <see cref="DownloadConfigurationException"/>.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxWordSenseModel_EnsureModelAsync_InvalidEnvironment_ThrowsDownloadConfiguration()
+    {
+        // Arrange: a user without a password
+        using var model = Open();
+        model.GetEnvironmentVariable = MirrorEnvironment(user: "user");
+
+        // Act
+        var failure = await Assert.ThrowsAsync<DownloadConfigurationException>(() => model.EnsureModelAsync(null, TestContext.Current.CancellationToken));
+
+        // Assert
+        Assert.IsAssignableFrom<ArgumentException>(failure.InnerException);
+    }
+
+    /// <summary>
+    ///     When a model directory is supplied, the download options are not read at all, so invalid options are ignored
+    ///     and nothing is thrown.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxWordSenseModel_EnsureModelAsync_ModelDirectory_IgnoresInvalidOptions()
+    {
+        // Arrange: the real files in a directory, and options that are invalid in several ways
+        using var model = Open(ModelAssets.RequireModelDirectory());
+        var invalid = new DownloadOptions(new Uri("relative/path", UriKind.Relative), BearerToken: "token", Timeout: TimeSpan.Zero);
+
+        // Act / Assert: no exception
+        await model.EnsureModelAsync(invalid, TestContext.Current.CancellationToken);
     }
 
     /// <summary>
@@ -292,7 +449,7 @@ public class OnnxWordSenseModelTests
 
         // Assert: the word is answered, while the explicit ensure still fails
         Assert.Single(result);
-        await Assert.ThrowsAsync<FileNotFoundException>(() => model.EnsureModelAsync(null, TestContext.Current.CancellationToken));
+        await Assert.ThrowsAsync<ModelUnavailableException>(() => model.EnsureModelAsync(null, TestContext.Current.CancellationToken));
     }
 
     /// <summary>
@@ -301,14 +458,163 @@ public class OnnxWordSenseModelTests
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task OnnxWordSenseModel_ClassifyAsync_MissingDirectory_ThrowsFileNotFound()
+    public async Task OnnxWordSenseModel_ClassifyAsync_MissingDirectory_ThrowsModelUnavailable()
     {
         // Arrange
         using var model = Fixture(MissingDirectory());
 
-        // Act / Assert
-        await Assert.ThrowsAsync<FileNotFoundException>(() => model.ClassifyAsync(PendingSentence, TestContext.Current.CancellationToken));
+        // Act
+        var failure = await Assert.ThrowsAsync<ModelUnavailableException>(() => model.ClassifyAsync(PendingSentence, TestContext.Current.CancellationToken));
+
+        // Assert: the lazy ensure maps like the explicit one, with the original exception kept
+        Assert.IsAssignableFrom<IOException>(failure.InnerException);
         Assert.True(model.IsEncoderReleased);
+    }
+
+    /// <summary>
+    ///     Invalid <c>WORDSENSE_MIRROR_*</c> settings found by the lazy ensure of an ambiguous word are reported as
+    ///     <see cref="DownloadConfigurationException"/>, and the call can be retried when the settings are fixed.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxWordSenseModel_ClassifyAsync_InvalidMirrorEnvironment_ThrowsDownloadConfiguration()
+    {
+        // Arrange: a downloading model whose environment has a password without a user
+        using var model = Fixture();
+        model.GetEnvironmentVariable = MirrorEnvironment(password: "password");
+
+        // Act
+        var failure = await Assert.ThrowsAsync<DownloadConfigurationException>(() => model.ClassifyAsync(PendingSentence, TestContext.Current.CancellationToken));
+
+        // Assert
+        Assert.IsAssignableFrom<ArgumentException>(failure.InnerException);
+    }
+
+    /// <summary>
+    ///     An ONNX file that passes its pinned digest but cannot be opened as a model is reported as
+    ///     <see cref="ModelIntegrityException"/>, with the original exception as the inner exception.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxWordSenseModel_ClassifyAsync_UnreadableOnnxFile_ThrowsModelIntegrity()
+    {
+        // Arrange: a directory with the real vocabulary and an ONNX file that is not a model but is pinned as it is
+        var source = ModelAssets.RequireModelDirectory();
+        var directory = Path.Join(Path.GetTempPath(), "wordsense-model-" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(directory);
+        try
+        {
+            File.Copy(Path.Join(source, "vocab.txt"), Path.Join(directory, "vocab.txt"));
+            var garbage = "this is not an onnx model"u8.ToArray();
+            await File.WriteAllBytesAsync(Path.Join(directory, "model_int8.onnx"), garbage, TestContext.Current.CancellationToken);
+            var digest = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(garbage)).ToLowerInvariant();
+            using var model = new FixtureEncoderModel(directory, spec => spec with
+            {
+                Files = [.. spec.Files.Select(f => f.Name == spec.OnnxFileName ? f with { Sha256 = digest, Length = garbage.Length } : f)],
+            });
+
+            // Act
+            var failure = await Assert.ThrowsAsync<ModelIntegrityException>(() => model.ClassifyAsync(PendingSentence, TestContext.Current.CancellationToken));
+
+            // Assert: the original exception of the ONNX runtime is kept, and the failed open leaves nothing behind
+            Assert.NotNull(failure.InnerException);
+            Assert.True(model.IsEncoderReleased);
+        }
+        finally
+        {
+            Directory.Delete(directory, true);
+        }
+    }
+
+    /// <summary>
+    ///     A vocabulary that passes its pinned digest but lacks a required special token is reported as
+    ///     <see cref="ModelIntegrityException"/> with the <see cref="ArgumentException"/> of the tokenizer as the inner
+    ///     exception, not as a raw argument exception.
+    /// </summary>
+    /// <param name="token">The required token that is removed from the vocabulary.</param>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Theory]
+    [InlineData("[UNK]")]
+    [InlineData("[CLS]")]
+    [InlineData("[SEP]")]
+    public async Task OnnxWordSenseModel_ClassifyAsync_VocabularyWithoutRequiredToken_ThrowsModelIntegrity(string token)
+    {
+        // Arrange: the real ONNX file and a vocabulary without the token, pinned as it is
+        var source = ModelAssets.RequireModelDirectory();
+        var directory = Path.Join(Path.GetTempPath(), "wordsense-model-" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(directory);
+        try
+        {
+            File.Copy(Path.Join(source, "model_int8.onnx"), Path.Join(directory, "model_int8.onnx"));
+            var lines = (await File.ReadAllLinesAsync(Path.Join(source, "vocab.txt"), TestContext.Current.CancellationToken))
+                .Where(line => line.Trim() != token)
+                .ToArray();
+            var vocabulary = System.Text.Encoding.UTF8.GetBytes(string.Join('\n', lines) + "\n");
+            await File.WriteAllBytesAsync(Path.Join(directory, "vocab.txt"), vocabulary, TestContext.Current.CancellationToken);
+            var digest = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(vocabulary)).ToLowerInvariant();
+            using var model = new FixtureEncoderModel(directory, spec => spec with
+            {
+                Files = [.. spec.Files.Select(f => f.Name == spec.VocabularyFileName ? f with { Sha256 = digest, Length = vocabulary.Length } : f)],
+            });
+
+            // Act
+            var failure = await Assert.ThrowsAsync<ModelIntegrityException>(() => model.ClassifyAsync(PendingSentence, TestContext.Current.CancellationToken));
+
+            // Assert: the original argument exception is kept, and the failed open leaves nothing behind
+            Assert.IsType<ArgumentException>(failure.InnerException);
+            Assert.Contains(token, failure.InnerException.Message, StringComparison.Ordinal);
+            Assert.True(model.IsEncoderReleased);
+        }
+        finally
+        {
+            Directory.Delete(directory, true);
+        }
+    }
+
+    /// <summary>
+    ///     An ONNX model whose hidden size differs from the one of the model description (and of its embedded weights)
+    ///     is reported as <see cref="ModelIntegrityException"/> instead of being answered silently from the lexicon;
+    ///     the rejected encoder is released.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxWordSenseModel_ClassifyAsync_EncoderHiddenSizeMismatch_ThrowsModelIntegrity()
+    {
+        // Arrange: the real MiniLM files (hidden size 384) under a description and weights of hidden size 768
+        const int wrongSize = 768;
+        using var model = new FixtureEncoderModel(ModelAssets.RequireModelDirectory(), spec => spec with
+        {
+            HiddenSize = wrongSize,
+            WeightsAssembly = new FixtureAssembly(
+                FixtureEncoderModel.ResourceName,
+                BlobWriter.Write(new WeightsData(spec.ModelId, Fixtures.InventoryHash(), wrongSize, new float[wrongSize], [Fixtures.Lemma("just", dimension: wrongSize)]))),
+        });
+
+        // Act
+        var failure = await Assert.ThrowsAsync<ModelIntegrityException>(() => model.ClassifyAsync(PendingSentence, TestContext.Current.CancellationToken));
+
+        // Assert: both sizes are named, the original exception is kept, and the rejected encoder is not kept
+        Assert.IsType<InvalidDataException>(failure.InnerException);
+        Assert.Contains("384", failure.Message, StringComparison.Ordinal);
+        Assert.Contains("768", failure.Message, StringComparison.Ordinal);
+        Assert.Contains(model.ModelId, failure.Message, StringComparison.Ordinal);
+        Assert.True(model.IsEncoderReleased);
+    }
+
+    /// <summary>
+    ///     The encoder model has the downloadable capability, so the explicit ensure is available through the interface.
+    /// </summary>
+    [Fact]
+    public void OnnxWordSenseModel_IsDownloadable()
+    {
+        // Arrange
+        using var model = Open();
+
+        // Act
+        IWordSenseModel contract = model;
+
+        // Assert
+        Assert.IsAssignableFrom<IDownloadableWordSenseModel>(contract);
     }
 
     /// <summary>
@@ -366,7 +672,7 @@ public class OnnxWordSenseModelTests
         {
             using var model = Fixture(directory);
 
-            await Assert.ThrowsAsync<FileNotFoundException>(() => model.ClassifyAsync(PendingSentence, TestContext.Current.CancellationToken));
+            await Assert.ThrowsAsync<ModelUnavailableException>(() => model.ClassifyAsync(PendingSentence, TestContext.Current.CancellationToken));
             Directory.CreateDirectory(directory);
             foreach (var name in ModelFiles)
             {
@@ -447,7 +753,7 @@ public class OnnxWordSenseModelTests
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task OnnxWordSenseModel_ClassifyAsync_WeightsOfAnotherImage_Throws()
+    public async Task OnnxWordSenseModel_ClassifyAsync_WeightsOfAnotherImage_ThrowsModelIntegrity()
     {
         // Arrange: a lemma whose second sense does not exist in the image
         var ids = new[] { Fixtures.SenseIds("just")[0], "just#no-such-sense" };
@@ -455,7 +761,8 @@ public class OnnxWordSenseModelTests
         using var model = new FixtureEncoderModel(MissingDirectory(), lemma);
 
         // Act / Assert: the weights are checked before any model file is needed
-        await Assert.ThrowsAsync<InvalidDataException>(() => model.ClassifyAsync(["the"], TestContext.Current.CancellationToken));
+        var failure = await Assert.ThrowsAsync<ModelIntegrityException>(() => model.ClassifyAsync(["the"], TestContext.Current.CancellationToken));
+        Assert.IsType<InvalidDataException>(failure.InnerException);
     }
 
     /// <summary>
@@ -619,7 +926,7 @@ public class OnnxWordSenseModelTests
             var model = Fixture();
             model.GitHubBaseUri = new Uri(server.BaseUri, "/lfs/");
             model.GetEnvironmentVariable = _ => null;
-            var mirror = new MirrorOptions(new Uri(server.BaseUri, "/mirror/"), StoreRoot: store);
+            var mirror = new DownloadOptions(new Uri(server.BaseUri, "/mirror/"), StoreRoot: store);
 
             var pending = model.EnsureModelAsync(mirror, TestContext.Current.CancellationToken);
             var second = model.EnsureModelAsync(mirror, TestContext.Current.CancellationToken);

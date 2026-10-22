@@ -94,7 +94,7 @@ sense.
 
 A null list throws `ArgumentNullException`; a null element throws `ArgumentException`; a canceled token throws
 `OperationCanceledException`. Words unknown to the lexicon are not errors. A missing or corrupt embedded table
-surfaces as the `InvalidDataException` of `BasicTables.Default` on first use.
+surfaces as the `ModelIntegrityException` of `BasicTables.Default` on first use.
 
 #### Determinism and Thread Safety
 

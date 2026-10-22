@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Reflection;
@@ -85,6 +86,39 @@ internal static class ModelDownloader
     }
 
     /// <summary>
+    ///     Validates a store root and resolves it to a full path.
+    /// </summary>
+    /// <param name="storeRoot">The store root, or null for the per-user default store.</param>
+    /// <returns>The full path of the store root.</returns>
+    /// <exception cref="ArgumentException">
+    ///     Thrown (with the parameter name <c>StoreRoot</c>) when the store root is empty, whitespace-only or a path that
+    ///     the platform rejects.
+    /// </exception>
+    [SuppressMessage("Major Bug", "S3928:Parameter names used into ArgumentException constructors should match an existing one", Justification = "The invalid value is the StoreRoot member of the caller's DownloadOptions, which is the name the contract reports.")]
+    internal static string ResolveStoreRoot(string? storeRoot)
+    {
+        if (storeRoot is null)
+        {
+            return Path.GetFullPath(DefaultStoreRoot());
+        }
+
+        // Whitespace is a legal file name on some platforms, so reject it explicitly to behave the same everywhere
+        if (string.IsNullOrWhiteSpace(storeRoot))
+        {
+            throw new ArgumentException("The store root must not be empty or whitespace-only.", nameof(DownloadOptions.StoreRoot));
+        }
+
+        try
+        {
+            return Path.GetFullPath(storeRoot);
+        }
+        catch (Exception ex) when (ex is ArgumentException or NotSupportedException or PathTooLongException)
+        {
+            throw new ArgumentException($"The store root is not a valid path: {ex.Message}", nameof(DownloadOptions.StoreRoot), ex);
+        }
+    }
+
+    /// <summary>
     ///     Computes the lower-case hexadecimal SHA-256 of a file.
     /// </summary>
     /// <param name="path">The file path.</param>
@@ -123,35 +157,35 @@ internal static class ModelDownloader
     ///     Ensures that every file of a model is present and verified in the store, downloading what is missing.
     /// </summary>
     /// <param name="spec">The model.</param>
-    /// <param name="mirror">The mirror to try first, or null to use the environment's mirror (if any).</param>
+    /// <param name="options">The download options (mirror, store root, timeout), or null to use the environment's mirror (if any).</param>
     /// <param name="cancellationToken">A token that cancels the operation.</param>
     /// <param name="client">The HTTP client to use, or null to create one that follows redirects manually.</param>
     /// <param name="gitHubBaseUri">The GitHub LFS base location, or null for the default.</param>
     /// <param name="getEnvironmentVariable">Reads an environment variable, or null for the process environment.</param>
     /// <returns>The directory that holds the verified files.</returns>
     /// <exception cref="HttpRequestException">Thrown when a file could not be obtained from any source.</exception>
-    /// <exception cref="ArgumentException">Thrown when the mirror configuration is invalid.</exception>
+    /// <exception cref="ArgumentException">Thrown when the mirror configuration or the store root is invalid.</exception>
     public static async Task<string> EnsureAsync(
         ModelSpec spec,
-        MirrorOptions? mirror,
+        DownloadOptions? options,
         CancellationToken cancellationToken,
         HttpClient? client = null,
         Uri? gitHubBaseUri = null,
         Func<string, string?>? getEnvironmentVariable = null)
     {
         ArgumentNullException.ThrowIfNull(spec);
-        var timeout = mirror?.Timeout ?? DefaultTimeout;
+        var timeout = options?.Timeout ?? DefaultTimeout;
         if (timeout != Timeout.InfiniteTimeSpan && (timeout <= TimeSpan.Zero || timeout.TotalMilliseconds > uint.MaxValue - 1))
         {
-            throw new ArgumentOutOfRangeException(nameof(mirror), timeout, "The timeout must be positive (or infinite) and no longer than about 49 days.");
+            throw new ArgumentOutOfRangeException(nameof(options), timeout, "The timeout must be positive (or infinite) and no longer than about 49 days.");
         }
 
-        // An explicit mirror beats the environment; an invalid configuration fails fast
-        var effective = mirror is not null
-            ? DownloadMirror.FromOptions(mirror)
+        // Explicit options beat the environment; an invalid configuration fails fast
+        var effective = options is not null
+            ? DownloadMirror.FromOptions(options)
             : DownloadMirror.FromEnvironment(getEnvironmentVariable ?? Environment.GetEnvironmentVariable);
 
-        var directory = Path.Join(Path.GetFullPath(mirror?.StoreRoot ?? DefaultStoreRoot()), spec.ModelId);
+        var directory = Path.Join(ResolveStoreRoot(options?.StoreRoot), spec.ModelId);
         Directory.CreateDirectory(directory);
 
         // The private client never follows redirects itself, so credentials are attached per hop

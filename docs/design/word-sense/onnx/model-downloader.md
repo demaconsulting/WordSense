@@ -11,16 +11,16 @@ SHA-256 digests, from a configured mirror or from the GitHub LFS copy of the rep
 
 - `ModelSpec` and `ModelFile(Name, Sha256)` describe a model and the digest of each of its files.
 - Store layout: `<store>/<model-id>/<file>`; the store defaults to the per-user `DemaConsulting/WordSense/models`
-  folder or `MirrorOptions.StoreRoot`.
+  folder or `DownloadOptions.StoreRoot`.
 - Mirror layout: `<mirror>/<model-id>/<file>` with the segments escaped.
 - GitHub LFS source: `https://media.githubusercontent.com/media/demaconsulting/WordSense/main/model/<model-id>/<file>`.
-- The mirror is taken from `MirrorOptions` when given, otherwise from the environment variables
+- The mirror is taken from `DownloadOptions` when given, otherwise from the environment variables
   `WORDSENSE_MIRROR_URL`, `WORDSENSE_MIRROR_USER`, `WORDSENSE_MIRROR_PASSWORD` and `WORDSENSE_MIRROR_BEARER_TOKEN`.
 
 #### Key Methods
 
 - `Verify(spec, directory)`: checks that every file exists and matches its digest, without network access.
-- `EnsureAsync(spec, mirrorOptions, ...)`: for each file, skips it when the stored file is valid; otherwise tries the
+- `EnsureAsync(spec, downloadOptions, ...)`: for each file, skips it when the stored file is valid; otherwise tries the
   sources in order (mirror, then GitHub LFS). A download goes to `<file>.<guid>.part` under the per-download timeout,
   is hashed (lower-case hexadecimal SHA-256), compared with the pinned digest and atomically moved into place; the
   temporary file is always deleted. A digest mismatch, an HTTP failure, a timeout or an I/O failure moves on to the
@@ -33,11 +33,17 @@ SHA-256 digests, from a configured mirror or from the GitHub LFS copy of the rep
 `Verify` throws `FileNotFoundException` or `InvalidDataException`. When all sources fail for a file, `EnsureAsync`
 throws `HttpRequestException` listing each source's failure (never a credential). Cancellation by the caller is
 rethrown. An invalid mirror configuration throws `ArgumentException` (see DownloadMirror). Timeouts that are not
-positive or infinite, or exceed about 49 days, are rejected.
+positive or infinite, or exceed about 49 days, are rejected, and so is a store root that is empty, whitespace-only or a
+path the platform rejects (an `ArgumentException` with the parameter name `StoreRoot`, checked before any request; a
+null store root means the default store). These are the raw, internal exceptions of the unit and its
+behavior is unchanged: `OnnxWordSenseModel` wraps them at the public boundary (`FileNotFoundException` and
+`HttpRequestException` as `ModelUnavailableException`, `InvalidDataException` as `ModelIntegrityException`,
+`ArgumentException` and `ArgumentOutOfRangeException` as `DownloadConfigurationException`; see _OnnxWordSenseModel Unit
+Design_), so a caller of the public API never sees them directly.
 
 #### Dependencies
 
-`DownloadMirror`, the core `MirrorOptions`, the file system and `HttpClient`.
+`DownloadMirror`, the core `DownloadOptions`, the file system and `HttpClient`.
 
 #### Callers
 

@@ -29,10 +29,13 @@ CC0 sentence corpus of this repository.
 The subsystem contains eight units:
 
 - **WordLexicon**: the embedded lexicon of known words and the sense catalog, with its internal blob reader.
-- **WordSenseContracts**: `IWordSenseModel`, the composite `FallbackWordSenseModel`, `MirrorOptions`,
+- **WordSenseContracts**: `IWordSenseModel`, `IDownloadableWordSenseModel`, the composite `FallbackWordSenseModel`,
+  `DownloadOptions`, the typed exceptions (`WordSenseException`, `ModelUnavailableException`,
+  `ModelIntegrityException` and `DownloadConfigurationException`),
   `ClassifyResult`, `AnalysisCandidate`, `SenseCandidate`, `SenseLevel`, `WordDetails`, `PartOfSpeech`, `SenseInfo` and
   `SenseGroup`.
-- **BasicWordSenseModel**: the public statistical model; implements `IWordSenseModel`.
+- **BasicWordSenseModel**: the public statistical model; implements `IWordSenseModel` only (it needs no files and is
+  not downloadable).
 - **BasicClassifier**: the classifier the model creates; splits the text into sentence segments, decides the answer
   level of every word and drives the others.
 - **BasicTables**: the immutable statistics read once from the embedded table `basic.bin`.
@@ -42,9 +45,11 @@ The subsystem contains eight units:
 
 `PosTag` (the tag constants) is a small helper of the tagger and the tables. Boundaries: apart from the statistical
 model, the subsystem does not classify ambiguous words in context; that is the work of the encoder packages. It does
-not download anything; `MirrorOptions` only carries the configuration that an encoder package interprets (the
-statistical model ignores it). The composite `FallbackWordSenseModel` adds no knowledge of its own: it only chooses,
-word by word, between the results of the two models it is given.
+not download anything; `DownloadOptions` only carries the configuration that an encoder package interprets (the
+statistical model is not downloadable and has no use for it). The composite `FallbackWordSenseModel` adds no knowledge
+of its own: it only chooses,
+word by word, between the results of the two models it is given, and forwards an explicit ensure to the members that
+are downloadable.
 
 ### Interfaces
 
@@ -53,14 +58,17 @@ The subsystem exposes:
 - `WordLexicon`: the lookup of a word in the embedded word image (`Lookup`, `TryLookup`, `Contains`, `FormsOf`), the
   sense catalog (`SensesOf`, `TryGetSense`, `TryGetSenseByKey`, `TryGetGroup`) and `Version`, a string that identifies
   the sense inventory of the image;
-- `IWordSenseModel`: the contract that models implement, `FallbackWordSenseModel`, a composite of two models, and
-  `BasicWordSenseModel`, the built-in statistical model, which has a public parameterless constructor.
-  `EnsureModelAsync` returns immediately and ignores the mirror; `ClassifyAsync` classifies at once, so a lazy ensure is
-  trivial;
+- `IWordSenseModel`: the classification contract that models implement, `IDownloadableWordSenseModel`, its optional
+  extension with `EnsureModelAsync` for models that need files, `FallbackWordSenseModel`, a composite of two models
+  (downloadable itself), and `BasicWordSenseModel`, the built-in statistical model, which has a public parameterless
+  constructor. The Basic model is not downloadable; `ClassifyAsync` classifies at once, so no ensure is needed;
 - `ClassifyResult`, `AnalysisCandidate`, `SenseCandidate`, `SenseLevel`, `WordDetails` and `PartOfSpeech`: the answer
   values;
-- `SenseInfo` and `SenseGroup`: the records of the catalog;
-- `MirrorOptions`: the download mirror configuration passed to `EnsureModelAsync`.
+- `SenseInfo` and `SenseGroup`: the records of the catalog (they carry no respelling);
+- `DownloadOptions`: the download configuration passed to `EnsureModelAsync`;
+- `WordSenseException`, `ModelUnavailableException`, `ModelIntegrityException` and `DownloadConfigurationException`:
+  the typed failures. In the core, `WordLexicon` and the embedded statistics table report a missing or damaged
+  embedded resource as a `ModelIntegrityException`.
 
 It consumes the embedded resources `wordsense.img` and `basic.bin` and nothing else. The internals (the image reader
 and the six statistical classes) are visible to the builder (which trains and writes the table with the same feature
@@ -161,7 +169,8 @@ against the analysis inventory of the word image at load: a hash mismatch or an 
 failure, so the table is rebuilt whenever the inventory changes. Words, suffixes and lemmas are in ordinal order, so
 equal training data gives byte-identical tables. The tag counts come from the representative part of the open corpus
 (`corpus/open`), the cue tables from the fine-sense anchors and the chooser anchors of `corpus/`. The reader validates
-the layout and throws `InvalidDataException` for anything malformed. The format (magic `WSB3`) is described in detail
+the layout and throws `InvalidDataException` for anything malformed (the embedded default table maps that to a
+`ModelIntegrityException`). The format (magic `WSB3`) is described in detail
 in the `BasicTables` unit design.
 
 #### Determinism and Concurrency

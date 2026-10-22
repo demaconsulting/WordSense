@@ -258,6 +258,18 @@ internal sealed class FixtureEncoderModel : OnnxWordSenseModel
         IntraOpThreads = 2;
     }
 
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="FixtureEncoderModel"/> class with the default fixture lemma
+    ///     and a changed model description (for example other pinned digests).
+    /// </summary>
+    /// <param name="modelDirectory">The directory that holds the model files.</param>
+    /// <param name="adjust">Changes the model description.</param>
+    public FixtureEncoderModel(string? modelDirectory, Func<ModelSpec, ModelSpec> adjust)
+        : base(adjust(CreateSpec([Fixtures.Lemma("just", dimension: HiddenDimension)])), modelDirectory, 128)
+    {
+        IntraOpThreads = 2;
+    }
+
     private static ModelSpec CreateSpec(WeightedLemma[] lemmas)
     {
         using var minilm = new MiniLMEncoderModel(null, 128);

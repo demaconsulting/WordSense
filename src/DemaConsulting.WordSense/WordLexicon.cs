@@ -82,7 +82,7 @@ public static class WordLexicon
     ///     The count is that of the embedded image; it includes the few spellings without a letter (numbers) that the image
     ///     keeps but that <see cref="Lookup"/> never answers.
     /// </remarks>
-    /// <exception cref="InvalidDataException">Thrown on first access when the embedded lexicon is missing or corrupt.</exception>
+    /// <exception cref="ModelIntegrityException">Thrown on first access when the embedded lexicon is missing or corrupt (the inner exception is the original <see cref="InvalidDataException"/>).</exception>
     public static int Count => Image.Value.SpellingCount;
 
     /// <summary>
@@ -94,7 +94,7 @@ public static class WordLexicon
     ///     The value is the first 16 hexadecimal digits (lower case) of the inventory hash of the image, the hash the
     ///     models are trained against. It is not a version number: compare for equality only.
     /// </remarks>
-    /// <exception cref="InvalidDataException">Thrown on first access when the embedded lexicon is missing or corrupt.</exception>
+    /// <exception cref="ModelIntegrityException">Thrown on first access when the embedded lexicon is missing or corrupt (the inner exception is the original <see cref="InvalidDataException"/>).</exception>
     public static string Version => Convert.ToHexString(Image.Value.InventoryHash[..8]).ToLowerInvariant();
 
     /// <summary>
@@ -104,7 +104,7 @@ public static class WordLexicon
     /// <param name="senses">The analyses of the word in answer order, or the default array when the word is unknown.</param>
     /// <returns><see langword="true"/> when the word is in the lexicon; always <see langword="false"/> for a token without a letter.</returns>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="word"/> is null.</exception>
-    /// <exception cref="InvalidDataException">Thrown on first access when the embedded lexicon is missing or corrupt.</exception>
+    /// <exception cref="ModelIntegrityException">Thrown on first access when the embedded lexicon is missing or corrupt (the inner exception is the original <see cref="InvalidDataException"/>).</exception>
     public static bool TryLookup(string word, out ImmutableArray<WordDetails> senses)
     {
         ArgumentNullException.ThrowIfNull(word);
@@ -140,7 +140,7 @@ public static class WordLexicon
     /// <param name="word">The word as written.</param>
     /// <returns>The analyses of the word in answer order; empty for an unknown word.</returns>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="word"/> is null.</exception>
-    /// <exception cref="InvalidDataException">Thrown on first access when the embedded lexicon is missing or corrupt.</exception>
+    /// <exception cref="ModelIntegrityException">Thrown on first access when the embedded lexicon is missing or corrupt (the inner exception is the original <see cref="InvalidDataException"/>).</exception>
     public static ImmutableArray<WordDetails> Lookup(string word) => TryLookup(word, out var senses) ? senses : [];
 
     /// <summary>
@@ -149,7 +149,7 @@ public static class WordLexicon
     /// <param name="word">The word as written.</param>
     /// <returns><see langword="true"/> when <see cref="TryLookup"/> would find it.</returns>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="word"/> is null.</exception>
-    /// <exception cref="InvalidDataException">Thrown on first access when the embedded lexicon is missing or corrupt.</exception>
+    /// <exception cref="ModelIntegrityException">Thrown on first access when the embedded lexicon is missing or corrupt (the inner exception is the original <see cref="InvalidDataException"/>).</exception>
     public static bool Contains(string word) => TryLookup(word, out _);
 
     /// <summary>
@@ -158,7 +158,7 @@ public static class WordLexicon
     /// <param name="lemma">The lemma exactly as it is written in the lexicon (the <see cref="WordDetails.Lemma"/> of an analysis).</param>
     /// <returns>The forms (the lemma itself included) in spelling order; empty for an unknown lemma and for a lemma without a letter (a number).</returns>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="lemma"/> is null.</exception>
-    /// <exception cref="InvalidDataException">Thrown on first access when the embedded lexicon is missing or corrupt.</exception>
+    /// <exception cref="ModelIntegrityException">Thrown on first access when the embedded lexicon is missing or corrupt (the inner exception is the original <see cref="InvalidDataException"/>).</exception>
     public static IReadOnlyList<string> FormsOf(string lemma)
     {
         ArgumentNullException.ThrowIfNull(lemma);
@@ -173,8 +173,8 @@ public static class WordLexicon
     /// <param name="pos">The part of speech (the <see cref="WordDetails.PartOfSpeech"/> of an analysis).</param>
     /// <returns>The senses in inventory order, the order of Open English WordNet (the position of the sense in its entry; project senses last); empty when the lemma and part of speech have no sense.</returns>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="lemma"/> is null.</exception>
-    /// <exception cref="InvalidDataException">Thrown on first access when the embedded lexicon is missing or corrupt.</exception>
-    public static ImmutableArray<SenseInfo> SensesOf(string lemma, PartOfSpeech pos) => Image.Value.SensesOf(lemma, pos);
+    /// <exception cref="ModelIntegrityException">Thrown when the embedded lexicon or its sense catalog is missing or corrupt (the inner exception is the original <see cref="InvalidDataException"/>).</exception>
+    public static ImmutableArray<SenseInfo> SensesOf(string lemma, PartOfSpeech pos) => ReadCatalog(image => image.SensesOf(lemma, pos));
 
     /// <summary>
     ///     Finds a sense by its readable id.
@@ -183,10 +183,10 @@ public static class WordLexicon
     /// <param name="sense">Receives the sense; null when it is not found.</param>
     /// <returns><see langword="true"/> when the sense exists.</returns>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="senseId"/> is null.</exception>
-    /// <exception cref="InvalidDataException">Thrown on first access when the embedded lexicon is missing or corrupt.</exception>
+    /// <exception cref="ModelIntegrityException">Thrown when the embedded lexicon or its sense catalog is missing or corrupt (the inner exception is the original <see cref="InvalidDataException"/>).</exception>
     public static bool TryGetSense(string senseId, [NotNullWhen(true)] out SenseInfo? sense)
     {
-        var found = Image.Value.TryGetSense(senseId, out var info);
+        var (found, info) = ReadCatalog(image => (Found: image.TryGetSense(senseId, out var s), Item: s));
         sense = found ? info : null;
         return found;
     }
@@ -198,10 +198,10 @@ public static class WordLexicon
     /// <param name="sense">Receives the sense; null when it is not found.</param>
     /// <returns><see langword="true"/> when a sense has the key; a project sense has no key and is never found.</returns>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="senseKey"/> is null.</exception>
-    /// <exception cref="InvalidDataException">Thrown on first access when the embedded lexicon is missing or corrupt.</exception>
+    /// <exception cref="ModelIntegrityException">Thrown when the embedded lexicon or its sense catalog is missing or corrupt (the inner exception is the original <see cref="InvalidDataException"/>).</exception>
     public static bool TryGetSenseByKey(string senseKey, [NotNullWhen(true)] out SenseInfo? sense)
     {
-        var found = Image.Value.TryGetSenseByKey(senseKey, out var info);
+        var (found, info) = ReadCatalog(image => (Found: image.TryGetSenseByKey(senseKey, out var s), Item: s));
         sense = found ? info : null;
         return found;
     }
@@ -213,10 +213,10 @@ public static class WordLexicon
     /// <param name="group">Receives the group; null when it is not found.</param>
     /// <returns><see langword="true"/> when the group exists.</returns>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="groupId"/> is null.</exception>
-    /// <exception cref="InvalidDataException">Thrown on first access when the embedded lexicon is missing or corrupt.</exception>
+    /// <exception cref="ModelIntegrityException">Thrown when the embedded lexicon or its sense catalog is missing or corrupt (the inner exception is the original <see cref="InvalidDataException"/>).</exception>
     public static bool TryGetGroup(string groupId, [NotNullWhen(true)] out SenseGroup? group)
     {
-        var found = Image.Value.TryGetGroup(groupId, out var info);
+        var (found, info) = ReadCatalog(image => (Found: image.TryGetGroup(groupId, out var g), Item: g));
         group = found ? info : null;
         return found;
     }
@@ -228,11 +228,55 @@ public static class WordLexicon
 
     private static WordImage Load()
     {
-        using var stream = typeof(WordLexicon).Assembly.GetManifestResourceStream(ResourceName)
-            ?? throw new InvalidDataException("The embedded word image is missing from the assembly.");
-        var data = new byte[stream.Length];
-        stream.ReadExactly(data);
-        return WordImage.Open(data);
+        using var stream = typeof(WordLexicon).Assembly.GetManifestResourceStream(ResourceName);
+        return OpenImage(stream);
+    }
+
+    /// <summary>
+    ///     Opens a word image from a resource stream, reporting a missing or damaged image as <see cref="ModelIntegrityException"/>.
+    /// </summary>
+    /// <param name="stream">The resource stream of the image, or null when the resource is missing.</param>
+    /// <returns>The opened image.</returns>
+    /// <exception cref="ModelIntegrityException">Thrown when the stream is null or the image is corrupt; the original <see cref="InvalidDataException"/> (when there is one) is the inner exception.</exception>
+    internal static WordImage OpenImage(Stream? stream)
+    {
+        if (stream is null)
+        {
+            throw new ModelIntegrityException(
+                "The embedded word image is missing from the assembly.",
+                new InvalidDataException("The embedded word image is missing from the assembly."));
+        }
+
+        try
+        {
+            var data = new byte[stream.Length];
+            stream.ReadExactly(data);
+            return WordImage.Open(data);
+        }
+        catch (InvalidDataException ex)
+        {
+            throw new ModelIntegrityException($"The embedded word image is damaged: {ex.Message}", ex);
+        }
+    }
+
+    /// <summary>
+    ///     Reads from the sense catalog of the embedded image (which is validated on first use), reporting a damaged catalog as <see cref="ModelIntegrityException"/>.
+    /// </summary>
+    /// <typeparam name="T">The type of the value that is read.</typeparam>
+    /// <param name="read">The read operation on the opened image.</param>
+    /// <returns>The value that <paramref name="read"/> returned.</returns>
+    /// <exception cref="ModelIntegrityException">Thrown when the image or its catalog is damaged; the original <see cref="InvalidDataException"/> is the inner exception.</exception>
+    internal static T ReadCatalog<T>(Func<WordImage, T> read)
+    {
+        var image = Image.Value;
+        try
+        {
+            return read(image);
+        }
+        catch (InvalidDataException ex)
+        {
+            throw new ModelIntegrityException($"The embedded word image is damaged: {ex.Message}", ex);
+        }
     }
 
     private sealed record CacheEntry(string Key, ImmutableArray<WordDetails> Senses, bool Found);

@@ -46,7 +46,8 @@ word image by the hash of the analysis inventory.
   parts of speech, that every analysis exists in the inventory and occurs once in its lemma table, strictly ascending
   feature hashes, the bounds of every number, that every string is well-formed UTF-8 (malformed bytes are rejected,
   never replaced) and that no bytes trail.
-- `Default`: the table embedded in the assembly, loaded on first use under a thread-safe lazy initializer.
+- `Default`: the table embedded in the assembly, loaded on first use under a thread-safe lazy initializer through
+  `LoadEmbedded(Stream?)`, which reports a missing, corrupt or foreign table as a `ModelIntegrityException`.
 - `FindSuffix(key)`: the distribution over noun, verb, adjective and adverb of the longest tabled suffix of one to three
   characters of a word (binary search), or null when none is tabled; probabilities are `(count + 0.1) / (total + 0.4)`.
 - `LemmaCue.RowOf(analysis)`: the column of an analysis in a cue table. The columns are analyses (lemma, part of speech
@@ -64,11 +65,13 @@ word image by the hash of the analysis inventory.
 
 #### Error Handling
 
-`Load` and `Default` throw `InvalidDataException` for a missing embedded resource, data that is not Brotli, a wrong
+`BasicTables.Load` throws `InvalidDataException` for a data that is not Brotli, a wrong
 magic or format revision, a table built for another analysis inventory (the message names both hashes), an unknown or
 duplicate analysis, invalid hyper-parameters, a different tag count, unordered words, suffixes, lemmas or feature
 hashes, invalid flags, masks, analysis counts or parts of speech, oversized numbers, a truncated blob and trailing
-bytes.
+bytes. `Default` loads the embedded table through `LoadEmbedded(Stream?)`, which maps a missing embedded resource and
+each of these failures to a `ModelIntegrityException` with the original `InvalidDataException` as its inner exception
+(the builder and the tests that call `Load` directly still see `InvalidDataException`).
 
 #### Determinism and Thread Safety
 

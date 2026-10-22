@@ -104,7 +104,20 @@ the shipped image (`EmbeddedWeights_MiniLM_MatchesWordImage`; see the `LemmaWeig
 
 Model files are obtained from the mirror and then GitHub LFS, verified against their SHA-256 digest, stored atomically
 under `<store>/<model-id>/`, and downloaded once even when requested concurrently (see the `ModelDownloader` and
-`DownloadMirror` unit documents).
+`DownloadMirror` unit documents). The model is an `IDownloadableWordSenseModel`
+(`OnnxWordSenseModel_IsDownloadable`), so a caller that holds only an `IWordSenseModel` can prepare the files up front
+with a type check; options are `DownloadOptions`.
+
+#### Failures Are Typed
+
+A failure to obtain, verify or configure the model files is reported with the typed exceptions of the core package,
+each keeping the original exception as inner exception: a model file that no source delivers (including bytes with a
+wrong SHA-256) or that is missing from a supplied directory is `ModelUnavailableException`; a file of a supplied
+directory that fails its SHA-256, weights of another image and an unreadable ONNX file are `ModelIntegrityException`;
+an invalid option or `WORDSENSE_MIRROR_*` setting is `DownloadConfigurationException`
+(`OnnxWordSenseModel_EnsureModelAsync_AllSourcesFail_ThrowsModelUnavailable`,
+`OnnxWordSenseModel_EnsureModelAsync_InvalidOptions_ThrowsDownloadConfiguration`; see the `OnnxWordSenseModel` unit
+document). The lower units (`ModelDownloader`, `DownloadMirror`, `LemmaWeights`) keep their raw exceptions.
 
 #### Disposal Releases the Encoder
 
