@@ -7,6 +7,11 @@ public sealed class OpenCorpusTests : IDisposable
 {
     private const string Header = "# corpus = test\n# license = test\n# columns = id form lemma upos collapsed feats consensus\n\n";
 
+    /// <summary>
+    ///     The consensus labels the corpus reader may give a token, shared by the checks of the real corpus.
+    /// </summary>
+    private static readonly string[] ConsensusValues = ["unanimous", "disputed", "unchecked"];
+
     private readonly TestDirectory _dir = new();
 
     /// <inheritdoc />
@@ -159,6 +164,6 @@ public sealed class OpenCorpusTests : IDisposable
         Assert.DoesNotContain(targetedTrain, s => s.SourceId == "wordsense-ste-probe");
         var representativeIds = train.Concat(dev).Concat(test).Select(s => s.SentenceId).ToHashSet(StringComparer.Ordinal);
         Assert.DoesNotContain(challenge.Concat(targetedTrain), s => representativeIds.Contains(s.SentenceId));
-        Assert.All(challenge.Concat(train.Take(100)), s => Assert.All(s.Tokens, t => Assert.Contains(t.Consensus, new[] { "unanimous", "disputed", "unchecked" })));
+        Assert.All(challenge.Concat(train.Take(100)), s => Assert.All(s.Tokens, t => Assert.Contains(t.Consensus, ConsensusValues)));
     }
 }

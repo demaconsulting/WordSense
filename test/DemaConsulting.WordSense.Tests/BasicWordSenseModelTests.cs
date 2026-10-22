@@ -31,7 +31,7 @@ public class BasicWordSenseModelTests
     [Fact]
     public async Task BasicWordSenseModel_ClassifyAsync_ReturnsParallelResults()
     {
-        IWordSenseModel model = new BasicWordSenseModel();
+        var model = new BasicWordSenseModel();
 
         var results = await model.ClassifyAsync(["Hello", "world"], TestContext.Current.CancellationToken);
 

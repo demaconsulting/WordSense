@@ -48,32 +48,8 @@ internal static class SenseFusion
             throw new ArgumentNullException(nameof(analyses));
         }
         var count = analyses.Length;
-        Span<double> mass = stackalloc double[PosTag.Count];
-        mass.Clear();
-        foreach (var analysis in analyses)
-        {
-            var pos = PosTag.Of(analysis.PartOfSpeech);
-            mass[pos] = posteriors[pos];
-        }
-
-        var total = 0.0;
-        foreach (var value in mass)
-        {
-            total += value;
-        }
-
-        var finiteSum = 0.0;
-        var finite = 0;
-        for (var j = 0; j < count; j++)
-        {
-            if (double.IsFinite(cues[j]))
-            {
-                finiteSum += cues[j];
-                finite++;
-            }
-        }
-
-        var fill = finite > 0 ? finiteSum / finite : 0.0;
+        var total = PosteriorTotal(posteriors, analyses);
+        var fill = MeanOfFinite(cues, count);
         var best = double.NegativeInfinity;
         for (var j = 0; j < count; j++)
         {
@@ -105,6 +81,53 @@ internal static class SenseFusion
         {
             probabilities[j] /= sum;
         }
+    }
+
+    /// <summary>
+    ///     Sums the posterior of the distinct parts of speech of the candidates.
+    /// </summary>
+    /// <param name="posteriors">The tagger posterior of the word, <see cref="PosTag.Count"/> values.</param>
+    /// <param name="analyses">The candidate analyses.</param>
+    /// <returns>The total posterior mass of the parts of speech that occur among the candidates.</returns>
+    private static double PosteriorTotal(ReadOnlySpan<double> posteriors, ImmutableArray<WordDetails> analyses)
+    {
+        Span<double> mass = stackalloc double[PosTag.Count];
+        mass.Clear();
+        foreach (var analysis in analyses)
+        {
+            var pos = PosTag.Of(analysis.PartOfSpeech);
+            mass[pos] = posteriors[pos];
+        }
+
+        var total = 0.0;
+        foreach (var value in mass)
+        {
+            total += value;
+        }
+
+        return total;
+    }
+
+    /// <summary>
+    ///     Gets the mean of the finite cue scores, which stands in for a candidate without one.
+    /// </summary>
+    /// <param name="cues">The cue scores, <see cref="double.NaN"/> when missing.</param>
+    /// <param name="count">The number of candidates.</param>
+    /// <returns>The mean, or zero when no candidate has a cue score.</returns>
+    private static double MeanOfFinite(ReadOnlySpan<double> cues, int count)
+    {
+        var finiteSum = 0.0;
+        var finite = 0;
+        for (var j = 0; j < count; j++)
+        {
+            if (double.IsFinite(cues[j]))
+            {
+                finiteSum += cues[j];
+                finite++;
+            }
+        }
+
+        return finite > 0 ? finiteSum / finite : 0.0;
     }
 
     /// <summary>

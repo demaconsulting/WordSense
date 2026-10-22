@@ -1,7 +1,6 @@
 using System.Net;
 using System.Security.Cryptography;
 using System.Text;
-using System.Text.RegularExpressions;
 
 namespace DemaConsulting.WordSense.Onnx.Tests;
 
@@ -663,7 +662,7 @@ public sealed class ModelDownloaderTests : IDisposable
             () => ModelDownloader.EnsureAsync(pinned, Mirror(server), TestContext.Current.CancellationToken, null, Lfs(server), _ => null));
 
         // Assert: both sources were tried and refused for their size
-        Assert.Equal(2, Regex.Count(ex.Message, "larger than the pinned size"));
+        Assert.Equal(2, ex.Message.Split("larger than the pinned size").Length - 1);
         Assert.False(File.Exists(Path.Join(_store, ModelId, "model.onnx")));
     }
 

@@ -49,7 +49,7 @@ public sealed class ModelTrainerTests : IDisposable
         (words, targets, _) =>
         {
             _encodeCalls++;
-            return ValueTask.FromResult<double[]?[]>(targets.Select(_ => (double[]?)StubEmbedding.Embed(words)).ToArray());
+            return ValueTask.FromResult<double[]?[]>(targets.Select(_ => StubEmbedding.Embed(words)).ToArray());
         },
         cache);
 

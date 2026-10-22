@@ -78,7 +78,7 @@ public sealed class OpenCorpusAttestationTests : IDisposable
 
         // Assert
         Assert.Empty(OpenCorpusAttestation.Read(Path.Join(_dir.Root, "nowhere")));
-        Assert.Equal(new[] { "bag", "bag/n" }, target["bags"].Order(StringComparer.Ordinal).ToArray());
+        Assert.Equal(["bag", "bag/n"], target["bags"].Order(StringComparer.Ordinal).ToArray());
         Assert.Contains("mouse", target["mice"]);
     }
 }

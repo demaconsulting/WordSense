@@ -181,7 +181,7 @@ public sealed class FormAuditorTests
     [Fact]
     public void WordSenseBuilder_FormAuditor_Evaluate_EmptySample_Fails()
     {
-        var result = FormAuditor.Evaluate([], new Dictionary<string, int> { ["rule/entry"] = 10 }, new Dictionary<string, string>(), [], 0.01);
+        var result = FormAuditor.Evaluate([], new Dictionary<string, int> { ["rule/entry"] = 10 }, [], [], 0.01);
         Assert.False(result.Passed);
     }
 
@@ -192,7 +192,7 @@ public sealed class FormAuditorTests
     public void WordSenseBuilder_FormAuditor_Evaluate_MissingVerdict_Throws()
     {
         var sample = new List<FormAuditor.Row> { Row("cats", "rule/entry") };
-        Assert.Throws<InvalidDataException>(() => FormAuditor.Evaluate(sample, new Dictionary<string, int> { ["rule/entry"] = 10 }, new Dictionary<string, string>(), [], 0.01));
+        Assert.Throws<InvalidDataException>(() => FormAuditor.Evaluate(sample, new Dictionary<string, int> { ["rule/entry"] = 10 }, [], [], 0.01));
     }
 
     /// <summary>

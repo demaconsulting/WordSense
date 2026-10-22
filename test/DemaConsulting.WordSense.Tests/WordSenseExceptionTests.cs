@@ -10,12 +10,12 @@ public class WordSenseExceptionTests
     /// <summary>
     ///     Creates each exception type with its constructors, through the public constructors of the type.
     /// </summary>
-    public static TheoryData<Type> ExceptionTypes => new()
-    {
+    public static TheoryData<Type> ExceptionTypes =>
+    [
         typeof(ModelUnavailableException),
         typeof(ModelIntegrityException),
         typeof(DownloadConfigurationException),
-    };
+    ];
 
     /// <summary>
     ///     The base class is abstract and public, so only the typed exceptions are thrown, and it derives from
