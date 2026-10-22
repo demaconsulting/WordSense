@@ -190,8 +190,8 @@ public interface IWordSenseModel : IDisposable
     ///     Failures that concern the model itself are <see cref="WordSenseException"/>s that carry the original exception
     ///     as <see cref="Exception.InnerException"/>: a model file that no source could deliver, or that is missing from a
     ///     supplied model directory, is a <see cref="ModelUnavailableException"/>; a file that fails its pinned SHA-256,
-    ///     an embedded resource that is damaged (the word image, the statistics table, the weights) or an ONNX file that
-    ///     cannot be opened is a <see cref="ModelIntegrityException"/>; invalid download settings found by the lazy
+    ///     an embedded resource that is damaged (the word image, the statistics table, the weights) or an ONNX or
+    ///     vocabulary file that cannot be used is a <see cref="ModelIntegrityException"/>; invalid download settings found by the lazy
     ///     ensure (the <c>WORDSENSE_MIRROR_*</c> variables) are a <see cref="DownloadConfigurationException"/>. Mistakes in
     ///     the call keep their usual exceptions.
     ///     </para>

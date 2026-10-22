@@ -175,7 +175,9 @@ exception is always the inner exception:
   lacks a file, or when every download source failed, including a source that served bytes with a wrong SHA-256
   (the next source is tried); and by `OnnxWordSenseModel.ClassifyAsync` when a verified model file is gone when it is
   opened.
-- `ModelIntegrityException` (the inner exception is an `InvalidDataException` or an `OnnxRuntimeException`): thrown by
+- `ModelIntegrityException` (the inner exception is an `InvalidDataException`, an `OnnxRuntimeException` or, for an
+  unusable vocabulary or model metadata, an `ArgumentException`, `InvalidOperationException`,
+  `IndexOutOfRangeException` or `FormatException`): thrown by
   `OnnxWordSenseModel.EnsureModelAsync` when a file of a supplied model directory fails its pinned SHA-256; by
   `OnnxWordSenseModel.ClassifyAsync` when the embedded weights are missing, corrupt or not for this word image or
   dimension, when an ONNX file that passed its SHA-256 cannot be opened, or when the classifier finds the weights

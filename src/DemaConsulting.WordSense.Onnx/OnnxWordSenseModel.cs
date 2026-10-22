@@ -473,7 +473,12 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel
     /// <param name="directory">The directory that holds the verified model files.</param>
     /// <returns>The encoder.</returns>
     /// <exception cref="ModelUnavailableException">Thrown when a model file is gone.</exception>
-    /// <exception cref="ModelIntegrityException">Thrown when the ONNX model or the vocabulary cannot be read.</exception>
+    /// <exception cref="ModelIntegrityException">
+    ///     Thrown when the ONNX model or the vocabulary cannot be used: the structure of a verified file is rejected
+    ///     (an <see cref="ArgumentException"/> such as a vocabulary without a required token,
+    ///     <see cref="InvalidOperationException"/>, <see cref="IndexOutOfRangeException"/>,
+    ///     <see cref="FormatException"/>, <see cref="InvalidDataException"/> or an <see cref="OnnxRuntimeException"/>).
+    /// </exception>
     private OnnxEncoder OpenEncoderChecked(string directory)
     {
         try
@@ -484,11 +489,27 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel
         {
             throw new ModelUnavailableException($"A file of the model '{_spec.ModelId}' is gone after it was verified: {ex.Message}", ex);
         }
-        catch (Exception ex) when (ex is InvalidDataException or OnnxRuntimeException)
+        catch (Exception ex) when (IsUnusableFileFailure(ex))
         {
-            throw new ModelIntegrityException($"The ONNX model '{_spec.ModelId}' cannot be opened: {ex.Message}", ex);
+            throw new ModelIntegrityException($"The files of the model '{_spec.ModelId}' (the ONNX model or the vocabulary) cannot be used: {ex.Message}", ex);
         }
     }
+
+    /// <summary>
+    ///     Determines whether an exception of the encoder open means that a verified file has an unusable structure.
+    /// </summary>
+    /// <param name="ex">The exception.</param>
+    /// <returns>True for a structural parse or metadata failure; false for cancellation, disposal, a failure of our own
+    /// arguments and an exception that is already typed.</returns>
+    private static bool IsUnusableFileFailure(Exception ex) => ex switch
+    {
+        // Never re-wrap a typed failure; cancellation and disposal are not file problems (disposal is an
+        // InvalidOperationException, so it has to be excluded before that case)
+        WordSenseException or OperationCanceledException or ObjectDisposedException or ArgumentNullException => false,
+        ArgumentException or InvalidOperationException or IndexOutOfRangeException or FormatException
+            or InvalidDataException or OnnxRuntimeException => true,
+        _ => false,
+    };
 
     /// <summary>
     ///     Gets the hidden size (feature dimension) of the encoder; known before <see cref="EnsureModelAsync"/>.

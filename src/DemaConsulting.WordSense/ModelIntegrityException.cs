@@ -8,9 +8,9 @@ namespace DemaConsulting.WordSense;
 ///     <para>
 ///     Causes: a file of a model directory that you supplied does not match its pinned SHA-256 digest; an embedded
 ///     resource (the word image, the statistics table of the Basic model, the lemma weights of an encoder model) is
-///     missing, corrupt or not for the word image of the package; the ONNX file cannot be opened; or the weights do
-///     not fit the word image. The <see cref="Exception.InnerException"/> is the original failure, usually an
-///     <see cref="InvalidDataException"/>. Retrying does not help: replace the files (download them again), or
+///     missing, corrupt or not for the word image of the package; the ONNX file or the vocabulary cannot be used (for
+///     example a vocabulary without a required special token); or the weights do not fit the word image. The
+///     <see cref="Exception.InnerException"/> is the original failure, usually an <see cref="InvalidDataException"/>. Retrying does not help: replace the files (download them again), or
 ///     reinstall the NuGet packages, making sure that all WordSense packages have the same version.
 ///     </para>
 ///     <para>

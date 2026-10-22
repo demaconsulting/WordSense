@@ -69,11 +69,15 @@ All scenarios below pass on every platform and target framework of the CI matrix
   with a model directory the download options are not read, so invalid options throw nothing.
 - **Damaged model is an integrity failure**
   (`OnnxWordSenseModel_ClassifyAsync_WeightsOfAnotherImage_ThrowsModelIntegrity`,
-  `OnnxWordSenseModel_ClassifyAsync_UnreadableOnnxFile_ThrowsModelIntegrity`): weights that do not belong to the word
-  image (a sense that does not exist) throw `ModelIntegrityException` with the original `InvalidDataException` as inner
+  `OnnxWordSenseModel_ClassifyAsync_UnreadableOnnxFile_ThrowsModelIntegrity`,
+  `OnnxWordSenseModel_ClassifyAsync_VocabularyWithoutRequiredToken_ThrowsModelIntegrity`): weights that do not belong
+  to the word image (a sense that does not exist) throw `ModelIntegrityException` with the original
+  `InvalidDataException` as inner
   exception, before any model file is needed; an ONNX file that passes its pinned digest but cannot be opened as a model
   throws `ModelIntegrityException` carrying the original exception of the ONNX runtime, and the failed open leaves the
-  encoder released. Cancellation, disposal and argument exceptions are not changed by the mapping.
+  encoder released; a vocabulary that passes its pinned digest but lacks `[UNK]`, `[CLS]` or `[SEP]` throws
+  `ModelIntegrityException` with the tokenizer's `ArgumentException` as inner exception. Cancellation, disposal and
+  argument exceptions are not changed by the mapping.
 - **A caller can stop waiting**: a cancelled token ends the wait of that caller with `OperationCanceledException`
   without cancelling the shared work; a later call succeeds.
 - **Canceled token before any work**: `ClassifyAsync` with an already canceled token faults with

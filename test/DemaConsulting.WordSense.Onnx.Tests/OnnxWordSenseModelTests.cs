@@ -518,6 +518,51 @@ public class OnnxWordSenseModelTests
     }
 
     /// <summary>
+    ///     A vocabulary that passes its pinned digest but lacks a required special token is reported as
+    ///     <see cref="ModelIntegrityException"/> with the <see cref="ArgumentException"/> of the tokenizer as the inner
+    ///     exception, not as a raw argument exception.
+    /// </summary>
+    /// <param name="token">The required token that is removed from the vocabulary.</param>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Theory]
+    [InlineData("[UNK]")]
+    [InlineData("[CLS]")]
+    [InlineData("[SEP]")]
+    public async Task OnnxWordSenseModel_ClassifyAsync_VocabularyWithoutRequiredToken_ThrowsModelIntegrity(string token)
+    {
+        // Arrange: the real ONNX file and a vocabulary without the token, pinned as it is
+        var source = ModelAssets.RequireModelDirectory();
+        var directory = Path.Join(Path.GetTempPath(), "wordsense-model-" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(directory);
+        try
+        {
+            File.Copy(Path.Join(source, "model_int8.onnx"), Path.Join(directory, "model_int8.onnx"));
+            var lines = (await File.ReadAllLinesAsync(Path.Join(source, "vocab.txt"), TestContext.Current.CancellationToken))
+                .Where(line => line.Trim() != token)
+                .ToArray();
+            var vocabulary = System.Text.Encoding.UTF8.GetBytes(string.Join('\n', lines) + "\n");
+            await File.WriteAllBytesAsync(Path.Join(directory, "vocab.txt"), vocabulary, TestContext.Current.CancellationToken);
+            var digest = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(vocabulary)).ToLowerInvariant();
+            using var model = new FixtureEncoderModel(directory, spec => spec with
+            {
+                Files = [.. spec.Files.Select(f => f.Name == spec.VocabularyFileName ? f with { Sha256 = digest, Length = vocabulary.Length } : f)],
+            });
+
+            // Act
+            var failure = await Assert.ThrowsAsync<ModelIntegrityException>(() => model.ClassifyAsync(PendingSentence, TestContext.Current.CancellationToken));
+
+            // Assert: the original argument exception is kept, and the failed open leaves nothing behind
+            Assert.IsType<ArgumentException>(failure.InnerException);
+            Assert.Contains(token, failure.InnerException.Message, StringComparison.Ordinal);
+            Assert.True(model.IsEncoderReleased);
+        }
+        finally
+        {
+            Directory.Delete(directory, true);
+        }
+    }
+
+    /// <summary>
     ///     The encoder model has the downloadable capability, so the explicit ensure is available through the interface.
     /// </summary>
     [Fact]

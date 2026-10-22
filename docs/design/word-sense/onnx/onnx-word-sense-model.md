@@ -89,8 +89,12 @@ the weights are used only for a text with a trained lemma.
 - `ClassifyAsync` wraps at the points where it loads its own resources (`LoadTable` for `GetTable` and `GetClassifier`,
   and the encoder opening): an `InvalidDataException` of `WeightedLemmaTable` (embedded weights missing, corrupt or not
   for this word image or dimension) and of the classifier (weights and image inconsistent) becomes a
-  `ModelIntegrityException`; an `OnnxRuntimeException` or `InvalidDataException` of the encoder constructor (an ONNX
-  file that passed its SHA-256 but cannot be opened) becomes a `ModelIntegrityException`; a
+  `ModelIntegrityException`; a structural failure of the encoder constructor on files that passed their SHA-256 (an
+  `OnnxRuntimeException`, `InvalidDataException`, `FormatException`, `InvalidOperationException` or
+  `IndexOutOfRangeException` of the ONNX file or its metadata, or an `ArgumentException` such as a vocabulary without a
+  required `[UNK]`, `[CLS]` or `[SEP]` token) becomes a `ModelIntegrityException` with the original as inner exception;
+  an `ArgumentNullException`, an `OperationCanceledException`, an `ObjectDisposedException` and a `WordSenseException`
+  are never mapped (nor re-wrapped); a
   `FileNotFoundException` or `DirectoryNotFoundException` when opening a verified model file that is gone becomes a
   `ModelUnavailableException`. Weights requested before the files were ensured throw
   `InvalidOperationException("The model files are not available.")` (an internal guard that the public call sequence

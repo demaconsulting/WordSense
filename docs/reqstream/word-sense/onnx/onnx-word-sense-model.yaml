@@ -38,8 +38,9 @@ sections:
                   OnnxWordSenseModel shall report, from its preparation step and from the lazy preparation of
                   ClassifyAsync, a model file that no source could deliver, or that is missing from a supplied
                   directory, as ModelUnavailableException, a file that fails its pinned SHA-256 in a supplied
-                  directory, a corrupt or foreign embedded weights resource and an ONNX file that cannot be opened as
-                  ModelIntegrityException, and an invalid mirror address, credential, timeout, store location or
+                  directory, a corrupt or foreign embedded weights resource and an ONNX or vocabulary file that
+                  cannot be used as ModelIntegrityException, and an invalid mirror address, credential, timeout,
+                  store location or
                   WORDSENSE_MIRROR_* environment setting as DownloadConfigurationException, each carrying the original
                   exception as inner exception, and shall leave cancellation, disposal and argument exceptions
                   unchanged.
@@ -60,6 +61,7 @@ sections:
                   - OnnxWordSenseModel_ClassifyAsync_InvalidMirrorEnvironment_ThrowsDownloadConfiguration
                   - OnnxWordSenseModel_ClassifyAsync_WeightsOfAnotherImage_ThrowsModelIntegrity
                   - OnnxWordSenseModel_ClassifyAsync_UnreadableOnnxFile_ThrowsModelIntegrity
+                  - OnnxWordSenseModel_ClassifyAsync_VocabularyWithoutRequiredToken_ThrowsModelIntegrity
 
               - id: WordSense-Onnx-OnnxWordSenseModel-Concurrent
                 title: >-

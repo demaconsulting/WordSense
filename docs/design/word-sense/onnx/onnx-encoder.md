@@ -26,8 +26,9 @@ dimension of the first model output) and the maximum sequence length. The model 
 A missing model file throws `FileNotFoundException`; an out-of-range sequence length or thread count throws
 `ArgumentOutOfRangeException`; calls after `Dispose` throw `ObjectDisposedException`. Runtime failures of ONNX Runtime
 propagate. These are the raw exceptions of the unit: `OnnxWordSenseModel` reports a missing file after verification as
-a `ModelUnavailableException` and an `OnnxRuntimeException` or `InvalidDataException` of the constructor as a
-`ModelIntegrityException`.
+a `ModelUnavailableException` and a structural failure of the constructor (`OnnxRuntimeException`,
+`InvalidDataException`, or an `ArgumentException`, `InvalidOperationException`, `IndexOutOfRangeException` or
+`FormatException` from the vocabulary or the model metadata) as a `ModelIntegrityException`.
 
 #### Dependencies
 
