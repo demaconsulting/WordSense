@@ -58,7 +58,7 @@ All scenarios below pass on every platform and target framework of the CI matrix
   the failure is `ModelUnavailableException`, not `ModelIntegrityException`.
 - **Invalid download settings** (`OnnxWordSenseModel_EnsureModelAsync_InvalidOptions_ThrowsDownloadConfiguration`,
   theory over a relative address, another scheme, a query, a token with credentials, credentials over HTTP, a zero and a
-  negative timeout and an empty store root;
+  negative timeout, an empty and a whitespace-only store root and a store root with an invalid character;
   `OnnxWordSenseModel_EnsureModelAsync_InvalidEnvironment_ThrowsDownloadConfiguration`;
   `OnnxWordSenseModel_ClassifyAsync_InvalidMirrorEnvironment_ThrowsDownloadConfiguration`): invalid options, or an
   invalid `WORDSENSE_MIRROR_*` setting (a user without a password), throw `DownloadConfigurationException`, from the

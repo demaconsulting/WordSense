@@ -172,6 +172,31 @@ public sealed class ModelDownloaderTests : IDisposable
     }
 
     /// <summary>
+    ///     An empty, whitespace-only or unparsable store root is rejected as an <see cref="ArgumentException"/> named
+    ///     <c>StoreRoot</c> before any request is made, while a null store root selects the default store.
+    /// </summary>
+    /// <param name="storeRoot">The invalid store root.</param>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Theory]
+    [InlineData("")]
+    [InlineData("   ")]
+    [InlineData("store\0root")]
+    public async Task ModelDownloader_EnsureAsync_InvalidStoreRoot_ThrowsBeforeRequests(string storeRoot)
+    {
+        // Arrange
+        using var server = new LocalServer(Serve);
+        var options = Mirror(server) with { StoreRoot = storeRoot };
+
+        // Act
+        var failure = await Assert.ThrowsAsync<ArgumentException>(
+            () => ModelDownloader.EnsureAsync(Spec, options, TestContext.Current.CancellationToken, null, Lfs(server), _ => null));
+
+        // Assert
+        Assert.Equal("StoreRoot", failure.ParamName);
+        Assert.Empty(server.Requests);
+    }
+
+    /// <summary>
     ///     Verification reports a missing file and a wrong digest.
     /// </summary>
     [Fact]

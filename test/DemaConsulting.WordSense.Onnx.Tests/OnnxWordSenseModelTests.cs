@@ -357,6 +357,8 @@ public class OnnxWordSenseModelTests
     [InlineData("zeroTimeout")]
     [InlineData("negativeTimeout")]
     [InlineData("emptyStoreRoot")]
+    [InlineData("whitespaceStoreRoot")]
+    [InlineData("invalidCharacterStoreRoot")]
     public async Task OnnxWordSenseModel_EnsureModelAsync_InvalidOptions_ThrowsDownloadConfiguration(string kind)
     {
         // Arrange: a model that downloads, and options that are invalid in one way
@@ -373,6 +375,8 @@ public class OnnxWordSenseModelTests
             "zeroTimeout" => new DownloadOptions(https, Timeout: TimeSpan.Zero),
             "negativeTimeout" => new DownloadOptions(https, Timeout: TimeSpan.FromSeconds(-1)),
             "emptyStoreRoot" => new DownloadOptions(https, StoreRoot: string.Empty),
+            "whitespaceStoreRoot" => new DownloadOptions(https, StoreRoot: "  \t "),
+            "invalidCharacterStoreRoot" => new DownloadOptions(https, StoreRoot: "store\0root"),
             _ => throw new ArgumentOutOfRangeException(nameof(kind), kind, "Unknown kind."),
         };
 
@@ -386,6 +390,11 @@ public class OnnxWordSenseModelTests
         if (kind.EndsWith("Timeout", StringComparison.Ordinal))
         {
             Assert.IsType<ArgumentOutOfRangeException>(failure.InnerException);
+        }
+
+        if (kind.EndsWith("StoreRoot", StringComparison.Ordinal))
+        {
+            Assert.Equal("StoreRoot", ((ArgumentException)failure.InnerException!).ParamName);
         }
     }
 

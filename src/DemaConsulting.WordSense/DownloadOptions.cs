@@ -86,7 +86,9 @@ namespace DemaConsulting.WordSense;
 ///     <para>
 ///     Store root rules: <see cref="StoreRoot"/> may be relative; it is resolved with <c>Path.GetFullPath</c> against the
 ///     current directory of the process at the time the ensure runs, so prefer an absolute path (the directory is
-///     created when it does not exist). Offline route through the store: files that you copy into
+///     created when it does not exist). A <c>null</c> store root selects the default store; an empty or whitespace-only
+///     store root, or a path that the platform rejects, is a <see cref="DownloadConfigurationException"/> (inner
+///     exception: <see cref="ArgumentException"/> with the parameter name <c>StoreRoot</c>). Offline route through the store: files that you copy into
 ///     <c>{StoreRoot}/{model-id}/</c> (or into the default store, then no <see cref="DownloadOptions"/> are needed) are
 ///     hashed by <c>EnsureModelAsync</c>; a file that matches its pinned SHA-256 is kept and never requested, so when
 ///     every file is present and valid nothing is downloaded and the mirror (and the public source) is not contacted,
@@ -129,7 +131,7 @@ namespace DemaConsulting.WordSense;
 /// <param name="Credentials">The HTTP Basic credential, or null when none is needed. Exclusive with <paramref name="BearerToken"/>.</param>
 /// <param name="StoreRoot">
 ///     The directory beneath which model folders are stored, or null for the per-user default
-///     (<c>{LocalApplicationData}/DemaConsulting/WordSense/models</c>).
+///     (<c>{LocalApplicationData}/DemaConsulting/WordSense/models</c>). An empty or whitespace-only value is invalid.
 /// </param>
 /// <param name="Timeout">The longest time a single download attempt of a single file may take, or null for 5 minutes.</param>
 public sealed record DownloadOptions(

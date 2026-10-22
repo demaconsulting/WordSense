@@ -33,7 +33,9 @@ SHA-256 digests, from a configured mirror or from the GitHub LFS copy of the rep
 `Verify` throws `FileNotFoundException` or `InvalidDataException`. When all sources fail for a file, `EnsureAsync`
 throws `HttpRequestException` listing each source's failure (never a credential). Cancellation by the caller is
 rethrown. An invalid mirror configuration throws `ArgumentException` (see DownloadMirror). Timeouts that are not
-positive or infinite, or exceed about 49 days, are rejected. These are the raw, internal exceptions of the unit and its
+positive or infinite, or exceed about 49 days, are rejected, and so is a store root that is empty, whitespace-only or a
+path the platform rejects (an `ArgumentException` with the parameter name `StoreRoot`, checked before any request; a
+null store root means the default store). These are the raw, internal exceptions of the unit and its
 behavior is unchanged: `OnnxWordSenseModel` wraps them at the public boundary (`FileNotFoundException` and
 `HttpRequestException` as `ModelUnavailableException`, `InvalidDataException` as `ModelIntegrityException`,
 `ArgumentException` and `ArgumentOutOfRangeException` as `DownloadConfigurationException`; see _OnnxWordSenseModel Unit

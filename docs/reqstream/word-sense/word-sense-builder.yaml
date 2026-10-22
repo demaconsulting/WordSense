@@ -15,8 +15,9 @@ sections:
               word of the dictionary (determiners, conjunctions and interjections included)
               with all its parts of speech, the inflected forms of every dictionary word (the generation of the forms
               is specified by the FormGenerator requirements), and the sense catalog: every single-token OEWN sense
-              and its group (none when it is in no group), its OEWN sense key (none for a project sense)
-              and its respelling, the senses of each lemma and part of speech in the order of Open English WordNet (the
+              and its group (none when it is in no group) and its OEWN sense key (none for a project sense), without
+              any respelling (the respelling sections of the format are retained but empty, because the data has no
+              respelling rows), the senses of each lemma and part of speech in the order of Open English WordNet (the
               position of the sense in its entry, then the homograph number of the entry, project senses last, then the
               sense id bytes; the WordNet 3.0 frequencies shall not order them); and
               shall write it in the compact binary format that the core package reads. The committed image shall be

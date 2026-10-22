@@ -1015,7 +1015,8 @@ setting is wrong), and `DownloadConfigurationException` is not itself an `Argume
 `{LocalApplicationData}/DemaConsulting/WordSense/models`. Only `DownloadOptions.StoreRoot` changes it, for example
 `StoreRoot: "/var/lib/wordsense"` on Linux and macOS or `StoreRoot: @"C:\ProgramData\WordSense\models"` on Windows. A
 relative `StoreRoot` is allowed: it is resolved against the current directory of the process when the ensure runs, so
-prefer an absolute path (the directory is created when it does not exist; an invalid path is a
+prefer an absolute path (the directory is created when it does not exist; `null` selects the default store, but an empty
+or whitespace-only `StoreRoot`, or a path the platform rejects, is a
 `DownloadConfigurationException`, a directory that cannot be created or written an `IOException` or
 `UnauthorizedAccessException`). No environment
 variable does: the four `WORDSENSE_MIRROR_*` variables above are the only ones the library reads. `BaseUri` is a required

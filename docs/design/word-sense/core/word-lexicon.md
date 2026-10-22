@@ -23,10 +23,10 @@ key. Every model starts from it, and a word with one sense never needs context.
   full key is the lower-case lemma, `%` and the suffix); the sense-to-group index (group index plus one, 0 for a sense in
   no group); the sense-to-respelling index (respelling index plus one, 0 for none) with the distinct respelling strings
   (retained in the format and checked by the catalog reader, but empty in the data and not exposed by the catalog
-  records);
+  records, so neither a sense nor a group has a respelling in the API);
   the group ids (UTF-8 sorted) and the part of speech of each group; the group members (CSR of sense indexes in
-  inventory order; the lemma of a group comes from its members, and its respelling is the respelling its members
-  share); the lemma and part-of-speech blocks (the lemma bytes and the part of speech, sorted by lemma UTF-8 bytes and
+  inventory order; the lemma of a group comes from its members, and a group has no respelling of its own);
+  the lemma and part-of-speech blocks (the lemma bytes and the part of speech, sorted by lemma UTF-8 bytes and
   then part of speech, each with a CSR of its sense indexes in inventory order); and a key index (the sense indexes
   sorted by full key bytes). The inventory hash covers, as the raw decompressed bytes of the sections each fed as id,
   length and bytes, the spelling, analysis, feature, entry lemma and part of speech, sense id, sense-group, group id,

@@ -46,6 +46,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
   (the limit covers the body); an invalid timeout (zero, negative,
   oversized) throws before any request; an infinite timeout succeeds; a cancelled caller throws
   `OperationCanceledException`.
+- **Invalid store root** (`ModelDownloader_EnsureAsync_InvalidStoreRoot_ThrowsBeforeRequests`): an empty, a
+  whitespace-only and an invalid-character store root throw an `ArgumentException` named `StoreRoot` before any request.
 - **Partial downloads**: a body that ends before its declared length, or stalls, falls through to the next source and
   leaves no temporary file; a body larger than the pinned size is refused with or without a declared length. The
   downloader does not resume: each attempt writes a new temporary file, and a stale `.part` file of an earlier run is
