@@ -88,8 +88,10 @@ internal sealed class ReadmeSample
         using var model = new MiniLMWordSenseModel();
         await model.EnsureModelAsync();
 
-        // Through a mirror, when the public download host is blocked
-        await model.EnsureModelAsync(new DownloadOptions(new Uri("https://models.example.com/wordsense")));
+        // Through a mirror, when the public download host is blocked: pass the options to the first ensure of the model,
+        // because a model that has its files does not fetch them again
+        using var mirrored = new MiniLMWordSenseModel();
+        await mirrored.EnsureModelAsync(new DownloadOptions(new Uri("https://models.example.com/wordsense")));
         // </sample:download>
     }
 
