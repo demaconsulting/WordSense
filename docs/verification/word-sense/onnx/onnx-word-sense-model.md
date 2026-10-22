@@ -76,7 +76,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
   exception, before any model file is needed; an ONNX file that passes its pinned digest but cannot be opened as a model
   throws `ModelIntegrityException` carrying the original exception of the ONNX runtime, and the failed open leaves the
   encoder released; a vocabulary that passes its pinned digest but lacks `[UNK]`, `[CLS]` or `[SEP]` throws
-  `ModelIntegrityException` with the tokenizer's `ArgumentException` as inner exception. Cancellation, disposal and
+  `ModelIntegrityException` with the tokenizer's `ArgumentException` as inner exception; an ONNX file whose hidden size
+  differs from the one of the model description (and of its embedded weights) throws `ModelIntegrityException` with an
+  `InvalidDataException` as inner exception that names the model and both sizes, and the rejected encoder is disposed,
+  not cached. Cancellation, disposal and
   argument exceptions are not changed by the mapping.
 - **A caller can stop waiting**: a cancelled token ends the wait of that caller with `OperationCanceledException`
   without cancelling the shared work; a later call succeeds.

@@ -321,6 +321,8 @@ internal sealed class OnnxClassifier
         var lemmaScores = new Dictionary<string, LemmaScores>(StringComparer.Ordinal);
         foreach (var lemma in plan.Slots.Select(s => s.Lemma).Distinct(StringComparer.Ordinal))
         {
+            // The dimension check is a defensive guard: through the model the encoder is checked against the weights'
+            // dimension when it is opened, so a mismatch is reported there as ModelIntegrityException, never silently here
             if (table.Find(lemma) is { } resolved && resolved.Weights.Weights.Dimension == feature.Length)
             {
                 var columns = CandidateColumns(resolved, plan.Slots.Where(s => s.Lemma == lemma));

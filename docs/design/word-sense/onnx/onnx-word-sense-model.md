@@ -93,6 +93,11 @@ the weights are used only for a text with a trained lemma.
   `OnnxRuntimeException`, `InvalidDataException`, `FormatException`, `InvalidOperationException` or
   `IndexOutOfRangeException` of the ONNX file or its metadata, or an `ArgumentException` such as a vocabulary without a
   required `[UNK]`, `[CLS]` or `[SEP]` token) becomes a `ModelIntegrityException` with the original as inner exception;
+  so does an opened encoder whose hidden size differs from `ModelSpec.HiddenSize` (the size the embedded weights are
+  checked against): `OpenEncoderCore` disposes it and throws an `InvalidDataException` naming the model and both sizes,
+  which is wrapped like the other structural failures, so the encoder is never cached and a mismatch is never answered
+  silently from the lexicon (the internal `OpenEncoder()` of the builder applies the same check and lets the
+  `InvalidDataException` propagate);
   an `ArgumentNullException`, an `OperationCanceledException`, an `ObjectDisposedException` and a `WordSenseException`
   are never mapped (nor re-wrapped); a
   `FileNotFoundException` or `DirectoryNotFoundException` when opening a verified model file that is gone becomes a

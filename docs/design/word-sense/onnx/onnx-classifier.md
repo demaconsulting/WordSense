@@ -151,7 +151,9 @@ sense, or get the lexicon-only answer are answered without the encoder and witho
 A null list throws `ArgumentNullException`; a null element throws `ArgumentException`; a canceled token throws
 `OperationCanceledException`; an empty list gives an empty array and the result is parallel to the input. A vector
 that cannot be used (no word pieces, or a dimension that differs from the weights) does not fail the call: the word
-gets the lexicon-only answer. Encoder failures propagate.
+gets the lexicon-only answer. The dimension case is a defensive guard of the classifier on its own; through
+`OnnxWordSenseModel` it cannot occur, because the model rejects an encoder whose hidden size differs from the one of its
+description and weights when it opens the encoder. Encoder failures propagate.
 
 #### Dependencies
 

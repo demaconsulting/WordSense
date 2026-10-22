@@ -572,6 +572,36 @@ public class OnnxWordSenseModelTests
     }
 
     /// <summary>
+    ///     An ONNX model whose hidden size differs from the one of the model description (and of its embedded weights)
+    ///     is reported as <see cref="ModelIntegrityException"/> instead of being answered silently from the lexicon;
+    ///     the rejected encoder is released.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxWordSenseModel_ClassifyAsync_EncoderHiddenSizeMismatch_ThrowsModelIntegrity()
+    {
+        // Arrange: the real MiniLM files (hidden size 384) under a description and weights of hidden size 768
+        const int wrongSize = 768;
+        using var model = new FixtureEncoderModel(ModelAssets.RequireModelDirectory(), spec => spec with
+        {
+            HiddenSize = wrongSize,
+            WeightsAssembly = new FixtureAssembly(
+                FixtureEncoderModel.ResourceName,
+                BlobWriter.Write(new WeightsData(spec.ModelId, Fixtures.InventoryHash(), wrongSize, new float[wrongSize], [Fixtures.Lemma("just", dimension: wrongSize)]))),
+        });
+
+        // Act
+        var failure = await Assert.ThrowsAsync<ModelIntegrityException>(() => model.ClassifyAsync(PendingSentence, TestContext.Current.CancellationToken));
+
+        // Assert: both sizes are named, the original exception is kept, and the rejected encoder is not kept
+        Assert.IsType<InvalidDataException>(failure.InnerException);
+        Assert.Contains("384", failure.Message, StringComparison.Ordinal);
+        Assert.Contains("768", failure.Message, StringComparison.Ordinal);
+        Assert.Contains(model.ModelId, failure.Message, StringComparison.Ordinal);
+        Assert.True(model.IsEncoderReleased);
+    }
+
+    /// <summary>
     ///     The encoder model has the downloadable capability, so the explicit ensure is available through the interface.
     /// </summary>
     [Fact]

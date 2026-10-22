@@ -477,7 +477,8 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel
     ///     Thrown when the ONNX model or the vocabulary cannot be used: the structure of a verified file is rejected
     ///     (an <see cref="ArgumentException"/> such as a vocabulary without a required token,
     ///     <see cref="InvalidOperationException"/>, <see cref="IndexOutOfRangeException"/>,
-    ///     <see cref="FormatException"/>, <see cref="InvalidDataException"/> or an <see cref="OnnxRuntimeException"/>).
+    ///     <see cref="FormatException"/>, <see cref="InvalidDataException"/> or an <see cref="OnnxRuntimeException"/>),
+    ///     or the hidden size of the ONNX model differs from the one of the model description.
     /// </exception>
     private OnnxEncoder OpenEncoderChecked(string directory)
     {
@@ -580,6 +581,7 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel
     /// </summary>
     /// <returns>The encoder.</returns>
     /// <exception cref="InvalidOperationException">Thrown when the model files are not available.</exception>
+    /// <exception cref="InvalidDataException">Thrown when the hidden size of the ONNX model differs from the one of the model description.</exception>
     internal OnnxEncoder OpenEncoder()
     {
         string directory;
@@ -657,11 +659,30 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel
     ///     Opens an encoder on a verified directory.
     /// </summary>
     /// <param name="directory">The directory that holds the model files.</param>
-    /// <returns>The encoder.</returns>
-    private OnnxEncoder OpenEncoderCore(string directory) => new(
-        Path.Join(directory, _spec.OnnxFileName),
-        Path.Join(directory, _spec.VocabularyFileName),
-        _spec.LowerCase,
-        _maxSequenceLength,
-        IntraOpThreads);
+    /// <returns>The encoder, whose hidden size equals the one of the model description.</returns>
+    /// <exception cref="InvalidDataException">
+    ///     Thrown when the hidden size of the opened ONNX model differs from the one of the model description (and of
+    ///     the embedded weights); the encoder is disposed first.
+    /// </exception>
+    private OnnxEncoder OpenEncoderCore(string directory)
+    {
+        var encoder = new OnnxEncoder(
+            Path.Join(directory, _spec.OnnxFileName),
+            Path.Join(directory, _spec.VocabularyFileName),
+            _spec.LowerCase,
+            _maxSequenceLength,
+            IntraOpThreads);
+
+        // The weights are trained and checked for the hidden size of the description; an ONNX file of another size
+        // would make every feature unusable, so it is rejected here rather than silently answered from the lexicon
+        if (encoder.HiddenSize != _spec.HiddenSize)
+        {
+            var actual = encoder.HiddenSize;
+            encoder.Dispose();
+            throw new InvalidDataException(
+                $"The ONNX model of '{_spec.ModelId}' has a hidden size of {actual}, but the model description and its weights expect {_spec.HiddenSize}.");
+        }
+
+        return encoder;
+    }
 }
