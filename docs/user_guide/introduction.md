@@ -518,8 +518,11 @@ The previous release identified a sense by a pronunciation or part-of-speech cla
   }
   ```
 
-  A class that implemented `IWordSenseModel` with an `EnsureModelAsync` needs no change to compile (the method is just
-  not part of the contract any more); implement `IDownloadableWordSenseModel` to keep it discoverable.
+  A class that implemented `IWordSenseModel` with an `EnsureModelAsync(MirrorOptions? mirror, CancellationToken
+  cancellationToken)` does not compile unchanged, because `MirrorOptions` no longer exists: rename the parameter type to
+  `DownloadOptions`, and implement `IDownloadableWordSenseModel` (instead of only `IWordSenseModel`) so that callers and
+  `FallbackWordSenseModel` can discover the capability. A class without files implements only `IWordSenseModel` and can
+  drop its `EnsureModelAsync`.
 - **`MirrorOptions` is now `DownloadOptions`.** The members (`BaseUri`, `BearerToken`, `Credentials`, `StoreRoot` and
   `Timeout`) and their rules are the same, and so are the environment variables `WORDSENSE_MIRROR_URL`,
   `WORDSENSE_MIRROR_USER`, `WORDSENSE_MIRROR_PASSWORD` and `WORDSENSE_MIRROR_BEARER_TOKEN`; rename the type.
