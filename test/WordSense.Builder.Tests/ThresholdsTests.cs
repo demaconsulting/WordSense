@@ -11,6 +11,10 @@ public sealed class ThresholdsTests
 {
     private static readonly TrainingOptions Options = new(Parallelism: 1);
 
+    /// <summary>
+    ///     A unit-length feature vector that every anchor of the no-margin check repeats, so that no sense can be told
+    ///     from another. The check only reads it and never changes it.
+    /// </summary>
     private static readonly float[] IdenticalFeatures = [0.6f, 0.8f, 0f, 0f, 0f, 0f];
 
     /// <summary>

@@ -434,6 +434,12 @@ internal sealed partial class WordImage
             }
         }
 
+        /// <summary>
+        ///     Checks that a lemma block follows the block before it: the lemmas ascend by their bytes and the blocks of
+        ///     one lemma ascend by part of speech, so no (lemma, part of speech) pair occurs twice.
+        /// </summary>
+        /// <param name="b">The index of the block; the first block has no predecessor and always passes.</param>
+        /// <exception cref="InvalidDataException">Thrown when the block does not sort after the previous block.</exception>
         private void ValidateBlockOrder(int b)
         {
             if (b == 0)
@@ -448,6 +454,21 @@ internal sealed partial class WordImage
             }
         }
 
+        /// <summary>
+        ///     Checks one sense listed by a lemma block and records the block that owns it.
+        /// </summary>
+        /// <param name="b">The index of the block that lists the sense.</param>
+        /// <param name="lemma">The lemma of the block, as UTF-8 bytes.</param>
+        /// <param name="sense">The index of the sense in the block's sense list.</param>
+        /// <remarks>
+        ///     On success the sense's entry in the sense-to-block table is set to <paramref name="b"/>; an entry that is
+        ///     already set means that another block listed the sense first. The sense id must be the lemma, then the
+        ///     <c>#</c> separator, and must not contain the group marker.
+        /// </remarks>
+        /// <exception cref="InvalidDataException">
+        ///     Thrown when the sense does not exist or is listed by two blocks, when its id does not start with the lemma
+        ///     of the block, or when its id contains the group marker.
+        /// </exception>
         private void ValidateBlockSense(int b, ReadOnlySpan<byte> lemma, uint sense)
         {
             if (sense >= _senseCount || _senseBlock[sense] != -1)
@@ -468,6 +489,11 @@ internal sealed partial class WordImage
             }
         }
 
+        /// <summary>
+        ///     Gets the UTF-8 bytes of the id of a group, without copying them.
+        /// </summary>
+        /// <param name="g">The zero-based index of the group; the offset table must hold <c>g + 1</c>.</param>
+        /// <returns>The bytes of the group id, a view of the shared id buffer.</returns>
         private ReadOnlySpan<byte> GroupIdSpan(int g) =>
             _groupIdBytes.AsSpan((int)_groupIdOffset[g], (int)(_groupIdOffset[g + 1] - _groupIdOffset[g]));
 
@@ -491,6 +517,23 @@ internal sealed partial class WordImage
             }
         }
 
+        /// <summary>
+        ///     Checks one group of senses against the lemma blocks and the sense table.
+        /// </summary>
+        /// <param name="g">The zero-based index of the group.</param>
+        /// <param name="listed">
+        ///     Marks the senses that earlier groups listed, by sense index; the members of this group are marked here.
+        /// </param>
+        /// <returns>The number of members of the group.</returns>
+        /// <remarks>
+        ///     A group has at least two senses and fewer than all the senses of its lemma and part of speech. All its
+        ///     members come from one block, the part of speech of the group is that of the block, and the group id is the
+        ///     lemma of the block followed by the group marker. The group ids ascend by their bytes.
+        /// </remarks>
+        /// <exception cref="InvalidDataException">
+        ///     Thrown when the group id is out of order or malformed, the group is too small, mixes parts of speech or
+        ///     holds every sense of its lemma and part of speech, or its members disagree with the sense table.
+        /// </exception>
         private int ValidateGroup(int g, bool[] listed)
         {
             if (g > 0 && CompareBytes(GroupIdSpan(g - 1), GroupIdSpan(g)) >= 0)
@@ -520,6 +563,21 @@ internal sealed partial class WordImage
             return (int)(end - start);
         }
 
+        /// <summary>
+        ///     Checks the members of a group: each exists, names this group in the sense table, is listed once in all the
+        ///     groups, and belongs to the same lemma block as the other members.
+        /// </summary>
+        /// <param name="g">The zero-based index of the group.</param>
+        /// <param name="start">The index in the member list of the first member of the group.</param>
+        /// <param name="end">The index in the member list after the last member of the group.</param>
+        /// <param name="listed">
+        ///     Marks the senses that groups listed so far, by sense index; each member of this group is marked here.
+        /// </param>
+        /// <returns>The index of the lemma block that holds every member, or -1 when the group has no members.</returns>
+        /// <exception cref="InvalidDataException">
+        ///     Thrown when a member does not exist, names another group, is in another block than the first member, or
+        ///     is listed twice.
+        /// </exception>
         private int ValidateGroupMembers(int g, uint start, uint end, bool[] listed)
         {
             var block = -1;

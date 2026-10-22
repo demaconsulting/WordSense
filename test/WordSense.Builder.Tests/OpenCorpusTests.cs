@@ -7,6 +7,9 @@ public sealed class OpenCorpusTests : IDisposable
 {
     private const string Header = "# corpus = test\n# license = test\n# columns = id form lemma upos collapsed feats consensus\n\n";
 
+    /// <summary>
+    ///     The consensus labels the corpus reader may give a token, shared by the checks of the real corpus.
+    /// </summary>
     private static readonly string[] ConsensusValues = ["unanimous", "disputed", "unchecked"];
 
     private readonly TestDirectory _dir = new();

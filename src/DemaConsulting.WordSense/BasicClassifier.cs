@@ -325,8 +325,14 @@ internal sealed class BasicClassifier
         return ImmutableCollectionsMarshal.AsImmutableArray(sorted);
     }
 
-    // Finds the analysis that stands for the slot of analysis j: the first earlier analysis of the same slot (through
-    // its own representative), or j itself when it opens a slot
+    /// <summary>
+    ///     Finds the analysis that stands for the slot of an analysis: the representative of the first earlier analysis
+    ///     of the same slot, or the analysis itself when it opens a slot.
+    /// </summary>
+    /// <param name="analyses">The candidate analyses in lexicon order.</param>
+    /// <param name="first">The representatives of the analyses before <paramref name="j"/>; later entries are not read.</param>
+    /// <param name="j">The index of the analysis whose slot representative is wanted.</param>
+    /// <returns>The index of the first analysis of the slot, which is never greater than <paramref name="j"/>.</returns>
     private static int FirstOfSlot(ImmutableArray<WordDetails> analyses, ReadOnlySpan<int> first, int j)
     {
         for (var k = 0; k < j; k++)
@@ -340,7 +346,19 @@ internal sealed class BasicClassifier
         return j;
     }
 
-    // Fills the order with the indexes of the analyses by a stable insertion sort (see Precedes)
+    /// <summary>
+    ///     Fills the order with the indexes of the analyses, the most probable first, by a stable insertion sort (see
+    ///     <see cref="Precedes"/>).
+    /// </summary>
+    /// <param name="order">Receives the indexes; its length is the number of analyses and its content is overwritten.</param>
+    /// <param name="first">The representative analysis of the slot of each analysis.</param>
+    /// <param name="slotTotal">The total probability of each slot, by the index of its representative.</param>
+    /// <param name="probabilities">The probability of each analysis.</param>
+    /// <remarks>
+    ///     Slots sort by total probability, descending, and the analyses of a slot by their own probability, descending.
+    ///     The sort is stable: when two slots, or two analyses of a slot, tie, the one that comes first in the lexicon
+    ///     stays first. An insertion sort suits the small number of analyses of a word and allocates nothing.
+    /// </remarks>
     private static void SortAnalyses(Span<int> order, ReadOnlySpan<int> first, ReadOnlySpan<double> slotTotal, ReadOnlySpan<double> probabilities)
     {
         for (var j = 0; j < order.Length; j++)

@@ -452,6 +452,12 @@ public sealed class BuilderTests : IDisposable
         public bool ContainsKey(string word) => !this[word].IsDefaultOrEmpty;
     }
 
+    /// <summary>
+    ///     Tells whether a word fails the rule that the auxiliary analysis comes last: it has no auxiliary analysis, or
+    ///     the last analysis of the lexicon is not the auxiliary one.
+    /// </summary>
+    /// <param name="analyses">The lexicon analyses of the word.</param>
+    /// <returns>True when the word is without an auxiliary analysis in the last position.</returns>
     private static bool IsWithoutLastAuxiliary(System.Collections.Immutable.ImmutableArray<DemaConsulting.WordSense.WordDetails> analyses) =>
         analyses.IsDefaultOrEmpty
         || analyses.All(d => d.PartOfSpeech != PartOfSpeech.Auxiliary)

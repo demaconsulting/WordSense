@@ -377,6 +377,17 @@ internal sealed partial class WordImage
         return false;
     }
 
+    /// <summary>
+    ///     Determines whether an entry has an analysis that carries every required feature item.
+    /// </summary>
+    /// <param name="e">The index of the entry; its forms must have been loaded.</param>
+    /// <param name="required">
+    ///     The required <c>Key=Value</c> feature items, or an empty array when any analysis of the entry matches.
+    /// </param>
+    /// <returns>
+    ///     True when some form of the entry lists an analysis of this entry whose features contain every required
+    ///     item; false when no analysis of the entry does, including when the entry lists no forms.
+    /// </returns>
     private bool EntryHasAnalysis(int e, string[] required)
     {
         for (var k = _entryFormStart![e]; k < _entryFormStart[e + 1]; k++)

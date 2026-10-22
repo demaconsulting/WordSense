@@ -24,6 +24,9 @@ public sealed partial class SenseLabelGeneratorTests : IDisposable
         ["x"] = "auxiliary",
     };
 
+    /// <summary>
+    ///     The tables of the imported slice whose TSV rows the row-order check reverses.
+    /// </summary>
     private static readonly string[] SliceTables = ["entry", "sense", "synset_relation"];
 
     private readonly TestDirectory _dir = new();
