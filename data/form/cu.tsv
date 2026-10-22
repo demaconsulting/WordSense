@@ -91,7 +91,9 @@ Curcuma longas	0	oewn-Curcuma_longa-n	Capitalization=Exact+Number=Plur	dema	0			
 Curia	0		Number=Sing	dema	0	curia	n	moby_reverse
 Curia	1	oewn-Curia-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Curiae	0		Number=Sing	dema	0	curiae	n	moby_reverse
-Curiae	1	oewn-Curia-n	Capitalization=Title+Number=Plur	dema	0			agid
+Curiae	1	oewn-Curia-n	Capitalization=Title+Number=Plur	dema	0			llm
+Curias	0		Number=Plur	dema	0	curia	n	rule
+Curias	1	oewn-Curia-n	Capitalization=Title+Number=Plur	dema	0			rule_variant
 Curie point	0	oewn-Curie_point-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Curie points	0	oewn-Curie_point-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Curie temperature	0	oewn-Curie_temperature-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
@@ -225,11 +227,12 @@ cubital joint	0	oewn-cubital_joint-n	Number=Sing	dema	0			oewn_form
 cubital joints	0	oewn-cubital_joint-n	Number=Plur	dema	0			rule
 cubital nerve	0	oewn-cubital_nerve-n	Number=Sing	dema	0			oewn_form
 cubital nerves	0	oewn-cubital_nerve-n	Number=Plur	dema	0			rule
+cubiti	0	oewn-cubitus-n	Number=Plur	dema	0			llm
 cubitiere	0	oewn-cubitiere-n	Number=Sing	dema	0			oewn_form
 cubitieres	0	oewn-cubitiere-n	Number=Plur	dema	0			rule
 cubits	0	oewn-cubit-n	Number=Plur	dema	0			rule
 cubitus	0	oewn-cubitus-n	Number=Sing	dema	0			oewn_form
-cubituses	0	oewn-cubitus-n	Number=Plur	dema	0			rule
+cubituses	0	oewn-cubitus-n	Number=Plur	dema	0			rule_variant
 cubla	0		Number=Sing	dema	0	cubla	n	moby_reverse
 cublas	0		Number=Plur	dema	0	cubla	n	rule
 cubmaster	0		Number=Sing	dema	0	cubmaster	n	moby_reverse
@@ -280,17 +283,17 @@ cuckoo's nests	0	oewn-cuckoo-ap-s_nest-n	Number=Plur	dema	0			rule
 cuckoo-bumblebee	0	oewn-cuckoo-bumblebee-n	Number=Sing	dema	0			oewn_form
 cuckoo-bumblebees	0	oewn-cuckoo-bumblebee-n	Number=Plur	dema	0			rule
 cuckooed	0		Number=Sing	dema	0	cuckooed	n	moby_reverse
-cuckooed	1	oewn-cuckoo-v	Tense=Past+VerbForm=Part	dema	0			rule
+cuckooed	1	oewn-cuckoo-v	Tense=Past+VerbForm=Part	dema	0			llm
 cuckooeds	0		Number=Plur	dema	0	cuckooed	n	rule
 cuckooflower	0	oewn-cuckooflower-n	Number=Sing	dema	0			oewn_form
 cuckooflowers	0	oewn-cuckooflower-n	Number=Plur	dema	0			rule
 cuckooing	0		Number=Sing	dema	0	cuckooing	n	moby_reverse
-cuckooing	1	oewn-cuckoo-v	VerbForm=Ger	dema	0			rule
+cuckooing	1	oewn-cuckoo-v	VerbForm=Ger	dema	0			llm
 cuckooings	0		Number=Plur	dema	0	cuckooing	n	rule
 cuckoopint	0	oewn-cuckoopint-n	Number=Sing	dema	0			oewn_form
 cuckoopints	0	oewn-cuckoopint-n	Number=Plur	dema	0			rule
 cuckoos	0	oewn-cuckoo-n	Number=Plur	dema	0			rule
-cuckoos	1	oewn-cuckoo-v	Person=3+Tense=Pres	dema	0			agid
+cuckoos	1	oewn-cuckoo-v	Person=3+Tense=Pres	dema	0			llm
 cuculiform	0		Degree=Pos	dema	0	cuculiform	a	moby_reverse
 cuculiform bird	0	oewn-cuculiform_bird-n	Number=Sing	dema	0			oewn_form
 cuculiform birds	0	oewn-cuculiform_bird-n	Number=Plur	dema	0			rule
@@ -319,8 +322,8 @@ cuddled	0	oewn-cuddle-v	Tense=Past+VerbForm=Part	dema	0			rule
 cuddles	0	oewn-cuddle-v	Person=3+Tense=Pres	dema	0			rule
 cuddles	1	oewn-cuddle-n	Number=Plur	dema	0			rule
 cuddlesome	0	oewn-cuddlesome-a	Degree=Pos	dema	0			oewn_form
-cuddlier	0	oewn-cuddly-a	Degree=Cmp	dema	0			rule
-cuddliest	0	oewn-cuddly-a	Degree=Sup	dema	0			rule
+cuddlier	0	oewn-cuddly-a	Degree=Cmp	dema	0			llm
+cuddliest	0	oewn-cuddly-a	Degree=Sup	dema	0			llm
 cuddling	0	oewn-cuddle-v	VerbForm=Ger	dema	0			rule
 cuddling	1	oewn-cuddling-n	Number=Sing	dema	0			oewn_form
 cuddlings	0	oewn-cuddling-n	Number=Plur	dema	0			rule
@@ -351,12 +354,12 @@ cue stick	0	oewn-cue_stick-n	Number=Sing	dema	0			oewn_form
 cue sticks	0	oewn-cue_stick-n	Number=Plur	dema	0			rule
 cueca	0		Number=Sing	dema	0	cueca	n	moby_reverse
 cuecas	0		Number=Plur	dema	0	cueca	n	rule
-cued	0	oewn-cue-v	Tense=Past+VerbForm=Part	dema	0			rule
-cueing	0	oewn-cue-v	VerbForm=Ger	dema	0			rule_variant
+cued	0	oewn-cue-v	Tense=Past+VerbForm=Part	dema	0			llm
+cueing	0	oewn-cue-v	VerbForm=Ger	dema	0			llm
 cueist	0		Number=Sing	dema	0	cueist	n	moby_reverse
 cueists	0		Number=Plur	dema	0	cueist	n	rule
 cues	0	oewn-cue-n	Number=Plur	dema	0			rule
-cues	1	oewn-cue-v	Person=3+Tense=Pres	dema	0			rule
+cues	1	oewn-cue-v	Person=3+Tense=Pres	dema	0			llm
 cuesta	0		Number=Sing	dema	0	cuesta	n	moby_reverse
 cuestas	0		Number=Plur	dema	0	cuesta	n	rule
 cuff	0	oewn-cuff-n	Number=Sing	dema	0			oewn_form
@@ -417,7 +420,7 @@ culinary arts	0	oewn-culinary_art-n	Number=Plur	dema	0			rule
 cull	0	oewn-cull-v	VerbForm=Inf	dema	0			oewn_form
 cull	1	oewn-cull-n	Number=Sing	dema	0			oewn_form
 cull out	0	oewn-cull_out-v	VerbForm=Inf	dema	0			oewn_form
-culled	0	oewn-cull-v	Tense=Past+VerbForm=Part	dema	0			rule
+culled	0	oewn-cull-v	Tense=Past+VerbForm=Part	dema	0			llm
 culled out	0	oewn-cull_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 cullender	0	oewn-cullender-n	Number=Sing	dema	0			oewn_form
 cullenders	0	oewn-cullender-n	Number=Plur	dema	0			rule
@@ -428,13 +431,13 @@ cullets	0		Number=Plur	dema	0	cullet	n	rule
 cullied	0		Number=Sing	dema	0	cullied	n	moby_reverse
 cullieds	0		Number=Plur	dema	0	cullied	n	rule
 cullies	0		Number=Plur	dema	0	cully	n	rule
-culling	0	oewn-cull-v	VerbForm=Ger	dema	0			rule
+culling	0	oewn-cull-v	VerbForm=Ger	dema	0			llm
 culling out	0	oewn-cull_out-v	VerbForm=Ger	dema	0			rule
 cullion	0		Number=Sing	dema	0	cullion	n	moby_reverse
 cullions	0		Number=Plur	dema	0	cullion	n	rule
 cullis	0	oewn-cullis-n	Number=Sing	dema	0			oewn_form
-cullises	0	oewn-cullis-n	Number=Plur	dema	0			rule
-culls	0	oewn-cull-v	Person=3+Tense=Pres	dema	0			rule
+cullises	0	oewn-cullis-n	Number=Plur	dema	0			llm
+culls	0	oewn-cull-v	Person=3+Tense=Pres	dema	0			llm
 culls	1	oewn-cull-n	Number=Plur	dema	0			rule
 culls out	0	oewn-cull_out-v	Person=3+Tense=Pres	dema	0			rule
 cully	0		Number=Sing	dema	0	cully	n	moby_reverse
@@ -683,9 +686,9 @@ cunjevois	0		Number=Plur	dema	0	cunjevoi	n	rule
 cunner	0	oewn-cunner-n	Number=Sing	dema	0			oewn_form
 cunners	0	oewn-cunner-n	Number=Plur	dema	0			rule
 cunnilinctus	0	oewn-cunnilinctus-n	Number=Sing	dema	0			oewn_form
-cunnilinctuses	0	oewn-cunnilinctus-n	Number=Plur	dema	0			rule
+cunnilinctuses	0	oewn-cunnilinctus-n	Number=Plur	dema	0			llm
 cunnilingus	0	oewn-cunnilingus-n	Number=Sing	dema	0			oewn_form
-cunnilinguses	0	oewn-cunnilingus-n	Number=Plur	dema	0			rule
+cunnilinguses	0	oewn-cunnilingus-n	Number=Plur	dema	0			llm
 cunning	0	oewn-cunning-a	Degree=Pos	dema	0			oewn_form
 cunning	1	oewn-cunning-n	Number=Sing	dema	0			oewn_form
 cunningly	0	oewn-cunningly-r	Degree=Pos	dema	0			oewn_form
@@ -730,7 +733,7 @@ cupels	0	oewn-cupel-n	Number=Plur	dema	0			rule
 cupflower	0	oewn-cupflower-n	Number=Sing	dema	0			oewn_form
 cupflowers	0	oewn-cupflower-n	Number=Plur	dema	0			rule
 cupful	0	oewn-cupful-n	Number=Sing	dema	0			oewn_form
-cupfuls	0	oewn-cupful-n	Number=Plur	dema	0			rule_variant
+cupfuls	0	oewn-cupful-n	Number=Plur	dema	0			llm
 cupholder	0		Number=Sing	dema	0	cupholder	n	moby_reverse
 cupholders	0		Number=Plur	dema	0	cupholder	n	rule
 cupid	0	oewn-cupid-n	Number=Sing	dema	0			oewn_form
@@ -816,14 +819,14 @@ curassow	0	oewn-curassow-n	Number=Sing	dema	0			oewn_form
 curassows	0	oewn-curassow-n	Number=Plur	dema	0			rule
 curate	0	oewn-curate-n	Number=Sing	dema	1			carried
 curate	1	dema-curate-v	VerbForm=Inf	dema	1			carried
-curated	0	dema-curate-v	Tense=Past+VerbForm=Part	dema	0			rule
+curated	0	dema-curate-v	Tense=Past+VerbForm=Part	dema	0			llm
 curates	0	oewn-curate-n	Number=Plur	dema	1			carried
 curates	1	dema-curate-v	Person=3+Tense=Pres	dema	1			carried
 curateship	0		Number=Sing	dema	0	curateship	n	moby_reverse
 curateships	0		Number=Plur	dema	0	curateship	n	rule
 curatic	0		Degree=Pos	dema	0	curatic	a	moby_reverse
 curatical	0		Degree=Pos	dema	0	curatical	a	moby_reverse
-curating	0	dema-curate-v	VerbForm=Ger	dema	0			rule
+curating	0	dema-curate-v	VerbForm=Ger	dema	0			llm
 curative	0	oewn-curative-a	Degree=Pos	dema	0			oewn_form
 curative	1	oewn-curative-n	Number=Sing	dema	0			oewn_form
 curatively	0		Degree=Pos	dema	0	curatively	r	moby_reverse
@@ -1168,9 +1171,9 @@ curtanas	0		Number=Plur	dema	0	curtana	n	rule
 curtate	0		Degree=Pos	dema	0	curtate	a	moby_reverse
 curtate cycloid	0	oewn-curtate_cycloid-n	Number=Sing	dema	0			oewn_form
 curtate cycloids	0	oewn-curtate_cycloid-n	Number=Plur	dema	0			rule
-curter	0	oewn-curt-a	Degree=Cmp	dema	0			rule
+curter	0	oewn-curt-a	Degree=Cmp	dema	0			llm
 curtesies	0		Number=Plur	dema	0	curtesy	n	rule
-curtest	0	oewn-curt-a	Degree=Sup	dema	0			rule
+curtest	0	oewn-curt-a	Degree=Sup	dema	0			llm
 curtesy	0		Number=Sing	dema	0	curtesy	n	moby_reverse
 curtilage	0	oewn-curtilage-n	Number=Sing	dema	0			oewn_form
 curtilages	0	oewn-curtilage-n	Number=Plur	dema	0			rule
@@ -1246,7 +1249,7 @@ curvy	0	oewn-curvy-a	Degree=Pos	dema	0			oewn_form
 curying	0		VerbForm=Inf	dema	0	curying	v	moby_reverse
 cus in	0	oewn-cu_in-n	Number=Plur	dema	0			rule
 cuscus	0	oewn-cuscus-n	Number=Sing	dema	0			oewn_form
-cuscuses	0	oewn-cuscus-n	Number=Plur	dema	0			rule
+cuscuses	0	oewn-cuscus-n	Number=Plur	dema	0			llm
 cusec	0		Number=Sing	dema	0	cusec	n	moby_reverse
 cusecs	0		Number=Plur	dema	0	cusec	n	rule
 cush-cush	0	oewn-cush-cush-n	Number=Sing	dema	0			oewn_form
@@ -1357,9 +1360,9 @@ customer agents	0	oewn-customer_agent-n	Number=Plur	dema	0			rule
 customer's broker	0	oewn-customer-ap-s_broker-n	Number=Sing	dema	0			oewn_form
 customer's brokers	0	oewn-customer-ap-s_broker-n	Number=Plur	dema	0			rule
 customer's man	0	oewn-customer-ap-s_man-n	Number=Sing	dema	0			oewn_form
-customer's mans	0	oewn-customer-ap-s_man-n	Number=Plur	dema	0			rule
+customer's men	0	oewn-customer-ap-s_man-n	Number=Plur	dema	0			rule
 customer's woman	0	oewn-customer-ap-s_woman-n	Number=Sing	dema	0			oewn_form
-customer's womans	0	oewn-customer-ap-s_woman-n	Number=Plur	dema	0			rule
+customer's women	0	oewn-customer-ap-s_woman-n	Number=Plur	dema	0			rule
 customers	0	oewn-customer-n	Number=Plur	dema	0			rule
 customhouse	0	oewn-customhouse-n	Number=Sing	dema	0			oewn_form
 customhouses	0	oewn-customhouse-n	Number=Plur	dema	0			rule
@@ -1462,7 +1465,7 @@ cutdowns	0		Number=Plur	dema	0	cutdown	n	rule
 cute	0	oewn-cute-a	Degree=Pos	dema	0			oewn_form
 cutely	0	oewn-cutely-r	Degree=Pos	dema	0			oewn_form
 cuteness	0	oewn-cuteness-n	Number=Sing	dema	0			oewn_form
-cutenesses	0	oewn-cuteness-n	Number=Plur	dema	0			rule
+cutenesses	0	oewn-cuteness-n	Number=Plur	dema	0			llm
 cuter	0	oewn-cute-a	Degree=Cmp	dema	1			hand
 cutes	0	oewn-cutis-n	Number=Plur	dema	0			oewn_form
 cutest	0	oewn-cute-a	Degree=Sup	dema	1			hand
@@ -1493,11 +1496,13 @@ cutins	0	oewn-cutin-n	Number=Plur	dema	0			rule
 cutis	0	oewn-cutis-n	Number=Sing	dema	0			oewn_form
 cutises	0	oewn-cutis-n	Number=Plur	dema	0			rule_variant
 cutlas	0	oewn-cutlas-n	Number=Sing	dema	0			oewn_form
-cutlases	0	oewn-cutlas-n	Number=Plur	dema	0			rule
+cutlases	0	oewn-cutlas-n	Number=Plur	dema	0			rule_variant
 cutlass	0	oewn-cutlass-n	Number=Sing	dema	0			oewn_form
 cutlasses	0	oewn-cutlass-n	Number=Plur	dema	0			rule
-cutlassfish	0	oewn-cutlassfish-n	Number=Plur	dema	0			agid
+cutlasses	1	oewn-cutlas-n	Number=Plur	dema	0			llm
+cutlassfish	0	oewn-cutlassfish-n	Number=Plur	dema	0			llm
 cutlassfish	1	oewn-cutlassfish-n	Number=Sing	dema	0			oewn_form
+cutlassfishes	0	oewn-cutlassfish-n	Number=Plur	dema	0			rule_variant
 cutleaved coneflower	0	oewn-cutleaved_coneflower-n	Number=Sing	dema	0			oewn_form
 cutleaved coneflowers	0	oewn-cutleaved_coneflower-n	Number=Plur	dema	0			rule
 cutler	0	oewn-cutler-n	Number=Sing	dema	0			oewn_form

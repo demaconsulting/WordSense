@@ -78,6 +78,7 @@ sections:
               - WordSense-WordData-FormGenerator-OwnEntries
               - WordSense-WordData-FormGenerator-Facts
               - WordSense-WordData-FormGenerator-Rules
+              - WordSense-WordData-FormGenerator-AuthoredForms
               - WordSense-WordData-FormAuditor-Interval
               - WordSense-WordData-FormAuditor-Gate
             tests:

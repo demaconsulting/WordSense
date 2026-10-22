@@ -336,7 +336,7 @@ quadric surfaces	0	oewn-quadric_surface-n	Number=Plur	dema	0			rule
 quadricentennial	0		Number=Sing	dema	0	quadricentennial	n	moby_reverse
 quadricentennial	1		Degree=Pos	dema	0	quadricentennial	a	moby_reverse
 quadricentennials	0		Number=Plur	dema	0	quadricentennial	n	rule
-quadriceps	0	oewn-quadriceps-n	Number=Plur	dema	0			rule_variant
+quadriceps	0	oewn-quadriceps-n	Number=Plur	dema	0			llm
 quadriceps	1	oewn-quadriceps-n	Number=Sing	dema	0			oewn_form
 quadriceps femoris	0	oewn-quadriceps_femoris-n	Number=Sing	dema	0			oewn_form
 quadricepses	0	oewn-quadriceps-n	Number=Plur	dema	0			rule_variant
@@ -362,10 +362,9 @@ quadrilaterals	0	oewn-quadrilateral-n	Number=Plur	dema	0			rule
 quadrilingual	0		Degree=Pos	dema	0	quadrilingual	a	moby_reverse
 quadrille	0	oewn-quadrille-n	Number=Sing	dema	0			oewn_form
 quadrilles	0	oewn-quadrille-n	Number=Plur	dema	0			rule
-quadrillion	0	oewn-quadrillion-n	Number=Plur	dema	0			agid
-quadrillion	1	oewn-quadrillion-n	Number=Sing	dema	0			oewn_form
-quadrillion	2	dema-quadrillion-d		dema	0			carried
-quadrillions	0	oewn-quadrillion-n	Number=Plur	dema	0			rule_variant
+quadrillion	0	oewn-quadrillion-n	Number=Sing	dema	0			oewn_form
+quadrillion	1	dema-quadrillion-d		dema	0			carried
+quadrillions	0	oewn-quadrillion-n	Number=Plur	dema	0			llm
 quadrillionth	0	oewn-quadrillionth-n	Number=Sing	dema	0			oewn_form
 quadrillionth	1	oewn-quadrillionth-a	Degree=Pos	dema	0			oewn_form
 quadrillionths	0	oewn-quadrillionth-n	Number=Plur	dema	0			rule
@@ -401,7 +400,7 @@ quadrivalencies	0		Number=Plur	dema	0	quadrivalency	n	rule
 quadrivalency	0		Number=Sing	dema	0	quadrivalency	n	moby_reverse
 quadrivalent	0		Degree=Pos	dema	0	quadrivalent	a	moby_reverse
 quadrivalently	0		Degree=Pos	dema	0	quadrivalently	r	moby_reverse
-quadrivia	0	oewn-quadrivium-n	Number=Plur	dema	0			agid
+quadrivia	0	oewn-quadrivium-n	Number=Plur	dema	0			llm
 quadrivial	0		Degree=Pos	dema	0	quadrivial	a	moby_reverse
 quadrivium	0	oewn-quadrivium-n	Number=Sing	dema	0			oewn_form
 quadroon	0	oewn-quadroon-n	Number=Sing	dema	0			oewn_form
@@ -454,13 +453,13 @@ quaestorship	0		Number=Sing	dema	0	quaestorship	n	moby_reverse
 quaestorships	0		Number=Plur	dema	0	quaestorship	n	rule
 quaff	0	oewn-quaff-v	VerbForm=Inf	dema	0			oewn_form
 quaff	1	oewn-quaff-n	Number=Sing	dema	0			oewn_form
-quaffed	0	oewn-quaff-v	Tense=Past+VerbForm=Part	dema	0			rule
+quaffed	0	oewn-quaff-v	Tense=Past+VerbForm=Part	dema	0			llm
 quaffer	0	oewn-quaffer-n	Number=Sing	dema	0			oewn_form
 quaffers	0	oewn-quaffer-n	Number=Plur	dema	0			rule
-quaffing	0	oewn-quaff-v	VerbForm=Ger	dema	0			rule
+quaffing	0	oewn-quaff-v	VerbForm=Ger	dema	0			llm
 quaffle	0	oewn-quaffle-n	Number=Sing	dema	0			oewn_form
 quaffles	0	oewn-quaffle-n	Number=Plur	dema	0			rule
-quaffs	0	oewn-quaff-v	Person=3+Tense=Pres	dema	0			rule
+quaffs	0	oewn-quaff-v	Person=3+Tense=Pres	dema	0			llm
 quaffs	1	oewn-quaff-n	Number=Plur	dema	0			rule
 quag	0	oewn-quag-n	Number=Sing	dema	0			oewn_form
 quagga	0	oewn-quagga-n	Number=Sing	dema	0			oewn_form
@@ -477,9 +476,8 @@ quahog	0	oewn-quahog-n	Number=Sing	dema	0			oewn_form
 quahogs	0	oewn-quahog-n	Number=Plur	dema	0			rule
 quaich	0		Number=Sing	dema	0	quaich	n	moby_reverse
 quaiches	0		Number=Plur	dema	0	quaich	n	rule
-quail	0	oewn-quail-n	Number=Plur	dema	0			agid
-quail	1	oewn-quail-n	Number=Sing	dema	0			oewn_form
-quail	2	oewn-quail-v	VerbForm=Inf	dema	0			oewn_form
+quail	0	oewn-quail-n	Number=Sing	dema	0			oewn_form
+quail	1	oewn-quail-v	VerbForm=Inf	dema	0			oewn_form
 quail at	0	oewn-quail_at-v	VerbForm=Inf	dema	0			oewn_form
 quail brush	0	oewn-quail_brush-n	Number=Sing	dema	0			oewn_form
 quail brushes	0	oewn-quail_brush-n	Number=Plur	dema	0			rule
@@ -490,12 +488,12 @@ quailed at	0	oewn-quail_at-v	Tense=Past+VerbForm=Part	dema	0			rule
 quailing	0	oewn-quail-v	VerbForm=Ger	dema	0			rule
 quailing at	0	oewn-quail_at-v	VerbForm=Ger	dema	0			rule
 quaillike	0		Degree=Pos	dema	0	quaillike	a	moby_reverse
-quails	0	oewn-quail-n	Number=Plur	dema	0			rule_variant
+quails	0	oewn-quail-n	Number=Plur	dema	0			rule
 quails	1	oewn-quail-v	Person=3+Tense=Pres	dema	0			rule
 quails at	0	oewn-quail_at-v	Person=3+Tense=Pres	dema	0			rule
 quaint	0	oewn-quaint-a	Degree=Pos	dema	0			oewn_form
-quainter	0	oewn-quaint-a	Degree=Cmp	dema	0			rule
-quaintest	0	oewn-quaint-a	Degree=Sup	dema	0			rule
+quainter	0	oewn-quaint-a	Degree=Cmp	dema	0			llm
+quaintest	0	oewn-quaint-a	Degree=Sup	dema	0			llm
 quaintly	0	oewn-quaintly-r	Degree=Pos	dema	0			oewn_form
 quaintness	0	oewn-quaintness-n	Number=Sing	dema	0			oewn_form
 quaintnesses	0	oewn-quaintness-n	Number=Plur	dema	0			rule
@@ -688,6 +686,7 @@ quarrying	0	oewn-quarrying-n	Number=Sing	dema	0			oewn_form
 quarrying	1	oewn-quarry-v	VerbForm=Ger	dema	0			rule
 quarryings	0	oewn-quarrying-n	Number=Plur	dema	0			rule
 quarryman	0	oewn-quarryman-n	Number=Sing	dema	0			oewn_form
+quarrymen	0	oewn-quarryman-n	Number=Plur	dema	0			llm
 quart	0	oewn-quart-n	Number=Sing	dema	0			oewn_form
 quartan	0	oewn-quartan-a	Degree=Pos	dema	0			oewn_form
 quartan	1	oewn-quartan-n	Number=Sing	dema	0			oewn_form
@@ -941,7 +940,7 @@ queendom	0		Number=Sing	dema	0	queendom	n	moby_reverse
 queendoms	0		Number=Plur	dema	0	queendom	n	rule
 queened	0	oewn-queen-v	Tense=Past+VerbForm=Part	dema	0			rule
 queened it over	0	oewn-queen_it_over-v	Tense=Past+VerbForm=Part	dema	0			rule
-queenfish	0	oewn-queenfish-n	Number=Plur	dema	0			agid
+queenfish	0	oewn-queenfish-n	Number=Plur	dema	0			llm
 queenfish	1	oewn-queenfish-n	Number=Sing	dema	0			oewn_form
 queenfishes	0	oewn-queenfish-n	Number=Plur	dema	0			rule_variant
 queenhood	0		Number=Sing	dema	0	queenhood	n	moby_reverse
@@ -973,8 +972,8 @@ queer birds	0	oewn-queer_bird-n	Number=Plur	dema	0			rule
 queer duck	0	oewn-queer_duck-n	Number=Sing	dema	0			oewn_form
 queer ducks	0	oewn-queer_duck-n	Number=Plur	dema	0			rule
 queered	0	oewn-queer-v	Tense=Past+VerbForm=Part	dema	0			rule
-queerer	0	oewn-queer-a	Degree=Cmp	dema	0			rule
-queerest	0	oewn-queer-a	Degree=Sup	dema	0			rule
+queerer	0	oewn-queer-a	Degree=Cmp	dema	0			llm
+queerest	0	oewn-queer-a	Degree=Sup	dema	0			llm
 queering	0	oewn-queer-v	VerbForm=Ger	dema	0			rule
 queerly	0	oewn-queerly-r	Degree=Pos	dema	0			oewn_form
 queerness	0	oewn-queerness-n	Number=Sing	dema	0			oewn_form
@@ -1047,7 +1046,6 @@ queryingly	0		Degree=Pos	dema	0	queryingly	r	moby_reverse
 ques	0		Number=Sing	dema	0	ques	n	moby_reverse
 quesadilla	0	oewn-quesadilla-n	Number=Sing	dema	0			oewn_form
 quesadillas	0	oewn-quesadilla-n	Number=Plur	dema	0			rule
-queses	0		Number=Plur	dema	0	ques	n	rule
 quest	0	oewn-quest-n	Number=Sing	dema	0			oewn_form
 quest	1	oewn-quest-v	VerbForm=Inf	dema	0			oewn_form
 quest after	0	oewn-quest_after-v	VerbForm=Inf	dema	0			oewn_form
@@ -1118,13 +1116,13 @@ quetzals	0	oewn-quetzal-n	Number=Plur	dema	0			rule
 queue	0	oewn-queue-n	Number=Sing	dema	0			oewn_form
 queue	1	oewn-queue-v	VerbForm=Inf	dema	0			oewn_form
 queue up	0	oewn-queue_up-v	VerbForm=Inf	dema	0			oewn_form
-queued	0	oewn-queue-v	Tense=Past+VerbForm=Part	dema	0			rule
+queued	0	oewn-queue-v	Tense=Past+VerbForm=Part	dema	0			llm
 queued up	0	oewn-queue_up-v	Tense=Past+VerbForm=Part	dema	0			rule
-queueing	0	oewn-queue-v	VerbForm=Ger	dema	0			rule_variant
+queueing	0	oewn-queue-v	VerbForm=Ger	dema	0			llm
 queuer	0		Number=Sing	dema	0	queuer	n	moby_reverse
 queuers	0		Number=Plur	dema	0	queuer	n	rule
 queues	0	oewn-queue-n	Number=Plur	dema	0			rule
-queues	1	oewn-queue-v	Person=3+Tense=Pres	dema	0			rule
+queues	1	oewn-queue-v	Person=3+Tense=Pres	dema	0			llm
 queues up	0	oewn-queue_up-v	Person=3+Tense=Pres	dema	0			rule
 queuing	0	oewn-queue-v	VerbForm=Ger	dema	0			rule_variant
 queuing up	0	oewn-queue_up-v	VerbForm=Ger	dema	0			rule
@@ -1193,11 +1191,11 @@ quickening	0	oewn-quicken-v	VerbForm=Ger	dema	0			rule
 quickening	1	oewn-quickening-n	Number=Sing	dema	0			oewn_form
 quickenings	0	oewn-quickening-n	Number=Plur	dema	0			rule
 quickens	0	oewn-quicken-v	Person=3+Tense=Pres	dema	0			rule
-quicker	0	oewn-quick-a	Degree=Cmp	dema	0			rule
-quicker	1	oewn-quick-r	Degree=Cmp	dema	0			rule
+quicker	0	oewn-quick-a	Degree=Cmp	dema	0			llm
+quicker	1	oewn-quick-r	Degree=Cmp	dema	0			llm
 quicker	2	oewn-quicker-r	Degree=Pos	dema	0			oewn_form
-quickest	0	oewn-quick-a	Degree=Sup	dema	0			rule
-quickest	1	oewn-quick-r	Degree=Sup	dema	0			rule
+quickest	0	oewn-quick-a	Degree=Sup	dema	0			llm
+quickest	1	oewn-quick-r	Degree=Sup	dema	0			llm
 quickest	2	oewn-quickest-r	Degree=Pos	dema	0			oewn_form
 quickhatch	0		Number=Sing	dema	0	quickhatch	n	moby_reverse
 quickhatches	0		Number=Plur	dema	0	quickhatch	n	rule
@@ -1208,7 +1206,7 @@ quicklime	0	oewn-quicklime-n	Number=Sing	dema	0			oewn_form
 quicklimes	0	oewn-quicklime-n	Number=Plur	dema	0			rule
 quickly	0	oewn-quickly-r	Degree=Pos	dema	0			oewn_form
 quickness	0	oewn-quickness-n	Number=Sing	dema	0			oewn_form
-quicknesses	0	oewn-quickness-n	Number=Plur	dema	0			rule
+quicknesses	0	oewn-quickness-n	Number=Plur	dema	0			llm
 quicks	0	oewn-quick-n	Number=Plur	dema	0			rule
 quicksand	0	oewn-quicksand-n	Number=Sing	dema	0			oewn_form
 quicksands	0	oewn-quicksand-n	Number=Plur	dema	0			rule
@@ -1231,7 +1229,7 @@ quickwittednesses	0		Number=Plur	dema	0	quickwittedness	n	rule
 quickwork	0		Number=Sing	dema	0	quickwork	n	moby_reverse
 quickworks	0		Number=Plur	dema	0	quickwork	n	rule
 quicky	0	oewn-quicky-n	Number=Sing	dema	0			oewn_form
-quid	0	oewn-quid-n	Number=Plur	dema	0			agid
+quid	0	oewn-quid-n	Number=Plur	dema	0			llm
 quid	1	oewn-quid-n	Number=Sing	dema	0			oewn_form
 quid pro quo	0	oewn-quid_pro_quo-n	Number=Sing	dema	0			oewn_form
 quid pro quos	0	oewn-quid_pro_quo-n	Number=Plur	dema	0			rule
@@ -1243,15 +1241,15 @@ quidnunc	0	oewn-quidnunc-n	Number=Sing	dema	0			oewn_form
 quidnuncs	0	oewn-quidnunc-n	Number=Plur	dema	0			rule
 quids	0	oewn-quid-n	Number=Plur	dema	0			rule_variant
 quiesce	0	oewn-quiesce-v	VerbForm=Inf	dema	0			oewn_form
-quiesced	0	oewn-quiesce-v	Tense=Past+VerbForm=Part	dema	0			rule
+quiesced	0	oewn-quiesce-v	Tense=Past+VerbForm=Part	dema	0			llm
 quiescence	0	oewn-quiescence-n	Number=Sing	dema	0			oewn_form
 quiescences	0	oewn-quiescence-n	Number=Plur	dema	0			rule
 quiescencies	0	oewn-quiescency-n	Number=Plur	dema	0			rule
 quiescency	0	oewn-quiescency-n	Number=Sing	dema	0			oewn_form
 quiescent	0	oewn-quiescent-a	Degree=Pos	dema	0			oewn_form
 quiescently	0		Degree=Pos	dema	0	quiescently	r	moby_reverse
-quiesces	0	oewn-quiesce-v	Person=3+Tense=Pres	dema	0			rule
-quiescing	0	oewn-quiesce-v	VerbForm=Ger	dema	0			rule
+quiesces	0	oewn-quiesce-v	Person=3+Tense=Pres	dema	0			llm
+quiescing	0	oewn-quiesce-v	VerbForm=Ger	dema	0			llm
 quiet	0	oewn-quiet-a	Degree=Pos	dema	0			oewn_form
 quiet	1	oewn-quiet-n	Number=Sing	dema	0			oewn_form
 quiet	2	oewn-quiet-v	VerbForm=Inf	dema	0			oewn_form
@@ -1265,10 +1263,10 @@ quietener	0		Number=Sing	dema	0	quietener	n	moby_reverse
 quieteners	0		Number=Plur	dema	0	quietener	n	rule
 quietening	0	oewn-quieten-v	VerbForm=Ger	dema	0			rule
 quietens	0	oewn-quieten-v	Person=3+Tense=Pres	dema	0			rule
-quieter	0	oewn-quiet-a	Degree=Cmp	dema	0			rule
+quieter	0	oewn-quiet-a	Degree=Cmp	dema	0			llm
 quieter	1		Number=Sing	dema	0	quieter	n	moby_reverse
 quieters	0		Number=Plur	dema	0	quieter	n	rule
-quietest	0	oewn-quiet-a	Degree=Sup	dema	0			rule
+quietest	0	oewn-quiet-a	Degree=Sup	dema	0			llm
 quieting	0	oewn-quiet-v	VerbForm=Ger	dema	0			rule
 quieting down	0	oewn-quiet_down-v	VerbForm=Ger	dema	0			rule
 quietism	0	oewn-quietism-n	Number=Sing	dema	0			oewn_form
@@ -1287,7 +1285,7 @@ quiets down	0	oewn-quiet_down-v	Person=3+Tense=Pres	dema	0			rule
 quietude	0	oewn-quietude-n	Number=Sing	dema	0			oewn_form
 quietudes	0	oewn-quietude-n	Number=Plur	dema	0			rule
 quietus	0	oewn-quietus-n	Number=Sing	dema	0			oewn_form
-quietuses	0	oewn-quietus-n	Number=Plur	dema	0			rule
+quietuses	0	oewn-quietus-n	Number=Plur	dema	0			llm
 quiff	0	oewn-quiff-n	Number=Sing	dema	0			oewn_form
 quiffs	0	oewn-quiff-n	Number=Plur	dema	0			rule
 quill	0	oewn-quill-n	Number=Sing	dema	0			oewn_form
@@ -1514,8 +1512,8 @@ quirk moldings	0	oewn-quirk_molding-n	Number=Plur	dema	0			rule
 quirk moulding	0	oewn-quirk_moulding-n	Number=Sing	dema	0			oewn_form
 quirk mouldings	0	oewn-quirk_moulding-n	Number=Plur	dema	0			rule
 quirked	0	oewn-quirk-v	Tense=Past+VerbForm=Part	dema	0			rule
-quirkier	0	oewn-quirky-a	Degree=Cmp	dema	0			rule
-quirkiest	0	oewn-quirky-a	Degree=Sup	dema	0			rule
+quirkier	0	oewn-quirky-a	Degree=Cmp	dema	0			llm
+quirkiest	0	oewn-quirky-a	Degree=Sup	dema	0			llm
 quirkily	0		Degree=Pos	dema	0	quirkily	r	moby_reverse
 quirkiness	0	oewn-quirkiness-n	Number=Sing	dema	0			oewn_form
 quirkinesses	0	oewn-quirkiness-n	Number=Plur	dema	0			rule

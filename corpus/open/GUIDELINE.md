@@ -11,10 +11,10 @@ labels (names are facts, not text); every definition, rule and example is our ow
 looking at any outside treebank's annotations:
 (1) disagreements between the two first-draft annotators on the first pilot draw (732 tokens), which produced version 2;
 (2) disagreements on the second pilot draw, tagged with version 2 by gpt-6.1-sol, compared with gemma4:26b (807 of 17,376 tokens, 4.64%) and with
-claude-sonnet-5.5 (112 tokens, 0.64%). gpt-6.1-sol helped analyze the second round (its rule proposal is kept in `archive/sol_rule_proposal.md`);
-the final wording was edited by the project. Section 4 is ordered by how often each kind of disagreement occurred (counts are the disagreements with gemma4:26b, see
-`guideline-derivation.md`). An earlier version 1, whose list was partly chosen from error categories seen in an exploratory test against a public treebank, is
-superseded and kept only for the record in `archive/`.
+claude-sonnet-5.5 (112 tokens, 0.64%). gpt-6.1-sol helped analyze the second round;
+the final wording was edited by the project. Section 4 is ordered by how often each kind of disagreement occurred (counts are the disagreements with gemma4:26b;
+`README.md` section 2 has the method). An earlier version 1, whose list was partly chosen from error categories seen in an exploratory test against a public treebank, is
+superseded and not kept.
 
 ## 1. Task
 

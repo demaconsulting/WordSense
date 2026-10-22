@@ -217,7 +217,7 @@ shackling	0	oewn-shackle-v	VerbForm=Ger	dema	0			rule
 shacks	0	oewn-shack-n	Number=Plur	dema	0			rule
 shacks	1	oewn-shack-v	Person=3+Tense=Pres	dema	0			rule
 shacks up	0	oewn-shack_up-v	Person=3+Tense=Pres	dema	0			rule
-shad	0	oewn-shad-n	Number=Plur	dema	0			agid
+shad	0	oewn-shad-n	Number=Plur	dema	0			llm
 shad	1	oewn-shad-n	Number=Sing	dema	0			oewn_form
 shad roe	0	oewn-shad_roe-n	Number=Sing	dema	0			oewn_form
 shad roes	0	oewn-shad_roe-n	Number=Plur	dema	0			rule
@@ -420,7 +420,7 @@ shakingly	0		Degree=Pos	dema	0	shakingly	r	moby_reverse
 shakings	0	oewn-shaking-n	Number=Plur	dema	0			rule
 shako	0	oewn-shako-n	Number=Sing	dema	0			oewn_form
 shakoes	0	oewn-shako-n	Number=Plur	dema	0			oewn_form
-shakos	0	oewn-shako-n	Number=Plur	dema	0			rule_variant
+shakos	0	oewn-shako-n	Number=Plur	dema	0			llm
 shakudo	0		Number=Sing	dema	0	shakudo	n	moby_reverse
 shakudos	0		Number=Plur	dema	0	shakudo	n	rule
 shaky	0	oewn-shaky-a	Degree=Pos	dema	0			oewn_form
@@ -451,8 +451,8 @@ shallow fordings	0	oewn-shallow_fording-n	Number=Plur	dema	0			rule
 shallow-draft	0	oewn-shallow-draft-a	Degree=Pos	dema	0			oewn_form
 shallow-draught	0	oewn-shallow-draught-a	Degree=Pos	dema	0			oewn_form
 shallowed	0	oewn-shallow-v	Tense=Past+VerbForm=Part	dema	0			rule
-shallower	0	oewn-shallow-a	Degree=Cmp	dema	0			rule
-shallowest	0	oewn-shallow-a	Degree=Sup	dema	0			rule
+shallower	0	oewn-shallow-a	Degree=Cmp	dema	0			llm
+shallowest	0	oewn-shallow-a	Degree=Sup	dema	0			llm
 shallowing	0	oewn-shallow-v	VerbForm=Ger	dema	0			rule
 shallowly	0	oewn-shallowly-r	Degree=Pos	dema	0			oewn_form
 shallowness	0	oewn-shallowness-n	Number=Sing	dema	0			oewn_form
@@ -548,11 +548,12 @@ shamoyed	0		VerbForm=Inf	dema	0	shamoyed	v	moby_reverse
 shamoying	0		VerbForm=Inf	dema	0	shamoying	v	moby_reverse
 shampoo	0	oewn-shampoo-n	Number=Sing	dema	0			oewn_form
 shampoo	1	oewn-shampoo-v	VerbForm=Inf	dema	0			oewn_form
-shampooed	0	oewn-shampoo-v	Tense=Past+VerbForm=Part	dema	0			rule
+shampooed	0	oewn-shampoo-v	Tense=Past+VerbForm=Part	dema	0			llm
 shampooer	0		Number=Sing	dema	0	shampooer	n	moby_reverse
 shampooers	0		Number=Plur	dema	0	shampooer	n	rule
-shampooing	0	oewn-shampoo-v	VerbForm=Ger	dema	0			rule
+shampooing	0	oewn-shampoo-v	VerbForm=Ger	dema	0			llm
 shampoos	0	oewn-shampoo-n	Number=Plur	dema	0			rule
+shampoos	1	oewn-shampoo-v	Person=3+Tense=Pres	dema	0			llm
 shamrock	0	oewn-shamrock-n	Number=Sing	dema	0			oewn_form
 shamrock pea	0	oewn-shamrock_pea-n	Number=Sing	dema	0			oewn_form
 shamrock peas	0	oewn-shamrock_pea-n	Number=Plur	dema	0			rule
@@ -562,7 +563,7 @@ shams	1	oewn-sham-v	Person=3+Tense=Pres	dema	0			rule
 shamshir	0		Number=Sing	dema	0	shamshir	n	moby_reverse
 shamshirs	0		Number=Plur	dema	0	shamshir	n	rule
 shamus	0	oewn-shamus-n	Number=Sing	dema	0			oewn_form
-shamuses	0	oewn-shamus-n	Number=Plur	dema	0			rule
+shamuses	0	oewn-shamus-n	Number=Plur	dema	0			llm
 shan't	0	dema-shall-x	Contraction=Yes	dema	0			contraction
 shandies	0	oewn-shandy-n	Number=Plur	dema	0			rule
 shandrydan	0		Number=Sing	dema	0	shandrydan	n	moby_reverse
@@ -743,9 +744,9 @@ sharpeners	0	oewn-sharpener-n	Number=Plur	dema	0			rule
 sharpening	0	oewn-sharpen-v	VerbForm=Ger	dema	0			rule
 sharpens	0	oewn-sharpen-v	Person=3+Tense=Pres	dema	0			rule
 sharper	0	oewn-sharper-n	Number=Sing	dema	0			oewn_form
-sharper	1	oewn-sharp-a	Degree=Cmp	dema	0			rule
+sharper	1	oewn-sharp-a	Degree=Cmp	dema	0			llm
 sharpers	0	oewn-sharper-n	Number=Plur	dema	0			rule
-sharpest	0	oewn-sharp-a	Degree=Sup	dema	0			rule
+sharpest	0	oewn-sharp-a	Degree=Sup	dema	0			llm
 sharpie	0	oewn-sharpie-n	Number=Sing	dema	0			oewn_form
 sharpies	0	oewn-sharpie-n	Number=Plur	dema	0			rule
 sharpies	1	oewn-sharpy-n	Number=Plur	dema	0			rule
@@ -941,7 +942,7 @@ shedding light on	0	oewn-shed_light_on-v	VerbForm=Ger	dema	0			rule
 sheddings	0	oewn-shedding-n	Number=Plur	dema	0			rule
 shedlike	0		Degree=Pos	dema	0	shedlike	a	moby_reverse
 sheds	0	oewn-shed-n	Number=Plur	dema	0			rule
-sheds	1	oewn-shed-v	Person=3+Tense=Pres	dema	0			rule
+sheds	1	oewn-shed-v	Person=3+Tense=Pres	dema	0			llm
 sheds blood	0	oewn-shed_blood-v	Person=3+Tense=Pres	dema	0			rule
 sheds light on	0	oewn-shed_light_on-v	Person=3+Tense=Pres	dema	0			rule
 sheefish	0		Number=Sing	dema	0	sheefish	n	moby_reverse
@@ -1013,11 +1014,11 @@ sheepherdings	0		Number=Plur	dema	0	sheepherding	n	rule
 sheepish	0	oewn-sheepish-a	Degree=Pos	dema	0			oewn_form
 sheepishly	0	oewn-sheepishly-r	Degree=Pos	dema	0			oewn_form
 sheepishness	0	oewn-sheepishness-n	Number=Sing	dema	0			oewn_form
-sheepishnesses	0	oewn-sheepishness-n	Number=Plur	dema	0			rule
+sheepishnesses	0	oewn-sheepishness-n	Number=Plur	dema	0			llm
 sheepless	0		Degree=Pos	dema	0	sheepless	a	moby_reverse
 sheeplike	0	oewn-sheeplike-a	Degree=Pos	dema	0			oewn_form
 sheepman	0	oewn-sheepman-n	Number=Sing	dema	0			oewn_form
-sheepmans	0	oewn-sheepman-n	Number=Plur	dema	0			rule
+sheepmen	0	oewn-sheepman-n	Number=Plur	dema	0			rule
 sheeprun	0	oewn-sheeprun-n	Number=Sing	dema	0			oewn_form
 sheepruns	0	oewn-sheeprun-n	Number=Plur	dema	0			rule
 sheepshank	0	oewn-sheepshank-n	Number=Sing	dema	0			oewn_form
@@ -1037,14 +1038,14 @@ sheepwalks	0	oewn-sheepwalk-n	Number=Plur	dema	0			rule
 sheepweed	0		Number=Sing	dema	0	sheepweed	n	moby_reverse
 sheepweeds	0		Number=Plur	dema	0	sheepweed	n	rule
 sheepwoman	0	oewn-sheepwoman-n	Number=Sing	dema	0			oewn_form
-sheepwomans	0	oewn-sheepwoman-n	Number=Plur	dema	0			rule
+sheepwomen	0	oewn-sheepwoman-n	Number=Plur	dema	0			rule
 sheer	0	oewn-sheer-a	Degree=Pos	dema	0			oewn_form
 sheer	1	oewn-sheer-r	Degree=Pos	dema	0			oewn_form
 sheer	2		Number=Sing	dema	0	sheer	n	moby_reverse
 sheer	3	oewn-sheer-v	VerbForm=Inf	dema	0			oewn_form
 sheered	0	oewn-sheer-v	Tense=Past+VerbForm=Part	dema	0			rule
-sheerer	0	oewn-sheer-a	Degree=Cmp	dema	0			rule
-sheerest	0	oewn-sheer-a	Degree=Sup	dema	0			rule
+sheerer	0	oewn-sheer-a	Degree=Cmp	dema	0			llm
+sheerest	0	oewn-sheer-a	Degree=Sup	dema	0			llm
 sheering	0	oewn-sheer-v	VerbForm=Ger	dema	0			rule
 sheerlegs	0		Number=Sing	dema	0	sheerlegs	n	moby_reverse
 sheers	0		Number=Plur	dema	0	sheer	n	moby_reverse
@@ -1237,8 +1238,8 @@ shelver	0	oewn-shelver-n	Number=Sing	dema	0			oewn_form
 shelvers	0	oewn-shelver-n	Number=Plur	dema	0			rule
 shelves	0	oewn-shelf-n	Number=Plur	dema	0			hand
 shelves	1	oewn-shelve-v	Person=3+Tense=Pres	dema	0			rule
-shelvier	0	oewn-shelvy-a	Degree=Cmp	dema	0			rule
-shelviest	0	oewn-shelvy-a	Degree=Sup	dema	0			rule
+shelvier	0	oewn-shelvy-a	Degree=Cmp	dema	0			llm
+shelviest	0	oewn-shelvy-a	Degree=Sup	dema	0			llm
 shelving	0	oewn-shelve-v	VerbForm=Ger	dema	0			rule
 shelving	1		Number=Sing	dema	0	shelving	n	moby_reverse
 shelvings	0		Number=Plur	dema	0	shelving	n	rule
@@ -1310,10 +1311,10 @@ sheverets	0		Number=Plur	dema	0	sheveret	n	rule
 shew	0	oewn-shew-v	VerbForm=Inf	dema	0			oewn_form
 shewbread	0		Number=Sing	dema	0	shewbread	n	moby_reverse
 shewbreads	0		Number=Plur	dema	0	shewbread	n	rule
-shewed	0	oewn-shew-v	Tense=Past+VerbForm=Part	dema	0			rule
-shewing	0	oewn-shew-v	VerbForm=Ger	dema	0			rule
+shewed	0	oewn-shew-v	Tense=Past+VerbForm=Part	dema	0			llm
+shewing	0	oewn-shew-v	VerbForm=Ger	dema	0			llm
 shewn	0	oewn-shew-v	VerbForm=Part	dema	0			oewn_form
-shews	0	oewn-shew-v	Person=3+Tense=Pres	dema	0			rule
+shews	0	oewn-shew-v	Person=3+Tense=Pres	dema	0			llm
 shh	0	dema-shh-i		dema	0			carried
 shiai	0		Number=Sing	dema	0	shiai	n	moby_reverse
 shiais	0		Number=Plur	dema	0	shiai	n	rule
@@ -1489,8 +1490,8 @@ shinglers	0	oewn-shingler-n	Number=Plur	dema	0			rule
 shingles	0	oewn-shingle-n	Number=Plur	dema	0			rule
 shingles	1	oewn-shingles-n	Number=Sing	dema	0			oewn_form
 shingles	2	oewn-shingle-v	Person=3+Tense=Pres	dema	0			rule
-shinglier	0	oewn-shingly-a	Degree=Cmp	dema	0			rule
-shingliest	0	oewn-shingly-a	Degree=Sup	dema	0			rule
+shinglier	0	oewn-shingly-a	Degree=Cmp	dema	0			llm
+shingliest	0	oewn-shingly-a	Degree=Sup	dema	0			llm
 shingling	0	oewn-shingle-v	VerbForm=Ger	dema	0			rule
 shingling	1	oewn-shingling-n	Number=Sing	dema	0			oewn_form
 shinglings	0	oewn-shingling-n	Number=Plur	dema	0			rule
@@ -1609,13 +1610,12 @@ shiplessly	0		Degree=Pos	dema	0	shiplessly	r	moby_reverse
 shipload	0	oewn-shipload-n	Number=Sing	dema	0			oewn_form
 shiploads	0	oewn-shipload-n	Number=Plur	dema	0			rule
 shipman	0		Number=Sing	dema	0	shipman	n	moby_reverse
-shipmans	0		Number=Plur	dema	0	shipman	n	rule
 shipmaster	0		Number=Sing	dema	0	shipmaster	n	moby_reverse
 shipmasters	0		Number=Plur	dema	0	shipmaster	n	rule
 shipmate	0	oewn-shipmate-n	Number=Sing	dema	0			oewn_form
 shipmates	0	oewn-shipmate-n	Number=Plur	dema	0			rule
-shipmen	0		Number=Sing	dema	0	shipmen	n	moby_reverse
-shipmens	0		Number=Plur	dema	0	shipmen	n	rule
+shipmen	0		Number=Plur	dema	0	shipman	n	rule
+shipmen	1		Number=Sing	dema	0	shipmen	n	moby_reverse
 shipment	0	oewn-shipment-n	Number=Sing	dema	0			oewn_form
 shipments	0	oewn-shipment-n	Number=Plur	dema	0			rule
 shipowner	0	oewn-shipowner-n	Number=Sing	dema	0			oewn_form
@@ -1680,13 +1680,13 @@ shire towns	0	oewn-shire_town-n	Number=Plur	dema	0			rule
 shires	0	oewn-shire-n	Number=Plur	dema	0			rule
 shirk	0	oewn-shirk-v	VerbForm=Inf	dema	0			oewn_form
 shirk	1		Number=Sing	dema	0	shirk	n	moby_reverse
-shirked	0	oewn-shirk-v	Tense=Past+VerbForm=Part	dema	0			rule
+shirked	0	oewn-shirk-v	Tense=Past+VerbForm=Part	dema	0			llm
 shirker	0	oewn-shirker-n	Number=Sing	dema	0			oewn_form
 shirkers	0	oewn-shirker-n	Number=Plur	dema	0			rule
-shirking	0	oewn-shirk-v	VerbForm=Ger	dema	0			rule
+shirking	0	oewn-shirk-v	VerbForm=Ger	dema	0			llm
 shirking	1	oewn-shirking-n	Number=Sing	dema	0			oewn_form
 shirkings	0	oewn-shirking-n	Number=Plur	dema	0			rule
-shirks	0	oewn-shirk-v	Person=3+Tense=Pres	dema	0			rule
+shirks	0	oewn-shirk-v	Person=3+Tense=Pres	dema	0			llm
 shirr	0	oewn-shirr-v	VerbForm=Inf	dema	0			oewn_form
 shirr	1		Number=Sing	dema	0	shirr	n	moby_reverse
 shirred	0	oewn-shirr-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -1756,12 +1756,12 @@ shitstorms	0	oewn-shitstorm-n	Number=Plur	dema	0			rule
 shittah	0	oewn-shittah-n	Number=Sing	dema	0			oewn_form
 shittah tree	0	oewn-shittah_tree-n	Number=Sing	dema	0			oewn_form
 shittah trees	0	oewn-shittah_tree-n	Number=Plur	dema	0			rule
-shittahs	0	oewn-shittah-n	Number=Plur	dema	0			rule_variant
+shittahs	0	oewn-shittah-n	Number=Plur	dema	0			llm
 shitted	0	oewn-shit-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 shitter	0	oewn-shitter-n	Number=Sing	dema	0			oewn_form
 shitters	0	oewn-shitter-n	Number=Plur	dema	0			rule
-shittier	0	oewn-shitty-a	Degree=Cmp	dema	0			rule
-shittiest	0	oewn-shitty-a	Degree=Sup	dema	0			rule
+shittier	0	oewn-shitty-a	Degree=Cmp	dema	0			llm
+shittiest	0	oewn-shitty-a	Degree=Sup	dema	0			llm
 shittim	0	oewn-shittah-n	Number=Plur	dema	0			oewn_form
 shittim	1	oewn-shittim-n	Number=Sing	dema	0			oewn_form
 shittims	0	oewn-shittim-n	Number=Plur	dema	0			rule
@@ -1832,7 +1832,7 @@ shmoosing	0	oewn-shmoose-v	VerbForm=Ger	dema	0			rule
 shmooze	0	oewn-shmooze-n	Number=Sing	dema	0			oewn_form
 shmooze	1	oewn-shmooze-v	VerbForm=Inf	dema	0			oewn_form
 shmoozed	0	oewn-shmooze-v	Tense=Past+VerbForm=Part	dema	0			rule
-shmoozes	0	oewn-shmooze-n	Number=Plur	dema	0			rule
+shmoozes	0	oewn-shmooze-n	Number=Plur	dema	0			llm
 shmoozes	1	oewn-shmooze-v	Person=3+Tense=Pres	dema	0			rule
 shmoozing	0	oewn-shmooze-v	VerbForm=Ger	dema	0			rule
 shmuck	0	oewn-shmuck-n	Number=Sing	dema	0			oewn_form
@@ -1853,8 +1853,8 @@ shoal	0	oewn-shoal-n	Number=Sing	dema	0			oewn_form
 shoal	1	oewn-shoal-v	VerbForm=Inf	dema	0			oewn_form
 shoal	2		Degree=Pos	dema	0	shoal	a	moby_reverse
 shoaled	0	oewn-shoal-v	Tense=Past+VerbForm=Part	dema	0			rule
-shoalier	0	oewn-shoaly-a	Degree=Cmp	dema	0			rule
-shoaliest	0	oewn-shoaly-a	Degree=Sup	dema	0			rule
+shoalier	0	oewn-shoaly-a	Degree=Cmp	dema	0			llm
+shoaliest	0	oewn-shoaly-a	Degree=Sup	dema	0			llm
 shoaling	0	oewn-shoal-v	VerbForm=Ger	dema	0			rule
 shoals	0	oewn-shoal-n	Number=Plur	dema	0			rule
 shoals	1	oewn-shoal-v	Person=3+Tense=Pres	dema	0			rule
@@ -1970,7 +1970,7 @@ shoemaking	0	oewn-shoemaking-n	Number=Sing	dema	0			oewn_form
 shoemakings	0	oewn-shoemaking-n	Number=Plur	dema	0			rule
 shoer	0		Number=Sing	dema	0	shoer	n	moby_reverse
 shoers	0		Number=Plur	dema	0	shoer	n	rule
-shoes	0	oewn-shoe-n	Number=Plur	dema	0			rule_variant
+shoes	0	oewn-shoe-n	Number=Plur	dema	0			llm
 shoes	1	oewn-shoes-n	Number=Sing	dema	0			oewn_form
 shoes	2	oewn-shoe-v	Person=3+Tense=Pres	dema	0			rule
 shoeshine	0	oewn-shoeshine-n	Number=Sing	dema	0			oewn_form
@@ -1989,7 +1989,9 @@ shoetreeing	0	oewn-shoetree-v	VerbForm=Ger	dema	0			rule
 shoetrees	0	oewn-shoetree-n	Number=Plur	dema	0			rule
 shoetrees	1	oewn-shoetree-v	Person=3+Tense=Pres	dema	0			rule
 shofar	0	oewn-shofar-n	Number=Sing	dema	0			oewn_form
-shofars	0	oewn-shofar-n	Number=Plur	dema	0			rule_variant
+shofarot	0	oewn-shofar-n	Number=Plur	dema	0			rule_variant
+shofaroth	0	oewn-shofar-n	Number=Plur	dema	0			rule_variant
+shofars	0	oewn-shofar-n	Number=Plur	dema	0			llm
 shoffroth	0		Number=Sing	dema	0	shoffroth	n	moby_reverse
 shoffroths	0		Number=Plur	dema	0	shoffroth	n	rule
 shofroth	0	oewn-shofar-n	Number=Plur	dema	0			oewn_form
@@ -2023,7 +2025,7 @@ shoo fly	0	oewn-shoo_fly-n	Number=Sing	dema	0			oewn_form
 shoo off	0	oewn-shoo_off-v	VerbForm=Inf	dema	0			oewn_form
 shoo-in	0	oewn-shoo-in-n	Number=Sing	dema	0			oewn_form
 shoo-ins	0	oewn-shoo-in-n	Number=Plur	dema	0			rule
-shooed	0	oewn-shoo-v	Tense=Past+VerbForm=Part	dema	0			rule
+shooed	0	oewn-shoo-v	Tense=Past+VerbForm=Part	dema	0			llm
 shooed away	0	oewn-shoo_away-v	Tense=Past+VerbForm=Part	dema	0			rule
 shooed off	0	oewn-shoo_off-v	Tense=Past+VerbForm=Part	dema	0			rule
 shooes away	0	oewn-shoo_away-v	Person=3+Tense=Pres	dema	0			rule
@@ -2037,7 +2039,7 @@ shoogle	1		Number=Sing	dema	0	shoogle	n	moby_reverse
 shoogled	0		Tense=Past+VerbForm=Part	dema	0	shoogle	v	rule
 shoogles	0		Person=3+Tense=Pres	dema	0	shoogle	v	rule
 shoogling	0		VerbForm=Ger	dema	0	shoogle	v	rule
-shooing	0	oewn-shoo-v	VerbForm=Ger	dema	0			rule
+shooing	0	oewn-shoo-v	VerbForm=Ger	dema	0			llm
 shooing away	0	oewn-shoo_away-v	VerbForm=Ger	dema	0			rule
 shooing off	0	oewn-shoo_off-v	VerbForm=Ger	dema	0			rule
 shook	0	oewn-shake-v	Tense=Past	dema	1			carried
@@ -2045,7 +2047,8 @@ shook	1	oewn-shook-n	Number=Sing	dema	0			carried
 shooks	0	oewn-shook-n	Number=Plur	dema	0			rule
 shool	0		Number=Sing	dema	0	shool	n	moby_reverse
 shools	0		Number=Plur	dema	0	shool	n	rule
-shoon	0	oewn-shoe-n	Number=Plur	dema	0			rule_variant
+shoon	0		Number=Sing	dema	0	shoon	n	moby_reverse
+shoos	0	oewn-shoo-v	Person=3+Tense=Pres	dema	0			llm
 shoot	0	oewn-shoot-v	VerbForm=Inf	dema	0			oewn_form
 shoot	1	oewn-shoot-n	Number=Sing	dema	0			oewn_form
 shoot	2	dema-shoot-i		dema	0			carried
@@ -2062,7 +2065,7 @@ shoot-down	0	oewn-shoot-down-n	Number=Sing	dema	0			oewn_form
 shoot-downs	0	oewn-shoot-down-n	Number=Plur	dema	0			rule
 shooter	0	oewn-shooter-n	Number=Sing	dema	0			oewn_form
 shooters	0	oewn-shooter-n	Number=Plur	dema	0			rule
-shooting	0	oewn-shoot-v	VerbForm=Ger	dema	0			rule
+shooting	0	oewn-shoot-v	VerbForm=Ger	dema	0			llm
 shooting	1	oewn-shooting-n	Number=Sing	dema	0			oewn_form
 shooting a line	0	oewn-shoot_a_line-v	VerbForm=Ger	dema	0			rule
 shooting box	0	oewn-shooting_box-n	Number=Sing	dema	0			oewn_form
@@ -2094,7 +2097,7 @@ shooting up	0	oewn-shoot_up-v	VerbForm=Ger	dema	0			rule
 shootings	0	oewn-shooting-n	Number=Plur	dema	0			rule
 shootout	0	oewn-shootout-n	Number=Sing	dema	0			oewn_form
 shootouts	0	oewn-shootout-n	Number=Plur	dema	0			rule
-shoots	0	oewn-shoot-v	Person=3+Tense=Pres	dema	0			rule
+shoots	0	oewn-shoot-v	Person=3+Tense=Pres	dema	0			llm
 shoots	1	oewn-shoot-n	Number=Plur	dema	0			rule
 shoots a line	0	oewn-shoot_a_line-v	Person=3+Tense=Pres	dema	0			rule
 shoots craps	0	oewn-shoot_craps-v	Person=3+Tense=Pres	dema	0			rule
@@ -2137,7 +2140,7 @@ shopfuls	0		Number=Plur	dema	0	shopful	n	rule
 shopgirl	0		Number=Sing	dema	0	shopgirl	n	moby_reverse
 shopgirls	0		Number=Plur	dema	0	shopgirl	n	rule
 shophar	0	oewn-shophar-n	Number=Sing	dema	0			oewn_form
-shophars	0	oewn-shophar-n	Number=Plur	dema	0			rule_variant
+shophars	0	oewn-shophar-n	Number=Plur	dema	0			llm
 shophroth	0	oewn-shophar-n	Number=Plur	dema	0			oewn_form
 shopkeeper	0	oewn-shopkeeper-n	Number=Sing	dema	0			oewn_form
 shopkeepers	0	oewn-shopkeeper-n	Number=Plur	dema	0			rule
@@ -2150,9 +2153,8 @@ shoplifting	1	oewn-shoplift-v	VerbForm=Ger	dema	0			rule
 shopliftings	0	oewn-shoplifting-n	Number=Plur	dema	0			rule
 shoplifts	0	oewn-shoplift-v	Person=3+Tense=Pres	dema	0			rule
 shopman	0		Number=Sing	dema	0	shopman	n	moby_reverse
-shopmans	0		Number=Plur	dema	0	shopman	n	rule
-shopmen	0		Number=Sing	dema	0	shopmen	n	moby_reverse
-shopmens	0		Number=Plur	dema	0	shopmen	n	rule
+shopmen	0		Number=Plur	dema	0	shopman	n	rule
+shopmen	1		Number=Sing	dema	0	shopmen	n	moby_reverse
 shopped	0		Number=Sing	dema	0	shopped	n	moby_reverse
 shopped	1	oewn-shop-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 shopped at	0	oewn-shop_at-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -2189,9 +2191,8 @@ shopwalkers	0	oewn-shopwalker-n	Number=Plur	dema	0			rule
 shopwindow	0	oewn-shopwindow-n	Number=Sing	dema	0			oewn_form
 shopwindows	0	oewn-shopwindow-n	Number=Plur	dema	0			rule
 shopwoman	0		Number=Sing	dema	0	shopwoman	n	moby_reverse
-shopwomans	0		Number=Plur	dema	0	shopwoman	n	rule
-shopwomen	0		Number=Sing	dema	0	shopwomen	n	moby_reverse
-shopwomens	0		Number=Plur	dema	0	shopwomen	n	rule
+shopwomen	0		Number=Plur	dema	0	shopwoman	n	rule
+shopwomen	1		Number=Sing	dema	0	shopwomen	n	moby_reverse
 shopworn	0	oewn-shopworn-a	Degree=Pos	dema	0			oewn_form
 shoran	0		Number=Sing	dema	0	shoran	n	moby_reverse
 shorans	0		Number=Plur	dema	0	shoran	n	rule
@@ -2377,8 +2378,8 @@ shortening	0	oewn-shortening-n	Number=Sing	dema	0			oewn_form
 shortening	1	oewn-shorten-v	VerbForm=Ger	dema	0			rule
 shortenings	0	oewn-shortening-n	Number=Plur	dema	0			rule
 shortens	0	oewn-shorten-v	Person=3+Tense=Pres	dema	0			rule
-shorter	0	oewn-short-a	Degree=Cmp	dema	0			rule
-shortest	0	oewn-short-a	Degree=Sup	dema	0			rule
+shorter	0	oewn-short-a	Degree=Cmp	dema	0			llm
+shortest	0	oewn-short-a	Degree=Sup	dema	0			llm
 shortfall	0	oewn-shortfall-n	Number=Sing	dema	0			oewn_form
 shortfalls	0	oewn-shortfall-n	Number=Plur	dema	0			rule
 shortfin mako	0	oewn-shortfin_mako-n	Number=Sing	dema	0			oewn_form
@@ -2436,9 +2437,8 @@ shortwaves	0		Number=Plur	dema	0	shortwave	n	rule
 shorty	0		Number=Sing	dema	0	shorty	n	moby_reverse
 shorty	1		Degree=Pos	dema	0	shorty	a	moby_reverse
 shot	0	oewn-shoot-v	Tense=Past+VerbForm=Part	dema	0			hand
-shot	1	oewn-shot-n	Number=Plur	dema	0			agid
-shot	2	oewn-shot-n	Number=Sing	dema	0			oewn_form
-shot	3	oewn-shot-a	Degree=Pos	dema	0			oewn_form
+shot	1	oewn-shot-n	Number=Sing	dema	0			oewn_form
+shot	2	oewn-shot-a	Degree=Pos	dema	0			oewn_form
 shot glass	0	oewn-shot_glass-n	Number=Sing	dema	0			oewn_form
 shot glasses	0	oewn-shot_glass-n	Number=Plur	dema	0			rule
 shot hole	0	oewn-shot_hole-n	Number=Sing	dema	0			oewn_form
@@ -2465,7 +2465,7 @@ shotgun shells	0	oewn-shotgun_shell-n	Number=Plur	dema	0			rule
 shotgunned	0		Tense=Past+VerbForm=Part	dema	0	shotgun	v	moby_reverse
 shotgunning	0		VerbForm=Ger	dema	0	shotgun	v	moby_reverse
 shotguns	0	oewn-shotgun-n	Number=Plur	dema	0			rule
-shots	0	oewn-shot-n	Number=Plur	dema	0			rule_variant
+shots	0	oewn-shot-n	Number=Plur	dema	0			rule
 shott	0		Number=Sing	dema	0	shott	n	moby_reverse
 shotten	0		Degree=Pos	dema	0	shotten	a	moby_reverse
 shotting	0		Number=Sing	dema	0	shotting	n	moby_reverse
@@ -2687,7 +2687,8 @@ showiness	0	oewn-showiness-n	Number=Sing	dema	0			oewn_form
 showinesses	0	oewn-showiness-n	Number=Plur	dema	0			rule
 showing	0	oewn-show-v	VerbForm=Ger	dema	1			carried
 showing	1	oewn-show-n	Number=Sing+VerbForm=Ger	dema	1			carried
-showing	2	oewn-showing-n	Number=Sing	dema	0			oewn_form
+showing	2	oewn-shew-v	VerbForm=Ger	dema	0			rule_variant
+showing	3	oewn-showing-n	Number=Sing	dema	0			oewn_form
 showing off	0	oewn-show_off-v	VerbForm=Ger	dema	0			rule
 showing the door	0	oewn-show_the_door-v	VerbForm=Ger	dema	0			rule
 showing up	0	oewn-show_up-v	VerbForm=Ger	dema	0			rule
@@ -2698,7 +2699,9 @@ showman	0	oewn-showman-n	Number=Sing	dema	0			oewn_form
 showmanly	0		Degree=Pos	dema	0	showmanly	r	moby_reverse
 showmanship	0	oewn-showmanship-n	Number=Sing	dema	0			oewn_form
 showmanships	0	oewn-showmanship-n	Number=Plur	dema	0			rule
+showmen	0	oewn-showman-n	Number=Plur	dema	0			llm
 shown	0	oewn-show-v	VerbForm=Part	dema	0			hand
+shown	1	oewn-shew-v	VerbForm=Part	dema	0			rule_variant
 showoffishness	0		Number=Sing	dema	0	showoffishness	n	moby_reverse
 showperson	0	oewn-showperson-n	Number=Sing	dema	0			oewn_form
 showpersons	0	oewn-showperson-n	Number=Plur	dema	0			rule
@@ -2718,7 +2721,7 @@ showstoppers	0	oewn-showstopper-n	Number=Plur	dema	0			rule
 showtime	0	oewn-showtime-n	Number=Sing	dema	0			oewn_form
 showtimes	0	oewn-showtime-n	Number=Plur	dema	0			rule
 showwoman	0	oewn-showwoman-n	Number=Sing	dema	0			oewn_form
-showwomans	0	oewn-showwoman-n	Number=Plur	dema	0			rule
+showwomen	0	oewn-showwoman-n	Number=Plur	dema	0			rule
 showy	0	oewn-showy-a	Degree=Pos	dema	0			oewn_form
 showy daisies	0	oewn-showy_daisy-n	Number=Plur	dema	0			rule
 showy daisy	0	oewn-showy_daisy-n	Number=Sing	dema	0			oewn_form
@@ -2760,8 +2763,8 @@ shrew mole	0	oewn-shrew_mole-n	Number=Sing	dema	0			oewn_form
 shrew moles	0	oewn-shrew_mole-n	Number=Plur	dema	0			rule
 shrew-sized	0	oewn-shrew-sized-a	Degree=Pos	dema	0			oewn_form
 shrewd	0	oewn-shrewd-a	Degree=Pos	dema	0			oewn_form
-shrewder	0	oewn-shrewd-a	Degree=Cmp	dema	0			rule
-shrewdest	0	oewn-shrewd-a	Degree=Sup	dema	0			rule
+shrewder	0	oewn-shrewd-a	Degree=Cmp	dema	0			llm
+shrewdest	0	oewn-shrewd-a	Degree=Sup	dema	0			llm
 shrewdie	0		Number=Sing	dema	0	shrewdie	n	moby_reverse
 shrewdies	0		Number=Plur	dema	0	shrewdie	n	rule
 shrewdly	0	oewn-shrewdly-r	Degree=Pos	dema	0			oewn_form
@@ -2804,18 +2807,17 @@ shrikes	0	oewn-shrike-n	Number=Plur	dema	0			rule
 shrill	0	oewn-shrill-a	Degree=Pos	dema	0			oewn_form
 shrill	1	oewn-shrill-v	VerbForm=Inf	dema	0			oewn_form
 shrilled	0	oewn-shrill-v	Tense=Past+VerbForm=Part	dema	0			rule
-shriller	0	oewn-shrill-a	Degree=Cmp	dema	0			rule
-shrillest	0	oewn-shrill-a	Degree=Sup	dema	0			rule
+shriller	0	oewn-shrill-a	Degree=Cmp	dema	0			llm
+shrillest	0	oewn-shrill-a	Degree=Sup	dema	0			llm
 shrilling	0	oewn-shrill-v	VerbForm=Ger	dema	0			rule
 shrilling	1	oewn-shrilling-n	Number=Sing	dema	0			oewn_form
 shrillings	0	oewn-shrilling-n	Number=Plur	dema	0			rule
 shrillness	0	oewn-shrillness-n	Number=Sing	dema	0			oewn_form
-shrillnesses	0	oewn-shrillness-n	Number=Plur	dema	0			rule
+shrillnesses	0	oewn-shrillness-n	Number=Plur	dema	0			llm
 shrills	0	oewn-shrill-v	Person=3+Tense=Pres	dema	0			rule
 shrilly	0	oewn-shrilly-r	Degree=Pos	dema	0			oewn_form
-shrimp	0	oewn-shrimp-n	Number=Plur	dema	0			agid
-shrimp	1	oewn-shrimp-n	Number=Sing	dema	0			oewn_form
-shrimp	2	oewn-shrimp-v	VerbForm=Inf	dema	0			oewn_form
+shrimp	0	oewn-shrimp-n	Number=Sing	dema	0			oewn_form
+shrimp	1	oewn-shrimp-v	VerbForm=Inf	dema	0			oewn_form
 shrimp Newburg	0	oewn-shrimp_Newburg-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 shrimp Newburgs	0	oewn-shrimp_Newburg-n	Capitalization=Exact+Number=Plur	dema	0			rule
 shrimp butter	0	oewn-shrimp_butter-n	Number=Sing	dema	0			oewn_form
@@ -2831,11 +2833,11 @@ shrimper	0	oewn-shrimper-n	Number=Sing	dema	0			oewn_form
 shrimpers	0	oewn-shrimper-n	Number=Plur	dema	0			rule
 shrimpfish	0	oewn-shrimpfish-n	Number=Sing	dema	0			oewn_form
 shrimpfishes	0	oewn-shrimpfish-n	Number=Plur	dema	0			rule
-shrimpier	0	oewn-shrimpy-a	Degree=Cmp	dema	0			rule
-shrimpiest	0	oewn-shrimpy-a	Degree=Sup	dema	0			rule
+shrimpier	0	oewn-shrimpy-a	Degree=Cmp	dema	0			llm
+shrimpiest	0	oewn-shrimpy-a	Degree=Sup	dema	0			llm
 shrimping	0	oewn-shrimp-v	VerbForm=Ger	dema	0			rule
 shrimplike	0		Degree=Pos	dema	0	shrimplike	a	moby_reverse
-shrimps	0	oewn-shrimp-n	Number=Plur	dema	0			rule_variant
+shrimps	0	oewn-shrimp-n	Number=Plur	dema	0			rule
 shrimps	1	oewn-shrimp-v	Person=3+Tense=Pres	dema	0			rule
 shrimpy	0	oewn-shrimpy-a	Degree=Pos	dema	0			oewn_form
 shrine	0	oewn-shrine-n	Number=Sing	dema	0			oewn_form
@@ -2872,28 +2874,26 @@ shrinks	1	oewn-shrink-n	Number=Plur	dema	0			rule
 shrinks back	0	oewn-shrink_back-v	Person=3+Tense=Pres	dema	0			rule
 shrinks from	0	oewn-shrink_from-v	Person=3+Tense=Pres	dema	0			rule
 shrinkwrap	0	oewn-shrinkwrap-v	VerbForm=Inf	dema	0			oewn_form
-shrinkwraped	0	oewn-shrinkwrap-v	Tense=Past+VerbForm=Part	dema	0			rule
-shrinkwraping	0	oewn-shrinkwrap-v	VerbForm=Ger	dema	0			rule
-shrinkwrapped	0	oewn-shrinkwrap-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
-shrinkwrapping	0	oewn-shrinkwrap-v	VerbForm=Ger	dema	0			rule_variant
-shrinkwraps	0	oewn-shrinkwrap-v	Person=3+Tense=Pres	dema	0			rule
+shrinkwrapped	0	oewn-shrinkwrap-v	Tense=Past+VerbForm=Part	dema	0			llm
+shrinkwrapping	0	oewn-shrinkwrap-v	VerbForm=Ger	dema	0			llm
+shrinkwraps	0	oewn-shrinkwrap-v	Person=3+Tense=Pres	dema	0			llm
 shrive	0	oewn-shrive-v	VerbForm=Inf	dema	0			oewn_form
 shrived	0	oewn-shrive-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 shrivel	0	oewn-shrivel-v	VerbForm=Inf	dema	0			oewn_form
 shrivel up	0	oewn-shrivel_up-v	VerbForm=Inf	dema	0			oewn_form
-shriveled	0	oewn-shrivel-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+shriveled	0	oewn-shrivel-v	Tense=Past+VerbForm=Part	dema	0			llm
 shriveled	1	oewn-shriveled-a	Degree=Pos	dema	0			oewn_form
 shriveled up	0	oewn-shrivel_up-v	Tense=Past+VerbForm=Part	dema	0			rule
-shriveling	0	oewn-shrivel-v	VerbForm=Ger	dema	0			rule_variant
+shriveling	0	oewn-shrivel-v	VerbForm=Ger	dema	0			llm
 shriveling up	0	oewn-shrivel_up-v	VerbForm=Ger	dema	0			rule
 shrivelled	0	oewn-shrivel-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 shrivelled	1	oewn-shrivelled-a	Degree=Pos	dema	0			oewn_form
 shrivelling	0	oewn-shrivel-v	VerbForm=Ger	dema	0			oewn_form
-shrivels	0	oewn-shrivel-v	Person=3+Tense=Pres	dema	0			rule
+shrivels	0	oewn-shrivel-v	Person=3+Tense=Pres	dema	0			llm
 shrivels up	0	oewn-shrivel_up-v	Person=3+Tense=Pres	dema	0			rule
 shriven	0	oewn-shrive-v	VerbForm=Part	dema	0			oewn_form
-shrives	0	oewn-shrive-v	Person=3+Tense=Pres	dema	0			rule
-shriving	0	oewn-shrive-v	VerbForm=Ger	dema	0			rule
+shrives	0	oewn-shrive-v	Person=3+Tense=Pres	dema	0			llm
+shriving	0	oewn-shrive-v	VerbForm=Ger	dema	0			llm
 shroff	0		Number=Sing	dema	0	shroff	n	moby_reverse
 shroff	1		VerbForm=Inf	dema	0	shroff	v	moby_reverse
 shroffs	0		Number=Plur	dema	0	shroff	n	rule
@@ -2962,7 +2962,6 @@ shucks	0	oewn-shuck-n	Number=Plur	dema	0			rule
 shucks	1	oewn-shucks-n	Number=Sing	dema	0			oewn_form
 shucks	2	oewn-shuck-v	Person=3+Tense=Pres	dema	0			rule
 shucks	3	dema-shucks-i		dema	0			carried
-shuckses	0	oewn-shucks-n	Number=Plur	dema	0			rule
 shudder	0	oewn-shudder-v	VerbForm=Inf	dema	0			oewn_form
 shudder	1	oewn-shudder-n	Number=Sing	dema	0			oewn_form
 shuddered	0	oewn-shudder-v	Tense=Past+VerbForm=Part	dema	0			rule

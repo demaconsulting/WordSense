@@ -11,12 +11,14 @@ sections:
           - id: WordSense-WordSenseBuilder-Words
             title: >-
               The builder shall compile the flat word image of the core package deterministically from the
-              authoritative tables of the data (entry, form, sense, group, sense label, respelling and sense
-              frequency), holding every word of the dictionary (determiners, conjunctions and interjections included)
+              authoritative tables of the data (entry, form, sense, group, sense label and respelling), holding every
+              word of the dictionary (determiners, conjunctions and interjections included)
               with all its parts of speech, the inflected forms of every dictionary word (the generation of the forms
               is specified by the FormGenerator requirements), and the sense catalog: every single-token OEWN sense
               and its group (none when it is in no group), its OEWN sense key (none for a project sense)
-              and its respelling, the senses of each lemma and part of speech ranked by WordNet 3.0 frequency; and
+              and its respelling, the senses of each lemma and part of speech in the order of Open English WordNet (the
+              position of the sense in its entry, then the homograph number of the entry, project senses last, then the
+              sense id bytes; the WordNet 3.0 frequencies shall not order them); and
               shall write it in the compact binary format that the core package reads. The committed image shall be
               the compilation of the committed data, a dictionary word shall never be lost, and a sense without a
               label, a sense in two groups, a group of fewer than two senses (a declared group without any member
@@ -34,6 +36,7 @@ sections:
             tests:
               - WordSenseBuilder_ImageCompiler_Build_IsDeterministic
               - WordSenseBuilder_ImageCompiler_Build_CatalogIsDeterministic
+              - WordSenseBuilder_ImageCompiler_Build_SenseOrder_IsOewnPositionThenHomographThenProjectSenses
               - WordSenseBuilder_ImageCompiler_Build_SenseWithoutLabel_Fails
               - WordSenseBuilder_ImageCompiler_Build_SenseInTwoGroups_Fails
               - WordSenseBuilder_ImageCompiler_Build_GroupOfOneSenseOrAllSenses_Fails
@@ -175,8 +178,9 @@ sections:
 
           - id: WordSense-WordSenseBuilder-RealCalibration
             title: >-
-              The builder shall split the real-text held-out sentences (provenance origin real) by document into a
-              calibration split and a test split with a fixed, recorded rule (the first bit of the SHA-256 of the
+              The builder shall split the real-text held-out sentences (a provenance source that is real text) by
+              document into a calibration split and a test split with a fixed, recorded rule (the first bit of the
+              SHA-256 of the
               document identifier; a Tatoeba sentence is its own document), and shall move the thresholds of the
               trained lemmas so that the answers on the real calibration sentences reach the precision target: a
               lemma with enough calibration rows gets a threshold of its own that is never lower than its adjusted
@@ -184,7 +188,9 @@ sections:
               that is fitted on the calibration rows of all those lemmas, a level that was never answered stays never
               answered, and the group threshold moves the same way only when the calibration rows can verify it. The
               test split and the written held-out sentences shall never influence a threshold, and the calibration shall
-              be deterministic.
+              be deterministic. The provenance files that decide the split shall be read strictly: a file whose header
+              is not exact, a row without its four non-empty columns, a split or a source that is not allowed, or an id
+              that repeats is refused with the file and line.
             tags: [unit]
             justification: |
               Thresholds chosen by cross-validation on the anchors are calibrated on a balanced corpus that is partly
@@ -192,9 +198,12 @@ sections:
               percent against 95 percent measured on the held-out real sentences). Calibrating on held-out real
               sentences whose documents are disjoint from the test split keeps the headline real-text figures
               independent of the thresholds, and one pooled shift is the robust choice because a lemma has only a few
-              calibration rows.
+              calibration rows. A provenance row that is skipped silently would move a sentence between the real and
+              the written sets, or between the calibration and the test side, without a trace.
             tests:
               - WordSenseBuilder_RealSplit_Classify_SplitsRealRowsByDocument
+              - WordSenseBuilder_RealSplit_ReadProvenance_MalformedFile_IsRefusedWithPathAndLine
+              - WordSenseBuilder_RealSplit_ReadProvenance_IdInTwoFiles_IsRefused
               - WordSenseBuilder_RealSplit_Classify_WrittenAndUnknownRows_AreNeverRealRows
               - WordSenseBuilder_RealSplit_Classify_ReportsTestRowsInDocumentsWithoutAnchors
               - WordSenseBuilder_RealCalibrator_Apply_RaisesThresholdsUntilThePooledPrecisionReachesTheTarget
@@ -220,8 +229,8 @@ sections:
               The classifiers are trained on anchors that are balanced by sense quota, so their raw probabilities carry
               the proportions of the training data instead of those of real use. Measured against the same classifiers
               without the correction, the correction raises the fine top-1 accuracy of the BertBaseCased model on
-              SemCor, an independent human-annotated corpus, from 56.9 to 60.9 percent and that of the MiniLM model from
-              47.5 to 53.8 percent, and the accuracy on real sentences weighted to the usage of the senses by 1.8 and
+              SemCor, an independent human-annotated corpus, from 56.9 to 60.7 percent and that of the MiniLM model from
+              47.5 to 53.6 percent, and the accuracy on real sentences weighted to the usage of the senses by 1.8 and
               2.6 points; the real test split, which is balanced like the training data, loses one point for
               BertBaseCased. An additive offset on the stored bias of each sense is exactly equivalent to rescaling the
               probabilities, so the shipped model needs no new code and no new data.
@@ -454,16 +463,20 @@ sections:
 
           - id: WordSense-WordSenseBuilder-CorpusLicenses
             title: >-
-              The committed training corpus shall contain only sentences whose recorded license is CC0 1.0, public
-              domain in the United States or project-authored (dedicated to CC0 1.0), shall record a provenance row for
-              every sentence of the sense, chooser and real-text files, and shall contain no treebank data and no
-              retired class-labeled corpus.
+              The committed training corpus shall contain only sentences whose provenance source is one of the allowed
+              sources, defined in one place (real text that is CC0 1.0 or public domain in the United States, and
+              sentences written for the project and dedicated to CC0 1.0), shall record a provenance row with the
+              columns id, split, source and source key for every sentence of the sense, chooser and real-text files, and
+              shall contain no treebank data and no retired class-labeled corpus.
             tags: [unit]
             justification: |
               The shipped data must be free of share-alike and attribution-bound text, and a sentence of unknown origin
-              cannot be shown to be free. The treebank is used for evaluation only, so it must not be in the corpus.
+              cannot be shown to be free. The licence of a sentence follows from its source, so one list of allowed
+              sources is the gate, and the evidence for each source is documented with the corpus. The treebank is used
+              for evaluation only, so it must not be in the corpus.
             tests:
-              - WordSenseBuilder_CorpusLicenses_Provenance_RecordsOnlyCc0PublicDomainAndProjectAuthoredSentences
+              - WordSenseBuilder_CorpusLicenses_Provenance_NamesOnlyAllowedSources
+              - WordSenseBuilder_CorpusLicenses_ProvenanceSources_AllowsOnlyTheListedSources
               - WordSenseBuilder_CorpusLicenses_EverySentenceRow_HasProvenance
               - WordSenseBuilder_CorpusLicenses_Corpus_HasNoTreebankDataAndNoLegacyFolders
 
@@ -530,7 +543,8 @@ sections:
               senses of the catalog, leaving out a sentence that is also in the corpus or is an example of Open English
               WordNet, and report for the words of the trained lemmas the mapping coverage, the share answered at each
               level, the precision at each level, the accuracy of the most probable sense and of its group, the
-              part-of-speech accuracy and the accuracy of the most-frequent-sense baseline.
+              part-of-speech accuracy and the accuracy of the first-sense baseline (the first sense in Open English
+              WordNet order, which is partly circular because it follows WordNet's counts, which include SemCor).
             tags: [unit]
             justification: |
               SemCor is human-annotated running text that no training or tuning step reads, so figures measured on it

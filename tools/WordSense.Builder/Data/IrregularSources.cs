@@ -92,7 +92,7 @@ internal sealed record OverrideRow(string Spelling, string Lemma, string Pos, st
 
 /// <summary>
 ///     The source lists of the form generator: the hand-written irregular forms, the closed lists of irregular forms,
-///     the forms of the Automatically Generated Inflection Database, the contractions and the overrides.
+///     the forms written for the project, the contractions and the overrides.
 /// </summary>
 /// <remarks>
 ///     Every list is a plain file of the lexicon directory.
@@ -103,11 +103,6 @@ internal sealed class IrregularSources
     ///     The name of the closed irregular lists.
     /// </summary>
     public const string ClosedFile = "irregular-closed.tsv";
-
-    /// <summary>
-    ///     The name of the forms taken from the Automatically Generated Inflection Database.
-    /// </summary>
-    public const string AgidFile = "agid-irregular.tsv";
 
     /// <summary>
     ///     The name of the closed list of contractions.
@@ -130,9 +125,10 @@ internal sealed class IrregularSources
     public Dictionary<(string Lemma, string Pos), IrregularKinds> Closed { get; } = [];
 
     /// <summary>
-    ///     Gets the AGID forms by lemma and part-of-speech letter.
+    ///     Gets the forms written for the project: the irregular source of the lemmas that the other lists do not cover, the
+    ///     attestation of the generated forms and the decisions that a form does not exist.
     /// </summary>
-    public Dictionary<(string Lemma, string Pos), IrregularKinds> Agid { get; } = [];
+    public AuthoredForms Authored { get; private set; } = new();
 
     /// <summary>
     ///     Gets the forms of the auxiliaries as spelling and features, by lemma.
@@ -165,7 +161,7 @@ internal sealed class IrregularSources
         var sources = new IrregularSources();
         Fill(sources.Hand, IrregularForms.ReadFile(Path.Join(lexicon, IrregularForms.HandFile)), null);
         Fill(sources.Closed, IrregularForms.ReadFile(Path.Join(lexicon, ClosedFile)), sources);
-        Fill(sources.Agid, IrregularForms.ReadFile(Path.Join(lexicon, AgidFile)), null);
+        sources.Authored = AuthoredForms.Read(lexicon);
         sources.ReadContractions(Path.Join(lexicon, ContractionsFile));
         sources.ReadOverrides(Path.Join(lexicon, OverridesFile));
         return sources;

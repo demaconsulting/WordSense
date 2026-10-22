@@ -14,3 +14,7 @@ unmaned	unman	v	Tense=Past+VerbForm=Part	drop	the past of unman is unmanned (AGI
 muskallunge	muskellunge	n	Number=Plur	set:Number=Sing	a spelling variant of the singular (OEWN form)
 gan	gin	v	Tense=Past+VerbForm=Part	set:Tense=Past	gan is only a past (OEWN form, Moby)
 quick-froze	quick-freeze	v	Tense=Past+VerbForm=Part	set:Tense=Past	froze is a past, the participle is quick-frozen
+ORA	OS	n	Capitalization=Upper+Number=Plur	drop	ora is the plural of the Latin noun os (mouth), whose authored forms the entry OS (abbreviation) shares by spelling; the audit verdict is invalid
+bathoses	bathos	n	Number=Plur	drop	bathos is a mass noun; the verifier answered NONE and the audit recheck judged bathoses not established
+patas	patas	n	Number=Plur	drop	an unchanged plural of the monkey name patas is not clearly attested (audit recheck verdict invalid)
+sises	sis	n	Number=Plur	drop	the plural of sis is sisses; sises belongs to the noun sise (audit recheck verdict invalid)

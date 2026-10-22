@@ -21,7 +21,7 @@ internal sealed partial class WordImage
     /// </summary>
     /// <param name="lemma">The lemma exactly as it is written in the catalog.</param>
     /// <param name="pos">The part of speech.</param>
-    /// <returns>The senses, the most frequent first; empty when the lemma and part of speech have none.</returns>
+    /// <returns>The senses in the order of Open English WordNet; empty when the lemma and part of speech have none.</returns>
     /// <exception cref="InvalidDataException">Thrown when the catalog is corrupt.</exception>
     public ImmutableArray<SenseInfo> SensesOf(string lemma, PartOfSpeech pos)
     {

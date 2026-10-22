@@ -89,8 +89,9 @@ avengers	0	oewn-avenger-n	Number=Plur	dema	0			rule
 avenges	0	oewn-avenge-v	Person=3+Tense=Pres	dema	0			rule
 avenging	0	oewn-avenge-v	VerbForm=Ger	dema	0			rule
 avengingly	0		Degree=Pos	dema	0	avengingly	r	moby_reverse
-avens	0	oewn-avens-n	Number=Sing	dema	0			oewn_form
-avenses	0	oewn-avens-n	Number=Plur	dema	0			rule
+avens	0	oewn-avens-n	Number=Plur	dema	0			llm
+avens	1	oewn-avens-n	Number=Sing	dema	0			oewn_form
+avenses	0	oewn-avens-n	Number=Plur	dema	0			rule_variant
 aventail	0	oewn-aventail-n	Number=Sing	dema	0			oewn_form
 aventails	0	oewn-aventail-n	Number=Plur	dema	0			rule
 aventurine	0	oewn-aventurine-n	Number=Sing	dema	0			oewn_form
@@ -173,7 +174,7 @@ aviator	0	oewn-aviator-n	Number=Sing	dema	0			oewn_form
 aviators	0	oewn-aviator-n	Number=Plur	dema	0			rule
 aviatress	0	oewn-aviatress-n	Number=Sing	dema	0			oewn_form
 aviatresses	0	oewn-aviatress-n	Number=Plur	dema	0			rule
-aviatrices	0	oewn-aviatrix-n	Number=Plur	dema	0			agid
+aviatrices	0	oewn-aviatrix-n	Number=Plur	dema	0			llm
 aviatrix	0	oewn-aviatrix-n	Number=Sing	dema	0			oewn_form
 aviatrixes	0	oewn-aviatrix-n	Number=Plur	dema	0			rule_variant
 avicularian	0		Degree=Pos	dema	0	avicularian	a	moby_reverse
@@ -227,7 +228,7 @@ avocado pears	0	oewn-avocado_pear-n	Number=Plur	dema	0			rule
 avocado tree	0	oewn-avocado_tree-n	Number=Sing	dema	0			oewn_form
 avocado trees	0	oewn-avocado_tree-n	Number=Plur	dema	0			rule
 avocadoes	0	oewn-avocado-n	Number=Plur	dema	0			rule_variant
-avocados	0	oewn-avocado-n	Number=Plur	dema	0			rule_variant
+avocados	0	oewn-avocado-n	Number=Plur	dema	0			llm
 avocation	0	oewn-avocation-n	Number=Sing	dema	0			oewn_form
 avocational	0	oewn-avocational-a	Degree=Pos	dema	0			oewn_form
 avocations	0	oewn-avocation-n	Number=Plur	dema	0			rule
@@ -252,7 +253,6 @@ avoirdupois unit	0	oewn-avoirdupois_unit-n	Number=Sing	dema	0			oewn_form
 avoirdupois units	0	oewn-avoirdupois_unit-n	Number=Plur	dema	0			rule
 avoirdupois weight	0	oewn-avoirdupois_weight-n	Number=Sing	dema	0			oewn_form
 avoirdupois weights	0	oewn-avoirdupois_weight-n	Number=Plur	dema	0			rule
-avoirdupoises	0	oewn-avoirdupois-n	Number=Plur	dema	0			rule
 avoirs	0		Number=Plur	dema	0	avoir	n	rule
 avos	0	oewn-avo-n	Number=Plur	dema	0			rule
 avoset	0		Number=Sing	dema	0	avoset	n	moby_reverse
@@ -281,9 +281,9 @@ avowry	0		Number=Sing	dema	0	avowry	n	moby_reverse
 avows	0	oewn-avow-v	Person=3+Tense=Pres	dema	0			rule
 avulse	0	oewn-avulse-v	VerbForm=Inf	dema	0			oewn_form
 avulsed	0		Degree=Pos	dema	0	avulsed	a	moby_reverse
-avulsed	1	oewn-avulse-v	Tense=Past+VerbForm=Part	dema	0			rule
-avulses	0	oewn-avulse-v	Person=3+Tense=Pres	dema	0			rule
-avulsing	0	oewn-avulse-v	VerbForm=Ger	dema	0			rule
+avulsed	1	oewn-avulse-v	Tense=Past+VerbForm=Part	dema	0			llm
+avulses	0	oewn-avulse-v	Person=3+Tense=Pres	dema	0			llm
+avulsing	0	oewn-avulse-v	VerbForm=Ger	dema	0			llm
 avulsion	0	oewn-avulsion-n	Number=Sing	dema	0			oewn_form
 avulsions	0	oewn-avulsion-n	Number=Plur	dema	0			rule
 avuncular	0	oewn-avuncular-a	Degree=Pos	dema	0			oewn_form

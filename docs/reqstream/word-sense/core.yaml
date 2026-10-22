@@ -30,8 +30,9 @@ sections:
           - id: WordSense-Core-Senses
             title: >-
               The core subsystem shall provide the sense catalog: look a sense up by its id or by its OEWN sense key,
-              list the senses of a lemma and part of speech with the most frequent first, look a group up by its id and
-              list the senses of a group, and identify the sense inventory of the embedded image by a version string.
+              list the senses of a lemma and part of speech in the order of Open English WordNet, look a group up by
+              its id and list the senses of a group, and identify the sense inventory of the embedded image by a
+              version string.
             tags: [subsystem]
             justification: |
               Every model answers with senses from the same inventory, and callers resolve an answer's ids (and attach
@@ -45,7 +46,7 @@ sections:
               - WordSense-Core-WordLexicon-Version
               - WordSense-Core-WordSenseContracts-SenseInfo
             tests:
-              - WordLexicon_SensesOf_LemmaAndPartOfSpeech_ListsMostFrequentFirst
+              - WordLexicon_SensesOf_LemmaAndPartOfSpeech_ListsInOewnOrder
               - WordLexicon_TryGetSense_ById_FindsSense
               - WordLexicon_TryGetGroup_ById_ListsMemberSenses
               - WordLexicon_Version_IsStableLowerCaseHex
@@ -236,9 +237,9 @@ sections:
               The core package shall ship its XML documentation with a namespace summary and verified examples, its
               NuGet metadata with the license expression MIT AND CC-BY-4.0, and a README and a packed NOTICE file that
               carry the credits and licenses of the third-party word data it embeds (Open English WordNet 2025 under
-              CC BY 4.0, and the Princeton WordNet 3.0 notice) and of the statistics of its built-in model (derived
-              from the CC0 open part-of-speech corpus and the CC0 sentence corpus of this project, with no share-alike
-              or other attribution-bound text).
+              CC BY 4.0 with the Princeton WordNet notice that it requires) and of the statistics of its built-in
+              model (derived from the CC0 open part-of-speech corpus and the CC0 sentence corpus of this project, with
+              no share-alike or other attribution-bound text) and of the CC0 forms authored by the project.
             tags: [subsystem]
             justification: |
               The embedded lexicon and sense inventory derive from Open English WordNet and, through its sense

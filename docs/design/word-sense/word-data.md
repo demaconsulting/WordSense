@@ -108,9 +108,10 @@ non-empty `evidence` text for every group it writes (the evidence is curation me
 not a data column); the judgment itself is a review decision.
 
 `sense_frequency` holds the WordNet 3.0 tag count of every sense key, from the pinned `index.sense` file joined on the
-key, with the count 0 for a sense the file does not list and the source named (`wn30`). The counts rank the senses of
-a lemma, most frequent first, and size the training data of each sense. A sense without a key has no row and ranks as
-count 0.
+key, with the count 0 for a sense the file does not list and the source named (`wn30`). The counts size the training
+data of each sense and feed the usage prior of the encoder training; they do not order the senses in the image (that
+order is the one of Open English WordNet: the `position` of the sense in its entry, then the `homograph_no` of the
+entry, project senses last). A sense without a key has no row and counts as 0.
 
 Project senses are the senses that OEWN does not provide. They use the supplementary mechanism that the project's
 own entries already use (the source `dema`: an entry, a synset and a sense, with an authored gloss) and have no sense

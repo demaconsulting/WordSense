@@ -52,7 +52,7 @@ public class WordLexiconTests
 
     /// <summary>
     ///     The word tokens that real books use and that an earlier rebuild of the forms lost (regular inflections that the
-    ///     written forms or the variants of the inflection database had shadowed, and inflections of the hand-written additions)
+    ///     written forms or the variants of the authored forms had shadowed, and inflections of the hand-written additions)
     ///     resolve to a sensible analysis.
     /// </summary>
     [Theory]
@@ -382,11 +382,11 @@ public class WordLexiconTests
     }
 
     /// <summary>
-    ///     The senses of a lemma and part of speech are listed most frequent first: <c>bank</c> as a noun starts with the
-    ///     sloping land, then the financial institution, as the WordNet 3.0 tag counts rank them.
+    ///     The senses of a lemma and part of speech are listed in the order of Open English WordNet: <c>bank</c> as a noun
+    ///     starts with the sloping land, then the financial institution, as the position of the senses in the entry puts them.
     /// </summary>
     [Fact]
-    public void WordLexicon_SensesOf_LemmaAndPartOfSpeech_ListsMostFrequentFirst()
+    public void WordLexicon_SensesOf_LemmaAndPartOfSpeech_ListsInOewnOrder()
     {
         var senses = WordLexicon.SensesOf("bank", PartOfSpeech.Noun);
 

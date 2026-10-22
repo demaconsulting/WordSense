@@ -56,7 +56,8 @@ packages, each modeled as a subsystem, plus a non-shipped build-time tool:
   model, chooses the thresholds and measures the models on independent text. It is never shipped. See _WordSenseBuilder
   Unit Design_.
 - **WordData** (`data/` and `tools/WordSense.Builder/Data`): the TSV word data imported from Open English WordNet
-  (CC BY 4.0) with the WordNet 3.0 sense counts, its schema, and the builder code that imports, labels and validates
+  (CC BY 4.0) with the WordNet 3.0 sense counts for the usage prior, its schema, and the builder code that imports,
+  labels and validates
   it. It is the source of the lexicon and the sense catalog that the builder compiles into the core package. See
   _WordData Subsystem Design_.
 
@@ -67,9 +68,13 @@ word when it scored senses for it, and the fallback model (Basic, from core) ans
 result, never a mixture of the two. Model packages never reference each other otherwise, so a consumer installs only
 the model it wants. The contracts in core are the seam between callers and models: a caller programs against
 `IWordSenseModel` and can swap models without code changes. The licenses follow the embedded data: the core package is
-licensed `MIT AND CC-BY-4.0` and ships a `NOTICE.md` with the Open English WordNet 2025 (CC BY 4.0) attribution, the
-Princeton WordNet 3.0 notice and the record that the statistics of its built-in model come from our own CC0 corpora and
-from no treebank (no CC BY-SA material is shipped anywhere).
+licensed `MIT AND CC-BY-4.0` and ships a `NOTICE.md` that enumerates what it embeds: Open English WordNet 2025
+(CC BY 4.0) with the Princeton WordNet notice that it requires, the Moby Part-of-Speech List (public domain), the
+inflected forms authored by the project (CC0 1.0), the statistics of the built-in model (CC0 1.0, from our own corpora
+and from no treebank) and the project data (MIT); it also names the tagged tokens of the open corpus (CC0 1.0) that
+corroborate generated forms at build time. No CC BY-SA material is shipped anywhere. The WordNet 3.0 counts feed only
+the usage prior of the encoder models: the MiniLM and BertBaseCased packages are also `MIT AND CC-BY-4.0`, because
+their weights hold Open English WordNet sense ids, and their notices add the WordNet 3.0 notice of that prior.
 
 ## External Interfaces
 
@@ -86,7 +91,8 @@ from no treebank (no CC BY-SA material is shipped anywhere).
 - `WordLexicon.Lookup`, `TryLookup`, `Contains`, `FormsOf` (out): the analyses (`WordDetails`) of a word from the
   embedded word image.
 - `WordLexicon.SensesOf`, `TryGetSense`, `TryGetSenseByKey`, `TryGetGroup` (out): the sense catalog from the embedded
-  word image: the senses of a lemma and part of speech (most frequent first), a sense by its readable id or its OEWN
+  word image: the senses of a lemma and part of speech (in the order of Open English WordNet), a sense by its readable
+  id or its OEWN
   sense key, and a group with its member senses.
 - `WordLexicon.Version` (out): a string that identifies the sense inventory of the embedded image (the first 16
   lower-case hexadecimal digits of its inventory hash), to be compared for equality only.

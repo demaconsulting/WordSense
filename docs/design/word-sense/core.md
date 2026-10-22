@@ -22,8 +22,9 @@ into one probability per analysis. The statistics carry no evidence that separat
 the model answers an ambiguous word at the part of speech level and names a sense only where the selected analysis has
 exactly one sense (its lemma and part of speech have exactly one sense). Every analysis of a known word is listed with
 its probability. It is small and fast and less accurate than the encoder models; its measured accuracy is reported in
-the repository's build notes. The tables are trained by the builder from the CC0 open part-of-speech corpus and the CC0
-sentence corpus of this repository.
+the repository's user guide (`docs/user_guide/accuracy.md` and the model comparison table
+`docs/user_guide/model-table.md`). The tables are trained by the builder from the CC0 open part-of-speech corpus and the
+CC0 sentence corpus of this repository.
 
 The subsystem contains eight units:
 
@@ -85,7 +86,8 @@ the common first step of every model.
 
 The two kinds of question are kept apart. `Lookup` answers a morphological question (which analyses can this spelling
 have) and never expands an analysis into its senses; `SensesOf` answers a semantic question (which senses does this
-lemma and part of speech have, most frequent first). A model combines them: it looks the spelling up, then asks for
+lemma and part of speech have, in the order of Open English WordNet). A model combines them: it looks the spelling up,
+then asks for
 the senses of each analysis.
 
 The catalog gives group ids a namespace of their own. A sense id is `lemma#label` and is frozen; a group id is

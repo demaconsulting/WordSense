@@ -4,7 +4,7 @@ namespace DemaConsulting.WordSense.Tests;
 ///     Doc-check tests that keep the model comparison table of the README equal to the generated table file.
 /// </summary>
 /// <remarks>
-///     <c>docs/build_notes/model-table.md</c> is written by <c>WordSense.Builder evaluate &lt;model&gt; --table</c> from
+///     <c>docs/user_guide/model-table.md</c> is written by <c>WordSense.Builder evaluate &lt;model&gt; --table</c> from
 ///     measured values. Both it and <c>README.md</c> enclose the table between <c>&lt;!-- model-table:begin --&gt;</c>
 ///     and <c>&lt;!-- model-table:end --&gt;</c>. The check needs no model files.
 /// </remarks>
@@ -49,9 +49,9 @@ public class ModelTableReadmeTests
         var root = FindRepositoryRoot();
         var token = TestContext.Current.CancellationToken;
         var readme = await File.ReadAllTextAsync(Path.Join(root, "README.md"), token);
-        var generated = await File.ReadAllTextAsync(Path.Join(root, "docs", "build_notes", "model-table.md"), token);
+        var generated = await File.ReadAllTextAsync(Path.Join(root, "docs", "user_guide", "model-table.md"), token);
 
-        var expected = TableLines(generated, "docs/build_notes/model-table.md");
+        var expected = TableLines(generated, "docs/user_guide/model-table.md");
         Assert.Equal(expected, TableLines(readme, "README.md"));
     }
 
@@ -63,9 +63,9 @@ public class ModelTableReadmeTests
     public async Task ModelTable_GeneratedFile_HasRowForEachModel()
     {
         var token = TestContext.Current.CancellationToken;
-        var generated = await File.ReadAllTextAsync(Path.Join(FindRepositoryRoot(), "docs", "build_notes", "model-table.md"), token);
+        var generated = await File.ReadAllTextAsync(Path.Join(FindRepositoryRoot(), "docs", "user_guide", "model-table.md"), token);
 
-        var lines = TableLines(generated, "docs/build_notes/model-table.md");
+        var lines = TableLines(generated, "docs/user_guide/model-table.md");
 
         Assert.Equal(5, lines.Length);
         Assert.Contains(lines, l => l.StartsWith("| Basic |", StringComparison.Ordinal));

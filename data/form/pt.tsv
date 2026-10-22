@@ -56,7 +56,7 @@ Ptyas mucosus	0	oewn-Ptyas_mucosus-n	Capitalization=Exact+Number=Sing	dema	0			o
 Ptychozoon homalocephalum	0	oewn-Ptychozoon_homalocephalum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Ptychozoon homalocephalums	0	oewn-Ptychozoon_homalocephalum-n	Capitalization=Exact+Number=Plur	dema	0			rule
 pt	0		Number=Sing	dema	0	pt	n	moby_reverse
-ptarmigan	0	oewn-ptarmigan-n	Number=Plur	dema	0			agid
+ptarmigan	0	oewn-ptarmigan-n	Number=Plur	dema	0			llm
 ptarmigan	1	oewn-ptarmigan-n	Number=Sing	dema	0			oewn_form
 ptarmigans	0	oewn-ptarmigan-n	Number=Plur	dema	0			rule_variant
 pteranodon	0		Number=Sing	dema	0	pteranodon	n	moby_reverse

@@ -4,11 +4,9 @@ BA	1	oewn-BA-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 BAN	0	oewn-ban-n	Number=Sing	dema	0			carried
 BAN	1	oewn-ban-v	VerbForm=Inf	dema	0			carried
 BAN	2	oewn-BAN-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
-BANI	0	oewn-ban-n	Number=Plur	dema	0			oewn_form
-BANI	1	oewn-BAN-n	Capitalization=Upper+Number=Plur	dema	0			agid
 BANS	0	oewn-ban-n	Number=Plur	dema	0			carried
 BANS	1	oewn-ban-v	Person=3+Tense=Pres	dema	0			carried
-BANS	2	oewn-BAN-n	Capitalization=Upper+Number=Plur	dema	0			rule_variant
+BANS	2	oewn-BAN-n	Capitalization=Upper+Number=Plur	dema	0			rule
 BAR	0	oewn-bar-n	Number=Sing	dema	0			oewn_form
 BAR	1		Degree=Pos	dema	0	bar	a	moby_reverse
 BAR	2	oewn-bar-v	VerbForm=Inf	dema	0			oewn_form
@@ -47,12 +45,10 @@ Babylonian weeping willows	0	oewn-Babylonian_weeping_willow-n	Capitalization=Exa
 Babylonians	0	oewn-Babylonian-n	Capitalization=Title+Number=Plur	dema	0			rule
 Babyrousa babyrussa	0	oewn-Babyrousa_babyrussa-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Babyrousa babyrussas	0	oewn-Babyrousa_babyrussa-n	Capitalization=Exact+Number=Plur	dema	0			rule
-Bacchanalia	0	oewn-bacchanalia-n	Number=Plur	dema	0			agid
-Bacchanalia	1	oewn-bacchanalia-n	Number=Sing	dema	0			oewn_form
-Bacchanalia	2	oewn-Bacchanalia-n	Capitalization=Title+Number=Plur	dema	0			agid
-Bacchanalia	3	oewn-Bacchanalia-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-Bacchanalias	0	oewn-bacchanalia-n	Number=Plur	dema	0			rule_variant
-Bacchanalias	1	oewn-Bacchanalia-n	Capitalization=Title+Number=Plur	dema	0			rule_variant
+Bacchanalia	0	oewn-bacchanalia-n	Number=Sing	dema	0			oewn_form
+Bacchanalia	1	oewn-Bacchanalia-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Bacchanalias	0	oewn-bacchanalia-n	Number=Plur	dema	0			llm
+Bacchanalias	1	oewn-Bacchanalia-n	Capitalization=Title+Number=Plur	dema	0			llm
 Baccharis halimifolia	0	oewn-Baccharis_halimifolia-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Baccharis halimifolias	0	oewn-Baccharis_halimifolia-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Baccharis pilularis	0	oewn-Baccharis_pilularis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
@@ -414,7 +410,7 @@ baal	0		Degree=Pos	dema	0	baal	r	moby_reverse
 baas	0	oewn-baas-n	Number=Sing	dema	0			oewn_form
 baas	1	oewn-baa-v	Person=3+Tense=Pres	dema	0			rule
 baas	2	oewn-baa-n	Number=Plur	dema	0			rule
-baases	0	oewn-baas-n	Number=Plur	dema	0			rule
+baases	0	oewn-baas-n	Number=Plur	dema	0			llm
 baaskap	0		Number=Sing	dema	0	baaskap	n	moby_reverse
 baaskaps	0		Number=Plur	dema	0	baaskap	n	rule
 baba	0	oewn-baba-n	Number=Sing	dema	0			oewn_form
@@ -577,13 +573,13 @@ babyishness	0		Number=Sing	dema	0	babyishness	n	moby_reverse
 babylike	0		Degree=Pos	dema	0	babylike	a	moby_reverse
 babyminder	0	oewn-babyminder-n	Number=Sing	dema	0			oewn_form
 babyminders	0	oewn-babyminder-n	Number=Plur	dema	0			rule
+babysat	0	oewn-babysit-v	Tense=Past+VerbForm=Part	dema	0			llm
 babysit	0	oewn-babysit-v	VerbForm=Inf	dema	0			oewn_form
-babysiting	0	oewn-babysit-v	VerbForm=Ger	dema	0			rule
-babysits	0	oewn-babysit-v	Person=3+Tense=Pres	dema	0			rule
+babysits	0	oewn-babysit-v	Person=3+Tense=Pres	dema	0			llm
 babysitter	0	oewn-babysitter-n	Number=Sing	dema	0			oewn_form
 babysitters	0	oewn-babysitter-n	Number=Plur	dema	0			rule
 babysitting	0	oewn-babysitting-n	Number=Sing	dema	0			oewn_form
-babysitting	1	oewn-babysit-v	VerbForm=Ger	dema	0			rule_variant
+babysitting	1	oewn-babysit-v	VerbForm=Ger	dema	0			llm
 babysittings	0	oewn-babysitting-n	Number=Plur	dema	0			rule
 babytalk	0	oewn-babytalk-n	Number=Sing	dema	0			oewn_form
 babytalks	0	oewn-babytalk-n	Number=Plur	dema	0			rule
@@ -598,19 +594,18 @@ baccas	0	oewn-bacca-n	Number=Plur	dema	0			rule
 baccate	0	oewn-baccate-a	Degree=Pos	dema	0			oewn_form
 bacchanal	0	oewn-bacchanal-n	Number=Sing	dema	0			oewn_form
 bacchanal	1	oewn-bacchanal-a	Degree=Pos	dema	0			oewn_form
-bacchanalia	0	oewn-bacchanalia-n	Number=Plur	dema	0			agid
-bacchanalia	1	oewn-bacchanalia-n	Number=Sing	dema	0			oewn_form
+bacchanalia	0	oewn-bacchanalia-n	Number=Sing	dema	0			oewn_form
 bacchanalian	0	oewn-bacchanalian-a	Degree=Pos	dema	0			oewn_form
 bacchanalianism	0		Number=Sing	dema	0	bacchanalianism	n	moby_reverse
 bacchanalianisms	0		Number=Plur	dema	0	bacchanalianism	n	rule
-bacchanalias	0	oewn-bacchanalia-n	Number=Plur	dema	0			rule_variant
+bacchanalias	0	oewn-bacchanalia-n	Number=Plur	dema	0			llm
 bacchanals	0	oewn-bacchanal-n	Number=Plur	dema	0			rule
 bacchant	0	oewn-bacchant-n	Number=Sing	dema	0			oewn_form
 bacchante	0	oewn-bacchante-n	Number=Sing	dema	0			oewn_form
 bacchantes	0	oewn-bacchant-n	Number=Plur	dema	0			oewn_form
 bacchantes	1	oewn-bacchante-n	Number=Plur	dema	0			oewn_form
 bacchantic	0	oewn-bacchantic-a	Degree=Pos	dema	0			oewn_form
-bacchants	0	oewn-bacchant-n	Number=Plur	dema	0			rule_variant
+bacchants	0	oewn-bacchant-n	Number=Plur	dema	0			llm
 bacchic	0	oewn-bacchic-a	Degree=Pos	dema	0			oewn_form
 bacchiuchii	0		Number=Sing	dema	0	bacchiuchii	n	moby_reverse
 bacchiuchiis	0		Number=Plur	dema	0	bacchiuchii	n	rule
@@ -921,11 +916,11 @@ backpackings	0	oewn-backpacking-n	Number=Plur	dema	0			rule
 backpacks	0	oewn-backpack-n	Number=Plur	dema	0			rule
 backpacks	1	oewn-backpack-v	Person=3+Tense=Pres	dema	0			rule
 backpedal	0	oewn-backpedal-v	VerbForm=Inf	dema	0			oewn_form
-backpedaled	0	oewn-backpedal-v	Tense=Past+VerbForm=Part	dema	0			rule
-backpedaling	0	oewn-backpedal-v	VerbForm=Ger	dema	0			rule
+backpedaled	0	oewn-backpedal-v	Tense=Past+VerbForm=Part	dema	0			llm
+backpedaling	0	oewn-backpedal-v	VerbForm=Ger	dema	0			llm
 backpedalled	0	oewn-backpedal-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 backpedalling	0	oewn-backpedal-v	VerbForm=Ger	dema	0			rule_variant
-backpedals	0	oewn-backpedal-v	Person=3+Tense=Pres	dema	0			rule
+backpedals	0	oewn-backpedal-v	Person=3+Tense=Pres	dema	0			llm
 backplate	0	oewn-backplate-n	Number=Sing	dema	0			oewn_form
 backplates	0	oewn-backplate-n	Number=Plur	dema	0			rule
 backrest	0	oewn-backrest-n	Number=Sing	dema	0			oewn_form
@@ -969,14 +964,13 @@ backsides	0	oewn-backside-n	Number=Plur	dema	0			rule
 backsight	0		Number=Sing	dema	0	backsight	n	moby_reverse
 backsights	0		Number=Plur	dema	0	backsight	n	rule
 backslap	0	oewn-backslap-v	VerbForm=Inf	dema	0			oewn_form
-backslaped	0	oewn-backslap-v	Tense=Past+VerbForm=Part	dema	0			rule
-backslapped	0	oewn-backslap-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+backslapped	0	oewn-backslap-v	Tense=Past+VerbForm=Part	dema	0			llm
 backslapper	0	oewn-backslapper-n	Number=Sing	dema	0			oewn_form
 backslappers	0	oewn-backslapper-n	Number=Plur	dema	0			rule
 backslapping	0		Number=Sing	dema	0	backslapping	n	moby_reverse
-backslapping	1	oewn-backslap-v	VerbForm=Ger	dema	0			rule
+backslapping	1	oewn-backslap-v	VerbForm=Ger	dema	0			llm
 backslappings	0		Number=Plur	dema	0	backslapping	n	rule
-backslaps	0	oewn-backslap-v	Person=3+Tense=Pres	dema	0			rule
+backslaps	0	oewn-backslap-v	Person=3+Tense=Pres	dema	0			llm
 backslid	0	oewn-backslide-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 backslidden	0	oewn-backslide-v	VerbForm=Part	dema	0			oewn_form
 backslide	0	oewn-backslide-v	VerbForm=Inf	dema	0			oewn_form
@@ -1053,9 +1047,8 @@ backswing	0		Number=Sing	dema	0	backswing	n	moby_reverse
 backswings	0		Number=Plur	dema	0	backswing	n	rule
 backsword	0	oewn-backsword-n	Number=Sing	dema	0			oewn_form
 backswordman	0		Number=Sing	dema	0	backswordman	n	moby_reverse
-backswordmans	0		Number=Plur	dema	0	backswordman	n	rule
-backswordmen	0		Number=Sing	dema	0	backswordmen	n	moby_reverse
-backswordmens	0		Number=Plur	dema	0	backswordmen	n	rule
+backswordmen	0		Number=Plur	dema	0	backswordman	n	rule
+backswordmen	1		Number=Sing	dema	0	backswordmen	n	moby_reverse
 backswords	0	oewn-backsword-n	Number=Plur	dema	0			rule
 backtalk	0	oewn-backtalk-n	Number=Sing	dema	0			oewn_form
 backtalks	0	oewn-backtalk-n	Number=Plur	dema	0			rule
@@ -1067,11 +1060,11 @@ backup	0	oewn-backup-n	Number=Sing	dema	0			oewn_form
 backup file	0	oewn-backup_file-n	Number=Sing	dema	0			oewn_form
 backup files	0	oewn-backup_file-n	Number=Plur	dema	0			rule
 backup man	0	oewn-backup_man-n	Number=Sing	dema	0			oewn_form
-backup mans	0	oewn-backup_man-n	Number=Plur	dema	0			rule
+backup men	0	oewn-backup_man-n	Number=Plur	dema	0			rule
 backup system	0	oewn-backup_system-n	Number=Sing	dema	0			oewn_form
 backup systems	0	oewn-backup_system-n	Number=Plur	dema	0			rule
 backup woman	0	oewn-backup_woman-n	Number=Sing	dema	0			oewn_form
-backup womans	0	oewn-backup_woman-n	Number=Plur	dema	0			rule
+backup women	0	oewn-backup_woman-n	Number=Plur	dema	0			rule
 backups	0	oewn-backup-n	Number=Plur	dema	0			rule
 backveld	0		Number=Sing	dema	0	backveld	n	moby_reverse
 backvelds	0		Number=Plur	dema	0	backveld	n	rule
@@ -1098,7 +1091,7 @@ backwinding	0		VerbForm=Ger	dema	0	backwind	v	rule
 backwinds	0		Person=3+Tense=Pres	dema	0	backwind	v	rule
 backwoods	0	oewn-backwoods-n	Number=Sing	dema	0			oewn_form
 backwoodsman	0	oewn-backwoodsman-n	Number=Sing	dema	0			oewn_form
-backwoodsmen	0	oewn-backwoodsman-n	Number=Plur	dema	0			agid
+backwoodsmen	0	oewn-backwoodsman-n	Number=Plur	dema	0			llm
 backyard	0	oewn-backyard-n	Number=Sing	dema	0			oewn_form
 backyards	0	oewn-backyard-n	Number=Plur	dema	0			rule
 baclava	0		Number=Sing	dema	0	baclava	n	moby_reverse
@@ -1189,16 +1182,19 @@ bacteriostatic	0	oewn-bacteriostatic-a	Degree=Pos	dema	0			oewn_form
 bacteriostatically	0		Degree=Pos	dema	0	bacteriostatically	r	moby_reverse
 bacteriostats	0	oewn-bacteriostat-n	Number=Plur	dema	0			rule
 bacterise	0	oewn-bacterise-v	VerbForm=Inf	dema	0			oewn_form
-bacterised	0	oewn-bacterise-v	Tense=Past+VerbForm=Part	dema	0			rule
-bacterises	0	oewn-bacterise-v	Person=3+Tense=Pres	dema	0			rule
-bacterising	0	oewn-bacterise-v	VerbForm=Ger	dema	0			rule
+bacterised	0	oewn-bacterise-v	Tense=Past+VerbForm=Part	dema	0			llm
+bacterises	0	oewn-bacterise-v	Person=3+Tense=Pres	dema	0			llm
+bacterising	0	oewn-bacterise-v	VerbForm=Ger	dema	0			llm
 bacterium	0	oewn-bacterium-n	Number=Sing	dema	0			oewn_form
 bacterization	0		Number=Sing	dema	0	bacterization	n	moby_reverse
 bacterizations	0		Number=Plur	dema	0	bacterization	n	rule
 bacterize	0	oewn-bacterize-v	VerbForm=Inf	dema	0			oewn_form
 bacterized	0	oewn-bacterize-v	Tense=Past+VerbForm=Part	dema	0			rule
+bacterized	1	oewn-bacterise-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 bacterizes	0	oewn-bacterize-v	Person=3+Tense=Pres	dema	0			rule
+bacterizes	1	oewn-bacterise-v	Person=3+Tense=Pres	dema	0			rule_variant
 bacterizing	0	oewn-bacterize-v	VerbForm=Ger	dema	0			rule
+bacterizing	1	oewn-bacterise-v	VerbForm=Ger	dema	0			rule_variant
 bacteroid	0	oewn-bacteroid-a	Degree=Pos	dema	0			oewn_form
 bacteroid	1	oewn-bacteroid-n	Number=Sing	dema	0			oewn_form
 bacteroidal	0	oewn-bacteroidal-a	Degree=Pos	dema	0			oewn_form
@@ -1289,9 +1285,8 @@ badineries	0		Number=Plur	dema	0	badinerie	n	rule
 badlands	0	oewn-badlands-n	Number=Sing	dema	0			oewn_form
 badly	0	oewn-badly-r	Degree=Pos	dema	0			oewn_form
 badman	0		Number=Sing	dema	0	badman	n	moby_reverse
-badmans	0		Number=Plur	dema	0	badman	n	rule
-badmen	0		Number=Sing	dema	0	badmen	n	moby_reverse
-badmens	0		Number=Plur	dema	0	badmen	n	rule
+badmen	0		Number=Plur	dema	0	badman	n	rule
+badmen	1		Number=Sing	dema	0	badmen	n	moby_reverse
 badminton	0	oewn-badminton-n	Number=Sing	dema	0			oewn_form
 badminton court	0	oewn-badminton_court-n	Number=Sing	dema	0			oewn_form
 badminton courts	0	oewn-badminton_court-n	Number=Plur	dema	0			rule
@@ -1308,7 +1303,7 @@ badmouthing	0	oewn-badmouth-v	VerbForm=Ger	dema	0			rule
 badmouths	0	oewn-badmouth-v	Person=3+Tense=Pres	dema	0			rule
 badness	0	oewn-badness-n	Number=Sing	dema	0			oewn_form
 badnesses	0	oewn-badness-n	Number=Plur	dema	0			rule
-bads	0	oewn-bad-n	Number=Plur	dema	0			rule
+bads	0	oewn-bad-n	Number=Plur	dema	0			llm
 baedeker	0	oewn-baedeker-n	Number=Sing	dema	0			oewn_form
 baedekers	0	oewn-baedeker-n	Number=Plur	dema	0			rule
 bael	0		Number=Sing	dema	0	bael	n	moby_reverse
@@ -1358,7 +1353,7 @@ bagatelles	0	oewn-bagatelle-n	Number=Plur	dema	0			rule
 bagel	0	oewn-bagel-n	Number=Sing	dema	0			oewn_form
 bagels	0	oewn-bagel-n	Number=Plur	dema	0			rule
 bagful	0	oewn-bagful-n	Number=Sing	dema	0			oewn_form
-bagfuls	0	oewn-bagful-n	Number=Plur	dema	0			rule_variant
+bagfuls	0	oewn-bagful-n	Number=Plur	dema	0			llm
 baggage	0	oewn-baggage-n	Number=Sing	dema	0			oewn_form
 baggage attendant	0	oewn-baggage_attendant-n	Number=Sing	dema	0			oewn_form
 baggage attendants	0	oewn-baggage_attendant-n	Number=Plur	dema	0			rule
@@ -1367,12 +1362,12 @@ baggage cars	0	oewn-baggage_car-n	Number=Plur	dema	0			rule
 baggage claim	0	oewn-baggage_claim-n	Number=Sing	dema	0			oewn_form
 baggage claims	0	oewn-baggage_claim-n	Number=Plur	dema	0			rule
 baggageman	0	oewn-baggageman-n	Number=Sing	dema	0			oewn_form
-baggagemans	0	oewn-baggageman-n	Number=Plur	dema	0			rule
 baggagemaster	0		Number=Sing	dema	0	baggagemaster	n	moby_reverse
 baggagemasters	0		Number=Plur	dema	0	baggagemaster	n	rule
+baggagemen	0	oewn-baggageman-n	Number=Plur	dema	0			rule
 baggages	0	oewn-baggage-n	Number=Plur	dema	0			rule
 baggagewoman	0	oewn-baggagewoman-n	Number=Sing	dema	0			oewn_form
-baggagewomans	0	oewn-baggagewoman-n	Number=Plur	dema	0			rule
+baggagewomen	0	oewn-baggagewoman-n	Number=Plur	dema	0			llm
 bagged	0		Number=Sing	dema	0	bagged	n	moby_reverse
 bagged	1	oewn-bag-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 baggeds	0		Number=Plur	dema	0	bagged	n	rule
@@ -1399,7 +1394,7 @@ bagies	0		Number=Plur	dema	0	bagie	n	rule
 bagio	0		Number=Sing	dema	0	bagio	n	moby_reverse
 bagios	0		Number=Plur	dema	0	bagio	n	rule
 bagman	0	oewn-bagman-n	Number=Sing	dema	0			oewn_form
-bagmen	0	oewn-bagman-n	Number=Plur	dema	0			agid
+bagmen	0	oewn-bagman-n	Number=Plur	dema	0			llm
 bagnette	0		Number=Sing	dema	0	bagnette	n	moby_reverse
 bagnettes	0		Number=Plur	dema	0	bagnette	n	rule
 bagnio	0	oewn-bagnio-n	Number=Sing	dema	0			oewn_form
@@ -1428,9 +1423,7 @@ bagwigged	0		Degree=Pos	dema	0	bagwigged	a	moby_reverse
 bagwigged	1		VerbForm=Inf	dema	0	bagwigged	v	moby_reverse
 bagwigs	0	oewn-bagwig-n	Number=Plur	dema	0			rule
 bagwoman	0	oewn-bagwoman-n	Number=Sing	dema	0			oewn_form
-bagwomans	0	oewn-bagwoman-n	Number=Plur	dema	0			rule
-bagwomen	0		Number=Sing	dema	0	bagwomen	n	moby_reverse
-bagwomens	0		Number=Plur	dema	0	bagwomen	n	rule
+bagwomen	0	oewn-bagwoman-n	Number=Plur	dema	0			rule
 bagwork	0		Number=Sing	dema	0	bagwork	n	moby_reverse
 bagworks	0		Number=Plur	dema	0	bagwork	n	rule
 bagworm	0		Number=Sing	dema	0	bagworm	n	moby_reverse
@@ -1484,9 +1477,8 @@ bails	0	oewn-bail-n	Number=Plur	dema	0			rule
 bails	1	oewn-bail-v	Person=3+Tense=Pres	dema	0			rule
 bails out	0	oewn-bail_out-v	Person=3+Tense=Pres	dema	0			rule
 bailsman	0		Number=Sing	dema	0	bailsman	n	moby_reverse
-bailsmans	0		Number=Plur	dema	0	bailsman	n	rule
-bailsmen	0		Number=Sing	dema	0	bailsmen	n	moby_reverse
-bailsmens	0		Number=Plur	dema	0	bailsmen	n	rule
+bailsmen	0		Number=Plur	dema	0	bailsman	n	rule
+bailsmen	1		Number=Sing	dema	0	bailsmen	n	moby_reverse
 bain-marie	0	oewn-bain-marie-n	Number=Sing	dema	0			oewn_form
 bainite	0		Number=Sing	dema	0	bainite	n	moby_reverse
 bainites	0		Number=Plur	dema	0	bainite	n	rule
@@ -1641,7 +1633,7 @@ balaos	0		Number=Plur	dema	0	balao	n	rule
 balas	0	oewn-balas-n	Number=Sing	dema	0			oewn_form
 balas rubies	0	oewn-balas_ruby-n	Number=Plur	dema	0			rule
 balas ruby	0	oewn-balas_ruby-n	Number=Sing	dema	0			oewn_form
-balases	0	oewn-balas-n	Number=Plur	dema	0			rule
+balases	0	oewn-balas-n	Number=Plur	dema	0			llm
 balata	0	oewn-balata-n	Number=Sing	dema	0			oewn_form
 balata tree	0	oewn-balata_tree-n	Number=Sing	dema	0			oewn_form
 balata trees	0	oewn-balata_tree-n	Number=Plur	dema	0			rule
@@ -1674,10 +1666,10 @@ baldachined	0		Degree=Pos	dema	0	baldachined	a	moby_reverse
 baldachined	1		VerbForm=Inf	dema	0	baldachined	v	moby_reverse
 baldachins	0	oewn-baldachin-n	Number=Plur	dema	0			rule
 balded	0	oewn-bald-v	Tense=Past+VerbForm=Part	dema	0			rule
-balder	0	oewn-bald-a	Degree=Cmp	dema	0			rule
+balder	0	oewn-bald-a	Degree=Cmp	dema	0			llm
 balderdash	0	oewn-balderdash-n	Number=Sing	dema	0			oewn_form
 balderdashes	0	oewn-balderdash-n	Number=Plur	dema	0			rule
-baldest	0	oewn-bald-a	Degree=Sup	dema	0			rule
+baldest	0	oewn-bald-a	Degree=Sup	dema	0			llm
 baldhead	0	oewn-baldhead-n	Number=Sing	dema	0			oewn_form
 baldheaded	0		Degree=Pos	dema	0	baldheaded	a	moby_reverse
 baldheaded	1		VerbForm=Inf	dema	0	baldheaded	v	moby_reverse
@@ -1750,7 +1742,7 @@ balkier	0	oewn-balky-a	Degree=Cmp	dema	0			oewn_form
 balkiest	0	oewn-balky-a	Degree=Sup	dema	0			oewn_form
 balkily	0		Degree=Pos	dema	0	balkily	r	moby_reverse
 balkiness	0	oewn-balkiness-n	Number=Sing	dema	0			oewn_form
-balkinesses	0	oewn-balkiness-n	Number=Plur	dema	0			rule
+balkinesses	0	oewn-balkiness-n	Number=Plur	dema	0			llm
 balking	0	oewn-balk-v	VerbForm=Ger	dema	0			rule
 balking	1	oewn-balking-a	Degree=Pos	dema	0			oewn_form
 balkingly	0		Degree=Pos	dema	0	balkingly	r	moby_reverse
@@ -1888,8 +1880,8 @@ ballflower	0		Number=Sing	dema	0	ballflower	n	moby_reverse
 ballflowers	0		Number=Plur	dema	0	ballflower	n	rule
 ballgame	0	oewn-ballgame-n	Number=Sing	dema	0			oewn_form
 ballgames	0	oewn-ballgame-n	Number=Plur	dema	0			rule
-ballier	0	oewn-bally-a	Degree=Cmp	dema	0			rule
-balliest	0	oewn-bally-a	Degree=Sup	dema	0			rule
+ballier	0	oewn-bally-a	Degree=Cmp	dema	0			llm
+balliest	0	oewn-bally-a	Degree=Sup	dema	0			llm
 balling	0	oewn-ball-v	VerbForm=Ger	dema	0			rule
 balling over	0	oewn-ball_over-v	VerbForm=Ger	dema	0			rule
 balling up	0	oewn-ball_up-v	VerbForm=Ger	dema	0			rule
@@ -1949,7 +1941,7 @@ balloon seats	0	oewn-balloon_seat-n	Number=Plur	dema	0			rule
 balloon vine	0	oewn-balloon_vine-n	Number=Sing	dema	0			oewn_form
 balloon vines	0	oewn-balloon_vine-n	Number=Plur	dema	0			rule
 ballooned	0	oewn-balloon-v	Tense=Past+VerbForm=Part	dema	0			rule
-balloonfish	0	oewn-balloonfish-n	Number=Plur	dema	0			agid
+balloonfish	0	oewn-balloonfish-n	Number=Plur	dema	0			llm
 balloonfish	1	oewn-balloonfish-n	Number=Sing	dema	0			oewn_form
 balloonfishes	0	oewn-balloonfish-n	Number=Plur	dema	0			rule_variant
 ballooning	0	oewn-balloon-v	VerbForm=Ger	dema	0			rule
@@ -2013,13 +2005,13 @@ ballyhoo	1	oewn-ballyhoo-v	VerbForm=Inf	dema	0			oewn_form
 ballyhoo artist	0	oewn-ballyhoo_artist-n	Number=Sing	dema	0			oewn_form
 ballyhoo artists	0	oewn-ballyhoo_artist-n	Number=Plur	dema	0			rule
 ballyhooed	0		Number=Sing	dema	0	ballyhooed	n	moby_reverse
-ballyhooed	1	oewn-ballyhoo-v	Tense=Past+VerbForm=Part	dema	0			rule
+ballyhooed	1	oewn-ballyhoo-v	Tense=Past+VerbForm=Part	dema	0			llm
 ballyhooeds	0		Number=Plur	dema	0	ballyhooed	n	rule
 ballyhooing	0		Number=Sing	dema	0	ballyhooing	n	moby_reverse
-ballyhooing	1	oewn-ballyhoo-v	VerbForm=Ger	dema	0			rule
+ballyhooing	1	oewn-ballyhoo-v	VerbForm=Ger	dema	0			llm
 ballyhooings	0		Number=Plur	dema	0	ballyhooing	n	rule
 ballyhoos	0	oewn-ballyhoo-n	Number=Plur	dema	0			rule
-ballyhoos	1	oewn-ballyhoo-v	Person=3+Tense=Pres	dema	0			agid
+ballyhoos	1	oewn-ballyhoo-v	Person=3+Tense=Pres	dema	0			llm
 ballyrag	0	oewn-ballyrag-v	VerbForm=Inf	dema	0			oewn_form
 ballyragged	0	oewn-ballyrag-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 ballyragging	0	oewn-ballyrag-v	VerbForm=Ger	dema	0			oewn_form
@@ -2113,7 +2105,7 @@ balustrades	0	oewn-balustrade-n	Number=Plur	dema	0			rule
 bam	0	oewn-bam-n	Number=Sing	dema	0			oewn_form
 bambini	0	oewn-bambino-n	Number=Plur	dema	0			oewn_form
 bambino	0	oewn-bambino-n	Number=Sing	dema	0			oewn_form
-bambinos	0	oewn-bambino-n	Number=Plur	dema	0			rule_variant
+bambinos	0	oewn-bambino-n	Number=Plur	dema	0			llm
 bambocciade	0		Number=Sing	dema	0	bambocciade	n	moby_reverse
 bambocciades	0		Number=Plur	dema	0	bambocciade	n	rule
 bamboo	0	oewn-bamboo-n	Number=Sing	dema	0			oewn_form
@@ -2276,7 +2268,7 @@ bandings	0	oewn-banding-n	Number=Plur	dema	0			rule
 bandit	0	oewn-bandit-n	Number=Sing	dema	0			oewn_form
 banditries	0	oewn-banditry-n	Number=Plur	dema	0			rule
 banditry	0	oewn-banditry-n	Number=Sing	dema	0			oewn_form
-bandits	0	oewn-bandit-n	Number=Plur	dema	0			rule_variant
+bandits	0	oewn-bandit-n	Number=Plur	dema	0			llm
 banditti	0	oewn-bandit-n	Number=Plur	dema	0			oewn_form
 bandleader	0	oewn-bandleader-n	Number=Sing	dema	0			oewn_form
 bandleaders	0	oewn-bandleader-n	Number=Plur	dema	0			rule
@@ -2318,13 +2310,13 @@ bandsawns	0		Person=3+Tense=Pres	dema	0	bandsawn	v	rule
 bandsaws	0		Person=3+Tense=Pres	dema	0	bandsaw	v	rule
 bandsaws	1	oewn-bandsaw-n	Number=Plur	dema	0			rule
 bandsman	0	oewn-bandsman-n	Number=Sing	dema	0			oewn_form
-bandsmen	0	oewn-bandsman-n	Number=Plur	dema	0			agid
+bandsmen	0	oewn-bandsman-n	Number=Plur	dema	0			llm
 bandspreading	0		Number=Sing	dema	0	bandspreading	n	moby_reverse
 bandspreadings	0		Number=Plur	dema	0	bandspreading	n	rule
 bandstand	0	oewn-bandstand-n	Number=Sing	dema	0			oewn_form
 bandstands	0	oewn-bandstand-n	Number=Plur	dema	0			rule
 bandswoman	0	oewn-bandswoman-n	Number=Sing	dema	0			oewn_form
-bandswomans	0	oewn-bandswoman-n	Number=Plur	dema	0			rule
+bandswomen	0	oewn-bandswoman-n	Number=Plur	dema	0			rule
 bandtail	0	oewn-bandtail-n	Number=Sing	dema	0			oewn_form
 bandtails	0	oewn-bandtail-n	Number=Plur	dema	0			rule
 bandura	0		Number=Sing	dema	0	bandura	n	moby_reverse
@@ -2553,9 +2545,8 @@ bannerless	0		Degree=Pos	dema	0	bannerless	a	moby_reverse
 bannerlike	0		Degree=Pos	dema	0	bannerlike	a	moby_reverse
 bannerlike	1	oewn-bannerlike-r	Degree=Pos	dema	0			oewn_form
 bannerman	0		Number=Sing	dema	0	bannerman	n	moby_reverse
-bannermans	0		Number=Plur	dema	0	bannerman	n	rule
-bannermen	0		Number=Sing	dema	0	bannermen	n	moby_reverse
-bannermens	0		Number=Plur	dema	0	bannermen	n	rule
+bannermen	0		Number=Plur	dema	0	bannerman	n	rule
+bannermen	1		Number=Sing	dema	0	bannermen	n	moby_reverse
 bannerol	0		Number=Sing	dema	0	bannerol	n	moby_reverse
 bannerols	0		Number=Plur	dema	0	bannerol	n	rule
 banners	0	oewn-banner-n	Number=Plur	dema	0			rule
@@ -2927,12 +2918,12 @@ barelegged	1		Degree=Pos	dema	0	barelegged	r	moby_reverse
 barely	0	oewn-barely-r	Degree=Pos	dema	0			oewn_form
 bareness	0	oewn-bareness-n	Number=Sing	dema	0			oewn_form
 barenesses	0	oewn-bareness-n	Number=Plur	dema	0			rule
-barer	0	oewn-bare-a	Degree=Cmp	dema	0			moby_reverse
+barer	0	oewn-bare-a	Degree=Cmp	dema	0			llm
 bares	0	oewn-bare-v	Person=3+Tense=Pres	dema	0			rule
 baresark	0		Number=Sing	dema	0	baresark	n	moby_reverse
 baresark	1		Degree=Pos	dema	0	baresark	r	moby_reverse
 baresarks	0		Number=Plur	dema	0	baresark	n	rule
-barest	0	oewn-bare-a	Degree=Sup	dema	0			moby_reverse
+barest	0	oewn-bare-a	Degree=Sup	dema	0			llm
 baresthesia	0		Number=Sing	dema	0	baresthesia	n	moby_reverse
 baresthesias	0		Number=Plur	dema	0	baresthesia	n	rule
 barf	0	oewn-barf-n	Number=Sing	dema	0			oewn_form
@@ -2982,7 +2973,7 @@ bargellis	0		Number=Plur	dema	0	bargelli	n	rule
 bargello	0	oewn-bargello-n	Number=Sing	dema	0			oewn_form
 bargellos	0	oewn-bargello-n	Number=Plur	dema	0			rule
 bargeman	0	oewn-bargeman-n	Number=Sing	dema	0			oewn_form
-bargemen	0	oewn-bargeman-n	Number=Plur	dema	0			agid
+bargemen	0	oewn-bargeman-n	Number=Plur	dema	0			llm
 bargepole	0		Number=Sing	dema	0	bargepole	n	moby_reverse
 bargepoles	0		Number=Plur	dema	0	bargepole	n	rule
 barges	0	oewn-barge-n	Number=Plur	dema	0			rule
@@ -2991,7 +2982,7 @@ barges in	0	oewn-barge_in-v	Person=3+Tense=Pres	dema	0			rule
 bargestone	0		Number=Sing	dema	0	bargestone	n	moby_reverse
 bargestones	0		Number=Plur	dema	0	bargestone	n	rule
 bargewoman	0	oewn-bargewoman-n	Number=Sing	dema	0			oewn_form
-bargewomans	0	oewn-bargewoman-n	Number=Plur	dema	0			rule
+bargewomen	0	oewn-bargewoman-n	Number=Plur	dema	0			rule
 barghest	0		Number=Sing	dema	0	barghest	n	moby_reverse
 barghests	0		Number=Plur	dema	0	barghest	n	rule
 barging	0	oewn-barge-v	VerbForm=Ger	dema	0			rule
@@ -3093,7 +3084,7 @@ barmaids	0	oewn-barmaid-n	Number=Plur	dema	0			rule
 barman	0	oewn-barman-n	Number=Sing	dema	0			oewn_form
 barmbrack	0	oewn-barmbrack-n	Number=Sing	dema	0			oewn_form
 barmbracks	0	oewn-barmbrack-n	Number=Plur	dema	0			rule
-barmen	0	oewn-barman-n	Number=Plur	dema	0			agid
+barmen	0	oewn-barman-n	Number=Plur	dema	0			llm
 barmier	0	oewn-barmy-a	Degree=Cmp	dema	0			oewn_form
 barmiest	0	oewn-barmy-a	Degree=Sup	dema	0			oewn_form
 barms	0	oewn-barm-n	Number=Plur	dema	0			rule
@@ -3257,9 +3248,9 @@ barracoon	0		Number=Sing	dema	0	barracoon	n	moby_reverse
 barracoons	0		Number=Plur	dema	0	barracoon	n	rule
 barracouta	0	oewn-barracouta-n	Number=Sing	dema	0			oewn_form
 barracoutas	0	oewn-barracouta-n	Number=Plur	dema	0			rule
-barracuda	0	oewn-barracuda-n	Number=Plur	dema	0			agid
+barracuda	0	oewn-barracuda-n	Number=Plur	dema	0			rule_variant
 barracuda	1	oewn-barracuda-n	Number=Sing	dema	0			oewn_form
-barracudas	0	oewn-barracuda-n	Number=Plur	dema	0			rule_variant
+barracudas	0	oewn-barracuda-n	Number=Plur	dema	0			llm
 barracudina	0		Number=Sing	dema	0	barracudina	n	moby_reverse
 barracudinas	0		Number=Plur	dema	0	barracudina	n	rule
 barrage	0	oewn-barrage-n	Number=Sing	dema	0			oewn_form
@@ -3321,7 +3312,7 @@ barreled	0	oewn-barrel-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 barreled	1	oewn-barreled-a	Degree=Pos	dema	0			oewn_form
 barreleye	0		Number=Sing	dema	0	barreleye	n	moby_reverse
 barreleyes	0		Number=Plur	dema	0	barreleye	n	rule
-barrelfish	0	oewn-barrelfish-n	Number=Plur	dema	0			agid
+barrelfish	0	oewn-barrelfish-n	Number=Plur	dema	0			llm
 barrelfish	1	oewn-barrelfish-n	Number=Sing	dema	0			oewn_form
 barrelfishes	0	oewn-barrelfish-n	Number=Plur	dema	0			rule_variant
 barrelful	0	oewn-barrelful-n	Number=Sing	dema	0			oewn_form
@@ -3370,15 +3361,14 @@ barricading	0	oewn-barricade-v	VerbForm=Ger	dema	0			rule
 barricado	0		Number=Sing	dema	0	barricado	n	moby_reverse
 barricado	1	oewn-barricado-v	VerbForm=Inf	dema	0			oewn_form
 barricadoed	0		Number=Sing	dema	0	barricadoed	n	moby_reverse
-barricadoed	1	oewn-barricado-v	Tense=Past+VerbForm=Part	dema	0			rule
+barricadoed	1	oewn-barricado-v	Tense=Past+VerbForm=Part	dema	0			llm
 barricadoeds	0		Number=Plur	dema	0	barricadoed	n	rule
 barricadoes	0		Number=Sing	dema	0	barricadoes	n	moby_reverse
-barricadoes	1	oewn-barricado-v	Person=3+Tense=Pres	dema	0			rule_variant
+barricadoes	1	oewn-barricado-v	Person=3+Tense=Pres	dema	0			llm
 barricadoing	0		Number=Sing	dema	0	barricadoing	n	moby_reverse
-barricadoing	1	oewn-barricado-v	VerbForm=Ger	dema	0			rule
+barricadoing	1	oewn-barricado-v	VerbForm=Ger	dema	0			llm
 barricadoings	0		Number=Plur	dema	0	barricadoing	n	rule
 barricados	0		Number=Plur	dema	0	barricado	n	rule
-barricados	1	oewn-barricado-v	Person=3+Tense=Pres	dema	0			agid
 barrier	0	oewn-barrier-n	Number=Sing	dema	0			oewn_form
 barrier island	0	oewn-barrier_island-n	Number=Sing	dema	0			oewn_form
 barrier islands	0	oewn-barrier_island-n	Number=Plur	dema	0			rule
@@ -3406,9 +3396,9 @@ barrow-boys	0	oewn-barrow-boy-n	Number=Plur	dema	0			rule
 barrow-girl	0	oewn-barrow-girl-n	Number=Sing	dema	0			oewn_form
 barrow-girls	0	oewn-barrow-girl-n	Number=Plur	dema	0			rule
 barrow-man	0	oewn-barrow-man-n	Number=Sing	dema	0			oewn_form
-barrow-mans	0	oewn-barrow-man-n	Number=Plur	dema	0			rule
+barrow-men	0	oewn-barrow-man-n	Number=Plur	dema	0			rule
 barrow-woman	0	oewn-barrow-woman-n	Number=Sing	dema	0			oewn_form
-barrow-womans	0	oewn-barrow-woman-n	Number=Plur	dema	0			rule
+barrow-women	0	oewn-barrow-woman-n	Number=Plur	dema	0			rule
 barrowful	0	oewn-barrowful-n	Number=Sing	dema	0			oewn_form
 barrowfuls	0	oewn-barrowful-n	Number=Plur	dema	0			rule
 barrows	0	oewn-barrow-n	Number=Plur	dema	0			rule
@@ -3600,9 +3590,8 @@ baseliners	0		Number=Plur	dema	0	baseliner	n	rule
 baselines	0	oewn-baseline-n	Number=Plur	dema	0			rule
 basely	0	oewn-basely-r	Degree=Pos	dema	0			oewn_form
 baseman	0		Number=Sing	dema	0	baseman	n	moby_reverse
-basemans	0		Number=Plur	dema	0	baseman	n	rule
-basemen	0		Number=Sing	dema	0	basemen	n	moby_reverse
-basemens	0		Number=Plur	dema	0	basemen	n	rule
+basemen	0		Number=Plur	dema	0	baseman	n	rule
+basemen	1		Number=Sing	dema	0	basemen	n	moby_reverse
 basement	0	oewn-basement-n	Number=Sing	dema	0			oewn_form
 basements	0	oewn-basement-n	Number=Plur	dema	0			rule
 baseness	0	oewn-baseness-n	Number=Sing	dema	0			oewn_form
@@ -3611,13 +3600,13 @@ basenji	0	oewn-basenji-n	Number=Sing	dema	0			oewn_form
 basenjis	0	oewn-basenji-n	Number=Plur	dema	0			rule
 baseplate	0		Number=Sing	dema	0	baseplate	n	moby_reverse
 baseplates	0		Number=Plur	dema	0	baseplate	n	rule
-baser	0	oewn-base-a	Degree=Cmp	dema	0			moby_reverse
+baser	0	oewn-base-a	Degree=Cmp	dema	0			llm
 bases	0	oewn-base-n	Number=Plur	dema	1			carried
 bases	1	oewn-basis-n	Number=Plur	dema	1			carried
 bases	2	oewn-base-v	Person=3+Tense=Pres	dema	1			carried
 bases of operations	0	oewn-base_of_operations-n	Number=Plur	dema	0			rule
 bases on balls	0	oewn-base_on_balls-n	Number=Plur	dema	0			rule
-basest	0	oewn-base-a	Degree=Sup	dema	0			moby_reverse
+basest	0	oewn-base-a	Degree=Sup	dema	0			llm
 bash	0	oewn-bash-v	VerbForm=Inf	dema	0			oewn_form
 bash	1	oewn-bash-n	Number=Sing	dema	0			oewn_form
 bashaw	0		Number=Sing	dema	0	bashaw	n	moby_reverse
@@ -3854,10 +3843,8 @@ bass voice	0	oewn-bass_voice-n	Number=Sing	dema	0			oewn_form
 bass voices	0	oewn-bass_voice-n	Number=Plur	dema	0			rule
 bassarisk	0	oewn-bassarisk-n	Number=Sing	dema	0			oewn_form
 bassarisks	0	oewn-bassarisk-n	Number=Plur	dema	0			rule
-basser	0	oewn-bass-a	Degree=Cmp	dema	0			rule
 basses	0	oewn-bass-n-1	Number=Plur	dema	0			rule
 basses	1	oewn-bass-n-2	Number=Plur	dema	0			rule
-bassest	0	oewn-bass-a	Degree=Sup	dema	0			rule
 basset	0	oewn-basset-n	Number=Sing	dema	0			oewn_form
 basset	1	oewn-basset-v	VerbForm=Inf	dema	0			oewn_form
 basset horn	0	oewn-basset_horn-n	Number=Sing	dema	0			oewn_form
@@ -3950,10 +3937,10 @@ bastardy proceeding	0	oewn-bastardy_proceeding-n	Number=Sing	dema	0			oewn_form
 bastardy proceedings	0	oewn-bastardy_proceeding-n	Number=Plur	dema	0			rule
 baste	0	oewn-baste-v	VerbForm=Inf	dema	0			oewn_form
 baste	1	oewn-baste-n	Number=Sing	dema	0			oewn_form
-basted	0	oewn-baste-v	Tense=Past+VerbForm=Part	dema	0			rule
+basted	0	oewn-baste-v	Tense=Past+VerbForm=Part	dema	0			llm
 baster	0	oewn-baster-n	Number=Sing	dema	0			oewn_form
 basters	0	oewn-baster-n	Number=Plur	dema	0			rule
-bastes	0	oewn-baste-v	Person=3+Tense=Pres	dema	0			rule
+bastes	0	oewn-baste-v	Person=3+Tense=Pres	dema	0			llm
 bastes	1	oewn-baste-n	Number=Plur	dema	0			rule
 basti	0		Number=Sing	dema	0	basti	n	moby_reverse
 bastide	0		Number=Sing	dema	0	bastide	n	moby_reverse
@@ -3971,13 +3958,13 @@ bastinadoed	0		Number=Sing	dema	0	bastinadoed	n	moby_reverse
 bastinadoed	1	oewn-bastinado-v	Tense=Past+VerbForm=Part	dema	0			rule
 bastinadoeds	0		Number=Plur	dema	0	bastinadoed	n	rule
 bastinadoes	0	oewn-bastinado-n	Number=Plur	dema	0			oewn_form
-bastinadoes	1	oewn-bastinado-v	Person=3+Tense=Pres	dema	0			rule_variant
+bastinadoes	1	oewn-bastinado-v	Person=3+Tense=Pres	dema	0			rule
 bastinadoing	0		Number=Sing	dema	0	bastinadoing	n	moby_reverse
 bastinadoing	1	oewn-bastinado-v	VerbForm=Ger	dema	0			rule
 bastinadoings	0		Number=Plur	dema	0	bastinadoing	n	rule
-bastinados	0	oewn-bastinado-n	Number=Plur	dema	0			rule_variant
+bastinados	0	oewn-bastinado-n	Number=Plur	dema	0			llm
 basting	0	oewn-basting-n	Number=Sing	dema	0			oewn_form
-basting	1	oewn-baste-v	VerbForm=Ger	dema	0			rule
+basting	1	oewn-baste-v	VerbForm=Ger	dema	0			llm
 basting stitch	0	oewn-basting_stitch-n	Number=Sing	dema	0			oewn_form
 basting stitches	0	oewn-basting_stitch-n	Number=Plur	dema	0			rule
 bastings	0	oewn-basting-n	Number=Plur	dema	0			rule
@@ -4104,7 +4091,6 @@ batholitic	0	oewn-batholitic-a	Degree=Pos	dema	0			oewn_form
 bathometer	0	oewn-bathometer-n	Number=Sing	dema	0			oewn_form
 bathometers	0	oewn-bathometer-n	Number=Plur	dema	0			rule
 bathos	0	oewn-bathos-n	Number=Sing	dema	0			oewn_form
-bathoses	0	oewn-bathos-n	Number=Plur	dema	0			rule
 bathrobe	0	oewn-bathrobe-n	Number=Sing	dema	0			oewn_form
 bathrobes	0	oewn-bathrobe-n	Number=Plur	dema	0			rule
 bathroom	0	oewn-bathroom-n	Number=Sing	dema	0			oewn_form
@@ -4137,7 +4123,7 @@ bathyscape	0	oewn-bathyscape-n	Number=Sing	dema	0			oewn_form
 bathyscapes	0	oewn-bathyscape-n	Number=Plur	dema	0			rule
 bathyscaph	0	oewn-bathyscaph-n	Number=Sing	dema	0			oewn_form
 bathyscaphe	0	oewn-bathyscaphe-n	Number=Sing	dema	0			oewn_form
-bathyscaphes	0	oewn-bathyscaphe-n	Number=Plur	dema	0			rule
+bathyscaphes	0	oewn-bathyscaphe-n	Number=Plur	dema	0			llm
 bathyscaphs	0	oewn-bathyscaph-n	Number=Plur	dema	0			rule
 bathysphere	0	oewn-bathysphere-n	Number=Sing	dema	0			oewn_form
 bathyspheres	0	oewn-bathysphere-n	Number=Plur	dema	0			rule
@@ -4157,7 +4143,7 @@ batiste	0	oewn-batiste-n	Number=Sing	dema	0			oewn_form
 batistes	0	oewn-batiste-n	Number=Plur	dema	0			rule
 batlike	0		Degree=Pos	dema	0	batlike	a	moby_reverse
 batman	0	oewn-batman-n	Number=Sing	dema	0			oewn_form
-batmen	0	oewn-batman-n	Number=Plur	dema	0			agid
+batmen	0	oewn-batman-n	Number=Plur	dema	0			llm
 batoko palm	0	oewn-batoko_palm-n	Number=Sing	dema	0			oewn_form
 batoko palms	0	oewn-batoko_palm-n	Number=Plur	dema	0			rule
 baton	0	oewn-baton-n	Number=Sing	dema	0			oewn_form
@@ -4176,11 +4162,11 @@ bats mitzvah	0	oewn-bat_mitzvah-v	Person=3+Tense=Pres	dema	0			rule
 batsman	0	oewn-batsman-n	Number=Sing	dema	0			oewn_form
 batsmanship	0		Number=Sing	dema	0	batsmanship	n	moby_reverse
 batsmanships	0		Number=Plur	dema	0	batsmanship	n	rule
-batsmen	0	oewn-batsman-n	Number=Plur	dema	0			agid
+batsmen	0	oewn-batsman-n	Number=Plur	dema	0			llm
 batswing	0		Number=Sing	dema	0	batswing	n	moby_reverse
 batswings	0		Number=Plur	dema	0	batswing	n	rule
 batswoman	0	oewn-batswoman-n	Number=Sing	dema	0			oewn_form
-batswomans	0	oewn-batswoman-n	Number=Plur	dema	0			rule
+batswomen	0	oewn-batswoman-n	Number=Plur	dema	0			rule
 batt	0		Number=Sing	dema	0	batt	n	moby_reverse
 batta	0		Number=Sing	dema	0	batta	n	moby_reverse
 battailous	0		Degree=Pos	dema	0	battailous	a	moby_reverse
@@ -4366,18 +4352,17 @@ batwing	1		VerbForm=Inf	dema	0	batwing	v	moby_reverse
 batwing	2	oewn-batwing-n	Number=Sing	dema	0			oewn_form
 batwings	0	oewn-batwing-n	Number=Plur	dema	0			rule
 batwoman	0	oewn-batwoman-n	Number=Sing	dema	0			oewn_form
-batwomans	0	oewn-batwoman-n	Number=Plur	dema	0			rule
+batwomen	0	oewn-batwoman-n	Number=Plur	dema	0			rule
 bauble	0	oewn-bauble-n	Number=Sing	dema	0			oewn_form
 baubles	0	oewn-bauble-n	Number=Plur	dema	0			rule
-baud	0	oewn-baud-n	Number=Plur	dema	0			agid
+baud	0	oewn-baud-n	Number=Plur	dema	0			rule_variant
 baud	1	oewn-baud-n	Number=Sing	dema	0			oewn_form
 baud rate	0	oewn-baud_rate-n	Number=Sing	dema	0			oewn_form
 baud rates	0	oewn-baud_rate-n	Number=Plur	dema	0			rule
 baudekin	0		Number=Sing	dema	0	baudekin	n	moby_reverse
 baudekins	0		Number=Plur	dema	0	baudekin	n	rule
 baudrons	0		Number=Sing	dema	0	baudrons	n	moby_reverse
-baudronses	0		Number=Plur	dema	0	baudrons	n	rule
-bauds	0	oewn-baud-n	Number=Plur	dema	0			rule_variant
+bauds	0	oewn-baud-n	Number=Plur	dema	0			llm
 bauhinia	0		Number=Sing	dema	0	bauhinia	n	moby_reverse
 bauhinias	0		Number=Plur	dema	0	bauhinia	n	rule
 baulk	0	oewn-baulk-n	Number=Sing	dema	0			oewn_form
@@ -4513,8 +4498,7 @@ bazillions	0	oewn-bazillion-n	Number=Plur	dema	0			rule
 bazoo	0		Number=Sing	dema	0	bazoo	n	moby_reverse
 bazooka	0	oewn-bazooka-n	Number=Sing	dema	0			oewn_form
 bazookaman	0		Number=Sing	dema	0	bazookaman	n	moby_reverse
-bazookamans	0		Number=Plur	dema	0	bazookaman	n	rule
-bazookamen	0		Number=Sing	dema	0	bazookamen	n	moby_reverse
-bazookamens	0		Number=Plur	dema	0	bazookamen	n	rule
+bazookamen	0		Number=Plur	dema	0	bazookaman	n	rule
+bazookamen	1		Number=Sing	dema	0	bazookamen	n	moby_reverse
 bazookas	0	oewn-bazooka-n	Number=Plur	dema	0			rule
 bazoos	0		Number=Plur	dema	0	bazoo	n	rule

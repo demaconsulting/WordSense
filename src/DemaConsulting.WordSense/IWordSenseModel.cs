@@ -63,7 +63,9 @@ namespace DemaConsulting.WordSense;
 ///     Concurrency: <see cref="ClassifyAsync"/> is safe to call from several threads at once on one instance.
 ///     Confidence: a word that the lexicon does not know has <see cref="ClassifyResult.Details"/> null, the level
 ///     <see cref="SenseLevel.None"/> and confidence 0; a word whose lemma and part of speech have a single sense gets
-///     that sense with confidence 1; an ambiguous word gets its best answer at the level the implementation is
+///     that sense with confidence 1; a word with a single lemma and part of speech but several senses that the
+///     implementation does not decide gets the <see cref="SenseLevel.PartOfSpeech"/> level, also with confidence 1 (the
+///     part of speech is certain, the sense is not, so test the level); an ambiguous word gets its best answer at the level the implementation is
 ///     confident in, with a confidence from 0 to 1 that refers to that level and whose scale the implementation
 ///     documents (callers must not reuse a threshold across implementations); only a null
 ///     <see cref="ClassifyResult.Details"/> means unknown. An implementation that needs no files completes
@@ -98,7 +100,7 @@ namespace DemaConsulting.WordSense;
 ///     yourself.
 ///     </para>
 ///     <para>
-///     First-use costs (approximate and machine dependent; measured values are in the build notes): the first access
+///     First-use costs (approximate and machine dependent; measured values are in <c>docs/user_guide/model-table.md</c>): the first access
 ///     to <see cref="WordLexicon"/> takes about 55 ms and about 15 MiB, and happens once per process for every
 ///     model; the Basic model adds a table load of about 22 ms on its first classification; an encoder model adds
 ///     about 0.4 s (MiniLM) or 0.5 s (BertBaseCased) to open its ONNX session on the first classification that needs
@@ -211,7 +213,8 @@ public interface IWordSenseModel : IDisposable
     ///     Each word is lower-cased and looked up in <see cref="WordLexicon"/>; the curly apostrophe (U+2019) is
     ///     read as <c>'</c>. A word without an entry is unknown: <see cref="ClassifyResult.Details"/> is null, the level is
     ///     <see cref="SenseLevel.None"/> and the
-    ///     confidence is 0. A word whose lemma and part of speech have one sense is answered with that sense and confidence 1. A word with several analyses or senses is resolved
+    ///     confidence is 0. A word whose lemma and part of speech have one sense is answered with that sense and confidence 1; a word with
+    ///     a single lemma and part of speech and several senses that the model does not decide is answered at the part-of-speech level, also with confidence 1. A word with several analyses or senses is resolved
     ///     from its context at the finest level the model is confident in; how the context is used, and what the confidence means, is defined by each model package
     ///     (see <see cref="ClassifyResult"/>). There is exactly one way to get a null <see cref="ClassifyResult.Details"/>: the
     ///     word is unknown to the lexicon (every model). Every word of the lexicon gets details; a word whose

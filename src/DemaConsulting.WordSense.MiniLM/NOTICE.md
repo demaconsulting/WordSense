@@ -10,7 +10,7 @@ wrote itself (the readable sense labels) is also licensed under the MIT license.
 The package embeds the trained weights `weights.bin` for `MiniLMWordSenseModel`. They hold, for each trained lemma, a
 numeric classifier on the embeddings of the encoder below (weights, biases and thresholds), together with the lemma, the
 ids of its senses (`lemma#label`, the readable labels are project-authored) and the labels of the form choosers. They
-are computed from two project-authored sources and from one WordNet 3.0 source:
+are computed from two project-authored sources, one WordNet 3.0 source and the sense ids of Open English WordNet:
 
 - the sentence corpus of this repository (`corpus/anchors`, `corpus/choosers` and the real-text sentences of
   `corpus/realtext` used to calibrate the thresholds), released under CC0 1.0 (public domain dedication,
@@ -22,6 +22,10 @@ are computed from two project-authored sources and from one WordNet 3.0 source:
   the training uses as a sense usage prior: the tempered logarithm of the usage share of each sense (its tag count) is
   added to the stored bias of the sense. The weights are therefore a modification of data derived from WordNet 3.0, and
   the WordNet 3.0 license below applies to them.
+- the Open English WordNet 2025 sense catalog (CC BY 4.0): the weights hold the sense ids of its lemmas (a sense id
+  `lemma#label` stands for an Open English WordNet sense, with its sense key in the word image of the core package), so
+  they are a work that incorporates Open English WordNet identifiers and are shared under CC BY 4.0 together with the
+  MIT license of the code, see the section below.
 
 ## The encoder model files are not in this package
 
@@ -76,7 +80,20 @@ any associated documentation shall at all times remain with
 Princeton University and LICENSEE agrees to preserve same.
 ```
 
+## Open English WordNet 2025
+
+The sense ids of the weights come from Open English WordNet 2025.
+
+- Source: Open English WordNet 2025 Edition, <https://en-word.net>, <https://github.com/globalwordnet/english-wordnet>.
+- License: Creative Commons Attribution 4.0 International (CC BY 4.0), <https://creativecommons.org/licenses/by/4.0/>.
+  Open English WordNet is derived from Princeton WordNet; the Princeton notice that it requires is reproduced in the
+  `NOTICE.md` of the core package `DemaConsulting.WordSense`.
+- Changes: the sense ids were joined with project-authored readable labels and used as the classes of the trained
+  classifiers; no text of Open English WordNet (glosses, examples) is part of the weights. The data was changed, and it
+  is not the original Open English WordNet data. Open English WordNet and its contributors do not endorse this package.
+
 ## Related packages
 
 The package depends on `DemaConsulting.WordSense` (core) and `DemaConsulting.WordSense.Onnx`, which carry their own
-notices; the core `NOTICE.md` covers the Open English WordNet 2025 data (CC BY 4.0) of the word image.
+notices; the core `NOTICE.md` covers the Open English WordNet 2025 data (CC BY 4.0) and the Princeton WordNet notice of
+the word image.

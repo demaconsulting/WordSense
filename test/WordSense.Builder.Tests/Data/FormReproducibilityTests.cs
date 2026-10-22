@@ -7,7 +7,7 @@ namespace WordSense.Builder.Tests;
 ///     lines, and an input that does not match its pin is refused.
 /// </summary>
 /// <remarks>
-///     The tests use the small committed Open English WordNet slice and a small inflection list, so they need no download.
+///     The tests use the small committed Open English WordNet slice and a small list of authored forms, so they need no download.
 /// </remarks>
 public sealed class FormReproducibilityTests : IDisposable
 {
@@ -16,25 +16,42 @@ public sealed class FormReproducibilityTests : IDisposable
     /// <inheritdoc />
     public void Dispose() => _dir.Dispose();
 
-    private string TinyInputs(out string agid)
+    private string TinyInputs()
     {
         var oewn = Path.Join(_dir.Root, "oewn.xml");
         File.Copy(DataFixture.SlicePath, oewn);
-        agid = Path.Join(_dir.Root, "infl.txt");
-        File.WriteAllText(agid, "bag: N: bags\n");
         return oewn;
+    }
+
+    // A corpus of the repository lexicon whose authored forms are the given lines
+    private string TinyCorpus(string name, params string[] authoredLines)
+    {
+        var corpus = Path.Join(_dir.Root, name);
+        var lexicon = Path.Join(corpus, "lexicon");
+        Directory.CreateDirectory(lexicon);
+        foreach (var file in Directory.GetFiles(Path.Join(DataFixture.RepositoryRoot(), "corpus", "lexicon")))
+        {
+            if (!Path.GetFileName(file).StartsWith("forms-authored", StringComparison.Ordinal))
+            {
+                File.Copy(file, Path.Join(lexicon, Path.GetFileName(file)));
+            }
+        }
+
+        File.WriteAllLines(Path.Join(lexicon, AuthoredForms.FormsFile), authoredLines);
+        File.WriteAllText(Path.Join(lexicon, AuthoredForms.ProvenanceFile), AuthoredFixtures.Sidecar(authoredLines));
+        return corpus;
     }
 
     private static SortedDictionary<string, byte[]> Snapshot(string directory) =>
         new(Directory.EnumerateFiles(directory, "*", SearchOption.AllDirectories)
             .ToDictionary(f => Path.GetRelativePath(directory, f).Replace('\\', '/'), File.ReadAllBytes, StringComparer.Ordinal), StringComparer.Ordinal);
 
-    private SortedDictionary<string, byte[]> Generate(string name, string oewn, string agid)
+    private SortedDictionary<string, byte[]> Generate(string name, string oewn, string? corpus = null)
     {
         var root = DataFixture.RepositoryRoot();
         var output = Path.Join(_dir.Root, name);
         Directory.CreateDirectory(output);
-        FormGenerator.Run(Path.Join(root, "data"), Path.Join(root, "corpus"), oewn, agid, output, null, null);
+        FormGenerator.Run(Path.Join(root, "data"), corpus ?? Path.Join(root, "corpus"), oewn, output, null);
         return Snapshot(output);
     }
 
@@ -54,24 +71,20 @@ public sealed class FormReproducibilityTests : IDisposable
     [Fact]
     public void WordSenseBuilder_FormGenerator_Run_SameInputs_GiveIdenticalBytes()
     {
-        var oewn = TinyInputs(out var agid);
-        AssertIdentical(Generate("first", oewn, agid), Generate("second", oewn, agid));
+        var oewn = TinyInputs();
+        AssertIdentical(Generate("first", oewn), Generate("second", oewn));
     }
 
     /// <summary>
-    ///     Reordering the lines of the inflection list does not change the bytes.
+    ///     Reordering the lines of the authored forms does not change the bytes.
     /// </summary>
     [Fact]
     public void WordSenseBuilder_FormGenerator_Run_ReorderedInput_GivesIdenticalBytes()
     {
-        var oewn = TinyInputs(out var agid);
-        var first = Generate("ordered", oewn, agid);
-        File.WriteAllLines(agid, ["walk: V: walked | walking | walks", "bag: N: bags", "mouse: N: mice"]);
-        var ordered = Generate("ordered2", oewn, agid);
-        File.WriteAllLines(agid, ["mouse: N: mice", "bag: N: bags", "walk: V: walked | walking | walks"]);
-        var reordered = Generate("reordered", oewn, agid);
+        var oewn = TinyInputs();
+        var ordered = Generate("ordered", oewn, TinyCorpus("corpus-ordered", "walk\tV\tPast\twalked\t0", "bag\tN\tPlural\tbags\t0", "mouse\tN\tPlural\tmice\t0"));
+        var reordered = Generate("reordered", oewn, TinyCorpus("corpus-reordered", "mouse\tN\tPlural\tmice\t0", "bag\tN\tPlural\tbags\t0", "walk\tV\tPast\twalked\t0"));
         AssertIdentical(ordered, reordered);
-        Assert.NotEmpty(first);
     }
 
     /// <summary>
@@ -82,7 +95,7 @@ public sealed class FormReproducibilityTests : IDisposable
     public void WordSenseBuilder_FormGenerator_Run_RepeatedFrozenAnalysis_IsRefused()
     {
         // Arrange - a corpus whose frozen file repeats an analysis that differs only in its retired class column
-        var oewn = TinyInputs(out var agid);
+        var oewn = TinyInputs();
         _dir.Write("corpus/lexicon/form-frozen.tsv",
             "frozen\tsupposed\t0\toewn-supposed-a\tDegree=Pos\tdema\t1\t\tsupposed#supposed-adj\n"
             + "frozen\tsupposed\t1\toewn-suppose-v\tTense=Past+VerbForm=Part\tdema\t1\t\tsupposed#supposed-past\n"
@@ -90,7 +103,7 @@ public sealed class FormReproducibilityTests : IDisposable
         var root = DataFixture.RepositoryRoot();
 
         // Act
-        var ex = Assert.Throws<InvalidDataException>(() => FormGenerator.Run(Path.Join(root, "data"), Path.Join(_dir.Root, "corpus"), oewn, agid, Path.Join(_dir.Root, "out"), null, null));
+        var ex = Assert.Throws<InvalidDataException>(() => FormGenerator.Run(Path.Join(root, "data"), Path.Join(_dir.Root, "corpus"), oewn, Path.Join(_dir.Root, "out"), null));
 
         // Assert
         Assert.Contains("form-frozen.tsv:3:", ex.Message, StringComparison.Ordinal);
@@ -104,9 +117,9 @@ public sealed class FormReproducibilityTests : IDisposable
     [Fact]
     public void WordSenseBuilder_FormGenerator_Run_UnpinnedInput_IsRefused()
     {
-        var oewn = TinyInputs(out var agid);
+        var oewn = TinyInputs();
         var root = DataFixture.RepositoryRoot();
-        var ex = Assert.Throws<InvalidDataException>(() => FormGenerator.Run(Path.Join(root, "data"), Path.Join(root, "corpus"), oewn, agid, _dir.Root));
+        var ex = Assert.Throws<InvalidDataException>(() => FormGenerator.Run(Path.Join(root, "data"), Path.Join(root, "corpus"), oewn, _dir.Root));
         Assert.Contains("SHA-256", ex.Message, StringComparison.Ordinal);
     }
 

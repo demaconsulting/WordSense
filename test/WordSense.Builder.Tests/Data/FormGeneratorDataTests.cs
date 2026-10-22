@@ -35,7 +35,7 @@ public sealed class FormGeneratorDataTests
     [Fact]
     public void WordSenseBuilder_FormGenerator_Data_Provenance_IsKnown()
     {
-        string[] known = ["agid", "carried", "contraction", "hand", "irregular_list", "moby_reverse", "oewn_form", "rule", "rule_variant", "llm"];
+        string[] known = ["carried", "contraction", "hand", "irregular_list", "moby_reverse", "oewn_form", "rule", "rule_variant", "llm"];
         var unknown = Forms.Value.Select(r => r[^1]).Distinct().Where(p => !known.Contains(p)).ToList();
         Assert.Empty(unknown);
     }
@@ -180,15 +180,61 @@ public sealed class FormGeneratorDataTests
     }
 
     /// <summary>
-    ///     A form that only the inflection database lists and that is no regular inflection needs a second source: the AGID-only
-    ///     irregular forms are not shipped.
+    ///     The spellings that the regular rules once gave wrongly are not shipped: the plural of a plural lemma in -men
+    ///     (fix 1), -mans for a compound of man (fix 2), -ys for a noun in -quy (fix 7), -os for a compound of hero (fix 8),
+    ///     -es for an invariant unit (fix 10) and the gerund of a verb in -ie that keeps the e (fix 9).
     /// </summary>
     /// <param name="spelling">The spelling.</param>
     [Theory]
-    [InlineData("outdone")]
-    [InlineData("segueing")]
-    public void WordSenseBuilder_FormGenerator_Data_AgidOnlyIrregularForm_IsNotShipped(string spelling)
+    [InlineData("bagmens")]
+    [InlineData("dairywomens")]
+    [InlineData("icewomans")]
+    [InlineData("obsequys")]
+    [InlineData("superheros")]
+    [InlineData("hertzes")]
+    [InlineData("birdiing")]
+    public void WordSenseBuilder_FormGenerator_Data_RuleDefect_IsNotShipped(string spelling)
     {
-        Assert.DoesNotContain(Rows(spelling), r => r[^1] == "agid");
+        Assert.Empty(Rows(spelling));
+    }
+
+    /// <summary>
+    ///     The corrected spellings are shipped, and the forms that the authors wrote carry the provenance llm.
+    /// </summary>
+    /// <param name="spelling">The spelling.</param>
+    /// <param name="entry">The entry that has the form.</param>
+    [Theory]
+    [InlineData("icewomen", "oewn-icewoman-n")]
+    [InlineData("superheroes", "oewn-superhero-n")]
+    [InlineData("obsequies", "oewn-obsequy-n")]
+    [InlineData("birdieing", "oewn-birdie-v")]
+    [InlineData("wiretapped", "oewn-wiretap-v")]
+    public void WordSenseBuilder_FormGenerator_Data_AuthoredForm_ShipsWithTheProvenanceLlm(string spelling, string entry)
+    {
+        Assert.Contains(Rows(spelling), r => r[2] == entry && r[^1] == "llm");
+    }
+
+    /// <summary>
+    ///     A word in -men that is no plural, a word in -man whose plural is regular and a noun that only ends like hero keep the
+    ///     regular plural.
+    /// </summary>
+    /// <param name="spelling">The spelling.</param>
+    [Theory]
+    [InlineData("specimens")]
+    [InlineData("germans")]
+    [InlineData("rancheros")]
+    public void WordSenseBuilder_FormGenerator_Data_RegularPlural_OfAWordThatOnlyEndsLikeACompound_IsShipped(string spelling)
+    {
+        Assert.Contains(Rows(spelling), r => r[3].Contains("Number=Plur", StringComparison.Ordinal));
+    }
+
+    /// <summary>
+    ///     The authored forms are authoritative: foots is no plural of foot, because the authors gave feet only.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_FormGenerator_Data_AuthoredPlural_LeavesOutTheRegularSpelling()
+    {
+        Assert.DoesNotContain(Rows("foots"), r => r[3].Contains("Number=Plur", StringComparison.Ordinal));
+        Assert.Contains(Rows("feet"), r => r[3].Contains("Number=Plur", StringComparison.Ordinal));
     }
 }

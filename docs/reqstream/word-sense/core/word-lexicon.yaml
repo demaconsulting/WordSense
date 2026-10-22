@@ -139,15 +139,16 @@ sections:
 
               - id: WordSense-Core-WordLexicon-Senses
                 title: >-
-                  WordLexicon shall list the senses of a lemma and part of speech in inventory order, the most frequent
-                  first, shall return an empty list for a lemma or part of speech without senses, and shall reject a
-                  null lemma.
+                  WordLexicon shall list the senses of a lemma and part of speech in inventory order, the order of Open
+                  English WordNet (the position of the sense in its entry, project senses last), shall return an empty
+                  list for a lemma or part of speech without senses, and shall reject a null lemma.
                 tags: [unit]
                 justification: |
-                  Models choose among the senses of an analysis; a fixed, frequency-ranked order gives every model the
-                  same candidates and the same most-frequent-sense baseline.
+                  Models choose among the senses of an analysis; a fixed order that does not depend on the training
+                  counts gives every model the same candidates and the same first-sense baseline, and keeps the
+                  catalog independent of the WordNet 3.0 counts.
                 tests:
-                  - WordLexicon_SensesOf_LemmaAndPartOfSpeech_ListsMostFrequentFirst
+                  - WordLexicon_SensesOf_LemmaAndPartOfSpeech_ListsInOewnOrder
                   - WordLexicon_SensesOf_UnknownLemma_IsEmpty
                   - WordLexicon_SensesOf_NullLemma_Throws
                   - WordLexicon_SensesOf_SingleSenseLemma_ListsOneSense

@@ -94,8 +94,8 @@ Adonis	0	oewn-adonis-n	Number=Sing	dema	0			oewn_form
 Adonis	1	oewn-Adonis-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Adonis annua	0	oewn-Adonis_annua-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Adonis annuas	0	oewn-Adonis_annua-n	Capitalization=Exact+Number=Plur	dema	0			rule
-Adonises	0	oewn-adonis-n	Number=Plur	dema	0			rule
-Adonises	1	oewn-Adonis-n	Capitalization=Title+Number=Plur	dema	0			rule
+Adonises	0	oewn-adonis-n	Number=Plur	dema	0			llm
+Adonises	1	oewn-Adonis-n	Capitalization=Title+Number=Plur	dema	0			llm
 Adrenalin	0	oewn-Adrenalin-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Adrenalins	0	oewn-Adrenalin-n	Capitalization=Title+Number=Plur	dema	0			rule
 Advanced Research and Development Activities	0	oewn-Advanced_Research_and_Development_Activity-n	Capitalization=Exact+Number=Plur	dema	0			rule
@@ -346,8 +346,8 @@ adenectomies	0		Number=Plur	dema	0	adenectomy	n	rule
 adenectomy	0		Number=Sing	dema	0	adenectomy	n	moby_reverse
 adenine	0	oewn-adenine-n	Number=Sing	dema	0			oewn_form
 adenines	0	oewn-adenine-n	Number=Plur	dema	0			rule
+adenitides	0	oewn-adenitis-n	Number=Plur	dema	0			llm
 adenitis	0	oewn-adenitis-n	Number=Sing	dema	0			oewn_form
-adenitises	0	oewn-adenitis-n	Number=Plur	dema	0			rule
 adenocarcinoma	0	oewn-adenocarcinoma-n	Number=Sing	dema	0			oewn_form
 adenocarcinomas	0	oewn-adenocarcinoma-n	Number=Plur	dema	0			rule_variant
 adenocarcinomata	0	oewn-adenocarcinoma-n	Number=Plur	dema	0			oewn_form
@@ -403,7 +403,7 @@ adept	0	oewn-adept-a	Degree=Pos	dema	0			oewn_form
 adept	1	oewn-adept-n	Number=Sing	dema	0			oewn_form
 adeptly	0		Degree=Pos	dema	0	adeptly	r	moby_reverse
 adeptness	0	oewn-adeptness-n	Number=Sing	dema	0			oewn_form
-adeptnesses	0	oewn-adeptness-n	Number=Plur	dema	0			rule
+adeptnesses	0	oewn-adeptness-n	Number=Plur	dema	0			llm
 adepts	0	oewn-adept-n	Number=Plur	dema	0			rule
 adequacies	0	oewn-adequacy-n	Number=Plur	dema	0			rule
 adequacy	0	oewn-adequacy-n	Number=Sing	dema	0			oewn_form
@@ -657,7 +657,7 @@ admeasurer	0		Number=Sing	dema	0	admeasurer	n	moby_reverse
 admeasurers	0		Number=Plur	dema	0	admeasurer	n	rule
 admeasures	0	oewn-admeasure-v	Person=3+Tense=Pres	dema	0			rule
 admeasuring	0	oewn-admeasure-v	VerbForm=Ger	dema	0			rule
-admen	0	oewn-adman-n	Number=Plur	dema	0			agid
+admen	0	oewn-adman-n	Number=Plur	dema	0			llm
 admin	0		Number=Sing	dema	0	admin	n	moby_reverse
 adminicle	0		Number=Sing	dema	0	adminicle	n	moby_reverse
 adminicles	0		Number=Plur	dema	0	adminicle	n	rule
@@ -815,7 +815,7 @@ adolescents	0	oewn-adolescent-n	Number=Plur	dema	0			rule
 adolesces	0	oewn-adolesce-v	Person=3+Tense=Pres	dema	0			rule
 adolescing	0	oewn-adolesce-v	VerbForm=Ger	dema	0			rule
 adonis	0	oewn-adonis-n	Number=Sing	dema	0			oewn_form
-adonises	0	oewn-adonis-n	Number=Plur	dema	0			rule
+adonises	0	oewn-adonis-n	Number=Plur	dema	0			llm
 adopt	0	oewn-adopt-v	VerbForm=Inf	dema	0			oewn_form
 adoptabilities	0		Number=Plur	dema	0	adoptability	n	rule
 adoptability	0		Number=Sing	dema	0	adoptability	n	moby_reverse
@@ -839,7 +839,7 @@ adorabilities	0	oewn-adorability-n	Number=Plur	dema	0			rule
 adorability	0	oewn-adorability-n	Number=Sing	dema	0			oewn_form
 adorable	0	oewn-adorable-a	Degree=Pos	dema	0			oewn_form
 adorableness	0	oewn-adorableness-n	Number=Sing	dema	0			oewn_form
-adorablenesses	0	oewn-adorableness-n	Number=Plur	dema	0			rule
+adorablenesses	0	oewn-adorableness-n	Number=Plur	dema	0			llm
 adorably	0	oewn-adorably-r	Degree=Pos	dema	0			oewn_form
 adoration	0	oewn-adoration-n	Number=Sing	dema	0			oewn_form
 adorations	0	oewn-adoration-n	Number=Plur	dema	0			rule

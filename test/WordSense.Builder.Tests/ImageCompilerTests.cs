@@ -17,7 +17,8 @@ public sealed class ImageCompilerTests : IDisposable
 
     /// <summary>
     ///     The catalog of a small data folder is compiled deterministically: equal data gives equal sections and an equal
-    ///     inventory hash, the senses of a lemma are ranked by their tag counts, and the group is listed.
+    ///     inventory hash, the senses of a lemma are in the order of Open English WordNet (the position of the sense in its
+    ///     entry; the tag counts of the fixture rank them the other way round and must not matter), and the group is listed.
     /// </summary>
     [Fact]
     public void WordSenseBuilder_ImageCompiler_Build_CatalogIsDeterministic()
@@ -34,14 +35,40 @@ public sealed class ImageCompilerTests : IDisposable
         Assert.True(a.InventoryHash.SequenceEqual(b.InventoryHash));
         Assert.All(a.SectionIds, id => Assert.True(a.RawSection(id).AsSpan().SequenceEqual(b.RawSection(id)), $"Section {id} differs."));
         Assert.Equal(
-            ["bank#incline", "bank#banking-company", "bank#ridge", "bank#coin-bank"],
+            ["bank#coin-bank", "bank#banking-company", "bank#ridge", "bank#incline"],
             a.SensesOf("bank", PartOfSpeech.Noun).Select(s => s.SenseId));
         Assert.True(a.TryGetGroup("bank#group:depository", out var group));
-        Assert.Equal(["bank#banking-company", "bank#coin-bank"], group.SenseIds);
+        Assert.Equal(["bank#coin-bank", "bank#banking-company"], group.SenseIds);
         Assert.True(a.TryGetSenseByKey("bank%1:17:01::", out var incline));
         Assert.Null(incline.GroupId);
         Assert.True(a.InventoryHash.SequenceEqual(ImageFormat.ComputeInventoryHash(a.RawSection)));
         a.ValidateCatalog();
+    }
+
+    /// <summary>
+    ///     The order of the senses of a lemma and part of speech is the position in the Open English WordNet entry, then the
+    ///     homograph number of the entry, with the project senses (no sense key) last whatever their position; the tag
+    ///     counts of the sense frequency table do not decide it, and the order is the same when the counts are removed.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_ImageCompiler_Build_SenseOrder_IsOewnPositionThenHomographThenProjectSenses()
+    {
+        string[] entries = ["oewn-bank-1-n\tbank\tn\t1\t1\t1\toewn"];
+        string[] senses =
+        [
+            Bank + "1.99.00..\tbank%1:99:00::\toewn-bank-1-n\toewn-7-n\t1",
+            Bank + "9.99.00..\t\toewn-bank-n\tdema-bank-n\t0",
+        ];
+        string[] labels = [Bank + "1.99.00..\thomograph-one\tgenerated", Bank + "9.99.00..\tproject-sense\tcurated"];
+        var data = WriteData(_dir.Root, extraEntries: entries, extraSenses: senses, extraLabels: labels);
+        var order = new[] { "bank#coin-bank", "bank#homograph-one", "bank#banking-company", "bank#ridge", "bank#incline", "bank#project-sense" };
+
+        var (image, _) = ImageCompiler.Build(data);
+        var noCounts = Path.Join(_dir.Root, "no-counts");
+        var (without, _) = ImageCompiler.Build(WriteData(noCounts, extraEntries: entries, extraSenses: senses, extraLabels: labels, frequencies: false));
+
+        Assert.Equal(order, WordImage.Open(image).SensesOf("bank", PartOfSpeech.Noun).Select(s => s.SenseId));
+        Assert.Equal(order, WordImage.Open(without).SensesOf("bank", PartOfSpeech.Noun).Select(s => s.SenseId));
     }
 
     /// <summary>
@@ -166,12 +193,20 @@ public sealed class ImageCompilerTests : IDisposable
     /// <returns>The data folder.</returns>
     internal static string WriteSmallData(string root) => WriteData(root);
 
-    private static string WriteData(string root, IEnumerable<string>? labels = null, IEnumerable<string>? groups = null, IEnumerable<string>? members = null)
+    private static string WriteData(
+        string root,
+        IEnumerable<string>? labels = null,
+        IEnumerable<string>? groups = null,
+        IEnumerable<string>? members = null,
+        IEnumerable<string>? extraEntries = null,
+        IEnumerable<string>? extraSenses = null,
+        IEnumerable<string>? extraLabels = null,
+        bool frequencies = true)
     {
         var data = Path.Join(root, "data");
         Directory.CreateDirectory(data);
         File.Copy(Path.Join(DataFixture.RepositoryRoot(), "data", "schema.yaml"), Path.Join(data, "schema.yaml"), true);
-        Table(data, "entry/b.tsv", "entry_id\tlemma\tpos\thomograph_no\ttoken_count\thead_idx\tsource_id", ["oewn-bank-n\tbank\tn\t0\t1\t1\toewn", "oewn-bank-v\tbank\tv\t0\t1\t1\toewn"]);
+        Table(data, "entry/b.tsv", "entry_id\tlemma\tpos\thomograph_no\ttoken_count\thead_idx\tsource_id", ["oewn-bank-n\tbank\tn\t0\t1\t1\toewn", "oewn-bank-v\tbank\tv\t0\t1\t1\toewn", .. extraEntries ?? []]);
         Table(
             data,
             "sense/b.tsv",
@@ -183,13 +218,16 @@ public sealed class ImageCompilerTests : IDisposable
                 Bank + "1.17.01..\tbank%1:17:01::\toewn-bank-n\toewn-4-n\t4",
                 Bank + "2.35.00..\tbank%2:35:00::\toewn-bank-v\toewn-5-v\t1",
                 Bank + "2.35.01..\tbank%2:35:01::\toewn-bank-v\toewn-6-v\t2",
+                .. extraSenses ?? [],
             ]);
-        Table(data, "sense_label/b.tsv", "sense_id\tlabel\torigin", labels ?? Labels);
+        Table(data, "sense_label/b.tsv", "sense_id\tlabel\torigin", [.. labels ?? Labels, .. extraLabels ?? []]);
         Table(
             data,
             "sense_frequency/b.tsv",
             "sense_key\ttag_count\tsource",
-            ["bank%1:06:01::\t0\twn30", "bank%1:14:00::\t20\twn30", "bank%1:17:00::\t2\twn30", "bank%1:17:01::\t25\twn30", "bank%2:35:00::\t1\twn30", "bank%2:35:01::\t0\twn30"]);
+            frequencies
+                ? ["bank%1:06:01::\t0\twn30", "bank%1:14:00::\t20\twn30", "bank%1:17:00::\t2\twn30", "bank%1:17:01::\t25\twn30", "bank%2:35:00::\t1\twn30", "bank%2:35:01::\t0\twn30"]
+                : []);
         Table(data, "form/b.tsv", "spelling\trank\tentry_id\tfeatures\tsource\treviewed\tsurface_lemma\tsurface_pos\torigin", ["bank\t0\toewn-bank-n\tNumber=Sing\tdema\t0\t\t\toewn_form", "bank\t1\toewn-bank-v\tVerbForm=Inf\tdema\t0\t\t\toewn_form"]);
         Table(data, "sense_group/b.tsv", "group_id\tlemma\tpos\tlabel\torigin", groups ?? Groups);
         Table(data, "group_sense/b.tsv", "group_id\tsense_id", members ?? Members);

@@ -18,15 +18,18 @@ Inputs, all read from `data/`:
 - `synset_relation`: the hypernym relation of a synset.
 - `sense_label`: the labels that exist, curated, generated or project, with their origin.
 - `sense_label_map`: the renames and retirements of earlier ids. The label part of every old id counts as used.
-- `sense_frequency`: the tag count that orders the senses of a lemma, when the table is present.
+- `sense_frequency`: the tag count that orders the senses of a lemma for the labels, when the table is present.
 
 Output: the complete `sense_label` table, the existing rows unchanged and one row for each sense of a one-token lemma
 that had no label: origin `generated`, or `project` for a sense without a sense key (the generator never writes
 `curated`). The generator never reads, creates, changes or removes a group: a group exists only when it is curated, and
 its id (`lemma#group:slug`) lives in its own namespace, so a group does not take a label of the lemma.
 
-Inventory order of the senses of a lemma: part of speech, then WordNet 3.0 tag count descending, then the UTF-8 bytes of
-the sense id. The order depends on the data only.
+Labeling order of the senses of a lemma: part of speech, then WordNet 3.0 tag count descending (a sense without a count
+has the count 0), then the UTF-8 bytes of the sense id. The order depends on the data only. It decides which sense gets
+the plain slug and which gets `-2`, `-3`, so it is fixed for the ids that exist (sense ids are frozen). It is not the
+inventory order: the senses of the word image are in the order of Open English WordNet (see the image compiler), and
+the generator ignores the order in which the senses are listed.
 
 The label of a sense without one is the first rule that gives a usable slug:
 
@@ -49,8 +52,9 @@ Uniqueness: the labels of one lemma are unique across its parts of speech. A lab
 or by an existing or retired id of the lemma is not taken (the label of a group is not: a group id carries the marker
 `group:` and is in its own namespace).
 When the slug of a sense is taken, the sense receives the
-slug with the suffix `-2`, then `-3`, and so on, the first free number. Senses are labeled in inventory order, so the
-sense that comes first keeps the plain slug.
+slug with the suffix `-2`, then `-3`, and so on, the first free number. Senses are labeled in the labeling order (part of
+speech, then WordNet 3.0 count descending, then the UTF-8 bytes of the sense id; see the Data Model), so the sense that
+comes first in that order keeps the plain slug.
 
 #### Key Methods
 

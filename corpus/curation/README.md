@@ -8,7 +8,7 @@ senses and 6 project senses, see "Technical lemmas (wave 3)" below). The ids of 
 (`lemma#label`). The columns
 `tier`, `tag_count` and the others of `senses.tsv` are the per-sense data of the curation (the tier sizes the training
 data of the sense); `group_id` and `group_reason` of a sense record the curator's group of the sense (empty when the
-sense is in no group any more, see "Group changes" below) and `flag` is the curator's remark (`D` near-duplicate of
+sense is in no group any more, see "Group review" below) and `flag` is the curator's remark (`D` near-duplicate of
 another sense, `R` rare). `seed-inventory` reads `sense_id`, `oewn_sense_id`, `part_of_speech`, `gloss` and `source`
 of `senses.tsv`, and `group_id`, `lemma`, `part_of_speech`, `member_sense_ids`, `kind` and `evidence` of `groups.tsv`.
 
@@ -39,7 +39,7 @@ empty.
 A project sense (a sense that Open English WordNet does not have; source `dema`, synset id `dema-syn-...`) first had a
 placeholder gloss: the seeder template ("The preposition "about"; a project sense, because Open English WordNet has no
 preposition sense of this word."; 817 senses), a bare part-of-speech or label word (`noun`, `verb`, `adj-noun`; 118) or
-"... no definition recorded" (2). The detection rule (`tools/quota-fill/placeholder_glosses.py detect`) is: the sense is
+"... no definition recorded" (2). A gloss is a placeholder when the sense is
 a project sense and its gloss is empty, a bare word or hyphenated pair of words, the seeder template or ends with
 "no definition recorded". The 937 placeholder glosses were replaced by real one-line definitions that
 `gpt-6.1-sol` wrote from the lemma, the part of speech, the role of the sense (for example a closed class), the other
@@ -47,13 +47,13 @@ senses of the lemma and one or two example sentences. `project-glosses.tsv` is t
 old gloss, new gloss). The glosses are stored where the seeder and the compiler read them: the committed table
 `data/gloss` (the rows of the `dema-syn-*` synsets only; no gloss of an Open English WordNet synset was touched, and
 OEWN glosses stay verbatim) and, for the 135 project senses that this curation lists, the `gloss` column of
-`senses.tsv`, which `seed-inventory` writes into `data/`. No placeholder gloss remains (`detect` reports 0).
+`senses.tsv`, which `seed-inventory` writes into `data/`. No placeholder gloss remains.
 
 ## Technical lemmas (wave 3)
 
 Technical instructions (aircraft and machine maintenance, written in plain "STE-style" English: "Mount the bracket to the
 frame.", "Torque the bolts to 25 N m.") use words whose technical senses the encoders had not seen. A probe of 30 such
-sentences (see `docs/build_notes/quota-fill.md`) found three kinds of gap, and wave 3 closed them:
+sentences found three kinds of gap, and wave 3 closed them:
 
 - **Lemmas that were not curated.** `mount`, `bearing`, `bleed`, `torque`, `run`, `position`, `support`, `install`,
   `remove`, `attach`, `inspect` and `clean` (176 senses of the data) were added to `senses.tsv` with `tools/quota-fill/
@@ -71,13 +71,16 @@ sentences (see `docs/build_notes/quota-fill.md`) found three kinds of gap, and w
   participial adjectives that technical text uses (`damaged`, `drained`, `drilled`, `alloyed`; listed in
   `corpus/lexicon/own-adjectives.tsv`), which a reviewed analysis of the verb form had hidden (`FormGenerator`,
   requirement `WordSense-WordData-FormGenerator-OwnEntries`). 114 such adjective entries exist; the other 110 (`based`,
-  `covered`, `changed`, `driven`, ...) were left out on purpose, see `docs/build_notes/quota-fill.md`.
+  `covered`, `changed`, `driven`, ...) were left out on purpose (giving them all an analysis lowered the real-text fine
+  top-1 by about two points, see the method of the quota filling in `corpus/README.md`).
 
 `tech-senses.tsv` lists the 62 senses that technical text uses (picked by `gpt-6.1-sol` from the senses of 19 technical
 lemmas, with the note of their technical use) and the number of **extra anchors** that wave 3 brings for each (14 for a
-core meaning, 8 for a minor one): real FAA text first, then written technical sentences. Gaps that remain are listed in
-`docs/build_notes/quota-fill.md` (for example the noun `bleed`, the verb `torque` as a sense, the noun `lock` as a
-mechanism, `arm` as a moment arm and `clean` as aerodynamically clean).
+core meaning, 8 for a minor one): real FAA text first, then written technical sentences. The quota filling reads this
+file (`--tech`). Gaps that remain (found by a review of the FAA sentences that the labeler could not place, by
+`gpt-6.1-sol`): the noun `bleed` (bleed air), the
+verb `torque` as a sense, the noun `lock` as a mechanism, `arm` as a moment arm, a ground roll and `clean` as
+aerodynamically clean.
 
 ## Part of speech of a curated sense
 
@@ -125,47 +128,15 @@ The result is 140 groups of 307 senses: 110 `equivalent` and 30 `related` (the f
 of the lemmas of the curation as a whole and removes any group row whose origin is not `curated` (the retired default
 groups). After the import the tables are edited in `data/` and these files are only the record of what was imported.
 
-## Group changes
+## Group review
 
-The sections below record the cleanup of the groups of the first batch (the second batch is described above). The cleanup
-pass of the groups (the data had 68 groups of 164 senses before it) made these changes. Group ids changed in
-the data from `lemma#label` (28 of them `lemma#label-related`, the suffix that resolved a clash with the id of a sense)
-to the scheme `lemma#group:slug`; they are not frozen, so this is recorded here and in the release notes of the release
-that publishes the groups.
-
-**Renamed (56 groups).** Every kept group got the marker, and the suffix `-related` was removed from the 16 kept groups
-that had it (`help#assistance-related` is now `help#group:assistance`). Two groups also got a neutral slug, because the
-old name was that of one member only:
-
-| Old id | New id | Why |
-| --- | --- | --- |
-| `first#first-item-related` | `first#group:first-in-order` | both members are near-duplicates; neither names it |
-| `still#distillery-related` | `still#group:distillation` | apparatus and plant of distillation; neither names it |
-
-**Dropped (12 groups).** The curated groups of near-duplicate senses without evidence beyond the curator's judgment
-(no observed confusion, or one in-group confusion), and the groups that are not one meaning. The member senses stay;
-their `group_id` in `senses.tsv` is now empty.
-
-| Dropped group | Why |
-| --- | --- |
-| `back#rear-located-related` | near-duplicates; no in-group confusion (0/48) |
-| `forward#front-located-related` | near-duplicates; no in-group confusion (0/51) |
-| `help#assist-related` | near-duplicates; 1 in-group confusion (1/48) |
-| `just#exactly-related` | near-duplicates; no in-group confusion (0/48) |
-| `long#spatial-length-related` | near-duplicates; no in-group confusion (0/40) |
-| `please#give-pleasure-related` | near-duplicates; no in-group confusion (0/41) |
-| `still#calm-water-related` | near-duplicates; 1 in-group confusion (1/27) |
-| `well#favorably-related` | near-duplicates; no in-group confusion (0/27) |
-| `right#right-side-related` | a turn, a hand and a location: not one meaning; no confusion (0/65) |
-| `help#serve-food-related` | the two meanings are barely related; no confusion (0/27) |
-| `well#advisable-related` | a weak link between the meanings; no confusion (0/34) |
-| `home#on-target-related` | no evidence; no confusion (0/27) |
-
-**Kept with a decision.** `test#group:trial` is `related` (18/65 in-group confusion); `only#group:merely` is `related`
-and the `D` flag of `only#exclusively` was cleared, because it is a major adverb reading (226 WordNet tags) and not a
-near-duplicate; `first#group:first-in-order` is `equivalent` (both members are `D`); `still#group:distillation` is
-`related`.
-
+The groups of the first batch were reviewed once (the data had 68 groups of 164 senses before): a group that rests on the
+curator's judgment alone (near-duplicate senses with no observed in-group confusion, or one confusion) or that is not
+one meaning is dropped (12 groups; the member senses stay and their `group_id` in `senses.tsv` is empty), and every kept
+group has the id scheme `lemma#group:slug` (group ids are not frozen, see `data/README.md`). Kept with a decision:
+`test#group:trial` is `related` (18/65 in-group confusion); `only#group:merely` is `related` and the `D` flag of
+`only#exclusively` was cleared, because it is a major adverb reading (226 WordNet tags) and not a near-duplicate;
+`first#group:first-in-order` is `equivalent` (both members are `D`); `still#group:distillation` is `related`.
 **Known gaps of the evidence.** Six `related` groups that were named after a member have no observed in-group
 confusion (`home#group:domestic`, `home#group:homeland`, `review#group:look-again`, `still#group:distillation`,
 `test#group:examine-knowledge` and `test#group:try-out`), and two of them (`home#group:domestic` and

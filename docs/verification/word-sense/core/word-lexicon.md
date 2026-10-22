@@ -54,9 +54,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
   upper-case spelling finds the lower-case entry; an unknown word is absent (`Lookup_UnknownWord_IsAbsent`); a null
   word throws (`Lookup_NullWord_Throws`).
 - **Forms of a lemma** (`FormsOf_Lemma_ListsItsForms`): the forms of `record` are listed.
-- **Senses of a lemma and part of speech** (`SensesOf_LemmaAndPartOfSpeech_ListsMostFrequentFirst`,
+- **Senses of a lemma and part of speech** (`SensesOf_LemmaAndPartOfSpeech_ListsInOewnOrder`,
   `SensesOf_SingleSenseLemma_ListsOneSense`, `SensesOf_UnknownLemma_IsEmpty`, `SensesOf_NullLemma_Throws`): the senses
-  of `bank` as a noun are listed with the most frequent first, a lemma and part of speech with one sense lists one, an
+  of `bank` as a noun are listed in the order of Open English WordNet (sloping land first), a lemma and part of speech
+  with one sense lists one, an
   unknown lemma lists none and a null lemma throws.
 - **Catalog is complete** (`SensesOf_EverySingleTokenOewnSense_IsInTheCatalog`,
   `SensesOf_ProjectSenses_AreInTheCatalog`): every single-token OEWN sense and every project sense of the data is

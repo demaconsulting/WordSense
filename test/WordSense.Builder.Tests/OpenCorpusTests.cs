@@ -71,6 +71,26 @@ public sealed class OpenCorpusTests : IDisposable
     }
 
     /// <summary>
+    ///     A token line without a form, lemma or tag is refused with its file and line, and the lemma of a token is kept.
+    /// </summary>
+    /// <param name="token">The token line.</param>
+    [Theory]
+    [InlineData("1\t\tgo\tVERB\tV\t_\tunanimous")]
+    [InlineData("1\tGo\t\tVERB\tV\t_\tunanimous")]
+    [InlineData("1\tGo\tgo\t\tV\t_\tunanimous")]
+    public void WordSenseBuilder_OpenCorpus_ReadFile_TokenWithEmptyField_IsRefusedWithTheLine(string token)
+    {
+        // Arrange
+        var path = _dir.Write("empty.tsv", Header + "# sent_id = a\n# source_id = a\n# text = Go.\n" + token + "\n");
+
+        // Act
+        var ex = Assert.Throws<InvalidDataException>(() => OpenCorpus.ReadFile(path));
+
+        // Assert
+        Assert.Contains("empty.tsv:8:", ex.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
     ///     A split contraction is joined again when the joined form is in the text, with the tag of its first part, and
     ///     a possessive 's stays a token of its own.
     /// </summary>

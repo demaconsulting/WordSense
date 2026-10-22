@@ -150,9 +150,9 @@ Xerox	1	oewn-xerox-v	VerbForm=Inf	dema	0			oewn_form
 Xerox	2	oewn-Xerox-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Xerox machine	0	oewn-Xerox_machine-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Xerox machines	0	oewn-Xerox_machine-n	Capitalization=Exact+Number=Plur	dema	0			rule
-Xeroxes	0	oewn-xerox-n	Number=Plur	dema	0			rule
+Xeroxes	0	oewn-xerox-n	Number=Plur	dema	0			llm
 Xeroxes	1	oewn-xerox-v	Person=3+Tense=Pres	dema	0			rule
-Xeroxes	2	oewn-Xerox-n	Capitalization=Title+Number=Plur	dema	0			rule
+Xeroxes	2	oewn-Xerox-n	Capitalization=Title+Number=Plur	dema	0			llm
 Xes	0	oewn-x-n	Number=Plur	dema	0			rule
 Xes	1	oewn-X-n	Capitalization=Title+Number=Plur	dema	0			rule
 Xes	2	oewn-Xe-n	Capitalization=Title+Number=Plur	dema	0			rule
@@ -204,7 +204,8 @@ xanthations	0		Number=Plur	dema	0	xanthation	n	rule
 xanthein	0		Number=Sing	dema	0	xanthein	n	moby_reverse
 xantheins	0		Number=Plur	dema	0	xanthein	n	rule
 xanthelasma	0	oewn-xanthelasma-n	Number=Sing	dema	0			oewn_form
-xanthelasmas	0	oewn-xanthelasma-n	Number=Plur	dema	0			rule
+xanthelasmas	0	oewn-xanthelasma-n	Number=Plur	dema	0			rule_variant
+xanthelasmata	0	oewn-xanthelasma-n	Number=Plur	dema	0			llm
 xanthemia	0	oewn-xanthemia-n	Number=Sing	dema	0			oewn_form
 xanthemias	0	oewn-xanthemia-n	Number=Plur	dema	0			rule
 xanthene	0		Number=Sing	dema	0	xanthene	n	moby_reverse
@@ -315,7 +316,8 @@ xerographically	0		Degree=Pos	dema	0	xerographically	r	moby_reverse
 xerographies	0	oewn-xerography-n	Number=Plur	dema	0			rule
 xerography	0	oewn-xerography-n	Number=Sing	dema	0			oewn_form
 xeroma	0	oewn-xeroma-n	Number=Sing	dema	0			oewn_form
-xeromas	0	oewn-xeroma-n	Number=Plur	dema	0			rule
+xeromas	0	oewn-xeroma-n	Number=Plur	dema	0			llm
+xeromata	0	oewn-xeroma-n	Number=Plur	dema	0			rule_variant
 xeromorphic	0		Degree=Pos	dema	0	xeromorphic	a	moby_reverse
 xerophagies	0		Number=Plur	dema	0	xerophagy	n	rule
 xerophagy	0		Number=Sing	dema	0	xerophagy	n	moby_reverse
@@ -349,7 +351,7 @@ xerox	1	oewn-xerox-v	VerbForm=Inf	dema	0			oewn_form
 xerox copies	0	oewn-xerox_copy-n	Number=Plur	dema	0			rule
 xerox copy	0	oewn-xerox_copy-n	Number=Sing	dema	0			oewn_form
 xeroxed	0	oewn-xerox-v	Tense=Past+VerbForm=Part	dema	0			rule
-xeroxes	0	oewn-xerox-n	Number=Plur	dema	0			rule
+xeroxes	0	oewn-xerox-n	Number=Plur	dema	0			llm
 xeroxes	1	oewn-xerox-v	Person=3+Tense=Pres	dema	0			rule
 xeroxing	0	oewn-xerox-v	VerbForm=Ger	dema	0			rule
 xes	0	oewn-x-n	Number=Plur	dema	0			rule

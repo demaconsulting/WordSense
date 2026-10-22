@@ -139,7 +139,7 @@ Asiatic flying squirrels	0	oewn-Asiatic_flying_squirrel-n	Capitalization=Exact+N
 Asiatic shrew mole	0	oewn-Asiatic_shrew_mole-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Asiatic shrew moles	0	oewn-Asiatic_shrew_mole-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Asiatic sweetleaf	0	oewn-Asiatic_sweetleaf-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
-Asiatic sweetleafs	0	oewn-Asiatic_sweetleaf-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Asiatic sweetleaves	0	oewn-Asiatic_sweetleaf-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Asiatics	0	oewn-Asiatic-n	Capitalization=Title+Number=Plur	dema	0			rule
 Asimina triloba	0	oewn-Asimina_triloba-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Asimina trilobas	0	oewn-Asimina_triloba-n	Capitalization=Exact+Number=Plur	dema	0			rule
@@ -325,7 +325,6 @@ asbestoidal	0		Degree=Pos	dema	0	asbestoidal	a	moby_reverse
 asbestos	0	oewn-asbestos-n	Number=Sing	dema	0			oewn_form
 asbestos abatement	0	oewn-asbestos_abatement-n	Number=Sing	dema	0			oewn_form
 asbestos abatements	0	oewn-asbestos_abatement-n	Number=Plur	dema	0			rule
-asbestoses	0	oewn-asbestos-n	Number=Plur	dema	0			rule
 asbestosis	0	oewn-asbestosis-n	Number=Sing	dema	0			oewn_form
 asbestous	0		Degree=Pos	dema	0	asbestous	a	moby_reverse
 asbolane	0		Number=Sing	dema	0	asbolane	n	moby_reverse
@@ -450,7 +449,7 @@ ascription	0	oewn-ascription-n	Number=Sing	dema	0			oewn_form
 ascriptions	0	oewn-ascription-n	Number=Plur	dema	0			rule
 ascus	0	oewn-ascus-n	Number=Sing	dema	0			oewn_form
 asdic	0	oewn-asdic-n	Number=Sing	dema	0			oewn_form
-asdics	0	oewn-asdic-n	Number=Plur	dema	0			rule
+asdics	0	oewn-asdic-n	Number=Plur	dema	0			llm
 asea	0	oewn-asea-r	Degree=Pos	dema	0			oewn_form
 aseities	0		Number=Plur	dema	0	aseity	n	rule
 aseity	0		Number=Sing	dema	0	aseity	n	moby_reverse
@@ -536,9 +535,8 @@ ashlarings	0		Number=Plur	dema	0	ashlaring	n	rule
 ashlars	0	oewn-ashlar-n	Number=Plur	dema	0			rule
 ashless	0		Degree=Pos	dema	0	ashless	a	moby_reverse
 ashman	0		Number=Sing	dema	0	ashman	n	moby_reverse
-ashmans	0		Number=Plur	dema	0	ashman	n	rule
-ashmen	0		Number=Sing	dema	0	ashmen	n	moby_reverse
-ashmens	0		Number=Plur	dema	0	ashmen	n	rule
+ashmen	0		Number=Plur	dema	0	ashman	n	rule
+ashmen	1		Number=Sing	dema	0	ashmen	n	moby_reverse
 ashore	0	oewn-ashore-r	Degree=Pos	dema	0			oewn_form
 ashplant	0		Number=Sing	dema	0	ashplant	n	moby_reverse
 ashplants	0		Number=Plur	dema	0	ashplant	n	rule
@@ -630,7 +628,7 @@ asparaginases	0	oewn-asparaginase-n	Number=Plur	dema	0			rule
 asparagine	0	oewn-asparagine-n	Number=Sing	dema	0			oewn_form
 asparagines	0	oewn-asparagine-n	Number=Plur	dema	0			rule
 asparaginous	0		Degree=Pos	dema	0	asparaginous	a	moby_reverse
-asparagus	0	oewn-asparagus-n	Number=Plur	dema	0			rule_variant
+asparagus	0	oewn-asparagus-n	Number=Plur	dema	0			llm
 asparagus	1	oewn-asparagus-n	Number=Sing	dema	0			oewn_form
 asparagus bean	0	oewn-asparagus_bean-n	Number=Sing	dema	0			oewn_form
 asparagus beans	0	oewn-asparagus_bean-n	Number=Plur	dema	0			rule
@@ -731,10 +729,10 @@ aspiratas	0		Number=Plur	dema	0	aspirata	n	rule
 aspirate	0	dema-aspirate-a	Degree=Pos	dema	1			carried
 aspirate	1	oewn-aspirate-n	Number=Sing	dema	1			carried
 aspirate	2	oewn-aspirate-v	VerbForm=Inf	dema	1			carried
-aspirated	0	oewn-aspirate-v	Tense=Past+VerbForm=Part	dema	0			rule
+aspirated	0	oewn-aspirate-v	Tense=Past+VerbForm=Part	dema	0			llm
 aspirates	0	oewn-aspirate-n	Number=Plur	dema	1			carried
 aspirates	1	oewn-aspirate-v	Person=3+Tense=Pres	dema	1			carried
-aspirating	0	oewn-aspirate-v	VerbForm=Ger	dema	0			rule
+aspirating	0	oewn-aspirate-v	VerbForm=Ger	dema	0			llm
 aspiration	0	oewn-aspiration-n	Number=Sing	dema	0			oewn_form
 aspiration pneumonia	0	oewn-aspiration_pneumonia-n	Number=Sing	dema	0			oewn_form
 aspiration pneumonias	0	oewn-aspiration_pneumonia-n	Number=Plur	dema	0			rule
@@ -794,10 +792,10 @@ assassin	0	oewn-assassin-n	Number=Sing	dema	0			oewn_form
 assassin bug	0	oewn-assassin_bug-n	Number=Sing	dema	0			oewn_form
 assassin bugs	0	oewn-assassin_bug-n	Number=Plur	dema	0			rule
 assassinate	0	oewn-assassinate-v	VerbForm=Inf	dema	0			oewn_form
-assassinated	0	oewn-assassinate-v	Tense=Past+VerbForm=Part	dema	0			rule
+assassinated	0	oewn-assassinate-v	Tense=Past+VerbForm=Part	dema	0			llm
 assassinated	1	oewn-assassinated-a	Degree=Pos	dema	0			oewn_form
-assassinates	0	oewn-assassinate-v	Person=3+Tense=Pres	dema	0			rule
-assassinating	0	oewn-assassinate-v	VerbForm=Ger	dema	0			rule
+assassinates	0	oewn-assassinate-v	Person=3+Tense=Pres	dema	0			llm
+assassinating	0	oewn-assassinate-v	VerbForm=Ger	dema	0			llm
 assassination	0	oewn-assassination-n	Number=Sing	dema	0			oewn_form
 assassinations	0	oewn-assassination-n	Number=Plur	dema	0			rule
 assassinative	0		Degree=Pos	dema	0	assassinative	a	moby_reverse
@@ -825,11 +823,11 @@ assay	1	oewn-assay-n	Number=Sing	dema	0			oewn_form
 assay-mark	0	oewn-assay-mark-n	Number=Sing	dema	0			oewn_form
 assay-marks	0	oewn-assay-mark-n	Number=Plur	dema	0			rule
 assayable	0		Degree=Pos	dema	0	assayable	a	moby_reverse
-assayed	0	oewn-assay-v	Tense=Past+VerbForm=Part	dema	0			rule
+assayed	0	oewn-assay-v	Tense=Past+VerbForm=Part	dema	0			llm
 assayer	0	oewn-assayer-n	Number=Sing	dema	0			oewn_form
 assayers	0	oewn-assayer-n	Number=Plur	dema	0			rule
-assaying	0	oewn-assay-v	VerbForm=Ger	dema	0			rule
-assays	0	oewn-assay-v	Person=3+Tense=Pres	dema	0			rule
+assaying	0	oewn-assay-v	VerbForm=Ger	dema	0			llm
+assays	0	oewn-assay-v	Person=3+Tense=Pres	dema	0			llm
 assays	1	oewn-assay-n	Number=Plur	dema	0			rule
 assegai	0	oewn-assegai-n	Number=Sing	dema	0			oewn_form
 assegaied	0		Number=Sing	dema	0	assegaied	n	moby_reverse
@@ -863,9 +861,9 @@ assembly plants	0	oewn-assembly_plant-n	Number=Plur	dema	0			rule
 assembly program	0	oewn-assembly_program-n	Number=Sing	dema	0			oewn_form
 assembly programs	0	oewn-assembly_program-n	Number=Plur	dema	0			rule
 assemblyman	0	oewn-assemblyman-n	Number=Sing	dema	0			oewn_form
-assemblymen	0	oewn-assemblyman-n	Number=Plur	dema	0			agid
+assemblymen	0	oewn-assemblyman-n	Number=Plur	dema	0			llm
 assemblywoman	0	oewn-assemblywoman-n	Number=Sing	dema	0			oewn_form
-assemblywomans	0	oewn-assemblywoman-n	Number=Plur	dema	0			rule
+assemblywomen	0	oewn-assemblywoman-n	Number=Plur	dema	0			rule
 assent	0	oewn-assent-n	Number=Sing	dema	0			oewn_form
 assent	1	oewn-assent-v	VerbForm=Inf	dema	0			oewn_form
 assentation	0		Number=Sing	dema	0	assentation	n	moby_reverse
@@ -1007,7 +1005,7 @@ assistances	0	oewn-assistance-n	Number=Plur	dema	0			rule
 assistant	0	oewn-assistant-n	Number=Sing	dema	0			oewn_form
 assistant	1	oewn-assistant-a	Degree=Pos	dema	0			oewn_form
 assistant foreman	0	oewn-assistant_foreman-n	Number=Sing	dema	0			oewn_form
-assistant foremans	0	oewn-assistant_foreman-n	Number=Plur	dema	0			rule
+assistant foremen	0	oewn-assistant_foreman-n	Number=Plur	dema	0			rule
 assistant professor	0	oewn-assistant_professor-n	Number=Sing	dema	0			oewn_form
 assistant professors	0	oewn-assistant_professor-n	Number=Plur	dema	0			rule
 assistant referee	0	oewn-assistant_referee-n	Number=Sing	dema	0			oewn_form
@@ -1146,7 +1144,7 @@ assured	1	oewn-assured-a	Degree=Pos	dema	0			oewn_form
 assured	2		Number=Sing	dema	0	assured	n	moby_reverse
 assuredly	0	oewn-assuredly-r	Degree=Pos	dema	0			oewn_form
 assuredness	0	oewn-assuredness-n	Number=Sing	dema	0			oewn_form
-assurednesses	0	oewn-assuredness-n	Number=Plur	dema	0			rule
+assurednesses	0	oewn-assuredness-n	Number=Plur	dema	0			llm
 assurer	0		Number=Sing	dema	0	assurer	n	moby_reverse
 assurers	0		Number=Plur	dema	0	assurer	n	rule
 assures	0	oewn-assure-v	Person=3+Tense=Pres	dema	0			rule

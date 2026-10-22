@@ -314,7 +314,7 @@ India-rubber plants	0	oewn-India-rubber_plant-n	Capitalization=Exact+Number=Plur
 India-rubber tree	0	oewn-India-rubber_tree-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 India-rubber trees	0	oewn-India-rubber_tree-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Indiaman	0	oewn-Indiaman-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-Indiamans	0	oewn-Indiaman-n	Capitalization=Title+Number=Plur	dema	0			rule
+Indiamen	0	oewn-Indiaman-n	Capitalization=Title+Number=Plur	dema	0			rule
 Indian	0		Number=Sing	dema	0	indian	n	moby_reverse
 Indian	1		Degree=Pos	dema	0	indian	a	moby_reverse
 Indian	2	oewn-Indian-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
@@ -788,7 +788,7 @@ Irishman	1	oewn-Irishman-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Irishmen	0		Number=Plur	dema	0	irishman	n	rule
 Irishmen	1	oewn-Irishman-n	Capitalization=Title+Number=Plur	dema	0			hand
 Irishwoman	0	oewn-Irishwoman-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-Irishwomans	0	oewn-Irishwoman-n	Capitalization=Title+Number=Plur	dema	0			rule
+Irishwomen	0	oewn-Irishwoman-n	Capitalization=Title+Number=Plur	dema	0			rule
 Iroquoian	0	oewn-Iroquoian-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Iroquoian language	0	oewn-Iroquoian_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Iroquoian languages	0	oewn-Iroquoian_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
@@ -959,6 +959,7 @@ iPod	0	oewn-iPod-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 ia	0		Number=Sing	dema	0	ia	n	moby_reverse
 iamb	0	oewn-iamb-n	Number=Sing	dema	0			oewn_form
 iambi	0	oewn-iamb-n	Number=Plur	dema	0			oewn_form
+iambi	1	oewn-iambus-n	Number=Plur	dema	0			rule_variant
 iambic	0	oewn-iambic-a	Degree=Pos	dema	0			oewn_form
 iambic	1	oewn-iambic-n	Number=Sing	dema	0			oewn_form
 iambic senarius	0	oewn-iambic_senarius-n	Number=Sing	dema	0			oewn_form
@@ -966,9 +967,9 @@ iambic trimeter	0	oewn-iambic_trimeter-n	Number=Sing	dema	0			oewn_form
 iambic trimeters	0	oewn-iambic_trimeter-n	Number=Plur	dema	0			rule
 iambically	0		Degree=Pos	dema	0	iambically	r	moby_reverse
 iambics	0	oewn-iambic-n	Number=Plur	dema	0			rule
-iambs	0	oewn-iamb-n	Number=Plur	dema	0			rule_variant
+iambs	0	oewn-iamb-n	Number=Plur	dema	0			llm
 iambus	0	oewn-iambus-n	Number=Sing	dema	0			oewn_form
-iambuses	0	oewn-iambus-n	Number=Plur	dema	0			rule_variant
+iambuses	0	oewn-iambus-n	Number=Plur	dema	0			llm
 ianfu	0	oewn-ianfu-n	Number=Sing	dema	0			oewn_form
 ianfus	0	oewn-ianfu-n	Number=Plur	dema	0			rule
 iarovization	0		Number=Sing	dema	0	iarovization	n	moby_reverse
@@ -991,16 +992,17 @@ ib	0		Number=Sing	dema	0	ib	n	moby_reverse
 ib.	0	oewn-ib.-r	Degree=Pos	dema	0			oewn_form
 ibero-mesornis	0	oewn-ibero-mesornis-n	Number=Sing	dema	0			oewn_form
 iberomesornis	0	oewn-iberomesornis-n	Number=Sing	dema	0			oewn_form
-ibex	0	oewn-ibex-n	Number=Sing	dema	0			oewn_form
-ibexes	0	oewn-ibex-n	Number=Plur	dema	0			rule_variant
+ibex	0	oewn-ibex-n	Number=Plur	dema	0			rule_variant
+ibex	1	oewn-ibex-n	Number=Sing	dema	0			oewn_form
+ibexes	0	oewn-ibex-n	Number=Plur	dema	0			llm
 ibices	0	oewn-ibex-n	Number=Plur	dema	0			oewn_form
 ibid	0		Number=Sing	dema	0	ibid	n	moby_reverse
 ibid.	0	oewn-ibid.-r	Degree=Pos	dema	0			oewn_form
 ibidem	0	oewn-ibidem-r	Degree=Pos	dema	0			oewn_form
+ibides	0	oewn-ibis-n	Number=Plur	dema	0			rule_variant
 ibids	0		Number=Plur	dema	0	ibid	n	rule
-ibis	0	oewn-ibis-n	Number=Plur	dema	0			agid
-ibis	1	oewn-ibis-n	Number=Sing	dema	0			oewn_form
-ibises	0	oewn-ibis-n	Number=Plur	dema	0			rule_variant
+ibis	0	oewn-ibis-n	Number=Sing	dema	0			oewn_form
+ibises	0	oewn-ibis-n	Number=Plur	dema	0			llm
 ibolium privet	0	oewn-ibolium_privet-n	Number=Sing	dema	0			oewn_form
 ibolium privets	0	oewn-ibolium_privet-n	Number=Plur	dema	0			rule
 ibota privet	0	oewn-ibota_privet-n	Number=Sing	dema	0			oewn_form
@@ -1157,7 +1159,7 @@ icehouses	0	oewn-icehouse-n	Number=Plur	dema	0			rule
 iceless	0		Degree=Pos	dema	0	iceless	a	moby_reverse
 icelike	0		Degree=Pos	dema	0	icelike	a	moby_reverse
 iceman	0	oewn-iceman-n	Number=Sing	dema	0			oewn_form
-icemen	0	oewn-iceman-n	Number=Plur	dema	0			agid
+icemen	0	oewn-iceman-n	Number=Plur	dema	0			llm
 icepick	0	oewn-icepick-n	Number=Sing	dema	0			oewn_form
 icepicks	0	oewn-icepick-n	Number=Plur	dema	0			rule
 ices	0	oewn-ice-n	Number=Plur	dema	0			rule
@@ -1168,7 +1170,7 @@ ices up	0	oewn-ice_up-v	Person=3+Tense=Pres	dema	0			rule
 icetray	0	oewn-icetray-n	Number=Sing	dema	0			oewn_form
 icetrays	0	oewn-icetray-n	Number=Plur	dema	0			rule
 icewoman	0	oewn-icewoman-n	Number=Sing	dema	0			oewn_form
-icewomans	0	oewn-icewoman-n	Number=Plur	dema	0			rule
+icewomen	0	oewn-icewoman-n	Number=Plur	dema	0			llm
 ich	0		Number=Sing	dema	0	ich	n	moby_reverse
 ichneumon	0	oewn-ichneumon-n	Number=Sing	dema	0			oewn_form
 ichneumon flies	0	oewn-ichneumon_fly-n	Number=Plur	dema	0			rule
@@ -1225,7 +1227,7 @@ ichthyosaur	0	oewn-ichthyosaur-n	Number=Sing	dema	0			oewn_form
 ichthyosauri	0	oewn-ichthyosaurus-n	Number=Plur	dema	0			oewn_form
 ichthyosaurian	0		Degree=Pos	dema	0	ichthyosaurian	a	moby_reverse
 ichthyosauroid	0		Degree=Pos	dema	0	ichthyosauroid	a	moby_reverse
-ichthyosaurs	0	oewn-ichthyosaur-n	Number=Plur	dema	0			rule_variant
+ichthyosaurs	0	oewn-ichthyosaur-n	Number=Plur	dema	0			llm
 ichthyosaurus	0	oewn-ichthyosaurus-n	Number=Sing	dema	0			oewn_form
 ichthyosauruses	0	oewn-ichthyosaur-n	Number=Plur	dema	0			oewn_form
 ichthyosauruses	1	oewn-ichthyosaurus-n	Number=Plur	dema	0			oewn_form
@@ -1316,13 +1318,13 @@ icterogenic	0	oewn-icterogenic-a	Degree=Pos	dema	0			oewn_form
 icterus	0	oewn-icterus-n	Number=Sing	dema	0			oewn_form
 icterus neonatorum	0	oewn-icterus_neonatorum-n	Number=Sing	dema	0			oewn_form
 icterus neonatorums	0	oewn-icterus_neonatorum-n	Number=Plur	dema	0			rule
-icteruses	0	oewn-icterus-n	Number=Plur	dema	0			rule
+icteruses	0	oewn-icterus-n	Number=Plur	dema	0			llm
 ictic	0	oewn-ictic-a	Degree=Pos	dema	0			oewn_form
 ictodosaur	0	oewn-ictodosaur-n	Number=Sing	dema	0			oewn_form
 ictodosaurs	0	oewn-ictodosaur-n	Number=Plur	dema	0			rule
 ictus	0	oewn-ictus-n	Number=Plur	dema	0			rule_variant
 ictus	1	oewn-ictus-n	Number=Sing	dema	0			oewn_form
-ictuses	0	oewn-ictus-n	Number=Plur	dema	0			rule_variant
+ictuses	0	oewn-ictus-n	Number=Plur	dema	0			llm
 icy	0	oewn-icy-a	Degree=Pos	dema	0			oewn_form
 id	0	oewn-id-n	Number=Sing	dema	0			oewn_form
 id est	0	oewn-id_est-r	Degree=Pos	dema	0			oewn_form
@@ -1398,7 +1400,7 @@ identical twin	0	oewn-identical_twin-n	Number=Sing	dema	0			oewn_form
 identical twins	0	oewn-identical_twin-n	Number=Plur	dema	0			rule
 identically	0	oewn-identically-r	Degree=Pos	dema	0			oewn_form
 identicalness	0	oewn-identicalness-n	Number=Sing	dema	0			oewn_form
-identicalnesses	0	oewn-identicalness-n	Number=Plur	dema	0			rule
+identicalnesses	0	oewn-identicalness-n	Number=Plur	dema	0			llm
 identies	0		Number=Sing	dema	0	identies	n	moby_reverse
 identifiable	0	oewn-identifiable-a	Degree=Pos	dema	0			oewn_form
 identifiableness	0		Number=Sing	dema	0	identifiableness	n	moby_reverse
@@ -1664,8 +1666,8 @@ if	0	dema-if-c		dema	0			carried
 if	1		Number=Sing	dema	0	if	n	moby_reverse
 if not	0	oewn-if_not-r	Degree=Pos	dema	0			oewn_form
 iff	0		Number=Sing	dema	0	iff	n	moby_reverse
-iffier	0	oewn-iffy-a	Degree=Cmp	dema	0			rule
-iffiest	0	oewn-iffy-a	Degree=Sup	dema	0			rule
+iffier	0	oewn-iffy-a	Degree=Cmp	dema	0			llm
+iffiest	0	oewn-iffy-a	Degree=Sup	dema	0			llm
 iffy	0	oewn-iffy-a	Degree=Pos	dema	0			oewn_form
 ighly	0		Degree=Pos	dema	0	ighly	r	moby_reverse
 igloo	0	oewn-igloo-n	Number=Sing	dema	0			oewn_form
@@ -1714,7 +1716,7 @@ ignobilities	0	oewn-ignobility-n	Number=Plur	dema	0			rule
 ignobility	0	oewn-ignobility-n	Number=Sing	dema	0			oewn_form
 ignoble	0	oewn-ignoble-a	Degree=Pos	dema	0			oewn_form
 ignobleness	0	oewn-ignobleness-n	Number=Sing	dema	0			oewn_form
-ignoblenesses	0	oewn-ignobleness-n	Number=Plur	dema	0			rule
+ignoblenesses	0	oewn-ignobleness-n	Number=Plur	dema	0			llm
 ignobly	0	oewn-ignobly-r	Degree=Pos	dema	0			oewn_form
 ignominies	0	oewn-ignominy-n	Number=Plur	dema	0			rule
 ignominious	0	oewn-ignominious-a	Degree=Pos	dema	0			oewn_form
@@ -1778,9 +1780,11 @@ ilama trees	0	oewn-ilama_tree-n	Number=Plur	dema	0			rule
 ilamas	0	oewn-ilama-n	Number=Plur	dema	0			rule
 ilang-ilang	0	oewn-ilang-ilang-n	Number=Sing	dema	0			oewn_form
 ilang-ilangs	0	oewn-ilang-ilang-n	Number=Plur	dema	0			rule
+ilea	0	oewn-ileum-n	Number=Plur	dema	0			llm
 ileac	0		Degree=Pos	dema	0	ileac	a	moby_reverse
 ileal arteries	0	oewn-ileal_artery-n	Number=Plur	dema	0			rule
 ileal artery	0	oewn-ileal_artery-n	Number=Sing	dema	0			oewn_form
+ilei	0	oewn-ileus-n	Number=Plur	dema	0			rule_variant
 ileitis	0	oewn-ileitis-n	Number=Sing	dema	0			oewn_form
 ileocecal	0		Degree=Pos	dema	0	ileocecal	a	moby_reverse
 ileocecal valve	0	oewn-ileocecal_valve-n	Number=Sing	dema	0			oewn_form
@@ -1793,8 +1797,9 @@ ileocolitis	0		Number=Sing	dema	0	ileocolitis	n	moby_reverse
 ileostomies	0	oewn-ileostomy-n	Number=Plur	dema	0			rule
 ileostomy	0	oewn-ileostomy-n	Number=Sing	dema	0			oewn_form
 ileum	0	oewn-ileum-n	Number=Sing	dema	0			oewn_form
+ileums	0	oewn-ileum-n	Number=Plur	dema	0			rule_variant
 ileus	0	oewn-ileus-n	Number=Sing	dema	0			oewn_form
-ileuses	0	oewn-ileus-n	Number=Plur	dema	0			rule
+ileuses	0	oewn-ileus-n	Number=Plur	dema	0			llm
 ilex	0		Number=Sing	dema	0	ilex	n	moby_reverse
 ilexes	0		Number=Plur	dema	0	ilex	n	rule
 ilia	0	oewn-ilium-n	Number=Plur	dema	0			oewn_form
@@ -2087,7 +2092,7 @@ illustrators	0	oewn-illustrator-n	Number=Plur	dema	0			rule
 illustrious	0	oewn-illustrious-a	Degree=Pos	dema	0			oewn_form
 illustriously	0	oewn-illustriously-r	Degree=Pos	dema	0			oewn_form
 illustriousness	0	oewn-illustriousness-n	Number=Sing	dema	0			oewn_form
-illustriousnesses	0	oewn-illustriousness-n	Number=Plur	dema	0			rule
+illustriousnesses	0	oewn-illustriousness-n	Number=Plur	dema	0			llm
 illusts	0		Number=Plur	dema	0	illust	n	rule
 illuvial	0		Degree=Pos	dema	0	illuvial	a	moby_reverse
 illuviate	0		VerbForm=Inf	dema	0	illuviate	v	moby_reverse
@@ -2228,7 +2233,7 @@ imbecility	0	oewn-imbecility-n	Number=Sing	dema	0			oewn_form
 imbed	0	oewn-imbed-v	VerbForm=Inf	dema	0			oewn_form
 imbedded	0	oewn-imbed-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 imbedding	0	oewn-imbed-v	VerbForm=Ger	dema	0			oewn_form
-imbeds	0	oewn-imbed-v	Person=3+Tense=Pres	dema	0			rule
+imbeds	0	oewn-imbed-v	Person=3+Tense=Pres	dema	0			llm
 imbibe	0	oewn-imbibe-v	VerbForm=Inf	dema	0			oewn_form
 imbibed	0	oewn-imbibe-v	Tense=Past+VerbForm=Part	dema	0			rule
 imbiber	0	oewn-imbiber-n	Number=Sing	dema	0			oewn_form
@@ -2356,7 +2361,7 @@ immaculacy	0	oewn-immaculacy-n	Number=Sing	dema	0			oewn_form
 immaculate	0	oewn-immaculate-a	Degree=Pos	dema	0			oewn_form
 immaculately	0	oewn-immaculately-r	Degree=Pos	dema	0			oewn_form
 immaculateness	0	oewn-immaculateness-n	Number=Sing	dema	0			oewn_form
-immaculatenesses	0	oewn-immaculateness-n	Number=Plur	dema	0			rule
+immaculatenesses	0	oewn-immaculateness-n	Number=Plur	dema	0			llm
 immane	0		Degree=Pos	dema	0	immane	a	moby_reverse
 immanely	0		Degree=Pos	dema	0	immanely	r	moby_reverse
 immanence	0		Degree=Pos	dema	0	immanence	r	moby_reverse
@@ -2768,11 +2773,11 @@ impairing	0	oewn-impair-v	VerbForm=Ger	dema	0			rule
 impairment	0	oewn-impairment-n	Number=Sing	dema	0			oewn_form
 impairments	0	oewn-impairment-n	Number=Plur	dema	0			rule
 impairs	0	oewn-impair-v	Person=3+Tense=Pres	dema	0			rule
-impala	0	oewn-impala-n	Number=Plur	dema	0			agid
+impala	0	oewn-impala-n	Number=Plur	dema	0			rule_variant
 impala	1	oewn-impala-n	Number=Sing	dema	0			oewn_form
 impala lilies	0	oewn-impala_lily-n	Number=Plur	dema	0			rule
 impala lily	0	oewn-impala_lily-n	Number=Sing	dema	0			oewn_form
-impalas	0	oewn-impala-n	Number=Plur	dema	0			rule_variant
+impalas	0	oewn-impala-n	Number=Plur	dema	0			llm
 impale	0	oewn-impale-v	VerbForm=Inf	dema	0			oewn_form
 impaled	0	oewn-impale-v	Tense=Past+VerbForm=Part	dema	0			rule
 impalement	0	oewn-impalement-n	Number=Sing	dema	0			oewn_form
@@ -2881,7 +2886,6 @@ impastos	0	oewn-impasto-n	Number=Plur	dema	0			rule
 impatience	0	oewn-impatience-n	Number=Sing	dema	0			oewn_form
 impatiences	0	oewn-impatience-n	Number=Plur	dema	0			rule
 impatiens	0		Number=Sing	dema	0	impatiens	n	moby_reverse
-impatienses	0		Number=Plur	dema	0	impatiens	n	rule
 impatient	0	oewn-impatient-a	Degree=Pos	dema	0			oewn_form
 impatiently	0	oewn-impatiently-r	Degree=Pos	dema	0			oewn_form
 impatientness	0		Number=Sing	dema	0	impatientness	n	moby_reverse
@@ -2923,7 +2927,7 @@ impecuniosity	0		Number=Sing	dema	0	impecuniosity	n	moby_reverse
 impecunious	0	oewn-impecunious-a	Degree=Pos	dema	0			oewn_form
 impecuniously	0		Degree=Pos	dema	0	impecuniously	r	moby_reverse
 impecuniousness	0	oewn-impecuniousness-n	Number=Sing	dema	0			oewn_form
-impecuniousnesses	0	oewn-impecuniousness-n	Number=Plur	dema	0			rule
+impecuniousnesses	0	oewn-impecuniousness-n	Number=Plur	dema	0			llm
 impedance	0	oewn-impedance-n	Number=Sing	dema	0			oewn_form
 impedances	0	oewn-impedance-n	Number=Plur	dema	0			rule
 impede	0	oewn-impede-v	VerbForm=Inf	dema	0			oewn_form
@@ -3083,7 +3087,7 @@ imperializes	0		Person=3+Tense=Pres	dema	0	imperialize	v	rule
 imperializing	0		VerbForm=Ger	dema	0	imperialize	v	rule
 imperially	0	oewn-imperially-r	Degree=Pos	dema	0			oewn_form
 imperialness	0	oewn-imperialness-n	Number=Sing	dema	0			oewn_form
-imperialnesses	0	oewn-imperialness-n	Number=Plur	dema	0			rule
+imperialnesses	0	oewn-imperialness-n	Number=Plur	dema	0			llm
 imperials	0	oewn-imperial-n	Number=Plur	dema	0			rule
 imperil	0	oewn-imperil-v	VerbForm=Inf	dema	0			oewn_form
 imperiled	0	oewn-imperil-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -3106,7 +3110,7 @@ imperishably	0		Degree=Pos	dema	0	imperishably	r	moby_reverse
 imperishingness	0	oewn-imperishingness-n	Number=Sing	dema	0			oewn_form
 imperishingnesses	0	oewn-imperishingness-n	Number=Plur	dema	0			rule
 imperium	0	oewn-imperium-n	Number=Sing	dema	0			oewn_form
-imperiums	0	oewn-imperium-n	Number=Plur	dema	0			rule_variant
+imperiums	0	oewn-imperium-n	Number=Plur	dema	0			llm
 impermanence	0	oewn-impermanence-n	Number=Sing	dema	0			oewn_form
 impermanences	0	oewn-impermanence-n	Number=Plur	dema	0			rule
 impermanencies	0	oewn-impermanency-n	Number=Plur	dema	0			rule
@@ -3341,7 +3345,7 @@ impolicy	0		Number=Sing	dema	0	impolicy	n	moby_reverse
 impolite	0	oewn-impolite-a	Degree=Pos	dema	0			oewn_form
 impolitely	0	oewn-impolitely-r	Degree=Pos	dema	0			oewn_form
 impoliteness	0	oewn-impoliteness-n	Number=Sing	dema	0			oewn_form
-impolitenesses	0	oewn-impoliteness-n	Number=Plur	dema	0			rule
+impolitenesses	0	oewn-impoliteness-n	Number=Plur	dema	0			llm
 impolitic	0	oewn-impolitic-a	Degree=Pos	dema	0			oewn_form
 impoliticly	0		Degree=Pos	dema	0	impoliticly	r	moby_reverse
 impoliticness	0		Number=Sing	dema	0	impoliticness	n	moby_reverse
@@ -3573,7 +3577,7 @@ impressive aphasia	0	oewn-impressive_aphasia-n	Number=Sing	dema	0			oewn_form
 impressive aphasias	0	oewn-impressive_aphasia-n	Number=Plur	dema	0			rule
 impressively	0	oewn-impressively-r	Degree=Pos	dema	0			oewn_form
 impressiveness	0	oewn-impressiveness-n	Number=Sing	dema	0			oewn_form
-impressivenesses	0	oewn-impressiveness-n	Number=Plur	dema	0			rule
+impressivenesses	0	oewn-impressiveness-n	Number=Plur	dema	0			llm
 impressment	0	oewn-impressment-n	Number=Sing	dema	0			oewn_form
 impressments	0	oewn-impressment-n	Number=Plur	dema	0			rule
 impressure	0		Number=Sing	dema	0	impressure	n	moby_reverse
@@ -3735,7 +3739,7 @@ impunity	0	oewn-impunity-n	Number=Sing	dema	0			oewn_form
 impure	0	oewn-impure-a	Degree=Pos	dema	0			oewn_form
 impurely	0		Degree=Pos	dema	0	impurely	r	moby_reverse
 impureness	0	oewn-impureness-n	Number=Sing	dema	0			oewn_form
-impurenesses	0	oewn-impureness-n	Number=Plur	dema	0			rule
+impurenesses	0	oewn-impureness-n	Number=Plur	dema	0			llm
 impurities	0	oewn-impurity-n	Number=Plur	dema	0			rule
 impurity	0	oewn-impurity-n	Number=Sing	dema	0			oewn_form
 imputabilities	0		Number=Plur	dema	0	imputability	n	rule
@@ -4036,7 +4040,7 @@ inanimacy	0	oewn-inanimacy-n	Number=Sing	dema	0			oewn_form
 inanimate	0	oewn-inanimate-a	Degree=Pos	dema	0			oewn_form
 inanimately	0		Degree=Pos	dema	0	inanimately	r	moby_reverse
 inanimateness	0	oewn-inanimateness-n	Number=Sing	dema	0			oewn_form
-inanimatenesses	0	oewn-inanimateness-n	Number=Plur	dema	0			rule
+inanimatenesses	0	oewn-inanimateness-n	Number=Plur	dema	0			llm
 inanimation	0		Number=Sing	dema	0	inanimation	n	moby_reverse
 inanimations	0		Number=Plur	dema	0	inanimation	n	rule
 inanities	0	oewn-inanity-n	Number=Plur	dema	0			rule
@@ -4110,7 +4114,7 @@ inattentions	0	oewn-inattention-n	Number=Plur	dema	0			rule
 inattentive	0	oewn-inattentive-a	Degree=Pos	dema	0			oewn_form
 inattentively	0	oewn-inattentively-r	Degree=Pos	dema	0			oewn_form
 inattentiveness	0	oewn-inattentiveness-n	Number=Sing	dema	0			oewn_form
-inattentivenesses	0	oewn-inattentiveness-n	Number=Plur	dema	0			rule
+inattentivenesses	0	oewn-inattentiveness-n	Number=Plur	dema	0			llm
 inaudibilities	0	oewn-inaudibility-n	Number=Plur	dema	0			rule
 inaudibility	0	oewn-inaudibility-n	Number=Sing	dema	0			oewn_form
 inaudible	0	oewn-inaudible-a	Degree=Pos	dema	0			oewn_form
@@ -4670,7 +4674,7 @@ incongruity	0	oewn-incongruity-n	Number=Sing	dema	0			oewn_form
 incongruous	0	oewn-incongruous-a	Degree=Pos	dema	0			oewn_form
 incongruously	0	oewn-incongruously-r	Degree=Pos	dema	0			oewn_form
 incongruousness	0	oewn-incongruousness-n	Number=Sing	dema	0			oewn_form
-incongruousnesses	0	oewn-incongruousness-n	Number=Plur	dema	0			rule
+incongruousnesses	0	oewn-incongruousness-n	Number=Plur	dema	0			llm
 inconnu	0		Number=Sing	dema	0	inconnu	n	moby_reverse
 inconnus	0		Number=Plur	dema	0	inconnu	n	rule
 inconsecutive	0		Degree=Pos	dema	0	inconsecutive	a	moby_reverse
@@ -4745,7 +4749,7 @@ incontrovertibilities	0	oewn-incontrovertibility-n	Number=Plur	dema	0			rule
 incontrovertibility	0	oewn-incontrovertibility-n	Number=Sing	dema	0			oewn_form
 incontrovertible	0	oewn-incontrovertible-a	Degree=Pos	dema	0			oewn_form
 incontrovertibleness	0	oewn-incontrovertibleness-n	Number=Sing	dema	0			oewn_form
-incontrovertiblenesses	0	oewn-incontrovertibleness-n	Number=Plur	dema	0			rule
+incontrovertiblenesses	0	oewn-incontrovertibleness-n	Number=Plur	dema	0			llm
 incontrovertibly	0	oewn-incontrovertibly-r	Degree=Pos	dema	0			oewn_form
 inconvenience	0	oewn-inconvenience-n	Number=Sing	dema	0			oewn_form
 inconvenience	1	oewn-inconvenience-v	VerbForm=Inf	dema	0			oewn_form
@@ -4784,7 +4788,7 @@ incorporates	0	oewn-incorporate-v	Person=3+Tense=Pres	dema	1			carried
 incorporating	0	oewn-incorporate-v	VerbForm=Ger	dema	0			rule
 incorporating	1		Degree=Pos	dema	0	incorporating	a	moby_reverse
 incorporation	0	oewn-incorporation-n	Number=Sing	dema	0			oewn_form
-incorporations	0	oewn-incorporation-n	Number=Plur	dema	0			rule
+incorporations	0	oewn-incorporation-n	Number=Plur	dema	0			llm
 incorporative	0	oewn-incorporative-a	Degree=Pos	dema	0			oewn_form
 incorporator	0		Number=Sing	dema	0	incorporator	n	moby_reverse
 incorporators	0		Number=Plur	dema	0	incorporator	n	rule
@@ -4850,7 +4854,7 @@ incredibilities	0	oewn-incredibility-n	Number=Plur	dema	0			rule
 incredibility	0	oewn-incredibility-n	Number=Sing	dema	0			oewn_form
 incredible	0	oewn-incredible-a	Degree=Pos	dema	0			oewn_form
 incredibleness	0	oewn-incredibleness-n	Number=Sing	dema	0			oewn_form
-incrediblenesses	0	oewn-incredibleness-n	Number=Plur	dema	0			rule
+incrediblenesses	0	oewn-incredibleness-n	Number=Plur	dema	0			llm
 incredibly	0	oewn-incredibly-r	Degree=Pos	dema	0			oewn_form
 incredulities	0	oewn-incredulity-n	Number=Plur	dema	0			rule
 incredulity	0	oewn-incredulity-n	Number=Sing	dema	0			oewn_form
@@ -5002,8 +5006,7 @@ incuse	0		Number=Sing	dema	0	incuse	n	moby_reverse
 incuse	1		VerbForm=Inf	dema	0	incuse	v	moby_reverse
 incuse	2		Degree=Pos	dema	0	incuse	a	moby_reverse
 incused	0		Tense=Past+VerbForm=Part	dema	0	incuse	v	moby_reverse
-incuses	0	oewn-incus-n	Number=Plur	dema	0			rule_variant
-incuses	1		Number=Plur	dema	0	incuse	n	rule
+incuses	0		Number=Plur	dema	0	incuse	n	rule
 incusing	0		VerbForm=Ger	dema	0	incuse	v	moby_reverse
 ind	0		Number=Sing	dema	0	ind	n	moby_reverse
 indaba	0	oewn-indaba-n	Number=Sing	dema	0			oewn_form
@@ -5106,7 +5109,7 @@ indefinite quantities	0	oewn-indefinite_quantity-n	Number=Plur	dema	0			rule
 indefinite quantity	0	oewn-indefinite_quantity-n	Number=Sing	dema	0			oewn_form
 indefinitely	0	oewn-indefinitely-r	Degree=Pos	dema	0			oewn_form
 indefiniteness	0	oewn-indefiniteness-n	Number=Sing	dema	0			oewn_form
-indefinitenesses	0	oewn-indefiniteness-n	Number=Plur	dema	0			rule
+indefinitenesses	0	oewn-indefiniteness-n	Number=Plur	dema	0			llm
 indefinities	0	oewn-indefinity-n	Number=Plur	dema	0			rule
 indefinity	0	oewn-indefinity-n	Number=Sing	dema	0			oewn_form
 indefs	0		Number=Plur	dema	0	indef	n	rule
@@ -5201,7 +5204,7 @@ indescribabilities	0	oewn-indescribability-n	Number=Plur	dema	0			rule
 indescribability	0	oewn-indescribability-n	Number=Sing	dema	0			oewn_form
 indescribable	0	oewn-indescribable-a	Degree=Pos	dema	0			oewn_form
 indescribableness	0	oewn-indescribableness-n	Number=Sing	dema	0			oewn_form
-indescribablenesses	0	oewn-indescribableness-n	Number=Plur	dema	0			rule
+indescribablenesses	0	oewn-indescribableness-n	Number=Plur	dema	0			llm
 indescribably	0	oewn-indescribably-r	Degree=Pos	dema	0			oewn_form
 indestructibilities	0	oewn-indestructibility-n	Number=Plur	dema	0			rule
 indestructibility	0	oewn-indestructibility-n	Number=Sing	dema	0			oewn_form
@@ -5643,7 +5646,7 @@ indrawn	0	oewn-indrawn-a	Degree=Pos	dema	0			oewn_form
 indri	0	oewn-indri-n	Number=Sing	dema	0			oewn_form
 indris	0	oewn-indri-n	Number=Plur	dema	0			rule
 indris	1	oewn-indris-n	Number=Sing	dema	0			oewn_form
-indrises	0	oewn-indris-n	Number=Plur	dema	0			rule
+indrises	0	oewn-indris-n	Number=Plur	dema	0			llm
 indubitabilities	0	oewn-indubitability-n	Number=Plur	dema	0			rule
 indubitability	0	oewn-indubitability-n	Number=Sing	dema	0			oewn_form
 indubitable	0	oewn-indubitable-a	Degree=Pos	dema	0			oewn_form
@@ -5713,10 +5716,10 @@ indulge	0	oewn-indulge-v	VerbForm=Inf	dema	0			oewn_form
 indulged	0	oewn-indulge-v	Tense=Past+VerbForm=Part	dema	0			rule
 indulgence	0	oewn-indulgence-n	Number=Sing	dema	0			oewn_form
 indulgence	1		VerbForm=Inf	dema	0	indulgence	v	moby_reverse
-indulgenced	0		Tense=Past+VerbForm=Part	dema	0	indulgence	v	moby_reverse
+indulgenced	0		VerbForm=Inf	dema	0	indulgenced	v	moby_reverse
 indulgences	0	oewn-indulgence-n	Number=Plur	dema	0			rule
 indulgencies	0		Number=Plur	dema	0	indulgency	n	rule
-indulgencing	0		VerbForm=Ger	dema	0	indulgence	v	moby_reverse
+indulgencing	0		VerbForm=Inf	dema	0	indulgencing	v	moby_reverse
 indulgency	0		Number=Sing	dema	0	indulgency	n	moby_reverse
 indulgent	0	oewn-indulgent-a	Degree=Pos	dema	0			oewn_form
 indulgently	0	oewn-indulgently-r	Degree=Pos	dema	0			oewn_form
@@ -5823,9 +5826,9 @@ indwell	0	oewn-indwell-v	VerbForm=Inf	dema	0			oewn_form
 indwelled	0	oewn-indwell-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 indweller	0	oewn-indweller-n	Number=Sing	dema	0			oewn_form
 indwellers	0	oewn-indweller-n	Number=Plur	dema	0			rule
-indwelling	0	oewn-indwell-v	VerbForm=Ger	dema	0			rule
+indwelling	0	oewn-indwell-v	VerbForm=Ger	dema	0			llm
 indwelling	1	oewn-indwelling-a	Degree=Pos	dema	0			oewn_form
-indwells	0	oewn-indwell-v	Person=3+Tense=Pres	dema	0			rule
+indwells	0	oewn-indwell-v	Person=3+Tense=Pres	dema	0			llm
 indwelt	0	oewn-indwell-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 inearth	0		VerbForm=Inf	dema	0	inearth	v	moby_reverse
 inearthed	0		Tense=Past+VerbForm=Part	dema	0	inearth	v	rule
@@ -5877,7 +5880,7 @@ ineffectualities	0	oewn-ineffectuality-n	Number=Plur	dema	0			rule
 ineffectuality	0	oewn-ineffectuality-n	Number=Sing	dema	0			oewn_form
 ineffectually	0	oewn-ineffectually-r	Degree=Pos	dema	0			oewn_form
 ineffectualness	0	oewn-ineffectualness-n	Number=Sing	dema	0			oewn_form
-ineffectualnesses	0	oewn-ineffectualness-n	Number=Plur	dema	0			rule
+ineffectualnesses	0	oewn-ineffectualness-n	Number=Plur	dema	0			llm
 inefficacies	0	oewn-inefficacy-n	Number=Plur	dema	0			rule
 inefficacious	0	oewn-inefficacious-a	Degree=Pos	dema	0			oewn_form
 inefficaciously	0	oewn-inefficaciously-r	Degree=Pos	dema	0			oewn_form
@@ -6176,9 +6179,9 @@ infantlike	0		Degree=Pos	dema	0	infantlike	a	moby_reverse
 infantries	0	oewn-infantry-n	Number=Plur	dema	0			rule
 infantry	0	oewn-infantry-n	Number=Sing	dema	0			oewn_form
 infantryman	0	oewn-infantryman-n	Number=Sing	dema	0			oewn_form
-infantrymen	0	oewn-infantryman-n	Number=Plur	dema	0			agid
+infantrymen	0	oewn-infantryman-n	Number=Plur	dema	0			llm
 infantrywoman	0	oewn-infantrywoman-n	Number=Sing	dema	0			oewn_form
-infantrywomans	0	oewn-infantrywoman-n	Number=Plur	dema	0			rule
+infantrywomen	0	oewn-infantrywoman-n	Number=Plur	dema	0			rule
 infants	0	oewn-infant-n	Number=Plur	dema	0			rule
 infarct	0	oewn-infarct-n	Number=Sing	dema	0			oewn_form
 infarcted	0		Degree=Pos	dema	0	infarcted	a	moby_reverse
@@ -6791,7 +6794,7 @@ ingenuity	0	oewn-ingenuity-n	Number=Sing	dema	0			oewn_form
 ingenuous	0	oewn-ingenuous-a	Degree=Pos	dema	0			oewn_form
 ingenuously	0	oewn-ingenuously-r	Degree=Pos	dema	0			oewn_form
 ingenuousness	0	oewn-ingenuousness-n	Number=Sing	dema	0			oewn_form
-ingenuousnesses	0	oewn-ingenuousness-n	Number=Plur	dema	0			rule
+ingenuousnesses	0	oewn-ingenuousness-n	Number=Plur	dema	0			llm
 ingest	0	oewn-ingest-v	VerbForm=Inf	dema	0			oewn_form
 ingesta	0	oewn-ingesta-n	Number=Sing	dema	0			oewn_form
 ingestas	0	oewn-ingesta-n	Number=Plur	dema	0			rule
@@ -7078,10 +7081,10 @@ initial rhyme	0	oewn-initial_rhyme-n	Number=Sing	dema	0			oewn_form
 initial rhymes	0	oewn-initial_rhyme-n	Number=Plur	dema	0			rule
 initial stress	0	oewn-initial_stress-n	Number=Sing	dema	0			oewn_form
 initial stresses	0	oewn-initial_stress-n	Number=Plur	dema	0			rule
-initialed	0	oewn-initial-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+initialed	0	oewn-initial-v	Tense=Past+VerbForm=Part	dema	0			llm
 initialer	0		Number=Sing	dema	0	initialer	n	moby_reverse
 initialers	0		Number=Plur	dema	0	initialer	n	rule
-initialing	0	oewn-initial-v	VerbForm=Ger	dema	0			rule_variant
+initialing	0	oewn-initial-v	VerbForm=Ger	dema	0			llm
 initialisation	0	oewn-initialisation-n	Number=Sing	dema	0			oewn_form
 initialisations	0	oewn-initialisation-n	Number=Plur	dema	0			rule
 initialise	0	oewn-initialise-v	VerbForm=Inf	dema	0			oewn_form
@@ -7102,7 +7105,7 @@ initiallers	0		Number=Plur	dema	0	initialler	n	rule
 initialling	0	oewn-initial-v	VerbForm=Ger	dema	0			oewn_form
 initially	0	oewn-initially-r	Degree=Pos	dema	0			oewn_form
 initials	0	oewn-initial-n	Number=Plur	dema	0			rule
-initials	1	oewn-initial-v	Person=3+Tense=Pres	dema	0			rule
+initials	1	oewn-initial-v	Person=3+Tense=Pres	dema	0			llm
 initiate	0	oewn-initiate-n	Number=Sing	dema	1			carried
 initiate	1	oewn-initiate-v	VerbForm=Inf	dema	1			carried
 initiate	2	dema-initiate-a	Degree=Pos	dema	0			carried
@@ -7488,7 +7491,7 @@ inpours	0		Person=3+Tense=Pres	dema	0	inpour	v	rule
 inpours	1	oewn-inpour-n	Number=Plur	dema	0			rule
 input	0	oewn-input-n	Number=Sing	dema	0			oewn_form
 input	1	oewn-input-v	VerbForm=Inf	dema	0			oewn_form
-input	2	oewn-input-v	Tense=Past+VerbForm=Part	dema	0			agid
+input	2	oewn-input-v	Tense=Past+VerbForm=Part	dema	0			llm
 input data	0	oewn-input_data-n	Number=Sing	dema	0			oewn_form
 input datas	0	oewn-input_data-n	Number=Plur	dema	0			rule
 input device	0	oewn-input_device-n	Number=Sing	dema	0			oewn_form
@@ -7504,9 +7507,9 @@ input signals	0	oewn-input_signal-n	Number=Plur	dema	0			rule
 input/output device	0	oewn-input-sl-output_device-n	Number=Sing	dema	0			oewn_form
 input/output devices	0	oewn-input-sl-output_device-n	Number=Plur	dema	0			rule
 inputs	0	oewn-input-n	Number=Plur	dema	0			rule
-inputs	1	oewn-input-v	Person=3+Tense=Pres	dema	0			rule
+inputs	1	oewn-input-v	Person=3+Tense=Pres	dema	0			llm
 inputted	0	oewn-input-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
-inputting	0	oewn-input-v	VerbForm=Ger	dema	0			rule
+inputting	0	oewn-input-v	VerbForm=Ger	dema	0			llm
 inqilab	0		Number=Sing	dema	0	inqilab	n	moby_reverse
 inqilabs	0		Number=Plur	dema	0	inqilab	n	rule
 inquartation	0		Number=Sing	dema	0	inquartation	n	moby_reverse
@@ -7729,11 +7732,10 @@ inserts	0	oewn-insert-n	Number=Plur	dema	1			carried
 inserts	1	oewn-insert-v	Person=3+Tense=Pres	dema	1			carried
 insessorial	0		Degree=Pos	dema	0	insessorial	a	moby_reverse
 inset	0	oewn-inset-v	VerbForm=Inf	dema	0			oewn_form
-inset	1	oewn-inset-v	Tense=Past+VerbForm=Part	dema	0			agid
+inset	1	oewn-inset-v	Tense=Past+VerbForm=Part	dema	0			llm
 inset	2	oewn-inset-n	Number=Sing	dema	0			oewn_form
-insets	0	oewn-inset-v	Person=3+Tense=Pres	dema	0			rule
+insets	0	oewn-inset-v	Person=3+Tense=Pres	dema	0			llm
 insets	1	oewn-inset-n	Number=Plur	dema	0			rule
-insetted	0	oewn-inset-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 insetter	0		Number=Sing	dema	0	insetter	n	moby_reverse
 insetters	0		Number=Plur	dema	0	insetter	n	rule
 insetting	0	oewn-inset-v	VerbForm=Ger	dema	0			oewn_form
@@ -8047,7 +8049,7 @@ instantaneous sound pressures	0	oewn-instantaneous_sound_pressure-n	Number=Plur	
 instantaneously	0	oewn-instantaneously-r	Degree=Pos	dema	0			oewn_form
 instantaneousness	0	oewn-instantaneousness-n	Number=Sing	dema	0			oewn_form
 instantaneousnesses	0	oewn-instantaneousness-n	Number=Plur	dema	0			rule
-instanter	0		Degree=Cmp	dema	0	instant	r	moby_reverse
+instanter	0		Degree=Pos	dema	0	instanter	r	moby_reverse
 instantiate	0	oewn-instantiate-v	VerbForm=Inf	dema	0			oewn_form
 instantiated	0	oewn-instantiate-v	Tense=Past+VerbForm=Part	dema	0			rule
 instantiates	0	oewn-instantiate-v	Person=3+Tense=Pres	dema	0			rule
@@ -8076,9 +8078,9 @@ insteps	0	oewn-instep-n	Number=Plur	dema	0			rule
 instigant	0	oewn-instigant-n	Number=Sing	dema	0			oewn_form
 instigants	0	oewn-instigant-n	Number=Plur	dema	0			rule
 instigate	0	oewn-instigate-v	VerbForm=Inf	dema	0			oewn_form
-instigated	0	oewn-instigate-v	Tense=Past+VerbForm=Part	dema	0			rule
-instigates	0	oewn-instigate-v	Person=3+Tense=Pres	dema	0			rule
-instigating	0	oewn-instigate-v	VerbForm=Ger	dema	0			rule
+instigated	0	oewn-instigate-v	Tense=Past+VerbForm=Part	dema	0			llm
+instigates	0	oewn-instigate-v	Person=3+Tense=Pres	dema	0			llm
+instigating	0	oewn-instigate-v	VerbForm=Ger	dema	0			llm
 instigatingly	0		Degree=Pos	dema	0	instigatingly	r	moby_reverse
 instigation	0	oewn-instigation-n	Number=Sing	dema	0			oewn_form
 instigations	0	oewn-instigation-n	Number=Plur	dema	0			rule
@@ -8412,7 +8414,7 @@ intagli	0	oewn-intaglio-n	Number=Plur	dema	0			oewn_form
 intaglio	0	oewn-intaglio-n	Number=Sing	dema	0			oewn_form
 intaglio printing	0	oewn-intaglio_printing-n	Number=Sing	dema	0			oewn_form
 intaglio printings	0	oewn-intaglio_printing-n	Number=Plur	dema	0			rule
-intaglios	0	oewn-intaglio-n	Number=Plur	dema	0			rule_variant
+intaglios	0	oewn-intaglio-n	Number=Plur	dema	0			llm
 intake	0	oewn-intake-n	Number=Sing	dema	0			oewn_form
 intake manifold	0	oewn-intake_manifold-n	Number=Sing	dema	0			oewn_form
 intake manifolds	0	oewn-intake_manifold-n	Number=Plur	dema	0			rule
@@ -8786,10 +8788,10 @@ interbreath	0		Degree=Pos	dema	0	interbreath	a	moby_reverse
 interbred	0	oewn-interbreed-v	Tense=Past+VerbForm=Part	dema	0			hand
 interbred	1	oewn-interbred-a	Degree=Pos	dema	0			oewn_form
 interbreed	0	oewn-interbreed-v	VerbForm=Inf	dema	0			oewn_form
-interbreeding	0	oewn-interbreed-v	VerbForm=Ger	dema	0			rule
+interbreeding	0	oewn-interbreed-v	VerbForm=Ger	dema	0			llm
 interbreeding	1	oewn-interbreeding-n	Number=Sing	dema	0			oewn_form
 interbreedings	0	oewn-interbreeding-n	Number=Plur	dema	0			rule
-interbreeds	0	oewn-interbreed-v	Person=3+Tense=Pres	dema	0			rule
+interbreeds	0	oewn-interbreed-v	Person=3+Tense=Pres	dema	0			llm
 interbrigade	0		Degree=Pos	dema	0	interbrigade	a	moby_reverse
 interbronchial	0		Degree=Pos	dema	0	interbronchial	a	moby_reverse
 intercalarily	0		Degree=Pos	dema	0	intercalarily	r	moby_reverse
@@ -9433,9 +9435,9 @@ interior monologues	0	oewn-interior_monologue-n	Number=Plur	dema	0			rule
 interior secretaries	0	oewn-interior_secretary-n	Number=Plur	dema	0			rule
 interior secretary	0	oewn-interior_secretary-n	Number=Sing	dema	0			oewn_form
 interiorise	0	oewn-interiorise-v	VerbForm=Inf	dema	0			oewn_form
-interiorised	0	oewn-interiorise-v	Tense=Past+VerbForm=Part	dema	0			rule
-interiorises	0	oewn-interiorise-v	Person=3+Tense=Pres	dema	0			rule
-interiorising	0	oewn-interiorise-v	VerbForm=Ger	dema	0			rule
+interiorised	0	oewn-interiorise-v	Tense=Past+VerbForm=Part	dema	0			llm
+interiorises	0	oewn-interiorise-v	Person=3+Tense=Pres	dema	0			llm
+interiorising	0	oewn-interiorise-v	VerbForm=Ger	dema	0			llm
 interiorism	0		Number=Sing	dema	0	interiorism	n	moby_reverse
 interiorisms	0		Number=Plur	dema	0	interiorism	n	rule
 interiorist	0		Number=Sing	dema	0	interiorist	n	moby_reverse
@@ -9445,8 +9447,11 @@ interiorities	0		Number=Plur	dema	0	interiority	n	rule
 interiority	0		Number=Sing	dema	0	interiority	n	moby_reverse
 interiorize	0	oewn-interiorize-v	VerbForm=Inf	dema	0			oewn_form
 interiorized	0	oewn-interiorize-v	Tense=Past+VerbForm=Part	dema	0			rule
+interiorized	1	oewn-interiorise-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 interiorizes	0	oewn-interiorize-v	Person=3+Tense=Pres	dema	0			rule
+interiorizes	1	oewn-interiorise-v	Person=3+Tense=Pres	dema	0			rule_variant
 interiorizing	0	oewn-interiorize-v	VerbForm=Ger	dema	0			rule
+interiorizing	1	oewn-interiorise-v	VerbForm=Ger	dema	0			rule_variant
 interiorly	0		Degree=Pos	dema	0	interiorly	r	moby_reverse
 interiors	0	oewn-interior-n	Number=Plur	dema	0			rule
 interisland	0		Degree=Pos	dema	0	interisland	a	moby_reverse
@@ -9550,15 +9555,15 @@ interlay	0	dema-interlay-n	Number=Sing	dema	1			carried
 interlay	1	dema-interlay-v	VerbForm=Inf	dema	1			carried
 interlayer	0	oewn-interlayer-n	Number=Sing	dema	0			oewn_form
 interlayers	0	oewn-interlayer-n	Number=Plur	dema	0			rule
-interlaying	0	dema-interlay-v	VerbForm=Ger	dema	0			rule
+interlaying	0	dema-interlay-v	VerbForm=Ger	dema	0			llm
 interlays	0	dema-interlay-n	Number=Plur	dema	1			carried
 interlays	1	dema-interlay-v	Person=3+Tense=Pres	dema	1			carried
 interleaf	0	oewn-interleaf-n	Number=Sing	dema	0			oewn_form
 interleave	0	oewn-interleave-v	VerbForm=Inf	dema	0			oewn_form
-interleaved	0	oewn-interleave-v	Tense=Past+VerbForm=Part	dema	0			rule
+interleaved	0	oewn-interleave-v	Tense=Past+VerbForm=Part	dema	0			llm
 interleaves	0	oewn-interleaf-n	Number=Plur	dema	0			oewn_form
-interleaves	1	oewn-interleave-v	Person=3+Tense=Pres	dema	0			rule
-interleaving	0	oewn-interleave-v	VerbForm=Ger	dema	0			rule
+interleaves	1	oewn-interleave-v	Person=3+Tense=Pres	dema	0			llm
+interleaving	0	oewn-interleave-v	VerbForm=Ger	dema	0			llm
 interleukin	0	oewn-interleukin-n	Number=Sing	dema	0			oewn_form
 interleukins	0	oewn-interleukin-n	Number=Plur	dema	0			rule
 interlibel	0		VerbForm=Inf	dema	0	interlibel	v	moby_reverse
@@ -9573,7 +9578,6 @@ interligamentary	0		Degree=Pos	dema	0	interligamentary	a	moby_reverse
 interligamentous	0		Degree=Pos	dema	0	interligamentous	a	moby_reverse
 interlight	0		Number=Sing	dema	0	interlight	n	moby_reverse
 interlights	0		Number=Plur	dema	0	interlight	n	rule
-interliing	0		VerbForm=Ger	dema	0	interlie	v	rule
 interline	0		VerbForm=Inf	dema	0	interline	v	moby_reverse
 interlineal	0	oewn-interlineal-a	Degree=Pos	dema	0			oewn_form
 interlineally	0		Degree=Pos	dema	0	interlineally	r	moby_reverse
@@ -9667,7 +9671,7 @@ interluding	0	oewn-interlude-v	VerbForm=Ger	dema	0			rule
 interlunar	0		Degree=Pos	dema	0	interlunar	a	moby_reverse
 interlunation	0		Number=Sing	dema	0	interlunation	n	moby_reverse
 interlunations	0		Number=Plur	dema	0	interlunation	n	rule
-interlying	0		VerbForm=Inf	dema	0	interlying	v	moby_reverse
+interlying	0		VerbForm=Ger	dema	0	interlie	v	rule
 intermalar	0		Degree=Pos	dema	0	intermalar	a	moby_reverse
 intermalleolar	0		Degree=Pos	dema	0	intermalleolar	a	moby_reverse
 intermammary	0		Degree=Pos	dema	0	intermammary	a	moby_reverse
@@ -10785,8 +10789,8 @@ interweavement	0		Number=Sing	dema	0	interweavement	n	moby_reverse
 interweavements	0		Number=Plur	dema	0	interweavement	n	rule
 interweaver	0		Number=Sing	dema	0	interweaver	n	moby_reverse
 interweavers	0		Number=Plur	dema	0	interweaver	n	rule
-interweaves	0	oewn-interweave-v	Person=3+Tense=Pres	dema	0			rule
-interweaving	0	oewn-interweave-v	VerbForm=Ger	dema	0			rule
+interweaves	0	oewn-interweave-v	Person=3+Tense=Pres	dema	0			llm
+interweaving	0	oewn-interweave-v	VerbForm=Ger	dema	0			llm
 interweavingly	0		Degree=Pos	dema	0	interweavingly	r	moby_reverse
 interwed	0		VerbForm=Inf	dema	0	interwed	v	moby_reverse
 interweld	0		VerbForm=Inf	dema	0	interweld	v	moby_reverse
@@ -11036,8 +11040,9 @@ intradermal tests	0	oewn-intradermal_test-n	Number=Plur	dema	0			rule
 intradermally	0	oewn-intradermally-r	Degree=Pos	dema	0			oewn_form
 intradermic	0	oewn-intradermic-a	Degree=Pos	dema	0			oewn_form
 intradermically	0		Degree=Pos	dema	0	intradermically	r	moby_reverse
-intrados	0	oewn-intrados-n	Number=Sing	dema	0			oewn_form
-intradoses	0	oewn-intrados-n	Number=Plur	dema	0			rule
+intrados	0	oewn-intrados-n	Number=Plur	dema	0			rule_variant
+intrados	1	oewn-intrados-n	Number=Sing	dema	0			oewn_form
+intradoses	0	oewn-intrados-n	Number=Plur	dema	0			llm
 intragroup	0	oewn-intragroup-a	Degree=Pos	dema	0			oewn_form
 intralinguistic	0	oewn-intralinguistic-a	Degree=Pos	dema	0			oewn_form
 intralobular	0	oewn-intralobular-a	Degree=Pos	dema	0			oewn_form
@@ -11186,8 +11191,9 @@ introgression	0		Number=Sing	dema	0	introgression	n	moby_reverse
 introgressions	0		Number=Plur	dema	0	introgression	n	rule
 introit	0	oewn-introit-n	Number=Sing	dema	0			oewn_form
 introits	0	oewn-introit-n	Number=Plur	dema	0			rule
-introitus	0	oewn-introitus-n	Number=Sing	dema	0			oewn_form
-introituses	0	oewn-introitus-n	Number=Plur	dema	0			rule
+introitus	0	oewn-introitus-n	Number=Plur	dema	0			rule_variant
+introitus	1	oewn-introitus-n	Number=Sing	dema	0			oewn_form
+introituses	0	oewn-introitus-n	Number=Plur	dema	0			llm
 introject	0	oewn-introject-v	VerbForm=Inf	dema	0			oewn_form
 introject	1	oewn-introject-n	Number=Sing	dema	0			oewn_form
 introjected	0	oewn-introject-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -11201,7 +11207,7 @@ intromissibilities	0		Number=Plur	dema	0	intromissibility	n	rule
 intromissibility	0		Number=Sing	dema	0	intromissibility	n	moby_reverse
 intromissible	0		Degree=Pos	dema	0	intromissible	a	moby_reverse
 intromission	0	oewn-intromission-n	Number=Sing	dema	0			oewn_form
-intromissions	0	oewn-intromission-n	Number=Plur	dema	0			rule
+intromissions	0	oewn-intromission-n	Number=Plur	dema	0			llm
 intromissive	0		Degree=Pos	dema	0	intromissive	a	moby_reverse
 intromit	0	oewn-intromit-v	VerbForm=Inf	dema	0			oewn_form
 intromits	0	oewn-intromit-v	Person=3+Tense=Pres	dema	0			rule
@@ -11493,7 +11499,7 @@ inventions	0	oewn-invention-n	Number=Plur	dema	0			rule
 inventive	0	oewn-inventive-a	Degree=Pos	dema	0			oewn_form
 inventively	0	oewn-inventively-r	Degree=Pos	dema	0			oewn_form
 inventiveness	0	oewn-inventiveness-n	Number=Sing	dema	0			oewn_form
-inventivenesses	0	oewn-inventiveness-n	Number=Plur	dema	0			rule
+inventivenesses	0	oewn-inventiveness-n	Number=Plur	dema	0			llm
 inventor	0	oewn-inventor-n	Number=Sing	dema	0			oewn_form
 inventoriable	0		Degree=Pos	dema	0	inventoriable	a	moby_reverse
 inventorial	0		Degree=Pos	dema	0	inventorial	a	moby_reverse
@@ -11699,7 +11705,7 @@ invitatory	1		Number=Sing	dema	0	invitatory	n	moby_reverse
 invite	0	oewn-invite-n	Number=Sing	dema	1			carried
 invite	1	oewn-invite-v	VerbForm=Inf	dema	1			carried
 invite out	0	oewn-invite_out-v	VerbForm=Inf	dema	0			oewn_form
-invited	0	oewn-invite-v	Tense=Past+VerbForm=Part	dema	0			rule
+invited	0	oewn-invite-v	Tense=Past+VerbForm=Part	dema	0			llm
 invited out	0	oewn-invite_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 invitee	0	oewn-invitee-n	Number=Sing	dema	0			oewn_form
 invitees	0	oewn-invitee-n	Number=Plur	dema	0			rule
@@ -11708,7 +11714,7 @@ inviters	0		Number=Plur	dema	0	inviter	n	rule
 invites	0	oewn-invite-n	Number=Plur	dema	1			carried
 invites	1	oewn-invite-v	Person=3+Tense=Pres	dema	1			carried
 invites out	0	oewn-invite_out-v	Person=3+Tense=Pres	dema	0			rule
-inviting	0	oewn-invite-v	VerbForm=Ger	dema	0			rule
+inviting	0	oewn-invite-v	VerbForm=Ger	dema	0			llm
 inviting	1	oewn-inviting-a	Degree=Pos	dema	0			oewn_form
 inviting out	0	oewn-invite_out-v	VerbForm=Ger	dema	0			rule
 invitingly	0	oewn-invitingly-r	Degree=Pos	dema	0			oewn_form
@@ -11744,7 +11750,7 @@ involucra	0	oewn-involucre-n	Number=Plur	dema	0			oewn_form
 involucral	0		Degree=Pos	dema	0	involucral	a	moby_reverse
 involucrate	0	oewn-involucrate-a	Degree=Pos	dema	0			oewn_form
 involucre	0	oewn-involucre-n	Number=Sing	dema	0			oewn_form
-involucres	0	oewn-involucre-n	Number=Plur	dema	0			rule_variant
+involucres	0	oewn-involucre-n	Number=Plur	dema	0			llm
 involucrum	0		Number=Sing	dema	0	involucrum	n	moby_reverse
 involucrums	0		Number=Plur	dema	0	involucrum	n	rule
 involuntarily	0	oewn-involuntarily-r	Degree=Pos	dema	0			oewn_form
@@ -11807,8 +11813,8 @@ inwards	0	oewn-inwards-r	Degree=Pos	dema	0			oewn_form
 inwards	1		Number=Plur	dema	0	inward	n	moby_reverse
 inweave	0	oewn-inweave-v	VerbForm=Inf	dema	0			oewn_form
 inweaved	0	oewn-inweave-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
-inweaves	0	oewn-inweave-v	Person=3+Tense=Pres	dema	0			rule
-inweaving	0	oewn-inweave-v	VerbForm=Ger	dema	0			rule
+inweaves	0	oewn-inweave-v	Person=3+Tense=Pres	dema	0			llm
+inweaving	0	oewn-inweave-v	VerbForm=Ger	dema	0			llm
 inwind	0		VerbForm=Inf	dema	0	inwind	v	moby_reverse
 inwinding	0		VerbForm=Ger	dema	0	inwind	v	rule
 inwinds	0		Person=3+Tense=Pres	dema	0	inwind	v	rule
@@ -12082,15 +12088,15 @@ iris scanning	0	oewn-iris_scanning-n	Number=Sing	dema	0			oewn_form
 iris scannings	0	oewn-iris_scanning-n	Number=Plur	dema	0			rule
 irisation	0		Number=Sing	dema	0	irisation	n	moby_reverse
 irisations	0		Number=Plur	dema	0	irisation	n	rule
-irises	0	oewn-iris-n	Number=Plur	dema	0			rule_variant
+irises	0	oewn-iris-n	Number=Plur	dema	0			llm
 irish	0		Number=Sing	dema	0	irish	n	moby_reverse
 irish	1		Degree=Pos	dema	0	irish	a	moby_reverse
 irishes	0		Number=Plur	dema	0	irish	n	rule
 irishman	0		Number=Sing	dema	0	irishman	n	moby_reverse
 irishmen	0		Number=Plur	dema	0	irishman	n	rule
 iritic	0	oewn-iritic-a	Degree=Pos	dema	0			oewn_form
+iritides	0	oewn-iritis-n	Number=Plur	dema	0			llm
 iritis	0	oewn-iritis-n	Number=Sing	dema	0			oewn_form
-iritises	0	oewn-iritis-n	Number=Plur	dema	0			rule
 irk	0	oewn-irk-v	VerbForm=Inf	dema	0			oewn_form
 irked	0	oewn-irk-v	Tense=Past+VerbForm=Part	dema	0			rule
 irking	0	oewn-irk-v	VerbForm=Ger	dema	0			rule
@@ -12141,7 +12147,7 @@ iron maidens	0	oewn-iron_maiden-n	Number=Plur	dema	0			rule
 iron man	0	oewn-iron_man-n	Number=Sing	dema	0			oewn_form
 iron manganese tungsten	0	oewn-iron_manganese_tungsten-n	Number=Sing	dema	0			oewn_form
 iron manganese tungstens	0	oewn-iron_manganese_tungsten-n	Number=Plur	dema	0			rule
-iron mans	0	oewn-iron_man-n	Number=Plur	dema	0			rule
+iron men	0	oewn-iron_man-n	Number=Plur	dema	0			rule
 iron mold	0	oewn-iron_mold-n	Number=Sing	dema	0			oewn_form
 iron molds	0	oewn-iron_mold-n	Number=Plur	dema	0			rule
 iron mould	0	oewn-iron_mould-n	Number=Sing	dema	0			oewn_form
@@ -12216,9 +12222,9 @@ ironizing	0		VerbForm=Ger	dema	0	ironize	v	rule
 ironless	0		Degree=Pos	dema	0	ironless	a	moby_reverse
 ironlike	0	oewn-ironlike-a	Degree=Pos	dema	0			oewn_form
 ironman	0	oewn-ironman-n	Number=Sing	dema	0			oewn_form
-ironmans	0	oewn-ironman-n	Number=Plur	dema	0			rule
 ironmaster	0		Number=Sing	dema	0	ironmaster	n	moby_reverse
 ironmasters	0		Number=Plur	dema	0	ironmaster	n	rule
+ironmen	0	oewn-ironman-n	Number=Plur	dema	0			llm
 ironmonger	0	oewn-ironmonger-n	Number=Sing	dema	0			oewn_form
 ironmonger's shop	0	oewn-ironmonger-ap-s_shop-n	Number=Sing	dema	0			oewn_form
 ironmonger's shops	0	oewn-ironmonger-ap-s_shop-n	Number=Plur	dema	0			rule
@@ -12572,7 +12578,7 @@ isagoges	0		Number=Plur	dema	0	isagoge	n	rule
 isagogic	0		Degree=Pos	dema	0	isagogic	a	moby_reverse
 isagogic	1		Number=Sing	dema	0	isagogic	n	moby_reverse
 isagogically	0		Degree=Pos	dema	0	isagogically	r	moby_reverse
-isagogics	0		Number=Plur	dema	0	isagogic	n	moby_reverse
+isagogics	0		Number=Sing	dema	0	isagogics	n	moby_reverse
 isallobar	0		Number=Sing	dema	0	isallobar	n	moby_reverse
 isallobars	0		Number=Plur	dema	0	isallobar	n	rule
 isallotherm	0		Number=Sing	dema	0	isallotherm	n	moby_reverse
@@ -12895,17 +12901,20 @@ isomerically	0		Degree=Pos	dema	0	isomerically	r	moby_reverse
 isomerisation	0	oewn-isomerisation-n	Number=Sing	dema	0			oewn_form
 isomerisations	0	oewn-isomerisation-n	Number=Plur	dema	0			rule
 isomerise	0	oewn-isomerise-v	VerbForm=Inf	dema	0			oewn_form
-isomerised	0	oewn-isomerise-v	Tense=Past+VerbForm=Part	dema	0			rule
-isomerises	0	oewn-isomerise-v	Person=3+Tense=Pres	dema	0			rule
-isomerising	0	oewn-isomerise-v	VerbForm=Ger	dema	0			rule
+isomerised	0	oewn-isomerise-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+isomerises	0	oewn-isomerise-v	Person=3+Tense=Pres	dema	0			rule_variant
+isomerising	0	oewn-isomerise-v	VerbForm=Ger	dema	0			rule_variant
 isomerism	0	oewn-isomerism-n	Number=Sing	dema	0			oewn_form
 isomerisms	0	oewn-isomerism-n	Number=Plur	dema	0			rule
 isomerization	0	oewn-isomerization-n	Number=Sing	dema	0			oewn_form
 isomerizations	0	oewn-isomerization-n	Number=Plur	dema	0			rule
 isomerize	0	oewn-isomerize-v	VerbForm=Inf	dema	0			oewn_form
 isomerized	0	oewn-isomerize-v	Tense=Past+VerbForm=Part	dema	0			rule
+isomerized	1	oewn-isomerise-v	Tense=Past+VerbForm=Part	dema	0			llm
 isomerizes	0	oewn-isomerize-v	Person=3+Tense=Pres	dema	0			rule
+isomerizes	1	oewn-isomerise-v	Person=3+Tense=Pres	dema	0			llm
 isomerizing	0	oewn-isomerize-v	VerbForm=Ger	dema	0			rule
+isomerizing	1	oewn-isomerise-v	VerbForm=Ger	dema	0			llm
 isomerous	0		Degree=Pos	dema	0	isomerous	a	moby_reverse
 isomers	0	oewn-isomer-n	Number=Plur	dema	0			rule
 isometric	0	oewn-isometric-a	Degree=Pos	dema	0			oewn_form

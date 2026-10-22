@@ -95,7 +95,7 @@ Aborigines	0	oewn-aborigine-n	Number=Plur	dema	0			rule
 Aborigines	1	oewn-Aborigine-n	Capitalization=Title+Number=Plur	dema	0			rule
 Abors	0	oewn-Abor-n	Capitalization=Title+Number=Plur	dema	0			rule
 Abos	0		Number=Plur	dema	0	abo	n	rule
-Abos	1	oewn-Abo-n	Capitalization=Title+Number=Plur	dema	0			rule
+Abos	1	oewn-Abo-n	Capitalization=Title+Number=Plur	dema	0			llm
 Abraham's bosom	0	oewn-Abraham-ap-s_bosom-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Abraham's bosoms	0	oewn-Abraham-ap-s_bosom-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Abramis brama	0	oewn-Abramis_brama-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
@@ -147,7 +147,7 @@ abacs	0		Number=Plur	dema	0	abac	n	rule
 abactinal	0	oewn-abactinal-a	Degree=Pos	dema	0			oewn_form
 abaculus	0		Number=Sing	dema	0	abaculus	n	moby_reverse
 abacus	0	oewn-abacus-n	Number=Sing	dema	0			oewn_form
-abacuses	0	oewn-abacus-n	Number=Plur	dema	0			rule_variant
+abacuses	0	oewn-abacus-n	Number=Plur	dema	0			llm
 abaft	0	oewn-abaft-r	Degree=Pos	dema	0			oewn_form
 abaft	1	dema-abaft-p		dema	0			carried
 abaised	0		Degree=Pos	dema	0	abaised	a	moby_reverse
@@ -222,16 +222,18 @@ abaters	0		Number=Plur	dema	0	abater	n	rule
 abates	0	oewn-abate-v	Person=3+Tense=Pres	dema	0			rule
 abatic	0	oewn-abatic-a	Degree=Pos	dema	0			oewn_form
 abating	0	oewn-abate-v	VerbForm=Ger	dema	0			rule
-abatis	0	oewn-abatis-n	Number=Sing	dema	0			oewn_form
-abatises	0	oewn-abatis-n	Number=Plur	dema	0			rule
+abatis	0	oewn-abatis-n	Number=Plur	dema	0			rule_variant
+abatis	1	oewn-abatis-n	Number=Sing	dema	0			oewn_form
+abatises	0	oewn-abatis-n	Number=Plur	dema	0			llm
 abatjour	0		Number=Sing	dema	0	abatjour	n	moby_reverse
 abatjours	0		Number=Plur	dema	0	abatjour	n	rule
 abator	0	oewn-abator-n	Number=Sing	dema	0			oewn_form
 abators	0	oewn-abator-n	Number=Plur	dema	0			rule
 abattage	0		Number=Sing	dema	0	abattage	n	moby_reverse
 abattages	0		Number=Plur	dema	0	abattage	n	rule
-abattis	0	oewn-abattis-n	Number=Sing	dema	0			oewn_form
-abattises	0	oewn-abattis-n	Number=Plur	dema	0			rule
+abattis	0	oewn-abattis-n	Number=Plur	dema	0			rule_variant
+abattis	1	oewn-abattis-n	Number=Sing	dema	0			oewn_form
+abattises	0	oewn-abattis-n	Number=Plur	dema	0			llm
 abattoir	0	oewn-abattoir-n	Number=Sing	dema	0			oewn_form
 abattoirs	0	oewn-abattoir-n	Number=Plur	dema	0			rule
 abaxial	0	oewn-abaxial-a	Degree=Pos	dema	0			oewn_form
@@ -480,9 +482,9 @@ abjures	0	oewn-abjure-v	Person=3+Tense=Pres	dema	0			rule
 abjuring	0	oewn-abjure-v	VerbForm=Ger	dema	0			rule
 abl	0		Number=Sing	dema	0	abl	n	moby_reverse
 ablactate	0	oewn-ablactate-v	VerbForm=Inf	dema	0			oewn_form
-ablactated	0	oewn-ablactate-v	Tense=Past+VerbForm=Part	dema	0			rule
-ablactates	0	oewn-ablactate-v	Person=3+Tense=Pres	dema	0			rule
-ablactating	0	oewn-ablactate-v	VerbForm=Ger	dema	0			rule
+ablactated	0	oewn-ablactate-v	Tense=Past+VerbForm=Part	dema	0			llm
+ablactates	0	oewn-ablactate-v	Person=3+Tense=Pres	dema	0			llm
+ablactating	0	oewn-ablactate-v	VerbForm=Ger	dema	0			llm
 ablactation	0	oewn-ablactation-n	Number=Sing	dema	0			oewn_form
 ablactations	0	oewn-ablactation-n	Number=Plur	dema	0			rule
 ablate	0	oewn-ablate-v	VerbForm=Inf	dema	0			oewn_form
@@ -511,16 +513,16 @@ ablaze	1	oewn-ablaze-a	Degree=Pos	dema	0			oewn_form
 able	0	oewn-able-a	Degree=Pos	dema	0			oewn_form
 able	1		Number=Sing	dema	0	able	n	moby_reverse
 able seaman	0	oewn-able_seaman-n	Number=Sing	dema	0			oewn_form
-able seamans	0	oewn-able_seaman-n	Number=Plur	dema	0			rule
+able seamen	0	oewn-able_seaman-n	Number=Plur	dema	0			rule
 able seawoman	0	oewn-able_seawoman-n	Number=Sing	dema	0			oewn_form
-able seawomans	0	oewn-able_seawoman-n	Number=Plur	dema	0			rule
+able seawomen	0	oewn-able_seawoman-n	Number=Plur	dema	0			rule
 able-bodied	0	oewn-able-bodied-a	Degree=Pos	dema	0			oewn_form
 able-bodied sailor	0	oewn-able-bodied_sailor-n	Number=Sing	dema	0			oewn_form
 able-bodied sailors	0	oewn-able-bodied_sailor-n	Number=Plur	dema	0			rule
 able-bodied seaman	0	oewn-able-bodied_seaman-n	Number=Sing	dema	0			oewn_form
-able-bodied seamans	0	oewn-able-bodied_seaman-n	Number=Plur	dema	0			rule
+able-bodied seamen	0	oewn-able-bodied_seaman-n	Number=Plur	dema	0			rule
 able-bodied seawoman	0	oewn-able-bodied_seawoman-n	Number=Sing	dema	0			oewn_form
-able-bodied seawomans	0	oewn-able-bodied_seawoman-n	Number=Plur	dema	0			rule
+able-bodied seawomen	0	oewn-able-bodied_seawoman-n	Number=Plur	dema	0			rule
 able-bodiedism	0	oewn-able-bodiedism-n	Number=Sing	dema	0			oewn_form
 able-bodiedisms	0	oewn-able-bodiedism-n	Number=Plur	dema	0			rule
 able-bodism	0	oewn-able-bodism-n	Number=Sing	dema	0			oewn_form
@@ -593,7 +595,7 @@ abode	0	oewn-abode-n	Number=Sing	dema	0			oewn_form
 abode	1	oewn-abide-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 abodes	0	oewn-abode-n	Number=Plur	dema	0			rule
 abohm	0	oewn-abohm-n	Number=Sing	dema	0			oewn_form
-abohms	0	oewn-abohm-n	Number=Plur	dema	0			rule
+abohms	0	oewn-abohm-n	Number=Plur	dema	0			llm
 aboideau	0		Number=Sing	dema	0	aboideau	n	moby_reverse
 aboideaus	0		Number=Plur	dema	0	aboideau	n	rule
 abolish	0	oewn-abolish-v	VerbForm=Inf	dema	0			oewn_form
@@ -625,16 +627,16 @@ abolla	0		Number=Sing	dema	0	abolla	n	moby_reverse
 abollae	0		Number=Sing	dema	0	abollae	n	moby_reverse
 abollaes	0		Number=Plur	dema	0	abollae	n	rule
 abollas	0		Number=Plur	dema	0	abolla	n	rule
-abomasa	0	oewn-abomasum-n	Number=Plur	dema	0			agid
+abomasa	0	oewn-abomasum-n	Number=Plur	dema	0			llm
 abomasal	0	oewn-abomasal-a	Degree=Pos	dema	0			oewn_form
 abomasum	0	oewn-abomasum-n	Number=Sing	dema	0			oewn_form
+abomasums	0	oewn-abomasum-n	Number=Plur	dema	0			rule_variant
 abomasus	0		Number=Sing	dema	0	abomasus	n	moby_reverse
-abomasuses	0		Number=Plur	dema	0	abomasus	n	rule
 abomasusi	0		Number=Sing	dema	0	abomasusi	n	moby_reverse
 abomasusis	0		Number=Plur	dema	0	abomasusi	n	rule
 abominable	0	oewn-abominable-a	Degree=Pos	dema	0			oewn_form
 abominable snowman	0	oewn-abominable_snowman-n	Number=Sing	dema	0			oewn_form
-abominable snowmans	0	oewn-abominable_snowman-n	Number=Plur	dema	0			rule
+abominable snowmen	0	oewn-abominable_snowman-n	Number=Plur	dema	0			rule
 abominableness	0		Number=Sing	dema	0	abominableness	n	moby_reverse
 abominably	0	oewn-abominably-r	Degree=Pos	dema	0			oewn_form
 abominate	0	oewn-abominate-v	VerbForm=Inf	dema	0			oewn_form
@@ -684,8 +686,9 @@ abortiveness	0		Number=Sing	dema	0	abortiveness	n	moby_reverse
 abortivenesses	0		Number=Plur	dema	0	abortiveness	n	rule
 aborts	0	oewn-abort-v	Person=3+Tense=Pres	dema	0			rule
 aborts	1	oewn-abort-n	Number=Plur	dema	0			rule
-abortus	0	oewn-abortus-n	Number=Sing	dema	0			oewn_form
-abortuses	0	oewn-abortus-n	Number=Plur	dema	0			rule
+abortus	0	oewn-abortus-n	Number=Plur	dema	0			rule_variant
+abortus	1	oewn-abortus-n	Number=Sing	dema	0			oewn_form
+abortuses	0	oewn-abortus-n	Number=Plur	dema	0			llm
 abos	0		Number=Plur	dema	0	abo	n	rule
 aboudikro	0		Number=Sing	dema	0	aboudikro	n	moby_reverse
 aboudikros	0		Number=Plur	dema	0	aboudikro	n	rule
@@ -883,7 +886,7 @@ absently	0	oewn-absently-r	Degree=Pos	dema	0			oewn_form
 absentminded	0	oewn-absentminded-a	Degree=Pos	dema	0			oewn_form
 absentmindedly	0	oewn-absentmindedly-r	Degree=Pos	dema	0			oewn_form
 absentmindedness	0	oewn-absentmindedness-n	Number=Sing	dema	0			oewn_form
-absentmindednesses	0	oewn-absentmindedness-n	Number=Plur	dema	0			rule
+absentmindednesses	0	oewn-absentmindedness-n	Number=Plur	dema	0			llm
 absentness	0		Number=Sing	dema	0	absentness	n	moby_reverse
 absents	0	oewn-absent-v	Person=3+Tense=Pres	dema	1			carried
 absinth	0	oewn-absinth-n	Number=Sing	dema	0			oewn_form
@@ -1154,7 +1157,7 @@ abwatts	0	oewn-abwatt-n	Number=Plur	dema	0			rule
 aby	0	oewn-aby-v	VerbForm=Inf	dema	0			oewn_form
 abye	0	oewn-abye-v	VerbForm=Inf	dema	0			oewn_form
 abyed	0	oewn-abye-v	Tense=Past+VerbForm=Part	dema	0			rule
-abyeing	0	oewn-abye-v	VerbForm=Ger	dema	0			rule_variant
+abyeing	0	oewn-abye-v	VerbForm=Ger	dema	0			rule
 abyes	0	oewn-abye-v	Person=3+Tense=Pres	dema	0			rule
 abying	0	oewn-aby-v	VerbForm=Ger	dema	0			rule
 abysm	0	oewn-abysm-n	Number=Sing	dema	0			oewn_form

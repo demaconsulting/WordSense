@@ -12,7 +12,8 @@ namespace WordSense.Builder;
 /// <remarks>
 ///     <para>
 ///     The appendix lists every trained lemma (a lemma that has sentences in <c>corpus/anchors</c>)
-///     with its senses in inventory order, the most frequent first: the id, the group (none when the sense is in no
+///     with its senses in inventory order, the order of Open English WordNet (the position of the sense in its entry, the
+///     project senses last): the id, the group (none when the sense is in no
 ///     group), the Open English WordNet sense key (a project sense has none), the respelling when there is one and the
 ///     gloss. The senses come from the word image that <see cref="ImageCompiler"/> compiles from the data folder, so
 ///     the appendix lists exactly what the library answers; the glosses are not in the image and are read from the
@@ -210,8 +211,9 @@ internal static class AppendixGenerator
             lines,
             "Every sense has a readable id of the form `lemma#label` (for example `bank#coin-bank`) that is stable and " +
             "never reused for another meaning, and is linked to one Open English WordNet sense key. A project sense has " +
-            "no key. The senses of a lemma and part of speech are listed most frequent first, by the WordNet 3.0 tag " +
-            "count of the sense key; a project sense ranks last. Each sense is listed with its gloss, the definition of " +
+            "no key. The senses of a lemma and part of speech are listed in the order of Open English WordNet, which puts " +
+            "the commonly used senses first (the position of the sense in its entry); a project sense ranks last. Each " +
+            "sense is listed with its gloss, the definition of " +
             "its Open English WordNet synset.");
 
         lines.Add("### Parts of Speech");
@@ -310,7 +312,7 @@ internal static class AppendixGenerator
             $"{lemmas.Sum(l => l.Senses.Count).ToString("N0", Inv)} senses in total, listed alphabetically. Each lemma lists " +
             "its parts of speech and the forms it recognizes. Under it, every sense gives its id and part of speech, its " +
             "group, its Open English WordNet sense key (a project sense has none), its respelling when it has one and " +
-            "its gloss, in inventory order (the most frequent sense of a part of speech first).");
+            "its gloss, in inventory order (the order of Open English WordNet within a part of speech, project senses last).");
 
         foreach (var letter in lemmas.GroupBy(l => char.ToUpperInvariant(l.Lemma[0])).OrderBy(g => g.Key))
         {

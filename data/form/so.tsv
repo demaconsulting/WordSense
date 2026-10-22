@@ -6,10 +6,9 @@ SOBS	0	oewn-sob-v	Person=3+Tense=Pres	dema	0			rule
 SOBS	1	oewn-sob-n	Number=Plur	dema	0			rule
 SOBS	2	oewn-SOB-n	Capitalization=Upper+Number=Plur	dema	0			rule
 SOD	0	oewn-sod-n	Number=Sing	dema	0			oewn_form
-SOD	1	oewn-seethe-v	VerbForm=Part	dema	0			agid
-SOD	2	oewn-sod-v	VerbForm=Inf	dema	0			oewn_form
-SOD	3	dema-sod-i		dema	0			carried
-SOD	4	oewn-SOD-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+SOD	1	oewn-sod-v	VerbForm=Inf	dema	0			oewn_form
+SOD	2	dema-sod-i		dema	0			carried
+SOD	3	oewn-SOD-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 SODS	0	oewn-sod-n	Number=Plur	dema	0			rule
 SODS	1	oewn-sod-v	Person=3+Tense=Pres	dema	0			rule
 SODS	2	oewn-SOD-n	Capitalization=Upper+Number=Plur	dema	0			rule
@@ -130,7 +129,7 @@ Solidago sempervirens	0	oewn-Solidago_sempervirens-n	Capitalization=Exact+Number
 Solidago spathulata	0	oewn-Solidago_spathulata-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Solidago spathulatas	0	oewn-Solidago_spathulata-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Solo man	0	oewn-Solo_man-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
-Solo mans	0	oewn-Solo_man-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Solo men	0	oewn-Solo_man-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Solomon's seal	0	oewn-Solomon-ap-s_seal-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Solomon's seals	0	oewn-Solomon-ap-s_seal-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Solomon's-seal	0	oewn-Solomon-ap-s-seal-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
@@ -157,7 +156,9 @@ Somaliland monetary unit	0	oewn-Somaliland_monetary_unit-n	Capitalization=Exact+
 Somaliland monetary units	0	oewn-Somaliland_monetary_unit-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Somalis	0	oewn-Somali-n	Capitalization=Title+Number=Plur	dema	0			rule
 Somas	0	oewn-soma-n	Number=Plur	dema	0			rule_variant
-Somas	1	oewn-Soma-n	Capitalization=Title+Number=Plur	dema	0			rule
+Somas	1	oewn-Soma-n	Capitalization=Title+Number=Plur	dema	0			rule_variant
+Somata	0	oewn-soma-n	Number=Plur	dema	0			oewn_form
+Somata	1	oewn-Soma-n	Capitalization=Title+Number=Plur	dema	0			llm
 Somrai	0	oewn-Somrai-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Somrai language	0	oewn-Somrai_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Somrai languages	0	oewn-Somrai_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
@@ -389,8 +390,9 @@ soapberry vines	0	oewn-soapberry_vine-n	Number=Plur	dema	0			rule
 soapbox	0	oewn-soapbox-n	Number=Sing	dema	0			oewn_form
 soapboxes	0	oewn-soapbox-n	Number=Plur	dema	0			rule
 soaped	0	oewn-soap-v	Tense=Past+VerbForm=Part	dema	0			rule
-soapfish	0	oewn-soapfish-n	Number=Plur	dema	0			agid
+soapfish	0	oewn-soapfish-n	Number=Plur	dema	0			llm
 soapfish	1	oewn-soapfish-n	Number=Sing	dema	0			oewn_form
+soapfishes	0	oewn-soapfish-n	Number=Plur	dema	0			rule_variant
 soapier	0	oewn-soapy-a	Degree=Cmp	dema	0			oewn_form
 soapiest	0	oewn-soapy-a	Degree=Sup	dema	0			oewn_form
 soapily	0		Degree=Pos	dema	0	soapily	r	moby_reverse
@@ -468,7 +470,7 @@ sobering up	0	oewn-sober_up-v	VerbForm=Ger	dema	0			rule
 soberingly	0		Degree=Pos	dema	0	soberingly	r	moby_reverse
 soberly	0	oewn-soberly-r	Degree=Pos	dema	0			oewn_form
 soberness	0	oewn-soberness-n	Number=Sing	dema	0			oewn_form
-sobernesses	0	oewn-soberness-n	Number=Plur	dema	0			rule
+sobernesses	0	oewn-soberness-n	Number=Plur	dema	0			llm
 sobers	0	oewn-sober-v	Person=3+Tense=Pres	dema	0			rule
 sobers up	0	oewn-sober_up-v	Person=3+Tense=Pres	dema	0			rule
 sobersided	0	oewn-sobersided-a	Degree=Pos	dema	0			oewn_form
@@ -731,18 +733,16 @@ socking	0	oewn-sock-v	VerbForm=Ger	dema	0			rule
 sockless	0		Degree=Pos	dema	0	sockless	a	moby_reverse
 socklessness	0		Number=Sing	dema	0	socklessness	n	moby_reverse
 socko	0		Degree=Pos	dema	0	socko	a	moby_reverse
-socks	0	oewn-sock-n	Number=Plur	dema	0			rule_variant
+socks	0	oewn-sock-n	Number=Plur	dema	0			llm
 socks	1	oewn-sock-v	Person=3+Tense=Pres	dema	0			rule
 socle	0	oewn-socle-n	Number=Sing	dema	0			oewn_form
 socles	0	oewn-socle-n	Number=Plur	dema	0			rule
 socman	0		Number=Sing	dema	0	socman	n	moby_reverse
-socmans	0		Number=Plur	dema	0	socman	n	rule
-socmen	0		Number=Sing	dema	0	socmen	n	moby_reverse
-socmens	0		Number=Plur	dema	0	socmen	n	rule
+socmen	0		Number=Plur	dema	0	socman	n	rule
+socmen	1		Number=Sing	dema	0	socmen	n	moby_reverse
 sod	0	oewn-sod-n	Number=Sing	dema	0			oewn_form
-sod	1	oewn-seethe-v	VerbForm=Part	dema	0			agid
-sod	2	oewn-sod-v	VerbForm=Inf	dema	0			oewn_form
-sod	3	dema-sod-i		dema	0			carried
+sod	1	oewn-sod-v	VerbForm=Inf	dema	0			oewn_form
+sod	2	dema-sod-i		dema	0			carried
 sod house	0	oewn-sod_house-n	Number=Sing	dema	0			oewn_form
 sod houses	0	oewn-sod_house-n	Number=Plur	dema	0			rule
 soda	0	oewn-soda-n	Number=Sing	dema	0			oewn_form
@@ -1031,8 +1031,8 @@ softening	1	oewn-softening-n	Number=Sing	dema	0			oewn_form
 softening	2	oewn-softening-a	Degree=Pos	dema	0			oewn_form
 softenings	0	oewn-softening-n	Number=Plur	dema	0			rule
 softens	0	oewn-soften-v	Person=3+Tense=Pres	dema	0			rule
-softer	0	oewn-soft-a	Degree=Cmp	dema	0			rule
-softest	0	oewn-soft-a	Degree=Sup	dema	0			rule
+softer	0	oewn-soft-a	Degree=Cmp	dema	0			llm
+softest	0	oewn-soft-a	Degree=Sup	dema	0			llm
 softhead	0		Number=Sing	dema	0	softhead	n	moby_reverse
 softheaded	0	oewn-softheaded-a	Degree=Pos	dema	0			oewn_form
 softheads	0		Number=Plur	dema	0	softhead	n	rule
@@ -1073,7 +1073,7 @@ softy	0	oewn-softy-n	Number=Sing	dema	0			oewn_form
 soggier	0	oewn-soggy-a	Degree=Cmp	dema	0			oewn_form
 soggiest	0	oewn-soggy-a	Degree=Sup	dema	0			oewn_form
 sogginess	0	oewn-sogginess-n	Number=Sing	dema	0			oewn_form
-sogginesses	0	oewn-sogginess-n	Number=Plur	dema	0			rule
+sogginesses	0	oewn-sogginess-n	Number=Plur	dema	0			llm
 soggy	0	oewn-soggy-a	Degree=Pos	dema	0			oewn_form
 soh	0	oewn-soh-n	Number=Sing	dema	0			oewn_form
 soho	0	dema-soho-i		dema	0			carried
@@ -1134,7 +1134,7 @@ soke	0		Number=Sing	dema	0	soke	n	moby_reverse
 sokeman	0		Number=Sing	dema	0	sokeman	n	moby_reverse
 sokemanries	0		Number=Plur	dema	0	sokemanry	n	rule
 sokemanry	0		Number=Sing	dema	0	sokemanry	n	moby_reverse
-sokemans	0		Number=Plur	dema	0	sokeman	n	rule
+sokemen	0		Number=Plur	dema	0	sokeman	n	rule
 soken	0		Number=Sing	dema	0	soken	n	moby_reverse
 sokens	0		Number=Plur	dema	0	soken	n	rule
 sokes	0		Number=Plur	dema	0	soke	n	rule
@@ -1240,9 +1240,9 @@ solarimeters	0		Number=Plur	dema	0	solarimeter	n	rule
 solarisation	0	oewn-solarisation-n	Number=Sing	dema	0			oewn_form
 solarisations	0	oewn-solarisation-n	Number=Plur	dema	0			rule
 solarise	0	oewn-solarise-v	VerbForm=Inf	dema	0			oewn_form
-solarised	0	oewn-solarise-v	Tense=Past+VerbForm=Part	dema	0			rule
-solarises	0	oewn-solarise-v	Person=3+Tense=Pres	dema	0			rule
-solarising	0	oewn-solarise-v	VerbForm=Ger	dema	0			rule
+solarised	0	oewn-solarise-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+solarises	0	oewn-solarise-v	Person=3+Tense=Pres	dema	0			rule_variant
+solarising	0	oewn-solarise-v	VerbForm=Ger	dema	0			rule_variant
 solarism	0		Number=Sing	dema	0	solarism	n	moby_reverse
 solarisms	0		Number=Plur	dema	0	solarism	n	rule
 solarist	0		Number=Sing	dema	0	solarist	n	moby_reverse
@@ -1253,8 +1253,11 @@ solarization	0	oewn-solarization-n	Number=Sing	dema	0			oewn_form
 solarizations	0	oewn-solarization-n	Number=Plur	dema	0			rule
 solarize	0	oewn-solarize-v	VerbForm=Inf	dema	0			oewn_form
 solarized	0	oewn-solarize-v	Tense=Past+VerbForm=Part	dema	0			rule
+solarized	1	oewn-solarise-v	Tense=Past+VerbForm=Part	dema	0			llm
 solarizes	0	oewn-solarize-v	Person=3+Tense=Pres	dema	0			rule
+solarizes	1	oewn-solarise-v	Person=3+Tense=Pres	dema	0			llm
 solarizing	0	oewn-solarize-v	VerbForm=Ger	dema	0			rule
+solarizing	1	oewn-solarise-v	VerbForm=Ger	dema	0			llm
 solatium	0		Number=Sing	dema	0	solatium	n	moby_reverse
 solatiums	0		Number=Plur	dema	0	solatium	n	rule
 solattia	0		Number=Sing	dema	0	solattia	n	moby_reverse
@@ -1288,8 +1291,9 @@ soldier of fortune	0	oewn-soldier_of_fortune-n	Number=Sing	dema	0			oewn_form
 soldier-fish	0	oewn-soldier-fish-n	Number=Sing	dema	0			oewn_form
 soldier-fishes	0	oewn-soldier-fish-n	Number=Plur	dema	0			rule
 soldiered	0	oewn-soldier-v	Tense=Past+VerbForm=Part	dema	0			rule
-soldierfish	0	oewn-soldierfish-n	Number=Plur	dema	0			agid
+soldierfish	0	oewn-soldierfish-n	Number=Plur	dema	0			llm
 soldierfish	1	oewn-soldierfish-n	Number=Sing	dema	0			oewn_form
+soldierfishes	0	oewn-soldierfish-n	Number=Plur	dema	0			rule_variant
 soldieries	0	oewn-soldiery-n	Number=Plur	dema	0			rule
 soldiering	0	oewn-soldier-v	VerbForm=Ger	dema	0			rule
 soldiering	1	oewn-soldiering-n	Number=Sing	dema	0			oewn_form
@@ -1316,11 +1320,12 @@ soled	0	oewn-sole-v	Tense=Past+VerbForm=Part	dema	0			rule
 soled	1	oewn-soled-a	Degree=Pos	dema	0			oewn_form
 soledad pine	0	oewn-soledad_pine-n	Number=Sing	dema	0			oewn_form
 soledad pines	0	oewn-soledad_pine-n	Number=Plur	dema	0			rule
+solei	0	oewn-soleus-n	Number=Plur	dema	0			llm
 soleless	0	oewn-soleless-a	Degree=Pos	dema	0			oewn_form
 solely	0	oewn-solely-r	Degree=Pos	dema	0			oewn_form
 solemn	0	oewn-solemn-a	Degree=Pos	dema	0			oewn_form
 solemness	0	oewn-solemness-n	Number=Sing	dema	0			oewn_form
-solemnesses	0	oewn-solemness-n	Number=Plur	dema	0			rule
+solemnesses	0	oewn-solemness-n	Number=Plur	dema	0			llm
 solemnified	0		Tense=Past+VerbForm=Part	dema	0	solemnify	v	rule
 solemnifies	0		Person=3+Tense=Pres	dema	0	solemnify	v	rule
 solemnify	0		VerbForm=Inf	dema	0	solemnify	v	moby_reverse
@@ -1358,14 +1363,13 @@ soleplate	0		Number=Sing	dema	0	soleplate	n	moby_reverse
 soleplates	0		Number=Plur	dema	0	soleplate	n	rule
 soleprint	0		Number=Sing	dema	0	soleprint	n	moby_reverse
 soleprints	0		Number=Plur	dema	0	soleprint	n	rule
-soler	0	oewn-sole-a	Degree=Cmp	dema	0			rule
 soles	0	oewn-sol-n	Number=Plur	dema	0			oewn_form
 soles	1	oewn-sole-n	Number=Plur	dema	0			oewn_form
 soles	2	oewn-sole-v	Person=3+Tense=Pres	dema	0			rule
 soleus	0	oewn-soleus-n	Number=Sing	dema	0			oewn_form
 soleus muscle	0	oewn-soleus_muscle-n	Number=Sing	dema	0			oewn_form
 soleus muscles	0	oewn-soleus_muscle-n	Number=Plur	dema	0			rule
-soleuses	0	oewn-soleus-n	Number=Plur	dema	0			rule
+soleuses	0	oewn-soleus-n	Number=Plur	dema	0			rule_variant
 solfa	0	oewn-solfa-n	Number=Sing	dema	0			oewn_form
 solfa syllable	0	oewn-solfa_syllable-n	Number=Sing	dema	0			oewn_form
 solfa syllables	0	oewn-solfa_syllable-n	Number=Plur	dema	0			rule
@@ -1377,7 +1381,7 @@ solfege	0	oewn-solfege-n	Number=Sing	dema	0			oewn_form
 solfeges	0	oewn-solfege-n	Number=Plur	dema	0			rule
 solfeggi	0	oewn-solfeggio-n	Number=Plur	dema	0			oewn_form
 solfeggio	0	oewn-solfeggio-n	Number=Sing	dema	0			oewn_form
-solfeggios	0	oewn-solfeggio-n	Number=Plur	dema	0			rule_variant
+solfeggios	0	oewn-solfeggio-n	Number=Plur	dema	0			llm
 solferino	0	oewn-solferino-n	Number=Sing	dema	0			oewn_form
 solferinos	0	oewn-solferino-n	Number=Plur	dema	0			rule
 soli	0	oewn-solo-n	Number=Plur	dema	0			oewn_form
@@ -1467,7 +1471,7 @@ solidities	0	oewn-solidity-n	Number=Plur	dema	0			rule
 solidity	0	oewn-solidity-n	Number=Sing	dema	0			oewn_form
 solidly	0	oewn-solidly-r	Degree=Pos	dema	0			oewn_form
 solidness	0	oewn-solidness-n	Number=Sing	dema	0			oewn_form
-solidnesses	0	oewn-solidness-n	Number=Plur	dema	0			rule
+solidnesses	0	oewn-solidness-n	Number=Plur	dema	0			llm
 solidomind	0		Number=Sing	dema	0	solidomind	n	moby_reverse
 solidomind	1		Degree=Pos	dema	0	solidomind	a	moby_reverse
 solidominds	0		Number=Plur	dema	0	solidomind	n	rule
@@ -1483,7 +1487,7 @@ solifidianisms	0		Number=Plur	dema	0	solifidianism	n	rule
 solifidians	0		Number=Plur	dema	0	solifidian	n	rule
 solifluction	0		Number=Sing	dema	0	solifluction	n	moby_reverse
 solifluctions	0		Number=Plur	dema	0	solifluction	n	rule
-soliloquies	0	oewn-soliloquy-n	Number=Plur	dema	0			agid
+soliloquies	0	oewn-soliloquy-n	Number=Plur	dema	0			llm
 soliloquise	0	oewn-soliloquise-v	VerbForm=Inf	dema	0			oewn_form
 soliloquised	0	oewn-soliloquise-v	Tense=Past+VerbForm=Part	dema	0			rule
 soliloquiser	0		Number=Sing	dema	0	soliloquiser	n	moby_reverse
@@ -1492,9 +1496,9 @@ soliloquises	0	oewn-soliloquise-v	Person=3+Tense=Pres	dema	0			rule
 soliloquising	0	oewn-soliloquise-v	VerbForm=Ger	dema	0			rule
 soliloquisingly	0		Degree=Pos	dema	0	soliloquisingly	r	moby_reverse
 soliloquize	0	oewn-soliloquize-v	VerbForm=Inf	dema	0			oewn_form
-soliloquized	0	oewn-soliloquize-v	Tense=Past+VerbForm=Part	dema	0			rule
-soliloquizes	0	oewn-soliloquize-v	Person=3+Tense=Pres	dema	0			rule
-soliloquizing	0	oewn-soliloquize-v	VerbForm=Ger	dema	0			rule
+soliloquized	0	oewn-soliloquize-v	Tense=Past+VerbForm=Part	dema	0			llm
+soliloquizes	0	oewn-soliloquize-v	Person=3+Tense=Pres	dema	0			llm
+soliloquizing	0	oewn-soliloquize-v	VerbForm=Ger	dema	0			llm
 soliloquy	0	oewn-soliloquy-n	Number=Sing	dema	0			oewn_form
 soling	0		Number=Sing	dema	0	soling	n	moby_reverse
 soling	1	oewn-sole-v	VerbForm=Ger	dema	0			rule
@@ -1553,8 +1557,8 @@ solo blast	0	oewn-solo_blast-n	Number=Sing	dema	0			oewn_form
 solo blasts	0	oewn-solo_blast-n	Number=Plur	dema	0			rule
 solo homer	0	oewn-solo_homer-n	Number=Sing	dema	0			oewn_form
 solo homers	0	oewn-solo_homer-n	Number=Plur	dema	0			rule
-soloed	0	oewn-solo-v	Tense=Past+VerbForm=Part	dema	0			rule
-soloing	0	oewn-solo-v	VerbForm=Ger	dema	0			rule
+soloed	0	oewn-solo-v	Tense=Past+VerbForm=Part	dema	0			llm
+soloing	0	oewn-solo-v	VerbForm=Ger	dema	0			llm
 soloist	0	oewn-soloist-n	Number=Sing	dema	0			oewn_form
 soloistic	0		Degree=Pos	dema	0	soloistic	a	moby_reverse
 soloists	0	oewn-soloist-n	Number=Plur	dema	0			rule
@@ -1564,8 +1568,9 @@ solonchaks	0		Number=Plur	dema	0	solonchak	n	rule
 solonetz	0		Number=Sing	dema	0	solonetz	n	moby_reverse
 solonetzes	0		Number=Plur	dema	0	solonetz	n	rule
 solons	0	oewn-solon-n	Number=Plur	dema	0			rule
-solos	0	oewn-solo-n	Number=Plur	dema	0			rule_variant
-sols	0	oewn-sol-n	Number=Plur	dema	0			rule_variant
+solos	0	oewn-solo-n	Number=Plur	dema	0			llm
+solos	1	oewn-solo-v	Person=3+Tense=Pres	dema	0			llm
+sols	0	oewn-sol-n	Number=Plur	dema	0			llm
 solstice	0	oewn-solstice-n	Number=Sing	dema	0			oewn_form
 solstices	0	oewn-solstice-n	Number=Plur	dema	0			rule
 solstitial	0		Degree=Pos	dema	0	solstitial	a	moby_reverse
@@ -1701,7 +1706,7 @@ sombernesses	0	oewn-somberness-n	Number=Plur	dema	0			rule
 sombre	0	oewn-sombre-a	Degree=Pos	dema	0			oewn_form
 sombrely	0	oewn-sombrely-r	Degree=Pos	dema	0			oewn_form
 sombreness	0	oewn-sombreness-n	Number=Sing	dema	0			oewn_form
-sombrenesses	0	oewn-sombreness-n	Number=Plur	dema	0			rule
+sombrenesses	0	oewn-sombreness-n	Number=Plur	dema	0			llm
 sombrero	0	oewn-sombrero-n	Number=Sing	dema	0			oewn_form
 sombreros	0	oewn-sombrero-n	Number=Plur	dema	0			rule
 sombrous	0		Degree=Pos	dema	0	sombrous	a	moby_reverse
@@ -1775,13 +1780,13 @@ somnifacient	1		Number=Sing	dema	0	somnifacient	n	moby_reverse
 somniferous	0	oewn-somniferous-a	Degree=Pos	dema	0			oewn_form
 somniferously	0		Degree=Pos	dema	0	somniferously	r	moby_reverse
 somnific	0	oewn-somnific-a	Degree=Pos	dema	0			oewn_form
+somniloquies	0	oewn-somniloquy-n	Number=Plur	dema	0			rule
 somniloquism	0	oewn-somniloquism-n	Number=Sing	dema	0			oewn_form
 somniloquisms	0	oewn-somniloquism-n	Number=Plur	dema	0			rule
 somniloquist	0	oewn-somniloquist-n	Number=Sing	dema	0			oewn_form
 somniloquists	0	oewn-somniloquist-n	Number=Plur	dema	0			rule
 somniloquous	0		Degree=Pos	dema	0	somniloquous	a	moby_reverse
 somniloquy	0	oewn-somniloquy-n	Number=Sing	dema	0			oewn_form
-somniloquys	0	oewn-somniloquy-n	Number=Plur	dema	0			rule
 somnolence	0	oewn-somnolence-n	Number=Sing	dema	0			oewn_form
 somnolences	0	oewn-somnolence-n	Number=Plur	dema	0			rule
 somnolencies	0		Number=Plur	dema	0	somnolency	n	rule
@@ -1800,9 +1805,8 @@ sonantal	0		Degree=Pos	dema	0	sonantal	a	moby_reverse
 sonants	0	oewn-sonant-n	Number=Plur	dema	0			rule
 sonar	0	oewn-sonar-n	Number=Sing	dema	0			oewn_form
 sonarman	0		Number=Sing	dema	0	sonarman	n	moby_reverse
-sonarmans	0		Number=Plur	dema	0	sonarman	n	rule
-sonarmen	0		Number=Sing	dema	0	sonarmen	n	moby_reverse
-sonarmens	0		Number=Plur	dema	0	sonarmen	n	rule
+sonarmen	0		Number=Plur	dema	0	sonarman	n	rule
+sonarmen	1		Number=Sing	dema	0	sonarmen	n	moby_reverse
 sonars	0	oewn-sonar-n	Number=Plur	dema	0			rule
 sonata	0	oewn-sonata-n	Number=Sing	dema	0			oewn_form
 sonata form	0	oewn-sonata_form-n	Number=Sing	dema	0			oewn_form
@@ -1863,10 +1867,10 @@ sonless	0		Degree=Pos	dema	0	sonless	a	moby_reverse
 sonlike	0		Degree=Pos	dema	0	sonlike	a	moby_reverse
 sonnet	0	oewn-sonnet-n	Number=Sing	dema	0			oewn_form
 sonnet	1	oewn-sonnet-v	VerbForm=Inf	dema	0			oewn_form
-sonneted	0	oewn-sonnet-v	Tense=Past+VerbForm=Part	dema	0			rule
+sonneted	0	oewn-sonnet-v	Tense=Past+VerbForm=Part	dema	0			llm
 sonneteer	0	oewn-sonneteer-n	Number=Sing	dema	0			oewn_form
 sonneteers	0	oewn-sonneteer-n	Number=Plur	dema	0			rule
-sonneting	0	oewn-sonnet-v	VerbForm=Ger	dema	0			rule
+sonneting	0	oewn-sonnet-v	VerbForm=Ger	dema	0			llm
 sonnetisation	0		Number=Sing	dema	0	sonnetisation	n	moby_reverse
 sonnetisations	0		Number=Plur	dema	0	sonnetisation	n	rule
 sonnetise	0		VerbForm=Inf	dema	0	sonnetise	v	moby_reverse
@@ -1880,7 +1884,7 @@ sonnetized	0		Tense=Past+VerbForm=Part	dema	0	sonnetize	v	rule
 sonnetizes	0		Person=3+Tense=Pres	dema	0	sonnetize	v	rule
 sonnetizing	0		VerbForm=Ger	dema	0	sonnetize	v	rule
 sonnets	0	oewn-sonnet-n	Number=Plur	dema	0			rule
-sonnets	1	oewn-sonnet-v	Person=3+Tense=Pres	dema	0			rule
+sonnets	1	oewn-sonnet-v	Person=3+Tense=Pres	dema	0			llm
 sonnetted	0	oewn-sonnet-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 sonnetting	0	oewn-sonnet-v	VerbForm=Ger	dema	0			rule_variant
 sonnies	0	oewn-sonny-n	Number=Plur	dema	0			rule
@@ -2125,9 +2129,9 @@ soreheads	0	oewn-sorehead-n	Number=Plur	dema	0			rule
 sorely	0	oewn-sorely-r	Degree=Pos	dema	0			oewn_form
 soreness	0	oewn-soreness-n	Number=Sing	dema	0			oewn_form
 sorenesses	0	oewn-soreness-n	Number=Plur	dema	0			rule
-sorer	0	oewn-sore-a	Degree=Cmp	dema	0			moby_reverse
+sorer	0	oewn-sore-a	Degree=Cmp	dema	0			llm
 sores	0	oewn-sore-n	Number=Plur	dema	0			rule
-sorest	0	oewn-sore-a	Degree=Sup	dema	0			moby_reverse
+sorest	0	oewn-sore-a	Degree=Sup	dema	0			llm
 sorgho	0	oewn-sorgho-n	Number=Sing	dema	0			oewn_form
 sorghos	0	oewn-sorgho-n	Number=Plur	dema	0			rule
 sorghum	0	oewn-sorghum-n	Number=Sing	dema	0			oewn_form
@@ -2242,7 +2246,7 @@ sottish	0	oewn-sottish-a	Degree=Pos	dema	0			oewn_form
 sottishly	0	oewn-sottishly-r	Degree=Pos	dema	0			oewn_form
 sottishness	0		Degree=Pos	dema	0	sottishness	a	moby_reverse
 sottishness	1	oewn-sottishness-n	Number=Sing	dema	0			oewn_form
-sottishnesses	0	oewn-sottishness-n	Number=Plur	dema	0			rule
+sottishnesses	0	oewn-sottishness-n	Number=Plur	dema	0			llm
 sotto voce	0	oewn-sotto_voce-r	Degree=Pos	dema	0			oewn_form
 sou	0	oewn-sou-n	Number=Sing	dema	0			oewn_form
 sou'-east	0	oewn-sou-ap--east-n	Number=Sing	dema	0			oewn_form
@@ -2394,9 +2398,9 @@ sounded	0	oewn-sound-v	Tense=Past+VerbForm=Part	dema	1			carried
 sounded off	0	oewn-sound_off-v	Tense=Past+VerbForm=Part	dema	0			rule
 sounded out	0	oewn-sound_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 sounder	0	oewn-sounder-n	Number=Sing	dema	0			oewn_form
-sounder	1	oewn-sound-a	Degree=Cmp	dema	0			rule
+sounder	1	oewn-sound-a	Degree=Cmp	dema	0			llm
 sounders	0	oewn-sounder-n	Number=Plur	dema	0			rule
-soundest	0	oewn-sound-a	Degree=Sup	dema	0			rule
+soundest	0	oewn-sound-a	Degree=Sup	dema	0			llm
 sounding	0	oewn-sound-v	VerbForm=Ger	dema	1			carried
 sounding	1	oewn-sounding-a	Degree=Pos	dema	0			carried
 sounding	2	oewn-sound-n	Number=Sing+VerbForm=Ger	dema	1			carried
@@ -2420,9 +2424,9 @@ soundlessness	0	oewn-soundlessness-n	Number=Sing	dema	0			oewn_form
 soundlessnesses	0	oewn-soundlessness-n	Number=Plur	dema	0			rule
 soundly	0	oewn-soundly-r	Degree=Pos	dema	0			oewn_form
 soundman	0	oewn-soundman-n	Number=Sing	dema	0			oewn_form
-soundmans	0	oewn-soundman-n	Number=Plur	dema	0			rule
+soundmen	0	oewn-soundman-n	Number=Plur	dema	0			rule
 soundness	0	oewn-soundness-n	Number=Sing	dema	0			oewn_form
-soundnesses	0	oewn-soundness-n	Number=Plur	dema	0			rule
+soundnesses	0	oewn-soundness-n	Number=Plur	dema	0			llm
 soundpost	0		Number=Sing	dema	0	soundpost	n	moby_reverse
 soundposts	0		Number=Plur	dema	0	soundpost	n	rule
 soundproof	0	oewn-soundproof-a	Degree=Pos	dema	0			oewn_form
@@ -2439,7 +2443,7 @@ sounds out	0	oewn-sound_out-v	Person=3+Tense=Pres	dema	0			rule
 soundtrack	0	oewn-soundtrack-n	Number=Sing	dema	0			oewn_form
 soundtracks	0	oewn-soundtrack-n	Number=Plur	dema	0			rule
 soundwoman	0	oewn-soundwoman-n	Number=Sing	dema	0			oewn_form
-soundwomans	0	oewn-soundwoman-n	Number=Plur	dema	0			rule
+soundwomen	0	oewn-soundwoman-n	Number=Plur	dema	0			rule
 soup	0	oewn-soup-n	Number=Sing	dema	0			oewn_form
 soup	1	oewn-soup-v	VerbForm=Inf	dema	0			oewn_form
 soup bowl	0	oewn-soup_bowl-n	Number=Sing	dema	0			oewn_form
@@ -2555,8 +2559,8 @@ soured	0	oewn-sour-v	Tense=Past+VerbForm=Part	dema	0			rule
 soured	1	oewn-soured-a	Degree=Pos	dema	0			oewn_form
 soured cream	0	oewn-soured_cream-n	Number=Sing	dema	0			oewn_form
 soured creams	0	oewn-soured_cream-n	Number=Plur	dema	0			rule
-sourer	0	oewn-sour-a	Degree=Cmp	dema	0			rule
-sourest	0	oewn-sour-a	Degree=Sup	dema	0			rule
+sourer	0	oewn-sour-a	Degree=Cmp	dema	0			llm
+sourest	0	oewn-sour-a	Degree=Sup	dema	0			llm
 souring	0	oewn-sour-v	VerbForm=Ger	dema	0			rule
 souring	1	oewn-souring-n	Number=Sing	dema	0			oewn_form
 sourings	0	oewn-souring-n	Number=Plur	dema	0			rule
@@ -2835,7 +2839,7 @@ sows	1	oewn-sow-v	Person=3+Tense=Pres	dema	1			carried
 sows in	0	oewn-sow_in-v	Person=3+Tense=Pres	dema	0			rule
 sows one's oats	0	oewn-sow_one-ap-s_oats-v	Person=3+Tense=Pres	dema	0			rule
 sows one's wild oats	0	oewn-sow_one-ap-s_wild_oats-v	Person=3+Tense=Pres	dema	0			rule
-sox	0	oewn-sock-n	Number=Plur	dema	0			rule_variant
+sox	0		Number=Sing	dema	0	sox	n	moby_reverse
 soy	0	oewn-soy-n	Number=Sing	dema	0			oewn_form
 soy flour	0	oewn-soy_flour-n	Number=Sing	dema	0			oewn_form
 soy flours	0	oewn-soy_flour-n	Number=Plur	dema	0			rule

@@ -167,11 +167,14 @@ syllepsis	0	oewn-syllepsis-n	Number=Sing	dema	0			oewn_form
 syllogisation	0		Number=Sing	dema	0	syllogisation	n	moby_reverse
 syllogisations	0		Number=Plur	dema	0	syllogisation	n	rule
 syllogise	0	oewn-syllogise-v	VerbForm=Inf	dema	0			oewn_form
-syllogised	0	oewn-syllogise-v	Tense=Past+VerbForm=Part	dema	0			rule
+syllogised	0	oewn-syllogize-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+syllogised	1	oewn-syllogise-v	Tense=Past+VerbForm=Part	dema	0			rule
 syllogiser	0	oewn-syllogiser-n	Number=Sing	dema	0			oewn_form
 syllogisers	0	oewn-syllogiser-n	Number=Plur	dema	0			rule
-syllogises	0	oewn-syllogise-v	Person=3+Tense=Pres	dema	0			rule
-syllogising	0	oewn-syllogise-v	VerbForm=Ger	dema	0			rule
+syllogises	0	oewn-syllogize-v	Person=3+Tense=Pres	dema	0			rule_variant
+syllogises	1	oewn-syllogise-v	Person=3+Tense=Pres	dema	0			rule
+syllogising	0	oewn-syllogize-v	VerbForm=Ger	dema	0			rule_variant
+syllogising	1	oewn-syllogise-v	VerbForm=Ger	dema	0			rule
 syllogism	0	oewn-syllogism-n	Number=Sing	dema	0			oewn_form
 syllogisms	0	oewn-syllogism-n	Number=Plur	dema	0			rule
 syllogist	0	oewn-syllogist-n	Number=Sing	dema	0			oewn_form
@@ -181,11 +184,11 @@ syllogistically	0		Degree=Pos	dema	0	syllogistically	r	moby_reverse
 syllogistics	0	oewn-syllogistic-n	Number=Plur	dema	0			rule
 syllogists	0	oewn-syllogist-n	Number=Plur	dema	0			rule
 syllogize	0	oewn-syllogize-v	VerbForm=Inf	dema	0			oewn_form
-syllogized	0	oewn-syllogize-v	Tense=Past+VerbForm=Part	dema	0			rule
+syllogized	0	oewn-syllogize-v	Tense=Past+VerbForm=Part	dema	0			llm
 syllogizer	0	oewn-syllogizer-n	Number=Sing	dema	0			oewn_form
 syllogizers	0	oewn-syllogizer-n	Number=Plur	dema	0			rule
-syllogizes	0	oewn-syllogize-v	Person=3+Tense=Pres	dema	0			rule
-syllogizing	0	oewn-syllogize-v	VerbForm=Ger	dema	0			rule
+syllogizes	0	oewn-syllogize-v	Person=3+Tense=Pres	dema	0			llm
+syllogizing	0	oewn-syllogize-v	VerbForm=Ger	dema	0			llm
 sylls	0		Number=Plur	dema	0	syll	n	rule
 sylph	0	oewn-sylph-n	Number=Sing	dema	0			oewn_form
 sylphic	0	oewn-sylphic-a	Degree=Pos	dema	0			oewn_form
@@ -213,7 +216,7 @@ sylvites	0	oewn-sylvite-n	Number=Plur	dema	0			rule
 sym	0		Number=Sing	dema	0	sym	n	moby_reverse
 symbiont	0		Number=Sing	dema	0	symbiont	n	moby_reverse
 symbionts	0		Number=Plur	dema	0	symbiont	n	rule
-symbioses	0	oewn-symbiosis-n	Number=Plur	dema	0			agid
+symbioses	0	oewn-symbiosis-n	Number=Plur	dema	0			llm
 symbiosis	0	oewn-symbiosis-n	Number=Sing	dema	0			oewn_form
 symbiotic	0	oewn-symbiotic-a	Degree=Pos	dema	0			oewn_form
 symbiotical	0		Degree=Pos	dema	0	symbiotical	a	moby_reverse
@@ -457,10 +460,10 @@ synaxes	0		Number=Sing	dema	0	synaxes	n	moby_reverse
 synaxis	0		Number=Sing	dema	0	synaxis	n	moby_reverse
 sync	0	oewn-sync-v	VerbForm=Inf	dema	0			oewn_form
 sync	1		Number=Sing	dema	0	sync	n	moby_reverse
-syncarp	0	oewn-syncarp-n	Number=Plur	dema	0			agid
-syncarp	1	oewn-syncarp-n	Number=Sing	dema	0			oewn_form
+syncarp	0	oewn-syncarp-n	Number=Sing	dema	0			oewn_form
 syncarpies	0		Number=Plur	dema	0	syncarpy	n	rule
 syncarpous	0	oewn-syncarpous-a	Degree=Pos	dema	0			oewn_form
+syncarps	0	oewn-syncarp-n	Number=Plur	dema	0			llm
 syncarpy	0		Number=Sing	dema	0	syncarpy	n	moby_reverse
 syncategorem	0	oewn-syncategorem-n	Number=Sing	dema	0			oewn_form
 syncategorematic	0	oewn-syncategorematic-a	Degree=Pos	dema	0			oewn_form
@@ -567,7 +570,6 @@ syncs	0	oewn-sync-v	Person=3+Tense=Pres	dema	0			rule
 syncytia	0	oewn-syncytium-n	Number=Plur	dema	0			oewn_form
 syncytial	0		Degree=Pos	dema	0	syncytial	a	moby_reverse
 syncytium	0	oewn-syncytium-n	Number=Sing	dema	0			oewn_form
-syncytiums	0	oewn-syncytium-n	Number=Plur	dema	0			rule_variant
 synd	0		Number=Sing	dema	0	synd	n	moby_reverse
 syndactyl	0		Degree=Pos	dema	0	syndactyl	a	moby_reverse
 syndactyl	1		Number=Sing	dema	0	syndactyl	n	moby_reverse
@@ -629,7 +631,8 @@ synecdochic	0	oewn-synecdochic-a	Degree=Pos	dema	0			oewn_form
 synecdochical	0	oewn-synecdochical-a	Degree=Pos	dema	0			oewn_form
 synecdochically	0		Degree=Pos	dema	0	synecdochically	r	moby_reverse
 synechia	0	oewn-synechia-n	Number=Sing	dema	0			oewn_form
-synechiae	0	oewn-synechia-n	Number=Plur	dema	0			agid
+synechiae	0	oewn-synechia-n	Number=Plur	dema	0			llm
+synechias	0	oewn-synechia-n	Number=Plur	dema	0			rule_variant
 synechist	0		Number=Sing	dema	0	synechist	n	moby_reverse
 synechist	1		Degree=Pos	dema	0	synechist	a	moby_reverse
 synechistic	0		Degree=Pos	dema	0	synechistic	a	moby_reverse
@@ -738,8 +741,8 @@ synovial membrane	0	oewn-synovial_membrane-n	Number=Sing	dema	0			oewn_form
 synovial membranes	0	oewn-synovial_membrane-n	Number=Plur	dema	0			rule
 synovially	0		Degree=Pos	dema	0	synovially	r	moby_reverse
 synovias	0	oewn-synovia-n	Number=Plur	dema	0			rule
+synovitides	0	oewn-synovitis-n	Number=Plur	dema	0			llm
 synovitis	0	oewn-synovitis-n	Number=Sing	dema	0			oewn_form
-synovitises	0	oewn-synovitis-n	Number=Plur	dema	0			rule
 synovium	0	oewn-synovium-n	Number=Sing	dema	0			oewn_form
 synoviums	0	oewn-synovium-n	Number=Plur	dema	0			rule
 synsacral	0		Degree=Pos	dema	0	synsacral	a	moby_reverse
@@ -857,8 +860,7 @@ syphilis	0	oewn-syphilis-n	Number=Sing	dema	0			oewn_form
 syphilisation	0		Number=Sing	dema	0	syphilisation	n	moby_reverse
 syphilisations	0		Number=Plur	dema	0	syphilisation	n	rule
 syphilise	0		Number=Sing	dema	0	syphilise	n	moby_reverse
-syphilises	0	oewn-syphilis-n	Number=Plur	dema	0			rule
-syphilises	1		Number=Plur	dema	0	syphilise	n	rule
+syphilises	0		Number=Plur	dema	0	syphilise	n	rule
 syphilitic	0	oewn-syphilitic-n	Number=Sing	dema	0			oewn_form
 syphilitic	1	oewn-syphilitic-a	Degree=Pos	dema	0			oewn_form
 syphilitically	0		Degree=Pos	dema	0	syphilitically	r	moby_reverse

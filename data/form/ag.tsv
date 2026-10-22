@@ -7,7 +7,7 @@ Agapanthus africanus	0	oewn-Agapanthus_africanus-n	Capitalization=Exact+Number=S
 Agaricus arvensis	0	oewn-Agaricus_arvensis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Agaricus campestris	0	oewn-Agaricus_campestris-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Agas	0		Number=Plur	dema	0	aga	n	rule
-Agas	1	oewn-Aga-n	Capitalization=Title+Number=Plur	dema	0			rule
+Agas	1	oewn-Aga-n	Capitalization=Title+Number=Plur	dema	0			llm
 Agastache foeniculum	0	oewn-Agastache_foeniculum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Agastache foeniculums	0	oewn-Agastache_foeniculum-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Agastache mexicana	0	oewn-Agastache_mexicana-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
@@ -143,7 +143,7 @@ agamogenetic	0	oewn-agamogenetic-a	Degree=Pos	dema	0			oewn_form
 agamogenetically	0		Degree=Pos	dema	0	agamogenetically	r	moby_reverse
 agamous	0	oewn-agamous-a	Degree=Pos	dema	0			oewn_form
 agamy	0		Number=Sing	dema	0	agamy	n	moby_reverse
-agapai	0	oewn-agape-n	Number=Plur	dema	0			agid
+agapai	0		Number=Sing	dema	0	agapai	n	moby_reverse
 agapanthus	0	oewn-agapanthus-n	Number=Sing	dema	0			oewn_form
 agapanthuses	0	oewn-agapanthus-n	Number=Plur	dema	0			rule
 agape	0	oewn-agape-n	Number=Sing	dema	1			carried
@@ -151,7 +151,7 @@ agape	1	oewn-agape-a	Degree=Pos	dema	1			carried
 agape	2	dema-agape-r	Degree=Pos	dema	0			carried
 agape love	0	oewn-agape_love-n	Number=Sing	dema	0			oewn_form
 agape loves	0	oewn-agape_love-n	Number=Plur	dema	0			rule
-agapes	0	oewn-agape-n	Number=Plur	dema	0			rule_variant
+agapes	0	oewn-agape-n	Number=Plur	dema	0			llm
 agar	0	oewn-agar-n	Number=Sing	dema	0			oewn_form
 agar-agar	0	oewn-agar-agar-n	Number=Sing	dema	0			oewn_form
 agar-agars	0	oewn-agar-agar-n	Number=Plur	dema	0			rule
@@ -203,7 +203,7 @@ age-related	0	oewn-age-related-a	Degree=Pos	dema	0			oewn_form
 age-related macular degeneration	0	oewn-age-related_macular_degeneration-n	Number=Sing	dema	0			oewn_form
 age-related macular degenerations	0	oewn-age-related_macular_degeneration-n	Number=Plur	dema	0			rule
 aged	0	oewn-aged-a	Degree=Pos	dema	0			oewn_form
-aged	1	oewn-age-v	Tense=Past+VerbForm=Part	dema	0			rule
+aged	1	oewn-age-v	Tense=Past+VerbForm=Part	dema	0			llm
 aged	2	oewn-aged-n	Number=Sing	dema	0			oewn_form
 agedly	0		Degree=Pos	dema	0	agedly	r	moby_reverse
 agedness	0	oewn-agedness-n	Number=Sing	dema	0			oewn_form
@@ -252,11 +252,11 @@ agentive roles	0	oewn-agentive_role-n	Number=Plur	dema	0			rule
 agents	0	oewn-agent-n	Number=Plur	dema	0			rule
 agerasia	0	oewn-agerasia-n	Number=Sing	dema	0			oewn_form
 agerasias	0	oewn-agerasia-n	Number=Plur	dema	0			rule
-ageratum	0	oewn-ageratum-n	Number=Plur	dema	0			agid
-ageratum	1	oewn-ageratum-n	Number=Sing	dema	0			oewn_form
-ageratums	0	oewn-ageratum-n	Number=Plur	dema	0			rule_variant
+agerata	0	oewn-ageratum-n	Number=Plur	dema	0			rule_variant
+ageratum	0	oewn-ageratum-n	Number=Sing	dema	0			oewn_form
+ageratums	0	oewn-ageratum-n	Number=Plur	dema	0			llm
 ages	0	oewn-age-n	Number=Plur	dema	0			rule
-ages	1	oewn-age-v	Person=3+Tense=Pres	dema	0			rule
+ages	1	oewn-age-v	Person=3+Tense=Pres	dema	0			llm
 ages of consent	0	oewn-age_of_consent-n	Number=Plur	dema	0			rule
 ageusia	0		Number=Sing	dema	0	ageusia	n	moby_reverse
 ageusias	0		Number=Plur	dema	0	ageusia	n	rule
@@ -403,7 +403,7 @@ agileness	0		Number=Sing	dema	0	agileness	n	moby_reverse
 agilenesses	0		Number=Plur	dema	0	agileness	n	rule
 agilities	0	oewn-agility-n	Number=Plur	dema	0			rule
 agility	0	oewn-agility-n	Number=Sing	dema	0			oewn_form
-aging	0	oewn-age-v	VerbForm=Ger	dema	0			rule_variant
+aging	0	oewn-age-v	VerbForm=Ger	dema	0			llm
 aging	1	oewn-aging-n	Number=Sing	dema	0			oewn_form
 aging	2	oewn-aging-a	Degree=Pos	dema	0			oewn_form
 agings	0	oewn-aging-n	Number=Plur	dema	0			rule
@@ -540,7 +540,7 @@ agonizes	0	oewn-agonize-v	Person=3+Tense=Pres	dema	0			rule
 agonizing	0	oewn-agonize-v	VerbForm=Ger	dema	0			rule
 agonizing	1	oewn-agonizing-a	Degree=Pos	dema	0			oewn_form
 agonizingly	0	oewn-agonizingly-r	Degree=Pos	dema	0			oewn_form
-agons	0	oewn-agon-n	Number=Plur	dema	0			rule_variant
+agons	0	oewn-agon-n	Number=Plur	dema	0			llm
 agony	0	oewn-agony-n	Number=Sing	dema	0			oewn_form
 agony aunt	0	oewn-agony_aunt-n	Number=Sing	dema	0			oewn_form
 agony aunts	0	oewn-agony_aunt-n	Number=Plur	dema	0			rule
@@ -555,8 +555,8 @@ agorae	1	oewn-agora-n-2	Number=Plur	dema	0			oewn_form
 agoraphobia	0	oewn-agoraphobia-n	Number=Sing	dema	0			oewn_form
 agoraphobias	0	oewn-agoraphobia-n	Number=Plur	dema	0			rule
 agoraphobic	0	oewn-agoraphobic-a	Degree=Pos	dema	0			oewn_form
-agoras	0	oewn-agora-n-1	Number=Plur	dema	0			rule_variant
-agoras	1	oewn-agora-n-2	Number=Plur	dema	0			rule_variant
+agoras	0	oewn-agora-n-1	Number=Plur	dema	0			llm
+agoras	1	oewn-agora-n-2	Number=Plur	dema	0			llm
 agoroth	0		Number=Sing	dema	0	agoroth	n	moby_reverse
 agoroths	0		Number=Plur	dema	0	agoroth	n	rule
 agouta	0		Number=Sing	dema	0	agouta	n	moby_reverse

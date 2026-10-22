@@ -81,7 +81,7 @@ internal static class FactGenerator
         AddIrregular(facts, withheld, "source-irregular-closed", sources.Closed, lemmas);
         AddIrregular(facts, withheld, "source-irregular-hand", sources.Hand, lemmas);
 
-        var irregular = sources.Closed.Keys.Concat(sources.Hand.Keys).Concat(sources.Agid.Keys).ToHashSet();
+        var irregular = sources.Closed.Keys.Concat(sources.Hand.Keys).Concat(sources.Authored.IrregularKeys()).ToHashSet();
         var listed = LexiconSource.MergeAdditions(
                 LexiconSource.ReadWords(Path.Join(corpus, "lexicon", LexiconSource.LexiconFile)),
                 Path.Join(corpus, "lexicon", LexiconSource.AdditionsFile))
@@ -97,8 +97,8 @@ internal static class FactGenerator
             }
             else
             {
-                // A generated -ed form ships only with a second source: the dictionary listing it, or the inflection database
-                // (not part of the repository). A form that the dictionary does not list and the table does not carry is withheld
+                // A generated -ed form ships only with a second source: the dictionary listing it, or the authored forms or the open
+                // corpus attesting it. A form that the dictionary does not list and the table does not carry is withheld
                 // by that rule and named with its reason; a dictionary-listed form that is missing is a failing fact
                 withheld.Add(new Withheld(SourceRegularVerb, past.Word, lemma, NoSecondSource));
             }

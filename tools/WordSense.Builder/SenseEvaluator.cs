@@ -100,11 +100,12 @@ internal sealed record SenseEvalResult(SenseEvalFunnel Funnel, IReadOnlyList<Sen
                 .Append(" | ").Append(EvaluationResult.Percent(m.MostFrequentSense, s.Rows)).Append(" |\n");
         }
 
-        text.Append("\nSemCor is human-annotated running text that no training or tuning step reads. The sense inventory order, and so the\n");
-        text.Append("most-frequent-sense baseline, comes from WordNet 3.0 tag counts, which include the counts of SemCor itself: the baseline\n");
-        text.Append("is therefore optimistic (it has seen the answers), and so is the quota tier of every sense; no SemCor sentence is\n");
-        text.Append("in any training corpus. The words are the single-word annotations of the lemmas the models are trained for, so the\n");
-        text.Append("figures say nothing about the other words.\n");
+        text.Append("\nSemCor is human-annotated running text that no training or tuning step reads. The baseline is the first sense of the lemma and part\n");
+        text.Append("of speech in Open English WordNet order (the inventory order). That order follows Princeton WordNet's frequency order (it matches the\n");
+        text.Append("WordNet 3.0 top-count sense in 10,047 of the 10,062 blocks with a unique maximum), and those counts include the counts of SemCor\n");
+        text.Append("itself: the baseline is therefore partly circular and optimistic (it has seen the answers), and so is the quota tier of every\n");
+        text.Append("sense; no SemCor sentence is in any training corpus. The words are the single-word annotations of the lemmas the models are\n");
+        text.Append("trained for, so the figures say nothing about the other words.\n");
         return text.ToString();
     }
 }

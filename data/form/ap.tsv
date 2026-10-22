@@ -138,13 +138,14 @@ apathy	0	oewn-apathy-n	Number=Sing	dema	0			oewn_form
 apatite	0	oewn-apatite-n	Number=Sing	dema	0			oewn_form
 apatites	0	oewn-apatite-n	Number=Plur	dema	0			rule
 apatosaur	0	oewn-apatosaur-n	Number=Sing	dema	0			oewn_form
+apatosauri	0	oewn-apatosaurus-n	Number=Plur	dema	0			rule_variant
 apatosaurs	0	oewn-apatosaur-n	Number=Plur	dema	0			rule
 apatosaurus	0	oewn-apatosaurus-n	Number=Sing	dema	0			oewn_form
-apatosauruses	0	oewn-apatosaurus-n	Number=Plur	dema	0			rule
+apatosauruses	0	oewn-apatosaurus-n	Number=Plur	dema	0			llm
 ape	0	oewn-ape-n	Number=Sing	dema	0			oewn_form
 ape	1	oewn-ape-v	VerbForm=Inf	dema	0			oewn_form
 ape-man	0	oewn-ape-man-n	Number=Sing	dema	0			oewn_form
-ape-mans	0	oewn-ape-man-n	Number=Plur	dema	0			rule
+ape-men	0	oewn-ape-man-n	Number=Plur	dema	0			rule
 apeak	0		Degree=Pos	dema	0	apeak	r	moby_reverse
 apeak	1		Degree=Pos	dema	0	apeak	a	moby_reverse
 aped	0	oewn-ape-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -152,7 +153,7 @@ apeiron	0		Number=Sing	dema	0	apeiron	n	moby_reverse
 apeirons	0		Number=Plur	dema	0	apeiron	n	rule
 apelike	0	oewn-apelike-a	Degree=Pos	dema	0			oewn_form
 apeman	0		Number=Sing	dema	0	apeman	n	moby_reverse
-apemans	0		Number=Plur	dema	0	apeman	n	rule
+apemen	0		Number=Plur	dema	0	apeman	n	rule
 aper	0	oewn-aper-n	Number=Sing	dema	0			oewn_form
 apercu	0	oewn-apercu-n	Number=Sing	dema	0			oewn_form
 apercus	0	oewn-apercu-n	Number=Plur	dema	0			rule
@@ -218,7 +219,6 @@ aphasics	0	oewn-aphasic-n	Number=Plur	dema	0			rule
 aphelia	0	oewn-aphelion-n	Number=Plur	dema	0			oewn_form
 aphelian	0		Degree=Pos	dema	0	aphelian	a	moby_reverse
 aphelion	0	oewn-aphelion-n	Number=Sing	dema	0			oewn_form
-aphelions	0	oewn-aphelion-n	Number=Plur	dema	0			rule_variant
 apheliotropic	0		Degree=Pos	dema	0	apheliotropic	a	moby_reverse
 apheliotropically	0		Degree=Pos	dema	0	apheliotropically	r	moby_reverse
 apheliotropism	0		Number=Sing	dema	0	apheliotropism	n	moby_reverse
@@ -491,7 +491,6 @@ apomictically	0		Degree=Pos	dema	0	apomictically	r	moby_reverse
 apomicts	0	oewn-apomict-n	Number=Plur	dema	0			rule
 apomixes	0	oewn-apomixis-n	Number=Plur	dema	0			oewn_form
 apomixis	0	oewn-apomixis-n	Number=Sing	dema	0			oewn_form
-apomixises	0	oewn-apomixis-n	Number=Plur	dema	0			rule_variant
 apomorphine	0	oewn-apomorphine-n	Number=Sing	dema	0			oewn_form
 apomorphines	0	oewn-apomorphine-n	Number=Plur	dema	0			rule
 aponeuroses	0	oewn-aponeurosis-n	Number=Plur	dema	0			oewn_form
@@ -653,10 +652,9 @@ apparatchik	0	oewn-apparatchik-n	Number=Sing	dema	0			oewn_form
 apparatchiki	0		Number=Sing	dema	0	apparatchiki	n	moby_reverse
 apparatchikis	0		Number=Plur	dema	0	apparatchiki	n	rule
 apparatchiks	0	oewn-apparatchik-n	Number=Plur	dema	0			rule
-apparatus	0	oewn-apparatus-n	Number=Plur	dema	0			agid
-apparatus	1	oewn-apparatus-n	Number=Sing	dema	0			oewn_form
+apparatus	0	oewn-apparatus-n	Number=Sing	dema	0			oewn_form
 apparatus urogenitalis	0	oewn-apparatus_urogenitalis-n	Number=Sing	dema	0			oewn_form
-apparatuses	0	oewn-apparatus-n	Number=Plur	dema	0			rule_variant
+apparatuses	0	oewn-apparatus-n	Number=Plur	dema	0			rule
 apparel	0	oewn-apparel-n	Number=Sing	dema	0			oewn_form
 apparel	1	oewn-apparel-v	VerbForm=Inf	dema	0			oewn_form
 apparel chain	0	oewn-apparel_chain-n	Number=Sing	dema	0			oewn_form
@@ -683,7 +681,7 @@ apparentement	0		Number=Sing	dema	0	apparentement	n	moby_reverse
 apparentements	0		Number=Plur	dema	0	apparentement	n	rule
 apparently	0	oewn-apparently-r	Degree=Pos	dema	0			oewn_form
 apparentness	0	oewn-apparentness-n	Number=Sing	dema	0			oewn_form
-apparentnesses	0	oewn-apparentness-n	Number=Plur	dema	0			rule
+apparentnesses	0	oewn-apparentness-n	Number=Plur	dema	0			llm
 apparition	0	oewn-apparition-n	Number=Sing	dema	0			oewn_form
 apparitional	0	oewn-apparitional-a	Degree=Pos	dema	0			oewn_form
 apparitions	0	oewn-apparition-n	Number=Plur	dema	0			rule
@@ -779,7 +777,6 @@ appendicectomies	0	oewn-appendicectomy-n	Number=Plur	dema	0			rule
 appendicectomy	0	oewn-appendicectomy-n	Number=Sing	dema	0			oewn_form
 appendices	0	oewn-appendix-n	Number=Plur	dema	0			hand
 appendicitis	0	oewn-appendicitis-n	Number=Sing	dema	0			oewn_form
-appendicitises	0	oewn-appendicitis-n	Number=Plur	dema	0			rule
 appendicle	0	oewn-appendicle-n	Number=Sing	dema	0			oewn_form
 appendicles	0	oewn-appendicle-n	Number=Plur	dema	0			rule
 appendicular	0	oewn-appendicular-a	Degree=Pos	dema	0			oewn_form
@@ -964,9 +961,10 @@ appliers	0	oewn-applier-n	Number=Plur	dema	0			rule
 applies	0	oewn-apply-v	Person=3+Tense=Pres	dema	0			rule
 applique	0	oewn-applique-n	Number=Sing	dema	0			oewn_form
 applique	1	oewn-applique-v	VerbForm=Inf	dema	0			oewn_form
-appliqued	0	oewn-applique-v	Tense=Past+VerbForm=Part	dema	0			rule
+appliqued	0	oewn-applique-v	Tense=Past+VerbForm=Part	dema	0			llm
+appliqueing	0	oewn-applique-v	VerbForm=Ger	dema	0			llm
 appliques	0	oewn-applique-n	Number=Plur	dema	0			rule
-appliques	1	oewn-applique-v	Person=3+Tense=Pres	dema	0			rule
+appliques	1	oewn-applique-v	Person=3+Tense=Pres	dema	0			llm
 apply	0	oewn-apply-v	VerbForm=Inf	dema	0			oewn_form
 applying	0	oewn-apply-v	VerbForm=Ger	dema	0			rule
 appmt	0		Number=Sing	dema	0	appmt	n	moby_reverse
@@ -1096,11 +1094,11 @@ apprised	0	oewn-apprise-v	Tense=Past+VerbForm=Part	dema	0			rule
 apprises	0	oewn-apprise-v	Person=3+Tense=Pres	dema	0			rule
 apprising	0	oewn-apprise-v	VerbForm=Ger	dema	0			rule
 apprize	0	oewn-apprize-v	VerbForm=Inf	dema	0			oewn_form
-apprized	0	oewn-apprize-v	Tense=Past+VerbForm=Part	dema	0			rule
+apprized	0	oewn-apprize-v	Tense=Past+VerbForm=Part	dema	0			llm
 apprizer	0		Number=Sing	dema	0	apprizer	n	moby_reverse
 apprizers	0		Number=Plur	dema	0	apprizer	n	rule
-apprizes	0	oewn-apprize-v	Person=3+Tense=Pres	dema	0			rule
-apprizing	0	oewn-apprize-v	VerbForm=Ger	dema	0			rule
+apprizes	0	oewn-apprize-v	Person=3+Tense=Pres	dema	0			llm
+apprizing	0	oewn-apprize-v	VerbForm=Ger	dema	0			llm
 appro	0	oewn-appro-n	Number=Sing	dema	0			oewn_form
 approach	0	oewn-approach-n	Number=Sing	dema	1			carried
 approach	1	oewn-approach-v	VerbForm=Inf	dema	1			carried
@@ -1247,7 +1245,7 @@ apsidiole	0		Number=Sing	dema	0	apsidiole	n	moby_reverse
 apsidioles	0		Number=Plur	dema	0	apsidiole	n	rule
 apsis	0	oewn-apsis-n	Number=Sing	dema	0			oewn_form
 apt	0	oewn-apt-a	Degree=Pos	dema	0			oewn_form
-apter	0	oewn-apt-a	Degree=Cmp	dema	0			rule
+apter	0	oewn-apt-a	Degree=Cmp	dema	0			llm
 apteral	0	oewn-apteral-a	Degree=Pos	dema	0			oewn_form
 apteria	0		Number=Sing	dema	0	apteria	n	moby_reverse
 apterial	0		Degree=Pos	dema	0	apterial	a	moby_reverse
@@ -1259,14 +1257,14 @@ apterygial	0		Degree=Pos	dema	0	apterygial	a	moby_reverse
 apterygote	0		Degree=Pos	dema	0	apterygote	a	moby_reverse
 apteryx	0	oewn-apteryx-n	Number=Sing	dema	0			oewn_form
 apteryxes	0	oewn-apteryx-n	Number=Plur	dema	0			rule
-aptest	0	oewn-apt-a	Degree=Sup	dema	0			rule
+aptest	0	oewn-apt-a	Degree=Sup	dema	0			llm
 aptitude	0	oewn-aptitude-n	Number=Sing	dema	0			oewn_form
 aptitudes	0	oewn-aptitude-n	Number=Plur	dema	0			rule
 aptitudinal	0	oewn-aptitudinal-a	Degree=Pos	dema	0			oewn_form
 aptitudinally	0		Degree=Pos	dema	0	aptitudinally	r	moby_reverse
 aptly	0	oewn-aptly-r	Degree=Pos	dema	0			oewn_form
 aptness	0	oewn-aptness-n	Number=Sing	dema	0			oewn_form
-aptnesses	0	oewn-aptness-n	Number=Plur	dema	0			rule
+aptnesses	0	oewn-aptness-n	Number=Plur	dema	0			llm
 apx	0		Number=Sing	dema	0	apx	n	moby_reverse
 apyretic	0		Degree=Pos	dema	0	apyretic	a	moby_reverse
 apyretic tetanus	0	oewn-apyretic_tetanus-n	Number=Sing	dema	0			oewn_form

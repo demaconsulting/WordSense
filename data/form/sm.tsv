@@ -38,7 +38,7 @@ small beers	0	oewn-small_beer-n	Number=Plur	dema	0			rule
 small boat	0	oewn-small_boat-n	Number=Sing	dema	0			oewn_form
 small boats	0	oewn-small_boat-n	Number=Plur	dema	0			rule
 small businessman	0	oewn-small_businessman-n	Number=Sing	dema	0			oewn_form
-small businessmans	0	oewn-small_businessman-n	Number=Plur	dema	0			rule
+small businessmen	0	oewn-small_businessman-n	Number=Plur	dema	0			rule
 small calorie	0	oewn-small_calorie-n	Number=Sing	dema	0			oewn_form
 small calories	0	oewn-small_calorie-n	Number=Plur	dema	0			rule
 small cane	0	oewn-small_cane-n	Number=Sing	dema	0			oewn_form
@@ -211,8 +211,8 @@ smartening	0		VerbForm=Ger	dema	0	smarten	v	rule
 smartening up	0	oewn-smarten_up-v	VerbForm=Ger	dema	0			rule
 smartens	0		Person=3+Tense=Pres	dema	0	smarten	v	rule
 smartens up	0	oewn-smarten_up-v	Person=3+Tense=Pres	dema	0			rule
-smarter	0	oewn-smart-a	Degree=Cmp	dema	0			rule
-smartest	0	oewn-smart-a	Degree=Sup	dema	0			rule
+smarter	0	oewn-smart-a	Degree=Cmp	dema	0			llm
+smartest	0	oewn-smart-a	Degree=Sup	dema	0			llm
 smartie	0		Number=Sing	dema	0	smartie	n	moby_reverse
 smarties	0		Number=Plur	dema	0	smartie	n	rule
 smarting	0	oewn-smart-v	VerbForm=Ger	dema	0			rule
@@ -321,7 +321,7 @@ smells up	0	oewn-smell_up-v	Person=3+Tense=Pres	dema	0			rule
 smelly	0	oewn-smelly-a	Degree=Pos	dema	0			oewn_form
 smelt	0	oewn-smell-v	Tense=Past+VerbForm=Part	dema	0			hand
 smelt	1	oewn-smelt-v	VerbForm=Inf	dema	0			oewn_form
-smelt	2	oewn-smelt-n	Number=Plur	dema	0			agid
+smelt	2	oewn-smelt-n	Number=Plur	dema	0			llm
 smelt	3	oewn-smelt-n	Number=Sing	dema	0			oewn_form
 smelted	0	oewn-smelt-v	Tense=Past+VerbForm=Part	dema	0			rule
 smelter	0	oewn-smelter-n	Number=Sing	dema	0			oewn_form
@@ -412,8 +412,8 @@ smocklike	0		Degree=Pos	dema	0	smocklike	a	moby_reverse
 smocks	0	oewn-smock-n	Number=Plur	dema	0			rule
 smocks	1	oewn-smock-v	Person=3+Tense=Pres	dema	0			rule
 smog	0	oewn-smog-n	Number=Sing	dema	0			oewn_form
-smoggier	0	oewn-smoggy-a	Degree=Cmp	dema	0			rule
-smoggiest	0	oewn-smoggy-a	Degree=Sup	dema	0			rule
+smoggier	0	oewn-smoggy-a	Degree=Cmp	dema	0			llm
+smoggiest	0	oewn-smoggy-a	Degree=Sup	dema	0			llm
 smogginess	0	oewn-smogginess-n	Number=Sing	dema	0			oewn_form
 smogginesses	0	oewn-smogginess-n	Number=Plur	dema	0			rule
 smoggy	0	oewn-smoggy-a	Degree=Pos	dema	0			oewn_form
@@ -590,7 +590,7 @@ smoothbarks	0	oewn-smoothbark-n	Number=Plur	dema	0			rule
 smoothbore	0	oewn-smoothbore-n	Number=Sing	dema	0			oewn_form
 smoothbore	1	oewn-smoothbore-a	Degree=Pos	dema	0			oewn_form
 smoothbores	0	oewn-smoothbore-n	Number=Plur	dema	0			rule
-smoothed	0	oewn-smooth-v	Tense=Past+VerbForm=Part	dema	0			rule
+smoothed	0	oewn-smooth-v	Tense=Past+VerbForm=Part	dema	0			llm
 smoothed	1	oewn-smoothed-a	Degree=Pos	dema	0			oewn_form
 smoothed out	0	oewn-smooth_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 smoothed over	0	oewn-smooth_over-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -600,11 +600,9 @@ smoothened	1	oewn-smoothened-a	Degree=Pos	dema	0			oewn_form
 smoothening	0	oewn-smoothen-v	VerbForm=Ger	dema	0			rule
 smoothens	0	oewn-smoothen-v	Person=3+Tense=Pres	dema	0			rule
 smoother	0	oewn-smoother-n	Number=Sing	dema	0			oewn_form
-smoother	1	oewn-smooth-a	Degree=Cmp	dema	0			rule
+smoother	1	oewn-smooth-a	Degree=Cmp	dema	0			llm
 smoothers	0	oewn-smoother-n	Number=Plur	dema	0			rule
-smoothes	0	oewn-smooth-v	Person=3+Tense=Pres	dema	0			rule_variant
-smoothes	1	oewn-smooth-n	Number=Plur	dema	0			rule_variant
-smoothest	0	oewn-smooth-a	Degree=Sup	dema	0			rule
+smoothest	0	oewn-smooth-a	Degree=Sup	dema	0			llm
 smoothhound	0	oewn-smoothhound-n	Number=Sing	dema	0			oewn_form
 smoothhound shark	0	oewn-smoothhound_shark-n	Number=Sing	dema	0			oewn_form
 smoothhound sharks	0	oewn-smoothhound_shark-n	Number=Plur	dema	0			rule
@@ -612,7 +610,7 @@ smoothhounds	0	oewn-smoothhound-n	Number=Plur	dema	0			rule
 smoothie	0	oewn-smoothie-n	Number=Sing	dema	0			oewn_form
 smoothies	0	oewn-smoothie-n	Number=Plur	dema	0			rule
 smoothies	1	oewn-smoothy-n	Number=Plur	dema	0			rule
-smoothing	0	oewn-smooth-v	VerbForm=Ger	dema	0			rule
+smoothing	0	oewn-smooth-v	VerbForm=Ger	dema	0			llm
 smoothing iron	0	oewn-smoothing_iron-n	Number=Sing	dema	0			oewn_form
 smoothing irons	0	oewn-smoothing_iron-n	Number=Plur	dema	0			rule
 smoothing out	0	oewn-smooth_out-v	VerbForm=Ger	dema	0			rule
@@ -621,9 +619,9 @@ smoothing plane	0	oewn-smoothing_plane-n	Number=Sing	dema	0			oewn_form
 smoothing planes	0	oewn-smoothing_plane-n	Number=Plur	dema	0			rule
 smoothly	0	oewn-smoothly-r	Degree=Pos	dema	0			oewn_form
 smoothness	0	oewn-smoothness-n	Number=Sing	dema	0			oewn_form
-smoothnesses	0	oewn-smoothness-n	Number=Plur	dema	0			rule
-smooths	0	oewn-smooth-v	Person=3+Tense=Pres	dema	0			rule_variant
-smooths	1	oewn-smooth-n	Number=Plur	dema	0			rule_variant
+smoothnesses	0	oewn-smoothness-n	Number=Plur	dema	0			llm
+smooths	0	oewn-smooth-v	Person=3+Tense=Pres	dema	0			llm
+smooths	1	oewn-smooth-n	Number=Plur	dema	0			llm
 smooths out	0	oewn-smooth_out-v	Person=3+Tense=Pres	dema	0			rule
 smooths over	0	oewn-smooth_over-v	Person=3+Tense=Pres	dema	0			rule
 smoothy	0	oewn-smoothy-n	Number=Sing	dema	0			oewn_form
@@ -662,8 +660,8 @@ smudgedly	0		Degree=Pos	dema	0	smudgedly	r	moby_reverse
 smudgeless	0		Degree=Pos	dema	0	smudgeless	a	moby_reverse
 smudges	0	oewn-smudge-v	Person=3+Tense=Pres	dema	0			rule
 smudges	1	oewn-smudge-n	Number=Plur	dema	0			rule
-smudgier	0	oewn-smudgy-a	Degree=Cmp	dema	0			rule
-smudgiest	0	oewn-smudgy-a	Degree=Sup	dema	0			rule
+smudgier	0	oewn-smudgy-a	Degree=Cmp	dema	0			llm
+smudgiest	0	oewn-smudgy-a	Degree=Sup	dema	0			llm
 smudgily	0		Degree=Pos	dema	0	smudgily	r	moby_reverse
 smudginess	0		Number=Sing	dema	0	smudginess	n	moby_reverse
 smudginesses	0		Number=Plur	dema	0	smudginess	n	rule
@@ -683,7 +681,7 @@ smuggling	1	oewn-smuggling-n	Number=Sing	dema	0			oewn_form
 smugglings	0	oewn-smuggling-n	Number=Plur	dema	0			rule
 smugly	0	oewn-smugly-r	Degree=Pos	dema	0			oewn_form
 smugness	0	oewn-smugness-n	Number=Sing	dema	0			oewn_form
-smugnesses	0	oewn-smugness-n	Number=Plur	dema	0			rule
+smugnesses	0	oewn-smugness-n	Number=Plur	dema	0			llm
 smut	0	oewn-smut-n	Number=Sing	dema	0			oewn_form
 smut	1	oewn-smut-v	VerbForm=Inf	dema	0			oewn_form
 smut fungus	0	oewn-smut_fungus-n	Number=Sing	dema	0			oewn_form

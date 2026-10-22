@@ -17,9 +17,8 @@
   classifiers whose scores are corrected to the usage of the senses). Onnx
   depends only on core; MiniLM and BertBaseCased depend on core and Onnx. (The former Basic package is retired.) No CC
   BY-SA material is shipped; the training corpus is project-authored CC0 text and US public domain sources.
-- **languages**: C#, Python (one-off tokenizer fixture generator, the real-text harvest tool `tools/real-text`, the
-  quota-fill scripts `tools/quota-fill`, the model preparation scripts `tools/model-prep` and the open-corpus scripts
-  `tools/open-corpus`)
+- **languages**: C#, Python (one-off tokenizer fixture generator, the quota-fill scripts `tools/quota-fill`, the model
+  preparation scripts `tools/model-prep` and the open-corpus scripts `tools/open-corpus`)
 - **technologies**: .NET, ONNX Runtime, Git LFS
 
 # Project Structure
@@ -38,7 +37,6 @@
 │   ├── open-corpus/            (Python scripts that built the open part-of-speech corpus corpus/open)
 │   ├── quota-fill/             (Python scripts that fill the per-sense quotas of the corpus, and the usage-weighted
 │   │                            evaluation diagnostic)
-│   ├── real-text/              (harvest of real sentences from public-domain sources)
 │   ├── model-prep/             (prepares the pinned encoder model files)
 │   └── tokenizer-fixture/      (one-off Python tokenizer parity fixture generator)
 ├── docs/

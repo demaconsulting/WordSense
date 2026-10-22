@@ -90,16 +90,14 @@ DO	1	oewn-do-n-1	Number=Sing	dema	0			oewn_form
 DO	2	oewn-do-n-2	Number=Sing	dema	0			oewn_form
 DO	3	dema-do-x		dema	0			irregular_list
 DO	4	oewn-DO-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
-DOE	0	oewn-doe-n	Number=Plur	dema	0			agid
-DOE	1	oewn-doe-n	Number=Sing	dema	0			oewn_form
-DOE	2	oewn-DOE-n	Capitalization=Upper+Number=Plur	dema	0			agid
-DOE	3	oewn-DOE-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+DOE	0	oewn-doe-n	Number=Sing	dema	0			oewn_form
+DOE	1	oewn-DOE-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 DOEI	0	oewn-DOEI-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 DOEIS	0	oewn-DOEI-n	Capitalization=Upper+Number=Plur	dema	0			rule
 DOES	0	oewn-do-v	Person=3+Tense=Pres	dema	0			hand
-DOES	1	oewn-doe-n	Number=Plur	dema	0			rule_variant
+DOES	1	oewn-doe-n	Number=Plur	dema	0			llm
 DOES	2	dema-do-x	Person=3+Tense=Pres	dema	0			irregular_list
-DOES	3	oewn-DOE-n	Capitalization=Upper+Number=Plur	dema	0			rule_variant
+DOES	3	oewn-DOE-n	Capitalization=Upper+Number=Plur	dema	0			llm
 DOS	0	oewn-DO-n	Number=Plur	dema	0			moby_reverse
 DOS	1	oewn-do-n-1	Number=Plur	dema	0			rule
 DOS	2	oewn-do-n-2	Number=Plur	dema	0			rule
@@ -1171,9 +1169,9 @@ Dutchman	0	oewn-Dutchman-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Dutchman's breeches	0	oewn-Dutchman-ap-s_breeches-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Dutchman's-pipe	0	oewn-Dutchman-ap-s-pipe-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Dutchman's-pipes	0	oewn-Dutchman-ap-s-pipe-n	Capitalization=Title+Number=Plur	dema	0			rule
-Dutchmans	0	oewn-Dutchman-n	Capitalization=Title+Number=Plur	dema	0			rule
+Dutchmen	0	oewn-Dutchman-n	Capitalization=Title+Number=Plur	dema	0			rule
 Dutchwoman	0	oewn-Dutchwoman-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-Dutchwomans	0	oewn-Dutchwoman-n	Capitalization=Title+Number=Plur	dema	0			rule
+Dutchwomen	0	oewn-Dutchwoman-n	Capitalization=Title+Number=Plur	dema	0			rule
 Dy	0	oewn-Dy-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Dyirbal	0	oewn-Dyirbal-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Dyirbal language	0	oewn-Dyirbal_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
@@ -1220,7 +1218,7 @@ dabs	0	oewn-dab-v	Person=3+Tense=Pres	dema	0			rule
 dabs	1	oewn-dab-n	Number=Plur	dema	0			rule
 dabster	0		Number=Sing	dema	0	dabster	n	moby_reverse
 dabsters	0		Number=Plur	dema	0	dabster	n	rule
-dace	0	oewn-dace-n	Number=Plur	dema	0			agid
+dace	0	oewn-dace-n	Number=Plur	dema	0			llm
 dace	1	oewn-dace-n	Number=Sing	dema	0			oewn_form
 daces	0	oewn-dace-n	Number=Plur	dema	0			rule_variant
 dacha	0	oewn-dacha-n	Number=Sing	dema	0			oewn_form
@@ -1278,12 +1276,12 @@ dado	0	oewn-dado-n	Number=Sing	dema	0			oewn_form
 dado	1	oewn-dado-v	VerbForm=Inf	dema	0			oewn_form
 dado plane	0	oewn-dado_plane-n	Number=Sing	dema	0			oewn_form
 dado planes	0	oewn-dado_plane-n	Number=Plur	dema	0			rule
-dadoed	0	oewn-dado-v	Tense=Past+VerbForm=Part	dema	0			rule
+dadoed	0	oewn-dado-v	Tense=Past+VerbForm=Part	dema	0			llm
 dadoes	0	oewn-dado-n	Number=Plur	dema	0			oewn_form
-dadoes	1	oewn-dado-v	Person=3+Tense=Pres	dema	0			rule_variant
-dadoing	0	oewn-dado-v	VerbForm=Ger	dema	0			rule
+dadoes	1	oewn-dado-v	Person=3+Tense=Pres	dema	0			llm
+dadoing	0	oewn-dado-v	VerbForm=Ger	dema	0			llm
 dados	0	oewn-dado-n	Number=Plur	dema	0			rule_variant
-dados	1	oewn-dado-v	Person=3+Tense=Pres	dema	0			agid
+dados	1	oewn-dado-v	Person=3+Tense=Pres	dema	0			rule_variant
 dads	0	oewn-dad-n	Number=Plur	dema	0			rule
 daedal	0	oewn-daedal-a	Degree=Pos	dema	0			oewn_form
 daemon	0	oewn-daemon-n	Number=Sing	dema	0			oewn_form
@@ -1315,8 +1313,8 @@ daffodowndilly	0		Number=Sing	dema	0	daffodowndilly	n	moby_reverse
 daffs	0		Number=Plur	dema	0	daff	n	rule
 daffy	0		Degree=Pos	dema	0	daffy	a	moby_reverse
 daft	0	oewn-daft-a	Degree=Pos	dema	0			oewn_form
-dafter	0	oewn-daft-a	Degree=Cmp	dema	0			rule
-daftest	0	oewn-daft-a	Degree=Sup	dema	0			rule
+dafter	0	oewn-daft-a	Degree=Cmp	dema	0			llm
+daftest	0	oewn-daft-a	Degree=Sup	dema	0			llm
 daftly	0	oewn-daftly-r	Degree=Pos	dema	0			oewn_form
 daftness	0	oewn-daftness-n	Number=Sing	dema	0			oewn_form
 daftnesses	0	oewn-daftness-n	Number=Plur	dema	0			rule
@@ -1430,11 +1428,11 @@ dairyings	0	oewn-dairying-n	Number=Plur	dema	0			rule
 dairymaid	0	oewn-dairymaid-n	Number=Sing	dema	0			oewn_form
 dairymaids	0	oewn-dairymaid-n	Number=Plur	dema	0			rule
 dairyman	0	oewn-dairyman-n	Number=Sing	dema	0			oewn_form
-dairymen	0	oewn-dairyman-n	Number=Plur	dema	0			agid
+dairymen	0	oewn-dairyman-n	Number=Plur	dema	0			llm
 dairywoman	0	oewn-dairywoman-n	Number=Sing	dema	0			oewn_form
-dairywomen	0	oewn-dairywoman-n	Number=Plur	dema	0			agid
+dairywomen	0	oewn-dairywoman-n	Number=Plur	dema	0			llm
 dais	0	oewn-dais-n	Number=Sing	dema	0			oewn_form
-daises	0	oewn-dais-n	Number=Plur	dema	0			rule
+daises	0	oewn-dais-n	Number=Plur	dema	0			llm
 daishiki	0	oewn-daishiki-n	Number=Sing	dema	0			oewn_form
 daishikis	0	oewn-daishiki-n	Number=Plur	dema	0			rule
 daisied	0		Degree=Pos	dema	0	daisied	a	moby_reverse
@@ -1478,6 +1476,7 @@ dakoities	0	oewn-dakoity-n	Number=Plur	dema	0			rule
 dakoits	0	oewn-dakoit-n	Number=Plur	dema	0			rule
 dakoity	0	oewn-dakoity-n	Number=Sing	dema	0			oewn_form
 daks	0	oewn-dak-n	Number=Plur	dema	0			rule
+daktyloi	0	oewn-daktylos-n	Number=Plur	dema	0			llm
 daktylos	0	oewn-daktylos-n	Number=Sing	dema	0			oewn_form
 dal	0	oewn-dal-n	Number=Sing	dema	0			oewn_form
 dalan	0		Number=Sing	dema	0	dalan	n	moby_reverse
@@ -1487,7 +1486,7 @@ dalasis	0	oewn-dalasi-n	Number=Plur	dema	0			rule
 dale	0	oewn-dale-n	Number=Sing	dema	0			oewn_form
 dales	0	oewn-dale-n	Number=Plur	dema	0			rule
 dalesman	0	oewn-dalesman-n	Number=Sing	dema	0			oewn_form
-dalesmen	0	oewn-dalesman-n	Number=Plur	dema	0			agid
+dalesmen	0	oewn-dalesman-n	Number=Plur	dema	0			llm
 daleth	0	oewn-daleth-n	Number=Sing	dema	0			oewn_form
 daleths	0	oewn-daleth-n	Number=Plur	dema	0			rule
 dallan	0		Number=Sing	dema	0	dallan	n	moby_reverse
@@ -1653,11 +1652,11 @@ dampening	1	oewn-dampening-n	Number=Sing	dema	0			oewn_form
 dampenings	0	oewn-dampening-n	Number=Plur	dema	0			rule
 dampens	0	oewn-dampen-v	Person=3+Tense=Pres	dema	0			rule
 damper	0	oewn-damper-n	Number=Sing	dema	0			oewn_form
-damper	1	oewn-damp-a	Degree=Cmp	dema	0			rule
+damper	1	oewn-damp-a	Degree=Cmp	dema	0			llm
 damper block	0	oewn-damper_block-n	Number=Sing	dema	0			oewn_form
 damper blocks	0	oewn-damper_block-n	Number=Plur	dema	0			rule
 dampers	0	oewn-damper-n	Number=Plur	dema	0			rule
-dampest	0	oewn-damp-a	Degree=Sup	dema	0			rule
+dampest	0	oewn-damp-a	Degree=Sup	dema	0			llm
 damping	0	oewn-damp-v	VerbForm=Ger	dema	0			rule
 damping off	0	oewn-damping_off-n	Number=Sing	dema	0			oewn_form
 damping off fungus	0	oewn-damping_off_fungus-n	Number=Sing	dema	0			oewn_form
@@ -1838,8 +1837,8 @@ danish pastries	0	oewn-danish_pastry-n	Number=Plur	dema	0			rule
 danish pastry	0	oewn-danish_pastry-n	Number=Sing	dema	0			oewn_form
 danishes	0	oewn-danish-n	Number=Plur	dema	0			rule
 dank	0	oewn-dank-a	Degree=Pos	dema	0			oewn_form
-danker	0	oewn-dank-a	Degree=Cmp	dema	0			rule
-dankest	0	oewn-dank-a	Degree=Sup	dema	0			rule
+danker	0	oewn-dank-a	Degree=Cmp	dema	0			llm
+dankest	0	oewn-dank-a	Degree=Sup	dema	0			llm
 dankly	0		Degree=Pos	dema	0	dankly	r	moby_reverse
 dankness	0	oewn-dankness-n	Number=Sing	dema	0			oewn_form
 danknesses	0	oewn-dankness-n	Number=Plur	dema	0			rule
@@ -1983,8 +1982,8 @@ darkening	1	oewn-darkening-n	Number=Sing	dema	0			oewn_form
 darkening	2	oewn-darkening-a	Degree=Pos	dema	0			oewn_form
 darkenings	0	oewn-darkening-n	Number=Plur	dema	0			rule
 darkens	0	oewn-darken-v	Person=3+Tense=Pres	dema	0			rule
-darker	0	oewn-dark-a	Degree=Cmp	dema	0			rule
-darkest	0	oewn-dark-a	Degree=Sup	dema	0			rule
+darker	0	oewn-dark-a	Degree=Cmp	dema	0			llm
+darkest	0	oewn-dark-a	Degree=Sup	dema	0			llm
 darkey	0	oewn-darkey-n	Number=Sing	dema	0			oewn_form
 darkeys	0	oewn-darkey-n	Number=Plur	dema	0			rule
 darkie	0	oewn-darkie-n	Number=Sing	dema	0			oewn_form
@@ -2004,7 +2003,7 @@ darkling ground beetle	0	oewn-darkling_ground_beetle-n	Number=Sing	dema	0			oewn
 darkling ground beetles	0	oewn-darkling_ground_beetle-n	Number=Plur	dema	0			rule
 darkly	0	oewn-darkly-r	Degree=Pos	dema	0			oewn_form
 darkness	0	oewn-darkness-n	Number=Sing	dema	0			oewn_form
-darknesses	0	oewn-darkness-n	Number=Plur	dema	0			rule
+darknesses	0	oewn-darkness-n	Number=Plur	dema	0			llm
 darkroom	0	oewn-darkroom-n	Number=Sing	dema	0			oewn_form
 darkrooms	0	oewn-darkroom-n	Number=Plur	dema	0			rule
 darks	0	oewn-dark-n	Number=Plur	dema	0			rule
@@ -2262,6 +2261,7 @@ datos	0		Number=Plur	dema	0	dato	n	rule
 datto	0		Number=Sing	dema	0	datto	n	moby_reverse
 dattos	0		Number=Plur	dema	0	datto	n	rule
 datum	0	oewn-datum-n	Number=Sing	dema	0			oewn_form
+datums	0	oewn-datum-n	Number=Plur	dema	0			rule_variant
 datura	0		Number=Sing	dema	0	datura	n	moby_reverse
 daturas	0		Number=Plur	dema	0	datura	n	rule
 daturic	0		Degree=Pos	dema	0	daturic	a	moby_reverse
@@ -2435,14 +2435,14 @@ daycare	0	oewn-daycare-n	Number=Sing	dema	0			oewn_form
 daycares	0	oewn-daycare-n	Number=Plur	dema	0			rule
 daydream	0	oewn-daydream-n	Number=Sing	dema	0			oewn_form
 daydream	1	oewn-daydream-v	VerbForm=Inf	dema	0			oewn_form
-daydreamed	0	oewn-daydream-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+daydreamed	0	oewn-daydream-v	Tense=Past+VerbForm=Part	dema	0			llm
 daydreamer	0	oewn-daydreamer-n	Number=Sing	dema	0			oewn_form
 daydreamers	0	oewn-daydreamer-n	Number=Plur	dema	0			rule
-daydreaming	0	oewn-daydream-v	VerbForm=Ger	dema	0			rule
+daydreaming	0	oewn-daydream-v	VerbForm=Ger	dema	0			llm
 daydreaming	1	oewn-daydreaming-n	Number=Sing	dema	0			oewn_form
 daydreamings	0	oewn-daydreaming-n	Number=Plur	dema	0			rule
 daydreams	0	oewn-daydream-n	Number=Plur	dema	0			rule
-daydreams	1	oewn-daydream-v	Person=3+Tense=Pres	dema	0			rule
+daydreams	1	oewn-daydream-v	Person=3+Tense=Pres	dema	0			llm
 daydreamt	0	oewn-daydream-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 daydreamy	0		Degree=Pos	dema	0	daydreamy	a	moby_reverse
 dayflies	0	oewn-dayfly-n	Number=Plur	dema	0			rule
@@ -2478,9 +2478,8 @@ days of the week	0	oewn-day_of_the_week-n	Number=Plur	dema	0			rule
 dayside	0		Number=Sing	dema	0	dayside	n	moby_reverse
 daysides	0		Number=Plur	dema	0	dayside	n	rule
 daysman	0		Number=Sing	dema	0	daysman	n	moby_reverse
-daysmans	0		Number=Plur	dema	0	daysman	n	rule
-daysmen	0		Number=Sing	dema	0	daysmen	n	moby_reverse
-daysmens	0		Number=Plur	dema	0	daysmen	n	rule
+daysmen	0		Number=Plur	dema	0	daysman	n	rule
+daysmen	1		Number=Sing	dema	0	daysmen	n	moby_reverse
 dayspring	0	oewn-dayspring-n	Number=Sing	dema	0			oewn_form
 daysprings	0	oewn-dayspring-n	Number=Plur	dema	0			rule
 daystar	0	oewn-daystar-n	Number=Sing	dema	0			oewn_form
@@ -2618,9 +2617,8 @@ deactivations	0	oewn-deactivation-n	Number=Plur	dema	0			rule
 deactivator	0		Number=Sing	dema	0	deactivator	n	moby_reverse
 deactivators	0		Number=Plur	dema	0	deactivator	n	rule
 dead	0	oewn-dead-a	Degree=Pos	dema	0			oewn_form
-dead	1	oewn-dead-n	Number=Plur	dema	0			agid
-dead	2	oewn-dead-n	Number=Sing	dema	0			oewn_form
-dead	3	oewn-dead-r	Degree=Pos	dema	0			oewn_form
+dead	1	oewn-dead-n	Number=Sing	dema	0			oewn_form
+dead	2	oewn-dead-r	Degree=Pos	dema	0			oewn_form
 dead ahead	0	oewn-dead_ahead-r	Degree=Pos	dema	0			oewn_form
 dead air	0	oewn-dead_air-n	Number=Sing	dema	0			oewn_form
 dead airs	0	oewn-dead_air-n	Number=Plur	dema	0			rule
@@ -2704,8 +2702,8 @@ deadening	1	oewn-deaden-v	VerbForm=Ger	dema	0			rule
 deadening	2	oewn-deadening-a	Degree=Pos	dema	0			oewn_form
 deadenings	0	oewn-deadening-n	Number=Plur	dema	0			rule
 deadens	0	oewn-deaden-v	Person=3+Tense=Pres	dema	0			rule
-deader	0	oewn-dead-a	Degree=Cmp	dema	0			rule
-deadest	0	oewn-dead-a	Degree=Sup	dema	0			rule
+deader	0	oewn-dead-a	Degree=Cmp	dema	0			llm
+deadest	0	oewn-dead-a	Degree=Sup	dema	0			llm
 deadeye	0	oewn-deadeye-n	Number=Sing	dema	0			oewn_form
 deadeyes	0	oewn-deadeye-n	Number=Plur	dema	0			rule
 deadfall	0		Number=Sing	dema	0	deadfall	n	moby_reverse
@@ -2734,9 +2732,8 @@ deadly nightshades	0	oewn-deadly_nightshade-n	Number=Plur	dema	0			rule
 deadly sin	0	oewn-deadly_sin-n	Number=Sing	dema	0			oewn_form
 deadly sins	0	oewn-deadly_sin-n	Number=Plur	dema	0			rule
 deadman	0		Number=Sing	dema	0	deadman	n	moby_reverse
-deadmans	0		Number=Plur	dema	0	deadman	n	rule
-deadmen	0		Number=Sing	dema	0	deadmen	n	moby_reverse
-deadmens	0		Number=Plur	dema	0	deadmen	n	rule
+deadmen	0		Number=Plur	dema	0	deadman	n	rule
+deadmen	1		Number=Sing	dema	0	deadmen	n	moby_reverse
 deadness	0	oewn-deadness-n	Number=Sing	dema	0			oewn_form
 deadnesses	0	oewn-deadness-n	Number=Plur	dema	0			rule
 deadpan	0	oewn-deadpan-a	Degree=Pos	dema	0			oewn_form
@@ -2745,6 +2742,7 @@ deadpanned	0		VerbForm=Inf	dema	0	deadpanned	v	moby_reverse
 deadpanning	0		VerbForm=Inf	dema	0	deadpanning	v	moby_reverse
 deadrise	0		Number=Sing	dema	0	deadrise	n	moby_reverse
 deadrises	0		Number=Plur	dema	0	deadrise	n	rule
+deads	0	oewn-dead-n	Number=Plur	dema	0			rule
 deadwood	0	oewn-deadwood-n	Number=Sing	dema	0			oewn_form
 deadwoods	0	oewn-deadwood-n	Number=Plur	dema	0			rule
 deadwork	0		Number=Sing	dema	0	deadwork	n	moby_reverse
@@ -2785,8 +2783,8 @@ deafening	2	oewn-deafening-a	Degree=Pos	dema	0			oewn_form
 deafeningly	0		Degree=Pos	dema	0	deafeningly	r	moby_reverse
 deafenings	0		Number=Plur	dema	0	deafening	n	rule
 deafens	0	oewn-deafen-v	Person=3+Tense=Pres	dema	0			rule
-deafer	0	oewn-deaf-a	Degree=Cmp	dema	0			rule
-deafest	0	oewn-deaf-a	Degree=Sup	dema	0			rule
+deafer	0	oewn-deaf-a	Degree=Cmp	dema	0			llm
+deafest	0	oewn-deaf-a	Degree=Sup	dema	0			llm
 deafing	0	oewn-deaf-v	VerbForm=Ger	dema	0			rule
 deafly	0		Degree=Pos	dema	0	deafly	r	moby_reverse
 deafmuteness	0		Number=Sing	dema	0	deafmuteness	n	moby_reverse
@@ -2852,8 +2850,8 @@ dear	0	oewn-dear-a	Degree=Pos	dema	0			oewn_form
 dear	1	dema-dear-i		dema	0			carried
 dear	2	oewn-dear-n	Number=Sing	dema	0			oewn_form
 dear	3	oewn-dear-r	Degree=Pos	dema	0			oewn_form
-dearer	0	oewn-dear-a	Degree=Cmp	dema	0			rule
-dearest	0	oewn-dear-a	Degree=Sup	dema	0			rule
+dearer	0	oewn-dear-a	Degree=Cmp	dema	0			llm
+dearest	0	oewn-dear-a	Degree=Sup	dema	0			llm
 dearest	1	oewn-dearest-n	Number=Sing	dema	0			oewn_form
 dearests	0	oewn-dearest-n	Number=Plur	dema	0			rule
 dearie	0	oewn-dearie-n	Number=Sing	dema	0			oewn_form
@@ -2933,8 +2931,8 @@ deathless	0	oewn-deathless-a	Degree=Pos	dema	0			oewn_form
 deathlessly	0		Degree=Pos	dema	0	deathlessly	r	moby_reverse
 deathlessness	0		Number=Sing	dema	0	deathlessness	n	moby_reverse
 deathlessnesses	0		Number=Plur	dema	0	deathlessness	n	rule
-deathlier	0	oewn-deathly-a	Degree=Cmp	dema	0			rule
-deathliest	0	oewn-deathly-a	Degree=Sup	dema	0			rule
+deathlier	0	oewn-deathly-a	Degree=Cmp	dema	0			llm
+deathliest	0	oewn-deathly-a	Degree=Sup	dema	0			llm
 deathlike	0	oewn-deathlike-a	Degree=Pos	dema	0			oewn_form
 deathliness	0		Number=Sing	dema	0	deathliness	n	moby_reverse
 deathly	0	oewn-deathly-a	Degree=Pos	dema	0			oewn_form
@@ -2943,9 +2941,8 @@ deathrate	0	oewn-deathrate-n	Number=Sing	dema	0			oewn_form
 deathrates	0	oewn-deathrate-n	Number=Plur	dema	0			rule
 deaths	0	oewn-death-n	Number=Plur	dema	0			rule
 deathsman	0		Number=Sing	dema	0	deathsman	n	moby_reverse
-deathsmans	0		Number=Plur	dema	0	deathsman	n	rule
-deathsmen	0		Number=Sing	dema	0	deathsmen	n	moby_reverse
-deathsmens	0		Number=Plur	dema	0	deathsmen	n	rule
+deathsmen	0		Number=Plur	dema	0	deathsman	n	rule
+deathsmen	1		Number=Sing	dema	0	deathsmen	n	moby_reverse
 deathtrap	0	oewn-deathtrap-n	Number=Sing	dema	0			oewn_form
 deathtraps	0	oewn-deathtrap-n	Number=Plur	dema	0			rule
 deathwatch	0	oewn-deathwatch-n	Number=Sing	dema	0			oewn_form
@@ -3088,8 +3085,7 @@ debriefing	0	oewn-debrief-v	VerbForm=Ger	dema	0			rule
 debriefing	1	oewn-debriefing-n	Number=Sing	dema	0			oewn_form
 debriefings	0	oewn-debriefing-n	Number=Plur	dema	0			rule
 debriefs	0	oewn-debrief-v	Person=3+Tense=Pres	dema	0			rule
-debris	0	oewn-debris-n	Number=Plur	dema	0			agid
-debris	1	oewn-debris-n	Number=Sing	dema	0			oewn_form
+debris	0	oewn-debris-n	Number=Sing	dema	0			oewn_form
 debris storm	0	oewn-debris_storm-n	Number=Sing	dema	0			oewn_form
 debris storms	0	oewn-debris_storm-n	Number=Plur	dema	0			rule
 debris surge	0	oewn-debris_surge-n	Number=Sing	dema	0			oewn_form
@@ -3170,11 +3166,11 @@ decadrachm	0		Number=Sing	dema	0	decadrachm	n	moby_reverse
 decadrachms	0		Number=Plur	dema	0	decadrachm	n	rule
 decaf	0	oewn-decaf-n	Number=Sing	dema	0			oewn_form
 decaffeinate	0	oewn-decaffeinate-v	VerbForm=Inf	dema	0			oewn_form
-decaffeinated	0	oewn-decaffeinate-v	Tense=Past+VerbForm=Part	dema	0			rule
+decaffeinated	0	oewn-decaffeinate-v	Tense=Past+VerbForm=Part	dema	0			llm
 decaffeinated coffee	0	oewn-decaffeinated_coffee-n	Number=Sing	dema	0			oewn_form
 decaffeinated coffees	0	oewn-decaffeinated_coffee-n	Number=Plur	dema	0			rule
-decaffeinates	0	oewn-decaffeinate-v	Person=3+Tense=Pres	dema	0			rule
-decaffeinating	0	oewn-decaffeinate-v	VerbForm=Ger	dema	0			rule
+decaffeinates	0	oewn-decaffeinate-v	Person=3+Tense=Pres	dema	0			llm
+decaffeinating	0	oewn-decaffeinate-v	VerbForm=Ger	dema	0			llm
 decafs	0	oewn-decaf-n	Number=Plur	dema	0			rule
 decagon	0	oewn-decagon-n	Number=Sing	dema	0			oewn_form
 decagonal	0		Degree=Pos	dema	0	decagonal	a	moby_reverse
@@ -3926,7 +3922,7 @@ deconstruction	0	oewn-deconstruction-n	Number=Sing	dema	0			oewn_form
 deconstructionism	0	oewn-deconstructionism-n	Number=Sing	dema	0			oewn_form
 deconstructionisms	0	oewn-deconstructionism-n	Number=Plur	dema	0			rule
 deconstructionist	0	oewn-deconstructionist-a	Degree=Pos	dema	0			oewn_form
-deconstructions	0	oewn-deconstruction-n	Number=Plur	dema	0			rule
+deconstructions	0	oewn-deconstruction-n	Number=Plur	dema	0			llm
 deconstructivism	0	oewn-deconstructivism-n	Number=Sing	dema	0			oewn_form
 deconstructivisms	0	oewn-deconstructivism-n	Number=Plur	dema	0			rule
 deconstructs	0	oewn-deconstruct-v	Person=3+Tense=Pres	dema	0			rule
@@ -3954,7 +3950,7 @@ decorations	0	oewn-decoration-n	Number=Plur	dema	0			rule
 decorative	0	oewn-decorative-a	Degree=Pos	dema	0			oewn_form
 decoratively	0	oewn-decoratively-r	Degree=Pos	dema	0			oewn_form
 decorativeness	0	oewn-decorativeness-n	Number=Sing	dema	0			oewn_form
-decorativenesses	0	oewn-decorativeness-n	Number=Plur	dema	0			rule
+decorativenesses	0	oewn-decorativeness-n	Number=Plur	dema	0			llm
 decorator	0	oewn-decorator-n	Number=Sing	dema	0			oewn_form
 decorators	0	oewn-decorator-n	Number=Plur	dema	0			rule
 decorous	0	oewn-decorous-a	Degree=Pos	dema	0			oewn_form
@@ -4036,7 +4032,7 @@ decrescendo	2	oewn-decrescendo-a	Degree=Pos	dema	0			oewn_form
 decrescendoed	0	oewn-decrescendo-v	Tense=Past+VerbForm=Part	dema	0			rule
 decrescendoes	0	oewn-decrescendo-v	Person=3+Tense=Pres	dema	0			rule
 decrescendoing	0	oewn-decrescendo-v	VerbForm=Ger	dema	0			rule
-decrescendos	0	oewn-decrescendo-n	Number=Plur	dema	0			rule_variant
+decrescendos	0	oewn-decrescendo-n	Number=Plur	dema	0			llm
 decrescent	0		Degree=Pos	dema	0	decrescent	a	moby_reverse
 decrescs	0		Number=Plur	dema	0	decresc	n	rule
 decretal	0		Number=Sing	dema	0	decretal	n	moby_reverse
@@ -4078,7 +4074,6 @@ decubital	0		Degree=Pos	dema	0	decubital	a	moby_reverse
 decubitus	0	oewn-decubitus-n	Number=Sing	dema	0			oewn_form
 decubitus ulcer	0	oewn-decubitus_ulcer-n	Number=Sing	dema	0			oewn_form
 decubitus ulcers	0	oewn-decubitus_ulcer-n	Number=Plur	dema	0			rule
-decubituses	0	oewn-decubitus-n	Number=Plur	dema	0			rule
 decuman	0		Degree=Pos	dema	0	decuman	a	moby_reverse
 decumaries	0	oewn-decumary-n	Number=Plur	dema	0			rule
 decumary	0	oewn-decumary-n	Number=Sing	dema	0			oewn_form
@@ -4287,9 +4282,9 @@ deepenings	0	oewn-deepening-n	Number=Plur	dema	0			rule
 deepens	0	oewn-deepen-v	Person=3+Tense=Pres	dema	0			rule
 deeper	0	oewn-deep-a	Degree=Cmp	dema	0			rule
 deeper	1	oewn-deeply-r	Degree=Cmp	dema	0			oewn_form
-deeper	2	oewn-deep-r	Degree=Cmp	dema	0			rule
+deeper	2	oewn-deep-r	Degree=Cmp	dema	0			llm
 deepest	0	oewn-deep-a	Degree=Sup	dema	0			rule
-deepest	1	oewn-deep-r	Degree=Sup	dema	0			rule
+deepest	1	oewn-deep-r	Degree=Sup	dema	0			llm
 deepfreeze	0		Number=Sing	dema	0	deepfreeze	n	moby_reverse
 deepfreeze	1		VerbForm=Inf	dema	0	deepfreeze	v	moby_reverse
 deepfreezes	0		Number=Plur	dema	0	deepfreeze	n	rule
@@ -4335,6 +4330,7 @@ deergrass	0		Number=Sing	dema	0	deergrass	n	moby_reverse
 deergrasses	0		Number=Plur	dema	0	deergrass	n	rule
 deerhound	0	oewn-deerhound-n	Number=Sing	dema	0			oewn_form
 deerhounds	0	oewn-deerhound-n	Number=Plur	dema	0			rule
+deers	0	oewn-deer-n	Number=Plur	dema	0			rule_variant
 deerskin	0	oewn-deerskin-n	Number=Sing	dema	0			oewn_form
 deerskins	0	oewn-deerskin-n	Number=Plur	dema	0			rule
 deerstalker	0	oewn-deerstalker-n	Number=Sing	dema	0			oewn_form
@@ -4382,11 +4378,9 @@ defanged	0	oewn-defang-v	Tense=Past+VerbForm=Part	dema	0			rule
 defanging	0	oewn-defang-v	VerbForm=Ger	dema	0			rule
 defangs	0	oewn-defang-v	Person=3+Tense=Pres	dema	0			rule
 defat	0	oewn-defat-v	VerbForm=Inf	dema	0			oewn_form
-defated	0	oewn-defat-v	Tense=Past+VerbForm=Part	dema	0			rule
-defating	0	oewn-defat-v	VerbForm=Ger	dema	0			rule
-defats	0	oewn-defat-v	Person=3+Tense=Pres	dema	0			rule
-defatted	0	oewn-defat-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
-defatting	0	oewn-defat-v	VerbForm=Ger	dema	0			rule_variant
+defats	0	oewn-defat-v	Person=3+Tense=Pres	dema	0			llm
+defatted	0	oewn-defat-v	Tense=Past+VerbForm=Part	dema	0			llm
+defatting	0	oewn-defat-v	VerbForm=Ger	dema	0			llm
 default	0	oewn-default-n	Number=Sing	dema	0			oewn_form
 default	1	oewn-default-v	VerbForm=Inf	dema	0			oewn_form
 default judgement	0	oewn-default_judgement-n	Number=Sing	dema	0			oewn_form
@@ -4492,7 +4486,7 @@ defenceless	0	oewn-defenceless-a	Degree=Pos	dema	0			oewn_form
 defenceless	1	oewn-defenceless-r	Degree=Pos	dema	0			oewn_form
 defencelessly	0	oewn-defencelessly-r	Degree=Pos	dema	0			oewn_form
 defencelessness	0	oewn-defencelessness-n	Number=Sing	dema	0			oewn_form
-defencelessnesses	0	oewn-defencelessness-n	Number=Plur	dema	0			rule
+defencelessnesses	0	oewn-defencelessness-n	Number=Plur	dema	0			llm
 defences	0	oewn-defence-n	Number=Plur	dema	0			rule
 defend	0	oewn-defend-v	VerbForm=Inf	dema	0			oewn_form
 defendable	0	oewn-defendable-a	Degree=Pos	dema	0			oewn_form
@@ -4543,11 +4537,10 @@ defenseless	0	oewn-defenseless-a	Degree=Pos	dema	0			oewn_form
 defenseless	1	oewn-defenseless-r	Degree=Pos	dema	0			oewn_form
 defenselessly	0	oewn-defenselessly-r	Degree=Pos	dema	0			oewn_form
 defenselessness	0	oewn-defenselessness-n	Number=Sing	dema	0			oewn_form
-defenselessnesses	0	oewn-defenselessness-n	Number=Plur	dema	0			rule
+defenselessnesses	0	oewn-defenselessness-n	Number=Plur	dema	0			llm
 defenseman	0		Number=Sing	dema	0	defenseman	n	moby_reverse
-defensemans	0		Number=Plur	dema	0	defenseman	n	rule
-defensemen	0		Number=Sing	dema	0	defensemen	n	moby_reverse
-defensemens	0		Number=Plur	dema	0	defensemen	n	rule
+defensemen	0		Number=Plur	dema	0	defenseman	n	rule
+defensemen	1		Number=Sing	dema	0	defensemen	n	moby_reverse
 defenses	0	oewn-defense-n	Number=Plur	dema	1			carried
 defensibilities	0	oewn-defensibility-n	Number=Plur	dema	0			rule
 defensibility	0	oewn-defensibility-n	Number=Sing	dema	0			oewn_form
@@ -4703,9 +4696,9 @@ deflagrabilities	0		Number=Plur	dema	0	deflagrability	n	rule
 deflagrability	0		Number=Sing	dema	0	deflagrability	n	moby_reverse
 deflagrable	0		Degree=Pos	dema	0	deflagrable	a	moby_reverse
 deflagrate	0	oewn-deflagrate-v	VerbForm=Inf	dema	0			oewn_form
-deflagrated	0	oewn-deflagrate-v	Tense=Past+VerbForm=Part	dema	0			rule
-deflagrates	0	oewn-deflagrate-v	Person=3+Tense=Pres	dema	0			rule
-deflagrating	0	oewn-deflagrate-v	VerbForm=Ger	dema	0			rule
+deflagrated	0	oewn-deflagrate-v	Tense=Past+VerbForm=Part	dema	0			llm
+deflagrates	0	oewn-deflagrate-v	Person=3+Tense=Pres	dema	0			llm
+deflagrating	0	oewn-deflagrate-v	VerbForm=Ger	dema	0			llm
 deflagration	0	oewn-deflagration-n	Number=Sing	dema	0			oewn_form
 deflagrations	0	oewn-deflagration-n	Number=Plur	dema	0			rule
 deflate	0	oewn-deflate-v	VerbForm=Inf	dema	0			oewn_form
@@ -4847,8 +4840,8 @@ defrosts	0	oewn-defrost-v	Person=3+Tense=Pres	dema	0			rule
 defs	0		Number=Plur	dema	0	def	n	rule
 defs	1		Number=Sing	dema	0	defs	n	moby_reverse
 deft	0	oewn-deft-a	Degree=Pos	dema	0			oewn_form
-defter	0	oewn-deft-a	Degree=Cmp	dema	0			rule
-deftest	0	oewn-deft-a	Degree=Sup	dema	0			rule
+defter	0	oewn-deft-a	Degree=Cmp	dema	0			llm
+deftest	0	oewn-deft-a	Degree=Sup	dema	0			llm
 deftly	0	oewn-deftly-r	Degree=Pos	dema	0			oewn_form
 deftness	0	oewn-deftness-n	Number=Sing	dema	0			oewn_form
 deftnesses	0	oewn-deftness-n	Number=Plur	dema	0			rule
@@ -4874,7 +4867,6 @@ defyingly	0		Degree=Pos	dema	0	defyingly	r	moby_reverse
 deg	0		Number=Sing	dema	0	deg	n	moby_reverse
 degage	0	oewn-degage-a	Degree=Pos	dema	0			oewn_form
 degas	0	oewn-degas-v	VerbForm=Inf	dema	0			oewn_form
-degases	0	oewn-degas-v	Person=3+Tense=Pres	dema	0			rule_variant
 degassed	0	oewn-degas-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 degasses	0	oewn-degas-v	Person=3+Tense=Pres	dema	0			oewn_form
 degassing	0	oewn-degas-v	VerbForm=Ger	dema	0			oewn_form
@@ -5141,7 +5133,7 @@ deil	0		Number=Sing	dema	0	deil	n	moby_reverse
 deils	0		Number=Plur	dema	0	deil	n	rule
 deinocheirus	0	oewn-deinocheirus-n	Number=Sing	dema	0			oewn_form
 deinonychus	0	oewn-deinonychus-n	Number=Sing	dema	0			oewn_form
-deinonychuses	0	oewn-deinonychus-n	Number=Plur	dema	0			rule
+deinonychuses	0	oewn-deinonychus-n	Number=Plur	dema	0			llm
 deionization	0		Number=Sing	dema	0	deionization	n	moby_reverse
 deionizations	0		Number=Plur	dema	0	deionization	n	rule
 deionize	0	oewn-deionize-v	VerbForm=Inf	dema	0			oewn_form
@@ -5164,8 +5156,8 @@ deisticalness	0		Number=Sing	dema	0	deisticalness	n	moby_reverse
 deists	0	oewn-deist-n	Number=Plur	dema	0			rule
 deities	0	oewn-deity-n	Number=Plur	dema	0			rule
 deity	0	oewn-deity-n	Number=Sing	dema	0			oewn_form
+deixes	0	oewn-deixis-n	Number=Plur	dema	0			llm
 deixis	0	oewn-deixis-n	Number=Sing	dema	0			oewn_form
-deixises	0	oewn-deixis-n	Number=Plur	dema	0			rule
 deja vu	0	oewn-deja_vu-n	Number=Sing	dema	0			oewn_form
 deja vus	0	oewn-deja_vu-n	Number=Plur	dema	0			rule
 deject	0	oewn-deject-v	VerbForm=Inf	dema	0			oewn_form
@@ -5336,7 +5328,7 @@ delicatessens	0	oewn-delicatessen-n	Number=Plur	dema	0			rule
 delicious	0	oewn-delicious-a	Degree=Pos	dema	0			oewn_form
 deliciously	0	oewn-deliciously-r	Degree=Pos	dema	0			oewn_form
 deliciousness	0	oewn-deliciousness-n	Number=Sing	dema	0			oewn_form
-deliciousnesses	0	oewn-deliciousness-n	Number=Plur	dema	0			rule
+deliciousnesses	0	oewn-deliciousness-n	Number=Plur	dema	0			llm
 delict	0		Number=Sing	dema	0	delict	n	moby_reverse
 delicts	0		Number=Plur	dema	0	delict	n	rule
 delight	0	oewn-delight-n	Number=Sing	dema	1			carried
@@ -5417,7 +5409,7 @@ deliriousness	0		Number=Sing	dema	0	deliriousness	n	moby_reverse
 deliriousnesses	0		Number=Plur	dema	0	deliriousness	n	rule
 delirium	0	oewn-delirium-n	Number=Sing	dema	0			oewn_form
 delirium tremens	0	oewn-delirium_tremens-n	Number=Sing	dema	0			oewn_form
-deliriums	0	oewn-delirium-n	Number=Plur	dema	0			rule_variant
+deliriums	0	oewn-delirium-n	Number=Plur	dema	0			llm
 delis	0	oewn-deli-n	Number=Plur	dema	0			rule
 delist	0	oewn-delist-v	VerbForm=Inf	dema	0			oewn_form
 delisted	0	oewn-delist-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -5453,9 +5445,9 @@ delivery trucks	0	oewn-delivery_truck-n	Number=Plur	dema	0			rule
 delivery van	0	oewn-delivery_van-n	Number=Sing	dema	0			oewn_form
 delivery vans	0	oewn-delivery_van-n	Number=Plur	dema	0			rule
 deliveryman	0	oewn-deliveryman-n	Number=Sing	dema	0			oewn_form
-deliverymen	0	oewn-deliveryman-n	Number=Plur	dema	0			agid
+deliverymen	0	oewn-deliveryman-n	Number=Plur	dema	0			llm
 deliverywoman	0	oewn-deliverywoman-n	Number=Sing	dema	0			oewn_form
-deliverywomans	0	oewn-deliverywoman-n	Number=Plur	dema	0			rule
+deliverywomen	0	oewn-deliverywoman-n	Number=Plur	dema	0			rule
 dell	0	oewn-dell-n	Number=Sing	dema	0			oewn_form
 della	0		Number=Sing	dema	0	della	n	moby_reverse
 dellas	0		Number=Plur	dema	0	della	n	rule
@@ -5661,15 +5653,15 @@ dematting comb	0	oewn-dematting_comb-n	Number=Sing	dema	0			oewn_form
 dematting combs	0	oewn-dematting_comb-n	Number=Plur	dema	0			rule
 deme	0		Number=Sing	dema	0	deme	n	moby_reverse
 demean	0	oewn-demean-v	VerbForm=Inf	dema	0			oewn_form
-demeaned	0	oewn-demean-v	Tense=Past+VerbForm=Part	dema	0			rule
-demeaning	0	oewn-demean-v	VerbForm=Ger	dema	0			rule
+demeaned	0	oewn-demean-v	Tense=Past+VerbForm=Part	dema	0			llm
+demeaning	0	oewn-demean-v	VerbForm=Ger	dema	0			llm
 demeaning	1	oewn-demeaning-a	Degree=Pos	dema	0			oewn_form
 demeaningly	0	oewn-demeaningly-r	Degree=Pos	dema	0			oewn_form
 demeanor	0	oewn-demeanor-n	Number=Sing	dema	0			oewn_form
 demeanors	0	oewn-demeanor-n	Number=Plur	dema	0			rule
 demeanour	0	oewn-demeanour-n	Number=Sing	dema	0			oewn_form
 demeanours	0	oewn-demeanour-n	Number=Plur	dema	0			rule
-demeans	0	oewn-demean-v	Person=3+Tense=Pres	dema	0			rule
+demeans	0	oewn-demean-v	Person=3+Tense=Pres	dema	0			llm
 demeclocycline hydrochloride	0	oewn-demeclocycline_hydrochloride-n	Number=Sing	dema	0			oewn_form
 demeclocycline hydrochlorides	0	oewn-demeclocycline_hydrochloride-n	Number=Plur	dema	0			rule
 dement	0		VerbForm=Inf	dema	0	dement	v	moby_reverse
@@ -5677,7 +5669,7 @@ demented	0	oewn-demented-a	Degree=Pos	dema	0			oewn_form
 demented	1		Tense=Past+VerbForm=Part	dema	0	dement	v	rule
 dementedly	0	oewn-dementedly-r	Degree=Pos	dema	0			oewn_form
 dementedness	0	oewn-dementedness-n	Number=Sing	dema	0			oewn_form
-dementednesses	0	oewn-dementedness-n	Number=Plur	dema	0			rule
+dementednesses	0	oewn-dementedness-n	Number=Plur	dema	0			llm
 dementia	0	oewn-dementia-n	Number=Sing	dema	0			oewn_form
 dementia praecox	0	oewn-dementia_praecox-n	Number=Sing	dema	0			oewn_form
 dementia praecoxes	0	oewn-dementia_praecox-n	Number=Plur	dema	0			rule
@@ -6018,8 +6010,8 @@ demure	0	oewn-demure-a	Degree=Pos	dema	0			oewn_form
 demurely	0	oewn-demurely-r	Degree=Pos	dema	0			oewn_form
 demureness	0	oewn-demureness-n	Number=Sing	dema	0			oewn_form
 demurenesses	0	oewn-demureness-n	Number=Plur	dema	0			rule
-demurer	0	oewn-demure-a	Degree=Cmp	dema	0			moby_reverse
-demurest	0	oewn-demure-a	Degree=Sup	dema	0			moby_reverse
+demurer	0	oewn-demure-a	Degree=Cmp	dema	0			llm
+demurest	0	oewn-demure-a	Degree=Sup	dema	0			llm
 demurrable	0		Degree=Pos	dema	0	demurrable	a	moby_reverse
 demurrage	0	oewn-demurrage-n	Number=Sing	dema	0			oewn_form
 demurrages	0	oewn-demurrage-n	Number=Plur	dema	0			rule
@@ -6273,8 +6265,8 @@ dense-leaved elodeas	0	oewn-dense-leaved_elodea-n	Number=Plur	dema	0			rule
 densely	0	oewn-densely-r	Degree=Pos	dema	0			oewn_form
 denseness	0	oewn-denseness-n	Number=Sing	dema	0			oewn_form
 densenesses	0	oewn-denseness-n	Number=Plur	dema	0			rule
-denser	0	oewn-dense-a	Degree=Cmp	dema	0			moby_reverse
-densest	0	oewn-dense-a	Degree=Sup	dema	0			moby_reverse
+denser	0	oewn-dense-a	Degree=Cmp	dema	0			llm
+densest	0	oewn-dense-a	Degree=Sup	dema	0			llm
 densification	0	oewn-densification-n	Number=Sing	dema	0			oewn_form
 densifications	0	oewn-densification-n	Number=Plur	dema	0			rule
 densified	0		Tense=Past+VerbForm=Part	dema	0	densify	v	rule
@@ -6369,9 +6361,8 @@ dentalizing	0		VerbForm=Ger	dema	0	dentalize	v	rule
 dentallia	0		Number=Sing	dema	0	dentallia	n	moby_reverse
 dentallias	0		Number=Plur	dema	0	dentallia	n	rule
 dentalman	0		Number=Sing	dema	0	dentalman	n	moby_reverse
-dentalmans	0		Number=Plur	dema	0	dentalman	n	rule
-dentalmen	0		Number=Sing	dema	0	dentalmen	n	moby_reverse
-dentalmens	0		Number=Plur	dema	0	dentalmen	n	rule
+dentalmen	0		Number=Plur	dema	0	dentalman	n	rule
+dentalmen	1		Number=Sing	dema	0	dentalmen	n	moby_reverse
 dentals	0	oewn-dental-n	Number=Plur	dema	0			rule
 dentaries	0		Number=Plur	dema	0	dentary	n	rule
 dentary	0		Number=Sing	dema	0	dentary	n	moby_reverse
@@ -7004,13 +6995,16 @@ depressor nerve	0	oewn-depressor_nerve-n	Number=Sing	dema	0			oewn_form
 depressor nerves	0	oewn-depressor_nerve-n	Number=Plur	dema	0			rule
 depressors	0	oewn-depressor-n	Number=Plur	dema	0			rule
 depressurise	0	oewn-depressurise-v	VerbForm=Inf	dema	0			oewn_form
-depressurised	0	oewn-depressurise-v	Tense=Past+VerbForm=Part	dema	0			rule
-depressurises	0	oewn-depressurise-v	Person=3+Tense=Pres	dema	0			rule
-depressurising	0	oewn-depressurise-v	VerbForm=Ger	dema	0			rule
+depressurised	0	oewn-depressurise-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+depressurises	0	oewn-depressurise-v	Person=3+Tense=Pres	dema	0			rule_variant
+depressurising	0	oewn-depressurise-v	VerbForm=Ger	dema	0			rule_variant
 depressurize	0	oewn-depressurize-v	VerbForm=Inf	dema	0			oewn_form
 depressurized	0	oewn-depressurize-v	Tense=Past+VerbForm=Part	dema	0			rule
+depressurized	1	oewn-depressurise-v	Tense=Past+VerbForm=Part	dema	0			llm
 depressurizes	0	oewn-depressurize-v	Person=3+Tense=Pres	dema	0			rule
+depressurizes	1	oewn-depressurise-v	Person=3+Tense=Pres	dema	0			llm
 depressurizing	0	oewn-depressurize-v	VerbForm=Ger	dema	0			rule
+depressurizing	1	oewn-depressurise-v	VerbForm=Ger	dema	0			llm
 depreter	0		Number=Sing	dema	0	depreter	n	moby_reverse
 depreters	0		Number=Plur	dema	0	depreter	n	rule
 deprivable	0		Degree=Pos	dema	0	deprivable	a	moby_reverse
@@ -7173,11 +7167,11 @@ derestricted	0	oewn-derestrict-v	Tense=Past+VerbForm=Part	dema	0			rule
 derestricting	0	oewn-derestrict-v	VerbForm=Ger	dema	0			rule
 derestricts	0	oewn-derestrict-v	Person=3+Tense=Pres	dema	0			rule
 deride	0	oewn-deride-v	VerbForm=Inf	dema	0			oewn_form
-derided	0	oewn-deride-v	Tense=Past+VerbForm=Part	dema	0			rule
+derided	0	oewn-deride-v	Tense=Past+VerbForm=Part	dema	0			llm
 derider	0		Number=Sing	dema	0	derider	n	moby_reverse
 deriders	0		Number=Plur	dema	0	derider	n	rule
-derides	0	oewn-deride-v	Person=3+Tense=Pres	dema	0			rule
-deriding	0	oewn-deride-v	VerbForm=Ger	dema	0			rule
+derides	0	oewn-deride-v	Person=3+Tense=Pres	dema	0			llm
+deriding	0	oewn-deride-v	VerbForm=Ger	dema	0			llm
 deridingly	0		Degree=Pos	dema	0	deridingly	r	moby_reverse
 deringer	0		Number=Sing	dema	0	deringer	n	moby_reverse
 deringers	0		Number=Plur	dema	0	deringer	n	rule
@@ -7226,8 +7220,8 @@ dermas	0	oewn-derma-n	Number=Plur	dema	0			rule
 dermatherm	0		Number=Sing	dema	0	dermatherm	n	moby_reverse
 dermatherms	0		Number=Plur	dema	0	dermatherm	n	rule
 dermatic	0		Degree=Pos	dema	0	dermatic	a	moby_reverse
+dermatitides	0	oewn-dermatitis-n	Number=Plur	dema	0			llm
 dermatitis	0	oewn-dermatitis-n	Number=Sing	dema	0			oewn_form
-dermatitises	0	oewn-dermatitis-n	Number=Plur	dema	0			rule_variant
 dermatogen	0		Number=Sing	dema	0	dermatogen	n	moby_reverse
 dermatogens	0		Number=Plur	dema	0	dermatogen	n	rule
 dermatoglyphic	0	oewn-dermatoglyphic-n	Number=Sing	dema	0			oewn_form
@@ -7251,6 +7245,7 @@ dermatomyositis	0	oewn-dermatomyositis-n	Number=Sing	dema	0			oewn_form
 dermatophyte	0		Number=Sing	dema	0	dermatophyte	n	moby_reverse
 dermatophytes	0		Number=Plur	dema	0	dermatophyte	n	rule
 dermatophytic	0		Degree=Pos	dema	0	dermatophytic	a	moby_reverse
+dermatophytoses	0	oewn-dermatophytosis-n	Number=Plur	dema	0			llm
 dermatophytosis	0	oewn-dermatophytosis-n	Number=Sing	dema	0			oewn_form
 dermatoplastic	0		Degree=Pos	dema	0	dermatoplastic	a	moby_reverse
 dermatoplasties	0		Number=Plur	dema	0	dermatoplasty	n	rule
@@ -7263,9 +7258,10 @@ dermatozoons	0		Number=Plur	dema	0	dermatozoon	n	rule
 dermatozzoa	0		Number=Sing	dema	0	dermatozzoa	n	moby_reverse
 dermatozzoas	0		Number=Plur	dema	0	dermatozzoa	n	rule
 dermatropic	0		Degree=Pos	dema	0	dermatropic	a	moby_reverse
+dermes	0	oewn-dermis-n	Number=Plur	dema	0			rule_variant
 dermic	0	oewn-dermic-a	Degree=Pos	dema	0			oewn_form
 dermis	0	oewn-dermis-n	Number=Sing	dema	0			oewn_form
-dermises	0	oewn-dermis-n	Number=Plur	dema	0			rule
+dermises	0	oewn-dermis-n	Number=Plur	dema	0			llm
 dermographia	0		Number=Sing	dema	0	dermographia	n	moby_reverse
 dermographias	0		Number=Plur	dema	0	dermographia	n	rule
 dermographic	0		Degree=Pos	dema	0	dermographic	a	moby_reverse
@@ -7313,7 +7309,7 @@ derris	0	oewn-derris-n	Number=Sing	dema	0			oewn_form
 derris	1		Number=Plur	dema	0	derri	n	rule
 derris root	0	oewn-derris_root-n	Number=Sing	dema	0			oewn_form
 derris roots	0	oewn-derris_root-n	Number=Plur	dema	0			rule
-derrises	0	oewn-derris-n	Number=Plur	dema	0			rule
+derrises	0	oewn-derris-n	Number=Plur	dema	0			llm
 derry	0		Number=Sing	dema	0	derry	n	moby_reverse
 dertra	0		Number=Sing	dema	0	dertra	n	moby_reverse
 dertras	0		Number=Plur	dema	0	dertra	n	rule
@@ -7734,7 +7730,7 @@ desk sergeants	0	oewn-desk_sergeant-n	Number=Plur	dema	0			rule
 desk-bound	0	oewn-desk-bound-a	Degree=Pos	dema	0			oewn_form
 deskbound	0	oewn-deskbound-a	Degree=Pos	dema	0			oewn_form
 deskman	0	oewn-deskman-n	Number=Sing	dema	0			oewn_form
-deskmen	0	oewn-deskman-n	Number=Plur	dema	0			agid
+deskmen	0	oewn-deskman-n	Number=Plur	dema	0			llm
 desks	0	oewn-desk-n	Number=Plur	dema	0			rule
 desktop	0	oewn-desktop-n	Number=Sing	dema	0			oewn_form
 desktop computer	0	oewn-desktop_computer-n	Number=Sing	dema	0			oewn_form
@@ -7743,9 +7739,10 @@ desktop publishing	0	oewn-desktop_publishing-n	Number=Sing	dema	0			oewn_form
 desktop publishings	0	oewn-desktop_publishing-n	Number=Plur	dema	0			rule
 desktops	0	oewn-desktop-n	Number=Plur	dema	0			rule
 deskwoman	0	oewn-deskwoman-n	Number=Sing	dema	0			oewn_form
-deskwomans	0	oewn-deskwoman-n	Number=Plur	dema	0			rule
+deskwomen	0	oewn-deskwoman-n	Number=Plur	dema	0			rule
 desman	0		Number=Sing	dema	0	desman	n	moby_reverse
-desmans	0		Number=Plur	dema	0	desman	n	rule
+desmans	0		Number=Sing	dema	0	desmans	n	moby_reverse
+desmen	0		Number=Plur	dema	0	desman	n	rule
 desmid	0	oewn-desmid-n	Number=Sing	dema	0			oewn_form
 desmidian	0		Degree=Pos	dema	0	desmidian	a	moby_reverse
 desmids	0	oewn-desmid-n	Number=Plur	dema	0			rule
@@ -7863,10 +7860,10 @@ despoiled	0	oewn-despoil-v	Tense=Past+VerbForm=Part	dema	0			irregular_list
 despoiled	1	oewn-despoiled-a	Degree=Pos	dema	0			oewn_form
 despoiler	0	oewn-despoiler-n	Number=Sing	dema	0			oewn_form
 despoilers	0	oewn-despoiler-n	Number=Plur	dema	0			rule
-despoiling	0	oewn-despoil-v	VerbForm=Ger	dema	0			rule
+despoiling	0	oewn-despoil-v	VerbForm=Ger	dema	0			llm
 despoilment	0	oewn-despoilment-n	Number=Sing	dema	0			oewn_form
 despoilments	0	oewn-despoilment-n	Number=Plur	dema	0			rule
-despoils	0	oewn-despoil-v	Person=3+Tense=Pres	dema	0			rule
+despoils	0	oewn-despoil-v	Person=3+Tense=Pres	dema	0			llm
 despoliation	0	oewn-despoliation-n	Number=Sing	dema	0			oewn_form
 despoliations	0	oewn-despoliation-n	Number=Plur	dema	0			rule
 despond	0	oewn-despond-v	VerbForm=Inf	dema	0			oewn_form
@@ -7914,8 +7911,9 @@ dessert wine	0	oewn-dessert_wine-n	Number=Sing	dema	0			oewn_form
 dessert wines	0	oewn-dessert_wine-n	Number=Plur	dema	0			rule
 desserts	0	oewn-dessert-n	Number=Plur	dema	0			rule
 dessertspoon	0	oewn-dessertspoon-n	Number=Sing	dema	0			oewn_form
-dessertspoonful	0	oewn-dessertspoonful-n	Number=Sing	dema	0			oewn_form
-dessertspoonfuls	0	oewn-dessertspoonful-n	Number=Plur	dema	0			rule_variant
+dessertspoonful	0	oewn-dessertspoonful-n	Number=Plur	dema	0			rule_variant
+dessertspoonful	1	oewn-dessertspoonful-n	Number=Sing	dema	0			oewn_form
+dessertspoonfuls	0	oewn-dessertspoonful-n	Number=Plur	dema	0			llm
 dessertspoons	0	oewn-dessertspoon-n	Number=Plur	dema	0			rule
 dessertspoonsful	0	oewn-dessertspoonful-n	Number=Plur	dema	0			rule_variant
 dessiatine	0	oewn-dessiatine-n	Number=Sing	dema	0			oewn_form
@@ -8391,8 +8389,7 @@ detrital	0		Degree=Pos	dema	0	detrital	a	moby_reverse
 detrition	0	oewn-detrition-n	Number=Sing	dema	0			oewn_form
 detritions	0	oewn-detrition-n	Number=Plur	dema	0			rule
 detritivorous	0		Degree=Pos	dema	0	detritivorous	a	moby_reverse
-detritus	0	oewn-detritus-n	Number=Plur	dema	0			agid
-detritus	1	oewn-detritus-n	Number=Sing	dema	0			oewn_form
+detritus	0	oewn-detritus-n	Number=Sing	dema	0			oewn_form
 detrude	0		VerbForm=Inf	dema	0	detrude	v	moby_reverse
 detruded	0		Tense=Past+VerbForm=Part	dema	0	detrude	v	rule
 detrudes	0		Person=3+Tense=Pres	dema	0	detrude	v	rule
@@ -8458,7 +8455,7 @@ deutoplasm	0		Number=Sing	dema	0	deutoplasm	n	moby_reverse
 deutoplasmic	0		Degree=Pos	dema	0	deutoplasmic	a	moby_reverse
 deutoplasms	0		Number=Plur	dema	0	deutoplasm	n	rule
 deutzia	0	oewn-deutzia-n	Number=Sing	dema	0			oewn_form
-deutzias	0	oewn-deutzia-n	Number=Plur	dema	0			rule
+deutzias	0	oewn-deutzia-n	Number=Plur	dema	0			llm
 deva	0		Number=Sing	dema	0	deva	n	moby_reverse
 devadasi	0		Number=Sing	dema	0	devadasi	n	moby_reverse
 devadasis	0		Number=Plur	dema	0	devadasi	n	rule
@@ -8908,8 +8905,7 @@ diabase	0		Number=Sing	dema	0	diabase	n	moby_reverse
 diabases	0		Number=Plur	dema	0	diabase	n	rule
 diabasic	0		Degree=Pos	dema	0	diabasic	a	moby_reverse
 diabatic	0	oewn-diabatic-a	Degree=Pos	dema	0			oewn_form
-diabetes	0	oewn-diabetes-n	Number=Plur	dema	0			agid
-diabetes	1	oewn-diabetes-n	Number=Sing	dema	0			oewn_form
+diabetes	0	oewn-diabetes-n	Number=Sing	dema	0			oewn_form
 diabetes insipidus	0	oewn-diabetes_insipidus-n	Number=Sing	dema	0			oewn_form
 diabetes mellitus	0	oewn-diabetes_mellitus-n	Number=Sing	dema	0			oewn_form
 diabetic	0	oewn-diabetic-a	Degree=Pos	dema	0			oewn_form
@@ -9061,8 +9057,8 @@ diagonally	0	oewn-diagonally-r	Degree=Pos	dema	0			oewn_form
 diagonals	0	oewn-diagonal-n	Number=Plur	dema	0			rule
 diagram	0	oewn-diagram-n	Number=Sing	dema	0			oewn_form
 diagram	1	oewn-diagram-v	VerbForm=Inf	dema	0			oewn_form
-diagramed	0	oewn-diagram-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
-diagraming	0	oewn-diagram-v	VerbForm=Ger	dema	0			rule_variant
+diagramed	0		VerbForm=Inf	dema	0	diagramed	v	moby_reverse
+diagraming	0		VerbForm=Inf	dema	0	diagraming	v	moby_reverse
 diagrammatic	0	oewn-diagrammatic-a	Degree=Pos	dema	0			oewn_form
 diagrammatical	0	oewn-diagrammatical-a	Degree=Pos	dema	0			oewn_form
 diagrammatically	0	oewn-diagrammatically-r	Degree=Pos	dema	0			oewn_form
@@ -9112,11 +9108,11 @@ dialectologist	0		Number=Sing	dema	0	dialectologist	n	moby_reverse
 dialectologists	0		Number=Plur	dema	0	dialectologist	n	rule
 dialectology	0	oewn-dialectology-n	Number=Sing	dema	0			oewn_form
 dialects	0	oewn-dialect-n	Number=Plur	dema	0			rule
-dialed	0	oewn-dial-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+dialed	0	oewn-dial-v	Tense=Past+VerbForm=Part	dema	0			llm
 dialer	0		Number=Sing	dema	0	dialer	n	moby_reverse
 dialers	0		Number=Plur	dema	0	dialer	n	rule
 dialing	0		Number=Sing	dema	0	dialing	n	moby_reverse
-dialing	1	oewn-dial-v	VerbForm=Ger	dema	0			rule_variant
+dialing	1	oewn-dial-v	VerbForm=Ger	dema	0			llm
 dialings	0		Number=Plur	dema	0	dialing	n	rule
 diallage	0		Number=Sing	dema	0	diallage	n	moby_reverse
 diallages	0		Number=Plur	dema	0	diallage	n	rule
@@ -9152,7 +9148,7 @@ dialoguers	0		Number=Plur	dema	0	dialoguer	n	rule
 dialogues	0	oewn-dialogue-n	Number=Plur	dema	0			rule
 dialoguing	0		VerbForm=Ger	dema	0	dialogue	v	moby_reverse
 dials	0	oewn-dial-n	Number=Plur	dema	0			rule
-dials	1	oewn-dial-v	Person=3+Tense=Pres	dema	0			rule
+dials	1	oewn-dial-v	Person=3+Tense=Pres	dema	0			llm
 dialysabilities	0		Number=Plur	dema	0	dialysability	n	rule
 dialysability	0		Number=Sing	dema	0	dialysability	n	moby_reverse
 dialysable	0		Degree=Pos	dema	0	dialysable	a	moby_reverse
@@ -9242,6 +9238,7 @@ dianoia	0		Number=Sing	dema	0	dianoia	n	moby_reverse
 dianoias	0		Number=Plur	dema	0	dianoia	n	rule
 dianthus	0		Number=Sing	dema	0	dianthus	n	moby_reverse
 dianthuses	0		Number=Plur	dema	0	dianthus	n	rule
+dianthuses	1		Number=Sing	dema	0	dianthuses	n	moby_reverse
 diapason	0	oewn-diapason-n	Number=Sing	dema	0			oewn_form
 diapason stop	0	oewn-diapason_stop-n	Number=Sing	dema	0			oewn_form
 diapason stops	0	oewn-diapason_stop-n	Number=Plur	dema	0			rule
@@ -9273,7 +9270,7 @@ diaphanometric	0		Degree=Pos	dema	0	diaphanometric	a	moby_reverse
 diaphanometries	0		Number=Plur	dema	0	diaphanometry	n	rule
 diaphanometry	0		Number=Sing	dema	0	diaphanometry	n	moby_reverse
 diaphanoscope	0	oewn-diaphanoscope-n	Number=Sing	dema	0			oewn_form
-diaphanoscopes	0	oewn-diaphanoscope-n	Number=Plur	dema	0			rule
+diaphanoscopes	0	oewn-diaphanoscope-n	Number=Plur	dema	0			llm
 diaphanous	0	oewn-diaphanous-a	Degree=Pos	dema	0			oewn_form
 diaphanously	0		Degree=Pos	dema	0	diaphanously	r	moby_reverse
 diaphanousness	0		Number=Sing	dema	0	diaphanousness	n	moby_reverse
@@ -9445,18 +9442,21 @@ dibasicity	0		Number=Sing	dema	0	dibasicity	n	moby_reverse
 dibatag	0		Number=Sing	dema	0	dibatag	n	moby_reverse
 dibatags	0		Number=Plur	dema	0	dibatag	n	rule
 dibbed	0		Tense=Past+VerbForm=Part	dema	0	dib	v	rule
+dibbed	1		VerbForm=Inf	dema	0	dibbed	v	moby_reverse
 dibber	0	oewn-dibber-n	Number=Sing	dema	0			oewn_form
 dibbers	0	oewn-dibber-n	Number=Plur	dema	0			rule
 dibbing	0		VerbForm=Ger	dema	0	dib	v	rule
+dibbing	1		VerbForm=Inf	dema	0	dibbing	v	moby_reverse
 dibble	0	oewn-dibble-n	Number=Sing	dema	0			oewn_form
 dibble	1	oewn-dibble-v	VerbForm=Inf	dema	0			oewn_form
 dibbled	0	oewn-dibble-v	Tense=Past+VerbForm=Part	dema	0			rule
-dibbles	0	oewn-dibble-n	Number=Plur	dema	0			rule
+dibbles	0	oewn-dibble-n	Number=Plur	dema	0			llm
 dibbles	1	oewn-dibble-v	Person=3+Tense=Pres	dema	0			rule
 dibbling	0	oewn-dibble-v	VerbForm=Ger	dema	0			rule
 dibbuk	0	oewn-dibbuk-n	Number=Sing	dema	0			oewn_form
+dibbukim	0	oewn-dibbuk-n	Number=Plur	dema	0			rule_variant
 dibbukkim	0	oewn-dibbuk-n	Number=Plur	dema	0			oewn_form
-dibbuks	0	oewn-dibbuk-n	Number=Plur	dema	0			rule_variant
+dibbuks	0	oewn-dibbuk-n	Number=Plur	dema	0			llm
 dibrach	0	oewn-dibrach-n	Number=Sing	dema	0			oewn_form
 dibraches	0	oewn-dibrach-n	Number=Plur	dema	0			rule
 dibranch	0	oewn-dibranch-n	Number=Sing	dema	0			oewn_form
@@ -9586,7 +9586,6 @@ dick	0	oewn-dick-n	Number=Sing	dema	0			oewn_form
 dickcissel	0		Number=Sing	dema	0	dickcissel	n	moby_reverse
 dickcissels	0		Number=Plur	dema	0	dickcissel	n	rule
 dickens	0	oewn-dickens-n	Number=Sing	dema	0			oewn_form
-dickenses	0	oewn-dickens-n	Number=Plur	dema	0			rule
 dicker	0	oewn-dicker-v	VerbForm=Inf	dema	0			oewn_form
 dicker	1		Number=Sing	dema	0	dicker	n	moby_reverse
 dickered	0	oewn-dicker-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -9606,10 +9605,10 @@ dickheads	0	oewn-dickhead-n	Number=Plur	dema	0			rule
 dickie	0	oewn-dickie-n	Number=Sing	dema	0			oewn_form
 dickie-seat	0	oewn-dickie-seat-n	Number=Sing	dema	0			oewn_form
 dickie-seats	0	oewn-dickie-seat-n	Number=Plur	dema	0			rule
-dickier	0	oewn-dicky-a	Degree=Cmp	dema	0			rule
+dickier	0	oewn-dicky-a	Degree=Cmp	dema	0			llm
 dickies	0	oewn-dickie-n	Number=Plur	dema	0			rule
 dickies	1	oewn-dicky-n	Number=Plur	dema	0			rule
-dickiest	0	oewn-dicky-a	Degree=Sup	dema	0			rule
+dickiest	0	oewn-dicky-a	Degree=Sup	dema	0			llm
 dickite	0		Number=Sing	dema	0	dickite	n	moby_reverse
 dickites	0		Number=Plur	dema	0	dickite	n	rule
 dicks	0	oewn-dick-n	Number=Plur	dema	0			rule
@@ -9855,7 +9854,7 @@ diestrual	0	oewn-diestrual-a	Degree=Pos	dema	0			oewn_form
 diestrum	0	oewn-diestrum-n	Number=Sing	dema	0			oewn_form
 diestrums	0	oewn-diestrum-n	Number=Plur	dema	0			rule
 diestrus	0	oewn-diestrus-n	Number=Sing	dema	0			oewn_form
-diestruses	0	oewn-diestrus-n	Number=Plur	dema	0			rule
+diestruses	0	oewn-diestrus-n	Number=Plur	dema	0			llm
 diet	0	oewn-diet-n	Number=Sing	dema	0			oewn_form
 diet	1	oewn-diet-v	VerbForm=Inf	dema	0			oewn_form
 dietaries	0	oewn-dietary-n	Number=Plur	dema	0			rule
@@ -10148,7 +10147,7 @@ digitalisation	0	oewn-digitalisation-n	Number=Sing	dema	0			oewn_form
 digitalisations	0	oewn-digitalisation-n	Number=Plur	dema	0			rule
 digitalise	0	oewn-digitalise-v	VerbForm=Inf	dema	0			oewn_form
 digitalised	0	oewn-digitalise-v	Tense=Past+VerbForm=Part	dema	0			rule
-digitalises	0	oewn-digitalis-n	Number=Plur	dema	0			rule
+digitalises	0	oewn-digitalis-n	Number=Plur	dema	0			llm
 digitalises	1	oewn-digitalise-v	Person=3+Tense=Pres	dema	0			rule
 digitalising	0	oewn-digitalise-v	VerbForm=Ger	dema	0			rule
 digitalism	0		Number=Sing	dema	0	digitalism	n	moby_reverse
@@ -10271,12 +10270,6 @@ dihydrotachysterols	0		Number=Plur	dema	0	dihydrotachysterol	n	rule
 dihydroxy	0		Degree=Pos	dema	0	dihydroxy	a	moby_reverse
 dihydroxyphenylalanine	0	oewn-dihydroxyphenylalanine-n	Number=Sing	dema	0			oewn_form
 dihydroxyphenylalanines	0	oewn-dihydroxyphenylalanine-n	Number=Plur	dema	0			rule
-diing away	0	oewn-die_away-v	VerbForm=Ger	dema	0			rule
-diing back	0	oewn-die_back-v	VerbForm=Ger	dema	0			rule
-diing down	0	oewn-die_down-v	VerbForm=Ger	dema	0			rule
-diing hard	0	oewn-die_hard-v	VerbForm=Ger	dema	0			rule
-diing off	0	oewn-die_off-v	VerbForm=Ger	dema	0			rule
-diing out	0	oewn-die_out-v	VerbForm=Ger	dema	0			rule
 dik-dik	0	oewn-dik-dik-n	Number=Sing	dema	0			oewn_form
 dik-diks	0	oewn-dik-dik-n	Number=Plur	dema	0			rule
 dika	0	oewn-dika-n	Number=Sing	dema	0			oewn_form
@@ -10356,8 +10349,8 @@ dilatory	0	oewn-dilatory-a	Degree=Pos	dema	0			oewn_form
 dilatory plea	0	oewn-dilatory_plea-n	Number=Sing	dema	0			oewn_form
 dilatory pleas	0	oewn-dilatory_plea-n	Number=Plur	dema	0			rule
 dildo	0	oewn-dildo-n	Number=Sing	dema	0			oewn_form
-dildoes	0	oewn-dildo-n	Number=Plur	dema	0			agid
-dildos	0	oewn-dildo-n	Number=Plur	dema	0			rule_variant
+dildoes	0	oewn-dildo-n	Number=Plur	dema	0			rule_variant
+dildos	0	oewn-dildo-n	Number=Plur	dema	0			llm
 dilemma	0	oewn-dilemma-n	Number=Sing	dema	0			oewn_form
 dilemmas	0	oewn-dilemma-n	Number=Plur	dema	0			rule
 dilemmatic	0		Degree=Pos	dema	0	dilemmatic	a	moby_reverse
@@ -10367,7 +10360,7 @@ dilemmic	0		Degree=Pos	dema	0	dilemmic	a	moby_reverse
 dilettante	0	oewn-dilettante-n	Number=Sing	dema	0			oewn_form
 dilettante	1	oewn-dilettante-a	Degree=Pos	dema	0			oewn_form
 dilettanteish	0	oewn-dilettanteish-a	Degree=Pos	dema	0			oewn_form
-dilettantes	0	oewn-dilettante-n	Number=Plur	dema	0			rule_variant
+dilettantes	0	oewn-dilettante-n	Number=Plur	dema	0			llm
 dilettanti	0	oewn-dilettante-n	Number=Plur	dema	0			oewn_form
 dilettantish	0	oewn-dilettantish-a	Degree=Pos	dema	0			oewn_form
 dilettantism	0		Number=Sing	dema	0	dilettantism	n	moby_reverse
@@ -10511,10 +10504,11 @@ diminishes	0	oewn-diminish-v	Person=3+Tense=Pres	dema	0			rule
 diminishing	0	oewn-diminish-v	VerbForm=Ger	dema	0			rule
 diminishing	1	oewn-diminishing-a	Degree=Pos	dema	0			oewn_form
 diminishingly	0		Degree=Pos	dema	0	diminishingly	r	moby_reverse
+diminuendi	0	oewn-diminuendo-n	Number=Plur	dema	0			rule_variant
 diminuendo	0	oewn-diminuendo-n	Number=Sing	dema	0			oewn_form
 diminuendo	1	oewn-diminuendo-a	Degree=Pos	dema	0			oewn_form
-diminuendoes	0	oewn-diminuendo-n	Number=Plur	dema	0			agid
-diminuendos	0	oewn-diminuendo-n	Number=Plur	dema	0			rule_variant
+diminuendoes	0		Number=Sing	dema	0	diminuendoes	n	moby_reverse
+diminuendos	0	oewn-diminuendo-n	Number=Plur	dema	0			llm
 diminution	0	oewn-diminution-n	Number=Sing	dema	0			oewn_form
 diminutions	0	oewn-diminution-n	Number=Plur	dema	0			rule
 diminutive	0	oewn-diminutive-a	Degree=Pos	dema	0			oewn_form
@@ -10630,6 +10624,7 @@ dings	0	oewn-ding-v	Person=3+Tense=Pres	dema	0			rule
 dings	1	oewn-ding-n	Number=Plur	dema	0			rule
 dingus	0		Number=Sing	dema	0	dingus	n	moby_reverse
 dinguses	0		Number=Plur	dema	0	dingus	n	rule
+dinguses	1		Number=Sing	dema	0	dinguses	n	moby_reverse
 dingy	0	oewn-dingy-a	Degree=Pos	dema	0			oewn_form
 dining	0	oewn-dine-v	VerbForm=Ger	dema	0			rule
 dining	1	oewn-dining-n	Number=Sing	dema	0			oewn_form
@@ -10904,7 +10899,7 @@ diplomacies	0	oewn-diplomacy-n	Number=Plur	dema	0			rule
 diplomacy	0	oewn-diplomacy-n	Number=Sing	dema	0			oewn_form
 diplomaed	0		VerbForm=Inf	dema	0	diplomaed	v	moby_reverse
 diplomaing	0		VerbForm=Inf	dema	0	diplomaing	v	moby_reverse
-diplomas	0	oewn-diploma-n	Number=Plur	dema	0			rule_variant
+diplomas	0	oewn-diploma-n	Number=Plur	dema	0			rule
 diplomat	0	oewn-diplomat-n	Number=Sing	dema	0			oewn_form
 diplomate	0	oewn-diplomate-n	Number=Sing	dema	0			oewn_form
 diplomates	0	oewn-diplomate-n	Number=Plur	dema	0			rule
@@ -10998,7 +10993,7 @@ dipstick	0	oewn-dipstick-n	Number=Sing	dema	0			oewn_form
 dipsticks	0	oewn-dipstick-n	Number=Plur	dema	0			rule
 dipt	0		VerbForm=Inf	dema	0	dipt	v	moby_reverse
 dipted	0		Tense=Past+VerbForm=Part	dema	0	dipt	v	rule
-diptera	0	oewn-dipteron-n	Number=Plur	dema	0			agid
+diptera	0	oewn-dipteron-n	Number=Plur	dema	0			llm
 dipteral	0		Degree=Pos	dema	0	dipteral	a	moby_reverse
 dipteran	0	oewn-dipteran-n	Number=Sing	dema	0			oewn_form
 dipteran	1		Degree=Pos	dema	0	dipteran	a	moby_reverse
@@ -11009,6 +11004,7 @@ dipterocarps	0	oewn-dipterocarp-n	Number=Plur	dema	0			rule
 dipteroi	0		Number=Sing	dema	0	dipteroi	n	moby_reverse
 dipterois	0		Number=Plur	dema	0	dipteroi	n	rule
 dipteron	0	oewn-dipteron-n	Number=Sing	dema	0			oewn_form
+dipterons	0	oewn-dipteron-n	Number=Plur	dema	0			rule_variant
 dipteros	0		Number=Sing	dema	0	dipteros	n	moby_reverse
 dipteroses	0		Number=Plur	dema	0	dipteros	n	rule
 dipterous	0	oewn-dipterous-a	Degree=Pos	dema	0			oewn_form
@@ -11019,7 +11015,7 @@ diptote	0		Number=Sing	dema	0	diptote	n	moby_reverse
 diptotes	0		Number=Plur	dema	0	diptote	n	rule
 dipts	0		Person=3+Tense=Pres	dema	0	dipt	v	rule
 diptych	0	oewn-diptych-n	Number=Sing	dema	0			oewn_form
-diptychs	0	oewn-diptych-n	Number=Plur	dema	0			agid
+diptychs	0	oewn-diptych-n	Number=Plur	dema	0			llm
 dipylon	0		Number=Sing	dema	0	dipylon	n	moby_reverse
 dipylons	0		Number=Plur	dema	0	dipylon	n	rule
 dipyramid	0		Number=Sing	dema	0	dipyramid	n	moby_reverse
@@ -11171,8 +11167,8 @@ direfulnesses	0		Number=Plur	dema	0	direfulness	n	rule
 direly	0		Degree=Pos	dema	0	direly	r	moby_reverse
 direness	0		Number=Sing	dema	0	direness	n	moby_reverse
 direnesses	0		Number=Plur	dema	0	direness	n	rule
-direr	0	oewn-dire-a	Degree=Cmp	dema	0			moby_reverse
-direst	0	oewn-dire-a	Degree=Sup	dema	0			moby_reverse
+direr	0	oewn-dire-a	Degree=Cmp	dema	0			llm
+direst	0	oewn-dire-a	Degree=Sup	dema	0			llm
 direx	0		Number=Sing	dema	0	direx	n	moby_reverse
 direxes	0		Number=Plur	dema	0	direx	n	rule
 direxit	0		Number=Sing	dema	0	direxit	n	moby_reverse
@@ -11241,7 +11237,7 @@ dirty linens	0	oewn-dirty_linen-n	Number=Plur	dema	0			rule
 dirty money	0	oewn-dirty_money-n	Number=Sing	dema	0			oewn_form
 dirty moneys	0	oewn-dirty_money-n	Number=Plur	dema	0			rule
 dirty old man	0	oewn-dirty_old_man-n	Number=Sing	dema	0			oewn_form
-dirty old mans	0	oewn-dirty_old_man-n	Number=Plur	dema	0			rule
+dirty old men	0	oewn-dirty_old_man-n	Number=Plur	dema	0			rule
 dirty pool	0	oewn-dirty_pool-n	Number=Sing	dema	0			oewn_form
 dirty pools	0	oewn-dirty_pool-n	Number=Plur	dema	0			rule
 dirty stories	0	oewn-dirty_story-n	Number=Plur	dema	0			rule
@@ -11987,8 +11983,8 @@ discrediting	0	oewn-discredit-v	VerbForm=Ger	dema	0			rule
 discredits	0	oewn-discredit-v	Person=3+Tense=Pres	dema	0			rule
 discredits	1	oewn-discredit-n	Number=Plur	dema	0			rule
 discreet	0	oewn-discreet-a	Degree=Pos	dema	0			oewn_form
-discreeter	0	oewn-discreet-a	Degree=Cmp	dema	0			rule
-discreetest	0	oewn-discreet-a	Degree=Sup	dema	0			rule
+discreeter	0	oewn-discreet-a	Degree=Cmp	dema	0			llm
+discreetest	0	oewn-discreet-a	Degree=Sup	dema	0			llm
 discreetly	0	oewn-discreetly-r	Degree=Pos	dema	0			oewn_form
 discreetness	0	oewn-discreetness-n	Number=Sing	dema	0			oewn_form
 discreetnesses	0	oewn-discreetness-n	Number=Plur	dema	0			rule
@@ -12042,7 +12038,7 @@ discursively	0	oewn-discursively-r	Degree=Pos	dema	0			oewn_form
 discursiveness	0	oewn-discursiveness-n	Number=Sing	dema	0			oewn_form
 discursivenesses	0	oewn-discursiveness-n	Number=Plur	dema	0			rule
 discus	0	oewn-discus-n	Number=Sing	dema	0			oewn_form
-discuses	0	oewn-discus-n	Number=Plur	dema	0			rule_variant
+discuses	0	oewn-discus-n	Number=Plur	dema	0			llm
 discuss	0	oewn-discuss-v	VerbForm=Inf	dema	0			oewn_form
 discussable	0		Degree=Pos	dema	0	discussable	a	moby_reverse
 discussant	0	oewn-discussant-n	Number=Sing	dema	0			oewn_form
@@ -12066,7 +12062,7 @@ disdained	0	oewn-disdain-v	Tense=Past+VerbForm=Part	dema	0			rule
 disdainful	0	oewn-disdainful-a	Degree=Pos	dema	0			oewn_form
 disdainfully	0	oewn-disdainfully-r	Degree=Pos	dema	0			oewn_form
 disdainfulness	0	oewn-disdainfulness-n	Number=Sing	dema	0			oewn_form
-disdainfulnesses	0	oewn-disdainfulness-n	Number=Plur	dema	0			rule
+disdainfulnesses	0	oewn-disdainfulness-n	Number=Plur	dema	0			llm
 disdaining	0	oewn-disdain-v	VerbForm=Ger	dema	0			rule
 disdains	0	oewn-disdain-n	Number=Plur	dema	0			rule
 disdains	1	oewn-disdain-v	Person=3+Tense=Pres	dema	0			rule
@@ -12229,7 +12225,7 @@ disentwined	0		Tense=Past+VerbForm=Part	dema	0	disentwine	v	rule
 disentwines	0		Person=3+Tense=Pres	dema	0	disentwine	v	rule
 disentwining	0		VerbForm=Ger	dema	0	disentwine	v	rule
 disepalous	0		Degree=Pos	dema	0	disepalous	a	moby_reverse
-disequilibria	0	oewn-disequilibrium-n	Number=Plur	dema	0			rule_variant
+disequilibria	0	oewn-disequilibrium-n	Number=Plur	dema	0			llm
 disequilibrium	0	oewn-disequilibrium-n	Number=Sing	dema	0			oewn_form
 disequilibriums	0	oewn-disequilibrium-n	Number=Plur	dema	0			rule_variant
 disestablish	0	oewn-disestablish-v	VerbForm=Inf	dema	0			oewn_form
@@ -12460,6 +12456,7 @@ dishes	1	oewn-dish-v	Person=3+Tense=Pres	dema	0			rule
 dishes out	0	oewn-dish_out-v	Person=3+Tense=Pres	dema	0			rule
 dishes the dirt	0	oewn-dish_the_dirt-v	Person=3+Tense=Pres	dema	0			rule
 dishes up	0	oewn-dish_up-v	Person=3+Tense=Pres	dema	0			rule
+dishesful	0	oewn-dishful-n	Number=Plur	dema	0			rule_variant
 dishevel	0	oewn-dishevel-v	VerbForm=Inf	dema	0			oewn_form
 disheveled	0	oewn-dishevel-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 disheveled	1	oewn-disheveled-a	Degree=Pos	dema	0			oewn_form
@@ -12471,7 +12468,7 @@ dishevelment	0		Number=Sing	dema	0	dishevelment	n	moby_reverse
 dishevelments	0		Number=Plur	dema	0	dishevelment	n	rule
 dishevels	0	oewn-dishevel-v	Person=3+Tense=Pres	dema	0			rule
 dishful	0	oewn-dishful-n	Number=Sing	dema	0			oewn_form
-dishfuls	0	oewn-dishful-n	Number=Plur	dema	0			rule
+dishfuls	0	oewn-dishful-n	Number=Plur	dema	0			llm
 dishier	0	oewn-dishy-a	Degree=Cmp	dema	0			oewn_form
 dishiest	0	oewn-dishy-a	Degree=Sup	dema	0			oewn_form
 dishing	0	oewn-dish-v	VerbForm=Ger	dema	0			rule
@@ -12642,7 +12639,7 @@ disinterested	0	oewn-disinterested-a	Degree=Pos	dema	0			oewn_form
 disinterested	1		Tense=Past+VerbForm=Part	dema	0	disinterest	v	moby_reverse
 disinterestedly	0	oewn-disinterestedly-r	Degree=Pos	dema	0			oewn_form
 disinterestedness	0	oewn-disinterestedness-n	Number=Sing	dema	0			oewn_form
-disinterestednesses	0	oewn-disinterestedness-n	Number=Plur	dema	0			rule
+disinterestednesses	0	oewn-disinterestedness-n	Number=Plur	dema	0			llm
 disinterests	0	oewn-disinterest-n	Number=Plur	dema	0			rule
 disinterment	0	oewn-disinterment-n	Number=Sing	dema	0			oewn_form
 disinterments	0	oewn-disinterment-n	Number=Plur	dema	0			rule
@@ -12910,11 +12907,11 @@ disorientates	0	oewn-disorientate-v	Person=3+Tense=Pres	dema	0			rule
 disorientating	0	oewn-disorientate-v	VerbForm=Ger	dema	0			rule
 disorientation	0	oewn-disorientation-n	Number=Sing	dema	0			oewn_form
 disorientations	0	oewn-disorientation-n	Number=Plur	dema	0			rule
-disoriented	0	oewn-disorient-v	Tense=Past+VerbForm=Part	dema	0			rule
+disoriented	0	oewn-disorient-v	Tense=Past+VerbForm=Part	dema	0			llm
 disoriented	1	oewn-disoriented-a	Degree=Pos	dema	0			oewn_form
-disorienting	0	oewn-disorient-v	VerbForm=Ger	dema	0			rule
+disorienting	0	oewn-disorient-v	VerbForm=Ger	dema	0			llm
 disorienting	1	oewn-disorienting-a	Degree=Pos	dema	0			oewn_form
-disorients	0	oewn-disorient-v	Person=3+Tense=Pres	dema	0			rule
+disorients	0	oewn-disorient-v	Person=3+Tense=Pres	dema	0			llm
 disown	0	oewn-disown-v	VerbForm=Inf	dema	0			oewn_form
 disowned	0	oewn-disown-v	Tense=Past+VerbForm=Part	dema	0			rule
 disowning	0	oewn-disown-v	VerbForm=Ger	dema	0			rule
@@ -13229,12 +13226,12 @@ disproportionations	0		Number=Plur	dema	0	disproportionation	n	rule
 disproportions	0	oewn-disproportion-n	Number=Plur	dema	0			rule
 disprovable	0		Degree=Pos	dema	0	disprovable	a	moby_reverse
 disprove	0	oewn-disprove-v	VerbForm=Inf	dema	0			oewn_form
-disproved	0	oewn-disprove-v	Tense=Past+VerbForm=Part	dema	0			rule
+disproved	0	oewn-disprove-v	Tense=Past+VerbForm=Part	dema	0			llm
 disproven	0	oewn-disprove-v	VerbForm=Part	dema	0			rule_variant
 disprover	0	oewn-disprover-n	Number=Sing	dema	0			oewn_form
 disprovers	0	oewn-disprover-n	Number=Plur	dema	0			rule
-disproves	0	oewn-disprove-v	Person=3+Tense=Pres	dema	0			rule
-disproving	0	oewn-disprove-v	VerbForm=Ger	dema	0			rule
+disproves	0	oewn-disprove-v	Person=3+Tense=Pres	dema	0			llm
+disproving	0	oewn-disprove-v	VerbForm=Ger	dema	0			llm
 disputabilities	0		Number=Plur	dema	0	disputability	n	rule
 disputability	0		Number=Sing	dema	0	disputability	n	moby_reverse
 disputable	0	oewn-disputable-a	Degree=Pos	dema	0			oewn_form
@@ -13721,10 +13718,11 @@ distent	0		Degree=Pos	dema	0	distent	a	moby_reverse
 distention	0	oewn-distention-n	Number=Sing	dema	0			oewn_form
 distentions	0	oewn-distention-n	Number=Plur	dema	0			rule
 distich	0	oewn-distich-n	Number=Sing	dema	0			oewn_form
+disticha	0	oewn-distich-n	Number=Plur	dema	0			rule_variant
 distichal	0		Degree=Pos	dema	0	distichal	a	moby_reverse
 distichous	0		Degree=Pos	dema	0	distichous	a	moby_reverse
 distichously	0		Degree=Pos	dema	0	distichously	r	moby_reverse
-distichs	0	oewn-distich-n	Number=Plur	dema	0			agid
+distichs	0	oewn-distich-n	Number=Plur	dema	0			llm
 disties	0		Number=Plur	dema	0	disty	n	rule
 distil	0	oewn-distil-v	VerbForm=Inf	dema	0			oewn_form
 distileries	0		Number=Plur	dema	0	distilery	n	rule
@@ -14094,8 +14092,7 @@ ditto	2	oewn-ditto-v	VerbForm=Inf	dema	0			oewn_form
 ditto mark	0	oewn-ditto_mark-n	Number=Sing	dema	0			oewn_form
 ditto marks	0	oewn-ditto_mark-n	Number=Plur	dema	0			rule
 dittoed	0	oewn-ditto-v	Tense=Past+VerbForm=Part	dema	0			rule
-dittoes	0	oewn-ditto-n	Number=Plur	dema	0			agid
-dittoes	1	oewn-ditto-v	Person=3+Tense=Pres	dema	0			rule_variant
+dittoes	0	oewn-ditto-v	Person=3+Tense=Pres	dema	0			rule
 dittograph	0		Number=Sing	dema	0	dittograph	n	moby_reverse
 dittographic	0		Degree=Pos	dema	0	dittographic	a	moby_reverse
 dittographies	0		Number=Plur	dema	0	dittography	n	rule
@@ -14104,7 +14101,7 @@ dittography	0		Number=Sing	dema	0	dittography	n	moby_reverse
 dittoing	0		Number=Sing	dema	0	dittoing	n	moby_reverse
 dittoing	1	oewn-ditto-v	VerbForm=Ger	dema	0			rule
 dittoings	0		Number=Plur	dema	0	dittoing	n	rule
-dittos	0	oewn-ditto-n	Number=Plur	dema	0			rule_variant
+dittos	0	oewn-ditto-n	Number=Plur	dema	0			llm
 ditty	0	oewn-ditty-n	Number=Sing	dema	0			oewn_form
 ditty bag	0	oewn-ditty_bag-n	Number=Sing	dema	0			oewn_form
 ditty bags	0	oewn-ditty_bag-n	Number=Plur	dema	0			rule
@@ -14228,7 +14225,7 @@ divertible	0		Degree=Pos	dema	0	divertible	a	moby_reverse
 diverticula	0	oewn-diverticulum-n	Number=Plur	dema	0			oewn_form
 diverticular	0		Degree=Pos	dema	0	diverticular	a	moby_reverse
 diverticulitis	0	oewn-diverticulitis-n	Number=Sing	dema	0			oewn_form
-diverticulitises	0	oewn-diverticulitis-n	Number=Plur	dema	0			rule
+diverticulitises	0	oewn-diverticulitis-n	Number=Plur	dema	0			llm
 diverticulosis	0	oewn-diverticulosis-n	Number=Sing	dema	0			oewn_form
 diverticulum	0	oewn-diverticulum-n	Number=Sing	dema	0			oewn_form
 divertila	0		Number=Sing	dema	0	divertila	n	moby_reverse
@@ -14407,7 +14404,7 @@ divorce lawyers	0	oewn-divorce_lawyer-n	Number=Plur	dema	0			rule
 divorceable	0		Degree=Pos	dema	0	divorceable	a	moby_reverse
 divorced	0	oewn-divorce-v	Tense=Past+VerbForm=Part	dema	1			carried
 divorced man	0	oewn-divorced_man-n	Number=Sing	dema	0			oewn_form
-divorced mans	0	oewn-divorced_man-n	Number=Plur	dema	0			rule
+divorced men	0	oewn-divorced_man-n	Number=Plur	dema	0			rule
 divorcee	0	oewn-divorcee-n	Number=Sing	dema	0			oewn_form
 divorcees	0	oewn-divorcee-n	Number=Plur	dema	0			rule
 divorcement	0	oewn-divorcement-n	Number=Sing	dema	0			oewn_form
@@ -14486,7 +14483,7 @@ dizzies	0	oewn-dizzy-v	Person=3+Tense=Pres	dema	0			rule
 dizziest	0	oewn-dizzy-a	Degree=Sup	dema	0			oewn_form
 dizzily	0	oewn-dizzily-r	Degree=Pos	dema	0			oewn_form
 dizziness	0	oewn-dizziness-n	Number=Sing	dema	0			oewn_form
-dizzinesses	0	oewn-dizziness-n	Number=Plur	dema	0			rule
+dizzinesses	0	oewn-dizziness-n	Number=Plur	dema	0			llm
 dizzy	0	oewn-dizzy-a	Degree=Pos	dema	0			oewn_form
 dizzy	1	oewn-dizzy-v	VerbForm=Inf	dema	0			oewn_form
 dizzying	0		Degree=Pos	dema	0	dizzying	a	moby_reverse
@@ -14656,7 +14653,7 @@ doctorate	0	oewn-doctorate-n	Number=Sing	dema	0			oewn_form
 doctorates	0	oewn-doctorate-n	Number=Plur	dema	0			rule
 doctored	0	oewn-doctor-v	Tense=Past+VerbForm=Part	dema	0			rule
 doctored up	0	oewn-doctor_up-v	Tense=Past+VerbForm=Part	dema	0			rule
-doctorfish	0	oewn-doctorfish-n	Number=Plur	dema	0			agid
+doctorfish	0	oewn-doctorfish-n	Number=Plur	dema	0			llm
 doctorfish	1	oewn-doctorfish-n	Number=Sing	dema	0			oewn_form
 doctorfishes	0	oewn-doctorfish-n	Number=Plur	dema	0			rule_variant
 doctorial	0	oewn-doctorial-a	Degree=Pos	dema	0			oewn_form
@@ -14759,14 +14756,13 @@ dodoes	0	oewn-dodo-n	Number=Plur	dema	0			oewn_form
 dodoism	0		Number=Sing	dema	0	dodoism	n	moby_reverse
 dodoisms	0		Number=Plur	dema	0	dodoism	n	rule
 dodos	0	oewn-dodo-n	Number=Plur	dema	0			rule_variant
-doe	0	oewn-doe-n	Number=Plur	dema	0			agid
-doe	1	oewn-doe-n	Number=Sing	dema	0			oewn_form
+doe	0	oewn-doe-n	Number=Sing	dema	0			oewn_form
 doek	0		Number=Sing	dema	0	doek	n	moby_reverse
 doeks	0		Number=Plur	dema	0	doek	n	rule
 doer	0	oewn-doer-n	Number=Sing	dema	0			oewn_form
 doers	0	oewn-doer-n	Number=Plur	dema	0			rule
 does	0	oewn-do-v	Person=3+Tense=Pres	dema	0			hand
-does	1	oewn-doe-n	Number=Plur	dema	0			rule_variant
+does	1	oewn-doe-n	Number=Plur	dema	0			llm
 does	2	dema-do-x	Person=3+Tense=Pres	dema	0			irregular_list
 does a job on	0	oewn-do_a_job_on-v	Person=3+Tense=Pres	dema	0			rule
 does away with	0	oewn-do_away_with-v	Person=3+Tense=Pres	dema	0			rule
@@ -14962,7 +14958,6 @@ dogless	0		Degree=Pos	dema	0	dogless	a	moby_reverse
 doglike	0	oewn-doglike-a	Degree=Pos	dema	0			oewn_form
 dogma	0	oewn-dogma-n	Number=Sing	dema	0			oewn_form
 dogman	0		Number=Sing	dema	0	dogman	n	moby_reverse
-dogmans	0		Number=Plur	dema	0	dogman	n	rule
 dogmas	0	oewn-dogma-n	Number=Plur	dema	0			rule_variant
 dogmata	0	oewn-dogma-n	Number=Plur	dema	0			oewn_form
 dogmatic	0	oewn-dogmatic-a	Degree=Pos	dema	0			oewn_form
@@ -14991,6 +14986,7 @@ dogmatizer	0		Number=Sing	dema	0	dogmatizer	n	moby_reverse
 dogmatizers	0		Number=Plur	dema	0	dogmatizer	n	rule
 dogmatizes	0	oewn-dogmatize-v	Person=3+Tense=Pres	dema	0			rule
 dogmatizing	0	oewn-dogmatize-v	VerbForm=Ger	dema	0			rule
+dogmen	0		Number=Plur	dema	0	dogman	n	rule
 dogs	0	oewn-dog-n	Number=Plur	dema	0			rule
 dogs	1	oewn-dog-v	Person=3+Tense=Pres	dema	0			rule
 dogs in the manger	0	oewn-dog_in_the_manger-n	Number=Plur	dema	0			rule
@@ -15004,12 +15000,10 @@ dogshore	0		Number=Sing	dema	0	dogshore	n	moby_reverse
 dogshores	0		Number=Plur	dema	0	dogshore	n	rule
 dogsled	0	oewn-dogsled-n	Number=Sing	dema	0			oewn_form
 dogsled	1	oewn-dogsled-v	VerbForm=Inf	dema	0			oewn_form
-dogsledded	0	oewn-dogsled-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
-dogsledding	0	oewn-dogsled-v	VerbForm=Ger	dema	0			rule_variant
-dogsleded	0	oewn-dogsled-v	Tense=Past+VerbForm=Part	dema	0			rule
-dogsleding	0	oewn-dogsled-v	VerbForm=Ger	dema	0			rule
+dogsledded	0	oewn-dogsled-v	Tense=Past+VerbForm=Part	dema	0			llm
+dogsledding	0	oewn-dogsled-v	VerbForm=Ger	dema	0			llm
 dogsleds	0	oewn-dogsled-n	Number=Plur	dema	0			rule
-dogsleds	1	oewn-dogsled-v	Person=3+Tense=Pres	dema	0			rule
+dogsleds	1	oewn-dogsled-v	Person=3+Tense=Pres	dema	0			llm
 dogstooth check	0	oewn-dogstooth_check-n	Number=Sing	dema	0			oewn_form
 dogstooth checks	0	oewn-dogstooth_check-n	Number=Plur	dema	0			rule
 dogteeth	0	oewn-dogtooth-n	Number=Plur	dema	0			oewn_form
@@ -15151,19 +15145,17 @@ dolls up	0	oewn-doll_up-v	Person=3+Tense=Pres	dema	0			rule
 dolly	0	oewn-dolly-n	Number=Sing	dema	0			oewn_form
 dolly	1		VerbForm=Inf	dema	0	dolly	v	moby_reverse
 dollyman	0		Number=Sing	dema	0	dollyman	n	moby_reverse
-dollymans	0		Number=Plur	dema	0	dollyman	n	rule
-dollymen	0		Number=Sing	dema	0	dollymen	n	moby_reverse
-dollymens	0		Number=Plur	dema	0	dollymen	n	rule
+dollymen	0		Number=Plur	dema	0	dollyman	n	rule
+dollymen	1		Number=Sing	dema	0	dollymen	n	moby_reverse
 dolman	0	oewn-dolman-n	Number=Sing	dema	0			oewn_form
 dolman jacket	0	oewn-dolman_jacket-n	Number=Sing	dema	0			oewn_form
 dolman jackets	0	oewn-dolman_jacket-n	Number=Plur	dema	0			rule
 dolman sleeve	0	oewn-dolman_sleeve-n	Number=Sing	dema	0			oewn_form
 dolman sleeves	0	oewn-dolman_sleeve-n	Number=Plur	dema	0			rule
-dolmans	0	oewn-dolman-n	Number=Plur	dema	0			rule
+dolmans	0	oewn-dolman-n	Number=Plur	dema	0			llm
 dolmas	0	oewn-dolmas-n	Number=Sing	dema	0			oewn_form
 dolmen	0	oewn-dolmen-n	Number=Sing	dema	0			oewn_form
 dolmenic	0		Degree=Pos	dema	0	dolmenic	a	moby_reverse
-dolmens	0	oewn-dolmen-n	Number=Plur	dema	0			rule
 dolomite	0	oewn-dolomite-n	Number=Sing	dema	0			oewn_form
 dolomites	0	oewn-dolomite-n	Number=Plur	dema	0			rule
 dolomitic	0	oewn-dolomitic-a	Degree=Pos	dema	0			oewn_form
@@ -15203,7 +15195,7 @@ dolphin oil	0	oewn-dolphin_oil-n	Number=Sing	dema	0			oewn_form
 dolphin oils	0	oewn-dolphin_oil-n	Number=Plur	dema	0			rule
 dolphin striker	0	oewn-dolphin_striker-n	Number=Sing	dema	0			oewn_form
 dolphin strikers	0	oewn-dolphin_striker-n	Number=Plur	dema	0			rule
-dolphinfish	0	oewn-dolphinfish-n	Number=Plur	dema	0			agid
+dolphinfish	0	oewn-dolphinfish-n	Number=Plur	dema	0			llm
 dolphinfish	1	oewn-dolphinfish-n	Number=Sing	dema	0			oewn_form
 dolphinfishes	0	oewn-dolphinfish-n	Number=Plur	dema	0			rule_variant
 dolphins	0	oewn-dolphin-n	Number=Plur	dema	0			rule
@@ -15340,7 +15332,7 @@ dominating	0	oewn-dominate-v	VerbForm=Ger	dema	0			rule
 dominating	1	oewn-dominating-a	Degree=Pos	dema	0			oewn_form
 dominatingly	0		Degree=Pos	dema	0	dominatingly	r	moby_reverse
 domination	0	oewn-domination-n	Number=Sing	dema	0			oewn_form
-dominations	0	oewn-domination-n	Number=Plur	dema	0			rule
+dominations	0	oewn-domination-n	Number=Plur	dema	0			llm
 dominative	0		Degree=Pos	dema	0	dominative	a	moby_reverse
 dominator	0		Number=Sing	dema	0	dominator	n	moby_reverse
 dominators	0		Number=Plur	dema	0	dominator	n	rule
@@ -15408,7 +15400,7 @@ done for	0	oewn-done_for-a	Degree=Pos	dema	0			oewn_form
 done with	0	oewn-done_with-a	Degree=Pos	dema	0			oewn_form
 donee	0	oewn-donee-n	Number=Sing	dema	0			oewn_form
 donees	0	oewn-donee-n	Number=Plur	dema	0			rule
-dong	0	oewn-dong-n	Number=Plur	dema	0			agid
+dong	0	oewn-dong-n	Number=Plur	dema	0			rule_variant
 dong	1	oewn-dong-n	Number=Sing	dema	0			oewn_form
 dong	2	oewn-dong-v	VerbForm=Inf	dema	0			oewn_form
 donga	0		Number=Sing	dema	0	donga	n	moby_reverse
@@ -15417,10 +15409,10 @@ donged	0	oewn-dong-v	Tense=Past+VerbForm=Part	dema	0			rule
 donging	0	oewn-dong-v	VerbForm=Ger	dema	0			rule
 dongle	0	oewn-dongle-n	Number=Sing	dema	0			oewn_form
 dongles	0	oewn-dongle-n	Number=Plur	dema	0			rule
-dongs	0	oewn-dong-n	Number=Plur	dema	0			rule_variant
+dongs	0	oewn-dong-n	Number=Plur	dema	0			llm
 dongs	1	oewn-dong-v	Person=3+Tense=Pres	dema	0			rule
 donjon	0	oewn-donjon-n	Number=Sing	dema	0			oewn_form
-donjons	0	oewn-donjon-n	Number=Plur	dema	0			rule
+donjons	0	oewn-donjon-n	Number=Plur	dema	0			llm
 donkey	0	oewn-donkey-n	Number=Sing	dema	0			oewn_form
 donkey boiler	0	oewn-donkey_boiler-n	Number=Sing	dema	0			oewn_form
 donkey boilers	0	oewn-donkey_boiler-n	Number=Plur	dema	0			rule
@@ -15494,7 +15486,7 @@ doodling	0	oewn-doodle-v	VerbForm=Ger	dema	0			rule
 doodly-squat	0	oewn-doodly-squat-n	Number=Sing	dema	0			oewn_form
 doodly-squats	0	oewn-doodly-squat-n	Number=Plur	dema	0			rule
 doofus	0	oewn-doofus-n	Number=Sing	dema	0			oewn_form
-doofuses	0	oewn-doofus-n	Number=Plur	dema	0			rule
+doofuses	0	oewn-doofus-n	Number=Plur	dema	0			llm
 doohickey	0	oewn-doohickey-n	Number=Sing	dema	0			oewn_form
 doohickeys	0	oewn-doohickey-n	Number=Plur	dema	0			rule
 dook	0		Number=Sing	dema	0	dook	n	moby_reverse
@@ -15553,7 +15545,7 @@ doorlocks	0	oewn-doorlock-n	Number=Plur	dema	0			rule
 doorman	0	oewn-doorman-n	Number=Sing	dema	0			oewn_form
 doormat	0	oewn-doormat-n	Number=Sing	dema	0			oewn_form
 doormats	0	oewn-doormat-n	Number=Plur	dema	0			rule
-doormen	0	oewn-doorman-n	Number=Plur	dema	0			agid
+doormen	0	oewn-doorman-n	Number=Plur	dema	0			llm
 doornail	0	oewn-doornail-n	Number=Sing	dema	0			oewn_form
 doornails	0	oewn-doornail-n	Number=Plur	dema	0			rule
 doorpiece	0		Number=Sing	dema	0	doorpiece	n	moby_reverse
@@ -15578,7 +15570,7 @@ doorstops	0	oewn-doorstop-n	Number=Plur	dema	0			rule
 doorway	0	oewn-doorway-n	Number=Sing	dema	0			oewn_form
 doorways	0	oewn-doorway-n	Number=Plur	dema	0			rule
 doorwoman	0	oewn-doorwoman-n	Number=Sing	dema	0			oewn_form
-doorwomans	0	oewn-doorwoman-n	Number=Plur	dema	0			rule
+doorwomen	0	oewn-doorwoman-n	Number=Plur	dema	0			rule
 dooryard	0	oewn-dooryard-n	Number=Sing	dema	0			oewn_form
 dooryards	0	oewn-dooryard-n	Number=Plur	dema	0			rule
 doover	0		Number=Sing	dema	0	doover	n	moby_reverse
@@ -15719,9 +15711,8 @@ dortiness	0		Number=Sing	dema	0	dortiness	n	moby_reverse
 dorty	0		Degree=Pos	dema	0	dorty	a	moby_reverse
 dory	0	oewn-dory-n	Number=Sing	dema	0			oewn_form
 doryman	0		Number=Sing	dema	0	doryman	n	moby_reverse
-dorymans	0		Number=Plur	dema	0	doryman	n	rule
-dorymen	0		Number=Sing	dema	0	dorymen	n	moby_reverse
-dorymens	0		Number=Plur	dema	0	dorymen	n	rule
+dorymen	0		Number=Plur	dema	0	doryman	n	rule
+dorymen	1		Number=Sing	dema	0	dorymen	n	moby_reverse
 dos	0	oewn-DO-n	Number=Plur	dema	0			moby_reverse
 dos	1	oewn-do-n-1	Number=Plur	dema	0			rule
 dos	2	oewn-do-n-2	Number=Plur	dema	0			rule
@@ -16249,8 +16240,8 @@ doura	0	oewn-doura-n	Number=Sing	dema	0			oewn_form
 dourah	0	oewn-dourah-n	Number=Sing	dema	0			oewn_form
 dourahs	0	oewn-dourah-n	Number=Plur	dema	0			rule
 douras	0	oewn-doura-n	Number=Plur	dema	0			rule
-dourer	0	oewn-dour-a	Degree=Cmp	dema	0			rule
-dourest	0	oewn-dour-a	Degree=Sup	dema	0			rule
+dourer	0	oewn-dour-a	Degree=Cmp	dema	0			llm
+dourest	0	oewn-dour-a	Degree=Sup	dema	0			llm
 douricouli	0		Number=Sing	dema	0	douricouli	n	moby_reverse
 douricoulis	0		Number=Plur	dema	0	douricouli	n	rule
 dourine	0		Number=Sing	dema	0	dourine	n	moby_reverse
@@ -16429,9 +16420,9 @@ downmarket	0	oewn-downmarket-a	Degree=Pos	dema	0			oewn_form
 downpipe	0		Number=Sing	dema	0	downpipe	n	moby_reverse
 downpipes	0		Number=Plur	dema	0	downpipe	n	rule
 downplay	0	oewn-downplay-v	VerbForm=Inf	dema	0			oewn_form
-downplayed	0	oewn-downplay-v	Tense=Past+VerbForm=Part	dema	0			rule
-downplaying	0	oewn-downplay-v	VerbForm=Ger	dema	0			rule
-downplays	0	oewn-downplay-v	Person=3+Tense=Pres	dema	0			rule
+downplayed	0	oewn-downplay-v	Tense=Past+VerbForm=Part	dema	0			llm
+downplaying	0	oewn-downplay-v	VerbForm=Ger	dema	0			llm
+downplays	0	oewn-downplay-v	Person=3+Tense=Pres	dema	0			llm
 downpour	0	oewn-downpour-n	Number=Sing	dema	0			oewn_form
 downpours	0	oewn-downpour-n	Number=Plur	dema	0			rule
 downrange	0		Degree=Pos	dema	0	downrange	a	moby_reverse
@@ -16597,11 +16588,10 @@ doze off	0	oewn-doze_off-v	VerbForm=Inf	dema	0			oewn_form
 dozed	0	oewn-doze-v	Tense=Past+VerbForm=Part	dema	0			rule
 dozed off	0	oewn-doze_off-v	Tense=Past+VerbForm=Part	dema	0			rule
 dozen	0	dema-dozen-d		dema	0			carried
-dozen	1	oewn-dozen-n	Number=Plur	dema	0			agid
-dozen	2	oewn-dozen-n	Number=Sing	dema	0			oewn_form
-dozen	3	oewn-dozen-a	Degree=Pos	dema	0			oewn_form
+dozen	1	oewn-dozen-n	Number=Sing	dema	0			oewn_form
+dozen	2	oewn-dozen-a	Degree=Pos	dema	0			oewn_form
 dozens	0	oewn-dozens-n	Number=Sing	dema	0			oewn_form
-dozens	1	oewn-dozen-n	Number=Plur	dema	0			rule_variant
+dozens	1	oewn-dozen-n	Number=Plur	dema	0			rule
 dozenth	0		Degree=Pos	dema	0	dozenth	a	moby_reverse
 dozer	0	oewn-dozer-n	Number=Sing	dema	0			oewn_form
 dozers	0	oewn-dozer-n	Number=Plur	dema	0			rule
@@ -16655,9 +16645,8 @@ dracontium	0	oewn-dracontium-n	Number=Sing	dema	0			oewn_form
 dracontiums	0	oewn-dracontium-n	Number=Plur	dema	0			rule
 dracunculiasis	0	oewn-dracunculiasis-n	Number=Sing	dema	0			oewn_form
 draegerman	0		Number=Sing	dema	0	draegerman	n	moby_reverse
-draegermans	0		Number=Plur	dema	0	draegerman	n	rule
-draegermen	0		Number=Sing	dema	0	draegermen	n	moby_reverse
-draegermens	0		Number=Plur	dema	0	draegermen	n	rule
+draegermen	0		Number=Plur	dema	0	draegerman	n	rule
+draegermen	1		Number=Sing	dema	0	draegermen	n	moby_reverse
 draff	0	oewn-draff-n	Number=Sing	dema	0			oewn_form
 draffs	0	oewn-draff-n	Number=Plur	dema	0			rule
 draffy	0		Degree=Pos	dema	0	draffy	a	moby_reverse
@@ -16702,11 +16691,11 @@ drafts	1	oewn-draft-v	Person=3+Tense=Pres	dema	0			rule
 draftsman	0	oewn-draftsman-n	Number=Sing	dema	0			oewn_form
 draftsmanship	0	oewn-draftsmanship-n	Number=Sing	dema	0			oewn_form
 draftsmanships	0	oewn-draftsmanship-n	Number=Plur	dema	0			rule
-draftsmen	0	oewn-draftsman-n	Number=Plur	dema	0			agid
+draftsmen	0	oewn-draftsman-n	Number=Plur	dema	0			llm
 draftsperson	0	oewn-draftsperson-n	Number=Sing	dema	0			oewn_form
 draftspersons	0	oewn-draftsperson-n	Number=Plur	dema	0			rule
 draftswoman	0	oewn-draftswoman-n	Number=Sing	dema	0			oewn_form
-draftswomans	0	oewn-draftswoman-n	Number=Plur	dema	0			rule
+draftswomen	0	oewn-draftswoman-n	Number=Plur	dema	0			rule
 drafty	0	oewn-drafty-a	Degree=Pos	dema	0			oewn_form
 drag	0	oewn-drag-n	Number=Sing	dema	1			carried
 drag	1	oewn-drag-v	VerbForm=Inf	dema	1			carried
@@ -16771,7 +16760,6 @@ dragomanic	0		Degree=Pos	dema	0	dragomanic	a	moby_reverse
 dragomanish	0		Degree=Pos	dema	0	dragomanish	a	moby_reverse
 dragomans	0	oewn-dragoman-n	Number=Plur	dema	0			rule
 dragomen	0		Number=Sing	dema	0	dragomen	n	moby_reverse
-dragomens	0		Number=Plur	dema	0	dragomen	n	rule
 dragon	0	oewn-dragon-n	Number=Sing	dema	0			oewn_form
 dragon arum	0	oewn-dragon_arum-n	Number=Sing	dema	0			oewn_form
 dragon arums	0	oewn-dragon_arum-n	Number=Plur	dema	0			rule
@@ -16807,10 +16795,10 @@ dragoon	0	oewn-dragoon-n	Number=Sing	dema	0			oewn_form
 dragoon	1	oewn-dragoon-v	VerbForm=Inf	dema	0			oewn_form
 dragoonage	0		Number=Sing	dema	0	dragoonage	n	moby_reverse
 dragoonages	0		Number=Plur	dema	0	dragoonage	n	rule
-dragooned	0	oewn-dragoon-v	Tense=Past+VerbForm=Part	dema	0			rule
-dragooning	0	oewn-dragoon-v	VerbForm=Ger	dema	0			rule
+dragooned	0	oewn-dragoon-v	Tense=Past+VerbForm=Part	dema	0			llm
+dragooning	0	oewn-dragoon-v	VerbForm=Ger	dema	0			llm
 dragoons	0	oewn-dragoon-n	Number=Plur	dema	0			rule
-dragoons	1	oewn-dragoon-v	Person=3+Tense=Pres	dema	0			rule
+dragoons	1	oewn-dragoon-v	Person=3+Tense=Pres	dema	0			llm
 dragrope	0		Number=Sing	dema	0	dragrope	n	moby_reverse
 dragropes	0		Number=Plur	dema	0	dragrope	n	rule
 drags	0	oewn-drag-n	Number=Plur	dema	1			carried
@@ -16996,9 +16984,9 @@ draughts	0	oewn-draught-n	Number=Plur	dema	0			rule
 draughts	1	oewn-draughts-n	Number=Sing	dema	0			oewn_form
 draughts	2	oewn-draught-v	Person=3+Tense=Pres	dema	0			rule
 draughtsman	0	oewn-draughtsman-n	Number=Sing	dema	0			oewn_form
-draughtsmen	0	oewn-draughtsman-n	Number=Plur	dema	0			agid
+draughtsmen	0	oewn-draughtsman-n	Number=Plur	dema	0			llm
 draughtswoman	0	oewn-draughtswoman-n	Number=Sing	dema	0			oewn_form
-draughtswomans	0	oewn-draughtswoman-n	Number=Plur	dema	0			rule
+draughtswomen	0	oewn-draughtswoman-n	Number=Plur	dema	0			rule
 draughty	0	oewn-draughty-a	Degree=Pos	dema	0			oewn_form
 draughty	1		Number=Sing	dema	0	draughty	n	moby_reverse
 drave	0		VerbForm=Inf	dema	0	drave	v	moby_reverse
@@ -17156,9 +17144,8 @@ drayhorses	0	oewn-drayhorse-n	Number=Plur	dema	0			rule
 draying	0		Number=Sing	dema	0	draying	n	moby_reverse
 drayings	0		Number=Plur	dema	0	draying	n	rule
 drayman	0		Number=Sing	dema	0	drayman	n	moby_reverse
-draymans	0		Number=Plur	dema	0	drayman	n	rule
-draymen	0		Number=Sing	dema	0	draymen	n	moby_reverse
-draymens	0		Number=Plur	dema	0	draymen	n	rule
+draymen	0		Number=Plur	dema	0	drayman	n	rule
+draymen	1		Number=Sing	dema	0	draymen	n	moby_reverse
 drays	0	oewn-dray-n	Number=Plur	dema	0			rule
 drch	0		Number=Sing	dema	0	drch	n	moby_reverse
 drches	0		Number=Plur	dema	0	drch	n	rule
@@ -17168,7 +17155,6 @@ dread	2	oewn-dread-a	Degree=Pos	dema	0			oewn_form
 dreadable	0		Degree=Pos	dema	0	dreadable	a	moby_reverse
 dreaded	0	oewn-dread-v	Tense=Past+VerbForm=Part	dema	0			rule
 dreaded	1	oewn-dreaded-a	Degree=Pos	dema	0			oewn_form
-dreader	0	oewn-dread-a	Degree=Cmp	dema	0			rule
 dreadful	0	oewn-dreadful-a	Degree=Pos	dema	0			oewn_form
 dreadfully	0	oewn-dreadfully-r	Degree=Pos	dema	0			oewn_form
 dreadfulness	0	oewn-dreadfulness-n	Number=Sing	dema	0			oewn_form
@@ -17202,7 +17188,7 @@ dreamier	0	oewn-dreamy-a	Degree=Cmp	dema	0			oewn_form
 dreamiest	0	oewn-dreamy-a	Degree=Sup	dema	0			oewn_form
 dreamily	0	oewn-dreamily-r	Degree=Pos	dema	0			oewn_form
 dreaminess	0	oewn-dreaminess-n	Number=Sing	dema	0			oewn_form
-dreaminesses	0	oewn-dreaminess-n	Number=Plur	dema	0			rule
+dreaminesses	0	oewn-dreaminess-n	Number=Plur	dema	0			llm
 dreaming	0	oewn-dream-v	VerbForm=Ger	dema	0			rule
 dreaming	1	oewn-dreaming-n	Number=Sing	dema	0			oewn_form
 dreaming up	0	oewn-dream_up-v	VerbForm=Ger	dema	0			rule
@@ -17225,8 +17211,8 @@ dreamworld	0	oewn-dreamworld-n	Number=Sing	dema	0			oewn_form
 dreamworlds	0	oewn-dreamworld-n	Number=Plur	dema	0			rule
 dreamy	0	oewn-dreamy-a	Degree=Pos	dema	0			oewn_form
 drear	0	oewn-drear-a	Degree=Pos	dema	0			oewn_form
-drearer	0	oewn-drear-a	Degree=Cmp	dema	0			rule
-drearest	0	oewn-drear-a	Degree=Sup	dema	0			rule
+drearer	0	oewn-drear-a	Degree=Cmp	dema	0			llm
+drearest	0	oewn-drear-a	Degree=Sup	dema	0			llm
 drearier	0	oewn-dreary-a	Degree=Cmp	dema	0			oewn_form
 drearies	0		Degree=Pos	dema	0	drearies	a	moby_reverse
 dreariest	0	oewn-dreary-a	Degree=Sup	dema	0			oewn_form
@@ -17414,7 +17400,7 @@ driegh	1		VerbForm=Inf	dema	0	driegh	v	moby_reverse
 drier	0	oewn-dry-a	Degree=Cmp	dema	0			oewn_form
 drier	1	oewn-drier-n	Number=Sing	dema	0			oewn_form
 driers	0	oewn-drier-n	Number=Plur	dema	0			rule
-dries	0	oewn-dry-v	Person=3+Tense=Pres	dema	0			rule
+dries	0	oewn-dry-v	Person=3+Tense=Pres	dema	0			llm
 dries	1	oewn-dry-n	Number=Plur	dema	0			rule_variant
 dries clean	0	oewn-dry_clean-v	Person=3+Tense=Pres	dema	0			rule
 dries out	0	oewn-dry_out-v	Person=3+Tense=Pres	dema	0			rule
@@ -17440,8 +17426,9 @@ drifted away	0	oewn-drift_away-v	Tense=Past+VerbForm=Part	dema	0			rule
 drifted off	0	oewn-drift_off-v	Tense=Past+VerbForm=Part	dema	0			rule
 drifter	0	oewn-drifter-n	Number=Sing	dema	0			oewn_form
 drifters	0	oewn-drifter-n	Number=Plur	dema	0			rule
-driftfish	0	oewn-driftfish-n	Number=Plur	dema	0			agid
+driftfish	0	oewn-driftfish-n	Number=Plur	dema	0			llm
 driftfish	1	oewn-driftfish-n	Number=Sing	dema	0			oewn_form
+driftfishes	0	oewn-driftfish-n	Number=Plur	dema	0			rule_variant
 driftier	0		Degree=Cmp	dema	0	drifty	a	moby_reverse
 driftiest	0		Degree=Sup	dema	0	drifty	a	moby_reverse
 drifting	0	oewn-drift-v	VerbForm=Ger	dema	0			rule
@@ -17720,8 +17707,8 @@ drizzle	1	oewn-drizzle-v	VerbForm=Inf	dema	0			oewn_form
 drizzled	0	oewn-drizzle-v	Tense=Past+VerbForm=Part	dema	0			rule
 drizzles	0	oewn-drizzle-n	Number=Plur	dema	0			rule
 drizzles	1	oewn-drizzle-v	Person=3+Tense=Pres	dema	0			rule
-drizzlier	0	oewn-drizzly-a	Degree=Cmp	dema	0			rule
-drizzliest	0	oewn-drizzly-a	Degree=Sup	dema	0			rule
+drizzlier	0	oewn-drizzly-a	Degree=Cmp	dema	0			llm
+drizzliest	0	oewn-drizzly-a	Degree=Sup	dema	0			llm
 drizzling	0	oewn-drizzle-v	VerbForm=Ger	dema	0			rule
 drizzling	1	oewn-drizzling-a	Degree=Pos	dema	0			oewn_form
 drizzly	0		Degree=Pos	dema	0	drizzly	r	moby_reverse
@@ -17738,10 +17725,10 @@ droit	0		Number=Sing	dema	0	droit	n	moby_reverse
 droits	0		Number=Plur	dema	0	droit	n	rule
 droitural	0		Degree=Pos	dema	0	droitural	a	moby_reverse
 droll	0	oewn-droll-a	Degree=Pos	dema	0			oewn_form
-droller	0	oewn-droll-a	Degree=Cmp	dema	0			rule
+droller	0	oewn-droll-a	Degree=Cmp	dema	0			llm
 drolleries	0	oewn-drollery-n	Number=Plur	dema	0			rule
 drollery	0	oewn-drollery-n	Number=Sing	dema	0			oewn_form
-drollest	0	oewn-droll-a	Degree=Sup	dema	0			rule
+drollest	0	oewn-droll-a	Degree=Sup	dema	0			llm
 drollness	0		Number=Sing	dema	0	drollness	n	moby_reverse
 drollnesses	0		Number=Plur	dema	0	drollness	n	rule
 drolly	0		Degree=Pos	dema	0	drolly	r	moby_reverse
@@ -17864,7 +17851,7 @@ drop-kicks	0	oewn-drop-kick-v	Person=3+Tense=Pres	dema	0			rule
 drop-leaf	0	oewn-drop-leaf-n	Number=Sing	dema	0			oewn_form
 drop-leaf table	0	oewn-drop-leaf_table-n	Number=Sing	dema	0			oewn_form
 drop-leaf tables	0	oewn-drop-leaf_table-n	Number=Plur	dema	0			rule
-drop-leafs	0	oewn-drop-leaf-n	Number=Plur	dema	0			rule
+drop-leaves	0	oewn-drop-leaf-n	Number=Plur	dema	0			rule
 drop-off	0	oewn-drop-off-n	Number=Sing	dema	0			oewn_form
 drop-off charge	0	oewn-drop-off_charge-n	Number=Sing	dema	0			oewn_form
 drop-off charges	0	oewn-drop-off_charge-n	Number=Plur	dema	0			rule
@@ -18044,7 +18031,7 @@ drowsihead	0		Number=Sing	dema	0	drowsihead	n	moby_reverse
 drowsiheads	0		Number=Plur	dema	0	drowsihead	n	rule
 drowsily	0	oewn-drowsily-r	Degree=Pos	dema	0			oewn_form
 drowsiness	0	oewn-drowsiness-n	Number=Sing	dema	0			oewn_form
-drowsinesses	0	oewn-drowsiness-n	Number=Plur	dema	0			rule
+drowsinesses	0	oewn-drowsiness-n	Number=Plur	dema	0			llm
 drowsing	0	oewn-drowse-v	VerbForm=Ger	dema	0			rule
 drowsing	1	oewn-drowsing-a	Degree=Pos	dema	0			oewn_form
 drowsing off	0	oewn-drowse_off-v	VerbForm=Ger	dema	0			rule
@@ -18216,8 +18203,8 @@ drunken revelry	0	oewn-drunken_revelry-n	Number=Sing	dema	0			oewn_form
 drunkenly	0	oewn-drunkenly-r	Degree=Pos	dema	0			oewn_form
 drunkenness	0	oewn-drunkenness-n	Number=Sing	dema	0			oewn_form
 drunkennesses	0	oewn-drunkenness-n	Number=Plur	dema	0			rule
-drunker	0	oewn-drunk-a	Degree=Cmp	dema	0			rule
-drunkest	0	oewn-drunk-a	Degree=Sup	dema	0			rule
+drunker	0	oewn-drunk-a	Degree=Cmp	dema	0			llm
+drunkest	0	oewn-drunk-a	Degree=Sup	dema	0			llm
 drunkometer	0		Number=Sing	dema	0	drunkometer	n	moby_reverse
 drunkometers	0		Number=Plur	dema	0	drunkometer	n	rule
 drunks	0	oewn-drunk-n	Number=Plur	dema	0			rule
@@ -18351,14 +18338,14 @@ drydocks	1	oewn-drydock-v	Person=3+Tense=Pres	dema	0			rule
 dryer	0	oewn-dryer-n	Number=Sing	dema	0			oewn_form
 dryer	1	oewn-dry-a	Degree=Cmp	dema	0			oewn_form
 dryer	2		VerbForm=Inf	dema	0	dryer	v	moby_reverse
-dryer	3		Degree=Pos	dema	0	dryer	r	moby_reverse
+dryer	3		Degree=Cmp	dema	0	dry	r	moby_reverse
 dryers	0	oewn-dryer-n	Number=Plur	dema	0			rule
 dryest	0	oewn-dry-a	Degree=Sup	dema	0			oewn_form
 dryfarmer	0		Number=Sing	dema	0	dryfarmer	n	moby_reverse
 dryfarmers	0		Number=Plur	dema	0	dryfarmer	n	rule
 drygoods	0	oewn-drygoods-n	Number=Sing	dema	0			oewn_form
 drying	0		Degree=Pos	dema	0	drying	a	moby_reverse
-drying	1	oewn-dry-v	VerbForm=Ger	dema	0			rule
+drying	1	oewn-dry-v	VerbForm=Ger	dema	0			llm
 drying agent	0	oewn-drying_agent-n	Number=Sing	dema	0			oewn_form
 drying agents	0	oewn-drying_agent-n	Number=Plur	dema	0			rule
 drying clean	0	oewn-dry_clean-v	VerbForm=Ger	dema	0			rule
@@ -18378,10 +18365,11 @@ drynesses	0	oewn-dryness-n	Number=Plur	dema	0			rule
 dryopithecine	0	oewn-dryopithecine-n	Number=Sing	dema	0			oewn_form
 dryopithecines	0	oewn-dryopithecine-n	Number=Plur	dema	0			rule
 drypis	0	oewn-drypis-n	Number=Sing	dema	0			oewn_form
+drypises	0	oewn-drypis-n	Number=Plur	dema	0			llm
 drypoint	0		Number=Sing	dema	0	drypoint	n	moby_reverse
 drypoints	0		Number=Plur	dema	0	drypoint	n	rule
 drys	0		Degree=Pos	dema	0	drys	a	moby_reverse
-drys	1	oewn-dry-n	Number=Plur	dema	0			agid
+drys	1	oewn-dry-n	Number=Plur	dema	0			llm
 drysalter	0		Number=Sing	dema	0	drysalter	n	moby_reverse
 drysalteries	0		Number=Plur	dema	0	drysaltery	n	rule
 drysalters	0		Number=Plur	dema	0	drysalter	n	rule
@@ -18448,7 +18436,7 @@ dubnium	0	oewn-dubnium-n	Number=Sing	dema	0			oewn_form
 dubniums	0	oewn-dubnium-n	Number=Plur	dema	0			rule
 dubonnet	0		Number=Sing	dema	0	dubonnet	n	moby_reverse
 dubonnets	0		Number=Plur	dema	0	dubonnet	n	rule
-dubs	0	oewn-dub-v	Person=3+Tense=Pres	dema	0			rule
+dubs	0	oewn-dub-v	Person=3+Tense=Pres	dema	0			llm
 dubs	1	oewn-dub-n	Number=Plur	dema	0			rule
 dubstep	0	oewn-dubstep-n	Number=Sing	dema	0			oewn_form
 dubsteps	0	oewn-dubstep-n	Number=Plur	dema	0			rule
@@ -18555,7 +18543,6 @@ ductwork	0		Number=Sing	dema	0	ductwork	n	moby_reverse
 ductworks	0		Number=Plur	dema	0	ductwork	n	rule
 dud	0	oewn-dud-n	Number=Sing	dema	0			oewn_form
 dud	1	oewn-dud-a	Degree=Pos	dema	0			oewn_form
-dudder	0	oewn-dud-a	Degree=Cmp	dema	0			rule
 duddy	0		Degree=Pos	dema	0	duddy	a	moby_reverse
 dude	0	oewn-dude-n	Number=Sing	dema	0			oewn_form
 dude ranch	0	oewn-dude_ranch-n	Number=Sing	dema	0			oewn_form
@@ -18704,8 +18691,8 @@ dullard	0	oewn-dullard-n	Number=Sing	dema	0			oewn_form
 dullards	0	oewn-dullard-n	Number=Plur	dema	0			rule
 dulled	0	oewn-dull-v	Tense=Past+VerbForm=Part	dema	0			rule
 dulled	1	oewn-dulled-a	Degree=Pos	dema	0			oewn_form
-duller	0	oewn-dull-a	Degree=Cmp	dema	0			rule
-dullest	0	oewn-dull-a	Degree=Sup	dema	0			rule
+duller	0	oewn-dull-a	Degree=Cmp	dema	0			llm
+dullest	0	oewn-dull-a	Degree=Sup	dema	0			llm
 dulling	0	oewn-dull-v	VerbForm=Ger	dema	0			rule
 dullish	0		Degree=Pos	dema	0	dullish	a	moby_reverse
 dullness	0	oewn-dullness-n	Number=Sing	dema	0			oewn_form
@@ -18736,8 +18723,8 @@ dumbass	0	oewn-dumbass-n	Number=Sing	dema	0			oewn_form
 dumbasses	0	oewn-dumbass-n	Number=Plur	dema	0			rule
 dumbbell	0	oewn-dumbbell-n	Number=Sing	dema	0			oewn_form
 dumbbells	0	oewn-dumbbell-n	Number=Plur	dema	0			rule
-dumber	0	oewn-dumb-a	Degree=Cmp	dema	0			rule
-dumbest	0	oewn-dumb-a	Degree=Sup	dema	0			rule
+dumber	0	oewn-dumb-a	Degree=Cmp	dema	0			llm
+dumbest	0	oewn-dumb-a	Degree=Sup	dema	0			llm
 dumbfound	0	oewn-dumbfound-v	VerbForm=Inf	dema	0			oewn_form
 dumbfounded	0	oewn-dumbfound-v	Tense=Past+VerbForm=Part	dema	0			rule
 dumbfounded	1	oewn-dumbfounded-a	Degree=Pos	dema	0			oewn_form
@@ -18775,11 +18762,11 @@ dumkies	0		Number=Plur	dema	0	dumky	n	rule
 dumky	0		Number=Sing	dema	0	dumky	n	moby_reverse
 dummied	0	oewn-dummy-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 dummied up	0	oewn-dummy_up-v	Tense=Past+VerbForm=Part	dema	0			rule
-dummier	0	oewn-dummy-a	Degree=Cmp	dema	0			rule
+dummier	0	oewn-dummy-a	Degree=Cmp	dema	0			llm
 dummies	0	oewn-dummy-n	Number=Plur	dema	0			rule
 dummies	1	oewn-dummy-v	Person=3+Tense=Pres	dema	0			rule
 dummies up	0	oewn-dummy_up-v	Person=3+Tense=Pres	dema	0			rule
-dummiest	0	oewn-dummy-a	Degree=Sup	dema	0			rule
+dummiest	0	oewn-dummy-a	Degree=Sup	dema	0			llm
 dummkopf	0		Number=Sing	dema	0	dummkopf	n	moby_reverse
 dummkopfs	0		Number=Plur	dema	0	dummkopf	n	rule
 dummy	0	oewn-dummy-n	Number=Sing	dema	0			oewn_form
@@ -19192,7 +19179,7 @@ dusting powders	0	oewn-dusting_powder-n	Number=Plur	dema	0			rule
 dustless	0		Degree=Pos	dema	0	dustless	a	moby_reverse
 dustlike	0	oewn-dustlike-a	Degree=Pos	dema	0			oewn_form
 dustman	0	oewn-dustman-n	Number=Sing	dema	0			oewn_form
-dustmen	0	oewn-dustman-n	Number=Plur	dema	0			agid
+dustmen	0	oewn-dustman-n	Number=Plur	dema	0			llm
 dustmop	0	oewn-dustmop-n	Number=Sing	dema	0			oewn_form
 dustmops	0	oewn-dustmop-n	Number=Plur	dema	0			rule
 dustoor	0		Number=Sing	dema	0	dustoor	n	moby_reverse
@@ -19211,7 +19198,7 @@ dustsheets	0		Number=Plur	dema	0	dustsheet	n	rule
 dustup	0	oewn-dustup-n	Number=Sing	dema	0			oewn_form
 dustups	0	oewn-dustup-n	Number=Plur	dema	0			rule
 dustwoman	0	oewn-dustwoman-n	Number=Sing	dema	0			oewn_form
-dustwomans	0	oewn-dustwoman-n	Number=Plur	dema	0			rule
+dustwomen	0	oewn-dustwoman-n	Number=Plur	dema	0			rule
 dusty	0	oewn-dusty-a	Degree=Pos	dema	0			oewn_form
 dusty miller	0	oewn-dusty_miller-n	Number=Sing	dema	0			oewn_form
 dusty millers	0	oewn-dusty_miller-n	Number=Plur	dema	0			rule
@@ -19358,16 +19345,16 @@ dweebs	0	oewn-dweeb-n	Number=Plur	dema	0			rule
 dwell	0	oewn-dwell-v	VerbForm=Inf	dema	0			oewn_form
 dwell	1		Number=Sing	dema	0	dwell	n	moby_reverse
 dwell on	0	oewn-dwell_on-v	VerbForm=Inf	dema	0			oewn_form
-dwelled	0	oewn-dwell-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+dwelled	0	oewn-dwell-v	Tense=Past+VerbForm=Part	dema	0			llm
 dweller	0	oewn-dweller-n	Number=Sing	dema	0			oewn_form
 dwellers	0	oewn-dweller-n	Number=Plur	dema	0			rule
 dwelling	0	oewn-dwelling-n	Number=Sing	dema	0			oewn_form
-dwelling	1	oewn-dwell-v	VerbForm=Ger	dema	0			rule
+dwelling	1	oewn-dwell-v	VerbForm=Ger	dema	0			llm
 dwelling house	0	oewn-dwelling_house-n	Number=Sing	dema	0			oewn_form
 dwelling houses	0	oewn-dwelling_house-n	Number=Plur	dema	0			rule
 dwelling on	0	oewn-dwell_on-v	VerbForm=Ger	dema	0			rule
 dwellings	0	oewn-dwelling-n	Number=Plur	dema	0			rule
-dwells	0	oewn-dwell-v	Person=3+Tense=Pres	dema	0			rule
+dwells	0	oewn-dwell-v	Person=3+Tense=Pres	dema	0			llm
 dwells on	0	oewn-dwell_on-v	Person=3+Tense=Pres	dema	0			rule
 dwelt	0	oewn-dwell-v	Tense=Past+VerbForm=Part	dema	0			hand
 dwindle	0	oewn-dwindle-v	VerbForm=Inf	dema	0			oewn_form
@@ -19406,8 +19393,9 @@ dyarchical	0		Degree=Pos	dema	0	dyarchical	a	moby_reverse
 dyarchies	0	oewn-dyarchy-n	Number=Plur	dema	0			rule
 dyarchy	0	oewn-dyarchy-n	Number=Sing	dema	0			oewn_form
 dybbuk	0	oewn-dybbuk-n	Number=Sing	dema	0			oewn_form
+dybbukim	0	oewn-dybbuk-n	Number=Plur	dema	0			rule_variant
 dybbukkim	0	oewn-dybbuk-n	Number=Plur	dema	0			oewn_form
-dybbuks	0	oewn-dybbuk-n	Number=Plur	dema	0			rule_variant
+dybbuks	0	oewn-dybbuk-n	Number=Plur	dema	0			llm
 dye	0	oewn-dye-n	Number=Sing	dema	0			oewn_form
 dye	1	oewn-dye-v	VerbForm=Inf	dema	0			oewn_form
 dye-works	0	oewn-dye-works-n	Number=Sing	dema	0			oewn_form
@@ -19447,6 +19435,12 @@ dyewoods	0	oewn-dyewood-n	Number=Plur	dema	0			rule
 dying	0	oewn-die-v	VerbForm=Ger	dema	1			hand
 dying	1	oewn-dying-a	Degree=Pos	dema	0			oewn_form
 dying	2	oewn-dying-n	Number=Sing	dema	0			oewn_form
+dying away	0	oewn-die_away-v	VerbForm=Ger	dema	0			rule
+dying back	0	oewn-die_back-v	VerbForm=Ger	dema	0			rule
+dying down	0	oewn-die_down-v	VerbForm=Ger	dema	0			rule
+dying hard	0	oewn-die_hard-v	VerbForm=Ger	dema	0			rule
+dying off	0	oewn-die_off-v	VerbForm=Ger	dema	0			rule
+dying out	0	oewn-die_out-v	VerbForm=Ger	dema	0			rule
 dyings	0	oewn-dying-n	Number=Plur	dema	0			rule
 dyke	0	oewn-dyke-n	Number=Sing	dema	0			oewn_form
 dyke	1	oewn-dyke-v	VerbForm=Inf	dema	0			oewn_form

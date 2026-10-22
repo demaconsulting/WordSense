@@ -1,5 +1,0 @@
-lemma	hint	pattern	flags	ctx	cap
-tear	rip-noun	tear|tears	i	\b(?:a|the|an?|big|small|huge|large|long|little|tiny|ragged) (?:\w+ )?tear\b(?! (?:down|up|apart|off|out|into|him|her|them|me|us|you|it|the|a))|\b(?:in|of|through) (?:the|a) (?:\w+ )?tear\b|\btears? (?:in|on|across) (?:the|her|his|my|your|a|its|their)\b	60
-closer	noun	closer|closers	i	\b(?:the|a|their|our|his) (?:\w+ )?closers?\b(?! (?:to|than|and|look|inspection|examination|attention|ties|friends))|\bclosers? (?:of|for|in|was|is|has|had|will)\b	60
-rows	paddle	rows	i	\brows (?:the|a|her|his|up|out|across|down|home|to|into|on|against)\b|\b(?:he|she|who|which|one|that|it|boy|man|woman|oarsman|sailor) rows\b	120
-upsetting	any	upsetting	i		200

@@ -160,7 +160,7 @@ project).
 
 ### Published Evaluation and Suite
 
-The README model table is compared with the generated table file `docs/build_notes/model-table.md`, so a README table
+The README model table is compared with the generated table file `docs/user_guide/model-table.md`, so a README table
 that differs from the file fails the build (`ModelTable_Readme_MatchesGeneratedFile`), and the file has the header, the
 separator and one row for each of the three models (`ModelTable_GeneratedFile_HasRowForEachModel`). The Basic row of the
 file is also checked against a new measurement of the evaluator on the committed holdout set, for the sense, download,

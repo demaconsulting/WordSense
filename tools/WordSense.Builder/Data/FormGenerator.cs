@@ -40,7 +40,7 @@ internal sealed record FormGeneratorResult(
 
 /// <summary>
 ///     Generates the form table lemma-first: every entry yields its own inflected forms from the irregular lists, the
-///     Open English WordNet written forms, the forms of the inflection database and the regular rules; every dictionary word
+///     Open English WordNet written forms, the forms written for the project and the regular rules; every dictionary word
 ///     that no entry yields becomes a surface-only analysis.
 /// </summary>
 internal static partial class FormGenerator
@@ -53,7 +53,7 @@ internal static partial class FormGenerator
 
     // The order of the provenances when two sources give the same analysis: the first is kept
     private static readonly string[] ProvenanceOrder =
-        ["hand", "irregular_list", "contraction", "oewn_form", "carried", "rule", "agid", "rule_variant", "moby_reverse", "llm"];
+        ["hand", "irregular_list", "contraction", "oewn_form", "carried", "rule", "llm", "rule_variant", "moby_reverse"];
 
     private sealed record Old(string Spelling, int Rank, string EntryId, string Features, string Source, string Reviewed, string Provenance);
 
@@ -96,7 +96,7 @@ internal static partial class FormGenerator
 
         public Dictionary<string, int> Stats { get; } = new(StringComparer.Ordinal);
 
-        // The dictionary words and the spellings that the inflection database attests, for the corroboration of the generated forms
+        // The dictionary words and the spellings that the authored forms attest, for the corroboration of the generated forms
         public Dictionary<string, string[]> Moby { get; set; } = new(StringComparer.Ordinal);
 
         public Dictionary<string, HashSet<string>> Attested { get; set; } = new(StringComparer.Ordinal);
@@ -156,18 +156,15 @@ internal static partial class FormGenerator
     /// <param name="data">The data directory with the schema and the entry and sense tables that are read.</param>
     /// <param name="corpus">The corpus directory with the dictionary and the source lists.</param>
     /// <param name="oewn">The Open English WordNet file with the written forms; its SHA-256 must match the pin.</param>
-    /// <param name="agid">The inflection database file <c>infl.txt</c> that corroborates generated forms; its SHA-256 must match the pin.</param>
     /// <param name="output">The directory that receives the entry and form tables, or null for the data directory.</param>
     /// <param name="oewnSha256">The expected SHA-256 of the written-forms file, or null to skip the check (tests only).</param>
-    /// <param name="agidSha256">The expected SHA-256 of the inflection database file, or null to skip the check (tests only).</param>
     /// <returns>The counts.</returns>
     /// <exception cref="InvalidDataException">Thrown when an input is missing, does not match its pin or is inconsistent.</exception>
-    public static FormGeneratorResult Run(string data, string corpus, string oewn, string agid, string? output = null, string? oewnSha256 = OewnImporter.PinnedSha256, string? agidSha256 = AgidImporter.PinnedSha256)
+    public static FormGeneratorResult Run(string data, string corpus, string oewn, string? output = null, string? oewnSha256 = OewnImporter.PinnedSha256)
     {
         var schema = DataSchema.Load(Path.Join(data, "schema.yaml"));
         var formTable = schema.Table("form");
         var context = new Context();
-        context.Attested = AgidImporter.ReadAttested(agid, agidSha256);
         var legacy = ReadLegacy(Path.Join(corpus, "lexicon", LegacyFile));
         context.OpenSpellings.UnionWith(legacy.Open);
         context.ClosedOnly.UnionWith(legacy.ClosedOnly);
@@ -182,6 +179,11 @@ internal static partial class FormGenerator
         }
 
         var sources = IrregularSources.Read(Path.Join(corpus, "lexicon"));
+
+        // The attestation of the generated forms: the forms written for the project, and the tagged tokens of the open corpus
+        // (the authors were asked only for the forms that the open corpus does not attest)
+        OpenCorpusAttestation.Merge(context.Attested, sources.Authored.Attested);
+        OpenCorpusAttestation.Merge(context.Attested, OpenCorpusAttestation.Read(corpus));
         var ownAdjectivesPath = Path.Join(corpus, "lexicon", "own-adjectives.tsv");
         if (File.Exists(ownAdjectivesPath))
         {
@@ -329,8 +331,8 @@ internal static partial class FormGenerator
 
     /// <summary>
     ///     Tells whether a generated analysis is corroborated: a curated source gave it, or it is a plain regular inflection of a
-    ///     real lemma (the rule and the lemma attest it together), or the dictionary lists the spelling, or the inflection
-    ///     database attests it as a form of the lemma. A rule or reverse-rule form of the dictionary corroborates itself only
+    ///     real lemma (the rule and the lemma attest it together), or the dictionary lists the spelling, or the authored forms
+    ///     attest it as a form of the lemma. A rule or reverse-rule form of the dictionary corroborates itself only
     ///     through such a second source when it is not a plain regular inflection.
     /// </summary>
     private static bool Corroborated(Context context, Item item)
@@ -346,33 +348,20 @@ internal static partial class FormGenerator
         }
 
         var low = item.Spelling.ToLowerInvariant();
-
-        // A comparative or superlative of the inflection database corroborates itself only through the regular rule, which makes
-        // it automatic already: a listed word that happens to start with the lemma (modest, twiner) is no form of it
-        if (item.Provenance == "agid" && item.Features.Contains("Degree=", StringComparison.Ordinal))
-        {
-            return false;
-        }
-        if (item.Provenance is not ("agid" or "moby_reverse") && context.Moby.ContainsKey(low))
+        if (item.Provenance != "moby_reverse" && context.Moby.ContainsKey(low))
         {
             return true;
         }
 
-        if (item.Provenance != "agid" && context.Attested.TryGetValue(low, out var lemmas) && AttestsPos(lemmas, LemmaOf(context, item).ToLowerInvariant(), PosOf(context, item)))
-        {
-            return true;
-        }
-
-        // The form of the inflection database is corroborated by the dictionary listing the spelling itself
-        return item.Provenance == "agid" && context.Moby.ContainsKey(low);
+        return context.Attested.TryGetValue(low, out var lemmas) && AttestsPos(lemmas, LemmaOf(context, item).ToLowerInvariant(), PosOf(context, item));
     }
 
-    // The inflection database files the adverbs that inflect (soon, sooner) with the adjectives
-    // A form attests the lemma for a part of speech only under that part of speech of the database ("a" also marks the unlikely entries "a?")
+    // The authored forms file the adverbs that inflect (soon, sooner) with the adjectives
+    // A form attests the lemma for a part of speech only under that part of speech ("a" is the adjective and the adverb)
     private static bool AttestsPos(HashSet<string> attested, string lemma, string pos)
     {
-        var agid = pos == "r" ? "a" : pos;
-        return attested.Contains(lemma + "/" + agid) || attested.Contains(lemma + "/" + agid + "?");
+        var tag = pos == "r" ? "a" : pos;
+        return attested.Contains(lemma + "/" + tag);
     }
 
     private static void Prune(Context context)
@@ -514,7 +503,7 @@ internal static partial class FormGenerator
         return forms.Select(f => string.Join(' ', tokens.Take(head).Append(Recase(tokens[head], f)).Concat(tokens.Skip(head + 1)))).Distinct(StringComparer.Ordinal).ToArray();
     }
 
-    // Tells whether a prefixed spelling is listed for the verb: the inflection database decides when it covers the verb,
+    // Tells whether a prefixed spelling is listed for the verb: the authored forms decide when they cover the verb,
     // the dictionary otherwise (belay and delit are listed words, but not forms of belie and delight)
     private static Func<string, bool> PrefixAttested(Context context, string lemma)
     {
@@ -529,7 +518,7 @@ internal static partial class FormGenerator
             if (low.StartsWith(prefix, StringComparison.Ordinal) && low.Length > prefix.Length + 1)
             {
                 var rest = low[prefix.Length..];
-                // The prefixed verb inherits the irregular forms only when a dictionary or the inflection database lists one of
+                // The prefixed verb inherits the irregular forms only when a dictionary or the authored forms list one of
                 // them for it (undid, redone); behave, delay and demean merely start like be, de and have-words
                 if (!InflectionRules.NotPrefixable.Contains(rest) && (rest.Length >= 3 || rest is "go" or "do") && sources.Closed.TryGetValue((rest, "v"), out var closed)
                     && closed.All().Any(f => attested(prefix + f)))
@@ -584,7 +573,7 @@ internal static partial class FormGenerator
         }
     }
 
-    // The inflection database files an -ing noun that is a mass noun or a gerund noun with the plural spelled like the singular (bowling,
+    // An -ing noun that is a mass noun or a gerund noun gets no plural spelled like the singular (bowling,
     // sibling, feeling): that is not a plural, and the regular plural (bowlings) is generated by the rule instead. The fish and offspring
     // names whose plural is the singular stay.
     private static readonly HashSet<string> InvariantIngPlurals = new(["herring", "offspring", "ling", "whiting"], StringComparer.Ordinal);
@@ -620,7 +609,7 @@ internal static partial class FormGenerator
 
         sources.Hand.TryGetValue(lookup, out var hand);
         sources.Closed.TryGetValue(lookup, out var closed);
-        sources.Agid.TryGetValue((low, pos), out var agid);
+        sources.Authored.Forms.TryGetValue((low, pos), out var authored);
 
         // Written forms of the Open English WordNet, classified by their shape
         var oewn = new Dictionary<string, List<string>>(StringComparer.Ordinal);
@@ -697,7 +686,7 @@ internal static partial class FormGenerator
 
         // A plain regular spelling is attested by the rule and the lemma together; the listed irregular word, the degree
         // forms and the unusual endings (Greek -sis, plural lemmas, -us, -is) need a second source
-        bool Plain(string kind) => kind != "Cmp" && kind != "Sup" && !(kind == "Plur" && !SanePlural(headLow));
+        bool Plain(string kind) => kind != "Cmp" && kind != "Sup" && !(kind == "Plur" && !SanePlural(headLow, Moby));
         IEnumerable<(string Spelling, string Provenance, bool Auto)> Kind(string kind, string rule, Func<IEnumerable<string>> regular, Func<string, bool> regularIsPrimary)
         {
             var seen = new HashSet<string>(StringComparer.Ordinal);
@@ -706,6 +695,8 @@ internal static partial class FormGenerator
             string Fix(string form) => prefix is null ? form : prefix + form;
             if (listsApply)
             {
+                // A prefixed verb (overtake) takes a listed form only when that prefixed spelling is attested (the authored forms, or
+                // the dictionary for a verb that they do not cover): delighted attests delight, but delit is no form of it
                 foreach (var (form, _) in Listed(hand, rule).Where(f => prefix is null || attestedFn(Fix(f.Form))))
                 {
                     top.Add((Inflect(entry, [Fix(form)])[0], "hand"));
@@ -728,28 +719,31 @@ internal static partial class FormGenerator
                 top.AddRange(ow.Select(f => (f, "oewn_form")));
             }
 
-            var fromAgid = false;
-            if (top.Count == 0 && listsApply)
+            // The authored forms are authoritative like the hand and closed lists, and they join the forms that a list or the written
+            // forms of the Open English WordNet name for this kind (argali and argalis, alumni and alumnuses): a word with authored forms
+            // of this kind keeps the regular spelling only when the authors name it (primary level 0, variant level 1). A spelling that
+            // another source gave first keeps that source's provenance.
+            if (listsApply)
             {
-                var agidForms = Listed(agid, rule)
+                var authoredForms = Listed(authored, rule)
                     .Where(f => !(kind == "Plur" && IsIngMassPlural(low, f.Form)))
-                    .Select(f => (Inflect(entry, [f.Form])[0], f.Level == "0" ? "agid" : "rule_variant")).ToList();
-                fromAgid = agidForms.Count > 0;
-                top.AddRange(agidForms);
+                    .Select(f => (Inflect(entry, [f.Form])[0], f.Level == "0" ? "llm" : "rule_variant")).ToList();
+                irregular |= authoredForms.Count > 0;
+                top.AddRange(authoredForms);
             }
 
             foreach (var (spelling, provenance) in top)
             {
                 if (seen.Add(spelling))
                 {
-                    // A primary form of the inflection database (abaci, aardwolves) is corroborated by the lemma it belongs to
-                    // when it has the regular shape of a plural (monarchs); the unusual ones need a second source
-                    var plainShape = kind == "Plur" ? Plain(kind) && new[] { headLow + "s", headLow + "es", headLow[..^1] + "ies" }.Any(c => string.Equals(Inflect(entry, [c])[0], spelling, StringComparison.Ordinal)) : Plain(kind) && inflectable && regular().Contains(spelling);
-                    yield return (spelling, provenance, provenance == "agid" && fromAgid && plainShape);
+                    yield return (spelling, provenance, false);
                 }
             }
 
-            var regulars = inflectable ? regular().ToArray() : [];
+            // Both authors decided that the word has no form of this kind (an uncountable noun, a modal verb): the rule does not
+            // generate one, unless a list or the written forms of the Open English WordNet name it
+            var vetoed = top.Count == 0 && listsApply && sources.Authored.NoForm.Contains((low, pos, rule));
+            var regulars = inflectable && !vetoed ? regular().ToArray() : [];
             foreach (var spelling in regulars)
             {
                 if (!seen.Add(spelling))
@@ -763,14 +757,14 @@ internal static partial class FormGenerator
                 }
                 else if (!irregular)
                 {
-                    // The written forms of the lexicon or the variants of the inflection database add to the regular spelling
-                    // (brethren and brothers, tost and tossed, squirrel and squirrels): it stays a variant. Only a word with listed
-                    // irregular forms (child, man, go) drops the regular spelling, unless the dictionary lists it.
+                    // The written forms of the lexicon add to the regular spelling (brethren and brothers, tost and tossed, squirrel
+                    // and squirrels): it stays a variant. Only a word with listed irregular or authored forms (child, man, go) drops
+                    // the regular spelling, unless the dictionary lists it.
                     yield return (spelling, "rule_variant", false);
                 }
-                else if (Moby(spelling) && context.Attested.TryGetValue(spelling.ToLowerInvariant(), out var attestedLemmas) && attestedLemmas.Contains(low))
+                else if (Moby(spelling) && context.Attested.TryGetValue(spelling.ToLowerInvariant(), out var attestedLemmas) && AttestsPos(attestedLemmas, low, pos))
                 {
-                    // The word has listed irregular forms and the inflection database names the regular spelling too (hung and
+                    // The word has listed irregular forms and the authors name the regular spelling too (hung and
                     // hanged); a dictionary word alone does not make bed a form of be
                     yield return (spelling, "rule_variant", false);
                 }
@@ -990,9 +984,11 @@ internal static partial class FormGenerator
     private static bool EndsInIrregularVerb(string word, IrregularSources sources) =>
         Enumerable.Range(0, Math.Max(word.Length - 2, 0)).Any(i => sources.Closed.ContainsKey((word[i..], "v")));
 
-    // A noun whose plural by rule is plausible: no Greek -sis, and no lemma that is already a plural in s
-    private static bool SanePlural(string word) =>
-        !word.EndsWith("sis", StringComparison.Ordinal) && (!word.EndsWith('s') || word.EndsWith("ss", StringComparison.Ordinal));
+    // A noun whose plural by rule is plausible: no Greek -sis, no lemma that is already a plural in s, and no lemma in -men whose
+    // singular in -man is a word (bagmen, dairywomen: the plural of a compound of man is not bagmens)
+    private static bool SanePlural(string word, Func<string, bool> listed) =>
+        !word.EndsWith("sis", StringComparison.Ordinal) && (!word.EndsWith('s') || word.EndsWith("ss", StringComparison.Ordinal))
+        && !(word.EndsWith("men", StringComparison.Ordinal) && listed(word[..^3] + "man"));
 
     // Tells whether the word is the plain regular inflection of the lemma: the rule gives exactly this spelling, the lemma is a
     // real word and the inflected verb is not one of an irregular verb's compounds
@@ -1006,7 +1002,7 @@ internal static partial class FormGenerator
         switch (features)
         {
             case "Number=Plur":
-                return pos == "n" && SanePlural(lemma) && InflectionRules.NounPlural(lemma)[0] == word;
+                return pos == "n" && SanePlural(lemma, moby.ContainsKey) && InflectionRules.NounPlural(lemma)[0] == word;
             case "Person=3+Tense=Pres":
                 return pos == "v" && InflectionRules.VerbThirdPerson(lemma) == word;
             case "Tense=Past+VerbForm=Part":
@@ -1016,6 +1012,36 @@ internal static partial class FormGenerator
             default:
                 return false;
         }
+    }
+
+    // The authored rules whose forms a row of the features holds
+    private static string[] RulesOf(string features) => features switch
+    {
+        "Number=Plur" => ["Plural"],
+        "Person=3+Tense=Pres" => ["Third"],
+        "Tense=Past+VerbForm=Part" => ["Past", "Participle"],
+        "VerbForm=Ger" => ["Gerund"],
+        "Degree=Cmp" => ["Comparative"],
+        "Degree=Sup" => ["Superlative"],
+        _ => [],
+    };
+
+    // Tells whether both authors agreed that the lemma has no form of the kind of the features (an uncountable noun, a modal verb): the
+    // reverse rules must not trace a dictionary spelling to it either (superbias is no plural of superbia)
+    private static bool VetoedByNone(IrregularSources sources, string lemma, string pos, string features) =>
+        RulesOf(features) is { Length: > 0 } rules && rules.All(rule => sources.Authored.NoForm.Contains((lemma, pos, rule)));
+
+    // Tells whether the authored forms name forms of the lemma for the kind of the features, and not this spelling: the authors are
+    // authoritative, so the regular spelling that they left out is no form of the lemma (foots is not the plural of foot)
+    private static bool NamesOtherForms(IrregularSources sources, string lemma, string pos, string features, string word)
+    {
+        var rules = RulesOf(features);
+        if (!sources.Authored.Forms.TryGetValue((lemma, pos), out var kinds))
+        {
+            return false;
+        }
+
+        return rules.Any(rule => kinds.Of(rule) is { Count: > 0 } list && !list.Any(f => string.Equals(f.Form, word, StringComparison.Ordinal)));
     }
 
     private static void ClassifyMoby(Context context, Dictionary<string, string[]> moby, Dictionary<(string, string), List<string[]>> byLemma, HashSet<string> overridden, HashSet<(string Word, string Pos)> added, IrregularSources sources)
@@ -1087,6 +1113,11 @@ internal static partial class FormGenerator
                         {
                             continue;
                         }
+                        if (NamesOtherForms(sources, candidate, pos, features, word) || VetoedByNone(sources, candidate, pos, features))
+                        {
+                            continue;
+                        }
+
                         if (byLemma.TryGetValue((candidate, pos), out var hits))
                         {
                             foreach (var hit in hits.Where(h => entryHits.Add((h[0], features))))
@@ -1151,8 +1182,7 @@ internal static partial class FormGenerator
             var generated = new List<(string Form, string Features)>();
             if (pos == "n")
             {
-                // An added compound of man (whaleman, irishman) has the plural in men
-                generated.Add((added.Contains((word, pos)) && word.Length > 5 && word.EndsWith("man", StringComparison.Ordinal) ? word[..^3] + "men" : InflectionRules.NounPlural(word)[0], "Number=Plur"));
+                generated.Add((InflectionRules.NounPlural(word)[0], "Number=Plur"));
             }
             else
             {
@@ -1164,7 +1194,7 @@ internal static partial class FormGenerator
 
             foreach (var (form, features) in generated)
             {
-                if (context.FrozenSpellings.Contains(form))
+                if (context.FrozenSpellings.Contains(form) || VetoedByNone(sources, word, pos, features))
                 {
                     continue;
                 }
@@ -1176,8 +1206,8 @@ internal static partial class FormGenerator
                 }
 
                 // A surface-only analysis is a plain regular inflection of a plain dictionary base (or an addition); the other
-                // spellings need the dictionary or the inflection database to attest them
-                var plain = (added.Contains((word, pos)) || PlainBase(word, pos)) && (pos != "n" || SanePlural(word));
+                // spellings need the dictionary or the authored forms to attest them
+                var plain = (added.Contains((word, pos)) || PlainBase(word, pos)) && (pos != "n" || SanePlural(word, moby.ContainsKey));
                 if (!moby.ContainsKey(form) && !plain && !(context.Attested.TryGetValue(form, out var attested) && attested.Contains(word)))
                 {
                     context.Count("surface_inflection_unlisted");
@@ -1244,7 +1274,7 @@ internal static partial class FormGenerator
                 // The dictionary listing of the word itself stays (a part of speech that the word list gives is never lost)
                 var listed = context.Moby.TryGetValue(spelling.ToLowerInvariant(), out var letters) ? letters : [];
                 unique = unique.Where(i => ClosedPos.Contains(PosOf(context, i), StringComparison.Ordinal) || i.Provenance is "hand" or "irregular_list"
-                    || (i.Provenance is "moby_reverse" && Array.IndexOf(listed, PosOf(context, i)) >= 0) || i.Provenance is "agid").ToList();
+                    || (i.Provenance is "moby_reverse" && Array.IndexOf(listed, PosOf(context, i)) >= 0) || i.Provenance is "llm").ToList();
             }
 
             // The frequency prior of an analysis is the place of its part of speech in the dictionary listing of its lemma (most

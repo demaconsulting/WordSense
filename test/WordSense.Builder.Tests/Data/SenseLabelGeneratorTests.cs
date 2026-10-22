@@ -214,7 +214,7 @@ public sealed partial class SenseLabelGeneratorTests : IDisposable
     }
 
     /// <summary>
-    ///     Senses with the same slug get the plain slug and then -2, -3 in inventory order (the tag count decides).
+    ///     Senses with the same slug get the plain slug and then -2, -3 in labeling order (the tag count decides).
     /// </summary>
     [Fact]
     public void WordSenseBuilder_SenseLabelGenerator_Generate_DuplicateLabels_GetNumericSuffixes()
@@ -237,6 +237,36 @@ public sealed partial class SenseLabelGeneratorTests : IDisposable
         Assert.Equal("club-2", labels["b2"]);
         Assert.Equal("club-3", labels["b1"]);
         Assert.Equal(4, output.Suffixed);
+    }
+
+    /// <summary>
+    ///     The labeling order is the part of speech, then the WordNet 3.0 count descending, then the UTF-8 bytes of the sense id;
+    ///     it is not the order in which the senses are listed (the order of Open English WordNet), so the label follows the counts.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_SenseLabelGenerator_Generate_LabelingOrder_FollowsPartOfSpeechCountAndSenseIdNotTheListedOrder()
+    {
+        // Arrange - the senses of bat are listed verb first, then n3, n1, n2; all share the synonym club. The verbs have the
+        // highest counts but the nouns come first; n2 and n3 have the same count, so the sense id decides; n1 has no count
+        var inputs = Inputs(
+            [
+                Sense("v9", "bat", "v", "yv"), Sense("cv", "club", "n", "yv"),
+                Sense("v8", "bat", "v", "yw"), Sense("cw", "club", "n", "yw"),
+                Sense("n3", "bat", "n", "y3"), Sense("c3", "club", "n", "y3"),
+                Sense("n1", "bat", "n", "y1"), Sense("c1", "club", "n", "y1"),
+                Sense("n2", "bat", "n", "y2"), Sense("c2", "club", "n", "y2"),
+            ],
+            counts: new Dictionary<string, int> { ["v9%"] = 9, ["v8%"] = 1, ["n2%"] = 4, ["n3%"] = 4 });
+
+        // Act
+        var labels = LabelsOf(SenseLabelGenerator.Generate(inputs));
+
+        // Assert - the first noun of the labeling order keeps the plain slug, then the verbs follow by count
+        Assert.Equal("club", labels["n2"]);
+        Assert.Equal("club-2", labels["n3"]);
+        Assert.Equal("club-3", labels["n1"]);
+        Assert.Equal("club-4", labels["v9"]);
+        Assert.Equal("club-5", labels["v8"]);
     }
 
     /// <summary>

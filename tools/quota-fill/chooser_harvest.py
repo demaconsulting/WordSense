@@ -6,7 +6,7 @@
 
 A chooser row is `form`, `label` (the lemma) and the sentence. A form is a target when its chooser rows lack a lemma
 (see choosers.py status) and every missing lemma is lower case. The labeler (gpt-6.1-sol) chooses the lemma among all
-lemmas of the form. All rows are targeted (`selection = targeted`, reason `form=<form>`).
+lemmas of the form. All rows are targeted (found or written for one form).
 """
 import argparse
 import collections
@@ -123,7 +123,6 @@ def cmd_select(args):
         old = os.path.join(qf.CORPUS, folder, tag)
         if os.path.exists(old):
             os.remove(old)
-    _rows, docs = pool.load_pool()
     blocked = qf.corpus_keys()
     doc_splits = qf.real_documents_by_split()
     current = choosers.form_lemmas()
@@ -181,12 +180,8 @@ def cmd_select(args):
         for it in chosen:
             split = "holdout" if it["role"] == "eval" else "anchors"
             out_rows[split].append("\t".join([form, lemma, it["sentence"]]))
-            src = fill.provenance_fields(docs[it["doc"]], it["sid"], it["family"])
-            found = (f"harvest: pool sentence with the form '{form}'; the lemma was chosen by {fill.LABEL_MODEL} "
-                     f"(high confidence) among all lemmas of the form")
-            out_rows["prov"].append("\t".join([fill.prov_id(form, it["sentence"]), lemma, "-", split, *src, "real",
-                                               "targeted", f"form={form}", found,
-                                               fill.licence_basis(docs[it["doc"]], it["family"])]))
+            src = fill.provenance_fields(it["sid"], it["family"])
+            out_rows["prov"].append("\t".join([fill.prov_id(form, it["sentence"]), split, *src]))
         stats[f"rows {lemma}"] += 0
     fill.write_lines(os.path.join(qf.CORPUS, "choosers", "anchors", tag), sorted(out_rows["anchors"]))
     fill.write_lines(os.path.join(qf.CORPUS, "choosers", "holdout", tag), sorted(out_rows["holdout"]))
@@ -334,13 +329,8 @@ def cmd_write_select(args):
         for i, it in enumerate(its):
             split = "holdout" if i in hold else "anchors"
             out_rows[split].append("\t".join([form, lemma, it["sentence"]]))
-            src = ("llm-corpus", "MIT (project-authored)", f"quota-w{args.wave}-forms-written", "-",
-                   f"gpt-5.6-luna (LLM-written); verified by {fill.LABEL_MODEL} blind lemma choice")
-            found = (f"written: gpt-5.6-luna wrote it for the form '{form}' as a form of '{lemma}'; "
-                     f"{fill.LABEL_MODEL} chose the same lemma blind (high confidence)")
-            out_rows["prov"].append("\t".join([fill.prov_id(form, it["sentence"]), lemma, "-", split, *src, "llm-corpus",
-                                               "targeted", f"form={form}", found,
-                                               "project-authored (MIT); no third-party text"]))
+            src = (fill.WRITTEN_SOURCE, f"quota-w{args.wave}-forms-written")
+            out_rows["prov"].append("\t".join([fill.prov_id(form, it["sentence"]), split, *src]))
     fill.write_lines(os.path.join(qf.CORPUS, "choosers", "anchors", tag), sorted(out_rows["anchors"]))
     fill.write_lines(os.path.join(qf.CORPUS, "choosers", "holdout", tag), sorted(out_rows["holdout"]))
     fill.write_lines(os.path.join(qf.CORPUS, "provenance", tag), out_rows["prov"], "\t".join(fill.PROV_COLUMNS))

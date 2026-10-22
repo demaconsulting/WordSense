@@ -8,7 +8,8 @@
 (lemma, part of speech, features, provenance), and a statistics report. The candidate senses of a word come from the
 entries of its analyses, so the tables carry no sense scope (the `form_sense_scope` table and the class tables that fed
 it are retired, and the generator reads and writes neither). `InflectionRules` holds the
-spelling rules; `AgidImporter` and `IrregularSources` read the closed lists and the inflection database.
+spelling rules; `AuthoredForms`, `OpenCorpusAttestation` and `IrregularSources` read the closed and hand lists, the forms
+written for the project and the tagged tokens of the open corpus.
 
 #### Data Model
 
@@ -16,16 +17,58 @@ Sources, each recorded as the provenance of a row:
 
 - curated: the Open English WordNet forms (`oewn_form`), the closed and hand lists (`irregular_list`, `hand`,
   `contraction`), and rows carried from earlier tables (`carried`);
-- generated: regular rules (`rule`, `rule_variant`), the inflection database of the dictionary words (`agid`) and the
-  reversed Moby word list (`moby_reverse`).
+- authored: the forms written for the project (`corpus/lexicon/forms-authored.tsv`, CC0 1.0): the primary forms are
+  `llm`, the variants `rule_variant`; see `data/PROVENANCE.md` and `corpus/lexicon/PROVENANCE.md` for how they were
+  written and verified;
+- generated: regular rules (`rule`, `rule_variant`) and the reversed Moby word list (`moby_reverse`).
 
 A generated row is written only when it is corroborated: a regular -s, -ed or -ing form of a real lemma passes on rule
-and base alone; any other row needs a second source (the word list that lists the spelling, or the inflection database
-that attests it for that lemma and part of speech). Everything else is dropped and counted.
+and base alone; any other row needs a second source (the word list that lists the spelling, or the authored forms or the
+tagged tokens of the open corpus that attest it for that lemma and part of speech). Everything else is dropped and counted.
+The authored forms are authoritative like the hand and closed lists: they join the forms that a list or the written
+forms of the Open English WordNet name for the same kind (a spelling that another source named first keeps that
+source's provenance; `argali` and `argalis`, `alumni` and `alumnuses`), a word with authored forms of a kind keeps the
+regular spelling of that kind only when the authors name it, the reverse rules of the dictionary do not trace a spelling
+to a lemma whose authored forms leave it out (`foots` is no plural of `foot`), and a decision of both authors that a form
+does not exist (the sidecar `forms-authored-provenance.tsv`) stops the rule that would generate it and the reverse
+rule that would trace a dictionary spelling to the lemma (`superbias` is no plural of `superbia`). A lemma ending in
+`-men` whose singular in `-man` is a word is a plural already and gets no plural by rule (`bagmen`).
+
+The regular rules (`InflectionRules`) carry these decisions, each with a unit test; they came from comparing the rule
+output with the authored forms and from the forms audit:
+
+- The plural of a compound of man or woman is `-men` or `-women` (`icewomen`), except for the words that only end in
+  `-man` (`human`, `german`, `roman`, `ottoman`, `talisman`, `shaman`).
+- Consonant doubling treats `qu` as one consonant (`equipped`, `quipped`); a compound of a monosyllabic verb doubles
+  (`wiretapped`, `suntanned`); the doubled alternative stays only for the listed verbs.
+- A noun in `-quy` takes `-quies` (`obsequies`); a compound of a noun in `-o`, `-f` or `-fe` takes the plural of its
+  last noun (`superheroes`, `werewolves`, `midwives`), with exceptions (`lowlife`, `behalf`, `handkerchief`).
+- Of the verbs in `-ie` only `die`, `hie` and the verbs in `-tie`, `-lie` and `-vie` change to `-ying`; the others add
+  `-ing` (`birdieing`, but `hogtie` gives `hogtying`).
+- A spelling in `-s` of a verb is a third person, never a past (`chevies`, `gasses`, `quizzes`); a spelling of the base
+  itself is not a past; a phrase whose head is an irregular verb has no regular past (`goed ahead`).
+- The invariant plurals of the units `hertz`, `kilohertz`, `megahertz` and `gigahertz`, of `bourgeois` and of
+  `offspring` are in `irregular-closed.tsv`.
+- A verdict of both authors that a form does not exist (`NONE`) stops the regular rule for that lemma and kind. The
+  authors judge rare regular forms of mass, rare or defective words invalid; no objective signal in the committed data
+  (written forms, the Moby list, the open corpus) separates those forms from valid ones, so none is kept.
+
+Forms that only an earlier third-party inflection database attested (plurals spelled like the singular such as `salmon`
+or `trout`, and variants that the authors do not reproduce) are not in the table on purpose: adding them from the old
+file would copy it back.
+
+Coverage: expanding every dictionary word to its inflected forms raised the share of known running words in a sample of
+86 Project Gutenberg texts (13.2 million tokens) from 92.1% to 95.9% (97.1% without the apostrophe tokens, which are
+unknown by design). What remains unknown is names, fragments of hyphenated or line-broken words, French words, eye
+dialect and misspellings. The rules deliberately generate no dialect forms (`knowed`), no archaic verb endings (`-est`,
+`-eth`), no contractions outside the closed list and no derivations in `-ity`, `-ous`, `-ive`, `-ation`, `-ment` or
+`-able`: the dictionary has the common ones, and a rule for each would add many non-words. The `coverage` command of the
+builder repeats the measurement on a folder of text files.
 
 Frozen rows are the reviewed analyses of earlier tables. They are a committed explicit input, `corpus/lexicon/form-frozen.tsv`,
 and the generator never reads its own output: the tables are a function of the entry tables, that file, the lexicon
-lists, the corrections file and the two pinned external sources. A frozen spelling with the flag `open` takes the
+lists, the corrections file, the authored forms and the pinned Open English WordNet file. A frozen spelling with the
+flag `open` takes the
 generated analyses of other entries after the frozen ones; a spelling without it stays as reviewed (`bowed` is only the
 bend verb); a closed-class spelling with the flag `only` keeps only its closed-class analyses. Frozen rows count as
 `carried` in the provenance statistics. The class column of a frozen row (the class ids of the retired inventory) is not
@@ -33,7 +76,7 @@ read. A closed word that the dictionary lists only as an open-class word is give
 project entry (`or` has the conjunction `dema-or-c` first, followed by the noun and adjective analyses of the
 dictionary).
 
-An -ing noun does not get a plural spelled like its singular from the inflection database (the mass nouns `bowling`,
+An -ing noun does not get a plural spelled like its singular (the mass nouns `bowling`,
 `catling`, `feeling`); the plural of the rules is generated instead. The invariant names (`herring`, `offspring`, `ling`,
 `whiting`) keep theirs.
 
@@ -74,22 +117,37 @@ the sample, and the command fails when one lacks its own analysis.
 
 #### Key Methods
 
-- `Run(data, corpus, oewn, agid, output, oewnSha256, agidSha256)`: reads the entries, the frozen input and the sources,
+- `Run(data, corpus, oewn, output, oewnSha256)`: reads the entries, the frozen input and the sources,
   generates, prunes and writes the tables to `output` (the data directory by default); returns the statistics.
 - `Corroborated` / `Prune`: the two-source rule.
 - `ListRank`: the order of the analyses of a spelling.
 
 #### Error Handling
 
-A missing input, or an Open English WordNet or inflection-database file whose SHA-256 differs from its pin, throws
-before any file is written. A reviewed input (`form-frozen.tsv`) with a row that has the wrong number of columns, or
+A missing input, or an Open English WordNet file whose SHA-256 differs from its pin, throws
+before any file is written. A malformed authored file (a level that is not 0 or 1, an unknown rule) throws
+`InvalidDataException` with the lemma. Authored forms need their provenance sidecar: a missing sidecar, a header that
+is not exact, a row without its ten non-empty columns, a licence other than `CC0 1.0 (project-authored)`, an unknown
+rule, a verdict and result that do not go together (`agree` or `adjudicated` with `forms` or `none`;
+`regular-accepted` with `forms`) or a second decision for the same lemma, part of speech and rule throws
+`InvalidDataException` with the path and the line. The two files are cross-checked by lemma, part of speech and rule (the
+sidecar does not record the forms): the sidecar holds exactly one decision, with the result `forms`, for every authored
+row, and every decision with the result `forms` needs its authored row; an authored row without a decision, an authored
+row whose decision says that the form does not exist, and a decision for forms without an authored row throw
+`InvalidDataException` naming both files and the key. A decision that the form does not exist (`none`) has no authored row
+and is not cross-checked, because nothing in the repository lists the tasks that were given, so a missing one cannot be
+detected. A token line of a training split of the open corpus that is short,
+outside a sentence or without a form, lemma or tag throws the same way (the attestation reads the corpus with the
+strict `OpenCorpus` reader); it is never skipped.
+A reviewed input (`form-frozen.tsv`) with a row that has the wrong number of
+columns, or
 with two rows of one kind that repeat a spelling, an entry and features (the same analysis twice, whatever the other
 columns say), throws `InvalidDataException` with the file and the line of the repeat and of the first row; the
 generator does not dedupe silently, because a repeated analysis is an error of the reviewed input.
 
 #### Dependencies
 
-`DataSchema`, `DataLayout`, `InflectionRules`, `AgidImporter`, `IrregularSources`.
+`DataSchema`, `DataLayout`, `InflectionRules`, `AuthoredForms`, `OpenCorpusAttestation`, `IrregularSources`.
 
 #### Callers
 

@@ -264,7 +264,10 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     /// <returns>A non-null array parallel to <paramref name="words"/>; empty for an empty list.</returns>
     /// <remarks>
     ///     An unknown word is answered with <see cref="ClassifyResult.Unknown"/>. A word with one analysis and one sense
-    ///     is answered at the <see cref="SenseLevel.Sense"/> level with confidence 1. A word whose lemma has trained
+    ///     is answered at the <see cref="SenseLevel.Sense"/> level with confidence 1. A word with a single lemma and part of
+    ///     speech and several senses is at the <see cref="SenseLevel.PartOfSpeech"/> level with confidence 1 when it is not
+    ///     scored (the slot has no alternative) and when the encoder does not resolve a sense, so confidence 1 does not mean
+    ///     that a sense is known (test the level). A word whose lemma has trained
     ///     weights and several scored senses is scored with the encoder: its analyses get their probabilities, each
     ///     lists its senses ranked by their probability, and the answer is at the finest level the lemma's thresholds
     ///     support (sense, group or part of speech). Every other known word (no trained weights) is answered from the

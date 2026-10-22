@@ -34,13 +34,12 @@ vocabularies:
     oewn_form: a written form listed by the Open English WordNet entry
     irregular_list: a form of a closed list of irregular forms of the language
     rule: a form produced by the regular suffix and spelling rules
-    rule_variant: an attested variant produced by the rules or listed as a variant by AGID
-    agid: a form that the Automatically Generated Inflection Database adds to the other sources
+    rule_variant: an attested variant produced by the rules or written as a variant in the authored forms
     moby_reverse: a form of the Moby word list that a reverse rule traces to its base word
     contraction: a form of the closed list of contractions
     carried: an analysis kept unchanged from the earlier table because a review depends on it
     hand: a form of a hand-written list of project decisions
-    llm: an analysis decided by a language model and kept for review
+    llm: a form written for the project by a language model and checked blind by a second model (forms-authored.tsv)
   synset_pos:
     n: noun
     v: verb

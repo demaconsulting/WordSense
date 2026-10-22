@@ -228,15 +228,15 @@ public sealed class EvaluatorTests : IDisposable
         _dir.Write("corpus/holdout/h.tsv", $"test\t{a1.SenseId}\t{a1.PartOfSpeech}\t{sentences[0]}\ntest\t{a1.SenseId}\t{a1.PartOfSpeech}\t{sentences[1]}\ntest\t{b.SenseId}\t{b.PartOfSpeech}\t{sentences[2]}\n");
         static string Id(string sentence) =>
             Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(System.Text.Encoding.UTF8.GetBytes("test|" + sentence)))[..12].ToLowerInvariant();
-        var header = string.Join('\t', "id", "lemma", "sense", "split", "source", "licence", "source_key", "url", "contributor", "origin", "selection");
-        string Row(string sentence, string sense, string source, string key, string origin) =>
-            string.Join('\t', Id(sentence), "test", sense, "holdout", source, "Public domain", key, "-", "c", origin, "targeted");
+        var header = string.Join('\t', "id", "split", "source", "source_key");
+        string Row(string sentence, string source, string key) =>
+            string.Join('\t', Id(sentence), "holdout", source, key);
         _dir.Write(
             "corpus/provenance/p.tsv",
             header + "\n" +
-            Row(sentences[0], a1.SenseId, "gutenberg", $"pg{testBook.ToString(CultureInfo.InvariantCulture)}#s1", "real") + "\n" +
-            Row(sentences[1], a1.SenseId, "gutenberg", $"pg{calibrationBook.ToString(CultureInfo.InvariantCulture)}#s1", "real") + "\n" +
-            Row(sentences[2], b.SenseId, "llm-corpus", "quota-w1-written", "llm-corpus") + "\n");
+            Row(sentences[0], "gutenberg", $"pg{testBook.ToString(CultureInfo.InvariantCulture)}#s1") + "\n" +
+            Row(sentences[1], "gutenberg", $"pg{calibrationBook.ToString(CultureInfo.InvariantCulture)}#s1") + "\n" +
+            Row(sentences[2], "llm-corpus", "quota-w1-written") + "\n");
         var info = new ModelInfo("fake", "pkg", null, _ => new ScriptedModel(script));
         using var progress = new StringWriter();
 

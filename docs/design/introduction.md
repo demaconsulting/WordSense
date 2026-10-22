@@ -65,7 +65,7 @@ software items, specifically:
 - **WordSenseBuilder (Unit)** — the non-shipped build-time tool that creates the lexicon blob and the weights blobs,
   chooses the thresholds and measures the models
 - **WordData (Subsystem)** — the TSV word data under `data/` (imported from Open English WordNet, CC BY 4.0, with the
-  WordNet 3.0 sense counts) and the non-shipped builder code that imports, labels and validates it
+  WordNet 3.0 sense counts for the usage prior) and the non-shipped builder code that imports, labels and validates it
   - **DataSchema**, **DataLayout**, **OewnImporter**, **FormGenerator**, **FormAuditor**, **DataValidator** and
     **SenseLabelGenerator (Units)** — the schema, the file layout, the import, the generated forms and their audit,
     the validation and the readable sense labels
@@ -123,9 +123,12 @@ form layers:
   `BasicWordSenseModel`, a statistical tagger and cue model that answers at the part of speech level (and the sense
   level where the lemma and part of speech have one sense). It holds no encoder weights and no ONNX code. Its
   package license expression is `MIT AND CC-BY-4.0` and a packed `NOTICE.md` carries the attribution of the data
-  embedded in it (Open English WordNet 2025 under CC BY 4.0, and the Princeton WordNet 3.0 notice) and records that the
-  statistics of the built-in model come from our own CC0 corpora (the open part-of-speech corpus and the sentence
-  corpus) and from no treebank.
+  embedded in it and records where each source comes from: Open English WordNet 2025 under CC BY 4.0 with the
+  Princeton WordNet notice that it requires, the Moby Part-of-Speech List (public domain), the inflected forms authored
+  by the project (CC0 1.0) and the project data (MIT), and the tagged tokens of the open part-of-speech corpus (CC0 1.0),
+  which corroborate generated forms at build time and are not embedded. The statistics of the built-in model come from
+  our own CC0 corpora (the open part-of-speech corpus and the sentence corpus) and from no treebank. The WordNet 3.0 counts
+  are used only for the usage prior of the encoder models.
 - The **Onnx** package implements the contracts for any BERT-style encoder: model file management, encoder,
   tokenizer, weights, thresholds and scoring of the fine senses. It references the core package and ONNX Runtime, and
   nothing else: its abstract encoder model is usable on its own and answers from the lexicon and the encoder alone.
@@ -133,13 +136,26 @@ form layers:
   weights and thresholds trained for it and composes the encoder model with the core Basic model through the core
   `FallbackWordSenseModel`, so that a word the encoder does not score is answered by the Basic model. They reference
   the core and Onnx packages. Each ships a packed `NOTICE.md` with the Princeton WordNet 3.0 notice for the sense usage
-  prior of its weights and the record that the encoder model files (Apache License 2.0) are downloaded from this
+  prior of its weights, the Open English WordNet (CC BY 4.0) attribution for the sense ids the weights hold (their
+  license expression is `MIT AND CC-BY-4.0`) and the record that the encoder model files (Apache License 2.0) are
+  downloaded from this
   repository, not shipped.
 
 The dependency rule is that a package may reference only the packages in layers below it: core references nothing,
 Onnx references core only, and MiniLM and BertBaseCased reference core and Onnx. No package
 references a sibling model package other than these two. The builder
-tool references all four packages and is never shipped.
+tool references all four packages and is never shipped. Further rules of the split:
+
+- The core knows nothing of encoder models: it has no vectors, encoder weights, ONNX or tokenizer, and names no model
+  package in code. A model is anything that implements `IWordSenseModel`.
+- Weights belong to a model package: each encoder package embeds one `weights.bin` trained for its exact model files and
+  checked against their SHA-256 digests. Model files live in `model/<model-id>/`, which also names the mirror folder, the
+  per-user store folder and the GitHub LFS path.
+- The word table is shared: `WordLexicon` serves the analyses of all known spellings, including the inflections that the
+  builder materializes at build time, so no model needs morphology at run time.
+- `IWordSenseModel` is `IDisposable`: the model owns the ONNX session and the downloader state and so the lifetime
+  (the Basic model honors the same contract and releases nothing). The mirror configuration is the sealed record
+  `MirrorOptions` in the core, so every model package takes the same argument; models that need no files ignore it.
 
 ![WordSense system](WordSenseView.svg)
 
@@ -196,6 +212,9 @@ model/<model-id>/                                  — model files (ONNX file, v
                                                       SHA256SUMS, the Apache License 2.0 LICENSE) of each encoder
                                                       model
 tools/WordSense.Builder/                           — word-sense-builder unit (not shipped)
+tools/                                             — the other maintainer tools (not shipped): forms-audit, model-prep,
+                                                      quota-fill and tokenizer-fixture;
+                                                      tools/README.md describes each tool folder
 tools/open-corpus/                                 — the scripts that built the open part-of-speech corpus (Python,
                                                       not shipped; downloads go to its git-ignored cache)
 tools/WordSense.Builder/Data/                      — word-data subsystem units (DataSchema.cs and SchemaYaml.cs,

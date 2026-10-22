@@ -23,11 +23,16 @@ was trained against.
   was not recorded.
 - It is **not** byte-identical to any upstream `onnx/model_qint8_*.onnx` file published in the Hugging Face repository
   (the upstream `model_qint8_avx512.onnx` is about 24.1 MB while this file is 22,972,370 bytes), so the Hugging Face
-  source is never used for it. See `docs/build_notes/model-provenance.md`.
+  source is never used for it.
 - `vocab.txt` is the standard BERT uncased vocabulary shipped with the base model.
 
 All downloadable assets (every file except this README, `LICENSE` and `SHA256SUMS`) are Git LFS objects, served from
 `https://media.githubusercontent.com/media/demaconsulting/WordSense/{ref}/model/all-MiniLM-L6-v2-int8/{file}`.
+The model ID `all-MiniLM-L6-v2-int8` names this folder everywhere: `<mirror>/<model-id>/` on a mirror,
+`<store>/<model-id>/` in the per-user store and `<ref>/model/<model-id>/` on the LFS endpoint. A missing file is requested
+from the mirror first (the argument of `EnsureModelAsync` or the `WORDSENSE_MIRROR_URL` environment variable), then from
+the LFS endpoint; Hugging Face is not a download source. The weights embedded in the package are valid only for the exact
+`model_int8.onnx` listed in `SHA256SUMS`.
 
 ## License
 

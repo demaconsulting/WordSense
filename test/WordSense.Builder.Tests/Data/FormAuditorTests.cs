@@ -77,10 +77,10 @@ public sealed class FormAuditorTests
     [Fact]
     public void WordSenseBuilder_FormAuditor_Evaluate_ValidAdjudication_Clears()
     {
-        var sample = new List<FormAuditor.Row> { Row("mongoes", "agid/entry") };
+        var sample = new List<FormAuditor.Row> { Row("mongoes", "llm/entry") };
         var verdicts = new Dictionary<string, string> { [Key("mongoes")] = "bad" };
         var adjudications = new Dictionary<string, string> { ["mongoes\tmongoes\tn"] = "valid" };
-        var result = FormAuditor.Evaluate(sample, new Dictionary<string, int> { ["agid/entry"] = 700 }, verdicts, adjudications, 0.01);
+        var result = FormAuditor.Evaluate(sample, new Dictionary<string, int> { ["llm/entry"] = 700 }, verdicts, adjudications, 0.01);
         Assert.True(result.Passed);
         Assert.Equal(1, result.Strata[0].Disagreed);
         Assert.Equal(0, result.Strata[0].Errors);
@@ -166,12 +166,12 @@ public sealed class FormAuditorTests
     [Fact]
     public void WordSenseBuilder_FormAuditor_Evaluate_GeneratedStratumWithoutCheckedRows_Fails()
     {
-        var sample = new List<FormAuditor.Row> { Row("cats", "rule/entry"), Row("dogs", "agid/entry") };
+        var sample = new List<FormAuditor.Row> { Row("cats", "rule/entry"), Row("dogs", "llm/entry") };
         var verdicts = new Dictionary<string, string> { [Key("cats")] = "ok", [Key("dogs")] = "skip" };
-        var population = new Dictionary<string, int> { ["rule/entry"] = 10, ["agid/entry"] = 10, ["moby_reverse/surface"] = 5 };
+        var population = new Dictionary<string, int> { ["rule/entry"] = 10, ["llm/entry"] = 10, ["moby_reverse/surface"] = 5 };
         var result = FormAuditor.Evaluate(sample, population, verdicts, [], 0.01);
         Assert.False(result.Passed);
-        Assert.Contains(result.Failures, f => f.StartsWith("agid/entry", StringComparison.Ordinal));
+        Assert.Contains(result.Failures, f => f.StartsWith("llm/entry", StringComparison.Ordinal));
         Assert.Contains(result.Failures, f => f.StartsWith("moby_reverse/surface", StringComparison.Ordinal));
     }
 

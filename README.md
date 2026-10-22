@@ -213,9 +213,9 @@ See the
 <!-- model-table:begin -->
 | Model | Real-text sense (share @ precision) | Running-text part of speech (open corpus test) | UD-EWT test part of speech (convention-mapped) | Independent sense evaluation (SemCor) | STE challenge set (part of speech) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Basic | 4.76% @ 74.00% | 93.85% (ambiguous 91.49%) | 91.60% (ambiguous 88.54%) | 3.31% @ 67.40% (top-1 2.51%) | 98.65% (ambiguous 97.83%) | none | 145 KiB | 4 MiB | 0.11 ms | 34 ms + 58 ms | no |
-| MiniLM | 3.09% @ 87.69% | 93.73% (ambiguous 91.30%) | 91.68% (ambiguous 88.66%) | 2.42% @ 85.55% (top-1 53.76%) | 98.20% (ambiguous 97.10%) | 22 MiB | 4,158 KiB | 98 MiB | 1.52 ms | 443 ms + 60 ms | yes |
-| BERT base cased | 15.70% @ 94.24% | 94.03% (ambiguous 91.79%) | 91.95% (ambiguous 89.09%) | 17.01% @ 86.67% (top-1 60.91%) | 98.20% (ambiguous 97.10%) | 104 MiB | 8,147 KiB | 221 MiB | 8.08 ms | 684 ms + 56 ms | yes |
+| Basic | 4.80% @ 73.27% | 93.85% (ambiguous 91.49%) | 91.60% (ambiguous 88.54%) | 3.32% @ 67.27% (top-1 2.51%) | 98.65% (ambiguous 97.83%) | none | 145 KiB | 4 MiB | 0.11 ms | 34 ms + 58 ms | no |
+| MiniLM | 3.14% @ 86.36% | 93.73% (ambiguous 91.29%) | 91.68% (ambiguous 88.66%) | 2.43% @ 85.10% (top-1 53.61%) | 98.20% (ambiguous 97.10%) | 22 MiB | 4,157 KiB | 98 MiB | 1.52 ms | 443 ms + 60 ms | yes |
+| BERT base cased | 15.75% @ 93.96% | 94.03% (ambiguous 91.79%) | 91.95% (ambiguous 89.09%) | 17.03% @ 86.61% (top-1 60.71%) | 98.20% (ambiguous 97.10%) | 104 MiB | 8,143 KiB | 221 MiB | 8.08 ms | 684 ms + 56 ms | yes |
 <!-- model-table:end -->
 
 <!-- markdownlint-enable MD013 -->
@@ -226,13 +226,14 @@ See the
 - ⚡ **Basic** (core package, no download, 0.11 ms a sentence): the part of speech of every word, and the sense of a
   word that has one. Use it when the part of speech is all you need, and as the fallback of the other two.
 - 🎯 **BertBaseCased** (104 MiB download, about 8 ms a sentence): the model for **fine senses**. For the 826 trained
-  lemmas it commits to a fine sense on 15.7% of the real test sentences (17.0% of the SemCor words, the SemCor subset of
-  775 of those lemmas) and is right in 94.2%
-  (86.7% on SemCor) of those answers; its most probable sense is right for 60.9% of the SemCor words, about as often as
-  always choosing the most frequent sense (60.7%, an optimistic baseline).
+  lemmas it commits to a fine sense on 15.8% of the real test sentences (17.0% of the SemCor words, the SemCor subset of
+  775 of those lemmas) and is right in 94.0%
+  (86.6% on SemCor) of those answers; its most probable sense is right for 60.7% of the SemCor words, about as often as
+  always choosing the first sense in Open English WordNet order (60.7%, an optimistic baseline: see the SemCor caveat in
+  [Accuracy and Model Choice](docs/user_guide/accuracy.md)).
 - ⚖️ **MiniLM** (22 MiB download, about 1.5 ms a sentence): mostly part of speech and groups. It commits to a fine
-  sense on only 3.1% of the real test sentences (87.7% right) and its most probable sense is right for 53.8% of the
-  SemCor words, below the most-frequent-sense baseline; choose it for the small download and the speed, not for senses.
+  sense on only 3.1% of the real test sentences (86.4% right) and its most probable sense is right for 53.6% of the
+  SemCor words, below the first-sense baseline; choose it for the small download and the speed, not for senses.
 
 **What the columns measure.**
 
@@ -257,42 +258,40 @@ See the
 - *STE challenge set*: the 32 hard sentences of simplified technical English of the open corpus, scored like the running
   text; it is small and chosen for its hard cases, so read it as a regression check and not as accuracy.
 
-The sense-level answers are calibrated on real text towards a precision of 95%: BertBaseCased reaches 94.2% on the real
-test sentences and MiniLM 87.7% (its thresholds could not reach the target), and on SemCor, which is very unlike the
-training sentences, the answers are right in 86.7% (BERT) and 85.6% (MiniLM) of the cases, and the encoder models commit
+The sense-level answers are calibrated on real text towards a precision of 95%: BertBaseCased reaches 94.0% on the real
+test sentences and MiniLM 86.4% (its thresholds could not reach the target), and on SemCor, which is very unlike the
+training sentences, the answers are right in 86.6% (BERT) and 85.1% (MiniLM) of the cases, and the encoder models commit
 to a fine sense for a minority of the words (17.0% and 2.4% of the SemCor words). The probabilities of the fine senses
 are corrected to the usage of the senses (WordNet 3.0 counts);
-that raised the fine top-1 on SemCor from 56.9% to 60.9% (BERT) and from 47.5% to 53.8% (MiniLM) and lowers it slightly
-on the real test sentences, which are balanced by sense (`docs/build_notes/frequency-prior.md`). The sense choice of the
-encoders is not yet better than the most-frequent-sense baseline for the words they cover; the part of speech is the
+that raised the fine top-1 on SemCor from 56.9% to 60.7% (BERT) and from 47.5% to 53.6% (MiniLM) and lowers it slightly
+on the real test sentences, which are balanced by sense (see [Accuracy and Model Choice][link-accuracy]). The sense
+choice of the
+encoders is not yet better than the first-sense baseline for the words they cover; the part of speech is the
 dependable part of an answer today. The RAM, latency and first-use columns were measured on one idle development
-machine (an Intel Core i7-13850HX laptop, Windows 11, .NET 10; see `docs/build_notes/model-table.md` for the
-conditions and the spread of repeated runs), so they are machine dependent: read them as the order of magnitude and the
+machine (an Intel Core i7-13850HX laptop, Windows 11, .NET 10; the conditions and the spread of repeated runs are in
+[Accuracy and Model Choice][link-accuracy]), so they are machine dependent: read them as the order of magnitude and the
 ratio between the models. The levels of the
-encoder answers on the real test sentences (`docs/build_notes/quota-fill.md` and `docs/build_notes/independent-evaluation.md`
-have the full tables and the sets that `evaluate` reports):
+encoder answers on the real test sentences (the sets that `evaluate` reports are listed in the same chapter):
 
 | Model | Sense (share, precision) | Group (share, precision) | Part of speech (share, precision) | Fine top-1 |
 | --- | ---: | ---: | ---: | ---: |
-| MiniLM | 3.1%, 87.7% | 0.9%, 77.8% | 96.1%, 93.6% | 56.4% |
-| BERT base cased | 15.7%, 94.2% | 0.7%, 100% | 83.6%, 95.6% | 65.8% |
+| MiniLM | 3.1%, 86.4% | 0.9%, 77.8% | 96.0%, 93.6% | 56.4% |
+| BERT base cased | 15.8%, 94.0% | 0.7%, 100% | 83.6%, 95.6% | 65.8% |
 
-The table is generated into `docs/build_notes/model-table.md`; the user guide explains how the numbers were measured
-and lists the confidence thresholds of each model. A reviewed suite of 348 sentences about common ambiguous words
-(`corpus/suite`) guards each model against regressions. See also the [model comparison][link-model-comparison] and the
-[Basic evaluation][link-basic-evaluation] (both measure the earlier part-of-speech classes and are historical).
+The table is generated into [docs/user_guide/model-table.md][link-model-table]; the user guide chapter
+[Accuracy and Model Choice][link-accuracy] explains how the numbers were measured and how to read them. A reviewed suite
+of 348 sentences about common ambiguous words (`corpus/suite`) guards each model against regressions.
 
 ## Planned Improvements
 
-This version is a foundation, and these follow-ups are planned (the figures are from the build notes and the corpus
-reports):
+This version is a foundation, and these follow-ups are planned (the figures are from the corpus reports):
 
 - **More fine-sense training data.** Fill the per-sense quotas beyond the top 200 lemmas (waves 1 to 3 covered lemmas
   1 to 200), and refill the senses that lost sentences when the Tatoeba CC BY rows were removed from the corpus: at
   present 2,712 of the 6,969 senses of the trained lemmas meet their quota, 2,871 are short and 1,386 have no sentence at
   all (24,458 anchors and 7,648 held-out sentences are missing, see `WordSense.Builder tiers`).
 - **More fine senses on real text at the 0.97 target, and fine senses for MiniLM.** MiniLM answers only 3.1% of the real
-  test sentences at the sense level and BertBaseCased 15.7%; more and better-balanced data, and tuning the
+  test sentences at the sense level and BertBaseCased 15.8%; more and better-balanced data, and tuning the
   calibration (for example per domain), should raise both.
 - **A second check of the annotations.** Cross-check the open corpus with the second annotator `gemma4` (36% of its tokens
   are still `unchecked`, about 4,500 sentences) and cross-check the relabeled rows of the fine-sense corpus, and take a
@@ -301,18 +300,24 @@ reports):
   words.
 - **More genres for the tagger.** Add informal web-genre data (with a license that allows it) to the open part-of-speech
   corpus.
-- **A broader technical (STE) domain.** The senses still missing from the catalog or the corpus are listed in
-  `docs/build_notes/quota-fill.md`: bleed air, `torque` as a sense, a lock as a mechanism, a moment arm, a ground roll and
-  aerodynamically clean.
+- **A broader technical (STE) domain.** The senses still missing from the catalog or the corpus are listed in the
+  method of the quota filling in `corpus/README.md`: bleed air, `torque` as a sense, a lock as a mechanism, a moment arm,
+  a ground roll and aerodynamically clean.
 - **Participial adjectives.** A policy for the 105 participial adjective entries that are left without an adjective
   analysis (only 9 have it), with a relabeling of the corpus rows that name them.
 - **A stricter suite.** One-sense labels for the 174 suite rows that accept a set of senses, so that the rows become
   stricter.
 - **Open work items of the code base:** the clean-up of the static analysis findings, the hardening of the word image
   reader, typed exceptions for model and file failures, and the placement of `EnsureModelAsync` and `MirrorOptions`.
-- **The formal review backlog.** The first formal review of all 33 review-sets left compliance and hardening items open
-  (atomic requirements, test structure, packaging tests and the decomposition of the build-time tool); they are listed in
-  `docs/build_notes/formal-review-backlog.md`.
+- **Formal review follow-ups.** The first formal review of all 33 review-sets left compliance and hardening items open:
+  split the compound requirements into atomic ones and move requirements that prescribe the implementation into the
+  design documents; add typed method contracts to the unit designs; label the Arrange, Act and Assert steps in the
+  tests, link system and subsystem requirements to tests of the same level and make the CI acceptance run fail on skipped
+  model tests; add pack-and-inspect tests for the package metadata of all four packages; add direct tests for
+  `FeatureExtractor`, `VectorMath` and the catalog-wide invariants; harden the word image and the Basic table readers
+  (overlap and flags of the image directories, an immutable `BasicTables`, trailing bytes after the Brotli stream);
+  model the builder as a subsystem with its own units and the OTS items in SysML2; automate the reproducibility check of
+  the real weights and use the full digest as the inventory version.
 
 ## Documentation
 
@@ -325,31 +330,33 @@ reports):
 
 The packages that embed derived data (`DemaConsulting.WordSense`, `DemaConsulting.WordSense.MiniLM` and
 `DemaConsulting.WordSense.BertBaseCased`) carry this section in their package
-readme. The corpus itself is not shipped in the packages, only the derived tables and weights; every real sentence is
-recorded with its source, license and URL in `corpus/provenance/`.
+readme. The corpus itself is not shipped in the packages, only the derived tables and weights; every sentence has a
+row in `corpus/provenance/` (its id, split, source and source document), and the license evidence and the URLs of each
+source are in `corpus/README.md` ("Sources").
 
 Package licenses:
 
 - **`DemaConsulting.WordSense`** (core): `MIT AND CC-BY-4.0`. The code and the project-authored word data are MIT; the
-  embedded word image is derived from Open English WordNet 2025 (CC BY 4.0), with the WordNet 3.0 sense counts under the
-  Princeton license; the embedded statistical table of the `Basic` model is derived from our own CC0 1.0 corpora (the
-  open part-of-speech corpus and the sentence corpus below). The package contains a `NOTICE.md` with the attribution
-  and the notices of Open English WordNet, WordNet 3.0, AGID and the Moby list. There is no CC BY-SA material in any
-  package. The former `DemaConsulting.WordSense.Basic` package is retired (before version 1.0): its model, `Basic`,
-  moved into the core package.
-- **`DemaConsulting.WordSense.Onnx`, `DemaConsulting.WordSense.MiniLM` and `DemaConsulting.WordSense.BertBaseCased`**:
-  `MIT`. The weights are statistical summaries of the corpus and do not contain its sentences. They carry a sense usage
-  prior derived from the WordNet 3.0 sense counts (added to the stored biases), so the MiniLM and BertBaseCased packages
-  contain a `NOTICE.md` with the WordNet 3.0 notice. The encoder model files are not in the packages; they are
-  downloaded from this repository under the Apache License 2.0 (`model/<model-id>/LICENSE`).
+  embedded word image is derived from Open English WordNet 2025 (CC BY 4.0), the Moby Part-of-Speech List (public
+  domain) and the inflected forms that the project authored (CC0 1.0); the embedded statistical table of the `Basic`
+  model is derived from our own CC0 1.0 corpora (the open part-of-speech corpus and the sentence corpus below). The
+  package contains a `NOTICE.md` with the attribution of Open English WordNet, the Princeton WordNet notice that Open
+  English WordNet requires, and the Moby notice. There is no CC BY-SA material in any package. The former
+  `DemaConsulting.WordSense.Basic` package is retired (before version 1.0): its model, `Basic`, moved into the core
+  package.
+- **`DemaConsulting.WordSense.MiniLM` and `DemaConsulting.WordSense.BertBaseCased`**: `MIT AND CC-BY-4.0`. The weights
+  are statistical summaries of the corpus and do not contain its sentences, but they hold the sense ids of Open English
+  WordNet (CC BY 4.0), and they carry a sense usage prior derived from the WordNet 3.0 sense counts (added to the stored
+  biases). Each package contains a `NOTICE.md` with the Open English WordNet attribution and the WordNet 3.0 notice. The
+  encoder model files are not in the packages; they are downloaded from this repository under the Apache License 2.0
+  (`model/<model-id>/LICENSE`).
+- **`DemaConsulting.WordSense.Onnx`**: `MIT`.
 
 - **Moby Part-of-Speech List** (Grady Ward): public domain; the embedded dictionary is derived from it.
-- **Automatically Generated Inflection Database (AGID)** (Kevin Atkinson, 2000-2016,
-  <http://wordlist.aspell.net/other-dicts/>): permission notice (use, copy, modify and distribute without fee with the
-  notice kept). It is read at build time as one source of irregular inflected forms; the derived rows are embedded.
-  AGID carries the **Princeton WordNet 1.6** notice (Copyright 1997 by Princeton University) and the **UK Advanced
-  Cryptics Dictionary** notice (Copyright (c) J Ross Beresford 1993-1999); the full texts are in
-  `corpus/lexicon/LICENSE-AGID.txt` and apply to the embedded forms.
+- **Project-authored inflected forms** (`corpus/lexicon/forms-authored.tsv`): the irregular and the regular forms of
+  the lexicon were authored by the project with language models, recorded with their provenance and checked by a
+  sampled audit; they are dedicated to the public domain under CC0 1.0 by the project owner. No third-party inflection
+  database is used.
 - **Project-authored words, senses, meanings and respellings**: MIT License.
 - **Project-authored sentences and annotations** (the sentences written by language models for this project, our
   labels, the selection of the real sentences and the open part-of-speech corpus `corpus/open`): dedicated to the public
@@ -375,19 +382,23 @@ Package licenses:
   The word data under `data/` (entries, senses, synsets, glosses, examples, relations and pronunciations) is imported
   from it and keeps that license; see `data/README.md` and `data/PROVENANCE.md`. The sense ids, sense keys, lemmas and
   forms of the word image that the core package embeds are derived from it (changed: imported, extended and compiled);
-  the entries, glosses and examples are not in the image.
+  the entries, glosses and examples are not in the image. Open English WordNet is itself derived from **Princeton
+  WordNet** and carries its notice (WordNet 3.1 Copyright 2011 by Princeton University, all rights reserved), which is
+  reproduced in the `NOTICE.md` of the core package.
 - **WordNet 3.0** (Princeton University, <https://wordnet.princeton.edu>): the sense frequency counts of the word data
   (`data/sense_frequency`, from the WordNet 3.0 sense index `index.sense`) are used under the WordNet license: WordNet 3.0
-  Copyright 2006 by Princeton University, all rights reserved; the full notice is in `data/PROVENANCE.md`. The prior
-  that corrects the scores of the encoder weights is derived from the same counts, so the `NOTICE.md` of the MiniLM and
-  BertBaseCased packages reproduces the notice too.
+  Copyright 2006 by Princeton University, all rights reserved; the full notice is in `data/PROVENANCE.md`. They are
+  used only for the usage prior that corrects the scores of the encoder weights (the order of the senses in the word
+  image is the order of Open English WordNet), so the `NOTICE.md` of the MiniLM and BertBaseCased packages reproduces
+  the notice and the core package does not.
 - **SemCor 3.0** (the sense-annotated Brown Corpus text of the WordNet project): an evaluation source only. It is
   downloaded to a cache by the builder to measure the models, never committed, redistributed or used for training.
 
 ## Contributing
 
 Contributions are welcome. See [CONTRIBUTING.md][link-contributing] for development setup, coding
-standards, and the pull request process.
+standards, and the pull request process. The maintainer tools in `tools/` (the builder, the Python scripts for the
+corpus, the forms and the model preparation) are described in [tools/README.md][link-tools].
 
 ## License
 
@@ -418,5 +429,6 @@ By contributing to this project, you agree that your contributions will be licen
 [link-contributing]: https://github.com/demaconsulting/WordSense/blob/main/CONTRIBUTING.md
 [link-user-guide]: https://github.com/demaconsulting/WordSense/blob/main/docs/user_guide/introduction.md
 [link-appendix]: https://github.com/demaconsulting/WordSense/blob/main/docs/user_guide/appendix-senses.md
-[link-model-comparison]: https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-comparison.md
-[link-basic-evaluation]: https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/basic-evaluation.md
+[link-accuracy]: https://github.com/demaconsulting/WordSense/blob/main/docs/user_guide/accuracy.md
+[link-model-table]: https://github.com/demaconsulting/WordSense/blob/main/docs/user_guide/model-table.md
+[link-tools]: https://github.com/demaconsulting/WordSense/blob/main/tools/README.md

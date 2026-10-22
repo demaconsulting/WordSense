@@ -131,7 +131,7 @@ snakebites	0	oewn-snakebite-n	Number=Plur	dema	0			rule
 snakeblennies	0	oewn-snakeblenny-n	Number=Plur	dema	0			rule
 snakeblenny	0	oewn-snakeblenny-n	Number=Sing	dema	0			oewn_form
 snaked	0	oewn-snake-v	Tense=Past+VerbForm=Part	dema	0			rule
-snakefish	0	oewn-snakefish-n	Number=Plur	dema	0			agid
+snakefish	0	oewn-snakefish-n	Number=Plur	dema	0			llm
 snakefish	1	oewn-snakefish-n	Number=Sing	dema	0			oewn_form
 snakefishes	0	oewn-snakefish-n	Number=Plur	dema	0			rule_variant
 snakeflies	0	oewn-snakefly-n	Number=Plur	dema	0			rule
@@ -205,11 +205,11 @@ snapped at	0	oewn-snap_at-v	Tense=Past+VerbForm=Part	dema	0			rule
 snapped back	0	oewn-snap_back-v	Tense=Past+VerbForm=Part	dema	0			rule
 snapped off	0	oewn-snap_off-v	Tense=Past+VerbForm=Part	dema	0			rule
 snapped up	0	oewn-snap_up-v	Tense=Past+VerbForm=Part	dema	0			rule
-snapper	0	oewn-snapper-n	Number=Plur	dema	0			agid
+snapper	0	oewn-snapper-n	Number=Plur	dema	0			rule_variant
 snapper	1	oewn-snapper-n	Number=Sing	dema	0			oewn_form
 snapperback	0		Number=Sing	dema	0	snapperback	n	moby_reverse
 snapperbacks	0		Number=Plur	dema	0	snapperback	n	rule
-snappers	0	oewn-snapper-n	Number=Plur	dema	0			rule_variant
+snappers	0	oewn-snapper-n	Number=Plur	dema	0			llm
 snappier	0	oewn-snappy-a	Degree=Cmp	dema	0			oewn_form
 snappiest	0	oewn-snappy-a	Degree=Sup	dema	0			oewn_form
 snappily	0		Degree=Pos	dema	0	snappily	r	moby_reverse
@@ -261,8 +261,8 @@ snarfing	0	oewn-snarf-v	VerbForm=Ger	dema	0			rule
 snarfs	0	oewn-snarf-v	Person=3+Tense=Pres	dema	0			rule
 snaring	0	oewn-snare-v	VerbForm=Ger	dema	0			rule
 snaringly	0		Degree=Pos	dema	0	snaringly	r	moby_reverse
-snarkier	0	oewn-snarky-a	Degree=Cmp	dema	0			rule
-snarkiest	0	oewn-snarky-a	Degree=Sup	dema	0			rule
+snarkier	0	oewn-snarky-a	Degree=Cmp	dema	0			llm
+snarkiest	0	oewn-snarky-a	Degree=Sup	dema	0			llm
 snarky	0	oewn-snarky-a	Degree=Pos	dema	0			oewn_form
 snarl	0	oewn-snarl-v	VerbForm=Inf	dema	0			oewn_form
 snarl	1	oewn-snarl-n	Number=Sing	dema	0			oewn_form
@@ -274,8 +274,8 @@ snarled	1	oewn-snarled-a	Degree=Pos	dema	0			oewn_form
 snarled up	0	oewn-snarl_up-v	Tense=Past+VerbForm=Part	dema	0			rule
 snarler	0		Number=Sing	dema	0	snarler	n	moby_reverse
 snarlers	0		Number=Plur	dema	0	snarler	n	rule
-snarlier	0	oewn-snarly-a	Degree=Cmp	dema	0			rule
-snarliest	0	oewn-snarly-a	Degree=Sup	dema	0			rule
+snarlier	0	oewn-snarly-a	Degree=Cmp	dema	0			llm
+snarliest	0	oewn-snarly-a	Degree=Sup	dema	0			llm
 snarling	0	oewn-snarl-v	VerbForm=Ger	dema	0			rule
 snarling up	0	oewn-snarl_up-v	VerbForm=Ger	dema	0			rule
 snarlingly	0		Degree=Pos	dema	0	snarlingly	r	moby_reverse
@@ -329,7 +329,7 @@ sneak thieves	0	oewn-sneak_thief-n	Number=Plur	dema	0			rule
 sneak up	0	oewn-sneak_up-v	VerbForm=Inf	dema	0			oewn_form
 sneakbox	0		Number=Sing	dema	0	sneakbox	n	moby_reverse
 sneakboxes	0		Number=Plur	dema	0	sneakbox	n	rule
-sneaked	0	oewn-sneak-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+sneaked	0	oewn-sneak-v	Tense=Past+VerbForm=Part	dema	0			llm
 sneaked away	0	oewn-sneak_away-v	Tense=Past+VerbForm=Part	dema	0			rule
 sneaked in	0	oewn-sneak_in-v	Tense=Past+VerbForm=Part	dema	0			rule
 sneaked off	0	oewn-sneak_off-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -343,7 +343,7 @@ sneakiest	0	oewn-sneaky-a	Degree=Sup	dema	0			rule
 sneakily	0	oewn-sneakily-r	Degree=Pos	dema	0			oewn_form
 sneakiness	0	oewn-sneakiness-n	Number=Sing	dema	0			oewn_form
 sneakinesses	0	oewn-sneakiness-n	Number=Plur	dema	0			rule
-sneaking	0	oewn-sneak-v	VerbForm=Ger	dema	0			rule
+sneaking	0	oewn-sneak-v	VerbForm=Ger	dema	0			llm
 sneaking	1	oewn-sneaking-a	Degree=Pos	dema	0			oewn_form
 sneaking away	0	oewn-sneak_away-v	VerbForm=Ger	dema	0			rule
 sneaking in	0	oewn-sneak_in-v	VerbForm=Ger	dema	0			rule
@@ -351,7 +351,7 @@ sneaking off	0	oewn-sneak_off-v	VerbForm=Ger	dema	0			rule
 sneaking out	0	oewn-sneak_out-v	VerbForm=Ger	dema	0			rule
 sneaking up	0	oewn-sneak_up-v	VerbForm=Ger	dema	0			rule
 sneakingly	0	oewn-sneakingly-r	Degree=Pos	dema	0			oewn_form
-sneaks	0	oewn-sneak-v	Person=3+Tense=Pres	dema	0			rule
+sneaks	0	oewn-sneak-v	Person=3+Tense=Pres	dema	0			llm
 sneaks	1	oewn-sneak-n	Number=Plur	dema	0			rule
 sneaks away	0	oewn-sneak_away-v	Person=3+Tense=Pres	dema	0			rule
 sneaks in	0	oewn-sneak_in-v	Person=3+Tense=Pres	dema	0			rule
@@ -398,8 +398,8 @@ sneezeweed yarrows	0	oewn-sneezeweed_yarrow-n	Number=Plur	dema	0			rule
 sneezeweeds	0	oewn-sneezeweed-n	Number=Plur	dema	0			rule
 sneezewort	0	oewn-sneezewort-n	Number=Sing	dema	0			oewn_form
 sneezeworts	0	oewn-sneezewort-n	Number=Plur	dema	0			rule
-sneezier	0	oewn-sneezy-a	Degree=Cmp	dema	0			rule
-sneeziest	0	oewn-sneezy-a	Degree=Sup	dema	0			rule
+sneezier	0	oewn-sneezy-a	Degree=Cmp	dema	0			llm
+sneeziest	0	oewn-sneezy-a	Degree=Sup	dema	0			llm
 sneezing	0	oewn-sneeze-v	VerbForm=Ger	dema	0			rule
 sneezing	1	oewn-sneezing-n	Number=Sing	dema	0			oewn_form
 sneezings	0	oewn-sneezing-n	Number=Plur	dema	0			rule
@@ -430,8 +430,8 @@ snide	1		Number=Sing	dema	0	snide	n	moby_reverse
 snidely	0	oewn-snidely-r	Degree=Pos	dema	0			oewn_form
 snideness	0		Number=Sing	dema	0	snideness	n	moby_reverse
 snidenesses	0		Number=Plur	dema	0	snideness	n	rule
-snider	0	oewn-snide-a	Degree=Cmp	dema	0			moby_reverse
-snidest	0	oewn-snide-a	Degree=Sup	dema	0			moby_reverse
+snider	0	oewn-snide-a	Degree=Cmp	dema	0			llm
+snidest	0	oewn-snide-a	Degree=Sup	dema	0			llm
 sniff	0	oewn-sniff-v	VerbForm=Inf	dema	0			oewn_form
 sniff	1	oewn-sniff-n	Number=Sing	dema	0			oewn_form
 sniff out	0	oewn-sniff_out-v	VerbForm=Inf	dema	0			oewn_form
@@ -485,7 +485,7 @@ snip	0	oewn-snip-v	VerbForm=Inf	dema	0			oewn_form
 snip	1	oewn-snip-n	Number=Sing	dema	0			oewn_form
 snip	2	dema-snip-i		dema	0			carried
 snip off	0	oewn-snip_off-v	VerbForm=Inf	dema	0			oewn_form
-snipe	0	oewn-snipe-n	Number=Plur	dema	0			agid
+snipe	0	oewn-snipe-n	Number=Plur	dema	0			llm
 snipe	1	oewn-snipe-n	Number=Sing	dema	0			oewn_form
 snipe	2	oewn-snipe-v	VerbForm=Inf	dema	0			oewn_form
 snipe hunt	0	oewn-snipe_hunt-n	Number=Sing	dema	0			oewn_form
@@ -539,24 +539,24 @@ snitchy	2		Number=Sing	dema	0	snitchy	n	moby_reverse
 snits	0	oewn-snit-n	Number=Plur	dema	0			rule
 snivel	0	oewn-snivel-v	VerbForm=Inf	dema	0			oewn_form
 snivel	1	oewn-snivel-n	Number=Sing	dema	0			oewn_form
-sniveled	0	oewn-snivel-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+sniveled	0	oewn-snivel-v	Tense=Past+VerbForm=Part	dema	0			llm
 sniveler	0	oewn-sniveler-n	Number=Sing	dema	0			oewn_form
 snivelers	0	oewn-sniveler-n	Number=Plur	dema	0			rule
-sniveling	0	oewn-snivel-v	VerbForm=Ger	dema	0			rule_variant
+sniveling	0	oewn-snivel-v	VerbForm=Ger	dema	0			llm
 sniveling	1	oewn-sniveling-n	Number=Sing	dema	0			oewn_form
 snivelings	0	oewn-sniveling-n	Number=Plur	dema	0			rule
 snivelled	0	oewn-snivel-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 sniveller	0	oewn-sniveller-n	Number=Sing	dema	0			oewn_form
 snivellers	0	oewn-sniveller-n	Number=Plur	dema	0			rule
 snivelling	0	oewn-snivel-v	VerbForm=Ger	dema	0			oewn_form
-snivels	0	oewn-snivel-v	Person=3+Tense=Pres	dema	0			rule
+snivels	0	oewn-snivel-v	Person=3+Tense=Pres	dema	0			llm
 snivels	1	oewn-snivel-n	Number=Plur	dema	0			rule
 snively	0		Degree=Pos	dema	0	snively	a	moby_reverse
 snob	0	oewn-snob-n	Number=Sing	dema	0			oewn_form
 snobberies	0	oewn-snobbery-n	Number=Plur	dema	0			rule
 snobbery	0	oewn-snobbery-n	Number=Sing	dema	0			oewn_form
-snobbier	0	oewn-snobby-a	Degree=Cmp	dema	0			rule
-snobbiest	0	oewn-snobby-a	Degree=Sup	dema	0			rule
+snobbier	0	oewn-snobby-a	Degree=Cmp	dema	0			llm
+snobbiest	0	oewn-snobby-a	Degree=Sup	dema	0			llm
 snobbily	0		Degree=Pos	dema	0	snobbily	r	moby_reverse
 snobbiness	0		Number=Sing	dema	0	snobbiness	n	moby_reverse
 snobbish	0	oewn-snobbish-a	Degree=Pos	dema	0			oewn_form
@@ -618,7 +618,7 @@ snootier	0	oewn-snooty-a	Degree=Cmp	dema	0			oewn_form
 snootiest	0	oewn-snooty-a	Degree=Sup	dema	0			oewn_form
 snootily	0	oewn-snootily-r	Degree=Pos	dema	0			oewn_form
 snootiness	0	oewn-snootiness-n	Number=Sing	dema	0			oewn_form
-snootinesses	0	oewn-snootiness-n	Number=Plur	dema	0			rule
+snootinesses	0	oewn-snootiness-n	Number=Plur	dema	0			llm
 snoots	0	oewn-snoot-n	Number=Plur	dema	0			rule
 snooty	0	oewn-snooty-a	Degree=Pos	dema	0			oewn_form
 snooze	0	oewn-snooze-v	VerbForm=Inf	dema	0			oewn_form
@@ -646,21 +646,21 @@ snorkel breather	0	oewn-snorkel_breather-n	Number=Sing	dema	0			oewn_form
 snorkel breathers	0	oewn-snorkel_breather-n	Number=Plur	dema	0			rule
 snorkel diving	0	oewn-snorkel_diving-n	Number=Sing	dema	0			oewn_form
 snorkel divings	0	oewn-snorkel_diving-n	Number=Plur	dema	0			rule
-snorkeled	0	oewn-snorkel-v	Tense=Past+VerbForm=Part	dema	0			rule
-snorkeling	0	oewn-snorkel-v	VerbForm=Ger	dema	0			rule
+snorkeled	0	oewn-snorkel-v	Tense=Past+VerbForm=Part	dema	0			llm
+snorkeling	0	oewn-snorkel-v	VerbForm=Ger	dema	0			llm
 snorkeling	1	oewn-snorkeling-n	Number=Sing	dema	0			oewn_form
 snorkelings	0	oewn-snorkeling-n	Number=Plur	dema	0			rule
 snorkelled	0	oewn-snorkel-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 snorkelling	0	oewn-snorkel-v	VerbForm=Ger	dema	0			rule_variant
 snorkels	0	oewn-snorkel-n	Number=Plur	dema	0			rule
-snorkels	1	oewn-snorkel-v	Person=3+Tense=Pres	dema	0			rule
+snorkels	1	oewn-snorkel-v	Person=3+Tense=Pres	dema	0			llm
 snort	0	oewn-snort-v	VerbForm=Inf	dema	0			oewn_form
 snort	1	oewn-snort-n	Number=Sing	dema	0			oewn_form
 snorted	0	oewn-snort-v	Tense=Past+VerbForm=Part	dema	0			rule
 snorter	0	oewn-snorter-n	Number=Sing	dema	0			oewn_form
 snorters	0	oewn-snorter-n	Number=Plur	dema	0			rule
-snortier	0	oewn-snorty-a	Degree=Cmp	dema	0			rule
-snortiest	0	oewn-snorty-a	Degree=Sup	dema	0			rule
+snortier	0	oewn-snorty-a	Degree=Cmp	dema	0			llm
+snortiest	0	oewn-snorty-a	Degree=Sup	dema	0			llm
 snorting	0	oewn-snort-v	VerbForm=Ger	dema	0			rule
 snorting	1	oewn-snorting-n	Number=Sing	dema	0			oewn_form
 snortingly	0		Degree=Pos	dema	0	snortingly	r	moby_reverse
@@ -816,7 +816,7 @@ snowlike	0		Degree=Pos	dema	0	snowlike	a	moby_reverse
 snowman	0	oewn-snowman-n	Number=Sing	dema	0			oewn_form
 snowmast	0		Number=Sing	dema	0	snowmast	n	moby_reverse
 snowmasts	0		Number=Plur	dema	0	snowmast	n	rule
-snowmen	0	oewn-snowman-n	Number=Plur	dema	0			agid
+snowmen	0	oewn-snowman-n	Number=Plur	dema	0			llm
 snowmobile	0	oewn-snowmobile-n	Number=Sing	dema	0			oewn_form
 snowmobile	1	oewn-snowmobile-v	VerbForm=Inf	dema	0			oewn_form
 snowmobiled	0	oewn-snowmobile-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -916,8 +916,8 @@ snuffler	0	oewn-snuffler-n	Number=Sing	dema	0			oewn_form
 snufflers	0	oewn-snuffler-n	Number=Plur	dema	0			rule
 snuffles	0	oewn-snuffle-v	Person=3+Tense=Pres	dema	0			rule
 snuffles	1	oewn-snuffle-n	Number=Plur	dema	0			rule
-snufflier	0	oewn-snuffly-a	Degree=Cmp	dema	0			rule
-snuffliest	0	oewn-snuffly-a	Degree=Sup	dema	0			rule
+snufflier	0	oewn-snuffly-a	Degree=Cmp	dema	0			llm
+snuffliest	0	oewn-snuffly-a	Degree=Sup	dema	0			llm
 snuffling	0	oewn-snuffle-v	VerbForm=Ger	dema	0			rule
 snuffling	1	oewn-snuffling-a	Degree=Pos	dema	0			oewn_form
 snufflingly	0		Degree=Pos	dema	0	snufflingly	r	moby_reverse

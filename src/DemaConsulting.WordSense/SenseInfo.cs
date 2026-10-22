@@ -51,7 +51,7 @@ public sealed record SenseInfo(
 /// <param name="GroupId">The identifier of the group, <c>lemma#group:slug</c>.</param>
 /// <param name="Lemma">The lemma of the senses of the group.</param>
 /// <param name="PartOfSpeech">The part of speech of the senses of the group.</param>
-/// <param name="SenseIds">The identifiers of the senses of the group in inventory order (the most frequent first); at least two.</param>
+/// <param name="SenseIds">The identifiers of the senses of the group in inventory order (the order of Open English WordNet); at least two.</param>
 /// <param name="Respelling">The respelling the senses of the group share, or <see langword="null"/> when they have none.</param>
 public sealed record SenseGroup(
     string GroupId,

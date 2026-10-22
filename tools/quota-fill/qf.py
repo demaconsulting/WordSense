@@ -1,6 +1,7 @@
 """Shared state of the quota filling: senses in scope, the form index, the keys of the existing corpus, waves, paths."""
 import csv
 import glob
+import hashlib
 import json
 import os
 import sys
@@ -12,8 +13,12 @@ import textutil
 
 ROOT = lexdata.ROOT
 CORPUS = lexdata.CORPUS
-QDIR = os.path.join(ROOT, "tools", "real-text", "cache", "quota")
+# The git-ignored work folder: the Tatoeba CC0 export (cc0.tar.bz2) is in tools/quota-fill/cache, the pool in quota/.
+QDIR = os.path.join(ROOT, "tools", "quota-fill", "cache", "quota")
 WORK = os.path.join(QDIR, "work")
+# The sources of sentences that were written for the project; every other allowed source is real text. Keep this equal to
+# the written sources of tools/WordSense.Builder/ProvenanceSources.cs.
+WRITTEN_SOURCES = {"llm-corpus", "authored"}
 POS_LETTER = {"Noun": "n", "Verb": "v", "Adjective": "a", "Adverb": "r", "Pronoun": "u", "Preposition": "p",
               "Conjunction": "c", "Interjection": "i", "Determiner": "d", "Auxiliary": "x"}
 
@@ -56,19 +61,30 @@ def doc_role(pdoc, doc_splits):
     return "train" if "holdout" not in splits else None
 
 
-def real_anchor_counts():
-    """sense id -> number of real anchors (provenance origin real, split anchors)."""
-    result = {}
-    for path in glob.glob(os.path.join(CORPUS, "provenance", "*.tsv")):
+def provenance_rows():
+    """(id, split, source, source_key) of every row of corpus/provenance/*.tsv."""
+    for path in sorted(glob.glob(os.path.join(CORPUS, "provenance", "*.tsv"))):
         with open(path, encoding="utf-8", newline="") as handle:
             reader = csv.reader(handle, delimiter="\t", quoting=csv.QUOTE_NONE)
             header = next(reader, None)
-            if not header or "origin" not in header or "sense" not in header:
+            if not header or any(c not in header for c in ("id", "split", "source", "source_key")):
                 continue
-            o, se, sp = header.index("origin"), header.index("sense"), header.index("split")
+            i, sp, s, k = (header.index(c) for c in ("id", "split", "source", "source_key"))
             for row in reader:
-                if len(row) > max(o, se, sp) and row[o] == "real" and row[sp] == "anchors":
-                    result[row[se]] = result.get(row[se], 0) + 1
+                if len(row) > max(i, sp, s, k):
+                    yield row[i], row[sp], row[s], row[k]
+
+
+def real_anchor_counts():
+    """sense id -> number of real anchors: the rows of anchors/*.tsv whose provenance source is real text."""
+    real = {i for i, _sp, source, _k in provenance_rows() if source not in WRITTEN_SOURCES}
+    result = {}
+    for path in glob.glob(os.path.join(CORPUS, "anchors", "*.tsv")):
+        with open(path, encoding="utf-8", newline="") as handle:
+            for line in handle:
+                p = line.rstrip("\n").split("\t")
+                if len(p) >= 4 and hashlib.sha256((p[0] + "|" + p[3]).encode("utf-8")).hexdigest()[:12] in real:
+                    result[p[1]] = result.get(p[1], 0) + 1
     return result
 
 
@@ -90,19 +106,11 @@ def extra_real_wanted():
 def real_documents_by_split():
     """prov document -> set of splits ('anchors', 'holdout') in which the corpus already has a real row of it."""
     result = {}
-    for path in glob.glob(os.path.join(CORPUS, "provenance", "*.tsv")):
-        with open(path, encoding="utf-8", newline="") as handle:
-            reader = csv.reader(handle, delimiter="\t", quoting=csv.QUOTE_NONE)
-            header = next(reader, None)
-            if not header or "origin" not in header or "source_key" not in header:
-                continue
-            o, s, k, sp = (header.index(c) for c in ("origin", "source", "source_key", "split"))
-            for row in reader:
-                if len(row) <= max(o, s, k, sp) or row[o] != "real":
-                    continue
-                key = row[k]
-                doc = row[s] + ":" + (key if row[s].startswith("tatoeba") else key.split("#")[0])
-                result.setdefault(doc, set()).add(row[sp])
+    for _id, split, source, key in provenance_rows():
+        if source in WRITTEN_SOURCES:
+            continue
+        doc = source + ":" + (key if source.startswith("tatoeba") else key.split("#")[0])
+        result.setdefault(doc, set()).add(split)
     return result
 
 

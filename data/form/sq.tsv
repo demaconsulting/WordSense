@@ -13,7 +13,7 @@ sq yds	0	oewn-sq_yd-n	Number=Plur	dema	0			rule
 sqd	0		Number=Sing	dema	0	sqd	n	moby_reverse
 sqq	0		Number=Sing	dema	0	sqq	n	moby_reverse
 sqs in	0	oewn-sq_in-n	Number=Plur	dema	0			rule
-squab	0	oewn-squab-n	Number=Plur	dema	0			agid
+squab	0	oewn-squab-n	Number=Plur	dema	0			rule_variant
 squab	1	oewn-squab-n	Number=Sing	dema	0			oewn_form
 squab	2	oewn-squab-a	Degree=Pos	dema	0			oewn_form
 squabbier	0	oewn-squabby-a	Degree=Cmp	dema	0			rule
@@ -28,7 +28,7 @@ squabbles	1	oewn-squabble-n	Number=Plur	dema	0			rule
 squabbling	0	oewn-squabble-v	VerbForm=Ger	dema	0			rule
 squabblingly	0		Degree=Pos	dema	0	squabblingly	r	moby_reverse
 squabby	0	oewn-squabby-a	Degree=Pos	dema	0			oewn_form
-squabs	0	oewn-squab-n	Number=Plur	dema	0			rule_variant
+squabs	0	oewn-squab-n	Number=Plur	dema	0			llm
 squacco	0		Number=Sing	dema	0	squacco	n	moby_reverse
 squaccos	0		Number=Plur	dema	0	squacco	n	rule
 squad	0	oewn-squad-n	Number=Sing	dema	0			oewn_form
@@ -291,7 +291,7 @@ squaw grasses	0	oewn-squaw_grass-n	Number=Plur	dema	0			rule
 squaw huckleberries	0	oewn-squaw_huckleberry-n	Number=Plur	dema	0			rule
 squaw huckleberry	0	oewn-squaw_huckleberry-n	Number=Sing	dema	0			oewn_form
 squaw man	0	oewn-squaw_man-n	Number=Sing	dema	0			oewn_form
-squaw mans	0	oewn-squaw_man-n	Number=Plur	dema	0			rule
+squaw men	0	oewn-squaw_man-n	Number=Plur	dema	0			rule
 squaw root	0	oewn-squaw_root-n	Number=Sing	dema	0			oewn_form
 squaw roots	0	oewn-squaw_root-n	Number=Plur	dema	0			rule
 squaw-bush	0	oewn-squaw-bush-n	Number=Sing	dema	0			oewn_form
@@ -307,8 +307,8 @@ squawk boxes	0	oewn-squawk_box-n	Number=Plur	dema	0			rule
 squawked	0	oewn-squawk-v	Tense=Past+VerbForm=Part	dema	0			rule
 squawker	0	oewn-squawker-n	Number=Sing	dema	0			oewn_form
 squawkers	0	oewn-squawker-n	Number=Plur	dema	0			rule
-squawkier	0	oewn-squawky-a	Degree=Cmp	dema	0			rule
-squawkiest	0	oewn-squawky-a	Degree=Sup	dema	0			rule
+squawkier	0	oewn-squawky-a	Degree=Cmp	dema	0			llm
+squawkiest	0	oewn-squawky-a	Degree=Sup	dema	0			llm
 squawking	0	oewn-squawk-v	VerbForm=Ger	dema	0			rule
 squawks	0	oewn-squawk-n	Number=Plur	dema	0			rule
 squawks	1	oewn-squawk-v	Person=3+Tense=Pres	dema	0			rule
@@ -390,10 +390,8 @@ squeezing out	0	oewn-squeeze_out-v	VerbForm=Ger	dema	0			rule
 squeezingly	0		Degree=Pos	dema	0	squeezingly	r	moby_reverse
 squeezings	0	oewn-squeezing-n	Number=Plur	dema	0			rule
 squeg	0		VerbForm=Inf	dema	0	squeg	v	moby_reverse
-squeged	0		Tense=Past+VerbForm=Part	dema	0	squeg	v	rule
-squegged	0		Tense=Past+VerbForm=Part	dema	0	squeg	v	moby_reverse
-squegging	0		VerbForm=Ger	dema	0	squeg	v	moby_reverse
-squeging	0		VerbForm=Ger	dema	0	squeg	v	rule
+squegged	0		Tense=Past+VerbForm=Part	dema	0	squeg	v	rule
+squegging	0		VerbForm=Ger	dema	0	squeg	v	rule
 squegs	0		Person=3+Tense=Pres	dema	0	squeg	v	rule
 squelch	0	oewn-squelch-v	VerbForm=Inf	dema	0			oewn_form
 squelch	1	oewn-squelch-n	Number=Sing	dema	0			oewn_form
@@ -415,10 +413,9 @@ squib	1		VerbForm=Inf	dema	0	squib	v	moby_reverse
 squibbed	0		Tense=Past+VerbForm=Part	dema	0	squib	v	moby_reverse
 squibbing	0		VerbForm=Ger	dema	0	squib	v	moby_reverse
 squibs	0	oewn-squib-n	Number=Plur	dema	0			rule
-squid	0	oewn-squid-n	Number=Plur	dema	0			agid
-squid	1	oewn-squid-n	Number=Sing	dema	0			oewn_form
-squid	2		VerbForm=Inf	dema	0	squid	v	moby_reverse
-squids	0	oewn-squid-n	Number=Plur	dema	0			rule_variant
+squid	0	oewn-squid-n	Number=Sing	dema	0			oewn_form
+squid	1		VerbForm=Inf	dema	0	squid	v	moby_reverse
+squids	0	oewn-squid-n	Number=Plur	dema	0			rule
 squiffer	0		Number=Sing	dema	0	squiffer	n	moby_reverse
 squiffers	0		Number=Plur	dema	0	squiffer	n	rule
 squiffier	0	oewn-squiffy-a	Degree=Cmp	dema	0			oewn_form
@@ -428,8 +425,8 @@ squiggle	0	oewn-squiggle-n	Number=Sing	dema	0			oewn_form
 squiggle	1		VerbForm=Inf	dema	0	squiggle	v	moby_reverse
 squiggled	0		Tense=Past+VerbForm=Part	dema	0	squiggle	v	moby_reverse
 squiggles	0	oewn-squiggle-n	Number=Plur	dema	0			rule
-squigglier	0	oewn-squiggly-a	Degree=Cmp	dema	0			rule
-squiggliest	0	oewn-squiggly-a	Degree=Sup	dema	0			rule
+squigglier	0	oewn-squiggly-a	Degree=Cmp	dema	0			llm
+squiggliest	0	oewn-squiggly-a	Degree=Sup	dema	0			llm
 squiggling	0		VerbForm=Ger	dema	0	squiggle	v	moby_reverse
 squiggly	0	oewn-squiggly-a	Degree=Pos	dema	0			oewn_form
 squilgee	0		Number=Sing	dema	0	squilgee	n	moby_reverse
@@ -474,11 +471,11 @@ squint-eyed	0	oewn-squint-eyed-a	Degree=Pos	dema	0			oewn_form
 squint-eyes	0	oewn-squint-eye-n	Number=Plur	dema	0			rule
 squinted	0	oewn-squint-v	Tense=Past+VerbForm=Part	dema	0			rule
 squinter	0	oewn-squinter-n	Number=Sing	dema	0			oewn_form
-squinter	1	oewn-squint-a	Degree=Cmp	dema	0			rule
+squinter	1	oewn-squint-a	Degree=Cmp	dema	0			llm
 squinters	0	oewn-squinter-n	Number=Plur	dema	0			rule
-squintest	0	oewn-squint-a	Degree=Sup	dema	0			rule
-squintier	0	oewn-squinty-a	Degree=Cmp	dema	0			rule
-squintiest	0	oewn-squinty-a	Degree=Sup	dema	0			rule
+squintest	0	oewn-squint-a	Degree=Sup	dema	0			llm
+squintier	0	oewn-squinty-a	Degree=Cmp	dema	0			llm
+squintiest	0	oewn-squinty-a	Degree=Sup	dema	0			llm
 squinting	0	oewn-squint-v	VerbForm=Ger	dema	0			rule
 squinting	1	oewn-squinting-a	Degree=Pos	dema	0			oewn_form
 squintingly	0		Degree=Pos	dema	0	squintingly	r	moby_reverse
@@ -522,8 +519,7 @@ squirmingly	0		Degree=Pos	dema	0	squirmingly	r	moby_reverse
 squirms	0	oewn-squirm-v	Person=3+Tense=Pres	dema	0			rule
 squirms	1	oewn-squirm-n	Number=Plur	dema	0			rule
 squirmy	0		Degree=Pos	dema	0	squirmy	a	moby_reverse
-squirrel	0	oewn-squirrel-n	Number=Plur	dema	0			agid
-squirrel	1	oewn-squirrel-n	Number=Sing	dema	0			oewn_form
+squirrel	0	oewn-squirrel-n	Number=Sing	dema	0			oewn_form
 squirrel away	0	oewn-squirrel_away-v	VerbForm=Inf	dema	0			oewn_form
 squirrel cage	0	oewn-squirrel_cage-n	Number=Sing	dema	0			oewn_form
 squirrel cages	0	oewn-squirrel_cage-n	Number=Plur	dema	0			rule
@@ -547,7 +543,7 @@ squirrelings	0		Number=Plur	dema	0	squirreling	n	rule
 squirrelish	0		Degree=Pos	dema	0	squirrelish	a	moby_reverse
 squirrellike	0		Degree=Pos	dema	0	squirrellike	a	moby_reverse
 squirrelly	0		Degree=Pos	dema	0	squirrelly	a	moby_reverse
-squirrels	0	oewn-squirrel-n	Number=Plur	dema	0			rule_variant
+squirrels	0	oewn-squirrel-n	Number=Plur	dema	0			rule
 squirrels away	0	oewn-squirrel_away-v	Person=3+Tense=Pres	dema	0			rule
 squirreltail barley	0	oewn-squirreltail_barley-n	Number=Sing	dema	0			oewn_form
 squirreltail barleys	0	oewn-squirreltail_barley-n	Number=Plur	dema	0			rule
@@ -572,8 +568,8 @@ squish	1	oewn-squish-n	Number=Sing	dema	0			oewn_form
 squished	0	oewn-squish-v	Tense=Past+VerbForm=Part	dema	0			rule
 squishes	0	oewn-squish-v	Person=3+Tense=Pres	dema	0			rule
 squishes	1	oewn-squish-n	Number=Plur	dema	0			rule
-squishier	0	oewn-squishy-a	Degree=Cmp	dema	0			rule
-squishiest	0	oewn-squishy-a	Degree=Sup	dema	0			rule
+squishier	0	oewn-squishy-a	Degree=Cmp	dema	0			llm
+squishiest	0	oewn-squishy-a	Degree=Sup	dema	0			llm
 squishing	0	oewn-squish-v	VerbForm=Ger	dema	0			rule
 squishy	0	oewn-squishy-a	Degree=Pos	dema	0			oewn_form
 squit	0		Number=Sing	dema	0	squit	n	moby_reverse

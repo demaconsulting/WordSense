@@ -37,22 +37,44 @@ internal static partial class InflectionRules
         ["mango", "cargo", "domino", "mosquito", "embargo", "volcano", "tornado", "torpedo", "buffalo", "echo", "veto"],
         StringComparer.Ordinal);
 
+    // The prefixes with which the short nouns in -o (echo, hero, veto) form compounds (superhero, antihero, subecho)
+    private static readonly string[] NounEsOPrefixes = ["super", "anti", "non", "sub", "pseudo", "semi", "demi", "counter", "mega"];
+
     private static readonly HashSet<string> Ves = new(
         ["knife", "wife", "life", "leaf", "loaf", "half", "wolf", "calf", "shelf", "self", "elf", "thief", "sheaf"],
         StringComparer.Ordinal);
+
+    // The words in -f or -fe that end like one of the nouns above and take a regular plural (lowlifes, delfs)
+    private static readonly HashSet<string> NounNoVes = new(
+        ["lowlife", "highlife", "behalf", "delf", "pelf", "guelf", "whelf"],
+        StringComparer.Ordinal);
+
+    // The words in -man whose plural is -mans, not -men: the last syllable is no man (german, roman, human and the compounds of
+    // human end in -human and are tested by the ending)
+    private static readonly HashSet<string> NounManExceptions = new(
+        ["german", "roman", "norman", "ottoman", "talisman", "shaman", "caiman", "cayman", "brahman", "dolman", "ceriman", "dragoman",
+         "turcoman", "turkoman", "mussulman", "musselman", "ataman", "atman", "daman", "hanuman", "iman", "leman", "liman", "saman",
+         "soman", "toman", "yarraman", "zaman", "aman", "yuman", "alabaman", "oklahoman", "doberman", "ingerman", "takilman", "pullman"],
+        StringComparer.Ordinal);
+
+    // The monosyllabic verbs whose last consonant doubles when they end a compound (wiretap, suntan, namedrop, shrinkwrap)
+    private static readonly string[] CompoundBases =
+        ("tap trap strap wrap drop shop hop top step slip slap trip strip skip ship flip clap snap swap knit plug rub tan fan man gas sled shot "
+        + "stat fat gram hug jam nod rob sob tag tub wed lap map nap cap rap zip dip tip sip nip pop mop sap stab stub stun wag jog hum hem ram "
+        + "sag gab jab mat fit hit bar gun mug jig kid rig bed bud dub fib gap lug peg rag rib rim sit").Split(' ');
 
     private static readonly string[] Mono = (
         "fit hit hop nap pat plug rub run shop ship skip slip step stop strip trim trip wrap zip dip cut tap trap bar bat beg bug clap drop flip "
         + "grab grin hug jam knit mop pin plan pop prop rig rob scan sin slam snap spot star stir swap tag tan thin tip top whip win quip quit "
         + "rap sob sap nod pad pit pot put rot rid sit set tug wed ban bed bid fan fog gag gin hem hum jog lap map nab net pip pun ram sag sum "
         + "sun tab tin tub veto bud cap dub fib fit gap gun jig kid lug mat mud peg pet rag rib rim rot rub sag sip sob sod spin spur stab "
-        + "stub stun swim swot tar tip tot tub wag rip zap nip nag jot jut lop lob mob mug dim din fin gab gum jab jar mar pan pen rev rut sub sup vet wad web wet yap").Split(' ');
+        + "stub stun swim swot tar tip tot tub wag rip zap nip nag jot jut lop lob mob mug dim din fin gab gum jab jar mar pan pen rev rut sub sup vet wad web wet wit yap flag clog bag log lag").Split(' ');
 
     private static readonly string[] StressPrefixes =
         ["re", "un", "out", "over", "under", "up", "de", "dis", "mis", "pre", "retro", "sub", "inter", "be", "counter", "off"];
 
     private static readonly string[] UnstressedEndings =
-        ["enter", "offer", "suffer", "differ", "cover", "order", "gather", "wonder", "visit", "benefit", "limit", "edit", "profit", "audit", "merit", "orbit", "exhibit", "inhibit", "prohibit", "vomit", "format"];
+        ["enter", "ffer", "cover", "order", "gather", "wonder", "visit", "benefit", "limit", "edit", "profit", "audit", "merit", "orbit", "exhibit", "inhibit", "prohibit", "vomit", "format"];
 
     /// <summary>
     ///     The prefixes that an irregular verb can take (<c>overtake</c>, <c>mistake</c>).
@@ -93,18 +115,24 @@ internal static partial class InflectionRules
     internal sealed record VerbForms(string[] Past, string[] Gerund, string[] PastAlternative, string[] GerundAlternative);
 
     /// <summary>
-    ///     Counts the groups of vowel letters of a word, as an estimate of its syllables.
+    ///     Counts the groups of vowel letters of a word, as an estimate of its syllables (a y before a vowel is a consonant: crayon,
+    ///     layer).
     /// </summary>
     /// <param name="word">The lower-case word.</param>
     /// <returns>The number of groups.</returns>
-    public static int VowelGroups(string word) => VowelRun().Count(word);
+    public static int VowelGroups(string word) => VowelRun().Count(YBeforeVowel().Replace(word, "j"));
 
     /// <summary>
     ///     Tells whether a word ends in consonant, vowel, consonant (not w, x or y) without a vowel pair before the end.
     /// </summary>
     /// <param name="word">The lower-case word.</param>
     /// <returns>True when the final consonant would double before a suffix of a short word.</returns>
-    public static bool EndsConsonantVowelConsonant(string word) => CvcEnd().IsMatch(word) && !VowelPairEnd().IsMatch(word);
+    public static bool EndsConsonantVowelConsonant(string word)
+    {
+        // qu is one consonant (squat, equip, quiz): the u does not count as the vowel of the final syllable
+        var w = word.Replace("qu", "q", StringComparison.Ordinal);
+        return CvcEnd().IsMatch(w) && !VowelPairEnd().IsMatch(w);
+    }
 
     /// <summary>
     ///     Gets the plural spellings of a noun.
@@ -123,12 +151,27 @@ internal static partial class InflectionRules
             return [word[..^1] + "ies"];
         }
 
-        if (word.EndsWith('o') && NounEsO.Contains(word))
+        // man and woman and their compounds (chairman, dairywoman) take -men; the words that merely end in -man do not (human, german)
+        if (word.EndsWith("man", StringComparison.Ordinal) && !word.EndsWith("human", StringComparison.Ordinal) && !NounManExceptions.Contains(word))
         {
-            return NounEsOAlso.Contains(word) ? [word + "es", word + "s"] : [word + "es"];
+            return [word[..^3] + "men"];
         }
 
-        if (Ves.Contains(word))
+        // The compounds of the nouns in -o and -f or -fe take the same plural (superhero, mooncalf, midwife); the short words echo,
+        // hero and veto only with a known prefix, because ranchero is no compound of hero
+        string? esO = null;
+        if (word.EndsWith('o'))
+        {
+            esO = NounEsO.FirstOrDefault(e => word == e || (word.EndsWith(e, StringComparison.Ordinal)
+                && (e.Length >= 5 || NounEsOPrefixes.Any(p => string.Equals(word, p + e, StringComparison.Ordinal)))));
+        }
+
+        if (esO is not null)
+        {
+            return NounEsOAlso.Contains(esO) ? [word + "es", word + "s"] : [word + "es"];
+        }
+
+        if (!NounNoVes.Contains(word) && Ves.FirstOrDefault(v => word.EndsWith(v, StringComparison.Ordinal)) is not null)
         {
             return [word.EndsWith("fe", StringComparison.Ordinal) ? word[..^2] + "ves" : word[..^1] + "ves"];
         }
@@ -159,7 +202,7 @@ internal static partial class InflectionRules
     /// <returns>The forms.</returns>
     public static VerbForms VerbRegular(string word, Func<string, bool> listed)
     {
-        var r = VerbRegularPlain(word);
+        var r = VerbRegularPlain(word, listed);
         if (r.PastAlternative.Length > 0 && !listed(r.Past[0]) && listed(r.PastAlternative[0]))
         {
             r = r with { Past = r.PastAlternative, PastAlternative = r.Past };
@@ -329,8 +372,16 @@ internal static partial class InflectionRules
 
     private static readonly string[] HeavyEnding = ["ed", "ing", "ful", "less", "ous", "ish", "ive", "al"];
 
-    private static VerbForms VerbRegularPlain(string w)
+    private static VerbForms VerbRegularPlain(string w, Func<string, bool> listed)
     {
+        // A verb in -ie keeps the e (birdie, boogie, caddie); only tie, die, lie, vie, hie and the compounds of tie, lie and vie (untie,
+        // belie, outvie) turn the ie into y
+        if (w.EndsWith("ie", StringComparison.Ordinal))
+        {
+            var toY = w is "die" or "hie" || w.EndsWith("tie", StringComparison.Ordinal) || w.EndsWith("lie", StringComparison.Ordinal) || w.EndsWith("vie", StringComparison.Ordinal);
+            return new VerbForms([w + "d"], [toY ? w[..^2] + "ying" : w + "ing"], [], []);
+        }
+
         if (w.EndsWith('e') && !w.EndsWith("ee", StringComparison.Ordinal) && !w.EndsWith("ye", StringComparison.Ordinal) && !w.EndsWith("oe", StringComparison.Ordinal))
         {
             return new VerbForms([w + "d"], [w[..^1] + "ing"], [], []);
@@ -346,11 +397,6 @@ internal static partial class InflectionRules
             return new VerbForms([w[..^1] + "ied"], [w + "ing"], [], []);
         }
 
-        if (w.EndsWith("ie", StringComparison.Ordinal))
-        {
-            return new VerbForms([w + "d"], [w[..^2] + "ying"], [], []);
-        }
-
         if (w.EndsWith('c') && w.Length > 1 && "aeiouy".Contains(w[^2], StringComparison.Ordinal))
         {
             return new VerbForms([w + "ked"], [w + "king"], [], []);
@@ -361,13 +407,14 @@ internal static partial class InflectionRules
             return new VerbForms([w + "ed"], [w + "ing"], [], []);
         }
 
-        if (EndsConsonantVowelConsonant(w) && (VowelGroups(w) == 1 || StressFinal(w)))
+        if (EndsConsonantVowelConsonant(w) && (VowelGroups(w) == 1 || StressFinal(w, listed)))
         {
             return new VerbForms([w + w[^1] + "ed"], [w + w[^1] + "ing"], [], []);
         }
 
         if (EndsConsonantVowelConsonant(w))
         {
+            // The doubled spelling is the alternative; the dictionary can make it the primary spelling (backlogged, kayakked)
             return new VerbForms([w + "ed"], [w + "ing"], [w + w[^1] + "ed"], [w + w[^1] + "ing"]);
         }
 
@@ -379,9 +426,16 @@ internal static partial class InflectionRules
         return new VerbForms([w + "ed"], [w + "ing"], [], []);
     }
 
-    private static bool StressFinal(string w)
+    private static bool StressFinal(string w, Func<string, bool> listed)
     {
-        if (StressedEnding().IsMatch(w) && VowelGroups(w) >= 2 && EndsConsonantVowelConsonant(w) && !UnstressedEndings.Any(e => w.EndsWith(e, StringComparison.Ordinal)))
+        var unstressed = UnstressedEndings.Any(e => w.EndsWith(e, StringComparison.Ordinal));
+        if (StressedEnding().IsMatch(w) && VowelGroups(w) >= 2 && EndsConsonantVowelConsonant(w) && !unstressed)
+        {
+            return true;
+        }
+
+        // A compound whose last element is a monosyllabic verb (wiretap, suntan, shrinkwrap) doubles like that verb
+        if (!unstressed && CompoundBases.Any(b => w.Length - b.Length >= 3 && w.EndsWith(b, StringComparison.Ordinal) && listed(w[..^b.Length])))
         {
             return true;
         }
@@ -392,13 +446,16 @@ internal static partial class InflectionRules
     [GeneratedRegex("[aeiouy]+", RegexOptions.CultureInvariant)]
     private static partial Regex VowelRun();
 
+    [GeneratedRegex("y(?=[aeiou])", RegexOptions.CultureInvariant)]
+    private static partial Regex YBeforeVowel();
+
     [GeneratedRegex("[^aeiou][aeiou][^aeiouwxy]$", RegexOptions.CultureInvariant)]
     private static partial Regex CvcEnd();
 
     [GeneratedRegex("[aeiou]{2}[^aeiouwxy]$", RegexOptions.CultureInvariant)]
     private static partial Regex VowelPairEnd();
 
-    [GeneratedRegex("[^aeiou]y$", RegexOptions.CultureInvariant)]
+    [GeneratedRegex("([^aeiou]|qu)y$", RegexOptions.CultureInvariant)]
     private static partial Regex ConsonantY();
 
     [GeneratedRegex("[aeiou]l$", RegexOptions.CultureInvariant)]

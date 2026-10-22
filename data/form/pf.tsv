@@ -7,5 +7,5 @@ pfannkuchen	0	oewn-pfannkuchen-n	Number=Sing	dema	0			oewn_form
 pfannkuchens	0	oewn-pfannkuchen-n	Number=Plur	dema	0			rule
 pfennig	0	oewn-pfennig-n	Number=Sing	dema	0			oewn_form
 pfennige	0	oewn-pfennig-n	Number=Plur	dema	0			oewn_form
-pfennigs	0	oewn-pfennig-n	Number=Plur	dema	0			rule_variant
+pfennigs	0	oewn-pfennig-n	Number=Plur	dema	0			llm
 pfg	0		Number=Sing	dema	0	pfg	n	moby_reverse

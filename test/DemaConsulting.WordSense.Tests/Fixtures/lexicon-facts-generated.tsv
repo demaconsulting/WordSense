@@ -310,6 +310,7 @@ source-irregular-closed	bought	buy	Verb	~Tense=Past	any
 source-irregular-closed	bought	buy	Verb	~VerbForm=Part	any
 source-irregular-closed	bound	bind	Verb	~Tense=Past	any
 source-irregular-closed	bound	bind	Verb	~VerbForm=Part	any
+source-irregular-closed	bourgeois	bourgeois	Noun	Number=Plur	any
 source-irregular-closed	bred	breed	Verb	~Tense=Past	any
 source-irregular-closed	bred	breed	Verb	~VerbForm=Part	any
 source-irregular-closed	broke	break	Verb	~Tense=Past	any
@@ -427,6 +428,7 @@ source-irregular-closed	furthest	far	Adverb	~Degree=Sup	any
 source-irregular-closed	gave	give	Verb	~Tense=Past	any
 source-irregular-closed	geese	goose	Noun	Number=Plur	any
 source-irregular-closed	genera	genus	Noun	Number=Plur	any
+source-irregular-closed	gigahertz	gigahertz	Noun	Number=Plur	any
 source-irregular-closed	given	give	Verb	~VerbForm=Part	any
 source-irregular-closed	gone	go	Verb	~VerbForm=Part	any
 source-irregular-closed	got	get	Verb	~Tense=Past	any
@@ -445,6 +447,7 @@ source-irregular-closed	heard	hear	Verb	~Tense=Past	any
 source-irregular-closed	heard	hear	Verb	~VerbForm=Part	any
 source-irregular-closed	held	hold	Verb	~Tense=Past	any
 source-irregular-closed	held	hold	Verb	~VerbForm=Part	any
+source-irregular-closed	hertz	hertz	Noun	Number=Plur	any
 source-irregular-closed	hid	hide	Verb	~Tense=Past	any
 source-irregular-closed	hidden	hide	Verb	~VerbForm=Part	any
 source-irregular-closed	hit	hit	Verb	~Tense=Past	any
@@ -460,6 +463,7 @@ source-irregular-closed	indexes	index	Noun	Number=Plur	any
 source-irregular-closed	indices	index	Noun	Number=Plur	any
 source-irregular-closed	kept	keep	Verb	~Tense=Past	any
 source-irregular-closed	kept	keep	Verb	~VerbForm=Part	any
+source-irregular-closed	kilohertz	kilohertz	Noun	Number=Plur	any
 source-irregular-closed	kneeled	kneel	Verb	~Tense=Past	any
 source-irregular-closed	kneeled	kneel	Verb	~VerbForm=Part	any
 source-irregular-closed	knelt	kneel	Verb	~Tense=Past	any
@@ -522,6 +526,7 @@ source-irregular-closed	meant	mean	Verb	~Tense=Past	any
 source-irregular-closed	meant	mean	Verb	~VerbForm=Part	any
 source-irregular-closed	media	medium	Noun	Number=Plur	any
 source-irregular-closed	mediums	medium	Noun	Number=Plur	any
+source-irregular-closed	megahertz	megahertz	Noun	Number=Plur	any
 source-irregular-closed	memoranda	memorandum	Noun	Number=Plur	any
 source-irregular-closed	memorandums	memorandum	Noun	Number=Plur	any
 source-irregular-closed	men	man	Noun	Number=Plur	any
@@ -542,6 +547,7 @@ source-irregular-closed	nearest	near	Adjective	~Degree=Sup	any
 source-irregular-closed	next	near	Adjective	~Degree=Sup	any
 source-irregular-closed	nuclei	nucleus	Noun	Number=Plur	any
 source-irregular-closed	oases	oasis	Noun	Number=Plur	any
+source-irregular-closed	offspring	offspring	Noun	Number=Plur	any
 source-irregular-closed	older	old	Adjective	~Degree=Cmp	any
 source-irregular-closed	oldest	old	Adjective	~Degree=Sup	any
 source-irregular-closed	opera	opus	Noun	Number=Plur	any
@@ -1587,9 +1593,6 @@ source-regular-verb	recapitulating	recapitulate	Verb	VerbForm=Ger	any
 source-regular-verb	repealed	repeal	Verb	Tense=Past+VerbForm=Part	any
 source-regular-verb	repealing	repeal	Verb	VerbForm=Ger	any
 source-regular-verb	repeals	repeal	Verb	Person=3+Tense=Pres	any
-source-regular-verb	resewed	resew	Verb	Tense=Past+VerbForm=Part	any
-source-regular-verb	resewing	resew	Verb	VerbForm=Ger	any
-source-regular-verb	resews	resew	Verb	Person=3+Tense=Pres	any
 source-regular-verb	retired	retire	Verb	Tense=Past+VerbForm=Part	any
 source-regular-verb	retires	retire	Verb	Person=3+Tense=Pres	any
 source-regular-verb	retiring	retire	Verb	VerbForm=Ger	any
@@ -1644,6 +1647,9 @@ source-regular-verb	tinks	tink	Verb	Person=3+Tense=Pres	any
 source-regular-verb	tonsured	tonsure	Verb	Tense=Past+VerbForm=Part	any
 source-regular-verb	tonsures	tonsure	Verb	Person=3+Tense=Pres	any
 source-regular-verb	tonsuring	tonsure	Verb	VerbForm=Ger	any
+source-regular-verb	torpedoed	torpedo	Verb	Tense=Past+VerbForm=Part	any
+source-regular-verb	torpedoes	torpedo	Verb	Person=3+Tense=Pres	any
+source-regular-verb	torpedoing	torpedo	Verb	VerbForm=Ger	any
 source-regular-verb	trammeled	trammel	Verb	Tense=Past+VerbForm=Part	any
 source-regular-verb	trammeling	trammel	Verb	VerbForm=Ger	any
 source-regular-verb	trammels	trammel	Verb	Person=3+Tense=Pres	any

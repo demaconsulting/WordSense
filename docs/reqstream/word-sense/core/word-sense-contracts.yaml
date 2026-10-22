@@ -107,7 +107,8 @@ sections:
                   that slot, for the group level that probability times the sum of the probabilities, within the slot,
                   of the member senses of the group, and for the sense level that probability times the probability of
                   the answered sense within the slot; it is 0 for an unknown word and 1 for a word with one lemma and
-                  part of speech and one sense, and is comparable only within one result.
+                  part of speech and one sense (and also 1, at the part of speech level, for a word with one lemma and
+                  part of speech whose several senses are not decided), and is comparable only within one result.
                 tags: [unit]
                 justification: |
                   A single number per answer lets callers apply a threshold, and defining it from the slot and sense

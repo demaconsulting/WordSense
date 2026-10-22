@@ -57,7 +57,10 @@ model for another without code changes, and the composite `FallbackWordSenseMode
     probability; at `Group` that probability
     times the sum of the probabilities, within the slot, of the member senses of the group; at `Sense` that
     probability times the probability of the answered sense within the slot. A word with one lemma and part of speech
-    and one sense is answered at `Sense` with confidence 1. Probabilities are comparable only within one result (not
+    and one sense is answered at `Sense` with confidence 1; a word with one lemma and part of speech and several senses
+    that the model does not decide is answered at `PartOfSpeech`, also with confidence 1 (the slot has no alternative,
+    so the level, not the confidence, tells whether a sense is known). Probabilities are comparable only within one
+    result (not
     across models,
     words or levels).
   - A group answer always exposes its member senses: `GroupId` with `WordLexicon.TryGetGroup` gives the

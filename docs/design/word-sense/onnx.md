@@ -114,22 +114,22 @@ The flow, from the training data to a decision:
 
 ```mermaid
 flowchart TD
-    A[Anchor sentences per fine sense] --> B[Encoder: pooled vector of the target word]
-    B --> C[Center on global mean, scale to unit length]
-    C --> D[Per-lemma one-vs-rest logistic regression over fine senses, offline]
-    C --> T[Seeded k-fold cross-validation on anchors: t_fine per lemma, t_group for a lemma with groups]
+    A[Anchor sentences per fine sense] --> B["Encoder: pooled vector of the target word"]
+    B --> C["Center on global mean, scale to unit length"]
+    C --> D["Per-lemma one-vs-rest logistic regression over fine senses, offline"]
+    C --> T["Seeded k-fold cross-validation on anchors: t_fine per lemma, t_group for a lemma with groups"]
     D --> E[(Embedded weights blob of the model)]
     T --> E
     W[Word at run time] --> L{Analyses and senses from the lexicon}
-    L -- one analysis, one sense --> R1[Sense level, confidence 1]
-    L -- several senses, trained weights --> F[Encoder, feature as above]
+    L -- "one analysis, one sense" --> R1["Sense level, confidence 1"]
+    L -- "several senses, trained weights" --> F["Encoder, feature as above"]
     E --> G
-    F --> G[Score the fine senses of the analyses, derive the group scores]
-    G --> C2[Analyses with probabilities, senses with probabilities inside each analysis]
-    G -- fine margin reaches t_fine --> R2[Sense level]
-    G -- best sense in a group, group margin reaches t_group --> R3[Group level]
-    G -- neither --> R4[Part of speech level, ranked senses still listed]
-    L -- no scored senses --> R5[Lexicon analyses, part of speech level; a composite uses the fallback model]
+    F --> G["Score the fine senses of the analyses, derive the group scores"]
+    G --> C2["Analyses with probabilities, senses with probabilities inside each analysis"]
+    G -- "fine margin reaches t_fine" --> R2[Sense level]
+    G -- "best sense in a group, group margin reaches t_group" --> R3[Group level]
+    G -- neither --> R4["Part of speech level, ranked senses still listed"]
+    L -- "no scored senses" --> R5["Lexicon analyses, part of speech level, a composite uses the fallback model"]
 ```
 
 #### Training (Offline)
@@ -300,6 +300,6 @@ not a public extension point. A contributor adds a model as follows:
    `FallbackWordSenseModel` of the encoder class (primary) and a `BasicWordSenseModel` (fallback).
 3. Register the model in the builder's `ModelCatalog`, run `weights <modelId>` to train the weights and the per-lemma
    thresholds for that encoder and embed the resulting `weights.bin` as the manifest resource named in the spec, and run
-   `evaluate <modelId>` to record the per-level accuracy in the build notes.
+   `evaluate <modelId>` to record the per-level accuracy in the model comparison table (`docs/user_guide/model-table.md`).
 4. Add the test project, the requirements, the design and verification documents, the SysML2 model entries and the
    review-set entries that the other model packages have.
