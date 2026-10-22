@@ -333,6 +333,54 @@ public class WordLexiconTests
     }
 
     /// <summary>
+    ///     A token without a letter (a number written with digits, a number with separators or punctuation) is never a
+    ///     word, although the image keeps entries such as <c>3</c> from the dictionary; the answer is the same as for an
+    ///     unknown word, and the number words and words that contain a digit next to letters keep their analyses.
+    /// </summary>
+    [Theory]
+    [InlineData("3")]
+    [InlineData("1999")]
+    [InlineData("0")]
+    [InlineData("24/7")]
+    [InlineData(".22")]
+    [InlineData("3.5")]
+    [InlineData("-")]
+    public void WordLexicon_Lookup_TokenWithoutLetter_IsAbsent(string token)
+    {
+        // Arrange: the token has no letter
+
+        // Act
+        var found = WordLexicon.TryLookup(token, out var senses);
+
+        // Assert: TryLookup, Lookup and Contains agree with an unknown word
+        Assert.False(found);
+        Assert.True(senses.IsDefault);
+        Assert.Empty(WordLexicon.Lookup(token));
+        Assert.False(WordLexicon.Contains(token));
+        Assert.Empty(WordLexicon.FormsOf(token));
+    }
+
+    /// <summary>
+    ///     The number words and the dictionary entries that mix letters and digits are not affected by the rule for tokens
+    ///     without a letter.
+    /// </summary>
+    [Theory]
+    [InlineData("three")]
+    [InlineData("Twenty")]
+    [InlineData("3rd")]
+    public void WordLexicon_Lookup_WordWithALetter_IsStillFound(string word)
+    {
+        // Arrange: the word has a letter, so the rule does not apply
+
+        // Act
+        var found = WordLexicon.TryLookup(word, out var senses);
+
+        // Assert
+        Assert.True(found);
+        Assert.NotEmpty(senses);
+    }
+
+    /// <summary>
     ///     A null word throws.
     /// </summary>
     [Fact]

@@ -64,6 +64,8 @@
 
   <!-- Test fixtures -->
   <ItemGroup>
+    <!-- The model folder check (skip, or fail when WORDSENSE_REQUIRE_MODELS is set) is shared with the Onnx test project -->
+    <Compile Include="..\DemaConsulting.WordSense.Onnx.Tests\ModelFileCheck.cs" Link="ModelFileCheck.cs" />
     <None Include="Fixtures\**\*" CopyToOutputDirectory="PreserveNewest" Condition="Exists('Fixtures')" />
   </ItemGroup>
 

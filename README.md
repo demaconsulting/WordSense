@@ -308,16 +308,16 @@ This version is a foundation, and these follow-ups are planned (the figures are 
 - **A stricter suite.** One-sense labels for the 174 suite rows that accept a set of senses, so that the rows become
   stricter.
 - **Open work items of the code base:** the clean-up of the static analysis findings, the hardening of the word image
-  reader, typed exceptions for model and file failures, and the placement of `EnsureModelAsync` and `MirrorOptions`.
-- **Formal review follow-ups.** The first formal review of all 33 review-sets left compliance and hardening items open:
-  split the compound requirements into atomic ones and move requirements that prescribe the implementation into the
-  design documents; add typed method contracts to the unit designs; label the Arrange, Act and Assert steps in the
-  tests, link system and subsystem requirements to tests of the same level and make the CI acceptance run fail on skipped
-  model tests; add pack-and-inspect tests for the package metadata of all four packages; add direct tests for
-  `FeatureExtractor`, `VectorMath` and the catalog-wide invariants; harden the word image and the Basic table readers
-  (overlap and flags of the image directories, an immutable `BasicTables`, trailing bytes after the Brotli stream);
-  model the builder as a subsystem with its own units and the OTS items in SysML2; automate the reproducibility check of
-  the real weights and use the full digest as the inventory version.
+  and the Basic table readers (overlap and flags of the image directories, an immutable `BasicTables`, trailing bytes
+  after the Brotli stream), typed exceptions for model and file failures, the placement of `EnsureModelAsync` and
+  `MirrorOptions`, and a decision on `SenseInfo.Respelling`, which still carries the pronunciation-era model.
+- **Formal review follow-ups.** The first formal review of all 33 review-sets left compliance items open: split the
+  compound requirements into atomic ones and move requirements that prescribe the implementation into the design
+  documents; add typed method contracts to the unit designs; label the Arrange, Act and Assert steps in the tests and
+  link system and subsystem requirements to tests of the same level; add pack-and-inspect tests for the package metadata
+  of all four packages; add direct tests for `FeatureExtractor`, `VectorMath` and the catalog-wide invariants; model the
+  builder as a subsystem with its own units and the OTS items in SysML2; automate the reproducibility check of the real
+  weights and use the full digest as the inventory version.
 
 ## Documentation
 

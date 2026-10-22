@@ -37,7 +37,13 @@ subsystem documents, with substitutes where a real model is not needed.
   files under
   `model/all-MiniLM-L6-v2-int8/` (`model_int8.onnx`, `vocab.txt`) and `model/bert-base-cased-int8/`
   (`model_int8.onnx`, `vocab.txt`, `config.json`, `tokenizer.json`); no network access. Tests that need a model are
-  skipped, not failed, when the LFS content is absent.
+  skipped, not failed, when the LFS content is absent, so a local run without Git LFS stays convenient.
+- **CI skip gate**: the CI acceptance run must not skip a model test. The build job first checks with
+  `git lfs ls-files` that every tracked model file holds real content (not a pointer), and runs the tests with the
+  environment variable `WORDSENSE_REQUIRE_MODELS=true`, which makes the shared helper `ModelFileCheck` fail a model
+  test instead of skipping it (a missing, pointer, wrong-size or missing-folder condition all fail, with the reason
+  and the name of the variable). The helper rules are tested in `ModelFileCheckTests` (the variable values, the failure
+  with the variable and the skip without it, with temporary folders instead of the real model files).
 - **Isolation**: each test creates its own model, classifier and store directory; no shared state.
 
 ## Acceptance Criteria
@@ -153,7 +159,8 @@ documented for it. The word, part of speech, level and sense id of every output 
 confidence is compared numerically, within 0.01 for Basic (deterministic managed code) and within 0.10 for the encoder
 models, whose int8 inference differs slightly between CPUs and operating systems. The README is the single source of
 truth that the tests parse. The two commented alternative lines are checked as text and their model classes are created.
-Tests that need model files are skipped when the files are absent. The user guide samples are reviewed with the guide
+Tests that need model files are skipped when the files are absent (failed instead when `WORDSENSE_REQUIRE_MODELS` is
+set, as in the CI run). The user guide samples are reviewed with the guide
 and are not compiled. The XML documentation examples of every package are
 extracted from the shipped XML files and compiled against the public API (the `XmlDocExampleTests` of each test
 project).

@@ -19,6 +19,7 @@ sections:
             children:
               - WordSense-Core-WordLexicon-Words
               - WordSense-Core-WordLexicon-Possessives
+              - WordSense-Core-WordLexicon-Numerals
               - WordSense-Core-WordLexicon-Facts
               - WordSense-Core-WordLexicon-Complete
               - WordSense-Core-WordLexicon-Embedded

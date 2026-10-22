@@ -51,6 +51,14 @@ respelling. Every model starts from it, and a word with one sense never needs co
 - Lookup tries the exact spelling first, then the lower-cased spelling (U+2019 maps to `'`) through the fold index,
   so case-sensitive entries win over the folded form. A capitalized spelling that has no entry of its own behaves like
   its lower-case base, and an inflected form behaves like the analyses generated for it at build time.
+- Numerals policy: a token without a letter (a number written with digits such as `3` or `1999`, a number with
+  separators such as `24/7` or `3.5`, punctuation) is never a word. `TryLookup` answers it absent before the cache and
+  the image are consulted, and `FormsOf` returns no form for a lemma without a letter, exactly as the models treat
+  such a token (`BasicClassifier.Normalize` returns an empty key for it, so it is unknown with a fixed tagger tag). The
+  image still holds about 130 such spellings (the numerals of Open English WordNet, `3` as a noun and an adjective
+  among them) that the lookup never shows; a future image regeneration can drop them from the data. `Count`
+  is the count of the image and includes them. The check is on the letter, so `3rd`, `3D` and the number words
+  (`three`, `twenty`) are found.
 - Possessive fallback: when a spelling ending in `'s` or `s'` (straight or typographic apostrophe) is not stored and the
   stem is known, the lookup returns the analyses of the stem with `Poss=Yes` added to the features (alphabetical order
   kept). Contractions (`don't`, `it's`) are a closed list of stored words and never take this path. The reference

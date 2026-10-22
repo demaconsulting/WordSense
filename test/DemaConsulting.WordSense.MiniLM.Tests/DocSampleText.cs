@@ -26,7 +26,7 @@ internal static partial class DocSampleText
             }
         }
 
-        Assert.Skip("The repository root was not found.");
+        ModelFileCheck.Unavailable("The repository root was not found.");
         return string.Empty;
     }
 

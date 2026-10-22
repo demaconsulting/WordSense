@@ -142,7 +142,7 @@ design of the form generator.
   License: same as the repository.
 - `own-adjectives.tsv`: the participial and attributive adjectives (`damaged`, `drained`, `drilled`, `alloyed`, `advance`,
   `beat`, `chance`, `sign`, `stretch`) whose Open English WordNet adjective entry keeps its own analysis beside a reviewed
-  verb analysis of the same spelling (read by `rebuild-forms`; the other 110 such entries are left out on purpose, see
+  verb analysis of the same spelling (read by `rebuild-forms`; the other 105 such entries are left out on purpose, see
   `docs/design/word-sense/word-data/form-generator.md`). License: same as the repository.
 - `auxiliaries.tsv`: hand-written closed list of the English auxiliary verbs (modals and the forms of be, have and
   do), general knowledge, no licensed data. The `words` command appends an Auxiliary sense after the existing senses
