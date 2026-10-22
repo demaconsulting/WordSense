@@ -177,9 +177,9 @@ sections:
       - id: WordSense-Lib-Data
         title: >-
           The system shall keep the word data of the library as validated, deterministic, human-editable TSV tables
-          under data/, imported once from Open English WordNet (CC BY 4.0) with the WordNet 3.0 sense frequency counts,
-          with attribution, so that a data change (a sense label, a group, a project sense or a respelling) is a
-          reviewable text change that needs no code.
+          under data/, imported once from Open English WordNet (CC BY 4.0, derived from Princeton WordNet) with the
+          WordNet 3.0 sense frequency counts for the usage prior, with attribution, so that a data change (a sense
+          label, a group, a project sense or a respelling) is a reviewable text change that needs no code.
         tags: [system]
         justification: |
           Data that is plain, validated text lets contributors correct and extend the lexicon and the sense inventory
@@ -391,7 +391,8 @@ sections:
           Each of the four packages shall ship XML documentation with a namespace summary and verified examples,
           NuGet metadata and a README; each package that embeds derived data carries the credits and licenses in its
           package readme and in a packed NOTICE file, and declares the license expression that covers the embedded
-          data (the core package MIT AND CC-BY-4.0, including the CC0 statistics of its built-in model).
+          data (the core, MiniLM and BertBaseCased packages MIT AND CC-BY-4.0, the core package including the CC0
+          statistics of its built-in model and the CC0 authored forms).
         tags: [system]
         justification: |
           Consumers learn the API from the package itself; examples that are compiled by the test suite cannot go

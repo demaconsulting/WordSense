@@ -997,14 +997,16 @@ ensure; cancelling does not stop the shared ensure (see "Threads and cancellatio
 # Licensing and Provenance
 
 WordSense is licensed under the MIT License. Because the packages embed derived data, their license expressions say
-so: the core package is `MIT AND CC-BY-4.0` and the Onnx, MiniLM and BertBaseCased packages `MIT`, and each package that
-embeds derived data carries a
-`NOTICE.md` with the credits. The core package embeds data derived from Open English WordNet 2025 (CC BY 4.0) and,
-through the sense frequency counts, from the Princeton WordNet 3.0 (its notice is in the `NOTICE.md`), and the statistics
+so: the core, MiniLM and BertBaseCased packages are `MIT AND CC-BY-4.0` and the Onnx package is `MIT`, and each package
+that embeds derived data carries a
+`NOTICE.md` with the credits. The core package embeds data derived from Open English WordNet 2025 (CC BY 4.0), whose
+Princeton WordNet notice (it is derived from Princeton WordNet 3.1) is reproduced in the `NOTICE.md`, the inflected forms
+that the project authored (CC0 1.0, no third-party inflection database) and the statistics
 of its `Basic` model, trained on our own CC0 corpora (the open part-of-speech corpus and the sentence corpus), with no
 treebank involved; no package contains CC BY-SA material. The MiniLM and BertBaseCased packages embed weights that are
 statistical summaries of those corpora, whose scores are corrected to the usage of the senses with the WordNet 3.0 counts
-(see "Working with an Encoder Model"); their `NOTICE.md` reproduces the WordNet 3.0 notice and records that the encoder
+(see "Working with an Encoder Model") and which hold the sense ids of Open English WordNet (hence CC BY 4.0); their
+`NOTICE.md` reproduces the WordNet 3.0 notice, gives the Open English WordNet attribution and records that the encoder
 model files are downloaded from this repository, with the Apache License 2.0 text in `model/<model-id>/LICENSE`. The
 `all-MiniLM-L6-v2` and
 `bert-base-cased` models (Apache License 2.0) and ONNX Runtime (MIT) are used under their own licenses.
@@ -1016,9 +1018,11 @@ filtered list is committed, in `corpus/lexicon/`, with its source, checksum and 
 
 The word data under `data/` is imported from Open English WordNet 2025 (<https://en-word.net>), which is licensed
 under CC BY 4.0; that data keeps the license and is credited here as the license requires. Its source file, pinned
-SHA-256 and what was left out are recorded in `data/PROVENANCE.md`. The sense frequency counts that rank the senses of
-a lemma and size the training data of each sense come from the WordNet 3.0 sense index (Princeton University, under the
-WordNet license, whose notice is reproduced in `data/PROVENANCE.md`). SemCor 3.0 (the sense-annotated Brown Corpus
+SHA-256 and what was left out are recorded in `data/PROVENANCE.md`. The sense frequency counts that size the training data
+of each sense and feed the usage prior of the encoder weights come from the WordNet 3.0 sense index (Princeton University,
+under the
+WordNet license, whose notice is reproduced in `data/PROVENANCE.md`); the senses of a lemma are ordered as Open English
+WordNet orders them. SemCor 3.0 (the sense-annotated Brown Corpus
 subset, a mapping to WordNet 3.0 of the Princeton SemCor 1.6; the WordNet license applies and its notice is reproduced in
 `data/PROVENANCE.md`), the sense-annotated text on which the
 models are measured, is downloaded to a cache by the builder, never committed, and used for evaluation only; it is

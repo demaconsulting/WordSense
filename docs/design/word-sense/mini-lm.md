@@ -39,7 +39,9 @@ without scoring).
 
 The package ships a `NOTICE.md` (packed by the project file, as the core package does). The embedded weights carry a
 sense usage prior derived from the WordNet 3.0 sense counts (the builder adds it to the stored biases), so the notice
-reproduces the Princeton WordNet 3.0 license, states that the weights are statistical summaries of the CC0 corpora of
+reproduces the Princeton WordNet 3.0 license, gives the Open English WordNet 2025 (CC BY 4.0) attribution for the sense
+ids that the weights hold (the package license expression is `MIT AND CC-BY-4.0`), states that the weights are
+statistical summaries of the CC0 corpora of
 this project, and records that the encoder model files are not in the package: they are downloaded from this repository
 (`model/all-MiniLM-L6-v2-int8/`, Apache License 2.0, with the license text in that folder) and are the int8 ONNX export
 of `sentence-transformers/all-MiniLM-L6-v2`.

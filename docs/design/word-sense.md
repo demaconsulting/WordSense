@@ -56,7 +56,8 @@ packages, each modeled as a subsystem, plus a non-shipped build-time tool:
   model, chooses the thresholds and measures the models on independent text. It is never shipped. See _WordSenseBuilder
   Unit Design_.
 - **WordData** (`data/` and `tools/WordSense.Builder/Data`): the TSV word data imported from Open English WordNet
-  (CC BY 4.0) with the WordNet 3.0 sense counts, its schema, and the builder code that imports, labels and validates
+  (CC BY 4.0) with the WordNet 3.0 sense counts for the usage prior, its schema, and the builder code that imports,
+  labels and validates
   it. It is the source of the lexicon and the sense catalog that the builder compiles into the core package. See
   _WordData Subsystem Design_.
 
@@ -68,8 +69,10 @@ result, never a mixture of the two. Model packages never reference each other ot
 the model it wants. The contracts in core are the seam between callers and models: a caller programs against
 `IWordSenseModel` and can swap models without code changes. The licenses follow the embedded data: the core package is
 licensed `MIT AND CC-BY-4.0` and ships a `NOTICE.md` with the Open English WordNet 2025 (CC BY 4.0) attribution, the
-Princeton WordNet 3.0 notice and the record that the statistics of its built-in model come from our own CC0 corpora and
-from no treebank (no CC BY-SA material is shipped anywhere).
+Princeton WordNet notice that Open English WordNet requires and the record that the statistics of its built-in model come
+from our own CC0 corpora and from no treebank (no CC BY-SA material is shipped anywhere). The MiniLM and BertBaseCased
+packages are also `MIT AND CC-BY-4.0`, because their weights hold Open English WordNet sense ids; their notices add the
+WordNet 3.0 notice of the usage prior.
 
 ## External Interfaces
 

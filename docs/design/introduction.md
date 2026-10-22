@@ -65,7 +65,7 @@ software items, specifically:
 - **WordSenseBuilder (Unit)** — the non-shipped build-time tool that creates the lexicon blob and the weights blobs,
   chooses the thresholds and measures the models
 - **WordData (Subsystem)** — the TSV word data under `data/` (imported from Open English WordNet, CC BY 4.0, with the
-  WordNet 3.0 sense counts) and the non-shipped builder code that imports, labels and validates it
+  WordNet 3.0 sense counts for the usage prior) and the non-shipped builder code that imports, labels and validates it
   - **DataSchema**, **DataLayout**, **OewnImporter**, **FormGenerator**, **FormAuditor**, **DataValidator** and
     **SenseLabelGenerator (Units)** — the schema, the file layout, the import, the generated forms and their audit,
     the validation and the readable sense labels
@@ -123,7 +123,8 @@ form layers:
   `BasicWordSenseModel`, a statistical tagger and cue model that answers at the part of speech level (and the sense
   level where the lemma and part of speech have one sense). It holds no encoder weights and no ONNX code. Its
   package license expression is `MIT AND CC-BY-4.0` and a packed `NOTICE.md` carries the attribution of the data
-  embedded in it (Open English WordNet 2025 under CC BY 4.0, and the Princeton WordNet 3.0 notice) and records that the
+  embedded in it (Open English WordNet 2025 under CC BY 4.0 with the Princeton WordNet notice that it requires) and
+  records that the
   statistics of the built-in model come from our own CC0 corpora (the open part-of-speech corpus and the sentence
   corpus) and from no treebank.
 - The **Onnx** package implements the contracts for any BERT-style encoder: model file management, encoder,
@@ -133,7 +134,9 @@ form layers:
   weights and thresholds trained for it and composes the encoder model with the core Basic model through the core
   `FallbackWordSenseModel`, so that a word the encoder does not score is answered by the Basic model. They reference
   the core and Onnx packages. Each ships a packed `NOTICE.md` with the Princeton WordNet 3.0 notice for the sense usage
-  prior of its weights and the record that the encoder model files (Apache License 2.0) are downloaded from this
+  prior of its weights, the Open English WordNet (CC BY 4.0) attribution for the sense ids the weights hold (their
+  license expression is `MIT AND CC-BY-4.0`) and the record that the encoder model files (Apache License 2.0) are
+  downloaded from this
   repository, not shipped.
 
 The dependency rule is that a package may reference only the packages in layers below it: core references nothing,

@@ -79,4 +79,5 @@ Every `<code>` example of the shipped XML documentation file is compiled against
 
 The project file packs `NOTICE.md` at the root of the package, like the core package. The notice is reviewed with the
 package (no automated test inspects the packed file): it reproduces the WordNet 3.0 license for the sense usage prior of
-the weights and records that the encoder model files are downloaded from this repository under the Apache License 2.0.
+the weights, gives the Open English WordNet (CC BY 4.0) attribution for the sense ids they hold and records that the
+encoder model files are downloaded from this repository under the Apache License 2.0.

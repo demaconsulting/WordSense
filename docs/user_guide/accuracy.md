@@ -49,10 +49,10 @@ most running words. Choose by what else you need:
   of a word that has one. Use it when the part of speech is all you need, when nothing may be downloaded, or as the
   fallback of the other two.
 - **BertBaseCased** (104 MiB, about 8 ms a sentence) is the model for fine senses. It costs about five times the
-  latency and the download of MiniLM, and in return it commits to a fine sense on 15.7% of the real test sentences and
-  is right in 94.2% of those answers.
+  latency and the download of MiniLM, and in return it commits to a fine sense on 15.8% of the real test sentences and
+  is right in 94.0% of those answers.
 - **MiniLM** (22 MiB, about 1.5 ms a sentence) answers mostly at the part of speech or the group level: it commits to a
-  fine sense on 3.1% of the real test sentences (87.7% right). Choose it for the small download and the speed, not for
+  fine sense on 3.1% of the real test sentences (86.4% right). Choose it for the small download and the speed, not for
   senses. It is the default recommendation when a download is acceptable and the part of speech and groups are enough.
 
 Whichever model you choose, test the `Level` of every answer first (see "Levels and Confidence"), treat the sense level
@@ -83,7 +83,7 @@ the share of the sense among the training sentences of its lemma and multiplies 
 the WordNet 3.0 tag counts, with smoothing and tempered by the exponent 0.5 (because the counts are small and come from
 the Brown Corpus, a different genre). The correction has no run-time cost. The effect on the shipped models:
 
-- On SemCor the fine top-1 rose from 47.5% to 53.8% (MiniLM) and from 56.9% to 60.9% (BertBaseCased), and the share of
+- On SemCor the fine top-1 rose from 47.5% to 53.7% (MiniLM) and from 56.9% to 60.9% (BertBaseCased), and the share of
   sense-level answers and their precision rose too.
 - On the real test sentences, which are balanced by sense and therefore reward the old proportions, the fine top-1 moved
   by +0.05 (MiniLM) and -1.15 points (BertBaseCased), and the running-text part of speech did not fall.

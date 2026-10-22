@@ -5,6 +5,9 @@
 - **Open English WordNet 2025 Edition** (OEWN), <https://github.com/globalwordnet/english-wordnet>, <https://en-word.net>.
 - License: **Creative Commons Attribution 4.0 (CC BY 4.0)**. The tables derived from it keep that license; credit
   Open English WordNet when you redistribute them.
+- Open English WordNet is itself derived from Princeton WordNet (WordNet 3.1, Copyright 2011 by Princeton University)
+  under the WordNet License and requires that its notice (`WNDB_License.txt` of the release) goes with the data; it is
+  reproduced in `src/DemaConsulting.WordSense/NOTICE.md`, the notice file of the package that embeds the word image.
 - File: `english-wordnet-2025.xml.gz` (the LMF file of the release; **not committed**), SHA-256
   `9CA6D1DCB75F822FDD66617F7D9DA48142ACE38DD544D6AD5E2FECA1674AD3FE`, checked by `import-oewn` against the pin
   `OewnImporter.PinnedSha256`.
