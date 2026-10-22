@@ -30,19 +30,34 @@ sections:
                 tests:
                   - BasicTables_Load_ToyTable_ReadsContent
                   - BasicTables_Load_Transitions_AreDistributions
-                  - BasicTables_FindSuffix_KnownAndUnknown
+                  - BasicTables_TryFindSuffix_KnownAndUnknown
                   - BasicTables_Load_BadMagic_Throws
                   - BasicTables_Load_NotCompressed_Throws
                   - BasicTables_Load_Truncated_Throws
                   - BasicTables_Load_TruncatedAtEveryLength_Throws
                   - BasicTables_Load_WrongVersionOrTagCount_Throws
                   - BasicTables_Load_TrailingBytes_Throws
+                  - BasicTables_Load_BytesAfterCompressedStream_Throws
                   - BasicTables_Load_UnorderedHashes_Throws
                   - BasicTables_Load_OtherInventoryHash_ThrowsNamingBothHashes
                   - BasicTables_Load_UnknownAnalysis_Throws
                   - BasicTables_Load_DuplicateAnalysis_Throws
                   - LemmaCue_RowOf_Analysis_UsesTheColumnOfItsFeatures
                   - FeatureRef_Hash_PrefixAndDeterminism
+
+              - id: WordSense-Core-BasicTables-Immutable
+                title: >-
+                  BasicTables shall expose its statistics, and those of its word entries and cue tables, only as
+                  read-only views that a consumer cannot write through, and shall give a loaded table that does not
+                  depend on the blob it was read from.
+                tags: [unit]
+                justification: |
+                  One table is shared by every classifier and thread in the process; a consumer that could change an
+                  exposed array would change the answers of all the others.
+                tests:
+                  - BasicTables_Properties_ExposeNoArrays
+                  - BasicTables_Load_Views_AreIndependentOfTheBlob
+                  - BasicTables_Constructors_DefaultArray_Throws
 
               - id: WordSense-Core-BasicTables-Embedded
                 title: >-
@@ -67,3 +82,4 @@ sections:
                   - BasicTables_LoadEmbedded_EmbeddedResource_Loads
                   - BasicTables_LoadEmbedded_MissingResource_ThrowsModelIntegrity
                   - BasicTables_LoadEmbedded_CorruptOrForeignResource_ThrowsModelIntegrity
+                  - BasicTables_LoadEmbedded_RealTableWithAlteredRegion_ThrowsModelIntegrity

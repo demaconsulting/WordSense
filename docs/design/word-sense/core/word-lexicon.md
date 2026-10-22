@@ -32,6 +32,12 @@ key. Every model starts from it, and a word with one sense never needs context.
   length and bytes, the spelling, analysis, feature, entry lemma and part of speech, sense id, sense-group, group id,
   group part-of-speech and lemma-block sections; the encoder weights and `basic.bin` carry it and refuse an image with
   another hash. Each section is Brotli-compressed after a byte-plane shuffle, or stored when that is not smaller. The
+  directory is validated completely when the image is opened, before any section is decompressed: every section lies
+  after the directory and ends inside the image, no two sections overlap, a section id occurs once, the flags are
+  either the stored flag (`0x100`) alone or a stride from 1 to 255, an empty section stores no bytes, a stored section is
+  as long as its content, and a compressed section is shorter than its content and a whole number of records of its
+  stride. A compressed section must be exactly one Brotli stream: the decoder reports the input it consumed, and bytes
+  after the end of the stream are rejected. The
   analysis sections are decoded when the image is opened; the catalog sections are decoded on the first call of a
   catalog method.
 - `WordDetails(Lemma, PartOfSpeech, Features)`: one analysis. `Features` is the inflection as `Key=Value` pairs joined
@@ -99,7 +105,9 @@ key. Every model starts from it, and a word with one sense never needs context.
 #### Error Handling
 
 If the embedded resource is missing or the image is corrupt (wrong magic or version, content hash mismatch, invalid
-section or reference, a sense that names a group or respelling that does not exist, a duplicate sense id, a group id
+section or reference, a section that starts inside the header or the directory or runs past the image, overlapping or
+duplicate sections, unsupported flags, inconsistent raw and stored lengths, bytes after the end of a compressed stream,
+a sense that names a group or respelling that does not exist, a duplicate sense id, a group id
 without the `#group:` marker or equal to a sense id, a group with
 fewer than two members or with all the senses of its lemma and part of speech, a group that mixes lemmas or parts of
 speech, a group that lists a sense twice, group members that disagree with the sense-to-group index, or a key index that

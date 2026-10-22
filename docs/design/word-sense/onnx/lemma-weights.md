@@ -51,7 +51,13 @@ and decides the level of an answer from the lemma's own thresholds.
   id against the word image; a different inventory hash, an unknown or duplicate sense or lemma, a sense count that
   differs from the weights, or a group threshold for a lemma none of whose senses is in a group is a load failure
   (`InvalidDataException`). Nothing is dropped.
-- `FeatureExtractor.Center(vector, mean)`: the feature of a pooled vector.
+- `FeatureExtractor.Center(vector, mean)`: the feature of a pooled vector: the vector minus the mean (nothing when the
+  mean is empty), scaled to unit length; null when the centered vector has no magnitude (zero, or a non-finite value,
+  so a NaN feature never reaches the scoring). A non-empty mean of another dimension throws `ArgumentException`, a null
+  vector `ArgumentNullException`; the classifier only passes vectors of the dimension of its weights.
+- `VectorMath.Dot(left, right)`: the sum of the element-wise products over the length of `left` with `Vector<float>`
+  blocks and a scalar remainder; a `right` shorter than `left` throws `ArgumentException` (checked first, so the SIMD
+  and the scalar loop fail alike).
 - Scoring:
   - `Scores` gives the fine scores of a lemma: for each sense the dot product of its row with the feature plus its
     bias (the one-versus-rest activation).

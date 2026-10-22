@@ -130,7 +130,9 @@ sections:
               - id: WordSense-Core-WordLexicon-Format
                 title: >-
                   WordLexicon shall reject a corrupt or foreign word image (wrong magic or version, content hash
-                  mismatch, invalid section, a sense that names a group or a respelling that does not exist, a
+                  mismatch, invalid section, a section that starts inside the header or the directory, overlapping
+                  sections, unsupported flags, inconsistent raw and stored lengths, bytes after the end of a compressed
+                  stream, a sense that names a group or a respelling that does not exist, a
                   duplicate sense id, a group id without the group marker (lemma#group:label), a group with fewer than
                   two members or with all the senses of its lemma and part of speech, a group that mixes lemmas or
                   parts of speech, or group members that disagree with the sense-to-group index, or that list a sense
@@ -151,6 +153,13 @@ sections:
                   - WordLexicon_Image_KeyIndexOutOfOrder_IsRejected
                   - WordLexicon_Image_KeyIndexWithDuplicate_IsRejected
                   - WordLexicon_Image_RebuiltWithoutDamage_IsAccepted
+                  - WordLexicon_Image_DirectoryRebuiltWithoutDamage_IsAccepted
+                  - WordLexicon_Image_TrailingBytesAfterCompressedStream_IsRejected
+                  - WordLexicon_Image_SectionStartingInHeaderOrDirectory_IsRejected
+                  - WordLexicon_Image_OverlappingSections_IsRejected
+                  - WordLexicon_Image_UnsupportedFlags_IsRejected
+                  - WordLexicon_Image_InconsistentLengths_IsRejected
+                  - WordLexicon_Image_DuplicateSectionId_IsRejected
 
               - id: WordSense-Core-WordLexicon-Senses
                 title: >-
@@ -231,5 +240,6 @@ sections:
                   - WordLexicon_OpenImage_EmbeddedResource_Opens
                   - WordLexicon_OpenImage_MissingResource_ThrowsModelIntegrity
                   - WordLexicon_OpenImage_CorruptResource_ThrowsModelIntegrity
+                  - WordLexicon_OpenImage_OverlappingSections_ThrowsModelIntegrity
                   - WordLexicon_ReadCatalog_DamagedCatalog_ThrowsModelIntegrity
                   - WordLexicon_SensesOf_RealImage_ReturnsSensesWithoutRespelling

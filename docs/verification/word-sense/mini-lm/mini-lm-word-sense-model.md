@@ -45,7 +45,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
   mixture, with no ensure of the model files.
 - **Composition references** (`Assembly_ReferencesCoreAndOnnx`): the assembly references the core and Onnx
   assemblies (the Basic model is in the core).
-- **Constructor validation**: a maximum sequence length outside 8 to 512 throws `ArgumentOutOfRangeException`.
+- **Constructor defaults and validation** (`MiniLMWordSenseModel_Constructor_Defaults_UseStoreAnd128`,
+  `MiniLMWordSenseModel_Constructor_SequenceLengthOutOfRange_Throws`): the default maximum sequence length is 128, read
+  from the encoder model (`MaxSequenceLength`, internal), and the limits 8 and 512 reach it unchanged; a maximum
+  sequence length outside 8 to 512 throws `ArgumentOutOfRangeException`.
 - **Disposal** (`Dispose_DisposesEncoderAndFallback`): disposing twice is harmless, disposes the encoder model and the
   Basic model, and `ClassifyAsync` after disposal throws `ObjectDisposedException`; the model contract is `IDisposable`,
   so `using` disposes it.

@@ -5,8 +5,9 @@
 The unit covers `LemmaWeights` (fine scores, group scores, ranking, levels and the confidence function), the
 `WeightsBlob` reader and the `WeightedLemmaTable` that resolves weights against the word image. Tests in
 `test/DemaConsulting.WordSense.Onnx.Tests` (`LemmaWeightsTests`, `WeightsBlobTests`, `WeightedLemmaTableTests`,
-`EmbeddedWeightsTests`) use hand-made weights, tiny blobs built by a test helper (the writer lives in the builder and is
-tested through the reader) and a hand-made image. The embedded-weights test uses the real weights of the model packages.
+`FeatureExtractorTests`, `VectorMathTests`, `EmbeddedWeightsTests`) use hand-made weights, tiny blobs built by a test
+helper (the writer lives in the builder and is tested through the reader) and a hand-made image. The embedded-weights
+test uses the real weights of the model packages.
 
 #### Test Environment
 
@@ -33,6 +34,21 @@ All scenarios below pass on every platform and target framework of the CI matrix
   different thresholds are answered at different levels; a threshold of "never" is not met by a finite margin.
 - **Invalid weights are rejected**: a wrong shape, a non-finite value and a feature of the wrong length throw
   `ArgumentException`.
+- **Feature extraction** (`FeatureExtractor_Center_Vector_SubtractsTheMeanAndScalesToUnitLength`,
+  `FeatureExtractor_Center_EmptyMean_ScalesThePooledVector`, `FeatureExtractor_Center_VectorEqualToMean_ReturnsNull`,
+  `FeatureExtractor_Center_NonFiniteValue_ReturnsNull`, `FeatureExtractor_Center_MeanOfOtherDimension_Throws`,
+  `FeatureExtractor_Center_NullVector_Throws`, `FeatureExtractor_Center_EmptyVector_ReturnsNull`; tests in
+  `FeatureExtractorTests`): a pooled vector of (4, 6) with the mean (1, 2) gives the unit feature (0.6, 0.8); an empty
+  mean subtracts nothing and the pooled array is not changed; a vector equal to the mean, an empty vector and a vector
+  or mean with a NaN or infinite value give null (never a NaN feature); a mean whose length differs from the vector
+  (shorter or longer) throws `ArgumentException` naming `mean`, and a null vector throws `ArgumentNullException`.
+- **Dot product** (`VectorMath_Dot_LengthsAroundTheSimdWidth_EqualTheScalarSum`,
+  `VectorMath_Dot_ShorterFirstVector_UsesItsLength`, `VectorMath_Dot_EmptyVectors_IsZero`,
+  `VectorMath_Dot_RightShorterThanLeft_Throws`; tests in `VectorMathTests`): with small integer values (exact in single
+  precision) the dot product equals the scalar sum for a length of one, one below, at and one above the SIMD width,
+  below and above two and three widths with a remainder, and 384, 385 and 768 values; extra values after the length of
+  the first vector are ignored; two empty vectors give zero; a second vector shorter than the first throws
+  `ArgumentException` naming `right`, with and without a SIMD block.
 - **Blob round trip** (`WordSenseBuilder_WeightsBlobWriter_Write_RoundTripsThroughTheReader`,
   `WeightsBlob_Read_FineSenseLemma_KeepsSenseIds`, `WeightsBlob_Read_Thresholds_AreKept`,
   `WeightsBlob_Read_FormChooser_IsKept`): a small valid blob read by `WeightsBlob` gives the model id, inventory hash,

@@ -14,14 +14,20 @@ sections:
                   the final line feed, blank lines, UTF-8 validity, Unicode normalization, edge spaces, cell types,
                   enumerations and features (sorted, unique, one value per feature) of every table file, and report
                   each defect as a violation; at most 20 violations are listed per rule while the total counts every
-                  defect.
+                  defect. A schema, a directory listing or a table file that cannot be read shall be reported as a
+                  violation that names the path, and the validation of the rest of the data shall continue; the
+                  validator shall not throw for it.
                 tags: [unit]
                 justification: |
-                  A file that deviates from the format would break the determinism that makes the data reviewable.
+                  A file that deviates from the format would break the determinism that makes the data reviewable, and a
+                  validator that stops with an exception on an unreadable file would hide the other defects.
                 tests:
                   - WordSenseBuilder_DataValidator_Validate_ImportedSlice_IsValid
                   - WordSenseBuilder_DataValidator_Validate_MissingDirectory_ReportsSchema
                   - WordSenseBuilder_DataValidator_Validate_BrokenSchema_ReportsSchema
+                  - WordSenseBuilder_DataValidator_Validate_UnreadableSchema_ReportsSchemaViolation
+                  - WordSenseBuilder_DataValidator_Validate_UnreadableTableFile_ReportsViolationAndContinues
+                  - WordSenseBuilder_DataValidator_Validate_DirectoryThatCannotBeListed_ReportsViolationAndContinues
                   - WordSenseBuilder_DataValidator_Validate_UnexpectedFiles_ViolateFileSet
                   - WordSenseBuilder_DataValidator_Validate_MissingSourceFile_ViolatesFileSet
                   - WordSenseBuilder_DataValidator_Validate_EmptyPartitionFile_Violates

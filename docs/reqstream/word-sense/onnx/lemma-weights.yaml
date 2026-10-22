@@ -106,6 +106,34 @@ sections:
                   - WeightsBlob_Read_Thresholds_AreKept
                   - LemmaWeights_Level_UsesTheLemmasOwnThresholds
 
+              - id: WordSense-Onnx-LemmaWeights-Feature
+                title: >-
+                  The feature of a target word shall be its pooled encoder vector minus the global mean of the weights
+                  (nothing subtracted when the mean is empty), scaled to unit length, or none when the centered
+                  vector has no magnitude (all zero, or with a non-finite value), a mean of another dimension shall
+                  be rejected,
+                  and the dot product that scores a feature against the weights shall equal the sum of the
+                  element-wise products for every vector length, including lengths that are not a multiple of the
+                  SIMD width.
+                tags: [unit]
+                justification: |
+                  Training and inference share one feature definition, so a vector that cannot be normalized must be
+                  recognized (the word is then answered from the lexicon alone) and must never produce a NaN score; the
+                  vectorized dot product must give the same score as the plain sum on every length, or the scores of
+                  some dimensions would differ from the trained ones.
+                tests:
+                  - FeatureExtractor_Center_Vector_SubtractsTheMeanAndScalesToUnitLength
+                  - FeatureExtractor_Center_EmptyMean_ScalesThePooledVector
+                  - FeatureExtractor_Center_VectorEqualToMean_ReturnsNull
+                  - FeatureExtractor_Center_NonFiniteValue_ReturnsNull
+                  - FeatureExtractor_Center_MeanOfOtherDimension_Throws
+                  - FeatureExtractor_Center_NullVector_Throws
+                  - FeatureExtractor_Center_EmptyVector_ReturnsNull
+                  - VectorMath_Dot_LengthsAroundTheSimdWidth_EqualTheScalarSum
+                  - VectorMath_Dot_ShorterFirstVector_UsesItsLength
+                  - VectorMath_Dot_EmptyVectors_IsZero
+                  - VectorMath_Dot_RightShorterThanLeft_Throws
+
               - id: WordSense-Onnx-LemmaWeights-Embedded
                 title: >-
                   The weights embedded in each model package shall resolve completely against the shipped word image:

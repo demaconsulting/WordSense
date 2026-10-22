@@ -477,7 +477,18 @@ internal static class InventorySeeder
             throw new InvalidDataException($"{path}:1: the header lacks the column(s) {string.Join(", ", missing)}.");
         }
 
+        // A repeated column name would let the later column overwrite the earlier one in every row
+        var columnAt = new Dictionary<string, int>(StringComparer.Ordinal);
+        for (var i = 0; i < header.Length; i++)
+        {
+            if (!columnAt.TryAdd(header[i], i + 1))
+            {
+                throw new InvalidDataException($"{path}:1: the header repeats the column '{header[i]}' (columns {columnAt[header[i]].ToString(CultureInfo.InvariantCulture)} and {(i + 1).ToString(CultureInfo.InvariantCulture)}).");
+            }
+        }
+
         var rows = new List<Dictionary<string, string>>();
+        var firstLineOf = new Dictionary<(string Column, string Id), int>();
         for (var number = 2; number <= lines.Length; number++)
         {
             var line = lines[number - 1];
@@ -505,6 +516,13 @@ internal static class InventorySeeder
                 if (cut <= 0 || cut == row[column].Length - 1)
                 {
                     throw new InvalidDataException($"{path}:{number.ToString(CultureInfo.InvariantCulture)}: the {column} '{row[column]}' is not a public id of the form lemma#label.");
+                }
+
+                // Two rows with one public id would overwrite each other in the import: the second would replace the first
+                // without a trace, so both places are named
+                if (!firstLineOf.TryAdd((column, row[column]), number))
+                {
+                    throw new InvalidDataException($"{path}:{number.ToString(CultureInfo.InvariantCulture)}: the {column} '{row[column]}' repeats the one on line {firstLineOf[(column, row[column])].ToString(CultureInfo.InvariantCulture)}; every id needs exactly one row.");
                 }
             }
 

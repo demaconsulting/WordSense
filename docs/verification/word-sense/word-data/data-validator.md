@@ -22,6 +22,14 @@ All scenarios below pass.
 - **Schema and file set** (`MissingDirectory_ReportsSchema`, `BrokenSchema_ReportsSchema`,
   `UnexpectedFiles_ViolateFileSet`,
   `MissingSourceFile_ViolatesFileSet`, `EmptyPartitionFile_Violates`, `SplitPlanMismatch_ViolatesFileSet`).
+- **Unreadable input is a violation** (`UnreadableSchema_ReportsSchemaViolation`,
+  `UnreadableTableFile_ReportsViolationAndContinues`,
+  `DirectoryThatCannotBeListed_ReportsViolationAndContinues`): a schema that is a folder (which the platform reports as
+  an unauthorized access) gives the one `schema` violation that names the path; a table file locked by another handle
+  gives an `unreadable` violation that names the file while the later tables are still read; a data folder, and the
+  folder of a partitioned table, whose listing fails (through the internal lister seam of `Validate`, with a listing
+  that fails while it is being read) give a `file-set` violation that names the directory while the other tables are
+  still read. None of these throws.
 - **Format and cells** (`FormatDefects_AreReported`, `CellDefects_AreReported`, `EmptyRequiredCell_Violates`,
   `SenseTableFeatures_AreChecked`): the last one checks the features of an analysis of the form table against the
   feature vocabulary, including a feature name that is listed twice.

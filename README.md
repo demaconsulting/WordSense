@@ -355,15 +355,14 @@ This version is a foundation, and these follow-ups are planned (the figures are 
   analysis (only 9 have it), with a relabeling of the corpus rows that name them.
 - **A stricter suite.** One-sense labels for the 174 suite rows that accept a set of senses, so that the rows become
   stricter.
-- **Open work items of the code base:** the clean-up of the static analysis findings, the hardening of the word image
-  and the Basic table readers (overlap and flags of the image directories, an immutable `BasicTables`, trailing bytes
-  after the Brotli stream) and the clean-up of the pronunciation-era data tables (`sense_respelling`), which no longer
-  have an API.
+- **Open work items of the code base:** the `sense_respelling` table and the respelling sections of the word image are
+  still in the data and the image format (the pronunciation API was removed); they can be dropped at the next
+  regeneration of the image.
 - **Formal review follow-ups.** The first formal review of all 33 review-sets left compliance items open: split the
   compound requirements into atomic ones and move requirements that prescribe the implementation into the design
   documents; add typed method contracts to the unit designs; label the Arrange, Act and Assert steps in the tests and
   link system and subsystem requirements to tests of the same level; add pack-and-inspect tests for the package metadata
-  of all four packages; add direct tests for `FeatureExtractor`, `VectorMath` and the catalog-wide invariants; model the
+  of all four packages; add direct tests for the catalog-wide invariants; model the
   builder as a subsystem with its own units and the OTS items in SysML2; automate the reproducibility check of the real
   weights and use the full digest as the inventory version.
 

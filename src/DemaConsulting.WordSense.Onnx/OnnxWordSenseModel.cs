@@ -356,6 +356,12 @@ public abstract class OnnxWordSenseModel : IDownloadableWordSenseModel
     }
 
     /// <summary>
+    ///     Gets the maximum sequence length, including the special tokens, that this model gives its encoder (the
+    ///     constructor argument; 128 for the public models unless the caller chose another one).
+    /// </summary>
+    internal int MaxSequenceLength => _maxSequenceLength;
+
+    /// <summary>
     ///     Gets whether the encoder (and with it the ONNX session) has been released or was never opened.
     /// </summary>
     internal bool IsEncoderReleased

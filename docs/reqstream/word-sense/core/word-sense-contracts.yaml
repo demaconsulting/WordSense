@@ -270,8 +270,8 @@ sections:
                   SenseInfo shall describe a sense by its id (lemma#label), its group id (none when the sense is in no
                   group), its lemma, its part of speech and its OEWN sense key (none for a project sense), and
                   SenseGroup shall describe a group by its id (lemma#group:label), its lemma, its part
-                  of speech and the ids of its senses in inventory order (at least two, never all the senses of its
-                  lemma and part of speech), both as immutable values with value equality (a group compares the
+                  of speech and the ids of its senses in inventory order (at least two, and never all the senses of
+                  that lemma and part of speech), both as immutable values with value equality (a group compares the
                   content and order of its member ids), and neither shall expose a respelling.
                 tags: [unit]
                 justification: |

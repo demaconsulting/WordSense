@@ -78,7 +78,7 @@ sections:
                   of the encoder instead of its fallback.
                 tests:
                   - OnnxClassifier_ClassifyAsync_TrainedLemma_ListsRankedCandidatesSummingToOne
-                  - OnnxClassifier_ClassifyAsync_SingleSenseWord_ListsNoCandidates
+                  - OnnxClassifier_ClassifyAsync_SingleSenseWord_ListsItsOneUnscoredSense
                   - OnnxClassifier_ClassifyAsync_LemmaWithoutWeights_ListsNoCandidates
 
               - id: WordSense-Onnx-OnnxClassifier-Slots

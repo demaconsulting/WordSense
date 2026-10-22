@@ -161,11 +161,14 @@ internal static class CueModel
         {
             throw new ArgumentNullException(nameof(analyses));
         }
+        // Read-only spans over the immutable arrays keep the inner loop free of per-access checks
+        var hashes = cue.Hashes.AsSpan();
+        var weights = cue.Weights.AsSpan();
         Span<int> rows = features.Length <= MaxFeatures ? stackalloc int[MaxFeatures] : new int[features.Length];
         var found = 0;
         foreach (var feature in features)
         {
-            var row = Array.BinarySearch(cue.Hashes, feature.Hash);
+            var row = hashes.BinarySearch(feature.Hash);
             if (row >= 0)
             {
                 rows[found++] = row;
@@ -185,7 +188,7 @@ internal static class CueModel
             int sum = cue.Analyses[column].Prior;
             for (var r = 0; r < found; r++)
             {
-                sum += cue.Weights[(rows[r] * width) + column];
+                sum += weights[(rows[r] * width) + column];
             }
 
             scores[j] = sum * Quantum;

@@ -213,18 +213,24 @@ public class MiniLMWordSenseModelTests
     }
 
     /// <summary>
-    ///     The defaults construct a model with the per-user store and a 128-token window; the limits are accepted.
+    ///     The defaults construct a model with the per-user store and a maximum sequence length of 128 word pieces; the
+    ///     limits 8 and 512 are accepted and reach the encoder model unchanged.
     /// </summary>
     [Fact]
     public void MiniLMWordSenseModel_Constructor_Defaults_UseStoreAnd128()
     {
+        // Arrange / Act
         using var defaults = new MiniLMWordSenseModel();
         using var smallest = new MiniLMWordSenseModel(null, 8);
         using var largest = new MiniLMWordSenseModel(null, 512);
 
+        // Assert
         Assert.Equal(384, defaults.HiddenSize);
         Assert.Equal(384, smallest.HiddenSize);
         Assert.Equal(384, largest.HiddenSize);
+        Assert.Equal(128, defaults.Encoder.MaxSequenceLength);
+        Assert.Equal(8, smallest.Encoder.MaxSequenceLength);
+        Assert.Equal(512, largest.Encoder.MaxSequenceLength);
     }
 
     /// <summary>

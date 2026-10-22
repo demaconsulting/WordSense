@@ -17,9 +17,17 @@ internal static class VectorMath
     /// <param name="left">The first vector.</param>
     /// <param name="right">The second vector; at least as long as <paramref name="left"/>.</param>
     /// <returns>The sum of element-wise products over the length of <paramref name="left"/>.</returns>
+    /// <exception cref="ArgumentException">Thrown when <paramref name="right"/> is shorter than <paramref name="left"/>.</exception>
     public static float Dot(ReadOnlySpan<float> left, ReadOnlySpan<float> right)
     {
         var length = left.Length;
+
+        // Refuse a short second vector up front: the SIMD and the scalar loop would otherwise fail differently
+        if (right.Length < length)
+        {
+            throw new ArgumentException("The second vector must be at least as long as the first.", nameof(right));
+        }
+
         var sum = 0f;
         var i = 0;
 

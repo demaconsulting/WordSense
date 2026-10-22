@@ -77,7 +77,7 @@ sections:
               - WordSense-Onnx-OnnxClassifier-BestCandidate
             tests:
               - OnnxClassifier_ClassifyAsync_TrainedLemma_ListsRankedCandidatesSummingToOne
-              - OnnxClassifier_ClassifyAsync_SingleSenseWord_ListsNoCandidates
+              - OnnxClassifier_ClassifyAsync_SingleSenseWord_ListsItsOneUnscoredSense
               - OnnxClassifier_ClassifyAsync_LemmaWithoutWeights_ListsNoCandidates
 
           - id: WordSense-Onnx-Untrained
@@ -121,6 +121,7 @@ sections:
               - WordSense-Onnx-OnnxClassifier-BestCandidate
               - WordSense-Onnx-OnnxClassifier-NoVector
               - WordSense-Onnx-LemmaWeights-Scoring
+              - WordSense-Onnx-LemmaWeights-Feature
             tests:
               - OnnxClassifier_ClassifyAsync_LargerMargin_GivesHigherConfidence
 
@@ -144,6 +145,7 @@ sections:
               - WordSense-Onnx-LemmaWeights-Embedded
             tests:
               - EmbeddedWeights_MiniLM_MatchesWordImage
+              - EmbeddedWeights_BertBaseCased_MatchesWordImage
 
           - id: WordSense-Onnx-Encoder
             title: >-

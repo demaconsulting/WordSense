@@ -416,7 +416,7 @@ internal static partial class FormGenerator
         var open = new HashSet<string>(StringComparer.Ordinal);
         var closedOnly = new HashSet<string>(StringComparer.Ordinal);
         var lineNumber = 0;
-        var seen = new Dictionary<(string Kind, string Spelling, string EntryId, string Features), int>();
+        var seen = new Dictionary<(string Spelling, string EntryId, string Features), (int Line, string Kind)>();
         foreach (var line in File.ReadAllLines(path, Encoding.UTF8))
         {
             lineNumber++;
@@ -431,10 +431,12 @@ internal static partial class FormGenerator
                 throw new InvalidDataException($"{path}:{lineNumber}: a legacy analysis has 9 columns and the kind frozen or closed");
             }
 
-            // Two rows of one spelling with the same entry and features would be the same analysis twice
-            if (!seen.TryAdd((c[0], c[1], c[3], c[4]), lineNumber))
+            // Two rows of one spelling with the same entry and features would be the same analysis twice, whether both
+            // are frozen, both are closed or one of each kind
+            if (!seen.TryAdd((c[1], c[3], c[4]), (lineNumber, c[0])))
             {
-                throw new InvalidDataException($"{path}:{lineNumber}: the {c[0]} analysis of '{c[1]}' for the entry '{c[3]}' with the features '{c[4]}' repeats the one on line {seen[(c[0], c[1], c[3], c[4])]}");
+                var first = seen[(c[1], c[3], c[4])];
+                throw new InvalidDataException($"{path}:{lineNumber}: the {c[0]} analysis of '{c[1]}' for the entry '{c[3]}' with the features '{c[4]}' repeats the {first.Kind} one on line {first.Line}");
             }
 
             if (c[0] == "closed")

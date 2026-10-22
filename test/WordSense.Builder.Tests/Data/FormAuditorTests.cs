@@ -99,6 +99,51 @@ public sealed class FormAuditorTests
     }
 
     /// <summary>
+    ///     Rows the oracle cannot judge are left out of the sample size, also when an adjudication lists them: an
+    ///     adjudication answers a disagreement of the oracle and never counts a row the oracle skipped.
+    /// </summary>
+    /// <param name="adjudication">The adjudication of the skipped row.</param>
+    [Theory]
+    [InlineData("valid")]
+    [InlineData("invalid")]
+    public void WordSenseBuilder_FormAuditor_Evaluate_SkippedAndAdjudicatedRow_IsNotCounted(string adjudication)
+    {
+        // Arrange: one row the oracle accepts and one it skips, the skipped one adjudicated
+        var sample = new List<FormAuditor.Row> { Row("cats", "rule/entry"), Row("zzz", "rule/entry") };
+        var verdicts = new Dictionary<string, string> { [Key("cats")] = "ok", [Key("zzz")] = "skip" };
+        var adjudications = new Dictionary<string, string> { ["zzz\tzzz\tn"] = adjudication };
+
+        // Act
+        var result = FormAuditor.Evaluate(sample, new Dictionary<string, int> { ["rule/entry"] = 10 }, verdicts, adjudications, 0.01);
+
+        // Assert: only the accepted row is checked, nothing is an error and nothing disagrees
+        Assert.Equal(1, result.Strata[0].Checked);
+        Assert.Equal(0, result.Strata[0].Errors);
+        Assert.Equal(0, result.Strata[0].Disagreed);
+        Assert.Empty(result.Failures);
+        Assert.True(result.Passed);
+    }
+
+    /// <summary>
+    ///     An invalid adjudication of a row the oracle disagrees with is still an error, and the failure row says so.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_FormAuditor_Evaluate_InvalidAdjudicationOfDisagreement_IsAnError()
+    {
+        // Arrange
+        var sample = new List<FormAuditor.Row> { Row("dogz", "rule/entry") };
+        var verdicts = new Dictionary<string, string> { [Key("dogz")] = "bad" };
+        var adjudications = new Dictionary<string, string> { ["dogz\tdogz\tn"] = "invalid" };
+
+        // Act
+        var result = FormAuditor.Evaluate(sample, new Dictionary<string, int> { ["rule/entry"] = 10 }, verdicts, adjudications, 0.01);
+
+        // Assert
+        Assert.Equal(1, result.Strata[0].Errors);
+        Assert.EndsWith("\tinvalid", Assert.Single(result.Failures), StringComparison.Ordinal);
+    }
+
+    /// <summary>
     ///     The adjudication reader skips comments and keys by spelling, lemma and part of speech.
     /// </summary>
     [Fact]
@@ -208,19 +253,27 @@ public sealed class FormAuditorTests
     }
 
     /// <summary>
-    ///     A malformed line or an unknown verdict of the oracle file is rejected.
+    ///     A malformed line or an unknown verdict of the oracle file is rejected, including a line with more than the
+    ///     five documented fields and a line with an empty field.
     /// </summary>
     /// <param name="content">The file content.</param>
     [Theory]
     [InlineData("cats\tcat\tn\tNumber=Plur\n")]
     [InlineData("cats\tcat\tn\tNumber=Plur\tmaybe\n")]
     [InlineData("cats\tcat\tn\tNumber=Plur\tOK\n")]
+    [InlineData("cats\tcat\tn\tNumber=Plur\tok\textra\n")]
+    [InlineData("cats\tcat\tn\tNumber=Plur\tok\t\n")]
+    [InlineData("\tcat\tn\tNumber=Plur\tok\n")]
+    [InlineData("cats\t\tn\tNumber=Plur\tok\n")]
+    [InlineData("cats\tcat\t\tNumber=Plur\tok\n")]
+    [InlineData("cats\tcat\tn\t\tok\n")]
     public void WordSenseBuilder_FormAuditor_ReadVerdicts_MalformedLine_Throws(string content)
     {
         using var dir = new TestDirectory();
         var path = Path.Join(dir.Root, "oracle.tsv");
         File.WriteAllText(path, content);
-        Assert.Throws<InvalidDataException>(() => FormAuditor.ReadVerdicts(path));
+        var ex = Assert.Throws<InvalidDataException>(() => FormAuditor.ReadVerdicts(path));
+        Assert.Contains("line 1", ex.Message, StringComparison.Ordinal);
     }
 
     /// <summary>

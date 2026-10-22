@@ -102,6 +102,82 @@ public sealed class DataValidatorTests : IDisposable
     }
 
     /// <summary>
+    ///     A schema that cannot be read (here a folder in place of the file, which the platform reports as an
+    ///     unauthorized access) is a <c>schema</c> violation that names the path, not an exception.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_DataValidator_Validate_UnreadableSchema_ReportsSchemaViolation()
+    {
+        // Arrange: a folder where the schema file should be
+        var data = Data();
+        var schema = Path.Join(data, "schema.yaml");
+        File.Delete(schema);
+        Directory.CreateDirectory(schema);
+
+        // Act
+        var report = DataValidator.Validate(data);
+
+        // Assert
+        Assert.False(report.IsValid);
+        var violation = Assert.Single(report.Violations);
+        Assert.StartsWith(schema, violation, StringComparison.Ordinal);
+        Assert.Contains("[schema]", violation, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A table file that cannot be read (here locked by another handle) is an <c>unreadable</c> violation that names
+    ///     the file, and the validation of the other tables continues.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_DataValidator_Validate_UnreadableTableFile_ReportsViolationAndContinues()
+    {
+        // Arrange: lock the first file of the entry table exclusively
+        var data = Data();
+        var locked = Directory.GetFiles(Path.Join(data, "entry"), "*.tsv").OrderBy(f => f, StringComparer.Ordinal).First();
+        using var hold = new FileStream(locked, FileMode.Open, FileAccess.Read, FileShare.None);
+
+        // Act
+        var report = DataValidator.Validate(data);
+
+        // Assert: the file is named, and the sense table was still read
+        Assert.False(report.IsValid);
+        Assert.Contains(report.Violations, v => v.StartsWith(locked, StringComparison.Ordinal) && v.Contains("[unreadable]", StringComparison.Ordinal));
+        Assert.True(report.RowCounts["sense"] > 0, "The tables after the unreadable file must still be read.");
+    }
+
+    /// <summary>
+    ///     A directory that cannot be listed (the data folder, or the folder of a partitioned table) is a violation that
+    ///     names the directory, also when the listing fails while it is being read, and the validation continues.
+    /// </summary>
+    /// <param name="failRoot">Whether the data folder fails; otherwise the folder of the entry table does.</param>
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void WordSenseBuilder_DataValidator_Validate_DirectoryThatCannotBeListed_ReportsViolationAndContinues(bool failRoot)
+    {
+        // Arrange
+        var data = Data();
+        var failing = failRoot ? data : Path.Join(data, "entry");
+        IEnumerable<string> List(string directory) =>
+            string.Equals(directory, failing, StringComparison.Ordinal) ? FailWhileListing(directory) : Directory.EnumerateFileSystemEntries(directory);
+
+        // Act
+        var report = DataValidator.Validate(data, null, List);
+
+        // Assert
+        Assert.False(report.IsValid);
+        Assert.Contains(report.Violations, v => v.StartsWith(failing, StringComparison.Ordinal) && v.Contains("cannot be listed", StringComparison.Ordinal) && v.Contains("[file-set]", StringComparison.Ordinal));
+        Assert.True(report.RowCounts["sense"] > 0, "The other tables must still be read.");
+    }
+
+    // A listing that yields an entry and then fails, like a directory that becomes unreadable while it is enumerated
+    private static IEnumerable<string> FailWhileListing(string directory)
+    {
+        yield return Path.Join(directory, "first");
+        throw new UnauthorizedAccessException("Access to the path is denied.");
+    }
+
+    /// <summary>
     ///     Files and folders the schema does not know are violations.
     /// </summary>
     [Fact]

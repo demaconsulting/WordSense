@@ -43,10 +43,11 @@ All scenarios below pass.
 - **Project senses and groups** (`Generate_ProjectSenseAndMultiWordLemma_GetTheRightOrigin`,
   `Run_Slice_LabelsOneTokenSensesAndCreatesNoGroup`, `Run_ExistingGroup_IsKeptAndItsLabelStaysAvailable`,
   `Slug_GivesLowerCaseAsciiWords`, `Generate_EqualExistingLabels_Throws`, `Run_MissingInputTable_Throws`,
-  `Run_UnreadableRows_ThrowInvalidDataWithLocation`): a sense without
+  `Run_UnreadableRows_ThrowInvalidDataWithLocation`, `Run_NegativeCounts_ThrowInvalidDataWithLocation`): a sense without
   a key gets the origin `project`, a multi-word lemma gets no label, the run creates no group and leaves an existing one
   as it is, the label of a group (`lemma#group:label`, its own namespace) does not stop a sense from having the same
-  label, and a damaged input throws.
+  label, and a damaged input throws (a count that is not a number and a negative frequency or token count throw
+  `InvalidDataException` that names the file, the line and the text, and nothing is written).
 - **Same inputs, same bytes** (`Run_SameInputs_GiveIdenticalBytes`): two runs give identical files.
 - **Reordered input** (`Run_ReorderedInput_GivesIdenticalBytes`): a copy whose input rows are in another order gives
   the same bytes.

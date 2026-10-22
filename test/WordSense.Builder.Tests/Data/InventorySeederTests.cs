@@ -337,6 +337,56 @@ public sealed class InventorySeederTests : IDisposable
     }
 
     /// <summary>
+    ///     A curation file whose header repeats a column, or in which two rows have one public id (a sense id or a group
+    ///     id), is refused as invalid data that names both places, before any table is written: the later row or column
+    ///     would otherwise overwrite the earlier one without a trace.
+    /// </summary>
+    /// <param name="file">The curation file that is damaged, senses or groups.</param>
+    /// <param name="kind">What is repeated, a column of the header or an id.</param>
+    /// <param name="expected">The text that the message must contain.</param>
+    [Theory]
+    [InlineData("senses", "header", "senses.tsv:1: the header repeats the column 'gloss' (columns 4 and 7)")]
+    [InlineData("groups", "header", "groups.tsv:1: the header repeats the column 'lemma' (columns 2 and 7)")]
+    [InlineData("senses", "id", "senses.tsv:4: the sense_id 'bass#fish-food' repeats the one on line 2")]
+    [InlineData("groups", "id", "groups.tsv:3: the group_id 'bass#fish-food' repeats the one on line 2")]
+    public void WordSenseBuilder_InventorySeeder_Run_DuplicateHeaderOrId_IsRefusedBeforeAnyWrite(string file, string kind, string expected)
+    {
+        // Arrange - a curation of the bass nouns whose senses or groups file is damaged as the case says
+        var data = ThreeBassNounsSlice();
+        var sensesBefore = DataFixture.Rows(data, "sense").Select(r => string.Join('\t', r)).ToList();
+        var senseRows =
+            "bass#fish-food\toewn-bass__1.05.00..\tNoun\tthe flesh of a fish\toewn\t\n"
+            + "bass#fish-meat\toewn-bass__1.05.01..\tNoun\tthe meat of a fish\toewn\t\n";
+        var groupRows = "bass#fish-food\tbass\tNoun\tbass#fish-food,bass#fish-meat\trelated\tgloss:near-identical\n";
+        var sensesText = SensesHeader + senseRows;
+        var groupsText = GroupsHeader + groupRows;
+        if (file == "senses")
+        {
+            sensesText = kind == "header"
+                ? SensesHeader.TrimEnd('\n') + "\tgloss\n" + senseRows
+                : SensesHeader + senseRows.Split('\n')[0] + "\n" + senseRows.Split('\n')[1] + "\n" + senseRows.Split('\n')[0] + "\n";
+        }
+        else
+        {
+            groupsText = kind == "header"
+                ? GroupsHeader.TrimEnd('\n') + "\tlemma\n" + groupRows
+                : GroupsHeader + groupRows + groupRows;
+        }
+
+        _dir.Write("curation/senses.tsv", sensesText);
+        _dir.Write("curation/groups.tsv", groupsText);
+
+        // Act
+        var ex = Assert.Throws<InvalidDataException>(() => InventorySeeder.Run(data, Path.Join(_dir.Root, "curation")));
+
+        // Assert: both places are named and no table was written
+        Assert.Contains(expected, ex.Message, StringComparison.Ordinal);
+        Assert.False(Directory.Exists(Path.Join(data, "sense_label")));
+        Assert.False(Directory.Exists(Path.Join(data, "sense_group")));
+        Assert.Equal(sensesBefore, DataFixture.Rows(data, "sense").Select(r => string.Join('\t', r)).ToList());
+    }
+
+    /// <summary>
     ///     A group of one lemma with members of two parts of speech must name both: a noun group with an adjective member
     ///     is refused instead of writing an adjective subgroup that the curator never declared, and the slash-separated
     ///     list names the part of speech that keeps the plain label.

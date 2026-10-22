@@ -224,6 +224,7 @@ sections:
               - WordSense-Core-BasicClassifier-Deterministic
               - WordSense-Core-PosTagger-Deterministic
               - WordSense-Core-BasicWordSenseModel-Classify
+              - WordSense-Core-BasicTables-Immutable
             tests:
               - BasicClassifier_ClassifyAsync_IsDeterministicAndThreadSafe
 

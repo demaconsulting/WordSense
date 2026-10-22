@@ -53,6 +53,9 @@ internal sealed partial class DataValidator
     /// <summary>The name of the rule checking the byte-level format of a file.</summary>
     private const string RuleFormat = "format";
 
+    /// <summary>The name of the rule reporting a file that cannot be read.</summary>
+    private const string RuleUnreadable = "unreadable";
+
     private static readonly string[] LoadOrder = ["source", TableEntry, TableSynset, TableSense];
 
     private static readonly UTF8Encoding StrictUtf8 = new(false, true);
@@ -60,24 +63,42 @@ internal sealed partial class DataValidator
     private readonly string _root;
     private readonly string? _baseline;
     private readonly DataSchema _schema;
+    private readonly Func<string, IEnumerable<string>> _enumerate;
     private readonly Dictionary<string, int> _ruleCounts = new(StringComparer.Ordinal);
     private readonly List<string> _violations = [];
     private readonly Dictionary<string, LoadedTable> _tables = new(StringComparer.Ordinal);
 
-    private DataValidator(string root, DataSchema schema, string? baseline)
+    private DataValidator(string root, DataSchema schema, string? baseline, Func<string, IEnumerable<string>> enumerate)
     {
         _root = root;
         _schema = schema;
         _baseline = baseline;
+        _enumerate = enumerate;
     }
 
     /// <summary>
     ///     Validates a data folder.
     /// </summary>
+    /// <remarks>
+    ///     The validator reports instead of throwing: a schema, a directory listing or a table file that cannot be read
+    ///     (an <see cref="IOException"/> or an <see cref="UnauthorizedAccessException"/>) is a violation that names the
+    ///     path, and the validation of the rest of the folder continues.
+    /// </remarks>
     /// <param name="dataDirectory">The data folder that holds <c>schema.yaml</c> and the tables.</param>
     /// <param name="baselineDirectory">The data folder of the last release, against which the published sense labels are checked, or null.</param>
     /// <returns>The report of the validation.</returns>
-    public static ValidationReport Validate(string dataDirectory, string? baselineDirectory = null)
+    public static ValidationReport Validate(string dataDirectory, string? baselineDirectory = null) =>
+        Validate(dataDirectory, baselineDirectory, Directory.EnumerateFileSystemEntries);
+
+    /// <summary>
+    ///     Validates a data folder with a given directory lister (a seam for the tests: the real lister fails only when
+    ///     the platform denies access, which a test cannot cause portably).
+    /// </summary>
+    /// <param name="dataDirectory">The data folder that holds <c>schema.yaml</c> and the tables.</param>
+    /// <param name="baselineDirectory">The data folder of the last release, or null.</param>
+    /// <param name="enumerate">Lists the entries (files and folders) of a directory; it may throw <see cref="IOException"/> or <see cref="UnauthorizedAccessException"/>.</param>
+    /// <returns>The report of the validation.</returns>
+    internal static ValidationReport Validate(string dataDirectory, string? baselineDirectory, Func<string, IEnumerable<string>> enumerate)
     {
         var schemaPath = Path.Join(dataDirectory, "schema.yaml");
         DataSchema schema;
@@ -85,12 +106,12 @@ internal sealed partial class DataValidator
         {
             schema = DataSchema.Load(schemaPath);
         }
-        catch (Exception ex) when (ex is InvalidDataException or IOException)
+        catch (Exception ex) when (ex is InvalidDataException or IOException or UnauthorizedAccessException)
         {
             return new ValidationReport([$"{schemaPath}: [schema] {ex.Message}"], 1, new Dictionary<string, int>());
         }
 
-        var validator = new DataValidator(dataDirectory, schema, baselineDirectory);
+        var validator = new DataValidator(dataDirectory, schema, baselineDirectory, enumerate);
         validator.Run();
         var counts = validator._tables.ToDictionary(p => p.Key, p => p.Value.RowCount, StringComparer.Ordinal);
         return new ValidationReport(validator._violations, validator._ruleCounts.Values.Sum(), counts);
@@ -153,7 +174,13 @@ internal sealed partial class DataValidator
         }
 
         var tableNames = _schema.Tables.Select(t => t.Name).ToHashSet(StringComparer.Ordinal);
-        foreach (var path in Directory.EnumerateFileSystemEntries(_root))
+        var entries = ListEntries(_root, RuleFileSet);
+        if (entries is null)
+        {
+            return;
+        }
+
+        foreach (var path in entries)
         {
             var name = Path.GetFileName(path);
             var stem = Path.GetFileNameWithoutExtension(path);
@@ -164,6 +191,26 @@ internal sealed partial class DataValidator
             {
                 Report(path, 0, RuleFileSet, "Unexpected file or folder in the data directory.");
             }
+        }
+    }
+
+    /// <summary>
+    ///     Lists the entries of a directory, reporting a listing that fails as a violation of the directory.
+    /// </summary>
+    /// <param name="directory">The directory.</param>
+    /// <param name="rule">The rule that the violation is reported under.</param>
+    /// <returns>The entries, or null when the directory cannot be listed (the violation is reported).</returns>
+    private List<string>? ListEntries(string directory, string rule)
+    {
+        try
+        {
+            // The listing is lazy, so it is read to the end inside the try block
+            return [.. _enumerate(directory)];
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+        {
+            Report(directory, 0, rule, $"The directory cannot be listed: {ex.Message}");
+            return null;
         }
     }
 
@@ -182,7 +229,13 @@ internal sealed partial class DataValidator
             yield break;
         }
 
-        foreach (var path in Directory.EnumerateFileSystemEntries(directory).OrderBy(p => p, StringComparer.Ordinal))
+        var entries = ListEntries(directory, RuleFileSet);
+        if (entries is null)
+        {
+            yield break;
+        }
+
+        foreach (var path in entries.OrderBy(p => p, StringComparer.Ordinal))
         {
             var key = Path.GetFileNameWithoutExtension(path);
             if (!File.Exists(path) || !path.EndsWith(DataLayout.Extension, StringComparison.Ordinal) || !DataLayout.IsValidKey(key, _schema.FileSplit))
@@ -260,7 +313,18 @@ internal sealed partial class DataValidator
 
     private List<string>? ReadLines(string path)
     {
-        var bytes = File.ReadAllBytes(path);
+        byte[] bytes;
+        try
+        {
+            bytes = File.ReadAllBytes(path);
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+        {
+            // An unreadable file is a violation of that file; the other files are still validated
+            Report(path, 0, RuleUnreadable, $"The file cannot be read: {ex.Message}");
+            return null;
+        }
+
         if (bytes.Length >= 3 && bytes[0] == 0xEF && bytes[1] == 0xBB && bytes[2] == 0xBF)
         {
             Report(path, 1, RuleFormat, "The file starts with a byte-order mark.");

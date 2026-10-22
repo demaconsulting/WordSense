@@ -1,8 +1,10 @@
+using System.Buffers;
 using System.Buffers.Binary;
 using System.Collections.Frozen;
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.IO.Compression;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace DemaConsulting.WordSense;
@@ -24,6 +26,9 @@ internal sealed record CueAnalysis(string Lemma, PartOfSpeech PartOfSpeech, stri
 /// <summary>
 ///     The statistics of one tabled word: its closed-class tags and its per-tag training counts.
 /// </summary>
+/// <remarks>
+///     Immutable: the counts are held as an <see cref="ImmutableArray{T}"/>, so a consumer cannot change them.
+/// </remarks>
 internal sealed class WordEntry
 {
     /// <summary>
@@ -31,9 +36,15 @@ internal sealed class WordEntry
     /// </summary>
     /// <param name="closedMask">The tags the word may have regardless of the dictionary; 0 for an open-class word.</param>
     /// <param name="counts">The training count of the word for each of the <see cref="PosTag.Count"/> tags.</param>
-    public WordEntry(int closedMask, int[] counts)
+    /// <exception cref="ArgumentException">Thrown when <paramref name="counts"/> is the default array.</exception>
+    /// <exception cref="InvalidDataException">Thrown when the counts add up to more than a 32-bit integer holds.</exception>
+    public WordEntry(int closedMask, ImmutableArray<int> counts)
     {
-        ArgumentNullException.ThrowIfNull(counts);
+        if (counts.IsDefault)
+        {
+            throw new ArgumentException("The counts must not be the default array.", nameof(counts));
+        }
+
         ClosedMask = closedMask;
         Counts = counts;
         long total = 0;
@@ -56,9 +67,9 @@ internal sealed class WordEntry
     public int ClosedMask { get; }
 
     /// <summary>
-    ///     Gets the training count of the word for each tag.
+    ///     Gets the training count of the word for each tag, as a read-only view.
     /// </summary>
-    public int[] Counts { get; }
+    public ImmutableArray<int> Counts { get; }
 
     /// <summary>
     ///     Gets the sum of <see cref="Counts"/>.
@@ -73,7 +84,8 @@ internal sealed class WordEntry
 /// <remarks>
 ///     The table is keyed by a training lemma (or by a form that spans lemmas, such as <c>left</c>), so its columns may
 ///     name analyses of several lemmas. The feature items of each column are split once at construction so that
-///     <see cref="RowOf"/> does not allocate.
+///     <see cref="RowOf"/> does not allocate. Immutable: the columns, hashes and weights are held as
+///     <see cref="ImmutableArray{T}"/>, so a consumer cannot change them.
 /// </remarks>
 internal sealed class LemmaCue
 {
@@ -86,8 +98,14 @@ internal sealed class LemmaCue
     /// <param name="analyses">The analyses, in the column order of the weights.</param>
     /// <param name="hashes">The ascending, distinct 16-bit feature hashes.</param>
     /// <param name="weights">The weights, feature-major: one value per analysis for each hash.</param>
-    public LemmaCue(string lemma, CueAnalysis[] analyses, ushort[] hashes, sbyte[] weights)
+    /// <exception cref="ArgumentException">Thrown when an array is the default array.</exception>
+    public LemmaCue(string lemma, ImmutableArray<CueAnalysis> analyses, ImmutableArray<ushort> hashes, ImmutableArray<sbyte> weights)
     {
+        if (analyses.IsDefault || hashes.IsDefault || weights.IsDefault)
+        {
+            throw new ArgumentException("The analyses, hashes and weights must not be the default array.");
+        }
+
         Lemma = lemma;
         Analyses = analyses;
         Hashes = hashes;
@@ -101,19 +119,19 @@ internal sealed class LemmaCue
     public string Lemma { get; }
 
     /// <summary>
-    ///     Gets the analyses in weight-column order.
+    ///     Gets the analyses in weight-column order, as a read-only view.
     /// </summary>
-    public CueAnalysis[] Analyses { get; }
+    public ImmutableArray<CueAnalysis> Analyses { get; }
 
     /// <summary>
-    ///     Gets the ascending feature hashes.
+    ///     Gets the ascending feature hashes, as a read-only view.
     /// </summary>
-    public ushort[] Hashes { get; }
+    public ImmutableArray<ushort> Hashes { get; }
 
     /// <summary>
-    ///     Gets the quantized log-likelihood weights, feature-major.
+    ///     Gets the quantized log-likelihood weights, feature-major, as a read-only view.
     /// </summary>
-    public sbyte[] Weights { get; }
+    public ImmutableArray<sbyte> Weights { get; }
 
     /// <summary>
     ///     Finds the column of an analysis of the lexicon.
@@ -205,8 +223,10 @@ internal sealed class LemmaCue
 ///     image, or when a lemma table names an analysis twice.
 ///     </para>
 ///     <para>
-///     An instance is immutable and safe for concurrent use. <see cref="Default"/> is the table embedded in the
-///     assembly.
+///     An instance is immutable and safe for concurrent use: the statistics are exposed only as
+///     <see cref="ImmutableArray{T}"/> views and frozen dictionaries of immutable entries, so no consumer can change
+///     what another one sees. <see cref="Default"/> is the table embedded in the assembly. The compressed blob must be
+///     exactly one Brotli stream; bytes after its end are rejected like any other trailing data.
 ///     </para>
 /// </remarks>
 internal sealed class BasicTables
@@ -225,12 +245,13 @@ internal sealed class BasicTables
     private const int MaximumAnalyses = 255;
     private const int MaximumLemmaLength = 1024;
     private const int HashSize = 32;
+    private const int InitialBufferSize = 1 << 16;
     private static readonly byte[] Magic = "WSB3"u8.ToArray();
 
     private static readonly Lazy<BasicTables> DefaultTables = new(LoadEmbeddedResource, LazyThreadSafetyMode.ExecutionAndPublication);
 
     private readonly string[] _suffixKeys;
-    private readonly double[][] _suffixProbabilities;
+    private readonly ImmutableArray<double>[] _suffixProbabilities;
 
     [SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Constructor of an immutable table whose fields are all supplied by the single reader.")]
     private BasicTables(
@@ -240,7 +261,7 @@ internal sealed class BasicTables
         int[] trigrams,
         FrozenDictionary<string, WordEntry> words,
         string[] suffixKeys,
-        double[][] suffixProbabilities,
+        ImmutableArray<double>[] suffixProbabilities,
         FrozenDictionary<string, LemmaCue> cues)
     {
         Gamma = parameters[0];
@@ -250,17 +271,20 @@ internal sealed class BasicTables
         Lambda3 = parameters[4];
         HmmWeight = parameters[5];
         InvTemperature = parameters[6];
-        Unigrams = unigrams;
-        Bigrams = bigrams;
-        Trigrams = trigrams;
+
+        // The reader hands over arrays that nothing else references, so they are wrapped without a copy and the table
+        // exposes only read-only views of them
+        Unigrams = ImmutableCollectionsMarshal.AsImmutableArray(unigrams);
+        Bigrams = ImmutableCollectionsMarshal.AsImmutableArray(bigrams);
+        Trigrams = ImmutableCollectionsMarshal.AsImmutableArray(trigrams);
         Words = words;
         _suffixKeys = suffixKeys;
         _suffixProbabilities = suffixProbabilities;
         Cues = cues;
         var derived = Derive(unigrams, bigrams, trigrams, Lambda1, Lambda2, Lambda3);
-        Transition = derived.Transition;
-        TagPrior = derived.TagPrior;
-        SuffixFallback = derived.SuffixFallback;
+        Transition = ImmutableCollectionsMarshal.AsImmutableArray(derived.Transition);
+        TagPrior = ImmutableCollectionsMarshal.AsImmutableArray(derived.TagPrior);
+        SuffixFallback = ImmutableCollectionsMarshal.AsImmutableArray(derived.SuffixFallback);
     }
 
     /// <summary>
@@ -305,35 +329,36 @@ internal sealed class BasicTables
     public double InvTemperature { get; }
 
     /// <summary>
-    ///     Gets the unigram tag counts, indexed by tag with the boundary last.
+    ///     Gets the unigram tag counts, indexed by tag with the boundary last, as a read-only view.
     /// </summary>
-    public int[] Unigrams { get; }
+    public ImmutableArray<int> Unigrams { get; }
 
     /// <summary>
-    ///     Gets the bigram tag counts, row-major by (previous, current).
+    ///     Gets the bigram tag counts, row-major by (previous, current), as a read-only view.
     /// </summary>
-    public int[] Bigrams { get; }
+    public ImmutableArray<int> Bigrams { get; }
 
     /// <summary>
-    ///     Gets the trigram tag counts, row-major by (before previous, previous, current).
+    ///     Gets the trigram tag counts, row-major by (before previous, previous, current), as a read-only view.
     /// </summary>
-    public int[] Trigrams { get; }
+    public ImmutableArray<int> Trigrams { get; }
 
     /// <summary>
     ///     Gets the interpolated transition probabilities, row-major by (before previous, previous, current) with the
-    ///     boundary as the last index of each dimension.
+    ///     boundary as the last index of each dimension, as a read-only view.
     /// </summary>
-    public double[] Transition { get; }
+    public ImmutableArray<double> Transition { get; }
 
     /// <summary>
-    ///     Gets the relative frequency of each of the <see cref="PosTag.Count"/> tags in the training data.
+    ///     Gets the relative frequency of each of the <see cref="PosTag.Count"/> tags in the training data, as a
+    ///     read-only view.
     /// </summary>
-    public double[] TagPrior { get; }
+    public ImmutableArray<double> TagPrior { get; }
 
     /// <summary>
-    ///     Gets the open-class distribution used for an unknown word without a known suffix.
+    ///     Gets the open-class distribution used for an unknown word without a known suffix, as a read-only view.
     /// </summary>
-    public double[] SuffixFallback { get; }
+    public ImmutableArray<double> SuffixFallback { get; }
 
     /// <summary>
     ///     Gets the tabled words by lower-case key.
@@ -453,8 +478,9 @@ internal sealed class BasicTables
     ///     Finds the open-class distribution of the longest known suffix of a word.
     /// </summary>
     /// <param name="key">The lower-case word.</param>
-    /// <returns>The probabilities of noun, verb, adjective and adverb for the longest suffix of up to three characters that is tabled, or null when none is.</returns>
-    public double[]? FindSuffix(ReadOnlySpan<char> key)
+    /// <param name="probabilities">Receives the probabilities of noun, verb, adjective and adverb for the longest suffix of up to three characters that is tabled, as a read-only view; the default array when none is.</param>
+    /// <returns>True when a suffix of the word is tabled.</returns>
+    public bool TryFindSuffix(ReadOnlySpan<char> key, out ImmutableArray<double> probabilities)
     {
         for (var length = Math.Min(3, key.Length); length >= 1; length--)
         {
@@ -467,7 +493,8 @@ internal sealed class BasicTables
                 var order = suffix.SequenceCompareTo(_suffixKeys[middle].AsSpan());
                 if (order == 0)
                 {
-                    return _suffixProbabilities[middle];
+                    probabilities = _suffixProbabilities[middle];
+                    return true;
                 }
 
                 if (order < 0)
@@ -481,7 +508,8 @@ internal sealed class BasicTables
             }
         }
 
-        return null;
+        probabilities = default;
+        return false;
     }
 
     /// <summary>
@@ -517,19 +545,36 @@ internal sealed class BasicTables
         return LoadEmbedded(stream);
     }
 
+    /// <summary>
+    ///     Decompresses a blob that must be exactly one complete Brotli stream.
+    /// </summary>
+    /// <param name="blob">The compressed bytes.</param>
+    /// <returns>The decompressed bytes.</returns>
+    /// <exception cref="InvalidDataException">Thrown when the blob is not a complete Brotli stream, or when bytes follow the end of the stream.</exception>
     private static byte[] Decompress(ReadOnlySpan<byte> blob)
     {
-        try
+        using var decoder = new BrotliDecoder();
+        var buffer = new byte[Math.Max(InitialBufferSize, blob.Length * 4)];
+        var consumed = 0;
+        var written = 0;
+        while (true)
         {
-            using var input = new MemoryStream(blob.ToArray());
-            using var brotli = new BrotliStream(input, CompressionMode.Decompress);
-            using var raw = new MemoryStream();
-            brotli.CopyTo(raw);
-            return raw.ToArray();
-        }
-        catch (Exception ex) when (ex is IOException or InvalidOperationException)
-        {
-            throw new InvalidDataException("The basic table is corrupt.", ex);
+            var status = decoder.Decompress(blob[consumed..], buffer.AsSpan(written), out var read, out var wrote);
+            consumed += read;
+            written += wrote;
+            switch (status)
+            {
+                case OperationStatus.Done when consumed == blob.Length:
+                    return buffer.AsSpan(0, written).ToArray();
+                case OperationStatus.Done:
+                    throw new InvalidDataException("The basic table has trailing bytes after its compressed stream.");
+                case OperationStatus.DestinationTooSmall:
+                    // Output is larger than guessed: double the buffer and continue the same stream
+                    Array.Resize(ref buffer, buffer.Length * 2);
+                    break;
+                default:
+                    throw new InvalidDataException("The basic table is corrupt.");
+            }
         }
     }
 
@@ -571,7 +616,7 @@ internal sealed class BasicTables
 
             var counts = ReadWordCounts(reader, presence);
 
-            words.Add(word, new WordEntry(closedMask, counts));
+            words.Add(word, new WordEntry(closedMask, ImmutableCollectionsMarshal.AsImmutableArray(counts)));
         }
 
         return words.ToFrozenDictionary(StringComparer.Ordinal);
@@ -597,11 +642,11 @@ internal sealed class BasicTables
         return counts;
     }
 
-    private static (string[] Keys, double[][] Probabilities) ReadSuffixes(Reader reader)
+    private static (string[] Keys, ImmutableArray<double>[] Probabilities) ReadSuffixes(Reader reader)
     {
         var count = reader.ReadCount();
         var keys = new string[count];
-        var probabilities = new double[count][];
+        var probabilities = new ImmutableArray<double>[count];
         for (var i = 0; i < count; i++)
         {
             keys[i] = reader.ReadString();
@@ -612,7 +657,7 @@ internal sealed class BasicTables
 
             var counts = reader.ReadVarints(PosTag.OpenClasses.Length);
             var total = counts.Sum(c => (double)c) + (SuffixSmoothing * PosTag.OpenClasses.Length);
-            probabilities[i] = counts.Select(c => (c + SuffixSmoothing) / total).ToArray();
+            probabilities[i] = [.. counts.Select(c => (c + SuffixSmoothing) / total)];
         }
 
         return (keys, probabilities);
@@ -655,7 +700,11 @@ internal sealed class BasicTables
                 weights[w] = (sbyte)reader.ReadByte();
             }
 
-            cues.Add(lemma, new LemmaCue(lemma, analyses, hashes, weights));
+            cues.Add(lemma, new LemmaCue(
+                lemma,
+                ImmutableCollectionsMarshal.AsImmutableArray(analyses),
+                ImmutableCollectionsMarshal.AsImmutableArray(hashes),
+                ImmutableCollectionsMarshal.AsImmutableArray(weights)));
         }
 
         return cues.ToFrozenDictionary(StringComparer.Ordinal);
