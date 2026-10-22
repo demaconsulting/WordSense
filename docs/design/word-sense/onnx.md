@@ -114,22 +114,22 @@ The flow, from the training data to a decision:
 
 ```mermaid
 flowchart TD
-    A[Anchor sentences per fine sense] --> B[Encoder: pooled vector of the target word]
-    B --> C[Center on global mean, scale to unit length]
-    C --> D[Per-lemma one-vs-rest logistic regression over fine senses, offline]
-    C --> T[Seeded k-fold cross-validation on anchors: t_fine per lemma, t_group for a lemma with groups]
+    A[Anchor sentences per fine sense] --> B["Encoder: pooled vector of the target word"]
+    B --> C["Center on global mean, scale to unit length"]
+    C --> D["Per-lemma one-vs-rest logistic regression over fine senses, offline"]
+    C --> T["Seeded k-fold cross-validation on anchors: t_fine per lemma, t_group for a lemma with groups"]
     D --> E[(Embedded weights blob of the model)]
     T --> E
     W[Word at run time] --> L{Analyses and senses from the lexicon}
-    L -- one analysis, one sense --> R1[Sense level, confidence 1]
-    L -- several senses, trained weights --> F[Encoder, feature as above]
+    L -- "one analysis, one sense" --> R1["Sense level, confidence 1"]
+    L -- "several senses, trained weights" --> F["Encoder, feature as above"]
     E --> G
-    F --> G[Score the fine senses of the analyses, derive the group scores]
-    G --> C2[Analyses with probabilities, senses with probabilities inside each analysis]
-    G -- fine margin reaches t_fine --> R2[Sense level]
-    G -- best sense in a group, group margin reaches t_group --> R3[Group level]
-    G -- neither --> R4[Part of speech level, ranked senses still listed]
-    L -- no scored senses --> R5[Lexicon analyses, part of speech level; a composite uses the fallback model]
+    F --> G["Score the fine senses of the analyses, derive the group scores"]
+    G --> C2["Analyses with probabilities, senses with probabilities inside each analysis"]
+    G -- "fine margin reaches t_fine" --> R2[Sense level]
+    G -- "best sense in a group, group margin reaches t_group" --> R3[Group level]
+    G -- neither --> R4["Part of speech level, ranked senses still listed"]
+    L -- "no scored senses" --> R5["Lexicon analyses, part of speech level, a composite uses the fallback model"]
 ```
 
 #### Training (Offline)
