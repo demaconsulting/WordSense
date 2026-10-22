@@ -776,7 +776,7 @@ skyboxes	0	oewn-skybox-n	Number=Plur	dema	0			rule
 skycap	0	oewn-skycap-n	Number=Sing	dema	0			oewn_form
 skycaps	0	oewn-skycap-n	Number=Plur	dema	0			rule
 skydive	0	oewn-skydive-v	VerbForm=Inf	dema	0			oewn_form
-skydived	0	oewn-skydive-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+skydived	0	oewn-skydive-v	Tense=Past+VerbForm=Part	dema	0			llm
 skydiver	0	oewn-skydiver-n	Number=Sing	dema	0			oewn_form
 skydivers	0	oewn-skydiver-n	Number=Plur	dema	0			rule
 skydives	0	oewn-skydive-v	Person=3+Tense=Pres	dema	0			llm

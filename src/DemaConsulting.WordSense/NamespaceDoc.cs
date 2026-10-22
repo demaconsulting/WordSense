@@ -75,12 +75,15 @@ namespace DemaConsulting.WordSense;
 ///     </para>
 ///     <para>
 ///     Confidence of the built-in model: 0 means the word is unknown to the lexicon (<c>Details</c> is null), 1 means
-///     the word has a single lemma and part of speech in the lexicon, and a word with several of them gets the
+///     the word has a single lemma and part of speech in the lexicon (the slot has no alternative; the answer is at the
+///     <c>Sense</c> level when that lemma and part of speech have exactly one sense, and at the <c>PartOfSpeech</c> level,
+///     still with confidence 1, when they have several senses that this model never chooses between, so 1 does not mean
+///     that a sense is known: test the level), and a word with several of them gets the
 ///     probability of the lemma and part of speech of the selected analysis (the analyses that differ only in features,
 ///     such as the singular and the plural of <c>deer</c>, share it and never lower it), between one over the number of
 ///     lemmas and parts of speech and 1. An ambiguous word is never left undecided. This probability scale is specific
-///     to this model: do not reuse a threshold from, or for, MiniLM or BertBaseCased, whose confidence is a margin
-///     score. The value is a relative score, not a calibrated probability, but higher values are more often right; the
+///     to this model: do not reuse a threshold from, or for, MiniLM or BertBaseCased, whose confidence is the
+///     probability of their answer at its level (a sense, a group or a part of speech). The value is a relative score, not a calibrated probability, but higher values are more often right; the
 ///     recommended starting threshold for this model is 0.8 (see the user guide,
 ///     https://github.com/demaconsulting/WordSense/blob/main/docs/user_guide/accuracy.md, for how far the confidence can
 ///     be relied on).

@@ -141,7 +141,7 @@ internal static class ImageFormat
     /// <summary>The start of the senses of each block in the sense list (<c>uint[]</c>, one more than the blocks).</summary>
     public const int SectionBlockSenseStart = 35;
 
-    /// <summary>The sense indexes of the blocks in inventory order: tag count descending, project senses last (<c>uint[]</c>).</summary>
+    /// <summary>The sense indexes of the blocks in inventory order: the order of Open English WordNet (the position of the sense in its entry and the homograph number of the entry), project senses last (<c>uint[]</c>).</summary>
     public const int SectionBlockSenses = 36;
 
     /// <summary>The indexes of the senses that have a key, sorted by their full key bytes (<c>uint[]</c>).</summary>

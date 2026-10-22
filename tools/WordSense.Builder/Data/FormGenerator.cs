@@ -719,10 +719,12 @@ internal static partial class FormGenerator
                 top.AddRange(ow.Select(f => (f, "oewn_form")));
             }
 
-            if (top.Count == 0 && listsApply)
+            // The authored forms are authoritative like the hand and closed lists, and they join the forms that a list or the written
+            // forms of the Open English WordNet name for this kind (argali and argalis, alumni and alumnuses): a word with authored forms
+            // of this kind keeps the regular spelling only when the authors name it (primary level 0, variant level 1). A spelling that
+            // another source gave first keeps that source's provenance.
+            if (listsApply)
             {
-                // The authored forms are authoritative like the hand and closed lists: a word with authored forms of this kind keeps
-                // the regular spelling only when the authors name it (primary level 0, variant level 1)
                 var authoredForms = Listed(authored, rule)
                     .Where(f => !(kind == "Plur" && IsIngMassPlural(low, f.Form)))
                     .Select(f => (Inflect(entry, [f.Form])[0], f.Level == "0" ? "llm" : "rule_variant")).ToList();
@@ -1012,20 +1014,28 @@ internal static partial class FormGenerator
         }
     }
 
+    // The authored rules whose forms a row of the features holds
+    private static string[] RulesOf(string features) => features switch
+    {
+        "Number=Plur" => ["Plural"],
+        "Person=3+Tense=Pres" => ["Third"],
+        "Tense=Past+VerbForm=Part" => ["Past", "Participle"],
+        "VerbForm=Ger" => ["Gerund"],
+        "Degree=Cmp" => ["Comparative"],
+        "Degree=Sup" => ["Superlative"],
+        _ => [],
+    };
+
+    // Tells whether both authors agreed that the lemma has no form of the kind of the features (an uncountable noun, a modal verb): the
+    // reverse rules must not trace a dictionary spelling to it either (superbias is no plural of superbia)
+    private static bool VetoedByNone(IrregularSources sources, string lemma, string pos, string features) =>
+        RulesOf(features) is { Length: > 0 } rules && rules.All(rule => sources.Authored.NoForm.Contains((lemma, pos, rule)));
+
     // Tells whether the authored forms name forms of the lemma for the kind of the features, and not this spelling: the authors are
     // authoritative, so the regular spelling that they left out is no form of the lemma (foots is not the plural of foot)
     private static bool NamesOtherForms(IrregularSources sources, string lemma, string pos, string features, string word)
     {
-        var rules = features switch
-        {
-            "Number=Plur" => new[] { "Plural" },
-            "Person=3+Tense=Pres" => new[] { "Third" },
-            "Tense=Past+VerbForm=Part" => new[] { "Past", "Participle" },
-            "VerbForm=Ger" => new[] { "Gerund" },
-            "Degree=Cmp" => new[] { "Comparative" },
-            "Degree=Sup" => new[] { "Superlative" },
-            _ => Array.Empty<string>(),
-        };
+        var rules = RulesOf(features);
         if (!sources.Authored.Forms.TryGetValue((lemma, pos), out var kinds))
         {
             return false;
@@ -1103,7 +1113,7 @@ internal static partial class FormGenerator
                         {
                             continue;
                         }
-                        if (NamesOtherForms(sources, candidate, pos, features, word))
+                        if (NamesOtherForms(sources, candidate, pos, features, word) || VetoedByNone(sources, candidate, pos, features))
                         {
                             continue;
                         }
@@ -1184,7 +1194,7 @@ internal static partial class FormGenerator
 
             foreach (var (form, features) in generated)
             {
-                if (context.FrozenSpellings.Contains(form))
+                if (context.FrozenSpellings.Contains(form) || VetoedByNone(sources, word, pos, features))
                 {
                     continue;
                 }

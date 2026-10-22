@@ -83,7 +83,7 @@ the share of the sense among the training sentences of its lemma and multiplies 
 the WordNet 3.0 tag counts, with smoothing and tempered by the exponent 0.5 (because the counts are small and come from
 the Brown Corpus, a different genre). The correction has no run-time cost. The effect on the shipped models:
 
-- On SemCor the fine top-1 rose from 47.5% to 53.7% (MiniLM) and from 56.9% to 60.9% (BertBaseCased), and the share of
+- On SemCor the fine top-1 rose from 47.5% to 53.6% (MiniLM) and from 56.9% to 60.7% (BertBaseCased), and the share of
   sense-level answers and their precision rose too.
 - On the real test sentences, which are balanced by sense and therefore reward the old proportions, the fine top-1 moved
   by +0.05 (MiniLM) and -1.15 points (BertBaseCased), and the running-text part of speech did not fall.
@@ -92,14 +92,16 @@ the Brown Corpus, a different genre). The correction has no run-time cost. The e
   an artifact of the WordNet counts.
 
 Two caveats apply. First, **SemCor is circular for this prior**: the WordNet 3.0 counts include the counts of SemCor
-itself, so part of the gain on SemCor is the prior having seen the answers. The same holds for the most-frequent-sense
+itself, so part of the gain on SemCor is the prior having seen the answers. The same holds for the first-sense
 baseline of the evaluation (60.7% of the SemCor words, always choosing the first sense of the right lemma and part of
-speech): the order of the senses comes from WordNet, whose counts include SemCor, so the baseline is optimistic. That is
-why the exponent is tempered; a larger exponent raises the SemCor figure further but lowers the share of sense-level
+speech in Open English WordNet order): that order follows Princeton WordNet's frequency order (it matches the WordNet
+3.0 top-count sense in 10,047 of the 10,062 blocks with a unique maximum), and those counts include the tags of
+SemCor, so the baseline is partly circular and optimistic. That is why the exponent is tempered; a larger exponent
+raises the SemCor figure further but lowers the share of sense-level
 answers and the part of speech on the balanced real test sentences. Second, the prior is per lemma and sense, not per
 context, and a sense with very few training sentences is lifted the most by the correction, so the correction is more
 faithful as the per-sense quotas of the corpus are filled. The sense choice of the encoders is not yet better than the
-most-frequent-sense baseline for the words they cover.
+first-sense baseline for the words they cover.
 
 ## Variation Between CPUs
 

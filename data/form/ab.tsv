@@ -147,7 +147,7 @@ abacs	0		Number=Plur	dema	0	abac	n	rule
 abactinal	0	oewn-abactinal-a	Degree=Pos	dema	0			oewn_form
 abaculus	0		Number=Sing	dema	0	abaculus	n	moby_reverse
 abacus	0	oewn-abacus-n	Number=Sing	dema	0			oewn_form
-abacuses	0	oewn-abacus-n	Number=Plur	dema	0			rule_variant
+abacuses	0	oewn-abacus-n	Number=Plur	dema	0			llm
 abaft	0	oewn-abaft-r	Degree=Pos	dema	0			oewn_form
 abaft	1	dema-abaft-p		dema	0			carried
 abaised	0		Degree=Pos	dema	0	abaised	a	moby_reverse

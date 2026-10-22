@@ -38,6 +38,7 @@ public sealed class FormReproducibilityTests : IDisposable
         }
 
         File.WriteAllLines(Path.Join(lexicon, AuthoredForms.FormsFile), authoredLines);
+        File.WriteAllText(Path.Join(lexicon, AuthoredForms.ProvenanceFile), "lemma\tpos\trule\tbatch_id\twriter\tverifier\tverdict\tresult\tlicence\tevidence\n");
         return corpus;
     }
 

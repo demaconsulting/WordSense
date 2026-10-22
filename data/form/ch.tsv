@@ -1577,7 +1577,7 @@ chapbook	0		Number=Sing	dema	0	chapbook	n	moby_reverse
 chapbooks	0		Number=Plur	dema	0	chapbook	n	rule
 chape	0		Number=Sing	dema	0	chape	n	moby_reverse
 chapeau	0	oewn-chapeau-n	Number=Sing	dema	0			oewn_form
-chapeaus	0	oewn-chapeau-n	Number=Plur	dema	0			rule_variant
+chapeaus	0	oewn-chapeau-n	Number=Plur	dema	0			llm
 chapeaux	0	oewn-chapeau-n	Number=Plur	dema	0			oewn_form
 chapel	0	oewn-chapel-n	Number=Sing	dema	0			oewn_form
 chapel service	0	oewn-chapel_service-n	Number=Sing	dema	0			oewn_form
@@ -2092,7 +2092,7 @@ chat up	0	oewn-chat_up-v	VerbForm=Inf	dema	0			oewn_form
 chateau	0	oewn-chateau-n	Number=Sing	dema	0			oewn_form
 chateaubriand	0		Number=Sing	dema	0	chateaubriand	n	moby_reverse
 chateaubriands	0		Number=Plur	dema	0	chateaubriand	n	rule
-chateaus	0	oewn-chateau-n	Number=Plur	dema	0			rule_variant
+chateaus	0	oewn-chateau-n	Number=Plur	dema	0			llm
 chateaux	0	oewn-chateau-n	Number=Plur	dema	0			oewn_form
 chatelain	0		Number=Sing	dema	0	chatelain	n	moby_reverse
 chatelaine	0	oewn-chatelaine-n	Number=Sing	dema	0			oewn_form
@@ -3279,7 +3279,7 @@ chics	0	oewn-chic-n	Number=Plur	dema	0			rule
 chid	0	oewn-chide-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 chidden	0	oewn-chide-v	VerbForm=Part	dema	0			oewn_form
 chide	0	oewn-chide-v	VerbForm=Inf	dema	0			oewn_form
-chided	0	oewn-chide-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+chided	0	oewn-chide-v	Tense=Past+VerbForm=Part	dema	0			llm
 chider	0		Number=Sing	dema	0	chider	n	moby_reverse
 chiders	0		Number=Plur	dema	0	chider	n	rule
 chides	0	oewn-chide-v	Person=3+Tense=Pres	dema	0			llm
@@ -3943,7 +3943,7 @@ chive	0	oewn-chive-n	Number=Sing	dema	0			oewn_form
 chives	0	oewn-chive-n	Number=Plur	dema	0			rule
 chives	1	oewn-chives-n	Number=Sing	dema	0			oewn_form
 chivied	0	oewn-chivy-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
-chivies	0	oewn-chivy-v	Person=3+Tense=Pres	dema	0			rule_variant
+chivies	0	oewn-chivy-v	Person=3+Tense=Pres	dema	0			llm
 chivs	0		Number=Plur	dema	0	chiv	n	rule
 chivvied	0	oewn-chivvy-v	Tense=Past+VerbForm=Part	dema	0			rule
 chivvied	1	oewn-chivy-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
@@ -3954,7 +3954,7 @@ chivvying	0	oewn-chivvy-v	VerbForm=Ger	dema	0			rule
 chivvying	1	oewn-chivy-v	VerbForm=Ger	dema	0			oewn_form
 chivy	0	oewn-chivy-v	VerbForm=Inf	dema	0			oewn_form
 chivy	1		Number=Sing	dema	0	chivy	n	moby_reverse
-chivying	0	oewn-chivy-v	VerbForm=Ger	dema	0			rule_variant
+chivying	0	oewn-chivy-v	VerbForm=Ger	dema	0			llm
 chlamydate	0		Degree=Pos	dema	0	chlamydate	a	moby_reverse
 chlamydeous	0	oewn-chlamydeous-a	Degree=Pos	dema	0			oewn_form
 chlamydes	0	oewn-chlamys-n	Number=Plur	dema	0			oewn_form
@@ -5056,7 +5056,7 @@ chrysalid	1		Degree=Pos	dema	0	chrysalid	a	moby_reverse
 chrysalides	0	oewn-chrysalis-n	Number=Plur	dema	0			oewn_form
 chrysalids	0		Number=Plur	dema	0	chrysalid	n	rule
 chrysalis	0	oewn-chrysalis-n	Number=Sing	dema	0			oewn_form
-chrysalises	0	oewn-chrysalis-n	Number=Plur	dema	0			rule_variant
+chrysalises	0	oewn-chrysalis-n	Number=Plur	dema	0			llm
 chrysanthemum	0	oewn-chrysanthemum-n	Number=Sing	dema	0			oewn_form
 chrysanthemum dog	0	oewn-chrysanthemum_dog-n	Number=Sing	dema	0			oewn_form
 chrysanthemum dogs	0	oewn-chrysanthemum_dog-n	Number=Plur	dema	0			rule

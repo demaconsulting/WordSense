@@ -18,7 +18,7 @@ namespace WordSense.Builder.Data;
 /// </remarks>
 internal static class FormAuditor
 {
-    /// <summary>The provenance values that the generator derives by rule or by reverse rule; the gate applies to them.</summary>
+    /// <summary>The provenance values that the generator derives by rule, by reverse rule or from the forms authored for the project (<c>llm</c> and its variants); the gate applies to them.</summary>
     public static readonly string[] GeneratedProvenance = ["rule", "rule_variant", "llm", "moby_reverse"];
 
     /// <summary>The oracle script, relative to the repository.</summary>

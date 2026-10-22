@@ -253,7 +253,7 @@ Brosme brosmes	0	oewn-Brosme_brosme-n	Capitalization=Exact+Number=Plur	dema	0			
 Brother	0	oewn-brother-n	Number=Sing	dema	0			oewn_form
 Brother	1	dema-brother-i		dema	0			carried
 Brother	2	oewn-Brother-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-Brothers	0	oewn-brother-n	Number=Plur	dema	0			rule_variant
+Brothers	0	oewn-brother-n	Number=Plur	dema	0			llm
 Brothers	1	oewn-Brother-n	Capitalization=Title+Number=Plur	dema	0			llm
 Broussonetia papyrifera	0	oewn-Broussonetia_papyrifera-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Broussonetia papyriferas	0	oewn-Broussonetia_papyrifera-n	Capitalization=Exact+Number=Plur	dema	0			rule
@@ -885,7 +885,8 @@ branny	0		Degree=Pos	dema	0	branny	a	moby_reverse
 brans	0	oewn-bran-n	Number=Plur	dema	0			rule
 bransle	0		Number=Sing	dema	0	bransle	n	moby_reverse
 bransles	0		Number=Plur	dema	0	bransle	n	rule
-brant	0	oewn-brant-n	Number=Sing	dema	0			oewn_form
+brant	0	oewn-brant-n	Number=Plur	dema	0			llm
+brant	1	oewn-brant-n	Number=Sing	dema	0			oewn_form
 brant goose	0	oewn-brant_goose-n	Number=Sing	dema	0			oewn_form
 brant gooses	0	oewn-brant_goose-n	Number=Plur	dema	0			rule
 brants	0	oewn-brant-n	Number=Plur	dema	0			oewn_form
@@ -1029,7 +1030,7 @@ bravoed	0	oewn-bravo-v	Tense=Past+VerbForm=Part	dema	0			rule
 bravoes	0	oewn-bravo-n	Number=Plur	dema	0			oewn_form
 bravoes	1	oewn-bravo-v	Person=3+Tense=Pres	dema	0			rule
 bravoing	0	oewn-bravo-v	VerbForm=Ger	dema	0			rule
-bravos	0	oewn-bravo-n	Number=Plur	dema	0			rule_variant
+bravos	0	oewn-bravo-n	Number=Plur	dema	0			llm
 bravura	0	oewn-bravura-n	Number=Sing	dema	0			oewn_form
 bravuras	0	oewn-bravura-n	Number=Plur	dema	0			rule
 bravure	0		Number=Sing	dema	0	bravure	n	moby_reverse
@@ -1599,7 +1600,8 @@ breloque	0		Number=Sing	dema	0	breloque	n	moby_reverse
 breloques	0		Number=Plur	dema	0	breloque	n	rule
 bremsstrahlung	0		Number=Sing	dema	0	bremsstrahlung	n	moby_reverse
 bremsstrahlungs	0		Number=Plur	dema	0	bremsstrahlung	n	rule
-brent	0	oewn-brent-n	Number=Sing	dema	0			oewn_form
+brent	0	oewn-brent-n	Number=Plur	dema	0			llm
+brent	1	oewn-brent-n	Number=Sing	dema	0			oewn_form
 brent goose	0	oewn-brent_goose-n	Number=Sing	dema	0			oewn_form
 brent gooses	0	oewn-brent_goose-n	Number=Plur	dema	0			rule
 brents	0	oewn-brent-n	Number=Plur	dema	0			rule_variant
@@ -2801,7 +2803,7 @@ brotherly	0	oewn-brotherly-a	Degree=Pos	dema	0			oewn_form
 brotherly	1	oewn-brotherly-r	Degree=Pos	dema	0			oewn_form
 brotherly love	0	oewn-brotherly_love-n	Number=Sing	dema	0			oewn_form
 brotherly loves	0	oewn-brotherly_love-n	Number=Plur	dema	0			rule
-brothers	0	oewn-brother-n	Number=Plur	dema	0			rule_variant
+brothers	0	oewn-brother-n	Number=Plur	dema	0			llm
 brothers-in-law	0	oewn-brother-in-law-n	Number=Plur	dema	0			oewn_form
 broths	0	oewn-broth-n	Number=Plur	dema	0			rule
 broths of a boy	0	oewn-broth_of_a_boy-n	Number=Plur	dema	0			rule
@@ -2825,7 +2827,7 @@ browallias	0	oewn-browallia-n	Number=Plur	dema	0			rule
 browband	0		Number=Sing	dema	0	browband	n	moby_reverse
 browbands	0		Number=Plur	dema	0	browband	n	rule
 browbeat	0	oewn-browbeat-v	VerbForm=Inf	dema	0			oewn_form
-browbeat	1	oewn-browbeat-v	Tense=Past	dema	0			llm
+browbeat	1	oewn-browbeat-v	Tense=Past+VerbForm=Part	dema	0			llm
 browbeaten	0	oewn-browbeat-v	VerbForm=Part	dema	0			oewn_form
 browbeater	0		Number=Sing	dema	0	browbeater	n	moby_reverse
 browbeaters	0		Number=Plur	dema	0	browbeater	n	rule
@@ -3169,4 +3171,4 @@ bryophytic	0	oewn-bryophytic-a	Degree=Pos	dema	0			oewn_form
 bryozoa	0	oewn-bryozoan-n	Number=Plur	dema	0			oewn_form
 bryozoan	0	oewn-bryozoan-n	Number=Sing	dema	0			oewn_form
 bryozoan	1		Degree=Pos	dema	0	bryozoan	a	moby_reverse
-bryozoans	0	oewn-bryozoan-n	Number=Plur	dema	0			rule_variant
+bryozoans	0	oewn-bryozoan-n	Number=Plur	dema	0			llm

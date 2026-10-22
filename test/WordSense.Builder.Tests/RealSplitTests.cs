@@ -93,6 +93,50 @@ public sealed class RealSplitTests : IDisposable
     }
 
     /// <summary>
+    ///     A provenance file is refused, with its path and line, when its header is not exact, a row is short or has an empty
+    ///     field, the split or the source is not allowed, or an id repeats.
+    /// </summary>
+    /// <param name="content">The content of the file.</param>
+    /// <param name="line">The line named by the message.</param>
+    [Theory]
+    [InlineData("id\tsplit\tsource\n", 1)]
+    [InlineData("source_key\tid\tsplit\tsource\n", 1)]
+    [InlineData("id\tsplit\tsource\tsource_key\nabc\tholdout\tgutenberg\n", 2)]
+    [InlineData("id\tsplit\tsource\tsource_key\nabc\tholdout\tgutenberg\tpg1\textra\n", 2)]
+    [InlineData("id\tsplit\tsource\tsource_key\nabc\tholdout\t\tpg1\n", 2)]
+    [InlineData("id\tsplit\tsource\tsource_key\nabc\ttraining\tgutenberg\tpg1\n", 2)]
+    [InlineData("id\tsplit\tsource\tsource_key\nabc\tholdout\twikipedia\tpg1\n", 2)]
+    [InlineData("id\tsplit\tsource\tsource_key\nabc\tholdout\tgutenberg\tpg1\nabc\tanchors\tvoa\tx\n", 3)]
+    public void WordSenseBuilder_RealSplit_ReadProvenance_MalformedFile_IsRefusedWithPathAndLine(string content, int line)
+    {
+        // Arrange
+        _dir.Write("corpus/provenance/p.tsv", content);
+
+        // Act
+        var ex = Assert.Throws<InvalidDataException>(() => RealSplit.ReadProvenance(Corpus));
+
+        // Assert
+        Assert.Contains($"p.tsv:{line.ToString(CultureInfo.InvariantCulture)}:", ex.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     An id that repeats in two files is refused.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealSplit_ReadProvenance_IdInTwoFiles_IsRefused()
+    {
+        // Arrange
+        _dir.Write("corpus/provenance/a.tsv", "id\tsplit\tsource\tsource_key\nabc\tholdout\tgutenberg\tpg1\n");
+        _dir.Write("corpus/provenance/b.tsv", "id\tsplit\tsource\tsource_key\nabc\tanchors\tllm-corpus\tbatch\n");
+
+        // Act
+        var ex = Assert.Throws<InvalidDataException>(() => RealSplit.ReadProvenance(Corpus));
+
+        // Assert
+        Assert.Contains("b.tsv:2:", ex.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
     ///     The test rows whose document supplies a real anchor are left out of the list of test rows without anchor
     ///     documents.
     /// </summary>

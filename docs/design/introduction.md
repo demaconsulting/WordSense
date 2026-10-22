@@ -123,10 +123,12 @@ form layers:
   `BasicWordSenseModel`, a statistical tagger and cue model that answers at the part of speech level (and the sense
   level where the lemma and part of speech have one sense). It holds no encoder weights and no ONNX code. Its
   package license expression is `MIT AND CC-BY-4.0` and a packed `NOTICE.md` carries the attribution of the data
-  embedded in it (Open English WordNet 2025 under CC BY 4.0 with the Princeton WordNet notice that it requires) and
-  records that the
-  statistics of the built-in model come from our own CC0 corpora (the open part-of-speech corpus and the sentence
-  corpus) and from no treebank.
+  embedded in it and records where each source comes from: Open English WordNet 2025 under CC BY 4.0 with the
+  Princeton WordNet notice that it requires, the Moby Part-of-Speech List (public domain), the inflected forms authored
+  by the project (CC0 1.0) and the project data (MIT), and the tagged tokens of the open part-of-speech corpus (CC0 1.0),
+  which corroborate generated forms at build time and are not embedded. The statistics of the built-in model come from
+  our own CC0 corpora (the open part-of-speech corpus and the sentence corpus) and from no treebank. The WordNet 3.0 counts
+  are used only for the usage prior of the encoder models.
 - The **Onnx** package implements the contracts for any BERT-style encoder: model file management, encoder,
   tokenizer, weights, thresholds and scoring of the fine senses. It references the core package and ONNX Runtime, and
   nothing else: its abstract encoder model is usable on its own and answers from the lexicon and the encoder alone.
@@ -210,8 +212,8 @@ model/<model-id>/                                  — model files (ONNX file, v
                                                       SHA256SUMS, the Apache License 2.0 LICENSE) of each encoder
                                                       model
 tools/WordSense.Builder/                           — word-sense-builder unit (not shipped)
-tools/                                             — the other maintainer tools (not shipped): forms-audit,
-                                                      forms-audit, model-prep, quota-fill and tokenizer-fixture;
+tools/                                             — the other maintainer tools (not shipped): forms-audit, model-prep,
+                                                      quota-fill and tokenizer-fixture;
                                                       tools/README.md describes each tool folder
 tools/open-corpus/                                 — the scripts that built the open part-of-speech corpus (Python,
                                                       not shipped; downloads go to its git-ignored cache)

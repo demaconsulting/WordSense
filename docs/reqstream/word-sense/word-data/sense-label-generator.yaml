@@ -14,12 +14,16 @@ sections:
                   that is unique among the senses of its lemma: the part of speech name for the only sense of a lemma
                   and part of speech (lemma#noun), otherwise the first synonym of its synset, otherwise the first
                   usable member of its first hypernym synset that has one, made unique by a numeric suffix where two
-                  senses would otherwise share one; it shall create no group, and shall report a table it cannot read
-                  as invalid data with the file and line.
+                  senses would otherwise share one, the senses of a lemma being taken in the labeling order (part of
+                  speech, then descending WordNet 3.0 count, then the UTF-8 bytes of the sense id; not the order of the
+                  word image) so that the first of them keeps the plain label; it shall create no group, and shall
+                  report a table it cannot read as invalid data with the file and line.
                 tags: [unit]
                 justification: |
                   Callers can use any sense of any word, not only the curated ones, so every sense needs an id that
-                  reads like what it means; a fixed rule makes the ids reproducible and reviewable. A group exists only
+                  reads like what it means; a fixed rule makes the ids reproducible and reviewable. The labeling order
+                  is fixed by the data and is independent of the order of the senses in the word image (the order of
+                  Open English WordNet), so published ids do not move when the image order does. A group exists only
                   when it is curated, so the generator never makes one.
                 tests:
                   - WordSenseBuilder_SenseLabelGenerator_Generate_OnlySenseOfPartOfSpeech_UsesThePartOfSpeechName
@@ -27,6 +31,7 @@ sections:
                   - WordSenseBuilder_SenseLabelGenerator_Generate_NoSynonym_UsesTheHypernymHead
                   - WordSenseBuilder_SenseLabelGenerator_Generate_FirstHypernymMemberIsSelf_UsesNextMemberOfThatHypernym
                   - WordSenseBuilder_SenseLabelGenerator_Generate_DuplicateLabels_GetNumericSuffixes
+                  - WordSenseBuilder_SenseLabelGenerator_Generate_LabelingOrder_FollowsPartOfSpeechCountAndSenseIdNotTheListedOrder
                   - WordSenseBuilder_SenseLabelGenerator_Generate_LabelsAreWellFormedAndUniquePerLemma
                   - WordSenseBuilder_SenseLabelGenerator_Run_Slice_LabelsOneTokenSensesAndCreatesNoGroup
                   - WordSenseBuilder_SenseLabelGenerator_Run_UnreadableRows_ThrowInvalidDataWithLocation

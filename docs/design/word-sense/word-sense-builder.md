@@ -93,9 +93,11 @@ implementation of the feature computation.
 - `RealSplit`, `RealCalibrator`: split the real-text held-out sentences by document into a calibration and a test
   split (from `corpus/provenance`, the columns `id`, `split`, `source` and `source_key`) and move the thresholds of the
   trained lemmas to the precision target measured on the real calibration sentences (see "Real-text calibration"
-  below). `ProvenanceSources` is the one list of the allowed sources of a sentence (real text and sentences written for
-  the project): the licence gate that `CorpusLicenseTests` applies to the provenance, and the decision whether a source
-  is real text.
+  below). `RealSplit` reads the provenance strictly: it refuses a file with another header, a row without its four
+  non-empty columns, a split other than `anchors`, `holdout` or `realtext`, a source that is not allowed or a repeated
+  id, with the file and the line. `ProvenanceSources` is the one list of the allowed sources of a sentence (real text
+  and sentences written for the project): the licence gate that `CorpusLicenseTests` applies to the provenance, and
+  the decision whether a source is real text.
 - `Tiers`, `TierRow`: the per-sense quota of anchor and held-out sentences, the status of each sense and the report of
   the senses that fall short.
 - `EmbeddingCache` and `CachingEncoder`: the persistent cache of pooled vectors (one file per model, keyed by the
@@ -108,7 +110,7 @@ implementation of the feature computation.
   command that measures it).
 - `SemCor`, `SemCorSentence`, `SemCorTarget`, `SemCorCounts`, `SenseEvaluator`, `SenseEvalResult`: the SemCor 3.0
   evaluation (reader of the tag files, download to a cache with a pinned checksum, key mapping, per-level figures and
-  the most-frequent-sense baseline).
+  the first-sense baseline in Open English WordNet order, which the report calls partly circular).
 - `RunningTextEvaluator`: the part-of-speech evaluation of every model on the test split of the open corpus, the
   convention-mapped treebank test file and the challenge set.
 - `SuiteFile`, `SuiteRow`, `SuiteData`, `SuiteGrade`, `SuiteEvaluator`: read the reviewed suite rows and the expectation
@@ -472,12 +474,13 @@ table against the reference accuracies of the other models.
    judges every target like a held-out row (`Evaluator.Judge`): the answer is right at its own level; the report has the
    share answered at each level, the precision at each level, the fine top-1 (the most probable ranked sense), the group
    top-1 (the most probable ranked sense is in the group of the gold sense, for words whose gold sense is in a group),
-   the part-of-speech accuracy and the most-frequent-sense baseline (the first sense of the lemma and part of speech of
-   the gold sense in inventory order; the baseline knows the gold lemma and part of speech).
+   the part-of-speech accuracy and the first-sense baseline (the first sense of the lemma and part of speech of
+   the gold sense in inventory order, the order of Open English WordNet; the baseline knows the gold lemma and part of speech).
 
 The tiers come from WordNet 3.0 tag counts that include the counts of SemCor itself, and the inventory order (the order
-of Open English WordNet) inherits most of its order from WordNet, whose senses are ordered by such counts: this gives
-the baseline an advantage (it has seen the answers) and the evaluation report says so; no SemCor sentence is in any
+of Open English WordNet) follows Princeton WordNet's frequency order: it matches the WordNet 3.0 top-count sense in 10,047
+of 10,062 blocks with a unique maximum, and those counts include the tags of SemCor. The baseline is therefore partly
+circular and has an advantage (it has seen the answers); the evaluation report says so. No SemCor sentence is in any
 training corpus.
 
 #### Running-text evaluation (`RunningTextEvaluator`)

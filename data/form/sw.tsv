@@ -203,7 +203,7 @@ swam	0	oewn-swim-v	Tense=Past	dema	0			hand
 swami	0	oewn-swami-n	Number=Sing	dema	0			oewn_form
 swamies	0	oewn-swami-n	Number=Plur	dema	0			oewn_form
 swamies	1		Number=Plur	dema	0	swamy	n	rule
-swamis	0	oewn-swami-n	Number=Plur	dema	0			rule_variant
+swamis	0	oewn-swami-n	Number=Plur	dema	0			llm
 swamp	0	oewn-swamp-n	Number=Sing	dema	0			oewn_form
 swamp	1	oewn-swamp-v	VerbForm=Inf	dema	0			oewn_form
 swamp ash	0	oewn-swamp_ash-n	Number=Sing	dema	0			oewn_form
@@ -352,7 +352,7 @@ swapped	0	oewn-swap-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 swapper	0		Number=Sing	dema	0	swapper	n	moby_reverse
 swappers	0		Number=Plur	dema	0	swapper	n	rule
 swapping	0	oewn-swap-v	VerbForm=Ger	dema	0			oewn_form
-swaps	0	oewn-swap-v	Person=3+Tense=Pres	dema	0			rule_variant
+swaps	0	oewn-swap-v	Person=3+Tense=Pres	dema	0			llm
 swaps	1	oewn-swap-n	Number=Plur	dema	0			rule
 swaraj	0		Number=Sing	dema	0	swaraj	n	moby_reverse
 swaraj	1		Degree=Pos	dema	0	swaraj	a	moby_reverse

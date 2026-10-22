@@ -843,12 +843,12 @@ pedal extremity	0	oewn-pedal_extremity-n	Number=Sing	dema	0			oewn_form
 pedal point	0	oewn-pedal_point-n	Number=Sing	dema	0			oewn_form
 pedal points	0	oewn-pedal_point-n	Number=Plur	dema	0			rule
 pedal pushers	0	oewn-pedal_pushers-n	Number=Sing	dema	0			oewn_form
-pedaled	0	oewn-pedal-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+pedaled	0	oewn-pedal-v	Tense=Past+VerbForm=Part	dema	0			llm
 pedaler	0	oewn-pedaler-n	Number=Sing	dema	0			oewn_form
 pedalers	0	oewn-pedaler-n	Number=Plur	dema	0			rule
 pedalfer	0		Number=Sing	dema	0	pedalfer	n	moby_reverse
 pedalfers	0		Number=Plur	dema	0	pedalfer	n	rule
-pedaling	0	oewn-pedal-v	VerbForm=Ger	dema	0			rule_variant
+pedaling	0	oewn-pedal-v	VerbForm=Ger	dema	0			llm
 pedalled	0	oewn-pedal-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 pedaller	0	oewn-pedaller-n	Number=Sing	dema	0			oewn_form
 pedallers	0	oewn-pedaller-n	Number=Plur	dema	0			rule
@@ -1410,10 +1410,10 @@ pencil pusher	0	oewn-pencil_pusher-n	Number=Sing	dema	0			oewn_form
 pencil pushers	0	oewn-pencil_pusher-n	Number=Plur	dema	0			rule
 pencil sharpener	0	oewn-pencil_sharpener-n	Number=Sing	dema	0			oewn_form
 pencil sharpeners	0	oewn-pencil_sharpener-n	Number=Plur	dema	0			rule
-penciled	0	oewn-pencil-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+penciled	0	oewn-pencil-v	Tense=Past+VerbForm=Part	dema	0			llm
 penciled	1	oewn-penciled-a	Degree=Pos	dema	0			oewn_form
 penciliform	0		Degree=Pos	dema	0	penciliform	a	moby_reverse
-penciling	0	oewn-pencil-v	VerbForm=Ger	dema	0			rule_variant
+penciling	0	oewn-pencil-v	VerbForm=Ger	dema	0			llm
 pencilled	0	oewn-pencil-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 pencilled	1	oewn-pencilled-a	Degree=Pos	dema	0			oewn_form
 pencillike	0		Degree=Pos	dema	0	pencillike	a	moby_reverse
@@ -1558,7 +1558,7 @@ peninsulating	0		VerbForm=Ger	dema	0	peninsulate	v	rule
 penis	0	oewn-penis-n	Number=Sing	dema	0			oewn_form
 penis envies	0	oewn-penis_envy-n	Number=Plur	dema	0			rule
 penis envy	0	oewn-penis_envy-n	Number=Sing	dema	0			oewn_form
-penises	0	oewn-penis-n	Number=Plur	dema	0			rule_variant
+penises	0	oewn-penis-n	Number=Plur	dema	0			llm
 penitence	0	oewn-penitence-n	Number=Sing	dema	0			oewn_form
 penitences	0	oewn-penitence-n	Number=Plur	dema	0			rule
 penitent	0	oewn-penitent-a	Degree=Pos	dema	0			oewn_form

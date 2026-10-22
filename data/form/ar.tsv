@@ -668,7 +668,7 @@ arccotangent	0	oewn-arccotangent-n	Number=Sing	dema	0			oewn_form
 arccotangents	0	oewn-arccotangent-n	Number=Plur	dema	0			rule
 arcdegree	0	oewn-arcdegree-n	Number=Sing	dema	0			oewn_form
 arcdegrees	0	oewn-arcdegree-n	Number=Plur	dema	0			rule
-arced	0	oewn-arc-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+arced	0	oewn-arc-v	Tense=Past+VerbForm=Part	dema	0			llm
 arced	1	oewn-arced-a	Degree=Pos	dema	0			oewn_form
 arcella	0	oewn-arcella-n	Number=Sing	dema	0			oewn_form
 arcellas	0	oewn-arcella-n	Number=Plur	dema	0			rule
@@ -931,7 +931,7 @@ archway	0	oewn-archway-n	Number=Sing	dema	0			oewn_form
 archways	0	oewn-archway-n	Number=Plur	dema	0			rule
 arcifinious	0		Degree=Pos	dema	0	arcifinious	a	moby_reverse
 arciform	0	oewn-arciform-a	Degree=Pos	dema	0			oewn_form
-arcing	0	oewn-arc-v	VerbForm=Ger	dema	0			rule_variant
+arcing	0	oewn-arc-v	VerbForm=Ger	dema	0			llm
 arcked	0	oewn-arc-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 arcking	0	oewn-arc-v	VerbForm=Ger	dema	0			oewn_form
 arcminute	0	oewn-arcminute-n	Number=Sing	dema	0			oewn_form
@@ -1094,7 +1094,8 @@ arfvedsonite	0		Number=Sing	dema	0	arfvedsonite	n	moby_reverse
 arfvedsonites	0		Number=Plur	dema	0	arfvedsonite	n	rule
 arg	0		Number=Sing	dema	0	arg	n	moby_reverse
 argal	0	oewn-argal-n	Number=Sing	dema	0			oewn_form
-argali	0	oewn-argali-n	Number=Sing	dema	0			oewn_form
+argali	0	oewn-argali-n	Number=Plur	dema	0			llm
+argali	1	oewn-argali-n	Number=Sing	dema	0			oewn_form
 argalis	0	oewn-argali-n	Number=Plur	dema	0			rule_variant
 argals	0	oewn-argal-n	Number=Plur	dema	0			rule
 argasid	0	oewn-argasid-n	Number=Sing	dema	0			oewn_form

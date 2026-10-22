@@ -1258,6 +1258,7 @@ racheted up	0	oewn-rachet_up-v	Tense=Past+VerbForm=Part	dema	0			rule
 racheting up	0	oewn-rachet_up-v	VerbForm=Ger	dema	0			rule
 rachets	0	oewn-rachet-n	Number=Plur	dema	0			rule
 rachets up	0	oewn-rachet_up-v	Person=3+Tense=Pres	dema	0			rule
+rachides	0	oewn-rachis-n	Number=Plur	dema	0			rule_variant
 rachidial	0		Degree=Pos	dema	0	rachidial	a	moby_reverse
 rachidian	0		Degree=Pos	dema	0	rachidian	a	moby_reverse
 rachiform	0		Degree=Pos	dema	0	rachiform	a	moby_reverse
@@ -1267,7 +1268,7 @@ rachillaes	0		Number=Plur	dema	0	rachillae	n	rule
 rachillas	0		Number=Plur	dema	0	rachilla	n	rule
 rachis	0	oewn-rachis-n	Number=Sing	dema	0			oewn_form
 rachischisis	0	oewn-rachischisis-n	Number=Sing	dema	0			oewn_form
-rachises	0	oewn-rachis-n	Number=Plur	dema	0			rule_variant
+rachises	0	oewn-rachis-n	Number=Plur	dema	0			llm
 rachitic	0	oewn-rachitic-a	Degree=Pos	dema	0			oewn_form
 rachitis	0	oewn-rachitis-n	Number=Sing	dema	0			oewn_form
 racial	0	oewn-racial-a	Degree=Pos	dema	0			oewn_form
@@ -2768,7 +2769,7 @@ rapeseed oils	0	oewn-rapeseed_oil-n	Number=Plur	dema	0			rule
 rapeseeds	0	oewn-rapeseed-n	Number=Plur	dema	0			rule
 raphae	0	oewn-raphe-n	Number=Plur	dema	0			oewn_form
 raphe	0	oewn-raphe-n	Number=Sing	dema	0			oewn_form
-raphes	0	oewn-raphe-n	Number=Plur	dema	0			rule_variant
+raphes	0	oewn-raphe-n	Number=Plur	dema	0			llm
 raphia	0	oewn-raphia-n	Number=Sing	dema	0			oewn_form
 raphias	0	oewn-raphia-n	Number=Plur	dema	0			rule
 raphide	0		Number=Sing	dema	0	raphide	n	moby_reverse
@@ -3364,13 +3365,13 @@ ravehooks	0	oewn-ravehook-n	Number=Plur	dema	0			rule
 ravel	0	oewn-ravel-v	VerbForm=Inf	dema	0			oewn_form
 ravel	1	oewn-ravel-n	Number=Sing	dema	0			oewn_form
 ravel out	0	oewn-ravel_out-v	VerbForm=Inf	dema	0			oewn_form
-raveled	0	oewn-ravel-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+raveled	0	oewn-ravel-v	Tense=Past+VerbForm=Part	dema	0			llm
 raveled out	0	oewn-ravel_out-v	Tense=Past+VerbForm=Part	dema	0			rule
 raveler	0		Number=Sing	dema	0	raveler	n	moby_reverse
 ravelers	0		Number=Plur	dema	0	raveler	n	rule
 ravelin	0		Number=Sing	dema	0	ravelin	n	moby_reverse
 raveling	0	oewn-raveling-n	Number=Sing	dema	0			oewn_form
-raveling	1	oewn-ravel-v	VerbForm=Ger	dema	0			rule_variant
+raveling	1	oewn-ravel-v	VerbForm=Ger	dema	0			llm
 raveling out	0	oewn-ravel_out-v	VerbForm=Ger	dema	0			rule
 ravelings	0	oewn-raveling-n	Number=Plur	dema	0			rule
 ravelins	0		Number=Plur	dema	0	ravelin	n	rule
@@ -4678,7 +4679,7 @@ reauthorized	0		Tense=Past+VerbForm=Part	dema	0	reauthorize	v	rule
 reauthorizes	0		Person=3+Tense=Pres	dema	0	reauthorize	v	rule
 reauthorizing	0		VerbForm=Ger	dema	0	reauthorize	v	rule
 reave	0	oewn-reave-v	VerbForm=Inf	dema	0			oewn_form
-reaved	0	oewn-reave-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+reaved	0	oewn-reave-v	Tense=Past+VerbForm=Part	dema	0			llm
 reaves	0	oewn-reave-v	Person=3+Tense=Pres	dema	0			llm
 reaving	0	oewn-reave-v	VerbForm=Ger	dema	0			llm
 reavow	0		VerbForm=Inf	dema	0	reavow	v	moby_reverse
@@ -7702,7 +7703,7 @@ reevasion	0		Number=Sing	dema	0	reevasion	n	moby_reverse
 reevasions	0		Number=Plur	dema	0	reevasion	n	rule
 reeve	0	oewn-reeve-n	Number=Sing	dema	0			oewn_form
 reeve	1	oewn-reeve-v	VerbForm=Inf	dema	0			oewn_form
-reeved	0	oewn-reeve-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+reeved	0	oewn-reeve-v	Tense=Past+VerbForm=Part	dema	0			llm
 reeves	0	oewn-reeve-n	Number=Plur	dema	0			rule
 reeves	1	oewn-reeve-v	Person=3+Tense=Pres	dema	0			llm
 reevidence	0		VerbForm=Inf	dema	0	reevidence	v	moby_reverse
@@ -9867,7 +9868,7 @@ relay station	0	oewn-relay_station-n	Number=Sing	dema	0			oewn_form
 relay stations	0	oewn-relay_station-n	Number=Plur	dema	0			rule
 relay transmitter	0	oewn-relay_transmitter-n	Number=Sing	dema	0			oewn_form
 relay transmitters	0	oewn-relay_transmitter-n	Number=Plur	dema	0			rule
-relayed	0	oewn-relay-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+relayed	0	oewn-relay-v	Tense=Past+VerbForm=Part	dema	0			llm
 relaying	0	oewn-relay-v	VerbForm=Ger	dema	0			llm
 relays	0	oewn-relay-n	Number=Plur	dema	1			carried
 relays	1	oewn-relay-v	Person=3+Tense=Pres	dema	1			carried
@@ -15110,7 +15111,7 @@ rhabdomancers	0	oewn-rhabdomancer-n	Number=Plur	dema	0			rule
 rhabdomancies	0	oewn-rhabdomancy-n	Number=Plur	dema	0			rule
 rhabdomancy	0	oewn-rhabdomancy-n	Number=Sing	dema	0			oewn_form
 rhabdomyoma	0	oewn-rhabdomyoma-n	Number=Sing	dema	0			oewn_form
-rhabdomyomas	0	oewn-rhabdomyoma-n	Number=Plur	dema	0			rule_variant
+rhabdomyomas	0	oewn-rhabdomyoma-n	Number=Plur	dema	0			llm
 rhabdomyomata	0	oewn-rhabdomyoma-n	Number=Plur	dema	0			oewn_form
 rhabdomyosarcoma	0	oewn-rhabdomyosarcoma-n	Number=Sing	dema	0			oewn_form
 rhabdomyosarcomas	0	oewn-rhabdomyosarcoma-n	Number=Plur	dema	0			rule
@@ -15661,8 +15662,8 @@ rickshaw	0	oewn-rickshaw-n	Number=Sing	dema	0			oewn_form
 rickshaws	0	oewn-rickshaw-n	Number=Plur	dema	0			rule
 ricochet	0	oewn-ricochet-v	VerbForm=Inf	dema	0			oewn_form
 ricochet	1	oewn-ricochet-n	Number=Sing	dema	0			oewn_form
-ricocheted	0	oewn-ricochet-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
-ricocheting	0	oewn-ricochet-v	VerbForm=Ger	dema	0			rule_variant
+ricocheted	0	oewn-ricochet-v	Tense=Past+VerbForm=Part	dema	0			llm
+ricocheting	0	oewn-ricochet-v	VerbForm=Ger	dema	0			llm
 ricochets	0	oewn-ricochet-v	Person=3+Tense=Pres	dema	0			llm
 ricochets	1	oewn-ricochet-n	Number=Plur	dema	0			rule
 ricochetted	0	oewn-ricochet-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
@@ -16611,8 +16612,8 @@ rivages	0		Number=Plur	dema	0	rivage	n	rule
 rival	0	oewn-rival-n	Number=Sing	dema	0			oewn_form
 rival	1	oewn-rival-v	VerbForm=Inf	dema	0			oewn_form
 rival	2	oewn-rival-a	Degree=Pos	dema	0			oewn_form
-rivaled	0	oewn-rival-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
-rivaling	0	oewn-rival-v	VerbForm=Ger	dema	0			rule_variant
+rivaled	0	oewn-rival-v	Tense=Past+VerbForm=Part	dema	0			llm
+rivaling	0	oewn-rival-v	VerbForm=Ger	dema	0			llm
 rivalled	0	oewn-rival-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 rivalling	0	oewn-rival-v	VerbForm=Ger	dema	0			oewn_form
 rivalries	0	oewn-rivalry-n	Number=Plur	dema	0			rule
@@ -18007,7 +18008,7 @@ rostrate	0	oewn-rostrate-a	Degree=Pos	dema	0			oewn_form
 rostrocarinate	0		Number=Sing	dema	0	rostrocarinate	n	moby_reverse
 rostrocarinates	0		Number=Plur	dema	0	rostrocarinate	n	rule
 rostrum	0	oewn-rostrum-n	Number=Sing	dema	0			oewn_form
-rostrums	0	oewn-rostrum-n	Number=Plur	dema	0			rule_variant
+rostrums	0	oewn-rostrum-n	Number=Plur	dema	0			llm
 rosttra	0		Number=Sing	dema	0	rosttra	n	moby_reverse
 rosttras	0		Number=Plur	dema	0	rosttra	n	rule
 rosy	0	oewn-rosy-a	Degree=Pos	dema	0			oewn_form
@@ -18089,7 +18090,7 @@ rotis	0		Number=Plur	dema	0	roti	n	rule
 rotisserie	0	oewn-rotisserie-n	Number=Sing	dema	0			oewn_form
 rotisseries	0	oewn-rotisserie-n	Number=Plur	dema	0			rule
 rotl	0	oewn-rotl-n	Number=Sing	dema	0			oewn_form
-rotls	0	oewn-rotl-n	Number=Plur	dema	0			rule_variant
+rotls	0	oewn-rotl-n	Number=Plur	dema	0			llm
 roto	0		Number=Sing	dema	0	roto	n	moby_reverse
 rotogravure	0	oewn-rotogravure-n	Number=Sing	dema	0			oewn_form
 rotogravures	0	oewn-rotogravure-n	Number=Plur	dema	0			rule
@@ -19182,7 +19183,7 @@ rumblings	0	oewn-rumbling-n	Number=Plur	dema	0			rule
 rumbly	0		Degree=Pos	dema	0	rumbly	a	moby_reverse
 rumbustious	0	oewn-rumbustious-a	Degree=Pos	dema	0			oewn_form
 rumen	0	oewn-rumen-n	Number=Sing	dema	0			oewn_form
-rumens	0	oewn-rumen-n	Number=Plur	dema	0			rule_variant
+rumens	0	oewn-rumen-n	Number=Plur	dema	0			llm
 rumina	0	oewn-rumen-n	Number=Plur	dema	0			oewn_form
 ruminant	0	oewn-ruminant-n	Number=Sing	dema	0			oewn_form
 ruminant	1	oewn-ruminant-a	Degree=Pos	dema	0			oewn_form

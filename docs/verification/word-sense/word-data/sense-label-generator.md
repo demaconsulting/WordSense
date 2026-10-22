@@ -26,7 +26,11 @@ All scenarios below pass.
   a sense with no usable synonym takes the first usable member of its first hypernym synset; when the first member is
   the lemma itself the next member of the same synset is used, not another hypernym.
 - **Duplicates** (`Generate_DuplicateLabels_GetNumericSuffixes`): two senses with the same slug are labeled `slug` and
-  `slug-2` in inventory order; a third gets `slug-3`.
+  `slug-2` in labeling order (the WordNet 3.0 count decides); a third gets `slug-3`.
+- **Labeling order** (`Generate_LabelingOrder_FollowsPartOfSpeechCountAndSenseIdNotTheListedOrder`): senses that are listed
+  in an order different from the labeling order (verbs first, nouns with the same count in descending id order) are
+  labeled in part of speech order, then descending count, then sense id, so the label follows the counts and not the
+  position of the sense in the input (the order of Open English WordNet).
 - **Well-formed labels** (`Generate_LabelsAreWellFormedAndUniquePerLemma`): spaces, apostrophes, capitals and non-ASCII
   letters in a candidate give a label of lower-case ASCII letters, digits and hyphens, and no two labels of a lemma
   are equal.

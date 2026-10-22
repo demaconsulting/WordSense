@@ -36,7 +36,12 @@ namespace DemaConsulting.WordSense;
 ///     At the group level it is the probability of the slot times the sum of the probabilities of the member senses of
 ///     the group within it. At the sense level it is the probability of the slot times the probability of the answered
 ///     sense within it. The split of a slot among its feature variants never lowers the confidence. It is 0 for an unknown
-///     word and 1 for a word with a single lemma and part of speech and a single sense. The probabilities are comparable
+///     word. It is 1 when nothing is left to decide at the level of the answer: for a word with a single lemma and part of
+///     speech (a single slot) and a single sense, at the <see cref="SenseLevel.Sense"/> level (the sense is certain), and
+///     also, at the <see cref="SenseLevel.PartOfSpeech"/> level, for a word with a single lemma and part of speech that has
+///     several senses which the model does not decide (the part of speech is certain, the sense is not: the Basic model
+///     answers such a word this way, and so does an encoder model when it answers it at that level). So a confidence of 1
+///     does not mean that a sense is known; test the <see cref="Level"/>. The probabilities are comparable
 ///     only within one result: do not compare them across models or across words as if they were calibrated, and tune
 ///     any threshold per model and level on your own text.
 ///     </para>

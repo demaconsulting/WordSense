@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -80,14 +81,20 @@ internal sealed record HoldoutSplit(
 /// </remarks>
 internal static class RealSplit
 {
+    private const string Header = "id\tsplit\tsource\tsource_key";
+
     /// <summary>
     ///     Reads every provenance file of a corpus into a map from the id of a row to its origin.
     /// </summary>
     /// <param name="corpus">The corpus directory; a missing <c>provenance</c> folder gives an empty map.</param>
     /// <returns>The entries by id.</returns>
+    /// <exception cref="InvalidDataException">Thrown when a file does not have the exact header
+    /// <c>id split source source_key</c>, a row does not have four non-empty fields, a split or a source is not allowed, or an id
+    /// repeats; the message names the file and the line.</exception>
     public static Dictionary<string, ProvenanceEntry> ReadProvenance(string corpus)
     {
         var result = new Dictionary<string, ProvenanceEntry>(StringComparer.Ordinal);
+        var origin = new Dictionary<string, string>(StringComparer.Ordinal);
         var directory = Path.Join(corpus, "provenance");
         if (!Directory.Exists(directory))
         {
@@ -97,27 +104,36 @@ internal static class RealSplit
         foreach (var file in Directory.GetFiles(directory, "*.tsv").OrderBy(f => f, StringComparer.Ordinal))
         {
             var lines = File.ReadAllLines(file, new UTF8Encoding(false));
-            if (lines.Length == 0)
+            if (lines.Length == 0 || lines[0].TrimEnd('\r') != Header)
             {
-                continue;
+                throw new InvalidDataException($"{file}:1: the header must be exactly 'id<TAB>split<TAB>source<TAB>source_key'.");
             }
 
-            var header = lines[0].Split('\t');
-            var id = Array.IndexOf(header, "id");
-            var source = Array.IndexOf(header, "source");
-            var key = Array.IndexOf(header, "source_key");
-            if (id < 0 || source < 0 || key < 0)
+            for (var number = 2; number <= lines.Length; number++)
             {
-                continue;
-            }
-
-            foreach (var line in lines.Skip(1))
-            {
-                var columns = line.Split('\t');
-                if (columns.Length > Math.Max(Math.Max(id, source), key))
+                var where = $"{file}:{number.ToString(CultureInfo.InvariantCulture)}";
+                var columns = lines[number - 1].TrimEnd('\r').Split('\t');
+                if (columns.Length != 4 || columns.Any(c => c.Length == 0))
                 {
-                    result[columns[id]] = new ProvenanceEntry(columns[source], columns[key]);
+                    throw new InvalidDataException($"{where}: a provenance row has the four non-empty columns id, split, source and source_key.");
                 }
+
+                if (!ProvenanceSources.Splits.Contains(columns[1], StringComparer.Ordinal))
+                {
+                    throw new InvalidDataException($"{where}: the split '{columns[1]}' is not one of {string.Join(", ", ProvenanceSources.Splits)}.");
+                }
+
+                if (!ProvenanceSources.IsAllowed(columns[2]))
+                {
+                    throw new InvalidDataException($"{where}: the source '{columns[2]}' is not an allowed source.");
+                }
+
+                if (!origin.TryAdd(columns[0], where))
+                {
+                    throw new InvalidDataException($"{where}: the id '{columns[0]}' repeats the row at {origin[columns[0]]}.");
+                }
+
+                result[columns[0]] = new ProvenanceEntry(columns[2], columns[3]);
             }
         }
 

@@ -58,7 +58,7 @@ in the table is unknown and is never analyzed.
 
 ### Dictionary Words
 
-The word table knows 365,120 spellings (lemmas and inflected forms) of 224,004 entries, and its sense catalog lists
+The word table knows 365,141 spellings (lemmas and inflected forms) of 224,004 entries, and its sense catalog lists
 129,433 senses in 140 curated groups. Besides the lemmas listed below, every other word of the table is a dictionary
 word: it has no trained classifier, a word with one part of speech is answered directly with confidence 1, and a word
 with several parts of speech returns them as candidates, most frequent first (the encoder models answer it with the

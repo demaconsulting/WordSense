@@ -72,7 +72,9 @@ internal sealed record LabelRun(int Kept, int Generated, int Suffixed, int Fallb
 ///     The public id of a sense is <c>lemma#label</c>. A label is the first usable slug of: the part of speech name
 ///     (the only sense of its lemma and part of speech), the first synonym of the synset, the first usable member of the
 ///     first hypernym synset that has one (a member whose slug is empty or the slug of the lemma itself is skipped), the
-///     part of speech name; a numeric suffix makes it unique among the labels of the lemma. Labels that
+///     part of speech name; a numeric suffix makes it unique among the labels of the lemma. The senses of a lemma are taken in the
+///     labeling order (part of speech, then WordNet 3.0 tag count descending, then the UTF-8 bytes of the sense id), which is not the
+///     order of the senses in the word image, so the first of them keeps the plain slug. Labels that
 ///     exist, and the labels of the old ids of the id map, are never changed, removed or taken again. Every order that
 ///     could change the result is fixed by the data (sense ids and synset ids by their UTF-8 bytes, the tag count),
 ///     never by the order in which rows were read, so the same data always gives the same files.
@@ -92,7 +94,7 @@ internal static class SenseLabelGenerator
     /// <summary>The origin of a curated group, the only origin a group has.</summary>
     public const string GroupCurated = "curated";
 
-    // The order of the parts of speech in the inventory order of the senses of a lemma
+    // The order of the parts of speech in the labeling order of the senses of a lemma
     private const string PosOrder = "nvarupcidx";
 
     /// <summary>

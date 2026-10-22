@@ -22,8 +22,9 @@ into one probability per analysis. The statistics carry no evidence that separat
 the model answers an ambiguous word at the part of speech level and names a sense only where the selected analysis has
 exactly one sense (its lemma and part of speech have exactly one sense). Every analysis of a known word is listed with
 its probability. It is small and fast and less accurate than the encoder models; its measured accuracy is reported in
-the repository's build notes. The tables are trained by the builder from the CC0 open part-of-speech corpus and the CC0
-sentence corpus of this repository.
+the repository's user guide (`docs/user_guide/accuracy.md` and the model comparison table
+`docs/user_guide/model-table.md`). The tables are trained by the builder from the CC0 open part-of-speech corpus and the
+CC0 sentence corpus of this repository.
 
 The subsystem contains eight units:
 

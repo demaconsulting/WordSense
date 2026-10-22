@@ -1245,7 +1245,7 @@ nagual	0		Number=Sing	dema	0	nagual	n	moby_reverse
 naguals	0		Number=Plur	dema	0	nagual	n	rule
 naiad	0	oewn-naiad-n	Number=Sing	dema	0			oewn_form
 naiades	0	oewn-naiad-n	Number=Plur	dema	0			oewn_form
-naiads	0	oewn-naiad-n	Number=Plur	dema	0			rule_variant
+naiads	0	oewn-naiad-n	Number=Plur	dema	0			llm
 naiant	0	oewn-naiant-a	Degree=Pos	dema	0			oewn_form
 naif	0	oewn-naif-a	Degree=Pos	dema	0			oewn_form
 naif	1	oewn-naif-n	Number=Sing	dema	0			oewn_form
@@ -2212,7 +2212,7 @@ nautiloid	0		Number=Sing	dema	0	nautiloid	n	moby_reverse
 nautiloid	1		Degree=Pos	dema	0	nautiloid	a	moby_reverse
 nautiloids	0		Number=Plur	dema	0	nautiloid	n	rule
 nautilus	0	oewn-nautilus-n	Number=Sing	dema	0			oewn_form
-nautiluses	0	oewn-nautilus-n	Number=Plur	dema	0			rule_variant
+nautiluses	0	oewn-nautilus-n	Number=Plur	dema	0			llm
 nauts	0		Number=Plur	dema	0	naut	n	rule
 nav	0		Number=Sing	dema	0	nav	n	moby_reverse
 naval	0	oewn-naval-a	Degree=Pos	dema	0			oewn_form
@@ -4299,7 +4299,7 @@ nidifying	0		VerbForm=Ger	dema	0	nidify	v	rule
 nidudi	0		Number=Sing	dema	0	nidudi	n	moby_reverse
 nidudis	0		Number=Plur	dema	0	nidudi	n	rule
 nidus	0	oewn-nidus-n	Number=Sing	dema	0			oewn_form
-niduses	0	oewn-nidus-n	Number=Plur	dema	0			rule_variant
+niduses	0	oewn-nidus-n	Number=Plur	dema	0			llm
 niece	0	oewn-niece-n	Number=Sing	dema	0			oewn_form
 nieces	0	oewn-niece-n	Number=Plur	dema	0			rule
 niellist	0		Number=Sing	dema	0	niellist	n	moby_reverse
@@ -11593,7 +11593,7 @@ nonplus	0	oewn-nonplus-v	VerbForm=Inf	dema	0			oewn_form
 nonplus	1		Number=Sing	dema	0	nonplus	n	moby_reverse
 nonplused	0	oewn-nonplus-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 nonplused	1	oewn-nonplused-a	Degree=Pos	dema	0			oewn_form
-nonpluses	0	oewn-nonplus-v	Person=3+Tense=Pres	dema	0			rule_variant
+nonpluses	0	oewn-nonplus-v	Person=3+Tense=Pres	dema	0			llm
 nonplusing	0	oewn-nonplus-v	VerbForm=Ger	dema	0			rule_variant
 nonplussed	0	oewn-nonplus-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 nonplussed	1	oewn-nonplussed-a	Degree=Pos	dema	0			oewn_form
@@ -15356,7 +15356,7 @@ nova	0	oewn-nova-n	Number=Sing	dema	0			oewn_form
 novaculite	0		Number=Sing	dema	0	novaculite	n	moby_reverse
 novaculites	0		Number=Plur	dema	0	novaculite	n	rule
 novae	0	oewn-nova-n	Number=Plur	dema	0			oewn_form
-novas	0	oewn-nova-n	Number=Plur	dema	0			rule_variant
+novas	0	oewn-nova-n	Number=Plur	dema	0			llm
 novate	0	oewn-novate-v	VerbForm=Inf	dema	0			oewn_form
 novated	0	oewn-novate-v	Tense=Past+VerbForm=Part	dema	0			rule
 novates	0	oewn-novate-v	Person=3+Tense=Pres	dema	0			rule
@@ -15404,7 +15404,7 @@ novemdecillionth	0		Degree=Pos	dema	0	novemdecillionth	a	moby_reverse
 novemdecillionth	1		Number=Sing	dema	0	novemdecillionth	n	moby_reverse
 novena	0	oewn-novena-n	Number=Sing	dema	0			oewn_form
 novenae	0	oewn-novena-n	Number=Plur	dema	0			oewn_form
-novenas	0	oewn-novena-n	Number=Plur	dema	0			rule_variant
+novenas	0	oewn-novena-n	Number=Plur	dema	0			llm
 novercal	0		Degree=Pos	dema	0	novercal	a	moby_reverse
 novice	0	oewn-novice-n	Number=Sing	dema	0			oewn_form
 novices	0	oewn-novice-n	Number=Plur	dema	0			rule
@@ -15622,6 +15622,7 @@ nucleotides	0	oewn-nucleotide-n	Number=Plur	dema	0			rule
 nucleus	0	oewn-nucleus-n	Number=Sing	dema	0			oewn_form
 nucleus niger	0	oewn-nucleus_niger-n	Number=Sing	dema	0			oewn_form
 nucleus nigers	0	oewn-nucleus_niger-n	Number=Plur	dema	0			rule
+nucleuses	0	oewn-nucleus-n	Number=Plur	dema	0			rule_variant
 nuclide	0		Number=Sing	dema	0	nuclide	n	moby_reverse
 nuclides	0		Number=Plur	dema	0	nuclide	n	rule
 nuddies	0		Number=Plur	dema	0	nuddy	n	rule

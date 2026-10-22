@@ -214,6 +214,9 @@ Scotch whiskies	0	oewn-Scotch_whisky-n	Capitalization=Exact+Number=Plur	dema	0		
 Scotch whisky	0	oewn-Scotch_whisky-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Scotch woodcock	0	oewn-Scotch_woodcock-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Scotch woodcocks	0	oewn-Scotch_woodcock-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Scotches	0	oewn-scotch-v	Person=3+Tense=Pres	dema	0			rule
+Scotches	1	oewn-scotch-n	Number=Plur	dema	0			llm
+Scotches	2	oewn-Scotch-n	Capitalization=Title+Number=Plur	dema	0			llm
 Scotchman	0		Number=Sing	dema	0	scotchman	n	moby_reverse
 Scotchman	1	oewn-Scotchman-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Scotchmen	0		Number=Plur	dema	0	scotchman	n	rule
@@ -1059,7 +1062,7 @@ scherzando	1		Degree=Pos	dema	0	scherzando	r	moby_reverse
 scherzando	2		Number=Sing	dema	0	scherzando	n	moby_reverse
 scherzi	0	oewn-scherzo-n	Number=Plur	dema	0			oewn_form
 scherzo	0	oewn-scherzo-n	Number=Sing	dema	0			oewn_form
-scherzos	0	oewn-scherzo-n	Number=Plur	dema	0			rule_variant
+scherzos	0	oewn-scherzo-n	Number=Plur	dema	0			llm
 schiavone	0		Number=Sing	dema	0	schiavone	n	moby_reverse
 schiavones	0		Number=Plur	dema	0	schiavone	n	rule
 schiavoni	0		Number=Sing	dema	0	schiavoni	n	moby_reverse
@@ -1205,7 +1208,7 @@ schmoozes	0	oewn-schmooze-v	Person=3+Tense=Pres	dema	0			rule
 schmoozes	1	oewn-schmooze-n	Number=Plur	dema	0			rule
 schmoozes	2	oewn-shmooze-n	Number=Plur	dema	0			rule_variant
 schmoozing	0	oewn-schmooze-v	VerbForm=Ger	dema	0			rule
-schmos	0	oewn-schmo-n	Number=Plur	dema	0			rule_variant
+schmos	0	oewn-schmo-n	Number=Plur	dema	0			llm
 schmuck	0	oewn-schmuck-n	Number=Sing	dema	0			oewn_form
 schmucks	0	oewn-schmuck-n	Number=Plur	dema	0			rule
 schnapper	0		Number=Sing	dema	0	schnapper	n	moby_reverse
@@ -1926,6 +1929,7 @@ scotch tape	0	oewn-scotch_tape-v	VerbForm=Inf	dema	0			oewn_form
 scotched	0	oewn-scotch-v	Tense=Past+VerbForm=Part	dema	0			rule
 scotched tape	0	oewn-scotch_tape-v	Tense=Past+VerbForm=Part	dema	0			rule
 scotches	0	oewn-scotch-v	Person=3+Tense=Pres	dema	0			rule
+scotches	1	oewn-scotch-n	Number=Plur	dema	0			llm
 scotches tape	0	oewn-scotch_tape-v	Person=3+Tense=Pres	dema	0			rule
 scotching	0	oewn-scotch-v	VerbForm=Ger	dema	0			rule
 scotching tape	0	oewn-scotch_tape-v	VerbForm=Ger	dema	0			rule
@@ -2508,7 +2512,7 @@ scrotal veins	0	oewn-scrotal_vein-n	Number=Plur	dema	0			rule
 scrotta	0		Number=Sing	dema	0	scrotta	n	moby_reverse
 scrottas	0		Number=Plur	dema	0	scrotta	n	rule
 scrotum	0	oewn-scrotum-n	Number=Sing	dema	0			oewn_form
-scrotums	0	oewn-scrotum-n	Number=Plur	dema	0			rule_variant
+scrotums	0	oewn-scrotum-n	Number=Plur	dema	0			llm
 scrouge	0		VerbForm=Inf	dema	0	scrouge	v	moby_reverse
 scrouged	0		Tense=Past+VerbForm=Part	dema	0	scrouge	v	rule
 scrouges	0		Person=3+Tense=Pres	dema	0	scrouge	v	rule
@@ -2886,7 +2890,7 @@ scyphistomas	0		Number=Plur	dema	0	scyphistoma	n	rule
 scyphozoa	0	oewn-scyphozoan-n	Number=Plur	dema	0			oewn_form
 scyphozoan	0	oewn-scyphozoan-n	Number=Sing	dema	0			oewn_form
 scyphozoan	1		Degree=Pos	dema	0	scyphozoan	a	moby_reverse
-scyphozoans	0	oewn-scyphozoan-n	Number=Plur	dema	0			rule_variant
+scyphozoans	0	oewn-scyphozoan-n	Number=Plur	dema	0			llm
 scyphus	0	oewn-scyphus-n	Number=Sing	dema	0			oewn_form
 scypphi	0		Number=Sing	dema	0	scypphi	n	moby_reverse
 scypphis	0		Number=Plur	dema	0	scypphi	n	rule

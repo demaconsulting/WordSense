@@ -391,15 +391,20 @@ sections:
           Each of the four packages shall ship XML documentation with a namespace summary and verified examples,
           NuGet metadata and a README; each package that embeds derived data carries the credits and licenses in its
           package readme and in a packed NOTICE file, and declares the license expression that covers the embedded
-          data (the core, MiniLM and BertBaseCased packages MIT AND CC-BY-4.0, the core package including the CC0
-          statistics of its built-in model and the CC0 authored forms).
+          data (the core, MiniLM and BertBaseCased packages MIT AND CC-BY-4.0). The core package embeds Open English
+          WordNet 2025 (CC BY 4.0, with the Princeton WordNet notice that it requires), the Moby Part-of-Speech List
+          (public domain), the forms authored by the project (CC0 1.0), the statistics of its built-in model (CC0 1.0)
+          and the other project data (MIT), and its notice names the tagged tokens of the open corpus (CC0 1.0) as a
+          corroborating source of the generated forms at build time; the WordNet 3.0 counts feed only the usage prior of
+          the encoder models, whose packages add the WordNet 3.0 notice.
         tags: [system]
         justification: |
           Consumers learn the API from the package itself; examples that are compiled by the test suite cannot go
           stale (the tests verify the documentation examples; NuGet metadata and the package readme are produced
           and checked by the pack step), and the credits, notices and license expressions in the package satisfy the
-          licenses of the embedded data (Open English WordNet and Princeton WordNet in the core package; the tables of
-          the built-in model come from our own CC0 corpora) and models.
+          licenses of the embedded data (Open English WordNet and its Princeton WordNet notice in the core package;
+          the Moby list is public domain; the forms authored by the project and the tables of the built-in model come
+          from our own CC0 work) and models.
         children:
           - WordSense-Core-Packaging
           - WordSense-Onnx-Packaging

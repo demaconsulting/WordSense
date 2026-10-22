@@ -8,7 +8,9 @@ namespace DemaConsulting.WordSense;
 ///     <para>
 ///     The model looks every word up in <see cref="WordLexicon"/>. A word with one analysis lists it with
 ///     probability 1: the result is at the <see cref="SenseLevel.Sense"/> level with its sense when its lemma and part of
-///     speech have exactly one sense, otherwise at the <see cref="SenseLevel.PartOfSpeech"/> level. For a word with
+///     speech have exactly one sense, otherwise at the <see cref="SenseLevel.PartOfSpeech"/> level; the confidence is 1
+///     at either level (it is the probability of the lemma and part of speech, which has no alternative, so 1 does not mean
+///     that a sense is known: test the level). For a word with
 ///     several analyses, a hidden Markov model over the whole sentence estimates the part of speech of the word, a naive
 ///     Bayes model over the neighboring words separates analyses that share a part of speech (the past and the present of
 ///     <c>read</c>), and the two are combined into one probability per analysis; <see cref="ClassifyResult.Analyses"/>
@@ -25,7 +27,7 @@ namespace DemaConsulting.WordSense;
 ///     files, no ONNX Runtime dependency, <see cref="EnsureModelAsync"/> returns immediately and nothing is ever
 ///     downloaded. It is small and fast, and less accurate than the encoder models of
 ///     <c>DemaConsulting.WordSense.MiniLM</c> and <c>DemaConsulting.WordSense.BertBaseCased</c>; its accuracy is
-///     reported in the repository's build notes.
+///     reported in the model comparison table of the user guide (<c>docs/user_guide/model-table.md</c>).
 ///     </para>
 ///     <para>
 ///     The model holds no native resources, so its <see cref="Dispose"/> releases nothing; it only marks the model as

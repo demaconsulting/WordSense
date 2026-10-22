@@ -394,6 +394,7 @@ slavocrats	0		Number=Plur	dema	0	slavocrat	n	rule
 slaw	0	oewn-slaw-n	Number=Sing	dema	0			oewn_form
 slaws	0	oewn-slaw-n	Number=Plur	dema	0			llm
 slay	0	oewn-slay-v	VerbForm=Inf	dema	0			oewn_form
+slayed	0	oewn-slay-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 slayer	0	oewn-slayer-n	Number=Sing	dema	0			oewn_form
 slayers	0	oewn-slayer-n	Number=Plur	dema	0			rule
 slaying	0	oewn-slay-v	VerbForm=Ger	dema	0			llm

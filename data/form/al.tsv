@@ -2256,6 +2256,7 @@ alumna	0	oewn-alumna-n	Number=Sing	dema	0			oewn_form
 alumnae	0	oewn-alumna-n	Number=Plur	dema	0			irregular_list
 alumni	0	oewn-alumnus-n	Number=Plur	dema	0			hand
 alumnus	0	oewn-alumnus-n	Number=Sing	dema	0			oewn_form
+alumnuses	0	oewn-alumnus-n	Number=Plur	dema	0			rule_variant
 alumroot	0	oewn-alumroot-n	Number=Sing	dema	0			oewn_form
 alumroots	0	oewn-alumroot-n	Number=Plur	dema	0			rule
 alums	0	oewn-alum-n-2	Number=Plur	dema	1			carried

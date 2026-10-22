@@ -142,7 +142,7 @@ Sphinges	0	oewn-sphinx-n	Number=Plur	dema	0			oewn_form
 Sphinges	1	oewn-Sphinx-n	Capitalization=Title+Number=Plur	dema	0			rule_variant
 Sphinx	0	oewn-sphinx-n	Number=Sing	dema	0			oewn_form
 Sphinx	1	oewn-Sphinx-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-Sphinxes	0	oewn-sphinx-n	Number=Plur	dema	0			rule_variant
+Sphinxes	0	oewn-sphinx-n	Number=Plur	dema	0			llm
 Sphinxes	1	oewn-Sphinx-n	Capitalization=Title+Number=Plur	dema	0			llm
 Sphyraena barracuda	0	oewn-Sphyraena_barracuda-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Sphyraena barracudas	0	oewn-Sphyraena_barracuda-n	Capitalization=Exact+Number=Plur	dema	0			rule
@@ -1591,7 +1591,7 @@ sphingosines	0		Number=Plur	dema	0	sphingosine	n	rule
 sphinx	0	oewn-sphinx-n	Number=Sing	dema	0			oewn_form
 sphinx moth	0	oewn-sphinx_moth-n	Number=Sing	dema	0			oewn_form
 sphinx moths	0	oewn-sphinx_moth-n	Number=Plur	dema	0			rule
-sphinxes	0	oewn-sphinx-n	Number=Plur	dema	0			rule_variant
+sphinxes	0	oewn-sphinx-n	Number=Plur	dema	0			llm
 sphinxian	0		Degree=Pos	dema	0	sphinxian	a	moby_reverse
 sphinxlike	0		Degree=Pos	dema	0	sphinxlike	a	moby_reverse
 sphragistic	0		Number=Sing	dema	0	sphragistic	n	moby_reverse
@@ -2119,8 +2119,8 @@ spiral ratchet screwdrivers	0	oewn-spiral_ratchet_screwdriver-n	Number=Plur	dema
 spiral spring	0	oewn-spiral_spring-n	Number=Sing	dema	0			oewn_form
 spiral springs	0	oewn-spiral_spring-n	Number=Plur	dema	0			rule
 spiral-shelled	0	oewn-spiral-shelled-a	Degree=Pos	dema	0			oewn_form
-spiraled	0	oewn-spiral-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
-spiraling	0	oewn-spiral-v	VerbForm=Ger	dema	0			rule_variant
+spiraled	0	oewn-spiral-v	Tense=Past+VerbForm=Part	dema	0			llm
+spiraling	0	oewn-spiral-v	VerbForm=Ger	dema	0			llm
 spiraling	1	oewn-spiraling-a	Degree=Pos	dema	0			oewn_form
 spiralities	0		Number=Plur	dema	0	spirality	n	rule
 spirality	0		Number=Sing	dema	0	spirality	n	moby_reverse
@@ -2945,7 +2945,7 @@ sporotrichotic	0		Degree=Pos	dema	0	sporotrichotic	a	moby_reverse
 sporozoa	0	oewn-sporozoan-n	Number=Plur	dema	0			oewn_form
 sporozoan	0	oewn-sporozoan-n	Number=Sing	dema	0			oewn_form
 sporozoan	1		Degree=Pos	dema	0	sporozoan	a	moby_reverse
-sporozoans	0	oewn-sporozoan-n	Number=Plur	dema	0			rule_variant
+sporozoans	0	oewn-sporozoan-n	Number=Plur	dema	0			llm
 sporozoite	0	oewn-sporozoite-n	Number=Sing	dema	0			oewn_form
 sporozoites	0	oewn-sporozoite-n	Number=Plur	dema	0			rule
 sporran	0	oewn-sporran-n	Number=Sing	dema	0			oewn_form
@@ -3113,7 +3113,7 @@ spotlessness	0	oewn-spotlessness-n	Number=Sing	dema	0			oewn_form
 spotlessnesses	0	oewn-spotlessness-n	Number=Plur	dema	0			rule
 spotlight	0	oewn-spotlight-n	Number=Sing	dema	0			oewn_form
 spotlight	1	oewn-spotlight-v	VerbForm=Inf	dema	0			oewn_form
-spotlighted	0	oewn-spotlight-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+spotlighted	0	oewn-spotlight-v	Tense=Past+VerbForm=Part	dema	0			llm
 spotlighting	0	oewn-spotlight-v	VerbForm=Ger	dema	0			llm
 spotlights	0	oewn-spotlight-n	Number=Plur	dema	0			rule
 spotlights	1	oewn-spotlight-v	Person=3+Tense=Pres	dema	0			llm
@@ -3604,8 +3604,8 @@ sprung	0	oewn-spring-v	Tense=Past+VerbForm=Part	dema	0			hand
 sprung rhythm	0	oewn-sprung_rhythm-n	Number=Sing	dema	0			oewn_form
 sprung rhythms	0	oewn-sprung_rhythm-n	Number=Plur	dema	0			rule
 spry	0	oewn-spry-a	Degree=Pos	dema	0			oewn_form
-spryer	0	oewn-spry-a	Degree=Cmp	dema	0			moby_reverse
-spryest	0	oewn-spry-a	Degree=Sup	dema	0			moby_reverse
+spryer	0	oewn-spry-a	Degree=Cmp	dema	0			llm
+spryest	0	oewn-spry-a	Degree=Sup	dema	0			llm
 spryly	0		Degree=Pos	dema	0	spryly	r	moby_reverse
 spud	0	oewn-spud-n	Number=Sing	dema	0			oewn_form
 spud	1	oewn-spud-v	VerbForm=Inf	dema	0			oewn_form

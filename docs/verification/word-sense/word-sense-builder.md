@@ -29,7 +29,8 @@ verified through the data they produce: the weights embedded in the model packag
 MiniLM and BertBaseCased tests, the expectations of the suite are checked by the suite tests of the three model test
 projects (`BasicSuiteTests`, `MiniLMSuiteTests`, `BertBaseCasedSuiteTests`) and the floors of the challenge set by
 `ChallengeSetFloorTests` (both skip when the model files are not present), and the accuracy figures are recorded in
-the build notes, not asserted here. The download of SemCor (an evaluation source only) is verified with a stub HTTP
+the model comparison table and the accuracy chapter of the user guide, not asserted here. The download of SemCor (an
+evaluation source only) is verified with a stub HTTP
 handler, a fixture archive and its checksum; no network is used. The treebank is prepared by a script of
 `tools/open-corpus`, which verifies its checksum itself.
 
@@ -107,7 +108,7 @@ All scenarios below pass on every platform and target framework of the CI matrix
   (`Program_Coverage_ReportsAndWritesFile`, `Program_Coverage_WithoutText_Fails`).
 - **Regression on an authored sample** (`AuthoredSample_IsFullyKnown`): a small authored paragraph of inflected
   English (no licensed text) is fully known by the committed lexicon. The figure of the real-text sample is
-  in the build notes, not asserted here.
+  in `docs/user_guide/accuracy.md`, not asserted here.
 
 #### import-moby
 
@@ -255,6 +256,11 @@ All scenarios below pass on every platform and target framework of the CI matrix
   written for the project, and a row without provenance, is in neither split.
 - **Anchor documents** (`RealSplit_Classify_ReportsTestRowsInDocumentsWithoutAnchors`): the test rows whose document
   supplies no anchor are listed apart.
+- **Strict provenance** (`RealSplit_ReadProvenance_MalformedFile_IsRefusedWithPathAndLine`,
+  `RealSplit_ReadProvenance_IdInTwoFiles_IsRefused`): a provenance file with a header other than
+  `id split source source_key`, a short or long row, an empty field, a split other than `anchors`, `holdout` or
+  `realtext`, a source that `ProvenanceSources` does not allow or an id that repeats (in one file or two) is refused
+  with the path and the line, and is never skipped.
 - **Pooled shift** (`RealCalibrator_Apply_RaisesThresholdsUntilThePooledPrecisionReachesTheTarget`): on calibration rows
   where the cross-validation thresholds are too low, the thresholds are raised by one shift and the pooled precision of
   the answers reaches the target; thresholds that already meet it are not moved.
@@ -309,7 +315,7 @@ All scenarios below pass on every platform and target framework of the CI matrix
   unmapped, a word of an untrained lemma is not an evaluation word, and a sentence that is in the corpus is left out.
 - **Figures** (`WordSenseBuilder_SenseEval_Run_ReportsShareAndPrecisionPerLevelAndBaseline`): on a small annotated
   fixture and a stub model, the report gives for the words of trained lemmas the share answered and the precision at
-  each level, the fine top-1, the part-of-speech accuracy, the accuracy of the most-frequent-sense baseline and the
+  each level, the fine top-1, the part-of-speech accuracy, the accuracy of the first-sense baseline and the
   mapping coverage (`WordSenseBuilder_SenseEval_Render_FormatsTheFunnel`).
 - **Pinned checksum** (`WordSenseBuilder_SenseEval_Download_WrongHash_IsRejected`,
   `WordSenseBuilder_SenseEval_ReadArchive_VerifiesTheHashAndReadsTheTagFiles`): a downloaded or cached archive with

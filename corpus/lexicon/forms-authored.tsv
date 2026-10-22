@@ -824,7 +824,7 @@ calculus	N	Plural	calculi calculuses	0 1
 calefactory	N	Plural	calefactories	0
 calf	N	Plural	calves	0
 calisaya	N	Plural	calisayas	0
-calliopsis	N	Plural	calliopsises calliopsis	0 1
+calliopsis	N	Plural	calliopsises	0
 callow	J	Comparative	callower	0
 callow	J	Superlative	callowest	0
 calm	J	Comparative	calmer	0
@@ -841,7 +841,7 @@ camp	J	Superlative	campest	0
 campanile	N	Plural	campaniles campanili	0 1
 campy	J	Comparative	campier	0
 campy	J	Superlative	campiest	0
-candelabrum	N	Plural	candelabra candelabrums candelabras	0 1 1
+candelabrum	N	Plural	candelabra candelabrums	0 1
 cannabis	N	Plural	cannabises	0
 canniness	N	Plural	canninesses	0
 canoness	N	Plural	canonesses	0
@@ -2293,7 +2293,7 @@ fellness	N	Plural	fellnesses	0
 fem	N	Plural	fems	0
 femur	N	Plural	femora femurs	0 1
 fenestella	N	Plural	fenestellae fenestellas	0 1
-fenestra	N	Plural	fenestrae fenestrases	0 1
+fenestra	N	Plural	fenestrae	0
 fermata	N	Plural	fermate fermatas	0 1
 ferny	J	Comparative	fernier	0
 ferny	J	Superlative	ferniest	0
@@ -4115,7 +4115,7 @@ madrono	N	Plural	madronos	0
 madwoman	N	Plural	madwomen	0
 maestro	N	Plural	maestros maestri	0 1
 mafioso	N	Plural	mafiosi mafiosos	0 1
-magnifico	N	Plural	magnificos magnifici magnificoes	0 1 1
+magnifico	N	Plural	magnificos magnificoes	0 1
 mailman	N	Plural	mailmen	0
 mailwoman	N	Plural	mailwomen	0
 malabsorption	N	Plural	malabsorptions	0
@@ -6158,7 +6158,7 @@ sable	N	Plural	sables sable	0 1
 sacrosanctness	N	Plural	sacrosanctnesses	0
 sad	J	Comparative	sadder	0
 sad	J	Superlative	saddest	0
-sahuaro	N	Plural	sahuaros sahuaroes saguaros	0 1 1
+sahuaro	N	Plural	sahuaros saguaros	0 1
 saintliness	N	Plural	saintlinesses	0
 sal	N	Plural	sals	0
 salaciousness	N	Plural	salaciousnesses	0
@@ -6461,7 +6461,7 @@ signal	V	Participle	signaled signalled	0 1
 signal	V	Gerund	signaling signalling	0 1
 signalman	N	Plural	signalmen	0
 significativeness	N	Plural	significativenesses	0
-signior	N	Plural	signiors signiori	0 1
+signior	N	Plural	signiors	0
 signora	N	Plural	signore signoras	0 1
 signorina	N	Plural	signorinas signorine	0 1
 silentness	N	Plural	silentnesses	0
@@ -8033,7 +8033,7 @@ vile	J	Comparative	viler	0
 vile	J	Superlative	vilest	0
 violableness	N	Plural	violablenesses	0
 virtuoso	N	Plural	virtuosos virtuosi	0 1
-virus	N	Plural	viruses viri	0 1
+virus	N	Plural	viruses	0
 viscus	N	Plural	viscera	0
 vise	V	Third	vises	0
 vise	V	Past	vised	0

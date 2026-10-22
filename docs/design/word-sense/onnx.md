@@ -300,6 +300,6 @@ not a public extension point. A contributor adds a model as follows:
    `FallbackWordSenseModel` of the encoder class (primary) and a `BasicWordSenseModel` (fallback).
 3. Register the model in the builder's `ModelCatalog`, run `weights <modelId>` to train the weights and the per-lemma
    thresholds for that encoder and embed the resulting `weights.bin` as the manifest resource named in the spec, and run
-   `evaluate <modelId>` to record the per-level accuracy in the build notes.
+   `evaluate <modelId>` to record the per-level accuracy in the model comparison table (`docs/user_guide/model-table.md`).
 4. Add the test project, the requirements, the design and verification documents, the SysML2 model entries and the
    review-set entries that the other model packages have.

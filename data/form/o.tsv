@@ -1053,7 +1053,7 @@ obligatorily	0	oewn-obligatorily-r	Degree=Pos	dema	0			oewn_form
 obligatoriness	0		Number=Sing	dema	0	obligatoriness	n	moby_reverse
 obligators	0		Number=Plur	dema	0	obligator	n	rule
 obligatory	0	oewn-obligatory-a	Degree=Pos	dema	0			oewn_form
-obligatos	0	oewn-obligato-n	Number=Plur	dema	0			rule_variant
+obligatos	0	oewn-obligato-n	Number=Plur	dema	0			llm
 oblige	0	oewn-oblige-v	VerbForm=Inf	dema	0			oewn_form
 obliged	0	oewn-oblige-v	Tense=Past+VerbForm=Part	dema	0			rule
 obliged	1	oewn-obliged-a	Degree=Pos	dema	0			oewn_form
@@ -1510,7 +1510,7 @@ occipital veins	0	oewn-occipital_vein-n	Number=Plur	dema	0			rule
 occipitomastoid suture	0	oewn-occipitomastoid_suture-n	Number=Sing	dema	0			oewn_form
 occipitomastoid sutures	0	oewn-occipitomastoid_suture-n	Number=Plur	dema	0			rule
 occiput	0	oewn-occiput-n	Number=Sing	dema	0			oewn_form
-occiputs	0	oewn-occiput-n	Number=Plur	dema	0			rule_variant
+occiputs	0	oewn-occiput-n	Number=Plur	dema	0			llm
 occlude	0	oewn-occlude-v	VerbForm=Inf	dema	0			oewn_form
 occluded	0	oewn-occlude-v	Tense=Past+VerbForm=Part	dema	0			rule
 occluded	1	oewn-occluded-a	Degree=Pos	dema	0			oewn_form
@@ -3105,7 +3105,7 @@ on-the-spot	0	oewn-on-the-spot-a	Degree=Pos	dema	0			oewn_form
 on/off switch	0	oewn-on-sl-off_switch-n	Number=Sing	dema	0			oewn_form
 on/off switches	0	oewn-on-sl-off_switch-n	Number=Plur	dema	0			rule
 onager	0	oewn-onager-n	Number=Sing	dema	0			oewn_form
-onagers	0	oewn-onager-n	Number=Plur	dema	0			rule_variant
+onagers	0	oewn-onager-n	Number=Plur	dema	0			llm
 onaggri	0		Number=Sing	dema	0	onaggri	n	moby_reverse
 onaggris	0		Number=Plur	dema	0	onaggri	n	rule
 onagraceous	0		Degree=Pos	dema	0	onagraceous	a	moby_reverse
@@ -4871,7 +4871,7 @@ organometallic	0		Degree=Pos	dema	0	organometallic	a	moby_reverse
 organometallic compound	0	oewn-organometallic_compound-n	Number=Sing	dema	0			oewn_form
 organometallic compounds	0	oewn-organometallic_compound-n	Number=Plur	dema	0			rule
 organon	0	oewn-organon-n	Number=Sing	dema	0			oewn_form
-organons	0	oewn-organon-n	Number=Plur	dema	0			rule_variant
+organons	0	oewn-organon-n	Number=Plur	dema	0			llm
 organophosphate	0	oewn-organophosphate-n	Number=Sing	dema	0			oewn_form
 organophosphate nerve agent	0	oewn-organophosphate_nerve_agent-n	Number=Sing	dema	0			oewn_form
 organophosphate nerve agents	0	oewn-organophosphate_nerve_agent-n	Number=Plur	dema	0			rule
@@ -5987,7 +5987,7 @@ outbettered	0		Tense=Past+VerbForm=Part	dema	0	outbetter	v	rule
 outbettering	0		VerbForm=Ger	dema	0	outbetter	v	rule
 outbetters	0		Person=3+Tense=Pres	dema	0	outbetter	v	rule
 outbid	0	oewn-outbid-v	VerbForm=Inf	dema	0			oewn_form
-outbid	1	oewn-outbid-v	Tense=Past	dema	0			llm
+outbid	1	oewn-outbid-v	Tense=Past+VerbForm=Part	dema	0			llm
 outbidden	0	oewn-outbid-v	VerbForm=Part	dema	0			oewn_form
 outbidder	0		Number=Sing	dema	0	outbidder	n	moby_reverse
 outbidders	0		Number=Plur	dema	0	outbidder	n	rule
@@ -6616,8 +6616,8 @@ outgazed	0		Tense=Past+VerbForm=Part	dema	0	outgaze	v	rule
 outgazes	0		Person=3+Tense=Pres	dema	0	outgaze	v	rule
 outgazing	0		VerbForm=Ger	dema	0	outgaze	v	rule
 outgeneral	0	oewn-outgeneral-v	VerbForm=Inf	dema	0			oewn_form
-outgeneraled	0	oewn-outgeneral-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
-outgeneraling	0	oewn-outgeneral-v	VerbForm=Ger	dema	0			rule_variant
+outgeneraled	0	oewn-outgeneral-v	Tense=Past+VerbForm=Part	dema	0			llm
+outgeneraling	0	oewn-outgeneral-v	VerbForm=Ger	dema	0			llm
 outgeneralled	0	oewn-outgeneral-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 outgeneralling	0	oewn-outgeneral-v	VerbForm=Ger	dema	0			oewn_form
 outgenerals	0	oewn-outgeneral-v	Person=3+Tense=Pres	dema	0			llm
@@ -7146,6 +7146,7 @@ output-to-input ratio	0	oewn-output-to-input_ratio-n	Number=Sing	dema	0			oewn_f
 output-to-input ratios	0	oewn-output-to-input_ratio-n	Number=Plur	dema	0			rule
 outputs	0	oewn-output-n	Number=Plur	dema	0			rule
 outputs	1	oewn-output-v	Person=3+Tense=Pres	dema	0			llm
+outputted	0	oewn-output-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
 outputting	0	oewn-output-v	VerbForm=Ger	dema	0			oewn_form
 outquaff	0		VerbForm=Inf	dema	0	outquaff	v	moby_reverse
 outquaffed	0		Tense=Past+VerbForm=Part	dema	0	outquaff	v	rule
@@ -11540,6 +11541,7 @@ oversaturation	0		Number=Sing	dema	0	oversaturation	n	moby_reverse
 oversaturations	0		Number=Plur	dema	0	oversaturation	n	rule
 oversaucy	0		Degree=Pos	dema	0	oversaucy	a	moby_reverse
 oversaw	0	oewn-oversee-v	Tense=Past	dema	0			hand
+oversaw	1	oewn-oversew-v	Tense=Past	dema	0			rule_variant
 overscented	0		Degree=Pos	dema	0	overscented	a	moby_reverse
 overscented	1		VerbForm=Inf	dema	0	overscented	v	moby_reverse
 oversceptical	0		Degree=Pos	dema	0	oversceptical	a	moby_reverse
@@ -12506,7 +12508,7 @@ ovoid	1	oewn-ovoid-n	Number=Sing	dema	0			oewn_form
 ovoids	0	oewn-ovoid-n	Number=Plur	dema	0			rule
 ovoli	0	oewn-ovolo-n	Number=Plur	dema	0			oewn_form
 ovolo	0	oewn-ovolo-n	Number=Sing	dema	0			oewn_form
-ovolos	0	oewn-ovolo-n	Number=Plur	dema	0			rule_variant
+ovolos	0	oewn-ovolo-n	Number=Plur	dema	0			llm
 ovotestes	0	oewn-ovotestis-n	Number=Plur	dema	0			oewn_form
 ovotestis	0	oewn-ovotestis-n	Number=Sing	dema	0			oewn_form
 ovovitellin	0		Number=Sing	dema	0	ovovitellin	n	moby_reverse
@@ -12792,7 +12794,7 @@ oxymomora	0		Number=Sing	dema	0	oxymomora	n	moby_reverse
 oxymomoras	0		Number=Plur	dema	0	oxymomora	n	rule
 oxymora	0	oewn-oxymoron-n	Number=Plur	dema	0			oewn_form
 oxymoron	0	oewn-oxymoron-n	Number=Sing	dema	0			oewn_form
-oxymorons	0	oewn-oxymoron-n	Number=Plur	dema	0			rule_variant
+oxymorons	0	oewn-oxymoron-n	Number=Plur	dema	0			llm
 oxynervonic acid	0	oewn-oxynervonic_acid-n	Number=Sing	dema	0			oewn_form
 oxynervonic acids	0	oewn-oxynervonic_acid-n	Number=Plur	dema	0			rule
 oxyneurine	0		Number=Sing	dema	0	oxyneurine	n	moby_reverse

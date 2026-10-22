@@ -91,7 +91,7 @@ bypass capacitor	0	oewn-bypass_capacitor-n	Number=Sing	dema	0			oewn_form
 bypass capacitors	0	oewn-bypass_capacitor-n	Number=Plur	dema	0			rule
 bypass condenser	0	oewn-bypass_condenser-n	Number=Sing	dema	0			oewn_form
 bypass condensers	0	oewn-bypass_condenser-n	Number=Plur	dema	0			rule
-bypassed	0	oewn-bypass-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+bypassed	0	oewn-bypass-v	Tense=Past+VerbForm=Part	dema	0			llm
 bypasser	0		Number=Sing	dema	0	bypasser	n	moby_reverse
 bypassers	0		Number=Plur	dema	0	bypasser	n	rule
 bypasses	0	oewn-bypass-n	Number=Plur	dema	0			rule

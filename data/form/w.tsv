@@ -8434,10 +8434,7 @@ wotting	0		VerbForm=Ger	dema	0	wot	v	rule
 would	0		VerbForm=Inf	dema	0	would	v	moby_reverse
 would	1	dema-would-x		dema	0			irregular_list
 would-be	0	oewn-would-be-a	Degree=Pos	dema	0			oewn_form
-woulded	0		Tense=Past+VerbForm=Part	dema	0	would	v	rule
-woulding	0		VerbForm=Ger	dema	0	would	v	rule
 wouldn't	0	dema-would-x	Contraction=Yes	dema	0			contraction
-woulds	0		Person=3+Tense=Pres	dema	0	would	v	rule
 wouldst	0		VerbForm=Inf	dema	0	wouldst	v	moby_reverse
 wouldsted	0		Tense=Past+VerbForm=Part	dema	0	wouldst	v	rule
 wouldsting	0		VerbForm=Ger	dema	0	wouldst	v	rule

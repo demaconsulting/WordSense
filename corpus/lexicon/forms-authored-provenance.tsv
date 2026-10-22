@@ -907,7 +907,7 @@ calefactory	N	Plural	a24+v03	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent
 calf	N	Plural	a12+v12	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
 calisaya	N	Plural	a09+v19	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
 callais	N	Plural	a20+v26+d02	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	adjudicated	none	CC0 1.0 (project-authored)	Rare mass noun, no plural in use
-calliopsis	N	Plural	a33+v48+d03	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	adjudicated	forms	CC0 1.0 (project-authored)	noun ending in -is of Greek origin used as a plant name; regular -es plural
+calliopsis	N	Plural	a33+v48+d03	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	adjudicated	forms	CC0 1.0 (project-authored)	noun ending in -is of Greek origin used as a plant name; regular -es plural; variant calliopsis removed after the forms audit (gpt-6.1-sol medium judged it invalid, claude-sonnet-5.5 recheck medium valid: no agreement, so not kept)
 callow	J	Comparative	a40+v21	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
 callow	J	Superlative	a40+v21	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
 calm	J	Comparative	a12+v33	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
@@ -926,7 +926,7 @@ campanile	N	Plural	a40+v04	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent b
 campanili	N	Plural	a07+v06	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	none	CC0 1.0 (project-authored)	-
 campy	J	Comparative	a50+v31	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
 campy	J	Superlative	a50+v31	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
-candelabrum	N	Plural	a15+v21	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
+candelabrum	N	Plural	a15+v21	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	variant candelabras removed after the forms audit (gpt-6.1-sol high judged it invalid, claude-sonnet-5.5 recheck high valid: no agreement, so not kept)
 cannabis	N	Plural	a04+v43	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	regular-accepted	forms	CC0 1.0 (project-authored)	regular rule form; NONE by the verifier
 canniness	N	Plural	a03+v48	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	regular-accepted	forms	CC0 1.0 (project-authored)	regular rule form; NONE by the verifier
 canoness	N	Plural	a34+v17	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
@@ -2463,7 +2463,7 @@ fellness	N	Plural	a40+v11	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent bl
 fem	N	Plural	a25+v11	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
 femur	N	Plural	a03+v28	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
 fenestella	N	Plural	a02+v05	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
-fenestra	N	Plural	a20+v10	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
+fenestra	N	Plural	a20+v10	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	variant fenestrases removed after the forms audit (judged invalid by gpt-6.1-sol high and claude-sonnet-5.5 recheck high)
 fermata	N	Plural	a51+v38	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
 ferny	J	Comparative	a48+v11	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
 ferny	J	Superlative	a48+v11	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
@@ -4429,7 +4429,7 @@ madwoman	N	Plural	a29+v22	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent bl
 madwomen	N	Plural	a19+v02	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	none	CC0 1.0 (project-authored)	-
 maestro	N	Plural	a40+v40	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
 mafioso	N	Plural	a11+v40	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
-magnifico	N	Plural	a51+v44	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
+magnifico	N	Plural	a51+v44	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	variant magnifici removed after the forms audit (judged invalid by gpt-6.1-sol medium and claude-sonnet-5.5 recheck medium)
 mailman	N	Plural	a23+v08	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
 mailmen	N	Plural	a17+v28	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	none	CC0 1.0 (project-authored)	-
 mailwoman	N	Plural	a42+v32	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
@@ -6604,7 +6604,7 @@ sable	N	Plural	a37+v10	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind
 sacrosanctness	N	Plural	a51+v18	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	regular-accepted	forms	CC0 1.0 (project-authored)	regular rule form; NONE by the verifier
 sad	J	Comparative	a30+v07	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
 sad	J	Superlative	a30+v07	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
-sahuaro	N	Plural	a42+v42	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
+sahuaro	N	Plural	a42+v42	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	variant sahuaroes removed after the forms audit (judged invalid by gpt-6.1-sol medium and claude-sonnet-5.5 recheck medium)
 saintliness	N	Plural	a20+v50	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	regular-accepted	forms	CC0 1.0 (project-authored)	regular rule form; NONE by the verifier
 sal	N	Plural	a01+v08	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
 salaciousness	N	Plural	a04+v47	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	regular-accepted	forms	CC0 1.0 (project-authored)	regular rule form; NONE by the verifier
@@ -6926,7 +6926,7 @@ signal	V	Gerund	a40+v30	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blin
 signalman	N	Plural	a05+v53	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
 signalmen	N	Plural	a48+v52	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	none	CC0 1.0 (project-authored)	-
 significativeness	N	Plural	a16+v14	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	regular-accepted	forms	CC0 1.0 (project-authored)	regular rule form; NONE by the verifier
-signior	N	Plural	a03+v14+d01	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	adjudicated	forms	CC0 1.0 (project-authored)	Archaic English form, regular -s plural with Italian signiori as variant
+signior	N	Plural	a03+v14+d01	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	adjudicated	forms	CC0 1.0 (project-authored)	Archaic English form, regular -s plural; variant signiori removed after the forms audit (judged invalid by gpt-6.1-sol medium and claude-sonnet-5.5 recheck medium)
 signora	N	Plural	a34+v10	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
 signorina	N	Plural	a29+v43	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
 silentness	N	Plural	a47+v53	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	regular-accepted	forms	CC0 1.0 (project-authored)	regular rule form; NONE by the verifier
@@ -8596,7 +8596,7 @@ vile	J	Comparative	a28+v19	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent b
 vile	J	Superlative	a28+v19	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
 violableness	N	Plural	a50+v01	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	regular-accepted	forms	CC0 1.0 (project-authored)	regular rule form; NONE by the verifier
 virtuoso	N	Plural	a21+v33	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
-virus	N	Plural	a45+v19	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
+virus	N	Plural	a45+v19	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	variant viri removed after the forms audit (judged invalid by gpt-6.1-sol high and claude-sonnet-5.5 recheck medium)
 viscera	N	Plural	a07+v02	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	none	CC0 1.0 (project-authored)	-
 viscus	N	Plural	a18+v11	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-
 vise	V	Third	a21+v21	gpt-5.6-luna (LLM-written)	gpt-6.1-sol (independent blind pass)	agree	forms	CC0 1.0 (project-authored)	-

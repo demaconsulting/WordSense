@@ -1361,7 +1361,7 @@ crescendo	2		Degree=Pos	dema	0	crescendo	r	moby_reverse
 crescendo	3	oewn-crescendo-v	VerbForm=Inf	dema	0			oewn_form
 crescendoed	0	oewn-crescendo-v	Tense=Past+VerbForm=Part	dema	0			llm
 crescendoing	0	oewn-crescendo-v	VerbForm=Ger	dema	0			llm
-crescendos	0	oewn-crescendo-n	Number=Plur	dema	0			rule_variant
+crescendos	0	oewn-crescendo-n	Number=Plur	dema	0			llm
 crescendos	1	oewn-crescendo-v	Person=3+Tense=Pres	dema	0			llm
 crescent	0	oewn-crescent-n	Number=Sing	dema	0			oewn_form
 crescent	1	oewn-crescent-a	Degree=Pos	dema	0			oewn_form
@@ -1814,6 +1814,7 @@ criteria	0	oewn-criterion-n	Number=Plur	dema	0			hand
 criterial	0	oewn-criterial-a	Degree=Pos	dema	0			oewn_form
 criterion	0	oewn-criterion-n	Number=Sing	dema	0			oewn_form
 criterional	0	oewn-criterional-a	Degree=Pos	dema	0			oewn_form
+criterions	0	oewn-criterion-n	Number=Plur	dema	0			rule_variant
 criterium	0	oewn-criterium-n	Number=Sing	dema	0			oewn_form
 criteriums	0	oewn-criterium-n	Number=Plur	dema	0			rule
 crith	0	oewn-crith-n	Number=Sing	dema	0			oewn_form
@@ -2512,7 +2513,6 @@ crowed	0	oewn-crow-v	Tense=Past+VerbForm=Part	dema	0			rule
 crower	0		Number=Sing	dema	0	crower	n	moby_reverse
 crowers	0		Number=Plur	dema	0	crower	n	rule
 crowfeet	0		Number=Sing	dema	0	crowfeet	n	moby_reverse
-crowfeets	0		Number=Plur	dema	0	crowfeet	n	rule
 crowfoot	0	oewn-crowfoot-n	Number=Sing	dema	0			oewn_form
 crowfoot grass	0	oewn-crowfoot_grass-n	Number=Sing	dema	0			oewn_form
 crowfoot grasses	0	oewn-crowfoot_grass-n	Number=Plur	dema	0			rule
@@ -2865,7 +2865,7 @@ crutches	0	oewn-crutch-n	Number=Plur	dema	0			rule
 crutchlike	0		Degree=Pos	dema	0	crutchlike	a	moby_reverse
 crux	0	oewn-crux-n	Number=Sing	dema	0			oewn_form
 crux of the matter	0	oewn-crux_of_the_matter-n	Number=Sing	dema	0			oewn_form
-cruxes	0	oewn-crux-n	Number=Plur	dema	0			rule_variant
+cruxes	0	oewn-crux-n	Number=Plur	dema	0			llm
 cruxes of the matter	0	oewn-crux_of_the_matter-n	Number=Plur	dema	0			rule
 cruzado	0		Number=Sing	dema	0	cruzado	n	moby_reverse
 cruzadoes	0		Number=Sing	dema	0	cruzadoes	n	moby_reverse

@@ -329,7 +329,7 @@ sneak thieves	0	oewn-sneak_thief-n	Number=Plur	dema	0			rule
 sneak up	0	oewn-sneak_up-v	VerbForm=Inf	dema	0			oewn_form
 sneakbox	0		Number=Sing	dema	0	sneakbox	n	moby_reverse
 sneakboxes	0		Number=Plur	dema	0	sneakbox	n	rule
-sneaked	0	oewn-sneak-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+sneaked	0	oewn-sneak-v	Tense=Past+VerbForm=Part	dema	0			llm
 sneaked away	0	oewn-sneak_away-v	Tense=Past+VerbForm=Part	dema	0			rule
 sneaked in	0	oewn-sneak_in-v	Tense=Past+VerbForm=Part	dema	0			rule
 sneaked off	0	oewn-sneak_off-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -539,10 +539,10 @@ snitchy	2		Number=Sing	dema	0	snitchy	n	moby_reverse
 snits	0	oewn-snit-n	Number=Plur	dema	0			rule
 snivel	0	oewn-snivel-v	VerbForm=Inf	dema	0			oewn_form
 snivel	1	oewn-snivel-n	Number=Sing	dema	0			oewn_form
-sniveled	0	oewn-snivel-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+sniveled	0	oewn-snivel-v	Tense=Past+VerbForm=Part	dema	0			llm
 sniveler	0	oewn-sniveler-n	Number=Sing	dema	0			oewn_form
 snivelers	0	oewn-sniveler-n	Number=Plur	dema	0			rule
-sniveling	0	oewn-snivel-v	VerbForm=Ger	dema	0			rule_variant
+sniveling	0	oewn-snivel-v	VerbForm=Ger	dema	0			llm
 sniveling	1	oewn-sniveling-n	Number=Sing	dema	0			oewn_form
 snivelings	0	oewn-sniveling-n	Number=Plur	dema	0			rule
 snivelled	0	oewn-snivel-v	Tense=Past+VerbForm=Part	dema	0			oewn_form

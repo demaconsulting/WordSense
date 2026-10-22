@@ -29,7 +29,9 @@ the Open English WordNet data of the word image, below).
 The package embeds the word image `wordsense.img`. It is a compiled, derived form of the word data of the project and
 it is shared under the licenses below. It is compiled from three sources: the Open English WordNet 2025 data (CC BY 4.0,
 which carries the Princeton WordNet notice below), the Moby Part-of-Speech List (public domain) and the project-authored
-data (the inflected forms authored by the project, CC0 1.0, and the other project data, MIT). The image holds the lemmas,
+data (the inflected forms authored by the project, CC0 1.0, and the other project data, MIT). The tagged tokens of the
+open part-of-speech corpus of the project (CC0 1.0, see above) are used at build time only, as a second source that
+corroborates a generated inflected form; none of its text is embedded. The image holds the lemmas,
 the written forms with their analyses, the sense ids, sense keys, labels and groups, and the order of the senses of each
 lemma, which is the order of Open English WordNet. It does not hold the glosses, the examples or the relations of the
 source data.

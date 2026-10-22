@@ -188,7 +188,9 @@ sections:
               that is fitted on the calibration rows of all those lemmas, a level that was never answered stays never
               answered, and the group threshold moves the same way only when the calibration rows can verify it. The
               test split and the written held-out sentences shall never influence a threshold, and the calibration shall
-              be deterministic.
+              be deterministic. The provenance files that decide the split shall be read strictly: a file whose header
+              is not exact, a row without its four non-empty columns, a split or a source that is not allowed, or an id
+              that repeats is refused with the file and line.
             tags: [unit]
             justification: |
               Thresholds chosen by cross-validation on the anchors are calibrated on a balanced corpus that is partly
@@ -196,9 +198,12 @@ sections:
               percent against 95 percent measured on the held-out real sentences). Calibrating on held-out real
               sentences whose documents are disjoint from the test split keeps the headline real-text figures
               independent of the thresholds, and one pooled shift is the robust choice because a lemma has only a few
-              calibration rows.
+              calibration rows. A provenance row that is skipped silently would move a sentence between the real and
+              the written sets, or between the calibration and the test side, without a trace.
             tests:
               - WordSenseBuilder_RealSplit_Classify_SplitsRealRowsByDocument
+              - WordSenseBuilder_RealSplit_ReadProvenance_MalformedFile_IsRefusedWithPathAndLine
+              - WordSenseBuilder_RealSplit_ReadProvenance_IdInTwoFiles_IsRefused
               - WordSenseBuilder_RealSplit_Classify_WrittenAndUnknownRows_AreNeverRealRows
               - WordSenseBuilder_RealSplit_Classify_ReportsTestRowsInDocumentsWithoutAnchors
               - WordSenseBuilder_RealCalibrator_Apply_RaisesThresholdsUntilThePooledPrecisionReachesTheTarget
@@ -224,8 +229,8 @@ sections:
               The classifiers are trained on anchors that are balanced by sense quota, so their raw probabilities carry
               the proportions of the training data instead of those of real use. Measured against the same classifiers
               without the correction, the correction raises the fine top-1 accuracy of the BertBaseCased model on
-              SemCor, an independent human-annotated corpus, from 56.9 to 60.9 percent and that of the MiniLM model from
-              47.5 to 53.8 percent, and the accuracy on real sentences weighted to the usage of the senses by 1.8 and
+              SemCor, an independent human-annotated corpus, from 56.9 to 60.7 percent and that of the MiniLM model from
+              47.5 to 53.6 percent, and the accuracy on real sentences weighted to the usage of the senses by 1.8 and
               2.6 points; the real test split, which is balanced like the training data, loses one point for
               BertBaseCased. An additive offset on the stored bias of each sense is exactly equivalent to rescaling the
               probabilities, so the shipped model needs no new code and no new data.
@@ -538,7 +543,8 @@ sections:
               senses of the catalog, leaving out a sentence that is also in the corpus or is an example of Open English
               WordNet, and report for the words of the trained lemmas the mapping coverage, the share answered at each
               level, the precision at each level, the accuracy of the most probable sense and of its group, the
-              part-of-speech accuracy and the accuracy of the most-frequent-sense baseline.
+              part-of-speech accuracy and the accuracy of the first-sense baseline (the first sense in Open English
+              WordNet order, which is partly circular because it follows WordNet's counts, which include SemCor).
             tags: [unit]
             justification: |
               SemCor is human-annotated running text that no training or tuning step reads, so figures measured on it

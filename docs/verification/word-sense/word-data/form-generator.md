@@ -32,14 +32,19 @@ All scenarios pass.
   adjective entry of the dictionary has its own analysis.
 - **Fact generation** (`Generate_IsDeterministicForSeed`, `Generate_MatchesCommittedFile`): the same seed gives the same
   facts and the committed generated fact file is the output of the command.
-- **Authored forms** (`WordSenseBuilder_AuthoredForms_*`, `OpenCorpusAttestation_*`, `FormGenerator_Run_Authored*`,
-  `FormGenerator_Run_AgreedNoPlural_StopsTheRegularPlural`, `Data_AuthoredForm_ShipsWithTheProvenanceLlm`,
-  `Data_AuthoredPlural_LeavesOutTheRegularSpelling`): the reader keys by lowercase lemma and part of speech, refuses a
-  bad level or an unknown rule and counts only a verdict `agree` with the result `none` as a veto; an end-to-end run on
-  a temporary corpus shows that an authored plural replaces the regular spelling, a variant ships as `rule_variant`, an
-  agreed NONE stops the regular plural, an authored plural stops the reverse rule of the dictionary, and a token of the
-  open corpus corroborates a comparative (`Run_OpenCorpusToken_CorroboratesTheComparative`). The committed table has
-  `llm` rows and no `agid` row.
+- **Authored forms** (`WordSenseBuilder_AuthoredForms_*`, `OpenCorpusAttestation_*`,
+  `OpenCorpus_ReadFile_TokenWithEmptyField_*`, `FormGenerator_Run_Authored*`, `FormGenerator_Run_AgreedNoPlural_*`,
+  `Data_AuthoredForm_ShipsWithTheProvenanceLlm`, `Data_AuthoredPlural_LeavesOutTheRegularSpelling`): the reader keys by
+  lowercase lemma and part of speech, refuses a bad level or an unknown rule, authored forms without their sidecar and a
+  malformed sidecar (header, empty field, licence, verdict and result, repeated decision) with the path and line, and
+  counts only a verdict `agree` with the result `none` as a veto; the attestation refuses a malformed token line of the
+  open corpus with its file and line; an end-to-end run on a temporary corpus shows that an authored plural replaces
+  the regular spelling, that authored forms join the written forms of the lexicon and the hand list instead of being
+  dropped (`Run_AuthoredPlural_JoinsTheWrittenFormsOfTheLexicon`, `Run_AuthoredPlural_JoinsTheHandList`), a variant
+  ships as `rule_variant`, an agreed NONE stops the regular plural and the reverse rule of the dictionary
+  (`Run_AgreedNoPlural_StopsTheReverseRule`), an authored plural stops the reverse rule of the dictionary, and a token
+  of the open corpus corroborates a comparative (`Run_OpenCorpusToken_CorroboratesTheComparative`). The committed table
+  has `llm` rows and no `agid` row.
 - **Rule defects** (`Data_RuleDefect_IsNotShipped`, `Data_RegularPlural_OfAWordThatOnlyEndsLikeACompound_IsShipped`):
   the spellings that the earlier rules got wrong (`bagmens`, `icewomans`, `obsequys`, `superheros`, `hertzes`,
   `birdiing`) are absent, and the regular plurals of

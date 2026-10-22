@@ -28,6 +28,12 @@ internal static class ProvenanceSources
     public static readonly IReadOnlyList<string> Written = ["llm-corpus", "authored"];
 
     /// <summary>
+    ///     The values of the <c>split</c> column of a provenance row: the sentences of the training anchors, of the held-out
+    ///     sentences and of the real text.
+    /// </summary>
+    public static readonly IReadOnlyList<string> Splits = ["anchors", "holdout", "realtext"];
+
+    /// <summary>
     ///     Gets a value indicating whether a source is allowed.
     /// </summary>
     /// <param name="source">The source column of a provenance row.</param>

@@ -18,7 +18,10 @@ internal delegate ValueTask<double[]?[]> PooledEncode(IReadOnlyList<string> word
 ///     <para>
 ///     Every word is looked up in the lexicon. An unknown word gets <see cref="ClassifyResult.Unknown"/>. A word with
 ///     one analysis whose lemma and part of speech have exactly one sense is answered at the
-///     <see cref="SenseLevel.Sense"/> level with confidence 1 and no encoder run. A word whose lemma has trained weights
+///     <see cref="SenseLevel.Sense"/> level with confidence 1 and no encoder run. A word with a single lemma and part of
+///     speech whose senses are several is at the <see cref="SenseLevel.PartOfSpeech"/> level with the probability of its
+///     slot, 1, whenever no fine sense or group is answered (the slot has no alternative; the level, not the confidence,
+///     tells that the sense is unresolved). A word whose lemma has trained weights
 ///     and several scored senses is pending: the words are joined by single spaces into one text, the encoder runs once
 ///     for the pending words, the pooled vector of each is centered on the global mean of the weights and scaled to unit
 ///     length, and the classifier scores the fine senses of every analysis of the word (and no sense of another lemma).

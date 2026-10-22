@@ -7491,7 +7491,7 @@ primordialities	0	oewn-primordiality-n	Number=Plur	dema	0			rule
 primordiality	0	oewn-primordiality-n	Number=Sing	dema	0			oewn_form
 primordially	0		Degree=Pos	dema	0	primordially	r	moby_reverse
 primordium	0	oewn-primordium-n	Number=Sing	dema	0			oewn_form
-primos	0	oewn-primo-n	Number=Plur	dema	0			rule_variant
+primos	0	oewn-primo-n	Number=Plur	dema	0			llm
 primp	0	oewn-primp-v	VerbForm=Inf	dema	0			oewn_form
 primped	0	oewn-primp-v	Tense=Past+VerbForm=Part	dema	0			rule
 primping	0	oewn-primp-v	VerbForm=Ger	dema	0			rule
@@ -8761,7 +8761,7 @@ programming language	0	oewn-programming_language-n	Number=Sing	dema	0			oewn_for
 programming languages	0	oewn-programming_language-n	Number=Plur	dema	0			rule
 programmings	0	oewn-programming-n	Number=Plur	dema	0			rule
 programs	0	oewn-program-n	Number=Plur	dema	0			rule
-programs	1	oewn-program-v	Person=3+Tense=Pres	dema	0			rule_variant
+programs	1	oewn-program-v	Person=3+Tense=Pres	dema	0			llm
 progravid	0		Degree=Pos	dema	0	progravid	a	moby_reverse
 progress	0	oewn-progress-n	Number=Sing	dema	1			carried
 progress	1	oewn-progress-v	VerbForm=Inf	dema	1			carried
@@ -10287,7 +10287,7 @@ protozoal infection	0	oewn-protozoal_infection-n	Number=Sing	dema	0			oewn_form
 protozoal infections	0	oewn-protozoal_infection-n	Number=Plur	dema	0			rule
 protozoan	0	oewn-protozoan-n	Number=Sing	dema	0			oewn_form
 protozoan	1	oewn-protozoan-a	Degree=Pos	dema	0			oewn_form
-protozoans	0	oewn-protozoan-n	Number=Plur	dema	0			rule_variant
+protozoans	0	oewn-protozoan-n	Number=Plur	dema	0			llm
 protozoic	0	oewn-protozoic-a	Degree=Pos	dema	0			oewn_form
 protozoological	0	oewn-protozoological-a	Degree=Pos	dema	0			oewn_form
 protozoologies	0	oewn-protozoology-n	Number=Plur	dema	0			rule

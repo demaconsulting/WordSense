@@ -30,16 +30,23 @@ sections:
                 title: >-
                   FormGenerator shall read the forms written for the project (corpus/lexicon/forms-authored.tsv and
                   its provenance) as a source of irregular forms with the provenance llm (variants as rule_variant),
-                  as an attestation of generated forms, and as an authority over the regular rules: a word with
-                  authored forms of a kind keeps the regular spelling only when the authors name it, the reverse rules
-                  of the dictionary do not trace a spelling to a lemma whose authored forms leave it out, and a decision
-                  of both authors that the form does not exist stops the rule that would generate it; it shall refuse
-                  an authored file with a level that is not 0 or 1 or with an unknown rule.
+                  as an attestation of generated forms, and as an authority over the regular rules: authored forms join
+                  the forms that a list or the Open English WordNet name for the same kind (no authored form is
+                  dropped), a word with authored forms of a kind keeps the regular spelling only when the authors name
+                  it, the reverse rules of the dictionary do not trace a spelling to a lemma whose authored forms leave
+                  it out, and a decision of both authors that the form does not exist stops the rule, and the reverse
+                  rule, that would generate it; it shall refuse an authored file with a level that is not 0 or 1 or
+                  with an unknown rule, authored forms without their provenance file, a provenance file that is
+                  malformed (not the exact header, an empty field, a licence other than CC0 1.0, an invalid verdict and
+                  result, a repeated decision), and an open-corpus token line that is malformed, each with the file and
+                  line.
                 tags: [unit]
                 justification: |
                   The authored forms replace the third-party inflection database: they are project-authored (CC0),
                   written by one model and checked by an independent second pass, and the generator must not ship a
-                  regular spelling that both authors rejected or left out.
+                  regular spelling that both authors rejected or left out, nor drop a form that they wrote. A
+                  provenance record or corroborating corpus that is silently misread would let an unreviewed or
+                  unlicensed form into the shipped data.
                 tests:
                   - WordSenseBuilder_AuthoredForms_Read_Rows_FillFormsAndAttestation
                   - WordSenseBuilder_AuthoredForms_Read_CapitalizedLemma_IsKeyedInLowerCase
@@ -47,12 +54,20 @@ sections:
                   - WordSenseBuilder_AuthoredForms_Read_BadLevels_AreRefused
                   - WordSenseBuilder_AuthoredForms_Read_UnknownRule_IsRefused
                   - WordSenseBuilder_AuthoredForms_Read_Decisions_OnlyAgreedNoneIsAVeto
+                  - WordSenseBuilder_AuthoredForms_Read_FormsWithoutSidecar_AreRefused
+                  - WordSenseBuilder_AuthoredForms_Read_MalformedSidecar_IsRefusedWithPathAndLine
+                  - WordSenseBuilder_AuthoredForms_Read_LemmaNamedLemma_IsADecision
                   - WordSenseBuilder_AuthoredForms_IrregularKeys_ListsOnlyFormsTheRulesDoNotGive
                   - WordSenseBuilder_OpenCorpusAttestation_Read_Tokens_AttestSpellingsForTheirLemmas
+                  - WordSenseBuilder_OpenCorpusAttestation_Read_MalformedTokenLine_IsRefusedWithFileAndLine
                   - WordSenseBuilder_OpenCorpusAttestation_Merge_AddsTheLemmasOfTheSecondSource
+                  - WordSenseBuilder_OpenCorpus_ReadFile_TokenWithEmptyField_IsRefusedWithTheLine
                   - WordSenseBuilder_FormGenerator_Run_AuthoredPlural_ReplacesTheRegularSpelling
                   - WordSenseBuilder_FormGenerator_Run_AuthoredVariant_ShipsAsRuleVariant
+                  - WordSenseBuilder_FormGenerator_Run_AuthoredPlural_JoinsTheWrittenFormsOfTheLexicon
+                  - WordSenseBuilder_FormGenerator_Run_AuthoredPlural_JoinsTheHandList
                   - WordSenseBuilder_FormGenerator_Run_AgreedNoPlural_StopsTheRegularPlural
+                  - WordSenseBuilder_FormGenerator_Run_AgreedNoPlural_StopsTheReverseRule
                   - WordSenseBuilder_FormGenerator_Run_AuthoredPlural_StopsTheReverseRuleOfTheDictionary
                   - WordSenseBuilder_FormGenerator_Data_AuthoredForm_ShipsWithTheProvenanceLlm
                   - WordSenseBuilder_FormGenerator_Data_AuthoredPlural_LeavesOutTheRegularSpelling

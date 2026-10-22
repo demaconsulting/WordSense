@@ -25,10 +25,13 @@ Sources, each recorded as the provenance of a row:
 A generated row is written only when it is corroborated: a regular -s, -ed or -ing form of a real lemma passes on rule
 and base alone; any other row needs a second source (the word list that lists the spelling, or the authored forms or the
 tagged tokens of the open corpus that attest it for that lemma and part of speech). Everything else is dropped and counted.
-The authored forms are authoritative like the hand and closed lists: a word with authored forms of a kind keeps the
+The authored forms are authoritative like the hand and closed lists: they join the forms that a list or the written
+forms of the Open English WordNet name for the same kind (a spelling that another source named first keeps that
+source's provenance; `argali` and `argalis`, `alumni` and `alumnuses`), a word with authored forms of a kind keeps the
 regular spelling of that kind only when the authors name it, the reverse rules of the dictionary do not trace a spelling
 to a lemma whose authored forms leave it out (`foots` is no plural of `foot`), and a decision of both authors that a form
-does not exist (the sidecar `forms-authored-provenance.tsv`) stops the rule that would generate it. A lemma ending in
+does not exist (the sidecar `forms-authored-provenance.tsv`) stops the rule that would generate it and the reverse
+rule that would trace a dictionary spelling to the lemma (`superbias` is no plural of `superbia`). A lemma ending in
 `-men` whose singular in `-man` is a word is a plural already and gets no plural by rule (`bagmen`).
 
 The regular rules (`InflectionRules`) carry these decisions, each with a unit test; they came from comparing the rule
@@ -123,7 +126,14 @@ the sample, and the command fails when one lacks its own analysis.
 
 A missing input, or an Open English WordNet file whose SHA-256 differs from its pin, throws
 before any file is written. A malformed authored file (a level that is not 0 or 1, an unknown rule) throws
-`InvalidDataException` with the lemma. A reviewed input (`form-frozen.tsv`) with a row that has the wrong number of
+`InvalidDataException` with the lemma. Authored forms need their provenance sidecar: a missing sidecar, a header that
+is not exact, a row without its ten non-empty columns, a licence other than `CC0 1.0 (project-authored)`, an unknown
+rule, a verdict and result that do not go together (`agree` or `adjudicated` with `forms` or `none`;
+`regular-accepted` with `forms`) or a second decision for the same lemma, part of speech and rule throws
+`InvalidDataException` with the path and the line. A token line of a training split of the open corpus that is short,
+outside a sentence or without a form, lemma or tag throws the same way (the attestation reads the corpus with the
+strict `OpenCorpus` reader); it is never skipped.
+A reviewed input (`form-frozen.tsv`) with a row that has the wrong number of
 columns, or
 with two rows of one kind that repeat a spelling, an entry and features (the same analysis twice, whatever the other
 columns say), throws `InvalidDataException` with the file and the line of the repeat and of the first row; the

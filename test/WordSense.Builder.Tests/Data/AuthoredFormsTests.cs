@@ -8,12 +8,17 @@ namespace WordSense.Builder.Tests;
 /// </summary>
 public sealed class AuthoredFormsTests : IDisposable
 {
+    private const string Header = "lemma\tpos\trule\tbatch_id\twriter\tverifier\tverdict\tresult\tlicence\tevidence\n";
+
+    private const string Licence = "CC0 1.0 (project-authored)";
+
     private readonly TestDirectory _dir = new();
 
     /// <inheritdoc />
     public void Dispose() => _dir.Dispose();
 
-    private string Lexicon(string forms, string? provenance = null)
+    // The sidecar defaults to a header only; null leaves it out
+    private string Lexicon(string forms, string? provenance = Header)
     {
         _dir.Write("lexicon/forms-authored.tsv", forms);
         if (provenance is not null)
@@ -23,6 +28,9 @@ public sealed class AuthoredFormsTests : IDisposable
 
         return Path.Join(_dir.Root, "lexicon");
     }
+
+    private static string Row(string lemma = "table", string verdict = "agree", string result = "forms", string licence = Licence, string rule = "Plural", string evidence = "-") =>
+        $"{lemma}\tN\t{rule}\ta1+v1\tw\tv\t{verdict}\t{result}\t{licence}\t{evidence}\n";
 
     /// <summary>
     ///     The rows fill the forms with their levels and the attestation map of every spelling.
@@ -93,6 +101,64 @@ public sealed class AuthoredFormsTests : IDisposable
         var ex = Assert.Throws<InvalidDataException>(() => AuthoredForms.Read(Lexicon("abacus\tN\tDual\tabaca\t0\n")));
 
         Assert.Contains("Dual", ex.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     Authored forms without the provenance sidecar are refused, and a sidecar without forms is accepted.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_AuthoredForms_Read_FormsWithoutSidecar_AreRefused()
+    {
+        // Arrange / Act
+        var ex = Assert.Throws<InvalidDataException>(() => AuthoredForms.Read(Lexicon("table\tN\tPlural\ttables\t0\n", null)));
+
+        // Assert
+        Assert.Contains(AuthoredForms.ProvenanceFile, ex.Message, StringComparison.Ordinal);
+        Assert.Empty(AuthoredForms.Read(Path.Join(_dir.Root, "nowhere")).Forms);
+    }
+
+    /// <summary>
+    ///     A malformed sidecar is refused with its path and line: a wrong header, a short or empty field, a licence other than
+    ///     CC0, an unknown rule, an invalid verdict and result, and a repeated decision.
+    /// </summary>
+    /// <param name="provenance">The sidecar.</param>
+    /// <param name="line">The line named by the message.</param>
+    [Theory]
+    [InlineData("lemma\tpos\trule\n", 1)]
+    [InlineData(Header + "table\tN\tPlural\ta1+v1\tw\tv\tagree\tforms\tCC0 1.0 (project-authored)\n", 2)]
+    [InlineData(Header + "table\tN\tPlural\ta1+v1\t\tv\tagree\tforms\tCC0 1.0 (project-authored)\t-\n", 2)]
+    [InlineData(Header + "table\tN\tPlural\ta1+v1\tw\tv\tagree\tforms\tMIT\t-\n", 2)]
+    [InlineData(Header + "table\tX\tPlural\ta1+v1\tw\tv\tagree\tforms\tCC0 1.0 (project-authored)\t-\n", 2)]
+    [InlineData(Header + "table\tN\tVariant\ta1+v1\tw\tv\tagree\tforms\tCC0 1.0 (project-authored)\t-\n", 2)]
+    [InlineData(Header + "table\tN\tPlural\ta1+v1\tw\tv\tmaybe\tforms\tCC0 1.0 (project-authored)\t-\n", 2)]
+    [InlineData(Header + "table\tN\tPlural\ta1+v1\tw\tv\tregular-accepted\tnone\tCC0 1.0 (project-authored)\t-\n", 2)]
+    [InlineData(Header + "table\tN\tPlural\ta1+v1\tw\tv\tagree\tforms\tCC0 1.0 (project-authored)\t-\nTable\tN\tPlural\ta1+v1\tw\tv\tagree\tforms\tCC0 1.0 (project-authored)\t-\n", 3)]
+    public void WordSenseBuilder_AuthoredForms_Read_MalformedSidecar_IsRefusedWithPathAndLine(string provenance, int line)
+    {
+        // Arrange
+        var lexicon = Lexicon("table\tN\tPlural\ttables\t0\n", provenance);
+
+        // Act
+        var ex = Assert.Throws<InvalidDataException>(() => AuthoredForms.Read(lexicon));
+
+        // Assert
+        Assert.Contains($"{AuthoredForms.ProvenanceFile}:{line.ToString(System.Globalization.CultureInfo.InvariantCulture)}:", ex.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A row for a lemma spelled like the header word is a decision, not a second header.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_AuthoredForms_Read_LemmaNamedLemma_IsADecision()
+    {
+        // Arrange
+        var lexicon = Lexicon("lemma\tN\tPlural\tlemmata\t0\n", Header + Row("lemma", "agree", "none"));
+
+        // Act
+        var authored = AuthoredForms.Read(lexicon);
+
+        // Assert
+        Assert.Contains(("lemma", "n", "Plural"), authored.NoForm);
     }
 
     /// <summary>

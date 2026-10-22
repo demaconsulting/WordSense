@@ -99,11 +99,11 @@ bias	1	oewn-bias-a	Degree=Pos	dema	0			oewn_form
 bias	2		Degree=Pos	dema	0	bias	r	moby_reverse
 bias	3	oewn-bias-v	VerbForm=Inf	dema	0			oewn_form
 biased	0	oewn-biased-a	Degree=Pos	dema	0			oewn_form
-biased	1	oewn-bias-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+biased	1	oewn-bias-v	Tense=Past+VerbForm=Part	dema	0			llm
 biasedly	0		Degree=Pos	dema	0	biasedly	r	moby_reverse
 biases	0	oewn-bias-n	Number=Plur	dema	0			rule
 biases	1	oewn-bias-v	Person=3+Tense=Pres	dema	0			llm
-biasing	0	oewn-bias-v	VerbForm=Ger	dema	0			rule_variant
+biasing	0	oewn-bias-v	VerbForm=Ger	dema	0			llm
 biassed	0	oewn-bias-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 biassedly	0		Degree=Pos	dema	0	biassedly	r	moby_reverse
 biassing	0	oewn-bias-v	VerbForm=Ger	dema	0			oewn_form
@@ -272,7 +272,7 @@ bicentenary	1	oewn-bicentenary-n	Number=Sing	dema	0			oewn_form
 bicentennial	0	oewn-bicentennial-a	Degree=Pos	dema	0			oewn_form
 bicentennial	1	oewn-bicentennial-n	Number=Sing	dema	0			oewn_form
 bicentennially	0		Degree=Pos	dema	0	bicentennially	r	moby_reverse
-bicentennials	0	oewn-bicentennial-n	Number=Plur	dema	0			rule_variant
+bicentennials	0	oewn-bicentennial-n	Number=Plur	dema	0			llm
 bicentric	0	oewn-bicentric-a	Degree=Pos	dema	0			oewn_form
 bicentrically	0		Degree=Pos	dema	0	bicentrically	r	moby_reverse
 bicephalous	0	oewn-bicephalous-a	Degree=Pos	dema	0			oewn_form

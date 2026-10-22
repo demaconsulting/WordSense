@@ -66,10 +66,13 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     Results: <c>ClassifyAsync</c> returns one <c>ClassifyResult</c> per word, with the probability of every analysis
 ///     of the word. A word with one analysis and one sense is answered by the encoder model at the
 ///     <c>Sense</c> level with confidence 1; a trained lemma by the encoder model at the <c>Sense</c>, <c>Group</c> or
-///     <c>PartOfSpeech</c> level with the probability of the answer at that level as the confidence, and its ranked
+///     <c>PartOfSpeech</c> level with the probability of the answer at that level as the confidence (also 1 at the
+///     <c>PartOfSpeech</c> level when the word has a single lemma and part of speech, whose several senses stay
+///     unresolved, so test the level and not whether the confidence is 1), and its ranked
 ///     senses listed in every analysis; every other known word by the Basic model at the <c>PartOfSpeech</c>
 ///     level (or the <c>Sense</c> level when its selected analysis has exactly one sense)
-///     with the probability of its selected analysis as the confidence (not the scale of the encoder, so do not
+///     with the probability of its selected analysis as the confidence (1 for a word with a single lemma and part of
+///     speech, at either level; not the scale of the encoder, so do not
 ///     tune a threshold on it for another model), without scored senses. An unknown word has no
 ///     <c>Details</c>, the <c>None</c> level and confidence 0. A low confidence still carries the best part of speech.
 ///     </para>

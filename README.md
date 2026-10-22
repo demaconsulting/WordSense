@@ -213,9 +213,9 @@ See the
 <!-- model-table:begin -->
 | Model | Real-text sense (share @ precision) | Running-text part of speech (open corpus test) | UD-EWT test part of speech (convention-mapped) | Independent sense evaluation (SemCor) | STE challenge set (part of speech) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Basic | 4.80% @ 73.27% | 93.85% (ambiguous 91.49%) | 91.60% (ambiguous 88.54%) | 3.32% @ 67.27% (top-1 2.51%) | 98.65% (ambiguous 97.83%) | none | 144 KiB | 4 MiB | 0.11 ms | 34 ms + 58 ms | no |
-| MiniLM | 3.14% @ 86.36% | 93.73% (ambiguous 91.29%) | 91.68% (ambiguous 88.66%) | 2.43% @ 85.10% (top-1 53.74%) | 98.20% (ambiguous 97.10%) | 22 MiB | 4,156 KiB | 98 MiB | 1.52 ms | 443 ms + 60 ms | yes |
-| BERT base cased | 15.75% @ 93.96% | 94.03% (ambiguous 91.79%) | 91.95% (ambiguous 89.09%) | 17.03% @ 86.61% (top-1 60.87%) | 98.20% (ambiguous 97.10%) | 104 MiB | 8,142 KiB | 221 MiB | 8.08 ms | 684 ms + 56 ms | yes |
+| Basic | 4.80% @ 73.27% | 93.85% (ambiguous 91.49%) | 91.60% (ambiguous 88.54%) | 3.32% @ 67.27% (top-1 2.51%) | 98.65% (ambiguous 97.83%) | none | 145 KiB | 4 MiB | 0.11 ms | 34 ms + 58 ms | no |
+| MiniLM | 3.14% @ 86.36% | 93.73% (ambiguous 91.29%) | 91.68% (ambiguous 88.66%) | 2.43% @ 85.10% (top-1 53.61%) | 98.20% (ambiguous 97.10%) | 22 MiB | 4,157 KiB | 98 MiB | 1.52 ms | 443 ms + 60 ms | yes |
+| BERT base cased | 15.75% @ 93.96% | 94.03% (ambiguous 91.79%) | 91.95% (ambiguous 89.09%) | 17.03% @ 86.61% (top-1 60.71%) | 98.20% (ambiguous 97.10%) | 104 MiB | 8,143 KiB | 221 MiB | 8.08 ms | 684 ms + 56 ms | yes |
 <!-- model-table:end -->
 
 <!-- markdownlint-enable MD013 -->
@@ -228,11 +228,12 @@ See the
 - 🎯 **BertBaseCased** (104 MiB download, about 8 ms a sentence): the model for **fine senses**. For the 826 trained
   lemmas it commits to a fine sense on 15.8% of the real test sentences (17.0% of the SemCor words, the SemCor subset of
   775 of those lemmas) and is right in 94.0%
-  (86.6% on SemCor) of those answers; its most probable sense is right for 60.9% of the SemCor words, about as often as
-  always choosing the most frequent sense (60.7%, an optimistic baseline).
+  (86.6% on SemCor) of those answers; its most probable sense is right for 60.7% of the SemCor words, about as often as
+  always choosing the first sense in Open English WordNet order (60.7%, an optimistic baseline: see the SemCor caveat in
+  [Accuracy and Model Choice](docs/user_guide/accuracy.md)).
 - ⚖️ **MiniLM** (22 MiB download, about 1.5 ms a sentence): mostly part of speech and groups. It commits to a fine
-  sense on only 3.1% of the real test sentences (86.4% right) and its most probable sense is right for 53.7% of the
-  SemCor words, below the most-frequent-sense baseline; choose it for the small download and the speed, not for senses.
+  sense on only 3.1% of the real test sentences (86.4% right) and its most probable sense is right for 53.6% of the
+  SemCor words, below the first-sense baseline; choose it for the small download and the speed, not for senses.
 
 **What the columns measure.**
 
@@ -262,10 +263,10 @@ test sentences and MiniLM 86.4% (its thresholds could not reach the target), and
 training sentences, the answers are right in 86.6% (BERT) and 85.1% (MiniLM) of the cases, and the encoder models commit
 to a fine sense for a minority of the words (17.0% and 2.4% of the SemCor words). The probabilities of the fine senses
 are corrected to the usage of the senses (WordNet 3.0 counts);
-that raised the fine top-1 on SemCor from 56.9% to 60.9% (BERT) and from 47.5% to 53.7% (MiniLM) and lowers it slightly
+that raised the fine top-1 on SemCor from 56.9% to 60.7% (BERT) and from 47.5% to 53.6% (MiniLM) and lowers it slightly
 on the real test sentences, which are balanced by sense (see [Accuracy and Model Choice][link-accuracy]). The sense
 choice of the
-encoders is not yet better than the most-frequent-sense baseline for the words they cover; the part of speech is the
+encoders is not yet better than the first-sense baseline for the words they cover; the part of speech is the
 dependable part of an answer today. The RAM, latency and first-use columns were measured on one idle development
 machine (an Intel Core i7-13850HX laptop, Windows 11, .NET 10; the conditions and the spread of repeated runs are in
 [Accuracy and Model Choice][link-accuracy]), so they are machine dependent: read them as the order of magnitude and the
@@ -329,8 +330,9 @@ This version is a foundation, and these follow-ups are planned (the figures are 
 
 The packages that embed derived data (`DemaConsulting.WordSense`, `DemaConsulting.WordSense.MiniLM` and
 `DemaConsulting.WordSense.BertBaseCased`) carry this section in their package
-readme. The corpus itself is not shipped in the packages, only the derived tables and weights; every real sentence is
-recorded with its source, license and URL in `corpus/provenance/`.
+readme. The corpus itself is not shipped in the packages, only the derived tables and weights; every sentence has a
+row in `corpus/provenance/` (its id, split, source and source document), and the license evidence and the URLs of each
+source are in `corpus/README.md` ("Sources").
 
 Package licenses:
 

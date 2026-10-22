@@ -105,9 +105,11 @@ test suite for each of the three models; the samples in this guide are reviewed 
   `deer` as a singular and a plural; the senses belong to the slot, so the split among these variants never lowers the
   confidence): at the `PartOfSpeech` level the probability of the slot; at the `Group` level that probability times
   the sum of the probabilities, within the slot, of the senses of the group; at the `Sense` level that probability
-  times the probability of the answered sense within the slot. It is 1 for a word with one lemma and part of speech and
-  one sense and 0 for an
-  unknown word. It is comparable only within one result, not across models, words or levels.
+  times the probability of the answered sense within the slot. It is 0 for an unknown word and 1 for a word with one
+  lemma and part of speech and one sense (at the `Sense` level), and also 1 at the `PartOfSpeech` level for a word with
+  one lemma and part of speech that has several senses which the model does not decide (the part of speech is certain,
+  the sense is not): test the `Level`, not whether the confidence is 1. It is comparable only within one result, not
+  across models, words or levels.
 - **Fallback model**: the second model of a `FallbackWordSenseModel`. It answers every word for which the first model
   (the primary model) scored no senses. The MiniLM and BertBaseCased packages use their encoder as the primary model
   and the Basic model as the fallback, so an ambiguous word that the encoder was not trained for is answered by the
@@ -347,9 +349,11 @@ The `Confidence` that the result carries is the probability of the answer at tha
 
 <!-- markdownlint-enable MD013 -->
 
-A word with one lemma and part of speech and one sense has the confidence 1, and an unknown word 0. The confidence
-grows with the margin
-of the model's evidence, but it is comparable only within one result: do not compare it across models, across words or
+A word with one lemma and part of speech and one sense has the confidence 1 at the `Sense` level, and so does a word
+with one lemma and part of speech and several senses that the model does not decide, at the `PartOfSpeech` level (the
+part of speech is certain, the sense is not, so test the `Level`); an unknown word has 0. The confidence
+grows with the evidence for the answer (the margin of the model's evidence decides the level), but it is comparable
+only within one result: do not compare it across models, across words or
 across levels as if it were calibrated, and tune any threshold per model and level on your own text. The precision that
 the models reach on real held-out text (the test split of the corpus, never seen by the weights or the thresholds) is
 published per level in the README model table and in the chapter "Accuracy and Model Choice"; it is measured on a balanced
@@ -423,7 +427,7 @@ The core package resolves the ids of an answer without a model, and finds a sens
 that a glossary or a thesaurus keyed on WordNet can be attached to it:
 
 ```csharp
-// The senses of "bow" as a noun, the most frequent first, with the group of each (null: no group)
+// The senses of "bow" as a noun, in the order of Open English WordNet, with the group of each (null: no group)
 foreach (SenseInfo info in WordLexicon.SensesOf("bow", PartOfSpeech.Noun))
 {
     Console.WriteLine($"{info.SenseId} in {info.GroupId ?? "(no group)"}, key {info.SenseKey ?? "(project sense)"}");
@@ -601,7 +605,8 @@ level, and lists every analysis in `Analyses` with its probability; the confiden
 probability that the model gives to the lemma and part of speech of the selected analysis (the sum over its feature
 variants, which the context cues alone separate), between 0 and 1. It names a sense (level `Sense`) only
 for a word whose selected analysis has a lemma and part of speech with a single sense (the confidence is then the
-probability of that lemma and part of speech, 1 for a word with only one), it never answers at the `Group` level, and
+probability of that lemma and part of speech, 1 for a word with only one; a word with only one lemma and part of speech
+and several senses is at the `PartOfSpeech` level, also with confidence 1), it never answers at the `Group` level, and
 the `Senses`
 of its analyses are empty except for the one sense of such a single-sense analysis (probability 1), because it scores
 analyses and not fine senses. The measured

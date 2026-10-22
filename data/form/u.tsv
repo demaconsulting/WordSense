@@ -596,7 +596,7 @@ uglifying	0	oewn-uglify-v	VerbForm=Ger	dema	0			rule
 uglily	0		Degree=Pos	dema	0	uglily	r	moby_reverse
 ugliness	0	oewn-ugliness-n	Number=Sing	dema	0			oewn_form
 uglinesses	0	oewn-ugliness-n	Number=Plur	dema	0			rule
-uglis	0	oewn-ugli-n	Number=Plur	dema	0			rule_variant
+uglis	0	oewn-ugli-n	Number=Plur	dema	0			llm
 ugly	0	oewn-ugly-a	Degree=Pos	dema	0			oewn_form
 ugly ass	0	oewn-ugly_ass-a	Degree=Pos	dema	0			oewn_form
 ugly duckling	0	oewn-ugly_duckling-n	Number=Sing	dema	0			oewn_form
@@ -874,7 +874,7 @@ umbonal	0		Degree=Pos	dema	0	umbonal	a	moby_reverse
 umbonate	0		Degree=Pos	dema	0	umbonate	a	moby_reverse
 umbones	0	oewn-umbo-n	Number=Plur	dema	0			oewn_form
 umbonic	0		Degree=Pos	dema	0	umbonic	a	moby_reverse
-umbos	0	oewn-umbo-n	Number=Plur	dema	0			rule_variant
+umbos	0	oewn-umbo-n	Number=Plur	dema	0			llm
 umbra	0	oewn-umbra-n	Number=Sing	dema	0			oewn_form
 umbrae	0	oewn-umbra-n	Number=Plur	dema	0			oewn_form
 umbrage	0	oewn-umbrage-n	Number=Sing	dema	0			oewn_form
@@ -6198,7 +6198,7 @@ undergentleman	0		Number=Sing	dema	0	undergentleman	n	moby_reverse
 undergentlemen	0		Number=Plur	dema	0	undergentleman	n	rule
 undergentlemen	1		Number=Sing	dema	0	undergentlemen	n	moby_reverse
 undergird	0	oewn-undergird-v	VerbForm=Inf	dema	0			oewn_form
-undergirded	0	oewn-undergird-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+undergirded	0	oewn-undergird-v	Tense=Past+VerbForm=Part	dema	0			llm
 undergirding	0	oewn-undergird-v	VerbForm=Ger	dema	0			llm
 undergirds	0	oewn-undergird-v	Person=3+Tense=Pres	dema	0			llm
 undergirt	0	oewn-undergird-v	Tense=Past+VerbForm=Part	dema	0			oewn_form

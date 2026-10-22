@@ -9,7 +9,8 @@ namespace WordSense.Builder;
 /// <param name="Form">The token as tokenized by the corpus (a contraction is split: <c>do</c> and <c>n't</c>).</param>
 /// <param name="Upos">The universal part-of-speech tag.</param>
 /// <param name="Consensus">The consensus status: <c>unanimous</c>, <c>disputed</c> or <c>unchecked</c>.</param>
-internal sealed record OpenToken(string Form, string Upos, string Consensus);
+/// <param name="Lemma">The lemma of the token, or empty when a caller that builds a token by hand gives none.</param>
+internal sealed record OpenToken(string Form, string Upos, string Consensus, string Lemma = "");
 
 /// <summary>
 ///     One sentence of the open part-of-speech corpus.
@@ -145,12 +146,13 @@ internal static class OpenCorpus
             else if (line[0] != '#')
             {
                 var columns = line.Split('\t');
-                if (sentenceId is null || columns.Length != TokenColumns || !int.TryParse(columns[0], NumberStyles.None, CultureInfo.InvariantCulture, out _))
+                if (sentenceId is null || columns.Length != TokenColumns || !int.TryParse(columns[0], NumberStyles.None, CultureInfo.InvariantCulture, out _)
+                    || columns[1].Length == 0 || columns[2].Length == 0 || columns[3].Length == 0)
                 {
-                    throw new InvalidDataException($"{Path.GetFileName(path)}:{number.ToString(CultureInfo.InvariantCulture)}: expected a token line with {TokenColumns.ToString(CultureInfo.InvariantCulture)} columns inside a sentence.");
+                    throw new InvalidDataException($"{Path.GetFileName(path)}:{number.ToString(CultureInfo.InvariantCulture)}: expected a token line with {TokenColumns.ToString(CultureInfo.InvariantCulture)} columns, a form, a lemma and a tag, inside a sentence.");
                 }
 
-                tokens.Add(new OpenToken(columns[1], columns[3], columns[6]));
+                tokens.Add(new OpenToken(columns[1], columns[3], columns[6], columns[2]));
             }
         }
 

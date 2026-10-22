@@ -5,9 +5,10 @@ pronunciations of English. They were imported once from **Open English WordNet 2
 is licensed under **CC BY 4.0** (<https://creativecommons.org/licenses/by/4.0/>), and keep that license; project-authored
 additions (source `dema`) are MIT. The sense frequency counts (`sense_frequency`) come from **WordNet 3.0**
 (Princeton University) and are used under its license (WordNet 3.0 Copyright 2006 by Princeton University; the full
-notice is in [PROVENANCE.md](PROVENANCE.md)); they order the senses of a lemma, set the quota of training sentences of
-each sense and, as a tempered prior, correct the scores of the encoder models to the usage of the senses. **SemCor** is
-an evaluation source only: it is never committed. See
+notice is in [PROVENANCE.md](PROVENANCE.md)); they set the quota of training sentences of each sense, fix the labeling
+order of the senses of a lemma (which sense gets the plain label and which gets `-2`) and, as a tempered prior,
+correct the scores of the encoder models to the usage of the senses; they do not order the senses in the word image,
+which follow the order of Open English WordNet. **SemCor** is an evaluation source only: it is never committed. See
 [PROVENANCE.md](PROVENANCE.md) for the source file, its hash and what was left out.
 
 The data is **authoritative once committed**: edit the tables by hand (or with a script) and run the validator. The
@@ -129,7 +130,7 @@ dotnet run --project tools/WordSense.Builder -c Release -- seed-inventory [--dat
 (group ids are not compared).
 The OEWN source file is never committed; `import-oewn` checks its SHA-256 against the pin, and `import-wn30-counts` the
 SHA-256 of `index.sense` (see [PROVENANCE.md](PROVENANCE.md)). `label-senses` and `seed-inventory` write the sense
-inventory tables; run them after the counts are imported (the counts order the senses of a lemma). `seed-inventory`
+inventory tables; run them after the counts are imported (the counts fix the labeling order of the senses of a lemma). `seed-inventory`
 adds the project senses of the closed-class entries and imports the curated labels and groups of `corpus/curation`,
 leaving out a group of one sense and a group of every sense of its lemma and part of speech, and refusing a group
 without a valid kind or without evidence, and a curated sense whose part of speech is not the one of its sense in the

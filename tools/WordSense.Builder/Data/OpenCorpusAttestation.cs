@@ -1,5 +1,3 @@
-using System.Text;
-
 namespace WordSense.Builder.Data;
 
 /// <summary>
@@ -16,13 +14,13 @@ namespace WordSense.Builder.Data;
 /// </remarks>
 internal static class OpenCorpusAttestation
 {
-    private const int TokenColumns = 7;
-
     /// <summary>
     ///     Reads the attestation of the training splits of every part of the open corpus.
     /// </summary>
     /// <param name="corpus">The corpus directory.</param>
     /// <returns>The lemmas by attested spelling; empty when the open corpus is absent.</returns>
+    /// <exception cref="InvalidDataException">Thrown when a token line of a training split is malformed; the message names the
+    /// file and the line.</exception>
     public static Dictionary<string, HashSet<string>> Read(string corpus)
     {
         var result = new Dictionary<string, HashSet<string>>(StringComparer.Ordinal);
@@ -34,21 +32,16 @@ internal static class OpenCorpusAttestation
                 continue;
             }
 
-            foreach (var line in File.ReadLines(path, Encoding.UTF8))
+            // The strict reader of the corpus refuses a short or malformed token line with its file and line
+            foreach (var token in OpenCorpus.ReadFile(path).SelectMany(s => s.Tokens))
             {
-                if (line.Length == 0 || line[0] == '#')
+                if (Tag(token.Upos) is not { } tag)
                 {
                     continue;
                 }
 
-                var columns = line.Split('\t');
-                if (columns.Length < TokenColumns || Tag(columns[3]) is not { } tag)
-                {
-                    continue;
-                }
-
-                var form = columns[1].ToLowerInvariant();
-                var lemma = columns[2].ToLowerInvariant();
+                var form = token.Form.ToLowerInvariant();
+                var lemma = token.Lemma.ToLowerInvariant();
                 if (!result.TryGetValue(form, out var lemmas))
                 {
                     result[form] = lemmas = new HashSet<string>(StringComparer.Ordinal);

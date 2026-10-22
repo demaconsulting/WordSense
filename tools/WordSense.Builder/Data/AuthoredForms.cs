@@ -20,7 +20,9 @@ namespace WordSense.Builder.Data;
 ///     <para>
 ///     The provenance sidecar (<c>forms-authored-provenance.tsv</c>) holds one row per decision, including the answer that the
 ///     form does not exist. A decision on which both authors agreed that there is no such form is read as a veto: the regular rules
-///     do not generate that form for the lemma.
+///     do not generate that form for the lemma. The sidecar is required whenever authored forms exist, and it is read strictly: the
+///     exact header, ten non-empty columns, the CC0 licence, a valid verdict and result, and one decision for each lemma, part of
+///     speech and rule.
 ///     </para>
 /// </remarks>
 internal sealed class AuthoredForms
@@ -34,6 +36,14 @@ internal sealed class AuthoredForms
     ///     The name of the provenance of the authored forms.
     /// </summary>
     public const string ProvenanceFile = "forms-authored-provenance.tsv";
+
+    private const string Licence = "CC0 1.0 (project-authored)";
+
+    private const string ProvenanceHeader = "lemma\tpos\trule\tbatch_id\twriter\tverifier\tverdict\tresult\tlicence\tevidence";
+
+    private const int ProvenanceColumns = 10;
+
+    private static readonly string[] Rules = ["Plural", "Third", "Past", "Participle", "Gerund", "Comparative", "Superlative"];
 
     /// <summary>
     ///     Gets the authored forms by lower-case lemma and part-of-speech letter.
@@ -127,30 +137,78 @@ internal sealed class AuthoredForms
     {
         if (!File.Exists(path))
         {
+            // The sidecar is the evidence of the authored forms: forms without it are refused
+            if (Forms.Count > 0)
+            {
+                throw new InvalidDataException($"{path}: the provenance of the authored forms is missing.");
+            }
+
             return;
         }
 
         var number = 0;
+        var headerSeen = false;
+        var seen = new Dictionary<(string Lemma, string Pos, string Rule), int>();
         foreach (var raw in File.ReadAllLines(path, Encoding.UTF8))
         {
             number++;
             var line = raw.TrimEnd('\r');
-            if (line.Length == 0 || line[0] == '#' || line.StartsWith("lemma\t", StringComparison.Ordinal))
+            if (line.Length == 0 || line[0] == '#')
             {
                 continue;
             }
 
-            var columns = line.Split('\t');
-            if (columns.Length < 8 || columns[1].Length != 1 || LexiconSource.Letters.IndexOf(columns[1][0]) < 0)
+            var where = $"{path}:{number.ToString(CultureInfo.InvariantCulture)}";
+            if (!headerSeen)
             {
-                throw new InvalidDataException($"{ProvenanceFile} line {number.ToString(CultureInfo.InvariantCulture)}: expected 'lemma<TAB>letter<TAB>rule<TAB>batch<TAB>writer<TAB>verifier<TAB>verdict<TAB>result<TAB>...'.");
+                if (line != ProvenanceHeader)
+                {
+                    throw new InvalidDataException($"{where}: the header must be exactly '{ProvenanceHeader.Replace("\t", "<TAB>", StringComparison.Ordinal)}'.");
+                }
+
+                headerSeen = true;
+                continue;
+            }
+
+            var columns = line.Split('\t');
+            if (columns.Length != ProvenanceColumns || columns.Any(c => c.Length == 0) || columns[1].Length != 1 || LexiconSource.Letters.IndexOf(columns[1][0]) < 0)
+            {
+                throw new InvalidDataException($"{where}: expected the {ProvenanceColumns.ToString(CultureInfo.InvariantCulture)} non-empty columns 'lemma<TAB>letter<TAB>rule<TAB>batch_id<TAB>writer<TAB>verifier<TAB>verdict<TAB>result<TAB>licence<TAB>evidence'.");
+            }
+
+            if (columns[8] != Licence)
+            {
+                throw new InvalidDataException($"{where}: the licence must be '{Licence}', not '{columns[8]}'.");
+            }
+
+            if (!Rules.Contains(columns[2], StringComparer.Ordinal))
+            {
+                throw new InvalidDataException($"{where}: the rule '{columns[2]}' is not known.");
+            }
+
+            // The verdict and the result go together: both authors agree or an adjudication decides on forms or on none; a regular
+            // spelling that the verifier doubted is accepted as the form
+            if (!(columns[6] is "agree" or "adjudicated" && columns[7] is "forms" or "none") && !(columns[6] == "regular-accepted" && columns[7] == "forms"))
+            {
+                throw new InvalidDataException($"{where}: the verdict '{columns[6]}' with the result '{columns[7]}' is not a valid decision.");
+            }
+
+            var pos = IrregularSources.Letter((DemaConsulting.WordSense.PartOfSpeech)LexiconSource.Letters.IndexOf(columns[1][0]));
+            var key = (columns[0].ToLowerInvariant(), pos, columns[2]);
+            if (!seen.TryAdd(key, number))
+            {
+                throw new InvalidDataException($"{where}: the decision on '{columns[0]}' ({columns[2]}) repeats the one on line {seen[key].ToString(CultureInfo.InvariantCulture)}.");
             }
 
             if (columns[6] == "agree" && columns[7] == "none")
             {
-                var pos = IrregularSources.Letter((DemaConsulting.WordSense.PartOfSpeech)LexiconSource.Letters.IndexOf(columns[1][0]));
-                NoForm.Add((columns[0].ToLowerInvariant(), pos, columns[2]));
+                NoForm.Add(key);
             }
+        }
+
+        if (!headerSeen)
+        {
+            throw new InvalidDataException($"{path}: the header line is missing.");
         }
     }
 }

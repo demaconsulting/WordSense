@@ -1444,7 +1444,7 @@ plenty	0	oewn-plenty-n	Number=Sing	dema	0			oewn_form
 plenty	1	dema-plenty-d		dema	0			carried
 plenty	2	oewn-plenty-r	Degree=Pos	dema	0			oewn_form
 plenum	0	oewn-plenum-n	Number=Sing	dema	0			oewn_form
-plenums	0	oewn-plenum-n	Number=Plur	dema	0			rule_variant
+plenums	0	oewn-plenum-n	Number=Plur	dema	0			llm
 pleochroic	0	oewn-pleochroic-a	Degree=Pos	dema	0			oewn_form
 pleochroism	0	oewn-pleochroism-n	Number=Sing	dema	0			oewn_form
 pleochroisms	0	oewn-pleochroism-n	Number=Plur	dema	0			rule

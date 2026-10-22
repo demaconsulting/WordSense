@@ -18,16 +18,23 @@ never written to the adjudications; `check` prints how many the adjudicator got 
 rubber stamp).
 
 `final` writes, for every pending row:
-  valid, confidence high or medium    a row of adjudications.tsv (spelling, lemma, pos, valid, evidence, features)
+  valid, confidence high              a row of adjudications.tsv (spelling, lemma, pos, valid, evidence, features)
+  valid, confidence medium            a row only when the recheck (a second model) has answered the same row `valid` with high or
+                                      medium confidence; without an answer, or when it disagrees, nothing is written (fail closed:
+                                      no answer is listed in work/audit-review.tsv, a disagreement in work/audit-invalid.tsv)
   valid, confidence low               not written: listed in work/audit-review.tsv for a human decision
   invalid                             not written: listed in work/audit-invalid.tsv, a real error that is corrected in the generator
                                       or in corpus/lexicon/form-corrections.tsv (the audit then no longer draws the row)
-The rows of the adjudications file that exist already are kept; a row for the same spelling, lemma, part of speech and
+The evidence of every row that `final` or `recheck` writes ends with the models and the confidences that decided it, for example
+`[gpt-6.1-sol high]` or `[gpt-6.1-sol medium + claude-sonnet-5.5 recheck medium]` (the models are named with --first-model and
+--recheck-model). An answer whose evidence names a retired source (AGID) is rejected at ingest: the evidence must name our own
+sources. The rows of the adjudications file that exist already are kept; a row for the same spelling, lemma, part of speech and
 features is replaced.
 """
 import argparse
 import collections
 import os
+import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -36,6 +43,10 @@ import common
 CONFIDENCE = ("high", "medium", "low")
 ADJUDICATIONS = os.path.join(common.REPO, "tools", "WordSense.Builder", "audit", "adjudications.tsv")
 VERDICTS = ("valid", "invalid")
+FIRST_MODEL = "gpt-6.1-sol"
+RECHECK_MODEL = "claude-sonnet-5.5"
+# Sources that were removed from the project: evidence must not cite them
+RETIRED_SOURCES = re.compile(r"\bagid\b|automatically generated inflection database", re.IGNORECASE)
 
 
 def read_key(home):
@@ -63,6 +74,8 @@ def read_answer_file(path, stem, expected, answers, rejects):
             rejects.append((stem, number, "confidence", line))
         elif not 1 <= len(evidence) <= 200:
             rejects.append((stem, number, "evidence length", line))
+        elif RETIRED_SOURCES.search(evidence):
+            rejects.append((stem, number, "retired source", line))
         else:
             answers[item] = (verdict, confidence, evidence)
 
@@ -101,6 +114,19 @@ def recheck_rejected(home):
     return {(r["spelling"], r["lemma"], r["pos"], r["features"]) for r in common.read_tsv(path)}
 
 
+def recheck_verdicts(home):
+    """The answers of the recheck by (spelling, lemma, pos, features): (verdict, confidence). Empty when no recheck was answered."""
+    if not os.path.exists(os.path.join(home, "work", "audit", "recheck-01.json")):
+        return {}
+    key, answers, _rejects, _missing = read_recheck(home)
+    return {(key[i]["spelling"], key[i]["lemma"], key[i]["pos"], key[i]["features"]): (v, c) for i, (v, c, _e) in answers.items()}
+
+
+def with_models(evidence, models):
+    """The evidence with the models and the confidences that decided it, e.g. `... [gpt-6.1-sol high]`."""
+    return f"{evidence} [{models}]"
+
+
 def read_batches(folder):
     import json
     result = []
@@ -136,19 +162,32 @@ def cmd_final(args):
         print(f"{len(missing)} items have no answer yet; they stay unadjudicated")
     new_rows, review, invalid = {}, [], []
     taken_back = recheck_rejected(home)
+    second = recheck_verdicts(home)
     for item, (verdict, confidence, evidence) in sorted(answers.items()):
         k = key[item]
         if k["kind"] != "pending":
             continue
-        if (k["spelling"], k["lemma"], k["pos"], k["features"]) in taken_back:
+        identity = (k["spelling"], k["lemma"], k["pos"], k["features"])
+        if identity in taken_back:
             continue
-        row = [k["spelling"], k["lemma"], k["pos"], "valid", evidence, k["features"]]
+        row = [k["spelling"], k["lemma"], k["pos"], "valid", with_models(evidence, f"{args.first_model} {confidence}"), k["features"]]
+        listed = [item, k["strata"], k["spelling"], k["lemma"], k["pos"], k["features"], confidence, evidence]
         if verdict == "invalid":
-            invalid.append([item, k["strata"], k["spelling"], k["lemma"], k["pos"], k["features"], confidence, evidence])
+            invalid.append(listed)
         elif confidence == "low":
-            review.append([item, k["strata"], k["spelling"], k["lemma"], k["pos"], k["features"], confidence, evidence])
+            review.append(listed)
+        elif confidence == "medium":
+            # A medium-confidence verdict is merged only when the second model answered the same row and agrees (fail closed)
+            answer = second.get(identity)
+            if answer is None:
+                review.append(listed)
+            elif answer[0] == "valid" and answer[1] in ("high", "medium"):
+                row[4] = with_models(evidence, f"{args.first_model} medium + {args.recheck_model} recheck {answer[1]}")
+                new_rows[identity] = row
+            else:
+                invalid.append(listed)
         else:
-            new_rows[(k["spelling"], k["lemma"], k["pos"], k["features"])] = row
+            new_rows[identity] = row
     path = args.adjudications or ADJUDICATIONS
     comments, rows = [], {}
     for line in open(path, encoding="utf-8").read().split("\n"):
@@ -236,7 +275,7 @@ def cmd_recheck(args):
     added = 0
     for row in keep:
         if row[1] == "new-pending":
-            rows[(row[2], row[3], row[4], row[5])] = [row[2], row[3], row[4], "valid", row[9], row[5]]
+            rows[(row[2], row[3], row[4], row[5])] = [row[2], row[3], row[4], "valid", with_models(row[9], f"{args.recheck_model} recheck high"), row[5]]
             added += 1
     for identity in removed:
         del rows[identity]
@@ -262,6 +301,8 @@ if __name__ == "__main__":
         common.add_home_argument(sp)
         if name in ("final", "recheck"):
             sp.add_argument("--adjudications", default=None, help="file to update (default the audit adjudications of the builder)")
+            sp.add_argument("--first-model", default=FIRST_MODEL, help="the first adjudicator, recorded in the evidence (default %(default)s)")
+            sp.add_argument("--recheck-model", default=RECHECK_MODEL, help="the second adjudicator, recorded in the evidence (default %(default)s)")
         if name == "recheck":
             sp.add_argument("--dry-run", action="store_true", help="report only; do not change the adjudications file")
     a = ap.parse_args()

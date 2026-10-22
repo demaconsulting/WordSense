@@ -487,7 +487,7 @@ clarkia	0		Number=Sing	dema	0	clarkia	n	moby_reverse
 clarkias	0		Number=Plur	dema	0	clarkia	n	rule
 claro	0	oewn-claro-n	Number=Sing	dema	0			oewn_form
 claroes	0	oewn-claro-n	Number=Plur	dema	0			oewn_form
-claros	0	oewn-claro-n	Number=Plur	dema	0			rule_variant
+claros	0	oewn-claro-n	Number=Plur	dema	0			llm
 clars	0		Number=Plur	dema	0	clar	n	rule
 clarsach	0		Number=Sing	dema	0	clarsach	n	moby_reverse
 clarsaches	0		Number=Plur	dema	0	clarsach	n	rule
@@ -1014,7 +1014,7 @@ cleavage cavities	0	oewn-cleavage_cavity-n	Number=Plur	dema	0			rule
 cleavage cavity	0	oewn-cleavage_cavity-n	Number=Sing	dema	0			oewn_form
 cleavages	0	oewn-cleavage-n	Number=Plur	dema	0			rule
 cleave	0	oewn-cleave-v	VerbForm=Inf	dema	0			oewn_form
-cleaved	0	oewn-cleave-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+cleaved	0	oewn-cleave-v	Tense=Past+VerbForm=Part	dema	0			llm
 cleaver	0	oewn-cleaver-n	Number=Sing	dema	0			oewn_form
 cleavers	0	oewn-cleaver-n	Number=Plur	dema	0			rule
 cleavers	1	oewn-cleavers-n	Number=Sing	dema	0			oewn_form
@@ -2142,6 +2142,7 @@ clover-roots	0	oewn-clover-root-n	Number=Plur	dema	0			rule
 clovered	0		Degree=Pos	dema	0	clovered	a	moby_reverse
 clovered	1		VerbForm=Inf	dema	0	clovered	v	moby_reverse
 cloverleaf	0	oewn-cloverleaf-n	Number=Sing	dema	0			oewn_form
+cloverleafs	0	oewn-cloverleaf-n	Number=Plur	dema	0			llm
 cloverleaves	0	oewn-cloverleaf-n	Number=Plur	dema	0			oewn_form
 cloveroot	0	oewn-cloveroot-n	Number=Sing	dema	0			oewn_form
 cloveroots	0	oewn-cloveroot-n	Number=Plur	dema	0			rule

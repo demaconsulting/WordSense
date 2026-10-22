@@ -89,7 +89,7 @@ Signore	1	oewn-signore-n	Number=Sing	dema	0			oewn_form
 Signore	2	oewn-Signora-n	Capitalization=Title+Number=Plur	dema	0			llm
 Signorina	0	oewn-signorina-n	Number=Sing	dema	0			oewn_form
 Signorina	1	oewn-Signorina-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
-Signorinas	0	oewn-signorina-n	Number=Plur	dema	0			rule_variant
+Signorinas	0	oewn-signorina-n	Number=Plur	dema	0			llm
 Signorinas	1	oewn-Signorina-n	Capitalization=Title+Number=Plur	dema	0			llm
 Signorine	0	oewn-signorina-n	Number=Plur	dema	0			oewn_form
 Signorine	1	oewn-Signorina-n	Capitalization=Title+Number=Plur	dema	0			rule_variant
@@ -898,10 +898,10 @@ signal-to-noises	0	oewn-signal-to-noise-n	Number=Plur	dema	0			rule
 signal/noise	0	oewn-signal-sl-noise-n	Number=Sing	dema	0			oewn_form
 signal/noise ratio	0	oewn-signal-sl-noise_ratio-n	Number=Sing	dema	0			oewn_form
 signal/noise ratios	0	oewn-signal-sl-noise_ratio-n	Number=Plur	dema	0			rule
-signaled	0	oewn-signal-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+signaled	0	oewn-signal-v	Tense=Past+VerbForm=Part	dema	0			llm
 signaler	0	oewn-signaler-n	Number=Sing	dema	0			oewn_form
 signalers	0	oewn-signaler-n	Number=Plur	dema	0			rule
-signaling	0	oewn-signal-v	VerbForm=Ger	dema	0			rule_variant
+signaling	0	oewn-signal-v	VerbForm=Ger	dema	0			llm
 signaling	1	oewn-signaling-n	Number=Sing	dema	0			oewn_form
 signaling device	0	oewn-signaling_device-n	Number=Sing	dema	0			oewn_form
 signaling devices	0	oewn-signaling_device-n	Number=Plur	dema	0			rule
@@ -1004,7 +1004,7 @@ signing over	0	oewn-sign_over-v	VerbForm=Ger	dema	0			rule
 signing up	0	oewn-sign_up-v	VerbForm=Ger	dema	0			rule
 signings	0	oewn-signing-n	Number=Plur	dema	0			rule
 signior	0	oewn-signior-n	Number=Sing	dema	0			oewn_form
-signiors	0	oewn-signior-n	Number=Plur	dema	0			rule_variant
+signiors	0	oewn-signior-n	Number=Plur	dema	0			llm
 signor	0	oewn-signor-n	Number=Sing	dema	0			oewn_form
 signora	0	oewn-signora-n	Number=Sing	dema	0			oewn_form
 signoras	0	oewn-signora-n	Number=Plur	dema	0			rule_variant
@@ -1014,7 +1014,7 @@ signori	0	oewn-signore-n	Number=Plur	dema	0			oewn_form
 signori	1	oewn-signior-n	Number=Plur	dema	0			oewn_form
 signories	0	oewn-signory-n	Number=Plur	dema	0			rule
 signorina	0	oewn-signorina-n	Number=Sing	dema	0			oewn_form
-signorinas	0	oewn-signorina-n	Number=Plur	dema	0			rule_variant
+signorinas	0	oewn-signorina-n	Number=Plur	dema	0			llm
 signorine	0	oewn-signorina-n	Number=Plur	dema	0			oewn_form
 signorini	0		Number=Sing	dema	0	signorini	n	moby_reverse
 signorinis	0		Number=Plur	dema	0	signorini	n	rule
@@ -1295,7 +1295,7 @@ silvan	1	oewn-silvan-n	Number=Sing	dema	0			oewn_form
 silvanities	0		Number=Plur	dema	0	silvanity	n	rule
 silvanity	0		Number=Sing	dema	0	silvanity	n	moby_reverse
 silvans	0	oewn-silvan-n	Number=Plur	dema	0			rule
-silvas	0	oewn-silva-n	Number=Plur	dema	0			rule_variant
+silvas	0	oewn-silva-n	Number=Plur	dema	0			llm
 silver	0	oewn-silver-n	Number=Sing	dema	0			oewn_form
 silver	1	oewn-silver-a	Degree=Pos	dema	0			oewn_form
 silver	2	oewn-silver-v	VerbForm=Inf	dema	0			oewn_form
@@ -1769,7 +1769,7 @@ sincerity	0	oewn-sincerity-n	Number=Sing	dema	0			oewn_form
 sincipita	0	oewn-sinciput-n	Number=Plur	dema	0			oewn_form
 sincipital	0		Degree=Pos	dema	0	sincipital	a	moby_reverse
 sinciput	0	oewn-sinciput-n	Number=Sing	dema	0			oewn_form
-sinciputs	0	oewn-sinciput-n	Number=Plur	dema	0			rule_variant
+sinciputs	0	oewn-sinciput-n	Number=Plur	dema	0			llm
 sindon	0		Number=Sing	dema	0	sindon	n	moby_reverse
 sindons	0		Number=Plur	dema	0	sindon	n	rule
 sine	0	oewn-sine-n	Number=Sing	dema	0			oewn_form
@@ -1818,7 +1818,7 @@ singalongs	0	oewn-singalong-n	Number=Plur	dema	0			rule
 singe	0	oewn-singe-v	VerbForm=Inf	dema	0			oewn_form
 singe	1	oewn-singe-n	Number=Sing	dema	0			oewn_form
 singed	0	oewn-singe-v	Tense=Past+VerbForm=Part	dema	0			llm
-singeing	0	oewn-singe-v	VerbForm=Ger	dema	0			moby_reverse
+singeing	0	oewn-singe-v	VerbForm=Ger	dema	0			llm
 singer	0	oewn-singer-n	Number=Sing	dema	0			oewn_form
 singers	0	oewn-singer-n	Number=Plur	dema	0			rule
 singes	0	oewn-singe-v	Person=3+Tense=Pres	dema	0			llm

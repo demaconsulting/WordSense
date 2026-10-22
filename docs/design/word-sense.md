@@ -68,11 +68,13 @@ word when it scored senses for it, and the fallback model (Basic, from core) ans
 result, never a mixture of the two. Model packages never reference each other otherwise, so a consumer installs only
 the model it wants. The contracts in core are the seam between callers and models: a caller programs against
 `IWordSenseModel` and can swap models without code changes. The licenses follow the embedded data: the core package is
-licensed `MIT AND CC-BY-4.0` and ships a `NOTICE.md` with the Open English WordNet 2025 (CC BY 4.0) attribution, the
-Princeton WordNet notice that Open English WordNet requires and the record that the statistics of its built-in model come
-from our own CC0 corpora and from no treebank (no CC BY-SA material is shipped anywhere). The MiniLM and BertBaseCased
-packages are also `MIT AND CC-BY-4.0`, because their weights hold Open English WordNet sense ids; their notices add the
-WordNet 3.0 notice of the usage prior.
+licensed `MIT AND CC-BY-4.0` and ships a `NOTICE.md` that enumerates what it embeds: Open English WordNet 2025
+(CC BY 4.0) with the Princeton WordNet notice that it requires, the Moby Part-of-Speech List (public domain), the
+inflected forms authored by the project (CC0 1.0), the statistics of the built-in model (CC0 1.0, from our own corpora
+and from no treebank) and the project data (MIT); it also names the tagged tokens of the open corpus (CC0 1.0) that
+corroborate generated forms at build time. No CC BY-SA material is shipped anywhere. The WordNet 3.0 counts feed only
+the usage prior of the encoder models: the MiniLM and BertBaseCased packages are also `MIT AND CC-BY-4.0`, because
+their weights hold Open English WordNet sense ids, and their notices add the WordNet 3.0 notice of that prior.
 
 ## External Interfaces
 

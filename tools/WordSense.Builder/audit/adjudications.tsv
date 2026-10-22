@@ -2,42 +2,44 @@
 # Columns: spelling, lemma, part-of-speech letter, verdict (valid or invalid), note giving the reason, optional features.
 # The verdict is ours. The older rows (notes that name AGID, a former source that has been removed from the project; the names are history) rest on
 # OEWN, the Moby word list and our lists and rules. The newer rows (one-sentence notes, with a features column) are verdicts of the audit adjudicator
-# (a language model that was shown our form and the checker's form, with controls; tools/forms-audit/audit_ingest.py), never of the checker itself.
+# (a language model that was shown our form and the checker's form, with controls; tools/forms-audit/audit_ingest.py), never of the checker itself;
+# the evidence ends with the models and the confidences that decided the row ([gpt-6.1-sol high], or a medium verdict that a second model rechecked).
 # The checker's own forms are not recorded here.
 # A row the checker disagrees with and that is not listed stays an error. A row the checker accepts is valid whatever is listed.
 # The rows that were judged wrong are not listed: they were corrected in the generator, in corpus/lexicon/form-corrections.tsv or in
 # corpus/lexicon/forms-authored.tsv (the authored forms; the removal of a variant is noted in the evidence of its sidecar row).
 # Adjudicated for the samples of seeds 20240601, 99, 7, 2025 and 31337 with 300 rows per stratum.
 aardwolves	aardwolf	n	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
-abatis	abatis	n	valid	Abatis has an established unchanged plural alongside abatises.	Number=Plur
-abattis	abattis	n	valid	Abattis has an established unchanged plural alongside abattises.	Number=Plur
+abatis	abatis	n	valid	Abatis has an established unchanged plural alongside abatises. [gpt-6.1-sol high]	Number=Plur
+abattis	abattis	n	valid	Abattis has an established unchanged plural alongside abattises. [gpt-6.1-sol high]	Number=Plur
 abomasa	abomasum	n	valid	attested by AGID, AGID irregular list, Moby word list
 abying	abye	v	valid	attested by AGID, AGID irregular list
-achimenes	achimenes	n	valid	Achimenes is used unchanged for multiple plants as well as for the plant genus.	Number=Plur
+achimenes	achimenes	n	valid	Achimenes is used unchanged for multiple plants as well as for the plant genus. [gpt-6.1-sol medium + claude-sonnet-5.5 recheck medium]	Number=Plur
 addrest	address	v	valid	attested by OEWN form, Moby word list
+aegides	aegis	n	valid	Aegides is an established Greek-derived plural of aegis alongside aegises. [gpt-6.1-sol high]	Number=Plur
 agapai	agape	n	valid	attested by AGID, AGID irregular list, Moby word list
-agerata	ageratum	n	valid	Agerata is the established Latin-style plural with um changing to a.	Number=Plur
+agerata	ageratum	n	valid	Agerata is the established Latin-style plural with um changing to a. [gpt-6.1-sol high]	Number=Plur
 aides-memoire	aide-memoire	n	valid	attested by OEWN form
 airbusses	airbus	n	valid	attested by AGID, AGID irregular list
 aircraftmen	aircraftman	n	valid	attested by AGID, AGID irregular list, Moby word list
-aircraftwomen	aircraftwoman	n	valid	The woman element becomes women in this compound.	Number=Plur
+aircraftwomen	aircraftwoman	n	valid	The woman element becomes women in this compound. [gpt-6.1-sol high]	Number=Plur
 airwomen	airwoman	n	valid	attested by AGID, AGID irregular list, Moby word list
 albedoes	albedo	n	valid	attested by AGID, AGID irregular list
 alluvia	alluvion	n	valid	attested by AGID, AGID irregular list
-almsmen	almsman	n	valid	The compound plural replaces man with men.	Number=Plur
+almsmen	almsman	n	valid	The compound plural replaces man with men. [gpt-6.1-sol high]	Number=Plur
 alveoli	alveolus	n	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 amoraim	amora	n	valid	attested by OEWN form, Moby word list
 amphimixes	amphimixis	n	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 amphorae	amphora	n	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 anacolutha	anacoluthon	n	valid	attested by AGID (less standard variant), OEWN form
-anaesthetised	anaesthetize	v	valid	Anaesthetised uses the established ise spelling variant with the regular past ending d.	Tense=Past+VerbForm=Part
-anaesthetises	anaesthetize	v	valid	Anaesthetise is the established -ise spelling variant.	Person=3+Tense=Pres
-anaesthetising	anaesthetize	v	valid	Anaesthetising uses the established ise spelling variant and drops the final e.	VerbForm=Ger
+anaesthetised	anaesthetize	v	valid	Anaesthetised uses the established ise spelling variant with the regular past ending d. [gpt-6.1-sol high]	Tense=Past+VerbForm=Part
+anaesthetises	anaesthetize	v	valid	Anaesthetise is the established -ise spelling variant. [gpt-6.1-sol high]	Person=3+Tense=Pres
+anaesthetising	anaesthetize	v	valid	Anaesthetising uses the established ise spelling variant and drops the final e. [gpt-6.1-sol high]	VerbForm=Ger
 anecdota	anecdote	n	valid	attested by AGID, AGID irregular list
-anesthetised	anaesthetize	v	valid	Anesthetised combines the established anesthet- spelling with the accepted ise verb ending.	Tense=Past+VerbForm=Part
-anesthetized	anaesthetize	v	valid	Anesthetized uses the established US spelling without ae.	Tense=Past+VerbForm=Part
-anesthetizes	anaesthetize	v	valid	Anesthetizes uses the standard US spelling.	Person=3+Tense=Pres
-anesthetizing	anaesthetize	v	valid	Anesthetizing uses the established US spelling without ae.	VerbForm=Ger
+anesthetised	anaesthetize	v	valid	Anesthetised combines the established anesthet- spelling with the accepted ise verb ending. [gpt-6.1-sol high]	Tense=Past+VerbForm=Part
+anesthetized	anaesthetize	v	valid	Anesthetized uses the established US spelling without ae. [gpt-6.1-sol high]	Tense=Past+VerbForm=Part
+anesthetizes	anaesthetize	v	valid	Anesthetizes uses the standard US spelling. [gpt-6.1-sol high]	Person=3+Tense=Pres
+anesthetizing	anaesthetize	v	valid	Anesthetizing uses the established US spelling without ae. [gpt-6.1-sol high]	VerbForm=Ger
 angiomata	angioma	n	valid	attested by AGID (less standard variant), OEWN form, Moby word list
 antalkalies	antalkali	n	valid	attested by Moby word list
 antheridia	antheridium	n	valid	attested by AGID (less standard variant), OEWN form
@@ -54,10 +56,10 @@ atlantes	atlas	n	valid	attested by AGID, AGID irregular list, Moby word list
 autobusses	autobus	n	valid	attested by AGID, AGID irregular list, Moby word list
 autos-da-fe	auto-da-fe	n	valid	attested by OEWN form
 aviatrices	aviatrix	n	valid	attested by AGID, AGID irregular list, Moby word list
-backswordmen	backswordman	n	valid	The compound plural replaces man with men.	Number=Plur
+backswordmen	backswordman	n	valid	The compound plural replaces man with men. [gpt-6.1-sol high]	Number=Plur
 backwoodsmen	backwoodsman	n	valid	attested by AGID, AGID irregular list, Moby word list
-bacterized	bacterise	v	valid	Bacterize is an established -ize variant, with past bacterized.	Tense=Past+VerbForm=Part
-bacterizing	bacterise	v	valid	Bacterizing uses the established ize spelling variant and drops the final e.	VerbForm=Ger
+bacterized	bacterise	v	valid	Bacterize is an established -ize variant, with past bacterized. [gpt-6.1-sol high]	Tense=Past+VerbForm=Part
+bacterizing	bacterise	v	valid	Bacterizing uses the established ize spelling variant and drops the final e. [gpt-6.1-sol high]	VerbForm=Ger
 bagmen	bagman	n	valid	attested by AGID, AGID irregular list, Moby word list
 bagsful	bagful	n	valid	attested by AGID, AGID irregular list
 bains-marie	bain-marie	n	valid	attested by OEWN form
@@ -71,7 +73,8 @@ barricadoes	barricado	n	valid	attested by Moby word list
 barricadoes	barricado	v	valid	attested by AGID, Moby word list
 bastinadoes	bastinado	n	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 batmen	batman	n	valid	attested by AGID, AGID irregular list, Moby word list
-bedesmen	bedesman	n	valid	The man element becomes men in this compound.	Number=Plur
+bedesmen	bedesman	n	valid	The man element becomes men in this compound. [gpt-6.1-sol high]	Number=Plur
+begat	beget	v	valid	Begat is an established older past tense of beget, still used in literary and biblical language. [gpt-6.1-sol high]	Tense=Past
 bejewelled	bejewel	v	valid	attested by AGID, OEWN form, Moby word list
 bellmen	bellman	n	valid	attested by AGID, AGID irregular list, Moby word list
 bethought	bethink	v	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
@@ -80,23 +83,24 @@ bilboes	bilbo	n	valid	attested by Moby word list
 bimboes	bimbo	n	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 bluer	blue	a	valid	attested by AGID, OEWN form, Moby word list
 bode	bide	v	valid	attested by AGID, AGID irregular list, Moby word list
-bogeymen	boogeyman	n	valid	Bogeymen uses the established bogeyman spelling variant and the irregular plural men.	Number=Plur
+bogeymen	boogeyman	n	valid	Bogeymen uses the established bogeyman spelling variant and the irregular plural men. [gpt-6.1-sol high]	Number=Plur
 bogied	bogey	v	valid	attested by AGID, AGID irregular list
 bondmen	bondman	n	valid	attested by AGID, AGID irregular list, Moby word list
 bondswomen	bondswoman	n	valid	attested by AGID, AGID irregular list, Moby word list
 bondwomen	bondwoman	n	valid	attested by AGID, AGID irregular list, Moby word list
-boniest	boney	a	valid	Boniest is the established superlative of bony, also spelled boney.	Degree=Sup
+boniest	boney	a	valid	Boniest is the established superlative of bony, also spelled boney. [gpt-6.1-sol high]	Degree=Sup
 bonitoes	bonito	n	valid	attested by AGID, OEWN form, AGID irregular list
 boogeymen	boogeyman	n	valid	attested by AGID, AGID irregular list, Moby word list
 brants	brent	n	valid	attested by OEWN form
 Brethren	Brother	n	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 brethren	brother	n	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 brevetted	brevet	v	valid	attested by AGID, OEWN form, Moby word list
+Brisses	Bris	n	valid	Brisses is an established plural of bris, with the final s doubled before -es. [gpt-6.1-sol high]	Capitalization=Title+Number=Plur
 broadleaves	broadleaf	n	valid	attested by Moby word list
-brusquest	brusk	a	valid	Brusquest is the superlative of brusque, an established spelling variant of brusk.	Degree=Sup
+brusquest	brusk	a	valid	Brusquest is the superlative of brusque, an established spelling variant of brusk. [gpt-6.1-sol high]	Degree=Sup
 buckoes	bucko	n	valid	attested by Moby word list
 buffaloes	buffalo	v	valid	attested by AGID
-buncoes	bunco	v	valid	Buncoes is an established third-person form of bunco with the alternative ending oes.	Person=3+Tense=Pres
+buncoes	bunco	v	valid	Buncoes is an established third-person form of bunco with the alternative ending oes. [gpt-6.1-sol medium + claude-sonnet-5.5 recheck medium]	Person=3+Tense=Pres
 bushelling	bushel	v	valid	attested by AGID, OEWN form, Moby word list
 busmen	busman	n	valid	attested by AGID, AGID irregular list, Moby word list
 cabmen	cabman	n	valid	attested by AGID, AGID irregular list, Moby word list
@@ -104,7 +108,7 @@ caeca	caecum	n	valid	attested by AGID, OEWN form, AGID irregular list
 calcanei	calcaneus	n	valid	attested by AGID, OEWN form, AGID irregular list
 calyces	calyx	n	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 cambia	cambium	n	valid	attested by AGID, OEWN form, AGID irregular list
-camerawomen	camerawoman	n	valid	The woman element becomes women in this compound.	Number=Plur
+camerawomen	camerawoman	n	valid	The woman element becomes women in this compound. [gpt-6.1-sol high]	Number=Plur
 campanili	campanile	n	valid	attested by AGID, AGID irregular list, Moby word list
 canoing	canoe	v	valid	attested by AGID, AGID irregular list
 canvassed	canvas	v	valid	attested by AGID
@@ -117,19 +121,20 @@ caryatides	caryatid	n	valid	attested by AGID, AGID irregular list, Moby word lis
 caryopsides	caryopsis	n	valid	attested by OEWN form
 casted	cast	v	valid	the labelled anchor sentences use casted; the corpus lists it (our corpus)
 cataloes	catalo	n	valid	attested by Moby word list
-catalogued	catalog	v	valid	Catalogued is the established past form using the catalogue spelling variant.	Tense=Past+VerbForm=Part
+catalogued	catalog	v	valid	Catalogued is the established past form using the catalogue spelling variant. [gpt-6.1-sol high]	Tense=Past+VerbForm=Part
 caucussed	caucus	v	valid	attested by AGID
+caucussing	caucus	v	valid	Caucussing is an established doubled-s variant alongside caucusing. [gpt-6.1-sol high]	VerbForm=Ger
 celli	cello	n	valid	attested by AGID, AGID irregular list
 cembali	cembalo	n	valid	attested by OEWN form, Moby word list
 centesimi	centesimo	n	valid	attested by AGID (less standard variant), OEWN form
-chairmanned	chairman	v	valid	The verb doubles the final n before -ed, giving chairmanned.	Tense=Past+VerbForm=Part
+chairmanned	chairman	v	valid	The verb doubles the final n before -ed, giving chairmanned. [gpt-6.1-sol high]	Tense=Past+VerbForm=Part
 chamoix	chamois	n	valid	attested by AGID, AGID irregular list
-chaoses	chaos	n	valid	Chaos admits the count plural chaoses when referring to distinct states or instances of disorder.	Number=Plur
+chaoses	chaos	n	valid	Chaos admits the count plural chaoses when referring to distinct states or instances of disorder. [gpt-6.1-sol high]	Number=Plur
 chapatties	chapatti	n	valid	attested by agid<, OEWN form, Moby word list
 chateaux	chateau	n	valid	attested by AGID, OEWN form, AGID irregular list
 cherubim	cherub	n	valid	attested by AGID, OEWN form, our irregular list, AGID irregular list
 chevied	chivy	v	valid	attested by OEWN form, Moby word list
-chilis	chili	n	valid	Chilis is an established alternative plural of chili, alongside chilies.	Number=Plur
+chilis	chili	n	valid	Chilis is an established alternative plural of chili, alongside chilies. [gpt-6.1-sol medium + claude-sonnet-5.5 recheck high]	Number=Plur
 chivvying	chivy	v	valid	attested by OEWN form
 chorussed	chorus	v	valid	attested by AGID
 cicale	cicala	n	valid	attested by OEWN form, Moby word list
@@ -137,29 +142,29 @@ cingula	cingulum	n	valid	attested by AGID, OEWN form, AGID irregular list
 clansmen	clansman	n	valid	attested by AGID, AGID irregular list, Moby word list
 clanswomen	clanswoman	n	valid	attested by AGID, AGID irregular list, Moby word list
 claroes	claro	n	valid	attested by AGID, OEWN form, AGID irregular list
-clueing	clue	v	valid	Clueing is an established spelling retaining e before ing, alongside cluing.	VerbForm=Ger
+clueing	clue	v	valid	Clueing is an established spelling retaining e before ing, alongside cluing. [gpt-6.1-sol high]	VerbForm=Ger
 coachmen	coachman	n	valid	attested by AGID, AGID irregular list, Moby word list
 coagula	coagulum	n	valid	attested by AGID (less standard variant), OEWN form, Moby word list
 coastguardsmen	coastguardsman	n	valid	attested by AGID, AGID irregular list, Moby word list
-colobi	colobus	n	valid	Colobi is an established classical plural beside colobuses.	Number=Plur
+colobi	colobus	n	valid	Colobi is an established classical plural beside colobuses. [gpt-6.1-sol medium + claude-sonnet-5.5 recheck medium]	Number=Plur
 colones	colon	n	valid	attested by OEWN form, Moby word list
 comedones	comedo	n	valid	attested by OEWN form
 committeemen	committeeman	n	valid	attested by AGID, AGID irregular list, Moby word list
 committeewomen	committeewoman	n	valid	attested by AGID, AGID irregular list, Moby word list
-concretizes	concretise	v	valid	Concretize is the established -ize variant, with regular third-person -s.	Person=3+Tense=Pres
-concretizing	concretise	v	valid	Concretize is the -ize variant; its gerund drops final e.	VerbForm=Ger
+concretizes	concretise	v	valid	Concretize is the established -ize variant, with regular third-person -s. [gpt-6.1-sol high]	Person=3+Tense=Pres
+concretizing	concretise	v	valid	Concretize is the -ize variant; its gerund drops final e. [gpt-6.1-sol high]	VerbForm=Ger
 congoes	congo	n	valid	attested by AGID, AGID irregular list
 congresswomen	congresswoman	n	valid	attested by AGID, AGID irregular list, Moby word list
-containerized	containerise	v	valid	Containerized uses the established ize spelling variant and the regular past ending d.	Tense=Past+VerbForm=Part
-containerizing	containerise	v	valid	Containerize is the established -ize variant; its gerund drops final e.	VerbForm=Ger
+containerized	containerise	v	valid	Containerized uses the established ize spelling variant and the regular past ending d. [gpt-6.1-sol high]	Tense=Past+VerbForm=Part
+containerizing	containerise	v	valid	Containerize is the established -ize variant; its gerund drops final e. [gpt-6.1-sol high]	VerbForm=Ger
 converses	converse	n	valid	attested by AGID
-copolymerizing	copolymerise	v	valid	Copolymerizing uses the established ize spelling variant and drops the final e.	VerbForm=Ger
+copolymerizing	copolymerise	v	valid	Copolymerizing uses the established ize spelling variant and drops the final e. [gpt-6.1-sol high]	VerbForm=Ger
 corantoes	coranto	n	valid	attested by Moby word list
 coronachs	coronach	n	valid	attested by AGID, AGID irregular list
 corrigenda	corrigendum	n	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 countermen	counterman	n	valid	attested by AGID, AGID irregular list, Moby word list
-counterstruck	counterstrike	v	valid	The compound retains struck as both the past tense and past participle of strike.	Tense=Past+VerbForm=Part
-cowmen	cowman	n	valid	attested by AGID, OEWN form
+counterstruck	counterstrike	v	valid	The compound retains struck as both the past tense and past participle of strike. [gpt-6.1-sol high]	Tense=Past+VerbForm=Part
+cowmen	cowman	n	valid	authored plural (primary), writer and verifier agree; Moby word list
 cracksmen	cracksman	n	valid	attested by AGID, AGID irregular list, Moby word list
 cragsmen	cragsman	n	valid	attested by AGID, AGID irregular list, Moby word list
 craps	crap	n	valid	attested by AGID, Moby word list
@@ -174,13 +179,15 @@ debussed	debus	v	valid	attested by Moby word list
 debussing	debus	v	valid	attested by Moby word list
 decrescendi	decrescendo	n	valid	attested by AGID, AGID irregular list
 deliverymen	deliveryman	n	valid	attested by AGID, AGID irregular list, Moby word list
-depressurizing	depressurise	v	valid	Depressurize is the established -ize variant; its gerund drops final e.	VerbForm=Ger
-dermatophytoses	dermatophytosis	n	valid	The medical noun changes terminal -osis to -oses in the plural.	Number=Plur
+depressurizing	depressurise	v	valid	Depressurize is the established -ize variant; its gerund drops final e. [gpt-6.1-sol high]	VerbForm=Ger
+dermatophytoses	dermatophytosis	n	valid	The medical noun changes terminal -osis to -oses in the plural. [gpt-6.1-sol high]	Number=Plur
+dermes	dermis	n	valid	Dermes is an established classical plural of dermis alongside dermises. [gpt-6.1-sol high]	Number=Plur
 deskmen	deskman	n	valid	attested by AGID, AGID irregular list, Moby word list
 dessertspoonsful	dessertspoonful	n	valid	attested by AGID, AGID irregular list
+dibbukim	dibbuk	n	valid	Dibbukim is an established Hebrew-derived plural of dibbuk. [gpt-6.1-sol high]	Number=Plur
 didoes	dido	n	valid	attested by AGID, AGID irregular list, Moby word list
 dildoes	dildo	n	valid	attested by AGID, AGID irregular list
-diminuendi	diminuendo	n	valid	Diminuendi is the Italian plural used beside diminuendos.	Number=Plur
+diminuendi	diminuendo	n	valid	Diminuendi is the Italian plural used beside diminuendos. [gpt-6.1-sol high]	Number=Plur
 diminuendoes	diminuendo	n	valid	attested by AGID, AGID irregular list, Moby word list
 diptera	dipteron	n	valid	attested by AGID, AGID irregular list, Moby word list
 divertimenti	divertimento	n	valid	attested by AGID (less standard variant), OEWN form, Moby word list
@@ -191,36 +198,40 @@ domatia	domatium	n	valid	attested by OEWN form
 dopier	dopey	a	valid	attested by AGID, OEWN form, Moby word list
 dopiest	dopey	a	valid	attested by AGID, OEWN form, Moby word list
 dryades	dryad	n	valid	attested by AGID, OEWN form, Moby word list
-earthmen	earthman	n	valid	attested by AGID, OEWN form
+dybbukim	dybbuk	n	valid	Dybbukim is an established Hebrew-derived plural of dybbuk. [gpt-6.1-sol high]	Number=Plur
+earthmen	earthman	n	valid	authored plural (primary), writer and verifier agree; Moby word list
 ectozoa	ectozoan	n	valid	attested by OEWN form, Moby word list
 eisteddfodau	eisteddfod	n	valid	attested by OEWN form
-embeds	imbed	v	valid	Imbed and embed are established spelling variants; embeds uses the latter.	Person=3+Tense=Pres
+embedded	imbed	v	valid	Embed is an established spelling variant of imbed; embedded is its past and participle. [gpt-6.1-sol high]	Tense=Past+VerbForm=Part
+embedding	imbed	v	valid	Embed is an established spelling variant of imbed; embedding doubles d before -ing. [gpt-6.1-sol high]	VerbForm=Ger
+embeds	imbed	v	valid	Imbed and embed are established spelling variants; embeds uses the latter. [gpt-6.1-sol high]	Person=3+Tense=Pres
 encomia	encomium	n	valid	attested by AGID, OEWN form, AGID irregular list
 endozoa	endozoan	n	valid	attested by OEWN form
-Englishmen	englishman	n	valid	Compounds ending in man form their plural in men; initial capitalization is immaterial.	Number=Plur
+Englishmen	englishman	n	valid	Compounds ending in man form their plural in men; initial capitalization is immaterial. [gpt-6.1-sol high]	Number=Plur
 enrolled	enrol	v	valid	attested by AGID, OEWN form, Moby word list
 entera	enteron	n	valid	attested by AGID (less standard variant), OEWN form
 enthralling	enthral	v	valid	attested by AGID, OEWN form, Moby word list
 entozoa	entozoan	n	valid	attested by OEWN form, Moby word list
-eohippuses	eohippus	n	valid	The animal name admits an ordinary English plural in es.	Number=Plur
-epe	epos	n	valid	Epe is an established Greek plural of epos.	Number=Plur
+eohippuses	eohippus	n	valid	The animal name admits an ordinary English plural in es. [gpt-6.1-sol high]	Number=Plur
+epe	epos	n	valid	Epe is an established Greek plural of epos. [gpt-6.1-sol high]	Number=Plur
 epizoa	epizoon	n	valid	attested by AGID, OEWN form, AGID irregular list
-estruses	oestrus	n	valid	Estruses is the regular English plural using the established estrus spelling variant.	Number=Plur
-etherized	etherise	v	valid	Established -ize spelling variant; the past and participle end in -ized.	Tense=Past+VerbForm=Part
-etherizes	etherise	v	valid	Etherizes is the third-person form using the established ize spelling variant.	Person=3+Tense=Pres
-etherizing	etherise	v	valid	Established -ize spelling variant; drop final e before -ing.	VerbForm=Ger
-ethne	ethnos	n	valid	Ethne is the established Greek plural of ethnos.	Number=Plur
+estruses	oestrus	n	valid	Estruses is the regular English plural using the established estrus spelling variant. [gpt-6.1-sol high]	Number=Plur
+etherized	etherise	v	valid	Established -ize spelling variant; the past and participle end in -ized. [gpt-6.1-sol high]	Tense=Past+VerbForm=Part
+etherizes	etherise	v	valid	Etherizes is the third-person form using the established ize spelling variant. [gpt-6.1-sol high]	Person=3+Tense=Pres
+etherizing	etherise	v	valid	Established -ize spelling variant; drop final e before -ing. [gpt-6.1-sol high]	VerbForm=Ger
+ethne	ethnos	n	valid	Ethne is the established Greek plural of ethnos. [gpt-6.1-sol high]	Number=Plur
 excisemen	exciseman	n	valid	attested by AGID, AGID irregular list, Moby word list
-excisewomen	excisewoman	n	valid	The woman element becomes women in this compound.	Number=Plur
+excisewomen	excisewoman	n	valid	The woman element becomes women in this compound. [gpt-6.1-sol high]	Number=Plur
 exordia	exordium	n	valid	attested by OEWN form, Moby word list
-explananda	explanandum	n	valid	The Latin neuter ending um becomes a in the plural.	Number=Plur
+explananda	explanandum	n	valid	The Latin neuter ending um becomes a in the plural. [gpt-6.1-sol high]	Number=Plur
 eyne	eye	n	valid	attested by AGID, AGID irregular list, Moby word list
-factorized	factorise	v	valid	Factorize is the established -ize variant, with past factorized.	Tense=Past+VerbForm=Part
-factorizes	factorise	v	valid	Factorizes is the third-person form using the established ize spelling variant.	Person=3+Tense=Pres
-factorizing	factorise	v	valid	Factorizing uses the established ize spelling variant and drops the final e.	VerbForm=Ger
+facias	fascia	n	valid	Facia is an established spelling variant of fascia, especially for a dashboard; facias is its plural. [gpt-6.1-sol medium + claude-sonnet-5.5 recheck medium]	Number=Plur
+factorized	factorise	v	valid	Factorize is the established -ize variant, with past factorized. [gpt-6.1-sol high]	Tense=Past+VerbForm=Part
+factorizes	factorise	v	valid	Factorizes is the third-person form using the established ize spelling variant. [gpt-6.1-sol high]	Person=3+Tense=Pres
+factorizing	factorise	v	valid	Factorizing uses the established ize spelling variant and drops the final e. [gpt-6.1-sol high]	VerbForm=Ger
 farragoes	farrago	n	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 ferrymen	ferryman	n	valid	attested by AGID, AGID irregular list, Moby word list
-ferrywomen	ferrywoman	n	valid	The woman element becomes women in this compound.	Number=Plur
+ferrywomen	ferrywoman	n	valid	The woman element becomes women in this compound. [gpt-6.1-sol high]	Number=Plur
 festschriften	festschrift	n	valid	attested by OEWN form
 ficoes	fico	n	valid	attested by Moby word list
 fieldmice	fieldmouse	n	valid	attested by AGID, OEWN form, AGID irregular list
@@ -234,7 +245,7 @@ foreknown	foreknow	v	valid	attested by AGID, OEWN form, AGID irregular list, Mob
 foreshown	foreshow	v	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 formating	format	v	valid	nonstandard spelling of formatting, attested by AGID and listed by the Moby word list, so the dictionary knows it
 fortissimi	fortissimo	n	valid	attested by AGID, AGID irregular list
-fossilizes	fossilise	v	valid	Fossilizes is the third-person form using the established ize spelling variant.	Person=3+Tense=Pres
+fossilizes	fossilise	v	valid	Fossilizes is the third-person form using the established ize spelling variant. [gpt-6.1-sol high]	Person=3+Tense=Pres
 foxtrotted	foxtrot	v	valid	attested by AGID, OEWN form
 freedwomen	freedwoman	n	valid	attested by AGID, AGID irregular list, Moby word list
 freemen	freeman	n	valid	attested by AGID, AGID irregular list, Moby word list
@@ -250,12 +261,14 @@ gametangia	gametangium	n	valid	attested by AGID, OEWN form, AGID irregular list
 gasmen	gasman	n	valid	attested by AGID, AGID irregular list, Moby word list
 gateaux	gateau	n	valid	attested by AGID (less standard variant), OEWN form, Moby word list
 gentlemen-at-arms	gentleman-at-arms	n	valid	attested by OEWN form
-gildsmen	gildsman	n	valid	The compound plural replaces man with men.	Number=Plur
+gildsmen	gildsman	n	valid	The compound plural replaces man with men. [gpt-6.1-sol high]	Number=Plur
 gilt	gild	v	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
+ginkgoes	gingko	n	valid	Ginkgoes is an established plural of ginkgo, a spelling variant of gingko. [gpt-6.1-sol high]	Number=Plur
+ginkgos	gingko	n	valid	Ginkgo is an established spelling variant of gingko, and ginkgos is its regular plural. [gpt-6.1-sol high]	Number=Plur
 ginzoes	ginzo	n	valid	attested by Moby word list
-glamorized	glamorise	v	valid	Glamorized uses the established ize spelling variant and the regular past ending d.	Tense=Past+VerbForm=Part
-glamorizes	glamorise	v	valid	The -ize variant takes regular third-person -s.	Person=3+Tense=Pres
-glamorizing	glamorise	v	valid	Glamorize is the established -ize variant; its gerund drops final e.	VerbForm=Ger
+glamorized	glamorise	v	valid	Glamorized uses the established ize spelling variant and the regular past ending d. [gpt-6.1-sol high]	Tense=Past+VerbForm=Part
+glamorizes	glamorise	v	valid	The -ize variant takes regular third-person -s. [gpt-6.1-sol high]	Person=3+Tense=Pres
+glamorizing	glamorise	v	valid	Glamorize is the established -ize variant; its gerund drops final e. [gpt-6.1-sol high]	VerbForm=Ger
 glandes	glans	n	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 globigerinae	globigerina	n	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 glochidia	glochidium	n	valid	attested by OEWN form
@@ -263,9 +276,9 @@ goboes	gobo	n	valid	attested by Moby word list
 goodwives	goodwife	n	valid	attested by Moby word list
 goyim	goy	n	valid	attested by OEWN form, Moby word list
 graven	grave	v	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
-grayer	grey	a	valid	Grayer is the comparative using the established American spelling gray.	Degree=Cmp
-grayest	grey	a	valid	Grayest is the superlative using the established American spelling gray.	Degree=Sup
-greyest	gray	a	valid	Greyest is the superlative using the established grey spelling.	Degree=Sup
+grayer	grey	a	valid	Grayer is the comparative using the established American spelling gray. [gpt-6.1-sol high]	Degree=Cmp
+grayest	grey	a	valid	Grayest is the superlative using the established American spelling gray. [gpt-6.1-sol high]	Degree=Sup
+greyest	gray	a	valid	Greyest is the superlative using the established grey spelling. [gpt-6.1-sol high]	Degree=Sup
 gript	grip	v	valid	attested by OEWN form, Moby word list
 groomsmen	groomsman	n	valid	attested by AGID, AGID irregular list, Moby word list
 groszy	grosz	n	valid	attested by OEWN form
@@ -273,9 +286,9 @@ guacharoes	guacharo	n	valid	attested by AGID, AGID irregular list
 Guaranies	Guarani	n	valid	attested by AGID, AGID irregular list
 Guaranies	guarani	n	valid	attested by AGID, AGID irregular list
 guaranies	guarani	n	valid	attested by AGID, AGID irregular list
-guildsmen	guildsman	n	valid	The compound plural replaces man with men.	Number=Plur
-gunwomen	gunwoman	n	valid	The woman element becomes women in this compound.	Number=Plur
-haematoceles	haematocoele	n	valid	Haematoceles uses the established haematocele spelling variant, with regular plural s.	Number=Plur
+guildsmen	guildsman	n	valid	The compound plural replaces man with men. [gpt-6.1-sol high]	Number=Plur
+gunwomen	gunwoman	n	valid	The woman element becomes women in this compound. [gpt-6.1-sol high]	Number=Plur
+haematoceles	haematocoele	n	valid	Haematoceles uses the established haematocele spelling variant, with regular plural s. [gpt-6.1-sol high]	Number=Plur
 haematomata	haematoma	n	valid	attested by OEWN form, Moby word list
 handwrit	handwrite	v	valid	attested by AGID, AGID irregular list
 handwritten	handwrite	v	valid	attested by AGID, AGID irregular list, Moby word list
@@ -283,37 +296,37 @@ hangers-on	hanger-on	n	valid	attested by OEWN form
 harvestmen	harvestman	n	valid	attested by AGID, AGID irregular list, Moby word list
 headmen	headman	n	valid	attested by AGID, AGID irregular list, Moby word list
 headsmen	headsman	n	valid	attested by AGID, AGID irregular list, Moby word list
-hematoceles	haematocoele	n	valid	Hematocele is an established spelling variant and takes regular plural -s.	Number=Plur
-hematocoeles	haematocoele	n	valid	Hematocoele is an established spelling variant and takes regular plural -s.	Number=Plur
+hematoceles	haematocoele	n	valid	Hematocele is an established spelling variant and takes regular plural -s. [gpt-6.1-sol high]	Number=Plur
+hematocoeles	haematocoele	n	valid	Hematocoele is an established spelling variant and takes regular plural -s. [gpt-6.1-sol high]	Number=Plur
 hematomata	hematoma	n	valid	attested by AGID (less standard variant), OEWN form, Moby word list
-henchwomen	henchwoman	n	valid	The woman element becomes women in this compound.	Number=Plur
+henchwomen	henchwoman	n	valid	The woman element becomes women in this compound. [gpt-6.1-sol high]	Number=Plur
 herbaria	herbarium	n	valid	attested by OEWN form
 hocussed	hocus	v	valid	attested by Moby word list
 hodmen	hodman	n	valid	attested by AGID, AGID irregular list, Moby word list
 holloes	hollo	n	valid	attested by AGID, AGID irregular list
 holloes	hollo	v	valid	attested by AGID
 homier	homey	a	valid	attested by AGID, OEWN form, Moby word list
-homogenized	homogenise	v	valid	Homogenize is the established -ize variant, with past homogenized.	Tense=Past+VerbForm=Part
-homogenizes	homogenise	v	valid	Homogenize is the established -ize variant, with regular third-person -s.	Person=3+Tense=Pres
-hoodmen	hoodman	n	valid	The compound plural replaces man with men.	Number=Plur
-hordeola	hordeolum	n	valid	The Latin neuter ending um becomes a in the plural.	Number=Plur
+homogenized	homogenise	v	valid	Homogenize is the established -ize variant, with past homogenized. [gpt-6.1-sol high]	Tense=Past+VerbForm=Part
+homogenizes	homogenise	v	valid	Homogenize is the established -ize variant, with regular third-person -s. [gpt-6.1-sol high]	Person=3+Tense=Pres
+hoodmen	hoodman	n	valid	The compound plural replaces man with men. [gpt-6.1-sol high]	Number=Plur
+hordeola	hordeolum	n	valid	The Latin neuter ending um becomes a in the plural. [gpt-6.1-sol high]	Number=Plur
 hotelmen	hotelman	n	valid	attested by AGID, AGID irregular list, Moby word list
 housebroke	housebreak	v	valid	attested by AGID, AGID irregular list, Moby word list
 housebroken	housebreak	v	valid	attested by AGID, AGID irregular list, Moby word list
 housemen	houseman	n	valid	attested by AGID, AGID irregular list, Moby word list
 husbandmen	husbandman	n	valid	attested by AGID, AGID irregular list, Moby word list
 iambi	iamb	n	valid	attested by OEWN form
-iambi	iambus	n	valid	Iambus has the established classical plural iambi, alongside iambuses.	Number=Plur
-ibides	ibis	n	valid	Ibides is an established classical plural beside ibises.	Number=Plur
+iambi	iambus	n	valid	Iambus has the established classical plural iambi, alongside iambuses. [gpt-6.1-sol high]	Number=Plur
+ibides	ibis	n	valid	Ibides is an established classical plural beside ibises. [gpt-6.1-sol high]	Number=Plur
 icemen	iceman	n	valid	attested by AGID, AGID irregular list, Moby word list
 ichthyosauruses	ichthyosaur	n	valid	attested by OEWN form, Moby word list
 imagines	imago	n	valid	attested by AGID, OEWN form, AGID irregular list
 innuendoes	innuendo	n	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 inocula	inoculum	n	valid	attested by OEWN form, Moby word list
 intagli	intaglio	n	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
-interiorized	interiorise	v	valid	Interiorize is an established -ize variant, with past interiorized.	Tense=Past+VerbForm=Part
-interiorizes	interiorise	v	valid	Interiorizes is the third-person form using the established ize spelling variant.	Person=3+Tense=Pres
-interiorizing	interiorise	v	valid	Interiorizing uses the established ize spelling variant and drops the final e.	VerbForm=Ger
+interiorized	interiorise	v	valid	Interiorize is an established -ize variant, with past interiorized. [gpt-6.1-sol high]	Tense=Past+VerbForm=Part
+interiorizes	interiorise	v	valid	Interiorizes is the third-person form using the established ize spelling variant. [gpt-6.1-sol high]	Person=3+Tense=Pres
+interiorizing	interiorise	v	valid	Interiorizing uses the established ize spelling variant and drops the final e. [gpt-6.1-sol high]	VerbForm=Ger
 interknotted	interknot	v	valid	attested by Moby word list
 interlaid	interlay	v	valid	attested by Moby word list
 interleaves	interleaf	n	valid	attested by OEWN form, Moby word list
@@ -321,13 +334,13 @@ interregna	interregnum	n	valid	attested by AGID, OEWN form, AGID irregular list
 involucra	involucre	n	valid	attested by OEWN form
 Irishmen	Irishman	n	valid	attested by AGID, our irregular list
 ischia	ischium	n	valid	attested by AGID, OEWN form, AGID irregular list
-isomerizes	isomerise	v	valid	Isomerize is an established variant, with third person isomerizes.	Person=3+Tense=Pres
+isomerizes	isomerise	v	valid	Isomerize is an established variant, with third person isomerizes. [gpt-6.1-sol high]	Person=3+Tense=Pres
 jacks-in-the-box	jack-in-the-box	n	valid	attested by OEWN form
 jazzmen	jazzman	n	valid	attested by AGID, AGID irregular list, Moby word list
 jewelled	jewel	v	valid	attested by AGID, OEWN form, Moby word list
 jurymen	juryman	n	valid	attested by AGID, AGID irregular list, Moby word list
 jurywomen	jurywoman	n	valid	attested by AGID, AGID irregular list, Moby word list
-kayoes	kayo	v	valid	Kayoes is an established inflection beside kayos.	Person=3+Tense=Pres
+kayoes	kayo	v	valid	Kayoes is an established inflection beside kayos. [gpt-6.1-sol medium + claude-sonnet-5.5 recheck medium]	Person=3+Tense=Pres
 keeshonden	keeshond	n	valid	attested by OEWN form, Moby word list
 keratoses	keratosis	n	valid	attested by AGID, AGID irregular list, Moby word list
 kiddoes	kiddo	n	valid	attested by AGID, AGID irregular list, Moby word list
@@ -336,7 +349,7 @@ kins	kin	n	valid	attested by AGID
 lallygagging	lallygag	v	valid	attested by AGID, OEWN form, Moby word list
 landmen	landman	n	valid	attested by AGID, AGID irregular list, Moby word list
 landsmen	landsman	n	valid	attested by AGID, AGID irregular list, Moby word list
-lares	lar	n	valid	Lares is the established Latin plural of the Roman household spirit lar.	Number=Plur
+lares	lar	n	valid	Lares is the established Latin plural of the Roman household spirit lar. [gpt-6.1-sol high]	Number=Plur
 last	late	a	valid	attested by Moby word list
 latter	late	a	valid	attested by Moby word list
 latu	lat	n	valid	attested by OEWN form
@@ -345,13 +358,13 @@ lawmen	lawman	n	valid	attested by AGID, AGID irregular list, Moby word list
 least	little	a	valid	attested by AGID, Moby word list
 least	little	r	valid	attested by Moby word list
 leatherleaves	leatherleaf	n	valid	attested by AGID, AGID irregular list, Moby word list
-lenswomen	lenswoman	n	valid	The woman element becomes women in this compound.	Number=Plur
+lenswomen	lenswoman	n	valid	The woman element becomes women in this compound. [gpt-6.1-sol high]	Number=Plur
 less	little	a	valid	attested by AGID, Moby word list
 less	little	r	valid	attested by Moby word list
 lesser	little	a	valid	attested by AGID, Moby word list
 lettermen	letterman	n	valid	attested by AGID, AGID irregular list, Moby word list
 leucocytozoa	leucocytozoan	n	valid	attested by OEWN form
-lexeis	lexis	n	valid	Lexeis is the Greek plural of lexis.	Number=Plur
+lexeis	lexis	n	valid	Lexeis is the Greek plural of lexis. [gpt-6.1-sol high]	Number=Plur
 lieder	lied	n	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 liegemen	liegeman	n	valid	attested by AGID, AGID irregular list, Moby word list
 lightermen	lighterman	n	valid	attested by AGID, AGID irregular list, Moby word list
@@ -362,27 +375,29 @@ litai	litas	n	valid	attested by OEWN form
 liverleaves	liverleaf	n	valid	attested by AGID, AGID irregular list, Moby word list
 liverymen	liveryman	n	valid	attested by AGID, AGID irregular list, Moby word list
 lochs	loch	n	valid	attested by AGID, OEWN form
-longshorewomen	longshorewoman	n	valid	The compound plural replaces woman with women.	Number=Plur
+longshorewomen	longshorewoman	n	valid	The compound plural replaces woman with women. [gpt-6.1-sol high]	Number=Plur
 loups-garous	loup-garou	n	valid	attested by OEWN form
 macaronies	macaroni	n	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 makuta	likuta	n	valid	attested by OEWN form, Moby word list
 mallei	malleus	n	valid	attested by AGID (less standard variant), OEWN form, Moby word list
 manifestoes	manifesto	n	valid	attested by AGID, OEWN form, AGID irregular list
-marquesses	marquis	n	valid	Marquesses uses the established marquess variant of the same title.	Number=Plur
+marquesses	marquis	n	valid	Marquesses uses the established marquess variant of the same title. [gpt-6.1-sol medium + claude-sonnet-5.5 recheck high]	Number=Plur
 mediastina	mediastinum	n	valid	attested by AGID, OEWN form, AGID irregular list
-megalopoleis	megalopolis	n	valid	The Greek polis element has the established classical plural poleis.	Number=Plur
-Megilloth	Megillah	n	valid	Megilloth is an established transliteration of the Hebrew plural.	Capitalization=Title+Number=Plur
-Megilloth	megillah	n	valid	Megilloth is the established Hebrew plural of megillah.	Number=Plur
-memorizes	memorise	v	valid	Memorizes is the third-person form using the established ize spelling variant.	Person=3+Tense=Pres
+megalopoleis	megalopolis	n	valid	The Greek polis element has the established classical plural poleis. [gpt-6.1-sol high]	Number=Plur
+Megillot	megillah	n	valid	Megillot is an established Hebrew-derived plural of megillah; initial capitalization is immaterial. [gpt-6.1-sol high]	Number=Plur
+megillot	megillah	n	valid	Megillot is an established Hebrew-derived plural of megillah. [gpt-6.1-sol high]	Number=Plur
+Megilloth	Megillah	n	valid	Megilloth is an established transliteration of the Hebrew plural. [gpt-6.1-sol high]	Capitalization=Title+Number=Plur
+Megilloth	megillah	n	valid	Megilloth is the established Hebrew plural of megillah. [gpt-6.1-sol high]	Number=Plur
+memorizes	memorise	v	valid	Memorizes is the third-person form using the established ize spelling variant. [gpt-6.1-sol high]	Person=3+Tense=Pres
 men-at-arms	man-at-arms	n	valid	attested by OEWN form
 men-o'-war	man-of-war	n	valid	attested by OEWN form
-mercerized	mercerise	v	valid	Mercerize is the established -ize variant, with past mercerized.	Tense=Past+VerbForm=Part
+mercerized	mercerise	v	valid	Mercerize is the established -ize variant, with past mercerized. [gpt-6.1-sol high]	Tense=Past+VerbForm=Part
 merchantmen	merchantman	n	valid	attested by AGID, AGID irregular list, Moby word list
 mesdames	madam	n	valid	attested by AGID, AGID irregular list, Moby word list
 mesdames	madame	n	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
-mesmerized	mesmerise	v	valid	Mesmerize is the established -ize variant, with past mesmerized.	Tense=Past+VerbForm=Part
-mesmerizes	mesmerise	v	valid	Mesmerizes is the third-person singular of the established variant mesmerize.	Person=3+Tense=Pres
-mesmerizing	mesmerise	v	valid	Mesmerizing uses the established ize spelling variant and drops the final e.	VerbForm=Ger
+mesmerized	mesmerise	v	valid	Mesmerize is the established -ize variant, with past mesmerized. [gpt-6.1-sol high]	Tense=Past+VerbForm=Part
+mesmerizes	mesmerise	v	valid	Mesmerizes is the third-person singular of the established variant mesmerize. [gpt-6.1-sol high]	Person=3+Tense=Pres
+mesmerizing	mesmerise	v	valid	Mesmerizing uses the established ize spelling variant and drops the final e. [gpt-6.1-sol high]	VerbForm=Ger
 metazoa	metazoan	n	valid	attested by OEWN form
 mezuzoth	mezuzah	n	valid	attested by OEWN form, Moby word list
 millennia	millennium	n	valid	attested by AGID, OEWN form, our closed list, AGID irregular list
@@ -390,13 +405,15 @@ misgave	misgive	v	valid	attested by AGID, OEWN form, AGID irregular list, Moby w
 misgiven	misgive	v	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 misspoke	misspeak	v	valid	attested by AGID, AGID irregular list, Moby word list
 misspoken	misspeak	v	valid	attested by AGID, AGID irregular list, Moby word list
-moisturizes	moisturise	v	valid	Moisturizes is the third-person form using the established ize spelling variant.	Person=3+Tense=Pres
-moisturizing	moisturise	v	valid	Moisturize is the established -ize variant; its gerund drops final e.	VerbForm=Ger
+moisturizes	moisturise	v	valid	Moisturizes is the third-person form using the established ize spelling variant. [gpt-6.1-sol high]	Person=3+Tense=Pres
+moisturizing	moisturise	v	valid	Moisturize is the established -ize variant; its gerund drops final e. [gpt-6.1-sol high]	VerbForm=Ger
+moldier	mouldy	a	valid	Moldy is the American spelling of mouldy; its comparative changes y to -ier. [gpt-6.1-sol high]	Degree=Cmp
+moldiest	mouldy	a	valid	Moldy is the American spelling of mouldy; its superlative changes y to -iest. [gpt-6.1-sol high]	Degree=Sup
 Molochs	Moloch	n	valid	attested by AGID, AGID irregular list
 Molochs	moloch	n	valid	attested by AGID, AGID irregular list
 molochs	moloch	n	valid	attested by AGID, AGID irregular list
 monades	monas	n	valid	attested by OEWN form, Moby word list
-moneywomen	moneywoman	n	valid	The compound plural replaces woman with women.	Number=Plur
+moneywomen	moneywoman	n	valid	The compound plural replaces woman with women. [gpt-6.1-sol high]	Number=Plur
 mongoes	mongo	n	valid	attested by AGID, AGID irregular list
 mooncalves	mooncalf	n	valid	attested by Moby word list
 more	many	a	valid	attested by AGID, Moby word list
@@ -406,31 +423,32 @@ motorbusses	motorbus	n	valid	attested by AGID, AGID irregular list
 mucosae	mucosa	n	valid	attested by AGID (less standard variant), OEWN form, Moby word list
 myelencephala	myelencephalon	n	valid	attested by AGID (less standard variant), OEWN form
 myrmidones	myrmidon	n	valid	attested by OEWN form
-needlemen	needleman	n	valid	The man element becomes men in this compound.	Number=Plur
+needlemen	needleman	n	valid	The man element becomes men in this compound. [gpt-6.1-sol high]	Number=Plur
 needlewomen	needlewoman	n	valid	attested by AGID, AGID irregular list, Moby word list
-newswomen	newswoman	n	valid	The woman element becomes women in this compound.	Number=Plur
+newswomen	newswoman	n	valid	The woman element becomes women in this compound. [gpt-6.1-sol high]	Number=Plur
 next	near	a	valid	attested by Moby word list
 Noes	No	n	valid	attested by AGID, OEWN form, AGID irregular list
 Noes	no	n	valid	attested by AGID, OEWN form, AGID irregular list
 nonheroes	nonhero	n	valid	attested by Moby word list
+nonplused	nonplus	v	valid	Nonplused is an established single-s variant of nonplussed, especially in American English. [gpt-6.1-sol high]	Tense=Past+VerbForm=Part
 nonplusing	nonplus	v	valid	attested by AGID, Moby word list
-notarizing	notarise	v	valid	Notarizing uses the established ize spelling instead of ise and drops the final e.	VerbForm=Ger
+notarizing	notarise	v	valid	Notarizing uses the established ize spelling instead of ise and drops the final e. [gpt-6.1-sol high]	VerbForm=Ger
 noumena	noumenon	n	valid	attested by AGID, OEWN form, AGID irregular list
 obbligati	obbligato	n	valid	attested by AGID, AGID irregular list
 obligati	obligato	n	valid	attested by AGID (less standard variant), OEWN form
 obloquies	obloquy	n	valid	attested by AGID, AGID irregular list, Moby word list
 obsequies	obsequy	n	valid	attested by AGID, Moby word list
 oesophagi	esophagus	n	valid	attested by OEWN form
-oilmen	oilman	n	valid	The compound plural replaces man with men.	Number=Plur
-oilwomen	oilwoman	n	valid	The compound plural replaces woman with women.	Number=Plur
+oilmen	oilman	n	valid	The compound plural replaces man with men. [gpt-6.1-sol high]	Number=Plur
+oilwomen	oilwoman	n	valid	The compound plural replaces woman with women. [gpt-6.1-sol high]	Number=Plur
 okapi	okapi	n	valid	attested by AGID, AGID irregular list, Moby word list
 omenta	omentum	n	valid	attested by AGID (less standard variant), OEWN form
-Ora	Os	n	valid	Os meaning a mouth or opening has the Latin plural ora; initial capitalization is immaterial.	Capitalization=Title+Number=Plur
+Ora	Os	n	valid	Os meaning a mouth or opening has the Latin plural ora; initial capitalization is immaterial. [gpt-6.1-sol high]	Capitalization=Title+Number=Plur
 ora	os	n	valid	attested by OEWN form, Moby word list
-Orangemen	Orangeman	n	valid	The compound of man has the plural Orangemen.	Capitalization=Title+Number=Plur
-orchides	orchis	n	valid	Orchides is the established Greek-derived plural using the orchid stem.	Number=Plur
-Ossa	Os	n	valid	Latin os meaning bone has the established plural ossa.	Capitalization=Title+Number=Plur
-Ossa	os	n	valid	Latin os meaning bone has the established plural ossa.	Number=Plur
+Orangemen	Orangeman	n	valid	The compound of man has the plural Orangemen. [gpt-6.1-sol high]	Capitalization=Title+Number=Plur
+orchides	orchis	n	valid	Orchides is the established Greek-derived plural using the orchid stem. [gpt-6.1-sol high]	Number=Plur
+Ossa	Os	n	valid	Latin os meaning bone has the established plural ossa. [gpt-6.1-sol high]	Capitalization=Title+Number=Plur
+Ossa	os	n	valid	Latin os meaning bone has the established plural ossa. [gpt-6.1-sol high]	Number=Plur
 ossa	os	n	valid	attested by OEWN form, Moby word list
 outdrawn	outdraw	v	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 outdrew	outdraw	v	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
@@ -445,12 +463,12 @@ overflew	overfly	v	valid	attested by AGID, OEWN form, AGID irregular list, Moby 
 overflown	overflow	v	valid	attested by OEWN form, Moby word list
 overflown	overfly	v	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 overleapt	overleap	v	valid	attested by AGID
-oversewn	oversew	v	valid	The compound retains sewn as the irregular past participle of sew.	VerbForm=Part
+oversewn	oversew	v	valid	The compound retains sewn as the irregular past participle of sew. [gpt-6.1-sol high]	VerbForm=Part
 overspent	overspend	v	valid	attested by AGID, OEWN form, AGID irregular list
-overthought	overthink	v	valid	The compound retains the irregular past and participle thought.	Tense=Past+VerbForm=Part
+overthought	overthink	v	valid	The compound retains the irregular past and participle thought. [gpt-6.1-sol high]	Tense=Past+VerbForm=Part
 overuses	overuse	n	valid	attested by AGID
 oxen	ox	n	valid	attested by AGID, OEWN form, our irregular list, our closed list, AGID irregular list, Moby word list
-packwomen	packwoman	n	valid	The compound ends in woman, whose plural is women.	Number=Plur
+packwomen	packwoman	n	valid	The compound ends in woman, whose plural is women. [gpt-6.1-sol high]	Number=Plur
 palisadoes	palisado	n	valid	attested by Moby word list
 pallia	pallium	n	valid	attested by AGID (less standard variant), OEWN form, Moby word list
 pantrymen	pantryman	n	valid	attested by AGID, AGID irregular list, Moby word list
@@ -464,7 +482,7 @@ penumbrae	penumbra	n	valid	attested by AGID, OEWN form, AGID irregular list, Mob
 people	person	n	valid	attested by AGID, AGID irregular list, our irregular list, our closed list, Moby word list
 peridia	peridium	n	valid	attested by AGID (less standard variant), OEWN form
 perinea	perineum	n	valid	attested by AGID, OEWN form, AGID irregular list
-petemen	peteman	n	valid	The occupational compound of man has the plural petemen.	Number=Plur
+petemen	peteman	n	valid	The occupational compound of man has the plural petemen. [gpt-6.1-sol high]	Number=Plur
 piazze	piazza	n	valid	attested by AGID, AGID irregular list
 pieds-a-terre	pied-a-terre	n	valid	attested by OEWN form
 PIES	PI	n	valid	attested by AGID, AGID irregular list
@@ -472,32 +490,33 @@ PIES	pi	n	valid	attested by AGID, AGID irregular list
 pies	pi	n	valid	attested by AGID, AGID irregular list
 pintadoes	pintado	n	valid	attested by AGID, AGID irregular list, Moby word list
 pistolling	pistol	v	valid	attested by AGID, Moby word list
-pitwomen	pitwoman	n	valid	The woman element becomes women in this compound.	Number=Plur
+pitwomen	pitwoman	n	valid	The woman element becomes women in this compound. [gpt-6.1-sol high]	Number=Plur
 placemen	placeman	n	valid	attested by AGID, AGID irregular list, Moby word list
 plainsmen	plainsman	n	valid	attested by AGID, AGID irregular list, Moby word list
-platypodes	platypus	n	valid	Platypodes is an established Greek-style plural alongside platypuses.	Number=Plur
+platypodes	platypus	n	valid	Platypodes is an established Greek-style plural alongside platypuses. [gpt-6.1-sol high]	Number=Plur
 plena	plenum	n	valid	attested by AGID (less standard variant), OEWN form
 pointsmen	pointsman	n	valid	attested by AGID, AGID irregular list, Moby word list
-polarized	polarise	v	valid	Polarize is the established -ize variant, with past polarized.	Tense=Past+VerbForm=Part
-polarizes	polarise	v	valid	Polarize is the established -ize variant, with regular third-person -s.	Person=3+Tense=Pres
+polarized	polarise	v	valid	Polarize is the established -ize variant, with past polarized. [gpt-6.1-sol high]	Tense=Past+VerbForm=Part
+polarizes	polarise	v	valid	Polarize is the established -ize variant, with regular third-person -s. [gpt-6.1-sol high]	Person=3+Tense=Pres
 pollices	pollex	n	valid	attested by AGID, OEWN form, AGID irregular list
-polymerizes	polymerise	v	valid	Polymerize is the established -ize variant, with regular third-person -s.	Person=3+Tense=Pres
-polymerizing	polymerise	v	valid	Polymerize is the established -ize variant; its gerund drops final e.	VerbForm=Ger
+polymerizes	polymerise	v	valid	Polymerize is the established -ize variant, with regular third-person -s. [gpt-6.1-sol high]	Person=3+Tense=Pres
+polymerizing	polymerise	v	valid	Polymerize is the established -ize variant; its gerund drops final e. [gpt-6.1-sol high]	VerbForm=Ger
 potmen	potman	n	valid	attested by AGID, AGID irregular list, Moby word list
 poultrymen	poultryman	n	valid	attested by AGID, AGID irregular list, Moby word list
-presswomen	presswoman	n	valid	The woman element becomes women in this compound.	Number=Plur
+presswomen	presswoman	n	valid	The woman element becomes women in this compound. [gpt-6.1-sol high]	Number=Plur
 programmed	program	v	valid	attested by AGID, OEWN form, Moby word list
 programmes	program	v	valid	attested by OEWN form
 pronunciamentoes	pronunciamento	n	valid	attested by AGID, AGID irregular list
 propmen	propman	n	valid	attested by AGID, AGID irregular list, Moby word list
 prosencephala	prosencephalon	n	valid	attested by AGID (less standard variant), OEWN form
-protoceratops	protoceratops	n	valid	The dinosaur name has an established unchanged plural.	Number=Plur
-psoai	psoas	n	valid	Psoai is the established Greek plural of the muscle name psoas.	Number=Plur
+protoceratops	protoceratops	n	valid	The dinosaur name has an established unchanged plural. [gpt-6.1-sol high]	Number=Plur
+psoai	psoas	n	valid	Psoai is the established Greek plural of the muscle name psoas. [gpt-6.1-sol high]	Number=Plur
 pterygia	pterygium	n	valid	attested by AGID (less standard variant), OEWN form
 pubes	pubes	n	valid	attested by AGID, AGID irregular list, Moby word list
 pylori	pylorus	n	valid	attested by AGID, OEWN form, AGID irregular list
 quadrennia	quadrennium	n	valid	attested by AGID, OEWN form, AGID irregular list
 rabatos	rebato	n	valid	attested by OEWN form, Moby word list
+rachides	rachis	n	valid	Rachides is an established Greek-derived plural of rachis alongside rachises. [gpt-6.1-sol high]	Number=Plur
 rajes	raj	n	valid	attested by AGID, AGID irregular list
 raphae	raphe	n	valid	attested by OEWN form
 redialled	redial	v	valid	attested by AGID
@@ -510,13 +529,13 @@ regrew	regrow	v	valid	attested by AGID, AGID irregular list, Moby word list
 regrown	regrow	v	valid	attested by AGID, AGID irregular list, Moby word list
 reheard	rehear	v	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 rehung	rehang	v	valid	attested by AGID, AGID irregular list, Moby word list
-relearnt	relearn	v	valid	Relearnt is the established -t alternative to relearned.	Tense=Past+VerbForm=Part
-remilitarized	remilitarise	v	valid	Remilitarized uses the established ize variant and the regular past ending d.	Tense=Past+VerbForm=Part
-remilitarizing	remilitarise	v	valid	Remilitarizing uses the established ize spelling variant and drops the final e.	VerbForm=Ger
+relearnt	relearn	v	valid	Relearnt is the established -t alternative to relearned. [gpt-6.1-sol high]	Tense=Past+VerbForm=Part
+remilitarized	remilitarise	v	valid	Remilitarized uses the established ize variant and the regular past ending d. [gpt-6.1-sol high]	Tense=Past+VerbForm=Part
+remilitarizing	remilitarise	v	valid	Remilitarizing uses the established ize spelling variant and drops the final e. [gpt-6.1-sol high]	VerbForm=Ger
 repotted	repot	v	valid	attested by AGID, OEWN form
 resat	resit	v	valid	attested by Moby word list
 reseaux	reseau	n	valid	attested by AGID (less standard variant), OEWN form
-resewn	resew	v	valid	The compound retains sewn as the irregular past participle of sew.	VerbForm=Part
+resewn	resew	v	valid	The compound retains sewn as the irregular past participle of sew. [gpt-6.1-sol high]	VerbForm=Part
 reshot	reshoot	v	valid	attested by AGID, AGID irregular list
 retia	rete	n	valid	attested by OEWN form, Moby word list
 retrod	retread	v	valid	attested by AGID, AGID irregular list
@@ -528,27 +547,27 @@ rhabdomyomata	rhabdomyoma	n	valid	attested by OEWN form
 rhachises	rachis	n	valid	attested by OEWN form
 rhinencephala	rhinencephalon	n	valid	attested by OEWN form
 rhinoceri	rhinoceros	n	valid	attested by AGID, AGID irregular list
-riflewomen	riflewoman	n	valid	The woman element becomes women in this compound.	Number=Plur
+riflewomen	riflewoman	n	valid	The woman element becomes women in this compound. [gpt-6.1-sol high]	Number=Plur
 rilievi	rilievo	n	valid	attested by AGID (less standard variant), OEWN form, Moby word list
 rimae	rima	n	valid	attested by OEWN form
 ringed	ring	v	valid	attested by AGID, Moby word list
-rivetted	rivet	v	valid	Rivetted is an established doubled-consonant variant of riveted.	Tense=Past+VerbForm=Part
+rivetted	rivet	v	valid	Rivetted is an established doubled-consonant variant of riveted. [gpt-6.1-sol high]	Tense=Past+VerbForm=Part
 robes-de-chambre	robe-de-chambre	n	valid	attested by OEWN form
 rubati	rubato	n	valid	attested by AGID, AGID irregular list
 saguaros	sahuaro	n	valid	attested by OEWN form, Moby word list
 salpinges	salpinx	n	valid	attested by OEWN form, Moby word list
 santimi	santims	n	valid	attested by OEWN form, Moby word list
 sartorii	sartorius	n	valid	attested by AGID, OEWN form, AGID irregular list
-satirized	satirise	v	valid	Satirized uses the established -ize spelling variant of satirise.	Tense=Past+VerbForm=Part
-satirizing	satirise	v	valid	Satirizing uses the established ize spelling variant and drops the final e.	VerbForm=Ger
-savourier	savory	a	valid	Savourier uses the established British spelling savoury with y changing to i before er.	Degree=Cmp
+satirized	satirise	v	valid	Satirized uses the established -ize spelling variant of satirise. [gpt-6.1-sol high]	Tense=Past+VerbForm=Part
+satirizing	satirise	v	valid	Satirizing uses the established ize spelling variant and drops the final e. [gpt-6.1-sol high]	VerbForm=Ger
+savourier	savory	a	valid	Savourier uses the established British spelling savoury with y changing to i before er. [gpt-6.1-sol high]	Degree=Cmp
 sawbones	sawbones	n	valid	attested by AGID, AGID irregular list, Moby word list
 scaleni	scalenus	n	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 scampies	scampi	n	valid	attested by AGID, AGID irregular list
-schmoozes	shmooze	n	valid	Schmoozes uses the established schmooze spelling variant and the regular plural ending s.	Number=Plur
+schmoozes	shmooze	n	valid	Schmoozes uses the established schmooze spelling variant and the regular plural ending s. [gpt-6.1-sol high]	Number=Plur
 scholia	scholium	n	valid	attested by OEWN form
 schoolmen	schoolman	n	valid	attested by AGID, AGID irregular list, Moby word list
-schoolwomen	schoolwoman	n	valid	The compound plural replaces woman with women.	Number=Plur
+schoolwomen	schoolwoman	n	valid	The compound plural replaces woman with women. [gpt-6.1-sol high]	Number=Plur
 scolia	scolion	n	valid	attested by AGID, AGID irregular list, Moby word list
 secondi	secondo	n	valid	attested by OEWN form
 seedmen	seedman	n	valid	attested by AGID, AGID irregular list, Moby word list
@@ -559,26 +578,27 @@ shoon	shoe	n	valid	attested by AGID, AGID irregular list, Moby word list
 shophroth	shophar	n	valid	attested by OEWN form, Moby word list
 shore	shear	v	valid	attested by our irregular list, Moby word list
 shrewmice	shrewmouse	n	valid	attested by AGID, OEWN form, AGID irregular list
-sidesmen	sidesman	n	valid	The compound plural replaces man with men.	Number=Plur
+sidesmen	sidesman	n	valid	The compound plural replaces man with men. [gpt-6.1-sol high]	Number=Plur
 signalmen	signalman	n	valid	attested by AGID, AGID irregular list, Moby word list
 Signore	Signora	n	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 signore	signora	n	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 signori	signior	n	valid	attested by OEWN form
 signori	signore	n	valid	attested by AGID, OEWN form, AGID irregular list
 Signorine	Signorina	n	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
-singularizes	singularise	v	valid	Singularize is the established -ize variant, with regular third-person -s.	Person=3+Tense=Pres
-singularizing	singularise	v	valid	Singularizing uses the established -ize variant, dropping final e before -ing.	VerbForm=Ger
-skeptics	sceptic	n	valid	Skeptics is the regular plural using the established American spelling skeptic.	Number=Plur
+singularizes	singularise	v	valid	Singularize is the established -ize variant, with regular third-person -s. [gpt-6.1-sol high]	Person=3+Tense=Pres
+singularizing	singularise	v	valid	Singularizing uses the established -ize variant, dropping final e before -ing. [gpt-6.1-sol high]	VerbForm=Ger
+skeptics	sceptic	n	valid	Skeptics is the regular plural using the established American spelling skeptic. [gpt-6.1-sol high]	Number=Plur
 skyed	sky	v	valid	attested by AGID, AGID irregular list
-slenderized	slenderise	v	valid	Slenderize is the established -ize variant, with past slenderized.	Tense=Past+VerbForm=Part
-slenderizes	slenderise	v	valid	Slenderizes is the third-person form using the established ize spelling variant.	Person=3+Tense=Pres
-slenderizing	slenderise	v	valid	Slenderize is the established -ize variant; its gerund drops final e.	VerbForm=Ger
-slewed	slue	v	valid	Slew is an established spelling variant of slue, with past and participle slewed.	Tense=Past+VerbForm=Part
-slewing	slue	v	valid	Slewing uses slew, an established spelling variant of the verb slue.	VerbForm=Ger
+slenderized	slenderise	v	valid	Slenderize is the established -ize variant, with past slenderized. [gpt-6.1-sol high]	Tense=Past+VerbForm=Part
+slenderizes	slenderise	v	valid	Slenderizes is the third-person form using the established ize spelling variant. [gpt-6.1-sol high]	Person=3+Tense=Pres
+slenderizing	slenderise	v	valid	Slenderize is the established -ize variant; its gerund drops final e. [gpt-6.1-sol high]	VerbForm=Ger
+slewed	slue	v	valid	Slew is an established spelling variant of slue, with past and participle slewed. [gpt-6.1-sol high]	Tense=Past+VerbForm=Part
+slewing	slue	v	valid	Slewing uses slew, an established spelling variant of the verb slue. [gpt-6.1-sol high]	VerbForm=Ger
+slews	slue	v	valid	Slew is an established spelling variant of slue; slews is its third-person singular. [gpt-6.1-sol high]	Person=3+Tense=Pres
 snuck	sneak	v	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 SOD	seethe	v	valid	attested by AGID, AGID irregular list, Moby word list
 sod	seethe	v	valid	attested by AGID, AGID irregular list, Moby word list
-sokemen	sokeman	n	valid	The man element becomes men in this compound.	Number=Plur
+sokemen	sokeman	n	valid	The man element becomes men in this compound. [gpt-6.1-sol high]	Number=Plur
 solidi	solidus	n	valid	attested by AGID, OEWN form, AGID irregular list
 soprani	soprano	n	valid	attested by AGID (less standard variant), OEWN form
 sox	sock	n	valid	attested by AGID, AGID irregular list, Moby word list
@@ -591,14 +611,15 @@ squibbed	squib	v	valid	attested by AGID, AGID irregular list, Moby word list
 squibbing	squib	v	valid	attested by AGID, AGID irregular list, Moby word list
 stablemen	stableman	n	valid	attested by AGID, AGID irregular list, Moby word list
 stapedes	stapes	n	valid	attested by OEWN form
+stapes	stapes	n	valid	Stapes has an established unchanged plural alongside stapedes. [gpt-6.1-sol high]	Number=Plur
 staretsy	starets	n	valid	attested by OEWN form
 startsy	starets	n	valid	attested by OEWN form
-stateswomen	stateswoman	n	valid	The compound plural replaces woman with women.	Number=Plur
+stateswomen	stateswoman	n	valid	The compound plural replaces woman with women. [gpt-6.1-sol high]	Number=Plur
 steelmen	steelman	n	valid	attested by AGID, AGID irregular list, Moby word list
 steersmen	steersman	n	valid	attested by AGID, AGID irregular list, Moby word list
-stiletti	stiletto	n	valid	Stiletti is the Italian plural used beside English stilettos.	Number=Plur
+stiletti	stiletto	n	valid	Stiletti is the Italian plural used beside English stilettos. [gpt-6.1-sol high]	Number=Plur
 stockmen	stockman	n	valid	attested by AGID, AGID irregular list, Moby word list
-stockwomen	stockwoman	n	valid	The compound plural replaces woman with women.	Number=Plur
+stockwomen	stockwoman	n	valid	The compound plural replaces woman with women. [gpt-6.1-sol high]	Number=Plur
 stotinki	stotinka	n	valid	attested by OEWN form, Moby word list
 strappadoes	strappado	n	valid	attested by OEWN form
 strati	stratus	n	valid	attested by AGID, OEWN form, AGID irregular list
@@ -612,21 +633,23 @@ subspecies	subspecies	n	valid	attested by AGID, AGID irregular list, Moby word l
 sumachs	sumach	n	valid	attested by AGID, AGID irregular list
 supercargoes	supercargo	n	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 superheroes	superhero	n	valid	attested by AGID, AGID irregular list, Moby word list
-surveilled	surveil	v	valid	Surveilled is the established spelling with final l doubled before ed.	Tense=Past+VerbForm=Part
+surveilled	surveil	v	valid	Surveilled is the established spelling with final l doubled before ed. [gpt-6.1-sol high]	Tense=Past+VerbForm=Part
 surveilling	surveil	v	valid	regular gerund of surveil (the rule of verbs in l)
-swagwomen	swagwoman	n	valid	The compound plural replaces woman with women.	Number=Plur
+swagwomen	swagwoman	n	valid	The compound plural replaces woman with women. [gpt-6.1-sol high]	Number=Plur
 switchmen	switchman	n	valid	attested by AGID, AGID irregular list, Moby word list
 swopping	swap	v	valid	attested by OEWN form, Moby word list
-syllogising	syllogize	v	valid	Syllogise is an established -ise spelling variant; its gerund drops final e.	VerbForm=Ger
+syllogising	syllogize	v	valid	Syllogise is an established -ise spelling variant; its gerund drops final e. [gpt-6.1-sol high]	VerbForm=Ger
 synechiae	synechia	n	valid	attested by AGID, AGID irregular list, Moby word list
 syringes	syrinx	n	valid	attested by OEWN form, Moby word list
+taenias	tenia	n	valid	Taenia is an established spelling variant of tenia; taenias is its English plural. [gpt-6.1-sol high]	Number=Plur
 tali	talus	n	valid	attested by AGID, OEWN form, AGID irregular list
+tallithim	tallith	n	valid	Tallithim is an established Hebrew-derived plural of tallith. [gpt-6.1-sol high]	Number=Plur
 tallitoth	tallith	n	valid	attested by OEWN form
 tallymen	tallyman	n	valid	attested by AGID, AGID irregular list, Moby word list
 teargassed	teargas	v	valid	attested by AGID
-teargasses	teargas	v	valid	The verb gas takes gasses; the compound retains that inflection.	Person=3+Tense=Pres
+teargasses	teargas	v	valid	The verb gas takes gasses; the compound retains that inflection. [gpt-6.1-sol high]	Person=3+Tense=Pres
 terzetti	terzetto	n	valid	attested by AGID (less standard variant), OEWN form
-tessellae	tessella	n	valid	This Latin feminine noun forms its plural by changing a to ae.	Number=Plur
+tessellae	tessella	n	valid	This Latin feminine noun forms its plural by changing a to ae. [gpt-6.1-sol high]	Number=Plur
 testudines	testudo	n	valid	attested by OEWN form, Moby word list
 tetraskelia	tetraskelion	n	valid	attested by OEWN form
 tittuped	tittup	v	valid	attested by Moby word list
@@ -640,32 +663,32 @@ townswomen	townswoman	n	valid	attested by AGID, AGID irregular list, Moby word l
 tradeswomen	tradeswoman	n	valid	attested by AGID, AGID irregular list, Moby word list
 trainmen	trainman	n	valid	attested by AGID, AGID irregular list, Moby word list
 trameled	trammel	v	valid	attested by OEWN form
-transistorized	transistorise	v	valid	Transistorize is the established -ize variant, with past transistorized.	Tense=Past+VerbForm=Part
-transistorizes	transistorise	v	valid	Transistorize is the established -ize variant, with regular third-person -s.	Person=3+Tense=Pres
-transistorizing	transistorise	v	valid	Transistorizing uses the established ize spelling variant and drops the final e.	VerbForm=Ger
+transistorized	transistorise	v	valid	Transistorize is the established -ize variant, with past transistorized. [gpt-6.1-sol high]	Tense=Past+VerbForm=Part
+transistorizes	transistorise	v	valid	Transistorize is the established -ize variant, with regular third-person -s. [gpt-6.1-sol high]	Person=3+Tense=Pres
+transistorizing	transistorise	v	valid	Transistorizing uses the established ize spelling variant and drops the final e. [gpt-6.1-sol high]	VerbForm=Ger
 travels	travel	n	valid	attested by AGID
 trenchermen	trencherman	n	valid	attested by AGID, AGID irregular list, Moby word list
 triceratops	triceratops	n	valid	attested by AGID, AGID irregular list, Moby word list
 trous-de-loup	trou-de-loup	n	valid	attested by OEWN form
-tunicae	tunica	n	valid	attested by AGID
-tweest	twee	a	valid	Tweest is the established superlative of twee; a third e is unnecessary.	Degree=Sup
+tunicae	tunica	n	valid	authored plural (primary), adjudicated by both authors as the Latin plural in ae; Moby word list
+tweest	twee	a	valid	Tweest is the established superlative of twee; a third e is unnecessary. [gpt-6.1-sol high]	Degree=Sup
 typesetting	typeset	v	valid	attested by AGID, OEWN form, Moby word list
 typewritten	typewrite	v	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 uglies	ugli	n	valid	attested by agid<, OEWN form
-undergrew	undergrow	v	valid	Undergrow follows grow in forming the irregular past tense undergrew.	Tense=Past
+undergrew	undergrow	v	valid	Undergrow follows grow in forming the irregular past tense undergrew. [gpt-6.1-sol high]	Tense=Past
 undergrown	undergrow	v	valid	attested by AGID, Moby word list
 underlaid	underlay	v	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 underran	underrun	v	valid	attested by Moby word list
-undersetting	underset	v	valid	The compound retains set and doubles its final t before -ing.	VerbForm=Ger
+undersetting	underset	v	valid	The compound retains set and doubles its final t before -ing. [gpt-6.1-sol high]	VerbForm=Ger
 underspent	underspend	v	valid	attested by AGID, AGID irregular list, Moby word list
 unfroze	unfreeze	v	valid	attested by AGID, OEWN form, AGID irregular list
 unfrozen	unfreeze	v	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 unmade	unmake	v	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
-unsaw	unsee	v	valid	The prefixed verb retains saw as the irregular past tense of see.	Tense=Past
+unsaw	unsee	v	valid	The prefixed verb retains saw as the irregular past tense of see. [gpt-6.1-sol high]	Tense=Past
 unseen	unsee	v	valid	attested by Moby word list
 unstrung	unstring	v	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 untaught	unteach	v	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
-unwove	unweave	v	valid	The compound retains wove as the irregular past tense of weave.	Tense=Past
+unwove	unweave	v	valid	The compound retains wove as the irregular past tense of weave. [gpt-6.1-sol high]	Tense=Past
 unwoven	unweave	v	valid	attested by AGID, AGID irregular list
 uprisen	uprise	v	valid	attested by OEWN form, Moby word list
 uprose	uprise	v	valid	attested by OEWN form, Moby word list
@@ -673,31 +696,32 @@ vaguer	vague	a	valid	attested by AGID, Moby word list
 vaguest	vague	a	valid	attested by AGID, Moby word list
 varices	varix	n	valid	attested by OEWN form, Moby word list
 vasa	vas	n	valid	attested by OEWN form, Moby word list
-vascularizing	vascularise	v	valid	Vascularize is the established -ize variant; its gerund drops final e.	VerbForm=Ger
+vascularizing	vascularise	v	valid	Vascularize is the established -ize variant; its gerund drops final e. [gpt-6.1-sol high]	VerbForm=Ger
 veges	veg	n	valid	attested by AGID, AGID irregular list
 vela	velum	n	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
 vestrymen	vestryman	n	valid	attested by AGID, AGID irregular list, Moby word list
-vitaminized	vitaminise	v	valid	Vitaminized uses the established ize spelling variant and the regular past ending d.	Tense=Past+VerbForm=Part
-vitaminizes	vitaminise	v	valid	Vitaminize is an established -ize variant, with regular third-person -s.	Person=3+Tense=Pres
+vitaminized	vitaminise	v	valid	Vitaminized uses the established ize spelling variant and the regular past ending d. [gpt-6.1-sol high]	Tense=Past+VerbForm=Part
+vitaminizes	vitaminise	v	valid	Vitaminize is an established -ize variant, with regular third-person -s. [gpt-6.1-sol high]	Person=3+Tense=Pres
 wadsetted	wadset	v	valid	attested by Moby word list
 wagons-lits	wagon-lit	n	valid	attested by OEWN form
 wakened	wake	v	valid	attested by our irregular list
-wapitis	wapiti	n	valid	wapitis is a standard plural beside invariant wapiti	Number=Plur
+wapitis	wapiti	n	valid	wapitis is a standard plural beside invariant wapiti [claude-sonnet-5.5 recheck high]	Number=Plur
 warehousemen	warehouseman	n	valid	attested by AGID, AGID irregular list, Moby word list
 washermen	washerman	n	valid	attested by AGID, AGID irregular list, Moby word list
 washwomen	washwoman	n	valid	attested by AGID, AGID irregular list, Moby word list
 watermen	waterman	n	valid	attested by AGID, AGID irregular list, Moby word list
 webfeet	webfoot	n	valid	attested by AGID, AGID irregular list, Moby word list
 whippers-in	whipper-in	n	valid	attested by OEWN form
-wigeons	widgeon	n	valid	Wigeon is an established spelling variant of widgeon and has plural wigeons.	Number=Plur
-woodswomen	woodswoman	n	valid	The woman element becomes women in this compound.	Number=Plur
-woolliest	wooly	a	valid	Woolliest uses the established woolly spelling variant, changing y to i before est.	Degree=Sup
+wigeons	widgeon	n	valid	Wigeon is an established spelling variant of widgeon and has plural wigeons. [gpt-6.1-sol high]	Number=Plur
+woodswomen	woodswoman	n	valid	The woman element becomes women in this compound. [gpt-6.1-sol high]	Number=Plur
+woolliest	wooly	a	valid	Woolliest uses the established woolly spelling variant, changing y to i before est. [gpt-6.1-sol high]	Degree=Sup
 workingwomen	workingwoman	n	valid	attested by AGID, AGID irregular list, Moby word list
 worse	badly	r	valid	attested by Moby word list
 worst	badly	r	valid	attested by Moby word list
 wrought	work	v	valid	attested by AGID, OEWN form, AGID irregular list, Moby word list
-xeromata	xeroma	n	valid	The Greek-derived medical noun in -oma has the classical plural -omata.	Number=Plur
+xeromata	xeroma	n	valid	The Greek-derived medical noun in -oma has the classical plural -omata. [gpt-6.1-sol high]	Number=Plur
 yachtswomen	yachtswoman	n	valid	attested by AGID, AGID irregular list, Moby word list
-yardwomen	yardwoman	n	valid	The compound plural replaces woman with women.	Number=Plur
+yardwomen	yardwoman	n	valid	The compound plural replaces woman with women. [gpt-6.1-sol high]	Number=Plur
 yeshivahs	yeshiva	n	valid	attested by OEWN form, Moby word list
-yesses	yes	n	valid	Yesses is an established plural of the noun yes, alongside yeses.	Number=Plur
+yeshivot	yeshiva	n	valid	Yeshivot is an established Hebrew-derived plural of yeshiva. [gpt-6.1-sol high]	Number=Plur
+yesses	yes	n	valid	Yesses is an established plural of the noun yes, alongside yeses. [gpt-6.1-sol high]	Number=Plur

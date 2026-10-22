@@ -21,13 +21,12 @@ public sealed class OpenCorpusAttestationTests : IDisposable
     {
         // Arrange
         _dir.Write("corpus/open/representative/data/train.tsv",
-            "# comment\n# sent_id = s1\n"
-            + "s1-1\tCleaned\tclean\tVERB\tV\t_\tunanimous\n"
-            + "s1-2\tsooner\tsoon\tADV\tR\t_\tunchecked\n"
-            + "s1-3\tbags\tbag\tNOUN\tN\t_\tunanimous\n"
-            + "s1-4\tthe\tthe\tDET\tD\t_\tunanimous\n"
-            + "s1-5\tshort\n");
-        _dir.Write("corpus/open/targeted/data/train.tsv", "t1-1\tmice\tmouse\tNOUN\tN\t_\tunanimous\n");
+            "# comment\n\n# sent_id = s1\n# source_id = d1\n# text = Cleaned sooner bags the.\n"
+            + "1\tCleaned\tclean\tVERB\tV\t_\tunanimous\n"
+            + "2\tsooner\tsoon\tADV\tR\t_\tunchecked\n"
+            + "3\tbags\tbag\tNOUN\tN\t_\tunanimous\n"
+            + "4\tthe\tthe\tDET\tD\t_\tunanimous\n");
+        _dir.Write("corpus/open/targeted/data/train.tsv", "# sent_id = t1\n# source_id = d2\n# text = mice\n1\tmice\tmouse\tNOUN\tN\t_\tunanimous\n");
 
         // Act
         var attested = OpenCorpusAttestation.Read(Path.Join(_dir.Root, "corpus"));
@@ -39,7 +38,29 @@ public sealed class OpenCorpusAttestationTests : IDisposable
         Assert.Contains("bag/n", attested["bags"]);
         Assert.Contains("mouse/n", attested["mice"]);
         Assert.False(attested.ContainsKey("the"));
-        Assert.False(attested.ContainsKey("short"));
+    }
+
+    /// <summary>
+    ///     A token line that is short, outside a sentence or without a lemma is refused with its file and line instead of being
+    ///     skipped.
+    /// </summary>
+    /// <param name="content">The training split.</param>
+    /// <param name="line">The line named by the message.</param>
+    [Theory]
+    [InlineData("# sent_id = s1\n1\tshort\n", 2)]
+    [InlineData("1\tbags\tbag\tNOUN\tN\t_\tunanimous\n", 1)]
+    [InlineData("# sent_id = s1\n1\tbags\t\tNOUN\tN\t_\tunanimous\n", 2)]
+    [InlineData("# sent_id = s1\nx\tbags\tbag\tNOUN\tN\t_\tunanimous\n", 2)]
+    public void WordSenseBuilder_OpenCorpusAttestation_Read_MalformedTokenLine_IsRefusedWithFileAndLine(string content, int line)
+    {
+        // Arrange
+        _dir.Write("corpus/open/representative/data/train.tsv", content);
+
+        // Act
+        var ex = Assert.Throws<InvalidDataException>(() => OpenCorpusAttestation.Read(Path.Join(_dir.Root, "corpus")));
+
+        // Assert
+        Assert.Contains($"train.tsv:{line.ToString(System.Globalization.CultureInfo.InvariantCulture)}:", ex.Message, StringComparison.Ordinal);
     }
 
     /// <summary>
