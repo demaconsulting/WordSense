@@ -110,9 +110,11 @@ public static class WordLexicon
         ArgumentNullException.ThrowIfNull(word);
 
         // A token without a letter (a number written with digits, punctuation) is never a word: the models answer it as
-        // unknown, so the lexicon does too, although the image keeps a few such spellings from Open English WordNet
+        // unknown, so the lexicon does too, although the image keeps a few such spellings from Open English WordNet.
+        // The image is still opened first, so a missing or corrupt lexicon is reported for every input.
         if (!CueModel.HasLetter(word))
         {
+            _ = Image.Value;
             senses = default;
             return false;
         }
@@ -160,7 +162,8 @@ public static class WordLexicon
     public static IReadOnlyList<string> FormsOf(string lemma)
     {
         ArgumentNullException.ThrowIfNull(lemma);
-        return CueModel.HasLetter(lemma) ? Image.Value.FormsOf(lemma) : [];
+        var image = Image.Value;
+        return CueModel.HasLetter(lemma) ? image.FormsOf(lemma) : [];
     }
 
     /// <summary>
