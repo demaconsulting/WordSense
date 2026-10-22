@@ -181,18 +181,7 @@ internal sealed class OnnxClassifier
         }
 
         // Group the analyses by lemma and part of speech: they share their senses
-        var slots = new List<Slot>();
-        for (var i = 0; i < details.Length; i++)
-        {
-            var slot = slots.Find(s => s.Lemma == details[i].Lemma && s.PartOfSpeech == details[i].PartOfSpeech);
-            if (slot is null)
-            {
-                slot = new Slot(details[i].Lemma, details[i].PartOfSpeech, WordLexicon.SensesOf(details[i].Lemma, details[i].PartOfSpeech));
-                slots.Add(slot);
-            }
-
-            slot.Analyses.Add(i);
-        }
+        var slots = GroupIntoSlots(details);
 
         // A word with one analysis is certain about it; its sense is named only when its lemma and part of speech have
         // exactly one sense (nothing was scored, nothing is guessed)
@@ -208,12 +197,7 @@ internal sealed class OnnxClassifier
         }
 
         var lemmas = slots.Select(s => s.Lemma).Distinct(StringComparer.Ordinal).ToList();
-        FormChooser? chooser = null;
-        var key = word.ToLowerInvariant().Replace('\u2019', '\'');
-        if (table.FindChooser(key) is { } found && WordLexicon.TryLookup(key, out var keyDetails) && keyDetails.SequenceEqual(details))
-        {
-            chooser = found;
-        }
+        var chooser = ChooserOf(table, word, details);
 
         // A form of several lemmas needs its chooser; without one the lexicon answers it
         if (lemmas.Count > 1 && chooser is null)
@@ -221,16 +205,44 @@ internal sealed class OnnxClassifier
             return (LexiconOnly(word, details), null);
         }
 
-        var scored = false;
-        foreach (var lemma in lemmas)
+        var scored = lemmas.Any(lemma => table.Find(lemma) is { } resolved && CandidateColumns(resolved, slots.Where(s => s.Lemma == lemma)).Count >= 2);
+        return scored || chooser is not null ? (null, new Pending(details, slots, table, chooser)) : (LexiconOnly(word, details), null);
+    }
+
+    /// <summary>
+    ///     Groups the analyses of a word by lemma and part of speech, in the order of their first analysis.
+    /// </summary>
+    /// <param name="details">The analyses of the word.</param>
+    /// <returns>The slots, each with the indexes of its analyses.</returns>
+    private static List<Slot> GroupIntoSlots(ImmutableArray<WordDetails> details)
+    {
+        var slots = new List<Slot>();
+        for (var i = 0; i < details.Length; i++)
         {
-            if (table.Find(lemma) is { } resolved && CandidateColumns(resolved, slots.Where(s => s.Lemma == lemma)).Count >= 2)
+            var slot = slots.Find(s => s.Lemma == details[i].Lemma && s.PartOfSpeech == details[i].PartOfSpeech);
+            if (slot is null)
             {
-                scored = true;
+                slot = new Slot(details[i].Lemma, details[i].PartOfSpeech, WordLexicon.SensesOf(details[i].Lemma, details[i].PartOfSpeech));
+                slots.Add(slot);
             }
+
+            slot.Analyses.Add(i);
         }
 
-        return scored || chooser is not null ? (null, new Pending(details, slots, table, chooser)) : (LexiconOnly(word, details), null);
+        return slots;
+    }
+
+    /// <summary>
+    ///     Finds the chooser of a word: the chooser of its normalized form when that form has exactly the analyses of the word.
+    /// </summary>
+    /// <param name="table">The trained weights.</param>
+    /// <param name="word">The word.</param>
+    /// <param name="details">The analyses of the word.</param>
+    /// <returns>The chooser, or null when the word has none.</returns>
+    private static FormChooser? ChooserOf(WeightedLemmaTable table, string word, ImmutableArray<WordDetails> details)
+    {
+        var key = word.ToLowerInvariant().Replace('\u2019', '\'');
+        return table.FindChooser(key) is { } found && WordLexicon.TryLookup(key, out var keyDetails) && keyDetails.SequenceEqual(details) ? found : null;
     }
 
     /// <summary>
@@ -314,24 +326,8 @@ internal sealed class OnnxClassifier
     /// </remarks>
     private static ClassifyResult Decide(string word, Pending plan, float[] feature)
     {
-        var table = plan.Table;
         var details = plan.Details;
-
-        // Score the senses of every weighted lemma of the word: softmax over the senses of its analyses only
-        var lemmaScores = new Dictionary<string, LemmaScores>(StringComparer.Ordinal);
-        foreach (var lemma in plan.Slots.Select(s => s.Lemma).Distinct(StringComparer.Ordinal))
-        {
-            // The dimension check is a defensive guard: through the model the encoder is checked against the weights'
-            // dimension when it is opened, so a mismatch is reported there as ModelIntegrityException, never silently here
-            if (table.Find(lemma) is { } resolved && resolved.Weights.Weights.Dimension == feature.Length)
-            {
-                var columns = CandidateColumns(resolved, plan.Slots.Where(s => s.Lemma == lemma));
-                if (columns.Count >= 2)
-                {
-                    lemmaScores[lemma] = LemmaScores.Compute(resolved, columns, feature);
-                }
-            }
-        }
+        var lemmaScores = ScoreLemmas(plan, feature);
 
         // Probability of every analysis: the chooser splits the mass among the lemmas or tenses of a form, the senses
         // split the mass of one lemma among its parts of speech (its slots); the analyses of a slot split its mass
@@ -339,51 +335,11 @@ internal sealed class OnnxClassifier
         var chooserConfident = true;
         if (plan.Chooser is { } chooser)
         {
-            var labelScores = new float[chooser.Weights.SenseCount];
-            chooser.Weights.Scores(feature, labelScores);
-            var labelProbability = LemmaWeights.Softmax(labelScores);
-            chooserConfident = LemmaWeights.Rank(labelScores).Margin >= chooser.Weights.FineThreshold;
-            var members = new List<int>?[labelProbability.Length];
-            for (var i = 0; i < details.Length; i++)
-            {
-                var label = LabelOf(chooser, details[i]);
-                (members[label] ??= []).Add(i);
-            }
-
-            for (var label = 0; label < members.Length; label++)
-            {
-                if (members[label] is not { } indexes)
-                {
-                    continue;
-                }
-
-                // The label shares its probability among the slots of its analyses by the mass of their senses, and a
-                // slot shares it equally among its analyses that the label stands for
-                var slotsOfLabel = indexes.Select(plan.SlotOf).Distinct().ToList();
-                var masses = slotsOfLabel.Select(s => SlotMass(lemmaScores, s)).ToArray();
-                var total = masses.Sum();
-                for (var k = 0; k < slotsOfLabel.Count; k++)
-                {
-                    var inSlot = indexes.Where(i => plan.SlotOf(i) == slotsOfLabel[k]).ToList();
-                    var share = total > 0 ? masses[k] / total : 1.0 / slotsOfLabel.Count;
-                    foreach (var i in inSlot)
-                    {
-                        weightOf[i] = labelProbability[label] * share / inSlot.Count;
-                    }
-                }
-            }
+            chooserConfident = WeighByChooser(plan, chooser, feature, lemmaScores, weightOf);
         }
         else
         {
-            var masses = plan.Slots.Select(s => SlotMass(lemmaScores, s)).ToArray();
-            var total = masses.Sum();
-            for (var s = 0; s < plan.Slots.Count; s++)
-            {
-                foreach (var i in plan.Slots[s].Analyses)
-                {
-                    weightOf[i] = (total > 0 ? masses[s] / total : 1.0 / plan.Slots.Count) / plan.Slots[s].Analyses.Count;
-                }
-            }
+            WeighBySlots(plan, lemmaScores, weightOf);
         }
 
         Normalize(weightOf);
@@ -412,6 +368,128 @@ internal sealed class OnnxClassifier
         }
 
         // The level of the selected analysis, with the thresholds of its lemma
+        return AnswerAtLevel(word, analyses.MoveToImmutable(), details[selected], selectedSlot, analysisProbability, scores);
+    }
+
+    /// <summary>
+    ///     Scores the senses of every weighted lemma of a pending word: a softmax over the senses of its analyses only.
+    /// </summary>
+    /// <param name="plan">The pending word.</param>
+    /// <param name="feature">The unit-length feature of the word in context.</param>
+    /// <returns>The scores of the lemmas that have at least two candidate senses, by lemma.</returns>
+    private static Dictionary<string, LemmaScores> ScoreLemmas(Pending plan, float[] feature)
+    {
+        var lemmaScores = new Dictionary<string, LemmaScores>(StringComparer.Ordinal);
+        foreach (var lemma in plan.Slots.Select(s => s.Lemma).Distinct(StringComparer.Ordinal))
+        {
+            // The dimension check is a defensive guard: through the model the encoder is checked against the weights'
+            // dimension when it is opened, so a mismatch is reported there as ModelIntegrityException, never silently here
+            if (plan.Table.Find(lemma) is { } resolved && resolved.Weights.Weights.Dimension == feature.Length)
+            {
+                var columns = CandidateColumns(resolved, plan.Slots.Where(s => s.Lemma == lemma));
+                if (columns.Count >= 2)
+                {
+                    lemmaScores[lemma] = LemmaScores.Compute(resolved, columns, feature);
+                }
+            }
+        }
+
+        return lemmaScores;
+    }
+
+    /// <summary>
+    ///     Works out the probability of every analysis of a form that has a chooser.
+    /// </summary>
+    /// <param name="plan">The pending word.</param>
+    /// <param name="chooser">The chooser of the form.</param>
+    /// <param name="feature">The unit-length feature of the word in context.</param>
+    /// <param name="lemmaScores">The scored lemmas.</param>
+    /// <param name="weightOf">The probability of every analysis; filled in here.</param>
+    /// <returns>True when the margin of the chooser reaches its threshold.</returns>
+    private static bool WeighByChooser(Pending plan, FormChooser chooser, float[] feature, Dictionary<string, LemmaScores> lemmaScores, double[] weightOf)
+    {
+        var details = plan.Details;
+        var labelScores = new float[chooser.Weights.SenseCount];
+        chooser.Weights.Scores(feature, labelScores);
+        var labelProbability = LemmaWeights.Softmax(labelScores);
+        var confident = LemmaWeights.Rank(labelScores).Margin >= chooser.Weights.FineThreshold;
+        var members = new List<int>?[labelProbability.Length];
+        for (var i = 0; i < details.Length; i++)
+        {
+            var label = LabelOf(chooser, details[i]);
+            (members[label] ??= []).Add(i);
+        }
+
+        for (var label = 0; label < members.Length; label++)
+        {
+            if (members[label] is { } indexes)
+            {
+                SpreadLabelProbability(plan, indexes, labelProbability[label], lemmaScores, weightOf);
+            }
+        }
+
+        return confident;
+    }
+
+    /// <summary>
+    ///     Shares the probability of one label of a chooser among the analyses that the label stands for.
+    /// </summary>
+    /// <param name="plan">The pending word.</param>
+    /// <param name="indexes">The analyses that the label stands for.</param>
+    /// <param name="labelProbability">The probability of the label.</param>
+    /// <param name="lemmaScores">The scored lemmas.</param>
+    /// <param name="weightOf">The probability of every analysis; filled in here.</param>
+    /// <remarks>
+    ///     The label shares its probability among the slots of its analyses by the mass of their senses, and a slot
+    ///     shares it equally among its analyses that the label stands for.
+    /// </remarks>
+    private static void SpreadLabelProbability(Pending plan, List<int> indexes, double labelProbability, Dictionary<string, LemmaScores> lemmaScores, double[] weightOf)
+    {
+        var slotsOfLabel = indexes.Select(plan.SlotOf).Distinct().ToList();
+        var masses = slotsOfLabel.Select(s => SlotMass(lemmaScores, s)).ToArray();
+        var total = masses.Sum();
+        for (var k = 0; k < slotsOfLabel.Count; k++)
+        {
+            var inSlot = indexes.Where(i => plan.SlotOf(i) == slotsOfLabel[k]).ToList();
+            var share = total > 0 ? masses[k] / total : 1.0 / slotsOfLabel.Count;
+            foreach (var i in inSlot)
+            {
+                weightOf[i] = labelProbability * share / inSlot.Count;
+            }
+        }
+    }
+
+    /// <summary>
+    ///     Works out the probability of every analysis of a word without a chooser: the senses split the mass among the slots.
+    /// </summary>
+    /// <param name="plan">The pending word.</param>
+    /// <param name="lemmaScores">The scored lemmas.</param>
+    /// <param name="weightOf">The probability of every analysis; filled in here.</param>
+    private static void WeighBySlots(Pending plan, Dictionary<string, LemmaScores> lemmaScores, double[] weightOf)
+    {
+        var masses = plan.Slots.Select(s => SlotMass(lemmaScores, s)).ToArray();
+        var total = masses.Sum();
+        for (var s = 0; s < plan.Slots.Count; s++)
+        {
+            foreach (var i in plan.Slots[s].Analyses)
+            {
+                weightOf[i] = (total > 0 ? masses[s] / total : 1.0 / plan.Slots.Count) / plan.Slots[s].Analyses.Count;
+            }
+        }
+    }
+
+    /// <summary>
+    ///     Decides the level of the answer for the selected analysis, with the thresholds of its lemma.
+    /// </summary>
+    /// <param name="word">The word.</param>
+    /// <param name="analyses">The analyses with their probabilities, the most probable first.</param>
+    /// <param name="selected">The selected analysis.</param>
+    /// <param name="selectedSlot">The slot of the selected analysis.</param>
+    /// <param name="analysisProbability">The probability of the slot of the selected analysis.</param>
+    /// <param name="scores">The scores of the lemma of the selected analysis.</param>
+    /// <returns>The result.</returns>
+    private static ClassifyResult AnswerAtLevel(string word, ImmutableArray<AnalysisCandidate> analyses, WordDetails selected, Slot selectedSlot, double analysisProbability, LemmaScores scores)
+    {
         var best = scores.Best;
         var bestSense = scores.Senses[best];
         var inSelected = bestSense.PartOfSpeech == selectedSlot.PartOfSpeech;
@@ -419,11 +497,11 @@ internal sealed class OnnxClassifier
         switch (kind)
         {
             case AnswerKind.Sense:
-                return new ClassifyResult(word, true, analyses.MoveToImmutable(), details[selected], SenseLevel.Sense, analysisProbability * scores.WithinSlot(best, selectedSlot), bestSense.GroupId, bestSense.SenseId);
+                return new ClassifyResult(word, true, analyses, selected, SenseLevel.Sense, analysisProbability * scores.WithinSlot(best, selectedSlot), bestSense.GroupId, bestSense.SenseId);
             case AnswerKind.Group:
-                return new ClassifyResult(word, true, analyses.MoveToImmutable(), details[selected], SenseLevel.Group, analysisProbability * scores.GroupWithinSlot(best, selectedSlot), bestSense.GroupId, null);
+                return new ClassifyResult(word, true, analyses, selected, SenseLevel.Group, analysisProbability * scores.GroupWithinSlot(best, selectedSlot), bestSense.GroupId, null);
             default:
-                return PartOfSpeechAnswer(word, analyses.MoveToImmutable(), details[selected], analysisProbability);
+                return PartOfSpeechAnswer(word, analyses, selected, analysisProbability);
         }
     }
 

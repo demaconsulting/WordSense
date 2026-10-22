@@ -67,7 +67,7 @@ public class FallbackWordSenseModelTests
         IWordSenseModel contract = model;
 
         // Assert
-        Assert.IsAssignableFrom<IDownloadableWordSenseModel>(contract);
+        Assert.IsType<IDownloadableWordSenseModel>(contract, exactMatch: false);
     }
 
     /// <summary>

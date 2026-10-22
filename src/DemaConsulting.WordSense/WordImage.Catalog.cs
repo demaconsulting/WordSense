@@ -426,37 +426,50 @@ internal sealed partial class WordImage
                 throw Bad("a lemma block is invalid");
             }
 
-            if (b > 0)
-            {
-                var c = CompareBytes(BlockLemmaSpan(b - 1), BlockLemmaSpan(b));
-                if (c > 0 || (c == 0 && _blockPos[b - 1] >= _blockPos[b]))
-                {
-                    throw Bad("the lemma blocks are not in order");
-                }
-            }
-
+            ValidateBlockOrder(b);
             var lemma = BlockLemmaSpan(b);
             for (var k = BlockStart[b]; k < BlockStart[b + 1]; k++)
             {
-                var sense = BlockSenses[k];
-                if (sense >= _senseCount || _senseBlock[sense] != -1)
-                {
-                    throw Bad("a sense is in no block or in two blocks");
-                }
-
-                _senseBlock[sense] = b;
-                var id = IdSpan((int)sense);
-                if (id.Length <= lemma.Length || !id.StartsWith(lemma) || id[lemma.Length] != (byte)'#')
-                {
-                    throw Bad("a sense id does not start with the lemma of its block");
-                }
-
-                if (id.IndexOf(GroupMarker) >= 0)
-                {
-                    throw Bad("a sense id has the group marker");
-                }
+                ValidateBlockSense(b, lemma, BlockSenses[k]);
             }
         }
+
+        private void ValidateBlockOrder(int b)
+        {
+            if (b == 0)
+            {
+                return;
+            }
+
+            var c = CompareBytes(BlockLemmaSpan(b - 1), BlockLemmaSpan(b));
+            if (c > 0 || (c == 0 && _blockPos[b - 1] >= _blockPos[b]))
+            {
+                throw Bad("the lemma blocks are not in order");
+            }
+        }
+
+        private void ValidateBlockSense(int b, ReadOnlySpan<byte> lemma, uint sense)
+        {
+            if (sense >= _senseCount || _senseBlock[sense] != -1)
+            {
+                throw Bad("a sense is in no block or in two blocks");
+            }
+
+            _senseBlock[sense] = b;
+            var id = IdSpan((int)sense);
+            if (id.Length <= lemma.Length || !id.StartsWith(lemma) || id[lemma.Length] != (byte)'#')
+            {
+                throw Bad("a sense id does not start with the lemma of its block");
+            }
+
+            if (id.IndexOf(GroupMarker) >= 0)
+            {
+                throw Bad("a sense id has the group marker");
+            }
+        }
+
+        private ReadOnlySpan<byte> GroupIdSpan(int g) =>
+            _groupIdBytes.AsSpan((int)_groupIdOffset[g], (int)(_groupIdOffset[g + 1] - _groupIdOffset[g]));
 
         private void ValidateGroups(int groupCount)
         {
@@ -469,54 +482,65 @@ internal sealed partial class WordImage
             var listed = new bool[_senseCount];
             for (var g = 0; g < groupCount; g++)
             {
-                if (g > 0 && CompareBytes(_groupIdBytes.AsSpan((int)_groupIdOffset[g - 1], (int)(_groupIdOffset[g] - _groupIdOffset[g - 1])), _groupIdBytes.AsSpan((int)_groupIdOffset[g], (int)(_groupIdOffset[g + 1] - _groupIdOffset[g]))) >= 0)
-                {
-                    throw Bad("the group ids are not in order");
-                }
-
-                var (start, end) = (_groupStart[g], _groupStart[g + 1]);
-                var groupId = _groupIdBytes.AsSpan((int)_groupIdOffset[g], (int)(_groupIdOffset[g + 1] - _groupIdOffset[g]));
-                if (end < start + 2 || _groupPos[g] > (byte)PartOfSpeech.Auxiliary)
-                {
-                    throw Bad("a group has fewer than two senses");
-                }
-
-                var block = -1;
-                for (var k = start; k < end; k++)
-                {
-                    var member = _groupMembers[k];
-                    if (member >= _senseCount || _senseGroup[member] != g + 1 || (block != -1 && _senseBlock[member] != block))
-                    {
-                        throw Bad("the members of a group do not agree with the senses");
-                    }
-
-                    if (listed[member])
-                    {
-                        throw Bad("a group lists a sense twice");
-                    }
-
-                    listed[member] = true;
-                    block = _senseBlock[member];
-                }
-
-                var lemma = BlockLemmaSpan(block);
-                if (!groupId.StartsWith(lemma) || !groupId[lemma.Length..].StartsWith(GroupMarker))
-                {
-                    throw Bad("a group id is not the lemma of its senses followed by the group marker");
-                }
-
-                if (_blockPos[block] != _groupPos[g] || end - start >= BlockStart[block + 1] - BlockStart[block])
-                {
-                    throw Bad("a group mixes parts of speech or holds all the senses of its lemma and part of speech");
-                }
-
-                grouped += (int)(end - start);
+                grouped += ValidateGroup(g, listed);
             }
 
             if (grouped != _senseGroup.Count(g => g != 0))
             {
                 throw Bad("a sense names a group that does not list it");
             }
+        }
+
+        private int ValidateGroup(int g, bool[] listed)
+        {
+            if (g > 0 && CompareBytes(GroupIdSpan(g - 1), GroupIdSpan(g)) >= 0)
+            {
+                throw Bad("the group ids are not in order");
+            }
+
+            var (start, end) = (_groupStart[g], _groupStart[g + 1]);
+            var groupId = GroupIdSpan(g);
+            if (end < start + 2 || _groupPos[g] > (byte)PartOfSpeech.Auxiliary)
+            {
+                throw Bad("a group has fewer than two senses");
+            }
+
+            var block = ValidateGroupMembers(g, start, end, listed);
+            var lemma = BlockLemmaSpan(block);
+            if (!groupId.StartsWith(lemma) || !groupId[lemma.Length..].StartsWith(GroupMarker))
+            {
+                throw Bad("a group id is not the lemma of its senses followed by the group marker");
+            }
+
+            if (_blockPos[block] != _groupPos[g] || end - start >= BlockStart[block + 1] - BlockStart[block])
+            {
+                throw Bad("a group mixes parts of speech or holds all the senses of its lemma and part of speech");
+            }
+
+            return (int)(end - start);
+        }
+
+        private int ValidateGroupMembers(int g, uint start, uint end, bool[] listed)
+        {
+            var block = -1;
+            for (var k = start; k < end; k++)
+            {
+                var member = _groupMembers[k];
+                if (member >= _senseCount || _senseGroup[member] != g + 1 || (block != -1 && _senseBlock[member] != block))
+                {
+                    throw Bad("the members of a group do not agree with the senses");
+                }
+
+                if (listed[member])
+                {
+                    throw Bad("a group lists a sense twice");
+                }
+
+                listed[member] = true;
+                block = _senseBlock[member];
+            }
+
+            return block;
         }
 
         private void ValidateKeys()

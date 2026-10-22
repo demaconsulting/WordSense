@@ -87,53 +87,15 @@ internal sealed class WeightedLemmaTable
     {
         ArgumentNullException.ThrowIfNull(data);
         Data = data;
-        var image = WordLexicon.Current.InventoryHash;
-        if (!image.SequenceEqual(data.InventoryHash))
-        {
-            throw new InvalidDataException(
-                $"The weights were trained for the inventory {Convert.ToHexString(data.InventoryHash).ToLowerInvariant()[..16]}, but the word image has the inventory {Convert.ToHexString(image).ToLowerInvariant()[..16]}.");
-        }
+        CheckInventory(data);
 
         var lemmas = new Dictionary<string, ResolvedLemma>(StringComparer.Ordinal);
         var senses = new HashSet<string>(StringComparer.Ordinal);
         var choosers = new Dictionary<string, FormChooser>(StringComparer.Ordinal);
         foreach (var entry in data.Lemmas)
         {
-            if (entry.SenseIds.Count != entry.Weights.SenseCount)
-            {
-                throw new InvalidDataException($"The weights of '{entry.Lemma}' have {entry.Weights.SenseCount} rows but name {entry.SenseIds.Count} senses.");
-            }
-
-            var resolved = ImmutableArray.CreateBuilder<SenseInfo>(entry.SenseIds.Count);
-            if (entry.Weights.Dimension != data.Dimension)
-            {
-                throw new InvalidDataException($"The weights of '{entry.Lemma}' have the dimension {entry.Weights.Dimension}, not {data.Dimension}.");
-            }
-            foreach (var id in entry.SenseIds)
-            {
-                if (!WordLexicon.TryGetSense(id, out var sense))
-                {
-                    throw new InvalidDataException($"The weights of '{entry.Lemma}' name the sense '{id}', which the word image does not have.");
-                }
-
-                if (!string.Equals(sense.Lemma, entry.Lemma, StringComparison.Ordinal))
-                {
-                    throw new InvalidDataException($"The weights of '{entry.Lemma}' name the sense '{id}' of the lemma '{sense.Lemma}'.");
-                }
-
-                if (!senses.Add(id))
-                {
-                    throw new InvalidDataException($"The weights name the sense '{id}' twice.");
-                }
-
-                resolved.Add(sense);
-            }
-
-            if (entry.Weights.GroupThreshold < LemmaWeights.Never && resolved.All(s => s.GroupId is null))
-            {
-                throw new InvalidDataException($"The weights of '{entry.Lemma}' have a group threshold, but none of its senses is in a group.");
-            }
-            if (!lemmas.TryAdd(entry.Lemma, new ResolvedLemma(entry, resolved.MoveToImmutable())))
+            var resolved = ResolveSenses(entry, data.Dimension, senses);
+            if (!lemmas.TryAdd(entry.Lemma, new ResolvedLemma(entry, resolved)))
             {
                 throw new InvalidDataException($"The weights have the lemma '{entry.Lemma}' twice.");
             }
@@ -151,6 +113,72 @@ internal sealed class WeightedLemmaTable
 
         Lemmas = lemmas.ToFrozenDictionary(StringComparer.Ordinal);
         _choosers = choosers.ToFrozenDictionary(StringComparer.Ordinal);
+    }
+
+    /// <summary>
+    ///     Checks that the weights were trained for the inventory of the word image.
+    /// </summary>
+    /// <param name="data">The trained weights.</param>
+    /// <exception cref="InvalidDataException">Thrown when the weights were trained for another inventory.</exception>
+    private static void CheckInventory(WeightsData data)
+    {
+        var image = WordLexicon.Current.InventoryHash;
+        if (!image.SequenceEqual(data.InventoryHash))
+        {
+            throw new InvalidDataException(
+                $"The weights were trained for the inventory {Convert.ToHexString(data.InventoryHash).ToLowerInvariant()[..16]}, but the word image has the inventory {Convert.ToHexString(image).ToLowerInvariant()[..16]}.");
+        }
+    }
+
+    /// <summary>
+    ///     Resolves the sense ids of one trained lemma against the word image.
+    /// </summary>
+    /// <param name="entry">The trained lemma.</param>
+    /// <param name="dimension">The dimension of the weights of the model.</param>
+    /// <param name="seen">The sense ids of the lemmas that were resolved before; the senses of this lemma are added.</param>
+    /// <returns>The catalog entry of every sense, in the column order of the weights.</returns>
+    /// <exception cref="InvalidDataException">
+    ///     Thrown when the rows, the dimension or the sense ids of the lemma disagree with the word image.
+    /// </exception>
+    private static ImmutableArray<SenseInfo> ResolveSenses(WeightedLemma entry, int dimension, HashSet<string> seen)
+    {
+        if (entry.SenseIds.Count != entry.Weights.SenseCount)
+        {
+            throw new InvalidDataException($"The weights of '{entry.Lemma}' have {entry.Weights.SenseCount} rows but name {entry.SenseIds.Count} senses.");
+        }
+
+        var resolved = ImmutableArray.CreateBuilder<SenseInfo>(entry.SenseIds.Count);
+        if (entry.Weights.Dimension != dimension)
+        {
+            throw new InvalidDataException($"The weights of '{entry.Lemma}' have the dimension {entry.Weights.Dimension}, not {dimension}.");
+        }
+
+        foreach (var id in entry.SenseIds)
+        {
+            if (!WordLexicon.TryGetSense(id, out var sense))
+            {
+                throw new InvalidDataException($"The weights of '{entry.Lemma}' name the sense '{id}', which the word image does not have.");
+            }
+
+            if (!string.Equals(sense.Lemma, entry.Lemma, StringComparison.Ordinal))
+            {
+                throw new InvalidDataException($"The weights of '{entry.Lemma}' name the sense '{id}' of the lemma '{sense.Lemma}'.");
+            }
+
+            if (!seen.Add(id))
+            {
+                throw new InvalidDataException($"The weights name the sense '{id}' twice.");
+            }
+
+            resolved.Add(sense);
+        }
+
+        if (entry.Weights.GroupThreshold < LemmaWeights.Never && resolved.All(s => s.GroupId is null))
+        {
+            throw new InvalidDataException($"The weights of '{entry.Lemma}' have a group threshold, but none of its senses is in a group.");
+        }
+
+        return resolved.MoveToImmutable();
     }
 
     /// <summary>

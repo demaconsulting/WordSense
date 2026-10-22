@@ -95,6 +95,7 @@ internal static class ModelDownloader
     ///     the platform rejects.
     /// </exception>
     [SuppressMessage("Major Bug", "S3928:Parameter names used into ArgumentException constructors should match an existing one", Justification = "The invalid value is the StoreRoot member of the caller's DownloadOptions, which is the name the contract reports.")]
+    [SuppressMessage("Usage", "CA2208:Instantiate argument exceptions correctly", Justification = "The invalid value is the StoreRoot member of the caller's DownloadOptions, which is the name the contract reports.")]
     internal static string ResolveStoreRoot(string? storeRoot)
     {
         if (storeRoot is null)

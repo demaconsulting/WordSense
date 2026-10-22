@@ -1,4 +1,5 @@
 using System.Collections.Immutable;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DemaConsulting.WordSense;
 
@@ -98,6 +99,7 @@ public readonly record struct ClassifyResult
     /// <param name="confidence">The confidence at that level, from 0 to 1.</param>
     /// <param name="groupId">The answered group, or the group of the answered sense; otherwise <see langword="null"/>.</param>
     /// <param name="senseId">The answered sense at the sense level; otherwise <see langword="null"/>.</param>
+    [SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Public constructor of an immutable result record whose components are all supplied by the classifier; the many components are the public contract.")]
     public ClassifyResult(
         string word,
         bool isKnown,

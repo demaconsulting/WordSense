@@ -202,7 +202,7 @@ public class BertBaseCasedWordSenseModelTests
         IWordSenseModel contract = model;
 
         // Assert
-        Assert.IsAssignableFrom<IDownloadableWordSenseModel>(contract);
+        Assert.IsType<IDownloadableWordSenseModel>(contract, exactMatch: false);
     }
 
     /// <summary>
@@ -221,7 +221,7 @@ public class BertBaseCasedWordSenseModelTests
         var failure = await Assert.ThrowsAsync<ModelUnavailableException>(() => model.EnsureModelAsync(null, TestContext.Current.CancellationToken));
 
         // Assert: the original exception is kept
-        Assert.IsAssignableFrom<IOException>(failure.InnerException);
+        Assert.IsType<IOException>(failure.InnerException, exactMatch: false);
     }
 
     /// <summary>

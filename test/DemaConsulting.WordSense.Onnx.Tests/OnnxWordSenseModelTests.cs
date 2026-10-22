@@ -385,8 +385,8 @@ public class OnnxWordSenseModelTests
 
         // Assert: a typed exception that is not an ArgumentException, with the original one as the inner exception
         Assert.False((object)failure is ArgumentException);
-        Assert.IsAssignableFrom<WordSenseException>(failure);
-        Assert.IsAssignableFrom<ArgumentException>(failure.InnerException);
+        Assert.IsType<WordSenseException>(failure, exactMatch: false);
+        Assert.IsType<ArgumentException>(failure.InnerException, exactMatch: false);
         if (kind.EndsWith("Timeout", StringComparison.Ordinal))
         {
             Assert.IsType<ArgumentOutOfRangeException>(failure.InnerException);
@@ -394,7 +394,7 @@ public class OnnxWordSenseModelTests
 
         if (kind.EndsWith("StoreRoot", StringComparison.Ordinal))
         {
-            Assert.Equal("StoreRoot", ((ArgumentException)failure.InnerException!).ParamName);
+            Assert.Equal("StoreRoot", ((ArgumentException)failure.InnerException).ParamName);
         }
     }
 
@@ -414,7 +414,7 @@ public class OnnxWordSenseModelTests
         var failure = await Assert.ThrowsAsync<DownloadConfigurationException>(() => model.EnsureModelAsync(null, TestContext.Current.CancellationToken));
 
         // Assert
-        Assert.IsAssignableFrom<ArgumentException>(failure.InnerException);
+        Assert.IsType<ArgumentException>(failure.InnerException, exactMatch: false);
     }
 
     /// <summary>
@@ -467,7 +467,7 @@ public class OnnxWordSenseModelTests
         var failure = await Assert.ThrowsAsync<ModelUnavailableException>(() => model.ClassifyAsync(PendingSentence, TestContext.Current.CancellationToken));
 
         // Assert: the lazy ensure maps like the explicit one, with the original exception kept
-        Assert.IsAssignableFrom<IOException>(failure.InnerException);
+        Assert.IsType<IOException>(failure.InnerException, exactMatch: false);
         Assert.True(model.IsEncoderReleased);
     }
 
@@ -487,7 +487,7 @@ public class OnnxWordSenseModelTests
         var failure = await Assert.ThrowsAsync<DownloadConfigurationException>(() => model.ClassifyAsync(PendingSentence, TestContext.Current.CancellationToken));
 
         // Assert
-        Assert.IsAssignableFrom<ArgumentException>(failure.InnerException);
+        Assert.IsType<ArgumentException>(failure.InnerException, exactMatch: false);
     }
 
     /// <summary>
@@ -614,7 +614,7 @@ public class OnnxWordSenseModelTests
         IWordSenseModel contract = model;
 
         // Assert
-        Assert.IsAssignableFrom<IDownloadableWordSenseModel>(contract);
+        Assert.IsType<IDownloadableWordSenseModel>(contract, exactMatch: false);
     }
 
     /// <summary>

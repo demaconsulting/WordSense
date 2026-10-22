@@ -368,15 +368,25 @@ internal sealed partial class WordImage
                 continue;
             }
 
-            for (var k = _entryFormStart![e]; k < _entryFormStart[e + 1]; k++)
+            if (EntryHasAnalysis(e, required))
             {
-                var spelling = (int)_entryForms![k];
-                for (var r = (int)_analysisStart[spelling]; r < (int)_analysisStart[spelling + 1]; r++)
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private bool EntryHasAnalysis(int e, string[] required)
+    {
+        for (var k = _entryFormStart![e]; k < _entryFormStart[e + 1]; k++)
+        {
+            var spelling = (int)_entryForms![k];
+            for (var r = (int)_analysisStart[spelling]; r < (int)_analysisStart[spelling + 1]; r++)
+            {
+                if (_rows[r * 2] == e && HasItems(_features[(int)_rows[(r * 2) + 1]], required))
                 {
-                    if (_rows[r * 2] == e && HasItems(_features[(int)_rows[(r * 2) + 1]], required))
-                    {
-                        return true;
-                    }
+                    return true;
                 }
             }
         }

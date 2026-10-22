@@ -209,9 +209,9 @@ internal sealed class FakeEncoder(Func<string, double[]?> vectorOf)
     /// </summary>
     /// <param name="words">The words of the text.</param>
     /// <param name="targets">The target indexes.</param>
-    /// <param name="cancellationToken">The token.</param>
+    /// <param name="_">The token, which the fake ignores; it is part of the signature of the encoder delegate.</param>
     /// <returns>The vectors parallel to the targets.</returns>
-    public ValueTask<double[]?[]> EncodeAsync(IReadOnlyList<string> words, IReadOnlyList<int> targets, CancellationToken cancellationToken)
+    public ValueTask<double[]?[]> EncodeAsync(IReadOnlyList<string> words, IReadOnlyList<int> targets, CancellationToken _)
     {
         Targets.Add([.. targets]);
         Texts.Add([.. words]);

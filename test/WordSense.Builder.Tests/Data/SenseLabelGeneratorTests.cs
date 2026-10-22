@@ -24,6 +24,8 @@ public sealed partial class SenseLabelGeneratorTests : IDisposable
         ["x"] = "auxiliary",
     };
 
+    private static readonly string[] SliceTables = ["entry", "sense", "synset_relation"];
+
     private readonly TestDirectory _dir = new();
 
     /// <inheritdoc />
@@ -46,7 +48,7 @@ public sealed partial class SenseLabelGeneratorTests : IDisposable
         Dictionary<string, int>? counts = null) =>
         new(
             [.. senses],
-            hypernyms ?? new Dictionary<string, IReadOnlyList<string>>(),
+            hypernyms ?? [],
             [.. labels ?? []],
             [.. retired ?? []],
             counts ?? [],
@@ -478,7 +480,7 @@ public sealed partial class SenseLabelGeneratorTests : IDisposable
         // Arrange - reverse the rows of the entry, sense and relation files of the second copy
         var first = DataFixture.ImportSlice(_dir, "first");
         var second = DataFixture.ImportSlice(_dir, "second");
-        foreach (var file in new[] { "entry", "sense", "synset_relation" }.SelectMany(t => Directory.GetFiles(Path.Join(second, t), "*.tsv")))
+        foreach (var file in SliceTables.SelectMany(t => Directory.GetFiles(Path.Join(second, t), "*.tsv")))
         {
             var lines = File.ReadAllLines(file, Encoding.UTF8);
             File.WriteAllText(file, string.Join('\n', lines.Take(1).Concat(lines.Skip(1).Reverse())) + "\n", new UTF8Encoding(false));

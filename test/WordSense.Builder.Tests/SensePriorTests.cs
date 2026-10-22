@@ -280,9 +280,11 @@ public sealed class SensePriorTests
             }
         }
 
-        var counts = new Dictionary<string, int>(StringComparer.Ordinal);
-        counts[noun.SenseKey ?? "none-noun"] = 40;
-        counts[verb.SenseKey ?? "none-verb"] = 2;
+        var counts = new Dictionary<string, int>(StringComparer.Ordinal)
+        {
+            [noun.SenseKey ?? "none-noun"] = 40,
+            [verb.SenseKey ?? "none-verb"] = 2,
+        };
         return ([.. rows], [.. pooled], new SenseUsage(counts, Defaults));
     }
 

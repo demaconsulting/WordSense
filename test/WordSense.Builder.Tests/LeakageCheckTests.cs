@@ -123,7 +123,7 @@ public sealed class LeakageCheckTests
             Assert.Contains(expected, names);
         }
 
-        Assert.True(!report.Leaks.Any(), report.Render());
+        Assert.False(report.Leaks.Any(), report.Render());
     }
 
     /// <summary>

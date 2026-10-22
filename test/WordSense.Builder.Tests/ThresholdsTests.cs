@@ -11,6 +11,8 @@ public sealed class ThresholdsTests
 {
     private static readonly TrainingOptions Options = new(Parallelism: 1);
 
+    private static readonly float[] IdenticalFeatures = [0.6f, 0.8f, 0f, 0f, 0f, 0f];
+
     /// <summary>
     ///     Builds anchors in six dimensions: senses that share a base direction are confusable, a sense of its own
     ///     direction is separable; the spread is a deterministic hash of the sense and the index.
@@ -134,7 +136,7 @@ public sealed class ThresholdsTests
         var anchors = Enumerable.Range(0, 8).SelectMany(i => new[] { StubEmbedding.Row(noun, "noun", i), StubEmbedding.Row(verb, "verb", i) }).ToList();
         CorpusRow[] holdoutA = [StubEmbedding.Row(noun, "noun", 100), StubEmbedding.Row(verb, "verb", 101)];
         CorpusRow[] holdoutB = [StubEmbedding.Row(noun, "verb", 200), StubEmbedding.Row(verb, "noun", 201), StubEmbedding.Row(noun, "noun", 202)];
-        var encoder = new CachingEncoder((words, targets, _) => ValueTask.FromResult<double[]?[]>(targets.Select(_ => (double[]?)StubEmbedding.Embed(words)).ToArray()), null);
+        var encoder = new CachingEncoder((words, targets, _) => ValueTask.FromResult<double[]?[]>(targets.Select(_ => StubEmbedding.Embed(words)).ToArray()), null);
 
         // Act
         var none = await ModelTrainer.TrainDataAsync("stub", "m", new byte[32], anchors, Options, encoder, null, null, TextWriter.Null, Stopwatch.StartNew(), TestContext.Current.CancellationToken);
@@ -156,7 +158,7 @@ public sealed class ThresholdsTests
     public void WordSenseBuilder_Thresholds_Choose_TargetNeverReached_NeverAnswersThatLevel()
     {
         // Arrange: identical features with alternating labels cannot be told apart, so no margin reaches 95 percent
-        var features = Enumerable.Repeat(new float[] { 0.6f, 0.8f, 0f, 0f, 0f, 0f }, 20).ToArray();
+        var features = Enumerable.Repeat(IdenticalFeatures, 20).ToArray();
         var labels = Enumerable.Range(0, 20).Select(i => i % 2).ToArray();
 
         // Act

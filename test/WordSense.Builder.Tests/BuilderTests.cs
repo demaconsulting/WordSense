@@ -363,9 +363,7 @@ public sealed class BuilderTests : IDisposable
         var auxiliaries = LexiconSource.ReadAuxiliaries(Path.Join(root.FullName, "corpus", "lexicon", "auxiliaries.tsv"));
 
         var problems = auxiliaries
-            .Where(w => !table.ContainsKey(w)
-                || table[w].All(d => d.PartOfSpeech != PartOfSpeech.Auxiliary)
-                || table[w][^1].PartOfSpeech != PartOfSpeech.Auxiliary)
+            .Where(w => IsWithoutLastAuxiliary(table[w]))
             .Take(10)
             .ToList();
 
@@ -453,6 +451,11 @@ public sealed class BuilderTests : IDisposable
         /// <returns>True when the spelling is known.</returns>
         public bool ContainsKey(string word) => !this[word].IsDefaultOrEmpty;
     }
+
+    private static bool IsWithoutLastAuxiliary(System.Collections.Immutable.ImmutableArray<DemaConsulting.WordSense.WordDetails> analyses) =>
+        analyses.IsDefaultOrEmpty
+        || analyses.All(d => d.PartOfSpeech != PartOfSpeech.Auxiliary)
+        || analyses[^1].PartOfSpeech != PartOfSpeech.Auxiliary;
 
     private static DirectoryInfo FindRepositoryRoot()
     {

@@ -324,8 +324,8 @@ public class OnnxClassifierTests
 
         // Assert: both analyses list exactly the senses of their own part of speech
         Assert.Equal(2, result.Analyses.Length);
-        Assert.Equal(new HashSet<string>(AdjectiveIds), Analysis(result, PartOfSpeech.Adjective).Senses.Select(s => s.SenseId).ToHashSet());
-        Assert.Equal(new HashSet<string>(AdverbIds), Analysis(result, PartOfSpeech.Adverb).Senses.Select(s => s.SenseId).ToHashSet());
+        Assert.Equal(AdjectiveIds.ToHashSet(), Analysis(result, PartOfSpeech.Adjective).Senses.Select(s => s.SenseId).ToHashSet());
+        Assert.Equal(AdverbIds.ToHashSet(), Analysis(result, PartOfSpeech.Adverb).Senses.Select(s => s.SenseId).ToHashSet());
         Assert.Equal(AdjectiveIds[1], Analysis(result, PartOfSpeech.Adjective).Senses[0].SenseId);
     }
 

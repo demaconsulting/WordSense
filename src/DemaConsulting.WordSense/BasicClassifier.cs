@@ -306,32 +306,13 @@ internal sealed class BasicClassifier
             }
 
             // The first analysis of the slot stands for the slot
-            first[j] = j;
-            for (var k = 0; k < j; k++)
-            {
-                if (SenseFusion.SameSlot(analyses[k], analyses[j]))
-                {
-                    first[j] = first[k];
-                    break;
-                }
-            }
-
+            first[j] = FirstOfSlot(analyses, first, j);
             slotTotal[first[j]] += probabilities[j];
         }
 
         // A stable insertion sort: the number of analyses is small and a tie keeps the lexicon order
         Span<int> order = count <= 32 ? stackalloc int[32] : new int[count];
-        for (var j = 0; j < count; j++)
-        {
-            var at = j;
-            while (at > 0 && Precedes(j, order[at - 1], first, slotTotal, probabilities))
-            {
-                order[at] = order[at - 1];
-                at--;
-            }
-
-            order[at] = j;
-        }
+        SortAnalyses(order[..count], first, slotTotal, probabilities);
 
         var sorted = new AnalysisCandidate[count];
         for (var j = 0; j < count; j++)
@@ -342,6 +323,37 @@ internal sealed class BasicClassifier
         selectedGroup = groups?[order[0]];
         slotProbability = slotTotal[first[order[0]]];
         return ImmutableCollectionsMarshal.AsImmutableArray(sorted);
+    }
+
+    // Finds the analysis that stands for the slot of analysis j: the first earlier analysis of the same slot (through
+    // its own representative), or j itself when it opens a slot
+    private static int FirstOfSlot(ImmutableArray<WordDetails> analyses, ReadOnlySpan<int> first, int j)
+    {
+        for (var k = 0; k < j; k++)
+        {
+            if (SenseFusion.SameSlot(analyses[k], analyses[j]))
+            {
+                return first[k];
+            }
+        }
+
+        return j;
+    }
+
+    // Fills the order with the indexes of the analyses by a stable insertion sort (see Precedes)
+    private static void SortAnalyses(Span<int> order, ReadOnlySpan<int> first, ReadOnlySpan<double> slotTotal, ReadOnlySpan<double> probabilities)
+    {
+        for (var j = 0; j < order.Length; j++)
+        {
+            var at = j;
+            while (at > 0 && Precedes(j, order[at - 1], first, slotTotal, probabilities))
+            {
+                order[at] = order[at - 1];
+                at--;
+            }
+
+            order[at] = j;
+        }
     }
 
     // Tells whether the analysis a, which comes after b in the lexicon, must be listed before b: when its slot is more
