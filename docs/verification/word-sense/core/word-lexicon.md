@@ -53,6 +53,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Forms are lower case** (`FormsOf_Forms_AreLowerCase`) and **case folds** (`Lookup_Case_FoldsToLowerCase`): an
   upper-case spelling finds the lower-case entry; an unknown word is absent (`Lookup_UnknownWord_IsAbsent`); a null
   word throws (`Lookup_NullWord_Throws`).
+- **Tokens without a letter are unknown** (`Lookup_TokenWithoutLetter_IsAbsent`, `Lookup_WordWithALetter_IsStillFound`):
+  `3`, `1999`, `0`, `24/7`, `.22`, `3.5` and `-` are absent from `TryLookup`, `Lookup`, `Contains` and `FormsOf`
+  (the image holds entries such as `3` that must not show), while `three`, `Twenty` and `3rd` are found.
 - **Forms of a lemma** (`FormsOf_Lemma_ListsItsForms`): the forms of `record` are listed.
 - **Senses of a lemma and part of speech** (`SensesOf_LemmaAndPartOfSpeech_ListsInOewnOrder`,
   `SensesOf_SingleSenseLemma_ListsOneSense`, `SensesOf_UnknownLemma_IsEmpty`, `SensesOf_NullLemma_Throws`): the senses

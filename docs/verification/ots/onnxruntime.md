@@ -19,7 +19,8 @@ the answered part of speech and not exact probabilities.
 ONNX Runtime is verified by running the real models in the test suite, on every platform and target framework of the CI
 matrix: the encoder tests in `test/DemaConsulting.WordSense.Onnx.Tests` and the end-to-end tests in
 `test/DemaConsulting.WordSense.MiniLM.Tests` and `test/DemaConsulting.WordSense.BertBaseCased.Tests`. The tests are
-skipped locally only when the Git LFS model files have not been fetched; the CI checkout fetches them.
+skipped locally only when the Git LFS model files have not been fetched; the CI checkout fetches them, verifies that
+they are real content and runs the tests with `WORDSENSE_REQUIRE_MODELS=true`, so that a missing model fails the run.
 
 ### Test Scenarios
 

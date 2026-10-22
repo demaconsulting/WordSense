@@ -28,7 +28,8 @@ encoder (`weights`, `evaluate`, `evaluate-senses`, `evaluate-running` and `evalu
 verified through the data they produce: the weights embedded in the model packages are loaded and matched in the
 MiniLM and BertBaseCased tests, the expectations of the suite are checked by the suite tests of the three model test
 projects (`BasicSuiteTests`, `MiniLMSuiteTests`, `BertBaseCasedSuiteTests`) and the floors of the challenge set by
-`ChallengeSetFloorTests` (both skip when the model files are not present), and the accuracy figures are recorded in
+`ChallengeSetFloorTests` (both skip when the model files are not present, and fail when `WORDSENSE_REQUIRE_MODELS` is
+set), and the accuracy figures are recorded in
 the model comparison table and the accuracy chapter of the user guide, not asserted here. The download of SemCor (an
 evaluation source only) is verified with a stub HTTP
 handler, a fixture archive and its checksum; no network is used. The treebank is prepared by a script of

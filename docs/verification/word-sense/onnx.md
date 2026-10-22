@@ -13,15 +13,17 @@ substituted for the test files, so no test reaches a public host. The model-leve
 `OnnxClassifier`, `OnnxEncoder`) are verified with fake weights (with chosen thresholds, so that each answer level is
 reached), a test double standing in for a fallback model where a scenario needs one, and either a fake encoder input or
 the committed int8 model through the
-helper `ModelAssets`, which skips a test when the Git LFS content is absent. Tests live in
+helper `ModelAssets`, which skips a test when the Git LFS content is absent (and fails it instead when
+`WORDSENSE_REQUIRE_MODELS` is set, through `ModelFileCheck`). Tests live in
 `test/DemaConsulting.WordSense.Onnx.Tests`; the concrete model packages are verified in their own subsystem documents.
 
 ### Test Environment
 
 Standard xUnit v3 runner on net8.0, net9.0 and net10.0. The
 downloader tests open a loopback HTTP listener on an ephemeral port and a temporary store directory. The real-model
-tests need `model/all-MiniLM-L6-v2-int8/` (Git LFS) and are skipped when it is absent. Environment variables are never
-modified: the mirror environment is read through an injected getter.
+tests need `model/all-MiniLM-L6-v2-int8/` (Git LFS) and are skipped when it is absent (failed when
+`WORDSENSE_REQUIRE_MODELS` is set, as in CI; `ModelFileCheckTests` verify this rule with temporary folders). Environment
+variables are never modified by a test: the mirror environment is read through an injected getter.
 
 ### Acceptance Criteria
 

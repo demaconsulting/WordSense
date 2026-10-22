@@ -27,7 +27,9 @@ namespace DemaConsulting.WordSense;
 ///     analyses of a word are in a fixed order that is part of the lexicon (for a word with several analyses the first is
 ///     the most frequent) and use the ten values of <see cref="PartOfSpeech"/>. A capitalized or inflected spelling
 ///     behaves like its base form: <c>Polish</c>, <c>using</c> and <c>paid</c> have the analyses of their lemmas. A word
-///     that is not in the lexicon (a number written with digits, most proper nouns or a misspelling) has no analysis.
+///     that is not in the lexicon (most proper nouns or a misspelling) has no analysis, and neither has a token without a
+///     letter: a number written with digits (<c>3</c>, <c>1999</c>) or punctuation is never a word here, as in the models,
+///     where it is unknown.
 ///     </para>
 ///     <para>
 ///     <see cref="SensesOf"/> answers the semantic question: which senses do a lemma and part of speech have, in the order
@@ -76,6 +78,10 @@ public static class WordLexicon
     /// <summary>
     ///     Gets the number of distinct written forms in the lexicon.
     /// </summary>
+    /// <remarks>
+    ///     The count is that of the embedded image; it includes the few spellings without a letter (numbers) that the image
+    ///     keeps but that <see cref="Lookup"/> never answers.
+    /// </remarks>
     /// <exception cref="InvalidDataException">Thrown on first access when the embedded lexicon is missing or corrupt.</exception>
     public static int Count => Image.Value.SpellingCount;
 
@@ -96,12 +102,22 @@ public static class WordLexicon
     /// </summary>
     /// <param name="word">The word as written; it is matched exactly first, then without regard to case.</param>
     /// <param name="senses">The analyses of the word in answer order, or the default array when the word is unknown.</param>
-    /// <returns><see langword="true"/> when the word is in the lexicon.</returns>
+    /// <returns><see langword="true"/> when the word is in the lexicon; always <see langword="false"/> for a token without a letter.</returns>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="word"/> is null.</exception>
     /// <exception cref="InvalidDataException">Thrown on first access when the embedded lexicon is missing or corrupt.</exception>
     public static bool TryLookup(string word, out ImmutableArray<WordDetails> senses)
     {
         ArgumentNullException.ThrowIfNull(word);
+
+        // A token without a letter (a number written with digits, punctuation) is never a word: the models answer it as
+        // unknown, so the lexicon does too, although the image keeps a few such spellings from Open English WordNet.
+        // The image is still opened first, so a missing or corrupt lexicon is reported for every input.
+        if (!CueModel.HasLetter(word))
+        {
+            _ = Image.Value;
+            senses = default;
+            return false;
+        }
 
         // A small direct-mapped cache of recent answers: the models ask for the same words repeatedly and a lookup
         // decodes and allocates. Entries are immutable, so a racing writer can only replace one valid entry with another.
@@ -140,10 +156,15 @@ public static class WordLexicon
     ///     Gets every written form of a lemma.
     /// </summary>
     /// <param name="lemma">The lemma exactly as it is written in the lexicon (the <see cref="WordDetails.Lemma"/> of an analysis).</param>
-    /// <returns>The forms (the lemma itself included) in spelling order; empty for an unknown lemma.</returns>
+    /// <returns>The forms (the lemma itself included) in spelling order; empty for an unknown lemma and for a lemma without a letter (a number).</returns>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="lemma"/> is null.</exception>
     /// <exception cref="InvalidDataException">Thrown on first access when the embedded lexicon is missing or corrupt.</exception>
-    public static IReadOnlyList<string> FormsOf(string lemma) => Image.Value.FormsOf(lemma);
+    public static IReadOnlyList<string> FormsOf(string lemma)
+    {
+        ArgumentNullException.ThrowIfNull(lemma);
+        var image = Image.Value;
+        return CueModel.HasLetter(lemma) ? image.FormsOf(lemma) : [];
+    }
 
     /// <summary>
     ///     Lists the senses of a lemma and part of speech.

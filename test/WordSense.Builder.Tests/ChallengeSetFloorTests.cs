@@ -1,5 +1,6 @@
 using System.Globalization;
 using DemaConsulting.WordSense;
+using DemaConsulting.WordSense.Onnx.Tests;
 
 namespace WordSense.Builder.Tests;
 
@@ -39,7 +40,7 @@ public sealed class ChallengeSetFloorTests
         }
         catch (Exception ex) when (ex is FileNotFoundException or InvalidDataException)
         {
-            Assert.Skip("The model files are not available: " + ex.Message);
+            ModelFileCheck.Unavailable("The model files are not available: " + ex.Message);
         }
 
         var score = await TaggerEvaluator.EvaluateAsync(RunningTextEvaluator.ChallengeSetName, model, sentences, cancellationToken);

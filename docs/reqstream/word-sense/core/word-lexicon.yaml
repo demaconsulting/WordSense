@@ -53,6 +53,21 @@ sections:
                   - WordLexicon_Lookup_PossessiveOfKnownWord_AddsPossessiveFeature
                   - WordLexicon_Lookup_StoredContractionOrUnknownStem_IsNotPossessive
 
+              - id: WordSense-Core-WordLexicon-Numerals
+                title: >-
+                  WordLexicon shall treat a token without a letter (a number written with digits, a number with
+                  separators or punctuation) as unknown: TryLookup and Contains shall report it absent, Lookup shall
+                  return no analysis and FormsOf shall return no form, even where the embedded image holds an entry for
+                  the spelling, and a spelling that has a letter shall be unaffected.
+                tags: [unit]
+                justification: |
+                  The models answer a token without a letter as unknown, so a caller that asks the lexicon about the
+                  same token must get the same answer; a digit string such as 3 would otherwise show the analyses of
+                  a stray dictionary entry while 1999 shows none.
+                tests:
+                  - WordLexicon_Lookup_TokenWithoutLetter_IsAbsent
+                  - WordLexicon_Lookup_WordWithALetter_IsStillFound
+
               - id: WordSense-Core-WordLexicon-Facts
                 title: >-
                   WordLexicon shall resolve the linguistic facts of a fixed test set, hand-observed and derived

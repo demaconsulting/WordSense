@@ -216,7 +216,7 @@ public sealed class ImageTests
     {
         var image = WordImage.Open(Committed.Value);
 
-        for (var i = 0; i < image.SpellingCount; i += 1013)
+        for (var i = 0; i < image.SpellingCount; i++)
         {
             Assert.Equal(i, image.Find(image.Spelling(i)));
         }

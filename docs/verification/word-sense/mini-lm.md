@@ -19,7 +19,8 @@ once for all models in the Onnx subsystem.
 
 Standard xUnit v3 runner on net8.0, net9.0 and net10.0. The files `model_int8.onnx` and `vocab.txt` under
 `model/all-MiniLM-L6-v2-int8/` (Git LFS) are needed, and for the README sample also `model_int8.onnx` and `vocab.txt`
-under `model/bert-base-cased-int8/`; tests that need them are skipped when the LFS content is absent.
+under `model/bert-base-cased-int8/`; tests that need them are skipped when the LFS content is absent (failed when
+`WORDSENSE_REQUIRE_MODELS` is set, as in CI).
 No network access. The ONNX Runtime session of the tests is limited to two intra-op threads.
 
 ### Acceptance Criteria

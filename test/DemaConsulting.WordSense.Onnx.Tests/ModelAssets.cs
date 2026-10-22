@@ -35,7 +35,7 @@ internal static class ModelAssets
         var directory = FindModelDirectory();
         if (directory is null)
         {
-            Assert.Skip("The model directory was not found.");
+            ModelFileCheck.Unavailable("The model directory was not found.");
         }
 
         using var model = new MiniLMEncoderModel(directory, 128);
@@ -51,7 +51,7 @@ internal static class ModelAssets
         var model = FindModelDirectory();
         if (model is null)
         {
-            Assert.Skip("The repository root was not found.");
+            ModelFileCheck.Unavailable("The repository root was not found.");
         }
 
         return Path.GetDirectoryName(Path.GetDirectoryName(model))!;

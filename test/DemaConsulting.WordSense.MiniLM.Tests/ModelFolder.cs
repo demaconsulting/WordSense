@@ -24,7 +24,7 @@ internal static class ModelFolder
             }
         }
 
-        Assert.Skip("The model directory was not found.");
+        ModelFileCheck.Unavailable("The model directory was not found.");
         return string.Empty;
     }
 }

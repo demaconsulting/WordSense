@@ -191,7 +191,26 @@ jobs:
           --results artifacts/fileassert-api-docs-${{ matrix.os }}.trx
           api-docs
 
+      # The model tests skip when the Git LFS content is missing; this check and the WORDSENSE_REQUIRE_MODELS
+      # variable of the Test step make the acceptance run fail instead of passing without them.
+      - name: Verify Git LFS model files
+        shell: pwsh
+        run: |
+          $files = @(git lfs ls-files)
+          if ($LASTEXITCODE -ne 0 -or $files.Count -eq 0) {
+            throw 'No Git LFS model files are tracked or git lfs failed.'
+          }
+          # 'git lfs ls-files' marks a file whose content is present with '*' and a bare pointer with '-'
+          $pointers = @($files | Where-Object { $_ -match '^\S+ - ' })
+          if ($pointers.Count -gt 0) {
+            $pointers
+            throw 'Git LFS content is missing: the files above are pointers.'
+          }
+          Write-Host "All $($files.Count) Git LFS model files hold their real content."
+
       - name: Test
+        env:
+          WORDSENSE_REQUIRE_MODELS: 'true'
         run: >
           dotnet test
           --no-build

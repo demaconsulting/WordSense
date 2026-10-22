@@ -20,7 +20,8 @@ the Onnx subsystem.
 
 Standard xUnit v3 runner on net8.0, net9.0 and net10.0. The files `model_int8.onnx`, `vocab.txt`, `config.json` and
 `tokenizer.json` under `model/bert-base-cased-int8/` (Git LFS) are needed; tests that need them are skipped when the LFS
-content is absent. No network access. The ONNX Runtime session of the tests is limited to two intra-op threads.
+content is absent (failed when `WORDSENSE_REQUIRE_MODELS` is set, as in CI). No network access. The ONNX Runtime
+session of the tests is limited to two intra-op threads.
 
 ### Acceptance Criteria
 

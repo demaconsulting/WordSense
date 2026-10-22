@@ -293,8 +293,9 @@ The
 OEWN keys and respellings.
 
 `IsKnown` is `false` in exactly one case, and then `Analyses` is empty, `Details` is `null`, `Level` is `None` and
-`Confidence` is 0: the word is unknown, that is it has no entry in `WordLexicon` (a number, punctuation, most proper
-nouns, a misspelling); every model does this. Every
+`Confidence` is 0: the word is unknown, that is it has no entry in `WordLexicon` (most proper
+nouns, a misspelling) or has no letter (a number written with digits, punctuation; `WordLexicon.Lookup("3")` is empty
+too); every model does this. Every
 dictionary word is in the table, the determiners, conjunctions and interjections among them, whatever the accuracy of a
 model: the accuracy only decides which level a model reaches. Every other word gets an answer: a word with one sense
 gets it with `Confidence` 1, and a word with several senses gets at least its part of speech, with a lower confidence
@@ -548,7 +549,7 @@ token is known; "null" means `IsKnown` is `false`, `Details` is null and the con
 | `dog's`, `dogs'` | Found when the stem is known: the analysis of the stem with `Poss=Yes` |
 | `do` + `n't` | `do` is found, `n't` is unknown; not the form the models were evaluated on, so avoid it |
 | `well-known`, `re-read`, `mother-in-law` | Unknown: null, 0; keep them as one token |
-| `3`, `3.5`, `1,000` | Unknown: null, 0; keep `3.5` as one token, because for Basic a split period ends a segment |
+| `3`, `3.5`, `1,000` | Unknown: null, 0, and `WordLexicon.Lookup` finds nothing for them either (a token without a letter is never a word); keep `3.5` as one token, because for Basic a split period ends a segment |
 | `Mr` + `.`, `U` + `.` + `S` + `.` | The reference tokenizer does not handle abbreviations and splits them like this; each period ends a segment for Basic and cuts its context, so merge `Mr.` into one token yourself or drop the periods |
 | empty string, null element, empty list | Empty string: null, 0; null element: `ArgumentException`; empty list: empty array |
 
@@ -972,7 +973,7 @@ ensure; cancelling does not stop the shared ensure (see "Threads and cancellatio
 
 - **Words are classified by what the table knows.** A word that is not found by `WordLexicon.Lookup` is unknown, and
   so are
-  numbers, names, dialect spellings and archaic verb
+  numbers written with digits (a token without a letter is never looked up), names, dialect spellings and archaic verb
   endings (about 96% of the running words of a Project Gutenberg sample are known). Contractions are a closed list of
   stored words and a possessive of a known word is found with `Poss=Yes`. There is no other morphology at use
   time and no capitalization heuristic for looking a word up: a form that is not in the table is unknown.
@@ -1166,7 +1167,8 @@ upstream `onnx/model_int8.onnx` of bert-base-cased is a different file than the 
 ## Git LFS Pointer Instead of the Model
 
 In a clone made without Git LFS, the files in `model/` are short text files that start with `version https://git-lfs`,
-and the tests that need the models skip. Run `git lfs install` and `git lfs pull`. Package users are not affected: the
+and the tests that need the models skip (they fail when the environment variable `WORDSENSE_REQUIRE_MODELS` is `true`,
+as in CI). Run `git lfs install` and `git lfs pull`. Package users are not affected: the
 downloader fetches the real files.
 
 ## The Mirror Configuration Is Rejected
