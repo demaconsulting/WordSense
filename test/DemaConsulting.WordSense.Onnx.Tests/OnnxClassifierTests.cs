@@ -225,11 +225,12 @@ public class OnnxClassifierTests
     }
 
     /// <summary>
-    ///     A single-sense word has nothing to rank: its only sense is listed with probability 1, never scored.
+    ///     A single-sense word has nothing to rank: its only sense is listed with probability 1 although the encoder never
+    ///     scored it.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task OnnxClassifier_ClassifyAsync_SingleSenseWord_ListsNoCandidates()
+    public async Task OnnxClassifier_ClassifyAsync_SingleSenseWord_ListsItsOneUnscoredSense()
     {
         // Arrange: the table does not matter for a word that has one sense
         var encoder = new FakeEncoder(JustFeature());

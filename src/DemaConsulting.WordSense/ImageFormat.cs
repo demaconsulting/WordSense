@@ -13,7 +13,14 @@ namespace DemaConsulting.WordSense;
 ///     word, the 32-byte SHA-256 of the source data at offset 16, the 32-byte SHA-256 of every byte from offset 112 at
 ///     offset 48 and the 32-byte inventory hash at offset 80), then a directory of 20-byte entries (section id, raw
 ///     length, stored length, offset, flags) and the sections. A section is Brotli-compressed; the low byte of its flags
-///     is the stride of the byte-plane shuffle that was applied before compression (1 for none).
+///     is the stride of the byte-plane shuffle that was applied before compression (1 for none). A section that does
+///     not shrink is stored as is, with the flags <see cref="FlagStored"/> alone. No other flag is defined.
+///     </para>
+///     <para>
+///     The reader accepts a directory only when every section starts after the directory and ends inside the image, no
+///     two sections overlap, the flags are one of the two forms above, an empty section stores no bytes, a stored section
+///     is as long as its content, and a compressed section is shorter than its content and a whole number of records of
+///     its stride. A compressed section is one complete Brotli stream: bytes after the end of the stream are rejected.
 ///     </para>
 ///     <para>
 ///     The spellings are sorted by their UTF-8 bytes (not by UTF-16 order), so the reader searches with byte

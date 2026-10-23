@@ -196,15 +196,19 @@ internal static class FormAuditor
         foreach (var line in File.ReadLines(path))
         {
             number++;
+
+            // The oracle writes only five-field lines, so the format has no comments and no separators. A truly empty line
+            // (an edited file, a stray newline) carries no record and is skipped; every other line, a whitespace-only one
+            // and one starting with '#' included, is a record that must have five fields
             if (line.Length == 0)
             {
                 continue;
             }
 
             var p = line.Split('\t');
-            if (p.Length < 5 || p[4] is not ("ok" or "bad" or "skip"))
+            if (p.Length != 5 || p.Any(string.IsNullOrEmpty) || p[4] is not ("ok" or "bad" or "skip"))
             {
-                throw new InvalidDataException($"The verdict file '{path}' is malformed at line {number}: expected spelling, lemma, part of speech, features and a verdict of ok, bad or skip.");
+                throw new InvalidDataException($"The verdict file '{path}' is malformed at line {number}: expected exactly five non-empty fields (spelling, lemma, part of speech, features and a verdict of ok, bad or skip).");
             }
 
             if (!result.TryAdd(Key(p[0], p[1], p[2], p[3]), p[4]))
@@ -282,15 +286,18 @@ internal static class FormAuditor
                 }
 
                 var adjudicated = adjudications.GetValueOrDefault($"{row.Spelling}\t{row.Lemma}\t{row.Pos}\t{row.Features}") ?? adjudications.GetValueOrDefault($"{row.Spelling}\t{row.Lemma}\t{row.Pos}");
-                if (verdict == "skip" && adjudicated is null)
+
+                // A row the checker cannot judge is left out of the counts, whether or not we adjudicated it: an
+                // adjudication answers a disagreement of the checker and decides nothing where the checker has no opinion
+                if (verdict == "skip")
                 {
                     continue;
                 }
 
                 n++;
 
-                // Our verdict decides a row where the checker disagrees or cannot judge; a row the checker accepts stays valid
-                var bad = verdict != "ok" && (adjudicated is null ? verdict == "bad" : adjudicated == "invalid");
+                // Our verdict decides a row where the checker disagrees; a row the checker accepts stays valid
+                var bad = verdict == "bad" && (adjudicated is null || adjudicated == "invalid");
                 if (verdict == "bad")
                 {
                     disagreed++;

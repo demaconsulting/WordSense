@@ -97,7 +97,8 @@ sections:
                   the committed reviewed input, the lexicon lists with the authored forms, the open corpus and the Open
                   English WordNet file named by its SHA-256 pin), in an order that depends on nothing but
                   those inputs, and shall refuse an input that does not match its pin or that lists the same analysis
-                  twice (a spelling, an entry and features repeated in the reviewed input).
+                  twice (a spelling, an entry and features repeated in the reviewed input, whether the two rows are
+                  frozen, closed or one of each kind).
                 tags: [unit]
                 justification: |
                   Tables that cannot be regenerated from the committed inputs cannot be reviewed; rerunning the
@@ -108,6 +109,7 @@ sections:
                   - WordSenseBuilder_FormGenerator_Run_ReorderedInput_GivesIdenticalBytes
                   - WordSenseBuilder_FormGenerator_Run_UnpinnedInput_IsRefused
                   - WordSenseBuilder_FormGenerator_Run_RepeatedFrozenAnalysis_IsRefused
+                  - WordSenseBuilder_FormGenerator_Run_RepeatedAnalysisOfAnyKind_IsRefused
 
               - id: WordSense-WordData-FormGenerator-OwnEntries
                 title: >-

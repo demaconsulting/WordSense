@@ -79,11 +79,12 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Step to the part of speech** (`LemmaWithoutGroups_StepsFromSenseToPartOfSpeech`; scoring increment): for a lemma that
   has no groups, a fine margin below the fine threshold gives the selected analysis at the `PartOfSpeech` level with the
   probability of its slot as the confidence, never a `Group` answer and never level `None`.
-- **Analyses and senses** (`TrainedLemma_ListsRankedCandidatesSummingToOne`, `SingleSenseWord_ListsNoCandidates`,
+- **Analyses and senses** (`TrainedLemma_ListsRankedCandidatesSummingToOne`, `SingleSenseWord_ListsItsOneUnscoredSense`,
   `LemmaWithoutWeights_ListsNoCandidates`; scoring increment): a trained lemma lists every analysis with its probability
   and, inside each, the senses ranked by their probability given the analysis, the most probable first, with
   probabilities that sum to one within a small tolerance, whatever the level answered; equal probabilities keep
-  inventory order; a single-sense word and a lemma without weights list no scored senses.
+  inventory order; a lemma without weights lists no scored senses, and a single-sense word lists its one sense with
+  probability 1 as the one unscored candidate (the encoder is never called for it).
 - **Unusable vector** (`DimensionMismatch_FallsBackToPartOfSpeech`; scoring increment): a vector whose dimension differs
   from the weights, or a target without word pieces, gives the lexicon-only answer at the `PartOfSpeech` level, not
   unknown.

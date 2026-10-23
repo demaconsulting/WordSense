@@ -312,6 +312,8 @@ reviews:
       - "src/DemaConsulting.WordSense/WordImage.Catalog.cs"
       - "src/DemaConsulting.WordSense/ImageFormat.cs"
       - "test/DemaConsulting.WordSense.Tests/WordLexiconTests.cs"
+      - "test/DemaConsulting.WordSense.Tests/WordImageCatalogTests.cs"
+      - "test/DemaConsulting.WordSense.Tests/WordImageDirectoryTests.cs"
       - "test/DemaConsulting.WordSense.Tests/LexiconFactTests.cs"
       - "test/WordSense.Builder.Tests/ImageTests.cs"
       - "test/WordSense.Builder.Tests/BuilderTests.cs"
@@ -541,6 +543,8 @@ reviews:
       - "test/DemaConsulting.WordSense.Onnx.Tests/LemmaWeightsTests.cs"
       - "test/DemaConsulting.WordSense.Onnx.Tests/WeightsBlobTests.cs"
       - "test/DemaConsulting.WordSense.Onnx.Tests/WeightedLemmaTableTests.cs"
+      - "test/DemaConsulting.WordSense.Onnx.Tests/FeatureExtractorTests.cs"
+      - "test/DemaConsulting.WordSense.Onnx.Tests/VectorMathTests.cs"
       - "test/DemaConsulting.WordSense.Onnx.Tests/BlobWriter.cs"
       - "test/DemaConsulting.WordSense.Onnx.Tests/Fixtures.cs"
 

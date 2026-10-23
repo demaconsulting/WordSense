@@ -1,3 +1,4 @@
+using System.Buffers;
 using System.Buffers.Binary;
 using System.Collections.Immutable;
 using System.IO.Compression;
@@ -21,6 +22,7 @@ namespace DemaConsulting.WordSense;
 internal sealed partial class WordImage
 {
     private const int MaxSpellingBytes = 255;
+    private const int MaxSections = 64;
 
     private readonly Dictionary<int, SectionEntry> _directory = [];
     private readonly byte[] _data;
@@ -594,14 +596,25 @@ internal sealed partial class WordImage
         return MemoryMarshal.Cast<byte, uint>(bytes).ToArray();
     }
 
+    /// <summary>
+    ///     Reads and validates the section directory: every section lies after the header and the directory and inside
+    ///     the image, no two sections overlap, the flags are known and the raw and stored lengths agree with them.
+    /// </summary>
+    /// <remarks>
+    ///     The directory is checked completely before any section is decompressed, so a damaged directory is reported as
+    ///     such and a reader never follows an offset into the header, the directory or another section.
+    /// </remarks>
+    /// <exception cref="InvalidDataException">Thrown when the directory is damaged.</exception>
     private void ParseDirectory()
     {
         var count = BinaryPrimitives.ReadUInt32LittleEndian(_data.AsSpan(8));
-        if (count > 64 || ImageFormat.HeaderSize + (count * ImageFormat.DirectoryEntrySize) > _data.Length)
+        if (count > MaxSections || ImageFormat.HeaderSize + (count * ImageFormat.DirectoryEntrySize) > _data.Length)
         {
             throw new InvalidDataException("The word image has an invalid directory.");
         }
 
+        var firstSectionOffset = ImageFormat.HeaderSize + (count * ImageFormat.DirectoryEntrySize);
+        var occupied = new List<(uint Start, uint End)>((int)count);
         for (var i = 0; i < count; i++)
         {
             var d = _data.AsSpan(ImageFormat.HeaderSize + (i * ImageFormat.DirectoryEntrySize));
@@ -610,11 +623,82 @@ internal sealed partial class WordImage
                 BinaryPrimitives.ReadUInt32LittleEndian(d[8..]),
                 BinaryPrimitives.ReadUInt32LittleEndian(d[12..]),
                 BinaryPrimitives.ReadUInt32LittleEndian(d[16..]));
-            if ((ulong)entry.Offset + entry.Stored > (ulong)_data.Length || entry.Raw > int.MaxValue || !_directory.TryAdd((int)BinaryPrimitives.ReadUInt32LittleEndian(d), entry))
+            ValidateDirectoryEntry(entry, firstSectionOffset);
+            if (!_directory.TryAdd((int)BinaryPrimitives.ReadUInt32LittleEndian(d), entry))
             {
-                throw new InvalidDataException("The word image has an invalid directory entry.");
+                throw new InvalidDataException("The word image has a duplicate section in its directory.");
+            }
+
+            if (entry.Stored > 0)
+            {
+                occupied.Add((entry.Offset, entry.Offset + entry.Stored));
             }
         }
+
+        // Sections are stored one after the other: after sorting by start, each must begin where or after the previous one ends
+        occupied.Sort();
+        for (var i = 1; i < occupied.Count; i++)
+        {
+            if (occupied[i].Start < occupied[i - 1].End)
+            {
+                throw new InvalidDataException("The word image has overlapping sections.");
+            }
+        }
+    }
+
+    /// <summary>
+    ///     Checks one directory entry against the layout rules of <see cref="ImageFormat"/>.
+    /// </summary>
+    /// <param name="entry">The entry.</param>
+    /// <param name="firstSectionOffset">The offset of the end of the directory, the lowest offset a section may have.</param>
+    /// <exception cref="InvalidDataException">Thrown when the entry points outside the section area, has unknown flags or has inconsistent lengths.</exception>
+    private void ValidateDirectoryEntry(SectionEntry entry, uint firstSectionOffset)
+    {
+        // The section lies in the area after the directory and ends inside the image
+        if (entry.Offset < firstSectionOffset || (ulong)entry.Offset + entry.Stored > (ulong)_data.Length)
+        {
+            throw new InvalidDataException("The word image has a section outside its section area.");
+        }
+
+        if (entry.Raw > int.MaxValue)
+        {
+            throw new InvalidDataException("The word image has an invalid directory entry.");
+        }
+
+        // The flags are either "stored as is" alone or a byte-plane stride from 1 to 255; nothing else is defined
+        var stored = entry.Flags == ImageFormat.FlagStored;
+        if (!stored && (entry.Flags is 0 or > 0xFF))
+        {
+            throw new InvalidDataException("The word image has a section with unsupported flags.");
+        }
+
+        // An empty section stores nothing; a stored section is as long as its content; a compressed section is stored
+        // only when it is shorter than its content and holds whole records of its stride
+        if (!LengthsAreConsistent(entry, stored))
+        {
+            throw new InvalidDataException("The word image has a section whose stored and raw lengths disagree.");
+        }
+    }
+
+    /// <summary>
+    ///     Determines whether the raw and stored lengths of a directory entry agree with its storage mode.
+    /// </summary>
+    /// <param name="entry">The entry, whose flags are already known to be valid.</param>
+    /// <param name="stored">Whether the section is stored as is (otherwise it is compressed, the flags being its stride).</param>
+    /// <returns>True when the lengths are consistent.</returns>
+    private static bool LengthsAreConsistent(SectionEntry entry, bool stored)
+    {
+        if (entry.Raw == 0)
+        {
+            return entry.Stored == 0;
+        }
+
+        if (stored)
+        {
+            return entry.Stored == entry.Raw;
+        }
+
+        return entry.Stored > 0 && entry.Stored < entry.Raw && entry.Raw % entry.Flags == 0;
     }
 
     private byte[] Section(int id)
@@ -633,20 +717,25 @@ internal sealed partial class WordImage
         var source = _data.AsSpan((int)entry.Offset, (int)entry.Stored);
         if ((entry.Flags & ImageFormat.FlagStored) != 0)
         {
-            return raw == source.Length ? source.ToArray() : throw new InvalidDataException("The word image has an invalid stored section.");
+            return source.ToArray();
         }
 
         var stride = (int)(entry.Flags & 0xFF);
-        if (stride < 1 || raw % stride != 0)
-        {
-            throw new InvalidDataException("The word image has an invalid section stride.");
-        }
-
         var result = new byte[raw];
         var target = stride > 1 ? new byte[raw] : result;
-        if (!BrotliDecoder.TryDecompress(source, target, out var written) || written != raw)
+
+        // The whole stored range must be one complete Brotli stream that fills the section exactly: a stream that ends
+        // early or is followed by other bytes is not what the compiler wrote
+        using var decoder = new BrotliDecoder();
+        var status = decoder.Decompress(source, target, out var consumed, out var written);
+        if (status != OperationStatus.Done || written != raw)
         {
             throw new InvalidDataException($"Section {id.ToString(System.Globalization.CultureInfo.InvariantCulture)} of the word image cannot be decompressed.");
+        }
+
+        if (consumed != source.Length)
+        {
+            throw new InvalidDataException($"Section {id.ToString(System.Globalization.CultureInfo.InvariantCulture)} of the word image has trailing bytes after its compressed stream.");
         }
 
         if (stride > 1)

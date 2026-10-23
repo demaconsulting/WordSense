@@ -159,7 +159,11 @@ the fine senses of the lemmas it was trained for, and Basic chooses the analysis
 
 #### Error Handling
 
-The records and the interfaces throw nothing. `WordDetails.TryGetFeature` rejects a null name. `FallbackWordSenseModel`
+The record types and the interfaces themselves declare no failure of their own: constructing a record, comparing it and
+reading its properties never throw, and the interfaces only state the contract that the implementations follow. The one
+method on a record that validates is `WordDetails.TryGetFeature`, which rejects a null name with
+`ArgumentNullException` (a `Try` method that throws for a null argument, never for a missing feature, which returns
+false). `FallbackWordSenseModel`
 propagates every exception of either model (an `AggregateException` of the two tasks is unwrapped by `await`, so the
 first exception is thrown, and a typed exception of a member reaches the caller unchanged) and reports
 `ObjectDisposedException` and `InvalidDataException` as above. `DownloadOptions` does not validate its values; the

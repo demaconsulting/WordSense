@@ -95,7 +95,7 @@ internal static class PosTagger
             offsets[n] = total;
             alpha = ArrayPool<double>.Shared.Rent(total);
             beta = ArrayPool<double>.Shared.Rent(total);
-            var lattice = new Lattice(tables.Transition, emission, allowed, counts, offsets, alpha.AsSpan(0, total), beta.AsSpan(0, total));
+            var lattice = new Lattice(tables.Transition.AsSpan(), emission, allowed, counts, offsets, alpha.AsSpan(0, total), beta.AsSpan(0, total));
             lattice.Forward();
             lattice.Backward();
             lattice.Combine(posteriors);
@@ -174,7 +174,7 @@ internal static class PosTagger
             return 1;
         }
 
-        var distribution = tables.FindSuffix(token.Key) ?? tables.SuffixFallback;
+        var distribution = tables.TryFindSuffix(token.Key, out var known) ? known : tables.SuffixFallback;
         for (var j = 0; j < PosTag.OpenClasses.Length; j++)
         {
             var t = PosTag.OpenClasses[j];

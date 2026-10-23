@@ -196,6 +196,38 @@ public sealed partial class SenseLabelGeneratorTests : IDisposable
     }
 
     /// <summary>
+    ///     A negative count (a negative frequency or a negative token count) is rejected like any other count that is not a
+    ///     non-negative integer: with an <see cref="InvalidDataException"/> that names the file, the line and the text, and
+    ///     nothing is written.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_SenseLabelGenerator_Run_NegativeCounts_ThrowInvalidDataWithLocation()
+    {
+        // Arrange - a negative tag count on line 2 of a frequency file, and a copy whose first entry has a negative token count
+        var negativeFrequency = DataFixture.ImportSlice(_dir, "negative-frequency");
+        DataFixture.Write(negativeFrequency, "sense_frequency/b.tsv", "sense_key\ttag_count\tsource\nbass%1:05:00::\t-3\twn30\n");
+        var negativeTokens = DataFixture.ImportSlice(_dir, "negative-tokens");
+        var entryFile = Directory.GetFiles(Path.Join(negativeTokens, "entry"), "*.tsv").OrderBy(f => f, StringComparer.Ordinal).First();
+        var entry = DataFixture.Rows(negativeTokens, "entry")[0];
+        var broken = (string[])entry.Clone();
+        broken[4] = "-1";
+        DataFixture.Replace(negativeTokens, Path.Join("entry", Path.GetFileName(entryFile)), string.Join('\t', entry), string.Join('\t', broken));
+
+        // Act
+        var frequency = Assert.Throws<InvalidDataException>(() => SenseLabelGenerator.Run(negativeFrequency));
+        var tokens = Assert.Throws<InvalidDataException>(() => SenseLabelGenerator.Run(negativeTokens));
+
+        // Assert
+        Assert.Contains("b.tsv:2:", frequency.Message, StringComparison.Ordinal);
+        Assert.Contains("'-3'", frequency.Message, StringComparison.Ordinal);
+        Assert.Contains("non-negative integer", frequency.Message, StringComparison.Ordinal);
+        Assert.Contains(Path.GetFileName(entryFile) + ":", tokens.Message, StringComparison.Ordinal);
+        Assert.Contains("'-1'", tokens.Message, StringComparison.Ordinal);
+        Assert.False(Directory.Exists(Path.Join(negativeFrequency, "sense_label")));
+        Assert.False(Directory.Exists(Path.Join(negativeTokens, "sense_label")));
+    }
+
+    /// <summary>
     ///     Labels that exist are written back with the same value and origin, exactly once, and the new labels are added.
     /// </summary>
     [Fact]

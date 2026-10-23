@@ -116,6 +116,22 @@ All scenarios below pass on every platform and target framework of the CI matrix
   one raw section changed. A group that lists the same sense twice, and a key index with two entries swapped or with a
   repeated entry, are rejected when the catalog is first read (not only by a validation tool), while the same rebuild
   without damage is accepted.
+- **Directory damage** (`WordLexicon_Image_DirectoryRebuiltWithoutDamage_IsAccepted`,
+  `WordLexicon_Image_TrailingBytesAfterCompressedStream_IsRejected`,
+  `WordLexicon_Image_SectionStartingInHeaderOrDirectory_IsRejected`, `WordLexicon_Image_OverlappingSections_IsRejected`,
+  `WordLexicon_Image_UnsupportedFlags_IsRejected`, `WordLexicon_Image_InconsistentLengths_IsRejected`,
+  `WordLexicon_Image_DuplicateSectionId_IsRejected`, `WordLexicon_OpenImage_OverlappingSections_ThrowsModelIntegrity`):
+  tests in the core test project (`WordImageDirectoryTests.cs`) take the real embedded image apart, change one region of
+  its directory or of one section, lay the sections out again with a correct content hash and open the result. The
+  untouched rebuild is byte-identical to the real image and is accepted. Every compressed section with one byte appended
+  after its Brotli stream is rejected when it is read (the message names the trailing bytes); a first section moved to
+  offset 0, into the header, to the start of the directory or into the directory is rejected; a second section moved
+  onto the first, or one byte after its start, is rejected as overlapping; flags `0`, `0x200`, `0x101`, `0x1FF`,
+  `0x10001` and `0x80000000` are rejected as unsupported; a compressed section whose raw length equals its stored
+  length, is zero while bytes are stored, is not a multiple of its stride, is flagged as stored while the lengths differ
+  or stores no bytes is rejected as inconsistent; a section id listed twice is rejected; and the same overlap damage
+  opened through `WordLexicon.OpenImage` is reported as `ModelIntegrityException` that carries the original
+  `InvalidDataException`.
 - **Complete dictionary**: the builder tests `Words_Committed_HoldsEveryDictionaryWord` and
   `Words_Committed_CatalogHoldsEveryOewnAndProjectSense` show that no dictionary word and no sense is absent from the
   image.

@@ -112,6 +112,35 @@ public sealed class FormReproducibilityTests : IDisposable
     }
 
     /// <summary>
+    ///     The same analysis (spelling, entry and features) listed once as frozen and once as closed is rejected too, with
+    ///     the kind and the line of both rows; the kind is not part of the identity of an analysis.
+    /// </summary>
+    /// <param name="firstKind">The kind of the first row.</param>
+    /// <param name="secondKind">The kind of the second row.</param>
+    [Theory]
+    [InlineData("frozen", "closed")]
+    [InlineData("closed", "frozen")]
+    [InlineData("closed", "closed")]
+    public void WordSenseBuilder_FormGenerator_Run_RepeatedAnalysisOfAnyKind_IsRefused(string firstKind, string secondKind)
+    {
+        // Arrange - one analysis twice, the kinds as the case says, with an unrelated row between them
+        var oewn = TinyInputs();
+        _dir.Write("corpus/lexicon/form-frozen.tsv",
+            $"{firstKind}\tsupposed\t0\toewn-supposed-a\tDegree=Pos\tdema\t1\t\tsupposed#supposed-adj\n"
+            + "frozen\tsupposed\t1\toewn-suppose-v\tTense=Past+VerbForm=Part\tdema\t1\t\tsupposed#supposed-past\n"
+            + $"{secondKind}\tsupposed\t2\toewn-supposed-a\tDegree=Pos\tdema\t1\t\tsupposed#supposed-to\n");
+        var root = DataFixture.RepositoryRoot();
+
+        // Act
+        var ex = Assert.Throws<InvalidDataException>(() => FormGenerator.Run(Path.Join(root, "data"), Path.Join(_dir.Root, "corpus"), oewn, Path.Join(_dir.Root, "out"), null));
+
+        // Assert: the second row is named with its kind, and the first with its kind and line
+        Assert.Contains("form-frozen.tsv:3:", ex.Message, StringComparison.Ordinal);
+        Assert.Contains($"the {secondKind} analysis of 'supposed'", ex.Message, StringComparison.Ordinal);
+        Assert.Contains($"repeats the {firstKind} one on line 1", ex.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
     ///     An input that does not match its SHA-256 pin is refused before anything is generated.
     /// </summary>
     [Fact]

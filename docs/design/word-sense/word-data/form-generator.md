@@ -141,8 +141,9 @@ outside a sentence or without a form, lemma or tag throws the same way (the atte
 strict `OpenCorpus` reader); it is never skipped.
 A reviewed input (`form-frozen.tsv`) with a row that has the wrong number of
 columns, or
-with two rows of one kind that repeat a spelling, an entry and features (the same analysis twice, whatever the other
-columns say), throws `InvalidDataException` with the file and the line of the repeat and of the first row; the
+with two rows that repeat a spelling, an entry and features (the same analysis twice, whatever the other columns say and
+whether both rows are frozen, both are closed or one of each kind), throws `InvalidDataException` with the file and the
+line of the repeat and the kind and line of the first row; the
 generator does not dedupe silently, because a repeated analysis is an error of the reviewed input.
 
 #### Dependencies

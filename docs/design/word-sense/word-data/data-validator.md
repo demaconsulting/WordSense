@@ -9,7 +9,7 @@
 #### Data Model
 
 `ValidationReport`: the violations listed (file, line, rule, message), the total number of violations, the row count
-of every table and `IsValid`. Rule tags: schema, file-set, header, cell-count, format, cell, sort, empty-file,
+of every table and `IsValid`. Rule tags: schema, file-set, header, cell-count, format, unreadable, cell, sort, empty-file,
 placement, unique, foreign-key, relation, entry, synset, sense, example, label, stability, group. The emission is
 capped: at most 20 violations are listed per rule (`MaxPerRule`), in discovery order, while the total counts every
 violation, listed or not, so `IsValid` is false exactly when the total is above zero. A defect is therefore always
@@ -51,8 +51,16 @@ counted once, and listed unless its rule already listed 20.
 
 #### Error Handling
 
-The validator reports instead of throwing: a schema that cannot load is one `schema` violation; an unreadable file is a
-violation of that file; a baseline that cannot be read is a `stability` violation; duplicated keys (two rows with one
+The validator reports instead of throwing: a schema that cannot load (invalid data, an I/O failure or a denied access) is
+one `schema` violation; a directory that cannot be listed (the data folder or the folder of a partitioned table; the
+listing is read to the end inside the guard, so a failure while it is enumerated is caught as well; the listing itself,
+not an existence probe, tells a missing folder, which is an empty table for a partitioned table, from a folder that
+exists but is denied, which is a violation) is a `file-set` violation that names the directory; a table file is not
+probed for existence before it is read, so a file that cannot be read (an I/O failure or a denied access) is an
+`unreadable` violation of that file, while a file that the read reports as not found is a missing-file `file-set`
+violation; in each case the validation of the rest of the data continues (the missing rows
+of an unreadable file can cause follow-up reference violations); a baseline that cannot be read is a `stability`
+violation; duplicated keys (two rows with one
 group id, two senses with one label) are reported by the key rules, and the inventory rules keep checking with the first
 row of the key instead of failing. A cell of the features column must list each feature name once (sorted, unique).
 

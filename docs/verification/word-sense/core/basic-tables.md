@@ -21,8 +21,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
   and counts, the suffixes and the cue table (analyses, hashes, weights) equal what was written.
 - **Transitions are distributions** (`BasicTables_Load_Transitions_AreDistributions`): the interpolated transitions of
   an observed context sum to one.
-- **Suffix lookup** (`BasicTables_FindSuffix_KnownAndUnknown`): the longest known suffix gives a distribution over the
-  open classes; an unknown ending gives none.
+- **Suffix lookup** (`BasicTables_TryFindSuffix_KnownAndUnknown`): the longest known suffix gives a distribution over
+  the open classes as a read-only view; an unknown ending gives `false` and the default array.
 - **Bad magic** (`BasicTables_Load_BadMagic_Throws`): a wrong magic number throws `InvalidDataException`.
 - **Not compressed** (`BasicTables_Load_NotCompressed_Throws`): data that is not Brotli throws
   `InvalidDataException`.
@@ -30,7 +30,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
   blob, cut at any byte and so at every section boundary, throws `InvalidDataException`.
 - **Wrong version or tag count** (`BasicTables_Load_WrongVersionOrTagCount_Throws`): another format version in the
   magic number, or a tag count that differs from the tag set, throws `InvalidDataException`.
-- **Trailing bytes** (`BasicTables_Load_TrailingBytes_Throws`): extra bytes at the end throw `InvalidDataException`.
+- **Trailing bytes** (`BasicTables_Load_TrailingBytes_Throws`): extra bytes at the end of the decompressed content throw
+  `InvalidDataException`.
+- **Bytes after the compressed stream** (`BasicTables_Load_BytesAfterCompressedStream_Throws`): a complete Brotli
+  stream followed by one more byte throws `InvalidDataException` whose message names the trailing bytes.
 - **Unordered hashes** (`BasicTables_Load_UnorderedHashes_Throws`): feature hashes that are not ascending throw
   `InvalidDataException`.
 - **Other inventory** (`BasicTables_Load_OtherInventoryHash_ThrowsNamingBothHashes`): a table whose analysis inventory
@@ -53,6 +56,15 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Corrupt or foreign embedded table** (`BasicTables_LoadEmbedded_CorruptOrForeignResource_ThrowsModelIntegrity`,
   theory): bytes that are not a table, and a well-formed table of another inventory, each throw
   `ModelIntegrityException` that carries the original `InvalidDataException`.
+- **Real table with an altered region**
+  (`BasicTables_LoadEmbedded_RealTableWithAlteredRegion_ThrowsModelIntegrity`, theory): the real embedded table with a
+  byte appended after its compressed stream, with one byte of its inventory hash changed (decompressed, edited and
+  recompressed), and cut short, throws `ModelIntegrityException` that carries the original `InvalidDataException`; the
+  unaltered table loads first in the same test.
+- **Statistics are read-only** (`BasicTables_Properties_ExposeNoArrays`, `BasicTables_Load_Views_AreIndependentOfTheBlob`,
+  `BasicTables_Constructors_DefaultArray_Throws`): no public property of `BasicTables`, `WordEntry` or `LemmaCue` is an
+  array (reflection), the views of a loaded table do not change when the source blob is overwritten afterwards and have
+  the sizes of the tag set, and a word entry or cue table refuses a default (uninitialized) immutable array.
 - **Shipped table resolves** (`BasicTables_Default_ShippedTable_ResolvesEveryCueClass`): every cue analysis of the
   shipped table resolves to an analysis of the embedded word image.
 - **Feature hash** (`FeatureRef_Hash_PrefixAndDeterminism`): the hash of an immediate-neighbor feature equals the hash

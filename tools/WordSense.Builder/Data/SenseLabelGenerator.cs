@@ -211,6 +211,8 @@ internal static class SenseLabelGenerator
         return rows;
     }
 
+    // NumberStyles.None allows digits only (no sign, no white space), so a negative count, a count with a plus sign and an
+    // overflowing count are all rejected with the location; the regression test of the negative counts pins this
     private static int ParseCount(string text, string path, int line) =>
         int.TryParse(text, NumberStyles.None, CultureInfo.InvariantCulture, out var value)
             ? value

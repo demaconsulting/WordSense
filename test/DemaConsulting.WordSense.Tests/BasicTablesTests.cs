@@ -51,16 +51,18 @@ public class BasicTablesTests
     ///     The longest known suffix gives a distribution over the open classes; an unknown ending gives none.
     /// </summary>
     [Fact]
-    public void BasicTables_FindSuffix_KnownAndUnknown()
+    public void BasicTables_TryFindSuffix_KnownAndUnknown()
     {
         var tables = TestTables.Load(TestTables.Default());
 
-        var known = tables.FindSuffix("walked");
+        var found = tables.TryFindSuffix("walked", out var known);
 
-        Assert.NotNull(known);
+        Assert.True(found);
+        Assert.False(known.IsDefault);
         Assert.Equal(1.0, known.Sum(), 9);
         Assert.True(known[1] > known[0]);
-        Assert.Null(tables.FindSuffix("xyz"));
+        Assert.False(tables.TryFindSuffix("xyz", out var unknown));
+        Assert.True(unknown.IsDefault);
     }
 
     /// <summary>
@@ -177,6 +179,122 @@ public class BasicTablesTests
         var raw = TestTables.Decompress(TestTables.Default());
 
         Assert.Throws<InvalidDataException>(() => TestTables.Load(TestTables.Compress([.. raw, 0])));
+    }
+
+    /// <summary>
+    ///     A blob with bytes after the end of its Brotli stream is rejected, naming the trailing bytes.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_BytesAfterCompressedStream_Throws()
+    {
+        // Arrange: a complete stream followed by one more byte
+        byte[] blob = [.. TestTables.Default(), 0];
+
+        // Act
+        var error = Assert.Throws<InvalidDataException>(() => TestTables.Load(blob));
+
+        // Assert
+        Assert.Contains("trailing bytes", error.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The real embedded table with bytes after its compressed stream, with one inventory-hash byte changed and cut
+    ///     short is rejected at the public boundary as <see cref="ModelIntegrityException"/> that carries the original
+    ///     <see cref="InvalidDataException"/>, and the unaltered table still loads.
+    /// </summary>
+    /// <param name="alteration">Which region of the real table to alter.</param>
+    [Theory]
+    [InlineData("trailing")]
+    [InlineData("hash")]
+    [InlineData("truncated")]
+    public void BasicTables_LoadEmbedded_RealTableWithAlteredRegion_ThrowsModelIntegrity(string alteration)
+    {
+        // Arrange: the real blob; the hash is the 32 bytes after the four-byte magic of the decompressed table
+        using var stream = typeof(BasicTables).Assembly.GetManifestResourceStream(BasicTables.ResourceName)!;
+        var real = new byte[stream.Length];
+        stream.ReadExactly(real);
+        Assert.NotEmpty(BasicTables.LoadEmbedded(new MemoryStream(real)).Words);
+        byte[] altered;
+        if (alteration == "trailing")
+        {
+            altered = [.. real, 0x00];
+        }
+        else if (alteration == "hash")
+        {
+            var raw = TestTables.Decompress(real);
+            raw[4] ^= 0xFF;
+            altered = TestTables.Compress(raw);
+        }
+        else
+        {
+            altered = real[..(real.Length - 8)];
+        }
+
+        // Act
+        var failure = Assert.Throws<ModelIntegrityException>(() => BasicTables.LoadEmbedded(new MemoryStream(altered)));
+
+        // Assert
+        Assert.IsType<InvalidDataException>(failure.InnerException);
+    }
+
+    /// <summary>
+    ///     The table, its word entries and its cue tables expose no array: every statistic is a read-only view, so a
+    ///     consumer cannot change what another consumer sees.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Properties_ExposeNoArrays()
+    {
+        // Arrange
+        Type[] types = [typeof(BasicTables), typeof(WordEntry), typeof(LemmaCue)];
+
+        // Act
+        var arrays = types
+            .SelectMany(t => t.GetProperties().Select(p => (Name: $"{t.Name}.{p.Name}", p.PropertyType)))
+            .Where(p => p.PropertyType.IsArray)
+            .Select(p => p.Name)
+            .ToArray();
+
+        // Assert
+        Assert.Empty(arrays);
+    }
+
+    /// <summary>
+    ///     The statistics of a loaded table do not change when the blob it was read from is changed afterwards, and the
+    ///     views of the table agree with the values that were written.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_Views_AreIndependentOfTheBlob()
+    {
+        // Arrange
+        var blob = TestTables.Default();
+        var tables = TestTables.Load(blob);
+        var before = tables.Cues["read"].Weights.ToArray();
+        var transition = tables.Transition.ToArray();
+
+        // Act: damage the blob after the load
+        Array.Fill(blob, (byte)0);
+
+        // Assert
+        Assert.Equal(before, tables.Cues["read"].Weights.ToArray());
+        Assert.Equal(transition, tables.Transition.ToArray());
+        Assert.Equal(PosTag.Extended, tables.Unigrams.Length);
+        Assert.Equal(PosTag.Extended * PosTag.Extended, tables.Bigrams.Length);
+        Assert.Equal(PosTag.Extended * PosTag.Extended * PosTag.Extended, tables.Trigrams.Length);
+        Assert.Equal(PosTag.Count, tables.TagPrior.Length);
+        Assert.Equal(PosTag.Count, tables.Words["record"].Counts.Length);
+    }
+
+    /// <summary>
+    ///     A word entry and a cue table refuse the default (uninitialized) immutable array.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Constructors_DefaultArray_Throws()
+    {
+        // Arrange / Act / Assert
+        Assert.Throws<ArgumentException>(() => new WordEntry(0, default));
+        Assert.Throws<ArgumentException>(() => new LemmaCue("read", default, [1], [0]));
+        Assert.Throws<ArgumentException>(() => new LemmaCue("read", [], default, [0]));
+        Assert.Throws<ArgumentException>(() => new LemmaCue("read", [], [1], default));
     }
 
     /// <summary>

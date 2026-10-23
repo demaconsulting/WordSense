@@ -35,6 +35,7 @@ sections:
                   - WordSenseBuilder_SenseLabelGenerator_Generate_LabelsAreWellFormedAndUniquePerLemma
                   - WordSenseBuilder_SenseLabelGenerator_Run_Slice_LabelsOneTokenSensesAndCreatesNoGroup
                   - WordSenseBuilder_SenseLabelGenerator_Run_UnreadableRows_ThrowInvalidDataWithLocation
+                  - WordSenseBuilder_SenseLabelGenerator_Run_NegativeCounts_ThrowInvalidDataWithLocation
 
               - id: WordSense-WordData-SenseLabelGenerator-Preserve
                 title: >-

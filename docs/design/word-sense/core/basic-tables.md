@@ -19,7 +19,12 @@ word image by the hash of the analysis inventory.
   unigram, bigram and trigram counts; the derived `Transition` (interpolated trigram, bigram and unigram probabilities,
   row-major over 14 x 14 x 14), `TagPrior` and `SuffixFallback`; the `Words` (`WordEntry`: closed-class mask and per-tag
   counts) and the `Cues` (`LemmaCue`: the analyses as `CueAnalysis` with lemma, part of speech, features and quantized
-  prior, the ascending feature hashes and the feature-major signed byte weights), both frozen dictionaries.
+  prior, the ascending feature hashes and the feature-major signed byte weights), both frozen dictionaries. Every array
+  of the statistics (`Unigrams`, `Bigrams`, `Trigrams`, `Transition`, `TagPrior`, `SuffixFallback`, the `Counts` of a
+  `WordEntry` and the `Analyses`, `Hashes` and `Weights` of a `LemmaCue`) is exposed as an `ImmutableArray<T>`, a
+  read-only view that wraps the array the reader filled without copying it; the reader hands the arrays over and keeps
+  no reference, so no consumer can change them and the hot paths (`PosTagger`, `CueModel.Score`) read them through
+  `ReadOnlySpan<T>` (`AsSpan`) with no allocation.
 - The analysis inventory hash: a 32-byte hash that is the inventory hash of the word image (its spelling, analysis,
   feature, entry, sense, group and lemma-block sections). It identifies the inventory the cue columns were trained
   against: `basic.bin` names its analyses, so it is rebuilt whenever the inventory changes, and a table that carries
@@ -40,16 +45,19 @@ word image by the hash of the analysis inventory.
 
 #### Key Methods
 
-- `Load(blob)`: decompresses and reads a table, validates it and derives the transition table. It checks the magic, the
+- `Load(blob)`: decompresses and reads a table, validates it and derives the transition table. The blob must be exactly
+  one complete Brotli stream (the decoder reports how many input bytes it consumed, and bytes after the end of the
+  stream are rejected). It checks the magic, the
   analysis inventory hash against the word image, the hyper-parameters (finite and in range), the tag count, that
   words, suffixes and lemmas are strictly ascending, the flags and masks, positive word counts, the analysis counts and
   parts of speech, that every analysis exists in the inventory and occurs once in its lemma table, strictly ascending
   feature hashes, the bounds of every number, that every string is well-formed UTF-8 (malformed bytes are rejected,
-  never replaced) and that no bytes trail.
+  never replaced) and that no bytes trail the decompressed content.
 - `Default`: the table embedded in the assembly, loaded on first use under a thread-safe lazy initializer through
   `LoadEmbedded(Stream?)`, which reports a missing, corrupt or foreign table as a `ModelIntegrityException`.
-- `FindSuffix(key)`: the distribution over noun, verb, adjective and adverb of the longest tabled suffix of one to three
-  characters of a word (binary search), or null when none is tabled; probabilities are `(count + 0.1) / (total + 0.4)`.
+- `TryFindSuffix(key, out probabilities)`: the distribution over noun, verb, adjective and adverb of the longest tabled
+  suffix of one to three characters of a word (binary search), as a read-only view, or `false` when none is tabled;
+  probabilities are `(count + 0.1) / (total + 0.4)`.
 - `LemmaCue.RowOf(analysis)`: the column of an analysis in a cue table. The columns are analyses (lemma, part of speech
   and features): a column with empty features stands for any features of that lemma and part of speech, and a column
   with features (for example `read`'s `Tense=Past+VerbForm=Part` and `Tense=Pres`) is a candidate for an analysis whose
@@ -68,15 +76,17 @@ word image by the hash of the analysis inventory.
 `BasicTables.Load` throws `InvalidDataException` for a data that is not Brotli, a wrong
 magic or format revision, a table built for another analysis inventory (the message names both hashes), an unknown or
 duplicate analysis, invalid hyper-parameters, a different tag count, unordered words, suffixes, lemmas or feature
-hashes, invalid flags, masks, analysis counts or parts of speech, oversized numbers, a truncated blob and trailing
-bytes. `Default` loads the embedded table through `LoadEmbedded(Stream?)`, which maps a missing embedded resource and
+hashes, invalid flags, masks, analysis counts or parts of speech, oversized numbers, a truncated blob, bytes after the
+end of the Brotli stream and trailing bytes. `Default` loads the embedded table through `LoadEmbedded(Stream?)`, which
+maps a missing embedded resource and
 each of these failures to a `ModelIntegrityException` with the original `InvalidDataException` as its inner exception
 (the builder and the tests that call `Load` directly still see `InvalidDataException`).
 
 #### Determinism and Thread Safety
 
-The table is immutable after `Load`, so an instance can be shared by any number of threads, and the same bytes always
-give the same table. The format is written deterministically by the builder.
+The table is immutable after `Load`: the statistics are read-only views (`ImmutableArray<T>`, frozen dictionaries of
+immutable entries) that no consumer can write through, so an instance can be shared by any number of threads, and the
+same bytes always give the same table. The format is written deterministically by the builder.
 
 #### Dependencies
 

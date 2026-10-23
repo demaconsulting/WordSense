@@ -46,4 +46,7 @@ All scenarios below pass on every platform and target framework of the CI matrix
   assemblies (the Basic model is in the core).
 - **Disposal** (`Dispose_DisposesEncoderAndFallback`): disposing disposes the encoder model and the Basic model, and
   `EnsureModelAsync` and `ClassifyAsync` after disposal throw `ObjectDisposedException`.
-- **Constructor validation**: a maximum sequence length outside 8 to 512 throws `ArgumentOutOfRangeException`.
+- **Constructor defaults and validation** (`BertBaseCasedWordSenseModel_Constructor_Defaults_UseStoreAnd128`,
+  `BertBaseCasedWordSenseModel_Constructor_SequenceLengthOutOfRange_Throws`): the default maximum sequence length is
+  128, read from the encoder model (`MaxSequenceLength`, internal), and the limits 8 and 512 reach it unchanged; a
+  maximum sequence length outside 8 to 512 throws `ArgumentOutOfRangeException`.

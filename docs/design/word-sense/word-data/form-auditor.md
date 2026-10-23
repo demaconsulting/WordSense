@@ -16,7 +16,9 @@ LemmInflect library, run from a Python script under `tools/WordSense.Builder/aud
 only: it
 flags rows to look at, nothing is shipped from it, its forms are never adopted and its raw output is not committed. A
 disagreement is an error unless `audit/adjudications.tsv` records our own verdict (valid, decided from OEWN, the authored
-forms, Moby or our lists and rules; optionally restricted to one feature set). A row the checker accepts is never an error.
+forms, Moby or our lists and rules; optionally restricted to one feature set). A row the checker accepts is never an error,
+and a row the checker cannot judge (`skip`) is never counted, with or without an adjudication: an adjudication settles
+a disagreement of the checker and nothing else.
 
 The report gives, for each stratum, the population, the rows checked (rows that the checker cannot judge are left out),
 the disagreements, the errors, the error rate and its 95% Wilson interval, and the weighted error rate of the generated
@@ -45,8 +47,12 @@ a `Past+Part` form of an irregular verb form that gives no type (`snuck`).
 #### Error Handling
 
 A missing checker (Python or the library) throws with the install instruction, and so does an oracle file in which one
-row has two verdicts. The command refuses a sample size below one, an empty or malformed oracle file, a verdict it does
-not know and a sampled row without an oracle verdict, and it fails when a generated stratum has rows but no checked row.
+row has two verdicts. The command refuses a sample size below one, an empty or malformed oracle file (every line must
+have exactly five non-empty fields: spelling, lemma, part of speech, features and a verdict of `ok`, `bad` or `skip`; the
+format has no comments, a truly empty line carries no record and is skipped, and a whitespace-only or `#` line is
+malformed; a file of empty lines only holds no verdict),
+a verdict it does not know and a sampled row without an oracle verdict, and it fails when a generated stratum has rows
+but no checked row.
 The command exits with a failure when a generated stratum reaches the limit.
 
 #### Dependencies

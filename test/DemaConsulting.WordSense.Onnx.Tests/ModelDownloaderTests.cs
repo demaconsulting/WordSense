@@ -424,17 +424,20 @@ public sealed class ModelDownloaderTests : IDisposable
     [Fact]
     public async Task ModelDownloader_EnsureModel_Timeout_FallsThrough()
     {
-        using var server = new LocalServer(async context =>
+        using var server = new LocalServer(async (context, stopping) =>
         {
             if (IsMirror(context))
             {
-                await Task.Delay(TimeSpan.FromSeconds(10));
+                // A hung mirror: it never answers, until the server is disposed at the end of the test
+                await Task.Delay(Timeout.InfiniteTimeSpan, stopping);
                 return;
             }
 
             await Serve(context);
         });
-        var options = Mirror(server) with { Timeout = TimeSpan.FromSeconds(1) };
+
+        // The timeout only breaks the hang; it is far above any healthy local response, so it never limits the fallback
+        var options = Mirror(server) with { Timeout = TimeSpan.FromSeconds(5) };
 
         var directory = await ModelDownloader.EnsureAsync(Spec, options, TestContext.Current.CancellationToken, null, Lfs(server), _ => null);
 
@@ -449,9 +452,10 @@ public sealed class ModelDownloaderTests : IDisposable
     [Fact]
     public async Task ModelDownloader_EnsureModel_CallerCancels_ThrowsOperationCanceled()
     {
-        using var server = new LocalServer(async context =>
+        using var server = new LocalServer(async (context, stopping) =>
         {
-            await Task.Delay(TimeSpan.FromSeconds(10));
+            // A hung server: it never answers, until the server is disposed at the end of the test
+            await Task.Delay(Timeout.InfiniteTimeSpan, stopping);
             await Serve(context);
         });
         using var cts = new CancellationTokenSource(TimeSpan.FromMilliseconds(300));
@@ -602,20 +606,24 @@ public sealed class ModelDownloaderTests : IDisposable
     public async Task ModelDownloader_EnsureModel_BodyStalls_TimesOutFallsThroughAndLeavesNoPartialFile()
     {
         // Arrange: the mirror sends the headers and 10 bytes of 500, then stalls
-        using var server = new LocalServer(async context =>
+        using var server = new LocalServer(async (context, stopping) =>
         {
             if (IsMirror(context))
             {
                 context.Response.ContentLength64 = 500;
-                await context.Response.OutputStream.WriteAsync(new byte[10]);
-                await context.Response.OutputStream.FlushAsync();
-                await Task.Delay(TimeSpan.FromSeconds(15));
+                await context.Response.OutputStream.WriteAsync(new byte[10], stopping);
+                await context.Response.OutputStream.FlushAsync(stopping);
+
+                // A hung body: no more bytes arrive, until the server is disposed at the end of the test
+                await Task.Delay(Timeout.InfiniteTimeSpan, stopping);
                 return;
             }
 
             await Serve(context);
         });
-        var options = Mirror(server) with { Timeout = TimeSpan.FromSeconds(1) };
+
+        // The timeout only breaks the hang; it is far above any healthy local response, so it never limits the fallback
+        var options = Mirror(server) with { Timeout = TimeSpan.FromSeconds(5) };
 
         // Act
         var directory = await ModelDownloader.EnsureAsync(Spec, options, TestContext.Current.CancellationToken, null, Lfs(server), _ => null);

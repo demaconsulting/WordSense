@@ -59,7 +59,7 @@ the level answered; a lemma without weights lists no scored senses, and a lexica
 analysis whose lemma and part of speech have exactly one sense) lists that sense with probability 1 although the
 encoder did not score it
 (`OnnxClassifier_ClassifyAsync_TrainedLemma_ListsRankedCandidatesSummingToOne`,
-`OnnxClassifier_ClassifyAsync_SingleSenseWord_ListsNoCandidates`,
+`OnnxClassifier_ClassifyAsync_SingleSenseWord_ListsItsOneUnscoredSense`,
 `OnnxClassifier_ClassifyAsync_LemmaWithoutWeights_ListsNoCandidates`).
 
 #### Words Without Scored Senses Are Answered from the Lexicon
@@ -98,7 +98,8 @@ without a chooser is answered from the lexicon alone.
 
 Weights are matched to the word image by sense id and by the inventory hash of the image; any
 mismatch is a load failure and nothing is dropped. The weights embedded in the model packages resolve completely against
-the shipped image (`EmbeddedWeights_MiniLM_MatchesWordImage`; see the `LemmaWeights` unit document).
+the shipped image (`EmbeddedWeights_MiniLM_MatchesWordImage`, `EmbeddedWeights_BertBaseCased_MatchesWordImage`; see the
+`LemmaWeights` unit document).
 
 #### Model Files Come From a Verified Source
 
