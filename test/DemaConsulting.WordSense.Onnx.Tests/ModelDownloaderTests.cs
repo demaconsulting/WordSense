@@ -428,13 +428,16 @@ public sealed class ModelDownloaderTests : IDisposable
         {
             if (IsMirror(context))
             {
-                await Task.Delay(TimeSpan.FromSeconds(10));
+                // A hung mirror: it stalls far longer than any test runs
+                await Task.Delay(TimeSpan.FromMinutes(2));
                 return;
             }
 
             await Serve(context);
         });
-        var options = Mirror(server) with { Timeout = TimeSpan.FromSeconds(1) };
+
+        // The timeout only breaks the hang; it is far above any healthy local response, so it never limits the fallback
+        var options = Mirror(server) with { Timeout = TimeSpan.FromSeconds(5) };
 
         var directory = await ModelDownloader.EnsureAsync(Spec, options, TestContext.Current.CancellationToken, null, Lfs(server), _ => null);
 
@@ -609,13 +612,17 @@ public sealed class ModelDownloaderTests : IDisposable
                 context.Response.ContentLength64 = 500;
                 await context.Response.OutputStream.WriteAsync(new byte[10]);
                 await context.Response.OutputStream.FlushAsync();
-                await Task.Delay(TimeSpan.FromSeconds(15));
+
+                // A hung body: it stalls far longer than any test runs
+                await Task.Delay(TimeSpan.FromMinutes(2));
                 return;
             }
 
             await Serve(context);
         });
-        var options = Mirror(server) with { Timeout = TimeSpan.FromSeconds(1) };
+
+        // The timeout only breaks the hang; it is far above any healthy local response, so it never limits the fallback
+        var options = Mirror(server) with { Timeout = TimeSpan.FromSeconds(5) };
 
         // Act
         var directory = await ModelDownloader.EnsureAsync(Spec, options, TestContext.Current.CancellationToken, null, Lfs(server), _ => null);
