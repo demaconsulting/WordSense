@@ -48,7 +48,9 @@ a `Past+Part` form of an irregular verb form that gives no type (`snuck`).
 
 A missing checker (Python or the library) throws with the install instruction, and so does an oracle file in which one
 row has two verdicts. The command refuses a sample size below one, an empty or malformed oracle file (every line must
-have exactly five non-empty fields: spelling, lemma, part of speech, features and a verdict of `ok`, `bad` or `skip`),
+have exactly five non-empty fields: spelling, lemma, part of speech, features and a verdict of `ok`, `bad` or `skip`; the
+format has no comments, a truly empty line carries no record and is skipped, and a whitespace-only or `#` line is
+malformed; a file of empty lines only holds no verdict),
 a verdict it does not know and a sampled row without an oracle verdict, and it fails when a generated stratum has rows
 but no checked row.
 The command exits with a failure when a generated stratum reaches the limit.

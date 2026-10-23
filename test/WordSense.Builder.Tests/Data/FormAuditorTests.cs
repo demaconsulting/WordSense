@@ -254,7 +254,8 @@ public sealed class FormAuditorTests
 
     /// <summary>
     ///     A malformed line or an unknown verdict of the oracle file is rejected, including a line with more than the
-    ///     five documented fields and a line with an empty field.
+    ///     five documented fields, a line with an empty field, and a whitespace-only or comment line (the format has no
+    ///     comments, and only a truly empty line is skipped).
     /// </summary>
     /// <param name="content">The file content.</param>
     [Theory]
@@ -267,6 +268,10 @@ public sealed class FormAuditorTests
     [InlineData("cats\t\tn\tNumber=Plur\tok\n")]
     [InlineData("cats\tcat\t\tNumber=Plur\tok\n")]
     [InlineData("cats\tcat\tn\t\tok\n")]
+    [InlineData(" \n")]
+    [InlineData("\t\n")]
+    [InlineData("\t\t\t\t\n")]
+    [InlineData("# a comment\n")]
     public void WordSenseBuilder_FormAuditor_ReadVerdicts_MalformedLine_Throws(string content)
     {
         using var dir = new TestDirectory();
@@ -274,6 +279,48 @@ public sealed class FormAuditorTests
         File.WriteAllText(path, content);
         var ex = Assert.Throws<InvalidDataException>(() => FormAuditor.ReadVerdicts(path));
         Assert.Contains("line 1", ex.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A malformed line after valid ones is reported with its own line number, also after blank lines that are
+    ///     counted.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_FormAuditor_ReadVerdicts_MalformedLineAfterBlankLine_NamesTheLine()
+    {
+        using var dir = new TestDirectory();
+        var path = Path.Join(dir.Root, "oracle.tsv");
+        File.WriteAllText(path, "cats\tcat\tn\tNumber=Plur\tok\n\ndogz\tdog\tn\tNumber=Plur\n");
+        var ex = Assert.Throws<InvalidDataException>(() => FormAuditor.ReadVerdicts(path));
+        Assert.Contains("line 3", ex.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     Truly empty lines carry no record and are skipped (the oracle never writes one; an edited file may hold one),
+    ///     while the records around them are read.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_FormAuditor_ReadVerdicts_BlankLines_AreSkipped()
+    {
+        using var dir = new TestDirectory();
+        var path = Path.Join(dir.Root, "oracle.tsv");
+        File.WriteAllText(path, "\ncats\tcat\tn\tNumber=Plur\tok\n\n\ndogz\tdog\tn\tNumber=Plur\tbad\n\n");
+        var read = FormAuditor.ReadVerdicts(path);
+        Assert.Equal(2, read.Count);
+        Assert.Equal("ok", read["cats\tcat\tn\tNumber=Plur"]);
+        Assert.Equal("bad", read["dogz\tdog\tn\tNumber=Plur"]);
+    }
+
+    /// <summary>
+    ///     A file of blank lines only holds no verdict and is rejected like an empty file.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_FormAuditor_ReadVerdicts_OnlyBlankLines_Throws()
+    {
+        using var dir = new TestDirectory();
+        var path = Path.Join(dir.Root, "oracle.tsv");
+        File.WriteAllText(path, "\n\n");
+        Assert.Throws<InvalidDataException>(() => FormAuditor.ReadVerdicts(path));
     }
 
     /// <summary>

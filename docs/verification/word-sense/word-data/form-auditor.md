@@ -26,6 +26,8 @@ All scenarios pass.
   so.
 - **Adjudications** (`ReadAdjudications_SkipsComments`, `ReadAdjudications_NoFile_IsEmpty`,
   `ReadAdjudications_FeatureColumn_RestrictsTheKey`).
-- **Oracle file** (`ReadVerdicts_DuplicateRow_Throws`, `ReadVerdicts_MalformedLine_Throws`): a row with two verdicts is
-  rejected; a line with fewer or more than five fields, an empty field or an unknown verdict is rejected with its line
-  number.
+- **Oracle file** (`ReadVerdicts_DuplicateRow_Throws`, `ReadVerdicts_MalformedLine_Throws`,
+  `ReadVerdicts_MalformedLineAfterBlankLine_NamesTheLine`, `ReadVerdicts_BlankLines_AreSkipped`,
+  `ReadVerdicts_OnlyBlankLines_Throws`): a row with two verdicts is rejected; a line with fewer or more than five
+  fields, an empty field, a whitespace-only or comment line, or an unknown verdict is rejected with its line number
+  (blank lines are counted); truly empty lines are skipped, and a file of them only holds no verdict and is rejected.

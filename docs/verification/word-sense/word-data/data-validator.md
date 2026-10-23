@@ -24,12 +24,19 @@ All scenarios below pass.
   `MissingSourceFile_ViolatesFileSet`, `EmptyPartitionFile_Violates`, `SplitPlanMismatch_ViolatesFileSet`).
 - **Unreadable input is a violation** (`UnreadableSchema_ReportsSchemaViolation`,
   `UnreadableTableFile_ReportsViolationAndContinues`,
-  `DirectoryThatCannotBeListed_ReportsViolationAndContinues`): a schema that is a folder (which the platform reports as
-  an unauthorized access) gives the one `schema` violation that names the path; a table file locked by another handle
-  gives an `unreadable` violation that names the file while the later tables are still read; a data folder, and the
+  `DirectoryThatCannotBeListed_ReportsViolationAndContinues`, `PartitionFolderDeniedAndAbsentFromDisk_ReportsViolation`,
+  `PartitionFolderMissing_IsEmptyTable`, `FileInPlaceOfPartitionFolder_ReportsViolation`,
+  `DataFolderMissingOrDenied_ReportsViolation`): a schema that is a folder (which the platform reports as
+  an unauthorized access) gives the one `schema` violation that names the path; a table file that the reader seam
+  fails to read (with an I/O failure or a denied access, injected so that the test does not depend on the file locking
+  or the permissions of the operating system) gives an `unreadable` violation that names the file while the later
+  tables are still read; a data folder, and the
   folder of a partitioned table, whose listing fails (through the internal lister seam of `Validate`, with a listing
   that fails while it is being read) give a `file-set` violation that names the directory while the other tables are
-  still read. None of these throws.
+  still read. The listing, not an existence probe, tells a missing folder from a denied one: a folder that is absent
+  from the disk but denied by the lister is a violation, a really missing folder of a partitioned table is an empty
+  table, a missing data folder is a violation, and a file in place of a partition folder is a violation on every
+  platform. None of these throws.
 - **Format and cells** (`FormatDefects_AreReported`, `CellDefects_AreReported`, `EmptyRequiredCell_Violates`,
   `SenseTableFeatures_AreChecked`): the last one checks the features of an analysis of the form table against the
   feature vocabulary, including a feature name that is listed twice.

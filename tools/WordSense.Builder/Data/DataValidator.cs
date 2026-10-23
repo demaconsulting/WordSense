@@ -64,16 +64,18 @@ internal sealed partial class DataValidator
     private readonly string? _baseline;
     private readonly DataSchema _schema;
     private readonly Func<string, IEnumerable<string>> _enumerate;
+    private readonly Func<string, byte[]> _readAllBytes;
     private readonly Dictionary<string, int> _ruleCounts = new(StringComparer.Ordinal);
     private readonly List<string> _violations = [];
     private readonly Dictionary<string, LoadedTable> _tables = new(StringComparer.Ordinal);
 
-    private DataValidator(string root, DataSchema schema, string? baseline, Func<string, IEnumerable<string>> enumerate)
+    private DataValidator(string root, DataSchema schema, string? baseline, Func<string, IEnumerable<string>> enumerate, Func<string, byte[]> readAllBytes)
     {
         _root = root;
         _schema = schema;
         _baseline = baseline;
         _enumerate = enumerate;
+        _readAllBytes = readAllBytes;
     }
 
     /// <summary>
@@ -91,14 +93,19 @@ internal sealed partial class DataValidator
         Validate(dataDirectory, baselineDirectory, Directory.EnumerateFileSystemEntries);
 
     /// <summary>
-    ///     Validates a data folder with a given directory lister (a seam for the tests: the real lister fails only when
-    ///     the platform denies access, which a test cannot cause portably).
+    ///     Validates a data folder with a given directory lister and file reader (seams for the tests: the real ones fail
+    ///     only when the platform denies or locks access, which a test cannot cause portably).
     /// </summary>
+    /// <remarks>
+    ///     A lister that throws <see cref="DirectoryNotFoundException"/> says that the directory does not exist; any other
+    ///     <see cref="IOException"/> or <see cref="UnauthorizedAccessException"/> says that it exists but cannot be listed.
+    /// </remarks>
     /// <param name="dataDirectory">The data folder that holds <c>schema.yaml</c> and the tables.</param>
     /// <param name="baselineDirectory">The data folder of the last release, or null.</param>
-    /// <param name="enumerate">Lists the entries (files and folders) of a directory; it may throw <see cref="IOException"/> or <see cref="UnauthorizedAccessException"/>.</param>
+    /// <param name="enumerate">Lists the entries (files and folders) of a directory; it may throw <see cref="DirectoryNotFoundException"/>, <see cref="IOException"/> or <see cref="UnauthorizedAccessException"/>.</param>
+    /// <param name="readAllBytes">Reads a table file; it may throw <see cref="IOException"/> or <see cref="UnauthorizedAccessException"/>; null reads the file system.</param>
     /// <returns>The report of the validation.</returns>
-    internal static ValidationReport Validate(string dataDirectory, string? baselineDirectory, Func<string, IEnumerable<string>> enumerate)
+    internal static ValidationReport Validate(string dataDirectory, string? baselineDirectory, Func<string, IEnumerable<string>> enumerate, Func<string, byte[]>? readAllBytes = null)
     {
         var schemaPath = Path.Join(dataDirectory, "schema.yaml");
         DataSchema schema;
@@ -111,7 +118,7 @@ internal sealed partial class DataValidator
             return new ValidationReport([$"{schemaPath}: [schema] {ex.Message}"], 1, new Dictionary<string, int>());
         }
 
-        var validator = new DataValidator(dataDirectory, schema, baselineDirectory, enumerate);
+        var validator = new DataValidator(dataDirectory, schema, baselineDirectory, enumerate, readAllBytes ?? File.ReadAllBytes);
         validator.Run();
         var counts = validator._tables.ToDictionary(p => p.Key, p => p.Value.RowCount, StringComparer.Ordinal);
         return new ValidationReport(validator._violations, validator._ruleCounts.Values.Sum(), counts);
@@ -167,14 +174,8 @@ internal sealed partial class DataValidator
 
     private void CheckFileSet()
     {
-        if (!Directory.Exists(_root))
-        {
-            Report(_root, 0, RuleFileSet, "The data directory does not exist.");
-            return;
-        }
-
         var tableNames = _schema.Tables.Select(t => t.Name).ToHashSet(StringComparer.Ordinal);
-        var entries = ListEntries(_root, RuleFileSet);
+        var entries = ListEntries(_root, RuleFileSet, missingIsViolation: true);
         if (entries is null)
         {
             return;
@@ -197,15 +198,32 @@ internal sealed partial class DataValidator
     /// <summary>
     ///     Lists the entries of a directory, reporting a listing that fails as a violation of the directory.
     /// </summary>
+    /// <remarks>
+    ///     The listing itself tells a missing directory from one that exists but is denied: existence is not probed
+    ///     beforehand, because a probe such as <see cref="Directory.Exists(string?)"/> answers false for a directory it
+    ///     may not access, which would hide the denied directory as a missing one.
+    /// </remarks>
     /// <param name="directory">The directory.</param>
     /// <param name="rule">The rule that the violation is reported under.</param>
+    /// <param name="missingIsViolation">Whether a missing directory is a violation; otherwise it is an empty listing.</param>
     /// <returns>The entries, or null when the directory cannot be listed (the violation is reported).</returns>
-    private List<string>? ListEntries(string directory, string rule)
+    private List<string>? ListEntries(string directory, string rule, bool missingIsViolation)
     {
         try
         {
             // The listing is lazy, so it is read to the end inside the try block
             return [.. _enumerate(directory)];
+        }
+        catch (DirectoryNotFoundException) when (!File.Exists(directory))
+        {
+            // The directory does not exist; a path that is a file is not missing, and is reported below on every platform
+            if (!missingIsViolation)
+            {
+                return [];
+            }
+
+            Report(directory, 0, rule, "The data directory does not exist.");
+            return null;
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
@@ -223,13 +241,8 @@ internal sealed partial class DataValidator
         }
 
         var directory = Path.Join(_root, table.Name);
-        if (!Directory.Exists(directory))
-        {
-            // A partitioned table without rows has no files, so a missing folder is an empty table
-            yield break;
-        }
-
-        var entries = ListEntries(directory, RuleFileSet);
+        // A partitioned table without rows has no files, so a missing folder is an empty table
+        var entries = ListEntries(directory, RuleFileSet, missingIsViolation: false);
         if (entries is null)
         {
             yield break;
@@ -316,7 +329,7 @@ internal sealed partial class DataValidator
         byte[] bytes;
         try
         {
-            bytes = File.ReadAllBytes(path);
+            bytes = _readAllBytes(path);
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {

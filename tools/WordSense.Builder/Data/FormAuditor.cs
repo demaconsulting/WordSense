@@ -196,6 +196,10 @@ internal static class FormAuditor
         foreach (var line in File.ReadLines(path))
         {
             number++;
+
+            // The oracle writes only five-field lines, so the format has no comments and no separators. A truly empty line
+            // (an edited file, a stray newline) carries no record and is skipped; every other line, a whitespace-only one
+            // and one starting with '#' included, is a record that must have five fields
             if (line.Length == 0)
             {
                 continue;

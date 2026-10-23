@@ -125,23 +125,30 @@ public sealed class DataValidatorTests : IDisposable
     }
 
     /// <summary>
-    ///     A table file that cannot be read (here locked by another handle) is an <c>unreadable</c> violation that names
-    ///     the file, and the validation of the other tables continues.
+    ///     A table file that cannot be read (the reader fails with an I/O failure or a denied access, the two failures the
+    ///     platform reports, injected through the reader seam so that the test does not depend on file locking or
+    ///     permissions of the operating system) is an <c>unreadable</c> violation that names the file, and the validation
+    ///     of the other tables continues.
     /// </summary>
-    [Fact]
-    public void WordSenseBuilder_DataValidator_Validate_UnreadableTableFile_ReportsViolationAndContinues()
+    /// <param name="denied">Whether the reader fails with a denied access; otherwise with an I/O failure.</param>
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void WordSenseBuilder_DataValidator_Validate_UnreadableTableFile_ReportsViolationAndContinues(bool denied)
     {
-        // Arrange: lock the first file of the entry table exclusively
+        // Arrange: the first file of the entry table cannot be read
         var data = Data();
-        var locked = Directory.GetFiles(Path.Join(data, "entry"), "*.tsv").OrderBy(f => f, StringComparer.Ordinal).First();
-        using var hold = new FileStream(locked, FileMode.Open, FileAccess.Read, FileShare.None);
+        var failing = Directory.GetFiles(Path.Join(data, "entry"), "*.tsv").OrderBy(f => f, StringComparer.Ordinal).First();
+        var failure = denied ? new UnauthorizedAccessException("Access to the path is denied.") : (Exception)new IOException("The file is in use.");
+        byte[] Read(string path) =>
+            string.Equals(path, failing, StringComparison.Ordinal) ? throw failure : File.ReadAllBytes(path);
 
         // Act
-        var report = DataValidator.Validate(data);
+        var report = DataValidator.Validate(data, null, Directory.EnumerateFileSystemEntries, Read);
 
         // Assert: the file is named, and the sense table was still read
         Assert.False(report.IsValid);
-        Assert.Contains(report.Violations, v => v.StartsWith(locked, StringComparison.Ordinal) && v.Contains("[unreadable]", StringComparison.Ordinal));
+        Assert.Contains(report.Violations, v => v.StartsWith(failing, StringComparison.Ordinal) && v.Contains("[unreadable]", StringComparison.Ordinal));
         Assert.True(report.RowCounts["sense"] > 0, "The tables after the unreadable file must still be read.");
     }
 
@@ -168,6 +175,90 @@ public sealed class DataValidatorTests : IDisposable
         Assert.False(report.IsValid);
         Assert.Contains(report.Violations, v => v.StartsWith(failing, StringComparison.Ordinal) && v.Contains("cannot be listed", StringComparison.Ordinal) && v.Contains("[file-set]", StringComparison.Ordinal));
         Assert.True(report.RowCounts["sense"] > 0, "The other tables must still be read.");
+    }
+
+    /// <summary>
+    ///     A folder of a partitioned table that the platform denies is a violation although an existence probe would
+    ///     answer false for it: the lister is asked, so the denied folder is not mistaken for a missing one.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_DataValidator_Validate_PartitionFolderDeniedAndAbsentFromDisk_ReportsViolation()
+    {
+        // Arrange: the folder is not on the disk, as an existence probe sees a folder it may not access, yet the lister denies it
+        var data = Data();
+        var failing = Path.Join(data, "entry");
+        Directory.Delete(failing, true);
+        IEnumerable<string> List(string directory) =>
+            string.Equals(directory, failing, StringComparison.Ordinal) ? throw new UnauthorizedAccessException("Access to the path is denied.") : Directory.EnumerateFileSystemEntries(directory);
+
+        // Act
+        var report = DataValidator.Validate(data, null, List);
+
+        // Assert
+        Assert.Contains(report.Violations, v => v.StartsWith(failing, StringComparison.Ordinal) && v.Contains("cannot be listed", StringComparison.Ordinal) && v.Contains("[file-set]", StringComparison.Ordinal));
+    }
+
+    /// <summary>
+    ///     A folder of a partitioned table that does not exist is an empty table, not a violation of the folder.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_DataValidator_Validate_PartitionFolderMissing_IsEmptyTable()
+    {
+        // Arrange: the real lister reports the missing folder as not found
+        var data = Data();
+        var missing = Path.Join(data, "entry");
+        Directory.Delete(missing, true);
+
+        // Act
+        var report = DataValidator.Validate(data, null, Directory.EnumerateFileSystemEntries);
+
+        // Assert: no violation names the folder, and the table has no rows
+        Assert.DoesNotContain(report.Violations, v => v.StartsWith(missing, StringComparison.Ordinal));
+        Assert.Equal(0, report.RowCounts["entry"]);
+    }
+
+    /// <summary>
+    ///     A file in place of the folder of a partitioned table is a violation of that path on every platform (the
+    ///     platforms report a listing of a file differently), not an empty table.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_DataValidator_Validate_FileInPlaceOfPartitionFolder_ReportsViolation()
+    {
+        // Arrange
+        var data = Data();
+        var folder = Path.Join(data, "entry");
+        Directory.Delete(folder, true);
+        File.WriteAllText(folder, "x");
+
+        // Act
+        var report = DataValidator.Validate(data);
+
+        // Assert
+        Assert.Contains(report.Violations, v => v.StartsWith(folder, StringComparison.Ordinal) && v.Contains("cannot be listed", StringComparison.Ordinal) && v.Contains("[file-set]", StringComparison.Ordinal));
+    }
+
+    /// <summary>
+    ///     A data folder that the lister reports as missing is a <c>file-set</c> violation, and one that the lister denies
+    ///     is a violation that says the listing failed.
+    /// </summary>
+    /// <param name="missing">Whether the lister reports the folder as missing; otherwise as denied.</param>
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void WordSenseBuilder_DataValidator_Validate_DataFolderMissingOrDenied_ReportsViolation(bool missing)
+    {
+        // Arrange
+        var data = Data();
+        var failure = missing ? new DirectoryNotFoundException("Could not find a part of the path.") : (Exception)new UnauthorizedAccessException("Access to the path is denied.");
+        IEnumerable<string> List(string directory) =>
+            string.Equals(directory, data, StringComparison.Ordinal) ? throw failure : Directory.EnumerateFileSystemEntries(directory);
+
+        // Act
+        var report = DataValidator.Validate(data, null, List);
+
+        // Assert
+        var expected = missing ? "does not exist" : "cannot be listed";
+        Assert.Contains(report.Violations, v => v.StartsWith(data, StringComparison.Ordinal) && v.Contains(expected, StringComparison.Ordinal) && v.Contains("[file-set]", StringComparison.Ordinal));
     }
 
     // A listing that yields an entry and then fails, like a directory that becomes unreadable while it is enumerated
