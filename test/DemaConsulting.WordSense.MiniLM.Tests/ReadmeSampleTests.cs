@@ -14,6 +14,9 @@ namespace DemaConsulting.WordSense.MiniLM.Tests;
 /// </remarks>
 public class ReadmeSampleTests
 {
+    /// <summary>
+    ///     The using directives of the README samples that need only the core package.
+    /// </summary>
     private const string Usings = "using DemaConsulting.WordSense;\n\n";
 
     /// <summary>
@@ -33,6 +36,10 @@ public class ReadmeSampleTests
     /// </summary>
     private const decimal EncoderConfidenceTolerance = 0.10m;
 
+    /// <summary>
+    ///     Reads the README and the source of the compiled README samples.
+    /// </summary>
+    /// <returns>The text of <c>README.md</c> and of <c>ReadmeSample.cs</c>.</returns>
     private static async Task<(string Readme, string Source)> ReadAsync()
     {
         var root = DocSampleText.FindRepositoryRoot();
@@ -42,6 +49,14 @@ public class ReadmeSampleTests
             await File.ReadAllTextAsync(Path.Join(root, "test", "DemaConsulting.WordSense.MiniLM.Tests", "ReadmeSample.cs"), token));
     }
 
+    /// <summary>
+    ///     Builds the text that a README code block must equal: the using directives plus the unindented region of the
+    ///     sample source between the markers of the sample, with the common indentation removed.
+    /// </summary>
+    /// <param name="source">The text of <c>ReadmeSample.cs</c>.</param>
+    /// <param name="name">The name of the sample in its <c>&lt;sample:NAME&gt;</c> markers.</param>
+    /// <param name="usings">The using directives that the README block shows before the region.</param>
+    /// <returns>The normalized expected code block.</returns>
     private static string Compiled(string source, string name, string usings) =>
         DocSampleText.Normalize(usings + DocSampleText.Dedent(DocSampleText.Between(source, $"// <sample:{name}>", $"// </sample:{name}>")));
 
@@ -52,9 +67,14 @@ public class ReadmeSampleTests
     [Fact]
     public async Task WordSense_Readme_CodeBlocks_MatchCompiledSamples()
     {
+        // Arrange: read the README and the compiled sample source
         var (readme, source) = await ReadAsync();
 
-        Assert.Equal(Compiled(source, "readme", Usings), DocSampleText.Normalize(DocSampleText.FencedBlock(readme, "<!-- sample:readme -->", "csharp")));
+        // Act: take the documented block of the main sample
+        var documented = DocSampleText.Normalize(DocSampleText.FencedBlock(readme, "<!-- sample:readme -->", "csharp"));
+
+        // Assert: the documented block equals the compiled sample
+        Assert.Equal(Compiled(source, "readme", Usings), documented);
     }
 
     /// <summary>
@@ -103,9 +123,14 @@ public class ReadmeSampleTests
     [Fact]
     public async Task WordSense_Readme_SampleMarkers_AreAllChecked()
     {
+        // Arrange: read the README
         var (readme, _) = await ReadAsync();
 
-        Assert.Equal(["readme", "download", "capability"], DocSampleText.SampleNames(readme));
+        // Act: list the samples that the README marks
+        var names = DocSampleText.SampleNames(readme);
+
+        // Assert: every marked sample is one of the checked samples, in document order
+        Assert.Equal(["readme", "download", "capability"], names);
     }
 
     /// <summary>
@@ -115,9 +140,11 @@ public class ReadmeSampleTests
     [Fact]
     public async Task WordSense_Readme_CommentedAlternatives_NameExistingModels()
     {
+        // Arrange: read the compiled README sample
         var (_, source) = await ReadAsync();
         var sample = DocSampleText.Between(source, "// <sample:readme>", "// </sample:readme>");
 
+        // Act / Assert: the sample names both alternatives as comments
         Assert.Contains("// using var model = new MiniLMWordSenseModel();         // using DemaConsulting.WordSense.MiniLM;", sample, StringComparison.Ordinal);
         Assert.Contains("// using var model = new BertBaseCasedWordSenseModel();  // using DemaConsulting.WordSense.BertBaseCased;", sample, StringComparison.Ordinal);
 
@@ -151,8 +178,17 @@ public class ReadmeSampleTests
     [Fact]
     public Task WordSense_Readme_BertBaseCasedOutput_MatchesReadme() => CheckOutputAsync("bertbasecased", "bertbasecased", "bert-base-cased-int8", EncoderConfidenceTolerance);
 
+    /// <summary>
+    ///     Compares the documented output block of a README sample with the output of the sample run.
+    /// </summary>
+    /// <param name="marker">The name in the <c>&lt;!-- output:NAME --&gt;</c> marker of the documented block.</param>
+    /// <param name="modelKey">The key of the model that the sample runs against.</param>
+    /// <param name="modelId">The id of the model whose files must be available, or <c>null</c> for Basic.</param>
+    /// <param name="tolerance">The largest allowed absolute difference of a documented confidence.</param>
+    /// <returns>A task that completes when the check has run.</returns>
     private static async Task CheckOutputAsync(string marker, string modelKey, string? modelId, decimal tolerance)
     {
+        // Arrange: read the documented output, require the model files and create the sample
         var (readme, _) = await ReadAsync();
         var documented = DocSampleText.FencedBlock(readme, $"<!-- output:{marker} -->", "text");
         FailWhenNotGenerated(documented);
@@ -162,12 +198,18 @@ public class ReadmeSampleTests
         }
 
         var sample = new ReadmeSample();
+
+        // Act: run the sample with the invariant culture
         await RunInvariantAsync(() => sample.RunAsync(modelKey));
 
-        // The README is the expected value: the words, parts of speech must match exactly
+        // Assert: the README is the expected value: the words, parts of speech must match exactly
         DocSampleText.AssertSampleOutput(documented, sample.Output, tolerance);
     }
 
+    /// <summary>
+    ///     Fails the test when a documented output block still holds the placeholder text.
+    /// </summary>
+    /// <param name="documented">The documented output block.</param>
     private static void FailWhenNotGenerated(string documented)
     {
         if (documented.Contains("TBD", StringComparison.Ordinal))
@@ -176,6 +218,11 @@ public class ReadmeSampleTests
         }
     }
 
+    /// <summary>
+    ///     Runs an action with the invariant culture as the current culture and restores the previous culture.
+    /// </summary>
+    /// <param name="run">The action to run.</param>
+    /// <returns>A task that completes when the action has completed.</returns>
     private static async Task RunInvariantAsync(Func<Task> run)
     {
         var previous = CultureInfo.CurrentCulture;

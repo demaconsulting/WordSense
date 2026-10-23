@@ -116,7 +116,9 @@ of its tier (see `coverage/README.md`).
    10 of a lemma from one document), no near-duplicate (token Jaccard 0.8) of a corpus or suite sentence of the lemma.
    Held-out sentences are filled first with real text, the anchors take the rest. A document gives either anchors or
    held-out rows (an evaluation document is chosen by hash, one in four), so the held-out rows are disjoint from the
-   anchors by document.
+   anchors by document; a document of the older rows that already supplies both may supply more anchors. The tier
+   waves use the technical FAA text for the technical senses only (`--faa-tech-only`), and an FAA sentence with a
+   figure reference or a word split by the PDF extraction is always dropped.
 4. *Extra real anchors.* The senses that took part in a fine top-1 error of the encoders on the real *calibration* rows
    (never the test split) get a target of 8 real anchors (5 for one error), and a sense of an earlier wave with fewer
    than 3 real anchors gets 3.
@@ -252,6 +254,12 @@ informational. The reviewed suite, the real-text rows and the challenge set over
   sentences (166,802 tokens): 94.47% UPOS agreement, kappa 0.938; 36.25% of the tokens are `unchecked`.
 - **Leakage.** `check-leakage` finds no evaluation sentence in a training part of the committed corpus (the overlap that
   remains is the one listed above).
+- **Blind relabeling of the real held-out rows.** All 4,615 real-text sense held-out rows (calibration and test sides)
+  were labeled again by a blind labeler that saw the sentence and the senses of its lemma and part of speech, never the
+  gold label: 4,041 agreed, 255 disagreed and 319 were unsure. A second blind judge decided the 574 rows that were not
+  agreed (candidates in random order, the gold label never marked): 321 kept their gold sense, 166 were relabeled (158 to
+  the sense of the first blind labeler, 8 to another listed sense) and 87 were removed (no listed sense fits). No model
+  was consulted, and the anchors were not touched.
 
 ## Label Reconciliation
 

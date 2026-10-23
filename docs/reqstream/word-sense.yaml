@@ -381,6 +381,7 @@ sections:
           - WordSense-WordSenseBuilder-FormChoosers
           - WordSense-WordSenseBuilder-Thresholds
           - WordSense-WordSenseBuilder-RealCalibration
+          - WordSense-WordSenseBuilder-CalibrationShift
           - WordSense-WordSenseBuilder-Tiers
           - WordSense-WordSenseBuilder-EmbeddingCache
           - WordSense-WordSenseBuilder-FitCache

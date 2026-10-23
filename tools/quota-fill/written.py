@@ -40,7 +40,7 @@ def cmd_export(args):
     world = qf.load_world()
     senses = world["senses"]
     status = lexindex.quota_status(senses, world["scope"])
-    wanted = qf.lemmas_up_to(world, args.lemmas_up_to or args.wave)
+    wanted = set(world["by_lemma"]) if args.tier else qf.lemmas_up_to(world, args.lemmas_up_to or args.wave)
     if args.skip_up_to:
         wanted -= qf.lemmas_up_to(world, args.skip_up_to) - set(qf.TECH_ALL)
     only = set(args.only_lemmas.split(",")) if args.only_lemmas else None
@@ -59,6 +59,8 @@ def cmd_export(args):
     todo = []
     for r in status:
         s = senses[r["sense_id"]]
+        if args.tier and r["tier"] != args.tier:
+            continue
         if only is not None:
             if s["lemma"] not in only:
                 continue
@@ -253,8 +255,10 @@ if __name__ == "__main__":
     sub = ap.add_subparsers(dest="cmd", required=True)
     for name in ("export", "ingest", "labeled"):
         p = sub.add_parser(name)
-        p.add_argument("wave", type=int)
+        p.add_argument("wave", type=qf.wave_id)
         if name == "export":
+            p.add_argument("--tier", default="", choices=("", "C", "U", "R"),
+                           help="every lemma, but only the short senses of this tier (a tier wave, e.g. 4c)")
             p.add_argument("--lemmas-up-to", type=int, default=0,
                            help="include the lemmas of every wave up to this one (a later round of an earlier wave)")
             p.add_argument("--skip-up-to", type=int, default=0, help="leave out the lemmas of the waves up to this one")

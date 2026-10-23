@@ -54,11 +54,18 @@ def is_eval_document(prov_doc):
 
 def doc_role(pdoc, doc_splits):
     """The role of a document for new rows: "eval" (held-out rows only), "train" (anchors only) or None (the document
-    already supplies the other kind of row, so it supplies no new rows)."""
+    already supplies the other kind of row, so it supplies no new rows). A document that is not an evaluation document
+    but already supplies both kinds (the rows of the relabeled corpus and of wave 1 predate the rule) may supply more
+    anchors: it has anchors already, so no document becomes less clean for the evaluation."""
     splits = doc_splits.get(pdoc, set())
     if is_eval_document(pdoc):
         return "eval" if "anchors" not in splits else None
-    return "train" if "holdout" not in splits else None
+    return "train" if "holdout" not in splits or "anchors" in splits else None
+
+
+def tech_lemmas():
+    """The lemmas of the technical senses of corpus/curation/tech-senses.tsv."""
+    return {sense.split("#")[0] for sense in read_tech_targets()}
 
 
 def provenance_rows():
@@ -140,6 +147,12 @@ def lemmas_up_to(world, wave):
     return result
 
 
+def wave_id(text):
+    """A wave is named by a number (a rank wave, or a supplementary wave) or by a text such as 4c (a tier wave, which is
+    selected with --tier instead of by rank)."""
+    return int(text) if text.isdigit() else text
+
+
 def wave_of_rank(rank0):
     for i, cut in enumerate(WAVE_CUTS):
         if rank0 < cut:
@@ -151,9 +164,25 @@ def corpus_files(folder):
     return sorted(glob.glob(os.path.join(CORPUS, folder, "*.tsv")))
 
 
-def corpus_keys():
-    """Duplicate keys of every sentence of the corpus (fine-sense rows, real text, disputed rows, choosers) and the suite."""
+def open_corpus_keys():
+    """Duplicate keys of every sentence of the open corpus in any split (`# text = ` lines) and every example sentence of
+    Open English WordNet (CC BY 4.0, which no part of the CC0 corpus may contain): `check-leakage` fails when a held-out
+    row is in the training split of the open corpus, an anchor is in its development or test split, or a row is an example."""
     keys = set()
+    for path in sorted(glob.glob(os.path.join(CORPUS, "open", "*", "data", "*.tsv"))):
+        with open(path, encoding="utf-8") as handle:
+            for line in handle:
+                if line.startswith("# text = "):
+                    keys.add(textutil.key_of(line[len("# text = "):]))
+    for row in lexdata.read_table("example"):
+        keys.add(textutil.key_of(row["text"]))
+    return keys
+
+
+def corpus_keys():
+    """Duplicate keys of every sentence of the corpus (fine-sense rows, real text, disputed rows, choosers), the suite
+    and the open corpus."""
+    keys = open_corpus_keys()
     for folder in ("anchors", "holdout", "realtext", "disputed"):
         for path in corpus_files(folder):
             with open(path, encoding="utf-8") as handle:

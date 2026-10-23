@@ -15836,7 +15836,6 @@ ff454777a647	holdout	llm-corpus	speech-batch1.tsv
 54e9e9bfe72f	holdout	authored	new-authored-1
 ba8823dc432f	holdout	gutenberg	pg2852#p93
 cf1f51b1fe7e	holdout	authored	new-authored-1
-fd03f6af6060	holdout	gutenberg	pg821#p1540
 01c19fab66be	holdout	llm-corpus	speech-batch1.tsv
 1cc19ae6d529	holdout	llm-corpus	speech-batch1.tsv
 98a7050718eb	holdout	llm-corpus	speech-batch1.tsv
@@ -15903,7 +15902,6 @@ e30b09bb3b1d	holdout	authored	new-authored-1
 6935aad45c3e	holdout	authored	new-authored-1
 6bc7500f2f86	holdout	authored	new-authored-1
 7a06a959d09d	holdout	gutenberg	pg98#p885
-af56495d723a	holdout	gutenberg	pg345#p179
 c0c4088a8fbd	holdout	authored	new-authored-1
 ef538685dff0	holdout	authored	new-authored-1
 091393754a8e	holdout	gutenberg	pg159#p727
@@ -15988,10 +15986,7 @@ bd71c83115c7	holdout	llm-corpus	speech-batch1.tsv
 07e7cd0217a2	holdout	llm-corpus	speech-batch1.tsv
 a0f52a9ca1fc	holdout	llm-corpus	speech-batch1.tsv
 26a308a7f7ef	holdout	tatoeba-cc0	9562569
-2e78451e0937	holdout	gutenberg	pg974#p214
-36b2d0c7b926	holdout	gutenberg	pg45#p879
 54646bf30886	holdout	gutenberg	pg2021#p1904
-6304d665c16b	holdout	tatoeba-cc0	12193678
 cd3865f04805	holdout	gutenberg	pg1257#p234
 06f172e5b081	holdout	gutenberg	pg4300#06f172e5b081
 ee6d01b5822e	holdout	gutenberg	pg3825#ee6d01b5822e
@@ -16213,10 +16208,7 @@ a1a65e536889	holdout	gutenberg	pg4300#a1a65e536889
 9c36a267f163	holdout	gutenberg	pg940#9c36a267f163
 c6a16f6b8695	holdout	gutenberg	pg2554#c6a16f6b8695
 5d08338d89f6	holdout	gutenberg	pg963#5d08338d89f6
-1ebedd8a3f40	holdout	gutenberg	pg1056#1ebedd8a3f40
-54440fe7372e	holdout	gutenberg	pg940#54440fe7372e
 7367fef0484e	holdout	gutenberg	pg883#7367fef0484e
-fb87ac33a759	holdout	gutenberg	pg964#fb87ac33a759
 07e92a575b73	holdout	gutenberg	pg4300#07e92a575b73
 788b9f2d5eab	holdout	gutenberg	pg107#788b9f2d5eab
 7a01f1538405	holdout	tatoeba-cc0	10919464
@@ -16234,28 +16226,23 @@ f93bf03d5a6f	holdout	llm-corpus	speech-batch1.tsv
 fbb1d9fdd23d	holdout	llm-corpus	speech-batch1.tsv
 4e010402eb22	holdout	tatoeba-cc0	9998015
 239ab14b346f	holdout	tatoeba-cc0	10995363
-d3484f716e01	holdout	tatoeba-cc0	10592798
 1a8f713487b8	holdout	gutenberg	pg4300#1a8f713487b8
 364319a3360f	holdout	gutenberg	pg1056#364319a3360f
 9711c1487ce5	holdout	gutenberg	pg1400#9711c1487ce5
 d6f7301bddc6	holdout	tatoeba-cc0	10228585
 68c8bb3fe19d	holdout	gutenberg	pg345#p366
-926d5ed10e01	holdout	gutenberg	pg122#p2946
 f0793237ccb4	holdout	gutenberg	pg700#p3938
 251da46de32b	holdout	tatoeba-cc0	9473256
 3710b7088e0a	holdout	gutenberg	pg967#p2587
-ddb5e2263e80	holdout	gutenberg	pg82#p1407
 2734157765b5	holdout	gutenberg	pg1400#p1829
 f7dd677b8ef2	holdout	gutenberg	pg155#p1372
 b1a665f30c8a	holdout	gutenberg	pg834#p687
 bfd77376b1c2	holdout	gutenberg	pg159#p124
-c21faaba50b6	holdout	tatoeba-cc0	11603097
 d454cdac3dd5	holdout	tatoeba-cc0	8374436
 aa8a227a7bab	holdout	gutenberg	pg6688#aa8a227a7bab
 87c6fe2e6df4	holdout	gutenberg	pg4300#87c6fe2e6df4
 41444b37936d	holdout	tatoeba-cc0	12246810
 6fbfcf50e188	holdout	gutenberg	pg1260#6fbfcf50e188
-ccc05aa1308c	holdout	tatoeba-cc0	12767886
 97713e5f6826	holdout	tatoeba-cc0	11146425
 12b32f634311	holdout	gutenberg	pg1260#12b32f634311
 b598b87dc801	holdout	gutenberg	pg120#b598b87dc801
@@ -16264,7 +16251,6 @@ e3918bdf6e27	holdout	gutenberg	pg345#e3918bdf6e27
 8b28cdebe382	holdout	gutenberg	pg122#8b28cdebe382
 cb00fcb5a8e8	holdout	gutenberg	pg2554#cb00fcb5a8e8
 8b8b9fa8f860	holdout	gutenberg	pg36#8b8b9fa8f860
-a0a4e2a6afbb	holdout	tatoeba-cc0	8242029
 3c78843dc87f	holdout	tatoeba-cc0	11600527
 18925efd2671	holdout	llm-corpus	speech-batch1.tsv
 3ccd180fbb98	holdout	llm-corpus	speech-batch1.tsv
@@ -16285,7 +16271,6 @@ dad78cfb4078	holdout	llm-corpus	speech-batch1.tsv
 91bfaa2e9c01	holdout	tatoeba-cc0	12034368
 c26f9da9e1b4	holdout	gutenberg	pg155#c26f9da9e1b4
 3a7612ec15cb	holdout	tatoeba-cc0	9472746
-f24565fc2eda	holdout	gutenberg	pg1260#f24565fc2eda
 865f78522278	holdout	gutenberg	pg964#865f78522278
 14f047d42508	holdout	tatoeba-cc0	8234992
 678af6124321	holdout	gutenberg	pg122#678af6124321
@@ -16326,7 +16311,6 @@ b13a01d1e26a	holdout	gutenberg	pg963#b13a01d1e26a
 cf558af009e4	holdout	gutenberg	pg964#cf558af009e4
 42ba5de61d67	holdout	tatoeba-cc0	11969311
 e142e21b0c32	holdout	gutenberg	pg16#e142e21b0c32
-a832346f84fd	holdout	tatoeba-cc0	9950457
 b5302ff55d74	holdout	gutenberg	pg974#b5302ff55d74
 fa2a06a9cfad	holdout	gutenberg	pg2186#fa2a06a9cfad
 a993d8219b9d	holdout	gutenberg	pg580#a993d8219b9d
@@ -16387,7 +16371,6 @@ ee59e1837fc8	holdout	gutenberg	pg1260#ee59e1837fc8
 b66d1fda573a	holdout	gutenberg	pg1400#b66d1fda573a
 df22ccc890de	holdout	gutenberg	pg161#df22ccc890de
 e23959ad093d	holdout	gutenberg	pg883#e23959ad093d
-588a2b048092	holdout	tatoeba-cc0	12024977
 5c234c9efa6f	holdout	gutenberg	pg4300#5c234c9efa6f
 78fdab3b3a3a	holdout	gutenberg	pg345#78fdab3b3a3a
 ab600b46d6ce	holdout	gutenberg	pg2226#ab600b46d6ce
@@ -16524,11 +16507,7 @@ b6bf7c165522	holdout	gutenberg	pg583#p1934
 1fa0f7424959	holdout	llm-corpus	seed-34.tsv
 72b713620e18	holdout	llm-corpus	seed-34.tsv
 3aff90a87fac	holdout	gutenberg	pg967#p5833
-4291353b831c	holdout	gutenberg	pg967#p5935
-5b815babf5e1	holdout	gutenberg	pg43#p261
 7feb94e147de	holdout	gutenberg	pg345#p2102
-853ec34abf95	holdout	gutenberg	pg821#p6932
-892103da64b1	holdout	gutenberg	pg155#p3541
 c025ca00fcc8	holdout	gutenberg	pg583#p747
 c8835dec0ec2	holdout	gutenberg	pg2554#p1419
 186885d4f337	holdout	tatoeba-cc0	12765000
@@ -16536,7 +16515,6 @@ a1f2d1f2c53b	holdout	gutenberg	pg135#a1f2d1f2c53b
 2791636127a9	holdout	tatoeba-cc0	11146847
 5a36d1f9408d	holdout	gutenberg	pg78655#5a36d1f9408d
 5f5d8d16b01c	holdout	gutenberg	pg1260#5f5d8d16b01c
-3cf52f9140c3	holdout	gutenberg	pg84#p576
 e4bd7692e13f	holdout	gutenberg	pg76#p1331
 01cff8cd28d8	holdout	authored	new-authored-1
 33eed4fabbcc	holdout	authored	new-authored-1
@@ -17209,7 +17187,6 @@ b97271f7729e	holdout	gutenberg	pg110#p3199
 66e44deed73d	holdout	authored	new-authored-1
 9fa2aad45e80	holdout	authored	new-authored-1
 cc4d9112c090	holdout	authored	new-authored-1
-af3f3b074c93	holdout	gutenberg	pg834#p91
 0b36fccd640c	holdout	authored	new-authored-1
 361196513133	holdout	authored	new-authored-1
 42ef607ff5b7	holdout	authored	new-authored-1
@@ -17236,13 +17213,9 @@ d1d0dc0a550d	holdout	llm-corpus	speech-batch2.tsv
 39f9d138ed1a	holdout	llm-corpus	speech-batch2.tsv
 bcee69c540a3	holdout	llm-corpus	speech-batch2.tsv
 dd48fdbcc0d8	holdout	gutenberg	pg76#dd48fdbcc0d8
-ceaddb4317ac	holdout	gutenberg	pg4300#ceaddb4317ac
 55651119f6b5	holdout	tatoeba-cc0	11985067
 d996c6824c28	holdout	gutenberg	pg583#d996c6824c28
 25127b90c59e	holdout	gutenberg	pg107#25127b90c59e
-233878ae0446	holdout	gutenberg	pg940#233878ae0446
-a5f25b2def85	holdout	tatoeba-cc0	12121885
-ee3d94f80889	holdout	gutenberg	pg1342#ee3d94f80889
 fc1c385a2755	holdout	tatoeba-cc0	11357973
 3850de41ea59	holdout	gutenberg	pg1400#3850de41ea59
 37028f928e06	holdout	gutenberg	pg120#37028f928e06
@@ -17313,7 +17286,6 @@ dfe33bf491e6	holdout	tatoeba-cc0	11110102
 795f199cbdc4	holdout	gutenberg	pg4300#795f199cbdc4
 cb249858caa6	holdout	gutenberg	pg82#cb249858caa6
 7dc92e567f11	holdout	tatoeba-cc0	10546730
-b03e0b64bda1	holdout	gutenberg	pg1056#b03e0b64bda1
 3536f8c8d443	holdout	gutenberg	pg910#3536f8c8d443
 6d899a16b325	holdout	tatoeba-cc0	12775347
 75e0984246b1	holdout	tatoeba-cc0	11462415
@@ -17338,7 +17310,6 @@ feb155ad1646	holdout	gutenberg	pg164#feb155ad1646
 f146bb204989	holdout	tatoeba-cc0	8994249
 e2ab5c0f3703	holdout	gutenberg	pg910#e2ab5c0f3703
 1a1b424cfe49	holdout	gutenberg	pg1400#1a1b424cfe49
-b973038c0d5f	holdout	gutenberg	pg4300#b973038c0d5f
 d581355a7096	holdout	gutenberg	pg135#d581355a7096
 fc79c901550f	holdout	gutenberg	pg1056#fc79c901550f
 2cf9cf10beac	holdout	llm-corpus	speech-batch2.tsv
@@ -17707,7 +17678,6 @@ b2d6f10cbd90	holdout	gutenberg	pg1260#b2d6f10cbd90
 2630327cc149	holdout	gutenberg	pg2186#2630327cc149
 6507583260ec	holdout	gutenberg	pg122#6507583260ec
 4908b4e4eb33	holdout	tatoeba-cc0	11557415
-5f9cac4d5fa2	holdout	tatoeba-cc0	8883585
 b43359c544a4	holdout	gutenberg	pg4300#b43359c544a4
 077709b54df8	holdout	gutenberg	pg964#077709b54df8
 564a56c8fd82	holdout	gutenberg	pg2226#564a56c8fd82
@@ -17874,7 +17844,6 @@ c58a5801d59a	holdout	llm-corpus	speech-batch3.tsv
 3d0cd3f261e5	holdout	llm-corpus	speech-batch3.tsv
 434787c08b9f	holdout	llm-corpus	speech-batch3.tsv
 b0559127ece1	holdout	gutenberg	pg107#b0559127ece1
-f5fcae86e937	holdout	tatoeba-cc0	9694999
 1db52e667240	holdout	gutenberg	pg345#1db52e667240
 06d38978f79d	holdout	tatoeba-cc0	10228587
 25e4ffb6d607	holdout	gutenberg	pg108#25e4ffb6d607
@@ -18047,7 +18016,6 @@ e578321f43b4	holdout	llm-corpus	speech-batch3.tsv
 a073233cda4b	holdout	llm-corpus	speech-batch3.tsv
 a4d66cf156eb	holdout	llm-corpus	speech-batch3.tsv
 ef49cf4c90c2	holdout	llm-corpus	speech-batch3.tsv
-26a83df52aaf	holdout	gutenberg	pg2021#p667
 12a431cb48b8	holdout	gutenberg	pg4300#p1463
 482183f140c1	holdout	tatoeba-cc0	12766147
 6e9ad76a9e53	holdout	gutenberg	pg917#p961
@@ -18151,7 +18119,6 @@ e996f008a817	holdout	gutenberg	pg36#e996f008a817
 a9721a45dc18	holdout	tatoeba-cc0	10908507
 200eb1dbedf9	holdout	gutenberg	pg1400#200eb1dbedf9
 54b56c4085e2	holdout	tatoeba-cc0	8122533
-aeb24c2796e1	holdout	tatoeba-cc0	12140194
 5020319ffbd4	holdout	gutenberg	pg883#5020319ffbd4
 5f493c139874	holdout	gutenberg	pg66114#5f493c139874
 d986ee0cfcc1	holdout	gutenberg	pg108#d986ee0cfcc1
@@ -18318,10 +18285,8 @@ cee28a14060b	holdout	gutenberg	pg82#p1348
 f9c5a99a5117	holdout	gutenberg	pg514#p262
 962c2a856a6b	holdout	authored	new-authored-1
 b9ad220f77cd	holdout	authored	new-authored-1
-c01e2a5a6fd6	holdout	gutenberg	pg1399#p1244
 17b0688aeec2	holdout	gutenberg	pg135#p12757
 39275727a46c	holdout	authored	new-authored-1
-6f511bf6e13e	holdout	gutenberg	pg82#p791
 a1c0a9280533	holdout	authored	new-authored-1
 aa039cfdccb2	holdout	authored	new-authored-1
 e5782a49cb56	holdout	authored	new-authored-1
@@ -18442,10 +18407,8 @@ daafcfa40d25	holdout	gutenberg	pg108#daafcfa40d25
 34ce623b553c	holdout	gutenberg	pg122#34ce623b553c
 64d56ae96908	holdout	gutenberg	pg1056#64d56ae96908
 a811764fa257	holdout	gutenberg	pg1056#a811764fa257
-2618ef9a058f	holdout	gutenberg	pg16#2618ef9a058f
 4063d3eabc86	holdout	tatoeba-cc0	11240041
 411a3acd753d	holdout	gutenberg	pg155#411a3acd753d
-48788d62860c	holdout	gutenberg	pg963#48788d62860c
 5fb6ec767b93	holdout	tatoeba-cc0	9756680
 79e689212607	holdout	gutenberg	pg345#79e689212607
 0283edd8a449	holdout	gutenberg	pg155#0283edd8a449
@@ -18481,7 +18444,6 @@ e16f1d5ce13b	holdout	tatoeba-cc0	9800770
 5aac5fb74233	holdout	gutenberg	pg974#5aac5fb74233
 a3a7f5cf6f0d	holdout	gutenberg	pg1056#a3a7f5cf6f0d
 7835e09901f1	holdout	gutenberg	pg122#7835e09901f1
-2ccd2c5856a2	holdout	gutenberg	pg421#2ccd2c5856a2
 83c905d6fe37	holdout	gutenberg	pg16#83c905d6fe37
 e433db98ebbe	holdout	gutenberg	pg2701#e433db98ebbe
 22d2bf931a18	holdout	gutenberg	pg2554#22d2bf931a18
@@ -19101,8 +19063,6 @@ df03b2c7b0fb	holdout	llm-corpus	speech-batch4.tsv
 9688d9347ec6	holdout	tatoeba-cc0	9279747
 97c1e840a614	holdout	tatoeba-cc0	12759711
 de7bae41c7e8	holdout	gutenberg	pg964#de7bae41c7e8
-b7c143a01437	holdout	tatoeba-cc0	11167371
-ee25a71baa31	holdout	gutenberg	pg135#ee25a71baa31
 face3819c36e	holdout	gutenberg	pg345#face3819c36e
 6e4d92c3a9fe	holdout	llm-corpus	speech-batch4.tsv
 6e530a635d82	holdout	llm-corpus	speech-batch4.tsv
@@ -19143,7 +19103,6 @@ a800e6be0c8a	holdout	tatoeba-cc0	10545410
 6c1afec7b1c3	holdout	gutenberg	pg580#6c1afec7b1c3
 a46032b51957	holdout	gutenberg	pg2701#a46032b51957
 bcdfc5e74080	holdout	gutenberg	pg421#bcdfc5e74080
-b36f4817704f	holdout	gutenberg	pg2554#b36f4817704f
 c5077fad6aa3	holdout	tatoeba-cc0	8212563
 bbf1f87ca10a	holdout	gutenberg	pg883#bbf1f87ca10a
 03ed082035a1	holdout	gutenberg	pg345#03ed082035a1
@@ -19196,7 +19155,6 @@ c28544cf44a1	holdout	gutenberg	pg514#p2519
 09f25bca97ec	holdout	llm-corpus	dropped-rows.tsv
 0a5f1c914d46	holdout	llm-corpus	dropped-rows.tsv
 0b69d1385cbd	holdout	llm-corpus	dropped-rows.tsv
-4365cca3f573	holdout	gutenberg	pg219#p88
 7e1fa77d330d	holdout	gutenberg	pg164#p1813
 5b9246398677	holdout	gutenberg	pg1257#p3298
 07467f936484	holdout	gutenberg	pg84#p100
@@ -19317,7 +19275,6 @@ f22e326ab23c	holdout	gutenberg	pg768#f22e326ab23c
 7de70d2afb59	holdout	gutenberg	pg2554#7de70d2afb59
 839700bd9f0c	holdout	tatoeba-cc0	12764691
 b29bc2d681f7	holdout	gutenberg	pg2701#b29bc2d681f7
-fa19555d292d	holdout	tatoeba-cc0	11532891
 6ed34613962c	holdout	tatoeba-cc0	11080982
 b3e0588f2820	holdout	tatoeba-cc0	11183788
 f051eb8ac018	holdout	tatoeba-cc0	8109017
@@ -19335,8 +19292,6 @@ a86ebbccf225	holdout	tatoeba-cc0	10315578
 e7ac892dab81	holdout	tatoeba-cc0	11863223
 fa519c459b91	holdout	gutenberg	pg883#fa519c459b91
 20c75166bc15	holdout	gutenberg	pg1056#20c75166bc15
-27288229de63	holdout	gutenberg	pg834#27288229de63
-8f5c7869c38d	holdout	gutenberg	pg421#8f5c7869c38d
 6c450e46afab	holdout	tatoeba-cc0	11547856
 db1f7febffdf	holdout	gutenberg	pg84#db1f7febffdf
 31d2b7071ff0	holdout	gutenberg	pg964#31d2b7071ff0
@@ -19749,7 +19704,6 @@ aff78385584f	holdout	tatoeba-cc0	12759696
 50e83f98fdb1	holdout	llm-corpus	speech-batch5.tsv
 a5ee49045ea2	holdout	llm-corpus	speech-batch5.tsv
 c4bfe86086cb	holdout	llm-corpus	speech-batch5.tsv
-27830e6fbeaa	holdout	gutenberg	pg174#p875
 61a7820c0658	holdout	tatoeba-cc0	10930666
 f216491104ed	holdout	llm-corpus	speech-batch5.tsv
 e8ee0a3d9ab6	holdout	llm-corpus	speech-batch5.tsv
@@ -20382,11 +20336,9 @@ ffdeae1c57bb	holdout	llm-corpus	speech-batch6.tsv
 7eee12215da8	holdout	llm-corpus	speech-batch6.tsv
 b1103e171436	holdout	llm-corpus	speech-batch6.tsv
 d2c7e64c3d2a	holdout	llm-corpus	speech-batch6.tsv
-89602fe534b7	holdout	gutenberg	pg2814#p1610
 de5d92587a15	holdout	gutenberg	pg135#p12950
 560846ac8777	holdout	gutenberg	pg917#p3527
 613dc18c1933	holdout	gutenberg	pg730#p2240
-99e0ae42a4a6	holdout	gutenberg	pg164#p1804
 cda5dbc93d71	holdout	gutenberg	pg45#p1585
 e626e03e0bbc	holdout	gutenberg	pg821#p1120
 f01aae69f122	holdout	gutenberg	pg700#p2860
@@ -20479,7 +20431,6 @@ ff3853b2f072	holdout	llm-corpus	speech-batch6.tsv
 2c0602f59313	holdout	gutenberg	pg345#2c0602f59313
 9b15262086d3	holdout	gutenberg	pg108#9b15262086d3
 aad3ded9fd33	holdout	gutenberg	pg883#aad3ded9fd33
-cf6ec87ea6e0	holdout	gutenberg	pg2226#cf6ec87ea6e0
 d6eadf10ec04	holdout	gutenberg	pg2186#d6eadf10ec04
 e637011d2c6d	holdout	gutenberg	pg1056#e637011d2c6d
 ad44882d6c03	holdout	gutenberg	pg155#ad44882d6c03
@@ -20516,9 +20467,7 @@ a4f7c7df5444	holdout	gutenberg	pg1400#a4f7c7df5444
 594f5ea13e6a	holdout	gutenberg	pg1260#594f5ea13e6a
 2c5bdc4d2f17	holdout	tatoeba-cc0	7990173
 a0c52f7417b4	holdout	gutenberg	pg2226#a0c52f7417b4
-6096af51b433	holdout	gutenberg	pg135#6096af51b433
 8b46506701a5	holdout	gutenberg	pg1056#8b46506701a5
-3bc5d459fde2	holdout	tatoeba-cc0	12101288
 fac5fc571d7c	holdout	gutenberg	pg974#fac5fc571d7c
 0d7d2b87fba4	holdout	llm-corpus	speech-batch6.tsv
 2f5a06167b7d	holdout	llm-corpus	speech-batch6.tsv
@@ -20730,10 +20679,8 @@ de8139aa6586	holdout	gutenberg	pg1257#p3669
 f0e2588e4244	holdout	tatoeba-cc0	12777658
 85d5c49d133d	holdout	llm-corpus	seed-34.tsv
 b90157fe895d	holdout	llm-corpus	seed-34.tsv
-da4160560123	holdout	gutenberg	pg135#p7685
 09baaf0d8987	holdout	llm-corpus	seed-34.tsv
 75ce93e9fd2c	holdout	llm-corpus	seed-34.tsv
-80cca8d9927b	holdout	gutenberg	pg36#p680
 e64726642c89	holdout	gutenberg	pg580#p75
 3e5160c8820d	holdout	llm-corpus	seed-34.tsv
 0a26c29bb469	holdout	llm-corpus	seed-34.tsv
@@ -20775,7 +20722,6 @@ a87b3e82f812	holdout	tatoeba-cc0	11822323
 d168b4d5c9a9	holdout	gutenberg	pg583#d168b4d5c9a9
 7ef89d59ceb6	holdout	authored	new-authored-1
 5d5a20dad262	holdout	authored	new-authored-1
-6d7afe4eaee9	holdout	gutenberg	pg76#p116
 81fbedfefa18	holdout	authored	new-authored-1
 b982fdab1fb5	holdout	tatoeba-cc0	11167120
 c7c956d927bf	holdout	gutenberg	pg514#p1296
@@ -20910,16 +20856,13 @@ f2747e6ceeab	holdout	gutenberg	pg164#p105
 03516ca17eb8	holdout	gutenberg	pg974#p127
 8f59ec5b9e5f	holdout	gutenberg	pg345#p448
 97588f5670de	holdout	gutenberg	pg1023#p784
-b15fef3695fa	holdout	gutenberg	pg834#p374
 bc81e5321839	holdout	gutenberg	pg64317#p1498
-be08085896ab	holdout	tatoeba-cc0	13425223
 ed64a57ead5c	holdout	tatoeba-cc0	11855169
 5645760759ae	holdout	gutenberg	pg883#5645760759ae
 98fae6d1d269	holdout	gutenberg	pg155#98fae6d1d269
 9c3dbd227985	holdout	gutenberg	pg963#9c3dbd227985
 36a7a6991a48	holdout	gutenberg	pg2186#36a7a6991a48
 63af5bc3fe6f	holdout	gutenberg	pg107#63af5bc3fe6f
-66085f5228e8	holdout	tatoeba-cc0	10018169
 ee492944eb5e	holdout	gutenberg	pg580#ee492944eb5e
 6da149ccd9d2	holdout	gutenberg	pg1056#6da149ccd9d2
 5438e1cba0b6	holdout	gutenberg	pg1056#5438e1cba0b6
@@ -21030,13 +20973,11 @@ f28608322182	holdout	llm-corpus	speech-batch6.tsv
 29fd48824a20	holdout	llm-corpus	speech-batch6.tsv
 d7ff01250953	holdout	llm-corpus	speech-batch6.tsv
 b022ca682b16	holdout	tatoeba-cc0	11746118
-b43e57092106	holdout	tatoeba-cc0	11622287
 c0436b20f0a9	holdout	gutenberg	pg421#c0436b20f0a9
 f8a6324004c7	holdout	gutenberg	pg135#f8a6324004c7
 fea219b49d80	holdout	gutenberg	pg3825#fea219b49d80
 0262bc79f737	holdout	gutenberg	pg120#0262bc79f737
 59fd8441ddbe	holdout	gutenberg	pg16#59fd8441ddbe
-22febdddb426	holdout	gutenberg	pg1260#22febdddb426
 a14590f15e26	holdout	gutenberg	pg155#a14590f15e26
 c56692d1c511	holdout	gutenberg	pg910#c56692d1c511
 e0b48ee70787	holdout	gutenberg	pg940#e0b48ee70787
@@ -22210,7 +22151,6 @@ e91eeeaee858	holdout	llm-corpus	speech-batch7.tsv
 375c240e10bf	holdout	tatoeba-cc0	9992916
 cb1ed86e3c1d	holdout	tatoeba-cc0	12764806
 4a5a42cecef9	holdout	tatoeba-cc0	12130843
-c72202d80c3a	holdout	gutenberg	pg1400#c72202d80c3a
 27692f10f887	holdout	gutenberg	pg2226#27692f10f887
 eb9635b86aa6	holdout	gutenberg	pg4300#eb9635b86aa6
 4a6f3d3976b0	holdout	gutenberg	pg580#4a6f3d3976b0
@@ -22240,16 +22180,13 @@ eaa804898cbd	holdout	authored	new-authored-1
 f29a901d4c7f	holdout	authored	new-authored-1
 fa0a329d8a4e	holdout	authored	new-authored-1
 fb201dceae1e	holdout	authored	new-authored-1
-6e857a101cfd	holdout	gutenberg	pg155#p225
 b1ab2ef4562d	holdout	tatoeba-cc0	552686
 e756931062c0	holdout	gutenberg	pg84#p95
 5777d8eaac3e	holdout	gutenberg	pg3825#p1101
 9579a580ed85	holdout	gutenberg	pg583#p4107
 f573858f472f	holdout	tatoeba-cc0	8037783
 319a575e9f5d	holdout	gutenberg	pg974#319a575e9f5d
-735bc01f84f8	holdout	gutenberg	pg1056#735bc01f84f8
 cb1562823078	holdout	gutenberg	pg16#cb1562823078
-82a044cf5035	holdout	tatoeba-cc0	12142115
 1cd3f4ee49a9	holdout	tatoeba-cc0	11006426
 adc31a805dfc	holdout	gutenberg	pg2186#adc31a805dfc
 cc04c6bb2d37	holdout	tatoeba-cc0	9286062
@@ -22339,9 +22276,6 @@ f74897ed2693	holdout	gutenberg	pg135#f74897ed2693
 bd9ced516963	holdout	gutenberg	pg84#bd9ced516963
 00172e728468	holdout	gutenberg	pg1056#00172e728468
 468450a4e3e4	holdout	gutenberg	pg345#468450a4e3e4
-d51703726c8e	holdout	gutenberg	pg2186#d51703726c8e
-e1c87c904af2	holdout	tatoeba-cc0	11902614
-70fd51a7d680	holdout	gutenberg	pg421#70fd51a7d680
 1347e54cf416	holdout	gutenberg	pg883#1347e54cf416
 60e4f89f4b6a	holdout	gutenberg	pg2186#60e4f89f4b6a
 b93564be1df1	holdout	gutenberg	pg421#b93564be1df1
@@ -22375,7 +22309,6 @@ b1ebf7dd37d5	holdout	gutenberg	pg883#b1ebf7dd37d5
 1b0fbc5eb408	holdout	gutenberg	pg345#1b0fbc5eb408
 405f09de73de	holdout	gutenberg	pg910#405f09de73de
 ae27e4c47c25	holdout	gutenberg	pg244#ae27e4c47c25
-545c58e552bb	holdout	tatoeba-cc0	12845947
 08bdc55a658a	holdout	gutenberg	pg583#08bdc55a658a
 5111b0cb7bba	holdout	gutenberg	pg161#5111b0cb7bba
 5757b5a17843	holdout	gutenberg	pg155#5757b5a17843
@@ -22384,7 +22317,6 @@ b9fcb3184ed5	holdout	gutenberg	pg1400#b9fcb3184ed5
 04a71bd37a67	holdout	tatoeba-cc0	12009373
 836a9896d0fa	holdout	gutenberg	pg36#836a9896d0fa
 7159f04726be	holdout	gutenberg	pg883#7159f04726be
-21b662ee38d9	holdout	gutenberg	pg883#21b662ee38d9
 dc086a432de1	holdout	gutenberg	pg1400#dc086a432de1
 71b64e7a7a83	holdout	tatoeba-cc0	12206483
 cb2f6b7b1084	holdout	gutenberg	pg2600#cb2f6b7b1084
@@ -22398,7 +22330,6 @@ c28a13483267	holdout	gutenberg	pg135#c28a13483267
 5423ec9cd89e	holdout	gutenberg	pg1260#5423ec9cd89e
 4192ca0b4517	holdout	gutenberg	pg421#4192ca0b4517
 8cf47e70f7a7	holdout	gutenberg	pg84#8cf47e70f7a7
-10c8fc9d764d	holdout	gutenberg	pg174#10c8fc9d764d
 44f9ad141800	holdout	gutenberg	pg6688#44f9ad141800
 8525e6f79a31	holdout	gutenberg	pg4300#8525e6f79a31
 b293b9ff9956	holdout	gutenberg	pg963#b293b9ff9956
@@ -22593,7 +22524,6 @@ b7593d906aca	holdout	gutenberg	pg289#p383
 511a7a1b9d9f	holdout	gutenberg	pg45#p193
 1e350e51696f	holdout	gutenberg	pg107#1e350e51696f
 7a614576741a	holdout	gutenberg	pg16#7a614576741a
-07aafe6ac087	holdout	gutenberg	pg2701#07aafe6ac087
 d3893c29470c	holdout	tatoeba-cc0	10243918
 2b753fc8735f	holdout	gutenberg	pg16#2b753fc8735f
 589acaa93ab4	holdout	gutenberg	pg122#589acaa93ab4
@@ -22755,7 +22685,6 @@ b4189d24acd2	holdout	gutenberg	pg40100#c260255049b5
 a2dc5526a875	holdout	gutenberg	pg421#a2dc5526a875
 23968133f7b5	holdout	tatoeba-cc0	11266434
 7d229e50ce01	holdout	tatoeba-cc0	10541660
-cf57f2241f45	holdout	tatoeba-cc0	11752581
 78230df1bc6f	holdout	gutenberg	pg107#78230df1bc6f
 d6b01a4d0a1c	holdout	tatoeba-cc0	11987720
 5fc54296531e	holdout	gutenberg	pg910#5fc54296531e
@@ -22770,7 +22699,6 @@ ba855c1aa29c	holdout	gutenberg	pg108#ba855c1aa29c
 7bf564642658	holdout	gutenberg	pg964#7bf564642658
 c0a9ed288f89	holdout	tatoeba-cc0	11711062
 c10fc80206ea	holdout	gutenberg	pg120#c10fc80206ea
-0e30f0156987	holdout	gutenberg	pg883#0e30f0156987
 27d372e0a174	holdout	tatoeba-cc0	12430028
 a4e98a9183b4	holdout	tatoeba-cc0	12056966
 496002de631d	holdout	gutenberg	pg2554#496002de631d
@@ -22781,7 +22709,6 @@ a4e98a9183b4	holdout	tatoeba-cc0	12056966
 661af97c1f13	holdout	gutenberg	pg1056#661af97c1f13
 731a8caede7d	holdout	gutenberg	pg1260#731a8caede7d
 89cdb8e63d02	holdout	gutenberg	pg4300#89cdb8e63d02
-c50f23f2358b	holdout	gutenberg	pg963#c50f23f2358b
 c72733f4676d	holdout	gutenberg	pg883#c72733f4676d
 1499700ed5a2	holdout	tatoeba-cc0	12776754
 582c7120f3c7	holdout	tatoeba-cc0	11266547
@@ -22998,11 +22925,7 @@ bdf440a1011d	holdout	gutenberg	pg84#p260
 96267a6be6e1	holdout	gutenberg	pg1399#p6249
 bcb82fc62538	holdout	gutenberg	pg289#p553
 e53ce914f1a0	holdout	gutenberg	pg821#p3489
-0fd76b000550	holdout	tatoeba-cc0	12765011
-557f43eb06fc	holdout	gutenberg	pg1023#p5281
-a1a8f28559c0	holdout	gutenberg	pg219#p61
 aa99ee16a74d	holdout	gutenberg	pg110#p872
-dc253d60dc80	holdout	gutenberg	pg2554#p1902
 ed081d5019d6	holdout	tatoeba-cc0	11085408
 feb941e35017	holdout	tatoeba-cc0	10930742
 360d5ba95bd2	holdout	gutenberg	pg3825#360d5ba95bd2
@@ -23162,7 +23085,6 @@ dddd0f893d4b	holdout	gutenberg	pg4300#dddd0f893d4b
 8da9e17f4a40	holdout	authored	new-authored-1
 905b4bca4167	holdout	authored	new-authored-1
 f6efcc3915f2	holdout	authored	new-authored-1
-52fb39a4711c	holdout	gutenberg	pg700#p298
 9f66f4d16797	holdout	gutenberg	pg174#p728
 e814966912df	holdout	gutenberg	pg583#p3859
 f8e4a538401e	holdout	gutenberg	pg244#p164
@@ -23174,7 +23096,6 @@ f8e4a538401e	holdout	gutenberg	pg244#p164
 9cfad1504014	holdout	authored	new-authored-1
 ad6fb3553244	holdout	authored	new-authored-1
 c389ab54e695	holdout	authored	new-authored-1
-4cc50925f840	holdout	gutenberg	pg36#4cc50925f840
 5f9f47bf26d1	holdout	gutenberg	pg108#5f9f47bf26d1
 6471238796ed	holdout	llm-corpus	speech-batch8.tsv
 13d8a350552b	holdout	llm-corpus	speech-batch8.tsv
@@ -23653,8 +23574,6 @@ ae6b19bb51aa	holdout	llm-corpus	speech-batch8.tsv
 cef7edae6253	holdout	llm-corpus	speech-batch8.tsv
 1d98214f2b51	holdout	llm-corpus	speech-batch8.tsv
 2e101d3023ca	holdout	llm-corpus	speech-batch8.tsv
-22426ef9fcf0	holdout	gutenberg	pg135#p764
-6ec105897a7e	holdout	gutenberg	pg821#p2551
 27ae43bd6f43	holdout	tatoeba-cc0	11896672
 3a355b6e13dc	holdout	llm-corpus	speech-batch8.tsv
 3a3cb07a9f48	holdout	llm-corpus	speech-batch8.tsv
@@ -23843,7 +23762,6 @@ fb392a8fb906	holdout	gutenberg	pg16#fb392a8fb906
 538a1cd360b0	holdout	gutenberg	pg2554#538a1cd360b0
 73c671f941da	holdout	gutenberg	pg768#73c671f941da
 ac6772e75036	holdout	gutenberg	pg974#ac6772e75036
-b39b637266ae	holdout	gutenberg	pg963#b39b637266ae
 cfae181c5374	holdout	gutenberg	pg122#p3362
 0a1eb4825cfc	holdout	gutenberg	pg834#p1310
 14e07866a204	holdout	tatoeba-cc0	11994831
@@ -23936,7 +23854,6 @@ a4780e5eb45e	holdout	llm-corpus	seed-34.tsv
 912511b3d544	holdout	llm-corpus	seed-34.tsv
 fd4829a66693	holdout	llm-corpus	seed-34.tsv
 6ceb95561627	holdout	gutenberg	pg2701#6ceb95561627
-949254109476	holdout	gutenberg	pg174#949254109476
 a5a92a8fa83e	holdout	gutenberg	pg219#a5a92a8fa83e
 699c9b09464d	holdout	tatoeba-cc0	12430385
 0e175ab1cc22	holdout	gutenberg	pg2554#0e175ab1cc22

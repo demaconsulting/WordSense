@@ -342,8 +342,14 @@ The thresholds of each lemma were measured when the weights were trained: first 
 training sentences, for a precision target of 95 percent at each level, and then moved up on real text. Real held-out
 sentences of documents that are kept apart from the test documents (the calibration split) are scored, and the thresholds
 are raised, with one shift for all lemmas that have few such sentences and a threshold of their own for a lemma that has
-many, until the answers on them reach the target (a lemma has a group threshold only when it has groups; a level whose
-target was never reached is never answered for that lemma); they decide the level of an answer.
+many, for a real-text calibration target of 0.97 (two points above the 95 percent, because the whole pipeline is about
+two points less precise than the classifier alone). The shift is the lowest one that reaches the target while at least 30
+percent of the calibration answers are kept; when no shift reaches the target on that many answers, which is the case on
+the current corpus, the largest shift that keeps them is used and the builder reports the target as not reached; the
+lemma-level precision on the calibration sentences then stays below the target, at about 94 to 95 percent (see the chapter
+"Accuracy and Model Choice"). A lemma has
+a group threshold only when it has groups, and a level whose cross-validation target was never reached is never answered
+for that lemma; the thresholds decide the level of an answer.
 The `Confidence` that the result carries is the probability of the answer at that level:
 
 <!-- markdownlint-disable MD013 -->

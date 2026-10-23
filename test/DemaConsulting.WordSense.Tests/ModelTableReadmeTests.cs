@@ -10,9 +10,21 @@ namespace DemaConsulting.WordSense.Tests;
 /// </remarks>
 public class ModelTableReadmeTests
 {
+    /// <summary>
+    ///     The marker line that starts the model table in the README and in the generated file.
+    /// </summary>
     private const string Begin = "<!-- model-table:begin -->";
+
+    /// <summary>
+    ///     The marker line that ends the model table in the README and in the generated file.
+    /// </summary>
     private const string End = "<!-- model-table:end -->";
 
+    /// <summary>
+    ///     Finds the repository root by walking up from the test output directory to the solution file.
+    /// </summary>
+    /// <returns>The repository root.</returns>
+    /// <exception cref="DirectoryNotFoundException">Thrown when no solution file is found above the test output.</exception>
     private static string FindRepositoryRoot()
     {
         for (var dir = new DirectoryInfo(AppContext.BaseDirectory); dir is not null; dir = dir.Parent)
@@ -26,6 +38,12 @@ public class ModelTableReadmeTests
         throw new DirectoryNotFoundException("The repository root was not found.");
     }
 
+    /// <summary>
+    ///     Returns the non-blank lines between the table markers of a document, without trailing white space.
+    /// </summary>
+    /// <param name="text">The document text.</param>
+    /// <param name="source">The name of the document, for the failure message.</param>
+    /// <returns>The lines of the table.</returns>
     private static string[] TableLines(string text, string source)
     {
         var from = text.IndexOf(Begin, StringComparison.Ordinal);
@@ -46,13 +64,18 @@ public class ModelTableReadmeTests
     [Fact]
     public async Task ModelTable_Readme_MatchesGeneratedFile()
     {
+        // Arrange: read the README and the generated table file
         var root = FindRepositoryRoot();
         var token = TestContext.Current.CancellationToken;
         var readme = await File.ReadAllTextAsync(Path.Join(root, "README.md"), token);
         var generated = await File.ReadAllTextAsync(Path.Join(root, "docs", "user_guide", "model-table.md"), token);
 
+        // Act: take the table lines of both documents
         var expected = TableLines(generated, "docs/user_guide/model-table.md");
-        Assert.Equal(expected, TableLines(readme, "README.md"));
+        var documented = TableLines(readme, "README.md");
+
+        // Assert: the README table equals the generated table
+        Assert.Equal(expected, documented);
     }
 
     /// <summary>
@@ -62,11 +85,14 @@ public class ModelTableReadmeTests
     [Fact]
     public async Task ModelTable_GeneratedFile_HasRowForEachModel()
     {
+        // Arrange: read the generated table file
         var token = TestContext.Current.CancellationToken;
         var generated = await File.ReadAllTextAsync(Path.Join(FindRepositoryRoot(), "docs", "user_guide", "model-table.md"), token);
 
+        // Act: take the table lines
         var lines = TableLines(generated, "docs/user_guide/model-table.md");
 
+        // Assert: header, separator and one row per model
         Assert.Equal(5, lines.Length);
         Assert.Contains(lines, l => l.StartsWith("| Basic |", StringComparison.Ordinal));
         Assert.Contains(lines, l => l.StartsWith("| MiniLM |", StringComparison.Ordinal));

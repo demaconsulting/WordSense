@@ -214,6 +214,46 @@ sections:
               - WordSenseBuilder_RealCalibrator_Apply_GroupThreshold_MovesOnlyWithEnoughAnswers
               - WordSenseBuilder_ModelTrainer_TrainDataAsync_CalibrationRows_MoveTheThresholds
 
+          - id: WordSense-WordSenseBuilder-CalibrationShift
+            title: >-
+              The one pooled shift of the real-text calibration shall be chosen as follows, for the fine level and, with
+              its own answers, for the group level. The pooled answers are those of the calibration rows of the lemmas
+              that have a finite first threshold and no threshold of their own, and an answer is usable when its
+              distance (its margin minus the first threshold of its lemma) is finite and not negative; a shift keeps
+              the usable answers whose distance is at least the shift, and answers of equal distance are kept or
+              dropped together.
+              The shift shall be the lowest non-negative shift whose kept answers reach the precision target while at
+              least max(30, ceil(0.30 × n)) of the n usable answers are kept. When no shift reaches the target on that
+              many answers, the shift shall be the largest one that keeps that many answers, and the training summary
+              shall say that the target was not reached (for the fine level, and for the group level when it is
+              verified). With fewer than 30 usable answers the shift shall be 0 and the target shall be reported as not
+              reached, and a group level with fewer than 30 usable answers shall keep its thresholds and be reported as
+              unverified. The default calibration target of a weights run shall be 0.97 (the option
+              `--calibration-target` changes it), two points above the 95 percent that the cross-validation of the first
+              thresholds and the real test text aim at.
+            tags: [unit]
+            justification: |
+              The precision of the answers in a thin tail of the distances rests on a few dozen rows. A rule that takes
+              the first crossing of the target there lets one wrong row move the shift by several units: on the
+              calibration rows of the BertBaseCased model the shift was 8.10 and fell to 4.85 when the eight most
+              confident wrong rows were removed. A minimum share of 30 percent of the usable answers (so that six rows
+              move the precision of the kept answers by about two points at most) makes
+              the shift stable (4.66 to 5.00 over 200 bootstrap resamples, and 4.88 to 4.85 when the eight rows are
+              removed), and a documented fallback makes the result defined when the target is out of reach, as it is on
+              the current corpus (the precision of the pooled answers stays near 95 percent). The target 0.97 is two
+              points above the 95 percent aimed at because the precision of the whole pipeline is about two points below
+              the lemma-level precision of the classifier.
+            tests:
+              - WordSenseBuilder_RealCalibrator_ChooseShift_ConfidentErrorsInTheTail_DoNotMoveTheShift
+              - WordSenseBuilder_RealCalibrator_ChooseShift_TargetNotReachable_KeepsTheMinimumShareAndReportsIt
+              - WordSenseBuilder_RealCalibrator_ChooseShift_TargetClearlyReachable_ReachesItOnEnoughAnswers
+              - WordSenseBuilder_RealCalibrator_ChooseShift_FewPooledAnswers_TheMinimumCountDominatesTheShare
+              - WordSenseBuilder_RealCalibrator_ChooseShift_FewerThanThirtyUsableAnswers_GiveShiftZeroNotReached
+              - WordSenseBuilder_RealCalibrator_ChooseShift_TiesAtTheBoundary_AreKeptTogether
+              - WordSenseBuilder_RealCalibrator_Defaults_ShareThirtyPercentTargetNinetySevenPercent
+              - WordSenseBuilder_RealCalibrator_Apply_TargetNotReachable_ReportsItAndKeepsTheMinimumShare
+              - WordSenseBuilder_RealCalibrator_Apply_GroupAnswersAboveOneHundred_UseTheShareAndReportTargetNotReached
+
           - id: WordSense-WordSenseBuilder-UsagePrior
             title: >-
               The builder shall train the per-sense scores of every lemma so that the sense probabilities of a model

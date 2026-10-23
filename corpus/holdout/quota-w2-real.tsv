@@ -72,19 +72,19 @@ demand	demand#petition	Noun	They accuse the government of marginalizing them pol
 demand	demand#requirement	Noun	Pathological {demand} avoidance is not an official diagnosis, but a profile used by educators to describe those whose main characteristic is to avoid everyday demands and expectations to an extreme extent.
 drag	drag#fluid-resistance	Noun	D is the {drag} load on the antenna in lbs.
 draw	draw#attract	Verb	Floating bait platforms could {draw} invasive carp into favorable locations to make them easier to capture.
-draw	draw#cast-lots	Verb	Some eighty percent of the telephone numbers in the base were {drawn} randomly from public access telephone directory lists.
+draw	draw#select	Verb	Some eighty percent of the telephone numbers in the base were {drawn} randomly from public access telephone directory lists.
 draw	draw#derive	Verb	They are now {drawing} lessons to make sure that rumors and misinformation will never again scuttle a vital health campaign.
 draw	draw#draw-picture	Verb	I made a stencil so it would be easier to {draw}.
 draw	draw#draw-picture	Verb	Sorry, I'm supposed to be practicing {drawing} right now.
 draw	draw#extract	Verb	He {drew} from his pocket a square of cardboard and affixed it to the board with a thumbtack.
 draw	draw#outline	Verb	Tom {drew} a circle on the chalkboard.
 drive	drive#disk-drive	Noun	I need to partition my hard {drive}.
-drive	drive#force	Verb	Again on p. 590, are further regulations that Jews, Lepers, and Swine are to be {driven} out of the city.
-drive	drive#force	Verb	He is keenly aware that the depletion of the Ogallala aquifer could ultimately {drive} his family off the land.
+drive	drive#repel	Verb	Again on p. 590, are further regulations that Jews, Lepers, and Swine are to be {driven} out of the city.
+drive	drive#repel	Verb	He is keenly aware that the depletion of the Ogallala aquifer could ultimately {drive} his family off the land.
 drive	drive#physiological-drive	Noun	I have almost no sex {drive}.
 drive	drive#physiological-drive	Noun	Tom is the only one with no sex {drive}.
 drive	drive#power	Verb	Venturi, the resultant vacuum would be insufficient to {drive} the instrument.
-drive	drive#power	Verb	This motion {drives} a slowly southward flowing deep-ocean current.
+drive	drive#propel	Verb	This motion {drives} a slowly southward flowing deep-ocean current.
 drive	drive#propel	Verb	{Driven} by the wind and ocean currents, these toys continue to wash ashore during the next several years, and some even drifted into the Atlantic Ocean.
 drive	drive#travel-by-car	Verb	We decided to {drive} there on a whim.
 effect	effect#consequence	Noun	The health {effects} of chromium are primarily related to the valence state of the metal at the time of exposure.
@@ -153,8 +153,8 @@ learn	learn#ascertain	Verb	Consider using an online calculator to {learn} how mu
 learn	learn#discover	Verb	I casually {learned} that my namesake was born on the nineteenth of January, 1813.
 learn	learn#discover	Verb	Ralph now {learned} who Bud Wilson was--a cow-puncher who had worked for Jack's father for many years, and had practically brought Jack up on the range.
 list	list#item-list	Noun	Many Ashkenazi Jews were required to pick from a {list} of pre-approved surnames, while others were assigned a surname.
-list	list#name-items	Verb	Be sure to {list} your country of origin.
-list	list#name-items	Verb	Be sure to {list} your country!
+list	list#add-to-list	Verb	Be sure to {list} your country of origin.
+list	list#add-to-list	Verb	Be sure to {list} your country!
 lock	lock#become-rigid	Verb	Inertia reels should {lock} when the webbing is accelerated quickly out of the reel.
 lock	lock#become-rigid	Verb	Automatic locking retractors should {lock} at approximately one-inch increments as the webbing retracts back into the reel.
 measure	measure#amount	Noun	With fresh flesh, fish, or eggs, a {measure} of salt was delivered.
@@ -179,7 +179,7 @@ note	note#mention	Verb	While he {notes} that it takes four years to become a mas
 note	note#mention	Verb	Howard {noted} that environmental factors such as increased salinity and high water can stress phragmites and affect its growth.
 note	note#written-account	Noun	Tom took {notes} at the meeting.
 offer	offer#extend-2	Verb	Bangladesh is a country with a lot to {offer} visitors.
-offer	offer#furnish	Verb	Hair samples {offer} a simple but accurate test as to whether anti-retrovirals are suppressing the virus.
+offer	offer#extend-2	Verb	Hair samples {offer} a simple but accurate test as to whether anti-retrovirals are suppressing the virus.
 offer	offer#market	Verb	The clinically-cool reception area is full of women waiting for their turn to get injected with botox, filler, liposuction, hair transplants, or any other of an array of beauty services {offered} here.
 offer	offer#proffer	Verb	Tom {offered} a Kabyle red wine to his best friend.
 offer	offer#proffer	Verb	We can entice them or {offer} them something very desirable.
@@ -239,7 +239,6 @@ rise	rise#increase	Noun	Beyle is very worried about the {rise} of Neo-Nazism.
 rise	rise#move-up	Verb	If the water is sinking in the North Atlantic Ocean, then it must {rise} somewhere else.
 rise	rise#move-up	Verb	It is estimated that once the water sinks in the North Atlantic Ocean, it takes 1,000-1,200 years before that deep, salty bottom water {rises} back to the upper levels of the ocean again.
 rise	rise#surface	Verb	Every 17 years, billions of insects, known as the cicadas of Brood X, {rise} from the earth.
-roll	roll#wheel	Verb	Do not use oversize or "tundra" tires to determine the static {rolling} radius.
 seal	seal#closure-fastener	Noun	Ensure that the case to cover {seal} is installed so that the battery case/cover does not become distorted.
 seat	seat#seat-furniture	Noun	Placard {seat} tracks as to number of tiedown points permissible per foot of track.
 sense	sense#appreciation	Noun	"Not everyone gets Tom's {sense} of humor." "I get it. I just don't think it's funny."
@@ -272,8 +271,8 @@ treat	treat#provide-care	Verb	But because sleeping sickness can be a lethal illn
 treat	treat#provide-care	Verb	Until now, lupus sufferers have {treated} their varied symptoms--from mental disorders to skin rashes and painful joints--with a combination of drugs, including painkillers, steroids and anti-malarial medicines.
 treat	treat#provide-care	Verb	The Algerian President is being {treated} in Germany while Algerians are dying in the rotten hospitals of Algeria.
 treat	treat#regard	Verb	When homeless and mentally ill people fall victim to violent crimes, it often isn't {treated} as a violent crime.
-type	type#case	Noun	Don't take this the wrong way, but you're just not my {type}.
-type	type#case	Noun	"I didn't think Tom was your type." "I have more than one {type}."
+type	type#form	Noun	Don't take this the wrong way, but you're just not my {type}.
+type	type#form	Noun	"I didn't think Tom was your type." "I have more than one {type}."
 value	value#economic-value	Noun	The estimated production value of gold accounted for 11% of the total estimated {value} of U.S. nonfuel mineral commodity production.
 value	value#economic-value	Noun	The principal contributors to the total {value} of metal mine production in 2024 were gold, 35%; copper, 30%; iron ore, 16%; zinc, 7%; and molybdenum, 5%.
 value	value#numerical-value	Noun	On the 500 mb constant pressure chart, the vorticity {values} are whole numbers, with the 10-5/sec. omitted.
@@ -284,7 +283,7 @@ value	value#worth	Noun	I question the intrinsic {value} of nihilism.
 view	view#aspect	Noun	Our air quality is affected by pollutants from outside the park, sometimes impacting the {views} from the many scenic vistas along Skyline Drive.
 view	view#aspect	Noun	The {view} from the mountain top was breathtaking.
 view	view#aspect	Noun	The mountain was challenging, but the {view} made it worth it.
-view	view#watch	Verb	What: Reporters and the public are invited to {view} the aircraft and equipment that will survey the region over and surrounding Delaware Bay.
+view	view#study	Verb	What: Reporters and the public are invited to {view} the aircraft and equipment that will survey the region over and surrounding Delaware Bay.
 visit	visit#assail	Verb	The former is the most loathsome and revolting of the many awful and terrible scourges, with which the Almighty, in his wisdom, has seen fit, from time to time, to {visit} mankind.
 visit	visit#call	Verb	I {visited} Tom in the psych ward.
 visit	visit#inspect	Verb	Representatives from Sekigahara have {visited} us here at Gettysburg, and representatives of our park visited Sekigahara for the World Battlefield Summit.

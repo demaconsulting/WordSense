@@ -28,8 +28,8 @@ word that has several. The table counts the trained lemmas and senses of each pa
 | Part of speech | Lemmas | Senses |
 | -------------- | -----: | -----: |
 | `Noun`         |    724 |   3024 |
-| `Verb`         |    739 |   3339 |
-| `Adjective`    |    188 |    482 |
+| `Verb`         |    740 |   3341 |
+| `Adjective`    |    190 |    487 |
 | `Adverb`       |     35 |    103 |
 | `Preposition`  |      3 |      3 |
 | `Conjunction`  |      2 |      2 |
@@ -57,12 +57,12 @@ word: it has no trained classifier, a word with one part of speech is answered d
 with several parts of speech returns them as candidates, most frequent first (the encoder models answer it with the
 first one; the basic model chooses by tagger and context). A capitalized word is lower-cased before it is looked up.
 
-The lemmas listed below are the 826 trained lemmas (the lemmas that have anchor sentences), with 6,969 senses (146 of
+The lemmas listed below are the 829 trained lemmas (the lemmas that have anchor sentences), with 6,976 senses (146 of
 them project senses) and 140 groups.
 
 ## Supported Lemmas
 
-The library supports 826 lemmas with 6,969 senses in total, listed alphabetically. Each lemma lists its parts of speech
+The library supports 829 lemmas with 6,976 senses in total, listed alphabetically. Each lemma lists its parts of speech
 and the forms it recognizes. Under it, every sense gives its id and part of speech, its group, its Open English WordNet
 sense key (a project sense has none) and its gloss, in inventory order (the order of Open English WordNet within a part
 of speech, project senses last).
@@ -5555,6 +5555,13 @@ of speech, project senses last).
   - `mark#assign-grade` (verb); group: none; key: `mark%2:31:00::`; gloss: assign a grade or rank to, according to one's
     evaluation
   - `mark#punctuate` (verb); group: none; key: `mark%2:30:08::`; gloss: insert punctuation marks into
+- **marked**; parts of speech: adjective; no other forms
+  - `marked#pronounced` (adjective); group: none; key: `marked%5:00:00:noticeable:00`; gloss: strongly marked; easily
+    noticeable
+  - `marked#adjective` (adjective); group: none; key: `marked%5:00:00:conspicuous:00`; gloss: singled out for notice or
+    especially for a dire fate
+  - `marked#adjective-2` (adjective); group: none; key: `marked%3:00:00::`; gloss: having or as if having an identifying
+    mark or a mark as specified; often used in combination
 - **master**; parts of speech: noun, verb, adjective; forms: mastered, mastering, masterring, masters
   - `master#virtuoso` (noun); group: none; key: `master%1:18:00::`; gloss: an artist of consummate skill
   - `master#authority` (noun); group: none; key: `master%1:18:04::`; gloss: a person who has general authority over
@@ -9948,6 +9955,11 @@ of speech, project senses last).
   - `suit#conform` (verb); group: `suit#group:agreeable`; key: `suit%2:42:02::`; gloss: be agreeable or acceptable
   - `suit#befit` (verb); group: none; key: `suit%2:42:00::`; gloss: accord or comport with
   - `suit#flatter` (verb); group: none; key: `suit%2:42:01::`; gloss: enhance the appearance of
+- **suited**; parts of speech: adjective; no other forms
+  - `suited#appropriate` (adjective); group: none; key: `suited%5:00:00:fit:02`; gloss: meant or adapted for an occasion
+    or use
+  - `suited#adjective` (adjective); group: none; key: `suited%5:00:00:clothed:00`; gloss: outfitted or supplied with
+    clothing
 - **supplement**; parts of speech: noun, verb; forms: supplemented, supplementing, supplements
   - `supplement#addendum` (noun); group: none; key: `supplement%1:10:00::`; gloss: textual matter that is added onto a
     publication; usually at the end
@@ -10723,6 +10735,9 @@ of speech, project senses last).
   - `underlay#put-under` (verb); group: none; key: `underlay%2:35:00::`; gloss: put (something) under or beneath
   - `underlay#support` (verb); group: none; key: `underlay%2:34:00::`; gloss: provide with a base, support, lining, or
     backing
+- **underlie**; parts of speech: verb; forms: underlain, underlay, underlies, underlying
+  - `underlie#be` (verb); group: none; key: `underlie%2:42:00::`; gloss: be or form the base for
+  - `underlie#lie` (verb); group: none; key: `underlie%2:42:01::`; gloss: lie underneath
 - **underscore**; parts of speech: noun, verb; forms: underscored, underscores, underscoring
   - `underscore#underline-mark` (noun); group: none; key: `underscore%1:10:00::`; gloss: a line drawn underneath
     (especially under written matter)

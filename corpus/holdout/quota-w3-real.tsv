@@ -84,11 +84,11 @@ gain	gain#acquire	Verb	A major U.S. electronic retailer says it wants to help im
 gain	gain#derive	Verb	The Nairobi-based fashion designer, who has successfully carved herself a niche in Kenya's fashion industry, said many small business owners are happy to {gain} access to "high quality products at affordable prices."
 gain	gain#grow	Verb	The National Map Corps, a USGS nationwide, volunteer-based mapping project to verify or update structures data, continues to {gain} popularity.
 handle	handle#manage	Verb	These items are immediately referred to, and promptly {handled} by, the appropriate FAA offices.
-handle	handle#manage	Verb	Can the economy {handle} another downturn?
+handle	handle#manage-effectively	Verb	Can the economy {handle} another downturn?
 handle	handle#palm	Verb	You can {handle} hedgehogs when their quills are down, even pet them.
 influence	influence#determine	Verb	The type(s) and amount of insurance you should carry on your aircraft are {influenced} by several factors, and you should discuss these decisions with an insurance agent familiar with providing aviation insurance policies.
 influence	influence#power	Noun	Government videos depict images of past Ottoman Empire glories, and promise to extend Turkish {influence} across the Mediterranean and beyond.
-inspect	inspect#examine	Verb	{Inspect} the battery for proper placement of thermostats, heaters, thermistors or other sensor elements.
+inspect	inspect#verify-accuracy	Verb	{Inspect} the battery for proper placement of thermostats, heaters, thermistors or other sensor elements.
 inspect	inspect#examine	Verb	{Inspect} wiring and receptacle for insulation damage, corrosion, and crimping or other defects.
 inspect	inspect#examine	Verb	{Inspect} the shipping container as well as the battery.
 inspect	inspect#examine	Verb	Some aircraft need to be {inspected} at least once every 12 calendar months, while inspection is required for others after each 100 hours of operation.
@@ -148,16 +148,16 @@ remove	remove#take-away	Verb	Removed right wing from aircraft and {removed} skin
 remove	remove#take-away	Verb	They are found in many kinds of exfoliants. In skin and beauty products, the microbeads help to {remove} dead skin cells and make skin smoother.
 roll	roll#bun	Noun	My signature dish is sweet potato rosemary dinner {rolls}.
 roll	roll#bun	Noun	When the {rolls} are on the table, people know that I made them.
-roll	roll#shape	Verb	It was a sailor, bare-armed and bare-legged, in blue singlet and canvas trousers {rolled} to the knee.
+roll	roll#coil-around	Verb	It was a sailor, bare-armed and bare-legged, in blue singlet and canvas trousers {rolled} to the knee.
 rule	rule#dominate	Verb	For 135 million years, dinosaurs {ruled} the Earth as the dominant terrestrial vertebrates, from about 200 million years ago until the cataclysm that wiped them out 66 million years ago.
 rule	rule#game-rules	Noun	"I just quit playing The Game. I don't need to follow its {rules} anymore." "You're playing The Game. The rules say so." "I don't accept those rules."
 rule	rule#legal-authority	Noun	Jews and Samaritans revolted against Roman {rule} multiple times.
 rule	rule#math-procedure	Noun	Tom doesn't know how to apply L'Hôpital's {rule} to find limits.
 rule	rule#natural-law	Noun	Is the universe bound by {rules} we cannot see?
 rule	rule#prescript	Noun	Safety {rules} for derechos are the same for severe thunderstorms in general.
-rule	rule#regulation	Noun	The {rules} are designed to promote safe aviation while protecting pilots, passengers, and the general public from unnecessary risk.
-rule	rule#regulation	Noun	ADs are the "final {rule}" and compliance is required unless specific exemption is granted.
-rule	rule#regulation	Noun	Other companies have complied with the {rules}, including YouTube, TikTok, Dailymotion and VKontakte.
+rule	rule#prescript	Noun	The {rules} are designed to promote safe aviation while protecting pilots, passengers, and the general public from unnecessary risk.
+rule	rule#prescript	Noun	ADs are the "final {rule}" and compliance is required unless specific exemption is granted.
+rule	rule#prescript	Noun	Other companies have complied with the {rules}, including YouTube, TikTok, Dailymotion and VKontakte.
 rule	rule#religious-rule	Noun	They were presumably under the {rule} of S. Austin or Augustine.
 run	run#complete	Verb	Schools and office building managers should regularly {run} well-coordinated drills.
 run	run#flee	Verb	Some {ran} away and created new lives.
@@ -167,8 +167,8 @@ run	run#move-fast	Verb	As usual I {run} down the steps and gallop to class.
 run	run#move-fast	Verb	I saw him {run} after the dog.
 run	run#seek-office	Verb	You may have heard of people who {run} for a public office.
 seal	seal#settle-decision	Verb	As soon as a man became a prey to the disease, his doom on earth was finally and irrevocably {sealed}.
-shout	shout#speak-loudly	Verb	What nerve to have {shouted}: "Silence!" answered him his brother.
-shout	shout#speak-loudly	Verb	Tom lit the flag on fire and {shouted}, "Death to America!"
+shout	shout#exclaim	Verb	What nerve to have {shouted}: "Silence!" answered him his brother.
+shout	shout#exclaim	Verb	Tom lit the flag on fire and {shouted}, "Death to America!"
 side	side#face	Noun	The binding is white buckram, with dark green cloth {sides} richly gilt.
 sign	sign#mark	Noun	This usage isn't a {sign} of being uneducated but rather a remnant of an older form of the language.
 sign	sign#message-sign	Noun	They put up a {sign} to deter trespassers.
@@ -190,7 +190,7 @@ support	support#bear-weight	Verb	In all cases, electrical continuity from ground
 support	support#bear-weight	Verb	REINFORCEMENT OF SUPPORTING STRUCTURE. a. Attach equipment to the supporting structure of the aircraft so that its {supported} load will be transmitted to aircraft structural members.
 support	support#bear-weight	Verb	Route and {support} electrical wire bundles and mechanical cables in a manner that will allow normal motion of equipmen t without strain or damage to the wire bundles or mechanical cables. i. Radio Bonding.
 support	support#bear-weight	Verb	When cables are used to {support} the quick-release device, make sure the cables are not twisted or allowed to twist in the direction to un-lay the cable.
-support	support#bearing-weight	Noun	TYPICAL BAGGAGE COMPARTMENT MOUNTING .032 aluminum FastenersHinge Typical example of shroud Bracket Bulkhead WasherSelf-locking Nut Doubler Cylinder {support} block -- Cut to fit contour of cylinder base.
+support	support#support-device	Noun	TYPICAL BAGGAGE COMPARTMENT MOUNTING .032 aluminum FastenersHinge Typical example of shroud Bracket Bulkhead WasherSelf-locking Nut Doubler Cylinder {support} block -- Cut to fit contour of cylinder base.
 support	support#documentation	Noun	In many instances, these innovations are marketed without the {support} of a proper certification process.
 support	support#documentation	Noun	In {support} of this we have but guess-work; of proof, there is none.
 support	support#endorse	Verb	Algerians {support} Palestine not out of humanism, but out of racialism and hatred of the Jew.

@@ -160,10 +160,10 @@ def cmd_select(args):
     senses = world["senses"]
     status = lexindex.quota_status(senses, world["scope"])
     deficit = {r["sense_id"]: (max(0, r["anchor_quota"] - r["anchors"]), max(0, r["holdout_quota"] - r["holdout"]))
-               for r in status}
+               if not args.tier or r["tier"] == args.tier else (0, 0) for r in status}
     blocked = qf.corpus_keys()
     doc_splits = qf.real_documents_by_split() if kind == "real" else {}
-    extra = qf.extra_real_wanted() if kind == "real" else {}
+    extra = qf.extra_real_wanted() if kind == "real" and not args.tier else {}
     if args.tech:
         # the technical senses: extra anchors beyond the quota; the written ones fill what real FAA text did not
         extra = dict(qf.read_tech_targets())
@@ -178,6 +178,8 @@ def cmd_select(args):
                             have[parts[1]] += 1
             extra = {s: max(8, n - have[s]) for s, n in extra.items()}
     labeled = collections.defaultdict(list)
+    vocab = set(world["index"])
+    tech_senses = set(qf.read_tech_targets())
     if kind == "real":
         paths = sorted(glob.glob(os.path.join(qf.WORK, "w*", "labeled.tsv")))
     else:
@@ -190,11 +192,7 @@ def cmd_select(args):
                 if kind == "real":
                     sid, form, tl, sense, conf, doc, family, sentence = parts[:8]
                     pdoc = qf.prov_document(sid, doc, family)
-                    splits = doc_splits.get(pdoc, set())
-                    if qf.is_eval_document(pdoc):
-                        role = "eval" if "anchors" not in splits else None
-                    else:
-                        role = "train" if "holdout" not in splits else None
+                    role = qf.doc_role(pdoc, doc_splits)
                     if role is None:
                         continue
                 else:
@@ -204,6 +202,9 @@ def cmd_select(args):
                 if conf != "high" or sense not in deficit:
                     continue
                 if args.tech and kind == "real" and family != "faa":
+                    continue
+                if family == "faa" and (textutil.pdf_damaged(sentence, vocab)
+                                        or (args.faa_tech_only and sense not in tech_senses)):
                     continue
                 s = senses[sense]
                 if (s["lemma"], s["pos"]) not in world["index"].get(form, ()):
@@ -316,9 +317,13 @@ if __name__ == "__main__":
     sub = ap.add_subparsers(dest="cmd", required=True)
     for name in ("ingest", "select"):
         p = sub.add_parser(name)
-        p.add_argument("wave", type=int)
+        p.add_argument("wave", type=qf.wave_id)
         if name == "select":
+            p.add_argument("--tier", default="", choices=("", "C", "U", "R"),
+                           help="fill only the deficits of the senses of this tier (a tier wave, e.g. 4c)")
             p.add_argument("--kind", choices=("real", "written"), default="real")
+            p.add_argument("--faa-tech-only", action="store_true",
+                           help="FAA sentences only for the technical senses of tech-senses.tsv (general text for the rest)")
             p.add_argument("--tech", action="store_true", help="the technical senses: extra anchors of tech-senses.tsv, real rows from FAA text only")
     a = ap.parse_args()
     {"ingest": cmd_ingest, "select": cmd_select}[a.cmd](a)

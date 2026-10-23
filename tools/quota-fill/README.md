@@ -23,7 +23,7 @@ CC0 export `tools/quota-fill/cache/cc0.tar.bz2` and the FAA PDFs (`tools/quota-f
 | `pool.py build` | Builds the harvest pool from the public-domain documents and the CC0 Tatoeba export |
 | `faa.py extract` | Extracts the text of the accepted FAA handbooks (credited pages dropped) into the pool documents |
 | `curate_new.py export\|apply` | Adds lemmas (labels reviewed by a luna pass) and project senses to `corpus/curation/senses.tsv` |
-| `harvest.py candidates WAVE` | Samples candidate sentences for the lemmas of a wave and writes the labeling batches (`--family`, `--only-lemmas`, `--first-batch` add a supplementary batch) |
+| `harvest.py candidates WAVE` | Samples candidate sentences for the lemmas of a wave and writes the labeling batches (`--family`, `--only-lemmas`, `--first-batch` add a supplementary batch; `--tier C\|U\|R` makes the wave every lemma with a short sense of that tier, named e.g. `4c`; `fill.py select` and `written.py export` take the same `--tier`; `--faa-tech-only` on `harvest.py candidates` and `fill.py select` keeps FAA text to the lemmas and senses of `corpus/curation/tech-senses.tsv`) |
 | `confusion.py WAVE` | Chooses the senses that get extra real anchors from the calibration-split errors |
 | `fill.py ingest WAVE`, `fill.py select WAVE [--kind real\|written]` | Reads the labels, picks the rows that fill the deficits and writes the corpus files |
 | `written.py export\|ingest\|labeled WAVE` | The top-up by writing: writer batches, validation, blind-label batches |
@@ -41,4 +41,8 @@ CC BY-SA text, Universal Dependencies data, news sites, NOS, NASA, the FAA docum
 Parachute Rigger Handbook, the Aviation Weather Handbook, Aerodynamics for Naval Aviators, the MC-4 manual) and the
 Tatoeba CC BY sentences are never used.
 
-Every row written by these scripts is targeted (found or written for one sense or form).
+Every row written by these scripts is targeted (found or written for one sense or form). Every selection skips a
+sentence that is already in the corpus, the suite, the open corpus (any split) or the example sentences of Open English
+WordNet, using the normalization of `check-leakage` (`qf.corpus_keys`). `fill.py select` rewrites the whole
+`quota-w<wave>-*.tsv` files, so never rerun it for a wave that is already in the corpus: the real held-out rows were
+corrected in place after a blind relabeling (166 relabeled, 87 removed), and a rerun would silently undo that.
