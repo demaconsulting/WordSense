@@ -19,6 +19,18 @@ internal sealed class LocalServer : IDisposable
     /// </summary>
     /// <param name="handler">Handles each request; it must complete the response.</param>
     public LocalServer(Func<HttpListenerContext, Task> handler)
+        : this((context, _) => handler(context))
+    {
+    }
+
+    /// <summary>
+    ///     Starts a server on a free loopback port, with a handler that is told when the server stops.
+    /// </summary>
+    /// <param name="handler">
+    ///     Handles each request; it must complete the response. The token is cancelled when the server is disposed, so a
+    ///     handler that simulates a hung source can wait on it and end with the test instead of outliving it.
+    /// </param>
+    public LocalServer(Func<HttpListenerContext, CancellationToken, Task> handler)
     {
         int port;
         var probe = new TcpListener(IPAddress.Loopback, 0);
@@ -58,7 +70,7 @@ internal sealed class LocalServer : IDisposable
                 {
                     try
                     {
-                        await handler(context);
+                        await handler(context, _stop.Token);
                     }
                     catch (Exception ex) when (ex is HttpListenerException or IOException or ObjectDisposedException or OperationCanceledException)
                     {
