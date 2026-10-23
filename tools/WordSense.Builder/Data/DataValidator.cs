@@ -185,9 +185,12 @@ internal sealed partial class DataValidator
         {
             var name = Path.GetFileName(path);
             var stem = Path.GetFileNameWithoutExtension(path);
-            var isTableFile = path.EndsWith(DataLayout.Extension, StringComparison.Ordinal) && tableNames.Contains(stem) && File.Exists(path) && _schema.Table(stem).Partition == PartitionKind.None;
-            var isTableDirectory = Directory.Exists(path) && tableNames.Contains(name) && _schema.Table(name).Partition != PartitionKind.None;
-            var isDocument = File.Exists(path) && (name == "schema.yaml" || name.EndsWith(".md", StringComparison.Ordinal));
+            // The kind of an entry is judged by its name only: a probe such as File.Exists answers false for an entry the
+            // platform denies, which would report a real, unreadable table file as unexpected. A folder where a table
+            // file belongs (or a file where a table folder belongs) is reported where it is read or listed
+            var isTableFile = path.EndsWith(DataLayout.Extension, StringComparison.Ordinal) && tableNames.Contains(stem) && _schema.Table(stem).Partition == PartitionKind.None;
+            var isTableDirectory = tableNames.Contains(name) && _schema.Table(name).Partition != PartitionKind.None;
+            var isDocument = (name == "schema.yaml" || name.EndsWith(".md", StringComparison.Ordinal)) && !Directory.Exists(path);
             if (!isTableFile && !isTableDirectory && !isDocument)
             {
                 Report(path, 0, RuleFileSet, "Unexpected file or folder in the data directory.");
@@ -251,7 +254,9 @@ internal sealed partial class DataValidator
         foreach (var path in entries.OrderBy(p => p, StringComparer.Ordinal))
         {
             var key = Path.GetFileNameWithoutExtension(path);
-            if (!File.Exists(path) || !path.EndsWith(DataLayout.Extension, StringComparison.Ordinal) || !DataLayout.IsValidKey(key, _schema.FileSplit))
+            // The entry was listed, so it is not probed: a probe answers false for a file the platform denies, and the
+            // read below reports a folder or a denied file as unreadable
+            if (!path.EndsWith(DataLayout.Extension, StringComparison.Ordinal) || !DataLayout.IsValidKey(key, _schema.FileSplit))
             {
                 Report(path, 0, RuleFileSet, $"'{Path.GetFileName(path)}' is not a valid file of table '{table.Name}' for the file split plan.");
                 continue;
@@ -269,12 +274,6 @@ internal sealed partial class DataValidator
         _tables[table.Name] = loaded;
         foreach (var (path, key) in TableFiles(table))
         {
-            if (!File.Exists(path))
-            {
-                Report(path, 0, RuleFileSet, $"The file of table '{table.Name}' is missing.");
-                continue;
-            }
-
             var rows = ReadFile(table, path, key);
             if (rows is not null)
             {
@@ -285,7 +284,7 @@ internal sealed partial class DataValidator
 
     private List<string[]>? ReadFile(TableDef table, string path, string key)
     {
-        var lines = ReadLines(path);
+        var lines = ReadLines(table, path);
         if (lines is null)
         {
             return null;
@@ -324,12 +323,19 @@ internal sealed partial class DataValidator
         return rows;
     }
 
-    private List<string>? ReadLines(string path)
+    private List<string>? ReadLines(TableDef table, string path)
     {
         byte[] bytes;
         try
         {
+            // The read is the only probe: an existence check beforehand answers false for a file the platform denies,
+            // which would hide it as a missing one
             bytes = _readAllBytes(path);
+        }
+        catch (Exception ex) when (ex is FileNotFoundException or DirectoryNotFoundException)
+        {
+            Report(path, 0, RuleFileSet, $"The file of table '{table.Name}' is missing.");
+            return null;
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {

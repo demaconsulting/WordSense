@@ -153,6 +153,65 @@ public sealed class DataValidatorTests : IDisposable
     }
 
     /// <summary>
+    ///     A file that the platform denies is an <c>unreadable</c> violation, not a missing file, although an existence
+    ///     probe would answer false for it: the reader is the only probe, so here the file is absent from the disk (as a
+    ///     probe sees a denied file) while the reader seam reports the denial. It holds for a table file and for a
+    ///     partition file (listed by the lister seam), and the other tables are still read.
+    /// </summary>
+    /// <param name="partitioned">Whether the denied file is a partition file of the entry table; otherwise the file of the source table.</param>
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void WordSenseBuilder_DataValidator_Validate_DeniedFileAbsentFromDisk_IsUnreadableNotMissing(bool partitioned)
+    {
+        // Arrange
+        var data = Data();
+        var failing = partitioned
+            ? Directory.GetFiles(Path.Join(data, "entry"), "*.tsv").OrderBy(f => f, StringComparer.Ordinal).First()
+            : Path.Join(data, "source.tsv");
+        var listed = Directory.EnumerateFileSystemEntries(Path.Join(data, "entry")).ToList();
+        File.Delete(failing);
+        IEnumerable<string> List(string directory) =>
+            string.Equals(directory, Path.Join(data, "entry"), StringComparison.Ordinal) ? listed : Directory.EnumerateFileSystemEntries(directory);
+        byte[] Read(string path) =>
+            string.Equals(path, failing, StringComparison.Ordinal) ? throw new UnauthorizedAccessException("Access to the path is denied.") : File.ReadAllBytes(path);
+
+        // Act
+        var report = DataValidator.Validate(data, null, List, Read);
+
+        // Assert
+        Assert.Contains(report.Violations, v => v.StartsWith(failing, StringComparison.Ordinal) && v.Contains("[unreadable]", StringComparison.Ordinal));
+        Assert.DoesNotContain(report.Violations, v => v.StartsWith(failing, StringComparison.Ordinal) && v.Contains("is missing", StringComparison.Ordinal));
+        Assert.True(report.RowCounts["sense"] > 0, "The other tables must still be read.");
+    }
+
+    /// <summary>
+    ///     A file that the reader reports as not found (or whose folder is not found) is the existing missing-file
+    ///     violation of the file set, not an unreadable file.
+    /// </summary>
+    /// <param name="folder">Whether the reader reports the folder as not found; otherwise the file.</param>
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void WordSenseBuilder_DataValidator_Validate_FileNotFound_IsMissingNotUnreadable(bool folder)
+    {
+        // Arrange
+        var data = Data();
+        var failing = Path.Join(data, "source.tsv");
+        var failure = folder ? new DirectoryNotFoundException("Could not find a part of the path.") : (Exception)new FileNotFoundException("Could not find the file.");
+        byte[] Read(string path) =>
+            string.Equals(path, failing, StringComparison.Ordinal) ? throw failure : File.ReadAllBytes(path);
+
+        // Act
+        var report = DataValidator.Validate(data, null, Directory.EnumerateFileSystemEntries, Read);
+
+        // Assert
+        Assert.Contains(report.Violations, v => v.StartsWith(failing, StringComparison.Ordinal) && v.Contains("is missing", StringComparison.Ordinal) && v.Contains("[file-set]", StringComparison.Ordinal));
+        Assert.DoesNotContain(report.Violations, v => v.Contains("[unreadable]", StringComparison.Ordinal));
+        Assert.True(report.RowCounts["sense"] > 0, "The other tables must still be read.");
+    }
+
+    /// <summary>
     ///     A directory that cannot be listed (the data folder, or the folder of a partitioned table) is a violation that
     ///     names the directory, also when the listing fails while it is being read, and the validation continues.
     /// </summary>

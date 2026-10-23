@@ -55,9 +55,10 @@ The validator reports instead of throwing: a schema that cannot load (invalid da
 one `schema` violation; a directory that cannot be listed (the data folder or the folder of a partitioned table; the
 listing is read to the end inside the guard, so a failure while it is enumerated is caught as well; the listing itself,
 not an existence probe, tells a missing folder, which is an empty table for a partitioned table, from a folder that
-exists but is denied, which is a violation) is a `file-set`
-violation that names the directory; a table file that cannot be read (an I/O failure or a denied access) is an
-`unreadable` violation of that file, and in each case the validation of the rest of the data continues (the missing rows
+exists but is denied, which is a violation) is a `file-set` violation that names the directory; a table file is not
+probed for existence before it is read, so a file that cannot be read (an I/O failure or a denied access) is an
+`unreadable` violation of that file, while a file that the read reports as not found is a missing-file `file-set`
+violation; in each case the validation of the rest of the data continues (the missing rows
 of an unreadable file can cause follow-up reference violations); a baseline that cannot be read is a `stability`
 violation; duplicated keys (two rows with one
 group id, two senses with one label) are reported by the key rules, and the inventory rules keep checking with the first

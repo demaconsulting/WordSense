@@ -23,7 +23,8 @@ All scenarios below pass.
   `UnexpectedFiles_ViolateFileSet`,
   `MissingSourceFile_ViolatesFileSet`, `EmptyPartitionFile_Violates`, `SplitPlanMismatch_ViolatesFileSet`).
 - **Unreadable input is a violation** (`UnreadableSchema_ReportsSchemaViolation`,
-  `UnreadableTableFile_ReportsViolationAndContinues`,
+  `UnreadableTableFile_ReportsViolationAndContinues`, `DeniedFileAbsentFromDisk_IsUnreadableNotMissing`,
+  `FileNotFound_IsMissingNotUnreadable`,
   `DirectoryThatCannotBeListed_ReportsViolationAndContinues`, `PartitionFolderDeniedAndAbsentFromDisk_ReportsViolation`,
   `PartitionFolderMissing_IsEmptyTable`, `FileInPlaceOfPartitionFolder_ReportsViolation`,
   `DataFolderMissingOrDenied_ReportsViolation`): a schema that is a folder (which the platform reports as
@@ -36,7 +37,9 @@ All scenarios below pass.
   still read. The listing, not an existence probe, tells a missing folder from a denied one: a folder that is absent
   from the disk but denied by the lister is a violation, a really missing folder of a partitioned table is an empty
   table, a missing data folder is a violation, and a file in place of a partition folder is a violation on every
-  platform. None of these throws.
+  platform. A table file is likewise not probed before it is read: a file that the reader denies gives an `unreadable`
+  violation even when an existence probe would answer false for it, while a file or folder that the reader reports as
+  not found gives the missing-file `file-set` violation. None of these throws.
 - **Format and cells** (`FormatDefects_AreReported`, `CellDefects_AreReported`, `EmptyRequiredCell_Violates`,
   `SenseTableFeatures_AreChecked`): the last one checks the features of an analysis of the form table against the
   feature vocabulary, including a feature name that is listed twice.
