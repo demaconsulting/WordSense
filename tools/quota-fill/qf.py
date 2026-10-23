@@ -1,9 +1,11 @@
 """Shared state of the quota filling: senses in scope, the form index, the keys of the existing corpus, waves, paths."""
+import argparse
 import csv
 import glob
 import hashlib
 import json
 import os
+import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -148,8 +150,11 @@ def lemmas_up_to(world, wave):
 
 
 def wave_id(text):
-    """A wave is named by a number (a rank wave, or a supplementary wave) or by a text such as 4c (a tier wave, which is
-    selected with --tier instead of by rank)."""
+    """A wave is named by a number (a rank wave, or a supplementary wave) or by a number and one letter such as 4c (a
+    tier wave, which is selected with --tier instead of by rank). The name goes into file names, so anything else
+    (a path separator, a dot, a non-ASCII digit) is refused."""
+    if not re.fullmatch(r"[0-9]+[a-z]?", text):
+        raise argparse.ArgumentTypeError(f"'{text}' is not a wave id: use a number such as 3, or a number and a letter such as 4c")
     return int(text) if text.isdigit() else text
 
 

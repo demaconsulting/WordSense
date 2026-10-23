@@ -302,6 +302,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Group answers above 100** (`RealCalibrator_Apply_GroupAnswersAboveOneHundred_UseTheShareAndReportTargetNotReached`):
   with 120 group answers at 90 percent precision the shift keeps 36 of them, the group level is verified, not
   reached, and the summary line says "verified, target not reached on 120 answers".
+- **Infinite group distances** (`RealCalibrator_Apply_InfiniteGroupDistances_AreNotUsableAndDoNotVerify`): a lemma with
+  no other group has an infinite group margin; such answers are not usable, so 40 of them do not verify the group level,
+  the threshold is kept and the line says "unverified, kept on 0 answers".
 - **Wired into the training** (`ModelTrainer_TrainDataAsync_CalibrationRows_MoveTheThresholds`): with calibration rows
   the trained thresholds are at least the cross-validation ones, and without them they are equal.
 

@@ -13,7 +13,7 @@ SENT_END_RE = re.compile(r"""([.?!]+["')\]]*)\s+(?=["'(\[]*[A-Z0-9])""")
 BAD_CHARS = re.compile(r"[\ufffd_\[\]{}|*<>=~^\\@#\x00-\x1f]")
 CAPTION = re.compile(r"^\W*(Figure|Fig\.|Table|Chapter|Source|See|Note|Photo|Credit|Image)\b", re.I)
 WORD_RE = re.compile(r"[A-Za-z]+")
-FIGURE_REF = re.compile(r"\b(?:Figure|Fig\.|Table)\s+\d+[-.]\d+")
+FIGURE_REF = re.compile(r"\b(?:Figure|Fig\.|Table)\s+\d+[-.]\d+", re.I)
 
 
 def normalize_text(text):

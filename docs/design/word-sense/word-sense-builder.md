@@ -379,7 +379,8 @@ bootstrap spread of the answered share of the calibration rows is about one poin
 rule. The final fine threshold is `max(t_cv + s, t_own)`, so calibration only raises a threshold and a level that was
 never answered stays so. The group threshold follows the same rule on its own answers: they are the calibration rows
 that fall through the final fine threshold and whose best sense is in a group, with `d` the group margin minus the first
-group threshold; it moves only when at least 30 usable group answers exist to verify it (otherwise it is kept and the
+group threshold (a distance that is infinite, as for a lemma with no other group, or negative is no usable answer and
+is not counted); it moves only when at least 30 usable group answers exist to verify it (otherwise it is kept and the
 report says it is unverified), by the lowest shift that reaches the target on at least `max(30, ceil(0.30 n))` group
 answers or, when none does, by the largest shift that keeps them, and the report says "target not reached" for the group
 level too (after "verified"). A calibration row whose sense has no anchor counts as a wrong answer. The test split and the

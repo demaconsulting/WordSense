@@ -168,9 +168,10 @@ internal static class RealCalibrator
             fine[lemma.Lemma] = ownThreshold.TryGetValue(lemma.Lemma, out var o) ? Math.Max(shifted, o) : shifted;
         }
 
-        // The group answers are the rows that fall through the final fine threshold and whose best sense is in a group
+        // The group answers are the rows that fall through the final fine threshold and whose best sense is in a group;
+        // only usable ones (a finite, non-negative distance, as in ChooseShift) count towards the verification
         var groupRows = observed.Where(o => !double.IsNaN(o.GroupMargin) && o.Margin < fine[o.Lemma] && lemmas[o.Lemma].Weights.GroupThreshold < LemmaWeights.Never)
-            .Select(o => (Distance: o.GroupMargin - lemmas[o.Lemma].Weights.GroupThreshold, Correct: o.GroupCorrect)).Where(a => a.Distance >= 0).ToList();
+            .Select(o => (Distance: o.GroupMargin - lemmas[o.Lemma].Weights.GroupThreshold, Correct: o.GroupCorrect)).Where(a => double.IsFinite(a.Distance) && a.Distance >= 0).ToList();
         var groupVerified = groupRows.Count >= options.MinPooledAnswered;
         var (groupShift, groupReached) = groupVerified ? ChooseShift(groupRows, options.TargetPrecision, options.MinPooledAnswered, options.MinPooledShare) : (0.0, false);
 

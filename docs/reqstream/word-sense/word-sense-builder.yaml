@@ -253,6 +253,7 @@ sections:
               - WordSenseBuilder_RealCalibrator_Defaults_ShareThirtyPercentTargetNinetySevenPercent
               - WordSenseBuilder_RealCalibrator_Apply_TargetNotReachable_ReportsItAndKeepsTheMinimumShare
               - WordSenseBuilder_RealCalibrator_Apply_GroupAnswersAboveOneHundred_UseTheShareAndReportTargetNotReached
+              - WordSenseBuilder_RealCalibrator_Apply_InfiniteGroupDistances_AreNotUsableAndDoNotVerify
 
           - id: WordSense-WordSenseBuilder-UsagePrior
             title: >-

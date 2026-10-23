@@ -405,4 +405,33 @@ public sealed class RealCalibratorTests
         Assert.True(calibrated.Lemmas[0].Weights.GroupThreshold > 0.6f);
         Assert.Contains("(verified, target not reached on 120 answers)", report.Describe(), StringComparison.Ordinal);
     }
+
+    /// <summary>
+    ///     A group answer whose distance is infinite (the lemma has no other group, so the group margin is infinite) is
+    ///     no usable answer: it does not count towards the verification of the group thresholds, which stay as they
+    ///     were, and the report counts none.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealCalibrator_Apply_InfiniteGroupDistances_AreNotUsableAndDoNotVerify()
+    {
+        // Arrange: the two senses of the lemma are in one group, so the group margin of every row is infinite; the fine
+        // level is never answered, so all 40 rows are group answers
+        var (a1, a2, _, _) = SenseFixtures.Grouped("test");
+        var rows = new List<(CorpusRow Row, float[] Feature)>();
+        for (var i = 0; i < 40; i++)
+        {
+            rows.Add((SenseFixtures.Row(a1, i), [0.5f + (0.01f * i)]));
+        }
+
+        var data = Data(Lemma(a1, a2, LemmaWeights.Never, 0.2f));
+
+        // Act
+        var (calibrated, report) = Run(data, rows, new CalibrationOptions(TargetPrecision: 0.97));
+
+        // Assert: no usable group answer, so the group threshold is kept and reported as unverified
+        Assert.Equal(0, report.GroupAnswers);
+        Assert.False(report.GroupVerified);
+        Assert.Equal(0.2f, calibrated.Lemmas[0].Weights.GroupThreshold);
+        Assert.Contains("unverified, kept on 0 answers", report.Describe(), StringComparison.Ordinal);
+    }
 }
