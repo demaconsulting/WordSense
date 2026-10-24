@@ -189,8 +189,10 @@ namespace DemaConsulting.WordSense;
 ///     </item>
 ///     </list>
 ///     <para>
-///     Case. The lexicon lookup lower-cases every word for all models, so <c>Record</c> and <c>RECORD</c> find the same
-///     entry. After the lookup the models differ. MiniLM is uncased: its tokenizer lower-cases the text, so case never
+///     Case. The lookup differs by consumer: <see cref="WordLexicon.Lookup"/> tries the exact spelling first and then the
+///     lower-case folding; the encoder models look a word up as written (with the same fallback); and Basic looks every
+///     word up in lower case, so for Basic <c>Record</c> and <c>RECORD</c> find the same entry. After the lookup the
+///     models differ. MiniLM is uncased: its tokenizer lower-cases the text, so case never
 ///     changes its answer. BertBaseCased is cased: it sees <c>READ</c>, <c>Read</c> and <c>read</c> as different word
 ///     pieces, so keep the case of the original text and do not lower-case it yourself. Basic uses case in two places. A
 ///     word that is not in the lexicon and starts with an upper-case letter inside a sentence segment (not first) is
