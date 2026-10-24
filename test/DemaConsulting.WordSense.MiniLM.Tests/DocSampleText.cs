@@ -133,6 +133,10 @@ internal static partial class DocSampleText
         return Trailing().Replace(string.Join('\n', lines), string.Empty);
     }
 
+    /// <summary>
+    ///     Matches the white space at the end of a text.
+    /// </summary>
+    /// <returns>The generated regular expression.</returns>
     [GeneratedRegex(@"\s+$")]
     private static partial Regex Trailing();
 
@@ -248,6 +252,10 @@ internal static partial class DocSampleText
     private static bool TryParseProbability(string text, out decimal value) =>
         decimal.TryParse(text, System.Globalization.NumberStyles.AllowDecimalPoint, System.Globalization.CultureInfo.InvariantCulture, out value);
 
+    /// <summary>
+    ///     Matches a sample marker of the README and captures the name of the sample.
+    /// </summary>
+    /// <returns>The generated regular expression.</returns>
     [GeneratedRegex(@"<!-- sample:([a-z0-9-]+) -->")]
     private static partial Regex Marker();
 }

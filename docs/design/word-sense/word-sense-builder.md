@@ -362,15 +362,35 @@ data, not by a seed. The written held-out sentences and the rows without provena
 calibration rows of the trained lemmas are encoded through the same cache and scored by the final full-precision
 weights. For the fine level, a lemma with at least 20 calibration rows gets a threshold of its own (the lowest margin
 that reaches the precision target with at least five answers); every lemma that has a finite first threshold and no
-threshold of its own gets one pooled shift `s >= 0`, the lowest shift such that the calibration answers of all those
-lemmas with margin at least `t_cv + s` reach the target with at least 30 answers (when no shift reaches it, the
-largest shift that keeps 30 answers). The final fine threshold is `max(t_cv + s, t_own)`, so calibration only raises a
-threshold and a level that was never answered stays so. The group threshold moves the same way, over the calibration
-rows that fall through the final fine threshold and whose best sense is in a group, but only when at least 30 such
-answers exist to verify it (otherwise it is kept and the report says it is unverified). A calibration row whose sense
-has no anchor counts as a wrong answer. The test split and the written held-out sentences never reach the choice; the
-report of the run prints the rows used, the shift and the pooled precision before and after. The calibration target is
-0.97 (`--calibration-target`), two points above the 95% aimed at on the whole pipeline, because the precision of the
+threshold of its own contributes to one pooled shift `s >= 0`. The usable answers are the calibration rows of those
+lemmas whose distance `d = margin - t_cv` (the margin of the best sense minus the first threshold of its lemma) is finite
+and not negative; there are `n` of them, and the answers with `d >= s` are the answers that the shift `s` keeps (answers
+of equal distance are kept or dropped together). The shift is the lowest `s` whose kept answers reach the precision target
+while at least `max(30, ceil(0.30 n))` answers are kept (the ceiling is taken after a tolerance of 1e-9, so an exact
+product does not round up; below 100 usable answers the floor of 30 decides). With fewer than 30 usable answers the shift
+is 0 and the target is reported as not reached. When no shift reaches the target on that many answers, the shift is the
+largest one that keeps them (an order statistic of the distances, so it does not depend on which answers are right) and
+the report says that the target was not reached. The share is what makes the shift robust: the precision of the far
+tail of the distances rests on a few dozen rows, and in the measured corpus six wrong rows there moved the shift from 8.1
+to 4.9, while with a share of 30 percent they move it by about 0.1 at most (bootstrap and drop-six tests on the
+calibration rows only; see the user guide chapter "Accuracy and Model Choice"). The lemmas with a threshold of their own
+(at least 20 rows) hold about 30 percent of the calibration rows; their threshold only raises the final one, and the
+bootstrap spread of the answered share of the calibration rows is about one point with them, so they keep their simple
+rule. The final fine threshold is `max(t_cv + s, t_own)`, so calibration only raises a threshold and a level that was
+never answered stays so. The group threshold follows the same rule on its own answers: they are the calibration rows
+that fall through the final fine threshold and whose best sense is in a group, with `d` the group margin minus the first
+group threshold (a distance that is infinite, as for a lemma with no other group, or negative is no usable answer and
+is not counted); it moves only when at least 30 usable group answers exist to verify it (otherwise it is kept and the
+report says it is unverified), by the lowest shift that reaches the target on at least `max(30, ceil(0.30 n))` group
+answers or, when none does, by the largest shift that keeps them, and the report says "target not reached" for the group
+level too (after "verified"). A calibration row whose sense has no anchor counts as a wrong answer. The test split and the
+written held-out sentences never reach the choice. The report of the run prints the rows used, the fine shift (with
+"reaches the target" or "target not reached"), the number of lemmas with a threshold of their own, the sense answers
+before and after (counted over all observed calibration rows, the lemmas with a threshold of their own included, not
+only the pooled rows, so they are not the pooled answers that decided the shift) and the group shift with its state. The
+calibration target is
+0.97 (`--calibration-target`), two points above the 95% aimed at on the whole pipeline (and used for the cross-validation
+of the first thresholds), because the precision of the
 pipeline (the analysis and the form chooser) on the same sentences is about two points below that of the lemma-level
 classifier (measured: 95.1% at the lemma level against 92.6% for the pipeline at the target 0.95 for MiniLM). Sweeping
 the target on the real test split showed that MiniLM saturates near 94% precision, because about 7% of the gold labels

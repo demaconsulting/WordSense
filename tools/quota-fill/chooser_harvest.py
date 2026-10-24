@@ -64,7 +64,9 @@ def cmd_candidates(args):
         os.makedirs(os.path.join(wdir, sub), exist_ok=True)
     rows, _docs = pool.load_pool()
     blocked = qf.corpus_keys()
-    rows = [r for r in rows if textutil.key_of(r[3]) not in blocked]
+    vocab = set(world["index"])
+    rows = [r for r in rows if textutil.key_of(r[3]) not in blocked
+            and not (r[2] == "faa" and textutil.pdf_damaged(r[3], vocab))]
     used = harvest.load_used(wdir)
     hits = harvest.scan_pool(rows, set(forms))
     selected = []
@@ -124,6 +126,7 @@ def cmd_select(args):
         if os.path.exists(old):
             os.remove(old)
     blocked = qf.corpus_keys()
+    vocab = set(qf.load_world()["index"])
     doc_splits = qf.real_documents_by_split()
     current = choosers.form_lemmas()
     cands = collections.defaultdict(list)
@@ -153,6 +156,9 @@ def cmd_select(args):
                     stats["lemma is no longer a lemma of the form"] += 1
                     continue
                 if textutil.key_of(item["sentence"]) in blocked:
+                    continue
+                if item["family"] == "faa" and textutil.pdf_damaged(item["sentence"], vocab):
+                    stats["damaged FAA text"] += 1
                     continue
                 stats["labeled high"] += 1
                 item["role"] = qf.doc_role(qf.prov_document(item["sid"], item["doc"], item["family"]), doc_splits)

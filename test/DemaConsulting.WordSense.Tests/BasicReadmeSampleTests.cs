@@ -13,8 +13,16 @@ namespace DemaConsulting.WordSense.Tests;
 /// </remarks>
 public class BasicReadmeSampleTests
 {
+    /// <summary>
+    ///     The using directives that the README sample shows before the compiled region.
+    /// </summary>
     private const string Usings = "using DemaConsulting.WordSense;\n\n";
 
+    /// <summary>
+    ///     Finds the repository root by walking up from the test output directory to the solution file.
+    /// </summary>
+    /// <returns>The repository root.</returns>
+    /// <exception cref="DirectoryNotFoundException">Thrown when no solution file is found above the test output.</exception>
     private static string FindRepositoryRoot()
     {
         for (var dir = new DirectoryInfo(AppContext.BaseDirectory); dir is not null; dir = dir.Parent)
@@ -28,9 +36,21 @@ public class BasicReadmeSampleTests
         throw new DirectoryNotFoundException("The repository root was not found.");
     }
 
+    /// <summary>
+    ///     Normalizes line endings and trailing white space, so only the content is compared.
+    /// </summary>
+    /// <param name="text">The text.</param>
+    /// <returns>The normalized text.</returns>
     private static string Normalize(string text) =>
         string.Join('\n', text.Replace("\r\n", "\n", StringComparison.Ordinal).Split('\n').Select(l => l.TrimEnd())).TrimEnd();
 
+    /// <summary>
+    ///     Returns the content of the fenced block that follows a marker line.
+    /// </summary>
+    /// <param name="text">The document text.</param>
+    /// <param name="marker">The marker line, for example <c>&lt;!-- sample:readme --&gt;</c>.</param>
+    /// <param name="language">The language of the fence that follows the marker.</param>
+    /// <returns>The block content without the fences.</returns>
     private static string FencedBlock(string text, string marker, string language)
     {
         var start = text.IndexOf(marker, StringComparison.Ordinal);
@@ -43,6 +63,12 @@ public class BasicReadmeSampleTests
         return text[from..to];
     }
 
+    /// <summary>
+    ///     Builds the text that the README code block must equal: the using directives plus the unindented region of the
+    ///     sample source between the <c>sample:readme</c> markers.
+    /// </summary>
+    /// <param name="source">The text of <c>BasicReadmeSample.cs</c>.</param>
+    /// <returns>The normalized expected code block.</returns>
     private static string CompiledSample(string source)
     {
         const string begin = "// <sample:readme>";
@@ -63,12 +89,18 @@ public class BasicReadmeSampleTests
     [Fact]
     public async Task BasicReadme_CodeBlock_MatchesCompiledSample()
     {
+        // Arrange: read the README and the compiled sample source
         var root = FindRepositoryRoot();
         var token = TestContext.Current.CancellationToken;
         var readme = await File.ReadAllTextAsync(Path.Join(root, "README.md"), token);
         var source = await File.ReadAllTextAsync(Path.Join(root, "test", "DemaConsulting.WordSense.Tests", "BasicReadmeSample.cs"), token);
 
-        Assert.Equal(CompiledSample(source), Normalize(FencedBlock(readme, "<!-- sample:readme -->", "csharp")));
+        // Act: take the documented code block and build the expected one from the sample
+        var documented = Normalize(FencedBlock(readme, "<!-- sample:readme -->", "csharp"));
+        var compiled = CompiledSample(source);
+
+        // Assert: the documented block equals the compiled sample
+        Assert.Equal(compiled, documented);
     }
 
     /// <summary>
@@ -78,13 +110,15 @@ public class BasicReadmeSampleTests
     [Fact]
     public async Task BasicReadme_Output_MatchesSampleRun()
     {
+        // Arrange: read the documented output and create the sample
         var token = TestContext.Current.CancellationToken;
         var readme = await File.ReadAllTextAsync(Path.Join(FindRepositoryRoot(), "README.md"), token);
         var documented = FencedBlock(readme, "<!-- output:basic -->", "text");
-
         var sample = new BasicReadmeSample();
         var previous = CultureInfo.CurrentCulture;
         CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+
+        // Act: run the sample with the invariant culture and restore the culture
         try
         {
             await sample.RunAsync();
@@ -94,6 +128,7 @@ public class BasicReadmeSampleTests
             CultureInfo.CurrentCulture = previous;
         }
 
+        // Assert: the documented output equals what the sample wrote
         AssertOutput(documented, sample.Output);
     }
 
@@ -103,6 +138,12 @@ public class BasicReadmeSampleTests
     /// </summary>
     private const decimal ConfidenceTolerance = 0.01m;
 
+    /// <summary>
+    ///     Asserts that the output of the sample equals the documented output, with the confidence column compared
+    ///     within <see cref="ConfidenceTolerance"/> and every other column exactly.
+    /// </summary>
+    /// <param name="documented">The output block of the README, the single source of truth.</param>
+    /// <param name="actual">The output the sample wrote.</param>
     private static void AssertOutput(string documented, string actual)
     {
         var expectedLines = Normalize(documented).Split('\n');

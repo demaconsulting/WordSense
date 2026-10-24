@@ -278,6 +278,33 @@ All scenarios below pass on every platform and target framework of the CI matrix
   answered stays never answered, and two runs give the same thresholds.
 - **Group level** (`RealCalibrator_Apply_GroupThreshold_MovesOnlyWithEnoughAnswers`): the group threshold moves only
   when at least 30 calibration answers can verify it.
+- **Robust shift** (`RealCalibrator_ChooseShift_ConfidentErrorsInTheTail_DoNotMoveTheShift`): with a steady error
+  rate of 5 percent and the target 0.97, six more confident errors at the top of the distances do not change the
+  shift (the 120 most confident of 400 answers are kept and the target is reported as not reached), while the rule
+  without the share "reaches" the target on 39 answers in the far tail.
+- **Unreachable target** (`RealCalibrator_ChooseShift_TargetNotReachable_KeepsTheMinimumShareAndReportsIt`,
+  `RealCalibrator_Apply_TargetNotReachable_ReportsItAndKeepsTheMinimumShare`): the shift is the largest one that
+  keeps the minimum share of the answers, the result says that the target was not reached (the training summary line
+  contains "fine pooled shift 5.000 (target not reached)" and says that the answers before and after cover all
+  calibration rows), and fewer answers than the minimum give shift 0.
+- **Reachable target** (`RealCalibrator_ChooseShift_TargetClearlyReachable_ReachesItOnEnoughAnswers`): when the
+  precision clearly rises above the target, the lowest qualifying shift is chosen (4.1 in the fixture; the tail from
+  4.0 has 96.9 percent and fails) and the kept answers reach it.
+- **Floor** (`RealCalibrator_ChooseShift_FewPooledAnswers_TheMinimumCountDominatesTheShare`): with 60 usable answers
+  30 percent is 18, so the floor of 30 decides (shift 3.0); with a floor of 10 the share decides (shift 4.2).
+- **Fewer than 30 usable answers** (`RealCalibrator_ChooseShift_FewerThanThirtyUsableAnswers_GiveShiftZeroNotReached`):
+  29 usable answers (a negative or non-finite distance is no answer) give shift 0 and "not reached"; 30 give the shift.
+- **Ties** (`RealCalibrator_ChooseShift_TiesAtTheBoundary_AreKeptTogether`): answers of equal distance are kept or
+  dropped together, so a boundary inside a tie keeps more than the minimum (15 answers from 7.0, but 20 from 6.0 when
+  the minimum is 16).
+- **Defaults** (`RealCalibrator_Defaults_ShareThirtyPercentTargetNinetySevenPercent`): the share is 0.3, the floor 30,
+  the target of a weights run 0.97 and the cross-validation target 0.95.
+- **Group answers above 100** (`RealCalibrator_Apply_GroupAnswersAboveOneHundred_UseTheShareAndReportTargetNotReached`):
+  with 120 group answers at 90 percent precision the shift keeps 36 of them, the group level is verified, not
+  reached, and the summary line says "verified, target not reached on 120 answers".
+- **Infinite group distances** (`RealCalibrator_Apply_InfiniteGroupDistances_AreNotUsableAndDoNotVerify`): a lemma with
+  no other group has an infinite group margin; such answers are not usable, so 40 of them do not verify the group level,
+  the threshold is kept and the line says "unverified, kept on 0 answers".
 - **Wired into the training** (`ModelTrainer_TrainDataAsync_CalibrationRows_MoveTheThresholds`): with calibration rows
   the trained thresholds are at least the cross-validation ones, and without them they are equal.
 

@@ -13,6 +13,7 @@ SENT_END_RE = re.compile(r"""([.?!]+["')\]]*)\s+(?=["'(\[]*[A-Z0-9])""")
 BAD_CHARS = re.compile(r"[\ufffd_\[\]{}|*<>=~^\\@#\x00-\x1f]")
 CAPTION = re.compile(r"^\W*(Figure|Fig\.|Table|Chapter|Source|See|Note|Photo|Credit|Image)\b", re.I)
 WORD_RE = re.compile(r"[A-Za-z]+")
+FIGURE_REF = re.compile(r"\b(?:Figure|Fig\.|Table)\s+\d+[-.]\d+", re.I)
 
 
 def normalize_text(text):
@@ -61,6 +62,23 @@ def acceptable(text, min_words=6, max_words=34):
     if re.search(r"(?:\b\w ){4,}\w\b", text):
         return False
     return True
+
+
+def pdf_damaged(text, vocab):
+    """FAA text only (the handbooks are extracted from PDF): True for a figure or table reference in the sentence, or
+    for a word that the extraction split in two (`fro m`, `thermocou ple`): two plain neighboring words whose join is a
+    word of `vocab` while one of them is not (a single letter other than `a` and `i` is not)."""
+    if FIGURE_REF.search(text):
+        return True
+    words = [w.lower() for w in text.split()]
+
+    def known(w):
+        return w in vocab and (len(w) > 1 or w in ("a", "i"))
+
+    for a, b in zip(words, words[1:]):
+        if a.isalpha() and b.isalpha() and a + b in vocab and not (known(a) and known(b)):
+            return True
+    return False
 
 
 def key_of(text):

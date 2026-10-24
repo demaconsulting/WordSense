@@ -10,8 +10,9 @@ namespace WordSense.Builder;
 /// <param name="TargetPrecision">The precision the answers of a level must reach on the calibration rows.</param>
 /// <param name="MinOwnRows">The number of calibration rows a lemma needs for a fine threshold of its own.</param>
 /// <param name="MinOwnAnswered">The number of answers a threshold of its own must keep.</param>
-/// <param name="MinPooledAnswered">The number of answers the pooled shift of a level must keep, and the number of group answers that are needed to verify the group thresholds.</param>
-internal sealed record CalibrationOptions(double TargetPrecision = 0.95, int MinOwnRows = 20, int MinOwnAnswered = 5, int MinPooledAnswered = 30);
+/// <param name="MinPooledAnswered">The number of answers the pooled shift of a level must keep at least, and the number of group answers that are needed to verify the group thresholds.</param>
+/// <param name="MinPooledShare">The share of all pooled answers the pooled shift of a level must keep at least (the larger of this and <paramref name="MinPooledAnswered"/> counts): the target is checked, and a fallback chosen, only on a sample so large that a handful of rows cannot decide it.</param>
+internal sealed record CalibrationOptions(double TargetPrecision = 0.95, int MinOwnRows = 20, int MinOwnAnswered = 5, int MinPooledAnswered = 30, double MinPooledShare = 0.3);
 
 /// <summary>
 ///     What a real-text calibration did.
@@ -28,6 +29,7 @@ internal sealed record CalibrationOptions(double TargetPrecision = 0.95, int Min
 /// <param name="GroupShift">The pooled shift of the group thresholds.</param>
 /// <param name="GroupAnswers">The calibration group answers that could verify the group thresholds.</param>
 /// <param name="GroupVerified">Whether the group thresholds were moved (enough answers) or kept unverified.</param>
+/// <param name="GroupReached">Whether the group shift reached the precision target (false when the group thresholds were kept unverified).</param>
 internal sealed record CalibrationReport(
     int Rows,
     int Lemmas,
@@ -40,20 +42,31 @@ internal sealed record CalibrationReport(
     int CorrectAfter,
     double GroupShift,
     int GroupAnswers,
-    bool GroupVerified)
+    bool GroupVerified,
+    bool GroupReached)
 {
     /// <summary>
-    ///     Describes the calibration in one line for the training summary.
+    ///     Describes the calibration in one line for the training summary. The sense answers before and after cover every
+    ///     observed calibration row, the lemmas with a threshold of their own included, not only the pooled rows.
     /// </summary>
     /// <returns>The line.</returns>
     public string Describe()
     {
         var inv = CultureInfo.InvariantCulture;
         string P(int correct, int answers) => answers == 0 ? "n/a" : (100.0 * correct / answers).ToString("0.00", inv) + "%";
+        string group;
+        if (!GroupVerified)
+        {
+            group = "unverified, kept";
+        }
+        else
+        {
+            group = GroupReached ? "verified" : "verified, target not reached";
+        }
         return $"real-text calibration: {Rows.ToString(inv)} rows of {Lemmas.ToString(inv)} lemmas; fine pooled shift {FineShift.ToString("0.000", inv)}" +
                $" ({(FineReached ? "reaches the target" : "target not reached")}), {OwnThresholds.ToString(inv)} lemmas with a threshold of their own;" +
-               $" sense answers {AnswersBefore.ToString(inv)} at {P(CorrectBefore, AnswersBefore)} before, {AnswersAfter.ToString(inv)} at {P(CorrectAfter, AnswersAfter)} after;" +
-               $" group shift {GroupShift.ToString("0.000", inv)} ({(GroupVerified ? "verified" : "unverified, kept")} on {GroupAnswers.ToString(inv)} answers).";
+               $" sense answers {AnswersBefore.ToString(inv)} at {P(CorrectBefore, AnswersBefore)} before, {AnswersAfter.ToString(inv)} at {P(CorrectAfter, AnswersAfter)} after (all calibration rows);" +
+               $" group shift {GroupShift.ToString("0.000", inv)} ({group} on {GroupAnswers.ToString(inv)} answers).";
     }
 }
 
@@ -67,11 +80,16 @@ internal sealed record CalibrationReport(
 ///     held-out sentences of the calibration documents (<see cref="RealSplit"/>); they are scored by the final weights
 ///     and never trained on. A lemma with at least <see cref="CalibrationOptions.MinOwnRows"/> rows gets a fine threshold
 ///     of its own; every lemma with a finite first threshold gets the first threshold plus one pooled shift, the lowest
-///     non-negative shift at which the answers of all lemmas without a threshold of their own reach the target (or, when
-///     none does, the largest shift that keeps <see cref="CalibrationOptions.MinPooledAnswered"/> answers). The final
+///     non-negative shift at which the answers of all lemmas without a threshold of their own reach the target while at
+///     least <see cref="CalibrationOptions.MinPooledShare"/> of those answers are kept (or, when none does, the largest
+///     shift that keeps that share: the target is then reported as not reached). The share makes the choice
+///     robust: the precision of the answers in the far tail rests on a few dozen rows, so one wrong row there used to
+///     move the shift by several units, while a quarter or more of the answers does not depend on a handful of rows
+///     and the fallback is an order statistic of the distances. The final
 ///     threshold is the higher of the shifted first threshold and the own one, so calibration only raises a threshold
 ///     and a level that was never answered stays never answered. A calibration row whose sense has no anchor is a wrong
-///     answer. The group thresholds move the same way over the rows that fall through the final fine threshold and have a
+///     answer. The group thresholds move by the same rule (the same minimum count and share, the same fallback, reported
+///     as "target not reached" in the same way) over the rows that fall through the final fine threshold and have a
 ///     best sense in a group, only when enough such answers exist to verify them.
 ///     </para>
 ///     <para>
@@ -134,7 +152,7 @@ internal static class RealCalibrator
         // The pooled shift is fitted on the lemmas that have a finite first threshold and none of their own
         var pooled = observed.Where(o => !ownThreshold.ContainsKey(o.Lemma) && lemmas[o.Lemma].Weights.FineThreshold < LemmaWeights.Never)
             .Select(o => ((double)o.Margin - lemmas[o.Lemma].Weights.FineThreshold, o.Correct)).ToList();
-        var (fineShift, fineReached) = ChooseShift(pooled, options.TargetPrecision, options.MinPooledAnswered);
+        var (fineShift, fineReached) = ChooseShift(pooled, options.TargetPrecision, options.MinPooledAnswered, options.MinPooledShare);
 
         var fine = new Dictionary<string, float>(StringComparer.Ordinal);
         foreach (var lemma in lemmas.Values)
@@ -150,11 +168,12 @@ internal static class RealCalibrator
             fine[lemma.Lemma] = ownThreshold.TryGetValue(lemma.Lemma, out var o) ? Math.Max(shifted, o) : shifted;
         }
 
-        // The group answers are the rows that fall through the final fine threshold and whose best sense is in a group
+        // The group answers are the rows that fall through the final fine threshold and whose best sense is in a group;
+        // only usable ones (a finite, non-negative distance, as in ChooseShift) count towards the verification
         var groupRows = observed.Where(o => !double.IsNaN(o.GroupMargin) && o.Margin < fine[o.Lemma] && lemmas[o.Lemma].Weights.GroupThreshold < LemmaWeights.Never)
-            .Select(o => (Distance: o.GroupMargin - lemmas[o.Lemma].Weights.GroupThreshold, Correct: o.GroupCorrect)).Where(a => a.Distance >= 0).ToList();
+            .Select(o => (Distance: o.GroupMargin - lemmas[o.Lemma].Weights.GroupThreshold, Correct: o.GroupCorrect)).Where(a => double.IsFinite(a.Distance) && a.Distance >= 0).ToList();
         var groupVerified = groupRows.Count >= options.MinPooledAnswered;
-        var groupShift = groupVerified ? ChooseShift(groupRows, options.TargetPrecision, options.MinPooledAnswered).Shift : 0.0;
+        var (groupShift, groupReached) = groupVerified ? ChooseShift(groupRows, options.TargetPrecision, options.MinPooledAnswered, options.MinPooledShare) : (0.0, false);
 
         var updated = data.Lemmas.Select(l =>
         {
@@ -181,24 +200,28 @@ internal static class RealCalibrator
 
         var report = new CalibrationReport(
             observed.Count, observed.Select(o => o.Lemma).Distinct(StringComparer.Ordinal).Count(), ownThreshold.Count, fineShift, fineReached,
-            before, correctBefore, after, correctAfter, groupShift, groupRows.Count, groupVerified);
+            before, correctBefore, after, correctAfter, groupShift, groupRows.Count, groupVerified, groupReached);
         return (data with { Lemmas = updated }, report);
     }
 
     /// <summary>
-    ///     Chooses the lowest non-negative shift at which the answers reach the precision target.
+    ///     Chooses the lowest non-negative shift at which the answers reach the precision target, on enough answers.
     /// </summary>
     /// <remarks>
     ///     An answer has a distance <c>d</c> (its margin minus its first threshold) and is kept by a shift <c>s</c> when
-    ///     <c>d &gt;= s</c>; only answers with <c>d &gt;= 0</c> are answers at all. When no shift reaches the target with
-    ///     the minimum number of answers, the largest shift that keeps that number is returned and the second value is
-    ///     false; fewer answers than the minimum give shift 0.
+    ///     <c>d &gt;= s</c>; only answers with a finite <c>d &gt;= 0</c> are answers at all (the usable answers, <c>n</c> of them). A shift counts only when it keeps at
+    ///     least <c>max(minAnswered, ceil(minShare * n))</c> of the <c>n</c> answers: the precision of a thinner tail
+    ///     depends on a few rows, so a crossing of the target there is an artifact of the noise. When no shift reaches
+    ///     the target on that many answers, the largest shift that keeps them is returned and the second value is
+    ///     false (the target is not reached; that shift is an order statistic of the distances and does not depend on
+    ///     which of the answers are right). Fewer answers than <paramref name="minAnswered"/> give shift 0.
     /// </remarks>
     /// <param name="answers">The distance and the correctness of each answer.</param>
     /// <param name="target">The precision target.</param>
     /// <param name="minAnswered">The minimum number of answers a shift must keep.</param>
+    /// <param name="minShare">The minimum share of all answers a shift must keep (0 for none).</param>
     /// <returns>The shift and whether it reaches the target.</returns>
-    internal static (double Shift, bool Reached) ChooseShift(IReadOnlyList<(double Distance, bool Correct)> answers, double target, int minAnswered)
+    internal static (double Shift, bool Reached) ChooseShift(IReadOnlyList<(double Distance, bool Correct)> answers, double target, int minAnswered, double minShare = 0)
     {
         var usable = answers.Where(a => double.IsFinite(a.Distance) && a.Distance >= 0).OrderBy(a => a.Distance).ToList();
         if (usable.Count < minAnswered)
@@ -206,12 +229,13 @@ internal static class RealCalibrator
             return (0, false);
         }
 
+        var minimum = Math.Max(minAnswered, (int)Math.Ceiling((minShare * usable.Count) - Tolerance));
         var correct = usable.Count(a => a.Correct);
         var lastShift = 0.0;
         for (var i = 0; i < usable.Count; i++)
         {
             var total = usable.Count - i;
-            if (total < minAnswered)
+            if (total < minimum)
             {
                 break;
             }

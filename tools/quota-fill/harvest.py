@@ -140,13 +140,21 @@ def senses_of_pairs(world, pairs):
     return out
 
 
-def lemma_plan(world, rank_wave):
+def lemma_plan(world, rank_wave, tier=""):
+    """The lemmas of a wave with their tag count and missing slots. With a tier (C, U or R) the wave is every lemma that
+    has a short sense of that tier, whatever its rank, and only the slots of the senses of that tier count."""
     ranking, tags = qf.lemma_ranking(world)
     status = lexindex.quota_status(world["senses"], world["scope"])
     missing = collections.Counter()
     for r in status:
+        if tier and r["tier"] != tier:
+            continue
         lemma = world["senses"][r["sense_id"]]["lemma"]
         missing[lemma] += max(0, r["anchor_quota"] - r["anchors"]) + max(0, r["holdout_quota"] - r["holdout"])
+    if tier:
+        plan = [(l, sum(world["senses"][s]["tag_count"] for s in world["by_lemma"][l]), missing[l])
+                for l in sorted(world["by_lemma"]) if missing[l] > 0]
+        return plan, missing
     plan = [(l, tags[l], missing[l]) for i, l in enumerate(ranking) if qf.wave_of_rank(i) == rank_wave]
     if rank_wave == qf.LAST_WAVE:
         # the technical lemmas belong to the last wave; the ranked ones are in the plan of their rank already
@@ -185,7 +193,7 @@ def cmd_candidates(args):
     if args.doc_cap:
         DOC_CAP = args.doc_cap
     world = qf.load_world()
-    plan, missing = lemma_plan(world, args.wave)
+    plan, missing = lemma_plan(world, args.wave, args.tier)
     wave_dir = os.path.join(qf.WORK, f"w{args.wave}")
     for sub in ("in", "out", "meta"):
         os.makedirs(os.path.join(wave_dir, sub), exist_ok=True)
@@ -193,7 +201,9 @@ def cmd_candidates(args):
     if args.family:
         rows = [r for r in rows if r[2] == args.family]
     blocked = qf.corpus_keys()
-    keep = [i for i, r in enumerate(rows) if textutil.key_of(r[3]) not in blocked]
+    vocab = set(world["index"])
+    keep = [i for i, r in enumerate(rows) if textutil.key_of(r[3]) not in blocked
+            and not (r[2] == "faa" and textutil.pdf_damaged(r[3], vocab))]
     rows = [rows[i] for i in keep]
     print(len(rows), "pool sentences after the corpus and suite filter", flush=True)
     used = load_used(wave_dir)
@@ -203,7 +213,7 @@ def cmd_candidates(args):
             continue
         for lemma, _pos in pairs:
             lemma_forms[lemma].add(form)
-    extras_by_lemma = read_extras()
+    extras_by_lemma = collections.Counter() if args.tier else read_extras()  # a tier wave fills the quotas of its tier only
     planned = {l for l, _t, _m in plan}
     tags_of = {l: t for l, t, _m in plan}
     targets = [(l, tags, miss) for (l, tags, miss) in plan if miss > 0 or extras_by_lemma.get(l, 0) > 0]
@@ -218,23 +228,20 @@ def cmd_candidates(args):
     print(len(targets), "lemmas;", sum(len(v) for v in hits.values()), "hits of", len(hits), "forms", flush=True)
     doc_splits = qf.real_documents_by_split()
     role_cache = {}
+    tech = qf.tech_lemmas()
 
     def role_of(h):
         sid, doc, family = rows[h[0]][0], rows[h[0]][1], rows[h[0]][2]
         pdoc = qf.prov_document(sid, doc, family)
         if pdoc not in role_cache:
-            splits = doc_splits.get(pdoc, set())
-            if qf.is_eval_document(pdoc):
-                role_cache[pdoc] = "eval" if "anchors" not in splits else None
-            else:
-                role_cache[pdoc] = "train" if "holdout" not in splits else None
+            role_cache[pdoc] = qf.doc_role(pdoc, doc_splits)
         return role_cache[pdoc]
 
     selected = []  # (lemma, form, row index, start, end, role)
-    extras = read_extras()
+    extras = extras_by_lemma
     for lemma, _tags, miss in targets:
         n_total = max(args.min, min(args.cap, 4 * (miss + extras.get(lemma, 0))))
-        rng = random.Random(int(hashlib.sha1(("w%d|%s" % (args.wave, lemma)).encode()).hexdigest()[:12], 16))
+        rng = random.Random(int(hashlib.sha1(("w%s|%s" % (args.wave, lemma)).encode()).hexdigest()[:12], 16))
         forms = sorted(f for f in lemma_forms[lemma] if hits.get(f))
         if not forms:
             continue
@@ -247,6 +254,8 @@ def cmd_candidates(args):
                 continue
             by_role = {"eval": [], "train": []}
             for h in hits[f]:
+                if args.faa_tech_only and rows[h[0]][2] == "faa" and lemma not in tech:
+                    continue
                 r = role_of(h)
                 if r:
                     by_role[r].append(h)
@@ -305,7 +314,7 @@ def cmd_candidates(args):
 
 def cmd_status(args):
     world = qf.load_world()
-    plan, _ = lemma_plan(world, args.wave)
+    plan, _ = lemma_plan(world, args.wave, args.tier)
     print(len(plan), "lemmas;", sum(m for _l, _t, m in plan), "missing slots")
     for l, t, m in plan[:80]:
         print(l, t, m)
@@ -315,14 +324,19 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
     c = sub.add_parser("candidates")
-    c.add_argument("wave", type=int)
+    c.add_argument("wave", type=qf.wave_id)
+    c.add_argument("--tier", default="", choices=("", "C", "U", "R"),
+                   help="the wave is every lemma with a short sense of this tier (the wave is then named, e.g. 4c)")
     c.add_argument("--cap", type=int, default=450)
     c.add_argument("--min", type=int, default=150)
     c.add_argument("--family", default="", help="restrict the pool to one family (supplementary batch)")
     c.add_argument("--only-lemmas", default="", help="comma-separated lemmas that replace the wave plan")
     c.add_argument("--first-batch", type=int, default=1, help="number of the first batch (appends to a wave)")
     c.add_argument("--doc-cap", type=int, default=0, help="candidates per document and lemma (default 5)")
+    c.add_argument("--faa-tech-only", action="store_true",
+                   help="FAA sentences only for the lemmas of the technical senses (corpus/curation/tech-senses.tsv)")
     s = sub.add_parser("status")
-    s.add_argument("wave", type=int)
+    s.add_argument("wave", type=qf.wave_id)
+    s.add_argument("--tier", default="", choices=("", "C", "U", "R"))
     a = ap.parse_args()
     {"candidates": cmd_candidates, "status": cmd_status}[a.cmd](a)

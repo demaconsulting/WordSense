@@ -194,4 +194,244 @@ public sealed class RealCalibratorTests
         Assert.False(kept.Report.GroupVerified);
         Assert.Equal(0.2f, kept.Data.Lemmas[0].Weights.GroupThreshold);
     }
+
+    /// <summary>
+    ///     A bulk of answers with a steady error rate of 5 percent never reaches the target 0.97 on a large share of the
+    ///     answers: the shift is then an order statistic of the distances, and six more confident errors at the top of
+    ///     the distance range do not move it. Without the share, the first crossing sits in the far tail and
+    ///     depends on those few rows.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealCalibrator_ChooseShift_ConfidentErrorsInTheTail_DoNotMoveTheShift()
+    {
+        // Arrange: 400 answers at the distances 0.0 to 39.9; every 20th is wrong, and the perturbed copy has six more
+        // wrong answers at the very top
+        var answers = Enumerable.Range(0, 400).Select(i => (i / 10.0, i % 20 != 0)).ToList();
+        var perturbed = answers.Select((a, i) => (a.Item1, a.Item2 && i < 394)).ToList();
+
+        // Act
+        var steady = RealCalibrator.ChooseShift(answers, 0.97, 30, 0.3);
+        var moved = RealCalibrator.ChooseShift(perturbed, 0.97, 30, 0.3);
+        var legacy = RealCalibrator.ChooseShift(answers, 0.97, 30);
+
+        // Assert: the share of 30 percent keeps the 120 most confident answers (shift 28.0) in both cases, and says that the
+        // target is not reached; the legacy rule "reaches" it on 39 answers in the far tail
+        Assert.Equal(28.0, steady.Shift, 6);
+        Assert.False(steady.Reached);
+        Assert.Equal(steady, moved);
+        Assert.Equal(36.1, legacy.Shift, 6);
+        Assert.True(legacy.Reached);
+    }
+
+    /// <summary>
+    ///     When the target cannot be reached the result is defined: the largest shift that keeps the minimum share of
+    ///     the answers, reported as not reached; with fewer answers than the minimum the shift is zero.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealCalibrator_ChooseShift_TargetNotReachable_KeepsTheMinimumShareAndReportsIt()
+    {
+        // Arrange: 200 answers at the distances 0.0 to 19.9, 80 percent right everywhere
+        var answers = Enumerable.Range(0, 200).Select(i => (i / 10.0, i % 5 != 0)).ToList();
+
+        // Act
+        var unreachable = RealCalibrator.ChooseShift(answers, 0.97, 10, 0.25);
+        var tooFew = RealCalibrator.ChooseShift(answers.Take(9).ToList(), 0.97, 10, 0.25);
+
+        // Assert: a quarter of 200 answers is 50, the 50 largest distances start at 15.0
+        Assert.Equal(15.0, unreachable.Shift, 6);
+        Assert.False(unreachable.Reached);
+        Assert.Equal((0.0, false), tooFew);
+    }
+
+    /// <summary>
+    ///     When the precision of the answers clearly rises above the target, the lowest shift that reaches it is chosen
+    ///     (the candidate before it fails) and the answers it keeps do reach the target.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealCalibrator_ChooseShift_TargetClearlyReachable_ReachesItOnEnoughAnswers()
+    {
+        // Arrange: the answers below the distance 5.0 are half wrong (the even ones), those from 5.0 are all right
+        var answers = Enumerable.Range(0, 200).Select(i => (i / 10.0, i >= 50 || i % 2 == 1)).ToList();
+        double Precision(double from) => answers.Where(a => a.Item1 >= from).Count(a => a.Item2) / (double)answers.Count(a => a.Item1 >= from);
+
+        // Act
+        var (shift, reached) = RealCalibrator.ChooseShift(answers, 0.97, 10, 0.25);
+
+        // Assert: 4.1 is the lowest qualifying shift (the tail from 4.0 has five wrong answers of 160, 96.9%), and the
+        // tail from 4.1 keeps 159 answers at 97.5%
+        Assert.True(reached);
+        Assert.Equal(4.1, shift, 6);
+        Assert.True(Precision(4.0) < 0.97);
+        Assert.True(Precision(shift) >= 0.97);
+        Assert.True(answers.Count(a => a.Item1 >= shift) >= 50);
+    }
+
+    /// <summary>
+    ///     With fewer than 100 pooled answers the minimum count of 30 decides, not the share: 30 percent of 60 answers
+    ///     is only 18.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealCalibrator_ChooseShift_FewPooledAnswers_TheMinimumCountDominatesTheShare()
+    {
+        // Arrange: 60 answers at the distances 0.0 to 5.9, 80 percent right everywhere
+        var answers = Enumerable.Range(0, 60).Select(i => (i / 10.0, i % 5 != 0)).ToList();
+
+        // Act
+        var floor = RealCalibrator.ChooseShift(answers, 0.97, 30, 0.3);
+        var share = RealCalibrator.ChooseShift(answers, 0.97, 10, 0.3);
+
+        // Assert: the 30 most confident answers start at 3.0; with a floor of 10 the share keeps 18, from 4.2
+        Assert.Equal(3.0, floor.Shift, 6);
+        Assert.False(floor.Reached);
+        Assert.Equal(4.2, share.Shift, 6);
+        Assert.False(share.Reached);
+    }
+
+    /// <summary>
+    ///     Fewer than 30 usable answers (a distance that is negative or not finite is no answer) give shift 0 and "target not
+    ///     reached"; with 30 usable answers the shift is chosen.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealCalibrator_ChooseShift_FewerThanThirtyUsableAnswers_GiveShiftZeroNotReached()
+    {
+        // Arrange: 29 usable answers, all right, and five that are no answers
+        var usable = Enumerable.Range(0, 29).Select(i => (1.0 + i, true)).ToList();
+        List<(double, bool)> unusable = [(-0.5, true), (double.NaN, true), (double.PositiveInfinity, true), (-3.0, false), (double.NegativeInfinity, true)];
+
+        // Act
+        var few = RealCalibrator.ChooseShift([.. usable, .. unusable], 0.97, 30, 0.3);
+        var enough = RealCalibrator.ChooseShift([.. usable, (30.0, true), .. unusable], 0.97, 30, 0.3);
+
+        // Assert
+        Assert.Equal((0.0, false), few);
+        Assert.Equal((0.0, true), enough);
+    }
+
+    /// <summary>
+    ///     Answers with the same distance are never split: a shift keeps all of them or none, so the answers kept can
+    ///     exceed the minimum when the boundary falls inside a tie.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealCalibrator_ChooseShift_TiesAtTheBoundary_AreKeptTogether()
+    {
+        // Arrange: ten distances (0 to 9) with five answers each, one of the five wrong
+        var answers = Enumerable.Range(0, 50).Select(i => (i / 5 * 1.0, i % 5 != 0)).ToList();
+
+        // Act
+        var exact = RealCalibrator.ChooseShift(answers, 0.97, 5, 0.30);
+        var inside = RealCalibrator.ChooseShift(answers, 0.97, 5, 0.32);
+
+        // Assert: 15 answers are the distances 7 to 9; 16 answers would split the tie at 6, so all 20 from 6 are kept
+        Assert.Equal((7.0, false), exact);
+        Assert.Equal((6.0, false), inside);
+    }
+
+    /// <summary>
+    ///     The defaults: the calibration share is 0.3 and the minimum count 30; the target of a weights run is 0.97, two
+    ///     points above the 95 percent of the cross-validation (and of the test text).
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealCalibrator_Defaults_ShareThirtyPercentTargetNinetySevenPercent()
+    {
+        // Arrange / Act
+        var options = new CalibrationOptions();
+        var settings = new TrainSettings(null);
+        var crossValidation = new TrainingOptions();
+
+        // Assert
+        Assert.Equal(0.3, options.MinPooledShare);
+        Assert.Equal(30, options.MinPooledAnswered);
+        Assert.Equal(0.97, RealCalibrator.DefaultLemmaTarget);
+        Assert.Equal(RealCalibrator.DefaultLemmaTarget, settings.CalibrationTarget);
+        Assert.Equal(0.95, crossValidation.TargetPrecision);
+    }
+
+    /// <summary>
+    ///     With a target that the calibration rows cannot reach, <c>Apply</c> reports it and keeps the minimum share of
+    ///     the pooled answers.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealCalibrator_Apply_TargetNotReachable_ReportsItAndKeepsTheMinimumShare()
+    {
+        // Arrange: two lemmas with 25 rows each (no threshold of their own), 80 percent right at every margin; the
+        // distances of the 50 rows are 0.0, 0.2, ... 9.8
+        var (w, r) = (Walk, Jog);
+        var rows = new List<(CorpusRow Row, float[] Feature)>();
+        for (var i = 0; i < 25; i++)
+        {
+            rows.Add(Observation(w[0], w[1], 1f + (0.4f * i), i % 5 != 0, i));
+            rows.Add(Observation(r[0], r[1], 1.2f + (0.4f * i), i % 5 != 0, 100 + i));
+        }
+
+        var data = Data(Lemma(w[0], w[1], 1f), Lemma(r[0], r[1], 1f));
+
+        // Act
+        var (_, report) = Run(data, rows, new CalibrationOptions(TargetPrecision: 0.97, MinOwnRows: 1000, MinPooledAnswered: 5, MinPooledShare: 0.5));
+
+        // Assert: half of the 50 answers are kept, from the distance 5.0, and the line of the run says so for all rows
+        Assert.False(report.FineReached);
+        Assert.Equal(5.0, report.FineShift, 3);
+        Assert.Equal(25, report.AnswersAfter);
+        Assert.Contains("fine pooled shift 5.000 (target not reached)", report.Describe(), StringComparison.Ordinal);
+        Assert.Contains("(all calibration rows)", report.Describe(), StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The group thresholds follow the same rule as the fine ones: with more than 100 group answers whose precision
+    ///     stays at 90 percent, the share of 30 percent decides, the target is not reached, and the report line says so.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealCalibrator_Apply_GroupAnswersAboveOneHundred_UseTheShareAndReportTargetNotReached()
+    {
+        // Arrange: the fine level is never answered, so every row is a group answer; the group margin of the feature x is
+        // tanh(x), the first threshold is 0.2, every 10th of the 120 rows is wrong, and the distances rise with the row
+        var (a1, _, b, _) = SenseFixtures.Grouped("test");
+        var rows = new List<(CorpusRow Row, float[] Feature)>();
+        for (var i = 0; i < 120; i++)
+        {
+            rows.Add((SenseFixtures.Row(i % 10 == 0 ? b : a1, i), [0.21f + (0.0075f * i)]));
+        }
+
+        var data = Data(Lemma(a1, b, LemmaWeights.Never, 0.2f));
+
+        // Act
+        var (calibrated, report) = Run(data, rows, new CalibrationOptions(TargetPrecision: 0.97));
+
+        // Assert: 30 percent of 120 answers is 36, so the shift is the distance of the 85th answer (tanh(0.84) - 0.2)
+        Assert.Equal(120, report.GroupAnswers);
+        Assert.True(report.GroupVerified);
+        Assert.False(report.GroupReached);
+        Assert.Equal(Math.Tanh(0.84) - 0.2, report.GroupShift, 3);
+        Assert.True(calibrated.Lemmas[0].Weights.GroupThreshold > 0.6f);
+        Assert.Contains("(verified, target not reached on 120 answers)", report.Describe(), StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A group answer whose distance is infinite (the lemma has no other group, so the group margin is infinite) is
+    ///     no usable answer: it does not count towards the verification of the group thresholds, which stay as they
+    ///     were, and the report counts none.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealCalibrator_Apply_InfiniteGroupDistances_AreNotUsableAndDoNotVerify()
+    {
+        // Arrange: the two senses of the lemma are in one group, so the group margin of every row is infinite; the fine
+        // level is never answered, so all 40 rows are group answers
+        var (a1, a2, _, _) = SenseFixtures.Grouped("test");
+        var rows = new List<(CorpusRow Row, float[] Feature)>();
+        for (var i = 0; i < 40; i++)
+        {
+            rows.Add((SenseFixtures.Row(a1, i), [0.5f + (0.01f * i)]));
+        }
+
+        var data = Data(Lemma(a1, a2, LemmaWeights.Never, 0.2f));
+
+        // Act
+        var (calibrated, report) = Run(data, rows, new CalibrationOptions(TargetPrecision: 0.97));
+
+        // Assert: no usable group answer, so the group threshold is kept and reported as unverified
+        Assert.Equal(0, report.GroupAnswers);
+        Assert.False(report.GroupVerified);
+        Assert.Equal(0.2f, calibrated.Lemmas[0].Weights.GroupThreshold);
+        Assert.Contains("unverified, kept on 0 answers", report.Describe(), StringComparison.Ordinal);
+    }
 }

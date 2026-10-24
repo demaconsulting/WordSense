@@ -2001,7 +2001,6 @@ eeeef0db3dd5	holdout	gutenberg	pg24001#s3022
 a7a32c088e17	holdout	gutenberg	pg66640#s1226
 021009de7525	anchors	gutenberg	pg1023#s4505
 794a481d6427	holdout	gutenberg	pg33830#s517
-f2c27439d705	holdout	gutenberg	pg98#s266
 fe343221ff22	anchors	gutenberg	pg1056#s4621
 defb3d6e214f	anchors	gutenberg	pg1184#s20250
 7bee6c5ffdac	anchors	gutenberg	pg21048#s900
@@ -3332,7 +3331,6 @@ dc79a5b4078f	holdout	usgs	usgs-featured-story-seeing-earth-a-new-light-how-earth
 0ef86bcb218a	anchors	voa	voa-4578531#s23
 dac7e585692e	anchors	voa	voa-5596213#s21
 516d0f69828d	anchors	voa	voa-6976225#s18
-15f63a497c5d	holdout	voa	voa-2752310#s36
 9643b5558f35	holdout	voa	voa-5023664#s52
 0c46720cd564	anchors	tatoeba-cc0	12777753
 fe5a4e031c65	anchors	voa	voa-3218288#s60
@@ -4380,7 +4378,6 @@ adac255fcaa1	anchors	voa	voa-4373878#s23
 54b35ff68aee	anchors	voa	voa-6945203#s2
 d6014b28b6b6	anchors	voa	voa-7963085#s21
 a1917ba756ea	holdout	gutenberg	pg24001#s933
-0508feb82776	holdout	nps	nps-arch-lightscape#s38
 8c26b9507973	holdout	usgs	usgs-precipitation-and-water-cycle#s31
 d528bac3f9ab	anchors	gutenberg	pg1074#s2237
 1e1ddd1881c9	anchors	voa	voa-3755973#s72
