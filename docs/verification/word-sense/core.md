@@ -115,6 +115,15 @@ or possessive.
 Analyses that share a part of speech, such as the past and the present of `read` or the lemmas of `left`, are told
 apart by the words around the target (see the `CueModel`, `SenseFusion` and `BasicClassifier` unit documents).
 
+#### The Case of the Word Chooses the Lemma
+
+Through the public `BasicWordSenseModel` (`BasicWordSenseModel_ClassifyAsync_CaseOfWord_ChoosesTheLemma`), a spelling
+that has a capitalized and a lower-case lemma is answered with the lemma of the written case: `Polish` in `My neighbor
+speaks fluent Polish and a little German` is the language and `polish` in `The shop sells silver polish in small tins`
+the shine, `August` in `We usually take our vacation in August` is the month and `august` in `The old professor had an
+august presence` the adjective. The rules of the case evidence (what counts as isolated, a run, the start of a sentence)
+are verified in the `BasicClassifier` unit document.
+
 #### Reviewed Suite Does Not Regress
 
 The Basic model answers the 348 sentences of the reviewed suite (`corpus/suite`) at least as well as the expectation file

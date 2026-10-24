@@ -28,6 +28,17 @@ All scenarios below pass on every platform and target framework of the CI matrix
   (`Lookup_CapitalizedAndInflectedForms_BehaveLikeTheirBase`): a capitalized spelling with no entry of its own gives
   the analyses of its lower-case base, and an inflected form (`using`, `left`, `paid`) gives the analyses generated for
   it.
+- **Case candidates** (`Lookup_ExactCapitalizedSpelling_ListsTheCapitalizedLemmaBesideTheLowerCaseOnes`,
+  `Lookup_LowerCaseSpelling_DoesNotListACapitalizedLemmaOfTheExactSpelling`,
+  `Lookup_PolishInBothSpellings_ListsBothLemmas`, `Lookup_AugustInBothSpellings_ListsBothLemmas`,
+  `Lookup_CapitalizedLemmas_HaveSenses`): `Lookup("Jack")` holds the name (`Jack`, marked `Capitalization=Title`) beside
+  `jack`, and `Lookup("jack")` does not hold the name; `Polish` and `August` hold both of their lemmas in both spellings
+  and their nouns have senses. The lookup lists the candidates and does not rank them by case.
+- **Lookup merge** (`Lookup_StoredSpelling_GivesTheAnalysesOfThatSpellingOnly`,
+  `Lookup_SpellingThatIsNotStored_ListsTheLowerCaseSpellingFirstWithoutDuplicates`): a spelling that is stored exactly
+  (`Polish`) gives exactly the analyses of that spelling, which differ from those of the lower-case spelling (it adds the
+  `Title` analyses), and the analyses of a spelling that is not stored (`POLISH`) are those of `polish` followed by those
+  of `Polish` that are not already listed, each analysis once.
 - **Inflections are present** (`Lookup_InflectedForm_ReturnsEntryLemmaAndFeatures`,
   `Lookup_InflectedFormOfAnyDictionaryWord_ResolvesToLemma`): inflected forms such as `records` and `recorded` carry
   the lemma `record` and their features, and so do the forms of every dictionary word; `went`, `children` and

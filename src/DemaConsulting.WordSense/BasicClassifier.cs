@@ -51,6 +51,14 @@ internal sealed class BasicClassifier
 {
     private const int SingleCacheSize = 1024;
 
+    /// <summary>
+    ///     The weight of an analysis whose lemma is capitalized when the word is written in lower case, or whose lemma is in
+    ///     lower case when the word is an isolated capitalized word inside a sentence: one chance in ten that the writer broke
+    ///     the convention (a name typed in lower case, a common word capitalized for emphasis). It is a prior on the writer,
+    ///     not a fitted value, and it is far from zero so that a clear context can still outweigh it.
+    /// </summary>
+    private const double CaseMismatchWeight = 0.1;
+
     private readonly BasicTables? _tables;
     private readonly Func<string, ImmutableArray<WordDetails>> _lexicon;
     private readonly Func<string, PartOfSpeech, int> _senseCount;
@@ -203,6 +211,203 @@ internal sealed class BasicClassifier
     private static bool IsTerminator(string word) => word is "." or "!" or "?";
 
     /// <summary>
+    ///     Classifies the shape of a written word by its letters.
+    /// </summary>
+    /// <param name="word">The word as written.</param>
+    /// <returns>Lower when no letter is upper case, Upper when every letter is upper case (including a single capital such as <c>I</c>), Capitalized when only the first letter of several is upper case, otherwise Mixed.</returns>
+    private static Shape ShapeOf(string word)
+    {
+        var letters = 0;
+        var upper = 0;
+        var firstUpper = false;
+        foreach (var c in word)
+        {
+            if (!char.IsLetter(c))
+            {
+                continue;
+            }
+
+            firstUpper = letters == 0 ? char.IsUpper(c) : firstUpper;
+            upper += char.IsUpper(c) ? 1 : 0;
+            letters++;
+        }
+
+        if (upper == 0)
+        {
+            return Shape.Lower;
+        }
+
+        // A single capital letter (the pronoun I, the letter A) is spelled that way in every sentence
+        if (upper == letters)
+        {
+            return Shape.Upper;
+        }
+
+        return firstUpper && upper == 1 ? Shape.Capitalized : Shape.Mixed;
+    }
+
+    /// <summary>
+    ///     Tells whether a segment is written in title case, where every word is capitalized (or upper case) except a few
+    ///     small words, so that the case of a word says nothing about its lemma.
+    /// </summary>
+    /// <param name="words">The words as written.</param>
+    /// <param name="start">The index of the first word of the segment.</param>
+    /// <param name="length">The number of words of the segment.</param>
+    /// <returns>True when the segment has at least two words with letters and each is capitalized, upper case, mixed or one of the small words of a title.</returns>
+    private static bool IsTitleCaseSegment(List<string> words, int start, int length)
+    {
+        var count = 0;
+        for (var i = start; i < start + length; i++)
+        {
+            if (!CueModel.HasLetter(words[i]))
+            {
+                continue;
+            }
+
+            count++;
+            if (ShapeOf(words[i]) == Shape.Lower && !IsTitleSmallWord(words[i]))
+            {
+                return false;
+            }
+        }
+
+        return count >= 2;
+    }
+
+    /// <summary>
+    ///     Tells whether a word is one of the small words that a title writes in lower case.
+    /// </summary>
+    /// <param name="word">The word as written.</param>
+    /// <returns>True for <c>a</c>, <c>an</c>, <c>and</c>, <c>as</c>, <c>at</c>, <c>but</c>, <c>by</c>, <c>for</c>, <c>in</c>, <c>of</c>, <c>on</c>, <c>or</c>, <c>the</c>, <c>to</c> and <c>with</c> in lower case.</returns>
+    private static bool IsTitleSmallWord(string word) =>
+        word is "a" or "an" or "and" or "as" or "at" or "but" or "by" or "for" or "in" or "of" or "on" or "or" or "the" or "to" or "with";
+
+    /// <summary>
+    ///     Reads what the written case of a word says about the case of its lemma.
+    /// </summary>
+    /// <param name="word">The word as written.</param>
+    /// <param name="initial">Whether the word is the first word of its segment, where a capital letter is only the convention of a sentence.</param>
+    /// <param name="titleCase">Whether the segment is written in title case, where every word is capitalized by convention.</param>
+    /// <param name="inRun">Whether the word is next to another capitalized word (not the first word of the segment), as in a name such as <c>State Department</c> where a common word is capitalized as part of the name.</param>
+    /// <returns>Lower for a lower-case word (a proper name is not written so), Capitalized for an isolated capitalized word inside a sentence, otherwise None: a sentence-initial capital, a capitalized word in a run of them, a word of a title-case segment, an upper-case word and a mixed-case word carry no evidence.</returns>
+    private static WrittenCase CaseOf(string word, bool initial, bool titleCase, bool inRun)
+    {
+        if (titleCase)
+        {
+            return WrittenCase.None;
+        }
+
+        return ShapeOf(word) switch
+        {
+            Shape.Lower => WrittenCase.Lower,
+            Shape.Capitalized when !initial && !inRun => WrittenCase.Capitalized,
+            _ => WrittenCase.None,
+        };
+    }
+
+    /// <summary>
+    ///     Tells whether a word of a segment next to the word being read is capitalized and so makes a run of capitalized
+    ///     words with it. The first word of the segment never counts: its capital is only the convention of a sentence.
+    ///     A neighbor outside the segment or without a letter (punctuation) is not capitalized.
+    /// </summary>
+    /// <param name="words">The words as written.</param>
+    /// <param name="index">The index of the neighbor.</param>
+    /// <param name="start">The index of the first word of the segment.</param>
+    /// <param name="end">The index after the last word of the segment.</param>
+    /// <param name="firstWord">The index of the first word with a letter of the segment.</param>
+    /// <returns>True when the neighbor is inside the segment, is not the first word and is not written in lower case.</returns>
+    private static bool IsCapitalizedNeighbor(List<string> words, int index, int start, int end, int firstWord) =>
+        index >= start && index < end && index != firstWord && ShapeOf(words[index]) != Shape.Lower;
+
+    /// <summary>
+    ///     Scales down the analyses whose lemma is written in the other case than the word and renormalizes. The
+    ///     analyses of one form can have a capitalized lemma (<c>Polish</c>, <c>August</c>) and a lower-case lemma
+    ///     (<c>polish</c>, <c>august</c>); the writer's case is evidence of which one is meant, but not proof (a name can
+    ///     be typed in lower case), so the mismatch is weighed down by <see cref="CaseMismatchWeight"/> rather than
+    ///     removed. When every analysis agrees or none does, nothing changes: a word never loses its only reading.
+    /// </summary>
+    /// <param name="analyses">The analyses of the word.</param>
+    /// <param name="written">What the case of the written word says.</param>
+    /// <param name="probabilities">The probability of each analysis, parallel to <paramref name="analyses"/>; rescaled in place to sum to 1.</param>
+    private static void ApplyCase(ImmutableArray<WordDetails> analyses, WrittenCase written, Span<double> probabilities)
+    {
+        if (written == WrittenCase.None)
+        {
+            return;
+        }
+
+        var agreeing = 0;
+        foreach (var analysis in analyses)
+        {
+            agreeing += IsCapitalizedLemma(analysis.Lemma) == (written == WrittenCase.Capitalized) ? 1 : 0;
+        }
+
+        if (agreeing == 0 || agreeing == analyses.Length)
+        {
+            return;
+        }
+
+        var sum = 0.0;
+        for (var j = 0; j < analyses.Length; j++)
+        {
+            probabilities[j] *= IsCapitalizedLemma(analyses[j].Lemma) == (written == WrittenCase.Capitalized) ? 1.0 : CaseMismatchWeight;
+            sum += probabilities[j];
+        }
+
+        for (var j = 0; j < analyses.Length; j++)
+        {
+            probabilities[j] /= sum;
+        }
+    }
+
+    /// <summary>
+    ///     Tells whether a lemma is capitalized: its first character is an upper-case letter.
+    /// </summary>
+    /// <param name="lemma">The lemma as written in the lexicon.</param>
+    /// <returns>True when the lemma starts with an upper-case letter (<c>Polish</c>, <c>August</c>).</returns>
+    private static bool IsCapitalizedLemma(string lemma) => lemma.Length > 0 && char.IsUpper(lemma[0]);
+
+    /// <summary>
+    ///     The shape of a written word, from the case of its letters.
+    /// </summary>
+    private enum Shape
+    {
+        /// <summary>No letter is upper case (<c>polish</c>).</summary>
+        Lower,
+
+        /// <summary>Only the first of two or more letters is upper case (<c>Polish</c>).</summary>
+        Capitalized,
+
+        /// <summary>Every letter is upper case (<c>POLISH</c>, <c>I</c>).</summary>
+        Upper,
+
+        /// <summary>Any other mix of upper-case and lower-case letters (<c>pOlIsh</c>, <c>McDonald</c>).</summary>
+        Mixed,
+    }
+
+    /// <summary>
+    ///     What the case of a written word says about the case of its lemma.
+    /// </summary>
+    private enum WrittenCase
+    {
+        /// <summary>The case says nothing about the lemma.</summary>
+        None,
+
+        /// <summary>The word is written in lower case: a capitalized lemma is less likely.</summary>
+        Lower,
+
+        /// <summary>The word is an isolated capitalized word inside a sentence: a lower-case lemma is less likely.</summary>
+        Capitalized,
+    }
+
+    /// <summary>
+    ///     What surrounds a word with several analyses and bears on the choice among them.
+    /// </summary>
+    /// <param name="AfterDeterminer">Whether the previous word is an article or a possessive determiner.</param>
+    /// <param name="Case">What the written case of the word says about its lemma.</param>
+    private readonly record struct Surroundings(bool AfterDeterminer, WrittenCase Case);
+
+    /// <summary>
     ///     Tells whether a word is an article or a possessive determiner, after which an auxiliary verb cannot follow
     ///     (<c>the can</c>, <c>his will</c>): the word that follows is a noun. Quantifiers such as <c>all</c> or
     ///     <c>some</c> are not in the set because they can precede an auxiliary (<c>all can see</c>).
@@ -242,7 +447,7 @@ internal sealed class BasicClassifier
         return mask;
     }
 
-    private ClassifyResult Choose(BasicTables tables, string word, string key, ImmutableArray<WordDetails> analyses, ReadOnlySpan<double> posterior, ReadOnlySpan<FeatureRef> features, bool afterDeterminer)
+    private ClassifyResult Choose(BasicTables tables, string word, string key, ImmutableArray<WordDetails> analyses, ReadOnlySpan<double> posterior, ReadOnlySpan<FeatureRef> features, Surroundings around)
     {
         var count = analyses.Length;
         Span<double> cues = count <= 32 ? stackalloc double[32] : new double[count];
@@ -264,7 +469,7 @@ internal sealed class BasicClassifier
 
         // After an article or a possessive the word is not an auxiliary: remove that mass from the posterior
         ReadOnlySpan<double> effective = posterior;
-        if (afterDeterminer && posterior[PosTag.Auxiliary] > 0)
+        if (around.AfterDeterminer && posterior[PosTag.Auxiliary] > 0)
         {
             var adjusted = posterior.ToArray();
             adjusted[PosTag.Auxiliary] = 0;
@@ -272,6 +477,7 @@ internal sealed class BasicClassifier
         }
 
         SenseFusion.Fuse(effective, analyses, cues, tables.HmmWeight, tables.InvTemperature, probabilities);
+        ApplyCase(analyses, around.Case, probabilities);
         var list = ListAnalyses(analyses, probabilities, out var selectedGroup, out var slotProbability);
         return Answer(word, list, selectedGroup, slotProbability);
     }
@@ -469,10 +675,24 @@ internal sealed class BasicClassifier
         }
 
         PosTagger.Posteriors(tables, tokens.AsSpan(0, length), posteriors.AsSpan(0, length * PosTag.Count));
+        var titleCase = IsTitleCaseSegment(words, start, length);
+        var firstWord = start;
+        while (firstWord < start + length - 1 && !CueModel.HasLetter(words[firstWord]))
+        {
+            firstWord++;
+        }
+
         for (var i = 0; i < length; i++)
         {
             var word = words[start + i];
             var key = Normalize(word);
+            var written = key.Length == 0
+                ? WrittenCase.None
+                : CaseOf(
+                    word,
+                    start + i == firstWord,
+                    titleCase,
+                    IsCapitalizedNeighbor(words, start + i - 1, start, start + length, firstWord) || IsCapitalizedNeighbor(words, start + i + 1, start, start + length, firstWord));
             var analyses = key.Length == 0 ? default : _lexicon(key);
             if (analyses.IsDefaultOrEmpty)
             {
@@ -485,7 +705,8 @@ internal sealed class BasicClassifier
             else
             {
                 var featureCount = CueModel.Extract(lower.AsSpan(start, length), i, features);
-                results[start + i] = Choose(tables, word, key, analyses, posteriors.AsSpan(i * PosTag.Count, PosTag.Count), features.AsSpan(0, featureCount), i > 0 && IsNounDeterminer(lower[start + i - 1]));
+                var around = new Surroundings(i > 0 && IsNounDeterminer(lower[start + i - 1]), written);
+                results[start + i] = Choose(tables, word, key, analyses, posteriors.AsSpan(i * PosTag.Count, PosTag.Count), features.AsSpan(0, featureCount), around);
             }
         }
     }

@@ -20,6 +20,7 @@ sections:
                 tests:
                   - BasicClassifier_ClassifyAsync_UnknownWord_ReturnsNoDetails
                   - BasicClassifier_ClassifyAsync_UnknownWord_HasNoAnalyses
+                  - BasicClassifier_ClassifyAsync_CapitalizedWordNotInLexicon_IsUnknown
                   - BasicClassifier_ClassifyAsync_NumberWord_ReturnsDetails
 
               - id: WordSense-Core-BasicClassifier-SingleSense
@@ -125,15 +126,168 @@ sections:
                 tests:
                   - BasicClassifier_ClassifyAsync_IsDeterministicAndThreadSafe
 
+              - id: WordSense-Core-BasicClassifier-Case
+                title: |-
+                  BasicClassifier shall treat the case in which a word is written as evidence for the case of the lemma
+                  of a word that has both capitalized lemmas (a lemma whose first letter is upper case, such as Polish
+                  or August) and lower-case lemmas (polish, august) among its analyses: it shall multiply the
+                  probability of each analysis whose lemma has the other case than the evidence by 0.1, after the other
+                  evidence has been combined, and then scale the probabilities of all analyses of the word to sum to 1,
+                  so that the analyses are listed as always (the lemma and part of speech with the largest probability
+                  first, equal probabilities in lexicon order). The cases of the child requirements use these terms:
+                  a segment is a run of consecutive tokens that ends after a token of ".", "!" or "?" (or at the end of
+                  the input); a word is a token with at least one letter; the first word of a segment is its first
+                  word, so a punctuation token such as a quotation mark before it does not change that; the shape of a
+                  word is read from its letters only: lower case (no upper-case letter), upper case (every letter is
+                  upper case, so a single capital letter such as I is upper case), capitalized (two or more letters,
+                  the first upper case and no other), and mixed case (any other word, such as pOlIsh or McDonald); the
+                  neighbors of a word are the token directly before it and the token directly after it in the same
+                  segment, and a neighbor is capitalized when it is a word that is not the first word of the segment and
+                  whose shape is not lower case (a punctuation token is a neighbor but is never capitalized, so it ends
+                  a run, and the first word of the segment is never a capitalized neighbor); a run is a capitalized word
+                  together with its capitalized neighbors; a segment is a title-case segment when it has at least two
+                  words and every word is not written in lower case or is one of the small words a, an, and, as, at,
+                  but,
+                  by, for, in, of, on, or, the, to, with in lower case. A heading is not a separate kind of input, so a
+                  heading is covered by these rules only where it is a run, upper case or a title-case segment.
+                tags: [unit]
+                justification: |
+                  A writer capitalizes a proper name and not a common word, so the case separates the language Polish
+                  from the shoe polish and the month August from the adjective august where the context alone is a near
+                  tie (0.52 against 0.47 for the sentence "My neighbor speaks fluent Polish"). The evidence is a prior,
+                  not a rule, because a name can be typed in lower case and a common word capitalized for emphasis, so
+                  the other analyses keep a tenth of their weight and a clear context can still outweigh it. A parent
+                  requirement carries the terms and the effect once; the child requirements state each case that can
+                  be tested on its own.
+                children:
+                  - WordSense-Core-BasicClassifier-Case-Lower
+                  - WordSense-Core-BasicClassifier-Case-Capitalized
+                  - WordSense-Core-BasicClassifier-Case-SentenceStart
+                  - WordSense-Core-BasicClassifier-Case-CapitalizedRun
+                  - WordSense-Core-BasicClassifier-Case-TitleCaseSegment
+                  - WordSense-Core-BasicClassifier-Case-UpperOrMixed
+                  - WordSense-Core-BasicClassifier-Case-SameCaseLemmas
+                tests:
+                  - BasicClassifier_ClassifyAsync_EmbeddedLexicon_SelectsTheLemmaOfTheWrittenCase
+                  - BasicClassifier_ClassifyAsync_LowerCaseWordInsideSentence_ListsTiedAnalysesInLexiconOrder
+
+              - id: WordSense-Core-BasicClassifier-Case-Lower
+                title: >-
+                  BasicClassifier shall, for a word written in lower case (as defined in
+                  WordSense-Core-BasicClassifier-Case) that is not in a title-case segment, whatever its position in
+                  its segment (the first word included), give the analyses whose lemma is capitalized a tenth of the
+                  weight of the analyses whose lemma is in lower case, so that the lower-case lemma is selected when the
+                  other evidence is equal.
+                tags: [unit]
+                justification: |
+                  A proper name is not written without its capital, so a lower-case word is evidence for a common
+                  lemma in any position, and the shoe polish is not mistaken for the language Polish.
+                tests:
+                  - BasicClassifier_ClassifyAsync_LowerCaseWordInsideSentence_PrefersTheLowerCaseLemma
+                  - BasicClassifier_ClassifyAsync_LowerCaseWordAtTheStart_PrefersTheLowerCaseLemma
+
+              - id: WordSense-Core-BasicClassifier-Case-Capitalized
+                title: >-
+                  BasicClassifier shall, for an isolated capitalized word (a capitalized word, as defined in
+                  WordSense-Core-BasicClassifier-Case, that is not the first word of its segment, is not in a
+                  title-case segment and has no capitalized neighbor), give the analyses whose lemma is in lower case a
+                  tenth of the weight of the analyses whose lemma is capitalized, so that the capitalized lemma is
+                  selected when the other evidence is equal; a punctuation token next to the word does not make it part
+                  of a run.
+                tags: [unit]
+                justification: |
+                  A capital inside a sentence marks a proper name, so the language Polish is not mistaken for the shoe
+                  polish in "fluent Polish and a little German".
+                tests:
+                  - BasicClassifier_ClassifyAsync_CapitalizedWordInsideSentence_PrefersTheCapitalizedLemma
+                  - BasicClassifier_ClassifyAsync_CapitalizedWordNextToPunctuation_PrefersTheCapitalizedLemma
+                  - BasicClassifier_ClassifyAsync_SegmentWithLowerCaseContentWord_IsNotTitleCase
+                  - BasicClassifier_ClassifyAsync_SentenceInitialWord_DoesNotMakeARun
+                  - BasicClassifier_ClassifyAsync_SentenceInitialWordAfterQuotationMark_DoesNotMakeARun
+
+              - id: WordSense-Core-BasicClassifier-Case-SentenceStart
+                title: >-
+                  BasicClassifier shall treat the capital letter of the first word of a segment (as defined in
+                  WordSense-Core-BasicClassifier-Case: at the start of the input, after a sentence-ending token, or
+                  after punctuation tokens only such as a quotation mark) as no evidence for the lemma, leaving the
+                  probabilities of the analyses of that word as the other evidence gives them.
+                tags: [unit]
+                justification: |
+                  Every sentence starts with a capital, so it says nothing about whether the word is a name, and the
+                  context has to decide.
+                tests:
+                  - BasicClassifier_ClassifyAsync_SentenceInitialCapital_AtTheStartOfTheText_CarriesNoCaseEvidence
+                  - BasicClassifier_ClassifyAsync_SentenceInitialCapital_AfterQuotationMark_CarriesNoCaseEvidence
+                  - BasicClassifier_ClassifyAsync_SentenceInitialCapital_InLaterSegment_CarriesNoCaseEvidence
+
+              - id: WordSense-Core-BasicClassifier-Case-CapitalizedRun
+                title: >-
+                  BasicClassifier shall treat a capitalized word that has a capitalized neighbor (as defined in
+                  WordSense-Core-BasicClassifier-Case: the word directly before or directly after it, not the first
+                  word of the segment, in capitalized, upper-case or mixed-case shape) as no evidence for the lemma,
+                  leaving the probabilities of its analyses as the other evidence gives them.
+                tags: [unit]
+                justification: |
+                  A run of capitalized words is a name or a title (State Department, Polish Prime Minister), in which
+                  a common word is capitalized as part of the name and its lemma stays the common one.
+                tests:
+                  - BasicClassifier_ClassifyAsync_CapitalizedWordBeforeCapitalizedWord_CarriesNoCaseEvidence
+                  - BasicClassifier_ClassifyAsync_CapitalizedWordAfterCapitalizedWord_CarriesNoCaseEvidence
+                  - BasicClassifier_ClassifyAsync_CapitalizedWordNextToUpperCaseWord_CarriesNoCaseEvidence
+                  - BasicClassifier_ClassifyAsync_CapitalizedWordNextToMixedCaseWord_CarriesNoCaseEvidence
+
+              - id: WordSense-Core-BasicClassifier-Case-TitleCaseSegment
+                title: >-
+                  BasicClassifier shall treat every word of a title-case segment (as defined in
+                  WordSense-Core-BasicClassifier-Case) as no evidence for the lemma, leaving the probabilities of
+                  their analyses as the other evidence gives them.
+                tags: [unit]
+                justification: |
+                  A title capitalizes every word by convention, so the case of a word in it says nothing about its
+                  lemma.
+                tests:
+                  - BasicClassifier_ClassifyAsync_TitleCaseSegment_CarriesNoCaseEvidence
+
+              - id: WordSense-Core-BasicClassifier-Case-UpperOrMixed
+                title: >-
+                  BasicClassifier shall treat a word written in upper case (a single capital letter such as I included)
+                  or in mixed case (as defined in WordSense-Core-BasicClassifier-Case) as no evidence for the lemma,
+                  leaving the probabilities of its analyses as the other evidence gives them.
+                tags: [unit]
+                justification: |
+                  An upper-case word is emphasis or an acronym, the capital letter I is spelled so in every sentence,
+                  and a mixed-case word (pOlIsh, eBay) follows no convention of proper names.
+                tests:
+                  - BasicClassifier_ClassifyAsync_AllCapsWord_CarriesNoCaseEvidence
+                  - BasicClassifier_ClassifyAsync_SingleCapitalLetter_CarriesNoCaseEvidence
+                  - BasicClassifier_ClassifyAsync_MixedCaseWord_CarriesNoCaseEvidence
+
+              - id: WordSense-Core-BasicClassifier-Case-SameCaseLemmas
+                title: >-
+                  BasicClassifier shall leave the analyses and the probabilities of a word unchanged by its written
+                  case when all its analyses have capitalized lemmas or all have lower-case lemmas, so that a name
+                  written in lower case, a capitalized word with only lower-case lemmas and a word with a single
+                  analysis keep every analysis.
+                tags: [unit]
+                justification: |
+                  The case only separates lemmas that differ in case; a word must never lose its only reading because
+                  it is written in an unusual case.
+                tests:
+                  - BasicClassifier_ClassifyAsync_OnlyCapitalizedLemmas_KeepEveryAnalysisInLowerCase
+                  - BasicClassifier_ClassifyAsync_OnlyCapitalizedLemma_StaysKnownInLowerCase
+                  - BasicClassifier_ClassifyAsync_CapitalizedWordWithoutCapitalizedLemma_IsAnsweredLikeLowerCase
+
               - id: WordSense-Core-BasicClassifier-Normalization
                 title: >-
-                  BasicClassifier shall look words up case-insensitively, read the curly apostrophe as a straight one
+                  BasicClassifier shall look words up case-insensitively (in lower case), read the curly apostrophe
+                  as a straight one
                   and treat a token without a letter as unknown.
                 tags: [unit]
                 justification: |
                   Callers pass words as written in their text, including capitalization and typographic punctuation.
                 tests:
                   - BasicClassifier_ClassifyAsync_MixedCaseAndCurlyApostrophe_AreNormalized
+                  - BasicClassifier_ClassifyAsync_CapitalizedWordInsideSentence_IsLookedUpInLowerCase
                   - BasicClassifier_ClassifyAsync_Punctuation_IsUnknown
 
               - id: WordSense-Core-BasicClassifier-Validation

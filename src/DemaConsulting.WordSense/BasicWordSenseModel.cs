@@ -13,7 +13,15 @@ namespace DemaConsulting.WordSense;
 ///     that a sense is known: test the level). For a word with
 ///     several analyses, a hidden Markov model over the whole sentence estimates the part of speech of the word, a naive
 ///     Bayes model over the neighboring words separates analyses that share a part of speech (the past and the present of
-///     <c>read</c>), and the two are combined into one probability per analysis; <see cref="ClassifyResult.Analyses"/>
+///     <c>read</c>), and the two are combined into one probability per analysis. The case in which a word is written
+///     is evidence too, for a form that has both a capitalized and a lower-case lemma (<c>Polish</c> and <c>polish</c>,
+///     <c>August</c> and <c>august</c>): a lower-case word weighs the capitalized lemmas down, and an isolated
+///     capitalized word inside a sentence (a capitalized word is isolated when the words directly before and after it are
+///     lower case or punctuation; a neighbor in upper case or mixed case, other than the first word of the sentence,
+///     makes a run) weighs the lower-case lemmas down. A capital at the start of a sentence, a capitalized word in a run
+///     of capitalized words, an upper-case, single-letter or mixed-case word and the words of a title-case segment
+///     carry no such evidence, and a word never loses its only lemma;
+///     <see cref="ClassifyResult.Analyses"/>
 ///     lists every analysis with that probability, the analyses of the most probable lemma and part of speech first and
 ///     the best of them the selected analysis
 ///     (<see cref="ClassifyResult.Details"/>). The result is at the part-of-speech level with the probability of the

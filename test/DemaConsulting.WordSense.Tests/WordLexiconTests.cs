@@ -178,6 +178,133 @@ public class WordLexiconTests
     }
 
     /// <summary>
+    ///     The lexicon lists candidates, it does not choose among them: the exact spelling <c>Jack</c> lists the capitalized
+    ///     lemma of its own entry (marked <c>Capitalization=Title</c>) beside the lower-case lemmas of the same spelling.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Lookup_ExactCapitalizedSpelling_ListsTheCapitalizedLemmaBesideTheLowerCaseOnes()
+    {
+        // Arrange: Jack is stored as a spelling of its own, with a capitalized lemma that only that spelling has
+
+        // Act
+        var jack = WordLexicon.Lookup("Jack");
+
+        // Assert
+        Assert.Contains(jack, s => s.Lemma == "Jack" && s.PartOfSpeech == PartOfSpeech.Noun && s.Features.Contains("Capitalization=Title", StringComparison.Ordinal));
+        Assert.Contains(jack, s => s.Lemma == "jack" && s.PartOfSpeech == PartOfSpeech.Verb);
+    }
+
+    /// <summary>
+    ///     The lower-case spelling of a name that only its exact capitalized spelling has (<c>jack</c>) does not list it.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Lookup_LowerCaseSpelling_DoesNotListACapitalizedLemmaOfTheExactSpelling()
+    {
+        // Arrange: the capitalized lemma Jack belongs to the spelling Jack only
+
+        // Act
+        var jack = WordLexicon.Lookup("jack");
+
+        // Assert
+        Assert.DoesNotContain(jack, s => s.Lemma == "Jack");
+        Assert.Contains(jack, s => s.Lemma == "jack");
+    }
+
+    /// <summary>
+    ///     <c>Polish</c> has a capitalized and a lower-case lemma in both spellings: the form tables carry the capitalized
+    ///     entries into the lower-case spelling.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Lookup_PolishInBothSpellings_ListsBothLemmas()
+    {
+        // Arrange: the spellings Polish and polish
+
+        // Act
+        var capitalized = WordLexicon.Lookup("Polish");
+        var lower = WordLexicon.Lookup("polish");
+
+        // Assert: the language and the adjective, the shine and the verb, in both
+        foreach (var analyses in new[] { capitalized, lower })
+        {
+            Assert.Contains(analyses, s => s.Lemma == "Polish" && s.PartOfSpeech == PartOfSpeech.Noun);
+            Assert.Contains(analyses, s => s.Lemma == "Polish" && s.PartOfSpeech == PartOfSpeech.Adjective);
+            Assert.Contains(analyses, s => s.Lemma == "polish" && s.PartOfSpeech == PartOfSpeech.Noun);
+            Assert.Contains(analyses, s => s.Lemma == "polish" && s.PartOfSpeech == PartOfSpeech.Verb);
+        }
+    }
+
+    /// <summary>
+    ///     <c>August</c> has a capitalized and a lower-case lemma in both spellings.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Lookup_AugustInBothSpellings_ListsBothLemmas()
+    {
+        // Arrange: the spellings August and august
+
+        // Act
+        var capitalized = WordLexicon.Lookup("August");
+        var lower = WordLexicon.Lookup("august");
+
+        // Assert: the month and the adjective, in both
+        foreach (var analyses in new[] { capitalized, lower })
+        {
+            Assert.Contains(analyses, s => s.Lemma == "August" && s.PartOfSpeech == PartOfSpeech.Noun);
+            Assert.Contains(analyses, s => s.Lemma == "august" && s.PartOfSpeech == PartOfSpeech.Adjective);
+        }
+    }
+
+    /// <summary>
+    ///     The capitalized lemmas that the lookup lists have senses in the catalog.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Lookup_CapitalizedLemmas_HaveSenses()
+    {
+        // Arrange: the capitalized lemmas of Jack, Polish and August
+
+        // Act
+        var lemmas = new[] { ("Jack", PartOfSpeech.Noun), ("Polish", PartOfSpeech.Noun), ("polish", PartOfSpeech.Noun), ("August", PartOfSpeech.Noun) };
+
+        // Assert
+        Assert.All(lemmas, s => Assert.NotEmpty(WordLexicon.SensesOf(s.Item1, s.Item2)));
+    }
+
+    /// <summary>
+    ///     A spelling that is stored exactly gives exactly the analyses of that spelling, without a merge with those of
+    ///     another spelling.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Lookup_StoredSpelling_GivesTheAnalysesOfThatSpellingOnly()
+    {
+        // Arrange: Polish is stored as a spelling
+        var image = WordLexicon.Current;
+
+        // Act
+        var lookup = WordLexicon.Lookup("Polish");
+
+        // Assert
+        Assert.Equal(image.Analyses(image.Find("Polish")), lookup);
+        Assert.NotEqual(WordLexicon.Lookup("polish"), lookup);
+    }
+
+    /// <summary>
+    ///     A spelling that is not stored (<c>POLISH</c>) gives the analyses of its lower-case spelling first and then those
+    ///     of the other stored spellings with the same lower-case form, each analysis once.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Lookup_SpellingThatIsNotStored_ListsTheLowerCaseSpellingFirstWithoutDuplicates()
+    {
+        // Arrange: POLISH is not stored; polish and Polish are
+        var expected = WordLexicon.Lookup("polish").Concat(WordLexicon.Lookup("Polish")).Distinct().ToList();
+
+        // Act
+        var lookup = WordLexicon.Lookup("POLISH");
+
+        // Assert: the order is that of the concatenation, and no analysis occurs twice
+        Assert.Equal(expected, lookup);
+        Assert.Equal(lookup.Length, lookup.Distinct().Count());
+    }
+
+    /// <summary>
     ///     The past and the present of <c>read</c> are analyses of one entry that differ in their features, and the form
     ///     <c>reads</c> is the present only.
     /// </summary>

@@ -66,7 +66,7 @@ returns the analyses of the form (one per lemma, part of speech and features, ne
    cue table of the normalized word first (a form that spans lemmas, such as `left` or `bases`, has a table of its own)
    and then the table of the lemma of the first analysis. A table gives one cue score per analysis (`NaN` for an analysis
    it has no column for), otherwise no analysis has a cue score, which leaves the fusion to the tagger alone;
-   `SenseFusion.Fuse` gives one probability per analysis.
+   `SenseFusion.Fuse` gives one probability per analysis, and the case of the written word then adjusts it (below).
    The classifier builds an `AnalysisCandidate` for each analysis (with the one sense of an analysis that has exactly
    one sense) and sorts them with a stable insertion sort (the number of analyses is small): the slots (lemma and
    part of speech) by the sum of the probabilities of their analyses, largest first, a tie keeping the lexicon order
@@ -89,6 +89,55 @@ group level is never produced; the senses of an analysis are empty unless its le
 sense.
 
 `SegmentOf(words, index)` returns the start and length of the segment around a position.
+
+#### Case Evidence
+
+A form can have analyses with a capitalized lemma and with a lower-case lemma that its lower-case spelling carries
+(`Polish` and `polish`, `August` and `august`); the tagger and the cues are blind to the case, so on a near tie they chose
+by accident. The written case is evidence of which lemma is meant, and the classifier uses it as a prior on the
+analyses, applied to the probabilities after the fusion and renormalized:
+
+- **What a word says** (`CaseOf`, from the letters of the word as written). A word with no upper-case letter is
+  `Lower`, in any position: a proper name is not written without its capital. A word whose first letter alone is upper
+  case, of two letters or more, is `Capitalized`, and says something only when it is not the first word of its segment
+  (the first word with a letter, so a quotation mark before it does not change that), is not in a run of capitalized
+  words and the segment is not in title case. An upper-case word (`POLISH`), a single capital letter (the pronoun `I`, the
+  letter `A`: spelled so in every sentence) and a mixed-case word (`McDonald`, `eBay`) say nothing.
+- **Runs of capitalized words.** A `Capitalized` word is in a run when the word directly before it or directly after
+  it, in its segment, is also not written in lower case; the first word of the segment never counts as that neighbor,
+  because its capital is only the convention of a sentence, so `Polish` in `The Polish delegation` is isolated. A
+  neighbor without a letter (a comma, a quotation mark) is not capitalized, so punctuation ends a run; an upper-case or
+  mixed-case neighbor (`USA`, `iPhone`) that is not the first word counts as capitalized. A run is a name or a title
+  (`State
+  Department`, `United States`), where a common word is capitalized as part of it. Only the adjacent words are read: the
+  small words inside a name (`Secretary of State`) break the run, which is accepted for simplicity.
+- **Title-case segments** (`IsTitleCaseSegment`). A segment with at least two words that have letters, each of them
+  capitalized, upper case, mixed or one of the small words of a title in lower case (`a`, `an`, `and`, `as`, `at`, `but`,
+  `by`, `for`, `in`, `of`, `on`, `or`, `the`, `to`, `with`), capitalizes every word by convention, so no word of it says
+  anything, a lower-case small word included. A heading is not a separate kind of input (the words arrive as a tokenized
+  text): it is covered where it is a run, upper case or a title-case segment.
+- **The weight.** The probabilities come from the fusion first. An analysis whose lemma starts with a capital letter
+  disagrees with a `Lower` word, and one whose
+  lemma starts with a lower-case letter disagrees with a `Capitalized` word; its probability is multiplied by 0.1
+  (`CaseMismatchWeight`) and the probabilities of all analyses are divided by their new sum, so they still sum to one.
+  The listing that follows is the usual one (slots by total probability, ties in lexicon order), so among equally
+  probable analyses the first in lexicon order is selected. The constant is a prior on the writer (one chance in ten
+  that the convention was broken: a name typed in lower case, a common word capitalized for emphasis or in a title), not
+  a fitted value, and it is far from zero so that clear context can still outweigh it.
+- **Nothing to separate, nothing changes.** When every analysis of the word agrees with the case, or none does (a name
+  with capitalized lemmas only written in lower case, a capitalized word whose lemmas are all lower case), the
+  probabilities are left exactly as they are: a word never loses its only reading.
+- **Candidates.** The word is looked up in lower case, as every word is, so the candidates are the lemmas that the
+  lower-case spelling carries. A capitalized lemma that only the exact capitalized spelling has (`Jack`, `State`, `May`,
+  listed by `WordLexicon.TryLookup` for the exact spelling only, marked `Capitalization=Title`) is not a candidate. This
+  was measured: looking an isolated capitalized word up as written made Basic answer the capitalized lemma `State` for
+  the capitalized common word of legal and formal text (`each State`, `any State`), where the lemma is `state`, and the
+  sense-level precision on SemCor fell by up to four points for Basic with about 70 more wrong sense answers; the
+  run rule did not remove them because the words are isolated. The lemmas of `Polish` and `August` are carried by the
+  lower-case spelling and need no such lookup.
+
+The training is not affected (the cue tables and the tagger counts are built from lower-cased text), so the embedded
+table is unchanged.
 
 #### Error Handling
 

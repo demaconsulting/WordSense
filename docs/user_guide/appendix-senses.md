@@ -55,7 +55,8 @@ The word table knows 365,141 spellings (lemmas and inflected forms) of 224,004 e
 129,433 senses in 140 curated groups. Besides the lemmas listed below, every other word of the table is a dictionary
 word: it has no trained classifier, a word with one part of speech is answered directly with confidence 1, and a word
 with several parts of speech returns them as candidates, most frequent first (the encoder models answer it with the
-first one; the basic model chooses by tagger and context). A capitalized word is lower-cased before it is looked up.
+first one; the basic model chooses by tagger and context, and by the case of the word when the spelling has both a
+capitalized and a lower-case lemma). A capitalized word is looked up as written first and then in lower case.
 
 The lemmas listed below are the 856 trained lemmas (the lemmas that have anchor sentences), with 7,035 senses (147 of
 them project senses) and 140 groups.

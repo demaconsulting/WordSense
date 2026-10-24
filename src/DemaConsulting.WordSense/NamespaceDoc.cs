@@ -189,12 +189,21 @@ namespace DemaConsulting.WordSense;
 ///     </item>
 ///     </list>
 ///     <para>
-///     Case. The lexicon lookup lower-cases every word for all models, so <c>Record</c> and <c>RECORD</c> find the same
-///     entry. After the lookup the models differ. MiniLM is uncased: its tokenizer lower-cases the text, so case never
+///     Case. The lookup differs by consumer: <see cref="WordLexicon.Lookup"/> tries the exact spelling first and then the
+///     lower-case folding; the encoder models look a word up as written (with the same fallback); and Basic looks every
+///     word up in lower case, so for Basic <c>Record</c> and <c>RECORD</c> find the same entry. After the lookup the
+///     models differ. MiniLM is uncased: its tokenizer lower-cases the text, so case never
 ///     changes its answer. BertBaseCased is cased: it sees <c>READ</c>, <c>Read</c> and <c>read</c> as different word
-///     pieces, so keep the case of the original text and do not lower-case it yourself. Basic uses case in one place only: a word that is not in the lexicon and starts
-///     with an upper-case letter inside a sentence segment (not first) is tagged a noun (a likely proper noun), which
-///     helps the tagging of its neighbors; the lemma lookup and the cue words of Basic are lower-cased.
+///     pieces, so keep the case of the original text and do not lower-case it yourself. Basic uses case in two places. A
+///     word that is not in the lexicon and starts with an upper-case letter inside a sentence segment (not first) is
+///     tagged a noun (a likely proper noun), which helps the tagging of its neighbors. And for a word whose lower-case
+///     spelling has both a capitalized and a lower-case lemma (<c>Polish</c> and <c>polish</c>, <c>August</c> and
+///     <c>august</c>) the written case is evidence of the lemma: a word written in lower case weighs the capitalized
+///     lemma down to a tenth, and an isolated capitalized word inside a sentence weighs the lower-case lemma down to a
+///     tenth (the probabilities of the analyses are renormalized, so clear context can still outweigh it). A capital at
+///     the start of a segment, a capitalized word next to another capitalized word, an upper-case, single-letter or
+///     mixed-case word (<c>POLISH</c>, <c>I</c>, <c>pOlIsh</c>) and the words of a title-case segment carry no such
+///     evidence. The lemma lookup and the cue words of Basic are lower-cased.
 ///     </para>
 ///     <para>
 ///     Naming: the result of a classification is the record struct <see cref="ClassifyResult"/> (the word, the ranked

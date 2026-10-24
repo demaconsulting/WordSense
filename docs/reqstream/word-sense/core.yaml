@@ -18,6 +18,7 @@ sections:
               all others reference.
             children:
               - WordSense-Core-WordLexicon-Words
+              - WordSense-Core-WordLexicon-CaseCandidates
               - WordSense-Core-WordLexicon-Possessives
               - WordSense-Core-WordLexicon-Numerals
               - WordSense-Core-WordLexicon-Facts
@@ -122,7 +123,8 @@ sections:
             title: >-
               The core subsystem shall classify words from the core lexicon statistically, with no model download: an
               unknown word as unknown, with no analysis, and every known word with all its analyses and their
-              probabilities, the analysis that the sentence context makes most probable selected, at the part of speech
+              probabilities, the analysis that the sentence context (and, for a form that has a capitalized and a
+              lower-case lemma, the case of the written word) makes most probable selected, at the part of speech
               level, or at the sense level where the selected analysis has exactly one sense.
             tags: [subsystem]
             justification: |
@@ -139,11 +141,13 @@ sections:
               - WordSense-Core-BasicClassifier-Resolve
               - WordSense-Core-BasicClassifier-Level
               - WordSense-Core-BasicClassifier-Segments
+              - WordSense-Core-BasicClassifier-Case
               - WordSense-Core-BasicClassifier-Normalization
               - WordSense-Core-BasicClassifier-Validation
             tests:
               - BasicClassifier_ClassifyAsync_Context_ChoosesPartOfSpeech
               - BasicClassifier_ClassifyAsync_Context_SelectsTheMostProbableAnalysis
+              - BasicWordSenseModel_ClassifyAsync_CaseOfWord_ChoosesTheLemma
 
           - id: WordSense-Core-Candidates
             title: >-

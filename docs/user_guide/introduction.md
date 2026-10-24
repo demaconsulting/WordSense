@@ -129,7 +129,7 @@ not trained for with the Basic model of the core. (Before version 1.0 the Basic 
 
 | Package | Decides a multi-sense word by | Answers at | Needs files or network | Native dependency | Casing |
 | ------- | ----------------------------- | ---------- | ---------------------- | ----------------- | ------ |
-| `DemaConsulting.WordSense` | statistical tagger and context cues (the Basic model); word table and sense catalog | sense (one-sense words), otherwise part of speech | no | no | lower-cased |
+| `DemaConsulting.WordSense` | statistical tagger and context cues (the Basic model); word table and sense catalog | sense (one-sense words), otherwise part of speech | no | no | lower-cased lookup; case chooses between `Polish` and `polish` |
 | `DemaConsulting.WordSense.MiniLM` | all-MiniLM-L6-v2 encoder, fine-sense weights; Basic for the other words | sense, group or part of speech | 22 MiB, once | ONNX Runtime | uncased |
 | `DemaConsulting.WordSense.BertBaseCased` | bert-base-cased encoder; Basic for the other words | sense, group or part of speech | 104 MiB, once | ONNX Runtime | cased |
 
@@ -247,7 +247,12 @@ Every word follows the same path:
 An encoder model runs the encoder only when a sentence has a word that needs it, so a sentence without such a word
 costs no model call. Whatever is in the word table is classified, whatever its capitalization or a trailing
 possessive, and the table covers the inflected forms. (The Basic model's tagger does use the capitalization of a
-word that is not in the table, as one of its features.)
+word that is not in the table, as one of its features.) The Basic model also reads the case of a word whose lower-case
+spelling has a capitalized and a lower-case lemma, such as `Polish` and `polish` or `August` and `august`: written in
+lower case, or capitalized on its own inside a sentence, the word prefers the lemma of that case (about ten to one, a
+prior that clear context can outweigh); a capital at the start of a sentence, a capitalized word next to another
+capitalized word, an upper-case or mixed-case word and the words of a title-case segment say nothing and the context decides.
+`WordLexicon.Lookup` lists the candidates of both cases and does not choose.
 
 ## The Result
 
@@ -603,9 +608,16 @@ token is known; "null" means `IsKnown` is `false`, `Details` is null and the con
 
 <!-- markdownlint-enable MD013 -->
 
-Case: the lookup lower-cases every word for all models. MiniLM is uncased (its tokenizer lower-cases, so case never
-changes its answer); BertBaseCased is cased, so keep the case of the original text; Basic uses case only for a word that
-is not in the lexicon and starts with an upper-case letter inside a segment (not first), which it tags as a noun.
+Case: the lookup lower-cases every word for Basic, and `WordLexicon.Lookup` tries the exact spelling first and the
+lower-case folding second. MiniLM is uncased (its tokenizer lower-cases, so case never changes its answer);
+BertBaseCased is cased, so keep the case of the original text. Basic uses case in two places. A word that is not in the
+lexicon and starts with an upper-case letter inside a segment (not first) is tagged as a noun. And for a word whose
+lower-case spelling has both a capitalized and a lower-case lemma (`Polish` and `polish`, `August` and `august`) the
+written case is evidence of the lemma: a word written in lower case, or an isolated capitalized word inside a sentence,
+weighs the analyses of the other case down to a tenth, which clear context can still outweigh. A capital at the start
+of a segment (also after a quotation mark), a capitalized word next to another capitalized word (`State Department`),
+the words of a title-case segment, and an upper-case, single-letter or mixed-case word (`POLISH`, `I`, `pOlIsh`) carry
+no such evidence.
 
 # The Models
 
