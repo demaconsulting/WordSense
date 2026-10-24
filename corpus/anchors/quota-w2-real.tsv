@@ -76,7 +76,7 @@ back	back#in-reply	Adverb	I texted Tom, but he hasn't gotten {back} to me.
 back	back#in-reply	Adverb	I heard nothing {back} from them.
 back	back#in-retaliation	Adverb	Give {back} some of what you've been given.
 back	back#move-backward	Verb	In Baton Rouge right now, the main river channels have become so full of water that this water is {backing} up the tributaries.
-back	back#rearward	Adverb	The Comanche Trail, as it was known, served as a major thoroughfare {back} and forth between the two countries.
+back	back#to-former-place	Adverb	The Comanche Trail, as it was known, served as a major thoroughfare {back} and forth between the two countries.
 back	back#rearward	Adverb	When a cat's ears are pulled {back} and their tail is tucked in, it means they feel threatened and should be left alone.
 back	back#to-former-place	Adverb	However, since the ground's heat remains confined to the top few inches of soil, it radiates {back} into the atmosphere, warming the air.
 back	back#to-former-place	Adverb	It's a one-way ticket. I don't know when I'll be {back}.
@@ -220,7 +220,7 @@ call	call#order	Verb	In essence, the report {called} for maintenance or restorat
 call	call#order	Verb	Why is Donald Trump {calling} to terminate the U.S. Constitution over Hunter Biden's penis?
 call	call#order	Verb	Immigrant organizations have {called} for the U.S. to give new TPS designations.
 call	call#regard	Verb	You {call} this art? It's just a splotch of paint on a canvas!
-call	call#regard	Verb	It was different enough from any other virus to be {called} "novel."
+call	call#label	Verb	It was different enough from any other virus to be {called} "novel."
 call	call#regard	Verb	A remedy or cure can be {called} tried-and-true.
 call	call#request	Noun	In response to the warning, Australian authorities say they are heeding the report's {call} for "ambitious, rapid and sustained" action to protect the reef.
 call	call#request	Noun	Now, the lab has put a {call} out for bird-watchers across North America to keep a special eye on nests in their own backyards.
@@ -311,7 +311,7 @@ check	check#inspection	Noun	Prelaunch Check After the balloon is inflated and up
 check	check#inspection	Noun	This pre-launch {check} should be brief and verified through the use of a pre-launch checklist.
 check	check#inspection	Noun	For the release mechanism {check}, the ground crewmember applies tension to the tow line and signals the glider pilot to activate the release.
 check	check#inspection	Noun	Since there was enough power for the hover {check}, the pilot decided there was sufficient power to takeoff.
-check	check#inspection	Noun	If for no other reason, the 5 P {check} reminds the pilot that the day's flight plan is real life and subject to change at any time.
+check	check#assessment	Noun	If for no other reason, the 5 P {check} reminds the pilot that the day's flight plan is real life and subject to change at any time.
 check	check#inspection	Noun	On this {check}, the cylinder head temperature gauge reading at the time the engine was shut down was 160 °C on both tests.
 check	check#source-check	Verb	A station license may be required when a balloon is operated outside the country; it is best to {check} with the appropriate local authorities before contemplating such an operation.
 check	check#source-check	Verb	The first chart to {check} for climb performance is a fuel, time, and distance-to-climb chart.
@@ -348,7 +348,6 @@ close	close#ending-time	Noun	After the Mariposa Indian War came to a {close}, Yo
 close	close#evenly-matched	Adjective	Latvians approved the plan to enter the EU by a wide margin, confounding predictions that the vote was going to be {close}.
 close	close#near	Adjective	To ensure that the carriage roads will continue to be maintained {close} to their original condition, the park has formed a partnership with Friends of Acadia.
 close	close#near	Adjective	It's not quite like that, but it's {close}.
-close	close#near	Adjective	It covers {close} to 40 percent of the lower 48 States.
 close	close#near	Adjective	With your foot in the door, you are one step {closer} to making that happen.
 close	close#near	Adjective	Talks on withholding arms began in April as Israel seemed {closer} to deciding what it would do in Rafah, a Biden administration official told VOA.
 close	close#near-in-place	Adverb	The vast majority of scientists agree that recent changes in Earth's climate are caused by human-produced greenhouse gases that trap heat {close} to the planet's surface.
@@ -358,7 +357,6 @@ close	close#near-in-place	Adverb	Scylla destroyed ships that came too {close}.
 close	close#nearby	Adjective	Male gray bats form bachelor colonies and hang out in caves that may be the same cave they overwinter in or in caves {closer} to their feeding grounds.
 close	close#nearby	Adjective	The {closer} the spacing, the greater the difference in temperature at that location.
 close	close#nearby	Adjective	Strong updrafts and downdrafts occur with regularity and within {close} proximity to each other.
-close	close#nearby	Adjective	And they were located so {close} to each other that they gave sailors an almost impossible choice.
 close	close#shut-opening	Verb	One day while they were all out at work a large band of Indians came to the cabin, my mother saw them coming and she {closed} and bolted the door.
 close	close#shut-opening	Verb	I {closed} the window because it was too noisy outside.
 close	close#shut-opening	Verb	Get your tail out of the door; I'm trying to {close} it.
@@ -482,7 +480,7 @@ cover	cover#report	Verb	VOA will {cover} the games in English, French, Portugues
 cover	cover#span	Verb	The directories in Gateway Arch National Park's holdings roughly {cover} the years 1821 to 1937.
 cover	cover#span	Verb	The footprint of the largest fire in park history {covers} 69% of the park.
 cover	cover#span	Verb	(Thunderstorms are from convective clouds and as such do not {cover} widespread areas, leading to large variances in rainfall.)
-cover	cover#span	Verb	Since the oceans {cover} nearly 75% of the Earth's surface, it is likely you will visit a beach at least once in your life.
+cover	cover#form-cover	Verb	Since the oceans {cover} nearly 75% of the Earth's surface, it is likely you will visit a beach at least once in your life.
 cover	cover#span	Verb	The period {covered} by the loop is almost one month from June to July of 1988.
 cover	cover#span	Verb	Two of these, the 1930s Dust Bowl drought and the 1950s drought, each lasted 5-7 seven years and {covered} large areas of the country with significant impacts.
 cover	cover#span	Verb	The area of strongest shaking {covered} about 1,000 square miles.
@@ -587,7 +585,7 @@ draw	draw#outline	Verb	You will {draw} lines connecting the temperatures much li
 draw	draw#outline	Verb	However, in order to get there, you must {draw} a line between a 50°F temperature along the Oregon coast and a 30°F temperature in Idaho.
 draw	draw#progress	Verb	Pretty soon he {drew} near to where I stood, and, surveying me with a curious glance, "Well, Bubby, how you feel?" he asked.
 draw	draw#progress	Verb	So when they {drew} near to the giant, he opened his eyes and asked what was the matter.
-draw	draw#pull	Verb	This type of fitting is used only to {draw} connections together or for attachment through bulkheads.
+draw	draw#pull-toward	Verb	This type of fitting is used only to {draw} connections together or for attachment through bulkheads.
 draw	draw#pull	Verb	Skipping from one end to the other, and then to the middle, is more likely to evenly {draw} the fabric tight.
 draw	draw#pull	Verb	Presently this strange individual {drew} in his line to examine his bait; and then, having satisfied himself as to its condition, he attempted to make a throw.
 draw	draw#pull	Verb	He had waded into the water as far as his long legs would carry him, and was standing with his neck {drawn} in, looking intently on the stream.
@@ -672,7 +670,7 @@ drive	drive#travel-by-car	Verb	If the balloon is moving at five knots, the chase
 drive	drive#travel-by-car	Verb	I can't {drive} anywhere because my car's out of gas.
 drive	drive#travel-by-car	Verb	I can't {drive} anywhere because my car's in the shop.
 drive	drive#travel-by-car	Verb	Why don't we {drive} up there?
-drive	drive#travel-by-car	Verb	The driver {drove} onto the frozen lake.
+drive	drive#drive	Verb	The driver {drove} onto the frozen lake.
 drive	drive#travel-by-car	Verb	Today, HVO scientists must first {drive} from their temporary office space in Hilo to Hawaiʻi Volcanoes National Park, about two hours round-trip, to reach their observation site at Halema'uma'u.
 drive	drive#travel-by-car	Verb	She noted that "a lot of people {drive} long distances" in rural areas and listen to the radio in the car.
 driving	driving#travel	Noun	I love having a car, but I hate {driving}.
@@ -899,7 +897,7 @@ first	first#first-item	Noun	The concepts of "nation" and "state" have been confl
 first	first#first-item	Noun	The {first} is its location in the urban heart of the Bay Area.
 first	first#first-item	Noun	The three most important ordinal numbers in the Olympics are {first}, second, and third.
 first	first#initial-stage	Adjective	The map, which will continue to be updated as science and exploration progress, is an important {first} step in understanding a resource with potential to be a significant future energy resource for the U.S.
-first	first#initial-stage	Adjective	Let's look at the {first} verse of the song.
+first	first#ordinal-initial	Adjective	Let's look at the {first} verse of the song.
 first	first#initial-time	Adverb	WNS was {first} detected at Mammoth Cave in 2012 and the park implemented strict WNS protocol for all people entering the cave to try to slow down the spread of this fatal disease.
 first	first#initial-time	Adverb	The curvature of the Earth was {first} photographed in 1931.
 first	first#initial-time	Adverb	This anomaly, {first} identified by satellite in the 1980s, has numerous mineral resource deposits around its edges.
@@ -1066,7 +1064,7 @@ go	go#proceed-fare	Verb	Howard needs the background measurements, because if all
 go	go#proceed-fare	Verb	Sometimes we use the expression "flash in the pan" for things that seem to be {going} well.
 go	go#remain-in-condition	Verb	Later the building was used for general storage of miscellaneous items and mostly {went} unused and unoticed.
 go	go#remain-in-condition	Verb	Tom {went} two weeks without taking a shower.
-go	go#survive	Verb	Some word experts say it refers to the period of time Jesus spent fasting -- {going} without food -- in the desert.
+go	go#remain-in-condition	Verb	Some word experts say it refers to the period of time Jesus spent fasting -- {going} without food -- in the desert.
 go	go#travel-move	Verb	I {went} to bed right after dinner.
 go	go#travel-move	Verb	First, the city where you're {going} has an unexpected electrical outage.
 go	go#travel-move	Verb	{Go} to YouTube and do a search for something like this as an example: "official trailer (2021)."
@@ -1106,7 +1104,7 @@ help	help#assistance	Noun	The farmers have asked Vietnamese agriculture official
 help	help#assistance	Noun	Stigma can prevent people from seeking {help} with their own mental illnesses.
 help	help#assistance	Noun	When we lean on someone's shoulder, we ask for their {help}.
 help	help#be-useful	Verb	The USGS provides science that {helps} inform stewardship of American energy and mineral resources to meet our security and economic needs.
-help	help#be-useful	Verb	Native shrubbery that died during a severe 7-year-long drought {helped} spread the 2017 Thomas and 2018 Woolsey Fires, according to research published in the journal, Ecosphere.
+help	help#further-cause	Verb	Native shrubbery that died during a severe 7-year-long drought {helped} spread the 2017 Thomas and 2018 Woolsey Fires, according to research published in the journal, Ecosphere.
 help	help#be-useful	Verb	They {help} express whether something has more or less of a particular quality.
 help	help#further-cause	Verb	It also {helps} relief efforts by the Federal Emergency Management Agency and other federal, state and local agencies by pinpointing the areas hardest hit by storm tide flooding.
 help	help#further-cause	Verb	In addition, USGS scientists will be flagging high-water marks to {help} efforts to forecast potential flooding during future events.
@@ -1129,7 +1127,7 @@ home	home#homeland	Noun	For nearly 40 years, China was her {home}.
 home	home#house-dwelling	Noun	The images clearly capture the damage at Florida's Vilano Beach, north of St. Augustine, where the storm surge and wave runup washed away a five-meter (16-foot) sand dune, destroying oceanfront {homes}' boardwalks and decks.
 home	home#house-dwelling	Noun	These are government or privately-run facilities that withdraw water from rivers, lakes, reservoirs, and wells and then deliver it to our {homes}, businesses, and schools.
 home	home#house-dwelling	Noun	Americans also compliment people on their possessions, such as a person's {home} (or things inside the home), car, bike, electronics or countless other possessions.
-home	home#residence-place	Noun	September is National Preparedness Month, a time for Americans to review their preparedness plans for disasters or emergencies in their {homes}...
+home	home#house-dwelling	Noun	September is National Preparedness Month, a time for Americans to review their preparedness plans for disasters or emergencies in their {homes}...
 home	home#residence-place	Noun	It is likely the water you use at {home} is brought to you by a public water-supply system.
 home	home#residence-place	Noun	At {home}, we fertilize our yards with nitrogen, potassium, and phosphorus.
 home	home#to-residence	Adverb	We were just on our way {home}.
@@ -1412,9 +1410,9 @@ landing	landing#arrival-2	Noun	{Landing} gear support trusses should be inspecte
 landing	landing#arrival-2	Noun	Unable to find one nearby, the pilot then returns to the initial {landing} area and decides he can make it work.
 landing	landing#arrival-2	Noun	Takeoff and {landing} can be shorter and less expensive.
 landing	landing#arrival-2	Noun	In response to a later revolution (the Escobar Rebellion of 1929), the Air Corps established a {landing} field at nearby Johnson's Ranch.
-lead	lead#jumper-cable	Noun	If possible, check the {lead} continuity from the distributor block to the contact spring. e. Check the insulators at the spark plug end of the lead for cracks, breaks, or evidence of old age.
-lead	lead#jumper-cable	Noun	In many cases, colored dots indicate the collector {lead}, and short leads relative to the other leads indicate the emitter.
-lead	lead#jumper-cable	Noun	Remove the elbow adapter from the spark plug end of the defective lead, then pull the old {lead} out and put the new lead into the harness.
+lead	lead#electrical-lead	Noun	If possible, check the {lead} continuity from the distributor block to the contact spring. e. Check the insulators at the spark plug end of the lead for cracks, breaks, or evidence of old age.
+lead	lead#electrical-lead	Noun	In many cases, colored dots indicate the collector {lead}, and short leads relative to the other leads indicate the emitter.
+lead	lead#electrical-lead	Noun	Remove the elbow adapter from the spark plug end of the defective lead, then pull the old {lead} out and put the new lead into the harness.
 lead	lead#preside	Verb	Student-Led Critique The instructor asks a student to {lead} the critique.
 lead	lead#preside	Verb	She {leads} the team meeting today.
 lead	lead#preside	Verb	William Stout teaches English as Foreign Language at Georgetown University in Washington, D.C. He has been {leading} pronunciation workshops for 10 years.
@@ -1539,7 +1537,7 @@ measure	measure#amount	Noun	Precipitable water (PW) is a {measure} of how much l
 measure	measure#amount	Noun	All preceding narrations are so intermixed with fable, that philosophers ought to abandon them in a great {measure}, to the embellishment of the poet and orator.
 measure	measure#evaluate	Verb	Medical professionals must first culture the bacteria, observe its growth, and then {measure} the bacterial infection's response to any of a number of antibiotic treatments.
 measure	measure#evaluate	Verb	These researchers {measure} colony health, productivity and survival of colonies in varying landscapes, while keeping track of Varroa mite infestation rates.
-measure	measure#evaluate	Verb	Another important piece of the USGS's pre-storm work is installing scientific instruments along the coast to {measure} a storm's impacts.
+measure	measure#take-measurements	Verb	Another important piece of the USGS's pre-storm work is installing scientific instruments along the coast to {measure} a storm's impacts.
 measure	measure#evaluate	Verb	"In addition, this modeling system can be used to assess the impacts of future changes in storms or sea level, helping us to {measure} when and how cost effective it is to adapt."
 measure	measure#legislative-bill	Noun	The {measure} abolishes the two-term limit for presidents and an age limit of 70 for presidential candidates.
 measure	measure#legislative-bill	Noun	Americans are more likely to vote yes on {measures} granting unlimited abortion than they are on measures that set limits on when it can occur.
@@ -1562,7 +1560,7 @@ measure	measure#take-measurements	Verb	They are ready to {measure} floodwaters i
 measure	measure#take-measurements	Verb	This specialized piece of equipment is a fully-functional streamgage designed to be deployed quickly and temporarily to {measure} and transmit real-time water level data in emergency situations.
 measure	measure#take-measurements	Verb	A sensor that resembles a large hula-hoop will be towed beneath the helicopter to {measure} small electromagnetic signals that can be used to map geologic features below Earth's surface.
 measure	measure#take-measurements	Verb	U.S. Geological Survey field crews are {measuring} flooding across eastern Minnesota, including parts of the Lake Superior and Rainy River Basins.
-measure	measure#take-measurements	Verb	The former {measures} the loss of biomass due to a fire while the latter measures the fire's emitted heat.
+measure	measure#quantify	Verb	The former {measures} the loss of biomass due to a fire while the latter measures the fire's emitted heat.
 mind	mind#consider	Verb	If you see something, {mind} your own business.
 mind	mind#intellect	Noun	When someone's piles of money run up against their clearly imprudent actions, it stands to reason that their piles of money did not come from their brilliant {mind}.
 mind	mind#intention	Noun	I've a great {mind} to cane you both within an inch of your precious lives, and send you skulking away, with your tails between your legs, like two whipped puppies.
@@ -1793,7 +1791,7 @@ pass	pass#hand-over	Verb	Could you please {pass} the hot sauce?
 pass	pass#hand-over	Verb	Tom {passed} a note to Mary.
 pass	pass#hand-over	Verb	Tom {passed} a note to Mary from John.
 pass	pass#happen	Verb	Well, her wish had come to {pass}; and I felt almost as though it were her fault that it had done so.
-pass	pass#inherit	Verb	Reparations for slavery are only fair because the money that was extracted from the unpaid labor of slaves was {passed} down through the generations.
+pass	pass#transfer	Verb	Reparations for slavery are only fair because the money that was extracted from the unpaid labor of slaves was {passed} down through the generations.
 pass	pass#make-law	Verb	In 1935 the federal government {passed} legislation to establish a national park.
 pass	pass#make-law	Verb	On June 7, 1924, Congress {passed} a bill to establish Utah National Park, when all land within the national monument would become the property of the United States.
 pass	pass#make-law	Verb	Many passionate people worked together to lobby, promote, and gather public support for Congress to {pass} enabling legislation to create the park.
@@ -1837,10 +1835,10 @@ pass	pass#time-pass	Verb	Sometimes we use this expression when we just want more
 pass	pass#transfer	Verb	The children eventually also became involved in the family business, renamed it The Ansel Adams Gallery and {passed} it onto their children.
 patch	patch#patch-repair	Verb	These types are negligible damage, damage repairable by {patching}, damage repairable by insertion, and damage necessitating replacement of parts.
 patch	patch#spot	Noun	If there are {patches} of oil or other substances, cover them with pieces of carpet, floor mats from the chase vehicle, tarps, or the envelope bag.
-pay	pay#dedicate	Verb	I can't {pay} attention to all those things at once.
-pay	pay#dedicate	Verb	Please don't {pay} any attention to me.
-pay	pay#dedicate	Verb	I want to {pay} attention to this one.
-pay	pay#dedicate	Verb	{Pay} careful attention to the terms and structures that the speakers use.
+pay	pay#bestow	Verb	I can't {pay} attention to all those things at once.
+pay	pay#bestow	Verb	Please don't {pay} any attention to me.
+pay	pay#bestow	Verb	I want to {pay} attention to this one.
+pay	pay#bestow	Verb	{Pay} careful attention to the terms and structures that the speakers use.
 pay	pay#repay	Verb	As though money could {pay} for what Mr. Finkelstein has done for you!
 pay	pay#yield-income	Verb	The job did not {pay} very much.
 permit	permit#consent	Verb	In such cases fishermen were {permitted} to fish commercially within Park waters but on a modest scale.
@@ -2094,24 +2092,24 @@ pressure	pressure#pressing	Noun	At the same time, elevator should usually be hel
 pressure	pressure#pressing	Noun	Rudder {pressure} is then released or opposite pressure is applied as needed.
 pressure	pressure#pressing	Noun	A pilot with a bad habit of dragging one wing low and compensating with opposite rudder {pressure} will have difficulty mastering other flight maneuvers.
 produce	produce#cause	Verb	Recent research indicates that climate change has doubled the likelihood of precipitation events capable of {producing} catastrophic flooding, and larger increases are likely due to continued warming.
-produce	produce#cause	Verb	Mechanical treatments can greatly reduce the potential for wildfire to spread and the volume of smoke that is {produced}.
+produce	produce#yield	Verb	Mechanical treatments can greatly reduce the potential for wildfire to spread and the volume of smoke that is {produced}.
 produce	produce#cause	Verb	Sometimes appearing as ragged sheets, stratus clouds do not {produce} a halo phenomenon except, occasionally, at very low temperatures.
 produce	produce#cause	Verb	This is precisely what occurred on April 4-5, 2011, when a serial derecho {produced} over 1,200 high wind reports (blue dots on image right).
-produce	produce#cause	Verb	As this new cell matures, the rain it {produces} reinforces the "pool" of rain-cooled air, allowing the gust front to maintain its strength.
+produce	produce#yield	Verb	As this new cell matures, the rain it {produces} reinforces the "pool" of rain-cooled air, allowing the gust front to maintain its strength.
 produce	produce#cause	Verb	These two images show how dual-polarization helps NWS forecasters detect a tornado that is {producing} damage.
-produce	produce#cause	Verb	The glowing coils in the toaster {produces} infrared radiation, heating the air inside the toaster.
-produce	produce#cause	Verb	They are often caused by stationary or slow-moving thunderstorms that {produce} heavy rain over a small area.
+produce	produce#yield	Verb	The glowing coils in the toaster {produces} infrared radiation, heating the air inside the toaster.
+produce	produce#yield	Verb	They are often caused by stationary or slow-moving thunderstorms that {produce} heavy rain over a small area.
 produce	produce#cause	Verb	NASA satellite research indicates that these storms {produce} lightning flashes about 40 times a second worldwide.
 produce	produce#cause	Verb	Not every lightning flash will {produce} a dart leader because a sufficient charge to initiate one must be available within about 100 milliseconds of the initial stepped leader.
 produce	produce#cause	Verb	The color often depends upon the type of dirt and debris it moves over (red dirt {produces} a red tornado, black dirt a black tornado, etc.).
 produce	produce#cause	Verb	This was primarily because there are no written records of such events, and it was believed the Cascadia subduction zone was not capable of {producing} great earthquakes.
 produce	produce#cause	Verb	The male cicadas are making all the racket -- a mating call {produced} by vibrating membranes in their abdomens.
-produce	produce#cause	Verb	The Christmas flood of 1964 was driven by atmospheric rivers or "pineapple express" storms that battered the region {producing} as much as 15 inches of rain in 24 hours at some locations.
-produce	produce#cause	Verb	Males develop a ridge of tissue that is filled with energy {producing} cells that heat up when females are around.
+produce	produce#yield	Verb	The Christmas flood of 1964 was driven by atmospheric rivers or "pineapple express" storms that battered the region {producing} as much as 15 inches of rain in 24 hours at some locations.
+produce	produce#yield	Verb	Males develop a ridge of tissue that is filled with energy {producing} cells that heat up when females are around.
 produce	produce#cause	Verb	The eruption {produced} 2,600 flashes per minute at peak intensity.
 produce	produce#cause	Verb	This swarm has {produced} a fairly constant trickle of earthquakes since December 2021, with 0 to 15 earthquakes larger than M2.0 occurring each month.
 produce	produce#cause	Verb	Similar storms occurring in the Amazon jungle and in the desert Southwest of the United States will {produce} different surface-runoff effects.
-produce	produce#cause	Verb	Sometimes we use it to describe a verb meaning to {produce} extreme heat.
+produce	produce#yield	Verb	Sometimes we use it to describe a verb meaning to {produce} extreme heat.
 produce	produce#cultivate	Verb	Salema says tsetse prevents farmers from {producing} large quantities of food by killing draught animals, such as horses and oxen.
 produce	produce#fresh-produce	Noun	These workers grew a {produce} garden, operated the laundry, and staffed the kitchen.
 produce	produce#fresh-produce	Noun	In late spring or early fall, cold air outbreaks can damage or kill {produce} for farmers, as well as residential plants and flowers.
@@ -2225,8 +2223,8 @@ read	read#read-aloud	Verb	Tim Meadows asked if he could {read} from a magazine l
 read	read#translate	Verb	I can {read} French much better than I can speak or compose in it.
 read	read#wording	Verb	So how would the sentence {read} then?
 read	read#wording	Verb	However, if he had put the object in the middle, how would the sentence {read} then?
-reason	reason#cause	Noun	The {reason} we have a patrol boat on the river is to take care of such cases.
-reason	reason#cause	Noun	But the {reason} for the assessment work requirement is to keep the claim valid so that someone else isn't entitled to jump it.
+reason	reason#ground	Noun	The {reason} we have a patrol boat on the river is to take care of such cases.
+reason	reason#ground	Noun	But the {reason} for the assessment work requirement is to keep the claim valid so that someone else isn't entitled to jump it.
 reason	reason#cause	Noun	Anger is there for a {reason}, but being angry all the time isn't healthy.
 reason	reason#cause	Noun	There's no {reason} for monogamy to enjoy a privileged position in our society.
 reason	reason#cause	Noun	Did any of the stoics ever talk about the positive aspects of emotions, how we have them for a {reason} even if we shouldn't be controlled by them?
@@ -2234,9 +2232,9 @@ reason	reason#explanation	Noun	The orang-outang and gorilla are for this {reason
 reason	reason#explanation	Noun	I'm lucky to have survived that year for multiple {reasons}.
 reason	reason#explanation	Noun	South Korea's communications commission (KCC) says a distributed denial of services (DDoS) attack, a common way to overload computer servers making websites unreachable, was not the {reason} computers at broadcasters and banks became paralyzed.
 reason	reason#explanation	Noun	The {reason} the revival of Hebrew succeeded is that Hebrew was never far from the lips and pens of the Jewish people.
-reason	reason#explanation	Noun	He was seeing everything and seeing nothing; acutely, quiveringly conscious and yet oblivious to his surroundings by {reason} of the poignancy of his thought.
+reason	reason#cause	Noun	He was seeing everything and seeing nothing; acutely, quiveringly conscious and yet oblivious to his surroundings by {reason} of the poignancy of his thought.
 reason	reason#explanation	Noun	Putin is the {reason} there isn't peace in Ukraine.
-reason	reason#explanation	Noun	The contract of insurance is defined as a contract by which the insurers agree to indemnify the person assured from any loss which he may sustain by {reason} of the perils insured against.
+reason	reason#cause	Noun	The contract of insurance is defined as a contract by which the insurers agree to indemnify the person assured from any loss which he may sustain by {reason} of the perils insured against.
 reason	reason#explanation	Noun	What was the {reason} for the delay?
 reason	reason#explanation	Noun	It's a complicated thing for so many {reasons}.
 reason	reason#explanation	Noun	None of these species is currently endangered or threatened, but barn owls, ferruginous hawks, golden eagles and American kestrel populations are already in decline for {reasons} other than wind energy development.
@@ -2315,8 +2313,8 @@ record	record#evidence	Noun	The strongest geomagnetic storm on {record} occurred
 record	record#evidence	Noun	Due to a poor fossil {record}, the origins of the ancestors of elephant seals and how they diverged and speciated into two species is difficult to pinpoint.
 record	record#evidence	Noun	The Woodbury Fire was the most severe on {record} and started in the nearby Superstition Wilderness on June 8, 2019.
 record	record#evidence	Noun	It provides imagery at landscape-scale resolution that can be used to support efforts to improve environmental sustainability, climate change resiliency, and economic growth -- all while expanding an unparalleled {record} of Earth's changing landscapes.
-record	record#evidence	Noun	It provides a continuous 52-year {record} of changes to the Earth's surface.
-record	record#evidence	Noun	The USGS operates the Landsat 7, 8, and 9 satellites currently in orbit as they continue to collect and contribute to a 50-year+ continuous observational {record} of the Earth's land surface.
+record	record#fact-compilation	Noun	It provides a continuous 52-year {record} of changes to the Earth's surface.
+record	record#fact-compilation	Noun	The USGS operates the Landsat 7, 8, and 9 satellites currently in orbit as they continue to collect and contribute to a 50-year+ continuous observational {record} of the Earth's land surface.
 record	record#evidence	Noun	The 10 million acres that burned in the United States in 2015 were the most on {record}, primarily due to drought conditions.
 record	record#evidence	Noun	Previously, this eruption style was only known from the geological {record} and had never been observed with modern instrumentation.
 record	record#evidence	Noun	Historical {records} show the species once spawned in at least 35 rivers in the U.S. and Canada, with the Delaware River thought to have supported the largest population of Atlantic sturgeon.
@@ -2329,7 +2327,7 @@ record	record#fact-compilation	Noun	The study, conducted during a 9-year period,
 record	record#fact-compilation	Noun	Since 1965, Cornell University's Laboratory of Ornithology has collected over 400,000 {records} on most of North America's breeding birds.
 record	record#fact-compilation	Noun	First responders rely on the USGS National Geospatial Program, which shares digital {records} of the nation's topography.
 record	record#fact-compilation	Noun	"Wave sensors capture data at a very high frequency, so we are able to receive extremely detailed and comprehensive {records}."
-record	record#fact-compilation	Noun	Another employee is good with numbers, so you have them take care of {records} and payments.
+record	record#evidence	Noun	Another employee is good with numbers, so you have them take care of {records} and payments.
 record	record#legal-document	Noun	Now, sir, we have caused a search to be made in the {records} of the Probate Court of this County, and we find that the said decedent did in fact die intestate.
 record	record#legal-document	Noun	The {records} will include birth, marriage, death and immigration certificates once not obtainable on the Internet.
 record	record#track-record	Noun	Does your academic {record} reflect any major challenges? If so, what are they and why did they occur?
@@ -2354,8 +2352,6 @@ ride	ride#vehicle-trip	Noun	My buddy's looking for a {ride} to Boston.
 ride	ride#vehicle-trip	Noun	I'm not giving you any more {rides}.
 ride	ride#vehicle-trip	Noun	After a short, bumpy car {ride}, he stops at a small grassy field filled with milkweed, Canada thistle and bees.
 ride	ride#vehicle-trip	Noun	But then I got an emergency call from my brother who needed a {ride}.
-right	right#accurately	Adverb	George R. R. Martin gets the brutality of the Middle Ages {right}, but never tackles the mobs, riots, pogroms, and general mass psychology of the time.
-right	right#accurately	Adverb	The agency found that "on average, Phil has gotten it {right} 40 percent of the time."
 right	right#agreement-yes	Adverb	Who's Tom? Oh, {right}. I had a brain fart.
 right	right#agreement-yes	Adverb	{Right}, but as a verb it means to abruptly cut off contact.
 right	right#agreement-yes	Adverb	Archie: All right, all {right}, I apologize.
@@ -2691,7 +2687,6 @@ sound	sound#seem	Verb	For example, the words "get him" {sound} like "geddum."
 sound	sound#seem	Verb	If you think that {sounds} old, you may be surprised to learn that the origin of "spill the beans" goes back to ancient Greece.
 sound	sound#seem	Verb	And so, when the English said this word, it {sounded} like Santa Claus.
 sound	sound#seem	Verb	It {sounds} as if someone has become two people.
-sound	sound#seem	Verb	Common linking verbs used to describe music include "be" and "{sound}."
 sound	sound#sound-quality	Noun	Small trail bridges and tickling streams dot the landscape and are a great place to pause and take in the {sound}.
 sound	sound#sound-quality	Noun	In 1881, while riding their horses up a draw, Tom and Jesse Bingham heard the {sound} of blowing wind on a calm day.
 sound	sound#sound-quality	Noun	It was probably a noisy world, with thousands of other animal {sounds}, rushing streams and the rustle of giant ferns and coniferous trees.
@@ -2882,7 +2877,6 @@ talk	talk#talking	Noun	He sat quietly while others did the {talking}.
 talk	talk#talking	Noun	Being a man of few words, Mr. Jones sat quietly while others did the {talking}.
 talk	talk#use-language	Verb	It is just so in learning a foreign language, and it was just the same when in childhood we learned to walk, to {talk}, and to write.
 talk	talk#use-language	Verb	Two apples are baking in an oven. One of them says, "It sure is hot in here." The other goes, "AHHH! A {talking} apple!"
-talk	talk#use-language	Verb	In the first, the subject and verb are "I {talk}."
 talk	talk#use-language	Verb	And there are magical animals that can {talk} and have human-like traits in fairy tales.
 talk	talk#use-language	Verb	The cat in Puss in Boots {talks} and wears boots.
 talk	talk#use-language	Verb	Are there any magical numbers or {talking} animals?
@@ -2891,7 +2885,7 @@ tap	tap#exploit	Verb	The pilot has two sources of stored energy to {tap} into.
 tap	tap#knock	Verb	However, delamination of spar to skin or other structural problems may be identified by bubbles, fine hair-line cracks, or changes in sound when gently {tapping} on the structure with a fingertip.
 tap	tap#rap	Noun	{Tap} testing is limited to finding relatively shallow de - fects in skins with a thickness less than .080 inch.
 tap	tap#rap	Noun	{Tap} testing on one side alone would not detect debonding on the opposite side.
-tap	tap#rap	Noun	This signaling system usually consists of tapping the bucking bar against the work and is often called the {tap} code.
+tap	tap#pat	Noun	This signaling system usually consists of tapping the bucking bar against the work and is often called the {tap} code.
 tap	tap#tool	Noun	The plug {tap} supplements the taper tap for tapping holes in thick stock.
 tap	tap#tool	Noun	Step 3: Tap--use the {tap} of required nominal thread size.
 tap	tap#tool	Noun	Brass or stainless steel spark plug bushings are usually cleaned with a spark plug bushing cleanout {tap}.
@@ -2912,9 +2906,6 @@ tie	tie#cord	Noun	A 90 ° or "Y" type spot {tie} should be installed at the harn
 tie	tie#cord	Noun	A {tie} consists of a clove hitch, around the wire group or bundle, secured by a square knot as shown in figure 11-17. c. Plastic Ties.
 tie	tie#cord	Noun	Lines tied to the basket form a huge loop that may snag a tree limb and should be secured with a light, breakaway {tie}.
 tie	tie#cord	Noun	If the thermocouple leads were excessive in length and had to be coiled and tied down, the {tie} should be inspected for security or chafing of the wire.
-tie	tie#link	Noun	Protecting the glider from wind may involve securing a wingtip with a weight or {tie} down.
-tie	tie#link	Noun	For example, failing to remove one or all of the {tie} downs and attempting to take off would probably result in a dynamic rollover accident.
-tie	tie#link	Noun	The type of {tie} downs may vary significantly from chains to well-worn ropes.
 tie	tie#make-by-tying	Verb	Alternate sequence to {tie} a modified seine knot for rib lacing.
 tie	tie#make-by-tying	Verb	The tie is started by wrapping the cord around the wire group to {tie} a clove-hitch knot.
 tied	tied#fastened	Adjective	With the tail of the glider {tied} down, the ground crew would attach the center of a bungee cord to a hook on the nose of the glider.
@@ -2990,7 +2981,7 @@ type	type#case	Noun	Tom is a classic tsundere {type}.
 type	type#case	Noun	"I didn't think Tom was your {type}." "I have many types."
 type	type#case	Noun	You're a lot of people's {type}.
 type	type#case	Noun	"I think Mary's into me." "I doubt it. You're not her {type}."
-type	type#case	Noun	He's the {type} of man who could sell ice to an Eskimo, meaning he could talk you into anything.
+type	type#form	Noun	He's the {type} of man who could sell ice to an Eskimo, meaning he could talk you into anything.
 type	type#case	Noun	He doesn't seem like the {type}.
 type	type#form	Noun	Distinguishing between cloud {types} can be difficult.
 type	type#form	Noun	The third {type} of derecho is known as a "hybrid" derecho, which have characteristics of both the "progressive" and "serial" types.
@@ -3174,8 +3165,8 @@ visit	visit#visit	Noun	Mountain lions can be unpredictable and dangerous; we hig
 visit	visit#visit	Noun	Muir met Clark at his Wawona ranch during the legendary botanist's first {visit} to Yosemite.
 visit	visit#visit	Noun	Clark accompanied Ralph Waldo Emerson, along with Muir, during the poet's 1871 {visit} to the Mariposa Grove.
 visit	visit#visit	Noun	A {visit} to the beach provides a respite from the security checks and bustle of the Olympic Park.
-voice	voice#communication-medium	Noun	The {voice} in Tom's head narrates his life.
-voice	voice#communication-medium	Noun	The {voices} in Tom's head speak French.
+voice	voice#vocal-sound	Noun	The {voice} in Tom's head narrates his life.
+voice	voice#vocal-sound	Noun	The {voices} in Tom's head speak French.
 voice	voice#expression-medium	Noun	Representation gives a {voice} to the unheard.
 voice	voice#grammatical-voice	Noun	You may also recall that, for the passive {voice}, we use the structure be + past participle, as you noticed in all of the example sentences.
 voice	voice#grammatical-voice	Noun	At times, it is best to avoid the passive {voice}; the sentence structure can create unclear statements.
@@ -3228,7 +3219,7 @@ wave	wave#moving-ridge	Noun	None of the Southeast Atlantic beaches are predicted
 wave	wave#moving-ridge	Noun	Reefs can absorb and weaken damaging {waves}.
 wave	wave#moving-ridge	Noun	Tampa, FL --Ahead of Hurricane Helene, scientists with the U.S. Geological Survey are deploying 13 {wave} sensors today in Florida between Venice and Panama City.
 wave	wave#rise	Noun	A great {wave} of anger swept over me, and brought me a momentary flush of courage.
-wave	wave#rise	Noun	A period of reform had now begun, and after 1909 a {wave} of "progressivism" overspread the country.
+wave	wave#surge	Noun	A period of reform had now begun, and after 1909 a {wave} of "progressivism" overspread the country.
 wave	wave#undulation	Noun	This means that the transmitter sends out very brief pulses of radio {waves} rather than a continuous stream of waves.
 wave	wave#undulation	Noun	As the name implies, radars use radio {waves} to determine the distance and velocity of the targets they hit.
 wave	wave#undulation	Noun	Thunder is the acoustic shock {wave} resulting from the extreme heat generated by a lightning flash.
@@ -3261,7 +3252,7 @@ well	well#favorably	Adverb	These trainings and technical support sessions have b
 well	well#good-manner	Adverb	Acadia National Park's skilled team of park scientists study the park to inform how we {best} care for the park.
 well	well#good-manner	Adverb	In Part Two of our series next week, we will introduce the kind of debate topics that work {well} for English learners.
 well	well#good-manner	Adverb	Speaking at the White House, Biden said, "These actions alone aren't going to fix our immigration system, but they can help us a good deal in {better} managing what is a difficult challenge."
-well	well#intimate-knowledge	Adverb	"For 25 of those years, Landsat 7's data helped farmers, land managers, city planners, and scientists, as well as communities around the world {better} understand and manage land, water, and other natural resources."
+well	well#good-manner	Adverb	"For 25 of those years, Landsat 7's data helped farmers, land managers, city planners, and scientists, as well as communities around the world {better} understand and manage land, water, and other natural resources."
 well	well#intimate-knowledge	Adverb	To {better} understand how the drought affected chaparral, researchers studied Landsat satellite images of the burned areas.
 well	well#intimate-knowledge	Adverb	She knew the country and its people very {well}.
 well	well#likelihood	Adverb	They were in this hole together, and he might {well} need the blubbery loudmouth's help to get out--if there were any way to get out.
@@ -3269,7 +3260,7 @@ well	well#skillfully	Adverb	So, for example, an English learner who speaks Frenc
 well	well#skillfully	Adverb	We used "{well}" to describe how Valentina sings.
 well	well#skillfully	Adverb	Georgina had all the contacts, but Stephanie knew how to oversee a company -- maybe too {well}.
 well	well#thoroughly	Adverb	A Smithsonian affiliate, the museum holds the largest and {best} documented collection of Maine Indian basketry.
-well	well#thoroughly	Adverb	They provide easy-to-understand infographics, educational materials, and social media content to help the public {better} prepare for and understand the impacts of high winds.
+well	well#good-manner	Adverb	They provide easy-to-understand infographics, educational materials, and social media content to help the public {better} prepare for and understand the impacts of high winds.
 well	well#thoroughly	Adverb	These animals are {well} insulated with a dense haircoat made up of wooly underfur and hollow guard hair over their entire body (except the very tip of their nose).
 well	well#to-great-degree	Adverb	If the wind is relatively calm then the sea breeze can move {well} inland but with only scattered thunderstorms occurring about 1/3rd of the way across the peninsula.
 well	well#to-great-degree	Adverb	And there's nothing, absolutely nothing, that I love {better} than a full-blown ruckus. Especially if it is over me.

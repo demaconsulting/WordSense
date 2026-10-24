@@ -391,7 +391,6 @@ f213532fe097	anchors	voa	voa-7963076#s8
 62b9112807bf	anchors	tatoeba-cc0	12046616
 bff76135f8da	anchors	nps	nps-acad-hc-historiccarriageroads#s29
 f188cd566df6	anchors	tatoeba-cc0	11259978
-1392d1c0f5aa	anchors	usgs	usgs-featured-story-challenge-tracking-nutrient-pollution-2300-miles#s15
 95eb0b01e41e	anchors	voa	voa-6667299#s27
 cab2e2edb5e0	anchors	voa	voa-7604701#s14
 658c9b97684e	holdout	tatoeba-cc0	11074676
@@ -403,7 +402,6 @@ c29a870505d8	anchors	nps	nps-yose-climate-change#s8
 8a2cef8a7cf8	anchors	nps	nps-maca-bats#s12
 8163ce125642	anchors	nws	nws-jetstream-jetstream-learning-lesson-pie-in-sky#s9
 5b3f7bd3afa1	anchors	nws	nws-jetstream-lightning-how-lightning-is-created#s9
-4a305ca90890	anchors	voa	voa-4931049#s23
 57f434741954	holdout	nps	nps-lavo-bear#s30
 2d504af6bfa9	anchors	nps	nps-wica-hc-homesteaders#s69
 dd65320fcd29	anchors	tatoeba-cc0	10114105
@@ -2589,8 +2587,6 @@ a465cc7a233b	anchors	tatoeba-cc0	10288769
 b4e26328c186	anchors	tatoeba-cc0	11269124
 fb6e410561ac	anchors	voa	voa-7017038#s12
 2dc8c6ba4f93	holdout	nps	nps-acad-hc-rusticators-tourism#s15
-386e882b0cee	anchors	tatoeba-cc0	11624386
-cfec1b2a9b03	anchors	voa	voa-6945203#s22
 4bbba358fe25	anchors	tatoeba-cc0	8976400
 cc68a66b6532	anchors	voa	voa-3736995#s51
 9ab8150c4fbe	anchors	voa	voa-5843179#s39
@@ -2949,7 +2945,6 @@ eb8ea0fe126d	anchors	voa	voa-3853284#s24
 9ed7b750fb4e	anchors	voa	voa-4221792#s14
 e6a941dde8bc	anchors	voa	voa-4710890#s19
 f258e250944b	anchors	voa	voa-4977962#s12
-b2e979afae50	anchors	voa	voa-6855015#s16
 e4188eebfc15	anchors	nps	nps-acad-watersheds#s9
 4efa9aece60d	anchors	nps	nps-wica-hc-cave-exploration#s9
 91b24ba1c0be	anchors	tatoeba-cc0	10841993
@@ -3149,7 +3144,6 @@ ecf014bec535	anchors	voa	voa-4520424#s22
 3445e50ceb8c	anchors	voa	voa-7886124#s28
 6bcf699a4832	anchors	gutenberg	pg12359#s75
 5c669b6b5ff9	anchors	tatoeba-cc0	8999160
-b0e6ecbb7414	anchors	voa	voa-4995040#s64
 4ff8c1770754	anchors	voa	voa-6912260#s56
 d7859d97a280	anchors	voa	voa-6912260#s60
 7350893394e1	anchors	voa	voa-6912260#s72
@@ -3180,9 +3174,6 @@ b7ed10f2bf1b	anchors	faa	faa-h-8083-3c#s792
 eca96b981efc	anchors	faa	faa-ac-43-13-1b#s7934
 33ec0b96af5b	anchors	faa	faa-h-8083-11b#s2298
 9fda16e13223	anchors	faa	faa-h-8083-32b#s6633
-4e5bf33b1d73	anchors	faa	faa-h-8083-13b#s1878
-dd535cb1578c	anchors	faa	faa-h-8083-21b#s4244
-f62fff5c5a57	anchors	faa	faa-h-8083-3c#s793
 225fffd35406	anchors	faa	faa-ac-43-13-1b#s1555
 19ca6f9e8408	anchors	faa	faa-h-8083-32b#s4983
 35bc817af415	anchors	faa	faa-h-8083-13b#s1194

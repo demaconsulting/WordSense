@@ -856,12 +856,7 @@ d054e94944a7	anchors	nps	nps-maca-mammals#s20
 805d7554835b	anchors	voa	voa-7296527#s20
 b4b9348502be	anchors	voa	voa-7316255#s30
 59af38c5a01c	anchors	voa	voa-7800840#s30
-03fecbe80678	anchors	gutenberg	pg24001#s1280
 5625b25edd29	anchors	gutenberg	pg42369#s1761
-0a9c26c402f5	anchors	gutenberg	pg50100#s307
-63cf67ad8c3b	anchors	gutenberg	pg50100#s314
-395277ec11db	anchors	gutenberg	pg73887#s2534
-c025ac9958ae	anchors	gutenberg	pg73887#s916
 e9f8781dd3b2	anchors	gutenberg	pg766#s7654
 5dac99a938bf	anchors	gutenberg	pg883#s19476
 bfc6154cf445	anchors	tatoeba-cc0	11034211
@@ -1078,7 +1073,6 @@ a6b0d90d3058	anchors	gutenberg	pg1023#s12177
 94e48c976b7d	anchors	gutenberg	pg1342#s2590
 84ab0c84f0ef	anchors	gutenberg	pg1400#s2180
 75de542d3c4c	anchors	gutenberg	pg19477#s330
-2214461f776e	anchors	gutenberg	pg21959#s1358
 30349cdf4422	anchors	gutenberg	pg244#s503
 1fad20f43c5b	anchors	gutenberg	pg51070#s984
 5badeddda209	anchors	gutenberg	pg61809#s454
@@ -1205,16 +1199,11 @@ d96e842f8886	holdout	nws	nws-jetstream-derecho-safety#s4
 5a1039406f3b	anchors	nps	nps-seki-cave#s27
 00e00489b324	anchors	nps	nps-yose-forestrestoration#s38
 0bafaa645830	anchors	nws	nws-jetstream-tc-hazards#s32
-836f5b10771a	anchors	nws	nws-jetstream-thunderstorms-life-cycle-of-thunderstorm#s7
 0837f3e8f446	anchors	tatoeba-cc0	10989685
 5a8b7961f89d	anchors	tatoeba-cc0	11443171
 2645ae870240	anchors	usgs	usgs-featured-story-disaster-helped-nation-prepare-future-earthquakes-rememberin#s44
-423972c948c7	anchors	usgs	usgs-featured-story-earthquake-southern-california-90-years-ago-changed-way-we-b#s2
-a351a9941a14	anchors	usgs	usgs-featured-story-great-shakeout-2023s-version#s3
 3d78f39478a1	anchors	usgs	usgs-featured-story-hayward-fault-it-due-a-repeat-powerful-1868-earthquake#s30
 b9ccb0b9a6db	anchors	usgs	usgs-featured-story-usgs-responds-hurricane-lane#s14
-fb2155abebb2	anchors	usgs	usgs-sr-earthquake-advisory-central-south-carolina#s11
-1eeb75a5486f	anchors	voa	voa-4297103#s75
 8521a128898f	anchors	voa	voa-7239420#s26
 0899b089dae4	holdout	tatoeba-cc0	12127480
 25416a380454	anchors	gutenberg	pg174#s1809
@@ -2365,7 +2354,6 @@ a7efdf6ec56c	anchors	gutenberg	pg110#s6100
 fb9506ed7398	anchors	gutenberg	pg1260#s8318
 06f886df8dd7	anchors	gutenberg	pg2360#s2540
 52daa6cf6c57	anchors	gutenberg	pg2701#s7605
-b6f84fec396c	anchors	gutenberg	pg51070#s1516
 3611aee2e06a	anchors	gutenberg	pg61809#s613
 4ce7919127e2	anchors	gutenberg	pg61809#s8727
 63872525a486	anchors	gutenberg	pg71597#s1969
@@ -2404,15 +2392,12 @@ d7853e8234e2	anchors	gutenberg	pg82#s368
 e6599a8e3691	anchors	gutenberg	pg963#s16533
 0bd75eeeec16	anchors	gutenberg	pg974#s3125
 27f10a97c61d	anchors	gutenberg	pg155#s5118
-89b2a91b4ccf	anchors	gutenberg	pg1661#s6158
 7d5e655ea500	anchors	gutenberg	pg205#s3587
 fd3386442ae3	anchors	gutenberg	pg29294#s2862
 11aac1d7a109	anchors	gutenberg	pg29294#s4465
 a3a4dfb66d65	anchors	gutenberg	pg35074#s4329
 44a7b8b932b9	anchors	gutenberg	pg36377#s464
 a32372e721ff	anchors	gutenberg	pg58118#s2161
-83a399862d4a	anchors	gutenberg	pg883#s7029
-8945f4f28893	anchors	gutenberg	pg963#s17577
 8adc1671dbd7	anchors	tatoeba-cc0	11689851
 9939d5afa532	anchors	tatoeba-cc0	11791550
 92cd54a95a6f	holdout	gutenberg	pg29737#s380
@@ -2589,7 +2574,6 @@ f5c5d779d2db	anchors	gutenberg	pg61758#s99
 ef861c6b14b5	anchors	gutenberg	pg730#s2648
 ae8e9fd7e459	anchors	nps	nps-cany-hc-blackgeorge#s104
 87d93cf141be	anchors	tatoeba-cc0	10109307
-421a3551a932	anchors	tatoeba-cc0	10541428
 4b71f782ee45	anchors	tatoeba-cc0	10545407
 224e90e435e1	anchors	tatoeba-cc0	7052915
 2a59e6d3f9d7	anchors	voa	voa-4520424#s28
@@ -2656,7 +2640,6 @@ d4ee10c33114	anchors	gutenberg	pg63243#s2719
 ca617196ba31	anchors	gutenberg	pg6688#s812
 05a4c30332a6	anchors	gutenberg	pg71642#s4114
 452048638c3d	anchors	gutenberg	pg730#s5310
-b4a373a6c483	anchors	voa	voa-4890991#s17
 91dd701e7b57	anchors	gutenberg	pg153#s6816
 3b63eaee6514	anchors	gutenberg	pg21052#s2411
 2afb86f7f70c	anchors	gutenberg	pg2360#s2868
@@ -3648,9 +3631,7 @@ cdca6d8283a9	anchors	gutenberg	pg122#s5585
 6b7deb787f04	anchors	gutenberg	pg1260#s7426
 180bfe0fdbb2	anchors	gutenberg	pg164#s4278
 1d5d1e07219a	anchors	gutenberg	pg2701#s1477
-4480fd9f96b0	anchors	gutenberg	pg48516#s1061
 f3ad54c644e8	anchors	gutenberg	pg58118#s3567
-e6ea00fcdc96	anchors	gutenberg	pg821#s12996
 d7b79c9f9ba4	holdout	tatoeba-cc0	12406297
 14cb0f8db5a2	holdout	tatoeba-cc0	11580293
 4487910e0c6e	holdout	tatoeba-cc0	11959449
@@ -4407,7 +4388,6 @@ d119cc0846ec	anchors	gutenberg	pg139#s2289
 efdfeff4f166	anchors	gutenberg	pg14658#s2391
 343ad12f4a90	anchors	gutenberg	pg14658#s268
 5adf8476dbb9	anchors	gutenberg	pg57641#s5727
-76e31fa575ed	anchors	gutenberg	pg139#s3033
 38f93b4f651e	anchors	gutenberg	pg24001#s146
 e6f915d6759f	anchors	gutenberg	pg5658#s1327
 48fe032920af	anchors	gutenberg	pg9775#s6499
@@ -4568,7 +4548,6 @@ e3b16f0dcd8d	anchors	gutenberg	pg963#s11495
 aaf963cfdcc8	anchors	gutenberg	pg5658#s4160
 35fe4fdce153	anchors	gutenberg	pg599#s8880
 a5341407c41c	anchors	gutenberg	pg61758#s537
-94a827101979	anchors	gutenberg	pg63093#s1772
 5e360f27fa61	anchors	gutenberg	pg63243#s14
 64e2c91d4cad	anchors	gutenberg	pg7280#s2105
 ae2ae744e6bb	anchors	gutenberg	pg74#s5165

@@ -12,7 +12,7 @@ address	address#speech	Noun	Before delivering his {address} he sent for me and s
 address	address#speech	Noun	The following day Kennedy gave an {address} at Dedication Ceremonies for the Whiskeytown Dam.
 address	address#speech	Noun	U.S. Secretary of Defense Ashton Carter delivered the keynote {address} at the Shangri-La Dialogue in Singapore Saturday.
 address	address#speech	Noun	As president of South Africa since 2018, Cyril Ramaphosa has dutifully delivered his annual {address} before Parliament, outlining government priorities in the year ahead.
-address	address#treat-verbally	Verb	SMS {addresses} risk management from an organizational perspective as an ongoing activity.
+address	address#apply	Verb	SMS {addresses} risk management from an organizational perspective as an ongoing activity.
 advance	advance#ameliorate	Verb	"There is currently tremendous momentum in the scientific community to {advance} our knowledge of subduction zone science knowing these hazards are lurking in our backyard -- we want to leverage this energy."
 advance	advance#beforehand	Adjective	We do have some characters who get {advance} dope on our road plans and run out and put claims in there.
 advance	advance#beforehand	Adjective	Do you have an {advance} directive or living will?
@@ -312,12 +312,12 @@ check	check#ensure	Verb	If it is necessary to block off various portions of a sy
 check	check#ensure	Verb	If the same reading is not made on both gauges, shut down the engine and {check} that carburetor actuation has full travel and that the chokes are in the full off-position.
 check	check#investigate	Verb	The pilot should see the Clovis airport (CVN) next and {check} for traffic operating in and out of the airport.
 check	check#investigate	Verb	Also, {check} out the Federal Jobs website for current, competitive job openings: search for the biotech positions that have your level of education as a qualification.
-check	check#investigate	Verb	You can also {check} CalTrans highway cameras near the park.
+check	check#source-check	Verb	You can also {check} CalTrans highway cameras near the park.
 check	check#investigate	Verb	{Check} out the beautiful blooms of the Sonoran Desert!
-check	check#investigate	Verb	For more information about active fires in the parks, {check} the Current Fire Info webpage.
-check	check#investigate	Verb	Another resource to {check} is the Advanced Hydrologic Prediction Service website for rainfall maps.
-check	check#investigate	Verb	After a rain event, {check} the local news reports for additional rainfall reports from the region to add to the map.
-check	check#investigate	Verb	It is your responsibility to {check} the weather forecast, which may be often several times daily, to see if you are, or will be, under a risk of severe weather.
+check	check#source-check	Verb	For more information about active fires in the parks, {check} the Current Fire Info webpage.
+check	check#source-check	Verb	Another resource to {check} is the Advanced Hydrologic Prediction Service website for rainfall maps.
+check	check#source-check	Verb	After a rain event, {check} the local news reports for additional rainfall reports from the region to add to the map.
+check	check#source-check	Verb	It is your responsibility to {check} the weather forecast, which may be often several times daily, to see if you are, or will be, under a risk of severe weather.
 check	check#investigate	Verb	You may also want to {check} out our winter safety site for snow and more cold season hazards information.
 check	check#investigate	Verb	I'll try to {check} it out.
 check	check#investigate	Verb	"Do you know where I can find seitan?" "Did you {check} the gluten-free section?"
@@ -390,8 +390,8 @@ clean	clean#remove-dirt	Verb	Aircraft that have ice, snow, or frost on their sur
 clean	clean#remove-dirt	Verb	Exterior Cleaning There are three methods of {cleaning} the aircraft exterior: wet wash, dry wash, and polishing.
 clean	clean#remove-dirt	Verb	A bristle brush may be used to help {clean} some of the surfaces.
 clean	clean#remove-dirt	Verb	{Clean} steel hubs with soap and fresh water or with an approved cleaning solvent.
-clean	clean#remove-dirt	Verb	Filters A filter is a screening or straining device used to {clean} the hydraulic fluid, preventing foreign particles and contaminating substances from remaining in the system.
-clean	clean#remove-dirt	Verb	Filter Filter modules {clean} the pressure and case drain output of the hydraulic pumps.
+clean	clean#purge	Verb	Filters A filter is a screening or straining device used to {clean} the hydraulic fluid, preventing foreign particles and contaminating substances from remaining in the system.
+clean	clean#purge	Verb	Filter Filter modules {clean} the pressure and case drain output of the hydraulic pumps.
 clean	clean#remove-dirt	Verb	After a seam or a damaged area is welded, you must {clean} the tank of any flux or debris that may have fallen into the tank.
 clean	clean#remove-dirt	Verb	After performing its functions of lubricating, {cleaning}, and cooling the bearings, the oil needs to be returned to the old tank by the scavenge system.
 clean	clean#remove-dirt	Verb	If the engine has been removed because of internal failure, the oil tank is generally removed to permit thorough {cleaning}.
@@ -401,7 +401,7 @@ clean	clean#remove-dirt	Verb	From 1918 to 1933, Chinese workers {cleaned} linens
 clean	clean#remove-dirt	Verb	The wall has reportedly been cleaned three times, so it may just be a matter of time before the gum reappears, although officials say they plan to {clean} the wall regularly.
 clean	clean#remove-dirt	Verb	Mary {cleaned} her boots by the fire.
 clean	clean#remove-dirt	Verb	{Clean} the litter box twice a day.
-clean	clean#remove-dirt	Verb	Public and private water-supply organizations that get water, {clean} it and deliver it to local residents exist anywhere people exist.
+clean	clean#purge	Verb	Public and private water-supply organizations that get water, {clean} it and deliver it to local residents exist anywhere people exist.
 clean	clean#wash	Verb	Tom used a cotton swab to {clean} his ear.
 close	close#near	Adjective	You're most likely {closer} to being homeless than you are to being a millionaire.
 close	close#near	Adjective	Are there things you could start doing now to make your ideal future {closer} to becoming a reality?
@@ -526,7 +526,7 @@ deal	deal#act-on	Verb	The GFM/POH may contain information describing how to {dea
 deal	deal#act-on	Verb	Since, the tow pilot {deals} with that emergency and may maneuver the aircraft abruptly, the glider pilot should never follow the towplane down.
 demand	demand#requirement	Noun	Although the concept seems simple, slope soaring presents significant hazards and places {demands} on the glider and the pilot.
 desire	desire#feeling	Noun	A disciplined pilot would only lower personal minimums based on training and rational decision making and not based on a {desire} to make a particular flight.
-desire	desire#feeling	Noun	That thou mayst become a gentleman well-instructed and accomplished, it is my sincere {desire}; for it is that, I am sure of it, which my cherished sister would most ardently have wished.
+desire	desire#object-of-desire	Noun	That thou mayst become a gentleman well-instructed and accomplished, it is my sincere {desire}; for it is that, I am sure of it, which my cherished sister would most ardently have wished.
 desire	desire#feeling	Noun	Interjections express a variety of feelings, such as joy, sorrow, surprise, pain, contempt and strong {desire}.
 desire	desire#feeling	Noun	A wish is a {desire} for a different reality.
 detail	detail#discourse	Noun	The FAA Risk Management Handbook (FAA-H-8083-2) has a chapter explaining the rationale for personal minimums in more {detail} and how to establish and maintain these minimums.
@@ -651,7 +651,7 @@ fly	fly#fly-passenger	Verb	She has a fear of {flying}.
 fly	fly#fly-passenger	Verb	When can I {fly} after surgery?
 fly	fly#fly-passenger	Verb	When can I {fly} after a heart attack?
 fly	fly#fly-passenger	Verb	Is it safe to {fly} with a perforated eardrum?
-fly	fly#move	Verb	Supervising a construction manager and civilian roadworkers, his crews soon made dirt and rock begin to {fly}.
+fly	fly#fly-airborne	Verb	Supervising a construction manager and civilian roadworkers, his crews soon made dirt and rock begin to {fly}.
 fly	fly#move	Verb	The river was frozen very hard, and the merry skaters seemed almost to {fly}, they went so fast over the glib ice.
 fly	fly#pilot	Verb	Other accidents have occurred in which the engine did not start immediately, and the pilot {flew} too far from a suitable landing area while trying to troubleshoot.
 fly	fly#pilot	Verb	After successfully {flying} their solar-powered plane from Spain to Morocco in 2012, and across the U.S. in 2013, Swiss aeronautical enthusiasts are now getting ready to attempt a flight around the world next year.
@@ -681,13 +681,13 @@ gain	gain#acquire	Verb	Tom enjoys discussing books with Mary to {gain} new persp
 gain	gain#addition	Noun	In strong inversions, the temperature can rise as much as 10 °C in a few hundred feet of altitude {gain}.
 gain	gain#benefit	Verb	Nothing is {gained} in strength nor precision by this kind of pleonasm.
 gain	gain#benefit	Verb	I just don't see what Tom would have to {gain} from that.
-gain	gain#derive	Verb	Cadillac later {gained} lasting recognition as the founder of Detroit.
+gain	gain#acquire	Verb	Cadillac later {gained} lasting recognition as the founder of Detroit.
 gain	gain#derive	Verb	The molecules and atoms that comprise the air {gain} energy as they absorb heat.
 gain	gain#derive	Verb	The proportion between carbonic acid {gained} and oxygen lost, CO₂/O₂ is termed the "respiratory quotient."
 gain	gain#derive	Verb	But this magnificent appellation was all she {gained} by her marriage.
 gain	gain#derive	Verb	The small Southeast Asian nation Laos has for the first time held the Southeast Asian Games, {gaining} prestige and an economic boost.
 gain	gain#derive	Verb	The Federal Electoral Institute {gained} autonomy from the government in 1996, and has acted as a guarantor of elections and an enforcer of election law ever since.
-gain	gain#derive	Verb	Is the revolution {gaining} more followers?
+gain	gain#acquire	Verb	Is the revolution {gaining} more followers?
 gain	gain#derive	Verb	The insight {gained} from Fire Island can inform breach management decisions in other coastal areas and during future storms.
 gain	gain#derive	Verb	The information {gained} from each storm also improves scientific understanding of storms and advances the USGS's ability to inform decisions.
 gain	gain#derive	Verb	The insights {gained} from linking lightning intensity to eruptive activity can provide better monitoring and nowcasting of aviation-related hazards during a large volcanic eruption, including ash cloud development and movement, Van Eaton said.
@@ -821,7 +821,7 @@ kid	kid#young-goat	Noun	Our goat gave birth to a litter of three {kids}.
 kid	kid#young-goat	Noun	Our goat had a litter of three {kids}.
 kid	kid#young-goat	Noun	Tom's goat had a litter of three {kids}.
 land	land#nation	Noun	Israel is the {land} of all authentic prophets.
-lay	lay#place	Verb	The pilot can use a parachute canopy and case to {lay} out a prominent marker for searching aircraft.
+lay	lay#devise	Verb	The pilot can use a parachute canopy and case to {lay} out a prominent marker for searching aircraft.
 lead	lead#electrical-lead	Noun	Remove the grounding {lead} first for battery removal, then the positive lead.
 lead	lead#electrical-lead	Noun	Connect the grounding {lead} of the battery last to minimize the risk of shorting the "hot terminal" of the battery during installation. f. Battery Hold Down Devices.
 lead	lead#electrical-lead	Noun	Twisting {lead} wires, metal overbraids, lead wire routing, and the design of the proximity switch can minimize susceptibility.
@@ -1128,7 +1128,7 @@ position	position#locate	Verb	Not visible when approaching the aircraft, it is {
 position	position#locate	Verb	The pointers indicate where the VOR and ADF transmission stations are located in relationship to where the aircraft is currently {positioned}.
 position	position#locate	Verb	In a full flow system, the filter is {positioned} between the oil pump and the engine bearings, which filters the oil of any contaminants before they pass through the engine bearing surfaces.
 position	position#locate	Verb	The approach path may be varied by {positioning} the base leg closer to or farther out from the approach end of the runway according to wind conditions.
-position	position#locate	Verb	In twoengine coordinated flight, the relative wind causes the string to align itself with the longitudinal axis of the airplane, and it {positions} itself straight up the center of the windshield.
+position	position#put-in-place	Verb	In twoengine coordinated flight, the relative wind causes the string to align itself with the longitudinal axis of the airplane, and it {positions} itself straight up the center of the windshield.
 position	position#mental-stance	Noun	Your {position} is unprovable and unsound.
 position	position#mental-stance	Noun	Tom doesn't believe in the strength of his political {position}, so he edits videos to support it.
 position	position#mental-stance	Noun	The anti-war {position} with respect to Ukraine is to oppose Putin's war in Ukraine.
@@ -1210,7 +1210,7 @@ press	press#apply-pressure	Verb	At the Western Wall, a revered Jewish shrine in 
 press	press#compress	Verb	Another great article of food was the curd of milk, {pressed} into a hard mass and salted.
 press	press#impel	Verb	Sludge chambers are formed by means of spool-shaped tubes pressed into the hollow crankpins, or by plugs {pressed} into each end of the crankpin.
 press	press#impel	Verb	If the sludge chambers are formed by means of tubes {pressed} into the hollow crankpins, make certain they are re-installed correctly to avoid covering the ends of the oil passages.
-press	press#impel	Verb	With some people, the more you {press} them, the more they will NOT do what you ask.
+press	press#implore	Verb	With some people, the more you {press} them, the more they will NOT do what you ask.
 press	press#iron	Verb	They boiled water on wood-burning stoves, stirred steaming vats of laundry with large wooden paddles, and {pressed} sheets and garments flat with hot, heavy irons that were also heated on wood stoves.
 press	press#news-media	Noun	An internally flawless blue diamond, weighing 10.10 carats, was the star attraction at a recent {press} event in London.
 press	press#news-media	Noun	In 2019, the senator held more than 550 scheduled news media interviews as well as many other impromptu {press} gaggles.
@@ -1643,7 +1643,6 @@ sign	sign#sign-document	Verb	Tom wasn't there to {sign} for the package.
 sign	sign#sign-document	Verb	For the administration of the College funds a bursar was annually appointed, whose accounts were subsequently approved and {signed} by the Chancellor.
 sign	sign#sign-document	Verb	He became a U.S. citizen in 1857. He {signed} one of his frescoes "C. Brumidi, Artist-Citizen of the U.S."
 sign	sign#sign-document	Verb	I need to {sign} my name on a receipt, but I do not have a pen.
-sign	sign#sign-language	Adjective	But when the federal government tried to 'civilize' tribal people, this {sign} language began to die out.
 sign	sign#symptom	Noun	Pilots should preflight the oxygen system, understand {signs} of hypoxia, know their reactions to high altitude, and consider using oxygen at altitudes well below 12,500 feet MSL.
 sign	sign#symptom	Noun	He said some of the first {signs} of Hepatitis B are vomiting, fever, and constipation.
 sign	sign#symptom	Noun	Binging and purging are {signs} that someone may have bulimia.
@@ -1715,7 +1714,7 @@ stretch	stretch#span	Verb	Tom's shadow {stretched} across the sidewalk.
 stretch	stretch#span	Verb	The ocean {stretches} beyond sight, a reminder of infinity.
 stretch	stretch#stretch-limbs	Verb	I'd really love to {stretch} my legs.
 stretch	stretch#stretch-limbs	Verb	He got up and {stretched} his spidery frame languidly.
-struggle	struggle#fight	Verb	He seemed to be {struggling} with an emotion that made it impossible for him to speak.
+struggle	struggle#endeavor	Verb	He seemed to be {struggling} with an emotion that made it impossible for him to speak.
 struggle	struggle#fight	Verb	The isolation caused some people to {struggle} more with their mental health.
 struggle	struggle#open-clash	Noun	The army of production must be organized, not only for the every-day {struggle} with capitalists, but also to carry on production when capitalism shall have been overthrown.
 struggle	struggle#strenuous-attempt	Noun	Lawmakers have fired their new interim prime minister by voting no confidence in his proposed Cabinet, prolonging the {struggle} to form a government capable of uniting and stabilizing the war-torn nation.
@@ -1870,7 +1869,7 @@ support	support#support-device	Noun	A type of {support} that allows an object, s
 support	support#support-device	Noun	A few of the applications in which clearance of holes may be permitted are in pulley brackets, conduit boxes, lining trim, and miscellaneous {supports} and brackets.
 support	support#support-device	Noun	Maximum distance between {supports} for fluid tubing.
 support	support#support-device	Noun	The maximum distance between {supports} for rigid tubing is shown in Figure 9-43.
-support	support#support-device	Noun	These tools crimp the barrel to the conductor, and simultaneously form the insulation {support} to the wire insulation.
+support	support#support-structure	Noun	These tools crimp the barrel to the conductor, and simultaneously form the insulation {support} to the wire insulation.
 support	support#support-device	Noun	If the roller is not within tolerance, it may be adjusted by loosening its mounting bolts and raising or lowering the latch roller {support}.
 support	support#support-device	Noun	A {support} that allows a gyroscope to remain in an upright condition when its base is tilted.
 support	support#support-device	Noun	Sandbags A sandbag is generally used as a {support} during the bumping process.
@@ -1908,7 +1907,7 @@ tap	tap#tapping-point	Noun	These {taps} distribute current through the toroidal 
 tap	tap#tapping-point	Noun	Idle speed adjustment Idle mixture adjustment Fuel inlet and strainer Inlet fuel pressure {tap} Idle valve Metered fuel outlet Impact air Figure 2-47.
 tap	tap#tip	Verb	Then go over the outline of the pattern with the prick punch, {tapping} it lightly with a small hammer and making slight indentations on the metal at the major points on the drawing.
 tap	tap#tip	Verb	Then, the electrode is lightly {tapped} on the work piece and immediately lifted to form an arc approximately ¼-inch in length.
-tap	tap#tip	Verb	To avoid confusing the sounds, coin {tap} the cuff area and the transition area between the cuff and the blade separately from the blade area.
+tap	tap#knock	Verb	To avoid confusing the sounds, coin {tap} the cuff area and the transition area between the cuff and the blade separately from the blade area.
 tap	tap#tip	Verb	{Tap} the "A" button to add a blue filter and invert colors so light becomes dark and dark becomes light.
 test	test#act-of-testing	Noun	Hospital workers tried to admit her after swabbing her for the {test}, but she insisted on self-quarantining herself at home.
 test	test#act-of-testing	Noun	Why should I avoid sexual activity before a PSA {test}?
@@ -1945,7 +1944,7 @@ touch	touch#make-contact	Verb	The release hooks should {touch} the tow hook ring
 touch	touch#make-contact	Verb	To think that his own hand had {touched} this paper, had shaped these characters, less than a fortnight ago!
 touch	touch#make-contact	Verb	And I looked up at his sword hanging upon my wall, and longed for the hour when I should {touch} the hand that had once wielded it.
 touch	touch#make-contact	Verb	If you see a reptile or any other animal at Arches, give it space and do not {touch} it.
-touch	touch#make-contact	Verb	Cookie likes to {touch} noses with me.
+touch	touch#brief-contact	Verb	Cookie likes to {touch} noses with me.
 touch	touch#make-contact	Verb	Public displays of affection were, for the most part, taboo: couples didn't touch too tenderly in public, and ideally they didn't {touch} at all.
 touch	touch#make-contact	Verb	Idly I {touch} the strings, till, without my knowing, the music borrows the mad cadence of that storm.
 touch	touch#make-contact	Verb	In Algeria, a woman goes to the police station for an assault and the cops {touch} the victim sexually.

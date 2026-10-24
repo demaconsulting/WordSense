@@ -27,8 +27,8 @@ word that has several. The table counts the trained lemmas and senses of each pa
 
 | Part of speech | Lemmas | Senses |
 | -------------- | -----: | -----: |
-| `Noun`         |    724 |   3024 |
-| `Verb`         |    740 |   3341 |
+| `Noun`         |    723 |   3023 |
+| `Verb`         |    739 |   3338 |
 | `Adjective`    |    190 |    487 |
 | `Adverb`       |     35 |    103 |
 | `Preposition`  |      3 |      3 |
@@ -57,12 +57,12 @@ word: it has no trained classifier, a word with one part of speech is answered d
 with several parts of speech returns them as candidates, most frequent first (the encoder models answer it with the
 first one; the basic model chooses by tagger and context). A capitalized word is lower-cased before it is looked up.
 
-The lemmas listed below are the 829 trained lemmas (the lemmas that have anchor sentences), with 6,976 senses (146 of
+The lemmas listed below are the 828 trained lemmas (the lemmas that have anchor sentences), with 6,972 senses (146 of
 them project senses) and 140 groups.
 
 ## Supported Lemmas
 
-The library supports 829 lemmas with 6,976 senses in total, listed alphabetically. Each lemma lists its parts of speech
+The library supports 828 lemmas with 6,972 senses in total, listed alphabetically. Each lemma lists its parts of speech
 and the forms it recognizes. Under it, every sense gives its id and part of speech, its group, its Open English WordNet
 sense key (a project sense has none) and its gloss, in inventory order (the order of Open English WordNet within a part
 of speech, project senses last).
@@ -7988,12 +7988,6 @@ of speech, project senses last).
     advance
   - `reserve#book-for-others` (verb); group: none; key: `reserve%2:41:00::`; gloss: arrange for and reserve (something
     for someone else) in advance
-- **reset**; parts of speech: noun, verb; forms: resets, resetting
-  - `reset#reset-device` (noun); group: none; key: `reset%1:06:00::`; gloss: device for resetting instruments or
-    controls
-  - `reset#redefine` (verb); group: none; key: `reset%2:32:00::`; gloss: set anew
-  - `reset#zero-out` (verb); group: none; key: `reset%2:30:00::`; gloss: set to zero
-  - `reset#adjust-again` (verb); group: none; key: `reset%2:30:01::`; gloss: adjust again after an initial failure
 - **reshuffle**; parts of speech: noun, verb; forms: reshuffled, reshuffles, reshuffling
   - `reshuffle#reallocation` (noun); group: none; key: `reshuffle%1:04:01::`; gloss: a redistribution of something
   - `reshuffle#reshuffling` (noun); group: none; key: `reshuffle%1:04:00::`; gloss: shuffling again

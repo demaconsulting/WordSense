@@ -496,14 +496,8 @@ a7081abefa5d	anchors	authored	new-authored-1
 49e2e3998baa	anchors	tatoeba-cc0	10923839
 83831f0ecd7d	anchors	tatoeba-cc0	10923853
 036c5bd57f13	anchors	tatoeba-cc0	11419141
-122f4451407b	anchors	gutenberg	pg967#p5589
 2bfd864c0127	anchors	authored	new-authored-1
-2ced8eb4e7bf	anchors	gutenberg	pg205#p360
-5d66cab585f5	anchors	gutenberg	pg963#p4559
-63e1bb4078b0	anchors	gutenberg	pg205#p360
 678db69ec0c4	anchors	authored	new-authored-1
-7dffbaea6f4a	anchors	gutenberg	pg967#p5760
-9986deffe3ec	anchors	gutenberg	pg1661#p1505
 a6658eca7947	anchors	gutenberg	pg766#p7037
 bd281308ae6b	anchors	gutenberg	pg883#p4724
 c8f2c078e427	anchors	authored	new-authored-1
@@ -798,9 +792,7 @@ cf0a9f8c54cf	anchors	gutenberg	pg1184#cf0a9f8c54cf
 a8d6f400c991	anchors	gutenberg	pg5658#a8d6f400c991
 d2b6e7ea2ce1	anchors	gutenberg	pg917#d2b6e7ea2ce1
 ff04a4d56e52	anchors	gutenberg	pg1661#ff04a4d56e52
-7de3dca6eeeb	anchors	tatoeba-cc0	12113745
 8ba8939665e8	anchors	tatoeba-cc0	11542196
-d26e38c2ae25	anchors	gutenberg	pg2021#4f59da3ae207
 2c46f33e4b2a	anchors	tatoeba-cc0	11037520
 20d4aaff6d65	anchors	gutenberg	pg2852#20d4aaff6d65
 4d0d35fe1afd	anchors	tatoeba-cc0	12187605
@@ -1134,8 +1126,6 @@ f06eab0fdffa	anchors	tatoeba-cc0	12235440
 b46994bf629b	anchors	gutenberg	pg766#b46994bf629b
 c283faa2fe95	anchors	tatoeba-cc0	11459102
 32ede199866c	anchors	tatoeba-cc0	12270071
-64fc3902c743	anchors	tatoeba-cc0	12270250
-c7224f45bd00	anchors	tatoeba-cc0	11218117
 82f0b35fa4c7	anchors	gutenberg	pg1184#82f0b35fa4c7
 bea116ed83bd	anchors	gutenberg	pg1074#bea116ed83bd
 193faaa833b0	anchors	gutenberg	pg1399#193faaa833b0
@@ -1253,21 +1243,15 @@ f0593768af0a	anchors	tatoeba-cc0	8633355
 aadeaece1259	anchors	gutenberg	pg5230#p283
 4d307fd98cbf	anchors	gutenberg	pg2852#4d307fd98cbf
 4dc46e8b3e7b	anchors	gutenberg	pg1184#4dc46e8b3e7b
-b13e4b8b9345	anchors	gutenberg	pg45#b13e4b8b9345
 f930bf7ef5d7	anchors	gutenberg	pg139#f930bf7ef5d7
 575e1c3ddf5e	anchors	tatoeba-cc0	11014579
 fc87f425f343	anchors	tatoeba-cc0	10147250
-088604c6357e	anchors	tatoeba-cc0	8421493
-3b5ad545dbc6	anchors	tatoeba-cc0	11702544
-64fbd8a6f745	anchors	tatoeba-cc0	10503405
-9014ddef3c92	anchors	tatoeba-cc0	11925879
 b009d8efa8e0	anchors	gutenberg	pg1074#b009d8efa8e0
 0e240d6cd83d	anchors	gutenberg	pg766#0e240d6cd83d
 4c7112a2e5d4	anchors	tatoeba-cc0	11832294
 d3b830f2abd4	anchors	tatoeba-cc0	10786588
 354e137f98f5	anchors	tatoeba-cc0	10172925
 a9b9a9108358	anchors	tatoeba-cc0	11464986
-ed47b4575f23	anchors	tatoeba-cc0	10352331
 f721c1b28fd9	anchors	gutenberg	pg1074#f721c1b28fd9
 89645736607c	anchors	gutenberg	pg821#89645736607c
 de84d06d85cc	anchors	gutenberg	pg917#de84d06d85cc
@@ -1277,9 +1261,7 @@ de84d06d85cc	anchors	gutenberg	pg917#de84d06d85cc
 84f3c51866f5	anchors	tatoeba-cc0	12769265
 885d42fa8058	anchors	tatoeba-cc0	12285467
 4d72e4e94f15	anchors	gutenberg	pg766#4d72e4e94f15
-0aca9ce6b0ac	anchors	gutenberg	pg64317#0aca9ce6b0ac
 bad684d37977	anchors	gutenberg	pg45#bad684d37977
-d20ad6e333e4	anchors	tatoeba-cc0	11027008
 345484040db9	anchors	gutenberg	pg205#345484040db9
 61632cd6a4d9	anchors	tatoeba-cc0	11932678
 3b1e833a850e	anchors	tatoeba-cc0	10795454
@@ -1333,10 +1315,8 @@ e0c60bb219bb	anchors	llm-corpus	speech-batch1.tsv
 e3f3edfe43f8	anchors	llm-corpus	speech-batch1.tsv
 684aaeb7da9d	anchors	gutenberg	pg2852#684aaeb7da9d
 0160eae78a9f	anchors	gutenberg	pg4300#0160eae78a9f
-03c33f3a750b	anchors	gutenberg	pg145#03c33f3a750b
 237b5a766438	anchors	tatoeba-cc0	12143704
 520ec62f515a	anchors	gutenberg	pg164#520ec62f515a
-9ff518c6eb38	anchors	gutenberg	pg821#9ff518c6eb38
 676574954437	anchors	gutenberg	pg1184#676574954437
 d94ec29bb12c	anchors	tatoeba-cc0	11906291
 04cb24e75c11	anchors	tatoeba-cc0	12381075
@@ -1495,7 +1475,6 @@ fe359ac11039	anchors	gutenberg	pg219#fe359ac11039
 70d73c7aafbe	anchors	tatoeba-cc0	11983377
 c70432c65336	anchors	tatoeba-cc0	12252405
 a0278b710164	anchors	tatoeba-cc0	11066444
-35ea12df811f	anchors	gutenberg	pg910#35ea12df811f
 2fcb129cf11b	anchors	gutenberg	pg2814#2fcb129cf11b
 b502df4b1b07	anchors	tatoeba-cc0	11323000
 1e5fbf0d837b	anchors	tatoeba-cc0	12131158
@@ -1536,7 +1515,6 @@ b0cb31ffbb5c	anchors	llm-corpus	speech-batch1.tsv
 b6209003b3ed	anchors	tatoeba-cc0	12417221
 f837fe8c3817	anchors	gutenberg	pg2852#f837fe8c3817
 29e8aada7a6f	anchors	gutenberg	pg2641#29e8aada7a6f
-a0cee33f83e7	anchors	tatoeba-cc0	11602026
 b69b4980e773	anchors	tatoeba-cc0	12775982
 9cc15fce2fa4	anchors	gutenberg	pg139#9cc15fce2fa4
 c42a4dd00a85	anchors	tatoeba-cc0	9805142
@@ -1561,7 +1539,6 @@ ce96d6438a27	anchors	gutenberg	pg74#ce96d6438a27
 87144108e08c	anchors	gutenberg	pg1074#87144108e08c
 55063d1c0b91	anchors	gutenberg	pg2226#55063d1c0b91
 250dd4965e12	anchors	gutenberg	pg113#250dd4965e12
-eb0982c036db	anchors	gutenberg	pg834#eb0982c036db
 5bc13e4aeda3	anchors	tatoeba-cc0	12331270
 d63884a65167	anchors	gutenberg	pg963#d63884a65167
 7960935b69ec	anchors	gutenberg	pg917#7960935b69ec
@@ -1788,8 +1765,6 @@ a171f47a9155	anchors	gutenberg	pg345#p219
 7302a0d17750	anchors	gutenberg	pg910#p406
 981075c61950	anchors	tatoeba-cc0	12776731
 a11103acbbe0	anchors	gutenberg	pg98#p268
-a40d0388864a	anchors	gutenberg	pg1023#p2404
-c86c5f35cb7d	anchors	tatoeba-cc0	12111506
 ce2fd4acad7b	anchors	gutenberg	pg84#p670
 d0cb9731f332	anchors	tatoeba-cc0	12111964
 d776651279a5	anchors	gutenberg	pg84#p87
@@ -2910,9 +2885,7 @@ ae18e15cfc05	anchors	gutenberg	pg28455#ae18e15cfc05
 9431038eb213	anchors	gutenberg	pg1023#9431038eb213
 de60714b8edf	anchors	gutenberg	pg2600#de60714b8edf
 24c10612ba60	anchors	gutenberg	pg74#24c10612ba60
-276992e52e29	anchors	gutenberg	pg821#276992e52e29
 8daefcdc7c3b	anchors	gutenberg	pg145#8daefcdc7c3b
-9e19438c9932	anchors	gutenberg	pg164#9e19438c9932
 b5aeaf877f35	anchors	gutenberg	pg599#b5aeaf877f35
 dfdb8c2d1536	anchors	gutenberg	pg967#dfdb8c2d1536
 bc8e95ef71fb	anchors	tatoeba-cc0	12115779
@@ -3012,13 +2985,10 @@ d32e7acf18a3	anchors	tatoeba-cc0	11021271
 1c75d5a30e9e	anchors	gutenberg	pg599#1c75d5a30e9e
 8edea8504442	anchors	gutenberg	pg103#8edea8504442
 94ad99775d2a	anchors	gutenberg	pg82#94ad99775d2a
-6ce6a854610c	anchors	tatoeba-cc0	12385661
 73c0a5a36fb2	anchors	gutenberg	pg2360#73c0a5a36fb2
 9214810df2b5	anchors	gutenberg	pg834#9214810df2b5
-0ad7efd0b175	anchors	tatoeba-cc0	11991203
 51fad8945908	anchors	tatoeba-cc0	12775833
 8706797a2607	anchors	tatoeba-cc0	12775994
-9243ab4a495c	anchors	tatoeba-cc0	12775915
 c13f6763ca8c	anchors	tatoeba-cc0	12775886
 e9bcbd0efa25	anchors	tatoeba-cc0	12775951
 3371a38171ca	anchors	tatoeba-cc0	11017107
@@ -3070,11 +3040,8 @@ e49302198ed3	anchors	llm-corpus	speech-batch2.tsv
 b8e4056056ed	anchors	gutenberg	pg768#b8e4056056ed
 00e396c56b3c	anchors	tatoeba-cc0	12396727
 335d71e143c6	anchors	gutenberg	pg110#335d71e143c6
-4adee8049d17	anchors	tatoeba-cc0	11093479
 845af7c4e83f	anchors	tatoeba-cc0	11826980
-8fb71557b2d1	anchors	tatoeba-cc0	11514144
 97effcb2b755	anchors	tatoeba-cc0	12089223
-e4b9bfbd969b	anchors	gutenberg	pg514#e4b9bfbd969b
 0b1ac7cb9a05	anchors	tatoeba-cc0	11068281
 0e0fa58b2f38	anchors	tatoeba-cc0	12778558
 2eb347122783	anchors	tatoeba-cc0	12777735
@@ -3180,7 +3147,6 @@ f99faeaf6f82	anchors	gutenberg	pg2021#f99faeaf6f82
 47ec8806bdfd	anchors	tatoeba-cc0	11402167
 abba7c088044	anchors	gutenberg	pg766#abba7c088044
 f8f16135551e	anchors	tatoeba-cc0	12283499
-af44da07fc75	anchors	gutenberg	pg35#af44da07fc75
 c16a5944769f	anchors	llm-corpus	speech-batch2.tsv
 fe853e81061a	anchors	llm-corpus	speech-batch2.tsv
 00152a2939d8	anchors	llm-corpus	speech-batch2.tsv
@@ -3224,7 +3190,6 @@ b56d4b3230c7	anchors	gutenberg	pg1257#p4289
 c0ca2f47a079	anchors	gutenberg	pg1399#p248
 da8d7d31a72a	anchors	gutenberg	pg1399#p4476
 ff660ae7cdaf	anchors	gutenberg	pg1399#p3741
-4ebb6e8eec3f	anchors	tatoeba-cc0	10076823
 1c9a9da727f5	anchors	llm-corpus	speech-batch2.tsv
 1f4afc801fd7	anchors	llm-corpus	speech-batch2.tsv
 2c5800e41bf5	anchors	llm-corpus	speech-batch2.tsv
@@ -3774,7 +3739,6 @@ fdcbe657197e	anchors	llm-corpus	speech-batch2.tsv
 cb6c51522aec	anchors	llm-corpus	speech-batch2.tsv
 d9e1d53121bb	anchors	llm-corpus	speech-batch2.tsv
 db9e34a14821	anchors	llm-corpus	speech-batch2.tsv
-0625e75f2756	anchors	gutenberg	pg1184#0625e75f2756
 163cc564ef09	anchors	gutenberg	pg2600#163cc564ef09
 1e193ffbb368	anchors	gutenberg	pg155#1e193ffbb368
 5f00116e1973	anchors	gutenberg	pg155#5f00116e1973
@@ -3783,7 +3747,6 @@ db9e34a14821	anchors	llm-corpus	speech-batch2.tsv
 586ea8213113	anchors	gutenberg	pg967#586ea8213113
 94387c4a388f	anchors	gutenberg	pg507#94387c4a388f
 9440a661d9d0	anchors	gutenberg	pg821#9440a661d9d0
-a22b05b914d0	anchors	gutenberg	pg145#a22b05b914d0
 c6e535f817ea	anchors	gutenberg	pg110#c6e535f817ea
 f84e727bbbcd	anchors	gutenberg	pg5658#f84e727bbbcd
 24f803a43df1	anchors	tatoeba-cc0	12350111
@@ -3925,7 +3888,6 @@ b78ce20085a8	anchors	tatoeba-cc0	12401431
 e8377df56d7c	anchors	tatoeba-cc0	11790147
 f900021ce7ac	anchors	tatoeba-cc0	11112558
 ab99b17ecfbe	anchors	gutenberg	pg1184#ab99b17ecfbe
-5e7259c398a2	anchors	tatoeba-cc0	12305642
 2f07875f6b6b	anchors	gutenberg	pg308#2f07875f6b6b
 4c4c851d388d	anchors	gutenberg	pg2852#4c4c851d388d
 27b593465e81	anchors	gutenberg	pg59790#27b593465e81
@@ -3959,7 +3921,6 @@ f231d1f13c26	anchors	gutenberg	pg2852#f231d1f13c26
 61b6364aaeab	anchors	tatoeba-cc0	10564951
 a4dbc14ec62b	anchors	gutenberg	pg583#a4dbc14ec62b
 ac4ee1723f74	anchors	gutenberg	pg1184#ac4ee1723f74
-db169b6195b1	anchors	tatoeba-cc0	12462054
 2a9bebc5202c	anchors	gutenberg	pg766#2a9bebc5202c
 447440687ffc	anchors	gutenberg	pg76#0db51768481a
 2b5e4c652307	anchors	tatoeba-cc0	11515510
@@ -4150,9 +4111,7 @@ d541f1a37ff3	anchors	authored	new-authored-1
 acae9ea913d1	anchors	authored	new-authored-1
 aec94ccdc93d	anchors	authored	new-authored-1
 b486db4c0200	anchors	authored	new-authored-1
-2388bc752e56	anchors	tatoeba-cc0	12768599
 2420eb836b84	anchors	tatoeba-cc0	12140115
-54fff1619cac	anchors	tatoeba-cc0	12768339
 7bffc8297204	anchors	tatoeba-cc0	12776799
 85bf40cf7f72	anchors	tatoeba-cc0	11255598
 a18b3abb6810	anchors	gutenberg	pg2021#a18b3abb6810
@@ -4601,7 +4560,6 @@ efb6124b1a0c	anchors	tatoeba-cc0	13237165
 1850661f3cb5	anchors	tatoeba-cc0	11044151
 1dc9e847406b	anchors	tatoeba-cc0	11753256
 b911a75b093c	anchors	gutenberg	pg205#p69
-c7bb0e5ce2d3	anchors	tatoeba-cc0	12222247
 f50c0a0f78cc	anchors	tatoeba-cc0	12300167
 01651755209a	anchors	gutenberg	pg5658#p616
 0aa99f32b392	anchors	tatoeba-cc0	11034537
@@ -4735,7 +4693,6 @@ e06e4aa3b32b	anchors	llm-corpus	speech-batch3.tsv
 aa9aa02102ab	anchors	gutenberg	pg113#aa9aa02102ab
 1d6309de06ca	anchors	gutenberg	pg42391#1d6309de06ca
 356e1cbe7d9d	anchors	tatoeba-cc0	12285121
-9ae68dbe22ba	anchors	gutenberg	pg56735#9ae68dbe22ba
 b3c5837f8683	anchors	gutenberg	pg271#b3c5837f8683
 e4ce80c80969	anchors	tatoeba-cc0	11131606
 5ce79f71ac97	anchors	gutenberg	pg110#5ce79f71ac97
@@ -4806,11 +4763,7 @@ adc77a1e7737	anchors	tatoeba-cc0	10930732
 b458be1660ac	anchors	tatoeba-cc0	11074561
 dc8022a4e641	anchors	tatoeba-cc0	11991271
 3417942a1641	anchors	gutenberg	pg2021#3417942a1641
-4363ab55291a	anchors	gutenberg	pg599#4363ab55291a
 64dbefadef86	anchors	tatoeba-cc0	11252230
-a6cf97cfb327	anchors	tatoeba-cc0	10152913
-b70b4afe174c	anchors	tatoeba-cc0	12301419
-c9316c6838ec	anchors	gutenberg	pg1257#c9316c6838ec
 af228c4a98d6	anchors	gutenberg	pg110#af228c4a98d6
 0524e40d598f	anchors	gutenberg	pg514#0524e40d598f
 861054cc28c4	anchors	gutenberg	pg74#861054cc28c4
@@ -4829,8 +4782,6 @@ cbe0440fd520	anchors	gutenberg	pg153#cbe0440fd520
 f26e20403643	anchors	tatoeba-cc0	10147140
 31535eb7fa25	anchors	tatoeba-cc0	10960022
 bb7d806a6f04	anchors	gutenberg	pg1661#bb7d806a6f04
-2dcdf3d4f8b4	anchors	gutenberg	pg599#2dcdf3d4f8b4
-89b382b6334a	anchors	gutenberg	pg45#89b382b6334a
 047d255542d7	anchors	gutenberg	pg1257#047d255542d7
 10ccd94f7732	anchors	tatoeba-cc0	11584335
 59d3ba5dc720	anchors	gutenberg	pg139#59d3ba5dc720
@@ -5137,11 +5088,8 @@ b028e786c978	anchors	tatoeba-cc0	6976968
 de5c5e6b5d8f	anchors	tatoeba-cc0	11266094
 3b69d1e6b3e3	anchors	tatoeba-cc0	11050929
 55bf833600b4	anchors	tatoeba-cc0	9951226
-358ecffc35a3	anchors	gutenberg	pg1399#358ecffc35a3
 93eca49dd2b0	anchors	tatoeba-cc0	12315269
-99961541c95e	anchors	gutenberg	pg1023#99961541c95e
 ebf945e8784e	anchors	gutenberg	pg1257#ebf945e8784e
-ec93566d11a9	anchors	tatoeba-cc0	12301461
 1fc967520a33	anchors	tatoeba-cc0	11977017
 aa7efd3c0514	anchors	tatoeba-cc0	12465777
 0763b4bf4331	anchors	tatoeba-cc0	11207049
@@ -5347,8 +5295,6 @@ fe5551779397	anchors	gutenberg	pg5871#fe5551779397
 5016b6d0e811	anchors	gutenberg	pg945#5016b6d0e811
 02b25bf97ef0	anchors	gutenberg	pg16252#02b25bf97ef0
 3dba52aa52cb	anchors	tatoeba-cc0	11066650
-64d05418cbd0	anchors	gutenberg	pg69662#64d05418cbd0
-6c9eca16f4d9	anchors	tatoeba-cc0	11448399
 74579f0af8f1	anchors	gutenberg	pg21052#74579f0af8f1
 cac62eb4b7f5	anchors	gutenberg	pg29697#cac62eb4b7f5
 3d0d57c55635	anchors	tatoeba-cc0	12090740
@@ -5358,9 +5304,6 @@ aa277d46ec65	anchors	tatoeba-cc0	10143730
 ac0e223bc8f3	anchors	tatoeba-cc0	10074187
 13e8788c0c4f	anchors	tatoeba-cc0	11689617
 ebc72b92d787	anchors	tatoeba-cc0	11602065
-155cf8dc7d73	anchors	gutenberg	pg834#155cf8dc7d73
-55b4baca6184	anchors	gutenberg	pg507#55b4baca6184
-fb849d5e4a7e	anchors	gutenberg	pg236#fb849d5e4a7e
 1d948fb01ab7	anchors	tatoeba-cc0	11064572
 59c2269d6ed0	anchors	tatoeba-cc0	12767055
 6732bfe887ba	anchors	gutenberg	pg82#6732bfe887ba
@@ -5411,7 +5354,6 @@ f40971e7d9d4	anchors	gutenberg	pg2360#f40971e7d9d4
 5efcc3833d44	anchors	gutenberg	pg164#5efcc3833d44
 7231de6114ee	anchors	gutenberg	pg82#7231de6114ee
 8da311335a2c	anchors	gutenberg	pg2600#8da311335a2c
-bd45658bda46	anchors	tatoeba-cc0	12390937
 571ada8fc0ba	anchors	tatoeba-cc0	12778585
 ca94c9dd4957	anchors	tatoeba-cc0	12773323
 46094e56ff1d	anchors	gutenberg	pg244#46094e56ff1d
@@ -5466,7 +5408,6 @@ ef79d278ae89	anchors	gutenberg	pg59538#ef79d278ae89
 9b7f53df4058	anchors	gutenberg	pg700#9b7f53df4058
 b2ef17347b22	anchors	tatoeba-cc0	10792469
 cc9bf80119ca	anchors	gutenberg	pg583#cc9bf80119ca
-e2f93d2e7d22	anchors	tatoeba-cc0	10359372
 449a94bd9992	anchors	tatoeba-cc0	11845620
 514606656195	anchors	gutenberg	pg108#514606656195
 adf8cdda79db	anchors	gutenberg	pg1056#adf8cdda79db
@@ -5538,8 +5479,6 @@ aa26b1133c45	anchors	gutenberg	pg4300#aa26b1133c45
 48cefb43013f	anchors	gutenberg	pg4300#48cefb43013f
 6fd7cac59425	anchors	gutenberg	pg583#6fd7cac59425
 030de553896b	anchors	tatoeba-cc0	10107852
-1c6aa6808d8d	anchors	tatoeba-cc0	11097136
-5d506a1c5914	anchors	tatoeba-cc0	9931357
 778f41df5d80	anchors	gutenberg	pg768#778f41df5d80
 4c2b52de15ba	anchors	gutenberg	pg599#4c2b52de15ba
 0c9d88fb57a5	anchors	gutenberg	pg45#0c9d88fb57a5
@@ -5554,12 +5493,10 @@ e962bfedfa37	anchors	gutenberg	pg45#e962bfedfa37
 eb2042731acb	anchors	tatoeba-cc0	12394016
 ff5a81cf19ca	anchors	gutenberg	pg4300#ff5a81cf19ca
 3ac8a692d050	anchors	gutenberg	pg6688#3ac8a692d050
-2e4833eaf394	anchors	tatoeba-cc0	12364972
 2e701ebb5c7b	anchors	tatoeba-cc0	10161829
 ace8d532d131	anchors	tatoeba-cc0	11246639
 c1d59e635086	anchors	tatoeba-cc0	12107021
 e67ab693e557	anchors	tatoeba-cc0	11600976
-e943c2f78274	anchors	tatoeba-cc0	11374738
 5ff97e822088	anchors	tatoeba-cc0	12289107
 f87ead3ac22f	anchors	tatoeba-cc0	12043615
 8e9ff9e07149	anchors	tatoeba-cc0	12148670
@@ -6468,8 +6405,6 @@ b24fc8bf86fd	anchors	authored	new-authored-1
 b65aff25c4c2	anchors	authored	new-authored-1
 c0275d954483	anchors	authored	new-authored-1
 f8e32e7addea	anchors	authored	new-authored-1
-c23da95a8435	anchors	tatoeba-cc0	11597407
-c76d73418a29	anchors	tatoeba-cc0	12143512
 03cb45d5c97f	anchors	llm-corpus	speech-batch4.tsv
 092d12f2f4f6	anchors	llm-corpus	speech-batch4.tsv
 29c0c6f5490b	anchors	llm-corpus	speech-batch4.tsv
@@ -6644,7 +6579,6 @@ b7361aa5dab4	anchors	llm-corpus	speech-batch4.tsv
 83635e72768f	anchors	gutenberg	pg910#83635e72768f
 adec85226d07	anchors	tatoeba-cc0	11857163
 fedd3aaada46	anchors	gutenberg	pg145#fedd3aaada46
-c5a36874e59b	anchors	tatoeba-cc0	11102774
 a8aef7d90ad5	anchors	gutenberg	pg244#a8aef7d90ad5
 51531cc3fc4c	anchors	llm-corpus	speech-batch4.tsv
 5420809ed614	anchors	llm-corpus	speech-batch4.tsv
@@ -6865,15 +6799,11 @@ f91f6facffc2	anchors	gutenberg	pg59790#f91f6facffc2
 2fe0f781f7c8	anchors	gutenberg	pg55792#2fe0f781f7c8
 6300e6aeb638	anchors	gutenberg	pg28455#6300e6aeb638
 d24a916b0664	anchors	gutenberg	pg28455#d24a916b0664
-0329460f82d6	anchors	gutenberg	pg41227#0329460f82d6
-45f5958339f0	anchors	gutenberg	pg14658#45f5958339f0
 681b3e4f7ff9	anchors	gutenberg	pg55792#681b3e4f7ff9
-6bdb88a0e94e	anchors	gutenberg	pg63238#6bdb88a0e94e
 0eb53f9ba492	anchors	gutenberg	pg62488#0eb53f9ba492
 4a1a520601c4	anchors	tatoeba-cc0	11597652
 6bb3286865df	anchors	gutenberg	pg3678#6bb3286865df
 9a1b07ca5c5f	anchors	tatoeba-cc0	11728889
-a3698f1e87ba	anchors	tatoeba-cc0	11371607
 c718f95aef65	anchors	tatoeba-cc0	9081051
 22ceaea35fe0	anchors	tatoeba-cc0	8212562
 3124ed739273	anchors	tatoeba-cc0	11937309
@@ -6905,13 +6835,10 @@ e47a44fe7aad	anchors	gutenberg	pg394#p356
 28c5ce159aba	anchors	llm-corpus	dropped-rows.tsv
 2a3784482ece	anchors	llm-corpus	dropped-rows.tsv
 47d81dd9fc2e	anchors	gutenberg	pg345#p1127
-4a533cac630b	anchors	gutenberg	pg2701#p2120
 56522e71631c	anchors	llm-corpus	dropped-rows.tsv
 74cbabb3083d	anchors	gutenberg	pg345#p1219
 89f8b3abbcf6	anchors	gutenberg	pg2701#p1146
 9b46753d3d28	anchors	gutenberg	pg940#p1241
-c645eadb71c1	anchors	gutenberg	pg2186#p325
-d17b6d7d6b9d	anchors	gutenberg	pg2186#p495
 dddd2beffdc7	anchors	tatoeba-cc0	10130259
 f1b1a3b93ca7	anchors	tatoeba-cc0	12146989
 c3a8e0fb783e	anchors	gutenberg	pg82#p1768
@@ -7207,17 +7134,6 @@ ef0f1f61219b	anchors	tatoeba-cc0	10815257
 7d0a327f9370	anchors	gutenberg	pg5658#7d0a327f9370
 c5fe4d69820e	anchors	gutenberg	pg583#c5fe4d69820e
 7ec6ccd75ddf	anchors	tatoeba-cc0	8196885
-3aae83ddce0a	anchors	tatoeba-cc0	10371713
-4b9d749bcfc3	anchors	tatoeba-cc0	12260329
-5856eb84349c	anchors	tatoeba-cc0	11495032
-5af98912e3de	anchors	gutenberg	pg2600#5af98912e3de
-6d8971876cd3	anchors	tatoeba-cc0	10152908
-8641824b9159	anchors	gutenberg	pg599#8641824b9159
-ad5ab812cf58	anchors	gutenberg	pg289#ad5ab812cf58
-cc26d949a9e0	anchors	tatoeba-cc0	12301225
-d70194eae5bd	anchors	tatoeba-cc0	8736651
-dbbbdf4a802f	anchors	gutenberg	pg205#dbbbdf4a802f
-f8234313bc8f	anchors	tatoeba-cc0	10132973
 0b52b35bda29	anchors	tatoeba-cc0	11485257
 79f3a88e87d1	anchors	gutenberg	pg11#79f3a88e87d1
 69940244351a	anchors	tatoeba-cc0	9992933
@@ -7700,7 +7616,6 @@ a7a0872cdfbe	anchors	llm-corpus	speech-batch4.tsv
 1777925ad343	anchors	gutenberg	pg159#1777925ad343
 55ee8d9a4824	anchors	gutenberg	pg219#55ee8d9a4824
 6f00ee5468c7	anchors	gutenberg	pg76#6f00ee5468c7
-0818db8e6724	anchors	gutenberg	pg1399#p2591
 3ede02ecc6e1	anchors	gutenberg	pg1399#p2594
 44c75c5eba09	anchors	gutenberg	pg1399#p2596
 5824feb521ff	anchors	gutenberg	pg1399#p2565
@@ -7719,7 +7634,6 @@ d71d062cf419	anchors	gutenberg	pg1399#p2519
 d8d69824f294	anchors	gutenberg	pg1399#p2554
 f27015817a7a	anchors	gutenberg	pg1399#p2539
 f5dc0252badc	anchors	gutenberg	pg1399#p2584
-f91bb3033af6	anchors	gutenberg	pg5230#p934
 11d1759dda19	anchors	authored	new-authored-1
 2ab84aad9ec4	anchors	authored	new-authored-1
 3109aaba8ddc	anchors	authored	new-authored-1
@@ -7758,10 +7672,8 @@ c147a232b6c9	anchors	authored	new-authored-1
 dc74b768c906	anchors	authored	new-authored-1
 f959c30619ce	anchors	authored	new-authored-1
 88139f80242e	anchors	gutenberg	pg159#p151
-16b4df13ba8b	anchors	gutenberg	pg135#16b4df13ba8b
 24ded63a0cbe	anchors	gutenberg	pg2021#24ded63a0cbe
 3986aabd1689	anchors	gutenberg	pg45#3986aabd1689
-69cfcd24a113	anchors	gutenberg	pg164#69cfcd24a113
 7b53d1ddb4ca	anchors	gutenberg	pg507#7b53d1ddb4ca
 868d5deeb161	anchors	gutenberg	pg1074#868d5deeb161
 cc317aedb27e	anchors	gutenberg	pg76#cc317aedb27e
@@ -8517,7 +8429,6 @@ cdaf3e02118b	anchors	llm-corpus	speech-batch5.tsv
 cf3638391d4a	anchors	llm-corpus	speech-batch5.tsv
 d9f4151740d7	anchors	llm-corpus	speech-batch5.tsv
 17755c30ecbc	anchors	tatoeba-cc0	10220448
-4dacc441946d	anchors	tatoeba-cc0	10220450
 ac11afd69ba1	anchors	tatoeba-cc0	10236661
 0cd388cd297c	anchors	gutenberg	pg135#p10816
 1a8d23e11410	anchors	gutenberg	pg64317#p1251
@@ -9012,7 +8923,6 @@ d6d74b334698	anchors	gutenberg	pg2021#d6d74b334698
 d6ce537510f2	anchors	gutenberg	pg2021#d6ce537510f2
 c28a36eefb69	anchors	gutenberg	pg215#c28a36eefb69
 deceecdfe32f	anchors	gutenberg	pg74#deceecdfe32f
-e3a3999665c8	anchors	tatoeba-cc0	11896527
 1bd5864afe9b	anchors	tatoeba-cc0	12087150
 3bbfefb236e0	anchors	gutenberg	pg1023#3bbfefb236e0
 3e9e87d21983	anchors	tatoeba-cc0	12086983
@@ -9028,8 +8938,6 @@ e8b9efe67f28	anchors	gutenberg	pg45#e8b9efe67f28
 6fc959694cfd	anchors	tatoeba-cc0	12150610
 5cb6c4e0b074	anchors	gutenberg	pg5230#5cb6c4e0b074
 cb5f0c06d455	anchors	gutenberg	pg917#cb5f0c06d455
-3e9854096876	anchors	tatoeba-cc0	11842942
-8d6d0127ed6d	anchors	tatoeba-cc0	10361283
 8b130778786c	anchors	tatoeba-cc0	6366618
 01b7b792b02f	anchors	tatoeba-cc0	10177566
 212543ef15b7	anchors	gutenberg	pg2600#212543ef15b7
@@ -9058,7 +8966,6 @@ d45b0260a776	anchors	gutenberg	pg2600#d45b0260a776
 6fb9a5f1fb83	anchors	tatoeba-cc0	11817820
 7681d7f1db83	anchors	tatoeba-cc0	10165000
 45dc60b45843	anchors	tatoeba-cc0	11987725
-aa6db4a45371	anchors	tatoeba-cc0	12267076
 e4e2a3dcceba	anchors	tatoeba-cc0	11159688
 0e197ed0bb9e	anchors	tatoeba-cc0	11197061
 9cc7530e7b2b	anchors	tatoeba-cc0	12150566
@@ -9363,7 +9270,6 @@ bf0d364c688b	anchors	gutenberg	pg107#bf0d364c688b
 71aded713a30	anchors	gutenberg	pg6688#71aded713a30
 941376585ec9	anchors	gutenberg	pg1023#941376585ec9
 56efac581e21	anchors	tatoeba-cc0	10932849
-64438ed3303e	anchors	gutenberg	pg98#64438ed3303e
 6d0540fc4fe9	anchors	gutenberg	pg766#6d0540fc4fe9
 6e0fe6ac1737	anchors	gutenberg	pg113#6e0fe6ac1737
 d0146feb2e36	anchors	gutenberg	pg145#d0146feb2e36
@@ -9744,9 +9650,6 @@ bfe2ff30e463	anchors	authored	new-authored-1
 c23fa1cf3ede	anchors	authored	new-authored-1
 c47af70bac1a	anchors	authored	new-authored-1
 18c9d85ba767	anchors	tatoeba-cc0	11444274
-44b4bff466f8	anchors	gutenberg	pg345#p1423
-76b2e5306ea4	anchors	gutenberg	pg883#p8200
-83dddc09a139	anchors	gutenberg	pg107#p24
 af3da182afda	anchors	tatoeba-cc0	10935197
 e30b96dfa3fd	anchors	tatoeba-cc0	10911014
 ea6cd851bf90	anchors	tatoeba-cc0	11444279
@@ -9853,7 +9756,6 @@ b071a560e7bf	anchors	llm-corpus	seed-34.tsv
 bb4bf40841ac	anchors	llm-corpus	seed-34.tsv
 ca651832eb36	anchors	llm-corpus	seed-34.tsv
 dc5b5269f93f	anchors	gutenberg	pg2554#p1649
-1ca14af59a20	anchors	gutenberg	pg599#p1885
 b38df2c80665	anchors	gutenberg	pg963#p6389
 11b6d93497cd	anchors	gutenberg	pg345#p559
 1f86adbdd8da	anchors	tatoeba-cc0	12265737
@@ -10127,7 +10029,6 @@ be7b35ab1ddd	anchors	tatoeba-cc0	10789694
 5eb27b36a6e7	anchors	tatoeba-cc0	10946076
 69729b91ef4f	anchors	gutenberg	pg1023#69729b91ef4f
 9da27e62af01	anchors	gutenberg	pg821#9da27e62af01
-537339178f55	anchors	gutenberg	pg768#537339178f55
 3c45f3ad04c9	anchors	tatoeba-cc0	8734113
 4357c6363f58	anchors	tatoeba-cc0	8327599
 4933e572ed9c	anchors	tatoeba-cc0	8734110
@@ -10297,7 +10198,6 @@ d740e0f2b93a	anchors	gutenberg	pg1399#d740e0f2b93a
 38bfa1950c6a	anchors	gutenberg	pg1184#38bfa1950c6a
 d16ebbd2697b	anchors	gutenberg	pg1399#d16ebbd2697b
 f3345ff0686d	anchors	gutenberg	pg768#f3345ff0686d
-2bdb029a7382	anchors	gutenberg	pg700#2bdb029a7382
 125f05d761e5	anchors	llm-corpus	speech-batch6.tsv
 3ee5d5d88d63	anchors	llm-corpus	speech-batch6.tsv
 7d5f77c866d6	anchors	llm-corpus	speech-batch6.tsv
@@ -11775,7 +11675,6 @@ e9d184948882	anchors	gutenberg	pg599#e9d184948882
 5f655c9916ff	anchors	gutenberg	pg5658#5f655c9916ff
 8f98ddfa220c	anchors	tatoeba-cc0	11996157
 eb0bffc6ac9d	anchors	gutenberg	pg507#eb0bffc6ac9d
-4097968ca734	anchors	tatoeba-cc0	11136154
 10773686c3ba	anchors	llm-corpus	speech-batch7.tsv
 16282abd30b4	anchors	llm-corpus	speech-batch7.tsv
 1751664d8ecb	anchors	llm-corpus	speech-batch7.tsv
@@ -11808,7 +11707,6 @@ c4b7dc40ea84	anchors	tatoeba-cc0	11207177
 2fc933f0dee1	anchors	gutenberg	pg2600#p11439
 87e2a50fe433	anchors	tatoeba-cc0	11462322
 a089219fdd7f	anchors	tatoeba-cc0	12404035
-2249e39b28fc	anchors	gutenberg	pg963#p7
 1c1e82d981b0	anchors	llm-corpus	speech-batch7.tsv
 5172ebc45d51	anchors	llm-corpus	speech-batch7.tsv
 5b7bb06cfd33	anchors	llm-corpus	speech-batch7.tsv
@@ -11845,8 +11743,6 @@ eef2a0725065	anchors	gutenberg	pg768#eef2a0725065
 564102618862	anchors	tatoeba-cc0	12150466
 1f57d57b2df2	anchors	tatoeba-cc0	12764784
 3da0a324823d	anchors	tatoeba-cc0	12764832
-5e472c76ebe8	anchors	tatoeba-cc0	11342975
-6137b4e0ee33	anchors	tatoeba-cc0	11068285
 a091591e3616	anchors	tatoeba-cc0	12764689
 fe6655cc61b9	anchors	tatoeba-cc0	12134737
 9f6f25f0a483	anchors	tatoeba-cc0	11436928
@@ -11884,9 +11780,7 @@ f68514f5924a	anchors	llm-corpus	speech-batch7.tsv
 3912d1942cdf	anchors	gutenberg	pg215#3912d1942cdf
 3ce1fd095031	anchors	gutenberg	pg974#3ce1fd095031
 a5b040941a9b	anchors	gutenberg	pg289#a5b040941a9b
-32092ce47219	anchors	tatoeba-cc0	11848409
 5d81d72e05d2	anchors	gutenberg	pg768#5d81d72e05d2
-bb46c930cc63	anchors	gutenberg	pg821#bb46c930cc63
 fc0ded31353d	anchors	gutenberg	pg145#fc0ded31353d
 43eb835903d9	anchors	tatoeba-cc0	9671557
 e16331145009	anchors	gutenberg	pg2600#e16331145009
@@ -12220,7 +12114,6 @@ bdc716f65e73	anchors	tatoeba-cc0	12361015
 e58728a0ab7b	anchors	tatoeba-cc0	10804095
 ecd670fd2fc9	anchors	tatoeba-cc0	12021256
 63bb591b3a50	anchors	tatoeba-cc0	12467561
-3d69e4c48932	anchors	tatoeba-cc0	10110910
 c5fd934fa63a	anchors	tatoeba-cc0	10225345
 306cd0ce1fd4	anchors	gutenberg	pg1184#306cd0ce1fd4
 5d802403d688	anchors	gutenberg	pg5230#5d802403d688
@@ -12424,7 +12317,6 @@ fe7fdf3cf87b	anchors	tatoeba-cc0	10885847
 402fb6c7d821	anchors	gutenberg	pg110#402fb6c7d821
 9237e7bd1f52	anchors	tatoeba-cc0	12770721
 0853ec353878	anchors	tatoeba-cc0	12268798
-190144610c0d	anchors	tatoeba-cc0	9975251
 85be14880038	anchors	tatoeba-cc0	10357346
 9abed4c9ddf8	anchors	gutenberg	pg766#9abed4c9ddf8
 a4cb708a3d14	anchors	tatoeba-cc0	10883680
@@ -12457,7 +12349,6 @@ c96e47b9e895	anchors	gutenberg	pg2360#c96e47b9e895
 8466eb67c029	anchors	gutenberg	pg1023#8466eb67c029
 a0d72655b8a0	anchors	gutenberg	pg35#a0d72655b8a0
 623afdd34136	anchors	tatoeba-cc0	12005827
-fa6659d2149e	anchors	tatoeba-cc0	11810244
 5771a926839a	anchors	gutenberg	pg4300#5771a926839a
 8fecca73b7ce	anchors	gutenberg	pg1074#8fecca73b7ce
 3a7c4605c459	anchors	gutenberg	pg507#3a7c4605c459
@@ -12499,7 +12390,6 @@ cf5fbf62cd4d	anchors	authored	new-authored-1
 81c693e847d7	anchors	gutenberg	pg135#p1660
 989fcdb7ae40	anchors	tatoeba-cc0	11935347
 2c20b53e127d	anchors	gutenberg	pg1399#p5757
-77147cf0b5dd	anchors	gutenberg	pg514#p2170
 9e9b9dc9ca05	anchors	gutenberg	pg174#p151
 a6423743a888	anchors	gutenberg	pg174#p713
 b63714947a51	anchors	gutenberg	pg174#p713
@@ -12520,8 +12410,6 @@ b968194d28ff	anchors	tatoeba-cc0	11987776
 679cb3b7087f	anchors	tatoeba-cc0	12380934
 6d38280fdecb	anchors	tatoeba-cc0	10722116
 afb2c0f0fd44	anchors	tatoeba-cc0	11180436
-0fdd028f1c14	anchors	tatoeba-cc0	12769429
-fca4fe9f9823	anchors	tatoeba-cc0	12770607
 11a2dbdd109c	anchors	gutenberg	pg910#11a2dbdd109c
 5602488243f6	anchors	gutenberg	pg583#a63133ea16cf
 0325fb72ce87	anchors	llm-corpus	speech-batch7.tsv
@@ -12636,16 +12524,12 @@ dc9b82385820	anchors	gutenberg	pg43#dc9b82385820
 3346a168af9f	anchors	tatoeba-cc0	12764790
 9f3f16fd87fc	anchors	tatoeba-cc0	12368408
 462536aac306	anchors	gutenberg	pg2021#462536aac306
-4fc9e150ecdd	anchors	tatoeba-cc0	11881382
 50695817bb58	anchors	gutenberg	pg2360#50695817bb58
-5b7dc73d3818	anchors	tatoeba-cc0	11106934
 60d86681ba57	anchors	tatoeba-cc0	11770143
 743820deb123	anchors	gutenberg	pg164#743820deb123
 9d5117a941f9	anchors	gutenberg	pg1074#9d5117a941f9
 c579734c37ec	anchors	gutenberg	pg103#c579734c37ec
-eda2ac7b2cca	anchors	gutenberg	pg1257#eda2ac7b2cca
 38094e0d10c7	anchors	gutenberg	pg1257#38094e0d10c7
-83d6cc89e2a6	anchors	gutenberg	pg205#83d6cc89e2a6
 9ab5167698ba	anchors	tatoeba-cc0	12774921
 c082325e86ca	anchors	gutenberg	pg2360#c082325e86ca
 576467376d77	anchors	tatoeba-cc0	11005503
@@ -12682,12 +12566,9 @@ f6f1d633ec3f	anchors	llm-corpus	speech-batch8.tsv
 cbec396e8b6f	anchors	tatoeba-cc0	12494341
 0401a5ede2d8	anchors	tatoeba-cc0	11089763
 1d9a63ca3c2d	anchors	tatoeba-cc0	7742007
-2a432316ea57	anchors	gutenberg	pg244#2a432316ea57
-ef2f3c2140bd	anchors	tatoeba-cc0	11602069
 00220244a22b	anchors	tatoeba-cc0	11751589
 f446662b33e9	anchors	tatoeba-cc0	11156320
 b01a97586257	anchors	gutenberg	pg730#b01a97586257
-c9a06439ce28	anchors	gutenberg	pg507#c9a06439ce28
 146f1f8b2606	anchors	tatoeba-cc0	12777212
 2cef2ed9babc	anchors	tatoeba-cc0	12777292
 a96e2d5c59cb	anchors	tatoeba-cc0	11912637
@@ -12766,7 +12647,6 @@ dfdee8b83fa3	anchors	tatoeba-cc0	11778520
 f2a1d50862a9	anchors	tatoeba-cc0	12001433
 90291a82c769	anchors	tatoeba-cc0	12323073
 8cacaf3f2264	anchors	gutenberg	pg580#p345
-9a583dbef6c1	anchors	gutenberg	pg158#p209
 2b34751a59da	anchors	tatoeba-cc0	11924048
 2ea5b57e50b6	anchors	tatoeba-cc0	10910801
 4620f23a46e6	anchors	tatoeba-cc0	12286242
@@ -12900,7 +12780,6 @@ ddcbaec12906	anchors	gutenberg	pg110#ddcbaec12906
 61d37f42f317	anchors	tatoeba-cc0	11494767
 aef320918365	anchors	tatoeba-cc0	12113954
 c8902d22e1cb	anchors	tatoeba-cc0	11494719
-288365ac40d8	anchors	gutenberg	pg1257#288365ac40d8
 989ab4300f8c	anchors	gutenberg	pg74#989ab4300f8c
 d0112a32c7df	anchors	gutenberg	pg394#d0112a32c7df
 13e869ca165c	anchors	llm-corpus	seed-34.tsv
@@ -13189,11 +13068,9 @@ f9899c43025e	anchors	gutenberg	pg2021#f9899c43025e
 a6c97d879d90	anchors	tatoeba-cc0	12386331
 c97d338fd149	anchors	tatoeba-cc0	11541536
 d27aafb4b797	anchors	tatoeba-cc0	11541545
-15acc9d7a48c	anchors	gutenberg	pg110#15acc9d7a48c
 62b1f3c3a8d0	anchors	gutenberg	pg4300#62b1f3c3a8d0
 7291ca7b037d	anchors	gutenberg	pg1399#7291ca7b037d
 779ea4290fe3	anchors	gutenberg	pg507#779ea4290fe3
-b97cf73e2e39	anchors	gutenberg	pg2600#b97cf73e2e39
 d48416dc4b65	anchors	gutenberg	pg599#d48416dc4b65
 10577e0494a5	anchors	tatoeba-cc0	12486691
 30f40e102442	anchors	tatoeba-cc0	11857940
@@ -13242,7 +13119,6 @@ b9c3b989558e	anchors	gutenberg	pg514#b9c3b989558e
 bf1ea8386a81	anchors	gutenberg	pg2600#bf1ea8386a81
 c98cd3ba4792	anchors	tatoeba-cc0	12048567
 fd95c33cfd8a	anchors	gutenberg	pg159#fd95c33cfd8a
-1aafb3404f3e	anchors	gutenberg	pg153#1aafb3404f3e
 45c59dffc854	anchors	tatoeba-cc0	10903569
 6971350f4cd3	anchors	gutenberg	pg145#6971350f4cd3
 8cdc1b830628	anchors	gutenberg	pg766#8cdc1b830628
@@ -13262,7 +13138,6 @@ ccf1855ce15d	anchors	gutenberg	pg205#ccf1855ce15d
 ad3c8907d9f1	anchors	gutenberg	pg205#ad3c8907d9f1
 dceadecb87c0	anchors	gutenberg	pg5658#dceadecb87c0
 ea38308e141e	anchors	gutenberg	pg768#ea38308e141e
-0cf90b5c4313	anchors	tatoeba-cc0	10257337
 3f6d68a42b36	anchors	gutenberg	pg64317#3f6d68a42b36
 1c0cf05dcecb	anchors	gutenberg	pg308#1c0cf05dcecb
 5135ecfeb42f	anchors	tatoeba-cc0	9031380
@@ -13481,7 +13356,6 @@ f23b01ce992c	anchors	gutenberg	pg2186#f23b01ce992c
 feb2441e1233	anchors	gutenberg	pg2360#feb2441e1233
 0cd4c66aaf23	anchors	tatoeba-cc0	12292490
 059878ad8f1b	anchors	tatoeba-cc0	11406545
-9fdd75632f37	anchors	tatoeba-cc0	12090775
 e01a2d6d93c8	anchors	gutenberg	pg1023#e01a2d6d93c8
 ea07ad1d8468	anchors	gutenberg	pg289#ea07ad1d8468
 2d799a2a6979	anchors	gutenberg	pg205#2d799a2a6979
@@ -13550,7 +13424,6 @@ d0e5b4f6465d	anchors	gutenberg	pg158#d0e5b4f6465d
 d2a1e6dd9f4e	anchors	gutenberg	pg1023#d2a1e6dd9f4e
 59b52681fec7	anchors	gutenberg	pg43#59b52681fec7
 4608620492f2	anchors	gutenberg	pg583#4608620492f2
-8180dd205754	anchors	gutenberg	pg135#8180dd205754
 72bdc730b3ff	anchors	gutenberg	pg164#72bdc730b3ff
 2b4f2198703b	anchors	tatoeba-cc0	11200316
 608ffcc20f5d	anchors	tatoeba-cc0	11686590
@@ -13567,7 +13440,6 @@ c1eb51bf8ccc	anchors	tatoeba-cc0	12391801
 b5d9dd5bfded	anchors	tatoeba-cc0	10110337
 8bfb6ce195de	anchors	tatoeba-cc0	12004337
 c8dadcb461f4	anchors	tatoeba-cc0	12340621
-2bd582246dd5	anchors	tatoeba-cc0	11142710
 3330ca48c65a	anchors	tatoeba-cc0	11495155
 3d55e3bfbd9c	anchors	gutenberg	pg164#3d55e3bfbd9c
 4d3e04ce376d	anchors	gutenberg	pg507#4d3e04ce376d
@@ -13644,20 +13516,17 @@ e28087a262eb	anchors	tatoeba-cc0	12434979
 1eeb35a19029	anchors	tatoeba-cc0	11056832
 5c367001f4e1	anchors	tatoeba-cc0	12269955
 b863e1efe4ce	anchors	tatoeba-cc0	11786595
-c9a203254734	anchors	tatoeba-cc0	11477334
 58a7e1c7ac02	anchors	tatoeba-cc0	11912646
 58e06669f2d9	anchors	gutenberg	pg1074#58e06669f2d9
 6ba36dbf8010	anchors	tatoeba-cc0	12112087
 5f6df4c46079	anchors	gutenberg	pg174#5f6df4c46079
 6770ddbd7a3b	anchors	gutenberg	pg135#6770ddbd7a3b
-078fa4a3bbc4	anchors	tatoeba-cc0	11909444
 4021ea7e787c	anchors	tatoeba-cc0	12099024
 7b745b4e4773	anchors	tatoeba-cc0	12061649
 51944bce77bc	anchors	gutenberg	pg2360#51944bce77bc
 7091ef823ca3	anchors	gutenberg	pg5658#7091ef823ca3
 0cff47fcccad	anchors	gutenberg	pg1184#0cff47fcccad
 697e700a0f60	anchors	gutenberg	pg2852#697e700a0f60
-823ddc920ae0	anchors	tatoeba-cc0	10053972
 8d282c3397fc	anchors	gutenberg	pg205#8d282c3397fc
 973f7b71f9cb	anchors	gutenberg	pg135#973f7b71f9cb
 d384d11640f4	anchors	tatoeba-cc0	12274194
@@ -13671,8 +13540,6 @@ dfa5377344d3	anchors	tatoeba-cc0	12019401
 9b2d42f5005d	anchors	gutenberg	pg768#9b2d42f5005d
 cd01c8a9ae08	anchors	gutenberg	pg821#cd01c8a9ae08
 f2b43af37a29	anchors	gutenberg	pg967#f2b43af37a29
-40e4a7624c6a	anchors	gutenberg	pg98#40e4a7624c6a
-6aab1b560d79	anchors	gutenberg	pg583#6aab1b560d79
 408297474891	anchors	tatoeba-cc0	12055399
 4fffdc8ff32e	anchors	tatoeba-cc0	10804072
 b06cb2afb7ce	anchors	tatoeba-cc0	11246204
@@ -13953,19 +13820,14 @@ c27a529c495c	anchors	gutenberg	pg2701#p2484
 c5cb65708e05	anchors	gutenberg	pg164#p389
 e58a4d9bc998	anchors	gutenberg	pg82#p1510
 f9f287cf6eaf	anchors	gutenberg	pg82#p1523
-0bca1f5b61c9	anchors	tatoeba-cc0	10247759
 197fb1dfee84	anchors	tatoeba-cc0	12331417
-34234166e44a	anchors	tatoeba-cc0	9636181
 3439983d16f3	anchors	tatoeba-cc0	8180120
 352d0501f2d0	anchors	tatoeba-cc0	12103756
-3cbadc986aa9	anchors	tatoeba-cc0	8354710
-3cc54eb81a8f	anchors	gutenberg	pg766#p4224
 3ed265538d53	anchors	tatoeba-cc0	11558268
 5031ba6c6527	anchors	tatoeba-cc0	12419069
 56fe24a0ee71	anchors	tatoeba-cc0	12012181
 584bf3bc82b0	anchors	tatoeba-cc0	11280220
 6ad86a9e9c08	anchors	tatoeba-cc0	12146359
-7e211ba90f9e	anchors	tatoeba-cc0	9681659
 8d79cd4291c3	anchors	tatoeba-cc0	12003516
 a6aa8e8c235b	anchors	tatoeba-cc0	9373209
 bd4c25b64ad0	anchors	tatoeba-cc0	11215184
@@ -14120,12 +13982,10 @@ d07b75c626b5	anchors	tatoeba-cc0	12147479
 61dccf4a1901	anchors	tatoeba-cc0	11051028
 8df88de5cb4c	anchors	tatoeba-cc0	11042555
 fb92e3f8efb0	anchors	tatoeba-cc0	12488751
-c344f235088e	anchors	tatoeba-cc0	12009100
 260dcd641f8b	anchors	gutenberg	pg940#p1734
 3690e6b9bcd8	anchors	gutenberg	pg289#p328
 4917286c1f8b	anchors	gutenberg	pg917#p2065
 542b40b8ff0d	anchors	gutenberg	pg289#p644
-5e768e07693e	anchors	gutenberg	pg82#p178
 7222813f6b3d	anchors	gutenberg	pg82#p1961
 812e0aca9d2b	anchors	gutenberg	pg82#p505
 8d9242687e70	anchors	gutenberg	pg82#p1866
@@ -14134,10 +13994,8 @@ c344f235088e	anchors	tatoeba-cc0	12009100
 93235cff26c4	anchors	gutenberg	pg82#p2275
 9c17998f6095	anchors	gutenberg	pg1260#p2618
 ae2b38489e1f	anchors	gutenberg	pg940#p1724
-b005db8c22b0	anchors	gutenberg	pg1260#p209
 b356c90e7adc	anchors	gutenberg	pg82#p2560
 b724e160cda8	anchors	gutenberg	pg940#p748
-cf12a9243b34	anchors	gutenberg	pg82#p1445
 d4d1ad46451f	anchors	gutenberg	pg917#p4516
 130d4cc2d805	anchors	authored	new-authored-1
 1937be4c3506	anchors	gutenberg	pg421#p530
@@ -14327,7 +14185,6 @@ e655d85b60b4	anchors	gutenberg	pg1257#e655d85b60b4
 98377ab4a7b5	anchors	tatoeba-cc0	11518155
 fe42e13b0086	anchors	tatoeba-cc0	8987481
 d42452052d81	anchors	gutenberg	pg394#d42452052d81
-5f910f2c0941	anchors	tatoeba-cc0	11994717
 91b4473af88c	anchors	tatoeba-cc0	8910926
 7672667c0626	anchors	gutenberg	pg153#7672667c0626
 53dc03a0dc06	anchors	gutenberg	pg910#53dc03a0dc06
@@ -14342,7 +14199,6 @@ c3f1bb65c9a0	anchors	gutenberg	pg153#c3f1bb65c9a0
 32b1952a61d1	anchors	gutenberg	pg135#p10814
 392a3169b911	anchors	gutenberg	pg5658#p202
 4adb6001b98f	anchors	gutenberg	pg135#p3239
-4c9dd087091f	anchors	tatoeba-cc0	11585883
 51465b84b6f2	anchors	gutenberg	pg2021#p2128
 555b2fdd84d5	anchors	gutenberg	pg36#p193
 5914d1d018ba	anchors	gutenberg	pg1260#p633
@@ -15302,20 +15158,17 @@ b36f81c0b26f	anchors	gutenberg	pg145#b36f81c0b26f
 4e4666115f20	anchors	gutenberg	pg158#4e4666115f20
 76064fa5846b	anchors	gutenberg	pg2226#76064fa5846b
 aefe37fe644a	anchors	gutenberg	pg1257#aefe37fe644a
-fef25aba3700	anchors	tatoeba-cc0	11857160
 0ac0aea90119	anchors	tatoeba-cc0	9956556
 913071598f38	anchors	tatoeba-cc0	10913374
 1cf575e6ef14	anchors	tatoeba-cc0	11865472
 23228ecb72e7	anchors	gutenberg	pg768#23228ecb72e7
 7791e5167f1a	anchors	gutenberg	pg139#7791e5167f1a
 89de35af10e6	anchors	gutenberg	pg821#89de35af10e6
-8b4119315f02	anchors	gutenberg	pg110#8b4119315f02
 f96c36fdf947	anchors	tatoeba-cc0	11510469
 00790167a6f0	anchors	gutenberg	pg967#00790167a6f0
 8214fdc4d888	anchors	gutenberg	pg514#8214fdc4d888
 9373e196001d	anchors	gutenberg	pg1023#9373e196001d
 9a73c827dede	anchors	tatoeba-cc0	11691775
-bef016b1e342	anchors	gutenberg	pg45#bef016b1e342
 e17942922a48	anchors	tatoeba-cc0	12424639
 2dacae027bd7	anchors	gutenberg	pg2641#2dacae027bd7
 4b398cd5a204	anchors	gutenberg	pg135#4b398cd5a204
@@ -15502,7 +15355,6 @@ f138d26547f8	anchors	gutenberg	pg98#f138d26547f8
 a00a369d6c52	anchors	tatoeba-cc0	12770810
 d2b80206e6d2	anchors	tatoeba-cc0	12770632
 021b728c6080	anchors	tatoeba-cc0	12776767
-052d5500503a	anchors	tatoeba-cc0	12768422
 0800cd52a4b0	anchors	gutenberg	pg700#0800cd52a4b0
 182c62c0ab5a	anchors	gutenberg	pg108#182c62c0ab5a
 2b53c515bc3b	anchors	tatoeba-cc0	12769386
@@ -15514,7 +15366,6 @@ d2b80206e6d2	anchors	tatoeba-cc0	12770632
 9b7a084ded1d	anchors	gutenberg	pg1257#9b7a084ded1d
 b4474bfdcf93	anchors	tatoeba-cc0	12768446
 e28c15ac6256	anchors	tatoeba-cc0	12776777
-ec076d4d2975	anchors	tatoeba-cc0	12769304
 052417e0c102	anchors	gutenberg	pg64317#052417e0c102
 0e4d9c6812ed	anchors	gutenberg	pg308#0e4d9c6812ed
 309431e64d80	anchors	gutenberg	pg74#309431e64d80
@@ -15625,7 +15476,6 @@ f25a13a52ee7	anchors	gutenberg	pg1074#f25a13a52ee7
 da595e552cf8	anchors	gutenberg	pg76#da595e552cf8
 daf47631c963	anchors	tatoeba-cc0	12110608
 9e8186f37f51	anchors	gutenberg	pg583#9e8186f37f51
-04bdb97b3aab	anchors	gutenberg	pg1184#04bdb97b3aab
 b387c3563af2	anchors	gutenberg	pg45#b387c3563af2
 d1635337b541	anchors	gutenberg	pg2360#d1635337b541
 eedf71b796a9	anchors	gutenberg	pg2360#eedf71b796a9

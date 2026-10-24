@@ -158,6 +158,13 @@ def wave_id(text):
     return int(text) if text.isdigit() else text
 
 
+def check_tier_wave(parser, args):
+    """Refuses a tier wave (a wave id with a letter, such as 4c) without --tier: such a wave has no rank, so the rank
+    comparisons of the wave plan would fail or select nothing."""
+    if isinstance(args.wave, str) and not args.tier:
+        parser.error("a tier wave such as 4c needs --tier")
+
+
 def wave_of_rank(rank0):
     for i, cut in enumerate(WAVE_CUTS):
         if rank0 < cut:

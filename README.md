@@ -18,7 +18,7 @@ word, or only a noun. Every word is looked up in an embedded dictionary of over 
 has several analyses does a model choose from the sentence: the `Basic` model, which is part of the core package (a
 small statistical tagger that needs nothing else, no download and no ONNX Runtime, and answers with the part of speech),
 or an ONNX encoder package (`MiniLM` or `BertBaseCased`) that runs on ONNX Runtime and scores the fine senses of the
-words it was trained for. In this version the encoders know 829 lemmas (the senses appendix lists them); every other
+words it was trained for. In this version the encoders know 828 lemmas (the senses appendix lists them); every other
 ambiguous word is answered by the `Basic` model at the part-of-speech level, and more words follow in later versions.
 
 ## Features
@@ -261,9 +261,9 @@ embedded resource is damaged) and `DownloadConfigurationException` (an invalid m
 <!-- model-table:begin -->
 | Model | Real-text sense (share @ precision) | Running-text part of speech (open corpus test) | UD-EWT test part of speech (convention-mapped) | Independent sense evaluation (SemCor) | STE challenge set (part of speech) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Basic | 4.04% @ 71.28% | 93.86% (ambiguous 91.50%) | 91.62% (ambiguous 88.57%) | 3.29% @ 68.53% (top-1 2.51%) | 98.65% (ambiguous 97.83%) | none | 164 KiB | 4 MiB | 0.11 ms | 34 ms + 58 ms | no |
-| MiniLM | 10.57% @ 91.06% | 93.77% (ambiguous 91.35%) | 91.75% (ambiguous 88.77%) | 8.49% @ 87.93% (top-1 55.99%) | 98.20% (ambiguous 97.10%) | 22 MiB | 4,213 KiB | 98 MiB | 1.52 ms | 443 ms + 60 ms | yes |
-| BERT base cased | 17.27% @ 95.52% | 94.06% (ambiguous 91.84%) | 91.98% (ambiguous 89.13%) | 15.78% @ 89.04% (top-1 62.81%) | 98.20% (ambiguous 97.10%) | 104 MiB | 8,243 KiB | 221 MiB | 8.08 ms | 684 ms + 56 ms | yes |
+| Basic | 4.04% @ 70.21% | 93.86% (ambiguous 91.51%) | 91.62% (ambiguous 88.57%) | 3.29% @ 68.47% (top-1 2.51%) | 98.65% (ambiguous 97.83%) | none | 164 KiB | 4 MiB | 0.11 ms | 34 ms + 58 ms | no |
+| MiniLM | 10.27% @ 89.96% | 93.76% (ambiguous 91.33%) | 91.73% (ambiguous 88.74%) | 8.33% @ 88.45% (top-1 56.02%) | 98.20% (ambiguous 97.10%) | 22 MiB | 4,202 KiB | 98 MiB | 1.52 ms | 443 ms + 60 ms | yes |
+| BERT base cased | 17.57% @ 94.87% | 94.06% (ambiguous 91.84%) | 91.96% (ambiguous 89.10%) | 15.91% @ 89.03% (top-1 62.80%) | 98.20% (ambiguous 97.10%) | 104 MiB | 8,225 KiB | 221 MiB | 8.08 ms | 684 ms + 56 ms | yes |
 <!-- model-table:end -->
 
 <!-- markdownlint-enable MD013 -->
@@ -273,14 +273,14 @@ embedded resource is damaged) and `DownloadConfigurationException` (an invalid m
 
 - ⚡ **Basic** (core package, no download, 0.11 ms a sentence): the part of speech of every word, and the sense of a
   word that has one. Use it when the part of speech is all you need, and as the fallback of the other two.
-- 🎯 **BertBaseCased** (104 MiB download, about 8 ms a sentence): the model for **fine senses**. For the 829 trained
-  lemmas it commits to a fine sense on 17.3% of the real test sentences (15.8% of the SemCor words, the SemCor subset of
-  780 of those lemmas) and is right in 95.5%
+- 🎯 **BertBaseCased** (104 MiB download, about 8 ms a sentence): the model for **fine senses**. For the 828 trained
+  lemmas it commits to a fine sense on 17.6% of the real test sentences (15.9% of the SemCor words, the SemCor subset of
+  779 of those lemmas) and is right in 94.9%
   (89.0% on SemCor) of those answers; its most probable sense is right for 62.8% of the SemCor words, a little more
   often than always choosing the first sense in Open English WordNet order (60.7%, an optimistic baseline: see the SemCor
   caveat in [Accuracy and Model Choice](docs/user_guide/accuracy.md)).
 - ⚖️ **MiniLM** (22 MiB download, about 1.5 ms a sentence): mostly part of speech and groups. It commits to a fine
-  sense on 10.6% of the real test sentences (91.1% right) and its most probable sense is right for 56.0% of the
+  sense on 10.3% of the real test sentences (90.0% right) and its most probable sense is right for 56.0% of the
   SemCor words, below the first-sense baseline; choose it for the small download and the speed, not for senses.
 
 **What the columns measure.**
@@ -291,12 +291,12 @@ embedded resource is damaged) and `DownloadConfigurationException` (an invalid m
   and the share of those answers that are right. The held-out sentences were found or written for specific senses, so
   this is a classifier measure on a balanced corpus; the written held-out sentences are easier and are not in the table.
 - *Running-text part of speech (open corpus test)*: the part of speech of the selected analysis on the 1,501 sentences of
-  the test split of the representative open corpus (random CC0 text, 21,481 scored tokens), on all tokens and, in
-  brackets, on the 12,810 tokens whose word has two or more parts of speech in the dictionary.
-- *UD-EWT test part of speech*: the same on the test file of the English EWT treebank (19,472 scored tokens), mapped to
+  the test split of the representative open corpus (random CC0 text, 21,482 scored tokens), on all tokens and, in
+  brackets, on the 12,808 tokens whose word has two or more parts of speech in the dictionary.
+- *UD-EWT test part of speech*: the same on the test file of the English EWT treebank (19,471 scored tokens), mapped to
   the conventions of the dictionary (possessive determiners, the copula *be*, phrasal-verb particles, prepositions
   before gerunds); the treebank is downloaded for evaluation only and is never committed.
-- *Independent sense evaluation (SemCor)*: the 31,520 single-word annotations of the 780 of the 829 trained lemmas that
+- *Independent sense evaluation (SemCor)*: the 31,519 single-word annotations of the 779 of the 828 trained lemmas that
   SemCor 3.0 can evaluate (the
   sense-annotated Brown Corpus, WordNet 3.0 keys mapped to the senses of the catalog; 97.7% of the keys map): the share
   answered at the sense level and the precision of those answers, and the *fine top-1*, the share of the words whose most
@@ -306,12 +306,12 @@ embedded resource is damaged) and `DownloadConfigurationException` (an invalid m
 - *STE challenge set*: the 32 hard sentences of simplified technical English of the open corpus, scored like the running
   text; it is small and chosen for its hard cases, so read it as a regression check and not as accuracy.
 
-The sense-level answers are calibrated on real text towards a precision of 95%: BertBaseCased reaches 95.5% on the real
-test sentences and MiniLM 91.1% (the lemma-level target 0.97 cannot be reached on a large share of the calibration
+The sense-level answers are calibrated on real text towards a precision of 95%: BertBaseCased reaches 94.9% on the real
+test sentences and MiniLM 90.0% (the lemma-level target 0.97 cannot be reached on a large share of the calibration
 answers, so the thresholds keep that share and the builder reports the target as not reached; see
 [Accuracy and Model Choice][link-accuracy]), and on
-SemCor, which is very unlike the training sentences, the answers are right in 89.0% (BERT) and 87.9% (MiniLM) of the
-cases, and the encoder models commit to a fine sense for a minority of the words (15.8% and 8.5% of the SemCor
+SemCor, which is very unlike the training sentences, the answers are right in 89.0% (BERT) and 88.5% (MiniLM) of the
+cases, and the encoder models commit to a fine sense for a minority of the words (15.9% and 8.3% of the SemCor
 words). The probabilities of the fine senses
 are corrected to the usage of the senses (WordNet 3.0 counts);
 when this correction was introduced it raised the fine top-1 on SemCor from 56.9% to 60.7% (BERT) and from 47.5% to
@@ -327,8 +327,8 @@ encoder answers on the real test sentences (the sets that `evaluate` reports are
 
 | Model | Sense (share, precision) | Group (share, precision) | Part of speech (share, precision) | Fine top-1 |
 | --- | ---: | ---: | ---: | ---: |
-| MiniLM | 10.6%, 91.1% | 1.3%, 96.6% | 88.2%, 93.8% | 59.5% |
-| BERT base cased | 17.3%, 95.5% | 1.0%, 100% | 81.7%, 96.4% | 68.7% |
+| MiniLM | 10.3%, 90.0% | 1.1%, 96.2% | 88.6%, 93.7% | 59.5% |
+| BERT base cased | 17.6%, 94.9% | 0.9%, 100% | 81.5%, 96.4% | 68.9% |
 
 The table is generated into [docs/user_guide/model-table.md][link-model-table]; the user guide chapter
 [Accuracy and Model Choice][link-accuracy] explains how the numbers were measured and how to read them. A reviewed suite
@@ -341,14 +341,14 @@ This version is a foundation, and these follow-ups are planned (the figures are 
 - **More fine-sense training data.** Fill the per-sense quotas beyond the top 200 lemmas (waves 1 to 3 covered lemmas
   1 to 200, and wave 4c the short senses of the common tier), and refill the senses that lost sentences when the
   Tatoeba CC BY rows were removed from the corpus: at
-  present 3,489 of the 6,976 senses of the trained lemmas meet their quota, 2,136 are short and 1,351 have no sentence at
-  all (16,956 anchors and 5,797 held-out sentences are missing, see `WordSense.Builder tiers`).
-- **More fine senses on real text at the 0.97 target, and fine senses for MiniLM.** MiniLM answers 10.6% of the real
-  test sentences at the sense level and BertBaseCased 17.3%; more and better-balanced data, and tuning the
+  present 3,389 of the 6,972 senses of the trained lemmas meet their quota, 2,224 are short and 1,359 have no sentence at
+  all (17,201 anchors and 5,789 held-out sentences are missing, see `WordSense.Builder tiers`).
+- **More fine senses on real text at the 0.97 target, and fine senses for MiniLM.** MiniLM answers 10.3% of the real
+  test sentences at the sense level and BertBaseCased 17.6%; more and better-balanced data, and tuning the
   calibration (for example per domain), should raise both.
 - **A second check of the annotations.** Cross-check the open corpus with the second annotator `gemma4` (36% of its tokens
-  are still `unchecked`, about 4,500 sentences) and cross-check the relabeled rows of the fine-sense corpus, and take a
-  human-reviewed gold sample of the open corpus.
+  are still `unchecked`, about 4,500 sentences) and take a human-reviewed gold sample of the open corpus. (The real-text
+  rows of the fine-sense corpus have been checked blind; see `corpus/README.md`.)
 - **Multiword and technical-name spans.** An API for spans such as "Theta Arm" or "bleed air" instead of one-token
   words.
 - **More genres for the tagger.** Add informal web-genre data (with a license that allows it) to the open part-of-speech

@@ -83,7 +83,7 @@ H-perfect-3	fine	fine	fine
 H-perfect-4	fine	fine	fine
 H-update-1	answer	fine	fine
 H-update-2	answer	fine	fine
-H-update-3	answer	fine	fine
+H-update-3	answer	fine	answer
 H-update-4	answer	fine	fine
 H-estimate-1	answer	miss	fine
 H-estimate-2	answer	fine	fine
@@ -129,8 +129,8 @@ H-conflict-3	miss	miss	fine
 H-conflict-4	answer	fine	fine
 H-defense-1	answer	fine	fine
 H-defense-2	answer	fine	fine
-H-defense-3	answer	fine	fine
-H-defense-4	answer	fine	fine
+H-defense-3	answer	answer	answer
+H-defense-4	answer	answer	answer
 M-work-1	fine	fine	fine
 M-work-2	fine	fine	fine
 M-work-3	fine	fine	fine
@@ -329,7 +329,7 @@ C-buffet-1	answer	fine	fine
 C-buffet-2	answer	fine	fine
 C-buffet-3	answer	fine	fine
 C-buffet-4	answer	fine	fine
-C-polish-1	fine	fine	fine
+C-polish-1	miss	miss	miss
 C-polish-2	miss	miss	miss
 C-polish-3	fine	fine	fine
 C-polish-4	fine	fine	fine

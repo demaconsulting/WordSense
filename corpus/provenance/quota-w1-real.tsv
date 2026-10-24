@@ -269,7 +269,6 @@ b121fd6376ae	holdout	gutenberg	pg158#s1791
 3ed625657a7b	holdout	gutenberg	pg57548#s1423
 754a515cab6c	holdout	gutenberg	pg6688#s1890
 a907a3bd3d1e	holdout	tatoeba-cc0	12374734
-ac9c1eb01471	anchors	gutenberg	pg1074#s657
 770305109357	anchors	gutenberg	pg29776#s3169
 faf617a19bab	anchors	gutenberg	pg883#s10849
 ee54df40c00e	anchors	gutenberg	pg963#s15439
@@ -349,7 +348,6 @@ ab0f5f13a519	holdout	gutenberg	pg580#s1178
 1b04a2114596	anchors	gutenberg	pg408#s1965
 542ed4746d9e	anchors	nps	nps-bibe-hc-tgttn#s9
 9570985d9c15	anchors	nps	nps-romo-hc-brief#s49
-c7906236efc6	anchors	nps	nps-seki-geology_overview#s39
 cb571e977fd8	anchors	nws	nws-jetstream-atmosphere-air-pressure#s29
 68d2cb8bb552	anchors	tatoeba-cc0	11166974
 bd175024a0ae	anchors	usgs	usgs-featured-story-how-much-water-do-we-use#s23
@@ -471,7 +469,6 @@ ba881ae5a6e6	holdout	nps	nps-wica-hc-alvin-mcdonalds-diary-text-2#s227
 9b93644ae84b	holdout	nws	nws-jetstream-atmosphere-air-pressure#s71
 9ff102d3a2f6	holdout	usgs	usgs-featured-story-rivers-sky-6-facts-you-should-know-about-atmospheric-rivers#s21
 6a5c2961e106	holdout	voa	voa-5810673#s31
-2a38fc55de4b	anchors	voa	voa-6555555#s13
 e0c75916c8d4	anchors	voa	voa-7186117#s53
 c39f5b2745f5	holdout	gutenberg	pg766#s4931
 d2589118ff7e	holdout	tatoeba-cc0	12273987
@@ -485,7 +482,6 @@ aa99cbbee721	holdout	voa	voa-7806461#s4
 e091b21b7f76	anchors	nps	nps-cany-hc-bateswilson#s214
 2ed523592753	anchors	nws	nws-jetstream-upper-air-charts-weather-models-jetstream-max-model-output-statistics#s58
 35c8d42a2d3d	anchors	tatoeba-cc0	10640483
-f72b78ab0b31	anchors	usgs	usgs-featured-story-celebrating-black-history-meet-ric-wilson-a-pioneer-alaskan-#s23
 bd2d7d413fd0	anchors	usgs	usgs-science-snippet-exploring-grand-canyon-150-years-later#s4
 e65338a8107d	anchors	voa	voa-3510719#s28
 3d37f2976d63	anchors	voa	voa-3808829#s78

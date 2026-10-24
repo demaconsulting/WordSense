@@ -307,7 +307,7 @@ bend	bend#flex	Verb	Eight hair-like threads, half the length of the blossom, {be
 bend	bend#flex	Verb	LEAVES grow by threes, are linear, and blunt, the older ones are {bent} back, the younger ones spreading out, the edge covered with long hairs.
 bend	bend#flex	Verb	His frame, which had once been tall and erect, like the cedar, was now {bending} under the pressure of more than a century.
 bend	bend#flex	Verb	Looking at him wrathfully, she {bent} herself back in her chair to keep him further off, but gave him no reply.
-bend	bend#flex	Verb	The beam will {bend} in the direction of the slower portion of the wave.
+bend	bend#deflect	Verb	The beam will {bend} in the direction of the slower portion of the wave.
 bend	bend#flex	Verb	If density decreases quicker than normal with height (density is less than normal), then the beam {bends} less than normal and climbs excessively skyward.
 bend	bend#flex	Verb	An extreme case of superrefraction causes the radar beam to {bend} more than the Earth's curvature.
 bend	bend#turn	Verb	At Tournaig the road {bends} to the left, and passes the Tournaig farm buildings, where lives Alexander Cameron, the farm manager, who is a Gaelic poet (Part II., chap. xxiii.).
@@ -787,12 +787,7 @@ complex	complex#interconnected	Adjective	We used a {complex} version of the semi
 complex	complex#interconnected	Adjective	The structures of these questions are {complex}.
 complex	complex#interconnected	Adjective	But what about more {complex} sentences, you might ask?
 complex	complex#interconnected	Adjective	"We see a lunar surface with {complex} geology with significant water in the sub-surface and a surface layer of hydroxyl."
-compress	compress#make-compact	Verb	The mattresses of {compressed} sponge recently introduced, therefore, commend themselves to married people thus situated.
 compress	compress#make-compact	Verb	The first step then is to take a gas and {compress} it, which gives it an increase of heat temperature, dependent on the pressure.
-compress	compress#make-compact	Verb	But the pressure is doubled and the {compressed} air, therefore, will press on the inside of the vessel with a force of twenty-nine pounds.
-compress	compress#make-compact	Verb	To fill this reservoir with {compressed} air, apply the air-pump fitted with the valve shown in fig.
-compress	compress#make-compact	Verb	Steam, {compressed} air, and electricity have been used as the motive power.
-compress	compress#make-compact	Verb	The Whitehead torpedoes, the type most generally used, are ejected from their firing tubes by various means, slow burning powder being employed in some cases, though more frequently {compressed} air or steam.
 compress	compress#make-compact	Verb	This sentiment, as {compressing} the general question into a nutshell, gave the utmost satisfaction, and brought the gentleman into great notice until the ladies retired.
 compress	compress#make-compact	Verb	'Madness and moonshine,' is then the {compressed} verdict of the Genius.
 compress	compress#make-compact	Verb	An aggregate of this bark {compressed} into a stopper shape is forced into the anus as a treatment for piles.
@@ -1000,7 +995,6 @@ credit	credit#recognition	Noun	I pretend to no claim upon you, Mr. C., but for t
 credit	credit#recognition	Noun	It was rather small, but well built and convenient; and everything was fitted up and arranged with a neatness and consistency, of which Elizabeth gave Charlotte all the {credit}.
 credit	credit#recognition	Noun	And if it was a toasting-fork, you'd go into brass and do yourself no {credit}.
 credit	credit#recognition	Noun	He even cast doubt upon the reality of the deed, intimating that perhaps Ross or Sol had fired the shot, and had allowed Henry to claim the {credit}.
-credit	credit#recognition	Noun	Never threaten, because a threat is a promise to pay that it isn't always convenient to meet, but if you don't make it good it hurts your {credit}.
 credit	credit#recognition	Noun	Supposing I unravel the whole matter, you may be sure that Gregson, Lestrade, and Co. will pocket all the {credit}.
 credit	credit#recognition	Noun	He had given her {credit} for being capable of doing anything and going anywhere, and this failure to pass through "the eye of a needle" diminished his respect for her.
 credit	credit#recognition	Noun	But as experience continued to belie the claim made for vaccination as a permanent defence, it was natural that those interested in its performance should endeavour to retrieve its waning {credit}.
@@ -1032,7 +1026,7 @@ crowded	crowded#adjective	Adjective	HEATH, with beardless tips, just within the 
 crowded	crowded#adjective	Adjective	They went down the narrow staircase {crowded} close together, arm against arm, silent.
 crowded	crowded#adjective	Adjective	It is {crowded} and really stinks.
 cry	cry#call	Noun	Maud took an active part in the drive, and with her {cries} and flourishings of the broken oar was of considerable assistance.
-cry	cry#call	Noun	Suddenly there was a shrill {cry} of alarm, with the word "Stoa" resounding from a hundred tongues.
+cry	cry#yell	Noun	Suddenly there was a shrill {cry} of alarm, with the word "Stoa" resounding from a hundred tongues.
 cry	cry#call	Noun	A large section of the audience expressed their indignation at such a slur upon the travelers by noisy shouts of dissent and {cries} of, 'Don't put it!'
 cry	cry#call	Noun	It might be only a singing in the ear, but it seemed to me as if a {cry} answered the cry from Conseil.
 cry	cry#call	Noun	But 'Cooee' is a distinctly Australian {cry}, and one which is used between Australians.
@@ -1120,18 +1114,13 @@ damage	damage#harm	Noun	High-intensity atmospheric river storms can cause a lot 
 damage	damage#inflict-damage	Verb	Park cave formations can be {damaged} by human use of caves.
 damage	damage#inflict-damage	Verb	Pre-contact artifacts have likely survived many low-severity fires but are at risk of getting {damaged} by a high-severity fire due to excess fuels accumulated from fire suppression.
 damage	damage#inflict-damage	Verb	First, many homes are {damaged} or destroyed when the high wind simply lifts the roof off of the dwellings.
-damage	damage#inflict-damage	Verb	This is the most dangerous stage, when tornadoes, large hail, {damaging} winds, and flash flooding may occur.
 damage	damage#inflict-damage	Verb	Japanese scientists are trying to develop a new toxin-free solder that will not {damage} the groundwater.
 damage	damage#inflict-damage	Verb	Plastic bags blemish rural and urban scenery, {damage} ground water and soils, and choke livestock and fish, entangle birds and threaten animals in general.
 damage	damage#inflict-damage	Verb	Biasi's home in Sunland, about 11 miles (18 km) from the epicenter, was {damaged} in the earthquake.
-damage	damage#inflict-damage	Verb	When large, {damaging} earthquakes happen, it's natural for people in the United States to ask, could it happen here?
-damage	damage#inflict-damage	Verb	More than half of Americans are exposed to potentially {damaging} earthquakes.
 damage	damage#inflict-damage	Verb	At Mission San Jose, in southern Fremont, the adobe church built in 1809 and other mission buildings were heavily {damaged}.
 damage	damage#inflict-damage	Verb	The crews will also calibrate and repair any streamgages {damaged} by the storm to ensure they continue providing valuable information in the aftermath of the storm.
-damage	damage#inflict-damage	Verb	The most {damaging} earthquake in South Carolina history was the magnitude 7.0 1886 Charleston earthquake, located about 87 miles (140 km) to the southeast of this current swarm.
-damage	damage#inflict-damage	Verb	An actual firestorm is a strong, {damaging} fire that often has tornado-like columns of fire.
 damage	damage#inflict-damage	Verb	Both Xuan and Hung warned that the collection process {damages} the quality of the soil, crops and overall agriculture environment.
-dance	dance#dance-gracefully	Verb	She {danced} out of the door.
+dance	dance#bounce-dance	Verb	She {danced} out of the door.
 dance	dance#dance-pattern	Verb	"Do you talk by rule, then, while you are {dancing}?"
 dance	dance#dance-pattern	Verb	His thin face filled up, his color returned, he was soon able to {dance} and ride and shoot with the best of his comrades.
 dance	dance#dance-pattern	Verb	She leaned lightly on his arm, as lightly as when she had {danced} with him a few hours before.
@@ -1349,7 +1338,7 @@ drag	drag#pull	Verb	There, where the water stood at about the height of his wais
 drag	drag#pull	Verb	She saw Broussard standing on the ground, he was in uniform, with his heavy cavalry overcoat around him, and he was working with the men to {drag} the aviator from the machine.
 drag	drag#pull	Verb	Wild horses could not have {dragged} me from the spot.
 drag	drag#pull	Verb	Henry felt his comrade {dragging} upon his hand.
-drag	drag#pull	Verb	With a hollow rumble of wheels on the planks a couple of field guns, {dragged} by hand, rolled by.
+drag	drag#haul-slowly	Verb	With a hollow rumble of wheels on the planks a couple of field guns, {dragged} by hand, rolled by.
 drag	drag#pull	Verb	In the nature of Arctic travel there was a reason why fourteen dogs should not {drag} one sled, and that was that one sled could not carry the food for fourteen dogs.
 drag	drag#pull	Verb	For as the swift monster {drags} you deeper and deeper into the frantic shoal, you bid adieu to circumspect life and only exist in a delirious throb.
 drag	drag#pull	Verb	Utilizing the Pull of Gravity.--The boy laboriously {drags} his sled to the top of the hill against gravity, and then depends on that force to carry him down.
@@ -1359,7 +1348,7 @@ drag	drag#pull	Verb	She rose, {dragged} out the bundle she had brought with her,
 drag	drag#pull	Verb	Aunt, dear aunt, for mercy's sake, think of this, before you let them {drag} this sick child to a prison, which in any case must be the grave of all his chances of amendment.
 drag	drag#pull	Verb	Dredging is a fishing method in which a dredge is {dragged} across the sea floor, either scraping or penetrating the bottom.
 draw	draw#derive	Verb	She's a lily, and she {draws} the kind of beauty that lilies have from her personal chastity and her religious enthusiasm.
-draw	draw#derive	Verb	The name lists {draw} from a variety of languages because hurricanes affect multiple nations and are tracked by the public and weather services of many countries, not just the United States.
+draw	draw#select	Verb	The name lists {draw} from a variety of languages because hurricanes affect multiple nations and are tracked by the public and weather services of many countries, not just the United States.
 draw	draw#formulate	Verb	Hasty readers may {draw} a false conclusion from this statement.
 draw	draw#outline	Verb	Isotachs are typically {drawn} for every 20 kt.
 draw	draw#pull	Verb	Naumann has been painting the Saints {drawing} the Car of the Church, and I have been making a sketch of Marlowe's Tamburlaine Driving the Conquered Kings in his Chariot.
@@ -1423,7 +1412,7 @@ effect	effect#consequence	Noun	As a noun, {effect} means "a change that results 
 effect	effect#consequence	Noun	She said the {effect} is "... it's giving younger people, the generations that came after them, to become the change-makers, the decision-makers."
 elaborate	elaborate#expand	Verb	With your permission, I would ask the favor of an interview, as I feel strongly upon the subject, and have certain suggestions which I could only {elaborate} in a personal conversation.
 elaborate	elaborate#expand	Verb	So John marched in with a very confident step and {elaborated} my arguments.
-elaborate	elaborate#ornate	Adjective	She will, possibly, have to give the finishing touch to some article of confectionary, or be occupied with some of the more {elaborate} processes of the still-room.
+elaborate	elaborate#detailed	Adjective	She will, possibly, have to give the finishing touch to some article of confectionary, or be occupied with some of the more {elaborate} processes of the still-room.
 elaborate	elaborate#ornate	Adjective	And with an {elaborate} sea-salute, this fellow, a long, ill-looking, yellow-eyed man of five and thirty, stepped coolly towards the door and disappeared out of the house.
 elaborate	elaborate#ornate	Adjective	The plot, though not {elaborate}, is almost regular enough for Fielding; hardly a character, hardly an incident could be retrenched without loss to the story.
 elaborate	elaborate#ornate	Adjective	In the designs accompanying this chapter it will be seen that simple plans are made capable of producing more {elaborate} effects by making use of the dotted lines.
@@ -1851,7 +1840,7 @@ fund	fund#monetary-fund	Noun	The House of Commons, having voted the endowment of
 fund	fund#monetary-fund	Noun	The first to visit the Tugeri was a renegade missionary, who had absconded with some of the mission {funds}.
 fund	fund#monetary-fund	Noun	In all, the auditor general said his office uncovered $170 million in {funds} misused from the national budget.
 fund	fund#monetary-fund	Noun	Jack depleted his college {fund} a year before graduation.
-gain	gain#acquire	Verb	As we said, everybody and every living thing congregates and lives where they can {gain} access to water, especially freshwater.
+gain	gain#derive	Verb	As we said, everybody and every living thing congregates and lives where they can {gain} access to water, especially freshwater.
 gain	gain#addition	Noun	The General Election of 1912, when the Socialists and Progressives who had definitely challenged the Chauvinism of the Government secured considerable {gains} in the Reichstag, caused dismay in military circles.
 gain	gain#benefit	Verb	So much we have {gained} by this clear vision of our first pterodactyl.
 gain	gain#benefit	Verb	I've everything to {gain} by it--my own death not being the least part.
@@ -1976,7 +1965,7 @@ guard	guard#defender	Noun	Prison {guards} found a shiv in Tom's cell.
 guard	guard#shield	Verb	"How can you imply that he required {guarding} against me?" cried Eustacia, passionate tears in her eyes.
 guard	guard#shield	Verb	There you shall live a happy, and {guarded}, and most innocent life.
 guard	guard#shield	Verb	"How are you to be {guarded} from the danger you have incurred?"
-guard	guard#shield	Verb	He wanted to show that he was equal yet to the task of {guarding} alone the honour of his house.
+guard	guard#defend	Verb	He wanted to show that he was equal yet to the task of {guarding} alone the honour of his house.
 guard	guard#shield	Verb	He stood there, rugged and unstirring, like a statue of an old man {guarding} the honour of his house.
 guard	guard#shield	Verb	The secret she had {guarded} so long even from her husband was out.
 guard	guard#shield	Verb	She must be well brought up, and well {guarded} from reposing any foolish confidences where they are not deserved.
@@ -2170,7 +2159,6 @@ impress	impress#impact	Verb	Her social superiority over him, which hitherto had 
 impress	impress#impact	Verb	Without one overt act of hostility, one upbraiding word, he contrived to {impress} me momently with the conviction that I was put beyond the pale of his favour.
 impress	impress#impact	Verb	Davies had nothing but the same old theory, but he urged it with a force and keenness that {impressed} me more deeply than ever.
 impress	impress#impact	Verb	And the drawing near of Death, which alike levels all, alike {impresses} all with a last revelation, which only an author from the dead could adequately tell.
-impress	impress#impact	Verb	He was obviously very subdued and very {impressed}.
 impress	impress#impact	Verb	The argument often {impresses} a jury, but it is grossly fallacious.
 impress	impress#impact	Verb	Mr. Pitman has been remarkably successful in {impressing} public men with his opinions.
 impress	impress#impact	Verb	I'll look it up in my journal when I get home, and see if it {impressed} me at the time.
@@ -2209,15 +2197,12 @@ impress	impress#impress-vividly	Verb	A perfect fury for making acquaintances on 
 impress	impress#impress-vividly	Verb	When old Mr Gilbert Clennam proposed his orphan nephew to my father for my husband, my father {impressed} upon me that his bringing-up had been, like mine, one of severe restraint.
 impress	impress#impress-vividly	Verb	His sister Winnie had {impressed} upon him (in the omnibus) that Mr Verloc would be found at home in a state of sorrow, and must not be worried.
 incline	incline#tend	Verb	He put some questions to me, which I was at first {inclined} to treat lightly enough, until I observed that my answers distressed him.
-incline	incline#tend	Verb	Next day I was {inclined} to think that I had made a mistake, and by the day after I was sure of it.
 incline	incline#tend	Verb	Sometimes we are {inclined} to class those who are once-and-a-half-witted with the half-witted, because we appreciate only a third part of their wit.
-incline	incline#tend	Verb	He sees danger in the pool, but {inclines} to the belief that the public benefit derived from the pooling system outweighs the danger of public detriment from its existence.
+incline	incline#willing	Verb	He sees danger in the pool, but {inclines} to the belief that the public benefit derived from the pooling system outweighs the danger of public detriment from its existence.
 incline	incline#tend	Verb	A nation is, like the individual, {inclined} to follow beaten tracks.
 incline	incline#tend	Verb	His temperament did not {incline} to gusts of passion.
 incline	incline#tend	Verb	He had gone wild-turkey shooting once and gotten a shot at the start and then nothing more, so he was {inclined} to be skeptical.
 incline	incline#tend	Verb	The best and clearest of these nests are nearly as white as writing paper, and, semi-transparent, having a few downy feathers hanging about them; but their general colour is white {inclining} to red.
-incline	incline#tend	Verb	Would you be {inclined} to say now--as a brother--that he ever hid things in the dust, as well as found 'em?'
-incline	incline#tend	Verb	'I made a remark a little while ago,' said Daniel Doyce then, 'which I am {inclined} to think was an incorrect one.
 incline	incline#tend	Verb	She was only nine years old, {inclined} to plumpness and good humour, deprecated violence and had never been to sea.
 incline	incline#tend	Verb	Nothing happened except a bad headache, and a quarrel with her mother, who was ungratefully {inclined} to be sarcastic at her expense.
 incorporate	incorporate#integrate	Verb	Have ready the above proportion of boiling vinegar, strain the liquor gradually to it, and keep stirring with a wooden spoon until it is well {incorporated}.
@@ -2244,7 +2229,7 @@ influence	influence#causation	Noun	Some among the modern physiologists have supp
 influence	influence#determine	Verb	This is the divine principle which {influences} their moral conduct, and solely preserves their constitution and civil government in that purity in which they are found to prevail amongst them.
 influence	influence#determine	Verb	Mrs. Willers had been relieved to find there was certainly no man {influencing} Miss Moreau's decision.
 influence	influence#determine	Verb	The landscape itself inspired and {influenced} the events that occurred over time.
-influence	influence#power	Noun	If a judge owes his nomination or election to railroad {influences}, railroad managers feel that they have in this a guarantee of loyalty.
+influence	influence#force	Noun	If a judge owes his nomination or election to railroad {influences}, railroad managers feel that they have in this a guarantee of loyalty.
 influence	influence#power	Noun	The state also secured considerable {influence} in the administration of the roads as well as in the right to assume the management of the various lines under certain conditions.
 initiate	initiate#originate	Verb	It was by the clergy and the doctors that the project of compulsion was {initiated}.
 initiate	initiate#originate	Verb	The scientific opposition to vaccination, {initiated} by Mr. John Gibbs in 1855, had for some years few accessions, and it required faith in truth in full measure to persist in its advocacy.
@@ -2387,7 +2372,6 @@ joke	joke#gag	Noun	The story seemed so good that I told it everywhere, and it wa
 joke	joke#gag	Noun	After some more {jokes} on the same subject, they exchanged a few short whispers with Fagin; and withdrew.
 joke	joke#gag	Noun	Looie's perpetual {jokes} and good humor promise an enjoyable voyage.
 joke	joke#gag	Noun	{Jokes} about text generators practically write themselves.
-joke	joke#gag	Noun	I wish you would identify as an original {joke}.
 joke	joke#gag	Noun	That's the kind of {joke} you'd make.
 joke	joke#gag	Noun	That's the worst {joke} I've ever heard.
 joke	joke#gag	Noun	Zadie: You know, your {jokes} are really getting to me.
@@ -2449,7 +2433,6 @@ kick	kick#propel	Verb	If one of the goslings got in his way he {kicked} it to on
 kick	kick#propel	Verb	"Ugh! you coward!" said Tom, and {kicked} him over, feeling humiliated as a sportsman to possess so poor-spirited an animal.
 kick	kick#propel	Verb	Mr. Winship made straight for the burning brushwood and {kicked} it in all directions.
 kick	kick#propel	Verb	At this instant, Mrs. Bumble stepped hastily forward to replace the carpet, which had been {kicked} up in the scuffle.
-kick	kick#propel	Verb	In this case, we refer to the ball as the direct object because it is receiving the action of the verb {kick}.
 kick	kick#strike	Verb	The driver, alighting, began to {kick} the animal in the belly.
 kick	kick#strike	Verb	Then he {kicked} it with his heavy boot, and saw it shake and shatter.
 kick	kick#strike	Verb	I could have {kicked} myself, but it was not too late.
@@ -2464,7 +2447,7 @@ kick	kick#strike	Verb	'He {kicked} me twice, coming up yesterday, because I was 
 kick	kick#strike	Verb	In the struggle that followed the boy was {kicked} in the head by the animal.
 kick	kick#strike	Verb	"Your master's not at home; there's not a man in the house, and he'll {kick} that door down in ten minutes."
 kick	kick#strike	Verb	Sowerberry had not yet returned, and Oliver continued to {kick}, with undiminished vigour, at the cellar-door.
-kick	kick#strike	Verb	And he went through the motions of thrashing an imaginary boy--pummelling the air, and {kicking} and gouging.
+kick	kick#flail	Verb	And he went through the motions of thrashing an imaginary boy--pummelling the air, and {kicking} and gouging.
 kick	kick#strike	Verb	Again, and this time with purpose, did Grey Beaver {kick} him.
 kick	kick#strike	Verb	He {kicked} it, frantic, caught a glimpse of the street, people in nightgowns, a chimney swaying and then falling in a long drooping sweep.
 kick	kick#strike	Verb	Getting {kicked} in the groin is painful.
@@ -2603,7 +2586,7 @@ lay	lay#put-down	Verb	For example, "He {laid} the newspaper down on the table."
 lay	lay#put-down	Verb	Or, "The mother {laid} the baby down for a nap."
 lead	lead#result-in	Verb	Widespread throughout the U.S. and Canada, white-nose syndrome has {led} to declines of over 90% of northern long-eared, little brown and tri-colored bat populations in less than 10 years.
 leave	leave#abandon	Verb	From there J.M. Moore found a passage leading to the left & started to explore it for water formation, {leaving} me to explore another place in a different direction.
-leave	leave#abandon	Verb	The lack of sea ice {left} phytoplankton to the mercies of an increasingly wind-whipped surface, particularly along the northern Peninsula.
+leave	leave#become	Verb	The lack of sea ice {left} phytoplankton to the mercies of an increasingly wind-whipped surface, particularly along the northern Peninsula.
 leave	leave#exit	Verb	Approximately half of the released chub have {left} the creek since translocation.
 leave	leave#exit	Verb	After growing and multiplying, the flatworms {leave} the snail and re-enter the lake or stream.
 leave	leave#leave-alone	Verb	There are office building fluorescents {left} on, city lamp posts that spread their beams far beyond what needs illumination, and residences with outdoor fixtures that glare across the street and into the sky.
@@ -2637,7 +2620,7 @@ like	like#enjoy	Verb	Not {liking} to sit in the cold and darkness, I thought I w
 like	like#enjoy	Verb	She turned away, {liking} his words little and his manner less.
 like	like#enjoy	Verb	It {likes} rich food, and great quantities of it.
 like	like#enjoy	Verb	This was a very dry bleak country at that time, and I don't think either of my parents {liked} it very well there.
-like	like#enjoy	Verb	He said he hated rosebuds and {liked} his flowers faded.
+like	like#prefer	Verb	He said he hated rosebuds and {liked} his flowers faded.
 like	like#enjoy	Verb	For example, you can say "I might run to the store" or "I {like} to run."
 like	like#enjoy	Verb	He asked me if I {liked} pizza.
 like	like#enjoy	Verb	"I think songs are a nice way to practice and I've found that students who {like} to sing in English generally improve their pronunciation very quickly."
@@ -2659,7 +2642,7 @@ line	line#border	Verb	Margaret led the way without hesitation up the steep ascen
 line	line#border	Verb	White and pink too are the country roads {lined} with fruit trees.
 line	line#geometric-trace	Noun	In no living thing are the {lines} of beauty more exquisitely defined than in the crescentic borders of these flukes.
 line	line#geometric-trace	Noun	The atmosphere rarely follows straight {lines}, and thunderstorms do not always remain within the man-made boundaries we create around them.
-line	line#geometric-trace	Noun	Alex Jarrett discovered that he lived within a few kilometers of the place where the 43 degree north latitude {line} crosses the 72 degree west longitude line.
+line	line#linear-location	Noun	Alex Jarrett discovered that he lived within a few kilometers of the place where the 43 degree north latitude {line} crosses the 72 degree west longitude line.
 line	line#geometric-trace	Noun	One of the wheels on this shopping cart is messed up, so you can't push it in a straight {line} very easily.
 line	line#line-of-text	Noun	The next {line} provides the "local time" day of the week and date of the month.
 line	line#line-of-text	Noun	These {lines} start with a general statement and then get increasingly specific.
@@ -2683,9 +2666,9 @@ link	link#logical-link	Verb	Observations that day allowed scientists to better {
 link	link#logical-link	Verb	As a result of his efforts, Hill found no significant seismic activity {linked} to the booming sounds, suggesting that the phenomenon has likely an atmospheric rather than seismic cause.
 link	link#logical-link	Verb	They came to the same conclusion that Leopold and so many before him came to understand--that the health of people and society is intimately {linked} to the health of the natural world.
 link	link#logical-link	Verb	Researchers {link} shrubs that died during a severe drought to recent large fires.
-link	link#logical-link	Verb	That is a conjunction here, {linking} the two parts of the sentence.
+link	link#join	Verb	That is a conjunction here, {linking} the two parts of the sentence.
 link	link#logical-link	Verb	In other words, it {links} ideas between sentences.
-link	link#logical-link	Verb	Linking verbs are verbs that {link} an adjective or noun with a subject.
+link	link#join	Verb	Linking verbs are verbs that {link} an adjective or noun with a subject.
 link	link#logical-link	Verb	She said it was a problem that writers were {linking} climate stories with disaster.
 link	link#logical-link	Verb	The word is often {linked} with the idea of an emergency.
 link	link#series-connection	Noun	Only now, at the end of nearly ten years, am I allowed to supply those missing {links} which make up the whole of that remarkable chain.
@@ -2773,8 +2756,8 @@ master	master#authority	Noun	The politicians tells us, "You must educate the mas
 master	master#authority	Noun	Capitalism, invented by humanity, became its {master}.
 master	master#authority	Noun	He saw himself as {master} of the Van Tassel farm with Katrina as his wife.
 master	master#virtuoso	Noun	Copy him, then, not servilely, but as some of the greatest {masters} of painting have copied others; insomuch that their copies have been equal to the originals, both as to beauty and freedom.
-mean	mean#intend	Verb	She also added to the entertaining cauldron that makes up American politics with a campaign ad {meant} to offset her admission she once dabbled in sorcery.
-mean	mean#intend	Verb	This work is {meant} to provide decision-makers, researchers, and economists with the tools they need to make informed choices about the mineral mix that fuels our society.
+mean	mean#assign	Verb	She also added to the entertaining cauldron that makes up American politics with a campaign ad {meant} to offset her admission she once dabbled in sorcery.
+mean	mean#assign	Verb	This work is {meant} to provide decision-makers, researchers, and economists with the tools they need to make informed choices about the mineral mix that fuels our society.
 mean	mean#intend	Verb	I didn't {mean} to put you between a rock and hard place.
 mean	mean#mean-to-express	Verb	"His whole family perished in the Holocaust." "You {mean} they were murdered in the Holocaust." "Right."
 mean	mean#mean-to-express	Verb	A "backhanded compliment" is one that may be {meant} or understood as an insult.
@@ -2860,7 +2843,7 @@ moderate	moderate#within-limits	Adjective	On a {moderate} computation, it was ma
 moderate	moderate#within-limits	Adjective	It floated on the surface of the waves at a {moderate} pace.
 moderate	moderate#within-limits	Adjective	The third class comprises the vast majority of women, in whom the sexual appetite is as {moderate} as all other appetites.
 moderate	moderate#within-limits	Adjective	In bath-pruritus weak glycerine lotions, and an ointment containing a few grains of thymol and menthol to the ounce sometimes give {moderate} relief.
-moderate	moderate#within-limits	Adjective	In the matter of philanthropy its practice has never been in advance of its very {moderate} professions.
+moderate	moderate#restrained	Adjective	In the matter of philanthropy its practice has never been in advance of its very {moderate} professions.
 moderate	moderate#within-limits	Adjective	A {moderate} share of penetration, with great attention, will infallibly make these necessary discoveries.
 moderate	moderate#within-limits	Adjective	No traveller can claim even a {moderate} acquaintance with the parish of Gairloch unless he has acquired some knowledge of her Highland population.
 moderate	moderate#within-limits	Adjective	The reason of it seems to be plainly this: the younger, who had the favourable kind, was of a clean habit, {moderate} appetite, and easily governed during the whole process.
@@ -3072,7 +3055,7 @@ pain	pain#acute-discomfort	Noun	I had saved a human being from destruction, and 
 pain	pain#emotional-distress	Noun	With {pain} that was like the bitterness of dissolution she murmured the words of her indispensable and sworn answer as an honourable woman.
 pain	pain#emotional-distress	Noun	It gives me {pain} to speak ill of a Darcy; but she is too much like her brother,--very, very proud.
 pain	pain#emotional-distress	Noun	"What should I do--how should I act now, this very day, if I could clutch my own {pain}, and compel it to silence, and think of those three?"
-pain	pain#symptom	Noun	The {pain} from the second kind of burns is much more severe than that in the other two, although the danger, as a general rule, is less than it is in the third class.
+pain	pain#acute-discomfort	Noun	The {pain} from the second kind of burns is much more severe than that in the other two, although the danger, as a general rule, is less than it is in the third class.
 pain	pain#symptom	Noun	I had a case of a calf that got very costive--so bad that it moaned dreadfully from {pain}.
 pain	pain#symptom	Noun	More or less severe and persistent burning {pain} precedes and accompanies the atrophy.
 pain	pain#symptom	Noun	Violent {pain} in head in 2.3 per cent.
@@ -3264,7 +3247,7 @@ place	place#lay	Verb	There is no requirement for width; many arches in the park 
 place	place#lay	Verb	The Weather Bureau was renamed the National Weather Service and, in 1970, was {placed} under the newly created National Oceanic and Atmospheric Administration (NOAA), which remains under the Department of Commerce.
 place	place#lay	Verb	Between the 60°F and 30°F temperatures, {place} a small dot about 1/3 the distance from the 30°F and another small dot about 2/3 the distance from the 30°F.
 place	place#lay	Verb	For instance, cheese may be grated and sprinkled on the top of mashed or creamed potatoes and then browned by {placing} the dish in the oven.
-place	place#lay	Verb	{Placed} among the busy streets of Washington, D.C. is a large public garden that many Americans have never heard of.
+place	place#locate	Verb	{Placed} among the busy streets of Washington, D.C. is a large public garden that many Americans have never heard of.
 place	place#lay	Verb	President Joe Biden announced an executive action Tuesday that temporarily {places} restrictions on the number of migrants unlawfully entering the United States.
 place	place#locality	Noun	One of those adventures was to the {place} that would become Rocky Mountain National Park.
 place	place#locality	Noun	Elon Musk despises unions more than almost anything, which explains why he wants to build colonies in space so badly: he wants {places} with no labor laws.
@@ -3317,9 +3300,7 @@ polish	polish#shine	Verb	The grass under their feet became trodden away, and the
 polish	polish#shine	Verb	All about me was spotless and bright--scoured floor, {polished} grate, and well-rubbed chairs.
 polish	polish#shine	Verb	All these detached masses, covered with enamel, {polished} by the action of the subterraneous fires, shone resplendent by the light of our electric lantern.
 polish	polish#shine	Verb	Mrs. Hussey wore a {polished} necklace of codfish vertebra; and Hosea Hussey had his account books bound in superior old shark-skin.
-polish	polish#shine	Verb	A cubic inch of the {polishing} slate of Bilin contains, according to Ehrenberg, 40,000 millions of the siliceous shells of Galionellæ.
 polish	polish#shine	Verb	When burnt or calcined, they are useful for the cleaning and {polishing} of silver and other hard substances, and sometimes for correcting the acidity of wines.
-polish	polish#shine	Verb	Nor was this effect produced or at all heightened by the immense quantity of {polishing} he had administered to his face with his coat-sleeve during the last half-hour.
 power	power#work-rate	Noun	This maximizes the returned {power} back to the radar.
 present	present#bring-to-mind	Verb	Each temperature forecast is {presented} to the nearest whole degree Fahrenheit.
 press	press#apply-pressure	Verb	{Pressing} the pillow against his left ear, I asked him if he heard me, but he gave no sign.
@@ -3377,7 +3358,7 @@ protest	protest#complain	Verb	She said it so finally, and in such an undiscussib
 protest	protest#complain	Verb	He was removed, loudly {protesting}, to the police-station, while the inspector remained upon the premises in the hope that the ebbing tide might afford some fresh clue.
 protest	protest#complain	Verb	"How you can call it that, with Hilda in the balance----" Duff {protested}.
 protest	protest#complain	Verb	The slight, {protesting} murmur on the part of Mrs. Gould made him pause for a moment, while he looked at her with a sombre and resolute glance.
-protest	protest#complain	Verb	On the contrary, from day to day I had become more irritable at the sight, and my conscience swelled nightly within me at the thought that I had lacked the courage to {protest}.
+protest	protest#oppose	Verb	On the contrary, from day to day I had become more irritable at the sight, and my conscience swelled nightly within me at the thought that I had lacked the courage to {protest}.
 protest	protest#complain	Verb	I {protested}; for a view of tantalising loveliness was unfolding itself.
 protest	protest#complain	Verb	O'Halloran stood a round and then Farrington stood another round, Weathers {protesting} that the hospitality was too Irish.
 protest	protest#complain	Verb	"Oh, we must talk with Claire about that, mustn't we?" she {protested}, blushing.
@@ -3851,7 +3832,7 @@ rock	rock#shake	Verb	Groaning, he dropped his head into his hands, {rocking} on 
 rock	rock#shake	Verb	The stormy sea is lulled at last in its {rocking} cradle; the forest fire falls to sleep on its bed of ashes.
 roll	roll#turn-over	Verb	Still {rolling} in his blood, at last he partially disclosed a strangely discoloured bunch or protuberance, the size of a bushel, low down on the flank.
 roll	roll#turn-over	Verb	His hat had {rolled} a few yards away and his clothes were smeared with the filth and ooze of the floor on which he had lain, face downwards.
-roll	roll#turn-over	Verb	The storm came up during the night, and Dave was awakened to find himself {rolling} from one side of his berth to the other.
+roll	roll#side-to-side	Verb	The storm came up during the night, and Dave was awakened to find himself {rolling} from one side of his berth to the other.
 roll	roll#turn-over	Verb	Idu, who was immediately in front, turned round to see what had happened, and his pony promptly {rolled} backwards on the top of us.
 roll	roll#turn-over	Verb	The money fell through her fingers and {rolled} about on the floor.
 roll	roll#turn-over	Verb	I picked up one, of several that were {rolling} about, and treasured it as a keepsake for a long time.
@@ -3886,7 +3867,7 @@ schedule	schedule#agenda	Noun	After all, Hank did what he started out to do with
 schedule	schedule#agenda	Noun	"I was only going to rouse C. K. because he will be annoyed if I don't stick to {schedule}."
 schedule	schedule#agenda	Noun	"Yes, if you really keep to {schedule}."
 schedule	schedule#agenda	Noun	It is 22(?) miles to Hite, and we have two days yet to meet our pick-up {schedule} there.
-schedule	schedule#agenda	Noun	My name isn't on the {schedule}.
+schedule	schedule#time-list	Noun	My name isn't on the {schedule}.
 schedule	schedule#plan	Verb	Her mail-clerk relative was not {scheduled} to come through that night.
 schedule	schedule#plan	Verb	Wednesday, July 25 1956--Originally the expedition was {scheduled} for an earlier date in belief that a little more water would afford a smoother passage.
 schedule	schedule#plan	Verb	Luckily we were not {scheduled} to exit the cave this day, because hard travel would have been an issue.
@@ -4023,7 +4004,6 @@ shift	shift#move	Verb	It's current climate niche spans much of the northwestern 
 shift	shift#transfer	Verb	I {shifted} the boat down to the far end of Steamboat Wharf, from which point of vantage we could see anybody coming after us.
 shift	shift#transfer	Verb	I guess there must have been one there (I was prepared to {shift} it over to the left-hand side), for he nodded.
 shift	shift#transfer	Verb	Tip, as he was called, had been a coal-porter till at fifty-five he dislocated his shoulder {shifting} loads too heavy for him.
-shock	shock#daze	Noun	I was so stunned by this sudden {shock} that for a time I must have nearly lost my reason.
 shock	shock#daze	Noun	Over-work and this emotional {shock} produced a result likely enough to occur in one of his ardent temperament.
 shout	shout#speak-loudly	Verb	Before he could {shout} three words, or make three steps, he would be floundering in a sea whitened awfully by the desperate struggles of human beings, clamorous with the distress of cries for help.
 shout	shout#speak-loudly	Verb	Soldiers drove them on, {shouted} at them, thrust stupefied figures in amongst them, pushed others, dazedly cowering in their homes, out through doors and ground-floor windows.
@@ -4054,9 +4034,9 @@ side	side#location	Noun	With its circulation center at 1.5°N, Typhoon Vamei's c
 side	side#location	Noun	For Simonsen, the slow road to healing is easier now with his four-legged friend at his {side}.
 side	side#location	Noun	The front bumper extends on both {sides} to the fender, which protects the front wheels.
 side	side#surface	Noun	The five boats went over the {side} with a rush, spread out like the ribs of a fan, and set a northerly course, as on the preceding afternoon, for us to follow.
-side	side#surface	Noun	She was soon ascending Blooms-End valley and traversing the undulations on the {side} of the hill.
-side	side#surface	Noun	A false step would have been dangerous on the narrow passes sloping down to the {sides} of the gulfs; but I walked with firm step, without feeling any giddiness.
-side	side#surface	Noun	It mostly frequents the higher moorlands and the mountain {sides}, but is sometimes found on quite low ground.
+side	side#ridge	Noun	She was soon ascending Blooms-End valley and traversing the undulations on the {side} of the hill.
+side	side#ridge	Noun	A false step would have been dangerous on the narrow passes sloping down to the {sides} of the gulfs; but I walked with firm step, without feeling any giddiness.
+side	side#ridge	Noun	It mostly frequents the higher moorlands and the mountain {sides}, but is sometimes found on quite low ground.
 side	side#surface	Noun	The embankment extended with a slope on the upstream {side} giving it a broad base, and the lower or downstream side was faced with a heavy wall of stone.
 side	side#surface	Noun	I would first strike the side about 20 feet below and then hit first one {side} and then the other until it got about 50 or 60 feet below.
 sigh	sigh#audible-exhalation	Noun	{Sighs} and fine words had been given in abundance; but she could hardly devise any set of expressions, or fancy any tone of voice, less allied with real love.
@@ -4096,7 +4076,7 @@ sign	sign#sign-document	Verb	In 1848 a number of articles appeared in a paper pu
 sign	sign#sign-document	Verb	Little Dorrit's old friend held the inkstand as she {signed} her name, and the clerk paused in taking off the good clergyman's surplice, and all the witnesses looked on with special interest.
 silence	silence#muteness	Noun	The travelers then comprehended that there must be some reason why the unknown preserved such a {silence}, and ceased to address themselves to him.
 silence	silence#muteness	Noun	Inwardly she quaked, because she dreaded and admired the calm, self-contained character of her daughter Winnie, whose displeasure was made redoubtable by a diversity of dreadful {silences}.
-silence	silence#muteness	Noun	The monk took a vow of {silence}.
+silence	silence#state-of-silence	Noun	The monk took a vow of {silence}.
 silence	silence#quiet	Noun	There was a {silence}; then the drums and trumpets again sent forth their echoing notes.
 silence	silence#quiet	Noun	In absolute {silence} we crouched amongst the bushes, waiting for whatever might come.
 silence	silence#quiet	Noun	Darkness and {silence} ruled everywhere around.
@@ -4166,7 +4146,6 @@ sketch	sketch#study	Noun	We then surveyed up into the fissure that wasn't shown 
 sketch	sketch#vignette	Noun	He gave me their names and a short {sketch} of the life and character of each.
 sketch	sketch#vignette	Noun	He mentioned the names and titles of all the guests, giving biographical {sketches} of the principal people.
 sketch	sketch#vignette	Noun	There have been and will be better {sketches} than mine of all that attractive society, the paradox of an intelligentsia that is intelligent.
-sketch	sketch#vignette	Noun	{Sketch} of the Life and Letters of the Countess Adelstan.
 sketch	sketch#vignette	Noun	The reader must understand that the children alluded to represent two distinct broods,--the second brood appearing just after the {sketch} entitled "Transplanting the Young Idea."
 sketch	sketch#vignette	Noun	The third poem I shall weave into the prose {sketch}.
 sketch	sketch#vignette	Noun	The village paper published biographical {sketches} of the boys.
@@ -4191,7 +4170,7 @@ slide	slide#slither	Verb	White Fang followed, {sliding} over the ground in wolf 
 slide	slide#slither	Verb	Young John locked his door for him as they went out, {slided} the key into his pocket with great dexterity, and led the way to his own residence.
 slide	slide#slither	Verb	In the first interview she accorded to Mr Meagles, she {slided} herself into the position of disconsolately but gracefully yielding to irresistible pressure.
 slide	slide#slither	Verb	He {slid} into the crowd's enveloping darkness as into a friendly shelter.
-slide	slide#slither	Verb	Unclasping her hands from about her knee, she turned a gold bracelet that hung loose on her wrist, watching the light {slide} on its surface.
+slide	slide#glide	Verb	Unclasping her hands from about her knee, she turned a gold bracelet that hung loose on her wrist, watching the light {slide} on its surface.
 smell	smell#aroma	Noun	It presents, also, an unnatural blue or pallid appearance, has a faint and slightly sour {smell}, and soon becomes putrid.
 smell	smell#aroma	Noun	A sulphurous {smell} filled the air; then all was silent, and black as a cave in Hinnom.
 smell	smell#aroma	Noun	The place had the empty and musty feel and {smell} usual to a dwelling no longer inhabited.
@@ -4534,7 +4513,7 @@ study	study#learning	Noun	A diligent {study} of the works of the best modern wri
 study	study#learning	Noun	The Persian, Arabic, and Sanskrit languages engaged his attention, and I was easily induced to enter on the same {studies}.
 study	study#learning	Noun	He continued his academic {studies} by attending the sessions of 1858-1860 at the University of Virginia.
 study	study#learning	Noun	After the death of Dr. Miller in 1935, she did further {study} at Washington University in St. Louis and earned an M.A. in History from the University of Texas.
-study	study#learning	Noun	South Africa's nearly 700,000 high-schoolers had been eagerly awaiting this week's announcement of their matriculation exam grades--scores used by universities to determine which program of {study} a student is admitted to.
+study	study#field	Noun	South Africa's nearly 700,000 high-schoolers had been eagerly awaiting this week's announcement of their matriculation exam grades--scores used by universities to determine which program of {study} a student is admitted to.
 study	study#learning	Noun	We wish you continued success in your English {studies}.
 subject	subject#issue	Noun	I tried to satisfy myself on the {subject}, but could not arrive at any unquestionable result.
 subject	subject#issue	Noun	All doubts upon the {subject}, if he had any, were speedily removed by the young lady's behaviour.
@@ -4724,7 +4703,7 @@ swing	swing#sway	Verb	It smelled sour and musty, and by the dim light of the {sw
 swing	swing#sway	Verb	When this occurred, Llewellyn turned and {swung} indifferently away in the direction of the dressing-rooms.
 swing	swing#sway	Verb	"Bah!" interrupted the doctor, without stopping for an instant the idle {swinging} movement of his legs.
 swing	swing#sway	Verb	Corley {swung} his head to and fro as if to toss aside an insistent insect, and his brows gathered.
-swing	swing#sway	Verb	Roger {swung} the lantern, and soon Dave's father and his uncle came up, followed by Mr. Wadsworth, who, being somewhat portly, could not run so fast, and had to be assisted by Phil.
+swing	swing#sweep	Verb	Roger {swung} the lantern, and soon Dave's father and his uncle came up, followed by Mr. Wadsworth, who, being somewhat portly, could not run so fast, and had to be assisted by Phil.
 swing	swing#turn	Verb	Afterward, he scrutinized the portion of the wainscoting that was {swung} outward to reveal the safe.
 talk	talk#mouth	Verb	Andrew Fletcher's wise man knew what he was {talking} about.
 talk	talk#mouth	Verb	She doesn't really {talk} like that.
@@ -5087,7 +5066,7 @@ visit	visit#travel-to	Verb	Captain Cheyne, when {visiting} Simbo or Eddystone Is
 visit	visit#travel-to	Verb	I shall satiate my ardent curiosity with the sight of a part of the world never before {visited}, and may tread a land never before imprinted by the foot of man.
 visit	visit#travel-to	Verb	These prehistoric explorers {visited} the upper three levels of Mammoth Cave and discovered over 19 miles of cave passageways within Mammoth Cave National Park.
 visit	visit#travel-to	Verb	We also {visited} the place that J. L. Downs & I discovered to the North West of Fallen Flats.
-visit	visit#travel-to	Verb	As I had not {visited} that part of the cave for a while I was anxious to make a trip there in order to keep myself familiar with the cave.
+visit	visit#see	Verb	As I had not {visited} that part of the cave for a while I was anxious to make a trip there in order to keep myself familiar with the cave.
 visit	visit#travel-to	Verb	He squooze through the virgin squeeze and found himself in a low-ceilinged room that had been {visited} from another passage across the room.
 visit	visit#visit	Noun	During the days and weeks that passed, Captain Nemo was very sparing of his {visits}.
 visit	visit#visit	Noun	It was Mr Tulliver's first {visit} to see Tom, for the lad must learn not to think too much about home.
@@ -5167,7 +5146,7 @@ waste	waste#blow	Verb	"Well, then, what's the sense in {wasting} the plates?"
 waste	waste#blow	Verb	How can I think so, looking back on such a trifling {wasted} youth as mine!
 waste	waste#blow	Verb	He did not {waste} any time.
 waste	waste#blow	Verb	But the outlook of the dunked is important so we {waste} no time.
-waste	waste#blow	Verb	Taping windows to prepare for a storm {wastes} valuable time which should be instead used to install shutters or plywood.
+waste	waste#misuse	Verb	Taping windows to prepare for a storm {wastes} valuable time which should be instead used to install shutters or plywood.
 waste	waste#blow	Verb	Let's not {waste} any more precious time.
 waste	waste#blow	Verb	In other words, I had fallen down a rabbit hole and {wasted} an hour.
 waste	waste#waste-material	Noun	This is a liquid containing water, hence oxygen and hydrogen; but is moreover mixed with various other {waste} substances of the body, as for example, carbonic acid, nitrogen and fat.
@@ -5274,7 +5253,7 @@ work	work#activity	Noun	Even with the knowledge gained from this {work}, many qu
 work	work#activity	Noun	We sweat when we do hard physical {work}.
 work	work#do-work	Verb	Adams {worked} throughout his life as a commercial photographer, taking assignments from the National Park Service and companies such as Kodak, Zeiss, IBM, AT&T, and Life and Fortune magazines.
 work	work#do-work	Verb	Every place I have {worked} and that's Asia, Africa, Europe, America, South America, mastitis is typically the number-one problem of dairy farmers.
-work	work#do-work	Verb	Her first pathology job was as an academic pathologist {working} with domestic animals, but wildlife was her real passion.
+work	work#operate-in	Verb	Her first pathology job was as an academic pathologist {working} with domestic animals, but wildlife was her real passion.
 work	work#do-work	Verb	And if you {work} for someone else, you probably want to keep them happy.
 work	work#do-work	Verb	Pete is unhappy because he is {working} on a weekend.
 work	work#do-work	Verb	Incentives could include tax and social security policies that do not punish someone who {works} into their seventies.

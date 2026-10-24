@@ -266,4 +266,6 @@ if __name__ == "__main__":
             p.add_argument("--tech", action="store_true", help="the technical senses of tech-senses.tsv (STE-style sentences)")
             p.add_argument("--retry", action="store_true", help="second round for senses that stayed short (another prompt)")
     a = ap.parse_args()
+    if a.cmd == "export":
+        qf.check_tier_wave(ap, a)
     {"export": cmd_export, "ingest": cmd_ingest, "labeled": cmd_labeled}[a.cmd](a)
