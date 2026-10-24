@@ -347,8 +347,8 @@ This version is a foundation, and these follow-ups are planned (the figures are 
   test sentences at the sense level and BertBaseCased 17.6%; more and better-balanced data, and tuning the
   calibration (for example per domain), should raise both.
 - **A second check of the annotations.** Cross-check the open corpus with the second annotator `gemma4` (36% of its tokens
-  are still `unchecked`, about 4,500 sentences) and cross-check the relabeled rows of the fine-sense corpus, and take a
-  human-reviewed gold sample of the open corpus.
+  are still `unchecked`, about 4,500 sentences) and take a human-reviewed gold sample of the open corpus. (The real-text
+  rows of the fine-sense corpus have been checked blind; see `corpus/README.md`.)
 - **Multiword and technical-name spans.** An API for spans such as "Theta Arm" or "bleed air" instead of one-token
   words.
 - **More genres for the tagger.** Add informal web-genre data (with a license that allows it) to the open part-of-speech
