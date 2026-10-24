@@ -193,10 +193,54 @@ The new rows of `resume#summarize` (the archaic "give a summary of", for example
 quarterly figures") are unusual sentences but carry the sense of their gloss. The grades above are the measurement of
 the retrained models; if a later change improves them, the policy raises the expectation again.
 
+### The case of the written word (all three models, no retraining)
+
+`BasicClassifier` now uses the case in which a word is written to choose between a capitalized and a lower-case lemma
+that the lower-case spelling carries (see `docs/design/word-sense/core/basic-classifier.md`, "Case Evidence"): a
+lower-case word weighs the analyses of capitalized lemmas (`Polish`, `August`) down to a tenth, and an isolated
+capitalized word inside a sentence weighs the lower-case lemmas down to a tenth; a sentence-initial capital, a
+capitalized word next to another capitalized word (`State Department`), an upper-case or mixed-case word and the words
+of a title-case segment say nothing.
+This is a rule of the classifier, not a retrained table, so `basic.bin` and the weights of the encoder models did not
+change. The encoder models answer these words through Basic (a form of several lemmas without a chooser, or a lemma
+without weights, is answered by their fallback). The expectation file was rewritten with
+`evaluate-suite --write-expectations` under rule 3 and the rule 4 rows restored (`C-content-6` and `H-close-4` stay
+`miss` for BertBaseCased: the rewrite measured `fine` for both on the development machine, see the platform-sensitive
+rows). Measured answered / fine (348 rows) before and after: Basic 94.25% / 42.82% to 95.69% / 43.39%, MiniLM
+93.39% / 91.67% to 94.83% / 92.24%, BertBaseCased 96.84% / 95.69% to 98.28% / 96.26%.
+
+A first version also looked an isolated capitalized word up as written, which adds the capitalized lemmas that only the
+exact spelling has (`State`, `May`, `Jack`). It gave the same suite result and was dropped: on SemCor it made all three
+models answer about 70 more words at the sense level, all wrong (Basic sense precision 68.84% to 64.51%), because legal
+and formal text capitalizes the common word (`each State`, `any State`) and SemCor annotates the lemma `state`. The run
+rule (a capitalized word next to another capitalized word) did not remove them (64.68%), because the words are isolated.
+With the lemmas that the lower-case spelling carries only, SemCor is back at its previous figures (Basic 3.25% @ 68.91%,
+MiniLM 8.33% @ 88.71%, BertBaseCased 26.87% @ 86.63%).
+Fifteen cells changed (five rows, each for all three models); none went down:
+
+<!-- markdownlint-disable MD013 -->
+
+| Row | Models | Before | Now | Why |
+| --- | --- | --- | --- | --- |
+| `C-polish-1` (`The Polish delegation arrived in Warsaw late on Monday`) | Basic, MiniLM, BertBaseCased | miss | fine | The capitalized word inside the sentence now has the capitalized lemma `Polish`; the adjective (0.55) wins against the noun (0.35) and the lower-case `polish` (0.10). |
+| `C-polish-3` (`My neighbor speaks fluent Polish and a little German`) | Basic, MiniLM, BertBaseCased | miss | fine | The near tie `polish/Noun` 0.517 against `Polish/Noun` 0.471 is now `Polish/Noun` 0.89 against `polish/Noun` 0.10. This is the row that the retraining after the quota waves 4u and 4r lowered (see above); the cause was the missing evidence of the case, not the anchors. |
+| `C-polish-6` (`The shop sells silver polish in small tins`) | Basic, MiniLM, BertBaseCased | miss | answer | The lower-case word now prefers the lemma `polish`: `polish/Noun` 0.747, `polish/Verb` 0.171, `Polish/Noun` 0.077 (before `Polish/Noun` 0.444 against `polish/Noun` 0.431). The row asks for a sense and Basic answers at the part-of-speech level, so `answer` is the most it can reach. |
+| `H-august-3` (`The old professor had an august presence that quieted the room`) | Basic, MiniLM, BertBaseCased | miss | answer | The lower-case word has the adjective `august` (0.84) against the month `August` (0.16). |
+| `H-august-4` (`The ceremony took place in the august halls of the old parliament`) | Basic, MiniLM, BertBaseCased | miss | answer | The same: the adjective wins. |
+
+<!-- markdownlint-enable MD013 -->
+
+The rows that stay misses for the case words: `C-polish-2` (`a traditional Polish soup`) has the capitalized lemma now
+(`Polish/Noun` 0.64 and `Polish/Adjective` 0.28) but the tagger prefers the
+noun between an adjective and a noun, which is a part-of-speech error, not a lemma error. The case does not change the
+other rows of the suite (`C-polish-4`, `C-polish-5`, `C-polish-7` and `C-polish-8`, `H-august-1` and `H-august-2` keep
+their grades).
+
 ## Known misses
 
-The rows that all three models miss (the capitalized `Polish` rows and `polish` the shoe polish, `august` the
-adjective, `live` and `close` as adverbs, `way` as an adverb, `show` as a noun) are the real failures of the
-part-of-speech and sense choice that the suite is there to show (the current grades are in `expectations.tsv`). A
-frequent cause is the lexicon folding the capitalized entry into the
-lower-case spelling (`august` finds the month `August` and the adjective with the same prior).
+The rows that all three models miss (`C-polish-2`, the adjective `Polish` in `a traditional Polish soup`, which the
+tagger reads as a noun in the noun compound; `live` and `close` as adverbs, `way` as an adverb, `show` as a noun) are the
+real failures of the part-of-speech and sense choice that the suite is there to show (the current grades are in
+`expectations.tsv`). The `Polish`, `polish` and `august` rows that were misses for a lemma that the models had no
+way to separate (`august` finds the month `August` and the adjective with the same prior) now use the case of the
+word; see the next section.

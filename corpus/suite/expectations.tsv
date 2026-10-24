@@ -113,8 +113,8 @@ H-present-5	answer	fine	fine
 H-present-6	answer	fine	fine
 H-august-1	fine	fine	fine
 H-august-2	fine	fine	fine
-H-august-3	miss	miss	miss
-H-august-4	miss	miss	miss
+H-august-3	answer	answer	answer
+H-august-4	answer	answer	answer
 H-overall-1	answer	fine	fine
 H-overall-2	answer	fine	fine
 H-overall-3	fine	fine	fine
@@ -329,12 +329,12 @@ C-buffet-1	answer	fine	fine
 C-buffet-2	answer	fine	fine
 C-buffet-3	answer	fine	fine
 C-buffet-4	answer	fine	fine
-C-polish-1	miss	miss	miss
+C-polish-1	fine	fine	fine
 C-polish-2	miss	miss	miss
-C-polish-3	miss	miss	miss
+C-polish-3	fine	fine	fine
 C-polish-4	fine	fine	fine
 C-polish-5	answer	answer	answer
-C-polish-6	miss	miss	miss
+C-polish-6	answer	answer	answer
 C-polish-7	answer	answer	answer
 C-polish-8	answer	fine	fine
 C-bow-1	answer	fine	fine

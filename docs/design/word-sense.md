@@ -159,8 +159,10 @@ analyses at the part of speech level, and the Basic model of a composition choos
    of the model; embedded weights that are missing, damaged or not for this lexicon are reported as a
    `ModelIntegrityException`. A composite model classifies the whole text with both of its models.
 3. The words are one running text joined by single spaces.
-4. For every word the model lower-cases it and looks it up in `WordLexicon`, which returns the analyses of the word
-   (lemma, part of speech and features), and then lists the fine senses of each analysis from the sense catalog:
+4. For every word the model looks it up in `WordLexicon`, which returns the analyses of the word (lemma, part of speech
+   and features): Basic asks for the lower-case form of the word, the encoder models for the word as written, and
+   `WordLexicon.Lookup` itself tries the exact spelling first and the lower-case folding second. The model then lists
+   the fine senses of each analysis from the sense catalog:
    - no entry: the result is `ClassifyResult.Unknown`: the word, not known, no analyses, no details, level `None`,
      confidence 0;
    - one analysis whose lemma and part of speech have exactly one sense: the result has that analysis with
@@ -186,7 +188,8 @@ analyses at the part of speech level, and the Basic model of a composition choos
      otherwise equally) and the split never reaches the level or the confidence. A word
      whose lemma has no weights, or for which the encoder gave no usable vector, is answered from the lexicon alone:
      the slots are equally likely (the variants of a slot split its share equally), the first is selected, no senses
-     are scored, and the level is `PartOfSpeech`.
+     are scored, and the level is `PartOfSpeech`. That lexicon-only result is what the Onnx classifier returns on its own;
+     the MiniLM and BertBaseCased composites replace it by the answer of the Basic model for the word.
 5. A composite model (`FallbackWordSenseModel`) answers each word with the complete result of its primary model when
    the primary model scored senses for it (the selected analysis lists scored senses, or the level is `Group` or
    `Sense`) and otherwise with the complete result of its fallback model. In the encoder packages the primary model is
@@ -227,8 +230,13 @@ blobs (with their thresholds) embedded in the encoder packages.
 ### Deviations and Known Limitations
 
 - There is no sentence-level normalization of capitalization or possessives beyond what the models do themselves: the
-  Basic tagger uses a capitalized flag and a suffix table, and the encoder sees the text as
-  given (the cased model keeps case, the uncased model lower-cases it).
+  Basic tagger uses a capitalized flag and a suffix table, the Basic classifier uses the written case to choose between
+  a capitalized and a lower-case lemma of the same spelling (a capital at the start of a sentence, a capitalized word
+  next to another capitalized word, an upper-case, single-letter or mixed-case word and the words of a title-case
+  segment carry no such evidence), and the encoder sees the text as
+  given (the cased model keeps case, the uncased model lower-cases it). A word that an encoder model scores itself (a
+  trained lemma, or a form with a chooser) is not subject to that case rule: a form with capitalized and lower-case
+  lemmas and no chooser is answered through the Basic model.
 - The weights format `WSX3` supports dense weights only, stored at reduced precision (16-bit floats); there is no
   sparse variant. Weights are keyed by sense id (`lemma#label`) and pinned to the word image by its inventory hash.
 - Only the lemmas that have enough anchor sentences are trained; every other ambiguous word is answered at the part

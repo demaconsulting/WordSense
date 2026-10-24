@@ -39,6 +39,34 @@ sections:
                   - WordSenseBuilder_Image_Spellings_AreSortedByUtf8Bytes
                   - WordSenseBuilder_Image_Find_ReturnsOwnIndex
 
+              - id: WordSense-Core-WordLexicon-CaseCandidates
+                title: >-
+                  WordLexicon shall, for a spelling that is stored exactly (such as Polish or Jack), return exactly the
+                  analyses of that stored spelling, without merging the analyses of the lower-case spelling into them,
+                  and, for a spelling that is not stored (such as POLISH), return the analyses of its lower-case
+                  spelling
+                  first and then those of the other stored spellings with the same lower-case form, in a fixed order,
+                  with every analysis (lemma, part of speech and features) listed once at its first occurrence; the
+                  analyses of one spelling can have capitalized lemmas (Polish, August) as well as lower-case lemmas
+                  (polish, august), and a capitalized lemma that only an exact capitalized spelling has (Jack) shall not
+                  be listed for the lower-case spelling. The lookup shall list these candidates and shall not rank them
+                  by the case of the word.
+                tags: [unit]
+                justification: |
+                  A model chooses between a capitalized and a lower-case lemma from the case of the written word and
+                  from
+                  the context, so it needs both lemmas among the candidates, in an order that does not depend on the
+                  request; ranking by case in the lexicon would hide the other candidate from the callers that have
+                  better evidence.
+                tests:
+                  - WordLexicon_Lookup_ExactCapitalizedSpelling_ListsTheCapitalizedLemmaBesideTheLowerCaseOnes
+                  - WordLexicon_Lookup_LowerCaseSpelling_DoesNotListACapitalizedLemmaOfTheExactSpelling
+                  - WordLexicon_Lookup_PolishInBothSpellings_ListsBothLemmas
+                  - WordLexicon_Lookup_AugustInBothSpellings_ListsBothLemmas
+                  - WordLexicon_Lookup_CapitalizedLemmas_HaveSenses
+                  - WordLexicon_Lookup_StoredSpelling_GivesTheAnalysesOfThatSpellingOnly
+                  - WordLexicon_Lookup_SpellingThatIsNotStored_ListsTheLowerCaseSpellingFirstWithoutDuplicates
+
               - id: WordSense-Core-WordLexicon-Possessives
                 title: >-
                   WordLexicon shall, when a possessive spelling (a word plus 's, or a plural word plus a closing

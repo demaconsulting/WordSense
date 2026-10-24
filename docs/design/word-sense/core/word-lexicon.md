@@ -55,9 +55,23 @@ key. Every model starts from it, and a word with one sense never needs context.
   sense in its entry, then the homograph number of the entry, with project senses after the dictionary senses and then
   by the bytes of the sense id; the WordNet 3.0 tag counts do not order them. The order is part of the image, so every
   model sees the same candidates.
-- Lookup tries the exact spelling first, then the lower-cased spelling (U+2019 maps to `'`) through the fold index,
-  so case-sensitive entries win over the folded form. A capitalized spelling that has no entry of its own behaves like
-  its lower-case base, and an inflected form behaves like the analyses generated for it at build time.
+- Lookup merge (`WordImage.TryLookup`; U+2019 is mapped to `'` first). When the spelling is stored exactly, the answer
+  is exactly the analyses stored for
+  that spelling, in their stored order, one for each lemma, part of speech and features; nothing from the lower-case
+  spelling is merged in (the form tables already list the lower-case lemmas of `Polish` under the spelling `Polish`).
+  When it is not stored, the answer starts with the analyses of the lower-case spelling, if that is stored, and goes on
+  with the analyses of the other stored spellings that have the same lower-case form (the fold index, in its order),
+  each analysis listed once at its first occurrence, so the lookup of `POLISH` is that of `polish` followed by the
+  analyses of `Polish` that are not yet listed (the two `Title` analyses). The lookup never reorders by the case of the
+  request. A capitalized spelling that has no entry of its own behaves like
+  its lower-case base, and an inflected form behaves like the analyses generated for it at build time. The lookup lists
+  candidates and never chooses among them by case: the spelling `Polish` lists the lemmas `Polish` (adjective and noun,
+  also with the feature `Capitalization=Title`, which marks the analysis of the capitalized entry itself) and `polish`
+  (noun and verb); the lower-case spelling `polish` lists the same lemmas without the `Title` marker, and `august` lists
+  `august` and `August`; the name `Jack`, the month `May` and the entry `State` are listed only for the exact spellings
+  `Jack`, `May` and `State`. A caller or model that wants the lemma of the written case chooses among the candidates
+  (the Basic model does for the lemmas that the lower-case spelling carries, and does not ask for the exact capitalized
+  spelling; see its design).
 - Numerals policy: a token without a letter (a number written with digits such as `3` or `1999`, a number with
   separators such as `24/7` or `3.5`, punctuation) is never a word. `TryLookup` answers it absent before the cache and
   the image are consulted, and `FormsOf` returns no form for a lemma without a letter, exactly as the models treat

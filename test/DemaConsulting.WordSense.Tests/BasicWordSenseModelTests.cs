@@ -111,6 +111,32 @@ public class BasicWordSenseModelTests
     }
 
     /// <summary>
+    ///     Through the public model, the written case chooses between the capitalized and the lower-case lemma of one
+    ///     spelling: <c>Polish</c> and <c>August</c> inside a sentence are the language and the month, <c>polish</c> and
+    ///     <c>august</c> the shine and the adjective.
+    /// </summary>
+    /// <param name="sentence">The sentence, words separated by spaces.</param>
+    /// <param name="index">The index of the word.</param>
+    /// <param name="lemma">The lemma of the selected analysis.</param>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Theory]
+    [InlineData("My neighbor speaks fluent Polish and a little German .", 4, "Polish")]
+    [InlineData("The shop sells silver polish in small tins .", 4, "polish")]
+    [InlineData("We usually take our vacation in August .", 6, "August")]
+    [InlineData("The old professor had an august presence that quieted the room .", 5, "august")]
+    public async Task BasicWordSenseModel_ClassifyAsync_CaseOfWord_ChoosesTheLemma(string sentence, int index, string lemma)
+    {
+        // Arrange: the built-in model with its embedded statistics
+        using var model = new BasicWordSenseModel();
+
+        // Act
+        var results = await model.ClassifyAsync(sentence.Split(' '), TestContext.Current.CancellationToken);
+
+        // Assert
+        Assert.Equal(lemma, results[index].Details?.Lemma);
+    }
+
+    /// <summary>
     ///     The word <c>need</c> as a noun or a main verb stays what it was before the auxiliary sense existed.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>

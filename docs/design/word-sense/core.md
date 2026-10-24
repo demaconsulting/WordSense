@@ -121,7 +121,9 @@ apostrophe straightened; tokens without a letter become empty), splits the list 
 1. every token becomes a tagger token: a token without a letter is fixed to the punctuation tag (the other tag when it
    contains a digit); a word carries the set of parts of speech of its lexicon analyses and whether it is capitalized;
 2. `PosTagger` computes the tag posterior of every token of the segment;
-3. for each word, in order, the lexicon analyses of the normalized form decide the answer and its level:
+3. for each word, in order, the lexicon analyses of the lower-case form decide the answer and its level; the written case
+   then weighs down the analyses
+   whose lemma has the other case (see the unit design):
    - no analysis (or an empty key): `ClassifyResult.Unknown`: not known, no analyses, no details, no group or sense id,
      level none, confidence 0;
    - exactly one analysis: it is listed with probability 1 (a shared array, cached per word, so the common words do not

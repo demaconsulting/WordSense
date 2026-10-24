@@ -56,10 +56,10 @@ most running words. Choose by what else you need:
   fallback of the other two.
 - **BertBaseCased** (104 MiB, about 8 ms a sentence) is the model for fine senses. It costs about five times the
   latency and the download of MiniLM, and in return it commits to a fine sense on 27.2% of the real test sentences and
-  is right in 94.3% of those answers; its most probable sense is the best of the three (72.0% of the real test
+  is right in 94.5% of those answers; its most probable sense is the best of the three (72.0% of the real test
   sentences, 63.7% of the SemCor words).
 - **MiniLM** (22 MiB, about 1.5 ms a sentence) answers mostly at the part of speech or the group level: it commits to a
-  fine sense on 8.0% of the real test sentences (96.3% right). Choose it for the small download and the speed, not for
+  fine sense on 7.9% of the real test sentences (96.8% right). Choose it for the small download and the speed, not for
   senses. It is the default recommendation when a download is acceptable and the part of speech and groups are enough.
 
 Whichever model you choose, test the `Level` of every answer first (see "Levels and Confidence"), treat the sense level
@@ -80,6 +80,16 @@ is the cross-domain one. Basic limits to keep in mind:
   two meanings of the same part of speech is decided only for the lemmas that have a cue table.
 - Its confidence is a ranking signal, not a guarantee: it is roughly calibrated at 0.9 and above and over-confident
   below 0.6.
+- It reads the case of a word that has both a capitalized and a lower-case lemma that the lower-case spelling carries
+  (`Polish` and `polish`, `August` and `august`): a lower-case word, or an isolated capitalized word inside a sentence,
+  weighs the analyses of the other case down to a tenth. A sentence-initial capital, a capitalized word next to another
+  capitalized word (`State Department`), an upper-case or mixed-case word and the words of a title-case segment carry
+  no evidence. This is a prior on the
+  writer, not a rule. A lemma that only the exact capitalized spelling has (`State`, `May`, `Jack`) is not a candidate:
+  looking the capitalized spelling up as written made Basic answer the capitalized lemma for common words that legal and
+  formal text capitalizes (`each State`, `any State`), about 70 SemCor words that it then answered wrongly at the sense
+  level, so Basic keeps the lower-case lemma for them. On the reviewed suite the rule fixed the `Polish`, `polish` and
+  `august` rows (see `corpus/suite/README.md`).
 
 ## The Usage Prior and the SemCor Caveat
 
@@ -139,8 +149,8 @@ For comparison only, the figures on the real test sentences (share @ precision) 
 
 | Model | Target 0.97 (shipped; reached by BertBaseCased only) | Target 0.90 (reached) |
 | --- | --- | --- |
-| MiniLM | 8.0% @ 96.3% | 22.8% @ 88.1% |
-| BertBaseCased | 27.2% @ 94.3% | 52.7% @ 88.1% |
+| MiniLM | 7.9% @ 96.8% | 22.8% @ 88.1% |
+| BertBaseCased | 27.2% @ 94.5% | 52.7% @ 88.1% |
 
 Read the share of sense answers as a property of the calibration target, not as a measure of the classifier: the fine
 top-1 (61.1% for MiniLM and 72.0% for BertBaseCased on the real test sentences) does not depend on the target.
