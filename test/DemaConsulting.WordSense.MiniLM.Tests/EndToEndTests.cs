@@ -115,7 +115,8 @@ public class EndToEndTests
 
     /// <summary>
     ///     Trained lemmas in clear sentences are answered at the finest level the model is confident in: at least one
-    ///     answer reaches the sense level, and every answer follows the level contract (a sense carries its id and the
+    ///     answer reaches the sense level (the sentence of <c>dawn</c>, a trained lemma that no other sentence uses, is
+    ///     the explicit witness), and every answer follows the level contract (a sense carries its id and the
     ///     group of the catalog, a group only its id, a part of speech neither).
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
@@ -132,6 +133,7 @@ public class EndToEndTests
             ["Please", "help", "me", "carry", "the", "test", "papers", "."],
             ["Neither", "side", "wanted", "to", "break", "the", "contract", "before", "it", "expired", "."],
             ["Muscles", "contract", "when", "they", "receive", "a", "signal", "from", "the", "nerves", "."],
+            ["The", "farmers", "get", "up", "at", "dawn", "to", "milk", "the", "cows", "."],
         ];
 
         // Act
@@ -142,9 +144,10 @@ public class EndToEndTests
         }
 
         // Assert: the levels follow the contract, and the most confident answers reach the sense level
-        var trained = all.Where(r => r.Analyses.Any(a => !a.Senses.IsEmpty) && r.Level != SenseLevel.None && r.Analyses.Length > 0 && r.Details!.Lemma is "back" or "right" or "home" or "help" or "test" or "contract").ToList();
+        var trained = all.Where(r => r.Analyses.Any(a => !a.Senses.IsEmpty) && r.Level != SenseLevel.None && r.Analyses.Length > 0 && r.Details!.Lemma is "back" or "right" or "home" or "help" or "test" or "contract" or "dawn").ToList();
         Assert.NotEmpty(trained);
         Assert.Contains(trained, r => r.Level == SenseLevel.Sense);
+        Assert.Contains(all, r => r.Word == "dawn" && r.Level == SenseLevel.Sense);
         foreach (var result in trained)
         {
             switch (result.Level)

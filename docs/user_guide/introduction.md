@@ -344,9 +344,10 @@ sentences of documents that are kept apart from the test documents (the calibrat
 are raised, with one shift for all lemmas that have few such sentences and a threshold of their own for a lemma that has
 many, for a real-text calibration target of 0.97 (two points above the 95 percent, because the whole pipeline is about
 two points less precise than the classifier alone). The shift is the lowest one that reaches the target while at least 30
-percent of the calibration answers are kept; when no shift reaches the target on that many answers, which is the case on
-the current corpus, the largest shift that keeps them is used and the builder reports the target as not reached; the
-lemma-level precision on the calibration sentences then stays below the target, at about 94 to 96 percent (see the chapter
+percent of the calibration answers are kept; when no shift reaches the target on that many answers (the case for MiniLM
+on the current corpus; BertBaseCased reaches it), the largest shift that keeps them is used and the builder reports the
+target as not reached; the
+lemma-level precision on the calibration sentences then stays below the target, at about 96 percent (see the chapter
 "Accuracy and Model Choice"). A lemma has
 a group threshold only when it has groups, and a level whose cross-validation target was never reached is never answered
 for that lemma; the thresholds decide the level of an answer.

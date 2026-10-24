@@ -27,9 +27,9 @@ word that has several. The table counts the trained lemmas and senses of each pa
 
 | Part of speech | Lemmas | Senses |
 | -------------- | -----: | -----: |
-| `Noun`         |    723 |   3023 |
-| `Verb`         |    739 |   3338 |
-| `Adjective`    |    190 |    487 |
+| `Noun`         |    741 |   3054 |
+| `Verb`         |    740 |   3341 |
+| `Adjective`    |    206 |    516 |
 | `Adverb`       |     35 |    103 |
 | `Preposition`  |      3 |      3 |
 | `Conjunction`  |      2 |      2 |
@@ -57,12 +57,12 @@ word: it has no trained classifier, a word with one part of speech is answered d
 with several parts of speech returns them as candidates, most frequent first (the encoder models answer it with the
 first one; the basic model chooses by tagger and context). A capitalized word is lower-cased before it is looked up.
 
-The lemmas listed below are the 828 trained lemmas (the lemmas that have anchor sentences), with 6,972 senses (146 of
+The lemmas listed below are the 856 trained lemmas (the lemmas that have anchor sentences), with 7,035 senses (147 of
 them project senses) and 140 groups.
 
 ## Supported Lemmas
 
-The library supports 828 lemmas with 6,972 senses in total, listed alphabetically. Each lemma lists its parts of speech
+The library supports 856 lemmas with 7,035 senses in total, listed alphabetically. Each lemma lists its parts of speech
 and the forms it recognizes. Under it, every sense gives its id and part of speech, its group, its Open English WordNet
 sense key (a project sense has none) and its gloss, in inventory order (the order of Open English WordNet within a part
 of speech, project senses last).
@@ -922,6 +922,10 @@ of speech, project senses last).
   - `block#block-shape` (verb); group: none; key: `block%2:30:01::`; gloss: shape by using a block
   - `block#form` (verb); group: none; key: `block%2:30:00::`; gloss: shape into a block or blocks
   - `block#freeze` (verb); group: none; key: `block%2:30:02::`; gloss: prohibit the conversion or use of (assets)
+- **blocked**; parts of speech: adjective; no other forms
+  - `blocked#adjective` (adjective); group: none; key: `blocked%5:00:00:closed:01`; gloss: closed to traffic
+  - `blocked#plugged` (adjective); group: none; key: `blocked%5:00:01:obstructed:00`; gloss: completely obstructed or
+    closed off
 - **bloom**; parts of speech: noun, verb; forms: bloomed, blooming, blooms
   - `bloom#blooming` (noun); group: none; key: `bloom%1:22:00::`; gloss: the organic process of bearing flowers
   - `bloom#blossom` (noun); group: none; key: `bloom%1:20:00::`; gloss: reproductive organ of angiosperm plants
@@ -953,6 +957,10 @@ of speech, project senses last).
   - `board#room` (verb); group: `board#group:lodging`; key: `board%2:42:00::`; gloss: live and take one's meals at or in
   - `board#live` (verb); group: `board#group:lodging`; key: `board%2:34:01::`; gloss: lodge and take meals (at)
   - `board#cater` (verb); group: none; key: `board%2:34:00::`; gloss: provide food and lodging (for)
+- **boarding**; parts of speech: noun; forms: boardings
+  - `boarding#embarkation` (noun); group: none; key: `boarding%1:04:00::`; gloss: the act of passengers and crew getting
+    aboard a ship or aircraft
+  - `boarding#construction` (noun); group: none; key: `boarding%1:06:00::`; gloss: a structure of boards
 - **bolt**; parts of speech: noun, verb, adverb; forms: bolted, bolting, bolts
   - `bolt#bolt-of-lightning` (noun); group: none; key: `bolt%1:19:00::`; gloss: a discharge of lightning accompanied by
     thunder
@@ -993,6 +1001,10 @@ of speech, project senses last).
     as if with a barrage
   - `bombard#irradiate` (verb); group: none; key: `bombard%2:30:00::`; gloss: direct high energy particles or radiation
     against
+- **bombing**; parts of speech: noun; forms: bombings
+  - `bombing#bombardment` (noun); group: none; key: `bombing%1:04:00::`; gloss: an attack by dropping bombs
+  - `bombing#sabotage` (noun); group: none; key: `bombing%1:04:01::`; gloss: the use of bombs for sabotage; a tactic
+    frequently used by terrorists
 - **book**; parts of speech: noun, verb; forms: Book, Books, booked, booking, books
   - `book#publication` (noun); group: none; key: `book%1:10:00::`; gloss: a written work or composition that has been
     published (printed on pages bound together)
@@ -1054,6 +1066,13 @@ of speech, project senses last).
   - `bow#greeting-bow` (verb); group: `bow#group:respectful-bending`; key: `bow%2:38:00::`; gloss: bend the head or the
     upper part of the body in a gesture of respect or greeting
   - `bow#waist-bend` (verb); group: none; key: `bow%2:38:01::`; gloss: bend one's back forward from the waist on down
+- **bowing**; parts of speech: noun, adjective; forms: bowings
+  - `bowing#bow` (noun); group: none; key: `bowing%1:10:00::`; gloss: bending the head or body or knee as a sign of
+    reverence or submission or shame or greeting
+  - `bowing#playing` (noun); group: none; key: `bowing%1:04:00::`; gloss: managing the bow in playing a stringed
+    instrument
+  - `bowing#adjective` (adjective); group: none; key: `bowing%5:00:00:submissive:00`; gloss: showing an excessively
+    deferential manner
 - **break**; parts of speech: noun, verb, interjection; forms: breaked, breaking, breaks, broke, broken
   - `break#interruption` (noun); group: none; key: `break%1:11:00::`; gloss: some abrupt occurrence that interrupts an
     ongoing activity
@@ -1774,6 +1793,24 @@ of speech, project senses last).
   - `colour#discolor` (verb); group: none; key: `colour%2:30:00::`; gloss: change color, often in an undesired manner
   - `colour#color-capable` (adjective); group: none; key: `colour%3:00:02::`; gloss: having or capable of producing
     colors
+- **coloured**; parts of speech: noun, adjective; forms: coloureds
+  - `coloured#noun` (noun); group: none; key: `coloured%1:18:00::`; gloss: a United States term for Blacks that is now
+    considered offensive
+  - `coloured#colored` (adjective); group: none; key: `coloured%3:00:00::`; gloss: having color or a certain color;
+    sometimes used in combination
+  - `coloured#biased` (adjective); group: none; key: `coloured%5:00:00:partial:01`; gloss: favoring one person or side
+    over another
+  - `coloured#bleached` (adjective); group: none; key: `coloured%5:00:00:artificial:00`; gloss: (used of color)
+    artificially produced; not natural
+  - `coloured#colored-2` (adjective); group: none; key: `coloured%5:00:00:black:02`; gloss: having skin rich in melanin
+    pigments;
+- **colouring**; parts of speech: noun; forms: colourings
+  - `colouring#coloring-2` (noun); group: none; key: `colouring%1:13:00::`; gloss: a digestible substance used to give
+    color to food
+  - `colouring#color` (noun); group: none; key: `colouring%1:07:00::`; gloss: a visual attribute of things that results
+    from the light they emit or transmit or reflect
+  - `colouring#coloring` (noun); group: none; key: `colouring%1:04:00::`; gloss: the act or process of changing the
+    color of something
 - **combat**; parts of speech: noun, verb; forms: combated, combating, combats, combatted, combatting
   - `combat#military-engagement` (noun); group: none; key: `combat%1:04:00::`; gloss: an engagement fought between two
     military forces
@@ -1980,6 +2017,14 @@ of speech, project senses last).
     of two compounds
   - `conjugate#separated-double-bonds` (adjective); group: none; key: `conjugate%5:00:01:bound:03`; gloss: of an organic
     compound; containing two or more double bonds each separated from the other by a single bond
+- **conjunct**; parts of speech: noun, adjective; forms: conjuncts
+  - `conjunct#joined-part` (noun); group: none; key: project sense; gloss: a member of a coordinated expression or a
+    proposition joined to another by a logical conjunction
+  - `conjunct#stepwise` (adjective); group: none; key: `conjunct%3:00:00::`; gloss: progressing melodically by intervals
+    of a second
+  - `conjunct#associated` (adjective); group: none; key: `conjunct%5:00:00:united:00`; gloss: bound in close association
+  - `conjunct#joint` (adjective); group: none; key: `conjunct%5:00:00:joint:00`; gloss: involving the joint activity of
+    two or more
 - **conscript**; parts of speech: noun, verb; forms: conscripted, conscripting, conscripts
   - `conscript#drafted-soldier` (noun); group: none; key: `conscript%1:18:00::`; gloss: someone who is drafted into
     military service
@@ -2367,6 +2412,10 @@ of speech, project senses last).
   - `cross#crosswise` (adjective); group: none; key: `cross%5:00:00:crosswise:00`; gloss: extending or lying across; in
     a crosswise direction; at right angles to the long axis
   - `cross#bad-tempered` (adjective); group: none; key: `cross%5:00:00:ill-natured:00`; gloss: annoyed and irritable
+- **crossed**; parts of speech: adjective; no other forms
+  - `crossed#adjective` (adjective); group: none; key: `crossed%3:00:01::`; gloss: placed crosswise
+  - `crossed#adjective-2` (adjective); group: none; key: `crossed%3:00:02::`; gloss: (of a check) marked for deposit
+    only as indicated by having two lines drawn across it
 - **crowd**; parts of speech: noun, verb; forms: crowded, crowding, crowds
   - `crowd#assemblage` (noun); group: none; key: `crowd%1:14:00::`; gloss: a large number of things or people considered
     together
@@ -2461,6 +2510,9 @@ of speech, project senses last).
   - `cycle#ride-motorcycle` (verb); group: none; key: `cycle%2:38:00::`; gloss: ride a motorcycle
   - `cycle#ride-bicycle` (verb); group: none; key: `cycle%2:38:01::`; gloss: ride a bicycle
   - `cycle#recur` (verb); group: none; key: `cycle%2:30:00::`; gloss: recur in repeating sequences
+- **cycling**; parts of speech: noun; forms: cyclings
+  - `cycling#noun` (noun); group: none; key: `cycling%1:04:00::`; gloss: the sport of traveling on a bicycle or
+    motorcycle
 
 ### Lemmas Starting With D
 
@@ -2524,6 +2576,11 @@ of speech, project senses last).
   - `deal#apportion` (verb); group: none; key: `deal%2:40:07::`; gloss: give out as one's portion or share
   - `deal#deal-card` (verb); group: none; key: `deal%2:40:06::`; gloss: give (a specific card) to a player
   - `deal#peddle` (verb); group: none; key: `deal%2:40:11::`; gloss: sell (especially of illegal material)
+- **dealing**; parts of speech: noun; forms: dealings
+  - `dealing#handling` (noun); group: none; key: `dealing%1:04:01::`; gloss: method or manner of conduct in relation to
+    others
+  - `dealing#dealings` (noun); group: none; key: `dealing%1:04:02::`; gloss: the act of transacting within or between
+    groups (as carrying on commercial activities)
 - **decline**; parts of speech: noun, verb; forms: declined, declines, declining
   - `decline#decrease` (noun); group: none; key: `decline%1:22:02::`; gloss: change toward something smaller or lower
   - `decline#downturn` (noun); group: none; key: `decline%1:26:00::`; gloss: a condition inferior to an earlier
@@ -2976,6 +3033,10 @@ of speech, project senses last).
   - `drill#drill-teach` (verb); group: none; key: `drill%2:31:01::`; gloss: teach by repetition
   - `drill#train-military` (verb); group: none; key: `drill%2:31:04::`; gloss: undergo military training or do military
     exercises
+- **drilling**; parts of speech: noun; forms: drillings
+  - `drilling#boring-2` (noun); group: none; key: `drilling%1:04:01::`; gloss: the act of drilling
+  - `drilling#boring` (noun); group: none; key: `drilling%1:04:00::`; gloss: the act of drilling a hole in the earth in
+    the hope of producing petroleum
 - **drink**; parts of speech: noun, verb; forms: drank, drinked, drinking, drinks, drunk
   - `drink#serving` (noun); group: none; key: `drink%1:13:04::`; gloss: a single serving of a beverage
   - `drink#binge-drinking` (noun); group: none; key: `drink%1:04:00::`; gloss: the act of drinking alcoholic beverages
@@ -3720,6 +3781,8 @@ of speech, project senses last).
   - `flood#inundate` (verb); group: none; key: `flood%2:30:00::`; gloss: cover with liquid, usually water
   - `flood#over-supply` (verb); group: none; key: `flood%2:40:00::`; gloss: supply with an excess of
   - `flood#become-full` (verb); group: none; key: `flood%2:30:01::`; gloss: become filled to overflowing
+- **flooded**; parts of speech: adjective; no other forms
+  - `flooded#adjective` (adjective); group: none; key: `flooded%5:00:01:full:00`; gloss: covered with water
 - **flush**; parts of speech: noun, verb, adjective, adverb; forms: flushed, flusher, flushes, flushest, flushing
   - `flush#peak-prosperity` (noun); group: none; key: `flush%1:28:00::`; gloss: the period of greatest prosperity or
     productivity
@@ -4079,6 +4142,9 @@ of speech, project senses last).
     reveal secrets or intimacies
   - `gossip#chat` (verb); group: none; key: `gossip%2:32:01::`; gloss: talk socially without exchanging too much
     information
+- **gossiping**; parts of speech: noun; forms: gossipings
+  - `gossiping#noun` (noun); group: none; key: `gossiping%1:10:00::`; gloss: a conversation that spreads personal
+    information about other people
 - **graduate**; parts of speech: noun, verb, adjective; forms: graduated, graduates, graduating
   - `graduate#degree-holder` (noun); group: none; key: `graduate%1:18:00::`; gloss: a person who has received a degree
     from a school (high school or college or university)
@@ -4397,6 +4463,12 @@ of speech, project senses last).
   - `hook#hook-foot` (verb); group: none; key: `hook%2:33:00::`; gloss: secure with the foot
   - `hook#trap` (verb); group: none; key: `hook%2:32:09::`; gloss: entice and trap
   - `hook#solicit-sex` (verb); group: none; key: `hook%2:32:00::`; gloss: approach with an offer of sexual favors
+- **hooked**; parts of speech: adjective; no other forms
+  - `hooked#aquiline` (adjective); group: none; key: `hooked%5:00:00:crooked:01`; gloss: curved down like an eagle's
+    beak
+  - `hooked#dependant` (adjective); group: none; key: `hooked%5:00:00:addicted:00`; gloss: addicted to a drug
+  - `hooked#hooklike` (adjective); group: none; key: `hooked%5:00:00:curved:00`; gloss: having or resembling a hook
+    (especially in the ability to grasp and hold)
 - **hope**; parts of speech: noun, verb; forms: hoped, hopes, hoping
   - `hope#anticipation` (noun); group: none; key: `hope%1:12:01::`; gloss: a specific instance of feeling hopeful
   - `hope#hopefulness` (noun); group: none; key: `hope%1:12:00::`; gloss: the general feeling that some desire will be
@@ -4477,6 +4549,16 @@ of speech, project senses last).
     state to an undesirable extent
   - `hunt#seek` (verb); group: none; key: `hunt%2:35:03::`; gloss: seek, search for
   - `hunt#search-prey` (verb); group: none; key: `hunt%2:33:02::`; gloss: search (an area) for prey
+- **hunted**; parts of speech: adjective; no other forms
+  - `hunted#adjective` (adjective); group: none; key: `hunted%5:00:00:afraid:00`; gloss: reflecting the fear or terror
+    of one who is hunted
+- **hunting**; parts of speech: noun; forms: huntings
+  - `hunting#hunt` (noun); group: none; key: `hunting%1:04:01::`; gloss: the pursuit and killing or capture of wild
+    animals regarded as a sport
+  - `hunting#hunt-3` (noun); group: none; key: `hunting%1:04:02::`; gloss: the activity of looking thoroughly in order
+    to find something or someone
+  - `hunting#hunt-2` (noun); group: none; key: `hunting%1:04:00::`; gloss: the work of finding and killing or capturing
+    animals for food or pelts
 
 ### Lemmas Starting With I
 
@@ -4493,6 +4575,9 @@ of speech, project senses last).
     individuals or groups entering into combat
   - `impact#pack-together` (verb); group: none; key: `impact%2:35:01::`; gloss: press or wedge together; pack together
   - `impact#affect` (verb); group: none; key: `impact%2:30:00::`; gloss: have an effect upon
+- **impacted**; parts of speech: adjective; no other forms
+  - `impacted#adjective` (adjective); group: none; key: `impacted%5:00:00:compact:00`; gloss: wedged or packed in
+    together
 - **implant**; parts of speech: noun, verb; forms: implanted, implanting, implants
   - `implant#prosthesis` (noun); group: none; key: `implant%1:06:00::`; gloss: a prosthesis placed permanently in tissue
   - `implant#embed` (verb); group: none; key: `implant%2:35:00::`; gloss: fix or set securely or deeply
@@ -7532,6 +7617,13 @@ of speech, project senses last).
   - `rear#cause-rise` (verb); group: none; key: `rear%2:38:01::`; gloss: cause to rise up
   - `rear#build` (verb); group: none; key: `rear%2:36:00::`; gloss: construct, build, or erect
   - `rear#rearward` (adjective); group: none; key: `rear%5:00:00:back:00`; gloss: located in or toward the back or rear
+- **rearing**; parts of speech: noun, adjective; forms: rearings
+  - `rearing#nurture` (noun); group: none; key: `rearing%1:07:00::`; gloss: the properties acquired as a consequence of
+    the way you were treated as a child
+  - `rearing#breeding` (noun); group: none; key: `rearing%1:04:00::`; gloss: helping someone grow up to be an accepted
+    member of the community
+  - `rearing#adjective` (adjective); group: none; key: `rearing%5:00:00:erect:00`; gloss: rearing on left hind leg with
+    forelegs elevated and head usually in profile
 - **reason**; parts of speech: noun, verb; forms: reasoned, reasoning, reasonning, reasons
   - `reason#ground` (noun); group: none; key: `reason%1:16:00::`; gloss: a rational motive for a belief or action
   - `reason#explanation` (noun); group: none; key: `reason%1:10:01::`; gloss: an explanation of the cause of some
@@ -7694,6 +7786,9 @@ of speech, project senses last).
   - `reform#correct-defects` (verb); group: none; key: `reform%2:30:08::`; gloss: improve by alteration or correction of
     errors or defects and put into a better condition
   - `reform#improve-life` (verb); group: none; key: `reform%2:30:03::`; gloss: change for the better
+- **reformed**; parts of speech: adjective; forms: Reformed
+  - `reformed#adjective` (adjective); group: none; key: `reformed%5:00:00:regenerate:00`; gloss: caused to abandon an
+    evil manner of living and follow a good one
 - **refresh**; parts of speech: noun, verb; forms: refreshed, refreshes, refreshing
   - `refresh#refresh-action` (noun); group: none; key: project sense; gloss: an act of renewing, reviving, or updating
     something
@@ -7988,6 +8083,17 @@ of speech, project senses last).
     advance
   - `reserve#book-for-others` (verb); group: none; key: `reserve%2:41:00::`; gloss: arrange for and reserve (something
     for someone else) in advance
+- **reserved**; parts of speech: adjective; no other forms
+  - `reserved#adjective-2` (adjective); group: none; key: `reserved%3:00:02::`; gloss: set aside for the use of a
+    particular person or party
+  - `reserved#adjective` (adjective); group: none; key: `reserved%3:00:01::`; gloss: marked by self-restraint and
+    reticence
+- **reset**; parts of speech: noun, verb; forms: resets, resetting
+  - `reset#reset-device` (noun); group: none; key: `reset%1:06:00::`; gloss: device for resetting instruments or
+    controls
+  - `reset#redefine` (verb); group: none; key: `reset%2:32:00::`; gloss: set anew
+  - `reset#zero-out` (verb); group: none; key: `reset%2:30:00::`; gloss: set to zero
+  - `reset#adjust-again` (verb); group: none; key: `reset%2:30:01::`; gloss: adjust again after an initial failure
 - **reshuffle**; parts of speech: noun, verb; forms: reshuffled, reshuffles, reshuffling
   - `reshuffle#reallocation` (noun); group: none; key: `reshuffle%1:04:01::`; gloss: a redistribution of something
   - `reshuffle#reshuffling` (noun); group: none; key: `reshuffle%1:04:00::`; gloss: shuffling again
@@ -8630,6 +8736,11 @@ of speech, project senses last).
   - `sail#boat` (verb); group: none; key: `sail%2:38:00::`; gloss: travel on water propelled by wind
   - `sail#navigate` (verb); group: none; key: `sail%2:38:02::`; gloss: travel on water propelled by wind or by other
     means
+- **sailing**; parts of speech: noun; forms: sailings
+  - `sailing#navigation` (noun); group: none; key: `sailing%1:04:01::`; gloss: the work of a sailor
+  - `sailing#seafaring` (noun); group: none; key: `sailing%1:04:00::`; gloss: riding in a sailboat
+  - `sailing#departure` (noun); group: none; key: `sailing%1:04:02::`; gloss: the departure of a vessel from a port
+  - `sailing#glide` (noun); group: none; key: `sailing%1:04:03::`; gloss: the activity of flying a glider
 - **saturate**; parts of speech: noun, verb; forms: saturated, saturates, saturating
   - `saturate#saturation` (noun); group: none; key: project sense; gloss: a saturated chemical compound, especially a
     saturated fat or fatty acid
@@ -9112,6 +9223,11 @@ of speech, project senses last).
   - `sin#transgress` (verb); group: none; key: `sin%2:41:00::`; gloss: commit a sin; violate a law of God or a moral law
   - `sin#blunder` (verb); group: none; key: `sin%2:41:01::`; gloss: commit a faux pas or a fault or make a serious
     mistake
+- **sinning**; parts of speech: noun, adjective; forms: sinnings
+  - `sinning#noun` (noun); group: none; key: `sinning%1:04:00::`; gloss: an act that is regarded by theologians as a
+    transgression of God's will
+  - `sinning#adjective` (adjective); group: none; key: `sinning%5:00:00:offending:00`; gloss: transgressing a moral or
+    divine law
 - **situate**; parts of speech: verb, adjective; forms: situated, situates, situating
   - `situate#locate` (verb); group: none; key: `situate%2:42:00::`; gloss: determine or indicate the place, site, or
     limits of, as if by an instrument or by a survey
@@ -9124,6 +9240,8 @@ of speech, project senses last).
   - `skate#skate-fish` (noun); group: none; key: `skate%1:05:00::`; gloss: large edible rays having a long snout and
     thick tail with pectoral fins continuous with the head; swim by undulating the edges of the pectoral fins
   - `skate#move-on-skates` (verb); group: none; key: `skate%2:38:00::`; gloss: move along on skates
+- **skating**; parts of speech: noun; forms: skatings
+  - `skating#noun` (noun); group: none; key: `skating%1:04:00::`; gloss: the sport of gliding on skates
 - **sketch**; parts of speech: noun, verb; forms: sketched, sketches, sketching
   - `sketch#study` (noun); group: none; key: `sketch%1:06:00::`; gloss: preliminary drawing for later elaboration
   - `sketch#vignette` (noun); group: none; key: `sketch%1:10:03::`; gloss: a brief literary description
@@ -9408,6 +9526,10 @@ of speech, project senses last).
   - `stack#pile-up` (verb); group: none; key: `stack%2:35:00::`; gloss: arrange in stacks
   - `stack#rig` (verb); group: none; key: `stack%2:35:06::`; gloss: arrange the order of so as to increase one's winning
     chances
+- **stacked**; parts of speech: adjective; no other forms
+  - `stacked#adjective` (adjective); group: none; key: `stacked%3:44:00::`; gloss: arranged in a stack
+  - `stacked#bosomy` (adjective); group: none; key: `stacked%5:00:00:shapely:00`; gloss: (of a woman's body) having a
+    large bosom and pleasing curves
 - **stamp**; parts of speech: noun, verb; forms: stamped, stamping, stamps
   - `stamp#form` (noun); group: none; key: `stamp%1:25:00::`; gloss: the distinctive form in which a thing is made
   - `stamp#type` (noun); group: none; key: `stamp%1:14:00::`; gloss: a type or class
@@ -10400,6 +10522,11 @@ of speech, project senses last).
   - `touch#tint` (verb); group: none; key: `touch%2:30:01::`; gloss: color lightly
   - `touch#interjection` (interjection); group: none; key: project sense; gloss: used to acknowledge a hit in fencing or
     a telling point in an argument
+- **touched**; parts of speech: adjective; no other forms
+  - `touched#adjective` (adjective); group: none; key: `touched%3:00:00::`; gloss: having come into contact
+  - `touched#affected` (adjective); group: none; key: `touched%3:00:01::`; gloss: being excited or provoked to the
+    expression of an emotion
+  - `touched#fey` (adjective); group: none; key: `touched%5:00:00:insane:00`; gloss: slightly insane
 - **tower**; parts of speech: noun, verb; forms: towered, towering, towers
   - `tower#construction` (noun); group: none; key: `tower%1:06:00::`; gloss: a structure taller than its diameter; can
     stand alone or be attached to a larger building
@@ -10652,6 +10779,9 @@ of speech, project senses last).
   - `tune#tune-up` (verb); group: none; key: `tune%2:30:01::`; gloss: adjust for (better) functioning
   - `tune#tune-instrument` (verb); group: none; key: `tune%2:30:00::`; gloss: adjust the pitches of (musical
     instruments)
+- **tuning**; parts of speech: noun; forms: tunings
+  - `tuning#noun` (noun); group: none; key: `tuning%1:04:00::`; gloss: (music) calibrating something (an instrument or
+    electronic circuit) to a standard frequency
 - **type**; parts of speech: noun, verb; forms: typed, types, typing
   - `type#form` (noun); group: none; key: `type%1:09:00::`; gloss: a subdivision of a particular kind of thing
   - `type#case` (noun); group: none; key: `type%1:18:00::`; gloss: a person of a specified kind (usually with many
@@ -11044,6 +11174,9 @@ of speech, project senses last).
   - `walk#pace` (verb); group: none; key: `walk%2:38:02::`; gloss: walk at a pace
   - `walk#compel` (verb); group: none; key: `walk%2:38:05::`; gloss: make walk
   - `walk#take-the-air` (verb); group: none; key: `walk%2:38:04::`; gloss: take a walk; go for a walk; walk for pleasure
+- **walking**; parts of speech: noun, adjective; forms: walkings
+  - `walking#noun` (noun); group: none; key: `walking%1:04:00::`; gloss: the act of traveling by foot
+  - `walking#adjective` (adjective); group: none; key: `walking%5:00:00:close:01`; gloss: close enough to be walked to
 - **warehouse**; parts of speech: noun, verb; forms: warehoused, warehouses, warehousing
   - `warehouse#storehouse` (noun); group: none; key: `warehouse%1:06:00::`; gloss: a storehouse for goods and
     merchandise
