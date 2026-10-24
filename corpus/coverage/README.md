@@ -37,7 +37,8 @@ thin to write to) and are candidates for the review of the senses and groups. `q
 recomputed after the Tatoeba CC BY rows were removed, because the senses that fell short only for lack of the removed rows
 are not unfillable. The method is in the "Method of the quota filling" section of `../README.md`.
 
-Current state of `quota-coverage.tsv`: 2,825 of 7,036 senses meet their quota (2,769 short, 1,442 empty); 24,823 anchors
-and 7,621 held-out sentences are missing, 3,730 and 1,255 of them in the lemmas of waves 1-3. The scope includes the 176
+Current state of `quota-coverage.tsv`: 6,198 of 7,036 senses meet their quota (748 short, 90 empty); 3,179 anchors
+and 793 held-out sentences are missing (the tier waves 4c, 4u and 4r filled the short senses of the three tiers; the
+senses left are the ones that the harvest and the writing could not bring to their quota). The scope includes the 176
 senses of the 12 technical lemmas and the 6 project senses (`../curation/README.md`). All quota-filled sentences are
 targeted (see "Quota-Filled Rows (targeted)" in `../README.md`).

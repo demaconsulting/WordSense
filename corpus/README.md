@@ -248,6 +248,20 @@ informational. The reviewed suite, the real-text rows and the challenge set over
 - **Quota filling.** About 88% of the harvested candidates received a high-confidence sense label; of the sentences
   written for a missing sense, about 82% to 85% were confirmed by the blind labeler (about 33% to 36% for senses whose
   nearest sibling sense the labeler prefers). `coverage/quota-coverage.tsv` has the quota status of every sense.
+- **Waves 4u and 4r (uncommon and rare tiers).** After wave 4c (the common tier), two tier waves filled the short senses
+  of the uncommon tier (`4u`: 10 anchors and 3 held-out sentences per sense) and of the rare tier (`4r`: 5 and 2),
+  harvested with `--tier U` and `--tier R` (and `--faa-tech-only`). Real rows: `4u` 3,934 anchors and 99 held-out
+  sentences (from 38,665 candidates, 33,458 labeled, 30,385 with high confidence), `4r` 2,129 anchors and 49 held-out
+  sentences (from 23,370 candidates, 20,111 labeled, 18,501 with high confidence). Written rows: `4u` 3,984 anchors and
+  2,267 held-out sentences (blind labeler agreed on 11,103 of 14,207 written sentences, 10,612 of them with high
+  confidence), `4r` 4,420 anchors and 2,725 held-out sentences (13,917 of 17,262, 13,175 with high confidence). Chooser
+  rows follow the fine-sense rows (`4u` 773 + 793 anchors and 8 + 429 held-out; `4r` 491 + 790 and 12 + 498; real +
+  written). **Real held-out text was nearly exhausted.** The evaluation documents (one in four, chosen by hash) of the
+  sentence pool supply held-out rows only, and one that already supplies anchors supplies none, so the harvests held
+  only 198 (`4u`, mostly Tatoeba) and 61 (`4r`) candidates of evaluation documents;
+  the held-out sentences of these two waves are therefore mostly written (and blind-labeled), and the real test split
+  grew by only 69 sentences (2,328 to 2,397). After the two waves 6,198 of the 7,035 senses of the trained lemmas meet
+  their quota (`WordSense.Builder tiers`).
 - **Open corpus annotation** (`open/quality.md`): against UD English-EWT dev (300 sentences, 3,597 tokens, evaluation
   only) the primary annotator scores 95.05% UPOS and 96.02% collapsed tag after mapping the reference to the lexicon
   conventions (90.63% and 91.60% raw); lemma accuracy 98.36%. The second annotator cross-checked 10,449 of 14,980

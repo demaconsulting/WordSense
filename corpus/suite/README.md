@@ -123,9 +123,11 @@ expectation, so a regression fails the build while the known misses stay visible
 | --- | --- | --- | --- | --- |
 | `C-content-6` (`A small raise will not content the angry workers`) | BertBaseCased | fine | miss | miss |
 
-### Deliberate model change: the usage prior (retraining of both encoder models)
+### Deliberate model change: the usage prior (historical; retraining of both encoder models)
 
-Both encoder models were retrained with the usage prior (the scores are corrected from the proportions of the balanced
+This section describes the retraining with the usage prior, on the corpus of that time, and is kept as history; the
+current models are described in the next section. Both encoder models were retrained with the usage prior (the scores
+are corrected from the proportions of the balanced
 training sentences to the usage of the senses; see the user guide chapter "Accuracy and Model Choice"), and the
 expectation file was
 rewritten with `evaluate-suite --write-expectations` under rule 3. The change is a deliberate trade measured on
@@ -153,6 +155,43 @@ encoder's own part-of-speech choice was close to even (0.54 to 0.64 confidence);
 The net effect on the MiniLM suite is two rows fine and one row answered (of 348), against a gain of six points
 of fine top-1 on SemCor. The expectation of these rows is the measurement of the retrained model; if a later change
 improves them, the policy raises the expectation again.
+
+### Retraining after the quota waves 4u and 4r (all three models)
+
+The corpus grew by the tier waves `4u` and `4r` (about 14,500 anchor and 5,100 held-out rows; see `../README.md`), and
+Basic (its cue tables are trained from the anchors), MiniLM and BertBaseCased were retrained (calibration target 0.97).
+The expectation file was rewritten with `evaluate-suite --write-expectations` under rule 3. `C-content-6` (listed
+above) and `H-close-4` stay `miss` for BertBaseCased as in the previous file: the rewrite measured `fine` on the
+development machine, but both are platform-sensitive near ties (`H-close-4` has not been verified on the CI platforms).
+Twenty cells changed against the previous file (348 rows; 11 went up, 9 down). Measured answered / fine:
+Basic 94.25% / 42.82%, MiniLM 93.39% / 91.67%, BertBaseCased 96.84% / 95.69%. Basic changed too: its cue tables were
+retrained from the new anchors, and its choice between two analyses of one form decides the lemma and the part of
+speech of all three models.
+
+Rows that went up: `H-live-5` (Basic and BertBaseCased miss to fine), `H-live-6` (BertBaseCased miss to fine),
+`H-update-3` (BertBaseCased answer to fine), `H-defense-3` and `H-defense-4` (MiniLM and BertBaseCased answer to fine),
+`C-tear-3`, `C-tear-4` and `C-bow-2` (MiniLM answer to fine).
+
+Rows that went down (nine cells), each measured with the models before (the expectation file's models) and now. None
+of the new anchors of these lemmas was found to be mislabeled: the rows of the new senses agree with their glosses, and
+none was removed. The scores are the probabilities of the analyses and (for the encoders) the ranked senses of the
+target word.
+
+<!-- markdownlint-disable MD013 -->
+
+| Row | Model | Before | Now | Measured reason |
+| --- | --- | --- | --- | --- |
+| `C-resume-2` (`He sent out ten resumes last week`) | Basic | answer | miss | Near tie of the two analyses of `resumes`: the verb now has 0.54 and the noun 0.46 (before: noun 0.69, verb 0.31). The anchors of `resume` grew from 41 to 55 verb rows (`resume#assume-again` +9, `resume#summarize` +5) and from 14 to 24 noun rows, but the new noun rows are all `resume#sketch` (a summary), none in the curriculum-vitae reading of the row. |
+| `C-content-5` (`They had to content themselves with cold sandwiches`) | MiniLM | fine | miss | The adjective now wins the part of speech: `content#satisfied` 0.56 against the verb senses 0.39 (`content#satisfy-partly` 0.32, `content#satisfy` 0.07); before the verb had 0.67 against 0.30. Six senses of `content` had no anchor before; the new `content#satisfy` (10 anchors, verb, "make content") shares the verb mass and the new `content#contentedness` (10 anchors) is close to the adjective. |
+| `C-polish-3` (`speaks fluent Polish`) | Basic, MiniLM, BertBaseCased | fine | miss | Near tie between the analyses `Polish/Noun` and `polish/Noun` (the lemma `Polish` has no anchors): now `polish/Noun` 0.517 against 0.471 (before `Polish/Noun` 0.523 against 0.462). The lemma `polish` grew from 34 to 60 anchors (`polish#smooth-shine` +9, `polish#refine` +7, `polish#refinement` +6, `polish#polish-refine` +4), which tips the tie; the three models share the analysis of Basic. |
+| `C-polish-6` (`silver polish in small tins`) | Basic, MiniLM, BertBaseCased | answer | miss | The same tie in the other direction: now `Polish/Noun` 0.444 against `polish/Noun` 0.431 (before `polish/Noun` 0.449 against 0.435), so the answer is `Polish#noun`, the wrong lemma. A swing of 0.014 decides the grade; this row belongs to the known `polish` misses below. |
+| `C-bow-3` (`The students bow to their teacher`) | MiniLM | fine | answer | The part of speech (verb 0.82, before 0.74) is still right, but the top-ranked sense is now `bow#play-bow` (0.57; "play on a stringed instrument with a bow") before `bow#accede` (0.12) and `bow#bow-down` (0.12); before `bow#bow-down` had 0.48. `bow#play-bow` is new (5 written anchors, e.g. "The cellist bowed a mournful melody"), and the competing verb senses gained `bow#accede` +9 and `bow#waist-bend` +5. |
+
+<!-- markdownlint-enable MD013 -->
+
+The new rows of `resume#summarize` (the archaic "give a summary of", for example the written "The analyst resumed the
+quarterly figures") are unusual sentences but carry the sense of their gloss. The grades above are the measurement of
+the retrained models; if a later change improves them, the policy raises the expectation again.
 
 ## Known misses
 
