@@ -326,4 +326,6 @@ if __name__ == "__main__":
                            help="FAA sentences only for the technical senses of tech-senses.tsv (general text for the rest)")
             p.add_argument("--tech", action="store_true", help="the technical senses: extra anchors of tech-senses.tsv, real rows from FAA text only")
     a = ap.parse_args()
+    if a.cmd == "select":
+        qf.check_tier_wave(ap, a)
     {"ingest": cmd_ingest, "select": cmd_select}[a.cmd](a)

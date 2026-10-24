@@ -16,14 +16,18 @@ seen. The sets are:
   sense: it measures the classifier, not the share of each sense in running text. The easier, written held-out
   sentences are reported by the builder as a secondary set and are not in the table. Every real held-out sentence was
   labeled again by a blind labeler that never saw the gold label, and the 574 rows that were not agreed were judged by a
-  second blind judge; 166 rows were relabeled and 87 removed before the figures were measured.
+  second blind judge; 166 rows were relabeled and 87 removed before the figures were measured. The same check was then
+  run on the 20,059 real anchor (training) rows: 1,709 rows were not agreed and judged by the second judge, 469 rows
+  were relabeled and 185 removed. The 469 relabels were then judged again, blind, by two models of different families
+  (claude-sonnet-5.5 and gpt-6.1-sol); the 225 that both confirmed were kept and the other 244 were reverted. The models
+  were retrained on the corrected anchors.
 - **Running-text part of speech.** The part of speech of the selected analysis on the test split of the representative
-  open corpus (1,501 sentences, 21,481 scored tokens of random CC0 text), on the English EWT treebank test file mapped to
-  the conventions of the dictionary (19,472 scored tokens; the treebank is downloaded for evaluation only and is never
+  open corpus (1,501 sentences, 21,482 scored tokens of random CC0 text), on the English EWT treebank test file mapped to
+  the conventions of the dictionary (19,471 scored tokens; the treebank is downloaded for evaluation only and is never
   committed) and on the 32 sentences of the simplified-technical-English challenge set (reported on its own: it is small
   and chosen for its hard cases, so read it as a regression check). "Ambiguous" counts only the tokens whose word has
   two or more parts of speech in the dictionary.
-- **Independent sense evaluation (SemCor).** The 31,520 single-word annotations of the 780 trained lemmas that SemCor 3.0
+- **Independent sense evaluation (SemCor).** The 31,519 single-word annotations of the 779 trained lemmas that SemCor 3.0
   can evaluate (the sense-annotated Brown Corpus, with WordNet 3.0 sense keys mapped to the senses of the catalog; 97.7%
   of the keys map). SemCor is downloaded to a cache by the builder and never committed. The table gives the share of
   words answered at the sense level, the precision of those answers and the *fine top-1*, the share of words whose most
@@ -51,11 +55,11 @@ most running words. Choose by what else you need:
   of a word that has one. Use it when the part of speech is all you need, when nothing may be downloaded, or as the
   fallback of the other two.
 - **BertBaseCased** (104 MiB, about 8 ms a sentence) is the model for fine senses. It costs about five times the
-  latency and the download of MiniLM, and in return it commits to a fine sense on 17.3% of the real test sentences and
-  is right in 95.5% of those answers; its most probable sense is the best of the three (68.7% of the real test
+  latency and the download of MiniLM, and in return it commits to a fine sense on 17.6% of the real test sentences and
+  is right in 94.9% of those answers; its most probable sense is the best of the three (68.9% of the real test
   sentences, 62.8% of the SemCor words).
 - **MiniLM** (22 MiB, about 1.5 ms a sentence) answers mostly at the part of speech or the group level: it commits to a
-  fine sense on 10.6% of the real test sentences (91.1% right). Choose it for the small download and the speed, not for
+  fine sense on 10.3% of the real test sentences (90.0% right). Choose it for the small download and the speed, not for
   senses. It is the default recommendation when a download is acceptable and the part of speech and groups are enough.
 
 Whichever model you choose, test the `Level` of every answer first (see "Levels and Confidence"), treat the sense level
@@ -65,7 +69,7 @@ as a candidate to check and the part of speech as the dependable part, and tune 
 
 Basic is a second-order hidden Markov model over thirteen tags, fused with naive Bayes context cues for the lemmas that
 have at least two senses. The tag statistics are trained from the open part-of-speech corpus of this project (CC0), not
-from a treebank. On running text it reaches 93.86% of all tokens (91.50% of the ambiguous tokens) on the open corpus
+from a treebank. On running text it reaches 93.86% of all tokens (91.51% of the ambiguous tokens) on the open corpus
 test split and 91.62% (88.57%) on the mapped treebank test file; on the technical challenge set it reaches 98.65%. The
 open test split shares annotators and genres with the training split, so its figure is optimistic; the treebank figure
 is the cross-domain one. Basic limits to keep in mind:
@@ -122,23 +126,23 @@ rule,
 and the lemmas with at least 20 calibration rows also get a threshold of their own that can only raise theirs. The 30%
 share is the robustness choice: a rule that accepted the first crossing of the target in the far tail (a few dozen
 answers) let one wrong row move the shift by several units, so the share of sense answers of BertBaseCased changed
-several-fold with a few confident errors in the calibration sentences. Measured on the calibration sentences only (the
-test sentences were not used to design the rule), the
+several-fold with a few confident errors in the calibration sentences. Measured on the calibration sentences only (before
+the anchor check; the test sentences were not used to design the rule), the
 shift of BertBaseCased moves between 4.66 and 5.00 over 200 bootstrap resamples with the share (4.85 to 8.15 without
 it), and removing the eight most confident wrong rows moves it by 0.03 (3.2 without the share); for MiniLM the
 figures are 3.56 to 4.03 against 4.07 to 6.60. On the current corpus the target 0.97 is not reached for either model:
 the precision of the pooled answers stays near 95% over a wide range of shifts, so the thresholds keep 30% of the
-pooled calibration answers (the lemma-level precision on the calibration sentences is 94.8% for BertBaseCased and
-94.1% for MiniLM). A target that the calibration can reach, such as 0.90, is reached as before. For comparison only,
+pooled calibration answers (the lemma-level precision on the calibration sentences is 95.9% for BertBaseCased and
+94.6% for MiniLM). A target that the calibration can reach, such as 0.90, is reached as before. For comparison only,
 the figures on the real test sentences (share @ precision) for 0.90 and for the shipped 0.97:
 
 | Model | Target 0.97 (shipped, not reached) | Target 0.90 (reached) |
 | --- | --- | --- |
-| MiniLM | 10.6% @ 91.1% | 17.0% @ 88.9% |
-| BertBaseCased | 17.3% @ 95.5% | 45.5% @ 87.4% |
+| MiniLM | 10.3% @ 90.0% | 16.9% @ 87.8% |
+| BertBaseCased | 17.6% @ 94.9% | 46.6% @ 87.1% |
 
 Read the share of sense answers as a property of the calibration target, not as a measure of the classifier: the fine
-top-1 (59.5% for MiniLM and 68.7% for BertBaseCased on the real test sentences) does not depend on the target.
+top-1 (59.5% for MiniLM and 68.9% for BertBaseCased on the real test sentences) does not depend on the target.
 
 ## Variation Between CPUs
 

@@ -259,7 +259,17 @@ informational. The reviewed suite, the real-text rows and the challenge set over
   gold label: 4,041 agreed, 255 disagreed and 319 were unsure. A second blind judge decided the 574 rows that were not
   agreed (candidates in random order, the gold label never marked): 321 kept their gold sense, 166 were relabeled (158 to
   the sense of the first blind labeler, 8 to another listed sense) and 87 were removed (no listed sense fits). No model
-  was consulted, and the anchors were not touched.
+  was consulted.
+- **Blind relabeling of the real anchor rows.** The same check was run on all 20,059 real-text anchor rows: 18,350
+  agreed, 881 disagreed and 828 were unsure, and the second blind judge decided the 1,709 rows that were not agreed:
+  1,055 kept their gold sense, 469 were relabeled (454 to the sense of the first blind labeler, 15 to another listed
+  sense) and 185 were removed together with their chooser and provenance rows. The 469 relabels were then confirmed by
+  two further independent blind judges of different model families (`claude-sonnet-5.5` and `gpt-6.1-sol`; candidates
+  in random order, the original not marked): a relabel stayed only when
+  both chose the new sense, which held for 225 rows; the other 244 were reverted to their original label, so the check
+  left 225 relabeled and 185 removed anchor rows. A seeded sample of 230 written
+  (`llm-corpus`, `authored`) anchor rows was labeled blind only, as a measure: 203 agreed, 7 disagreed and 20 were
+  unsure (11.7% not agreed, against 8.5% for the real anchors); no written row was changed.
 
 ## Label Reconciliation
 

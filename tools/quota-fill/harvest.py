@@ -339,4 +339,6 @@ if __name__ == "__main__":
     s.add_argument("wave", type=qf.wave_id)
     s.add_argument("--tier", default="", choices=("", "C", "U", "R"))
     a = ap.parse_args()
+    if a.cmd in ("candidates", "status"):
+        qf.check_tier_wave(ap, a)
     {"candidates": cmd_candidates, "status": cmd_status}[a.cmd](a)

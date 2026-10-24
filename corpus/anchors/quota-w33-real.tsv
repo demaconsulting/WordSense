@@ -71,10 +71,10 @@ bleed	bleed#vent	Verb	Internal air is {bled} from the engine compressor section 
 bleed	bleed#vent	Verb	If the engine is stored in a pressurized metal container, the air valve should be opened to {bleed} off the air pressure.
 bleed	bleed#vent	Verb	Depending upon the size of the valve, the air pressure should {bleed} off in somewhat less than 30 minutes.
 check	check#inspect	Verb	Examples of determining maximum tinplated copper wire length and {checking} voltage drop using figure 11-2.
-check	check#inspect	Verb	How to Obtain Weather Information An integral part of flight preparation for any pilot is {checking} the weather conditions expected to occur during the flight.
+check	check#source-check	Verb	How to Obtain Weather Information An integral part of flight preparation for any pilot is {checking} the weather conditions expected to occur during the flight.
 check	check#inspect	Verb	The pilot {checks} for correct operation, smooth blast valve movement, and for pressure in the fuel system, as excessive loss of pressure may be indicative of a fuel tank or line problem.
 check	check#inspect	Verb	The pilot should {check} the hook for dirt or corrosion and confirm that the airplane end of the tow rope has a Tost ring.
-check	check#inspect	Verb	The pilot {checks} the weather and determines that, although thunderstorms are approaching, the flight can be completed prior to their arrival.
+check	check#source-check	Verb	The pilot {checks} the weather and determines that, although thunderstorms are approaching, the flight can be completed prior to their arrival.
 check	check#inspect	Verb	Operation of aircraft anti-icing and deicing systems should be {checked} prior to encountering icing conditions.
 check	check#inspect	Verb	The pressure recommended by the manufacturer should be {checked} by the use of a spring scale graduated in ounces.
 check	check#inspect	Verb	The person who is turning the propeller calls: "Fuel on, switch off, throttle closed, brakes on." The person operating the engine {checks} these items and repeats the phrase.
@@ -205,8 +205,8 @@ lead	lead#electrical-lead	Noun	The black {lead} or ground lead must be attached 
 lead	lead#electrical-lead	Noun	Inspect {leads} for overheating if routed close to exhaust stacks.
 lead	lead#electrical-lead	Noun	After the {lead} has been disconnected, select the proper size deep socket for spark plug removal.
 lead	lead#electrical-lead	Noun	At the firewall, one end of the thermocouple {leads} connects to the electrical wiring, and the other end of the thermocouple leads connects to the cylinder.
-lead	lead#jumper-cable	Noun	For example: (1) Grounding of a signal circuit through a power current {lead} introduces power current return voltage drop into the signal cir cuit.
-lead	lead#jumper-cable	Noun	After inspection of the spark plug {lead}, slip the lead into the shielding barrel of the plug with care.
+lead	lead#electrical-lead	Noun	For example: (1) Grounding of a signal circuit through a power current {lead} introduces power current return voltage drop into the signal cir cuit.
+lead	lead#electrical-lead	Noun	After inspection of the spark plug {lead}, slip the lead into the shielding barrel of the plug with care.
 lead	lead#metal	Noun	Permanent bal last is often {lead} plate wrapped around and bolted to the fuselage primary structure (e.i., tail-post, longerons, or bulkhead members).
 lead	lead#metal	Noun	For gliders without limitations or placards regarding placement of trim ballast, pilots may consider using a seat cushion with sand or {lead} shot sewn into the unit to provide additional weight.
 lead	lead#metal	Noun	Although AVGAS 100LL performs the same as grade 100, the "LL" indicates it has a low {lead} content.
@@ -243,8 +243,8 @@ position	position#locate	Verb	Thus, by observing the pointer movement along the 
 position	position#locate	Verb	They are {positioned} on the side of the O-ring away from the fluid pressure.
 position	position#locate	Verb	A full-time spotter must be {positioned} just outside of the tank to assist if needed.
 position	position#locate	Verb	The valves are typically {positioned} in the fuel feed line to each engine.
-position	position#locate	Verb	Again, the base leg is {positioned} as needed for the altitude or wind condition.
-position	position#locate	Verb	The airplane should also be {positioned} clear of other aircraft and the taxiway.
+position	position#put-in-place	Verb	Again, the base leg is {positioned} as needed for the altitude or wind condition.
+position	position#put-in-place	Verb	The airplane should also be {positioned} clear of other aircraft and the taxiway.
 position	position#place	Noun	The {position} and orientation of jet streams vary from day to day.
 position	position#place	Noun	General weather patterns (hot/cold, wet/dry) are related closely to the {position}, strength, and orientation of the jet stream (or jet streams).
 position	position#place	Noun	Upon reaching the desired hover altitude, adjust the flight controls as necessary to maintain {position} over the intended hover area.
@@ -276,7 +276,7 @@ position	position#put-in-place	Verb	Controls {positioned} to account for any cro
 position	position#spatial-relation	Noun	Inflate to the recommended pressure with the tire in a horizontal {position}.
 position	position#spatial-relation	Noun	Hold the controls firmly in this {position} until airspeed begins increasing.
 position	position#spatial-relation	Noun	As each blade passes the 90° {position} on the left in a counterclockwise main rotor blade rotation, the maximum increase in angle of incidence occurs.
-position	position#spatial-relation	Noun	The advancing blade in Figure 2-35, {position} A, moves in the same direction as the helicopter.
+position	position#place	Noun	The advancing blade in Figure 2-35, {position} A, moves in the same direction as the helicopter.
 position	position#spatial-relation	Noun	It is not unknown for pilots to operate inadvertently in one of the RNAV modes when the operation was not intended, by overlooking switch {positions} or annunciators.
 position	position#spatial-relation	Noun	The top and bottom views, if included, will be shown in their respective {positions} relative to the front view.
 position	position#spatial-relation	Noun	Do not close the cowl flaps for engine warm-up, they need to be in the open {position} while operating on the ground.
@@ -320,9 +320,9 @@ run	run#operate	Verb	If fuel and ignition are present, the engine starts and {ru
 run	run#operate	Verb	The pilot should attempt to exploit the power available from an irregularly {running} engine; however, it is generally better to switch the engine and fuel off just before touchdown.
 seal	seal#close	Verb	A glass tube somewhat over 30 inches in length is {sealed} at one end and then filled with mercury.
 seal	seal#close	Verb	When permitted, the tape should be wrapped three turns around the bundle and the ends heat {sealed} to prevent unwinding of the tape.
-seal	seal#close	Verb	A pressure chamber is {sealed} off on the top side of the engine with baffles properly directing the flow of cooling air to all parts of the engine compartment.
+seal	seal#seal-tight	Verb	A pressure chamber is {sealed} off on the top side of the engine with baffles properly directing the flow of cooling air to all parts of the engine compartment.
 seal	seal#close	Verb	All desiccants are {sealed} in containers to prevent their becoming saturated with moisture before they are used.
-seal	seal#close	Verb	Another point at which the engine must be {sealed} is the intake manifold.
+seal	seal#seal-tight	Verb	Another point at which the engine must be {sealed} is the intake manifold.
 seal	seal#close	Verb	All engine openings into which dehydrator plugs (or ventilatory plugs if the engine is stored in a metal container) have not been fitted must be {sealed}.
 seal	seal#close	Verb	The protective envelope is then carefully gathered around the engine and partially {sealed}, leaving an opening at one end from which as much air as possible is exhausted.
 seal	seal#close	Verb	The envelope is then completely {sealed}, usually by pressing the edges together and fusing them with heat.
