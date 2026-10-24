@@ -38,9 +38,9 @@ lemma `record` is not trained, so the Basic model answers). A trained lemma (`ba
 is answered by the encoder at a sense or group level that the result states, with the senses of every analysis listed
 whatever the level (`MiniLMWordSenseModelTests`, `EndToEndTests`;
 `MiniLMWordSenseModel_Classify_TrainedLemma_AnswersAtASenseOrGroupLevel`). The end-to-end check answers six clear
-sentences (the trained lemmas `back`, `right`, `home`, `help`, `test`, `contract` and `dawn`), requires that every
-answer follows the level contract (a sense carries its id and group, a group only its id, a part of speech neither) and
-that the answers reach the sense level at least once; the explicit witness is the sentence "The farmers get up at dawn
+sentences covering seven trained lemmas (`back`, `right`, `home`, `help`, `test`, `contract` and `dawn`), requires that
+every answer follows the level contract (a sense carries its id and group, a group only its id, a part of speech neither)
+and that the answers reach the sense level at least once; the explicit witness is the sentence "The farmers get up at dawn
 to milk the cows ." (tokens as in the test), in which `dawn` (a lemma that no other sentence uses) must be answered at
 the sense level (`EndToEndTests`, `WordSense_Classifier_EndToEnd_AnswersAtTheFinestConfidentLevel`).
 
