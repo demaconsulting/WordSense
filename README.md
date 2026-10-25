@@ -361,8 +361,10 @@ This version is a foundation, and these follow-ups are planned (the figures are 
   a ground roll and aerodynamically clean.
 - **Participial adjectives.** A policy for the 105 participial adjective entries that are left without an adjective
   analysis (only 9 have it), with a relabeling of the corpus rows that name them.
-- **A stricter suite.** One-sense labels for the 174 suite rows that accept a set of senses, so that the rows become
-  stricter.
+- **A stricter suite.** Of the 216 suite rows that name fine senses, 176 have a one-sense label and 40 accept a set of
+  senses: 13 accept the two senses that a third reviewer judged equally right, and 27 still accept the full set because
+  two blind labelers disagreed, were unsure or chose a sense outside the set. A human adjudication of those 27 rows
+  would complete it (see `corpus/suite/README.md`).
 - **Formal review follow-ups.** The first formal review of all 33 review-sets left compliance items open: split the
   compound requirements into atomic ones and move requirements that prescribe the implementation into the design
   documents; add typed method contracts to the unit designs; label the Arrange, Act and Assert steps in the tests and

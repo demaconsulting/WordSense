@@ -74,19 +74,27 @@ from the class-to-sense map of the relabeling (kept in the git history, commit `
 | Kind | Rows | Conversion |
 | ---- | ---: | ---------- |
 | `M` rows, part of speech only | 124 | `analysis` = the word's lemma and the part of speech; no senses |
-| class with fine senses | 212 | `senses` = the fine senses the class maps to (current ids); 40 rows have a single sense, 172 an acceptable set |
-| `used` rows (habitual `used to`, ordinary past) | 4 | `use/Verb`; habitual = `use#used-to` (2 rows), ordinary past = every other verb sense of `use` (2 rows, a set) |
+| class with fine senses | 212 | `senses` = the fine senses the class maps to (current ids); 40 rows had a single sense and 172 an acceptable set; 132 of the sets were later narrowed to one sense and 13 to two senses (one of them, `H-estimate-3`, already accepted exactly those two), so 172 rows now have a single sense, 21 a set of two senses and 19 a larger set |
+| `used` rows (habitual `used to`, ordinary past) | 4 | `use/Verb`; habitual = `use#used-to` (2 rows), ordinary past = every other verb sense of `use` (2 rows, a set at the conversion, later narrowed to `use#apply`) |
 | entry classes (`read` past or present, `wound` and `dove` as past tenses) | 8 | `analysis` only: `read/Verb/Tense=Past`, `read/Verb/Tense=Pres`, `wind/Verb`, `dive/Verb`; no senses |
 
 <!-- markdownlint-enable MD013 -->
 
-**Rows that no longer have a single right answer:** the 174 rows with an acceptable set (172 classes and the 2 ordinary
-`used` rows) were pronunciation classes that spread over several fine senses (the class `lead#guide-noun`
-holds fifteen senses). They are scored as above: a sense answer inside the set, a group answer that has a sense of the
-set, or a part-of-speech answer with the right analysis. A tighter, one-sense label per row is possible and would
-make the rows stricter; it is a candidate for a later review and does not change the expectation mechanism. The
-8 analysis-only heteronym rows are scored by analysis and features (the tense of `read` is a feature of the analysis,
-not a sense).
+**Rows that no longer have a single right answer:** the conversion left 174 rows with an acceptable set (172 classes and
+the 2 ordinary `used` rows): pronunciation classes that spread over several fine senses (the class `lead#guide-noun`
+holds fifteen senses). A tighter label was then given to 147 of them (see "One-sense labels for the set rows" below):
+134 rows (132 classes and the 2 ordinary `used` rows) have a one-sense label, 13 rows a set of the two senses that a
+third reviewer found equally right (`H-use-1`, `H-contact-1`, `H-increase-1`, `H-subject-2`, `H-estimate-1`,
+`H-estimate-3`, `H-associate-1`, `H-detail-1`, `H-defense-1`, `C-produce-3`, `C-excuse-3`, `C-wound-2` and
+`C-buffet-2`; the set of `H-estimate-3` was already these two senses, so its cell is unchanged and 146 cells changed).
+The other 27 rows keep their full acceptable set (`H-address-1`, `H-project-1`, `H-project-2`,
+`H-increase-2`, `H-record-2`, `H-inside-1`, `H-update-3`, `H-update-4`, `H-associate-2`, `H-separate-3`, `H-present-5`,
+`H-present-6`, `H-august-3`, `H-conflict-1`, `C-object-3`, `C-tear-5`, `C-tear-6`, `C-console-2`, `C-desert-3`,
+`C-bass-1`, `C-bass-2`, `C-bass-3`, `C-buffet-3`, `C-buffet-4`, `C-bow-2`, `C-invalid-1` and `C-invalid-2`). All 40 rows
+with a set are scored as above: a sense answer inside the set, a group answer that has a sense of the set, or a
+part-of-speech answer with the right analysis. A later review may narrow the 27 rows too; it does not change the
+expectation mechanism. The 8 analysis-only heteronym rows are scored by analysis and features (the tense of `read` is a
+feature of the analysis, not a sense).
 
 **Decisions made in the conversion** (also listed in the commit): the capitalized entries (`August`, `Polish`) have
 their own sense ids in the catalog (`August#noun`, `Polish#adjective`, `Polish#noun`) and are expected as such for the
@@ -122,6 +130,7 @@ expectation, so a regression fails the build while the known misses stay visible
 | Row | Model | Grade on the development machine | Grade on CI (Windows x64, macOS arm64) | Recorded |
 | --- | --- | --- | --- | --- |
 | `C-content-6` (`A small raise will not content the angry workers`) | BertBaseCased | fine | miss | miss |
+| `H-defense-1` (`The lawyer prepared a strong defense`) | BertBaseCased | fine | answer (Windows x64) | answer |
 
 ### Deliberate model change: the usage prior (historical; retraining of both encoder models)
 
@@ -235,6 +244,97 @@ The rows that stay misses for the case words: `C-polish-2` (`a traditional Polis
 noun between an adjective and a noun, which is a part-of-speech error, not a lemma error. The case does not change the
 other rows of the suite (`C-polish-4`, `C-polish-5`, `C-polish-7` and `C-polish-8`, `H-august-1` and `H-august-2` keep
 their grades).
+
+### One-sense labels for the set rows (no model change)
+
+The 174 rows that accepted a set of senses (see the conversion above) were labeled again, blind, by two independent
+labelers (the language models gpt-6.1-sol and claude-sonnet-5.5). Each saw every sense of the lemma and part of speech
+with the sentence, but **not** the accepted set, so the set could not steer the label. A row was narrowed to one sense
+when both labelers chose the same sense, that sense was inside the accepted set and at least one of them was highly
+confident. That gave 147 candidate one-sense labels (the `senses` cell of `suite.tsv` is the only column that changed;
+the label is always a member of the old set). The other 27 rows keep their full set because the labelers disagreed, one
+was unsure, or a labeler chose a sense outside the set (the list is under "Rows that no longer have a single right
+answer").
+
+**Adjudication of the narrowed labels.** WordNet senses are often near-duplicates (`use#usefulness` and `use#function`,
+`estimate#approximation` and `estimate#cost-quote`), and the suite must not penalize a model for a sense that is equally
+right. Where a narrowed label made a model drop a grade (26 rows), a third reviewer (gpt-6.1-sol) judged, in context,
+whether each candidate sense, the new label and the top-ranked sense of the model, is acceptable for the sentence. The
+labelers and the adjudicator were blind to the grades of the models and to which sense was the label. When the model's
+sense was also acceptable (13 rows), the `senses` cell is the set of the two senses, ordered like the other sets; it is
+a subset of the old set (for `H-estimate-3` it equals the old set, which had these two senses only). When the model's
+sense was judged wrong in context (the other 13 rows), the row keeps its
+one-sense label. For `H-detail-1` the adjudicator accepted `detail#part` (BertBaseCased's sense) but not
+`detail#discourse` (MiniLM's), so the row is a two-sense set and the MiniLM sense stays wrong. The result for the 174
+rows is 134 with a one-sense label, 13 with a set of two senses and 27 with the full old set.
+
+No model, weight or table changed; only the rows are stricter. The answers of the models are as before, but a top-ranked
+sense that was inside the old set may be outside the narrowed label, so the grade `fine` becomes `answer` (the group or
+part-of-speech answer is still right). Under rule 2 this is the row's correction: the old set accepted every sense that
+the pronunciation class had mapped to, including senses that the sentence does not carry (the labelers chose
+`use#function` for "find a use for the gadget", not the other six noun senses of the set). The expectation file was
+rewritten with `evaluate-suite --write-expectations` under rule 3 and the rule 4 rows restored (`C-content-6` and
+`H-close-4` stay `miss` for BertBaseCased: the rewrite measured `fine` for both on the development machine). 22 cells in
+14 rows changed against the file before the review (348 rows): MiniLM 13 `fine` to `answer`, BertBaseCased 9 `fine` to
+`answer`, Basic none; no cell went up and none went to `miss`. One more cell is recorded lower under rule 4:
+`H-defense-1` for BertBaseCased is `fine` on the development machine (its two-sense set holds the top-ranked sense) but
+`answer` on the Windows x64 CI runner, where a near tie puts a third sense of the old set first, so it is recorded
+`answer` and listed under *Platform-sensitive rows*. Measured answered / fine (348 rows, development machine) before
+and after:
+Basic 95.69% / 43.39% unchanged, MiniLM 94.83% / 92.24% to 94.83% / 88.51%, BertBaseCased 98.28% / 96.26% to
+98.28% / 93.68%.
+
+Each cell that went down, with the top-ranked sense of the model (the sum over the analyses of the probability of the
+analysis times that of the sense; MiniLM / BertBaseCased where both went down, the score of the one-sense label in the
+same order) and the reason that the adjudicator gave for why the model's sense is wrong in context. In all 22 cells the
+model answered at the part-of-speech or the group level and the answer stays right; only the top-ranked sense is outside
+the label.
+
+<!-- markdownlint-disable MD013 -->
+
+| Row | Model | Before | Now | Measured (top-ranked sense, score; label, score) | Adjudicator's reason |
+| --- | --- | --- | --- | --- | --- |
+| `H-house-3` (`The stadium can house more than fifty thousand fans`) | MiniLM, BertBaseCased | fine | answer | `house#accommodate-person` 0.74 / 0.78; label `house#contain` 0.25 / 0.21. | The stadium's capacity for spectators does not describe providing lodging. |
+| `H-address-2` (`The addresses on these old letters are hard to read`) | MiniLM, BertBaseCased | fine | answer | `address#geographic-point` 0.61 / 0.69; label `address#written-directions` 0.14 / 0.15. | The locations themselves are not the writing that is read. |
+| `H-lead-6` (`Our manager led the team through a difficult year`) | MiniLM, BertBaseCased | fine | answer | MiniLM `lead#be-first` 0.96, BertBaseCased `lead#direct-music` 0.58; label `lead#command` 0.01 / 0.10. | The manager guided the team rather than being ahead in a competition (`lead#be-first`); no musical performance is conducted (`lead#direct-music`). |
+| `H-contract-1` (`Neither side wanted to break the contract before it expired`) | MiniLM | fine | answer | `contract#bridge-contract` 0.55; label `contract#written-agreement` 0.41. | An expiring agreement between parties is not a bridge bid. |
+| `H-inside-2` (`The inside walls of the cave were covered with paintings`) | MiniLM, BertBaseCased | fine | answer | `inside#building-interior` 0.85 / 0.95; label `inside#inner-side` 0.05 / 0.01. | The enclosed space is a cave, not a building. |
+| `H-update-1` (`The software update will be released next week`) | MiniLM, BertBaseCased | fine | answer | `update#updating` 0.84 / 0.98; label `update#info-update` 0.13 / 0.02. | A released software deliverable is not the act of updating. |
+| `H-detail-1` (`She described every small detail of the accident`) | MiniLM | fine | answer | `detail#discourse` 0.50; label `detail#fact` 0.01 (BertBaseCased's sense `detail#part`, 0.47, is now in the set). | Each countable detail is a particular, not an extended treatment of particulars. |
+| `H-overall-2` (`Her overall grade improved after the final exam`) | MiniLM | fine | answer | `overall#general` 0.80; label `overall#comprehensive` 0.10. | The grade is an aggregate result, not a description limited to the main features. |
+| `H-conflict-4` (`His statement conflicts with the evidence found at the scene`) | MiniLM, BertBaseCased | fine | answer | `conflict#violate` 0.82 / 0.97; label `conflict#contrast` 0.18 / 0.03. | Evidence is not a rule or law that is violated. |
+| `C-sow-3` (`Farmers sow the field with wheat in early autumn`) | MiniLM, BertBaseCased | fine | answer | `sow#seed` 1.00 / 0.91; label `sow#plant-seeds` 0.00 / 0.09 (BertBaseCased answers the group `sow#group:sowing`, which has the label). | The sentence takes the field as the object; `sow#seed` takes the seeds. |
+| `C-sow-4` (`He sows seeds along the garden fence every April`) | MiniLM | fine | answer | `sow#plant-seeds` 0.52; label `sow#seed` 0.48 (nearly tied for MiniLM). | This frame takes the ground as the object, not the seeds. |
+| `C-bass-4` (`Our band still needs someone to play the bass on Friday`) | MiniLM | fine | answer | `bass#pitch` 0.33; label `bass#instrument` 0.24. | The bass to be played is the instrument, not the musical range itself. |
+| `C-buffet-1` (`Dinner at the lodge is a long buffet with soups and salads`) | MiniLM, BertBaseCased | fine | answer | `buffet#counter` 0.77 / 0.68; label `buffet#meal` 0.20 / 0.31. | Dinner denotes a meal, not dining-room furniture. |
+| `C-bow-3` (`The students bow to their teacher at the start of class`) | BertBaseCased | fine | answer | `bow#accede` 0.59; label `bow#greeting-bow` below 0.04 (`bow#bow-down` 0.20 is the second). | The sentence describes a greeting gesture, not yielding to an opinion or wish. |
+
+The 13 rows that now accept two senses (`H-use-1`, `H-contact-1`, `H-increase-1`, `H-subject-2`, `H-estimate-1`,
+`H-estimate-3`, `H-associate-1`, `H-detail-1`, `H-defense-1`, `C-produce-3`, `C-excuse-3`, `C-wound-2` and
+`C-buffet-2`) have the grades that they had before the narrowing, except for `H-detail-1` (MiniLM), which is in the
+table above, and `H-defense-1` (BertBaseCased), which is platform-sensitive (see above).
+
+| Row | Label | Added sense (judged equally acceptable) |
+| --- | --- | --- |
+| `H-use-1` | `use#function` | `use#usefulness` |
+| `H-contact-1` | `contact#communication` | `contact#interaction` |
+| `H-increase-1` | `increase#growth` | `increase#increment` |
+| `H-subject-2` | `subject#theme` | `subject#issue` |
+| `H-estimate-1` | `estimate#cost-quote` | `estimate#approximation` |
+| `H-estimate-3` | `estimate#approximate` | `estimate#predict` |
+| `H-associate-1` | `associate#compeer` | `associate#subordinate-member` |
+| `H-detail-1` | `detail#fact` | `detail#part` |
+| `H-defense-1` | `defense#legal-plea` | `defense#justification` |
+| `C-produce-3` | `produce#manufacture` | `produce#yield` |
+| `C-excuse-3` | `excuse#overlook` | `excuse#forgive` |
+| `C-wound-2` | `wound#lesion` | `wound#combat-injury` |
+| `C-buffet-2` | `buffet#meal` | `buffet#snack-bar` |
+
+<!-- markdownlint-enable MD013 -->
+
+The analysis (lemma and part of speech) that the models chose was right for every cell above; the grade fell only because
+the top-ranked sense is not the one-sense label and was judged wrong in context. The grades are the measurement of the
+current models; if a later change improves them, the policy raises the expectation again.
 
 ## Known misses
 
