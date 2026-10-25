@@ -29,7 +29,9 @@ axerophthol	0	oewn-axerophthol-n	Number=Sing	dema	0			oewn_form
 axerophthols	0	oewn-axerophthol-n	Number=Plur	dema	0			rule
 axes	0	oewn-ax-n	Number=Plur	dema	1			carried
 axes	1	oewn-ax-v	Person=3+Tense=Pres	dema	1			carried
-axes	2	oewn-axis-n	Number=Plur	dema	0			hand
+axes	2	oewn-axe-n	Number=Plur	dema	0			rule
+axes	3	oewn-axe-v	Person=3+Tense=Pres	dema	0			rule
+axes	4	oewn-axis-n	Number=Plur	dema	0			hand
 axial	0	oewn-axial-a	Degree=Pos	dema	0			oewn_form
 axial flow turbine	0	oewn-axial_flow_turbine-n	Number=Sing	dema	0			oewn_form
 axial flow turbines	0	oewn-axial_flow_turbine-n	Number=Plur	dema	0			rule

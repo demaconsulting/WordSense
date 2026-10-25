@@ -242,7 +242,7 @@ frozen	awarding	0	oewn-award-v	VerbForm=Ger	dema	1	open	award#verb
 frozen	awarding	1	oewn-award-n	Number=Sing+VerbForm=Ger	dema	1	open	award#noun
 frozen	awards	0	oewn-award-n	Number=Plur	dema	1		award#noun
 frozen	awards	1	oewn-award-v	Person=3+Tense=Pres	dema	1		award#verb
-frozen	axes	0	oewn-ax-n	Number=Plur	dema	1		axes#noun
+frozen	axes	0	oewn-ax-n	Number=Plur	dema	1	open	axes#noun
 frozen	axes	1	oewn-ax-v	Person=3+Tense=Pres	dema	1		axes#verb
 frozen	ban	0	oewn-ban-n	Number=Sing	dema	1		ban#noun
 frozen	ban	1	oewn-ban-v	VerbForm=Inf	dema	1		ban#verb
@@ -3395,7 +3395,7 @@ frozen	sentencing	0	oewn-sentence-v	VerbForm=Ger	dema	1	open	sentence#verb
 frozen	sentencing	1	oewn-sentence-n	Number=Sing+VerbForm=Ger	dema	1	open	sentence#noun
 frozen	separate	0	oewn-separate-a	Degree=Pos	dema	1		separate#adj
 frozen	separate	1	oewn-separate-v	VerbForm=Inf	dema	1		separate#verb
-frozen	separates	0	oewn-separate-v	Person=3+Tense=Pres	dema	1		separate#verb
+frozen	separates	0	oewn-separate-v	Person=3+Tense=Pres	dema	1	open	separate#verb
 frozen	separates	1	dema-separates-n	Number=Sing	dema	0		
 frozen	seriate	0	dema-seriate-a	Degree=Pos	dema	1		seriate#adj
 frozen	seriate	1	dema-seriate-v	VerbForm=Inf	dema	1		seriate#verb

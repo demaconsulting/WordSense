@@ -3943,6 +3943,7 @@ separablenesses	0		Number=Plur	dema	0	separableness	n	rule
 separably	0	oewn-separably-r	Degree=Pos	dema	0			oewn_form
 separate	0	oewn-separate-a	Degree=Pos	dema	1			carried
 separate	1	oewn-separate-v	VerbForm=Inf	dema	1			carried
+separate	2	oewn-separate-n	Number=Sing	dema	0			moby_reverse
 separate off	0	oewn-separate_off-v	VerbForm=Inf	dema	0			oewn_form
 separate out	0	oewn-separate_out-v	VerbForm=Inf	dema	0			oewn_form
 separated	0	oewn-separate-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -3954,6 +3955,7 @@ separateness	0	oewn-separateness-n	Number=Sing	dema	0			oewn_form
 separatenesses	0	oewn-separateness-n	Number=Plur	dema	0			rule
 separates	0	oewn-separate-v	Person=3+Tense=Pres	dema	1			carried
 separates	1	dema-separates-n	Number=Sing	dema	0			carried
+separates	2	oewn-separate-n	Number=Plur	dema	0			rule
 separates off	0	oewn-separate_off-v	Person=3+Tense=Pres	dema	0			rule
 separates out	0	oewn-separate_out-v	Person=3+Tense=Pres	dema	0			rule
 separating	0	oewn-separate-v	VerbForm=Ger	dema	0			rule

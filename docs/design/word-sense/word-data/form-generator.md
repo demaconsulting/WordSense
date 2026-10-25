@@ -92,6 +92,17 @@ because the corpus labels those forms with the verb senses only), so only the ad
 listed. Verbs that the dictionary lacks come from `corpus/lexicon/additions.tsv` (`torque` is an added verb: `torque`,
 `torques`, `torqued`, `torquing` are generated like those of any verb, as surface-only analyses).
 
+A part of speech that the dictionary lacks for a word whose Open English WordNet entry has senses of it is also an
+addition (evidence `oewn`): the reviewed rows of a spelling that lacks the part of speech get the base analysis of the
+entry after them, as for any dictionary part of speech (`graduate` as the adjective of `a graduate student`, `separate`
+as the noun, the separates of a wardrobe or the offprints of a library). The regular inflections of an entry that a
+reviewed spelling lacks come through the flag `open` of the spelling (`axes` as the plural and the third person of
+`axe` beside `ax`, `separates` as the plural of the noun `separate`): the reviewed analyses stay first. These analyses
+were missing although the entries and their senses exist, so the senses of a heteronym (`graduate`, `separate`, `axes`)
+were not reachable from the written form. A word whose dictionary has no entry of the part of speech gets none: `desert`
+has no adjective entry in Open English WordNet (the noun modifies, as in `desert island`) and `reread` has no noun entry,
+so those two stay without that analysis until the dictionary or the project adds the entry and its senses.
+
 Rank policy: the rank of an analysis is a frequency prior, not the answer for a sentence. The order is deterministic: the
 position of the part of speech in the Moby letters of the lemma, then explicit tie-breaks on lemma, entry and features,
 so no rank is taken from an earlier table. A gerund of a verb leads with

@@ -1,7 +1,7 @@
 # Hand-written additions to the Moby-derived dictionary: valid common English words (or parts of speech) that the lower-case Moby list lacks.
 # Columns: word <TAB> part-of-speech letters <TAB> evidence
 # A word that exists gains the listed parts of speech after its own; a new word is added. The inflections of an added word are generated like any other.
-# Evidence: gutenberg = ordinary word frequent in the Project Gutenberg sample of the quota-fill pool (tools/quota-fill); british = British spelling of a word the list has in US spelling; archaic = archaic spelling; proper = day, month, nationality or country name that the lower-case list lacks; technical = verb of maintenance and engineering instructions that the list lacks (torque a bolt; found by the technical-writing probe, no STE data is used).
+# Evidence: gutenberg = ordinary word frequent in the Project Gutenberg sample of the quota-fill pool (tools/quota-fill); british = British spelling of a word the list has in US spelling; archaic = archaic spelling; proper = day, month, nationality or country name that the lower-case list lacks; technical = verb of maintenance and engineering instructions that the list lacks (torque a bolt; found by the technical-writing probe, no STE data is used); oewn = a part of speech that an Open English WordNet entry has and the list lacks, so that the senses of the entry have an analysis (graduate as an adjective, separate as a noun; found by the heteronym review).
 other	N	gutenberg
 fond	J	gutenberg
 utter	J	gutenberg
@@ -260,3 +260,5 @@ frenchman	N	proper
 irishman	N	proper
 scotchman	N	proper
 torque	V	technical
+graduate	J	oewn
+separate	N	oewn

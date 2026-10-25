@@ -8686,6 +8686,7 @@ graduand	0		Number=Sing	dema	0	graduand	n	moby_reverse
 graduands	0		Number=Plur	dema	0	graduand	n	rule
 graduate	0	oewn-graduate-n	Number=Sing	dema	1			carried
 graduate	1	oewn-graduate-v	VerbForm=Inf	dema	1			carried
+graduate	2	oewn-graduate-a	Degree=Pos	dema	0			moby_reverse
 graduate nurse	0	oewn-graduate_nurse-n	Number=Sing	dema	0			oewn_form
 graduate nurses	0	oewn-graduate_nurse-n	Number=Plur	dema	0			rule
 graduate school	0	oewn-graduate_school-n	Number=Sing	dema	0			oewn_form

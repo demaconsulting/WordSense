@@ -23,6 +23,8 @@ lemma	august	majestic	august/Adjective
 lemma	august	month	August/Noun
 lemma	axes	plural-of-ax	ax/Noun/Number=Plur
 lemma	axes	plural-of-ax	ax/Verb/Tense=Pres
+lemma	axes	plural-of-ax	axe/Noun/Number=Plur
+lemma	axes	plural-of-ax	axe/Verb/Tense=Pres
 lemma	axes	plural-of-axis	axis/Noun/Number=Plur
 lemma	bases	plural-of-base	base/Noun/Number=Plur
 lemma	bases	plural-of-base	base/Verb/Tense=Pres
@@ -95,7 +97,8 @@ lemma	export	noun	export/Noun	stress contrast; some dialects merge the classes
 lemma	export	verb	export/Verb
 lemma	extract	noun	extract/Noun
 lemma	extract	verb	extract/Verb
-lemma	graduate	noun	graduate/Noun
+lemma	graduate	adjective-noun	graduate/Adjective
+lemma	graduate	adjective-noun	graduate/Noun
 lemma	graduate	verb	graduate/Verb
 lemma	impact	noun	impact/Noun	stress contrast; some dialects merge the classes
 lemma	impact	verb	impact/Verb
@@ -156,7 +159,8 @@ lemma	retake	noun	retake/Noun
 lemma	retake	verb	retake/Verb
 lemma	segment	noun	segment/Noun
 lemma	segment	verb	segment/Verb
-lemma	separate	adjective	separate/Adjective
+lemma	separate	adjective-noun	separate/Adjective
+lemma	separate	adjective-noun	separate/Noun
 lemma	separate	verb	separate/Verb
 lemma	survey	noun	survey/Noun	stress contrast; some dialects merge the classes
 lemma	survey	verb	survey/Verb

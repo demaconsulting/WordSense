@@ -76,6 +76,10 @@ sections:
               - WordSense-WordData-FormGenerator-Corroboration
               - WordSense-WordData-FormGenerator-Gerunds
               - WordSense-WordData-FormGenerator-OwnEntries
+              - WordSense-WordData-FormGenerator-OwnAdjectives
+              - WordSense-WordData-FormGenerator-AddedPartsOfSpeech
+              - WordSense-WordData-FormGenerator-OpenInflections
+              - WordSense-WordData-FormGenerator-IrregularForms
               - WordSense-WordData-FormGenerator-Facts
               - WordSense-WordData-FormGenerator-Rules
               - WordSense-WordData-FormGenerator-AuthoredForms

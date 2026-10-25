@@ -92,3 +92,8 @@ hand-observed	unplastered	unplaster	Verb	*	any
 hand-observed	waked	wake	Verb	*	any
 hand-observed	whaleman	whaleman	Noun	*	any
 hand-observed	whalemen	whaleman	Noun	*	any
+hand-observed	axes	axe	Noun	Number=Plur	any
+hand-observed	axes	axe	Verb	Person=3+Tense=Pres	any
+hand-observed	graduate	graduate	Adjective	Degree=Pos	any
+hand-observed	separate	separate	Noun	Number=Sing	any
+hand-observed	separates	separate	Noun	Number=Plur	any

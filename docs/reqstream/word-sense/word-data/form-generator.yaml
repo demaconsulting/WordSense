@@ -114,20 +114,66 @@ sections:
               - id: WordSense-WordData-FormGenerator-OwnEntries
                 title: >-
                   FormGenerator shall give every spelling the analysis of each dictionary -ing entry whose lemma is that
-                  spelling, of each participial adjective entry that the list own-adjectives.tsv names, and the forms of
-                  the irregular lists, also when an earlier reviewed analysis of another entry carries the spelling.
+                  spelling, also when an earlier reviewed analysis of another entry carries the spelling.
                 tags: [unit]
                 justification: |
                   An entry whose analysis is missing has senses that no word can reach; a noun such as tracing must
-                  keep its own analysis beside the gerund of the verb, and a participial adjective that technical text
-                  uses as an adjective (a damaged seal) beside the past participle of the verb. The adjectives are
-                  listed one by one: the common participles (based, covered) stay verb forms.
+                  keep its own analysis beside the gerund of the verb.
                 tests:
                   - WordSenseBuilder_FactGenerator_Check_AllFactsAndIngEntriesHold
+
+              - id: WordSense-WordData-FormGenerator-OwnAdjectives
+                title: >-
+                  FormGenerator shall give every spelling the adjective analysis of each participial adjective entry
+                  that the list own-adjectives.tsv names, and no other participial adjective entry, also when an earlier
+                  reviewed analysis of another entry carries the spelling.
+                tags: [unit]
+                justification: |
+                  A participial adjective that technical text uses as an adjective (a damaged seal) needs its own
+                  analysis beside the past participle of the verb. The adjectives are listed one by one: the common
+                  participles (based, covered) stay verb forms.
+                tests:
                   - WordSenseBuilder_FormGenerator_Data_OwnAdjectiveEntry_HasItsAnalysis
                   - WordSenseBuilder_FormGenerator_Data_UnlistedParticipialAdjective_KeepsTheReviewedAnalysis
                   - WordSenseBuilder_FormGenerator_Data_AdjectiveEntries_AreReachable
+
+              - id: WordSense-WordData-FormGenerator-AddedPartsOfSpeech
+                title: >-
+                  FormGenerator shall give every spelling the base analysis of each entry whose part of speech the
+                  additions list names for the word, keeping the reviewed analyses of a spelling of the reviewed input,
+                  and shall give no analysis of a part of speech for which the dictionary has no entry.
+                tags: [unit]
+                justification: |
+                  The analyses that a heteronym needs (the adjective graduate of a graduate student, the noun separate)
+                  were missing from the reviewed rows although the dictionary has the entries and senses; an entry that
+                  the dictionary lacks (an adjective desert, a noun reread) must not be invented.
+                tests:
                   - WordSenseBuilder_FormGenerator_Data_AddedVerb_HasItsForms
+                  - WordSenseBuilder_FormGenerator_Data_AddedPartOfSpeech_GainsTheAnalysisOfAnEntryWithoutOne
+                  - WordSenseBuilder_FormGenerator_Data_AddedPartOfSpeech_KeepsTheReviewedAnalysesAndInventsNone
+
+              - id: WordSense-WordData-FormGenerator-OpenInflections
+                title: >-
+                  FormGenerator shall give a spelling that the reviewed input marks open the analysis of each entry
+                  that regular inflection reaches in that spelling, keeping the reviewed analyses of the spelling.
+                tags: [unit]
+                justification: |
+                  The plural axes of axe and the plural separates of the noun separate were missing from the reviewed
+                  rows although the dictionary has the entries and senses; the reviewed analyses stay first.
+                tests:
+                  - WordSenseBuilder_FormGenerator_Data_OpenSpelling_GainsTheInflectionOfAnEntryWithoutOne
+                  - WordSenseBuilder_FormGenerator_Data_OpenSpelling_KeepsItsReviewedAnalyses
+
+              - id: WordSense-WordData-FormGenerator-IrregularForms
+                title: >-
+                  FormGenerator shall give every spelling the forms of the irregular lists, also when an earlier
+                  reviewed analysis of another entry carries the spelling.
+                tags: [unit]
+                justification: |
+                  An irregular form that a reviewed analysis of another entry hides has senses that no word can reach;
+                  the generated lexicon facts, which derive from the irregular lists, hold for every such form.
+                tests:
+                  - WordSenseBuilder_FactGenerator_Check_AllFactsAndIngEntriesHold
 
               - id: WordSense-WordData-FormGenerator-Facts
                 title: >-

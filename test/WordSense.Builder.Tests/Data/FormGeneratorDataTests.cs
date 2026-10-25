@@ -125,6 +125,96 @@ public sealed class FormGeneratorDataTests
     }
 
     /// <summary>
+    ///     A spelling of the reviewed input gains the base analysis of the dictionary entry whose part of speech the
+    ///     additions list names for the word and that no reviewed row names: the adjective of <c>graduate</c> (a graduate
+    ///     student) and the noun of <c>separate</c> (the separates of a wardrobe).
+    /// </summary>
+    /// <param name="spelling">The spelling.</param>
+    /// <param name="entry">The entry of the analysis.</param>
+    /// <param name="features">The features of the analysis.</param>
+    [Theory]
+    [InlineData("graduate", "oewn-graduate-a", "Degree=Pos")]
+    [InlineData("separate", "oewn-separate-n", "Number=Sing")]
+    public void WordSenseBuilder_FormGenerator_Data_AddedPartOfSpeech_GainsTheAnalysisOfAnEntryWithoutOne(string spelling, string entry, string features)
+    {
+        // Arrange: the shipped form table, read for the spelling of the added part of speech
+        var rows = Rows(spelling);
+
+        // Act: look for the base analysis of the entry
+        var found = rows.Any(r => r[2] == entry && r[3] == features);
+
+        // Assert: the analysis is there
+        Assert.True(found);
+    }
+
+    /// <summary>
+    ///     The reviewed analysis of a spelling stays when the additions list gives it a part of speech (the verb
+    ///     <c>graduate</c>), and a spelling whose dictionary has no entry of the part of speech gains none (no adjective
+    ///     <c>desert</c>, no noun <c>reread</c>).
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_FormGenerator_Data_AddedPartOfSpeech_KeepsTheReviewedAnalysesAndInventsNone()
+    {
+        // Arrange: the spellings that have a reviewed analysis and those whose dictionary lacks the part of speech
+        var graduate = Rows("graduate").ToList();
+        var desert = Rows("desert").ToList();
+        var reread = Rows("reread").ToList();
+
+        // Act: look for the reviewed verb of graduate, an adjective of desert and a noun of reread
+        var keptVerb = graduate.Any(r => r[2] == "oewn-graduate-v" && r[3] == "VerbForm=Inf");
+        var inventedAdjective = desert.Any(r => r[2].EndsWith("-a", StringComparison.Ordinal));
+        var inventedNoun = reread.Any(r => r[2].EndsWith("-n", StringComparison.Ordinal));
+
+        // Assert: the reviewed analysis stays and no analysis is invented
+        Assert.True(keptVerb);
+        Assert.False(inventedAdjective);
+        Assert.False(inventedNoun);
+    }
+
+    /// <summary>
+    ///     A spelling that the reviewed input marks open gains the analyses that regular inflection gives the entries of
+    ///     the dictionary: the plural and the third person of <c>axe</c> in <c>axes</c> and the plural of the noun
+    ///     <c>separate</c> in <c>separates</c>.
+    /// </summary>
+    /// <param name="spelling">The spelling.</param>
+    /// <param name="entry">The entry of the analysis.</param>
+    /// <param name="features">The features of the analysis.</param>
+    [Theory]
+    [InlineData("separates", "oewn-separate-n", "Number=Plur")]
+    [InlineData("axes", "oewn-axe-n", "Number=Plur")]
+    [InlineData("axes", "oewn-axe-v", "Person=3+Tense=Pres")]
+    public void WordSenseBuilder_FormGenerator_Data_OpenSpelling_GainsTheInflectionOfAnEntryWithoutOne(string spelling, string entry, string features)
+    {
+        // Arrange: the shipped form table, read for the open spelling
+        var rows = Rows(spelling);
+
+        // Act: collect the regular inflections of the entry
+        var found = rows.Where(r => r[2] == entry && r[3] == features).ToList();
+
+        // Assert: the analysis is there exactly once
+        Assert.Single(found);
+    }
+
+    /// <summary>
+    ///     The reviewed analyses of an open spelling stay beside the analyses that it gains (the plurals of <c>ax</c> and
+    ///     of <c>axis</c> in <c>axes</c>).
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_FormGenerator_Data_OpenSpelling_KeepsItsReviewedAnalyses()
+    {
+        // Arrange: the shipped form table, read for the open spelling
+        var rows = Rows("axes").ToList();
+
+        // Act: look for the two reviewed plurals
+        var pluralOfAx = rows.Any(r => r[2] == "oewn-ax-n" && r[3] == "Number=Plur");
+        var pluralOfAxis = rows.Any(r => r[2] == "oewn-axis-n" && r[3] == "Number=Plur");
+
+        // Assert: both stay
+        Assert.True(pluralOfAx);
+        Assert.True(pluralOfAxis);
+    }
+
+    /// <summary>
     ///     A verb that the dictionary lacks but the additions list has verb forms (torque a bolt).
     /// </summary>
     [Fact]

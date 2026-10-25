@@ -70,7 +70,7 @@ sentences found three kinds of gap, and wave 3 closed them:
   `corpus/lexicon/additions.tsv`, so it is a surface-only analysis without a sense) and the adjective analysis of the
   participial adjectives that technical text uses (`damaged`, `drained`, `drilled`, `alloyed`; listed in
   `corpus/lexicon/own-adjectives.tsv`), which a reviewed analysis of the verb form had hidden (`FormGenerator`,
-  requirement `WordSense-WordData-FormGenerator-OwnEntries`). 114 such adjective entries exist; the other 110 (`based`,
+  requirement `WordSense-WordData-FormGenerator-OwnAdjectives`). 114 such adjective entries exist; the other 110 (`based`,
   `covered`, `changed`, `driven`, ...) were left out on purpose (giving them all an analysis lowered the real-text fine
   top-1 by about two points, see the method of the quota filling in `corpus/README.md`).
 
@@ -171,9 +171,9 @@ against the sense catalog (every label is a sense of the lemma and part of speec
 and a group that matches no spelling, and a test checks that every lemma whose entries the pronunciations split into
 sound classes is in the `sense` rows, except the lemmas that the review below rejected.
 
-**Counts.** The table has 289 rows (182 `lemma`, 94 `sense` and 13 `tense`) in 117 groups. The builder turns them, with
-the heteronyms that it derives from the pronunciations, into 369 heteronym records (a record is a spelling of a group)
-for 366 distinct spellings: `wound`, `leading` and `lowering` are in two groups each. The appendix and the TSV export
+**Counts.** The table has 293 rows (186 `lemma`, 94 `sense` and 13 `tense`) in 117 groups. The builder turns them, with
+the heteronyms that it derives from the pronunciations, into 370 heteronym records (a record is a spelling of a group)
+for 367 distinct spellings: `wound`, `leading` and `lowering` are in two groups each. The appendix and the TSV export
 state the same numbers.
 
 **Lexicographer review.** A blind lexicographer reviewed every group against its senses (sound, stress and the
@@ -199,13 +199,20 @@ meaning that separates them). The review is applied as follows:
   `increase`, `recall`, `discount`, `intern`, `protest`, `rebound`, `alternate`, `lower` and `lowering` stay, because the
   usual contrast is the reason a consumer needs the key, and their `note` says that some dialects merge the two
   classes (the verb takes the stress of the noun, in American English especially).
-- *Not possible with this data*: a pattern may name only an analysis of the word table and a sense of the catalog, and
-  the review asked for rows that need more. `axes` as the plural of `axe`: the word table has `axes` as the plural of
-  `ax` (which the group has) and `axe` has no plural. `desert` as an adjective, `graduate` as an adjective, `separate`
-  as a noun and `reread` as a noun: the table has no such analysis (`graduate` has an adjective sense and `separate` has
-  noun senses, but neither has the analysis, so no key can name them). The `wind` verbs that mean make breathless or
-  burp, the metalworking verb `lead` and the enclosure and street nouns of `close`: the catalog has no such sense. These
-  rows were not added; they need a change of the data first.
+- *Added to the word table, then to the rows*: the review asked for analyses that the word table lacked although the
+  dictionary has the entries and their senses, so the form pipeline gave them (`corpus/lexicon/additions.tsv`, evidence
+  `oewn`, and the flag `open` of two rows of `corpus/lexicon/form-frozen.tsv`; see the design of the form generator).
+  `axes` as the plural and the third person of `axe` (the group had only `ax`, whose senses are those of `axe`), `graduate`
+  as an adjective (`a graduate student`, the sense `graduate#postgraduate`), `separate` as a noun and `separates` as its
+  plural (the garment `separate-garment` and the `offprint`). The adjective and the noun of `graduate` and `separate`
+  are read like each other (one class `adjective-noun`, as in `alternate`), and the verb the other way.
+- *Not possible with this data (deferred)*: a pattern may name only an analysis of the word table and a sense of the
+  catalog, and these need more than an analysis. `desert` as an adjective (`desert island`): Open English WordNet has no
+  adjective entry of `desert` (the noun modifies the noun), so the word table has no entry and no sense to analyze.
+  `reread` as a noun: the dictionary has only the verb `reread`, no noun entry or sense. The `wind` verbs that mean make
+  breathless or burp, the metalworking verb `lead` and the enclosure and street nouns of `close`: the catalog has no such
+  sense. Each needs a new entry or sense, with corpus anchors for the trained lemmas and a retraining of the encoder
+  weights, so these rows were not added; they need a change of the data first.
 
 **Provenance.** The `sense` rows were derived from the data: the entries of `data/entry` that share a lemma, with the
 Open English WordNet pronunciations of `data/pronunciation` (compared after normalizing the notation and the common

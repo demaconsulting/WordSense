@@ -203,6 +203,14 @@ public sealed class HeteronymTests : IDisposable
         Assert.Contains("read|read/Noun/Number=Sing", Keys(Heteronyms.Tense, "read", "non-past"));
         Assert.Contains("do|do/Auxiliary", Keys(Heteronyms.Sense, "do", "party"));
         Assert.Contains("leading|lead/Verb/VerbForm=Ger", Keys(Heteronyms.Sense, "leading", "guidance"));
+
+        // The analyses that the word table gained (the adjective graduate, the noun separate, the plural of axe)
+        Assert.Contains("graduate|graduate/Adjective/Degree=Pos", Keys(Heteronyms.Entry, "graduate", "adjective-noun"));
+        Assert.Contains("graduate|graduate/Noun/Number=Sing", Keys(Heteronyms.Entry, "graduate", "adjective-noun"));
+        Assert.Contains("separate|separate/Noun/Number=Sing", Keys(Heteronyms.Entry, "separate", "adjective-noun"));
+        Assert.Contains("separates|separate/Noun/Number=Plur", Keys(Heteronyms.Entry, "separates", "adjective-noun", "separate"));
+        Assert.Contains("axes|axe/Noun/Number=Plur", Keys(Heteronyms.Entry, "axes", "plural-of-ax"));
+        Assert.Contains("axes|axe/Verb/Person=3+Tense=Pres", Keys(Heteronyms.Entry, "axes", "plural-of-ax"));
     }
 
     /// <summary>
