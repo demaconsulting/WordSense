@@ -148,6 +148,55 @@ design of the form generator.
   do), general knowledge, no licensed data. The `words` command appends an Auxiliary sense after the existing senses
   of each listed word (after the expansion, so no inflected form gains it). License: same as the repository.
 
+## Closed-Only Flag of `form-frozen.tsv`
+
+`form-frozen.tsv` has 801 `closed` rows for 743 spellings. 450 of the rows, for 423 spellings, carry the flag `only`;
+the other 351 rows, for 320 spellings, do not. The flag is per spelling (no spelling mixes flagged and unflagged rows).
+
+**Effect.** `FormGenerator.ReadLegacy` collects the spellings of the `closed` rows with `only` into `ClosedOnly`. The
+`closed` rows themselves are carried in either case. In the merge step of `FormGenerator.Run`, a spelling in
+`ClosedOnly` that has at least one closed-class analysis keeps only (a) its closed-class analyses (part of speech `u`,
+`p`, `c`, `i`, `d` or `x`), (b) its `hand` and `irregular_list` analyses, (c) a `moby_reverse` analysis whose part of
+speech the dictionary itself lists for the spelling and (d) its `llm` analyses; every other generated open-class
+analysis of the spelling is suppressed. A spelling without the flag keeps its corroborated generated analyses of other
+entries beside the closed-class one. Clearing `only` therefore allows open-class analyses (`does` as the plural of
+`doe`, `many` as an adjective) and never removes an analysis; a spelling that has no closed-class analysis is not
+affected by the flag.
+
+**How it was derived, once.** Before the generator read `form-frozen.tsv`, the generator at commit `12a2108` (PR #9,
+the first `FormGenerator.cs`) applied a rule to the old form table at run time: a spelling whose old analyses were all
+closed-class (the entries of the old rows have part of speech `u`, `p`, `c`, `i`, `d` or `x`; a row whose entry is
+unknown is ignored) "keeps no open-class analysis". Commit `61926eb` (PR #11) made the generator read the committed file
+instead and wrote `form-frozen.tsv` in one step, with all 801 `closed` rows and their flags; the file has not changed in
+its `closed` rows since (commit `8604bb1` only added the `or` frozen row and dropped one `supposed` row). The script
+that wrote the file was never committed: the code of the rule exists only in `FormGenerator.cs` at `12a2108`
+(`ranks.All(r => ClosedPos.Contains(r.Pos, ...))`, near the comment "A word that the old table held with closed-class
+analyses only") and in the commit `61926eb` diff that replaced it with `ClosedOnly`.
+
+**Reproduction (partial).** The exact table that the one-time step read was not committed, so the flags cannot be
+reproduced exactly from history. Applying the rule to the form table of `12a2108` (the parent of `61926eb`) gives the
+flag of most, but not all, of the 423 flagged spellings (two independent replays gave 397 and 415, depending on how the
+table of that commit was regenerated), and no unflagged `closed` spelling is closed-class only there. The other 53
+closed-class-only spellings (contractions such as `ain't` and `it's`) have no `closed` row, so they carry no flag. The
+flags that the replays do not produce were set by the one-time step for reasons that are not recorded.
+
+**Cleared by hand: none found.** No `closed` spelling is closed-class only in the old table and still unflagged. The 320
+unflagged spellings are unflagged because the old table also gave each of them at least one open-class analysis (a
+noun, verb, adjective or adverb; for example `does` and `has` as verbs, `bags` and `order` as nouns and verbs, `many`
+and `other` as adjectives and nouns), not because someone cleared a flag. (`others` is not an example of the flag: it
+has no `closed` row.) To list the analyses of a spelling, join the unflagged `closed` rows with `data/entry/*.tsv` and
+`data/form/*.tsv` at `12a2108`.
+
+**Flagged although the old table held a verb.** Among the flags the rule does not explain are `am`, `been`, `did`,
+`had`, `is`, `was`, `were` and `would`: they carry `only` although the old table also held a verb analysis for each
+(the auxiliary forms of `be`, `do`, `have` and `will`). Their verb analyses survive through the provenances that the
+flag keeps (`hand`, `irregular_list` and listed `moby_reverse`, for example `am` and `would`), so the flag suppresses
+only the extra generated analyses; `has` and `does`, the same kind of auxiliary forms, are unflagged. The commit
+messages give no reason, so it is not a documented decision. Review them as data like any other flag.
+
+**Changing it.** The rule is not re-run. A change of the flag is a reviewed edit of the `flags` column of
+`form-frozen.tsv`, made directly in that file and reviewed as data; the generator reads the file as given.
+
 ## Counts
 
 | Step | Words |
