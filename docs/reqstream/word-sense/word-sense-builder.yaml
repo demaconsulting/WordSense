@@ -33,9 +33,9 @@ sections:
             justification: |
               The shipped lexicon and catalog must be reproducible from committed inputs so that reviewers can verify
               them, and must never lose a dictionary word, a part of speech or a sense because of what was trained
-              (the one exception is a numeral, a spelling without a letter, which the library never looks up as a
-              word). Running text uses inflected forms far more often than lemmas, so every form of every word has to
-              be known.
+              (the one exception is a numeral, a lemma or spelling without a letter, which the library never looks up as
+              a word, so an analysis of such a lemma is left out even under a spelling with a letter). Running text uses
+              inflected forms far more often than lemmas, so every form of every word with a letter has to be known.
             tests:
               - WordSenseBuilder_ImageCompiler_Build_IsDeterministic
               - WordSenseBuilder_ImageCompiler_Build_CatalogIsDeterministic
