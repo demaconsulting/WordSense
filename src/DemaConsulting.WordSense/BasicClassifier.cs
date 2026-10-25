@@ -874,8 +874,15 @@ internal sealed class BasicClassifier
 
         if (count >= 2 && _usagePrior is { } prior)
         {
+            // A ranking names at least two senses; anything shorter is no ranking, so a usage result can never be read
+            // as the one-sense answer of a polysemous slot
             var ranked = prior(analysis.Lemma, analysis.PartOfSpeech);
-            rankedByUsage = !ranked.IsDefaultOrEmpty;
+            if (ranked.IsDefault || ranked.Length < 2)
+            {
+                return [];
+            }
+
+            rankedByUsage = true;
             return ranked;
         }
 

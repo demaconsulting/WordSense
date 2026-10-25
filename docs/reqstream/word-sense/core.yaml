@@ -123,6 +123,7 @@ sections:
               - WordSense-Core-WordSenseContracts-Candidates-RankingKind-Equality
               - WordSense-Core-BasicClassifier-UsagePrior-Marked
               - WordSense-Core-BasicClassifier-UsagePrior-Marked-Other
+              - WordSense-Core-BasicClassifier-UsagePrior-ShortRanking
             tests:
               - WordSenseContracts_AnalysisCandidate_SensesRankedByUsage_DefaultsToContextScored
               - BasicClassifier_ClassifyAsync_UsagePrior_MarksTheSensesAsRankedByUsage

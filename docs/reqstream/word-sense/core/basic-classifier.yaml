@@ -309,6 +309,17 @@ sections:
                   - BasicClassifier_ClassifyAsync_UsagePrior_MarksTheSensesAsRankedByUsage
                   - BasicClassifier_ClassifyAsync_WithoutAPrior_MarksNothingAsRankedByUsage
 
+              - id: WordSense-Core-BasicClassifier-UsagePrior-ShortRanking
+                title: >-
+                  BasicClassifier shall treat a usage ranking of fewer than two senses for an analysis with two or more
+                  senses as no ranking: the analysis lists no senses and is not marked as ranked by usage.
+                tags: [unit]
+                justification: |
+                  A ranking of one sense would read as the one-sense answer of a polysemous slot, and the usage prior
+                  must never answer a sense.
+                tests:
+                  - BasicClassifier_ClassifyAsync_RankingOfFewerThanTwoSenses_IsNoRanking
+
               - id: WordSense-Core-BasicClassifier-UsagePrior-NoAnswer
                 title: >-
                   The usage prior shall never answer a sense or a group: the level, the confidence, the sense id and the

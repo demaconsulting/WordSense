@@ -133,6 +133,30 @@ public class BasicClassifierUsagePriorTests
     }
 
     /// <summary>
+    ///     A ranking function that returns fewer than two senses for a polysemous slot gives no ranking: the analysis lists
+    ///     no senses, is not marked as ranked by usage, and the word is still answered at the part-of-speech level, so a
+    ///     usage result can never become a one-sense answer.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_RankingOfFewerThanTwoSenses_IsNoRanking()
+    {
+        // Arrange: a ranking function that returns only the first sense of every slot
+        var classifier = new BasicClassifier(null, Lookup, Count, WordLexicon.SensesOf, (lemma, pos) =>
+            [.. UsagePrior.RankOf(lemma, pos).Take(1)]);
+
+        // Act
+        var dog = (await classifier.ClassifyAsync(Sentence, TestContext.Current.CancellationToken))[1];
+
+        // Assert
+        var polysemous = dog.Analyses.Where(a => Count(a.Details.Lemma, a.Details.PartOfSpeech) >= 2).ToList();
+        Assert.NotEmpty(polysemous);
+        Assert.All(polysemous, a => Assert.True(a.Senses.IsEmpty && !a.SensesRankedByUsage));
+        Assert.Equal(SenseLevel.PartOfSpeech, dog.Level);
+        Assert.Null(dog.SenseId);
+    }
+
+    /// <summary>
     ///     An analysis whose lemma and part of speech have no sense lists no senses.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
