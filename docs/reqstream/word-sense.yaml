@@ -322,6 +322,9 @@ sections:
         children:
           - WordSense-WordSenseBuilder-Evaluate
           - WordSense-WordSenseBuilder-SenseEval
+          - WordSense-WordSenseBuilder-SenseEvalAllWords
+          - WordSense-WordSenseBuilder-SenseEvalAllWordsFigures
+          - WordSense-WordSenseBuilder-SenseEvalAllWordsBaseline
           - WordSense-WordSenseBuilder-RunningText
           - WordSense-WordSenseBuilder-Suite
         tests:

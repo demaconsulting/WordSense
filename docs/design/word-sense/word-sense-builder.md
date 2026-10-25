@@ -110,8 +110,9 @@ implementation of the feature computation.
 - `ModelTable`: the model comparison table file (one row per model, one column per measurement, each written by the
   command that measures it).
 - `SemCor`, `SemCorSentence`, `SemCorTarget`, `SemCorCounts`, `SenseEvaluator`, `SenseEvalResult`: the SemCor 3.0
-  evaluation (reader of the tag files, download to a cache with a pinned checksum, key mapping, per-level figures and
-  the first-sense baseline in Open English WordNet order, which the report calls partly circular).
+  evaluation (reader of the tag files, download to a cache with a pinned checksum, key mapping, per-level figures, the
+  first-sense baseline in Open English WordNet order, which the report calls partly circular, and the all-words
+  measurement with a tag-count most-frequent-sense baseline, which the report calls optimistic).
 - `RunningTextEvaluator`: the part-of-speech evaluation of every model on the test split of the open corpus, the
   convention-mapped treebank test file and the challenge set.
 - `SuiteFile`, `SuiteRow`, `SuiteData`, `SuiteGrade`, `SuiteEvaluator`: read the reviewed suite rows and the expectation
@@ -172,7 +173,10 @@ instead of `--model`.
   model (`minilm`, `bert-base-cased`, `basic`) on the holdout sentences and prints a Markdown table; `--table` writes
   the real-text sense cell and the cost cells of the model into the model comparison table file.
 - `evaluate-senses [--model all|NAME] [--cache DIR] [--download] [--sample N] [--output FILE] [--table FILE]`: measures
-  the models on SemCor 3.0 (read from the cache, downloaded with `--download` after verifying its pinned SHA-256).
+  the models on SemCor 3.0 (read from the cache, downloaded with `--download` after verifying its pinned SHA-256): the
+  trained lemmas (the model table cell) and, in a separate section, all mapped words of a trained lemma or of an
+  untrained lemma with two or more senses (the words of an untrained lemma with fewer than two senses are counted but
+  not measured).
 - `evaluate-running [--model all|NAME] [--split test] [--gold FILE] [--output FILE] [--table FILE]`: measures the
   part-of-speech accuracy of the models on the representative test split of the open corpus, the convention-mapped
   treebank test file and the challenge set.
@@ -503,12 +507,24 @@ table against the reference accuracies of the other models.
    top-1 (the most probable ranked sense is in the group of the gold sense, for words whose gold sense is in a group),
    the part-of-speech accuracy and the first-sense baseline (the first sense of the lemma and part of speech of
    the gold sense in inventory order, the order of Open English WordNet; the baseline knows the gold lemma and part of speech).
+5. The all-words measurement extends step 3 and step 4 without changing the trained-lemma figures. `Select` also keeps,
+   as other rows, the mapped words of an untrained lemma that has two or more senses (summed over all parts of speech,
+   memoized per lemma), and counts the words of an untrained lemma with fewer than two senses in the funnel without
+   keeping them (every model answers them at the sense level, so they would inflate the figures). `MeasureAsync`
+   classifies the sentence once and judges the other rows with the same `Evaluator.Judge`: a word answered at the
+   part-of-speech level is not a sense answer, and a word without ranked senses is a miss of the fine top-1, which is
+   what every model gives for an untrained polysemous lemma (the models carry no sense prior at run time). The report
+   gives, per model, the trained, untrained and all words (answered share, precision, fine top-1) and a
+   most-frequent-sense baseline that takes the sense
+   with the highest WordNet 3.0 tag count (`data/sense_frequency`, read by `Tiers.ReadTagCounts`; a missing key counts 0,
+   ties break in inventory order). The model table cell is still the trained-lemma measurement and is not changed.
 
 The tiers come from WordNet 3.0 tag counts that include the counts of SemCor itself, and the inventory order (the order
 of Open English WordNet) follows Princeton WordNet's frequency order: it matches the WordNet 3.0 top-count sense in 10,047
 of 10,062 blocks with a unique maximum, and those counts include the tags of SemCor. The baseline is therefore partly
-circular and has an advantage (it has seen the answers); the evaluation report says so. No SemCor sentence is in any
-training corpus.
+circular and has an advantage (it has seen the answers); the evaluation report says so, and says the same of the tag-count
+baseline of the all-words section: it is an optimistic reference, not a competitor, and a lemma-level prior that the
+library does not ship for untrained lemmas. No SemCor sentence is in any training corpus.
 
 #### Running-text evaluation (`RunningTextEvaluator`)
 

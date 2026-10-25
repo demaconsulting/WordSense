@@ -61,6 +61,35 @@ public sealed class SenseEvaluatorTests : IDisposable
     }
 
     /// <summary>
+    ///     Writes a one-sentence SemCor tag file whose words are the given senses, each annotated with its WordNet 3.0 key.
+    /// </summary>
+    /// <param name="senses">The senses of the words, in sentence order.</param>
+    /// <returns>The text of the tag file.</returns>
+    private static string Annotated(params SenseInfo[] senses) =>
+        "<contextfile concordance=brown>\n<context filename=br-t02 paras=yes>\n<p pnum=1>\n<s snum=1>\n" +
+        string.Concat(senses.Select(s => $"<wf cmd=done pos=NN lemma={s.Lemma} wnsn=1 lexsn={LexSn(s)}>{s.Lemma}</wf>\n")) +
+        "<punc>.</punc>\n</s>\n</p>\n</context>\n</contextfile>\n";
+
+    /// <summary>
+    ///     Finds a keyed sense of a lemma that has exactly one sense in the catalog over all parts of speech.
+    /// </summary>
+    /// <returns>The only sense of the first candidate lemma that has one.</returns>
+    /// <exception cref="InvalidOperationException">Thrown when no candidate lemma has exactly one sense.</exception>
+    private static SenseInfo MonosemousSense()
+    {
+        foreach (var lemma in new[] { "aardvark", "armadillo", "chimpanzee", "hippopotamus", "xylophone", "zucchini", "walrus", "wombat" })
+        {
+            var all = Enum.GetValues<PartOfSpeech>().SelectMany(pos => WordLexicon.SensesOf(lemma, pos)).ToList();
+            if (all.Count == 1 && all[0].SenseKey is not null)
+            {
+                return all[0];
+            }
+        }
+
+        throw new InvalidOperationException("None of the candidate lemmas has exactly one sense in the catalog.");
+    }
+
+    /// <summary>
     ///     The reader finds the single-word annotations, builds their WordNet 3.0 sense keys from the lemma and the lexical
     ///     sense number, leaves out multiword expressions and senses that the mapping dropped, and keeps punctuation as words.
     /// </summary>
@@ -85,7 +114,7 @@ public sealed class SenseEvaluatorTests : IDisposable
 
     /// <summary>
     ///     A WordNet 3.0 key becomes the sense of the catalog that has the key; the word is an evaluation word only when its
-    ///     lemma is trained, a word with several keys is left out, and an unknown key is counted as unmapped.
+    ///     lemma is trained (or has two or more senses, see the all-words test), a word with several keys is left out, and an unknown key is counted as unmapped.
     /// </summary>
     [Fact]
     public void WordSenseBuilder_SenseEval_MapKeys_WordNet30KeyToOewnSense()
@@ -105,7 +134,9 @@ public sealed class SenseEvaluatorTests : IDisposable
         Assert.Equal([PartOfSpeech.Noun, PartOfSpeech.Noun], rows.Select(r => r.PartOfSpeech));
         Assert.Equal((3, 2, 2), (funnel.SingleKey, funnel.Mapped, funnel.Trained));
         Assert.Equal([("zzzzzz%1:03:00::", 1)], funnel.Unmapped);
-        Assert.Empty(none);
+        var untrainedSentence = Assert.Single(none);
+        Assert.Empty(untrainedSentence.Rows);
+        Assert.Equal(2, untrainedSentence.Others.Count);
         Assert.Equal((3, 2, 0), (noneFunnel.SingleKey, noneFunnel.Mapped, noneFunnel.Trained));
         var (excluded, excludedFunnel) = SenseEvaluator.Select(sentences, counts, new HashSet<string> { "record" }, 1, new HashSet<string> { Corpus.Normalize(string.Join(' ', sentences[0].Words)) });
         Assert.Empty(excluded);
@@ -147,6 +178,138 @@ public sealed class SenseEvaluatorTests : IDisposable
         Assert.Contains("mapping coverage 66.67%", text, StringComparison.Ordinal);
         Assert.Contains("optimistic", text, StringComparison.Ordinal);
         Assert.Equal("50.00% @ 100.00% (top-1 50.00%)", SenseEvalResult.TableCell(measured));
+    }
+
+    /// <summary>
+    ///     The selection keeps the mapped words of untrained lemmas with two or more senses as other rows, counts the words of an
+    ///     untrained lemma with one sense in the funnel without keeping them, and keeps the trained-lemma rows as they were,
+    ///     including the words of a trained lemma with one sense.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_SenseEval_Select_AllWords_KeepsUntrainedPolysemousAndCountsTheRest()
+    {
+        // Arrange: a sentence with a sense of "record" (two or more senses) and the only sense of a one-sense lemma
+        var (noun, _) = TwoSenses();
+        var mono = MonosemousSense();
+        var (sentences, counts) = SemCor.Parse([("br-t02", Annotated(noun, mono))]);
+
+        // Act
+        var (untrained, untrainedFunnel) = SenseEvaluator.Select(sentences, counts, new HashSet<string>());
+        var (trained, trainedFunnel) = SenseEvaluator.Select(sentences, counts, new HashSet<string> { "record" });
+        var (both, bothFunnel) = SenseEvaluator.Select(sentences, counts, new HashSet<string> { "record", mono.Lemma });
+
+        // Assert: untrained, "record" is an other row and the one-sense lemma is only counted
+        var sentence = Assert.Single(untrained);
+        Assert.Empty(sentence.Rows);
+        Assert.Equal([noun.SenseId], sentence.Others.Select(r => r.SenseId));
+        Assert.Equal((2, 0, 1, 1), (untrainedFunnel.Mapped, untrainedFunnel.Trained, untrainedFunnel.UntrainedPolysemous, untrainedFunnel.Monosemous));
+
+        // Assert: trained, "record" is a trained-lemma row as before and no other row is left
+        var trainedSentence = Assert.Single(trained);
+        Assert.Equal([noun.SenseId], trainedSentence.Rows.Select(r => r.SenseId));
+        Assert.Empty(trainedSentence.Others);
+        Assert.Equal((2, 1, 0, 1), (trainedFunnel.Mapped, trainedFunnel.Trained, trainedFunnel.UntrainedPolysemous, trainedFunnel.Monosemous));
+
+        // Assert: a trained lemma with one sense is a trained-lemma row, not left out
+        var bothSentence = Assert.Single(both);
+        Assert.Equal([noun.SenseId, mono.SenseId], bothSentence.Rows.Select(r => r.SenseId));
+        Assert.Empty(bothSentence.Others);
+        Assert.Equal((2, 2, 0, 0), (bothFunnel.Mapped, bothFunnel.Trained, bothFunnel.UntrainedPolysemous, bothFunnel.Monosemous));
+    }
+
+    /// <summary>
+    ///     A word of an untrained lemma that a model answers at the part-of-speech level counts as no sense answer, its fine top-1
+    ///     is the most probable ranked sense, and the trained-lemma figures do not change.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseBuilder_SenseEval_Run_UntrainedLemma_CountsNoSenseAnswerAndFineTop1FromRankedSenses()
+    {
+        // Arrange: "record" is trained and answered with its sense; the second word is a sense of "line" (untrained) answered at the
+        // part-of-speech level with that sense on top
+        var record = SenseFixtures.Senses("record", PartOfSpeech.Noun, 1)[0];
+        var line = SenseFixtures.Senses("line", PartOfSpeech.Noun, 2)[1];
+        var (sentences, counts) = SemCor.Parse([("br-t02", Annotated(record, line))]);
+        var (selected, _) = SenseEvaluator.Select(sentences, counts, new HashSet<string> { "record" });
+        var recordDetails = new WordDetails("record", PartOfSpeech.Noun, string.Empty);
+        var lineDetails = new WordDetails("line", PartOfSpeech.Noun, string.Empty);
+        using var model = new FakeModel(words => [.. words.Select((w, i) => i switch
+        {
+            0 => new ClassifyResult(w, true, [], recordDetails, SenseLevel.Sense, 0.95, record.GroupId, record.SenseId),
+            1 => new ClassifyResult(w, true, [new AnalysisCandidate(lineDetails, 1.0, [new SenseCandidate(line.SenseId, 0.6)])], lineDetails, SenseLevel.PartOfSpeech, 0.8, null, null),
+            _ => ClassifyResult.Unknown(w),
+        })]);
+
+        // Act
+        var measured = await SenseEvaluator.MeasureAsync("Fake", model, selected, TextWriter.Null, TestContext.Current.CancellationToken);
+
+        // Assert: the trained-lemma set is only the first word
+        Assert.Equal(1, measured.Set.Rows);
+        Assert.Equal(new LevelCount(1, 1), measured.Set.Sense);
+        Assert.Equal(0, measured.Set.FineTop1);
+        var all = measured.AllWords!;
+        Assert.Equal(1, all.Untrained.Rows);
+        Assert.Equal(new LevelCount(0, 0), all.Untrained.Sense);
+        Assert.Equal(new LevelCount(1, 1), all.Untrained.PartOfSpeech);
+        Assert.Equal(1, all.Untrained.FineTop1);
+        Assert.Equal(2, all.All.Rows);
+        Assert.Equal(new LevelCount(1, 1), all.All.Sense);
+        Assert.Equal(1, all.All.FineTop1);
+    }
+
+    /// <summary>
+    ///     The tag-count baseline chooses the sense with the highest tag count of the gold lemma and part of speech, the first sense
+    ///     in the inventory order when counts tie or are missing, and counts the trained and the untrained words separately.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseBuilder_SenseEval_Run_TagCountBaseline_UsesTheHighestCountAndInventoryOrderOnTies()
+    {
+        // Arrange: the gold word is the second sense of "record" in the inventory order
+        var (first, second) = TwoSenses();
+        var (sentences, counts) = SemCor.Parse([("br-t02", Annotated(second))]);
+        var (selected, _) = SenseEvaluator.Select(sentences, counts, new HashSet<string>());
+        using var model = new FakeModel(words => [.. words.Select(w => ClassifyResult.Unknown(w))]);
+        var higher = new Dictionary<string, int> { [first.SenseKey!] = 1, [second.SenseKey!] = 5 };
+        var tie = new Dictionary<string, int> { [first.SenseKey!] = 2, [second.SenseKey!] = 2 };
+
+        // Act
+        var byCount = await SenseEvaluator.MeasureAsync("Fake", model, selected, TextWriter.Null, TestContext.Current.CancellationToken, higher);
+        var byTie = await SenseEvaluator.MeasureAsync("Fake", model, selected, TextWriter.Null, TestContext.Current.CancellationToken, tie);
+        var byNone = await SenseEvaluator.MeasureAsync("Fake", model, selected, TextWriter.Null, TestContext.Current.CancellationToken);
+
+        // Assert
+        Assert.Equal((1, 0), (byCount.AllWords!.TagCountUntrained, byCount.AllWords.TagCountTrained));
+        Assert.Equal(0, byTie.AllWords!.TagCountUntrained);
+        Assert.Equal(0, byNone.AllWords!.TagCountUntrained);
+        Assert.Equal(1, byCount.AllWords.All.Rows);
+        Assert.Equal(0, byCount.AllWords.All.FineTop1);
+    }
+
+    /// <summary>
+    ///     The report has the all-words section with the trained, untrained and all rows of each model, the share of the words
+    ///     that are of a trained lemma, and the statement that the tag-count baseline is optimistic because the counts include SemCor.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseBuilder_SenseEval_Render_AllWords_ShowsTrainedShareAndCircularityCaveat()
+    {
+        // Arrange: one trained and one untrained word, the model answers none of them
+        var record = SenseFixtures.Senses("record", PartOfSpeech.Noun, 1)[0];
+        var line = SenseFixtures.Senses("line", PartOfSpeech.Noun, 2)[1];
+        var (sentences, counts) = SemCor.Parse([("br-t02", Annotated(record, line))]);
+        var (selected, funnel) = SenseEvaluator.Select(sentences, counts, new HashSet<string> { "record" });
+        using var model = new FakeModel(words => [.. words.Select(w => ClassifyResult.Unknown(w))]);
+        var measured = await SenseEvaluator.MeasureAsync("Fake", model, selected, TextWriter.Null, TestContext.Current.CancellationToken, new Dictionary<string, int>());
+
+        // Act
+        var text = new SenseEvalResult(funnel, [measured]).Render();
+
+        // Assert
+        Assert.Contains("### All words", text, StringComparison.Ordinal);
+        Assert.Contains("share of words of a trained lemma 50.00%", text, StringComparison.Ordinal);
+        Assert.Contains("| Fake | trained | 1 |", text, StringComparison.Ordinal);
+        Assert.Contains("| Fake | untrained | 1 |", text, StringComparison.Ordinal);
+        Assert.Contains("| Fake | all | 2 |", text, StringComparison.Ordinal);
+        Assert.Contains("optimistic reference", text, StringComparison.Ordinal);
+        Assert.Contains("counted on SemCor", text, StringComparison.Ordinal);
     }
 
     /// <summary>
@@ -229,7 +392,7 @@ public sealed class SenseEvaluatorTests : IDisposable
     public void WordSenseBuilder_SenseEval_Render_FormatsTheFunnel()
     {
         // Arrange
-        var funnel = new SenseEvalFunnel(new SemCorCounts(10, 200, 20, 5, 175), 170, 150, 100, [("a%1:00:00::", 3)], 2);
+        var funnel = new SenseEvalFunnel(new SemCorCounts(10, 200, 20, 5, 175), 170, 150, 100, [("a%1:00:00::", 3)], 2, 30, 20);
         var empty = Evaluator.Summarize("semcor", []);
 
         // Act
@@ -239,6 +402,9 @@ public sealed class SenseEvaluatorTests : IDisposable
         Assert.Contains("| annotated words | 200 |", text, StringComparison.Ordinal);
         Assert.Contains("mapping coverage 88.24%", text, StringComparison.Ordinal);
         Assert.Contains("a%1:00:00:: (3)", text, StringComparison.Ordinal);
+        Assert.Contains("(share of words of a trained lemma 76.92%) | 130 |", text, StringComparison.Ordinal);
+        Assert.Contains("fewer than two senses | 20 |", text, StringComparison.Ordinal);
+        Assert.DoesNotContain("### All words", text, StringComparison.Ordinal);
         Assert.Equal("n/a (top-1 n/a)", SenseEvalResult.TableCell(new SenseEvalModelResult("Basic", empty, 0, 0, 0)));
     }
 }

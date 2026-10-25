@@ -303,7 +303,12 @@ embedded resource is damaged) and `DownloadConfigurationException` (an invalid m
   answered at the sense level and the precision of those answers, and the *fine top-1*, the share of the words whose most
   probable sense is right. For comparison, always choosing the first (most frequent) sense of the right lemma and part of
   speech is right for 60.7% of these words; that baseline is optimistic because the order of the senses comes from
-  WordNet counts that include SemCor itself.
+  WordNet counts that include SemCor itself. On all 184,323 mapped SemCor words of a trained lemma or of an untrained
+  lemma with two or more senses (17.1% of them are of a trained lemma), the fine top-1 falls to 14.3% for BertBaseCased,
+  13.0% for MiniLM and 3.8% for
+  Basic, against 69.7% for the tag-count first sense (an optimistic baseline for the same reason), because the models
+  rank no senses for lemmas they were not trained for (fine top-1 of 4.1% on those words; see
+  [Accuracy and Model Choice][link-accuracy]).
 - *STE challenge set*: the 32 hard sentences of simplified technical English of the open corpus, scored like the running
   text; it is small and chosen for its hard cases, so read it as a regression check and not as accuracy.
 

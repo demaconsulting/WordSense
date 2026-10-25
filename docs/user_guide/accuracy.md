@@ -32,7 +32,8 @@ seen. The sets are:
   can evaluate (the sense-annotated Brown Corpus, with WordNet 3.0 sense keys mapped to the senses of the catalog; 97.1%
   of the keys map). SemCor is downloaded to a cache by the builder and never committed. The table gives the share of
   words answered at the sense level, the precision of those answers and the *fine top-1*, the share of words whose most
-  probable sense is right.
+  probable sense is right. The table covers the trained lemmas only; "SemCor Beyond the Trained Lemmas" below measures
+  all mapped words of a trained lemma or of an untrained lemma with two or more senses.
 - **The reviewed suite.** 348 hand-checked sentences about common ambiguous words guard each model against
   regressions in the test suite of the repository. They are a regression check, not an accuracy measure.
 
@@ -124,6 +125,51 @@ context, and a sense with very few training sentences is lifted the most by the 
 faithful as the per-sense quotas of the corpus are filled. The sense choice of BertBaseCased is a little better than the
 first-sense baseline for the words it covers (63.7% against 60.7%, an optimistic baseline) and that of MiniLM is not
 (56.4%).
+
+## SemCor Beyond the Trained Lemmas
+
+The SemCor cell of the model table describes the 31,556 words of the 825 trained lemmas that SemCor can evaluate. Most
+ambiguous words of running text are not of a trained lemma, so the builder (`evaluate-senses`) also measures the models
+on **all words**: every SemCor single-word annotation whose key maps to a sense of the catalog and whose lemma is
+trained or has two or more senses (counted over all parts of speech). Of the 203,959 mapped words, 31,556 are of a
+trained lemma, 152,767 are of an untrained lemma with two or more senses and 19,636 are of an untrained lemma with fewer
+than two senses, which are left out because every model answers them at the sense level. Of the 184,323 words of the
+all-words set, 17.1% are of a trained lemma. The trained rows below are the figures of the model table.
+
+| Model | Words | Sense answered | Sense precision | Fine top-1 |
+| --- | --- | ---: | ---: | ---: |
+| Basic | trained (31,556) | 3.25% | 68.91% | 2.53% |
+| Basic | untrained (152,767) | 8.75% | 40.00% | 4.09% |
+| Basic | all (184,323) | 7.81% | 42.06% | 3.82% |
+| MiniLM | trained | 8.33% | 88.71% | 56.41% |
+| MiniLM | untrained | 8.74% | 40.00% | 4.07% |
+| MiniLM | all | 8.67% | 48.01% | 13.03% |
+| BertBaseCased | trained | 26.87% | 86.63% | 63.69% |
+| BertBaseCased | untrained | 8.77% | 39.90% | 4.08% |
+| BertBaseCased | all | 11.87% | 58.01% | 14.28% |
+| First sense with the highest WordNet 3.0 tag count | trained | | | 60.76% |
+| First sense with the highest WordNet 3.0 tag count | untrained | | | 71.53% |
+| First sense with the highest WordNet 3.0 tag count | all | | | 69.68% |
+
+What the figures say:
+
+- For a lemma that a model was not trained for, none of the three models ranks the senses: a word with one analysis and
+  one sense is answered at the sense level, every other word at the part-of-speech level without a most probable sense,
+  and a word without a most probable sense counts as a miss of the fine top-1. That is why the untrained fine top-1 is
+  4% for all three models, and it is almost the same for the three because it comes mainly from the lemmas whose part
+  of speech has one sense (the share of the sense answers, about 9%, is also the same). The sense precision of those
+  answers, 40%, is low mainly because the sense is right only when the part of speech that Basic chose for the word is
+  right as well.
+- Over all words, the most probable sense of BertBaseCased is right for 14.3% of the words, of MiniLM for 13.0% and of Basic
+  for 3.8%. The gain of BertBaseCased over the other models is on the 17.1% of the words of trained lemmas.
+- **The baseline is circular.** The first sense with the highest WordNet 3.0 tag count is right for 69.7% of all words,
+  but the tag counts are counted on SemCor itself, so on SemCor the baseline has seen the answers: read it as an
+  optimistic reference and not as a competitor. It is also a prior per lemma that the library does not ship for the
+  lemmas it was not trained for (the models carry no prior at all for them); the gap to the baseline on the untrained
+  words therefore shows what such a prior could add, not a defect of the evaluation. On the trained words the tag-count
+  baseline (60.76%) agrees with the first-sense baseline in inventory order (60.75%) to a few hundredths of a point.
+- The all-words set leaves out the untrained lemmas with fewer than two senses and the 2.9% of the single-key words whose
+  key does not map to a sense of the catalog; the figures say nothing about them.
 
 ## The Calibration Target and the Share of Sense Answers
 
