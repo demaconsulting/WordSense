@@ -154,7 +154,9 @@ design of the form generator.
 the other 351 rows, for 320 spellings, do not. The flag is per spelling (no spelling mixes flagged and unflagged rows).
 
 **Effect.** `FormGenerator.ReadLegacy` collects the spellings of the `closed` rows with `only` into `ClosedOnly`. The
-`closed` rows themselves are carried in either case. In the merge step of `FormGenerator.Run`, a spelling in
+`closed` rows are used in either case: a `closed` row is added unless the spelling already has an analysis of that part
+of speech, in which case the existing analysis stands for it (the file header says the same). In the merge step of
+`FormGenerator.Run`, a spelling in
 `ClosedOnly` that has at least one closed-class analysis keeps only (a) its closed-class analyses (part of speech `u`,
 `p`, `c`, `i`, `d` or `x`), (b) its `hand` and `irregular_list` analyses, (c) a `moby_reverse` analysis whose part of
 speech the dictionary itself lists for the spelling and (d) its `llm` analyses; every other generated open-class
