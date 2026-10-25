@@ -64,6 +64,34 @@ sections:
                   - MiniLMWordSenseModel_IsDownloadable
                   - MiniLMWordSenseModel_EnsureModelAsync_MissingDirectory_ThrowsModelUnavailable
 
+              - id: WordSense-MiniLM-MiniLMWordSenseModel-PartOfSpeechBlend
+                title: >-
+                  MiniLMWordSenseModel shall answer a word that its encoder leaves at the part-of-speech level with
+                  the slot probabilities of the encoder and of the Basic model combined.
+                tags: [unit]
+                justification: |
+                  The slot probability of the encoder is the mass of its senses, not a part-of-speech estimate: measured
+                  with the English EWT treebank, MiniLM called 42 of 157 verb uses of "use" a noun at the part-of-speech
+                  level, a mistake that the Basic tagger makes twice. Combining the two estimates with a weight of 0.6
+                  (the optimum of the development splits, the open corpus dev split and the EWT dev file, never the
+                  test splits) gains 0.24 points of accuracy in both test sets and repairs 34 of the 42 errors. It is a
+                  deliberate trade under rule 3 of the reviewed suite: the row M-change-4 ("The leaves change color in
+                  the fall", where Basic reads a noun compound) goes from fine to miss at every weight of 0.9 or less,
+                  and five other rows go up.
+                tests:
+                  - MiniLMWordSenseModel_Classify_VerbUse_IsAnsweredWithTheCombinedSlotProbabilities
+
+              - id: WordSense-MiniLM-MiniLMWordSenseModel-SenseAnswerKept
+                title: >-
+                  MiniLMWordSenseModel shall answer a word that its encoder names at the sense or the group level
+                  exactly with the level, confidence and ids of the encoder.
+                tags: [unit]
+                justification: |
+                  The sense and group figures of the encoder, the real-text sense figures and the SemCor share and
+                  precision must not move when only the part of speech of an undecided word is repaired.
+                tests:
+                  - MiniLMWordSenseModel_Classify_SenseOrGroupAnswer_IsTheEncodersAnswer
+
               - id: WordSense-MiniLM-MiniLMWordSenseModel-Options
                 title: >-
                   MiniLMWordSenseModel shall accept an optional model directory and a maximum sequence length that

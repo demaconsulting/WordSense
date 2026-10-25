@@ -56,6 +56,14 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `WordSenseContracts` unit document.
 - **Composition references** (`Assembly_ReferencesCoreAndOnnx`): the assembly references the core and Onnx
   assemblies (the Basic model is in the core).
+- **Part-of-speech answer is the encoder's** (`BertBaseCasedWordSenseModel_PartOfSpeechAnswer_KeepsTheEncoderSlotProbabilities`):
+  for "Do not use these guys ." the model answers `use` with the verb analysis, and the selected part of speech, the
+  level, the confidence and the probability of every part-of-speech slot are equal (to within 1e-9) to those of the
+  encoder model on its own (`Encoder.ClassifyAsync`), so the Basic tagger never replaces the part of speech of the
+  encoder (the scenario needs the model files).
+- **Weight (no requirement)** (`BertBaseCasedWordSenseModel_PrimaryWeight_DefaultIsOneAndAnExplicitWeightReachesTheComposition`):
+  the weight is 1 by default and reaches the composition (`PrimaryWeight`, internal), the internal constructor sets
+  another one (0.25) and rejects a weight below 0; it needs no model file.
 - **Disposal** (`Dispose_DisposesEncoderAndFallback`): disposing disposes the encoder model and the Basic model, and
   `EnsureModelAsync` and `ClassifyAsync` after disposal throw `ObjectDisposedException`.
 - **Constructor defaults and validation** (`BertBaseCasedWordSenseModel_Constructor_Defaults_UseStoreAnd128`,

@@ -127,7 +127,9 @@ sections:
                   with both, answer each word with the complete result of the primary model when the primary model
                   scored senses for it (its selected analysis lists scored senses, or its level is Group or Sense) and
                   otherwise with the complete result of the fallback model, never a mixture of the probabilities of the
-                  two (except the split of a tied slot that WordSense-Core-WordSenseContracts-FallbackSlotSplit states),
+                  two (except the split of a tied slot that WordSense-Core-WordSenseContracts-FallbackSlotSplit states
+                  and the combination of the slot probabilities that WordSense-Core-WordSenseContracts-FallbackReconcile
+                  states),
                   ensure its
                   members as WordSense-Core-WordSenseContracts-FallbackEnsure states (every member that can be
                   prepared is prepared concurrently, and a failure of one is reported after all ran), dispose both
@@ -253,6 +255,204 @@ sections:
                 tests:
                   - WordSenseContracts_FallbackWordSenseModel_TiedVariantsOfASlot_TakeTheProportionsOfTheFallback
                   - WordSenseContracts_FallbackWordSenseModel_ManyInputs_KeepSlotTotalsLevelAndConfidence
+
+              - id: WordSense-Core-WordSenseContracts-FallbackReconcile
+                title: >-
+                  FallbackWordSenseModel shall combine the slot probabilities of a primary result that committed to
+                  no sense and no group with those of the fallback result, as the child requirements state. The child
+                  requirements use these terms: a slot is the analyses of a result with the same lemma and part of
+                  speech, the probability of a slot is the sum of the probabilities of its analyses, the primary
+                  weight is the number w from 0 to 1 that a caller gives the composition (1 when it gives none), and
+                  the floor is the probability 1e-6.
+                tags: [unit]
+                justification: |
+                  The probability of a slot of an encoder is the mass of its senses, not an estimate of the part of
+                  speech, so a word whose senses the encoder cannot tell apart (the part-of-speech level) can have the
+                  wrong slot on top where the tagger of the Basic model is right (the verb use that MiniLM calls a
+                  noun); combining the two estimates with a weight that is tuned on development text repairs it without
+                  touching an answer at the sense or group level. A parent requirement carries the terms once; the child
+                  requirements state each behavior that can be tested on its own.
+                children:
+                  - WordSense-Core-WordSenseContracts-FallbackReconcile-Weight-Default
+                  - WordSense-Core-WordSenseContracts-FallbackReconcile-Weight-Report
+                  - WordSense-Core-WordSenseContracts-FallbackReconcile-Weight-Range
+                  - WordSense-Core-WordSenseContracts-FallbackReconcile-Scope-Level
+                  - WordSense-Core-WordSenseContracts-FallbackReconcile-Scope-SingleSlot
+                  - WordSense-Core-WordSenseContracts-FallbackReconcile-Scope-FallbackAnalyses
+                  - WordSense-Core-WordSenseContracts-FallbackReconcile-Combination-Product
+                  - WordSense-Core-WordSenseContracts-FallbackReconcile-Combination-Union
+                  - WordSense-Core-WordSenseContracts-FallbackReconcile-Combination-Floor
+                  - WordSense-Core-WordSenseContracts-FallbackReconcile-Variants-Share
+                  - WordSense-Core-WordSenseContracts-FallbackReconcile-Variants-Senses
+                  - WordSense-Core-WordSenseContracts-FallbackReconcile-Answer-Order
+                  - WordSense-Core-WordSenseContracts-FallbackReconcile-Answer-Selection
+                  - WordSense-Core-WordSenseContracts-FallbackReconcile-Answer-Level
+                  - WordSense-Core-WordSenseContracts-FallbackReconcile-Answer-Sum
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_PartOfSpeechLevel_CombinesTheSlotProbabilities
+
+              - id: WordSense-Core-WordSenseContracts-FallbackReconcile-Weight-Default
+                title: >-
+                  FallbackWordSenseModel shall keep the primary result as it is, without combining any slot
+                  probabilities, when the primary weight is 1 or none is given.
+                tags: [unit]
+                justification: |
+                  A weight of 1 is the composition without reconciliation, so a caller that gives no weight sees no
+                  change.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_PrimaryWeight_OneKeepsThePrimaryZeroTakesTheFallback
+
+              - id: WordSense-Core-WordSenseContracts-FallbackReconcile-Weight-Report
+                title: >-
+                  FallbackWordSenseModel shall report the primary weight it was given, or 1 when it was given none.
+                tags: [unit]
+                justification: |
+                  The weight is a hyperparameter that each model package tunes on its own development text; a caller
+                  must be able to read the value in force.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_PrimaryWeight_IsReported
+
+              - id: WordSense-Core-WordSenseContracts-FallbackReconcile-Weight-Range
+                title: >-
+                  FallbackWordSenseModel shall reject a primary weight below 0, above 1 or not a number.
+                tags: [unit]
+                justification: |
+                  A weight outside 0 to 1 is not a blend of two estimates.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_PrimaryWeight_OutsideZeroToOne_Throws
+
+              - id: WordSense-Core-WordSenseContracts-FallbackReconcile-Scope-Level
+                title: >-
+                  FallbackWordSenseModel shall leave a primary result at the sense level or the group level exactly as
+                  the primary result has it, whatever the primary weight.
+                tags: [unit]
+                justification: |
+                  A result that names a sense or a group is decided by the encoder's thresholds and its figures must
+                  not move.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_SenseOrGroupLevel_IsLeftAsThePrimaryGaveIt
+
+              - id: WordSense-Core-WordSenseContracts-FallbackReconcile-Scope-SingleSlot
+                title: >-
+                  FallbackWordSenseModel shall leave a primary result exactly as the primary result has it when the
+                  primary and the fallback results together list a single slot.
+                tags: [unit]
+                justification: |
+                  With one slot there is nothing to combine.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_SingleSlotOrEmptyFallback_LeavesThePrimaryResult
+
+              - id: WordSense-Core-WordSenseContracts-FallbackReconcile-Scope-FallbackAnalyses
+                title: >-
+                  FallbackWordSenseModel shall leave a primary result exactly as the primary result has it when the
+                  fallback result has no analyses.
+                tags: [unit]
+                justification: |
+                  Without analyses the fallback has no estimate of the part of speech to combine.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_SingleSlotOrEmptyFallback_LeavesThePrimaryResult
+
+              - id: WordSense-Core-WordSenseContracts-FallbackReconcile-Combination-Product
+                title: >-
+                  FallbackWordSenseModel shall give each slot of a combined result a probability proportional to
+                  p_primary^w times p_fallback^(1-w), where p_primary and p_fallback are the probabilities of the slot
+                  in the primary and in the fallback result.
+                tags: [unit]
+                justification: |
+                  A tempered product (a geometric blend) lets the tagger overrule an encoder that has no evidence for a
+                  part of speech without letting a confident tagger error overrule an encoder that is sure; w = 1 gives
+                  the primary result and w = 0 the fallback result.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_PartOfSpeechLevel_CombinesTheSlotProbabilities
+                  - WordSenseContracts_FallbackWordSenseModel_PrimaryWeight_OneKeepsThePrimaryZeroTakesTheFallback
+
+              - id: WordSense-Core-WordSenseContracts-FallbackReconcile-Combination-Union
+                title: >-
+                  FallbackWordSenseModel shall list in a combined result every slot that the primary result or the
+                  fallback result lists, with the analyses of a slot that only the fallback result lists taken from the
+                  fallback result.
+                tags: [unit]
+                justification: |
+                  A part of speech that only the tagger proposes must be able to win when the encoder has no evidence
+                  for it.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_SlotOfOneResultOnly_CountsWithTheFloor
+
+              - id: WordSense-Core-WordSenseContracts-FallbackReconcile-Combination-Floor
+                title: >-
+                  FallbackWordSenseModel shall count a slot that a result does not list, or gives a probability below
+                  the floor, with the floor in the combination.
+                tags: [unit]
+                justification: |
+                  The floor keeps the combination defined for a slot that one of the two models does not list.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_SlotOfOneResultOnly_CountsWithTheFloor
+
+              - id: WordSense-Core-WordSenseContracts-FallbackReconcile-Variants-Share
+                title: >-
+                  FallbackWordSenseModel shall give each analysis of a slot of a combined result the share of the slot
+                  that it has in its own result, equal shares when the slot has no probability there.
+                tags: [unit]
+                justification: |
+                  The combination decides the part of speech only; the split among the feature variants is evidence of
+                  the encoder (or the tense split of the fallback) for the slot that stays.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_PartOfSpeechLevel_KeepsTheShareOfTheVariantsAndTheirSenses
+                  - WordSenseContracts_FallbackWordSenseModel_PartOfSpeechLevel_KeepsTheTieSplitOfTheFallback
+
+              - id: WordSense-Core-WordSenseContracts-FallbackReconcile-Variants-Senses
+                title: >-
+                  FallbackWordSenseModel shall keep the senses of every analysis of the primary result in a combined
+                  result.
+                tags: [unit]
+                justification: |
+                  The ranked senses are the evidence of the encoder for the slot that stays.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_PartOfSpeechLevel_KeepsTheShareOfTheVariantsAndTheirSenses
+                  - WordSenseContracts_FallbackWordSenseModel_PartOfSpeechLevel_ManyInputs_StayConsistent
+
+              - id: WordSense-Core-WordSenseContracts-FallbackReconcile-Answer-Order
+                title: >-
+                  FallbackWordSenseModel shall list the analyses of a combined result by the probability of their slot,
+                  the largest first, a tie keeping the order of the slots, and inside a slot by their own probability.
+                tags: [unit]
+                justification: |
+                  The analyses of a result are listed by their probability, and equal values must stay deterministic.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_PartOfSpeechLevel_KeepsTheShareOfTheVariantsAndTheirSenses
+                  - WordSenseContracts_FallbackWordSenseModel_PartOfSpeechLevel_ManyInputs_StayConsistent
+
+              - id: WordSense-Core-WordSenseContracts-FallbackReconcile-Answer-Selection
+                title: >-
+                  FallbackWordSenseModel shall select the first analysis of a combined result.
+                tags: [unit]
+                justification: |
+                  The selected analysis is the best variant of the most probable slot.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_PartOfSpeechLevel_CombinesTheSlotProbabilities
+                  - WordSenseContracts_FallbackWordSenseModel_PartOfSpeechLevel_ManyInputs_StayConsistent
+
+              - id: WordSense-Core-WordSenseContracts-FallbackReconcile-Answer-Level
+                title: >-
+                  FallbackWordSenseModel shall answer a combined result at the part-of-speech level, with the
+                  probability of the selected slot as the confidence and no group and no sense.
+                tags: [unit]
+                justification: |
+                  The result must still satisfy the contract of ClassifyResult: the confidence at the part-of-speech
+                  level is the probability of the slot of the selected analysis.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_PartOfSpeechLevel_CombinesTheSlotProbabilities
+                  - WordSenseContracts_FallbackWordSenseModel_PartOfSpeechLevel_ManyInputs_StayConsistent
+
+              - id: WordSense-Core-WordSenseContracts-FallbackReconcile-Answer-Sum
+                title: >-
+                  FallbackWordSenseModel shall give the analyses of a combined result probabilities that sum to one.
+                tags: [unit]
+                justification: |
+                  Every result of the contract is a distribution over its analyses.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_SlotOfOneResultOnly_CountsWithTheFloor
+                  - WordSenseContracts_FallbackWordSenseModel_PartOfSpeechLevel_ManyInputs_StayConsistent
 
               - id: WordSense-Core-WordSenseContracts-FallbackEnsure
                 title: >-

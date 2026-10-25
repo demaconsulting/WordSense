@@ -213,6 +213,112 @@ public class MiniLMWordSenseModelTests
     }
 
     /// <summary>
+    ///     The weight of the encoder in the combination of slot probabilities is the tuned 0.6 by default, reaches the
+    ///     composition, and an explicit weight of the internal constructor replaces it; it needs no model file.
+    /// </summary>
+    [Fact]
+    public void MiniLMWordSenseModel_PrimaryWeight_IsTunedAndReachesTheComposition()
+    {
+        // Arrange
+        using var defaults = new MiniLMWordSenseModel();
+        using var explicitWeight = new MiniLMWordSenseModel(null, 128, 1.0);
+
+        // Act
+        var defaultWeight = defaults.PrimaryWeight;
+        var explicitValue = explicitWeight.PrimaryWeight;
+        var invalid = () => new MiniLMWordSenseModel(null, 128, 1.5);
+
+        // Assert
+        Assert.Equal(0.6, MiniLMWordSenseModel.PartOfSpeechPrimaryWeight);
+        Assert.Equal(0.6, defaultWeight);
+        Assert.Equal(1.0, explicitValue);
+        Assert.Throws<ArgumentOutOfRangeException>(invalid);
+    }
+
+    /// <summary>
+    ///     The verb "use" after "not", which the encoder alone calls a noun at the part-of-speech level (a measured error
+    ///     of MiniLM on the English EWT treebank), follows the weight: with the weight 1 (the encoder alone) the selected
+    ///     analysis is the noun, with the weight 0 (the part of speech of the Basic tagger) the verb, still at the
+    ///     part-of-speech level with the probability of the verb slot as the confidence and the ranked senses of the
+    ///     encoder kept.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task MiniLMWordSenseModel_Classify_VerbUse_FollowsThePrimaryWeight()
+    {
+        // Arrange
+        string[] words = ["Do", "not", "use", "these", "guys", "."];
+        using var encoderOnly = new MiniLMWordSenseModel(ModelFolder.Require(), 128, 1.0);
+        encoderOnly.Encoder.IntraOpThreads = 2;
+        using var taggerOnly = new MiniLMWordSenseModel(ModelFolder.Require(), 128, 0.0);
+        taggerOnly.Encoder.IntraOpThreads = 2;
+
+        // Act
+        var kept = (await encoderOnly.ClassifyAsync(words, TestContext.Current.CancellationToken))[2];
+        var result = (await taggerOnly.ClassifyAsync(words, TestContext.Current.CancellationToken))[2];
+
+        // Assert: the encoder alone says noun; the part of speech of the Basic tagger says verb
+        Assert.Equal(PartOfSpeech.Noun, kept.Details?.PartOfSpeech);
+        Assert.Equal(PartOfSpeech.Verb, result.Details?.PartOfSpeech);
+        Assert.Equal(SenseLevel.PartOfSpeech, result.Level);
+        Assert.Equal(result.Analyses.Where(a => a.Details.PartOfSpeech == PartOfSpeech.Verb).Sum(a => a.Probability), result.Confidence, 9);
+        Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 9);
+        Assert.Equal(result.Analyses[0].Details, result.Details);
+        Assert.False(result.Analyses[0].Senses.IsEmpty);
+    }
+
+    /// <summary>
+    ///     The default model answers the verb "use" after "not", which the encoder alone calls a noun at the
+    ///     part-of-speech level, with the slot probabilities of the encoder and of the Basic model combined: the verb
+    ///     slot gains probability over the encoder's, and the level stays the part-of-speech level.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task MiniLMWordSenseModel_Classify_VerbUse_IsAnsweredWithTheCombinedSlotProbabilities()
+    {
+        // Arrange
+        string[] words = ["Do", "not", "use", "these", "guys", "."];
+        using var model = new MiniLMWordSenseModel(ModelFolder.Require());
+        model.Encoder.IntraOpThreads = 2;
+        static double Verb(ClassifyResult r) => r.Analyses.Where(a => a.Details.PartOfSpeech == PartOfSpeech.Verb).Sum(a => a.Probability);
+
+        // Act
+        var encoded = (await model.Encoder.ClassifyAsync(words, TestContext.Current.CancellationToken))[2];
+        var result = (await model.ClassifyAsync(words, TestContext.Current.CancellationToken))[2];
+
+        // Assert
+        Assert.Equal(PartOfSpeech.Noun, encoded.Details?.PartOfSpeech);
+        Assert.Equal(PartOfSpeech.Verb, result.Details?.PartOfSpeech);
+        Assert.Equal(SenseLevel.PartOfSpeech, result.Level);
+        Assert.True(Verb(result) > Verb(encoded));
+        Assert.Equal(Verb(result), result.Confidence, 9);
+        Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 9);
+    }
+
+    /// <summary>
+    ///     A word that the encoder names at the sense or the group level keeps the level, the confidence and the ids of
+    ///     the encoder in the default model.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task MiniLMWordSenseModel_Classify_SenseOrGroupAnswer_IsTheEncodersAnswer()
+    {
+        // Arrange
+        string[] words = ["They", "will", "record", "the", "record", "."];
+        using var model = new MiniLMWordSenseModel(ModelFolder.Require());
+        model.Encoder.IntraOpThreads = 2;
+
+        // Act
+        var encoded = await model.Encoder.ClassifyAsync(words, TestContext.Current.CancellationToken);
+        var results = await model.ClassifyAsync(words, TestContext.Current.CancellationToken);
+
+        // Assert
+        var named = Enumerable.Range(0, words.Length).Where(i => encoded[i].Level is SenseLevel.Sense or SenseLevel.Group).ToArray();
+        Assert.NotEmpty(named);
+        Assert.All(named, i => Assert.Equal((encoded[i].Level, encoded[i].Confidence, encoded[i].GroupId, encoded[i].SenseId), (results[i].Level, results[i].Confidence, results[i].GroupId, results[i].SenseId)));
+    }
+
+    /// <summary>
     ///     The defaults construct a model with the per-user store and a maximum sequence length of 128 word pieces; the
     ///     limits 8 and 512 are accepted and reach the encoder model unchanged.
     /// </summary>

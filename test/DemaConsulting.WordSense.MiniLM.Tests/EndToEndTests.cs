@@ -65,13 +65,23 @@ public class EndToEndTests
         Assert.Equal(result.Details, result.Analyses[0].Details);
         Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 9);
 
-        // Assert: when the encoder scored senses for the verb, the slot of the verb, the level, the confidence and the ids are
-        // those of the encoder (only the split inside the slot moved); otherwise the answer is the complete result of Basic
-        var scored = encoded.Level is SenseLevel.Group or SenseLevel.Sense || encoded.Analyses.Any(a => a.Senses.Length > 0);
-        if (scored)
+        // Assert: when the encoder named a sense or a group for the verb, the slot of the verb, the level, the confidence and the
+        // ids are those of the encoder (only the split inside the slot moved); when it scored senses but committed to neither
+        // (the part-of-speech level), the slot probabilities are combined with those of Basic, so the answer stays at that level
+        // with the probability of the selected slot as the confidence and the senses of the encoder; otherwise the answer is the
+        // complete result of Basic
+        // (production eligibility: the selected analysis lists scored senses, or the level is Group or Sense)
+        var scored = encoded.Level is SenseLevel.Group or SenseLevel.Sense || encoded.Analyses.Any(a => a.Details.Equals(encoded.Details) && !a.Senses.IsEmpty);
+        if (encoded.Level is SenseLevel.Group or SenseLevel.Sense)
         {
             Assert.Equal((encoded.Level, encoded.Confidence, encoded.GroupId, encoded.SenseId), (result.Level, result.Confidence, result.GroupId, result.SenseId));
             Assert.Equal(SlotMass(encoded), SlotMass(result), 9);
+        }
+        else if (scored)
+        {
+            Assert.Equal((SenseLevel.PartOfSpeech, null, null), (result.Level, result.GroupId, result.SenseId));
+            Assert.Equal(SlotMass(result), result.Confidence, 9);
+            Assert.All(result.Analyses, a => Assert.True(encoded.Analyses.First(e => e.Details == a.Details).Senses.AsSpan().SequenceEqual(a.Senses.AsSpan())));
         }
         else
         {

@@ -35,7 +35,7 @@ H-second-1	answer	fine	fine
 H-second-2	answer	fine	fine
 H-second-3	answer	fine	fine
 H-second-4	answer	fine	fine
-H-second-5	answer	miss	fine
+H-second-5	answer	fine	fine
 H-second-6	answer	fine	fine
 H-second-7	answer	fine	fine
 H-second-8	answer	fine	fine
@@ -85,7 +85,7 @@ H-update-1	answer	answer	answer
 H-update-2	answer	fine	fine
 H-update-3	answer	fine	fine
 H-update-4	answer	fine	fine
-H-estimate-1	answer	miss	fine
+H-estimate-1	answer	fine	fine
 H-estimate-2	answer	fine	fine
 H-estimate-3	answer	fine	fine
 H-estimate-4	answer	fine	fine
@@ -96,7 +96,7 @@ H-associate-4	answer	fine	fine
 H-detail-1	answer	answer	fine
 H-detail-2	answer	fine	fine
 H-detail-3	answer	fine	fine
-H-detail-4	answer	miss	fine
+H-detail-4	answer	fine	fine
 H-refuse-1	fine	fine	fine
 H-refuse-2	fine	fine	fine
 H-refuse-3	answer	fine	fine
@@ -180,7 +180,7 @@ M-first-4	fine	fine	fine
 M-change-1	fine	fine	fine
 M-change-2	fine	fine	fine
 M-change-3	fine	fine	fine
-M-change-4	miss	fine	fine
+M-change-4	miss	miss	fine
 M-right-1	fine	fine	fine
 M-right-2	fine	fine	fine
 M-right-3	fine	fine	fine
@@ -254,12 +254,12 @@ M-end-4	fine	fine	fine
 M-review-1	fine	fine	fine
 M-review-2	fine	fine	fine
 M-review-3	fine	fine	fine
-M-review-4	fine	miss	fine
+M-review-4	fine	fine	fine
 C-content-1	answer	fine	fine
 C-content-2	answer	fine	fine
 C-content-3	miss	fine	fine
 C-content-4	fine	fine	fine
-C-content-5	answer	miss	fine
+C-content-5	answer	fine	fine
 C-content-6	answer	fine	miss
 C-produce-1	fine	fine	fine
 C-produce-2	fine	fine	fine

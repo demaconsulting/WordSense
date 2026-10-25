@@ -85,10 +85,11 @@ sections:
           - id: WordSense-Core-Fallback
             title: >-
               The core subsystem shall provide a public composite model that combines two models, answering each word
-              with the result of the primary model (and the proportions of the fallback model for the tied variants of
-              one of its slots) where it scored senses for the word and otherwise with
-              the complete result of the fallback model, preparing the members that can be prepared, and owning the
-              lifetime of both.
+              with the result of the primary model (with the proportions of the fallback model for the tied variants
+              of one of its slots, and, for a primary weight below 1, with the slot probabilities of both models
+              combined where the primary result stays at the part-of-speech level) where it scored senses for the word
+              and otherwise with the complete result of the fallback model, preparing the members that can be prepared,
+              and owning the lifetime of both.
             tags: [subsystem]
             justification: |
               Model packages differ in what they can score; a composite in the core package lets any pair of
@@ -97,6 +98,7 @@ sections:
             children:
               - WordSense-Core-WordSenseContracts-Fallback
               - WordSense-Core-WordSenseContracts-FallbackSlotSplit
+              - WordSense-Core-WordSenseContracts-FallbackReconcile
               - WordSense-Core-WordSenseContracts-FallbackEnsure
             tests:
               - WordSenseContracts_FallbackWordSenseModel_PrimaryScoredSenses_UsesPrimary
@@ -105,6 +107,7 @@ sections:
               - WordSenseContracts_FallbackWordSenseModel_EnsureModelAsync_OnlyCapableMemberEnsured
               - WordSenseContracts_FallbackWordSenseModel_Dispose_DisposesBothOnce
               - WordSenseContracts_FallbackWordSenseModel_TiedVariantsOfASlot_TakeTheProportionsOfTheFallback
+              - WordSenseCore_Fallback_PartOfSpeechLevelPrimary_IsReconciledWithTheBasicModel
 
           - id: WordSense-Core-Failures
             title: >-

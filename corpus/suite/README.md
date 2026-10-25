@@ -276,6 +276,53 @@ to 95.11% / 88.79%, BertBaseCased 98.28% / 93.68% to 98.56% / 93.97%; on all 364
 are a regression guard for the tense and not a measure of accuracy; the measures are in "Tense of Same-Spelling Verbs" of
 `docs/user_guide/accuracy.md`.
 
+### Deliberate model change: part-of-speech reconciliation of MiniLM (rule 3, no retraining)
+
+`FallbackWordSenseModel` now combines the slot probabilities of a primary result that is at the part-of-speech level
+with those of Basic (`p_primary^w × p_fallback^(1−w)`), and `MiniLMWordSenseModel` passes the primary weight
+`w = 0.6` (BertBaseCased passes 1, so it is unchanged: the composition without a weight). The weight is the optimum of
+the development splits of the running-text evaluation (see `docs/design/word-sense/mini-lm/mini-lm-word-sense-model.md`).
+The encoder weights, the word image and `basic.bin` did not change, and an answer at the sense or group level is never
+touched (the outcome file of `evaluate` for MiniLM has every sense and group row identical before and after).
+The expectation file was rewritten with `evaluate-suite --write-expectations` under rule 3 and the rule 4 rows restored
+(`H-close-4` and `C-content-6` stay `miss` and `H-defense-1` stays `answer` for BertBaseCased: the rewrite measured
+`fine` for the three on the development machine). The change is a deliberate trade measured on independent text, not a
+hidden regression: on the treebank test file MiniLM gains 0.24 points (91.82% to 92.06%) and on the open corpus test
+split 0.24 points (93.81% to 94.05%), and 34 of the 42 verb `use` tokens that it called a noun are repaired. Six cells
+changed against the file before the change (364 rows): five went up and one went down; Basic and BertBaseCased did not
+change. Measured answered / fine on all 364 rows, MiniLM before and after: 95.33% / 89.29% to 96.43% / 90.38% (list `H`:
+93.94% / 84.85% to 96.21% / 87.12%; list `C`: 96.74% / 85.87% to 97.83% / 86.96%; lists `M` and `T`: unchanged, the
+`M` row that went up and the `M` row that went down cancel). Each row was checked against the slot probabilities (the
+sum over the analyses of a part of speech) of the encoder alone (the weight 1) and of MiniLM now:
+
+<!-- markdownlint-disable MD013 -->
+
+| Row | Model | Before | Now | Why |
+| --- | --- | --- | --- | --- |
+| `H-second-5` (`I {second} the motion to end the meeting early`) | MiniLM | miss | fine | The encoder alone had the noun on top (noun 0.634, verb 0.270); Basic reads the verb (0.998). Blended: verb 0.881, noun 0.089. |
+| `H-estimate-1` (`a rough {estimate} of the repair cost`) | MiniLM | miss | fine | The encoder alone had the verb on top (verb 0.937, noun 0.063); Basic reads the noun (1.000). Blended: noun 0.869, verb 0.131. |
+| `H-detail-4` (`Her letter {details} the problems`) | MiniLM | miss | fine | The encoder alone had the noun on top (noun 0.597, verb 0.403); Basic reads the verb (0.989). Blended: verb 0.829, noun 0.171. |
+| `M-review-4` (`The committee will {review} the application`) | MiniLM | miss | fine | The encoder alone had the noun on top (noun 0.553, verb 0.447); Basic reads the verb after `will` (1.000). Blended: verb 0.995. |
+| `C-content-5` (`They had to {content} themselves`) | MiniLM | miss | fine | The encoder alone chose the adjective (0.562 against verb 0.390); Basic reads the verb (0.999). Blended: verb 0.941, adjective 0.051; the sense `content#satisfy-partly` is the top ranked sense of the verb. |
+| `M-change-4` (`The leaves {change} color in the fall`) | MiniLM | fine | **miss** | **The one row that went down.** See below. |
+
+<!-- markdownlint-enable MD013 -->
+
+**`M-change-4`, the row that went down.** The encoder alone gives the verb `change` the larger slot (verb 0.534,
+noun 0.466) and is right. Basic's own answer is wrong for both words of the pair: `leaves` is the noun `leaf`
+(0.582, against the noun `leave` 0.413 and the verb `leave` 0.005) and `change` is a noun with 0.814 (verb 0.186), the
+tagger reading `the leaves change` as a noun compound. The blend is a geometric mean, so a confident tagger carries
+more weight than an encoder that is nearly even: the noun scores `0.466^0.6 × 0.814^0.4 = 0.583` and the verb
+`0.534^0.6 × 0.186^0.4 = 0.350`, which normalizes to noun 0.625 and verb 0.375, so the noun is selected (the sense
+`leaf` of `leaves` is answered at the sense level by the encoder and is unchanged). The weight at which the row flips is
+between 0.90 and 0.92; every weight of 0.90 or less loses it, and at 0.5 `M-long-2` goes as well. This is the price of
+a tagger that is confidently wrong on a verb after a plural noun: the same blend repairs the verb `use` (42 tokens
+called a noun by the encoder alone, 8 now) and the five rows above, where the tagger is right and the encoder is close
+to even. The expectation of the row is the measurement of the changed model; if a later change repairs it (a tagger
+that reads `leaves change` with a verb), the policy raises it again. This is the explanation that rule 3 asks for
+every row that goes down, as for the usage prior: the row itself is not wrong, and the trade is deliberate and measured
+on independent text.
+
 ### One-sense labels for the set rows (no model change)
 
 The 174 rows that accepted a set of senses (see the conversion above) were labeled again, blind, by two independent

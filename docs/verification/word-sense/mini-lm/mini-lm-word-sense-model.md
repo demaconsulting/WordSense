@@ -48,12 +48,31 @@ All scenarios below pass on every platform and target framework of the CI matrix
   the shelf` and `She had put the keys in her bag before she left` the composite selects a non-past analysis in the first
   and third sentence and a past one (the past tense or the participle) in the second and fourth, the selected analysis is
   the first analysis, and the probabilities of the word sum to one. The same test compares the composite with the
-  encoder model on its own (`Encoder.ClassifyAsync`): where the encoder scored senses for the verb (`read`) the level,
+  encoder model on its own (`Encoder.ClassifyAsync`): where the encoder named a sense or a group for the verb the level,
   the confidence, the group id and the sense id are equal and the probability of the slot of the verb (the sum of its
-  variants) is equal to within 1e-9, so only the split inside the slot moved; where it did not (`put`) the composite
-  gives the complete result of Basic, analysis by analysis.
+  variants) is equal to within 1e-9, so only the split inside the slot moved; where the encoder scored senses but stayed
+  at the part-of-speech level (`read` in some sentences) the answer stays at that level with the ranked senses of the
+  encoder and the probability of the selected slot as the confidence (the slot probabilities are combined with those of
+  Basic); where it scored none (`put`) the composite gives the complete result of Basic, analysis by analysis.
 - **Composition references** (`Assembly_ReferencesCoreAndOnnx`): the assembly references the core and Onnx
   assemblies (the Basic model is in the core).
+- **Part-of-speech answer is combined with Basic**
+  (`MiniLMWordSenseModel_Classify_VerbUse_IsAnsweredWithTheCombinedSlotProbabilities`): for "Do not use these guys ."
+  the encoder model on its own selects the noun analysis of `use`, as measured on the treebank, and the model selects
+  the verb analysis, at the part-of-speech level, with a verb slot probability above the encoder's, the probability of
+  the verb slot as the confidence and the probabilities summing to one (the scenario needs the model files).
+- **Sense and group answers are the encoder's**
+  (`MiniLMWordSenseModel_Classify_SenseOrGroupAnswer_IsTheEncodersAnswer`): for "They will record the record ." at least
+  one word is named by the encoder at the sense or the group level, and for each such word the model's level,
+  confidence, group id and sense id equal the encoder's (the scenario needs the model files).
+- **Weight (no requirement)** (`MiniLMWordSenseModel_PrimaryWeight_IsTunedAndReachesTheComposition`,
+  `MiniLMWordSenseModel_Classify_VerbUse_FollowsThePrimaryWeight`): the weight is 0.6 and reaches the composition
+  (`PrimaryWeight`, internal), the internal constructor sets another one and rejects a weight above 1; for "Do not use
+  these guys ." the model with the weight 1 (the encoder alone) selects the noun analysis of `use` and the model with the
+  weight 0 (the part of speech of the Basic tagger) selects the verb analysis, at the part-of-speech level, with the
+  probability of the verb slot as the confidence, the probabilities summing to one and the ranked senses of the encoder
+  kept (the second scenario needs the model files; the extremes are used so that the test does not depend on a near tie
+  of the tuned weight).
 - **Constructor defaults and validation** (`MiniLMWordSenseModel_Constructor_Defaults_UseStoreAnd128`,
   `MiniLMWordSenseModel_Constructor_SequenceLengthOutOfRange_Throws`): the default maximum sequence length is 128, read
   from the encoder model (`MaxSequenceLength`, internal), and the limits 8 and 512 reach it unchanged; a maximum

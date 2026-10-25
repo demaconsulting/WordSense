@@ -39,6 +39,8 @@ sections:
               free of a dependency on the Basic model.
             children:
               - WordSense-MiniLM-MiniLMWordSenseModel-Composition
+              - WordSense-MiniLM-MiniLMWordSenseModel-PartOfSpeechBlend
+              - WordSense-MiniLM-MiniLMWordSenseModel-SenseAnswerKept
             tests:
               - MiniLMWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback
               - MiniLMWordSenseModel_Assembly_ReferencesCoreAndOnnx

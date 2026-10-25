@@ -117,11 +117,31 @@ public sealed class MiniLMWordSenseModel : IDownloadableWordSenseModel
     /// </remarks>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="maxSequenceLength"/> is outside 8 to 512.</exception>
     public MiniLMWordSenseModel(string? modelDirectory = null, int maxSequenceLength = 128)
+        : this(modelDirectory, maxSequenceLength, PartOfSpeechPrimaryWeight)
+    {
+    }
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="MiniLMWordSenseModel"/> class with an explicit primary weight (the
+    ///     builder tunes it; tests pin it).
+    /// </summary>
+    /// <param name="modelDirectory">A directory that holds <c>model_int8.onnx</c> and <c>vocab.txt</c>, or null to use the per-user store.</param>
+    /// <param name="maxSequenceLength">The maximum sequence length including special tokens; 8 to 512.</param>
+    /// <param name="primaryWeight">The weight of the encoder in the combination of the slot probabilities, from 0 to 1; see <see cref="PartOfSpeechPrimaryWeight"/>.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="maxSequenceLength"/> is outside 8 to 512 or <paramref name="primaryWeight"/> is outside 0 to 1.</exception>
+    internal MiniLMWordSenseModel(string? modelDirectory, int maxSequenceLength, double primaryWeight)
     {
         Encoder = new MiniLMEncoderModel(modelDirectory, maxSequenceLength);
         Fallback = new BasicWordSenseModel();
-        _model = new FallbackWordSenseModel(Encoder, Fallback);
+        _model = new FallbackWordSenseModel(Encoder, Fallback, primaryWeight);
     }
+
+    /// <summary>
+    ///     The weight of the encoder when its slot probabilities are combined with those of the Basic model for a word that
+    ///     the encoder answers at the part-of-speech level (see <see cref="FallbackWordSenseModel"/>): 1 keeps the answer
+    ///     of the encoder, 0 takes the part of speech of Basic.
+    /// </summary>
+    internal const double PartOfSpeechPrimaryWeight = 0.6;
 
     /// <summary>
     ///     Gets the identifier of the model, which names its folder in the repository, on a mirror and in the store.
@@ -142,6 +162,12 @@ public sealed class MiniLMWordSenseModel : IDownloadableWordSenseModel
     ///     Gets the Basic model that answers the words the encoder model does not score; it is the fallback of the composition.
     /// </summary>
     internal IWordSenseModel Fallback { get; }
+
+    /// <summary>
+    ///     Gets the weight of the encoder in the combination of its slot probabilities with those of the Basic model for a
+    ///     word that the encoder answers at the part-of-speech level.
+    /// </summary>
+    internal double PrimaryWeight => _model.PrimaryWeight;
 
     /// <summary>
     ///     Makes sure every file of the encoder is available and verified: from the directory given to the constructor,

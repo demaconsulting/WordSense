@@ -13,15 +13,18 @@ namespace DemaConsulting.WordSense;
 ///     it: its selected analysis lists scored senses (a non-empty <see cref="AnalysisCandidate.Senses"/>), or its level is
 ///     <see cref="SenseLevel.Group"/> or <see cref="SenseLevel.Sense"/>. In every other case (the word is unknown to the
 ///     primary model, or it only chose between analyses) the result of the fallback model is used. The result of a word is
-///     the result of one of the two models, never a mixture of the probabilities of both: its analyses, selected analysis,
+///     the result of one of the two models, never a mixture of the probabilities of both (the two refinements below are the
+///     only exceptions): its analyses, selected analysis,
 ///     level, confidence and ids belong together, and the probabilities of one result are not comparable with those of
-///     the other model. The composition adds no probability of its own, so the rules of the models hold unchanged inside
+///     the other model. The rules of the models hold unchanged inside
 ///     the result that is used: the senses belong to a lemma and part of speech (a slot), the feature variants of a slot
 ///     share the probability of their slot, the selected analysis is the best variant of the most probable slot, and the
-///     confidence is built on the probability of the slot.
+///     confidence is built on the probability of the slot. The first refinement below only re-splits the variants of a slot
+///     that the primary result lists; the second one reweighs the slots of the primary result and can add the slots that
+///     only the fallback result lists.
 ///     </para>
 ///     <para>
-///     One refinement keeps the result of the primary model honest about what it did not decide: the feature variants of a
+///     The first refinement keeps the result of the primary model honest about what it did not decide: the feature variants of a
 ///     slot (<c>read</c> as a past and as a present tense) share the senses, so an encoder has no evidence of its own for
 ///     the split of the slot and gives its variants the same probability. When the primary result gives all the variants
 ///     of a slot exactly the same probability (within 1e-9), the variants take the relative proportions that the fallback
@@ -29,6 +32,22 @@ namespace DemaConsulting.WordSense;
 ///     the slot stays as the primary model gave it. The level, the confidence, the group and the sense of the result
 ///     never change; the order of the variants inside the slot, their probabilities and, when it is the selected slot,
 ///     the selected analysis can. A slot that the primary model split unequally is left as it is.
+///     </para>
+///     <para>
+///     The second refinement concerns the part of speech. The probability that an encoder gives a slot (a lemma and a
+///     part of speech) is the mass of its senses, not an estimate of the part of speech, and when the encoder commits to
+///     no sense and no group (its result is at the <see cref="SenseLevel.PartOfSpeech"/> level) its top slot can be the wrong
+///     one where the tagger of the fallback model is right (the verb <c>use</c> that an encoder calls a noun). With a
+///     primary weight <c>w</c> below 1 (the constructor argument <c>primaryWeight</c>; 1 when it is not given, which turns the
+///     refinement off) the probability of every slot, over the union of the slots of both results, becomes proportional to
+///     <c>p_primary^w × p_fallback^(1−w)</c>, where the probability of a slot is the sum of the probabilities of its analyses
+///     and a slot that a result does not list counts with the small floor 1e-6. A slot that only the fallback result lists
+///     is added to the result with the analyses of the fallback result (they have no senses), so the result can list
+///     slots that the primary result did not. The analyses of a slot keep the shares they have in their own result
+///     and the analyses of the primary result keep their senses, so the combination decides the slot only; the result is listed by
+///     slot again, its selected analysis is the first analysis and its confidence is the probability of that slot (the
+///     rule of every answer at the part-of-speech level). A result at the <see cref="SenseLevel.Sense"/> or
+///     <see cref="SenseLevel.Group"/> level is never touched by this refinement, and neither is a result of one slot.
 ///     </para>
 ///     <para>
 ///     A typical composition is an encoder model as the primary model, which scores the fine senses of the lemmas it was
@@ -65,21 +84,59 @@ public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
     /// </summary>
     private const double TieTolerance = 1e-9;
 
+    /// <summary>
+    ///     The probability that a slot gets from a model that does not list it (and the least probability that a slot of
+    ///     either model counts with), so that the logarithm of the combination is always defined.
+    /// </summary>
+    private const double SlotFloor = 1e-6;
+
     private readonly IWordSenseModel _primary;
     private readonly IWordSenseModel _fallback;
+    private readonly double _primaryWeight;
     private int _disposed;
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="FallbackWordSenseModel"/> class.
+    ///     Initializes a new instance of the <see cref="FallbackWordSenseModel"/> class that keeps the result of the
+    ///     primary model whole (the primary weight is 1).
     /// </summary>
     /// <param name="primary">The model whose result is used for a word when it scored the senses of the word; it is owned by this model.</param>
     /// <param name="fallback">The model whose result is used for every other word; it is owned by this model.</param>
     /// <exception cref="ArgumentNullException">Thrown when a model is null.</exception>
     public FallbackWordSenseModel(IWordSenseModel primary, IWordSenseModel fallback)
+        : this(primary, fallback, 1.0)
+    {
+    }
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="FallbackWordSenseModel"/> class with a primary weight for the
+    ///     words that the primary model answers at the part-of-speech level.
+    /// </summary>
+    /// <param name="primary">The model whose result is used for a word when it scored the senses of the word; it is owned by this model.</param>
+    /// <param name="fallback">The model whose result is used for every other word; it is owned by this model.</param>
+    /// <param name="primaryWeight">
+    ///     The weight of the primary model when the probabilities of the slots (lemma and part of speech) of the two models
+    ///     are combined for a word that the primary model answers at the <see cref="SenseLevel.PartOfSpeech"/> level, from 0
+    ///     to 1: 1 keeps the primary result as it is, 0 takes the slot probabilities of the fallback model.
+    /// </param>
+    /// <exception cref="ArgumentNullException">Thrown when a model is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="primaryWeight"/> is not a number from 0 to 1.</exception>
+    public FallbackWordSenseModel(IWordSenseModel primary, IWordSenseModel fallback, double primaryWeight)
     {
         _primary = primary ?? throw new ArgumentNullException(nameof(primary));
         _fallback = fallback ?? throw new ArgumentNullException(nameof(fallback));
+        if (!(primaryWeight >= 0.0 && primaryWeight <= 1.0))
+        {
+            throw new ArgumentOutOfRangeException(nameof(primaryWeight), primaryWeight, "The primary weight must be a number from 0 to 1.");
+        }
+
+        _primaryWeight = primaryWeight;
     }
+
+    /// <summary>
+    ///     Gets the weight of the primary model in the combination of the slot probabilities of a word that the primary
+    ///     model answers at the <see cref="SenseLevel.PartOfSpeech"/> level; 1 means that the primary result is kept as it is.
+    /// </summary>
+    public double PrimaryWeight => _primaryWeight;
 
     /// <summary>
     ///     Makes sure the members that can be prepared have what they need; members without the
@@ -145,11 +202,111 @@ public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
         var results = new ClassifyResult[list.Count];
         for (var i = 0; i < results.Length; i++)
         {
-            results[i] = ScoredSenses(primary[i]) ? Refine(primary[i], fallback[i]) : fallback[i];
+            results[i] = ScoredSenses(primary[i]) ? Reconcile(Refine(primary[i], fallback[i]), fallback[i], _primaryWeight) : fallback[i];
         }
 
         return results;
     }
+
+    /// <summary>
+    ///     Combines the probabilities of the slots of a primary result that committed to no sense and no group with those of
+    ///     the fallback result.
+    /// </summary>
+    /// <remarks>
+    ///     The probability of a slot of an encoder is the mass of its senses, which says what the senses of the slot are
+    ///     worth in this context but is not an estimate of the part of speech: a word whose slots are all weakly supported
+    ///     (the answer stays at the part-of-speech level) can have the wrong slot on top, where the tagger of the
+    ///     fallback model is right. So the probability of every slot, over the slots of both results, becomes
+    ///     proportional to <c>p_primary^w × p_fallback^(1−w)</c> (a slot that a result does not list, or gives less than
+    ///     <see cref="SlotFloor"/>, counts with <see cref="SlotFloor"/>), where <c>w</c> is the primary weight. The
+    ///     variants of a slot keep the shares they have in their own result (equally when the slot has no probability),
+    ///     and the analyses keep their senses. The result is re-ordered by slot, the most probable first; its selected
+    ///     analysis is the first one, and its confidence is the probability of the selected slot, as for every answer at the
+    ///     part-of-speech level. A result at the sense or group level, a weight of 1, a fallback result without analyses
+    ///     and a result of a single slot are returned as they are.
+    /// </remarks>
+    /// <param name="primary">The result of the primary model, which scored senses for the word.</param>
+    /// <param name="fallback">The result of the fallback model for the same word.</param>
+    /// <param name="weight">The primary weight, from 0 to 1.</param>
+    /// <returns>The reconciled result, or <paramref name="primary"/> itself when nothing applies.</returns>
+    private static ClassifyResult Reconcile(ClassifyResult primary, ClassifyResult fallback, double weight)
+    {
+        if (weight >= 1.0 || primary.Level != SenseLevel.PartOfSpeech || fallback.Analyses.IsEmpty)
+        {
+            return primary;
+        }
+
+        // The slots of both results (the slots of the primary result first, in its order) with the probability of each
+        var primarySlots = GroupBySlot(primary.Analyses);
+        var fallbackSlots = GroupBySlot(fallback.Analyses);
+        var slots = new List<(List<AnalysisCandidate> Analyses, double Primary, double Fallback)>();
+        foreach (var analyses in primarySlots)
+        {
+            var other = fallbackSlots.Find(s => SenseFusion.SameSlot(s[0].Details, analyses[0].Details));
+            slots.Add((analyses, SlotProbability(analyses), other is null ? 0.0 : SlotProbability(other)));
+        }
+
+        foreach (var analyses in fallbackSlots.Where(s => !primarySlots.Exists(p => SenseFusion.SameSlot(p[0].Details, s[0].Details))))
+        {
+            slots.Add((analyses, 0.0, SlotProbability(analyses)));
+        }
+
+        if (slots.Count < 2)
+        {
+            return primary;
+        }
+
+        // The combination in the log domain, normalized with the largest score subtracted
+        var scores = slots.Select(s => (weight * Math.Log(Math.Max(s.Primary, SlotFloor))) + ((1.0 - weight) * Math.Log(Math.Max(s.Fallback, SlotFloor)))).ToArray();
+        var best = scores.Max();
+        var exponents = scores.Select(x => Math.Exp(x - best)).ToArray();
+        var total = exponents.Sum();
+
+        // The most probable slot first (a tie keeps the order of the slots), and in a slot the most probable analysis
+        // first (a tie keeps the order of the result): the variants keep their share of their own slot
+        var order = Enumerable.Range(0, slots.Count).OrderByDescending(k => exponents[k]).ThenBy(k => k).ToArray();
+        var combined = ImmutableArray.CreateBuilder<AnalysisCandidate>(primary.Analyses.Length);
+        foreach (var k in order)
+        {
+            var slotProbability = exponents[k] / total;
+            var members = slots[k].Analyses;
+            var mass = SlotProbability(members);
+            foreach (var member in members.OrderByDescending(a => a.Probability))
+            {
+                var share = mass > 0.0 ? member.Probability / mass : 1.0 / members.Count;
+                combined.Add(new AnalysisCandidate(member.Details, slotProbability * share, member.Senses));
+            }
+        }
+
+        var analysesOfResult = combined.ToImmutable();
+        return new ClassifyResult(primary.Word, primary.IsKnown, analysesOfResult, analysesOfResult[0].Details, SenseLevel.PartOfSpeech, exponents[order[0]] / total, null, null);
+    }
+
+    /// <summary>
+    ///     Groups analyses by slot (lemma and part of speech), the slots and the analyses of a slot in the order of the input.
+    /// </summary>
+    /// <param name="analyses">The analyses.</param>
+    /// <returns>The slots, each as the list of its analyses.</returns>
+    private static List<List<AnalysisCandidate>> GroupBySlot(ImmutableArray<AnalysisCandidate> analyses)
+    {
+        var slots = new List<List<AnalysisCandidate>>();
+        foreach (var analysis in analyses)
+        {
+            var slot = slots.Find(s => SenseFusion.SameSlot(s[0].Details, analysis.Details));
+            if (slot is null)
+            {
+                slots.Add([analysis]);
+            }
+            else
+            {
+                slot.Add(analysis);
+            }
+        }
+
+        return slots;
+    }
+
+    private static double SlotProbability(List<AnalysisCandidate> analyses) => analyses.Sum(a => a.Probability);
 
     /// <summary>
     ///     Gives the analyses of one slot that the primary model could not tell apart the relative probabilities of the

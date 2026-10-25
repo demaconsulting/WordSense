@@ -266,14 +266,14 @@ embedded resource is damaged) and `DownloadConfigurationException` (an invalid m
 | Model | Real-text sense (share @ precision) | Running-text part of speech (open corpus test) | UD-EWT test part of speech (convention-mapped) | Independent sense evaluation (SemCor) | STE challenge set (part of speech) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
 | Basic | 3.96% @ 74.74% | 93.87% (ambiguous 91.53%) | 91.65% (ambiguous 88.62%) | 3.25% @ 68.91% (top-1 2.53%) | 98.65% (ambiguous 97.83%) | none | 218 KiB | 4 MiB | 0.11 ms | 34 ms + 58 ms | no |
-| MiniLM | 7.93% @ 96.84% | 93.81% (ambiguous 91.43%) | 91.82% (ambiguous 88.89%) | 8.33% @ 88.71% (top-1 56.41%) | 98.20% (ambiguous 97.10%) | 22 MiB | 5,225 KiB | 98 MiB | 1.52 ms | 443 ms + 60 ms | yes |
+| MiniLM | 7.93% @ 96.84% | 94.05% (ambiguous 91.83%) | 92.06% (ambiguous 89.26%) | 8.33% @ 88.71% (top-1 57.17%) | 98.65% (ambiguous 97.83%) | 22 MiB | 5,225 KiB | 98 MiB | 1.52 ms | 443 ms + 60 ms | yes |
 | BERT base cased | 27.16% @ 94.47% | 94.10% (ambiguous 91.90%) | 92.06% (ambiguous 89.26%) | 26.87% @ 86.63% (top-1 63.69%) | 98.20% (ambiguous 97.10%) | 104 MiB | 10,203 KiB | 221 MiB | 8.08 ms | 684 ms + 56 ms | yes |
 <!-- model-table:end -->
 
 <!-- markdownlint-enable MD013 -->
 
 **Which model?** The part of speech is the dependable part of an answer, and it is the same quality in all three models
-(93.8 to 94.1% of the tokens of running text, the open corpus test split), so choose by what else you need:
+(93.9 to 94.1% of the tokens of running text, the open corpus test split), so choose by what else you need:
 
 - ⚡ **Basic** (core package, no download, 0.11 ms a sentence): the part of speech of every word, the tense of a verb
   whose past and non-past share a spelling (`put`, `cut`, `read`: "I will read that tomorrow" against "I have read that
@@ -286,7 +286,7 @@ embedded resource is damaged) and `DownloadConfigurationException` (an invalid m
   often than always choosing the first sense in Open English WordNet order (60.7%, an optimistic baseline: see the SemCor
   caveat in [Accuracy and Model Choice](docs/user_guide/accuracy.md)).
 - ⚖️ **MiniLM** (22 MiB download, about 1.5 ms a sentence): mostly part of speech and groups. It commits to a fine
-  sense on 7.9% of the real test sentences (96.8% right) and its most probable sense is right for 56.4% of the
+  sense on 7.9% of the real test sentences (96.8% right) and its most probable sense is right for 57.2% of the
   SemCor words, below the first-sense baseline; choose it for the small download and the speed, not for senses.
 
 **What the columns measure.**
@@ -311,7 +311,7 @@ embedded resource is damaged) and `DownloadConfigurationException` (an invalid m
   speech is right for 60.7% of these words; that baseline is optimistic because the order of the senses comes from
   WordNet counts that include SemCor itself. On all 184,323 mapped SemCor words of a trained lemma or of an untrained
   lemma with two or more senses (17.1% of them are of a trained lemma), the fine top-1 falls to 14.3% for BertBaseCased,
-  13.0% for MiniLM and 3.8% for
+  13.2% for MiniLM and 3.8% for
   Basic, against 69.7% for the tag-count first sense (an optimistic baseline for the same reason), because the models
   rank no senses for lemmas they were not trained for (fine top-1 of 4.1% on those words; see
   [Accuracy and Model Choice][link-accuracy]).
@@ -331,7 +331,7 @@ when this correction was introduced it raised the fine top-1 on SemCor from 56.9
 53.6% (MiniLM) and lowered it slightly
 on the real test sentences, which are balanced by sense (see [Accuracy and Model Choice][link-accuracy]). The sense
 choice of the encoders is not yet clearly better than the first-sense baseline for the words they cover (BERT 63.7%,
-MiniLM 56.4%); the part of speech is the
+MiniLM 57.2%); the part of speech is the
 dependable part of an answer today. The RAM, latency and first-use columns were measured on one idle development
 machine (an Intel Core i7-13850HX laptop, Windows 11, .NET 10; the conditions and the spread of repeated runs are in
 [Accuracy and Model Choice][link-accuracy]), so they are machine dependent: read them as the order of magnitude and the
@@ -340,7 +340,7 @@ encoder answers on the real test sentences (the sets that `evaluate` reports are
 
 | Model | Sense (share, precision) | Group (share, precision) | Part of speech (share, precision) | Fine top-1 |
 | --- | ---: | ---: | ---: | ---: |
-| MiniLM | 7.9%, 96.8% | 1.2%, 96.4% | 90.9%, 94.7% | 61.1% |
+| MiniLM | 7.9%, 96.8% | 1.2%, 96.4% | 90.9%, 96.4% | 62.1% |
 | BERT base cased | 27.2%, 94.5% | 0.8%, 88.9% | 72.1%, 97.4% | 72.0% |
 
 The table is generated into [docs/user_guide/model-table.md][link-model-table]; the user guide chapter

@@ -91,6 +91,33 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Slot totals, level and confidence are kept** (`..._ManyInputs_KeepSlotTotalsLevelAndConfidence`): over 200
   deterministic pairs of results, the probability of every slot, the level, the confidence and the sense id are those of
   the primary result, the probabilities sum to one and the selected analysis is the first analysis.
+- **Fallback combines the slot probabilities at the part of speech level**
+  (`..._PartOfSpeechLevel_CombinesTheSlotProbabilities`, `..._PrimaryWeight_OneKeepsThePrimaryZeroTakesTheFallback`,
+  `..._SlotOfOneResultOnly_CountsWithTheFloor`): an encoder result at the part of speech level that says noun 0.7 and
+  verb 0.3 (the two verb variants tied) and a fallback that says verb 0.95 and noun 0.05 give, for the primary weight
+  0.5, the slot probabilities `sqrt(0.3 * 0.95)` and `sqrt(0.7 * 0.05)` normalized (verb about 0.74), the verb selected
+  as the first analysis with that probability as the confidence, the level still part of speech and no group or sense id;
+  the weight 1 gives the composition without a weight (the noun stays on top at 0.7) and the weight 0 gives the slot
+  probabilities of the fallback (0.95 and 0.05); a slot that one result does not list counts with the floor 1e-6 (a noun
+  the fallback lacks gets `sqrt(0.5 * 1e-6)` of the unnormalized mass), and a slot only the fallback lists enters the
+  result with its own analyses and no senses.
+- **Fallback keeps the variants and the senses when it combines**
+  (`..._PartOfSpeechLevel_KeepsTheShareOfTheVariantsAndTheirSenses`, `..._PartOfSpeechLevel_KeepsTheTieSplitOfTheFallback`):
+  verb variants that the encoder split 1 to 2 are still 1 to 2 in the combined result and keep their ranked senses; tied
+  variants are first re-split with the proportions of the fallback (3 to 1) and keep that split after the combination.
+- **Fallback leaves sense and group answers alone**
+  (`..._SenseOrGroupLevel_IsLeftAsThePrimaryGaveIt`, `..._SingleSlotOrEmptyFallback_LeavesThePrimaryResult`): for a
+  primary result at the sense level or at the group level, with the weight 0 and a fallback that says verb, the level,
+  the confidence, the ids, the selected analysis and the probability of the noun slot are those of the primary result; a
+  result of a single slot and a fallback without analyses are returned as they are.
+- **Combined results stay consistent** (`..._PartOfSpeechLevel_ManyInputs_StayConsistent`): over 200 deterministic pairs
+  of results and weights the probabilities sum to one, the selected analysis is the first analysis, the confidence is the
+  probability of its slot, the level is part of speech, the number of analyses is unchanged and every analysis keeps its
+  senses.
+- **The weight is validated and reported**
+  (`..._PrimaryWeight_OutsideZeroToOne_Throws`, `..._PrimaryWeight_IsReported`): a weight
+  below 0, above 1, NaN or infinite throws `ArgumentOutOfRangeException`; 0, 0.6 and 1 are accepted and reported, and
+  1 is reported when no weight is given.
 - **Fallback ensures the capable members and disposes both models**
   (`FallbackWordSenseModel_IsDownloadable`, `FallbackWordSenseModel_EnsureModelAsync_EnsuresBoth`,
   `FallbackWordSenseModel_EnsureModelAsync_OnlyCapableMemberEnsured`,

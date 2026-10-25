@@ -48,8 +48,10 @@ model, the subsystem does not classify ambiguous words in context; that is the w
 not download anything; `DownloadOptions` only carries the configuration that an encoder package interprets (the
 statistical model is not downloadable and has no use for it). The composite `FallbackWordSenseModel` adds no knowledge
 of its own: it only chooses,
-word by word, between the results of the two models it is given (and lets the second model split the tied variants of
-a slot of the first, without changing the probability of any slot), and forwards an explicit ensure to the members that
+word by word, between the results of the two models it is given (lets the second model split the tied variants of
+a slot of the first, without changing the probability of any slot, and, for a primary weight below 1, combines the
+slot probabilities of the two models where the first committed to no sense and no group), and forwards an explicit
+ensure to the members that
 are downloadable.
 
 ### Interfaces

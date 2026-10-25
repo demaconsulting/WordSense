@@ -150,8 +150,17 @@ shared tense table is verified in the `BasicClassifier`, `CueModel` and `BasicTa
 result of the fallback model otherwise (`FallbackWordSenseModel_PrimaryScoredSenses_UsesPrimary`,
 `FallbackWordSenseModel_PrimaryChoseOnlyAnalysis_UsesFallback`); the variants of a slot that the primary model gives the
 same probability take the proportions of the fallback and keep the probability of the slot
-(`FallbackWordSenseModel_TiedVariantsOfASlot_TakeTheProportionsOfTheFallback`); it prepares the members that can be
-prepared, only those, and reports a failure after all ran
+(`FallbackWordSenseModel_TiedVariantsOfASlot_TakeTheProportionsOfTheFallback`).
+
+Through the public composite model with the built-in Basic model as its fallback
+(`WordSenseCore_Fallback_PartOfSpeechLevelPrimary_IsReconciledWithTheBasicModel`, in `ContractsTests`), a primary model
+that answers the word `use` at the part-of-speech level with the noun at 0.9 and the verb at 0.1 gives, for "Do not use
+these guys ." and a primary weight of 0.3, the verb analysis selected by the Basic tagger at the part-of-speech level
+with the probabilities summing to one, while the primary weight 1 keeps the noun and the words that the primary model
+does not know are answered exactly as the Basic model answers them. The combination itself (the product of the powers,
+the floor, the union of the slots, the variants and senses kept, the sense and group answers left alone) is verified in
+the `FallbackWordSenseModel` scenarios of the `WordSenseContracts` unit document. The composite also prepares the
+members that can be prepared, only those, and reports a failure after all ran
 (`FallbackWordSenseModel_EnsureModelAsync_EnsuresBoth`, `FallbackWordSenseModel_EnsureModelAsync_OnlyCapableMemberEnsured`),
 and disposes both models once (`FallbackWordSenseModel_Dispose_DisposesBothOnce`). The scenarios are detailed in the
 `WordSenseContracts` unit document.

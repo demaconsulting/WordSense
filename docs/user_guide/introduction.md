@@ -993,12 +993,21 @@ Both models classify the whole list of words (so each sees the same sentence), a
 word: a word is answered with the complete result of the primary model when the primary model scored senses for it (the
 selected analysis lists senses, or the level is `Group` or `Sense`), and otherwise with the complete result of the
 fallback model. A result is never a mixture of the two, so its analyses, level, confidence and ids belong together, and
-its probabilities are those of one model (they are not comparable with those of the other). One refinement keeps the
-primary result honest about what it did not decide: when the primary result gives every variant of a slot (a lemma and a
+its probabilities are those of one model (they are not comparable with those of the other), with two refinements that
+keep the primary result honest about what it did not decide. First: when the primary result gives every variant of a
+slot (a lemma and a
 part of speech: `read` as a past and as a present tense, `put` as an infinitive and as a past tense) exactly the same
 probability, which is what an encoder does because the variants share their senses, the variants take the relative
 proportions of the fallback model, which reads the tense from the context. The probability of the slot, the level, the
-confidence and the ids do not change. `FallbackWordSenseModel`
+confidence and the ids do not change. Second, and only with the optional constructor
+`FallbackWordSenseModel(primary, fallback, primaryWeight)` and a weight below 1: when the primary result is at the part
+of speech level (the encoder committed to no sense and no group, and the probability of its slots is the mass of its
+senses, not an estimate of the part of speech), the probability of every slot becomes proportional to
+`p_primary^w × p_fallback^(1−w)` over the slots of both results (a slot that a result lacks counts with 1e-6); the
+variants of a slot keep their shares, the analyses keep their senses, the selected analysis is the first analysis of the
+re-ordered result and the confidence is the probability of its slot. An answer at the sense or group level is never
+touched, and the weight 1 (the default of the two-argument constructor) turns the refinement off. MiniLM passes 0.6 and
+BertBaseCased passes 1. `FallbackWordSenseModel`
 implements `IDownloadableWordSenseModel`: its `EnsureModelAsync` forwards the same `DownloadOptions` concurrently only to
 the members that have the capability and skips the others (a model such as Basic); all capable members are started
 before any failure is reported, and the typed exception of a member reaches the caller unchanged. With no capable member

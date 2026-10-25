@@ -64,6 +64,19 @@ sections:
                   - BertBaseCasedWordSenseModel_IsDownloadable
                   - BertBaseCasedWordSenseModel_EnsureModelAsync_MissingDirectory_ThrowsModelUnavailable
 
+              - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-PartOfSpeechKept
+                title: >-
+                  BertBaseCasedWordSenseModel shall answer a word that its encoder leaves at the part-of-speech level
+                  with the slot probabilities of the encoder, never combined with those of the Basic model.
+                tags: [unit]
+                justification: |
+                  BERT base cased beats the Basic tagger on the part-of-speech heteronyms (99.2% against 94.0% on the
+                  English EWT treebank) and combining the two lost on them (the benchmark of a weight 0.6 for the
+                  encoder gave 98.8%), while the gain on running text was at most 0.15 points on the development
+                  splits; a model that must never lose keeps its own part of speech.
+                tests:
+                  - BertBaseCasedWordSenseModel_PartOfSpeechAnswer_KeepsTheEncoderSlotProbabilities
+
               - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Options
                 title: >-
                   BertBaseCasedWordSenseModel shall accept an optional model directory and a maximum sequence length

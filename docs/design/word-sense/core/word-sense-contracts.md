@@ -118,9 +118,12 @@ model for another without code changes, and the composite `FallbackWordSenseMode
   throws `ObjectDisposedException` from the call. A caller that holds only an `IWordSenseModel` writes
   `if (model is IDownloadableWordSenseModel downloadable) { await downloadable.EnsureModelAsync(); }`; a caller that
   holds a concrete type (for example `MiniLMWordSenseModel`) calls `await model.EnsureModelAsync();` directly.
-- `FallbackWordSenseModel(IWordSenseModel primary, IWordSenseModel fallback)`: a sealed public class that implements
-  `IDownloadableWordSenseModel` by composing two models. It owns both: it stores them and disposes both with its own
-  `Dispose`.
+- `FallbackWordSenseModel(IWordSenseModel primary, IWordSenseModel fallback)` and
+  `FallbackWordSenseModel(IWordSenseModel primary, IWordSenseModel fallback, double primaryWeight)`: a sealed public
+  class that implements `IDownloadableWordSenseModel` by composing two models. It owns both: it stores them and
+  disposes both with its own `Dispose`. The primary weight `w` (the read-only property `PrimaryWeight`) is a number
+  from 0 to 1, 1 when it is not given; a value below 0, above 1 or not a number is rejected with
+  `ArgumentOutOfRangeException`.
 - `DownloadOptions(BaseUri, BearerToken, Credentials, StoreRoot, Timeout)`: a sealed record in its own file (formerly
   `MirrorOptions`; the `WORDSENSE_MIRROR_*` environment variable names are unchanged). The base URI is the
   mirror's root; the store root defaults to the per-user `DemaConsulting/WordSense/models` folder; the timeout is per
@@ -170,7 +173,8 @@ whether an id is null: a result at the `PartOfSpeech` level is a valid answer th
   its level is `Group` or `Sense`, or when the analysis of its `Analyses` that equals the selected `Details` has a
   non-empty `Senses`; any other result (the word is unknown to the primary model, or it only chose between analyses)
   is replaced by the fallback result. The result of a word is the result of one model, never a mixture of the two
-  (its analyses, selected analysis, level, confidence and ids belong together), with one refinement (`Refine`): for a
+  (its analyses, selected analysis, level, confidence and ids belong together), with two refinements (`Refine` and
+  `Reconcile`, in this order). `Refine`: for a
   slot of the primary result (lemma and part of speech) with two or more analyses whose probabilities are all equal
   within 1e-9 (the encoder has no evidence for the split of a slot, which shares its senses, so it gives the feature
   variants the same probability), the composite looks up the same analyses (equal `WordDetails`) in the fallback result
@@ -180,6 +184,21 @@ whether an id is null: a result at the `PartOfSpeech` level is a valid answer th
   selected analysis when that analysis changed. The level, confidence, group id and sense id, the senses of every analysis
   and the probability of every slot are untouched by construction; a slot that the primary result split unequally (a
   trained form chooser) is never touched, nor is a slot the fallback does not list or does not separate.
+  `Reconcile` (only when `w` < 1, the primary result is at the `PartOfSpeech` level, it has two or more slots over both
+  results and the fallback result has analyses; every other result is returned as it is, so an answer at the sense or
+  group level never changes): the encoder's slot probability is the mass of its senses, not a part-of-speech estimate,
+  so a result whose senses it could not tell apart can have the wrong top slot. Each slot of the union of the slots
+  of both results (the slots of the primary first, then the slots only the fallback lists, with the analyses of the
+  fallback and no senses) gets the log score `w × ln(max(p_primary, 1e-6)) + (1 − w) × ln(max(p_fallback, 1e-6))`,
+  where a slot's probability is the sum of its analyses and a slot a result lacks counts with the floor 1e-6; the scores
+  are normalized with a softmax (the maximum subtracted) into the new slot probabilities. Inside a slot every
+  analysis keeps its share of its own result (`p / slot mass`, equal shares when the mass is 0) and its senses. The
+  slots are listed by the new probability, the largest first (a tie keeping the order of the slots), and the analyses
+  of a slot by their probability (a stable sort); the selected analysis is the first analysis, the level stays
+  `PartOfSpeech`, the group and sense ids stay null, and the confidence is the probability of the first slot, as the
+  contract of the confidence at that level says. The floor 1e-6 only keeps the logarithm defined; it is not tuned.
+  The weight is a hyperparameter of each model package, tuned on development text only (see the MiniLM and
+  BertBaseCased design).
 - `Dispose()`: idempotent and thread-safe (an atomic flag); disposes the primary model and then, even when that throws,
   the fallback model, each once.
 

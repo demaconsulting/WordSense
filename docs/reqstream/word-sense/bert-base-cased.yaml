@@ -39,6 +39,7 @@ sections:
               free of a dependency on the Basic model.
             children:
               - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Composition
+              - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-PartOfSpeechKept
             tests:
               - BertBaseCasedWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback
               - BertBaseCasedWordSenseModel_Assembly_ReferencesCoreAndOnnx
