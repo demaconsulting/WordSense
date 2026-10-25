@@ -360,11 +360,24 @@ All scenarios below pass on every platform and target framework of the CI matrix
   senses dropped by the mapping are counted and left out.
 - **Key mapping** (`WordSenseBuilder_SenseEval_MapKeys_WordNet30KeyToOewnSense`): a WordNet 3.0 sense key maps to the
   sense of the catalog that has it; a word with several keys is left out, a key without a sense is counted as
-  unmapped, a word of an untrained lemma is not an evaluation word, and a sentence that is in the corpus is left out.
+  unmapped, a word of an untrained lemma is not a trained-lemma word (it is an other row when the lemma has two or more
+  senses), and a sentence that is in the corpus is left out.
 - **Figures** (`WordSenseBuilder_SenseEval_Run_ReportsShareAndPrecisionPerLevelAndBaseline`): on a small annotated
   fixture and a stub model, the report gives for the words of trained lemmas the share answered and the precision at
   each level, the fine top-1, the part-of-speech accuracy, the accuracy of the first-sense baseline and the
   mapping coverage (`WordSenseBuilder_SenseEval_Render_FormatsTheFunnel`).
+- **All-words selection** (`WordSenseBuilder_SenseEval_Select_AllWords_KeepsUntrainedPolysemousAndCountsTheRest`): the
+  mapped words of an untrained lemma with two or more senses are kept as other rows, the words of an untrained lemma with
+  one sense are only counted in the funnel, the words of a trained lemma (one with one sense included) are trained-lemma
+  rows, and the trained-lemma rows are the same as without the all-words set.
+- **All-words figures** (`WordSenseBuilder_SenseEval_Run_UntrainedLemma_CountsNoSenseAnswerAndFineTop1FromRankedSenses`):
+  a word of an untrained lemma answered at the part-of-speech level is no sense answer, its fine top-1 comes from the
+  ranked senses, and the trained-lemma figures do not change.
+- **Tag-count baseline** (`WordSenseBuilder_SenseEval_Run_TagCountBaseline_UsesTheHighestCountAndInventoryOrderOnTies`):
+  the baseline chooses the sense with the highest tag count, the first in inventory order on a tie or without counts.
+- **All-words report** (`WordSenseBuilder_SenseEval_Render_AllWords_ShowsTrainedShareAndCircularityCaveat`): the report
+  has the trained, untrained and all rows per model, the share of trained lemmas, and says that the tag-count baseline is
+  optimistic because the counts include SemCor.
 - **Pinned checksum** (`WordSenseBuilder_SenseEval_Download_WrongHash_IsRejected`,
   `WordSenseBuilder_SenseEval_ReadArchive_VerifiesTheHashAndReadsTheTagFiles`): a downloaded or cached archive with
   another SHA-256 is rejected and leaves no file; the tag files of a gzip-compressed tar are read.

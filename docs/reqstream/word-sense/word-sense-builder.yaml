@@ -623,6 +623,47 @@ sections:
               - WordSenseBuilder_SenseEval_ReadArchive_VerifiesTheHashAndReadsTheTagFiles
               - WordSenseBuilder_Program_EvaluateSenses_WithoutCache_ReportsUsage
 
+          - id: WordSense-WordSenseBuilder-SenseEvalAllWords
+            title: >-
+              The builder shall, in the SemCor evaluation, select as the all-words set every mapped single-word
+              annotation whose lemma is trained or, when untrained, has at least two senses in the catalog over all
+              parts of speech, and shall count the words of an untrained lemma with one sense without measuring them.
+            tags: [unit]
+            justification: |
+              The trained lemmas are a small part of running text; a figure that covers only them says nothing about
+              the other ambiguous words. A word of an untrained lemma with one sense is answered at the sense level by
+              every model and would only inflate the figures, so it is counted and left out.
+            tests:
+              - WordSenseBuilder_SenseEval_Select_AllWords_KeepsUntrainedPolysemousAndCountsTheRest
+
+          - id: WordSense-WordSenseBuilder-SenseEvalAllWordsFigures
+            title: >-
+              The builder shall report, for each model, the share of the all-words set answered at the sense level,
+              the precision of those answers and the fine top-1, separately for the words of trained lemmas, of
+              untrained lemmas and of both, counting a word without ranked senses as a miss of the fine top-1.
+            tags: [unit]
+            justification: |
+              The split shows how much of the all-words figure the trained lemmas carry and what a model gives for the
+              lemmas it was not trained for; a word without ranked senses has no most probable sense, so it cannot be
+              right at the fine top-1.
+            tests:
+              - WordSenseBuilder_SenseEval_Run_UntrainedLemma_CountsNoSenseAnswerAndFineTop1FromRankedSenses
+              - WordSenseBuilder_SenseEval_Render_AllWords_ShowsTrainedShareAndCircularityCaveat
+
+          - id: WordSense-WordSenseBuilder-SenseEvalAllWordsBaseline
+            title: >-
+              The builder shall report, for the all-words set, the accuracy of the most-frequent-sense baseline that
+              chooses the sense of the gold lemma and part of speech with the highest WordNet 3.0 tag count (the first
+              in inventory order on a tie), and shall state that the baseline is optimistic because those counts
+              include SemCor.
+            tags: [unit]
+            justification: |
+              A baseline gives the model figures a reference; labeled as circular, it is read as a reference and not
+              as a competitor.
+            tests:
+              - WordSenseBuilder_SenseEval_Run_TagCountBaseline_UsesTheHighestCountAndInventoryOrderOnTies
+              - WordSenseBuilder_SenseEval_Render_AllWords_ShowsTrainedShareAndCircularityCaveat
+
           - id: WordSense-WordSenseBuilder-RunningText
             title: >-
               The builder shall measure the part-of-speech accuracy of every model through its public interface on the

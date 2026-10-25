@@ -915,8 +915,9 @@ foreach (var result in results.Where(r => r.IsKnown))
 Because the confidence is relative to the level, a confidence of 0.9 at the `Group` level and one of 0.9 at the `Sense`
 level mean different things: first look at the `Level`, then at the `Confidence`. Do not reuse a threshold across
 models. The share of the words of a text that each model answers at each level, and the precision at each level,
-measured on SemCor (trained lemmas only) and on running text, are in the README model table and in the chapter
-"Accuracy and Model Choice".
+measured on SemCor (trained lemmas in the model table; all mapped words of a trained lemma or of an untrained lemma with
+two or more senses in the chapter "Accuracy and Model Choice") and on running text, are in the README model table and
+in that chapter.
 
 # Model Files
 
@@ -1231,7 +1232,7 @@ written sentences in `tools/quota-fill/README.md`. All commands run from the rep
 | `tiers` | Reports the quota of anchor and holdout sentences of each sense of the trained lemmas, the senses that fall short and the sentences that are missing |
 | `weights <modelId>` | Trains the fine-sense weights and the per-lemma thresholds of an encoder model (`minilm` or `bert-base-cased`) |
 | `evaluate <modelId>` | Measures a model (`minilm`, `bert-base-cased` or `basic`) on holdout and real text, at each answer level |
-| `evaluate-senses [--model all] [--download]` | Measures the models on SemCor 3.0 (from the git-ignored cache, or downloaded after verifying its SHA-256; never committed) |
+| `evaluate-senses [--model all] [--download]` | Measures the models on SemCor 3.0 (from the git-ignored cache, or downloaded after verifying its SHA-256; never committed): the trained lemmas, and all mapped words of a trained lemma or of an untrained lemma with two or more senses, with a tag-count baseline |
 | `evaluate-running [--model all] [--gold FILE]` | Measures the part-of-speech accuracy of the models on the open corpus test split, the convention-mapped treebank test file and the challenge set |
 | `evaluate-suite` | Runs the reviewed suite against the three models and reports the pass rates and the regressions |
 | `check-leakage` | Checks that no sentence is shared by a training part and an evaluation part, by two evaluation parts, or by the corpus and an Open English WordNet example |

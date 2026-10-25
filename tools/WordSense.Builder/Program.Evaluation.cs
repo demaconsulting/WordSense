@@ -32,12 +32,13 @@ internal static partial class Program
         var data = options.TryGetValue("data", out var dataFolder) ? Path.GetFullPath(dataFolder) : Path.Join(repository, "data");
         var known = new HashSet<string>(LeakageCheck.Load(corpus, data).SelectMany(s => s.Sentences.Select(x => Corpus.Normalize(x.Sentence))), StringComparer.Ordinal);
         var (selected, funnel) = SenseEvaluator.Select(sentences, counts, trained, sample, known);
+        var tagCounts = Tiers.ReadTagCounts(data);
         var measured = new List<SenseEvalModelResult>();
         foreach (var info in ModelCatalog.Select(options.GetValueOrDefault("model")))
         {
             using var model = ModelCatalog.Open(info, repository);
             await ModelCatalog.EnsureAsync(model, cancellationToken).ConfigureAwait(false);
-            measured.Add(await SenseEvaluator.MeasureAsync(ModelTable.DisplayName(info.Name), model, selected, output, cancellationToken).ConfigureAwait(false));
+            measured.Add(await SenseEvaluator.MeasureAsync(ModelTable.DisplayName(info.Name), model, selected, output, cancellationToken, tagCounts).ConfigureAwait(false));
         }
 
         var result = new SenseEvalResult(funnel, measured);
