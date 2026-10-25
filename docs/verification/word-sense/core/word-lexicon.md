@@ -77,8 +77,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
   with one sense lists one, an
   unknown lemma lists none and a null lemma throws.
 - **Catalog is complete** (`SensesOf_EverySingleTokenOewnSense_IsInTheCatalog`,
-  `SensesOf_ProjectSenses_AreInTheCatalog`): every single-token OEWN sense and every project sense of the data is
-  found in the catalog through its lemma and part of speech.
+  `SensesOf_ProjectSenses_AreInTheCatalog`): the catalog holds at least 128,000 keyed senses with distinct keys, every
+  sense of the catalog is found through its lemma and part of speech, and the project senses are present with no key.
+  The senses of the numerals, whose lemma has no letter, are left out of the image.
 - **Sense lookup by id and by key** (`TryGetSense_ById_FindsSense`, `TryGetSense_UnknownId_IsFalse`,
   `TryGetSenseByKey_FindsTheSameSenseAsItsId`, `TryGetSenseByKey_UnknownKey_IsFalse`,
   `TryGetSenseByKey_ProjectSense_IsNeverFound`): a sense found by its id equals the sense found by its OEWN key; an
@@ -148,5 +149,5 @@ All scenarios below pass on every platform and target framework of the CI matrix
   opened through `WordLexicon.OpenImage` is reported as `ModelIntegrityException` that carries the original
   `InvalidDataException`.
 - **Complete dictionary**: the builder tests `Words_Committed_HoldsEveryDictionaryWord` and
-  `Words_Committed_CatalogHoldsEveryOewnAndProjectSense` show that no dictionary word and no sense is absent from the
-  image.
+  `Words_Committed_CatalogHoldsEveryOewnAndProjectSense` show that no dictionary word and no sense whose lemma has a
+  letter is absent from the image; the numerals, whose lemma has no letter, are left out by design.

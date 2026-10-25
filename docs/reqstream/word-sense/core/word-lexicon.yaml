@@ -122,13 +122,16 @@ sections:
                   determiners, the conjunctions and the interjections, each with all of its parts of speech, whatever
                   the accuracy of any model for them, shall give a form that belongs to several lemmas (lives, left,
                   bases, rows) or to several tenses of one lemma (read, reread) an analysis for each, and shall hold in
-                  its sense catalog every single-token OEWN sense and every project sense of the dictionary.
+                  its sense catalog every single-token OEWN sense and every project sense of the dictionary whose lemma
+                  has a letter.
                 tags: [unit]
                 justification: |
                   A model's accuracy decides which sense it may choose, never whether a word or a sense exists; a word
                   or sense that the lexicon lacks cannot be classified or looked up by any model. A form may have
                   several lemmas (<c>lives</c> is a verb of <c>live</c> and the plural of <c>life</c>), so each
-                  analysis must be listed for a model or a caller to choose from.
+                  analysis must be listed for a model or a caller to choose from. The numerals, whose lemma has no
+                  letter, are left out of the image with their senses, because a token without a letter is unknown
+                  (WordSense-Core-WordLexicon-Numerals).
                 tests:
                   - WordLexicon_Lookup_ClosedClassWord_HasItsPartOfSpeechAlone
                   - WordLexicon_Lookup_SoAndWill_ListTheirParts
