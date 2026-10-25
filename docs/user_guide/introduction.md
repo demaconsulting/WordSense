@@ -558,7 +558,7 @@ escapes it (`a\/c|A\/C/Noun/Number=Sing`) and nothing else is escaped, so almost
 for any model and any retraining, and it changes only when the sense inventory changes (see `WordLexicon.Version`). For
 every spelling of the word table and every analysis of it (the analyses of all its case variants, and the possessive
 analyses of a known noun or pronoun), it lists the key without a label and one key with a label for every catalog sense
-of the lemma and part of speech of the analysis (`WordLexicon.SensesOf`). On the committed image that is 1,284,993 keys,
+of the lemma and part of speech of the analysis (`WordLexicon.SensesOf`). On the committed image that is 1,285,019 keys,
 about 63 MB of text; the enumeration has deferred execution, makes one pass over the spellings when you first read it and
 then streams the keys in about three seconds, so only what you keep takes
 memory.
@@ -1296,7 +1296,9 @@ ensure; cancelling does not stop the shared ensure (see "Threads and cancellatio
 - **Technical noun compounds and imperative fragments are the weak spot of Basic's part of speech.** Technical text
   strings nouns together (`service call`, `spell check`, `dial travel`) and writes instructions without a determiner
   (`Wash pump`), and a word that is mostly a verb in running text (`call`, `check`, `travel`) leans to the verb. Basic
-  knows whether a clause already has a verb, which fixes many of these cases, but on the benchmark sets a noun that
+  knows whether a clause already has a verb, which fixes many of these cases, but on the benchmark sets (the pattern
+  figures below were measured on the branch of the clause state, before the cue tables were retrained with the final
+  word image) a noun that
   ends a compound after a modifier noun is still right only 93.0% of the time on the development sets (91.8% on the
   test sets; 98% after an adjective or a determiner), the first noun of a compound 90.1% (91.7% on the test sets), and
   the verb that starts a fragment before a noun without a determiner 73.9% (47.8% on the test sets; 23 sentences in each

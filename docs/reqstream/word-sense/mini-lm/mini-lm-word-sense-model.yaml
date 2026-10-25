@@ -74,10 +74,12 @@ sections:
                   with the English EWT treebank, MiniLM called 42 of 157 verb uses of "use" a noun at the part-of-speech
                   level, a mistake that the Basic tagger makes twice. Combining the two estimates with a weight of 0.6
                   (the optimum of the development splits, the open corpus dev split and the EWT dev file, never the
-                  test splits) gains 0.24 points of accuracy in both test sets and repairs 34 of the 42 errors. It is a
-                  deliberate trade under rule 3 of the reviewed suite: the row M-change-4 ("The leaves change color in
-                  the fall", where Basic reads a noun compound) goes from fine to miss at every weight of 0.9 or less,
-                  and five other rows go up.
+                  test splits) gains 0.24 points of accuracy on the open corpus test split and 0.27 points on the
+                  treebank test file of the final build, and repairs 34 of the 42 errors (measured on the branch of the
+                  change). It was a deliberate trade under rule 3 of the reviewed suite on that branch: the row
+                  M-change-4 ("The leaves change color in the fall", where Basic read a noun compound) went from fine
+                  to miss at every weight of 0.9 or less; the clause state of the Basic tagger repairs it, so no row is
+                  below the main branch in the final build, and five rows go up.
                 tests:
                   - MiniLMWordSenseModel_Classify_VerbUse_IsAnsweredWithTheCombinedSlotProbabilities
 

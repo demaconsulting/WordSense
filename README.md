@@ -264,14 +264,12 @@ embedded resource is damaged) and `DownloadConfigurationException` (an invalid m
 
 <!-- markdownlint-disable MD013 -->
 
-<!-- REMEASURE -->
-
 <!-- model-table:begin -->
 | Model | Real-text sense (share @ precision) | Running-text part of speech (open corpus test) | UD-EWT test part of speech (convention-mapped) | Independent sense evaluation (SemCor) | STE challenge set (part of speech) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Basic | 3.96% @ 74.74% | 93.87% (ambiguous 91.53%) | 91.65% (ambiguous 88.62%) | 3.25% @ 68.91% (top-1 55.71%) | 98.65% (ambiguous 97.83%) | none | 218 KiB | 4 MiB | 0.11 ms | 34 ms + 58 ms | no |
-| MiniLM | 7.93% @ 96.84% | 94.05% (ambiguous 91.83%) | 92.06% (ambiguous 89.26%) | 8.33% @ 88.71% (top-1 57.75%) | 98.65% (ambiguous 97.83%) | 22 MiB | 5,225 KiB | 98 MiB | 1.52 ms | 443 ms + 60 ms | yes |
-| BERT base cased | 27.16% @ 94.47% | 94.10% (ambiguous 91.90%) | 92.06% (ambiguous 89.26%) | 26.87% @ 86.63% (top-1 64.98%) | 98.20% (ambiguous 97.10%) | 104 MiB | 10,203 KiB | 221 MiB | 8.08 ms | 684 ms + 56 ms | yes |
+| Basic | 4.01% @ 75.00% | 93.88% (ambiguous 91.54%) | 91.72% (ambiguous 88.74%) | 3.28% @ 68.47% (top-1 55.80%) | 98.65% (ambiguous 97.83%) | none | 219 KiB | 4 MiB | 0.11 ms | 34 ms + 58 ms | no |
+| MiniLM | 7.97% @ 96.34% | 94.05% (ambiguous 91.82%) | 92.15% (ambiguous 89.39%) | 8.34% @ 88.64% (top-1 58.57%) | 98.65% (ambiguous 97.83%) | 22 MiB | 5,225 KiB | 98 MiB | 1.52 ms | 443 ms + 60 ms | yes |
+| BERT base cased | 27.16% @ 94.47% | 94.09% (ambiguous 91.89%) | 92.12% (ambiguous 89.35%) | 26.89% @ 86.61% (top-1 64.98%) | 98.20% (ambiguous 97.10%) | 104 MiB | 10,203 KiB | 221 MiB | 8.08 ms | 684 ms + 56 ms | yes |
 <!-- model-table:end -->
 
 <!-- markdownlint-enable MD013 -->
@@ -292,7 +290,7 @@ embedded resource is damaged) and `DownloadConfigurationException` (an invalid m
   often than always choosing the first sense in Open English WordNet order (60.7%, an optimistic baseline: see the SemCor
   caveat in [Accuracy and Model Choice](docs/user_guide/accuracy.md)).
 - ⚖️ **MiniLM** (22 MiB download, about 1.5 ms a sentence): mostly part of speech and groups. It commits to a fine
-  sense on 7.9% of the real test sentences (96.8% right) and its most probable sense is right for 57.8% of the
+  sense on 8.0% of the real test sentences (96.3% right) and its most probable sense is right for 58.6% of the
   SemCor words, below the first-sense baseline; choose it for the small download and the speed, not for senses.
 
 **What the columns measure.**
@@ -317,7 +315,7 @@ embedded resource is damaged) and `DownloadConfigurationException` (an invalid m
   speech is right for 60.7% of these words; that baseline is optimistic because the order of the senses comes from
   WordNet counts that include SemCor itself. On all 184,323 mapped SemCor words of a trained lemma or of an untrained
   lemma with two or more senses (17.1% of them are of a trained lemma), the fine top-1 is 59.7% for BertBaseCased,
-  58.4% for MiniLM and 58.2% for
+  58.6% for MiniLM and 58.2% for
   Basic, against 69.7% for the tag-count first sense (an optimistic baseline for the same reason): the models rank the
   senses of the lemmas they were not trained for by the usage prior (the WordNet 3.0 tag counts, which include SemCor, so
   that figure is circular on SemCor: it was 4.1% on those words before the models ranked them; see
@@ -330,11 +328,11 @@ embedded resource is damaged) and `DownloadConfigurationException` (an invalid m
   text; it is small and chosen for its hard cases, so read it as a regression check and not as accuracy.
 
 The sense-level answers are calibrated on real text towards a precision of 95%: BertBaseCased reaches 94.5% on the real
-test sentences and MiniLM 96.8% (the lemma-level target 0.97 is reached for BertBaseCased but not for MiniLM, whose
+test sentences and MiniLM 96.3% (the lemma-level target 0.97 is reached for BertBaseCased but not for MiniLM, whose
 thresholds then keep a share of the calibration
 answers and the builder reports the target as not reached; see
 [Accuracy and Model Choice][link-accuracy]), and on
-SemCor, which is very unlike the training sentences, the answers are right in 86.6% (BERT) and 88.7% (MiniLM) of the
+SemCor, which is very unlike the training sentences, the answers are right in 86.6% (BERT) and 88.6% (MiniLM) of the
 cases, and the encoder models commit to a fine sense for a minority of the words (26.9% and 8.3% of the SemCor
 words). The probabilities of the fine senses
 are corrected to the usage of the senses (WordNet 3.0 counts);
@@ -342,7 +340,7 @@ when this correction was introduced it raised the fine top-1 on SemCor from 56.9
 53.6% (MiniLM) and lowered it slightly
 on the real test sentences, which are balanced by sense (see [Accuracy and Model Choice][link-accuracy]). The sense
 choice of the encoders is not yet clearly better than the first-sense baseline for the words they cover (BERT 65.0%,
-MiniLM 57.8%); the part of speech is the
+MiniLM 58.6%); the part of speech is the
 dependable part of an answer today. The RAM, latency and first-use columns were measured on one idle development
 machine (an Intel Core i7-13850HX laptop, Windows 11, .NET 10; the conditions and the spread of repeated runs are in
 [Accuracy and Model Choice][link-accuracy]), so they are machine dependent: read them as the order of magnitude and the
@@ -351,8 +349,8 @@ encoder answers on the real test sentences (the sets that `evaluate` reports are
 
 | Model | Sense (share, precision) | Group (share, precision) | Part of speech (share, precision) | Fine top-1 |
 | --- | ---: | ---: | ---: | ---: |
-| MiniLM | 7.9%, 96.8% | 1.2%, 96.4% | 90.9%, 96.4% | 62.1% |
-| BERT base cased | 27.2%, 94.5% | 0.8%, 88.9% | 72.1%, 97.4% | 72.0% |
+| MiniLM | 8.0%, 96.3% | 1.2%, 96.4% | 90.9%, 96.5% | 62.4% |
+| BERT base cased | 27.2%, 94.5% | 0.8%, 88.9% | 72.1%, 97.4% | 72.3% |
 
 The table is generated into [docs/user_guide/model-table.md][link-model-table]; the user guide chapter
 [Accuracy and Model Choice][link-accuracy] explains how the numbers were measured and how to read them. A reviewed suite
@@ -368,7 +366,7 @@ This version is a foundation, and these follow-ups are planned (the figures are 
   Tatoeba CC BY rows were removed from the corpus: at
   present 6,198 of the 7,035 senses of the trained lemmas meet their quota, 748 are short and 89 have no sentence at
   all (3,174 anchors and 791 held-out sentences are missing, see `WordSense.Builder tiers`).
-- **More fine senses on real text at the 0.97 target for MiniLM.** MiniLM answers 7.9% of the real
+- **More fine senses on real text at the 0.97 target for MiniLM.** MiniLM answers 8.0% of the real
   test sentences at the sense level (BertBaseCased 27.2%); more and better-balanced data, and tuning the
   calibration (for example per domain), should raise both.
 - **A second check of the annotations.** Cross-check the open corpus with the second annotator `gemma4` (36% of its tokens

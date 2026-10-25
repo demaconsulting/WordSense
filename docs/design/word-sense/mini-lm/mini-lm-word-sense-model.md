@@ -40,17 +40,21 @@ unit document). When the encoder committed to no sense and no group (its result 
 composite also combines the slot probabilities of the encoder and of the Basic model with the primary weight 0.6
 (`MiniLMWordSenseModel.PartOfSpeechPrimaryWeight`, passed to the `FallbackWordSenseModel`): the probability that the
 encoder gives a slot is the mass of its senses and not a part-of-speech estimate, so a wrong top slot (the verb `use`,
-which the encoder called a noun in 42 of 157 treebank tokens, 8 after the combination) is repaired by the tagger of
+which the encoder called a noun in 42 of 157 treebank tokens, 8 after the combination, measured on the branch of the
+change) is repaired by the tagger of
 Basic where the encoder is unsure. The weight was chosen on development data only (the open corpus development split
-and the English EWT development file, `evaluate-running --split dev` with the matching gold file): the accuracy on all
+and the English EWT development file, `evaluate-running --split dev` with the matching gold file; the curve below was
+measured before the clause state of the tagger was added and the weight was not chosen again): the accuracy on all
 scored tokens (open dev / EWT dev) is 93.88% / 91.92% for the weight 1 (no combination), 93.97% / 92.00% for 0.95,
 94.01% / 92.04% for 0.9, 94.07% / 92.11% for 0.8, **94.13% / 92.18% for 0.6**, 94.15% / 92.13% for 0.5, 94.07% / 91.97%
 for 0.2 and 93.95% / 91.80% for 0 (the part of speech of Basic wherever the encoder names no sense), so the curve is flat
-between 0.4 and 0.7 and its best sum is at 0.6. On the test files the weight 0.6 gains 0.24 points on the open corpus
-and on the treebank (93.81% to 94.05% and 91.82% to 92.06%). The price is a deliberate trade under the rule 3 of the
-reviewed suite: the row `M-change-4` (`The leaves change color in the fall`) goes from fine to miss for MiniLM at every
-weight of 0.9 or less, because Basic reads `leaves change` as a noun compound (noun 0.814) and the blend follows the
-confident tagger over the nearly even encoder (verb 0.534, noun 0.466), while five other rows go up (see
+between 0.4 and 0.7 and its best sum is at 0.6. On the test files of the final build the weight 0.6 gains 0.24 points on
+the open corpus and 0.27 points on the treebank (93.81% to 94.05% and 91.88% to 92.15% against the weight 1). The price
+on the branch of the change was a deliberate trade under the rule 3 of the
+reviewed suite: the row `M-change-4` (`The leaves change color in the fall`) went from fine to miss for MiniLM at every
+weight of 0.9 or less, because Basic read `leaves change` as a noun compound (noun 0.814) and the blend followed the
+confident tagger over the nearly even encoder (verb 0.534, noun 0.466); the clause state of the tagger repairs the row
+(Basic now reads the verb), so no row is below the main branch in the final build, while five other rows go up (see
 `corpus/suite/README.md`). An answer at the sense or group level, the real-text sense share and precision and the
 share and precision of the SemCor sense evaluation do not change; only the part-of-speech-level answers, their
 confidence and the fine top-1 of the selected analysis move. A caller that holds a `MiniLMWordSenseModel` calls

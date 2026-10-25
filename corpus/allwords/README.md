@@ -93,6 +93,15 @@ Tatoeba sentences. 655 of the 804 tokens (81.5%) carry the agreement `high`.
 - **The sample is small**: about 400 tokens in each half, so a difference of a few points between two figures is within
   the noise (the standard error of an accuracy of 65% on 400 tokens is 2.4 points).
 
+## Current results
+
+Measured by `evaluate-allwords` on the final build (the three models give the same figures, because they answer an
+untrained lemma with the same Basic result; see "The Usage Prior of the Untrained Lemmas" of the user guide chapter
+"Accuracy and Model Choice"): fine top-1 62.41% on the development half and 64.99% on the test half, against 66.58% and
+68.51% for the first sense of the right lemma and part of speech (inventory order and WordNet 3.0 tag counts agree on
+both halves) and 27.99% and 27.23% for a random sense. The selected analysis is the right lemma and part of speech for
+93.86% (development) and 93.95% (test) of the tokens, and where it is right the fine top-1 is 66.49% and 69.17%.
+
 ## Provenance and license
 
 The sentences come from `corpus/open/representative` (development and test splits) and are public domain in the United

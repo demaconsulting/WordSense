@@ -248,7 +248,7 @@ public static class WordLexicon
     ///     catalog and produces no key until the sequence is read; the first read makes one pass over the spelling index (it
     ///     groups the stored spellings that differ only in case; the cost is one pass and a list of the spellings that are not in lower case) and
     ///     then decodes the image while it is read and keeps no list of the keys. On
-    ///     the committed image it lists 1,284,993 keys (about 63 MB of text) and reading it to the end takes about three
+    ///     the committed image it lists 1,285,019 keys (about 63 MB of text) and reading it to the end takes about three
     ///     seconds. A consumer that builds a map of its own data for all keys can write the keys as they come; a
     ///     <see cref="HashSet{T}"/> of all of them takes a few hundred megabytes. The order is fixed: by spelling, then by
     ///     analysis in answer order, the key without a label first.

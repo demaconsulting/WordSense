@@ -147,7 +147,7 @@ of that name exists (then the lookup never takes the possessive path). The enume
 analysis in answer order, the key without a label first; no key is listed twice. Before the first key the reader makes
 one pass over all spellings to build the fold groups (the spellings that normalize to another form), which it keeps in
 memory with the spelling index; the keys themselves are streamed, not kept. On the committed image it lists
-1,284,993 keys (about 63 MB of text) in about three seconds. The separators in a part are escaped (a few lemmas such as
+1,285,019 keys (about 63 MB of text) in about three seconds. The separators in a part are escaped (a few lemmas such as
 `A/C` contain `/`), by the same `WordKey.Format` that `ClassifyResult.Key` uses, so a key is spelled the same in both.
 
 The completeness guarantee holds by construction, not by a test: `ClassifyResult.Key` is built (`WordKey.KeyOf`, in

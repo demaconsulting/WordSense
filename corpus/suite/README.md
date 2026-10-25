@@ -284,18 +284,23 @@ are a regression guard for the tense and not a measure of accuracy; the measures
 with those of Basic (`p_primary^w × p_fallback^(1−w)`), and `MiniLMWordSenseModel` passes the primary weight
 `w = 0.6` (BertBaseCased passes 1, so it is unchanged: the composition without a weight). The weight is the optimum of
 the development splits of the running-text evaluation (see `docs/design/word-sense/mini-lm/mini-lm-word-sense-model.md`).
-The encoder weights, the word image and `basic.bin` did not change, and an answer at the sense or group level is never
-touched (the outcome file of `evaluate` for MiniLM has every sense and group row identical before and after).
+The encoder weights, the word image and `basic.bin` did not change in this change, and an answer at the sense or group level
+is never touched (the outcome file of `evaluate` for MiniLM has every sense and group row identical before and after).
 The expectation file was rewritten with `evaluate-suite --write-expectations` under rule 3 and the rule 4 rows restored
 (`H-close-4` and `C-content-6` stay `miss` and `H-defense-1` stays `answer` for BertBaseCased: the rewrite measured
 `fine` for the three on the development machine). The change is a deliberate trade measured on independent text, not a
-hidden regression: on the treebank test file MiniLM gains 0.24 points (91.82% to 92.06%) and on the open corpus test
-split 0.24 points (93.81% to 94.05%), and 34 of the 42 verb `use` tokens that it called a noun are repaired. Six cells
-changed against the file before the change (364 rows): five went up and one went down; Basic and BertBaseCased did not
-change. Measured answered / fine on all 364 rows, MiniLM before and after: 95.33% / 89.29% to 96.43% / 90.38% (list `H`:
-93.94% / 84.85% to 96.21% / 87.12%; list `C`: 96.74% / 85.87% to 97.83% / 86.96%; lists `M` and `T`: unchanged, the
-`M` row that went up and the `M` row that went down cancel). Each row was checked against the slot probabilities (the
-sum over the analyses of a part of speech) of the encoder alone (the weight 1) and of MiniLM now:
+hidden regression. Figures of the final build (all four changes together, with the primary weight 1 against 0.6 for
+MiniLM): on the treebank test file MiniLM gains 0.27 points (91.88% to 92.15%) and on the open corpus test split 0.24
+points (93.81% to 94.05%); on the branch of the change alone the gains were 0.24 points on both, and 34 of the 42 verb
+`use` tokens that MiniLM called a noun were repaired. On that branch six cells changed against main (364 rows): five went
+up and one went down; Basic and BertBaseCased did not change. **In the final build the cell that went down,
+`M-change-4`, is `fine` again** (the clause state of the tagger, next section, repairs it), so the net effect of the
+reconciliation is five MiniLM rows up and none down. Measured answered / fine on all 364 rows of the final build, MiniLM
+with the weight 1 and with the weight 0.6: 95.33% / 90.66% to 96.70% / 92.03% (list `H`: 93.94% / 87.12% to 96.21% /
+89.39%; list `C`: 96.74% / 88.04% to 97.83% / 89.13%; list `M`: 95.16% / 95.16% to 95.97% / 95.97%; list `T`: unchanged,
+all `fine`). Each row was checked, on the branch of the change, against the slot probabilities (the sum over the
+analyses of a part of speech) of the encoder alone (the weight 1) and of MiniLM now (the probabilities below are those
+of the branch, before the clause state of the tagger; the five rows are `fine` in the final build):
 
 <!-- markdownlint-disable MD013 -->
 
@@ -306,50 +311,79 @@ sum over the analyses of a part of speech) of the encoder alone (the weight 1) a
 | `H-detail-4` (`Her letter {details} the problems`) | MiniLM | miss | fine | The encoder alone had the noun on top (noun 0.597, verb 0.403); Basic reads the verb (0.989). Blended: verb 0.829, noun 0.171. |
 | `M-review-4` (`The committee will {review} the application`) | MiniLM | miss | fine | The encoder alone had the noun on top (noun 0.553, verb 0.447); Basic reads the verb after `will` (1.000). Blended: verb 0.995. |
 | `C-content-5` (`They had to {content} themselves`) | MiniLM | miss | fine | The encoder alone chose the adjective (0.562 against verb 0.390); Basic reads the verb (0.999). Blended: verb 0.941, adjective 0.051; the sense `content#satisfy-partly` is the top ranked sense of the verb. |
-| `M-change-4` (`The leaves {change} color in the fall`) | MiniLM | fine | **miss** | **The one row that went down.** See below. |
+| `M-change-4` (`The leaves {change} color in the fall`) | MiniLM | fine | **miss** | **The one row that went down on the branch of this change; fine again in the final build.** See below. |
 
 <!-- markdownlint-enable MD013 -->
 
-**`M-change-4`, the row that went down.** The encoder alone gives the verb `change` the larger slot (verb 0.534,
-noun 0.466) and is right. Basic's own answer is wrong for both words of the pair: `leaves` is the noun `leaf`
-(0.582, against the noun `leave` 0.413 and the verb `leave` 0.005) and `change` is a noun with 0.814 (verb 0.186), the
-tagger reading `the leaves change` as a noun compound. The blend is a geometric mean, so a confident tagger carries
-more weight than an encoder that is nearly even: the noun scores `0.466^0.6 × 0.814^0.4 = 0.583` and the verb
-`0.534^0.6 × 0.186^0.4 = 0.350`, which normalizes to noun 0.625 and verb 0.375, so the noun is selected (the sense
-`leaf` of `leaves` is answered at the sense level by the encoder and is unchanged). The weight at which the row flips is
-between 0.90 and 0.92; every weight of 0.90 or less loses it, and at 0.5 `M-long-2` goes as well. This is the price of
-a tagger that is confidently wrong on a verb after a plural noun: the same blend repairs the verb `use` (42 tokens
-called a noun by the encoder alone, 8 now) and the five rows above, where the tagger is right and the encoder is close
-to even. The expectation of the row is the measurement of the changed model; if a later change repairs it (a tagger
-that reads `leaves change` with a verb), the policy raises it again. This is the explanation that rule 3 asks for
-every row that goes down, as for the usage prior: the row itself is not wrong, and the trade is deliberate and measured
-on independent text.
-
-<!-- REMEASURE -->
+**`M-change-4`, the row that went down on the branch of this change.** The encoder alone gives the verb `change` the
+larger slot (verb 0.534, noun 0.466) and is right. Basic's own answer on that branch was wrong for both words of the
+pair: `leaves` is the noun `leaf` (0.582, against the noun `leave` 0.413 and the verb `leave` 0.005) and `change` is a
+noun with 0.814 (verb 0.186), the tagger reading `the leaves change` as a noun compound. The blend is a geometric mean,
+so a confident tagger carries more weight than an encoder that is nearly even: the noun scores
+`0.466^0.6 × 0.814^0.4 = 0.583` and the verb `0.534^0.6 × 0.186^0.4 = 0.350`, which normalizes to noun 0.625 and verb
+0.375, so the noun was selected (the sense `leaf` of `leaves` is answered at the sense level by the encoder and is
+unchanged). The weight at which the row flips is between 0.90 and 0.92; every weight of 0.90 or less loses it, and at
+0.5 `M-long-2` goes as well. That was the price of a tagger that was confidently wrong on a verb after a plural noun: the
+same blend repairs the verb `use` (42 tokens called a noun by the encoder alone, 8 on the branch) and the five rows
+above, where the tagger is right and the encoder is close to even. The later change that repairs the row is the clause
+state of the tagger (next section): Basic now reads `change` as the verb (0.51), so the final build grades the row
+`fine` for MiniLM and its expectation is the one of main. The explanation that rule 3 asks for every row that goes down
+therefore applies to the branch only: the combined diff against main has no row that went down (see "The four changes
+together" below).
 
 ### The clause state and the possessive expansion of the tagger (Basic retrained, encoders and image unchanged)
 
 The tagger of `BasicWordSenseModel` now knows whether the current clause already has a verb (the transitions are
 counted and read per clause state) and reads a possessive that is written as one token as its stem and the possessive
-marker; `basic.bin` was retrained (format `WSB5`). The encoder weights and `wordsense.img` did not change; the encoder
-models inherit the part of speech of Basic where they fall back, so their cells could have moved too, and none did
-(`evaluate-suite` finds no row below an expectation for any model). **Three expectations of Basic were raised** under
-rule 1, each a part-of-speech row that the clause state fixes:
+marker; `basic.bin` was retrained (format `WSB5`). On its own branch the encoder weights and `wordsense.img` did not
+change; the encoder models inherit the part of speech of Basic where they fall back, so their cells could have moved
+too, and on that branch none did (`evaluate-suite` found no row below an expectation for any model). In the final build
+the same change repairs `M-change-4` for MiniLM (see the reconciliation above). **Four expectations of Basic were
+raised** under rule 1, each a part-of-speech row that the clause state fixes (the grades are against main, with the
+usage prior of the final build; the probabilities are those of the branch, measured with the tagger of that branch):
 
 <!-- markdownlint-disable MD013 -->
 
-| Row | Model | Before | Now | Why |
+| Row | Model | Before (main) | Now | Why |
 | --- | --- | --- | --- | --- |
 | `M-change-4` (`The leaves {change} color in the fall`) | Basic | miss | fine | The clause has no verb yet, so after the noun phrase `The leaves` a verb is four times as likely as in a clause that has one; `change` was a noun (0.81) and is now the verb (0.51). The probabilities are close, so the row is near a tie. |
-| `H-close-4` (`The two hikers walked {close} together along the narrow ledge`) | Basic | miss | answer | The clause already has the verb `walked`, so `close` is no longer read as a second verb: the adverb 0.46 now wins against the verb 0.42 (before 0.42 against 0.45). A near tie as well. |
+| `H-close-4` (`The two hikers walked {close} together along the narrow ledge`) | Basic | miss | fine | The clause already has the verb `walked`, so `close` is no longer read as a second verb: the adverb 0.46 now wins against the verb 0.42 (before 0.42 against 0.45). A near tie as well; the grade is `fine` and not `answer` because of the usage prior, which ranks the senses of the adverb. |
 | `C-resume-2` (`He sent out ten {resumes} last week and got two calls`) | Basic | miss | answer | The clause already has the verb `sent`, so the second verb reading of `resumes` is suppressed: the noun is 0.75 (before the verb 0.54). |
+| `C-resume-4` (`Train service {resumes} as soon as the snow stops falling`) | Basic | answer | fine | The clause has no verb before `resumes`, so the verb reading wins against the noun compound `Train service resumes` (verb 0.63, noun 0.37 in the final build) and the most frequent sense of the verb is the acceptable sense; with the prior alone the row stays `answer`. |
 
 <!-- markdownlint-enable MD013 -->
 
 The cells that the development machine grades higher than the file for BertBaseCased (`H-close-4`, `H-defense-1` and
 `C-content-6`) are the platform-sensitive rows of rule 4 and stay as recorded. Measured answered / fine on all 364 rows
-before and after: Basic 95.88% / 45.88% to 96.70% / 46.15%, MiniLM 95.33% / 89.29% and BertBaseCased 98.63% / 94.23%
-unchanged.
+on the branch of this change, before and after: Basic 95.88% / 45.88% to 96.70% / 46.15%, MiniLM 95.33% / 89.29% and
+BertBaseCased 98.63% / 94.23% unchanged. On the final build Basic is 96.70% / 79.12% (the usage prior adds the ranked
+senses; the clause state accounts for 3 rows of the answered figure and 3 rows of the fine figure of the 364 rows, 0.82
+points each).
+
+### The four changes together (main `f4473ff` to the final build)
+
+The expectation file of the final build was written once with `evaluate-suite --write-expectations` (rule 3) on the
+combined build, with the rule 4 rows reset to their recorded grades, and diffed against main row by row. **No cell went
+down; 137 cells went up** (Basic 122, MiniLM 10, BertBaseCased 5; 364 rows of three models):
+
+- Basic: 119 rows `answer` to `fine` (118 through the usage prior, listed in its section, and `C-resume-4` through the
+  clause state), `H-close-4` and `M-change-4` from `miss` to `fine` and `C-resume-2` from `miss` to `answer` (the clause
+  state).
+- MiniLM: the five rows of the usage prior (`H-live-2`, `H-august-3`, `H-august-4`, `C-dove-1`, `C-polish-7`, `answer` to
+  `fine`) and the five rows of the reconciliation (`H-second-5`, `H-estimate-1`, `H-detail-4`, `M-review-4` and
+  `C-content-5`, `miss` to `fine`); `M-change-4`, the one row that the reconciliation alone lost, is `fine` as on main.
+- BertBaseCased: the same five rows of the usage prior (`answer` to `fine`); the three rows of rule 4 are as recorded
+  (`H-close-4` and `C-content-6` `miss`, `H-defense-1` `answer`).
+- The heteronym analyses (the adjective `graduate`, the noun `separate` and the forms of `axe`) moved no cell of their
+  own: the rows of `graduate` and `separate` (`H-graduate-1` to `4`, `H-separate-1` to `4`) went up through the usage
+  prior, and no row asks for `axes`.
+
+Measured answered / fine on all 364 rows, on the development machine, main (`f4473ff`) to the final build: Basic
+95.88% / 45.88% to 96.70% / 79.12%, MiniLM 95.33% / 89.29% to 96.70% / 92.03%, BertBaseCased 98.63% / 94.23% to
+98.63% / 95.60% (BertBaseCased grades the three platform-sensitive rows `fine` here, so these two figures are those of
+the development machine). By list, answered / fine, Basic, MiniLM, BertBaseCased: `H` (132 rows) 97.73% / 69.70%,
+96.21% / 89.39%, 100.00% / 95.45%; `M` (124 rows) 95.97% / 95.97%, 95.97% / 95.97%, 96.77% / 96.77%; `C` (92 rows)
+95.65% / 66.30%, 97.83% / 89.13%, 98.91% / 93.48%; `T` (16 rows) `fine` for all three.
 
 ### One-sense labels for the set rows (no model change)
 
@@ -449,7 +483,8 @@ usage prior: the WordNet 3.0 tag count of each sense (embedded in the word image
 smoothing, equal counts in inventory order (see `docs/design/word-sense/core/basic-classifier.md`, "Usage Prior"). The
 encoder models answer a word whose lemma they have no weights for through Basic, so all three models inherit the
 ranking. It is a ranking and never an answer: the level, the confidence, the sense id and the group id of every result
-are those of the model before the change, and neither the encoder weights, `basic.bin` nor the inventory hash changed.
+are those of the model before the change, and neither the encoder weights, `basic.bin` nor the inventory hash changed
+(on the branch of that change; the final build retrained `basic.bin` and the image).
 Only the sense lists of the analyses gain content, so a row can only go up, and only the grade `fine` (the most probable
 ranked sense is an acceptable sense) can change. The expectation file was rewritten with
 `evaluate-suite --write-expectations` under rule 3 and the rule 4 rows restored (`C-content-6` and `H-close-4` stay `miss`
@@ -457,7 +492,8 @@ and `H-defense-1` stays `answer` for BertBaseCased: the rewrite measured `fine` 
 see the platform-sensitive rows). Measured answered / fine on the 364 rows before and after, on the development machine
 (where BertBaseCased grades the three platform-sensitive rows `fine`): Basic 95.88% / 45.88% to
 95.88% / 78.30%, MiniLM 95.33% / 89.29% to 95.33% / 90.66%, BertBaseCased 98.63% / 94.23% to 98.63% / 95.60%.
-131 cells went up in the rewrite and none went down (three of them are the platform-sensitive rows, which stay as recorded):
+131 cells went up in the rewrite and none went down (three of them are the platform-sensitive rows, which stay as recorded);
+the final build keeps these 128 rows and adds the rows of the other changes (see "The four changes together"):
 
 - **Basic, 118 rows from `answer` to `fine`** (76 rows of the list `H` and 42 of the list `C`): the rows that ask for a
   sense of a common heteronym or a classic one (`bow`, `wound`, `polish`, `live`, ...) were answered at the
