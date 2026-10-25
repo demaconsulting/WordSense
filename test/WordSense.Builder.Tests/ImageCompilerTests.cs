@@ -104,6 +104,41 @@ public sealed class ImageCompilerTests : IDisposable
     }
 
     /// <summary>
+    ///     An analysis of a spelling with a letter whose lemma has none (<c>3rd</c> as a form of the entry <c>3</c>, or a
+    ///     surface lemma <c>3</c>) is left out, so the image has no entry of a lemma without a letter, while another
+    ///     analysis of the same spelling stays.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_ImageCompiler_Build_AnalysisOfLemmaWithoutALetter_IsLeftOut()
+    {
+        // Arrange: 3rd is a form of the numeral entry 3, of the surface lemma 3 and of its own adjective entry
+        var data = WriteData(
+            _dir.Root,
+            extraEntries: ["oewn-3-n\t3\tn\t0\t1\t1\toewn", "oewn-3rd-a\t3rd\ta\t0\t1\t1\toewn"],
+            extraSenses: ["oewn-3__1.23.00..\t3%1:23:00::\toewn-3-n\toewn-30-n\t1"],
+            extraLabels: ["oewn-3__1.23.00..\tcardinal\tgenerated"],
+            extraForms:
+            [
+                "3rd\t0\toewn-3rd-a\tDegree=Pos\tdema\t0\t\t\toewn_form",
+                "3rd\t1\toewn-3-n\tNumber=Sing\tdema\t0\t\t\toewn_form",
+                "3rd\t2\t\t\tdema\t0\t3\tn\thand",
+            ]);
+
+        // Act
+        var (bytes, result) = ImageCompiler.Build(data);
+
+        // Assert: 3rd keeps its adjective analysis alone, and the numeral has no entry or sense
+        var image = WordImage.Open(bytes);
+        Assert.Equal(2, result.Spellings);
+        Assert.Equal(3, result.Entries);
+        Assert.Equal(6, result.Senses);
+        Assert.True(image.Find("3rd") >= 0);
+        Assert.Empty(image.SensesOf("3", PartOfSpeech.Noun));
+        Assert.False(image.TryGetSense("3#cardinal", out _));
+        image.ValidateCatalog();
+    }
+
+    /// <summary>
     ///     A numeral sense that has no label does not fail the compilation (the numerals are left out before the labels
     ///     are checked), while an unlabeled sense of a lemma with a letter still fails.
     /// </summary>

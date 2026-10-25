@@ -78,7 +78,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
   before the labels are checked, so a numeral sense without a label does not fail the build (an unlabeled sense of a
   lemma with a letter still does). A `group_sense` row for such a numeral sense is ignored, so a group that lists it
   next to retained senses compiles with the retained members only
-  (`ImageCompiler_Build_GroupWithSpellingWithoutALetterMember_LeavesTheMemberOut`).
+  (`ImageCompiler_Build_GroupWithSpellingWithoutALetterMember_LeavesTheMemberOut`). An analysis of a spelling with a
+  letter whose lemma has none (`3rd` as a form of the entry `3`, or of the surface lemma `3`) is left out too, while the
+  other analyses of that spelling stay (`ImageCompiler_Build_AnalysisOfLemmaWithoutALetter_IsLeftOut`).
 - **Every dictionary word is kept** (`Words_Committed_HoldsEveryDictionaryWord`): the committed image holds every
   word of the committed dictionary with each of its parts of speech, without exception.
 - **The catalog is complete** (`Words_Committed_CatalogHoldsEveryOewnAndProjectSense`): every single-token OEWN sense

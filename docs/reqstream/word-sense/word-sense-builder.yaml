@@ -20,7 +20,7 @@ sections:
               position of the sense in its entry, then the homograph number of the entry, project senses last, then the
               sense id bytes; the WordNet 3.0 frequencies shall not order them), and no spelling without a letter (a
               numeral such as 0 or 24/7), with no entry or sense of such a lemma, whether or not that sense has a
-              label; and
+              label, and no analysis whose lemma has no letter; and
               shall write it in the compact binary format that the core package reads. The committed image shall be
               the compilation of the committed data, a dictionary word shall never be lost, and a sense without a
               label, a sense in two groups, a group of fewer than two senses (a declared group without any member
@@ -41,6 +41,7 @@ sections:
               - WordSenseBuilder_ImageCompiler_Build_CatalogIsDeterministic
               - WordSenseBuilder_ImageCompiler_Build_SpellingWithoutALetter_IsLeftOut
               - WordSenseBuilder_ImageCompiler_Build_UnlabeledSpellingWithoutALetter_IsLeftOut
+              - WordSenseBuilder_ImageCompiler_Build_AnalysisOfLemmaWithoutALetter_IsLeftOut
               - WordSenseBuilder_ImageCompiler_Build_GroupWithSpellingWithoutALetterMember_LeavesTheMemberOut
               - WordSenseBuilder_ImageCompiler_Build_SenseOrder_IsOewnPositionThenHomographThenProjectSenses
               - WordSenseBuilder_ImageCompiler_Build_SenseWithoutLabel_Fails

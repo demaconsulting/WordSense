@@ -33,7 +33,8 @@ internal sealed record ImageResult(int Spellings, int Analyses, int Entries, int
 ///     </para>
 ///     <para>
 ///     A spelling without a letter (a numeral of Open English WordNet such as <c>0</c>, <c>24/7</c> or <c>.22</c>) is left
-///     out, with its analyses, its entries and the senses of its lemma: the library never looks such a token up (the
+///     out, with its analyses, its entries and the senses of its lemma, and so is an analysis of a spelling with a letter
+///     whose lemma has none: the library never looks such a token up (the
 ///     runtime applies the same rule, <see cref="CueModel.HasLetter"/>), so the image holds none and the count, the senses
 ///     and the lookup of the lexicon agree. The filter is applied here and not to the data tables, which stay a faithful
 ///     copy of the source, so a new import of the source needs no cleanup.
@@ -65,6 +66,14 @@ internal static class ImageCompiler
     // The key of the entry an analysis uses: its entry id, or a synthesized key of lemma and part of speech
     private static string EntryKey(string[] formRow) =>
         formRow[2].Length > 0 ? formRow[2] : $"{SurfacePrefix}{formRow[6]}\t{formRow[7]}";
+
+    // An analysis is kept when its spelling and its lemma (of the entry, or the surface lemma) have a letter; an unknown
+    // entry is kept so that the entry check names it
+    private static bool IsKept(string[] formRow, Dictionary<string, string[]> entryRows) =>
+        CueModel.HasLetter(formRow[0])
+        && (formRow[2].Length > 0
+            ? !entryRows.TryGetValue(formRow[2], out var entry) || CueModel.HasLetter(entry[1])
+            : CueModel.HasLetter(formRow[6]));
 
     // The image entry of a surface-only analysis: its synthesized key stands for the id
     private static string[] SurfaceEntry(string key)
@@ -103,7 +112,7 @@ internal static class ImageCompiler
     {
         var schema = DataSchema.Load(Path.Join(dataDirectory, "schema.yaml"));
         var entryRows = DataTables.Read(dataDirectory, schema.Table("entry")).ToDictionary(r => r[0], StringComparer.Ordinal);
-        var formRows = DataTables.Read(dataDirectory, schema.Table("form")).Where(r => CueModel.HasLetter(r[0])).ToList();
+        var formRows = DataTables.Read(dataDirectory, schema.Table("form")).Where(r => IsKept(r, entryRows)).ToList();
 
         var sections = new SortedDictionary<int, (byte[] Raw, int Stride)>();
         var (spellingCount, entryCount) = AddAnalysisSections(sections, entryRows, formRows);

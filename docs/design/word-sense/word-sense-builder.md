@@ -208,11 +208,13 @@ instead of `--model`.
 1. Read the tables of `data/` and the dictionary lexicon. Every word of the dictionary is kept with all its parts of
    speech, whatever the accuracy of any model for it: the accuracy of a model governs only which senses it chooses
    between, never whether a word exists.
-2. Write one analysis (lemma, part of speech, features) for every row of the `form` table whose spelling has a letter.
-   A spelling without a letter (a number written with digits such as `0`, `24/7` or `.22`: 134 spellings, with 176
-   analyses, 176 entries and 178 senses in the data) is left out of the image, with the entries and senses of its
-   lemmas, because the models never look such a token up: the filter is the rule of the runtime (`CueModel.HasLetter`)
-   and is applied here, at compile time, so the committed data tables stay a faithful copy of Open English WordNet.
+2. Write one analysis (lemma, part of speech, features) for every row of the `form` table whose spelling and lemma
+   have a letter. A spelling without a letter (a number written with digits such as `0`, `24/7` or `.22`: 134
+   spellings, with 176 analyses, 176 entries and 178 senses in the data) is left out of the image, with the entries
+   and senses of its lemmas, because the models never look such a token up: the filter is the rule of the runtime
+   (`CueModel.HasLetter`) and is applied here, at compile time, so the committed data tables stay a faithful copy of
+   Open English WordNet. An analysis of a spelling with a letter whose lemma has none is left out as well (the data
+   has none today), so the image never holds an entry of a lemma without a letter.
    A word of the committed auxiliary list gains an auxiliary analysis. The forms of every dictionary word come from the
    `form` table, so no morphology runs at run time.
 3. Build the sense catalog: every single-token OEWN sense and every project sense whose lemma has a letter, with its
