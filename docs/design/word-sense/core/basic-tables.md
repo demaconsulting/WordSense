@@ -6,8 +6,8 @@
 
 `BasicTables` holds the immutable statistics of the Basic model and reads them from the embedded table `basic.bin`:
 the tag transition probabilities and the word and suffix statistics of the tagger, the hyper-parameters of the runtime,
-and the cue tables of the ambiguous lemmas. It also defines the tag set through `PosTag`. The table is bound to the
-word image by the hash of the analysis inventory.
+the cue tables of the ambiguous lemmas and the shared tense table. It also defines the tag set through `PosTag`. The
+table is bound to the word image by the hash of the analysis inventory.
 
 #### Data Model
 
@@ -15,7 +15,8 @@ word image by the hash of the analysis inventory.
   auxiliary, infinitive marker, punctuation, other) and the sentence boundary pseudo tag (index 13). The first ten
   (noun to auxiliary) have the numeric values of `PartOfSpeech`; infinitive marker, punctuation and other have no part of
   speech. Open classes are noun, verb, adjective and adverb.
-- `BasicTables`: the header values `Gamma`, `Beta`, `Lambda1` to `Lambda3`, `HmmWeight` and `InvTemperature`; the
+- `BasicTables`: the header values `Gamma`, `Beta`, `Lambda1` to `Lambda3`, `HmmWeight`, `InvTemperature` and
+  `TenseWeight`; the
   unigram, bigram and trigram counts; the derived `Transition` (interpolated trigram, bigram and unigram probabilities,
   row-major over 14 x 14 x 14), `TagPrior` and `SuffixFallback`; the `Words` (`WordEntry`: closed-class mask and per-tag
   counts) and the `Cues` (`LemmaCue`: the analyses as `CueAnalysis` with lemma, part of speech, features and quantized
@@ -25,22 +26,31 @@ word image by the hash of the analysis inventory.
   read-only view that wraps the array the reader filled without copying it; the reader hands the arrays over and keeps
   no reference, so no consumer can change them and the hot paths (`PosTagger`, `CueModel.Score`) read them through
   `ReadOnlySpan<T>` (`AsSpan`) with no allocation.
+- `TenseCue` (the `Tense` property, null for a table without one): the shared tense table, a quantized prior (the log
+  odds of a past verb against a non-past one in the training text, in eighths of a nat), the ascending feature hashes
+  and one signed byte weight per hash (the log likelihood ratio of past against non-past), all read-only views like the
+  cue tables. It is trained on all verbs, so it has no analyses and is not tied to the inventory.
 - The analysis inventory hash: a 32-byte hash that is the inventory hash of the word image (its spelling, analysis,
   feature, entry, sense, group and lemma-block sections). It identifies the inventory the cue columns were trained
   against: `basic.bin` names its analyses, so it is rebuilt whenever the inventory changes, and a table that carries
   another hash is refused.
 - `FeatureRef`: one context feature (kind and token) and its 16-bit hash, a 32-bit FNV-1a over the UTF-16 code units of
-  the feature name (the token, prefixed with `L1:` or `R1:` for an immediate neighbor) folded by xor-ing the upper half
+  the feature name (the token, prefixed with `L1:` or `R1:` for an immediate neighbor, and for the tense model `LW:` and
+  `RW:` for the left and right window and `NA:` for the governing function word) folded by xor-ing the upper half
   into the lower half. The builder uses the same hash, so training and inference cannot diverge.
 - The table format (Brotli, then little-endian; integers are 7-bit varints, strings are a varint byte length and
-  UTF-8): the four-byte magic `WSB3` that names the format and its revision; the 32-byte analysis inventory hash;
-  seven doubles
-  (gamma, beta, lambda 1 to 3, tagger weight, inverse temperature); the tag count (13); the unigram (14), bigram
+  UTF-8): the four-byte magic `WSB4` that names the format and its revision (`WSB3`, without the tense weight and the
+  tense table, is refused); the 32-byte analysis inventory hash;
+  eight doubles
+  (gamma, beta, lambda 1 to 3, tagger weight, inverse temperature, tense weight); the tag count (13); the unigram (14),
+  bigram
   (14 x 14) and trigram (14 x 14 x 14) counts; the word count and per word the word, a flags byte (bit 0: closed
   class), a 16-bit closed-class mask when closed, a 16-bit presence mask and one count per set bit; the suffix count and
   per suffix the suffix and four counts (noun, verb, adjective, adverb); the lemma count and per lemma the lemma, the
   analyses (lemma string, part of speech byte, features string, signed prior byte), the delta-coded ascending feature
-  hashes and one signed byte weight per feature and analysis. Words, suffixes and lemmas are in ascending ordinal
+  hashes and one signed byte weight per feature and analysis; and the tense section, a flag byte (0: none, 1: a table
+  follows) and the signed prior byte, the delta-coded ascending feature hashes (at least one) and one signed byte weight
+  per hash. Words, suffixes and lemmas are in ascending ordinal
   order. At load each analysis is resolved against the analysis inventory of the word image.
 
 #### Key Methods
@@ -51,7 +61,8 @@ word image by the hash of the analysis inventory.
   analysis inventory hash against the word image, the hyper-parameters (finite and in range), the tag count, that
   words, suffixes and lemmas are strictly ascending, the flags and masks, positive word counts, the analysis counts and
   parts of speech, that every analysis exists in the inventory and occurs once in its lemma table, strictly ascending
-  feature hashes, the bounds of every number, that every string is well-formed UTF-8 (malformed bytes are rejected,
+  feature hashes, the bounds of every number, that the tense section has a valid flag, at least one feature and as many
+  weights as hashes, that every string is well-formed UTF-8 (malformed bytes are rejected,
   never replaced) and that no bytes trail the decompressed content.
 - `Default`: the table embedded in the assembly, loaded on first use under a thread-safe lazy initializer through
   `LoadEmbedded(Stream?)`, which reports a missing, corrupt or foreign table as a `ModelIntegrityException`.
@@ -74,7 +85,8 @@ word image by the hash of the analysis inventory.
 #### Error Handling
 
 `BasicTables.Load` throws `InvalidDataException` for a data that is not Brotli, a wrong
-magic or format revision, a table built for another analysis inventory (the message names both hashes), an unknown or
+magic or format revision (including the retired `WSB3`), a table built for another analysis inventory (the message
+names both hashes), an unknown or
 duplicate analysis, invalid hyper-parameters, a different tag count, unordered words, suffixes, lemmas or feature
 hashes, invalid flags, masks, analysis counts or parts of speech, oversized numbers, a truncated blob, bytes after the
 end of the Brotli stream and trailing bytes. `Default` loads the embedded table through `LoadEmbedded(Stream?)`, which

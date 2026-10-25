@@ -347,3 +347,19 @@ C-invalid-1	C	invalid	invalid/Adjective	invalid#legally-invalid|invalid#no-longe
 C-invalid-2	C	invalid	invalid/Adjective	invalid#legally-invalid|invalid#no-longer-valid	4	The computer rejected the {invalid} password .	Not valid (in-VAL-id).
 C-invalid-3	C	invalid	invalid/Noun	invalid#chronically-ill	5	Her aunt lived as an {invalid} for years after the long illness .	Sick person (IN-vuh-lid).
 C-invalid-4	C	invalid	invalid/Noun	invalid#chronically-ill	6	The nurse brought tea to the {invalid} in the small back room .	Sick person (IN-vuh-lid).
+T-read-1	T	read	read/Verb/Tense=Pres		2	I will {read} that tomorrow .	Non-past (infinitive after a modal); the same word as the past in the next row.
+T-read-2	T	read	read/Verb/Tense=Past		2	I have {read} that already .	Past participle after a form of have.
+T-put-1	T	put	put/Verb/VerbForm=Inf		1	Please {put} the books on the shelf .	Imperative: non-past.
+T-put-2	T	put	put/Verb/Tense=Past		2	She had {put} the keys in her bag before she left .	Past participle after a form of have.
+T-cut-1	T	cut	cut/Verb/VerbForm=Inf		2	They will {cut} the budget next year .	Infinitive after a modal.
+T-cut-2	T	cut	cut/Verb/Tense=Past		1	He {cut} the cake into six equal pieces .	Simple past after a singular subject.
+T-set-1	T	set	set/Verb/VerbForm=Inf		2	We usually {set} the table before dinner .	Present tense: non-past.
+T-set-2	T	set	set/Verb/Tense=Past		4	The workers had already {set} up the stage .	Past participle after had and an adverb.
+T-hit-1	T	hit	hit/Verb/VerbForm=Inf		2	Do not {hit} the brakes too hard .	Infinitive after do-support.
+T-hit-2	T	hit	hit/Verb/Tense=Past		2	The ball {hit} the window and broke it .	Simple past.
+T-let-1	T	let	let/Verb/VerbForm=Inf		1	Please {let} me know when you arrive .	Imperative: non-past.
+T-let-2	T	let	let/Verb/Tense=Past		1	Nobody {let} the dog out last night .	Simple past with a time adverb.
+T-spread-1	T	spread	spread/Verb/VerbForm=Inf		2	Rumors can {spread} quickly in a small town .	Infinitive after a modal.
+T-spread-2	T	spread	spread/Verb/Tense=Past		3	The news had {spread} across the whole village by noon .	Past participle after had.
+T-come-1	T	come	come/Verb/VerbForm=Inf		3	Why did they {come} so late ?	Infinitive after do-support.
+T-come-2	T	come	come/Verb/VerbForm=Part		2	He has {come} a long way since then .	Past participle after a form of have; the lexicon spells it VerbForm=Part.

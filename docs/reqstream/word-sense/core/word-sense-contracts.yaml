@@ -126,7 +126,9 @@ sections:
                   FallbackWordSenseModel shall compose a primary and a fallback model: classify the whole word list
                   with both, answer each word with the complete result of the primary model when the primary model
                   scored senses for it (its selected analysis lists scored senses, or its level is Group or Sense) and
-                  otherwise with the complete result of the fallback model, never a mixture of the two, ensure its
+                  otherwise with the complete result of the fallback model, never a mixture of the probabilities of the
+                  two (except the split of a tied slot that WordSense-Core-WordSenseContracts-FallbackSlotSplit states),
+                  ensure its
                   members as WordSense-Core-WordSenseContracts-FallbackEnsure states (every member that can be
                   prepared is prepared concurrently, and a failure of one is reported after all ran), dispose both
                   models once, reject a null model, a null list and a null element,
@@ -145,6 +147,112 @@ sections:
                   - WordSenseContracts_FallbackWordSenseModel_Dispose_DisposesBothOnce
                   - WordSenseContracts_FallbackWordSenseModel_ClassifyAsync_InvalidArguments_Throw
                   - WordSenseContracts_FallbackWordSenseModel_ClassifyAsync_ResultNotParallel_Throws
+
+              - id: WordSense-Core-WordSenseContracts-FallbackSlotSplit
+                title: >-
+                  FallbackWordSenseModel shall re-split the tied variants of a slot of the primary result with the
+                  proportions of the fallback result, as the child requirements state. The child requirements use
+                  these terms: a slot is the analyses of a result with the same lemma and part of speech, and two
+                  probabilities are equal when they differ by at most 1e-9.
+                tags: [unit]
+                justification: |
+                  An encoder scores the senses of a slot and has no evidence for the split of the slot among its feature
+                  variants (the past and the infinitive of put), so it gives them the same probability and the lexicon
+                  order decided the tense; the Basic model reads the tense from the context, and the split inside a slot
+                  does not change the slot probability, so using it cannot change what the answer says about the sense.
+                  A parent requirement carries the terms once; the child requirements state each behavior that can be
+                  tested on its own.
+                children:
+                  - WordSense-Core-WordSenseContracts-FallbackSlotSplit-Eligible
+                  - WordSense-Core-WordSenseContracts-FallbackSlotSplit-FallbackSeparates
+                  - WordSense-Core-WordSenseContracts-FallbackSlotSplit-Proportions
+                  - WordSense-Core-WordSenseContracts-FallbackSlotSplit-Order
+                  - WordSense-Core-WordSenseContracts-FallbackSlotSplit-Selection
+                  - WordSense-Core-WordSenseContracts-FallbackSlotSplit-SlotTotal
+                  - WordSense-Core-WordSenseContracts-FallbackSlotSplit-Answer
+
+              - id: WordSense-Core-WordSenseContracts-FallbackSlotSplit-Eligible
+                title: >-
+                  FallbackWordSenseModel shall treat as tied, and so eligible for the split, only a slot of the primary
+                  result that has two or more analyses whose probabilities are all equal (within 1e-9), and shall leave
+                  a slot that the primary model split unequally, and a result with a single analysis, untouched.
+                tags: [unit]
+                justification: |
+                  A slot that the primary model split unequally was decided by a trained form chooser, and the split of
+                  a model that has evidence must never be overridden by one that has not.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_UnequalVariants_AreLeftAsThePrimaryModelSplitThem
+                  - WordSenseContracts_FallbackWordSenseModel_TieTolerance_IsOneNanoUnit
+
+              - id: WordSense-Core-WordSenseContracts-FallbackSlotSplit-FallbackSeparates
+                title: >-
+                  FallbackWordSenseModel shall re-split a tied slot only when the fallback result lists every analysis
+                  of the slot and does not give them all the same probability (within 1e-9), and shall otherwise leave
+                  the slot as the primary result has it.
+                tags: [unit]
+                justification: |
+                  Without a distinction by the fallback model there is no evidence for a split, and an analysis that
+                  the fallback does not list has no share to take.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_FallbackWithoutDistinction_LeavesThePrimaryResult
+
+              - id: WordSense-Core-WordSenseContracts-FallbackSlotSplit-Proportions
+                title: >-
+                  FallbackWordSenseModel shall give the analyses of a re-split slot the relative proportions of the
+                  fallback result and the probability of the slot as the primary result gave it, in every tied slot
+                  that qualifies, whether or not the slot is the selected one.
+                tags: [unit]
+                justification: |
+                  The proportions are the only thing taken from the fallback; the slot keeps what the primary model
+                  says about the senses.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_TiedVariantsOfASlot_TakeTheProportionsOfTheFallback
+                  - WordSenseContracts_FallbackWordSenseModel_TiedSlotThatIsNotSelected_IsSplitAndLeavesTheSelectedAnalysis
+
+              - id: WordSense-Core-WordSenseContracts-FallbackSlotSplit-Order
+                title: >-
+                  FallbackWordSenseModel shall sort the analyses of a re-split slot again, the most probable first, a
+                  tie keeping the order of the primary result.
+                tags: [unit]
+                justification: |
+                  The analyses of a slot are listed by their probability, and equal shares must stay deterministic.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_TiedVariantsOfASlot_TakeTheProportionsOfTheFallback
+                  - WordSenseContracts_FallbackWordSenseModel_TiedVariants_EqualShares_KeepTheOrderOfThePrimaryResult
+
+              - id: WordSense-Core-WordSenseContracts-FallbackSlotSplit-Selection
+                title: >-
+                  FallbackWordSenseModel shall select the new first analysis of the result when the primary result
+                  selected its first analysis, so that the tense of the fallback decides the selected analysis, and
+                  shall otherwise keep the selected analysis of the primary result.
+                tags: [unit]
+                justification: |
+                  The selected analysis follows the first analysis of the list, and a selection that was not the first
+                  analysis (a noun beside a tied verb slot) is not the business of the split.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_TiedVariants_SelectedAnalysisFollowsTheFallbackSplit
+                  - WordSenseContracts_FallbackWordSenseModel_TiedSlotThatIsNotSelected_IsSplitAndLeavesTheSelectedAnalysis
+
+              - id: WordSense-Core-WordSenseContracts-FallbackSlotSplit-SlotTotal
+                title: >-
+                  FallbackWordSenseModel shall leave the probability of every slot as the primary result gave it, so
+                  that the probabilities of the result still sum to one.
+                tags: [unit]
+                justification: |
+                  The split is a prior inside a slot and cannot change what the answer says about the sense.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_ManyInputs_KeepSlotTotalsLevelAndConfidence
+
+              - id: WordSense-Core-WordSenseContracts-FallbackSlotSplit-Answer
+                title: >-
+                  FallbackWordSenseModel shall leave the level, the confidence, the group, the sense and the senses of
+                  every analysis of the primary result as they are when it re-splits a slot.
+                tags: [unit]
+                justification: |
+                  The sense figures of the encoder must not move when only the tense of a verb is decided.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_TiedVariantsOfASlot_TakeTheProportionsOfTheFallback
+                  - WordSenseContracts_FallbackWordSenseModel_ManyInputs_KeepSlotTotalsLevelAndConfidence
 
               - id: WordSense-Core-WordSenseContracts-FallbackEnsure
                 title: >-

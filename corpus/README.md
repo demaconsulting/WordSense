@@ -36,7 +36,7 @@ none of these rows is in the corpus any more.
 | `curation/` | `*.tsv`, `README.md` | The reviewed senses and groups (the input of `seed-inventory`) |
 | `lexicon/` | `*.tsv` | The dictionary word list, the auxiliaries and the form rules (inputs of `compile-image`) |
 | `open/` | see `open/README.md` | The open English part-of-speech corpus (CC0 annotations over public-domain text): `representative/` (random; the only input of usage statistics, such as the Basic tagger counts in `open/counts/`, and the headline real-text evaluation) and `targeted/` (deliberate selections; a challenge set) |
-| `suite/` | `*.tsv`, `README.md` | The reviewed suite of 348 sentences about common ambiguous words, the expectation of each model for each row (a regression test) and the floors of the challenge set; project-authored, CC0 1.0, evaluation only |
+| `suite/` | `*.tsv`, `README.md` | The reviewed suite of 364 sentences about common ambiguous words and same-spelling verbs, the expectation of each model for each row (a regression test) and the floors of the challenge set; project-authored, CC0 1.0, evaluation only |
 
 Every file is UTF-8 without a byte-order mark, with LF line endings.
 

@@ -112,6 +112,25 @@ failure unchanged
 (`WordSenseContracts_FallbackWordSenseModel_EnsureModelAsync_OnlyCapableMemberEnsured`,
 `WordSenseContracts_FallbackWordSenseModel_EnsureModelAsync_BothFail_ReportsAfterBothRan`).
 
+### Encoder Models Inherit the Tense Split of Basic
+
+The encoder cannot tell the variants of a slot apart (the past and the infinitive of `put`, the past and the present of
+`read`): it gives them the same probability, so before the tense model the lexicon order decided the tense. The composed
+models (MiniLM and BertBaseCased, each with Basic as the fallback) give those tied variants the proportions that Basic
+gives them from the context, and the probability of the slot, the level, the confidence, the group and the sense of the
+encoder result do not change. The scenario runs on both packages with the committed model files
+(`MiniLM_Classifier_EndToEnd_SameSpellingVerb_TenseFollowsTheContext` and
+`BertBaseCased_Classifier_EndToEnd_SameSpellingVerb_TenseFollowsTheContext`, theories): `I will read that tomorrow` and
+`Please put the books on the shelf` are answered with a non-past analysis, `I have read that already` and `She had put
+the keys in her bag before she left` with a past one, the probabilities of the word sum to one, and the composite
+equals the encoder model on its own (`Encoder.ClassifyAsync`) in the level, the confidence, the group id, the sense id
+and the probability of the slot of the verb where the encoder scored senses for the verb (`read`), and the complete
+result of Basic where it did not (`put`). The re-split rule, with its invariants (an exact tie only, the proportions
+of the fallback, the slot total, the level, the confidence and the ids kept), is verified in the core test project
+(`WordSenseContracts_FallbackWordSenseModel_TiedVariantsOfASlot_TakeTheProportionsOfTheFallback`,
+`WordSenseContracts_FallbackWordSenseModel_ManyInputs_KeepSlotTotalsLevelAndConfidence`), and the split by Basic itself
+in `BasicWordSenseModel_ClassifyAsync_SameSpellingVerb_TenseFollowsTheContext`.
+
 ### Model Failures Are Typed
 
 A failure of the model files or of the download settings is reported by every model package with typed exceptions that

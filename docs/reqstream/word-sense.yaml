@@ -254,10 +254,13 @@ sections:
       - id: WordSense-Lib-Fallback
         title: >-
           The system shall let two models be composed so that each word is answered by the first model where it scored
-          senses for the word and otherwise by the second, with the complete result of one model and never a mixture,
+          senses for the word and otherwise by the second, with the result of one model and never a mixture of their
+          probabilities (the variants of a slot that the first model cannot tell apart take the proportions of the
+          second, and the probability of the slot does not change),
           and the encoder model packages shall answer, by default, with their encoder model composed with the Basic
           model of the core package, so that every ambiguous word that the encoder does not score is answered at the
-          part of speech level by the Basic model.
+          part of speech level by the Basic model, and the tense of a verb whose past and non-past share a spelling
+          is the one that the context of the Basic model says.
         tags: [system]
         justification: |
           An encoder scores fine senses only for the lemmas it was trained for, while the Basic model chooses the part
@@ -273,6 +276,9 @@ sections:
           - WordSenseContracts_FallbackWordSenseModel_PrimaryChoseOnlyAnalysis_UsesFallback
           - MiniLMWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback
           - BertBaseCasedWordSenseModel_Classify_UntrainedAmbiguousWord_AnswersFromBasicFallback
+          - WordSenseContracts_FallbackWordSenseModel_TiedVariantsOfASlot_TakeTheProportionsOfTheFallback
+          - MiniLM_Classifier_EndToEnd_SameSpellingVerb_TenseFollowsTheContext
+          - BertBaseCased_Classifier_EndToEnd_SameSpellingVerb_TenseFollowsTheContext
 
       - id: WordSense-Lib-Data
         title: >-
@@ -426,6 +432,7 @@ sections:
           - WordSense-WordSenseBuilder-SenseEvalAllWordsFigures
           - WordSense-WordSenseBuilder-SenseEvalAllWordsBaseline
           - WordSense-WordSenseBuilder-RunningText
+          - WordSense-WordSenseBuilder-TenseEvaluation
           - WordSense-WordSenseBuilder-Suite
         tests:
           - ModelTable_Readme_MatchesGeneratedFile

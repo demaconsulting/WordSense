@@ -128,7 +128,9 @@ The probabilities are computed per slot, never per variant:
    grows with the margin and is comparable only within one result.
 7. **Result.** The result carries the analyses, the selected analysis as `Details`, the level, the confidence and the
    ids. A non-empty `Senses` list in the selected analysis, or the level `Group` or `Sense`, is what a
-   `FallbackWordSenseModel` reads as "this model scored senses for the word": it then uses this result, and otherwise
+   `FallbackWordSenseModel` reads as "this model scored senses for the word": it then uses this result (and gives the
+   variants of a slot that this classifier split equally the proportions of its fallback; this classifier never uses
+   Basic itself, and the probability of every slot stays as computed here), and otherwise
    its fallback.
 8. **Lexicon-only answer.** For a known word whose senses are not scored (a word without usable weights, a word with a
    single analysis and many senses and no weights, a form of several lemmas without a chooser, a word whose encoder

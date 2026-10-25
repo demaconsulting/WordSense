@@ -5,11 +5,21 @@ using DemaConsulting.WordSense;
 namespace WordSense.Builder;
 
 /// <summary>
+///     What a gold source says about one token beyond its part-of-speech tag: the lemma, the treebank tag and the
+///     morphological features. It lets an evaluation score the tense of a verb, not only its part of speech.
+/// </summary>
+/// <param name="Lemma">The lemma of the token, or empty when the source gives none.</param>
+/// <param name="Xpos">The language-specific tag of the source (for example <c>VBD</c>), or empty when the source has none.</param>
+/// <param name="Features">The morphological features of the source in its own notation (<c>Tense=Past|VerbForm=Part</c>), or empty when the source has none.</param>
+internal readonly record struct GoldToken(string Lemma, string Xpos, string Features);
+
+/// <summary>
 ///     One sentence reduced to what the tagger needs: its tokens and the tag of each token.
 /// </summary>
 /// <param name="Words">The tokens as written; a contraction such as "don't" is one token.</param>
 /// <param name="Tags">The tag of each token (see <see cref="PosTag"/>).</param>
-internal sealed record TaggedSentence(string[] Words, int[] Tags);
+/// <param name="Gold">What the source says about each token beyond its tag (parallel to <paramref name="Words"/>), or null when the source gives nothing but the tags.</param>
+internal sealed record TaggedSentence(string[] Words, int[] Tags, GoldToken[]? Gold = null);
 
 /// <summary>
 ///     The tag statistics that the basic model is trained from: the tag n-gram counts and the per-word tag counts of the

@@ -993,7 +993,12 @@ Both models classify the whole list of words (so each sees the same sentence), a
 word: a word is answered with the complete result of the primary model when the primary model scored senses for it (the
 selected analysis lists senses, or the level is `Group` or `Sense`), and otherwise with the complete result of the
 fallback model. A result is never a mixture of the two, so its analyses, level, confidence and ids belong together, and
-its probabilities are those of one model (they are not comparable with those of the other). `FallbackWordSenseModel`
+its probabilities are those of one model (they are not comparable with those of the other). One refinement keeps the
+primary result honest about what it did not decide: when the primary result gives every variant of a slot (a lemma and a
+part of speech: `read` as a past and as a present tense, `put` as an infinitive and as a past tense) exactly the same
+probability, which is what an encoder does because the variants share their senses, the variants take the relative
+proportions of the fallback model, which reads the tense from the context. The probability of the slot, the level, the
+confidence and the ids do not change. `FallbackWordSenseModel`
 implements `IDownloadableWordSenseModel`: its `EnsureModelAsync` forwards the same `DownloadOptions` concurrently only to
 the members that have the capability and skips the others (a model such as Basic); all capable members are started
 before any failure is reported, and the typed exception of a member reaches the caller unchanged. With no capable member
@@ -1353,12 +1358,12 @@ written sentences in `tools/quota-fill/README.md`. All commands run from the rep
 | `weights <modelId>` | Trains the fine-sense weights and the per-lemma thresholds of an encoder model (`minilm` or `bert-base-cased`) |
 | `evaluate <modelId>` | Measures a model (`minilm`, `bert-base-cased` or `basic`) on holdout and real text, at each answer level |
 | `evaluate-senses [--model all] [--download]` | Measures the models on SemCor 3.0 (from the git-ignored cache, or downloaded after verifying its SHA-256; never committed): the trained lemmas, and all mapped words of a trained lemma or of an untrained lemma with two or more senses, with a tag-count baseline |
-| `evaluate-running [--model all] [--gold FILE]` | Measures the part-of-speech accuracy of the models on the open corpus test split, the convention-mapped treebank test file and the challenge set |
+| `evaluate-running [--model all] [--gold FILE] [--report all\|running\|tense]` | Measures the part-of-speech accuracy of the models on the open corpus test split, the convention-mapped treebank test file and the challenge set, and the tense of the verbs whose past and non-past share a spelling (`put`, `cut`, `read`) on the open corpus and the treebank files |
 | `evaluate-suite` | Runs the reviewed suite against the three models and reports the pass rates and the regressions |
 | `check-leakage` | Checks that no sentence is shared by a training part and an evaluation part, by two evaluation parts, or by the corpus and an Open English WordNet example |
 | `open-counts` | Counts the tag statistics of the training split of the open part-of-speech corpus into `corpus/open/counts` |
 | `train-basic` | Retrains the whole Basic model from those counts and the anchors, and writes its table (`Resources/basic.bin`) |
-| `tune-basic` | Compares hyperparameter variants of Basic on the development split of the open corpus and an anchor subset; writes nothing |
+| `tune-basic` | Compares hyperparameter variants of Basic, and the weight of its tense model, on the development data only; writes nothing |
 | `evaluate-tagger [--gold FILE]` | Measures the part-of-speech accuracy of Basic on the open corpus test split (headline), the targeted challenge set and an optional gold file |
 | `appendix` | Regenerates the generated senses appendix of this guide |
 

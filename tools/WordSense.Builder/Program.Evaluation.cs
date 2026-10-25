@@ -59,22 +59,45 @@ internal static partial class Program
     private static async Task<int> RunEvaluateRunningAsync(Dictionary<string, string> options, string repository, string corpus, TextWriter output, CancellationToken cancellationToken)
     {
         var gold = options.TryGetValue("gold", out var g) ? Path.GetFullPath(g) : RunningTextEvaluator.DefaultGold(repository);
+        var report = options.GetValueOrDefault("report", "all");
+        if (report is not ("all" or "running" or "tense"))
+        {
+            throw new InvalidDataException($"--report must be all, running or tense, not '{report}'.");
+        }
+
         var (sets, notes) = RunningTextEvaluator.Load(corpus, options.GetValueOrDefault("split", "test"), gold);
+        var (tenseSets, tenseNotes) = TenseEvaluator.Load(corpus, gold);
         var scoresByModel = new List<(string Model, List<TaggerScore> Scores)>();
+        var tenseByModel = new List<(string Model, List<TenseScore> Scores)>();
         foreach (var info in ModelCatalog.Select(options.GetValueOrDefault("model")))
         {
             using var model = ModelCatalog.Open(info, repository);
             await ModelCatalog.EnsureAsync(model, cancellationToken).ConfigureAwait(false);
-            var scores = await RunningTextEvaluator.RunAsync(model, sets, cancellationToken).ConfigureAwait(false);
-            scoresByModel.Add((ModelTable.DisplayName(info.Name), scores));
-            output.WriteLine($"{info.Name}: running text done.");
-            if (options.TryGetValue("table", out var table))
+            var display = ModelTable.DisplayName(info.Name);
+            if (report is "all" or "running")
             {
-                ModelTable.Update(table, info.Name, RunningTextEvaluator.TableCells(scores));
+                var scores = await RunningTextEvaluator.RunAsync(model, sets, cancellationToken).ConfigureAwait(false);
+                scoresByModel.Add((display, scores));
+                output.WriteLine($"{info.Name}: running text done.");
+                if (options.TryGetValue("table", out var table))
+                {
+                    ModelTable.Update(table, info.Name, RunningTextEvaluator.TableCells(scores));
+                }
+            }
+
+            if (report is "all" or "tense")
+            {
+                tenseByModel.Add((display, await TenseEvaluator.RunAsync(model, tenseSets, cancellationToken).ConfigureAwait(false)));
+                output.WriteLine($"{info.Name}: tense done.");
             }
         }
 
-        var text = RunningTextEvaluator.Render(scoresByModel, notes);
+        var text = report is "tense" ? string.Empty : RunningTextEvaluator.Render(scoresByModel, notes);
+        if (report is not "running")
+        {
+            text += (text.Length == 0 ? string.Empty : "\n") + TenseEvaluator.Render(tenseByModel, tenseNotes);
+        }
+
         output.Write(text);
         WriteReport(options, text);
         return 0;

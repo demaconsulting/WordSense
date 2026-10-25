@@ -202,25 +202,76 @@ internal sealed class LemmaCue
 }
 
 /// <summary>
+///     The table of the shared tense model: how much each hashed context feature says that a verb is a past form (a past
+///     tense or a participle) rather than a non-past form (infinitive, present, imperative).
+/// </summary>
+/// <remarks>
+///     A naive Bayes classifier of two classes reduced to one number per feature: the weight is the log likelihood ratio of
+///     past against non-past, in steps of 1/8 nat, and the prior is the log odds of the classes in the training text. The
+///     features are those of <see cref="CueModel.ExtractTense"/>. The table is trained on all verbs of the open corpus, so
+///     it knows the context of tense and nothing about any single verb. Immutable: the hashes and weights are held as
+///     <see cref="ImmutableArray{T}"/>, so a consumer cannot change them.
+/// </remarks>
+internal sealed class TenseCue
+{
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="TenseCue"/> class.
+    /// </summary>
+    /// <param name="prior">The quantized log odds of past against non-past in the training text, in steps of 1/8 nat.</param>
+    /// <param name="hashes">The ascending, distinct 16-bit feature hashes.</param>
+    /// <param name="weights">The quantized log likelihood ratio of each feature, parallel to <paramref name="hashes"/>.</param>
+    /// <exception cref="ArgumentException">Thrown when an array is the default array or the arrays differ in length.</exception>
+    public TenseCue(sbyte prior, ImmutableArray<ushort> hashes, ImmutableArray<sbyte> weights)
+    {
+        if (hashes.IsDefault || weights.IsDefault || hashes.Length != weights.Length)
+        {
+            throw new ArgumentException("The hashes and weights must be arrays of the same length.");
+        }
+
+        Prior = prior;
+        Hashes = hashes;
+        Weights = weights;
+    }
+
+    /// <summary>
+    ///     Gets the quantized log odds of past against non-past in the training text, in steps of 1/8 nat.
+    /// </summary>
+    public sbyte Prior { get; }
+
+    /// <summary>
+    ///     Gets the ascending feature hashes, as a read-only view.
+    /// </summary>
+    public ImmutableArray<ushort> Hashes { get; }
+
+    /// <summary>
+    ///     Gets the quantized log likelihood ratios of past against non-past, parallel to <see cref="Hashes"/>, as a read-only view.
+    /// </summary>
+    public ImmutableArray<sbyte> Weights { get; }
+}
+
+/// <summary>
 ///     The immutable statistics of the basic model, read once from the embedded table: the part-of-speech transition
-///     probabilities, the word and suffix statistics of the tagger, and the context cue tables of the ambiguous lemmas.
+///     probabilities, the word and suffix statistics of the tagger, the context cue tables of the ambiguous lemmas and
+///     the shared tense table.
 /// </summary>
 /// <remarks>
 ///     <para>
-///     The table is a Brotli-compressed container that the repository's builder writes (<c>WSB3</c>); after
+///     The table is a Brotli-compressed container that the repository's builder writes (<c>WSB4</c>); after
 ///     decompression every integer is a little-endian 7-bit varint unless noted, a double is eight little-endian
-///     bytes and a string is a varint byte length followed by UTF-8. The layout is: the magic <c>WSB3</c>; the
+///     bytes and a string is a varint byte length followed by UTF-8. The layout is: the magic <c>WSB4</c>; the
 ///     32-byte analysis inventory hash (<c>WordImage.InventoryHash</c>, the hash of the analysis, sense and group sections
-///     of the word image the table was trained for); seven doubles (gamma, beta, lambda1, lambda2, lambda3, the weight
-///     of the tagger in the fusion, the inverse temperature of the cues); the tag count; the unigram, bigram and
+///     of the word image the table was trained for); eight doubles (gamma, beta, lambda1, lambda2, lambda3, the weight
+///     of the tagger in the fusion, the inverse temperature of the cues, the weight of the tense model); the tag count; the unigram, bigram and
 ///     trigram tag counts (the boundary is the last index); the tabled words (word, flags byte with bit 0 = closed
 ///     class, a 16-bit closed mask when closed, a 16-bit presence mask and one count per set bit); the suffix entries
-///     (suffix and four counts for noun, verb, adjective and adverb); and the cue lemmas (the training lemma, the
+///     (suffix and four counts for noun, verb, adjective and adverb); the cue lemmas (the training lemma, the
 ///     analysis count, per analysis the lemma string, the part-of-speech byte, the features string and the signed
 ///     quantized prior byte, the delta-coded ascending 16-bit feature hashes and one signed byte weight per feature
-///     and analysis). Words, suffixes and lemmas are in ascending ordinal order, so equal data always gives equal
+///     and analysis); and the tense table (a flag byte, 0 when there is none and 1 when it follows: the signed
+///     quantized prior byte, the delta-coded ascending 16-bit feature hashes and one signed byte weight per feature). Words, suffixes and lemmas are in ascending ordinal order, so equal data always gives equal
 ///     bytes. The load fails when the hash differs from the word image, when an analysis does not exist in the word
-///     image, or when a lemma table names an analysis twice.
+///     image, or when a lemma table names an analysis twice. The previous format <c>WSB3</c> (without the tense weight
+///     and the tense table) is rejected as an unknown format.
 ///     </para>
 ///     <para>
 ///     An instance is immutable and safe for concurrent use: the statistics are exposed only as
@@ -246,7 +297,7 @@ internal sealed class BasicTables
     private const int MaximumLemmaLength = 1024;
     private const int HashSize = 32;
     private const int InitialBufferSize = 1 << 16;
-    private static readonly byte[] Magic = "WSB3"u8.ToArray();
+    private static readonly byte[] Magic = "WSB4"u8.ToArray();
 
     private static readonly Lazy<BasicTables> DefaultTables = new(LoadEmbeddedResource, LazyThreadSafetyMode.ExecutionAndPublication);
 
@@ -262,7 +313,8 @@ internal sealed class BasicTables
         FrozenDictionary<string, WordEntry> words,
         string[] suffixKeys,
         ImmutableArray<double>[] suffixProbabilities,
-        FrozenDictionary<string, LemmaCue> cues)
+        FrozenDictionary<string, LemmaCue> cues,
+        TenseCue? tense)
     {
         Gamma = parameters[0];
         Beta = parameters[1];
@@ -271,6 +323,7 @@ internal sealed class BasicTables
         Lambda3 = parameters[4];
         HmmWeight = parameters[5];
         InvTemperature = parameters[6];
+        TenseWeight = parameters[7];
 
         // The reader hands over arrays that nothing else references, so they are wrapped without a copy and the table
         // exposes only read-only views of them
@@ -281,6 +334,7 @@ internal sealed class BasicTables
         _suffixKeys = suffixKeys;
         _suffixProbabilities = suffixProbabilities;
         Cues = cues;
+        Tense = tense;
         var derived = Derive(unigrams, bigrams, trigrams, Lambda1, Lambda2, Lambda3);
         Transition = ImmutableCollectionsMarshal.AsImmutableArray(derived.Transition);
         TagPrior = ImmutableCollectionsMarshal.AsImmutableArray(derived.TagPrior);
@@ -327,6 +381,17 @@ internal sealed class BasicTables
     ///     Gets the factor (the inverse of the temperature) that scales the cue score in the fused score of an analysis.
     /// </summary>
     public double InvTemperature { get; }
+
+    /// <summary>
+    ///     Gets the weight of the tense model in the split of a verb slot between its past and its non-past analyses: the
+    ///     factor on the log odds of the tense table (0 turns the model off).
+    /// </summary>
+    public double TenseWeight { get; }
+
+    /// <summary>
+    ///     Gets the shared tense table, or null when the table has none (then no slot is split by tense).
+    /// </summary>
+    public TenseCue? Tense { get; }
 
     /// <summary>
     ///     Gets the unigram tag counts, indexed by tag with the boundary last, as a read-only view.
@@ -429,7 +494,7 @@ internal sealed class BasicTables
                 $"The basic table was trained for another analysis inventory: its inventory hash is {Convert.ToHexString(hash)}, the word image has {Convert.ToHexString(inventoryHash)}. Rebuild the table.");
         }
 
-        var parameters = new double[7];
+        var parameters = new double[8];
         for (var i = 0; i < parameters.Length; i++)
         {
             parameters[i] = reader.ReadDouble();
@@ -447,12 +512,13 @@ internal sealed class BasicTables
         var words = ReadWords(reader);
         var (suffixKeys, suffixProbabilities) = ReadSuffixes(reader);
         var cues = ReadCues(reader, analysisExists);
+        var tense = ReadTense(reader);
         if (reader.Remaining != 0)
         {
             throw new InvalidDataException("The basic table has trailing bytes.");
         }
 
-        return new BasicTables(parameters, unigrams, bigrams, trigrams, words, suffixKeys, suffixProbabilities, cues);
+        return new BasicTables(parameters, unigrams, bigrams, trigrams, words, suffixKeys, suffixProbabilities, cues, tense);
     }
 
     /// <summary>
@@ -580,7 +646,7 @@ internal sealed class BasicTables
 
     private static void ValidateParameters(double[] p)
     {
-        if (p.Any(v => !double.IsFinite(v) || v > 1e6) || p[0] <= 0 || p[1] <= 0 || p[2] < 0 || p[3] < 0 || p[4] < 0 || p[5] < 0 || p[6] < 0)
+        if (p.Any(v => !double.IsFinite(v) || v > 1e6) || p[0] <= 0 || p[1] <= 0 || p[2] < 0 || p[3] < 0 || p[4] < 0 || p[5] < 0 || p[6] < 0 || p[7] < 0)
         {
             throw new InvalidDataException("The basic table has invalid hyper-parameters.");
         }
@@ -742,6 +808,46 @@ internal sealed class BasicTables
         }
 
         return analyses;
+    }
+
+    /// <summary>
+    ///     Reads the tense section: a flag byte (0 for none, 1 for a table), then the prior, the feature hashes and one weight per hash.
+    /// </summary>
+    /// <param name="reader">The reader, positioned after the cue tables.</param>
+    /// <returns>The tense table, or null when the section says there is none.</returns>
+    /// <exception cref="InvalidDataException">Thrown when the flag is neither 0 nor 1, the table has no feature, or the hashes are unordered or the weights are truncated.</exception>
+    private static TenseCue? ReadTense(Reader reader)
+    {
+        var flag = reader.ReadByte();
+        if (flag == 0)
+        {
+            return null;
+        }
+
+        if (flag != 1)
+        {
+            throw new InvalidDataException("The basic table has an invalid tense flag.");
+        }
+
+        var prior = (sbyte)reader.ReadByte();
+        var hashes = ReadFeatureHashes(reader);
+        if (hashes.Length == 0)
+        {
+            throw new InvalidDataException("The basic table has a tense table without features.");
+        }
+
+        if (hashes.Length > reader.Remaining)
+        {
+            throw new InvalidDataException("The basic table is truncated: the tense weights extend past the end of the data.");
+        }
+
+        var weights = new sbyte[hashes.Length];
+        for (var w = 0; w < weights.Length; w++)
+        {
+            weights[w] = (sbyte)reader.ReadByte();
+        }
+
+        return new TenseCue(prior, ImmutableCollectionsMarshal.AsImmutableArray(hashes), ImmutableCollectionsMarshal.AsImmutableArray(weights));
     }
 
     private static ushort[] ReadFeatureHashes(Reader reader)

@@ -48,7 +48,8 @@ model, the subsystem does not classify ambiguous words in context; that is the w
 not download anything; `DownloadOptions` only carries the configuration that an encoder package interprets (the
 statistical model is not downloadable and has no use for it). The composite `FallbackWordSenseModel` adds no knowledge
 of its own: it only chooses,
-word by word, between the results of the two models it is given, and forwards an explicit ensure to the members that
+word by word, between the results of the two models it is given (and lets the second model split the tied variants of
+a slot of the first, without changing the probability of any slot), and forwards an explicit ensure to the members that
 are downloadable.
 
 ### Interfaces
@@ -182,7 +183,8 @@ failure, so the table is rebuilt whenever the inventory changes. Words, suffixes
 equal training data gives byte-identical tables. The tag counts come from the representative part of the open corpus
 (`corpus/open`), the cue tables from the fine-sense anchors and the chooser anchors of `corpus/`. The reader validates
 the layout and throws `InvalidDataException` for anything malformed (the embedded default table maps that to a
-`ModelIntegrityException`). The format (magic `WSB3`) is described in detail
+`ModelIntegrityException`). The format (magic `WSB4`: the header with the weight of the tense model, and after the cue
+tables the tense section with the shared past/non-past table) is described in detail
 in the `BasicTables` unit design.
 
 #### Determinism and Concurrency

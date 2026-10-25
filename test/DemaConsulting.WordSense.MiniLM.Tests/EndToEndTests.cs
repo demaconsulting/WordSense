@@ -33,6 +33,56 @@ public class EndToEndTests
     }
 
     /// <summary>
+    ///     The tense of <c>read</c> and <c>put</c> follows the context: the encoder cannot tell the variants of the slot
+    ///     apart, so the Basic model splits them, and the slot keeps the probability the encoder gave it.
+    /// </summary>
+    /// <param name="sentence">The sentence, words separated by spaces.</param>
+    /// <param name="index">The index of the verb.</param>
+    /// <param name="past">Whether the verb is a past tense or a participle in the sentence.</param>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Theory]
+    [InlineData("I will read that tomorrow .", 2, false)]
+    [InlineData("I have read that already .", 2, true)]
+    [InlineData("Please put the books on the shelf .", 1, false)]
+    [InlineData("She had put the keys in her bag before she left .", 2, true)]
+    public async Task MiniLM_Classifier_EndToEnd_SameSpellingVerb_TenseFollowsTheContext(string sentence, int index, bool past)
+    {
+        // Arrange
+        using var model = new MiniLMWordSenseModel(ModelFolder.Require());
+        model.Encoder.IntraOpThreads = 2;
+        var words = sentence.Split(' ');
+        static double SlotMass(ClassifyResult r) => r.Analyses.Where(a => a.Details.PartOfSpeech == r.Details!.PartOfSpeech && a.Details.Lemma == r.Details.Lemma).Sum(a => a.Probability);
+
+        // Act
+        var results = await model.ClassifyAsync(words, TestContext.Current.CancellationToken);
+        var encoded = (await model.Encoder.ClassifyAsync(words, TestContext.Current.CancellationToken))[index];
+
+        // Assert: the selected analysis has the tense of the context and the probabilities of the word sum to one
+        var result = results[index];
+        var details = Assert.IsType<WordDetails>(result.Details);
+        Assert.Equal(PartOfSpeech.Verb, details.PartOfSpeech);
+        Assert.Equal(past, details.TryGetFeature("Tense", out var tense) && tense == "Past" || details.TryGetFeature("VerbForm", out var form) && form == "Part");
+        Assert.Equal(result.Details, result.Analyses[0].Details);
+        Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 9);
+
+        // Assert: when the encoder scored senses for the verb, the slot of the verb, the level, the confidence and the ids are
+        // those of the encoder (only the split inside the slot moved); otherwise the answer is the complete result of Basic
+        var scored = encoded.Level is SenseLevel.Group or SenseLevel.Sense || encoded.Analyses.Any(a => a.Senses.Length > 0);
+        if (scored)
+        {
+            Assert.Equal((encoded.Level, encoded.Confidence, encoded.GroupId, encoded.SenseId), (result.Level, result.Confidence, result.GroupId, result.SenseId));
+            Assert.Equal(SlotMass(encoded), SlotMass(result), 9);
+        }
+        else
+        {
+            using var basic = new BasicWordSenseModel();
+            var expected = (await basic.ClassifyAsync(words, TestContext.Current.CancellationToken))[index];
+            Assert.Equal((expected.Level, expected.Confidence, expected.Details), (result.Level, result.Confidence, result.Details));
+            Assert.Equal(expected.Analyses.Select(a => (a.Details, a.Probability)), result.Analyses.Select(a => (a.Details, a.Probability)));
+        }
+    }
+
+    /// <summary>
     ///     Every result carries its candidate analyses, the selected analysis, a level and, at the sense level, the
     ///     sense id: the determiner "the" has one sense, so it is answered at the sense level.
     /// </summary>

@@ -27,6 +27,12 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `..._NounContext_StaysNoun`, `..._NeedAsMainVerb_IsNotAuxiliary`): with the embedded lexicon and table, a modal or a
   helper in its context is answered as an auxiliary analysis, the copula `be` as a verb, a noun after an article or
   possessive stays a noun, and `need` as a main verb is not an auxiliary; each answer is at the part of speech level.
+- **The tense of a same-spelling verb follows its context**
+  (`BasicWordSenseModel_ClassifyAsync_SameSpellingVerb_TenseFollowsTheContext`, theory): with the embedded lexicon and
+  table, `read`, `put`, `cut` and `set` select a non-past verb analysis in `I will read that tomorrow`, `Please put the
+  books on the shelf`, `They will cut the budget next year` and `We usually set the table before dinner`, and a past one
+  in `I have read that already`, `She had put the keys in her bag before she left`, `He cut the cake into six equal
+  pieces` and `The workers had already set up the stage`, with the probabilities of the word summing to one.
 - **Cancelled token is honored**: `ClassifyAsync` with an already cancelled token throws `OperationCanceledException`.
   A null word list is rejected.
 - **Disposal**: `Dispose` is idempotent, thread-safe and releases nothing, so a classification that is already

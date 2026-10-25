@@ -332,11 +332,195 @@ public class BasicTrainerTests
     [Fact]
     public void WordSenseBuilder_BasicHyperparameters_Default_IsConsistent()
     {
+        // Arrange
         var hp = BasicHyperparameters.Default;
 
-        Assert.Equal(1.0, hp.Lambda1 + hp.Lambda2 + hp.Lambda3, 9);
+        // Act
+        var lambdas = hp.Lambda1 + hp.Lambda2 + hp.Lambda3;
+
+        // Assert
+        Assert.Equal(1.0, lambdas, 9);
         Assert.Equal(1.0 / hp.Temperature, hp.InvTemperature);
         Assert.NotEmpty(BasicHyperparameters.Grid);
         Assert.All(BasicHyperparameters.Grid, g => Assert.NotEmpty(g.Variants));
+        Assert.Contains(hp.TenseWeight, BasicHyperparameters.TenseWeightGrid);
+        Assert.True(hp.TenseWeight > 0);
+    }
+
+    private static TaggedSentence VerbSentence(string[] words, int index, string features)
+    {
+        var tags = new int[words.Length];
+        Array.Fill(tags, PosTag.Pronoun);
+        tags[index] = PosTag.Verb;
+        var gold = new GoldToken[words.Length];
+        Array.Fill(gold, new GoldToken("x", string.Empty, string.Empty));
+        gold[index] = new GoldToken("v", string.Empty, features);
+        return new TaggedSentence(words, tags, gold);
+    }
+
+    private const string PastFeatures = "Mood=Ind|Tense=Past|VerbForm=Fin";
+
+    /// <summary>
+    ///     The class that the tense table learns: past for every past tense and participle, non-past for the infinitive, the
+    ///     imperative and the present of every person but the third singular, and no class for the forms that are spelled apart
+    ///     from the past (third person singular, gerund, present participle) and for a token without features.
+    /// </summary>
+    /// <param name="features">The features of the open corpus.</param>
+    /// <param name="expected">The class: 1 past, 0 non-past, -1 none.</param>
+    [Theory]
+    [InlineData("Mood=Ind|Tense=Past|VerbForm=Fin", 1)]
+    [InlineData("Tense=Past|VerbForm=Part", 1)]
+    [InlineData("Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin", 1)]
+    [InlineData("VerbForm=Inf", 0)]
+    [InlineData("Mood=Imp|VerbForm=Fin", 0)]
+    [InlineData("Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin", 0)]
+    [InlineData("Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin", 0)]
+    [InlineData("Mood=Ind|Person=2|Tense=Pres|VerbForm=Fin", 0)]
+    [InlineData("Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin", -1)]
+    [InlineData("VerbForm=Ger", -1)]
+    [InlineData("Tense=Pres|VerbForm=Part", -1)]
+    [InlineData("", -1)]
+    public void WordSenseBuilder_BasicTrainer_TenseClassOf_SeparatesPastFromTheFormsThatShareItsSpelling(string features, int expected)
+    {
+        // Arrange: the features of the theory row on a gold token
+        var token = new GoldToken("v", string.Empty, features);
+
+        // Act
+        var actual = BasicTrainer.TenseClassOf(token);
+
+        // Assert
+        Assert.Equal(expected, actual);
+    }
+
+    /// <summary>
+    ///     The tense table learns from the context of every verb, whatever the verb: a feature of the past context gets a
+    ///     positive weight and a feature of the infinitive context a negative one, the prior is the log odds of the classes, and
+    ///     the third person singular does not count.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BasicTrainer_TrainTense_LearnsTheContextOfPastAndNonPast()
+    {
+        // Arrange: "had X" is past in six different verbs, "to Y" is the infinitive in six others, "she Z" is a third singular
+        // present that is left out, and a sentence without gold and a non-verb are skipped
+        var sentences = new List<TaggedSentence>();
+        foreach (var verb in new[] { "walked", "put", "ran", "cut", "came", "set" })
+        {
+            sentences.Add(VerbSentence(["they", "had", verb], 2, "Tense=Past|VerbForm=Part"));
+            sentences.Add(VerbSentence(["they", "to", verb], 2, "VerbForm=Inf"));
+            sentences.Add(VerbSentence(["she", verb], 1, "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin"));
+        }
+
+        sentences.Add(new TaggedSentence(["a", "b"], [PosTag.Verb, PosTag.Verb]));
+        sentences.Add(new TaggedSentence(["they", "had", "a"], [PosTag.Pronoun, PosTag.Verb, PosTag.Noun], [new("x", string.Empty, string.Empty), new("v", string.Empty, PastFeatures), new("x", string.Empty, string.Empty)]));
+        sentences.Add(VerbSentence(["they", "had", "walked", "a", "mile"], 3, "VerbForm=Inf") with { Tags = [PosTag.Pronoun, PosTag.Pronoun, PosTag.Pronoun, PosTag.Noun, PosTag.Noun] });
+
+        // Act
+        var table = BasicTrainer.TrainTense(sentences, BasicHyperparameters.Default);
+
+        // Assert: seven past (six plus the "had a" verb) and six non-past
+        Assert.NotNull(table);
+        Assert.Equal((7, 6), (table.Past, table.NonPast));
+        Assert.Equal((sbyte)Math.Round(Math.Log(7.0 / 6.0) / CueModel.Quantum), table.Prior);
+        Assert.Equal(table.Hashes.Order().ToArray(), table.Hashes);
+        Assert.Equal(table.Hashes.Length, table.Weights.Length);
+        var had = Array.IndexOf(table.Hashes, new FeatureRef(CueModel.Left, "had").Hash);
+        var to = Array.IndexOf(table.Hashes, new FeatureRef(CueModel.Left, "to").Hash);
+        var she = Array.IndexOf(table.Hashes, new FeatureRef(CueModel.Left, "she").Hash);
+        Assert.True(had >= 0 && to >= 0);
+        Assert.True(table.Weights[had] > 0);
+        Assert.True(table.Weights[to] < 0);
+        Assert.True(she < 0, "A third-person singular present is no training verb, so its context is not learned.");
+    }
+
+    /// <summary>
+    ///     There is no table without both classes or without a feature that occurs often enough, and the training is
+    ///     deterministic.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BasicTrainer_TrainTense_NeedsBothClassesAndIsDeterministic()
+    {
+        // Arrange
+        TaggedSentence[] pastOnly = [VerbSentence(["they", "had", "walked"], 2, PastFeatures)];
+        List<TaggedSentence> both =
+        [
+            VerbSentence(["they", "had", "walked"], 2, PastFeatures),
+            VerbSentence(["they", "had", "talked"], 2, PastFeatures),
+            VerbSentence(["we", "to", "walk"], 2, "VerbForm=Inf"),
+            VerbSentence(["we", "to", "talk"], 2, "VerbForm=Inf"),
+        ];
+
+        // Act
+        var none = BasicTrainer.TrainTense(pastOnly, BasicHyperparameters.Default);
+        var first = BasicTrainer.TrainTense(both, BasicHyperparameters.Default);
+        var again = BasicTrainer.TrainTense(both, BasicHyperparameters.Default);
+        var strict = BasicTrainer.TrainTense(both, BasicHyperparameters.Default with { TenseMinFeatureCount = 5 });
+
+        // Assert: with a minimum of five occurrences no feature of these four verbs is learned, so there is no table
+        Assert.Null(none);
+        Assert.NotNull(first);
+        Assert.NotNull(again);
+        Assert.Equal(first.Hashes, again.Hashes);
+        Assert.Equal(first.Weights, again.Weights);
+        Assert.Null(strict);
+    }
+
+    /// <summary>
+    ///     A model trained with verbs carries the tense table and the weight of the model in the table it writes, and the
+    ///     reader gives both back; a model trained without verbs has none.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BasicTrainer_Train_WithVerbs_WritesTheTenseTableAndWeight()
+    {
+        // Arrange
+        List<TaggedSentence> verbs =
+        [
+            VerbSentence(["they", "had", "walked"], 2, PastFeatures),
+            VerbSentence(["they", "had", "talked"], 2, PastFeatures),
+            VerbSentence(["we", "to", "walk"], 2, "VerbForm=Inf"),
+            VerbSentence(["we", "to", "talk"], 2, "VerbForm=Inf"),
+        ];
+        var hp = BasicHyperparameters.Default with { TenseWeight = 0.5 };
+
+        // Act
+        var withVerbs = BasicTrainer.Train(Counts(), w => Lexicon.TryGetValue(w, out var found) ? found : default, Anchors(), [], hp, verbs);
+        var without = Train();
+        var tables = Read(Write(withVerbs));
+        var plain = Read(Write(without));
+
+        // Assert
+        Assert.NotNull(withVerbs.Tense);
+        Assert.Contains("tense table", withVerbs.Summary(), StringComparison.Ordinal);
+        Assert.Equal(0.5, tables.TenseWeight);
+        var tense = Assert.IsType<TenseCue>(tables.Tense);
+        Assert.Equal(withVerbs.Tense.Hashes, tense.Hashes.ToArray());
+        Assert.Equal(withVerbs.Tense.Weights, tense.Weights.ToArray());
+        Assert.Equal(withVerbs.Tense.Prior, tense.Prior);
+        Assert.Null(without.Tense);
+        Assert.Null(plain.Tense);
+        Assert.DoesNotContain("tense table", without.Summary(), StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The same data gives the same bytes: the table with the tense section is reproducible, and it starts with the
+    ///     current magic.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BasicTablesWriter_Write_WithTenseTable_IsDeterministicAndCurrentFormat()
+    {
+        // Arrange
+        List<TaggedSentence> verbs = [VerbSentence(["they", "had", "walked"], 2, PastFeatures), VerbSentence(["we", "to", "walk"], 2, "VerbForm=Inf")];
+        var data = BasicTrainer.Train(Counts(), w => Lexicon.TryGetValue(w, out var found) ? found : default, Anchors(), [], BasicHyperparameters.Default, verbs);
+
+        // Act
+        var first = Write(data);
+        var second = Write(data);
+        using var input = new MemoryStream(first);
+        using var brotli = new System.IO.Compression.BrotliStream(input, System.IO.Compression.CompressionMode.Decompress);
+        var head = new byte[4];
+        brotli.ReadExactly(head);
+
+        // Assert
+        Assert.Equal(first, second);
+        Assert.Equal("WSB4"u8.ToArray(), head);
     }
 }

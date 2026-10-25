@@ -85,7 +85,8 @@ sections:
           - id: WordSense-Core-Fallback
             title: >-
               The core subsystem shall provide a public composite model that combines two models, answering each word
-              with the complete result of the primary model where it scored senses for the word and otherwise with
+              with the result of the primary model (and the proportions of the fallback model for the tied variants of
+              one of its slots) where it scored senses for the word and otherwise with
               the complete result of the fallback model, preparing the members that can be prepared, and owning the
               lifetime of both.
             tags: [subsystem]
@@ -95,11 +96,15 @@ sections:
               package, and lets the encoder packages offer one model that answers every word.
             children:
               - WordSense-Core-WordSenseContracts-Fallback
+              - WordSense-Core-WordSenseContracts-FallbackSlotSplit
               - WordSense-Core-WordSenseContracts-FallbackEnsure
             tests:
               - WordSenseContracts_FallbackWordSenseModel_PrimaryScoredSenses_UsesPrimary
               - WordSenseContracts_FallbackWordSenseModel_PrimaryChoseOnlyAnalysis_UsesFallback
+              - WordSenseContracts_FallbackWordSenseModel_EnsureModelAsync_EnsuresBoth
               - WordSenseContracts_FallbackWordSenseModel_EnsureModelAsync_OnlyCapableMemberEnsured
+              - WordSenseContracts_FallbackWordSenseModel_Dispose_DisposesBothOnce
+              - WordSenseContracts_FallbackWordSenseModel_TiedVariantsOfASlot_TakeTheProportionsOfTheFallback
 
           - id: WordSense-Core-Failures
             title: >-
@@ -123,7 +128,8 @@ sections:
             title: >-
               The core subsystem shall classify words from the core lexicon statistically, with no model download: an
               unknown word as unknown, with no analysis, and every known word with all its analyses and their
-              probabilities, the analysis that the sentence context (and, for a form that has a capitalized and a
+              probabilities, the analysis that the sentence context (the tense of a verb whose past and non-past share a
+              spelling included and, for a form that has a capitalized and a
               lower-case lemma, the case of the written word) makes most probable selected, at the part of speech
               level, or at the sense level where the selected analysis has exactly one sense.
             tags: [subsystem]
@@ -142,12 +148,14 @@ sections:
               - WordSense-Core-BasicClassifier-Level
               - WordSense-Core-BasicClassifier-Segments
               - WordSense-Core-BasicClassifier-Case
+              - WordSense-Core-BasicClassifier-Tense
               - WordSense-Core-BasicClassifier-Normalization
               - WordSense-Core-BasicClassifier-Validation
             tests:
               - BasicClassifier_ClassifyAsync_Context_ChoosesPartOfSpeech
               - BasicClassifier_ClassifyAsync_Context_SelectsTheMostProbableAnalysis
               - BasicWordSenseModel_ClassifyAsync_CaseOfWord_ChoosesTheLemma
+              - BasicWordSenseModel_ClassifyAsync_SameSpellingVerb_TenseFollowsTheContext
 
           - id: WordSense-Core-Candidates
             title: >-
@@ -197,6 +205,8 @@ sections:
             children:
               - WordSense-Core-CueModel-Extract
               - WordSense-Core-CueModel-Score
+              - WordSense-Core-CueModel-Tense
+              - WordSense-Core-BasicTables-Tense
             tests:
               - BasicClassifier_ClassifyAsync_SamePartOfSpeechAnalyses_UsesCues
 

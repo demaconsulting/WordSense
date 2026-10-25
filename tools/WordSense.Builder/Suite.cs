@@ -24,7 +24,7 @@ internal enum SuiteGrade
 ///     One reviewed sentence of the suite with what a right answer is.
 /// </summary>
 /// <param name="Id">The unique id of the row, for example <c>H-use-1</c>.</param>
-/// <param name="List">The list of the row: <c>H</c> (common heteronyms), <c>M</c> (words with several parts of speech) or <c>C</c> (classic heteronyms).</param>
+/// <param name="List">The list of the row: <c>H</c> (common heteronyms), <c>M</c> (words with several parts of speech), <c>C</c> (classic heteronyms) or <c>T</c> (verbs whose past and non-past share a spelling).</param>
 /// <param name="Lemma">The lemma of the word list of the row (informative; the analysis names the lemma that is scored).</param>
 /// <param name="AnalysisLemma">The lemma the selected analysis must have.</param>
 /// <param name="PartOfSpeech">The part of speech the selected analysis must have.</param>

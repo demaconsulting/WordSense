@@ -277,6 +277,183 @@ sections:
                   - BasicClassifier_ClassifyAsync_OnlyCapitalizedLemma_StaysKnownInLowerCase
                   - BasicClassifier_ClassifyAsync_CapitalizedWordWithoutCapitalizedLemma_IsAnsweredLikeLowerCase
 
+              - id: WordSense-Core-BasicClassifier-Tense
+                title: >-
+                  BasicClassifier shall split the probability of a verb slot between its past and its non-past
+                  analyses by the tense that the shared tense table of the Basic model reads from the context of the
+                  word, as the child requirements state. The child requirements use these terms: a verb slot is the
+                  analyses of the word that have one lemma and the part of speech Verb; a past analysis is a verb
+                  analysis with Tense=Past or VerbForm=Part; a non-past analysis is any other analysis of the slot;
+                  L is the log odds of past against non-past that the tense table gives the tense features of the
+                  word; and TenseWeight is the weight of the tense model in the table.
+                tags: [unit]
+                justification: |
+                  The senses belong to the lemma and part of speech, so the cue tables have no column for the tense of
+                  most verbs and the non-past analysis was selected for every put, cut and set whatever the sentence
+                  said. The tense of a word is part of its analysis, so the analysis is wrong when the tense is. A
+                  parent requirement carries the terms once; the child requirements state each step that can be
+                  tested on its own.
+                children:
+                  - WordSense-Core-BasicClassifier-Tense-Slot
+                  - WordSense-Core-BasicClassifier-Tense-Context
+                  - WordSense-Core-BasicClassifier-Tense-EqualStart
+                  - WordSense-Core-BasicClassifier-Tense-Weight
+                  - WordSense-Core-BasicClassifier-Tense-Bound
+                  - WordSense-Core-BasicClassifier-Tense-SlotTotal
+                  - WordSense-Core-BasicClassifier-Tense-Answer
+                  - WordSense-Core-BasicClassifier-Tense-SelectsPast
+                  - WordSense-Core-BasicClassifier-Tense-SelectsNonPast
+                  - WordSense-Core-BasicClassifier-Tense-NoTable
+                  - WordSense-Core-BasicClassifier-Tense-WeightZero
+                  - WordSense-Core-BasicClassifier-Tense-NonVerbSlot
+
+              - id: WordSense-Core-BasicClassifier-Tense-Slot
+                title: >-
+                  BasicClassifier shall apply the tense split (as defined in WordSense-Core-BasicClassifier-Tense) to
+                  each verb slot of a word that has both a past analysis and a non-past analysis, a participle
+                  (VerbForm=Part without a tense) counting as a past analysis.
+                tags: [unit]
+                justification: |
+                  The lexicon lists the participle of a verb such as come as a separate analysis, and it is a past
+                  form for the question the model answers.
+                tests:
+                  - BasicClassifier_ClassifyAsync_TenseTable_ParticipleCountsAsPast
+
+              - id: WordSense-Core-BasicClassifier-Tense-Context
+                title: >-
+                  BasicClassifier shall take L (as defined in WordSense-Core-BasicClassifier-Tense) from the tense
+                  features of the word in its segment: the prior of the tense table plus the weights of the features
+                  that the table knows, in nats, so that a context that the table weighs at 3 nats makes the past
+                  analysis e^3 times as probable as the non-past analysis.
+                tags: [unit]
+                justification: |
+                  The tense of a verb is read from its context and not from the verb, so one table serves every verb.
+                tests:
+                  - BasicClassifier_ClassifyAsync_TenseTable_ContextFeaturesSetTheLogOdds
+
+              - id: WordSense-Core-BasicClassifier-Tense-EqualStart
+                title: >-
+                  BasicClassifier shall, after the other evidence has been combined, give the variants of a qualifying
+                  slot equal shares of the probability of the slot before the tense weight applies, so that the
+                  probabilities that a form table of the word (the past and present columns of read) gave to the
+                  variants do not enter the split: with the weight 1 and L of 1 nat the past analysis is e times as
+                  probable as the non-past analysis, whatever the form table said.
+                tags: [unit]
+                justification: |
+                  The form table and the tense table read the same context features, so combining their splits would
+                  count the context twice; on the development data the shared table alone was never worse than the
+                  product of the two.
+                tests:
+                  - BasicClassifier_ClassifyAsync_TenseTable_ReplacesTheSplitOfTheFormTable
+
+              - id: WordSense-Core-BasicClassifier-Tense-Weight
+                title: >-
+                  BasicClassifier shall multiply the share of each past analysis of a qualifying slot by
+                  exp(TenseWeight * L) (as defined in WordSense-Core-BasicClassifier-Tense), so that with L of 3 nats
+                  the weight 2 makes the past analysis e^6 times as probable as the non-past analysis and the weight
+                  0.5 makes it e^1.5 times as probable.
+                tags: [unit]
+                justification: |
+                  The weight lets the table scale how far the context moves the split, and the exponential turns
+                  log odds into the odds of the two classes.
+                tests:
+                  - BasicClassifier_ClassifyAsync_TenseTable_WeightScalesTheLogOdds
+
+              - id: WordSense-Core-BasicClassifier-Tense-Bound
+                title: >-
+                  BasicClassifier shall bound L, and then the product TenseWeight * L (both as defined in
+                  WordSense-Core-BasicClassifier-Tense), each to the range from -30 to 30 nats before the
+                  exponential, so that every probability stays finite and the analyses of the word still sum to one,
+                  whatever the weight and the weights of the table.
+                tags: [unit]
+                justification: |
+                  The table is data, and a weight or a context weighing more than about 700 nats would overflow the
+                  exponential and turn the probabilities into infinity or NaN.
+                tests:
+                  - BasicClassifier_ClassifyAsync_TenseTable_LargeWeight_KeepsProbabilitiesFinite
+                  - BasicClassifier_ClassifyAsync_TenseTable_LargeLogOdds_AreBoundedTo30Nats
+
+              - id: WordSense-Core-BasicClassifier-Tense-SlotTotal
+                title: >-
+                  BasicClassifier shall scale the shares of the variants of a qualifying slot so that they sum to the
+                  probability that the slot had before the tense split, so that the probability of every slot (the sum
+                  of the probabilities of its analyses) and the order of the slots are as they are without the split.
+                tags: [unit]
+                justification: |
+                  The split is a prior inside a slot, as the case prior is between lemmas; the probability of a slot
+                  is the evidence for its senses and must not move when only the tense of a verb is decided.
+                tests:
+                  - BasicClassifier_ClassifyAsync_TenseTable_KeepsSlotProbabilityLevelAndConfidence
+                  - BasicClassifier_ClassifyAsync_TenseTable_ReplacesTheSplitOfTheFormTable
+
+              - id: WordSense-Core-BasicClassifier-Tense-Answer
+                title: >-
+                  BasicClassifier shall give the level, the confidence, the group and the sense of the answer of a word
+                  whose slot was split by tense the values that it gives without the split, so that the split changes
+                  only the probabilities and the order of the analyses inside a slot and the features of the selected
+                  analysis.
+                tags: [unit]
+                justification: |
+                  The part of speech and sense figures, and every confidence, must not move when only the tense of a
+                  verb is decided.
+                tests:
+                  - BasicClassifier_ClassifyAsync_TenseTable_KeepsSlotProbabilityLevelAndConfidence
+
+              - id: WordSense-Core-BasicClassifier-Tense-SelectsPast
+                title: >-
+                  BasicClassifier shall select the past analysis of a verb whose past and non-past share a spelling
+                  (put, cut, set, come, read) when the context of the word makes it more probable (L above 0), as the
+                  past analysis, although the lexicon lists the non-past analysis first.
+                tags: [unit]
+                justification: |
+                  A past context must give the past analysis; before the tense model the non-past analysis was
+                  selected for every put, cut and set whatever the sentence said.
+                tests:
+                  - BasicClassifier_ClassifyAsync_TenseTable_PastContext_SelectsThePastAnalysis
+
+              - id: WordSense-Core-BasicClassifier-Tense-SelectsNonPast
+                title: >-
+                  BasicClassifier shall select the non-past analysis of a verb whose past and non-past share a
+                  spelling when the context of the word makes it more probable (L below 0), as in the context of an
+                  infinitive, a present or an imperative.
+                tags: [unit]
+                justification: |
+                  The tense model must not turn every such verb into a past: a non-past context gives the non-past
+                  analysis.
+                tests:
+                  - BasicClassifier_ClassifyAsync_TenseTable_InfinitiveContext_SelectsTheNonPastAnalysis
+
+              - id: WordSense-Core-BasicClassifier-Tense-NoTable
+                title: >-
+                  BasicClassifier shall leave the probabilities of every word unchanged by the tense model when the
+                  table has no tense table.
+                tags: [unit]
+                justification: |
+                  A table without the model must behave as it did before the model existed.
+                tests:
+                  - BasicClassifier_ClassifyAsync_NoTenseTable_LeavesProbabilitiesUnchanged
+
+              - id: WordSense-Core-BasicClassifier-Tense-WeightZero
+                title: >-
+                  BasicClassifier shall leave the probabilities of every word unchanged by the tense model when the
+                  TenseWeight of the table is 0.
+                tags: [unit]
+                justification: |
+                  The weight 0 is the documented way to turn the model off.
+                tests:
+                  - BasicClassifier_ClassifyAsync_TenseWeightZero_LeavesProbabilitiesUnchanged
+
+              - id: WordSense-Core-BasicClassifier-Tense-NonVerbSlot
+                title: >-
+                  BasicClassifier shall leave the probabilities of a slot unchanged by the tense model when it is not a
+                  verb slot or does not have both a past and a non-past analysis (the singular and the plural of a
+                  noun).
+                tags: [unit]
+                justification: |
+                  A word never changes for a model that does not apply to it.
+                tests:
+                  - BasicClassifier_ClassifyAsync_NonVerbSlot_LeavesProbabilitiesUnchanged
+
               - id: WordSense-Core-BasicClassifier-Normalization
                 title: >-
                   BasicClassifier shall look words up case-insensitively (in lower case), read the curly apostrophe

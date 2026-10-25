@@ -58,6 +58,30 @@ public sealed class TaggerEvaluatorTests : IDisposable
     }
 
     /// <summary>
+    ///     A gold file with the lemma, the treebank tag and the features gives them to the tokens (an underscore is empty);
+    ///     a file with three columns gives none, and a file that mixes the two is rejected.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_TaggerEvaluator_ReadGold_SixColumns_CarriesLemmaTagAndFeatures()
+    {
+        // Arrange
+        var six = _dir.Write("six.tsv", "1\tThey\tR\tthey\tPRP\t_\n1\tput\tV\tput\tVBD\tMood=Ind|Tense=Past|VerbForm=Fin\n");
+        var three = _dir.Write("three.tsv", "1\tThey\tR\n");
+        var mixed = _dir.Write("mixed.tsv", "1\tThey\tR\n1\tput\tV\tput\tVBD\t_\n");
+
+        // Act
+        var withGold = TaggerEvaluator.ReadGold(six);
+        var without = TaggerEvaluator.ReadGold(three);
+
+        // Assert
+        var gold = Assert.IsType<GoldToken[]>(Assert.Single(withGold).Gold);
+        Assert.Equal(new GoldToken("they", "PRP", string.Empty), gold[0]);
+        Assert.Equal(new GoldToken("put", "VBD", "Mood=Ind|Tense=Past|VerbForm=Fin"), gold[1]);
+        Assert.Null(Assert.Single(without).Gold);
+        Assert.Throws<InvalidDataException>(() => TaggerEvaluator.ReadGold(mixed));
+    }
+
+    /// <summary>
     ///     A gold line that is not three columns with a tag letter is rejected.
     /// </summary>
     /// <param name="line">The malformed line.</param>

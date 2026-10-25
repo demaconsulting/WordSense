@@ -66,7 +66,8 @@ returns the analyses of the form (one per lemma, part of speech and features, ne
    cue table of the normalized word first (a form that spans lemmas, such as `left` or `bases`, has a table of its own)
    and then the table of the lemma of the first analysis. A table gives one cue score per analysis (`NaN` for an analysis
    it has no column for), otherwise no analysis has a cue score, which leaves the fusion to the tagger alone;
-   `SenseFusion.Fuse` gives one probability per analysis, and the case of the written word then adjusts it (below).
+   `SenseFusion.Fuse` gives one probability per analysis, and the case of the written word and then the tense of the
+   context adjust it (below).
    The classifier builds an `AnalysisCandidate` for each analysis (with the one sense of an analysis that has exactly
    one sense) and sorts them with a stable insertion sort (the number of analyses is small): the slots (lemma and
    part of speech) by the sum of the probabilities of their analyses, largest first, a tie keeping the lexicon order
@@ -139,6 +140,56 @@ analyses, applied to the probabilities after the fusion and renormalized:
 The training is not affected (the cue tables and the tagger counts are built from lower-cased text), so the embedded
 table is unchanged.
 
+#### Tense Evidence
+
+The senses belong to a lemma and a part of speech (a slot), so the cue tables, which are trained per lemma and per form
+from sense and chooser sentences, have no column for the tense of most verbs: the past and the infinitive of `put`, `cut`
+or `set` share the one column of their slot, get the same score and the same tagger posterior, and kept the lexicon
+order, so the non-past analysis was always selected. The classifier therefore reads the tense from a model that is
+shared by all verbs, as a prior on the split of a slot, applied after the case prior (`ApplyTense`):
+
+- **The model** (`TenseCue`, the tense section of `basic.bin`). A naive Bayes classifier of two classes, past and
+  non-past, over the hashed context features of `CueModel.ExtractTense`: the features of the cue model (the distinct
+  tokens within five positions, the left and the right neighbor), the same tokens told apart by the side of the target they
+  stand on, the edge of the segment as the neighbor of the first or last word (the first and last token with a letter, so
+  punctuation does not count as the edge word), and the nearest function word to the left that
+  carries the tense of a verb phrase (`CueModel.IsGovernor`: forms of `be`, `have` and `do`, the modals, `to`, negations
+  and the contractions of them, a closed class of English grammar and not a list of verbs). The target is never a feature,
+  so the model reads only the context. It is trained on every verb of the training split of the representative open
+  corpus (`BasicTrainer.TrainTense`): past is `Tense=Past` (the simple past and the participle), non-past is the
+  infinitive, the imperative and the present of every person but the third singular; the third singular (spelled apart from
+  the past), the gerund and the present participle are left out. The weights are log likelihood ratios in eighths of a nat
+  and the prior is the log odds of the classes in the training text (the natural prior).
+- **Which slots.** A slot qualifies when it is a verb slot with at least one past analysis (`BasicClassifier.IsPast`:
+  `Tense=Past` or `VerbForm=Part`, which is how the lexicon spells the participle; the gerund is `VerbForm=Ger`) and at
+  least
+  one analysis that is not past. That is the case for every verb whose past and non-past share a spelling, found in the
+  lexicon and not in a word list: `put`, `cut`, `set`, `hit`, `let`, `come`, `run`, `read` and the rest.
+- **The weight.** The log odds of the model are bounded to 30 nats, and so is their product with the weight (so any
+  weight the table accepts keeps the exponential finite). The variants of the slot start with equal shares of
+  the probability the slot had, the past variants are weighted by `exp(TenseWeight * L)` (L is the log odds of the model),
+  and all probabilities of the
+  slot are scaled back to the old total. The probability of the slot, and with it the level, the confidence, the group and
+  the sense, never change: only the split
+  inside the slot, the order of its analyses and, when it is the selected slot, the selected analysis. `TenseWeight` is
+  in the header of the table (1.0, tuned on the development splits only: any weight of at least 1 gave the same accuracy
+  there, and the weight 0 turns the model off).
+- **Interaction with the form tables.** The cue tables of `read`, `beat`, `cast` and `upset` have their own past and
+  present columns, and the fusion has already split those slots when the tense model reads them. The shared model
+  replaces that split: both read the same context features, one from 26 or fewer sentences of a form and one from all
+  verbs of the corpus, so multiplying them would count the context twice. This was measured on the development data
+  (the development half of the independent read set, 205 sentences, and the development splits of the open corpus and
+  the treebank): replacing was never worse than multiplying (one more sentence right on the read set, the same tokens
+  elsewhere), so the simpler rule stays. A word without a form table is not affected, because its variants were
+  tied.
+- **Nothing to separate, nothing changes.** A slot without both classes, a word without a tense table, and
+  `TenseWeight` 0
+  leave the probabilities exactly as they are.
+
+The decision is the tense of the meaning of the word in its sentence (`I will read that tomorrow` is a non-past `read`,
+`I have read that already` a past participle): nothing about the sound of the word enters. An encoder model inherits the
+split through `FallbackWordSenseModel`, which gives the tied variants of an encoder slot the proportions of this model.
+
 #### Error Handling
 
 A null list throws `ArgumentNullException`; a null element throws `ArgumentException`; a canceled token throws
@@ -154,8 +205,8 @@ many threads at once, and the same words always give the same results.
 
 #### Dependencies
 
-`WordLexicon` (`Lookup` and `SensesOf`), `BasicTables`, `PosTagger`, `CueModel`, `SenseFusion` and the core contracts
-(`ClassifyResult`, `WordDetails`, `SenseLevel`).
+`WordLexicon` (`Lookup` and `SensesOf`), `BasicTables` (including its `TenseCue`), `PosTagger`, `CueModel`,
+`SenseFusion` and the core contracts (`ClassifyResult`, `WordDetails`, `SenseLevel`).
 
 #### Callers
 

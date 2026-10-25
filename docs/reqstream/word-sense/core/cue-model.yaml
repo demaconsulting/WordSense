@@ -35,3 +35,123 @@ sections:
                   - CueModel_Score_UsesWeightsAndMarksMissingAnalyses
                   - CueModel_Score_UnknownFeature_GivesPrior
                   - CueModel_Score_NullTableOrDefaultAnalyses_Throws
+
+              - id: WordSense-Core-CueModel-Tense
+                title: >-
+                  CueModel shall extract the tense features of a target word and score a context from a tense table, as
+                  the child requirements state. The child requirements use these terms: a word is a token with at least
+                  one letter; the first word of a segment is its first word and the last word of a segment is its last
+                  word, so that a punctuation token before the first word or after the last word does not make the
+                  target an inner word.
+                tags: [unit]
+                justification: |
+                  The tense of a verb is read from its context and not from the verb, so one table serves every verb. A
+                  parent requirement carries the terms once; the child requirements state each behavior that can be
+                  tested on its own.
+                children:
+                  - WordSense-Core-CueModel-Tense-Extract
+                  - WordSense-Core-CueModel-Tense-Sides
+                  - WordSense-Core-CueModel-Tense-Edge
+                  - WordSense-Core-CueModel-Tense-Governor
+                  - WordSense-Core-CueModel-Tense-Capacity
+                  - WordSense-Core-CueModel-Tense-FeatureKinds
+                  - WordSense-Core-CueModel-Tense-Score
+                  - WordSense-Core-CueModel-Tense-Quantization
+                  - WordSense-Core-CueModel-Tense-NullTable
+
+              - id: WordSense-Core-CueModel-Tense-Extract
+                title: >-
+                  CueModel shall include the cue features of the target (the features of
+                  WordSense-Core-CueModel-Extract) in its tense features, and never the target token itself.
+                tags: [unit]
+                justification: |
+                  The model must read only the context, so that it cannot learn one verb from another.
+                tests:
+                  - CueModel_ExtractTense_IncludesTheCueFeaturesAndNeverTheTarget
+
+              - id: WordSense-Core-CueModel-Tense-Sides
+                title: >-
+                  CueModel shall add to the tense features each distinct word within five positions of the target as a
+                  left-window feature when it stands before the target and as a right-window feature when it stands
+                  after it, so that a word on both sides gives both features.
+                tags: [unit]
+                justification: |
+                  An auxiliary before a verb and a word after it say different things about the tense.
+                tests:
+                  - CueModel_ExtractTense_WindowTokensAreToldApartBySide
+
+              - id: WordSense-Core-CueModel-Tense-Edge
+                title: >-
+                  CueModel shall add the segment edge as the left neighbor of the target when no word stands before it
+                  in the segment (the target is the first word), and as the right neighbor of the target when no word
+                  stands after it (the target is the last word), whatever punctuation tokens stand before or after the
+                  target, and never for a target that has a word on that side.
+                tags: [unit]
+                justification: |
+                  The first word of a sentence is mostly an imperative or a past, never governed by an auxiliary, and a
+                  quotation mark or the closing period of a sentence must not hide that.
+                tests:
+                  - CueModel_ExtractTense_SegmentEdgesAreNeighbors
+
+              - id: WordSense-Core-CueModel-Tense-Governor
+                title: >-
+                  CueModel shall add as the governing feature the nearest token to the left of the target within six
+                  positions that is a function word of the closed class of tense carriers (the forms of be, have and do,
+                  the modals, to, the negations and their contractions), and none when no such token is there.
+                tags: [unit]
+                justification: |
+                  The function word that governs a verb phrase carries its tense; the class is closed and holds no verb
+                  list.
+                tests:
+                  - CueModel_ExtractTense_GovernorIsTheNearestFunctionWordWithinTheRadius
+                  - CueModel_IsGovernor_ClosedClassOfFunctionWords
+
+              - id: WordSense-Core-CueModel-Tense-Capacity
+                title: >-
+                  CueModel shall write no more tense features than the size of the buffer that it documents, also for a
+                  target with a full window on both sides.
+                tags: [unit]
+                justification: |
+                  A caller allocates the buffer once; a longer list would write past it.
+                tests:
+                  - CueModel_ExtractTense_FullWindow_FitsTheBuffer
+
+              - id: WordSense-Core-CueModel-Tense-FeatureKinds
+                title: >-
+                  CueModel shall hash the left-window, right-window and governing features with kind prefixes of their
+                  own, so that the same token as a window feature, a left-window feature, a right-window feature and a
+                  governing feature has different hashes.
+                tags: [unit]
+                justification: |
+                  The table stores one weight per hash; features of different kinds must not share a weight.
+                tests:
+                  - FeatureRef_Hash_TenseKindsHaveOwnPrefixes
+
+              - id: WordSense-Core-CueModel-Tense-Score
+                title: >-
+                  CueModel shall score a context from a tense table as the prior plus the weights of the features that
+                  the table knows, ignoring the features that it does not know, positive when the context says past.
+                tags: [unit]
+                justification: |
+                  The table is a naive Bayes model: the log odds of the classes plus the log likelihood ratio of each
+                  known feature.
+                tests:
+                  - CueModel_ScoreTense_SumsPriorAndKnownWeights
+
+              - id: WordSense-Core-CueModel-Tense-Quantization
+                title: >-
+                  CueModel shall give the score of a context in eighths of a nat, one stored unit being 1/8 nat.
+                tags: [unit]
+                justification: |
+                  The table stores signed bytes; the scale turns them back into nats.
+                tests:
+                  - CueModel_ScoreTense_ResultIsInEighthsOfANat
+
+              - id: WordSense-Core-CueModel-Tense-NullTable
+                title: >-
+                  CueModel shall reject a null tense table with an argument-null error.
+                tags: [unit]
+                justification: |
+                  Misuse must fail fast with the documented exception.
+                tests:
+                  - CueModel_ScoreTense_NullTable_Throws

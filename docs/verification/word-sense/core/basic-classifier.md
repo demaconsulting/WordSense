@@ -118,6 +118,38 @@ All scenarios below pass on every platform and target framework of the CI matrix
   word whose lemmas are all lower case has the same analyses and probabilities as its lower-case form.
 - **A word that is not in the lexicon in any case** (`..._CapitalizedWordNotInLexicon_IsUnknown`): a capitalized word
   with no lexicon entry is unknown.
+- **Tense split: a past context** (`..._TenseTable_PastContext_SelectsThePastAnalysis`): a toy tense table (no tagger
+  weight, no cue table) whose features say past after `had` selects the past analysis of `put` in `they had put`, listed
+  first with a probability above the infinitive, although the lexicon lists the infinitive first.
+- **Tense split: an infinitive context** (`..._TenseTable_InfinitiveContext_SelectsTheNonPastAnalysis`): the same table
+  selects the infinitive in `they to put`.
+- **Tense split: participles and the slot** (`..._TenseTable_ParticipleCountsAsPast`): the participle `VerbForm=Part` of
+  `come` counts as a past analysis, so `they had come` selects it and `they to come` selects the infinitive.
+- **Tense split: the log odds** (`..._TenseTable_ContextFeaturesSetTheLogOdds`): with a prior of zero, the left neighbor
+  `had` at +3 nats and `to` at -3 nats, the log of the odds of the past against the non-past variant of `put` is 3 in
+  `they had put`, -3 in `they to put` and 0 in `they put`.
+- **Tense split: the weight** (`..._TenseTable_WeightScalesTheLogOdds`): with the same table, the weight 2 gives the log
+  of the odds 6 and the weight 0.5 gives 1.5.
+- **Tense split: bounds** (`..._TenseTable_LargeWeight_KeepsProbabilitiesFinite`,
+  `..._TenseTable_LargeLogOdds_AreBoundedTo30Nats`): with the largest weight a table accepts (1e6) every probability of
+  `they had put` is finite, the analyses sum to one, the past analysis is selected and the log of the odds is 30; with a
+  prior and a left-neighbor weight that make 31.75 nats and the weight 1 the log of the odds is also 30.
+- **The split keeps the slot** (`..._TenseTable_KeepsSlotProbabilityLevelAndConfidence`): for `putt` (a noun slot and a
+  verb slot with a past and a non-past variant) with the weight 0 and with the weight 1, the sum of the probabilities of
+  the verb slot (1/2), the noun slot (1/2, still first), the level, the confidence, the group and the sense are equal,
+  and the probability of the past variant differs.
+- **The shared model decides alone** (`..._TenseTable_ReplacesTheSplitOfTheFormTable`): with the cue table of `read`
+  favoring the present after `tomorrow`, the table with the weight 0 keeps that split (the odds of the past below 1), and
+  the table with a prior of one nat and the weight 1 gives the past exactly e times the probability of the present
+  whatever the form table said, with the same slot probability and confidence.
+- **No tense table** (`..._NoTenseTable_LeavesProbabilitiesUnchanged`): a table without a tense table gives `put` the same
+  probabilities, analysis by analysis and in the same order, as a table with the model turned off (1/2 each, the
+  infinitive selected by lexicon order).
+- **Weight 0** (`..._TenseWeightZero_LeavesProbabilitiesUnchanged`): a table with a strong past context and the weight 0
+  gives `they had put` the probabilities of the table without a tense table (1/2 each) and the infinitive.
+- **A slot that is not a tense slot** (`..._NonVerbSlot_LeavesProbabilitiesUnchanged`): the noun variants of `deer`
+  (singular and plural) keep the probabilities of the table without a tense table (1/2 each) although the tense table has
+  a strong past context.
 - **The embedded lexicon** (`..._EmbeddedLexicon_SelectsTheLemmaOfTheWrittenCase`): with the tie table and the
   embedded lexicon, `August` and `Polish` inside a sentence select the capitalized lemma, `august` and `polish` the
   lower-case one, and `State` in `the State Department` keeps `state`.

@@ -139,17 +139,134 @@ public class BasicTablesTests
     [Fact]
     public void BasicTables_Load_WrongVersionOrTagCount_Throws()
     {
-        // Arrange: the tag count is a single-byte varint after the magic, the hash and seven doubles
+        // Arrange: the tag count is a single-byte varint after the magic, the hash and eight doubles
         var version = TestTables.Decompress(TestTables.Default());
         version[3] = (byte)'2';
         var tags = TestTables.Decompress(TestTables.Default());
-        const int tagCountOffset = 4 + 32 + (7 * 8);
+        const int tagCountOffset = 4 + 32 + (8 * 8);
         Assert.Equal(PosTag.Count, tags[tagCountOffset]);
         tags[tagCountOffset]++;
 
         // Act / Assert
         Assert.True(Throws(() => TestTables.Load(TestTables.Compress(version))), "Version WSB2.");
         Assert.True(Throws(() => TestTables.Load(TestTables.Compress(tags))), "Tag count.");
+    }
+
+    /// <summary>
+    ///     The previous format <c>WSB3</c>, which has no tense weight and no tense table, is rejected as an unknown format
+    ///     whatever else it holds, so a table that was trained before the tense model is never read as a current one.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_PreviousFormatWsb3_ThrowsUnknownFormat()
+    {
+        // Arrange: a current table whose magic is changed back to the previous revision
+        var raw = TestTables.Decompress(TestTables.Default());
+        Assert.Equal((byte)'4', raw[3]);
+        raw[3] = (byte)'3';
+
+        // Act
+        var error = Assert.Throws<InvalidDataException>(() => TestTables.Load(TestTables.Compress(raw)));
+
+        // Assert
+        Assert.Contains("unknown format", error.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The tense section reads back: the weight of the model from the header, and the prior, the ascending hashes and the
+    ///     weights of the table.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_TenseTable_ReadsWeightPriorHashesAndWeights()
+    {
+        // Arrange
+        ushort[] hashes = [3, 70, 40000];
+        sbyte[] weights = [-12, 7, 127];
+        var with = TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], tense: (-2, hashes, weights), tenseWeight: 0.75);
+
+        // Act
+        var tables = TestTables.Load(with);
+
+        // Assert
+        Assert.Equal(0.75, tables.TenseWeight);
+        var tense = Assert.IsType<TenseCue>(tables.Tense);
+        Assert.Equal((sbyte)-2, tense.Prior);
+        Assert.Equal(hashes, tense.Hashes.ToArray());
+        Assert.Equal(weights, tense.Weights.ToArray());
+    }
+
+    /// <summary>
+    ///     A table without the tense section has no tense table and the default weight of the model.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_WithoutTenseSection_HasNoTenseTableAndTheDefaultWeight()
+    {
+        // Arrange
+        var without = TestTables.Build([("record", 0, new int[PosTag.Count])], [], []);
+
+        // Act
+        var plain = TestTables.Load(without);
+
+        // Assert
+        Assert.Null(plain.Tense);
+        Assert.Equal(1.0, plain.TenseWeight);
+    }
+
+    /// <summary>
+    ///     A tense table cut at any byte is rejected as corrupt data.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_TenseTableTruncatedAtEveryLength_Throws()
+    {
+        // Arrange
+        var raw = TestTables.Decompress(TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], tense: (0, [3, 70, 400], [1, -2, 3])));
+
+        // Act / Assert: every proper prefix is rejected
+        for (var length = 0; length < raw.Length; length++)
+        {
+            var blob = TestTables.Compress(raw[..length]);
+            Assert.True(Throws(() => TestTables.Load(blob)), $"A table with a tense section cut at {length} of {raw.Length} bytes was accepted.");
+        }
+    }
+
+    /// <summary>
+    ///     A tense section with an unknown flag, without features or with unordered hashes is rejected.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_InvalidTenseSection_Throws()
+    {
+        // Arrange: the section is the last bytes of the table: flag, prior, count, deltas and weights
+        var good = TestTables.Decompress(TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], tense: (0, [3, 70], [1, -2])));
+        var flag = (byte[])good.Clone();
+        flag[^7] = 2;
+        var noFeatures = TestTables.Decompress(TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], tense: (0, [], [])));
+
+        // Act / Assert
+        Assert.Equal(1, good[^7]);
+        Assert.True(Throws(() => TestTables.Load(TestTables.Compress(flag))), "Flag 2.");
+        Assert.True(Throws(() => TestTables.Load(TestTables.Compress(noFeatures))), "No features.");
+        Assert.True(Throws(() => TestTables.Load(TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], tense: (0, [70, 3], [1, -2])))), "Unordered hashes.");
+        Assert.True(Throws(() => TestTables.Load(TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], tense: (0, [3, 70], [1])))), "Fewer weights than hashes.");
+    }
+
+    /// <summary>
+    ///     A tense table refuses the default (uninitialized) immutable arrays and arrays of different lengths.
+    /// </summary>
+    [Fact]
+    public void TenseCue_Constructor_DefaultOrUnequalArrays_Throws()
+    {
+        // Arrange: a default array, and arrays of different lengths
+        ImmutableArray<ushort> noHashes = default;
+        ImmutableArray<sbyte> noWeights = default;
+
+        // Act
+        var defaultHashes = Record.Exception(() => new TenseCue(0, noHashes, [1]));
+        var defaultWeights = Record.Exception(() => new TenseCue(0, [1], noWeights));
+        var unequal = Record.Exception(() => new TenseCue(0, [1, 2], [1]));
+
+        // Assert
+        Assert.IsType<ArgumentException>(defaultHashes);
+        Assert.IsType<ArgumentException>(defaultWeights);
+        Assert.IsType<ArgumentException>(unequal);
     }
 
     /// <summary>
@@ -245,7 +362,7 @@ public class BasicTablesTests
     public void BasicTables_Properties_ExposeNoArrays()
     {
         // Arrange
-        Type[] types = [typeof(BasicTables), typeof(WordEntry), typeof(LemmaCue)];
+        Type[] types = [typeof(BasicTables), typeof(WordEntry), typeof(LemmaCue), typeof(TenseCue)];
 
         // Act
         var arrays = types
@@ -611,5 +728,35 @@ public class BasicTablesTests
         Assert.Equal(new FeatureRef(CueModel.Window, "L1:dog").Hash, left);
         Assert.Equal(new FeatureRef(CueModel.Window, "R1:dog").Hash, right);
         Assert.Equal(left, new FeatureRef(CueModel.Left, "dog").Hash);
+    }
+
+    /// <summary>
+    ///     The feature kinds of the tense model hash with their own prefixes, so the same token in another place has another
+    ///     feature, and the prefixes of the cue kinds are unchanged (the cue tables stay valid).
+    /// </summary>
+    [Fact]
+    public void FeatureRef_Hash_TenseKindsHaveOwnPrefixes()
+    {
+        // Arrange: the same token as a plain window feature and as each kind of the tense model
+        var window = new FeatureRef(CueModel.Window, "have").Hash;
+        var leftWindow = new FeatureRef(CueModel.LeftWindow, "have").Hash;
+        var rightWindow = new FeatureRef(CueModel.RightWindow, "have").Hash;
+        var governor = new FeatureRef(CueModel.Governor, "have").Hash;
+
+        // Act
+        var prefixed = new[]
+        {
+            new FeatureRef(CueModel.Window, "LW:have").Hash,
+            new FeatureRef(CueModel.Window, "RW:have").Hash,
+            new FeatureRef(CueModel.Window, "NA:have").Hash,
+            new FeatureRef(CueModel.Window, "L1:have").Hash,
+        };
+
+        // Assert: each kind hashes as its prefix and the token, the cue kinds keep theirs, and the kinds differ
+        Assert.Equal(prefixed[0], leftWindow);
+        Assert.Equal(prefixed[1], rightWindow);
+        Assert.Equal(prefixed[2], governor);
+        Assert.Equal(prefixed[3], new FeatureRef(CueModel.Left, "have").Hash);
+        Assert.Equal(4, new[] { window, leftWindow, rightWindow, governor }.Distinct().Count());
     }
 }

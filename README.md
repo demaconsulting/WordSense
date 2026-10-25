@@ -16,7 +16,8 @@ answer states the level it was made at (sense, group or part of speech), carries
 the candidate analyses with their probabilities, so you know whether "bank" is the money kind, at least a financial
 word, or only a noun. Every word is looked up in an embedded dictionary of over 140,000 common words. Only where a word
 has several analyses does a model choose from the sentence: the `Basic` model, which is part of the core package (a
-small statistical tagger that needs nothing else, no download and no ONNX Runtime, and answers with the part of speech),
+small statistical tagger that needs nothing else, no download and no ONNX Runtime, and answers with the part of speech
+and, for a verb whose past and non-past share a spelling, its tense),
 or an ONNX encoder package (`MiniLM` or `BertBaseCased`) that runs on ONNX Runtime and scores the fine senses of the
 words it was trained for. In this version the encoders know 856 lemmas (the senses appendix lists them); every other
 ambiguous word is answered by the `Basic` model at the part-of-speech level, and more words follow in later versions.
@@ -264,7 +265,7 @@ embedded resource is damaged) and `DownloadConfigurationException` (an invalid m
 <!-- model-table:begin -->
 | Model | Real-text sense (share @ precision) | Running-text part of speech (open corpus test) | UD-EWT test part of speech (convention-mapped) | Independent sense evaluation (SemCor) | STE challenge set (part of speech) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Basic | 3.96% @ 74.74% | 93.87% (ambiguous 91.53%) | 91.65% (ambiguous 88.62%) | 3.25% @ 68.91% (top-1 2.53%) | 98.65% (ambiguous 97.83%) | none | 203 KiB | 4 MiB | 0.11 ms | 34 ms + 58 ms | no |
+| Basic | 3.96% @ 74.74% | 93.87% (ambiguous 91.53%) | 91.65% (ambiguous 88.62%) | 3.25% @ 68.91% (top-1 2.53%) | 98.65% (ambiguous 97.83%) | none | 218 KiB | 4 MiB | 0.11 ms | 34 ms + 58 ms | no |
 | MiniLM | 7.93% @ 96.84% | 93.81% (ambiguous 91.43%) | 91.82% (ambiguous 88.89%) | 8.33% @ 88.71% (top-1 56.41%) | 98.20% (ambiguous 97.10%) | 22 MiB | 5,225 KiB | 98 MiB | 1.52 ms | 443 ms + 60 ms | yes |
 | BERT base cased | 27.16% @ 94.47% | 94.10% (ambiguous 91.90%) | 92.06% (ambiguous 89.26%) | 26.87% @ 86.63% (top-1 63.69%) | 98.20% (ambiguous 97.10%) | 104 MiB | 10,203 KiB | 221 MiB | 8.08 ms | 684 ms + 56 ms | yes |
 <!-- model-table:end -->
@@ -274,7 +275,9 @@ embedded resource is damaged) and `DownloadConfigurationException` (an invalid m
 **Which model?** The part of speech is the dependable part of an answer, and it is the same quality in all three models
 (93.8 to 94.1% of the tokens of running text, the open corpus test split), so choose by what else you need:
 
-- ⚡ **Basic** (core package, no download, 0.11 ms a sentence): the part of speech of every word, and the sense of a
+- ⚡ **Basic** (core package, no download, 0.11 ms a sentence): the part of speech of every word, the tense of a verb
+  whose past and non-past share a spelling (`put`, `cut`, `read`: "I will read that tomorrow" against "I have read that
+  already", for all three models), and the sense of a
   word that has one. Use it when the part of speech is all you need, and as the fallback of the other two.
 - 🎯 **BertBaseCased** (104 MiB download, about 8 ms a sentence): the model for **fine senses**. For the 856 trained
   lemmas it commits to a fine sense on 27.2% of the real test sentences (26.9% of the SemCor words, the SemCor subset of
@@ -342,7 +345,7 @@ encoder answers on the real test sentences (the sets that `evaluate` reports are
 
 The table is generated into [docs/user_guide/model-table.md][link-model-table]; the user guide chapter
 [Accuracy and Model Choice][link-accuracy] explains how the numbers were measured and how to read them. A reviewed suite
-of 348 sentences about common ambiguous words (`corpus/suite`) guards each model against regressions.
+of 364 sentences about common ambiguous words and same-spelling verbs (`corpus/suite`) guards each model against regressions.
 
 ## Planned Improvements
 

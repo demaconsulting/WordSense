@@ -10,12 +10,12 @@ namespace WordSense.Builder;
 /// <remarks>
 ///     The layout is described on <c>BasicTables</c>, the only reader. Words, suffixes and lemmas are written in the
 ///     ordinal order of the data, so equal data always gives equal bytes. The runtime hyper-parameters (gamma, beta, the
-///     three lambdas, the weight of the tagger and the inverse temperature) are written to the header from
+///     three lambdas, the weight of the tagger, the inverse temperature and the weight of the tense model) are written to the header from
 ///     <see cref="BasicHyperparameters"/>.
 /// </remarks>
 internal static class BasicTablesWriter
 {
-    private static readonly byte[] Magic = "WSB3"u8.ToArray();
+    private static readonly byte[] Magic = "WSB4"u8.ToArray();
 
     /// <summary>
     ///     Serializes the model data.
@@ -36,7 +36,7 @@ internal static class BasicTablesWriter
         raw.Write(Magic);
         raw.Write(inventoryHash);
         var hp = data.Hyperparameters;
-        foreach (var value in new[] { hp.Gamma, hp.Beta, hp.Lambda1, hp.Lambda2, hp.Lambda3, hp.HmmWeight, hp.InvTemperature })
+        foreach (var value in new[] { hp.Gamma, hp.Beta, hp.Lambda1, hp.Lambda2, hp.Lambda3, hp.HmmWeight, hp.InvTemperature, hp.TenseWeight })
         {
             WriteDouble(raw, value);
         }
@@ -109,6 +109,29 @@ internal static class BasicTablesWriter
             {
                 raw.WriteByte((byte)weight);
             }
+        }
+
+        // The tense table: a flag byte, then the prior, the delta-coded hashes and one weight per hash
+        if (data.Tense is { } tense)
+        {
+            raw.WriteByte(1);
+            raw.WriteByte((byte)tense.Prior);
+            WriteVarint(raw, tense.Hashes.Length);
+            var last = 0;
+            for (var f = 0; f < tense.Hashes.Length; f++)
+            {
+                WriteVarint(raw, f == 0 ? tense.Hashes[f] : tense.Hashes[f] - last);
+                last = tense.Hashes[f];
+            }
+
+            foreach (var weight in tense.Weights)
+            {
+                raw.WriteByte((byte)weight);
+            }
+        }
+        else
+        {
+            raw.WriteByte(0);
         }
 
         using var output = new MemoryStream();

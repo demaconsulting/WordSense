@@ -96,6 +96,33 @@ public sealed class OpenCorpusTests : IDisposable
     }
 
     /// <summary>
+    ///     The features of a token are read (an underscore is none), and a tagged sentence carries the lemma and the features
+    ///     of every token for the tense evaluation and training; a joined contraction has those of its first part.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_OpenCorpus_ToTagged_CarriesTheLemmaAndFeaturesOfEveryToken()
+    {
+        // Arrange
+        var path = _dir.Write(
+            "feats.tsv",
+            Header + "# sent_id = a\n# source_id = a\n# text = They don't put it.\n" +
+            "1\tThey\tthey\tPRON\tR\t_\tunanimous\n2\tdo\tdo\tAUX\tA\tMood=Ind|Tense=Pres|VerbForm=Fin\tunanimous\n3\tn't\tnot\tPART\tT\t_\tunanimous\n" +
+            "4\tput\tput\tVERB\tV\tVerbForm=Inf\tunanimous\n5\tit\tit\tPRON\tR\t_\tunanimous\n6\t.\t.\tPUNCT\tO\t_\tunanimous\n");
+
+        // Act
+        var sentence = Assert.Single(OpenCorpus.ReadFile(path));
+        var tagged = OpenCorpus.ToTagged(sentence);
+
+        // Assert
+        Assert.Equal(["", "Mood=Ind|Tense=Pres|VerbForm=Fin", "", "VerbForm=Inf"], sentence.Tokens.Take(4).Select(t => t.Features));
+        Assert.Equal(["They", "don't", "put", "it", "."], tagged.Words);
+        var gold = Assert.IsType<GoldToken[]>(tagged.Gold);
+        Assert.Equal(tagged.Words.Length, gold.Length);
+        Assert.Equal(new GoldToken("do", string.Empty, "Mood=Ind|Tense=Pres|VerbForm=Fin"), gold[1]);
+        Assert.Equal(new GoldToken("put", string.Empty, "VerbForm=Inf"), gold[2]);
+    }
+
+    /// <summary>
     ///     A split contraction is joined again when the joined form is in the text, with the tag of its first part, and
     ///     a possessive 's stays a token of its own.
     /// </summary>
