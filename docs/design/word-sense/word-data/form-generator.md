@@ -70,7 +70,9 @@ and the generator never reads its own output: the tables are a function of the e
 lists, the corrections file, the authored forms and the pinned Open English WordNet file. A frozen spelling with the
 flag `open` takes the
 generated analyses of other entries after the frozen ones; a spelling without it stays as reviewed (`bowed` is only the
-bend verb); a closed-class spelling with the flag `only` keeps only its closed-class analyses. Frozen rows count as
+bend verb); a closed-class spelling with the flag `only` keeps only its closed-class analyses (what the flag means,
+how it was derived once and which spellings lack it is in the section "Closed-Only Flag" of
+`corpus/lexicon/PROVENANCE.md`). Frozen rows count as
 `carried` in the provenance statistics. The class column of a frozen row (the class ids of the retired inventory) is not
 read. A closed word that the dictionary lists only as an open-class word is given its analysis by a frozen row of its
 project entry (`or` has the conjunction `dema-or-c` first, followed by the noun and adjective analyses of the
