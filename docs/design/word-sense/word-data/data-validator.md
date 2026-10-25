@@ -43,7 +43,7 @@ counted once, and listed unless its rule already listed 20.
   `group:` after the `#`, its lemma part must be the lemma of the group, and the label is the slug after the marker
   (lower-case ASCII letters, digits and single hyphens), unique in its lemma; a group has at least two senses but not all
   senses of its lemma and part of speech (the part of speech is the next level, so such a group is redundant); each group
-  has one lemma, one part of speech and no two respellings; a sense is in at most one group; the origin of a group is
+  has one lemma and one part of speech; a sense is in at most one group; the origin of a group is
   `curated` and its kind is `equivalent` or `related` (both required and checked against the schema vocabularies by the
   cell rule). A sense needs no group, so there is no partition rule. The class and scope rules of the retired inventory
   are gone; an entry without a sense is accepted only for a closed-class word or when a carried analysis refers to it.

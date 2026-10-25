@@ -79,8 +79,8 @@ public static class WordLexicon
     ///     Gets the number of distinct written forms in the lexicon.
     /// </summary>
     /// <remarks>
-    ///     The count is that of the embedded image; it includes the few spellings without a letter (numbers) that the image
-    ///     keeps but that <see cref="Lookup"/> never answers.
+    ///     The count is that of the embedded image. The image holds no spelling without a letter (a number such as
+    ///     <c>3</c> is never a word here), so every counted spelling can be answered by <see cref="Lookup"/>.
     /// </remarks>
     /// <exception cref="ModelIntegrityException">Thrown on first access when the embedded lexicon is missing or corrupt (the inner exception is the original <see cref="InvalidDataException"/>).</exception>
     public static int Count => Image.Value.SpellingCount;
@@ -110,7 +110,7 @@ public static class WordLexicon
         ArgumentNullException.ThrowIfNull(word);
 
         // A token without a letter (a number written with digits, punctuation) is never a word: the models answer it as
-        // unknown, so the lexicon does too, although the image keeps a few such spellings from Open English WordNet.
+        // unknown, so the lexicon does too. The image holds no such spelling, so this only skips the lookup and its cache.
         // The image is still opened first, so a missing or corrupt lexicon is reported for every input.
         if (!CueModel.HasLetter(word))
         {

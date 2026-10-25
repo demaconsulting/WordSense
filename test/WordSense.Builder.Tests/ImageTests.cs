@@ -248,6 +248,46 @@ public sealed class ImageTests
     }
 
     /// <summary>
+    ///     The committed image is of format version 4 and has no respelling sections (the ids 24 to 26), and its meta
+    ///     section has eight values.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Image_Version4_HasNoRespellingSections()
+    {
+        // Arrange
+        var bytes = Committed.Value;
+
+        // Act
+        var image = WordImage.Open(bytes);
+
+        // Assert
+        Assert.Equal(4u, BinaryPrimitives.ReadUInt32LittleEndian(bytes.AsSpan(4)));
+        Assert.DoesNotContain(image.SectionIds, id => id is >= 24 and <= 26);
+        Assert.Equal(8, image.RawSection(ImageFormat.SectionMeta).Length / 4);
+    }
+
+    /// <summary>
+    ///     An image of the previous format version (3, which still had the respelling sections) is rejected with a message
+    ///     that names the version, with and without the content hash check.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Image_PreviousFormatVersion_IsRejected()
+    {
+        // Arrange: the committed image with the version of the previous format
+        Assert.Equal(4u, ImageFormat.Version);
+        var previous = (byte[])Committed.Value.Clone();
+        BinaryPrimitives.WriteUInt32LittleEndian(previous.AsSpan(4), ImageFormat.Version - 1);
+
+        // Act
+        var error = Assert.Throws<InvalidDataException>(() => WordImage.Open(previous));
+        var noHashCheck = Assert.Throws<InvalidDataException>(() => WordImage.Open(previous, verifyHash: false));
+
+        // Assert
+        Assert.Contains("unsupported version", error.Message, StringComparison.Ordinal);
+        Assert.Contains("unsupported version", noHashCheck.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
     ///     An image cut at the end of the header, at the end of the directory and at the start and end (and one byte
     ///     inside) of every section is rejected, with and without the content hash check.
     /// </summary>

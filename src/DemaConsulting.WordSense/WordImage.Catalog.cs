@@ -169,7 +169,6 @@ internal sealed partial class WordImage
         private readonly byte[] _keyBytes;
         private readonly uint[] _keyOffset;
         private readonly uint[] _senseGroup;
-        private readonly uint[] _senseRespelling;
         private readonly byte[] _groupIdBytes;
         private readonly uint[] _groupIdOffset;
         private readonly byte[] _groupPos;
@@ -188,21 +187,17 @@ internal sealed partial class WordImage
             _senseCount = image.SenseCount;
             var groupCount = image.GroupCount;
             var blockCount = image.BlockCount;
-            var respellingCount = Count(image._meta[ImageFormat.MetaRespellingCount]);
 
             _idBytes = image.Section(ImageFormat.SectionSenseIdBytes);
             _idOffset = Offsets(image.Section(ImageFormat.SectionSenseIdLength), _senseCount, _idBytes.Length, "sense id");
             _keyBytes = image.Section(ImageFormat.SectionSenseKeyBytes);
             _keyOffset = Offsets(image.Section(ImageFormat.SectionSenseKeyLength), _senseCount, _keyBytes.Length, "sense key");
             _senseGroup = image.Uints(ImageFormat.SectionSenseGroup);
-            _senseRespelling = image.Uints(ImageFormat.SectionSenseRespelling);
-            if (_senseGroup.Length != _senseCount || _senseRespelling.Length != _senseCount)
+            if (_senseGroup.Length != _senseCount)
             {
                 throw Bad("a sense table has the wrong length");
             }
 
-            // The respelling strings are no longer exposed, but a damaged table must still be rejected: validate them and discard the result
-            _ = image.Strings(ImageFormat.SectionRespellingLength, ImageFormat.SectionRespellingBytes, respellingCount);
             _groupIdBytes = image.Section(ImageFormat.SectionGroupIdBytes);
             _groupIdOffset = Offsets(image.Section(ImageFormat.SectionGroupIdLength), groupCount, _groupIdBytes.Length, "group id");
             _groupPos = image.Section(ImageFormat.SectionGroupPos);
@@ -216,7 +211,7 @@ internal sealed partial class WordImage
             _keyIndex = image.Uints(ImageFormat.SectionKeyIndex);
             _senseBlock = new int[_senseCount];
             _blockLemmas = new string?[blockCount];
-            Validate(groupCount, blockCount, respellingCount);
+            Validate(groupCount, blockCount);
         }
 
         public uint[] BlockStart { get; }
@@ -375,7 +370,7 @@ internal sealed partial class WordImage
             return CompareBytes(key, query);
         }
 
-        private void Validate(int groupCount, int blockCount, int respellingCount)
+        private void Validate(int groupCount, int blockCount)
         {
             for (var i = 1; i < _senseCount; i++)
             {
@@ -407,11 +402,6 @@ internal sealed partial class WordImage
                 if (_senseGroup[s] > groupCount)
                 {
                     throw Bad("a sense names a group that does not exist");
-                }
-
-                if (_senseRespelling[s] > respellingCount)
-                {
-                    throw Bad("a sense names a respelling that does not exist");
                 }
             }
 

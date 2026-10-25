@@ -11,15 +11,16 @@ sections:
           - id: WordSense-WordSenseBuilder-Words
             title: >-
               The builder shall compile the flat word image of the core package deterministically from the
-              authoritative tables of the data (entry, form, sense, group, sense label and respelling), holding every
+              authoritative tables of the data (entry, form, sense, group and sense label), holding every
               word of the dictionary (determiners, conjunctions and interjections included)
               with all its parts of speech, the inflected forms of every dictionary word (the generation of the forms
               is specified by the FormGenerator requirements), and the sense catalog: every single-token OEWN sense
-              and its group (none when it is in no group) and its OEWN sense key (none for a project sense), without
-              any respelling (the respelling sections of the format are retained but empty, because the data has no
-              respelling rows), the senses of each lemma and part of speech in the order of Open English WordNet (the
+              and its group (none when it is in no group) and its OEWN sense key (none for a project sense), the
+              senses of each lemma and part of speech in the order of Open English WordNet (the
               position of the sense in its entry, then the homograph number of the entry, project senses last, then the
-              sense id bytes; the WordNet 3.0 frequencies shall not order them); and
+              sense id bytes; the WordNet 3.0 frequencies shall not order them), and no spelling without a letter (a
+              numeral such as 0 or 24/7), with no entry or sense of such a lemma, whether or not that sense has a
+              label; and
               shall write it in the compact binary format that the core package reads. The committed image shall be
               the compilation of the committed data, a dictionary word shall never be lost, and a sense without a
               label, a sense in two groups, a group of fewer than two senses (a declared group without any member
@@ -31,12 +32,16 @@ sections:
             tags: [unit]
             justification: |
               The shipped lexicon and catalog must be reproducible from committed inputs so that reviewers can verify
-              them, and must never lose a dictionary word, a part of speech or a sense because of what was trained.
-              Running text uses inflected forms far more often than lemmas, so every form of every word has to be
-              known.
+              them, and must never lose a dictionary word, a part of speech or a sense because of what was trained
+              (the one exception is a numeral, a spelling without a letter, which the library never looks up as a
+              word). Running text uses inflected forms far more often than lemmas, so every form of every word has to
+              be known.
             tests:
               - WordSenseBuilder_ImageCompiler_Build_IsDeterministic
               - WordSenseBuilder_ImageCompiler_Build_CatalogIsDeterministic
+              - WordSenseBuilder_ImageCompiler_Build_SpellingWithoutALetter_IsLeftOut
+              - WordSenseBuilder_ImageCompiler_Build_UnlabeledSpellingWithoutALetter_IsLeftOut
+              - WordSenseBuilder_ImageCompiler_Build_GroupWithSpellingWithoutALetterMember_LeavesTheMemberOut
               - WordSenseBuilder_ImageCompiler_Build_SenseOrder_IsOewnPositionThenHomographThenProjectSenses
               - WordSenseBuilder_ImageCompiler_Build_SenseWithoutLabel_Fails
               - WordSenseBuilder_ImageCompiler_Build_SenseInTwoGroups_Fails
@@ -59,6 +64,22 @@ sections:
               - WordSenseBuilder_SenseInventory_Validate_CommittedCorpus_IsConsistent
               - WordSenseBuilder_Words_Committed_HoldsEveryDictionaryWord
               - WordSenseBuilder_Words_Committed_CatalogHoldsEveryOewnAndProjectSense
+
+          - id: WordSense-WordSenseBuilder-ImageFormat
+            title: >-
+              The word image shall be of format version 4 and carry no respelling sections (the section ids 24 to 26
+              are unused and the meta section has eight values), the image reader shall reject an image of any other
+              version, and the data schema shall not declare the retired table sense_respelling.
+            tags: [unit]
+            justification: |
+              The respelling belonged to the removed pronunciation support and had no data; the format version lets a
+              reader refuse an image of the earlier layout instead of misreading it, and the schema must not keep a
+              table that nothing reads.
+            tests:
+              - WordSenseBuilder_Image_Version4_HasNoRespellingSections
+              - WordSenseBuilder_Image_PreviousFormatVersion_IsRejected
+              - WordSenseBuilder_Image_Corruption_IsRejected
+              - WordSenseBuilder_DataSchema_Load_CommittedSchema_DeclaresTables
 
           - id: WordSense-WordSenseBuilder-Coverage
             title: >-

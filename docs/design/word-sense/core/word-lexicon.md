@@ -13,7 +13,7 @@ key. Every model starts from it, and a word with one sense never needs context.
 - The lexicon is the embedded flat word image `wordsense.img`, read in place by the internal `WordImage`. Nothing is
   expanded into a dictionary: a lookup is a binary search over a UTF-8-byte-sorted spelling index followed by a decode
   of the analysis rows of that spelling.
-- Image layout (WSI1 version 3): a header of 112 bytes (magic `WSI1`, version 3, section count, a reserved word, the
+- Image layout (WSI1 version 4): a header of 112 bytes (magic `WSI1`, version 4, section count, a reserved word, the
   SHA-256 of the data tables the image was built from at offset 16, the SHA-256 of all bytes from offset 112 at 48, and
   the 32-byte inventory hash at 80), a directory of 20-byte entries and the sections. The analysis sections are the
   spelling index and bytes, the features, the entries with their lemma and part of speech and the analysis rows (one
@@ -21,11 +21,9 @@ key. Every model starts from it, and a word with one sense never needs context.
   CSR and the fold index. The catalog sections are: the sense ids sorted by UTF-8 bytes (a sense index is its
   position); the OEWN key suffix of each sense (the part of the key after `lemma%`, empty for a project sense, so the
   full key is the lower-case lemma, `%` and the suffix); the sense-to-group index (group index plus one, 0 for a sense in
-  no group); the sense-to-respelling index (respelling index plus one, 0 for none) with the distinct respelling strings
-  (retained in the format and checked by the catalog reader, but empty in the data and not exposed by the catalog
-  records, so neither a sense nor a group has a respelling in the API);
+  no group);
   the group ids (UTF-8 sorted) and the part of speech of each group; the group members (CSR of sense indexes in
-  inventory order; the lemma of a group comes from its members, and a group has no respelling of its own);
+  inventory order; the lemma of a group comes from its members);
   the lemma and part-of-speech blocks (the lemma bytes and the part of speech, sorted by lemma UTF-8 bytes and
   then part of speech, each with a CSR of its sense indexes in inventory order); and a key index (the sense indexes
   sorted by full key bytes). The inventory hash covers, as the raw decompressed bytes of the sections each fed as id,
@@ -76,9 +74,9 @@ key. Every model starts from it, and a word with one sense never needs context.
   separators such as `24/7` or `3.5`, punctuation) is never a word. `TryLookup` answers it absent before the cache and
   the image are consulted, and `FormsOf` returns no form for a lemma without a letter, exactly as the models treat
   such a token (`BasicClassifier.Normalize` returns an empty key for it, so it is unknown with a fixed tagger tag). The
-  image still holds about 130 such spellings (the numerals of Open English WordNet, `3` as a noun and an adjective
-  among them) that the lookup never shows; a future image regeneration can drop them from the data. `Count`
-  is the count of the image and includes them. The check is on the letter, so `3rd`, `3D` and the number words
+  image holds no such spelling: the builder leaves out the numerals of Open English WordNet (134 spellings such as `3`
+  and `24/7`, with their entries and senses) when it compiles the image, so `Count`, `SensesOf` and `Lookup` agree.
+  The check is on the letter, so `3rd`, `3D` and the number words
   (`three`, `twenty`) are found.
 - Possessive fallback: when a spelling ending in `'s` or `s'` (straight or typographic apostrophe) is not stored and the
   stem is known, the lookup returns the analyses of the stem with `Poss=Yes` added to the features (alphabetical order
@@ -112,7 +110,7 @@ key. Every model starts from it, and a word with one sense never needs context.
 - The image is opened lazily, thread-safely and exactly once (`Lazy` with execution-and-publication). A small
   direct-mapped cache of recent answers backs `TryLookup`, which is what the models call.
 - Spelling order decision: the sort order of the spelling index (UTF-8 byte order) is not re-checked at load. Checking
-  338K spellings would add work to every process start, and the content SHA-256 already verified by `WordImage.Open`
+  365K spellings would add work to every process start, and the content SHA-256 already verified by `WordImage.Open`
   covers the index bytes, so a committed image that opens cannot be mis-ordered unless the builder wrote it so. The
   full order check at every index therefore runs as a test (`ImageTests`) against the committed image.
 
@@ -121,7 +119,7 @@ key. Every model starts from it, and a word with one sense never needs context.
 If the embedded resource is missing or the image is corrupt (wrong magic or version, content hash mismatch, invalid
 section or reference, a section that starts inside the header or the directory or runs past the image, overlapping or
 duplicate sections, unsupported flags, inconsistent raw and stored lengths, bytes after the end of a compressed stream,
-a sense that names a group or respelling that does not exist, a duplicate sense id, a group id
+a sense that names a group that does not exist, a duplicate sense id, a group id
 without the `#group:` marker or equal to a sense id, a group with
 fewer than two members or with all the senses of its lemma and part of speech, a group that mixes lemmas or parts of
 speech, a group that lists a sense twice, group members that disagree with the sense-to-group index, or a key index that
@@ -133,7 +131,8 @@ Because the lazy value caches the failure, every later access throws as well. Th
 catalog sections are decoded and checked on their first use through `WordLexicon.ReadCatalog<T>(Func<WordImage, T>)`,
 which `SensesOf`, `TryGetSense`, `TryGetSenseByKey` and `TryGetGroup` use and which maps a damaged catalog to a
 `ModelIntegrityException` in the same way (the catalog checks include the order of the key index, that every sense that
-names a group is listed exactly once by that group, and the structure and range of the retained respelling sections).
+names a group is listed exactly once by that group). An image of another format version (an older one, for example)
+is rejected by the version check when the image is opened.
 
 #### Dependencies
 

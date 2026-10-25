@@ -64,7 +64,7 @@ The subsystem exposes:
   constructor. The Basic model is not downloadable; `ClassifyAsync` classifies at once, so no ensure is needed;
 - `ClassifyResult`, `AnalysisCandidate`, `SenseCandidate`, `SenseLevel`, `WordDetails` and `PartOfSpeech`: the answer
   values;
-- `SenseInfo` and `SenseGroup`: the records of the catalog (they carry no respelling);
+- `SenseInfo` and `SenseGroup`: the records of the catalog;
 - `DownloadOptions`: the download configuration passed to `EnsureModelAsync`;
 - `WordSenseException`, `ModelUnavailableException`, `ModelIntegrityException` and `DownloadConfigurationException`:
   the typed failures. In the core, `WordLexicon` and the embedded statistics table report a missing or damaged

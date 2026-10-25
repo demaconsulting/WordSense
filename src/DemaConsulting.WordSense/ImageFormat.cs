@@ -37,8 +37,8 @@ namespace DemaConsulting.WordSense;
 /// </remarks>
 internal static class ImageFormat
 {
-    /// <summary>The format version this code reads and writes.</summary>
-    public const uint Version = 3;
+    /// <summary>The format version this code reads and writes: 4 dropped the respelling sections and the spellings without a letter; an image of another version is rejected.</summary>
+    public const uint Version = 4;
 
     /// <summary>The size of the fixed header.</summary>
     public const int HeaderSize = 112;
@@ -112,14 +112,7 @@ internal static class ImageFormat
     /// <summary>The group of each sense as the group index plus one, 0 for no group (<c>uint[]</c>).</summary>
     public const int SectionSenseGroup = 23;
 
-    /// <summary>The respelling of each sense as the respelling index plus one, 0 for none (<c>uint[]</c>). Retained in the image format and validated, but not exposed by the API.</summary>
-    public const int SectionSenseRespelling = 24;
-
-    /// <summary>The byte length of each distinct respelling. Retained in the image format and validated, but not exposed by the API.</summary>
-    public const int SectionRespellingLength = 25;
-
-    /// <summary>The UTF-8 bytes of the distinct respellings. Retained in the image format and validated, but not exposed by the API.</summary>
-    public const int SectionRespellingBytes = 26;
+    // The section ids 24 to 26 held the respellings of version 3 and are not used: the ids of the other sections did not change.
 
     /// <summary>The byte length of each group id; groups are in UTF-8 byte order of their ids.</summary>
     public const int SectionGroupIdLength = 27;
@@ -178,11 +171,8 @@ internal static class ImageFormat
     /// <summary>The index of the lemma block count in the meta section.</summary>
     public const int MetaBlockCount = 7;
 
-    /// <summary>The index of the respelling count in the meta section.</summary>
-    public const int MetaRespellingCount = 8;
-
     /// <summary>The number of values in the meta section.</summary>
-    public const int MetaLength = 9;
+    public const int MetaLength = 8;
 
     /// <summary>The flag bit of a section that is stored as is.</summary>
     public const int FlagStored = 0x100;
@@ -190,7 +180,7 @@ internal static class ImageFormat
     /// <summary>
     ///     The sections the inventory hash covers: those that name analyses (spellings, rows, features, entries), senses
     ///     (ids and the order of the senses of a lemma) and groups (ids, parts of speech, members and the group of each
-    ///     sense). Keys and respellings are not part of the identity of the inventory.
+    ///     sense). Keys are not part of the identity of the inventory.
     /// </summary>
     public static readonly int[] InventorySections =
     [

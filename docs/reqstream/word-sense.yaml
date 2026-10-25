@@ -179,7 +179,7 @@ sections:
           The system shall keep the word data of the library as validated, deterministic, human-editable TSV tables
           under data/, imported once from Open English WordNet (CC BY 4.0, derived from Princeton WordNet) with the
           WordNet 3.0 sense frequency counts for the usage prior, with attribution, so that a data change (a sense
-          label, a group, a project sense or a respelling) is a reviewable text change that needs no code.
+          label, a group or a project sense) is a reviewable text change that needs no code.
         tags: [system]
         justification: |
           Data that is plain, validated text lets contributors correct and extend the lexicon and the sense inventory
@@ -376,6 +376,7 @@ sections:
           corpus; keeping the tool out of the packages keeps training code out of consumers' dependency graphs.
         children:
           - WordSense-WordSenseBuilder-Words
+          - WordSense-WordSenseBuilder-ImageFormat
           - WordSense-WordSenseBuilder-ImportDictionary
           - WordSense-WordSenseBuilder-Weights
           - WordSense-WordSenseBuilder-FormChoosers

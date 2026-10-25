@@ -144,15 +144,15 @@ sections:
               The word data subsystem shall let a lemma and part of speech have curated groups only, each a set of at
               least two, but not all, of its closely related and confusable senses, with one lemma, one part of speech,
               a readable label, a kind (equivalent or related) and an id lemma#group:label that can never be the id of a
-              sense, a sense in at most one group and no two respellings in one group, shall version group ids per data
+              sense, a sense in at most one group, shall version group ids per data
               release without freezing them, and shall create no group of one sense, no group of a whole part of speech
               and no default group.
             tags: [subsystem]
             justification: |
               The levels nest: none, part of speech, an optional group, sense; when a classifier is unsure between
               senses it steps up to the next level that exists. A group is therefore only useful for senses that are
-              close and confusable; a sense in two groups, a group across parts of speech, a group that mixes
-              pronunciations, or a group that adds nothing to its part of speech would make the answer meaningless to
+              close and confusable; a sense in two groups, a group across parts of speech, or a group that adds nothing
+              to its part of speech would make the answer meaningless to
               the caller. The marker in the id keeps a group answer from being mistaken for a sense answer, the kind
               tells a caller whether the members are near-duplicates or a family of meanings, and because a group can be
               re-cut when the evidence changes, its id is versioned with the data release and the caller keeps the

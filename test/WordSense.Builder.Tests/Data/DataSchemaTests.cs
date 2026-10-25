@@ -33,14 +33,14 @@ public sealed class DataSchemaTests : IDisposable
         // Assert
         Assert.Equal(4, schema.Version);
         Assert.Equal("oewn-2025", schema.Release);
-        Assert.Equal(17, schema.Tables.Count());
-        foreach (var name in new[] { "source", "entry", "synset", "gloss", "example", "sense", "synset_relation", "sense_relation", "pronunciation", "id_map", "form", "sense_label", "sense_label_map", "sense_group", "group_sense", "sense_frequency", "sense_respelling" })
+        Assert.Equal(16, schema.Tables.Count());
+        foreach (var name in new[] { "source", "entry", "synset", "gloss", "example", "sense", "synset_relation", "sense_relation", "pronunciation", "id_map", "form", "sense_label", "sense_label_map", "sense_group", "group_sense", "sense_frequency" })
         {
             Assert.True(schema.HasTable(name), name);
         }
 
-        // The class tables and the form scopes of the retired inventory are gone
-        foreach (var name in new[] { "coarse_class", "class_sense", "class_entry", "form_sense_scope" })
+        // The class tables and the form scopes of the retired inventory and the respelling table are gone
+        foreach (var name in new[] { "coarse_class", "class_sense", "class_entry", "form_sense_scope", "sense_respelling" })
         {
             Assert.False(schema.HasTable(name), name);
         }
@@ -78,7 +78,6 @@ public sealed class DataSchemaTests : IDisposable
         Assert.Equal(["sense_key"], schema.Table("sense_frequency").PrimaryKey);
         Assert.Equal(PartitionKind.Key, schema.Table("sense_frequency").Partition);
         Assert.Equal("sense.sense_key", FormatKey(schema.Table("sense_frequency").ForeignKeys["sense_key"]));
-        Assert.Equal(["sense_id"], schema.Table("sense_respelling").PrimaryKey);
         Assert.True(schema.IsMember("label_origin", "curated"));
         Assert.True(schema.IsMember("label_origin", "generated"));
         Assert.True(schema.IsMember("label_origin", "project"));

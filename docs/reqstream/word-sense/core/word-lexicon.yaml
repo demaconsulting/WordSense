@@ -85,16 +85,19 @@ sections:
                 title: >-
                   WordLexicon shall treat a token without a letter (a number written with digits, a number with
                   separators or punctuation) as unknown: TryLookup and Contains shall report it absent, Lookup shall
-                  return no analysis and FormsOf shall return no form, even where the embedded image holds an entry for
-                  the spelling, and a spelling that has a letter shall be unaffected.
+                  return no analysis and FormsOf shall return no form, and a spelling that has a letter shall be
+                  unaffected; the embedded image shall hold no spelling without a letter, so that Count and
+                  SensesOf agree with Lookup.
                 tags: [unit]
                 justification: |
                   The models answer a token without a letter as unknown, so a caller that asks the lexicon about the
                   same token must get the same answer; a digit string such as 3 would otherwise show the analyses of
-                  a stray dictionary entry while 1999 shows none.
+                  a stray dictionary entry while 1999 shows none, and the count of the lexicon would include
+                  spellings that no lookup can return.
                 tests:
                   - WordLexicon_Lookup_TokenWithoutLetter_IsAbsent
                   - WordLexicon_Lookup_WordWithALetter_IsStillFound
+                  - WordLexicon_Image_HasNoSpellingWithoutALetter
 
               - id: WordSense-Core-WordLexicon-Facts
                 title: >-
@@ -160,7 +163,7 @@ sections:
                   WordLexicon shall reject a corrupt or foreign word image (wrong magic or version, content hash
                   mismatch, invalid section, a section that starts inside the header or the directory, overlapping
                   sections, unsupported flags, inconsistent raw and stored lengths, bytes after the end of a compressed
-                  stream, a sense that names a group or a respelling that does not exist, a
+                  stream, a sense that names a group that does not exist, a
                   duplicate sense id, a group id without the group marker (lemma#group:label), a group with fewer than
                   two members or with all the senses of its lemma and part of speech, a group that mixes lemmas or
                   parts of speech, or group members that disagree with the sense-to-group index, or that list a sense
@@ -170,6 +173,7 @@ sections:
                   A damaged image must fail loudly instead of producing wrong senses.
                 tests:
                   - WordSenseBuilder_Image_Corruption_IsRejected
+                  - WordSenseBuilder_Image_PreviousFormatVersion_IsRejected
                   - WordSenseBuilder_Image_TruncatedAtEverySectionBoundary_IsRejected
                   - WordSenseBuilder_Image_WrongHash_IsRejectedByContentHashOnly
                   - WordSenseBuilder_Image_CountMismatch_IsRejected
@@ -270,4 +274,4 @@ sections:
                   - WordLexicon_OpenImage_CorruptResource_ThrowsModelIntegrity
                   - WordLexicon_OpenImage_OverlappingSections_ThrowsModelIntegrity
                   - WordLexicon_ReadCatalog_DamagedCatalog_ThrowsModelIntegrity
-                  - WordLexicon_SensesOf_RealImage_ReturnsSensesWithoutRespelling
+                  - WordLexicon_SensesOf_RealImage_ReturnsSenses

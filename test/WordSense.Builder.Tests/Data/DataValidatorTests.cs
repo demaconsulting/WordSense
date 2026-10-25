@@ -819,22 +819,6 @@ public sealed class DataValidatorTests : IDisposable
     }
 
     /// <summary>
-    ///     A group that holds two respellings is a violation, whatever the order of its senses.
-    /// </summary>
-    [Fact]
-    public void WordSenseBuilder_DataValidator_Validate_GroupWithTwoRespellings_Violates()
-    {
-        // Arrange - one curated group of two of the nouns of bass, with two pronunciations
-        var data = LabeledWithThreeBassNouns();
-        WriteBassGroup(data, "all", "n", "oewn-bass__1.05.00..", "oewn-bass__1.10.00..");
-        Assert.True(DataValidator.Validate(data).IsValid);
-        DataFixture.Write(data, "sense_respelling/b.tsv", string.Join('\n', "sense_id\trespelling", "oewn-bass__1.05.00..\tbass", "oewn-bass__1.10.00..\tbase") + "\n");
-
-        // Act / Assert
-        AssertViolation(data, "group");
-    }
-
-    /// <summary>
     ///     The retired origin of the default groups is no longer a member of the group origins.
     /// </summary>
     [Fact]

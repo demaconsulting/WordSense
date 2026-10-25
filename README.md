@@ -263,7 +263,7 @@ embedded resource is damaged) and `DownloadConfigurationException` (an invalid m
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
 | Basic | 3.96% @ 74.74% | 93.87% (ambiguous 91.53%) | 91.65% (ambiguous 88.62%) | 3.25% @ 68.91% (top-1 2.53%) | 98.65% (ambiguous 97.83%) | none | 203 KiB | 4 MiB | 0.11 ms | 34 ms + 58 ms | no |
 | MiniLM | 7.93% @ 96.84% | 93.81% (ambiguous 91.43%) | 91.82% (ambiguous 88.89%) | 8.33% @ 88.71% (top-1 56.41%) | 98.20% (ambiguous 97.10%) | 22 MiB | 5,225 KiB | 98 MiB | 1.52 ms | 443 ms + 60 ms | yes |
-| BERT base cased | 27.16% @ 94.47% | 94.10% (ambiguous 91.90%) | 92.07% (ambiguous 89.26%) | 26.87% @ 86.63% (top-1 63.69%) | 98.20% (ambiguous 97.10%) | 104 MiB | 10,203 KiB | 221 MiB | 8.08 ms | 684 ms + 56 ms | yes |
+| BERT base cased | 27.16% @ 94.47% | 94.10% (ambiguous 91.90%) | 92.06% (ambiguous 89.26%) | 26.87% @ 86.63% (top-1 63.69%) | 98.20% (ambiguous 97.10%) | 104 MiB | 10,203 KiB | 221 MiB | 8.08 ms | 684 ms + 56 ms | yes |
 <!-- model-table:end -->
 
 <!-- markdownlint-enable MD013 -->
@@ -293,12 +293,13 @@ embedded resource is damaged) and `DownloadConfigurationException` (an invalid m
 - *Running-text part of speech (open corpus test)*: the part of speech of the selected analysis on the 1,501 sentences of
   the test split of the representative open corpus (random CC0 text, 21,482 scored tokens), on all tokens and, in
   brackets, on the 12,808 tokens whose word has two or more parts of speech in the dictionary.
-- *UD-EWT test part of speech*: the same on the test file of the English EWT treebank (19,471 scored tokens), mapped to
+- *UD-EWT test part of speech*: the same on the test file of the English EWT treebank (19,468 scored tokens), mapped to
   the conventions of the dictionary (possessive determiners, the copula *be*, phrasal-verb particles, prepositions
-  before gerunds); the treebank is downloaded for evaluation only and is never committed.
+  before gerunds); the treebank is downloaded for evaluation only and is never committed. A possessive of a numeral
+  such as `80's` is not answered, because numerals are unknown.
 - *Independent sense evaluation (SemCor)*: the 31,556 single-word annotations of the 825 of the 856 trained lemmas that
   SemCor 3.0 can evaluate (the
-  sense-annotated Brown Corpus, WordNet 3.0 keys mapped to the senses of the catalog; 97.7% of the keys map): the share
+  sense-annotated Brown Corpus, WordNet 3.0 keys mapped to the senses of the catalog; 97.1% of the keys map): the share
   answered at the sense level and the precision of those answers, and the *fine top-1*, the share of the words whose most
   probable sense is right. For comparison, always choosing the first (most frequent) sense of the right lemma and part of
   speech is right for 60.7% of these words; that baseline is optimistic because the order of the senses comes from
@@ -362,9 +363,6 @@ This version is a foundation, and these follow-ups are planned (the figures are 
   analysis (only 9 have it), with a relabeling of the corpus rows that name them.
 - **A stricter suite.** One-sense labels for the 174 suite rows that accept a set of senses, so that the rows become
   stricter.
-- **Open work items of the code base:** the `sense_respelling` table and the respelling sections of the word image are
-  still in the data and the image format (the pronunciation API was removed); they can be dropped at the next
-  regeneration of the image.
 - **Formal review follow-ups.** The first formal review of all 33 review-sets left compliance items open: split the
   compound requirements into atomic ones and move requirements that prescribe the implementation into the design
   documents; add typed method contracts to the unit designs; label the Arrange, Act and Assert steps in the tests and
@@ -411,7 +409,7 @@ Package licenses:
   the lexicon were authored by the project with language models, recorded with their provenance and checked by a
   sampled audit; they are dedicated to the public domain under CC0 1.0 by the project owner. No third-party inflection
   database is used.
-- **Project-authored words, senses, meanings and respellings**: MIT License.
+- **Project-authored words, senses and meanings**: MIT License.
 - **Project-authored sentences and annotations** (the sentences written by language models for this project, our
   labels, the selection of the real sentences and the open part-of-speech corpus `corpus/open`): dedicated to the public
   domain under CC0 1.0 by the project owner. The underlying real sentences are not ours; their sources and licenses

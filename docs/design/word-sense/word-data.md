@@ -48,8 +48,8 @@ builder (see the WordSenseBuilder unit), not by the subsystem.
   the last release, against which the published sense labels are checked; group ids are not compared).
 - The sense inventory tables: `sense_label` (the label of every sense), `sense_label_map` (renames and retirements of
   sense ids), `sense_group` (the optional curated groups: id `lemma#group:slug`, lemma, part of speech, label, origin and
-  kind) and `group_sense` (the senses of each group), `sense_frequency` (the WordNet 3.0 tag count of every sense key) and
-  `sense_respelling` (the respelling of a sense).
+  kind) and `group_sense` (the senses of each group) and `sense_frequency` (the WordNet 3.0 tag count of every sense
+  key).
 - `data/README.md` describes the tables for contributors and `data/PROVENANCE.md` records the sources, the pins, the
   WordNet 3.0 license notice for the counts and what was left out.
 
@@ -82,8 +82,8 @@ label for every other sense and never changes one that exists.
 The levels of an answer nest: none, then the part of speech (a lemma and part of speech), then an optional group, then
 the sense. A **group** (`sense_group`, `group_sense`) exists only when it is curated: a set of at least two, but not
 all, senses of one lemma and one part of speech that are closely related in meaning and that a reader can confuse. A
-group has one lemma, one part of speech, a readable label and a kind, and does not contain two respellings, so a group
-answer is always pronounceable. There is no singleton group and no default group or group of a whole part of speech,
+group has one lemma, one part of speech, a readable label and a kind. There is no singleton group and no default group
+or group of a whole part of speech,
 because a group that holds one sense or all of them says nothing that the sense or the part of speech does not say; a
 sense needs no group and is in at most one. When the classifier is unsure between senses it steps up to the next level
 that exists: the shared group of the two senses if both are in one, otherwise the part of speech. The membership of a
@@ -106,7 +106,7 @@ one meaning) or `related` (a genuine family of meanings that are close but not o
 validated against the `group_kind` vocabulary of the schema, so that a consumer can make a truthful claim about what
 the group means. A group is **admitted** only with the curator's same-meaning judgment and evidence: observed confusion
 (the blind judge or a classifier mixes the senses up) or near-identical glosses. What is checkable is enforced: the
-validator checks the kind, the size of the group and its respellings, and the curation import requires a valid kind and
+validator checks the kind and the size of the group, and the curation import requires a valid kind and
 non-empty `evidence` text for every group it writes (the evidence is curation metadata in `corpus/curation/groups.tsv`,
 not a data column); the judgment itself is a review decision.
 
@@ -123,8 +123,9 @@ key. There is one for each determiner, pronoun, preposition, conjunction, interj
 conjunction `or` (`or#conjunction`; the spelling `or` has it as its first analysis). The candidate senses of a word come
 from its entries to their senses.
 
-`sense_respelling` records the respelling of the senses whose pronunciation differs (`lead` the metal and `lead` the
-verb).
+`sense_label` and the other tables of the inventory describe senses and groups only; the respelling table of the earlier
+pronunciation support is gone from the schema and the data, and the OEWN spellings without a letter (numerals such as
+`0`, `24/7` or `.22`) stay in the tables as the source has them, while the image compiler leaves them out.
 
 The class tables of the retired coarse inventory and the per-form class scopes are gone from the schema and the data.
 A map from the retired class ids to the new groups and senses is not part of the data: it was a temporary working file

@@ -3,7 +3,7 @@
 ## The code and the project data
 
 The code of this package is Copyright DEMA Consulting and is licensed under the MIT license. The data that the project
-wrote itself (the closed word lists, the project senses, the readable sense labels, the groups and the respellings) is
+wrote itself (the closed word lists, the project senses, the readable sense labels and the groups) is
 also licensed under the MIT license. The authored inflected forms (`corpus/lexicon/forms-authored.tsv`, written by the
 project with language models) are dedicated to the public domain under CC0 1.0.
 
