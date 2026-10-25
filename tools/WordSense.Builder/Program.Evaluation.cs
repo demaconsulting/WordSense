@@ -65,8 +65,13 @@ internal static partial class Program
             throw new InvalidDataException($"--report must be all, running or tense, not '{report}'.");
         }
 
-        var (sets, notes) = RunningTextEvaluator.Load(corpus, options.GetValueOrDefault("split", "test"), gold);
-        var (tenseSets, tenseNotes) = TenseEvaluator.Load(corpus, gold);
+        // Each report loads only its own inputs, so a missing input of the other report does not stop it
+        var (sets, notes) = report is "all" or "running"
+            ? RunningTextEvaluator.Load(corpus, options.GetValueOrDefault("split", "test"), gold)
+            : ([], []);
+        var (tenseSets, tenseNotes) = report is "all" or "tense"
+            ? TenseEvaluator.Load(corpus, gold)
+            : ([], []);
         var scoresByModel = new List<(string Model, List<TaggerScore> Scores)>();
         var tenseByModel = new List<(string Model, List<TenseScore> Scores)>();
         foreach (var info in ModelCatalog.Select(options.GetValueOrDefault("model")))

@@ -16,7 +16,8 @@ namespace WordSense.Builder;
 /// <param name="NonPastAsPast">Gold non-past tokens whose selected analysis is a past analysis.</param>
 /// <param name="NonPastAsNonPast">Gold non-past tokens whose selected analysis is not a past analysis.</param>
 /// <param name="Unanswered">Tokens the model did not answer at all (counted as wrong, in none of the four cells).</param>
-internal sealed record TenseScore(string Name, string Group, int PastAsPast, int PastAsNonPast, int NonPastAsPast, int NonPastAsNonPast, int Unanswered)
+/// <param name="UnansweredPast">The gold past tokens among <paramref name="Unanswered"/>, so the gold classes stay known for the baseline.</param>
+internal sealed record TenseScore(string Name, string Group, int PastAsPast, int PastAsNonPast, int NonPastAsPast, int NonPastAsNonPast, int Unanswered, int UnansweredPast = 0)
 {
     /// <summary>
     ///     Gets the number of scored tokens.
@@ -29,9 +30,9 @@ internal sealed record TenseScore(string Name, string Group, int PastAsPast, int
     public int Correct => PastAsPast + NonPastAsNonPast;
 
     /// <summary>
-    ///     Gets the number of gold past tokens.
+    ///     Gets the number of gold past tokens, answered or not.
     /// </summary>
-    public int GoldPast => PastAsPast + PastAsNonPast;
+    public int GoldPast => PastAsPast + PastAsNonPast + UnansweredPast;
 
     /// <summary>
     ///     Gets the number of tokens of the larger gold class: what always answering the more frequent class would get right.
@@ -47,7 +48,7 @@ internal sealed record TenseScore(string Name, string Group, int PastAsPast, int
     public TenseScore Add(string name, TenseScore other)
     {
         ArgumentNullException.ThrowIfNull(other);
-        return new TenseScore(name, Group, PastAsPast + other.PastAsPast, PastAsNonPast + other.PastAsNonPast, NonPastAsPast + other.NonPastAsPast, NonPastAsNonPast + other.NonPastAsNonPast, Unanswered + other.Unanswered);
+        return new TenseScore(name, Group, PastAsPast + other.PastAsPast, PastAsNonPast + other.PastAsNonPast, NonPastAsPast + other.NonPastAsPast, NonPastAsNonPast + other.NonPastAsNonPast, Unanswered + other.Unanswered, UnansweredPast + other.UnansweredPast);
     }
 }
 
@@ -247,7 +248,7 @@ internal static class TenseEvaluator
 
     private static async Task<List<TenseScore>> ScoreAsync(string name, Func<IEnumerable<string>, CancellationToken, Task<ClassifyResult[]>> classify, IReadOnlyList<TaggedSentence> sentences, CancellationToken cancellationToken)
     {
-        var counts = Groups.ToDictionary(g => g, _ => new int[5], StringComparer.Ordinal);
+        var counts = Groups.ToDictionary(g => g, _ => new int[6], StringComparer.Ordinal);
         foreach (var sentence in sentences)
         {
             if (sentence.Gold is not { } gold)
@@ -276,8 +277,9 @@ internal static class TenseEvaluator
                     continue;
                 }
 
-                // The cell of the confusion matrix: past as past, past as non-past, non-past as past, non-past as non-past, unanswered
-                var cell = 4;
+                // The cell of the confusion matrix: past as past, past as non-past, non-past as past, non-past as non-past,
+                // unanswered non-past, unanswered past (the gold class of an unanswered token is kept for the baseline)
+                var cell = IsGoldPast(gold[i]) ? 5 : 4;
                 if (results[i].Details is { } details)
                 {
                     cell = (IsGoldPast(gold[i]) ? 0 : 2) + (BasicClassifier.IsPast(details) ? 0 : 1);
@@ -290,7 +292,7 @@ internal static class TenseEvaluator
             }
         }
 
-        return [.. Groups.Where(g => counts[g].Sum() > 0).Select(g => new TenseScore(name, g, counts[g][0], counts[g][1], counts[g][2], counts[g][3], counts[g][4]))];
+        return [.. Groups.Where(g => counts[g].Sum() > 0).Select(g => new TenseScore(name, g, counts[g][0], counts[g][1], counts[g][2], counts[g][3], counts[g][4] + counts[g][5], counts[g][5]))];
     }
 
     /// <summary>

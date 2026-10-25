@@ -396,8 +396,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
   word and punctuation are not scored.
 - **Confusion** (`WordSenseBuilder_TenseEvaluator_RunAsync_ScoresTheConfusionOfPastAgainstNonPast`): with a model that
   reads every `put` as past and does not answer `cut`, a past `put` is right, an imperative `put` is a non-past token read
-  as past, `cut` is not answered, a gold noun `put` and a `walk` are not scored; the count, the correct tokens, the majority
-  baseline and the gold past tokens follow.
+  as past, an imperative and a past `cut` are not answered (the past one keeps its gold class, so the gold classes tie at
+  two and two and the majority baseline is two), a gold noun `put` and a `walk` are not scored; the count, the correct
+  tokens, the majority baseline and the gold past tokens follow.
 - **Pooling and skipped sets** (`WordSenseBuilder_TenseEvaluator_RunAsync_PoolsTheTreebankFilesAndSkipsGoldWithoutFeatures`):
   the three treebank files give a pooled row per group that adds their counts, and a set whose gold has no features is
   skipped.
@@ -413,8 +414,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Report** (`WordSenseBuilder_TenseEvaluator_Render_FormatsRowsAndNotes`): one row per model, set and group with the count,
   the accuracy, the majority baseline and the confusion.
 - **Command** (`WordSenseBuilder_Program_EvaluateRunning_Basic_ReportsTheTenseAndHonorsTheReportOption`): the command
-  prints the part-of-speech report and the tense report of Basic, only the tense report with `--report tense`, and refuses
-  another value.
+  prints the part-of-speech report and the tense report of Basic, only the tense report with `--report tense` (without
+  reading the part-of-speech inputs: a split that does not exist does not stop it), and refuses another value.
 
 #### evaluate-running
 

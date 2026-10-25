@@ -958,8 +958,8 @@ sections:
           - id: WordSense-WordSenseBuilder-TenseEvaluation-Cli
             title: >-
               The evaluate-running command shall print the tense report after the part-of-speech report, restrict the
-              output to the tense report or to the part-of-speech report with --report tense or --report running, and
-              refuse any other value of --report.
+              output to the tense report or to the part-of-speech report with --report tense or --report running,
+              reading only the inputs of the reports it prints, and refuse any other value of --report.
             tags: [unit]
             justification: |
               The part-of-speech report needs no treebank, and a misspelled option must not run the wrong report.

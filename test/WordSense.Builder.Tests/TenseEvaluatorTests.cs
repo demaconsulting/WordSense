@@ -108,7 +108,8 @@ public sealed class TenseEvaluatorTests : IDisposable
 
     /// <summary>
     ///     A model is scored on the gold verbs whose form has a past and a non-past analysis: the four cells of the
-    ///     confusion, the tokens it does not answer, and the groups; tokens that are no gold verb are left out.
+    ///     confusion, the tokens it does not answer (with their gold class kept for the majority baseline), and the groups;
+    ///     tokens that are no gold verb are left out.
     /// </summary>
     /// <returns>A task that completes when the check is done.</returns>
     [Fact]
@@ -124,6 +125,7 @@ public sealed class TenseEvaluatorTests : IDisposable
                     Sentence(["They", "put", "it"], [PosTag.Pronoun, PosTag.Verb, PosTag.Pronoun], Other, new("put", "VBD", "Mood=Ind|Tense=Past|VerbForm=Fin"), Other),
                     Sentence(["Put", "it", "down"], [PosTag.Verb, PosTag.Pronoun, PosTag.Adverb], new("put", "VB", "VerbForm=Inf"), Other, Other),
                     Sentence(["Cut", "it"], [PosTag.Verb, PosTag.Pronoun], new("cut", "VB", "VerbForm=Inf"), Other),
+                    Sentence(["They", "cut", "it"], [PosTag.Pronoun, PosTag.Verb, PosTag.Pronoun], Other, new("cut", "VBD", "Mood=Ind|Tense=Past|VerbForm=Fin"), Other),
                     Sentence(["A", "put", "walk"], [PosTag.Determiner, PosTag.Noun, PosTag.Verb], Other, new("put", "NN", "Number=Sing"), new("walk", "VB", "VerbForm=Inf")),
                 ]),
         };
@@ -132,14 +134,15 @@ public sealed class TenseEvaluatorTests : IDisposable
         // Act
         var scores = await TenseEvaluator.RunAsync(model, sets, TestContext.Current.CancellationToken);
 
-        // Assert: three scored tokens, none of them of the read family
+        // Assert: four scored tokens, none of them of the read family; the unanswered past cut keeps its gold class, so the
+        // gold classes are tied (two past, two non-past) and the majority baseline is two
         Assert.Equal([TenseEvaluator.AllGroup, TenseEvaluator.SameLemmaGroup], scores.Select(s => s.Group));
         var all = scores[0];
-        Assert.Equal((1, 0, 1, 0, 1), (all.PastAsPast, all.PastAsNonPast, all.NonPastAsPast, all.NonPastAsNonPast, all.Unanswered));
-        Assert.Equal(3, all.Tokens);
+        Assert.Equal((1, 0, 1, 0, 2, 1), (all.PastAsPast, all.PastAsNonPast, all.NonPastAsPast, all.NonPastAsNonPast, all.Unanswered, all.UnansweredPast));
+        Assert.Equal(4, all.Tokens);
         Assert.Equal(1, all.Correct);
         Assert.Equal(2, all.Majority);
-        Assert.Equal(1, all.GoldPast);
+        Assert.Equal(2, all.GoldPast);
     }
 
     /// <summary>
@@ -244,7 +247,8 @@ public sealed class TenseEvaluatorTests : IDisposable
 
     /// <summary>
     ///     The command reports the tense of the basic model next to the part of speech, and <c>--report tense</c> only the
-    ///     tense; a report that is neither is refused.
+    ///     tense, without reading the inputs of the part-of-speech report (a split that does not exist does not stop it); a
+    ///     report that is neither is refused.
     /// </summary>
     /// <returns>A task that completes when the check is done.</returns>
     [Fact]
@@ -267,7 +271,7 @@ public sealed class TenseEvaluatorTests : IDisposable
 
         // Act
         var bothCode = await Program.RunAsync(["evaluate-running", "--model", "basic", "--repository", root.FullName, "--gold", absent], both, error, TestContext.Current.CancellationToken);
-        var tenseCode = await Program.RunAsync(["evaluate-running", "--model", "basic", "--repository", root.FullName, "--gold", absent, "--report", "tense"], tenseOnly, error, TestContext.Current.CancellationToken);
+        var tenseCode = await Program.RunAsync(["evaluate-running", "--model", "basic", "--repository", root.FullName, "--gold", absent, "--report", "tense", "--split", "missing"], tenseOnly, error, TestContext.Current.CancellationToken);
         var refusedCode = await Program.RunAsync(["evaluate-running", "--model", "basic", "--repository", root.FullName, "--report", "nonsense"], refused, refusedError, TestContext.Current.CancellationToken);
 
         // Assert
