@@ -130,6 +130,7 @@ expectation, so a regression fails the build while the known misses stay visible
 | Row | Model | Grade on the development machine | Grade on CI (Windows x64, macOS arm64) | Recorded |
 | --- | --- | --- | --- | --- |
 | `C-content-6` (`A small raise will not content the angry workers`) | BertBaseCased | fine | miss | miss |
+| `H-defense-1` (`The lawyer prepared a strong defense for the trial`) | BertBaseCased | fine | answer (Windows x64; the other platforms were canceled in that run) | answer |
 
 ### Deliberate model change: the usage prior (historical; retraining of both encoder models)
 
@@ -275,7 +276,11 @@ the pronunciation class had mapped to, including senses that the sentence does n
 rewritten with `evaluate-suite --write-expectations` under rule 3 and the rule 4 rows restored (`C-content-6` and
 `H-close-4` stay `miss` for BertBaseCased: the rewrite measured `fine` for both on the development machine). 22 cells in
 14 rows changed against the file before the review (348 rows): MiniLM 13 `fine` to `answer`, BertBaseCased 9 `fine` to
-`answer`, Basic none; no cell went up and none went to `miss`. Measured answered / fine (348 rows) before and after:
+`answer`, Basic none; no cell went up and none went to `miss`. One more cell is recorded lower under rule 4:
+`H-defense-1` for BertBaseCased is `fine` on the development machine (its two-sense set holds the top-ranked sense) but
+`answer` on the Windows x64 CI runner, where a near tie puts a third sense of the old set first, so it is recorded
+`answer` and listed under *Platform-sensitive rows*. Measured answered / fine (348 rows, development machine) before
+and after:
 Basic 95.69% / 43.39% unchanged, MiniLM 94.83% / 92.24% to 94.83% / 88.51%, BertBaseCased 98.28% / 96.26% to
 98.28% / 93.68%.
 
@@ -307,7 +312,7 @@ the label.
 The 13 rows that now accept two senses (`H-use-1`, `H-contact-1`, `H-increase-1`, `H-subject-2`, `H-estimate-1`,
 `H-estimate-3`, `H-associate-1`, `H-detail-1`, `H-defense-1`, `C-produce-3`, `C-excuse-3`, `C-wound-2` and
 `C-buffet-2`) have the grades that they had before the narrowing, except for `H-detail-1` (MiniLM), which is in the
-table above.
+table above, and `H-defense-1` (BertBaseCased), which is platform-sensitive (see above).
 
 | Row | Label | Added sense (judged equally acceptable) |
 | --- | --- | --- |
