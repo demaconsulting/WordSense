@@ -82,6 +82,40 @@ sections:
                   - WordSenseContracts_AnalysisCandidate_SameValues_AreEqual
                   - WordSenseContracts_SenseCandidate_SameValues_AreEqual
 
+              - id: WordSense-Core-WordSenseContracts-Candidates-RankingKind
+                title: >-
+                  AnalysisCandidate shall expose a read-only SensesRankedByUsage value that is true only when the model
+                  built the candidate with the value true, to say that its senses are the context-free usage ranking of
+                  the lemma and not scores from the context of the word.
+                tags: [unit]
+                justification: |
+                  A consumer, and the FallbackWordSenseModel, must tell a ranking by usage from a score of the senses in
+                  context; both are lists of senses with probabilities.
+                tests:
+                  - WordSenseContracts_AnalysisCandidate_SensesRankedByUsage_DefaultsToContextScored
+
+              - id: WordSense-Core-WordSenseContracts-Candidates-RankingKind-Default
+                title: >-
+                  AnalysisCandidate shall have SensesRankedByUsage false for a default candidate and for a candidate
+                  built without the value, so that a model that lists senses and does not say otherwise counts as
+                  scoring them in context.
+                tags: [unit]
+                justification: |
+                  The value is added to a pre-1.0 public type; a model written before it existed keeps working and
+                  keeps being treated as scoring its senses.
+                tests:
+                  - WordSenseContracts_AnalysisCandidate_SensesRankedByUsage_DefaultsToContextScored
+
+              - id: WordSense-Core-WordSenseContracts-Candidates-RankingKind-Equality
+                title: >-
+                  AnalysisCandidate shall include SensesRankedByUsage in its equality and its hash code.
+                tags: [unit]
+                justification: |
+                  Two candidates that list the same senses but one ranked by usage and one scored are different
+                  statements, and results are compared by value in tests and in consumers.
+                tests:
+                  - WordSenseContracts_AnalysisCandidate_SensesRankedByUsage_DefaultsToContextScored
+
               - id: WordSense-Core-WordSenseContracts-Level
                 title: >-
                   SenseLevel shall name the four answer levels, None (unknown word), PartOfSpeech, Group and Sense,
@@ -125,7 +159,8 @@ sections:
                 title: >-
                   FallbackWordSenseModel shall compose a primary and a fallback model: classify the whole word list
                   with both, answer each word with the complete result of the primary model when the primary model
-                  scored senses for it (its selected analysis lists scored senses, or its level is Group or Sense) and
+                  scored senses for it (its selected analysis lists senses scored from the context, see
+                  WordSense-Core-WordSenseContracts-FallbackUsage, or its level is Group or Sense) and
                   otherwise with the complete result of the fallback model, never a mixture of the probabilities of the
                   two (except the split of a tied slot that WordSense-Core-WordSenseContracts-FallbackSlotSplit states
                   and the combination of the slot probabilities that WordSense-Core-WordSenseContracts-FallbackReconcile
@@ -149,6 +184,34 @@ sections:
                   - WordSenseContracts_FallbackWordSenseModel_Dispose_DisposesBothOnce
                   - WordSenseContracts_FallbackWordSenseModel_ClassifyAsync_InvalidArguments_Throw
                   - WordSenseContracts_FallbackWordSenseModel_ClassifyAsync_ResultNotParallel_Throws
+
+              - id: WordSense-Core-WordSenseContracts-FallbackUsage
+                title: >-
+                  FallbackWordSenseModel shall answer a word with the complete result of the fallback model when the
+                  senses that the selected analysis of the primary result lists are only ranked by usage
+                  (SensesRankedByUsage is true) and its level is not Group or Sense, so that it never refines or
+                  reconciles such a result.
+                tags: [unit]
+                justification: |
+                  The usage prior of the Basic model is a context-free ranking of the lemma, not a score of the senses
+                  in the context; a composite whose primary model is the Basic model (or any model that ranks by a
+                  prior) must not treat the ranking as evidence of the context.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_BasicAsPrimary_UsageRankedSenses_AreNotRefinedOrReconciled
+                  - WordSenseContracts_FallbackWordSenseModel_BasicWithBasic_ReturnsTheBasicAnswerAsItIs
+
+              - id: WordSense-Core-WordSenseContracts-FallbackScored
+                title: >-
+                  FallbackWordSenseModel shall answer a word with the result of the primary model, refined and
+                  reconciled as the requirements state, when the senses that the selected analysis of the primary
+                  result lists are not marked as ranked by usage (the default of a candidate).
+                tags: [unit]
+                justification: |
+                  A model that lists senses and says nothing about their ranking, as every model written before the
+                  value existed, scores them in context; its result keeps being used.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_PrimaryScoredSenses_UsesPrimary
+                  - WordSenseContracts_FallbackWordSenseModel_PrimaryWithContextScoredSenses_StillReconciled
 
               - id: WordSense-Core-WordSenseContracts-FallbackSlotSplit
                 title: >-
@@ -284,6 +347,7 @@ sections:
                   - WordSense-Core-WordSenseContracts-FallbackReconcile-Combination-Floor
                   - WordSense-Core-WordSenseContracts-FallbackReconcile-Variants-Share
                   - WordSense-Core-WordSenseContracts-FallbackReconcile-Variants-Senses
+                  - WordSense-Core-WordSenseContracts-FallbackReconcile-Variants-Kind
                   - WordSense-Core-WordSenseContracts-FallbackReconcile-Answer-Order
                   - WordSense-Core-WordSenseContracts-FallbackReconcile-Answer-Selection
                   - WordSense-Core-WordSenseContracts-FallbackReconcile-Answer-Level
@@ -410,6 +474,17 @@ sections:
                 tests:
                   - WordSenseContracts_FallbackWordSenseModel_PartOfSpeechLevel_KeepsTheShareOfTheVariantsAndTheirSenses
                   - WordSenseContracts_FallbackWordSenseModel_PartOfSpeechLevel_ManyInputs_StayConsistent
+
+              - id: WordSense-Core-WordSenseContracts-FallbackReconcile-Variants-Kind
+                title: >-
+                  FallbackWordSenseModel shall keep, for every analysis of a combined result, whether its senses are
+                  ranked by usage (the SensesRankedByUsage value of the analysis in the result it was taken from).
+                tags: [unit]
+                justification: |
+                  A slot that only the fallback lists keeps the ranking by usage of the Basic model, and a slot of the
+                  primary keeps its scores; losing the kind would let a later consumer take a ranking for a score.
+                tests:
+                  - WordSenseContracts_FallbackWordSenseModel_Reconcile_KeepsTheRankingKindOfEveryAnalysis
 
               - id: WordSense-Core-WordSenseContracts-FallbackReconcile-Answer-Order
                 title: >-

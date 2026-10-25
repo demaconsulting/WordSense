@@ -168,6 +168,7 @@ public class EndToEndTests
         Assert.Null(record.SenseId);
         Assert.Equal(UsagePrior.RankOf(details.Lemma, details.PartOfSpeech), selected.Senses);
         Assert.True(selected.Senses.Length >= 2);
+        Assert.True(selected.SensesRankedByUsage);
         Assert.EndsWith("#" + selected.Senses[0].SenseId.Split('#')[1], record.Key, StringComparison.Ordinal);
     }
 
@@ -273,6 +274,7 @@ public class EndToEndTests
         // Assert: the trained word lists scored senses in at least one analysis; each list is ranked and sums to one
         var back = results[3];
         Assert.Contains(back.Analyses, a => !a.Senses.IsEmpty);
+        Assert.False(back.Analyses.First(a => a.Details.Equals(back.Details)).SensesRankedByUsage);
         foreach (var analysis in back.Analyses.Where(a => !a.Senses.IsEmpty))
         {
             Assert.Equal(1.0, analysis.Senses.Sum(s => s.Probability), 6);

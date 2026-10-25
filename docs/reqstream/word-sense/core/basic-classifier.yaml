@@ -11,16 +11,24 @@ sections:
               - id: WordSense-Core-BasicClassifier-Unknown
                 title: >-
                   BasicClassifier shall answer a word that has no lexicon entry, or no letter, as unknown (not known, no
-                  analysis, no details, level none and confidence 0), and shall answer every word that has a lexicon
-                  entry, a number word such as one or twenty included, with details.
+                  analysis, no details, level none and confidence 0).
                 tags: [unit]
                 justification: |
-                  An unknown word must be distinguishable from a known one, and a known word must never be reported as
-                  unknown.
+                  An unknown word must be distinguishable from a known one.
                 tests:
                   - BasicClassifier_ClassifyAsync_UnknownWord_ReturnsNoDetails
                   - BasicClassifier_ClassifyAsync_UnknownWord_HasNoAnalyses
                   - BasicClassifier_ClassifyAsync_CapitalizedWordNotInLexicon_IsUnknown
+
+              - id: WordSense-Core-BasicClassifier-Known
+                title: >-
+                  BasicClassifier shall answer every word that has a lexicon entry, a number word such as one or twenty
+                  included, with details.
+                tags: [unit]
+                justification: |
+                  A known word must never be reported as unknown; the test is the presence of a lexicon entry, not the
+                  kind of token.
+                tests:
                   - BasicClassifier_ClassifyAsync_NumberWord_ReturnsDetails
 
               - id: WordSense-Core-BasicClassifier-SingleSense
@@ -219,14 +227,23 @@ sections:
                 tests:
                   - UsagePrior_Rank_NegativeCount_Throws
 
-              - id: WordSense-Core-BasicClassifier-UsagePrior-Validation-Missing
+              - id: WordSense-Core-BasicClassifier-UsagePrior-Validation-MissingList
                 title: >-
-                  The usage prior shall reject a missing list of senses and a missing lemma.
+                  The usage prior shall reject a missing list of senses.
                 tags: [unit]
                 justification: |
                   A missing argument is a mistake of the caller that must fail at once.
                 tests:
-                  - UsagePrior_Rank_MissingArgument_Throws
+                  - UsagePrior_Rank_MissingList_Throws
+
+              - id: WordSense-Core-BasicClassifier-UsagePrior-Validation-MissingLemma
+                title: >-
+                  The usage prior shall reject a missing lemma.
+                tags: [unit]
+                justification: |
+                  A missing argument is a mistake of the caller that must fail at once.
+                tests:
+                  - UsagePrior_RankOf_MissingLemma_Throws
 
               - id: WordSense-Core-BasicClassifier-UsagePrior-Slots
                 title: >-
@@ -267,6 +284,30 @@ sections:
                   The ranking is evidence about the lemma and not about the sentence.
                 tests:
                   - BasicClassifier_ClassifyAsync_RankingDoesNotDependOnContext
+
+              - id: WordSense-Core-BasicClassifier-UsagePrior-Marked
+                title: >-
+                  BasicClassifier shall mark the senses that it lists in an analysis by the usage prior as ranked by
+                  usage (SensesRankedByUsage true).
+                tags: [unit]
+                justification: |
+                  The ranking is a base rate of the lemma and not a score of the context; the mark lets a composite and
+                  a consumer tell the two apart.
+                tests:
+                  - BasicClassifier_ClassifyAsync_UsagePrior_MarksTheSensesAsRankedByUsage
+
+              - id: WordSense-Core-BasicClassifier-UsagePrior-Marked-Other
+                title: >-
+                  BasicClassifier shall not mark the senses of an analysis that is not ranked by the usage prior (the
+                  only sense of a single-sense analysis, no senses, or no ranking function configured) as ranked by
+                  usage.
+                tags: [unit]
+                justification: |
+                  The only sense of a lemma is certain and nothing is ranked when there are no senses; marking them
+                  would misstate what the classifier did.
+                tests:
+                  - BasicClassifier_ClassifyAsync_UsagePrior_MarksTheSensesAsRankedByUsage
+                  - BasicClassifier_ClassifyAsync_WithoutAPrior_MarksNothingAsRankedByUsage
 
               - id: WordSense-Core-BasicClassifier-UsagePrior-NoAnswer
                 title: >-

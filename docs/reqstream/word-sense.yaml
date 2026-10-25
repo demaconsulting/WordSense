@@ -342,6 +342,41 @@ sections:
           - MiniLM_Classifier_EndToEnd_SameSpellingVerb_TenseFollowsTheContext
           - BertBaseCased_Classifier_EndToEnd_SameSpellingVerb_TenseFollowsTheContext
 
+      - id: WordSense-Lib-Candidates-UsagePrior-Kind
+        title: >-
+          The system shall tell, on every analysis that lists senses, a ranking by usage from a score in context, and
+          shall list the senses that the encoder scores for a trained lemma as scored and the senses ranked by the
+          Basic model for any other lemma as ranked by usage.
+        tags: [system]
+        justification: |
+          A consumer that maps senses to its own categories must know whether the probabilities of the senses come
+          from the context or are the same in every sentence.
+        children:
+          - WordSense-Core-Candidates-RankingKind
+        tests:
+          - MiniLM_Classifier_EndToEnd_UntrainedWord_RanksItsSensesByUsage
+          - BertBaseCased_Classifier_EndToEnd_UntrainedWord_RanksItsSensesByUsage
+          - WordSense_Classifier_EndToEnd_SensesAreRankedAndSumToOne
+
+      - id: WordSense-Lib-Fallback-UsageRanking
+        title: >-
+          The system shall not take a ranking of senses by usage for a score of the senses when it composes models: a
+          word whose primary model only ranks the senses by usage is answered by the second model as it is, and a word
+          whose senses the first model scores in context is answered by the first model.
+        tags: [system]
+        justification: |
+          The Basic model lists usage-ranked senses for untrained polysemous words, so a composition with the Basic
+          model as the first model, or with any model that ranks by a prior, would otherwise refine and reconcile a
+          context-free ranking as if it were evidence; the shipped encoder compositions are not affected because an
+          encoder lists no senses for an untrained lemma.
+        children:
+          - WordSense-Core-Fallback-UsageRanking
+        tests:
+          - WordSenseContracts_FallbackWordSenseModel_BasicAsPrimary_UsageRankedSenses_AreNotRefinedOrReconciled
+          - WordSenseContracts_FallbackWordSenseModel_PrimaryWithContextScoredSenses_StillReconciled
+          - MiniLM_Classifier_EndToEnd_UntrainedWord_RanksItsSensesByUsage
+          - BertBaseCased_Classifier_EndToEnd_UntrainedWord_RanksItsSensesByUsage
+
       - id: WordSense-Lib-Data
         title: >-
           The system shall keep the word data of the library as validated, deterministic, human-editable TSV tables
@@ -470,6 +505,7 @@ sections:
         children:
           - WordSense-Core-Fusion
           - WordSense-Core-BasicClassifier-Unknown
+          - WordSense-Core-BasicClassifier-Known
           - WordSense-Onnx-Confidence
           - WordSense-Core-Contracts
         tests:

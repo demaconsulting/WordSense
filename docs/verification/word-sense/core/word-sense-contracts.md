@@ -41,9 +41,13 @@ All scenarios below pass on every platform and target framework of the CI matrix
   code) and two results that differ in one analysis, one sense or the order are not; the results of two unknown words
   share the same empty analyses array.
 - **AnalysisCandidate and SenseCandidate** (`AnalysisCandidate_Senses_DefaultIsEmpty`,
-  `AnalysisCandidate_SameValues_AreEqual`, `SenseCandidate_SameValues_AreEqual`): an analysis built without senses, or
+  `AnalysisCandidate_SameValues_AreEqual`, `AnalysisCandidate_SensesRankedByUsage_DefaultsToContextScored`,
+  `SenseCandidate_SameValues_AreEqual`): an analysis built without senses, or
   with the default array, has the empty list and never a default array; two analyses with the same details, probability
-  and senses are equal; two `SenseCandidate` values with the same sense id and probability are equal.
+  and senses are equal; a candidate built with three arguments, a `default` candidate and one built with the argument
+  false have `SensesRankedByUsage` false (the default of a third-party model that lists senses), one built with the
+  argument true has it true, and the flag takes part in the equality; two `SenseCandidate` values with the same sense id
+  and probability are equal.
 - **SenseLevel has four ordered values** (`SenseLevel_Values_AreTheFourLevels`, `SenseLevel_Order_IncreasesWithPrecision`):
   none, part of speech, group and sense, in order of increasing precision.
 - **WordDetails equality and features** (`WordDetails_Construct_ExposesMembers`, `WordDetails_SameValues_AreEqual`,
@@ -69,7 +73,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
   with scored senses, or the level group or sense, the composite returns exactly the primary result (the same analyses,
   level, confidence and ids), not the fallback result.
 - **Fallback uses the fallback result otherwise** (`FallbackWordSenseModel_PrimaryChoseOnlyAnalysis_UsesFallback`): for
-  a word that the primary model did not know, or only answered at the part of speech level without scored senses, the
+  a word that the primary model did not know, or only answered at the part of speech level without scored senses (also
+  one whose senses are only ranked by usage), the
   composite returns the complete fallback result; in a list with both kinds of word each position takes its own
   result, and no result is a mixture of the two.
 - **Fallback gives tied variants the proportions of the fallback**
@@ -100,7 +105,19 @@ All scenarios below pass on every platform and target framework of the CI matrix
   the weight 1 gives the composition without a weight (the noun stays on top at 0.7) and the weight 0 gives the slot
   probabilities of the fallback (0.95 and 0.05); a slot that one result does not list counts with the floor 1e-6 (a noun
   the fallback lacks gets `sqrt(0.5 * 1e-6)` of the unnormalized mass), and a slot only the fallback lists enters the
-  result with its own analyses and no senses.
+  result with its own analyses, with the senses and the ranking kind (`SensesRankedByUsage`) that the fallback result
+  lists for them.
+- **Fallback does not take a usage ranking for a score**
+  (`..._BasicAsPrimary_UsageRankedSenses_AreNotRefinedOrReconciled`, `..._BasicWithBasic_ReturnsTheBasicAnswerAsItIs`,
+  `..._PrimaryWithContextScoredSenses_StillReconciled`, `..._Reconcile_KeepsTheRankingKindOfEveryAnalysis`): the real
+  Basic result of `record` (two slots, the selected analysis listing two or more senses ranked by usage,
+  `SensesRankedByUsage` true, level part of speech) used as the primary result is replaced by the fallback result as it
+  is,
+  for the primary weights 0.5 and 0, and with the real Basic model as the primary; a composite of Basic with Basic returns
+  the Basic answers unchanged at the weights 0, 0.5 and 1; the same analyses declared as scored in context (the
+  three-argument constructor) are used and reconciled (weight 1 keeps them, 0.5 changes the result, and every analysis
+  keeps its senses); a slot that only the fallback lists keeps its `SensesRankedByUsage` flag in the reconciled result
+  while the slot of the primary stays false.
 - **Fallback keeps the variants and the senses when it combines**
   (`..._PartOfSpeechLevel_KeepsTheShareOfTheVariantsAndTheirSenses`, `..._PartOfSpeechLevel_KeepsTheTieSplitOfTheFallback`):
   verb variants that the encoder split 1 to 2 are still 1 to 2 in the combined result and keep their ranked senses; tied

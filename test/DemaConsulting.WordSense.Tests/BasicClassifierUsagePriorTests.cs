@@ -211,4 +211,40 @@ public class BasicClassifierUsagePriorTests
         Assert.Equal(a, b);
         Assert.True(a.Length >= 2);
     }
+
+    /// <summary>
+    ///     Every analysis whose senses are ranked by the usage prior says so, so that a consumer can tell the ranking from a
+    ///     score of the context; an analysis with one sense, or none, does not.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_UsagePrior_MarksTheSensesAsRankedByUsage()
+    {
+        // Act
+        var results = await new BasicClassifier().ClassifyAsync(Sentence, TestContext.Current.CancellationToken);
+        var analyses = results.SelectMany(r => r.Analyses).ToList();
+
+        // Assert
+        var polysemous = analyses.Where(a => Count(a.Details.Lemma, a.Details.PartOfSpeech) >= 2).ToList();
+        Assert.NotEmpty(polysemous);
+        Assert.All(polysemous, a => Assert.True(a.SensesRankedByUsage));
+        var other = analyses.Where(a => Count(a.Details.Lemma, a.Details.PartOfSpeech) < 2).ToList();
+        Assert.NotEmpty(other);
+        Assert.All(other, a => Assert.False(a.SensesRankedByUsage));
+        Assert.Contains(other, a => a.Senses.Length == 1);
+    }
+
+    /// <summary>
+    ///     Without a ranking delegate no senses are listed and nothing is marked as ranked by usage.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_WithoutAPrior_MarksNothingAsRankedByUsage()
+    {
+        // Act
+        var results = await WithoutPrior().ClassifyAsync(Sentence, TestContext.Current.CancellationToken);
+
+        // Assert
+        Assert.All(results.SelectMany(r => r.Analyses), a => Assert.False(a.SensesRankedByUsage));
+    }
 }

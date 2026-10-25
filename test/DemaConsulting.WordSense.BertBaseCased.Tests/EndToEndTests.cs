@@ -105,6 +105,7 @@ public class EndToEndTests
         Assert.Null(record.SenseId);
         Assert.Equal(UsagePrior.RankOf(details.Lemma, details.PartOfSpeech), selected.Senses);
         Assert.True(selected.Senses.Length >= 2);
+        Assert.True(selected.SensesRankedByUsage);
         Assert.EndsWith("#" + selected.Senses[0].SenseId.Split('#')[1], record.Key, StringComparison.Ordinal);
     }
 }

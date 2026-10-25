@@ -71,7 +71,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
   - A project sense counts 0 (`UsagePrior_RankOf_ProjectSense_CountsZero`); the smoothing constant never changes the order
     (`UsagePrior_Rank_SmoothingConstant_NeverChangesTheOrder`, theory).
   - A smoothing constant that is not a positive number (`UsagePrior_Rank_SmoothingNotPositive_Throws`, theory), a negative
-    count (`UsagePrior_Rank_NegativeCount_Throws`) and a missing list or lemma (`UsagePrior_Rank_MissingArgument_Throws`)
+    count (`UsagePrior_Rank_NegativeCount_Throws`), a missing list of senses (`UsagePrior_Rank_MissingList_Throws`)
+    and a
+    missing lemma (`UsagePrior_RankOf_MissingLemma_Throws`)
     are rejected.
   - A lemma and part of speech with one sense, or that is not in the catalog, has no ranking
     (`UsagePrior_RankOf_SingleSense_IsEmpty`, `UsagePrior_RankOf_NotInTheCatalog_IsEmpty`); a polysemous lemma ranks every
@@ -85,6 +87,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
   constructor of the tests) an analysis lists none (`..._WithoutAPrior_ListsNoSensesForAPolysemousAnalysis`, a test
   without a requirement); and the same word in another sentence has the same ranking
   (`..._RankingDoesNotDependOnContext`).
+- **The ranking is marked** (same file): every analysis whose senses are ranked by the prior has `SensesRankedByUsage`
+  true and no other analysis has it (`..._UsagePrior_MarksTheSensesAsRankedByUsage`); without a ranking function nothing
+  is marked (`..._WithoutAPrior_MarksNothingAsRankedByUsage`).
 - **The prior is never an answer** (same file): the analysis probabilities
   (`..._UsagePrior_NeverChangesTheAnalysisProbabilities`), the selected analysis
   (`..._UsagePrior_NeverChangesTheSelectedAnalysis`) and the level, confidence, sense id and group id

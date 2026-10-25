@@ -83,6 +83,120 @@ public class FallbackWordSenseModelTests
     }
 
     /// <summary>
+    ///     The Basic model as the primary model is not refined or reconciled: the senses it lists for an untrained
+    ///     polysemous word are ranked by usage, not scored, so the result of Basic is returned as it is, whatever the
+    ///     fallback says and whatever the primary weight is.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_BasicAsPrimary_UsageRankedSenses_AreNotRefinedOrReconciled()
+    {
+        // Arrange: Basic's own result for an ambiguous polysemous word, and a fallback that disagrees with its slots
+        using var basic = new BasicWordSenseModel();
+        var expected = (await basic.ClassifyAsync(["record"], TestContext.Current.CancellationToken))[0];
+        Assert.True(expected.Analyses.Select(a => (a.Details.Lemma, a.Details.PartOfSpeech)).Distinct().Count() >= 2);
+        var selected = expected.Analyses.First(a => a.Details.Equals(expected.Details));
+        Assert.True(selected.Senses.Length >= 2);
+        Assert.True(selected.SensesRankedByUsage);
+        Assert.Equal(SenseLevel.PartOfSpeech, expected.Level);
+        var fallback = Disagreeing(expected);
+
+        // Act
+        var half = await CombineWeighted(expected, fallback, 0.5);
+        var zero = await CombineWeighted(expected, fallback, 0.0);
+        using var composite = new FallbackWordSenseModel(new BasicWordSenseModel(), new StubModel(fallback), 0.5);
+        var real = (await composite.ClassifyAsync(["record"], TestContext.Current.CancellationToken))[0];
+
+        // Assert: the fallback decides the word, since the primary scored nothing
+        Assert.Equal(fallback, half);
+        Assert.Equal(fallback, zero);
+        Assert.Equal(fallback, real);
+    }
+
+    /// <summary>
+    ///     The same result with the senses of the primary scored in context is used, and reconciled with the fallback; the
+    ///     only difference is the kind of the ranking.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_PrimaryWithContextScoredSenses_StillReconciled()
+    {
+        // Arrange: the result of Basic for "record", the same senses and probabilities, but declared as context scores
+        using var basic = new BasicWordSenseModel();
+        var ranked = (await basic.ClassifyAsync(["record"], TestContext.Current.CancellationToken))[0];
+        var scoredAnalyses = ranked.Analyses.Select(a => new AnalysisCandidate(a.Details, a.Probability, a.Senses)).ToImmutableArray();
+        var scored = new ClassifyResult(ranked.Word, true, scoredAnalyses, ranked.Details, ranked.Level, ranked.Confidence, ranked.GroupId, ranked.SenseId);
+        var fallback = Disagreeing(ranked);
+
+        // Act
+        var kept = await CombineWeighted(scored, fallback, 1.0);
+        var reconciled = await CombineWeighted(scored, fallback, 0.5);
+
+        // Assert: used (not the fallback), kept whole at weight 1, and reconciled with the fallback below it
+        Assert.Equal(scored, kept);
+        Assert.NotEqual(fallback, reconciled);
+        Assert.NotEqual(scored, reconciled);
+        Assert.Equal(scored.Level, reconciled.Level);
+        Assert.Equal(scored.Analyses.Length, reconciled.Analyses.Length);
+        Assert.All(reconciled.Analyses, a => Assert.Equal(scored.Analyses.First(s => s.Details.Equals(a.Details)).Senses, a.Senses));
+    }
+
+    /// <summary>
+    ///     A composite of the Basic model with itself returns the Basic answer as it is, at every primary weight: the
+    ///     result is not touched by the refinement or the reconciliation.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Theory]
+    [InlineData(0.0)]
+    [InlineData(0.5)]
+    [InlineData(1.0)]
+    public async Task WordSenseContracts_FallbackWordSenseModel_BasicWithBasic_ReturnsTheBasicAnswerAsItIs(double weight)
+    {
+        // Arrange
+        string[] words = ["The", "record", "was", "put", "in", "the", "bank", "."];
+        using var basic = new BasicWordSenseModel();
+        var expected = await basic.ClassifyAsync(words, TestContext.Current.CancellationToken);
+        using var composite = new FallbackWordSenseModel(new BasicWordSenseModel(), new BasicWordSenseModel(), weight);
+
+        // Act
+        var results = await composite.ClassifyAsync(words, TestContext.Current.CancellationToken);
+
+        // Assert
+        Assert.Equal(expected, results);
+    }
+
+    /// <summary>
+    ///     Reconciling keeps the ranking kind of every analysis: a slot that only the fallback lists keeps the usage ranking
+    ///     of its senses, a slot of the primary keeps its scores.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_Reconcile_KeepsTheRankingKindOfEveryAnalysis()
+    {
+        // Arrange: the primary scored the noun slot only; the fallback ranks a verb slot by usage
+        var primary = Result("a", [new(Noun, 1.0, [new("record#a", 0.7), new("record#b", 0.3)])], Noun, SenseLevel.PartOfSpeech);
+        var fallback = Result("a", [new(Verb, 0.9, [new("record#c", 0.6), new("record#d", 0.4)], true), new(Noun, 0.1, [])], Verb, SenseLevel.PartOfSpeech);
+
+        // Act
+        var result = await CombineWeighted(primary, fallback, 0.5);
+
+        // Assert
+        Assert.Equal(2, result.Analyses.Length);
+        Assert.False(result.Analyses.First(a => a.Details == Noun).SensesRankedByUsage);
+        var verb = result.Analyses.First(a => a.Details == Verb);
+        Assert.True(verb.SensesRankedByUsage);
+        Assert.Equal(2, verb.Senses.Length);
+    }
+
+    // A result of a fallback that disagrees with a result: the same analyses with the probabilities in the opposite order and no senses
+    private static ClassifyResult Disagreeing(ClassifyResult result)
+    {
+        var probabilities = result.Analyses.Select(a => a.Probability).Reverse().ToArray();
+        var analyses = result.Analyses.Select((a, i) => new AnalysisCandidate(a.Details, probabilities[i], [])).OrderByDescending(a => a.Probability).ToImmutableArray();
+        return new ClassifyResult(result.Word, true, analyses, analyses[0].Details, SenseLevel.PartOfSpeech, analyses[0].Probability, null, null);
+    }
+
+    /// <summary>
     ///     The composite has the downloadable capability, so code that holds only the model contract can ask for it.
     /// </summary>
     [Fact]

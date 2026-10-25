@@ -174,7 +174,11 @@ shared tense table is verified in the `BasicClassifier`, `CueModel` and `BasicTa
 
 `FallbackWordSenseModel` answers a word with the result of the primary model when it scored senses for it and with the
 result of the fallback model otherwise (`FallbackWordSenseModel_PrimaryScoredSenses_UsesPrimary`,
-`FallbackWordSenseModel_PrimaryChoseOnlyAnalysis_UsesFallback`); the variants of a slot that the primary model gives the
+`FallbackWordSenseModel_PrimaryChoseOnlyAnalysis_UsesFallback`); senses that a primary model only ranks by usage
+(`SensesRankedByUsage`, as the Basic model does) are not scored senses, so a Basic primary result is never refined or
+reconciled (`FallbackWordSenseModel_BasicAsPrimary_UsageRankedSenses_AreNotRefinedOrReconciled`,
+`FallbackWordSenseModel_PrimaryWithContextScoredSenses_StillReconciled`); the variants of a slot that the primary model
+gives the
 same probability take the proportions of the fallback and keep the probability of the slot
 (`FallbackWordSenseModel_TiedVariantsOfASlot_TakeTheProportionsOfTheFallback`).
 

@@ -26,7 +26,8 @@ model for another without code changes, and the composite `FallbackWordSenseMode
   part of speech.
 - `SenseCandidate(SenseId, Probability)`: a readonly record struct that names one fine sense and its probability from
   0 to 1 given the analysis it is listed in.
-- `AnalysisCandidate(Details, Probability, Senses)`: a readonly record struct for one analysis of a word.
+- `AnalysisCandidate(Details, Probability, Senses)` and `AnalysisCandidate(Details, Probability, Senses,
+  SensesRankedByUsage)`: a readonly record struct for one analysis of a word.
   `Details` is the `WordDetails` of the analysis; `Probability` is its probability among the analyses of the word, where
   the analyses that share a lemma and a part of speech (a slot, the unit that owns the senses) and differ only in
   features share the probability of the slot, split among them by the model's evidence or equally, so the probability of
@@ -37,8 +38,13 @@ model for another without code changes, and the composite `FallbackWordSenseMode
   truncated. `Senses` is empty when the model did not rank the senses of the analysis: an encoder scores them for its
   trained lemmas, and the Basic model (and so every composed model, for a lemma the encoder has no weights for) ranks
   the senses of every lemma and part of speech that has two or more by the usage prior, which is a statement about the
-  lemma and never an answer. A `default` candidate is valid (a placeholder `Details` without a
-  lemma, empty `Senses`). Equality compares the senses item by item.
+  lemma and never an answer. `SensesRankedByUsage` (a read-only `bool`) tells the two rankings apart: it is true only
+  when the model ranked the senses by the usage prior and did not score them from the context of the word (the Basic
+  model for a lemma and part of speech with two or more senses); it is false when `Senses` is empty, when it lists the
+  only sense of a lemma, when an encoder scored it, for a `default` candidate and for every candidate built with the
+  three-argument constructor, so a model that lists senses and says nothing else counts as scoring them in context. It
+  is a part of the equality. A `default` candidate is valid (a placeholder `Details` without a
+  lemma, empty `Senses`). Equality compares the senses item by item and the flag.
 - `ClassifyResult(Word, IsKnown, Analyses, Details, Level, Confidence, GroupId, SenseId)`: a readonly record struct,
   the result for one word (the type is not named `WordSense`, which is the name of the namespace and the package). It
   has two parts:
@@ -176,8 +182,11 @@ whether an id is null: a result at the `PartOfSpeech` level is a valid answer th
   member, not a model integrity failure). Then, for each word index, it takes the result of the primary model when the
   primary model scored senses for the word, else the result of the fallback model. The primary model scored senses when
   its level is `Group` or `Sense`, or when the analysis of its `Analyses` that equals the selected `Details` has a
-  non-empty `Senses`; any other result (the word is unknown to the primary model, or it only chose between analyses)
-  is replaced by the fallback result. The result of a word is the result of one model, never a mixture of the two
+  non-empty `Senses` that are not only ranked by usage (`SensesRankedByUsage` is false); any other result (the word is
+  unknown to the primary model, or it only chose between analyses, or the senses of its selected analysis are only the
+  usage prior, as those of the Basic model) is replaced by the fallback result, so a composite whose primary model is the
+  Basic model never refines or reconciles a ranking by usage as if it were a score. The result of a word is the result
+  of one model, never a mixture of the two
   (its analyses, selected analysis, level, confidence and ids belong together), with two refinements (`Refine` and
   `Reconcile`, in this order). `Refine`: for a
   slot of the primary result (lemma and part of speech) with two or more analyses whose probabilities are all equal
@@ -194,10 +203,13 @@ whether an id is null: a result at the `PartOfSpeech` level is a valid answer th
   group level never changes): the encoder's slot probability is the mass of its senses, not a part-of-speech estimate,
   so a result whose senses it could not tell apart can have the wrong top slot. Each slot of the union of the slots
   of both results (the slots of the primary first, then the slots only the fallback lists, with the analyses of the
-  fallback and no senses) gets the log score `w × ln(max(p_primary, 1e-6)) + (1 − w) × ln(max(p_fallback, 1e-6))`,
+  fallback result as they are: their senses, which for the Basic model are the senses ranked by usage of a polysemous
+  slot with `SensesRankedByUsage` true, or none for a slot without senses) gets the log score
+  `w × ln(max(p_primary, 1e-6)) + (1 − w) × ln(max(p_fallback, 1e-6))`,
   where a slot's probability is the sum of its analyses and a slot a result lacks counts with the floor 1e-6; the scores
   are normalized with a softmax (the maximum subtracted) into the new slot probabilities. Inside a slot every
-  analysis keeps its share of its own result (`p / slot mass`, equal shares when the mass is 0) and its senses. The
+  analysis keeps its share of its own result (`p / slot mass`, equal shares when the mass is 0), its senses and the kind
+  of its ranking (`SensesRankedByUsage`). The
   slots are listed by the new probability, the largest first (a tie keeping the order of the slots), and the analyses
   of a slot by their probability (a stable sort); the selected analysis is the first analysis, the level stays
   `PartOfSpeech`, the group and sense ids stay null, and the confidence is the probability of the first slot, as the

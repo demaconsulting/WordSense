@@ -22,7 +22,8 @@ namespace DemaConsulting.WordSense;
 ///     <see cref="WordLexicon.SensesOf"/>) and are never truncated. The ranking is either scored (an encoder model, from the
 ///     context of the word) or the usage prior of the Basic model (the WordNet 3.0 tag counts of the senses, the same in
 ///     every sentence, for every polysemous lemma and part of speech no model scored); the level and the confidence of the
-///     result say which senses are answered, and a ranking is never an answer by itself. The
+///     result say which senses are answered, and a ranking is never an answer by itself. <see cref="SensesRankedByUsage"/>
+///     tells the two rankings apart. The
 ///     list is empty when the model did not rank the senses of this analysis. That is the case for a lemma and part of
 ///     speech that have no sense, and it can also be the case for a polysemous slot when a model does not rank it (for
 ///     example a model that you write); the shipped models rank every polysemous slot, an encoder model by its scores for
@@ -59,16 +60,31 @@ public readonly record struct AnalysisCandidate
     private readonly ImmutableArray<SenseCandidate> _senses;
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="AnalysisCandidate"/> struct.
+    ///     Initializes a new instance of the <see cref="AnalysisCandidate"/> struct whose senses, when there are any, were
+    ///     scored from the context of the word (<see cref="SensesRankedByUsage"/> is <see langword="false"/>).
     /// </summary>
     /// <param name="details">The analysis: lemma, part of speech and features.</param>
     /// <param name="probability">The probability of the analysis among the analyses of the word.</param>
     /// <param name="senses">The probability of each fine sense given the analysis, the most probable first; a default array counts as empty.</param>
     public AnalysisCandidate(WordDetails details, double probability, ImmutableArray<SenseCandidate> senses)
+        : this(details, probability, senses, false)
+    {
+    }
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="AnalysisCandidate"/> struct and says whether the senses are only
+    ///     ranked by their usage.
+    /// </summary>
+    /// <param name="details">The analysis: lemma, part of speech and features.</param>
+    /// <param name="probability">The probability of the analysis among the analyses of the word.</param>
+    /// <param name="senses">The probability of each fine sense given the analysis, the most probable first; a default array counts as empty.</param>
+    /// <param name="sensesRankedByUsage"><see langword="true"/> when the senses are the context-free usage prior of the lemma and not scored from the context of the word.</param>
+    public AnalysisCandidate(WordDetails details, double probability, ImmutableArray<SenseCandidate> senses, bool sensesRankedByUsage)
     {
         _details = details;
         Probability = probability;
         _senses = senses;
+        SensesRankedByUsage = sensesRankedByUsage;
     }
 
     /// <summary>
@@ -88,6 +104,19 @@ public readonly record struct AnalysisCandidate
     public ImmutableArray<SenseCandidate> Senses => _senses.IsDefault ? ImmutableArray<SenseCandidate>.Empty : _senses;
 
     /// <summary>
+    ///     Gets a value that says whether the listed senses are only ranked by their usage (the Basic model: the WordNet 3.0
+    ///     tag counts of the lemma, the same in every sentence) and not scored from the context of the word.
+    /// </summary>
+    /// <remarks>
+    ///     It is <see langword="false"/> when the senses are empty, when they were scored from the context (an encoder model),
+    ///     when the analysis has one sense (nothing was ranked), and for every candidate built without the argument, so a
+    ///     model that you write and lists senses is taken as scoring them in context unless it says otherwise. The
+    ///     <see cref="FallbackWordSenseModel"/> relies on it: a result whose selected analysis ranks its senses by usage is
+    ///     not a sense score of its model, so the composite does not use it as one.
+    /// </remarks>
+    public bool SensesRankedByUsage { get; }
+
+    /// <summary>
     ///     Determines whether another candidate has the same values, the senses compared item by item.
     /// </summary>
     /// <param name="other">The other candidate.</param>
@@ -95,7 +124,15 @@ public readonly record struct AnalysisCandidate
     public bool Equals(AnalysisCandidate other) =>
         Details.Equals(other.Details)
         && Probability.CompareTo(other.Probability) == 0
+        && SensesRankedByUsage == other.SensesRankedByUsage
         && Senses.AsSpan().SequenceEqual(other.Senses.AsSpan());
+
+    /// <summary>
+    ///     Gets a candidate with the same analysis, senses and ranking kind and another probability.
+    /// </summary>
+    /// <param name="probability">The new probability.</param>
+    /// <returns>The new candidate.</returns>
+    internal AnalysisCandidate WithProbability(double probability) => new(Details, probability, Senses, SensesRankedByUsage);
 
     /// <summary>
     ///     Gets a hash code that agrees with <see cref="Equals(AnalysisCandidate)"/>.
@@ -106,6 +143,7 @@ public readonly record struct AnalysisCandidate
         var hash = default(HashCode);
         hash.Add(Details);
         hash.Add(Probability);
+        hash.Add(SensesRankedByUsage);
         foreach (var sense in Senses)
         {
             hash.Add(sense);

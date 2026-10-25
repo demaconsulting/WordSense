@@ -48,7 +48,9 @@ namespace DemaConsulting.WordSense;
 ///     is at the <see cref="SenseLevel.PartOfSpeech"/> level with the probability of the slot as the confidence (the
 ///     same level, confidence, sense and group as without the ranking), so
 ///     the confidence of an ambiguous word is at least one over the number of its slots and a known word never goes
-///     unanswered. The classifier never answers at the <see cref="SenseLevel.Group"/> level. The encoder models use this
+///     unanswered. The classifier never answers at the <see cref="SenseLevel.Group"/> level. Every analysis whose senses are
+///     ranked this way is marked (<see cref="AnalysisCandidate.SensesRankedByUsage"/>), so that a composition does not take
+///     the ranking for a score of the context. The encoder models use this
 ///     ranking for every lemma they have no weights for, because their composition falls back to this classifier.
 ///     </para>
 ///     <para>
@@ -759,8 +761,8 @@ internal sealed class BasicClassifier
         slotTotal.Clear();
         for (var j = 0; j < count; j++)
         {
-            var senses = OnlySenseOf(analyses[j], out var group);
-            candidates[j] = new AnalysisCandidate(analyses[j], probabilities[j], senses);
+            var senses = OnlySenseOf(analyses[j], out var group, out var rankedByUsage);
+            candidates[j] = new AnalysisCandidate(analyses[j], probabilities[j], senses, rankedByUsage);
             if (group is not null)
             {
                 groups ??= new string?[count];
@@ -856,10 +858,12 @@ internal sealed class BasicClassifier
     /// </summary>
     /// <param name="analysis">The analysis.</param>
     /// <param name="group">Receives the group of the only sense (normally none); null for a ranking, which names no group.</param>
+    /// <param name="rankedByUsage">Receives true when the senses are the usage prior of the lemma (two or more senses), false for the only sense or no sense.</param>
     /// <returns>The only sense, the ranked senses, or the empty array when the analysis has none (or several and no ranking is configured).</returns>
-    private ImmutableArray<SenseCandidate> OnlySenseOf(WordDetails analysis, out string? group)
+    private ImmutableArray<SenseCandidate> OnlySenseOf(WordDetails analysis, out string? group, out bool rankedByUsage)
     {
         group = null;
+        rankedByUsage = false;
         var count = _senseCount(analysis.Lemma, analysis.PartOfSpeech);
         if (count == 1
             && _sensesOf(analysis.Lemma, analysis.PartOfSpeech) is { Length: 1 } senses)
@@ -868,7 +872,14 @@ internal sealed class BasicClassifier
             return [new SenseCandidate(senses[0].SenseId, 1.0)];
         }
 
-        return count >= 2 && _usagePrior is { } prior ? prior(analysis.Lemma, analysis.PartOfSpeech) : [];
+        if (count >= 2 && _usagePrior is { } prior)
+        {
+            var ranked = prior(analysis.Lemma, analysis.PartOfSpeech);
+            rankedByUsage = !ranked.IsDefaultOrEmpty;
+            return ranked;
+        }
+
+        return [];
     }
 
     /// <summary>

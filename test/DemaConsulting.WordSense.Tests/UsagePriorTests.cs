@@ -146,13 +146,22 @@ public class UsagePriorTests
     }
 
     /// <summary>
-    ///     A missing list of senses and a missing lemma are rejected.
+    ///     A missing list of senses is rejected.
     /// </summary>
     [Fact]
-    public void UsagePrior_Rank_MissingArgument_Throws()
+    public void UsagePrior_Rank_MissingList_Throws()
     {
-        // Act / Assert: the list of senses, then the lemma
+        // Act / Assert
         Assert.Throws<ArgumentNullException>(() => UsagePrior.Rank(null!, 1.0));
+    }
+
+    /// <summary>
+    ///     A missing lemma is rejected.
+    /// </summary>
+    [Fact]
+    public void UsagePrior_RankOf_MissingLemma_Throws()
+    {
+        // Act / Assert
         Assert.Throws<ArgumentNullException>(() => UsagePrior.RankOf(null!, PartOfSpeech.Noun));
     }
 

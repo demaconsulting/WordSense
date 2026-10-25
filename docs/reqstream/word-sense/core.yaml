@@ -109,6 +109,44 @@ sections:
               - WordSenseContracts_FallbackWordSenseModel_TiedVariantsOfASlot_TakeTheProportionsOfTheFallback
               - WordSenseCore_Fallback_PartOfSpeechLevelPrimary_IsReconciledWithTheBasicModel
 
+          - id: WordSense-Core-Candidates-RankingKind
+            title: >-
+              The core subsystem shall tell a ranking of senses by usage from a score of senses in context on every
+              analysis it lists: the contracts expose the kind, the Basic model marks its usage ranking, and a candidate
+              built without the mark counts as scored in context.
+            tags: [subsystem]
+            justification: |
+              The composite model and the consumers must not take a context-free base rate for evidence of the context.
+            children:
+              - WordSense-Core-WordSenseContracts-Candidates-RankingKind
+              - WordSense-Core-WordSenseContracts-Candidates-RankingKind-Default
+              - WordSense-Core-WordSenseContracts-Candidates-RankingKind-Equality
+              - WordSense-Core-BasicClassifier-UsagePrior-Marked
+              - WordSense-Core-BasicClassifier-UsagePrior-Marked-Other
+            tests:
+              - WordSenseContracts_AnalysisCandidate_SensesRankedByUsage_DefaultsToContextScored
+              - BasicClassifier_ClassifyAsync_UsagePrior_MarksTheSensesAsRankedByUsage
+
+          - id: WordSense-Core-Fallback-UsageRanking
+            title: >-
+              The core composite model shall not take a ranking of senses by usage for a score of the senses: it shall
+              answer with the fallback result a word whose primary result only ranks the senses by usage, keep using
+              (and refining and reconciling) a primary result whose senses are scored in context, and keep the kind of
+              ranking of every analysis it combines.
+            tags: [subsystem]
+            justification: |
+              The Basic model lists context-free, usage-ranked senses for untrained polysemous words; a composite whose
+              primary model ranks by a prior must not enter the refinement and the reconciliation as if the primary
+              model had scored the senses in context.
+            children:
+              - WordSense-Core-WordSenseContracts-FallbackUsage
+              - WordSense-Core-WordSenseContracts-FallbackScored
+              - WordSense-Core-WordSenseContracts-FallbackReconcile-Variants-Kind
+            tests:
+              - WordSenseContracts_FallbackWordSenseModel_BasicAsPrimary_UsageRankedSenses_AreNotRefinedOrReconciled
+              - WordSenseContracts_FallbackWordSenseModel_PrimaryWithContextScoredSenses_StillReconciled
+              - WordSenseContracts_FallbackWordSenseModel_Reconcile_KeepsTheRankingKindOfEveryAnalysis
+
           - id: WordSense-Core-Failures
             title: >-
               The core subsystem shall define the typed exceptions for failures of model files and download
@@ -146,6 +184,7 @@ sections:
               - WordSense-Core-BasicWordSenseModel-Classify
               - WordSense-Core-BasicWordSenseModel-Dispose
               - WordSense-Core-BasicClassifier-Unknown
+              - WordSense-Core-BasicClassifier-Known
               - WordSense-Core-BasicClassifier-SingleSense
               - WordSense-Core-BasicClassifier-Resolve
               - WordSense-Core-BasicClassifier-Level
@@ -315,11 +354,13 @@ sections:
             children:
               - WordSense-Core-BasicClassifier-UsagePrior-Validation-Smoothing
               - WordSense-Core-BasicClassifier-UsagePrior-Validation-Count
-              - WordSense-Core-BasicClassifier-UsagePrior-Validation-Missing
+              - WordSense-Core-BasicClassifier-UsagePrior-Validation-MissingList
+              - WordSense-Core-BasicClassifier-UsagePrior-Validation-MissingLemma
             tests:
               - UsagePrior_Rank_SmoothingNotPositive_Throws
               - UsagePrior_Rank_NegativeCount_Throws
-              - UsagePrior_Rank_MissingArgument_Throws
+              - UsagePrior_Rank_MissingList_Throws
+              - UsagePrior_RankOf_MissingLemma_Throws
 
           - id: WordSense-Core-SenseFrequency
             title: >-

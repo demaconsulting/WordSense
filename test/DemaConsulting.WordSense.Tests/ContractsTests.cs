@@ -175,6 +175,27 @@ public class ContractsTests
     }
 
     /// <summary>
+    ///     A candidate built without the ranking argument, and a default candidate, count their senses as scored in
+    ///     context (a model written before the argument existed keeps working); only the explicit argument marks a ranking
+    ///     by usage, and it takes part in equality.
+    /// </summary>
+    [Fact]
+    public void WordSenseContracts_AnalysisCandidate_SensesRankedByUsage_DefaultsToContextScored()
+    {
+        var senses = ImmutableArray.Create(new SenseCandidate("record#a", 0.6), new SenseCandidate("record#b", 0.4));
+        var scored = new AnalysisCandidate(Noun, 0.5, senses);
+        var ranked = new AnalysisCandidate(Noun, 0.5, senses, true);
+
+        Assert.False(scored.SensesRankedByUsage);
+        Assert.False(default(AnalysisCandidate).SensesRankedByUsage);
+        Assert.False(new AnalysisCandidate(Noun, 0.5, senses, false).SensesRankedByUsage);
+        Assert.True(ranked.SensesRankedByUsage);
+        Assert.NotEqual(scored, ranked);
+        Assert.Equal(scored, new AnalysisCandidate(Noun, 0.5, senses, false));
+        Assert.Equal(ranked, new AnalysisCandidate(Noun, 0.5, senses, true));
+    }
+
+    /// <summary>
     ///     Sense candidates with the same values are equal.
     /// </summary>
     [Fact]

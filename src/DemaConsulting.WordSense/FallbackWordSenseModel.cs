@@ -10,9 +10,11 @@ namespace DemaConsulting.WordSense;
 ///     <para>
 ///     Both models classify the whole list of words (so each one sees the same sentence and context) and the results are
 ///     combined word by word. The result of the primary model is used for a word when the primary model scored senses for
-///     it: its selected analysis lists scored senses (a non-empty <see cref="AnalysisCandidate.Senses"/>), or its level is
+///     it: its selected analysis lists scored senses (a non-empty <see cref="AnalysisCandidate.Senses"/> that are not only
+///     ranked by usage, see <see cref="AnalysisCandidate.SensesRankedByUsage"/>), or its level is
 ///     <see cref="SenseLevel.Group"/> or <see cref="SenseLevel.Sense"/>. In every other case (the word is unknown to the
-///     primary model, or it only chose between analyses) the result of the fallback model is used. The result of a word is
+///     primary model, or it only chose between analyses, or it only ranked the senses by usage) the result of the fallback
+///     model is used. The result of a word is
 ///     the result of one of the two models, never a mixture of the probabilities of both (the two refinements below are the
 ///     only exceptions): its analyses, selected analysis,
 ///     level, confidence and ids belong together, and the probabilities of one result are not comparable with those of
@@ -42,7 +44,9 @@ namespace DemaConsulting.WordSense;
 ///     refinement off) the probability of every slot, over the union of the slots of both results, becomes proportional to
 ///     <c>p_primary^w × p_fallback^(1−w)</c>, where the probability of a slot is the sum of the probabilities of its analyses
 ///     and a slot that a result does not list counts with the small floor 1e-6. A slot that only the fallback result lists
-///     is added to the result with the analyses of the fallback result (they have no senses), so the result can list
+///     is added to the result with the analyses of the fallback result (with the senses and the ranking kind that the
+///     fallback result lists for them: for the Basic model the senses ranked by usage of a polysemous slot, see
+///     <see cref="AnalysisCandidate.SensesRankedByUsage"/>), so the result can list
 ///     slots that the primary result did not. The analyses of a slot keep the shares they have in their own result
 ///     and the analyses of the primary result keep their senses, so the combination decides the slot only; the result is listed by
 ///     slot again, its selected analysis is the first analysis and its confidence is the probability of that slot (the
@@ -274,7 +278,7 @@ public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
             foreach (var member in members.OrderByDescending(a => a.Probability))
             {
                 var share = mass > 0.0 ? member.Probability / mass : 1.0 / members.Count;
-                combined.Add(new AnalysisCandidate(member.Details, slotProbability * share, member.Senses));
+                combined.Add(member.WithProbability(slotProbability * share));
             }
         }
 
@@ -412,7 +416,7 @@ public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
         for (var s = 0; s < slot.Count; s++)
         {
             var original = analyses[slot[s]];
-            split.Add(new AnalysisCandidate(original.Details, mass * shares[s] / total, original.Senses));
+            split.Add(original.WithProbability(mass * shares[s] / total));
         }
 
         var order = Enumerable.Range(0, split.Count).OrderByDescending(s => split[s].Probability).ThenBy(s => s).ToArray();
@@ -462,6 +466,12 @@ public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
         }
     }
 
+    /// <summary>
+    ///     Tells whether the primary model scored the senses of a word: it answered at the group or sense level, or its
+    ///     selected analysis lists senses that were not merely ranked by usage.
+    /// </summary>
+    /// <param name="result">The result of the primary model.</param>
+    /// <returns>True when the result of the primary model is used for the word.</returns>
     private static bool ScoredSenses(ClassifyResult result)
     {
         if (result.Level is SenseLevel.Group or SenseLevel.Sense)
@@ -471,7 +481,7 @@ public sealed class FallbackWordSenseModel : IDownloadableWordSenseModel
 
         foreach (var analysis in result.Analyses)
         {
-            if (analysis.Details.Equals(result.Details) && !analysis.Senses.IsEmpty)
+            if (analysis.Details.Equals(result.Details) && !analysis.Senses.IsEmpty && !analysis.SensesRankedByUsage)
             {
                 return true;
             }

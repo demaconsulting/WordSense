@@ -126,6 +126,9 @@ encoder models fall back for such a word, ranks them instead by how often the se
   stay null, exactly as without the ranking. `ClassifyResult.Key` names the label of the top-ranked sense under its rule
   for the part-of-speech level, which is why the keys of such words end with `#label`; every such key is a member of
   `WordLexicon.Keys()`.
+- **The mark.** The classifier builds the candidate of such an analysis with `SensesRankedByUsage` true, so that a consumer
+  (and `FallbackWordSenseModel`) can tell the ranking from a score of the senses in context; the candidate of an analysis
+  with its only sense, with no sense, or built without a ranking function has it false.
 - **Cost.** The ranking of a slot is computed once and kept in a small direct-mapped cache (4,096 entries of immutable
   values, a racing writer can only replace one valid entry with another).
 - **Inheritance.** `FallbackWordSenseModel` answers a word with the result of its primary model only when the primary
