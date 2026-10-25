@@ -262,6 +262,77 @@ sections:
                 tests:
                   - WordLexicon_Version_IsStableLowerCaseHex
 
+              - id: WordSense-Core-WordLexicon-Keys-Analyses
+                title: >-
+                  WordLexicon.Keys shall list, for every normalized spelling of the lexicon (lower case, straight
+                  apostrophe) and for every analysis that a lookup of one of its stored case variants can give, the
+                  key without a label.
+                tags: [unit]
+                justification: |
+                  A consumer that builds a map from key to its own data must know every key in advance; a guaranteed
+                  superset that does not depend on a model or on its training stays complete for any model and any
+                  retraining. The keys of the analyses are built from the same lookup that the models use.
+                tests:
+                  - WordLexicon_Keys_LookedUpWord_HasAKeyForEachAnalysisAndSense
+                  - WordLexicon_Keys_FormsOfOneAnalysis_AreKeyedBySpelling
+                  - WordLexicon_Keys_SampledSpellings_CoverEveryLookup
+
+              - id: WordSense-Core-WordLexicon-Keys-Senses
+                title: >-
+                  WordLexicon.Keys shall list, for every analysis it lists, one key with a label for every catalog sense
+                  of the lemma and part of speech of the analysis, and no label that is not such a sense.
+                tags: [unit]
+                justification: |
+                  A model answers an analysis and, at most, one of its catalog senses, so the labeled keys of the
+                  analysis are exactly the keys of its senses.
+                tests:
+                  - WordLexicon_Keys_LookedUpWord_HasAKeyForEachAnalysisAndSense
+                  - WordLexicon_Keys_LabeledKeys_NameASenseOfTheLemmaAndPartOfSpeech
+
+              - id: WordSense-Core-WordLexicon-Keys-Possessive
+                title: >-
+                  WordLexicon.Keys shall also list the keys of the possessive spellings that the lookup derives and
+                  that are not stored (a word plus 's, or a plural word plus a closing apostrophe), with the noun and
+                  pronoun analyses of the stem plus Poss=Yes.
+                tags: [unit]
+                justification: |
+                  A lookup answers a possessive of a known stem although the word table does not store it, so its keys
+                  belong to the superset.
+                tests:
+                  - WordLexicon_Keys_LookedUpWord_HasAKeyForEachAnalysisAndSense
+
+              - id: WordSense-Core-WordLexicon-Keys-Unique
+                title: >-
+                  WordLexicon.Keys shall list no key twice.
+                tags: [unit]
+                justification: |
+                  A consumer that writes the keys as they come, or counts them, must not see one key twice.
+                tests:
+                  - WordLexicon_Keys_Enumeration_ListsNoKeyTwice
+
+              - id: WordSense-Core-WordLexicon-Keys-WellFormed
+                title: >-
+                  Every key of WordLexicon.Keys shall be in canonical form: WordKey parses it and formats it back to
+                  the same text, and its spelling is lower case with a straight apostrophe.
+                tags: [unit]
+                justification: |
+                  A consumer parses the keys it enumerates, and the keys of results are written by the same formatter.
+                tests:
+                  - WordLexicon_Keys_EveryKey_ParsesBackToItselfWithANormalizedSpelling
+
+              - id: WordSense-Core-WordLexicon-Keys-Order
+                title: >-
+                  WordLexicon.Keys shall have deferred execution and shall give every enumeration the same keys in the
+                  same order (by spelling, then by analysis in answer order, the key without a label first); the first
+                  read makes one pass over the spellings to group the case variants, and then the keys are produced
+                  while the sequence is read, without keeping a list of them.
+                tags: [unit]
+                justification: |
+                  A fixed order makes the output of the key export reproducible, and streaming it after the one
+                  pass keeps the memory of the consumer in its own hands.
+                tests:
+                  - WordLexicon_Keys_Enumeration_IsDeferredAndRepeatable
+
               - id: WordSense-Core-WordLexicon-Integrity
                 title: >-
                   WordLexicon shall report a missing or corrupt embedded word image or sense catalog as

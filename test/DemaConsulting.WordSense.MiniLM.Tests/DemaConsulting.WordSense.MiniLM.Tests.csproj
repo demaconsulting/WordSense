@@ -74,6 +74,8 @@
     <Compile Include="..\DemaConsulting.WordSense.Onnx.Tests\ModelFileCheck.cs" Link="ModelFileCheck.cs" />
     <!-- The reader and the grading rule of the reviewed suite are those of the builder -->
     <Compile Include="..\..\tools\WordSense.Builder\Suite.cs" Link="Suite.cs" />
+    <!-- The check that every key of the model is enumerated by WordLexicon.Keys is shared with the core tests -->
+    <Compile Include="..\DemaConsulting.WordSense.Tests\KeyCompleteness.cs" Link="KeyCompleteness.cs" />
   </ItemGroup>
 
   <!-- Project References -->

@@ -140,6 +140,9 @@ implementation of the feature computation.
 - `BasicTuner`: scores the hyper-parameter grid.
 - `BasicModelBuilder`: the commands `open-counts` and `train-basic`.
 - `AppendixGenerator`: generates the senses appendix of the user guide.
+- `KeyExport`: writes every word key of the lexicon as a sorted text file.
+- `Heteronyms`: derives the heteronym table (entry level from the pronunciations of the data, tense and sense levels and
+  the cases of different lemmas from the curated table `corpus/curation/heteronyms.tsv`) and writes it as a TSV.
 - `TextSplitter`: splits raw text into words and punctuation.
 
 Invariants: the order of the senses of a lemma is the inventory order (part of speech, Open English WordNet position,
@@ -204,6 +207,8 @@ instead of `--model`.
 - `tiers [--data DIR] [--output FILE]`: reports the quota of every sense of the trained lemmas (the tier of its tag
   count, its status and the sentences that are missing) and, with `--output`, writes one line for every sense.
 - `appendix [--corpus DIR] [--data DIR] [--output FILE]`: writes the senses appendix of the user guide.
+- `keys --output FILE`: writes every key of `WordLexicon.Keys()`, sorted, after a header comment line.
+- `heteronyms --output FILE [--corpus DIR] [--data DIR]`: writes the heteronym table as a TSV.
 - `import-oewn`, `validate-data`, `rebuild-forms`, `audit-forms` and `generate-facts`: the commands of the WordData
   subsystem (see its design).
 
@@ -636,11 +641,79 @@ evaluation only and never committed) adds a line.
 #### Appendix (`AppendixGenerator.Write`)
 
 Writes a deterministic Markdown appendix: the explanation of parts of speech, groups and forms, the
-summary of the dictionary words, an alphabetical list of the trained lemmas, each with its senses (id, group, OEWN sense
-key and gloss), the tier and anchor counts of each sense and their recognized forms (there is no pronunciation
-section). Lines are wrapped to
+summary of the dictionary words, the section "Keys and Heteronyms" (the key format, the levels of the heteronyms and the
+heteronym lists, see below), an alphabetical list of the trained lemmas, each with its senses (id, group, OEWN sense
+key and gloss), the tier and anchor counts of each sense and every analysis of its forms (there is no pronunciation
+section). The forms of a lemma are listed for every spelling that the image lists as a form of an entry of the lemma,
+the spelling of the lemma itself included, and for every analysis of that spelling whose lemma is the lemma, with its
+features in parentheses (`read (verb, Tense=Past+VerbForm=Part)`; the part of speech comes first when the forms have
+several, none when only one). Lines are wrapped to
 the repository's
 markdown line limit.
+
+#### Keys export (`KeyExport.Write`)
+
+`keys --output FILE` writes the keys of `WordLexicon.Keys()` (the embedded image, the one the library answers from) as
+UTF-8 without a byte-order mark and with LF line ends: one comment line
+(`# WordSense keys; format: {spelling}|{lemma}/{Part}[/{Features}][#{label}]; inventory: {WordLexicon.Version}; count: N`),
+then the keys, one for each line, sorted by `StringComparer.Ordinal`. The keys are collected and sorted in memory (about
+1.3 million strings, 63 MB of text). The file is not committed. The quality-checks job of the build workflow
+(`.github/workflows/build.yaml`) generates it with `heteronyms.tsv`, by running the two commands, and uploads both as the
+`word-keys` artifact (a folder of its own, outside `artifacts/`, which the report jobs merge; it runs on one runner only,
+not on the operating system matrix). The same commands produce them anywhere else: `dotnet run
+--project tools/WordSense.Builder -c Release -- keys --output keys.txt` takes a few seconds.
+
+#### Heteronyms (`Heteronyms.Build`, `Heteronyms.Write`)
+
+The heteronym table lists the normalized spellings that stand for different words, each with its meaning classes and the
+keys of each class (no phoneme). `Heteronyms.Build(data, curation, image)` builds it from three sources:
+
+- **Entry level, derived**: the pronunciations of `data/pronunciation` (Open English WordNet, one or more for an entry,
+  with a variety) are normalized by `NormalizePronunciation`: NFC; syllable dots, spaces, length marks, tie bars and
+  brackets removed; `ɹ`→`r`, `ɡ`→`g`; then the dialect differences that were found to be noise are collapsed (the
+  `r` is dropped, `ɚ ɝ ɜ`→`ə`, `ɒ`→`ɔ`, `ɑ æ`→`a`, `e`→`ɛ`, `əʊ`→`oʊ`, `ɪə ɛə`→`ɪ ɛ`); the stress marks stay, so a stress
+  difference counts and the variety is ignored. Entries of one lemma (case-folded) that share a normalized pronunciation
+  are one sound class (union by shared pronunciation). The pronunciation of an entry is that of its lemma, so entries of
+  different lemmas are never compared (an inflected form such as `abashed` would differ from its verb only by the
+  suffix). When the entries of one lemma and part of speech fall into two sound classes (`bass`, `bow`), the lemma is
+  left to the sense level. A spelling of the form table (rows with an entry) that is a form of entries of two or more
+  sound classes of one lemma is a heteronym: its classes are those classes, named by the lemma and part of speech of
+  their entries, and their keys are the keys of the analyses of the spelling that belong to those entries. Only an
+  analysis that the image lists counts.
+- **Curated table `corpus/curation/heteronyms.tsv`** (`level`, `group`, `class`, `pattern` and an optional `note`; tab
+  separated; LF; the header has five names and a row four or five cells): a row puts
+  the analyses and senses that match its pattern into a class of a group. The pattern is
+  `lemma/Part[/Features][#label,label]`: the lemma and part of speech of the analysis, the feature items that the
+  analysis must contain (a subset) and the labels of the senses of the class; a pattern without labels takes the
+  analysis and every sense of it. The `note` of any row of a group is the note of the group (at most one distinct note);
+  the heteronyms of the group carry it, in the appendix and in the TSV. The curated notes say that the classes of a
+  stress-shift pair (`conflict`, `export`, `transport`, ...) or of `lower` are merged in some dialects; the table keeps
+  such a pair because the usual stress or sound contrast is the reason a consumer needs the key. The candidate spellings
+  of a group are the forms (`FormsOf`) of the lemmas of its
+  patterns; a spelling is a heteronym of the group when its analyses fall into two or more classes. The level `tense`
+  lists the verbs whose past and present sound different (`read`); `sense` the lemmas whose senses of one part of
+  speech sound different (`bass`: fish and music), taken from the sound classes of the entries; `lemma` the spellings
+  of different lemmas, and the pairs without pronunciation in the data (`wound`, `dove`, `use`), which the entry level
+  shows as entry-level heteronyms. The table wins over the derived entry level for a spelling that both list. A
+  spelling can be in two groups (`leading`: the groups `lead` and `leading`; `lowering`; `wound`), so the table has one
+  record for each spelling of a group: the appendix counts the records and the distinct spellings. The
+  generator reports a row that is not four or five cells, a level that is not `lemma`, `tense` or `sense`, a pattern
+  that does not parse, a label that is not a sense of the lemma and part of speech of the catalog, a group with fewer
+  than two classes or with two different notes, a key (or a sense) that two classes claim and a group that matches no
+  spelling, and a test checks that every lemma whose senses the pronunciations split (`Heteronyms.SenseSplitLemmas`) is
+  in the sense table, except the lemmas that the lexicographer review rejected (`birr`, `denier`, `emu`, `fleer`,
+  `laver`, `punt`, `recap`, `router`, `slough`, `whoop`: the same sound in standard English, a difference in one
+  variety only, or an accent difference that the meaning does not decide). A pattern names only analyses of the word
+  table and senses of the catalog, so a distinction for which the data has no analysis or sense (`desert` as an
+  adjective, `separate` as a noun, a metalworking verb `lead`, `graduate` as an adjective) is not in the table.
+- The keys use the same `WordKey.Format` and spelling normalization as `ClassifyResult.Key`, so the table can be joined
+  to the enumeration of `WordLexicon.Keys()`; a test shows that every key of the table is in it.
+
+`heteronyms --output FILE [--corpus DIR] [--data DIR]` writes the table as a TSV with the columns `level`, `group`,
+`spelling`, `class`, `key` and `note` (empty without a note), one row for each key (a key without a label stands for its
+analysis and every sense of it; with `#label` it is the key of one sense). The appendix section lists the same table by
+level and states the number of records and of distinct spellings. The quality-checks job of the build workflow also
+writes it, as part of the `word-keys` artifact.
 
 ### Error Handling
 

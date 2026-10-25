@@ -528,9 +528,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
 #### appendix
 
 - **Appendix lists lemmas senses and forms** (`Appendix_Generate_ListsLemmasSensesAndForms`): a synthetic corpus and
-  inventory give an appendix with the parts-of-speech overview, the lemmas in alphabetical order, their senses and
-  their forms; markdown characters are escaped, lines are wrapped, line endings are LF and the output repeats byte for
-  byte.
+  inventory give an appendix with the parts-of-speech overview, the section on keys and heteronyms, the lemmas in
+  alphabetical order, their senses and every analysis of their forms with the features (the forms spelled like the
+  lemma included, with the part of speech first when there are several); markdown characters are escaped, lines are
+  wrapped, line endings are LF and the output repeats byte for byte.
 - **Senses carry group key and gloss** (`Appendix_Generate_ListsSensesWithGroupKeyAndGloss`): each sense is listed
   with its id, group, OEWN sense key (none for a project sense) and gloss.
 - **Incomplete input is rejected** (`Appendix_Generate_RejectsIncompleteInput`, `Program_Appendix_MissingCorpus_Fails`):
@@ -540,6 +541,45 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Committed appendix is current** (`Appendix_Committed_MatchesCorpus`): the appendix regenerated from the committed
   corpus and data equals `docs/user_guide/appendix-senses.md` (line endings normalized), so the committed appendix
   cannot go stale; `lint.ps1` performs the same comparison.
+
+#### keys and heteronyms
+
+- **Key export** (`KeyExport_Render_SortsTheKeysAfterTheHeader`, `KeyExport_Write_ListsEveryKeyOfTheLexicon`,
+  `Program_Keys_WritesTheKeyFile`): the file starts with the comment line that names the format, the inventory version
+  (`WordLexicon.Version`) and the number of keys; the other lines are the keys in ordinal order (upper case before lower
+  case), as many as `WordLexicon.Keys()` lists (more than a million) with no line twice; the command needs `--output`
+  and exits with code 1 without it.
+- **Pronunciation comparison** (`Heteronyms_NormalizePronunciation_IgnoresDialectButNotStress`): syllable marks, length
+  marks and rhoticity do not make two pronunciations differ, a stress difference or a vowel difference does.
+- **Heteronyms of each level** (`Heteronyms_Build_ListsTheKnownHeteronymsOfEachLevel`,
+  `Heteronyms_Build_ClassesCarryTheKeys`): the committed data and table list `abuse`, `minute`, `sow`, `polish`,
+  `close`, `august`, `wound`, `dove`, `use`, `object` and `lives` at the entry level (some derived from the
+  pronunciations, some curated), `read`, `reread`, `misread` and `proofread` at the tense level and `bass`, `bow`,
+  `lead`, `tear`, `wind`, `row`, `basses` and `tears` at the sense level; the past class of `read` is
+  `read|read/Verb/Tense=Past+VerbForm=Part`, the fish class of `bass` has `bass|bass/Noun/Number=Sing#sea-bass` and the
+  music class `bass|bass/Noun/Number=Sing#basso`.
+- **Curated corrections of the lexicographer review** (`Heteronyms_Build_ReflectsTheLexicographerReview`): the rejected
+  groups (`birr`, `recap`, `bourgeois`, `denier`, `emu`, `fleer`, `laver`, `punt`, `router`, `slough`, `whoop`) are
+  absent; `aged`, `learned` and `blessed` are split by the senses that separate their sounds (the adjective senses
+  `elderly`, `of-age`, `conditioned` and `blest`, not the whole adjective); the senses `printing-strip` of `lead`,
+  `loom` of `tower`, `revitalize` of `recreate`, the noun senses of `close` and the verb senses of `incense` are in the
+  classes the review gave them; and the noun `read`, the auxiliary `do` and the participle `leading` are added.
+- **Notes of a group** (`Heteronyms_Build_NotesBelongToTheirGroup`): the heteronyms of a group whose rows carry a note
+  (the stress-shift pair `transport`) have it, a group without a note has none, and the TSV repeats the note in its last
+  cell.
+- **Keys of the table are keys of the lexicon** (`Heteronyms_Build_EveryKeyIsAKeyOfTheLexicon`): every heteronym has
+  two classes with keys, every key is a member of `WordLexicon.Keys()`, is spelled like its heteronym and is listed once.
+- **The sense table follows the pronunciations** (`Heteronyms_SenseSplitLemmas_AreCurated`): every lemma that has a
+  lemma and part of speech whose entries fall into two sound classes (and a form in the word table) is a group of the
+  sense table, except the ten lemmas that the lexicographer review rejected, which must not be in it.
+- **TSV** (`Heteronyms_RenderTsv_WritesOneRowForEachKey`, `Program_Heteronyms_WritesTheTable`): a header and one row of
+  six cells (the last is the note, empty for most) for each key, LF line ends; the command needs `--output` and writes
+  the table of the committed data.
+- **Invalid curated table** (`Heteronyms_Build_InvalidCuratedTable_IsReported`): a missing file, an empty file (no
+  header), an unknown level, a
+  row without four or five cells, a pattern that is not one, a label that is not a sense, a group with one class, a
+  group with two different notes, two classes that claim one analysis and a group that matches no spelling are each
+  reported, all in one error.
 
 #### corpus
 
@@ -566,7 +606,7 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **No arguments or unknown command**: exit code 1 and the usage text listing `compile-image`, `import-moby`,
   `weights <modelId>`, `evaluate <modelId>`, `evaluate-senses`, `evaluate-running`, `evaluate-suite`, `check-leakage`,
   `tiers`, `open-counts`, `evaluate-tagger`, `coverage`, `train-basic`, `tune-basic`, `label-senses`,
-  `import-wn30-counts` and `appendix`
+  `import-wn30-counts`, `appendix`, `keys` and `heteronyms`
   (`Program_NoArguments_PrintsUsage`, `Program_UnknownCommand_ReportsCommandAndUsage`,
   `Program_Usage_ListsTheSenseCommands`).
 - **Removed command** (`Program_RemovedCommand_IsUnknown`): the old command names (`build`, `train`,

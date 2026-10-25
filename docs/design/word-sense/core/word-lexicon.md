@@ -107,12 +107,43 @@ key. Every model starts from it, and a word with one sense never needs context.
   sense inventory: it changes whenever an analysis, a sense or a group changes, and is the same on every call. It is not
   a version number; consumers compare it for equality only, for example to detect that stored group ids were saved
   against another catalog.
+- `WordLexicon.Keys()`: every word key that a model can return (see "Word keys" below); an enumeration with deferred
+  execution that the image reader (`WordImage.Keys`) produces: the first read makes one pass over all the spellings
+  to group those that differ only in case (the fold groups), and then every key is produced while the sequence is read,
+  so no list of the keys is kept. The catalog is
+  validated when `Keys()` is called, so a damaged image is reported as `ModelIntegrityException` at the call and not
+  in the middle of an enumeration.
 - The image is opened lazily, thread-safely and exactly once (`Lazy` with execution-and-publication). A small
   direct-mapped cache of recent answers backs `TryLookup`, which is what the models call.
 - Spelling order decision: the sort order of the spelling index (UTF-8 byte order) is not re-checked at load. Checking
   365K spellings would add work to every process start, and the content SHA-256 already verified by `WordImage.Open`
   covers the index bytes, so a committed image that opens cannot be mis-ordered unless the builder wrote it so. The
   full order check at every index therefore runs as a test (`ImageTests`) against the committed image.
+
+#### Word keys
+
+`WordLexicon.Keys()` enumerates the keys of the format `{spelling}|{lemma}/{Part}[/{Features}][#{label}]` (the type
+`WordKey`, see the design of `WordSenseContracts`). It is a guaranteed superset of the keys of every model, because a key
+of a result names an analysis of the lookup of its word and at most a sense of that analysis. For every normalized
+spelling (`BasicClassifier.Normalize`: lower case, straight apostrophe) the reader takes the distinct analyses of all the
+stored spellings that normalize to it (a lookup returns the analyses of the exact spelling, or those of the lower-case
+spelling and the case variants, so `Polish` and `polish` give the lemmas of both), and yields for each analysis the key
+without a label and one key for each sense of its lemma and part of speech (the label is the part of the sense id after
+`#`, read from the catalog without building a `SenseInfo`). A possessive that is not stored (the lookup derives it from
+a known stem) adds `Poss=Yes` to the noun and pronoun analyses of the stem; for each normalized spelling the reader
+yields these keys for `{spelling}'s` and, when the spelling ends in `s`, for `{spelling}'`, unless a stored spelling
+of that name exists (then the lookup never takes the possessive path). The enumeration is ordered by spelling, then by
+analysis in answer order, the key without a label first; no key is listed twice. Before the first key the reader makes
+one pass over all spellings to build the fold groups (the spellings that normalize to another form), which it keeps in
+memory with the spelling index; the keys themselves are streamed, not kept. On the committed image it lists
+1,284,993 keys (about 63 MB of text) in about three seconds. The separators in a part are escaped (a few lemmas such as
+`A/C` contain `/`), by the same `WordKey.Format` that `ClassifyResult.Key` uses, so a key is spelled the same in both.
+
+The completeness guarantee holds by construction, not by a test: `ClassifyResult.Key` is built (`WordKey.KeyOf`, in
+`WordKey.cs`) from an analysis of the lookup of the word and at most a catalog sense of that analysis, and `WordImage.Keys`
+and `KeysOf` (in `WordImage.Keys.cs`) list the key of every analysis of every normalized spelling and of every catalog
+sense of its lemma and part of speech, with the same `WordKey.Format` and `BasicClassifier.Normalize`. The tests (the
+lexicon tests below and `KeyCompleteness` for each model) verify the guarantee on samples.
 
 #### Error Handling
 

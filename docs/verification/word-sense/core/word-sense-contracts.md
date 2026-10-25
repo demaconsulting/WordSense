@@ -124,3 +124,41 @@ All scenarios below pass on every platform and target framework of the CI matrix
   derived from it and none of them is an `ArgumentException`; each has exactly the constructors `()`, `(string)` and
   `(string, Exception)`, keeping the message and the original exception as the inner exception; a handler for the base
   type catches every typed exception.
+- **Key of a result** (`ClassifyResult_Key_SenseLevel_HasTheLabelOfTheAnsweredSense`,
+  `ClassifyResult_Key_GroupId_IsNeverUsed`, `ClassifyResult_Key_RankedSenses_FallBackToTheTopRankedSense`,
+  `ClassifyResult_Key_TiedRankedSenses_UseTheOrdinalOrderOfTheId`,
+  `ClassifyResult_Key_RankingOfAnotherAnalysis_IsNotUsed`,
+  `ClassifyResult_Key_PartOfSpeechLevelWithoutRanking_HasNoLabel`,
+  `ClassifyResult_Key_EmptyFeatures_LeaveOutTheFeatureSegment`, `ClassifyResult_Key_UnknownOrUnanswered_IsNull`,
+  `ClassifyResult_Key_CapitalizedWordAndLemma_NormalizeOnlyTheSpelling`,
+  `ClassifyResult_Key_ContractionAndPossessive_AreKeyedBySpelling`): results built by hand and results of the Basic model
+  give `bass|bass/Noun/Number=Sing#sea-bass` at the sense level whatever the ranking says; a group id never appears in a
+  key; a group-level and a part-of-speech-level result take the label of the most probable ranked sense of the selected
+  analysis (the unsorted list is searched, a tie goes to the smaller id, the ranking of another analysis is ignored); a
+  part-of-speech result without a ranking has no label; empty features leave out the feature segment; an unknown word, a
+  default result and a known word without selected analysis have a null key; `POLISH` with the lemma `Polish` is
+  `polish|Polish/Noun/Number=Sing` and `Don’t` with a typographic apostrophe is spelled `don't`; the Basic model gives the
+  possessive `dog's` the features `Number=Sing+Poss=Yes`, and every key it gives is enumerated.
+- **WordKey value, text and parser** (`WordKey_Value_SameParts_AreEqual`,
+  `WordKey_ToString_Parts_AreWrittenInTheCanonicalOrder`,
+  `WordKey_ToString_SeparatorsInParts_AreEscaped`, `WordKey_TryParse_ValidKey_RoundTrips`,
+  `WordKey_TryParse_EscapedKey_GivesTheUnescapedParts`, `WordKey_TryParse_NotAKey_IsRefused`): two keys with the same
+  parts are equal and have one hash code; the parts are written in
+  the canonical order with the optional segments left out; a backslash, bar, slash and number sign inside a part are
+  escaped (`a\/c|A\/C/Noun/Number=Sing#x\#y\|z\\w`) and nothing else is; the text of a key parses back to an equal key
+  and
+  formats to the same text; text that is not canonical (no part, an unknown or lower-case part of speech name, a number
+  as part of speech, an empty features or label segment, an extra segment, an unescaped separator, a dangling or unknown
+  escape, a spelling that is not its own normalized form such as `POLISH` or one with a typographic apostrophe or without
+  a letter, a null) is refused.
+- **Keys of the models are enumerated, sample verification** (`BasicKeys_SuiteAndCorpusSentences_AreAllEnumerated`,
+  `MiniLMKeys_SuiteAndCorpusSentences_AreAllEnumerated`,
+  `BertBaseCasedKeys_SuiteAndCorpusSentences_AreAllEnumerated`, all through the shared `KeyCompleteness` helper): the
+  words of every row of the reviewed suite and of a sample (every 20th row, about 570 sentences) of the held-out corpus
+  are classified with each model; a word has a key exactly when it is known, and every key is found in one pass over
+  `WordLexicon.Keys()`. This is a sample: it can show a mistake in the guarantee but cannot prove it. The guarantee (the
+  enumeration is a superset of the keys of every model) holds by construction: `WordKey.KeyOf` builds the key of a
+  result from an analysis of the lookup of its word and at most a catalog sense of that analysis, and
+  `WordImage.Keys` lists the key of every analysis of every spelling and of every catalog sense of its lemma and part of
+  speech through the same `WordKey.Format`. The encoder tests are skipped when the model files are not available, unless
+  `WORDSENSE_REQUIRE_MODELS` is set.

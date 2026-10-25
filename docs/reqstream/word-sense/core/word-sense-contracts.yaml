@@ -286,6 +286,128 @@ sections:
                   - WordSenseContracts_SenseInfo_SameValues_AreEqual
                   - WordSenseContracts_SenseGroup_SameMembers_AreEqual
 
+              - id: WordSense-Core-WordSenseContracts-Key-Format
+                title: >-
+                  ClassifyResult shall expose a computed Key that, for a known word with a selected analysis, is the
+                  normalized spelling (lower case, straight apostrophe), the lemma of the selected analysis with its
+                  case, the name of its part of speech and its features (left out when empty), written as
+                  {spelling}|{lemma}/{Part}[/{Features}][#{label}] and derived only from the Word, IsKnown, Details,
+                  Level, SenseId and Analyses of the result, so that it is the same for every model.
+                tags: [unit]
+                justification: |
+                  A consumer that attaches its own data to an answer (for example the phonemes of a speech front end)
+                  needs one stable string for each answer; deriving it from the fields of the result alone makes it
+                  the same for every model, including models of third parties.
+                tests:
+                  - ClassifyResult_Key_SenseLevel_HasTheLabelOfTheAnsweredSense
+                  - ClassifyResult_Key_EmptyFeatures_LeaveOutTheFeatureSegment
+                  - ClassifyResult_Key_CapitalizedWordAndLemma_NormalizeOnlyTheSpelling
+                  - ClassifyResult_Key_ContractionAndPossessive_AreKeyedBySpelling
+
+              - id: WordSense-Core-WordSenseContracts-Key-Label
+                title: >-
+                  The label of the Key of a ClassifyResult shall be the label of the answered sense at the sense level,
+                  otherwise that of the most probable ranked sense of the selected analysis (ties by the ordinal order
+                  of the sense id) when the model ranked senses for that analysis, otherwise none, and never a group id.
+                tags: [unit]
+                justification: |
+                  The sense is what tells the readings of a spelling apart, so the key names it whenever the result
+                  gives or ranks one; ignoring the group ids keeps the key independent of them, which are versioned per
+                  data release.
+                tests:
+                  - ClassifyResult_Key_SenseLevel_HasTheLabelOfTheAnsweredSense
+                  - ClassifyResult_Key_GroupId_IsNeverUsed
+                  - ClassifyResult_Key_RankedSenses_FallBackToTheTopRankedSense
+                  - ClassifyResult_Key_TiedRankedSenses_UseTheOrdinalOrderOfTheId
+                  - ClassifyResult_Key_RankingOfAnotherAnalysis_IsNotUsed
+                  - ClassifyResult_Key_PartOfSpeechLevelWithoutRanking_HasNoLabel
+
+              - id: WordSense-Core-WordSenseContracts-Key-Null
+                title: >-
+                  The Key of a ClassifyResult shall be null for an unknown word and for a result without a selected
+                  analysis.
+                tags: [unit]
+                justification: |
+                  A word that WordSense cannot analyze has no meaning to name; a null key says so without inventing a
+                  string that a consumer could mistake for an answer.
+                tests:
+                  - ClassifyResult_Key_UnknownOrUnanswered_IsNull
+
+              - id: WordSense-Core-WordSenseContracts-WordKey-Value
+                title: >-
+                  WordKey shall hold the spelling, lemma, part of speech, features and label of a key as an immutable
+                  value with value equality.
+                tags: [unit]
+                justification: |
+                  A key is used as a dictionary key and compared by consumers, so equal parts must be equal keys.
+                tests:
+                  - WordKey_Value_SameParts_AreEqual
+
+              - id: WordSense-Core-WordSenseContracts-WordKey-Text
+                title: >-
+                  WordKey shall write its parts as {spelling}|{lemma}/{Part}[/{Features}][#{label}], with a backslash
+                  before each backslash, vertical bar, slash and number sign inside a part and no other escape.
+                tags: [unit]
+                justification: |
+                  Lemmas such as A/C contain the separators, so the text form needs an escaping rule that is
+                  unambiguous.
+                tests:
+                  - WordKey_ToString_Parts_AreWrittenInTheCanonicalOrder
+                  - WordKey_ToString_SeparatorsInParts_AreEscaped
+
+              - id: WordSense-Core-WordSenseContracts-WordKey-Parse
+                title: >-
+                  WordKey.TryParse shall parse the text of a key back into the parts that WordKey wrote it from, so that
+                  formatting the parsed key gives the same text.
+                tags: [unit]
+                justification: |
+                  A consumer that stores keys parses them to read the analysis and the sense.
+                tests:
+                  - WordKey_TryParse_ValidKey_RoundTrips
+                  - WordKey_TryParse_EscapedKey_GivesTheUnescapedParts
+
+              - id: WordSense-Core-WordSenseContracts-WordKey-CanonicalOnly
+                title: >-
+                  WordKey.TryParse shall refuse a text that is not a key in canonical form: a missing or empty part,
+                  an unknown part of speech, an unescaped or wrongly escaped separator, and a spelling that is not its
+                  own normalized form (upper case, a typographic apostrophe or no letter).
+                tags: [unit]
+                justification: |
+                  A parse that accepts a non-canonical text would give two keys to one meaning.
+                tests:
+                  - WordKey_TryParse_NotAKey_IsRefused
+
+              - id: WordSense-Core-WordSenseContracts-KeyCompleteness-Sample
+                title: >-
+                  Every key that a model of this repository gives for the words of the reviewed suite and of a sample of
+                  corpus sentences shall be a member of WordLexicon.Keys.
+                tags: [unit]
+                justification: |
+                  The enumeration is guaranteed to be a superset of the keys of every model by construction: a key of a
+                  result is built (WordKey.KeyOf) from an analysis of the lookup of its word and at most a catalog sense
+                  of that analysis, and the enumeration (WordImage.Keys) lists the key of every analysis of every
+                  spelling and of every catalog sense of its lemma and part of speech, through the same WordKey.Format
+                  and normalization. The check against the real answers of the three models on real sentences is a
+                  sample verification of that guarantee, not a proof; it catches a spelling, a feature or a label that
+                  the construction forgot.
+                tests:
+                  - BasicKeys_SuiteAndCorpusSentences_AreAllEnumerated
+                  - MiniLMKeys_SuiteAndCorpusSentences_AreAllEnumerated
+                  - BertBaseCasedKeys_SuiteAndCorpusSentences_AreAllEnumerated
+
+              - id: WordSense-Core-WordSenseContracts-KeyCompleteness-KnownHasKey
+                title: >-
+                  For the words of the reviewed suite and of a sample of corpus sentences, a model of this repository
+                  shall give a word a key exactly when the word is known.
+                tags: [unit]
+                justification: |
+                  A sample verification that the Key of a result is null only for an unknown word, so that a consumer
+                  can rely on a known answer having a key.
+                tests:
+                  - BasicKeys_SuiteAndCorpusSentences_AreAllEnumerated
+                  - MiniLMKeys_SuiteAndCorpusSentences_AreAllEnumerated
+                  - BertBaseCasedKeys_SuiteAndCorpusSentences_AreAllEnumerated
+
               - id: WordSense-Core-WordSenseContracts-Independent
                 title: The core assembly shall reference no ONNX Runtime, weights or vector library.
                 tags: [unit]

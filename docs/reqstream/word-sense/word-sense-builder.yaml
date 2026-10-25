@@ -557,13 +557,15 @@ sections:
           - id: WordSense-WordSenseBuilder-Appendix
             title: >-
               The builder shall generate the senses appendix of the user guide deterministically from the sense
-              catalog of the data (each trained lemma's senses with id, group, OEWN sense key and gloss),
-              the forms and the anchor sentences, shall reject incomplete input, and the committed appendix shall equal
-              the generated one.
+              catalog of the data (each trained lemma's senses with id, group, OEWN sense key and gloss), the forms of
+              each lemma (every analysis of every form, the forms spelled like the lemma included, with the features),
+              the explanation of the keys and the heteronym section, and the anchor sentences, shall reject incomplete
+              input, and the committed appendix shall equal the generated one.
             tags: [unit]
             justification: |
               The list of supported lemmas with their senses, groups, keys and forms must always describe
               the trained corpus; generating it, and failing when the committed file is stale, makes drift impossible.
+              A form spelled like its lemma (the past tense read) and the features tell the forms of one lemma apart.
             tests:
               - WordSenseBuilder_Appendix_Generate_ListsLemmasSensesAndForms
               - WordSenseBuilder_Appendix_Generate_ListsSensesWithGroupKeyAndGloss
@@ -571,6 +573,99 @@ sections:
               - WordSenseBuilder_Program_Appendix_WritesFile
               - WordSenseBuilder_Program_Appendix_MissingCorpus_Fails
               - WordSenseBuilder_Appendix_Committed_MatchesCorpus
+
+          - id: WordSense-WordSenseBuilder-Keys
+            title: >-
+              The builder shall provide the command keys --output FILE that writes every key of WordLexicon.Keys as
+              UTF-8 text without a byte-order mark, one key for each line in ordinal order after a header comment line
+              that gives the key format, the inventory version of the lexicon and the number of keys, and shall require
+              the output option.
+            tags: [unit]
+            justification: |
+              A downstream library builds its map from a file of all keys; the file is large and is generated where
+              it is needed, so the command is the contract, and the version in the header says which inventory it
+              lists.
+            tests:
+              - WordSenseBuilder_KeyExport_Render_SortsTheKeysAfterTheHeader
+              - WordSenseBuilder_KeyExport_Write_ListsEveryKeyOfTheLexicon
+              - WordSenseBuilder_Program_Keys_WritesTheKeyFile
+
+          - id: WordSense-WordSenseBuilder-Heteronyms-EntryLevel
+            title: >-
+              The builder shall derive the entry level of the heteronyms (spellings whose analyses belong to entries of
+              one lemma that sound different) from the normalized pronunciations of the entries of the data, in which a
+              stress difference counts and the dialect differences, syllable marks and length marks do not, and shall
+              leave a lemma and part of speech whose senses fall into different sound classes to the sense level.
+            tags: [unit]
+            justification: |
+              What the pronunciations of the data can show needs no curation, and deriving it keeps it from drifting.
+            tests:
+              - WordSenseBuilder_Heteronyms_NormalizePronunciation_IgnoresDialectButNotStress
+              - WordSenseBuilder_Heteronyms_Build_ListsTheKnownHeteronymsOfEachLevel
+
+          - id: WordSense-WordSenseBuilder-Heteronyms-Curated
+            title: >-
+              The builder shall derive the tense level, the sense level and the cases of different lemmas of the
+              heteronyms from the curated table corpus/curation/heteronyms.tsv (rows of level, group, class and a
+              pattern lemma/Part[/Features][#label,label], with an optional note of the group), as classes of
+              normalized spellings.
+            tags: [unit]
+            justification: |
+              The sounds of these spellings are not in the data, so a curator names the classes by meaning; the table
+              carries a note where the classes are merged in some dialects.
+            tests:
+              - WordSenseBuilder_Heteronyms_Build_ListsTheKnownHeteronymsOfEachLevel
+              - WordSenseBuilder_Heteronyms_Build_ClassesCarryTheKeys
+              - WordSenseBuilder_Heteronyms_Build_ReflectsTheLexicographerReview
+              - WordSenseBuilder_Heteronyms_Build_NotesBelongToTheirGroup
+
+          - id: WordSense-WordSenseBuilder-Heteronyms-Keys
+            title: >-
+              Every class of a heteronym shall list the keys that belong to it and no phoneme, and every key of the
+              heteronym table shall be a key of WordLexicon.Keys that is spelled like its heteronym and listed once.
+            tags: [unit]
+            justification: |
+              A downstream library maps keys to its own data, so the table must name keys that a model can return.
+            tests:
+              - WordSenseBuilder_Heteronyms_Build_ClassesCarryTheKeys
+              - WordSenseBuilder_Heteronyms_Build_EveryKeyIsAKeyOfTheLexicon
+
+          - id: WordSense-WordSenseBuilder-Heteronyms-Validation
+            title: >-
+              The builder shall report, with every problem found, a curated heteronym table that is missing, has a
+              malformed row, an unknown level, a pattern that is not one or a label that the sense catalog does not
+              have, a group with fewer than two classes or with two different notes, a key that two classes claim, or
+              a group that matches no spelling.
+            tags: [unit]
+            justification: |
+              A curated table that does not match the data would give wrong classes silently.
+            tests:
+              - WordSenseBuilder_Heteronyms_Build_InvalidCuratedTable_IsReported
+
+          - id: WordSense-WordSenseBuilder-Heteronyms-Coverage
+            title: >-
+              The curated heteronym table shall list at the sense level every lemma whose senses the pronunciations of
+              the data split into different sound classes, except the lemmas that the lexicographer review rejected
+              (recorded in the curation README and in the test that checks it).
+            tags: [unit]
+            justification: |
+              The curated table cannot fall behind the pronunciations of the data, and a rejected lemma is recorded
+              rather than silently missing.
+            tests:
+              - WordSenseBuilder_Heteronyms_SenseSplitLemmas_AreCurated
+
+          - id: WordSense-WordSenseBuilder-Heteronyms-Tsv
+            title: >-
+              The builder shall provide the command heteronyms --output FILE that writes the heteronym table as UTF-8
+              text without a byte-order mark and with LF line ends: a header row, then one row of level, group,
+              spelling, class, key and note for each key of a class.
+            tags: [unit]
+            justification: |
+              A downstream library loads this file to know where the key, not the spelling, decides the word.
+            tests:
+              - WordSenseBuilder_Heteronyms_RenderTsv_WritesOneRowForEachKey
+              - WordSenseBuilder_Heteronyms_Build_NotesBelongToTheirGroup
+              - WordSenseBuilder_Program_Heteronyms_WritesTheTable
 
           - id: WordSense-WordSenseBuilder-Corpus
             title: >-
@@ -718,7 +813,8 @@ sections:
             title: >-
               The builder shall provide the commands compile-image, import-moby, weights, evaluate, evaluate-senses,
               evaluate-running, evaluate-suite, check-leakage, tiers, open-counts, evaluate-tagger, coverage,
-              train-basic, tune-basic, label-senses, import-wn30-counts and appendix, print usage when given no
+              train-basic, tune-basic, label-senses, import-wn30-counts, appendix, keys and heteronyms, print
+              usage when given no
               arguments, and shall report an unknown or removed command (the treebank commands ud-counts and
               ud-irregular included), a malformed option, an option value that is not a valid number or is out of range
               (as a one-line message without a stack trace) or a data error with a message and a non-zero exit code.

@@ -211,6 +211,46 @@ pass no longer passes (`BasicSuite_ExpectedPasses_StillPass`, `MiniLMSuite_Expec
 independent evaluations (SemCor and running-text part of speech) are verified in the builder documents: their figures
 come from downloaded texts that are never committed.
 
+### Keys Name the Meaning of Every Known Answered Word
+
+A known word that a model answered with a selected analysis has exactly one key of the format
+`{spelling}|{lemma}/{Part}[/{Features}][#{label}]`, and it is the same for every model because it depends on the result
+alone: at the sense level the label is the answered sense and a group id never appears
+(`ClassifyResult_Key_SenseLevel_HasTheLabelOfTheAnsweredSense`, `ClassifyResult_Key_GroupId_IsNeverUsed`); a group or
+part-of-speech result takes the label of the most probable ranked sense of its analysis
+(`ClassifyResult_Key_RankedSenses_FallBackToTheTopRankedSense`). The three models give a key to exactly the known words
+of the reviewed suite and of about 570 held-out sentences, and every such key is in `WordLexicon.Keys()`
+(`BasicKeys_SuiteAndCorpusSentences_AreAllEnumerated`, `MiniLMKeys_SuiteAndCorpusSentences_AreAllEnumerated`,
+`BertBaseCasedKeys_SuiteAndCorpusSentences_AreAllEnumerated`; the encoder tests need the model files). The system
+requirements are `WordSense-Lib-Keys-Answered` and `WordSense-Lib-Keys-Unanswered`.
+
+### Unknown and Unanswered Words Have No Key
+
+An unknown word, a default result and a known word without a selected analysis have a null key
+(`ClassifyResult_Key_UnknownOrUnanswered_IsNull`); in the model-level check a word has a key exactly when it is known.
+
+### Every Key Can Be Enumerated and Parsed
+
+`WordLexicon.Keys()` lists more than a million keys, each once and in a fixed order, and every key parses with
+`WordKey.TryParse` and formats back to itself; text that is not a key in canonical form (for example an upper-case
+spelling) is refused (`WordLexicon_Keys_Enumeration_ListsNoKeyTwice`,
+`WordLexicon_Keys_EveryKey_ParsesBackToItselfWithANormalizedSpelling`,
+`WordLexicon_Keys_LookedUpWord_HasAKeyForEachAnalysisAndSense`, `WordLexicon_Keys_Enumeration_IsDeferredAndRepeatable`,
+`WordKey_TryParse_ValidKey_RoundTrips`, `WordKey_TryParse_NotAKey_IsRefused`). That every key of every model is in the
+list holds by construction (the key of a result and the list are built from the same analyses and catalog senses); the
+model tests above verify it on samples.
+
+### Keys and Heteronyms Are Exported
+
+The builder commands `keys --output FILE` and `heteronyms --output FILE` write the sorted key file and the heteronym
+table, and every key of the table is a key of the lexicon
+(`WordSenseBuilder_Program_Keys_WritesTheKeyFile`, `WordSenseBuilder_Program_Heteronyms_WritesTheTable`,
+`WordSenseBuilder_Heteronyms_Build_EveryKeyIsAKeyOfTheLexicon`,
+`WordSenseBuilder_Heteronyms_Build_ListsTheKnownHeteronymsOfEachLevel`). The committed appendix of the user guide
+explains the keys and lists the heteronyms, and is compared with a regenerated one. The system requirements are
+`WordSense-Lib-Keys-Export`, `WordSense-Lib-Heteronyms` and `WordSense-Lib-Heteronyms-Export`; the build workflow
+publishes both files as the `word-keys` artifact.
+
 ### Data
 
 The committed data is validated: every sense has one unique label, the groups partition the senses of their lemmas,
@@ -221,5 +261,6 @@ every keyed sense has a frequency and the project senses have no key
 
 The builder verification document describes the commands `compile-image`, `import-moby`, `weights`, `evaluate`,
 `evaluate-senses`, `evaluate-running`, `open-counts`, `evaluate-tagger`, `coverage`, `train-basic`, `tune-basic`,
-`label-senses`, `import-wn30-counts`, `tiers` and `appendix`. Together they regenerate the data that is committed in the
+`label-senses`, `import-wn30-counts`, `tiers`, `appendix`, `keys` and `heteronyms`. Together they regenerate the data
+that is committed in the
 packages, and the committed appendix of the user guide is compared with a regenerated one.
