@@ -79,7 +79,7 @@ internal sealed record SenseEvalResult(SenseEvalFunnel Funnel, IReadOnlyList<Sen
         text.Append("| lemma is trained (the trained-lemma set) | ").Append(Funnel.Trained.ToString("N0", inv)).Append(" |\n");
         var allWords = Funnel.Trained + Funnel.UntrainedPolysemous;
         text.Append("| lemma is not trained and has two or more senses | ").Append(Funnel.UntrainedPolysemous.ToString("N0", inv)).Append(" |\n");
-        text.Append("| the all-words set: trained lemma, or lemma with two or more senses (share of trained lemmas ").Append(EvaluationResult.Percent(Funnel.Trained, allWords)).Append(") | ").Append(allWords.ToString("N0", inv)).Append(" |\n");
+        text.Append("| the all-words set: trained lemma, or lemma with two or more senses (share of words of a trained lemma ").Append(EvaluationResult.Percent(Funnel.Trained, allWords)).Append(") | ").Append(allWords.ToString("N0", inv)).Append(" |\n");
         text.Append("| left out of the all-words set: lemma is not trained and has fewer than two senses | ").Append(Funnel.Monosemous.ToString("N0", inv)).Append(" |\n\n");
         if (Funnel.Unmapped.Count > 0)
         {

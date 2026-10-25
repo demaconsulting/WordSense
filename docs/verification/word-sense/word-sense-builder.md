@@ -376,7 +376,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Tag-count baseline** (`WordSenseBuilder_SenseEval_Run_TagCountBaseline_UsesTheHighestCountAndInventoryOrderOnTies`):
   the baseline chooses the sense with the highest tag count, the first in inventory order on a tie or without counts.
 - **All-words report** (`WordSenseBuilder_SenseEval_Render_AllWords_ShowsTrainedShareAndCircularityCaveat`): the report
-  has the trained, untrained and all rows per model, the share of trained lemmas, and says that the tag-count baseline is
+  has the trained, untrained and all rows per model, the share of the words that are of a trained lemma, and says that
+  the tag-count baseline is
   optimistic because the counts include SemCor.
 - **Pinned checksum** (`WordSenseBuilder_SenseEval_Download_WrongHash_IsRejected`,
   `WordSenseBuilder_SenseEval_ReadArchive_VerifiesTheHashAndReadsTheTagFiles`): a downloaded or cached archive with

@@ -285,8 +285,8 @@ public sealed class SenseEvaluatorTests : IDisposable
     }
 
     /// <summary>
-    ///     The report has the all-words section with the trained, untrained and all rows of each model, the share of trained
-    ///     lemmas, and the statement that the tag-count baseline is optimistic because the counts include SemCor.
+    ///     The report has the all-words section with the trained, untrained and all rows of each model, the share of the words
+    ///     that are of a trained lemma, and the statement that the tag-count baseline is optimistic because the counts include SemCor.
     /// </summary>
     [Fact]
     public async Task WordSenseBuilder_SenseEval_Render_AllWords_ShowsTrainedShareAndCircularityCaveat()
@@ -304,7 +304,7 @@ public sealed class SenseEvaluatorTests : IDisposable
 
         // Assert
         Assert.Contains("### All words", text, StringComparison.Ordinal);
-        Assert.Contains("share of trained lemmas 50.00%", text, StringComparison.Ordinal);
+        Assert.Contains("share of words of a trained lemma 50.00%", text, StringComparison.Ordinal);
         Assert.Contains("| Fake | trained | 1 |", text, StringComparison.Ordinal);
         Assert.Contains("| Fake | untrained | 1 |", text, StringComparison.Ordinal);
         Assert.Contains("| Fake | all | 2 |", text, StringComparison.Ordinal);
@@ -402,7 +402,7 @@ public sealed class SenseEvaluatorTests : IDisposable
         Assert.Contains("| annotated words | 200 |", text, StringComparison.Ordinal);
         Assert.Contains("mapping coverage 88.24%", text, StringComparison.Ordinal);
         Assert.Contains("a%1:00:00:: (3)", text, StringComparison.Ordinal);
-        Assert.Contains("(share of trained lemmas 76.92%) | 130 |", text, StringComparison.Ordinal);
+        Assert.Contains("(share of words of a trained lemma 76.92%) | 130 |", text, StringComparison.Ordinal);
         Assert.Contains("fewer than two senses | 20 |", text, StringComparison.Ordinal);
         Assert.DoesNotContain("### All words", text, StringComparison.Ordinal);
         Assert.Equal("n/a (top-1 n/a)", SenseEvalResult.TableCell(new SenseEvalModelResult("Basic", empty, 0, 0, 0)));
