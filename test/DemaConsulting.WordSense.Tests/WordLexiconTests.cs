@@ -461,8 +461,8 @@ public class WordLexiconTests
 
     /// <summary>
     ///     A token without a letter (a number written with digits, a number with separators or punctuation) is never a
-    ///     word, although the image keeps entries such as <c>3</c> from the dictionary; the answer is the same as for an
-    ///     unknown word, and the number words and words that contain a digit next to letters keep their analyses.
+    ///     word; the answer is the same as for an unknown word, and the number words and words that contain a digit next
+    ///     to letters keep their analyses.
     /// </summary>
     [Theory]
     [InlineData("3")]
@@ -505,6 +505,28 @@ public class WordLexiconTests
         // Assert
         Assert.True(found);
         Assert.NotEmpty(senses);
+    }
+
+    /// <summary>
+    ///     The image holds no spelling without a letter (the numerals of Open English WordNet are left out when it is
+    ///     compiled), so the count of the lexicon and the senses of a numeral agree with <c>Lookup</c>.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Image_HasNoSpellingWithoutALetter()
+    {
+        // Arrange
+        var image = WordLexicon.Current;
+
+        // Act
+        var withoutLetter = Enumerable.Range(0, image.SpellingCount).Select(image.Spelling).Where(s => !CueModel.HasLetter(s)).Take(5).ToList();
+
+        // Assert: no spelling, no entry and no sense of a numeral
+        Assert.Empty(withoutLetter);
+        Assert.Equal(image.SpellingCount, WordLexicon.Count);
+        Assert.True(image.Find("24/7") < 0);
+        Assert.Empty(WordLexicon.SensesOf("3", PartOfSpeech.Noun));
+        Assert.Empty(WordLexicon.SensesOf("24/7", PartOfSpeech.Adjective));
+        Assert.All(image.AllSenses(), s => Assert.True(CueModel.HasLetter(s.Lemma), s.SenseId));
     }
 
     /// <summary>
@@ -891,7 +913,7 @@ public class WordLexiconTests
     ///     The sense catalog of the real image reads through the integrity mapping without changing its answers.
     /// </summary>
     [Fact]
-    public void WordLexicon_SensesOf_RealImage_ReturnsSensesWithoutRespelling()
+    public void WordLexicon_SensesOf_RealImage_ReturnsSenses()
     {
         // Arrange / Act
         var senses = WordLexicon.SensesOf("bank", PartOfSpeech.Noun);

@@ -65,8 +65,11 @@ All scenarios below pass on every platform and target framework of the CI matrix
   upper-case spelling finds the lower-case entry; an unknown word is absent (`Lookup_UnknownWord_IsAbsent`); a null
   word throws (`Lookup_NullWord_Throws`).
 - **Tokens without a letter are unknown** (`Lookup_TokenWithoutLetter_IsAbsent`, `Lookup_WordWithALetter_IsStillFound`):
-  `3`, `1999`, `0`, `24/7`, `.22`, `3.5` and `-` are absent from `TryLookup`, `Lookup`, `Contains` and `FormsOf`
-  (the image holds entries such as `3` that must not show), while `three`, `Twenty` and `3rd` are found.
+  `3`, `1999`, `0`, `24/7`, `.22`, `3.5` and `-` are absent from `TryLookup`, `Lookup`, `Contains` and `FormsOf`,
+  while `three`, `Twenty` and `3rd` are found.
+- **The image holds no spelling without a letter** (`WordLexicon_Image_HasNoSpellingWithoutALetter`): no spelling of
+  the embedded image lacks a letter, so `Count` and `SensesOf` agree with `Lookup`: `SensesOf` finds no sense for
+  `0` or `24/7`.
 - **Forms of a lemma** (`FormsOf_Lemma_ListsItsForms`): the forms of `record` are listed.
 - **Senses of a lemma and part of speech** (`SensesOf_LemmaAndPartOfSpeech_ListsInOewnOrder`,
   `SensesOf_SingleSenseLemma_ListsOneSense`, `SensesOf_UnknownLemma_IsEmpty`, `SensesOf_NullLemma_Throws`): the senses
@@ -74,8 +77,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
   with one sense lists one, an
   unknown lemma lists none and a null lemma throws.
 - **Catalog is complete** (`SensesOf_EverySingleTokenOewnSense_IsInTheCatalog`,
-  `SensesOf_ProjectSenses_AreInTheCatalog`): every single-token OEWN sense and every project sense of the data is
-  found in the catalog through its lemma and part of speech.
+  `SensesOf_ProjectSenses_AreInTheCatalog`): the catalog holds at least 128,000 keyed senses with distinct keys, every
+  sense of the catalog is found through its lemma and part of speech, and the project senses are present with no key.
+  The senses of the numerals, whose lemma has no letter, are left out of the image.
 - **Sense lookup by id and by key** (`TryGetSense_ById_FindsSense`, `TryGetSense_UnknownId_IsFalse`,
   `TryGetSenseByKey_FindsTheSameSenseAsItsId`, `TryGetSenseByKey_UnknownKey_IsFalse`,
   `TryGetSenseByKey_ProjectSense_IsNeverFound`): a sense found by its id equals the sense found by its OEWN key; an
@@ -94,7 +98,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
   same moment receive the same answers.
 - **Image order and lookup** (`Image_Spellings_AreSortedByUtf8Bytes`, `Image_Find_ReturnsOwnIndex`): the spelling index
   is sorted by UTF-8 bytes and every spelling is found at its own index.
-- **Corrupt image is rejected** (`Image_Corruption_IsRejected`): a wrong magic number, an unsupported version, a
+- **Corrupt image is rejected** (`Image_Corruption_IsRejected`, `Image_PreviousFormatVersion_IsRejected`): a wrong magic
+  number, an unsupported version (including the previous format version 3 of an image that still had the respelling
+  sections), a
   flipped byte and a truncated image each throw `InvalidDataException` from the image reader; `WordLexicon` reports the
   same damage of its embedded resource as `ModelIntegrityException` (see the next scenarios).
 - **Embedded image opens** (`WordLexicon_OpenImage_EmbeddedResource_Opens`): the image opens from its own resource
@@ -106,10 +112,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Damaged catalog** (`WordLexicon_ReadCatalog_DamagedCatalog_ThrowsModelIntegrity`): a read of the sense catalog that
   fails with `InvalidDataException` is reported as `ModelIntegrityException` carrying that exception, while another
   exception passes unchanged and a successful read returns its value.
-- **Senses carry no respelling** (`WordLexicon_SensesOf_RealImage_ReturnsSensesWithoutRespelling`): the senses of `bank`
+- **Senses of the real image** (`WordLexicon_SensesOf_RealImage_ReturnsSenses`): the senses of `bank`
   as a noun are listed from the real image through the integrity mapping, one has an OEWN key and the first is found
-  again by its id and equals the listed one; the image format and its respelling sections are unchanged and only the
-  public records no longer expose the respelling.
+  again by its id and equals the listed one.
 - **Image failure matrix** (`Image_TruncatedAtEverySectionBoundary_IsRejected`, `Image_WrongHash_IsRejectedByContentHashOnly`,
   `Image_CountMismatch_IsRejected`, `Image_SenseWithUnknownGroup_IsRejected`,
   `Image_GroupOfOneSenseOrAllSenses_IsRejected`, `Image_GroupIdWithoutMarker_IsRejected`,
@@ -144,5 +149,5 @@ All scenarios below pass on every platform and target framework of the CI matrix
   opened through `WordLexicon.OpenImage` is reported as `ModelIntegrityException` that carries the original
   `InvalidDataException`.
 - **Complete dictionary**: the builder tests `Words_Committed_HoldsEveryDictionaryWord` and
-  `Words_Committed_CatalogHoldsEveryOewnAndProjectSense` show that no dictionary word and no sense is absent from the
-  image.
+  `Words_Committed_CatalogHoldsEveryOewnAndProjectSense` show that no dictionary word and no sense whose lemma has a
+  letter is absent from the image; the numerals, whose lemma has no letter, are left out by design.

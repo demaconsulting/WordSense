@@ -24,12 +24,20 @@ internal sealed record ImageResult(int Spellings, int Analyses, int Entries, int
 /// <remarks>
 ///     <para>
 ///     The image holds the <c>form</c> table (every analysis of every written form), the entries those forms refer to
-///     and the sense catalog: the sense labels, the groups, the sense keys and the respellings; the senses of a lemma and
+///     and the sense catalog: the sense labels, the groups and the sense keys; the senses of a lemma and
 ///     part of speech are in the order of Open English WordNet (the WordNet 3.0 tag counts do not order them); see <see cref="ImageFormat"/> for the layout. Spellings and entry lemmas
 ///     are sorted by their UTF-8 bytes. Each section is Brotli-compressed at the highest quality, after a byte-plane
 ///     shuffle for fixed-width columns. The same data always gives the same sections; the compressed bytes can differ
 ///     between platforms when the Brotli library differs, so compare decompressed sections and the data hash, not the
 ///     file.
+///     </para>
+///     <para>
+///     A spelling without a letter (a numeral of Open English WordNet such as <c>0</c>, <c>24/7</c> or <c>.22</c>) is left
+///     out, with its analyses, its entries and the senses of its lemma, and so is an analysis of a spelling with a letter
+///     whose lemma has none: the library never looks such a token up (the
+///     runtime applies the same rule, <see cref="CueModel.HasLetter"/>), so the image holds none and the count, the senses
+///     and the lookup of the lexicon agree. The filter is applied here and not to the data tables, which stay a faithful
+///     copy of the source, so a new import of the source needs no cleanup.
 ///     </para>
 ///     <para>
 ///     The compilation fails, with one message that lists every violation, when a sense of a single-token entry or a
@@ -51,13 +59,21 @@ internal static class ImageCompiler
 
     // The tables the image is compiled from; sense_frequency is not one of them (it feeds the prior of the encoder, not the order)
     private static readonly string[] HashedTables =
-        ["entry", "form", "sense", "sense_label", "sense_group", "group_sense", "sense_respelling"];
+        ["entry", "form", "sense", "sense_label", "sense_group", "group_sense"];
 
     private static readonly Comparer<string> Utf8 = Comparer<string>.Create(DataLayout.CompareUtf8);
 
     // The key of the entry an analysis uses: its entry id, or a synthesized key of lemma and part of speech
     private static string EntryKey(string[] formRow) =>
         formRow[2].Length > 0 ? formRow[2] : $"{SurfacePrefix}{formRow[6]}\t{formRow[7]}";
+
+    // An analysis is kept when its spelling and its lemma (of the entry, or the surface lemma) have a letter; an unknown
+    // entry is kept so that the entry check names it
+    private static bool IsKept(string[] formRow, Dictionary<string, string[]> entryRows) =>
+        CueModel.HasLetter(formRow[0])
+        && (formRow[2].Length > 0
+            ? !entryRows.TryGetValue(formRow[2], out var entry) || CueModel.HasLetter(entry[1])
+            : CueModel.HasLetter(formRow[6]));
 
     // The image entry of a surface-only analysis: its synthesized key stands for the id
     private static string[] SurfaceEntry(string key)
@@ -96,7 +112,7 @@ internal static class ImageCompiler
     {
         var schema = DataSchema.Load(Path.Join(dataDirectory, "schema.yaml"));
         var entryRows = DataTables.Read(dataDirectory, schema.Table("entry")).ToDictionary(r => r[0], StringComparer.Ordinal);
-        var formRows = DataTables.Read(dataDirectory, schema.Table("form")).ToList();
+        var formRows = DataTables.Read(dataDirectory, schema.Table("form")).Where(r => IsKept(r, entryRows)).ToList();
 
         var sections = new SortedDictionary<int, (byte[] Raw, int Stride)>();
         var (spellingCount, entryCount) = AddAnalysisSections(sections, entryRows, formRows);
@@ -227,15 +243,15 @@ internal static class ImageCompiler
         sections[ImageFormat.SectionEntryForms] = (Uints(forms), 4);
         sections[ImageFormat.SectionFold] = (Uints(fold.Select(i => (uint)i).ToList()), 4);
         sections[ImageFormat.SectionMeta] = (
-            Uints([(uint)bySpelling.Count, (uint)usedEntries.Count, (uint)(rows.Count / 2), (uint)featureList.Count, (uint)fold.Count, 0, 0, 0, 0]),
+            Uints([(uint)bySpelling.Count, (uint)usedEntries.Count, (uint)(rows.Count / 2), (uint)featureList.Count, (uint)fold.Count, 0, 0, 0]),
             4);
         return (bySpelling.Count, usedEntries.Count);
     }
 
     // One sense of the catalog, before it is numbered; Position and Homograph give its place in the Open English WordNet order
-    private sealed record SenseEntry(string Id, string DataId, string Lemma, PartOfSpeech Pos, string? KeySuffix, string? Respelling, int Position, int Homograph);
+    private sealed record SenseEntry(string Id, string DataId, string Lemma, PartOfSpeech Pos, string? KeySuffix, int Position, int Homograph);
 
-    // The senses, groups, lemma blocks, keys and respellings
+    // The senses, groups, lemma blocks and keys
     private static (int Senses, int Groups) AddCatalogSections(
         SortedDictionary<int, (byte[] Raw, int Stride)> sections,
         string dataDirectory,
@@ -243,9 +259,15 @@ internal static class ImageCompiler
         Dictionary<string, string[]> entryRows)
     {
         var errors = new List<string>();
-        var senseRows = DataTables.Read(dataDirectory, schema.Table("sense")).ToDictionary(r => r[0], StringComparer.Ordinal);
+        var allSenseRows = DataTables.Read(dataDirectory, schema.Table("sense")).ToDictionary(r => r[0], StringComparer.Ordinal);
         var labels = DataTables.Read(dataDirectory, schema.Table("sense_label")).ToDictionary(r => r[0], r => r[1], StringComparer.Ordinal);
-        var respellings = DataTables.Read(dataDirectory, schema.Table("sense_respelling")).ToDictionary(r => r[0], r => r[1], StringComparer.Ordinal);
+
+        // The senses of a lemma without a letter are left out first, so that every check below sees the retained set only
+        var omitted = allSenseRows.Values
+            .Where(r => entryRows.TryGetValue(r[2], out var owner) && !CueModel.HasLetter(owner[1]))
+            .Select(r => r[0])
+            .ToHashSet(StringComparer.Ordinal);
+        var senseRows = allSenseRows.Where(p => !omitted.Contains(p.Key)).ToDictionary(p => p.Key, p => p.Value, StringComparer.Ordinal);
 
         foreach (var row in senseRows.Values.OrderBy(r => r[0], Utf8))
         {
@@ -256,7 +278,7 @@ internal static class ImageCompiler
         }
 
         var senses = new List<SenseEntry>();
-        foreach (var (dataId, label) in labels.OrderBy(p => p.Key, Utf8))
+        foreach (var (dataId, label) in labels.Where(p => !omitted.Contains(p.Key)).OrderBy(p => p.Key, Utf8))
         {
             if (!senseRows.TryGetValue(dataId, out var row) || !entryRows.TryGetValue(row[2], out var entry))
             {
@@ -278,7 +300,6 @@ internal static class ImageCompiler
                 lemma,
                 DataTables.PosOf(entry[2]),
                 key.Length == 0 ? null : key[(lemma.Length + 1)..],
-                respellings.GetValueOrDefault(dataId),
                 int.Parse(row[4], CultureInfo.InvariantCulture),
                 int.Parse(entry[3], CultureInfo.InvariantCulture)));
         }
@@ -317,7 +338,7 @@ internal static class ImageCompiler
             }
         }
 
-        var groups = ReadGroups(dataDirectory, schema, senses, indexOfData, blockOf, rankInBlock, blocks, errors);
+        var groups = ReadGroups(dataDirectory, schema, senses, indexOfData, omitted, blockOf, rankInBlock, blocks, errors);
         if (errors.Count > 0)
         {
             throw new InvalidDataException("The sense catalog cannot be compiled:" + Environment.NewLine + string.Join(Environment.NewLine, errors));
@@ -332,6 +353,7 @@ internal static class ImageCompiler
         DataSchema schema,
         List<SenseEntry> senses,
         Dictionary<string, int> indexOfData,
+        HashSet<string> omitted,
         int[] blockOf,
         int[] rankInBlock,
         List<List<int>> blocks,
@@ -341,6 +363,12 @@ internal static class ImageCompiler
         var groupOfSense = new Dictionary<int, string>();
         foreach (var row in DataTables.Read(dataDirectory, schema.Table("group_sense")))
         {
+            // A member that was left out of the catalog (a lemma without a letter) is no member: the checks below see the retained ones
+            if (omitted.Contains(row[1]))
+            {
+                continue;
+            }
+
             if (!indexOfData.TryGetValue(row[1], out var sense))
             {
                 errors.Add($"group_sense: the sense '{row[1]}' of the group '{row[0]}' has no label.");
@@ -418,14 +446,9 @@ internal static class ImageCompiler
             }
         }
 
-        var respellingList = senses.Where(s => s.Respelling is not null).Select(s => s.Respelling!).Distinct(StringComparer.Ordinal).OrderBy(r => r, Utf8).ToList();
-        var respellingIndex = respellingList.Select((r, i) => (r, i)).ToDictionary(t => t.r, t => t.i + 1, StringComparer.Ordinal);
-
         AddStrings(sections, ImageFormat.SectionSenseIdLength, ImageFormat.SectionSenseIdBytes, senses.Select(s => s.Id));
         AddStrings(sections, ImageFormat.SectionSenseKeyLength, ImageFormat.SectionSenseKeyBytes, senses.Select(s => s.KeySuffix ?? string.Empty));
         sections[ImageFormat.SectionSenseGroup] = (Uints(senses.Select((_, i) => (uint)groupIndex.GetValueOrDefault(i)).ToList()), 4);
-        sections[ImageFormat.SectionSenseRespelling] = (Uints(senses.Select(s => s.Respelling is null ? 0u : (uint)respellingIndex[s.Respelling]).ToList()), 4);
-        AddStrings(sections, ImageFormat.SectionRespellingLength, ImageFormat.SectionRespellingBytes, respellingList);
         AddStrings(sections, ImageFormat.SectionGroupIdLength, ImageFormat.SectionGroupIdBytes, groups.Select(g => g.Id));
         sections[ImageFormat.SectionGroupPos] = (groups.Select(g => (byte)g.Pos).ToArray(), 1);
         var groupStart = new List<uint> { 0 };
@@ -459,12 +482,12 @@ internal static class ImageCompiler
         sections[ImageFormat.SectionKeyIndex] = (Uints(keyed.Select(i => (uint)i).ToList()), 4);
 
         sections[ImageFormat.SectionMeta] = (
-            Uints(ReadUints(sections[ImageFormat.SectionMeta].Raw, senses.Count, groups.Count, blocks.Count, respellingList.Count)),
+            Uints(ReadUints(sections[ImageFormat.SectionMeta].Raw, senses.Count, groups.Count, blocks.Count)),
             4);
     }
 
     // The meta values the analysis part wrote, completed with the counts of the catalog
-    private static List<uint> ReadUints(byte[] raw, int senses, int groups, int blocks, int respellings)
+    private static List<uint> ReadUints(byte[] raw, int senses, int groups, int blocks)
     {
         var values = new List<uint>();
         for (var i = 0; i < raw.Length; i += 4)
@@ -475,7 +498,6 @@ internal static class ImageCompiler
         values[ImageFormat.MetaSenseCount] = (uint)senses;
         values[ImageFormat.MetaGroupCount] = (uint)groups;
         values[ImageFormat.MetaBlockCount] = (uint)blocks;
-        values[ImageFormat.MetaRespellingCount] = (uint)respellings;
         return values;
     }
 

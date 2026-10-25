@@ -134,8 +134,8 @@ a curated label and an authored gloss (`corpus/curation`).
   speech), 122 had one sense and 4 had every sense of their lemma and part of speech; they are left out, and so are the
   83,727 default groups that the first version of the inventory made for the other lemmas, and 12 curated groups that
   the cleanup pass dropped (`corpus/curation/README.md`). The id of a group is `lemma#group:slug`; it is versioned per
-  data release and not frozen, unlike the ids of senses. `sense_label_map` and `sense_respelling` start empty: no label
-  has been published yet, and the respellings of the earlier class inventory are carried when each lemma is curated.
+  data release and not frozen, unlike the ids of senses. `sense_label_map` starts empty: no label
+  has been published yet. The table `sense_respelling` of the pronunciation-era inventory was empty and is removed.
 - The class tables of the earlier inventory (`coarse_class`, `class_sense`, `class_entry`) and `form_sense_scope` are
   retired; the temporary record of their mapping was deleted with the relabeling of our own corpus (see MAPPING.md).
 

@@ -26,7 +26,6 @@ inventory:
   versioned per data release and not frozen) and the group of a sense (at most one; a sense needs none). The column
   `kind` is the last column, so a reader by column index of the earlier columns is not affected.
 - `sense_frequency(sense_key, tag_count, source)`: the WordNet 3.0 tag count of a sense key; the source is `wn30`.
-- `sense_respelling(sense_id, respelling)`: the respelling of a sense.
 
 The tables of the retired class inventory (`coarse_class`, `class_sense`, `class_entry`) and of the per-form sense scope
 (`form_sense_scope`), with their `class_kind` vocabulary and the `class` partition kind, are removed (schema version 3);

@@ -272,7 +272,7 @@ public sealed partial class DataEndToEndTests : IDisposable
 
     /// <summary>
     ///     Every group is a set of at least two, but not all, senses of one lemma and part of speech, a sense is in at
-    ///     most one group, and a group does not hold two respellings.
+    ///     most one group.
     /// </summary>
     [Fact]
     public void WordSenseBuilder_DataEndToEnd_CommittedData_GroupsAreSetsOfSomeSensesOfOnePartOfSpeech()
@@ -301,11 +301,6 @@ public sealed partial class DataEndToEndTests : IDisposable
             if (members.Any(m => (inventory.Lemma(inventory.Senses[m]), inventory.Entries[inventory.Senses[m][2]][2]) != key))
             {
                 problems.Add($"{group[0]} has a sense of another lemma or part of speech");
-            }
-
-            if (members.Select(m => inventory.Respelling.GetValueOrDefault(m)).Where(r => !string.IsNullOrEmpty(r)).Distinct().Count() > 1)
-            {
-                problems.Add($"{group[0]} mixes respellings");
             }
         }
 
@@ -526,7 +521,6 @@ public sealed partial class DataEndToEndTests : IDisposable
             Members = Read("group_sense");
             GroupOf = Members.ToDictionary(r => r[1], r => r[0], StringComparer.Ordinal);
             Frequency = Read("sense_frequency").ToDictionary(r => r[0], StringComparer.Ordinal);
-            Respelling = Read("sense_respelling").ToDictionary(r => r[0], r => r[1], StringComparer.Ordinal);
             Glosses = Read("gloss").Where(g => g[2].Length > 0).Select(g => g[0]).ToHashSet(StringComparer.Ordinal);
             FormEntries = Read("form").Where(f => f[2].Length > 0).Select(f => f[2]).ToHashSet(StringComparer.Ordinal);
             FormsOf = Read("form").Where(f => f[2].Length > 0).GroupBy(f => f[0], StringComparer.Ordinal).ToDictionary(g => g.Key, g => g.Select(f => f[2]).ToList(), StringComparer.Ordinal);
@@ -547,8 +541,6 @@ public sealed partial class DataEndToEndTests : IDisposable
         public Dictionary<string, string> GroupOf { get; }
 
         public Dictionary<string, string[]> Frequency { get; }
-
-        public Dictionary<string, string> Respelling { get; }
 
         public HashSet<string> Glosses { get; }
 

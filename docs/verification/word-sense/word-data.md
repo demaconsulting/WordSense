@@ -57,7 +57,7 @@ group ids are not part of this check, because they are versioned per data releas
 #### Groups
 
 `CommittedData_GroupsAreSetsOfSomeSensesOfOnePartOfSpeech` checks that every group has at least two, but not all, senses
-of its lemma and part of speech, only senses of that lemma and part of speech, no two respellings, and that no sense is
+of its lemma and part of speech, only senses of that lemma and part of speech, and that no sense is
 in two groups; `CommittedData_GroupsHaveAMarkerIdAKindAndCuratedEvidence` checks that every group id is
 `lemma#group:label` with a slug label and is never a sense id, that every kind is `equivalent` or `related`, and that the
 curation file carries the same kind and non-empty evidence for the group; `CommittedData_SensesNeedNoGroup` checks that

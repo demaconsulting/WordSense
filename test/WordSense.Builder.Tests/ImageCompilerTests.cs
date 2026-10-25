@@ -72,6 +72,129 @@ public sealed class ImageCompilerTests : IDisposable
     }
 
     /// <summary>
+    ///     A spelling without a letter (a numeral such as <c>3</c>) is left out of the image with its entry and its senses,
+    ///     while a spelling that mixes letters and digits (<c>3rd</c>) stays and the sense of a lemma with a letter is
+    ///     unaffected.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_ImageCompiler_Build_SpellingWithoutALetter_IsLeftOut()
+    {
+        // Arrange: a numeral with a labeled sense, and the ordinal 3rd without a sense
+        var data = WriteData(
+            _dir.Root,
+            extraEntries: ["oewn-3-n\t3\tn\t0\t1\t1\toewn", "oewn-3rd-a\t3rd\ta\t0\t1\t1\toewn"],
+            extraSenses: ["oewn-3__1.23.00..\t3%1:23:00::\toewn-3-n\toewn-30-n\t1"],
+            extraLabels: ["oewn-3__1.23.00..\tcardinal\tgenerated"],
+            extraForms: ["3\t0\toewn-3-n\tNumber=Sing\tdema\t0\t\t\toewn_form", "3rd\t0\toewn-3rd-a\tDegree=Pos\tdema\t0\t\t\toewn_form"]);
+
+        // Act
+        var (bytes, result) = ImageCompiler.Build(data);
+
+        // Assert: only bank and 3rd are spellings, their entries (bank noun, bank verb, 3rd) are the entries, and the six senses of bank remain
+        var image = WordImage.Open(bytes);
+        Assert.Equal(2, result.Spellings);
+        Assert.Equal(3, result.Entries);
+        Assert.Equal(6, result.Senses);
+        Assert.True(image.Find("3") < 0);
+        Assert.True(image.Find("3rd") >= 0);
+        Assert.Empty(image.SensesOf("3", PartOfSpeech.Noun));
+        Assert.False(image.TryGetSense("3#cardinal", out _));
+        Assert.Equal(6, image.SenseCount);
+        image.ValidateCatalog();
+    }
+
+    /// <summary>
+    ///     An analysis of a spelling with a letter whose lemma has none (<c>3rd</c> as a form of the entry <c>3</c>, or a
+    ///     surface lemma <c>3</c>) is left out, so the image has no entry of a lemma without a letter, while another
+    ///     analysis of the same spelling stays.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_ImageCompiler_Build_AnalysisOfLemmaWithoutALetter_IsLeftOut()
+    {
+        // Arrange: 3rd is a form of the numeral entry 3, of the surface lemma 3 and of its own adjective entry
+        var data = WriteData(
+            _dir.Root,
+            extraEntries: ["oewn-3-n\t3\tn\t0\t1\t1\toewn", "oewn-3rd-a\t3rd\ta\t0\t1\t1\toewn"],
+            extraSenses: ["oewn-3__1.23.00..\t3%1:23:00::\toewn-3-n\toewn-30-n\t1"],
+            extraLabels: ["oewn-3__1.23.00..\tcardinal\tgenerated"],
+            extraForms:
+            [
+                "3rd\t0\toewn-3rd-a\tDegree=Pos\tdema\t0\t\t\toewn_form",
+                "3rd\t1\toewn-3-n\tNumber=Sing\tdema\t0\t\t\toewn_form",
+                "3rd\t2\t\t\tdema\t0\t3\tn\thand",
+            ]);
+
+        // Act
+        var (bytes, result) = ImageCompiler.Build(data);
+
+        // Assert: 3rd keeps its adjective analysis alone, and the numeral has no entry or sense
+        var image = WordImage.Open(bytes);
+        Assert.Equal(2, result.Spellings);
+        Assert.Equal(3, result.Entries);
+        Assert.Equal(6, result.Senses);
+        Assert.True(image.Find("3rd") >= 0);
+        Assert.Empty(image.SensesOf("3", PartOfSpeech.Noun));
+        Assert.False(image.TryGetSense("3#cardinal", out _));
+        image.ValidateCatalog();
+    }
+
+    /// <summary>
+    ///     A numeral sense that has no label does not fail the compilation (the numerals are left out before the labels
+    ///     are checked), while an unlabeled sense of a lemma with a letter still fails.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_ImageCompiler_Build_UnlabeledSpellingWithoutALetter_IsLeftOut()
+    {
+        // Arrange: a numeral with a sense and no label
+        var data = WriteData(
+            _dir.Root,
+            extraEntries: ["oewn-3-n\t3\tn\t0\t1\t1\toewn"],
+            extraSenses: ["oewn-3__1.23.00..\t3%1:23:00::\toewn-3-n\toewn-30-n\t1"],
+            extraForms: ["3\t0\toewn-3-n\tNumber=Sing\tdema\t0\t\t\toewn_form"]);
+
+        // Act
+        var (bytes, result) = ImageCompiler.Build(data);
+
+        // Assert: the numeral has no spelling, entry or sense, and the other senses are unaffected
+        var image = WordImage.Open(bytes);
+        Assert.Equal(1, result.Spellings);
+        Assert.Equal(2, result.Entries);
+        Assert.Equal(6, result.Senses);
+        Assert.True(image.Find("3") < 0);
+        Assert.Empty(image.SensesOf("3", PartOfSpeech.Noun));
+        Assert.Equal(6, image.SenseCount);
+    }
+
+    /// <summary>
+    ///     A group that lists a numeral sense (left out of the image) next to retained senses compiles: the numeral is no
+    ///     member, and the group checks run on the retained members.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_ImageCompiler_Build_GroupWithSpellingWithoutALetterMember_LeavesTheMemberOut()
+    {
+        // Arrange: the group of the two bank nouns also lists the labeled sense of the numeral 3
+        var data = WriteData(
+            _dir.Root,
+            members: [.. Members, "bank#group:depository\toewn-3__1.23.00.."],
+            extraEntries: ["oewn-3-n\t3\tn\t0\t1\t1\toewn"],
+            extraSenses: ["oewn-3__1.23.00..\t3%1:23:00::\toewn-3-n\toewn-30-n\t1"],
+            extraLabels: ["oewn-3__1.23.00..\tcardinal\tgenerated"],
+            extraForms: ["3\t0\toewn-3-n\tNumber=Sing\tdema\t0\t\t\toewn_form"]);
+
+        // Act
+        var (bytes, result) = ImageCompiler.Build(data);
+
+        // Assert: one group with the two retained members, and no numeral sense
+        var image = WordImage.Open(bytes);
+        Assert.Equal(1, result.Groups);
+        Assert.Equal(6, result.Senses);
+        Assert.True(image.TryGetGroup("bank#group:depository", out var group));
+        Assert.Equal(["bank#coin-bank", "bank#banking-company"], group.SenseIds);
+        Assert.False(image.TryGetSense("3#cardinal", out _));
+        image.ValidateCatalog();
+    }
+
+    /// <summary>
     ///     A sense of a single-token entry that has no label fails the compilation and is named.
     /// </summary>
     [Fact]
@@ -201,6 +324,7 @@ public sealed class ImageCompilerTests : IDisposable
         IEnumerable<string>? extraEntries = null,
         IEnumerable<string>? extraSenses = null,
         IEnumerable<string>? extraLabels = null,
+        IEnumerable<string>? extraForms = null,
         bool frequencies = true)
     {
         var data = Path.Join(root, "data");
@@ -228,7 +352,7 @@ public sealed class ImageCompilerTests : IDisposable
             frequencies
                 ? ["bank%1:06:01::\t0\twn30", "bank%1:14:00::\t20\twn30", "bank%1:17:00::\t2\twn30", "bank%1:17:01::\t25\twn30", "bank%2:35:00::\t1\twn30", "bank%2:35:01::\t0\twn30"]
                 : []);
-        Table(data, "form/b.tsv", "spelling\trank\tentry_id\tfeatures\tsource\treviewed\tsurface_lemma\tsurface_pos\torigin", ["bank\t0\toewn-bank-n\tNumber=Sing\tdema\t0\t\t\toewn_form", "bank\t1\toewn-bank-v\tVerbForm=Inf\tdema\t0\t\t\toewn_form"]);
+        Table(data, "form/b.tsv", "spelling\trank\tentry_id\tfeatures\tsource\treviewed\tsurface_lemma\tsurface_pos\torigin", ["bank\t0\toewn-bank-n\tNumber=Sing\tdema\t0\t\t\toewn_form", "bank\t1\toewn-bank-v\tVerbForm=Inf\tdema\t0\t\t\toewn_form", .. extraForms ?? []]);
         Table(data, "sense_group/b.tsv", "group_id\tlemma\tpos\tlabel\torigin", groups ?? Groups);
         Table(data, "group_sense/b.tsv", "group_id\tsense_id", members ?? Members);
         return data;

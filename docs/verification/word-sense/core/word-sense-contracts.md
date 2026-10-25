@@ -56,9 +56,12 @@ All scenarios below pass on every platform and target framework of the CI matrix
   its last analysis.
 - **SenseInfo and SenseGroup records** (`SenseInfo_Construct_ExposesMembers`, `SenseInfo_ProjectSense_HasNoKey`,
   `SenseInfo_SameValues_AreEqual`, `SenseGroup_Construct_ExposesMembers`, `SenseGroup_SameMembers_AreEqual`,
-  `WordSenseContracts_SenseInfo_HasNoRespellingMember`): a sense exposes its id, group id (null when the sense is in no
+  `WordSenseContracts_SenseInfo_HasNoRespellingMember`): a sense
+  exposes its id, group id (null when the sense is in no
   group), lemma, part of speech and key, and a group its id, lemma, part of speech and member sense ids; neither has a
-  respelling member (checked by reflection, for both records); a project sense has a null key; equal values are equal;
+  respelling member (checked by reflection, for both records, and for `WordDetails` in
+  `WordDetails_Construct_ExposesMembers`); a project sense
+  has a null key; equal values are equal;
   two groups are equal when their values and the sequence of their member ids are equal (content and order, with equal
   hash codes), not merely when they share the same array.
 - **Fallback uses the primary result when it scored senses**

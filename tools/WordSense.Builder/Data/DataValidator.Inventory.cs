@@ -273,7 +273,6 @@ internal sealed partial class DataValidator
             groupRows.TryAdd(groupRow[0], groupRow);
         }
 
-        var respelling = Rows("sense_respelling").GroupBy(r => r[0], StringComparer.Ordinal).ToDictionary(g => g.Key, g => g.Last()[1], StringComparer.Ordinal);
         var senseCounts = senses.Values.GroupBy(s => (s.Lemma, s.Pos)).ToDictionary(g => g.Key, g => g.Count());
         var members = new Dictionary<string, List<string>>(StringComparer.Ordinal);
         foreach (var (path, line, row) in Located(TableGroupSense))
@@ -315,12 +314,6 @@ internal sealed partial class DataValidator
             if (senseCounts.TryGetValue((group[1], group[2]), out var all) && list.Count >= all)
             {
                 Report(path, line, RuleGroup, $"{group[0]}: a group must not contain every sense of its lemma and part of speech; the part of speech is the next level.");
-            }
-
-            var names = list.Select(m => respelling.GetValueOrDefault(m)).Where(r => !string.IsNullOrEmpty(r)).Distinct(StringComparer.Ordinal).ToList();
-            if (names.Count > 1)
-            {
-                Report(path, line, RuleGroup, $"{group[0]}: a group must not mix respellings ({string.Join(", ", names)}).");
             }
         }
     }

@@ -18,7 +18,7 @@ All scenarios below pass.
 - **Committed schema loads** (`Load_CommittedSchema_DeclaresTables`, `..._DeclaresVocabularies`): the tables and the
   vocabularies are present, and the retired class tables and form scopes are not.
 - **Sense inventory tables** (`Load_CommittedSchema_DeclaresSenseGroupAndFrequencyTables`): the sense label, label
-  map, group, group sense, frequency and respelling tables are declared with their keys, their foreign keys and the
+  map, group, group sense and frequency tables are declared with their keys, their foreign keys and the
   origin and source vocabularies (the group origin is `curated` only), and the group table has the `kind` column as its
   last column with the `group_kind` vocabulary (`equivalent`, `related`). The tables of the retired class inventory and
   of

@@ -71,22 +71,38 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `ImageCompiler_Build_GroupOfOneSenseOrAllSenses_Fails`, `ImageCompiler_Build_GroupWithoutMembers_Fails`,
   `ImageCompiler_Build_GroupMixingPartsOfSpeech_Fails`,
   `ImageCompiler_Build_GroupIdWithoutMarkerOrEqualToSenseId_Fails`).
+- **Spellings without a letter are left out** (`ImageCompiler_Build_SpellingWithoutALetter_IsLeftOut`,
+  `ImageCompiler_Build_UnlabeledSpellingWithoutALetter_IsLeftOut`): a numeral such
+  as `3` or `24/7` in the form table gets no spelling, entry, analysis or sense in the compiled image, a spelling with
+  a letter and digits such as `3rd` stays, and the committed data tables keep the rows. The numerals are left out
+  before the labels are checked, so a numeral sense without a label does not fail the build (an unlabeled sense of a
+  lemma with a letter still does). A `group_sense` row for such a numeral sense is ignored, so a group that lists it
+  next to retained senses compiles with the retained members only
+  (`ImageCompiler_Build_GroupWithSpellingWithoutALetterMember_LeavesTheMemberOut`). An analysis of a spelling with a
+  letter whose lemma has none (`3rd` as a form of the entry `3`, or of the surface lemma `3`) is left out too, while the
+  other analyses of that spelling stay (`ImageCompiler_Build_AnalysisOfLemmaWithoutALetter_IsLeftOut`).
 - **Every dictionary word is kept** (`Words_Committed_HoldsEveryDictionaryWord`): the committed image holds every
   word of the committed dictionary with each of its parts of speech, without exception.
 - **The catalog is complete** (`Words_Committed_CatalogHoldsEveryOewnAndProjectSense`): every single-token OEWN sense
-  and every project sense of the committed data is in the catalog with its id, group (when it is in one), key (none for
-  a project sense).
+  and every project sense of the committed data whose lemma has a letter is in the catalog with its id, group (when it
+  is in one), key (none for a project sense).
 - **Auxiliaries** (`Words_Committed_AuxiliariesGainTheirAnalysis`,
   `LexiconSource_ReadAuxiliaries_ReadsWordsAndRejectsBadLines`,
   `LexiconSource_Letters_CoverTheTenParts`): each word of `corpus/lexicon/auxiliaries.tsv` gains an auxiliary
   analysis; the file reader rejects malformed lines and repeats, and the letters cover all ten parts of speech.
 - **Spellings and lookup** (`Image_Spellings_AreSortedByUtf8Bytes`, `Image_Find_ReturnsOwnIndex`): the spelling index is
   sorted by the UTF-8 bytes and finds each spelling at its own index.
-- **Damaged images are rejected** (`Image_Corruption_IsRejected`, `Image_TruncatedAtEverySectionBoundary_IsRejected`,
+- **Image format version 4** (`Image_Version4_HasNoRespellingSections`, `Image_PreviousFormatVersion_IsRejected`,
+  `Image_Corruption_IsRejected`, `DataSchema_Load_CommittedSchema_DeclaresTables`): the committed image has the version
+  4 in its header, no section with the id 24, 25 or 26 and a meta section of eight values; the reader rejects the
+  previous version 3 and any other version; the committed schema does not declare `sense_respelling`.
+- **Damaged images are rejected** (`Image_Corruption_IsRejected`, `Image_PreviousFormatVersion_IsRejected`,
+  `Image_TruncatedAtEverySectionBoundary_IsRejected`,
   `Image_WrongHash_IsRejectedByContentHashOnly`, `Image_CountMismatch_IsRejected`,
   `Image_SenseWithUnknownGroup_IsRejected`, `Image_GroupOfOneSenseOrAllSenses_IsRejected`,
   `Image_GroupIdWithoutMarker_IsRejected`): the reader rejects a
-  tampered file, a file cut off at any section boundary (the 112-byte header of version 3, the directory of 20-byte
+  tampered file, an image of the previous format version 3, a file cut off at any section boundary (the 112-byte header
+  of version 4, the directory of 20-byte
   entries and each section) and a section count that does not match; a wrong hash is detected by the content hash
   alone; a sense that names an unknown group, a group id without the `#group:` marker, a group with fewer than two
   members, a group of all the senses of its
@@ -502,8 +518,7 @@ All scenarios below pass on every platform and target framework of the CI matrix
   their forms; markdown characters are escaped, lines are wrapped, line endings are LF and the output repeats byte for
   byte.
 - **Senses carry group key and gloss** (`Appendix_Generate_ListsSensesWithGroupKeyAndGloss`): each sense is listed
-  with its id, group, OEWN sense key (none for a project sense) and gloss, and the appendix does not mention a
-  respelling.
+  with its id, group, OEWN sense key (none for a project sense) and gloss.
 - **Incomplete input is rejected** (`Appendix_Generate_RejectsIncompleteInput`, `Program_Appendix_MissingCorpus_Fails`):
   a missing anchors directory, a trained sense without an anchor sentence and an empty inventory are each rejected with
   an error that names the problem, and the command exits with code 1.

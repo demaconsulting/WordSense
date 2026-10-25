@@ -46,7 +46,6 @@ importer refuses to overwrite existing tables, so a re-import can never destroy 
 | `sense_group` | `group_id` | a curated set of 2+, but not all, confusable senses; id `lemma#group:label`; a kind |
 | `group_sense` | `group_id, sense_id` | the group of a sense; a sense is in at most one group, and needs none |
 | `sense_frequency` | `sense_key` | the WordNet 3.0 tag count of a sense key (0 when the sense has none) |
-| `sense_respelling` | `sense_id` | the respelling of a sense whose pronunciation differs |
 
 The part of speech letters are `n v a r` and, for the closed classes, `u` pronoun, `p` preposition, `c` conjunction,
 `i` interjection, `d` determiner, `x` auxiliary. An entry of source `dema` may have no sense (a bare lemma and part of
@@ -77,8 +76,8 @@ is 1) and every project sense.
 - **Levels and groups.** The levels nest: none, then the part of speech (a lemma and part of speech), then an optional
   group, then the sense. A **group** exists only when it is curated: a set of at least two, but not all, senses of one
   lemma and one part of speech that are closely related in meaning and that a reader can confuse. A group has no
-  singleton and no default or whole-part-of-speech group; a sense needs no group, and a sense is in at most one. A group
-  never mixes two respellings. When the classifier is unsure between senses, it steps up to the next level that exists:
+  singleton and no default or whole-part-of-speech group; a sense needs no group, and a sense is in at most one. When
+  the classifier is unsure between senses, it steps up to the next level that exists:
   the shared group of the two senses if both are in one, otherwise the part of speech. Almost every lemma has no group;
   the data has the groups of the curation only (see `corpus/curation`). The members of a group are the rows of
   `group_sense`; a group answer of the image always exposes its member sense ids, so that a caller can step down to
@@ -106,8 +105,9 @@ is 1) and every project sense.
   by `import-wn30-counts`; 0 when the sense index has no line for it. A project sense has no key and counts as 0. The
   counts feed the usage prior and the tiers; the order of the senses of a lemma in the image is the order of Open English
   WordNet (`sense.position`, then `entry.homograph_no`, project senses last).
-- **Respellings.** `sense_respelling` is filled when a lemma is curated (the earlier inventory kept them per class), so
-  that a group never mixes two respellings.
+- **Numerals.** The tables keep the 134 spellings of Open English WordNet that have no letter (`0`, `1000`, `24/7`,
+  `.22`: 176 `form` rows, 176 entries and 178 senses) as the source has them; the image compiler leaves them out, because
+  the library never looks up a token without a letter.
 
 ## Relations
 

@@ -75,8 +75,7 @@ model for another without code changes, and the composite `FallbackWordSenseMode
     `Level`, `Confidence`, the ids and the contents of `Analyses` (item by item, senses included); the hash code agrees.
 - `SenseInfo(SenseId, GroupId, Lemma, PartOfSpeech, SenseKey)`: a sealed record that describes one sense of
   the catalog. `SenseId` is `lemma#label`. `GroupId` is null when the sense is in no group (a sense is in at most one
-  group). `SenseKey` is the OEWN sense key, or null for a project sense that OEWN does not provide. The record carries
-  no respelling: the word image still holds the (empty) respelling sections, but the catalog does not expose them.
+  group). `SenseKey` is the OEWN sense key, or null for a project sense that OEWN does not provide.
 - `SenseGroup(GroupId, Lemma, PartOfSpeech, SenseIds)`: a sealed record that describes a group of senses of
   one lemma and part of speech; `GroupId` is `lemma#group:label`, in a namespace of its own that can never equal a
   sense id; `SenseIds` is an immutable array in inventory order with at least two senses and never all the senses of

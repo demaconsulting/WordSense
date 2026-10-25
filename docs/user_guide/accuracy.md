@@ -23,12 +23,13 @@ seen. The sets are:
   were retrained on the corrected anchors.
 - **Running-text part of speech.** The part of speech of the selected analysis on the test split of the representative
   open corpus (1,501 sentences, 21,482 scored tokens of random CC0 text), on the English EWT treebank test file mapped to
-  the conventions of the dictionary (19,471 scored tokens; the treebank is downloaded for evaluation only and is never
-  committed) and on the 32 sentences of the simplified-technical-English challenge set (reported on its own: it is small
+  the conventions of the dictionary (19,468 scored tokens; the treebank is downloaded for evaluation only and is never
+  committed; a possessive of a numeral such as `80's` is not answered, because numerals are unknown) and on the 32
+  sentences of the simplified-technical-English challenge set (reported on its own: it is small
   and chosen for its hard cases, so read it as a regression check). "Ambiguous" counts only the tokens whose word has
   two or more parts of speech in the dictionary.
 - **Independent sense evaluation (SemCor).** The 31,556 single-word annotations of the 825 trained lemmas that SemCor 3.0
-  can evaluate (the sense-annotated Brown Corpus, with WordNet 3.0 sense keys mapped to the senses of the catalog; 97.7%
+  can evaluate (the sense-annotated Brown Corpus, with WordNet 3.0 sense keys mapped to the senses of the catalog; 97.1%
   of the keys map). SemCor is downloaded to a cache by the builder and never committed. The table gives the share of
   words answered at the sense level, the precision of those answers and the *fine top-1*, the share of words whose most
   probable sense is right.

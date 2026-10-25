@@ -99,7 +99,7 @@ sections:
               - id: WordSense-WordData-DataValidator-Groups
                 title: >-
                   DataValidator shall check that every group has at least two, but not all, of the senses of its lemma
-                  and part of speech, one lemma, one part of speech and no two respellings, that a sense is in at most
+                  and part of speech, one lemma and one part of speech, that a sense is in at most
                   one group, that the id of a group is its lemma, the marker group: and its slug label, that the origin
                   of a group is curated and its kind is equivalent or related; a sense needs no group.
                 tags: [unit]
@@ -114,7 +114,6 @@ sections:
                   - WordSenseBuilder_DataValidator_Validate_SenseInTwoGroups_ViolatesUnique
                   - WordSenseBuilder_DataValidator_Validate_GroupAcrossPartsOfSpeech_Violates
                   - WordSenseBuilder_DataValidator_Validate_GroupAcrossLemmas_Violates
-                  - WordSenseBuilder_DataValidator_Validate_GroupWithTwoRespellings_Violates
                   - WordSenseBuilder_DataValidator_Validate_DefaultGroupOrigin_Violates
                   - WordSenseBuilder_DataValidator_Validate_GroupIdWithoutMarker_Violates
                   - WordSenseBuilder_DataValidator_Validate_GroupIdOfAnotherLemma_Violates

@@ -58,11 +58,11 @@ All scenarios below pass.
   same change of a sense label is reported), an id that the map retires and a current sense uses, and a project sense
   that has a sense key are each reported (or accepted) with the expected rule tag.
 - **Groups** (`GroupOfOneSense_Violates`, `GroupOfAllSensesOfPartOfSpeech_Violates`, `SenseInTwoGroups_ViolatesUnique`,
-  `GroupAcrossPartsOfSpeech_Violates`, `GroupAcrossLemmas_Violates`, `GroupWithTwoRespellings_Violates`,
+  `GroupAcrossPartsOfSpeech_Violates`, `GroupAcrossLemmas_Violates`,
   `DefaultGroupOrigin_Violates`, `GroupIdWithoutMarker_Violates`, `GroupIdOfAnotherLemma_Violates`,
   `GroupLabelNotASlug_Violates`, `GroupKind_MustBeInTheVocabulary`): a group of one sense, a group with every sense of its
   lemma and part of speech, a sense in two groups, a group with two parts of speech, a group with a sense of another
-  lemma, a group with two respellings, a group of the retired origin `default`, a group id without the marker `group:`,
+  lemma, a group of the retired origin `default`, a group id without the marker `group:`,
   a group id with another lemma, a group label that is not a slug, and a group without a kind or with a kind outside the
   `group_kind` vocabulary are each reported; both kinds are valid. A lemma needs no group, so data without any group is
   valid (`CuratedGroupOfSomeSenses_IsValid` first checks the labeled slice without a group). The slice has only two

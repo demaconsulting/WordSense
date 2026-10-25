@@ -149,7 +149,6 @@ public sealed class BuilderTests : IDisposable
         Assert.All(text.Split('\n'), line => Assert.True(line.Length <= AppendixGenerator.LineLimit, line));
         Assert.Contains("### Groups\n", text, StringComparison.Ordinal);
         Assert.DoesNotContain("Pronunciations", text, StringComparison.Ordinal);
-        Assert.DoesNotContain("respelling", text, StringComparison.OrdinalIgnoreCase);
         Assert.Contains("### Forms\n", text, StringComparison.Ordinal);
         Assert.Contains($"| {"`Noun`",-14} | {1,6} | {4,6} |", text, StringComparison.Ordinal);
         Assert.Contains($"| {"`Verb`",-14} | {1,6} | {2,6} |", text, StringComparison.Ordinal);
@@ -210,7 +209,7 @@ public sealed class BuilderTests : IDisposable
         return items;
     }
 
-    // Writes a small data folder with glosses, a project sense, a respelling and a form, and a corpus with two trained
+    // Writes a small data folder with glosses, a project sense and a form, and a corpus with two trained
     // lemmas written in reverse order and one that the data does not have
     private (string Corpus, string Data) WriteAppendixInput()
     {
@@ -220,7 +219,6 @@ public sealed class BuilderTests : IDisposable
         Write("data/sense_label/t.tsv", "sense_id\tlabel\torigin\ndema-the__d\tdeterminer\tproject\n");
         Write("data/form/t.tsv", "spelling\trank\tentry_id\tfeatures\tsource\treviewed\tsurface_lemma\tsurface_pos\torigin\n" +
             "banks\t0\toewn-bank-n\tNumber=Plur\tdema\t0\t\t\toewn_form\nthe\t0\tdema-the-d\t\tdema\t0\t\t\tdema\n");
-        Write("data/sense_respelling/r.tsv", "sense_id\trespelling\noewn-bank__1.17.00..\tbangk\n");
         Write("data/gloss/g.tsv", "synset_id\tseq\ttext\n" +
             "oewn-1-n\t1\ta container for coins\n" +
             "oewn-2-n\t1\ta financial institution that accepts deposits *and* lends money\n" +
@@ -373,8 +371,8 @@ public sealed class BuilderTests : IDisposable
 
     /// <summary>
     ///     The catalog of the committed image holds every single-token Open English WordNet sense and every project sense
-    ///     of the committed data, each with the id <c>lemma#label</c>, the key of the data (none for a project sense) and
-    ///     the group of the data (none for a sense that is in no group).
+    ///     of the committed data whose lemma has a letter, each with the id <c>lemma#label</c>, the key of the data (none
+    ///     for a project sense) and the group of the data (none for a sense that is in no group).
     /// </summary>
     [Fact]
     public void WordSenseBuilder_Words_Committed_CatalogHoldsEveryOewnAndProjectSense()
@@ -394,7 +392,9 @@ public sealed class BuilderTests : IDisposable
             .ToList();
         Assert.True(missing.Count == 0, "Senses of the data without a label: " + string.Join(", ", missing));
 
-        var wrong = labels
+        // The numerals (a lemma without a letter) are left out of the image, so the catalog holds the labeled senses of the others
+        var inImage = labels.Where(p => DemaConsulting.WordSense.CueModel.HasLetter(entries[senses[p.Key][2]][1])).ToList();
+        var wrong = inImage
             .Select(p => (Sense: senses[p.Key], Label: p.Value))
             .Where(p =>
             {
@@ -407,7 +407,7 @@ public sealed class BuilderTests : IDisposable
             .Take(10)
             .ToList();
         Assert.True(wrong.Count == 0, "Senses of the data that the catalog lacks or has with other values: " + string.Join(", ", wrong));
-        Assert.Equal(labels.Count, DemaConsulting.WordSense.WordLexicon.Current.SenseCount);
+        Assert.Equal(inImage.Count, DemaConsulting.WordSense.WordLexicon.Current.SenseCount);
     }
 
     /// <summary>

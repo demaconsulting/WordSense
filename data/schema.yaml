@@ -1,7 +1,8 @@
 ---
 # WordSense data schema, version 4 (version 3 plus the column kind of sense_group and the group id scheme
 # lemma#group:label; version 3 was version 2 without the retired class tables and the form scopes; version 2 was
-# version 1 plus the sense inventory: labels, groups, frequencies, respellings).
+# version 1 plus the sense inventory: labels, groups, frequencies). The respelling table of the pronunciation-era
+# inventory was empty and is removed without a new version.
 #
 # The committed tables under data/ are the authoritative word data: they are validated by `validate-data`, never
 # regenerated over edits. This file is a restricted YAML subset (block mappings, block sequences, flow sequences of
@@ -378,7 +379,7 @@ tables:
       by: lemma
       column: spelling
 
-  # ---- the sense inventory: readable labels, groups, frequencies and respellings ----
+  # ---- the sense inventory: readable labels, groups and frequencies ----
   # The library classifies single words, so the inventory covers the senses of lemmas of one token (entry.token_count 1)
   # and every project sense. The public id of a sense is lemma#label; the id of a group is lemma#group:label of the
   # group,
@@ -451,15 +452,3 @@ tables:
     partition:
       by: key
       column: sense_key
-
-  sense_respelling:
-    description: The respelling of a sense whose pronunciation differs from the other senses of its lemma.
-    columns:
-      sense_id: id
-      respelling: text
-    primary_key: [sense_id]
-    foreign_keys:
-      sense_id: sense.sense_id
-    partition:
-      by: sense
-      column: sense_id

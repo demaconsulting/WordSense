@@ -49,8 +49,7 @@ implementation of the feature computation.
   that the training sentences are disjoint from every sentence they must not resemble (see Corpus validation).
 - `SenseInventory`: the authority on which senses exist, read from the sense catalog of the word image (the data of
   `data/` as compiled): for each lemma the senses in inventory order with part of speech, group, OEWN key (none for a
-  project sense); it checks the rows of the corpus against it. It does not read respellings: the public catalog
-  records no longer carry them.
+  project sense); it checks the rows of the corpus against it.
 - `AnalysisKey`: an analysis that a training row stands for (a lemma, a part of speech and the features that must be
   present); `Resolve` finds the spelling of the lemma that the word image uses.
 - `LexiconSource`: reads the dictionary word list (`word<TAB>letters`, ascending by word, parts of speech as the
@@ -62,16 +61,15 @@ implementation of the feature computation.
 - `CoverageReport`: the `coverage` command; measures how many running words of a directory of text files the word
   table knows, how many of the known words have a lemma with trained fine senses, and lists the unknown words as names
   and others.
-- `ImageCompiler`: reads the tables of `data/` (entry, form, sense, sense label, sense group, group sense and respelling)
-  and the lexicon lists, and writes the flat word image (`WSI1` version 3, a 112-byte header: magic,
+- `ImageCompiler`: reads the tables of `data/` (entry, form, sense, sense label, sense group and group sense) and the
+  lexicon lists, and writes the flat word image (`WSI1` version 4, a 112-byte header: magic,
   version, section count, a reserved word, the SHA-256 of the data tables, the SHA-256 of all bytes from offset 112 and
   the 32-byte inventory hash; then a directory of 20-byte entries and the sections). The analysis sections are the
   UTF-8-byte-sorted spelling index, the features, the entries with their lemma and part of speech, one analysis row
   (entry index and feature index) per `form` row, the lemma-to-forms index and the fold index. The
   catalog sections are the sense ids sorted by UTF-8 bytes (a sense index is its position), the OEWN key suffix of each
   sense (the part after `lemma%`, empty for a project sense), the sense-to-group index (group index plus one, 0 for a
-  sense in no group), the sense-to-respelling index (respelling index plus one, 0 for none) with the distinct
-  respelling strings, the group ids (UTF-8 sorted) and group parts of speech, the group members (CSR in inventory
+  sense in no group), the group ids (UTF-8 sorted) and group parts of speech, the group members (CSR in inventory
   order), the lemma and part-of-speech blocks (lemma bytes and part of speech sorted by lemma bytes then part of
   speech, each with a CSR of sense indexes in inventory order: the order of Open English WordNet, that is the position of
   the sense in its entry, then the homograph number of the entry, with project senses last, then sense id bytes; the
@@ -210,13 +208,18 @@ instead of `--model`.
 1. Read the tables of `data/` and the dictionary lexicon. Every word of the dictionary is kept with all its parts of
    speech, whatever the accuracy of any model for it: the accuracy of a model governs only which senses it chooses
    between, never whether a word exists.
-2. Write one analysis (lemma, part of speech, features) for every row of the `form` table. A word of the committed
-   auxiliary list gains an auxiliary analysis. The forms of every dictionary word come from the `form` table, so no
-   morphology runs at run time.
-3. Build the sense catalog: every single-token OEWN sense and every project sense, with its readable id (`lemma#label`),
-   its group (none when it is in no group), its OEWN key (none for a project sense) and its respelling (the data has no
-   respelling rows, so the respelling sections of the image are always empty; the format retains them). The senses of
-   each lemma and part of speech
+2. Write one analysis (lemma, part of speech, features) for every row of the `form` table whose spelling and lemma
+   have a letter. A spelling without a letter (a number written with digits such as `0`, `24/7` or `.22`: 134
+   spellings, with 176 analyses, 176 entries and 178 senses in the data) is left out of the image, with the entries
+   and senses of its lemmas, because the models never look such a token up: the filter is the rule of the runtime
+   (`CueModel.HasLetter`) and is applied here, at compile time, so the committed data tables stay a faithful copy of
+   Open English WordNet. An analysis of a spelling with a letter whose lemma has none is left out as well (the data
+   has none today), so the image never holds an entry of a lemma without a letter.
+   A word of the committed auxiliary list gains an auxiliary analysis. The forms of every dictionary word come from the
+   `form` table, so no morphology runs at run time.
+3. Build the sense catalog: every single-token OEWN sense and every project sense whose lemma has a letter, with its
+   readable id (`lemma#label`), its group (none when it is in no group) and its OEWN key (none for a project sense).
+   The senses of each lemma and part of speech
    are ordered as Open English WordNet orders them: by the position of the sense in its entry, then the homograph number
    of the entry, the project senses last, then by the sense id bytes (the WordNet 3.0 tag counts do not order the senses;
    they only feed the usage prior of the encoder training and the tiers). The order was moved from the tag counts to
@@ -618,8 +621,8 @@ evaluation only and never committed) adds a line.
 
 Writes a deterministic Markdown appendix: the explanation of parts of speech, groups and forms, the
 summary of the dictionary words, an alphabetical list of the trained lemmas, each with its senses (id, group, OEWN sense
-key and gloss), the tier and anchor counts of each sense and their recognized forms (there is no pronunciation section
-and no respelling line). Lines are wrapped to
+key and gloss), the tier and anchor counts of each sense and their recognized forms (there is no pronunciation
+section). Lines are wrapped to
 the repository's
 markdown line limit.
 
