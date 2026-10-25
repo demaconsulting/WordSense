@@ -7,8 +7,10 @@ additions (source `dema`) are MIT. The sense frequency counts (`sense_frequency`
 (Princeton University) and are used under its license (WordNet 3.0 Copyright 2006 by Princeton University; the full
 notice is in [PROVENANCE.md](PROVENANCE.md)); they set the quota of training sentences of each sense, fix the labeling
 order of the senses of a lemma (which sense gets the plain label and which gets `-2`) and, as a tempered prior,
-correct the scores of the encoder models to the usage of the senses; they do not order the senses in the word image,
-which follow the order of Open English WordNet. **SemCor** is an evaluation source only: it is never committed. See
+correct the scores of the encoder models to the usage of the senses; the word image also carries them (a 16-bit count
+for each sense) so that the Basic model can rank the senses of the lemmas no model scores by usage; they do not order
+the senses in the word image, which follow the order of Open English WordNet. **SemCor** is an evaluation source only:
+it is never committed. See
 [PROVENANCE.md](PROVENANCE.md) for the source file, its hash and what was left out.
 
 The data is **authoritative once committed**: edit the tables by hand (or with a script) and run the validator. The
@@ -103,7 +105,8 @@ is 1) and every project sense.
   machine-checkable.
 - **Frequency.** `sense_frequency` has the WordNet 3.0 tag count of every sense that has a sense key, joined on the key
   by `import-wn30-counts`; 0 when the sense index has no line for it. A project sense has no key and counts as 0. The
-  counts feed the usage prior and the tiers; the order of the senses of a lemma in the image is the order of Open English
+  counts feed the usage prior and the tiers, and the image compiler writes them into the word image (section 38, outside
+  the inventory hash); the order of the senses of a lemma in the image is the order of Open English
   WordNet (`sense.position`, then `entry.homograph_no`, project senses last).
 - **Numerals.** The tables keep the 134 spellings of Open English WordNet that have no letter (`0`, `1000`, `24/7`,
   `.22`: 176 `form` rows, 176 entries and 178 senses) as the source has them; the image compiler leaves them out, because

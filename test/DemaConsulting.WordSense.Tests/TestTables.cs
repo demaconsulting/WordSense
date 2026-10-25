@@ -83,6 +83,8 @@ internal static class TestTables
     /// <param name="inventoryHash">The inventory hash to write, or null for <see cref="ToyHash"/>.</param>
     /// <param name="tense">The tense table (prior, ascending feature hashes and one weight per hash), or null for a table without one.</param>
     /// <param name="tenseWeight">The weight of the tense model, written to the header.</param>
+    /// <param name="sentences">The training sentences of the tag counts (tag sequences), or null for <see cref="Sentences"/>.</param>
+    /// <param name="clauseSmoothing">The smoothing of the clause-state transitions, written to the header.</param>
     /// <returns>The compressed blob.</returns>
     public static byte[] Build(
         (string Word, int ClosedMask, int[] Counts)[] words,
@@ -92,7 +94,9 @@ internal static class TestTables
         double invTemperature = 0.5,
         byte[]? inventoryHash = null,
         (sbyte Prior, ushort[] Hashes, sbyte[] Weights)? tense = null,
-        double tenseWeight = 1.0) => Compress(Raw(words, suffixes, cues, hmmWeight, invTemperature, inventoryHash, tense, tenseWeight));
+        double tenseWeight = 1.0,
+        int[][]? sentences = null,
+        double clauseSmoothing = 4.0) => Compress(Raw(words, suffixes, cues, hmmWeight, invTemperature, inventoryHash, tense, tenseWeight, sentences ?? Sentences, clauseSmoothing));
 
     /// <summary>
     ///     Reads a blob against the toy inventory.
@@ -212,12 +216,14 @@ internal static class TestTables
         double invTemperature,
         byte[]? inventoryHash,
         (sbyte Prior, ushort[] Hashes, sbyte[] Weights)? tense,
-        double tenseWeight)
+        double tenseWeight,
+        int[][] sentences,
+        double clauseSmoothing)
     {
         using var raw = new MemoryStream();
-        raw.Write("WSB4"u8);
+        raw.Write("WSB5"u8);
         raw.Write(inventoryHash ?? ToyHash);
-        foreach (var value in new[] { 0.75, 5, 0.1, 0.3, 0.6, hmmWeight, invTemperature, tenseWeight })
+        foreach (var value in new[] { 0.75, 5, 0.1, 0.3, 0.6, hmmWeight, invTemperature, tenseWeight, clauseSmoothing })
         {
             var bytes = new byte[8];
             BinaryPrimitives.WriteDoubleLittleEndian(bytes, value);
@@ -228,18 +234,26 @@ internal static class TestTables
         var c1 = new int[PosTag.Extended];
         var c2 = new int[PosTag.Extended * PosTag.Extended];
         var c3 = new int[PosTag.Extended * PosTag.Extended * PosTag.Extended];
-        foreach (var sentence in Sentences)
+        var v2 = new int[c2.Length];
+        var v3 = new int[c3.Length];
+        foreach (var sentence in sentences)
         {
             int[] padded = [PosTag.Boundary, PosTag.Boundary, .. sentence, PosTag.Boundary];
+            var hasVerb = 0;
             for (var i = 2; i < padded.Length; i++)
             {
+                var bigram = (padded[i - 1] * PosTag.Extended) + padded[i];
+                var trigram = (((padded[i - 2] * PosTag.Extended) + padded[i - 1]) * PosTag.Extended) + padded[i];
                 c1[padded[i]]++;
-                c2[(padded[i - 1] * PosTag.Extended) + padded[i]]++;
-                c3[(((padded[i - 2] * PosTag.Extended) + padded[i - 1]) * PosTag.Extended) + padded[i]]++;
+                c2[bigram]++;
+                c3[trigram]++;
+                v2[bigram] += hasVerb;
+                v3[trigram] += hasVerb;
+                hasVerb = PosTag.NextClause(hasVerb, padded[i]);
             }
         }
 
-        foreach (var count in c1.Concat(c2).Concat(c3))
+        foreach (var count in c1.Concat(c2).Concat(c3).Concat(v2).Concat(v3))
         {
             Varint(raw, count);
         }

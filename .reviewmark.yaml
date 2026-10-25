@@ -17,6 +17,7 @@ needs-review:
   - "tools/open-corpus/**"        # Scripts that built the open part-of-speech corpus
   - "corpus/provenance/**"        # Provenance of the sentences of the fine-sense corpus
   - "corpus/open/**"              # Open English POS corpus (CC0 1.0 annotations) and the Basic tagger counts
+  - "corpus/allwords/**"          # All-words gold set (CC0 1.0): independent evaluation of the usage prior
   - "corpus/lexicon/**"           # Derived part-of-speech lexicon (Moby, public domain) and its provenance
   - "data/schema.yaml"            # Word data schema
   - "data/README.md"              # Word data guide
@@ -145,6 +146,7 @@ reviews:
       - "!tools/open-corpus/work/**"
       - "corpus/provenance/**"
       - "corpus/open/**"
+      - "corpus/allwords/**"
       - "corpus/lexicon/**"
 
   # WordSense-WordData Review (one per subsystem)
@@ -374,7 +376,10 @@ reviews:
       - "docs/design/word-sense/core/basic-classifier.md"
       - "docs/verification/word-sense/core/basic-classifier.md"
       - "src/DemaConsulting.WordSense/BasicClassifier.cs"
+      - "src/DemaConsulting.WordSense/UsagePrior.cs"
       - "test/DemaConsulting.WordSense.Tests/BasicClassifierTests.cs"
+      - "test/DemaConsulting.WordSense.Tests/BasicClassifierUsagePriorTests.cs"
+      - "test/DemaConsulting.WordSense.Tests/UsagePriorTests.cs"
 
   # WordSense-Core-BasicTables Review (one per unit)
   - id: WordSense-Core-BasicTables

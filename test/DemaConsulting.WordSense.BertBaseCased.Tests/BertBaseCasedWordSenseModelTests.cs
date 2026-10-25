@@ -55,6 +55,55 @@ public class BertBaseCasedWordSenseModelTests
     }
 
     /// <summary>
+    ///     The model keeps the encoder's slot probabilities for a word that the encoder answers at the part-of-speech
+    ///     level: its slots, selected analysis, level and confidence are the encoder's, so the Basic tagger never
+    ///     replaces its part of speech.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BertBaseCasedWordSenseModel_PartOfSpeechAnswer_KeepsTheEncoderSlotProbabilities()
+    {
+        // Arrange
+        string[] words = ["Do", "not", "use", "these", "guys", "."];
+        using var model = Open(ModelFolder.Require());
+        static double Slot(ClassifyResult r, PartOfSpeech p) => r.Analyses.Where(a => a.Details.PartOfSpeech == p).Sum(a => a.Probability);
+
+        // Act
+        var encoded = (await model.Encoder.ClassifyAsync(words, TestContext.Current.CancellationToken))[2];
+        var actual = (await model.ClassifyAsync(words, TestContext.Current.CancellationToken))[2];
+
+        // Assert
+        Assert.Equal(PartOfSpeech.Verb, actual.Details?.PartOfSpeech);
+        Assert.Equal(encoded.Details?.PartOfSpeech, actual.Details?.PartOfSpeech);
+        Assert.Equal(encoded.Level, actual.Level);
+        Assert.Equal(encoded.Confidence, actual.Confidence, 9);
+        Assert.All(encoded.Analyses, a => Assert.Equal(Slot(encoded, a.Details.PartOfSpeech), Slot(actual, a.Details.PartOfSpeech), 9));
+    }
+
+    /// <summary>
+    ///     The weight of the encoder is 1 by default and reaches the composition, an explicit weight of the internal
+    ///     constructor (here 0.25) replaces it, and a weight outside 0 to 1 is rejected.
+    /// </summary>
+    [Fact]
+    public void BertBaseCasedWordSenseModel_PrimaryWeight_DefaultIsOneAndAnExplicitWeightReachesTheComposition()
+    {
+        // Arrange
+        using var defaults = new BertBaseCasedWordSenseModel();
+        using var explicitWeight = new BertBaseCasedWordSenseModel(null, 128, 0.25);
+
+        // Act
+        var defaultWeight = defaults.PrimaryWeight;
+        var explicitValue = explicitWeight.PrimaryWeight;
+        var invalid = () => new BertBaseCasedWordSenseModel(null, 128, -0.1);
+
+        // Assert
+        Assert.Equal(1.0, BertBaseCasedWordSenseModel.PartOfSpeechPrimaryWeight);
+        Assert.Equal(1.0, defaultWeight);
+        Assert.Equal(0.25, explicitValue);
+        Assert.Throws<ArgumentOutOfRangeException>(invalid);
+    }
+
+    /// <summary>
     ///     The defaults construct a model with the per-user store and a maximum sequence length of 128 word pieces; the
     ///     limits 8 and 512 are accepted and reach the encoder model unchanged.
     /// </summary>
@@ -85,6 +134,66 @@ public class BertBaseCasedWordSenseModelTests
 
         Assert.False(model.Encoder.Spec.LowerCase);
         Assert.Equal(768, model.Encoder.Spec.HiddenSize);
+    }
+
+    /// <summary>
+    ///     The selected analysis of an untrained polysemous word lists the senses of its lemma and part of speech ranked
+    ///     by the usage prior of the Basic model, whatever the encoder.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BertBaseCasedWordSenseModel_Classify_UntrainedPolysemousWord_ListsSensesRankedByUsagePrior()
+    {
+        // Arrange: no model files are needed, the real Basic model is the fallback
+        using var model = new BertBaseCasedWordSenseModel();
+
+        // Act
+        var result = (await model.ClassifyAsync(Sentence, TestContext.Current.CancellationToken))[4];
+
+        // Assert
+        var details = Assert.IsType<WordDetails>(result.Details);
+        var selected = result.Analyses.First(a => a.Details.Equals(details));
+        Assert.Equal(UsagePrior.RankOf(details.Lemma, details.PartOfSpeech), selected.Senses);
+        Assert.True(selected.Senses.Length >= 2);
+    }
+
+    /// <summary>
+    ///     The ranking is never an answer: an untrained polysemous word is answered at the part-of-speech level with no
+    ///     sense id and no group id.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BertBaseCasedWordSenseModel_Classify_UntrainedPolysemousWord_AnswersPartOfSpeechLevelWithoutSenseOrGroup()
+    {
+        // Arrange
+        using var model = new BertBaseCasedWordSenseModel();
+
+        // Act
+        var result = (await model.ClassifyAsync(Sentence, TestContext.Current.CancellationToken))[4];
+
+        // Assert
+        Assert.True(result.Analyses.First(a => a.Details.Equals(result.Details)).Senses.Length >= 2);
+        Assert.Equal(SenseLevel.PartOfSpeech, result.Level);
+        Assert.Null(result.SenseId);
+        Assert.Null(result.GroupId);
+    }
+
+    /// <summary>
+    ///     The key of an untrained polysemous word carries the label of the top-ranked sense of its selected analysis.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BertBaseCasedWordSenseModel_Classify_UntrainedPolysemousWord_KeyCarriesTheLabelOfTheTopRankedSense()
+    {
+        // Arrange
+        using var model = new BertBaseCasedWordSenseModel();
+
+        // Act
+        var result = (await model.ClassifyAsync(Sentence, TestContext.Current.CancellationToken))[4];
+        var top = result.Analyses.First(a => a.Details.Equals(result.Details)).Senses[0].SenseId;
+
+        // Assert
+        Assert.EndsWith("#" + top.Split('#')[1], result.Key, StringComparison.Ordinal);
     }
 
     /// <summary>
@@ -123,7 +232,7 @@ public class BertBaseCasedWordSenseModelTests
             Assert.Null(result.SenseId);
             Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 9);
             Assert.True(result.Analyses.Length > 1);
-            Assert.All(result.Analyses, a => Assert.True(a.Senses.IsEmpty));
+            Assert.True(result.Analyses[0].Senses.Length >= 2, "The selected analysis lists its senses ranked by usage.");
             Assert.Equal(result.Details, result.Analyses[0].Details);
         }
 

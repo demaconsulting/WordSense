@@ -45,3 +45,58 @@ sections:
                   Reproducible estimates make the classifier reproducible.
                 tests:
                   - PosTagger_Posteriors_IsDeterministic
+
+              - id: WordSense-Core-PosTagger-ClauseVerb
+                title: >-
+                  PosTagger shall weigh the transitions of a word by whether the current clause already has a verb, so
+                  that a word after a determiner and a noun is more likely a verb in a clause without one than in a
+                  clause that has one.
+                tags: [unit]
+                justification: |
+                  A clause has one finite verb; after a determiner and a noun a verb follows four times as often when
+                  the clause has no verb yet, and one averaged transition read a second noun of a compound as a verb.
+                tests:
+                  - PosTagger_Posteriors_ClauseWithVerb_PrefersNounAfterDeterminerAndNoun
+
+              - id: WordSense-Core-PosTagger-ClauseBreak
+                title: >-
+                  PosTagger shall start a new clause after a punctuation token and after a conjunction.
+                tags: [unit]
+                justification: |
+                  The verb of the previous clause must not suppress the verb of the next one.
+                tests:
+                  - PosTagger_Posteriors_ClauseBreak_RestartsTheClause
+
+              - id: WordSense-Core-PosTagger-NonFiniteStart
+                title: >-
+                  PosTagger shall not give a clause a verb for a first token of the segment that the dictionary lists
+                  only as a non-finite verb (a gerund or a participle that is not also a past tense).
+                tags: [unit]
+                justification: |
+                  A gerund that opens a sentence (Resolving this issue requires care) is not the verb of its clause,
+                  and treating it as one made the noun-phrase reading of such openings win over the verb reading of
+                  the word that follows; an imperative, which the dictionary lists as an infinitive, must keep
+                  the verb of its clause.
+                tests:
+                  - PosTagger_Posteriors_NonFiniteStart_DoesNotSetTheClauseState
+
+              - id: WordSense-Core-PosTagger-Possessive-Expansion
+                title: >-
+                  PosTagger shall read a token that is flagged as a possessive as its stem followed by the possessive
+                  marker, so that the next word is estimated as it is after a noun and a separate marker.
+                tags: [unit]
+                justification: |
+                  The counts were made on text with a separate marker while the documented input keeps the marker inside
+                  the token; the expansion shows the tagger the pattern it was trained on.
+                tests:
+                  - PosTagger_Posteriors_Possessive_IsReadAsStemAndMarker
+
+              - id: WordSense-Core-PosTagger-Possessive-Rows
+                title: >-
+                  PosTagger shall keep one result row for each token of the caller, the row of a possessive token being
+                  that of its stem.
+                tags: [unit]
+                justification: |
+                  The caller's tokens and answers must stay parallel whatever the tagger reads internally.
+                tests:
+                  - PosTagger_Posteriors_SeveralPossessives_KeepOneRowPerToken

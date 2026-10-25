@@ -124,14 +124,16 @@ form layers:
   `ModelUnavailableException`, `ModelIntegrityException` and `DownloadConfigurationException`), and it implements the
   contracts with the built-in
   `BasicWordSenseModel`, a statistical tagger and cue model that answers at the part of speech level (and the sense
-  level where the lemma and part of speech have one sense). It holds no encoder weights and no ONNX code. Its
+  level where the lemma and part of speech have one sense) and ranks the senses of the other analyses by their usage.
+  It holds no encoder weights and no ONNX code. Its
   package license expression is `MIT AND CC-BY-4.0` and a packed `NOTICE.md` carries the attribution of the data
   embedded in it and records where each source comes from: Open English WordNet 2025 under CC BY 4.0 with the
-  Princeton WordNet notice that it requires, the Moby Part-of-Speech List (public domain), the inflected forms authored
+  Princeton WordNet notice that it requires, the WordNet 3.0 sense frequency counts under the WordNet license, the Moby
+  Part-of-Speech List (public domain), the inflected forms authored
   by the project (CC0 1.0) and the project data (MIT), and the tagged tokens of the open part-of-speech corpus (CC0 1.0),
   which corroborate generated forms at build time and are not embedded. The statistics of the built-in model come from
   our own CC0 corpora (the open part-of-speech corpus and the sentence corpus) and from no treebank. The WordNet 3.0 counts
-  are used only for the usage prior of the encoder models.
+  are used for the usage prior of the encoder models' training and for the usage ranking of the Basic model.
 - The **Onnx** package implements the contracts for any BERT-style encoder: model file management, encoder,
   tokenizer, weights, thresholds and scoring of the fine senses. It references the core package and ONNX Runtime, and
   nothing else: its abstract encoder model is usable on its own and answers from the lexicon and the encoder alone.
@@ -240,6 +242,8 @@ corpus/                                            — builder inputs: anchor an
 corpus/open/                                       — the open English part-of-speech corpus (CC0 1.0 annotations):
                                                       the representative part, the targeted part and the tag counts
                                                       (corpus/open/counts) that train the Basic tagger
+corpus/allwords/                                   — the all-words gold set (CC0 1.0): tokens of untrained polysemous
+                                                      lemmas of the open corpus, labeled blind by two labelers
 ```
 
 The `generated/` folders of the packages hold the generated API reference and are not committed. The corpus files

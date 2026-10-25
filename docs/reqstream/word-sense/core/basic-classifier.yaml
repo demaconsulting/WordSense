@@ -11,16 +11,24 @@ sections:
               - id: WordSense-Core-BasicClassifier-Unknown
                 title: >-
                   BasicClassifier shall answer a word that has no lexicon entry, or no letter, as unknown (not known, no
-                  analysis, no details, level none and confidence 0), and shall answer every word that has a lexicon
-                  entry, a number word such as one or twenty included, with details.
+                  analysis, no details, level none and confidence 0).
                 tags: [unit]
                 justification: |
-                  An unknown word must be distinguishable from a known one, and a known word must never be reported as
-                  unknown.
+                  An unknown word must be distinguishable from a known one.
                 tests:
                   - BasicClassifier_ClassifyAsync_UnknownWord_ReturnsNoDetails
                   - BasicClassifier_ClassifyAsync_UnknownWord_HasNoAnalyses
                   - BasicClassifier_ClassifyAsync_CapitalizedWordNotInLexicon_IsUnknown
+
+              - id: WordSense-Core-BasicClassifier-Known
+                title: >-
+                  BasicClassifier shall answer every word that has a lexicon entry, a number word such as one or twenty
+                  included, with details.
+                tags: [unit]
+                justification: |
+                  A known word must never be reported as unknown; the test is the presence of a lexicon entry, not the
+                  kind of token.
+                tests:
                   - BasicClassifier_ClassifyAsync_NumberWord_ReturnsDetails
 
               - id: WordSense-Core-BasicClassifier-SingleSense
@@ -88,21 +96,282 @@ sections:
                   lemmas and parts of speech (slots) by the sum of the probabilities of their analyses, the largest
                   first, and the analyses of one slot (feature variants that share its senses and its probability) by
                   their own probability, the largest first, with ties in lexicon order, so that the first analysis is
-                  the best variant of the most probable slot, and shall list in an analysis
-                  no senses, except the one sense with probability 1 of an analysis whose lemma and part of speech
-                  have exactly one sense, because it scores analyses and not fine senses.
+                  the best variant of the most probable slot.
                 tags: [unit]
                 justification: |
-                  The statistical model has no evidence about fine senses, and inventing probabilities for them would
-                  mislead a consumer that groups the senses itself; empty sense lists state that no scores exist, and
-                  the full ranked analyses let a consumer make its own choice among them. The variants of a slot are
+                  The full ranked analyses let a consumer make its own choice among them. The variants of a slot are
                   listed together, so that a part of speech with several feature variants neither wins nor loses the
                   selection because of their number.
                 tests:
                   - BasicClassifier_ClassifyAsync_AmbiguousWord_ListsAnalysesAndNoSenses
-                  - BasicClassifier_ClassifyAsync_SingleSenseAnalysis_ListsThatSenseWithProbabilityOne
                   - BasicClassifier_ClassifyAsync_TiesKeepLexiconOrder
                   - BasicClassifier_ClassifyAsync_VariantsOfASlot_ShareItsProbabilityAndStayTogether
+
+              - id: WordSense-Core-BasicClassifier-Candidates-SingleSense
+                title: >-
+                  BasicClassifier shall list in an analysis whose lemma and part of speech have exactly one sense that
+                  sense with probability 1.
+                tags: [unit]
+                justification: |
+                  The one sense of a single-sense analysis is certain and needs no evidence.
+                tests:
+                  - BasicClassifier_ClassifyAsync_SingleSenseAnalysis_ListsThatSenseWithProbabilityOne
+
+              - id: WordSense-Core-BasicClassifier-Candidates-NoSenses
+                title: >-
+                  BasicClassifier shall list no senses in an analysis whose lemma and part of speech have none.
+                tags: [unit]
+                justification: |
+                  An empty sense list states that nothing was ranked; inventing senses for a lemma without any would
+                  mislead a consumer.
+                tests:
+                  - BasicClassifier_ClassifyAsync_AnalysisWithoutSenses_ListsNoSenses
+
+              - id: WordSense-Core-BasicClassifier-UsagePrior
+                title: >-
+                  BasicClassifier shall list in every analysis whose lemma and part of speech have two or more senses
+                  those senses ranked by the usage prior.
+                tags: [unit]
+                justification: |
+                  About 83 percent of the ambiguous words of running text have a lemma that no encoder model scores the
+                  senses of, so without the usage prior the analyses of those words list no senses; the usage of the
+                  senses is the one piece of evidence that exists for every lemma, it is the strongest single predictor
+                  of the sense of a word (the most frequent sense is right for about two thirds of the words of the
+                  independent gold set), and ranking by it gives a consumer the likely senses and a key with a label
+                  without claiming that the context decided. The encoder models score senses only for the lemmas they
+                  were trained for; the usage prior is what Basic ranks for all the others.
+                tests:
+                  - BasicClassifier_ClassifyAsync_PolysemousWord_ListsTheSensesRankedByUsage
+                  - UsagePrior_RankOf_PolysemousLemma_RanksEverySenseOfTheSlot
+
+              - id: WordSense-Core-BasicClassifier-UsagePrior-Formula
+                title: >-
+                  The probability that the usage prior gives a sense shall be its WordNet 3.0 tag count plus the
+                  smoothing constant, which is 1, over the sum of that over the senses of the lemma and part of speech.
+                tags: [unit]
+                justification: |
+                  Add-k smoothing keeps a sense that was never tagged possible while the counts decide the
+                  probabilities.
+                tests:
+                  - UsagePrior_Rank_ProbabilityIsTheCountPlusKOverTheSum
+                  - UsagePrior_RankOf_UsesTheSmoothingConstantOne
+
+              - id: WordSense-Core-BasicClassifier-UsagePrior-Normalized
+                title: >-
+                  The probabilities of the senses that the usage prior ranks for a lemma and part of speech shall sum to
+                  one.
+                tags: [unit]
+                justification: |
+                  A consumer that sums over the analyses gets the probability of the slot times the probability of the
+                  sense only if the probabilities of the senses of a slot sum to one.
+                tests:
+                  - UsagePrior_Rank_ProbabilitiesSumToOne
+
+              - id: WordSense-Core-BasicClassifier-UsagePrior-Order
+                title: >-
+                  The usage prior shall sort the senses by probability, the largest first.
+                tags: [unit]
+                justification: |
+                  The first sense of the list is the top-ranked sense, which names the key.
+                tests:
+                  - UsagePrior_Rank_SortsByProbabilityLargestFirst
+
+              - id: WordSense-Core-BasicClassifier-UsagePrior-Ties
+                title: >-
+                  The usage prior shall keep the inventory order among senses of equal probability.
+                tags: [unit]
+                justification: |
+                  The inventory order is the order of Open English WordNet, which puts the common senses first, so it
+                  decides among equal counts and for a lemma without any count.
+                tests:
+                  - UsagePrior_Rank_EqualCounts_KeepInventoryOrder
+                  - UsagePrior_Rank_NoCounts_IsUniformInInventoryOrder
+
+              - id: WordSense-Core-BasicClassifier-UsagePrior-ProjectSense
+                title: >-
+                  The usage prior shall count a project sense, which has no sense key, as a sense that was never tagged,
+                  with the count 0.
+                tags: [unit]
+                justification: |
+                  A project sense has no WordNet 3.0 sense key to count by, so it ranks after the senses that were
+                  tagged.
+                tests:
+                  - UsagePrior_RankOf_ProjectSense_CountsZero
+
+              - id: WordSense-Core-BasicClassifier-UsagePrior-Smoothing
+                title: >-
+                  The smoothing constant of the usage prior shall never change the order of the ranked senses.
+                tags: [unit]
+                justification: |
+                  The constant is chosen on the development half of the independent gold set by the log loss of the
+                  gold sense; the ranking (and so the fine top-1 and the key) must not depend on that choice.
+                tests:
+                  - UsagePrior_Rank_SmoothingConstant_NeverChangesTheOrder
+
+              - id: WordSense-Core-BasicClassifier-UsagePrior-Validation-Smoothing
+                title: >-
+                  The usage prior shall reject a smoothing constant that is not a positive number.
+                tags: [unit]
+                justification: |
+                  A zero, negative or non-finite constant would give probabilities that do not sum to one or are not
+                  defined.
+                tests:
+                  - UsagePrior_Rank_SmoothingNotPositive_Throws
+
+              - id: WordSense-Core-BasicClassifier-UsagePrior-Validation-Count
+                title: >-
+                  The usage prior shall reject a negative tag count.
+                tags: [unit]
+                justification: |
+                  A negative count is damaged data and would give a negative probability.
+                tests:
+                  - UsagePrior_Rank_NegativeCount_Throws
+
+              - id: WordSense-Core-BasicClassifier-UsagePrior-Validation-MissingList
+                title: >-
+                  The usage prior shall reject a missing list of senses.
+                tags: [unit]
+                justification: |
+                  A missing argument is a mistake of the caller that must fail at once.
+                tests:
+                  - UsagePrior_Rank_MissingList_Throws
+
+              - id: WordSense-Core-BasicClassifier-UsagePrior-Validation-MissingLemma
+                title: >-
+                  The usage prior shall reject a missing lemma.
+                tags: [unit]
+                justification: |
+                  A missing argument is a mistake of the caller that must fail at once.
+                tests:
+                  - UsagePrior_RankOf_MissingLemma_Throws
+
+              - id: WordSense-Core-BasicClassifier-UsagePrior-Slots
+                title: >-
+                  BasicClassifier shall ask for the usage prior only for a lemma and part of speech that have two or
+                  more senses.
+                tags: [unit]
+                justification: |
+                  A single sense is listed with probability 1 and needs no prior, and an empty slot has nothing to rank.
+                tests:
+                  - BasicClassifier_ClassifyAsync_PriorIsAskedOnlyForSlotsWithTwoOrMoreSenses
+
+              - id: WordSense-Core-BasicClassifier-UsagePrior-FewerSenses
+                title: >-
+                  The usage prior shall give no ranking to a lemma and part of speech that have fewer than two senses,
+                  one that is not in the catalog included.
+                tags: [unit]
+                justification: |
+                  A ranking of fewer than two senses says nothing; the empty answer lets the classifier list the single
+                  sense or none.
+                tests:
+                  - UsagePrior_RankOf_SingleSense_IsEmpty
+                  - UsagePrior_RankOf_NotInTheCatalog_IsEmpty
+
+              - id: WordSense-Core-BasicClassifier-UsagePrior-Stable
+                title: >-
+                  The usage prior shall give the same ranking on every call for the same lemma and part of speech.
+                tags: [unit]
+                justification: |
+                  The ranking is cached; a consumer and a test rely on the same list every time.
+                tests:
+                  - UsagePrior_RankOf_RepeatedCalls_GiveTheSameRanking
+
+              - id: WordSense-Core-BasicClassifier-UsagePrior-ContextFree
+                title: >-
+                  The ranking of the senses of a lemma and part of speech shall be the same in every sentence.
+                tags: [unit]
+                justification: |
+                  The ranking is evidence about the lemma and not about the sentence.
+                tests:
+                  - BasicClassifier_ClassifyAsync_RankingDoesNotDependOnContext
+
+              - id: WordSense-Core-BasicClassifier-UsagePrior-Marked
+                title: >-
+                  BasicClassifier shall mark the senses that it lists in an analysis by the usage prior as ranked by
+                  usage (SensesRankedByUsage true).
+                tags: [unit]
+                justification: |
+                  The ranking is a base rate of the lemma and not a score of the context; the mark lets a composite and
+                  a consumer tell the two apart.
+                tests:
+                  - BasicClassifier_ClassifyAsync_UsagePrior_MarksTheSensesAsRankedByUsage
+
+              - id: WordSense-Core-BasicClassifier-UsagePrior-Marked-Other
+                title: >-
+                  BasicClassifier shall not mark the senses of an analysis that is not ranked by the usage prior (the
+                  only sense of a single-sense analysis, no senses, or no ranking function configured) as ranked by
+                  usage.
+                tags: [unit]
+                justification: |
+                  The only sense of a lemma is certain and nothing is ranked when there are no senses; marking them
+                  would misstate what the classifier did.
+                tests:
+                  - BasicClassifier_ClassifyAsync_UsagePrior_MarksTheSensesAsRankedByUsage
+                  - BasicClassifier_ClassifyAsync_WithoutAPrior_MarksNothingAsRankedByUsage
+
+              - id: WordSense-Core-BasicClassifier-UsagePrior-ShortRanking
+                title: >-
+                  BasicClassifier shall treat a usage ranking of fewer than two senses for an analysis with two or more
+                  senses as no ranking: the analysis lists no senses and is not marked as ranked by usage.
+                tags: [unit]
+                justification: |
+                  A ranking of one sense would read as the one-sense answer of a polysemous slot, and the usage prior
+                  must never answer a sense.
+                tests:
+                  - BasicClassifier_ClassifyAsync_RankingOfFewerThanTwoSenses_IsNoRanking
+
+              - id: WordSense-Core-BasicClassifier-UsagePrior-NoAnswer
+                title: >-
+                  The usage prior shall never answer a sense or a group: the level, the confidence, the sense id and the
+                  group id of a result shall be those of the classifier without the prior.
+                tags: [unit]
+                justification: |
+                  Claiming a sense answer from the ranking would turn a base rate into a false decision; only the sense
+                  lists of the analyses gain content, so every consumer of the level and of the confidence sees the same
+                  answer as before.
+                tests:
+                  - BasicClassifier_ClassifyAsync_UsagePrior_NeverChangesTheAnswer
+                  - BasicClassifier_ClassifyAsync_PolysemousWord_AnswersAtThePartOfSpeechLevelWithoutSenseOrGroup
+
+              - id: WordSense-Core-BasicClassifier-UsagePrior-NoAnswer-Selection
+                title: >-
+                  The usage prior shall never change the selected analysis of a result.
+                tags: [unit]
+                justification: |
+                  The selection is made from the context; the prior is no evidence about the context.
+                tests:
+                  - BasicClassifier_ClassifyAsync_UsagePrior_NeverChangesTheSelectedAnalysis
+
+              - id: WordSense-Core-BasicClassifier-UsagePrior-NoAnswer-Probabilities
+                title: >-
+                  The usage prior shall never change the probability of any analysis of a result.
+                tags: [unit]
+                justification: |
+                  Only the sense lists of the analyses gain content, so every consumer of the analyses sees the same
+                  distribution as before.
+                tests:
+                  - BasicClassifier_ClassifyAsync_UsagePrior_NeverChangesTheAnalysisProbabilities
+
+              - id: WordSense-Core-BasicClassifier-UsagePrior-Key
+                title: >-
+                  The key of the result of a polysemous word shall carry the label of the top-ranked sense of the
+                  selected analysis.
+                tags: [unit]
+                justification: |
+                  The key names the meaning where a model ranked one (rule b of the key).
+                tests:
+                  - BasicClassifier_ClassifyAsync_PolysemousWord_KeyCarriesTheLabelOfTheTopRankedSense
+
+              - id: WordSense-Core-BasicClassifier-UsagePrior-Key-Enumerated
+                title: >-
+                  The key of the result of a polysemous word shall be a member of the keys of the lexicon.
+                tags: [unit]
+                justification: |
+                  The keys of all senses are in the enumeration, so the guarantee that every key a model gives is
+                  enumerated still holds with the ranking.
+                tests:
+                  - BasicClassifier_ClassifyAsync_PolysemousWord_KeyIsOneOfTheEnumeratedKeys
+                  - BasicKeys_SuiteAndCorpusSentences_AreAllEnumerated
 
               - id: WordSense-Core-BasicClassifier-Segments
                 title: >-
@@ -114,6 +383,62 @@ sections:
                 tests:
                   - BasicClassifier_ClassifyAsync_Segments_AreIndependent
                   - BasicClassifier_SegmentOf_FindsBounds
+
+              - id: WordSense-Core-BasicClassifier-Possessive-Stem
+                title: >-
+                  BasicClassifier shall pass a word whose analyses all carry Poss=Yes and whose key ends in 's or ' to
+                  the tagger as a token that carries the stem of the word and is flagged as a possessive.
+                tags: [unit]
+                justification: |
+                  The documented tokenization keeps the possessive marker inside the token, but the tagger was trained
+                  on text with a separate marker; the stem and the flag let the tagger read the pattern it knows.
+                tests:
+                  - BasicClassifier_MakeToken_Possessive_HasTheStem
+
+              - id: WordSense-Core-BasicClassifier-Possessive-Whole
+                title: >-
+                  BasicClassifier shall pass a contraction, a word with an analysis that is not a possessive, a word
+                  that does not end in 's or ' and an unknown word to the tagger as a whole token that is not flagged as
+                  a possessive.
+                tags: [unit]
+                justification: |
+                  Only a word that is a possessive in every analysis may be read as a stem and a marker; any other
+                  word would be given a reading that it does not have.
+                tests:
+                  - BasicClassifier_MakeToken_NotPossessive_IsAWholeToken
+
+              - id: WordSense-Core-BasicClassifier-Possessive-Rows
+                title: >-
+                  BasicClassifier shall answer a possessive token with its own analysis at its own position, so that
+                  the results stay parallel to the words of the caller.
+                tags: [unit]
+                justification: |
+                  Reading the stem and the marker must not change the tokens or the answers of the caller.
+                tests:
+                  - BasicClassifier_ClassifyAsync_Possessive_KeepsTheTokensOfTheCaller
+
+              - id: WordSense-Core-BasicClassifier-NonFinite-Flag
+                title: >-
+                  BasicClassifier shall flag a tagger token as non-finite when the lexicon lists the word as a verb and
+                  every verb analysis is a gerund (VerbForm=Ger) or a participle that is not also a past tense
+                  (VerbForm=Part without Tense=Past).
+                tags: [unit]
+                justification: |
+                  The tagger lets such a word at the start of a segment leave the clause without a verb; the decision
+                  comes from the lexicon, not from the ending of the word.
+                tests:
+                  - BasicClassifier_MakeToken_NonFiniteVerb_IsFlagged
+
+              - id: WordSense-Core-BasicClassifier-NonFinite-NoFlag
+                title: >-
+                  BasicClassifier shall not flag a tagger token as non-finite for an infinitive, a past tense, a
+                  present, a word without a verb analysis or an unknown word.
+                tags: [unit]
+                justification: |
+                  Imperatives such as bring and ring keep the verb of their clause, so only the words that are never the
+                  finite verb of a clause are flagged.
+                tests:
+                  - BasicClassifier_MakeToken_FiniteOrNoVerb_IsNotFlagged
 
               - id: WordSense-Core-BasicClassifier-Deterministic
                 title: >-

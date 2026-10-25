@@ -13,7 +13,7 @@ key. Every model starts from it, and a word with one sense never needs context.
 - The lexicon is the embedded flat word image `wordsense.img`, read in place by the internal `WordImage`. Nothing is
   expanded into a dictionary: a lookup is a binary search over a UTF-8-byte-sorted spelling index followed by a decode
   of the analysis rows of that spelling.
-- Image layout (WSI1 version 4): a header of 112 bytes (magic `WSI1`, version 4, section count, a reserved word, the
+- Image layout (WSI1 version 5): a header of 112 bytes (magic `WSI1`, version 5, section count, a reserved word, the
   SHA-256 of the data tables the image was built from at offset 16, the SHA-256 of all bytes from offset 112 at 48, and
   the 32-byte inventory hash at 80), a directory of 20-byte entries and the sections. The analysis sections are the
   spelling index and bytes, the features, the entries with their lemma and part of speech and the analysis rows (one
@@ -22,6 +22,10 @@ key. Every model starts from it, and a word with one sense never needs context.
   position); the OEWN key suffix of each sense (the part of the key after `lemma%`, empty for a project sense, so the
   full key is the lower-case lemma, `%` and the suffix); the sense-to-group index (group index plus one, 0 for a sense in
   no group);
+  the WordNet 3.0 tag count of each sense (section 38, one 16-bit little-endian count for each sense in the order of the
+  sense ids, 0 for a project sense and for a key that the count table does not list; the reader requires the section,
+  one value for each sense, and no count on a sense without a key, and rejects the image otherwise when the catalog is
+  decoded);
   the group ids (UTF-8 sorted) and the part of speech of each group; the group members (CSR of sense indexes in
   inventory order; the lemma of a group comes from its members);
   the lemma and part-of-speech blocks (the lemma bytes and the part of speech, sorted by lemma UTF-8 bytes and
@@ -29,7 +33,10 @@ key. Every model starts from it, and a word with one sense never needs context.
   sorted by full key bytes). The inventory hash covers, as the raw decompressed bytes of the sections each fed as id,
   length and bytes, the spelling, analysis, feature, entry lemma and part of speech, sense id, sense-group, group id,
   group part-of-speech and lemma-block sections; the encoder weights and `basic.bin` carry it and refuse an image with
-  another hash. Each section is Brotli-compressed after a byte-plane shuffle, or stored when that is not smaller. The
+  another hash. The sense frequency section is deliberately not covered: it says how often the senses are used, not
+  which senses there are, so the counts can be corrected without training the models again (the image of format 5 has the
+  same inventory hash as the image of format 4 it replaced, so no weights were retrained). Each section is
+  Brotli-compressed after a byte-plane shuffle, or stored when that is not smaller. The
   directory is validated completely when the image is opened, before any section is decompressed: every section lies
   after the directory and ends inside the image, no two sections overlap, a section id occurs once, the flags are
   either the stored flag (`0x100`) alone or a stride from 1 to 255, an empty section stores no bytes, a stored section is
@@ -95,6 +102,10 @@ key. Every model starts from it, and a word with one sense never needs context.
   lemma throws
   `ArgumentNullException`.
 - `WordLexicon.TryGetSense(string senseId, out SenseInfo)`: binary search over the sorted sense ids.
+- `WordImage.UsageOf(string lemma, PartOfSpeech pos)` (internal): the id and the WordNet 3.0 tag count of each sense
+  of a lemma and part of speech, in inventory order, the same senses as `SensesOf`; the input of `UsagePrior`, which
+  the Basic model uses to rank the senses of the lemmas that no model scores. It is internal: the counts are not part
+  of the public contract.
 - `WordLexicon.TryGetSenseByKey(string senseKey, out SenseInfo)`: binary search over the key index; the key is the
   full OEWN sense key. A project sense has no key and is never found this way.
 - `WordLexicon.TryGetGroup(string groupId, out SenseGroup)`: the group with the ids of its senses in inventory order,
@@ -136,7 +147,7 @@ of that name exists (then the lookup never takes the possessive path). The enume
 analysis in answer order, the key without a label first; no key is listed twice. Before the first key the reader makes
 one pass over all spellings to build the fold groups (the spellings that normalize to another form), which it keeps in
 memory with the spelling index; the keys themselves are streamed, not kept. On the committed image it lists
-1,284,993 keys (about 63 MB of text) in about three seconds. The separators in a part are escaped (a few lemmas such as
+1,285,019 keys (about 63 MB of text) in about three seconds. The separators in a part are escaped (a few lemmas such as
 `A/C` contain `/`), by the same `WordKey.Format` that `ClassifyResult.Key` uses, so a key is spelled the same in both.
 
 The completeness guarantee holds by construction, not by a test: `ClassifyResult.Key` is built (`WordKey.KeyOf`, in

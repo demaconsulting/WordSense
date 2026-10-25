@@ -42,6 +42,16 @@ All scenarios below pass on every platform and target framework of the CI matrix
   probabilities, selected analysis, level and confidence as `BasicWordSenseModel` gives for the same text; the level is
   the part of speech, or the sense when the selected analysis has exactly one sense), never a
   mixture, with no ensure of the model files.
+- **Untrained polysemous word lists its senses by usage** (`BertBaseCasedWordSenseModel_Classify_UntrainedPolysemousWord_ListsSensesRankedByUsagePrior`,
+  `..._AnswersPartOfSpeechLevelWithoutSenseOrGroup`, `..._KeyCarriesTheLabelOfTheTopRankedSense`, in
+  `BertBaseCasedWordSenseModelTests.cs`, with no model files): the second `shelter` of "They will shelter the shelter."
+  (a noun, so a word that the encoder has no weights for, with two or more senses) is answered at the part-of-speech
+  level
+  with no sense id and no group id, the senses of its selected analysis are those of `UsagePrior.RankOf` for its lemma and
+  part of speech (two or more), and its key ends with the label of the first of them.
+- **End to end** (`BertBaseCased_Classifier_EndToEnd_UntrainedWord_RanksItsSensesByUsage`, in `EndToEndTests.cs`, with the
+  committed model files): the same three properties for the second `garden` of "They will garden the garden." (a lemma
+  without trained weights) through the composite model of the public package; this is the system-level evidence.
 - **Same-spelling verbs take their tense from Basic**
   (`BertBaseCased_Classifier_EndToEnd_SameSpellingVerb_TenseFollowsTheContext`, in `EndToEndTests.cs`, theory): for
   `I will read that tomorrow`, `I have read that already`, `Please put the books on the shelf` and `She had put the keys
@@ -56,6 +66,14 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `WordSenseContracts` unit document.
 - **Composition references** (`Assembly_ReferencesCoreAndOnnx`): the assembly references the core and Onnx
   assemblies (the Basic model is in the core).
+- **Part-of-speech answer is the encoder's** (`BertBaseCasedWordSenseModel_PartOfSpeechAnswer_KeepsTheEncoderSlotProbabilities`):
+  for "Do not use these guys ." the model answers `use` with the verb analysis, and the selected part of speech, the
+  level, the confidence and the probability of every part-of-speech slot are equal (to within 1e-9) to those of the
+  encoder model on its own (`Encoder.ClassifyAsync`), so the Basic tagger never replaces the part of speech of the
+  encoder (the scenario needs the model files).
+- **Weight (no requirement)** (`BertBaseCasedWordSenseModel_PrimaryWeight_DefaultIsOneAndAnExplicitWeightReachesTheComposition`):
+  the weight is 1 by default and reaches the composition (`PrimaryWeight`, internal), the internal constructor sets
+  another one (0.25) and rejects a weight below 0; it needs no model file.
 - **Disposal** (`Dispose_DisposesEncoderAndFallback`): disposing disposes the encoder model and the Basic model, and
   `EnsureModelAsync` and `ClassifyAsync` after disposal throw `ObjectDisposedException`.
 - **Constructor defaults and validation** (`BertBaseCasedWordSenseModel_Constructor_Defaults_UseStoreAnd128`,

@@ -34,11 +34,17 @@ namespace DemaConsulting.WordSense;
 ///     sections that name analyses, senses and groups (see <see cref="InventorySections"/>): models trained against
 ///     an image carry it and refuse an image with another one.
 ///     </para>
+///     <para>
+///     The sense frequency section holds one 16-bit WordNet 3.0 tag count for each sense, in the order of the sense
+///     catalog. It describes how often the senses are used, not which senses exist, so the inventory hash does not cover
+///     it: the counts can be corrected without training the models again. The reader requires the section and its length
+///     (one value for each sense).
+///     </para>
 /// </remarks>
 internal static class ImageFormat
 {
-    /// <summary>The format version this code reads and writes: 4 dropped the respelling sections and the spellings without a letter; an image of another version is rejected.</summary>
-    public const uint Version = 4;
+    /// <summary>The format version this code reads and writes: 5 added the sense frequency section (version 4 dropped the respelling sections and the spellings without a letter); an image of another version is rejected.</summary>
+    public const uint Version = 5;
 
     /// <summary>The size of the fixed header.</summary>
     public const int HeaderSize = 112;
@@ -146,6 +152,13 @@ internal static class ImageFormat
 
     /// <summary>The indexes of the senses that have a key, sorted by their full key bytes (<c>uint[]</c>).</summary>
     public const int SectionKeyIndex = 37;
+
+    /// <summary>
+    ///     The WordNet 3.0 tag count of each sense, in the order of the senses of the catalog (<c>ushort[]</c>, one value
+    ///     for each sense, 0 for a project sense and for a sense that WordNet 3.0 never tagged). It is the usage prior of
+    ///     the senses of a lemma that no model scores, and it is not part of the inventory hash.
+    /// </summary>
+    public const int SectionSenseFrequency = 38;
 
     /// <summary>The index of the spelling count in the meta section.</summary>
     public const int MetaSpellingCount = 0;

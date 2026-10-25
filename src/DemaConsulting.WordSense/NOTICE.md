@@ -27,14 +27,16 @@ the Open English WordNet data of the word image, below).
 ## The word image
 
 The package embeds the word image `wordsense.img`. It is a compiled, derived form of the word data of the project and
-it is shared under the licenses below. It is compiled from three sources: the Open English WordNet 2025 data (CC BY 4.0,
-which carries the Princeton WordNet notice below), the Moby Part-of-Speech List (public domain) and the project-authored
+it is shared under the licenses below. It is compiled from four sources: the Open English WordNet 2025 data (CC BY 4.0,
+which carries the Princeton WordNet notice below), the sense frequency counts of WordNet 3.0 (the Princeton WordNet 3.0
+license below), the Moby Part-of-Speech List (public domain) and the project-authored
 data (the inflected forms authored by the project, CC0 1.0, and the other project data, MIT). The tagged tokens of the
 open part-of-speech corpus of the project (CC0 1.0, see above) are used at build time only, as a second source that
 corroborates a generated inflected form; none of its text is embedded. The image holds the lemmas,
-the written forms with their analyses, the sense ids, sense keys, labels and groups, and the order of the senses of each
-lemma, which is the order of Open English WordNet. It does not hold the glosses, the examples or the relations of the
-source data.
+the written forms with their analyses, the sense ids, sense keys, labels and groups, the order of the senses of each
+lemma, which is the order of Open English WordNet, and the WordNet 3.0 tag count of each sense (a number for each sense,
+which the built-in model uses as a usage prior to rank the senses of a lemma; it is never an answer). It does not hold the
+glosses, the examples or the relations of the source data.
 
 ## Open English WordNet 2025
 
@@ -45,6 +47,48 @@ The sense ids, sense keys, lemmas and written forms of the image are derived fro
 - Changes: the data was imported into tables, extended with project-authored entries and senses, and compiled into a
   binary image. It was changed, and it is not the original Open English WordNet data. Open English WordNet and its
   contributors do not endorse this package.
+
+## WordNet 3.0
+
+The sense usage counts of the word image (the number of times each sense was tagged in the sense-annotated texts of the
+WordNet project, from the sense index file `index.sense` of WordNet 3.0, <https://wordnet.princeton.edu>, joined to the
+sense keys of Open English WordNet) are data of WordNet 3.0. The package embeds them, in a changed form (a number for
+each sense of the catalog, without the other contents of the index), and uses them to rank the senses of a lemma by
+usage. WordNet 3.0 is used under the following license, reproduced as the license requires:
+
+```text
+WordNet Release 3.0
+
+This software and database is being provided to you, the LICENSEE, by
+Princeton University under the following license.  By obtaining, using
+and/or copying this software and database, you agree that you have
+read, understood, and will comply with these terms and conditions.:
+
+Permission to use, copy, modify and distribute this software and
+database and its documentation for any purpose and without fee or
+royalty is hereby granted, provided that you agree to comply with
+the following copyright notice and statements, including the disclaimer,
+and that the same appear on ALL copies of the software, database and
+documentation, including modifications that you make for internal
+use or for distribution.
+
+WordNet 3.0 Copyright 2006 by Princeton University.  All rights reserved.
+
+THIS SOFTWARE AND DATABASE IS PROVIDED "AS IS" AND PRINCETON
+UNIVERSITY MAKES NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR
+IMPLIED.  BY WAY OF EXAMPLE, BUT NOT LIMITATION, PRINCETON
+UNIVERSITY MAKES NO REPRESENTATIONS OR WARRANTIES OF MERCHANT-
+ABILITY OR FITNESS FOR ANY PARTICULAR PURPOSE OR THAT THE USE
+OF THE LICENSED SOFTWARE, DATABASE OR DOCUMENTATION WILL NOT
+INFRINGE ANY THIRD PARTY PATENTS, COPYRIGHTS, TRADEMARKS OR
+OTHER RIGHTS.
+
+The name of Princeton University or Princeton may not be used in
+advertising or publicity pertaining to distribution of the software
+and/or database.  Title to copyright in this software, database and
+any associated documentation shall at all times remain with
+Princeton University and LICENSEE agrees to preserve same.
+```
 
 ## Princeton WordNet (the notice that Open English WordNet requires)
 

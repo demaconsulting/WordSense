@@ -18,16 +18,23 @@ constructor is internal so the tests can use a toy table and lexicon. Per call i
 lower-case token (typographic apostrophe U+2019 mapped to `'`) and, per segment, the tagger tokens. A tagger token is
 fixed to the punctuation tag for a token without a letter (the other tag when the token contains a digit); otherwise
 it carries the lower-case key, the bit mask of the parts of speech of the lexicon analyses of the word and whether the
-word starts with a capital letter. The helpers `Normalize` (the lexicon key, empty for a token without a letter),
+word starts with a capital letter. A word whose key ends in `'s` or `'` and whose analyses all carry `Poss=Yes`
+(`technician's`, `sergeants'`) is a possessive token: it carries its stem as the key (the mask is that of its possessive
+analyses) and the possessive flag, and `PosTagger` reads it as the stem and the possessive marker, the pattern of the
+training counts, while the answer for the word is still its own single analysis at its own position. A contraction
+(`it's`) or a word with an analysis that is not a possessive is not expanded. The helpers `Normalize` (the lexicon key,
+empty for a token without a letter),
 `Lower`, `MakeToken` and `SegmentOf` are internal; the builder uses them so training and inference segment text
 identically. A small direct-mapped cache (1,024 entries of immutable values, a racing writer can only replace one
 valid entry with another) keeps, per word with a single analysis, the answer and its analyses array.
 
 The answer is a core `ClassifyResult` value: the word as written, `IsKnown`, `Analyses` (an `AnalysisCandidate` for
 every analysis of the word with its probability and, for an analysis whose lemma and part of speech have exactly one
-sense, that sense with probability 1, otherwise an empty senses list), the selected analysis as `Details`, the
-`SenseLevel`, the confidence and the group id and sense id (only at the sense level, and the group id only when that
-sense is in a group, which a sense that is the only one of its lemma and part of speech normally never is). The
+sense, that sense with probability 1, for an analysis whose lemma and part of speech have two or more senses those senses
+ranked by the usage prior (see Usage Prior below), otherwise an empty senses list), the selected analysis as
+`Details`, the `SenseLevel`, the confidence and the group id and sense id (only at the sense level, and the group id
+only when that sense is in a group, which a sense that is the only one of its lemma and part of speech normally never
+is). The
 classifier produces three of the four levels:
 
 <!-- markdownlint-disable MD013 -->
@@ -60,8 +67,8 @@ returns the analyses of the form (one per lemma, part of speech and features, ne
    part of the contract, and an entry may be evicted). The sense count of its lemma and part of speech decides: with
    exactly one sense the analysis lists it with
    probability 1 and the answer is at the sense level with that sense id, no group id (unless the sense has one) and
-   confidence 1, whatever the case of the word; with several senses the analysis lists no senses and the answer is at the
-   part of speech level with confidence 1, because the statistics cannot choose a sense;
+   confidence 1, whatever the case of the word; with several senses the analysis lists them ranked by the usage prior and
+   the answer is at the part of speech level with confidence 1, because the statistics cannot choose a sense;
 3. several analyses: `CueModel.Extract` gets the features of the word in its segment; `BasicTables.FindCue` looks up the
    cue table of the normalized word first (a form that spans lemmas, such as `left` or `bases`, has a table of its own)
    and then the table of the lemma of the first analysis. A table gives one cue score per analysis (`NaN` for an analysis
@@ -69,11 +76,11 @@ returns the analyses of the form (one per lemma, part of speech and features, ne
    `SenseFusion.Fuse` gives one probability per analysis, and the case of the written word and then the tense of the
    context adjust it (below).
    The classifier builds an `AnalysisCandidate` for each analysis (with the one sense of an analysis that has exactly
-   one sense) and sorts them with a stable insertion sort (the number of analyses is small): the slots (lemma and
-   part of speech) by the sum of the probabilities of their analyses, largest first, a tie keeping the lexicon order
-   of the first analysis of the slot, and the analyses of one slot by their own probability, largest first, a tie
-   keeping the lexicon order. The first is the selected analysis, the best variant of the most probable slot, and
-   the probability of its slot is the confidence. If it
+   one sense, or the ranked senses of an analysis that has several) and sorts them with a stable insertion sort (the
+   number of analyses is small): the slots (lemma and part of speech) by the sum of the probabilities of their
+   analyses, largest first, a tie keeping the lexicon order of the first analysis of the slot, and the analyses of one
+   slot by their own probability, largest first, a tie keeping the lexicon order. The first is the selected analysis,
+   the best variant of the most probable slot, and the probability of its slot is the confidence. If it
    has exactly one sense the answer is at the sense level with that sense (and its group, normally none), otherwise at the
    part of speech level. Analyses of one form that share a part of speech (the past and the
    present of `read`, the lemmas of `left`) have the same tagger posterior, so only the cue scores separate them; the
@@ -86,10 +93,50 @@ Postconditions: the result is parallel to the input; a known word has details an
 unknown word has no details, no analyses, the level none and confidence 0; the analyses of a known word are all listed,
 ordered by slot and variant, with probabilities that sum to one; the confidence of a statistical answer is greater than
 0 and at most 1; the
-group level is never produced; the senses of an analysis are empty unless its lemma and part of speech have exactly one
-sense.
+group level is never produced; the senses of an analysis are its only sense when its lemma and part of speech have
+exactly one, its senses ranked by the usage prior (two or more, summing to one) when it has several, and empty when it
+has none; the ranking never changes the level, the confidence, the group id, the sense id or the probability of any analysis.
 
 `SegmentOf(words, index)` returns the start and length of the segment around a position.
+
+#### Usage Prior
+
+Most polysemous lemmas have no trained encoder weights, so no model scores their senses; the Basic model, to which the
+encoder models fall back for such a word, ranks them instead by how often the senses are used (`UsagePrior`):
+
+- **The prior.** The WordNet 3.0 tag count of each sense (the number of times the sense was tagged in the
+  sense-annotated texts of the WordNet project; the core image carries it in its sense frequency section, one 16-bit
+  count for each sense of the catalog, 0 for a project sense and for a key that WordNet 3.0 does not list) plus the
+  smoothing constant `k`, divided by the sum of that over the senses of the lemma and part of speech:
+  `(count + k) / sum(count + k)`. The senses are listed by probability,
+  the largest first, and equal probabilities keep the inventory order (the order of Open English WordNet, which puts the
+  commonly used senses first, and the project senses last), so a lemma without any count is ranked by the inventory
+  order alone with the uniform probability `1/n`.
+- **The constant.** `k = 1` (`UsagePrior.Smoothing`). The ranking does not depend on it, only the probabilities do; it
+  was chosen on the development half of the independent all-words gold set (`corpus/allwords/dev.tsv`) as the value of a
+  grid (0.01 to 5) that gives the lowest mean log loss of the gold sense, 0.9485 nats at 1 against 0.9504 at 2 and
+  0.9621 at 0.5, and it is also the simplest. The test half was not used for the choice.
+- **Where it applies.** To every analysis whose lemma and part of speech have two or more senses, not only to the selected
+  one, so the analyses of one slot share the ranking and a consumer that sums over the analyses gets the probability
+  of the slot times the probability of the sense. The classifier asks the prior for a slot with fewer than two senses never
+  (a single sense is listed with probability 1 and no sense is nothing to list).
+- **What it is not.** The prior is evidence about the lemma, not about the sentence: every occurrence of a word has the
+  same ranking, and the context cannot change it. It is never an answer: the level stays the part of speech (or the
+  sense of a single-sense analysis), the confidence stays the probability of the slot, and the sense id and the group id
+  stay null, exactly as without the ranking. `ClassifyResult.Key` names the label of the top-ranked sense under its rule
+  for the part-of-speech level, which is why the keys of such words end with `#label`; every such key is a member of
+  `WordLexicon.Keys()`.
+- **The mark.** The classifier builds the candidate of such an analysis with `SensesRankedByUsage` true, so that a consumer
+  (and `FallbackWordSenseModel`) can tell the ranking from a score of the senses in context; the candidate of an analysis
+  with its only sense, with no sense, or built without a ranking function has it false.
+- **Cost.** The ranking of a slot is computed once and kept in a small direct-mapped cache (4,096 entries of immutable
+  values, a racing writer can only replace one valid entry with another).
+- **Inheritance.** `FallbackWordSenseModel` answers a word with the result of its primary model only when the primary
+  model scored senses for the selected analysis; for a lemma without weights the encoder returns the lexicon-only
+  analyses, so the result of this classifier, ranking included, is the answer of the MiniLM and BertBaseCased models too.
+
+The explicit constructor of the tests takes the ranking as an optional function; without it (the default of the tests that
+use a toy lexicon) an analysis with several senses lists none, as before the prior.
 
 #### Case Evidence
 
@@ -205,8 +252,9 @@ many threads at once, and the same words always give the same results.
 
 #### Dependencies
 
-`WordLexicon` (`Lookup` and `SensesOf`), `BasicTables` (including its `TenseCue`), `PosTagger`, `CueModel`,
-`SenseFusion` and the core contracts (`ClassifyResult`, `WordDetails`, `SenseLevel`).
+`WordLexicon` (`Lookup`, `SensesOf` and, through `UsagePrior`, the tag counts of the image), `UsagePrior`,
+`BasicTables` (including its `TenseCue`), `PosTagger`, `CueModel`,
+`SenseFusion` and the core contracts (`ClassifyResult`, `WordDetails`, `SenseLevel`, `SenseCandidate`).
 
 #### Callers
 

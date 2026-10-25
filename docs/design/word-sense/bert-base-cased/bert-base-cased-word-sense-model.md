@@ -24,7 +24,9 @@ length 128. The `model_int8.onnx` file is the derived encoder export, not the up
 
 The constructor `(string? modelDirectory = null, int maxSequenceLength = 128)` creates the encoder model with the
 description (the base class validates the sequence length, 8 to 512) and the Basic model, and wraps both. `ModelId` and
-`HiddenSize` come from the encoder model. `EnsureModelAsync(DownloadOptions? options = null, CancellationToken)`,
+`HiddenSize` come from the encoder model. An internal constructor `(string? modelDirectory, int maxSequenceLength, double
+primaryWeight)` does the same with an explicit primary weight (the public constructor passes `PartOfSpeechPrimaryWeight`,
+which is 1; the tests pin other values). `EnsureModelAsync(DownloadOptions? options = null, CancellationToken)`,
 `ClassifyAsync` and `Dispose` delegate to the composite:
 ensuring is optional (`ClassifyAsync` ensures lazily) and verifies or downloads the encoder files (the Basic model
 needs none and is skipped by the composite), classification answers each word with the result of
@@ -35,7 +37,13 @@ of `put`, the past and the present of `read`) the same probability, because they
 gives those tied variants the relative proportions that the Basic model gives them from the context (its shared tense
 model), with the probability of the slot, the level, the confidence, the group, the sense and the senses of the encoder
 result unchanged, and the selected analysis is the best variant of the first slot (see the `FallbackWordSenseModel`
-unit document). A caller that holds a `BertBaseCasedWordSenseModel` calls `await model.EnsureModelAsync();`
+unit document). The part-of-speech weight of the encoder in the combination of slot probabilities (see the same unit
+document) is 1 for this model (`BertBaseCasedWordSenseModel.PartOfSpeechPrimaryWeight`), so the part of speech of
+its encoder is always kept: a weight below 1 gains at most 0.15 points of accuracy on the development splits (the
+accuracy on all scored tokens, open dev / EWT dev, is 94.22% / 92.08% for the weight 1, 94.30% / 92.23% for 0.7 and
+94.03% / 91.90% for 0) and loses where this model is strong, on the part-of-speech heteronyms of the treebank (98.8%
+of the words against 99.2% for the weight 0.6, a loss of 0.4 points), and the model must never lose. A caller that
+holds a `BertBaseCasedWordSenseModel` calls `await model.EnsureModelAsync();`
 directly; a caller that holds only an `IWordSenseModel` tests for `IDownloadableWordSenseModel` first.
 
 #### Error Handling

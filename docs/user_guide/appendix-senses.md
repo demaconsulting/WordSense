@@ -53,7 +53,7 @@ spelled like the lemma. A form that is not in the table is unknown and is never 
 
 ### Dictionary Words
 
-The word table knows 365,007 spellings (lemmas and inflected forms) of 223,828 entries, and its sense catalog lists
+The word table knows 365,007 spellings (lemmas and inflected forms) of 223,830 entries, and its sense catalog lists
 129,255 senses in 140 curated groups. Besides the lemmas listed below, every other word of the table is a dictionary
 word: it has no trained classifier, a word with one part of speech is answered directly with confidence 1, and a word
 with several parts of speech returns them as candidates, most frequent first (the encoder models answer it with the
@@ -88,8 +88,8 @@ keys of each class (no phonemes; a consumer attaches its own data to the class).
 for its analysis and every sense of it; `#{a,b}` stands for the keys `#a` and `#b`. A key without a label of a spelling
 that is split by its senses (the sense level) decides nothing: the model did not choose a sense, so the consumer chooses
 a default. A group with a note (for example that some dialects merge the classes) says so after its keys. The table has
-369 heteronym records, one for each spelling of a group (366 distinct spellings, because a few spellings, such as
-`leading`, are in two groups): 268 at the entry level (128 derived from the pronunciations of Open English WordNet, 140
+370 heteronym records, one for each spelling of a group (367 distinct spellings, because a few spellings, such as
+`leading`, are in two groups): 269 at the entry level (128 derived from the pronunciations of Open English WordNet, 141
 curated), 4 at the tense level and 97 at the sense level. `WordSense.Builder heteronyms --output FILE` writes the same
 table as a TSV.
 
@@ -152,8 +152,8 @@ verb, whose entries have no pronunciation in the data (`use`, `object`, `present
   `attributes|attribute/Verb/Person=3+Tense=Pres`
 - **august** (group `august`): majestic: `august|august/Adjective/Degree=Pos`; month: `august|August/Noun/Number=Sing`,
   `august|August/Noun/Capitalization=Title+Number=Sing`
-- **axes** (group `axes`): plural-of-ax: `axes|ax/Noun/Number=Plur`, `axes|ax/Verb/Person=3+Tense=Pres`; plural-of-axis:
-  `axes|axis/Noun/Number=Plur`
+- **axes** (group `axes`): plural-of-ax: `axes|ax/Noun/Number=Plur`, `axes|ax/Verb/Person=3+Tense=Pres`,
+  `axes|axe/Noun/Number=Plur`, `axes|axe/Verb/Person=3+Tense=Pres`; plural-of-axis: `axes|axis/Noun/Number=Plur`
 - **bases** (group `bases`): plural-of-base: `bases|base/Noun/Number=Plur`, `bases|base/Verb/Person=3+Tense=Pres`;
   plural-of-basis: `bases|basis/Noun/Number=Plur`
 - **blessed** (group `blessed`): holy-or-emphatic:
@@ -331,9 +331,9 @@ verb, whose entries have no pronunciation in the data (`use`, `object`, `present
   `frequents|frequent/Verb/Person=3+Tense=Pres`
 - **gallant** (group `gallant`): gallant adjective: `gallant|gallant/Adjective/Degree=Pos`; gallant noun:
   `gallant|gallant/Noun/Number=Sing`
-- **graduate** (group `graduate`): noun: `graduate|graduate/Noun/Number=Sing`; verb:
-  `graduate|graduate/Verb/VerbForm=Inf`
-- **graduates** (group `graduate`): noun: `graduates|graduate/Noun/Number=Plur`; verb:
+- **graduate** (group `graduate`): adjective-noun: `graduate|graduate/Noun/Number=Sing`,
+  `graduate|graduate/Adjective/Degree=Pos`; verb: `graduate|graduate/Verb/VerbForm=Inf`
+- **graduates** (group `graduate`): adjective-noun: `graduates|graduate/Noun/Number=Plur`; verb:
   `graduates|graduate/Verb/Person=3+Tense=Pres`
 - **hinder** (group `hinder`): hinder adjective: `hinder|hinder/Adjective/Degree=Pos`; hinder verb:
   `hinder|hinder/Verb/VerbForm=Inf`
@@ -542,8 +542,10 @@ verb, whose entries have no pronunciation in the data (`use`, `object`, `present
 - **segment** (group `segment`): noun: `segment|segment/Noun/Number=Sing`; verb: `segment|segment/Verb/VerbForm=Inf`
 - **segments** (group `segment`): noun: `segments|segment/Noun/Number=Plur`; verb:
   `segments|segment/Verb/Person=3+Tense=Pres`
-- **separate** (group `separate`): adjective: `separate|separate/Adjective/Degree=Pos`; verb:
-  `separate|separate/Verb/VerbForm=Inf`
+- **separate** (group `separate`): adjective-noun: `separate|separate/Adjective/Degree=Pos`,
+  `separate|separate/Noun/Number=Sing`; verb: `separate|separate/Verb/VerbForm=Inf`
+- **separates** (group `separate`): adjective-noun: `separates|separate/Noun/Number=Plur`; verb:
+  `separates|separate/Verb/Person=3+Tense=Pres`
 - **slaver** (group `slaver`): slaver noun: `slaver|slaver/Noun/Number=Sing`; slaver verb:
   `slaver|slaver/Verb/VerbForm=Inf`
 - **slavers** (group `slaver`): slaver noun: `slavers|slaver/Noun/Number=Plur`; slaver verb:
@@ -5458,8 +5460,8 @@ of speech, project senses last).
   - `gossiping#noun` (noun); group: none; key: `gossiping%1:10:00::`; gloss: a conversation that spreads personal
     information about other people
 - **graduate**; parts of speech: noun, verb, adjective; forms: graduate (noun, Number=Sing), graduate (verb,
-  VerbForm=Inf), graduated (verb, Tense=Past+VerbForm=Part), graduates (noun, Number=Plur), graduates (verb,
-  Person=3+Tense=Pres), graduating (verb, VerbForm=Ger)
+  VerbForm=Inf), graduate (adjective, Degree=Pos), graduated (verb, Tense=Past+VerbForm=Part), graduates (noun,
+  Number=Plur), graduates (verb, Person=3+Tense=Pres), graduating (verb, VerbForm=Ger)
   - `graduate#degree-holder` (noun); group: none; key: `graduate%1:18:00::`; gloss: a person who has received a degree
     from a school (high school or college or university)
   - `graduate#graduated-measure` (noun); group: none; key: `graduate%1:06:00::`; gloss: a measuring instrument for
@@ -10994,8 +10996,8 @@ of speech, project senses last).
   - `sentence#judicial-sentencing` (verb); group: none; key: `sentence%2:32:00::`; gloss: pronounce a sentence on
     (somebody) in a court of law
 - **separate**; parts of speech: noun, verb, adjective; forms: separate (adjective, Degree=Pos), separate (verb,
-  VerbForm=Inf), separated (verb, Tense=Past+VerbForm=Part), separates (verb, Person=3+Tense=Pres), separating (verb,
-  VerbForm=Ger)
+  VerbForm=Inf), separate (noun, Number=Sing), separated (verb, Tense=Past+VerbForm=Part), separates (verb,
+  Person=3+Tense=Pres), separates (noun, Number=Plur), separating (verb, VerbForm=Ger)
   - `separate#offprint` (noun); group: none; key: `separate%1:10:00::`; gloss: a separately printed article that
     originally appeared in a larger publication
   - `separate#separate-garment` (noun); group: none; key: `separate%1:06:00::`; gloss: a garment that can be purchased

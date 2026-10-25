@@ -256,13 +256,15 @@ internal sealed class TenseCue
 /// </summary>
 /// <remarks>
 ///     <para>
-///     The table is a Brotli-compressed container that the repository's builder writes (<c>WSB4</c>); after
+///     The table is a Brotli-compressed container that the repository's builder writes (<c>WSB5</c>); after
 ///     decompression every integer is a little-endian 7-bit varint unless noted, a double is eight little-endian
-///     bytes and a string is a varint byte length followed by UTF-8. The layout is: the magic <c>WSB4</c>; the
+///     bytes and a string is a varint byte length followed by UTF-8. The layout is: the magic <c>WSB5</c>; the
 ///     32-byte analysis inventory hash (<c>WordImage.InventoryHash</c>, the hash of the analysis, sense and group sections
-///     of the word image the table was trained for); eight doubles (gamma, beta, lambda1, lambda2, lambda3, the weight
-///     of the tagger in the fusion, the inverse temperature of the cues, the weight of the tense model); the tag count; the unigram, bigram and
-///     trigram tag counts (the boundary is the last index); the tabled words (word, flags byte with bit 0 = closed
+///     of the word image the table was trained for); nine doubles (gamma, beta, lambda1, lambda2, lambda3, the weight
+///     of the tagger in the fusion, the inverse temperature of the cues, the weight of the tense model, the smoothing of
+///     the clause state); the tag count; the unigram, bigram and
+///     trigram tag counts (the boundary is the last index) and the bigram and trigram counts of the positions whose
+///     clause already has a verb; the tabled words (word, flags byte with bit 0 = closed
 ///     class, a 16-bit closed mask when closed, a 16-bit presence mask and one count per set bit); the suffix entries
 ///     (suffix and four counts for noun, verb, adjective and adverb); the cue lemmas (the training lemma, the
 ///     analysis count, per analysis the lemma string, the part-of-speech byte, the features string and the signed
@@ -270,8 +272,9 @@ internal sealed class TenseCue
 ///     and analysis); and the tense table (a flag byte, 0 when there is none and 1 when it follows: the signed
 ///     quantized prior byte, the delta-coded ascending 16-bit feature hashes and one signed byte weight per feature). Words, suffixes and lemmas are in ascending ordinal order, so equal data always gives equal
 ///     bytes. The load fails when the hash differs from the word image, when an analysis does not exist in the word
-///     image, or when a lemma table names an analysis twice. The previous format <c>WSB3</c> (without the tense weight
-///     and the tense table) is rejected as an unknown format.
+///     image, or when a lemma table names an analysis twice, or when a clause count exceeds its total count. The previous
+///     formats <c>WSB3</c> (without the tense weight and the tense table) and <c>WSB4</c> (without the clause counts and the
+///     clause smoothing) are rejected as unknown formats.
 ///     </para>
 ///     <para>
 ///     An instance is immutable and safe for concurrent use: the statistics are exposed only as
@@ -297,7 +300,7 @@ internal sealed class BasicTables
     private const int MaximumLemmaLength = 1024;
     private const int HashSize = 32;
     private const int InitialBufferSize = 1 << 16;
-    private static readonly byte[] Magic = "WSB4"u8.ToArray();
+    private static readonly byte[] Magic = "WSB5"u8.ToArray();
 
     private static readonly Lazy<BasicTables> DefaultTables = new(LoadEmbeddedResource, LazyThreadSafetyMode.ExecutionAndPublication);
 
@@ -310,6 +313,8 @@ internal sealed class BasicTables
         int[] unigrams,
         int[] bigrams,
         int[] trigrams,
+        int[] clauseBigrams,
+        int[] clauseTrigrams,
         FrozenDictionary<string, WordEntry> words,
         string[] suffixKeys,
         ImmutableArray<double>[] suffixProbabilities,
@@ -324,12 +329,15 @@ internal sealed class BasicTables
         HmmWeight = parameters[5];
         InvTemperature = parameters[6];
         TenseWeight = parameters[7];
+        ClauseSmoothing = parameters[8];
 
         // The reader hands over arrays that nothing else references, so they are wrapped without a copy and the table
         // exposes only read-only views of them
         Unigrams = ImmutableCollectionsMarshal.AsImmutableArray(unigrams);
         Bigrams = ImmutableCollectionsMarshal.AsImmutableArray(bigrams);
         Trigrams = ImmutableCollectionsMarshal.AsImmutableArray(trigrams);
+        ClauseBigrams = ImmutableCollectionsMarshal.AsImmutableArray(clauseBigrams);
+        ClauseTrigrams = ImmutableCollectionsMarshal.AsImmutableArray(clauseTrigrams);
         Words = words;
         _suffixKeys = suffixKeys;
         _suffixProbabilities = suffixProbabilities;
@@ -337,6 +345,8 @@ internal sealed class BasicTables
         Tense = tense;
         var derived = Derive(unigrams, bigrams, trigrams, Lambda1, Lambda2, Lambda3);
         Transition = ImmutableCollectionsMarshal.AsImmutableArray(derived.Transition);
+        ClauseTransition = ImmutableCollectionsMarshal.AsImmutableArray(
+            DeriveClause(unigrams, bigrams, trigrams, clauseBigrams, clauseTrigrams, derived.Transition, Lambda1, Lambda2, Lambda3, ClauseSmoothing));
         TagPrior = ImmutableCollectionsMarshal.AsImmutableArray(derived.TagPrior);
         SuffixFallback = ImmutableCollectionsMarshal.AsImmutableArray(derived.SuffixFallback);
     }
@@ -389,6 +399,12 @@ internal sealed class BasicTables
     public double TenseWeight { get; }
 
     /// <summary>
+    ///     Gets the pseudo count that smooths the transition probabilities of a clause state toward the unconditioned
+    ///     transition probabilities: a clause-state trigram context with <c>m</c> counts weighs <c>m / (m + smoothing)</c>.
+    /// </summary>
+    public double ClauseSmoothing { get; }
+
+    /// <summary>
     ///     Gets the shared tense table, or null when the table has none (then no slot is split by tense).
     /// </summary>
     public TenseCue? Tense { get; }
@@ -409,10 +425,30 @@ internal sealed class BasicTables
     public ImmutableArray<int> Trigrams { get; }
 
     /// <summary>
+    ///     Gets the bigram tag counts of the positions whose clause already has a verb (see <see cref="PosTag.NextClause"/>),
+    ///     row-major by (previous, current), as a read-only view; each count is at most the one of <see cref="Bigrams"/>.
+    /// </summary>
+    public ImmutableArray<int> ClauseBigrams { get; }
+
+    /// <summary>
+    ///     Gets the trigram tag counts of the positions whose clause already has a verb, row-major by (before previous,
+    ///     previous, current), as a read-only view; each count is at most the one of <see cref="Trigrams"/>. The counts
+    ///     of the positions whose clause has no verb are the difference.
+    /// </summary>
+    public ImmutableArray<int> ClauseTrigrams { get; }
+
+    /// <summary>
     ///     Gets the interpolated transition probabilities, row-major by (before previous, previous, current) with the
     ///     boundary as the last index of each dimension, as a read-only view.
     /// </summary>
     public ImmutableArray<double> Transition { get; }
+
+    /// <summary>
+    ///     Gets the transition probabilities of the tagger: two copies of the layout of <see cref="Transition"/>, the first
+    ///     for a clause without a verb and the second (starting at <c>Extended^3</c>) for a clause that has one.
+    ///     Each is the unconditioned <see cref="Transition"/> mixed with the interpolation of the counts of its clause state.
+    /// </summary>
+    public ImmutableArray<double> ClauseTransition { get; }
 
     /// <summary>
     ///     Gets the relative frequency of each of the <see cref="PosTag.Count"/> tags in the training data, as a
@@ -494,7 +530,7 @@ internal sealed class BasicTables
                 $"The basic table was trained for another analysis inventory: its inventory hash is {Convert.ToHexString(hash)}, the word image has {Convert.ToHexString(inventoryHash)}. Rebuild the table.");
         }
 
-        var parameters = new double[8];
+        var parameters = new double[9];
         for (var i = 0; i < parameters.Length; i++)
         {
             parameters[i] = reader.ReadDouble();
@@ -509,6 +545,13 @@ internal sealed class BasicTables
         var unigrams = reader.ReadVarints(PosTag.Extended);
         var bigrams = reader.ReadVarints(PosTag.Extended * PosTag.Extended);
         var trigrams = reader.ReadVarints(PosTag.Extended * PosTag.Extended * PosTag.Extended);
+        var clauseBigrams = reader.ReadVarints(PosTag.Extended * PosTag.Extended);
+        var clauseTrigrams = reader.ReadVarints(PosTag.Extended * PosTag.Extended * PosTag.Extended);
+        if (ExceedsTotals(clauseBigrams, bigrams) || ExceedsTotals(clauseTrigrams, trigrams))
+        {
+            throw new InvalidDataException("The basic table has clause counts that exceed the total counts.");
+        }
+
         var words = ReadWords(reader);
         var (suffixKeys, suffixProbabilities) = ReadSuffixes(reader);
         var cues = ReadCues(reader, analysisExists);
@@ -518,7 +561,26 @@ internal sealed class BasicTables
             throw new InvalidDataException("The basic table has trailing bytes.");
         }
 
-        return new BasicTables(parameters, unigrams, bigrams, trigrams, words, suffixKeys, suffixProbabilities, cues, tense);
+        return new BasicTables(parameters, unigrams, bigrams, trigrams, clauseBigrams, clauseTrigrams, words, suffixKeys, suffixProbabilities, cues, tense);
+    }
+
+    /// <summary>
+    ///     Tells whether a count of one array is larger than the count at the same index of the other array.
+    /// </summary>
+    /// <param name="part">The clause counts.</param>
+    /// <param name="whole">The total counts of the same length and layout.</param>
+    /// <returns>True when any clause count exceeds its total, which no table that was counted can have.</returns>
+    private static bool ExceedsTotals(int[] part, int[] whole)
+    {
+        for (var i = 0; i < part.Length; i++)
+        {
+            if (part[i] > whole[i])
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /// <summary>
@@ -646,7 +708,7 @@ internal sealed class BasicTables
 
     private static void ValidateParameters(double[] p)
     {
-        if (p.Any(v => !double.IsFinite(v) || v > 1e6) || p[0] <= 0 || p[1] <= 0 || p[2] < 0 || p[3] < 0 || p[4] < 0 || p[5] < 0 || p[6] < 0 || p[7] < 0)
+        if (p.Any(v => !double.IsFinite(v) || v > 1e6) || p[0] <= 0 || p[1] <= 0 || p[2] < 0 || p[3] < 0 || p[4] < 0 || p[5] < 0 || p[6] < 0 || p[7] < 0 || p[8] < 0)
         {
             throw new InvalidDataException("The basic table has invalid hyper-parameters.");
         }
@@ -869,6 +931,59 @@ internal sealed class BasicTables
 
         return hashes;
     }
+
+    /// <summary>
+    ///     Derives the transition probabilities of the two clause states: the probability of a tag after two tags is the
+    ///     interpolation of the trigram, bigram and unigram probabilities, with the trigram and bigram counts of the
+    ///     positions whose clause has (or has no) verb; it is mixed with the unconditioned probability by the weight
+    ///     <c>m / (m + smoothing)</c>, where <c>m</c> is the number of counts of the trigram context in that state, and
+    ///     it is the unconditioned probability where there is no count.
+    /// </summary>
+    private static double[] DeriveClause(int[] c1, int[] c2, int[] c3, int[] verb2, int[] verb3, double[] unconditioned, double l1, double l2, double l3, double smoothing)
+    {
+        const int k = PosTag.Extended;
+        var total1 = c1.Sum(c => (double)c);
+        var size = k * k * k;
+        var result = new double[2 * size];
+        for (var state = 0; state < 2; state++)
+        {
+            for (var a = 0; a < k; a++)
+            {
+                for (var b = 0; b < k; b++)
+                {
+                    double row2 = 0;
+                    double row3 = 0;
+                    for (var c = 0; c < k; c++)
+                    {
+                        row2 += StateCount(c2, verb2, state, (b * k) + c);
+                        row3 += StateCount(c3, verb3, state, (((a * k) + b) * k) + c);
+                    }
+
+                    var weight = row3 + smoothing > 0 ? row3 / (row3 + smoothing) : 0;
+                    row2 = Math.Max(row2, 1);
+                    row3 = Math.Max(row3, 1);
+                    for (var c = 0; c < k; c++)
+                    {
+                        var index = (((a * k) + b) * k) + c;
+                        var conditioned = (l3 * StateCount(c3, verb3, state, index) / row3) + (l2 * StateCount(c2, verb2, state, (b * k) + c) / row2) + (l1 * c1[c] / total1);
+                        result[(state * size) + index] = (weight * conditioned) + ((1 - weight) * unconditioned[index]);
+                    }
+                }
+            }
+        }
+
+        return result;
+    }
+
+    /// <summary>
+    ///     Gets the count of one n-gram in one clause state.
+    /// </summary>
+    /// <param name="total">The total counts.</param>
+    /// <param name="verb">The counts of the positions whose clause already has a verb, never above the totals.</param>
+    /// <param name="state">The clause state: 1 for a clause that has a verb, 0 for one without.</param>
+    /// <param name="index">The index of the n-gram in both arrays.</param>
+    /// <returns>The clause count for state 1, the difference to the total for state 0.</returns>
+    private static double StateCount(int[] total, int[] verb, int state, int index) => state == 1 ? verb[index] : total[index] - verb[index];
 
     private static (double[] Transition, double[] TagPrior, double[] SuffixFallback) Derive(int[] c1, int[] c2, int[] c3, double l1, double l2, double l3)
     {

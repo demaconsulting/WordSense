@@ -64,6 +64,52 @@ sections:
                   - BertBaseCasedWordSenseModel_IsDownloadable
                   - BertBaseCasedWordSenseModel_EnsureModelAsync_MissingDirectory_ThrowsModelUnavailable
 
+              - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-PartOfSpeechKept
+                title: >-
+                  BertBaseCasedWordSenseModel shall answer a word that its encoder leaves at the part-of-speech level
+                  with the slot probabilities of the encoder, never combined with those of the Basic model.
+                tags: [unit]
+                justification: |
+                  BERT base cased beats the Basic tagger on the part-of-speech heteronyms (99.2% against 94.0% on the
+                  English EWT treebank) and combining the two lost on them (the benchmark of a weight 0.6 for the
+                  encoder gave 98.8%), while the gain on running text was at most 0.15 points on the development
+                  splits; a model that must never lose keeps its own part of speech.
+                tests:
+                  - BertBaseCasedWordSenseModel_PartOfSpeechAnswer_KeepsTheEncoderSlotProbabilities
+
+              - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-UsagePrior
+                title: >-
+                  BertBaseCasedWordSenseModel shall list, in the selected analysis of a word whose lemma the encoder has
+                  no weights for and whose lemma and part of speech have two or more senses, those senses ranked by the
+                  usage prior of the Basic model.
+                tags: [unit]
+                justification: |
+                  About 83 percent of the ambiguous words of running text have no trained weights; the ranking gives a
+                  consumer the likely senses of them.
+                tests:
+                  - BertBaseCasedWordSenseModel_Classify_UntrainedPolysemousWord_ListsSensesRankedByUsagePrior
+
+              - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-UsagePrior-Level
+                title: >-
+                  BertBaseCasedWordSenseModel shall answer a word whose lemma the encoder has no weights for and that
+                  has two or more senses at the part of speech level, with no sense id and no group id.
+                tags: [unit]
+                justification: |
+                  The answer level stays honest because the ranking is evidence about the lemma and never an answer.
+                tests:
+                  - BertBaseCasedWordSenseModel_Classify_UntrainedPolysemousWord_AnswersPartOfSpeechLevelWithoutSenseOrGroup
+
+              - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-UsagePrior-Key
+                title: >-
+                  The key of the result of BertBaseCasedWordSenseModel for a word whose lemma the encoder has no weights
+                  for and that has two or more senses shall carry the label of the top-ranked sense of the selected
+                  analysis.
+                tags: [unit]
+                justification: |
+                  The ranking gives the key of such a word a label, so that a consumer can look up a resource by it.
+                tests:
+                  - BertBaseCasedWordSenseModel_Classify_UntrainedPolysemousWord_KeyCarriesTheLabelOfTheTopRankedSense
+
               - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Options
                 title: >-
                   BertBaseCasedWordSenseModel shall accept an optional model directory and a maximum sequence length

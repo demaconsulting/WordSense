@@ -1456,4 +1456,169 @@ public class BasicClassifierTests
         await Assert.ThrowsAnyAsync<OperationCanceledException>(
             () => Create().ClassifyAsync(Lazy(), source.Token));
     }
+
+    /// <summary>
+    ///     The analysis of the possessive <c>technician's</c>: a singular noun with <c>Poss=Yes</c>.
+    /// </summary>
+    private static readonly WordDetails TechnicianPossessive = new("technician", PartOfSpeech.Noun, "Number=Sing+Poss=Yes");
+
+    /// <summary>
+    ///     The analysis of the possessive <c>dogs'</c>: a plural noun with <c>Poss=Yes</c>.
+    /// </summary>
+    private static readonly WordDetails DogsPossessive = new("dog", PartOfSpeech.Noun, "Number=Plur+Poss=Yes");
+
+    /// <summary>
+    ///     The analysis of the possessive pronoun <c>one's</c>.
+    /// </summary>
+    private static readonly WordDetails OnePossessivePronoun = new("one", PartOfSpeech.Pronoun, "Poss=Yes");
+
+    /// <summary>
+    ///     The analysis of the contraction <c>it's</c>, which is not a possessive.
+    /// </summary>
+    private static readonly WordDetails ItIs = new("it's", PartOfSpeech.Pronoun, string.Empty);
+
+    /// <summary>
+    ///     Looks up a lower-case key in the toy lexicon of the possessive tests.
+    /// </summary>
+    /// <param name="key">The lower-case key.</param>
+    /// <returns>The analyses of the key, or the default array when the key is unknown.</returns>
+    private static ImmutableArray<WordDetails> PossessiveLexicon(string key) => key switch
+    {
+        "technician's" => [TechnicianPossessive],
+        "dogs'" => [DogsPossessive],
+        "one's" => [OnePossessivePronoun, TechnicianPossessive],
+        "it's" => [ItIs],
+        "mixed's" => [TechnicianPossessive, TestTables.CatNoun],
+        "cat" => [TestTables.CatNoun],
+        _ => default,
+    };
+
+    /// <summary>
+    ///     A word whose analyses all carry <c>Poss=Yes</c> and whose key ends in <c>'s</c> or <c>'</c> is a possessive
+    ///     token: the tagger gets its stem, whatever the apostrophe and the case of the written word.
+    /// </summary>
+    /// <param name="word">The word as written.</param>
+    /// <param name="stem">The expected stem.</param>
+    [Theory]
+    [InlineData("technician's", "technician")]
+    [InlineData("Technician's", "technician")]
+    [InlineData("technician\u2019s", "technician")]
+    [InlineData("dogs'", "dogs")]
+    [InlineData("one's", "one")]
+    public void BasicClassifier_MakeToken_Possessive_HasTheStem(string word, string stem)
+    {
+        // Arrange: the toy lexicon in which every analysis of the word is a possessive
+
+        // Act
+        var token = BasicClassifier.MakeToken(PossessiveLexicon, word);
+
+        // Assert: a possessive token with the stem, the case of the written word and the mask of the possessive analyses
+        Assert.True(token.Possessive);
+        Assert.Equal(stem, token.Key);
+        Assert.Equal(char.IsUpper(word[0]), token.Capitalized);
+        Assert.NotEqual(0, token.DictionaryMask);
+        Assert.Equal(-1, token.ForcedTag);
+    }
+
+    /// <summary>
+    ///     A contraction, a word with an analysis that is not a possessive, a word that is not a possessive and an
+    ///     unknown word stay whole tokens.
+    /// </summary>
+    /// <param name="word">The word as written.</param>
+    [Theory]
+    [InlineData("it's")]
+    [InlineData("mixed's")]
+    [InlineData("cat")]
+    [InlineData("unknown's")]
+    public void BasicClassifier_MakeToken_NotPossessive_IsAWholeToken(string word)
+    {
+        // Arrange: the toy lexicon with a contraction, a mixed word, a plain noun and an unknown word
+
+        // Act
+        var token = BasicClassifier.MakeToken(PossessiveLexicon, word);
+
+        // Assert: a whole token that carries the normalized word
+        Assert.False(token.Possessive);
+        Assert.Equal(BasicClassifier.Normalize(word), token.Key);
+    }
+
+    /// <summary>
+    ///     A possessive that is one token is answered as one token with its own analysis, and the results stay parallel to
+    ///     the words of the caller.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_Possessive_KeepsTheTokensOfTheCaller()
+    {
+        // Arrange
+        var classifier = new BasicClassifier(Tables, PossessiveLexicon, Count, SensesOf);
+
+        // Act
+        var results = await classifier.ClassifyAsync(["cat", "technician's", "cat", "."], TestContext.Current.CancellationToken);
+
+        // Assert
+        Assert.Equal(4, results.Length);
+        Assert.Equal("technician's", results[1].Word);
+        Assert.Equal(TechnicianPossessive, results[1].Details);
+        Assert.Equal(TestTables.CatNoun, results[2].Details);
+        Assert.False(results[3].IsKnown);
+    }
+
+    /// <summary>
+    ///     Looks up a lower-case key in the toy lexicon of the non-finite tests: a gerund, a participle without a past
+    ///     tense, an infinitive, a past tense, a word that is a past tense and a present, a noun and an unknown word.
+    /// </summary>
+    /// <param name="key">The lower-case key.</param>
+    /// <returns>The analyses of the key, or the default array when the key is unknown.</returns>
+    private static ImmutableArray<WordDetails> NonFiniteLexicon(string key) => key switch
+    {
+        "resolving" => [new("resolve", PartOfSpeech.Verb, "VerbForm=Ger"), new("resolving", PartOfSpeech.Noun, "Number=Sing")],
+        "broken" => [new("break", PartOfSpeech.Verb, "VerbForm=Part"), new("broken", PartOfSpeech.Adjective, "Degree=Pos")],
+        "remove" => [new("remove", PartOfSpeech.Verb, "VerbForm=Inf"), new("remove", PartOfSpeech.Noun, "Number=Sing")],
+        "walked" => [new("walk", PartOfSpeech.Verb, "Tense=Past+VerbForm=Part")],
+        "read" => [new("read", PartOfSpeech.Verb, "Tense=Past+VerbForm=Part"), new("read", PartOfSpeech.Verb, "Tense=Pres")],
+        "table" => [new("table", PartOfSpeech.Noun, "Number=Sing")],
+        _ => default,
+    };
+
+    /// <summary>
+    ///     A word that the dictionary lists as a verb only as a gerund, or as a participle that is not also a past tense,
+    ///     is flagged as a non-finite token.
+    /// </summary>
+    /// <param name="word">The word.</param>
+    [Theory]
+    [InlineData("resolving")]
+    [InlineData("broken")]
+    public void BasicClassifier_MakeToken_NonFiniteVerb_IsFlagged(string word)
+    {
+        // Arrange: the toy lexicon in which every verb analysis of the word is non-finite
+
+        // Act
+        var token = BasicClassifier.MakeToken(NonFiniteLexicon, word);
+
+        // Assert
+        Assert.True(token.NonFinite);
+    }
+
+    /// <summary>
+    ///     An infinitive, a past tense, a word that is also a present, a word without a verb analysis and an unknown word
+    ///     are not flagged as non-finite tokens.
+    /// </summary>
+    /// <param name="word">The word.</param>
+    [Theory]
+    [InlineData("remove")]
+    [InlineData("walked")]
+    [InlineData("read")]
+    [InlineData("table")]
+    [InlineData("zzz")]
+    public void BasicClassifier_MakeToken_FiniteOrNoVerb_IsNotFlagged(string word)
+    {
+        // Arrange: the toy lexicon in which the word has a finite verb analysis, no verb analysis or no entry
+
+        // Act
+        var token = BasicClassifier.MakeToken(NonFiniteLexicon, word);
+
+        // Assert
+        Assert.False(token.NonFinite);
+    }
 }

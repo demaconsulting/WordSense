@@ -286,7 +286,8 @@ public sealed class SenseEvaluatorTests : IDisposable
 
     /// <summary>
     ///     The report has the all-words section with the trained, untrained and all rows of each model, the share of the words
-    ///     that are of a trained lemma, and the statement that the tag-count baseline is optimistic because the counts include SemCor.
+    ///     that are of a trained lemma, and the statements that the tag-count baseline is optimistic because the counts include SemCor
+    ///     and that the usage prior of the models, made of the same counts, makes their untrained fine top-1 circular on SemCor.
     /// </summary>
     [Fact]
     public async Task WordSenseBuilder_SenseEval_Render_AllWords_ShowsTrainedShareAndCircularityCaveat()
@@ -310,6 +311,8 @@ public sealed class SenseEvaluatorTests : IDisposable
         Assert.Contains("| Fake | all | 2 |", text, StringComparison.Ordinal);
         Assert.Contains("optimistic reference", text, StringComparison.Ordinal);
         Assert.Contains("counted on SemCor", text, StringComparison.Ordinal);
+        Assert.Contains("circular on SemCor too", text, StringComparison.Ordinal);
+        Assert.Contains("evaluate-allwords", text, StringComparison.Ordinal);
     }
 
     /// <summary>

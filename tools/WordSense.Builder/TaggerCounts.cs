@@ -1,3 +1,4 @@
+using System.Collections.Immutable;
 using System.Globalization;
 using System.Text;
 using DemaConsulting.WordSense;
@@ -42,6 +43,12 @@ internal sealed class TaggerCounts
     /// </summary>
     public const string WordsFile = "word-tags.tsv";
 
+    /// <summary>
+    ///     The file name of the clause n-gram counts: the bigram and trigram counts of the positions whose clause already
+    ///     has a verb (see <see cref="PosTag.NextClause"/>).
+    /// </summary>
+    public const string ClauseNgramsFile = "tag-clause-ngrams.tsv";
+
     private const string WordsHeader = "word\tcounts";
 
     /// <summary>
@@ -58,6 +65,18 @@ internal sealed class TaggerCounts
     ///     Gets the trigram counts, row-major by (before previous, previous, current).
     /// </summary>
     public int[] Trigrams { get; } = new int[PosTag.Extended * PosTag.Extended * PosTag.Extended];
+
+    /// <summary>
+    ///     Gets the bigram counts of the positions whose clause already has a verb, row-major by (previous, current); the
+    ///     counts of the other positions are the difference to <see cref="Bigrams"/>.
+    /// </summary>
+    public int[] ClauseBigrams { get; } = new int[PosTag.Extended * PosTag.Extended];
+
+    /// <summary>
+    ///     Gets the trigram counts of the positions whose clause already has a verb, row-major by (before previous,
+    ///     previous, current); the counts of the other positions are the difference to <see cref="Trigrams"/>.
+    /// </summary>
+    public int[] ClauseTrigrams { get; } = new int[PosTag.Extended * PosTag.Extended * PosTag.Extended];
 
     /// <summary>
     ///     Gets the tag counts of every lower-case word that consists of letters and apostrophes.
@@ -115,10 +134,12 @@ internal sealed class TaggerCounts
     ///     Counts the tag statistics of sentences.
     /// </summary>
     /// <param name="sentences">The sentences.</param>
+    /// <param name="lexicon">The lexicon: the analyses of a lower-case word, or the default array when unknown. It tells which sentence-initial words are non-finite verbs, which do not give their clause a verb.</param>
     /// <returns>The counts.</returns>
-    public static TaggerCounts Count(IEnumerable<TaggedSentence> sentences)
+    public static TaggerCounts Count(IEnumerable<TaggedSentence> sentences, Func<string, ImmutableArray<WordDetails>> lexicon)
     {
         ArgumentNullException.ThrowIfNull(sentences);
+        ArgumentNullException.ThrowIfNull(lexicon);
         var counts = new TaggerCounts();
         foreach (var sentence in sentences)
         {
@@ -128,11 +149,21 @@ internal sealed class TaggerCounts
             padded[1] = PosTag.Boundary;
             padded[n + 2] = PosTag.Boundary;
             Array.Copy(sentence.Tags, 0, padded, 2, n);
+            var hasVerb = 0;
             for (var i = 2; i < padded.Length; i++)
             {
+                var bigram = (padded[i - 1] * PosTag.Extended) + padded[i];
+                var trigram = (((padded[i - 2] * PosTag.Extended) + padded[i - 1]) * PosTag.Extended) + padded[i];
                 counts.Unigrams[padded[i]]++;
-                counts.Bigrams[(padded[i - 1] * PosTag.Extended) + padded[i]]++;
-                counts.Trigrams[(((padded[i - 2] * PosTag.Extended) + padded[i - 1]) * PosTag.Extended) + padded[i]]++;
+                counts.Bigrams[bigram]++;
+                counts.Trigrams[trigram]++;
+                if (hasVerb != 0)
+                {
+                    counts.ClauseBigrams[bigram]++;
+                    counts.ClauseTrigrams[trigram]++;
+                }
+
+                hasVerb = PosTag.NextClause(hasVerb, padded[i], i == 2 && n > 0 && StartsNonFinite(sentence.Words[0], lexicon));
             }
 
             for (var i = 0; i < n; i++)
@@ -156,6 +187,19 @@ internal sealed class TaggerCounts
     }
 
     /// <summary>
+    ///     Tells whether the first word of a sentence is listed only as a non-finite verb, so that it does not give its
+    ///     clause a verb (the rule that the tagger uses at run time).
+    /// </summary>
+    /// <param name="firstWord">The first word as written.</param>
+    /// <param name="lexicon">The lexicon.</param>
+    /// <returns>True when the lexicon lists the word and every verb analysis of it is a gerund or a non-past participle.</returns>
+    private static bool StartsNonFinite(string firstWord, Func<string, ImmutableArray<WordDetails>> lexicon)
+    {
+        var found = lexicon(BasicClassifier.Normalize(firstWord));
+        return !found.IsDefaultOrEmpty && BasicClassifier.IsNonFiniteVerb(found);
+    }
+
+    /// <summary>
     ///     Writes the count files with LF line ends in a deterministic order.
     /// </summary>
     /// <param name="directory">The directory, created when missing.</param>
@@ -169,6 +213,12 @@ internal sealed class TaggerCounts
         AppendOrder(ngrams, 2, Bigrams, PosTag.Extended, inv);
         AppendOrder(ngrams, 3, Trigrams, PosTag.Extended, inv);
         File.WriteAllText(Path.Join(directory, NgramsFile), ngrams.ToString(), new UTF8Encoding(false));
+
+        var clause = new StringBuilder();
+        clause.Append("order\ttags\tcount\n");
+        AppendOrder(clause, 2, ClauseBigrams, PosTag.Extended, inv);
+        AppendOrder(clause, 3, ClauseTrigrams, PosTag.Extended, inv);
+        File.WriteAllText(Path.Join(directory, ClauseNgramsFile), clause.ToString(), new UTF8Encoding(false));
 
         var words = new StringBuilder();
         words.Append(WordsHeader).Append('\n');
@@ -267,8 +317,50 @@ internal sealed class TaggerCounts
             }
         }
 
+        var clausePath = Path.Join(directory, ClauseNgramsFile);
+        var clauseLines = File.ReadAllLines(clausePath, Encoding.UTF8);
+        if (clauseLines.Length == 0 || clauseLines[0] != "order\ttags\tcount")
+        {
+            throw new InvalidDataException($"{clausePath}: unexpected header.");
+        }
+
+        foreach (var line in clauseLines.Skip(1))
+        {
+            var fields = line.Split('\t');
+            if (fields.Length != 3 || !int.TryParse(fields[2], NumberStyles.None, CultureInfo.InvariantCulture, out var count))
+            {
+                throw new InvalidDataException($"{clausePath}: malformed line '{line}'.");
+            }
+
+            var tags = fields[1].Split(' ').Select(TagOfLetter).ToArray();
+            switch (fields[0])
+            {
+                case "2" when tags.Length == 2:
+                    counts.ClauseBigrams[(tags[0] * PosTag.Extended) + tags[1]] = count;
+                    break;
+                case "3" when tags.Length == 3:
+                    counts.ClauseTrigrams[(((tags[0] * PosTag.Extended) + tags[1]) * PosTag.Extended) + tags[2]] = count;
+                    break;
+                default:
+                    throw new InvalidDataException($"{clausePath}: malformed line '{line}'.");
+            }
+        }
+
+        if (ExceedsTotals(counts.ClauseBigrams, counts.Bigrams) || ExceedsTotals(counts.ClauseTrigrams, counts.Trigrams))
+        {
+            throw new InvalidDataException($"{clausePath}: a clause count exceeds its total count.");
+        }
+
         return counts;
     }
+
+    /// <summary>
+    ///     Tells whether any clause count is larger than the total count at the same index.
+    /// </summary>
+    /// <param name="part">The clause counts.</param>
+    /// <param name="whole">The total counts.</param>
+    /// <returns>True when a clause count exceeds its total.</returns>
+    private static bool ExceedsTotals(int[] part, int[] whole) => part.Where((count, i) => count > whole[i]).Any();
 
     private static void AppendOrder(StringBuilder text, int order, int[] counts, int width, IFormatProvider inv)
     {

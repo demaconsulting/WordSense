@@ -79,8 +79,9 @@ namespace DemaConsulting.WordSense;
 ///     word as one token. <see cref="ClassifyResult.Analyses"/> lists every analysis of the word (lemma, part of speech
 ///     and features) with its probability, the largest first, summing to one; <c>Details</c> is the first of them, the
 ///     selected analysis. The model scores analyses, not fine senses: the <see cref="AnalysisCandidate.Senses"/> of an
-///     analysis list its one sense with probability 1 when its lemma and part of speech have exactly one sense, and are
-///     empty otherwise. A consumer that wants the model's decision reads the summary (<c>Level</c>, <c>Confidence</c>,
+///     analysis list its one sense with probability 1 when its lemma and part of speech have exactly one sense, the
+///     senses ranked by their usage (the WordNet 3.0 tag counts, the same in every sentence and never an answer) when
+///     they have two or more, and are empty when they have none. A consumer that wants the model's decision reads the summary (<c>Level</c>, <c>Confidence</c>,
 ///     <c>SenseId</c>); one that wants its own decision reads the analyses. The model answers at two of the four
 ///     <see cref="SenseLevel"/> values for a known word: the <see cref="SenseLevel.Sense"/> level when the selected
 ///     analysis has a lemma and part of speech with exactly one sense (<c>SenseId</c>, and <c>GroupId</c> when the sense
@@ -141,7 +142,7 @@ namespace DemaConsulting.WordSense;
 ///     </listheader>
 ///     <item>
 ///     <term><c>record</c>, <c>Record</c>, <c>RECORD</c>, <c>records</c></term>
-///     <description>Found (the lookup ignores case; <c>records</c> is a stored inflection): several analyses, so the part of speech from context with the model's confidence, and the level <see cref="SenseLevel.PartOfSpeech"/> while the senses are not scored</description>
+///     <description>Found (the lookup ignores case; <c>records</c> is a stored inflection): several analyses, so the part of speech from context with the model's confidence, and the level <see cref="SenseLevel.PartOfSpeech"/> while the senses are not scored (their ranking by usage is listed in the analyses)</description>
 ///     </item>
 ///     <item>
 ///     <term><c>the</c>, <c>a</c>, <c>his</c></term>

@@ -48,8 +48,10 @@ model, the subsystem does not classify ambiguous words in context; that is the w
 not download anything; `DownloadOptions` only carries the configuration that an encoder package interprets (the
 statistical model is not downloadable and has no use for it). The composite `FallbackWordSenseModel` adds no knowledge
 of its own: it only chooses,
-word by word, between the results of the two models it is given (and lets the second model split the tied variants of
-a slot of the first, without changing the probability of any slot), and forwards an explicit ensure to the members that
+word by word, between the results of the two models it is given (lets the second model split the tied variants of
+a slot of the first, without changing the probability of any slot, and, for a primary weight below 1, combines the
+slot probabilities of the two models where the first committed to no sense and no group), and forwards an explicit
+ensure to the members that
 are downloadable.
 
 ### Interfaces
@@ -131,7 +133,11 @@ apostrophe straightened; tokens without a letter become empty), splits the list 
 
 1. every token becomes a tagger token: a token without a letter is fixed to the punctuation tag (the other tag when it
    contains a digit); a word carries the set of parts of speech of its lexicon analyses and whether it is capitalized;
-2. `PosTagger` computes the tag posterior of every token of the segment;
+   a possessive written as one token (`technician's`, every analysis `Poss=Yes`) carries its stem and a flag, and the
+   tagger reads it as the stem and the possessive marker, as the counts were made;
+2. `PosTagger` computes the tag posterior of every token of the segment, with the state of the clause (whether it
+   already has a verb) in its transitions; a sentence-initial gerund or participle that the dictionary lists only as a
+   non-finite verb does not give its clause a verb;
 3. for each word, in order, the lexicon analyses of the lower-case form decide the answer and its level; the written case
    then weighs down the analyses
    whose lemma has the other case (see the unit design):
@@ -156,8 +162,9 @@ apostrophe straightened; tokens without a letter become empty), splits the list 
 
 Every word that has a lexicon analysis is answered with details, number words such as `one` or `twenty` included; only
 a word without analyses and a token without a letter are unknown. The model never answers at the group level, and it
-lists no senses for an analysis whose lemma and part of speech have several senses (it scores analyses and not fine
-senses), so it never names a sense for such an analysis, because its statistics do not separate the senses. An
+never decides a sense for an analysis whose lemma and part of speech have several senses (its statistics do not separate
+the senses); it lists those senses ranked by the usage prior (the WordNet 3.0 tag count of each sense with add-k smoothing,
+equal probabilities in inventory order), which is a statement about the lemma and never an answer. An
 analysis whose lemma and part of speech have exactly one sense lists that sense with probability 1, whatever the
 probability of the analysis, because no evidence is needed to choose it.
 
@@ -173,9 +180,11 @@ to the analysis that comes first in the lexicon order of the form.
 
 `basic.bin` is a Brotli-compressed container written only by the builder (`train-basic`) and read only by
 `BasicTables`. After decompression it holds, in this order: the format magic; the 32-byte hash of the analysis
-inventory of the word image it was trained for; seven little-endian doubles (gamma, beta, lambda 1 to 3, the tagger
-weight of the fusion and the inverse temperature of the cues); the tag count; the unigram, bigram and trigram tag
-counts (the sentence boundary is the last index); the tabled words with their closed-class mask and per-tag counts; the
+inventory of the word image it was trained for; nine little-endian doubles (gamma, beta, lambda 1 to 3, the tagger
+weight of the fusion, the inverse temperature of the cues, the weight of the tense model and the smoothing of the clause
+state); the tag count; the unigram, bigram and trigram tag
+counts (the sentence boundary is the last index) and the bigram and trigram counts of the positions whose clause already
+has a verb; the tabled words with their closed-class mask and per-tag counts; the
 suffix table; and the cue tables, keyed by training lemma (16-bit feature hashes and one signed byte weight per feature
 and analysis, in steps of 1/8 nat). The cue analyses are named by lemma, part of speech and features and resolved
 against the analysis inventory of the word image at load: a hash mismatch or an unknown or duplicate analysis is a load
@@ -183,8 +192,9 @@ failure, so the table is rebuilt whenever the inventory changes. Words, suffixes
 equal training data gives byte-identical tables. The tag counts come from the representative part of the open corpus
 (`corpus/open`), the cue tables from the fine-sense anchors and the chooser anchors of `corpus/`. The reader validates
 the layout and throws `InvalidDataException` for anything malformed (the embedded default table maps that to a
-`ModelIntegrityException`). The format (magic `WSB4`: the header with the weight of the tense model, and after the cue
-tables the tense section with the shared past/non-past table) is described in detail
+`ModelIntegrityException`). The format (magic `WSB5`: the header with the weight of the tense model and the smoothing of
+the clause state, after the tag counts the clause counts, and after the cue
+tables the tense section with the shared past/non-past table; `WSB3` and `WSB4` are refused) is described in detail
 in the `BasicTables` unit design.
 
 #### Determinism and Concurrency

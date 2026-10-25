@@ -45,6 +45,8 @@ internal sealed record BasicTenseRow(sbyte Prior, ushort[] Hashes, sbyte[] Weigh
 /// <param name="Unigrams">The unigram tag counts.</param>
 /// <param name="Bigrams">The bigram tag counts.</param>
 /// <param name="Trigrams">The trigram tag counts.</param>
+/// <param name="ClauseBigrams">The bigram tag counts of the positions whose clause already has a verb.</param>
+/// <param name="ClauseTrigrams">The trigram tag counts of the positions whose clause already has a verb.</param>
 /// <param name="Words">The tabled words in ordinal order.</param>
 /// <param name="Suffixes">The tabled suffixes in ordinal order.</param>
 /// <param name="Cues">The cue tables in ordinal order of key (a lemma, or a form that a chooser row decides).</param>
@@ -56,6 +58,8 @@ internal sealed record BasicModelData(
     int[] Unigrams,
     int[] Bigrams,
     int[] Trigrams,
+    int[] ClauseBigrams,
+    int[] ClauseTrigrams,
     IReadOnlyList<BasicWordRow> Words,
     IReadOnlyList<BasicSuffixRow> Suffixes,
     IReadOnlyList<BasicCueRow> Cues,
@@ -145,7 +149,7 @@ internal static class BasicTrainer
         var suffixes = SelectSuffixes(counts, lexicon, closed, hp);
         var (cues, collisions, skipped) = TrainCues(anchors, choosers, hp);
         var tense = verbs is null ? null : TrainTense(verbs, hp);
-        return new BasicModelData(hp, counts.Unigrams, counts.Bigrams, counts.Trigrams, words, suffixes, cues, collisions, skipped, tense);
+        return new BasicModelData(hp, counts.Unigrams, counts.Bigrams, counts.Trigrams, counts.ClauseBigrams, counts.ClauseTrigrams, words, suffixes, cues, collisions, skipped, tense);
     }
 
     /// <summary>

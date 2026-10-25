@@ -57,9 +57,10 @@ internal static class ImageCompiler
     private const int MaxText = 255;
     private const string SurfacePrefix = "\u0001surface\t";
 
-    // The tables the image is compiled from; sense_frequency is not one of them (it feeds the prior of the encoder, not the order)
+    // The tables the image is compiled from; sense_frequency is one of them (it is the usage prior of the senses of a
+    // lemma that no model scores) but its counts are not part of the inventory hash
     private static readonly string[] HashedTables =
-        ["entry", "form", "sense", "sense_label", "sense_group", "group_sense"];
+        ["entry", "form", "sense", "sense_frequency", "sense_label", "sense_group", "group_sense"];
 
     private static readonly Comparer<string> Utf8 = Comparer<string>.Create(DataLayout.CompareUtf8);
 
@@ -248,8 +249,9 @@ internal static class ImageCompiler
         return (bySpelling.Count, usedEntries.Count);
     }
 
-    // One sense of the catalog, before it is numbered; Position and Homograph give its place in the Open English WordNet order
-    private sealed record SenseEntry(string Id, string DataId, string Lemma, PartOfSpeech Pos, string? KeySuffix, int Position, int Homograph);
+    // One sense of the catalog, before it is numbered; Position and Homograph give its place in the Open English WordNet order,
+    // TagCount is its WordNet 3.0 tag count (0 for a project sense and for a key without a count)
+    private sealed record SenseEntry(string Id, string DataId, string Lemma, PartOfSpeech Pos, string? KeySuffix, int Position, int Homograph, int TagCount);
 
     // The senses, groups, lemma blocks and keys
     private static (int Senses, int Groups) AddCatalogSections(
@@ -278,6 +280,7 @@ internal static class ImageCompiler
         }
 
         var senses = new List<SenseEntry>();
+        var tagCounts = Tiers.ReadTagCounts(dataDirectory);
         foreach (var (dataId, label) in labels.Where(p => !omitted.Contains(p.Key)).OrderBy(p => p.Key, Utf8))
         {
             if (!senseRows.TryGetValue(dataId, out var row) || !entryRows.TryGetValue(row[2], out var entry))
@@ -294,6 +297,13 @@ internal static class ImageCompiler
                 continue;
             }
 
+            var tagCount = key.Length > 0 ? tagCounts.GetValueOrDefault(key) : 0;
+            if (tagCount > ushort.MaxValue)
+            {
+                errors.Add($"sense_frequency: the tag count {tagCount.ToString(CultureInfo.InvariantCulture)} of the key '{key}' does not fit the 16 bits of the image.");
+                continue;
+            }
+
             senses.Add(new SenseEntry(
                 lemma + "#" + label,
                 dataId,
@@ -301,7 +311,8 @@ internal static class ImageCompiler
                 DataTables.PosOf(entry[2]),
                 key.Length == 0 ? null : key[(lemma.Length + 1)..],
                 int.Parse(row[4], CultureInfo.InvariantCulture),
-                int.Parse(entry[3], CultureInfo.InvariantCulture)));
+                int.Parse(entry[3], CultureInfo.InvariantCulture),
+                tagCount));
         }
 
         senses.Sort((a, b) => DataLayout.CompareUtf8(a.Id, b.Id));
@@ -449,6 +460,7 @@ internal static class ImageCompiler
         AddStrings(sections, ImageFormat.SectionSenseIdLength, ImageFormat.SectionSenseIdBytes, senses.Select(s => s.Id));
         AddStrings(sections, ImageFormat.SectionSenseKeyLength, ImageFormat.SectionSenseKeyBytes, senses.Select(s => s.KeySuffix ?? string.Empty));
         sections[ImageFormat.SectionSenseGroup] = (Uints(senses.Select((_, i) => (uint)groupIndex.GetValueOrDefault(i)).ToList()), 4);
+        sections[ImageFormat.SectionSenseFrequency] = (Ushorts(senses.Select(s => s.TagCount)), 2);
         AddStrings(sections, ImageFormat.SectionGroupIdLength, ImageFormat.SectionGroupIdBytes, groups.Select(g => g.Id));
         sections[ImageFormat.SectionGroupPos] = (groups.Select(g => (byte)g.Pos).ToArray(), 1);
         var groupStart = new List<uint> { 0 };
@@ -507,6 +519,18 @@ internal static class ImageCompiler
         for (var i = 0; i < values.Count; i++)
         {
             BinaryPrimitives.WriteUInt32LittleEndian(bytes.AsSpan(i * 4), values[i]);
+        }
+
+        return bytes;
+    }
+
+    private static byte[] Ushorts(IEnumerable<int> values)
+    {
+        var list = values.ToList();
+        var bytes = new byte[list.Count * 2];
+        for (var i = 0; i < list.Count; i++)
+        {
+            BinaryPrimitives.WriteUInt16LittleEndian(bytes.AsSpan(i * 2), (ushort)list[i]);
         }
 
         return bytes;

@@ -175,6 +175,27 @@ public class ContractsTests
     }
 
     /// <summary>
+    ///     A candidate built without the ranking argument, and a default candidate, count their senses as scored in
+    ///     context (a model written before the argument existed keeps working); only the explicit argument marks a ranking
+    ///     by usage, and it takes part in equality.
+    /// </summary>
+    [Fact]
+    public void WordSenseContracts_AnalysisCandidate_SensesRankedByUsage_DefaultsToContextScored()
+    {
+        var senses = ImmutableArray.Create(new SenseCandidate("record#a", 0.6), new SenseCandidate("record#b", 0.4));
+        var scored = new AnalysisCandidate(Noun, 0.5, senses);
+        var ranked = new AnalysisCandidate(Noun, 0.5, senses, true);
+
+        Assert.False(scored.SensesRankedByUsage);
+        Assert.False(default(AnalysisCandidate).SensesRankedByUsage);
+        Assert.False(new AnalysisCandidate(Noun, 0.5, senses, false).SensesRankedByUsage);
+        Assert.True(ranked.SensesRankedByUsage);
+        Assert.NotEqual(scored, ranked);
+        Assert.Equal(scored, new AnalysisCandidate(Noun, 0.5, senses, false));
+        Assert.Equal(ranked, new AnalysisCandidate(Noun, 0.5, senses, true));
+    }
+
+    /// <summary>
     ///     Sense candidates with the same values are equal.
     /// </summary>
     [Fact]
@@ -592,6 +613,51 @@ public class ContractsTests
             ["Noun", "Pronoun", "Verb", "Adjective", "Adverb", "Preposition", "Conjunction", "Interjection", "Determiner", "Auxiliary"],
             Enum.GetNames<PartOfSpeech>());
         Assert.Equal(9, (int)PartOfSpeech.Auxiliary);
+    }
+
+    /// <summary>
+    ///     The composite model of the core subsystem, composed with the built-in Basic model as its fallback, answers a
+    ///     word that its primary model leaves at the part-of-speech level with the slot probabilities of both models
+    ///     combined (the verb that the Basic tagger reads from the context overrules the noun of the primary model), keeps
+    ///     the primary model's answer with the weight 1, and answers the words the primary model does not know with the
+    ///     result of the Basic model.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseCore_Fallback_PartOfSpeechLevelPrimary_IsReconciledWithTheBasicModel()
+    {
+        // Arrange: a primary model that puts the noun "use" on top (0.9 against 0.1) at the part-of-speech level
+        string[] words = ["Do", "not", "use", "these", "guys", "."];
+        var noun = new WordDetails("use", PartOfSpeech.Noun, "Number=Sing");
+        var verb = new WordDetails("use", PartOfSpeech.Verb, "VerbForm=Inf");
+        ImmutableArray<SenseCandidate> senses = [new("use#1", 1.0)];
+        var primaryUse = new ClassifyResult("use", true, [new(noun, 0.9, senses), new(verb, 0.1, senses)], noun, SenseLevel.PartOfSpeech, 0.9, null, null);
+        using var basic = new BasicWordSenseModel();
+        var basicResults = await basic.ClassifyAsync(words, TestContext.Current.CancellationToken);
+        using var reconciled = new FallbackWordSenseModel(new PartOfSpeechEncoder(primaryUse), new BasicWordSenseModel(), 0.3);
+        using var kept = new FallbackWordSenseModel(new PartOfSpeechEncoder(primaryUse), new BasicWordSenseModel(), 1.0);
+
+        // Act
+        var combined = await reconciled.ClassifyAsync(words, TestContext.Current.CancellationToken);
+        var unchanged = await kept.ClassifyAsync(words, TestContext.Current.CancellationToken);
+
+        // Assert: the verb of the Basic tagger wins at the weight 0.3, the weight 1 keeps the noun, and the other words are Basic's
+        Assert.Equal(PartOfSpeech.Verb, combined[2].Details?.PartOfSpeech);
+        Assert.Equal(SenseLevel.PartOfSpeech, combined[2].Level);
+        Assert.Equal(1.0, combined[2].Analyses.Sum(a => a.Probability), 9);
+        Assert.Equal(PartOfSpeech.Noun, unchanged[2].Details?.PartOfSpeech);
+        Assert.Equal(basicResults[0], combined[0]);
+        Assert.Equal(basicResults[4], combined[4]);
+    }
+
+    private sealed class PartOfSpeechEncoder(ClassifyResult answer) : IWordSenseModel
+    {
+        public Task<ClassifyResult[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default) =>
+            Task.FromResult(words.Select(w => w == answer.Word ? answer : ClassifyResult.Unknown(w)).ToArray());
+
+        public void Dispose()
+        {
+        }
     }
 
     private sealed class ClassifyOnlyModel : IWordSenseModel

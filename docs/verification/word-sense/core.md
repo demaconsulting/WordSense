@@ -122,6 +122,32 @@ open corpus the statistics come from, like the lexicon, treats the copula as a m
 testament`, `the can is empty` and `the will` stay nouns: the Auxiliary analysis is not chosen directly after an article
 or possessive.
 
+#### The Clause of a Word Weighs Its Part of Speech
+
+Through the public `BasicWordSenseModel`, the tagger knows whether the clause of a word already has a verb. A word that
+could be a noun or a verb and follows a determiner and a noun is a noun in a clause that already has a verb
+(`BasicWordSenseModel_ClassifyAsync_NounAfterNounInClauseWithVerb_IsNoun`: `Please open the door handle`, `Replace the
+oil filter`, `Inspect the brake pad`), and is a verb again after a comma or a conjunction that starts a new clause
+(`BasicWordSenseModel_ClassifyAsync_VerbAfterClauseBreak_IsVerb`: `He nodded , the pump runs`, `He nodded and the pump
+runs`, where the same sentence without the break reads `runs` as a noun). The clause counts, their smoothing and the
+transitions are verified in the `BasicTables` and `PosTagger` unit documents.
+
+#### A Gerund at the Start Does Not Take the Verb of the Clause
+
+Through the public `BasicWordSenseModel`
+(`BasicWordSenseModel_ClassifyAsync_GerundAtTheStart_IsStillAVerb`), a first word that the dictionary lists as a verb
+only as a gerund (`Resolving this issue requires care`, `Checking this valve takes time`) is answered `Verb`, because the
+clause has no verb yet and the noun-phrase reading of the opening words is not favored. The decision reads the
+dictionary, not the ending, in the `BasicClassifier` unit document and is applied in the `PosTagger` unit document.
+
+#### A Possessive Written as One Token Is Read as Stem and Marker
+
+Through the public `BasicWordSenseModel`
+(`BasicWordSenseModel_ClassifyAsync_PossessiveToken_ReadsTheNextWordAsNoun`), the word after a possessive that is one
+token (`the sergeant's rank`, `the pilot's license`, `the captain's order`) is a noun, as after a noun and a separate
+marker, while the possessive itself is answered as one token with its own noun analysis. The expansion and the rows of
+the caller are verified in the `PosTagger` and `BasicClassifier` unit documents.
+
 #### Cues Separate Analyses of One Part of Speech
 
 Analyses that share a part of speech, such as the past and the present of `read` or the lemmas of `left`, are told
@@ -148,10 +174,23 @@ shared tense table is verified in the `BasicClassifier`, `CueModel` and `BasicTa
 
 `FallbackWordSenseModel` answers a word with the result of the primary model when it scored senses for it and with the
 result of the fallback model otherwise (`FallbackWordSenseModel_PrimaryScoredSenses_UsesPrimary`,
-`FallbackWordSenseModel_PrimaryChoseOnlyAnalysis_UsesFallback`); the variants of a slot that the primary model gives the
+`FallbackWordSenseModel_PrimaryChoseOnlyAnalysis_UsesFallback`); senses that a primary model only ranks by usage
+(`SensesRankedByUsage`, as the Basic model does) are not scored senses, so a Basic primary result is never refined or
+reconciled (`FallbackWordSenseModel_BasicAsPrimary_UsageRankedSenses_AreNotRefinedOrReconciled`,
+`FallbackWordSenseModel_PrimaryWithContextScoredSenses_StillReconciled`); the variants of a slot that the primary model
+gives the
 same probability take the proportions of the fallback and keep the probability of the slot
-(`FallbackWordSenseModel_TiedVariantsOfASlot_TakeTheProportionsOfTheFallback`); it prepares the members that can be
-prepared, only those, and reports a failure after all ran
+(`FallbackWordSenseModel_TiedVariantsOfASlot_TakeTheProportionsOfTheFallback`).
+
+Through the public composite model with the built-in Basic model as its fallback
+(`WordSenseCore_Fallback_PartOfSpeechLevelPrimary_IsReconciledWithTheBasicModel`, in `ContractsTests`), a primary model
+that answers the word `use` at the part-of-speech level with the noun at 0.9 and the verb at 0.1 gives, for "Do not use
+these guys ." and a primary weight of 0.3, the verb analysis selected by the Basic tagger at the part-of-speech level
+with the probabilities summing to one, while the primary weight 1 keeps the noun and the words that the primary model
+does not know are answered exactly as the Basic model answers them. The combination itself (the product of the powers,
+the floor, the union of the slots, the variants and senses kept, the sense and group answers left alone) is verified in
+the `FallbackWordSenseModel` scenarios of the `WordSenseContracts` unit document. The composite also prepares the
+members that can be prepared, only those, and reports a failure after all ran
 (`FallbackWordSenseModel_EnsureModelAsync_EnsuresBoth`, `FallbackWordSenseModel_EnsureModelAsync_OnlyCapableMemberEnsured`),
 and disposes both models once (`FallbackWordSenseModel_Dispose_DisposesBothOnce`). The scenarios are detailed in the
 `WordSenseContracts` unit document.
@@ -160,13 +199,14 @@ and disposes both models once (`FallbackWordSenseModel_Dispose_DisposesBothOnce`
 
 The Basic model answers the 364 sentences of the reviewed suite (`corpus/suite`) at least as well as the expectation file
 records for it: no row falls below its expectation (`fine`, `answer` or `miss`), so a regression fails the build while
-the known misses (the heteronym rows that need a sense, which Basic does not rank) stay documented
+the known misses (the heteronym rows that need a sense, which Basic ranks only by usage) stay documented
 (`BasicSuiteTests`, `BasicSuite_ExpectedPasses_StillPass`).
 
 #### Answer Level Is Stated Honestly
 
 An ambiguous word is answered at the part of speech level without a group or sense id, with all its analyses listed and
-no scored senses; a word whose selected analysis has a lemma and part of speech with one sense is answered at the sense
+the senses of its analyses ranked by the usage prior when they are several (never an answer); a word whose selected
+analysis has a lemma and part of speech with one sense is answered at the sense
 level with that sense (and lists it with probability 1 in its analysis); a word with one analysis and several senses is
 answered at the part of speech level with confidence 1, and an unknown word at the level none with no analysis; no
 answer is at the group level (see the `BasicClassifier` unit document).

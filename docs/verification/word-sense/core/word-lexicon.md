@@ -132,6 +132,22 @@ All scenarios below pass on every platform and target framework of the CI matrix
   one raw section changed. A group that lists the same sense twice, and a key index with two entries swapped or with a
   repeated entry, are rejected when the catalog is first read (not only by a validation tool), while the same rebuild
   without damage is accepted.
+- **Sense frequency stored** (`WordLexicon_Image_SenseFrequency_HasACountForEverySense`,
+  `WordLexicon_Image_UsageOf_ProjectSense_HasTagCountZero`): the usage of every lemma and part of speech of the catalog
+  has one entry for each of its senses, and the entries of all of them add up to the senses of the catalog; every sense
+  without a sense key (a project sense) has the tag count 0.
+- **Sense frequency listed** (`WordLexicon_Image_UsageOf_ListsTheSensesInInventoryOrderWithTheirTagCounts`,
+  `WordLexicon_Image_UsageOf_SlotNotInTheCatalog_IsEmpty`): the usage of `bank` lists the same senses as `SensesOf`, in
+  inventory order, with at least one tag count above 0; the usage of an unknown lemma, or of a part of speech without
+  senses, is empty (a test without a requirement).
+- **Damaged sense frequency section** (`WordLexicon_Image_SenseFrequencySectionMissing_IsRejected`,
+  `WordLexicon_Image_SenseFrequencyWrongLength_IsRejected`, `WordLexicon_Image_TagCountOnASenseWithoutAKey_IsRejected`):
+  the same rebuild of the embedded image with the sense frequency section removed, one value short or one byte short (an
+  odd length), or with a count on the first sense that has no key, is rejected when the catalog is first read.
+- **Counts outside the inventory hash** (`WordLexicon_Image_TagCounts_AreNotPartOfTheInventoryHash`): with every count
+  cleared the image is accepted, its inventory hash (computed again from its sections) is the one of the header and of
+  the embedded image, and the usage of `bank` has only zero counts, which shows that the counts are outside the
+  inventory hash.
 - **Directory damage** (`WordLexicon_Image_DirectoryRebuiltWithoutDamage_IsAccepted`,
   `WordLexicon_Image_TrailingBytesAfterCompressedStream_IsRejected`,
   `WordLexicon_Image_SectionStartingInHeaderOrDirectory_IsRejected`, `WordLexicon_Image_OverlappingSections_IsRejected`,

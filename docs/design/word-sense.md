@@ -65,8 +65,10 @@ The layering is strict. Core references nothing. Onnx references only core (and 
 Runtime). MiniLM and BertBaseCased reference core and Onnx. The composition of an encoder model with the Basic
 model is made in the model packages with the core `FallbackWordSenseModel`: the primary model (the encoder) answers a
 word when it scored senses for it, and the fallback model (Basic, from core) answers every other word with its complete
-result, never a mixture of the two (the one refinement: where the encoder gives the variants of a slot the same
-probability, the variants take the proportions of Basic, and the probability of the slot does not change). Model
+result, never a mixture of the two (the two refinements: where the encoder gives the variants of a slot the same
+probability, the variants take the proportions of Basic, and the probability of the slot does not change; and where
+the encoder commits to no sense and no group, the slot probabilities of the two models are combined with a primary
+weight that each model package tunes, 0.6 for MiniLM and 1 for BertBaseCased). Model
 packages never reference each other otherwise, so a consumer installs only
 the model it wants. The contracts in core are the seam between callers and models: a caller programs against
 `IWordSenseModel` and can swap models without code changes; a caller that wants to control when the files of a model
@@ -76,8 +78,10 @@ licensed `MIT AND CC-BY-4.0` and ships a `NOTICE.md` that enumerates what it emb
 (CC BY 4.0) with the Princeton WordNet notice that it requires, the Moby Part-of-Speech List (public domain), the
 inflected forms authored by the project (CC0 1.0), the statistics of the built-in model (CC0 1.0, from our own corpora
 and from no treebank) and the project data (MIT); it also names the tagged tokens of the open corpus (CC0 1.0) that
-corroborate generated forms at build time. No CC BY-SA material is shipped anywhere. The WordNet 3.0 counts feed only
-the usage prior of the encoder models: the MiniLM and BertBaseCased packages are also `MIT AND CC-BY-4.0`, because
+corroborate generated forms at build time. No CC BY-SA material is shipped anywhere. The WordNet 3.0 counts feed the
+usage prior: the core image carries them, and the Basic model uses them to rank the senses of every polysemous lemma and
+part of speech that no model scores (so the MiniLM and BertBaseCased composites rank their untrained lemmas through the
+Basic fallback). The MiniLM and BertBaseCased packages are also `MIT AND CC-BY-4.0`, because
 their weights hold Open English WordNet sense ids, and their notices add the WordNet 3.0 notice of that prior.
 
 **Keys and heteronyms.** A downstream library, for example a speech front end, attaches its own data to the meaning of
@@ -198,8 +202,10 @@ analyses at the part of speech level, and the Basic model of a composition choos
      a slot is the sum over its feature variants, and the context cues alone split it among them), the selected
      analysis is the best variant of the most probable slot, and the level is `PartOfSpeech` with the probability of
      that slot as confidence (or `Sense`
-     when the selected analysis has exactly one sense). The senses of an analysis are listed only when it has
-     exactly one sense (probability 1). An encoder model
+     when the selected analysis has exactly one sense). The senses of an analysis are listed when it has
+     exactly one sense (probability 1) and, when it has two or more, ranked by the usage prior (the WordNet 3.0 tag counts
+     of the senses with add-k smoothing, the same in every sentence, marked `SensesRankedByUsage`); the ranking is a
+     statement about the lemma and never changes the level, the confidence or the probabilities. An encoder model
      runs the encoder once over the text (only when some word needs it), pools the hidden states of the word,
      centers and scales the vector, and scores the fine senses of the word with the lemma's weights. It lists every
      analysis with its probability and, in each, the senses with their probabilities given the analysis (softmax-
@@ -210,18 +216,31 @@ analyses at the part of speech level, and the Basic model of a composition choos
      out per slot: a slot has the mass of its senses, the probability of a sense given its slot is its renormalized
      mass, the feature variants of a slot split its probability (by the form chooser when it has a label for each,
      otherwise equally) and the split never reaches the level or the confidence. A word
-     whose lemma has no weights, or for which the encoder gave no usable vector, is answered from the lexicon alone:
-     the slots are equally likely (the variants of a slot split its share equally), the first is selected, no senses
-     are scored, and the level is `PartOfSpeech`. That lexicon-only result is what the Onnx classifier returns on its own;
-     the MiniLM and BertBaseCased composites replace it by the answer of the Basic model for the word.
+     whose lemma has no weights, or for which the encoder gave no usable vector, is answered from the lexicon alone by
+     the standalone Onnx classifier: the slots are equally likely (the variants of a slot split its share equally), the
+     first is selected, no senses are scored or listed, and the level is `PartOfSpeech`. The MiniLM and BertBaseCased
+     composites do not return that result: they replace it by the answer of the Basic model for the word, whose
+     probabilities come from the tagger and the context cues and whose polysemous analyses list their senses ranked by the
+     usage prior (not scored; the level and the confidence are the part of speech answer, with no sense and no group).
 5. A composite model (`FallbackWordSenseModel`) answers each word with the result of its primary model when
-   the primary model scored senses for it (the selected analysis lists scored senses, or the level is `Group` or
-   `Sense`) and otherwise with the complete result of its fallback model. In the encoder packages the primary model is
+   the primary model scored senses for it (the selected analysis lists senses scored in context, not merely ranked by
+   usage, or the level is `Group` or `Sense`) and otherwise with the complete result of its fallback model. In the encoder
+   packages the primary model is
    the encoder model and the fallback is the Basic model, so a word that the encoder does not score is answered by Basic
-   at the part of speech level with the probabilities of its analyses. The composite adds no probability of its own: the
+   at the part of speech level with the probabilities of its analyses and its usage-ranked senses. A primary model that
+   only ranks senses by usage (the Basic model itself, or a model that ranks by a prior) never counts as having scored
+   them: its result is not refined or reconciled, and the fallback result answers the word. The composite adds no
+   probability of its own: the
    slot rules above hold inside each of the two results. Where the primary result gives the variants of a slot the same
    probability (an encoder cannot tell the past of `put` from its infinitive), the variants take the proportions of the
    fallback result, with the probability of the slot unchanged, so the level, confidence and sense do not move.
+   Where the primary result is at the part of speech level (the encoder committed to no sense and no group) and the
+   primary weight `w` is below 1, the probability of every slot over the slots of both results becomes proportional to
+   `p_primary^w × p_fallback^(1−w)` (a slot a result does not list counts with the floor 1e-6): the encoder's slot
+   probability is the mass of its senses, not a part-of-speech estimate, and the tagger of Basic repairs its wrong top
+   slot (the verb `use` called a noun). The variants of a slot keep their shares and the analyses keep their senses,
+   the selected analysis is the first analysis of the re-ordered result and the confidence is the probability of its
+   slot. An answer at the sense or group level is never touched.
 6. The model returns a `ClassifyResult[]` parallel to the input. The confidence of each result is the probability of
    its answer at its own level (the probability of the slot of the selected analysis, times the probability of the
    answered sense, or the summed probability of the member senses of the answered group, within that slot); it is

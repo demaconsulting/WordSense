@@ -48,6 +48,254 @@ public class BasicTablesTests
     }
 
     /// <summary>
+    ///     The sentences of the clause tests: a verb follows a determiner and a noun in a clause without a verb (the
+    ///     first three) and a noun follows them in a clause that already has one (the last two).
+    /// </summary>
+    private static readonly int[][] ClauseSentences =
+    [
+        [PosTag.Determiner, PosTag.Noun, PosTag.Verb],
+        [PosTag.Determiner, PosTag.Noun, PosTag.Verb],
+        [PosTag.Determiner, PosTag.Noun, PosTag.Verb],
+        [PosTag.Pronoun, PosTag.Verb, PosTag.Determiner, PosTag.Noun, PosTag.Noun],
+        [PosTag.Pronoun, PosTag.Verb, PosTag.Determiner, PosTag.Noun, PosTag.Noun],
+    ];
+
+    /// <summary>
+    ///     Loads a toy table that has the given training sentences and clause smoothing and no words, suffixes or cues.
+    /// </summary>
+    /// <param name="sentences">The tag sequences of the training sentences.</param>
+    /// <param name="clauseSmoothing">The smoothing of the clause state written to the header.</param>
+    /// <returns>The table.</returns>
+    private static BasicTables LoadClauseTable(int[][] sentences, double clauseSmoothing) =>
+        TestTables.Load(TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], sentences: sentences, clauseSmoothing: clauseSmoothing));
+
+    /// <summary>
+    ///     Gets the transition probability of a tag after a determiner and a noun in one clause state.
+    /// </summary>
+    /// <param name="tables">The table.</param>
+    /// <param name="state">The clause state: 0 for a clause without a verb, 1 for a clause that has one.</param>
+    /// <param name="tag">The tag that follows.</param>
+    /// <returns>The probability.</returns>
+    private static double AfterDeterminerAndNoun(BasicTables tables, int state, int tag) =>
+        tables.ClauseTransition[(state * PosTag.Extended * PosTag.Extended * PosTag.Extended) + (((PosTag.Determiner * PosTag.Extended) + PosTag.Noun) * PosTag.Extended) + tag];
+
+    /// <summary>
+    ///     Gets the largest difference between the transition probabilities of a clause state after a determiner and a
+    ///     noun and the unconditioned transition probabilities of the same context.
+    /// </summary>
+    /// <param name="tables">The table.</param>
+    /// <param name="state">The clause state: 0 for a clause without a verb, 1 for a clause that has one.</param>
+    /// <returns>The largest absolute difference over the next tag.</returns>
+    private static double DistanceToTheUnconditioned(BasicTables tables, int state)
+    {
+        var context = ((PosTag.Determiner * PosTag.Extended) + PosTag.Noun) * PosTag.Extended;
+        var largest = 0.0;
+        for (var c = 0; c < PosTag.Extended; c++)
+        {
+            largest = Math.Max(largest, Math.Abs(AfterDeterminerAndNoun(tables, state, c) - tables.Transition[context + c]));
+        }
+
+        return largest;
+    }
+
+    /// <summary>
+    ///     Reads the decompressed table of a table without any clause count and raises the first count of one clause
+    ///     block above its total, which is 0.
+    /// </summary>
+    /// <param name="trigram">True to raise the first clause trigram count, false to raise the first clause bigram count.</param>
+    /// <returns>The compressed table with the raised count.</returns>
+    private static byte[] WithClauseCountAboveTotal(bool trigram)
+    {
+        var raw = TestTables.Decompress(TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], sentences: [[PosTag.Noun]], clauseSmoothing: 0));
+        var header = 4 + 32 + (9 * 8) + 1;
+        var counts = PosTag.Extended + (PosTag.Extended * PosTag.Extended) + (PosTag.Extended * PosTag.Extended * PosTag.Extended);
+        var offset = header + counts + (trigram ? PosTag.Extended * PosTag.Extended : 0);
+
+        // Every count is below 128, so each is one byte
+        Assert.Equal((byte)0, raw[offset]);
+        raw[offset] = 100;
+        return TestTables.Compress(raw);
+    }
+
+    /// <summary>
+    ///     The bigram and trigram counts of the positions whose clause already has a verb are exposed next to the totals.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_ClauseCounts_AreExposed()
+    {
+        // Arrange: in "they go the dog dog" the determiner and the nouns come after the verb, so their clause has one
+        const int k = PosTag.Extended;
+        var tables = LoadClauseTable(ClauseSentences, 0);
+
+        // Act
+        var bigrams = tables.ClauseBigrams;
+        var trigrams = tables.ClauseTrigrams;
+
+        // Assert: the layout of the totals, and the counts of the two sentences with a verb before the determiner
+        Assert.Equal(k * k, bigrams.Length);
+        Assert.Equal(k * k * k, trigrams.Length);
+        Assert.Equal(2, bigrams[(PosTag.Verb * k) + PosTag.Determiner]);
+        Assert.Equal(2, bigrams[(PosTag.Determiner * k) + PosTag.Noun]);
+        Assert.Equal(2, trigrams[(((PosTag.Verb * k) + PosTag.Determiner) * k) + PosTag.Noun]);
+        Assert.Equal(5, tables.Bigrams[(PosTag.Determiner * k) + PosTag.Noun]);
+        Assert.Equal(0, bigrams[(PosTag.Pronoun * k) + PosTag.Verb]);
+    }
+
+    /// <summary>
+    ///     The smoothing of the clause state is read from the header.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_ClauseSmoothing_IsRead()
+    {
+        // Arrange: a table with a smoothing that differs from the default of the toy table
+        var blob = TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], clauseSmoothing: 7.5);
+
+        // Act
+        var tables = TestTables.Load(blob);
+        var defaultTables = TestTables.Load(TestTables.Default());
+
+        // Assert
+        Assert.Equal(7.5, tables.ClauseSmoothing);
+        Assert.Equal(4.0, defaultTables.ClauseSmoothing);
+    }
+
+    /// <summary>
+    ///     The transition probabilities of both clause states are distributions over an observed context.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_ClauseTransitions_AreDistributions()
+    {
+        // Arrange: the default toy table, which has an observed context of a determiner and a noun in both states
+        var tables = TestTables.Load(TestTables.Default());
+
+        // Act: add up the probabilities of the next tag in each state
+        var sums = new[] { 0, 1 }.Select(state => Enumerable.Range(0, PosTag.Extended).Sum(c => AfterDeterminerAndNoun(tables, state, c)));
+
+        // Assert
+        Assert.All(sums, sum => Assert.Equal(1.0, sum, 9));
+        Assert.Equal(2 * PosTag.Extended * PosTag.Extended * PosTag.Extended, tables.ClauseTransition.Length);
+    }
+
+    /// <summary>
+    ///     The transitions of a clause state follow the counts of that state: a verb after a determiner and a noun is
+    ///     more probable in the state in which it was counted more often, a noun in the other.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_ClauseTransitions_FollowTheClauseCounts()
+    {
+        // Arrange: the verb after "D N" only occurs in a clause without a verb; no smoothing, so the counts decide
+        var tables = LoadClauseTable(ClauseSentences, 0);
+
+        // Act
+        var verbWithout = AfterDeterminerAndNoun(tables, 0, PosTag.Verb);
+        var verbWith = AfterDeterminerAndNoun(tables, 1, PosTag.Verb);
+        var nounWithout = AfterDeterminerAndNoun(tables, 0, PosTag.Noun);
+        var nounWith = AfterDeterminerAndNoun(tables, 1, PosTag.Noun);
+
+        // Assert
+        Assert.True(verbWithout > verbWith);
+        Assert.True(nounWith > nounWithout);
+    }
+
+    /// <summary>
+    ///     A table without clause counts gives both clause states the unconditioned transitions.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_ClauseTransitions_WithoutClauseCounts_AreTheUnconditioned()
+    {
+        // Arrange: no verb in the sentences means no clause counts at all
+        var plain = LoadClauseTable([[PosTag.Noun, PosTag.Noun]], 0);
+        var size = PosTag.Extended * PosTag.Extended * PosTag.Extended;
+
+        // Act / Assert: both states equal the unconditioned transition at every index
+        for (var i = 0; i < size; i++)
+        {
+            Assert.Equal(plain.Transition[i], plain.ClauseTransition[i], 12);
+            Assert.Equal(plain.Transition[i], plain.ClauseTransition[size + i], 12);
+        }
+    }
+
+    /// <summary>
+    ///     A larger smoothing moves the transitions of both clause states closer to the unconditioned transitions
+    ///     without ever making them equal where the context has counts in the state; the distance shrinks toward zero.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_ClauseSmoothing_MovesTheTransitionsTowardTheUnconditioned()
+    {
+        // Arrange: the same counts with a growing smoothing
+        double[] values = [0, 4, 64, 1e6];
+        var tables = values.Select(s => LoadClauseTable(ClauseSentences, s)).ToArray();
+
+        // Act: the distance to the unconditioned transitions in each state
+        var distances = new[] { 0, 1 }.Select(state => tables.Select(t => DistanceToTheUnconditioned(t, state)).ToArray()).ToArray();
+
+        // Assert: strictly smaller for each larger smoothing, close to zero for the largest and not exactly zero
+        Assert.All(distances, d =>
+        {
+            Assert.True(d[0] > d[1]);
+            Assert.True(d[1] > d[2]);
+            Assert.True(d[2] > d[3]);
+            Assert.True(d[3] < 1e-3);
+            Assert.True(d[3] > 0);
+        });
+    }
+
+    /// <summary>
+    ///     A clause state is mixed with the unconditioned transitions by the weight <c>m / (m + smoothing)</c>, where
+    ///     <c>m</c> is the number of trigram counts of the context in that state.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_ClauseSmoothing_WeighsTheContextByItsCountInTheState()
+    {
+        // Arrange: the counts without smoothing give the state-only transitions; smoothing 4 mixes them in
+        const int k = PosTag.Extended;
+        var counted = LoadClauseTable(ClauseSentences, 0);
+        var mixed = LoadClauseTable(ClauseSentences, 4);
+        var context = ((PosTag.Determiner * k) + PosTag.Noun) * k;
+        var withVerb = Enumerable.Range(0, k).Sum(c => counted.ClauseTrigrams[context + c]);
+        var withoutVerb = Enumerable.Range(0, k).Sum(c => counted.Trigrams[context + c] - counted.ClauseTrigrams[context + c]);
+        Assert.Equal(2, withVerb);
+        Assert.Equal(3, withoutVerb);
+
+        // Act / Assert: the mixed value is the weighted mean of the counted value and the unconditioned value
+        foreach (var (state, m) in new[] { (0, withoutVerb), (1, withVerb) })
+        {
+            var weight = m / (m + 4.0);
+            for (var c = 0; c < k; c++)
+            {
+                var expected = (weight * AfterDeterminerAndNoun(counted, state, c)) + ((1 - weight) * counted.Transition[context + c]);
+                Assert.Equal(expected, AfterDeterminerAndNoun(mixed, state, c), 12);
+            }
+        }
+    }
+
+    /// <summary>
+    ///     A clause bigram count that is larger than the total count of the same bigram is rejected.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_ClauseBigramAboveTotal_Throws()
+    {
+        // Arrange: a table without a clause count, with the first clause bigram count raised above its total
+        var blob = WithClauseCountAboveTotal(trigram: false);
+
+        // Act / Assert
+        Assert.Throws<InvalidDataException>(() => TestTables.Load(blob));
+    }
+
+    /// <summary>
+    ///     A clause trigram count that is larger than the total count of the same trigram is rejected.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_ClauseTrigramAboveTotal_Throws()
+    {
+        // Arrange: a table without a clause count, with the first clause trigram count raised above its total
+        var blob = WithClauseCountAboveTotal(trigram: true);
+
+        // Act / Assert
+        Assert.Throws<InvalidDataException>(() => TestTables.Load(blob));
+    }
+
+    /// <summary>
     ///     The longest known suffix gives a distribution over the open classes; an unknown ending gives none.
     /// </summary>
     [Fact]
@@ -139,11 +387,11 @@ public class BasicTablesTests
     [Fact]
     public void BasicTables_Load_WrongVersionOrTagCount_Throws()
     {
-        // Arrange: the tag count is a single-byte varint after the magic, the hash and eight doubles
+        // Arrange: the tag count is a single-byte varint after the magic, the hash and nine doubles
         var version = TestTables.Decompress(TestTables.Default());
         version[3] = (byte)'2';
         var tags = TestTables.Decompress(TestTables.Default());
-        const int tagCountOffset = 4 + 32 + (8 * 8);
+        const int tagCountOffset = 4 + 32 + (9 * 8);
         Assert.Equal(PosTag.Count, tags[tagCountOffset]);
         tags[tagCountOffset]++;
 
@@ -159,10 +407,30 @@ public class BasicTablesTests
     [Fact]
     public void BasicTables_Load_PreviousFormatWsb3_ThrowsUnknownFormat()
     {
-        // Arrange: a current table whose magic is changed back to the previous revision
+        // Arrange: a current table whose magic is changed back to the revision before the tense model
         var raw = TestTables.Decompress(TestTables.Default());
-        Assert.Equal((byte)'4', raw[3]);
+        Assert.Equal((byte)'5', raw[3]);
         raw[3] = (byte)'3';
+
+        // Act
+        var error = Assert.Throws<InvalidDataException>(() => TestTables.Load(TestTables.Compress(raw)));
+
+        // Assert
+        Assert.Contains("unknown format", error.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The previous format <c>WSB4</c>, which has no clause counts and no clause smoothing, is rejected as an unknown
+    ///     format whatever else it holds, so a table that was trained before the clause state is never read as a current
+    ///     one.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_PreviousFormatWsb4_ThrowsUnknownFormat()
+    {
+        // Arrange: a current table whose magic is changed back to the revision before the clause state
+        var raw = TestTables.Decompress(TestTables.Default());
+        Assert.Equal((byte)'5', raw[3]);
+        raw[3] = (byte)'4';
 
         // Act
         var error = Assert.Throws<InvalidDataException>(() => TestTables.Load(TestTables.Compress(raw)));

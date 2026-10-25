@@ -31,6 +31,14 @@ All scenarios pass.
   files is seen by rerunning `rebuild-forms` (see `data/PROVENANCE.md`) and reading `git diff`.
 - **Own entries kept** (`Check_AllFactsAndIngEntriesHold`): every generated fact holds and every -ing noun or
   adjective entry of the dictionary has its own analysis.
+- **Added parts of speech** (`Data_AddedPartOfSpeech_GainsTheAnalysisOfAnEntryWithoutOne`,
+  `Data_AddedPartOfSpeech_KeepsTheReviewedAnalysesAndInventsNone`): `graduate` has the adjective and `separate` the
+  noun, beside the reviewed analyses; `desert` has no adjective and `reread` no noun, because the dictionary has no
+  such entry.
+- **Open spellings** (`Data_OpenSpelling_GainsTheInflectionOfAnEntryWithoutOne`,
+  `Data_OpenSpelling_KeepsItsReviewedAnalyses`): `separates` has the plural of the noun `separate` and `axes` the plural
+  and the third person of `axe`, beside the reviewed plurals of `ax` and `axis`. The lexicon facts of
+  `lexicon-facts.tsv` assert the same analyses of the shipped image (`WordLexicon_Lookup_Fact_Holds`).
 - **Fact generation** (`Generate_IsDeterministicForSeed`, `Generate_MatchesCommittedFile`): the same seed gives the same
   facts and the committed generated fact file is the output of the command.
 - **Authored forms** (`WordSenseBuilder_AuthoredForms_*`, `OpenCorpusAttestation_*`,

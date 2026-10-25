@@ -61,8 +61,9 @@ implementation of the feature computation.
 - `CoverageReport`: the `coverage` command; measures how many running words of a directory of text files the word
   table knows, how many of the known words have a lemma with trained fine senses, and lists the unknown words as names
   and others.
-- `ImageCompiler`: reads the tables of `data/` (entry, form, sense, sense label, sense group and group sense) and the
-  lexicon lists, and writes the flat word image (`WSI1` version 4, a 112-byte header: magic,
+- `ImageCompiler`: reads the tables of `data/` (entry, form, sense, sense label, sense group, group sense and sense
+  frequency) and the
+  lexicon lists, and writes the flat word image (`WSI1` version 5, a 112-byte header: magic,
   version, section count, a reserved word, the SHA-256 of the data tables, the SHA-256 of all bytes from offset 112 and
   the 32-byte inventory hash; then a directory of 20-byte entries and the sections). The analysis sections are the
   UTF-8-byte-sorted spelling index, the features, the entries with their lemma and part of speech, one analysis row
@@ -73,11 +74,15 @@ implementation of the feature computation.
   order), the lemma and part-of-speech blocks (lemma bytes and part of speech sorted by lemma bytes then part of
   speech, each with a CSR of sense indexes in inventory order: the order of Open English WordNet, that is the position of
   the sense in its entry, then the homograph number of the entry, with project senses last, then sense id bytes; the
-  WordNet 3.0 tag counts play no part) and a key index (sense indexes sorted by full key bytes). Each section is
+  WordNet 3.0 tag counts play no part), the WordNet 3.0 tag count of each sense (section 38, one 16-bit value in sense id
+  order from the `sense_frequency` table joined on the sense key, 0 for a project sense and for a key without a count;
+  a count above 65,535 fails the compilation) and a key index (sense indexes sorted by full key bytes). Each section is
   Brotli-compressed. The
   inventory hash covers, as raw decompressed bytes with each section fed as id, length and bytes, the spelling,
   analysis, feature, entry lemma and part-of-speech, sense id, sense-group, group id, group part-of-speech and
-  lemma-block sections, and is what the weights and `basic.bin` must match. The catalog sections are decoded lazily by
+  lemma-block sections (not the tag counts: they can be corrected without training the models again), and is what the
+  weights and `basic.bin` must match. The data hash of the header covers the data tables of the image including
+  `sense_frequency`. The catalog sections are decoded lazily by
   the reader. Equal data always gives equal decompressed sections.
 - `WeightsTrainer`, `LogisticTrainer`, `ModelTrainer` and `WeightsBlobWriter`: train the per-lemma classifiers and the
   form choosers from pooled encoder vectors and serialize the weights blob (`WSX3`: float16 weights, the sense ids of
@@ -121,6 +126,11 @@ implementation of the feature computation.
   of each model for each row, grade an answer, and report the pass rates (the first four are compiled into the test
   projects of the models).
 - `LeakageCheck`, `LeakageSet`, `LeakageReport`: the check that the parts of the corpus share no sentence.
+- `AllWordsGold`, `AllWordsItem`, `AllWordsSample`, `AllWordsEvaluator`: the all-words gold set of untrained polysemous
+  lemmas (`corpus/allwords`) and its evaluation: the reader and writer of the gold files, the draw of the tokens from the
+  development and test splits of the representative open corpus, the labeling batches and the merge of two blind labelers,
+  and the measurement of each model (fine top-1 of the selected analysis, share and precision at the sense level, the
+  first-sense, tag-count and random baselines, and the smoothing sweep on the development half).
 - `OpenCorpus`, `OpenSentence`, `OpenToken`: read the open English part-of-speech corpus (`corpus/open`: header
   comments, the sentence comment lines and one seven-column token line per token, with the lemma and the features of
   each token) and turn a sentence into the tokens
@@ -129,7 +139,10 @@ implementation of the feature computation.
   counts and the evaluation present the classifier the tokens an application passes it.
 - `TaggerCounts`, `TaggedSentence`, `GoldToken`: the tag statistics: the mapping of the universal tags onto the 13 tags
   of the
-  tagger, the n-gram and per-word counts, and the deterministic count files `tag-ngrams.tsv` and `word-tags.tsv` of
+  tagger, the n-gram and per-word counts, the clause counts (the bigram and trigram counts of the positions whose clause
+  already has a verb, by the rule `PosTag.NextClause` that the tagger uses at run time, including the exception for a
+  sentence-initial non-finite verb, which needs the lexicon), and the deterministic count
+  files `tag-ngrams.tsv`, `tag-clause-ngrams.tsv` and `word-tags.tsv` of
   `corpus/open/counts`. They are usage statistics, so they are counted from the training split of the representative
   part only. A tagged sentence may carry, per token, the lemma, the treebank tag and the features of its source
   (`GoldToken`), which the tense evaluation and the tense training read.
@@ -141,8 +154,9 @@ implementation of the feature computation.
   dictionary-ambiguous words), the suffixes and the closed-class masks from the counts, train the cue tables from
   the anchors and the form-chooser anchors, with the analysis label of each sentence rolled up from its fine sense or
   chooser label, and train the shared tense table from every verb of the training split of the open corpus.
-- `BasicTablesWriter`: serializes the model data into the `WSB4` blob, deterministically.
-- `BasicTuner`: scores the hyper-parameter grid and the weight of the tense model.
+- `BasicTablesWriter`: serializes the model data into the `WSB5` blob, deterministically.
+- `BasicTuner`: scores the hyper-parameter grid (including the smoothing of the clause state, with the classifier
+  accuracy on the open corpus and treebank development sets) and the weight of the tense model.
 - `BasicModelBuilder`: the commands `open-counts` and `train-basic`.
 - `AppendixGenerator`: generates the senses appendix of the user guide.
 - `KeyExport`: writes every word key of the lexicon as a sorted text file.
@@ -185,6 +199,12 @@ instead of `--model`.
   trained lemmas (the model table cell) and, in a separate section, all mapped words of a trained lemma or of an
   untrained lemma with two or more senses (the words of an untrained lemma with fewer than two senses are counted but
   not measured).
+- `evaluate-allwords [--model all|NAME] [--output FILE]`: measures the models on the all-words gold set
+  (`corpus/allwords`, development and test halves reported separately), the independent measurement of the usage prior.
+- `allwords-sample --batches DIR [--per-split 600] [--max-per-lemma 3] [--seed 1] [--batch-size 100] [--data DIR]`: draws
+  the tokens of the gold set and writes the labeling batches and `sample.tsv` to `DIR`.
+- `allwords-merge --batches DIR --first SUFFIX --second SUFFIX [--target DIR] [--output FILE]`: merges the answers of two
+  labelers into `dev.tsv` and `test.tsv` and prints the agreement.
 - `evaluate-running [--model all|NAME] [--split test] [--gold FILE] [--report all|running|tense] [--output FILE]
   [--table FILE]`: measures the
   part-of-speech accuracy of the models on the representative test split of the open corpus, the convention-mapped
@@ -195,7 +215,8 @@ instead of `--model`.
   training part and an evaluation part, by two evaluation parts, or by the corpus and an example of Open English
   WordNet; it exits with 1 when one is.
 - `open-counts [--corpus DIR] [--output DIR]`: counts the tag statistics of the training split of the representative
-  open corpus (every token, whatever its consensus status) and writes the count files of `corpus/open/counts`.
+  open corpus (every token, whatever its consensus status) and writes the count files of `corpus/open/counts`
+  (`word-tags.tsv`, `tag-ngrams.tsv` and the clause counts `tag-clause-ngrams.tsv`).
 - `evaluate-tagger [--input FILE] [--corpus DIR] [--repository DIR] [--split test] [--gold FILE] [--output FILE]`:
   measures the part-of-speech accuracy of the basic classifier with the table `FILE` (default the shipped `basic.bin`)
   on a split of the representative open corpus (the headline), on the test split of the targeted challenge set (its own
@@ -205,8 +226,8 @@ instead of `--model`.
 - `train-basic [--corpus DIR] [--repository DIR] [--output FILE]`: retrains the whole Basic model with the default
   hyper-parameters from the committed counts of `corpus/open/counts`, the anchors and the chooser anchors, and writes
   `Resources/basic.bin` of the core package; it names `open-counts` when the counts are missing.
-- `tune-basic [--corpus DIR] [--repository DIR] [--gold FILE]`: scores the hyper-parameter grid and the weight of the
-  tense model and prints the tables; it writes nothing.
+- `tune-basic [--corpus DIR] [--repository DIR] [--gold FILE]`: scores the hyper-parameter grid (the smoothing of the
+  clause state among them) and the weight of the tense model and prints the tables; it writes nothing.
 - `label-senses [--data DIR]`: gives every sense without a label a generated label (the SenseLabelGenerator unit of the
   WordData subsystem).
 - `import-wn30-counts --input FILE [--data DIR] [--sha256 HEX|none]`: imports the pinned WordNet 3.0 sense frequency
@@ -261,11 +282,13 @@ lemma of that sense, and the part of speech of that sense. The leakage check (`L
 command) compares the normalized sentences (`Corpus.Normalize`: case, spacing and punctuation do not make a sentence
 new) of every part of the corpus: the anchors, the chooser anchors and the training split of the open corpus
 (training); the holdout, chooser holdout and real-text sentences, the reviewed suite, the development and test splits
-and the challenge set of the open corpus (evaluation); and the example sentences of Open English WordNet (reference
+and the challenge set of the open corpus, and the two halves of the all-words gold set (evaluation); and the example
+sentences of Open English WordNet (reference
 text of another license). The SemCor sentences and the treebank test file (external evaluation sets, read from their
 caches when present) are compared too, and the sense evaluation leaves out every SemCor sentence that is in the corpus
 or is an example. A sentence shared by a training part and an evaluation part, by two evaluation parts (except a
-chooser part and the sense part it is a view of), or by the corpus and an example sentence of five words or more fails
+chooser part and the sense part it is a view of, and a half of the all-words gold set and the split of the open
+corpus it is drawn from), or by the corpus and an example sentence of five words or more fails
 the check; two training parts may share a sentence (a duplicate, nothing is evaluated on it). The sentences that share
 a run of eight words are counted and reported but do not fail the check, because a stock phrase can be shared by
 chance. A sentence that the writers saw as a gloss example therefore cannot train a classifier. A lemma needs anchors
@@ -524,19 +547,56 @@ table against the reference accuracies of the other models.
    memoized per lemma), and counts the words of an untrained lemma with fewer than two senses in the funnel without
    keeping them (every model answers them at the sense level, so they would inflate the figures). `MeasureAsync`
    classifies the sentence once and judges the other rows with the same `Evaluator.Judge`: a word answered at the
-   part-of-speech level is not a sense answer, and a word without ranked senses is a miss of the fine top-1, which is
-   what every model gives for an untrained polysemous lemma (the models carry no sense prior at run time). The report
-   gives, per model, the trained, untrained and all words (answered share, precision, fine top-1) and a
+   part-of-speech level is not a sense answer, and a word without ranked senses is a miss of the fine top-1. The models
+   rank the senses of an untrained polysemous lemma by the usage prior (the WordNet 3.0 tag counts of the image), so the
+   fine top-1 of the untrained words is what that prior gives; because the tag counts include the counts of SemCor itself,
+   that figure is circular on SemCor and the report says so (the independent measurement is the all-words gold set, below).
+   The report gives, per model, the trained, untrained and all words (answered share, precision, fine top-1) and a
    most-frequent-sense baseline that takes the sense
    with the highest WordNet 3.0 tag count (`data/sense_frequency`, read by `Tiers.ReadTagCounts`; a missing key counts 0,
-   ties break in inventory order). The model table cell is still the trained-lemma measurement and is not changed.
+   ties break in inventory order). The model table cell is still the trained-lemma measurement; its fine top-1 part moves
+   for the models that rank senses by the prior where the encoder scored none.
 
 The tiers come from WordNet 3.0 tag counts that include the counts of SemCor itself, and the inventory order (the order
 of Open English WordNet) follows Princeton WordNet's frequency order: it matches the WordNet 3.0 top-count sense in 10,047
 of 10,062 blocks with a unique maximum, and those counts include the tags of SemCor. The baseline is therefore partly
 circular and has an advantage (it has seen the answers); the evaluation report says so, and says the same of the tag-count
-baseline of the all-words section: it is an optimistic reference, not a competitor, and a lemma-level prior that the
-library does not ship for untrained lemmas. No SemCor sentence is in any training corpus.
+baseline of the all-words section: it is an optimistic reference, not a competitor, and the usage prior of the models is
+made from the same counts, so their untrained fine top-1 on SemCor is circular as well. No SemCor sentence is in any
+training corpus.
+
+#### All-words gold evaluation (`AllWordsGold`, `AllWordsEvaluator`)
+
+SemCor cannot measure the usage prior: the tag counts it is made of were counted on SemCor. The all-words gold set is
+the independent measurement.
+
+1. `allwords-sample` (`AllWordsGold.Draw`) takes, from the development split and the test split of the representative
+   open corpus separately (so the two halves share no document), the tokens that the corpus tags as a noun, verb,
+   adjective or adverb whose annotators did not dispute the tag, whose lemma is not trained (no sentence in
+   `corpus/anchors`), whose part of speech has two or more senses in the catalog and whose written form the lexicon lists
+   with that lemma and part of speech. The candidates are put in a pseudo-random order (a hash of the seed, the sentence
+   and the position), so a frequent word has more candidates, and taken in that order with at most three tokens of a
+   lemma and one token of a sentence, 600 for each half.
+2. `AllWordsGold.WriteBatches` writes the labeling batches in the format of the quota filling (`groups` with `senses`
+   and `items`): a group is a lemma and part of speech with every sense (id, part of speech, gloss) in the order of
+   the ids,
+   so the order of frequency is not shown, and the sentences with the target in braces; no tag count is given. Two
+   labelers of different models answer every batch blind with `tools/quota-fill/prompts/sentence-labeler.md`.
+3. `allwords-merge` (`AllWordsGold.Merge`) keeps a token when both labelers chose the same sense, whatever the confidence
+   (`high` when both were highly confident, otherwise `low`), and drops an unsure answer, a missing line and a
+   disagreement; a sense that the token cannot have fails the merge. The agreement is reported.
+4. `evaluate-allwords` (`AllWordsEvaluator`) classifies every token inside its sentence and judges it like any
+   held-out row
+   (`Evaluator.Judge`), so the share answered at the sense level and the precision are those of the other evaluations
+   (the ranking is never an answer and does not change them). The new figure is the fine top-1 of the selected analysis:
+   the first sense listed by the selected analysis equals the gold sense (a token whose selected analysis ranks no sense
+   is a miss; a wrong analysis is a miss because its senses are those of another lemma or part of speech). The baselines
+   know the gold lemma and part of speech: the first sense in inventory order, the sense with the highest tag count
+   (inventory order on a tie) and a random sense (the mean of one over the number of senses). The smoothing sweep
+   (`AllWordsEvaluator.Sweep`) gives, for each constant of a grid, the mean log loss of the gold sense under the prior on
+   the development half only; the constant of the prior is chosen there, and the test half is only reported.
+5. The gold files are validated when they are read (a sense of the lemma and part of speech, the word at its index) and
+   by the leakage check, which treats each file as a view of the split of the open corpus it is drawn from.
 
 #### Running-text evaluation (`RunningTextEvaluator`)
 
@@ -605,7 +665,8 @@ that fall short, most frequent first.
 #### Basic training (`BasicModelBuilder.TrainAsync`)
 
 1. Read the tag counts of `corpus/open/counts` (made by `open-counts` from the training split of the representative
-   open corpus; the command stops with the name of `open-counts` when they are missing), the fine-sense anchors of
+   open corpus, including the clause counts; the command stops with the name of `open-counts` when they are missing),
+   the fine-sense anchors of
    `corpus/anchors` and the chooser anchors of `corpus/choosers/anchors`. The holdout, the test splits, the targeted
    part and the treebank are not read.
 2. `BasicTrainer.Train` selects from the counts the closed-class words (enough occurrences and a dominant closed-class
@@ -642,7 +703,19 @@ Trains and scores each variant of the hyper-parameter grid (one parameter at a t
 variants) on the development split of the representative open corpus and on a deterministic sample of the anchors split
 into a train and a dev part (the chooser anchors are left out of the tuned tables, because they are the same sentences
 labeled a second way). It reports the accuracy on the ambiguous tokens of the development split, the accuracy of the
-analysis on the anchor dev part and the table size. It never reads the test splits, the challenge set, the holdout or
+analysis on the anchor dev part, the accuracy of the whole classifier (all tokens and ambiguous tokens) on the open
+development split and on the treebank development file, and the table size. The smoothing of the clause state of the
+tagger (`ClauseSmoothing`: 0, 1, 4, 16 and 64) is one of the parameters of the grid; the development sets differ by
+at most 0.06 points across it, so the default 4 stays. The clause rule itself (the tags that give a clause a verb and
+the tags that start a clause) is code, not a parameter: it was chosen on the same development sets from the verb tag
+alone or with the auxiliary and from the conjunction and punctuation tags, a comma, a semicolon and a colon alone or any
+punctuation as the break (any punctuation and the conjunction were the best on the open and the treebank
+development sets). A sentence-initial word that the dictionary lists only as a non-finite verb (a gerund, or a participle
+without a past tense) does not give its clause a verb: with the plain rule, the nouns after a determiner that opens a
+heading such as `Resolving this issue` flipped on the development sets, and 2 of 4 such openings read as a noun
+(one token in 25 true imperatives before a determiner, `Have a`, is lost with the rule as well; counting the
+auxiliary as a verb, or any `-ing` word at the start, did not do better overall or protected less). It never reads the
+test splits, the challenge set, the holdout or
 the real-text sentences and writes no file, so the reported evaluation stays honest. A second table scores the weight of
 the tense model (`TenseWeightGrid`; 0 turns it off) on the development split of the open corpus and the treebank
 development file (`--gold`, default `ud_dev.tsv`), with the model of the shipped configuration (all anchors and chooser

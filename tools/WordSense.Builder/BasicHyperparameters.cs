@@ -23,6 +23,7 @@ namespace WordSense.Builder;
 /// <param name="TenseWeight">The weight of the shared tense model in the split of a verb slot between its past and non-past analyses (runtime; in the table header). 0 turns the model off.</param>
 /// <param name="TenseAlpha">The additive smoothing of the feature likelihoods of the tense model.</param>
 /// <param name="TenseMinFeatureCount">The fewest training verbs a context feature needs to enter the vocabulary of the tense model.</param>
+/// <param name="ClauseSmoothing">The pseudo count that smooths the clause-state transitions of the tagger toward the unconditioned transitions (runtime; in the table header): a trigram context with m counts in its clause state weighs m / (m + smoothing).</param>
 internal sealed record BasicHyperparameters(
     double Gamma,
     double Beta,
@@ -40,7 +41,8 @@ internal sealed record BasicHyperparameters(
     int CueMinFeatureCount,
     double TenseWeight = 1.0,
     double TenseAlpha = 0.5,
-    int TenseMinFeatureCount = 2)
+    int TenseMinFeatureCount = 2,
+    double ClauseSmoothing = 4.0)
 {
     /// <summary>
     ///     The number of anchor sentences the tuner samples for its anchor train and dev subsets.
@@ -80,7 +82,8 @@ internal sealed record BasicHyperparameters(
         CueMinFeatureCount: 2,
         TenseWeight: 1.0,
         TenseAlpha: 0.5,
-        TenseMinFeatureCount: 2);
+        TenseMinFeatureCount: 2,
+        ClauseSmoothing: 4.0);
 
     /// <summary>
     ///     The values the tuner tries, one parameter at a time while the others keep their default.
@@ -94,6 +97,7 @@ internal sealed record BasicHyperparameters(
         ("temperature", [.. new[] { 2.0, 4.0, 8.0 }.Select(v => Default with { Temperature = v })]),
         ("cue-alpha", [.. new[] { 0.05, 0.1, 0.5 }.Select(v => Default with { CueAlpha = v })]),
         ("combined", [Default with { Gamma = 1.0, Beta = 1.0 }, Default with { Gamma = 1.0, Beta = 1.0, ClosedMinCount = 3, ClosedShare = 0.8 }]),
+        ("clause-smoothing", [.. new[] { 0.0, 1.0, 4.0, 16.0, 64.0 }.Select(v => Default with { ClauseSmoothing = v })]),
     ];
 
     /// <summary>

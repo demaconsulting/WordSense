@@ -49,13 +49,20 @@ internal sealed record LeakageOverlap(string First, string Second, int Exact, in
 /// <param name="Overlaps">The pairs of parts that share sentences (pairs without overlap are left out).</param>
 internal sealed record LeakageReport(IReadOnlyList<(string Name, LeakageRole Role, int Sentences)> Sets, IReadOnlyDictionary<string, int> Duplicates, IReadOnlyList<LeakageOverlap> Overlaps)
 {
-    private static readonly (string, string)[] Views = [("holdout", "chooser holdout"), ("anchors", "chooser anchors")];
+    private static readonly (string, string)[] Views =
+    [
+        ("holdout", "chooser holdout"),
+        ("anchors", "chooser anchors"),
+        ("open corpus dev", "all-words gold dev"),
+        ("open corpus test", "all-words gold test"),
+    ];
 
     /// <summary>
     ///     Gets the overlaps that make the corpus invalid: a sentence that a training part shares with an evaluation part
     ///     (or an external evaluation set), that two evaluation parts share, or that a part of the corpus shares with the
     ///     reference text. Not leaks: two training parts (a duplicate, nothing is evaluated on it), a chooser part and the
-    ///     sense part it is a view of (the same sentences by design), and two external sets.
+    ///     sense part it is a view of, an all-words gold file and the split of the open corpus it is drawn from (the same
+    ///     sentences by design), and two external sets.
     /// </summary>
     public IEnumerable<LeakageOverlap> Leaks => Overlaps.Where(IsLeak);
 
@@ -142,7 +149,8 @@ internal sealed record LeakageReport(IReadOnlyList<(string Name, LeakageRole Rol
 ///     <para>
 ///     The parts are the fine-sense anchors, the chooser anchors, the training split of the open corpus (training); the
 ///     held-out sentences, the chooser held-out sentences, the real-text relabeling file, the reviewed suite, the
-///     development and test splits of the representative open corpus, the challenge set, the example sentences of Open
+///     development and test splits of the representative open corpus, the two halves of the all-words gold set (views of
+///     those splits), the challenge set, the example sentences of Open
 ///     English WordNet (which the writers of the sentences saw, and which are CC BY 4.0, so none may be in the
 ///     CC0 corpus) and, when they are given, the independent evaluation sentences (SemCor, the treebank test file).
 ///     </para>
@@ -168,8 +176,8 @@ internal static class LeakageCheck
     /// <returns>The parts that exist; a missing part is left out.</returns>
     public static List<LeakageSet> Load(string corpus, string data)
     {
-        var sets = new List<LeakageSet>
-        {
+        List<LeakageSet> sets =
+        [
             ReadDirectory("anchors", LeakageRole.Training, Path.Join(corpus, "anchors")),
             ReadDirectory("chooser anchors", LeakageRole.Training, Path.Join(corpus, "choosers", "anchors")),
             ReadDirectory("holdout", LeakageRole.Evaluation, Path.Join(corpus, "holdout")),
@@ -181,8 +189,9 @@ internal static class LeakageCheck
             ReadOpen(corpus, OpenCorpus.Representative, "test", "open corpus test", LeakageRole.Evaluation),
             ReadOpen(corpus, OpenCorpus.Targeted, "train", "STE challenge train", LeakageRole.Training),
             ReadOpen(corpus, OpenCorpus.Targeted, "test", "STE challenge set", LeakageRole.Evaluation),
+            .. AllWordsGold.LeakageSets(corpus),
             ReadExamples(Path.Join(data, "example")),
-        };
+        ];
         return [.. sets.Where(s => s.Sentences.Count > 0)];
     }
 

@@ -55,6 +55,148 @@ public class FallbackWordSenseModelTests
     }
 
     /// <summary>
+    ///     A word whose senses the primary model did not score (the encoder has no weights for its lemma) gets the Basic
+    ///     result as it is, including the senses of its selected analysis ranked by the usage prior; the level, confidence,
+    ///     sense and group are those of the Basic model, which ranks senses and never answers one.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_PrimaryScoredNothing_AnswersWithTheRankedSensesOfBasic()
+    {
+        // Arrange
+        string[] words = ["The", "dog", "barked", "."];
+        using var basic = new BasicWordSenseModel();
+        var expected = await basic.ClassifyAsync(words, TestContext.Current.CancellationToken);
+        var unscored = words.Select(w => ClassifyResult.Unknown(w)).ToArray();
+        using var model = new FallbackWordSenseModel(new StubModel(unscored), new BasicWordSenseModel());
+
+        // Act
+        var results = await model.ClassifyAsync(words, TestContext.Current.CancellationToken);
+
+        // Assert
+        Assert.Equal(expected, results);
+        var dog = results[1];
+        Assert.Equal(SenseLevel.PartOfSpeech, dog.Level);
+        Assert.Null(dog.SenseId);
+        Assert.Null(dog.GroupId);
+        Assert.True(dog.Analyses.First(a => a.Details.Equals(dog.Details)).Senses.Length >= 2);
+    }
+
+    /// <summary>
+    ///     The Basic model as the primary model is not refined or reconciled: the senses it lists for an untrained
+    ///     polysemous word are ranked by usage, not scored, so the result of Basic is returned as it is, whatever the
+    ///     fallback says and whatever the primary weight is.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_BasicAsPrimary_UsageRankedSenses_AreNotRefinedOrReconciled()
+    {
+        // Arrange: Basic's own result for an ambiguous polysemous word, and a fallback that disagrees with its slots
+        using var basic = new BasicWordSenseModel();
+        var expected = (await basic.ClassifyAsync(["record"], TestContext.Current.CancellationToken))[0];
+        Assert.True(expected.Analyses.Select(a => (a.Details.Lemma, a.Details.PartOfSpeech)).Distinct().Count() >= 2);
+        var selected = expected.Analyses.First(a => a.Details.Equals(expected.Details));
+        Assert.True(selected.Senses.Length >= 2);
+        Assert.True(selected.SensesRankedByUsage);
+        Assert.Equal(SenseLevel.PartOfSpeech, expected.Level);
+        var fallback = Disagreeing(expected);
+
+        // Act
+        var half = await CombineWeighted(expected, fallback, 0.5);
+        var zero = await CombineWeighted(expected, fallback, 0.0);
+        using var composite = new FallbackWordSenseModel(new BasicWordSenseModel(), new StubModel(fallback), 0.5);
+        var real = (await composite.ClassifyAsync(["record"], TestContext.Current.CancellationToken))[0];
+
+        // Assert: the fallback decides the word, since the primary scored nothing
+        Assert.Equal(fallback, half);
+        Assert.Equal(fallback, zero);
+        Assert.Equal(fallback, real);
+    }
+
+    /// <summary>
+    ///     The same result with the senses of the primary scored in context is used, and reconciled with the fallback; the
+    ///     only difference is the kind of the ranking.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_PrimaryWithContextScoredSenses_StillReconciled()
+    {
+        // Arrange: the result of Basic for "record", the same senses and probabilities, but declared as context scores
+        using var basic = new BasicWordSenseModel();
+        var ranked = (await basic.ClassifyAsync(["record"], TestContext.Current.CancellationToken))[0];
+        var scoredAnalyses = ranked.Analyses.Select(a => new AnalysisCandidate(a.Details, a.Probability, a.Senses)).ToImmutableArray();
+        var scored = new ClassifyResult(ranked.Word, true, scoredAnalyses, ranked.Details, ranked.Level, ranked.Confidence, ranked.GroupId, ranked.SenseId);
+        var fallback = Disagreeing(ranked);
+
+        // Act
+        var kept = await CombineWeighted(scored, fallback, 1.0);
+        var reconciled = await CombineWeighted(scored, fallback, 0.5);
+
+        // Assert: used (not the fallback), kept whole at weight 1, and reconciled with the fallback below it
+        Assert.Equal(scored, kept);
+        Assert.NotEqual(fallback, reconciled);
+        Assert.NotEqual(scored, reconciled);
+        Assert.Equal(scored.Level, reconciled.Level);
+        Assert.Equal(scored.Analyses.Length, reconciled.Analyses.Length);
+        Assert.All(reconciled.Analyses, a => Assert.Equal(scored.Analyses.First(s => s.Details.Equals(a.Details)).Senses, a.Senses));
+    }
+
+    /// <summary>
+    ///     A composite of the Basic model with itself returns the Basic answer as it is, at every primary weight: the
+    ///     result is not touched by the refinement or the reconciliation.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Theory]
+    [InlineData(0.0)]
+    [InlineData(0.5)]
+    [InlineData(1.0)]
+    public async Task WordSenseContracts_FallbackWordSenseModel_BasicWithBasic_ReturnsTheBasicAnswerAsItIs(double weight)
+    {
+        // Arrange
+        string[] words = ["The", "record", "was", "put", "in", "the", "bank", "."];
+        using var basic = new BasicWordSenseModel();
+        var expected = await basic.ClassifyAsync(words, TestContext.Current.CancellationToken);
+        using var composite = new FallbackWordSenseModel(new BasicWordSenseModel(), new BasicWordSenseModel(), weight);
+
+        // Act
+        var results = await composite.ClassifyAsync(words, TestContext.Current.CancellationToken);
+
+        // Assert
+        Assert.Equal(expected, results);
+    }
+
+    /// <summary>
+    ///     Reconciling keeps the ranking kind of every analysis: a slot that only the fallback lists keeps the usage ranking
+    ///     of its senses, a slot of the primary keeps its scores.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_Reconcile_KeepsTheRankingKindOfEveryAnalysis()
+    {
+        // Arrange: the primary scored the noun slot only; the fallback ranks a verb slot by usage
+        var primary = Result("a", [new(Noun, 1.0, [new("record#a", 0.7), new("record#b", 0.3)])], Noun, SenseLevel.PartOfSpeech);
+        var fallback = Result("a", [new(Verb, 0.9, [new("record#c", 0.6), new("record#d", 0.4)], true), new(Noun, 0.1, [])], Verb, SenseLevel.PartOfSpeech);
+
+        // Act
+        var result = await CombineWeighted(primary, fallback, 0.5);
+
+        // Assert
+        Assert.Equal(2, result.Analyses.Length);
+        Assert.False(result.Analyses.First(a => a.Details == Noun).SensesRankedByUsage);
+        var verb = result.Analyses.First(a => a.Details == Verb);
+        Assert.True(verb.SensesRankedByUsage);
+        Assert.Equal(2, verb.Senses.Length);
+    }
+
+    // A result of a fallback that disagrees with a result: the same analyses with the probabilities in the opposite order and no senses
+    private static ClassifyResult Disagreeing(ClassifyResult result)
+    {
+        var probabilities = result.Analyses.Select(a => a.Probability).Reverse().ToArray();
+        var analyses = result.Analyses.Select((a, i) => new AnalysisCandidate(a.Details, probabilities[i], [])).OrderByDescending(a => a.Probability).ToImmutableArray();
+        return new ClassifyResult(result.Word, true, analyses, analyses[0].Details, SenseLevel.PartOfSpeech, analyses[0].Probability, null, null);
+    }
+
+    /// <summary>
     ///     The composite has the downloadable capability, so code that holds only the model contract can ask for it.
     /// </summary>
     [Fact]
@@ -482,6 +624,284 @@ public class FallbackWordSenseModelTests
 
     private static ClassifyResult Result(string word, ImmutableArray<AnalysisCandidate> analyses, WordDetails details, SenseLevel level) =>
         new(word, true, analyses, details, level, 1, null, null);
+
+    private static readonly WordDetails UseNoun = new("use", PartOfSpeech.Noun, "Number=Sing");
+    private static readonly WordDetails UseInf = new("use", PartOfSpeech.Verb, "VerbForm=Inf");
+    private static readonly WordDetails UsePres = new("use", PartOfSpeech.Verb, "Tense=Pres+VerbForm=Fin");
+    private static readonly WordDetails UseAdj = new("use", PartOfSpeech.Adjective, "Degree=Pos");
+    private static readonly ImmutableArray<SenseCandidate> UseNounSenses = [new("use#utility", 0.6), new("use#habit", 0.4)];
+    private static readonly ImmutableArray<SenseCandidate> UseVerbSenses = [new("use#employ", 0.9), new("use#consume", 0.1)];
+
+    // An encoder that committed to no sense: the noun slot (mass 0.7) is on top of the verb slot (mass 0.3, its two variants tied)
+    private static ClassifyResult EncoderUse(double noun = 0.7, double inf = 0.15, double pres = 0.15) =>
+        new("use", true, [new(UseNoun, noun, UseNounSenses), new(UseInf, inf, UseVerbSenses), new(UsePres, pres, UseVerbSenses)], UseNoun, SenseLevel.PartOfSpeech, noun, null, null);
+
+    // Basic reads the verb from the context
+    private static ClassifyResult BasicUse(double inf = 0.6, double pres = 0.35, double noun = 0.05) =>
+        new("use", true, [new(UseInf, inf, []), new(UsePres, pres, []), new(UseNoun, noun, [])], UseInf, SenseLevel.PartOfSpeech, inf + pres, null, null);
+
+    private static async Task<ClassifyResult> CombineWeighted(ClassifyResult primary, ClassifyResult fallback, double primaryWeight)
+    {
+        using var model = new FallbackWordSenseModel(new StubModel(primary), new StubModel(fallback), primaryWeight);
+        return (await model.ClassifyAsync([primary.Word], TestContext.Current.CancellationToken))[0];
+    }
+
+    private static double SlotOf(ClassifyResult result, PartOfSpeech partOfSpeech) =>
+        result.Analyses.Where(a => a.Details.PartOfSpeech == partOfSpeech).Sum(a => a.Probability);
+
+    /// <summary>
+    ///     A result at the part-of-speech level gets slot probabilities proportional to the product of the powers of the
+    ///     two models, its selected analysis and confidence follow the most probable slot, and the level stays.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_PartOfSpeechLevel_CombinesTheSlotProbabilities()
+    {
+        // Arrange: the encoder says noun 0.7, verb 0.3; Basic says verb 0.95, noun 0.05; w = 0.5
+        var primary = EncoderUse();
+
+        // Act
+        var result = await CombineWeighted(primary, BasicUse(), 0.5);
+
+        // Assert: sqrt(0.7 * 0.05) = 0.18708, sqrt(0.3 * 0.95) = 0.53385, normalized
+        var verb = Math.Sqrt(0.3 * 0.95);
+        var noun = Math.Sqrt(0.7 * 0.05);
+        Assert.Equal(verb / (verb + noun), SlotOf(result, PartOfSpeech.Verb), 9);
+        Assert.Equal(noun / (verb + noun), SlotOf(result, PartOfSpeech.Noun), 9);
+        Assert.Equal(PartOfSpeech.Verb, result.Details!.PartOfSpeech);
+        Assert.Equal(result.Analyses[0].Details, result.Details);
+        Assert.Equal(SenseLevel.PartOfSpeech, result.Level);
+        Assert.Equal(verb / (verb + noun), result.Confidence, 9);
+        Assert.Null(result.GroupId);
+        Assert.Null(result.SenseId);
+    }
+
+    /// <summary>
+    ///     A primary weight of 1 keeps the primary result as it is, a weight of 0 takes the slot probabilities of the
+    ///     fallback result.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_PrimaryWeight_OneKeepsThePrimaryZeroTakesTheFallback()
+    {
+        // Arrange
+        var primary = EncoderUse();
+
+        // Act
+        var kept = await CombineWeighted(primary, BasicUse(), 1.0);
+        var twoArguments = await Combine(primary, BasicUse());
+        var taken = await CombineWeighted(primary, BasicUse(), 0.0);
+
+        // Assert: the weight 1 is the composition without a weight (the tied variants are re-split, the slots are the primary's)
+        Assert.Equal(twoArguments, kept);
+        Assert.Equal(0.7, SlotOf(kept, PartOfSpeech.Noun), 9);
+        Assert.Equal(PartOfSpeech.Noun, kept.Details!.PartOfSpeech);
+        Assert.Equal(0.95, SlotOf(taken, PartOfSpeech.Verb), 9);
+        Assert.Equal(0.05, SlotOf(taken, PartOfSpeech.Noun), 9);
+        Assert.Equal(PartOfSpeech.Verb, taken.Details!.PartOfSpeech);
+        Assert.Equal(0.95, taken.Confidence, 9);
+    }
+
+    /// <summary>
+    ///     The variants of a slot keep the shares of their own result and the analyses keep their senses, whichever slot
+    ///     comes first after the combination.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_PartOfSpeechLevel_KeepsTheShareOfTheVariantsAndTheirSenses()
+    {
+        // Arrange: the encoder splits the verb slot 2 to 1 between its variants (a trained chooser) and Basic disagrees
+        var primary = EncoderUse(noun: 0.7, inf: 0.1, pres: 0.2);
+
+        // Act
+        var result = await CombineWeighted(primary, BasicUse(inf: 0.1, pres: 0.8, noun: 0.1), 0.5);
+
+        // Assert: the verb slot is on top, its variants are still 1 to 2 (pres first), and the senses are the encoder's
+        var verb = result.Analyses.Where(a => a.Details.PartOfSpeech == PartOfSpeech.Verb).ToArray();
+        Assert.Equal(UsePres, verb[0].Details);
+        Assert.Equal(UseInf, verb[1].Details);
+        Assert.Equal(2.0, verb[0].Probability / verb[1].Probability, 9);
+        Assert.Equal(UsePres, result.Details);
+        Assert.All(verb, a => Assert.Equal(UseVerbSenses, a.Senses));
+        Assert.Equal(UseNounSenses, result.Analyses.First(a => a.Details == UseNoun).Senses);
+        Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 9);
+    }
+
+    /// <summary>
+    ///     A result at the sense level or at the group level is left exactly as the primary model gave it, whatever the
+    ///     primary weight and whatever the fallback says.
+    /// </summary>
+    /// <param name="level">The level of the primary result.</param>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Theory]
+    [InlineData(SenseLevel.Sense)]
+    [InlineData(SenseLevel.Group)]
+    public async Task WordSenseContracts_FallbackWordSenseModel_SenseOrGroupLevel_IsLeftAsThePrimaryGaveIt(SenseLevel level)
+    {
+        // Arrange: a result that names the noun sense although the verb is what Basic says
+        var template = EncoderUse();
+        var primary = new ClassifyResult("use", true, template.Analyses, UseNoun, level, 0.5, "use#group", level == SenseLevel.Sense ? "use#utility" : null);
+
+        // Act
+        var result = await CombineWeighted(primary, BasicUse(), 0.0);
+
+        // Assert
+        Assert.Equal(primary.Level, result.Level);
+        Assert.Equal(primary.Confidence, result.Confidence);
+        Assert.Equal(primary.GroupId, result.GroupId);
+        Assert.Equal(primary.SenseId, result.SenseId);
+        Assert.Equal(primary.Details, result.Details);
+        Assert.Equal(SlotOf(primary, PartOfSpeech.Noun), SlotOf(result, PartOfSpeech.Noun), 9);
+    }
+
+    /// <summary>
+    ///     A slot that the fallback result does not list counts with the floor, and a slot only the fallback lists comes
+    ///     into the result with its own analyses (no senses) and the floor for the primary model.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_SlotOfOneResultOnly_CountsWithTheFloor()
+    {
+        // Arrange: the encoder lists noun and verb, Basic lists verb and adjective
+        var primary = EncoderUse(noun: 0.5, inf: 0.25, pres: 0.25);
+        var fallback = new ClassifyResult("use", true, [new(UseInf, 0.5, []), new(UsePres, 0.4, []), new(UseAdj, 0.1, [])], UseInf, SenseLevel.PartOfSpeech, 0.9, null, null);
+
+        // Act
+        var result = await CombineWeighted(primary, fallback, 0.5);
+
+        // Assert: noun sqrt(0.5 * 1e-6), verb sqrt(0.5 * 0.9), adjective sqrt(1e-6 * 0.1)
+        var noun = Math.Sqrt(0.5 * 1e-6);
+        var verb = Math.Sqrt(0.5 * 0.9);
+        var adjective = Math.Sqrt(1e-6 * 0.1);
+        var total = noun + verb + adjective;
+        Assert.Equal(4, result.Analyses.Length);
+        Assert.Equal(verb / total, SlotOf(result, PartOfSpeech.Verb), 9);
+        Assert.Equal(noun / total, SlotOf(result, PartOfSpeech.Noun), 9);
+        Assert.Equal(adjective / total, SlotOf(result, PartOfSpeech.Adjective), 9);
+        Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 9);
+        Assert.True(result.Analyses.First(a => a.Details == UseAdj).Senses.IsEmpty);
+    }
+
+    /// <summary>
+    ///     A result of a single slot, a fallback result without analyses and an unknown fallback leave the primary result
+    ///     as it is.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_SingleSlotOrEmptyFallback_LeavesThePrimaryResult()
+    {
+        // Arrange
+        var single = new ClassifyResult("use", true, [new(UseNoun, 1, UseNounSenses)], UseNoun, SenseLevel.PartOfSpeech, 1, null, null);
+
+        // Act
+        var onlyOneSlot = await CombineWeighted(single, single, 0.0);
+        var unknownFallback = await CombineWeighted(EncoderUse(), ClassifyResult.Unknown("use"), 0.0);
+
+        // Assert
+        Assert.Equal(single, onlyOneSlot);
+        Assert.Equal(EncoderUse(), unknownFallback);
+    }
+
+    /// <summary>
+    ///     The tied variants of a slot are still re-split with the proportions of the fallback before the slots are
+    ///     combined, so the two refinements work together.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_PartOfSpeechLevel_KeepsTheTieSplitOfTheFallback()
+    {
+        // Arrange: the encoder ties the verb variants, Basic says 3 to 1 for the infinitive
+        var primary = EncoderUse(noun: 0.7, inf: 0.15, pres: 0.15);
+
+        // Act
+        var result = await CombineWeighted(primary, BasicUse(inf: 0.6, pres: 0.2, noun: 0.2), 0.5);
+
+        // Assert
+        var verb = result.Analyses.Where(a => a.Details.PartOfSpeech == PartOfSpeech.Verb).ToArray();
+        Assert.Equal(UseInf, verb[0].Details);
+        Assert.Equal(3.0, verb[0].Probability / verb[1].Probability, 9);
+    }
+
+    /// <summary>
+    ///     Whatever the two models and the weight say, the probabilities sum to one, the slots are listed by probability,
+    ///     the selected analysis is the first one, the confidence is the probability of its slot and the number of
+    ///     analyses and their senses are those of the primary result.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_PartOfSpeechLevel_ManyInputs_StayConsistent()
+    {
+        // Arrange: a deterministic sequence of distributions
+        var seed = 987u;
+        double Next()
+        {
+            seed = unchecked((seed * 1664525u) + 1013904223u);
+            return 0.02 + (0.9 * ((seed >> 8) / (double)(1u << 24)));
+        }
+
+        for (var i = 0; i < 200; i++)
+        {
+            var noun = Next();
+            var split = Next();
+            var primary = EncoderUse(noun, (1 - noun) * split, (1 - noun) * (1 - split));
+            var basicNoun = Next() * 0.9;
+            var basicSplit = Next();
+            var weight = Next() / 0.92;
+
+            // Act
+            var result = await CombineWeighted(primary, BasicUse((1 - basicNoun) * basicSplit, (1 - basicNoun) * (1 - basicSplit), basicNoun), weight);
+
+            // Assert
+            Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 9);
+            Assert.Equal(result.Analyses[0].Details, result.Details);
+            Assert.Equal(SlotOf(result, result.Details!.PartOfSpeech), result.Confidence, 9);
+            Assert.Equal(SenseLevel.PartOfSpeech, result.Level);
+            Assert.Equal(primary.Analyses.Length, result.Analyses.Length);
+            Assert.All(result.Analyses, a => Assert.Equal(primary.Analyses.First(p => p.Details == a.Details).Senses, a.Senses));
+            Assert.True(SlotOf(result, result.Details.PartOfSpeech) >= Math.Max(SlotOf(result, PartOfSpeech.Noun), SlotOf(result, PartOfSpeech.Verb)) - 1e-12);
+        }
+    }
+
+    /// <summary>
+    ///     A primary weight outside 0 to 1, or not a number, is rejected, and a valid one is reported; without a weight it is 1.
+    /// </summary>
+    /// <param name="weight">The invalid weight.</param>
+    [Theory]
+    [InlineData(-0.01)]
+    [InlineData(1.01)]
+    [InlineData(double.NaN)]
+    [InlineData(double.PositiveInfinity)]
+    public void WordSenseContracts_FallbackWordSenseModel_PrimaryWeight_OutsideZeroToOne_Throws(double weight)
+    {
+        // Arrange
+        var primary = new StubModel();
+        var fallback = new StubModel();
+
+        // Act
+        var create = () => new FallbackWordSenseModel(primary, fallback, weight);
+
+        // Assert
+        Assert.Throws<ArgumentOutOfRangeException>(create);
+    }
+
+    /// <summary>
+    ///     The primary weight is reported, 1 when none is given, and the bounds 0 and 1 are valid.
+    /// </summary>
+    [Fact]
+    public void WordSenseContracts_FallbackWordSenseModel_PrimaryWeight_IsReported()
+    {
+        // Arrange
+        using var defaulted = new FallbackWordSenseModel(new StubModel(), new StubModel());
+        using var zero = new FallbackWordSenseModel(new StubModel(), new StubModel(), 0.0);
+        using var one = new FallbackWordSenseModel(new StubModel(), new StubModel(), 1.0);
+        using var chosen = new FallbackWordSenseModel(new StubModel(), new StubModel(), 0.6);
+
+        // Act
+        var weights = new[] { defaulted.PrimaryWeight, zero.PrimaryWeight, one.PrimaryWeight, chosen.PrimaryWeight };
+
+        // Assert
+        Assert.Equal([1.0, 0.0, 1.0, 0.6], weights);
+    }
 
     private enum EnsureFailureKind
     {

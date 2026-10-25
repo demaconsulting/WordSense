@@ -18,7 +18,9 @@ sections:
               and its group (none when it is in no group) and its OEWN sense key (none for a project sense), the
               senses of each lemma and part of speech in the order of Open English WordNet (the
               position of the sense in its entry, then the homograph number of the entry, project senses last, then the
-              sense id bytes; the WordNet 3.0 frequencies shall not order them), and no spelling without a letter (a
+              sense id bytes; the WordNet 3.0 frequencies shall not order them), the WordNet 3.0 tag count of each
+              sense (0 for a project sense and for a key without a count; a count that does not fit 16 bits fails the
+              build) outside the inventory hash, and no spelling without a letter (a
               numeral such as 0 or 24/7), with no entry or sense of such a lemma, whether or not that sense has a
               label, and no analysis whose lemma has no letter; and
               shall write it in the compact binary format that the core package reads. The committed image shall be
@@ -44,6 +46,9 @@ sections:
               - WordSenseBuilder_ImageCompiler_Build_AnalysisOfLemmaWithoutALetter_IsLeftOut
               - WordSenseBuilder_ImageCompiler_Build_GroupWithSpellingWithoutALetterMember_LeavesTheMemberOut
               - WordSenseBuilder_ImageCompiler_Build_SenseOrder_IsOewnPositionThenHomographThenProjectSenses
+              - WordSenseBuilder_ImageCompiler_Build_SenseFrequency_IsTheTagCountOfEachSenseKey
+              - WordSenseBuilder_ImageCompiler_Build_SenseFrequency_IsNotPartOfTheInventoryHash
+              - WordSenseBuilder_ImageCompiler_Build_SenseFrequency_CountAboveSixteenBits_Fails
               - WordSenseBuilder_ImageCompiler_Build_SenseWithoutLabel_Fails
               - WordSenseBuilder_ImageCompiler_Build_SenseInTwoGroups_Fails
               - WordSenseBuilder_ImageCompiler_Build_GroupOfOneSenseOrAllSenses_Fails
@@ -68,16 +73,18 @@ sections:
 
           - id: WordSense-WordSenseBuilder-ImageFormat
             title: >-
-              The word image shall be of format version 4 and carry no respelling sections (the section ids 24 to 26
-              are unused and the meta section has eight values), the image reader shall reject an image of any other
+              The word image shall be of format version 5 and carry no respelling sections (the section ids 24 to 26
+              are unused and the meta section has eight values) and one sense frequency section (id 38, a 16-bit count
+              for each sense), the image reader shall reject an image of any other
               version, and the data schema shall not declare the retired table sense_respelling.
             tags: [unit]
             justification: |
-              The respelling belonged to the removed pronunciation support and had no data; the format version lets a
-              reader refuse an image of the earlier layout instead of misreading it, and the schema must not keep a
+              The respelling belonged to the removed pronunciation support and had no data; the sense frequency
+              section added the usage prior of the senses; the format version lets a reader refuse an image of the
+              earlier layout instead of misreading it, and the schema must not keep a
               table that nothing reads.
             tests:
-              - WordSenseBuilder_Image_Version4_HasNoRespellingSections
+              - WordSenseBuilder_Image_Version5_HasSenseFrequencyAndNoRespellingSections
               - WordSenseBuilder_Image_PreviousFormatVersion_IsRejected
               - WordSenseBuilder_Image_Corruption_IsRejected
               - WordSenseBuilder_DataSchema_Load_CommittedSchema_DeclaresTables
@@ -447,6 +454,15 @@ sections:
               whose annotations we own and release under CC0 1.0, so that the shipped table carries no share-alike
               license.
               The inputs are committed and the counts reproducible.
+            children:
+              - WordSense-WordSenseBuilder-OpenCounts-ClauseCounts
+              - WordSense-WordSenseBuilder-OpenCounts-ClauseNonFinite
+              - WordSense-WordSenseBuilder-OpenCounts-ClauseFile
+              - WordSense-WordSenseBuilder-OpenCounts-ClauseCommand
+              - WordSense-WordSenseBuilder-OpenCounts-ClauseMissing
+              - WordSense-WordSenseBuilder-OpenCounts-ClauseMalformed
+              - WordSense-WordSenseBuilder-OpenCounts-ClauseBigramAboveTotal
+              - WordSense-WordSenseBuilder-OpenCounts-ClauseTrigramAboveTotal
             tests:
               - WordSenseBuilder_OpenCorpus_ReadFile_ReadsSentencesAndTokens
               - WordSenseBuilder_OpenCorpus_ReadSplit_FindsTheFileOfAPart
@@ -460,6 +476,89 @@ sections:
               - WordSenseBuilder_TaggerCounts_WriteAndRead_RoundTripsDeterministically
               - WordSenseBuilder_TaggerCounts_Read_MalformedFiles_Throw
               - WordSenseBuilder_Program_OpenCounts_WritesCountFiles
+
+          - id: WordSense-WordSenseBuilder-OpenCounts-ClauseCounts
+            title: >-
+              The builder shall count, besides the totals, the bigram and trigram tag counts of the positions whose
+              clause already has a verb, where a clause starts at the beginning of the sentence and after a conjunction
+              or punctuation tag and has a verb from the first verb tag on.
+            tags: [unit]
+            justification: |
+              The tagger conditions its transitions on the clause state, so the counts of the positions with a verb are
+              needed; the counts of the positions without one are the difference to the totals.
+            tests:
+              - WordSenseBuilder_TaggerCounts_Count_CountsClauseNgrams
+
+          - id: WordSense-WordSenseBuilder-OpenCounts-ClauseNonFinite
+            title: >-
+              The builder shall not let a sentence-initial word that the dictionary lists only as a non-finite verb (a
+              gerund, or a participle that is not also a past tense) give its clause a verb when it counts the clause
+              state.
+            tags: [unit]
+            justification: |
+              The counts must be made with the rule that the tagger uses at run time, or the transitions of the two
+              clause states would not describe the sentences that the tagger reads.
+            tests:
+              - WordSenseBuilder_TaggerCounts_Count_NonFiniteStartDoesNotSetTheClauseState
+
+          - id: WordSense-WordSenseBuilder-OpenCounts-ClauseFile
+            title: >-
+              The builder shall write the clause counts deterministically to the clause count file of the corpus, in
+              a form that reads back as written.
+            tags: [unit]
+            justification: |
+              The inputs are committed and the counts reproducible, so equal data must give equal bytes.
+            tests:
+              - WordSenseBuilder_TaggerCounts_WriteAndRead_RoundTripsDeterministically
+
+          - id: WordSense-WordSenseBuilder-OpenCounts-ClauseCommand
+            title: >-
+              The open-counts command shall write the clause count file with the other count files.
+            tags: [unit]
+            justification: |
+              One command must make every count file that training reads.
+            tests:
+              - WordSenseBuilder_Program_OpenCounts_WritesCountFiles
+
+          - id: WordSense-WordSenseBuilder-OpenCounts-ClauseMissing
+            title: >-
+              The builder shall report a missing clause count file as a missing file when it reads the counts.
+            tags: [unit]
+            justification: |
+              Training without the clause counts would silently give a table without a clause state.
+            tests:
+              - WordSenseBuilder_TaggerCounts_Read_MissingClauseFile_Throws
+
+          - id: WordSense-WordSenseBuilder-OpenCounts-ClauseMalformed
+            title: >-
+              The builder shall reject a clause count file with a wrong header or a malformed line as invalid data.
+            tags: [unit]
+            justification: |
+              A damaged count file must fail loudly instead of giving a damaged table.
+            tests:
+              - WordSenseBuilder_TaggerCounts_Read_MalformedClauseFile_Throws
+
+          - id: WordSense-WordSenseBuilder-OpenCounts-ClauseBigramAboveTotal
+            title: >-
+              The builder shall reject a clause count file with a bigram count above the total count of the same bigram
+              as invalid data.
+            tags: [unit]
+            justification: |
+              The counts of the positions without a verb are the difference to the totals, so a larger clause count is
+              damage, not data.
+            tests:
+              - WordSenseBuilder_TaggerCounts_Read_ClauseBigramAboveTotal_Throws
+
+          - id: WordSense-WordSenseBuilder-OpenCounts-ClauseTrigramAboveTotal
+            title: >-
+              The builder shall reject a clause count file with a trigram count above the total count of the same
+              trigram as invalid data.
+            tags: [unit]
+            justification: |
+              The counts of the positions without a verb are the difference to the totals, so a larger clause count is
+              damage, not data.
+            tests:
+              - WordSenseBuilder_TaggerCounts_Read_ClauseTrigramAboveTotal_Throws
 
           - id: WordSense-WordSenseBuilder-TrainBasic
             title: >-
@@ -480,6 +579,10 @@ sections:
               - WordSense-WordSenseBuilder-TrainBasic-TenseClasses
               - WordSense-WordSenseBuilder-TrainBasic-TenseWeights
               - WordSense-WordSenseBuilder-TrainBasic-TrainSplitOnly
+              - WordSense-WordSenseBuilder-TrainBasic-ClauseCounts
+              - WordSense-WordSenseBuilder-TrainBasic-ClauseSmoothing
+              - WordSense-WordSenseBuilder-TrainBasic-FormatWsb5
+              - WordSense-WordSenseBuilder-TrainBasic-ClauseDeterministic
             tests:
               - WordSenseBuilder_BasicTrainer_ClosedMaskOf_AppliesThresholds
               - WordSenseBuilder_BasicTrainer_Train_SelectsWordsAndSuffixes
@@ -496,6 +599,45 @@ sections:
               - WordSenseBuilder_Program_Weights_BasicModel_PointsToTrainBasic
               - WordSenseBuilder_Program_TrainBasicAndEvaluateTagger_TinyCorpus_WriteAndScoreTable
               - WordSenseBuilder_Program_TrainBasic_WithoutCounts_ReportsError
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-ClauseCounts
+            title: >-
+              The builder shall write the clause counts of the open corpus into the table of the basic model.
+            tags: [unit]
+            justification: |
+              The runtime reads the transitions of both clause states from these numbers.
+            tests:
+              - WordSenseBuilder_BasicTablesWriter_Write_CarriesTheClauseCounts
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-ClauseSmoothing
+            title: >-
+              The builder shall write the smoothing of the clause state, a hyper-parameter, into the header of the
+              table of the basic model.
+            tags: [unit]
+            justification: |
+              The runtime mixes the transitions of each clause state with the unconditioned ones by this value, so
+              the table must carry the value it was tuned with.
+            tests:
+              - WordSenseBuilder_BasicTablesWriter_Write_CarriesTheClauseSmoothing
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-FormatWsb5
+            title: >-
+              The builder shall write the table of the basic model with the format revision WSB5, which differs from
+              the previous revision.
+            tags: [unit]
+            justification: |
+              The revision makes the previous format fail loudly in the runtime instead of being read as a current one.
+            tests:
+              - WordSenseBuilder_BasicTablesWriter_Write_StartsWithTheMagicWsb5
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-ClauseDeterministic
+            title: >-
+              The builder shall write a table with clause counts byte for byte the same each time for the same data.
+            tags: [unit]
+            justification: |
+              One command from committed inputs to the shipped table lets reviewers reproduce and verify the model.
+            tests:
+              - WordSenseBuilder_BasicTablesWriter_Write_WithClauseCounts_IsDeterministic
 
           - id: WordSense-WordSenseBuilder-TrainBasic-TenseTable
             title: >-
@@ -557,11 +699,35 @@ sections:
               dishonest.
             children:
               - WordSense-WordSenseBuilder-TuneBasic-TenseWeight
+              - WordSense-WordSenseBuilder-TuneBasic-ClauseSmoothing
+              - WordSense-WordSenseBuilder-TuneBasic-TreebankDev
             tests:
               - WordSenseBuilder_BasicHyperparameters_Default_IsConsistent
               - WordSenseBuilder_BasicTuner_SplitAnchors_IsDeterministicAndDisjoint
               - WordSenseBuilder_BasicTuner_ScoreTagger_CountsAmbiguousTokens
               - WordSenseBuilder_BasicTuner_RunAsync_MissingCounts_Throws
+
+          - id: WordSense-WordSenseBuilder-TuneBasic-ClauseSmoothing
+            title: >-
+              The builder shall include the smoothing of the clause state among the hyper-parameters whose grid
+              tune-basic scores, with the default value among the values of the grid.
+            tags: [unit]
+            justification: |
+              The smoothing is a setting of the trained table, so it must be chosen on development data like the other
+              hyper-parameters.
+            tests:
+              - WordSenseBuilder_BasicHyperparameters_ClauseSmoothing_IsTuned
+
+          - id: WordSense-WordSenseBuilder-TuneBasic-TreebankDev
+            title: >-
+              The builder shall score the whole classifier of each variant of the grid on the development file of the
+              treebank when it exists, and shall read no other file of the treebank while tuning.
+            tags: [unit]
+            justification: |
+              The rule and the smoothing of the clause state change the part of speech of running text, so they are
+              chosen on development data of running text that no reported figure is measured on.
+            tests:
+              - WordSenseBuilder_Program_TuneBasic_ScoresOnlyTheDevelopmentInputs
 
           - id: WordSense-WordSenseBuilder-TuneBasic-TenseWeight
             title: >-
@@ -828,6 +994,378 @@ sections:
               - WordSenseBuilder_SenseEval_Run_TagCountBaseline_UsesTheHighestCountAndInventoryOrderOnTies
               - WordSenseBuilder_SenseEval_Render_AllWords_ShowsTrainedShareAndCircularityCaveat
 
+          - id: WordSense-WordSenseBuilder-SenseEvalAllWordsCircular
+            title: >-
+              The builder shall state, in the all-words section of the SemCor report, that the fine top-1 of the models
+              on the untrained words is circular because their usage prior is made of the WordNet 3.0 tag counts that
+              include SemCor, and shall point to the all-words gold set as the independent measurement.
+            tags: [unit]
+            justification: |
+              A figure that a prior made from the answers produces must not be read as accuracy; the report says what
+              the number shows (that the prior is applied) and where the honest measurement is.
+            tests:
+              - WordSenseBuilder_SenseEval_Render_AllWords_ShowsTrainedShareAndCircularityCaveat
+
+          - id: WordSense-WordSenseBuilder-AllWordsGold
+            title: >-
+              The committed all-words gold set (corpus/allwords/dev.tsv and test.tsv) shall consist of tokens of
+              untrained lemmas whose part of speech has two or more senses, each naming a sense of its lemma and part of
+              speech and a word that is at its index.
+            tags: [unit]
+            justification: |
+              SemCor cannot measure a prior that is made of its own counts; a gold set of tokens that no model was
+              trained for, each with a sense that its lemma can have, can.
+            tests:
+              - WordSenseBuilder_AllWords_CommittedGold_TokensAreOfUntrainedPolysemousLemmasWithTheirSense
+
+          - id: WordSense-WordSenseBuilder-AllWordsGold-Cardinality
+            title: >-
+              The committed all-words gold set shall have at most three tokens for a lemma and at most one for a
+              sentence.
+            tags: [unit]
+            justification: |
+              The cap on a lemma keeps the set spread over many lemmas and the cap on a sentence keeps one context from
+              counting twice.
+            tests:
+              - WordSenseBuilder_AllWords_CommittedGold_HasAtMostThreeTokensPerLemmaAndOnePerSentence
+
+          - id: WordSense-WordSenseBuilder-AllWordsGold-Splits
+            title: >-
+              The development half of the all-words gold set shall have tokens of the development split only, and the
+              test half tokens of the test split only, of the representative open corpus.
+            tags: [unit]
+            justification: |
+              One half chooses the smoothing constant and the other only reports, so each must come from its own split.
+            tests:
+              - WordSenseBuilder_AllWords_CommittedGold_TokensComeFromTheirOwnSplit
+
+          - id: WordSense-WordSenseBuilder-AllWordsGold-Independence
+            title: >-
+              The two halves of the all-words gold set shall share no document.
+            tags: [unit]
+            justification: |
+              Sentences of one document are alike; with a document in both halves the constant chosen on one half would
+              flatter the figure of the other.
+            tests:
+              - WordSenseBuilder_AllWords_CommittedGold_HalvesShareNoDocument
+
+          - id: WordSense-WordSenseBuilder-AllWordsGold-Columns
+            title: >-
+              The all-words gold reader shall reject a line that does not have the columns of the format, naming the
+              file and the line.
+            tags: [unit]
+            justification: |
+              A damaged file must fail loudly instead of being read as other data.
+            tests:
+              - WordSenseBuilder_AllWords_Gold_WrongNumberOfColumns_IsRejected
+
+          - id: WordSense-WordSenseBuilder-AllWordsGold-Index
+            title: >-
+              The all-words gold reader shall reject a line whose word is not at its index, an index past the end of the
+              sentence and a negative index included, with an InvalidDataException that names the file and the line.
+            tags: [unit]
+            justification: |
+              The index names the token that the gold sense belongs to; a wrong or out-of-range index must be a data
+              error and never an indexing failure.
+            tests:
+              - WordSenseBuilder_AllWords_Gold_WordNotAtItsIndex_IsRejected
+              - WordSenseBuilder_AllWords_Gold_IndexOutsideTheSentence_IsRejected
+
+          - id: WordSense-WordSenseBuilder-AllWordsGold-Agreement
+            title: >-
+              The all-words gold reader shall reject a line whose agreement is not high or low, naming the file and the
+              line.
+            tags: [unit]
+            justification: |
+              The agreement states the confidence of the labelers and has two values only.
+            tests:
+              - WordSenseBuilder_AllWords_Gold_AgreementNotHighOrLow_IsRejected
+
+          - id: WordSense-WordSenseBuilder-AllWordsGold-Sense
+            title: >-
+              The all-words gold reader shall reject a line whose sense is not a sense of its lemma and part of speech,
+              naming the file and the line.
+            tags: [unit]
+            justification: |
+              A gold sense that the lemma cannot have would count every model wrong for the wrong reason.
+            tests:
+              - WordSenseBuilder_AllWords_Gold_SenseOfAnotherLemma_IsRejected
+
+          - id: WordSense-WordSenseBuilder-AllWordsDraw
+            title: >-
+              The builder shall draw the tokens of the gold set reproducibly from a seed: the same seed shall give the
+              same tokens.
+            tags: [unit]
+            justification: |
+              A reproducible draw lets a reviewer repeat the sampling and check the set.
+            tests:
+              - WordSenseBuilder_AllWords_Draw_IsReproducibleFromTheSeed
+
+          - id: WordSense-WordSenseBuilder-AllWordsDraw-Eligible
+            title: >-
+              The builder shall draw only the nouns, verbs, adjectives and adverbs of the representative open corpus
+              whose lemma is not trained, whose part of speech has two or more senses and whose written form the lexicon
+              lists with that lemma and part of speech.
+            tags: [unit]
+            justification: |
+              Only a token of an untrained polysemous lemma tests the prior, and a token whose form the lexicon cannot
+              analyze as its lemma could not be answered by any model.
+            tests:
+              - WordSenseBuilder_AllWords_Draw_TokensAreEligible
+
+          - id: WordSense-WordSenseBuilder-AllWordsDraw-Limits
+            title: >-
+              The builder shall draw at most the given number of tokens for a lemma and at most one for a sentence.
+            tags: [unit]
+            justification: |
+              Drawing tokens at random from running text weights the words by their frequency; the cap on a lemma keeps
+              the sample spread over many lemmas.
+            tests:
+              - WordSenseBuilder_AllWords_Draw_RespectsTheLimitsOfLemmaAndSentence
+
+          - id: WordSense-WordSenseBuilder-AllWordsLabeling
+            title: >-
+              The builder shall write the labeling batches with a group for every lemma and part of speech of the
+              tokens, listing every sense of it (id, part of speech and gloss) in the order of the ids.
+            tags: [unit]
+            justification: |
+              The labelers must not see the frequency order, which is the order of the inventory, or the gold would
+              follow the prior.
+            tests:
+              - WordSenseBuilder_AllWords_Batches_ListEverySenseInTheOrderOfTheIds
+
+          - id: WordSense-WordSenseBuilder-AllWordsLabeling-NoCounts
+            title: >-
+              The labeling batches of the builder shall show no WordNet 3.0 tag count.
+            tags: [unit]
+            justification: |
+              The counts are what the prior is made of; a labeler that saw them would follow the prior.
+            tests:
+              - WordSenseBuilder_AllWords_Batches_HaveNoTagCount
+
+          - id: WordSense-WordSenseBuilder-AllWordsLabeling-Agreement
+            title: >-
+              The builder shall keep in the gold set a token for which both of two independent labelers chose the same
+              sense, whether or not both were highly confident, and shall drop a token for which they chose different
+              senses.
+            tags: [unit]
+            justification: |
+              Two independent labelers and their agreement are the check on the gold.
+            tests:
+              - WordSenseBuilder_AllWords_Merge_KeepsTheTokensBothLabelersAgreeOn
+              - WordSenseBuilder_AllWords_Merge_Disagreement_DropsTheToken
+
+          - id: WordSense-WordSenseBuilder-AllWordsLabeling-Unsure
+            title: >-
+              The builder shall drop from the gold set a token that either labeler answered as unsure or did not answer.
+            tags: [unit]
+            justification: |
+              A token whose sense a labeler could not tell has no reliable gold sense.
+            tests:
+              - WordSenseBuilder_AllWords_Merge_UnsureAnswer_DropsTheToken
+              - WordSenseBuilder_AllWords_Merge_MissingAnswerLine_DropsTheToken
+
+          - id: WordSense-WordSenseBuilder-AllWordsLabeling-WrongSense
+            title: >-
+              The builder shall fail the merge of the answers when a labeler chose a sense that the token cannot have.
+            tags: [unit]
+            justification: |
+              A sense of another lemma is a mistake of the labeler or of the file, and must not enter the gold.
+            tests:
+              - WordSenseBuilder_AllWords_Merge_WrongSense_Fails
+
+          - id: WordSense-WordSenseBuilder-AllWordsLabeling-MissingFile
+            title: >-
+              The builder shall fail the merge of the answers when the answer file of a labeler is missing.
+            tags: [unit]
+            justification: |
+              A missing file would otherwise count as a labeler that answered nothing.
+            tests:
+              - WordSenseBuilder_AllWords_Merge_MissingAnswerFile_Fails
+
+          - id: WordSense-WordSenseBuilder-AllWordsLabeling-Report
+            title: >-
+              The builder shall report the agreement of the labelers: the tokens sampled, answered by both, agreed on,
+              agreed on with a high confidence by both, and answered unsure by each, and the share of the agreement.
+            tags: [unit]
+            justification: |
+              The agreement is the evidence of the quality of the gold and is published with it.
+            tests:
+              - WordSenseBuilder_AllWords_Merge_ReportsTheAgreement
+
+          - id: WordSense-WordSenseBuilder-AllWordsEvaluation
+            title: >-
+              The builder shall measure each model on each half of the all-words gold set separately and report the
+              counts of both halves.
+            tags: [unit]
+            justification: |
+              The halves are different documents; one chooses the constant and the other only reports, so their figures
+              are never pooled.
+            tests:
+              - WordSenseBuilder_Program_EvaluateAllWords_ReportsTheModelOnEachHalf
+
+          - id: WordSense-WordSenseBuilder-AllWordsEvaluation-Levels
+            title: >-
+              The all-words measurement shall report the tokens answered at each level (sense, group and part of
+              speech) and those of a word that the lexicon does not know.
+            tags: [unit]
+            justification: |
+              The share of the answers at each level shows that the ranking is not an answer: they are those of the
+              other evaluations.
+            tests:
+              - WordSenseBuilder_AllWords_Measure_CountsTheTokensAnsweredAtEachLevel
+
+          - id: WordSense-WordSenseBuilder-AllWordsEvaluation-Precision
+            title: >-
+              The all-words measurement shall report the precision of the sense answers: the share of the tokens
+              answered at the sense level whose answered sense is the gold sense.
+            tags: [unit]
+            justification: |
+              The precision at the sense level is the figure of the other evaluations and must not move with the
+              ranking.
+            tests:
+              - WordSenseBuilder_AllWords_Measure_ReportsThePrecisionOfTheSenseAnswers
+
+          - id: WordSense-WordSenseBuilder-AllWordsEvaluation-FineTop1
+            title: >-
+              The all-words measurement shall count a token as a fine top-1 hit when the first ranked sense of the
+              selected analysis is the gold sense.
+            tags: [unit]
+            justification: |
+              The fine top-1 of the selected analysis is the new figure that the ranking changes.
+            tests:
+              - WordSenseBuilder_AllWords_Measure_FineTop1CountsTheFirstRankedSenseOfTheSelectedAnalysis
+
+          - id: WordSense-WordSenseBuilder-AllWordsEvaluation-NoRanking
+            title: >-
+              The all-words measurement shall count as a fine top-1 miss a token whose selected analysis ranks no sense.
+            tags: [unit]
+            justification: |
+              A model that ranks nothing has not found the sense, so it is not credited with it.
+            tests:
+              - WordSenseBuilder_AllWords_Measure_SelectedAnalysisWithoutRanking_IsAMiss
+
+          - id: WordSense-WordSenseBuilder-AllWordsEvaluation-WrongAnalysis
+            title: >-
+              The all-words measurement shall count as a fine top-1 miss a token whose selected analysis is not the gold
+              lemma and part of speech, whatever the other analyses rank.
+            tags: [unit]
+            justification: |
+              A wrong analysis ranks the senses of another lemma or part of speech, and the ranking of an analysis that
+              was not selected is not the answer of the model.
+            tests:
+              - WordSenseBuilder_AllWords_Measure_WrongSelectedAnalysis_IsAMiss
+
+          - id: WordSense-WordSenseBuilder-AllWordsBaselines
+            title: >-
+              The builder shall report on each half of the all-words gold set the accuracy of the first sense in
+              inventory order, told the gold lemma and part of speech.
+            tags: [unit]
+            justification: |
+              The baselines give the model figures a reference; they do not pay for a wrong analysis, so they are an
+              upper reference for the models.
+            tests:
+              - WordSenseBuilder_AllWords_Baselines_FirstSenseIsTheFirstInInventoryOrder
+
+          - id: WordSense-WordSenseBuilder-AllWordsBaselines-TagCount
+            title: >-
+              The builder shall report on each half of the all-words gold set the accuracy of the sense with the highest
+              WordNet 3.0 tag count (the first in inventory order on a tie), told the gold lemma and part of speech.
+            tags: [unit]
+            justification: |
+              The most frequent sense is the reference that a usage prior has to match or beat.
+            tests:
+              - WordSenseBuilder_AllWords_Baselines_TagCountIsTheHighestCountWithInventoryOrderOnATie
+
+          - id: WordSense-WordSenseBuilder-AllWordsBaselines-Random
+            title: >-
+              The builder shall report on each half of the all-words gold set the accuracy of a random sense, the mean
+              of one over the number of senses of the gold lemma and part of speech.
+            tags: [unit]
+            justification: |
+              The random sense is the floor that any ranking has to clear.
+            tests:
+              - WordSenseBuilder_AllWords_Baselines_RandomIsOneOverTheNumberOfSenses
+
+          - id: WordSense-WordSenseBuilder-AllWordsBaselines-Report
+            title: >-
+              The all-words evaluation command shall report the three baselines on each half.
+            tags: [unit]
+            justification: |
+              The figures of a model are read against the baselines of the same half.
+            tests:
+              - WordSenseBuilder_Program_EvaluateAllWords_ReportsTheBaselinesOnEachHalf
+
+          - id: WordSense-WordSenseBuilder-AllWordsSmoothing
+            title: >-
+              The builder shall report the mean log loss of the gold sense under the usage prior for a grid of
+              smoothing constants.
+            tags: [unit]
+            justification: |
+              The ranking does not depend on the constant, so the choice only sets the probabilities, and the log loss
+              of the gold sense is the measure for that.
+            tests:
+              - WordSenseBuilder_AllWords_Sweep_ReportsTheMeanLogLossOfTheGoldSense
+
+          - id: WordSense-WordSenseBuilder-AllWordsSmoothing-DevOnly
+            title: >-
+              The all-words evaluation command shall report the smoothing sweep on the development half only.
+            tags: [unit]
+            justification: |
+              Tuning on the test half would make its figure optimistic; the constant is chosen on the development half
+              and the test half is only reported.
+            tests:
+              - WordSenseBuilder_Program_EvaluateAllWords_ReportsTheSweepOnTheDevelopmentHalfOnly
+
+          - id: WordSense-WordSenseBuilder-AllWordsEvaluation-NoGold
+            title: >-
+              The all-words evaluation command shall fail with a message when the gold set is not in the corpus
+              directory.
+            tags: [unit]
+            justification: |
+              An evaluation of an absent gold set would report nothing and look like success.
+            tests:
+              - WordSenseBuilder_Program_EvaluateAllWords_WithoutGoldSet_Fails
+
+          - id: WordSense-WordSenseBuilder-AllWordsLeakage
+            title: >-
+              The leakage check shall include the two halves of the all-words gold set.
+            tags: [unit]
+            justification: |
+              The gold set is evaluation data; no training may read it, so it is checked with the other parts.
+            tests:
+              - WordSenseBuilder_Corpus_Disjointness_CoversSuiteEvaluationAndOewnExamples
+
+          - id: WordSense-WordSenseBuilder-AllWordsLeakage-View
+            title: >-
+              The leakage check shall treat each half of the all-words gold set as a view of the split of the open
+              corpus it is drawn from, so that the same sentences are no leak.
+            tags: [unit]
+            justification: |
+              The gold sentences are sentences of the open corpus by design.
+            tests:
+              - WordSenseBuilder_Corpus_Leakage_AllWordsGold_IsAViewOfItsOpenSplit
+
+          - id: WordSense-WordSenseBuilder-AllWordsLeakage-Training
+            title: >-
+              The leakage check shall report as a leak a sentence of the all-words gold set that a training part also
+              has.
+            tags: [unit]
+            justification: |
+              A model that trained on a gold sentence would be measured on its training data.
+            tests:
+              - WordSenseBuilder_Corpus_Leakage_AllWordsGoldSentenceInATrainingPart_IsALeak
+
+          - id: WordSense-WordSenseBuilder-AllWordsLeakage-OtherSplit
+            title: >-
+              The leakage check shall report as a leak a sentence of a half of the all-words gold set that the other
+              split of the open corpus has.
+            tags: [unit]
+            justification: |
+              A half must not contain a sentence of the other split, or the halves would not be independent.
+            tests:
+              - WordSenseBuilder_Corpus_Leakage_AllWordsGoldSentenceOfTheOtherSplit_IsALeak
+
           - id: WordSense-WordSenseBuilder-RunningText
             title: >-
               The builder shall measure the part-of-speech accuracy of every model through its public interface on the
@@ -996,6 +1534,7 @@ sections:
           - id: WordSense-WordSenseBuilder-Usage
             title: >-
               The builder shall provide the commands compile-image, import-moby, weights, evaluate, evaluate-senses,
+              evaluate-allwords, allwords-sample, allwords-merge,
               evaluate-running, evaluate-suite, check-leakage, tiers, open-counts, evaluate-tagger, coverage,
               train-basic, tune-basic, label-senses, import-wn30-counts, appendix, keys and heteronyms, print
               usage when given no

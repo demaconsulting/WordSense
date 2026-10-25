@@ -24,7 +24,8 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     ranked senses of every analysis are listed whatever the level. A word with one analysis and one sense is answered
 ///     at the <see cref="SenseLevel.Sense"/> level. Every other ambiguous word is answered by the Basic fallback: it
 ///     chooses the analysis (the part of speech) from the context, the analyses of the result carry its probabilities,
-///     no sense is scored, and the level is <see cref="SenseLevel.PartOfSpeech"/>, or <see cref="SenseLevel.Sense"/> when
+///     no sense is decided (the senses of the analyses are ranked by how often they are used, which is a statement about
+///     the lemma and never an answer), and the level is <see cref="SenseLevel.PartOfSpeech"/>, or <see cref="SenseLevel.Sense"/> when
 ///     its selected analysis has exactly one sense. The composition rules (which model answers a word,
 ///     and that a result always belongs completely to one of the two models) are those of
 ///     <see cref="FallbackWordSenseModel"/>. <see cref="ClassifyAsync"/> needs the encoder files only for a text that
@@ -117,11 +118,31 @@ public sealed class MiniLMWordSenseModel : IDownloadableWordSenseModel
     /// </remarks>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="maxSequenceLength"/> is outside 8 to 512.</exception>
     public MiniLMWordSenseModel(string? modelDirectory = null, int maxSequenceLength = 128)
+        : this(modelDirectory, maxSequenceLength, PartOfSpeechPrimaryWeight)
+    {
+    }
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="MiniLMWordSenseModel"/> class with an explicit primary weight (the
+    ///     builder tunes it; tests pin it).
+    /// </summary>
+    /// <param name="modelDirectory">A directory that holds <c>model_int8.onnx</c> and <c>vocab.txt</c>, or null to use the per-user store.</param>
+    /// <param name="maxSequenceLength">The maximum sequence length including special tokens; 8 to 512.</param>
+    /// <param name="primaryWeight">The weight of the encoder in the combination of the slot probabilities, from 0 to 1; see <see cref="PartOfSpeechPrimaryWeight"/>.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="maxSequenceLength"/> is outside 8 to 512 or <paramref name="primaryWeight"/> is outside 0 to 1.</exception>
+    internal MiniLMWordSenseModel(string? modelDirectory, int maxSequenceLength, double primaryWeight)
     {
         Encoder = new MiniLMEncoderModel(modelDirectory, maxSequenceLength);
         Fallback = new BasicWordSenseModel();
-        _model = new FallbackWordSenseModel(Encoder, Fallback);
+        _model = new FallbackWordSenseModel(Encoder, Fallback, primaryWeight);
     }
+
+    /// <summary>
+    ///     The weight of the encoder when its slot probabilities are combined with those of the Basic model for a word that
+    ///     the encoder answers at the part-of-speech level (see <see cref="FallbackWordSenseModel"/>): 1 keeps the answer
+    ///     of the encoder, 0 takes the part of speech of Basic.
+    /// </summary>
+    internal const double PartOfSpeechPrimaryWeight = 0.6;
 
     /// <summary>
     ///     Gets the identifier of the model, which names its folder in the repository, on a mirror and in the store.
@@ -142,6 +163,12 @@ public sealed class MiniLMWordSenseModel : IDownloadableWordSenseModel
     ///     Gets the Basic model that answers the words the encoder model does not score; it is the fallback of the composition.
     /// </summary>
     internal IWordSenseModel Fallback { get; }
+
+    /// <summary>
+    ///     Gets the weight of the encoder in the combination of its slot probabilities with those of the Basic model for a
+    ///     word that the encoder answers at the part-of-speech level.
+    /// </summary>
+    internal double PrimaryWeight => _model.PrimaryWeight;
 
     /// <summary>
     ///     Makes sure every file of the encoder is available and verified: from the directory given to the constructor,
@@ -176,7 +203,8 @@ public sealed class MiniLMWordSenseModel : IDownloadableWordSenseModel
     ///     encoder at the sense, group or part-of-speech level its thresholds allow, with the ranked senses of its
     ///     analyses; the first call with such a word ensures the model files itself (it may download them, see
     ///     <see cref="EnsureModelAsync"/>). A word whose lemma has no trained weights is answered by the Basic model: at
-    ///     the <see cref="SenseLevel.PartOfSpeech"/> level with the probabilities of its analyses and no scored senses, or
+    ///     the <see cref="SenseLevel.PartOfSpeech"/> level with the probabilities of its analyses and the senses of its
+    ///     analyses ranked by how often they are used (the usage prior: a ranking of the lemma, never an answer), or
     ///     at the <see cref="SenseLevel.Sense"/> level when its selected analysis has exactly one sense, which the Basic
     ///     model names without scoring. A text without a trained lemma needs no model file. An unknown word has no
     ///     analysis, the level <see cref="SenseLevel.None"/> and confidence 0.

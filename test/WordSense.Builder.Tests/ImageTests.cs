@@ -248,11 +248,11 @@ public sealed class ImageTests
     }
 
     /// <summary>
-    ///     The committed image is of format version 4 and has no respelling sections (the ids 24 to 26), and its meta
-    ///     section has eight values.
+    ///     The committed image is of format version 5: it has no respelling sections (the ids 24 to 26), its meta section
+    ///     has eight values, and its sense frequency section has one 16-bit WordNet 3.0 tag count for each sense.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_Image_Version4_HasNoRespellingSections()
+    public void WordSenseBuilder_Image_Version5_HasSenseFrequencyAndNoRespellingSections()
     {
         // Arrange
         var bytes = Committed.Value;
@@ -261,20 +261,22 @@ public sealed class ImageTests
         var image = WordImage.Open(bytes);
 
         // Assert
-        Assert.Equal(4u, BinaryPrimitives.ReadUInt32LittleEndian(bytes.AsSpan(4)));
+        Assert.Equal(5u, BinaryPrimitives.ReadUInt32LittleEndian(bytes.AsSpan(4)));
         Assert.DoesNotContain(image.SectionIds, id => id is >= 24 and <= 26);
         Assert.Equal(8, image.RawSection(ImageFormat.SectionMeta).Length / 4);
+        Assert.Contains(ImageFormat.SectionSenseFrequency, image.SectionIds);
+        Assert.Equal(image.SenseCount * 2, image.RawSection(ImageFormat.SectionSenseFrequency).Length);
     }
 
     /// <summary>
-    ///     An image of the previous format version (3, which still had the respelling sections) is rejected with a message
+    ///     An image of the previous format version (4, which had no sense frequency section) is rejected with a message
     ///     that names the version, with and without the content hash check.
     /// </summary>
     [Fact]
     public void WordSenseBuilder_Image_PreviousFormatVersion_IsRejected()
     {
         // Arrange: the committed image with the version of the previous format
-        Assert.Equal(4u, ImageFormat.Version);
+        Assert.Equal(5u, ImageFormat.Version);
         var previous = (byte[])Committed.Value.Clone();
         BinaryPrimitives.WriteUInt32LittleEndian(previous.AsSpan(4), ImageFormat.Version - 1);
 

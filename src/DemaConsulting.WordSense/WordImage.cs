@@ -596,6 +596,17 @@ internal sealed partial class WordImage
         return MemoryMarshal.Cast<byte, uint>(bytes).ToArray();
     }
 
+    private ushort[] Ushorts(int id)
+    {
+        var bytes = Section(id);
+        if (bytes.Length % 2 != 0)
+        {
+            throw new InvalidDataException($"Section {id.ToString(System.Globalization.CultureInfo.InvariantCulture)} of the word image has an invalid length.");
+        }
+
+        return MemoryMarshal.Cast<byte, ushort>(bytes).ToArray();
+    }
+
     /// <summary>
     ///     Reads and validates the section directory: every section lies after the header and the directory and inside
     ///     the image, no two sections overlap, the flags are known and the raw and stored lengths agree with them.

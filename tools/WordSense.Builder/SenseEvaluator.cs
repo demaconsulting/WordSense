@@ -148,9 +148,10 @@ internal sealed record SenseEvalResult(SenseEvalFunnel Funnel, IReadOnlyList<Sen
         text.Append("level. A word without a ranked sense counts as a miss of the fine top-1, and a word answered at the part-of-speech level is not a\n");
         text.Append("sense answer. The trained rows are the words of the tables above. The most-frequent-sense baseline chooses, for the gold lemma\n");
         text.Append("and part of speech, the sense with the highest WordNet 3.0 tag count (ties: inventory order). Those tag counts are counted on SemCor\n");
-        text.Append("itself, so on SemCor the baseline has seen the answers: it is an optimistic reference, not a competitor, and it is a lemma-level\n");
-        text.Append("prior that the library does not ship for untrained lemmas, where the models carry no prior at all; the gap to the baseline there\n");
-        text.Append("shows what such a prior could add, not a defect of the evaluation.\n");
+        text.Append("itself, so on SemCor the baseline has seen the answers: it is an optimistic reference, not a competitor. For the untrained lemmas the\n");
+        text.Append("models rank the senses by that same usage prior (the WordNet 3.0 tag counts with add-k smoothing, never an answer), so their fine top-1\n");
+        text.Append("on the untrained words is circular on SemCor too: it shows that the prior is applied, not how good it is. The independent measurement of the\n");
+        text.Append("prior is the all-words gold set of the open corpus (`evaluate-allwords`), whose tokens no tag count was made on.\n");
     }
 
     private static void AppendAllWordsRow(StringBuilder text, CultureInfo inv, string model, string subset, SetResult s, int tagCount)

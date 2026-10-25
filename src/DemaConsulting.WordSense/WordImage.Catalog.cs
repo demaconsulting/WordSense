@@ -58,6 +58,34 @@ internal sealed partial class WordImage
     }
 
     /// <summary>
+    ///     Lists the usage of the senses of a lemma and part of speech: the id and the WordNet 3.0 tag count of each sense, in
+    ///     inventory order (the order of <see cref="SensesOf"/>).
+    /// </summary>
+    /// <param name="lemma">The lemma exactly as it is written in the catalog.</param>
+    /// <param name="pos">The part of speech.</param>
+    /// <returns>The senses in the order of Open English WordNet with their tag counts (0 for a project sense and for a sense that was never tagged); empty when the lemma and part of speech have no sense.</returns>
+    /// <exception cref="InvalidDataException">Thrown when the catalog is corrupt.</exception>
+    public (string SenseId, int TagCount)[] UsageOf(string lemma, PartOfSpeech pos)
+    {
+        ArgumentNullException.ThrowIfNull(lemma);
+        var catalog = GetCatalog();
+        var block = catalog.FindBlock(lemma, pos);
+        if (block < 0)
+        {
+            return [];
+        }
+
+        var usage = new (string SenseId, int TagCount)[(int)(catalog.BlockStart[block + 1] - catalog.BlockStart[block])];
+        for (var k = 0; k < usage.Length; k++)
+        {
+            var sense = (int)catalog.BlockSenses[(int)catalog.BlockStart[block] + k];
+            usage[k] = (catalog.SenseId(sense), catalog.TagCount(sense));
+        }
+
+        return usage;
+    }
+
+    /// <summary>
     ///     Finds a sense by its id.
     /// </summary>
     /// <param name="senseId">The sense id.</param>
@@ -169,6 +197,7 @@ internal sealed partial class WordImage
         private readonly byte[] _keyBytes;
         private readonly uint[] _keyOffset;
         private readonly uint[] _senseGroup;
+        private readonly ushort[] _senseFrequency;
         private readonly byte[] _groupIdBytes;
         private readonly uint[] _groupIdOffset;
         private readonly byte[] _groupPos;
@@ -196,6 +225,12 @@ internal sealed partial class WordImage
             if (_senseGroup.Length != _senseCount)
             {
                 throw Bad("a sense table has the wrong length");
+            }
+
+            _senseFrequency = image.Ushorts(ImageFormat.SectionSenseFrequency);
+            if (_senseFrequency.Length != _senseCount)
+            {
+                throw Bad("the sense frequency table has the wrong length");
             }
 
             _groupIdBytes = image.Section(ImageFormat.SectionGroupIdBytes);
@@ -298,6 +333,10 @@ internal sealed partial class WordImage
             var found = Search(_keyIndex.Length, i => CompareKey((int)_keyIndex[i], query));
             return found < 0 ? -1 : (int)_keyIndex[found];
         }
+
+        public string SenseId(int index) => Encoding.UTF8.GetString(IdSpan(index));
+
+        public int TagCount(int index) => _senseFrequency[index];
 
         public SenseInfo Sense(int index)
         {
@@ -619,6 +658,12 @@ internal sealed partial class WordImage
             for (var s = 0; s < _senseCount; s++)
             {
                 keyed += _keyOffset[s + 1] > _keyOffset[s] ? 1 : 0;
+
+                // A project sense has no key, so it has no WordNet 3.0 tag count either
+                if (_senseFrequency[s] != 0 && _keyOffset[s + 1] == _keyOffset[s])
+                {
+                    throw Bad("a sense without a key has a tag count");
+                }
             }
 
             if (_keyIndex.Length != keyed || _keyIndex.Any(i => i >= _senseCount || _keyOffset[i + 1] == _keyOffset[i]))

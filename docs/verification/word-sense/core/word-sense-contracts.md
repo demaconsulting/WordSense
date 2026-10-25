@@ -41,9 +41,13 @@ All scenarios below pass on every platform and target framework of the CI matrix
   code) and two results that differ in one analysis, one sense or the order are not; the results of two unknown words
   share the same empty analyses array.
 - **AnalysisCandidate and SenseCandidate** (`AnalysisCandidate_Senses_DefaultIsEmpty`,
-  `AnalysisCandidate_SameValues_AreEqual`, `SenseCandidate_SameValues_AreEqual`): an analysis built without senses, or
+  `AnalysisCandidate_SameValues_AreEqual`, `AnalysisCandidate_SensesRankedByUsage_DefaultsToContextScored`,
+  `SenseCandidate_SameValues_AreEqual`): an analysis built without senses, or
   with the default array, has the empty list and never a default array; two analyses with the same details, probability
-  and senses are equal; two `SenseCandidate` values with the same sense id and probability are equal.
+  and senses are equal; a candidate built with three arguments, a `default` candidate and one built with the argument
+  false have `SensesRankedByUsage` false (the default of a third-party model that lists senses), one built with the
+  argument true has it true, and the flag takes part in the equality; two `SenseCandidate` values with the same sense id
+  and probability are equal.
 - **SenseLevel has four ordered values** (`SenseLevel_Values_AreTheFourLevels`, `SenseLevel_Order_IncreasesWithPrecision`):
   none, part of speech, group and sense, in order of increasing precision.
 - **WordDetails equality and features** (`WordDetails_Construct_ExposesMembers`, `WordDetails_SameValues_AreEqual`,
@@ -69,7 +73,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
   with scored senses, or the level group or sense, the composite returns exactly the primary result (the same analyses,
   level, confidence and ids), not the fallback result.
 - **Fallback uses the fallback result otherwise** (`FallbackWordSenseModel_PrimaryChoseOnlyAnalysis_UsesFallback`): for
-  a word that the primary model did not know, or only answered at the part of speech level without scored senses, the
+  a word that the primary model did not know, or only answered at the part of speech level without scored senses (also
+  one whose senses are only ranked by usage), the
   composite returns the complete fallback result; in a list with both kinds of word each position takes its own
   result, and no result is a mixture of the two.
 - **Fallback gives tied variants the proportions of the fallback**
@@ -91,6 +96,45 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Slot totals, level and confidence are kept** (`..._ManyInputs_KeepSlotTotalsLevelAndConfidence`): over 200
   deterministic pairs of results, the probability of every slot, the level, the confidence and the sense id are those of
   the primary result, the probabilities sum to one and the selected analysis is the first analysis.
+- **Fallback combines the slot probabilities at the part of speech level**
+  (`..._PartOfSpeechLevel_CombinesTheSlotProbabilities`, `..._PrimaryWeight_OneKeepsThePrimaryZeroTakesTheFallback`,
+  `..._SlotOfOneResultOnly_CountsWithTheFloor`): an encoder result at the part of speech level that says noun 0.7 and
+  verb 0.3 (the two verb variants tied) and a fallback that says verb 0.95 and noun 0.05 give, for the primary weight
+  0.5, the slot probabilities `sqrt(0.3 * 0.95)` and `sqrt(0.7 * 0.05)` normalized (verb about 0.74), the verb selected
+  as the first analysis with that probability as the confidence, the level still part of speech and no group or sense id;
+  the weight 1 gives the composition without a weight (the noun stays on top at 0.7) and the weight 0 gives the slot
+  probabilities of the fallback (0.95 and 0.05); a slot that one result does not list counts with the floor 1e-6 (a noun
+  the fallback lacks gets `sqrt(0.5 * 1e-6)` of the unnormalized mass), and a slot only the fallback lists enters the
+  result with its own analyses, with the senses and the ranking kind (`SensesRankedByUsage`) that the fallback result
+  lists for them.
+- **Fallback does not take a usage ranking for a score**
+  (`..._BasicAsPrimary_UsageRankedSenses_AreNotRefinedOrReconciled`, `..._BasicWithBasic_ReturnsTheBasicAnswerAsItIs`,
+  `..._PrimaryWithContextScoredSenses_StillReconciled`, `..._Reconcile_KeepsTheRankingKindOfEveryAnalysis`): the real
+  Basic result of `record` (two slots, the selected analysis listing two or more senses ranked by usage,
+  `SensesRankedByUsage` true, level part of speech) used as the primary result is replaced by the fallback result as it
+  is,
+  for the primary weights 0.5 and 0, and with the real Basic model as the primary; a composite of Basic with Basic returns
+  the Basic answers unchanged at the weights 0, 0.5 and 1; the same analyses declared as scored in context (the
+  three-argument constructor) are used and reconciled (weight 1 keeps them, 0.5 changes the result, and every analysis
+  keeps its senses); a slot that only the fallback lists keeps its `SensesRankedByUsage` flag in the reconciled result
+  while the slot of the primary stays false.
+- **Fallback keeps the variants and the senses when it combines**
+  (`..._PartOfSpeechLevel_KeepsTheShareOfTheVariantsAndTheirSenses`, `..._PartOfSpeechLevel_KeepsTheTieSplitOfTheFallback`):
+  verb variants that the encoder split 1 to 2 are still 1 to 2 in the combined result and keep their ranked senses; tied
+  variants are first re-split with the proportions of the fallback (3 to 1) and keep that split after the combination.
+- **Fallback leaves sense and group answers alone**
+  (`..._SenseOrGroupLevel_IsLeftAsThePrimaryGaveIt`, `..._SingleSlotOrEmptyFallback_LeavesThePrimaryResult`): for a
+  primary result at the sense level or at the group level, with the weight 0 and a fallback that says verb, the level,
+  the confidence, the ids, the selected analysis and the probability of the noun slot are those of the primary result; a
+  result of a single slot and a fallback without analyses are returned as they are.
+- **Combined results stay consistent** (`..._PartOfSpeechLevel_ManyInputs_StayConsistent`): over 200 deterministic pairs
+  of results and weights the probabilities sum to one, the selected analysis is the first analysis, the confidence is the
+  probability of its slot, the level is part of speech, the number of analyses is unchanged and every analysis keeps its
+  senses.
+- **The weight is validated and reported**
+  (`..._PrimaryWeight_OutsideZeroToOne_Throws`, `..._PrimaryWeight_IsReported`): a weight
+  below 0, above 1, NaN or infinite throws `ArgumentOutOfRangeException`; 0, 0.6 and 1 are accepted and reported, and
+  1 is reported when no weight is given.
 - **Fallback ensures the capable members and disposes both models**
   (`FallbackWordSenseModel_IsDownloadable`, `FallbackWordSenseModel_EnsureModelAsync_EnsuresBoth`,
   `FallbackWordSenseModel_EnsureModelAsync_OnlyCapableMemberEnsured`,
@@ -145,7 +189,7 @@ All scenarios below pass on every platform and target framework of the CI matrix
   type catches every typed exception.
 - **Key of a result** (`ClassifyResult_Key_SenseLevel_HasTheLabelOfTheAnsweredSense`,
   `ClassifyResult_Key_GroupId_IsNeverUsed`, `ClassifyResult_Key_RankedSenses_FallBackToTheTopRankedSense`,
-  `ClassifyResult_Key_TiedRankedSenses_UseTheOrdinalOrderOfTheId`,
+  `ClassifyResult_Key_TiedRankedSenses_TakeTheFirstListed`,
   `ClassifyResult_Key_RankingOfAnotherAnalysis_IsNotUsed`,
   `ClassifyResult_Key_PartOfSpeechLevelWithoutRanking_HasNoLabel`,
   `ClassifyResult_Key_EmptyFeatures_LeaveOutTheFeatureSegment`, `ClassifyResult_Key_UnknownOrUnanswered_IsNull`,
@@ -153,7 +197,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `ClassifyResult_Key_ContractionAndPossessive_AreKeyedBySpelling`): results built by hand and results of the Basic model
   give `bass|bass/Noun/Number=Sing#sea-bass` at the sense level whatever the ranking says; a group id never appears in a
   key; a group-level and a part-of-speech-level result take the label of the most probable ranked sense of the selected
-  analysis (the unsorted list is searched, a tie goes to the smaller id, the ranking of another analysis is ignored); a
+  analysis (the unsorted list is searched, a tie goes to the first listed sense, the ranking of another analysis is
+  ignored); a
   part-of-speech result without a ranking has no label; empty features leave out the feature segment; an unknown word, a
   default result and a known word without selected analysis have a null key; `POLISH` with the lemma `Polish` is
   `polish|Polish/Noun/Number=Sing` and `Don’t` with a typographic apostrophe is spelled `don't`; the Basic model gives the

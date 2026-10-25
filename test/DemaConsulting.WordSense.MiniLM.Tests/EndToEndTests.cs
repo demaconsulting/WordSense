@@ -65,13 +65,23 @@ public class EndToEndTests
         Assert.Equal(result.Details, result.Analyses[0].Details);
         Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 9);
 
-        // Assert: when the encoder scored senses for the verb, the slot of the verb, the level, the confidence and the ids are
-        // those of the encoder (only the split inside the slot moved); otherwise the answer is the complete result of Basic
-        var scored = encoded.Level is SenseLevel.Group or SenseLevel.Sense || encoded.Analyses.Any(a => a.Senses.Length > 0);
-        if (scored)
+        // Assert: when the encoder named a sense or a group for the verb, the slot of the verb, the level, the confidence and the
+        // ids are those of the encoder (only the split inside the slot moved); when it scored senses but committed to neither
+        // (the part-of-speech level), the slot probabilities are combined with those of Basic, so the answer stays at that level
+        // with the probability of the selected slot as the confidence and the senses of the encoder; otherwise the answer is the
+        // complete result of Basic
+        // (production eligibility: the selected analysis lists scored senses, or the level is Group or Sense)
+        var scored = encoded.Level is SenseLevel.Group or SenseLevel.Sense || encoded.Analyses.Any(a => a.Details.Equals(encoded.Details) && !a.Senses.IsEmpty);
+        if (encoded.Level is SenseLevel.Group or SenseLevel.Sense)
         {
             Assert.Equal((encoded.Level, encoded.Confidence, encoded.GroupId, encoded.SenseId), (result.Level, result.Confidence, result.GroupId, result.SenseId));
             Assert.Equal(SlotMass(encoded), SlotMass(result), 9);
+        }
+        else if (scored)
+        {
+            Assert.Equal((SenseLevel.PartOfSpeech, null, null), (result.Level, result.GroupId, result.SenseId));
+            Assert.Equal(SlotMass(result), result.Confidence, 9);
+            Assert.All(result.Analyses, a => Assert.True(encoded.Analyses.First(e => e.Details == a.Details).Senses.AsSpan().SequenceEqual(a.Senses.AsSpan())));
         }
         else
         {
@@ -133,6 +143,33 @@ public class EndToEndTests
         Assert.Null(record.SenseId);
         Assert.Null(record.GroupId);
         Assert.InRange(record.Confidence, 0.0, 1.0);
+    }
+
+    /// <summary>
+    ///     A word with several meanings that the encoder was not trained for is answered at the part-of-speech level and
+    ///     lists the senses of its selected analysis ranked by the usage prior (the fallback model's ranking, never an
+    ///     answer), and its key carries the label of the top-ranked sense.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task MiniLM_Classifier_EndToEnd_UntrainedWord_RanksItsSensesByUsage()
+    {
+        // Arrange
+        using var model = new MiniLMWordSenseModel(ModelFolder.Require());
+        model.Encoder.IntraOpThreads = 2;
+
+        // Act
+        var record = (await model.ClassifyAsync(["They", "will", "garden", "the", "garden", "."], TestContext.Current.CancellationToken))[4];
+
+        // Assert
+        var details = Assert.IsType<WordDetails>(record.Details);
+        var selected = record.Analyses.First(a => a.Details.Equals(details));
+        Assert.Equal(SenseLevel.PartOfSpeech, record.Level);
+        Assert.Null(record.SenseId);
+        Assert.Equal(UsagePrior.RankOf(details.Lemma, details.PartOfSpeech), selected.Senses);
+        Assert.True(selected.Senses.Length >= 2);
+        Assert.True(selected.SensesRankedByUsage);
+        Assert.EndsWith("#" + selected.Senses[0].SenseId.Split('#')[1], record.Key, StringComparison.Ordinal);
     }
 
     /// <summary>
@@ -237,6 +274,7 @@ public class EndToEndTests
         // Assert: the trained word lists scored senses in at least one analysis; each list is ranked and sums to one
         var back = results[3];
         Assert.Contains(back.Analyses, a => !a.Senses.IsEmpty);
+        Assert.False(back.Analyses.First(a => a.Details.Equals(back.Details)).SensesRankedByUsage);
         foreach (var analysis in back.Analyses.Where(a => !a.Senses.IsEmpty))
         {
             Assert.Equal(1.0, analysis.Senses.Sum(s => s.Probability), 6);

@@ -118,12 +118,81 @@ public sealed class LeakageCheckTests
 
         // Assert: every kind of part is checked, and none leaks
         var names = sets.Select(s => s.Name).ToList();
-        foreach (var expected in new[] { "anchors", "chooser anchors", "holdout", "chooser holdout", "real text", "suite", "open corpus dev", "open corpus test", "STE challenge set", "OEWN examples" })
+        foreach (var expected in new[] { "anchors", "chooser anchors", "holdout", "chooser holdout", "real text", "suite", "open corpus dev", "open corpus test", "all-words gold dev", "all-words gold test", "STE challenge set", "OEWN examples" })
         {
             Assert.Contains(expected, names);
         }
 
         Assert.False(report.Leaks.Any(), report.Render());
+    }
+
+    /// <summary>
+    ///     The gold set of the all-words evaluation is a view of the split of the open corpus it is drawn from: the same
+    ///     sentences by design, so that is no leak.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Corpus_Leakage_AllWordsGold_IsAViewOfItsOpenSplit()
+    {
+        // Arrange
+        const string Shared = "this sentence is in the development split and in its gold set";
+        var views = new[]
+        {
+            Set("open corpus dev", LeakageRole.Evaluation, Shared),
+            Set("open corpus test", LeakageRole.Evaluation, "a sentence of the test split that is only there"),
+            Set("all-words gold dev", LeakageRole.Evaluation, Shared),
+            Set("all-words gold test", LeakageRole.Evaluation, "a sentence of the test split that is only there"),
+        };
+
+        // Act
+        var clean = LeakageCheck.Check(views);
+
+        // Assert
+        Assert.Empty(clean.Leaks);
+        Assert.Contains(clean.Overlaps, o => o is { First: "open corpus dev", Second: "all-words gold dev", Exact: 1 });
+    }
+
+    /// <summary>
+    ///     A sentence of the all-words gold set that a training part has too is a leak.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Corpus_Leakage_AllWordsGoldSentenceInATrainingPart_IsALeak()
+    {
+        // Arrange
+        const string Shared = "this sentence is in the development split and in its gold set";
+        var views = new[]
+        {
+            Set("anchors", LeakageRole.Training, Shared),
+            Set("open corpus dev", LeakageRole.Evaluation, Shared),
+            Set("all-words gold dev", LeakageRole.Evaluation, Shared),
+        };
+
+        // Act
+        var report = LeakageCheck.Check(views);
+
+        // Assert
+        Assert.Contains(report.Leaks, o => o is { First: "anchors", Second: "all-words gold dev" });
+    }
+
+    /// <summary>
+    ///     A sentence of the all-words gold set that the other split of the open corpus has is a leak.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Corpus_Leakage_AllWordsGoldSentenceOfTheOtherSplit_IsALeak()
+    {
+        // Arrange: the development gold set holds a sentence of the test split
+        const string FromTest = "a sentence of the test split that is only there";
+        var views = new[]
+        {
+            Set("open corpus dev", LeakageRole.Evaluation, "a sentence of the development split"),
+            Set("open corpus test", LeakageRole.Evaluation, FromTest),
+            Set("all-words gold dev", LeakageRole.Evaluation, FromTest),
+        };
+
+        // Act
+        var report = LeakageCheck.Check(views);
+
+        // Assert
+        Assert.Contains(report.Leaks, o => o is { First: "open corpus test", Second: "all-words gold dev" });
     }
 
     /// <summary>

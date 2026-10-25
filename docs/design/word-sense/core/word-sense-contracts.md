@@ -26,16 +26,25 @@ model for another without code changes, and the composite `FallbackWordSenseMode
   part of speech.
 - `SenseCandidate(SenseId, Probability)`: a readonly record struct that names one fine sense and its probability from
   0 to 1 given the analysis it is listed in.
-- `AnalysisCandidate(Details, Probability, Senses)`: a readonly record struct for one analysis of a word.
+- `AnalysisCandidate(Details, Probability, Senses)` and `AnalysisCandidate(Details, Probability, Senses,
+  SensesRankedByUsage)`: a readonly record struct for one analysis of a word.
   `Details` is the `WordDetails` of the analysis; `Probability` is its probability among the analyses of the word, where
   the analyses that share a lemma and a part of speech (a slot, the unit that owns the senses) and differ only in
   features share the probability of the slot, split among them by the model's evidence or equally, so the probability of
   a slot is the sum over its analyses;
   `Senses` is an immutable array of `SenseCandidate`, the probability of each fine sense given the analysis (given its
   slot, the same for every variant of a slot), sorted by
-  probability (ties by the ordinal order of the sense id), summing to one and never truncated. `Senses` is empty when
-  the model did not score the senses of the analysis. A `default` candidate is valid (a placeholder `Details` without a
-  lemma, empty `Senses`). Equality compares the senses item by item.
+  probability (ties in the inventory order of the lemma, see `WordLexicon.SensesOf`), summing to one and never
+  truncated. `Senses` is empty when the model did not rank the senses of the analysis: an encoder scores them for its
+  trained lemmas, and the Basic model (and so every composed model, for a lemma the encoder has no weights for) ranks
+  the senses of every lemma and part of speech that has two or more by the usage prior, which is a statement about the
+  lemma and never an answer. `SensesRankedByUsage` (a read-only `bool`) tells the two rankings apart: it is true only
+  when the model ranked the senses by the usage prior and did not score them from the context of the word (the Basic
+  model for a lemma and part of speech with two or more senses); it is false when `Senses` is empty, when it lists the
+  only sense of a lemma, when an encoder scored it, for a `default` candidate and for every candidate built with the
+  three-argument constructor, so a model that lists senses and says nothing else counts as scoring them in context. It
+  is a part of the equality. A `default` candidate is valid (a placeholder `Details` without a
+  lemma, empty `Senses`). Equality compares the senses item by item and the flag.
 - `ClassifyResult(Word, IsKnown, Analyses, Details, Level, Confidence, GroupId, SenseId)`: a readonly record struct,
   the result for one word (the type is not named `WordSense`, which is the name of the namespace and the package). It
   has two parts:
@@ -79,9 +88,11 @@ model for another without code changes, and the composite `FallbackWordSenseMode
     `WordKey.Format(spelling, lemma, part, features, label)`: the spelling is `BasicClassifier.Normalize(Word)` (the
     normalization of the lookup: lower case, the typographic apostrophe straightened), the lemma, part of speech and
     features are those of `Details`, and the label is, in this order, (a) the part after `#` of `SenseId` at the `Sense`
-    level; (b) otherwise that of the most probable sense (ties by the ordinal order of the id) of the analysis of
+    level; (b) otherwise that of the most probable sense (on equal probabilities the first listed one: the senses are listed
+    in the order of the ranking, ties in the inventory order of the lemma) of the analysis of
     `Analyses` that equals `Details`, or of the first analysis with its lemma and part of speech, when it lists senses (the
-    group level and the part-of-speech level of a trained lemma); (c) otherwise none. A group id is never used because
+    group level and the part-of-speech level of a trained lemma, and the part-of-speech level of every polysemous lemma
+    through the usage prior of the Basic model); (c) otherwise none. A group id is never used because
     group ids are not frozen. It does not appear in `Equals` or `GetHashCode`, which compare the stored values, and the
     `ToString` of the `ClassifyResult` record struct lists it like any property.
 - `WordKey(Spelling, Lemma, PartOfSpeech, Features, Label)`: a sealed record that holds the parts of a key. `ToString()`
@@ -118,9 +129,12 @@ model for another without code changes, and the composite `FallbackWordSenseMode
   throws `ObjectDisposedException` from the call. A caller that holds only an `IWordSenseModel` writes
   `if (model is IDownloadableWordSenseModel downloadable) { await downloadable.EnsureModelAsync(); }`; a caller that
   holds a concrete type (for example `MiniLMWordSenseModel`) calls `await model.EnsureModelAsync();` directly.
-- `FallbackWordSenseModel(IWordSenseModel primary, IWordSenseModel fallback)`: a sealed public class that implements
-  `IDownloadableWordSenseModel` by composing two models. It owns both: it stores them and disposes both with its own
-  `Dispose`.
+- `FallbackWordSenseModel(IWordSenseModel primary, IWordSenseModel fallback)` and
+  `FallbackWordSenseModel(IWordSenseModel primary, IWordSenseModel fallback, double primaryWeight)`: a sealed public
+  class that implements `IDownloadableWordSenseModel` by composing two models. It owns both: it stores them and
+  disposes both with its own `Dispose`. The primary weight `w` (the read-only property `PrimaryWeight`) is a number
+  from 0 to 1, 1 when it is not given; a value below 0, above 1 or not a number is rejected with
+  `ArgumentOutOfRangeException`.
 - `DownloadOptions(BaseUri, BearerToken, Credentials, StoreRoot, Timeout)`: a sealed record in its own file (formerly
   `MirrorOptions`; the `WORDSENSE_MIRROR_*` environment variable names are unchanged). The base URI is the
   mirror's root; the store root defaults to the per-user `DemaConsulting/WordSense/models` folder; the timeout is per
@@ -168,9 +182,13 @@ whether an id is null: a result at the `PartOfSpeech` level is a valid answer th
   member, not a model integrity failure). Then, for each word index, it takes the result of the primary model when the
   primary model scored senses for the word, else the result of the fallback model. The primary model scored senses when
   its level is `Group` or `Sense`, or when the analysis of its `Analyses` that equals the selected `Details` has a
-  non-empty `Senses`; any other result (the word is unknown to the primary model, or it only chose between analyses)
-  is replaced by the fallback result. The result of a word is the result of one model, never a mixture of the two
-  (its analyses, selected analysis, level, confidence and ids belong together), with one refinement (`Refine`): for a
+  non-empty `Senses` that are not only ranked by usage (`SensesRankedByUsage` is false); any other result (the word is
+  unknown to the primary model, or it only chose between analyses, or the senses of its selected analysis are only the
+  usage prior, as those of the Basic model) is replaced by the fallback result, so a composite whose primary model is the
+  Basic model never refines or reconciles a ranking by usage as if it were a score. The result of a word is the result
+  of one model, never a mixture of the two
+  (its analyses, selected analysis, level, confidence and ids belong together), with two refinements (`Refine` and
+  `Reconcile`, in this order). `Refine`: for a
   slot of the primary result (lemma and part of speech) with two or more analyses whose probabilities are all equal
   within 1e-9 (the encoder has no evidence for the split of a slot, which shares its senses, so it gives the feature
   variants the same probability), the composite looks up the same analyses (equal `WordDetails`) in the fallback result
@@ -180,6 +198,24 @@ whether an id is null: a result at the `PartOfSpeech` level is a valid answer th
   selected analysis when that analysis changed. The level, confidence, group id and sense id, the senses of every analysis
   and the probability of every slot are untouched by construction; a slot that the primary result split unequally (a
   trained form chooser) is never touched, nor is a slot the fallback does not list or does not separate.
+  `Reconcile` (only when `w` < 1, the primary result is at the `PartOfSpeech` level, it has two or more slots over both
+  results and the fallback result has analyses; every other result is returned as it is, so an answer at the sense or
+  group level never changes): the encoder's slot probability is the mass of its senses, not a part-of-speech estimate,
+  so a result whose senses it could not tell apart can have the wrong top slot. Each slot of the union of the slots
+  of both results (the slots of the primary first, then the slots only the fallback lists, with the analyses of the
+  fallback result as they are: their senses, which for the Basic model are the senses ranked by usage of a polysemous
+  slot with `SensesRankedByUsage` true, or none for a slot without senses) gets the log score
+  `w × ln(max(p_primary, 1e-6)) + (1 − w) × ln(max(p_fallback, 1e-6))`,
+  where a slot's probability is the sum of its analyses and a slot a result lacks counts with the floor 1e-6; the scores
+  are normalized with a softmax (the maximum subtracted) into the new slot probabilities. Inside a slot every
+  analysis keeps its share of its own result (`p / slot mass`, equal shares when the mass is 0), its senses and the kind
+  of its ranking (`SensesRankedByUsage`). The
+  slots are listed by the new probability, the largest first (a tie keeping the order of the slots), and the analyses
+  of a slot by their probability (a stable sort); the selected analysis is the first analysis, the level stays
+  `PartOfSpeech`, the group and sense ids stay null, and the confidence is the probability of the first slot, as the
+  contract of the confidence at that level says. The floor 1e-6 only keeps the logarithm defined; it is not tuned.
+  The weight is a hyperparameter of each model package, tuned on development text only (see the MiniLM and
+  BertBaseCased design).
 - `Dispose()`: idempotent and thread-safe (an atomic flag); disposes the primary model and then, even when that throws,
   the fallback model, each once.
 
