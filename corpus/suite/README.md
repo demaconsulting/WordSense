@@ -130,7 +130,7 @@ expectation, so a regression fails the build while the known misses stay visible
 | Row | Model | Grade on the development machine | Grade on CI (Windows x64, macOS arm64) | Recorded |
 | --- | --- | --- | --- | --- |
 | `C-content-6` (`A small raise will not content the angry workers`) | BertBaseCased | fine | miss | miss |
-| `H-defense-1` (`The lawyer prepared a strong defense for the trial`) | BertBaseCased | fine | answer (Windows x64; the other platforms were canceled in that run) | answer |
+| `H-defense-1` (`The lawyer prepared a strong defense`) | BertBaseCased | fine | answer (Windows x64) | answer |
 
 ### Deliberate model change: the usage prior (historical; retraining of both encoder models)
 
