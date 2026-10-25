@@ -65,7 +65,9 @@ The layering is strict. Core references nothing. Onnx references only core (and 
 Runtime). MiniLM and BertBaseCased reference core and Onnx. The composition of an encoder model with the Basic
 model is made in the model packages with the core `FallbackWordSenseModel`: the primary model (the encoder) answers a
 word when it scored senses for it, and the fallback model (Basic, from core) answers every other word with its complete
-result, never a mixture of the two. Model packages never reference each other otherwise, so a consumer installs only
+result, never a mixture of the two (the one refinement: where the encoder gives the variants of a slot the same
+probability, the variants take the proportions of Basic, and the probability of the slot does not change). Model
+packages never reference each other otherwise, so a consumer installs only
 the model it wants. The contracts in core are the seam between callers and models: a caller programs against
 `IWordSenseModel` and can swap models without code changes; a caller that wants to control when the files of a model
 are downloaded tests for the optional `IDownloadableWordSenseModel`. The licenses follow the embedded data: the core
@@ -212,12 +214,14 @@ analyses at the part of speech level, and the Basic model of a composition choos
      the slots are equally likely (the variants of a slot split its share equally), the first is selected, no senses
      are scored, and the level is `PartOfSpeech`. That lexicon-only result is what the Onnx classifier returns on its own;
      the MiniLM and BertBaseCased composites replace it by the answer of the Basic model for the word.
-5. A composite model (`FallbackWordSenseModel`) answers each word with the complete result of its primary model when
+5. A composite model (`FallbackWordSenseModel`) answers each word with the result of its primary model when
    the primary model scored senses for it (the selected analysis lists scored senses, or the level is `Group` or
    `Sense`) and otherwise with the complete result of its fallback model. In the encoder packages the primary model is
    the encoder model and the fallback is the Basic model, so a word that the encoder does not score is answered by Basic
    at the part of speech level with the probabilities of its analyses. The composite adds no probability of its own: the
-   slot rules above hold inside each of the two results.
+   slot rules above hold inside each of the two results. Where the primary result gives the variants of a slot the same
+   probability (an encoder cannot tell the past of `put` from its infinitive), the variants take the proportions of the
+   fallback result, with the probability of the slot unchanged, so the level, confidence and sense do not move.
 6. The model returns a `ClassifyResult[]` parallel to the input. The confidence of each result is the probability of
    its answer at its own level (the probability of the slot of the selected analysis, times the probability of the
    answered sense, or the summed probability of the member senses of the answered group, within that slot); it is

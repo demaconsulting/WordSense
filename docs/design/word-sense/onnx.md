@@ -242,7 +242,8 @@ senses of its lemma and part of speech. It then decides:
    analyses, so
    `bow#archery` at 0.48 and `bow#violin` at 0.41 give 0.89 for one category even when the result itself is answered
    only at the part-of-speech level. A non-empty senses list in the selected analysis is also what makes a
-   `FallbackWordSenseModel` use this result instead of its fallback.
+   `FallbackWordSenseModel` use this result instead of its fallback (the composite may still give the equally likely
+   variants of a slot the proportions of its fallback; the encoder itself never reads Basic).
 4. **No scored senses.** The lemma has no trained weights, the encoder produced no usable vector, or a multi-lemma form
    has no chooser: the word is answered from the lexicon alone. Its lemmas and parts of speech (slots) are equally
    likely (probability 1 for a single one, 1/s for s of them) and the analyses of a slot split its probability equally,

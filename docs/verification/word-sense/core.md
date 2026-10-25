@@ -136,9 +136,29 @@ the shine, `August` in `We usually take our vacation in August` is the month and
 august presence` the adjective. The rules of the case evidence (what counts as isolated, a run, the start of a sentence)
 are verified in the `BasicClassifier` unit document.
 
+#### The Tense of a Verb Follows Its Context
+
+Through the public `BasicWordSenseModel` (`BasicWordSenseModel_ClassifyAsync_SameSpellingVerb_TenseFollowsTheContext`),
+a verb whose past and non-past share a spelling is answered with the tense that its context says: `I will read that
+tomorrow` and `Please put the books on the shelf` select a non-past analysis, `I have read that already` and `She had
+put the keys in her bag` a past one, with the probabilities of the word summing to one. The split of the slot by the
+shared tense table is verified in the `BasicClassifier`, `CueModel` and `BasicTables` unit documents.
+
+#### Composite Model Answers Each Word with One Model
+
+`FallbackWordSenseModel` answers a word with the result of the primary model when it scored senses for it and with the
+result of the fallback model otherwise (`FallbackWordSenseModel_PrimaryScoredSenses_UsesPrimary`,
+`FallbackWordSenseModel_PrimaryChoseOnlyAnalysis_UsesFallback`); the variants of a slot that the primary model gives the
+same probability take the proportions of the fallback and keep the probability of the slot
+(`FallbackWordSenseModel_TiedVariantsOfASlot_TakeTheProportionsOfTheFallback`); it prepares the members that can be
+prepared, only those, and reports a failure after all ran
+(`FallbackWordSenseModel_EnsureModelAsync_EnsuresBoth`, `FallbackWordSenseModel_EnsureModelAsync_OnlyCapableMemberEnsured`),
+and disposes both models once (`FallbackWordSenseModel_Dispose_DisposesBothOnce`). The scenarios are detailed in the
+`WordSenseContracts` unit document.
+
 #### Reviewed Suite Does Not Regress
 
-The Basic model answers the 348 sentences of the reviewed suite (`corpus/suite`) at least as well as the expectation file
+The Basic model answers the 364 sentences of the reviewed suite (`corpus/suite`) at least as well as the expectation file
 records for it: no row falls below its expectation (`fine`, `answer` or `miss`), so a regression fails the build while
 the known misses (the heteronym rows that need a sense, which Basic does not rank) stay documented
 (`BasicSuiteTests`, `BasicSuite_ExpectedPasses_StillPass`).

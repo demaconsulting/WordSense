@@ -263,6 +263,223 @@ public class FallbackWordSenseModelTests
 
     private static ClassifyResult Plain(string word) => Result(word, [new(Verb, 1, [])], Verb, SenseLevel.PartOfSpeech);
 
+    private static readonly WordDetails PutPast = new("put", PartOfSpeech.Verb, "Tense=Past+VerbForm=Part");
+    private static readonly WordDetails PutInf = new("put", PartOfSpeech.Verb, "VerbForm=Inf");
+    private static readonly WordDetails PutNoun = new("put", PartOfSpeech.Noun, "Number=Sing");
+
+    // The senses of the verb put and of the noun put, as an encoder lists them: the same for every variant of a slot
+    private static readonly ImmutableArray<SenseCandidate> PutVerbSenses = [new("put#place", 0.8), new("put#express", 0.2)];
+
+    // The result of an encoder for "put" that scored the senses of the verb slot (mass 0.6) and gave its variants the same probability
+    private static ClassifyResult EncoderPut(double past = 0.3, double inf = 0.3) =>
+        new("put", true, [new(PutPast, past, PutVerbSenses), new(PutInf, inf, PutVerbSenses), new(PutNoun, 1 - past - inf, [])], PutPast, SenseLevel.Sense, 0.55, "put#group", "put#place");
+
+    // The result of Basic for "put": a context that says the infinitive
+    private static ClassifyResult BasicPut(double past = 0.1, double inf = 0.6) =>
+        new("put", true, [new(PutInf, inf, []), new(PutPast, past, []), new(PutNoun, 1 - past - inf, [])], PutInf, SenseLevel.PartOfSpeech, inf + past, null, null);
+
+    private static async Task<ClassifyResult> Combine(ClassifyResult primary, ClassifyResult fallback)
+    {
+        using var model = new FallbackWordSenseModel(new StubModel(primary), new StubModel(fallback));
+        return (await model.ClassifyAsync([primary.Word], TestContext.Current.CancellationToken))[0];
+    }
+
+    /// <summary>
+    ///     The variants of a slot that the primary model gave the same probability take the relative proportions of the
+    ///     fallback model, the probability of the slot stays as the primary model gave it, the variants are sorted again
+    ///     and the selected analysis is the best variant; the senses, the level, the confidence and the ids are untouched.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_TiedVariantsOfASlot_TakeTheProportionsOfTheFallback()
+    {
+        // Arrange: the encoder ties the past and the infinitive (0.3 each); Basic says 6 to 1 for the infinitive
+        var primary = EncoderPut();
+        var fallback = BasicPut(past: 0.1, inf: 0.6);
+
+        // Act
+        var result = await Combine(primary, fallback);
+
+        // Assert: the infinitive first, the slot mass 0.6 split 6:1, the noun and everything else as the encoder had it
+        Assert.Equal([PutInf, PutPast, PutNoun], result.Analyses.Select(a => a.Details));
+        Assert.Equal(0.6 * 6 / 7, result.Analyses[0].Probability, 12);
+        Assert.Equal(0.6 / 7, result.Analyses[1].Probability, 12);
+        Assert.Equal(0.4, result.Analyses[2].Probability, 12);
+        Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 12);
+        Assert.Equal(PutInf, result.Details);
+        Assert.Equal(PutVerbSenses, result.Analyses[0].Senses);
+        Assert.Equal(PutVerbSenses, result.Analyses[1].Senses);
+        Assert.Equal((primary.Level, primary.Confidence, primary.GroupId, primary.SenseId), (result.Level, result.Confidence, result.GroupId, result.SenseId));
+        Assert.Equal(primary.Word, result.Word);
+    }
+
+    /// <summary>
+    ///     When the fallback model says past, the selected analysis stays the past one and the proportions are applied.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_TiedVariants_SelectedAnalysisFollowsTheFallbackSplit()
+    {
+        // Arrange: Basic says past (0.5 to 0.1), the encoder lists the past first on its tie
+        var primary = EncoderPut();
+        var fallback = BasicPut(past: 0.5, inf: 0.1);
+
+        // Act
+        var result = await Combine(primary, fallback);
+
+        // Assert
+        Assert.Equal([PutPast, PutInf, PutNoun], result.Analyses.Select(a => a.Details));
+        Assert.Equal(PutPast, result.Details);
+        Assert.Equal(0.6 * 5 / 6, result.Analyses[0].Probability, 12);
+    }
+
+    /// <summary>
+    ///     Variants that the fallback model gives the same probability keep the order of the primary result after the split,
+    ///     behind a variant that it ranks higher.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_TiedVariants_EqualShares_KeepTheOrderOfThePrimaryResult()
+    {
+        // Arrange: three tied variants of the verb slot (0.2 each); Basic ranks the finite form first and ties the others
+        var finite = new WordDetails("put", PartOfSpeech.Verb, "VerbForm=Fin");
+        var primary = new ClassifyResult("put", true, [new(PutPast, 0.2, PutVerbSenses), new(PutInf, 0.2, PutVerbSenses), new(finite, 0.2, PutVerbSenses), new(PutNoun, 0.4, [])], PutPast, SenseLevel.Sense, 0.55, "put#group", "put#place");
+        var fallback = new ClassifyResult("put", true, [new(finite, 0.4, []), new(PutInf, 0.1, []), new(PutPast, 0.1, []), new(PutNoun, 0.4, [])], finite, SenseLevel.PartOfSpeech, 0.6, null, null);
+
+        // Act
+        var result = await Combine(primary, fallback);
+
+        // Assert: the finite form first, then the two equal variants in the order of the primary result (past, infinitive)
+        Assert.Equal([finite, PutPast, PutInf, PutNoun], result.Analyses.Select(a => a.Details));
+        Assert.Equal(0.4, result.Analyses[0].Probability, 12);
+        Assert.Equal(0.1, result.Analyses[1].Probability, 12);
+        Assert.Equal(0.1, result.Analyses[2].Probability, 12);
+        Assert.Equal(finite, result.Details);
+    }
+
+    /// <summary>
+    ///     A slot that the primary model split unequally (a trained form chooser decided it) is never touched.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_UnequalVariants_AreLeftAsThePrimaryModelSplitThem()
+    {
+        // Arrange: the encoder split 0.45 to 0.15 although Basic says the opposite
+        var primary = EncoderPut(past: 0.45, inf: 0.15);
+
+        // Act
+        var result = await Combine(primary, BasicPut(past: 0.1, inf: 0.6));
+
+        // Assert
+        Assert.Equal(primary, result);
+    }
+
+    /// <summary>
+    ///     Two probabilities within 1e-9 are a tie, two that differ by more are not.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_TieTolerance_IsOneNanoUnit()
+    {
+        // Arrange
+        var within = EncoderPut(past: 0.3, inf: 0.3 + 5e-10);
+        var beyond = EncoderPut(past: 0.3, inf: 0.3 + 2e-9);
+
+        // Act
+        var tied = await Combine(within, BasicPut());
+        var split = await Combine(beyond, BasicPut());
+
+        // Assert
+        Assert.Equal(PutInf, tied.Details);
+        Assert.Equal(beyond, split);
+    }
+
+    /// <summary>
+    ///     A slot whose variants the fallback model also gives the same probability, or does not list, is left as it is, and
+    ///     so is a word with a single analysis or a primary result without analyses.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_FallbackWithoutDistinction_LeavesThePrimaryResult()
+    {
+        // Arrange
+        var primary = EncoderPut();
+        var tiedToo = BasicPut(past: 0.3, inf: 0.3);
+        var missing = new ClassifyResult("put", true, [new(PutInf, 0.7, []), new(PutNoun, 0.3, [])], PutInf, SenseLevel.PartOfSpeech, 0.7, null, null);
+        var single = new ClassifyResult("put", true, [new(PutPast, 1, PutVerbSenses)], PutPast, SenseLevel.Sense, 1, null, "put#place");
+
+        // Act
+        var a = await Combine(primary, tiedToo);
+        var b = await Combine(primary, missing);
+        var c = await Combine(single, BasicPut());
+        var d = await Combine(single, single);
+
+        // Assert
+        Assert.Equal(primary, a);
+        Assert.Equal(primary, b);
+        Assert.Equal(single, c);
+        Assert.Equal(single, d);
+    }
+
+    /// <summary>
+    ///     A slot that is not the selected one is re-split too, and the selected analysis stays that of the primary model.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_TiedSlotThatIsNotSelected_IsSplitAndLeavesTheSelectedAnalysis()
+    {
+        // Arrange: the noun slot (0.7) is selected; the verb slot (0.3) has a tied past and infinitive
+        var primary = new ClassifyResult("put", true, [new(PutNoun, 0.7, [new("put#noun", 1)]), new(PutPast, 0.15, PutVerbSenses), new(PutInf, 0.15, PutVerbSenses)], PutNoun, SenseLevel.PartOfSpeech, 0.7, null, null);
+        var fallback = BasicPut(past: 0.1, inf: 0.3);
+
+        // Act
+        var result = await Combine(primary, fallback);
+
+        // Assert
+        Assert.Equal([PutNoun, PutInf, PutPast], result.Analyses.Select(a => a.Details));
+        Assert.Equal(PutNoun, result.Details);
+        Assert.Equal(0.7, result.Analyses[0].Probability, 12);
+        Assert.Equal(0.3 * 0.75, result.Analyses[1].Probability, 12);
+    }
+
+    /// <summary>
+    ///     Whatever the two models say, the probability of every slot, the level, the confidence and the ids of the result
+    ///     are those of the primary model, and the probabilities still sum to one.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_ManyInputs_KeepSlotTotalsLevelAndConfidence()
+    {
+        // Arrange: a deterministic sequence of splits for the noun slot and for what Basic says
+        var seed = 12345u;
+        double Next()
+        {
+            seed = unchecked((seed * 1664525u) + 1013904223u);
+            return 0.05 + (0.9 * ((seed >> 8) / (double)(1u << 24)));
+        }
+
+        for (var i = 0; i < 200; i++)
+        {
+            var verbMass = Next();
+            var half = verbMass / 2;
+            var primary = new ClassifyResult("put", true, [new(PutPast, half, PutVerbSenses), new(PutInf, half, PutVerbSenses), new(PutNoun, 1 - verbMass, [])], PutPast, SenseLevel.Sense, 0.5, null, "put#place");
+            var inf = Next() * 0.5;
+            var past = Next() * 0.5;
+
+            // Act
+            var result = await Combine(primary, BasicPut(past: past, inf: inf));
+
+            // Assert
+            Assert.Equal(primary.Level, result.Level);
+            Assert.Equal(primary.Confidence, result.Confidence);
+            Assert.Equal(primary.SenseId, result.SenseId);
+            Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 9);
+            Assert.Equal(verbMass, result.Analyses.Where(a => a.Details.PartOfSpeech == PartOfSpeech.Verb).Sum(a => a.Probability), 9);
+            Assert.Equal(1 - verbMass, result.Analyses.First(a => a.Details == PutNoun).Probability, 9);
+            Assert.Equal(result.Analyses[0].Details, result.Details);
+        }
+    }
+
     private static ClassifyResult Result(string word, ImmutableArray<AnalysisCandidate> analyses, WordDetails details, SenseLevel level) =>
         new(word, true, analyses, details, level, 1, null, null);
 

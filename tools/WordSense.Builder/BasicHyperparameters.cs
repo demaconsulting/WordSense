@@ -20,6 +20,9 @@ namespace WordSense.Builder;
 /// <param name="SuffixMinTotal">The fewest training words a suffix needs to be tabled.</param>
 /// <param name="CueAlpha">The additive smoothing of the cue likelihoods.</param>
 /// <param name="CueMinFeatureCount">The fewest training sentences a context feature needs to enter the cue vocabulary of a lemma.</param>
+/// <param name="TenseWeight">The weight of the shared tense model in the split of a verb slot between its past and non-past analyses (runtime; in the table header). 0 turns the model off.</param>
+/// <param name="TenseAlpha">The additive smoothing of the feature likelihoods of the tense model.</param>
+/// <param name="TenseMinFeatureCount">The fewest training verbs a context feature needs to enter the vocabulary of the tense model.</param>
 internal sealed record BasicHyperparameters(
     double Gamma,
     double Beta,
@@ -34,7 +37,10 @@ internal sealed record BasicHyperparameters(
     int TopAmbiguousWords,
     int SuffixMinTotal,
     double CueAlpha,
-    int CueMinFeatureCount)
+    int CueMinFeatureCount,
+    double TenseWeight = 1.0,
+    double TenseAlpha = 0.5,
+    int TenseMinFeatureCount = 2)
 {
     /// <summary>
     ///     The number of anchor sentences the tuner samples for its anchor train and dev subsets.
@@ -71,7 +77,10 @@ internal sealed record BasicHyperparameters(
         TopAmbiguousWords: 2000,
         SuffixMinTotal: 5,
         CueAlpha: 0.1,
-        CueMinFeatureCount: 2);
+        CueMinFeatureCount: 2,
+        TenseWeight: 1.0,
+        TenseAlpha: 0.5,
+        TenseMinFeatureCount: 2);
 
     /// <summary>
     ///     The values the tuner tries, one parameter at a time while the others keep their default.
@@ -86,6 +95,11 @@ internal sealed record BasicHyperparameters(
         ("cue-alpha", [.. new[] { 0.05, 0.1, 0.5 }.Select(v => Default with { CueAlpha = v })]),
         ("combined", [Default with { Gamma = 1.0, Beta = 1.0 }, Default with { Gamma = 1.0, Beta = 1.0, ClosedMinCount = 3, ClosedShare = 0.8 }]),
     ];
+
+    /// <summary>
+    ///     The weights of the tense model the tuner tries (0 turns the model off).
+    /// </summary>
+    public static readonly IReadOnlyList<double> TenseWeightGrid = [0.0, 0.25, 0.5, 1.0, 1.5, 2.0];
 
     /// <summary>
     ///     Gets the inverse of <see cref="Temperature"/>: the factor on the cue scores that the runtime reads.

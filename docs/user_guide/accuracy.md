@@ -34,7 +34,8 @@ seen. The sets are:
   words answered at the sense level, the precision of those answers and the *fine top-1*, the share of words whose most
   probable sense is right. The table covers the trained lemmas only; "SemCor Beyond the Trained Lemmas" below measures
   all mapped words of a trained lemma or of an untrained lemma with two or more senses.
-- **The reviewed suite.** 348 hand-checked sentences about common ambiguous words guard each model against
+- **The reviewed suite.** 364 hand-checked sentences about common ambiguous words and same-spelling verbs guard each
+  model against
   regressions in the test suite of the repository. They are a regression check, not an accuracy measure.
 
 ## Reading the Model Table
@@ -92,6 +93,58 @@ is the cross-domain one. Basic limits to keep in mind:
   formal text capitalizes (`each State`, `any State`), about 70 SemCor words that it then answered wrongly at the sense
   level, so Basic keeps the lower-case lemma for them. On the reviewed suite the rule fixed the `Polish`, `polish` and
   `august` rows (see `corpus/suite/README.md`).
+- It reads the tense of a verb whose past and non-past share a spelling (`put`, `cut`, `set`, `hit`, `let`, `come`,
+  `run`, `read`) from the context, with one model trained on all verbs of the open corpus (the tense table of
+  `basic.bin`), and the encoder models inherit the split through `FallbackWordSenseModel`. "I will read that tomorrow"
+  is a non-past `read` and "I have read that already" a past participle. The lexicon has one analysis for the infinitive,
+  the present and the imperative, so the question is past (a past tense or a participle) against non-past. See "Tense
+  of Same-Spelling Verbs" below.
+
+## Tense of Same-Spelling Verbs
+
+The tense of a verb is part of its analysis, so the analysis is wrong when the tense is. For the verbs whose past and
+non-past share a spelling the lexicon lists both analyses of one lemma and one part of speech, they share the senses
+and an encoder gives them the same probability, so before the tense model the selected analysis was the first one in
+lexicon order for every sentence: the non-past analysis for `put`, `cut` and `set`, and the past analysis for `read`.
+The builder (`evaluate-running`) measures the class of the selected analysis (past or non-past, the meaning of the
+word and never its sound) on every gold verb token whose form has both a past and a non-past verb analysis in the
+lexicon: the open corpus test split and the treebank test file (the sets to read), and the three files of the treebank
+pooled (994 tokens, 72 of them `read`; no model trains on the treebank). The majority baseline is the share of the
+more frequent gold class. Measured before and after the tense model (all three models):
+
+<!-- markdownlint-disable MD013 -->
+
+| Model | Open corpus test (110 tokens, majority 57.3%) | Treebank test (95, 63.2%) | Treebank pooled (994, 61.9%) | `read` on the treebank, pooled (72, 59.7%) | `read` on the independent read set, test half (198, always present 67.2%) |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Basic before | 79.1% | 76.8% | 77.7% | 63.9% | 64.1% |
+| Basic now | 80.9% | 85.3% | 86.0% | 77.8% | 83.8% |
+| MiniLM before | 81.8% | 76.8% | 76.1% | 40.3% | 32.8% |
+| MiniLM now | 82.7% | 85.3% | 85.5% | 77.8% | 83.3% |
+| BertBaseCased before | 81.8% | 75.8% | 76.3% | 40.3% | 32.8% |
+| BertBaseCased now | 82.7% | 86.3% | 85.9% | 77.8% | 83.3% |
+
+<!-- markdownlint-enable MD013 -->
+
+How to read it. Before the change MiniLM and BertBaseCased gave the past and the non-past `read` exactly the same
+probability and always selected the past one (below the baseline of always answering the present), and for every other
+verb the encoders and Basic selected the non-past analysis whatever the sentence said, so only the 74% of tokens that are
+non-past were right. Now the three models agree within a point or two, because the split of the tied variants comes
+from the same tense table of Basic. The remaining errors are mostly sentences where the context does not decide (`I let
+everyone know`, `they let us check in`, a bare `come` or `put` after a subject that can be a plural present or a past).
+On the 68 same-spelling verbs other than `read` (753 treebank tokens that were never trained on) the three models went
+from 73 to 74% to about 83%, against 74.5% for always answering the non-past. The part of speech, the lemma, the level,
+the confidence and the sense of every answer are exactly as before: the tense model only splits the probability inside
+a slot (a lemma and a part of speech) and never changes the probability of the slot.
+
+Caveats. The number of tokens per set is small (the test sets have 95 and 110 tokens), so a difference of a few points
+is a few tokens; read the pooled column for the size of the effect. The tense model is a bag of context words with a few
+positional features: it cannot see a time adverb far from the verb, and the choice between a plural present and a past
+after a bare subject is a guess. The weight of the model (1.0), the treatment of the form tables of `read`, `beat`,
+`cast` and `upset` and the features were chosen on the development data only (the development split of the open corpus,
+the treebank development file and the development half of the read set; the feature that marks the edge of the
+sentence was added after reading the errors on the development sets and left their accuracy unchanged, and so was the
+rule that the edge is the first and the last word, whatever punctuation stands before or after it); no choice was
+made from the test figures. The treebank and the read set are evaluation data, never trained on.
 
 ## The Usage Prior and the SemCor Caveat
 

@@ -1,15 +1,18 @@
 # The reviewed suite
 
-A hand-reviewed set of 348 sentences about common ambiguous words, kept as a regression test of the three models and as
+A hand-reviewed set of 364 sentences about common ambiguous words and verbs whose past and non-past share a spelling,
+kept as a regression test of the three models and as
 a readable record of what each model gets wrong. It is **not** a measure of accuracy on running text (the sentences were
 chosen to be hard for the words they test); the headline figures are the real-text sense evaluation, SemCor and the
 running-text part-of-speech evaluation of the root `README.md`.
 
 ## Provenance and license
 
-The 348 sentences (and their notes) were written for the project by language-model agents under the project's
+The first 348 sentences (and their notes) were written for the project by language-model agents under the project's
 instructions, then reviewed one by one by a separate reviewer agent (all 348 rows: verdict `OK`, the context gives the
-braced word exactly the expected reading; no row needed a changed label). They are project-authored content dedicated
+braced word exactly the expected reading; no row needed a changed label). The 16 rows of the list `T` (the tense rows,
+below) were written by hand by the developer who added the tense model, each with a sentence whose context says the tense
+without doubt, and are not in the corpus (`check-leakage`). They are project-authored content dedicated
 to the public domain under CC0 1.0 by the project owner, like every project-written row of the corpus. No sentence is
 taken from a third-party text. The expected labels were written and reviewed before any model was run on the suite; the
 expectation file is, in contrast, a measurement of the models at the time it was written (the first measurement had Basic,
@@ -34,8 +37,9 @@ training, development and test splits and the challenge set) or an example sente
 ### `suite.tsv`
 
 - `id` is unique (`H-use-1`); `list` is `H` (132 rows: the 30 most frequent heteronyms of the old pronunciation
-  inventory), `M` (124 rows: 62 words that are used as two or more parts of speech, two sentences per part of speech)
-  or `C` (92 rows: 20 classic heteronyms such as `bow`, `wound`, `polish`).
+  inventory), `M` (124 rows: 62 words that are used as two or more parts of speech, two sentences per part of speech),
+  `C` (92 rows: 20 classic heteronyms such as `bow`, `wound`, `polish`) or `T` (16 rows: eight verbs whose past and
+  non-past share a spelling, a non-past and a past row each; see "Same-spelling tense rows" below).
 - `analysis` is what the selected analysis of the target word must be: `lemma/Part` or `lemma/Part/Feature=Value+...`.
   The lemma is that of the lexicon, so `wound` (the past of `wind`) is `wind/Verb`, and `used` is `use/Verb`.
 - `senses` are the acceptable fine senses of the row, separated by `|`; it is empty for a row that only asks for the
@@ -244,6 +248,33 @@ The rows that stay misses for the case words: `C-polish-2` (`a traditional Polis
 noun between an adjective and a noun, which is a part-of-speech error, not a lemma error. The case does not change the
 other rows of the suite (`C-polish-4`, `C-polish-5`, `C-polish-7` and `C-polish-8`, `H-august-1` and `H-august-2` keep
 their grades).
+
+### Same-spelling tense rows and the tense model (all three models, no retraining of the encoders)
+
+`BasicClassifier` now reads the tense of a verb whose past and non-past share a spelling from the context (see
+`docs/design/word-sense/core/basic-classifier.md`, "Tense Evidence"), and `FallbackWordSenseModel` gives the encoder
+models the split of Basic for the variants of a slot that the encoder gave the same probability. The encoder weights and
+`wordsense.img` did not change; `basic.bin` was retrained (format `WSB4`). Two changes of this file:
+
+- **One expectation raised** under rule 1: `H-read-3` (`Tomorrow I will {read} the whole report before the meeting`, the
+  present tense) goes from `miss` to `fine` for MiniLM and BertBaseCased (it was `fine` for Basic): both encoders used
+  to select the past `read` for every sentence, because the past was listed first and the two variants tied at 0.50.
+  The other three cells that measure better than the file on the development machine are the rule 4 rows and stay
+  as recorded: `H-close-4` (`miss`), `C-content-6` (`miss`) and `H-defense-1` (`answer`) for BertBaseCased.
+- **Sixteen reviewed rows** of the new list `T` (the file has 364 rows): a non-past and a past row for each of `read`, `put`,
+  `cut`, `set`, `hit`, `let`, `spread` and `come` (`I will {read} that tomorrow` and `I have {read} that already`,
+  `Please {put} the books on the shelf` and `She had {put} the keys in her bag before she left`, and so on). They are
+  analysis-only rows (the lemma, the part of speech and the tense feature of the analysis, no sense), written by hand for
+  this change with a context that says the tense without doubt (a modal, do-support, a form of `have`, an imperative, a
+  past-time adverb), and are not in the corpus: `check-leakage` finds no shared sentence. The expected grade is `fine`
+  for all three models. Before the tense model all three models graded 8 of the 16 rows `fine` and 8 `miss` (the past
+  rows, and `I will read that tomorrow`, where the encoders picked the past), and now every row is `fine`.
+
+Measured answered / fine on the 348 older rows before and after: Basic 95.69% / 43.39% unchanged, MiniLM 94.83% / 88.51%
+to 95.11% / 88.79%, BertBaseCased 98.28% / 93.68% to 98.56% / 93.97%; on all 364 rows: Basic 95.88% / 45.88%, MiniLM
+95.33% / 89.29%, BertBaseCased 98.63% / 94.23%. The `T` rows are easy by construction (a context that decides), so they
+are a regression guard for the tense and not a measure of accuracy; the measures are in "Tense of Same-Spelling Verbs" of
+`docs/user_guide/accuracy.md`.
 
 ### One-sense labels for the set rows (no model change)
 

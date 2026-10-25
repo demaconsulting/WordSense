@@ -280,6 +280,73 @@ public sealed class ProgramTests : IDisposable
         Assert.Contains("open-counts", error, StringComparison.Ordinal);
     }
 
+    private const string BrokenOpenFile = OpenHeader + "# sent_id = broken\n# source_id = broken\n# text = Never read.\nthis is not a token line\n";
+
+    private const string PutTrainSentence =
+        "# sent_id = p1\n# source_id = d1\n# text = They put it.\n1\tThey\tthey\tPRON\tR\t_\tunanimous\n2\tput\tput\tVERB\tV\tTense=Past|VerbForm=Fin\tunanimous\n3\tit\tit\tPRON\tR\t_\tunanimous\n4\t.\t.\tPUNCT\tO\t_\tunanimous\n\n" +
+        "# sent_id = p2\n# source_id = d2\n# text = To put it.\n1\tTo\tto\tPART\tT\t_\tunanimous\n2\tput\tput\tVERB\tV\tVerbForm=Inf\tunanimous\n3\tit\tit\tPRON\tR\t_\tunanimous\n4\t.\t.\tPUNCT\tO\t_\tunanimous\n";
+
+    /// <summary>
+    ///     The training commands read only the training split of the representative open corpus: with development and test
+    ///     files that cannot be read (a malformed line makes a read fail), open-counts and train-basic still succeed.
+    /// </summary>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_Program_TrainBasic_ReadsOnlyTheTrainSplit()
+    {
+        // Arrange: a valid training split, and development and test splits (also of the targeted part) that fail when read
+        var corpus = PrepareCorpus();
+        _dir.Write("corpus/open/representative/data/train.tsv", OpenHeader + PutTrainSentence);
+        _dir.Write("corpus/open/representative/data/dev.tsv", BrokenOpenFile);
+        _dir.Write("corpus/open/representative/data/test.tsv", BrokenOpenFile);
+        _dir.Write("corpus/open/targeted/data/dev.tsv", BrokenOpenFile);
+        _dir.Write("corpus/open/targeted/data/test.tsv", BrokenOpenFile);
+        var table = Path.Join(_dir.Root, "out", "basic.bin");
+
+        // Act
+        var (countsCode, _, countsError) = await RunAsync("open-counts", "--corpus", corpus);
+        var (trainCode, trainOutput, trainError) = await RunAsync("train-basic", "--repository", _dir.Root, "--corpus", corpus, "--output", table);
+
+        // Assert: both commands succeeded, so no unreadable split was read, and the tense table came from the training verbs
+        Assert.True(countsCode == 0, countsError);
+        Assert.True(trainCode == 0, trainError);
+        Assert.Contains("a tense table of", trainOutput, StringComparison.Ordinal);
+        Assert.NotNull(BasicTables.Load(await File.ReadAllBytesAsync(table, TestContext.Current.CancellationToken)).Tense);
+    }
+
+    /// <summary>
+    ///     The tuning command scores only development inputs, the development split of the open corpus and the development
+    ///     file of the treebank, and trains from the training split: with test and training files of the treebank, and test
+    ///     splits of the open corpus, that cannot be read, it still succeeds, and the report names only development sets.
+    /// </summary>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_Program_TuneBasic_ScoresOnlyTheDevelopmentInputs()
+    {
+        // Arrange: valid training and development splits with a same-spelling verb, and unreadable test inputs
+        var corpus = PrepareCorpus();
+        _dir.Write("corpus/open/representative/data/train.tsv", OpenHeader + PutTrainSentence);
+        _dir.Write("corpus/open/representative/data/dev.tsv", OpenHeader + PutTrainSentence);
+        _dir.Write("corpus/open/representative/data/test.tsv", BrokenOpenFile);
+        _dir.Write("corpus/open/targeted/data/dev.tsv", BrokenOpenFile);
+        _dir.Write("corpus/open/targeted/data/test.tsv", BrokenOpenFile);
+        _dir.Write("gold/ud_dev.tsv", "d1\tThey\tR\tthey\tPRP\t_\nd1\tput\tV\tput\tVBD\tTense=Past|VerbForm=Fin\nd1\tit\tR\tit\tPRP\t_\n");
+        _dir.Write("gold/ud_test.tsv", "this is not a gold line\n");
+        _dir.Write("gold/ud_train.tsv", "this is not a gold line\n");
+        await RunAsync("open-counts", "--corpus", corpus);
+
+        // Act
+        var (code, output, error) = await RunAsync("tune-basic", "--repository", _dir.Root, "--corpus", corpus, "--gold", Path.Join(_dir.Root, "gold", "ud_dev.tsv"));
+
+        // Assert: the tense weights are scored on the two development sets and on nothing else
+        Assert.True(code == 0, error);
+        Assert.Contains("| 1.00 | open corpus dev |", output, StringComparison.Ordinal);
+        Assert.Contains("| 1.00 | UD-EWT dev |", output, StringComparison.Ordinal);
+        Assert.DoesNotContain("UD-EWT test", output, StringComparison.Ordinal);
+        Assert.DoesNotContain("UD-EWT train", output, StringComparison.Ordinal);
+        Assert.DoesNotContain("open corpus test", output, StringComparison.Ordinal);
+    }
+
     /// <summary>
     ///     A number option that is not a number, or is out of range, is a one-line error with exit code 1, not an
     ///     unhandled exception with a stack trace.

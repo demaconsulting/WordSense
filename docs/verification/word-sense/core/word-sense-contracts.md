@@ -72,6 +72,25 @@ All scenarios below pass on every platform and target framework of the CI matrix
   a word that the primary model did not know, or only answered at the part of speech level without scored senses, the
   composite returns the complete fallback result; in a list with both kinds of word each position takes its own
   result, and no result is a mixture of the two.
+- **Fallback gives tied variants the proportions of the fallback**
+  (`FallbackWordSenseModel_TiedVariantsOfASlot_TakeTheProportionsOfTheFallback`,
+  `..._TiedVariants_SelectedAnalysisFollowsTheFallbackSplit`, `..._TiedSlotThatIsNotSelected_IsSplitAndLeavesTheSelectedAnalysis`):
+  an encoder result that ties the past and the infinitive of `put` at 0.3 each (slot mass 0.6, sensed, at the sense level)
+  and a fallback result that says 6 to 1 for the infinitive give the infinitive 0.6 * 6/7 and the past 0.6/7, listed in
+  that order, with the selected analysis the infinitive, the noun at 0.4, the senses of the variants, the level, the
+  confidence and the ids of the encoder result unchanged; a fallback that says past (0.5 to 0.1) selects the past, and
+  the probabilities are applied; a tied slot that is not the selected one is split and the selected noun stays.
+- **Fallback keeps the primary order of equal shares**
+  (`..._TiedVariants_EqualShares_KeepTheOrderOfThePrimaryResult`): three tied variants of the verb slot (0.2 each) and a
+  fallback that ranks the finite form first (0.4) and gives the past and the infinitive 0.1 each list the finite form
+  first, then the past and the infinitive in the order of the primary result.
+- **Fallback leaves the rest alone** (`..._UnequalVariants_AreLeftAsThePrimaryModelSplitThem`,
+  `..._TieTolerance_IsOneNanoUnit`, `..._FallbackWithoutDistinction_LeavesThePrimaryResult`): a slot the encoder split
+  0.45 to 0.15, a slot whose variants differ by 2e-9, a fallback that ties the variants or does not list one of them, and
+  a result with a single analysis are returned exactly as the primary model gave them; a difference of 5e-10 is a tie.
+- **Slot totals, level and confidence are kept** (`..._ManyInputs_KeepSlotTotalsLevelAndConfidence`): over 200
+  deterministic pairs of results, the probability of every slot, the level, the confidence and the sense id are those of
+  the primary result, the probabilities sum to one and the selected analysis is the first analysis.
 - **Fallback ensures the capable members and disposes both models**
   (`FallbackWordSenseModel_IsDownloadable`, `FallbackWordSenseModel_EnsureModelAsync_EnsuresBoth`,
   `FallbackWordSenseModel_EnsureModelAsync_OnlyCapableMemberEnsured`,

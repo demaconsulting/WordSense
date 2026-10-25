@@ -28,6 +28,17 @@ internal sealed record BasicSuffixRow(string Suffix, int[] Counts);
 internal sealed record BasicCueRow(string Lemma, CueAnalysis[] Analyses, ushort[] Hashes, sbyte[] Weights);
 
 /// <summary>
+///     The shared tense table of the basic model, ready to be written.
+/// </summary>
+/// <param name="Prior">The quantized log odds of past against non-past in the training verbs, in steps of 1/8 nat.</param>
+/// <param name="Hashes">The ascending feature hashes.</param>
+/// <param name="Weights">The quantized log likelihood ratios of past against non-past, parallel to <paramref name="Hashes"/>.</param>
+/// <param name="Past">The number of past training verbs.</param>
+/// <param name="NonPast">The number of non-past training verbs.</param>
+/// <param name="Collisions">The number of features dropped because their hash collided with a more frequent feature.</param>
+internal sealed record BasicTenseRow(sbyte Prior, ushort[] Hashes, sbyte[] Weights, int Past, int NonPast, int Collisions);
+
+/// <summary>
 ///     Everything the table of the basic model holds, before it is serialized.
 /// </summary>
 /// <param name="Hyperparameters">The hyper-parameters that were used (the runtime ones travel in the table header).</param>
@@ -39,6 +50,7 @@ internal sealed record BasicCueRow(string Lemma, CueAnalysis[] Analyses, ushort[
 /// <param name="Cues">The cue tables in ordinal order of key (a lemma, or a form that a chooser row decides).</param>
 /// <param name="Collisions">The number of cue features dropped because their hash collided with a more frequent feature of the same table.</param>
 /// <param name="Skipped">The number of training sentences left out of the cue tables because their label stands for no single analysis.</param>
+/// <param name="Tense">The shared tense table, or null when the model was trained without verbs.</param>
 internal sealed record BasicModelData(
     BasicHyperparameters Hyperparameters,
     int[] Unigrams,
@@ -48,7 +60,8 @@ internal sealed record BasicModelData(
     IReadOnlyList<BasicSuffixRow> Suffixes,
     IReadOnlyList<BasicCueRow> Cues,
     int Collisions,
-    int Skipped)
+    int Skipped,
+    BasicTenseRow? Tense = null)
 {
     /// <summary>
     ///     Gets the number of tabled words that are closed-class words.
@@ -65,7 +78,8 @@ internal sealed record BasicModelData(
     /// </summary>
     /// <returns>The summary.</returns>
     public string Summary() =>
-        $"{Words.Count} words ({ClosedWords} closed-class), {Suffixes.Count} suffixes, {Cues.Count} cue tables, {CueFeatures} cue features, {Collisions} hash collisions, {Skipped} cue sentences skipped (their label stands for no single analysis)";
+        $"{Words.Count} words ({ClosedWords} closed-class), {Suffixes.Count} suffixes, {Cues.Count} cue tables, {CueFeatures} cue features, {Collisions} hash collisions, {Skipped} cue sentences skipped (their label stands for no single analysis)"
+        + (Tense is { } t ? $", a tense table of {t.Hashes.Length} features from {t.Past} past and {t.NonPast} non-past verbs ({t.Collisions} hash collisions)" : string.Empty);
 }
 
 /// <summary>
@@ -111,13 +125,15 @@ internal static class BasicTrainer
     /// <param name="anchors">The training sentences of the cue model (fine-sense rows).</param>
     /// <param name="choosers">The training sentences of the form choosers (form, lemma or tense label).</param>
     /// <param name="hp">The hyper-parameters.</param>
+    /// <param name="verbs">The sentences whose verbs train the shared tense table (the training split of the representative open corpus, with the features of its tokens), or null to train a model without a tense table.</param>
     /// <returns>The model data.</returns>
     public static BasicModelData Train(
         TaggerCounts counts,
         Func<string, ImmutableArray<WordDetails>> lexicon,
         IReadOnlyList<CorpusRow> anchors,
         IReadOnlyList<ChooserRow> choosers,
-        BasicHyperparameters hp)
+        BasicHyperparameters hp,
+        IEnumerable<TaggedSentence>? verbs = null)
     {
         ArgumentNullException.ThrowIfNull(counts);
         ArgumentNullException.ThrowIfNull(lexicon);
@@ -128,8 +144,154 @@ internal static class BasicTrainer
         var words = SelectWords(counts, lexicon, closed, hp);
         var suffixes = SelectSuffixes(counts, lexicon, closed, hp);
         var (cues, collisions, skipped) = TrainCues(anchors, choosers, hp);
-        return new BasicModelData(hp, counts.Unigrams, counts.Bigrams, counts.Trigrams, words, suffixes, cues, collisions, skipped);
+        var tense = verbs is null ? null : TrainTense(verbs, hp);
+        return new BasicModelData(hp, counts.Unigrams, counts.Bigrams, counts.Trigrams, words, suffixes, cues, collisions, skipped, tense);
     }
+
+    /// <summary>
+    ///     Gets the tense class of a verb token of a gold source: the class the shared tense table learns.
+    /// </summary>
+    /// <param name="gold">What the source says about the token (its features in the notation of the open corpus, <c>Tense=Past|VerbForm=Part</c>).</param>
+    /// <returns>1 for a past verb (<c>Tense=Past</c>: the simple past and the participle), 0 for a verb in a form that can share its spelling with a past form (the infinitive, the imperative and the present tense of every person but the third singular), and -1 for every other form (the third person singular of the present, which is spelled apart from the past; the gerund and the present participle; a token without features).</returns>
+    internal static int TenseClassOf(GoldToken gold)
+    {
+        var items = gold.Features.Split('|');
+        if (items.Contains("Tense=Past", StringComparer.Ordinal))
+        {
+            return 1;
+        }
+
+        var present = items.Contains("Tense=Pres", StringComparer.Ordinal);
+        if (items.Contains("VerbForm=Ger", StringComparer.Ordinal) || (present && items.Contains("VerbForm=Part", StringComparer.Ordinal)))
+        {
+            return -1;
+        }
+
+        // The third person singular is spelled apart from the past (puts, cuts), so it would only teach the model that a
+        // singular subject means non-past, which is false for the forms that can be confused
+        if (present && items.Contains("Person=3", StringComparer.Ordinal) && items.Contains("Number=Sing", StringComparer.Ordinal))
+        {
+            return -1;
+        }
+
+        return items.Contains("VerbForm=Inf", StringComparer.Ordinal) || items.Contains("Mood=Imp", StringComparer.Ordinal) || (present && items.Contains("VerbForm=Fin", StringComparer.Ordinal))
+            ? 0
+            : -1;
+    }
+
+    /// <summary>
+    ///     Trains the shared tense table: a naive Bayes model of past against non-past over the context features of every
+    ///     verb of the sentences, whatever the verb. It reads no word list and no lemma, only the context.
+    /// </summary>
+    /// <param name="sentences">The sentences with the features of their tokens (a sentence without them is skipped).</param>
+    /// <param name="hp">The hyper-parameters.</param>
+    /// <returns>The table, or null when the sentences have no verb of one of the classes or no feature occurs often enough.</returns>
+    internal static BasicTenseRow? TrainTense(IEnumerable<TaggedSentence> sentences, BasicHyperparameters hp)
+    {
+        ArgumentNullException.ThrowIfNull(sentences);
+        ArgumentNullException.ThrowIfNull(hp);
+        var features = new FeatureRef[CueModel.MaxTenseFeatures];
+        var featureCounts = new Dictionary<FeatureRef, int[]>();
+        var classes = new int[2];
+        foreach (var sentence in sentences)
+        {
+            if (sentence.Gold is not { } gold)
+            {
+                continue;
+            }
+
+            for (var i = 0; i < sentence.Words.Length; i++)
+            {
+                var cls = sentence.Tags[i] == PosTag.Verb ? TenseClassOf(gold[i]) : -1;
+                if (cls < 0)
+                {
+                    continue;
+                }
+
+                // The context is the sentence segment around the verb, as the classifier reads it
+                var (start, length) = BasicClassifier.SegmentOf(sentence.Words, i);
+                var lower = new string[length];
+                for (var k = 0; k < length; k++)
+                {
+                    lower[k] = BasicClassifier.Lower(sentence.Words[start + k]);
+                }
+
+                classes[cls]++;
+                var count = CueModel.ExtractTense(lower, i - start, features);
+                for (var f = 0; f < count; f++)
+                {
+                    if (!featureCounts.TryGetValue(features[f], out var perClass))
+                    {
+                        perClass = new int[2];
+                        featureCounts[features[f]] = perClass;
+                    }
+
+                    perClass[cls]++;
+                }
+            }
+        }
+
+        return classes[0] == 0 || classes[1] == 0 ? null : BuildTense(featureCounts, classes, hp);
+    }
+
+    private static BasicTenseRow? BuildTense(Dictionary<FeatureRef, int[]> featureCounts, int[] classes, BasicHyperparameters hp)
+    {
+        // Keep the features that occur often enough; of the features that share a 16-bit hash keep the most frequent
+        var byHash = new SortedDictionary<ushort, int[]>();
+        var dropped = 0;
+        foreach (var (feature, counts) in featureCounts.OrderBy(p => p.Key.Kind).ThenBy(p => p.Key.Token, StringComparer.Ordinal))
+        {
+            if (counts.Sum() < hp.TenseMinFeatureCount)
+            {
+                continue;
+            }
+
+            var hash = feature.Hash;
+            if (!byHash.TryGetValue(hash, out var existing))
+            {
+                byHash[hash] = counts;
+                continue;
+            }
+
+            dropped++;
+            if (counts.Sum() > existing.Sum())
+            {
+                byHash[hash] = counts;
+            }
+        }
+
+        var vocabulary = byHash.Count;
+        if (vocabulary == 0)
+        {
+            return null;
+        }
+
+        var totals = new double[2];
+        foreach (var counts in byHash.Values)
+        {
+            totals[0] += counts[0];
+            totals[1] += counts[1];
+        }
+
+        var hashes = new ushort[vocabulary];
+        var weights = new sbyte[vocabulary];
+        var index = 0;
+        foreach (var (hash, counts) in byHash)
+        {
+            // The log likelihood ratio of past against non-past: the one number per feature that the runtime sums
+            var past = Math.Log((counts[1] + hp.TenseAlpha) / (totals[1] + (hp.TenseAlpha * vocabulary)));
+            var other = Math.Log((counts[0] + hp.TenseAlpha) / (totals[0] + (hp.TenseAlpha * vocabulary)));
+            hashes[index] = hash;
+            weights[index] = QuantizeSigned(past - other);
+            index++;
+        }
+
+        // The natural prior of the training text: the share of past verbs among the verbs that can be confused
+        return new BasicTenseRow(QuantizeSigned(Math.Log((double)classes[1] / classes[0])), hashes, weights, classes[1], classes[0], dropped);
+    }
+
+    private static sbyte QuantizeSigned(double logValue) =>
+        (sbyte)Math.Clamp(Math.Round(logValue / CueModel.Quantum), sbyte.MinValue, sbyte.MaxValue);
 
     /// <summary>
     ///     Decides which tags of a word are closed-class tags.

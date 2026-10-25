@@ -41,7 +41,7 @@ whatever the level (`BertBaseCasedWordSenseModelTests`, `EndToEndTests`;
 
 #### Reviewed Suite Does Not Regress
 
-The model answers the 348 sentences of the reviewed suite (`corpus/suite`) at least as well as the expectation file
+The model answers the 364 sentences of the reviewed suite (`corpus/suite`) at least as well as the expectation file
 records for it: no row falls below its expectation (`fine`, `answer` or `miss`), so a regression fails the build while
 the known misses stay documented. The test skips when the model files are not present
 (`BertBaseCasedSuiteTests`, `BertBaseCasedSuite_ExpectedPasses_StillPass`).

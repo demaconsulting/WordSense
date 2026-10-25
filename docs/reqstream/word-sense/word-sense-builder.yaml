@@ -475,6 +475,11 @@ sections:
               The Basic model chooses analyses, so its labels follow from the senses and the choosers without a second
               labeling. The anchors are a balanced classifier corpus whose counts say nothing about how often an
               analysis occurs, so they must not set a prior.
+            children:
+              - WordSense-WordSenseBuilder-TrainBasic-TenseTable
+              - WordSense-WordSenseBuilder-TrainBasic-TenseClasses
+              - WordSense-WordSenseBuilder-TrainBasic-TenseWeights
+              - WordSense-WordSenseBuilder-TrainBasic-TrainSplitOnly
             tests:
               - WordSenseBuilder_BasicTrainer_ClosedMaskOf_AppliesThresholds
               - WordSenseBuilder_BasicTrainer_Train_SelectsWordsAndSuffixes
@@ -485,11 +490,60 @@ sections:
               - WordSenseBuilder_BasicTrainer_KeyOf_RollsTheRowUpToLemmaAndPartOfSpeech
               - WordSenseBuilder_BasicTrainer_KeyOf_ChooserLabel_StandsForOneAnalysisOrNone
               - WordSenseBuilder_BasicTablesWriter_Write_IsDeterministicAndReadsBack
+              - WordSenseBuilder_BasicTablesWriter_Write_WithTenseTable_IsDeterministicAndCurrentFormat
               - WordSenseBuilder_BasicTablesWriter_Write_ShortHash_Throws
               - WordSenseBuilder_BasicModelData_Summary_NamesSizes
               - WordSenseBuilder_Program_Weights_BasicModel_PointsToTrainBasic
               - WordSenseBuilder_Program_TrainBasicAndEvaluateTagger_TinyCorpus_WriteAndScoreTable
               - WordSenseBuilder_Program_TrainBasic_WithoutCounts_ReportsError
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-TenseTable
+            title: >-
+              The builder shall train the shared tense table of the basic model from every verb of the training split of
+              the representative open corpus (with the lemma and the features of its tokens), from the context features
+              only and without any word list, and shall write the weight of the tense model with it.
+            tags: [unit]
+            justification: |
+              The tense of a verb is read from all verbs of running text, not from a list of the verbs that the author
+              looked at.
+            tests:
+              - WordSenseBuilder_BasicTrainer_TrainTense_NeedsBothClassesAndIsDeterministic
+              - WordSenseBuilder_BasicTrainer_Train_WithVerbs_WritesTheTenseTableAndWeight
+              - WordSenseBuilder_OpenCorpus_ToTagged_CarriesTheLemmaAndFeaturesOfEveryToken
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-TenseClasses
+            title: >-
+              The builder shall take as a past example for the tense table a verb with Tense=Past, as a non-past
+              example an infinitive, an imperative or a present of a person other than the third singular, and shall
+              leave out the third person singular of the present, the gerund, the present participle and a token
+              without features.
+            tags: [unit]
+            justification: |
+              The third singular is spelled apart from the past, so it says nothing about the verbs that share a
+              spelling; the gerund and the present participle are never spelled like a past.
+            tests:
+              - WordSenseBuilder_BasicTrainer_TenseClassOf_SeparatesPastFromTheFormsThatShareItsSpelling
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-TenseWeights
+            title: >-
+              The builder shall store for each hashed context feature of the tense table the log likelihood ratio of
+              past against non-past in eighths of a nat, and the log odds of the two classes as the prior of the table.
+            tags: [unit]
+            justification: |
+              The table is a naive Bayes model, and the runtime sums these numbers.
+            tests:
+              - WordSenseBuilder_BasicTrainer_TrainTense_LearnsTheContextOfPastAndNonPast
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-TrainSplitOnly
+            title: >-
+              The builder shall read no development or test split of the open corpus, of the representative or the
+              targeted part, when it counts the tags (open-counts) and when it retrains the basic model (train-basic).
+            tags: [unit]
+            justification: |
+              A table that has seen the development or the test sentences would make every reported accuracy and every
+              choice of a setting dishonest.
+            tests:
+              - WordSenseBuilder_Program_TrainBasic_ReadsOnlyTheTrainSplit
 
           - id: WordSense-WordSenseBuilder-TuneBasic
             title: >-
@@ -501,11 +555,25 @@ sections:
             justification: |
               Tuning on data that is also used for the final accuracy measurement would make the reported accuracy
               dishonest.
+            children:
+              - WordSense-WordSenseBuilder-TuneBasic-TenseWeight
             tests:
               - WordSenseBuilder_BasicHyperparameters_Default_IsConsistent
               - WordSenseBuilder_BasicTuner_SplitAnchors_IsDeterministicAndDisjoint
               - WordSenseBuilder_BasicTuner_ScoreTagger_CountsAmbiguousTokens
               - WordSenseBuilder_BasicTuner_RunAsync_MissingCounts_Throws
+
+          - id: WordSense-WordSenseBuilder-TuneBasic-TenseWeight
+            title: >-
+              The builder shall score each weight of the tense model on the development split of the representative
+              open corpus and the development file of the treebank only (a model trained from the training split), and
+              shall never read the test file or the training file of the treebank or a test split of the open corpus
+              while tuning.
+            tags: [unit]
+            justification: |
+              The weight is a setting, so it must be chosen on data that no reported figure is measured on.
+            tests:
+              - WordSenseBuilder_Program_TuneBasic_ScoresOnlyTheDevelopmentInputs
 
           - id: WordSense-WordSenseBuilder-EvaluateTagger
             title: >-
@@ -522,6 +590,7 @@ sections:
             tests:
               - WordSenseBuilder_TaggerEvaluator_EvaluateAsync_ScoresAnsweredWordTokens
               - WordSenseBuilder_TaggerEvaluator_ReadGold_GroupsTokensBySentence
+              - WordSenseBuilder_TaggerEvaluator_ReadGold_SixColumns_CarriesLemmaTagAndFeatures
               - WordSenseBuilder_TaggerEvaluator_ReadGold_MalformedLine_Throws
               - WordSenseBuilder_TaggerEvaluator_Render_FormatsRows
 
@@ -781,6 +850,121 @@ sections:
               - WordSenseBuilder_ChallengeSet_Basic_StaysAboveItsFloor
               - WordSenseBuilder_ChallengeSet_MiniLM_StaysAboveItsFloor
               - WordSenseBuilder_ChallengeSet_BertBaseCased_StaysAboveItsFloor
+
+          - id: WordSense-WordSenseBuilder-TenseEvaluation
+            title: >-
+              The builder shall measure how well every model tells the tense of the verbs whose past and non-past
+              share a spelling, through its public interface, as the child requirements state. The child requirements
+              use these terms: a past analysis is a verb analysis with Tense=Past or VerbForm=Part, a non-past analysis
+              is any other analysis, and a same-spelling verb is a gold verb token whose form has a past analysis and a
+              non-past analysis among its verb analyses in the lexicon.
+            tags: [unit]
+            justification: |
+              The tense of a verb is part of its analysis, so the analysis is wrong when the tense is; the figure is
+              only meaningful against the majority baseline, on independent text, with the development sets kept for
+              choosing settings, and the pooled treebank figure has enough tokens to see a difference of a few points.
+              A parent requirement carries the terms once; the child requirements state each behavior that can be
+              tested on its own.
+            children:
+              - WordSense-WordSenseBuilder-TenseEvaluation-Eligibility
+              - WordSense-WordSenseBuilder-TenseEvaluation-Groups
+              - WordSense-WordSenseBuilder-TenseEvaluation-GoldClass
+              - WordSense-WordSenseBuilder-TenseEvaluation-Metrics
+              - WordSense-WordSenseBuilder-TenseEvaluation-Sets
+              - WordSense-WordSenseBuilder-TenseEvaluation-Pooling
+              - WordSense-WordSenseBuilder-TenseEvaluation-Report
+              - WordSense-WordSenseBuilder-TenseEvaluation-Cli
+
+          - id: WordSense-WordSenseBuilder-TenseEvaluation-Eligibility
+            title: >-
+              The builder shall score only the gold verb tokens whose form is a same-spelling verb (as defined in
+              WordSense-WordSenseBuilder-TenseEvaluation), looking the form up case-insensitively, and shall leave out
+              a token that the gold source does not call a verb and a form with no past or no non-past verb analysis.
+            tags: [unit]
+            justification: |
+              Only the verbs that share a spelling between the classes test the model; a form that has one class
+              cannot be wrong.
+            tests:
+              - WordSenseBuilder_TenseEvaluator_GroupsOf_ClassifiesTheSurfaceForm
+              - WordSenseBuilder_TenseEvaluator_RunAsync_ScoresTheConfusionOfPastAgainstNonPast
+
+          - id: WordSense-WordSenseBuilder-TenseEvaluation-Groups
+            title: >-
+              The builder shall report each scored token in the group of all same-spelling verbs, in the group of the
+              forms whose past and non-past analyses share a lemma when they do, and in the group of the forms of read
+              and its prefixed compounds (and not of spread) when they are.
+            tags: [unit]
+            justification: |
+              A split inside a slot decides only the forms of one lemma, and read is the textbook case.
+            tests:
+              - WordSenseBuilder_TenseEvaluator_GroupsOf_ClassifiesTheSurfaceForm
+
+          - id: WordSense-WordSenseBuilder-TenseEvaluation-GoldClass
+            title: >-
+              The builder shall take the gold class of a token as past when its treebank tag is VBD or VBN, and, for a
+              source without treebank tags, when its features have Tense=Past, and as non-past otherwise.
+            tags: [unit]
+            justification: |
+              The treebank tags the meaning of the word in its sentence, never its sound.
+            tests:
+              - WordSenseBuilder_TenseEvaluator_IsGoldPast_UsesTheTreebankTagThenTheFeatures
+
+          - id: WordSense-WordSenseBuilder-TenseEvaluation-Metrics
+            title: >-
+              The builder shall report for each model, set and group the number of tokens, the accuracy of the class of
+              the selected analysis (past or not) against the gold class, the majority baseline and the confusion of
+              past against non-past, counting a token that the model does not answer as wrong.
+            tags: [unit]
+            justification: |
+              The accuracy is only meaningful against the share of the more frequent class.
+            tests:
+              - WordSenseBuilder_TenseEvaluator_RunAsync_ScoresTheConfusionOfPastAgainstNonPast
+
+          - id: WordSense-WordSenseBuilder-TenseEvaluation-Sets
+            title: >-
+              The builder shall measure the test and the development split of the representative open corpus and the
+              test, development and training file of the treebank (the files next to the gold file), and shall leave
+              out with a note a treebank file that does not exist or has no lemma, tag and feature columns.
+            tags: [unit]
+            justification: |
+              The test sets are the figures to report and the development sets are kept for choosing settings; a
+              missing file must be visible and never a silent gap.
+            tests:
+              - WordSenseBuilder_TenseEvaluator_Load_ReadsTheSetsAndNotesWhatIsMissing
+              - WordSenseBuilder_TenseEvaluator_Load_IncludesTheAdjacentTreebankTrainingFileForPooling
+
+          - id: WordSense-WordSenseBuilder-TenseEvaluation-Pooling
+            title: >-
+              The builder shall add a row that pools the test, development and training file of the treebank for each
+              group when all three were measured, and shall skip a set whose gold has no features.
+            tags: [unit]
+            justification: |
+              The pooled treebank figure has enough tokens to see a difference of a few points, and no model trains on
+              the treebank.
+            tests:
+              - WordSenseBuilder_TenseEvaluator_RunAsync_PoolsTheTreebankFilesAndSkipsGoldWithoutFeatures
+              - WordSenseBuilder_TenseEvaluator_Load_IncludesTheAdjacentTreebankTrainingFileForPooling
+
+          - id: WordSense-WordSenseBuilder-TenseEvaluation-Report
+            title: >-
+              The builder shall print the scores as a Markdown table with one row for each model, set and group,
+              followed by the notes of the sets that were left out, using line feeds.
+            tags: [unit]
+            justification: |
+              A stable table lets the figures be compared and committed.
+            tests:
+              - WordSenseBuilder_TenseEvaluator_Render_FormatsRowsAndNotes
+
+          - id: WordSense-WordSenseBuilder-TenseEvaluation-Cli
+            title: >-
+              The evaluate-running command shall print the tense report after the part-of-speech report, restrict the
+              output to the tense report or to the part-of-speech report with --report tense or --report running,
+              reading only the inputs of the reports it prints, and refuse any other value of --report.
+            tags: [unit]
+            justification: |
+              The part-of-speech report needs no treebank, and a misspelled option must not run the wrong report.
+            tests:
+              - WordSenseBuilder_Program_EvaluateRunning_Basic_ReportsTheTenseAndHonorsTheReportOption
 
           - id: WordSense-WordSenseBuilder-Suite
             title: >-

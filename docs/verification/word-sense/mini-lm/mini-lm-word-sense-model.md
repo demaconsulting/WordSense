@@ -43,6 +43,15 @@ All scenarios below pass on every platform and target framework of the CI matrix
   probabilities, selected analysis, level and confidence as `BasicWordSenseModel` gives for the same text; the level is
   the part of speech, or the sense when the selected analysis has exactly one sense), never a
   mixture, with no ensure of the model files.
+- **Same-spelling verbs take their tense from Basic** (`MiniLM_Classifier_EndToEnd_SameSpellingVerb_TenseFollowsTheContext`,
+  in `EndToEndTests.cs`, theory): for `I will read that tomorrow`, `I have read that already`, `Please put the books on
+  the shelf` and `She had put the keys in her bag before she left` the composite selects a non-past analysis in the first
+  and third sentence and a past one (the past tense or the participle) in the second and fourth, the selected analysis is
+  the first analysis, and the probabilities of the word sum to one. The same test compares the composite with the
+  encoder model on its own (`Encoder.ClassifyAsync`): where the encoder scored senses for the verb (`read`) the level,
+  the confidence, the group id and the sense id are equal and the probability of the slot of the verb (the sum of its
+  variants) is equal to within 1e-9, so only the split inside the slot moved; where it did not (`put`) the composite
+  gives the complete result of Basic, analysis by analysis.
 - **Composition references** (`Assembly_ReferencesCoreAndOnnx`): the assembly references the core and Onnx
   assemblies (the Basic model is in the core).
 - **Constructor defaults and validation** (`MiniLMWordSenseModel_Constructor_Defaults_UseStoreAnd128`,

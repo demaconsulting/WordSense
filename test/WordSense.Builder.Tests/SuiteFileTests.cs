@@ -228,9 +228,9 @@ public sealed class SuiteFileTests : IDisposable
         var suite = SuiteFile.Read(SuiteFile.Locate());
 
         // Assert
-        Assert.Equal(348, suite.Rows.Count);
+        Assert.Equal(364, suite.Rows.Count);
         Assert.All(SuiteFile.Models, model => Assert.Equal(suite.Rows.Count, suite.Expectations[model].Count));
-        Assert.Equal(["C", "H", "M"], suite.Rows.Select(r => r.List).Distinct().Order(StringComparer.Ordinal));
+        Assert.Equal(["C", "H", "M", "T"], suite.Rows.Select(r => r.List).Distinct().Order(StringComparer.Ordinal));
         Assert.Contains(suite.Rows, r => r.SenseIds.Count == 1);
         Assert.Contains(suite.Rows, r => r.SenseIds.Count > 1);
         Assert.Contains(suite.Rows, r => r.SenseIds.Count == 0);

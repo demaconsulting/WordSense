@@ -18,7 +18,8 @@ sections:
                   of the analysis, the column with the most items winning, so that a column with empty features, which
                   stands for any features, serves every analysis of that lemma and part of speech that no column of more
                   specific features claims, and shall reject a table with a wrong
-                  signature (the magic WSB3), no compression, missing data, extra data or unordered entries as invalid
+                  signature (the magic WSB4), no compression, missing data, extra data or unordered
+                  entries as invalid
                   data, and a table
                   built for another analysis inventory (inventory hash), an unknown analysis or a duplicate analysis.
                 tags: [unit]
@@ -44,6 +45,86 @@ sections:
                   - BasicTables_Load_DuplicateAnalysis_Throws
                   - LemmaCue_RowOf_Analysis_UsesTheColumnOfItsFeatures
                   - FeatureRef_Hash_PrefixAndDeterminism
+
+              - id: WordSense-Core-BasicTables-Tense
+                title: >-
+                  BasicTables shall carry the tense model of the Basic model in its table: the weight of the model in
+                  the header and the shared tense table (a signed quantized prior, ascending feature hashes and one
+                  signed quantized weight per hash), as the child requirements state.
+                tags: [unit]
+                justification: |
+                  The tense of a verb is decided from this table for every verb whose past and non-past share a
+                  spelling; a damaged section must fail at load time, not give wrong tenses. A parent requirement
+                  carries the statement once; the child requirements state each behavior that can be tested on its
+                  own.
+                children:
+                  - WordSense-Core-BasicTables-Tense-Load
+                  - WordSense-Core-BasicTables-Tense-ReadOnly
+                  - WordSense-Core-BasicTables-Tense-NoTable
+                  - WordSense-Core-BasicTables-Tense-Malformed
+                  - WordSense-Core-BasicTables-Tense-Truncated
+                  - WordSense-Core-BasicTables-Tense-Wsb3
+
+              - id: WordSense-Core-BasicTables-Tense-Load
+                title: >-
+                  BasicTables shall read the weight of the tense model from the header and, from the tense section,
+                  the prior, the ascending feature hashes and the weights of the shared tense table, and expose them.
+                tags: [unit]
+                justification: |
+                  The classifier scores the context of a verb from exactly these values.
+                tests:
+                  - BasicTables_Load_TenseTable_ReadsWeightPriorHashesAndWeights
+
+              - id: WordSense-Core-BasicTables-Tense-ReadOnly
+                title: >-
+                  BasicTables shall expose the hashes and weights of the tense table only as read-only views, and the
+                  tense table shall refuse default (uninitialized) arrays and arrays of different lengths.
+                tags: [unit]
+                justification: |
+                  One table is shared by every classifier and thread in the process; a consumer that could change an
+                  exposed array would change the answers of all the others.
+                tests:
+                  - BasicTables_Properties_ExposeNoArrays
+                  - TenseCue_Constructor_DefaultOrUnequalArrays_Throws
+
+              - id: WordSense-Core-BasicTables-Tense-NoTable
+                title: >-
+                  BasicTables shall give a table without a tense section no tense table (null) and the default tense
+                  weight 1.
+                tags: [unit]
+                justification: |
+                  A table without the model must load, and the classifier leaves its words unchanged.
+                tests:
+                  - BasicTables_Load_WithoutTenseSection_HasNoTenseTableAndTheDefaultWeight
+
+              - id: WordSense-Core-BasicTables-Tense-Malformed
+                title: >-
+                  BasicTables shall reject a tense section with an unknown flag, without a feature, with unordered
+                  hashes or with fewer weights than hashes as invalid data.
+                tags: [unit]
+                justification: |
+                  A damaged section must fail at load time, not give wrong tenses.
+                tests:
+                  - BasicTables_Load_InvalidTenseSection_Throws
+
+              - id: WordSense-Core-BasicTables-Tense-Truncated
+                title: >-
+                  BasicTables shall reject a table with a tense section that is cut at any byte as invalid data.
+                tags: [unit]
+                justification: |
+                  A truncated download or file must never be read as a smaller valid table.
+                tests:
+                  - BasicTables_Load_TenseTableTruncatedAtEveryLength_Throws
+
+              - id: WordSense-Core-BasicTables-Tense-Wsb3
+                title: >-
+                  BasicTables shall reject a table with the retired signature WSB3, which has no tense weight and no
+                  tense table, as an unknown format whatever else it holds.
+                tags: [unit]
+                justification: |
+                  A table that was trained before the tense model must never be read as a current one.
+                tests:
+                  - BasicTables_Load_PreviousFormatWsb3_ThrowsUnknownFormat
 
               - id: WordSense-Core-BasicTables-Immutable
                 title: >-

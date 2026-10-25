@@ -30,6 +30,11 @@ public class BasicClassifierTests
     private static readonly WordDetails TurkeyVerb = new("turkey", PartOfSpeech.Verb, "VerbForm=Inf");
     private static readonly WordDetails IPronoun = new("i", PartOfSpeech.Pronoun, string.Empty);
     private static readonly WordDetails ILetter = new("I", PartOfSpeech.Noun, "Number=Sing");
+    private static readonly WordDetails PutInfinitive = new("put", PartOfSpeech.Verb, "VerbForm=Inf");
+    private static readonly WordDetails PutPast = new("put", PartOfSpeech.Verb, "Tense=Past+VerbForm=Part");
+    private static readonly WordDetails PutNoun = new("put", PartOfSpeech.Noun, "Number=Sing");
+    private static readonly WordDetails ComeInfinitive = new("come", PartOfSpeech.Verb, "VerbForm=Inf");
+    private static readonly WordDetails ComeParticiple = new("come", PartOfSpeech.Verb, "VerbForm=Part");
 
     private static readonly SenseInfo CatSense = new("cat#feline", null, "cat", PartOfSpeech.Noun, "cat%1:05:00::");
 
@@ -52,6 +57,9 @@ public class BasicClassifierTests
         ["paris"] = [ParisNoun],
         ["turkey"] = [TurkeyNoun, TurkeyVerb],
         ["i"] = [IPronoun, ILetter],
+        ["put"] = [PutInfinitive, PutPast],
+        ["putt"] = [PutNoun, PutInfinitive, PutPast],
+        ["come"] = [ComeInfinitive, ComeParticiple],
     };
 
     private static readonly Dictionary<(string Lemma, PartOfSpeech Pos), ImmutableArray<SenseInfo>> Senses = new()
@@ -526,6 +534,293 @@ public class BasicClassifierTests
         var inText = await Run("They", "record", "the", "tomorrow", ".", "yesterday", "they", "read");
 
         Assert.Equal(alone, inText[5..]);
+    }
+
+    // A toy tense table without the context of any verb, only the features that a test names: the tagger has no weight and
+    // there is no cue table (or only the one of read), so the tense table alone splits a slot
+    private static BasicTables TenseTables(double weight = 1.0, sbyte prior = 0, bool readCue = false, params (FeatureRef Feature, sbyte Weight)[] features)
+    {
+        var ordered = features.OrderBy(f => f.Feature.Hash).ToArray();
+        (string Lemma, CueAnalysis[] Analyses, ushort[] Hashes, sbyte[] Weights)[] cues = readCue ? [("read", TestTables.ReadColumns(), TestTables.CueHashes(), TestTables.CueWeights())] : [];
+        return TestTables.Load(TestTables.Build(
+            [("record", 0, new int[PosTag.Count])],
+            [],
+            cues,
+            hmmWeight: 0,
+            tense: (prior, [.. ordered.Select(f => f.Feature.Hash)], [.. ordered.Select(f => f.Weight)]),
+            tenseWeight: weight));
+    }
+
+    private static readonly (FeatureRef Feature, sbyte Weight)[] PastCues =
+    [
+        (new FeatureRef(CueModel.Left, "had"), 24),
+        (new FeatureRef(CueModel.Left, "to"), -24),
+    ];
+
+    /// <summary>
+    ///     The context decides the tense of a verb whose past and non-past share a spelling, and the cue tables have no
+    ///     column for it: a past context selects the past analysis, although the lexicon lists the infinitive first.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_TenseTable_PastContext_SelectsThePastAnalysis()
+    {
+        // Arrange
+        var classifier = Create(TenseTables(features: PastCues));
+
+        // Act
+        var past = await classifier.ClassifyAsync(["they", "had", "put"], TestContext.Current.CancellationToken);
+
+        // Assert: the context overrides the order of the lexicon
+        Assert.Equal(PutPast, past[2].Details);
+        Assert.Equal(PutPast, past[2].Analyses[0].Details);
+        Assert.True(past[2].Analyses[0].Probability > past[2].Analyses[1].Probability);
+    }
+
+    /// <summary>
+    ///     An infinitive context selects the non-past analysis of a verb whose past and non-past share a spelling.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_TenseTable_InfinitiveContext_SelectsTheNonPastAnalysis()
+    {
+        // Arrange
+        var classifier = Create(TenseTables(features: PastCues));
+
+        // Act
+        var infinitive = await classifier.ClassifyAsync(["they", "to", "put"], TestContext.Current.CancellationToken);
+
+        // Assert
+        Assert.Equal(PutInfinitive, infinitive[2].Details);
+        Assert.True(infinitive[2].Analyses[0].Probability > infinitive[2].Analyses[1].Probability);
+    }
+
+    /// <summary>
+    ///     The log odds of the context are the prior plus the weights of the features that the tense table knows for the
+    ///     tokens of the segment of the word: the past variant is <c>exp(L)</c> times as probable as the non-past one.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_TenseTable_ContextFeaturesSetTheLogOdds()
+    {
+        // Arrange: the left neighbor "had" weighs +3 nats (24 eighths) and "to" -3 nats, the prior is zero
+        var classifier = Create(TenseTables(features: PastCues));
+
+        // Act
+        var past = (await classifier.ClassifyAsync(["they", "had", "put"], TestContext.Current.CancellationToken))[2];
+        var infinitive = (await classifier.ClassifyAsync(["they", "to", "put"], TestContext.Current.CancellationToken))[2];
+        var neutral = (await classifier.ClassifyAsync(["they", "put"], TestContext.Current.CancellationToken))[1];
+
+        // Assert
+        Assert.Equal(3.0, Math.Log(ProbabilityOf(past, PutPast) / ProbabilityOf(past, PutInfinitive)), 9);
+        Assert.Equal(-3.0, Math.Log(ProbabilityOf(infinitive, PutPast) / ProbabilityOf(infinitive, PutInfinitive)), 9);
+        Assert.Equal(0.0, Math.Log(ProbabilityOf(neutral, PutPast) / ProbabilityOf(neutral, PutInfinitive)), 9);
+    }
+
+    /// <summary>
+    ///     The weight of the table multiplies the log odds before the exponential: with the log odds of 3 nats the weight
+    ///     2 makes the past variant <c>exp(6)</c> times as probable as the non-past one, and the weight 0.5 <c>exp(1.5)</c>.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_TenseTable_WeightScalesTheLogOdds()
+    {
+        // Arrange
+        var doubled = Create(TenseTables(weight: 2, features: PastCues));
+        var halved = Create(TenseTables(weight: 0.5, features: PastCues));
+
+        // Act
+        var strong = (await doubled.ClassifyAsync(["they", "had", "put"], TestContext.Current.CancellationToken))[2];
+        var weak = (await halved.ClassifyAsync(["they", "had", "put"], TestContext.Current.CancellationToken))[2];
+
+        // Assert
+        Assert.Equal(6.0, Math.Log(ProbabilityOf(strong, PutPast) / ProbabilityOf(strong, PutInfinitive)), 9);
+        Assert.Equal(1.5, Math.Log(ProbabilityOf(weak, PutPast) / ProbabilityOf(weak, PutInfinitive)), 9);
+    }
+
+    /// <summary>
+    ///     The largest tense weight a table accepts keeps every probability finite: the weighted log-odds are bounded to 30
+    ///     nats before the exponential, so the slot is still normalized and the context still decides.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_TenseTable_LargeWeight_KeepsProbabilitiesFinite()
+    {
+        // Arrange: the largest weight the table accepts, which would overflow the exponential without the bound
+        var classifier = Create(TenseTables(weight: 1e6, features: PastCues));
+
+        // Act
+        var past = await classifier.ClassifyAsync(["they", "had", "put"], TestContext.Current.CancellationToken);
+
+        // Assert: every probability is finite and the analyses sum to one, with the past analysis chosen at the bound
+        Assert.All(past[2].Analyses, a => Assert.True(double.IsFinite(a.Probability), $"{a.Probability}"));
+        Assert.Equal(1.0, past[2].Analyses.Sum(a => a.Probability), 6);
+        Assert.Equal(PutPast, past[2].Details);
+        Assert.Equal(30.0, Math.Log(ProbabilityOf(past[2], PutPast) / ProbabilityOf(past[2], PutInfinitive)), 6);
+    }
+
+    /// <summary>
+    ///     The log odds of the context are bounded to 30 nats before the weight multiplies them: a context that the table
+    ///     weighs at more than 30 nats gives the odds <c>exp(30)</c> with the weight 1.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_TenseTable_LargeLogOdds_AreBoundedTo30Nats()
+    {
+        // Arrange: a prior of 127 eighths and a left neighbor of 127 eighths make 31.75 nats
+        (FeatureRef, sbyte)[] heavy = [(new FeatureRef(CueModel.Left, "had"), 127)];
+        var classifier = Create(TenseTables(prior: 127, features: heavy));
+
+        // Act
+        var past = (await classifier.ClassifyAsync(["they", "had", "put"], TestContext.Current.CancellationToken))[2];
+
+        // Assert
+        Assert.Equal(30.0, Math.Log(ProbabilityOf(past, PutPast) / ProbabilityOf(past, PutInfinitive)), 6);
+        Assert.Equal(1.0, past.Analyses.Sum(a => a.Probability), 9);
+    }
+
+    /// <summary>
+    ///     A participle (<c>VerbForm=Part</c> without a tense) counts as a past analysis, so <c>come</c> after a form of
+    ///     <c>have</c> is the participle.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_TenseTable_ParticipleCountsAsPast()
+    {
+        // Arrange
+        var classifier = Create(TenseTables(features: PastCues));
+
+        // Act
+        var participle = await classifier.ClassifyAsync(["they", "had", "come"], TestContext.Current.CancellationToken);
+        var infinitive = await classifier.ClassifyAsync(["they", "to", "come"], TestContext.Current.CancellationToken);
+
+        // Assert
+        Assert.Equal(ComeParticiple, participle[2].Details);
+        Assert.Equal(ComeInfinitive, infinitive[2].Details);
+    }
+
+    /// <summary>
+    ///     The split by tense never changes the probability of a slot: the sum of its variants, and with it the slot order,
+    ///     the level, the confidence and the sense, equal what a table with the tense model turned off gives.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_TenseTable_KeepsSlotProbabilityLevelAndConfidence()
+    {
+        // Arrange: "putt" has a noun slot and a verb slot with a past and a non-past variant; the weight 0 turns the model off
+        var off = Create(TenseTables(weight: 0, features: PastCues));
+        var on = Create(TenseTables(weight: 1, features: PastCues));
+        string[] sentence = ["they", "had", "putt"];
+
+        // Act
+        var before = (await off.ClassifyAsync(sentence, TestContext.Current.CancellationToken))[2];
+        var after = (await on.ClassifyAsync(sentence, TestContext.Current.CancellationToken))[2];
+
+        // Assert
+        Assert.Equal(before.Level, after.Level);
+        Assert.Equal(before.Confidence, after.Confidence, 12);
+        Assert.Equal(before.SenseId, after.SenseId);
+        Assert.Equal(PutNoun, before.Analyses[0].Details);
+        Assert.Equal(before.Analyses[0].Details, after.Analyses[0].Details);
+        Assert.Equal(0.5, after.Analyses[0].Probability, 12);
+        Assert.Equal(1.0, after.Analyses.Sum(a => a.Probability), 12);
+        Assert.Equal(
+            before.Analyses.Where(a => a.Details.PartOfSpeech == PartOfSpeech.Verb).Sum(a => a.Probability),
+            after.Analyses.Where(a => a.Details.PartOfSpeech == PartOfSpeech.Verb).Sum(a => a.Probability),
+            12);
+        Assert.NotEqual(before.Analyses.First(a => a.Details == PutPast).Probability, after.Analyses.First(a => a.Details == PutPast).Probability);
+    }
+
+    /// <summary>
+    ///     The shared model decides the split of a slot alone: the odds of the past variants are the exponential of the
+    ///     weighted log odds of the tense table (a prior of one nat and the weight one make the past <c>e</c> times as likely
+    ///     as the infinitive), whatever split the form table (the cues of <c>read</c>) made, and the slot keeps its probability.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_TenseTable_ReplacesTheSplitOfTheFormTable()
+    {
+        // Arrange: a prior of 8 eighths is one nat; "tomorrow" makes the cue table of read favor the present
+        (FeatureRef, sbyte)[] unknown = [(new FeatureRef(CueModel.Left, "zzzz"), 0)];
+        var off = Create(TenseTables(weight: 0, prior: 8, readCue: true, features: unknown));
+        var on = Create(TenseTables(weight: 1, prior: 8, readCue: true, features: unknown));
+        string[] sentence = ["tomorrow", "they", "read"];
+
+        // Act
+        var before = (await off.ClassifyAsync(sentence, TestContext.Current.CancellationToken))[2];
+        var after = (await on.ClassifyAsync(sentence, TestContext.Current.CancellationToken))[2];
+
+        // Assert: the form table favors the present when the tense model is off; with it on, the odds are those of the tense model
+        double Odds(ClassifyResult r) => ProbabilityOf(r, TestTables.ReadPast) / ProbabilityOf(r, TestTables.ReadPres);
+        Assert.True(Odds(before) < 1.0);
+        Assert.Equal(Math.E, Odds(after), 9);
+        Assert.Equal(ProbabilityOf(before, TestTables.ReadPast) + ProbabilityOf(before, TestTables.ReadPres), ProbabilityOf(after, TestTables.ReadPast) + ProbabilityOf(after, TestTables.ReadPres), 12);
+        Assert.Equal(before.Confidence, after.Confidence, 12);
+    }
+
+    /// <summary>
+    ///     A table without a tense table leaves the probabilities of a word as the other evidence gives them: the variants
+    ///     of the slot tie and keep the order of the lexicon, exactly as a table with the tense model turned off gives them.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_NoTenseTable_LeavesProbabilitiesUnchanged()
+    {
+        // Arrange: a table without a tense table, and the baseline of a table with the model turned off
+        var without = Create(TieTables);
+        var baseline = Create(TenseTables(weight: 0, features: PastCues));
+
+        // Act
+        var result = (await without.ClassifyAsync(["they", "had", "put"], TestContext.Current.CancellationToken))[2];
+        var expected = (await baseline.ClassifyAsync(["they", "had", "put"], TestContext.Current.CancellationToken))[2];
+
+        // Assert: the probabilities equal the baseline (and the tie of the toy table), analysis by analysis, in the same order
+        Assert.Equal(expected.Analyses.Select(a => a.Details), result.Analyses.Select(a => a.Details));
+        Assert.Equal(expected.Analyses.Select(a => a.Probability), result.Analyses.Select(a => a.Probability));
+        Assert.All(result.Analyses, a => Assert.Equal(0.5, a.Probability, 12));
+        Assert.Equal(PutInfinitive, result.Details);
+    }
+
+    /// <summary>
+    ///     A tense weight of 0 turns the tense model off: a context that the table weighs strongly changes nothing.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_TenseWeightZero_LeavesProbabilitiesUnchanged()
+    {
+        // Arrange: a strong past context in the table, once with the weight 0 and once without any tense table
+        var off = Create(TenseTables(weight: 0, features: PastCues));
+        var without = Create(TieTables);
+
+        // Act
+        var result = (await off.ClassifyAsync(["they", "had", "put"], TestContext.Current.CancellationToken))[2];
+        var expected = (await without.ClassifyAsync(["they", "had", "put"], TestContext.Current.CancellationToken))[2];
+
+        // Assert
+        Assert.Equal(expected.Analyses.Select(a => a.Probability), result.Analyses.Select(a => a.Probability));
+        Assert.All(result.Analyses, a => Assert.Equal(0.5, a.Probability, 12));
+        Assert.Equal(PutInfinitive, result.Details);
+    }
+
+    /// <summary>
+    ///     A slot that is not a verb slot with both a past and a non-past analysis is not split: the singular and the plural
+    ///     of a noun keep their probabilities, although the table has a strong past context.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_NonVerbSlot_LeavesProbabilitiesUnchanged()
+    {
+        // Arrange
+        var strong = Create(TenseTables(features: PastCues));
+        var without = Create(TieTables);
+
+        // Act
+        var result = (await strong.ClassifyAsync(["they", "had", "deer"], TestContext.Current.CancellationToken))[2];
+        var expected = (await without.ClassifyAsync(["they", "had", "deer"], TestContext.Current.CancellationToken))[2];
+
+        // Assert: the noun variants (singular and plural) are not a tense slot
+        Assert.Equal(expected.Analyses.Select(a => a.Probability), result.Analyses.Select(a => a.Probability));
+        Assert.All(result.Analyses, a => Assert.Equal(0.5, a.Probability, 12));
     }
 
     /// <summary>

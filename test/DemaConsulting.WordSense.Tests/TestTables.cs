@@ -81,6 +81,8 @@ internal static class TestTables
     /// <param name="hmmWeight">The weight of the tagger.</param>
     /// <param name="invTemperature">The inverse temperature of the cues.</param>
     /// <param name="inventoryHash">The inventory hash to write, or null for <see cref="ToyHash"/>.</param>
+    /// <param name="tense">The tense table (prior, ascending feature hashes and one weight per hash), or null for a table without one.</param>
+    /// <param name="tenseWeight">The weight of the tense model, written to the header.</param>
     /// <returns>The compressed blob.</returns>
     public static byte[] Build(
         (string Word, int ClosedMask, int[] Counts)[] words,
@@ -88,7 +90,9 @@ internal static class TestTables
         (string Lemma, CueAnalysis[] Analyses, ushort[] Hashes, sbyte[] Weights)[] cues,
         double hmmWeight = 1.5,
         double invTemperature = 0.5,
-        byte[]? inventoryHash = null) => Compress(Raw(words, suffixes, cues, hmmWeight, invTemperature, inventoryHash));
+        byte[]? inventoryHash = null,
+        (sbyte Prior, ushort[] Hashes, sbyte[] Weights)? tense = null,
+        double tenseWeight = 1.0) => Compress(Raw(words, suffixes, cues, hmmWeight, invTemperature, inventoryHash, tense, tenseWeight));
 
     /// <summary>
     ///     Reads a blob against the toy inventory.
@@ -206,12 +210,14 @@ internal static class TestTables
         (string Lemma, CueAnalysis[] Analyses, ushort[] Hashes, sbyte[] Weights)[] cues,
         double hmmWeight,
         double invTemperature,
-        byte[]? inventoryHash)
+        byte[]? inventoryHash,
+        (sbyte Prior, ushort[] Hashes, sbyte[] Weights)? tense,
+        double tenseWeight)
     {
         using var raw = new MemoryStream();
-        raw.Write("WSB3"u8);
+        raw.Write("WSB4"u8);
         raw.Write(inventoryHash ?? ToyHash);
-        foreach (var value in new[] { 0.75, 5, 0.1, 0.3, 0.6, hmmWeight, invTemperature })
+        foreach (var value in new[] { 0.75, 5, 0.1, 0.3, 0.6, hmmWeight, invTemperature, tenseWeight })
         {
             var bytes = new byte[8];
             BinaryPrimitives.WriteDoubleLittleEndian(bytes, value);
@@ -296,6 +302,27 @@ internal static class TestTables
             {
                 raw.WriteByte((byte)weight);
             }
+        }
+
+        // The tense section: a flag byte, then the prior, the delta-coded hashes and the weights
+        if (tense is { } table)
+        {
+            raw.WriteByte(1);
+            raw.WriteByte((byte)table.Prior);
+            Varint(raw, table.Hashes.Length);
+            for (var f = 0; f < table.Hashes.Length; f++)
+            {
+                Varint(raw, f == 0 ? table.Hashes[f] : table.Hashes[f] - table.Hashes[f - 1]);
+            }
+
+            foreach (var weight in table.Weights)
+            {
+                raw.WriteByte((byte)weight);
+            }
+        }
+        else
+        {
+            raw.WriteByte(0);
         }
 
         return raw.ToArray();

@@ -10,7 +10,8 @@ namespace WordSense.Builder;
 /// <param name="Upos">The universal part-of-speech tag.</param>
 /// <param name="Consensus">The consensus status: <c>unanimous</c>, <c>disputed</c> or <c>unchecked</c>.</param>
 /// <param name="Lemma">The lemma of the token, or empty when a caller that builds a token by hand gives none.</param>
-internal sealed record OpenToken(string Form, string Upos, string Consensus, string Lemma = "");
+/// <param name="Features">The morphological features of the token (<c>Tense=Past|VerbForm=Part</c>), or empty when it has none or a caller that builds a token by hand gives none.</param>
+internal sealed record OpenToken(string Form, string Upos, string Consensus, string Lemma = "", string Features = "");
 
 /// <summary>
 ///     One sentence of the open part-of-speech corpus.
@@ -152,7 +153,7 @@ internal static class OpenCorpus
                     throw new InvalidDataException($"{Path.GetFileName(path)}:{number.ToString(CultureInfo.InvariantCulture)}: expected a token line with {TokenColumns.ToString(CultureInfo.InvariantCulture)} columns, a form, a lemma and a tag, inside a sentence.");
                 }
 
-                tokens.Add(new OpenToken(columns[1], columns[3], columns[6], columns[2]));
+                tokens.Add(new OpenToken(columns[1], columns[3], columns[6], columns[2], columns[5] == "_" ? string.Empty : columns[5]));
             }
         }
 
@@ -173,6 +174,7 @@ internal static class OpenCorpus
         var text = Straighten(sentence.Text).ToLowerInvariant();
         var forms = new List<string>();
         var tags = new List<string>();
+        var gold = new List<GoldToken>();
         foreach (var token in sentence.Tokens)
         {
             var lower = Straighten(token.Form).ToLowerInvariant();
@@ -189,9 +191,10 @@ internal static class OpenCorpus
 
             forms.Add(token.Form);
             tags.Add(token.Upos);
+            gold.Add(new GoldToken(token.Lemma, string.Empty, token.Features));
         }
 
-        return new TaggedSentence([.. forms], [.. forms.Select((f, i) => TaggerCounts.MapTag(tags[i], f))]);
+        return new TaggedSentence([.. forms], [.. forms.Select((f, i) => TaggerCounts.MapTag(tags[i], f))], [.. gold]);
     }
 
     private static string Straighten(string text) => text.Replace('\u2019', '\'');

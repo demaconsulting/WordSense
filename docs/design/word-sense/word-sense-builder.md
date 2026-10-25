@@ -115,29 +115,34 @@ implementation of the feature computation.
   measurement with a tag-count most-frequent-sense baseline, which the report calls optimistic).
 - `RunningTextEvaluator`: the part-of-speech evaluation of every model on the test split of the open corpus, the
   convention-mapped treebank test file and the challenge set.
+- `TenseEvaluator`, `TenseScore`: the tense evaluation of every model on the verbs whose past and non-past share a
+  spelling (the groups, the gold class, the confusion, the majority baseline and the pooled treebank files).
 - `SuiteFile`, `SuiteRow`, `SuiteData`, `SuiteGrade`, `SuiteEvaluator`: read the reviewed suite rows and the expectation
   of each model for each row, grade an answer, and report the pass rates (the first four are compiled into the test
   projects of the models).
 - `LeakageCheck`, `LeakageSet`, `LeakageReport`: the check that the parts of the corpus share no sentence.
 - `OpenCorpus`, `OpenSentence`, `OpenToken`: read the open English part-of-speech corpus (`corpus/open`: header
-  comments, the sentence comment lines and one seven-column token line per token) and turn a sentence into the tokens
+  comments, the sentence comment lines and one seven-column token line per token, with the lemma and the features of
+  each token) and turn a sentence into the tokens
   and tags that the tagger works with: a contraction that the corpus splits (`do` and `n't`, `it` and `'s`) is joined
   again when the joined form is in the sentence text (the possessive `'s` stays a token of its own), so that the
   counts and the evaluation present the classifier the tokens an application passes it.
-- `TaggerCounts`, `TaggedSentence`: the tag statistics: the mapping of the universal tags onto the 13 tags of the
+- `TaggerCounts`, `TaggedSentence`, `GoldToken`: the tag statistics: the mapping of the universal tags onto the 13 tags
+  of the
   tagger, the n-gram and per-word counts, and the deterministic count files `tag-ngrams.tsv` and `word-tags.tsv` of
   `corpus/open/counts`. They are usage statistics, so they are counted from the training split of the representative
-  part only.
+  part only. A tagged sentence may carry, per token, the lemma, the treebank tag and the features of its source
+  (`GoldToken`), which the tense evaluation and the tense training read.
 - `TaggerEvaluator`, `TaggerScore`: the part-of-speech accuracy of the basic classifier on gold sentences, and the
   reader of an external gold file.
 - `BasicHyperparameters`: every tunable number of the Basic model in one place (the runtime values that travel in the
   table header, the training choices, and the grid and sample sizes of the tuner).
-- `BasicTrainer`, `BasicModelData`: select the tabled words (closed-class words and the most frequent
-  dictionary-ambiguous words), the suffixes and the closed-class masks from the counts, and train the cue tables from
+- `BasicTrainer`, `BasicModelData`, `BasicTenseRow`: select the tabled words (closed-class words and the most frequent
+  dictionary-ambiguous words), the suffixes and the closed-class masks from the counts, train the cue tables from
   the anchors and the form-chooser anchors, with the analysis label of each sentence rolled up from its fine sense or
-  chooser label.
-- `BasicTablesWriter`: serializes the model data into the `WSB3` blob, deterministically.
-- `BasicTuner`: scores the hyper-parameter grid.
+  chooser label, and train the shared tense table from every verb of the training split of the open corpus.
+- `BasicTablesWriter`: serializes the model data into the `WSB4` blob, deterministically.
+- `BasicTuner`: scores the hyper-parameter grid and the weight of the tense model.
 - `BasicModelBuilder`: the commands `open-counts` and `train-basic`.
 - `AppendixGenerator`: generates the senses appendix of the user guide.
 - `KeyExport`: writes every word key of the lexicon as a sorted text file.
@@ -180,9 +185,10 @@ instead of `--model`.
   trained lemmas (the model table cell) and, in a separate section, all mapped words of a trained lemma or of an
   untrained lemma with two or more senses (the words of an untrained lemma with fewer than two senses are counted but
   not measured).
-- `evaluate-running [--model all|NAME] [--split test] [--gold FILE] [--output FILE] [--table FILE]`: measures the
+- `evaluate-running [--model all|NAME] [--split test] [--gold FILE] [--report all|running|tense] [--output FILE]
+  [--table FILE]`: measures the
   part-of-speech accuracy of the models on the representative test split of the open corpus, the convention-mapped
-  treebank test file and the challenge set.
+  treebank test file and the challenge set, and the tense of the same-spelling verbs (`--report` restricts the output).
 - `evaluate-suite [--output FILE] [--write-expectations FILE] [--overwrite true]`: runs the reviewed suite against the
   three models and reports the pass rates and the regressions against the expectation file.
 - `check-leakage [--data DIR] [--gold FILE] [--cache DIR] [--output FILE]`: checks that no sentence is shared by a
@@ -199,7 +205,8 @@ instead of `--model`.
 - `train-basic [--corpus DIR] [--repository DIR] [--output FILE]`: retrains the whole Basic model with the default
   hyper-parameters from the committed counts of `corpus/open/counts`, the anchors and the chooser anchors, and writes
   `Resources/basic.bin` of the core package; it names `open-counts` when the counts are missing.
-- `tune-basic [--corpus DIR] [--repository DIR]`: scores the hyper-parameter grid and prints a table; it writes nothing.
+- `tune-basic [--corpus DIR] [--repository DIR] [--gold FILE]`: scores the hyper-parameter grid and the weight of the
+  tense model and prints the tables; it writes nothing.
 - `label-senses [--data DIR]`: gives every sense without a label a generated label (the SenseLabelGenerator unit of the
   WordData subsystem).
 - `import-wn30-counts --input FILE [--data DIR] [--sha256 HEX|none]`: imports the pinned WordNet 3.0 sense frequency
@@ -546,7 +553,25 @@ convention tags as punctuation or other are excluded and counted; a token the mo
 reports the accuracy on all scored tokens and on the ambiguous tokens, whose word has at least two parts of speech in
 the lexicon.
 
-#### Model table (`ModelTable`)
+#### Tense evaluation (`TenseEvaluator`)
+
+The question is the meaning of a verb in its sentence: is it a past form (a past tense or a participle) or a non-past
+one (infinitive, present, imperative; the lexicon has one analysis for the three)? A token is scored when the gold
+source calls it a verb and its surface form has, among its verb analyses in the lexicon, a past analysis
+(`BasicClassifier.IsPast`: `Tense=Past` or `VerbForm=Part`) and one that is not past. The gold class is past when the
+treebank tag is `VBD` or `VBN` (without a treebank tag, as in the open corpus: when the features have `Tense=Past`). The
+answered class is that of the selected analysis of the model, so a verb read as a noun is a wrong answer for a past
+token. The report gives, per model, set and group, the number of tokens, the accuracy, the majority baseline (what the
+more frequent gold class would get) and the confusion (past as past, past as non-past, non-past as past, non-past as
+non-past, not answered). The groups are every such token, the forms whose past and non-past analyses are of one lemma
+(`put`, `read`; the others, such as `found`, decide between two lemmas) and the read family (the lemma `read` and its
+compounds, not `spread`). The sets are the open corpus test and development splits and, from the gold files next to the
+`--gold` file, the treebank test, development and training files (the models never train on the treebank, so the
+three files pooled are out of sample too); the development sets are for choosing settings (`tune-basic`), the test sets
+are what is reported. Only the sentences that hold a scored token are classified, each on its own, as
+`RunningTextEvaluator` does. The gold files carry the lemma, the treebank tag and the features of each token in three
+more columns (`prepare_tagger_eval.py`); a file with three columns is read without them and the tense report leaves it
+out with a note.
 
 `docs/user_guide/model-table.md` holds the table of the README and is a chapter of the user guide: one row per model,
 one column per measurement. Each
@@ -598,6 +623,15 @@ that fall short, most frequent first.
    collisions keep the more frequent feature, and weights are quantized to 1/8 nat. The anchors are a balanced
    classifier corpus whose counts say nothing about how often an analysis occurs, so every column of a table gets the
    same prior and the frequencies come from the tagger counts alone. All numbers come from `BasicHyperparameters`.
+   It also trains the shared tense table from every verb of the training split of the representative open corpus (read
+   again with the lemma and the features of each token, never the other splits): a verb is a past example for
+   `Tense=Past` and a non-past example for the infinitive, the imperative and the present of every person but the third
+   singular (the third singular, the gerund and the present participle are left out: they are spelled apart from the past
+   and would only teach the model that a singular subject means non-past), and the model is a naive Bayes classifier of
+   the two classes over the tense features of `CueModel.ExtractTense`, with the same hash, collision rule and
+   quantization as a cue table, the smoothing `TenseAlpha`, the minimum of `TenseMinFeatureCount` verbs per feature and
+   the
+   log odds of the classes as its prior. It reads no word list and no lemma, only the context.
 3. `BasicTablesWriter.Write` serializes the table, `BasicTables.Load` checks that it reads back, and the file is
    written with its size and SHA-256 reported. The table carries the inventory hash of the word image that it was
    trained against and is rebuilt whenever the inventory changes.
@@ -609,7 +643,11 @@ variants) on the development split of the representative open corpus and on a de
 into a train and a dev part (the chooser anchors are left out of the tuned tables, because they are the same sentences
 labeled a second way). It reports the accuracy on the ambiguous tokens of the development split, the accuracy of the
 analysis on the anchor dev part and the table size. It never reads the test splits, the challenge set, the holdout or
-the real-text sentences and writes no file, so the reported evaluation stays honest.
+the real-text sentences and writes no file, so the reported evaluation stays honest. A second table scores the weight of
+the tense model (`TenseWeightGrid`; 0 turns it off) on the development split of the open corpus and the treebank
+development file (`--gold`, default `ud_dev.tsv`), with the model of the shipped configuration (all anchors and chooser
+anchors and the verbs of the training split): the accuracy on the same-spelling verbs and on the read family. The weight
+1.0 stays because any weight of at least 1 gave the same accuracy there.
 
 Workflow: change a value in `BasicHyperparameters.Default` (or add values to `Grid`) and run `tune-basic` to compare
 variants; put the chosen value into `Default`, run `train-basic` (the word image must be current, `compile-image`, because
@@ -618,8 +656,9 @@ run; commit `basic.bin` and the changed hyper-parameter file. Retraining is dete
 byte-identical table. The values that the runtime needs (gamma, beta, the three lambdas, the HMM weight and the inverse
 temperature) travel in the header of `basic.bin`, so changing them needs retraining but no runtime change; a change of
 the table format needs the reader in `BasicTables` and its tests to change too. Tune only against the development split
-and the anchor sample; never against the holdout, the real-text sentences, the test splits of the open corpus or its
-challenge set, or the treebank, which are the measurements (one real-text row is a fraction of a point, so a smaller
+and the anchor sample, and, for the weight of the tense model, the treebank development file (`ud_dev.tsv`); never
+against the holdout, the real-text sentences, the test splits of the open corpus or its challenge set, or the treebank
+test and training files, which are the measurements (one real-text row is a fraction of a point, so a smaller
 move than a few rows is noise). To change the training data (anchors, sense inventory or open-corpus sentences), edit it
 and run `open-counts` (when the open corpus changed) and `train-basic`; `evaluate-tagger` measures the part of speech.
 The grid has been tried on the open-corpus tables: the best variants (gamma 1.0, beta 1.0, closed-class 3 / 0.8) gain

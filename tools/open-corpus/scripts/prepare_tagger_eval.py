@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
-"""Prepare the external gold files of the tagger evaluation from UD English-EWT development and test (evaluation only).
+"""Prepare the external gold files of the tagger evaluation from UD English-EWT (evaluation only).
 
   prepare_tagger_eval.py [--ud-dir tools/open-corpus/cache] [--data-dir data] [--out-dir tools/open-corpus/work/tagger-eval]
 
-UD data never enters the repository and never trains or ships anything: the two files are read from the git-ignored cache
-(download en_ewt-ud-dev.conllu and en_ewt-ud-test.conllu from the pinned commit below by hand), checked against their pinned
-SHA-256, mapped to the WordSense lexicon conventions with convention_map.py (possessive determiners, copula `be`, phrasal-verb
-particles, prepositions before gerunds) and written to --out-dir as `ud_dev.tsv` and `ud_test.tsv`, one token per line:
-`sentence id`, `form`, `tagger tag letter` (N R V J B P C I D A T U O). The builder reads them with
+UD data never enters the repository and never trains or ships anything: the files are read from the git-ignored cache
+(download en_ewt-ud-dev.conllu and en_ewt-ud-test.conllu, and for the pooled evaluation en_ewt-ud-train.conllu, from the pinned
+commit below by hand), checked against their pinned SHA-256, mapped to the WordSense lexicon conventions with convention_map.py
+(possessive determiners, copula `be`, phrasal-verb particles, prepositions before gerunds) and written to --out-dir as `ud_dev.tsv`,
+`ud_test.tsv` and `ud_train.tsv`, one token per line: `sentence id`, `form`, `tagger tag letter` (N R V J B P C I D A T U O), `lemma`,
+`xpos` (the treebank tag, for example VBD) and `feats` (the treebank features, for example Tense=Past|VerbForm=Part), with `_` for an
+empty value. The last three columns let the running-text evaluation score the tense of a verb (see the tense report of
+`evaluate-running`); the builder also reads files with the first three columns only. The builder reads the files with
 
   dotnet run --project tools/WordSense.Builder -- evaluate-tagger --gold tools/open-corpus/work/tagger-eval/ud_dev.tsv
 
@@ -25,6 +28,7 @@ from convention_map import lexicon_analyses, map_reference
 PINNED = {
     "en_ewt-ud-dev.conllu": "39239e0a60db3ae68f4b7036189f11b6692741d10ff8240dd91f74f2760d90f8",
     "en_ewt-ud-test.conllu": "fa024f43dc5da3c5ac02563bc9bd0e974f46cbb1560823976a8f342a37dc494a",
+    "en_ewt-ud-train.conllu": "d68e06122a702464c613076523d56740f047e5bbe89dd90ec32737e04d952143",
 }
 
 LETTERS = {"NOUN": "N", "PROPN": "N", "PRON": "R", "VERB": "V", "ADJ": "J", "ADV": "B", "ADP": "P", "CCONJ": "C", "SCONJ": "C",
@@ -66,7 +70,7 @@ def read_conllu(path):
             pending, pending_end = f[1], int(f[0].split("-")[1])
             continue
         number = int(f[0])
-        row = {"form": f[1], "lemma": f[2], "upos": f[3], "feats": f[5], "head": f[6], "deprel": f[7]}
+        row = {"form": f[1], "lemma": f[2], "upos": f[3], "xpos": f[4], "feats": f[5], "head": f[6], "deprel": f[7]}
         words[f[0]] = row
         if pending is not None:
             rows.append(dict(row, form=pending))
@@ -97,13 +101,13 @@ def main():
         totals = {}
         out = os.path.join(args.out_dir, "ud_" + name.split("-")[2].replace(".conllu", "") + ".tsv")
         with open(out, "w", encoding="utf-8", newline="\n") as w:
-            w.write(f"# {name} mapped to the WordSense lexicon conventions (convention_map.py); sentence id, form, tag letter\n")
+            w.write(f"# {name} mapped to the WordSense lexicon conventions (convention_map.py); sentence id, form, tag letter, lemma, xpos, feats\n")
             for number, rows in enumerate(sentences, 1):
                 mapped, counts = map_reference(rows, lexicon)
                 for key, value in counts.items():
                     totals[key] = totals.get(key, 0) + value
                 for r, upos in zip(rows, mapped):
-                    w.write(f"{number}\t{r['form']}\t{letter(upos, r['form'])}\n")
+                    w.write(f"{number}\t{r['form']}\t{letter(upos, r['form'])}\t{r['lemma'] or '_'}\t{r['xpos'] or '_'}\t{r['feats'] or '_'}\n")
         print(out, len(sentences), "sentences; remapped", totals)
 
 

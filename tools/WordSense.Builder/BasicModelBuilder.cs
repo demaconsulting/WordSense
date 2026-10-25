@@ -54,7 +54,13 @@ internal static class BasicModelBuilder
 
         var anchors = Corpus.ReadDirectory(Path.Join(corpus, "anchors"));
         var choosers = ChooserCorpus.ReadDirectory(Path.Join(corpus, "choosers", "anchors"));
-        var data = BasicTrainer.Train(TaggerCounts.Read(countsDirectory), key => WordLexicon.TryLookup(key, out var found) ? found : [], anchors, choosers, BasicHyperparameters.Default);
+        var data = BasicTrainer.Train(
+            TaggerCounts.Read(countsDirectory),
+            key => WordLexicon.TryLookup(key, out var found) ? found : [],
+            anchors,
+            choosers,
+            BasicHyperparameters.Default,
+            OpenCorpus.ReadSplit(corpus, OpenCorpus.Representative, "train").Select(OpenCorpus.ToTagged));
         var blob = BasicTablesWriter.Write(data, WordLexicon.Current.InventoryHash);
         _ = BasicTables.Load(blob, WordLexicon.Current);
         var path = Path.IsPathRooted(outputPath) ? outputPath : Path.Join(repository, outputPath);

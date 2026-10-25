@@ -28,6 +28,14 @@ namespace DemaConsulting.WordSense;
 ///     after an article or a possessive, where the word is a noun or a main verb (<c>the can</c>, <c>his will</c>).
 ///     </para>
 ///     <para>
+///     A verb whose past and non-past share a spelling (<c>put</c>, <c>cut</c>, <c>set</c>, <c>come</c>, <c>read</c>) has
+///     the two analyses in one slot, which the cue tables cannot tell apart. The shared tense table of
+///     <see cref="BasicTables"/>, trained on all verbs of the open corpus, reads the tense from the context and splits the
+///     probability of the slot between its past and its non-past analyses (<c>ApplyTense</c>), so <c>I will read that
+///     tomorrow</c> selects a non-past <c>read</c> and <c>I have read that already</c> a past one. The split never changes
+///     the probability of the slot, so the level, the confidence and the sense are as without it.
+///     </para>
+///     <para>
 ///     The statistics carry no evidence that separates fine senses or groups, so the classifier never scores the
 ///     senses of an analysis that has several. An analysis whose lemma and part of speech have exactly one sense lists
 ///     that sense with probability 1 (no evidence is needed to choose it); every other analysis lists no senses. When
@@ -58,6 +66,13 @@ internal sealed class BasicClassifier
     ///     not a fitted value, and it is far from zero so that a clear context can still outweigh it.
     /// </summary>
     private const double CaseMismatchWeight = 0.1;
+
+    /// <summary>
+    ///     The largest absolute log odds of the tense table that a split uses, in nats. The weights are sums of many
+    ///     quantized terms and can in principle be large; the bound keeps the odds finite and a clear context from
+    ///     emptying a slot variant entirely, because every analysis of a word keeps a probability above zero.
+    /// </summary>
+    private const double MaximumTenseLogOdds = 30.0;
 
     private readonly BasicTables? _tables;
     private readonly Func<string, ImmutableArray<WordDetails>> _lexicon;
@@ -140,6 +155,7 @@ internal sealed class BasicClassifier
         var tokens = ArrayPool<TaggerToken>.Shared.Rent(list.Count);
         var posteriors = ArrayPool<double>.Shared.Rent(list.Count * PosTag.Count);
         var features = new FeatureRef[CueModel.MaxFeatures];
+        var tenseFeatures = new FeatureRef[CueModel.MaxTenseFeatures];
         try
         {
             var start = 0;
@@ -153,7 +169,7 @@ internal sealed class BasicClassifier
                 }
 
                 var length = end - start + 1;
-                ClassifySegment(tables, list, lower, start, length, tokens, posteriors, features, results);
+                ClassifySegment(tables, list, lower, start, length, tokens, posteriors, features, tenseFeatures, results);
                 start = end + 1;
             }
         }
@@ -368,6 +384,22 @@ internal sealed class BasicClassifier
     private static bool IsCapitalizedLemma(string lemma) => lemma.Length > 0 && char.IsUpper(lemma[0]);
 
     /// <summary>
+    ///     Tells whether an analysis is a past analysis of a verb: a past tense (<c>Tense=Past</c>) or a participle
+    ///     (<c>VerbForm=Part</c>, which the lexicon gives to the past participle; the present participle is
+    ///     <c>VerbForm=Ger</c>). The infinitive, the present and the imperative, which the lexicon does not tell apart,
+    ///     and the gerund are the other class, non-past.
+    /// </summary>
+    /// <param name="analysis">The analysis.</param>
+    /// <returns>True for a verb with a past tense or a participle.</returns>
+    internal static bool IsPast(WordDetails analysis)
+    {
+        ArgumentNullException.ThrowIfNull(analysis);
+        return analysis.PartOfSpeech == PartOfSpeech.Verb
+            && ((analysis.TryGetFeature("Tense", out var tense) && tense == "Past")
+                || (analysis.TryGetFeature("VerbForm", out var form) && form == "Part"));
+    }
+
+    /// <summary>
     ///     The shape of a written word, from the case of its letters.
     /// </summary>
     private enum Shape
@@ -447,7 +479,8 @@ internal sealed class BasicClassifier
         return mask;
     }
 
-    private ClassifyResult Choose(BasicTables tables, string word, string key, ImmutableArray<WordDetails> analyses, ReadOnlySpan<double> posterior, ReadOnlySpan<FeatureRef> features, Surroundings around)
+    [SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Private hot path that passes the statistics, the word, the context and pre-allocated scratch buffers; bundling them would allocate per call.")]
+    private ClassifyResult Choose(BasicTables tables, string word, string key, ImmutableArray<WordDetails> analyses, ReadOnlySpan<double> posterior, ReadOnlySpan<FeatureRef> features, Surroundings around, ReadOnlySpan<string> segment, int index, FeatureRef[] tenseFeatures)
     {
         var count = analyses.Length;
         Span<double> cues = count <= 32 ? stackalloc double[32] : new double[count];
@@ -478,8 +511,133 @@ internal sealed class BasicClassifier
 
         SenseFusion.Fuse(effective, analyses, cues, tables.HmmWeight, tables.InvTemperature, probabilities);
         ApplyCase(analyses, around.Case, probabilities);
+        ApplyTense(tables, analyses, segment, index, tenseFeatures, probabilities);
         var list = ListAnalyses(analyses, probabilities, out var selectedGroup, out var slotProbability);
         return Answer(word, list, selectedGroup, slotProbability);
+    }
+
+    /// <summary>
+    ///     Splits the probability of every verb slot that has both a past and a non-past analysis between them by the
+    ///     tense that the context says, and leaves the probability of the slot as it is.
+    /// </summary>
+    /// <remarks>
+    ///     <para>
+    ///     The senses belong to a lemma and a part of speech (a slot), so the context cues alone, which are trained per
+    ///     lemma and per form, cannot tell the past <c>put</c> from the infinitive <c>put</c>: both analyses are in the
+    ///     same column of the same table, get the same score and keep the order of the lexicon. The shared tense table
+    ///     (<see cref="BasicTables.Tense"/>) is trained on all verbs of the open corpus and knows only the context of
+    ///     tense (the auxiliary or modal before the verb, <c>to</c>, a form of <c>have</c> or <c>be</c>, the subject, a time
+    ///     word), so it decides for every verb whose past and non-past share a spelling, without a word list of verbs.
+    ///     </para>
+    ///     <para>
+    ///     The slot qualifies when it has a past analysis (see <see cref="IsPast"/>) and an analysis that is not past.
+    ///     The variants of the slot start with equal shares of the old probability of the slot, the past variants are
+    ///     weighted by <c>exp(TenseWeight * L)</c>, where L is the log odds of the tense table, and the
+    ///     probabilities of the slot are rescaled to their old total,
+    ///     so the probability of the slot, and with it the level, the confidence and the sense, never change: only the
+    ///     split inside the slot does, the same way as <see cref="ApplyCase"/> only moves probability between analyses.
+    ///     The shared table decides the split alone: the split that the fusion made from a form table (the cue table of
+    ///     a form such as <c>read</c>, <c>beat</c>, <c>cast</c> or <c>upset</c> has its own past and present columns,
+    ///     trained on a few dozen sentences with the same context features) is set aside, because multiplying the two would
+    ///     count the same context twice; on the development sets replacing it was never worse than multiplying.
+    ///     </para>
+    /// </remarks>
+    /// <param name="tables">The statistics.</param>
+    /// <param name="analyses">The analyses of the word.</param>
+    /// <param name="segment">The lower-case tokens of the sentence segment.</param>
+    /// <param name="index">The index of the word in <paramref name="segment"/>.</param>
+    /// <param name="tenseFeatures">The buffer that receives the tense features, at least <see cref="CueModel.MaxTenseFeatures"/> long.</param>
+    /// <param name="probabilities">The probability of each analysis, parallel to <paramref name="analyses"/>; the slots that qualify are re-split in place.</param>
+    private static void ApplyTense(BasicTables tables, ImmutableArray<WordDetails> analyses, ReadOnlySpan<string> segment, int index, FeatureRef[] tenseFeatures, Span<double> probabilities)
+    {
+        if (tables.Tense is not { } tense || tables.TenseWeight <= 0)
+        {
+            return;
+        }
+
+        var odds = double.NaN;
+        for (var j = 0; j < analyses.Length; j++)
+        {
+            if (analyses[j].PartOfSpeech != PartOfSpeech.Verb || IsLaterInSlot(analyses, j))
+            {
+                continue;
+            }
+
+            // The slot of the analysis: its positions are j and the later analyses with the same lemma and part of speech
+            var hasPast = false;
+            var hasOther = false;
+            for (var m = j; m < analyses.Length; m++)
+            {
+                if (SenseFusion.SameSlot(analyses[m], analyses[j]))
+                {
+                    hasPast |= IsPast(analyses[m]);
+                    hasOther |= !IsPast(analyses[m]);
+                }
+            }
+
+            if (!hasPast || !hasOther)
+            {
+                continue;
+            }
+
+            // The context is read once, and only for a word that has such a slot
+            if (double.IsNaN(odds))
+            {
+                var count = CueModel.ExtractTense(segment, index, tenseFeatures);
+                var logOdds = Math.Clamp(CueModel.ScoreTense(tense, tenseFeatures.AsSpan(0, count)), -MaximumTenseLogOdds, MaximumTenseLogOdds);
+                odds = Math.Exp(Math.Clamp(tables.TenseWeight * logOdds, -MaximumTenseLogOdds, MaximumTenseLogOdds));
+            }
+
+            // The shared model decides the split alone: the split the fusion made from a form table (the cue columns of
+            // read, beat, cast and upset, trained on a few dozen sentences from the same context features) is set aside
+            // first, because multiplying the two would count the same context twice. The slot keeps its probability.
+            var mass = 0.0;
+            for (var m = j; m < analyses.Length; m++)
+            {
+                if (SenseFusion.SameSlot(analyses[m], analyses[j]))
+                {
+                    mass += probabilities[m];
+                }
+            }
+
+            // Equal shares of the old mass, the past analyses weighted by the odds of the context, back to the old total
+            var weighted = 0.0;
+            for (var m = j; m < analyses.Length; m++)
+            {
+                if (SenseFusion.SameSlot(analyses[m], analyses[j]))
+                {
+                    probabilities[m] = IsPast(analyses[m]) ? odds : 1.0;
+                    weighted += probabilities[m];
+                }
+            }
+
+            for (var m = j; m < analyses.Length; m++)
+            {
+                if (SenseFusion.SameSlot(analyses[m], analyses[j]))
+                {
+                    probabilities[m] *= mass / weighted;
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    ///     Tells whether an earlier analysis has the lemma and the part of speech of an analysis.
+    /// </summary>
+    /// <param name="analyses">The analyses of the word.</param>
+    /// <param name="j">The index of the analysis.</param>
+    /// <returns>True when the slot of the analysis was already opened by an analysis before it.</returns>
+    private static bool IsLaterInSlot(ImmutableArray<WordDetails> analyses, int j)
+    {
+        for (var k = 0; k < j; k++)
+        {
+            if (SenseFusion.SameSlot(analyses[k], analyses[j]))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /// <summary>
@@ -667,6 +825,7 @@ internal sealed class BasicClassifier
         TaggerToken[] tokens,
         double[] posteriors,
         FeatureRef[] features,
+        FeatureRef[] tenseFeatures,
         ClassifyResult[] results)
     {
         for (var i = 0; i < length; i++)
@@ -706,7 +865,7 @@ internal sealed class BasicClassifier
             {
                 var featureCount = CueModel.Extract(lower.AsSpan(start, length), i, features);
                 var around = new Surroundings(i > 0 && IsNounDeterminer(lower[start + i - 1]), written);
-                results[start + i] = Choose(tables, word, key, analyses, posteriors.AsSpan(i * PosTag.Count, PosTag.Count), features.AsSpan(0, featureCount), around);
+                results[start + i] = Choose(tables, word, key, analyses, posteriors.AsSpan(i * PosTag.Count, PosTag.Count), features.AsSpan(0, featureCount), around, lower.AsSpan(start, length), i, tenseFeatures);
             }
         }
     }

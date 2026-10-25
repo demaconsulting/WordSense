@@ -110,18 +110,32 @@ internal static class TaggerEvaluator
 
     /// <summary>
     ///     Reads a gold file: one token per line with the sentence id, the form and the tag letter (see <see cref="PosTag.Letters"/>),
-    ///     tab-separated; empty lines and lines that start with <c>#</c> are skipped.
+    ///     tab-separated, optionally followed by the lemma, the treebank tag and the features of the token (the three extra
+    ///     columns are all present or all absent; an empty value is written <c>_</c>); empty lines and lines that start
+    ///     with <c>#</c> are skipped.
     /// </summary>
     /// <param name="path">The file.</param>
-    /// <returns>The sentences in file order.</returns>
+    /// <returns>The sentences in file order; a sentence carries the lemma, tag and features of its tokens only when the file has the extra columns.</returns>
     /// <exception cref="InvalidDataException">Thrown when a line is malformed.</exception>
     public static List<TaggedSentence> ReadGold(string path)
     {
         var sentences = new List<TaggedSentence>();
         var words = new List<string>();
         var tags = new List<int>();
+        var gold = new List<GoldToken>();
+        var withGold = false;
         string? current = null;
+        int? columnCount = null;
         var number = 0;
+
+        void Flush()
+        {
+            sentences.Add(new TaggedSentence([.. words], [.. tags], withGold ? [.. gold] : null));
+            words.Clear();
+            tags.Clear();
+            gold.Clear();
+        }
+
         foreach (var raw in File.ReadLines(path, new UTF8Encoding(false)))
         {
             number++;
@@ -132,31 +146,39 @@ internal static class TaggerEvaluator
             }
 
             var columns = line.Split('\t');
-            var tag = columns.Length == 3 && columns[2].Length == 1 ? PosTag.Letters.IndexOf(columns[2][0], StringComparison.Ordinal) : -1;
+            var tag = columns.Length is 3 or 6 && columns[2].Length == 1 ? PosTag.Letters.IndexOf(columns[2][0], StringComparison.Ordinal) : -1;
             if (tag is < 0 or >= PosTag.Count)
             {
-                throw new InvalidDataException($"{Path.GetFileName(path)}:{number.ToString(CultureInfo.InvariantCulture)}: expected 'sentence-id<TAB>form<TAB>tag letter'.");
+                throw new InvalidDataException($"{Path.GetFileName(path)}:{number.ToString(CultureInfo.InvariantCulture)}: expected 'sentence-id<TAB>form<TAB>tag letter' with optionally 'lemma<TAB>xpos<TAB>features'.");
             }
 
+            if (columnCount is not null && columnCount != columns.Length)
+            {
+                throw new InvalidDataException($"{Path.GetFileName(path)}:{number.ToString(CultureInfo.InvariantCulture)}: the file mixes lines with and without the lemma, tag and features columns.");
+            }
+
+            columnCount = columns.Length;
             if (current is not null && !string.Equals(current, columns[0], StringComparison.Ordinal))
             {
-                sentences.Add(new TaggedSentence([.. words], [.. tags]));
-                words.Clear();
-                tags.Clear();
+                Flush();
             }
 
             current = columns[0];
             words.Add(columns[1]);
             tags.Add(tag);
+            withGold = columns.Length == 6;
+            gold.Add(withGold ? new GoldToken(Blank(columns[3]), Blank(columns[4]), Blank(columns[5])) : default);
         }
 
         if (words.Count > 0)
         {
-            sentences.Add(new TaggedSentence([.. words], [.. tags]));
+            Flush();
         }
 
         return sentences;
     }
+
+    private static string Blank(string value) => value == "_" ? string.Empty : value;
 
     /// <summary>
     ///     Renders the scores as a Markdown table.

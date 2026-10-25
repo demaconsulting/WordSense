@@ -24,8 +24,9 @@ internal static class BasicTuner
     /// <param name="corpus">The corpus directory (the open corpus with its tag counts, and the fine-sense anchors).</param>
     /// <param name="progress">Receives progress messages.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
+    /// <param name="treebankDev">The gold file of the development file of the treebank (<c>ud_dev.tsv</c>) that the tense weight is tuned with besides the open corpus development split, or null; a missing file is left out.</param>
     /// <returns>The rendered Markdown table.</returns>
-    public static async Task<string> RunAsync(string corpus, TextWriter progress, CancellationToken cancellationToken)
+    public static async Task<string> RunAsync(string corpus, TextWriter progress, CancellationToken cancellationToken, string? treebankDev = null)
     {
         ArgumentNullException.ThrowIfNull(progress);
         var counts = TaggerCounts.Read(OpenCorpus.CountsDirectory(corpus));
@@ -61,6 +62,62 @@ internal static class BasicTuner
                 .Append(" | ").Append(Percent(anchorCorrect, anchorRows))
                 .Append(" | ").Append((blob.Length / 1024.0).ToString("N0", CultureInfo.InvariantCulture)).Append(" KiB |\n");
             progress.WriteLine($"{label} done.");
+        }
+
+        return text.ToString() + await TuneTenseAsync(corpus, counts, lexicon, dev, treebankDev, progress, cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    ///     Scores the weight of the tense model on the development sets: the model of the shipped configuration (all anchors
+    ///     and form choosers, the verbs of the open corpus training split) with each weight of the grid.
+    /// </summary>
+    /// <param name="corpus">The corpus directory.</param>
+    /// <param name="counts">The tag counts.</param>
+    /// <param name="lexicon">The lexicon.</param>
+    /// <param name="dev">The development split of the representative open corpus.</param>
+    /// <param name="treebankDev">The gold file of the development file of the treebank, or null; a file that does not exist is left out.</param>
+    /// <param name="progress">Receives progress messages.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>The rendered Markdown table of the weights; only development sets are read, never a test set.</returns>
+    private static async Task<string> TuneTenseAsync(
+        string corpus,
+        TaggerCounts counts,
+        Func<string, ImmutableArray<WordDetails>> lexicon,
+        List<TaggedSentence> dev,
+        string? treebankDev,
+        TextWriter progress,
+        CancellationToken cancellationToken)
+    {
+        var sets = new List<(string Name, IReadOnlyList<TaggedSentence> Sentences)> { (TenseEvaluator.OpenDevName, dev) };
+        if (treebankDev is not null && File.Exists(treebankDev) && TaggerEvaluator.ReadGold(treebankDev) is { Count: > 0 } gold && gold[0].Gold is not null)
+        {
+            sets.Add((TenseEvaluator.TreebankDevName, gold));
+        }
+
+        var anchors = Corpus.ReadDirectory(Path.Join(corpus, "anchors"));
+        var choosers = ChooserCorpus.ReadDirectory(Path.Join(corpus, "choosers", "anchors"));
+        var verbs = OpenCorpus.ReadSplit(corpus, OpenCorpus.Representative, "train").Select(OpenCorpus.ToTagged).ToList();
+        var full = BasicTrainer.Train(counts, lexicon, anchors, choosers, BasicHyperparameters.Default, verbs);
+        var text = new StringBuilder();
+        text.Append("\n| Tense weight | Set | Same-spelling verbs | Accuracy | Read family |\n");
+        text.Append("| ---: | --- | ---: | ---: | ---: |\n");
+        foreach (var weight in BasicHyperparameters.TenseWeightGrid)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            var data = full with { Hyperparameters = full.Hyperparameters with { TenseWeight = weight } };
+            var tables = BasicTables.Load(BasicTablesWriter.Write(data, WordLexicon.Current.InventoryHash, CompressionLevel.Fastest), WordLexicon.Current);
+            foreach (var (name, sentences) in sets)
+            {
+                var scores = await TenseEvaluator.ScoreBasicAsync(tables, sentences, name).ConfigureAwait(false);
+                var all = scores.First(s => s.Group == TenseEvaluator.AllGroup);
+                var read = scores.FirstOrDefault(s => s.Group == TenseEvaluator.ReadGroup);
+                text.Append("| ").Append(weight.ToString("0.00", CultureInfo.InvariantCulture)).Append(" | ").Append(name)
+                    .Append(" | ").Append(all.Tokens.ToString(CultureInfo.InvariantCulture))
+                    .Append(" | ").Append(Percent(all.Correct, all.Tokens))
+                    .Append(" | ").Append(read is null ? "n/a" : $"{Percent(read.Correct, read.Tokens)} of {read.Tokens.ToString(CultureInfo.InvariantCulture)}").Append(" |\n");
+            }
+
+            progress.WriteLine($"tense weight {weight.ToString("0.00", CultureInfo.InvariantCulture)} done.");
         }
 
         return text.ToString();

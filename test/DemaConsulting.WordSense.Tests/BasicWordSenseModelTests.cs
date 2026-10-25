@@ -39,6 +39,39 @@ public class BasicWordSenseModelTests
     }
 
     /// <summary>
+    ///     The embedded table tells the tense of a verb whose past and non-past share a spelling from its context, for the
+    ///     textbook <c>read</c> and for verbs the table has no form column for: the selected analysis is a past tense or
+    ///     participle after a form of <c>have</c> or a time word of the past, and not after a modal, <c>to</c> or an imperative.
+    /// </summary>
+    /// <param name="sentence">The sentence, words separated by spaces.</param>
+    /// <param name="index">The index of the verb.</param>
+    /// <param name="past">Whether the verb is a past tense or a participle in the sentence.</param>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Theory]
+    [InlineData("I will read that tomorrow .", 2, false)]
+    [InlineData("I have read that already .", 2, true)]
+    [InlineData("Please put the books on the shelf .", 1, false)]
+    [InlineData("She had put the keys in her bag before she left .", 2, true)]
+    [InlineData("They will cut the budget next year .", 2, false)]
+    [InlineData("He cut the cake into six equal pieces .", 1, true)]
+    [InlineData("We usually set the table before dinner .", 2, false)]
+    [InlineData("The workers had already set up the stage .", 4, true)]
+    public async Task BasicWordSenseModel_ClassifyAsync_SameSpellingVerb_TenseFollowsTheContext(string sentence, int index, bool past)
+    {
+        // Arrange
+        using var model = new BasicWordSenseModel();
+
+        // Act
+        var results = await model.ClassifyAsync(sentence.Split(' '), TestContext.Current.CancellationToken);
+
+        // Assert
+        var details = Assert.IsType<WordDetails>(results[index].Details);
+        Assert.Equal(PartOfSpeech.Verb, details.PartOfSpeech);
+        Assert.Equal(past, BasicClassifier.IsPast(details));
+        Assert.Equal(1.0, results[index].Analyses.Sum(a => a.Probability), 9);
+    }
+
+    /// <summary>
     ///     The model classifies without any preparation call.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>

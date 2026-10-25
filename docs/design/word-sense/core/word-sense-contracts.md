@@ -169,8 +169,17 @@ whether an id is null: a result at the `PartOfSpeech` level is a valid answer th
   primary model scored senses for the word, else the result of the fallback model. The primary model scored senses when
   its level is `Group` or `Sense`, or when the analysis of its `Analyses` that equals the selected `Details` has a
   non-empty `Senses`; any other result (the word is unknown to the primary model, or it only chose between analyses)
-  is replaced by the fallback result. The result of a word is always the complete result of one model, never a
-  mixture (its analyses, selected analysis, level, confidence and ids belong together).
+  is replaced by the fallback result. The result of a word is the result of one model, never a mixture of the two
+  (its analyses, selected analysis, level, confidence and ids belong together), with one refinement (`Refine`): for a
+  slot of the primary result (lemma and part of speech) with two or more analyses whose probabilities are all equal
+  within 1e-9 (the encoder has no evidence for the split of a slot, which shares its senses, so it gives the feature
+  variants the same probability), the composite looks up the same analyses (equal `WordDetails`) in the fallback result
+  and, when the fallback lists all of them and does not give them the same probability, gives them the relative
+  proportions of the fallback with the total of the slot as the primary gave it (`p' = mass * f / sum f`). It sorts the
+  slot again (largest first, a tie keeping the primary order) and takes the first analysis of the first slot as the
+  selected analysis when that analysis changed. The level, confidence, group id and sense id, the senses of every analysis
+  and the probability of every slot are untouched by construction; a slot that the primary result split unequally (a
+  trained form chooser) is never touched, nor is a slot the fallback does not list or does not separate.
 - `Dispose()`: idempotent and thread-safe (an atomic flag); disposes the primary model and then, even when that throws,
   the fallback model, each once.
 

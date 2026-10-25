@@ -28,7 +28,13 @@ description (the base class validates the sequence length, 8 to 512) and the Bas
 ensuring is optional (`ClassifyAsync` ensures lazily) and verifies or downloads the encoder files (the Basic model
 needs none and is skipped by the composite), classification answers each word with the result of
 the encoder model when it scored senses and otherwise with the complete result of the Basic model, and disposal
-disposes both models once. A caller that holds a `MiniLMWordSenseModel` calls `await model.EnsureModelAsync();`
+disposes both models once. When the encoder scored senses, the composite also re-splits the variants of a slot that the
+encoder cannot tell apart: the encoder gives the analyses of one lemma and part of speech (the past and the infinitive
+of `put`, the past and the present of `read`) the same probability, because they share their senses, so the composite
+gives those tied variants the relative proportions that the Basic model gives them from the context (its shared tense
+model), with the probability of the slot, the level, the confidence, the group, the sense and the senses of the encoder
+result unchanged, and the selected analysis is the best variant of the first slot (see the `FallbackWordSenseModel`
+unit document). A caller that holds a `MiniLMWordSenseModel` calls `await model.EnsureModelAsync();`
 directly; a caller that holds only an `IWordSenseModel` tests for `IDownloadableWordSenseModel` first.
 
 #### Error Handling

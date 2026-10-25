@@ -20,7 +20,7 @@ the stored biases, the thresholds and the fit-cache key, and the options); `Real
 `RealCalibratorTests.cs` cover the split of the real held-out sentences by
 document and the real-text calibration of the thresholds on one-dimensional synthetic lemmas; `ChooserCorpusTests.cs`
 and `ChooserTrainingTests.cs` cover the chooser rows and the training of the form choosers; `TiersTests.cs`,
-`SenseEvaluatorTests.cs`, `RunningTextEvaluatorTests.cs`, `ChallengeSetFloorTests.cs`, `SuiteFileTests.cs`,
+`SenseEvaluatorTests.cs`, `RunningTextEvaluatorTests.cs`, `TenseEvaluatorTests.cs`, `ChallengeSetFloorTests.cs`, `SuiteFileTests.cs`,
 `LeakageCheckTests.cs` and `ModelTableTests.cs` cover the quota report, the two independent evaluations, the suite
 reader and its grading, the leakage check and the model table file with small synthetic corpora, a stub model and
 cached-file fixtures; `EvaluatorTests.cs` covers the per-level evaluation with a stub model. Commands that need a real
@@ -385,6 +385,38 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Command** (`WordSenseBuilder_Program_EvaluateSenses_WithoutCache_ReportsUsage`): without the archive in the cache
   and without `--download` the command reports how to get it and exits with code 1.
 
+#### evaluate-running (tense)
+
+- **Gold class** (`WordSenseBuilder_TenseEvaluator_IsGoldPast_UsesTheTreebankTagThenTheFeatures`, theory): `VBD` and
+  `VBN` are
+  past, `VB`, `VBP` and `VBZ` are not, and without a treebank tag `Tense=Past` decides.
+- **Groups** (`WordSenseBuilder_TenseEvaluator_GroupsOf_ClassifiesTheSurfaceForm`, theory): `put`, `Put` and `come` are
+  same-spelling verbs of one lemma, `read` and `reread` are also of the read family, `spread` is not of the read family,
+  `found` (the past of `find` and the infinitive of `found`) is decided between two lemmas, and `walk`, `walked`, an unknown
+  word and punctuation are not scored.
+- **Confusion** (`WordSenseBuilder_TenseEvaluator_RunAsync_ScoresTheConfusionOfPastAgainstNonPast`): with a model that
+  reads every `put` as past and does not answer `cut`, a past `put` is right, an imperative `put` is a non-past token read
+  as past, an imperative and a past `cut` are not answered (the past one keeps its gold class, so the gold classes tie at
+  two and two and the majority baseline is two), a gold noun `put` and a `walk` are not scored; the count, the correct
+  tokens, the majority baseline and the gold past tokens follow.
+- **Pooling and skipped sets** (`WordSenseBuilder_TenseEvaluator_RunAsync_PoolsTheTreebankFilesAndSkipsGoldWithoutFeatures`):
+  the three treebank files give a pooled row per group that adds their counts, and a set whose gold has no features is
+  skipped.
+- **Sets** (`WordSenseBuilder_TenseEvaluator_Load_ReadsTheSetsAndNotesWhatIsMissing`): the open corpus test and development
+  splits and the treebank files next to the gold file are read; a file with three columns or a file that does not exist
+  is
+  left out with a note.
+- **Training file for pooling**
+  (`WordSenseBuilder_TenseEvaluator_Load_IncludesTheAdjacentTreebankTrainingFileForPooling`): with `ud_test.tsv`,
+  `ud_dev.tsv` and `ud_train.tsv` next to each other, `Load` returns the training file as the set `UD-EWT train` (two
+  sentences), without a note, and a run over the three treebank sets gives a pooled row of four tokens (one from the test
+  file, one from the development file and two from the training file).
+- **Report** (`WordSenseBuilder_TenseEvaluator_Render_FormatsRowsAndNotes`): one row per model, set and group with the count,
+  the accuracy, the majority baseline and the confusion.
+- **Command** (`WordSenseBuilder_Program_EvaluateRunning_Basic_ReportsTheTenseAndHonorsTheReportOption`): the command
+  prints the part-of-speech report and the tense report of Basic, only the tense report with `--report tense` (without
+  reading the part-of-speech inputs: a split that does not exist does not stop it), and refuses another value.
+
 #### evaluate-running
 
 - **Test file only** (`WordSenseBuilder_RunningText_DefaultGold_IsTheTestFileAndNotTheDevelopmentFile`): the default
@@ -426,7 +458,7 @@ All scenarios below pass on every platform and target framework of the CI matrix
   senses asks for the analysis only.
 - **Regressions** (`WordSenseBuilder_Suite_Regressions_ListRowsBelowTheirExpectation_AndExpectationsRoundTrip`): the
   rows below their expectation are listed, and the expectation file written from grades reads back.
-- **Committed suite** (`WordSenseBuilder_Suite_Committed_ReadsWithAnExpectationForEveryRow`): the 348 rows read and
+- **Committed suite** (`WordSenseBuilder_Suite_Committed_ReadsWithAnExpectationForEveryRow`): the 364 rows read and
   every model has an expectation for every row.
 - The expected passes of the committed suite are asserted by `BasicSuite_ExpectedPasses_StillPass`,
   `MiniLMSuite_ExpectedPasses_StillPass` and `BertBaseCasedSuite_ExpectedPasses_StillPass` in the test projects of the
@@ -482,6 +514,21 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `WordSenseBuilder_BasicTablesWriter_Write_ShortHash_Throws`): equal inputs give identical table bytes that
   `BasicTables` reads back, a changed hyper-parameter changes the header, and a short inventory hash is rejected.
 - **Summary** (`WordSenseBuilder_BasicModelData_Summary_NamesSizes`): the summary names the sizes of the trained data.
+- **Tense classes** (`WordSenseBuilder_BasicTrainer_TenseClassOf_SeparatesPastFromTheFormsThatShareItsSpelling`): a verb
+  with `Tense=Past` is a past example; the infinitive, the imperative and the present of every person but the third
+  singular are non-past examples; the third singular, the gerund, the present participle and a token without features are
+  left out.
+- **Tense table** (`WordSenseBuilder_BasicTrainer_TrainTense_LearnsTheContextOfPastAndNonPast`,
+  `WordSenseBuilder_BasicTrainer_TrainTense_NeedsBothClassesAndIsDeterministic`,
+  `WordSenseBuilder_BasicTrainer_Train_WithVerbs_WritesTheTenseTableAndWeight`,
+  `WordSenseBuilder_BasicTablesWriter_Write_WithTenseTable_IsDeterministicAndCurrentFormat`): from sentences in which the
+  context `had X` is past and `to X` non-past for six different verbs, the weight of the left neighbor `had` is positive
+  and that of `to` negative, the prior is the log odds of the seven past and six non-past verbs, the third-person
+  context is not learned, sentences without gold and non-verbs are skipped; there is no table without both classes or
+  when no feature reaches the minimum; equal inputs give equal tables and equal bytes with the magic `WSB4`; a model
+  trained with verbs writes the table and the weight, which `BasicTables` reads back, and a model without verbs has none.
+- **Corpus features** (`WordSenseBuilder_OpenCorpus_ToTagged_CarriesTheLemmaAndFeaturesOfEveryToken`): the features and
+  lemma of every token are read and a joined contraction has those of its first part.
 - **Hyper-parameters** (`WordSenseBuilder_BasicHyperparameters_Default_IsConsistent`): the defaults carry the values
   the runtime reads and the tuning grid includes them.
 - **Tuning** (`WordSenseBuilder_BasicTuner_SplitAnchors_IsDeterministicAndDisjoint`,
@@ -495,9 +542,17 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `WordSenseBuilder_Program_TrainBasic_WithoutCounts_ReportsError`): a tiny corpus gives a table that `BasicTables`
   loads and that `evaluate-tagger` scores; without the count files the command exits with code 1 and names
   `open-counts`.
-- **Tuning reads no evaluation data**: `tune-basic` uses only the development split of the representative part and the
-  anchors, and writes no file; this is a property of the implementation that review verifies, because the command needs
-  the real corpus.
+- **Tuning reads no evaluation data**
+  (`WordSenseBuilder_Program_TuneBasic_ScoresOnlyTheDevelopmentInputs`): in a temporary corpus with valid training and
+  development splits of the open corpus (a same-spelling verb `put` among them), a development treebank file, and test
+  splits (representative and targeted) and treebank test and training files that fail when they are read (a malformed
+  line), `tune-basic --gold` succeeds, so none of them was read, and its tense table has rows for the weight 1.00 on
+  `open corpus dev` and `UD-EWT dev` and none for `UD-EWT test`, `UD-EWT train` or `open corpus test`.
+- **Training reads only the training split**
+  (`WordSenseBuilder_Program_TrainBasic_ReadsOnlyTheTrainSplit`): in a temporary corpus whose training split is valid and
+  whose development and test splits (representative and targeted) fail when they are read, `open-counts` and
+  `train-basic` succeed, so neither read them, and the table that `train-basic` wrote has a tense table trained from the
+  verbs of the training split (the output names it).
 
 #### evaluate-tagger
 
@@ -505,8 +560,12 @@ All scenarios below pass on every platform and target framework of the CI matrix
   classifier answers it and its gold tag is a word class; punctuation and other gold tags are excluded, tokens that are
   not answered are counted apart, and the ambiguous tokens are counted on their own.
 - **Gold file** (`WordSenseBuilder_TaggerEvaluator_ReadGold_GroupsTokensBySentence`,
-  `WordSenseBuilder_TaggerEvaluator_ReadGold_MalformedLine_Throws`): the tokens are grouped by sentence id and a line
-  that is not three columns with a tag letter is rejected.
+  `WordSenseBuilder_TaggerEvaluator_ReadGold_SixColumns_CarriesLemmaTagAndFeatures`,
+  `WordSenseBuilder_TaggerEvaluator_ReadGold_MalformedLine_Throws`): the tokens are grouped by sentence id, a line
+  that is not three columns (or six: with the lemma, the treebank tag and the features, `_` for none) with a tag letter
+  is
+  rejected, a six-column file gives the tokens their lemma, tag and features, a three-column file gives none, and a file
+  that mixes the two is rejected.
 - **Table** (`WordSenseBuilder_TaggerEvaluator_Render_FormatsRows`): one row per set with the accuracy, and n/a for an
   empty set.
 - **Command** (`WordSenseBuilder_Program_TrainBasicAndEvaluateTagger_TinyCorpus_WriteAndScoreTable`): the command prints

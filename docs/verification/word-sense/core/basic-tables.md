@@ -30,6 +30,20 @@ All scenarios below pass on every platform and target framework of the CI matrix
   blob, cut at any byte and so at every section boundary, throws `InvalidDataException`.
 - **Wrong version or tag count** (`BasicTables_Load_WrongVersionOrTagCount_Throws`): another format version in the
   magic number, or a tag count that differs from the tag set, throws `InvalidDataException`.
+- **Retired format WSB3** (`BasicTables_Load_PreviousFormatWsb3_ThrowsUnknownFormat`): a current table whose magic is set
+  back to the previous format `WSB3`, which has no tense weight and no tense table, throws `InvalidDataException`
+  whose message says unknown format.
+- **Tense section read back** (`BasicTables_Load_TenseTable_ReadsWeightPriorHashesAndWeights`): the weight of the tense
+  model from the header (0.75) and the prior, the ascending hashes and the weights of the tense table read back.
+- **No tense section** (`BasicTables_Load_WithoutTenseSection_HasNoTenseTableAndTheDefaultWeight`): a table without the
+  section has no tense table (null) and the default weight 1.
+- **Malformed tense section** (`BasicTables_Load_InvalidTenseSection_Throws`): a section with an unknown flag, without a
+  feature, with unordered hashes or with fewer weights than hashes throws `InvalidDataException`.
+- **Truncated tense section** (`BasicTables_Load_TenseTableTruncatedAtEveryLength_Throws`): a table with a tense section
+  cut at any byte throws `InvalidDataException`.
+- **Tense table is read-only** (`TenseCue_Constructor_DefaultOrUnequalArrays_Throws`, `BasicTables_Properties_ExposeNoArrays`):
+  a `TenseCue` refuses default (uninitialized) arrays and arrays of different lengths with `ArgumentException`, and
+  no public property of `TenseCue` is an array.
 - **Trailing bytes** (`BasicTables_Load_TrailingBytes_Throws`): extra bytes at the end of the decompressed content throw
   `InvalidDataException`.
 - **Bytes after the compressed stream** (`BasicTables_Load_BytesAfterCompressedStream_Throws`): a complete Brotli
@@ -62,10 +76,12 @@ All scenarios below pass on every platform and target framework of the CI matrix
   recompressed), and cut short, throws `ModelIntegrityException` that carries the original `InvalidDataException`; the
   unaltered table loads first in the same test.
 - **Statistics are read-only** (`BasicTables_Properties_ExposeNoArrays`, `BasicTables_Load_Views_AreIndependentOfTheBlob`,
-  `BasicTables_Constructors_DefaultArray_Throws`): no public property of `BasicTables`, `WordEntry` or `LemmaCue` is an
+  `BasicTables_Constructors_DefaultArray_Throws`): no public property of `BasicTables`, `WordEntry`, `LemmaCue` or
+  `TenseCue` is an
   array (reflection), the views of a loaded table do not change when the source blob is overwritten afterwards and have
   the sizes of the tag set, and a word entry or cue table refuses a default (uninitialized) immutable array.
 - **Shipped table resolves** (`BasicTables_Default_ShippedTable_ResolvesEveryCueClass`): every cue analysis of the
   shipped table resolves to an analysis of the embedded word image.
-- **Feature hash** (`FeatureRef_Hash_PrefixAndDeterminism`): the hash of an immediate-neighbor feature equals the hash
-  of the window token that spells its prefix, and the hash is stable.
+- **Feature hash** (`FeatureRef_Hash_PrefixAndDeterminism`, `FeatureRef_Hash_TenseKindsHaveOwnPrefixes`): the hash of an
+  immediate-neighbor feature equals the hash of the window token that spells its prefix, the hash is stable, and the tense
+  kinds have the prefixes `LW:`, `RW:` and `NA:` while the cue kinds keep `L1:` and `R1:` (so the cue tables stay valid).
