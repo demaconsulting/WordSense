@@ -212,6 +212,75 @@ sections:
                   - WordLexicon_SensesOf_NullLemma_Throws
                   - WordLexicon_SensesOf_SingleSenseLemma_ListsOneSense
 
+              - id: WordSense-Core-WordLexicon-SenseFrequency
+                title: >-
+                  WordLexicon shall carry in its image the WordNet 3.0 tag count of every sense of the catalog.
+                tags: [unit]
+                justification: |
+                  The usage prior that ranks the senses of the lemmas no model scores needs the counts at run time, and
+                  the core package has no files.
+                tests:
+                  - WordLexicon_Image_SenseFrequency_HasACountForEverySense
+
+              - id: WordSense-Core-WordLexicon-SenseFrequency-ProjectSense
+                title: >-
+                  WordLexicon shall give a project sense, which has no sense key, the tag count 0.
+                tags: [unit]
+                justification: |
+                  A project sense has no WordNet 3.0 sense key to count by.
+                tests:
+                  - WordLexicon_Image_UsageOf_ProjectSense_HasTagCountZero
+
+              - id: WordSense-Core-WordLexicon-SenseFrequency-Access
+                title: >-
+                  WordLexicon shall list the senses of a lemma and part of speech with their tag counts in inventory
+                  order.
+                tags: [unit]
+                justification: |
+                  The usage prior ranks the senses of one lemma and part of speech and breaks ties by the inventory
+                  order.
+                tests:
+                  - WordLexicon_Image_UsageOf_ListsTheSensesInInventoryOrderWithTheirTagCounts
+
+              - id: WordSense-Core-WordLexicon-SenseFrequency-Missing
+                title: >-
+                  WordLexicon shall reject an image whose sense frequency section is missing.
+                tags: [unit]
+                justification: |
+                  A damaged image must fail loudly instead of ranking the senses by wrong counts.
+                tests:
+                  - WordLexicon_Image_SenseFrequencySectionMissing_IsRejected
+
+              - id: WordSense-Core-WordLexicon-SenseFrequency-Length
+                title: >-
+                  WordLexicon shall reject an image whose sense frequency section does not have one value for each
+                  sense.
+                tags: [unit]
+                justification: |
+                  A section of the wrong length would give a sense the count of another sense.
+                tests:
+                  - WordLexicon_Image_SenseFrequencyWrongLength_IsRejected
+
+              - id: WordSense-Core-WordLexicon-SenseFrequency-Keyless
+                title: >-
+                  WordLexicon shall reject an image whose sense frequency section gives a tag count to a sense without a
+                  sense key.
+                tags: [unit]
+                justification: |
+                  A project sense has no sense key and so no WordNet 3.0 count; a count on it is damaged data.
+                tests:
+                  - WordLexicon_Image_TagCountOnASenseWithoutAKey_IsRejected
+
+              - id: WordSense-Core-WordLexicon-SenseFrequency-InventoryHash
+                title: >-
+                  The inventory hash of the image shall not cover the sense frequency section.
+                tags: [unit]
+                justification: |
+                  The counts say how often the senses are used, not which senses exist; keeping them out of the identity
+                  of the inventory means that adding or correcting the counts needs no training of the models.
+                tests:
+                  - WordLexicon_Image_TagCounts_AreNotPartOfTheInventoryHash
+
               - id: WordSense-Core-WordLexicon-SenseLookup
                 title: >-
                   WordLexicon shall find a sense by its readable id and by its OEWN sense key, and shall report

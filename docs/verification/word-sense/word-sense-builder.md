@@ -92,17 +92,25 @@ All scenarios below pass on every platform and target framework of the CI matrix
   analysis; the file reader rejects malformed lines and repeats, and the letters cover all ten parts of speech.
 - **Spellings and lookup** (`Image_Spellings_AreSortedByUtf8Bytes`, `Image_Find_ReturnsOwnIndex`): the spelling index is
   sorted by the UTF-8 bytes and finds each spelling at its own index.
-- **Image format version 4** (`Image_Version4_HasNoRespellingSections`, `Image_PreviousFormatVersion_IsRejected`,
+- **Image format version 5** (`Image_Version5_HasSenseFrequencyAndNoRespellingSections`,
+  `Image_PreviousFormatVersion_IsRejected`,
   `Image_Corruption_IsRejected`, `DataSchema_Load_CommittedSchema_DeclaresTables`): the committed image has the version
-  4 in its header, no section with the id 24, 25 or 26 and a meta section of eight values; the reader rejects the
-  previous version 3 and any other version; the committed schema does not declare `sense_respelling`.
+  5 in its header, no section with the id 24, 25 or 26, a meta section of eight values and a sense frequency section
+  (id 38) of one 16-bit value for each sense; the reader rejects the
+  previous version 4 and any other version; the committed schema does not declare `sense_respelling`.
+- **Sense frequency compiled** (`ImageCompiler_Build_SenseFrequency_IsTheTagCountOfEachSenseKey`,
+  `ImageCompiler_Build_SenseFrequency_IsNotPartOfTheInventoryHash`,
+  `ImageCompiler_Build_SenseFrequency_CountAboveSixteenBits_Fails`): on the small data folder each sense has the count of
+  its key in `sense_frequency`, 0 for a project sense and for a key that the table does not list; the same data with
+  and without the table gives the same inventory hash but another data hash and other counts; a count of 70,000 fails the
+  compilation with a message that names the count and the key.
 - **Damaged images are rejected** (`Image_Corruption_IsRejected`, `Image_PreviousFormatVersion_IsRejected`,
   `Image_TruncatedAtEverySectionBoundary_IsRejected`,
   `Image_WrongHash_IsRejectedByContentHashOnly`, `Image_CountMismatch_IsRejected`,
   `Image_SenseWithUnknownGroup_IsRejected`, `Image_GroupOfOneSenseOrAllSenses_IsRejected`,
   `Image_GroupIdWithoutMarker_IsRejected`): the reader rejects a
-  tampered file, an image of the previous format version 3, a file cut off at any section boundary (the 112-byte header
-  of version 4, the directory of 20-byte
+  tampered file, an image of the previous format version 4, a file cut off at any section boundary (the 112-byte header
+  of version 5, the directory of 20-byte
   entries and each section) and a section count that does not match; a wrong hash is detected by the content hash
   alone; a sense that names an unknown group, a group id without the `#group:` marker, a group with fewer than two
   members, a group of all the senses of its
@@ -376,14 +384,74 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Tag-count baseline** (`WordSenseBuilder_SenseEval_Run_TagCountBaseline_UsesTheHighestCountAndInventoryOrderOnTies`):
   the baseline chooses the sense with the highest tag count, the first in inventory order on a tie or without counts.
 - **All-words report** (`WordSenseBuilder_SenseEval_Render_AllWords_ShowsTrainedShareAndCircularityCaveat`): the report
-  has the trained, untrained and all rows per model, the share of the words that are of a trained lemma, and says that
+  has the trained, untrained and all rows per model, the share of the words that are of a trained lemma, says that
   the tag-count baseline is
-  optimistic because the counts include SemCor.
+  optimistic because the counts include SemCor, and says that the fine top-1 of the models on the untrained words is
+  circular on SemCor too (their usage prior is made of the same counts) and that the independent measurement is
+  `evaluate-allwords`.
 - **Pinned checksum** (`WordSenseBuilder_SenseEval_Download_WrongHash_IsRejected`,
   `WordSenseBuilder_SenseEval_ReadArchive_VerifiesTheHashAndReadsTheTagFiles`): a downloaded or cached archive with
   another SHA-256 is rejected and leaves no file; the tag files of a gzip-compressed tar are read.
 - **Command** (`WordSenseBuilder_Program_EvaluateSenses_WithoutCache_ReportsUsage`): without the archive in the cache
   and without `--download` the command reports how to get it and exits with code 1.
+
+#### evaluate-allwords, allwords-sample and allwords-merge
+
+The tests are in `test/WordSense.Builder.Tests/AllWordsTests.cs` and use the committed corpus, the committed catalog
+and, for the measurement, a stub model.
+
+- **Committed gold set** (`WordSenseBuilder_AllWords_CommittedGold_TokensAreOfUntrainedPolysemousLemmasWithTheirSense`,
+  `..._CommittedGold_HasAtMostThreeTokensPerLemmaAndOnePerSentence`, `..._CommittedGold_TokensComeFromTheirOwnSplit`,
+  `..._CommittedGold_HalvesShareNoDocument`): both halves have at least 300 tokens; every token names a sense of its lemma
+  and part of speech and a word that is at its index, its lemma is not trained and its part of speech has two or more
+  senses; no lemma has more than three tokens and no sentence is used twice; the development tokens are sentences of the
+  development split and the test tokens of the test split of the representative open corpus; and the documents of the
+  two halves are disjoint.
+- **Reader** (`WordSenseBuilder_AllWords_Gold_RoundTrips`, `..._Gold_WrongNumberOfColumns_IsRejected`,
+  `..._Gold_WordNotAtItsIndex_IsRejected`, `..._Gold_IndexOutsideTheSentence_IsRejected` (theory: `4`, past the end, and
+  `-1`, negative), `..._Gold_AgreementNotHighOrLow_IsRejected`, `..._Gold_SenseOfAnotherLemma_IsRejected`): a file that
+  was rendered is read back unchanged, and a missing file reads as empty; a line with another number of columns, a word
+  that is not at its index, an index past the end of the sentence or below 0, an agreement other than high and low, or a
+  sense that is not a sense of the lemma is rejected with an `InvalidDataException` that names the file and the line (a
+  negative index is a data error and not an index error).
+- **Draw** (`WordSenseBuilder_AllWords_Draw_IsReproducibleFromTheSeed`, `..._Draw_TokensAreEligible`,
+  `..._Draw_RespectsTheLimitsOfLemmaAndSentence`): the same seed gives the same tokens and another seed other ones; each
+  token is a noun, verb, adjective or adverb whose lemma is not trained, has two or more senses and whose form the
+  lexicon lists with that lemma and part of speech; the limits per lemma and per sentence hold, and the tokens are
+  numbered in the order of their sentences.
+- **Batches** (`WordSenseBuilder_AllWords_Batches_ListEverySenseInTheOrderOfTheIds`, `..._Batches_HaveNoTagCount`,
+  `..._Batches_MarkTheTargetWordAndSeparateTheSplits`): the batch of a group has every sense of the lemma and part of
+  speech in the order of the ids, each with only `id`, `pos` and `gloss` (no tag count), and its sentences have the
+  target in braces; one batch is written for each split (the last test has no requirement).
+- **Merge** (`WordSenseBuilder_AllWords_Merge_KeepsTheTokensBothLabelersAgreeOn`, `..._Merge_Disagreement_DropsTheToken`,
+  `..._Merge_UnsureAnswer_DropsTheToken`, `..._Merge_MissingAnswerLine_DropsTheToken`,
+  `..._Merge_ReportsTheAgreement`, `..._Merge_WrongSense_Fails`, `..._Merge_MissingAnswerFile_Fails`): the merge keeps a
+  token that both labelers answered with the same sense (one of them with a low confidence, which makes the agreement of
+  the token low), drops a disagreement, an unsure answer of either labeler and a token without an answer line, reports
+  the agreement (4 tokens, 2 answered by both, 1 the same, 1 unsure for each labeler, 50.00%) and fails with a sense that
+  the token cannot have or with a missing answer file.
+- **Measurement** (`WordSenseBuilder_AllWords_Measure_CountsTheTokensAnsweredAtEachLevel`,
+  `..._Measure_ReportsThePrecisionOfTheSenseAnswers`, `..._Measure_FineTop1CountsTheFirstRankedSenseOfTheSelectedAnalysis`,
+  `..._Measure_SelectedAnalysisWithoutRanking_IsAMiss`, `..._Measure_WrongSelectedAnalysis_IsAMiss`): a stub model gives
+  the counts at the part-of-speech and sense levels and of an unknown word; of two sense answers, one right, the precision
+  is 1 of 2; the gold sense ranked first in the selected analysis is a hit and ranked second a miss; a selected analysis
+  that ranks no sense is a miss with the right analysis counted; and a selected verb analysis that ranks real senses of
+  the verb `bank` is a miss and a wrong analysis, although the unselected noun analysis lists the gold sense first.
+- **Baselines** (`WordSenseBuilder_AllWords_Baselines_FirstSenseIsTheFirstInInventoryOrder`,
+  `..._Baselines_TagCountIsTheHighestCountWithInventoryOrderOnATie`, `..._Baselines_RandomIsOneOverTheNumberOfSenses`):
+  of tokens whose gold sense is the first and the last sense of `bank` the first-sense baseline is right for the first;
+  of tokens whose gold sense is the sense with the highest count and another one the tag-count baseline is right for the
+  first; and the random baseline of three tokens is `3 / n`.
+- **Sweep** (`WordSenseBuilder_AllWords_Sweep_ReportsTheMeanLogLossOfTheGoldSense`): the log loss of a token whose gold
+  sense is the most frequent one is `-ln` of its probability under the prior, and it is lower for a smaller constant; the
+  log loss of no token is 0.
+- **Commands** (`WordSenseBuilder_Program_EvaluateAllWords_ReportsTheModelOnEachHalf`,
+  `..._ReportsTheBaselinesOnEachHalf`, `..._ReportsTheSweepOnTheDevelopmentHalfOnly`, `..._WithoutGoldSet_Fails`,
+  `WordSenseBuilder_Program_AllWordsSampleAndMerge_WriteBatchesAndGoldFiles`): with the committed set `evaluate-allwords`
+  writes the report with a row of the model and the three baselines for each half and the sweep once (for the development
+  half); without a gold set it fails with a message; `allwords-sample` writes batches and a table of 24 tokens (12 for
+  each split) and `allwords-merge` writes the gold files and reports an agreement of 100% when both labelers choose the
+  same senses (the last test has no requirement).
 
 #### evaluate-running (tense)
 
@@ -654,8 +722,14 @@ All scenarios below pass on every platform and target framework of the CI matrix
   evaluation part (whatever its case, spacing and punctuation) is a leak that the report names; two training parts, a
   chooser part and its sense part, and an external set are not leaks; two evaluation parts and a corpus sentence of
   five words or more that is a dictionary example are; a shared run of eight words is informational.
+- **All-words gold halves** (`WordSenseBuilder_Corpus_Leakage_AllWordsGold_IsAViewOfItsOpenSplit`,
+  `..._AllWordsGoldSentenceInATrainingPart_IsALeak`, `..._AllWordsGoldSentenceOfTheOtherSplit_IsALeak`): a half of the
+  all-words gold set and the split of the open corpus it is drawn from share their sentences and that is no leak; a gold
+  sentence that a training part has too is a leak, and so is a gold sentence of the development half that the test split
+  of the open corpus has.
 - **Committed corpus** (`WordSenseBuilder_Corpus_Disjointness_CoversSuiteEvaluationAndOewnExamples`): the anchors,
-  chooser, held-out and real-text sentences, the suite, the open corpus development and test splits, the challenge set
+  chooser, held-out and real-text sentences, the suite, the open corpus development and test splits, the two halves of
+  the all-words gold set, the challenge set
   and the Open English WordNet examples of the repository share no sentence in a way that leaks.
 - **Command** (`WordSenseBuilder_Program_CheckLeakage_ExitsWithOneOnALeak`): `check-leakage` prints the report and
   exits with code 1 when a part shares a sentence with an evaluation part, and 0 otherwise.
@@ -663,7 +737,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
 #### Command line
 
 - **No arguments or unknown command**: exit code 1 and the usage text listing `compile-image`, `import-moby`,
-  `weights <modelId>`, `evaluate <modelId>`, `evaluate-senses`, `evaluate-running`, `evaluate-suite`, `check-leakage`,
+  `weights <modelId>`, `evaluate <modelId>`, `evaluate-senses`, `evaluate-allwords`, `allwords-sample`,
+  `allwords-merge`, `evaluate-running`, `evaluate-suite`, `check-leakage`,
   `tiers`, `open-counts`, `evaluate-tagger`, `coverage`, `train-basic`, `tune-basic`, `label-senses`,
   `import-wn30-counts`, `appendix`, `keys` and `heteronyms`
   (`Program_NoArguments_PrintsUsage`, `Program_UnknownCommand_ReportsCommandAndUsage`,

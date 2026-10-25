@@ -165,21 +165,214 @@ sections:
               The core subsystem shall list, for every known word, all its analyses with probabilities that sum to
               one, the lemmas and parts of speech by the sum of their probabilities, the largest first, and inside
               one of them the feature variants by their own probability, the largest first and, on a tie, in lexicon
-              order, and shall list senses only inside an analysis
-              whose lemma and part of speech have exactly one sense (that sense with probability 1), and no senses for
-              any other analysis, because the built-in model scores analyses and not fine senses.
+              order.
             tags: [subsystem]
             justification: |
-              A consumer that reads the analyses must be able to tell a model without sense scores from one that scores
-              senses; empty sense lists for the ambiguous analyses say that the built-in model has none, while the one
-              sense of a single-sense analysis is certain and needs no evidence.
+              A consumer that reads the analyses needs every reading of the word with an honest probability, in an
+              order that puts the selected analysis first.
             children:
               - WordSense-Core-BasicClassifier-Candidates
             tests:
               - BasicClassifier_ClassifyAsync_AmbiguousWord_ListsAnalysesAndNoSenses
-              - BasicClassifier_ClassifyAsync_SingleSenseAnalysis_ListsThatSenseWithProbabilityOne
               - BasicClassifier_ClassifyAsync_TiesKeepLexiconOrder
               - BasicClassifier_ClassifyAsync_VariantsOfASlot_ShareItsProbabilityAndStayTogether
+
+          - id: WordSense-Core-Candidates-OneSense
+            title: >-
+              The core subsystem shall list in an analysis whose lemma and part of speech have exactly one sense that
+              sense with probability 1.
+            tags: [subsystem]
+            justification: |
+              The one sense of a single-sense analysis is certain and needs no evidence.
+            children:
+              - WordSense-Core-BasicClassifier-Candidates-SingleSense
+            tests:
+              - BasicClassifier_ClassifyAsync_SingleSenseAnalysis_ListsThatSenseWithProbabilityOne
+
+          - id: WordSense-Core-Candidates-RankedSenses
+            title: >-
+              The core subsystem shall list in an analysis whose lemma and part of speech have two or more senses
+              those senses ranked by the usage prior.
+            tags: [subsystem]
+            justification: |
+              About 83 percent of the ambiguous words of running text have a lemma that no encoder was trained for; the
+              usage of the senses is the one piece of evidence that exists for every lemma, so ranking by it gives a
+              consumer the likely senses.
+            children:
+              - WordSense-Core-BasicClassifier-UsagePrior
+              - WordSense-Core-BasicClassifier-UsagePrior-Slots
+              - WordSense-Core-BasicClassifier-UsagePrior-FewerSenses
+            tests:
+              - BasicClassifier_ClassifyAsync_PolysemousWord_ListsTheSensesRankedByUsage
+              - BasicClassifier_ClassifyAsync_PriorIsAskedOnlyForSlotsWithTwoOrMoreSenses
+
+          - id: WordSense-Core-Candidates-UsageProbability
+            title: >-
+              The core subsystem shall give each ranked sense of the usage prior the probability of its WordNet 3.0 tag
+              count plus the smoothing constant over the sum of that over the senses of the lemma and part of speech.
+            tags: [subsystem]
+            justification: |
+              Add-k smoothing keeps a sense that was never tagged possible while the counts decide the probabilities.
+            children:
+              - WordSense-Core-BasicClassifier-UsagePrior-Formula
+              - WordSense-Core-BasicClassifier-UsagePrior-Normalized
+              - WordSense-Core-BasicClassifier-UsagePrior-ProjectSense
+            tests:
+              - UsagePrior_RankOf_UsesTheSmoothingConstantOne
+              - UsagePrior_RankOf_PolysemousLemma_RanksEverySenseOfTheSlot
+
+          - id: WordSense-Core-Candidates-UsageOrder
+            title: >-
+              The core subsystem shall list the senses of the usage prior sorted by probability, the largest first, with
+              senses of equal probability in the inventory order of the lemma.
+            tags: [subsystem]
+            justification: |
+              The inventory order is the order of Open English WordNet, which puts the common senses first, so it
+              decides among equal counts and for a lemma without any count.
+            children:
+              - WordSense-Core-BasicClassifier-UsagePrior-Order
+              - WordSense-Core-BasicClassifier-UsagePrior-Ties
+              - WordSense-Core-BasicClassifier-UsagePrior-Smoothing
+              - WordSense-Core-BasicClassifier-UsagePrior-Stable
+              - WordSense-Core-BasicClassifier-UsagePrior-ContextFree
+            tests:
+              - UsagePrior_RankOf_PolysemousLemma_RanksEverySenseOfTheSlot
+              - BasicClassifier_ClassifyAsync_RankingDoesNotDependOnContext
+
+          - id: WordSense-Core-Candidates-NoSenses
+            title: >-
+              The core subsystem shall list no senses in an analysis whose lemma and part of speech have none.
+            tags: [subsystem]
+            justification: |
+              An empty sense list says that nothing was ranked; inventing senses for a lemma without any would mislead a
+              consumer.
+            children:
+              - WordSense-Core-BasicClassifier-Candidates-NoSenses
+            tests:
+              - BasicClassifier_ClassifyAsync_AnalysisWithoutSenses_ListsNoSenses
+
+          - id: WordSense-Core-Candidates-NoAnswer
+            title: >-
+              The core subsystem shall never answer a sense or a group from the usage prior: the level, the confidence,
+              the sense id and the group id of a result shall be those of the classifier without the prior.
+            tags: [subsystem]
+            justification: |
+              The ranking is evidence about the lemma and not about the sentence; claiming a sense answer from it would
+              turn a base rate into a false decision.
+            children:
+              - WordSense-Core-BasicClassifier-UsagePrior-NoAnswer
+            tests:
+              - BasicClassifier_ClassifyAsync_UsagePrior_NeverChangesTheAnswer
+              - BasicClassifier_ClassifyAsync_PolysemousWord_AnswersAtThePartOfSpeechLevelWithoutSenseOrGroup
+
+          - id: WordSense-Core-Candidates-NoAnalysisChange
+            title: >-
+              The core subsystem shall keep the selected analysis and the probability of every analysis of a result
+              those of the classifier without the usage prior.
+            tags: [subsystem]
+            justification: |
+              Only the sense lists of the analyses gain content, so every consumer of the analyses sees the same
+              distribution as before.
+            children:
+              - WordSense-Core-BasicClassifier-UsagePrior-NoAnswer-Selection
+              - WordSense-Core-BasicClassifier-UsagePrior-NoAnswer-Probabilities
+            tests:
+              - BasicClassifier_ClassifyAsync_UsagePrior_NeverChangesTheSelectedAnalysis
+              - BasicClassifier_ClassifyAsync_UsagePrior_NeverChangesTheAnalysisProbabilities
+
+          - id: WordSense-Core-Candidates-Key
+            title: >-
+              The core subsystem shall give the key of the result of a polysemous word the label of the top-ranked sense
+              of the selected analysis.
+            tags: [subsystem]
+            justification: |
+              The key names the meaning where a model ranked one, so the ranking by usage gives a key with a label.
+            children:
+              - WordSense-Core-BasicClassifier-UsagePrior-Key
+            tests:
+              - BasicClassifier_ClassifyAsync_PolysemousWord_KeyCarriesTheLabelOfTheTopRankedSense
+
+          - id: WordSense-Core-Candidates-KeyEnumerated
+            title: >-
+              The key of the result of a polysemous word shall be a member of the keys that the core subsystem
+              enumerates.
+            tags: [subsystem]
+            justification: |
+              The keys of all senses are in the enumeration, so the guarantee that every key a model gives is enumerated
+              still holds with the ranking.
+            children:
+              - WordSense-Core-BasicClassifier-UsagePrior-Key-Enumerated
+            tests:
+              - BasicClassifier_ClassifyAsync_PolysemousWord_KeyIsOneOfTheEnumeratedKeys
+              - BasicKeys_SuiteAndCorpusSentences_AreAllEnumerated
+
+          - id: WordSense-Core-UsagePrior-Validation
+            title: >-
+              The core subsystem shall reject invalid arguments when it ranks senses by the usage prior.
+            tags: [subsystem]
+            justification: |
+              A wrong constant or count would rank by wrong numbers without any sign of it.
+            children:
+              - WordSense-Core-BasicClassifier-UsagePrior-Validation-Smoothing
+              - WordSense-Core-BasicClassifier-UsagePrior-Validation-Count
+              - WordSense-Core-BasicClassifier-UsagePrior-Validation-Missing
+            tests:
+              - UsagePrior_Rank_SmoothingNotPositive_Throws
+              - UsagePrior_Rank_NegativeCount_Throws
+              - UsagePrior_Rank_MissingArgument_Throws
+
+          - id: WordSense-Core-SenseFrequency
+            title: >-
+              The core subsystem shall carry the WordNet 3.0 tag count of every sense of its catalog.
+            tags: [subsystem]
+            justification: |
+              The usage prior that ranks the senses of the lemmas no model scores needs the counts at run time, and the
+              core package has no files.
+            children:
+              - WordSense-Core-WordLexicon-SenseFrequency
+              - WordSense-Core-WordLexicon-SenseFrequency-ProjectSense
+            tests:
+              - WordLexicon_Image_SenseFrequency_HasACountForEverySense
+              - WordLexicon_Image_UsageOf_ProjectSense_HasTagCountZero
+
+          - id: WordSense-Core-SenseFrequency-Access
+            title: >-
+              The core subsystem shall list the senses of a lemma and part of speech with their tag counts in inventory
+              order.
+            tags: [subsystem]
+            justification: |
+              The usage prior ranks the senses of one lemma and part of speech and breaks ties by the inventory order.
+            children:
+              - WordSense-Core-WordLexicon-SenseFrequency-Access
+            tests:
+              - WordLexicon_Image_UsageOf_ListsTheSensesInInventoryOrderWithTheirTagCounts
+
+          - id: WordSense-Core-SenseFrequency-InventoryHash
+            title: >-
+              The inventory hash of the sense catalog shall not depend on the tag counts.
+            tags: [subsystem]
+            justification: |
+              The counts say how often the senses are used, not which senses exist; keeping them out of the identity of
+              the inventory means that adding or correcting the counts needs no training of the models.
+            children:
+              - WordSense-Core-WordLexicon-SenseFrequency-InventoryHash
+            tests:
+              - WordLexicon_Image_TagCounts_AreNotPartOfTheInventoryHash
+
+          - id: WordSense-Core-SenseFrequency-Integrity
+            title: >-
+              The core subsystem shall reject a sense catalog whose sense frequency section is damaged.
+            tags: [subsystem]
+            justification: |
+              A damaged section must fail loudly instead of ranking the senses by wrong counts.
+            children:
+              - WordSense-Core-WordLexicon-SenseFrequency-Missing
+              - WordSense-Core-WordLexicon-SenseFrequency-Length
+              - WordSense-Core-WordLexicon-SenseFrequency-Keyless
+            tests:
+              - WordLexicon_Image_SenseFrequencySectionMissing_IsRejected
+              - WordLexicon_Image_SenseFrequencyWrongLength_IsRejected
+              - WordLexicon_Image_TagCountOnASenseWithoutAKey_IsRejected
 
           - id: WordSense-Core-Tagger
             title: >-

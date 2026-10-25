@@ -158,8 +158,9 @@ apostrophe straightened; tokens without a letter become empty), splits the list 
 
 Every word that has a lexicon analysis is answered with details, number words such as `one` or `twenty` included; only
 a word without analyses and a token without a letter are unknown. The model never answers at the group level, and it
-lists no senses for an analysis whose lemma and part of speech have several senses (it scores analyses and not fine
-senses), so it never names a sense for such an analysis, because its statistics do not separate the senses. An
+never decides a sense for an analysis whose lemma and part of speech have several senses (its statistics do not separate
+the senses); it lists those senses ranked by the usage prior (the WordNet 3.0 tag count of each sense with add-k smoothing,
+equal probabilities in inventory order), which is a statement about the lemma and never an answer. An
 analysis whose lemma and part of speech have exactly one sense lists that sense with probability 1, whatever the
 probability of the analysis, because no evidence is needed to choose it.
 

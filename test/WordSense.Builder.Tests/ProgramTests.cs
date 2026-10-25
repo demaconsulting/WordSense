@@ -55,7 +55,7 @@ public sealed class ProgramTests : IDisposable
         var (code, _, error) = await RunAsync();
 
         Assert.Equal(1, code);
-        foreach (var command in new[] { "import-oewn", "validate-data", "import-wn30-counts", "label-senses", "seed-inventory", "appendix", "evaluate-senses", "evaluate-running", "evaluate-suite", "check-leakage", "tiers" })
+        foreach (var command in new[] { "import-oewn", "validate-data", "import-wn30-counts", "label-senses", "seed-inventory", "appendix", "evaluate-senses", "evaluate-allwords", "allwords-sample", "allwords-merge", "evaluate-running", "evaluate-suite", "check-leakage", "tiers" })
         {
             Assert.Contains(command, error, StringComparison.Ordinal);
         }

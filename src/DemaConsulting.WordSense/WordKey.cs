@@ -171,9 +171,9 @@ public sealed record WordKey(string Spelling, string Lemma, PartOfSpeech PartOfS
         return Format(spelling, details.Lemma, details.PartOfSpeech, details.Features, label);
     }
 
-    // The most probable ranked sense of the selected analysis (the ties by the ordinal order of the sense id, the order of
-    // the ranking); the analyses of one slot share their senses, so the slot is the fallback when the exact analysis is
-    // not listed, which a model of another package may do
+    // The most probable ranked sense of the selected analysis (on equal probabilities the first listed one: the senses are
+    // listed in the order of the ranking, ties in the inventory order of the lemma); the analyses of one slot share their
+    // senses, so the slot is the fallback when the exact analysis is not listed, which a model of another package may do
     private static string? TopRankedSense(ImmutableArray<AnalysisCandidate> analyses, WordDetails details)
     {
         var senses = default(ImmutableArray<SenseCandidate>);
@@ -199,8 +199,7 @@ public sealed record WordKey(string Spelling, string Lemma, PartOfSpeech PartOfS
         var best = senses[0];
         foreach (var sense in senses)
         {
-            if (sense.Probability > best.Probability
-                || (sense.Probability.CompareTo(best.Probability) == 0 && string.CompareOrdinal(sense.SenseId, best.SenseId) < 0))
+            if (sense.Probability > best.Probability)
             {
                 best = sense;
             }

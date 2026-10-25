@@ -65,16 +65,17 @@ public class WordKeyTests
     }
 
     /// <summary>
-    ///     Equal probabilities are decided by the ordinal order of the sense id.
+    ///     Equal probabilities are decided by the order of the ranking: the first listed sense is the top-ranked one (the
+    ///     models list equal probabilities in the inventory order of the lemma), whatever the ordinal order of the ids.
     /// </summary>
     [Fact]
-    public void ClassifyResult_Key_TiedRankedSenses_UseTheOrdinalOrderOfTheId()
+    public void ClassifyResult_Key_TiedRankedSenses_TakeTheFirstListed()
     {
         // Arrange
         var result = Result("bass", Bass, SenseLevel.PartOfSpeech, null, null, Ranked("bass#sea-bass", 0.5, "bass#percoid", 0.5));
 
         // Act / Assert
-        Assert.Equal("bass|bass/Noun/Number=Sing#percoid", result.Key);
+        Assert.Equal("bass|bass/Noun/Number=Sing#sea-bass", result.Key);
     }
 
     /// <summary>

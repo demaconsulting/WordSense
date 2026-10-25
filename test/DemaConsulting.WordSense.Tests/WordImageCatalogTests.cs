@@ -97,6 +97,155 @@ public class WordImageCatalogTests
         Assert.Equal(WordLexicon.Current.GroupCount, image.GroupCount);
     }
 
+    /// <summary>
+    ///     The sense frequency section is required: an image without it is rejected when the catalog is read.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Image_SenseFrequencySectionMissing_IsRejected()
+    {
+        // Arrange
+        var damaged = Damage(sections => sections.Remove(ImageFormat.SectionSenseFrequency));
+
+        // Act
+        var error = Assert.Throws<InvalidDataException>(() => WordImage.Open(damaged).ValidateCatalog());
+
+        // Assert
+        Assert.Contains("no section", error.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A sense frequency section that does not have one value for each sense (one value short, or an odd number of
+    ///     bytes) is rejected when the catalog is read.
+    /// </summary>
+    /// <param name="shorten">The number of bytes cut from the end of the section.</param>
+    [Theory]
+    [InlineData(2)]
+    [InlineData(1)]
+    public void WordLexicon_Image_SenseFrequencyWrongLength_IsRejected(int shorten)
+    {
+        // Arrange
+        var damaged = Damage(sections => sections[ImageFormat.SectionSenseFrequency] = sections[ImageFormat.SectionSenseFrequency][..^shorten]);
+
+        // Act
+        var error = Assert.Throws<InvalidDataException>(() => WordImage.Open(damaged).ValidateCatalog());
+
+        // Assert
+        Assert.Contains("length", error.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A project sense has no sense key and so no WordNet 3.0 tag count: a count on a sense without a key is rejected.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Image_TagCountOnASenseWithoutAKey_IsRejected()
+    {
+        // Arrange: the first sense without a key gets a count
+        var damaged = Damage(sections =>
+        {
+            var keyLength = sections[ImageFormat.SectionSenseKeyLength];
+            var frequency = sections[ImageFormat.SectionSenseFrequency];
+            var keyless = Array.IndexOf(keyLength, (byte)0);
+            Assert.True(keyless >= 0);
+            BinaryPrimitives.WriteUInt16LittleEndian(frequency.AsSpan(keyless * 2), 7);
+        });
+
+        // Act
+        var error = Assert.Throws<InvalidDataException>(() => WordImage.Open(damaged).ValidateCatalog());
+
+        // Assert
+        Assert.Contains("without a key has a tag count", error.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The tag counts are not part of the identity of the inventory: the inventory hash of the header is that of the
+    ///     inventory sections, whatever the counts are, so models trained against the image need no training when the
+    ///     counts change.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Image_TagCounts_AreNotPartOfTheInventoryHash()
+    {
+        // Arrange: every count is cleared
+        var damaged = Damage(sections => sections[ImageFormat.SectionSenseFrequency] = new byte[sections[ImageFormat.SectionSenseFrequency].Length]);
+
+        // Act
+        var image = WordImage.Open(damaged);
+        image.ValidateCatalog();
+        var hash = ImageFormat.ComputeInventoryHash(image.RawSection);
+
+        // Assert
+        Assert.DoesNotContain(ImageFormat.SectionSenseFrequency, ImageFormat.InventorySections);
+        Assert.True(image.InventoryHash.SequenceEqual(hash));
+        Assert.True(image.InventoryHash.SequenceEqual(WordLexicon.Current.InventoryHash));
+        Assert.All(image.UsageOf("bank", PartOfSpeech.Noun), u => Assert.Equal(0, u.TagCount));
+    }
+
+    /// <summary>
+    ///     The usage of the senses of a lemma and part of speech lists the senses in inventory order with their WordNet 3.0
+    ///     tag counts: the same senses as <see cref="WordLexicon.SensesOf"/> and a count for a sense that WordNet tagged.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Image_UsageOf_ListsTheSensesInInventoryOrderWithTheirTagCounts()
+    {
+        // Act
+        var usage = WordLexicon.Current.UsageOf("bank", PartOfSpeech.Noun);
+        var senses = WordLexicon.SensesOf("bank", PartOfSpeech.Noun);
+
+        // Assert
+        Assert.Equal(senses.Select(s => s.SenseId), usage.Select(u => u.SenseId));
+        Assert.True(usage.Length >= 2);
+        Assert.Contains(usage, u => u.TagCount > 0);
+    }
+
+    /// <summary>
+    ///     The usage of a lemma and part of speech that is not in the catalog is empty.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Image_UsageOf_SlotNotInTheCatalog_IsEmpty()
+    {
+        // Act
+        var unknownLemma = WordLexicon.Current.UsageOf("zzqxjw", PartOfSpeech.Noun);
+        var unknownPartOfSpeech = WordLexicon.Current.UsageOf("bank", PartOfSpeech.Determiner);
+
+        // Assert
+        Assert.Empty(unknownLemma);
+        Assert.Empty(unknownPartOfSpeech);
+    }
+
+    /// <summary>
+    ///     The image carries a tag count for every sense of the catalog: the usage of every lemma and part of speech has one
+    ///     entry for each of its senses, and the entries of all slots add up to the senses of the catalog.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Image_SenseFrequency_HasACountForEverySense()
+    {
+        // Arrange
+        var slots = WordLexicon.Current.AllSenses().GroupBy(s => (s.Lemma, s.PartOfSpeech)).ToList();
+
+        // Act
+        var usages = slots.ToDictionary(g => g.Key, g => WordLexicon.Current.UsageOf(g.Key.Lemma, g.Key.PartOfSpeech));
+
+        // Assert
+        Assert.All(slots, g => Assert.Equal(g.Select(s => s.SenseId).Order(StringComparer.Ordinal), usages[g.Key].Select(u => u.SenseId).Order(StringComparer.Ordinal)));
+        Assert.Equal(WordLexicon.Current.SenseCount, usages.Values.Sum(u => u.Length));
+    }
+
+    /// <summary>
+    ///     A project sense, which has no sense key, has the tag count 0.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Image_UsageOf_ProjectSense_HasTagCountZero()
+    {
+        // Arrange: the senses of the catalog that have no sense key
+        var projectSenses = WordLexicon.Current.AllSenses().Where(s => s.SenseKey is null).ToList();
+
+        // Act
+        var counts = projectSenses.Select(s => WordLexicon.Current.UsageOf(s.Lemma, s.PartOfSpeech).First(u => u.SenseId == s.SenseId).TagCount).ToList();
+
+        // Assert
+        Assert.NotEmpty(projectSenses);
+        Assert.All(counts, c => Assert.Equal(0, c));
+    }
+
     private static uint[] Uints(byte[] raw) => MemoryMarshal.Cast<byte, uint>(raw).ToArray();
 
     private static byte[] Bytes(uint[] values)

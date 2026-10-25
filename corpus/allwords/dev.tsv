@@ -1,0 +1,411 @@
+# corpus = all-words gold set of untrained polysemous lemmas, dev half (independent evaluation of the usage prior)
+# license = annotations and selection CC0 1.0; sentences public domain or CC0 per corpus/open/sources.tsv
+# columns = id sent_id target form lemma pos sense agreement sentence
+# split = sentences of the dev split of corpus/open/representative only
+d-0080	gutenberg-34400-s1511	18	English	English	Adjective	English#adjective	high	Thus it was that at Sorauren , after he had surprised Wellington and upset the whole of the English strategic plans , he was unable to win the battle which was necessary to reap the harvest of his labours .
+d-0458	usgs-science-snippet-earthquakes-can-strike-faster-a-new-york-minute-what-do-when-s0011	30	English	English	Adjective	English#adjective-2	high	Written in English , Spanish , Vietnamese , Russian , Chinese , Haitian Creole , and French , these handouts are useful for diverse communities around the U.S. with limited English proficiency .
+d-0358	tatoeba-12267182	14	abandoned	abandon	Verb	abandon#desert	high	Venessa Strauss is a veterinary nurse . She rescues emaciated chicks that have been abandoned by their parents on the breeding islands offshore .
+d-0250	nps-seki-hc-gfmain-s0002	18	about	about	Adverb	about#approximately	high	Approximately 75 groves exist , and only along the southern Sierra 's western slope on moist sites between about 5,000 and 7,000 feet in elevation .
+d-0113	gutenberg-52085-s0471	11	across	across	Adverb	across#crossways	low	Still another , which grew in heads a foot or two across , had a peculiar habit of floating when free of animal matter .
+d-0342	tatoeba-11955555	6	act	act	Verb	act#acquit	high	They were trying their darndest to act natural , but once in a while one of them would slip .
+d-0392	tatoeba-8109024	6	actor	actor	Noun	actor#histrion	high	Jerry Lewis is a famous Jewish actor .
+d-0465	usgs-science-snippet-national-map-corps-mapping-challenge-s0006	24	added	add	Verb	add#increase	high	The Pennsylvania project was the biggest challenge to date , with more than 980 unique law enforcement points having been updated , verified , added or removed .
+d-0321	tatoeba-11387309	7	agency	agency	Noun	agency#authority	high	They don't belong to any official intelligence agency .
+d-0037	gutenberg-17625-s1420	21	air	air	Noun	air#gas	low	They are characterized by a humming noise due to the effect of alternating current upon the mechanism and also upon the air near the arc .
+d-0062	gutenberg-24001-s4768	4	alterations	alteration	Noun	alteration#change	low	More commonly , marked alterations in the health accompany this important crisis , and call for sedulous hygienic care .
+d-0418	usgs-featured-story-guiding-rovers-safe-mars-exploration-s0028	3	analyzing	analyze	Verb	analyze#analyse	high	USGS scientists are analyzing these sites to help determine their safety and navigability .
+d-0096	gutenberg-43-s0595	10	answer	answer	Noun	answer#reply	high	" I daren't say , sir , " was the answer ; " but will you come along with me and see for yourself ? "
+d-0353	tatoeba-12161029	19	apples	apple	Noun	apple#edible-fruit	high	It would be interesting to know how a costermonger could have made all that money by the sale of apples , oranges , and greens .
+d-0407	usgs-featured-story-announcing-mike-grimm-associate-director-natural-hazards-s0014	8	applies	apply	Verb	apply#employ	high	The USGS Natural Hazards Mission Area develops and applies hazard science to help promote the Nation 's safety , security , and economic well-being .
+d-0083	gutenberg-34400-s2825	3	ardent	ardent	Adjective	ardent#warm	high	Suchet , an ardent student of human nature , was quick to appreciate how to turn to his use this provincialism .
+d-0241	nps-hale-hc-entomological-collection-s0010	12	area	area	Noun	area#country	high	The museum storage building and research room is located in the summit area of the park .
+d-0446	usgs-nr-new-study-bat-habitats-and-wind-energy-can-help-energy-provi-s0002	14	areas	area	Noun	area#country	high	DENVER , Colo . -- Mexican free-tailed bats tend to live in the same areas that are good for wind energy , according to a new study by the U.S. Geological Survey and an international team of scientists .
+d-0447	usgs-nr-new-study-bat-habitats-and-wind-energy-can-help-energy-provi-s0007	9	areas	area	Noun	area#country	high	The bat 's habitat also had broad overlap with areas that have high potential for future wind energy development .
+d-0217	nps-alca-hc-stories-s0007	6	army	army	Noun	army#ground-forces	high	Learn how Alcatraz evolved from an army post that contained an army prison into U.S. Penitentiary Alcatraz .
+d-0337	tatoeba-11891243	6	around	around	Adverb	around#about-2	low	Tom got pulled over for driving around without any license plates .
+d-0279	nws-jetstream-reflectivity-s0065	6	arrows	arrow	Noun	arrow#pointer	high	Notice the two smaller storms ( arrows ) ahead of the main cluster .
+d-0047	gutenberg-17625-s3956	6	art	art	Noun	art#fine-art	high	He may be seen at the art museum faithfully copying a famous painting or out in the fields stalking a tree with the hopes of an embryo Corot .
+d-0511	voa-4710890-s0031	1	asked	ask	Verb	ask#ask-for	high	Someone asked him to paint a picture of Santa Claus .
+d-0560	voa-7467075-s0032	8	asked	ask	Verb	ask#ask-for	high	When we're out in public , he gets asked for his autograph all the time .
+d-0366	tatoeba-12381513	7	available	available	Adjective	available#adjective	high	This is the world 's first commercially available pedal generator , allowing to convert your human power into usable electricity .
+d-0345	tatoeba-12012195	2	bad	bad	Adjective	bad#regretful	high	I feel bad for being unfair to him because I was mad .
+d-0526	voa-5982459-s0012	8	bat	bat	Noun	bat#at-bat	high	Dave got a hit in his first at bat .
+d-0146	gutenberg-63678-s0687	17	be	be	Verb	be#verb	high	I replied , that I would , if my boat and effects in the mean time could be safe .
+d-0265	nws-jetstream-atmosphere-s0008	1	is	be	Verb	be#verb	high	It is also necessary for combustion ( burning ) .
+d-0562	voa-7467075-s0036	19	is	be	Verb	be#verb	high	For example , if I am sure that my friend is right about something , I can say she is dead right .
+d-0256	nps-yose-animals-s0018	5	becomes	become	Verb	become#get	high	Above treeline , the climate becomes harsh with a short growing season .
+d-0423	usgs-featured-story-mapping-worlds-ocean-ecosystems-s0031	7	become	become	Verb	become#get	high	Beyond 220 yards depth , ocean waters become more twilight .
+d-0267	nws-jetstream-derechos-types-of-derechos-s0002	10	behavior	behavior	Noun	behavior#behaviour-3	high	These categories are largely based on the overall organization and behavior of the thunderstorms producing the derecho .
+d-0461	usgs-science-snippet-earthview-glaciers-worldwide-are-retreating-one-defies-trend-s0018	18	behavior	behavior	Noun	behavior#behaviour-3	high	Landsat offers several observations per year in these areas and will help scientists understand the glacier 's future behavior .
+d-0227	nps-gett-birds-s0008	6	birds	bird	Noun	bird#craniate	high	Many species of endangered and threatened birds are also migrants or visitors to the park .
+d-0359	tatoeba-12267189	32	birds	bird	Noun	bird#craniate	high	Tests on several people with flu-like symptoms in the village near the Thai border where the outbreak occurred have all proved negative , meaning the virus in Malaysia has not jumped from birds to humans .
+d-0435	usgs-infiltration-and-water-cycle-s0012	23	bodies	body	Noun	body#natural-object	low	Water may travel long distances or remain in groundwater storage for long periods before returning to the surface or seeping into other water bodies , such as streams and the oceans .
+d-0054	gutenberg-24001-s0707	7	bosom	bosom	Noun	bosom#heart	high	One passion only sits enthroned in her bosom ; one only idol is enshrined in her heart , knowing no rival , no successor .
+d-0486	usgs-sr-media-alert-usgs-dye-tracing-study-kansas-river-aid-protecti-s0001	11	bright	bright	Adjective	bright#brilliant	high	U.S. Geological Survey scientists and partners will inject a harmless , bright red fluorescent dye into the Kansas River at Eudora July 7-9 , weather permitting .
+d-0011	gutenberg-12359-s0067	3	bring	bring	Verb	bring#make-for	high	In order to bring about that wonderful event , the Creation of Man , natural selection had to call in the aid of other agencies , and the chief of these agencies was the gradual lengthening of babyhood .
+d-0530	voa-6253876-s0040	9	brother	brother	Noun	brother#blood-brother	high	In our example , I take lunch to my brother , the subject is I , the direct object is lunch , and the indirect object is my brother .
+d-0595	voa-8003108-s0003	10	buds	bud	Noun	bud#sprout	high	Many plants end their long winter sleep and form new buds and shoots .
+d-0311	tatoeba-11145226	8	building	building	Noun	building#edifice	high	Rebecca Gadzama and schoolteachers survey the aging school building and discuss the upcoming school year .
+d-0591	voa-7897488-s0024	12	business	business	Noun	business#business-concern	high	A cold call can also be a visit to a person or business .
+d-0513	voa-4869868-s0012	9	butter	butter	Noun	butter#solid-food	high	Some word experts say the phrase " bread and butter " began in Europe and England during the Middle Ages .
+d-0514	voa-4869868-s0013	11	butter	butter	Noun	butter#solid-food	high	At that time , many peasants could only afford bread and butter as their entire meal .
+d-0038	gutenberg-17625-s1429	6	carbon	carbon	Noun	carbon#atomic-number-6	high	Up to this point the ordinary carbon arc has been considered and it has been seen that most of the light is emitted by the glowing end of the positive carbon .
+d-0078	gutenberg-34400-s0765	15	career	career	Noun	career#life-history	high	At the very commencement of the campaign Massena committed a fault which almost ruined his career .
+d-0089	gutenberg-37856-s0883	13	carry	carry	Verb	carry#pack	low	Have plenty of pockets , and tie a string to nearly everything you carry in them , so you can not lose them if they fall from your hands .
+d-0273	nws-jetstream-global-earning-lesson-its-rain-man-s0019	9	carry	carry	Verb	carry#transport	high	It takes only one-two feet of rushing water to carry away most vehicles .
+d-0016	gutenberg-12359-s0258	4	chaotic	chaotic	Adjective	chaotic#disorderly	low	But only think how chaotic nature was to their minds compared to what she is to our minds to-day .
+d-0043	gutenberg-17625-s2164	21	character	character	Noun	character#lineament	high	In general , high candle-power and long-burning are opposed to each other , so that the most intense lights of this character usually are of short duration .
+d-0580	voa-7876003-s0026	9	city	city	Noun	city#metropolis	high	It's difficult to find a good hotel in that city .
+d-0554	voa-7398657-s0003	10	climate	climate	Noun	climate#clime	high	But even if you do not live in a snowy climate , try to image cold , snowy weather .
+d-0528	voa-5982459-s0048	6	climbers	climber	Noun	climber#athlete	high	In " speed , " two climbers go up a 15-meter high wall .
+d-0118	gutenberg-52085-s1006	20	clings	cling	Verb	cling#adhere	high	Many live in holes in the rocks , and all have a very large , sucking , disklike foot which clings to the rocks with great tenacity .
+d-0346	tatoeba-12014148	11	coincidence	coincidence	Noun	coincidence#happenstance	high	Believe it or not , Prigozhin 's death was a complete coincidence . Putin wasn't planning on killing him until Friday .
+d-0291	nws-safety-tornado-s0001	6	column	column	Noun	column#pillar	high	A tornado is a violently rotating column of air extending from the base of a thunderstorm down to the ground .
+d-0544	voa-7347203-s0018	2	came	come	Verb	come#derive	low	The word came to English from French .
+d-0600	voa-8003108-s0026	8	command	command	Noun	command#bid	high	And sometimes we use this expression as a command .
+d-0129	gutenberg-5658-s4037	37	commercial	commercial	Adjective	commercial#adjective	high	I have no doubt he had been there , either in his butterfly-hunting days or later on , when he tried in his incorrigible way to season with a pinch of romance the fattening dishes of his commercial kitchen .
+d-0483	usgs-sr-earth-mri-funds-critical-minerals-projects-colorado-s0017	32	communities	community	Noun	community#assemblage	high	In addition to helping identify mineral potential , these maps also support decisions about use of land , water , energy and minerals and to mitigate the impact of geologic hazards on communities .
+d-0524	voa-5373439-s0007	4	condition	condition	Noun	condition#illness	high	Cabin fever is a condition .
+d-0301	tatoeba-10719760	5	confession	confession	Noun	confession#admission	high	Every right-wing accusation is a confession .
+d-0041	gutenberg-17625-s2045	7	confused	confuse	Verb	confuse#confound	high	The fixed light is liable to be confused with others , so it has now become a minor light .
+d-0535	voa-6568992-s0021	4	conjunction	conjunction	Noun	conjunction#conjunctive	high	When used as a conjunction , " never mind " connects two options , the second option being the least likely or wanted .
+d-0044	gutenberg-17625-s2767	13	continuous	continuous	Adjective	continuous#uninterrupted	high	In the former case the fixed charge is distributed over the production of continuous operation , but in the latter case the production of a single day shift assumes the entire burden .
+d-0051	gutenberg-24001-s0040	11	corrections	correction	Noun	correction#editing	low	The present is the only edition containing the important additions and corrections made by the author during the latter years of his life ; and none other was authorized by him .
+d-0026	gutenberg-16594-s2720	15	country	country	Noun	country#land	low	However , he only visited France , and gave us his vivid picture of that country before the great revolution .
+d-0120	gutenberg-52085-s1343	4	crabs	crab	Noun	crab#decapod	high	This vast army of crabs was the sanitary corps of the island , devouring every dead fish that came ashore and other animal matter of all kinds .
+d-0381	tatoeba-12776004	3	creative	creative	Adjective	creative#adjective	low	They cultivate a creative environment .
+d-0235	nps-grca-cynsk-v15-s0034	19	crew	crew	Noun	crew#gang	low	District Ranger Seliga said , " It was a phenomenal help to have the incredible assistance from this amazing crew . "
+d-0372	tatoeba-12765312	8	crisis	crisis	Noun	crisis#situation	high	Tom helped lead the emergency response during the crisis .
+d-0266	nws-jetstream-atmosphere-s0013	16	daily	daily	Adverb	daily#adverb	high	The NOAA Global Monitoring Lab updates trends in the 4 main Greenhouse Gases in the atmosphere daily .
+d-0219	nps-arch-animals-s0017	17	day	day	Noun	day#daylight	high	Mosquitoes , for example , may be out at night , at dawn , dusk or all day but not at night , depending on the temperatures .
+d-0168	gutenberg-73-s1249	1	dead	dead	Adjective	dead#adjective	high	The dead man and the living man exchanged a long look .
+d-0262	nps-yose-wawona-meadow-s0003	18	decades	decade	Noun	decade#decennary	high	Wawona Meadow , one of the first areas explored by Euro-Americans , felt the effects of early settlers decades before the CCC built these ditches .
+d-0410	usgs-featured-story-critical-minerals-eez-s0048	29	decades	decade	Noun	decade#decennary	high	" A lot of what we learned there has guided further research and now it's time for us to go back and apply what we have learned in the decades since . "
+d-0098	gutenberg-43-s0929	9	deeply	deeply	Adverb	deeply#intensely	high	In this case , I was driven to reflect deeply and inveterately on that hard law of life , which lies at the root of religion and is one of the most plentiful springs of distress .
+d-0076	gutenberg-34400-s0097	28	dependent	dependent	Adjective	dependent#adjective	high	Plainly also he told them that , lofty though their rank might appear to others , to him they were still mere servants , created by him and dependent for their position on him alone .
+d-0300	tatoeba-10485485	9	destroyed	destroy	Verb	destroy#destruct	high	Furthermore , I believe that the filibuster must be destroyed .
+d-0570	voa-7864126-s0004	16	diamonds	diamond	Noun	diamond#adamant	low	Many valuable materials are buried deep inside the ground , such as gold , oil and diamonds .
+d-0395	tatoeba-8832253	7	diction	diction	Noun	diction#choice-of-words	high	The philosopher is known for his gnomic diction .
+d-0564	voa-7652826-s0032	9	difference	difference	Noun	difference#quality	high	We can use " however " to emphasize a difference .
+d-0332	tatoeba-11691077	12	different	different	Adjective	different#adjective	high	The way people talked about Baby Boomers in the 1990s was markedly different from the way people talk about them in the 2020s .
+d-0501	voa-4266045-s0047	6	different	different	Adjective	different#adjective	high	But this phrase is a little different from the other phrases .
+d-0531	voa-6253876-s0041	5	different	different	Adjective	different#adjective-4	low	These all refer to three different things .
+d-0186	gutenberg-766-s13366	23	dinner	dinner	Noun	dinner#meal	high	There was another thing I could have wished , namely , that Jip had never been encouraged to walk about the tablecloth during dinner .
+d-0583	voa-7876003-s0030	5	disagree	disagree	Verb	disagree#differ	high	A : I'm surprised you disagree with her .
+d-0260	nps-yose-tenniscourtrestoration-s0007	16	distance	distance	Noun	distance#length	low	Its location , in a secluded meadow in eastern Yosemite Valley , was also at a distance from the other developed areas .
+d-0351	tatoeba-12129221	6	distinct	distinct	Adjective	distinct#distinguishable	low	Hindu and Nazi swastikas are stylistically distinct .
+d-0396	tatoeba-8987590	3	distinguish	distinguish	Verb	distinguish#differentiate	high	It's important to distinguish the historical Tom Jackson from the things people have written about him .
+d-0137	gutenberg-580-s2124	8	down	down	Adverb	down#downward-2	high	' Certainly ' said Mr. Pickwick ; and down they sat .
+d-0179	gutenberg-76117-s0096	20	down	down	Adverb	down#downward-2	high	It is a basin 4 yards long by 2½ wide ; sides and bottom of marble slabs ; steps leading down to it at one corner ; depth about 4 feet 6 inches .
+d-0243	nps-lavo-fish-s0006	9	early	early	Adjective	early#adjective	high	Fish stocking ended completely in the park in the early 1990s .
+d-0322	tatoeba-11485510	10	earned	earn	Verb	earn#garner	high	Over 17 years and seven albums , Mary Gauthier has earned a reputation for baring her soul in song .
+d-0285	nws-jetstream-tsunamis-tsunami-generation-earthquakes-s0022	3	earthquake	earthquake	Noun	earthquake#quake	high	Generally , an earthquake must exceed magnitude 8.0 to generate a dangerous distant tsunami .
+d-0425	usgs-featured-story-new-usgs-model-shows-earthquake-hazard-probability-hawaiian--s0026	2	earthquake	earthquake	Noun	earthquake#quake	high	A large earthquake in 1871 near Lānaʻi is thought to have ruptured an oceanic fracture zone , and a 1948 earthquake near Oʻahu caused minor damage in Honolulu .
+d-0280	nws-jetstream-reflectivity-s0072	7	easily	easily	Adverb	easily#easy	high	The strongest parts of the storms are easily identifiable in the composite imagery , while the low level storm structure is most evident in the Base Reflectivity .
+d-0247	nps-maca-wildland-fire-s0027	30	easy	easy	Adjective	easy#adjective	high	Other times , applications of chemical spot treatment of exotic plants may be used in the early green-up stages and again during post burn when the plants are small and easy to spot .
+d-0027	gutenberg-16594-s2760	21	empowered	empower	Verb	empower#authorise	high	Accounts were hardly ever shown by the commissioners , and if a proprietor refused to pay the sums levied they were empowered to distrain immediately .
+d-0238	nps-hale-animals-of-haleakala-s0006	11	endemic	endemic	Adjective	endemic#adjective	high	Many of these species adapted into unique species that are now endemic , found nowhere else in the world .
+d-0405	usgs-featured-story-and-after-photos-se-beach-dunes-lost-hurricane-matthew-s0013	16	erosion	erosion	Noun	erosion#eating-away	high	The model forecasts three types of storm impact to the dunes that protect coastal communities : erosion , overtopping , and inundation , or flooding that reaches over and behind the dunes .
+d-0111	gutenberg-52085-s0252	30	especially	especially	Adverb	especially#particularly	high	In appearance the jellies resemble umbrellas , dinner plates , or inverted bowls , from which depend streamers or tentacles of various kinds and shapes , often richly colored , especially the very minute forms .
+d-0050	gutenberg-17625-s4037	4	established	established	Adjective	established#adjective	high	It is not yet established to what extent normal persons are similarly affected by light and color .
+d-0018	gutenberg-164-s3903	19	eternal	eternal	Adjective	eternal#aeonian	high	I looked at all its riches , all its treasures , like a man on the eve of an eternal exile , who was leaving never to return .
+d-0231	nps-gett-naturalfeaturesandecosystems-s0009	8	ever	ever	Adverb	ever#always	low	The natural landscape offers a respite to the ever increasingly busy schedule of the modern day visitor .
+d-0187	gutenberg-766-s17715	18	existence	existence	Noun	existence#being	high	But I declined these offers ; being already aware that there were plenty of such covert practitioners in existence , and considering the Commons quite bad enough , without my doing anything to make it worse .
+d-0058	gutenberg-24001-s1973	10	expense	expense	Noun	expense#detriment	high	Nature kindly favors one generation , but only at the expense of the next .
+d-0497	voa-3789183-s0028	9	expression	expression	Noun	expression#locution	high	When it rains , it pours is another popular expression .
+d-0001	gutenberg-110-s0098	6	far	far	Adverb	far#adverb-3	high	The clergyman explained that , as far as he was aware , it had quite died out of knowledge , and could hardly be said to be known at all .
+d-0035	gutenberg-17625-s0927	25	far	far	Adverb	far#adverb	high	The utility of gas-lighting grew apace as the prejudices disappeared , but for a long time the stock of the company sold at a price far below par .
+d-0389	tatoeba-7087420	6	far	far	Adverb	far#adverb	high	I honestly think vegan sausages have far better mouthfeel than the regular kind .
+d-0467	usgs-science-snippet-peering-future-agricultural-change-s0010	7	farming	farming	Noun	farming#agriculture	high	With more realistic scenarios of increased potato farming in the Upper Mississippi River basin , the parcel-based model can help inform decision makers on how increased agricultural nutrients in groundwater might change water treatment requirements in the Twin Cities .
+d-0433	usgs-featured-story-usgs-field-crews-document-isaias-effects-along-atlantic-coas-s0019	29	field	field	Noun	field#region	high	In neighboring Maryland , Delaware and the District of Columbia , with up to six inches of rain forecast for the area , 29 USGS staffers were in the field .
+d-0482	usgs-sediment-and-suspended-sediment-s0021	2	fill	fill	Verb	fill#fill-up-2	high	Reservoirs slowly fill up with sediment and mud , eventually making them unusable for their intended purposes .
+d-0263	nps-yose-wawona-meadow-s0032	6	filling	filling	Noun	filling#change-of-integrity	high	Groundwater elevations immediately responded to the filling of the ditch and are nearly at the surface with water sheeting across areas in the meadow that have been dry for decades .
+d-0070	gutenberg-2701-s4592	16	finger	finger	Noun	finger#dactyl	high	This fin has four regular bone-fingers , the index , middle , ring , and little finger .
+d-0464	usgs-science-snippet-earthwords-foreign-language-edition-s0016	12	fish	fish	Noun	fish#aquatic-vertebrate	high	Arête is a French word that refers to the bones in a fish backbone .
+d-0046	gutenberg-17625-s3882	0	Fixtures	fixture	Noun	fixture#artefact	high	Fixtures should shield the lamps from the eyes , and the diffusing media whether glass or textile should be dense enough to prevent glare .
+d-0284	nws-jetstream-tsunamis-tsunami-generation-earthquakes-s0015	9	floor	floor	Noun	floor#earth-s-surface	high	If big enough and close enough to the ocean floor , the energy from such an earthquake can cause the ocean floor to suddenly rise ( uplift ) or fall ( subside ) .
+d-0494	voa-3778756-s0047	3	flowers	flower	Noun	flower#bloom	high	They stop producing flowers and start producing seeds .
+d-0167	gutenberg-73-s1202	10	foliages	foliage	Noun	foliage#leaf	high	When he separated embraces of trees and vines the disturbed foliages waved their arms and turned their face leaves toward him .
+d-0338	tatoeba-11896712	9	food	food	Noun	food#nutrient	high	Obama 's directive could especially affect workers in fast food restaurants and retail stores , where employees who supervise other workers are often called managers , even if their salaries barely exceed that of their subordinates .
+d-0485	usgs-sr-low-level-flights-image-geology-over-parts-louisiana-mississ-s0019	13	feet	foot	Noun	foot#ft	high	Airplane equipped with a towed " bird " that is deployed about 400 feet ( 120 meters ) behind the airplane when in flight .
+d-0599	voa-8003108-s0025	6	feet	foot	Noun	foot#human-foot	low	We can also say beneath their feet .
+d-0237	nps-hale-animals-of-haleakala-s0002	14	full	full	Adjective	full#adjective	high	As one of the most geographically isolated landmasses in the world , Hawai'i is full of unique species .
+d-0597	voa-8003108-s0018	4	fun	fun	Noun	fun#merriment	high	It was as much fun as watching grass grow .
+d-0598	voa-8003108-s0019	7	games	game	Noun	game#competition	high	I really don't like watching long sports games .
+d-0537	voa-7148920-s0011	11	garden	garden	Noun	garden#patch	low	Olsen called the arboretum a " science-based research facility and public garden . "
+d-0036	gutenberg-17625-s1021	0	Gas	gas	Noun	gas#fluid	low	Gas rich in hydrocarbons which in turn are rich in carbon is high in illuminating value .
+d-0024	gutenberg-16594-s0590	21	generally	generally	Adverb	generally#by-and-large	high	Farm horses were of two varieties : the ' affer ' or ' stott ' , a rough small animal , generally worth about 13s .
+d-0287	nws-jetstream-tsunamis-tsunami-generation-landslides-s0004	1	generation	generation	Noun	generation#genesis	low	Tsunami generation depends on the amount of landslide material that displaces the water , the speed it is moving , and the depth it moves to .
+d-0194	gutenberg-98-s2824	1	gently	gently	Adverb	gently#mildly	high	Looking gently at him again , she was surprised and saddened to see that there were tears in his eyes .
+d-0139	gutenberg-580-s4473	9	gave	give	Verb	give#throw	high	Bless us ! what an appalling look old Lobbs gave him , as he dragged him out by the collar , and held him at arm 's length .
+d-0373	tatoeba-12766784	1	gives	give	Verb	give#transfer	low	Representation gives power to the marginalized .
+d-0107	gutenberg-507-s6391	18	glad	glad	Adjective	glad#adjective	low	An ' me , as thought him such a good upright young man , as I should be glad when he come to be our landlord .
+d-0316	tatoeba-11261806	12	gloss	gloss	Noun	gloss#burnish	high	The furniture was beautifully polished , but did not have a bright gloss .
+d-0397	tatoeba-9365494	2	gnaw	gnaw	Verb	gnaw#chew	high	Nibble and gnaw like a mouse !
+d-0516	voa-4869868-s0051	8	good	good	Adjective	good#adjective	low	If he can help you , it's a good idea to help him .
+d-0021	gutenberg-16594-s0102	11	grass	grass	Noun	grass#graminaceous-plant	high	Many demesne lands let , and much land laid down to grass .
+d-0123	gutenberg-52085-s1568	22	grasshopper	grasshopper	Noun	grasshopper#hopper	high	Wondering how the spider would discover a victim caught in the web , I examined it carefully , and then placed a grasshopper in the web .
+d-0085	gutenberg-34400-s4040	5	grave	grave	Adjective	grave#sedate	high	Soult , Mortier and the grave Davout were at times carried away by Oudinot 's extravagant spirits , and used to amuse themselves after dinner by extinguishing the candles on the table with pistol shots .
+d-0064	gutenberg-2701-s0480	2	green	green	Adjective	green#dark-green	high	Are the green fields gone ?
+d-0390	tatoeba-7744154	9	green	green	Adjective	green#dark-green	high	The secretion from Tom 's wound was a horrible green color .
+d-0360	tatoeba-12280545	4	guys	guy	Noun	guy#bozo	high	Evolutionary psychology is some guys telling stories about why they think things are the way they are .
+d-0275	nws-jetstream-ll-h2ocontent-s0026	11	hail	hail	Noun	hail#downfall	high	The stronger the updraft , the more weight of rain and hail that can be supported .
+d-0574	voa-7864126-s0010	3	hard	hard	Adjective	hard#difficult	low	The work was hard and dangerous .
+d-0320	tatoeba-11358495	4	has	have	Verb	have#have-got	high	Not every racist country has the same racial classification system .
+d-0092	gutenberg-37856-s1146	12	heaps	heap	Noun	heap#agglomerate	high	The sea trout is gorged with herring spawn , which lies in heaps like so much sawdust on the shores and shallow places of the ocean .
+d-0215	nps-acad-wildland-fire-s0015	8	heavily	heavily	Adverb	heavily#to-a-great-extent	high	The fire management program is small and relies heavily on the local fire departments for help .
+d-0172	gutenberg-73-s2230	13	heraldic	heraldic	Adjective	heraldic#adjective	high	He stared for a while at the leaves overhead , moving in a heraldic wind of the day .
+d-0456	usgs-science-snippet-bringing-science-bear-cinnabar-mine-s0018	5	here	here	Adverb	here#adverb	high	Learn more about this project here , and learn more about other USGS minerals research in the Yellowpine area here .
+d-0489	usgs-sr-usgs-makes-425-million-bipartisan-infrastructure-law-funds-a-s0008	8	here	here	Adverb	here#adverb	high	More information on Earth MRI can be found here .
+d-0066	gutenberg-2701-s1516	10	high	high	Adjective	high#adjective-2	high	It was of a conical shape , some ten feet high ; consisting of the long , huge slabs of limber black bone taken from the middle and highest part of the jaws of the right-whale .
+d-0210	nps-acad-scenic-views-and-viewsheds-s0006	10	historic	historic	Adjective	historic#historical	low	In recent years , park staff have been actively restoring historic vistas on the carriage road system through a vista management project .
+d-0429	usgs-featured-story-understanding-your-communitys-volcano-hazard-risk-one-way-pl-s0017	16	history	history	Noun	history#past	high	The eruption lasted 107 days and ranks as one of the costliest volcanic disasters in U.S. history .
+d-0364	tatoeba-12381110	6	hit	hit	Noun	hit#hitting	low	The aircraft carrier sustained a direct hit from a torpedo .
+d-0329	tatoeba-11608539	12	hit	hit	Verb	hit#touch	high	He says his mother Lena was a stern disciplinarian , and would hit him with anything at hand .
+d-0379	tatoeba-12774862	3	honesty	honesty	Noun	honesty#honestness	high	He negotiated with honesty .
+d-0193	gutenberg-98-s0066	1	horses	horse	Noun	horse#equus-caballus	high	The horses stopped to breathe again , and the guard got down to skid the wheel for the descent , and open the coach-door to let the passengers in .
+d-0105	gutenberg-507-s5957	8	hurrying	hurry	Verb	hurry#speed	high	They heard the gurgling of the full brooklet hurrying down the hill , and the faint twittering of the early birds .
+d-0563	voa-7652826-s0026	16	idea	idea	Noun	idea#thought	high	When we use " though " in this way , we use it after the main idea .
+d-0336	tatoeba-11870246	15	ideal	ideal	Adjective	ideal#adjective	high	" I think my ideal temperature is like 68 . " " No , your ideal temperature is 98.6 , same as mine . "
+d-0271	nws-jetstream-doppler-how-radar-works-s0047	2	image	image	Noun	image#icon	high	The left image shows how the Doppler radar can detect rotation .
+d-0468	usgs-science-snippet-scientists-ground-truth-what-influences-hurricanes-s0011	20	immediately	immediately	Adverb	immediately#at-once	low	The early Holocene provides a point of comparison because it was similar to the environmental conditions of today and occurred immediately after the Younger Dryas .
+d-0307	tatoeba-10984262	9	imposed	impose	Verb	impose#bring-down	low	Having found , as I do that the restrictions imposed on the applicant are unlawful , it is hereby ordered that they are lifted .
+d-0224	nps-crla-hc-collections-s0007	4	include	include	Verb	include#have	high	The park 's collections include artifacts , specimens , and objects , from the disciplines of biology , geology , archeology , history , art , and archives .
+d-0248	nps-seki-airqualitymon-s0030	10	include	include	Verb	include#have	high	Toxic air pollutants ( also called " contaminants " ) include pesticides , industrial by-products , heavy metals like mercury , and flame retardants for fabrics .
+d-0142	gutenberg-580-s9903	3	indeed	indeed	Adverb	indeed#so	high	' This is indeed a pleasure I did not expect .
+d-0042	gutenberg-17625-s2049	9	indicate	indicate	Verb	indicate#designate	low	In fact , short flashes have been employed to indicate a certain number so that a mariner could recognize the light by a number rather than by means of his watch .
+d-0022	gutenberg-16594-s0186	17	individual	individual	Noun	individual#mortal	low	There was co-operation in working the fields but no communistic division of the crops , and the individual 's hold upon his strips developed rapidly into an inheritable and partible ownership .
+d-0365	tatoeba-12381457	4	insects	insect	Noun	insect#arthropod	high	These signals tell other insects not to eat that plant and move along , in order to avoid any competition between insects . The signals also warn others of possibly-dangerous chemical compounds in the plant .
+d-0056	gutenberg-24001-s0899	9	instances	instance	Noun	instance#case	high	But , except in certain great cities , such instances are rare .
+d-0015	gutenberg-12359-s0231	32	instead	instead	Adverb	instead#alternatively	high	This is indeed a consistent conclusion from Wallace 's suggestion that natural selection , in working toward the genesis of man , began to follow a new path and make psychical changes instead of physical changes .
+d-0102	gutenberg-507-s2697	12	instead	instead	Adverb	instead#alternatively	high	And it is best to fix our minds on that certainty , instead of considering what may be the elements of excuse for us .
+d-0386	tatoeba-4514722	5	island	island	Noun	island#dry-land	high	The Flevopolder , the southern island of Flevoland , is the biggest artificial island in the world with an area of 970 km² .
+d-0075	gutenberg-2701-s7647	8	jumped	jump	Verb	jump#jump-off	high	Let 'em go drown like Pip , that jumped from a whale-boat .
+d-0303	tatoeba-10778149	4	keys	key	Noun	key#device	high	I fumbled for my keys as I approached the entrance .
+d-0519	voa-5203657-s0036	2	know	know	Verb	know#cognise	high	Maybe we know something that no one else does and it shows on our face .
+d-0557	voa-7398657-s0023	9	knowing	know	Verb	know#cognise-2	high	A : I have a friend who lied about knowing sign language on her resume .
+d-0479	usgs-sediment-and-suspended-sediment-s0001	18	lakes	lake	Noun	lake#body-of-water	high	Water in nature is never really totally clear , especially in surface water , such as rivers and lakes .
+d-0549	voa-7395080-s0020	1	language	language	Noun	language#linguistic-communication	high	The language we use in the predicate to describe a gift purchase often falls into a simple pattern : transitive verb + noun phrase 1+noun phrase 2 .
+d-0049	gutenberg-17625-s4014	12	large	large	Adjective	large#big	high	For example , a given spectral hue may be converted into a large family of tints by the addition of various amounts of white light .
+d-0286	nws-jetstream-tsunamis-tsunami-generation-landslides-s0002	10	large	large	Adjective	large#big	high	While icefalls/avalanches and glacial calving ( the breaking off of large pieces of ice from a glacier ) are not really landslides , they act the same and are considered in this discussion of landslides .
+d-0288	nws-jetstream-tsunamis-tsunami-generation-landslides-s0012	5	large	large	Adjective	large#big	high	Even earthquakes that are not large enough to directly generate a tsunami may be large enough to cause a landslide that in turn can generate a tsunami .
+d-0269	nws-jetstream-doppler-how-radar-works-s0025	4	lasts	last	Verb	last#endure	high	Each transmitted pulse only lasts 1.57 millionths of a second ( 0.00000157 ) and is repeated around 1300 times per second .
+d-0007	gutenberg-12359-s0016	1	last	last	Adjective	last#adjective	high	The last century has witnessed an unprecedented development in the significance of education .
+d-0003	gutenberg-110-s3469	4	later	late	Adjective	late#adjective	low	" Why , 'tis later than I thought , " he said .
+d-0469	usgs-science-snippet-unusual-suspects-diving-ducks-and-avian-influenza-s0009	20	less	less	Adjective	less#adjective	high	Data from this study suggests that while diving ducks are viable vectors for highly pathogenic avian influenza , they shed less virus during a shorter window of time than dabbling ducks .
+d-0403	tatoeba-9954433	5	license	license	Noun	license#licence	low	Tom 's car had no license plates .
+d-0430	usgs-featured-story-understanding-your-communitys-volcano-hazard-risk-one-way-pl-s0023	15	life	life	Noun	life#aliveness	high	During this September 's National Preparedness Month , communities and individuals can minimize loss of life and property by making basic preparations now .
+d-0561	voa-7467075-s0033	16	lifeless	lifeless	Adjective	lifeless#exanimate	low	In the expression " dead ringer , " the word " dead " does not mean lifeless .
+d-0182	gutenberg-76117-s0353	8	lighting	lighting	Noun	lighting#light	low	This bath is much superior in size , lighting , and ventilation , to the establishment in Davies Street .
+d-0294	nws-safety-tornado-s0007	22	lightning	lightning	Noun	lightning#atmospheric-electricity	high	You'll also find links to research , past events other topics of interest as well as downloadable safety handouts about thunderstorms , lightning , and tornadoes .
+d-0411	usgs-featured-story-determining-how-high-floodwaters-reached-helps-communities-p-s0006	17	locations	location	Noun	location#object	high	As soon as conditions permit after a storm , teams of USGS scientists will go to flooded locations to find and measure these marks .
+d-0199	gutenberg-98-s7132	4	look	look	Verb	look#act	high	" Look back , look back , and see if we are pursued ! "
+d-0567	voa-7842145-s0027	3	look	look	Verb	look#act	high	Next , let's look at three other ways we can use the word " near . "
+d-0488	usgs-sr-media-alert-wyoming-state-geological-survey-and-us-geologica-s0009	9	made	make	Verb	make#get	low	Data collected as part of this effort will be made public and used by the WSGS and the USGS to guide more detailed geologic mapping at local scales .
+d-0543	voa-7239420-s0004	3	made	make	Verb	make#get	low	But overhunting has made it difficult to keep harvesting the animals in China .
+d-0138	gutenberg-580-s3869	6	mamma	mamma	Noun	mamma#ma	high	' They are very like their mamma , Sir , ' said Mr. Pott , majestically .
+d-0164	gutenberg-73-s0512	13	men	man	Noun	man#military-man	high	Veteran regiments in the army were likely to be very small aggregations of men .
+d-0487	usgs-sr-media-alert-usgs-dye-tracing-study-kansas-river-aid-protecti-s0008	23	management	management	Noun	management#direction	high	" With so many people dependent upon surface water supplies in Kansas , understanding how those rivers move is critical to proper water management . "
+d-0417	usgs-featured-story-guiding-rovers-safe-mars-exploration-s0009	17	maps	map	Noun	map#representation	high	" The USGS is the planetary cartographer for NASA -- they are the lead for creating planetary maps for our agency , " said Golombek .
+d-0473	usgs-science-snippet-volunteering-science-0-s0002	25	map	map	Noun	map#representation	high	The USGS crowdsourcing project called The National Map Corps uses volunteer citizens interested in accurate cartography to validate or edit structures to improve USGS topographic map products .
+d-0460	usgs-science-snippet-earthview-glaciers-worldwide-are-retreating-one-defies-trend-s0006	8	mass	mass	Noun	mass#physical-property	low	Many glaciers around the world are losing ice mass and retreating .
+d-0363	tatoeba-12369649	30	metabolism	metabolism	Noun	metabolism#metabolic-process	high	Amphibians , which include frogs , toads , and salamanders , are cold-blooded , or poikilothermic , meaning they regulate their body temperature through external sources rather than by internal metabolism .
+d-0484	usgs-sr-earth-mri-funds-critical-minerals-projects-new-mexico-s0012	24	metals	metal	Noun	metal#metallic-element	high	The area has the potential for critical mineral commodities like beryllium , niobium , rare earth elements and uranium , as well as precious metals like gold and silver .
+d-0442	usgs-nr-energy-development-migration-corridors-affects-mule-deer-acc-s0009	16	middle	middle	Noun	middle#center	high	Over the study period , dozens of new wells were drilled for coalbed-methane extraction in the middle of an existing mule deer corridor .
+d-0150	gutenberg-63678-s2845	6	miles	mile	Noun	mile#international-mile	high	The Oakmulge here is about forty miles distance from the Ocone , the other arm of the Alatamaha .
+d-0012	gutenberg-12359-s0130	11	more	more	Adverb	more#to-a-greater-extent	high	Among slightly teachable mammals , however , there is one group more teachable than the rest .
+d-0220	nps-cany-hc-jerrybanta-s0047	6	more	more	Adverb	more#to-a-greater-extent	high	Finally , park management has become more public .
+d-0541	voa-7207442-s0015	13	morning	morning	Noun	morning#forenoon	high	They are the only employees , and they talk on the radio every morning .
+d-0413	usgs-featured-story-determining-how-high-floodwaters-reached-helps-communities-p-s0013	17	most	most	Adjective	most#adjective	high	A supplemental system for collecting high-water mark data is also used by the USGS and installed at most USGS streamgage locations .
+d-0585	voa-7897363-s0012	21	most	most	Adverb	most#to-the-highest-degree	high	" What have I worked for if I'm not going to do the things that matter most , and this mattered most , " Lindenberg said .
+d-0002	gutenberg-110-s0313	3	mother	mother	Noun	mother#female-parent	high	There stood her mother amid the group of children , as Tess had left her , hanging over the Monday washing-tub , which had now , as always , lingered on to the end of the week .
+d-0161	gutenberg-72014-s1468	11	naked	naked	Adjective	naked#adjective-2	high	STEM shrubby , grows rather more than a foot high , naked beneath , and upright ; the branches grow zig-zagged , and twiggy ; the smaller branches are short , and grow mostly by threes .
+d-0509	voa-4710890-s0012	3	names	name	Noun	name#language-unit	high	Two of his names -- Santa Claus and Saint Nicholas -- both come from the Dutch who settled in New York long ago .
+d-0258	nps-yose-hc-ansel-adams-s0040	17	national	national	Adjective	national#adjective-4	high	With the Sierra Club , he advocated in 1936 for the establishment of Kings Canyon as a national park .
+d-0233	nps-grca-cynsk-v15-s0010	29	native	native	Adjective	native#adjective	high	Most non-native plants that get brought to an area , either on purpose or by accident , don't cause major problems , but invasive plants aggressively spread and out-compete native plants , disrupting native habitat .
+d-0097	gutenberg-43-s0854	15	nearly	nearly	Adverb	nearly#about	high	These covered a period of many years , but I observed that the entries ceased nearly a year ago and quite abruptly .
+d-0581	voa-7876003-s0027	4	nervous	nervous	Adjective	nervous#anxious	high	It's normal to feel nervous before giving a speech .
+d-0159	gutenberg-65735-s2879	14	new	new	Adjective	new#adjective	high	Several times was Faraday known , when asked about the possible utility of some new scientific discovery , to quote Franklin 's rejoinder : " What is the use of a baby ? "
+d-0504	voa-4620573-s0031	8	new	new	Adjective	new#adjective	low	They learned how to write stories in the new writing class .
+d-0082	gutenberg-34400-s2401	2	night	night	Noun	night#dark	high	During that night it crossed the Danube , under cover of the terrific thunderstorm which hid the French advance from the Austrians .
+d-0197	gutenberg-98-s4354	3	night	night	Noun	night#dark	high	Not before dark night did the men and women come back to the children , wailing and breadless .
+d-0282	nws-jetstream-tropical-enso-enso-patterns-s0015	13	normal	normal	Adjective	normal#adjective	high	This leads to increased upwelling off South America and leading to lower than normal sea surface temperatures .
+d-0028	gutenberg-16594-s2805	6	north	north	Noun	north#location	high	The management of sheep in the north of England was wretched .
+d-0020	gutenberg-164-s6318	18	northern	northern	Adjective	northern#adjective-2	high	There , not only vessels , but whales are sacrificed , as well as white bears from the northern regions .
+d-0375	tatoeba-12768167	6	now	now	Adverb	now#at-present	high	Is it safe to go outside now ?
+d-0404	usgs-featured-story-and-after-photos-se-beach-dunes-lost-hurricane-matthew-s0006	2	now	now	Adverb	now#at-present	high	They are now comparing low-altitude , oblique aerial photos taken in September 2014 to photos collected Oct .
+d-0515	voa-4869868-s0034	0	Now	now	Adverb	now#adverb-4	high	Now , if you really like your job and it pays well , you probably want to keep it .
+d-0252	nps-wica-hc-alvin-mcdonalds-diary-text-s0247	30	obstacle	obstacle	Noun	obstacle#impediment	high	I left J.M. Moore at the top of the crevice & started down It ( the crevice ) when I got about half way down I met with a bothersome obstacle in the shape of a rock .
+d-0457	usgs-science-snippet-earthquakes-can-strike-faster-a-new-york-minute-what-do-when-s0008	22	occurs	occur	Verb	occur#come-about	high	And since you can't stop them , the best you can do is know they're possible and how to respond if one occurs .
+d-0276	nws-jetstream-ocean-circulations-s0005	8	ocean	ocean	Noun	ocean#body-of-water	high	The ultimate reason for the world 's surface ocean currents is the sun .
+d-0304	tatoeba-10792514	30	official	official	Noun	official#functionary	high	The commission has been asked to ascertain the origin , authenticity and purpose of the unsigned memo delivered in May to Admiral Mike Mullen , then the top U.S military official .
+d-0060	gutenberg-24001-s3176	5	once	once	Adverb	once#in-one-case	high	She nursed her child but once after the accession of the disease , and in two hours subsequently it was affected with general convulsions , from which it died during the night .
+d-0063	gutenberg-24001-s4772	2	opinion	opinion	Noun	opinion#popular-opinion	high	The popular opinion , every one knows , is , that the period of the change of life is one peculiarly dangerous to women .
+d-0198	gutenberg-98-s6324	12	ordered	order	Verb	order#enjoin	high	They kept him out in the unwholesome mists at night , and ordered him back into his harness in the day .
+d-0176	gutenberg-76117-s0027	19	other	other	Adjective	other#adjective	high	Very rapid swimming , of course , will soon exhaust even the most experienced swimmer , just as any other violent exercise will exhaust .
+d-0201	nps-acad-birds-s0027	31	other	other	Adjective	other#adjective	high	False Report : Species was reported to occur within the park , but current evidence indicates the report was based on misidentification , a taxonomic concept no longer accepted , or other similar problem of error or interpretation .
+d-0335	tatoeba-11860480	30	other	other	Adjective	other#adjective	high	I now asked myself -- still in connection with my son-in-law's extravagant expenditure -- whether the clew to the mystery might not haply be the forging of bank-notes on the other side of the baize door .
+d-0200	gutenberg-98-s7154	11	out	out	Adverb	out#adverb-2	high	" What is it ? " asks Mr. Lorry , looking out at window .
+d-0151	gutenberg-63678-s3465	27	overtook	overtake	Verb	overtake#catch	high	On my journey from Mobile to the Nation , just after we had passed the junction of the Pensacola road with our path , two young traders overtook us on their way to the Nation .
+d-0117	gutenberg-52085-s0871	7	oysters	oyster	Noun	oyster#bivalve	high	In Ceylon it is estimated that 17,000,000 oysters are destroyed to obtain $ 80,000 worth of pearls .
+d-0126	gutenberg-52085-s1930	2	pads	pad	Noun	pad#anatomical-structure	high	The little pads are extremely irritating at times when the fly walks over the flesh , tapping here and there with its soft tongue , in which all parts except the labium are rudimentary .
+d-0302	tatoeba-10755930	14	parents	parent	Noun	parent#genitor	high	I'm trying to save up some money so I can move out of my parents ' house .
+d-0312	tatoeba-11158291	11	parliament	parliament	Noun	parliament#general-assembly	high	Eight lawmakers are sponsoring the bill , which was introduced in parliament Monday .
+d-0378	tatoeba-12770588	3	path	path	Noun	path#way	high	I walk the path of quiet courage .
+d-0234	nps-grca-cynsk-v15-s0022	10	people	person	Noun	person#individual	high	CREC is part of the AmeriCorps program and offers young people a combination of training , work experience and educational opportunities in collaboration with Coconino County and virtually every land management agency and organization in Arizona .
+d-0350	tatoeba-12102162	1	people	person	Noun	person#individual	high	More people lose money on cryptocurrency than win money .
+d-0545	voa-7347203-s0023	10	person	person	Noun	person#individual	high	From pessimism , we get the noun pessimist -- a person who expects the worst or is likely to have bad views on life .
+d-0135	gutenberg-580-s10174	25	persuading	persuade	Verb	persuade#cause	high	Outside a stable door at the bottom of a long back lane without a thoroughfare , a groom in undress was idling about , apparently persuading himself that he was doing something with a spade and a wheel-barrow .
+d-0421	usgs-featured-story-mapping-worlds-ocean-ecosystems-s0014	24	phosphate	phosphate	Noun	phosphate#inorganic-phosphate	high	Each point includes values for six chemical and physical attributes that influence marine life -- temperature , salinity , dissolved oxygen , nitrate , phosphate , and silicate .
+d-0088	gutenberg-37856-s0797	7	pipe	pipe	Noun	pipe#tobacco-pipe	high	I even tie a string to my pipe and knife .
+d-0283	nws-jetstream-tsunamis-tsunami-generation-earthquakes-s0003	21	plates	plate	Noun	plate#crustal-plate	high	Where the surfaces of these plates catch and lock along their boundary , stress builds up as the rest of the plates continue to move .
+d-0144	gutenberg-63678-s0422	5	pleasant	pleasant	Adjective	pleasant#adjective	high	After four days moderate and pleasant travelling , we arrived in the evening at the Buffalo Lick .
+d-0394	tatoeba-8816012	2	pointless	pointless	Adjective	pointless#otiose	high	Self-flagellation is pointless .
+d-0140	gutenberg-580-s6038	19	poker	poker	Noun	poker#fire-hook	high	You know what the counsel said , Sammy , as defended the gen'l'm'n as beat his wife with the poker , venever he got jolly .
+d-0136	gutenberg-580-s1143	9	possible	possible	Adjective	possible#adjective	high	More than those who see me now would believe possible . '
+d-0521	voa-5326585-s0009	18	pound	pound	Noun	pound#lb	high	A great expression for that kind of behavior is , " An ounce of prevention is worth a pound of cure . "
+d-0406	usgs-featured-story-and-after-photos-se-beach-dunes-lost-hurricane-matthew-s0020	11	powerful	powerful	Adjective	powerful#adjective	high	And further south in the town of Flagler Beach , the powerful waves washed away a portion of Highway A1A , closing the beachfront highway indefinitely , and obliterated a 17-foot dune .
+d-0589	voa-7897363-s0046	3	prepared	prepare	Verb	prepare#fix	low	He has already prepared to be cremated and buried alongside Boots when the time comes .
+d-0470	usgs-science-snippet-unusual-suspects-diving-ducks-and-avian-influenza-s0010	21	prevalence	prevalence	Noun	prevalence#ratio	high	However , the potential for diving duck species to contribute to the spread of highly pathogenic avian influenza means that disease prevalence monitoring remains a vital need .
+d-0586	voa-7897363-s0014	20	property	property	Noun	property#belongings	low	Pet burials started in Hartsdale in 1896 when animal doctor Samuel Johnson let a woman bury her dog on his property of apple trees .
+d-0236	nps-grca-cynsk-v18-s0008	11	protect	protect	Verb	protect#defend	high	Each site was backfilled with dirt that had been excavated to protect them from the elements and further erosion , and planted with native vegetation .
+d-0313	tatoeba-11180070	16	protected	protect	Verb	protect#defend	high	Tom understood that the Kabyle language is part of the human heritage and that it is protected by UNESCO .
+d-0555	voa-7398657-s0018	14	protecting	protect	Verb	protect#defend	high	For example , after a photographer posted a picture on Instagram of a monkey protecting a human baby , her followers snowballed to over 1 million within a week !
+d-0226	nps-gett-birds-s0006	4	provide	provide	Verb	provide#furnish	high	Streams in the park provide habitat to waterfowl such as ring-necked ducks and Canada geese .
+d-0230	nps-gett-naturalfeaturesandecosystems-s0006	17	providing	provide	Verb	provide#furnish	high	Over 2,300 acres of the park 's landscape are planted in crops , pasture , or meadows providing the visitor with a glimpse of the local agrarian lifestyle .
+d-0505	voa-4658415-s0034	5	provide	provide	Verb	provide#bring-home-the-bacon	low	So , she has to provide for all of them .
+d-0289	nws-safety-drought-hazards-s0002	15	public	public	Noun	public#populace	high	They provide easy-to-understand infographics , educational materials , and social media content to help the public better prepare for and understand the impacts of drought .
+d-0361	tatoeba-12310351	4	public	public	Noun	public#populace	high	Kennedy says the Chinese public will also see what she calls underappreciated American masters like social realist Thomas Hart Benton , who will be represented by five paintings , part of a series called the American Historical Epic .
+d-0416	usgs-featured-story-earthquake-southern-california-90-years-ago-changed-way-we-b-s0033	0	Public	public	Adjective	public#adjective	high	Public school buildings were reasonably well-built , but they were masonry structures built without special resistance to earthquake shaking .
+d-0272	nws-jetstream-global-earning-lesson-its-rain-man-s0010	7	publish	publish	Verb	publish#bring-out	high	Your local National Weather Service office will publish rainfall reports for their spotter network , which can also be added to the map .
+d-0383	tatoeba-12777786	4	purpose	purpose	Noun	purpose#aim	low	Do we have a purpose beyond survival ?
+d-0095	gutenberg-43-s0225	15	putting	put	Verb	put#lay	high	Then he began slowly to mount the street , pausing every step or two and putting his hand to his brow like a man in mental perplexity .
+d-0242	nps-lavo-airquality-s0004	5	quality	quality	Noun	quality#caliber	low	The best indicator of air quality related to wildfire smoke is particle pollution level .
+d-0032	gutenberg-16594-s4680	10	quantities	quantity	Noun	quantity#amount	low	However disastrous to the farmer and landowner , the increased quantities and low prices of food thus obtained have been of inestimable benefit to the crowded population of England .
+d-0431	usgs-featured-story-usgs-deploying-more-gauges-florence-preparing-measure-floodi-s0033	17	readings	reading	Noun	reading#indication	high	When flooding is occurring , USGS field crews make real-time streamflow measurements to verify the streamgages ' readings .
+d-0052	gutenberg-24001-s0390	16	recent	recent	Adjective	recent#late	high	No doubt these children still retain in their blood the tropic fire which , at comparatively recent periods , their forefathers felt under the vertical rays of the torrid zone .
+d-0059	gutenberg-24001-s2367	7	reflecting	reflect	Verb	reflect#chew-over	high	The woman passed on , but , reflecting in whose name money was asked , felt that she had committed a great sin in refusing assistance .
+d-0466	usgs-science-snippet-peering-future-agricultural-change-s0003	22	region	region	Noun	region#location	high	Sohl and his colleagues have modified the Forecasting Scenarios of Land-Use Change model to project agricultural change by parcel across a large region in the U.S. Great Plains .
+d-0333	tatoeba-11729138	8	relations	relation	Noun	relation#dealings	high	In 1987 , the United States established diplomatic relations with Mongolia , best known as the birthplace of the Mongol emperor Genghis Khan .
+d-0493	voa-3510636-s0052	7	relativity	relativity	Noun	relativity#einstein-s-theory-of-relativity	high	Albert Einstein arriving at his theory of relativity and Isaak Newton getting hit on the head with an apple are both examples of eureka moments .
+d-0251	nps-seki-hc-gfmain-s0011	3	relocated	relocate	Verb	relocate#displace	high	Overnight accommodations were relocated outside the grove to Wuksachi Village .
+d-0463	usgs-science-snippet-earthview-landsat-reveals-industrial-growth-powder-river-bas-s0014	20	remaining	remain	Verb	remain#be	high	USGS officials estimate that mines in the Powder River Basin generally have less than 20 years of economically recoverable coal remaining .
+d-0157	gutenberg-65735-s2580	4	remarkably	remarkably	Adverb	remarkably#notably	high	These show a most remarkably sound perception of the material and mental furniture requisite for success .
+d-0206	nps-acad-night-skies-s0008	6	reminds	remind	Verb	remind#act	high	The Milky Way dazzles visitors and reminds us just how large our " home " galaxy truly is .
+d-0229	nps-gett-hc-places-s0004	21	remnants	remnant	Noun	remnant#leftover	high	The battlefield encompasses a mostly open agricultural area of rolling hills , scattered woodlots , and groupings of farmsteads that are remnants the south-central Pennsylvania farming community that existed in the 1800s .
+d-0577	voa-7864126-s0024	1	requires	require	Verb	require#need	high	It requires work .
+d-0166	gutenberg-73-s1169	23	rescue	rescue	Verb	rescue#deliver	high	He had considered the time , he said , to be one in which it was the duty of every little piece to rescue itself if possible .
+d-0156	gutenberg-65735-s2471	12	research	research	Noun	research#investigating	low	Faraday 's work for Trinity House continued during these last years of research work .
+d-0451	usgs-nr-purdue-university-host-new-multi-agency-research-partnership-s0022	32	research	research	Noun	research#investigating	low	" We look forward to the tremendous opportunity that collaboration with the Indiana CRU will bring to our state and Purdue University , " said Karen Plaut , executive vice president of research at Purdue University .
+d-0478	usgs-science-snippet-waterbirds-risk-chesapeake-bay-s0029	1	research	research	Noun	research#investigating	high	Preliminary research suggests that living shorelines may be able to counteract many of the negative impacts of traditional armoring on fish and invertebrates , but further research is needed to assess their ability to support waterbird communities .
+d-0029	gutenberg-16594-s3854	1	rest	rest	Noun	rest#balance	high	The rest of the live stock was in no way remarkable .
+d-0588	voa-7897363-s0041	16	rest	rest	Noun	rest#eternal-rest	high	There is a Martin family plot , where the elder Martin plans to be laid to rest when he dies .
+d-0414	usgs-featured-story-earthquake-southern-california-90-years-ago-changed-way-we-b-s0008	18	restored	restore	Verb	restore#reconstruct	high	Pleasant spring weather conditions prevailed across the region , and , at noon that day , the newly restored frigate Constitution sailed into Long Beach Harbor with pomp and circumstance .
+d-0209	nps-acad-scenic-views-and-viewsheds-s0001	3	road	road	Noun	road#route	high	Both the motor road system and the ( non-motorized ) carriage road system at the park were carefully laid out by prominent landscape architects to take advantage of spectacular views .
+d-0225	nps-gett-birds-s0002	16	robin	robin	Noun	robin#american-robin	high	With a careful ear one will be able to detect the cheerful tunes of the American robin or Yellow warbler .
+d-0476	usgs-science-snippet-waterbirds-risk-chesapeake-bay-s0009	21	roosting	roost	Verb	roost#perch-2	high	Shoreline armoring can displace wetland habitat by removing natural vegetation , which is used by waterbirds for foraging , nesting and roosting .
+d-0245	nps-maca-reptiles-and-amphibians-s0020	0	Salamanders	salamander	Noun	salamander#amphibian	high	Salamanders , toads , and frogs have mucus covering their skin which helps them absorb oxygen .
+d-0090	gutenberg-37856-s0998	3	same	same	Adjective	same#adjective	high	I believe the same trout did the same thing several times while I was fishing there .
+d-0039	gutenberg-17625-s1446	17	satisfied	satisfy	Verb	satisfy#conform-to	high	Flame-arcs have been produced which are close to daylight in color , and powerful blue-white flame-arcs have satisfied the needs of various chemical industries and photographic processes .
+d-0440	usgs-nr-climate-change-and-pesticides-imperil-a-once-common-pollinat-s0012	10	scenarios	scenario	Noun	scenario#assumption	high	" Considering the more severe , but probably more likely scenarios , western bumble bee populations are expected to decline an additional 51 % to 97 % from 2020 levels depending on the region . "
+d-0401	tatoeba-9805592	21	school	school	Noun	school#educational-institution	high	Pick any specific medical school to which you are applying , and tell the interviewer about it . What makes this school particularly desirable to you ?
+d-0281	nws-jetstream-tropical-enso-enso-patterns-s0004	2	sea	sea	Noun	sea#body-of-water	high	The average sea level height is about 1½ feet ( 46 cm ) higher near Indonesia than Peru .
+d-0114	gutenberg-52085-s0609	13	seen	see	Verb	see#comprehend	high	They have the same kind of feet , and among the spines is seen a singular handlike organ common to the starfishes .
+d-0190	gutenberg-766-s6297	5	seen	see	Verb	see#comprehend	high	I thought I had never seen Ham grin to anything like the extent to which he sat grinning at us now .
+d-0445	usgs-nr-energy-development-migration-corridors-affects-mule-deer-acc-s0025	11	sought	seek	Verb	seek#assay	high	In Wyoming , for example , state wildlife managers have long sought to map and conserve migration corridors , a practice now guided by state policy .
+d-0492	voa-3377983-s0043	6	several	several	Adjective	several#adjective	high	To stick your neck out has several meanings .
+d-0448	usgs-nr-project-underway-identify-algal-toxins-us-national-park-wate-s0002	15	severe	severe	Adjective	severe#adjective	high	HABs are a global concern that threaten human and aquatic ecosystem health and can cause severe economic damages .
+d-0426	usgs-featured-story-thirty-years-after-northridge-earthquake-new-tools-inform-sa-s0010	5	shaking	shaking	Noun	shaking#palpitation	low	There , people felt extreme shaking and structures experienced very heavy damage .
+d-0178	gutenberg-76117-s0068	32	shallow	shallow	Adjective	shallow#adjective	high	That a certain degree of fear or anxiety is one of the causal elements is , I think , sufficiently proved by the fact , that this so-called cramp never occurs in shallow water .
+d-0568	voa-7842145-s0032	15	short	short	Adjective	short#adjective-2	high	Remember that when we write compound adjectives , we must put a hyphen , or short line , connecting the two adjectives .
+d-0145	gutenberg-63678-s0636	16	shrimp	shrimp	Noun	shrimp#decapod	high	The bays and lagoons are stored with oysters and varieties of other shell-fish , crabs , shrimp , &c .
+d-0055	gutenberg-24001-s0764	1	single	single	Adjective	single#unmarried	high	The single life is forced upon many of both sexes , in our present social condition .
+d-0481	usgs-sediment-and-suspended-sediment-s0009	26	single	single	Adjective	single#adjective-2	high	In fact , so much sediment is carried during storms that over one-half of all the sediment moved during a year might be transported during a single storm period .
+d-0213	nps-acad-tides-s0034	1	slightly	slightly	Adverb	slightly#more-or-less	high	A slightly lower high tide , and a slightly higher low tide , result .
+d-0239	nps-hale-environmentalfactors-s0001	5	slopes	slope	Noun	slope#incline	high	Rainforests on Haleakalā's steep windward slopes receive as much as 120 inches of annual rainfall .
+d-0162	gutenberg-72014-s2240	27	small	small	Adjective	small#little	low	FLOWERS are numerous , in single whorls , near the summit of the branches , bending downward , and spreading , the foot-stalks hairy , with three small leaves fixed on their under part .
+d-0218	nps-arch-animals-s0013	12	snakes	snake	Noun	snake#ophidian	high	These include rock squirrels , antelope squirrels , chipmunks , lizards , snakes , hawks , and eagles .
+d-0517	voa-4878658-s0073	0	So	so	Adverb	so#adverb-5	high	So did I .
+d-0008	gutenberg-12359-s0019	29	social	social	Adjective	social#societal	high	The growth of the democratic spirit among men and institutions has made the education of children a public necessity , and lifted the school to a position of high social importance .
+d-0542	voa-7207442-s0046	13	songs	song	Noun	song#vocal	high	She said she got a lot of information and even heard Korean pop songs , known as K-pop .
+d-0195	gutenberg-98-s3135	11	spoke	speak	Verb	speak#talk-2	low	Yet , no one had followed them , and no man spoke when they entered the wine-shop , though the eyes of every man there were turned upon them .
+d-0334	tatoeba-11802967	4	speaks	speak	Verb	speak#talk-2	high	Not everyone who traditionally speaks Arabic identifies as Arab .
+d-0398	tatoeba-9735379	2	speaking	speak	Verb	speak#talk-2	high	I like speaking French to my dog .
+d-0385	tatoeba-1565645	5	species	species	Noun	species#taxon	high	The Great Jerboa is a species of rodent .
+d-0091	gutenberg-37856-s1140	14	specimen	specimen	Noun	specimen#example	high	These two specimens are not freakish individuals of their species -- like the blunt-nose specimen and the various other deformities -- but are quite common contrasting representatives of their tribe .
+d-0122	gutenberg-52085-s1469	27	spiders	spider	Noun	spider#arachnid	high	Among the best-known and attractive members of the lower animal kingdom are the insects , represented by the gorgeous butterflies , the iridescent beetles , the fierce spiders , and many others .
+d-0019	gutenberg-164-s5934	19	squadron	squadron	Noun	squadron#naval-unit	high	In 1779 , on the 4th of July , it was at the taking of Grenada , with the squadron of Admiral Estaing .
+d-0354	tatoeba-12225323	2	started	start	Verb	start#initiate	low	The chickens started a co-op .
+d-0500	voa-4266045-s0014	1	start	start	Verb	start#begin	high	Let's start by talking a little more about the phrase How about .
+d-0293	nws-safety-tornado-s0005	9	stay	stay	Verb	stay#remain	high	This website is designed to teach you how to stay safe when a tornado threatens .
+d-0376	tatoeba-12768256	6	step	step	Noun	step#measure	low	Are you ready for the next step ?
+d-0196	gutenberg-98-s3824	27	studious	studious	Adjective	studious#adjective	low	He was in his usual morning dress , and his face ( which Mr. Lorry could distinctly see ) , though still very pale , was calmly studious and attentive .
+d-0305	tatoeba-10921496	18	suffered	suffer	Verb	suffer#get	low	Kachere Rehabilitation Center is Malawi 's only free inpatient rehabilitation facility and has since 1995 helped hundreds who suffered from injuries such as strokes and spinal cord injuries .
+d-0208	nps-acad-night-skies-s0023	2	summer	summer	Noun	summer#summertime	high	During the summer and fall seasons , ranger programs enlighten visitors about how special these dark skies are and inspire them to think about protecting and restoring the darkness where they live as well .
+d-0184	gutenberg-76117-s0517	7	sun	sun	Noun	sun#sunlight	high	The water should be quite open to sun and air .
+d-0175	gutenberg-76117-s0026	2	swimmer	swimmer	Noun	swimmer#bather	high	The experienced swimmer lets the water do all the supporting business , and consequently swims deeper than the tyro .
+d-0371	tatoeba-12759735	12	system	system	Noun	system#scheme	low	Venus rotates in the opposite direction to most planets in the solar system .
+d-0068	gutenberg-2701-s2219	11	take	take	Verb	take#pull	high	Drive down your hat in presence of the Czar , and take it off to Queequeg !
+d-0432	usgs-featured-story-usgs-field-crews-document-isaias-effects-along-atlantic-coas-s0010	7	taking	take	Verb	take#find	high	Using hand-held instruments , the crews are taking water flow measurements on flood-swollen rivers and streams .
+d-0533	voa-6474764-s0035	4	teachers	teacher	Noun	teacher#instructor	high	In many places , teachers and students do not have a computer .
+d-0443	usgs-nr-energy-development-migration-corridors-affects-mule-deer-acc-s0011	1	team	team	Noun	team#squad	high	The team analyzed deer movements alongside daily changes in spring green-up , estimated using remote satellite imagery , to measure how well deer surfed along the corridor over the 14-year period .
+d-0103	gutenberg-507-s3286	6	tell	tell	Verb	tell#enjoin	high	" Aye , do ; and tell her to come to her mother in the dairy . "
+d-0393	tatoeba-8354744	8	tell	tell	Verb	tell#narrate	high	No one's ever been there and lived to tell the tale .
+d-0306	tatoeba-10981385	7	temperatures	temperature	Noun	temperature#physical-property	high	A double blast of heavy snow and temperatures dropping to minus 22 degrees Celsius made the downhill race treacherous on Sunday , and only 46 of 87 skiers were able to finish the course .
+d-0439	usgs-nr-climate-change-and-pesticides-imperil-a-once-common-pollinat-s0002	10	temperatures	temperature	Noun	temperature#physical-property	high	Using data from 1998-2020 , scientists determined that increasing summer temperatures and drought partly drove declines of the native western bumble bee in recent decades , with rising temperatures being particularly important .
+d-0318	tatoeba-11269048	12	tended	tend	Verb	tend#attend	high	From the porch he can see 90-year-old raisin vineyards his family has tended since before he was born .
+d-0299	tatoeba-10247761	3	terrible	terrible	Adjective	terrible#abominable	high	Your handwriting is terrible .
+d-0491	voa-3377983-s0035	0	Then	then	Adverb	then#and-so	high	Then you see it : An accident on the other side of the road .
+d-0502	voa-4266045-s0081	10	then	then	Adverb	then#and-so	high	When you decline a suggestion , you may want to then politely suggest something else .
+d-0170	gutenberg-73-s1860	18	There	there	Adverb	there#adverb	high	As he imagined himself passing near a crowd of comrades , he could hear one say , " There he goes ! "
+d-0471	usgs-science-snippet-unusual-suspects-diving-ducks-and-avian-influenza-s0012	16	threat	threat	Noun	threat#menace	high	USGS scientists will continue their research on avian influenza to keep pace with the constantly changing threat presented by this virus .
+d-0143	gutenberg-63678-s0188	7	threw	throw	Verb	throw#loft	low	As he ran by us , he threw on board ten or a dozen bass , a large and delicious fish , having caught a great number of them whilst he was detained in harbour .
+d-0453	usgs-nr-usgs-deploys-sensors-along-floridas-gulf-coast-measure-impac-s0007	23	tide	tide	Noun	tide#periodic-event	low	The USGS wave sensors will measure water levels and give insight on factors such as wave height and frequency as well as storm tide , which is storm surge combined with local tides .
+d-0495	voa-3778756-s0052	3	time	time	Noun	time#period	high	Do you have time ?
+d-0571	voa-7864126-s0005	12	time	time	Noun	time#period	high	But finding these riches and bringing them to the surface takes much time and effort .
+d-0594	voa-7897488-s0036	31	time	time	Noun	time#period-2	high	Come in from the cold can also be used when someone or something becomes popular , accepted , or active again after being unpopular , unaccepted , and inactive for a time .
+d-0341	tatoeba-11952196	14	too	too	Adverb	too#excessively	high	She must have been very beautiful as a young girl , but was now too fierce and hawkish looking , though you would still call her handsome .
+d-0569	voa-7842145-s0038	11	too	too	Adverb	too#also	high	And please include where you are from in your email , too .
+d-0450	usgs-nr-project-underway-identify-algal-toxins-us-national-park-wate-s0015	21	tools	tool	Noun	tool#implement	high	These techniques range from citizen scientists viewing phytoplankton species under a microscope to colorful , donut-shaped Solid Phase Adsorption Toxin Tracking tools , which track toxin presence over time .
+d-0228	nps-gett-hc-places-s0003	9	town	town	Noun	town#municipality	high	Curving back on the hook , just southeast of town , is Culp 's Hill , and at the southern end is a series of hills called the Round Tops .
+d-0540	voa-7207442-s0013	7	town	town	Noun	town#municipality	high	One of them is in the small town of Dimmitt , Texas .
+d-0437	usgs-infiltration-and-water-cycle-s0018	13	transpiration	transpiration	Noun	transpiration#biological-process	high	Water in the soil is used by plants in life functions and leaf transpiration , but it also can evaporate directly to the atmosphere .
+d-0455	usgs-science-snippet-bringing-science-bear-cinnabar-mine-s0014	0	Transportation	transportation	Noun	transportation#conveyance	high	Transportation of mercury and arsenic from mine tailings to downstream sediments is evaluated using mineralogical , geochemical and isotope analyses .
+d-0308	tatoeba-10986359	11	trees	tree	Noun	tree#ligneous-plant	high	The palm weevil grub , a fat worm found in palm trees , is such a popular source of protein that it has squirmed out of the forests and onto the plates at popular restaurants .
+d-0094	gutenberg-37856-s1601	0	Trout	trout	Noun	trout#food-fish	high	Trout do not like the same fly at all times any more than you are fond of feeding on one sort of meat .
+d-0255	nps-yose-animals-s0007	4	trout	trout	Noun	trout#food-fish	high	Non-native fish ( primarily trout ) have been introduced throughout the park .
+d-0185	gutenberg-76117-s0548	3	true	true	Adjective	true#adjective	high	This is undoubtedly true with respect to certain morbid states of the body -- such as scrofula ; but it is far from being universally true .
+d-0189	gutenberg-766-s6197	2	turned	turn	Verb	turn#aim	low	Mr. Barkis turned his eyes upon me , as if for my assent to this result of his reflections in bed ; and I gave it .
+d-0191	gutenberg-766-s8037	9	turned	turn	Verb	turn#move-around	high	I had not been walking long , when I turned a corner , and met her .
+d-0402	tatoeba-9936808	11	twice	twice	Adverb	twice#adverb	high	Tom 's spiritual father told him to receive Communion at least twice during the fast .
+d-0525	voa-5373439-s0010	16	unhappy	unhappy	Adjective	unhappy#adjective	high	When people are forced to stay in a remote or confined place , they may feel unhappy , restless and bored .
+d-0420	usgs-featured-story-mapping-worlds-ocean-ecosystems-s0003	18	unknown	unknown	Adjective	unknown#adjective	high	But the living conditions and resources in the enormous water masses of the open ocean have been mostly unknown and unmapped .
+d-0292	nws-safety-tornado-s0002	9	uprooting	uproot	Verb	uproot#deracinate-2	high	Tornadoes are capable of completely destroying well-made structures , uprooting trees , and hurling objects through the air like deadly missiles .
+d-0264	nps-zion-fish-s0039	5	utilize	utilize	Verb	utilize#apply	high	Fun Fact : Desert Suckers utilize a hard , protruding ridge in their lower lip made of cartilage to scrape rocks along the stream bed for algae .
+d-0327	tatoeba-11542153	13	vaccination	vaccination	Noun	vaccination#inoculation	high	While many anti-vaxxers question the safety and efficacy of vaccines , opposition to vaccination is often couched in libertarian terms : It's my body , my choice .
+d-0575	voa-7864126-s0014	10	valuable	valuable	Adjective	valuable#adjective	high	However , pay dirt does not have to be a valuable material found in the ground .
+d-0315	tatoeba-11229126	19	variables	variable	Noun	variable#thing	low	The Florida researchers say what defines a planet should be based on its own fundamental properties , rather than variables such as the dynamics of its orbit .
+d-0319	tatoeba-11321756	2	very	very	Adverb	very#most	high	Laïcité is very poorly disguised antisemitism and Islamophobia .
+d-0424	usgs-featured-story-new-usgs-model-shows-earthquake-hazard-probability-hawaiian--s0018	23	volcanic	volcanic	Adjective	volcanic#adjective	high	While earthquake activity remains high today , it seems to have decreased compared to the preceding century which could be related to less volcanic activity at Mauna Loa ( Figure 3 ) .
+d-0422	usgs-featured-story-mapping-worlds-ocean-ecosystems-s0028	17	volume	volume	Noun	volume#amount	high	Twenty -- two of the 37 ecosystems are extensive and account for 99 percent of the ocean volume , while the remaining 15 are smaller , shallower , and occur near coasts .
+d-0163	gutenberg-73-s0386	2	wags	wag	Noun	wag#card	high	The company wags all made their best endeavors .
+d-0523	voa-5326585-s0070	4	want	want	Verb	want#desire	high	The next time you want to take care and avoid problems down the road . . . use the expressions you heard here .
+d-0536	voa-6568992-s0034	2	want	want	Verb	want#desire	high	Do you want coffee or tea ?
+d-0547	voa-7395080-s0008	17	want	want	Verb	want#desire	high	In a recent Everyday Grammar lesson , we explored questions about gifts -- asking what others might want in terms of a gift .
+d-0367	tatoeba-12401471	5	war	war	Noun	war#warfare	high	POW stands for prisoner of war .
+d-0587	voa-7897363-s0037	7	war	war	Noun	war#warfare	high	A centerpiece at the cemetery is the war dog memorial at the top of a hill .
+d-0100	gutenberg-43-s1078	2	wavered	waver	Verb	waver#falter-3	low	My reason wavered , but it did not fail me utterly .
+d-0202	nps-acad-geologic-features-s0003	11	way	way	Noun	way#fashion	high	By sculpting the landscape itself , this process has shaped the way we experience and enjoy the park as a whole .
+d-0472	usgs-science-snippet-volunteering-science-0-s0001	12	way	way	Noun	way#journey	low	Citizen Scientists edit structures to improve US Topo Maps and along the way earn virtual badges .
+d-0579	voa-7876003-s0002	1	week	week	Noun	week#calendar-week	low	This week on Ask a Teacher , we answer a question from Masa in Japan about the usage of the words " it " and " that " in English conversation .
+d-0593	voa-7897488-s0031	1	week	week	Noun	week#calendar-week	high	Last week , I came into the meeting cold .
+d-0071	gutenberg-2701-s4594	4	whale	whale	Noun	whale#blower	high	" However recklessly the whale may sometimes serve us , " said humorous Stubb one day , " he can never be truly said to handle us without mittens . "
+d-0069	gutenberg-2701-s2779	27	whalers	whaler	Noun	whaler#whaling-ship	high	Hence , in whale-ships and merchantmen alike , the mates have their quarters with the captain ; and so , too , in most of the American whalers the harpooneers are lodged in the after part of the ship .
+d-0174	gutenberg-73-s3329	21	winning	win	Verb	win#act	high	The youth could not tell from the battle flags flying like crimson foam in many directions which color of cloth was winning .
+d-0134	gutenberg-5658-s6636	12	women	woman	Noun	woman#adult-female	high	At one moment there was a panic in the courtyard amongst the women ; shrieking ; a rush ; children crying -- Haji Sunan went out to quiet them .
+d-0546	voa-7347203-s0050	3	word	word	Noun	word#statement	low	And one final word about the adverb pessimistically .
+d-0565	voa-7652826-s0038	14	word	word	Noun	word#language-unit	high	When we use it this way , we stress the second part of the word , -ever .
+d-0566	voa-7842145-s0012	1	word	word	Noun	word#language-unit	high	The word " near " also has other meanings , as we will see .
+d-0477	usgs-science-snippet-waterbirds-risk-chesapeake-bay-s0021	14	years	year	Noun	year#twelvemonth	high	" The health of the Chesapeake Bay has been a concern for over 40 years , " said Prosser .
+d-0551	voa-7398579-s0017	9	year	year	Noun	year#twelvemonth	high	That number was up from 26 percent from a year earlier .
+d-0141	gutenberg-580-s8943	19	young	young	Adjective	young#immature	high	' I believe , Mr. Winkle , ' said Mr. Phunky , ' that Mr. Pickwick is not a young man ? '

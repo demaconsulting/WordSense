@@ -168,15 +168,25 @@ internal static class OpenCorpus
     /// <param name="sentence">The sentence.</param>
     /// <returns>The tagged sentence; a joined token has the tag of its first part, and the possessive <c>'s</c>, which is a
     /// separate token in running text, stays one.</returns>
-    public static TaggedSentence ToTagged(OpenSentence sentence)
+    public static TaggedSentence ToTagged(OpenSentence sentence) => ToTaggedWithSource(sentence).Sentence;
+
+    /// <summary>
+    ///     Turns a sentence into the tokens and tags the tagger works with (see <see cref="ToTagged"/>) and says which token
+    ///     of the corpus each joined token starts at.
+    /// </summary>
+    /// <param name="sentence">The sentence.</param>
+    /// <returns>The tagged sentence, and for each token of it the index of its first token in the corpus sentence (a joined contraction starts at its first part).</returns>
+    public static (TaggedSentence Sentence, int[] Source) ToTaggedWithSource(OpenSentence sentence)
     {
         ArgumentNullException.ThrowIfNull(sentence);
         var text = Straighten(sentence.Text).ToLowerInvariant();
         var forms = new List<string>();
         var tags = new List<string>();
         var gold = new List<GoldToken>();
-        foreach (var token in sentence.Tokens)
+        var source = new List<int>();
+        for (var t = 0; t < sentence.Tokens.Count; t++)
         {
+            var token = sentence.Tokens[t];
             var lower = Straighten(token.Form).ToLowerInvariant();
             var possessive = lower == "'s" && token.Upos == "PART";
             if (forms.Count > 0
@@ -192,9 +202,10 @@ internal static class OpenCorpus
             forms.Add(token.Form);
             tags.Add(token.Upos);
             gold.Add(new GoldToken(token.Lemma, string.Empty, token.Features));
+            source.Add(t);
         }
 
-        return new TaggedSentence([.. forms], [.. forms.Select((f, i) => TaggerCounts.MapTag(tags[i], f))], [.. gold]);
+        return (new TaggedSentence([.. forms], [.. forms.Select((f, i) => TaggerCounts.MapTag(tags[i], f))], [.. gold]), [.. source]);
     }
 
     private static string Straighten(string text) => text.Replace('\u2019', '\'');

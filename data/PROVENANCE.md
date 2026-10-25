@@ -61,8 +61,10 @@ a curated label and an authored gloss (`corpus/curation`).
   a count above 0 and 150,287 with the count 0 (the file lists no line, or lists 0). 27,255 lines of the file match no
   sense key of Open English WordNet 2025 (636 of them with a count above 0, 4,270 of the 249,492 tags), because
   the 2025 release changed some keys; those counts are not used.
-- The counts size the training data of each sense and feed the usage prior of the encoder training; they do not order the
-  senses of a lemma (the image keeps the order of Open English WordNet) and they are never
+- The counts size the training data of each sense, feed the usage prior of the encoder training and, as a 16-bit count for
+  each sense in the word image of the core package, the usage prior with which the Basic model ranks the senses of the
+  lemmas that no model scores; they do not order the senses of a lemma (the image keeps the order of Open English
+  WordNet) and they are never
   a sense label. SemCor 3.0, the sense-annotated text whose tags WordNet counts come from, is an **evaluation source
   only**: the builder downloads it to a cache to measure the models; it is never committed, redistributed or used for
   training.

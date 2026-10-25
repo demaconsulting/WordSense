@@ -201,7 +201,9 @@ arithmetic differs slightly between CPUs and operating systems, so the confidenc
 margin lies close to its threshold can be answered one level more or less precisely (BertBaseCased answers `back` at
 the sense level on one CPU and at its group `back#group:return` on another). A model never answers an untrained word at
 the sense level
-unless its lemma and part of speech have a single sense. The modal and helping verbs (`will`, `can`, `is`, `have`) have
+unless its lemma and part of speech have a single sense; it ranks the senses of the word by how often they are used
+(the `Senses` of its analyses, and the label of its `Key`), which is never an answer. The modal and helping verbs
+(`will`, `can`, `is`, `have`) have
 an `Auxiliary` analysis. A word that is not in the dictionary has `IsKnown` false, `Details` of `null`, the level
 `None` and a confidence of 0.
 Tokenize the text yourself, and classify one sentence per call where you can: punctuation is a token of its own, and a
@@ -262,12 +264,14 @@ embedded resource is damaged) and `DownloadConfigurationException` (an invalid m
 
 <!-- markdownlint-disable MD013 -->
 
+<!-- REMEASURE -->
+
 <!-- model-table:begin -->
 | Model | Real-text sense (share @ precision) | Running-text part of speech (open corpus test) | UD-EWT test part of speech (convention-mapped) | Independent sense evaluation (SemCor) | STE challenge set (part of speech) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Basic | 3.96% @ 74.74% | 93.87% (ambiguous 91.53%) | 91.65% (ambiguous 88.62%) | 3.25% @ 68.91% (top-1 2.53%) | 98.65% (ambiguous 97.83%) | none | 218 KiB | 4 MiB | 0.11 ms | 34 ms + 58 ms | no |
-| MiniLM | 7.93% @ 96.84% | 94.05% (ambiguous 91.83%) | 92.06% (ambiguous 89.26%) | 8.33% @ 88.71% (top-1 57.17%) | 98.65% (ambiguous 97.83%) | 22 MiB | 5,225 KiB | 98 MiB | 1.52 ms | 443 ms + 60 ms | yes |
-| BERT base cased | 27.16% @ 94.47% | 94.10% (ambiguous 91.90%) | 92.06% (ambiguous 89.26%) | 26.87% @ 86.63% (top-1 63.69%) | 98.20% (ambiguous 97.10%) | 104 MiB | 10,203 KiB | 221 MiB | 8.08 ms | 684 ms + 56 ms | yes |
+| Basic | 3.96% @ 74.74% | 93.87% (ambiguous 91.53%) | 91.65% (ambiguous 88.62%) | 3.25% @ 68.91% (top-1 55.71%) | 98.65% (ambiguous 97.83%) | none | 218 KiB | 4 MiB | 0.11 ms | 34 ms + 58 ms | no |
+| MiniLM | 7.93% @ 96.84% | 94.05% (ambiguous 91.83%) | 92.06% (ambiguous 89.26%) | 8.33% @ 88.71% (top-1 57.75%) | 98.65% (ambiguous 97.83%) | 22 MiB | 5,225 KiB | 98 MiB | 1.52 ms | 443 ms + 60 ms | yes |
+| BERT base cased | 27.16% @ 94.47% | 94.10% (ambiguous 91.90%) | 92.06% (ambiguous 89.26%) | 26.87% @ 86.63% (top-1 64.98%) | 98.20% (ambiguous 97.10%) | 104 MiB | 10,203 KiB | 221 MiB | 8.08 ms | 684 ms + 56 ms | yes |
 <!-- model-table:end -->
 
 <!-- markdownlint-enable MD013 -->
@@ -277,16 +281,18 @@ embedded resource is damaged) and `DownloadConfigurationException` (an invalid m
 
 - ⚡ **Basic** (core package, no download, 0.11 ms a sentence): the part of speech of every word, the tense of a verb
   whose past and non-past share a spelling (`put`, `cut`, `read`: "I will read that tomorrow" against "I have read that
-  already", for all three models), and the sense of a
-  word that has one. Use it when the part of speech is all you need, and as the fallback of the other two.
+  already", for all three models), the sense of a
+  word that has one, and for every other word with several senses a ranking of them by how often they are used (a base
+  rate of the lemma, never an answer). Use it when the part of speech is all you need, and as the fallback of the
+  other two.
 - 🎯 **BertBaseCased** (104 MiB download, about 8 ms a sentence): the model for **fine senses**. For the 856 trained
   lemmas it commits to a fine sense on 27.2% of the real test sentences (26.9% of the SemCor words, the SemCor subset of
   825 of those lemmas) and is right in 94.5%
-  (86.6% on SemCor) of those answers; its most probable sense is right for 63.7% of the SemCor words, a little more
+  (86.6% on SemCor) of those answers; its most probable sense is right for 65.0% of the SemCor words, a little more
   often than always choosing the first sense in Open English WordNet order (60.7%, an optimistic baseline: see the SemCor
   caveat in [Accuracy and Model Choice](docs/user_guide/accuracy.md)).
 - ⚖️ **MiniLM** (22 MiB download, about 1.5 ms a sentence): mostly part of speech and groups. It commits to a fine
-  sense on 7.9% of the real test sentences (96.8% right) and its most probable sense is right for 57.2% of the
+  sense on 7.9% of the real test sentences (96.8% right) and its most probable sense is right for 57.8% of the
   SemCor words, below the first-sense baseline; choose it for the small download and the speed, not for senses.
 
 **What the columns measure.**
@@ -310,11 +316,16 @@ embedded resource is damaged) and `DownloadConfigurationException` (an invalid m
   probable sense is right. For comparison, always choosing the first (most frequent) sense of the right lemma and part of
   speech is right for 60.7% of these words; that baseline is optimistic because the order of the senses comes from
   WordNet counts that include SemCor itself. On all 184,323 mapped SemCor words of a trained lemma or of an untrained
-  lemma with two or more senses (17.1% of them are of a trained lemma), the fine top-1 falls to 14.3% for BertBaseCased,
-  13.2% for MiniLM and 3.8% for
-  Basic, against 69.7% for the tag-count first sense (an optimistic baseline for the same reason), because the models
-  rank no senses for lemmas they were not trained for (fine top-1 of 4.1% on those words; see
-  [Accuracy and Model Choice][link-accuracy]).
+  lemma with two or more senses (17.1% of them are of a trained lemma), the fine top-1 is 59.7% for BertBaseCased,
+  58.4% for MiniLM and 58.2% for
+  Basic, against 69.7% for the tag-count first sense (an optimistic baseline for the same reason): the models rank the
+  senses of the lemmas they were not trained for by the usage prior (the WordNet 3.0 tag counts, which include SemCor, so
+  that figure is circular on SemCor: it was 4.1% on those words before the models ranked them; see
+  [Accuracy and Model Choice][link-accuracy]). The independent measurement of the usage prior is the *all-words gold
+  set*: 397 tokens of untrained polysemous lemmas from the test split of the open corpus, labeled blind by two language
+  models (91.7% agreement), where the fine top-1 of the usage ranking is 65.0% for all three models (0% before, 68.5%
+  for the
+  first sense told the right lemma and part of speech; the share of sense answers and their precision did not change).
 - *STE challenge set*: the 32 hard sentences of simplified technical English of the open corpus, scored like the running
   text; it is small and chosen for its hard cases, so read it as a regression check and not as accuracy.
 
@@ -330,8 +341,8 @@ are corrected to the usage of the senses (WordNet 3.0 counts);
 when this correction was introduced it raised the fine top-1 on SemCor from 56.9% to 60.7% (BERT) and from 47.5% to
 53.6% (MiniLM) and lowered it slightly
 on the real test sentences, which are balanced by sense (see [Accuracy and Model Choice][link-accuracy]). The sense
-choice of the encoders is not yet clearly better than the first-sense baseline for the words they cover (BERT 63.7%,
-MiniLM 57.2%); the part of speech is the
+choice of the encoders is not yet clearly better than the first-sense baseline for the words they cover (BERT 65.0%,
+MiniLM 57.8%); the part of speech is the
 dependable part of an answer today. The RAM, latency and first-use columns were measured on one idle development
 machine (an Intel Core i7-13850HX laptop, Windows 11, .NET 10; the conditions and the spread of repeated runs are in
 [Accuracy and Model Choice][link-accuracy]), so they are machine dependent: read them as the order of magnitude and the
@@ -403,10 +414,12 @@ Package licenses:
 
 - **`DemaConsulting.WordSense`** (core): `MIT AND CC-BY-4.0`. The code and the project-authored word data are MIT; the
   embedded word image is derived from Open English WordNet 2025 (CC BY 4.0), the Moby Part-of-Speech List (public
-  domain) and the inflected forms that the project authored (CC0 1.0); the embedded statistical table of the `Basic`
+  domain), the inflected forms that the project authored (CC0 1.0) and the WordNet 3.0 sense frequency counts (the
+  WordNet license, a permissive license that requires its notice on every copy); the embedded statistical table of the `Basic`
   model is derived from our own CC0 1.0 corpora (the open part-of-speech corpus and the sentence corpus below). The
   package contains a `NOTICE.md` with the attribution of Open English WordNet, the Princeton WordNet notice that Open
-  English WordNet requires, and the Moby notice. There is no CC BY-SA material in any package. The former
+  English WordNet requires, the WordNet 3.0 notice of the sense frequency counts, and the Moby notice. There is no
+  CC BY-SA material in any package. The former
   `DemaConsulting.WordSense.Basic` package is retired (before version 1.0): its model, `Basic`, moved into the core
   package.
 - **`DemaConsulting.WordSense.MiniLM` and `DemaConsulting.WordSense.BertBaseCased`**: `MIT AND CC-BY-4.0`. The weights
@@ -453,9 +466,10 @@ Package licenses:
 - **WordNet 3.0** (Princeton University, <https://wordnet.princeton.edu>): the sense frequency counts of the word data
   (`data/sense_frequency`, from the WordNet 3.0 sense index `index.sense`) are used under the WordNet license: WordNet 3.0
   Copyright 2006 by Princeton University, all rights reserved; the full notice is in `data/PROVENANCE.md`. They are
-  used only for the usage prior that corrects the scores of the encoder weights (the order of the senses in the word
-  image is the order of Open English WordNet), so the `NOTICE.md` of the MiniLM and BertBaseCased packages reproduces
-  the notice and the core package does not.
+  used for the usage prior that corrects the scores of the encoder weights and for the usage prior that the Basic model
+  ranks the senses of the lemmas no model scores by (the counts are embedded in the word image of the core package; the
+  order of the senses in the word image is the order of Open English WordNet), so the `NOTICE.md` of the core package and
+  of the MiniLM and BertBaseCased packages reproduces the notice.
 - **SemCor 3.0** (the sense-annotated Brown Corpus text of the WordNet project): an evaluation source only. It is
   downloaded to a cache by the builder to measure the models, never committed, redistributed or used for training.
 

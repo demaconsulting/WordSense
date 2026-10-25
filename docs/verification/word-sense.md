@@ -94,7 +94,9 @@ level the result is answered at, the senses of the selected analysis are the sen
 ranked by their probability given the analysis with the most probable first, and their probabilities sum to one within a
 small tolerance, so that a consumer can sum `analysis.Probability * sense.Probability` per category of its own
 (`WordSense_Classifier_EndToEnd_SensesAreRankedAndSumToOne`, run for MiniLM and BertBaseCased once the encoder scores
-fine senses; the Basic model lists senses only for an analysis with exactly one sense, as the Basic unit documents
+fine senses; the Basic model lists the only sense of an analysis with exactly one sense and, for an analysis with
+several, its senses
+ranked by the usage prior, as the Basic unit documents
 shows).
 
 ### Composition of Two Models

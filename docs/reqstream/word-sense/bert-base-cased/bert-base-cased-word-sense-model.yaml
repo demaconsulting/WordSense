@@ -77,6 +77,39 @@ sections:
                 tests:
                   - BertBaseCasedWordSenseModel_PartOfSpeechAnswer_KeepsTheEncoderSlotProbabilities
 
+              - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-UsagePrior
+                title: >-
+                  BertBaseCasedWordSenseModel shall list, in the selected analysis of a word whose lemma the encoder has
+                  no weights for and whose lemma and part of speech have two or more senses, those senses ranked by the
+                  usage prior of the Basic model.
+                tags: [unit]
+                justification: |
+                  About 83 percent of the ambiguous words of running text have no trained weights; the ranking gives a
+                  consumer the likely senses of them.
+                tests:
+                  - BertBaseCasedWordSenseModel_Classify_UntrainedPolysemousWord_ListsSensesRankedByUsagePrior
+
+              - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-UsagePrior-Level
+                title: >-
+                  BertBaseCasedWordSenseModel shall answer a word whose lemma the encoder has no weights for and that
+                  has two or more senses at the part of speech level, with no sense id and no group id.
+                tags: [unit]
+                justification: |
+                  The answer level stays honest because the ranking is evidence about the lemma and never an answer.
+                tests:
+                  - BertBaseCasedWordSenseModel_Classify_UntrainedPolysemousWord_AnswersPartOfSpeechLevelWithoutSenseOrGroup
+
+              - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-UsagePrior-Key
+                title: >-
+                  The key of the result of BertBaseCasedWordSenseModel for a word whose lemma the encoder has no weights
+                  for and that has two or more senses shall carry the label of the top-ranked sense of the selected
+                  analysis.
+                tags: [unit]
+                justification: |
+                  The ranking gives the key of such a word a label, so that a consumer can look up a resource by it.
+                tests:
+                  - BertBaseCasedWordSenseModel_Classify_UntrainedPolysemousWord_KeyCarriesTheLabelOfTheTopRankedSense
+
               - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Options
                 title: >-
                   BertBaseCasedWordSenseModel shall accept an optional model directory and a maximum sequence length

@@ -63,9 +63,11 @@ builder and the tests grade alike). A model's answer is judged **at the level it
 
 The **grade** of a row is `fine` when the answer is right and, for a row with acceptable senses, the most probable
 ranked sense is one of them; `answer` when the answer is right at its own level but the top-ranked sense is not
-acceptable (or the model ranks no sense); `miss` otherwise. A model that answers at the part-of-speech level and does
-not rank senses (Basic) can reach `answer` but never `fine` on a row with acceptable senses; that is the honest
-difference between the models and is why the Basic model's fine rate is low.
+acceptable (or the model ranks no sense); `miss` otherwise. A model that answers at the part-of-speech level and ranks
+no senses for a word can reach `answer` but never `fine` on a row with acceptable senses. The Basic model ranks the senses
+of every analysis with two or more senses by usage (the usage prior, never an answer), so it can reach `fine` when the
+most frequent sense is an acceptable one; that is a base rate and not a decision of the context, which is why the fine
+rate of the Basic model stays below that of the encoder models.
 
 ## Conversion from the pronunciation classes
 
@@ -413,6 +415,41 @@ table above, and `H-defense-1` (BertBaseCased), which is platform-sensitive (see
 The analysis (lemma and part of speech) that the models chose was right for every cell above; the grade fell only because
 the top-ranked sense is not the one-sense label and was judged wrong in context. The grades are the measurement of the
 current models; if a later change improves them, the policy raises the expectation again.
+
+### The usage prior of the untrained lemmas (all three models, no retraining)
+
+`BasicClassifier` now ranks the senses of every analysis whose lemma and part of speech have two or more senses by the
+usage prior: the WordNet 3.0 tag count of each sense (embedded in the word image, format version 5) with add-one
+smoothing, equal counts in inventory order (see `docs/design/word-sense/core/basic-classifier.md`, "Usage Prior"). The
+encoder models answer a word whose lemma they have no weights for through Basic, so all three models inherit the
+ranking. It is a ranking and never an answer: the level, the confidence, the sense id and the group id of every result
+are those of the model before the change, and neither the encoder weights, `basic.bin` nor the inventory hash changed.
+Only the sense lists of the analyses gain content, so a row can only go up, and only the grade `fine` (the most probable
+ranked sense is an acceptable sense) can change. The expectation file was rewritten with
+`evaluate-suite --write-expectations` under rule 3 and the rule 4 rows restored (`C-content-6` and `H-close-4` stay `miss`
+and `H-defense-1` stays `answer` for BertBaseCased: the rewrite measured `fine` for all three on the development machine,
+see the platform-sensitive rows). Measured answered / fine on the 364 rows before and after, on the development machine
+(where BertBaseCased grades the three platform-sensitive rows `fine`): Basic 95.88% / 45.88% to
+95.88% / 78.30%, MiniLM 95.33% / 89.29% to 95.33% / 90.66%, BertBaseCased 98.63% / 94.23% to 98.63% / 95.60%.
+131 cells went up in the rewrite and none went down (three of them are the platform-sensitive rows, which stay as recorded):
+
+- **Basic, 118 rows from `answer` to `fine`** (76 rows of the list `H` and 42 of the list `C`): the rows that ask for a
+  sense of a common heteronym or a classic one (`bow`, `wound`, `polish`, `live`, ...) were answered at the
+  part-of-speech level without any ranked sense, so the most probable sense of the answer was empty; it is now the most
+  frequent sense of the lemma and part of speech, which is an acceptable sense of the row in these 118 rows. The rows of
+  the list `M` (the part of speech decides) and `T` do not change. The other rows of the lists `H` and `C` stay `answer`
+  or `miss`: a ranking that is the same in every sentence is right for only one of the senses of a lemma, so the rows
+  whose sentence calls for another sense, and the rows whose part of speech is wrong, do not change.
+- **MiniLM and BertBaseCased, the same five rows from `answer` to `fine`**: `H-live-2` (`My aunt lives in a small town by
+  the sea`), `H-august-3`, `H-august-4`, `C-dove-1` (`A gray dove sat quietly on the garden wall at dawn`) and `C-polish-7`
+  (`I will polish the silver before the guests arrive`): the encoders answer these rows through the Basic fallback (the
+  lemma has no weights, or the form is a form of several lemmas without a chooser), the fallback chooses the right analysis
+  and its most frequent sense is an acceptable sense of the row.
+
+The grades are a measurement of the models at the time of the change, as for every expectation: a model that later
+ranks these senses wrongly falls below them and fails the build, which is the point of the file. The suite is a regression
+check and says nothing about the accuracy of the ranking on running text; that measurement is the all-words gold set of
+`corpus/allwords` (see `docs/user_guide/accuracy.md`).
 
 ## Known misses
 

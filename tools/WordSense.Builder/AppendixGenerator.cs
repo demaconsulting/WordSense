@@ -135,7 +135,7 @@ internal static class AppendixGenerator
     /// <param name="data">The data folder.</param>
     /// <param name="lemmas">The lemmas.</param>
     /// <returns>The definitions of the synset of each sense joined with a semicolon, by public sense id.</returns>
-    private static Dictionary<string, string> ReadGlosses(string data, List<string> lemmas)
+    internal static Dictionary<string, string> ReadGlosses(string data, List<string> lemmas)
     {
         var schema = DataSchema.Load(Path.Join(data, "schema.yaml"));
         var wanted = new HashSet<string>(lemmas, StringComparer.Ordinal);

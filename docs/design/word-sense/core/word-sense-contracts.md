@@ -33,8 +33,11 @@ model for another without code changes, and the composite `FallbackWordSenseMode
   a slot is the sum over its analyses;
   `Senses` is an immutable array of `SenseCandidate`, the probability of each fine sense given the analysis (given its
   slot, the same for every variant of a slot), sorted by
-  probability (ties by the ordinal order of the sense id), summing to one and never truncated. `Senses` is empty when
-  the model did not score the senses of the analysis. A `default` candidate is valid (a placeholder `Details` without a
+  probability (ties in the inventory order of the lemma, see `WordLexicon.SensesOf`), summing to one and never
+  truncated. `Senses` is empty when the model did not rank the senses of the analysis: an encoder scores them for its
+  trained lemmas, and the Basic model (and so every composed model, for a lemma the encoder has no weights for) ranks
+  the senses of every lemma and part of speech that has two or more by the usage prior, which is a statement about the
+  lemma and never an answer. A `default` candidate is valid (a placeholder `Details` without a
   lemma, empty `Senses`). Equality compares the senses item by item.
 - `ClassifyResult(Word, IsKnown, Analyses, Details, Level, Confidence, GroupId, SenseId)`: a readonly record struct,
   the result for one word (the type is not named `WordSense`, which is the name of the namespace and the package). It
@@ -79,9 +82,11 @@ model for another without code changes, and the composite `FallbackWordSenseMode
     `WordKey.Format(spelling, lemma, part, features, label)`: the spelling is `BasicClassifier.Normalize(Word)` (the
     normalization of the lookup: lower case, the typographic apostrophe straightened), the lemma, part of speech and
     features are those of `Details`, and the label is, in this order, (a) the part after `#` of `SenseId` at the `Sense`
-    level; (b) otherwise that of the most probable sense (ties by the ordinal order of the id) of the analysis of
+    level; (b) otherwise that of the most probable sense (on equal probabilities the first listed one: the senses are listed
+    in the order of the ranking, ties in the inventory order of the lemma) of the analysis of
     `Analyses` that equals `Details`, or of the first analysis with its lemma and part of speech, when it lists senses (the
-    group level and the part-of-speech level of a trained lemma); (c) otherwise none. A group id is never used because
+    group level and the part-of-speech level of a trained lemma, and the part-of-speech level of every polysemous lemma
+    through the usage prior of the Basic model); (c) otherwise none. A group id is never used because
     group ids are not frozen. It does not appear in `Equals` or `GetHashCode`, which compare the stored values, and the
     `ToString` of the `ClassifyResult` record struct lists it like any property.
 - `WordKey(Spelling, Lemma, PartOfSpeech, Features, Label)`: a sealed record that holds the parts of a key. `ToString()`

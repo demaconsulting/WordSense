@@ -43,6 +43,15 @@ All scenarios below pass on every platform and target framework of the CI matrix
   probabilities, selected analysis, level and confidence as `BasicWordSenseModel` gives for the same text; the level is
   the part of speech, or the sense when the selected analysis has exactly one sense), never a
   mixture, with no ensure of the model files.
+- **Untrained polysemous word lists its senses by usage** (`MiniLMWordSenseModel_Classify_UntrainedPolysemousWord_ListsSensesRankedByUsagePrior`,
+  `..._AnswersPartOfSpeechLevelWithoutSenseOrGroup`, `..._KeyCarriesTheLabelOfTheTopRankedSense`, in
+  `MiniLMWordSenseModelTests.cs`, with no model files): the second `shelter` of "They will shelter the shelter." (a noun,
+  so a word that the encoder has no weights for, with two or more senses) is answered at the part-of-speech level with no
+  sense id and no group id, the senses of its selected analysis are those of `UsagePrior.RankOf` for its lemma and part
+  of speech (two or more), and its key ends with the label of the first of them.
+- **End to end** (`MiniLM_Classifier_EndToEnd_UntrainedWord_RanksItsSensesByUsage`, in `EndToEndTests.cs`, with the
+  committed model files): the same three properties for the second `garden` of "They will garden the garden." (a lemma
+  without trained weights) through the composite model of the public package; this is the system-level evidence.
 - **Same-spelling verbs take their tense from Basic** (`MiniLM_Classifier_EndToEnd_SameSpellingVerb_TenseFollowsTheContext`,
   in `EndToEndTests.cs`, theory): for `I will read that tomorrow`, `I have read that already`, `Please put the books on
   the shelf` and `She had put the keys in her bag before she left` the composite selects a non-past analysis in the first

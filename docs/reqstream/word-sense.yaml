@@ -234,7 +234,7 @@ sections:
           probability given the analysis, summing to one, so that a consumer can apply its own grouping of the senses,
           and shall list no senses for an analysis whose senses the model does not score, except that an analysis whose
           lemma and part of speech have exactly one sense lists that sense with probability 1 even where the model
-          does not score it.
+          does not score it and except as WordSense-Lib-Candidates-UsagePrior states.
         tags: [system]
         justification: |
           A model that answers at the part-of-speech or the group level still knows how likely each analysis and each
@@ -246,10 +246,72 @@ sections:
         children:
           - WordSense-Core-Contracts
           - WordSense-Core-Candidates
+          - WordSense-Core-Candidates-OneSense
+          - WordSense-Core-Candidates-NoSenses
           - WordSense-Onnx-Candidates
         tests:
           - WordSense_Classifier_EndToEnd_AnalysesAreRankedAndSumToOne
           - WordSense_Classifier_EndToEnd_SensesAreRankedAndSumToOne
+
+      - id: WordSense-Lib-Candidates-UsagePrior
+        title: >-
+          The system shall list, for an analysis whose lemma and part of speech have two or more senses and whose
+          senses the model does not score, those senses ranked by their usage (the WordNet 3.0 tag counts, smoothed,
+          inventory order on ties) by the Basic model.
+        tags: [system]
+        justification: |
+          About 83 percent of the ambiguous words of running text have a lemma that no encoder was trained for; the
+          usage of the senses is the one piece of evidence that exists for every lemma, and the most frequent sense
+          is right for about two thirds of the words of the independent gold set, so the ranking gives a consumer
+          the likely senses where no model scored them.
+        children:
+          - WordSense-Core-Candidates-RankedSenses
+          - WordSense-Core-Candidates-UsageProbability
+          - WordSense-Core-Candidates-UsageOrder
+          - WordSense-Core-SenseFrequency
+          - WordSense-Core-SenseFrequency-Access
+          - WordSense-Core-SenseFrequency-InventoryHash
+          - WordSense-Core-SenseFrequency-Integrity
+          - WordSense-Core-UsagePrior-Validation
+          - WordSense-MiniLM-MiniLMWordSenseModel-UsagePrior
+          - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-UsagePrior
+        tests:
+          - MiniLM_Classifier_EndToEnd_UntrainedWord_RanksItsSensesByUsage
+          - BertBaseCased_Classifier_EndToEnd_UntrainedWord_RanksItsSensesByUsage
+
+      - id: WordSense-Lib-Candidates-UsagePrior-NoAnswer
+        title: >-
+          The system shall never answer a sense or a group from the usage ranking: the level, the confidence, the
+          sense id and the group id of the result stay those of the part of speech answer.
+        tags: [system]
+        justification: |
+          The ranking is evidence about the lemma and not about the sentence; claiming a sense answer from it would
+          turn a base rate into a false decision.
+        children:
+          - WordSense-Core-Candidates-NoAnswer
+          - WordSense-Core-Candidates-NoAnalysisChange
+          - WordSense-MiniLM-MiniLMWordSenseModel-UsagePrior-Level
+          - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-UsagePrior-Level
+        tests:
+          - MiniLM_Classifier_EndToEnd_UntrainedWord_RanksItsSensesByUsage
+          - BertBaseCased_Classifier_EndToEnd_UntrainedWord_RanksItsSensesByUsage
+
+      - id: WordSense-Lib-Candidates-UsagePrior-Key
+        title: >-
+          The system shall give the key of the result of a word whose senses are ranked by usage the label of the
+          top-ranked sense, and the key shall be one of the enumerated keys.
+        tags: [system]
+        justification: |
+          The key names the meaning where a model ranked one; the keys of all senses are enumerated, so the guarantee
+          that every key a model gives is enumerated still holds with the ranking.
+        children:
+          - WordSense-Core-Candidates-Key
+          - WordSense-Core-Candidates-KeyEnumerated
+          - WordSense-MiniLM-MiniLMWordSenseModel-UsagePrior-Key
+          - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-UsagePrior-Key
+        tests:
+          - MiniLM_Classifier_EndToEnd_UntrainedWord_RanksItsSensesByUsage
+          - BertBaseCased_Classifier_EndToEnd_UntrainedWord_RanksItsSensesByUsage
 
       - id: WordSense-Lib-Fallback
         title: >-
@@ -431,6 +493,42 @@ sections:
           - WordSense-WordSenseBuilder-SenseEvalAllWords
           - WordSense-WordSenseBuilder-SenseEvalAllWordsFigures
           - WordSense-WordSenseBuilder-SenseEvalAllWordsBaseline
+          - WordSense-WordSenseBuilder-SenseEvalAllWordsCircular
+          - WordSense-WordSenseBuilder-AllWordsGold
+          - WordSense-WordSenseBuilder-AllWordsGold-Cardinality
+          - WordSense-WordSenseBuilder-AllWordsGold-Splits
+          - WordSense-WordSenseBuilder-AllWordsGold-Independence
+          - WordSense-WordSenseBuilder-AllWordsGold-Columns
+          - WordSense-WordSenseBuilder-AllWordsGold-Index
+          - WordSense-WordSenseBuilder-AllWordsGold-Agreement
+          - WordSense-WordSenseBuilder-AllWordsGold-Sense
+          - WordSense-WordSenseBuilder-AllWordsDraw
+          - WordSense-WordSenseBuilder-AllWordsDraw-Eligible
+          - WordSense-WordSenseBuilder-AllWordsDraw-Limits
+          - WordSense-WordSenseBuilder-AllWordsLabeling
+          - WordSense-WordSenseBuilder-AllWordsLabeling-NoCounts
+          - WordSense-WordSenseBuilder-AllWordsLabeling-Agreement
+          - WordSense-WordSenseBuilder-AllWordsLabeling-Unsure
+          - WordSense-WordSenseBuilder-AllWordsLabeling-WrongSense
+          - WordSense-WordSenseBuilder-AllWordsLabeling-MissingFile
+          - WordSense-WordSenseBuilder-AllWordsLabeling-Report
+          - WordSense-WordSenseBuilder-AllWordsEvaluation
+          - WordSense-WordSenseBuilder-AllWordsEvaluation-Levels
+          - WordSense-WordSenseBuilder-AllWordsEvaluation-Precision
+          - WordSense-WordSenseBuilder-AllWordsEvaluation-FineTop1
+          - WordSense-WordSenseBuilder-AllWordsEvaluation-NoRanking
+          - WordSense-WordSenseBuilder-AllWordsEvaluation-WrongAnalysis
+          - WordSense-WordSenseBuilder-AllWordsEvaluation-NoGold
+          - WordSense-WordSenseBuilder-AllWordsBaselines
+          - WordSense-WordSenseBuilder-AllWordsBaselines-TagCount
+          - WordSense-WordSenseBuilder-AllWordsBaselines-Random
+          - WordSense-WordSenseBuilder-AllWordsBaselines-Report
+          - WordSense-WordSenseBuilder-AllWordsSmoothing
+          - WordSense-WordSenseBuilder-AllWordsSmoothing-DevOnly
+          - WordSense-WordSenseBuilder-AllWordsLeakage
+          - WordSense-WordSenseBuilder-AllWordsLeakage-View
+          - WordSense-WordSenseBuilder-AllWordsLeakage-Training
+          - WordSense-WordSenseBuilder-AllWordsLeakage-OtherSplit
           - WordSense-WordSenseBuilder-RunningText
           - WordSense-WordSenseBuilder-TenseEvaluation
           - WordSense-WordSenseBuilder-Suite

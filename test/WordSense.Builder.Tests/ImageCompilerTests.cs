@@ -72,6 +72,77 @@ public sealed class ImageCompilerTests : IDisposable
     }
 
     /// <summary>
+    ///     The image holds the WordNet 3.0 tag count of every sense, in the order of the senses of the catalog: the count of
+    ///     the sense key in the sense frequency table, 0 for a project sense (no key) and for a key that the table does not
+    ///     list.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_ImageCompiler_Build_SenseFrequency_IsTheTagCountOfEachSenseKey()
+    {
+        // Arrange: a sense whose key the table lacks, and a project sense
+        string[] entries = ["oewn-bank-1-n\tbank\tn\t1\t1\t1\toewn"];
+        string[] senses =
+        [
+            Bank + "1.99.00..\tbank%1:99:00::\toewn-bank-1-n\toewn-7-n\t1",
+            Bank + "9.99.00..\t\toewn-bank-n\tdema-bank-n\t0",
+        ];
+        string[] labels = [Bank + "1.99.00..\thomograph-one\tgenerated", Bank + "9.99.00..\tproject-sense\tcurated"];
+        var data = WriteData(_dir.Root, extraEntries: entries, extraSenses: senses, extraLabels: labels);
+
+        // Act
+        var (bytes, _) = ImageCompiler.Build(data);
+        var image = WordImage.Open(bytes);
+        image.ValidateCatalog();
+
+        // Assert
+        Assert.Equal(
+            [("bank#coin-bank", 0), ("bank#homograph-one", 0), ("bank#banking-company", 20), ("bank#ridge", 2), ("bank#incline", 25), ("bank#project-sense", 0)],
+            image.UsageOf("bank", PartOfSpeech.Noun));
+        Assert.Equal([("bank#close-in", 1), ("bank#cover", 0)], image.UsageOf("bank", PartOfSpeech.Verb));
+        Assert.Equal(image.SenseCount * 2, image.RawSection(ImageFormat.SectionSenseFrequency).Length);
+    }
+
+    /// <summary>
+    ///     The tag counts are not part of the inventory hash (models trained against the image need no training when the
+    ///     counts change), but they are part of the data the image is compiled from, so the data hash of the header changes.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_ImageCompiler_Build_SenseFrequency_IsNotPartOfTheInventoryHash()
+    {
+        // Arrange: the same data with and without the sense frequency table
+        var (with, _) = ImageCompiler.Build(WriteData(_dir.Root));
+        var (without, _) = ImageCompiler.Build(WriteData(Path.Join(_dir.Root, "no-counts"), frequencies: false));
+
+        // Act
+        var a = WordImage.Open(with);
+        var b = WordImage.Open(without);
+
+        // Assert
+        Assert.True(a.InventoryHash.SequenceEqual(b.InventoryHash));
+        Assert.False(a.RawSection(ImageFormat.SectionSenseFrequency).AsSpan().SequenceEqual(b.RawSection(ImageFormat.SectionSenseFrequency)));
+        Assert.False(a.DataHash.SequenceEqual(b.DataHash));
+        Assert.All(b.UsageOf("bank", PartOfSpeech.Noun), u => Assert.Equal(0, u.TagCount));
+    }
+
+    /// <summary>
+    ///     A tag count that does not fit the 16 bits of the image fails the compilation and names the key.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_ImageCompiler_Build_SenseFrequency_CountAboveSixteenBits_Fails()
+    {
+        // Arrange
+        var data = WriteData(_dir.Root);
+        File.WriteAllText(Path.Join(data, "sense_frequency", "b.tsv"), "sense_key\ttag_count\tsource\nbank%1:14:00::\t70000\twn30\n", new UTF8Encoding(false));
+
+        // Act
+        var error = Assert.Throws<InvalidDataException>(() => ImageCompiler.Build(data));
+
+        // Assert
+        Assert.Contains("70000", error.Message, StringComparison.Ordinal);
+        Assert.Contains("bank%1:14:00::", error.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
     ///     A spelling without a letter (a numeral such as <c>3</c>) is left out of the image with its entry and its senses,
     ///     while a spelling that mixes letters and digits (<c>3rd</c>) stays and the sense of a lemma with a letter is
     ///     unaffected.

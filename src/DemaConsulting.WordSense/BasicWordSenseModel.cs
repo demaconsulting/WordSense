@@ -28,8 +28,10 @@ namespace DemaConsulting.WordSense;
 ///     lemma and part of speech of the selected analysis (the sum over its feature variants) as the
 ///     confidence, or at the sense level when the selected analysis has exactly one sense. The statistics carry no
 ///     evidence that separates fine senses or groups of senses, so the model never answers at the
-///     <see cref="SenseLevel.Group"/> level, and the <see cref="AnalysisCandidate.Senses"/> of an analysis are empty
-///     unless its lemma and part of speech have exactly one sense (then that sense, with probability 1). A word that is
+///     <see cref="SenseLevel.Group"/> level, and the <see cref="AnalysisCandidate.Senses"/> of an analysis list its one
+///     sense (with probability 1) when its lemma and part of speech have exactly one sense, the senses ranked by their usage
+///     (the WordNet 3.0 tag counts, a ranking of the lemma that is never an answer) when they have two or more, and are
+///     empty when they have none. A word that is
 ///     not in the lexicon is not known (<see cref="ClassifyResult.IsKnown"/> is false). Its small statistical
 ///     tables are embedded in the assembly: there are no model
 ///     files, no ONNX Runtime dependency and nothing is ever downloaded, so the model does not implement

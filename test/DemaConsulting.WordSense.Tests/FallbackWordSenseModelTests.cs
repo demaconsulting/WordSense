@@ -55,6 +55,34 @@ public class FallbackWordSenseModelTests
     }
 
     /// <summary>
+    ///     A word whose senses the primary model did not score (the encoder has no weights for its lemma) gets the Basic
+    ///     result as it is, including the senses of its selected analysis ranked by the usage prior; the level, confidence,
+    ///     sense and group are those of the Basic model, which ranks senses and never answers one.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_FallbackWordSenseModel_PrimaryScoredNothing_AnswersWithTheRankedSensesOfBasic()
+    {
+        // Arrange
+        string[] words = ["The", "dog", "barked", "."];
+        using var basic = new BasicWordSenseModel();
+        var expected = await basic.ClassifyAsync(words, TestContext.Current.CancellationToken);
+        var unscored = words.Select(w => ClassifyResult.Unknown(w)).ToArray();
+        using var model = new FallbackWordSenseModel(new StubModel(unscored), new BasicWordSenseModel());
+
+        // Act
+        var results = await model.ClassifyAsync(words, TestContext.Current.CancellationToken);
+
+        // Assert
+        Assert.Equal(expected, results);
+        var dog = results[1];
+        Assert.Equal(SenseLevel.PartOfSpeech, dog.Level);
+        Assert.Null(dog.SenseId);
+        Assert.Null(dog.GroupId);
+        Assert.True(dog.Analyses.First(a => a.Details.Equals(dog.Details)).Senses.Length >= 2);
+    }
+
+    /// <summary>
     ///     The composite has the downloadable capability, so code that holds only the model contract can ask for it.
     /// </summary>
     [Fact]

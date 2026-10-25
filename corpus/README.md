@@ -37,6 +37,7 @@ none of these rows is in the corpus any more.
 | `lexicon/` | `*.tsv` | The dictionary word list, the auxiliaries and the form rules (inputs of `compile-image`) |
 | `open/` | see `open/README.md` | The open English part-of-speech corpus (CC0 annotations over public-domain text): `representative/` (random; the only input of usage statistics, such as the Basic tagger counts in `open/counts/`, and the headline real-text evaluation) and `targeted/` (deliberate selections; a challenge set) |
 | `suite/` | `*.tsv`, `README.md` | The reviewed suite of 364 sentences about common ambiguous words and same-spelling verbs, the expectation of each model for each row (a regression test) and the floors of the challenge set; project-authored, CC0 1.0, evaluation only |
+| `allwords/` | `dev.tsv`, `test.tsv`, `README.md` | The all-words gold set: 804 tokens of untrained polysemous lemmas from the development and test splits of `open/representative`, labeled blind by two independent labelers (the independent measurement of the usage prior, which SemCor cannot make); annotations and selection CC0 1.0, evaluation only |
 
 Every file is UTF-8 without a byte-order mark, with LF line endings.
 
@@ -226,7 +227,8 @@ The parts of the corpus must not share a sentence in a way that leaks an evaluat
 `WordSense.Builder check-leakage` compares the normalized sentences (case, spacing and punctuation do not make a sentence
 new) of the anchors, the chooser anchors and the training split of the open corpus (training) with the held-out,
 chooser held-out and real-text sentences, the reviewed suite (`suite/`), the development and test splits and the
-challenge set of the open corpus, the example sentences of Open English WordNet (CC BY 4.0, so none may be in this
+challenge set of the open corpus, the two halves of the all-words gold set (`allwords/`, views of the development and test
+splits of the open corpus: the same sentences by design), the example sentences of Open English WordNet (CC BY 4.0, so none may be in this
 CC0 corpus) and, when present in their git-ignored caches, SemCor and the treebank test file; it exits with 1 on a leak.
 `CorpusTests` runs the same check on the committed corpus. Overlap that remains by design: training-with-training
 (anchors with the chooser anchors and the open corpus training split: duplicates, nothing is evaluated on them), the

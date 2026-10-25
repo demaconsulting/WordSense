@@ -50,9 +50,13 @@ namespace DemaConsulting.WordSense;
 ///     Ordering and determinism. The analyses are sorted by the probability of their slot, the largest first, and inside
 ///     a slot by their own probability, the largest first; ties keep the order of the analyses of
 ///     <see cref="WordLexicon.Lookup"/>. The first analysis is therefore the best variant of the most probable slot, and it
-///     is the selected one. The senses of an analysis are sorted by probability and, on a tie, by the ordinal order of the
-///     sense id. Nothing is truncated: every analysis of the word is listed, and when a model
-///     scored the senses of an analysis, every sense of it. All arrays are immutable and may be shared between results
+///     is the selected one. The senses of an analysis are sorted by probability and, on a tie, in the inventory order of
+///     the lemma (<see cref="WordLexicon.SensesOf"/>). Nothing is truncated: every analysis of the word is listed, and when a model
+///     ranked the senses of an analysis, every sense of it. A model that has no evidence for the senses of a lemma and part of
+///     speech (the Basic model, and so the encoder models for every lemma they have no weights for) ranks them by the usage
+///     prior, the WordNet 3.0 tag counts of the senses with add-k smoothing: the ranking is a statement about the lemma and
+///     not about the sentence, and it changes neither the level, nor the confidence, nor <see cref="SenseId"/> and <see cref="GroupId"/>
+///     of the result. All arrays are immutable and may be shared between results
 ///     (for an unknown word, a word with one analysis and one sense), so never rely on reference identity. A
 ///     <see langword="default"/> result is valid: its arrays are empty and its word is the empty string.
 ///     </para>
@@ -174,7 +178,9 @@ public readonly record struct ClassifyResult
     ///     name of its part of speech, its features (left out when empty) and the label of the sense. The label is the part
     ///     after <c>#</c> of the answered <see cref="SenseId"/> when the result is at the sense level; otherwise it is
     ///     that of the most probable ranked sense of the selected analysis, when the model ranked senses for it (this
-    ///     covers the group level and the part-of-speech level of a trained lemma); otherwise it is left out. A group id
+    ///     covers the group level and the part-of-speech level of a trained lemma, and the part-of-speech level of every
+    ///     polysemous lemma through the usage prior; on equal probabilities the first listed sense, which is the first in the
+    ///     inventory order); otherwise it is left out. A group id
     ///     is never used, because group ids are not frozen. Examples: <c>bass|bass/Noun/Number=Sing#sea-bass</c>,
     ///     <c>polish|Polish/Noun/Number=Sing</c>, <c>read|read/Verb/Tense=Past+VerbForm=Part</c>.
     ///     </para>

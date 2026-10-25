@@ -169,13 +169,14 @@ and disposes both models once (`FallbackWordSenseModel_Dispose_DisposesBothOnce`
 
 The Basic model answers the 364 sentences of the reviewed suite (`corpus/suite`) at least as well as the expectation file
 records for it: no row falls below its expectation (`fine`, `answer` or `miss`), so a regression fails the build while
-the known misses (the heteronym rows that need a sense, which Basic does not rank) stay documented
+the known misses (the heteronym rows that need a sense, which Basic ranks only by usage) stay documented
 (`BasicSuiteTests`, `BasicSuite_ExpectedPasses_StillPass`).
 
 #### Answer Level Is Stated Honestly
 
 An ambiguous word is answered at the part of speech level without a group or sense id, with all its analyses listed and
-no scored senses; a word whose selected analysis has a lemma and part of speech with one sense is answered at the sense
+the senses of its analyses ranked by the usage prior when they are several (never an answer); a word whose selected
+analysis has a lemma and part of speech with one sense is answered at the sense
 level with that sense (and lists it with probability 1 in its analysis); a word with one analysis and several senses is
 answered at the part of speech level with confidence 1, and an unknown word at the level none with no analysis; no
 answer is at the group level (see the `BasicClassifier` unit document).

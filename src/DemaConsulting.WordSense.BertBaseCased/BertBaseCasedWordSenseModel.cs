@@ -24,7 +24,8 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     ranked senses of every analysis are listed whatever the level. A word with one analysis and one sense is answered
 ///     at the <see cref="SenseLevel.Sense"/> level. Every other ambiguous word is answered by the Basic fallback: it
 ///     chooses the analysis (the part of speech) from the context, the analyses of the result carry its probabilities,
-///     no sense is scored, and the level is <see cref="SenseLevel.PartOfSpeech"/>, or <see cref="SenseLevel.Sense"/> when
+///     no sense is decided (the senses of the analyses are ranked by how often they are used, which is a statement about
+///     the lemma and never an answer), and the level is <see cref="SenseLevel.PartOfSpeech"/>, or <see cref="SenseLevel.Sense"/> when
 ///     its selected analysis has exactly one sense. The composition rules (which model answers a word,
 ///     and that a result always belongs completely to one of the two models) are those of
 ///     <see cref="FallbackWordSenseModel"/>. <see cref="ClassifyAsync"/> needs the encoder files only for a text that
@@ -204,7 +205,8 @@ public sealed class BertBaseCasedWordSenseModel : IDownloadableWordSenseModel
     ///     encoder at the sense, group or part-of-speech level its thresholds allow, with the ranked senses of its
     ///     analyses; the first call with such a word ensures the model files itself (it may download them, see
     ///     <see cref="EnsureModelAsync"/>). A word whose lemma has no trained weights is answered by the Basic model: at
-    ///     the <see cref="SenseLevel.PartOfSpeech"/> level with the probabilities of its analyses and no scored senses, or
+    ///     the <see cref="SenseLevel.PartOfSpeech"/> level with the probabilities of its analyses and the senses of its
+    ///     analyses ranked by how often they are used (the usage prior: a ranking of the lemma, never an answer), or
     ///     at the <see cref="SenseLevel.Sense"/> level when its selected analysis has exactly one sense, which the Basic
     ///     model names without scoring. A text without a trained lemma needs no model file. An unknown word has no
     ///     analysis, the level <see cref="SenseLevel.None"/> and confidence 0.

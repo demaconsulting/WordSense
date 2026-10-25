@@ -172,7 +172,7 @@ All scenarios below pass on every platform and target framework of the CI matrix
   type catches every typed exception.
 - **Key of a result** (`ClassifyResult_Key_SenseLevel_HasTheLabelOfTheAnsweredSense`,
   `ClassifyResult_Key_GroupId_IsNeverUsed`, `ClassifyResult_Key_RankedSenses_FallBackToTheTopRankedSense`,
-  `ClassifyResult_Key_TiedRankedSenses_UseTheOrdinalOrderOfTheId`,
+  `ClassifyResult_Key_TiedRankedSenses_TakeTheFirstListed`,
   `ClassifyResult_Key_RankingOfAnotherAnalysis_IsNotUsed`,
   `ClassifyResult_Key_PartOfSpeechLevelWithoutRanking_HasNoLabel`,
   `ClassifyResult_Key_EmptyFeatures_LeaveOutTheFeatureSegment`, `ClassifyResult_Key_UnknownOrUnanswered_IsNull`,
@@ -180,7 +180,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `ClassifyResult_Key_ContractionAndPossessive_AreKeyedBySpelling`): results built by hand and results of the Basic model
   give `bass|bass/Noun/Number=Sing#sea-bass` at the sense level whatever the ranking says; a group id never appears in a
   key; a group-level and a part-of-speech-level result take the label of the most probable ranked sense of the selected
-  analysis (the unsorted list is searched, a tie goes to the smaller id, the ranking of another analysis is ignored); a
+  analysis (the unsorted list is searched, a tie goes to the first listed sense, the ranking of another analysis is
+  ignored); a
   part-of-speech result without a ranking has no label; empty features leave out the feature segment; an unknown word, a
   default result and a known word without selected analysis have a null key; `POLISH` with the lemma `Polish` is
   `polish|Polish/Noun/Number=Sing` and `Don’t` with a typographic apostrophe is spelled `don't`; the Basic model gives the

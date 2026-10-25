@@ -25,7 +25,8 @@ of the user guide and the model comparison table. It also validates the data and
 
 **Who and when.** A maintainer, after a change to the data in `data/`, the corpus in `corpus/` or the models: to
 regenerate the word data (`rebuild-forms`, `label-senses`, `compile-image`), to retrain (`train-basic`, `weights`), to
-re-measure (`evaluate`, `evaluate-senses`, `evaluate-running`, `evaluate-suite`) and to check the inputs (`validate-data`,
+re-measure (`evaluate`, `evaluate-senses`, `evaluate-allwords`, `evaluate-running`, `evaluate-suite`) and to check the
+inputs (`validate-data`,
 `check-leakage`, `tiers`).
 
 **Why.** The shipped artifacts must be reproducible from committed inputs: the same inputs give identical bytes, and the
@@ -37,7 +38,8 @@ tests compare the committed outputs with a regeneration.
 
 **Commands.** `dotnet run --project tools/WordSense.Builder -c Release -- <command> [--name value ...]`. The commands are
 `compile-image`, `rebuild-forms`, `audit-forms`, `generate-facts`, `import-moby`, `weights <modelId>`, `evaluate <modelId>`,
-`evaluate-senses`, `evaluate-running`, `evaluate-suite`, `check-leakage`, `tiers`, `open-counts`, `evaluate-tagger`,
+`evaluate-senses`, `evaluate-allwords`, `allwords-sample`, `allwords-merge`, `evaluate-running`, `evaluate-suite`,
+`check-leakage`, `tiers`, `open-counts`, `evaluate-tagger`,
 `coverage`, `train-basic`, `tune-basic`, `appendix`, `import-oewn`, `import-wn30-counts`, `label-senses`,
 `seed-inventory` and `validate-data`. Examples:
 

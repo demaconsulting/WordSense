@@ -615,18 +615,22 @@ sections:
               - id: WordSense-Core-WordSenseContracts-Key-Label
                 title: >-
                   The label of the Key of a ClassifyResult shall be the label of the answered sense at the sense level,
-                  otherwise that of the most probable ranked sense of the selected analysis (ties by the ordinal order
-                  of the sense id) when the model ranked senses for that analysis, otherwise none, and never a group id.
+                  otherwise that of the most probable ranked sense of the selected analysis (on equal probabilities the
+                  first listed one, which is the first in inventory order) when the model ranked senses for that
+                  analysis,
+                  otherwise none, and never a group id.
                 tags: [unit]
                 justification: |
                   The sense is what tells the readings of a spelling apart, so the key names it whenever the result
                   gives or ranks one; ignoring the group ids keeps the key independent of them, which are versioned per
-                  data release.
+                  data release. The senses are listed in the order of the ranking, ties in inventory order, so the first
+                  listed one is the top-ranked sense also where the usage prior gives equal probabilities (a lemma
+                  without a count), and the key never names another sense than the ranking puts first.
                 tests:
                   - ClassifyResult_Key_SenseLevel_HasTheLabelOfTheAnsweredSense
                   - ClassifyResult_Key_GroupId_IsNeverUsed
                   - ClassifyResult_Key_RankedSenses_FallBackToTheTopRankedSense
-                  - ClassifyResult_Key_TiedRankedSenses_UseTheOrdinalOrderOfTheId
+                  - ClassifyResult_Key_TiedRankedSenses_TakeTheFirstListed
                   - ClassifyResult_Key_RankingOfAnotherAnalysis_IsNotUsed
                   - ClassifyResult_Key_PartOfSpeechLevelWithoutRanking_HasNoLabel
 

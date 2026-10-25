@@ -16,10 +16,17 @@ namespace DemaConsulting.WordSense;
 ///     context cues of the Basic model) or, without evidence, equally, and every one of them lists the same senses with
 ///     the same probabilities. The probability of a slot is the sum of the probabilities of its analyses.
 ///     <see cref="Senses"/> lists, when the model
-///     scored the fine senses of the analysis, the probability of each sense given the analysis (given its slot): they
+///     ranked the fine senses of the analysis, the probability of each sense given the analysis (given its slot): they
 ///     sum to one over the
-///     listed senses, are sorted by probability (ties by the ordinal order of the sense id) and are never truncated. The
-///     list is empty when the model did not score the senses of this analysis. A consumer that maps senses to its own
+///     listed senses, are sorted by probability (equal probabilities in the inventory order of the lemma, see
+///     <see cref="WordLexicon.SensesOf"/>) and are never truncated. The ranking is either scored (an encoder model, from the
+///     context of the word) or the usage prior of the Basic model (the WordNet 3.0 tag counts of the senses, the same in
+///     every sentence, for every polysemous lemma and part of speech no model scored); the level and the confidence of the
+///     result say which senses are answered, and a ranking is never an answer by itself. The
+///     list is empty when the model did not rank the senses of this analysis. That is the case for a lemma and part of
+///     speech that have no sense, and it can also be the case for a polysemous slot when a model does not rank it (for
+///     example a model that you write); the shipped models rank every polysemous slot, an encoder model by its scores for
+///     the lemmas it was trained for and the Basic model by usage for every other one. A consumer that maps senses to its own
 ///     categories can sum <c>Probability * sense.Probability</c> per category over all analyses (which gives the
 ///     probability of the slot times the probability of the sense, whatever the number of feature variants).
 ///     </para>
@@ -76,7 +83,7 @@ public readonly record struct AnalysisCandidate
 
     /// <summary>
     ///     Gets the probability of each fine sense given the analysis, the most probable first, summing to one; empty
-    ///     when the senses were not scored.
+    ///     when the senses were not ranked.
     /// </summary>
     public ImmutableArray<SenseCandidate> Senses => _senses.IsDefault ? ImmutableArray<SenseCandidate>.Empty : _senses;
 

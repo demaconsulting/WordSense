@@ -171,6 +171,84 @@ internal static partial class Program
         return 0;
     }
 
+    private static int RunAllWordsSample(Dictionary<string, string> options, string repository, string corpus, TextWriter output)
+    {
+        var directory = Path.GetFullPath(Require(options, "batches"));
+        var data = options.TryGetValue("data", out var dataFolder) ? Path.GetFullPath(dataFolder) : Path.Join(repository, "data");
+        var perSplit = IntOption(options, "per-split", 600, 1);
+        var perLemma = IntOption(options, "max-per-lemma", 3, 1);
+        var seed = IntOption(options, "seed", 1);
+        var size = IntOption(options, "batch-size", 100, 1);
+        var samples = new List<AllWordsSample>();
+        foreach (var split in new[] { AllWordsGold.Dev, AllWordsGold.Test })
+        {
+            var drawn = AllWordsGold.Draw(corpus, split, perSplit, perLemma, seed);
+            output.WriteLine($"{split}: {drawn.Count.ToString(CultureInfo.InvariantCulture)} tokens of {drawn.Select(s => s.Lemma).Distinct(StringComparer.Ordinal).Count().ToString(CultureInfo.InvariantCulture)} lemmas.");
+            samples.AddRange(drawn);
+        }
+
+        var batches = AllWordsGold.WriteBatches(data, samples, directory, size);
+        output.WriteLine($"Wrote {batches.ToString(CultureInfo.InvariantCulture)} batches and sample.tsv to {directory}.");
+        return 0;
+    }
+
+    private static int RunAllWordsMerge(Dictionary<string, string> options, string corpus, TextWriter output)
+    {
+        var directory = Path.GetFullPath(Require(options, "batches"));
+        var target = options.TryGetValue("target", out var t) ? Path.GetFullPath(t) : Path.Join(corpus, AllWordsGold.Folder);
+        var (gold, agreement) = AllWordsGold.Merge(directory, Require(options, "first"), Require(options, "second"));
+        Directory.CreateDirectory(target);
+        foreach (var (split, items) in gold)
+        {
+            File.WriteAllText(Path.Join(target, split + ".tsv"), AllWordsGold.Render(split, items), new System.Text.UTF8Encoding(false));
+        }
+
+        var text = AllWordsGold.RenderAgreement(agreement);
+        output.Write(text);
+        WriteReport(options, text);
+        return 0;
+    }
+
+    private static async Task<int> RunEvaluateAllWordsAsync(Dictionary<string, string> options, string repository, string corpus, TextWriter output, CancellationToken cancellationToken)
+    {
+        var halves = new List<(string Split, List<AllWordsItem> Items)>();
+        foreach (var split in new[] { AllWordsGold.Dev, AllWordsGold.Test })
+        {
+            var items = AllWordsGold.Read(corpus, split);
+            if (items.Count > 0)
+            {
+                halves.Add((split, items));
+            }
+        }
+
+        if (halves.Count == 0)
+        {
+            throw new InvalidDataException($"The all-words gold set is not in '{Path.Join(corpus, AllWordsGold.Folder)}'.");
+        }
+
+        var scores = new List<AllWordsModelScore>();
+        foreach (var info in ModelCatalog.Select(options.GetValueOrDefault("model")))
+        {
+            using var model = ModelCatalog.Open(info, repository);
+            await ModelCatalog.EnsureAsync(model, cancellationToken).ConfigureAwait(false);
+            foreach (var (split, items) in halves)
+            {
+                scores.Add(await AllWordsEvaluator.MeasureAsync(ModelTable.DisplayName(info.Name), model, split, items, cancellationToken).ConfigureAwait(false));
+            }
+
+            output.WriteLine($"{info.Name}: all-words gold set done.");
+        }
+
+        var baselines = halves.Select(h => AllWordsEvaluator.Baselines(h.Split, h.Items)).ToList();
+        var dev = halves.FirstOrDefault(h => h.Split == AllWordsGold.Dev).Items;
+        var sweep = dev is null ? null : AllWordsEvaluator.Sweep(dev, AllWordsEvaluator.SweepValues);
+        var lemmas = halves.ToDictionary(h => h.Split, h => h.Items.Select(i => i.Lemma).Distinct(StringComparer.Ordinal).Count(), StringComparer.Ordinal);
+        var text = AllWordsEvaluator.Render(scores, baselines, sweep, lemmas);
+        output.Write(text);
+        WriteReport(options, text);
+        return 0;
+    }
+
     private static void WriteReport(Dictionary<string, string> options, string text)
     {
         if (options.TryGetValue("output", out var report))

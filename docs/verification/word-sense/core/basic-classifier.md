@@ -4,7 +4,9 @@
 
 Tests in `test/DemaConsulting.WordSense.Tests/BasicClassifierTests.cs` call the classifier with word lists, a toy
 statistical table (`TestTables`) and a toy lexicon with analyses and sense inventories, so the expected results follow
-from the table numbers. The tagger, cue model and fusion are real; nothing is mocked. Their own behavior is verified in
+from the table numbers; the usage prior is verified in `BasicClassifierUsagePriorTests.cs` and `UsagePriorTests.cs` with
+the embedded lexicon (the same table, no toy lexicon). The tagger, cue model and fusion are real; nothing is mocked.
+Their own behavior is verified in
 their unit documents. The scenarios check the level of every answer together with the details, the group and sense ids
 and the confidence.
 
@@ -31,7 +33,7 @@ All scenarios below pass on every platform and target framework of the CI matrix
   states the level sense and carries the sense id and no group id.
 - **Single analysis with many senses** (`..._SingleAnalysisWithManySenses_AnswersItWithConfidenceOne`): a word with one
   analysis and several senses is answered with that analysis at the part of speech level, without group or sense id,
-  and confidence 1.
+  and confidence 1 (on the toy lexicon, whose classifier has no ranking function, the analysis lists no senses).
 - **Single analysis shares its array** (`..._SingleAnalysisWord_SharesItsAnalysesArray`): two consecutive results for
   the same word with one analysis carry the same analyses array (a cache hit). This checks the allocation
   optimization of the design; it is not a requirement, because the cache may evict an entry.
@@ -43,7 +45,41 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Ambiguous word lists analyses and no senses** (`..._AmbiguousWord_ListsAnalysesAndNoSenses`): the analyses of a
   word with several analyses are all listed, sorted by the probability of their lemma and part of speech and inside one
   by their own, their probabilities sum to
-  one, and no analysis lists senses.
+  one, and no analysis lists senses (the toy lexicon has no ranking function).
+- **Usage prior** (`UsagePriorTests.cs`): with the embedded lexicon, the ranking of a lemma and part of speech follows the
+  WordNet 3.0 tag counts with add-k smoothing.
+  - The probability of a sense is `(count + k) / sum` with k = 1 (`UsagePrior_Rank_ProbabilityIsTheCountPlusKOverTheSum`,
+    `UsagePrior_RankOf_UsesTheSmoothingConstantOne`) and the probabilities sum to one
+    (`UsagePrior_Rank_ProbabilitiesSumToOne`).
+  - The senses are sorted by probability, the largest first (`UsagePrior_Rank_SortsByProbabilityLargestFirst`), and equal
+    probabilities keep the inventory order (`UsagePrior_Rank_EqualCounts_KeepInventoryOrder`,
+    `UsagePrior_Rank_NoCounts_IsUniformInInventoryOrder`).
+  - A project sense counts 0 (`UsagePrior_RankOf_ProjectSense_CountsZero`); the smoothing constant never changes the order
+    (`UsagePrior_Rank_SmoothingConstant_NeverChangesTheOrder`, theory).
+  - A smoothing constant that is not a positive number (`UsagePrior_Rank_SmoothingNotPositive_Throws`, theory), a negative
+    count (`UsagePrior_Rank_NegativeCount_Throws`) and a missing list or lemma (`UsagePrior_Rank_MissingArgument_Throws`)
+    are rejected.
+  - A lemma and part of speech with one sense, or that is not in the catalog, has no ranking
+    (`UsagePrior_RankOf_SingleSense_IsEmpty`, `UsagePrior_RankOf_NotInTheCatalog_IsEmpty`); a polysemous lemma ranks every
+    sense of its slot (`UsagePrior_RankOf_PolysemousLemma_RanksEverySenseOfTheSlot`) and the same ranking comes on every
+    call (`UsagePrior_RankOf_RepeatedCalls_GiveTheSameRanking`).
+- **Usage prior in the classifier** (`BasicClassifierUsagePriorTests.cs`): every analysis whose lemma and part of speech
+  have two or more senses lists them in the order of the prior
+  (`BasicClassifier_ClassifyAsync_PolysemousWord_ListsTheSensesRankedByUsage`); the ranking function is asked only for
+  such lemmas and parts of speech (`..._PriorIsAskedOnlyForSlotsWithTwoOrMoreSenses`); an analysis whose lemma and part
+  of speech have no sense lists none (`..._AnalysisWithoutSenses_ListsNoSenses`); without a ranking function (the toy
+  constructor of the tests) an analysis lists none (`..._WithoutAPrior_ListsNoSensesForAPolysemousAnalysis`, a test
+  without a requirement); and the same word in another sentence has the same ranking
+  (`..._RankingDoesNotDependOnContext`).
+- **The prior is never an answer** (same file): the analysis probabilities
+  (`..._UsagePrior_NeverChangesTheAnalysisProbabilities`), the selected analysis
+  (`..._UsagePrior_NeverChangesTheSelectedAnalysis`) and the level, confidence, sense id and group id
+  (`..._UsagePrior_NeverChangesTheAnswer`) equal those of a classifier without the prior, and a polysemous word is
+  answered at the part-of-speech level with no sense id and no group id
+  (`..._PolysemousWord_AnswersAtThePartOfSpeechLevelWithoutSenseOrGroup`).
+- **Key of a ranked word** (same file): the key of a polysemous word ends with the label of the top-ranked sense of the
+  selected analysis (`..._PolysemousWord_KeyCarriesTheLabelOfTheTopRankedSense`) and is a member of the keys of the
+  lexicon (`..._PolysemousWord_KeyIsOneOfTheEnumeratedKeys`).
 - **Single-sense analysis lists its sense** (`..._SingleSenseAnalysis_ListsThatSenseWithProbabilityOne`): an analysis
   whose lemma and part of speech have exactly one sense lists that sense with probability 1, also when the word has
   other analyses, and the answer is at the sense level only when that analysis is the selected one.

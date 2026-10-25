@@ -137,6 +137,66 @@ public class BertBaseCasedWordSenseModelTests
     }
 
     /// <summary>
+    ///     The selected analysis of an untrained polysemous word lists the senses of its lemma and part of speech ranked
+    ///     by the usage prior of the Basic model, whatever the encoder.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BertBaseCasedWordSenseModel_Classify_UntrainedPolysemousWord_ListsSensesRankedByUsagePrior()
+    {
+        // Arrange: no model files are needed, the real Basic model is the fallback
+        using var model = new BertBaseCasedWordSenseModel();
+
+        // Act
+        var result = (await model.ClassifyAsync(Sentence, TestContext.Current.CancellationToken))[4];
+
+        // Assert
+        var details = Assert.IsType<WordDetails>(result.Details);
+        var selected = result.Analyses.First(a => a.Details.Equals(details));
+        Assert.Equal(UsagePrior.RankOf(details.Lemma, details.PartOfSpeech), selected.Senses);
+        Assert.True(selected.Senses.Length >= 2);
+    }
+
+    /// <summary>
+    ///     The ranking is never an answer: an untrained polysemous word is answered at the part-of-speech level with no
+    ///     sense id and no group id.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BertBaseCasedWordSenseModel_Classify_UntrainedPolysemousWord_AnswersPartOfSpeechLevelWithoutSenseOrGroup()
+    {
+        // Arrange
+        using var model = new BertBaseCasedWordSenseModel();
+
+        // Act
+        var result = (await model.ClassifyAsync(Sentence, TestContext.Current.CancellationToken))[4];
+
+        // Assert
+        Assert.True(result.Analyses.First(a => a.Details.Equals(result.Details)).Senses.Length >= 2);
+        Assert.Equal(SenseLevel.PartOfSpeech, result.Level);
+        Assert.Null(result.SenseId);
+        Assert.Null(result.GroupId);
+    }
+
+    /// <summary>
+    ///     The key of an untrained polysemous word carries the label of the top-ranked sense of its selected analysis.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BertBaseCasedWordSenseModel_Classify_UntrainedPolysemousWord_KeyCarriesTheLabelOfTheTopRankedSense()
+    {
+        // Arrange
+        using var model = new BertBaseCasedWordSenseModel();
+
+        // Act
+        var result = (await model.ClassifyAsync(Sentence, TestContext.Current.CancellationToken))[4];
+        var top = result.Analyses.First(a => a.Details.Equals(result.Details)).Senses[0].SenseId;
+
+        // Assert
+        Assert.EndsWith("#" + top.Split('#')[1], result.Key, StringComparison.Ordinal);
+    }
+
+    /// <summary>
     ///     The model pins exactly its four files, each by a SHA-256 digest.
     /// </summary>
     [Fact]
@@ -172,7 +232,7 @@ public class BertBaseCasedWordSenseModelTests
             Assert.Null(result.SenseId);
             Assert.Equal(1.0, result.Analyses.Sum(a => a.Probability), 9);
             Assert.True(result.Analyses.Length > 1);
-            Assert.All(result.Analyses, a => Assert.True(a.Senses.IsEmpty));
+            Assert.True(result.Analyses[0].Senses.Length >= 2, "The selected analysis lists its senses ranked by usage.");
             Assert.Equal(result.Details, result.Analyses[0].Details);
         }
 

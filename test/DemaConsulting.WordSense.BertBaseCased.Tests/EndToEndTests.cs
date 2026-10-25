@@ -81,4 +81,30 @@ public class EndToEndTests
             Assert.Equal(expected.Analyses.Select(a => (a.Details, a.Probability)), result.Analyses.Select(a => (a.Details, a.Probability)));
         }
     }
+
+    /// <summary>
+    ///     A word with several meanings that the encoder was not trained for is answered at the part-of-speech level and
+    ///     lists the senses of its selected analysis ranked by the usage prior (the fallback model's ranking, never an
+    ///     answer), and its key carries the label of the top-ranked sense.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BertBaseCased_Classifier_EndToEnd_UntrainedWord_RanksItsSensesByUsage()
+    {
+        // Arrange
+        using var model = new BertBaseCasedWordSenseModel(ModelFolder.Require());
+        model.Encoder.IntraOpThreads = 2;
+
+        // Act
+        var record = (await model.ClassifyAsync(["They", "will", "garden", "the", "garden", "."], TestContext.Current.CancellationToken))[4];
+
+        // Assert
+        var details = Assert.IsType<WordDetails>(record.Details);
+        var selected = record.Analyses.First(a => a.Details.Equals(details));
+        Assert.Equal(SenseLevel.PartOfSpeech, record.Level);
+        Assert.Null(record.SenseId);
+        Assert.Equal(UsagePrior.RankOf(details.Lemma, details.PartOfSpeech), selected.Senses);
+        Assert.True(selected.Senses.Length >= 2);
+        Assert.EndsWith("#" + selected.Senses[0].SenseId.Split('#')[1], record.Key, StringComparison.Ordinal);
+    }
 }

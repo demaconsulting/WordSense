@@ -36,14 +36,20 @@ namespace DemaConsulting.WordSense;
 ///     the probability of the slot, so the level, the confidence and the sense are as without it.
 ///     </para>
 ///     <para>
-///     The statistics carry no evidence that separates fine senses or groups, so the classifier never scores the
-///     senses of an analysis that has several. An analysis whose lemma and part of speech have exactly one sense lists
-///     that sense with probability 1 (no evidence is needed to choose it); every other analysis lists no senses. When
-///     the selected analysis has exactly one sense the result is at the <see cref="SenseLevel.Sense"/> level with that
-///     sense (and its group, normally none) and the confidence is the probability of its slot; otherwise the result
-///     is at the <see cref="SenseLevel.PartOfSpeech"/> level with the probability of the slot as the confidence, so
+///     The statistics carry no evidence that separates fine senses or groups, so the classifier never decides a sense
+///     or a group from the context. An analysis whose lemma and part of speech have exactly one sense lists
+///     that sense with probability 1 (no evidence is needed to choose it). An analysis that has two or more senses
+///     lists them <i>ranked by the usage prior</i> (<see cref="UsagePrior"/>): the WordNet 3.0 tag count of each sense with
+///     add-k smoothing, inventory order as the tie-break, so the first listed sense is the most frequent sense of the
+///     lemma and part of speech. The ranking is a statement about the lemma, not about the sentence, and it is
+///     never an answer: when the selected analysis has exactly one sense the result is at the
+///     <see cref="SenseLevel.Sense"/> level with that sense (and its group, normally none) and the confidence is the
+///     probability of its slot; otherwise the result
+///     is at the <see cref="SenseLevel.PartOfSpeech"/> level with the probability of the slot as the confidence (the
+///     same level, confidence, sense and group as without the ranking), so
 ///     the confidence of an ambiguous word is at least one over the number of its slots and a known word never goes
-///     unanswered. The classifier never answers at the <see cref="SenseLevel.Group"/> level.
+///     unanswered. The classifier never answers at the <see cref="SenseLevel.Group"/> level. The encoder models use this
+///     ranking for every lemma they have no weights for, because their composition falls back to this classifier.
 ///     </para>
 ///     <para>
 ///     The analyses array of a word with a single analysis is built once and shared by every result for that word
@@ -78,6 +84,7 @@ internal sealed class BasicClassifier
     private readonly Func<string, ImmutableArray<WordDetails>> _lexicon;
     private readonly Func<string, PartOfSpeech, int> _senseCount;
     private readonly Func<string, PartOfSpeech, ImmutableArray<SenseInfo>> _sensesOf;
+    private readonly Func<string, PartOfSpeech, ImmutableArray<SenseCandidate>>? _usagePrior;
 
     // A small direct-mapped cache of the answer for a word with a single analysis. The entries are immutable, so a
     // racing writer can only replace one valid entry with another.
@@ -88,7 +95,7 @@ internal sealed class BasicClassifier
     ///     lexicon of the core library.
     /// </summary>
     public BasicClassifier()
-        : this(null, Lookup, CountSenses, WordLexicon.SensesOf)
+        : this(null, Lookup, CountSenses, WordLexicon.SensesOf, UsagePrior.RankOf)
     {
     }
 
@@ -99,16 +106,19 @@ internal sealed class BasicClassifier
     /// <param name="lexicon">The lexicon: the analyses of a lower-case word, or the default array when it is unknown.</param>
     /// <param name="senseCount">The number of senses of a lemma and part of speech (0 when it has none).</param>
     /// <param name="sensesOf">The senses of a lemma and part of speech; asked only for a lemma and part of speech that have exactly one sense.</param>
+    /// <param name="usagePrior">The ranking of the senses of a lemma and part of speech by usage, asked only for a lemma and part of speech that have two or more senses; null for no ranking (such an analysis lists no senses).</param>
     internal BasicClassifier(
         BasicTables? tables,
         Func<string, ImmutableArray<WordDetails>> lexicon,
         Func<string, PartOfSpeech, int> senseCount,
-        Func<string, PartOfSpeech, ImmutableArray<SenseInfo>> sensesOf)
+        Func<string, PartOfSpeech, ImmutableArray<SenseInfo>> sensesOf,
+        Func<string, PartOfSpeech, ImmutableArray<SenseCandidate>>? usagePrior = null)
     {
         _tables = tables;
         _lexicon = lexicon;
         _senseCount = senseCount;
         _sensesOf = sensesOf;
+        _usagePrior = usagePrior;
     }
 
     private static ImmutableArray<WordDetails> Lookup(string key) => WordLexicon.TryLookup(key, out var analyses) ? analyses : [];
@@ -753,23 +763,24 @@ internal sealed class BasicClassifier
     }
 
     /// <summary>
-    ///     Lists the only sense of an analysis, with probability 1, when its lemma and part of speech have exactly one
-    ///     sense.
+    ///     Lists the senses of an analysis: the only sense, with probability 1, when its lemma and part of speech have
+    ///     exactly one sense, and the senses ranked by the usage prior (<see cref="UsagePrior"/>) when it has two or more.
     /// </summary>
     /// <param name="analysis">The analysis.</param>
-    /// <param name="group">Receives the group of that sense (normally none).</param>
-    /// <returns>The one sense, or the empty array when the analysis has none or several.</returns>
+    /// <param name="group">Receives the group of the only sense (normally none); null for a ranking, which names no group.</param>
+    /// <returns>The only sense, the ranked senses, or the empty array when the analysis has none (or several and no ranking is configured).</returns>
     private ImmutableArray<SenseCandidate> OnlySenseOf(WordDetails analysis, out string? group)
     {
         group = null;
-        if (_senseCount(analysis.Lemma, analysis.PartOfSpeech) == 1
+        var count = _senseCount(analysis.Lemma, analysis.PartOfSpeech);
+        if (count == 1
             && _sensesOf(analysis.Lemma, analysis.PartOfSpeech) is { Length: 1 } senses)
         {
             group = senses[0].GroupId;
             return [new SenseCandidate(senses[0].SenseId, 1.0)];
         }
 
-        return [];
+        return count >= 2 && _usagePrior is { } prior ? prior(analysis.Lemma, analysis.PartOfSpeech) : [];
     }
 
     /// <summary>

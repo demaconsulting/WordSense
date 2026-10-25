@@ -247,11 +247,13 @@ Every word follows the same path:
    senses of the word from the sentence and answer at the finest level they are confident in (see "Levels and
    Confidence"); the Basic model tags the sentence and weighs the context words and answers with the part of speech.
    Every model answers a word with several senses; the level and the confidence say how precise and how sure the answer
-   is. Every model lists the probability of every analysis in `Analyses`, and an encoder model also lists, inside each
-   analysis, the ranked senses with their probabilities (see "Using the Analyses and Senses"). An
+   is. Every model lists the probability of every analysis in `Analyses`, and, inside each analysis, the ranked senses
+   with their probabilities (see "Using the Analyses and Senses"): an encoder model scores them for the lemmas it was
+   trained for, and the Basic model ranks them by how often the senses are used for every other lemma and part of speech
+   with two or more senses (a ranking of the lemma, not of the sentence, and never an answer). An
    encoder model that was not trained for the word (the lemma has no weights) scored no senses, so its package answers
    the word with the Basic model instead (see "Composing Models"): the analysis that Basic chooses, at the
-   `PartOfSpeech` level, and never a guessed sense.
+   `PartOfSpeech` level, with the senses ranked by usage and never a guessed sense.
 
 An encoder model runs the encoder only when a sentence has a word that needs it, so a sentence without such a word
 costs no model call. Whatever is in the word table is classified, whatever its capitalization or a trailing
@@ -279,9 +281,12 @@ without custom code:
   the same senses with the same probabilities. It is empty only for an unknown word. Each `AnalysisCandidate` has
   `Details` (a `WordDetails`: `Lemma`,
   `PartOfSpeech` and `Features`; it has no sense id), `Probability` and `Senses`, an `ImmutableArray<SenseCandidate>` of
-  the fine senses of that analysis, each a `SenseId` and a `Probability` given the analysis, the largest first (ties by
-  ordinal sense id), summing to one and never truncated. `Senses` is empty when the model did not score the senses of
-  the analysis (every analysis of the Basic model, except the one sense of an analysis that has only one).
+  the fine senses of that analysis, each a `SenseId` and a `Probability` given the analysis, the largest first (ties in
+  the inventory order of the lemma), summing to one and never truncated. `Senses` is empty only when the lemma and
+  part of speech of the analysis have no sense; for an analysis that has several senses it is either the ranking of an encoder
+  model that was trained for the lemma or, for every other lemma, the usage ranking of the Basic model (the WordNet 3.0
+  tag counts of the senses with smoothing: the same in every sentence, a statement about the lemma and not an answer), and
+  for an analysis that has one sense it is that sense with probability 1.
 - `Details`: the selected analysis (the best variant of the most probable lemma and part of speech, the first entry of
   `Analyses`) as a `WordDetails`, or `null` for an unknown word.
   `WordDetails.TryGetFeature("Tense", out var tense)` reads one feature of it.
@@ -348,7 +353,7 @@ level:
 | `Sense` | the best fine sense is clear enough, and lies in the selected analysis | `SenseId`, and `GroupId` when the sense is in a group |
 | `Group` | the lemma has groups; the fine senses are too close to tell apart but the group of the best one is clear | `GroupId` |
 | `PartOfSpeech` | neither is clear, or the lemma has no group to step to (or the best sense is in none) | none |
-| `PartOfSpeech` | the word has no scored senses (it was not trained, or the encoder gave no vector): the analysis of the Basic model | none |
+| `PartOfSpeech` | the word has no scored senses (it was not trained, or the encoder gave no vector): the analysis of the Basic model, with its senses ranked by usage | none |
 
 <!-- markdownlint-enable MD013 -->
 
@@ -432,9 +437,11 @@ foreach (var (category, probability) in sums)
 The same two lists answer questions about the analyses alone, with no senses: the probability that a word is a verb is
 the sum of `Probability` over the analyses whose `Details.PartOfSpeech` is `Verb`.
 
-`Senses` is empty for an analysis whose senses the model did not score: every analysis of the Basic model (except an
-analysis whose lemma and part of speech have only one sense, which lists that sense with probability 1) and every
-analysis of a word that an encoder model's package answers through its Basic model. `Analyses` is empty only for an
+`Senses` is empty for an analysis whose lemma and part of speech have no sense, and for an analysis of a model that did
+not rank its senses (a model that you write, for example).
+Every analysis of the Basic model lists its one sense (probability 1) or its senses ranked by usage (the usage prior: the
+WordNet 3.0 tag counts, never an answer), and so does every analysis of a word that an encoder model's package answers
+through its Basic model. `Analyses` is empty only for an
 unknown word. The senses are those of the lemma and part of speech of each analysis, so a form that belongs to several
 lemmas lists the senses of each lemma under its own analysis. The probabilities are a ranking score of one model: like
 the confidence they are comparable only within one result, so do not compare them across models.
@@ -517,10 +524,13 @@ A key has the form `{spelling}|{lemma}/{Part}[/{Features}][#{label}]`:
 The label depends on the level of the answer:
 
 - **Sense level**: the answered sense (`bass|bass/Noun/Number=Sing#sea-bass`).
-- **Group level, or part-of-speech level where the model ranked the senses of the analysis** (the encoder models, for the
-  lemmas they are trained for): the most probable ranked sense of the selected analysis
-  (`bass|bass/Noun/Number=Sing#sea-bass`). A group id is never used, because group ids are not frozen.
-- **Part-of-speech level without a ranking** (the Basic model, or a word the model is not trained for): no label
+- **Group level, or part-of-speech level where the model ranked the senses of the analysis** (the encoder models for the
+  lemmas they are trained for, and every model for the other lemmas and parts of speech that have two or more senses, by
+  the usage ranking of the Basic model): the most probable ranked sense of the selected analysis, the first listed one on
+  equal probabilities (`bass|bass/Noun/Number=Sing#sea-bass`). A group id is never used, because group ids are not frozen.
+  For a word that no model scored the label is the most frequent sense of the lemma and part of speech, not a decision
+  of the context: test the `Level` and the `Confidence` before you read it as a meaning.
+- **Part-of-speech level without a ranking** (an analysis whose lemma and part of speech have no sense): no label
   (`bass|bass/Noun/Number=Sing`).
 - **Unknown word**: the key is `null`.
 
@@ -628,7 +638,8 @@ The previous release identified a sense by a pronunciation or part-of-speech cla
   at the level the model answered at, and a word answered at the `Group` or `PartOfSpeech` level has no sense id at all.
 - **`Lookup` returns analyses once.** `WordLexicon.Lookup` no longer repeats an analysis for each class of a word;
   use `WordLexicon.SensesOf(lemma, partOfSpeech)` to list the senses of an analysis.
-- **Words not trained for an encoder** are answered at the part of speech level by the statistical model, where the
+- **Words not trained for an encoder** are answered at the part of speech level by the statistical model, with their
+  senses ranked by usage and never a guessed sense, where the
   previous release answered their first dictionary sense with a confidence of one over the number of senses.
 - **Models compose.** `FallbackWordSenseModel` combines two models; the encoder packages use it with the Basic model
   (see "Composing Models").
@@ -790,8 +801,9 @@ for a word whose selected analysis has a lemma and part of speech with a single 
 probability of that lemma and part of speech, 1 for a word with only one; a word with only one lemma and part of speech
 and several senses is at the `PartOfSpeech` level, also with confidence 1), it never answers at the `Group` level, and
 the `Senses`
-of its analyses are empty except for the one sense of such a single-sense analysis (probability 1), because it scores
-analyses and not fine senses. The measured
+of its analyses are the one sense of a single-sense analysis (probability 1), the senses ranked by usage for an analysis
+with two or more senses (the WordNet 3.0 tag counts; a ranking of the lemma that is never an answer), and empty for an
+analysis without senses, because it scores analyses and not fine senses. The measured
 quality is in the chapter "Accuracy and Model Choice". First use costs about 55 ms for the word table and about 22 ms for
 the statistical table (approximate, machine dependent); after that a sentence takes well under a millisecond. A missing
 or corrupt embedded table is reported by `ClassifyAsync` as a `ModelIntegrityException`, thrown from the call.
@@ -1026,7 +1038,8 @@ groups they form, picks the finest level whose margin passes the lemma's own thr
 it is unsure about is still answered, at the `Group` or the `PartOfSpeech` level, with a correspondingly low
 confidence; the `Senses` of the selected analysis keep the ranking of the senses visible. A word that the encoder was
 not trained for (or could not judge) scored no senses, so the package answers it with the Basic model: its analysis at
-the `PartOfSpeech` level, with the probability of its lemma and part of speech as confidence.
+the `PartOfSpeech` level, with the probability of its lemma and part of speech as confidence and the senses of that
+analysis ranked by how often they are used (the usage prior: the WordNet 3.0 tag counts, the same in every sentence).
 
 The confidence is not calibrated: it is comparable only within one result, not across models, words or levels, and no
 value such as 0.5 means "the model met its target". Choose a threshold per model and level on your own text, and
@@ -1366,7 +1379,9 @@ written sentences in `tools/quota-fill/README.md`. All commands run from the rep
 | `tiers` | Reports the quota of anchor and holdout sentences of each sense of the trained lemmas, the senses that fall short and the sentences that are missing |
 | `weights <modelId>` | Trains the fine-sense weights and the per-lemma thresholds of an encoder model (`minilm` or `bert-base-cased`) |
 | `evaluate <modelId>` | Measures a model (`minilm`, `bert-base-cased` or `basic`) on holdout and real text, at each answer level |
-| `evaluate-senses [--model all] [--download]` | Measures the models on SemCor 3.0 (from the git-ignored cache, or downloaded after verifying its SHA-256; never committed): the trained lemmas, and all mapped words of a trained lemma or of an untrained lemma with two or more senses, with a tag-count baseline |
+| `evaluate-senses [--model all] [--download]` | Measures the models on SemCor 3.0 (from the git-ignored cache, or downloaded after verifying its SHA-256; never committed): the trained lemmas, and all mapped words of a trained lemma or of an untrained lemma with two or more senses, with a tag-count baseline (circular on SemCor, as is the usage prior of the models) |
+| `evaluate-allwords [--model all]` | Measures the models on the independent all-words gold set (`corpus/allwords`): the fine top-1 of the usage ranking on untrained polysemous lemmas, with the first-sense, tag-count and random baselines and the smoothing sweep of the development half |
+| `allwords-sample --batches DIR`, `allwords-merge --batches DIR --first A --second B` | Draw the tokens of the gold set and write the blind labeling batches, and merge the answers of two labelers into the gold files |
 | `evaluate-running [--model all] [--gold FILE] [--report all\|running\|tense]` | Measures the part-of-speech accuracy of the models on the open corpus test split, the convention-mapped treebank test file and the challenge set, and the tense of the verbs whose past and non-past share a spelling (`put`, `cut`, `read`) on the open corpus and the treebank files |
 | `evaluate-suite` | Runs the reviewed suite against the three models and reports the pass rates and the regressions |
 | `check-leakage` | Checks that no sentence is shared by a training part and an evaluation part, by two evaluation parts, or by the corpus and an Open English WordNet example |
@@ -1492,8 +1507,9 @@ A result with `SenseId` and `GroupId` both `null` is not an error: the level is 
 model could tell the analysis (lemma and part of speech) but not a sense. Either the lemma has no trained weights for
 that model (see the appendix for the trained lemmas) or the model does not decide senses (Basic). A result at the
 `Group` level has a group id and no sense id: the fine senses of that group were too close to tell apart; the member
-senses are in `WordLexicon.TryGetGroup`. The ranked senses are still in the `Senses` of the analyses where the model
-scores senses.
+senses are in `WordLexicon.TryGetGroup`. The ranked senses are still in the `Senses` of the analyses: scored by an
+encoder model for a lemma it was trained for, and ranked by usage (never decided) for every other lemma and part of
+speech with two or more senses.
 
 ## A Stored Group Id Is Not Found
 
