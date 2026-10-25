@@ -151,3 +151,19 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Complete dictionary**: the builder tests `Words_Committed_HoldsEveryDictionaryWord` and
   `Words_Committed_CatalogHoldsEveryOewnAndProjectSense` show that no dictionary word and no sense whose lemma has a
   letter is absent from the image; the numerals, whose lemma has no letter, are left out by design.
+- **Keys are enumerated** (`WordLexicon_Keys_LookedUpWord_HasAKeyForEachAnalysisAndSense`,
+  `WordLexicon_Keys_FormsOfOneAnalysis_AreKeyedBySpelling`, `WordLexicon_Keys_SampledSpellings_CoverEveryLookup`,
+  `WordLexicon_Keys_LabeledKeys_NameASenseOfTheLemmaAndPartOfSpeech`, `WordLexicon_Keys_Enumeration_ListsNoKeyTwice`,
+  `WordLexicon_Keys_EveryKey_ParsesBackToItselfWithANormalizedSpelling`,
+  `WordLexicon_Keys_Enumeration_IsDeferredAndRepeatable`): one pass over `WordLexicon.Keys()` shows that more than a
+  million keys are listed, none twice, that each parses with `WordKey.TryParse` and formats back to itself, that its
+  spelling is lower case with a straight apostrophe and that its label belongs to a sense of its lemma and part of
+  speech in the catalog. For the words `bass`, `Polish`, `POLISH`,
+  `read`, `put`, `dreamt`, `dreamed`, `don't`, `A/C` (an escaped lemma), `dog's`, `dogs'` and `Jack's` (possessives that
+  are not stored) the key without a label and the key of every catalog sense are present for each analysis that
+  `Lookup` returns; `dreamt` and `dreamed` have different keys for one analysis. A sample of every seventh spelling of the
+  image, in the stored case and in upper case, has the key of every analysis of its lookup; this and the word list are
+  sample verification of the enumeration guarantee, which holds by construction (see the design: the key of a result and
+  the enumeration are built from the same analyses and catalog senses). The enumeration has deferred execution and a
+  fixed order: the first 5,000 keys of three reads of one sequence and of a second call are equal. The pre-pass over the
+  spellings that the first read makes is not measured by a test.

@@ -256,6 +256,28 @@ internal sealed partial class WordImage
             return -1;
         }
 
+        public string[] LabelsOf(string lemma, PartOfSpeech pos)
+        {
+            var block = FindBlock(lemma, pos);
+            if (block < 0)
+            {
+                return [];
+            }
+
+            var labels = new List<string>((int)(BlockStart[block + 1] - BlockStart[block]));
+            for (var k = BlockStart[block]; k < BlockStart[block + 1]; k++)
+            {
+                var id = IdSpan((int)BlockSenses[k]);
+                var hash = id.IndexOf((byte)'#');
+                if (hash >= 0 && hash < id.Length - 1)
+                {
+                    labels.Add(Encoding.UTF8.GetString(id[(hash + 1)..]));
+                }
+            }
+
+            return [.. labels];
+        }
+
         public int FindSense(string id)
         {
             var query = Encoding.UTF8.GetBytes(id);

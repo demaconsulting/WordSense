@@ -106,6 +106,16 @@ statistical table are bound to), so it changes whenever an analysis, a sense or 
 for equality only, and a consumer that stores group ids saves the version with them. A group answer always leads to
 its members: `ClassifyResult.GroupId` with `TryGetGroup` gives `SenseGroup.SenseIds` in inventory order.
 
+Every known word that a model answers also has one stable key, `ClassifyResult.Key` (the format
+`{spelling}|{lemma}/{Part}[/{Features}][#{label}]`, the type `WordKey`), and an unknown or unanswered word has none
+(null): the key names the analysis of the answer and, where known, its sense, and it is computed from the fields of the
+result alone, so it is the same for every model, those of third parties included. `WordLexicon.Keys()` enumerates every
+key that any model can return (a guaranteed superset: for every normalized spelling and analysis the key without a label
+and one key for each catalog sense of the lemma and part of speech; the key of a result and the enumeration are built
+from the same analyses and catalog senses, so the guarantee holds by construction), so a consumer can build a complete
+map from key to its own data; WordSense itself never carries phonemes. The details are in the `WordSenseContracts` and
+`WordLexicon` unit documents.
+
 The lexicon, the contracts and the statistical model do not call each other beyond the lexicon lookups: a model looks
 up the analyses of a word, asks for their senses, and returns `ClassifyResult` values built from the
 `AnalysisCandidate` list of the word (analyses with their probabilities and, where scored, their senses), the selected

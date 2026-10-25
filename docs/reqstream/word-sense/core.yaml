@@ -248,6 +248,89 @@ sections:
               - BasicWordSenseModel_IsNotDownloadable
               - BasicTables_Default_LoadsEmbeddedTable
 
+          - id: WordSense-Core-Keys-Format
+            title: >-
+              The core subsystem shall give a known word with a selected analysis one stable string key of the format
+              {spelling}|{lemma}/{Part}[/{Features}][#{label}] that names its analysis and, where known, its sense, and
+              that is derived from the result alone.
+            tags: [subsystem]
+            justification: |
+              A consumer that attaches its own data to the meaning of a word (WordSense never carries phonemes)
+              needs one key for each answer.
+            children:
+              - WordSense-Core-WordSenseContracts-Key-Format
+              - WordSense-Core-WordSenseContracts-Key-Label
+              - WordSense-Core-WordSenseContracts-WordKey-Text
+            tests:
+              - ClassifyResult_Key_SenseLevel_HasTheLabelOfTheAnsweredSense
+              - ClassifyResult_Key_RankedSenses_FallBackToTheTopRankedSense
+              - WordKey_ToString_SeparatorsInParts_AreEscaped
+
+          - id: WordSense-Core-Keys-Null
+            title: >-
+              The core subsystem shall give an unknown word and a result without a selected analysis no key (null),
+              and every known answered word a key.
+            tags: [subsystem]
+            justification: |
+              A consumer must be able to tell a word that has a meaning to map from one that has none.
+            children:
+              - WordSense-Core-WordSenseContracts-Key-Null
+              - WordSense-Core-WordSenseContracts-KeyCompleteness-KnownHasKey
+            tests:
+              - ClassifyResult_Key_UnknownOrUnanswered_IsNull
+              - BasicKeys_SuiteAndCorpusSentences_AreAllEnumerated
+
+          - id: WordSense-Core-Keys-BuildAndParse
+            title: >-
+              The core subsystem shall let callers build a key as an immutable value, and parse the text of a key back
+              into its parts exactly, accepting canonical text only.
+            tags: [subsystem]
+            justification: |
+              A consumer that stores keys parses them to read the analysis and the sense.
+            children:
+              - WordSense-Core-WordSenseContracts-WordKey-Value
+              - WordSense-Core-WordSenseContracts-WordKey-Parse
+              - WordSense-Core-WordSenseContracts-WordKey-CanonicalOnly
+            tests:
+              - WordKey_Value_SameParts_AreEqual
+              - WordKey_TryParse_ValidKey_RoundTrips
+              - WordKey_TryParse_NotAKey_IsRefused
+
+          - id: WordSense-Core-Keys-Enumeration
+            title: >-
+              The core subsystem shall let callers enumerate every key that any model can return: the key of every
+              analysis of every normalized spelling and of every catalog sense of the lemma and part of speech of
+              the analysis, the possessive spellings included.
+            tags: [subsystem]
+            justification: |
+              A consumer that builds a map from key to its own data must know every key in advance. The guarantee holds
+              by construction (the key of a result and the enumeration are built from the same analyses and catalog
+              senses); the model-level tests check it on a sample.
+            children:
+              - WordSense-Core-WordLexicon-Keys-Analyses
+              - WordSense-Core-WordLexicon-Keys-Senses
+              - WordSense-Core-WordLexicon-Keys-Possessive
+              - WordSense-Core-WordSenseContracts-KeyCompleteness-Sample
+            tests:
+              - WordLexicon_Keys_LookedUpWord_HasAKeyForEachAnalysisAndSense
+              - BasicKeys_SuiteAndCorpusSentences_AreAllEnumerated
+
+          - id: WordSense-Core-Keys-EnumerationOrder
+            title: >-
+              The core subsystem shall enumerate the keys with deferred execution, each key once and in canonical
+              form, in the same order on every enumeration.
+            tags: [subsystem]
+            justification: |
+              A reproducible, duplicate-free enumeration is what a key export and a consumer's map need.
+            children:
+              - WordSense-Core-WordLexicon-Keys-Unique
+              - WordSense-Core-WordLexicon-Keys-WellFormed
+              - WordSense-Core-WordLexicon-Keys-Order
+            tests:
+              - WordLexicon_Keys_Enumeration_ListsNoKeyTwice
+              - WordLexicon_Keys_EveryKey_ParsesBackToItselfWithANormalizedSpelling
+              - WordLexicon_Keys_Enumeration_IsDeferredAndRepeatable
+
           - id: WordSense-Core-Independent
             title: >-
               The core subsystem shall not depend on ONNX Runtime, encoder weights or vector mathematics.

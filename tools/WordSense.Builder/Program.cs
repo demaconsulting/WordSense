@@ -26,7 +26,9 @@ namespace WordSense.Builder;
 ///     <item><description><c>tune-basic [--corpus DIR] [--repository DIR]</c> scores the hyper-parameter grid on the development split of the representative open corpus and the anchor development subset; it writes nothing.</description></item>
 ///     <item><description><c>evaluate-tagger [--input FILE] [--corpus DIR] [--repository DIR] [--split test] [--gold FILE] [--output FILE]</c> measures the part-of-speech accuracy of the basic classifier with the table <c>FILE</c> (default the shipped <c>basic.bin</c>) on a split of the representative open corpus (the headline), on the test split of the targeted challenge set (reported on its own line) and on an optional external gold file (<c>sentence id</c>, form and tag letter per line).</description></item>
 ///     <item><description><c>coverage --text DIR [--corpus DIR] [--top N] [--output FILE]</c> reports how many of the running words of the text files of a directory the word table knows, the share of the known words whose lemma is trained (a lemma that has sentences in <c>corpus/anchors</c>), and lists the most frequent unknown words, split into name-like and other words.</description></item>
-///     <item><description><c>appendix [--corpus DIR] [--data DIR] [--output FILE]</c> writes the generated senses appendix of the user guide: the senses of the trained lemmas of <c>corpus/anchors</c> with id, group, sense key and gloss, from the data folder (default <c>data</c>).</description></item>
+///     <item><description><c>appendix [--corpus DIR] [--data DIR] [--output FILE]</c> writes the generated senses appendix of the user guide: the senses of the trained lemmas of <c>corpus/anchors</c> with id, group, sense key and gloss, from the data folder (default <c>data</c>), the keys and the heteronyms of the word table (see <c>keys</c> and <c>heteronyms</c>).</description></item>
+///     <item><description><c>keys --output FILE</c> writes every word key that a model can return (<c>WordLexicon.Keys()</c>) as UTF-8 text, one key for each line in ordinal order, after a header comment line with the key format, the inventory version of the lexicon and the number of keys; the file is large (about 63 MB) and is not committed, so generate it where it is needed.</description></item>
+///     <item><description><c>heteronyms --output FILE [--corpus DIR] [--data DIR]</c> writes the heteronym table of the appendix as a TSV (<c>level</c>, <c>group</c>, <c>spelling</c>, <c>class</c>, <c>key</c>, <c>note</c>) for a downstream library: every spelling whose analyses, tense forms or senses stand for different words, with the keys of each meaning class; the entry level is derived from the pronunciations of the data, the tense and sense levels from the curated table <c>corpus/curation/heteronyms.tsv</c>.</description></item>
 ///     <item><description><c>evaluate-senses [--model all] [--cache DIR] [--download] [--sample N] [--output FILE] [--table FILE]</c> measures the models on SemCor 3.0, an independent human-annotated sense corpus: the archive is read from the cache (default <c>tools/open-corpus/cache</c>, ignored by git) or, with <c>--download</c>, downloaded after verifying its pinned SHA-256; WordNet 3.0 sense keys are mapped to the senses of the catalog, and for the words of the trained lemmas the command reports the mapping coverage, the share answered at each level, the precision at each level, the part-of-speech accuracy and the most-frequent-sense baseline; the all-words section adds the words of the untrained lemmas with two or more senses (trained, untrained and all words per model: answered share, precision, fine top-1) and a most-frequent-sense baseline from the WordNet 3.0 tag counts, which include SemCor itself and so are optimistic. SemCor is used for evaluation only, never committed and never trained on.</description></item>
 ///     <item><description><c>evaluate-running [--model all] [--split test] [--gold FILE] [--output FILE] [--table FILE]</c> measures the part-of-speech accuracy of the models on running text: the test split of the representative open corpus (the headline), the convention-mapped test file of the English EWT treebank (<c>--gold</c>, default <c>tools/open-corpus/work/tagger-eval/ud_test.tsv</c>, written by <c>prepare_tagger_eval.py</c>; skipped with a note when it does not exist) and the targeted challenge set on its own line, with the accuracy on all tokens and on the ambiguous tokens.</description></item>
 ///     <item><description><c>evaluate-suite [--output FILE] [--write-expectations FILE] [--overwrite true]</c> runs the reviewed suite (<c>corpus/suite</c>) against the three models, reports the pass rates and the rows that fall below the expectation of a model; <c>--write-expectations</c> writes the expectation file for a new suite or model.</description></item>
@@ -41,7 +43,7 @@ namespace WordSense.Builder;
 /// </remarks>
 internal static partial class Program
 {
-    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: compile-image, rebuild-forms, audit-forms, generate-facts, import-moby, weights <modelId>, evaluate <modelId>, evaluate-senses, evaluate-running, evaluate-suite, check-leakage, tiers, open-counts, evaluate-tagger, coverage, train-basic, tune-basic, appendix, import-oewn, import-wn30-counts, label-senses, seed-inventory, validate-data.";
+    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: compile-image, rebuild-forms, audit-forms, generate-facts, import-moby, weights <modelId>, evaluate <modelId>, evaluate-senses, evaluate-running, evaluate-suite, check-leakage, tiers, open-counts, evaluate-tagger, coverage, train-basic, tune-basic, appendix, keys, heteronyms, import-oewn, import-wn30-counts, label-senses, seed-inventory, validate-data.";
 
     /// <summary>The name of the option that gives the input file of an import command.</summary>
     private const string InputOption = "input";
@@ -134,6 +136,10 @@ internal static partial class Program
                     return RunAuditForms(options, repository, output, error);
                 case "appendix":
                     return RunAppendix(options, repository, corpus, output);
+                case "keys":
+                    return RunKeys(options, output);
+                case "heteronyms":
+                    return RunHeteronyms(options, repository, corpus, output);
                 default:
                     error.WriteLine($"Unknown command '{args[0]}'. {Usage}");
                     return 1;
@@ -327,6 +333,23 @@ internal static partial class Program
         var data = options.TryGetValue("data", out var d) ? Path.GetFullPath(d) : Path.Join(repository, "data");
         var lemmas = AppendixGenerator.Write(corpus, data, appendix);
         output.WriteLine($"Wrote the appendix of {lemmas.ToString(CultureInfo.InvariantCulture)} lemmas to {appendix}.");
+        return 0;
+    }
+
+    private static int RunKeys(Dictionary<string, string> options, TextWriter output)
+    {
+        var file = Require(options, "output");
+        var count = KeyExport.Write(file);
+        output.WriteLine($"Wrote {count.ToString("N0", CultureInfo.InvariantCulture)} keys of the lexicon {DemaConsulting.WordSense.WordLexicon.Version} to {file}.");
+        return 0;
+    }
+
+    private static int RunHeteronyms(Dictionary<string, string> options, string repository, string corpus, TextWriter output)
+    {
+        var file = Require(options, "output");
+        var data = options.TryGetValue("data", out var d) ? Path.GetFullPath(d) : Path.Join(repository, "data");
+        var count = Heteronyms.Write(data, Path.Join(corpus, "curation", "heteronyms.tsv"), file);
+        output.WriteLine($"Wrote {count.ToString("N0", CultureInfo.InvariantCulture)} heteronym records to {file}.");
         return 0;
     }
 

@@ -156,8 +156,11 @@ public sealed class BuilderTests : IDisposable
         Assert.Contains("The library supports 2 lemmas with 7 senses in total", text, StringComparison.Ordinal);
         Assert.Contains("not listed: `zzyzx`.", text.ReplaceLineEndings(" "), StringComparison.Ordinal);
         Assert.True(text.IndexOf("- **bank**;", StringComparison.Ordinal) < text.IndexOf("- **the**;", StringComparison.Ordinal));
-        Assert.Contains("- **bank**; parts of speech: noun, verb; forms: banks\n", text, StringComparison.Ordinal);
-        Assert.Contains("- **the**; parts of speech: determiner; no other forms\n", text, StringComparison.Ordinal);
+        Assert.Contains(
+            "- **bank**; parts of speech: noun, verb; forms: bank (noun, Number=Sing), bank (verb, VerbForm=Inf), banks (noun, Number=Plur)",
+            System.Text.RegularExpressions.Regex.Replace(text, "\n {2,}", " "),
+            StringComparison.Ordinal);
+        Assert.Contains("- **the**; parts of speech: determiner; forms: the\n", text, StringComparison.Ordinal);
         Assert.Contains("### Lemmas Starting With B\n", text, StringComparison.Ordinal);
         Assert.Contains("### Lemmas Starting With T\n", text, StringComparison.Ordinal);
         Assert.Contains(Unwrapped(text), line => line.Contains("gloss: a financial institution that accepts deposits \\*and\\* lends money; a depository", StringComparison.Ordinal));
@@ -229,6 +232,7 @@ public sealed class BuilderTests : IDisposable
             "oewn-6-v\t1\tcover with ashes\n" +
             "dema-1-d\t1\tthe definite article\n");
         Write("corpus/anchors/a.tsv", "the\tthe#determiner\tDeterminer\tThe {the} end.\nbank\tbank#ridge\tNoun\tA {bank} here.\nbank\tbank#cover\tVerb\tThey {bank} it.\nzzyzx\tzzyzx#noun\tNoun\tA {zzyzx} appears.\n");
+        Write("corpus/curation/heteronyms.tsv", "level\tgroup\tclass\tpattern\tnote\n");
         return (Path.Join(_dir.Root, "corpus"), data);
     }
 

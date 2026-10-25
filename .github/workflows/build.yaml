@@ -79,6 +79,23 @@ jobs:
         shell: pwsh
         run: ./lint.ps1
 
+      # The keys of the word table and the heteronym table are inputs of downstream libraries. The key file is large
+      # (about 63 MB), so it is not committed: it is generated here and published as an artifact of its own, outside
+      # artifacts/ (the report jobs merge every artifacts-* artifact).
+      - name: Generate word keys and heteronyms
+        shell: pwsh
+        run: |
+          dotnet run --project tools/WordSense.Builder -c Release -- keys --output word-keys/keys.txt
+          if ($LASTEXITCODE -ne 0) { throw 'The keys command failed.' }
+          dotnet run --project tools/WordSense.Builder -c Release -- heteronyms --output word-keys/heteronyms.tsv
+          if ($LASTEXITCODE -ne 0) { throw 'The heteronyms command failed.' }
+
+      - name: Upload word keys
+        uses: actions/upload-artifact@v7
+        with:
+          name: word-keys
+          path: word-keys/
+
       # === UPLOAD ARTIFACTS ===
       # This section uploads all generated artifacts for use by downstream jobs.
       # Downstream projects: Add any additional artifact uploads here.

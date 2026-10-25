@@ -46,6 +46,28 @@ records for it: no row falls below its expectation (`fine`, `answer` or `miss`),
 the known misses stay documented. The test skips when the model files are not present
 (`BertBaseCasedSuiteTests`, `BertBaseCasedSuite_ExpectedPasses_StillPass`).
 
+#### Keys of the Real Model Are Enumerated
+
+**Scenario** (`BertBaseCasedKeyTests`, `BertBaseCasedKeys_SuiteAndCorpusSentences_AreAllEnumerated`): the model, created
+from the committed directory with two intra-op threads, classifies the words of every row of the reviewed suite
+(`corpus/suite/suite.tsv`) and of a deterministic sample of the held-out sentences (every 20th row of
+`corpus/holdout/relabel-holdout.tsv`, about 570 sentences), through the shared helper `KeyCompleteness`
+(`test/DemaConsulting.WordSense.Tests/KeyCompleteness.cs`, linked into the project).
+
+**Inputs**: the words of those sentences; the answers of the real model (the encoder for the trained lemmas, the Basic
+model for the others). The cased model keeps the case of the word, and the key normalizes only the spelling, so
+capitalized words and lemmas with a capital (`Polish`) are part of the check.
+
+**Environment**: the real int8 model (Git LFS) and the embedded lexicon; the test is skipped without the model files and
+failed instead when `WORDSENSE_REQUIRE_MODELS` is set.
+
+**Acceptance**: a word has a key exactly when it is known; every key is a member of `WordLexicon.Keys()` (one pass over
+the enumeration); and the check observes more than 500 distinct keys, so it is not empty. This verifies the model-level
+part of the requirements `WordSense-Core-WordSenseContracts-KeyCompleteness-Sample` and `...-KnownHasKey` for the
+BertBaseCased model. It is a sample verification of the guarantee that the enumeration is a superset of the keys of
+every model; the guarantee holds by construction, because the key of a result and the enumeration are built from the
+same analyses and catalog senses (see the `WordLexicon` unit design).
+
 #### Untrained Ambiguous Words Are Answered by the Basic Model
 
 A word with several senses that the encoder does not score is answered with the complete result of the Basic model of

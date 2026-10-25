@@ -28,6 +28,9 @@ ambiguous word is answered by the `Basic` model at the part-of-speech level, and
 - 🏷️ **Fine Senses and Groups** - Open English WordNet senses with readable ids, WordNet sense keys and coarse groups
 - 🎚️ **Answer Levels** - Each answer says whether it is a sense, a group or a part of speech
 - 📊 **Confidence** - Every answer carries a confidence from 0 to 1 that applies to its level
+- 🔑 **Stable Keys** - `ClassifyResult.Key` is one string per answer (`bass|bass/Noun/Number=Sing#sea-bass`), and
+  `WordLexicon.Keys()` lists every key the library can return, so a downstream library can map keys to its own data
+  (see "Keys" in the user guide)
 - 📦 **Layered Packages** - Core with a dependency-free Basic model, optional ONNX encoder models
 - 🔒 **Verified Models** - Downloads are checked against pinned SHA-256 digests
 - 🌍 **Multi-Platform** - Windows, Linux and macOS; .NET 8, 9 and 10
@@ -381,8 +384,8 @@ This version is a foundation, and these follow-ups are planned (the figures are 
 ## Documentation
 
 - **User Guide**: usage, configuration, limitations, licensing and troubleshooting ([user guide][link-user-guide])
-- **Senses appendix**: every supported lemma with its senses, groups and OEWN keys
-  ([appendix][link-appendix])
+- **Senses appendix**: every supported lemma with its senses, groups and OEWN keys, the keys, and the heteronyms by
+  their keys ([appendix][link-appendix])
 - **Design, Verification and Requirements**: generated from `docs/`
 
 ## Credits and licenses

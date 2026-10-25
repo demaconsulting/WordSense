@@ -59,6 +59,18 @@ every group id carrying the group marker (`lemma#group:label`) and never equal t
 inventory is the same on every call and has the form of 16 lower-case hexadecimal digits. The
 scenarios are detailed in the `WordLexicon` unit document.
 
+#### Every Answer Has One Stable Key
+
+The key of a result (`ClassifyResult.Key`) is derived from the result alone: null for an unknown word and for a result
+without a selected analysis, otherwise (every known answered word) the
+normalized spelling, the lemma, the part of speech, the features and, where the answer or the ranking names a sense, its
+label. `WordKey.TryParse` reads a key back (canonical text only), and `WordLexicon.Keys()` lists every key that any model
+can return, each once, in a fixed order, with deferred execution after one pass over the spellings. The guarantee that
+the list holds every key of every model holds by construction (the key of a result and the list are built from the same
+analyses and catalog senses); the keys the three models give for the words of the reviewed suite and of a sample of
+corpus sentences are all in that list, which is a sample verification of it. The scenarios
+are detailed in the `WordSenseContracts` and `WordLexicon` unit documents.
+
 #### Contracts Are Usable Without a Model Package
 
 `ClassifyResult`, `AnalysisCandidate`, `SenseCandidate`, `SenseLevel`, `WordDetails`, `PartOfSpeech`, `SenseInfo`,

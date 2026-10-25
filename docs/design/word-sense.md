@@ -78,6 +78,14 @@ corroborate generated forms at build time. No CC BY-SA material is shipped anywh
 the usage prior of the encoder models: the MiniLM and BertBaseCased packages are also `MIT AND CC-BY-4.0`, because
 their weights hold Open English WordNet sense ids, and their notices add the WordNet 3.0 notice of that prior.
 
+**Keys and heteronyms.** A downstream library, for example a speech front end, attaches its own data to the meaning of
+a word; WordSense names meanings and never carries phonemes. For that, every known word that a model answers has one
+stable string key (`ClassifyResult.Key`, the type `WordKey`) that names the analysis and, where known, the sense;
+`WordLexicon.Keys()` lists every key that any model can return, so the library can build its map in advance; and the
+heteronyms (the spellings whose key, not the spelling, decides the word) are published as a table. The keys are part of
+core (the contracts and the lexicon); the key file and the heteronym table are written by the builder, from the data and
+the curated table `corpus/curation/heteronyms.tsv`. An unknown word has no key.
+
 ## External Interfaces
 
 - `IDownloadableWordSenseModel.EnsureModelAsync` (in): optional `DownloadOptions` and a cancellation token. The
@@ -107,6 +115,19 @@ their weights hold Open English WordNet sense ids, and their notices add the Wor
   sense key, and a group with its member senses.
 - `WordLexicon.Version` (out): a string that identifies the sense inventory of the embedded image (the first 16
   lower-case hexadecimal digits of its inventory hash), to be compared for equality only.
+- `ClassifyResult.Key` (out): the one stable string key of a known word that a model answered with a selected analysis
+  (`{spelling}|{lemma}/{Part}[/{Features}][#{label}]`: the normalized spelling, the lemma, the part of speech, the
+  features and, where the answer or the ranking names a sense, its label; never a group id and never a sound). It is
+  computed from the fields of the result alone, so every model gives the same key, and it is null for an unknown word and
+  for a result without a selected analysis.
+- `WordKey` (in/out): the parts of a key as an immutable value; `ToString` writes the key (a backslash escapes a
+  backslash, bar, slash or number sign inside a part) and `WordKey.TryParse` reads it back, accepting canonical text only.
+- `WordLexicon.Keys()` (out): every key that any model can return, each once, in a fixed order, with deferred execution
+  (one pass over the spellings at the first read, then streamed): the key of every analysis of every normalized
+  spelling and one key for every catalog sense of its lemma and part of speech.
+- Builder commands `keys --output FILE` and `heteronyms --output FILE` (out): the text file of all keys and the TSV of
+  the heteronyms (the spellings whose key, not the spelling, decides the word) for a downstream library that attaches
+  its own data (for example the phonemes of a speech front end; WordSense carries none) to the keys.
 - Environment variables (in): `WORDSENSE_MIRROR_URL`, `WORDSENSE_MIRROR_USER`, `WORDSENSE_MIRROR_PASSWORD` and
   `WORDSENSE_MIRROR_BEARER_TOKEN`; used only when no download option is passed.
 - Model store (in/out): `<store>/<model-id>/<file>` in a per-user directory unless `StoreRoot` is given.
@@ -114,7 +135,8 @@ their weights hold Open English WordNet sense ids, and their notices add the Wor
   the mirror's own origin only.
 - Builder command line (in/out): `compile-image`, `import-moby`, `weights`, `evaluate`, `evaluate-senses`,
   `evaluate-running`, `open-counts`, `evaluate-tagger`, `coverage`, `train-basic`, `tune-basic`, `label-senses`,
-  `import-wn30-counts`, `tiers` and `appendix`; build time only, never shipped. The evaluation commands that use an
+  `import-wn30-counts`, `tiers`, `appendix`, `keys` and `heteronyms`; build time only, never shipped. The evaluation
+  commands that use an
   independent text (SemCor) download it to a cache after verifying its pinned checksum; the texts are never committed,
   and the Universal Dependencies English-EWT treebank is only ever an evaluation source in the same way.
 
@@ -200,9 +222,19 @@ analyses at the part of speech level, and the Basic model of a composition choos
    its answer at its own level (the probability of the slot of the selected analysis, times the probability of the
    answered sense, or the summed probability of the member senses of the answered group, within that slot); it is
    comparable only within one result.
+7. For each result the caller reads `ClassifyResult.Key`: the key is built from the result alone (`WordKey.KeyOf`): the
+   normalized spelling of the word, the lemma, part of speech and features of the selected analysis, and a label (the
+   answered sense at the sense level, otherwise the most probable ranked sense of the selected analysis, otherwise
+   none). An unknown word and a result without a selected analysis have no key. The caller looks the key up in its own
+   map; the keys of that map come from `WordLexicon.Keys()` (or the file that the builder command `keys` writes), which
+   is built from the same analyses and catalog senses, so every key a model can return is in it, whatever the model.
+   Where the spelling is a heteronym (the heteronym table, written by the builder command `heteronyms`), the key, not
+   the spelling, tells the meanings apart.
 
 At build time the builder reads the data and the corpus and writes the lexicon blob embedded in core and the weights
-blobs (with their thresholds) embedded in the encoder packages.
+blobs (with their thresholds) embedded in the encoder packages. It also writes the key file and the heteronym table
+(`keys`, `heteronyms`; the quality-checks job of the build workflow publishes both as the `word-keys` artifact) and the
+senses appendix, which explains the keys and lists the heteronyms.
 
 ## Design Constraints
 

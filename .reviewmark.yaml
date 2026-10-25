@@ -310,11 +310,13 @@ reviews:
       - "src/DemaConsulting.WordSense/WordLexicon.cs"
       - "src/DemaConsulting.WordSense/WordImage.cs"
       - "src/DemaConsulting.WordSense/WordImage.Catalog.cs"
+      - "src/DemaConsulting.WordSense/WordImage.Keys.cs"
       - "src/DemaConsulting.WordSense/ImageFormat.cs"
       - "test/DemaConsulting.WordSense.Tests/WordLexiconTests.cs"
       - "test/DemaConsulting.WordSense.Tests/WordImageCatalogTests.cs"
       - "test/DemaConsulting.WordSense.Tests/WordImageDirectoryTests.cs"
       - "test/DemaConsulting.WordSense.Tests/LexiconFactTests.cs"
+      - "test/DemaConsulting.WordSense.Tests/KeyCompleteness.cs"
       - "test/WordSense.Builder.Tests/ImageTests.cs"
       - "test/WordSense.Builder.Tests/BuilderTests.cs"
 
@@ -342,6 +344,8 @@ reviews:
       - "src/DemaConsulting.WordSense/SenseInfo.cs"
       - "src/DemaConsulting.WordSense/SenseLevel.cs"
       - "src/DemaConsulting.WordSense/SenseCandidate.cs"
+      - "src/DemaConsulting.WordSense/WordKey.cs"
+      - "test/DemaConsulting.WordSense.Tests/WordKeyTests.cs"
       - "test/DemaConsulting.WordSense.Tests/ContractsTests.cs"
       - "test/DemaConsulting.WordSense.Tests/FallbackWordSenseModelTests.cs"
       - "test/DemaConsulting.WordSense.Tests/WordSenseExceptionTests.cs"
@@ -561,6 +565,7 @@ reviews:
       - "src/DemaConsulting.WordSense.MiniLM/NamespaceDoc.cs"
       - "test/DemaConsulting.WordSense.MiniLM.Tests/EndToEndTests.cs"
       - "test/DemaConsulting.WordSense.MiniLM.Tests/MiniLMSuiteTests.cs"
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/MiniLMKeyTests.cs"
 
   # WordSense-MiniLM-MiniLMWordSenseModel Review (one per unit)
   - id: WordSense-MiniLM-MiniLMWordSenseModel
@@ -589,6 +594,7 @@ reviews:
       - "docs/verification/word-sense/bert-base-cased.md"
       - "src/DemaConsulting.WordSense.BertBaseCased/NamespaceDoc.cs"
       - "test/DemaConsulting.WordSense.BertBaseCased.Tests/BertBaseCasedSuiteTests.cs"
+      - "test/DemaConsulting.WordSense.BertBaseCased.Tests/BertBaseCasedKeyTests.cs"
 
   # WordSense-BertBaseCased-BertBaseCasedWordSenseModel Review (one per unit)
   - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel

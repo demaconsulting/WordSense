@@ -34,6 +34,8 @@ internal static class AppendixGenerator
     /// </summary>
     public const int LineLimit = 120;
 
+    private const string LemmasHeading = "## Supported Lemmas";
+
     private static readonly CultureInfo Inv = CultureInfo.InvariantCulture;
 
     /// <summary>
@@ -103,7 +105,8 @@ internal static class AppendixGenerator
 
         var listed = senses.Keys.Order(StringComparer.Ordinal)
             .Select(l => (Lemma: l, Senses: senses[l].Select(s => new Listed(s, glosses[s.SenseId])).ToList())).ToList();
-        return Render(image, listed, missing);
+        var heteronyms = Heteronyms.Build(data, Path.Join(corpus, "curation", "heteronyms.tsv"), image);
+        return Render(image, listed, missing, heteronyms);
     }
 
     /// <summary>
@@ -123,7 +126,7 @@ internal static class AppendixGenerator
         }
 
         File.WriteAllText(output, text, new UTF8Encoding(false));
-        return text.Split('\n').Count(l => l.StartsWith("- **", StringComparison.Ordinal));
+        return text.Split('\n').SkipWhile(l => l != LemmasHeading).Count(l => l.StartsWith("- **", StringComparison.Ordinal));
     }
 
     /// <summary>
@@ -172,7 +175,7 @@ internal static class AppendixGenerator
     /// <summary>
     ///     Renders the document.
     /// </summary>
-    private static string Render(WordImage image, List<(string Lemma, List<Listed> Senses)> lemmas, List<string> missing)
+    private static string Render(WordImage image, List<(string Lemma, List<Listed> Senses)> lemmas, List<string> missing, IReadOnlyList<Heteronyms.Heteronym> heteronyms)
     {
         var lines = new List<string>
         {
@@ -184,6 +187,7 @@ internal static class AppendixGenerator
 
         AddExplanation(lines, lemmas);
         AddDictionary(lines, image, lemmas, missing);
+        AddKeys(lines, heteronyms);
         AddLemmas(lines, image, lemmas);
 
         return string.Join('\n', lines) + "\n";
@@ -251,8 +255,11 @@ internal static class AppendixGenerator
         AddParagraph(
             lines,
             "Inflected forms are mapped to their lemma by the forms of the word table, so `presents` is analyzed as a " +
-            "form of `present`. Each lemma below lists the forms the word table recognizes, other than the lemma itself. " +
-            "A form that is not in the table is unknown and is never analyzed.");
+            "form of `present`. Each lemma below lists every analysis of the forms the word table recognizes for it, the " +
+            "forms spelled like the lemma included, each with its features (`Feature=Value` items joined by `+`); when " +
+            "the lemma has several parts of speech, the part of speech comes first. So `read (verb, " +
+            "Tense=Past+VerbForm=Part)` is the past tense and participle spelled like the lemma. A form that is not in " +
+            "the table is unknown and is never analyzed.");
     }
 
     /// <summary>
@@ -291,6 +298,149 @@ internal static class AppendixGenerator
     }
 
     /// <summary>
+    ///     Lists every analysis of every form of a lemma, the forms spelled like the lemma included: the form with its
+    ///     features, and with its part of speech first when the forms have several.
+    /// </summary>
+    private static List<string> FormItems(WordImage image, string lemma)
+    {
+        var analyses = new List<(string Form, WordDetails Details)>();
+        foreach (var form in image.FormsOf(lemma))
+        {
+            var index = image.Find(form);
+            if (index >= 0)
+            {
+                analyses.AddRange(image.Analyses(index).Where(a => string.Equals(a.Lemma, lemma, StringComparison.Ordinal)).Select(a => (form, a)));
+            }
+        }
+
+        var several = analyses.Select(a => a.Details.PartOfSpeech).Distinct().Count() > 1;
+        return [.. analyses.Select(a =>
+        {
+            var details = new List<string>();
+            if (several)
+            {
+                details.Add(a.Details.PartOfSpeech.ToString().ToLowerInvariant());
+            }
+
+            if (a.Details.Features.Length > 0)
+            {
+                details.Add(a.Details.Features);
+            }
+
+            return details.Count == 0 ? Escape(a.Form) : $"{Escape(a.Form)} ({Escape(string.Join(", ", details))})";
+        })];
+    }
+
+    /// <summary>
+    ///     Adds the section of the keys and the heteronyms.
+    /// </summary>
+    private static void AddKeys(List<string> lines, IReadOnlyList<Heteronyms.Heteronym> heteronyms)
+    {
+        lines.Add("## Keys and Heteronyms");
+        lines.Add(string.Empty);
+        AddParagraph(
+            lines,
+            "WordSense names the meaning of a word and never its sound. A downstream library, for example a speech " +
+            "front end, maps the meanings to its own data, such as the phonemes of each: it needs one stable string " +
+            "for each answer and a way to know every string the library can return.");
+        lines.Add("### Keys");
+        lines.Add(string.Empty);
+        AddParagraph(
+            lines,
+            "Every classified word has one key, `ClassifyResult.Key`, of the form " +
+            "`{spelling}|{lemma}/{Part}[/{Features}][#{label}]`: the spelling is the written form as the lexicon looks it " +
+            "up (lower case, straight apostrophe), the lemma keeps its case, the part is the `PartOfSpeech` name, the " +
+            "features are those of the analysis (left out when empty) and the label is the part after `#` of the sense " +
+            "id, from the answered sense or, when the answer is a group or a part of speech, from the most probable " +
+            "ranked sense of the analysis, and left out when the model ranked none. An unknown word has no key. " +
+            "`WordLexicon.Keys()` enumerates every key that any model can return, and `WordKey.TryParse` splits a key " +
+            "into its parts. A `\\` escapes a `\\`, `|`, `/` or `#` inside a part (a few lemmas contain `/`). The builder " +
+            "command `keys --output FILE` writes all keys, sorted, one for each line.");
+        lines.Add("### Heteronyms");
+        lines.Add(string.Empty);
+        var entry = heteronyms.Where(h => h.Level == Heteronyms.Entry).ToList();
+        var tense = heteronyms.Where(h => h.Level == Heteronyms.Tense).ToList();
+        var sense = heteronyms.Where(h => h.Level == Heteronyms.Sense).ToList();
+        AddParagraph(
+            lines,
+            "A heteronym is a spelling that stands for different words, so that the spelling alone cannot decide what " +
+            "a consumer maps it to: the key does. The sections below list every such spelling in three levels, with " +
+            "its classes of meaning and the keys of each class (no phonemes; a consumer attaches its own data to the " +
+            "class). A key written without a label stands for its analysis and every sense of it; `#{a,b}` stands for " +
+            "the keys `#a` and `#b`. A key without a label of a spelling that is split by its senses (the sense " +
+            "level) decides nothing: the model did not choose a sense, so the consumer chooses a default. A group with " +
+            "a note (for example that some dialects merge the classes) says so after its keys. " +
+            $"The table has {heteronyms.Count.ToString("N0", Inv)} heteronym records, one for each spelling of a group " +
+            $"({heteronyms.Select(h => h.Spelling).Distinct(StringComparer.Ordinal).Count().ToString("N0", Inv)} distinct " +
+            "spellings, because a few spellings, such as `leading`, are in two groups): " +
+            $"{entry.Count.ToString("N0", Inv)} at the entry level " +
+            $"({entry.Count(h => h.Source == "pronunciation").ToString("N0", Inv)} derived from the pronunciations of " +
+            $"Open English WordNet, {entry.Count(h => h.Source == "curated").ToString("N0", Inv)} curated), " +
+            $"{tense.Count.ToString("N0", Inv)} at the tense level and {sense.Count.ToString("N0", Inv)} at the sense " +
+            "level. `WordSense.Builder heteronyms --output FILE` writes the same table as a TSV.");
+
+        AddHeteronymLevel(
+            lines,
+            "Heteronyms by Entry",
+            "The analyses of these spellings (lemma and part of speech) belong to entries that sound different: the " +
+            "pronunciations of Open English WordNet of the entries of one lemma share no sound after the " +
+            "normalization (dialect, syllable marks and length marks ignored, stress kept). The curated table " +
+            "`corpus/curation/heteronyms.tsv` adds the cases that the pronunciations cannot show: spellings of different " +
+            "lemmas (`wound`, `dove`, `lives`) and the pairs, mostly of noun and verb, whose entries have no " +
+            "pronunciation in the data (`use`, `object`, `present`).",
+            entry);
+        AddHeteronymLevel(
+            lines,
+            "Heteronyms by Tense",
+            "The past tense and the present tense or infinitive of these verbs are spelled alike and sound different. " +
+            "The curated table lists them.",
+            tense);
+        AddHeteronymLevel(
+            lines,
+            "Heteronyms by Sense",
+            "The senses of one analysis of these spellings belong to different entries that sound different, so only " +
+            "the sense decides. The classes are curated in `corpus/curation/heteronyms.tsv`.",
+            sense);
+    }
+
+    private static void AddHeteronymLevel(List<string> lines, string title, string text, List<Heteronyms.Heteronym> heteronyms)
+    {
+        lines.Add($"### {title}");
+        lines.Add(string.Empty);
+        AddParagraph(lines, text);
+        foreach (var heteronym in heteronyms)
+        {
+            var classes = heteronym.Classes.Select(c => c.Name + ": " + string.Join(", ", KeyPatterns(c)));
+            var note = heteronym.Note is null ? string.Empty : $" Note: {heteronym.Note}.";
+            lines.AddRange(Wrap("- ", $"**{Escape(heteronym.Spelling)}** (group `{heteronym.Group}`): " + string.Join("; ", classes) + note, "  "));
+        }
+
+        if (heteronyms.Count > 0)
+        {
+            lines.Add(string.Empty);
+        }
+    }
+
+    /// <summary>
+    ///     Writes the keys of a class compactly: the keys of one analysis with labels as <c>key#{a,b}</c>.
+    /// </summary>
+    private static IEnumerable<string> KeyPatterns(Heteronyms.HeteronymClass heteronymClass)
+    {
+        foreach (var group in heteronymClass.Keys.GroupBy(k => k.Analysis, StringComparer.Ordinal))
+        {
+            var labels = group.Where(k => k.Label is not null).Select(k => k.Label!).ToList();
+            if (labels.Count == 0)
+            {
+                yield return $"`{group.Key}`";
+            }
+            else
+            {
+                yield return labels.Count == 1 ? $"`{group.Key}#{labels[0]}`" : $"`{group.Key}#{{{string.Join(",", labels)}}}`";
+            }
+        }
+    }
+
+    /// <summary>
     ///     Adds the alphabetical lemma list.
     /// </summary>
     private static void AddLemmas(List<string> lines, WordImage image, List<(string Lemma, List<Listed> Senses)> lemmas)
@@ -311,9 +461,9 @@ internal static class AppendixGenerator
             lines.Add(string.Empty);
             foreach (var (lemma, senses) in letter)
             {
-                var posText = string.Join(", ", senses.Select(s => s.Sense.PartOfSpeech).Distinct().Order().Select(p => p.ToString().ToLowerInvariant()));
-                var forms = image.FormsOf(lemma).Where(f => f != lemma).Select(Escape).ToList();
-                var formText = forms.Count == 0 ? "no other forms" : "forms: " + string.Join(", ", forms);
+                var posList = senses.Select(s => s.Sense.PartOfSpeech).Distinct().Order().ToList();
+                var posText = string.Join(", ", posList.Select(p => p.ToString().ToLowerInvariant()));
+                var formText = "forms: " + string.Join(", ", FormItems(image, lemma));
                 lines.AddRange(Wrap("- ", $"**{lemma}**; parts of speech: {posText}; {formText}", "  "));
                 foreach (var listed in senses)
                 {

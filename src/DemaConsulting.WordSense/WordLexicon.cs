@@ -37,7 +37,8 @@ namespace DemaConsulting.WordSense;
 ///     project senses come last). A sense has a readable id (<c>bank#coin-bank</c>), an Open English WordNet sense key (none for a
 ///     project sense that WordNet does not cover) and optionally a group of closely related senses; find a sense by id
 ///     with <see cref="TryGetSense"/>, by key with <see cref="TryGetSenseByKey"/> and a group with
-///     <see cref="TryGetGroup"/>. The lexicon is read-only and safe for concurrent use.
+///     <see cref="TryGetGroup"/>. <see cref="Keys"/> lists every word key (see <see cref="WordKey"/>) that a model can
+///     return in <see cref="ClassifyResult.Key"/>. The lexicon is read-only and safe for concurrent use.
 ///     </para>
 /// </remarks>
 /// <example>
@@ -52,6 +53,12 @@ namespace DemaConsulting.WordSense;
 ///     foreach (SenseInfo sense in WordLexicon.SensesOf("bank", PartOfSpeech.Noun).Take(3))
 ///     {
 ///         Console.WriteLine($"{sense.SenseId} {sense.SenseKey}");
+///     }
+///
+///     // Every key a model can return, for example to prepare data for each of them
+///     foreach (string key in WordLexicon.Keys().Take(3))
+///     {
+///         Console.WriteLine(key);
 ///     }
 ///
 ///     // A word that is not in the lexicon has no analysis, so use TryLookup for text from users
@@ -220,6 +227,40 @@ public static class WordLexicon
         group = found ? info : null;
         return found;
     }
+
+    /// <summary>
+    ///     Enumerates every key that any model can return in <see cref="ClassifyResult.Key"/>, so a consumer can prepare
+    ///     its own data for every key in advance (see <see cref="WordKey"/> for the format).
+    /// </summary>
+    /// <remarks>
+    ///     <para>
+    ///     The enumeration is a guaranteed superset of the keys of all models, present and future, and does not depend on a
+    ///     model or on its training: for every normalized spelling of the lexicon (lower case, straight apostrophe) and for
+    ///     every analysis of it (the analyses of all its case variants, and for a possessive that is not stored
+    ///     (<c>dog's</c>, <c>dogs'</c>) the possessive analyses of its stem), it lists the key without a label and one key
+    ///     with a label for every catalog sense of the lemma and part of speech of the analysis
+    ///     (<see cref="SensesOf"/>). No key is listed twice. A key of a result is a member of it for every result of every
+    ///     model, because it names an analysis of the lookup of the word and, at most, a sense of that analysis. The
+    ///     set changes only when the inventory changes: see <see cref="Version"/>.
+    ///     </para>
+    ///     <para>
+    ///     The enumeration has deferred execution and streams after one pre-pass: calling <c>Keys()</c> validates the
+    ///     catalog and produces no key until the sequence is read; the first read makes one pass over the spelling index (it
+    ///     groups the stored spellings that differ only in case; the cost is one pass and a list of the spellings that are not in lower case) and
+    ///     then decodes the image while it is read and keeps no list of the keys. On
+    ///     the committed image it lists 1,284,993 keys (about 63 MB of text) and reading it to the end takes about three
+    ///     seconds. A consumer that builds a map of its own data for all keys can write the keys as they come; a
+    ///     <see cref="HashSet{T}"/> of all of them takes a few hundred megabytes. The order is fixed: by spelling, then by
+    ///     analysis in answer order, the key without a label first.
+    ///     </para>
+    /// </remarks>
+    /// <returns>The keys; a new enumeration on every call.</returns>
+    /// <exception cref="ModelIntegrityException">Thrown when the embedded lexicon or its sense catalog is missing or corrupt (the inner exception is the original <see cref="InvalidDataException"/>).</exception>
+    public static IEnumerable<string> Keys() => ReadCatalog(image =>
+    {
+        image.ValidateCatalog();
+        return image.Keys();
+    });
 
     /// <summary>
     ///     Gets the opened image (for tests and tools of this repository).

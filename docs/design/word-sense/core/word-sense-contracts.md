@@ -73,6 +73,27 @@ model for another without code changes, and the composite `FallbackWordSenseMode
     `default(ClassifyResult)` is valid: the word is the empty string, the arrays are empty, `IsKnown` is false, the
     level is `None` and the confidence is 0. The equality is by value and compares the word, `IsKnown`, `Details`,
     `Level`, `Confidence`, the ids and the contents of `Analyses` (item by item, senses included); the hash code agrees.
+  - `Key` is a computed `string?`, derived from `Word`, `IsKnown`, `Details`, `Level`, `SenseId` and `Analyses` only, so
+    it works for every model (the models of third parties included) and changes nothing for the existing members. It is
+    null for an unknown word, a word without selected analysis and a word without a letter; otherwise it is
+    `WordKey.Format(spelling, lemma, part, features, label)`: the spelling is `BasicClassifier.Normalize(Word)` (the
+    normalization of the lookup: lower case, the typographic apostrophe straightened), the lemma, part of speech and
+    features are those of `Details`, and the label is, in this order, (a) the part after `#` of `SenseId` at the `Sense`
+    level; (b) otherwise that of the most probable sense (ties by the ordinal order of the id) of the analysis of
+    `Analyses` that equals `Details`, or of the first analysis with its lemma and part of speech, when it lists senses (the
+    group level and the part-of-speech level of a trained lemma); (c) otherwise none. A group id is never used because
+    group ids are not frozen. It does not appear in `Equals` or `GetHashCode`, which compare the stored values, and the
+    `ToString` of the record struct lists it like any property.
+- `WordKey(Spelling, Lemma, PartOfSpeech, Features, Label)`: a sealed record that holds the parts of a key. `ToString()`
+  writes `{spelling}|{lemma}/{Part}[/{Features}][#{label}]`: the features and their `/` are left out when empty, the label
+  and its `#` when it is null. A scan of the committed data found lemmas and spellings that contain `/` (21 lemmas, 31
+  spellings, for example `A/C`, `I/O device`, `read/write head`) and none that contains `|` or `#`, and the labels
+  contain only lower-case letters, digits and `-`; so the separators are escaped by a rule that makes the text
+  unambiguous for any input: a backslash is written before each `\`, `|`, `/` and `#` of a part and no other character is
+  escaped. `TryParse(string?, out WordKey?)` reads the text back with the same rule and accepts only canonical text: all
+  of spelling, lemma and part (a defined `PartOfSpeech` name, exactly as `ToString` writes it) present, features and label
+  present only with a non-empty value, every separator escaped, no other escape; so `key.ToString()` equals the parsed
+  text. `Format` and the label rule (`LabelOf`) are internal and shared with `WordLexicon.Keys`.
 - `SenseInfo(SenseId, GroupId, Lemma, PartOfSpeech, SenseKey)`: a sealed record that describes one sense of
   the catalog. `SenseId` is `lemma#label`. `GroupId` is null when the sense is in no group (a sense is in at most one
   group). `SenseKey` is the OEWN sense key, or null for a project sense that OEWN does not provide.

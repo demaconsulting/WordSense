@@ -105,6 +105,106 @@ sections:
           - WordLexicon_Groups_EveryGroupId_HasGroupMarkerAndNeverEqualsASenseId
           - WordLexicon_Version_IsStableLowerCaseHex
 
+      - id: WordSense-Lib-Keys-Answered
+        title: >-
+          The system shall give every known word that a model answers with a selected analysis exactly one stable
+          string key that names the meaning (the analysis and, where known, the sense) and never a sound.
+        tags: [system]
+        justification: |
+          A downstream library, for example a speech front end, maps meanings to its own data; it needs one string for
+          each answer, while WordSense stays free of any phoneme data. The same key is given by every model, because
+          it is derived from the result alone.
+        children:
+          - WordSense-Core-Keys-Format
+        tests:
+          - ClassifyResult_Key_SenseLevel_HasTheLabelOfTheAnsweredSense
+          - BasicKeys_SuiteAndCorpusSentences_AreAllEnumerated
+          - MiniLMKeys_SuiteAndCorpusSentences_AreAllEnumerated
+          - BertBaseCasedKeys_SuiteAndCorpusSentences_AreAllEnumerated
+
+      - id: WordSense-Lib-Keys-Unanswered
+        title: >-
+          The system shall give an unknown word, and a result without a selected analysis, no key (null).
+        tags: [system]
+        justification: |
+          A word that WordSense cannot analyze has no meaning to name; a consumer must be able to tell it from a word
+          that has a key.
+        children:
+          - WordSense-Core-Keys-Null
+        tests:
+          - ClassifyResult_Key_UnknownOrUnanswered_IsNull
+          - BasicKeys_SuiteAndCorpusSentences_AreAllEnumerated
+
+      - id: WordSense-Lib-Keys-Parse
+        title: >-
+          The system shall let callers build a key from its parts and parse the text of a key back into its parts,
+          accepting canonical text only.
+        tags: [system]
+        justification: |
+          A consumer that stores keys parses them to read the analysis and the sense.
+        children:
+          - WordSense-Core-Keys-BuildAndParse
+        tests:
+          - WordKey_TryParse_ValidKey_RoundTrips
+          - WordKey_TryParse_NotAKey_IsRefused
+
+      - id: WordSense-Lib-Keys-Enumeration
+        title: >-
+          The system shall let callers enumerate every key that any model can return, each key once and in a fixed
+          order.
+        tags: [system]
+        justification: |
+          A downstream library builds its map from a complete list of the keys, so it must know them in advance,
+          whatever the model and its training.
+        children:
+          - WordSense-Core-Keys-Enumeration
+          - WordSense-Core-Keys-EnumerationOrder
+        tests:
+          - WordLexicon_Keys_LookedUpWord_HasAKeyForEachAnalysisAndSense
+          - WordLexicon_Keys_Enumeration_ListsNoKeyTwice
+          - BasicKeys_SuiteAndCorpusSentences_AreAllEnumerated
+
+      - id: WordSense-Lib-Keys-Export
+        title: >-
+          The system shall provide a command that writes every key for a downstream library.
+        tags: [system]
+        justification: |
+          The file of all keys is large, so it is generated where it is needed.
+        children:
+          - WordSense-WordSenseBuilder-Keys
+        tests:
+          - WordSenseBuilder_Program_Keys_WritesTheKeyFile
+
+      - id: WordSense-Lib-Heteronyms
+        title: >-
+          The system shall publish the heteronyms of the word table (the spellings whose analyses, tense forms or
+          senses stand for different words) with the keys of each meaning class and no phoneme.
+        tags: [system]
+        justification: |
+          For these spellings the key, not the spelling, decides the word, so a downstream library needs to know them.
+        children:
+          - WordSense-WordSenseBuilder-Heteronyms-EntryLevel
+          - WordSense-WordSenseBuilder-Heteronyms-Curated
+          - WordSense-WordSenseBuilder-Heteronyms-Keys
+          - WordSense-WordSenseBuilder-Heteronyms-Validation
+          - WordSense-WordSenseBuilder-Heteronyms-Coverage
+        tests:
+          - WordSenseBuilder_Heteronyms_Build_ListsTheKnownHeteronymsOfEachLevel
+          - WordSenseBuilder_Heteronyms_Build_EveryKeyIsAKeyOfTheLexicon
+          - WordSenseBuilder_Heteronyms_Build_InvalidCuratedTable_IsReported
+          - WordSenseBuilder_Heteronyms_SenseSplitLemmas_AreCurated
+
+      - id: WordSense-Lib-Heteronyms-Export
+        title: >-
+          The system shall provide a command that writes the heteronyms as a table for a downstream library.
+        tags: [system]
+        justification: |
+          A downstream library loads the table to know where the key decides the word.
+        children:
+          - WordSense-WordSenseBuilder-Heteronyms-Tsv
+        tests:
+          - WordSenseBuilder_Program_Heteronyms_WritesTheTable
+
       - id: WordSense-Lib-AnswerLevel
         title: >-
           The system shall answer a word with several senses at the finest level that the model is confident in: the
@@ -444,8 +544,9 @@ sections:
           The documentation shall show a README usage sample whose code and output for each model are verified against
           the library, README samples for the optional preparation step of a model (called on the concrete model type
           and through the capability interface) that are compiled against the library, and an appendix that lists
-          every trained lemma with its senses (id, group, OEWN key and gloss) and the forms of the lemma, and is never
-          stale.
+          every trained lemma with its senses (id, group, OEWN key and gloss) and every analysis of its forms with the
+          features (the forms spelled like the lemma included), explains the keys and lists the heteronyms by their
+          keys, and is never stale.
         tags: [system]
         justification: |
           A usage example that no longer compiles or prints something else misleads new users, and a hand-written

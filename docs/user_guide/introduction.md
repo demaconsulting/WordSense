@@ -28,6 +28,8 @@ This user guide covers:
 - Composing two models with `FallbackWordSenseModel`
 - The word table and the sense catalog of the core package, including the lookup of a sense by its OEWN sense key and
   the version of the sense inventory
+- Keys: the one stable string of every answer, the enumeration of every key the library can return, building a map from
+  keys to your own data, and the heteronyms (the spellings where the key decides the word)
 - Changes from the previous release
 - Accuracy and model choice, with the model comparison table
 - Model download, mirrors, offline use and the typed exceptions
@@ -39,7 +41,8 @@ This user guide covers:
 <!-- markdownlint-disable MD051 -->
 <!-- The appendix is a separate file that pandoc concatenates, so its heading anchor only exists in the PDF. -->
 - [Appendix: Supported Senses](#appendix-supported-senses): the catalog of all lemmas with trained weights, their
-  senses (id, group, OEWN key and gloss) and their forms (generated from the data and the corpus)
+  senses (id, group, OEWN key and gloss) and every analysis of their forms with its features, the explanation of the
+  keys and the heteronyms by their keys (generated from the data and the corpus)
 <!-- markdownlint-enable MD051 -->
 
 The code samples in this guide use only the public API of the packages. The README sample is compiled and run by the
@@ -109,6 +112,12 @@ test suite for each of the three models; the samples in this guide are reviewed 
   one lemma and part of speech that has several senses which the model does not decide (the part of speech is certain,
   the sense is not): test the `Level`, not whether the confidence is 1. It is comparable only within one result, not
   across models, words or levels.
+- **Key**: the one stable string of an answer, `ClassifyResult.Key`, of the form
+  `{spelling}|{lemma}/{Part}[/{Features}][#{label}]`; it names the meaning (the analysis and, where known, the sense) and
+  never a sound. `WordLexicon.Keys()` lists every key that any model can return; `WordKey` splits a key into its parts.
+- **Heteronym**: a spelling that stands for different words, so that the key, not the spelling, decides what a
+  consumer maps it to (`read` as a past or a present tense, `bass` the fish or the music, `record` the noun or the verb);
+  the appendix lists them by their keys.
 - **Fallback model**: the second model of a `FallbackWordSenseModel`. It answers every word for which the first model
   (the primary model) scored no senses. The MiniLM and BertBaseCased packages use their encoder as the primary model
   and the Basic model as the fallback, so an ambiguous word that the encoder was not trained for is answered by the
@@ -483,6 +492,117 @@ group lists at least two senses and never all the senses of its lemma and part o
 is in a namespace of its own and never equals a sense id. `WordLexicon.Version` is a string that identifies the sense
 inventory of the embedded table (the first 16 hexadecimal digits of its inventory hash): it changes whenever an
 analysis, a sense or a group changes. Compare it for equality only; it is not a version number.
+
+## Keys
+
+WordSense names the meaning of a word and never its sound. A consumer that attaches its own data to a meaning, for
+example a speech front end that maps each word to its phonemes, needs one stable string for every answer and a way to
+know every string the library can return. `ClassifyResult.Key` is that string and `WordLexicon.Keys()` lists them all.
+
+### The Key of an Answer
+
+A key has the form `{spelling}|{lemma}/{Part}[/{Features}][#{label}]`:
+
+- `spelling`: the written form as the lexicon looks it up: lower case, with the typographic apostrophe straightened
+  (`polish` for `Polish`, `don't` for `Don’t`). The spelling is part of the key because two forms of one analysis can be
+  spelled, and pronounced, differently (`dreamt` and `dreamed`).
+- `lemma`: the lemma of the selected analysis as `WordDetails` has it, with its case (`Polish`).
+- `Part`: the `PartOfSpeech` name (`Noun`, `Verb`, `Adjective`, ...).
+- `Features`: the features of the selected analysis as `WordDetails` carries them (`Number=Sing`,
+  `Person=3+Tense=Pres`); the `/` and the features are left out when they are empty (`the|the/Determiner`). A possessive
+  has `Poss=Yes` (`dog's|dog/Noun/Number=Sing+Poss=Yes`).
+- `label`: the part after `#` of a sense id (`sea-bass` for `bass#sea-bass`), left out with its `#` when the key names no
+  sense.
+
+The label depends on the level of the answer:
+
+- **Sense level**: the answered sense (`bass|bass/Noun/Number=Sing#sea-bass`).
+- **Group level, or part-of-speech level where the model ranked the senses of the analysis** (the encoder models, for the
+  lemmas they are trained for): the most probable ranked sense of the selected analysis
+  (`bass|bass/Noun/Number=Sing#sea-bass`). A group id is never used, because group ids are not frozen.
+- **Part-of-speech level without a ranking** (the Basic model, or a word the model is not trained for): no label
+  (`bass|bass/Noun/Number=Sing`).
+- **Unknown word**: the key is `null`.
+
+The key is computed from the fields of the result alone (`Word`, `IsKnown`, `Details`, `Level`, `SenseId` and `Analyses`),
+so it is the same for every model, an `IWordSenseModel` of your own included. A key is a plain string that you can store,
+compare and use as a dictionary key. `WordKey` holds its parts when you need them:
+
+```csharp
+ClassifyResult answer = (await model.ClassifyAsync(["She", "caught", "a", "bass", "."]))[3];
+Console.WriteLine(answer.Key);                          // for example: bass|bass/Noun/Number=Sing#sea-bass
+
+if (WordKey.TryParse(answer.Key, out WordKey? parts))
+{
+    Console.WriteLine($"{parts.Spelling} {parts.Lemma} {parts.PartOfSpeech} {parts.Features} {parts.Label ?? "(no sense)"}");
+}
+```
+
+A few lemmas contain the separators (`A/C`, `read/write head`). A `\` in front of a `\`, `|`, `/` or `#` inside a part
+escapes it (`a\/c|A\/C/Noun/Number=Sing`) and nothing else is escaped, so almost every key has no backslash;
+`WordKey.ToString` and `WordKey.TryParse` apply the rule in both directions.
+
+### Every Key the Library Can Return
+
+`WordLexicon.Keys()` enumerates every key that any model can return. It is a guaranteed superset, so it stays complete
+for any model and any retraining, and it changes only when the sense inventory changes (see `WordLexicon.Version`). For
+every spelling of the word table and every analysis of it (the analyses of all its case variants, and the possessive
+analyses of a known noun or pronoun), it lists the key without a label and one key with a label for every catalog sense
+of the lemma and part of speech of the analysis (`WordLexicon.SensesOf`). On the committed image that is 1,284,993 keys,
+about 63 MB of text; the enumeration has deferred execution, makes one pass over the spellings when you first read it and
+then streams the keys in about three seconds, so only what you keep takes
+memory.
+
+```csharp
+// Build a map from every key to your own data. WordSense carries no phonemes: the data is yours.
+var map = new Dictionary<string, string>(StringComparer.Ordinal);
+foreach (string key in WordLexicon.Keys())
+{
+    if (WordKey.TryParse(key, out WordKey? parts))
+    {
+        map[key] = MyPronunciations.For(parts);        // your own function: any value you attach to a meaning
+    }
+}
+
+// At run time, one lookup for each classified word
+foreach (ClassifyResult result in await model.ClassifyAsync(words))
+{
+    if (result.Key is { } key && map.TryGetValue(key, out string? data))
+    {
+        Console.WriteLine($"{result.Word}: {data}");
+    }
+}
+```
+
+Most spellings have one meaning for each analysis, so a map of every key mostly repeats one value; store only what differs
+from the value of the spelling and its analysis, and look for the heteronyms below to find where it differs. The
+builder writes the keys as a file: `dotnet run --project tools/WordSense.Builder -c Release -- keys --output keys.txt`
+writes one key for each line, sorted, after a header comment line that gives the format and the inventory version. The
+file is large and is not committed; the build publishes it, with the heteronym table, as the `word-keys` artifact.
+
+### Where the Key Decides the Word
+
+A heteronym is a spelling that stands for different words, so that the spelling alone cannot decide what you map it to;
+the key does. The appendix lists every heteronym by its keys, in three levels, each with its meaning classes and the keys
+of each class (and no phonemes):
+
+- **Entry level**: the analyses (lemma and part of speech) belong to entries that sound different, such as the noun and
+  the verb of `record`, `August` and `august`, `minute` and `Polish` and `polish`; derived from the pronunciations of the
+  data, with a few curated cases (`wound`, `dove`, `lives`).
+- **Tense level**: the past and the present of `read` (and `reread`, `misread`, `proofread`) are spelled alike; the key
+  tells them apart through the features (`read|read/Verb/Tense=Past+VerbForm=Part` and `read|read/Verb/Tense=Pres`).
+  The encoder models do not score the features of an analysis, so the selected analysis of `read` is not decided by its
+  sentence: decide the tense yourself from the analyses of the result when it matters.
+- **Sense level**: the senses of one analysis sound different (`bass` the fish and the music, `bow`, `lead`, `tear`,
+  `wind`, `row`); only the label of the key decides, so a key without a label of such a spelling decides nothing and the
+  consumer picks a default.
+
+`dotnet run --project tools/WordSense.Builder -c Release -- heteronyms --output heteronyms.tsv` writes the same table as
+a TSV (`level`, `group`, `spelling`, `class`, `key`, `note`) for a library that wants to load it. A key without a label
+in it stands for its analysis and every sense of it, and a key with `#label` for that one sense. The `note` (empty for
+most) says that the classes of a pair such as `conflict`, `export` or `transport` (a noun with the stress on the first
+syllable and a verb with the stress on the second) are merged in some dialects, which the table keeps because the usual
+contrast is why you need the key.
 
 ## Changes from the Previous Release
 

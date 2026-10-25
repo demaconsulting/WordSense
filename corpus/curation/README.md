@@ -143,3 +143,79 @@ confusion (`home#group:domestic`, `home#group:homeland`, `review#group:look-agai
 `test#group:try-out`) have no in-group alternate either; they stay on the curator's judgment of related meanings. The
 groups without judge data (the other 40) rest on the curation flags and glosses only. These are candidates to drop in a
 later release if a larger judge run still shows no confusion.
+
+## Heteronyms (`heteronyms.tsv`)
+
+`heteronyms.tsv` is the curated input of the heteronym table (`WordSense.Builder heteronyms` and the section "Keys and
+Heteronyms" of the appendix). It names spellings whose analyses or senses stand for different words, so that a
+downstream library, which attaches its own data to the keys of the answers, knows where the key, not the spelling,
+decides. It carries **no pronunciation**: a class is a meaning, named in English (`fish` and `music` for `bass`), and
+the rows are patterns of the analyses and senses that belong to the class.
+
+| Column | Meaning |
+| --- | --- |
+| `level` | `sense`, `tense` or `lemma` (see below) |
+| `group` | the group of the classes (the lemma, or the spelling for different lemmas) |
+| `class` | the meaning class, named by its meaning; a group has two or more |
+| `pattern` | `lemma/Part[/Features][#label,label]` (see below) |
+| `note` | optional (rows have four or five cells): the note of the group (see below) |
+
+The levels: `sense` lists the lemmas whose senses of one analysis sound different, `tense` the verbs whose past and
+present sound different, and `lemma` the spellings of different lemmas and the pairs that the data cannot show. A
+pattern names the lemma and part of speech of an analysis, the feature items it must contain and the labels of the senses
+of the class (all senses of the analysis when there is no `#`). A `note` on any row of a group is the note of the group
+(a group has at most one), shown in the appendix and written to the TSV export.
+
+Rows are sorted by `level`, `group`, `class` and `pattern`, tab separated, one header row. The builder checks the table
+against the sense catalog (every label is a sense of the lemma and part of speech), rejects a key that two classes claim
+and a group that matches no spelling, and a test checks that every lemma whose entries the pronunciations split into
+sound classes is in the `sense` rows, except the lemmas that the review below rejected.
+
+**Counts.** The table has 289 rows (182 `lemma`, 94 `sense` and 13 `tense`) in 117 groups. The builder turns them, with
+the heteronyms that it derives from the pronunciations, into 369 heteronym records (a record is a spelling of a group)
+for 366 distinct spellings: `wound`, `leading` and `lowering` are in two groups each. The appendix and the TSV export
+state the same numbers.
+
+**Lexicographer review.** A blind lexicographer reviewed every group against its senses (sound, stress and the
+meaning that separates them). The review is applied as follows:
+
+- *Corrected*: `aged`, `blessed` and `learned` no longer put the whole adjective into one class (the sense that is read
+  one way and the senses that are read the other way are separate: `aged#elderly` against `aged#of-age`, `learned#erudite`
+  against `learned#conditioned`, `blessed#blest` against the holy and emphatic senses); `close` maps its noun by the
+  senses that exist (the ending and completion senses go with the verb); `incense` splits its verb by sense (perfuming
+  with the noun, angering alone); `lead` puts the printing strip with the metal and restricts the guide verb to its
+  senses; `recreate` puts `revitalize` with `play`; `row` restricts the verb to the rowing sense; `tower` puts the sense
+  of rising above with the structure.
+- *Added*: the noun `read` (with the non-past `read`), the auxiliary `do` (with the party and lexical verb class), the
+  participle `leading` (the verb `lead` with the guidance class) and the participles of `lower` in the `lowering` group.
+- *Removed* because they are not heteronyms in standard English or cannot be told apart by the keys: `birr`, `recap`,
+  `bourgeois`, `denier` (a difference in British English only), `whoop` (the /h/ and /w/ variants do not follow the
+  senses), and `emu`, `fleer`, `laver`, `punt`, `router` and `slough` (too unreliable by accent). The test of the sense
+  rows keeps a list of the ten that were `sense` groups (`birr`, `denier`, `emu`, `fleer`, `laver`, `punt`, `recap`,
+  `router`, `slough` and `whoop`): a lemma of the list is exempt from the check that the pronunciations of the data
+  are covered, and must not be in the `sense` rows.
+- *Kept with a note*: the classic stress-shift pairs `compound`, `conflict`, `contrast`, `escort`, `export`, `impact`,
+  `import`, `survey`, `torment`, `transfer`, `transport`, `update`, `compact`, `decrease`, `defect`, `discard`,
+  `increase`, `recall`, `discount`, `intern`, `protest`, `rebound`, `alternate`, `lower` and `lowering` stay, because the
+  usual contrast is the reason a consumer needs the key, and their `note` says that some dialects merge the two
+  classes (the verb takes the stress of the noun, in American English especially).
+- *Not possible with this data*: a pattern may name only an analysis of the word table and a sense of the catalog, and
+  the review asked for rows that need more. `axes` as the plural of `axe`: the word table has `axes` as the plural of
+  `ax` (which the group has) and `axe` has no plural. `desert` as an adjective, `graduate` as an adjective, `separate`
+  as a noun and `reread` as a noun: the table has no such analysis (`graduate` has an adjective sense and `separate` has
+  noun senses, but neither has the analysis, so no key can name them). The `wind` verbs that mean make breathless or
+  burp, the metalworking verb `lead` and the enclosure and street nouns of `close`: the catalog has no such sense. These
+  rows were not added; they need a change of the data first.
+
+**Provenance.** The `sense` rows were derived from the data: the entries of `data/entry` that share a lemma, with the
+Open English WordNet pronunciations of `data/pronunciation` (compared after normalizing the notation and the common
+dialect differences; a stress difference counts), split the senses of `data/sense` into sound classes, which were then
+named by their meaning by the author of this table (the legacy class map of the pronunciation-era inventory,
+`corpus/migration/legacy-class-map.tsv` of commit `3f9cafe`, gave the names `fish`, `music`, `bend` and `weapon` for the
+words it covered). The `tense` rows list the verbs whose past and present are spelled alike and sound different (`read`
+and its prefixed verbs). The `lemma` rows were written by hand: the spellings of different lemmas that the
+pronunciations of a lemma cannot compare (`wound` as the injury and as the past of `wind`, `dove`, `lives`, `does`,
+`bases`) and the noun and verb pairs with a stress or voicing difference whose entries have no pronunciation in the data
+(`use`, `object`, `present`, `project`, ...), taken from an independent inventory of the same English heteronyms that was
+prepared in parallel; they are not verified against the pronunciations of the data, which are absent for them. The
+table is a committed input: edit it by hand and run the builder to check it.

@@ -40,7 +40,7 @@ public sealed class ProgramTests : IDisposable
         var (code, _, error) = await RunAsync();
 
         Assert.Equal(1, code);
-        foreach (var command in new[] { "compile-image", "import-moby", "weights", "evaluate", "open-counts", "evaluate-tagger", "coverage", "train-basic", "tune-basic", "appendix" })
+        foreach (var command in new[] { "compile-image", "import-moby", "weights", "evaluate", "open-counts", "evaluate-tagger", "coverage", "train-basic", "tune-basic", "appendix", "keys", "heteronyms" })
         {
             Assert.Contains(command, error, StringComparison.Ordinal);
         }
@@ -425,6 +425,7 @@ public sealed class ProgramTests : IDisposable
         var data = ImageCompilerTests.WriteSmallData(_dir.Root);
         _dir.Write("data/gloss/g.tsv", "synset_id\tseq\ttext\n" + string.Concat(Enumerable.Range(1, 6).Select(i => $"oewn-{i}-{(i < 5 ? "n" : "v")}\t1\tgloss {i}\n")));
         _dir.Write("corpus/anchors/a.tsv", "bank\tbank#ridge\tNoun\tA {bank} here.\nbank\tbank#cover\tVerb\tThey {bank} it.\n");
+        _dir.Write("corpus/curation/heteronyms.tsv", "level\tgroup\tclass\tpattern\tnote\n");
         var corpus = Path.Join(_dir.Root, "corpus");
         var target = Path.Join(_dir.Root, "out", "appendix.md");
 
@@ -446,6 +447,52 @@ public sealed class ProgramTests : IDisposable
 
         Assert.Equal(1, code);
         Assert.Contains("was not found", error, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The keys command needs an output file and writes the header and the keys.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseBuilder_Program_Keys_WritesTheKeyFile()
+    {
+        var target = Path.Join(_dir.Root, "out", "keys.txt");
+
+        var (missingCode, _, missingError) = await RunAsync("keys");
+        var (code, output, error) = await RunAsync("keys", "--output", target);
+
+        Assert.Equal(1, missingCode);
+        Assert.Contains("--output", missingError, StringComparison.Ordinal);
+        Assert.Equal(0, code);
+        Assert.Empty(error);
+        Assert.Contains($"keys of the lexicon {WordLexicon.Version}", output, StringComparison.Ordinal);
+        using var reader = new StreamReader(target);
+        Assert.StartsWith("# WordSense keys; format: ", await reader.ReadLineAsync(TestContext.Current.CancellationToken), StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The heteronyms command needs an output file and writes the table of the committed data.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseBuilder_Program_Heteronyms_WritesTheTable()
+    {
+        var root = new DirectoryInfo(AppContext.BaseDirectory);
+        while (root is not null && !File.Exists(Path.Join(root.FullName, "corpus", "lexicon", "lexicon.tsv")))
+        {
+            root = root.Parent;
+        }
+
+        Assert.NotNull(root);
+        var target = Path.Join(_dir.Root, "out", "heteronyms.tsv");
+
+        var (missingCode, _, missingError) = await RunAsync("heteronyms");
+        var (code, output, error) = await RunAsync("heteronyms", "--repository", root.FullName, "--output", target);
+
+        Assert.Equal(1, missingCode);
+        Assert.Contains("--output", missingError, StringComparison.Ordinal);
+        Assert.Equal(0, code);
+        Assert.Empty(error);
+        Assert.Contains("heteronym records", output, StringComparison.Ordinal);
+        Assert.StartsWith("level\tgroup\tspelling\tclass\tkey\tnote\n", await File.ReadAllTextAsync(target, TestContext.Current.CancellationToken), StringComparison.Ordinal);
     }
 
     /// <summary>

@@ -164,6 +164,29 @@ public readonly record struct ClassifyResult
     public string? SenseId { get; }
 
     /// <summary>
+    ///     Gets the stable key of the answer: one string that names the analysis of the word and, where known, its
+    ///     sense; <see langword="null"/> for an unknown word and for a result without a selected analysis.
+    /// </summary>
+    /// <remarks>
+    ///     <para>
+    ///     The format is <c>{spelling}|{lemma}/{Part}[/{Features}][#{label}]</c> (see <see cref="WordKey"/>): the
+    ///     lower-cased spelling with the apostrophe straightened, the lemma of <see cref="Details"/> with its case, the
+    ///     name of its part of speech, its features (left out when empty) and the label of the sense. The label is the part
+    ///     after <c>#</c> of the answered <see cref="SenseId"/> when the result is at the sense level; otherwise it is
+    ///     that of the most probable ranked sense of the selected analysis, when the model ranked senses for it (this
+    ///     covers the group level and the part-of-speech level of a trained lemma); otherwise it is left out. A group id
+    ///     is never used, because group ids are not frozen. Examples: <c>bass|bass/Noun/Number=Sing#sea-bass</c>,
+    ///     <c>polish|Polish/Noun/Number=Sing</c>, <c>read|read/Verb/Tense=Past+VerbForm=Part</c>.
+    ///     </para>
+    ///     <para>
+    ///     The key is computed from the Word, IsKnown, Details, Level, SenseId and Analyses of the result alone, so it
+    ///     is the same for every model, the models of third parties included. Every key is a member of
+    ///     <see cref="WordLexicon.Keys"/>.
+    ///     </para>
+    /// </remarks>
+    public string? Key => WordKey.KeyOf(this);
+
+    /// <summary>
     ///     Creates the result of a word that is not in the lexicon.
     /// </summary>
     /// <param name="word">The word as given by the caller.</param>
