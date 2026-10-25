@@ -692,7 +692,9 @@ You tokenize the text; the models expect what the evaluation used:
   so such a token is unknown (null, 0), but the words around it are still classified. A curly apostrophe (U+2019) is
   read as `'`. A possessive (`dog's`) is looked up as a whole spelling: the lookup returns the analysis of the stem with
   `Poss=Yes`. The tokenizer contract keeps `'s` inside the token; a caller that splits `'s` off as a separate token
-  must look the stem up on its own.
+  must look the stem up on its own. Basic's tagger reads a joined possessive the way its statistics were counted, as the
+  stem followed by the possessive marker, but only inside the tagger: the results stay parallel to your tokens and the
+  possessive is still answered as one word.
 - Case does not matter for the lookup (words are lower-cased); the cased BertBaseCased encoder also sees the case you
   give it.
 - Classify one sentence per call. The Basic model splits the list into sentences at the tokens `"."`, `"!"` and `"?"`
@@ -1291,6 +1293,19 @@ ensure; cancelling does not stop the shared ensure (see "Threads and cancellatio
   a group. The published encoder accuracy per level is measured on the trained lemmas only. Basic tags every sentence,
   so it decides every multi-sense word by part of speech (and by context cues where it has them) but never names a fine
   sense or a group for an analysis with several senses.
+- **Technical noun compounds and imperative fragments are the weak spot of Basic's part of speech.** Technical text
+  strings nouns together (`service call`, `spell check`, `dial travel`) and writes instructions without a determiner
+  (`Wash pump`), and a word that is mostly a verb in running text (`call`, `check`, `travel`) leans to the verb. Basic
+  knows whether a clause already has a verb, which fixes many of these cases, but on the benchmark sets a noun that
+  ends a compound after a modifier noun is still right only 93.0% of the time on the development sets (91.8% on the
+  test sets; 98% after an adjective or a determiner), the first noun of a compound 90.1% (91.7% on the test sets), and
+  the verb that starts a fragment before a noun without a determiner 73.9% (47.8% on the test sets; 23 sentences in each
+  set, so read it as a rough figure). An imperative verb before a determiner (`Run the report`) is right 96.0% of the
+  time on the development sets (25 tokens) and 100% on the test sets (20 tokens); counted with the gerunds and the
+  other verbs that start a sentence before a determiner it is 95.3% (97.3% on the test sets). The `Confidence` of such
+  an answer is often low (0.5 to 0.6) but can also be high and
+  wrong; the encoder models answer the words they are trained on from their own evidence. Use the confidence and the
+  `Analyses` list (the alternatives and their probabilities) before you act on the part of speech of a technical term.
 - **Fine senses are WordNet's.** The senses are those of Open English WordNet, which are fine: even a trained model can
   often tell only the group, and a human annotator also disagrees on many close senses. A project sense (no OEWN key)
   covers the closed-class and discourse uses that WordNet does not list.

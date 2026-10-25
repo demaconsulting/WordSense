@@ -111,16 +111,16 @@ bow       Noun         PartOfSpeech 1.00                 Verb 0.00
 at        Preposition  Sense        1.00  at#preposition Noun 0.00
 a         Determiner   Sense        1.00  a#determiner
 deer      Noun         Sense        1.00  deer#noun
-so        Conjunction  Sense        0.54  so#conjunction Adverb 0.46
+so        Conjunction  Sense        0.70  so#conjunction Adverb 0.29
 we        Pronoun      Sense        1.00  we#pronoun
-will      Auxiliary    Sense        1.00  will#auxiliary Verb 0.00
+will      Auxiliary    Sense        1.00  will#auxiliary Noun 0.00
 record    Verb         PartOfSpeech 1.00                 Noun 0.00
 a         Determiner   Sense        1.00  a#determiner
 record    Noun         PartOfSpeech 1.00                 Verb 0.00
 then      Adverb       PartOfSpeech 0.99                 Noun 0.01
 go        Verb         PartOfSpeech 1.00                 Noun 0.00
-back      Adverb       PartOfSpeech 0.96                 Noun 0.02
-home      Noun         PartOfSpeech 0.64                 Adverb 0.30
+back      Adverb       PartOfSpeech 0.95                 Noun 0.02
+home      Noun         PartOfSpeech 0.64                 Adverb 0.31
 ```
 
 Output with the `MiniLM` model:
@@ -138,9 +138,9 @@ bow       Noun         PartOfSpeech 0.99                 Verb 0.01
 at        Preposition  Sense        1.00  at#preposition Noun 0.00
 a         Determiner   Sense        1.00  a#determiner
 deer      Noun         Sense        1.00  deer#noun
-so        Conjunction  Sense        0.54  so#conjunction Adverb 0.46
+so        Conjunction  Sense        0.70  so#conjunction Adverb 0.29
 we        Pronoun      Sense        1.00  we#pronoun
-will      Auxiliary    Sense        1.00  will#auxiliary Verb 0.00
+will      Auxiliary    Sense        1.00  will#auxiliary Noun 0.00
 record    Verb         PartOfSpeech 0.94                 Noun 0.06
 a         Determiner   Sense        1.00  a#determiner
 record    Noun         PartOfSpeech 0.96                 Verb 0.04
@@ -165,9 +165,9 @@ bow       Noun         Sense        1.00  bow#archery-bow Verb 0.00
 at        Preposition  Sense        1.00  at#preposition Noun 0.00
 a         Determiner   Sense        1.00  a#determiner
 deer      Noun         Sense        1.00  deer#noun
-so        Conjunction  Sense        0.54  so#conjunction Adverb 0.46
+so        Conjunction  Sense        0.70  so#conjunction Adverb 0.29
 we        Pronoun      Sense        1.00  we#pronoun
-will      Auxiliary    Sense        1.00  will#auxiliary Verb 0.00
+will      Auxiliary    Sense        1.00  will#auxiliary Noun 0.00
 record    Verb         PartOfSpeech 0.98                 Noun 0.02
 a         Determiner   Sense        1.00  a#determiner
 record    Noun         PartOfSpeech 0.91                 Verb 0.09

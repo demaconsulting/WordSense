@@ -557,6 +557,22 @@ and, for the measurement, a stub model.
   as written and are byte-identical on a repeat run.
 - **Malformed files** (`WordSenseBuilder_TaggerCounts_Read_MalformedFiles_Throw`): a count file with a wrong header, a
   malformed word line or a malformed n-gram line throws `InvalidDataException`.
+- **Clause counts** (`WordSenseBuilder_TaggerCounts_Count_CountsClauseNgrams`): for a sentence with a verb in its first
+  clause only, the bigrams and trigrams after the verb are counted in the clause state with a verb up to the punctuation
+  and not after it, the start of the sentence is never counted, and no clause count is above its total.
+- **Non-finite start** (`WordSenseBuilder_TaggerCounts_Count_NonFiniteStartDoesNotSetTheClauseState`): a
+  sentence-initial verb that the lexicon lists only as a gerund does not count the following bigram in the clause state
+  with a verb, while an infinitive at the start does.
+- **Malformed clause file** (`WordSenseBuilder_TaggerCounts_Read_MalformedClauseFile_Throws`): a clause count file
+  with a wrong header or a unigram line throws `InvalidDataException`.
+- **Clause bigram above its total** (`WordSenseBuilder_TaggerCounts_Read_ClauseBigramAboveTotal_Throws`): a clause
+  bigram count larger than the total count of the same bigram throws `InvalidDataException`.
+- **Clause trigram above its total** (`WordSenseBuilder_TaggerCounts_Read_ClauseTrigramAboveTotal_Throws`): a clause
+  trigram count larger than the total count of the same trigram throws `InvalidDataException`.
+- **Missing clause file** (`WordSenseBuilder_TaggerCounts_Read_MissingClauseFile_Throws`): reading counts whose clause
+  file is missing throws `FileNotFoundException`.
+- **Clause file written and read back** (`WordSenseBuilder_TaggerCounts_WriteAndRead_RoundTripsDeterministically`): the
+  clause counts read back as written, and the clause file is byte-identical on a repeat run, with LF line ends.
 - **Command** (`WordSenseBuilder_Program_OpenCounts_WritesCountFiles`): the command counts the training split of the
   representative part of a tiny corpus into the counts folder.
 
@@ -593,12 +609,23 @@ and, for the measurement, a stub model.
   context `had X` is past and `to X` non-past for six different verbs, the weight of the left neighbor `had` is positive
   and that of `to` negative, the prior is the log odds of the seven past and six non-past verbs, the third-person
   context is not learned, sentences without gold and non-verbs are skipped; there is no table without both classes or
-  when no feature reaches the minimum; equal inputs give equal tables and equal bytes with the magic `WSB4`; a model
+  when no feature reaches the minimum; equal inputs give equal tables and equal bytes with the magic `WSB5`; a model
   trained with verbs writes the table and the weight, which `BasicTables` reads back, and a model without verbs has none.
+- **Clause counts in the table** (`WordSenseBuilder_BasicTablesWriter_Write_CarriesTheClauseCounts`): the clause counts
+  of the tag counts reach the table that `BasicTables` reads back, equal to those of `TaggerCounts` and the data, and a
+  determiner after a verb is counted in the clause state with a verb and not at the start of a sentence.
+- **Clause smoothing in the table** (`WordSenseBuilder_BasicTablesWriter_Write_CarriesTheClauseSmoothing`): the
+  smoothing of the hyper-parameters (7.5 in the test) reaches the header of the table that `BasicTables` reads back.
+- **Format revision** (`WordSenseBuilder_BasicTablesWriter_Write_StartsWithTheMagicWsb5`): the table starts with the
+  magic `WSB5`.
+- **Clause counts are deterministic** (`WordSenseBuilder_BasicTablesWriter_Write_WithClauseCounts_IsDeterministic`):
+  data whose counts have clause counts gives the same bytes on every write.
 - **Corpus features** (`WordSenseBuilder_OpenCorpus_ToTagged_CarriesTheLemmaAndFeaturesOfEveryToken`): the features and
   lemma of every token are read and a joined contraction has those of its first part.
 - **Hyper-parameters** (`WordSenseBuilder_BasicHyperparameters_Default_IsConsistent`): the defaults carry the values
   the runtime reads and the tuning grid includes them.
+- **Clause smoothing is tuned** (`WordSenseBuilder_BasicHyperparameters_ClauseSmoothing_IsTuned`): the grid of the
+  smoothing of the clause state has the default among its values and no negative value.
 - **Tuning** (`WordSenseBuilder_BasicTuner_SplitAnchors_IsDeterministicAndDisjoint`,
   `WordSenseBuilder_BasicTuner_ScoreTagger_CountsAmbiguousTokens`,
   `WordSenseBuilder_BasicTuner_RunAsync_MissingCounts_Throws`): the anchor split is deterministic and its parts are
@@ -615,7 +642,8 @@ and, for the measurement, a stub model.
   development splits of the open corpus (a same-spelling verb `put` among them), a development treebank file, and test
   splits (representative and targeted) and treebank test and training files that fail when they are read (a malformed
   line), `tune-basic --gold` succeeds, so none of them was read, and its tense table has rows for the weight 1.00 on
-  `open corpus dev` and `UD-EWT dev` and none for `UD-EWT test`, `UD-EWT train` or `open corpus test`.
+  `open corpus dev` and `UD-EWT dev` and none for `UD-EWT test`, `UD-EWT train` or `open corpus test`; the grid table
+  names the smoothing of the clause state and has the treebank development column.
 - **Training reads only the training split**
   (`WordSenseBuilder_Program_TrainBasic_ReadsOnlyTheTrainSplit`): in a temporary corpus whose training split is valid and
   whose development and test splits (representative and targeted) fail when they are read, `open-counts` and

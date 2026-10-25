@@ -144,6 +144,103 @@ public class BasicWordSenseModelTests
     }
 
     /// <summary>
+    ///     A possessive that is written as one token is answered with its own noun analysis, and the word after it is a
+    ///     noun, as it is after an article: the tagger reads the stem and the possessive marker, the pattern of its
+    ///     training counts.
+    /// </summary>
+    /// <param name="sentence">The sentence, words separated by spaces.</param>
+    /// <param name="index">The index of the word after the possessive.</param>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Theory]
+    [InlineData("Note the sergeant's rank .", 3)]
+    [InlineData("Check the pilot's license .", 3)]
+    [InlineData("We heard the captain's order .", 4)]
+    public async Task BasicWordSenseModel_ClassifyAsync_PossessiveToken_ReadsTheNextWordAsNoun(string sentence, int index)
+    {
+        // Arrange: the embedded model and the words of the sentence, the possessive as one token
+        using var model = new BasicWordSenseModel();
+        var words = sentence.Split(' ');
+
+        // Act: classify the whole sentence through the public model
+        var results = await model.ClassifyAsync(words, TestContext.Current.CancellationToken);
+
+        // Assert: one result for each word, the possessive answered with its own noun analysis, the next word a noun
+        Assert.Equal(words.Length, results.Length);
+        Assert.Equal(words[index - 1], results[index - 1].Word);
+        Assert.Equal(PartOfSpeech.Noun, results[index - 1].Details?.PartOfSpeech);
+        Assert.Contains("Poss=Yes", results[index - 1].Details?.Features, StringComparison.Ordinal);
+        Assert.Equal(PartOfSpeech.Noun, results[index].Details?.PartOfSpeech);
+        Assert.True(results[index].Confidence > 0.8);
+    }
+
+    /// <summary>
+    ///     A word after a determiner and a noun is a noun in a clause that already has a verb, although the word could
+    ///     also be a verb.
+    /// </summary>
+    /// <param name="sentence">The sentence, words separated by spaces.</param>
+    /// <param name="index">The index of the word.</param>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Theory]
+    [InlineData("Please open the door handle .", 4)]
+    [InlineData("Replace the oil filter .", 3)]
+    [InlineData("Inspect the brake pad .", 3)]
+    public async Task BasicWordSenseModel_ClassifyAsync_NounAfterNounInClauseWithVerb_IsNoun(string sentence, int index)
+    {
+        // Arrange: the embedded model; the clause already has a verb before the determiner
+        using var model = new BasicWordSenseModel();
+
+        // Act: classify the whole sentence through the public model
+        var results = await model.ClassifyAsync(sentence.Split(' '), TestContext.Current.CancellationToken);
+
+        // Assert: the word after the determiner and the noun is a noun, with a confident answer
+        Assert.Equal(PartOfSpeech.Noun, results[index].Details?.PartOfSpeech);
+        Assert.True(results[index].Confidence > 0.8);
+    }
+
+    /// <summary>
+    ///     A punctuation token or a conjunction ends the clause for the tagger: the word after a determiner and a noun
+    ///     in the clause that follows is a verb again, although the first clause already has a verb.
+    /// </summary>
+    /// <param name="sentence">The sentence, words separated by spaces.</param>
+    /// <param name="index">The index of the word.</param>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Theory]
+    [InlineData("He nodded , the pump runs .", 5)]
+    [InlineData("He nodded and the pump runs .", 5)]
+    public async Task BasicWordSenseModel_ClassifyAsync_VerbAfterClauseBreak_IsVerb(string sentence, int index)
+    {
+        // Arrange: the embedded model; the first clause has a verb, then a break
+        using var model = new BasicWordSenseModel();
+
+        // Act: classify the whole sentence through the public model
+        var results = await model.ClassifyAsync(sentence.Split(' '), TestContext.Current.CancellationToken);
+
+        // Assert: the word after the determiner and the noun of the second clause is its verb
+        Assert.Equal(PartOfSpeech.Verb, results[index].Details?.PartOfSpeech);
+    }
+
+    /// <summary>
+    ///     A sentence-initial gerund does not give its clause a verb, so it is still read as a verb when a determiner
+    ///     follows, while the verb of the clause comes later.
+    /// </summary>
+    /// <param name="sentence">The sentence, words separated by spaces.</param>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Theory]
+    [InlineData("Resolving this issue requires care .")]
+    [InlineData("Checking this valve takes time .")]
+    public async Task BasicWordSenseModel_ClassifyAsync_GerundAtTheStart_IsStillAVerb(string sentence)
+    {
+        // Arrange: the embedded model
+        using var model = new BasicWordSenseModel();
+
+        // Act: classify the whole sentence through the public model
+        var results = await model.ClassifyAsync(sentence.Split(' '), TestContext.Current.CancellationToken);
+
+        // Assert: the first word is a verb
+        Assert.Equal(PartOfSpeech.Verb, results[0].Details?.PartOfSpeech);
+    }
+
+    /// <summary>
     ///     Through the public model, the written case chooses between the capitalized and the lower-case lemma of one
     ///     spelling: <c>Polish</c> and <c>August</c> inside a sentence are the language and the month, <c>polish</c> and
     ///     <c>august</c> the shine and the adjective.

@@ -24,6 +24,20 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `..._UnknownWord_HasNoAnalyses`): a word with no lexicon entry is not known, has no analyses, no details, no group or
   sense id and confidence 0.
 - **Unknown word level** (`..._UnknownWord_AnswersLevelNone`): the same answer states the level none.
+- **Possessive token** (`BasicClassifier_MakeToken_Possessive_HasTheStem`): a word whose analyses all carry `Poss=Yes`
+  and whose key ends in `'s` or `'` (also with the typographic apostrophe and a capital letter) is made into a
+  possessive tagger token that carries its stem, the case of the written word and the mask of its analyses.
+- **Not a possessive** (`BasicClassifier_MakeToken_NotPossessive_IsAWholeToken`): a contraction, a word with an analysis
+  that is not a possessive, a word without the ending and an unknown word stay whole tokens that are not flagged.
+- **Possessive keeps the caller's tokens** (`BasicClassifier_ClassifyAsync_Possessive_KeepsTheTokensOfTheCaller`): the
+  results of a sentence with a possessive stay parallel to the words, the possessive answered with its own analysis at
+  its own position. The effect on the next word with the embedded table is verified at the subsystem level
+  (`BasicWordSenseModel_ClassifyAsync_PossessiveToken_ReadsTheNextWordAsNoun`).
+- **Non-finite verb** (`BasicClassifier_MakeToken_NonFiniteVerb_IsFlagged`): a word whose verb analyses are all gerunds
+  or participles without a past tense (`resolving`, `broken`) is flagged non-finite on its tagger token.
+- **Finite verb or no verb** (`BasicClassifier_MakeToken_FiniteOrNoVerb_IsNotFlagged`): an infinitive (`remove`), a past
+  tense (`walked`), a word that is a past tense and a present (`read`), a word without a verb analysis (`table`) and an
+  unknown word are not flagged.
 - **Number word** (`..._NumberWord_ReturnsDetails`): a number word such as `one` or `twenty` has a lexicon entry and is
   answered with details, never as unknown.
 - **Single-sense word** (`..._SingleSenseWord_ReturnsEntryWithFullConfidence`): a word with one analysis whose lemma

@@ -77,9 +77,48 @@ internal static class PosTag
     public const string Letters = "NRVJBPCIDATUOS";
 
     /// <summary>
+    ///     The tags that mark a clause as having a verb: the main verb tag. The auxiliary tag (modals and the helper forms of
+    ///     be, do and have) does not count; the development sets were slightly better without it.
+    /// </summary>
+    public const int ClauseVerbMask = 1 << Verb;
+
+    /// <summary>
+    ///     The tags that start a new clause: the conjunction (coordinating and subordinating) and punctuation.
+    /// </summary>
+    public const int ClauseBreakMask = (1 << Conjunction) | (1 << Punctuation);
+
+    /// <summary>
     ///     Gets the tag of a part of speech.
     /// </summary>
     /// <param name="partOfSpeech">The part of speech.</param>
     /// <returns>The tag with the same numeric value.</returns>
     public static int Of(PartOfSpeech partOfSpeech) => (int)partOfSpeech;
+
+    /// <summary>
+    ///     Gets the clause state after a tag: whether the current clause has a verb. A clause starts at the beginning of
+    ///     the sentence segment and after a tag of <see cref="ClauseBreakMask"/>; it has a verb from the first tag of
+    ///     <see cref="ClauseVerbMask"/> on, except that the first token of the segment does not give the clause a verb when
+    ///     the dictionary lists it as a verb only in forms that are never the finite verb of a clause (a gerund such as
+    ///     <c>Resolving</c> in <c>Resolving this issue requires care</c>, or a participle that is not also a past tense). The
+    ///     boundary pseudo tag does not change the state.
+    /// </summary>
+    /// <param name="hasVerb">The state before the tag: 1 when the clause already has a verb, otherwise 0.</param>
+    /// <param name="tag">The tag.</param>
+    /// <param name="nonFiniteStart">Whether the token is the first of its segment and is listed only as a non-finite verb.</param>
+    /// <returns>The state after the tag: 1 or 0.</returns>
+    public static int NextClause(int hasVerb, int tag, bool nonFiniteStart = false)
+    {
+        if (tag >= Count)
+        {
+            return hasVerb;
+        }
+
+        var bit = 1 << tag;
+        if ((ClauseBreakMask & bit) != 0 || nonFiniteStart)
+        {
+            return 0;
+        }
+
+        return hasVerb != 0 || (ClauseVerbMask & bit) != 0 ? 1 : 0;
+    }
 }

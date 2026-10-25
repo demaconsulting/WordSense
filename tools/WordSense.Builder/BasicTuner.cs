@@ -34,10 +34,11 @@ internal static class BasicTuner
         var lexicon = (Func<string, ImmutableArray<WordDetails>>)(key => WordLexicon.TryLookup(key, out var found) ? found : []);
         var (train, anchorDev) = SplitAnchors(Corpus.ReadDirectory(Path.Join(corpus, "anchors")));
         progress.WriteLine($"Tuning on {dev.Count} open-corpus dev sentences, {train.Count} anchor train and {anchorDev.Count} anchor dev sentences.");
+        var treebank = treebankDev is not null && File.Exists(treebankDev) ? TaggerEvaluator.ReadGold(treebankDev) : null;
 
         var text = new StringBuilder();
-        text.Append("| Variant | Open dev ambiguous POS | Anchor dev analysis | Table size |\n");
-        text.Append("| --- | ---: | ---: | ---: |\n");
+        text.Append("| Variant | Open dev ambiguous POS | Anchor dev analysis | Open dev classifier all / ambiguous | Treebank dev classifier all / ambiguous | Table size |\n");
+        text.Append("| --- | ---: | ---: | ---: | ---: | ---: |\n");
         var seen = new HashSet<BasicHyperparameters>();
         var variants = new List<(string Label, BasicHyperparameters Parameters)> { ("default", BasicHyperparameters.Default) };
         seen.Add(BasicHyperparameters.Default);
@@ -57,9 +58,13 @@ internal static class BasicTuner
             var tables = BasicTables.Load(blob, WordLexicon.Current);
             var (ambiguous, ambiguousCorrect) = ScoreTagger(tables, dev, lexicon);
             var (anchorRows, anchorCorrect) = await ScoreAnchorsAsync(tables, anchorDev, lexicon, cancellationToken).ConfigureAwait(false);
+            var openClassifier = await TaggerEvaluator.EvaluateAsync("open dev", tables, dev, cancellationToken).ConfigureAwait(false);
+            var treebankClassifier = treebank is null ? null : await TaggerEvaluator.EvaluateAsync("treebank dev", tables, treebank, cancellationToken).ConfigureAwait(false);
             text.Append("| ").Append(label)
                 .Append(" | ").Append(Percent(ambiguousCorrect, ambiguous))
                 .Append(" | ").Append(Percent(anchorCorrect, anchorRows))
+                .Append(" | ").Append(Describe(openClassifier))
+                .Append(" | ").Append(treebankClassifier is null ? "n/a" : Describe(treebankClassifier))
                 .Append(" | ").Append((blob.Length / 1024.0).ToString("N0", CultureInfo.InvariantCulture)).Append(" KiB |\n");
             progress.WriteLine($"{label} done.");
         }
@@ -179,7 +184,7 @@ internal static class BasicTuner
     /// <returns>The description.</returns>
     internal static string Describe(BasicHyperparameters hp) => string.Create(
         CultureInfo.InvariantCulture,
-        $"gamma {hp.Gamma}, beta {hp.Beta}, closed {hp.ClosedMinCount}/{hp.ClosedShare}, hmm weight {hp.HmmWeight}, temperature {hp.Temperature}, cue alpha {hp.CueAlpha}");
+        $"gamma {hp.Gamma}, beta {hp.Beta}, closed {hp.ClosedMinCount}/{hp.ClosedShare}, hmm weight {hp.HmmWeight}, temperature {hp.Temperature}, cue alpha {hp.CueAlpha}, clause smoothing {hp.ClauseSmoothing}");
 
     /// <summary>
     ///     Scores the tagger alone on sentences: every token that has several parts of speech in the lexicon, among which
@@ -247,6 +252,8 @@ internal static class BasicTuner
 
         return (rows.Count, correct);
     }
+
+    private static string Describe(TaggerScore score) => Percent(score.Correct, score.Scored) + " / " + Percent(score.AmbiguousCorrect, score.Ambiguous);
 
     private static string Percent(int part, int whole) =>
         whole == 0 ? "n/a" : (100.0 * part / whole).ToString("0.00", CultureInfo.InvariantCulture) + "%";

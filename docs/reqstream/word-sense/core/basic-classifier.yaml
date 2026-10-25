@@ -332,6 +332,62 @@ sections:
                   - BasicClassifier_ClassifyAsync_Segments_AreIndependent
                   - BasicClassifier_SegmentOf_FindsBounds
 
+              - id: WordSense-Core-BasicClassifier-Possessive-Stem
+                title: >-
+                  BasicClassifier shall pass a word whose analyses all carry Poss=Yes and whose key ends in 's or ' to
+                  the tagger as a token that carries the stem of the word and is flagged as a possessive.
+                tags: [unit]
+                justification: |
+                  The documented tokenization keeps the possessive marker inside the token, but the tagger was trained
+                  on text with a separate marker; the stem and the flag let the tagger read the pattern it knows.
+                tests:
+                  - BasicClassifier_MakeToken_Possessive_HasTheStem
+
+              - id: WordSense-Core-BasicClassifier-Possessive-Whole
+                title: >-
+                  BasicClassifier shall pass a contraction, a word with an analysis that is not a possessive, a word
+                  that does not end in 's or ' and an unknown word to the tagger as a whole token that is not flagged as
+                  a possessive.
+                tags: [unit]
+                justification: |
+                  Only a word that is a possessive in every analysis may be read as a stem and a marker; any other
+                  word would be given a reading that it does not have.
+                tests:
+                  - BasicClassifier_MakeToken_NotPossessive_IsAWholeToken
+
+              - id: WordSense-Core-BasicClassifier-Possessive-Rows
+                title: >-
+                  BasicClassifier shall answer a possessive token with its own analysis at its own position, so that
+                  the results stay parallel to the words of the caller.
+                tags: [unit]
+                justification: |
+                  Reading the stem and the marker must not change the tokens or the answers of the caller.
+                tests:
+                  - BasicClassifier_ClassifyAsync_Possessive_KeepsTheTokensOfTheCaller
+
+              - id: WordSense-Core-BasicClassifier-NonFinite-Flag
+                title: >-
+                  BasicClassifier shall flag a tagger token as non-finite when the lexicon lists the word as a verb and
+                  every verb analysis is a gerund (VerbForm=Ger) or a participle that is not also a past tense
+                  (VerbForm=Part without Tense=Past).
+                tags: [unit]
+                justification: |
+                  The tagger lets such a word at the start of a segment leave the clause without a verb; the decision
+                  comes from the lexicon, not from the ending of the word.
+                tests:
+                  - BasicClassifier_MakeToken_NonFiniteVerb_IsFlagged
+
+              - id: WordSense-Core-BasicClassifier-NonFinite-NoFlag
+                title: >-
+                  BasicClassifier shall not flag a tagger token as non-finite for an infinitive, a past tense, a
+                  present, a word without a verb analysis or an unknown word.
+                tags: [unit]
+                justification: |
+                  Imperatives such as bring and ring keep the verb of their clause, so only the words that are never the
+                  finite verb of a clause are flagged.
+                tests:
+                  - BasicClassifier_MakeToken_FiniteOrNoVerb_IsNotFlagged
+
               - id: WordSense-Core-BasicClassifier-Deterministic
                 title: >-
                   BasicClassifier shall give identical results for identical input on repeated calls and when called

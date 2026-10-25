@@ -475,7 +475,95 @@ internal sealed class BasicClassifier
 
         var found = lexicon(key);
         var mask = found.IsDefaultOrEmpty ? 0 : MaskOf(found);
-        return TaggerToken.Word(key, mask, char.IsUpper(word[0]));
+        if (!found.IsDefaultOrEmpty && PossessiveStem(key, found) is { } stem)
+        {
+            return TaggerToken.PossessiveWord(stem, mask, char.IsUpper(word[0]));
+        }
+
+        return TaggerToken.Word(key, mask, char.IsUpper(word[0]), !found.IsDefaultOrEmpty && IsNonFiniteVerb(found));
+    }
+
+    /// <summary>
+    ///     Tells whether the dictionary lists a word as a verb only in forms that are never the finite verb of a clause: it has
+    ///     a verb analysis, and every verb analysis is a gerund (<c>VerbForm=Ger</c>) or a participle that is not also a past
+    ///     tense (<c>VerbForm=Part</c> without <c>Tense=Past</c>). <c>resolving</c> and <c>broken</c> are such words;
+    ///     <c>remove</c>, <c>walked</c> and <c>read</c> are not.
+    /// </summary>
+    /// <param name="analyses">The analyses of the word.</param>
+    /// <returns>True when the word can be a verb but never the finite verb of a clause.</returns>
+    internal static bool IsNonFiniteVerb(ImmutableArray<WordDetails> analyses)
+    {
+        var hasVerb = false;
+        foreach (var analysis in analyses)
+        {
+            if (analysis.PartOfSpeech != PartOfSpeech.Verb)
+            {
+                continue;
+            }
+
+            hasVerb = true;
+            var gerund = HasFeature(analysis.Features, "VerbForm=Ger");
+            var participle = HasFeature(analysis.Features, "VerbForm=Part") && !HasFeature(analysis.Features, "Tense=Past");
+            if (!gerund && !participle)
+            {
+                return false;
+            }
+        }
+
+        return hasVerb;
+    }
+
+    /// <summary>
+    ///     Gets the stem of a possessive that is written as one token: the key ends in <c>'s</c> or <c>'</c> and every
+    ///     analysis of the word carries <c>Poss=Yes</c> (<c>technician's</c>, <c>sergeants'</c>). The tagger saw the
+    ///     possessive in its training counts as the stem followed by a marker, so it reads the token in that form.
+    /// </summary>
+    /// <param name="key">The lower-case key of the word.</param>
+    /// <param name="analyses">The analyses of the word.</param>
+    /// <returns>The lower-case stem, or null when the word is not a possessive.</returns>
+    private static string? PossessiveStem(string key, ImmutableArray<WordDetails> analyses)
+    {
+        int stemLength;
+        if (key.EndsWith("'s", StringComparison.Ordinal))
+        {
+            stemLength = key.Length - 2;
+        }
+        else
+        {
+            stemLength = key.EndsWith('\'') ? key.Length - 1 : 0;
+        }
+
+        if (stemLength <= 0 || analyses.Any(a => !HasFeature(a.Features, "Poss=Yes")))
+        {
+            return null;
+        }
+
+        return key[..stemLength];
+    }
+
+    /// <summary>
+    ///     Tells whether a feature string, whose items are separated by <c>+</c> (<c>Tense=Past+VerbForm=Part</c>),
+    ///     contains one item exactly; a part of an item, such as <c>Past</c> or <c>Tense</c>, does not match.
+    /// </summary>
+    /// <param name="features">The feature string of an analysis; it may be empty, which has no item.</param>
+    /// <param name="item">The complete item to look for, such as <c>Poss=Yes</c>.</param>
+    /// <returns>True when the item is one of the items of the feature string.</returns>
+    private static bool HasFeature(string features, string item)
+    {
+        var start = 0;
+        while (start <= features.Length)
+        {
+            var end = features.IndexOf('+', start);
+            end = end < 0 ? features.Length : end;
+            if (features.AsSpan(start, end - start).SequenceEqual(item))
+            {
+                return true;
+            }
+
+            start = end + 1;
+        }
+
+        return false;
     }
 
     private static int MaskOf(ImmutableArray<WordDetails> analyses)

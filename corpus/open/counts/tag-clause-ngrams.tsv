@@ -1,0 +1,917 @@
+order	tags	count
+2	N N	3698
+2	N R	731
+2	N V	994
+2	N J	317
+2	N B	712
+2	N P	6411
+2	N C	2207
+2	N D	199
+2	N A	262
+2	N T	706
+2	N U	9273
+2	N O	507
+2	N S	4
+2	R N	70
+2	R R	316
+2	R V	1014
+2	R J	175
+2	R B	366
+2	R P	766
+2	R C	145
+2	R D	184
+2	R A	455
+2	R T	158
+2	R U	1050
+2	R O	30
+2	V N	2541
+2	V R	2445
+2	V V	423
+2	V J	2659
+2	V B	2808
+2	V P	4479
+2	V C	971
+2	V I	5
+2	V D	5754
+2	V A	38
+2	V T	1114
+2	V U	2185
+2	V O	444
+2	J N	5830
+2	J R	48
+2	J V	22
+2	J J	528
+2	J B	112
+2	J P	969
+2	J C	522
+2	J D	65
+2	J A	4
+2	J T	245
+2	J U	1211
+2	J O	60
+2	B N	132
+2	B R	156
+2	B V	340
+2	B J	1017
+2	B B	493
+2	B P	1007
+2	B C	282
+2	B D	371
+2	B A	21
+2	B T	139
+2	B U	1082
+2	B O	151
+2	B S	1
+2	P N	3821
+2	P R	941
+2	P V	459
+2	P J	1390
+2	P B	286
+2	P P	114
+2	P C	79
+2	P D	6077
+2	P A	13
+2	P T	3
+2	P U	183
+2	P O	484
+2	I P	1
+2	I C	2
+2	I U	2
+2	D N	8944
+2	D R	71
+2	D V	17
+2	D J	3240
+2	D B	208
+2	D P	1
+2	D C	4
+2	D D	58
+2	D A	1
+2	D U	68
+2	D O	144
+2	A R	7
+2	A V	714
+2	A J	1
+2	A B	95
+2	A P	5
+2	A C	1
+2	A D	2
+2	A A	78
+2	A T	3
+2	A U	12
+2	A O	46
+2	T V	2255
+2	T B	41
+2	T C	3
+2	T D	1
+2	T A	83
+2	T U	10
+2	T O	3
+2	O N	985
+2	O R	14
+2	O V	54
+2	O J	289
+2	O B	71
+2	O P	97
+2	O C	58
+2	O D	45
+2	O A	9
+2	O T	28
+2	O U	219
+2	O O	96
+3	N N N	746
+3	N N R	77
+3	N N V	133
+3	N N J	39
+3	N N B	61
+3	N N P	579
+3	N N C	335
+3	N N D	23
+3	N N A	57
+3	N N T	95
+3	N N U	1494
+3	N N O	59
+3	N R N	9
+3	N R R	32
+3	N R V	416
+3	N R J	4
+3	N R B	29
+3	N R P	7
+3	N R C	2
+3	N R D	12
+3	N R A	201
+3	N R U	18
+3	N R O	1
+3	N V N	533
+3	N V R	346
+3	N V V	73
+3	N V J	896
+3	N V B	737
+3	N V P	1093
+3	N V C	224
+3	N V D	1417
+3	N V A	6
+3	N V T	249
+3	N V U	391
+3	N V O	150
+3	N J N	78
+3	N J V	1
+3	N J J	2
+3	N J B	4
+3	N J P	134
+3	N J C	16
+3	N J D	2
+3	N J T	3
+3	N J U	77
+3	N B N	15
+3	N B R	18
+3	N B V	58
+3	N B J	48
+3	N B B	74
+3	N B P	143
+3	N B C	48
+3	N B D	14
+3	N B A	4
+3	N B T	9
+3	N B U	270
+3	N B O	11
+3	N P N	2038
+3	N P R	310
+3	N P V	226
+3	N P J	664
+3	N P B	127
+3	N P P	44
+3	N P C	24
+3	N P D	2726
+3	N P A	4
+3	N P U	57
+3	N P O	191
+3	N D N	146
+3	N D R	1
+3	N D J	33
+3	N D B	7
+3	N D C	1
+3	N D D	3
+3	N D U	3
+3	N D O	5
+3	N A R	3
+3	N A V	183
+3	N A B	26
+3	N A D	1
+3	N A A	33
+3	N A U	1
+3	N A O	15
+3	N T V	678
+3	N T B	12
+3	N T C	1
+3	N T A	14
+3	N T U	1
+3	N O N	299
+3	N O R	2
+3	N O V	5
+3	N O J	92
+3	N O B	9
+3	N O P	13
+3	N O C	16
+3	N O D	1
+3	N O T	6
+3	N O U	60
+3	N O O	4
+3	R N N	11
+3	R N R	1
+3	R N V	13
+3	R N J	1
+3	R N B	3
+3	R N P	12
+3	R N C	4
+3	R N A	8
+3	R N T	2
+3	R N U	14
+3	R N O	1
+3	R R N	6
+3	R R R	18
+3	R R V	153
+3	R R J	6
+3	R R B	13
+3	R R P	8
+3	R R C	4
+3	R R D	2
+3	R R A	73
+3	R R U	32
+3	R R O	1
+3	R V N	411
+3	R V R	647
+3	R V V	78
+3	R V J	636
+3	R V B	744
+3	R V P	789
+3	R V C	196
+3	R V D	1387
+3	R V A	12
+3	R V T	343
+3	R V U	479
+3	R V O	155
+3	R J N	25
+3	R J R	2
+3	R J V	1
+3	R J J	4
+3	R J B	8
+3	R J P	42
+3	R J C	12
+3	R J D	1
+3	R J T	18
+3	R J U	62
+3	R B N	1
+3	R B R	13
+3	R B V	49
+3	R B J	41
+3	R B B	39
+3	R B P	48
+3	R B C	26
+3	R B D	11
+3	R B A	4
+3	R B T	12
+3	R B U	118
+3	R B O	4
+3	R P N	152
+3	R P R	86
+3	R P V	29
+3	R P J	52
+3	R P B	14
+3	R P P	4
+3	R P D	409
+3	R P A	1
+3	R P T	1
+3	R P U	14
+3	R P O	4
+3	R D N	123
+3	R D J	50
+3	R D B	4
+3	R D D	5
+3	R D U	1
+3	R D O	1
+3	R A R	2
+3	R A V	319
+3	R A J	1
+3	R A B	51
+3	R A P	5
+3	R A A	38
+3	R A T	3
+3	R A U	8
+3	R A O	28
+3	R T V	149
+3	R T B	3
+3	R T A	4
+3	R T U	2
+3	R O N	19
+3	R O V	1
+3	R O J	7
+3	R O P	1
+3	R O A	1
+3	R O U	1
+3	V N N	451
+3	V N R	72
+3	V N V	136
+3	V N J	37
+3	V N B	77
+3	V N P	697
+3	V N C	225
+3	V N D	33
+3	V N A	36
+3	V N T	92
+3	V N U	619
+3	V N O	66
+3	V R N	41
+3	V R R	155
+3	V R V	335
+3	V R J	147
+3	V R B	263
+3	V R P	547
+3	V R C	82
+3	V R D	129
+3	V R A	119
+3	V R T	128
+3	V R U	485
+3	V R O	14
+3	V V N	51
+3	V V R	39
+3	V V V	6
+3	V V J	39
+3	V V B	41
+3	V V P	82
+3	V V C	21
+3	V V I	1
+3	V V D	104
+3	V V A	1
+3	V V T	7
+3	V V U	37
+3	V V O	5
+3	V J N	920
+3	V J R	15
+3	V J V	12
+3	V J J	94
+3	V J B	73
+3	V J P	510
+3	V J C	220
+3	V J D	24
+3	V J A	3
+3	V J T	164
+3	V J U	616
+3	V J O	8
+3	V B N	92
+3	V B R	94
+3	V B V	39
+3	V B J	612
+3	V B B	275
+3	V B P	641
+3	V B C	132
+3	V B D	292
+3	V B A	5
+3	V B T	86
+3	V B U	460
+3	V B O	80
+3	V P N	1138
+3	V P R	343
+3	V P V	125
+3	V P J	475
+3	V P B	85
+3	V P P	43
+3	V P C	42
+3	V P D	1991
+3	V P A	5
+3	V P T	2
+3	V P U	93
+3	V P O	137
+3	V I P	1
+3	V I C	2
+3	V I U	2
+3	V D N	3877
+3	V D R	32
+3	V D V	3
+3	V D J	1605
+3	V D B	114
+3	V D C	3
+3	V D D	28
+3	V D U	37
+3	V D O	55
+3	V A R	2
+3	V A V	27
+3	V A B	4
+3	V A C	1
+3	V A D	1
+3	V A A	3
+3	V T V	1038
+3	V T B	17
+3	V T C	2
+3	V T D	1
+3	V T A	48
+3	V T U	6
+3	V T O	2
+3	V O N	167
+3	V O R	7
+3	V O V	4
+3	V O J	109
+3	V O B	39
+3	V O P	20
+3	V O C	5
+3	V O D	33
+3	V O A	3
+3	V O T	10
+3	V O U	28
+3	V O O	19
+3	J N N	605
+3	J N R	192
+3	J N V	175
+3	J N J	55
+3	J N B	130
+3	J N P	1619
+3	J N C	465
+3	J N D	33
+3	J N A	47
+3	J N T	177
+3	J N U	2301
+3	J N O	31
+3	J R R	1
+3	J R V	8
+3	J R J	1
+3	J R B	2
+3	J R P	6
+3	J R C	3
+3	J R A	9
+3	J R U	17
+3	J R O	1
+3	J V N	6
+3	J V R	2
+3	J V J	4
+3	J V B	5
+3	J V P	6
+3	J V C	7
+3	J V D	15
+3	J V T	3
+3	J V U	5
+3	J V O	2
+3	J J N	461
+3	J J R	1
+3	J J J	30
+3	J J B	1
+3	J J P	5
+3	J J C	18
+3	J J D	1
+3	J J U	11
+3	J B R	1
+3	J B V	3
+3	J B J	6
+3	J B B	11
+3	J B P	26
+3	J B C	9
+3	J B D	3
+3	J B T	15
+3	J B U	37
+3	J B O	1
+3	J P N	254
+3	J P R	102
+3	J P V	56
+3	J P J	112
+3	J P B	18
+3	J P P	5
+3	J P C	11
+3	J P D	376
+3	J P A	2
+3	J P U	11
+3	J P O	22
+3	J D N	48
+3	J D J	14
+3	J D D	2
+3	J D O	1
+3	J A V	2
+3	J A A	1
+3	J A O	1
+3	J T V	231
+3	J T B	6
+3	J T A	7
+3	J T O	1
+3	J O N	31
+3	J O J	4
+3	J O B	2
+3	J O P	4
+3	J O C	3
+3	J O T	4
+3	J O U	8
+3	J O O	4
+3	B N N	21
+3	B N V	30
+3	B N J	3
+3	B N B	4
+3	B N P	25
+3	B N C	10
+3	B N A	8
+3	B N T	3
+3	B N U	27
+3	B N O	1
+3	B R R	6
+3	B R V	59
+3	B R J	1
+3	B R B	4
+3	B R P	25
+3	B R C	5
+3	B R A	33
+3	B R T	3
+3	B R U	19
+3	B R O	1
+3	B V N	258
+3	B V R	170
+3	B V V	37
+3	B V J	156
+3	B V B	164
+3	B V P	399
+3	B V C	86
+3	B V D	387
+3	B V A	4
+3	B V T	78
+3	B V U	214
+3	B V O	17
+3	B J N	276
+3	B J R	6
+3	B J V	5
+3	B J J	31
+3	B J B	13
+3	B J P	232
+3	B J C	118
+3	B J D	21
+3	B J A	1
+3	B J T	49
+3	B J U	263
+3	B J O	2
+3	B B N	3
+3	B B R	14
+3	B B V	27
+3	B B J	67
+3	B B B	49
+3	B B P	105
+3	B B C	56
+3	B B D	15
+3	B B A	2
+3	B B T	11
+3	B B U	140
+3	B B O	4
+3	B P N	196
+3	B P R	89
+3	B P V	19
+3	B P J	70
+3	B P B	30
+3	B P P	15
+3	B P C	2
+3	B P D	494
+3	B P U	8
+3	B P O	84
+3	B D N	253
+3	B D J	98
+3	B D B	9
+3	B D D	5
+3	B D U	1
+3	B D O	5
+3	B A V	14
+3	B A B	3
+3	B A U	2
+3	B A O	2
+3	B T V	130
+3	B T B	2
+3	B T A	6
+3	B T U	1
+3	B O N	98
+3	B O R	1
+3	B O J	13
+3	B O B	5
+3	B O P	7
+3	B O C	4
+3	B O D	3
+3	B O T	1
+3	B O U	8
+3	B O O	11
+3	P N N	702
+3	P N R	98
+3	P N V	103
+3	P N J	53
+3	P N B	69
+3	P N P	641
+3	P N C	450
+3	P N D	18
+3	P N A	25
+3	P N T	61
+3	P N U	1466
+3	P N O	135
+3	P R N	12
+3	P R R	93
+3	P R V	32
+3	P R J	15
+3	P R B	50
+3	P R P	161
+3	P R C	45
+3	P R D	38
+3	P R A	16
+3	P R T	22
+3	P R U	447
+3	P R O	10
+3	P V N	128
+3	P V R	56
+3	P V V	9
+3	P V J	57
+3	P V B	33
+3	P V P	69
+3	P V C	26
+3	P V I	1
+3	P V D	196
+3	P V A	3
+3	P V T	5
+3	P V U	67
+3	P V O	5
+3	P J N	1151
+3	P J R	1
+3	P J V	2
+3	P J J	105
+3	P J B	2
+3	P J P	14
+3	P J C	56
+3	P J D	14
+3	P J U	40
+3	P J O	5
+3	P B N	13
+3	P B R	13
+3	P B V	25
+3	P B J	51
+3	P B B	20
+3	P B P	35
+3	P B C	5
+3	P B D	29
+3	P B T	6
+3	P B U	41
+3	P B O	48
+3	P P N	22
+3	P P R	4
+3	P P V	2
+3	P P J	14
+3	P P B	10
+3	P P P	2
+3	P P D	44
+3	P P A	1
+3	P P O	15
+3	P D N	4427
+3	P D R	38
+3	P D V	13
+3	P D J	1406
+3	P D B	74
+3	P D P	1
+3	P D D	15
+3	P D A	1
+3	P D U	26
+3	P D O	76
+3	P A V	12
+3	P A B	1
+3	P T V	3
+3	P O N	230
+3	P O R	1
+3	P O V	5
+3	P O J	47
+3	P O B	9
+3	P O P	29
+3	P O C	27
+3	P O D	5
+3	P O T	3
+3	P O U	93
+3	P O O	35
+3	C V N	155
+3	C V R	135
+3	C V V	23
+3	C V J	90
+3	C V B	155
+3	C V P	204
+3	C V C	34
+3	C V I	1
+3	C V D	277
+3	C V A	3
+3	C V T	41
+3	C V U	101
+3	C V O	17
+3	I V R	13
+3	I V B	2
+3	I V P	3
+3	I V C	3
+3	I V D	19
+3	I V U	1
+3	I P O	1
+3	D N N	1042
+3	D N R	272
+3	D N V	367
+3	D N J	98
+3	D N B	314
+3	D N P	2586
+3	D N C	645
+3	D N D	78
+3	D N A	79
+3	D N T	252
+3	D N U	3001
+3	D N O	206
+3	D N S	4
+3	D R N	2
+3	D R R	9
+3	D R V	3
+3	D R B	4
+3	D R P	12
+3	D R C	4
+3	D R D	1
+3	D R A	2
+3	D R T	5
+3	D R U	27
+3	D R O	2
+3	D V N	16
+3	D V J	1
+3	D V B	1
+3	D V C	1
+3	D V D	2
+3	D J N	2728
+3	D J R	21
+3	D J V	1
+3	D J J	240
+3	D J B	3
+3	D J P	14
+3	D J C	72
+3	D J T	6
+3	D J U	110
+3	D J O	45
+3	D B N	2
+3	D B R	1
+3	D B V	14
+3	D B J	167
+3	D B B	14
+3	D B P	2
+3	D B U	6
+3	D B O	2
+3	D P N	1
+3	D D N	41
+3	D D J	17
+3	D A V	1
+3	D O N	106
+3	D O J	14
+3	D O B	1
+3	D O P	9
+3	D O C	2
+3	D O D	1
+3	D O U	4
+3	D O O	7
+3	A R V	5
+3	A R B	1
+3	A R U	1
+3	A V N	271
+3	A V R	383
+3	A V V	59
+3	A V J	363
+3	A V B	485
+3	A V P	1149
+3	A V C	161
+3	A V I	1
+3	A V D	692
+3	A V A	7
+3	A V T	298
+3	A V U	487
+3	A V O	35
+3	A J C	1
+3	A B V	79
+3	A B J	1
+3	A B B	6
+3	A B C	1
+3	A B A	6
+3	A B U	1
+3	A B O	1
+3	A P N	1
+3	A P R	1
+3	A P B	1
+3	A P D	1
+3	A P O	1
+3	A D N	2
+3	A A V	72
+3	A A B	5
+3	A A U	1
+3	A T V	3
+3	A O N	1
+3	A O V	37
+3	A O B	3
+3	A O A	5
+3	T V N	392
+3	T V R	334
+3	T V V	61
+3	T V J	259
+3	T V B	204
+3	T V P	321
+3	T V C	132
+3	T V D	757
+3	T V A	1
+3	T V T	20
+3	T V U	265
+3	T V O	16
+3	T B V	39
+3	T B C	1
+3	T B U	1
+3	T D V	1
+3	T A V	75
+3	T A B	5
+3	T A A	3
+3	T O N	1
+3	T O V	1
+3	T O B	1
+3	U V N	255
+3	U V R	150
+3	U V V	32
+3	U V J	99
+3	U V B	159
+3	U V P	239
+3	U V C	49
+3	U V I	1
+3	U V D	354
+3	U V A	1
+3	U V T	36
+3	U V U	81
+3	U V O	30
+3	O N N	120
+3	O N R	19
+3	O N V	37
+3	O N J	31
+3	O N B	54
+3	O N P	252
+3	O N C	73
+3	O N D	14
+3	O N A	2
+3	O N T	24
+3	O N U	351
+3	O N O	8
+3	O R R	2
+3	O R V	3
+3	O R J	1
+3	O R D	2
+3	O R A	2
+3	O R U	4
+3	O V N	27
+3	O V R	42
+3	O V V	2
+3	O V J	33
+3	O V B	42
+3	O V P	66
+3	O V C	20
+3	O V D	64
+3	O V T	25
+3	O V U	48
+3	O V O	8
+3	O J N	191
+3	O J R	2
+3	O J J	22
+3	O J B	8
+3	O J P	18
+3	O J C	9
+3	O J D	2
+3	O J T	5
+3	O J U	32
+3	O B N	6
+3	O B R	2
+3	O B V	7
+3	O B J	24
+3	O B B	5
+3	O B P	7
+3	O B C	4
+3	O B D	7
+3	O B U	8
+3	O B S	1
+3	O P N	19
+3	O P R	6
+3	O P V	2
+3	O P J	3
+3	O P B	1
+3	O P P	1
+3	O P D	36
+3	O P O	29
+3	O D N	27
+3	O D J	17
+3	O D O	1
+3	O A V	9
+3	O T V	23
+3	O T B	1
+3	O T A	4
+3	O O N	33
+3	O O R	3
+3	O O V	1
+3	O O J	3
+3	O O B	2
+3	O O P	14
+3	O O C	1
+3	O O D	2
+3	O O T	4
+3	O O U	17
+3	O O O	16
+3	S V N	38
+3	S V R	128
+3	S V V	43
+3	S V J	26
+3	S V B	36
+3	S V P	59
+3	S V C	11
+3	S V D	83
+3	S V T	9
+3	S V U	9
+3	S V O	4

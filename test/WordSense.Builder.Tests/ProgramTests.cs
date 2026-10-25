@@ -242,6 +242,7 @@ public sealed class ProgramTests : IDisposable
         Assert.Empty(error);
         Assert.Contains("Counted 2 sentences (8 tokens)", output, StringComparison.Ordinal);
         Assert.True(File.Exists(Path.Join(corpus, "open", "counts", TaggerCounts.NgramsFile)));
+        Assert.True(File.Exists(Path.Join(corpus, "open", "counts", TaggerCounts.ClauseNgramsFile)));
         Assert.Equal(1, TaggerCounts.Read(Path.Join(corpus, "open", "counts")).Words["walk"][PosTag.Noun]);
     }
 
@@ -340,6 +341,8 @@ public sealed class ProgramTests : IDisposable
 
         // Assert: the tense weights are scored on the two development sets and on nothing else
         Assert.True(code == 0, error);
+        Assert.Contains("clause-smoothing:", output, StringComparison.Ordinal);
+        Assert.Contains("Treebank dev classifier", output, StringComparison.Ordinal);
         Assert.Contains("| 1.00 | open corpus dev |", output, StringComparison.Ordinal);
         Assert.Contains("| 1.00 | UD-EWT dev |", output, StringComparison.Ordinal);
         Assert.DoesNotContain("UD-EWT test", output, StringComparison.Ordinal);

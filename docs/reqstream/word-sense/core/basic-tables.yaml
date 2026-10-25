@@ -18,7 +18,7 @@ sections:
                   of the analysis, the column with the most items winning, so that a column with empty features, which
                   stands for any features, serves every analysis of that lemma and part of speech that no column of more
                   specific features claims, and shall reject a table with a wrong
-                  signature (the magic WSB4), no compression, missing data, extra data or unordered
+                  signature (the magic WSB5), no compression, missing data, extra data or unordered
                   entries as invalid
                   data, and a table
                   built for another analysis inventory (inventory hash), an unknown analysis or a duplicate analysis.
@@ -125,6 +125,129 @@ sections:
                   A table that was trained before the tense model must never be read as a current one.
                 tests:
                   - BasicTables_Load_PreviousFormatWsb3_ThrowsUnknownFormat
+
+              - id: WordSense-Core-BasicTables-Clause
+                title: >-
+                  BasicTables shall carry the clause state of the tagger in its table: the smoothing of the clause state
+                  in the header and the bigram and trigram counts of the positions whose clause already has a verb, and
+                  the transition probabilities of both clause states derived from them, as the child requirements
+                  state.
+                tags: [unit]
+                justification: |
+                  A verb follows a determiner and a noun four times as often in a clause without a verb as in one with
+                  a verb, so the tagger needs the transitions of each state. A parent requirement carries the statement
+                  once; the child requirements state each behavior that can be tested on its own.
+                children:
+                  - WordSense-Core-BasicTables-Clause-Counts
+                  - WordSense-Core-BasicTables-Clause-Smoothing
+                  - WordSense-Core-BasicTables-Clause-Transition
+                  - WordSense-Core-BasicTables-Clause-TransitionCounts
+                  - WordSense-Core-BasicTables-Clause-NoCounts
+                  - WordSense-Core-BasicTables-Clause-SmoothingWeight
+                  - WordSense-Core-BasicTables-Clause-BigramAboveTotal
+                  - WordSense-Core-BasicTables-Clause-TrigramAboveTotal
+                  - WordSense-Core-BasicTables-Clause-Wsb4
+
+              - id: WordSense-Core-BasicTables-Clause-Counts
+                title: >-
+                  BasicTables shall read the bigram and trigram counts of the positions whose clause already has a verb
+                  from the table and expose them next to the total counts.
+                tags: [unit]
+                justification: |
+                  The counts of the positions without a verb are the difference to the totals, and the transitions of
+                  both clause states are derived from exactly these numbers.
+                tests:
+                  - BasicTables_Load_ClauseCounts_AreExposed
+
+              - id: WordSense-Core-BasicTables-Clause-Smoothing
+                title: >-
+                  BasicTables shall read the smoothing of the clause state from the header of the table and expose it.
+                tags: [unit]
+                justification: |
+                  The smoothing is a hyper-parameter of the trained table, so the runtime must use the value that the
+                  table carries.
+                tests:
+                  - BasicTables_Load_ClauseSmoothing_IsRead
+
+              - id: WordSense-Core-BasicTables-Clause-Transition
+                title: >-
+                  BasicTables shall derive for each clause state transition probabilities that are a probability
+                  distribution over the next tag for every context that has been observed.
+                tags: [unit]
+                justification: |
+                  The tagger multiplies and adds these probabilities along every path of a sentence, so each row must be
+                  a distribution.
+                tests:
+                  - BasicTables_Load_ClauseTransitions_AreDistributions
+
+              - id: WordSense-Core-BasicTables-Clause-TransitionCounts
+                title: >-
+                  BasicTables shall derive the transition probabilities of a clause state from the counts of that state,
+                  so that a tag that follows a context more often in one state than in the other is more probable in
+                  the first state.
+                tags: [unit]
+                justification: |
+                  A verb follows a determiner and a noun more often in a clause without a verb than in a clause that has
+                  one; the state must carry that difference.
+                tests:
+                  - BasicTables_Load_ClauseTransitions_FollowTheClauseCounts
+
+              - id: WordSense-Core-BasicTables-Clause-NoCounts
+                title: >-
+                  BasicTables shall give both clause states the unconditioned transition probabilities when the table
+                  has no clause counts.
+                tags: [unit]
+                justification: |
+                  A table without clause counts must behave like a tagger without the clause state.
+                tests:
+                  - BasicTables_Load_ClauseTransitions_WithoutClauseCounts_AreTheUnconditioned
+
+              - id: WordSense-Core-BasicTables-Clause-SmoothingWeight
+                title: >-
+                  BasicTables shall mix the transition probabilities of a clause state with the unconditioned
+                  transition probabilities by the weight m / (m + smoothing), where m is the number of trigram counts
+                  of the context in that state, so that a larger smoothing moves them toward the unconditioned
+                  probabilities.
+                tags: [unit]
+                justification: |
+                  A context that was seen rarely in a state must not be estimated from a handful of counts; the weight
+                  is 0 where the state has no count, and a finite smoothing approaches but never reaches the
+                  unconditioned probabilities where it has.
+                tests:
+                  - BasicTables_Load_ClauseSmoothing_MovesTheTransitionsTowardTheUnconditioned
+                  - BasicTables_Load_ClauseSmoothing_WeighsTheContextByItsCountInTheState
+
+              - id: WordSense-Core-BasicTables-Clause-BigramAboveTotal
+                title: >-
+                  BasicTables shall reject a table with a clause bigram count that is larger than the total count of the
+                  same bigram as invalid data.
+                tags: [unit]
+                justification: |
+                  The counts of the positions without a verb are the difference to the totals, so a larger clause count
+                  is damage, not data.
+                tests:
+                  - BasicTables_Load_ClauseBigramAboveTotal_Throws
+
+              - id: WordSense-Core-BasicTables-Clause-TrigramAboveTotal
+                title: >-
+                  BasicTables shall reject a table with a clause trigram count that is larger than the total count of
+                  the same trigram as invalid data.
+                tags: [unit]
+                justification: |
+                  The counts of the positions without a verb are the difference to the totals, so a larger clause count
+                  is damage, not data.
+                tests:
+                  - BasicTables_Load_ClauseTrigramAboveTotal_Throws
+
+              - id: WordSense-Core-BasicTables-Clause-Wsb4
+                title: >-
+                  BasicTables shall reject a table with the retired signature WSB4, which has no clause counts and no
+                  clause smoothing, as an unknown format whatever else it holds.
+                tags: [unit]
+                justification: |
+                  A table that was trained before the clause state must never be read as a current one.
+                tests:
+                  - BasicTables_Load_PreviousFormatWsb4_ThrowsUnknownFormat
 
               - id: WordSense-Core-BasicTables-Immutable
                 title: >-

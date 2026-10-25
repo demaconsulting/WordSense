@@ -325,6 +325,32 @@ that reads `leaves change` with a verb), the policy raises it again. This is the
 every row that goes down, as for the usage prior: the row itself is not wrong, and the trade is deliberate and measured
 on independent text.
 
+<!-- REMEASURE -->
+
+### The clause state and the possessive expansion of the tagger (Basic retrained, encoders and image unchanged)
+
+The tagger of `BasicWordSenseModel` now knows whether the current clause already has a verb (the transitions are
+counted and read per clause state) and reads a possessive that is written as one token as its stem and the possessive
+marker; `basic.bin` was retrained (format `WSB5`). The encoder weights and `wordsense.img` did not change; the encoder
+models inherit the part of speech of Basic where they fall back, so their cells could have moved too, and none did
+(`evaluate-suite` finds no row below an expectation for any model). **Three expectations of Basic were raised** under
+rule 1, each a part-of-speech row that the clause state fixes:
+
+<!-- markdownlint-disable MD013 -->
+
+| Row | Model | Before | Now | Why |
+| --- | --- | --- | --- | --- |
+| `M-change-4` (`The leaves {change} color in the fall`) | Basic | miss | fine | The clause has no verb yet, so after the noun phrase `The leaves` a verb is four times as likely as in a clause that has one; `change` was a noun (0.81) and is now the verb (0.51). The probabilities are close, so the row is near a tie. |
+| `H-close-4` (`The two hikers walked {close} together along the narrow ledge`) | Basic | miss | answer | The clause already has the verb `walked`, so `close` is no longer read as a second verb: the adverb 0.46 now wins against the verb 0.42 (before 0.42 against 0.45). A near tie as well. |
+| `C-resume-2` (`He sent out ten {resumes} last week and got two calls`) | Basic | miss | answer | The clause already has the verb `sent`, so the second verb reading of `resumes` is suppressed: the noun is 0.75 (before the verb 0.54). |
+
+<!-- markdownlint-enable MD013 -->
+
+The cells that the development machine grades higher than the file for BertBaseCased (`H-close-4`, `H-defense-1` and
+`C-content-6`) are the platform-sensitive rows of rule 4 and stay as recorded. Measured answered / fine on all 364 rows
+before and after: Basic 95.88% / 45.88% to 96.70% / 46.15%, MiniLM 95.33% / 89.29% and BertBaseCased 98.63% / 94.23%
+unchanged.
+
 ### One-sense labels for the set rows (no model change)
 
 The 174 rows that accepted a set of senses (see the conversion above) were labeled again, blind, by two independent

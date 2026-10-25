@@ -79,10 +79,17 @@ as a candidate to check and the part of speech as the dependable part, and tune 
 
 Basic is a second-order hidden Markov model over thirteen tags, fused with naive Bayes context cues for the lemmas that
 have at least two senses. The tag statistics are trained from the open part-of-speech corpus of this project (CC0), not
-from a treebank. On running text it reaches 93.87% of all tokens (91.53% of the ambiguous tokens) on the open corpus
-test split and 91.65% (88.62%) on the mapped treebank test file; on the technical challenge set it reaches 98.65%. The
+from a treebank. On running text it reaches 93.88% of all tokens (91.54% of the ambiguous tokens) on the open corpus
+test split and 91.72% (88.74%) on the mapped treebank test file; on the technical challenge set it reaches 98.65%. The
 open test split shares annotators and genres with the training split, so its figure is optimistic; the treebank figure
-is the cross-domain one. Basic limits to keep in mind:
+is the cross-domain one. The tagger knows whether the current clause already has a verb (a clause starts at the start
+of the sentence and after a conjunction or a punctuation token; a gerund or participle that opens the sentence does not
+give its clause a verb), which moved the figures by +0.01 (open corpus test) and +0.07 (treebank test) points and the
+open corpus development split by +0.19 points (the split that the clause rule and its smoothing were chosen on; the
+treebank development file moved by -0.08); it reads a possessive written as one
+token (`technician's`) as the stem and the possessive marker, which is how its statistics were counted, and that did
+not move any figure by itself. See "Limitations" of the introduction for the weak spot that remains, technical noun
+compounds and imperative fragments. Basic limits to keep in mind:
 
 - It chooses among the senses of the dictionary; a word that is not in the dictionary has no answer, and a tokenizer
   that splits a contraction such as "don't" differently from the dictionary loses the word.
@@ -126,13 +133,18 @@ more frequent gold class. Measured before and after the tense model (all three m
 | Model | Open corpus test (110 tokens, majority 57.3%) | Treebank test (95, 63.2%) | Treebank pooled (994, 61.9%) | `read` on the treebank, pooled (72, 59.7%) | `read` on the independent read set, test half (198, always present 67.2%) |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Basic before | 79.1% | 76.8% | 77.7% | 63.9% | 64.1% |
-| Basic now | 80.9% | 85.3% | 86.0% | 77.8% | 83.8% |
+| Basic now | 80.9% | 85.3% | 85.6% | 77.8% | 83.8% |
 | MiniLM before | 81.8% | 76.8% | 76.1% | 40.3% | 32.8% |
+<!-- REMEASURE -->
 | MiniLM now | 82.7% | 86.3% | 85.7% | 77.8% | 83.8% |
 | BertBaseCased before | 81.8% | 75.8% | 76.3% | 40.3% | 32.8% |
-| BertBaseCased now | 82.7% | 86.3% | 85.9% | 77.8% | 83.3% |
+| BertBaseCased now | 82.7% | 86.3% | 85.6% | 77.8% | 83.3% |
 
 <!-- markdownlint-enable MD013 -->
+
+The pooled figures were measured again with the clause state of the tagger (Basic 86.0% to 85.6%, MiniLM 85.5% to 85.2%,
+BertBaseCased 85.9% to 85.6%: four, three and three tokens of 994, verbs whose part of speech changed);
+the two test sets are exactly as before, and the independent read set was not measured again.
 
 How to read it. Before the change MiniLM and BertBaseCased gave the past and the non-past `read` exactly the same
 probability and always selected the past one (below the baseline of always answering the present), and for every other
@@ -290,6 +302,17 @@ all-words set, 17.1% are of a trained lemma. The trained rows below are the figu
 
 What the figures say:
 
+- <!-- REMEASURE -->**Sense precision moved by a few answers when the clause state was added.** The sense answers are a small set (Basic
+  answers 1,034 of the 31,556 trained words at the sense level, MiniLM 2,632), so one answer moves a cell by 0.04
+  points (MiniLM on SemCor) to about 0.5 points (MiniLM on the real text, 191 answers). Against the version before the
+  clause state: Basic SemCor precision
+  fell from 68.91% to 68.47% because eight more words are answered at the sense level, one of them right (707 of 1,026
+  before, 708 of 1,034 now): the part of speech of those words changed to one that has a single sense, and the SemCor
+  sense is another one. MiniLM SemCor fell from 88.71% to 88.64% (two more answers, none more right), and MiniLM on the
+  real text of the held-out evaluation from 96.84% to 96.34%, a drop of 0.50 points (184 of 190 right before, 184 of 191
+  now). The part of
+  speech of the same verbs improved on the sets, and the share of sense answers did not fall in any cell; only the
+  precision of the few answers did.
 - For a lemma that a model was not trained for, all three models rank the senses by the usage prior (the WordNet 3.0
   tag counts, see the next chapter section): a word with one analysis and one sense is answered at the sense level, every
   other word at the part-of-speech level with its senses ranked, and the fine top-1 counts the first ranked sense of

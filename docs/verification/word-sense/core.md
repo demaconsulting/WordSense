@@ -122,6 +122,32 @@ open corpus the statistics come from, like the lexicon, treats the copula as a m
 testament`, `the can is empty` and `the will` stay nouns: the Auxiliary analysis is not chosen directly after an article
 or possessive.
 
+#### The Clause of a Word Weighs Its Part of Speech
+
+Through the public `BasicWordSenseModel`, the tagger knows whether the clause of a word already has a verb. A word that
+could be a noun or a verb and follows a determiner and a noun is a noun in a clause that already has a verb
+(`BasicWordSenseModel_ClassifyAsync_NounAfterNounInClauseWithVerb_IsNoun`: `Please open the door handle`, `Replace the
+oil filter`, `Inspect the brake pad`), and is a verb again after a comma or a conjunction that starts a new clause
+(`BasicWordSenseModel_ClassifyAsync_VerbAfterClauseBreak_IsVerb`: `He nodded , the pump runs`, `He nodded and the pump
+runs`, where the same sentence without the break reads `runs` as a noun). The clause counts, their smoothing and the
+transitions are verified in the `BasicTables` and `PosTagger` unit documents.
+
+#### A Gerund at the Start Does Not Take the Verb of the Clause
+
+Through the public `BasicWordSenseModel`
+(`BasicWordSenseModel_ClassifyAsync_GerundAtTheStart_IsStillAVerb`), a first word that the dictionary lists as a verb
+only as a gerund (`Resolving this issue requires care`, `Checking this valve takes time`) is answered `Verb`, because the
+clause has no verb yet and the noun-phrase reading of the opening words is not favored. The decision reads the
+dictionary, not the ending, in the `BasicClassifier` unit document and is applied in the `PosTagger` unit document.
+
+#### A Possessive Written as One Token Is Read as Stem and Marker
+
+Through the public `BasicWordSenseModel`
+(`BasicWordSenseModel_ClassifyAsync_PossessiveToken_ReadsTheNextWordAsNoun`), the word after a possessive that is one
+token (`the sergeant's rank`, `the pilot's license`, `the captain's order`) is a noun, as after a noun and a separate
+marker, while the possessive itself is answered as one token with its own noun analysis. The expansion and the rows of
+the caller are verified in the `PosTagger` and `BasicClassifier` unit documents.
+
 #### Cues Separate Analyses of One Part of Speech
 
 Analyses that share a part of speech, such as the past and the present of `read` or the lemmas of `left`, are told

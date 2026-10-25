@@ -28,7 +28,7 @@ internal static class BasicModelBuilder
     public static string WriteCounts(string corpus, string outputDirectory)
     {
         var sentences = OpenCorpus.ReadSplit(corpus, OpenCorpus.Representative, "train");
-        var counts = TaggerCounts.Count(sentences.Select(OpenCorpus.ToTagged));
+        var counts = TaggerCounts.Count(sentences.Select(OpenCorpus.ToTagged), key => WordLexicon.TryLookup(key, out var found) ? found : []);
         counts.Write(outputDirectory);
         var tokens = counts.Unigrams.Take(PosTag.Count).Sum();
         return $"Counted {sentences.Count.ToString(CultureInfo.InvariantCulture)} sentences ({tokens.ToString(CultureInfo.InvariantCulture)} tokens) into {counts.Words.Count.ToString(CultureInfo.InvariantCulture)} words in {outputDirectory}.";
@@ -47,7 +47,7 @@ internal static class BasicModelBuilder
     public static async Task TrainAsync(string repository, string corpus, string outputPath, TextWriter output, CancellationToken cancellationToken)
     {
         var countsDirectory = OpenCorpus.CountsDirectory(corpus);
-        if (!File.Exists(Path.Join(countsDirectory, TaggerCounts.NgramsFile)) || !File.Exists(Path.Join(countsDirectory, TaggerCounts.WordsFile)))
+        if (!File.Exists(Path.Join(countsDirectory, TaggerCounts.NgramsFile)) || !File.Exists(Path.Join(countsDirectory, TaggerCounts.WordsFile)) || !File.Exists(Path.Join(countsDirectory, TaggerCounts.ClauseNgramsFile)))
         {
             throw new InvalidDataException($"The tag counts are missing in {countsDirectory}; run the 'open-counts' command first.");
         }

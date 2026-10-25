@@ -18,7 +18,12 @@ constructor is internal so the tests can use a toy table and lexicon. Per call i
 lower-case token (typographic apostrophe U+2019 mapped to `'`) and, per segment, the tagger tokens. A tagger token is
 fixed to the punctuation tag for a token without a letter (the other tag when the token contains a digit); otherwise
 it carries the lower-case key, the bit mask of the parts of speech of the lexicon analyses of the word and whether the
-word starts with a capital letter. The helpers `Normalize` (the lexicon key, empty for a token without a letter),
+word starts with a capital letter. A word whose key ends in `'s` or `'` and whose analyses all carry `Poss=Yes`
+(`technician's`, `sergeants'`) is a possessive token: it carries its stem as the key (the mask is that of its possessive
+analyses) and the possessive flag, and `PosTagger` reads it as the stem and the possessive marker, the pattern of the
+training counts, while the answer for the word is still its own single analysis at its own position. A contraction
+(`it's`) or a word with an analysis that is not a possessive is not expanded. The helpers `Normalize` (the lexicon key,
+empty for a token without a letter),
 `Lower`, `MakeToken` and `SegmentOf` are internal; the builder uses them so training and inference segment text
 identically. A small direct-mapped cache (1,024 entries of immutable values, a racing writer can only replace one
 valid entry with another) keeps, per word with a single analysis, the answer and its analyses array.

@@ -139,7 +139,10 @@ implementation of the feature computation.
   counts and the evaluation present the classifier the tokens an application passes it.
 - `TaggerCounts`, `TaggedSentence`, `GoldToken`: the tag statistics: the mapping of the universal tags onto the 13 tags
   of the
-  tagger, the n-gram and per-word counts, and the deterministic count files `tag-ngrams.tsv` and `word-tags.tsv` of
+  tagger, the n-gram and per-word counts, the clause counts (the bigram and trigram counts of the positions whose clause
+  already has a verb, by the rule `PosTag.NextClause` that the tagger uses at run time, including the exception for a
+  sentence-initial non-finite verb, which needs the lexicon), and the deterministic count
+  files `tag-ngrams.tsv`, `tag-clause-ngrams.tsv` and `word-tags.tsv` of
   `corpus/open/counts`. They are usage statistics, so they are counted from the training split of the representative
   part only. A tagged sentence may carry, per token, the lemma, the treebank tag and the features of its source
   (`GoldToken`), which the tense evaluation and the tense training read.
@@ -151,8 +154,9 @@ implementation of the feature computation.
   dictionary-ambiguous words), the suffixes and the closed-class masks from the counts, train the cue tables from
   the anchors and the form-chooser anchors, with the analysis label of each sentence rolled up from its fine sense or
   chooser label, and train the shared tense table from every verb of the training split of the open corpus.
-- `BasicTablesWriter`: serializes the model data into the `WSB4` blob, deterministically.
-- `BasicTuner`: scores the hyper-parameter grid and the weight of the tense model.
+- `BasicTablesWriter`: serializes the model data into the `WSB5` blob, deterministically.
+- `BasicTuner`: scores the hyper-parameter grid (including the smoothing of the clause state, with the classifier
+  accuracy on the open corpus and treebank development sets) and the weight of the tense model.
 - `BasicModelBuilder`: the commands `open-counts` and `train-basic`.
 - `AppendixGenerator`: generates the senses appendix of the user guide.
 - `KeyExport`: writes every word key of the lexicon as a sorted text file.
@@ -211,7 +215,8 @@ instead of `--model`.
   training part and an evaluation part, by two evaluation parts, or by the corpus and an example of Open English
   WordNet; it exits with 1 when one is.
 - `open-counts [--corpus DIR] [--output DIR]`: counts the tag statistics of the training split of the representative
-  open corpus (every token, whatever its consensus status) and writes the count files of `corpus/open/counts`.
+  open corpus (every token, whatever its consensus status) and writes the count files of `corpus/open/counts`
+  (`word-tags.tsv`, `tag-ngrams.tsv` and the clause counts `tag-clause-ngrams.tsv`).
 - `evaluate-tagger [--input FILE] [--corpus DIR] [--repository DIR] [--split test] [--gold FILE] [--output FILE]`:
   measures the part-of-speech accuracy of the basic classifier with the table `FILE` (default the shipped `basic.bin`)
   on a split of the representative open corpus (the headline), on the test split of the targeted challenge set (its own
@@ -221,8 +226,8 @@ instead of `--model`.
 - `train-basic [--corpus DIR] [--repository DIR] [--output FILE]`: retrains the whole Basic model with the default
   hyper-parameters from the committed counts of `corpus/open/counts`, the anchors and the chooser anchors, and writes
   `Resources/basic.bin` of the core package; it names `open-counts` when the counts are missing.
-- `tune-basic [--corpus DIR] [--repository DIR] [--gold FILE]`: scores the hyper-parameter grid and the weight of the
-  tense model and prints the tables; it writes nothing.
+- `tune-basic [--corpus DIR] [--repository DIR] [--gold FILE]`: scores the hyper-parameter grid (the smoothing of the
+  clause state among them) and the weight of the tense model and prints the tables; it writes nothing.
 - `label-senses [--data DIR]`: gives every sense without a label a generated label (the SenseLabelGenerator unit of the
   WordData subsystem).
 - `import-wn30-counts --input FILE [--data DIR] [--sha256 HEX|none]`: imports the pinned WordNet 3.0 sense frequency
@@ -660,7 +665,8 @@ that fall short, most frequent first.
 #### Basic training (`BasicModelBuilder.TrainAsync`)
 
 1. Read the tag counts of `corpus/open/counts` (made by `open-counts` from the training split of the representative
-   open corpus; the command stops with the name of `open-counts` when they are missing), the fine-sense anchors of
+   open corpus, including the clause counts; the command stops with the name of `open-counts` when they are missing),
+   the fine-sense anchors of
    `corpus/anchors` and the chooser anchors of `corpus/choosers/anchors`. The holdout, the test splits, the targeted
    part and the treebank are not read.
 2. `BasicTrainer.Train` selects from the counts the closed-class words (enough occurrences and a dominant closed-class
@@ -697,7 +703,19 @@ Trains and scores each variant of the hyper-parameter grid (one parameter at a t
 variants) on the development split of the representative open corpus and on a deterministic sample of the anchors split
 into a train and a dev part (the chooser anchors are left out of the tuned tables, because they are the same sentences
 labeled a second way). It reports the accuracy on the ambiguous tokens of the development split, the accuracy of the
-analysis on the anchor dev part and the table size. It never reads the test splits, the challenge set, the holdout or
+analysis on the anchor dev part, the accuracy of the whole classifier (all tokens and ambiguous tokens) on the open
+development split and on the treebank development file, and the table size. The smoothing of the clause state of the
+tagger (`ClauseSmoothing`: 0, 1, 4, 16 and 64) is one of the parameters of the grid; the development sets differ by
+at most 0.06 points across it, so the default 4 stays. The clause rule itself (the tags that give a clause a verb and
+the tags that start a clause) is code, not a parameter: it was chosen on the same development sets from the verb tag
+alone or with the auxiliary and from the conjunction and punctuation tags, a comma, a semicolon and a colon alone or any
+punctuation as the break (any punctuation and the conjunction were the best on the open and the treebank
+development sets). A sentence-initial word that the dictionary lists only as a non-finite verb (a gerund, or a participle
+without a past tense) does not give its clause a verb: with the plain rule, the nouns after a determiner that opens a
+heading such as `Resolving this issue` flipped on the development sets, and 2 of 4 such openings read as a noun
+(one token in 25 true imperatives before a determiner, `Have a`, is lost with the rule as well; counting the
+auxiliary as a verb, or any `-ing` word at the start, did not do better overall or protected less). It never reads the
+test splits, the challenge set, the holdout or
 the real-text sentences and writes no file, so the reported evaluation stays honest. A second table scores the weight of
 the tense model (`TenseWeightGrid`; 0 turns it off) on the development split of the open corpus and the treebank
 development file (`--gold`, default `ud_dev.tsv`), with the model of the shipped configuration (all anchors and chooser

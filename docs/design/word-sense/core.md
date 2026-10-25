@@ -133,7 +133,11 @@ apostrophe straightened; tokens without a letter become empty), splits the list 
 
 1. every token becomes a tagger token: a token without a letter is fixed to the punctuation tag (the other tag when it
    contains a digit); a word carries the set of parts of speech of its lexicon analyses and whether it is capitalized;
-2. `PosTagger` computes the tag posterior of every token of the segment;
+   a possessive written as one token (`technician's`, every analysis `Poss=Yes`) carries its stem and a flag, and the
+   tagger reads it as the stem and the possessive marker, as the counts were made;
+2. `PosTagger` computes the tag posterior of every token of the segment, with the state of the clause (whether it
+   already has a verb) in its transitions; a sentence-initial gerund or participle that the dictionary lists only as a
+   non-finite verb does not give its clause a verb;
 3. for each word, in order, the lexicon analyses of the lower-case form decide the answer and its level; the written case
    then weighs down the analyses
    whose lemma has the other case (see the unit design):
@@ -176,9 +180,11 @@ to the analysis that comes first in the lexicon order of the form.
 
 `basic.bin` is a Brotli-compressed container written only by the builder (`train-basic`) and read only by
 `BasicTables`. After decompression it holds, in this order: the format magic; the 32-byte hash of the analysis
-inventory of the word image it was trained for; seven little-endian doubles (gamma, beta, lambda 1 to 3, the tagger
-weight of the fusion and the inverse temperature of the cues); the tag count; the unigram, bigram and trigram tag
-counts (the sentence boundary is the last index); the tabled words with their closed-class mask and per-tag counts; the
+inventory of the word image it was trained for; nine little-endian doubles (gamma, beta, lambda 1 to 3, the tagger
+weight of the fusion, the inverse temperature of the cues, the weight of the tense model and the smoothing of the clause
+state); the tag count; the unigram, bigram and trigram tag
+counts (the sentence boundary is the last index) and the bigram and trigram counts of the positions whose clause already
+has a verb; the tabled words with their closed-class mask and per-tag counts; the
 suffix table; and the cue tables, keyed by training lemma (16-bit feature hashes and one signed byte weight per feature
 and analysis, in steps of 1/8 nat). The cue analyses are named by lemma, part of speech and features and resolved
 against the analysis inventory of the word image at load: a hash mismatch or an unknown or duplicate analysis is a load
@@ -186,8 +192,9 @@ failure, so the table is rebuilt whenever the inventory changes. Words, suffixes
 equal training data gives byte-identical tables. The tag counts come from the representative part of the open corpus
 (`corpus/open`), the cue tables from the fine-sense anchors and the chooser anchors of `corpus/`. The reader validates
 the layout and throws `InvalidDataException` for anything malformed (the embedded default table maps that to a
-`ModelIntegrityException`). The format (magic `WSB4`: the header with the weight of the tense model, and after the cue
-tables the tense section with the shared past/non-past table) is described in detail
+`ModelIntegrityException`). The format (magic `WSB5`: the header with the weight of the tense model and the smoothing of
+the clause state, after the tag counts the clause counts, and after the cue
+tables the tense section with the shared past/non-past table; `WSB3` and `WSB4` are refused) is described in detail
 in the `BasicTables` unit design.
 
 #### Determinism and Concurrency

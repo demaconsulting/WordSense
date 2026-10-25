@@ -33,6 +33,19 @@ All scenarios below pass on every platform and target framework of the CI matrix
   books on the shelf`, `They will cut the budget next year` and `We usually set the table before dinner`, and a past one
   in `I have read that already`, `She had put the keys in her bag before she left`, `He cut the cake into six equal
   pieces` and `The workers had already set up the stage`, with the probabilities of the word summing to one.
+- **A possessive token is read as the stem and the marker**
+  (`BasicWordSenseModel_ClassifyAsync_PossessiveToken_ReadsTheNextWordAsNoun`): with the embedded lexicon and table, the
+  word after a joined possessive (`the sergeant's rank`) is a noun, as after `the rank`, while the possessive itself is
+  answered as one token with its own noun analysis.
+- **A noun after a modifier noun in a clause that has a verb**
+  (`BasicWordSenseModel_ClassifyAsync_NounAfterNounInClauseWithVerb_IsNoun`): with the embedded table, the word after a
+  determiner and a noun in a clause that already has a verb (`Please open the door handle`) is a noun.
+- **A verb after a clause break** (`BasicWordSenseModel_ClassifyAsync_VerbAfterClauseBreak_IsVerb`): with the embedded
+  table, the word after a determiner and a noun is a verb after a comma or a conjunction that starts a new clause
+  (`He nodded , the pump runs`, `He nodded and the pump runs`).
+- **A gerund at the start is still a verb** (`BasicWordSenseModel_ClassifyAsync_GerundAtTheStart_IsStillAVerb`): with the
+  embedded lexicon and table, a first word that is listed only as a gerund and is followed by a determiner
+  (`Resolving this issue requires care`, `Checking this valve takes time`) is answered `Verb`.
 - **Cancelled token is honored**: `ClassifyAsync` with an already cancelled token throws `OperationCanceledException`.
   A null word list is rejected.
 - **Disposal**: `Dispose` is idempotent, thread-safe and releases nothing, so a classification that is already

@@ -42,7 +42,7 @@ The parts of speech were annotated independently by two annotators with the 10-c
 
 ## 1c. The tag counts
 
-`counts/word-tags.tsv` and `counts/tag-ngrams.tsv` are the usage statistics that train the part-of-speech tagger of the Basic model: the tag counts of every token of `representative/data/train.tsv` (all consensus statuses; a contraction that the corpus splits, `do` and `n't`, is joined into one token as an application passes it, and the possessive `'s` stays apart), in the 13 tagger tags, written by `dotnet run --project tools/WordSense.Builder -- open-counts` (11,990 sentences, 207,893 tokens, 17,719 words). They are derived from the representative part only, never from `targeted/` and never from the balanced sentence corpus of the repository, and are CC0 1.0 like the annotations.
+`counts/word-tags.tsv`, `counts/tag-ngrams.tsv` and `counts/tag-clause-ngrams.tsv` are the usage statistics that train the part-of-speech tagger of the Basic model: the tag counts of every token of `representative/data/train.tsv` (all consensus statuses; a contraction that the corpus splits, `do` and `n't`, is joined into one token as an application passes it, and the possessive `'s` stays apart), in the 13 tagger tags, written by `dotnet run --project tools/WordSense.Builder -- open-counts` (11,990 sentences, 207,893 tokens, 17,719 words). `tag-clause-ngrams.tsv` holds the bigram and trigram counts of the positions whose clause already has a verb (a clause starts at the start of the sentence and after a conjunction or punctuation tag, and has a verb from the first verb tag on); the counts of the other positions are the difference to `tag-ngrams.tsv`. They are derived from the representative part only, never from `targeted/` and never from the balanced sentence corpus of the repository, and are CC0 1.0 like the annotations.
 
 ## 1. Contents
 
@@ -58,7 +58,7 @@ The parts of speech were annotated independently by two annotators with the 10-c
 | `sources/urls.tsv`, `sources/sources_excluded.tsv`, `sources/fetch_log.tsv`, `sources/discovered/` | The pinned input list (2,181 candidate documents), the candidates rejected and why, the retrieval date and SHA-256 of every raw download, and the discovery listings |
 | `representative/`, `representative/data/{train,dev,test}.tsv` | The random-sample part of the annotated corpus (14,980 sentences; format in section 9; rules in section 1a and `representative/README.md`) |
 | `targeted/`, `targeted/data/{train,test}.tsv` | The targeted part (the 32 simplified-technical-English sentences in the test split so far; rules and format in section 1a and `targeted/README.md`) |
-| `counts/` | `word-tags.tsv` and `tag-ngrams.tsv`: the tag counts of the representative training split that train the Basic tagger (section 1c) |
+| `counts/` | `word-tags.tsv`, `tag-ngrams.tsv` and `tag-clause-ngrams.tsv`: the tag counts of the representative training split that train the Basic tagger (section 1c) |
 | `build/` | `sentences.tsv` (the 15,000 selected sentences), `sentences_final.tsv` (14,980 after the post-selection exclusion), `post_exclusions.tsv`, `dedupe_report.json`, `documents.tsv`, the pilot inputs |
 | `eval/` | `ud_dev_sample_ids.txt` (ids only), `ud_dev_scores.json` (accuracy measurement), `corpus_scores.json` (agreement on the corpus) |
 | `prompts/` | `fewshot.txt` (examples from our own pilot sentences) and `fewshot_ids.txt` |

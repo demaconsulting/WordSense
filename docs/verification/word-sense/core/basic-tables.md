@@ -33,6 +33,35 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Retired format WSB3** (`BasicTables_Load_PreviousFormatWsb3_ThrowsUnknownFormat`): a current table whose magic is set
   back to the previous format `WSB3`, which has no tense weight and no tense table, throws `InvalidDataException`
   whose message says unknown format.
+- **Retired format WSB4** (`BasicTables_Load_PreviousFormatWsb4_ThrowsUnknownFormat`): a current table whose magic is set
+  back to the previous format `WSB4`, which has no clause counts and no clause smoothing, throws `InvalidDataException`
+  whose message says unknown format.
+- **Clause counts** (`BasicTables_Load_ClauseCounts_AreExposed`): on toy sentences in which the determiner and the
+  nouns follow a verb in two of them, the clause bigram and trigram counts are exposed with the layout of the total
+  counts and hold those counts, and the counts of the positions before the verb are 0.
+- **Clause smoothing** (`BasicTables_Load_ClauseSmoothing_IsRead`): the smoothing of the clause state written to the
+  header (7.5 in the test, 4 in the default toy table) is read back.
+- **Clause transitions are distributions** (`BasicTables_Load_ClauseTransitions_AreDistributions`): in both clause
+  states the transition probabilities after a determiner and a noun sum to 1.
+- **Clause transitions follow the counts** (`BasicTables_Load_ClauseTransitions_FollowTheClauseCounts`): on counts in
+  which a verb follows a determiner and a noun only in a clause without a verb, and a noun only in a clause that has
+  one, the probability of a verb there is higher in the state without a verb and the probability of a noun higher in the
+  state with one.
+- **Clause transitions without clause counts** (`BasicTables_Load_ClauseTransitions_WithoutClauseCounts_AreTheUnconditioned`):
+  a table whose sentences have no verb, so that it has no clause counts, has the unconditioned transitions in both
+  states at every index.
+- **Smoothing moves toward the unconditioned transitions**
+  (`BasicTables_Load_ClauseSmoothing_MovesTheTransitionsTowardTheUnconditioned`): with the same counts and the
+  smoothing 0, 4, 64 and 1,000,000, the largest difference to the unconditioned transitions of the context shrinks at
+  every step in both states, is below 0.001 for the largest smoothing, and is not exactly 0 for any of them: a finite
+  smoothing approaches the unconditioned transitions and does not reach them where the state has counts.
+- **Smoothing weight** (`BasicTables_Load_ClauseSmoothing_WeighsTheContextByItsCountInTheState`): the transition
+  probability with the smoothing 4 equals the mean of the value without smoothing and the unconditioned value, weighted
+  by `m / (m + 4)` with `m` the trigram count of the context in the state (2 with a verb and 3 without in the test).
+- **Clause bigram above its total** (`BasicTables_Load_ClauseBigramAboveTotal_Throws`): a clause bigram count that is
+  larger than the total count of the bigram throws `InvalidDataException`.
+- **Clause trigram above its total** (`BasicTables_Load_ClauseTrigramAboveTotal_Throws`): a clause trigram count that
+  is larger than the total count of the trigram throws `InvalidDataException`.
 - **Tense section read back** (`BasicTables_Load_TenseTable_ReadsWeightPriorHashesAndWeights`): the weight of the tense
   model from the header (0.75) and the prior, the ascending hashes and the weights of the tense table read back.
 - **No tense section** (`BasicTables_Load_WithoutTenseSection_HasNoTenseTableAndTheDefaultWeight`): a table without the

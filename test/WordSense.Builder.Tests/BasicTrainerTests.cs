@@ -28,7 +28,7 @@ public class BasicTrainerTests
             sentences.Add(new TaggedSentence(["they", "record"], [PosTag.Pronoun, PosTag.Verb]));
         }
 
-        return TaggerCounts.Count(sentences);
+        return TaggerCounts.Count(sentences, _ => default);
     }
 
     private static CorpusRow Row(string lemma, PartOfSpeech pos, params string[] words) =>
@@ -521,6 +521,101 @@ public class BasicTrainerTests
 
         // Assert
         Assert.Equal(first, second);
-        Assert.Equal("WSB4"u8.ToArray(), head);
+        Assert.Equal("WSB5"u8.ToArray(), head);
+    }
+
+    /// <summary>
+    ///     The clause counts travel from the counts through the data and the writer into the table that the runtime reads.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BasicTablesWriter_Write_CarriesTheClauseCounts()
+    {
+        // Arrange: the toy counts, in which the second determiner of "the cat zorped the record" follows a verb
+        var counts = Counts();
+
+        // Act
+        var data = BasicTrainer.Train(counts, w => Lexicon.TryGetValue(w, out var found) ? found : default, Anchors(), [], BasicHyperparameters.Default);
+        var tables = Read(Write(data));
+
+        // Assert: the table has the clause counts of the toy counts, and a determiner after a verb is counted in the clause
+        // state with a verb and not at the start of a sentence
+        Assert.Equal(counts.ClauseBigrams, tables.ClauseBigrams.ToArray());
+        Assert.Equal(counts.ClauseTrigrams, tables.ClauseTrigrams.ToArray());
+        Assert.Equal(counts.ClauseBigrams, data.ClauseBigrams);
+        Assert.True(tables.ClauseBigrams[(PosTag.Verb * PosTag.Extended) + PosTag.Determiner] > 0);
+        Assert.Equal(0, tables.ClauseBigrams[(PosTag.Boundary * PosTag.Extended) + PosTag.Determiner]);
+    }
+
+    /// <summary>
+    ///     The smoothing of the clause state, a hyper-parameter, is written to the header of the table that the runtime
+    ///     reads.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BasicTablesWriter_Write_CarriesTheClauseSmoothing()
+    {
+        // Arrange: hyper-parameters with a smoothing that is not the default
+        var hp = BasicHyperparameters.Default with { ClauseSmoothing = 7.5 };
+
+        // Act
+        var data = BasicTrainer.Train(Counts(), w => Lexicon.TryGetValue(w, out var found) ? found : default, Anchors(), [], hp);
+        var tables = Read(Write(data));
+
+        // Assert
+        Assert.Equal(7.5, tables.ClauseSmoothing);
+    }
+
+    /// <summary>
+    ///     The table starts with the magic <c>WSB5</c>, the format revision that has the clause counts and the clause
+    ///     smoothing.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BasicTablesWriter_Write_StartsWithTheMagicWsb5()
+    {
+        // Arrange: trained data
+        var data = Train();
+
+        // Act: decompress the first four bytes of the table
+        using var input = new MemoryStream(Write(data));
+        using var brotli = new System.IO.Compression.BrotliStream(input, System.IO.Compression.CompressionMode.Decompress);
+        var head = new byte[4];
+        brotli.ReadExactly(head);
+
+        // Assert
+        Assert.Equal("WSB5"u8.ToArray(), head);
+    }
+
+    /// <summary>
+    ///     The same data with clause counts gives the same bytes each time it is written.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BasicTablesWriter_Write_WithClauseCounts_IsDeterministic()
+    {
+        // Arrange: trained data whose counts have clause counts
+        var data = Train();
+        Assert.Contains(data.ClauseBigrams, count => count > 0);
+
+        // Act
+        var first = Write(data);
+        var second = Write(data);
+
+        // Assert
+        Assert.Equal(first, second);
+    }
+
+    /// <summary>
+    ///     The grid of the tuner includes the smoothing of the clause state, and the default is one of its values.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BasicHyperparameters_ClauseSmoothing_IsTuned()
+    {
+        // Arrange: the grid of the smoothing of the clause state
+        var grid = BasicHyperparameters.Grid.Single(g => g.Name == "clause-smoothing");
+
+        // Act
+        var values = grid.Variants.Select(v => v.ClauseSmoothing).ToArray();
+
+        // Assert: the default is a grid value and no value is negative
+        Assert.Contains(BasicHyperparameters.Default.ClauseSmoothing, values);
+        Assert.All(values, value => Assert.True(value >= 0));
     }
 }

@@ -454,6 +454,15 @@ sections:
               whose annotations we own and release under CC0 1.0, so that the shipped table carries no share-alike
               license.
               The inputs are committed and the counts reproducible.
+            children:
+              - WordSense-WordSenseBuilder-OpenCounts-ClauseCounts
+              - WordSense-WordSenseBuilder-OpenCounts-ClauseNonFinite
+              - WordSense-WordSenseBuilder-OpenCounts-ClauseFile
+              - WordSense-WordSenseBuilder-OpenCounts-ClauseCommand
+              - WordSense-WordSenseBuilder-OpenCounts-ClauseMissing
+              - WordSense-WordSenseBuilder-OpenCounts-ClauseMalformed
+              - WordSense-WordSenseBuilder-OpenCounts-ClauseBigramAboveTotal
+              - WordSense-WordSenseBuilder-OpenCounts-ClauseTrigramAboveTotal
             tests:
               - WordSenseBuilder_OpenCorpus_ReadFile_ReadsSentencesAndTokens
               - WordSenseBuilder_OpenCorpus_ReadSplit_FindsTheFileOfAPart
@@ -467,6 +476,89 @@ sections:
               - WordSenseBuilder_TaggerCounts_WriteAndRead_RoundTripsDeterministically
               - WordSenseBuilder_TaggerCounts_Read_MalformedFiles_Throw
               - WordSenseBuilder_Program_OpenCounts_WritesCountFiles
+
+          - id: WordSense-WordSenseBuilder-OpenCounts-ClauseCounts
+            title: >-
+              The builder shall count, besides the totals, the bigram and trigram tag counts of the positions whose
+              clause already has a verb, where a clause starts at the beginning of the sentence and after a conjunction
+              or punctuation tag and has a verb from the first verb tag on.
+            tags: [unit]
+            justification: |
+              The tagger conditions its transitions on the clause state, so the counts of the positions with a verb are
+              needed; the counts of the positions without one are the difference to the totals.
+            tests:
+              - WordSenseBuilder_TaggerCounts_Count_CountsClauseNgrams
+
+          - id: WordSense-WordSenseBuilder-OpenCounts-ClauseNonFinite
+            title: >-
+              The builder shall not let a sentence-initial word that the dictionary lists only as a non-finite verb (a
+              gerund, or a participle that is not also a past tense) give its clause a verb when it counts the clause
+              state.
+            tags: [unit]
+            justification: |
+              The counts must be made with the rule that the tagger uses at run time, or the transitions of the two
+              clause states would not describe the sentences that the tagger reads.
+            tests:
+              - WordSenseBuilder_TaggerCounts_Count_NonFiniteStartDoesNotSetTheClauseState
+
+          - id: WordSense-WordSenseBuilder-OpenCounts-ClauseFile
+            title: >-
+              The builder shall write the clause counts deterministically to the clause count file of the corpus, in
+              a form that reads back as written.
+            tags: [unit]
+            justification: |
+              The inputs are committed and the counts reproducible, so equal data must give equal bytes.
+            tests:
+              - WordSenseBuilder_TaggerCounts_WriteAndRead_RoundTripsDeterministically
+
+          - id: WordSense-WordSenseBuilder-OpenCounts-ClauseCommand
+            title: >-
+              The open-counts command shall write the clause count file with the other count files.
+            tags: [unit]
+            justification: |
+              One command must make every count file that training reads.
+            tests:
+              - WordSenseBuilder_Program_OpenCounts_WritesCountFiles
+
+          - id: WordSense-WordSenseBuilder-OpenCounts-ClauseMissing
+            title: >-
+              The builder shall report a missing clause count file as a missing file when it reads the counts.
+            tags: [unit]
+            justification: |
+              Training without the clause counts would silently give a table without a clause state.
+            tests:
+              - WordSenseBuilder_TaggerCounts_Read_MissingClauseFile_Throws
+
+          - id: WordSense-WordSenseBuilder-OpenCounts-ClauseMalformed
+            title: >-
+              The builder shall reject a clause count file with a wrong header or a malformed line as invalid data.
+            tags: [unit]
+            justification: |
+              A damaged count file must fail loudly instead of giving a damaged table.
+            tests:
+              - WordSenseBuilder_TaggerCounts_Read_MalformedClauseFile_Throws
+
+          - id: WordSense-WordSenseBuilder-OpenCounts-ClauseBigramAboveTotal
+            title: >-
+              The builder shall reject a clause count file with a bigram count above the total count of the same bigram
+              as invalid data.
+            tags: [unit]
+            justification: |
+              The counts of the positions without a verb are the difference to the totals, so a larger clause count is
+              damage, not data.
+            tests:
+              - WordSenseBuilder_TaggerCounts_Read_ClauseBigramAboveTotal_Throws
+
+          - id: WordSense-WordSenseBuilder-OpenCounts-ClauseTrigramAboveTotal
+            title: >-
+              The builder shall reject a clause count file with a trigram count above the total count of the same
+              trigram as invalid data.
+            tags: [unit]
+            justification: |
+              The counts of the positions without a verb are the difference to the totals, so a larger clause count is
+              damage, not data.
+            tests:
+              - WordSenseBuilder_TaggerCounts_Read_ClauseTrigramAboveTotal_Throws
 
           - id: WordSense-WordSenseBuilder-TrainBasic
             title: >-
@@ -487,6 +579,10 @@ sections:
               - WordSense-WordSenseBuilder-TrainBasic-TenseClasses
               - WordSense-WordSenseBuilder-TrainBasic-TenseWeights
               - WordSense-WordSenseBuilder-TrainBasic-TrainSplitOnly
+              - WordSense-WordSenseBuilder-TrainBasic-ClauseCounts
+              - WordSense-WordSenseBuilder-TrainBasic-ClauseSmoothing
+              - WordSense-WordSenseBuilder-TrainBasic-FormatWsb5
+              - WordSense-WordSenseBuilder-TrainBasic-ClauseDeterministic
             tests:
               - WordSenseBuilder_BasicTrainer_ClosedMaskOf_AppliesThresholds
               - WordSenseBuilder_BasicTrainer_Train_SelectsWordsAndSuffixes
@@ -503,6 +599,45 @@ sections:
               - WordSenseBuilder_Program_Weights_BasicModel_PointsToTrainBasic
               - WordSenseBuilder_Program_TrainBasicAndEvaluateTagger_TinyCorpus_WriteAndScoreTable
               - WordSenseBuilder_Program_TrainBasic_WithoutCounts_ReportsError
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-ClauseCounts
+            title: >-
+              The builder shall write the clause counts of the open corpus into the table of the basic model.
+            tags: [unit]
+            justification: |
+              The runtime reads the transitions of both clause states from these numbers.
+            tests:
+              - WordSenseBuilder_BasicTablesWriter_Write_CarriesTheClauseCounts
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-ClauseSmoothing
+            title: >-
+              The builder shall write the smoothing of the clause state, a hyper-parameter, into the header of the
+              table of the basic model.
+            tags: [unit]
+            justification: |
+              The runtime mixes the transitions of each clause state with the unconditioned ones by this value, so
+              the table must carry the value it was tuned with.
+            tests:
+              - WordSenseBuilder_BasicTablesWriter_Write_CarriesTheClauseSmoothing
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-FormatWsb5
+            title: >-
+              The builder shall write the table of the basic model with the format revision WSB5, which differs from
+              the previous revision.
+            tags: [unit]
+            justification: |
+              The revision makes the previous format fail loudly in the runtime instead of being read as a current one.
+            tests:
+              - WordSenseBuilder_BasicTablesWriter_Write_StartsWithTheMagicWsb5
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-ClauseDeterministic
+            title: >-
+              The builder shall write a table with clause counts byte for byte the same each time for the same data.
+            tags: [unit]
+            justification: |
+              One command from committed inputs to the shipped table lets reviewers reproduce and verify the model.
+            tests:
+              - WordSenseBuilder_BasicTablesWriter_Write_WithClauseCounts_IsDeterministic
 
           - id: WordSense-WordSenseBuilder-TrainBasic-TenseTable
             title: >-
@@ -564,11 +699,35 @@ sections:
               dishonest.
             children:
               - WordSense-WordSenseBuilder-TuneBasic-TenseWeight
+              - WordSense-WordSenseBuilder-TuneBasic-ClauseSmoothing
+              - WordSense-WordSenseBuilder-TuneBasic-TreebankDev
             tests:
               - WordSenseBuilder_BasicHyperparameters_Default_IsConsistent
               - WordSenseBuilder_BasicTuner_SplitAnchors_IsDeterministicAndDisjoint
               - WordSenseBuilder_BasicTuner_ScoreTagger_CountsAmbiguousTokens
               - WordSenseBuilder_BasicTuner_RunAsync_MissingCounts_Throws
+
+          - id: WordSense-WordSenseBuilder-TuneBasic-ClauseSmoothing
+            title: >-
+              The builder shall include the smoothing of the clause state among the hyper-parameters whose grid
+              tune-basic scores, with the default value among the values of the grid.
+            tags: [unit]
+            justification: |
+              The smoothing is a setting of the trained table, so it must be chosen on development data like the other
+              hyper-parameters.
+            tests:
+              - WordSenseBuilder_BasicHyperparameters_ClauseSmoothing_IsTuned
+
+          - id: WordSense-WordSenseBuilder-TuneBasic-TreebankDev
+            title: >-
+              The builder shall score the whole classifier of each variant of the grid on the development file of the
+              treebank when it exists, and shall read no other file of the treebank while tuning.
+            tags: [unit]
+            justification: |
+              The rule and the smoothing of the clause state change the part of speech of running text, so they are
+              chosen on development data of running text that no reported figure is measured on.
+            tests:
+              - WordSenseBuilder_Program_TuneBasic_ScoresOnlyTheDevelopmentInputs
 
           - id: WordSense-WordSenseBuilder-TuneBasic-TenseWeight
             title: >-

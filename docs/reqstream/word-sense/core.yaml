@@ -381,13 +381,81 @@ sections:
             tags: [subsystem]
             justification: |
               The part of speech of an ambiguous word depends on the words around it on both sides, so the estimate
-              must weigh the whole segment rather than a fixed window.
+              must weigh the whole segment rather than a fixed window. The clause of the word, a gerund that opens
+              the segment and a possessive written as one token refine the estimate; each is its own requirement
+              below.
             children:
               - WordSense-Core-BasicTables-Load
               - WordSense-Core-PosTagger-Posteriors
               - WordSense-Core-PosTagger-UnknownWords
+              - WordSense-Core-Tagger-ClauseVerb
+              - WordSense-Core-Tagger-ClauseBreak
+              - WordSense-Core-Tagger-NonFiniteStart
+              - WordSense-Core-Tagger-Possessive
             tests:
               - PosTagger_Posteriors_AfterDeterminer_PrefersNoun
+
+          - id: WordSense-Core-Tagger-ClauseVerb
+            title: >-
+              The core subsystem shall estimate the part of speech of a word with regard to whether the clause of the
+              word already has a verb, so that a word that could be a noun or a verb and follows a determiner and a
+              noun is a noun when the clause already has a verb.
+            tags: [subsystem]
+            justification: |
+              A clause has one finite verb, so in a clause that has one the word after a determiner and a noun
+              is the second noun of a compound (the door handle), not a second verb.
+            children:
+              - WordSense-Core-PosTagger-ClauseVerb
+              - WordSense-Core-BasicTables-Clause
+            tests:
+              - BasicWordSenseModel_ClassifyAsync_NounAfterNounInClauseWithVerb_IsNoun
+
+          - id: WordSense-Core-Tagger-ClauseBreak
+            title: >-
+              The core subsystem shall start a new clause after a punctuation token and after a conjunction, so that
+              a word that could be a noun or a verb and follows a determiner and a noun there is a verb again
+              although the earlier clause had a verb.
+            tags: [subsystem]
+            justification: |
+              The verb of the previous clause must not suppress the verb of the next one.
+            children:
+              - WordSense-Core-PosTagger-ClauseBreak
+            tests:
+              - BasicWordSenseModel_ClassifyAsync_VerbAfterClauseBreak_IsVerb
+
+          - id: WordSense-Core-Tagger-NonFiniteStart
+            title: >-
+              The core subsystem shall not take a first word of a sentence segment that the dictionary lists as a
+              verb only in non-finite forms (a gerund, or a participle that is not also a past tense) as the verb of
+              its clause, so that such a word before a determiner is still read as a verb.
+            tags: [subsystem]
+            justification: |
+              A gerund that opens a sentence (Resolving this issue requires care) is not the verb of its clause; the
+              verb of the clause is still to come, and an imperative must keep the verb of its clause.
+            children:
+              - WordSense-Core-PosTagger-NonFiniteStart
+              - WordSense-Core-BasicClassifier-NonFinite-Flag
+              - WordSense-Core-BasicClassifier-NonFinite-NoFlag
+            tests:
+              - BasicWordSenseModel_ClassifyAsync_GerundAtTheStart_IsStillAVerb
+
+          - id: WordSense-Core-Tagger-Possessive
+            title: >-
+              The core subsystem shall estimate the part of speech of the word after a possessive that is written as
+              one token (technician's) as it does after a noun and a separate possessive marker, so that the word after
+              the possessive is a noun.
+            tags: [subsystem]
+            justification: |
+              The statistics come from text with a separate marker while the documented input keeps the marker inside
+              the token, so reading the stem and the marker shows the tagger the pattern it knows.
+            children:
+              - WordSense-Core-PosTagger-Possessive-Expansion
+              - WordSense-Core-PosTagger-Possessive-Rows
+              - WordSense-Core-BasicClassifier-Possessive-Stem
+              - WordSense-Core-BasicClassifier-Possessive-Whole
+              - WordSense-Core-BasicClassifier-Possessive-Rows
+            tests:
+              - BasicWordSenseModel_ClassifyAsync_PossessiveToken_ReadsTheNextWordAsNoun
 
           - id: WordSense-Core-Cues
             title: >-
