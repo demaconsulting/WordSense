@@ -21,7 +21,7 @@ namespace DemaConsulting.WordSense;
 ///     <para>
 ///     Escaping. A spelling, lemma, features text or label may contain the separators (a few lemmas contain <c>/</c>, for
 ///     example <c>A/C</c>). In the text form the characters <c>\</c>, <c>|</c>, <c>/</c> and <c>#</c> of such a part are
-///     written with a leading backslash (<c>a/c|A\/C/Noun/Number=Sing</c>); no other character is escaped, so almost every
+///     written with a leading backslash (<c>a\/c|A\/C/Noun/Number=Sing</c>); no other character is escaped, so almost every
 ///     key is written without any backslash. <see cref="TryParse"/> reverses <see cref="ToString"/> exactly.
 ///     </para>
 ///     <para>

@@ -83,7 +83,7 @@ model for another without code changes, and the composite `FallbackWordSenseMode
     `Analyses` that equals `Details`, or of the first analysis with its lemma and part of speech, when it lists senses (the
     group level and the part-of-speech level of a trained lemma); (c) otherwise none. A group id is never used because
     group ids are not frozen. It does not appear in `Equals` or `GetHashCode`, which compare the stored values, and the
-    `ToString` of the record struct lists it like any property.
+    `ToString` of the `ClassifyResult` record struct lists it like any property.
 - `WordKey(Spelling, Lemma, PartOfSpeech, Features, Label)`: a sealed record that holds the parts of a key. `ToString()`
   writes `{spelling}|{lemma}/{Part}[/{Features}][#{label}]`: the features and their `/` are left out when empty, the label
   and its `#` when it is null. A scan of the committed data found lemmas and spellings that contain `/` (21 lemmas, 31

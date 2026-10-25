@@ -228,7 +228,8 @@ public sealed class HeteronymTests : IDisposable
     }
 
     /// <summary>
-    ///     An invalid curated table is reported with every problem: a missing file, an unknown level, a pattern that is not
+    ///     An invalid curated table is reported with every problem: a missing file, an empty file (no header), an unknown
+    ///     level, a pattern that is not
     ///     one, a label that is not a sense of the catalog, a group with one class, two classes that claim the same
     ///     analysis, a group with two notes and a group that matches no spelling.
     /// </summary>
@@ -239,6 +240,7 @@ public sealed class HeteronymTests : IDisposable
         var data = Path.Join(Committed.Value.Root, "data");
         var image = Committed.Value.Image;
         var missing = Path.Join(_dir.Root, "missing.tsv");
+        var empty = _dir.Write("empty.tsv", string.Empty);
         var invalid = _dir.Write(
             "invalid.tsv",
             "level\tgroup\tclass\tpattern\tnote\n" +
@@ -257,9 +259,11 @@ public sealed class HeteronymTests : IDisposable
         // Act
         var notFound = Assert.Throws<InvalidDataException>(() => Heteronyms.Build(data, missing, image));
         var errors = Assert.Throws<InvalidDataException>(() => Heteronyms.Build(data, invalid, image));
+        var emptyErrors = Assert.Throws<InvalidDataException>(() => Heteronyms.Build(data, empty, image));
 
         // Assert
         Assert.Contains("was not found", notFound.Message, StringComparison.Ordinal);
+        Assert.Contains("the header must be", emptyErrors.Message, StringComparison.Ordinal);
         Assert.Contains("the level 'word' is not lemma, tense or sense", errors.Message, StringComparison.Ordinal);
         Assert.Contains("the pattern 'bass' is not lemma/Part", errors.Message, StringComparison.Ordinal);
         Assert.Contains("names senses that the catalog does not have: nonesuch", errors.Message, StringComparison.Ordinal);

@@ -575,7 +575,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **TSV** (`Heteronyms_RenderTsv_WritesOneRowForEachKey`, `Program_Heteronyms_WritesTheTable`): a header and one row of
   six cells (the last is the note, empty for most) for each key, LF line ends; the command needs `--output` and writes
   the table of the committed data.
-- **Invalid curated table** (`Heteronyms_Build_InvalidCuratedTable_IsReported`): a missing file, an unknown level, a
+- **Invalid curated table** (`Heteronyms_Build_InvalidCuratedTable_IsReported`): a missing file, an empty file (no
+  header), an unknown level, a
   row without four or five cells, a pattern that is not one, a label that is not a sense, a group with one class, a
   group with two different notes, two classes that claim one analysis and a group that matches no spelling are each
   reported, all in one error.

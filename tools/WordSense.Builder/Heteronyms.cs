@@ -248,6 +248,12 @@ internal static class Heteronyms
             rows.Add(new CuratedRow(cells[0], cells[1], cells[2], pattern, cells.Length == 5 ? cells[4] : null, lineNumber));
         }
 
+        // An empty file has no header either, so it is refused rather than read as a table without rows
+        if (lineNumber == 0)
+        {
+            errors.Add($"{path}:1: the header must be 'level, group, class, pattern, note' separated by tabs.");
+        }
+
         return rows;
     }
 
