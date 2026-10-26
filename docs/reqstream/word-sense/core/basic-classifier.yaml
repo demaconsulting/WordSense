@@ -846,6 +846,17 @@ sections:
                 tests:
                   - BasicClassifier_ClassifyAsync_ZeroReliability_DoesNotSeparateTheAnalyses
 
+              - id: WordSense-Core-BasicClassifier-CueReliability-ZeroIsNoTable
+                title: >-
+                  BasicClassifier shall give a word whose cue table has reliability 0 the same probabilities as the
+                  same word without a cue table.
+                tags: [unit]
+                justification: |
+                  A table that is no better than chance must leave no trace in the answer, so the fusion must treat the
+                  analyses as unscored rather than apply a correction for a scored table.
+                tests:
+                  - BasicClassifier_ClassifyAsync_ZeroReliabilityTable_EqualsNoTable
+
               - id: WordSense-Core-BasicClassifier-CueReliability-Full
                 title: >-
                   BasicClassifier shall let a fully reliable cue table separate the analyses that it scores by the words

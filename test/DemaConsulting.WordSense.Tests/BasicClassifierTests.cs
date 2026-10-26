@@ -1707,6 +1707,37 @@ public class BasicClassifierTests
     }
 
     /// <summary>
+    ///     A cue table of reliability 0 is no table: the word gets exactly the probabilities that it gets without a cue table.
+    /// </summary>
+    /// <param name="hmmWeight">The weight of the tagger in the fusion.</param>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Theory]
+    [InlineData(0.0)]
+    [InlineData(1.0)]
+    public async Task BasicClassifier_ClassifyAsync_ZeroReliabilityTable_EqualsNoTable(double hmmWeight)
+    {
+        // Arrange: a table of read with reliability 0 and a table of the same words with no cue table at all
+        var words = new[] { ("record", 0, new int[PosTag.Count]) };
+        var zero = TestTables.Load(TestTables.Build(
+            words,
+            [],
+            [("read", TestTables.ReadColumns(), TestTables.CueHashes(), TestTables.CueWeights())],
+            hmmWeight: hmmWeight,
+            reliability: 0));
+        var none = TestTables.Load(TestTables.Build(words, [], [], hmmWeight: hmmWeight));
+
+        // Act: classify yesterday they read with each table
+        var withZero = await Create(zero).ClassifyAsync(["yesterday", "they", "read"], TestContext.Current.CancellationToken);
+        var withNone = await Create(none).ClassifyAsync(["yesterday", "they", "read"], TestContext.Current.CancellationToken);
+
+        // Assert: every analysis of read has exactly the same probability with both tables
+        var expected = withNone[2].Analyses.Select(a => (a.Details, a.Probability)).ToArray();
+        var actual = withZero[2].Analyses.Select(a => (a.Details, a.Probability)).ToArray();
+        Assert.NotEmpty(expected);
+        Assert.Equal(expected, actual);
+    }
+
+    /// <summary>
     ///     A fully reliable cue table separates the past and the present of <c>read</c> by the words around it.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>

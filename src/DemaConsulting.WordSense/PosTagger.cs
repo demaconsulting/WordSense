@@ -214,6 +214,7 @@ internal static class PosTagger
         // the counts and the generic tag prior alone
         Span<double> generic = stackalloc double[K];
         Span<double> prior = stackalloc double[K];
+        prior.Clear();
         for (var j = 0; j < count; j++)
         {
             generic[j] = tables.TagPrior[allowed[j]] / priorSum;

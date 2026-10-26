@@ -228,3 +228,6 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `BasicClassifier_ClassifyAsync_CueReliability_ScalesTheCueScores`): on a toy table of `read` with no tagger weight, the
   probability of the past analysis of `yesterday they read` is 0.5 for a table of reliability 0, which does not separate
   the two analyses, is above 0.5 for a fully reliable table, and for a table of reliability 100 lies between the two.
+- **Zero reliability is no table** (`BasicClassifier_ClassifyAsync_ZeroReliabilityTable_EqualsNoTable`, theory over the
+  tagger weights 0 and 1): the analyses of `read` in `yesterday they read` have exactly the same probabilities with a cue
+  table of reliability 0 as with no cue table.

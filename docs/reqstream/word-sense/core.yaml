@@ -635,6 +635,7 @@ sections:
             children:
               - WordSense-Core-BasicTables-Reliability
               - WordSense-Core-BasicClassifier-CueReliability-Zero
+              - WordSense-Core-BasicClassifier-CueReliability-ZeroIsNoTable
               - WordSense-Core-BasicClassifier-CueReliability-Full
               - WordSense-Core-BasicClassifier-CueReliability-Partial
             tests:

@@ -74,8 +74,8 @@ returns the analyses of the form (one per lemma, part of speech and features, ne
    and then the table of the lemma of the first analysis. A table gives one cue score per analysis (`NaN` for an analysis
    it has no column for), otherwise no analysis has a cue score, which leaves the fusion to the tagger alone. The scores
    of a table are scaled by its reliability (`LemmaCue.Reliability`, the factor on the inverse temperature of the fusion),
-   so a table that predicts held-out sentences of its own anchors poorly does not outvote the tagger and a table of
-   reliability 0 is as good as none;
+   so a table that predicts held-out sentences of its own anchors poorly does not outvote the tagger. A table of
+   reliability 0 is skipped: no analysis has a cue score, exactly as without a table;
    `SenseFusion.Fuse` gives one probability per analysis, and the case of the written word and then the tense of the
    context adjust it (below). The tagger token of a word with several parts of speech carries the catalog support of its
    analyses (`WordSupport.Of`), which `PosTagger` blends into the emission of the word as its word prior.

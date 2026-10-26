@@ -594,9 +594,10 @@ internal sealed class BasicClassifier
 
         // The cue table of the word itself (a form that spans lemmas) or of the lemma of its first analysis scores the
         // analyses; without a table no analysis has a cue score, so the context cannot separate the analyses of a
-        // lemma and part of speech and the fusion relies on the tagger alone
+        // lemma and part of speech and the fusion relies on the tagger alone. A table of reliability 0 is no table: its
+        // scores are left out entirely, so the fusion treats every analysis as unscored
         var cueFactor = 1.0;
-        if (tables.FindCue(key, analyses) is { } cue)
+        if (tables.FindCue(key, analyses) is { Reliability: > 0 } cue)
         {
             CueModel.Score(cue, features, analyses, cues);
             cueFactor = cue.Reliability;
