@@ -15,18 +15,20 @@ project senses last, each with the gloss of its synset.
 
 ### Parts of Speech
 
-`PartOfSpeech` has ten values. The trained lemmas have senses of 8 of them:
+`PartOfSpeech` has ten values. The trained lemmas have senses of 10 of them:
 
 | Part of speech | Lemmas | Senses |
 | -------------- | -----: | -----: |
-| `Noun`         |    741 |   3054 |
-| `Verb`         |    740 |   3341 |
-| `Adjective`    |    206 |    516 |
-| `Adverb`       |     35 |    103 |
+| `Noun`         |    763 |   3194 |
+| `Pronoun`      |      1 |      1 |
+| `Verb`         |    756 |   3614 |
+| `Adjective`    |    213 |    604 |
+| `Adverb`       |     41 |    121 |
 | `Preposition`  |      3 |      3 |
-| `Conjunction`  |      2 |      2 |
-| `Interjection` |     14 |     14 |
+| `Conjunction`  |      3 |      3 |
+| `Interjection` |     17 |     17 |
 | `Determiner`   |      2 |      2 |
+| `Auxiliary`    |      2 |      2 |
 
 ### Groups
 
@@ -44,8 +46,8 @@ like the lemma.
 The word table knows 365,007 spellings (lemmas and inflected forms) of 223,830 entries, and its sense catalog lists
 129,255 senses in 184 curated groups. Every word of the table that is not listed below has no trained classifier.
 
-The lemmas listed below are the 856 trained lemmas (the lemmas that have anchor sentences), with 7,035 senses (147 of
-them project senses) and 140 groups.
+The lemmas listed below are the 879 trained lemmas (the lemmas that have anchor sentences), with 7,561 senses (154 of
+them project senses) and 148 groups.
 
 ## Keys and Heteronyms
 
@@ -822,7 +824,7 @@ The senses of one analysis belong to entries that sound different, so only the s
 
 ## Supported Lemmas
 
-The library supports 856 lemmas with 7,035 senses in total, listed alphabetically. Each lemma lists its parts of speech
+The library supports 879 lemmas with 7,561 senses in total, listed alphabetically. Each lemma lists its parts of speech
 and forms. Under it, every sense gives its id and part of speech, its group, its Open English WordNet sense key (a
 project sense has none) and its gloss.
 
@@ -1570,6 +1572,36 @@ project sense has none) and its gloss.
     musical instruments
   - `bass#low-pitched` (adjective); group: none; key: `bass%5:00:00:low:03`; gloss: having or denoting a low vocal or
     instrumental range
+- **be**; parts of speech: verb, auxiliary; forms: AM (auxiliary, Tense=Pres), Am (auxiliary, Tense=Pres), Be (verb,
+  VerbForm=Inf), Be (auxiliary), I'm (auxiliary, Contraction=Yes), Is (verb, Person=3+Tense=Pres), Is (auxiliary,
+  Person=3+Tense=Pres), ain't (auxiliary, Contraction=Yes), am (auxiliary, Tense=Pres), are (auxiliary, Tense=Pres),
+  aren't (auxiliary, Contraction=Yes), be (verb, VerbForm=Inf), be (auxiliary), been (verb, VerbForm=Part), been
+  (auxiliary, VerbForm=Part), being (verb, VerbForm=Ger), being (auxiliary, VerbForm=Ger), bing (verb, VerbForm=Ger),
+  he's (auxiliary, Contraction=Yes), here's (auxiliary, Contraction=Yes), is (verb, Person=3+Tense=Pres), is (auxiliary,
+  Person=3+Tense=Pres), isn't (auxiliary, Contraction=Yes), it's (auxiliary, Contraction=Yes), she's (auxiliary,
+  Contraction=Yes), that's (auxiliary, Contraction=Yes), there's (auxiliary, Contraction=Yes), they're (auxiliary,
+  Contraction=Yes), was (verb, Tense=Past), was (auxiliary, Tense=Past), wasn't (auxiliary, Contraction=Yes), we're
+  (auxiliary, Contraction=Yes), were (verb, Tense=Past), were (auxiliary, Tense=Past), weren't (auxiliary,
+  Contraction=Yes), what's (auxiliary, Contraction=Yes), who's (auxiliary, Contraction=Yes), you're (auxiliary,
+  Contraction=Yes)
+  - `be#verb` (verb); group: none; key: `be%2:42:03::`; gloss: have the quality of being; (copula, used with an
+    adjective or a predicate noun)
+  - `be#bear-on` (verb); group: `be#group:identity`; key: `be%2:42:06::`; gloss: be identical to; be someone or
+    something
+  - `be#verb-2` (verb); group: none; key: `be%2:42:05::`; gloss: occupy a certain position or area; be somewhere
+  - `be#exist` (verb); group: none; key: `be%2:42:00::`; gloss: have an existence, be extant
+  - `be#equal` (verb); group: `be#group:identity`; key: `be%2:42:07::`; gloss: be identical or equivalent to
+  - `be#comprise` (verb); group: none; key: `be%2:42:02::`; gloss: form or compose
+  - `be#follow` (verb); group: none; key: `be%2:41:00::`; gloss: work in a specific place, with a specific subject, or
+    in a specific function
+  - `be#embody` (verb); group: none; key: `be%2:42:08::`; gloss: represent, as of a character on stage
+  - `be#occupy` (verb); group: none; key: `be%2:40:00::`; gloss: spend or use time
+  - `be#live` (verb); group: none; key: `be%2:42:01::`; gloss: have life, be alive
+  - `be#remain` (verb); group: none; key: `be%2:42:13::`; gloss: to remain unmolested, undisturbed, or uninterrupted —
+    used only in infinitive form
+  - `be#cost` (verb); group: none; key: `be%2:42:09::`; gloss: be priced at
+  - `be#auxiliary` (auxiliary); group: none; key: project sense; gloss: auxiliary verb used with a present participle to
+    form the progressive or a past participle to form the passive
 - **beam**; parts of speech: noun, verb; forms: beam (noun, Number=Sing), beam (verb, VerbForm=Inf), beamed (verb,
   Tense=Past+VerbForm=Part), beaming (verb, VerbForm=Ger), beaming (noun, Number=Sing+VerbForm=Ger), beams (noun,
   Number=Plur), beams (verb, Person=3+Tense=Pres)
@@ -3542,6 +3574,97 @@ project sense has none) and its gloss.
   - `cure#set-material` (verb); group: none; key: `cure%2:30:02::`; gloss: make (substances) hard and improve their
     usability
   - `cure#be-preserved` (verb); group: none; key: `cure%2:30:01::`; gloss: be or become preserved
+- **cut**; parts of speech: noun, verb, adjective; forms: cut (verb, VerbForm=Inf), cut (verb,
+  Tense=Past+VerbForm=Part), cut (adjective, Degree=Pos), cut (noun, Number=Sing), cuts (verb, Person=3+Tense=Pres),
+  cuts (noun, Number=Plur), cutter (adjective, Degree=Cmp), cutting (verb, VerbForm=Ger)
+  - `cut#part` (noun); group: none; key: `cut%1:21:00::`; gloss: a share of the profits
+  - `cut#transition` (noun); group: none; key: `cut%1:10:00::`; gloss: (film) an immediate transition from one shot to
+    the next
+  - `cut#gash` (noun); group: none; key: `cut%1:06:00::`; gloss: a trench resembling a furrow that was made by erosion
+    or excavation
+  - `cut#gradation` (noun); group: none; key: `cut%1:26:01::`; gloss: a step on some scale
+  - `cut#gash-2` (noun); group: none; key: `cut%1:26:00::`; gloss: a wound made by cutting
+  - `cut#cut-of-meat` (noun); group: none; key: `cut%1:13:00::`; gloss: a piece of meat that has been cut from an animal
+    carcass
+  - `cut#stinger` (noun); group: none; key: `cut%1:10:02::`; gloss: a remark capable of wounding mentally
+  - `cut#track` (noun); group: none; key: `cut%1:10:04::`; gloss: a distinct selection of music from a recording or a
+    compact disc
+  - `cut#deletion` (noun); group: none; key: `cut%1:10:01::`; gloss: the omission that is made when an editorial change
+    shortens a written passage
+  - `cut#fashion` (noun); group: none; key: `cut%1:09:00::`; gloss: the style in which a garment is cut
+  - `cut#canal` (noun); group: none; key: `cut%1:06:01::`; gloss: a canal made by erosion or excavation
+  - `cut#cold-shoulder` (noun); group: none; key: `cut%1:04:03::`; gloss: a refusal to recognize someone you know
+  - `cut#baseball-swing` (noun); group: none; key: `cut%1:04:07::`; gloss: in baseball; a batter's attempt to hit a
+    pitched ball
+  - `cut#undercut` (noun); group: none; key: `cut%1:04:08::`; gloss: (sports) a stroke that puts reverse spin on the
+    ball
+  - `cut#cutting-4` (noun); group: none; key: `cut%1:04:09::`; gloss: the division of a deck of cards before dealing
+  - `cut#cutting-3` (noun); group: none; key: `cut%1:04:02::`; gloss: the act of penetrating or opening open with a
+    sharp edge
+  - `cut#cutting-2` (noun); group: none; key: `cut%1:04:01::`; gloss: the act of cutting something into parts
+  - `cut#cutting` (noun); group: none; key: `cut%1:04:00::`; gloss: the act of shortening something by chopping off the
+    ends
+  - `cut#decrease` (noun); group: none; key: `cut%1:04:05::`; gloss: the act of reducing the amount or number
+  - `cut#absence` (noun); group: none; key: `cut%1:04:06::`; gloss: an unexcused absence from class
+  - `cut#disunite` (verb); group: none; key: `cut%2:35:00::`; gloss: separate with or as if with an instrument
+  - `cut#bring-down` (verb); group: none; key: `cut%2:30:06::`; gloss: cut down on; make a reduction in
+  - `cut#curve` (verb); group: none; key: `cut%2:38:08::`; gloss: turn sharply; change direction abruptly
+  - `cut#disunite-2` (verb); group: none; key: `cut%2:35:10::`; gloss: make an incision or separation
+  - `cut#discharge` (verb); group: none; key: `cut%2:41:13::`; gloss: discharge from a group
+  - `cut#create` (verb); group: none; key: `cut%2:36:01::`; gloss: form by probing, penetrating, or digging
+  - `cut#tailor` (verb); group: none; key: `cut%2:36:00::`; gloss: style and tailor in a certain fashion
+  - `cut#hit` (verb); group: none; key: `cut%2:35:07::`; gloss: hit (a ball) with a spin so that it turns in the
+    opposite direction
+  - `cut#issue` (verb); group: none; key: `cut%2:32:00::`; gloss: make out and issue
+  - `cut#edit` (verb); group: none; key: `cut%2:30:07::`; gloss: cut and assemble the components of
+  - `cut#skip` (verb); group: none; key: `cut%2:42:00::`; gloss: intentionally fail to attend
+  - `cut#hack` (verb); group: none; key: `cut%2:41:10::`; gloss: be able to manage or manage successfully
+  - `cut#appear` (verb); group: none; key: `cut%2:39:03::`; gloss: give the appearance or impression of
+  - `cut#move` (verb); group: none; key: `cut%2:38:15::`; gloss: move (one's fist)
+  - `cut#pass` (verb); group: none; key: `cut%2:38:13::`; gloss: pass directly and often in haste
+  - `cut#move-through` (verb); group: none; key: `cut%2:38:12::`; gloss: pass through or across
+  - `cut#change` (verb); group: none; key: `cut%2:38:01::`; gloss: make an abrupt change of image or sound
+  - `cut#stop` (verb); group: none; key: `cut%2:38:00::`; gloss: stop filming
+  - `cut#record-2` (verb); group: none; key: `cut%2:36:05::`; gloss: make a recording of
+  - `cut#record` (verb); group: none; key: `cut%2:36:04::`; gloss: record a performance on (a medium)
+  - `cut#burn` (verb); group: none; key: `cut%2:36:06::`; gloss: create by duplicating data
+  - `cut#create-2` (verb); group: none; key: `cut%2:36:11::`; gloss: form or shape by cutting or incising
+  - `cut#do` (verb); group: none; key: `cut%2:36:15::`; gloss: perform or carry out
+  - `cut#function` (verb); group: none; key: `cut%2:35:12::`; gloss: function as a cutting instrument
+  - `cut#be` (verb); group: none; key: `cut%2:35:11::`; gloss: allow incision or separation
+  - `cut#mix` (verb); group: none; key: `cut%2:35:05::`; gloss: divide a deck of cards at random into two parts to make
+    selection difficult
+  - `cut#switch-off` (verb); group: none; key: `cut%2:35:08::`; gloss: cause to stop operating by disengaging a switch
+  - `cut#glean` (verb); group: none; key: `cut%2:35:15::`; gloss: reap or harvest
+  - `cut#cut-down` (verb); group: none; key: `cut%2:35:13::`; gloss: fell by sawing; hew
+  - `cut#penetrate` (verb); group: none; key: `cut%2:35:14::`; gloss: penetrate injuriously
+  - `cut#disregard` (verb); group: none; key: `cut%2:32:05::`; gloss: refuse to acknowledge
+  - `cut#shorten` (verb); group: none; key: `cut%2:30:14::`; gloss: shorten as if by severing the edges or ends of
+  - `cut#prune` (verb); group: none; key: `cut%2:30:02::`; gloss: weed out unwanted or unnecessary things
+  - `cut#break-up` (verb); group: none; key: `cut%2:30:15::`; gloss: dissolve by breaking down the fat of
+  - `cut#decrease-2` (verb); group: none; key: `cut%2:30:12::`; gloss: have a reducing effect
+  - `cut#cut-off` (verb); group: none; key: `cut%2:30:00::`; gloss: cease, stop
+  - `cut#abbreviate` (verb); group: none; key: `cut%2:30:08::`; gloss: reduce in scope while retaining essential
+    elements
+  - `cut#dilute` (verb); group: none; key: `cut%2:30:05::`; gloss: lessen the strength or flavor of a solution or
+    mixture
+  - `cut#acquire` (verb); group: none; key: `cut%2:29:04::`; gloss: have grow through the gums
+  - `cut#grow` (verb); group: none; key: `cut%2:29:14::`; gloss: grow through the gums
+  - `cut#geld` (verb); group: none; key: `cut%2:29:00::`; gloss: cut off the testicles (of male animals such as horses)
+  - `cut#adjective` (adjective); group: none; key: `cut%3:00:01::`; gloss: separated into parts or laid open or
+    penetrated with a sharp edge or instrument
+  - `cut#adjective-2` (adjective); group: none; key: `cut%3:00:03::`; gloss: fashioned or shaped by cutting
+  - `cut#shortened` (adjective); group: none; key: `cut%5:00:00:abridged:00`; gloss: with parts removed
+  - `cut#trimmed` (adjective); group: none; key: `cut%3:00:05::`; gloss: made neat and tidy by trimming
+  - `cut#mown` (adjective); group: none; key: `cut%3:00:04::`; gloss: (used of grass or vegetation) cut down with a hand
+    implement or machine
+  - `cut#adjective-3` (adjective); group: none; key: `cut%3:00:02::`; gloss: (of pages of a book) having the folds of
+    the leaves trimmed or slit
+  - `cut#emasculated` (adjective); group: none; key: `cut%5:00:00:castrated:00`; gloss: (of a male animal) having the
+    testicles removed
+  - `cut#slashed` (adjective); group: none; key: `cut%5:00:00:decreased:00`; gloss: (used of rates or prices) reduced
+    usually sharply
+  - `cut#thinned` (adjective); group: none; key: `cut%5:00:00:diluted:00`; gloss: mixed with water
 - **cycle**; parts of speech: noun, verb; forms: cycle (noun, Number=Sing), cycle (verb, VerbForm=Inf), cycled (verb,
   Tense=Past+VerbForm=Part), cycles (noun, Number=Plur), cycles (verb, Person=3+Tense=Pres), cycling (verb,
   VerbForm=Ger), cycling (noun, Number=Sing+VerbForm=Ger)
@@ -4910,6 +5033,35 @@ project sense has none) and its gloss.
     credit and banking and investments
   - `finance#finance` (verb); group: none; key: `finance%2:40:00::`; gloss: obtain or provide money for
   - `finance#credit` (verb); group: none; key: `finance%2:40:01::`; gloss: sell or provide on credit
+- **fire**; parts of speech: noun, verb; forms: fire (noun, Number=Sing), fire (verb, VerbForm=Inf), fired (verb,
+  Tense=Past+VerbForm=Part), fires (noun, Number=Plur), fires (verb, Person=3+Tense=Pres), firing (verb, VerbForm=Ger)
+  - `fire#happening` (noun); group: none; key: `fire%1:11:00::`; gloss: the event of something burning (often
+    destructive)
+  - `fire#firing` (noun); group: none; key: `fire%1:04:00::`; gloss: the act of firing weapons or artillery at an enemy
+  - `fire#flame` (noun); group: none; key: `fire%1:22:00::`; gloss: the process of combustion of inflammable materials
+    producing heat and light and (often) smoke
+  - `fire#fireplace` (noun); group: none; key: `fire%1:06:00::`; gloss: a fireplace in which a relatively small fire is
+    burning
+  - `fire#element` (noun); group: none; key: `fire%1:27:01::`; gloss: once thought to be one of four elements composing
+    the universe (Empedocles), associated with the humour bile
+  - `fire#ardor` (noun); group: none; key: `fire%1:12:00::`; gloss: feelings of great warmth and intensity
+  - `fire#fuel` (noun); group: none; key: `fire%1:27:00::`; gloss: fuel that is burning and is used as a means for
+    cooking
+  - `fire#trial` (noun); group: none; key: `fire%1:11:01::`; gloss: a severe trial
+  - `fire#attack` (noun); group: none; key: `fire%1:10:00::`; gloss: intense adverse criticism
+  - `fire#open-fire` (verb); group: none; key: `fire%2:33:01::`; gloss: start firing a weapon
+  - `fire#discharge` (verb); group: none; key: `fire%2:33:00::`; gloss: cause to go off
+  - `fire#bake` (verb); group: none; key: `fire%2:30:00::`; gloss: bake in a kiln so as to harden
+  - `fire#can` (verb); group: none; key: `fire%2:41:00::`; gloss: terminate the employment of; discharge from an office
+    or position
+  - `fire#discharge-2` (verb); group: none; key: `fire%2:33:02::`; gloss: go off or discharge
+  - `fire#chase-away` (verb); group: none; key: `fire%2:38:02::`; gloss: drive out or away by or as if by fire
+  - `fire#arouse` (verb); group: none; key: `fire%2:37:00::`; gloss: call forth (emotions, feelings, and responses)
+  - `fire#burn` (verb); group: none; key: `fire%2:30:01::`; gloss: destroy by fire
+  - `fire#fuel-2` (verb); group: none; key: `fire%2:40:00::`; gloss: provide with fuel
+  - `fire#generate` (verb); group: none; key: `fire%2:36:00::`; gloss: generate an electrical impulse
+  - `fire#flame-up` (verb); group: none; key: `fire%2:30:03::`; gloss: become ignited
+  - `fire#ignite` (verb); group: none; key: `fire%2:30:02::`; gloss: start or maintain a fire in
 - **first**; parts of speech: noun, adjective, adverb; forms: first (adjective, Degree=Pos), first (noun, Number=Sing),
   first (adverb, Degree=Pos), firsts (noun, Number=Plur)
   - `first#top-ranked-item` (noun); group: `first#group:first-in-order`; key: `first%1:24:00::`; gloss: the first or
@@ -5168,6 +5320,39 @@ project sense has none) and its gloss.
     important things to come
   - `foretoken#foreshadow` (verb); group: none; key: project sense; gloss: indicate or give warning of something that
     will happen (archaic)
+- **form**; parts of speech: noun, verb; forms: form (noun, Number=Sing), form (verb, VerbForm=Inf), formed (verb,
+  Tense=Past+VerbForm=Part), forming (verb, VerbForm=Ger), forms (noun, Number=Plur), forms (verb, Person=3+Tense=Pres)
+  - `form#descriptor` (noun); group: none; key: `form%1:10:00::`; gloss: the phonological or orthographic sound or
+    appearance of a word that can be used to describe or identify something
+  - `form#kind` (noun); group: none; key: `form%1:09:01::`; gloss: a category of things distinguished by some common
+    characteristic or quality
+  - `form#pattern` (noun); group: none; key: `form%1:09:00::`; gloss: a perceptual structure
+  - `form#configuration` (noun); group: none; key: `form%1:07:01::`; gloss: any spatial attributes (especially as
+    defined by outline)
+  - `form#anatomy` (noun); group: none; key: `form%1:08:00::`; gloss: alternative names for the body of a human being
+  - `form#shape` (noun); group: none; key: `form%1:03:00::`; gloss: the spatial arrangement of something as distinct
+    from its substance
+  - `form#cast` (noun); group: none; key: `form%1:07:00::`; gloss: the visual appearance of something or someone
+  - `form#document` (noun); group: none; key: `form%1:10:01::`; gloss: a printed document with spaces in which to write
+  - `form#strain` (noun); group: none; key: `form%1:14:02::`; gloss: (biology) a group of organisms within a species
+    that differ in trivial ways from similar groups
+  - `form#genre` (noun); group: none; key: `form%1:10:02::`; gloss: an arrangement of the elements in a composition or
+    discourse
+  - `form#fashion` (noun); group: none; key: `form%1:07:03::`; gloss: a particular mode in which something is manifested
+  - `form#phase` (noun); group: none; key: `form%1:26:00::`; gloss: (physical chemistry) a distinct state of matter in a
+    system; matter that is identical in chemical composition and physical state and separated from other material by the
+    phase boundary
+  - `form#class` (noun); group: none; key: `form%1:14:00::`; gloss: a body of students who are taught together
+  - `form#ability` (noun); group: none; key: `form%1:07:02::`; gloss: an ability to perform well
+  - `form#manakin` (noun); group: none; key: `form%1:06:00::`; gloss: a life-size dummy used to display clothes
+  - `form#cast-2` (noun); group: none; key: `form%1:06:01::`; gloss: a mold for setting concrete
+  - `form#organise` (verb); group: none; key: `form%2:41:00::`; gloss: create (as an entity)
+  - `form#constitute` (verb); group: none; key: `form%2:42:00::`; gloss: to compose or represent
+  - `form#spring` (verb); group: none; key: `form%2:42:02::`; gloss: develop into a distinctive entity
+  - `form#shape-2` (verb); group: none; key: `form%2:30:01::`; gloss: give shape or form to
+  - `form#forge` (verb); group: none; key: `form%2:36:00::`; gloss: make something, usually for a specific function
+  - `form#imprint` (verb); group: none; key: `form%2:41:02::`; gloss: establish or impress firmly in the mind
+  - `form#change` (verb); group: none; key: `form%2:30:05::`; gloss: assume a form or shape
 - **forward**; parts of speech: noun, verb, adjective, adverb; forms: forward (adjective, Degree=Pos), forward (noun,
   Number=Sing), forward (adverb, Degree=Pos), forward (verb, VerbForm=Inf), forwarded (verb, Tense=Past+VerbForm=Part),
   forwarding (verb, VerbForm=Ger), forwards (noun, Number=Plur), forwards (verb, Person=3+Tense=Pres)
@@ -5408,6 +5593,51 @@ project sense has none) and its gloss.
     of a group or number
   - `go#fail-stop` (verb); group: `go#group:die-fail`; key: `go%2:30:03::`; gloss: stop operating or functioning
   - `go#ready-working` (adjective); group: none; key: `go%3:00:00::`; gloss: functioning correctly and ready for action
+- **good**; parts of speech: noun, adjective, adverb, interjection; forms: best (adjective, Degree=Sup), better
+  (adjective, Degree=Cmp), good (adjective, Degree=Pos), good (interjection), good (noun, Number=Sing), good (adverb,
+  Degree=Pos), goods (noun, Number=Plur)
+  - `good#advantage` (noun); group: none; key: `good%1:07:00::`; gloss: benefit
+  - `good#goodness` (noun); group: none; key: `good%1:07:01::`; gloss: moral excellence or admirableness
+  - `good#goodness-2` (noun); group: none; key: `good%1:07:02::`; gloss: that which is pleasing or valuable or useful
+  - `good#commodity` (noun); group: none; key: `good%1:06:00::`; gloss: a raw material that is sold in large quantities,
+    usually to other businesses for manufacturing or production purposes
+  - `good#adjective` (adjective); group: none; key: `good%3:00:01::`; gloss: having desirable or positive qualities
+    especially those suitable for a thing specified
+  - `good#full` (adjective); group: none; key: `good%5:00:00:ample:00`; gloss: having the normally expected amount
+  - `good#adjective-2` (adjective); group: `good#group:moral-excellence`; key: `good%3:00:02::`; gloss: morally
+    admirable
+  - `good#admirable` (adjective); group: none; key: `good%5:00:00:reputable:00`; gloss: deserving of esteem and respect
+  - `good#beneficial` (adjective); group: none; key: `good%5:00:00:advantageous:00`; gloss: promoting or enhancing
+    well-being
+  - `good#adjective-3` (adjective); group: `good#group:pleasing`; key: `good%5:00:00:nice:00`; gloss: agreeable or
+    pleasing
+  - `good#just` (adjective); group: `good#group:moral-excellence`; key: `good%5:00:00:righteous:00`; gloss: of moral
+    excellence
+  - `good#adept` (adjective); group: none; key: `good%5:00:00:skilled:00`; gloss: having or showing knowledge and skill
+    and aptitude
+  - `good#adjective-4` (adjective); group: none; key: `good%5:00:00:complete:00`; gloss: thorough
+  - `good#dear` (adjective); group: none; key: `good%5:00:00:close:02`; gloss: with or in a close or intimate
+    relationship
+  - `good#dependable` (adjective); group: none; key: `good%5:00:01:sound:00`; gloss: financially safe
+  - `good#right` (adjective); group: none; key: `good%5:00:00:opportune:00`; gloss: most suitable or right for a
+    particular purpose
+  - `good#well` (adjective); group: none; key: `good%5:00:00:fortunate:00`; gloss: resulting favorably
+  - `good#effective` (adjective); group: none; key: `good%5:00:00:operative:00`; gloss: exerting force or influence
+  - `good#adjective-6` (adjective); group: `good#group:pleasing`; key: `good%5:00:00:pleasing:00`; gloss: capable of
+    pleasing
+  - `good#serious` (adjective); group: none; key: `good%5:00:00:intellectual:00`; gloss: appealing to the mind
+  - `good#sound` (adjective); group: none; key: `good%5:00:00:healthy:00`; gloss: in excellent physical condition
+  - `good#salutary` (adjective); group: none; key: `good%5:00:00:healthful:00`; gloss: tending to promote physical
+    well-being; beneficial to health
+  - `good#honest` (adjective); group: none; key: `good%5:00:00:genuine:00`; gloss: not forged
+  - `good#unspoiled` (adjective); group: none; key: `good%5:00:00:fresh:01`; gloss: not left to spoil
+  - `good#adjective-5` (adjective); group: none; key: `good%5:00:00:discriminating:00`; gloss: generally admired
+  - `good#well-2` (adverb); group: none; key: `good%4:02:00::`; gloss: (often used as a combining form) in a good or
+    proper or satisfactory manner or to a high standard (‘good’ is a nonstandard dialectal variant for ‘well’)
+  - `good#soundly` (adverb); group: none; key: `good%4:02:01::`; gloss: completely and absolutely (‘good’ is sometimes
+    used informally for ‘thoroughly’)
+  - `good#interjection` (interjection); group: none; key: project sense; gloss: used to express approval, satisfaction,
+    or relief
 - **gossip**; parts of speech: noun, verb; forms: gossip (noun, Number=Sing), gossip (verb, VerbForm=Inf), gossiped
   (verb, Tense=Past+VerbForm=Part), gossiping (verb, VerbForm=Ger), gossiping (noun, Number=Sing+VerbForm=Ger),
   gossipped (verb, Tense=Past+VerbForm=Part), gossipping (verb, VerbForm=Ger), gossipping (noun,
@@ -5470,6 +5700,17 @@ project sense has none) and its gloss.
   - `grip#grapple` (verb); group: none; key: `grip%2:35:03::`; gloss: to grip or seize, as in a wrestling match
   - `grip#fascinate` (verb); group: none; key: `grip%2:37:00::`; gloss: to render motionless, as with a fixed stare or
     by arousing terror or awe
+- **group**; parts of speech: noun, verb; forms: group (noun, Number=Sing), group (verb, VerbForm=Inf), grouped (verb,
+  Tense=Past+VerbForm=Part), grouping (verb, VerbForm=Ger), groups (noun, Number=Plur), groups (verb,
+  Person=3+Tense=Pres)
+  - `group#grouping` (noun); group: none; key: `group%1:03:00::`; gloss: any number of entities (members) considered as
+    a unit
+  - `group#chemical-group` (noun); group: none; key: `group%1:27:00::`; gloss: (chemistry) two or more atoms bound
+    together as a single unit and forming part of a molecule
+  - `group#mathematical-group` (noun); group: none; key: `group%1:09:00::`; gloss: a set that is closed, associative,
+    has an identity element and every element has an inverse
+  - `group#assort` (verb); group: none; key: `group%2:31:00::`; gloss: arrange into a group or groups
+  - `group#aggroup` (verb); group: none; key: `group%2:33:00::`; gloss: form a group or group together
 - **guard**; parts of speech: noun, verb; forms: guard (noun, Number=Sing), guard (verb, VerbForm=Inf), guarded (verb,
   Tense=Past+VerbForm=Part), guarding (verb, VerbForm=Ger), guarding (noun, Number=Sing+VerbForm=Ger), guards (noun,
   Number=Plur), guards (verb, Person=3+Tense=Pres)
@@ -5614,6 +5855,38 @@ project sense has none) and its gloss.
     towards
   - `hate#express-hatred` (verb); group: none; key: `hate%2:32:01::`; gloss: to have and express negative sentiments
     about a person
+- **have**; parts of speech: noun, verb, auxiliary; forms: HAS (verb, Person=3+Tense=Pres), HAS (auxiliary,
+  Person=3+Tense=Pres), I've (auxiliary, Contraction=Yes), had (verb, Tense=Past+VerbForm=Part), had (auxiliary,
+  Tense=Past), hadn't (auxiliary, Contraction=Yes), has (verb, Person=3+Tense=Pres), has (auxiliary,
+  Person=3+Tense=Pres), hasn't (auxiliary, Contraction=Yes), have (verb, VerbForm=Inf), have (noun, Number=Sing), have
+  (auxiliary), haven't (auxiliary, Contraction=Yes), haves (noun, Number=Plur), having (verb, VerbForm=Ger), having
+  (auxiliary, VerbForm=Ger), they've (auxiliary, Contraction=Yes), we've (auxiliary, Contraction=Yes), you've
+  (auxiliary, Contraction=Yes)
+  - `have#noun` (noun); group: none; key: `have%1:18:00::`; gloss: a person who possesses great material wealth
+  - `have#have-got` (verb); group: none; key: `have%2:40:00::`; gloss: have or possess, either in a concrete or an
+    abstract sense
+  - `have#feature` (verb); group: none; key: `have%2:42:00::`; gloss: have as a feature
+  - `have#experience` (verb); group: `have#group:experiencing`; key: `have%2:39:06::`; gloss: go through (mental or
+    physical states or experiences)
+  - `have#own` (verb); group: none; key: `have%2:40:04::`; gloss: have ownership or possession of
+  - `have#get` (verb); group: none; key: `have%2:30:00::`; gloss: cause to move; cause to be in a certain position or
+    condition
+  - `have#consume` (verb); group: none; key: `have%2:34:00::`; gloss: serve oneself to, or consume regularly
+  - `have#interact` (verb); group: none; key: `have%2:41:00::`; gloss: have a personal or business relationship with
+    someone
+  - `have#give` (verb); group: none; key: `have%2:36:00::`; gloss: organize or be responsible for
+  - `have#comprehend` (verb); group: none; key: `have%2:42:12::`; gloss: be confronted with
+  - `have#experience-2` (verb); group: `have#group:experiencing`; key: `have%2:30:01::`; gloss: undergo
+  - `have#ache` (verb); group: none; key: `have%2:29:02::`; gloss: suffer from; be ill with
+  - `have#cause` (verb); group: none; key: `have%2:32:00::`; gloss: cause to do; cause to act in a specified manner
+  - `have#accept` (verb); group: none; key: `have%2:40:05::`; gloss: receive willingly something given or offered
+  - `have#receive` (verb); group: none; key: `have%2:40:03::`; gloss: get something; come into possession of
+  - `have#get-2` (verb); group: none; key: `have%2:29:05::`; gloss: undergo (as of injuries and illnesses)
+  - `have#get-3` (verb); group: none; key: `have%2:40:02::`; gloss: achieve a point or goal
+  - `have#bear` (verb); group: none; key: `have%2:29:00::`; gloss: cause to be born
+  - `have#take` (verb); group: none; key: `have%2:35:00::`; gloss: have sex with; archaic use
+  - `have#auxiliary` (auxiliary); group: none; key: project sense; gloss: auxiliary used with a past participle to form
+    perfect constructions
 - **head**; parts of speech: noun, verb; forms: head (noun, Number=Sing), head (verb, VerbForm=Inf), headed (verb,
   Tense=Past+VerbForm=Part), heading (verb, VerbForm=Ger), heading (noun, Number=Sing+VerbForm=Ger), heads (noun,
   Number=Plur), heads (verb, Person=3+Tense=Pres)
@@ -5703,6 +5976,65 @@ project sense has none) and its gloss.
     better
   - `help#cry-for-aid` (interjection); group: none; key: project sense; gloss: cry calling for urgent assistance (Help!
     Fire!)
+- **hold**; parts of speech: noun, verb; forms: held (verb, Tense=Past+VerbForm=Part), hold (verb, VerbForm=Inf), hold
+  (noun, Number=Sing), holding (verb, VerbForm=Ger), holds (verb, Person=3+Tense=Pres), holds (noun, Number=Plur)
+  - `hold#clasp` (noun); group: none; key: `hold%1:04:00::`; gloss: the act of grasping
+  - `hold#appreciation` (noun); group: none; key: `hold%1:09:00::`; gloss: understanding of the nature or meaning or
+    quality or magnitude of something
+  - `hold#control` (noun); group: none; key: `hold%1:07:00::`; gloss: power by which something or someone is affected or
+    dominated
+  - `hold#delay` (noun); group: none; key: `hold%1:28:00::`; gloss: time during which some action is awaited
+  - `hold#custody` (noun); group: none; key: `hold%1:26:00::`; gloss: a state of being confined (usually for a short
+    time)
+  - `hold#fastness` (noun); group: none; key: `hold%1:06:03::`; gloss: a stronghold
+  - `hold#keep` (noun); group: none; key: `hold%1:06:01::`; gloss: a cell in a jail or prison
+  - `hold#grip` (noun); group: none; key: `hold%1:06:00::`; gloss: the appendage to an object that is designed to be
+    held in order to use or move it
+  - `hold#cargo-area` (noun); group: none; key: `hold%1:06:02::`; gloss: the space in a ship or aircraft for storing
+    cargo
+  - `hold#keep-2` (verb); group: none; key: `hold%2:42:00::`; gloss: cause to continue in a certain state, position, or
+    activity
+  - `hold#have` (verb); group: none; key: `hold%2:35:00::`; gloss: have or hold in one's hands or grip
+  - `hold#give` (verb); group: none; key: `hold%2:36:00::`; gloss: organize or be responsible for
+  - `hold#have-2` (verb); group: none; key: `hold%2:40:00::`; gloss: have or possess, either in a concrete or an
+    abstract sense
+  - `hold#deem` (verb); group: none; key: `hold%2:31:01::`; gloss: keep in mind or convey as a conviction or view
+  - `hold#bear` (verb); group: none; key: `hold%2:37:00::`; gloss: maintain (a theory, thoughts, or feelings)
+  - `hold#confine` (verb); group: none; key: `hold%2:35:03::`; gloss: to close within bounds, or otherwise limit or
+    deprive of free movement
+  - `hold#hold-back` (verb); group: none; key: `hold%2:40:02::`; gloss: secure and keep for possible future use or
+    application
+  - `hold#bear-2` (verb); group: none; key: `hold%2:40:04::`; gloss: have rightfully; of rights, titles, and offices
+  - `hold#hold-up` (verb); group: none; key: `hold%2:35:01::`; gloss: be the physical support of; carry the weight of
+  - `hold#bear-3` (verb); group: none; key: `hold%2:42:13::`; gloss: contain or hold; have within
+  - `hold#accommodate` (verb); group: none; key: `hold%2:42:05::`; gloss: have room for; hold without crowding
+  - `hold#continue` (verb); group: none; key: `hold%2:42:01::`; gloss: remain in a certain state, position, or condition
+  - `hold#bear-4` (verb); group: none; key: `hold%2:35:02::`; gloss: support or hold in a certain manner
+  - `hold#obtain` (verb); group: none; key: `hold%2:42:02::`; gloss: be valid, applicable, or true
+  - `hold#affirm` (verb); group: none; key: `hold%2:31:08::`; gloss: assert or affirm
+  - `hold#have-3` (verb); group: none; key: `hold%2:42:07::`; gloss: have as a major characteristic
+  - `hold#contain` (verb); group: none; key: `hold%2:42:14::`; gloss: be capable of holding or containing
+  - `hold#book` (verb); group: none; key: `hold%2:41:00::`; gloss: arrange for and reserve (something for someone else)
+    in advance
+  - `hold#defend` (verb); group: none; key: `hold%2:33:05::`; gloss: protect against a challenge or attack
+  - `hold#bind` (verb); group: none; key: `hold%2:32:13::`; gloss: bind by an obligation; cause to be indebted
+  - `hold#becharm` (verb); group: none; key: `hold%2:31:04::`; gloss: hold the attention of
+  - `hold#believe` (verb); group: none; key: `hold%2:31:10::`; gloss: remain committed to
+  - `hold#defy` (verb); group: none; key: `hold%2:42:08::`; gloss: resist or confront with resistance
+  - `hold#apply` (verb); group: none; key: `hold%2:42:04::`; gloss: be pertinent or relevant or applicable
+  - `hold#defer` (verb); group: none; key: `hold%2:42:12::`; gloss: stop dealing with
+  - `hold#check` (verb); group: none; key: `hold%2:41:15::`; gloss: lessen the intensity of; temper; hold in restraint;
+    hold or keep within limits
+  - `hold#keep-3` (verb); group: none; key: `hold%2:41:13::`; gloss: keep from departing
+  - `hold#command` (verb); group: none; key: `hold%2:41:14::`; gloss: take and maintain control over, often by violent
+    means
+  - `hold#arrest` (verb); group: none; key: `hold%2:38:05::`; gloss: cause to come to an abrupt stop
+  - `hold#cover` (verb); group: none; key: `hold%2:35:09::`; gloss: cover as for protection against noise or smell
+  - `hold#carry` (verb); group: none; key: `hold%2:34:00::`; gloss: drink alcohol without showing ill effects
+  - `hold#aim` (verb); group: none; key: `hold%2:33:00::`; gloss: aim, point, or direct
+  - `hold#adjudge` (verb); group: none; key: `hold%2:32:11::`; gloss: declare to be
+  - `hold#agree` (verb); group: none; key: `hold%2:32:15::`; gloss: be in accord; be in agreement
+  - `hold#hold-back-2` (verb); group: none; key: `hold%2:29:04::`; gloss: keep from exhaling or expelling
 - **home**; parts of speech: noun, verb, adjective, adverb; forms: home (noun, Number=Sing), home (adjective,
   Degree=Pos), home (adverb, Degree=Pos), home (verb, VerbForm=Inf), homed (verb, Tense=Past+VerbForm=Part), homes
   (noun, Number=Plur), homes (verb, Person=3+Tense=Pres), homing (verb, VerbForm=Ger)
@@ -6800,6 +7132,87 @@ project sense has none) and its gloss.
   - `lift#transplant` (verb); group: none; key: `lift%2:30:08::`; gloss: remove from a seedbed or from a nursery
   - `lift#peel-off` (verb); group: none; key: `lift%2:30:00::`; gloss: remove from a surface
   - `lift#face-lift` (verb); group: none; key: `lift%2:29:00::`; gloss: perform cosmetic surgery on someone's face
+- **light**; parts of speech: noun, verb, adjective, adverb; forms: Light (noun, Number=Sing), Light (adjective,
+  Degree=Pos), Light (verb, VerbForm=Inf), Light (adverb, Degree=Pos), Lights (noun, Number=Plur), Lights (verb,
+  Person=3+Tense=Pres), light (noun, Number=Sing), light (adjective, Degree=Pos), light (verb, VerbForm=Inf), light
+  (adverb, Degree=Pos), lighted (verb, Tense=Past+VerbForm=Part), lighter (adjective, Degree=Cmp), lightest (adjective,
+  Degree=Sup), lighting (verb, VerbForm=Ger), lights (noun, Number=Plur), lights (verb, Person=3+Tense=Pres), lit (verb,
+  Tense=Past+VerbForm=Part)
+  - `light#visible-light` (noun); group: none; key: `light%1:19:00::`; gloss: (physics) electromagnetic radiation that
+    can produce a visual sensation
+  - `light#light-source` (noun); group: none; key: `light%1:06:00::`; gloss: any device serving as a source of
+    illumination
+  - `light#perspective` (noun); group: none; key: `light%1:09:01::`; gloss: a particular perspective or aspect of a
+    situation
+  - `light#brightness` (noun); group: none; key: `light%1:07:01::`; gloss: the quality of being luminous; emitting or
+    reflecting light
+  - `light#scene` (noun); group: none; key: `light%1:15:00::`; gloss: an illuminated area
+  - `light#illumination` (noun); group: none; key: `light%1:26:01::`; gloss: a condition of spiritual awareness; divine
+    illumination
+  - `light#lightness` (noun); group: none; key: `light%1:07:00::`; gloss: the visual effect of illumination on objects
+    or scenes as created in pictures
+  - `light#friend` (noun); group: none; key: `light%1:18:00::`; gloss: a person regarded very fondly
+  - `light#lighting` (noun); group: none; key: `light%1:26:00::`; gloss: having abundant light or illumination
+  - `light#brainstorm` (noun); group: none; key: `light%1:09:00::`; gloss: mental understanding as an enlightening
+    experience
+  - `light#spark` (noun); group: none; key: `light%1:07:02::`; gloss: merriment expressed by a brightness or gleam or
+    animation of countenance
+  - `light#general-knowledge` (noun); group: none; key: `light%1:09:02::`; gloss: public awareness
+  - `light#visual-signal` (noun); group: none; key: `light%1:10:00::`; gloss: a visual warning signal
+  - `light#igniter` (noun); group: none; key: `light%1:06:01::`; gloss: a device for lighting or igniting fuel or
+    charges or fires
+  - `light#illume` (verb); group: none; key: `light%2:30:00::`; gloss: introduce light into
+  - `light#fire-up` (verb); group: none; key: `light%2:34:00::`; gloss: begin to smoke
+  - `light#alight` (verb); group: none; key: `light%2:38:00::`; gloss: to come to rest, settle
+  - `light#ignite` (verb); group: none; key: `light%2:43:00::`; gloss: cause to start burning; subject to fire or great
+    heat
+  - `light#fall` (verb); group: none; key: `light%2:40:12::`; gloss: fall to somebody by assignment or lot; passed
+  - `light#dismount` (verb); group: none; key: `light%2:38:01::`; gloss: alight from (a horse)
+  - `light#fire` (verb); group: none; key: `light%2:30:01::`; gloss: start or maintain a fire in
+  - `light#adjective` (adjective); group: none; key: `light%3:00:01::`; gloss: of comparatively little physical weight
+    or density
+  - `light#light-colored` (adjective); group: none; key: `light%3:00:05::`; gloss: (used of color) having a relatively
+    small amount of coloring agent
+  - `light#adjective-2` (adjective); group: none; key: `light%3:00:04::`; gloss: of the military or industry; using (or
+    being) relatively small or light arms or equipment
+  - `light#adjective-4` (adjective); group: none; key: `light%3:00:03::`; gloss: not great in degree or quantity or
+    number
+  - `light#adjective-3` (adjective); group: none; key: `light%3:00:02::`; gloss: psychologically light; especially free
+    from sadness or troubles
+  - `light#adjective-5` (adjective); group: none; key: `light%3:00:06::`; gloss: characterized by or emitting light
+  - `light#unaccented` (adjective); group: none; key: `light%5:00:00:unstressed:00`; gloss: (used of vowels or
+    syllables) pronounced with little or no stress
+  - `light#adjective-6` (adjective); group: none; key: `light%5:00:00:digestible:00`; gloss: easily assimilated in the
+    alimentary canal; not rich or heavily seasoned
+  - `light#adjective-7` (adjective); group: none; key: `light%5:00:00:loose:02`; gloss: (used of soil) loose and
+    large-grained in consistency
+  - `light#clean` (adjective); group: none; key: `light%5:00:00:pure:02`; gloss: (of sound or color) free from anything
+    that dulls or dims
+  - `light#lightsome` (adjective); group: none; key: `light%5:00:00:light-footed:00`; gloss: moving easily and quickly;
+    nimble
+  - `light#adjective-8` (adjective); group: none; key: `light%5:00:00:undemanding:01`; gloss: demanding little effort;
+    not burdensome
+  - `light#adjective-10` (adjective); group: none; key: `light%3:00:08::`; gloss: of little intensity or power or force
+  - `light#adjective-9` (adjective); group: none; key: `light%3:00:07::`; gloss: (physics, chemistry) not having atomic
+    weight greater than average
+  - `light#faint` (adjective); group: none; key: `light%5:00:00:ill:01`; gloss: weak and likely to lose consciousness
+  - `light#adjective-13` (adjective); group: none; key: `light%5:00:00:thin:01`; gloss: very thin and insubstantial
+  - `light#abstemious` (adjective); group: none; key: `light%5:00:00:temperate:00`; gloss: marked by temperance in
+    indulgence
+  - `light#scant` (adjective); group: none; key: `light%5:00:00:insufficient:00`; gloss: less than the correct or legal
+    or full amount often deliberately so
+  - `light#adjective-11` (adjective); group: none; key: `light%5:00:00:insignificant:00`; gloss: having little
+    importance
+  - `light#adjective-14` (adjective); group: none; key: `light%5:00:02:frivolous:00`; gloss: intended primarily as
+    entertainment; not serious or profound
+  - `light#idle` (adjective); group: none; key: `light%5:00:00:frivolous:00`; gloss: silly or trivial
+  - `light#adjective-12` (adjective); group: none; key: `light%5:00:00:light-duty:00`; gloss: designed for ease of
+    movement or to carry little weight
+  - `light#calorie-free` (adjective); group: none; key: `light%5:00:00:nonfat:00`; gloss: having relatively few calories
+  - `light#wakeful` (adjective); group: none; key: `light%5:00:00:shallow:02`; gloss: (of sleep) easily disturbed
+  - `light#easy` (adjective); group: none; key: `light%5:00:00:unchaste:00`; gloss: casual and unrestrained in sexual
+    behavior
+  - `light#adverb` (adverb); group: none; key: `light%4:02:00::`; gloss: with few burdens
 - **like**; parts of speech: noun, verb, adjective, preposition, conjunction; forms: like (noun, Number=Sing), like
   (verb, VerbForm=Inf), like (adjective, Degree=Pos), like (preposition), like (adverb, Degree=Pos), like (conjunction),
   liked (verb, Tense=Past+VerbForm=Part), likes (noun, Number=Plur), likes (verb, Person=3+Tense=Pres), liking (verb,
@@ -7032,6 +7445,28 @@ project sense has none) and its gloss.
     or necessary
   - `long#for-long-time` (adverb); group: none; key: `long%4:02:00::`; gloss: for an extended time or at a distant time
   - `long#for-distance` (adverb); group: none; key: `long%4:02:03::`; gloss: for an extended distance
+- **look**; parts of speech: noun, verb; forms: look (verb, VerbForm=Inf), look (noun, Number=Sing), looked (verb,
+  Tense=Past+VerbForm=Part), looking (verb, VerbForm=Ger), looks (verb, Person=3+Tense=Pres), looks (noun, Number=Plur)
+  - `look#aspect` (noun); group: none; key: `look%1:07:01::`; gloss: the feelings expressed on a person's face
+  - `look#looking` (noun); group: none; key: `look%1:04:00::`; gloss: the act of directing the eyes toward something and
+    perceiving it visually; look
+  - `look#appearance` (noun); group: none; key: `look%1:07:00::`; gloss: physical appearance
+  - `look#feel` (noun); group: none; key: `look%1:26:00::`; gloss: the general atmosphere of a place or situation and
+    the effect that it has on people
+  - `look#act` (verb); group: none; key: `look%2:39:00::`; gloss: perceive with attention; direct one's gaze towards;
+    look
+  - `look#appear` (verb); group: none; key: `look%2:39:01::`; gloss: give a certain impression of being something or
+    having a certain aspect
+  - `look#be` (verb); group: none; key: `look%2:29:00::`; gloss: to physically appear a certain way to another
+    individual or group
+  - `look#search` (verb); group: none; key: `look%2:39:02::`; gloss: search or seek
+  - `look#face` (verb); group: none; key: `look%2:42:00::`; gloss: be oriented in a certain direction, often with
+    respect to another reference point; be opposite to
+  - `look#attend` (verb); group: none; key: `look%2:41:13::`; gloss: take charge of or deal with
+  - `look#convey` (verb); group: none; key: `look%2:32:00::`; gloss: convey by one's expression
+  - `look#await` (verb); group: none; key: `look%2:31:00::`; gloss: look forward to the probable occurrence of
+  - `look#agree` (verb); group: none; key: `look%2:42:02::`; gloss: accord in appearance with
+  - `look#bank` (verb); group: none; key: `look%2:31:02::`; gloss: have faith or confidence in
 - **lounge**; parts of speech: noun, verb; forms: lounge (noun, Number=Sing), lounge (verb, VerbForm=Inf), lounged
   (verb, Tense=Past+VerbForm=Part), lounges (noun, Number=Plur), lounges (verb, Person=3+Tense=Pres), lounging (verb,
   VerbForm=Ger), lounging (noun, Number=Sing+VerbForm=Ger)
@@ -7040,6 +7475,31 @@ project sense has none) and its gloss.
     seating where people can wait
   - `lounge#recline` (verb); group: none; key: `lounge%2:35:00::`; gloss: sit or recline comfortably
   - `lounge#loiter` (verb); group: none; key: `lounge%2:42:00::`; gloss: be about a place without any apparent purpose
+- **love**; parts of speech: noun, verb; forms: love (verb, VerbForm=Inf), love (noun, Number=Sing), loved (verb,
+  Tense=Past+VerbForm=Part), loves (verb, Person=3+Tense=Pres), loves (noun, Number=Plur), loving (verb, VerbForm=Ger)
+  - `love#emotion` (noun); group: none; key: `love%1:12:00::`; gloss: a strong positive emotion of regard and affection
+  - `love#passion` (noun); group: none; key: `love%1:09:00::`; gloss: any object of warm affection or devotion
+  - `love#baby` (noun); group: none; key: `love%1:18:00::`; gloss: a beloved person; used as terms of endearment
+  - `love#erotic-love` (noun); group: none; key: `love%1:12:01::`; gloss: a deep feeling of sexual desire and attraction
+  - `love#score` (noun); group: none; key: `love%1:23:00::`; gloss: a score of zero in tennis or squash
+  - `love#love-life` (noun); group: none; key: `love%1:04:00::`; gloss: sexual activities (often including sexual
+    intercourse) between two people
+  - `love#experience` (verb); group: none; key: `love%2:37:00::`; gloss: have a great affection or liking for
+  - `love#enjoy` (verb); group: none; key: `love%2:37:02::`; gloss: get pleasure from
+  - `love#verb` (verb); group: none; key: `love%2:37:01::`; gloss: be enamored or in love with
+  - `love#bang` (verb); group: none; key: `love%2:35:00::`; gloss: have sexual intercourse with
+- **lower**; parts of speech: noun, verb, adjective; forms: lower (adjective, Degree=Pos), lower (verb, VerbForm=Inf),
+  lower (noun, Number=Sing), lowered (verb, Tense=Past+VerbForm=Part), lowering (verb, VerbForm=Ger), lowers (verb,
+  Person=3+Tense=Pres), lowers (noun, Number=Plur)
+  - `lower#noun` (noun); group: none; key: `lower%1:06:00::`; gloss: the lower of two berths
+  - `lower#bring-down` (verb); group: none; key: `lower%2:38:00::`; gloss: move something or somebody to a lower
+    position
+  - `lower#frown` (verb); group: none; key: `lower%2:29:00::`; gloss: look angry or sullen, wrinkle one's forehead, as
+    if to signal disapproval
+  - `lower#lour` (verb); group: none; key: `lower%2:30:01::`; gloss: set lower
+  - `lower#lour-2` (verb); group: none; key: `lower%2:30:00::`; gloss: make lower or quieter
+  - `lower#depress` (verb); group: none; key: `lower%2:35:03::`; gloss: cause to drop or sink
+  - `lower#adjective` (adjective); group: none; key: `lower%3:00:01::`; gloss: the bottom one of two
 - **lunge**; parts of speech: noun, verb; forms: lunge (noun, Number=Sing), lunge (verb, VerbForm=Inf), lunged (verb,
   Tense=Past+VerbForm=Part), lunges (noun, Number=Plur), lunges (verb, Person=3+Tense=Pres), lunging (verb,
   VerbForm=Ger)
@@ -7069,6 +7529,65 @@ project sense has none) and its gloss.
   - `mail#send-by-post` (verb); group: none; key: `mail%2:35:00::`; gloss: send via the postal service
   - `mail#forward` (verb); group: none; key: `mail%2:32:00::`; gloss: cause to be directed or transmitted to another
     place
+- **make**; parts of speech: noun, verb; forms: made (verb, Tense=Past+VerbForm=Part), make (verb, VerbForm=Inf), make
+  (noun, Number=Sing), makes (verb, Person=3+Tense=Pres), makes (noun, Number=Plur), making (verb, VerbForm=Ger)
+  - `make#brand` (noun); group: none; key: `make%1:09:00::`; gloss: a recognizable kind
+  - `make#shuffle` (noun); group: none; key: `make%1:04:00::`; gloss: the act of mixing cards haphazardly
+  - `make#do` (verb); group: none; key: `make%2:41:00::`; gloss: engage in
+  - `make#get` (verb); group: none; key: `make%2:30:00::`; gloss: give certain properties to something
+  - `make#create` (verb); group: none; key: `make%2:36:00::`; gloss: make or cause to be or to become
+  - `make#cause` (verb); group: none; key: `make%2:32:00::`; gloss: cause to do; cause to act in a specified manner
+  - `make#cause-2` (verb); group: none; key: `make%2:36:08::`; gloss: give rise to; cause to happen or occur, not always
+    intentionally
+  - `make#create-2` (verb); group: none; key: `make%2:36:01::`; gloss: create or manufacture a man-made product
+  - `make#draw` (verb); group: none; key: `make%2:31:00::`; gloss: make, formulate, or derive in the mind
+  - `make#cause-3` (verb); group: none; key: `make%2:36:15::`; gloss: compel or make somebody or something to act in a
+    certain way
+  - `make#create-3` (verb); group: none; key: `make%2:36:09::`; gloss: create by artistic means
+  - `make#bring-in` (verb); group: none; key: `make%2:40:01::`; gloss: earn on some commercial or business transaction;
+    earn as salary or wages
+  - `make#do-2` (verb); group: none; key: `make%2:36:05::`; gloss: create or design, often in a certain way
+  - `make#constitute` (verb); group: none; key: `make%2:42:05::`; gloss: to compose or represent
+  - `make#get-to` (verb); group: `make#group:goal-attainment`; key: `make%2:38:02::`; gloss: reach a goal
+  - `make#become` (verb); group: none; key: `make%2:42:00::`; gloss: be or be capable of being changed or made into
+  - `make#create-from-raw-material` (verb); group: none; key: `make%2:36:11::`; gloss: make by shaping or bringing
+    together constituents
+  - `make#do-3` (verb); group: none; key: `make%2:36:12::`; gloss: perform, produce, or carry out
+  - `make#build` (verb); group: none; key: `make%2:36:13::`; gloss: make by combining materials and parts
+  - `make#alter` (verb); group: none; key: `make%2:30:15::`; gloss: change from one form into another
+  - `make#acquit` (verb); group: none; key: `make%2:29:08::`; gloss: act in a certain way so as to acquire
+  - `make#name` (verb); group: none; key: `make%2:41:03::`; gloss: charge with a function; charge to be
+  - `make#get-2` (verb); group: `make#group:goal-attainment`; key: `make%2:40:02::`; gloss: achieve a point or goal
+  - `make#arrive-at` (verb); group: none; key: `make%2:38:00::`; gloss: reach a destination, either real or abstract
+  - `make#establish` (verb); group: none; key: `make%2:31:13::`; gloss: institute, enact, or establish
+  - `make#commit` (verb); group: none; key: `make%2:41:13::`; gloss: carry out or commit
+  - `make#assemble` (verb); group: none; key: `make%2:41:01::`; gloss: form by assembling individuals or constituents
+  - `make#give` (verb); group: none; key: `make%2:36:04::`; gloss: organize or be responsible for
+  - `make#make-up` (verb); group: none; key: `make%2:30:02::`; gloss: put in order or neaten
+  - `make#take` (verb); group: none; key: `make%2:38:05::`; gloss: head into a specified direction
+  - `make#ca-ca` (verb); group: none; key: `make%2:29:00::`; gloss: have a bowel movement
+  - `make#change` (verb); group: none; key: `make%2:42:09::`; gloss: undergo fabrication or creation
+  - `make#be` (verb); group: none; key: `make%2:42:13::`; gloss: be suitable for
+  - `make#add-up` (verb); group: `make#group:numerical-total`; key: `make%2:42:12::`; gloss: add up to
+  - `make#amount` (verb); group: `make#group:numerical-total`; key: `make%2:42:11::`; gloss: amount to
+  - `make#be-2` (verb); group: none; key: `make%2:42:15::`; gloss: constitute the essence of
+  - `make#appear` (verb); group: none; key: `make%2:39:12::`; gloss: appear to begin an activity
+  - `make#work` (verb); group: none; key: `make%2:38:10::`; gloss: proceed along a path
+  - `make#create-from-raw-material-2` (verb); group: none; key: `make%2:36:10::`; gloss: gather and light the materials
+    for
+  - `make#cook` (verb); group: none; key: `make%2:36:07::`; gloss: prepare for eating by applying heat
+  - `make#score` (verb); group: none; key: `make%2:35:13::`; gloss: induce to have sex
+  - `make#assure` (verb); group: none; key: `make%2:32:14::`; gloss: assure the success of
+  - `make#make-believe` (verb); group: none; key: `make%2:32:09::`; gloss: represent fictitiously, as in a play, or
+    pretend to be or act like
+  - `make#consider` (verb); group: none; key: `make%2:31:10::`; gloss: consider as being
+  - `make#approximate` (verb); group: none; key: `make%2:31:12::`; gloss: calculate as being
+  - `make#alter-2` (verb); group: none; key: `make%2:30:10::`; gloss: cause to be enjoyable or pleasurable
+  - `make#develop-2` (verb); group: none; key: `make%2:30:14::`; gloss: favor the development of
+  - `make#develop` (verb); group: none; key: `make%2:30:12::`; gloss: develop into
+  - `make#acquit-2` (verb); group: none; key: `make%2:29:06::`; gloss: behave in a certain manner
+  - `make#make-water` (verb); group: none; key: `make%2:29:01::`; gloss: eliminate urine
+  - `make#catch` (verb); group: none; key: `make%2:38:15::`; gloss: reach in time
 - **marginate**; parts of speech: verb, adjective; forms: marginate (adjective, Degree=Pos), marginate (verb,
   VerbForm=Inf), marginated (verb, Tense=Past+VerbForm=Part), marginates (verb, Person=3+Tense=Pres), marginating (verb,
   VerbForm=Ger)
@@ -7352,6 +7871,16 @@ project sense has none) and its gloss.
   - `moderate#temperate` (adjective); group: none; key: `moderate%5:00:00:mild:00`; gloss: not extreme
   - `moderate#restrained` (adjective); group: none; key: `moderate%5:00:00:temperate:00`; gloss: marked by avoidance of
     extravagance or extremes
+- **mole**; parts of speech: noun; forms: mole (Number=Sing), moles (Number=Plur)
+  - `mole#gram-molecule` (noun); group: none; key: `mole%1:23:00::`; gloss: the molecular weight of a substance
+    expressed in grams; the basic unit of amount of substance adopted under the Systeme International d'Unites
+  - `mole#sauce` (noun); group: none; key: `mole%1:13:00::`; gloss: spicy sauce often containing chocolate
+  - `mole#counterspy` (noun); group: none; key: `mole%1:18:00::`; gloss: a spy who works against enemy espionage
+  - `mole#blemish` (noun); group: none; key: `mole%1:07:00::`; gloss: a small congenital pigmented spot on the skin
+  - `mole#breakwater` (noun); group: none; key: `mole%1:06:00::`; gloss: a protective structure of stone or concrete;
+    extends from shore into the water to prevent a beach from washing away
+  - `mole#insectivore` (noun); group: none; key: `mole%1:05:00::`; gloss: small velvety-furred burrowing mammal having
+    small eyes and fossorial forefeet
 - **monitor**; parts of speech: noun, verb; forms: monitor (noun, Number=Sing), monitor (verb, VerbForm=Inf), monitored
   (verb, Tense=Past+VerbForm=Part), monitoring (verb, VerbForm=Ger), monitoring (noun, Number=Sing+VerbForm=Ger),
   monitorring (noun, Number=Sing+VerbForm=Ger), monitors (noun, Number=Plur), monitors (verb, Person=3+Tense=Pres)
@@ -7493,6 +8022,27 @@ project sense has none) and its gloss.
   - `nail#ace` (verb); group: none; key: `nail%2:41:00::`; gloss: succeed at easily
   - `nail#pinpoint` (verb); group: none; key: `nail%2:40:00::`; gloss: locate exactly
   - `nail#complete` (verb); group: none; key: `nail%2:33:00::`; gloss: complete a pass
+- **name**; parts of speech: noun, verb; forms: name (noun, Number=Sing), name (verb, VerbForm=Inf), named (verb,
+  Tense=Past+VerbForm=Part), names (noun, Number=Plur), names (verb, Person=3+Tense=Pres), naming (verb, VerbForm=Ger)
+  - `name#language-unit` (noun); group: none; key: `name%1:10:00::`; gloss: a language unit by which a person or thing
+    is known
+  - `name#reputation` (noun); group: none; key: `name%1:26:00::`; gloss: a person's reputation
+  - `name#gens` (noun); group: none; key: `name%1:14:00::`; gloss: family based on male descent
+  - `name#figure` (noun); group: none; key: `name%1:18:00::`; gloss: a well-known or notable person
+  - `name#sanction` (noun); group: none; key: `name%1:04:00::`; gloss: by the sanction or authority of
+  - `name#epithet` (noun); group: none; key: `name%1:10:01::`; gloss: a defamatory or abusive word or phrase
+  - `name#be-known-as` (verb); group: none; key: `name%2:32:03::`; gloss: assign a specified (usually proper) name to
+  - `name#identify` (verb); group: none; key: `name%2:32:02::`; gloss: give the name or identifying characteristics of;
+    refer to by name or some other identifying characteristic property
+  - `name#make` (verb); group: none; key: `name%2:41:01::`; gloss: charge with a function; charge to be
+  - `name#appoint` (verb); group: none; key: `name%2:41:00::`; gloss: create and charge with a task or function
+  - `name#define` (verb); group: none; key: `name%2:32:07::`; gloss: mention and identify by name
+  - `name#advert` (verb); group: none; key: `name%2:32:04::`; gloss: make reference to
+  - `name#describe` (verb); group: none; key: `name%2:31:01::`; gloss: identify as in botany or biology, for example
+  - `name#list` (verb); group: none; key: `name%2:32:09::`; gloss: give or make a list of; name individually; give the
+    names of
+  - `name#diagnose` (verb); group: none; key: `name%2:31:00::`; gloss: determine or distinguish the nature of a problem
+    or an illness through a diagnostic analysis
 - **nearby**; parts of speech: adjective, adverb; forms: nearby (adjective, Degree=Pos), nearby (adverb, Degree=Pos)
   - `nearby#close` (adjective); group: none; key: `nearby%5:00:00:near:00`; gloss: close at hand
   - `nearby#close-by` (adverb); group: none; key: `nearby%4:02:00::`; gloss: not far away in relative terms
@@ -7662,6 +8212,58 @@ project sense has none) and its gloss.
   - `only#ultimately` (adverb); group: `only#group:outcome`; key: `only%4:02:04::`; gloss: in the final outcome
   - `only#except-that` (adverb); group: none; key: `only%4:02:06::`; gloss: except that
   - `only#as-recently-as` (adverb); group: none; key: `only%4:02:05::`; gloss: as recently as
+- **open**; parts of speech: noun, verb, adjective; forms: open (adjective, Degree=Pos), open (verb, VerbForm=Inf), open
+  (noun, Number=Sing), opened (verb, Tense=Past+VerbForm=Part), opening (verb, VerbForm=Ger), opens (verb,
+  Person=3+Tense=Pres), opens (noun, Number=Plur)
+  - `open#clear` (noun); group: none; key: `open%1:15:01::`; gloss: a clear or unobstructed space or expanse of land or
+    water
+  - `open#open-air` (noun); group: none; key: `open%1:15:02::`; gloss: where the air is unconfined
+  - `open#tournament` (noun); group: none; key: `open%1:11:00::`; gloss: a tournament in which both professionals and
+    amateurs may play
+  - `open#surface` (noun); group: none; key: `open%1:09:00::`; gloss: information that has become public
+  - `open#open-up` (verb); group: none; key: `open%2:35:00::`; gloss: cause to open or to become open
+  - `open#open-up-2` (verb); group: none; key: `open%2:41:00::`; gloss: start to operate or function or cause to start
+    operating or functioning
+  - `open#open-up-3` (verb); group: none; key: `open%2:35:06::`; gloss: become open
+  - `open#commence` (verb); group: none; key: `open%2:41:01::`; gloss: begin or set in action, of meetings, speeches,
+    recitals, etc.
+  - `open#spread` (verb); group: none; key: `open%2:35:08::`; gloss: spread out or open from a closed or folded state
+  - `open#open-up-4` (verb); group: none; key: `open%2:30:00::`; gloss: make available
+  - `open#open-up-5` (verb); group: none; key: `open%2:30:01::`; gloss: become available
+  - `open#be` (verb); group: none; key: `open%2:42:00::`; gloss: have an opening or passage or outlet
+  - `open#go` (verb); group: none; key: `open%2:33:00::`; gloss: make the opening move
+  - `open#display` (verb); group: none; key: `open%2:39:10::`; gloss: display the contents of a file or start an
+    application as on a computer
+  - `open#unfastened` (adjective); group: none; key: `open%3:00:01::`; gloss: affording unobstructed entrance and exit;
+    not shut or closed
+  - `open#adjective` (adjective); group: none; key: `open%3:00:02::`; gloss: affording free passage or access
+  - `open#exposed` (adjective); group: `open#group:unprotected`; key: `open%5:00:00:unprotected:00`; gloss: with no
+    protection or shield
+  - `open#adjective-2` (adjective); group: none; key: `open%5:00:00:public:00`; gloss: open to or in view of all
+  - `open#opened` (adjective); group: none; key: `open%3:00:08::`; gloss: used of mouth or eyes
+  - `open#adjective-3` (adjective); group: none; key: `open%5:00:00:available:00`; gloss: not having been filled
+  - `open#adjective-4` (adjective); group: none; key: `open%5:00:00:unrestricted:00`; gloss: accessible to all
+  - `open#assailable` (adjective); group: none; key: `open%5:00:00:vulnerable:00`; gloss: not defended or capable of
+    being defended
+  - `open#loose` (adjective); group: none; key: `open%5:00:00:coarse:00`; gloss: (of textures) full of small openings or
+    gaps
+  - `open#adjective-5` (adjective); group: `open#group:unprotected`; key: `open%5:00:00:unenclosed:00`; gloss: having no
+    protecting cover or enclosure
+  - `open#adjective-6` (adjective); group: none; key: `open%3:00:04::`; gloss: (set theory) of an interval that contains
+    neither of its endpoints
+  - `open#undecided` (adjective); group: none; key: `open%5:00:00:unsettled:02`; gloss: not brought to a conclusion;
+    subject to further thought
+  - `open#opened-2` (adjective); group: none; key: `open%5:00:00:unsealed:01`; gloss: not sealed or having been unsealed
+  - `open#adjective-7` (adjective); group: none; key: `open%5:00:00:unconstricted:00`; gloss: without undue constriction
+    as from e.g. tenseness or inhibition
+  - `open#receptive` (adjective); group: none; key: `open%3:00:00::`; gloss: ready or willing to receive favorably
+  - `open#overt` (adjective); group: none; key: `open%3:00:07::`; gloss: open and observable; not secret or hidden
+  - `open#adjective-9` (adjective); group: none; key: `open%5:00:00:nonunion:00`; gloss: not requiring union membership
+  - `open#capable` (adjective); group: none; key: `open%5:00:00:susceptible:00`; gloss: possibly accepting or permitting
+  - `open#clear-2` (adjective); group: none; key: `open%5:00:00:unobstructed:00`; gloss: affording free passage or view
+  - `open#candid` (adjective); group: none; key: `open%5:00:00:ingenuous:00`; gloss: openly straightforward and direct
+    without reserve or secretiveness
+  - `open#adjective-8` (adjective); group: none; key: `open%5:00:00:active:06`; gloss: ready for business
 - **opiate**; parts of speech: noun, verb; forms: opiate (noun, Number=Sing), opiate (verb, VerbForm=Inf), opiate
   (adjective, Degree=Pos), opiated (verb, Tense=Past+VerbForm=Part), opiates (noun, Number=Plur), opiates (verb,
   Person=3+Tense=Pres), opiating (verb, VerbForm=Ger)
@@ -7682,6 +8284,51 @@ project sense has none) and its gloss.
   - `orbit#cranial-orbit` (noun); group: none; key: `orbit%1:08:00::`; gloss: the bony cavity in the skull containing
     the eyeball
   - `orbit#circle` (verb); group: none; key: `orbit%2:38:00::`; gloss: move in an orbit
+- **order**; parts of speech: noun, verb, interjection; forms: Order (noun, Number=Sing), Order (verb, VerbForm=Inf),
+  Order (interjection), Orders (noun, Number=Plur), Orders (verb, Person=3+Tense=Pres), order (noun, Number=Sing), order
+  (verb, VerbForm=Inf), order (interjection), ordered (verb, Tense=Past+VerbForm=Part), ordering (verb, VerbForm=Ger),
+  orders (noun, Number=Plur), orders (verb, Person=3+Tense=Pres)
+  - `order#bid` (noun); group: none; key: `order%1:10:03::`; gloss: (often plural) a command given by a superior (e.g.,
+    a military or law enforcement officer) that must be obeyed
+  - `order#order-of-magnitude` (noun); group: none; key: `order%1:07:01::`; gloss: a degree in a continuum of size or
+    quantity
+  - `order#state` (noun); group: none; key: `order%1:26:00::`; gloss: established customary state (especially of
+    society)
+  - `order#ordering` (noun); group: none; key: `order%1:14:00::`; gloss: logical or comprehensible arrangement of
+    separate elements
+  - `order#orderliness` (noun); group: none; key: `order%1:26:02::`; gloss: a condition of regular or proper arrangement
+  - `order#decree` (noun); group: none; key: `order%1:10:00::`; gloss: a legally binding command or decision entered on
+    the court record (as if issued by a court or judge)
+  - `order#purchase-order` (noun); group: none; key: `order%1:10:01::`; gloss: a commercial document used to request
+    someone to supply something in return for payment and providing specifications and quantities
+  - `order#club` (noun); group: none; key: `order%1:14:02::`; gloss: a formal association of people with similar
+    interests
+  - `order#parliamentary-law` (noun); group: none; key: `order%1:10:02::`; gloss: a body of rules followed by an
+    assembly
+  - `order#monastic-order` (noun); group: none; key: `order%1:14:03::`; gloss: a group of person living under a
+    religious rule
+  - `order#taxon` (noun); group: none; key: `order%1:14:01::`; gloss: (biology) taxonomic group containing one or more
+    families
+  - `order#asking` (noun); group: none; key: `order%1:10:04::`; gloss: a request for something to be made, supplied, or
+    served
+  - `order#artistic-style` (noun); group: none; key: `order%1:07:00::`; gloss: (architecture) one of original three
+    styles of Greek architecture distinguished by the type of column and entablature used or a style developed from the
+    original three by the Romans
+  - `order#ordering-2` (noun); group: none; key: `order%1:04:00::`; gloss: the act of putting things in a sequential
+    arrangement
+  - `order#enjoin` (verb); group: none; key: `order%2:32:01::`; gloss: give instructions to or direct somebody to do
+    something with authority
+  - `order#ask-for` (verb); group: none; key: `order%2:32:00::`; gloss: make a request for something
+  - `order#dictate` (verb); group: none; key: `order%2:32:02::`; gloss: issue commands or orders for
+  - `order#govern` (verb); group: none; key: `order%2:41:01::`; gloss: bring into conformity with rules or principles or
+    usage; impose regulations
+  - `order#arrange` (verb); group: none; key: `order%2:30:00::`; gloss: bring order to or into
+  - `order#arrange-2` (verb); group: none; key: `order%2:30:01::`; gloss: place in a certain order
+  - `order#consecrate` (verb); group: none; key: `order%2:41:02::`; gloss: appoint to a clerical posts
+  - `order#arrange-3` (verb); group: none; key: `order%2:31:01::`; gloss: arrange thoughts, ideas, temporal events
+  - `order#grade` (verb); group: none; key: `order%2:31:00::`; gloss: assign a rank or rating to
+  - `order#interjection` (interjection); group: none; key: project sense; gloss: used to demand silence, attention, or
+    proper conduct in a meeting or court
 - **orient**; parts of speech: noun, verb; forms: orient (noun, Number=Sing), orient (verb, VerbForm=Inf), orient
   (adjective, Degree=Pos), oriented (verb, Tense=Past+VerbForm=Part), orienting (verb, VerbForm=Ger), orienting (noun,
   Number=Sing+VerbForm=Ger), orients (noun, Number=Plur), orients (verb, Person=3+Tense=Pres)
@@ -8295,6 +8942,13 @@ project sense has none) and its gloss.
     lack of action for something to happen
   - `permit#tolerate` (verb); group: none; key: `permit%2:32:06::`; gloss: allow the presence of or allow (an activity)
     without opposing or prohibiting
+- **person**; parts of speech: noun; forms: people (Number=Plur), person (Number=Sing), persons (Number=Plur)
+  - `person#individual` (noun); group: none; key: `person%1:03:00::`; gloss: a human being; person, singular, assertive
+    existential pronoun; pronoun, person, singular; quantifier: assertive existential
+  - `person#anatomy` (noun); group: none; key: `person%1:08:00::`; gloss: a human body (usually including the clothing)
+  - `person#grammatical-category` (noun); group: none; key: `person%1:10:00::`; gloss: a grammatical category used in
+    the classification of pronouns, possessive determiners, and verb forms according to whether they indicate the
+    speaker, the addressee, or a third party
 - **pervert**; parts of speech: noun, verb; forms: pervert (noun, Number=Sing), pervert (verb, VerbForm=Inf), perverted
   (verb, Tense=Past+VerbForm=Part), perverting (verb, VerbForm=Ger), perverts (noun, Number=Plur), perverts (verb,
   Person=3+Tense=Pres)
@@ -11319,6 +11973,30 @@ project sense has none) and its gloss.
     (such as the cast-off skin of a snake)
   - `slough#swamp` (noun); group: none; key: `slough%1:17:01::`; gloss: a stagnant swamp (especially as part of a bayou)
   - `slough#cast-off` (verb); group: none; key: `slough%2:29:00::`; gloss: cast off hair, skin, horn, or feathers
+- **small**; parts of speech: noun, adjective, adverb; forms: small (adjective, Degree=Pos), small (adverb, Degree=Pos),
+  small (noun, Number=Sing), smaller (adjective, Degree=Cmp), smallest (adjective, Degree=Sup), smalls (noun,
+  Number=Plur)
+  - `small#body-part` (noun); group: none; key: `small%1:08:00::`; gloss: the slender part of the back
+  - `small#size` (noun); group: none; key: `small%1:07:00::`; gloss: a garment size for a small person
+  - `small#little` (adjective); group: none; key: `small%3:00:00::`; gloss: limited or below average in number or
+    quantity or magnitude or extent
+  - `small#minor` (adjective); group: none; key: `small%5:00:00:limited:00`; gloss: relatively moderate, limited, or
+    small
+  - `small#little-2` (adjective); group: none; key: `small%5:00:00:young:00`; gloss: (of children and animals) young,
+    immature
+  - `small#adjective` (adjective); group: none; key: `small%5:00:00:little:03`; gloss: slight or limited; especially in
+    degree or intensity or scope
+  - `small#humble` (adjective); group: none; key: `small%5:00:00:inferior:01`; gloss: low or inferior in station or
+    quality
+  - `small#little-3` (adjective); group: none; key: `small%5:00:00:lowercase:00`; gloss: lowercase
+  - `small#little-4` (adjective); group: none; key: `small%5:00:00:soft:04`; gloss: (of a voice) faint
+  - `small#adjective-2` (adjective); group: none; key: `small%5:00:00:fine:00`; gloss: have fine or very small
+    constituent particles
+  - `small#modest` (adjective); group: none; key: `small%5:00:00:moderate:00`; gloss: not large but sufficient in size
+    or amount
+  - `small#belittled` (adjective); group: none; key: `small%5:00:00:decreased:00`; gloss: made to seem smaller or less
+    (especially in worth)
+  - `small#adverb` (adverb); group: none; key: `small%4:02:00::`; gloss: on a small scale
 - **smell**; parts of speech: noun, verb; forms: smell (noun, Number=Sing), smell (verb, VerbForm=Inf), smelled (verb,
   Tense=Past+VerbForm=Part), smelling (verb, VerbForm=Ger), smelling (noun, Number=Sing+VerbForm=Ger), smells (noun,
   Number=Plur), smells (verb, Person=3+Tense=Pres), smelt (verb, Tense=Past+VerbForm=Part)
@@ -11397,6 +12075,30 @@ project sense has none) and its gloss.
   - `snap#photograph` (verb); group: none; key: `snap%2:32:01::`; gloss: record on photographic film
   - `snap#exclamation` (interjection); group: none; key: project sense; gloss: used to announce a match or coincidence,
     or to express surprise (informal)
+- **so**; parts of speech: noun, pronoun, adverb, conjunction, interjection; forms: SOS (noun, Number=Plur), so (adverb,
+  Degree=Pos), so (conjunction), so (pronoun), so (adjective, Degree=Pos), so (interjection), so (noun, Number=Sing),
+  sos (noun, Number=Plur)
+  - `so#noun` (noun); group: none; key: `so%1:10:00::`; gloss: the syllable naming the fifth (dominant) note of any
+    musical scale in solmization
+  - `so#pronoun` (pronoun); group: none; key: project sense; gloss: refers to a previously stated proposition or
+    situation, as in I think so
+  - `so#adverb` (adverb); group: none; key: `so%4:02:02::`; gloss: to a very great extent or degree
+  - `so#adverb-2` (adverb); group: none; key: `so%4:02:06::`; gloss: in a manner that facilitates
+  - `so#adverb-3` (adverb); group: `so#group:indicated-manner`; key: `so%4:02:05::`; gloss: in such a condition or
+    manner, especially as expressed or implied
+  - `so#adverb-4` (adverb); group: none; key: `so%4:02:07::`; gloss: to a certain unspecified extent or degree
+  - `so#adverb-5` (adverb); group: none; key: `so%4:02:08::`; gloss: in the same way; also
+  - `so#thus` (adverb); group: `so#group:indicated-manner`; key: `so%4:02:04::`; gloss: in the way indicated
+  - `so#adverb-6` (adverb); group: none; key: `so%4:02:03::`; gloss: (usually followed by ‘that’) to an extent or degree
+    as expressed
+  - `so#and-so` (adverb); group: none; key: `so%4:02:09::`; gloss: subsequently or soon afterward (often used as
+    sentence connectors)
+  - `so#hence` (adverb); group: none; key: `so%4:02:10::`; gloss: (used to introduce a logical conclusion) from that
+    fact or reason or as a result
+  - `so#indeed` (adverb); group: none; key: `so%4:02:00::`; gloss: in truth (often tends to intensify)
+  - `so#conjunction` (conjunction); group: none; key: project sense; gloss: introduces a result, consequence, or purpose
+  - `so#interjection` (interjection); group: none; key: project sense; gloss: used to signal a realization, introduce a
+    topic, or challenge the importance of a statement
 - **sophisticate**; parts of speech: noun, verb; forms: sophisticate (noun, Number=Sing), sophisticate (verb,
   VerbForm=Inf), sophisticated (verb, Tense=Past+VerbForm=Part), sophisticates (noun, Number=Plur), sophisticates (verb,
   Person=3+Tense=Pres), sophisticating (verb, VerbForm=Ger)
@@ -12398,6 +13100,65 @@ project sense has none) and its gloss.
   - `tag#nickname` (verb); group: none; key: `tag%2:32:00::`; gloss: provide with a name or nickname
   - `tag#chase` (verb); group: none; key: `tag%2:38:00::`; gloss: go after with the intent to catch
   - `tag#rhyme` (verb); group: none; key: `tag%2:36:00::`; gloss: supply (blank verse or prose) with rhymes
+- **take**; parts of speech: noun, verb; forms: take (verb, VerbForm=Inf), take (noun, Number=Sing), taken (verb,
+  VerbForm=Part), takes (verb, Person=3+Tense=Pres), takes (noun, Number=Plur), taking (verb, VerbForm=Ger), took (verb,
+  Tense=Past)
+  - `take#issue` (noun); group: none; key: `take%1:21:00::`; gloss: the income or profit arising from such transactions
+    as the sale of land or other property
+  - `take#cinematography` (noun); group: none; key: `take%1:04:00::`; gloss: the act of photographing a scene or part of
+    a scene without interruption
+  - `take#act` (verb); group: none; key: `take%2:41:04::`; gloss: carry out
+  - `take#occupy` (verb); group: none; key: `take%2:40:06::`; gloss: require (time or space)
+  - `take#conduct` (verb); group: none; key: `take%2:38:09::`; gloss: take somebody somewhere
+  - `take#get-hold-of` (verb); group: none; key: `take%2:35:00::`; gloss: get into one's hands, take physically
+  - `take#acquire` (verb); group: none; key: `take%2:30:01::`; gloss: take on a certain form, attribute, or aspect
+  - `take#read` (verb); group: none; key: `take%2:31:07::`; gloss: interpret something in a certain way; convey a
+    particular meaning or impression
+  - `take#bring` (verb); group: none; key: `take%2:38:10::`; gloss: take something or somebody with oneself somewhere
+  - `take#act-2` (verb); group: none; key: `take%2:40:00::`; gloss: take into one's possession
+  - `take#apply` (verb); group: none; key: `take%2:38:02::`; gloss: travel or go by means of a certain kind of
+    transportation, or a certain route
+  - `take#choose` (verb); group: none; key: `take%2:31:01::`; gloss: pick out, select, or choose from a number of
+    alternatives
+  - `take#accept` (verb); group: none; key: `take%2:40:05::`; gloss: receive willingly something given or offered
+  - `take#fill` (verb); group: none; key: `take%2:41:00::`; gloss: assume, as of positions or roles
+  - `take#consider` (verb); group: none; key: `take%2:31:03::`; gloss: take into consideration for exemplifying purposes
+  - `take#ask` (verb); group: none; key: `take%2:42:00::`; gloss: require as useful, just, or proper
+  - `take#experience` (verb); group: none; key: `take%2:39:00::`; gloss: experience or feel or submit to
+  - `take#film` (verb); group: none; key: `take%2:32:02::`; gloss: make a film or photograph of something
+  - `take#pull` (verb); group: none; key: `take%2:30:00::`; gloss: remove something concrete, as by lifting, pushing, or
+    taking off, or remove something abstract
+  - `take#consume` (verb); group: none; key: `take%2:34:00::`; gloss: serve oneself to, or consume regularly
+  - `take#submit` (verb); group: none; key: `take%2:31:09::`; gloss: accept or undergo, often unwillingly
+  - `take#accept-2` (verb); group: none; key: `take%2:40:15::`; gloss: make use of or accept for some purpose
+  - `take#act-3` (verb); group: none; key: `take%2:40:01::`; gloss: conquer by force
+  - `take#assume` (verb); group: none; key: `take%2:38:00::`; gloss: occupy or take on
+  - `take#accept-3` (verb); group: none; key: `take%2:40:07::`; gloss: admit into a group or community
+  - `take#find` (verb); group: none; key: `take%2:30:08::`; gloss: ascertain or determine by measuring, computing or
+    take a reading from a dial
+  - `take#learn` (verb); group: none; key: `take%2:31:02::`; gloss: be a student of a certain subject
+  - `take#claim` (verb); group: none; key: `take%2:32:00::`; gloss: take as an undesirable consequence of some event or
+    state of affairs
+  - `take#make` (verb); group: none; key: `take%2:38:05::`; gloss: head into a specified direction
+  - `take#aim` (verb); group: none; key: `take%2:33:09::`; gloss: point or cause to go (blows, weapons, or objects such
+    as photographic equipment) towards
+  - `take#become` (verb); group: none; key: `take%2:30:09::`; gloss: be seized or affected in a specified way
+  - `take#carry` (verb); group: none; key: `take%2:42:10::`; gloss: have with oneself; have on one's person
+  - `take#charter` (verb); group: none; key: `take%2:40:03::`; gloss: engage for service under a term of contract
+  - `take#subscribe` (verb); group: none; key: `take%2:40:04::`; gloss: receive or obtain regularly
+  - `take#buy` (verb); group: none; key: `take%2:40:02::`; gloss: buy, select
+  - `take#acquire-2` (verb); group: none; key: `take%2:40:08::`; gloss: to get into a position of having, e.g., safety,
+    comfort
+  - `take#have` (verb); group: none; key: `take%2:35:14::`; gloss: have sex with; archaic use
+  - `take#claim-2` (verb); group: none; key: `take%2:32:09::`; gloss: lay claim to; as of an idea
+  - `take#accept-4` (verb); group: none; key: `take%2:42:03::`; gloss: be designed to hold or take
+  - `take#contain` (verb); group: none; key: `take%2:42:15::`; gloss: be capable of holding or containing
+  - `take#drive` (verb); group: none; key: `take%2:38:11::`; gloss: proceed along in a vehicle
+  - `take#win` (verb); group: none; key: `take%2:33:08::`; gloss: obtain by winning
+  - `take#contract` (verb); group: none; key: `take%2:29:08::`; gloss: be stricken by an illness, fall victim to an
+    illness
+  - `take#take-to` (verb); group: none; key: `take%2:41:16::`; gloss: develop a habit; apply oneself to a practice or
+    occupation
 - **talk**; parts of speech: noun, verb; forms: talk (noun, Number=Sing), talk (verb, VerbForm=Inf), talked (verb,
   Tense=Past+VerbForm=Part), talking (verb, VerbForm=Ger), talking (noun, Number=Sing+VerbForm=Ger), talks (noun,
   Number=Plur), talks (verb, Person=3+Tense=Pres)
@@ -12527,6 +13288,14 @@ project sense has none) and its gloss.
   - `test#analyze-substance` (verb); group: `test#group:try-out`; key: `test%2:32:08::`; gloss: determine the presence
     or properties of (a substance)
   - `test#undergo-test` (verb); group: `test#group:examine-knowledge`; key: `test%2:31:06::`; gloss: undergo a test
+- **then**; parts of speech: noun, adjective, adverb; forms: then (adverb, Degree=Pos), then (noun, Number=Sing), then
+  (adjective, Degree=Pos), thens (noun, Number=Plur)
+  - `then#noun` (noun); group: none; key: `then%1:28:00::`; gloss: that time; that moment
+  - `then#adjective` (adjective); group: none; key: `then%5:00:00:past:00`; gloss: at a specific prior time
+  - `then#and-so` (adverb); group: none; key: `then%4:02:00::`; gloss: subsequently or soon afterward (often used as
+    sentence connectors)
+  - `then#adverb` (adverb); group: none; key: `then%4:02:02::`; gloss: in that case or as a consequence
+  - `then#adverb-2` (adverb); group: none; key: `then%4:02:01::`; gloss: at that time
 - **thunder**; parts of speech: noun, verb; forms: thunder (noun, Number=Sing), thunder (verb, VerbForm=Inf), thundered
   (verb, Tense=Past+VerbForm=Part), thundering (verb, VerbForm=Ger), thundering (noun, Number=Sing+VerbForm=Ger),
   thunderring (noun, Number=Sing+VerbForm=Ger), thunders (noun, Number=Plur), thunders (verb, Person=3+Tense=Pres)
@@ -13533,6 +14302,25 @@ project sense has none) and its gloss.
   - `wax#cover` (verb); group: none; key: `wax%2:35:00::`; gloss: cover with wax
   - `wax#climb` (verb); group: none; key: `wax%2:30:00::`; gloss: go up or advance
   - `wax#waxing-phase` (verb); group: none; key: `wax%2:30:01::`; gloss: increase in phase
+- **way**; parts of speech: noun, adverb; forms: way (noun, Number=Sing), way (adverb, Degree=Pos), ways (noun,
+  Number=Plur)
+  - `way#fashion` (noun); group: none; key: `way%1:07:01::`; gloss: how something is done or how it happens
+  - `way#agency` (noun); group: none; key: `way%1:04:01::`; gloss: to have the ability to produce a particular effect or
+    achieve an end
+  - `way#direction` (noun); group: none; key: `way%1:15:00::`; gloss: a line leading to a place or point
+  - `way#condition` (noun); group: none; key: `way%1:26:00::`; gloss: the condition of things generally
+  - `way#path` (noun); group: none; key: `way%1:04:00::`; gloss: a course of conduct
+  - `way#artefact` (noun); group: none; key: `way%1:06:00::`; gloss: any artifact consisting of a road or path affording
+    passage from one place to another
+  - `way#journey` (noun); group: none; key: `way%1:04:02::`; gloss: a journey or passage
+  - `way#elbow-room` (noun); group: none; key: `way%1:23:00::`; gloss: space for movement
+  - `way#distance` (noun); group: none; key: `way%1:07:02::`; gloss: the property of distance in general
+  - `way#choice` (noun); group: none; key: `way%1:09:00::`; gloss: doing as one pleases or chooses
+  - `way#category` (noun); group: none; key: `way%1:09:01::`; gloss: a general category of things; used in the
+    expression ‘in the way of’
+  - `way#part` (noun); group: none; key: `way%1:21:00::`; gloss: a portion of something divided into shares
+  - `way#adverb` (adverb); group: none; key: `way%4:02:00::`; gloss: to a great degree or by a great distance; very much
+    (‘right smart’ is regional in the United States)
 - **well**; parts of speech: noun, verb, adjective, adverb, interjection; forms: best (adverb, Degree=Sup), best
   (adjective, Degree=Sup), better (adverb, Degree=Cmp), better (adjective, Degree=Cmp), well (adverb, Degree=Pos), well
   (adjective, Degree=Pos), well (interjection), well (noun, Number=Sing), well (verb, VerbForm=Inf), welled (verb,

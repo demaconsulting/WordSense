@@ -158,7 +158,9 @@ document (`source_key`: `pg<ebook>#<ordinal>` for a Gutenberg book, `<document i
 the Tatoeba sentence id, or `quota-w<N>-written` for a sentence written by a model). The license follows from the source
 (see "Sources").
 
-**Files.** `quota-w3-*` fills the lemmas of ranks 121-200 and the technical lemmas. `quota-w32-written.tsv` is the second
+**Files.** `quota-w3-*` fills the lemmas of ranks 121-200 and the technical lemmas. `quota-w50-*` is the pilot of the
+stage 1 lemmas (23 lemmas; real rows labeled by two blind labelers that agree, checked blind, then written rows).
+`quota-w32-written.tsv` is the second
 round for senses that stayed short (written with another prompt). `quota-w33-real.tsv` and `quota-w33-written.tsv` are
 the technical senses of `curation/tech-senses.tsv`. `quota-w<N>-forms*.tsv` follow the document roles like the
 fine-sense rows (an evaluation document gives held-out rows only, every other document anchors only, per lemma), so a

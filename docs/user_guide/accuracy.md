@@ -7,7 +7,7 @@ apply: the usage prior's tag counts include SemCor, and the all-words developmen
 
 ## What the Models Are Measured On
 
-- **Real-text sense.** The test half of the 2,397 real held-out sentences (Project Gutenberg, VOA, USGS, NPS and National
+- **Real-text sense.** The test half of the 2,611 real held-out sentences (Project Gutenberg, VOA, USGS, NPS and National
   Weather Service text, and Tatoeba sentences under CC0), split by document. The other half calibrates the thresholds.
   The sentences were found or written for specific senses, so the set is balanced by sense: it measures the classifier,
   not the share of each sense in running text. The table gives the share answered at the sense level and the precision
@@ -42,8 +42,8 @@ the encoder answers on the real test sentences:
 
 | Model | Sense (share, precision) | Group (share, precision) | Part of speech (share, precision) | Fine top-1 |
 | --- | ---: | ---: | ---: | ---: |
-| MiniLM | 7.9%, 96.3% | 1.2%, 96.4% | 90.9%, 96.6% | 62.5% |
-| BERT base cased | 27.1%, 94.5% | 0.8%, 88.9% | 72.1%, 97.3% | 72.2% |
+| MiniLM | 7.5%, 94.9% | 1.1%, 96.4% | 91.4%, 96.4% | 60.1% |
+| BERT base cased | 25.1%, 94.1% | 0.7%, 88.9% | 74.2%, 97.1% | 69.0% |
 
 ## Part of Speech
 

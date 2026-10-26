@@ -1483,8 +1483,8 @@ sections:
           - id: WordSense-WordSenseBuilder-AllWordsGold
             title: >-
               The committed all-words gold set (corpus/allwords/dev.tsv and test.tsv) shall consist of tokens of
-              untrained lemmas whose part of speech has two or more senses, each naming a sense of its lemma and part of
-              speech and a word that is at its index.
+              lemmas that had no anchor when the set was drawn and whose part of speech has two or more senses, each
+              naming a sense of its lemma and part of speech and a word that is at its index.
             tags: [unit]
             justification: |
               SemCor cannot measure a prior that is made of its own counts; a gold set of tokens that no model was

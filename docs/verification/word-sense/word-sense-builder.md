@@ -408,7 +408,8 @@ and, for the measurement, a stub model.
 - **Committed gold set** (`WordSenseBuilder_AllWords_CommittedGold_TokensAreOfUntrainedPolysemousLemmasWithTheirSense`,
   `..._CommittedGold_HasAtMostThreeTokensPerLemmaAndOnePerSentence`, `..._CommittedGold_TokensComeFromTheirOwnSplit`,
   `..._CommittedGold_HalvesShareNoDocument`): both halves have at least 300 tokens; every token names a sense of its lemma
-  and part of speech and a word that is at its index, its lemma is not trained and its part of speech has two or more
+  and part of speech and a word that is at its index, its lemma had no anchor when the set was drawn (the anchors of the
+  stage 1 waves, `quota-w5*`, are not counted) and its part of speech has two or more
   senses; no lemma has more than three tokens and no sentence is used twice; the development tokens are sentences of the
   development split and the test tokens of the test split of the representative open corpus; and the documents of the
   two halves are disjoint.
