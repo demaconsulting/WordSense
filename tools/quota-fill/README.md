@@ -41,12 +41,12 @@ A sense needs rows by its tier, from the WordNet 3.0 tag count (`lexindex.QUOTA`
 5 held-out rows, **U** (1 to 4 tags, and every project sense) 10 and 3, **R** (no tag) 5 and 2. An R sense of a lemma
 with 15 or more senses needs 3 and 1 (`lexindex.quota_of`).
 
-The role of a real document is per lemma (`qf.doc_role`). One document in four is an evaluation document (the hash
-`SHA-256("evaldoc|" + document)`): it supplies held-out rows only, whatever other lemmas it supplies anchors for, and every
-other document supplies anchors only. Within one lemma a document never supplies both: an evaluation document that
-already has an anchor of the lemma supplies no held-out row of it, and a document that is not an evaluation document and
-already has a held-out row of the lemma and no anchor supplies no anchor (`qf.real_documents_by_lemma` joins the
-provenance rows to the lemmas of the rows).
+The role of a real document is per lemma (`qf.doc_role`). One document in four is an evaluation document (chosen by a
+hash of the document, `qf.is_eval_document`): it supplies held-out rows only, whatever other lemmas it supplies anchors
+for, and every other document supplies anchors only. Within one lemma a document never supplies both: an evaluation
+document that already has an anchor of the lemma supplies no held-out row of it, and a document that is not an
+evaluation document and already has a held-out row of the lemma and no anchor supplies no anchor
+(`qf.real_documents_by_lemma` joins the provenance rows to the lemmas of the rows).
 
 The pool documents are the ones of the open English part-of-speech corpus (`corpus/open/sources.tsv`) and the FAA
 documents of `faa.py`; the sources and their licence basis are in "Sources" of `corpus/README.md`. Wikipedia, Wiktionary,

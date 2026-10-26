@@ -329,7 +329,7 @@ public sealed partial class DataEndToEndTests : IDisposable
         var foreign = inventory.Groups.Values.Where(g => !curation.Contains(g[1])).Select(g => g[0]).Take(5).ToList();
 
         // Assert
-        Assert.True(withoutGroup > inventorySenses.Count - 500, "the groups cover only a few senses");
+        Assert.True(withoutGroup > inventorySenses.Count - 1000, "the groups cover only a few senses");
         Assert.Empty(oldNames);
         Assert.Empty(foreign);
     }

@@ -42,7 +42,7 @@ like the lemma.
 ### Dictionary Words
 
 The word table knows 365,007 spellings (lemmas and inflected forms) of 223,830 entries, and its sense catalog lists
-129,255 senses in 140 curated groups. Every word of the table that is not listed below has no trained classifier.
+129,255 senses in 323 curated groups. Every word of the table that is not listed below has no trained classifier.
 
 The lemmas listed below are the 856 trained lemmas (the lemmas that have anchor sentences), with 7,035 senses (147 of
 them project senses) and 140 groups.
