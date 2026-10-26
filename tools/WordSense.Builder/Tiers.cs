@@ -42,27 +42,39 @@ internal sealed record TierRow(string SenseId, PartOfSpeech PartOfSpeech, string
 ///     <para>
 ///     The tiers size the data of a sense by its WordNet 3.0 tag count: tier <c>C</c> (five or more tags) needs 20
 ///     anchors and 5 held-out sentences, tier <c>U</c> (one to four tags, and a project sense, which has no key) 10 and
-///     3, tier <c>R</c> (no tag) 5 and 2. A sense is <c>met</c> when it has both quotas, <c>short</c> when it has at
-///     least one sentence but misses a quota and <c>empty</c> when it has none. The senses are those of the trained
-///     lemmas, the lemmas that have sentences in the anchors.
+///     3, tier <c>R</c> (no tag) 5 and 2, or 3 and 1 when the lemma has 15 or more senses. A sense is <c>met</c> when it
+///     has both quotas, <c>short</c> when it has at least one sentence but misses a quota and <c>empty</c> when it has
+///     none. The senses are those of the trained lemmas, the lemmas that have sentences in the anchors.
 ///     </para>
 /// </remarks>
 internal static class Tiers
 {
     /// <summary>
+    ///     The number of senses of a lemma from which a sense without a tag count needs fewer sentences.
+    /// </summary>
+    public const int LargeLemmaSenses = 15;
+
+    /// <summary>
     ///     Gets the tier and the quotas of a sense.
     /// </summary>
     /// <param name="tagCount">The WordNet 3.0 tag count.</param>
     /// <param name="isProjectSense">Whether the sense is a project sense, which Open English WordNet does not have.</param>
+    /// <param name="lemmaSenses">The number of senses of the lemma of the sense, over all parts of speech.</param>
     /// <returns>The tier and the anchor and held-out quota.</returns>
-    public static (string Tier, int Anchors, int Holdout) Quota(int tagCount, bool isProjectSense)
+    public static (string Tier, int Anchors, int Holdout) Quota(int tagCount, bool isProjectSense, int lemmaSenses)
     {
         if (isProjectSense || (tagCount >= 1 && tagCount < 5))
         {
             return ("U", 10, 3);
         }
 
-        return tagCount >= 5 ? ("C", 20, 5) : ("R", 5, 2);
+        if (tagCount >= 5)
+        {
+            return ("C", 20, 5);
+        }
+
+        // A sense without a tag carries no usage, and a lemma with many senses has many of them
+        return lemmaSenses >= LargeLemmaSenses ? ("R", 3, 1) : ("R", 5, 2);
     }
 
     /// <summary>
@@ -111,12 +123,13 @@ internal static class Tiers
         var rows = new List<TierRow>();
         foreach (var lemma in anchors.Select(r => r.Lemma).Distinct(StringComparer.Ordinal).OrderBy(l => l, StringComparer.Ordinal))
         {
+            var lemmaSenses = Enum.GetValues<PartOfSpeech>().Sum(p => WordLexicon.SensesOf(lemma, p).Length);
             foreach (var pos in Enum.GetValues<PartOfSpeech>())
             {
                 foreach (var sense in WordLexicon.SensesOf(lemma, pos))
                 {
                     var tags = sense.SenseKey is { } key ? tagCounts.GetValueOrDefault(key) : 0;
-                    var (tier, anchorQuota, holdoutQuota) = Quota(tags, sense.SenseKey is null);
+                    var (tier, anchorQuota, holdoutQuota) = Quota(tags, sense.SenseKey is null, lemmaSenses);
                     rows.Add(new TierRow(sense.SenseId, pos, tier, tags, anchorCount.GetValueOrDefault(sense.SenseId), anchorQuota, holdoutCount.GetValueOrDefault(sense.SenseId), holdoutQuota));
                 }
             }
@@ -159,8 +172,8 @@ internal static class Tiers
         foreach (var tier in new[] { "C", "U", "R" })
         {
             var of = rows.Where(r => r.Tier == tier).ToList();
-            var (anchors, holdout) = tier switch { "C" => (20, 5), "U" => (10, 3), _ => (5, 2) };
-            text.Append($"| {tier} ({anchors.ToString(inv)} + {holdout.ToString(inv)}) | {of.Count.ToString("N0", inv)} | {of.Count(r => r.Status == "met").ToString("N0", inv)} | {of.Count(r => r.Status == "short").ToString("N0", inv)} | {of.Count(r => r.Status == "empty").ToString("N0", inv)} |\n");
+            var quota = tier switch { "C" => "20 + 5", "U" => "10 + 3", _ => "5 + 2, or 3 + 1 for a lemma with 15 or more senses" };
+            text.Append($"| {tier} ({quota}) | {of.Count.ToString("N0", inv)} | {of.Count(r => r.Status == "met").ToString("N0", inv)} | {of.Count(r => r.Status == "short").ToString("N0", inv)} | {of.Count(r => r.Status == "empty").ToString("N0", inv)} |\n");
         }
 
         text.Append($"| All | {rows.Count.ToString("N0", inv)} | {rows.Count(r => r.Status == "met").ToString("N0", inv)} | {rows.Count(r => r.Status == "short").ToString("N0", inv)} | {rows.Count(r => r.Status == "empty").ToString("N0", inv)} |\n\n");

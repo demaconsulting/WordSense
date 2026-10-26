@@ -454,7 +454,8 @@ are wrong according to a blind judge, which caps the precision that can be measu
 real test split as the headline set.
 
 **Tiers (`Tiers`).** The quota of a sense follows its WordNet 3.0 tag count: five or more, 20 anchor and 5 held-out
-sentences; one to four, 10 and 3; none, 5 and 2. The report lists every sense of every trained lemma with its counts
+sentences; one to four, 10 and 3; none, 5 and 2 (3 and 1 when the lemma has 15 or more senses). The report lists every
+sense of every trained lemma with its counts
 and quota, the senses that fall short and the senses that are excluded (a sense that cannot be trained), each with the
 reason.
 
@@ -672,7 +673,8 @@ expectations of a new suite or model. The challenge set has a floor test of the 
 
 Reads the tag counts of the senses from the `sense_frequency` table of `data/`, the anchors and the held-out
 sentences, and for every sense of every lemma that has anchors computes the tier (`C`: five or more tags, 20 anchors
-and 5 held-out sentences; `U`: one to four tags or a project sense, 10 and 3; `R`: none, 5 and 2), the counts and the
+and 5 held-out sentences; `U`: one to four tags or a project sense, 10 and 3; `R`: none, 5 and 2, or 3 and 1 when the
+lemma has 15 or more senses), the counts and the
 status (`met`, `short`, `empty`); the summary lists the totals per tier, the sentences that are missing and the senses
 that fall short, most frequent first.
 
