@@ -1,7 +1,3 @@
 group_id	lemma	pos	label	origin	kind
-section#group:constituent-portions	section	n	constituent-portions	curated	related
-see#group:mental-understanding	see	v	mental-understanding	curated	related
 send#group:dispatch	send	v	dispatch	curated	equivalent
-set#group:adjusting	set	v	adjusting	curated	related
 set#group:fixing	set	v	fixing	curated	equivalent
-set#group:preparation	set	v	preparation	curated	related

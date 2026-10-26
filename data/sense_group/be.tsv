@@ -1,5 +1,2 @@
 group_id	lemma	pos	label	origin	kind
 be#group:identity	be	v	identity	curated	equivalent
-become#group:changing-state	become	v	changing-state	curated	related
-begin#group:having-beginning	begin	v	having-beginning	curated	related
-better#group:superior-option	better	n	superior-option	curated	related

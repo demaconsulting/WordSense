@@ -1,16 +1,11 @@
 group_id	lemma	pos	label	origin	kind
 colour#group:visual-hue	colour	n	visual-hue	curated	equivalent
 combine#group:put-together	combine	v	put-together	curated	equivalent
-come#group:causal-result	come	v	causal-result	curated	related
 compact#group:compression	compact	v	compression	curated	equivalent
-complete#group:task-completion	complete	v	task-completion	curated	related
 compound#group:composite	compound	a	composite	curated	equivalent
 compound#group:joining	compound	v	joining	curated	equivalent
-condition#group:state-of-being	condition	n	state-of-being	curated	related
 conduct#group:conduct-music	conduct	v	conduct-music	curated	equivalent
-consider#group:careful-thought	consider	v	careful-thought	curated	related
 consider#group:judgment	consider	v	judgment	curated	equivalent
 contact#group:touch-senses	contact	n	touch-senses	curated	equivalent
-continue#group:preservation	continue	v	preservation	curated	related
 contract#group:contracting	contract	v	contracting	curated	equivalent
 convert#group:transforming	convert	v	transforming	curated	equivalent

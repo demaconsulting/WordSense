@@ -1,7 +1,4 @@
 group_id	lemma	pos	label	origin	kind
-name#group:appointment	name	v	appointment	curated	related
-name#group:identification	name	v	identification	curated	related
-new#group:unprecedented	new	a	unprecedented	curated	related
 night#group:nighttime	night	n	nighttime	curated	equivalent
 nominate#group:candidate-nomination	nominate	v	candidate-nomination	curated	equivalent
 nominate#group:role-assignment	nominate	v	role-assignment	curated	equivalent

@@ -1,5 +1,3 @@
 group_id	lemma	pos	label	origin	kind
 animate#group:livening	animate	v	livening	curated	equivalent
-announce#group:making-known	announce	v	making-known	curated	related
-answer#group:adequacy	answer	v	adequacy	curated	related
 answer#group:stimulus-response	answer	v	stimulus-response	curated	equivalent

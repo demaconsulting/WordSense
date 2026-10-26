@@ -1,4 +1,2 @@
 group_id	lemma	pos	label	origin	kind
-big#group:importance	big	a	importance	curated	related
-big#group:large-scale	big	r	large-scale	curated	related
 big#group:self-importance	big	a	self-importance	curated	equivalent

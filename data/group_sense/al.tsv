@@ -1,13 +1,3 @@
 group_id	sense_id
-allow#group:enabling	oewn-allow__2.41.00..
-allow#group:enabling	oewn-allow__2.42.00..
-allow#group:enabling	oewn-allow__2.42.07..
-allow#group:permission	oewn-allow__2.32.00..
-allow#group:permission	oewn-allow__2.32.06..
-alone#group:without-company	oewn-alone__5.00.00.unaccompanied.00
-alone#group:without-company	oewn-alone__5.00.00.unsocial.00
 alum#group:potassium-alum	oewn-alum__1.06.00..
 alum#group:potassium-alum	oewn-alum__1.27.01..
-always#group:every-occasion	oewn-always__4.02.00..
-always#group:every-occasion	oewn-always__4.02.03..
-always#group:every-occasion	oewn-always__4.02.04..

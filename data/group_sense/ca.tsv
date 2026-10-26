@@ -1,13 +1,3 @@
 group_id	sense_id
-carry#group:entailment	oewn-carry__2.42.02..
-carry#group:entailment	oewn-carry__2.42.13..
-carry#group:physical-carry	oewn-carry__2.35.02..
-carry#group:physical-carry	oewn-carry__2.42.01..
 carry#group:propulsion	oewn-carry__2.35.08..
 carry#group:propulsion	oewn-carry__2.35.12..
-catch#group:entanglement	oewn-catch__2.35.06..
-catch#group:entanglement	oewn-catch__2.35.08..
-catch#group:hearing	oewn-catch__2.39.00..
-catch#group:hearing	oewn-catch__2.39.12..
-catch#group:physical-seizure	oewn-catch__2.35.00..
-catch#group:physical-seizure	oewn-catch__2.35.01..

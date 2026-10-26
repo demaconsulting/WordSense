@@ -1,5 +1,2 @@
 group_id	lemma	pos	label	origin	kind
-prepare#group:educational-preparation	prepare	v	educational-preparation	curated	related
 progress#group:forward-motion	progress	n	forward-motion	curated	equivalent
-prove#group:evidential-support	prove	v	evidential-support	curated	related
-provide#group:supplying-needs	provide	v	supplying-needs	curated	related

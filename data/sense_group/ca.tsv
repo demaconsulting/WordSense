@@ -1,7 +1,2 @@
 group_id	lemma	pos	label	origin	kind
-carry#group:entailment	carry	v	entailment	curated	related
-carry#group:physical-carry	carry	v	physical-carry	curated	related
 carry#group:propulsion	carry	v	propulsion	curated	equivalent
-catch#group:entanglement	catch	v	entanglement	curated	related
-catch#group:hearing	catch	v	hearing	curated	related
-catch#group:physical-seizure	catch	v	physical-seizure	curated	related

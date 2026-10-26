@@ -1,15 +1,9 @@
 group_id	lemma	pos	label	origin	kind
-last#group:ending	last	n	ending	curated	related
-last#group:final-position	last	a	final-position	curated	related
 learned#group:well-educated	learned	a	well-educated	curated	equivalent
 leave#group:departure	leave	v	departure	curated	equivalent
-level#group:horizontal	level	a	horizontal	curated	related
-life#group:lived-experience	life	n	lived-experience	curated	related
 lift#group:raising	lift	n	raising	curated	equivalent
 lift#group:upward-lift	lift	v	upward-lift	curated	equivalent
 like#group:resemblance	like	a	resemblance	curated	equivalent
 limit#group:maximum-constraint	limit	n	maximum-constraint	curated	equivalent
 limit#group:restriction	limit	v	restriction	curated	equivalent
 little#group:small	little	a	small	curated	related
-look#group:appearing	look	v	appearing	curated	related
-lower#group:downward-movement	lower	v	downward-movement	curated	related

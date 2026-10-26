@@ -1,12 +1,7 @@
 group_id	sense_id
-stage#group:process-position	oewn-stage__1.26.00..
-stage#group:process-position	oewn-stage__1.28.00..
 start#group:setting-motion	oewn-start__2.30.01..
 start#group:setting-motion	oewn-start__2.38.00..
 start#group:setting-motion	oewn-start__2.38.01..
-step#group:foot-movement	oewn-step__2.38.00..
-step#group:foot-movement	oewn-step__2.38.03..
-step#group:foot-movement	oewn-step__2.38.04..
 stick#group:loyalty	oewn-stick__2.42.00..
 stick#group:loyalty	oewn-stick__2.42.05..
 stick#group:piercing	oewn-stick__2.35.03..
@@ -22,8 +17,6 @@ still#group:distillation	oewn-still__1.06.00..
 still#group:distillation	oewn-still__1.06.02..
 stop#group:ending	oewn-stop__2.38.01..
 stop#group:ending	oewn-stop__2.42.00..
-street#group:roadway	oewn-street__1.06.00..
-street#group:roadway	oewn-street__1.06.01..
 stretch#group:body-stretch	oewn-stretch__2.29.01..
 stretch#group:body-stretch	oewn-stretch__2.29.02..
 stroke#group:gentle-touch	oewn-stroke__1.04.01..

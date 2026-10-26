@@ -1,6 +1,2 @@
 group_id	lemma	pos	label	origin	kind
-allow#group:enabling	allow	v	enabling	curated	related
-allow#group:permission	allow	v	permission	curated	related
-alone#group:without-company	alone	a	without-company	curated	related
 alum#group:potassium-alum	alum	n	potassium-alum	curated	equivalent
-always#group:every-occasion	always	r	every-occasion	curated	related

@@ -1,14 +1,9 @@
 group_id	lemma	pos	label	origin	kind
-eat#group:food-consumption	eat	v	food-consumption	curated	related
 encounter#group:casual-meeting	encounter	n	casual-meeting	curated	equivalent
-enjoy#group:benefiting	enjoy	v	benefiting	curated	related
 enjoy#group:taking-pleasure	enjoy	v	taking-pleasure	curated	equivalent
 entrance#group:act-of-entry	entrance	n	act-of-entry	curated	equivalent
 escape#group:fleeing	escape	v	fleeing	curated	equivalent
-establish#group:founding	establish	v	founding	curated	related
 even#group:emphasis	even	r	emphasis	curated	related
 even#group:equal	even	a	equal	curated	related
 even#group:level-regular	even	a	level-regular	curated	related
-expect#group:normative-expectation	expect	v	normative-expectation	curated	related
-expect#group:probable-anticipation	expect	v	probable-anticipation	curated	related
 experience#group:undergoing	experience	v	undergoing	curated	equivalent

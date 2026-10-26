@@ -1,4 +1,2 @@
 group_id	lemma	pos	label	origin	kind
-keep#group:adherence	keep	v	adherence	curated	related
-keep#group:maintaining-state	keep	v	maintaining-state	curated	related
 knock#group:hard-blow	knock	n	hard-blow	curated	equivalent

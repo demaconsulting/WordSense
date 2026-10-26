@@ -1,13 +1,5 @@
 group_id	sense_id
-section#group:constituent-portions	oewn-section__1.06.00..
-section#group:constituent-portions	oewn-section__1.09.00..
-see#group:mental-understanding	oewn-see__2.31.01..
-see#group:mental-understanding	oewn-see__2.31.13..
 send#group:dispatch	oewn-send__2.32.00..
 send#group:dispatch	oewn-send__2.35.00..
-set#group:adjusting	oewn-set__2.30.00..
-set#group:adjusting	oewn-set__2.30.02..
 set#group:fixing	oewn-set__2.31.04..
 set#group:fixing	oewn-set__2.32.00..
-set#group:preparation	oewn-set__2.30.09..
-set#group:preparation	oewn-set__2.30.12..

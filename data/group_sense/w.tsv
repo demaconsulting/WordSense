@@ -1,10 +1,6 @@
 group_id	sense_id
 waste#group:squander	oewn-waste__2.34.00..
 waste#group:squander	oewn-waste__2.40.00..
-water#group:supplying-water	oewn-water__2.30.00..
-water#group:supplying-water	oewn-water__2.40.00..
-wear#group:appearance	oewn-wear__2.29.02..
-wear#group:appearance	oewn-wear__2.42.01..
 well#group:cavity	oewn-well__1.06.01..
 well#group:cavity	oewn-well__1.06.02..
 well#group:cavity	oewn-well__1.06.03..
@@ -13,7 +9,3 @@ well#group:good-manner	oewn-well__4.02.12..
 well#group:thoroughly-degree	oewn-well__4.02.05..
 well#group:thoroughly-degree	oewn-well__4.02.11..
 well#group:thoroughly-degree	oewn-well__4.02.15..
-win#group:earned-gain	oewn-win__2.40.00..
-win#group:earned-gain	oewn-win__2.40.06..
-world#group:humanity	oewn-world__1.05.00..
-world#group:humanity	oewn-world__1.14.02..

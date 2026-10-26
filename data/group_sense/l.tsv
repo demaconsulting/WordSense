@@ -1,17 +1,8 @@
 group_id	sense_id
-last#group:ending	oewn-last__1.11.00..
-last#group:ending	oewn-last__1.28.00..
-last#group:final-position	oewn-last__3.00.00..
-last#group:final-position	oewn-last__5.00.00.closing.00
 learned#group:well-educated	oewn-learned__5.00.00.educated.00
 learned#group:well-educated	oewn-learned__5.00.00.scholarly.00
 leave#group:departure	oewn-leave__2.38.00..
 leave#group:departure	oewn-leave__2.38.01..
-level#group:horizontal	oewn-level__5.00.00.horizontal.00
-level#group:horizontal	oewn-level__5.00.01.even.01
-level#group:horizontal	oewn-level__5.00.02.even.01
-life#group:lived-experience	oewn-life__1.09.00..
-life#group:lived-experience	oewn-life__1.26.02..
 lift#group:raising	oewn-lift__1.04.00..
 lift#group:raising	oewn-lift__1.11.00..
 lift#group:upward-lift	oewn-lift__2.38.00..
@@ -26,7 +17,3 @@ little#group:small	oewn-little__3.00.00..
 little#group:small	oewn-little__3.00.01..
 little#group:small	oewn-little__5.00.00.emotional.00
 little#group:small	oewn-little__5.00.00.unimportant.00
-look#group:appearing	oewn-look__2.29.00..
-look#group:appearing	oewn-look__2.39.01..
-lower#group:downward-movement	oewn-lower__2.35.03..
-lower#group:downward-movement	oewn-lower__2.38.00..
