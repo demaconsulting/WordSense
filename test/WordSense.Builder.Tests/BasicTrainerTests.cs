@@ -519,9 +519,9 @@ public class BasicTrainerTests
         var head = new byte[4];
         brotli.ReadExactly(head);
 
-        // Assert: the two writes are equal and the magic is WSB6
+        // Assert: the two writes are equal and the magic is WSB7
         Assert.Equal(first, second);
-        Assert.Equal("WSB6"u8.ToArray(), head);
+        Assert.Equal("WSB7"u8.ToArray(), head);
     }
 
     /// <summary>
@@ -565,11 +565,10 @@ public class BasicTrainerTests
     }
 
     /// <summary>
-    ///     The table starts with the magic <c>WSB6</c>, the format revision that has the word prior and the reliability of
-    ///     the cue tables.
+    ///     The table starts with the magic <c>WSB7</c>, the format revision that has the noun/verb weight and table.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_BasicTablesWriter_Write_StartsWithTheMagicWsb6()
+    public void WordSenseBuilder_BasicTablesWriter_Write_StartsWithTheMagicWsb7()
     {
         // Arrange: trained data
         var data = Train();
@@ -580,8 +579,48 @@ public class BasicTrainerTests
         var head = new byte[4];
         brotli.ReadExactly(head);
 
-        // Assert: the magic is WSB6
-        Assert.Equal("WSB6"u8.ToArray(), head);
+        // Assert: the magic is WSB7
+        Assert.Equal("WSB7"u8.ToArray(), head);
+    }
+
+    /// <summary>
+    ///     The noun/verb table and the weight of the model travel through the writer into the table that the runtime reads.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BasicTablesWriter_Write_CarriesTheNounVerbTableAndWeight()
+    {
+        // Arrange: trained data with a noun/verb table and a weight that is not the default
+        var hp = BasicHyperparameters.Default with { NounVerbWeight = 0.25 };
+        var trained = BasicTrainer.Train(Counts(), w => Lexicon.TryGetValue(w, out var found) ? found : default, Anchors(), [], hp);
+        var withTable = trained with { NounVerb = new BasicNounVerbRow([3, 70, 40000], [-12, 7, 127], 5, 4) };
+
+        // Act
+        var tables = Read(Write(withTable));
+
+        // Assert: the table, its weight and its summary are there
+        Assert.Equal(0.25, tables.NounVerbWeight);
+        var nounVerb = Assert.IsType<NounVerbCue>(tables.NounVerb);
+        Assert.Equal<ushort>([3, 70, 40000], nounVerb.Hashes.ToArray());
+        Assert.Equal<sbyte>([-12, 7, 127], nounVerb.Weights.ToArray());
+        Assert.Contains("a noun/verb table of 3 features from 5 noun and 4 verb words", withTable.Summary(), StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A model without a noun/verb table writes no noun/verb section, and its summary names none.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BasicTablesWriter_Write_WithoutNounVerbTable_WritesNoNounVerbSection()
+    {
+        // Arrange: trained data without a noun/verb table
+        var trained = Train();
+        Assert.Null(trained.NounVerb);
+
+        // Act
+        var plain = Read(Write(trained));
+
+        // Assert: the table that the runtime reads has none
+        Assert.Null(plain.NounVerb);
+        Assert.DoesNotContain("noun/verb table", trained.Summary(), StringComparison.Ordinal);
     }
 
     /// <summary>
@@ -617,6 +656,25 @@ public class BasicTrainerTests
         // Assert: the default is a grid value and no value is negative
         Assert.Contains(BasicHyperparameters.Default.ClauseSmoothing, values);
         Assert.All(values, value => Assert.True(value >= 0));
+    }
+
+    /// <summary>
+    ///     The grids of the noun/verb model include the default weight and the default penalty, start with the model turned
+    ///     off, and have no negative value.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BasicHyperparameters_NounVerb_IsTuned()
+    {
+        // Arrange: the grids of the weight and of the L2 penalty
+        var weights = BasicHyperparameters.NounVerbWeightGrid;
+        var penalties = BasicHyperparameters.NounVerbL2Grid;
+
+        // Assert: the defaults are grid values, the weights start at the model turned off and nothing is negative
+        Assert.Contains(BasicHyperparameters.Default.NounVerbWeight, weights);
+        Assert.Contains(BasicHyperparameters.Default.NounVerbL2, penalties);
+        Assert.Equal(0.0, weights[0]);
+        Assert.All(weights, value => Assert.True(value >= 0));
+        Assert.All(penalties, value => Assert.True(value >= 0));
     }
 
     /// <summary>

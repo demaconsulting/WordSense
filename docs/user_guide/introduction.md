@@ -461,8 +461,16 @@ data, from `WordLexicon` and `Basic`.
 - **Only some ambiguous words are decided by an encoder.** The encoders choose from context for the lemmas with trained
   weights (see the appendix). Any other ambiguous word, such as `need`, `look` or `help`, is answered at the
   part-of-speech level by `Basic`, with its senses ranked by usage.
-- **Technical noun compounds and imperative fragments are the weak spot of `Basic`'s part of speech** (`service call`,
-  `Wash pump`). Check the confidence and the alternatives in `Analyses`.
+- **`Basic` decides the part of speech from the words next to a word and from word statistics, not from the whole
+  sentence** (a hidden Markov model with context cues). A clue further away is out of its reach.
+- **Its known weak spots** are a noun use of a word that is mostly a verb after a modifier noun (`security check`,
+  `monitor stand`, `dial travel`: on the development splits 9 of 23 such nouns were right, against 303 of 324 verb uses
+  of the same words), short fragments without a determiner (`Wash pump`) and a gerund that opens a sentence.
+- **When these matter, use `MiniLM` or `BertBaseCased`.** For the lemmas they are trained for (see the appendix) they
+  read the whole sentence and decide the part of speech better; every other word keeps the part of speech of `Basic`.
+- **Treat the part of speech of `Basic` as reliable at a confidence of 0.8 or more, or when an encoder model agrees.**
+  Below that, check the alternatives in `Analyses`. The weak spots above can be wrong with high confidence, so check
+  them whatever the confidence.
 - **Fine senses are WordNet's.** Even a trained model can often tell only the group.
 - **Group ids change between releases.** Sense ids are frozen.
 - **There is no pronunciation data.** Map the sense id, group id or key to your own pronunciations.

@@ -322,4 +322,172 @@ public class CueModelTests
         // Assert
         Assert.Equal(expected, actual);
     }
+
+    // A small lexicon for the neighbors of the noun/verb features: one word of each class
+    private static ImmutableArray<WordDetails> ClassLexicon(string word) => word switch
+    {
+        "the" => [new WordDetails("the", PartOfSpeech.Determiner, string.Empty)],
+        "is" => [new WordDetails("be", PartOfSpeech.Verb, "Tense=Pres+VerbForm=Fin"), new WordDetails("be", PartOfSpeech.Auxiliary, "Tense=Pres+VerbForm=Fin")],
+        "ends" => [new WordDetails("end", PartOfSpeech.Verb, "Number=Sing+Person=3+Tense=Pres+VerbForm=Fin")],
+        "going" => [new WordDetails("go", PartOfSpeech.Verb, "VerbForm=Ger")],
+        "stand" => [new WordDetails("stand", PartOfSpeech.Noun, "Number=Sing"), new WordDetails("stand", PartOfSpeech.Verb, "VerbForm=Inf")],
+        "on" => [new WordDetails("on", PartOfSpeech.Preposition, string.Empty), new WordDetails("on", PartOfSpeech.Adverb, "Degree=Pos")],
+        "cat" => [new WordDetails("cat", PartOfSpeech.Noun, "Number=Sing")],
+        _ => default,
+    };
+
+    /// <summary>
+    ///     The noun/verb features are the word and the class of the two tokens on each side, in a fixed order.
+    /// </summary>
+    [Fact]
+    public void CueModel_ExtractNounVerb_WordAndClassOfTheTwoNeighborsOnEachSide()
+    {
+        // Arrange: a target with two words on each side, the second one on the right unknown to the lexicon
+        string[] tokens = ["the", "cat", "stand", "is", "fine"];
+        var features = new FeatureRef[CueModel.MaxNounVerbFeatures];
+
+        // Act
+        var count = CueModel.ExtractNounVerb(tokens, 2, ClassLexicon, features);
+
+        // Assert
+        FeatureRef[] expected =
+        [
+            new(CueModel.Left, "cat"), new(CueModel.LeftClass, "noun"),
+            new(CueModel.Left2, "the"), new(CueModel.Left2Class, "determiner"),
+            new(CueModel.Right, "is"), new(CueModel.RightClass, "auxiliary"),
+            new(CueModel.Right2, "fine"), new(CueModel.Right2Class, CueModel.UnknownClass),
+        ];
+        Assert.Equal(CueModel.MaxNounVerbFeatures, count);
+        Assert.Equal(expected, features[..count]);
+    }
+
+    /// <summary>
+    ///     A neighbor outside the segment is the segment edge, for the word and for the class, and a neighbor without a
+    ///     letter has the class of punctuation but is itself the word.
+    /// </summary>
+    [Fact]
+    public void CueModel_ExtractNounVerb_EdgeAndPunctuationNeighbors()
+    {
+        // Arrange: the target is the first word, followed by a comma and a word
+        string[] tokens = ["stand", ",", "ends"];
+        var features = new FeatureRef[CueModel.MaxNounVerbFeatures];
+
+        // Act
+        var count = CueModel.ExtractNounVerb(tokens, 0, ClassLexicon, features);
+        var found = features[..count];
+
+        // Assert: the two tokens to the left are the edge, the first to the right is punctuation
+        Assert.Contains(new FeatureRef(CueModel.Left, CueModel.SegmentEdge), found);
+        Assert.Contains(new FeatureRef(CueModel.LeftClass, CueModel.EdgeClass), found);
+        Assert.Contains(new FeatureRef(CueModel.Left2, CueModel.SegmentEdge), found);
+        Assert.Contains(new FeatureRef(CueModel.Left2Class, CueModel.EdgeClass), found);
+        Assert.Contains(new FeatureRef(CueModel.Right, ","), found);
+        Assert.Contains(new FeatureRef(CueModel.RightClass, CueModel.PunctuationClass), found);
+        Assert.Contains(new FeatureRef(CueModel.Right2, "ends"), found);
+        Assert.Contains(new FeatureRef(CueModel.Right2Class, "verb"), found);
+    }
+
+    /// <summary>
+    ///     The class of a neighbor comes from its analyses: an auxiliary wins over a verb, a verb that can be finite is a
+    ///     verb, a gerund or a participle is non-finite, several parts of speech are ambiguous with or without a verb among
+    ///     them, and a word with one part of speech has its name.
+    /// </summary>
+    [Theory]
+    [InlineData("is", "auxiliary")]
+    [InlineData("ends", "verb")]
+    [InlineData("going", "nonfinite")]
+    [InlineData("stand", "ambiguous-verb")]
+    [InlineData("on", "ambiguous")]
+    [InlineData("cat", "noun")]
+    [InlineData("the", "determiner")]
+    [InlineData("zzzz", "<unknown>")]
+    public void CueModel_ContextClassOf_NamesTheClassOfTheAnalyses(string word, string expected)
+    {
+        // Arrange: the word comes from the theory data
+
+        // Act
+        var actual = CueModel.ContextClassOf(ClassLexicon(word));
+
+        // Assert
+        Assert.Equal(expected, actual);
+    }
+
+    /// <summary>
+    ///     The noun/verb features of a target are the same whatever the target word is: only its neighbors count.
+    /// </summary>
+    [Fact]
+    public void CueModel_ExtractNounVerb_DoesNotReadTheTarget()
+    {
+        // Arrange: two sentences that differ only in the target
+        var first = new FeatureRef[CueModel.MaxNounVerbFeatures];
+        var second = new FeatureRef[CueModel.MaxNounVerbFeatures];
+
+        // Act
+        CueModel.ExtractNounVerb(["the", "stand", "is"], 1, ClassLexicon, first);
+        CueModel.ExtractNounVerb(["the", "cat", "is"], 1, ClassLexicon, second);
+
+        // Assert
+        Assert.Equal(first, second);
+    }
+
+    /// <summary>
+    ///     A null lexicon is rejected with an argument-null error.
+    /// </summary>
+    [Fact]
+    public void CueModel_ExtractNounVerb_NullLexicon_Throws()
+    {
+        // Arrange
+        var features = new FeatureRef[CueModel.MaxNounVerbFeatures];
+
+        // Act
+        var error = Record.Exception(() => CueModel.ExtractNounVerb(["stand"], 0, null!, features));
+
+        // Assert
+        var thrown = Assert.IsType<ArgumentNullException>(error);
+        Assert.Equal("lexicon", thrown.ParamName);
+    }
+
+    /// <summary>
+    ///     The noun/verb score is the sum of the weights of the known features in eighths of a nat, with no prior, and
+    ///     positive for verb.
+    /// </summary>
+    [Fact]
+    public void CueModel_ScoreNounVerb_SumsKnownWeightsWithoutPrior()
+    {
+        // Arrange
+        var after = new FeatureRef(CueModel.Left, "the");
+        var before = new FeatureRef(CueModel.Left, "to");
+        ushort[] hashes = [.. new[] { after.Hash, before.Hash }.Order()];
+        sbyte[] weights = hashes[0] == after.Hash ? [-16, 24] : [24, -16];
+        var cue = new NounVerbCue([.. hashes], [.. weights]);
+
+        // Act
+        var noun = CueModel.ScoreNounVerb(cue, [after]);
+        var verb = CueModel.ScoreNounVerb(cue, [before]);
+        var both = CueModel.ScoreNounVerb(cue, [after, before, new FeatureRef(CueModel.Window, "zzzz-no-such")]);
+        var none = CueModel.ScoreNounVerb(cue, []);
+
+        // Assert
+        Assert.Equal(-16 * CueModel.Quantum, noun, 9);
+        Assert.Equal(24 * CueModel.Quantum, verb, 9);
+        Assert.Equal((-16 + 24) * CueModel.Quantum, both, 9);
+        Assert.Equal(0.0, none, 9);
+    }
+
+    /// <summary>
+    ///     A null noun/verb table is rejected with an argument-null error.
+    /// </summary>
+    [Fact]
+    public void CueModel_ScoreNounVerb_NullTable_Throws()
+    {
+        // Arrange
+        NounVerbCue? cue = null;
+
+        // Act
+        var error = Record.Exception(() => CueModel.ScoreNounVerb(cue!, []));
+
+        // Assert
+        var thrown = Assert.IsType<ArgumentNullException>(error);
+        Assert.Equal("cue", thrown.ParamName);
+    }
 }

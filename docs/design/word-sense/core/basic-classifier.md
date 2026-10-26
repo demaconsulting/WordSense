@@ -76,7 +76,8 @@ returns the analyses of the form (one per lemma, part of speech and features, ne
    of a table are scaled by its reliability (`LemmaCue.Reliability`, the factor on the inverse temperature of the fusion),
    so a table that predicts held-out sentences of its own anchors poorly does not outvote the tagger. A table of
    reliability 0 is skipped: no analysis has a cue score, exactly as without a table;
-   `SenseFusion.Fuse` gives one probability per analysis, and the case of the written word and then the tense of the
+   `SenseFusion.Fuse` gives one probability per analysis, and the case of the written word, the noun/verb evidence and
+   then the tense of the
    context adjust it (below). The tagger token of a word with several parts of speech carries the catalog support of its
    analyses (`WordSupport.Of`), which `PosTagger` blends into the emission of the word as its word prior.
    The classifier builds an `AnalysisCandidate` for each analysis (with the one sense of an analysis that has exactly
@@ -241,6 +242,31 @@ The decision is the tense of the meaning of the word in its sentence (`I will re
 `I have read that already` a past participle): nothing about the sound of the word enters. An encoder model inherits the
 split through `FallbackWordSenseModel`, which gives the tied variants of an encoder slot the proportions of this model.
 
+#### Noun/Verb Evidence
+
+The tagger and the cue tables weigh how often the word itself is a noun or a verb. A word that is nearly always a verb
+(`stand`, `check`, `call`) keeps that weight in a noun compound (`the monitor stand is adjustable`), where its neighbors
+say noun. The classifier therefore shifts the probability between the noun slot and the verb slot of a word that has both
+from a model that is shared by all such words, after the case prior and before the tense split (`ApplyNounVerb`):
+
+- **The model** (`NounVerbCue`, the noun/verb section of `basic.bin`). One weight per hashed context feature of
+  `CueModel.ExtractNounVerb`: the word and the lexicon class of each of the two tokens before the target and of the two
+  after it (an auxiliary, a verb, a determiner, the segment edge, and so on). The target is never a feature, so the model
+  reads only the context, and no word list enters. The builder fits the weights as a correction of the rest of the
+  model: a logistic regression over the words of the training split of the open corpus that have both analyses, with the
+  log odds that the model without the table gave the word when its sentence was held out as a fixed offset (see the
+  builder design, _Noun/verb table_). A weight is what its feature adds to the log odds of verb against noun, in eighths
+  of a nat, and the table has no prior.
+- **Which words.** A word with at least one noun analysis and at least one verb analysis.
+- **The shift.** L is the sum of the weights of the features that the table knows. The odds of the verb slot against the
+  noun slot are multiplied by `exp(NounVerbWeight * L)`; the product is bounded to 30 nats, so any weight the table
+  accepts keeps the exponential finite. The two slots keep their total probability and every other slot keeps its own, and
+  the analyses of a slot keep their shares of it. The probability of the noun and the verb moves, so the selected slot,
+  the level, the confidence and the sense can move with it. `NounVerbWeight` is in the header of the table (tuned on the
+  development splits only; the weight 0 turns the model off).
+- **Nothing to separate, nothing changes.** A word without a noun analysis or without a verb analysis, a word without a
+  noun/verb table and `NounVerbWeight` 0 leave the probabilities exactly as they are.
+
 #### Error Handling
 
 A null list throws `ArgumentNullException`; a null element throws `ArgumentException`; a canceled token throws
@@ -257,7 +283,7 @@ many threads at once, and the same words always give the same results.
 #### Dependencies
 
 `WordLexicon` (`Lookup`, `SensesOf` and, through `UsagePrior`, the tag counts of the image), `UsagePrior`,
-`BasicTables` (including its `TenseCue`), `PosTagger`, `CueModel`,
+`BasicTables` (including its `TenseCue` and `NounVerbCue`), `PosTagger`, `CueModel`,
 `SenseFusion` and the core contracts (`ClassifyResult`, `WordDetails`, `SenseLevel`, `SenseCandidate`).
 
 #### Callers

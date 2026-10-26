@@ -779,6 +779,112 @@ sections:
                 tests:
                   - BasicClassifier_ClassifyAsync_NonVerbSlot_LeavesProbabilitiesUnchanged
 
+              - id: WordSense-Core-BasicClassifier-NounVerb
+                title: >-
+                  BasicClassifier shall multiply the odds of the verb slot against the noun slot of a word that has both
+                  by exp(NounVerbWeight * L), where the noun slot is the analyses of the word that have the part of
+                  speech Noun, the verb slot is those that have the part of speech Verb, L is the log odds of verb
+                  against noun that the shared noun/verb table of the Basic model gives the noun/verb features of the
+                  word, and NounVerbWeight is the weight of the noun/verb model in the table, so that with L of -3 nats
+                  the weight 2 gives the odds e^-6 and the weight 0.5 gives e^-1.5.
+                tags: [unit]
+                justification: |
+                  The tagger and the cue tables weigh how often the word itself is a noun or a verb, and a word that is
+                  nearly always a verb keeps that weight in a noun compound such as the monitor stand is adjustable,
+                  where its neighbors say noun. The weight lets the table scale how far the context moves the choice,
+                  and the exponential turns log odds into the odds of the two slots.
+                tests:
+                  - BasicClassifier_ClassifyAsync_NounVerbTable_WeightScalesTheLogOdds
+                children:
+                  - WordSense-Core-BasicClassifier-NounVerb-Context
+                  - WordSense-Core-BasicClassifier-NounVerb-Bound
+                  - WordSense-Core-BasicClassifier-NounVerb-SlotTotal
+                  - WordSense-Core-BasicClassifier-NounVerb-Segment
+                  - WordSense-Core-BasicClassifier-NounVerb-NoTable
+                  - WordSense-Core-BasicClassifier-NounVerb-WeightZero
+                  - WordSense-Core-BasicClassifier-NounVerb-NoVerb
+
+              - id: WordSense-Core-BasicClassifier-NounVerb-Context
+                title: >-
+                  BasicClassifier shall take L (as defined in WordSense-Core-BasicClassifier-NounVerb) from the
+                  noun/verb features of the word in its segment, the sum of the weights of the features that the table
+                  knows in nats, including the class features and the segment edge, so that a context that the table
+                  weighs at -3 nats makes the verb slot e^-3 times as probable as the noun slot, and the selected
+                  analysis follows the odds.
+                tags: [unit]
+                justification: |
+                  Whether a word is a noun or a verb is read from its neighbors, so one table serves every word that has
+                  both.
+                tests:
+                  - BasicClassifier_ClassifyAsync_NounVerbTable_ContextFeaturesSetTheLogOdds
+                  - BasicClassifier_ClassifyAsync_NounVerbTable_ClassFeaturesSetTheLogOdds
+
+              - id: WordSense-Core-BasicClassifier-NounVerb-Bound
+                title: >-
+                  BasicClassifier shall bound the product NounVerbWeight * L (as defined in
+                  WordSense-Core-BasicClassifier-NounVerb) to the range from -30 to 30 nats before the exponential, so
+                  that every probability stays finite and the analyses of the word still sum to one, whatever the weight
+                  and the weights of the table.
+                tags: [unit]
+                justification: |
+                  The table is data, and a weight or a context weighing more than about 700 nats would overflow the
+                  exponential and turn the probabilities into infinity or NaN.
+                tests:
+                  - BasicClassifier_ClassifyAsync_NounVerbTable_LargeWeight_IsBoundedTo30Nats
+
+              - id: WordSense-Core-BasicClassifier-NounVerb-SlotTotal
+                title: >-
+                  BasicClassifier shall keep the total probability of the noun slot and the verb slot, and the
+                  probability of every other slot, as they are before the shift, scaling the analyses of a slot together
+                  so that they keep their shares of it.
+                tags: [unit]
+                justification: |
+                  The shift is a choice between the noun and the verb; it must not move the probability of an adjective
+                  or adverb reading of the word.
+                tests:
+                  - BasicClassifier_ClassifyAsync_NounVerbTable_KeepsTheTotalOfTheTwoSlotsAndTheOthers
+
+              - id: WordSense-Core-BasicClassifier-NounVerb-Segment
+                title: >-
+                  BasicClassifier shall read the neighbors of a word inside its sentence segment only, so that a word
+                  after a sentence-ending token has the segment edge to its left.
+                tags: [unit]
+                justification: |
+                  A sentence is the unit of the grammar; the words of the previous sentence say nothing about the part
+                  of speech of this one.
+                tests:
+                  - BasicClassifier_ClassifyAsync_NounVerbTable_ReadsTheSegmentOnly
+
+              - id: WordSense-Core-BasicClassifier-NounVerb-NoTable
+                title: >-
+                  BasicClassifier shall leave the probabilities of every word unchanged by the noun/verb model when the
+                  table has no noun/verb table.
+                tags: [unit]
+                justification: |
+                  A table without the model must behave as it did before the model existed.
+                tests:
+                  - BasicClassifier_ClassifyAsync_NounVerbModelOff_LeavesProbabilitiesUnchanged
+
+              - id: WordSense-Core-BasicClassifier-NounVerb-WeightZero
+                title: >-
+                  BasicClassifier shall leave the probabilities of every word unchanged by the noun/verb model when the
+                  NounVerbWeight of the table is 0.
+                tags: [unit]
+                justification: |
+                  The weight 0 is the documented way to turn the model off.
+                tests:
+                  - BasicClassifier_ClassifyAsync_NounVerbModelOff_LeavesProbabilitiesUnchanged
+
+              - id: WordSense-Core-BasicClassifier-NounVerb-NoVerb
+                title: >-
+                  BasicClassifier shall leave the probabilities of a word unchanged by the noun/verb model when it has
+                  no noun analysis or no verb analysis.
+                tags: [unit]
+                justification: |
+                  A word never changes for a model that does not apply to it.
+                tests:
+                  - BasicClassifier_ClassifyAsync_NounVerbTable_WordWithoutVerb_IsNotShifted
+
               - id: WordSense-Core-BasicClassifier-Normalization
                 title: >-
                   BasicClassifier shall look words up case-insensitively (in lower case), read the curly apostrophe

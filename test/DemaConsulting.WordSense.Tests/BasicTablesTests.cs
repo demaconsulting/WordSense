@@ -107,7 +107,7 @@ public class BasicTablesTests
     private static byte[] WithClauseCountAboveTotal(bool trigram)
     {
         var raw = TestTables.Decompress(TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], sentences: [[PosTag.Noun]], clauseSmoothing: 0));
-        var header = 4 + 32 + (13 * 8) + 1;
+        var header = 4 + 32 + (14 * 8) + 1;
         var counts = PosTag.Extended + (PosTag.Extended * PosTag.Extended) + (PosTag.Extended * PosTag.Extended * PosTag.Extended);
         var offset = header + counts + (trigram ? PosTag.Extended * PosTag.Extended : 0);
 
@@ -387,11 +387,11 @@ public class BasicTablesTests
     [Fact]
     public void BasicTables_Load_WrongVersionOrTagCount_Throws()
     {
-        // Arrange: the tag count is a single-byte varint after the magic, the hash and nine doubles
+        // Arrange: the tag count is a single-byte varint after the magic, the hash and the fourteen doubles
         var version = TestTables.Decompress(TestTables.Default());
         version[3] = (byte)'2';
         var tags = TestTables.Decompress(TestTables.Default());
-        const int tagCountOffset = 4 + 32 + (13 * 8);
+        const int tagCountOffset = 4 + 32 + (14 * 8);
         Assert.Equal(PosTag.Count, tags[tagCountOffset]);
         tags[tagCountOffset]++;
 
@@ -409,7 +409,7 @@ public class BasicTablesTests
     {
         // Arrange: a current table whose magic is changed back to the revision before the tense model
         var raw = TestTables.Decompress(TestTables.Default());
-        Assert.Equal((byte)'6', raw[3]);
+        Assert.Equal((byte)'7', raw[3]);
         raw[3] = (byte)'3';
 
         // Act: load the table whose magic is WSB3
@@ -429,7 +429,7 @@ public class BasicTablesTests
     {
         // Arrange: a current table whose magic is changed back to the revision before the clause state
         var raw = TestTables.Decompress(TestTables.Default());
-        Assert.Equal((byte)'6', raw[3]);
+        Assert.Equal((byte)'7', raw[3]);
         raw[3] = (byte)'4';
 
         // Act: load the table whose magic is WSB4
@@ -449,10 +449,30 @@ public class BasicTablesTests
     {
         // Arrange: a current table whose magic is changed back to the revision before the word prior
         var raw = TestTables.Decompress(TestTables.Default());
-        Assert.Equal((byte)'6', raw[3]);
+        Assert.Equal((byte)'7', raw[3]);
         raw[3] = (byte)'5';
 
         // Act: load the table whose magic is WSB5
+        var error = Assert.Throws<InvalidDataException>(() => TestTables.Load(TestTables.Compress(raw)));
+
+        // Assert: the load names an unknown format
+        Assert.Contains("unknown format", error.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The previous format <c>WSB6</c>, which has no noun/verb weight and no noun/verb table, is rejected as an unknown
+    ///     format whatever else it holds, so a table that was trained before the noun/verb model is never read as a current
+    ///     one (its header is shorter, so reading it as a current table would shift every later value).
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_PreviousFormatWsb6_ThrowsUnknownFormat()
+    {
+        // Arrange: a current table whose magic is changed back to the revision before the noun/verb model
+        var raw = TestTables.Decompress(TestTables.Default());
+        Assert.Equal((byte)'7', raw[3]);
+        raw[3] = (byte)'6';
+
+        // Act: load the table whose magic is WSB6
         var error = Assert.Throws<InvalidDataException>(() => TestTables.Load(TestTables.Compress(raw)));
 
         // Assert: the load names an unknown format
@@ -712,14 +732,14 @@ public class BasicTablesTests
     [Fact]
     public void BasicTables_Load_InvalidTenseSection_Throws()
     {
-        // Arrange: the section is the last bytes of the table: flag, prior, count, deltas and weights
+        // Arrange: the section before the noun/verb flag is the tense section: flag, prior, count, deltas and weights
         var good = TestTables.Decompress(TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], tense: (0, [3, 70], [1, -2])));
         var flag = (byte[])good.Clone();
-        flag[^7] = 2;
+        flag[^8] = 2;
         var noFeatures = TestTables.Decompress(TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], tense: (0, [], [])));
 
         // Act / Assert
-        Assert.Equal(1, good[^7]);
+        Assert.Equal(1, good[^8]);
         Assert.True(Throws(() => TestTables.Load(TestTables.Compress(flag))), "Flag 2.");
         Assert.True(Throws(() => TestTables.Load(TestTables.Compress(noFeatures))), "No features.");
         Assert.True(Throws(() => TestTables.Load(TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], tense: (0, [70, 3], [1, -2])))), "Unordered hashes.");
@@ -740,6 +760,118 @@ public class BasicTablesTests
         var defaultHashes = Record.Exception(() => new TenseCue(0, noHashes, [1]));
         var defaultWeights = Record.Exception(() => new TenseCue(0, [1], noWeights));
         var unequal = Record.Exception(() => new TenseCue(0, [1, 2], [1]));
+
+        // Assert
+        Assert.IsType<ArgumentException>(defaultHashes);
+        Assert.IsType<ArgumentException>(defaultWeights);
+        Assert.IsType<ArgumentException>(unequal);
+    }
+
+    /// <summary>
+    ///     The noun/verb section reads back: the weight of the model from the header, and the ascending hashes and the
+    ///     weights of the table.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_NounVerbTable_ReadsWeightHashesAndWeights()
+    {
+        // Arrange: a table with a noun/verb section and a weight of 0.5 in the header
+        ushort[] hashes = [3, 70, 40000];
+        sbyte[] weights = [-12, 7, 127];
+        var with = TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], nounVerb: (hashes, weights), nounVerbWeight: 0.5);
+
+        // Act
+        var tables = TestTables.Load(with);
+
+        // Assert: the weight, the hashes and the weights read back
+        Assert.Equal(0.5, tables.NounVerbWeight);
+        var nounVerb = Assert.IsType<NounVerbCue>(tables.NounVerb);
+        Assert.Equal(hashes, nounVerb.Hashes.ToArray());
+        Assert.Equal(weights, nounVerb.Weights.ToArray());
+    }
+
+    /// <summary>
+    ///     A table without the noun/verb section has no noun/verb table.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_WithoutNounVerbSection_HasNoNounVerbTable()
+    {
+        // Arrange
+        var without = TestTables.Build([("record", 0, new int[PosTag.Count])], [], []);
+
+        // Act
+        var plain = TestTables.Load(without);
+
+        // Assert
+        Assert.Null(plain.NounVerb);
+    }
+
+    /// <summary>
+    ///     A noun/verb table cut at any byte is rejected as corrupt data.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_NounVerbTableTruncatedAtEveryLength_Throws()
+    {
+        // Arrange
+        var raw = TestTables.Decompress(TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], nounVerb: ([3, 70, 400], [1, -2, 3])));
+
+        // Act / Assert: every proper prefix is rejected
+        for (var length = 0; length < raw.Length; length++)
+        {
+            var blob = TestTables.Compress(raw[..length]);
+            Assert.True(Throws(() => TestTables.Load(blob)), $"A table with a noun/verb section cut at {length} of {raw.Length} bytes was accepted.");
+        }
+    }
+
+    /// <summary>
+    ///     A noun/verb section with an unknown flag, without features or with unordered hashes is rejected.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_InvalidNounVerbSection_Throws()
+    {
+        // Arrange: the section is the last bytes of the table: flag, count, deltas and weights
+        var good = TestTables.Decompress(TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], nounVerb: ([3, 70], [1, -2])));
+        var flag = (byte[])good.Clone();
+        flag[^6] = 2;
+        var noFeatures = TestTables.Decompress(TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], nounVerb: ([], [])));
+
+        // Act / Assert
+        Assert.Equal(1, good[^6]);
+        Assert.True(Throws(() => TestTables.Load(TestTables.Compress(flag))), "Flag 2.");
+        Assert.True(Throws(() => TestTables.Load(TestTables.Compress(noFeatures))), "No features.");
+        Assert.True(Throws(() => TestTables.Load(TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], nounVerb: ([70, 3], [1, -2])))), "Unordered hashes.");
+        Assert.True(Throws(() => TestTables.Load(TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], nounVerb: ([3, 70], [1])))), "Fewer weights than hashes.");
+    }
+
+    /// <summary>
+    ///     A table whose header carries a negative weight of the noun/verb model is rejected.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_NounVerbWeightNegative_Throws()
+    {
+        // Arrange: a table whose header carries a negative weight
+        var blob = TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], nounVerbWeight: -0.5);
+
+        // Act: load the table
+        var error = Assert.Throws<InvalidDataException>(() => TestTables.Load(blob));
+
+        // Assert: the load names the invalid hyper-parameters
+        Assert.Contains("invalid hyper-parameters", error.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A noun/verb table refuses the default (uninitialized) immutable arrays and arrays of different lengths.
+    /// </summary>
+    [Fact]
+    public void NounVerbCue_Constructor_DefaultOrUnequalArrays_Throws()
+    {
+        // Arrange: a default array, and arrays of different lengths
+        ImmutableArray<ushort> noHashes = default;
+        ImmutableArray<sbyte> noWeights = default;
+
+        // Act
+        var defaultHashes = Record.Exception(() => new NounVerbCue(noHashes, [1]));
+        var defaultWeights = Record.Exception(() => new NounVerbCue([1], noWeights));
+        var unequal = Record.Exception(() => new NounVerbCue([1, 2], [1]));
 
         // Assert
         Assert.IsType<ArgumentException>(defaultHashes);
@@ -840,7 +972,7 @@ public class BasicTablesTests
     public void BasicTables_Properties_ExposeNoArrays()
     {
         // Arrange
-        Type[] types = [typeof(BasicTables), typeof(WordEntry), typeof(LemmaCue), typeof(TenseCue)];
+        Type[] types = [typeof(BasicTables), typeof(WordEntry), typeof(LemmaCue), typeof(TenseCue), typeof(NounVerbCue)];
 
         // Act
         var arrays = types
@@ -953,6 +1085,23 @@ public class BasicTablesTests
         Assert.NotEmpty(tables.Words);
         Assert.NotEmpty(tables.Cues);
         Assert.Same(tables, BasicTables.Default);
+    }
+
+    /// <summary>
+    ///     The embedded table carries the shared tense table and the shared noun/verb table, each with a positive weight.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Default_CarriesTheTenseAndNounVerbTables()
+    {
+        // Arrange / Act
+        var tables = BasicTables.Default;
+
+        // Assert
+        Assert.NotNull(tables.Tense);
+        Assert.True(tables.TenseWeight > 0);
+        Assert.NotNull(tables.NounVerb);
+        Assert.NotEmpty(tables.NounVerb.Hashes);
+        Assert.True(tables.NounVerbWeight > 0);
     }
 
     /// <summary>
@@ -1236,5 +1385,25 @@ public class BasicTablesTests
         Assert.Equal(prefixed[2], governor);
         Assert.Equal(prefixed[3], new FeatureRef(CueModel.Left, "have").Hash);
         Assert.Equal(4, new[] { window, leftWindow, rightWindow, governor }.Distinct().Count());
+    }
+
+    /// <summary>
+    ///     The feature kinds of the noun/verb model hash with their own prefixes: the second neighbors and the classes of the
+    ///     neighbors are told apart from the immediate words and from each other, and the cue and tense kinds keep theirs.
+    /// </summary>
+    [Fact]
+    public void FeatureRef_Hash_NounVerbKindsHaveOwnPrefixes()
+    {
+        // Arrange: the same token in each place of the noun/verb model
+        var kinds = new[] { CueModel.Left, CueModel.Right, CueModel.Left2, CueModel.Right2, CueModel.LeftClass, CueModel.Left2Class, CueModel.RightClass, CueModel.Right2Class };
+        string[] prefixes = ["L1:", "R1:", "L2:", "R2:", "L1C:", "L2C:", "R1C:", "R2C:"];
+
+        // Act
+        var hashes = kinds.Select(kind => new FeatureRef(kind, "noun").Hash).ToArray();
+        var prefixed = prefixes.Select(prefix => new FeatureRef(CueModel.Window, prefix + "noun").Hash).ToArray();
+
+        // Assert: each kind hashes as its prefix and the token, and the eight features differ
+        Assert.Equal(prefixed, hashes);
+        Assert.Equal(8, hashes.Distinct().Count());
     }
 }

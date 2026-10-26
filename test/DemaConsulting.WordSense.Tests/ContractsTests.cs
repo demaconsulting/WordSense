@@ -616,6 +616,30 @@ public class ContractsTests
     }
 
     /// <summary>
+    ///     The tagger of the core subsystem answers the part of speech Noun for a word that is mostly a verb when it ends a
+    ///     noun compound after a determiner and a modifier noun: the words around it say noun although the word itself says
+    ///     verb.
+    /// </summary>
+    /// <param name="sentence">The sentence, words separated by spaces.</param>
+    /// <param name="index">The index of the word.</param>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Theory]
+    [InlineData("Make a courtesy call to the hotel .", 3)]
+    [InlineData("Do a safety sweep of the room .", 3)]
+    public async Task WordSenseCore_Tagger_VerbDominantWordEndingACompound_IsNoun(string sentence, int index)
+    {
+        // Arrange: the built-in model of the core subsystem; the word follows a determiner and a modifier noun
+        using var model = new BasicWordSenseModel();
+
+        // Act: classify the whole sentence through the public model
+        var results = await model.ClassifyAsync(sentence.Split(' '), TestContext.Current.CancellationToken);
+
+        // Assert: the word is a noun, and its noun reading has the larger probability
+        Assert.Equal(PartOfSpeech.Noun, results[index].Details?.PartOfSpeech);
+        Assert.True(results[index].Confidence > 0.5);
+    }
+
+    /// <summary>
     ///     The composite model of the core subsystem, composed with the built-in Basic model as its fallback, answers a
     ///     word that its primary model leaves at the part-of-speech level with the slot probabilities of both models
     ///     combined (the verb that the Basic tagger reads from the context overrules the noun of the primary model), keeps

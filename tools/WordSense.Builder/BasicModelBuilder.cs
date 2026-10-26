@@ -65,7 +65,10 @@ internal static class BasicModelBuilder
             training);
 
         // The reliability of each cue table from the running text of the training split (never the development or test splits)
-        var data = await CueRunningReliability.ApplyAsync(trained, training, lexicon, cancellationToken).ConfigureAwait(false);
+        var reliable = await CueRunningReliability.ApplyAsync(trained, training, lexicon, cancellationToken).ConfigureAwait(false);
+
+        // The noun/verb table corrects the odds that the model so far gives the words of the same split when they are held out
+        var data = await NounVerbStacker.ApplyAsync(reliable, training, lexicon, cancellationToken).ConfigureAwait(false);
         var blob = BasicTablesWriter.Write(data, WordLexicon.Current.InventoryHash);
         _ = BasicTables.Load(blob, WordLexicon.Current);
         var path = Path.IsPathRooted(outputPath) ? outputPath : Path.Join(repository, outputPath);

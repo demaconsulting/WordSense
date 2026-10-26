@@ -33,6 +33,9 @@ namespace WordSense.Builder;
 /// <param name="RunningFolds">The number of folds of the cross-fitted measurement of the net benefit of each cue table on running text (the training split of the open corpus): the tagger is trained on all folds but one and scores the fold that is left out with every cue table on and with every one off. 0 turns the measurement off.</param>
 /// <param name="RunningPseudo">The pseudo count of the running-text reliability: a table that the cues turned right (helped) on h tokens and wrong (hurt) on u tokens gets the factor min(1, (h + pseudo) / (u + pseudo)), so a table with few changed tokens stays near 1.</param>
 /// <param name="RunningMinimum">True when the final reliability of a table is the smaller of its anchor reliability and its running-text factor, false when it is their product.</param>
+/// <param name="NounVerbWeight">The weight of the shared noun/verb model in the shift between the noun slot and the verb slot of a word that has both (runtime; in the table header). 0 turns the model off.</param>
+/// <param name="NounVerbMinFeatureCount">The fewest training words a context feature needs to enter the vocabulary of the noun/verb model.</param>
+/// <param name="NounVerbL2">The L2 penalty of the logistic regression that fits the weights of the noun/verb model.</param>
 internal sealed record BasicHyperparameters(
     double Gamma,
     double Beta,
@@ -60,7 +63,10 @@ internal sealed record BasicHyperparameters(
     double CueSkillTarget = 0.0,
     int RunningFolds = 0,
     double RunningPseudo = 5.0,
-    bool RunningMinimum = false)
+    bool RunningMinimum = false,
+    double NounVerbWeight = 0.0,
+    int NounVerbMinFeatureCount = 2,
+    double NounVerbL2 = 1.0)
 {
     /// <summary>
     ///     The number of anchor sentences the tuner samples for its anchor train and dev subsets.
@@ -122,7 +128,10 @@ internal sealed record BasicHyperparameters(
         CueSkillTarget: 0.6,
         RunningFolds: 4,
         RunningPseudo: 50.0,
-        RunningMinimum: false);
+        RunningMinimum: false,
+        NounVerbWeight: 0.5,
+        NounVerbMinFeatureCount: 2,
+        NounVerbL2: 1.0);
 
     /// <summary>
     ///     The settings without the word prior: gamma 0.75, beta 5, no prior, and only the 2,000 most frequent ambiguous words
@@ -177,6 +186,16 @@ internal sealed record BasicHyperparameters(
     ///     The weights of the tense model the tuner tries (0 turns the model off).
     /// </summary>
     public static readonly IReadOnlyList<double> TenseWeightGrid = [0.0, 0.25, 0.5, 1.0, 1.5, 2.0];
+
+    /// <summary>
+    ///     The weights of the noun/verb model the tuner tries (0 turns the model off).
+    /// </summary>
+    public static readonly IReadOnlyList<double> NounVerbWeightGrid = [0.0, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5];
+
+    /// <summary>
+    ///     The L2 penalties of the noun/verb regression the tuner tries.
+    /// </summary>
+    public static readonly IReadOnlyList<double> NounVerbL2Grid = [0.3, 1.0, 3.0, 10.0, 30.0];
 
     /// <summary>
     ///     Gets the inverse of <see cref="Temperature"/>: the factor on the cue scores that the runtime reads.

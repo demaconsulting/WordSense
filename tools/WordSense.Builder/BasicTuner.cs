@@ -25,15 +25,15 @@ internal static class BasicTuner
     /// <param name="progress">Receives progress messages.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <param name="treebankDev">The gold file of the development file of the treebank (<c>ud_dev.tsv</c>) that the tense weight is tuned with besides the open corpus development split, or null; a missing file is left out.</param>
-    /// <param name="sections">The sections to run: <c>all</c>, <c>grid</c>, <c>tense</c>, <c>prior</c> or <c>cue</c>.</param>
+    /// <param name="sections">The sections to run: <c>all</c>, <c>grid</c>, <c>tense</c>, <c>nounverb</c>, <c>prior</c> or <c>cue</c>.</param>
     /// <returns>The rendered Markdown table.</returns>
     public static async Task<string> RunAsync(string corpus, TextWriter progress, CancellationToken cancellationToken, string? treebankDev = null, string sections = "all")
     {
         ArgumentNullException.ThrowIfNull(progress);
         ArgumentNullException.ThrowIfNull(sections);
-        if (sections is not ("all" or "grid" or "tense" or "prior" or "cue"))
+        if (sections is not ("all" or "grid" or "tense" or "nounverb" or "prior" or "cue"))
         {
-            throw new ArgumentException($"The option --sections must be all, grid, tense, prior or cue, not '{sections}'.", nameof(sections));
+            throw new ArgumentException($"The option --sections must be all, grid, tense, nounverb, prior or cue, not '{sections}'.", nameof(sections));
         }
 
         var counts = TaggerCounts.Read(OpenCorpus.CountsDirectory(corpus));
@@ -48,6 +48,11 @@ internal static class BasicTuner
         if (sections is "all" or "tense")
         {
             text.Append(await TuneTenseAsync(corpus, counts, lexicon, dev, treebankDev, progress, cancellationToken).ConfigureAwait(false));
+        }
+
+        if (sections is "all" or "nounverb")
+        {
+            text.Append(await TuneNounVerbAsync(corpus, counts, lexicon, dev, treebankDev, progress, cancellationToken).ConfigureAwait(false));
         }
 
         if (sections is "all" or "prior")
@@ -401,6 +406,65 @@ internal static class BasicTuner
             }
 
             progress.WriteLine($"tense weight {weight.ToString("0.00", CultureInfo.InvariantCulture)} done.");
+        }
+
+        return text.ToString();
+    }
+
+    /// <summary>
+    ///     Scores the noun/verb model on the development sets: the model of the shipped configuration (all anchors and form
+    ///     choosers, the cue reliabilities measured on running text) with the noun/verb table fitted with each L2 penalty of
+    ///     the grid and used with each weight of the grid.
+    /// </summary>
+    /// <param name="corpus">The corpus directory.</param>
+    /// <param name="counts">The tag counts.</param>
+    /// <param name="lexicon">The lexicon.</param>
+    /// <param name="dev">The development split of the representative open corpus.</param>
+    /// <param name="treebankDev">The gold file of the development file of the treebank, or null; a file that does not exist is left out.</param>
+    /// <param name="progress">Receives progress messages.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>The rendered Markdown table of the variants; only development sets are read, never a test set.</returns>
+    private static async Task<string> TuneNounVerbAsync(
+        string corpus,
+        TaggerCounts counts,
+        Func<string, ImmutableArray<WordDetails>> lexicon,
+        List<TaggedSentence> dev,
+        string? treebankDev,
+        TextWriter progress,
+        CancellationToken cancellationToken)
+    {
+        var sets = ReadDevSets(dev, treebankDev);
+        var anchors = Corpus.ReadDirectory(Path.Join(corpus, "anchors"));
+        var choosers = ChooserCorpus.ReadDirectory(Path.Join(corpus, "choosers", "anchors"));
+        var training = OpenCorpus.ReadSplit(corpus, OpenCorpus.Representative, "train").Select(OpenCorpus.ToTagged).ToList();
+
+        // The table is fitted on the odds that the rest of the model gives the words of a held-out part of the training
+        // split, so the rest of the model is the final one: trained, with its cue reliabilities
+        var trained = BasicTrainer.Train(counts, lexicon, anchors, choosers, BasicHyperparameters.Default, training);
+        var baseModel = await CueRunningReliability.ApplyAsync(trained, training, lexicon, cancellationToken).ConfigureAwait(false);
+        var samples = await NounVerbStacker.CollectAsync(baseModel, training, lexicon, cancellationToken).ConfigureAwait(false);
+        var text = new StringBuilder();
+        text.Append("\n| L2 | Noun/verb weight | Open dev all / ambiguous | Open dev noun-verb | Treebank dev all / ambiguous | Treebank dev noun-verb |\n");
+        text.Append("| ---: | ---: | --- | ---: | --- | ---: |\n");
+        foreach (var l2 in BasicHyperparameters.NounVerbL2Grid)
+        {
+            var row = NounVerbStacker.Fit(samples, baseModel.Hyperparameters with { NounVerbL2 = l2 });
+            foreach (var weight in BasicHyperparameters.NounVerbWeightGrid)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                var data = baseModel with { NounVerb = row, Hyperparameters = baseModel.Hyperparameters with { NounVerbWeight = weight, NounVerbL2 = l2 } };
+                var tables = BasicTables.Load(BasicTablesWriter.Write(data, WordLexicon.Current.InventoryHash, CompressionLevel.Fastest), WordLexicon.Current);
+                text.Append("| ").Append(l2.ToString("0.0", CultureInfo.InvariantCulture)).Append(" | ").Append(weight.ToString("0.00", CultureInfo.InvariantCulture));
+                foreach (var (name, sentences) in sets)
+                {
+                    var score = await TaggerEvaluator.EvaluateAsync(name, tables, sentences, cancellationToken).ConfigureAwait(false);
+                    text.Append(" | ").Append(Describe(score)).Append(" | ").Append(Percent(score.NounVerbCorrect, score.NounVerb));
+                }
+
+                text.Append(" |\n");
+            }
+
+            progress.WriteLine($"noun/verb L2 {l2.ToString("0.0", CultureInfo.InvariantCulture)} done.");
         }
 
         return text.ToString();

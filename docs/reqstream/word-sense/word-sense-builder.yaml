@@ -579,9 +579,12 @@ sections:
               - WordSense-WordSenseBuilder-TrainBasic-TenseClasses
               - WordSense-WordSenseBuilder-TrainBasic-TenseWeights
               - WordSense-WordSenseBuilder-TrainBasic-TrainSplitOnly
+              - WordSense-WordSenseBuilder-TrainBasic-NounVerbTable
+              - WordSense-WordSenseBuilder-TrainBasic-NounVerbWritten
+              - WordSense-WordSenseBuilder-TrainBasic-NounVerbGrid
               - WordSense-WordSenseBuilder-TrainBasic-ClauseCounts
               - WordSense-WordSenseBuilder-TrainBasic-ClauseSmoothing
-              - WordSense-WordSenseBuilder-TrainBasic-FormatWsb6
+              - WordSense-WordSenseBuilder-TrainBasic-FormatWsb7
               - WordSense-WordSenseBuilder-TrainBasic-ClauseDeterministic
               - WordSense-WordSenseBuilder-TrainBasic-WordPrior
               - WordSense-WordSenseBuilder-TrainBasic-WordPriorOn
@@ -633,15 +636,15 @@ sections:
             tests:
               - WordSenseBuilder_BasicTablesWriter_Write_CarriesTheClauseSmoothing
 
-          - id: WordSense-WordSenseBuilder-TrainBasic-FormatWsb6
+          - id: WordSense-WordSenseBuilder-TrainBasic-FormatWsb7
             title: >-
-              The builder shall write the table of the basic model with the format revision WSB6, which differs from
+              The builder shall write the table of the basic model with the format revision WSB7, which differs from
               the previous revision.
             tags: [unit]
             justification: |
               The revision makes the previous format fail loudly in the runtime instead of being read as a current one.
             tests:
-              - WordSenseBuilder_BasicTablesWriter_Write_StartsWithTheMagicWsb6
+              - WordSenseBuilder_BasicTablesWriter_Write_StartsWithTheMagicWsb7
 
           - id: WordSense-WordSenseBuilder-TrainBasic-WordPrior
             title: >-
@@ -905,6 +908,162 @@ sections:
             tests:
               - WordSenseBuilder_Program_TrainBasic_ReadsOnlyTheTrainSplit
 
+          - id: WordSense-WordSenseBuilder-TrainBasic-NounVerbTable
+            title: >-
+              The builder shall fit the shared noun/verb table of the basic model as the weights of a logistic
+              regression of verb against noun over the hashed context features of each training word, with the log odds
+              that the rest of the model gave the word as a fixed offset, so that a feature of words that the rest of
+              the model got right gets a weight near 0 and a feature of words it got wrong gets a large one, and shall
+              read no word list.
+            tags: [unit]
+            justification: |
+              The tagger and the cue tables already read the neighbors of a word, so a table that learned the
+              neighbors alone would count that evidence twice. Fitted against the odds of the rest of the model, the
+              table learns only what that model gets wrong, so its weights add to those odds as they are. The shipped
+              weight of the model (0.5 in the default hyper-parameters) was chosen on the development splits.
+            tests:
+              - WordSenseBuilder_NounVerbStacker_Fit_FeaturesOfTheClassesGetTheirSign
+              - WordSenseBuilder_NounVerbStacker_Fit_LearnsOnlyWhatTheOffsetMisses
+              - WordSenseBuilder_NounVerbStacker_Apply_FitsATableThatSeparatesTheNeighborWords
+            children:
+              - WordSense-WordSenseBuilder-TrainBasic-NounVerbSamples
+              - WordSense-WordSenseBuilder-TrainBasic-NounVerbOutOfFold
+              - WordSense-WordSenseBuilder-TrainBasic-NounVerbCollisions
+              - WordSense-WordSenseBuilder-TrainBasic-NounVerbPenalty
+              - WordSense-WordSenseBuilder-TrainBasic-NounVerbVocabulary
+              - WordSense-WordSenseBuilder-TrainBasic-NounVerbDeterministic
+              - WordSense-WordSenseBuilder-TrainBasic-NounVerbNoFolds
+              - WordSense-WordSenseBuilder-TrainBasic-NounVerbArguments
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-NounVerbSamples
+            title: >-
+              The builder shall use as the training words of the noun/verb table every word of the training split of the
+              representative open corpus whose gold tag is noun or verb and that has a noun and a verb analysis in the
+              lexicon, with its context features and its gold class.
+            tags: [unit]
+            justification: |
+              Only a word that has both analyses poses the choice that the table settles.
+            tests:
+              - WordSenseBuilder_NounVerbStacker_Collect_OneSampleForEveryNounOrVerbWithBothAnalyses
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-NounVerbOutOfFold
+            title: >-
+              The builder shall compute the offset of each training word of the noun/verb table with a model that has
+              seen nothing of the fold of the word: the tagger counts and the running-text reliabilities of the cue
+              tables come from the other folds alone, so that the offset depends on no gold tag of its own fold.
+            tags: [unit]
+            justification: |
+              An offset that carried the answer of its own word would teach the table that the rest of the model is
+              right, and the table would learn nothing of what it gets wrong.
+            tests:
+              - WordSenseBuilder_NounVerbStacker_Collect_OffsetsOfAFoldDoNotDependOnItsOwnGoldTags
+              - WordSenseBuilder_NounVerbStacker_Collect_IgnoresTheReliabilitiesMeasuredOnTheWholeSplit
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-NounVerbCollisions
+            title: >-
+              The builder shall count a weight of the noun/verb table once for each feature of a training word that has
+              its hash when it fits the table, as the runtime adds the weight once for each extracted feature.
+            tags: [unit]
+            justification: |
+              The table stores one weight per 16-bit hash; a fit that counted a shared hash once where the runtime
+              counts it twice would score the same word differently in training and at run time.
+            tests:
+              - WordSenseBuilder_NounVerbStacker_Fit_CollidingFeaturesCountOnceEach
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-NounVerbPenalty
+            title: >-
+              The builder shall shrink the weights of the noun/verb table toward 0 with the L2 penalty of the
+              hyper-parameters, a larger penalty giving smaller weights.
+            tags: [unit]
+            justification: |
+              The penalty is the setting that keeps the weights of rare contexts from fitting noise.
+            tests:
+              - WordSenseBuilder_NounVerbStacker_Fit_PenaltyShrinksTheWeights
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-NounVerbVocabulary
+            title: >-
+              The builder shall give the noun/verb table only the features that occur in at least the minimum number of
+              training words, and no table when no feature occurs often enough or when the training words are of one
+              class.
+            tags: [unit]
+            justification: |
+              A feature seen once is noise, and a table fitted on one class would only push every word toward it.
+            tests:
+              - WordSenseBuilder_NounVerbStacker_Fit_RareFeaturesAndOneClassGiveNothing
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-NounVerbDeterministic
+            title: >-
+              The builder shall give equal training words and equal models the same noun/verb table and the same bytes.
+            tags: [unit]
+            justification: |
+              The shipped table must be reproducible from the committed inputs.
+            tests:
+              - WordSenseBuilder_NounVerbStacker_Fit_IsDeterministic
+              - WordSenseBuilder_NounVerbStacker_Apply_IsDeterministic
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-NounVerbNoFolds
+            title: >-
+              The builder shall return the model as it is, without a noun/verb table, when the number of folds of the
+              running-text measurement is less than two.
+            tags: [unit]
+            justification: |
+              Without folds no word can be held out, and a table fitted on words the model has seen would be wrong.
+            tests:
+              - WordSenseBuilder_NounVerbStacker_Apply_WithoutFolds_ReturnsTheModelUnchanged
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-NounVerbArguments
+            title: >-
+              The builder shall reject a null model, a null list of training words, a null list of samples and null
+              hyper-parameters when it collects and fits the noun/verb table with an argument-null error.
+            tags: [unit]
+            justification: |
+              Misuse must fail fast with the documented exception.
+            tests:
+              - WordSenseBuilder_NounVerbStacker_NullArguments_Throw
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-NounVerbWritten
+            title: >-
+              The builder shall write the noun/verb table and the weight of the noun/verb model into the table of the
+              basic model.
+            tags: [unit]
+            justification: |
+              The runtime reads the table and the weight from the file.
+            tests:
+              - WordSenseBuilder_BasicTablesWriter_Write_CarriesTheNounVerbTableAndWeight
+            children:
+              - WordSense-WordSenseBuilder-TrainBasic-NounVerbNoSection
+              - WordSense-WordSenseBuilder-TrainBasic-NounVerbWithCounts
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-NounVerbNoSection
+            title: >-
+              The builder shall write no noun/verb section into the table of a model that has no noun/verb table.
+            tags: [unit]
+            justification: |
+              A model without the table must load without one, so that the classifier leaves its words unchanged.
+            tests:
+              - WordSenseBuilder_BasicTablesWriter_Write_WithoutNounVerbTable_WritesNoNounVerbSection
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-NounVerbWithCounts
+            title: >-
+              The builder shall leave the tense table and the noun/verb table out of a model that is given the tag
+              counts of other sentences.
+            tags: [unit]
+            justification: |
+              The running-text measurement of the cue tables trains the tagger on part of the split, so a table fitted
+              on all of it must not leak into it.
+            tests:
+              - WordSenseBuilder_BasicTrainer_WithCounts_ReplacesTheStatisticsOnly
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-NounVerbGrid
+            title: >-
+              The builder shall ship hyper-parameters whose noun/verb weight and L2 penalty are values of the grids
+              that the tuner scores, with the weights starting at the model turned off.
+            tags: [unit]
+            justification: |
+              The shipped setting must be one that was scored on the development data.
+            tests:
+              - WordSenseBuilder_BasicHyperparameters_NounVerb_IsTuned
+
           - id: WordSense-WordSenseBuilder-TuneBasic
             title: >-
               The builder shall score a grid of basic-model hyperparameters on the development split of the
@@ -917,6 +1076,7 @@ sections:
               dishonest.
             children:
               - WordSense-WordSenseBuilder-TuneBasic-TenseWeight
+              - WordSense-WordSenseBuilder-TuneBasic-NounVerbModel
               - WordSense-WordSenseBuilder-TuneBasic-ClauseSmoothing
               - WordSense-WordSenseBuilder-TuneBasic-TreebankDev
               - WordSense-WordSenseBuilder-TuneBasic-Sections
@@ -1035,6 +1195,20 @@ sections:
             justification: |
               The weight is a setting, so it must be chosen on data that no reported figure is measured on.
             tests:
+              - WordSenseBuilder_Program_TuneBasic_ScoresOnlyTheDevelopmentInputs
+
+          - id: WordSense-WordSenseBuilder-TuneBasic-NounVerbModel
+            title: >-
+              The builder shall score each L2 penalty and each weight of the noun/verb model on the development split of
+              the representative open corpus and the development file of the treebank only (a model trained from the
+              training split), when the section nounverb is named or no section is named, and shall print the scores of
+              that section alone when only it is named.
+            tags: [unit]
+            justification: |
+              The penalty and the weight are settings, so they must be chosen on data that no reported figure is
+              measured on.
+            tests:
+              - WordSenseBuilder_Program_TuneBasic_SectionsNounVerb_RunsOnlyTheNounVerbSection
               - WordSenseBuilder_Program_TuneBasic_ScoresOnlyTheDevelopmentInputs
 
           - id: WordSense-WordSenseBuilder-EvaluateTagger

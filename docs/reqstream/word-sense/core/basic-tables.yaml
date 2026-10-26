@@ -18,7 +18,7 @@ sections:
                   of the analysis, the column with the most items winning, so that a column with empty features, which
                   stands for any features, serves every analysis of that lemma and part of speech that no column of more
                   specific features claims, and shall reject a table with a wrong
-                  signature (the magic WSB6), no compression, missing data, extra data or unordered
+                  signature (the magic WSB7), no compression, missing data, extra data or unordered
                   entries as invalid
                   data, and a table
                   built for another analysis inventory (inventory hash), an unknown analysis or a duplicate analysis.
@@ -356,6 +356,97 @@ sections:
                   value; a table in that format must never be read as a current one.
                 tests:
                   - BasicTables_Load_PreviousFormatWsb5_ThrowsUnknownFormat
+
+              - id: WordSense-Core-BasicTables-Wsb6
+                title: >-
+                  BasicTables shall reject a table with the retired signature WSB6, which has no noun/verb weight and
+                  no noun/verb table, as an unknown format whatever else it holds.
+                tags: [unit]
+                justification: |
+                  The header of that format is shorter, so reading it as a current table would shift every later
+                  value; a table in that format must never be read as a current one.
+                tests:
+                  - BasicTables_Load_PreviousFormatWsb6_ThrowsUnknownFormat
+
+              - id: WordSense-Core-BasicTables-NounVerb
+                title: >-
+                  BasicTables shall read the weight of the noun/verb model from the header and, from the noun/verb
+                  section, the ascending feature hashes and the one signed quantized weight per hash of the shared
+                  noun/verb table, and expose them.
+                tags: [unit]
+                justification: |
+                  The noun slot and the verb slot of a word that has both are shifted from exactly these values.
+                tests:
+                  - BasicTables_Load_NounVerbTable_ReadsWeightHashesAndWeights
+                children:
+                  - WordSense-Core-BasicTables-NounVerb-ReadOnly
+                  - WordSense-Core-BasicTables-NounVerb-NoTable
+                  - WordSense-Core-BasicTables-NounVerb-Malformed
+                  - WordSense-Core-BasicTables-NounVerb-Truncated
+                  - WordSense-Core-BasicTables-NounVerb-WeightInvalid
+                  - WordSense-Core-BasicTables-NounVerb-Shipped
+                  - WordSense-Core-BasicTables-Wsb6
+
+              - id: WordSense-Core-BasicTables-NounVerb-ReadOnly
+                title: >-
+                  BasicTables shall expose the hashes and weights of the noun/verb table only as read-only views, and
+                  the noun/verb table shall refuse default (uninitialized) arrays and arrays of different lengths.
+                tags: [unit]
+                justification: |
+                  One table is shared by every classifier and thread in the process; a consumer that could change an
+                  exposed array would change the answers of all the others.
+                tests:
+                  - BasicTables_Properties_ExposeNoArrays
+                  - NounVerbCue_Constructor_DefaultOrUnequalArrays_Throws
+
+              - id: WordSense-Core-BasicTables-NounVerb-NoTable
+                title: >-
+                  BasicTables shall give a table without a noun/verb section no noun/verb table (null).
+                tags: [unit]
+                justification: |
+                  A table without the model must load, and the classifier leaves its words unchanged.
+                tests:
+                  - BasicTables_Load_WithoutNounVerbSection_HasNoNounVerbTable
+
+              - id: WordSense-Core-BasicTables-NounVerb-Malformed
+                title: >-
+                  BasicTables shall reject a noun/verb section with an unknown flag, without a feature, with unordered
+                  hashes or with fewer weights than hashes as invalid data.
+                tags: [unit]
+                justification: |
+                  A damaged section must fail at load time, not give wrong parts of speech.
+                tests:
+                  - BasicTables_Load_InvalidNounVerbSection_Throws
+
+              - id: WordSense-Core-BasicTables-NounVerb-Truncated
+                title: >-
+                  BasicTables shall reject a table with a noun/verb section that is cut at any byte as invalid data.
+                tags: [unit]
+                justification: |
+                  A truncated download or file must never be read as a smaller valid table.
+                tests:
+                  - BasicTables_Load_NounVerbTableTruncatedAtEveryLength_Throws
+
+              - id: WordSense-Core-BasicTables-NounVerb-WeightInvalid
+                title: >-
+                  BasicTables shall reject a table whose header carries a negative weight of the noun/verb model as
+                  invalid data.
+                tags: [unit]
+                justification: |
+                  A negative weight would turn the evidence of the context upside down.
+                tests:
+                  - BasicTables_Load_NounVerbWeightNegative_Throws
+
+              - id: WordSense-Core-BasicTables-NounVerb-Shipped
+                title: >-
+                  BasicTables shall provide, in the default instance, the shared tense table and the shared noun/verb
+                  table with a positive weight each.
+                tags: [unit]
+                justification: |
+                  The embedded table is what every application runs; a table without the two shared models would
+                  silently lose their evidence.
+                tests:
+                  - BasicTables_Default_CarriesTheTenseAndNounVerbTables
 
               - id: WordSense-Core-BasicTables-Immutable
                 title: >-

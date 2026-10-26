@@ -610,15 +610,37 @@ and, for the measurement, a stub model.
   context `had X` is past and `to X` non-past for six different verbs, the weight of the left neighbor `had` is positive
   and that of `to` negative, the prior is the log odds of the seven past and six non-past verbs, the third-person
   context is not learned, sentences without gold and non-verbs are skipped; there is no table without both classes or
-  when no feature reaches the minimum; equal inputs give equal tables and equal bytes with the magic `WSB6`; a model
+  when no feature reaches the minimum; equal inputs give equal tables and equal bytes with the magic `WSB7`; a model
   trained with verbs writes the table and the weight, which `BasicTables` reads back, and a model without verbs has none.
+- **Noun/verb table** (`WordSenseBuilder_NounVerbStacker_Fit_FeaturesOfTheClassesGetTheirSign`,
+  `..._Fit_LearnsOnlyWhatTheOffsetMisses`, `..._Fit_PenaltyShrinksTheWeights`, `..._Fit_RareFeaturesAndOneClassGiveNothing`,
+  `..._Fit_IsDeterministic`, `..._NullArguments_Throw`, `..._Collect_OneSampleForEveryNounOrVerbWithBothAnalyses`,
+  `..._Apply_FitsATableThatSeparatesTheNeighborWords`, `..._Apply_WithoutFolds_ReturnsTheModelUnchanged`,
+  `..._Apply_IsDeterministic`, `..._Fit_CollidingFeaturesCountOnceEach`,
+  `..._Collect_OffsetsOfAFoldDoNotDependOnItsOwnGoldTags`,
+  `..._Collect_IgnoresTheReliabilitiesMeasuredOnTheWholeSplit`): on toy samples, a feature seen with verbs gets a positive
+  weight and one seen with nouns a negative weight; a feature that the offset already explains gets no weight; a larger
+  penalty gives smaller weights; features below the minimum and samples of one class give no table; equal samples give
+  equal tables; null arguments throw; the cross-fitted collection yields one sample for every gold noun or verb whose
+  word has both analyses; on a toy corpus the fitted table separates the neighbor words that the tagger alone cannot;
+  without folds the model comes back unchanged and equal inputs give equal tables. Two different features with the
+  same hash (the left word `to` and the second right word `instead`) in words that are four-fifths verbs give a table
+  whose score for a word with both is the log odds of the verbs (1.39 nats, not twice that), as the runtime computes it.
+  The offsets of the words of one fold are the same when the gold tags of that fold are turned around, while those of
+  the other folds change, and they are the same when the model carries other running-text reliabilities, so a fold is
+  scored by a model that has seen no gold tag of the fold.
+- **Noun/verb table in the file** (`WordSenseBuilder_BasicTablesWriter_Write_CarriesTheNounVerbTableAndWeight`,
+  `WordSenseBuilder_BasicTablesWriter_Write_WithoutNounVerbTable_WritesNoNounVerbSection`,
+  `WordSenseBuilder_BasicHyperparameters_NounVerb_IsTuned`): the weights, the hashes and the weight of the noun/verb
+  model reach the table that `BasicTables` reads back, a model without a table writes no section, and the defaults are
+  among the grid values.
 - **Clause counts in the table** (`WordSenseBuilder_BasicTablesWriter_Write_CarriesTheClauseCounts`): the clause counts
   of the tag counts reach the table that `BasicTables` reads back, equal to those of `TaggerCounts` and the data, and a
   determiner after a verb is counted in the clause state with a verb and not at the start of a sentence.
 - **Clause smoothing in the table** (`WordSenseBuilder_BasicTablesWriter_Write_CarriesTheClauseSmoothing`): the
   smoothing of the hyper-parameters (7.5 in the test) reaches the header of the table that `BasicTables` reads back.
-- **Format revision** (`WordSenseBuilder_BasicTablesWriter_Write_StartsWithTheMagicWsb6`): the table starts with the
-  magic `WSB6`.
+- **Format revision** (`WordSenseBuilder_BasicTablesWriter_Write_StartsWithTheMagicWsb7`): the table starts with the
+  magic `WSB7`.
 - **Word prior in the table** (`WordSenseBuilder_BasicTablesWriter_Write_CarriesTheWordPrior`,
   `WordSenseBuilder_BasicHyperparameters_WordPrior_IsOnAndAccepted`): the share, the smoothing, the sense weight and the
   exponent of the hyper-parameters reach the header that `BasicTables` reads back, and the shipped hyper-parameters have
@@ -657,9 +679,10 @@ and, for the measurement, a stub model.
   combination is the product or the smaller of the two and is limited to 0 to 255; a table with statistics gets the
   combined reliability and the counts, one without keeps its anchor reliability; on a toy world where the tagger cannot
   decide a word, a table whose context says the truth helps and never hurts and keeps 255, and a table whose context
-  says the opposite hurts and is damped; the same input gives the same statistics; without folds the model comes back
+  says the opposite hurts and is damped; the same input gives the same statistics; sentences that all fall into one fold
+  are not measured (`..._MeasureAsync_AllSentencesInOneFold_MeasuresNothing`); without folds the model comes back
   as it is and nothing is measured; a model with other counts keeps its cue tables, takes their statistics and drops
-  the tense table.
+  the tense and the noun/verb table.
 - **Clause counts are deterministic** (`WordSenseBuilder_BasicTablesWriter_Write_WithClauseCounts_IsDeterministic`):
   data whose counts have clause counts gives the same bytes on every write.
 - **Corpus features** (`WordSenseBuilder_OpenCorpus_ToTagged_CarriesTheLemmaAndFeaturesOfEveryToken`): the features and
@@ -691,6 +714,9 @@ and, for the measurement, a stub model.
 - **Sections** (`WordSenseBuilder_Program_TuneBasic_SectionsPrior_RunsOnlyThePriorSection`): `tune-basic --sections prior`
   on the same kind of temporary corpus succeeds and its output has the table of the word prior and none of the tables
   of the grid, the cue reliability or the tense weight.
+- **Noun/verb section** (`WordSenseBuilder_Program_TuneBasic_SectionsNounVerb_RunsOnlyTheNounVerbSection`):
+  `tune-basic --sections nounverb` on the same kind of temporary corpus succeeds and its output has the table of the
+  noun/verb weight and none of the other tables.
 - **Training reads only the training split**
   (`WordSenseBuilder_Program_TrainBasic_ReadsOnlyTheTrainSplit`): in a temporary corpus whose training split is valid and
   whose development and test splits (representative and targeted) fail when they are read, `open-counts` and

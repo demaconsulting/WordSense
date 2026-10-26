@@ -127,3 +127,21 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Largest exponent** (`BasicTables_Load_LargestPriorExponent_Loads`): an exponent of 16 loads.
 - **Retired format WSB5** (`BasicTables_Load_PreviousFormatWsb5_ThrowsUnknownFormat`): a current table whose magic is
   changed to `WSB5` throws `InvalidDataException` whose message says unknown format, as `WSB3` and `WSB4` do.
+- **Retired format WSB6** (`BasicTables_Load_PreviousFormatWsb6_ThrowsUnknownFormat`): a current table whose magic is
+  changed to `WSB6`, which has no noun/verb weight and no noun/verb table, throws `InvalidDataException` whose message
+  says unknown format.
+- **Noun/verb section read back** (`BasicTables_Load_NounVerbTable_ReadsWeightHashesAndWeights`): the weight of the
+  noun/verb model from the header and the ascending hashes and the weights of the noun/verb table read back.
+- **No noun/verb section** (`BasicTables_Load_WithoutNounVerbSection_HasNoNounVerbTable`): a table without the section has
+  no noun/verb table (null).
+- **Truncated or malformed noun/verb section** (`BasicTables_Load_NounVerbTableTruncatedAtEveryLength_Throws`,
+  `BasicTables_Load_InvalidNounVerbSection_Throws`, `BasicTables_Load_NounVerbWeightNegative_Throws`): a table cut at any
+  byte of the section, a section with an unknown flag, without a feature, with unordered hashes or with fewer weights
+  than hashes, and a negative weight of the model, each throw `InvalidDataException`.
+- **Noun/verb table is read-only** (`NounVerbCue_Constructor_DefaultOrUnequalArrays_Throws`): a `NounVerbCue` refuses
+  default (uninitialized) arrays and arrays of different lengths with `ArgumentException`; no public property of it is
+  an array (`BasicTables_Properties_ExposeNoArrays`).
+- **Shipped table** (`BasicTables_Default_CarriesTheTenseAndNounVerbTables`): the embedded table has a tense table and a
+  noun/verb table.
+- **Noun/verb feature prefixes** (`FeatureRef_Hash_NounVerbKindsHaveOwnPrefixes`): the noun/verb kinds hash with the
+  prefixes `L2:`, `R2:`, `L1C:`, `L2C:`, `R1C:` and `R2C:`, apart from every other kind.

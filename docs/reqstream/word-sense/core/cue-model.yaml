@@ -155,3 +155,99 @@ sections:
                   Misuse must fail fast with the documented exception.
                 tests:
                   - CueModel_ScoreTense_NullTable_Throws
+
+              - id: WordSense-Core-CueModel-NounVerb
+                title: >-
+                  CueModel shall extract as the noun/verb features of a target word the word and the class of each of
+                  the two tokens before it and of the two tokens after it, eight features in a fixed order.
+                tags: [unit]
+                justification: |
+                  Whether a word that can be a noun or a verb is one or the other is read from its neighbors and not
+                  from the word, so one table serves every such word. The words next to a word and their grammatical
+                  classes (an auxiliary after it, a determiner before it) separate its noun use from its verb use.
+                tests:
+                  - CueModel_ExtractNounVerb_WordAndClassOfTheTwoNeighborsOnEachSide
+                children:
+                  - WordSense-Core-CueModel-NounVerb-Edge
+                  - WordSense-Core-CueModel-NounVerb-Class
+                  - WordSense-Core-CueModel-NounVerb-NoTarget
+                  - WordSense-Core-CueModel-NounVerb-FeatureKinds
+                  - WordSense-Core-CueModel-NounVerb-Score
+                  - WordSense-Core-CueModel-NounVerb-NullTable
+                  - WordSense-Core-CueModel-NounVerb-NullLexicon
+
+              - id: WordSense-Core-CueModel-NounVerb-Edge
+                title: >-
+                  CueModel shall give a neighbor that is outside the segment the segment edge as its word and the edge
+                  class as its class, and a neighbor without a letter its own text as its word and the punctuation class
+                  as its class.
+                tags: [unit]
+                justification: |
+                  The edge of a sentence is evidence too (the first word of a sentence is often a verb), and a comma is
+                  not a word of any class.
+                tests:
+                  - CueModel_ExtractNounVerb_EdgeAndPunctuationNeighbors
+
+              - id: WordSense-Core-CueModel-NounVerb-Class
+                title: >-
+                  CueModel shall name the class of a neighbor from its lexicon analyses: auxiliary when one is an
+                  auxiliary, verb when every analysis is a verb that can be finite, nonfinite when every analysis is a
+                  gerund or a participle, ambiguous-verb or ambiguous when there are several parts of speech with or
+                  without a verb, the name of the part of speech when there is one, and unknown when the lexicon has no
+                  analysis.
+                tags: [unit]
+                justification: |
+                  The class is a closed set of grammatical classes derived from the lexicon, so that the model decides
+                  for a neighbor it never saw without a word list.
+                tests:
+                  - CueModel_ContextClassOf_NamesTheClassOfTheAnalyses
+
+              - id: WordSense-Core-CueModel-NounVerb-NoTarget
+                title: >-
+                  CueModel shall not read the target word itself for its noun/verb features.
+                tags: [unit]
+                justification: |
+                  The model must read only the context, so that it cannot learn one word from another.
+                tests:
+                  - CueModel_ExtractNounVerb_DoesNotReadTheTarget
+
+              - id: WordSense-Core-CueModel-NounVerb-FeatureKinds
+                title: >-
+                  CueModel shall hash the second-neighbor features and the class features with kind prefixes of their
+                  own, so that the same token in each place of the noun/verb model has a different hash.
+                tags: [unit]
+                justification: |
+                  The table stores one weight per hash; features of different kinds must not share a weight.
+                tests:
+                  - FeatureRef_Hash_NounVerbKindsHaveOwnPrefixes
+
+              - id: WordSense-Core-CueModel-NounVerb-Score
+                title: >-
+                  CueModel shall score a context from a noun/verb table as the sum of the weights of the features that
+                  the table knows, with no prior, ignoring the features that it does not know, in eighths of a nat and
+                  positive when the context says verb.
+                tags: [unit]
+                justification: |
+                  The table adds its weights to the log odds that the rest of the model gives; the scale turns the
+                  stored signed bytes back into nats.
+                tests:
+                  - CueModel_ScoreNounVerb_SumsKnownWeightsWithoutPrior
+
+              - id: WordSense-Core-CueModel-NounVerb-NullTable
+                title: >-
+                  CueModel shall reject a null noun/verb table when scoring with an argument-null error.
+                tags: [unit]
+                justification: |
+                  Misuse must fail fast with the documented exception.
+                tests:
+                  - CueModel_ScoreNounVerb_NullTable_Throws
+
+              - id: WordSense-Core-CueModel-NounVerb-NullLexicon
+                title: >-
+                  CueModel shall reject a null lexicon when extracting the noun/verb features with an argument-null
+                  error.
+                tags: [unit]
+                justification: |
+                  Misuse must fail fast with the documented exception.
+                tests:
+                  - CueModel_ExtractNounVerb_NullLexicon_Throws
