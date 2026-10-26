@@ -162,36 +162,19 @@ corroborated generated analyses of other entries beside the closed-class one. Cl
 open-class analyses (`does` as the plural of `doe`, `many` as an adjective) and never removes an analysis. A spelling
 that has no closed-class analysis is not affected by the flag.
 
-**Derivation.** The flags were derived once. The generator at commit `12a2108` (PR #9, the first `FormGenerator.cs`)
-applied a rule to the old form table at run time: a spelling whose old analyses were all closed-class (the entries of
-the old rows have part of speech `u`, `p`, `c`, `i`, `d` or `x`; a row whose entry is unknown is ignored) keeps no
-open-class analysis. Commit `61926eb` (PR #11) made the generator read the committed file and wrote `form-frozen.tsv`
-with all 801 `closed` rows and their flags. The `closed` rows have not changed since; commit `8604bb1` only added the
-`or` frozen row and dropped one `supposed` row. The script that wrote the file was not committed. The code of the rule
-is in `FormGenerator.cs` at `12a2108` (`ranks.All(r => ClosedPos.Contains(r.Pos, ...))`, near the comment "A word that
-the old table held with closed-class analyses only") and in the diff of `61926eb`.
+**Origin.** The flags are a committed input; the generator never derives them. A flagged spelling is one whose analyses
+were all closed-class when the file was written. Git history (`git log -- corpus/lexicon/form-frozen.tsv`) holds the
+derivation.
 
-**Reproduction (partial).** The exact table that the one-time step read was not committed. Applying the rule to the
-form table of `12a2108` (the parent of `61926eb`) gives the flag of most, but not all, of the 423 flagged spellings (two
-independent replays gave 397 and 415, depending on how the table of that commit was regenerated), and no unflagged
-`closed` spelling is closed-class only there. The other 53 closed-class-only spellings (contractions such as `ain't`
-and `it's`) have no `closed` row, so they carry no flag. The flags that the replays do not produce were set by the
-one-time step for reasons that are not recorded.
+**Unflagged spellings.** Each of the 320 unflagged spellings has an open-class analysis (for example `does` and `has` as
+verbs, `bags` and `order` as nouns and verbs, `many` and `other` as adjectives and nouns). `others` has no `closed` row.
 
-**Unflagged spellings.** No `closed` spelling is closed-class only in the old table and still unflagged. Each of the
-320 unflagged spellings has at least one open-class analysis in the old table (a noun, verb, adjective or adverb; for
-example `does` and `has` as verbs, `bags` and `order` as nouns and verbs, `many` and `other` as adjectives and nouns).
-`others` has no `closed` row. To list the analyses of a spelling, join the unflagged `closed` rows with
-`data/entry/*.tsv` and `data/form/*.tsv` at `12a2108`.
+**Flagged auxiliaries.** `am`, `been`, `did`, `had`, `is`, `was`, `were` and `would` carry `only`. Their verb analyses
+come from the provenances the flag keeps (`hand`, `irregular_list` and listed `moby_reverse`), so the flag suppresses
+only the extra generated analyses. `has` and `does` are not flagged.
 
-**Flagged although the old table held a verb.** `am`, `been`, `did`, `had`, `is`, `was`, `were` and `would` carry
-`only` although the old table also held a verb analysis for each (the auxiliary forms of `be`, `do`, `have` and
-`will`). Their verb analyses survive through the provenances that the flag keeps (`hand`, `irregular_list` and listed
-`moby_reverse`, for example `am` and `would`), so the flag suppresses only the extra generated analyses. `has` and
-`does`, the same kind of auxiliary forms, are unflagged. No reason is recorded for these flags.
-
-**Changing it.** The rule is not re-run. A change of the flag is a reviewed edit of the `flags` column of
-`form-frozen.tsv`; the generator reads the file as given.
+**Changing it.** A change of a flag is a reviewed edit of the `flags` column of `form-frozen.tsv`; the generator reads
+the file as given.
 
 ## Part-of-Speech Gaps Found by the Basic Tagger Audit
 

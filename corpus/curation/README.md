@@ -203,10 +203,9 @@ that separates them). The table follows these decisions:
 
 **Provenance.** The `sense` rows were derived from the data: the entries of `data/entry` that share a lemma, with the
 Open English WordNet pronunciations of `data/pronunciation` (compared after normalizing the notation and the common
-dialect differences; a stress difference counts), split the senses of `data/sense` into sound classes, which the author
-of this table named by their meaning (the class map `corpus/migration/legacy-class-map.tsv` of commit `3f9cafe` gave
-the names `fish`, `music`, `bend` and `weapon` for the words it covered). The `tense` rows list the verbs whose past
-and present are spelled alike and sound different (`read` and its prefixed verbs). The `lemma` rows were written by
+dialect differences; a stress difference counts), split the senses of `data/sense` into sound classes, each named by
+its meaning (for example `fish`, `music`, `bend` and `weapon`). The `tense` rows list the verbs whose past and present
+are spelled alike and sound different (`read` and its prefixed verbs). The `lemma` rows were written by
 hand: the spellings of different lemmas that the pronunciations of a lemma cannot compare (`wound` as the injury and as
 the past of `wind`, `dove`, `lives`, `does`, `bases`) and the noun and verb pairs with a stress or voicing difference
 whose entries have no pronunciation in the data (`use`, `object`, `present`, `project`, ...), taken from an independent
