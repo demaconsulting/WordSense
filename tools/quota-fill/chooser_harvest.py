@@ -33,11 +33,14 @@ def wave_dir(wave):
     return os.path.join(qf.WORK, f"w{wave}")
 
 
-def target_forms():
+def target_forms(only=None):
+    """The forms whose chooser rows lack a lemma; with `only` (a set of lemmas) the forms that lack one of those lemmas."""
     fl, labels, missing, _c, _t = choosers.status()
     forms = {}
     for form, miss in missing.items():
-        if all(not m[0].isupper() for m in miss):
+        if only is not None:
+            miss = [m for m in miss if m in only]
+        if miss and all(not m[0].isupper() for m in miss):
             forms[form] = miss
     return forms, fl
 
@@ -58,7 +61,8 @@ def options_of(world, fl, form):
 
 def cmd_candidates(args):
     world = qf.load_world()
-    forms, fl = target_forms()
+    only = set(qf.read_lemma_list(args.only_lemmas)) if args.only_lemmas else None
+    forms, fl = target_forms(only)
     wdir = wave_dir(args.wave)
     for sub in ("ch-in", "ch-out", "ch-meta"):
         os.makedirs(os.path.join(wdir, sub), exist_ok=True)
@@ -199,14 +203,14 @@ def cmd_select(args):
 def cmd_write_export(args):
     """Writer batches (gpt-5.6-luna) for the forms that still lack a lemma after the harvest."""
     world = qf.load_world()
-    forms, fl = target_forms()
+    only = set(qf.read_lemma_list(args.only_lemmas)) if args.only_lemmas else None
+    forms, fl = target_forms(only)
     wdir = wave_dir(args.wave)
     for sub in ("chw-in", "chw-out", "chw-label", "chw-label-out"):
         os.makedirs(os.path.join(wdir, sub), exist_ok=True)
-    _f, _l, missing, _c, _t = choosers.status()
     entries = []
     for form in sorted(forms):
-        for lemma in missing.get(form, ()):
+        for lemma in forms[form]:
             if lemma[0].isupper():
                 continue
             opts = options_of(world, fl, form)
@@ -349,11 +353,13 @@ if __name__ == "__main__":
     c = sub.add_parser("candidates")
     c.add_argument("wave", type=int)
     c.add_argument("--per-form", type=int, default=40)
+    c.add_argument("--only-lemmas", default="", help="only the forms that lack one of these lemmas (a file or a list)")
     s = sub.add_parser("select")
     s.add_argument("wave", type=int)
     w1 = sub.add_parser("write-export")
     w1.add_argument("wave", type=int)
     w1.add_argument("--count", type=int, default=8)
+    w1.add_argument("--only-lemmas", default="", help="only the forms that lack one of these lemmas (a file or a list)")
     w2 = sub.add_parser("write-ingest")
     w2.add_argument("wave", type=int)
     w3 = sub.add_parser("write-select")

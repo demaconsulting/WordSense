@@ -1,6 +1,8 @@
 """Ingest of labeled candidates and selection of the rows that fill the quotas.
 
   python fill.py ingest WAVE            read work/w<WAVE>/out/*.tsv, validate against the batch meta, write labeled.tsv
+  python fill.py agree WAVE             merge the answers of two blind labelers (out-sol, out-sonnet) into out/: an item keeps
+                                        its label only when both name the same sense with high confidence
   python fill.py select WAVE            choose rows for the senses with a deficit, write the corpus files of the wave
                                         (anchors, holdout, provenance, choosers) named quota-w<WAVE>-real.tsv;
                                         --only-lemmas FILE restricts the deficits to the listed lemmas (a new wave must,
@@ -104,6 +106,69 @@ def cmd_ingest(args):
         for r in out_rows:
             handle.write("\t".join(r) + "\n")
     print(dict(stats))
+
+
+def read_labels(path):
+    """n -> (sense, confidence) of a labeler output file; an item answered unsure, or without a sense, is absent."""
+    labels = {}
+    if not os.path.exists(path):
+        return None
+    with open(path, encoding="utf-8") as handle:
+        for line in handle:
+            parts = line.rstrip("\r\n").split("\t")
+            if not parts[0].strip():
+                continue
+            if len(parts) >= 2 and parts[1].strip() != "unsure":
+                labels[parts[0].strip()] = (parts[1].strip(), parts[2].strip() if len(parts) > 2 else "low")
+            else:
+                labels.setdefault(parts[0].strip(), None)
+    return labels
+
+
+def cmd_agree(args):
+    """Merges the answers of two blind labelers (work/w<WAVE>/out-<a>, out-<b>) into out/: an item keeps its label only when
+    both name the same sense with high confidence; every other item becomes `unsure`. Writes agreement.tsv by lemma."""
+    wdir = wave_dir(args.wave)
+    first, second = args.labelers.split(",")
+    os.makedirs(os.path.join(wdir, "out"), exist_ok=True)
+    per_lemma = collections.defaultdict(collections.Counter)
+    missing = 0
+    for meta_path in sorted(glob.glob(os.path.join(wdir, "meta", "*.json"))):
+        bid = os.path.splitext(os.path.basename(meta_path))[0]
+        meta = qf.read_json(meta_path)
+        a = read_labels(os.path.join(wdir, f"out-{first}", bid + ".tsv"))
+        b = read_labels(os.path.join(wdir, f"out-{second}", bid + ".tsv"))
+        if a is None or b is None:
+            missing += 1
+            continue
+        lines = []
+        for n, item in sorted(meta["items"].items(), key=lambda kv: int(kv[0])):
+            la, lb = a.get(n), b.get(n)
+            c = per_lemma[item["lemma"]]
+            c["items"] += 1
+            if la and lb:
+                if la[0] == lb[0]:
+                    c["same sense"] += 1
+                    if la[1] == "high" and lb[1] == "high":
+                        c["agreed high"] += 1
+                        lines.append(f"{n}\t{la[0]}\thigh")
+                        continue
+                else:
+                    c["different sense"] += 1
+            else:
+                c["one or both unsure"] += 1
+            lines.append(f"{n}\tunsure")
+        with open(os.path.join(wdir, "out", bid + ".tsv"), "w", encoding="utf-8", newline="\n") as handle:
+            handle.write("\n".join(lines) + "\n")
+    cols = ["items", "same sense", "agreed high", "different sense", "one or both unsure"]
+    with open(os.path.join(wdir, "agreement.tsv"), "w", encoding="utf-8", newline="\n") as handle:
+        handle.write("lemma\t" + "\t".join(cols) + "\n")
+        for lemma in sorted(per_lemma):
+            handle.write(lemma + "\t" + "\t".join(str(per_lemma[lemma][c]) for c in cols) + "\n")
+    total = collections.Counter()
+    for c in per_lemma.values():
+        total.update(c)
+    print({c: total[c] for c in cols}, "batches without both outputs:", missing)
 
 
 def existing_token_sets(lemmas):
@@ -329,9 +394,12 @@ def write_lines(path, lines, header=None):
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
-    for name in ("ingest", "select"):
+    for name in ("ingest", "select", "agree"):
         p = sub.add_parser(name)
         p.add_argument("wave", type=qf.wave_id)
+        if name == "agree":
+            p.add_argument("--labelers", default="sol,sonnet",
+                           help="the two answer folders work/w<WAVE>/out-<name> to merge (default sol,sonnet)")
         if name == "select":
             p.add_argument("--tier", default="", choices=("", "C", "U", "R"),
                            help="fill only the deficits of the senses of this tier (a tier wave, e.g. 4c)")
@@ -345,4 +413,4 @@ if __name__ == "__main__":
     a = ap.parse_args()
     if a.cmd == "select":
         qf.check_tier_wave(ap, a)
-    {"ingest": cmd_ingest, "select": cmd_select}[a.cmd](a)
+    {"ingest": cmd_ingest, "select": cmd_select, "agree": cmd_agree}[a.cmd](a)
