@@ -105,7 +105,8 @@ is 1) and every project sense.
   machine-checkable.
 - **Frequency.** `sense_frequency` has the WordNet 3.0 tag count of every sense that has a sense key, joined on the key
   by `import-wn30-counts`; 0 when the sense index has no line for it. A project sense has no key and counts as 0. The
-  counts feed the usage prior and the tiers, and the image compiler writes them into the word image (section 38, outside
+  counts feed the usage prior, the word prior of the Basic tagger (the sum over the senses of a lemma and part of speech,
+  read at run time from the image) and the tiers, and the image compiler writes them into the word image (section 38, outside
   the inventory hash); the order of the senses of a lemma in the image is the order of Open English
   WordNet (`sense.position`, then `entry.homograph_no`, project senses last).
 - **Numerals.** The tables keep the 134 spellings of Open English WordNet that have no letter (`0`, `1000`, `24/7`,

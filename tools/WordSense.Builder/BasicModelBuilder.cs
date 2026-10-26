@@ -54,13 +54,18 @@ internal static class BasicModelBuilder
 
         var anchors = Corpus.ReadDirectory(Path.Join(corpus, "anchors"));
         var choosers = ChooserCorpus.ReadDirectory(Path.Join(corpus, "choosers", "anchors"));
-        var data = BasicTrainer.Train(
+        var training = OpenCorpus.ReadSplit(corpus, OpenCorpus.Representative, "train").Select(OpenCorpus.ToTagged).ToList();
+        Func<string, System.Collections.Immutable.ImmutableArray<WordDetails>> lexicon = key => WordLexicon.TryLookup(key, out var found) ? found : [];
+        var trained = BasicTrainer.Train(
             TaggerCounts.Read(countsDirectory),
-            key => WordLexicon.TryLookup(key, out var found) ? found : [],
+            lexicon,
             anchors,
             choosers,
             BasicHyperparameters.Default,
-            OpenCorpus.ReadSplit(corpus, OpenCorpus.Representative, "train").Select(OpenCorpus.ToTagged));
+            training);
+
+        // The reliability of each cue table from the running text of the training split (never the development or test splits)
+        var data = await CueRunningReliability.ApplyAsync(trained, training, lexicon, cancellationToken).ConfigureAwait(false);
         var blob = BasicTablesWriter.Write(data, WordLexicon.Current.InventoryHash);
         _ = BasicTables.Load(blob, WordLexicon.Current);
         var path = Path.IsPathRooted(outputPath) ? outputPath : Path.Join(repository, outputPath);

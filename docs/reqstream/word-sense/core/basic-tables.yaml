@@ -18,7 +18,7 @@ sections:
                   of the analysis, the column with the most items winning, so that a column with empty features, which
                   stands for any features, serves every analysis of that lemma and part of speech that no column of more
                   specific features claims, and shall reject a table with a wrong
-                  signature (the magic WSB5), no compression, missing data, extra data or unordered
+                  signature (the magic WSB6), no compression, missing data, extra data or unordered
                   entries as invalid
                   data, and a table
                   built for another analysis inventory (inventory hash), an unknown analysis or a duplicate analysis.
@@ -248,6 +248,114 @@ sections:
                   A table that was trained before the clause state must never be read as a current one.
                 tests:
                   - BasicTables_Load_PreviousFormatWsb4_ThrowsUnknownFormat
+
+              - id: WordSense-Core-BasicTables-Prior-Share
+                title: >-
+                  BasicTables shall expose the share of the word prior that its header carries.
+                tags: [unit]
+                justification: |
+                  The prior is computed at run time from the word image, so only its numbers travel with the table.
+                tests:
+                  - BasicTables_Load_PriorShare_ReadBack
+
+              - id: WordSense-Core-BasicTables-Prior-Smoothing
+                title: >-
+                  BasicTables shall expose the smoothing of each lemma and part of speech of the word prior that its
+                  header carries.
+                tags: [unit]
+                justification: |
+                  The number is chosen with the other hyper-parameters of the table and must be read back exactly.
+                tests:
+                  - BasicTables_Load_PriorSmoothing_ReadBack
+
+              - id: WordSense-Core-BasicTables-Prior-Senses
+                title: >-
+                  BasicTables shall expose the weight of each sense of the word prior that its header carries.
+                tags: [unit]
+                justification: |
+                  The number is chosen with the other hyper-parameters of the table and must be read back exactly.
+                tests:
+                  - BasicTables_Load_PriorSenses_ReadBack
+
+              - id: WordSense-Core-BasicTables-Prior-Exponent
+                title: >-
+                  BasicTables shall expose the exponent of the word prior that its header carries.
+                tags: [unit]
+                justification: |
+                  The number is chosen with the other hyper-parameters of the table and must be read back exactly.
+                tests:
+                  - BasicTables_Load_PriorExponent_ReadBack
+
+              - id: WordSense-Core-BasicTables-Prior-ShareInvalid
+                title: >-
+                  BasicTables shall reject a table whose word prior share is outside 0 to 1 as invalid data.
+                tags: [unit]
+                justification: |
+                  A share outside its range would make a probability negative or above its bound.
+                tests:
+                  - BasicTables_Load_PriorShareOutOfRange_Throws
+
+              - id: WordSense-Core-BasicTables-Prior-SmoothingInvalid
+                title: >-
+                  BasicTables shall reject a table whose word prior has a negative smoothing as invalid data.
+                tags: [unit]
+                justification: |
+                  A negative smoothing could make the weight of a part of speech negative.
+                tests:
+                  - BasicTables_Load_PriorSmoothingNegative_Throws
+
+              - id: WordSense-Core-BasicTables-Prior-SensesInvalid
+                title: >-
+                  BasicTables shall reject a table whose word prior has a negative sense weight as invalid data.
+                tags: [unit]
+                justification: |
+                  A negative sense weight could make the weight of a part of speech negative.
+                tests:
+                  - BasicTables_Load_PriorSensesNegative_Throws
+
+              - id: WordSense-Core-BasicTables-Prior-ExponentInvalid
+                title: >-
+                  BasicTables shall reject a table whose word prior exponent is not positive or is above 16 as invalid
+                  data.
+                tags: [unit]
+                justification: |
+                  An exponent that is not positive inverts or removes the evidence, and a very large one overflows the
+                  weights.
+                tests:
+                  - BasicTables_Load_PriorExponentOutOfRange_Throws
+                  - BasicTables_Load_LargestPriorExponent_Loads
+
+              - id: WordSense-Core-BasicTables-Prior-WeightInvalid
+                title: >-
+                  BasicTables shall reject a table whose word prior share is above 0 and whose smoothing and sense
+                  weight are both 0 as invalid data.
+                tags: [unit]
+                justification: |
+                  A prior that is on needs a positive weight for every part of speech, or a part of speech could
+                  weigh 0.
+                tests:
+                  - BasicTables_Load_PriorOnWithoutWeight_Throws
+
+              - id: WordSense-Core-BasicTables-Reliability
+                title: >-
+                  BasicTables shall expose the reliability of every cue table as a factor from 0 to 1.
+                tags: [unit]
+                justification: |
+                  The classifier scales the scores of a cue table by its reliability, so it needs the value with the
+                  table.
+                tests:
+                  - BasicTables_Load_CueReliability_ReadBack
+
+              - id: WordSense-Core-BasicTables-Wsb5
+                title: >-
+                  BasicTables shall reject a table with the retired signature WSB5, which has no word prior and no
+                  reliability of the cue tables, as an unknown format whatever else it holds.
+                tags: [unit]
+                justification: |
+                  The header of that format is shorter, so reading it as a current table would shift every later
+                  value; a table in that format must never be read as a current one.
+                tests:
+                  - BasicTables_Load_PreviousFormatWsb5_ThrowsUnknownFormat
 
               - id: WordSense-Core-BasicTables-Immutable
                 title: >-

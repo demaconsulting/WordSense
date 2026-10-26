@@ -1621,4 +1621,155 @@ public class BasicClassifierTests
         // Assert
         Assert.False(token.NonFinite);
     }
+
+    /// <summary>
+    ///     A word that has several parts of speech carries the catalog evidence of its analyses (the word prior of the
+    ///     tagger).
+    /// </summary>
+    [Fact]
+    public void BasicClassifier_MakeToken_AmbiguousWord_CarriesTheCatalogSupport()
+    {
+        // Arrange: the lexicon of the embedded image
+        static ImmutableArray<WordDetails> Real(string key) => WordLexicon.Lookup(key);
+
+        // Act: make the tagger token of rank
+        var ambiguous = BasicClassifier.MakeToken(Real, "rank");
+
+        // Assert: the support has more tag counts for the noun than for the verb
+        Assert.NotNull(ambiguous.Support);
+        Assert.True(ambiguous.Support.TagCount(PosTag.Noun) > ambiguous.Support.TagCount(PosTag.Verb));
+    }
+
+    /// <summary>
+    ///     A word with one possible part of speech carries no catalog evidence.
+    /// </summary>
+    [Fact]
+    public void BasicClassifier_MakeToken_SinglePartOfSpeechWord_CarriesNoSupport()
+    {
+        // Arrange: the lexicon of the embedded image
+        static ImmutableArray<WordDetails> Real(string key) => WordLexicon.Lookup(key);
+
+        // Act: make the tagger token of the
+        var single = BasicClassifier.MakeToken(Real, "the");
+
+        // Assert: the token has no support
+        Assert.Null(single.Support);
+    }
+
+    /// <summary>
+    ///     An unknown word carries no catalog evidence.
+    /// </summary>
+    [Fact]
+    public void BasicClassifier_MakeToken_UnknownWord_CarriesNoSupport()
+    {
+        // Arrange: the lexicon of the embedded image
+        static ImmutableArray<WordDetails> Real(string key) => WordLexicon.Lookup(key);
+
+        // Act: make the tagger token of an unknown word
+        var unknown = BasicClassifier.MakeToken(Real, "zzzz");
+
+        // Assert: the token has no support
+        Assert.Null(unknown.Support);
+    }
+
+    /// <summary>
+    ///     Gets the probability of the past of <c>read</c> in <c>yesterday they read</c> from the cue table of <c>read</c> with
+    ///     the given reliability, with no tagger weight so that only the cue table decides.
+    /// </summary>
+    /// <param name="reliability">The stored reliability of the cue table.</param>
+    /// <returns>The probability of the past.</returns>
+    private static async Task<double> PastProbability(byte reliability)
+    {
+        var tables = TestTables.Load(TestTables.Build(
+            [("record", 0, new int[PosTag.Count])],
+            [],
+            [("read", TestTables.ReadColumns(), TestTables.CueHashes(), TestTables.CueWeights())],
+            hmmWeight: 0,
+            reliability: reliability));
+        var results = await Create(tables).ClassifyAsync(["yesterday", "they", "read"], TestContext.Current.CancellationToken);
+        return results[2].Analyses.Single(a => a.Details == TestTables.ReadPast).Probability;
+    }
+
+    /// <summary>
+    ///     A cue table of reliability 0 does not separate the analyses that it scores.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_ZeroReliability_DoesNotSeparateTheAnalyses()
+    {
+        // Arrange: the table of read with reliability 0
+
+        // Act: classify yesterday they read with the table
+        var none = await PastProbability(0);
+
+        // Assert: the past and the present are equally likely
+        Assert.Equal(0.5, none, 9);
+    }
+
+    /// <summary>
+    ///     A cue table of reliability 0 is no table: the word gets exactly the probabilities that it gets without a cue table.
+    /// </summary>
+    /// <param name="hmmWeight">The weight of the tagger in the fusion.</param>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Theory]
+    [InlineData(0.0)]
+    [InlineData(1.0)]
+    public async Task BasicClassifier_ClassifyAsync_ZeroReliabilityTable_EqualsNoTable(double hmmWeight)
+    {
+        // Arrange: a table of read with reliability 0 and a table of the same words with no cue table at all
+        var words = new[] { ("record", 0, new int[PosTag.Count]) };
+        var zero = TestTables.Load(TestTables.Build(
+            words,
+            [],
+            [("read", TestTables.ReadColumns(), TestTables.CueHashes(), TestTables.CueWeights())],
+            hmmWeight: hmmWeight,
+            reliability: 0));
+        var none = TestTables.Load(TestTables.Build(words, [], [], hmmWeight: hmmWeight));
+
+        // Act: classify yesterday they read with each table
+        var withZero = await Create(zero).ClassifyAsync(["yesterday", "they", "read"], TestContext.Current.CancellationToken);
+        var withNone = await Create(none).ClassifyAsync(["yesterday", "they", "read"], TestContext.Current.CancellationToken);
+
+        // Assert: every analysis of read has exactly the same probability with both tables
+        var expected = withNone[2].Analyses.Select(a => (a.Details, a.Probability)).ToArray();
+        var actual = withZero[2].Analyses.Select(a => (a.Details, a.Probability)).ToArray();
+        Assert.NotEmpty(expected);
+        Assert.Equal(expected, actual);
+    }
+
+    /// <summary>
+    ///     A fully reliable cue table separates the past and the present of <c>read</c> by the words around it.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_FullReliability_SeparatesTheAnalyses()
+    {
+        // Arrange: the table of read with the full reliability
+
+        // Act: classify yesterday they read with the table
+        var full = await PastProbability(255);
+
+        // Assert: the cue "yesterday" makes the past the more likely
+        Assert.True(full > 0.5);
+    }
+
+    /// <summary>
+    ///     The reliability of a cue table is the factor on its scores: a table between 0 and the full reliability separates the
+    ///     analyses less than a fully reliable one and more than a table of reliability 0.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_CueReliability_ScalesTheCueScores()
+    {
+        // Arrange: the table of read with each reliability
+
+        // Act: classify yesterday they read with each table
+        var full = await PastProbability(255);
+        var partial = await PastProbability(100);
+        var none = await PastProbability(0);
+
+        // Assert: the probability of the past falls with the reliability
+        Assert.True(full > partial);
+        Assert.True(partial > none);
+    }
 }

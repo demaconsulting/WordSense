@@ -34,7 +34,7 @@ Every lexical entry, sense, synset, definition, example, synset relation, sense 
 
 ## Left out
 
-Subcategorization frames, adjective position, syntactic behaviour, ILI definitions and links (`ili`, `ILIDefinition`),
+Subcategorization frames, adjective position, syntactic behavior, ILI definitions and links (`ili`, `ILIDefinition`),
 `dc:source`, and the `Form` element. The id map holds the identifiers of the previous release (OEWN 2024, SHA-256
 `E1F633B0A93758CAE34EA27C44C4DAD310A8AF2467B155F99DD6673AF697E875`), written with `import-oewn --previous`.
 
@@ -63,8 +63,9 @@ a curated label and an authored gloss (`corpus/curation`).
   the 2025 release changed some keys; those counts are not used.
 - The counts size the training data of each sense, feed the usage prior of the encoder training and, as a 16-bit count for
   each sense in the word image of the core package, the usage prior with which the Basic model ranks the senses of the
-  lemmas that no model scores; they do not order the senses of a lemma (the image keeps the order of Open English
-  WordNet) and they are never
+  lemmas that no model scores and, summed over the lemmas of a spelling, the word prior of the part-of-speech tagger of
+  the Basic model (a treebank is not used for it); they do not order the senses of a lemma (the image keeps the order of
+  Open English WordNet) and they are never
   a sense label. SemCor 3.0, the sense-annotated text whose tags WordNet counts come from, is an **evaluation source
   only**: the builder downloads it to a cache to measure the models; it is never committed, redistributed or used for
   training.
@@ -266,4 +267,4 @@ rows that the rules can still derive are `carried`.
 - `or` has the conjunction analysis `dema-or-c` first (a `frozen` row of `form-frozen.tsv`), followed by the surface
   analyses of the dictionary; each of the 27 auxiliary verbs of `corpus/lexicon/auxiliaries.tsv` has its entry
   `dema-<word>-x` with the project sense `<word>#auxiliary`, and an Auxiliary analysis (the inflected forms `am`, `is`,
-  `was`, `has`, `having`, `does`, ... analyse as the auxiliary lemma `be`, `have` or `do`).
+  `was`, `has`, `having`, `does`, ... analyze as the auxiliary lemma `be`, `have` or `do`).

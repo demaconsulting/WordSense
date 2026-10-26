@@ -108,7 +108,7 @@ H-separate-4	fine	fine	fine
 H-present-1	answer	fine	fine
 H-present-2	fine	fine	fine
 H-present-3	answer	fine	fine
-H-present-4	answer	fine	fine
+H-present-4	miss	fine	fine
 H-present-5	fine	fine	fine
 H-present-6	fine	fine	fine
 H-august-1	fine	fine	fine
@@ -188,7 +188,7 @@ M-right-4	fine	fine	fine
 M-right-5	fine	fine	fine
 M-right-6	fine	fine	fine
 M-long-1	fine	fine	fine
-M-long-2	miss	fine	fine
+M-long-2	miss	miss	fine
 M-long-3	fine	fine	fine
 M-long-4	fine	fine	fine
 M-feel-1	fine	fine	fine

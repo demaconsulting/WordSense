@@ -85,6 +85,11 @@ internal static class TestTables
     /// <param name="tenseWeight">The weight of the tense model, written to the header.</param>
     /// <param name="sentences">The training sentences of the tag counts (tag sequences), or null for <see cref="Sentences"/>.</param>
     /// <param name="clauseSmoothing">The smoothing of the clause-state transitions, written to the header.</param>
+    /// <param name="priorShare">The share of the word prior, written to the header (0 turns it off).</param>
+    /// <param name="priorSmoothing">The smoothing of every slot of the word prior, written to the header.</param>
+    /// <param name="priorSenses">The weight of every sense in the word prior, written to the header.</param>
+    /// <param name="priorExponent">The exponent of the word prior, written to the header.</param>
+    /// <param name="reliability">The stored reliability of every cue table (255 is fully reliable).</param>
     /// <returns>The compressed blob.</returns>
     public static byte[] Build(
         (string Word, int ClosedMask, int[] Counts)[] words,
@@ -96,7 +101,12 @@ internal static class TestTables
         (sbyte Prior, ushort[] Hashes, sbyte[] Weights)? tense = null,
         double tenseWeight = 1.0,
         int[][]? sentences = null,
-        double clauseSmoothing = 4.0) => Compress(Raw(words, suffixes, cues, hmmWeight, invTemperature, inventoryHash, tense, tenseWeight, sentences ?? Sentences, clauseSmoothing));
+        double clauseSmoothing = 4.0,
+        double priorShare = 0.0,
+        double priorSmoothing = 0.5,
+        double priorSenses = 0.0,
+        double priorExponent = 1.0,
+        byte reliability = 255) => Compress(Raw(words, suffixes, cues, hmmWeight, invTemperature, inventoryHash, tense, tenseWeight, sentences ?? Sentences, clauseSmoothing, [priorShare, priorSmoothing, priorSenses, priorExponent], reliability));
 
     /// <summary>
     ///     Reads a blob against the toy inventory.
@@ -218,12 +228,14 @@ internal static class TestTables
         (sbyte Prior, ushort[] Hashes, sbyte[] Weights)? tense,
         double tenseWeight,
         int[][] sentences,
-        double clauseSmoothing)
+        double clauseSmoothing,
+        double[] prior,
+        byte reliability)
     {
         using var raw = new MemoryStream();
-        raw.Write("WSB5"u8);
+        raw.Write("WSB6"u8);
         raw.Write(inventoryHash ?? ToyHash);
-        foreach (var value in new[] { 0.75, 5, 0.1, 0.3, 0.6, hmmWeight, invTemperature, tenseWeight, clauseSmoothing })
+        foreach (var value in new[] { 0.75, 5, 0.1, 0.3, 0.6, hmmWeight, invTemperature, tenseWeight, clauseSmoothing }.Concat(prior))
         {
             var bytes = new byte[8];
             BinaryPrimitives.WriteDoubleLittleEndian(bytes, value);
@@ -297,6 +309,7 @@ internal static class TestTables
         foreach (var (lemma, analyses, hashes, weights) in cues.OrderBy(c => c.Lemma, StringComparer.Ordinal))
         {
             Text(raw, lemma);
+            raw.WriteByte(reliability);
             Varint(raw, analyses.Length);
             foreach (var analysis in analyses)
             {

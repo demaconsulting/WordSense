@@ -140,7 +140,7 @@ the sample, and the command fails when one lacks its own analysis.
 A missing input, or an Open English WordNet file whose SHA-256 differs from its pin, throws
 before any file is written. A malformed authored file (a level that is not 0 or 1, an unknown rule) throws
 `InvalidDataException` with the lemma. Authored forms need their provenance sidecar: a missing sidecar, a header that
-is not exact, a row without its ten non-empty columns, a licence other than `CC0 1.0 (project-authored)`, an unknown
+is not exact, a row without its ten non-empty columns, a license other than `CC0 1.0 (project-authored)`, an unknown
 rule, a verdict and result that do not go together (`agree` or `adjudicated` with `forms` or `none`;
 `regular-accepted` with `forms`) or a second decision for the same lemma, part of speech and rule throws
 `InvalidDataException` with the path and the line. The two files are cross-checked by lemma, part of speech and rule (the

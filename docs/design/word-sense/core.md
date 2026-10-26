@@ -192,9 +192,10 @@ failure, so the table is rebuilt whenever the inventory changes. Words, suffixes
 equal training data gives byte-identical tables. The tag counts come from the representative part of the open corpus
 (`corpus/open`), the cue tables from the fine-sense anchors and the chooser anchors of `corpus/`. The reader validates
 the layout and throws `InvalidDataException` for anything malformed (the embedded default table maps that to a
-`ModelIntegrityException`). The format (magic `WSB5`: the header with the weight of the tense model and the smoothing of
-the clause state, after the tag counts the clause counts, and after the cue
-tables the tense section with the shared past/non-past table; `WSB3` and `WSB4` are refused) is described in detail
+`ModelIntegrityException`). The format (magic `WSB6`: the header with the weight of the tense model, the smoothing of
+the clause state and the four numbers of the word prior, after the tag counts the clause counts, per cue table a
+reliability byte, and after the cue
+tables the tense section with the shared past/non-past table; `WSB3`, `WSB4` and `WSB5` are refused) is described in detail
 in the `BasicTables` unit design.
 
 #### Determinism and Concurrency

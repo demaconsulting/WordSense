@@ -13,9 +13,9 @@ measurement conditions and how to read the columns.
 <!-- model-table:begin -->
 | Model | Real-text sense (share @ precision) | Running-text part of speech (open corpus test) | UD-EWT test part of speech (convention-mapped) | Independent sense evaluation (SemCor) | STE challenge set (part of speech) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Basic | 4.01% @ 75.00% | 93.88% (ambiguous 91.54%) | 91.72% (ambiguous 88.74%) | 3.28% @ 68.47% (top-1 55.80%) | 98.65% (ambiguous 97.83%) | none | 219 KiB | 4 MiB | 0.11 ms | 34 ms + 58 ms | no |
-| MiniLM | 7.97% @ 96.34% | 94.05% (ambiguous 91.82%) | 92.15% (ambiguous 89.39%) | 8.34% @ 88.64% (top-1 58.57%) | 98.65% (ambiguous 97.83%) | 22 MiB | 5,225 KiB | 98 MiB | 1.52 ms | 443 ms + 60 ms | yes |
-| BERT base cased | 27.16% @ 94.47% | 94.09% (ambiguous 91.89%) | 92.12% (ambiguous 89.35%) | 26.89% @ 86.61% (top-1 64.98%) | 98.20% (ambiguous 97.10%) | 104 MiB | 10,203 KiB | 221 MiB | 8.08 ms | 684 ms + 56 ms | yes |
+| Basic | 3.75% @ 78.89% | 94.53% (ambiguous 92.64%) | 92.28% (ambiguous 89.61%) | 3.00% @ 73.84% (top-1 56.37%) | 98.65% (ambiguous 97.83%) | none | 237 KiB | 4 MiB | 0.11 ms | 34 ms + 58 ms | no |
+| MiniLM | 7.93% @ 96.32% | 94.62% (ambiguous 92.79%) | 92.66% (ambiguous 90.19%) | 8.31% @ 89.01% (top-1 58.67%) | 98.65% (ambiguous 97.83%) | 22 MiB | 5,225 KiB | 98 MiB | 1.52 ms | 443 ms + 60 ms | yes |
+| BERT base cased | 27.12% @ 94.46% | 94.67% (ambiguous 92.86%) | 92.62% (ambiguous 90.13%) | 26.85% @ 86.70% (top-1 64.99%) | 98.20% (ambiguous 97.10%) | 104 MiB | 10,203 KiB | 221 MiB | 8.08 ms | 684 ms + 56 ms | yes |
 <!-- model-table:end -->
 
 <!-- markdownlint-enable MD013 -->

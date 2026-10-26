@@ -311,4 +311,122 @@ public class PosTaggerTests
         Assert.Equal(1.0, At(posteriors, 2, PosTag.Noun), 9);
         Assert.Equal(1.0, At(posteriors, 3, PosTag.Determiner), 9);
     }
+
+    private static readonly WordDetails PriorNoun = new("pw", PartOfSpeech.Noun, "Number=Sing");
+    private static readonly WordDetails PriorVerb = new("pw", PartOfSpeech.Verb, "VerbForm=Inf");
+
+    /// <summary>
+    ///     Makes the catalog support of a toy word that is a noun and a verb with the given tag counts and one sense each.
+    /// </summary>
+    /// <param name="noun">The WordNet tag count of the noun.</param>
+    /// <param name="verb">The WordNet tag count of the verb.</param>
+    /// <returns>The support.</returns>
+    private static WordSupport? SupportOf(int noun, int verb) => WordSupport.Compute(
+        [PriorNoun, PriorVerb],
+        (lemma, pos) => pos == PartOfSpeech.Noun ? (noun, 1) : (verb, 1));
+
+    /// <summary>
+    ///     Runs the tagger on single-word sentences with equal noun and verb counts in the transitions, so that only the
+    ///     emission of the word decides, with a toy table of the given word prior and counts for the word.
+    /// </summary>
+    /// <param name="priorShare">The share of the word prior in the target of the pseudo counts.</param>
+    /// <param name="counts">The counts of the word <c>pw</c>, or null for a word without counts.</param>
+    /// <param name="support">The catalog support of the token.</param>
+    /// <returns>The posterior of the noun and of the verb.</returns>
+    private static (double Noun, double Verb) RunPrior(double priorShare, int[]? counts, WordSupport? support)
+    {
+        var tables = TestTables.Load(TestTables.Build(
+            counts is null ? [("the", 1 << PosTag.Determiner, Counts((PosTag.Determiner, 40)))] : [("pw", 0, counts)],
+            [],
+            [],
+            sentences: [.. Repeat(5, PosTag.Noun), .. Repeat(5, PosTag.Verb)],
+            clauseSmoothing: 0,
+            priorShare: priorShare,
+            priorSmoothing: 0.5));
+        var posteriors = new double[PosTag.Count];
+        PosTagger.Posteriors(tables, [TaggerToken.Word("pw", Open, false, false, support)], posteriors);
+        return (At(posteriors, 0, PosTag.Noun), At(posteriors, 0, PosTag.Verb));
+    }
+
+    /// <summary>
+    ///     A word without counts takes its emission from the catalog: a word whose noun is far more frequent than its verb is
+    ///     a noun, and the reverse.
+    /// </summary>
+    [Fact]
+    public void PosTagger_Posteriors_WordWithoutCounts_FollowsTheCatalogPrior()
+    {
+        // Arrange: a word without counts, with catalog support that favors the noun or the verb, and the prior on
+        var nounSupport = SupportOf(40, 2);
+        var verbSupport = SupportOf(2, 40);
+
+        // Act: tag the word with the prior fully on, once for each support
+        var nounHeavy = RunPrior(1.0, null, nounSupport);
+        var verbHeavy = RunPrior(1.0, null, verbSupport);
+
+        // Assert: the part of speech with the larger catalog support wins
+        Assert.True(nounHeavy.Noun > 0.8);
+        Assert.True(verbHeavy.Verb > 0.8);
+    }
+
+    /// <summary>
+    ///     A token without catalog support gets the emission of the counts and the generic tag prior alone.
+    /// </summary>
+    [Fact]
+    public void PosTagger_Posteriors_NoSupport_IgnoresThePrior()
+    {
+        // Arrange: a word without counts and without catalog support, and the prior share 1
+
+        // Act: tag the word without catalog support
+        var noSupport = RunPrior(1.0, null, null);
+
+        // Assert: the noun and the verb are equally likely, as the transitions are equal
+        Assert.Equal(noSupport.Noun, noSupport.Verb, 6);
+    }
+
+    /// <summary>
+    ///     A table whose prior share is 0 gives every token the emission of the counts and the generic tag prior alone.
+    /// </summary>
+    [Fact]
+    public void PosTagger_Posteriors_NoShare_IgnoresThePrior()
+    {
+        // Arrange: a word without counts, with catalog support that favors the noun, and a prior share of 0
+
+        // Act: tag the word with a prior share of 0
+        var noShare = RunPrior(0.0, null, SupportOf(40, 2));
+
+        // Assert: the support has no effect, so the noun and the verb are equally likely
+        Assert.Equal(noShare.Noun, noShare.Verb, 6);
+    }
+
+    /// <summary>
+    ///     The training counts of a word outweigh the catalog once there are many of them.
+    /// </summary>
+    [Fact]
+    public void PosTagger_Posteriors_ManyCounts_OutweighTheCatalogPrior()
+    {
+        // Arrange: 400 verb counts against 4 noun counts, and catalog support that favors the noun
+        var counts = Counts((PosTag.Verb, 400), (PosTag.Noun, 4));
+
+        // Act: tag the word with a prior share of 0.8
+        var many = RunPrior(0.8, counts, SupportOf(40, 2));
+
+        // Assert: the verb of the counts wins
+        Assert.True(many.Verb > 0.8);
+    }
+
+    /// <summary>
+    ///     The catalog breaks a tie when the few training counts of a word do not separate its parts of speech.
+    /// </summary>
+    [Fact]
+    public void PosTagger_Posteriors_FewCounts_TieIsBrokenByTheCatalogPrior()
+    {
+        // Arrange: one noun count and one verb count, and catalog support that favors the noun
+        var counts = Counts((PosTag.Verb, 1), (PosTag.Noun, 1));
+
+        // Act: tag the word with a prior share of 0.8
+        var few = RunPrior(0.8, counts, SupportOf(40, 2));
+
+        // Assert: the noun of the catalog wins
+        Assert.True(few.Noun > few.Verb);
+    }
 }

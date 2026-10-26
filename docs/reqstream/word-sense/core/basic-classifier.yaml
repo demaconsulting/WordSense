@@ -807,3 +807,72 @@ sections:
                   - BasicClassifier_ClassifyAsync_NullElement_Throws
                   - BasicClassifier_ClassifyAsync_Cancelled_Throws
                   - BasicClassifier_ClassifyAsync_CancelledWhileReadingWords_Throws
+
+              - id: WordSense-Core-BasicClassifier-WordPrior-Support-Ambiguous
+                title: >-
+                  BasicClassifier shall give the tagger token of a word that has several possible parts of speech the
+                  catalog support of its analyses.
+                tags: [unit]
+                justification: |
+                  The word prior needs the catalog evidence of the word.
+                tests:
+                  - BasicClassifier_MakeToken_AmbiguousWord_CarriesTheCatalogSupport
+
+              - id: WordSense-Core-BasicClassifier-WordPrior-Support-Single
+                title: >-
+                  BasicClassifier shall give no catalog support to the tagger token of a word with one possible part of
+                  speech.
+                tags: [unit]
+                justification: |
+                  The emission of a word with one part of speech decides nothing, so looking it up would only cost time.
+                tests:
+                  - BasicClassifier_MakeToken_SinglePartOfSpeechWord_CarriesNoSupport
+
+              - id: WordSense-Core-BasicClassifier-WordPrior-Support-Unknown
+                title: >-
+                  BasicClassifier shall give no catalog support to the tagger token of an unknown word.
+                tags: [unit]
+                justification: |
+                  The catalog has no evidence about a word that the lexicon does not list.
+                tests:
+                  - BasicClassifier_MakeToken_UnknownWord_CarriesNoSupport
+
+              - id: WordSense-Core-BasicClassifier-CueReliability-Zero
+                title: >-
+                  BasicClassifier shall not let a cue table of reliability 0 separate the analyses that it scores.
+                tags: [unit]
+                justification: |
+                  A table that predicts its own held-out sentences at chance must not outvote the tagger.
+                tests:
+                  - BasicClassifier_ClassifyAsync_ZeroReliability_DoesNotSeparateTheAnalyses
+
+              - id: WordSense-Core-BasicClassifier-CueReliability-ZeroIsNoTable
+                title: >-
+                  BasicClassifier shall give a word whose cue table has reliability 0 the same probabilities as the
+                  same word without a cue table.
+                tags: [unit]
+                justification: |
+                  A table that is no better than chance must leave no trace in the answer, so the fusion must treat the
+                  analyses as unscored rather than apply a correction for a scored table.
+                tests:
+                  - BasicClassifier_ClassifyAsync_ZeroReliabilityTable_EqualsNoTable
+
+              - id: WordSense-Core-BasicClassifier-CueReliability-Full
+                title: >-
+                  BasicClassifier shall let a fully reliable cue table separate the analyses that it scores by the words
+                  around the target.
+                tags: [unit]
+                justification: |
+                  A table that predicts well must keep its full voice.
+                tests:
+                  - BasicClassifier_ClassifyAsync_FullReliability_SeparatesTheAnalyses
+
+              - id: WordSense-Core-BasicClassifier-CueReliability-Partial
+                title: >-
+                  BasicClassifier shall let a cue table of partial reliability separate the analyses less than a fully
+                  reliable table and more than a table of reliability 0.
+                tags: [unit]
+                justification: |
+                  A table that predicts somewhat well keeps part of its voice, so the damping is continuous.
+                tests:
+                  - BasicClassifier_ClassifyAsync_CueReliability_ScalesTheCueScores

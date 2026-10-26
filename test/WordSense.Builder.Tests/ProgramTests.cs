@@ -336,18 +336,48 @@ public sealed class ProgramTests : IDisposable
         _dir.Write("gold/ud_train.tsv", "this is not a gold line\n");
         await RunAsync("open-counts", "--corpus", corpus);
 
-        // Act
+        // Act: tune only the development inputs, with the test files of the treebank unreadable
         var (code, output, error) = await RunAsync("tune-basic", "--repository", _dir.Root, "--corpus", corpus, "--gold", Path.Join(_dir.Root, "gold", "ud_dev.tsv"));
 
-        // Assert: the tense weights are scored on the two development sets and on nothing else
+        // Assert: the tense weights are scored on the two development sets and on nothing else; the word prior and the
+        // cue reliability tables are in the report
         Assert.True(code == 0, error);
         Assert.Contains("clause-smoothing:", output, StringComparison.Ordinal);
         Assert.Contains("Treebank dev classifier", output, StringComparison.Ordinal);
+        Assert.Contains("Word prior variant", output, StringComparison.Ordinal);
+        Assert.Contains("Cue skill target", output, StringComparison.Ordinal);
         Assert.Contains("| 1.00 | open corpus dev |", output, StringComparison.Ordinal);
         Assert.Contains("| 1.00 | UD-EWT dev |", output, StringComparison.Ordinal);
         Assert.DoesNotContain("UD-EWT test", output, StringComparison.Ordinal);
         Assert.DoesNotContain("UD-EWT train", output, StringComparison.Ordinal);
         Assert.DoesNotContain("open corpus test", output, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The tuning command runs only the section that <c>--sections</c> names.
+    /// </summary>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_Program_TuneBasic_SectionsPrior_RunsOnlyThePriorSection()
+    {
+        // Arrange: valid training and development splits, and the counts
+        var corpus = PrepareCorpus();
+        _dir.Write("corpus/open/representative/data/train.tsv", OpenHeader + PutTrainSentence);
+        _dir.Write("corpus/open/representative/data/dev.tsv", OpenHeader + PutTrainSentence);
+        _dir.Write("corpus/open/representative/data/test.tsv", BrokenOpenFile);
+        _dir.Write("corpus/open/targeted/data/dev.tsv", BrokenOpenFile);
+        _dir.Write("corpus/open/targeted/data/test.tsv", BrokenOpenFile);
+        await RunAsync("open-counts", "--corpus", corpus);
+
+        // Act: tune only the section of the word prior
+        var (code, output, error) = await RunAsync("tune-basic", "--repository", _dir.Root, "--corpus", corpus, "--sections", "prior");
+
+        // Assert: the table of the word prior is there and no table of another section is
+        Assert.True(code == 0, error);
+        Assert.Contains("Word prior variant", output, StringComparison.Ordinal);
+        Assert.DoesNotContain("Open dev ambiguous POS", output, StringComparison.Ordinal);
+        Assert.DoesNotContain("Cue skill target", output, StringComparison.Ordinal);
+        Assert.DoesNotContain("Tense weight", output, StringComparison.Ordinal);
     }
 
     /// <summary>

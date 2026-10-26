@@ -477,12 +477,16 @@ internal sealed class BasicClassifier
 
         var found = lexicon(key);
         var mask = found.IsDefaultOrEmpty ? 0 : MaskOf(found);
+
+        // The word prior needs the catalog evidence of a word that has several possible parts of speech: with one the
+        // emission is a constant for the word and decides nothing
+        var support = System.Numerics.BitOperations.PopCount((uint)mask) >= 2 ? WordSupport.Of(key, found) : null;
         if (!found.IsDefaultOrEmpty && PossessiveStem(key, found) is { } stem)
         {
-            return TaggerToken.PossessiveWord(stem, mask, char.IsUpper(word[0]));
+            return TaggerToken.PossessiveWord(stem, mask, char.IsUpper(word[0]), support);
         }
 
-        return TaggerToken.Word(key, mask, char.IsUpper(word[0]), !found.IsDefaultOrEmpty && IsNonFiniteVerb(found));
+        return TaggerToken.Word(key, mask, char.IsUpper(word[0]), !found.IsDefaultOrEmpty && IsNonFiniteVerb(found), support);
     }
 
     /// <summary>
@@ -590,10 +594,13 @@ internal sealed class BasicClassifier
 
         // The cue table of the word itself (a form that spans lemmas) or of the lemma of its first analysis scores the
         // analyses; without a table no analysis has a cue score, so the context cannot separate the analyses of a
-        // lemma and part of speech and the fusion relies on the tagger alone
-        if (tables.FindCue(key, analyses) is { } cue)
+        // lemma and part of speech and the fusion relies on the tagger alone. A table of reliability 0 is no table: its
+        // scores are left out entirely, so the fusion treats every analysis as unscored
+        var cueFactor = 1.0;
+        if (tables.FindCue(key, analyses) is { Reliability: > 0 } cue)
         {
             CueModel.Score(cue, features, analyses, cues);
+            cueFactor = cue.Reliability;
         }
         else
         {
@@ -609,7 +616,9 @@ internal sealed class BasicClassifier
             effective = adjusted;
         }
 
-        SenseFusion.Fuse(effective, analyses, cues, tables.HmmWeight, tables.InvTemperature, probabilities);
+        // The reliability of the table damps its scores: a table that predicts held-out sentences of its own word poorly
+        // does not outvote the tagger
+        SenseFusion.Fuse(effective, analyses, cues, tables.HmmWeight, tables.InvTemperature * cueFactor, probabilities);
         ApplyCase(analyses, around.Case, probabilities);
         ApplyTense(tables, analyses, segment, index, tenseFeatures, probabilities);
         var list = ListAnalyses(analyses, probabilities, out var selectedGroup, out var slotProbability);

@@ -47,7 +47,10 @@ the sense occurs. It trains classifiers (the encoder weights and the Basic cue t
 the encoder weights even correct for it: the builder divides the share of each sense among the anchors of its lemma out
 of the classifier scores and multiplies in the WordNet 3.0 usage of the sense (the usage prior, see
 `docs/user_guide/accuracy.md`). Usage statistics (tag counts per word, tag transitions) come only from
-`open/representative/`.
+`open/representative/`. The Basic tagger also has a word prior, which is not a corpus statistic: it is the sum of the
+WordNet 3.0 tag counts of the lemmas that a spelling can be, read at run time from the word image (see `data/README.md`),
+and the Basic cue tables get a reliability that `train-basic` measures by cross-validation on the anchors themselves and
+by cross-fitting on the training split of the open corpus (the net benefit of each table on running text).
 
 ## Sentence Files
 
