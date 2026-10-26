@@ -12,7 +12,8 @@ commands and their usage and data errors, `ImageTests.cs` covers the word image 
 weights writers against the readers of the shipped packages, `TaggerCountsTests.cs` and `OpenCorpusTests.cs` cover the
 tag counts of the Basic model and the reader of the open corpus, `TaggerEvaluatorTests.cs` its accuracy measurement,
 `CorpusLicenseTests.cs` the sources recorded for the committed corpus, and `BasicTrainerTests.cs` covers its trainer,
-table writer, model data summary and hyper-parameters; `EmbeddingCacheTests.cs`, `FitCacheTests.cs` and
+table writer, model data summary and hyper-parameters; `CueRunningReliabilityTests.cs` covers the running-text
+reliability of the cue tables on a toy world with the runtime classifier; `EmbeddingCacheTests.cs`, `FitCacheTests.cs` and
 `ModelTrainerTests.cs` cover the embedding cache, the lemma fit cache, the frozen mean and the thresholds with a stub
 encoder; `WeightsTrainerTests.cs` and `ThresholdsTests.cs` cover the fit and the choice of the thresholds on small
 synthetic features; `SensePriorTests.cs` covers the usage prior (the offsets on a hand-computed fixture, their effect on
@@ -609,15 +610,56 @@ and, for the measurement, a stub model.
   context `had X` is past and `to X` non-past for six different verbs, the weight of the left neighbor `had` is positive
   and that of `to` negative, the prior is the log odds of the seven past and six non-past verbs, the third-person
   context is not learned, sentences without gold and non-verbs are skipped; there is no table without both classes or
-  when no feature reaches the minimum; equal inputs give equal tables and equal bytes with the magic `WSB5`; a model
+  when no feature reaches the minimum; equal inputs give equal tables and equal bytes with the magic `WSB6`; a model
   trained with verbs writes the table and the weight, which `BasicTables` reads back, and a model without verbs has none.
 - **Clause counts in the table** (`WordSenseBuilder_BasicTablesWriter_Write_CarriesTheClauseCounts`): the clause counts
   of the tag counts reach the table that `BasicTables` reads back, equal to those of `TaggerCounts` and the data, and a
   determiner after a verb is counted in the clause state with a verb and not at the start of a sentence.
 - **Clause smoothing in the table** (`WordSenseBuilder_BasicTablesWriter_Write_CarriesTheClauseSmoothing`): the
   smoothing of the hyper-parameters (7.5 in the test) reaches the header of the table that `BasicTables` reads back.
-- **Format revision** (`WordSenseBuilder_BasicTablesWriter_Write_StartsWithTheMagicWsb5`): the table starts with the
-  magic `WSB5`.
+- **Format revision** (`WordSenseBuilder_BasicTablesWriter_Write_StartsWithTheMagicWsb6`): the table starts with the
+  magic `WSB6`.
+- **Word prior in the table** (`WordSenseBuilder_BasicTablesWriter_Write_CarriesTheWordPrior`,
+  `WordSenseBuilder_BasicHyperparameters_WordPrior_IsOnAndAccepted`): the share, the smoothing, the sense weight and the
+  exponent of the hyper-parameters reach the header that `BasicTables` reads back, and the shipped hyper-parameters have
+  a share in (0, 1] with a positive smoothing or sense weight that the runtime accepts.
+- **Prior grid baseline** (`WordSenseBuilder_BasicHyperparameters_PriorGrid_HasTheBaseline`): the settings without the
+  prior have a share of 0 and are in the prior grid, and no row of the grid is empty.
+- **Every ambiguous word is tabled** (`WordSenseBuilder_BasicTrainer_Train_NoLimit_TablesEveryAmbiguousWord`,
+  `WordSenseBuilder_BasicHyperparameters_TopAmbiguousWords_IsUnlimitedByDefault`): without a limit the ambiguous word of
+  the counts is tabled with the closed-class word, and the shipped hyper-parameters set no limit.
+- **Limited tabling** (`WordSenseBuilder_BasicTrainer_Train_LimitZero_TablesNoAmbiguousWord`,
+  `WordSenseBuilder_BasicTrainer_Train_TopAmbiguousWordsBetween_KeepsTheMostFrequentThenBySpelling`): with a limit of 0
+  only the closed-class words are tabled; with four ambiguous words of 5, 3, 3 and 1 occurrences, a limit of 2 keeps
+  the most frequent word and, of the two words with 3 occurrences, the one that comes first in spelling, a limit of 3
+  keeps both of them, and a second run with the limit 2 gives the same words.
+- **Cue reliability** (`WordSenseBuilder_BasicTrainer_Train_HeldOutAccuracy_IsMeasuredOnSentencesOutsideTheTable`,
+  `WordSenseBuilder_BasicTrainer_Train_AccurateTable_IsFullyReliable`,
+  `WordSenseBuilder_BasicTrainer_Train_TableAtChance_HasNoReliability`,
+  `WordSenseBuilder_BasicTrainer_Train_DampingOff_LeavesTheTableFullyReliable`,
+  `WordSenseBuilder_BasicTrainer_ReliabilityOf_ScalesTheSkillOverChance`,
+  `WordSenseBuilder_BasicTablesWriter_Write_CarriesTheCueReliability`): the trainer runs on toy anchors of `record`. A
+  table whose features separate its analyses has a held-out balanced accuracy of at least 0.95 and a reliability of 255.
+  A table whose sentences share no feature has a held-out accuracy of 0.5, which it could not have on its own training
+  sentences, and a reliability of 0. With a target of 0 both stay at 255. The reliability is proportional to the skill over
+  chance between the two (theory over accuracy, analyses and target, including no target and no measurement), and it
+  reaches the table that `BasicTables` reads back.
+- **Running-text reliability** (`WordSenseBuilder_CueRunningReliability_FactorOf_ShrinksTheNetBenefitTowardOne`,
+  `WordSenseBuilder_CueRunningReliability_Combine_UsesTheProductOrTheMinimum`,
+  `WordSenseBuilder_CueRunningReliability_Apply_MeasuredTable_CombinesTheFactorWithTheAnchorReliability`,
+  `WordSenseBuilder_CueRunningReliability_Apply_UnmeasuredTable_KeepsTheAnchorReliability`,
+  `WordSenseBuilder_CueRunningReliability_MeasureAsync_TruthfulCues_HelpAndDoNotHurt`,
+  `WordSenseBuilder_CueRunningReliability_MeasureAsync_MisleadingCues_HurtAndAreDamped`,
+  `WordSenseBuilder_CueRunningReliability_MeasureAsync_IsDeterministic`,
+  `WordSenseBuilder_CueRunningReliability_ApplyAsync_WithoutFolds_ReturnsTheModel`,
+  `WordSenseBuilder_BasicTrainer_WithCounts_ReplacesTheStatisticsOnly`): the factor is 1 when a table helps at least as
+  often as it hurts and the pseudo-count ratio otherwise (theory, including no evidence and no pseudo count); the
+  combination is the product or the smaller of the two and is limited to 0 to 255; a table with statistics gets the
+  combined reliability and the counts, one without keeps its anchor reliability; on a toy world where the tagger cannot
+  decide a word, a table whose context says the truth helps and never hurts and keeps 255, and a table whose context
+  says the opposite hurts and is damped; the same input gives the same statistics; without folds the model comes back
+  as it is and nothing is measured; a model with other counts keeps its cue tables, takes their statistics and drops
+  the tense table.
 - **Clause counts are deterministic** (`WordSenseBuilder_BasicTablesWriter_Write_WithClauseCounts_IsDeterministic`):
   data whose counts have clause counts gives the same bytes on every write.
 - **Corpus features** (`WordSenseBuilder_OpenCorpus_ToTagged_CarriesTheLemmaAndFeaturesOfEveryToken`): the features and
@@ -628,9 +670,10 @@ and, for the measurement, a stub model.
   smoothing of the clause state has the default among its values and no negative value.
 - **Tuning** (`WordSenseBuilder_BasicTuner_SplitAnchors_IsDeterministicAndDisjoint`,
   `WordSenseBuilder_BasicTuner_ScoreTagger_CountsAmbiguousTokens`,
-  `WordSenseBuilder_BasicTuner_RunAsync_MissingCounts_Throws`): the anchor split is deterministic and its parts are
-  disjoint, the tagger score counts the tokens that have several parts of speech with the gold tag among them, and
-  missing tag counts are an error.
+  `WordSenseBuilder_BasicTuner_RunAsync_MissingCounts_Throws`,
+  `WordSenseBuilder_BasicTuner_RunAsync_UnknownSection_Throws`): the anchor split is deterministic and its parts are
+  disjoint, the tagger score counts the tokens that have several parts of speech with the gold tag among them, missing
+  tag counts are an error and so is a section that tune-basic does not know.
 - **Statistical model has no weights command** (`WordSenseBuilder_Program_Weights_BasicModel_PointsToTrainBasic`):
   `weights basic` exits with code 1 and the message names `train-basic`.
 - **Command** (`WordSenseBuilder_Program_TrainBasicAndEvaluateTagger_TinyCorpus_WriteAndScoreTable`,
@@ -643,7 +686,11 @@ and, for the measurement, a stub model.
   splits (representative and targeted) and treebank test and training files that fail when they are read (a malformed
   line), `tune-basic --gold` succeeds, so none of them was read, and its tense table has rows for the weight 1.00 on
   `open corpus dev` and `UD-EWT dev` and none for `UD-EWT test`, `UD-EWT train` or `open corpus test`; the grid table
-  names the smoothing of the clause state and has the treebank development column.
+  names the smoothing of the clause state and has the treebank development column, and the output has the table of the
+  word prior and the table of the cue reliability.
+- **Sections** (`WordSenseBuilder_Program_TuneBasic_SectionsPrior_RunsOnlyThePriorSection`): `tune-basic --sections prior`
+  on the same kind of temporary corpus succeeds and its output has the table of the word prior and none of the tables
+  of the grid, the cue reliability or the tense weight.
 - **Training reads only the training split**
   (`WordSenseBuilder_Program_TrainBasic_ReadsOnlyTheTrainSplit`): in a temporary corpus whose training split is valid and
   whose development and test splits (representative and targeted) fail when they are read, `open-counts` and
@@ -654,7 +701,14 @@ and, for the measurement, a stub model.
 
 - **Scoring** (`WordSenseBuilder_TaggerEvaluator_EvaluateAsync_ScoresAnsweredWordTokens`): a token is scored when the
   classifier answers it and its gold tag is a word class; punctuation and other gold tags are excluded, tokens that are
-  not answered are counted apart, and the ambiguous tokens are counted on their own.
+  not answered are counted apart, the ambiguous tokens are counted on their own, and the tokens whose gold tag is noun or
+  verb and whose word has both a noun and a verb analysis (the noun-verb tokens) are counted with their right ones.
+- **Closed and open words** (`WordSenseBuilder_TaggerEvaluator_EvaluateAsync_CountsClosedAndOpenWords`): the tokens whose
+  word has a pronoun, preposition, conjunction, determiner or auxiliary analysis and also a noun, verb, adjective or
+  adverb one are counted with their right ones.
+- **Starting verbs** (`WordSenseBuilder_TaggerEvaluator_EvaluateAsync_CountsStartingVerbs`): the tokens that are the
+  first word of their sentence, have the gold tag verb and are followed by a determiner are counted with their right
+  ones.
 - **Gold file** (`WordSenseBuilder_TaggerEvaluator_ReadGold_GroupsTokensBySentence`,
   `WordSenseBuilder_TaggerEvaluator_ReadGold_SixColumns_CarriesLemmaTagAndFeatures`,
   `WordSenseBuilder_TaggerEvaluator_ReadGold_MalformedLine_Throws`): the tokens are grouped by sentence id, a line

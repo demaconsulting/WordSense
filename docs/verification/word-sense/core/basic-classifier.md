@@ -219,3 +219,12 @@ All scenarios below pass on every platform and target framework of the CI matrix
   list throw.
 - **Cancelled token** (`..._Cancelled_Throws`, `..._CancelledWhileReadingWords_Throws`): a cancelled token throws
   `OperationCanceledException`, also when the token is cancelled while a lazy word sequence is read.
+- **Catalog support of the token** (`BasicClassifier_MakeToken_AmbiguousWord_CarriesTheCatalogSupport`,
+  `BasicClassifier_MakeToken_SinglePartOfSpeechWord_CarriesNoSupport`, `BasicClassifier_MakeToken_UnknownWord_CarriesNoSupport`):
+  on the lexicon of the embedded image, `rank` carries a support with more noun than verb tag counts, and `the` (one part
+  of speech) and an unknown word carry none.
+- **Cue reliability** (`BasicClassifier_ClassifyAsync_ZeroReliability_DoesNotSeparateTheAnalyses`,
+  `BasicClassifier_ClassifyAsync_FullReliability_SeparatesTheAnalyses`,
+  `BasicClassifier_ClassifyAsync_CueReliability_ScalesTheCueScores`): on a toy table of `read` with no tagger weight, the
+  probability of the past analysis of `yesterday they read` is 0.5 for a table of reliability 0, which does not separate
+  the two analyses, is above 0.5 for a fully reliable table, and for a table of reliability 100 lies between the two.

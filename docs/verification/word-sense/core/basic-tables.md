@@ -114,3 +114,16 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Feature hash** (`FeatureRef_Hash_PrefixAndDeterminism`, `FeatureRef_Hash_TenseKindsHaveOwnPrefixes`): the hash of an
   immediate-neighbor feature equals the hash of the window token that spells its prefix, the hash is stable, and the tense
   kinds have the prefixes `LW:`, `RW:` and `NA:` while the cue kinds keep `L1:` and `R1:` (so the cue tables stay valid).
+- **Word prior numbers** (`BasicTables_Load_PriorShare_ReadBack`, `BasicTables_Load_PriorSmoothing_ReadBack`,
+  `BasicTables_Load_PriorSenses_ReadBack`, `BasicTables_Load_PriorExponent_ReadBack`): the share, the smoothing, the sense
+  weight and the exponent of the word prior each read back from the header.
+- **Cue reliability** (`BasicTables_Load_CueReliability_ReadBack`): the reliability byte of a cue table reads back as the
+  byte and as the byte over 255.
+- **Invalid word prior** (`BasicTables_Load_PriorShareOutOfRange_Throws`, `BasicTables_Load_PriorSmoothingNegative_Throws`,
+  `BasicTables_Load_PriorSensesNegative_Throws`, `BasicTables_Load_PriorExponentOutOfRange_Throws`,
+  `BasicTables_Load_PriorOnWithoutWeight_Throws`): a share below 0 or above 1, a negative smoothing, a negative sense
+  weight, an exponent that is not positive or is above 16, and a share above 0 with neither a smoothing nor a sense weight
+  each throw `InvalidDataException` that names the invalid hyper-parameters.
+- **Largest exponent** (`BasicTables_Load_LargestPriorExponent_Loads`): an exponent of 16 loads.
+- **Retired format WSB5** (`BasicTables_Load_PreviousFormatWsb5_ThrowsUnknownFormat`): a current table whose magic is
+  changed to `WSB5` throws `InvalidDataException` whose message says unknown format, as `WSB3` and `WSB4` do.

@@ -507,11 +507,11 @@ public class BasicTrainerTests
     [Fact]
     public void WordSenseBuilder_BasicTablesWriter_Write_WithTenseTable_IsDeterministicAndCurrentFormat()
     {
-        // Arrange
+        // Arrange: verbs of the training split with a past and a non-past context, and trained data that include them
         List<TaggedSentence> verbs = [VerbSentence(["they", "had", "walked"], 2, PastFeatures), VerbSentence(["we", "to", "walk"], 2, "VerbForm=Inf")];
         var data = BasicTrainer.Train(Counts(), w => Lexicon.TryGetValue(w, out var found) ? found : default, Anchors(), [], BasicHyperparameters.Default, verbs);
 
-        // Act
+        // Act: write the table twice and read the magic of the first
         var first = Write(data);
         var second = Write(data);
         using var input = new MemoryStream(first);
@@ -519,9 +519,9 @@ public class BasicTrainerTests
         var head = new byte[4];
         brotli.ReadExactly(head);
 
-        // Assert
+        // Assert: the two writes are equal and the magic is WSB6
         Assert.Equal(first, second);
-        Assert.Equal("WSB5"u8.ToArray(), head);
+        Assert.Equal("WSB6"u8.ToArray(), head);
     }
 
     /// <summary>
@@ -565,11 +565,11 @@ public class BasicTrainerTests
     }
 
     /// <summary>
-    ///     The table starts with the magic <c>WSB5</c>, the format revision that has the clause counts and the clause
-    ///     smoothing.
+    ///     The table starts with the magic <c>WSB6</c>, the format revision that has the word prior and the reliability of
+    ///     the cue tables.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_BasicTablesWriter_Write_StartsWithTheMagicWsb5()
+    public void WordSenseBuilder_BasicTablesWriter_Write_StartsWithTheMagicWsb6()
     {
         // Arrange: trained data
         var data = Train();
@@ -580,8 +580,8 @@ public class BasicTrainerTests
         var head = new byte[4];
         brotli.ReadExactly(head);
 
-        // Assert
-        Assert.Equal("WSB5"u8.ToArray(), head);
+        // Assert: the magic is WSB6
+        Assert.Equal("WSB6"u8.ToArray(), head);
     }
 
     /// <summary>
@@ -617,5 +617,286 @@ public class BasicTrainerTests
         // Assert: the default is a grid value and no value is negative
         Assert.Contains(BasicHyperparameters.Default.ClauseSmoothing, values);
         Assert.All(values, value => Assert.True(value >= 0));
+    }
+
+    /// <summary>
+    ///     The numbers of the word prior are written to the header of the table that the runtime reads.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BasicTablesWriter_Write_CarriesTheWordPrior()
+    {
+        // Arrange: hyper-parameters with a word prior that is not the default
+        var hp = BasicHyperparameters.Default with { PriorShare = 0.35, PriorSmoothing = 0.75, PriorSenses = 0.125, PriorExponent = 0.5 };
+
+        // Act: write the table and read it back
+        var tables = Read(Write(Train(hp: hp)));
+
+        // Assert: the four numbers are in the header
+        Assert.Equal(0.35, tables.PriorShare);
+        Assert.Equal(0.75, tables.PriorSmoothing);
+        Assert.Equal(0.125, tables.PriorSenses);
+        Assert.Equal(0.5, tables.PriorExponent);
+    }
+
+    /// <summary>
+    ///     The shipped hyper-parameters have a word prior that is on and that the runtime accepts.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BasicHyperparameters_WordPrior_IsOnAndAccepted()
+    {
+        // Arrange: the shipped hyper-parameters
+        var hp = BasicHyperparameters.Default;
+
+        // Act: write the table and read it back
+        var tables = Read(Write(Train(hp: hp)));
+
+        // Assert: the prior is on, its values are valid, and the runtime loaded the table with the share
+        Assert.True(hp.PriorShare is > 0 and <= 1);
+        Assert.True(hp.PriorSmoothing + hp.PriorSenses > 0);
+        Assert.Equal(hp.PriorShare, tables.PriorShare);
+    }
+
+    /// <summary>
+    ///     The grid of the word prior has the values without the prior as its baseline.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BasicHyperparameters_PriorGrid_HasTheBaseline()
+    {
+        // Arrange: the grid of the word prior
+
+        // Act: list the variants of the grid
+        var variants = BasicHyperparameters.PriorGrid.SelectMany(g => g.Variants).ToList();
+
+        // Assert: the baseline has no prior and is a variant of the grid, and no row of the grid is empty
+        Assert.Equal(0.0, BasicHyperparameters.Previous.PriorShare);
+        Assert.Contains(BasicHyperparameters.Previous, variants);
+        Assert.All(BasicHyperparameters.PriorGrid, g => Assert.NotEmpty(g.Variants));
+    }
+
+    /// <summary>
+    ///     The shipped hyper-parameters set no limit on the number of ambiguous words that are tabled.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BasicHyperparameters_TopAmbiguousWords_IsUnlimitedByDefault()
+    {
+        // Arrange: the shipped hyper-parameters
+        var hp = BasicHyperparameters.Default;
+
+        // Act: read the limit
+        var limit = hp.TopAmbiguousWords;
+
+        // Assert: the limit is the largest integer, which sets none
+        Assert.Equal(int.MaxValue, limit);
+    }
+
+    /// <summary>
+    ///     Without a limit the ambiguous word of the counts is tabled with the closed-class word.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BasicTrainer_Train_NoLimit_TablesEveryAmbiguousWord()
+    {
+        // Arrange: no limit on the number of ambiguous words
+        var unlimited = BasicHyperparameters.Default with { TopAmbiguousWords = int.MaxValue };
+
+        // Act: train with no limit
+        var all = Train(hp: unlimited);
+
+        // Assert: the ambiguous word and the closed-class word are tabled
+        Assert.Equal(["record", "the"], all.Words.Select(w => w.Word));
+    }
+
+    /// <summary>
+    ///     With a limit of zero no ambiguous word is tabled, only the closed-class words are.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BasicTrainer_Train_LimitZero_TablesNoAmbiguousWord()
+    {
+        // Arrange: a limit of zero
+        var zero = BasicHyperparameters.Default with { TopAmbiguousWords = 0 };
+
+        // Act: train with a limit of zero
+        var none = Train(hp: zero);
+
+        // Assert: only the closed-class word is tabled
+        Assert.Equal(["the"], none.Words.Select(w => w.Word));
+    }
+
+    /// <summary>
+    ///     With a limit between zero and the number of ambiguous words the most frequent words are tabled, and words of the
+    ///     same frequency are told apart by their spelling.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BasicTrainer_Train_TopAmbiguousWordsBetween_KeepsTheMostFrequentThenBySpelling()
+    {
+        // Arrange: four ambiguous words with 5, 3, 3 and 1 occurrences; beta and alpha tie for the second place
+        var sentences = new List<TaggedSentence>();
+        foreach (var (word, occurrences) in new[] { ("gamma", 5), ("beta", 3), ("alpha", 3), ("delta", 1) })
+        {
+            sentences.AddRange(Enumerable.Repeat(new TaggedSentence([word], [PosTag.Noun]), occurrences));
+        }
+
+        var lexicon = new Dictionary<string, ImmutableArray<WordDetails>>(StringComparer.Ordinal);
+        foreach (var word in new[] { "gamma", "beta", "alpha", "delta" })
+        {
+            lexicon[word] = [new(word, PartOfSpeech.Noun, "Number=Sing"), new(word, PartOfSpeech.Verb, "VerbForm=Inf")];
+        }
+
+        ImmutableArray<WordDetails> Lookup(string word) => lexicon.TryGetValue(word, out var found) ? found : default;
+        var counts = TaggerCounts.Count(sentences, Lookup);
+
+        // Act: select with a limit of two and of three, and select again with a limit of two
+        var two = BasicTrainer.Train(counts, Lookup, [], [], BasicHyperparameters.Default with { TopAmbiguousWords = 2 });
+        var again = BasicTrainer.Train(counts, Lookup, [], [], BasicHyperparameters.Default with { TopAmbiguousWords = 2 });
+        var three = BasicTrainer.Train(counts, Lookup, [], [], BasicHyperparameters.Default with { TopAmbiguousWords = 3 });
+
+        // Assert: gamma is the most frequent; the tie of alpha and beta is broken by spelling, alpha first, and the same
+        // counts give the same selection
+        Assert.Equal(["alpha", "gamma"], two.Words.Select(w => w.Word));
+        Assert.Equal(two.Words.Select(w => w.Word), again.Words.Select(w => w.Word));
+        Assert.Equal(["alpha", "beta", "gamma"], three.Words.Select(w => w.Word));
+    }
+
+    /// <summary>
+    ///     The reliability of a cue table is 255 at or above the target accuracy, 0 at chance and in proportion to the skill
+    ///     over chance between, and the damping is off without a target or without a measurement.
+    /// </summary>
+    /// <param name="accuracy">The balanced held-out accuracy.</param>
+    /// <param name="columns">The number of analyses of the table.</param>
+    /// <param name="target">The target accuracy.</param>
+    /// <param name="expected">The reliability byte.</param>
+    [Theory]
+    [InlineData(0.95, 2, 0.9, 255)]
+    [InlineData(0.9, 2, 0.9, 255)]
+    [InlineData(0.75, 2, 1.0, 128)]
+    [InlineData(0.5, 2, 0.9, 0)]
+    [InlineData(0.4, 2, 0.9, 0)]
+    [InlineData(0.8, 4, 0.9, 216)]
+    [InlineData(0.6, 2, 0.0, 255)]
+    [InlineData(double.NaN, 2, 0.9, 255)]
+    [InlineData(0.6, 2, 0.4, 255)]
+    public void WordSenseBuilder_BasicTrainer_ReliabilityOf_ScalesTheSkillOverChance(double accuracy, int columns, double target, int expected)
+    {
+        // Arrange: the accuracy, the number of analyses and the target are the parameters of the case
+
+        // Act: compute the reliability of the case
+        var reliability = BasicTrainer.ReliabilityOf(accuracy, columns, target);
+
+        // Assert: the reliability byte is the expected one
+        Assert.Equal((byte)expected, reliability);
+    }
+
+    private static List<CorpusRow> SeparableAnchors() =>
+    [
+        .. Enumerable.Range(0, 20).Select(i => Row("record", PartOfSpeech.Noun, "the", "river", "record", $"swims{i.ToString(System.Globalization.CultureInfo.InvariantCulture)}")),
+        .. Enumerable.Range(0, 20).Select(i => Row("record", PartOfSpeech.Verb, "a", "guitar", "record", $"plays{i.ToString(System.Globalization.CultureInfo.InvariantCulture)}")),
+    ];
+
+    private static List<CorpusRow> NoiseAnchors() =>
+    [
+        .. Enumerable.Range(0, 20).Select(i => Row("record", PartOfSpeech.Noun, $"n{i.ToString(System.Globalization.CultureInfo.InvariantCulture)}a", $"n{i.ToString(System.Globalization.CultureInfo.InvariantCulture)}b", "record", $"n{i.ToString(System.Globalization.CultureInfo.InvariantCulture)}c")),
+        .. Enumerable.Range(0, 20).Select(i => Row("record", PartOfSpeech.Verb, $"v{i.ToString(System.Globalization.CultureInfo.InvariantCulture)}a", $"v{i.ToString(System.Globalization.CultureInfo.InvariantCulture)}b", "record", $"v{i.ToString(System.Globalization.CultureInfo.InvariantCulture)}c")),
+    ];
+
+    /// <summary>
+    ///     The accuracy of a cue table is measured on sentences that the table was not trained on: a table whose context
+    ///     features separate its analyses predicts them, and a table whose sentences share no feature predicts them at
+    ///     chance, which it could not do on its own training sentences.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BasicTrainer_Train_HeldOutAccuracy_IsMeasuredOnSentencesOutsideTheTable()
+    {
+        // Arrange: the damping is on at a target of 0.9
+        var hp = BasicHyperparameters.Default with { CueSkillTarget = 0.9 };
+
+        // Act: train a table with separable features and one with features that share nothing
+        var separable = Assert.Single(Train(SeparableAnchors(), hp).Cues);
+        var noise = Assert.Single(Train(NoiseAnchors(), hp).Cues);
+
+        // Assert: the held-out accuracy is high for the first table and at chance for the second
+        Assert.True(separable.HeldOutAccuracy >= 0.95);
+        Assert.Equal(0.5, noise.HeldOutAccuracy, 9);
+        Assert.Equal(40, noise.Sentences);
+    }
+
+    /// <summary>
+    ///     A table whose held-out accuracy reaches the target is fully reliable.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BasicTrainer_Train_AccurateTable_IsFullyReliable()
+    {
+        // Arrange: a target of 0.9 and anchors whose context features separate the analyses
+        var hp = BasicHyperparameters.Default with { CueSkillTarget = 0.9 };
+
+        // Act: train the table with separable features
+        var separable = Assert.Single(Train(SeparableAnchors(), hp).Cues);
+
+        // Assert: the table is fully reliable
+        Assert.Equal((byte)255, separable.Reliability);
+    }
+
+    /// <summary>
+    ///     A table that predicts its held-out sentences at chance has a reliability of 0.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BasicTrainer_Train_TableAtChance_HasNoReliability()
+    {
+        // Arrange: a target of 0.9 and anchors whose sentences share no feature
+        var hp = BasicHyperparameters.Default with { CueSkillTarget = 0.9 };
+
+        // Act: train the table with sentences that share no feature
+        var noise = Assert.Single(Train(NoiseAnchors(), hp).Cues);
+
+        // Assert: the table has no reliability
+        Assert.Equal((byte)0, noise.Reliability);
+    }
+
+    /// <summary>
+    ///     With the damping off every table is fully reliable, whatever its held-out accuracy.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BasicTrainer_Train_DampingOff_LeavesTheTableFullyReliable()
+    {
+        // Arrange: a target of 0, which switches the damping off, and anchors whose sentences share no feature
+        var hp = BasicHyperparameters.Default with { CueSkillTarget = 0.0 };
+
+        // Act: train the table with the damping off
+        var off = Assert.Single(Train(NoiseAnchors(), hp).Cues);
+
+        // Assert: the table is fully reliable
+        Assert.Equal((byte)255, off.Reliability);
+    }
+
+    /// <summary>
+    ///     The reliability of a table is written to the table that the runtime reads, which scores the table with it.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BasicTablesWriter_Write_CarriesTheCueReliability()
+    {
+        // Arrange: trained data whose only table is damped to 0
+        var data = Train(NoiseAnchors(), BasicHyperparameters.Default with { CueSkillTarget = 0.9 });
+
+        // Act: write the table and read it back
+        var tables = Read(Write(data));
+
+        // Assert: the reliability is in the table that the runtime reads
+        Assert.Equal((byte)0, tables.Cues["record"].ReliabilityByte);
+        Assert.Equal(0.0, tables.Cues["record"].Reliability);
+    }
+
+    /// <summary>
+    ///     The tuner refuses a section that it does not know.
+    /// </summary>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_BasicTuner_RunAsync_UnknownSection_Throws()
+    {
+        // Arrange: an empty corpus directory and a section that does not exist
+        using var dir = new TestDirectory();
+
+        // Act: run the tuner with the unknown section
+        var run = () => BasicTuner.RunAsync(Path.Join(dir.Root, "corpus"), TextWriter.Null, TestContext.Current.CancellationToken, null, "bogus");
+
+        // Assert: the tuner throws before it reads anything
+        await Assert.ThrowsAsync<ArgumentException>(run);
     }
 }

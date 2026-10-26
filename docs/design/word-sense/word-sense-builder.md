@@ -102,7 +102,7 @@ implementation of the feature computation.
   below). `RealSplit` reads the provenance strictly: it refuses a file with another header, a row without its four
   non-empty columns, a split other than `anchors`, `holdout` or `realtext`, a source that is not allowed or a repeated
   id, with the file and the line. `ProvenanceSources` is the one list of the allowed sources of a sentence (real text
-  and sentences written for the project): the licence gate that `CorpusLicenseTests` applies to the provenance, and
+  and sentences written for the project): the license gate that `CorpusLicenseTests` applies to the provenance, and
   the decision whether a source is real text.
 - `Tiers`, `TierRow`: the per-sense quota of anchor and held-out sentences, the status of each sense and the report of
   the senses that fall short.
@@ -150,13 +150,20 @@ implementation of the feature computation.
   reader of an external gold file.
 - `BasicHyperparameters`: every tunable number of the Basic model in one place (the runtime values that travel in the
   table header, the training choices, and the grid and sample sizes of the tuner).
-- `BasicTrainer`, `BasicModelData`, `BasicTenseRow`: select the tabled words (closed-class words and the most frequent
-  dictionary-ambiguous words), the suffixes and the closed-class masks from the counts, train the cue tables from
+- `BasicTrainer`, `BasicModelData`, `BasicTenseRow`: select the tabled words (closed-class words and every
+  dictionary-ambiguous word of the counts, or the most frequent ones when `TopAmbiguousWords` limits them), the suffixes
+  and the closed-class masks from the counts, train the cue tables from
   the anchors and the form-chooser anchors, with the analysis label of each sentence rolled up from its fine sense or
-  chooser label, and train the shared tense table from every verb of the training split of the open corpus.
-- `BasicTablesWriter`: serializes the model data into the `WSB5` blob, deterministically.
+  chooser label, measure the reliability of every cue table on held-out folds of its own sentences, and train the shared
+  tense table from every verb of the training split of the open corpus.
+- `BasicTablesWriter`: serializes the model data into the `WSB6` blob, deterministically.
+- `CueRunningReliability`, `CueRunningStat`, `CueRunningRuntime`: measure the net benefit of every cue table on the training
+  split of the open corpus (`BasicTrainer.WithCounts` gives the model the statistics of the other folds) and combine it
+  with the anchor reliability. `CueRunningStat` holds the tokens covered, helped and hurt of one table, and
+  `CueRunningRuntime` hands the runtime table and classifier to the measurement so that tests can run it on a toy world.
 - `BasicTuner`: scores the hyper-parameter grid (including the smoothing of the clause state, with the classifier
-  accuracy on the open corpus and treebank development sets) and the weight of the tense model.
+  accuracy on the open corpus and treebank development sets), the weight of the tense model, the word prior (with the
+  number of tabled words) and the target accuracy of the cue reliability; its sections can be run one at a time.
 - `BasicModelBuilder`: the commands `open-counts` and `train-basic`.
 - `AppendixGenerator`: generates the senses appendix of the user guide.
 - `KeyExport`: writes every word key of the lexicon as a sorted text file.
@@ -226,8 +233,9 @@ instead of `--model`.
 - `train-basic [--corpus DIR] [--repository DIR] [--output FILE]`: retrains the whole Basic model with the default
   hyper-parameters from the committed counts of `corpus/open/counts`, the anchors and the chooser anchors, and writes
   `Resources/basic.bin` of the core package; it names `open-counts` when the counts are missing.
-- `tune-basic [--corpus DIR] [--repository DIR] [--gold FILE]`: scores the hyper-parameter grid (the smoothing of the
-  clause state among them) and the weight of the tense model and prints the tables; it writes nothing.
+- `tune-basic [--corpus DIR] [--repository DIR] [--gold FILE] [--sections all|grid|tense|prior|cue]`: scores the
+  hyper-parameter grid (the smoothing of the clause state among them), the weight of the tense model, the word prior and
+  the cue reliability and prints the tables; `--sections` runs one of them; it writes nothing.
 - `label-senses [--data DIR]`: gives every sense without a label a generated label (the SenseLabelGenerator unit of the
   WordData subsystem).
 - `import-wn30-counts --input FILE [--data DIR] [--sha256 HEX|none]`: imports the pinned WordNet 3.0 sense frequency
@@ -670,7 +678,9 @@ that fall short, most frequent first.
    `corpus/anchors` and the chooser anchors of `corpus/choosers/anchors`. The holdout, the test splits, the targeted
    part and the treebank are not read.
 2. `BasicTrainer.Train` selects from the counts the closed-class words (enough occurrences and a dominant closed-class
-   share), the most frequent dictionary-ambiguous words and the suffixes of one to three characters of words the
+   share), every dictionary-ambiguous word of the counts (the most frequent ones, ties by spelling, when
+   `TopAmbiguousWords` sets a limit; the shipped value sets none, because the word prior smooths the counts of a rare
+   word) and the suffixes of one to three characters of words the
    lexicon lacks, and trains the naive Bayes cue tables from the anchors. A table is keyed by a lemma (the fine-sense
    anchors) or by a form that a chooser decides (the chooser anchors: `left` as a form of `leave` or of the adjective
    `left`, `read` as a past or a present verb; the classifier finds the table of the form before the table of the
@@ -693,14 +703,47 @@ that fall short, most frequent first.
    quantization as a cue table, the smoothing `TenseAlpha`, the minimum of `TenseMinFeatureCount` verbs per feature and
    the
    log odds of the classes as its prior. It reads no word list and no lemma, only the context.
+
+   **Cue reliability.** The anchors are a balanced sample of the senses of a word, and some tables predict their own
+   sentences no better than chance (a few dozen sentences for a word with several analyses). For every cue table the trainer
+   splits its sentences into `CueFolds` (5) folds by a stable hash of the sentence, trains the table on all folds but one
+   with the same vocabulary rules, scores the held-out fold (the sum of the quantized weights of its features, the lowest
+   analysis on a tie) and takes the balanced accuracy, the mean recall of the analyses over all folds. The reliability is
+   `clamp((accuracy - chance) / (target - chance), 0, 1)` with `chance` one over the number of analyses of the table and
+   `target` the hyper-parameter `CueSkillTarget` (0.6; 0 turns the damping off), stored in one byte; the runtime scales
+   the
+   cue scores of the table by it. A table that predicts its held-out sentences at or below chance is therefore as good as
+   none, one at 0.8 on two analyses is fully reliable, and the choice needs no hand list of tables. In the shipped table
+   111 of the 913 tables are damped (those with a held-out accuracy below 0.6); `learning`, whose held-out accuracy of
+   0.298 is below chance, gets 0. On the development sets any target from 0.5 to 1.0 gives the same figures (the cue
+   changes the answer on about 5 percent of the tokens it covers), and the reviewed suite loses rows from a target of
+   0.7 on, so the target is 0.6.
+
+   **Cue reliability on running text** (`CueRunningReliability`, run by `train-basic` after the tables are trained). A
+   cross-validation over the anchors cannot see the difference between the balanced anchors and running text, so each
+   table also gets a measurement on the training split of the representative open corpus (running text with gold tags;
+   the development and test splits are never read). The split is cut into `RunningFolds` (4) folds by a stable hash of
+   the sentence; for each fold `BasicTrainer.WithCounts` gives the model the tag statistics of the other folds (the
+   n-grams, the tabled words and the suffixes, without the tense table), so that the words of the fold are not in the
+   counts that score them, and the fold is tagged twice by `BasicClassifier`: with every cue table at full weight and
+   with no cue table. A token whose word has a table counts as *helped* when only the run with the cues gets its part
+   of speech right and as *hurt* when only the run without them does (tokens with a punctuation or other gold tag are
+   not scored). The factor of a table is `min(1, (helped + pseudo) / (hurt + pseudo))` with `RunningPseudo` (50), so a
+   table that helps at least as often as it hurts keeps its weight and a table with a few changed tokens stays near 1; it
+   is combined with the reliability of the anchors as their product (`RunningMinimum` false) and stored in the same byte.
+   A table that covers no token keeps its anchor reliability. On the development sets the pseudo count and the
+   combination make no difference (the cue changes few answers). The reviewed suite is the guard for the pseudo count:
+   20 or less turns the row `M-feel-2` of Basic into a miss (the table of `feel` has 0 tokens helped and 2 hurt), and 50
+   does not. In the shipped table 682 of the 913 tables cover a token of the training split (357 tokens
+   helped and 215 hurt in all), 162 tables are damped (111 by the anchors, 61 by the running text, some by both).
 3. `BasicTablesWriter.Write` serializes the table, `BasicTables.Load` checks that it reads back, and the file is
    written with its size and SHA-256 reported. The table carries the inventory hash of the word image that it was
    trained against and is rebuilt whenever the inventory changes.
 
 #### Basic tuning (`BasicTuner.RunAsync`)
 
-Trains and scores each variant of the hyper-parameter grid (one parameter at a time around the default, and two combined
-variants) on the development split of the representative open corpus and on a deterministic sample of the anchors split
+Trains and scores each variant of the hyper-parameter grid (one parameter at a time around the default) on the
+development split of the representative open corpus and on a deterministic sample of the anchors split
 into a train and a dev part (the chooser anchors are left out of the tuned tables, because they are the same sentences
 labeled a second way). It reports the accuracy on the ambiguous tokens of the development split, the accuracy of the
 analysis on the anchor dev part, the accuracy of the whole classifier (all tokens and ambiguous tokens) on the open
@@ -734,9 +777,25 @@ against the holdout, the real-text sentences, the test splits of the open corpus
 test and training files, which are the measurements (one real-text row is a fraction of a point, so a smaller
 move than a few rows is noise). To change the training data (anchors, sense inventory or open-corpus sentences), edit it
 and run `open-counts` (when the open corpus changed) and `train-basic`; `evaluate-tagger` measures the part of speech.
-The grid has been tried on the open-corpus tables: the best variants (gamma 1.0, beta 1.0, closed-class 3 / 0.8) gain
-about 0.5 points of ambiguous part of speech on the open development split and lose about 1.8 points on the anchor
-development subset (the hard, targeted ambiguous words), so the defaults stay.
+The grid is scored on the open-corpus tables. The defaults are gamma 1.0 and `Beta` 7 (5 pseudo counts of the generic
+prior and 2 of the word prior, share 0.3). Gamma 1.0 keeps the anchor development subset (92.00 percent). The development
+sets alone prefer fewer pseudo counts (`Beta` 3: +0.19 and +0.35 points on the ambiguous tokens of the open corpus and the
+treebank), but then the reviewed suite loses five rows that Basic answers right (`state`, `feel`, `august`, `resume`,
+`present`), so the smoothing stays. The suite is a guard in that choice, not a tuning set: no value is picked because the
+suite likes it, only values that lose rows are excluded.
+
+A second section scores the word prior (`--sections prior`, the numbers of `BasicHyperparameters.PriorGrid`): the
+settings without the prior (the baseline), the model without the prior, the number of tabled words (2,000, 5,000, all),
+the share, the pseudo counts, gamma, the smoothing of each slot, the exponent and the weight of the senses, each with
+the accuracy on the
+open and treebank development sets (all, ambiguous and noun-verb tokens, the words that have both a closed-class and an
+open-class analysis, and the verbs that start a sentence before a determiner) and the anchor development subset. The
+rows "component on baseline" and "component off default" switch the exponent of the emission, the tabling of every word
+and the word prior on and off one at a time, to attribute a change to one of them. A third section scores
+the target accuracy of the cue reliability (`--sections cue`), lists the cue tables of the lowest held-out accuracy, and
+scores the running-text reliability: the cross-fitted statistics are measured once, and the pseudo counts of
+`RunningPseudoGrid` with the product and the minimum are applied to them and scored on the development sets; the tables
+with the most tokens hurt over helped and with the most covered tokens are listed.
 
 #### Tagger evaluation (`TaggerEvaluator.EvaluateAsync`)
 

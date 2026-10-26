@@ -581,8 +581,21 @@ sections:
               - WordSense-WordSenseBuilder-TrainBasic-TrainSplitOnly
               - WordSense-WordSenseBuilder-TrainBasic-ClauseCounts
               - WordSense-WordSenseBuilder-TrainBasic-ClauseSmoothing
-              - WordSense-WordSenseBuilder-TrainBasic-FormatWsb5
+              - WordSense-WordSenseBuilder-TrainBasic-FormatWsb6
               - WordSense-WordSenseBuilder-TrainBasic-ClauseDeterministic
+              - WordSense-WordSenseBuilder-TrainBasic-WordPrior
+              - WordSense-WordSenseBuilder-TrainBasic-WordPriorOn
+              - WordSense-WordSenseBuilder-TrainBasic-AllWords
+              - WordSense-WordSenseBuilder-TrainBasic-AllWordsDefault
+              - WordSense-WordSenseBuilder-TrainBasic-WordsLimit
+              - WordSense-WordSenseBuilder-TrainBasic-WordsLimitTies
+              - WordSense-WordSenseBuilder-TrainBasic-CueHeldOut
+              - WordSense-WordSenseBuilder-TrainBasic-CueReliabilityFull
+              - WordSense-WordSenseBuilder-TrainBasic-CueReliabilityChance
+              - WordSense-WordSenseBuilder-TrainBasic-CueReliabilityBetween
+              - WordSense-WordSenseBuilder-TrainBasic-CueReliabilityOff
+              - WordSense-WordSenseBuilder-TrainBasic-CueReliabilityWritten
+              - WordSense-WordSenseBuilder-TrainBasic-CueRunningReliability
             tests:
               - WordSenseBuilder_BasicTrainer_ClosedMaskOf_AppliesThresholds
               - WordSenseBuilder_BasicTrainer_Train_SelectsWordsAndSuffixes
@@ -620,15 +633,220 @@ sections:
             tests:
               - WordSenseBuilder_BasicTablesWriter_Write_CarriesTheClauseSmoothing
 
-          - id: WordSense-WordSenseBuilder-TrainBasic-FormatWsb5
+          - id: WordSense-WordSenseBuilder-TrainBasic-FormatWsb6
             title: >-
-              The builder shall write the table of the basic model with the format revision WSB5, which differs from
+              The builder shall write the table of the basic model with the format revision WSB6, which differs from
               the previous revision.
             tags: [unit]
             justification: |
               The revision makes the previous format fail loudly in the runtime instead of being read as a current one.
             tests:
-              - WordSenseBuilder_BasicTablesWriter_Write_StartsWithTheMagicWsb5
+              - WordSenseBuilder_BasicTablesWriter_Write_StartsWithTheMagicWsb6
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-WordPrior
+            title: >-
+              The builder shall write the word prior of its hyper-parameters into the header of the table of the basic
+              model.
+            tags: [unit]
+            justification: |
+              The runtime computes the prior from the word image and needs only its numbers, which are chosen on
+              development data and must travel with the table.
+            tests:
+              - WordSenseBuilder_BasicTablesWriter_Write_CarriesTheWordPrior
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-WordPriorOn
+            title: >-
+              The builder shall ship hyper-parameters whose word prior is on and is accepted by the runtime.
+            tags: [unit]
+            justification: |
+              A table that the runtime rejects, or one with the prior off, would not deliver the tagger the model is
+              meant to have.
+            tests:
+              - WordSenseBuilder_BasicHyperparameters_WordPrior_IsOnAndAccepted
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-AllWords
+            title: >-
+              The builder shall table every word of the open training counts that the dictionary lists with two or more
+              parts of speech when no limit on their number is set.
+            tags: [unit]
+            justification: |
+              A word with few counts is smoothed by the word prior, so tabling every ambiguous word gives the tagger the
+              counts that exist for it.
+            tests:
+              - WordSenseBuilder_BasicTrainer_Train_NoLimit_TablesEveryAmbiguousWord
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-AllWordsDefault
+            title: >-
+              The builder shall set no limit on the number of ambiguous words that it tables in its shipped
+              hyper-parameters.
+            tags: [unit]
+            justification: |
+              The shipped table must hold the counts of every ambiguous word of the training split.
+            tests:
+              - WordSenseBuilder_BasicHyperparameters_TopAmbiguousWords_IsUnlimitedByDefault
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-WordsLimit
+            title: >-
+              The builder shall table only the most frequent of the ambiguous words of the open training counts when a
+              limit on their number is set.
+            tags: [unit]
+            justification: |
+              A limit lets a table follow a size budget, and the most frequent words are the ones whose counts matter
+              most.
+            tests:
+              - WordSenseBuilder_BasicTrainer_Train_TopAmbiguousWordsBetween_KeepsTheMostFrequentThenBySpelling
+              - WordSenseBuilder_BasicTrainer_Train_LimitZero_TablesNoAmbiguousWord
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-WordsLimitTies
+            title: >-
+              The builder shall select the same words from the same counts when a limit cuts through ambiguous words of
+              equal frequency.
+            tags: [unit]
+            justification: |
+              The table must be reproducible, so a limit that falls inside a group of words with the same count must not
+              leave the choice to chance.
+            tests:
+              - WordSenseBuilder_BasicTrainer_Train_TopAmbiguousWordsBetween_KeepsTheMostFrequentThenBySpelling
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-CueHeldOut
+            title: >-
+              The builder shall measure the accuracy of each cue table on training sentences of that table that the
+              table was not trained on.
+            tags: [unit]
+            justification: |
+              The accuracy of a table on its own training sentences says nothing about whether it generalizes. Held-out
+              sentences of the same training data are legitimate evidence, and no development or test sentence is read.
+            tests:
+              - WordSenseBuilder_BasicTrainer_Train_HeldOutAccuracy_IsMeasuredOnSentencesOutsideTheTable
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-CueReliabilityFull
+            title: >-
+              The builder shall give a cue table whose held-out accuracy reaches the target accuracy the full
+              reliability.
+            tags: [unit]
+            justification: |
+              A table that predicts well must keep its full voice.
+            tests:
+              - WordSenseBuilder_BasicTrainer_Train_AccurateTable_IsFullyReliable
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-CueReliabilityChance
+            title: >-
+              The builder shall give a cue table whose held-out accuracy is at chance a reliability of 0.
+            tags: [unit]
+            justification: |
+              A table that predicts its own held-out sentences at chance has weights that are the noise of a small
+              sample.
+            tests:
+              - WordSenseBuilder_BasicTrainer_Train_TableAtChance_HasNoReliability
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-CueReliabilityBetween
+            title: >-
+              The builder shall give a cue table whose held-out accuracy lies between chance and the target accuracy a
+              reliability in proportion to its skill over chance.
+            tags: [unit]
+            justification: |
+              A table that predicts somewhat well keeps part of its voice, so the damping is continuous.
+            tests:
+              - WordSenseBuilder_BasicTrainer_ReliabilityOf_ScalesTheSkillOverChance
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-CueReliabilityOff
+            title: >-
+              The builder shall leave every cue table fully reliable when the target accuracy is 0.
+            tags: [unit]
+            justification: |
+              The damping must be switchable, so that its effect can be measured.
+            tests:
+              - WordSenseBuilder_BasicTrainer_Train_DampingOff_LeavesTheTableFullyReliable
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-CueRunningReliability
+            title: >-
+              The builder shall lower the reliability of a cue table that turns more tokens of the training split of
+              the open corpus wrong than right.
+            tags: [unit]
+            justification: |
+              The anchors are a balanced corpus, so a measurement over them cannot see a table that is right on its
+              anchors and wrong on running text. The training split of the open corpus is training data with gold tags.
+            children:
+              - WordSense-WordSenseBuilder-TrainBasic-CueRunningMeasure
+              - WordSense-WordSenseBuilder-TrainBasic-CueRunningDeterministic
+              - WordSense-WordSenseBuilder-TrainBasic-CueRunningOff
+              - WordSense-WordSenseBuilder-TrainBasic-CueRunningFactor
+              - WordSense-WordSenseBuilder-TrainBasic-CueRunningCombine
+              - WordSense-WordSenseBuilder-TrainBasic-CueRunningUncovered
+            tests:
+              - WordSenseBuilder_CueRunningReliability_MeasureAsync_MisleadingCues_HurtAndAreDamped
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-CueRunningMeasure
+            title: >-
+              The builder shall count, for each cue table, the covered tokens of the training split that only the
+              tagging with the cue tables gets right (helped) and those that only the tagging without them gets right
+              (hurt).
+            tags: [unit]
+            justification: |
+              The comparison with and without the cues isolates the effect of the table on running text.
+            tests:
+              - WordSenseBuilder_CueRunningReliability_MeasureAsync_TruthfulCues_HelpAndDoNotHurt
+              - WordSenseBuilder_CueRunningReliability_MeasureAsync_MisleadingCues_HurtAndAreDamped
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-CueRunningDeterministic
+            title: >-
+              The builder shall count the same helped and hurt tokens for the same inputs.
+            tags: [unit]
+            justification: |
+              The table must be reproducible from the committed corpus.
+            tests:
+              - WordSenseBuilder_CueRunningReliability_MeasureAsync_IsDeterministic
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-CueRunningOff
+            title: >-
+              The builder shall measure nothing and leave the model unchanged when the hyper-parameters switch the
+              running-text measurement off.
+            tags: [unit]
+            justification: |
+              The measurement must be switchable, so that its effect can be measured.
+            tests:
+              - WordSenseBuilder_CueRunningReliability_ApplyAsync_WithoutFolds_ReturnsTheModel
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-CueRunningFactor
+            title: >-
+              The builder shall lower the reliability factor of a cue table as it hurts more tokens than it helps, and
+              by less the fewer tokens it covers.
+            tags: [unit]
+            justification: |
+              A table that helps at least as often as it hurts keeps its weight, and the evidence of a few tokens cannot
+              judge a table.
+            tests:
+              - WordSenseBuilder_CueRunningReliability_FactorOf_ShrinksTheNetBenefitTowardOne
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-CueRunningCombine
+            title: >-
+              The builder shall combine the factor of a cue table from running text with its reliability from the
+              anchors as the product or as the minimum, as the hyper-parameters choose.
+            tags: [unit]
+            justification: |
+              Both measurements say something about the table, and the choice of the combination is a setting that is
+              tuned on development data.
+            tests:
+              - WordSenseBuilder_CueRunningReliability_Combine_UsesTheProductOrTheMinimum
+              - WordSenseBuilder_CueRunningReliability_Apply_MeasuredTable_CombinesTheFactorWithTheAnchorReliability
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-CueRunningUncovered
+            title: >-
+              The builder shall leave a cue table that covers no training token at its reliability from the anchors.
+            tags: [unit]
+            justification: |
+              A table without running-text evidence must not be damped by a measurement that did not see it.
+            tests:
+              - WordSenseBuilder_CueRunningReliability_Apply_UnmeasuredTable_KeepsTheAnchorReliability
+
+          - id: WordSense-WordSenseBuilder-TrainBasic-CueReliabilityWritten
+            title: >-
+              The builder shall write the reliability of every cue table into the table of the basic model.
+            tags: [unit]
+            justification: |
+              The runtime scales the scores of a table by its reliability, so the table must carry it.
+            tests:
+              - WordSenseBuilder_BasicTablesWriter_Write_CarriesTheCueReliability
 
           - id: WordSense-WordSenseBuilder-TrainBasic-ClauseDeterministic
             title: >-
@@ -701,6 +919,13 @@ sections:
               - WordSense-WordSenseBuilder-TuneBasic-TenseWeight
               - WordSense-WordSenseBuilder-TuneBasic-ClauseSmoothing
               - WordSense-WordSenseBuilder-TuneBasic-TreebankDev
+              - WordSense-WordSenseBuilder-TuneBasic-Sections
+              - WordSense-WordSenseBuilder-TuneBasic-SectionsUnknown
+              - WordSense-WordSenseBuilder-TuneBasic-WordPrior
+              - WordSense-WordSenseBuilder-TuneBasic-WordPriorBaseline
+              - WordSense-WordSenseBuilder-TuneBasic-NounVerb
+              - WordSense-WordSenseBuilder-TuneBasic-ClosedOpen
+              - WordSense-WordSenseBuilder-TuneBasic-StartingVerbs
             tests:
               - WordSenseBuilder_BasicHyperparameters_Default_IsConsistent
               - WordSenseBuilder_BasicTuner_SplitAnchors_IsDeterministicAndDisjoint
@@ -717,6 +942,77 @@ sections:
               hyper-parameters.
             tests:
               - WordSenseBuilder_BasicHyperparameters_ClauseSmoothing_IsTuned
+
+          - id: WordSense-WordSenseBuilder-TuneBasic-Sections
+            title: >-
+              The builder shall let tune-basic run only the section of the grid, the tense weight, the word prior or the
+              cue reliability that the caller names.
+            tags: [unit]
+            justification: |
+              The sections differ in cost by an order of magnitude.
+            tests:
+              - WordSenseBuilder_Program_TuneBasic_SectionsPrior_RunsOnlyThePriorSection
+
+          - id: WordSense-WordSenseBuilder-TuneBasic-SectionsUnknown
+            title: >-
+              The builder shall refuse a section of tune-basic that it does not know.
+            tags: [unit]
+            justification: |
+              A misspelled section must not silently run nothing.
+            tests:
+              - WordSenseBuilder_BasicTuner_RunAsync_UnknownSection_Throws
+
+          - id: WordSense-WordSenseBuilder-TuneBasic-WordPrior
+            title: >-
+              The builder shall score the values of the word prior, the number of tabled words and the target accuracy
+              of the cue reliability on the development sets only.
+            tags: [unit]
+            justification: |
+              The prior, the table size and the damping are settings of the trained table, so they are chosen on data
+              that no reported figure is measured on.
+            tests:
+              - WordSenseBuilder_Program_TuneBasic_ScoresOnlyTheDevelopmentInputs
+
+          - id: WordSense-WordSenseBuilder-TuneBasic-WordPriorBaseline
+            title: >-
+              The builder shall include the settings without the word prior in the grid of the word prior as its
+              baseline.
+            tags: [unit]
+            justification: |
+              A variant of the prior is worth keeping only if it beats the table without the prior on the same data.
+            tests:
+              - WordSenseBuilder_BasicHyperparameters_PriorGrid_HasTheBaseline
+
+          - id: WordSense-WordSenseBuilder-TuneBasic-NounVerb
+            title: >-
+              The builder shall report the noun-verb accuracy of the classifier beside the accuracy of all and of the
+              ambiguous tokens.
+            tags: [unit]
+            justification: |
+              The noun-verb decision is the one that the word prior is meant to improve.
+            tests:
+              - WordSenseBuilder_TaggerEvaluator_EvaluateAsync_ScoresAnsweredWordTokens
+
+          - id: WordSense-WordSenseBuilder-TuneBasic-ClosedOpen
+            title: >-
+              The builder shall report the accuracy of the words that have both a closed-class and an open-class
+              analysis.
+            tags: [unit]
+            justification: |
+              A prior built from the open-class counts of WordNet could do harm to these words, so each variant must
+              show them.
+            tests:
+              - WordSenseBuilder_TaggerEvaluator_EvaluateAsync_CountsClosedAndOpenWords
+
+          - id: WordSense-WordSenseBuilder-TuneBasic-StartingVerbs
+            title: >-
+              The builder shall report the accuracy of the verbs that start a sentence before a determiner.
+            tags: [unit]
+            justification: |
+              A prior built from the open-class counts of WordNet could do harm to these verbs, so each variant must
+              show them.
+            tests:
+              - WordSenseBuilder_TaggerEvaluator_EvaluateAsync_CountsStartingVerbs
 
           - id: WordSense-WordSenseBuilder-TuneBasic-TreebankDev
             title: >-

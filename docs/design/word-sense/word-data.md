@@ -112,7 +112,8 @@ not a data column); the judgment itself is a review decision.
 
 `sense_frequency` holds the WordNet 3.0 tag count of every sense key, from the pinned `index.sense` file joined on the
 key, with the count 0 for a sense the file does not list and the source named (`wn30`). The counts size the training
-data of each sense and feed the usage prior of the encoder training; they do not order the senses in the image (that
+data of each sense, feed the usage prior of the encoder training, rank the senses of the Basic model and give its tagger
+the word prior; they do not order the senses in the image (that
 order is the one of Open English WordNet: the `position` of the sense in its entry, then the `homograph_no` of the
 entry, project senses last). A sense without a key has no row and counts as 0.
 

@@ -21,7 +21,7 @@ Hyponym-type relations are stored as their inverse (the one direction of the sch
 relations are stored once with the smaller identifier first. Text is cleaned (tab and line break to a space, NFC) and
 the number of cleaned cells is reported.
 
-Left out and documented in `data/PROVENANCE.md`: subcategorization, adjective position, syntactic behaviour, ILI
+Left out and documented in `data/PROVENANCE.md`: subcategorization, adjective position, syntactic behavior, ILI
 definitions and links, `dc:source` and `Form`.
 
 Sense frequency counts: the pinned WordNet 3.0 `index.sense` file has one line per sense key (`sense_key synset_offset

@@ -1296,15 +1296,15 @@ ensure; cancelling does not stop the shared ensure (see "Threads and cancellatio
 - **Technical noun compounds and imperative fragments are the weak spot of Basic's part of speech.** Technical text
   strings nouns together (`service call`, `spell check`, `dial travel`) and writes instructions without a determiner
   (`Wash pump`), and a word that is mostly a verb in running text (`call`, `check`, `travel`) leans to the verb. Basic
-  knows whether a clause already has a verb, which fixes many of these cases, but on the benchmark sets (the pattern
-  figures below were measured on the branch of the clause state, before the cue tables were retrained with the final
-  word image) a noun that
-  ends a compound after a modifier noun is still right only 93.0% of the time on the development sets (91.8% on the
-  test sets; 98% after an adjective or a determiner), the first noun of a compound 90.1% (91.7% on the test sets), and
-  the verb that starts a fragment before a noun without a determiner 73.9% (47.8% on the test sets; 23 sentences in each
-  set, so read it as a rough figure). An imperative verb before a determiner (`Run the report`) is right 96.0% of the
-  time on the development sets (25 tokens) and 100% on the test sets (20 tokens); counted with the gerunds and the
-  other verbs that start a sentence before a determiner it is 95.3% (97.3% on the test sets). The `Confidence` of such
+  knows whether a clause already has a verb and has a part-of-speech prior for every word (see "Accuracy of the Basic
+  Model"), which fix many of these cases, but on the benchmark sets (the open corpus and the treebank pooled, possessives
+  split) a noun that
+  ends a compound after a modifier noun is still right only 92.9% of the time on the development sets (91.1% on the
+  test sets; 98% after an adjective or a determiner), the first noun of a compound 89.4% (91.0% on the test sets), and
+  the verb that starts a fragment before a noun without a determiner 82.6% (56.5% on the test sets; 23 sentences in each
+  set, so read it as a rough figure). A verb that starts a sentence before
+  a determiner (`Run the report`) is right 93.0% of the time on the development sets (43 tokens) and 91.9% on the test
+  sets (37 tokens). The `Confidence` of such
   an answer is often low (0.5 to 0.6) but can also be high and
   wrong; the encoder models answer the words they are trained on from their own evidence. Use the confidence and the
   `Analyses` list (the alternatives and their probabilities) before you act on the part of speech of a technical term.
@@ -1349,7 +1349,8 @@ filtered list is committed, in `corpus/lexicon/`, with its source, checksum and 
 The word data under `data/` is imported from Open English WordNet 2025 (<https://en-word.net>), which is licensed
 under CC BY 4.0; that data keeps the license and is credited here as the license requires. Its source file, pinned
 SHA-256 and what was left out are recorded in `data/PROVENANCE.md`. The sense frequency counts that size the training data
-of each sense and feed the usage prior of the encoder weights come from the WordNet 3.0 sense index (Princeton University,
+of each sense, feed the usage prior of the encoder weights, rank the senses of the Basic model and give its tagger the word
+prior come from the WordNet 3.0 sense index (Princeton University,
 under the
 WordNet license, whose notice is reproduced in `data/PROVENANCE.md`); the senses of a lemma are ordered as Open English
 WordNet orders them. SemCor 3.0 (the sense-annotated Brown Corpus
@@ -1396,7 +1397,7 @@ written sentences in `tools/quota-fill/README.md`. All commands run from the rep
 | `tiers` | Reports the quota of anchor and holdout sentences of each sense of the trained lemmas, the senses that fall short and the sentences that are missing |
 | `weights <modelId>` | Trains the fine-sense weights and the per-lemma thresholds of an encoder model (`minilm` or `bert-base-cased`) |
 | `evaluate <modelId>` | Measures a model (`minilm`, `bert-base-cased` or `basic`) on holdout and real text, at each answer level |
-| `evaluate-senses [--model all] [--download]` | Measures the models on SemCor 3.0 (from the git-ignored cache, or downloaded after verifying its SHA-256; never committed): the trained lemmas, and all mapped words of a trained lemma or of an untrained lemma with two or more senses, with a tag-count baseline (circular on SemCor, as is the usage prior of the models) |
+| `evaluate-senses [--model all] [--download]` | Measures the models on SemCor 3.0 (from the git-ignored cache, or downloaded after verifying its SHA-256; never committed): the trained lemmas, and all mapped words of a trained lemma or of an untrained lemma with two or more senses, with a tag-count baseline (circular on SemCor, as are the usage prior of the models and the word prior of the tagger) |
 | `evaluate-allwords [--model all]` | Measures the models on the independent all-words gold set (`corpus/allwords`): the fine top-1 of the usage ranking on untrained polysemous lemmas, with the first-sense, tag-count and random baselines and the smoothing sweep of the development half |
 | `allwords-sample --batches DIR`, `allwords-merge --batches DIR --first A --second B` | Draw the tokens of the gold set and write the blind labeling batches, and merge the answers of two labelers into the gold files |
 | `evaluate-running [--model all] [--gold FILE] [--report all\|running\|tense]` | Measures the part-of-speech accuracy of the models on the open corpus test split, the convention-mapped treebank test file and the challenge set, and the tense of the verbs whose past and non-past share a spelling (`put`, `cut`, `read`) on the open corpus and the treebank files |
@@ -1404,7 +1405,7 @@ written sentences in `tools/quota-fill/README.md`. All commands run from the rep
 | `check-leakage` | Checks that no sentence is shared by a training part and an evaluation part, by two evaluation parts, or by the corpus and an Open English WordNet example |
 | `open-counts` | Counts the tag statistics of the training split of the open part-of-speech corpus into `corpus/open/counts` |
 | `train-basic` | Retrains the whole Basic model from those counts and the anchors, and writes its table (`Resources/basic.bin`) |
-| `tune-basic` | Compares hyperparameter variants of Basic, and the weight of its tense model, on the development data only; writes nothing |
+| `tune-basic [--sections all\|grid\|tense\|prior\|cue]` | Compares hyperparameter variants of Basic, the weight of its tense model, its word prior and its cue reliability on the development data only; `--sections` runs one section; writes nothing |
 | `evaluate-tagger [--gold FILE]` | Measures the part-of-speech accuracy of Basic on the open corpus test split (headline), the targeted challenge set and an optional gold file |
 | `appendix` | Regenerates the generated senses appendix of this guide |
 

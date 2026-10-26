@@ -111,16 +111,16 @@ bow       Noun         PartOfSpeech 1.00                 Verb 0.00
 at        Preposition  Sense        1.00  at#preposition Noun 0.00
 a         Determiner   Sense        1.00  a#determiner
 deer      Noun         Sense        1.00  deer#noun
-so        Conjunction  Sense        0.70  so#conjunction Adverb 0.29
+so        Adverb       PartOfSpeech 0.51                 Conjunction 0.48
 we        Pronoun      Sense        1.00  we#pronoun
 will      Auxiliary    Sense        1.00  will#auxiliary Noun 0.00
 record    Verb         PartOfSpeech 1.00                 Noun 0.00
 a         Determiner   Sense        1.00  a#determiner
 record    Noun         PartOfSpeech 1.00                 Verb 0.00
-then      Adverb       PartOfSpeech 0.99                 Noun 0.01
+then      Adverb       PartOfSpeech 1.00                 Noun 0.00
 go        Verb         PartOfSpeech 1.00                 Noun 0.00
-back      Adverb       PartOfSpeech 0.95                 Noun 0.02
-home      Noun         PartOfSpeech 0.64                 Adverb 0.31
+back      Adverb       PartOfSpeech 0.99                 Noun 0.01
+home      Adverb       PartOfSpeech 0.51                 Noun 0.48
 ```
 
 Output with the `MiniLM` model:
@@ -134,20 +134,20 @@ an        Determiner   Sense        1.00  an#determiner
 arrow     Noun         PartOfSpeech 1.00
 from      Preposition  Sense        1.00  from#preposition
 his       Determiner   Sense        1.00  his#determiner
-bow       Noun         PartOfSpeech 0.99                 Verb 0.01
+bow       Noun         PartOfSpeech 1.00                 Verb 0.00
 at        Preposition  Sense        1.00  at#preposition Noun 0.00
 a         Determiner   Sense        1.00  a#determiner
 deer      Noun         Sense        1.00  deer#noun
-so        Conjunction  Sense        0.70  so#conjunction Adverb 0.29
+so        Adverb       PartOfSpeech 0.51                 Conjunction 0.48
 we        Pronoun      Sense        1.00  we#pronoun
 will      Auxiliary    Sense        1.00  will#auxiliary Noun 0.00
-record    Verb         PartOfSpeech 0.94                 Noun 0.06
+record    Verb         PartOfSpeech 1.00                 Noun 0.00
 a         Determiner   Sense        1.00  a#determiner
-record    Noun         PartOfSpeech 0.96                 Verb 0.04
-then      Adverb       PartOfSpeech 0.99                 Noun 0.01
-go        Verb         PartOfSpeech 0.99                 Noun 0.01
-back      Adverb       Group        1.00  back#group:return Noun 0.00
-home      Noun         PartOfSpeech 0.63                 Adverb 0.36
+record    Noun         PartOfSpeech 0.99                 Verb 0.01
+then      Adverb       PartOfSpeech 1.00                 Noun 0.00
+go        Verb         PartOfSpeech 1.00                 Noun 0.00
+back      Adverb       Sense        1.00  back#to-former-place Noun 0.00
+home      Noun         PartOfSpeech 0.53                 Adverb 0.46
 ```
 
 Output with the `BertBaseCased` model:
@@ -161,20 +161,20 @@ an        Determiner   Sense        1.00  an#determiner
 arrow     Noun         PartOfSpeech 1.00
 from      Preposition  Sense        1.00  from#preposition
 his       Determiner   Sense        1.00  his#determiner
-bow       Noun         Sense        1.00  bow#archery-bow Verb 0.00
+bow       Noun         PartOfSpeech 1.00                 Verb 0.00
 at        Preposition  Sense        1.00  at#preposition Noun 0.00
 a         Determiner   Sense        1.00  a#determiner
 deer      Noun         Sense        1.00  deer#noun
-so        Conjunction  Sense        0.70  so#conjunction Adverb 0.29
+so        Adverb       PartOfSpeech 0.51                 Conjunction 0.48
 we        Pronoun      Sense        1.00  we#pronoun
 will      Auxiliary    Sense        1.00  will#auxiliary Noun 0.00
 record    Verb         PartOfSpeech 0.98                 Noun 0.02
 a         Determiner   Sense        1.00  a#determiner
 record    Noun         PartOfSpeech 0.91                 Verb 0.09
-then      Adverb       PartOfSpeech 0.99                 Noun 0.01
+then      Adverb       PartOfSpeech 1.00                 Noun 0.00
 go        Verb         PartOfSpeech 1.00                 Noun 0.00
 back      Adverb       Sense        1.00  back#to-former-place Noun 0.00
-home      Adverb       PartOfSpeech 0.80                 Noun 0.11
+home      Adverb       PartOfSpeech 0.79                 Noun 0.13
 ```
 
 The words `bow`, `record`, `go`, `back` and `home` are trained by the encoder models in this version (the senses
@@ -182,12 +182,12 @@ appendix lists them), while `Basic` answers every word at the part-of-speech lev
 sense level). The `Level` of an answer says how precisely the model answers. `Sense` is a fine sense
 (`back#to-former-place`,
 with its id and sense key in the catalog, and also for a word whose lemma and part of speech have only one sense, such
-as `the`), `Group` is a group of closely related senses (`GroupId`; MiniLM answers `back` at that level,
-`back#group:return`, and BertBaseCased at the sense level),
+as `the`), `Group` is a group of closely related senses (`GroupId`, for example `back#group:return`; a model answers
+`back` at that level on some CPUs),
 and `PartOfSpeech` is the analysis only: the model could not tell the senses apart with the precision its thresholds ask
 for (the thresholds are calibrated on real text, so the encoder models answer most ambiguous words at this level: MiniLM
-answers `bow`, `record`, `go` and `home` at that level and BertBaseCased `record`, `go` and `home`, and BertBaseCased
-answers `bow` and `back` at the sense level, `bow#archery-bow` and `back#to-former-place`), and the
+and BertBaseCased answer `bow`, `record`, `go` and `home` at that level, and both answer `back` at the sense level,
+`back#to-former-place`), and the
 ranked
 senses of each analysis in `Analyses` still show how the
 evidence spreads. `Analyses` lists every possible analysis (lemma, part of speech and features) with its probability,
@@ -267,15 +267,15 @@ embedded resource is damaged) and `DownloadConfigurationException` (an invalid m
 <!-- model-table:begin -->
 | Model | Real-text sense (share @ precision) | Running-text part of speech (open corpus test) | UD-EWT test part of speech (convention-mapped) | Independent sense evaluation (SemCor) | STE challenge set (part of speech) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Basic | 4.01% @ 75.00% | 93.88% (ambiguous 91.54%) | 91.72% (ambiguous 88.74%) | 3.28% @ 68.47% (top-1 55.80%) | 98.65% (ambiguous 97.83%) | none | 219 KiB | 4 MiB | 0.11 ms | 34 ms + 58 ms | no |
-| MiniLM | 7.97% @ 96.34% | 94.05% (ambiguous 91.82%) | 92.15% (ambiguous 89.39%) | 8.34% @ 88.64% (top-1 58.57%) | 98.65% (ambiguous 97.83%) | 22 MiB | 5,225 KiB | 98 MiB | 1.52 ms | 443 ms + 60 ms | yes |
-| BERT base cased | 27.16% @ 94.47% | 94.09% (ambiguous 91.89%) | 92.12% (ambiguous 89.35%) | 26.89% @ 86.61% (top-1 64.98%) | 98.20% (ambiguous 97.10%) | 104 MiB | 10,203 KiB | 221 MiB | 8.08 ms | 684 ms + 56 ms | yes |
+| Basic | 3.75% @ 78.89% | 94.53% (ambiguous 92.64%) | 92.28% (ambiguous 89.61%) | 3.00% @ 73.84% (top-1 56.37%) | 98.65% (ambiguous 97.83%) | none | 237 KiB | 4 MiB | 0.11 ms | 34 ms + 58 ms | no |
+| MiniLM | 7.93% @ 96.32% | 94.62% (ambiguous 92.79%) | 92.66% (ambiguous 90.19%) | 8.31% @ 89.01% (top-1 58.67%) | 98.65% (ambiguous 97.83%) | 22 MiB | 5,225 KiB | 98 MiB | 1.52 ms | 443 ms + 60 ms | yes |
+| BERT base cased | 27.12% @ 94.46% | 94.67% (ambiguous 92.86%) | 92.62% (ambiguous 90.13%) | 26.85% @ 86.70% (top-1 64.99%) | 98.20% (ambiguous 97.10%) | 104 MiB | 10,203 KiB | 221 MiB | 8.08 ms | 684 ms + 56 ms | yes |
 <!-- model-table:end -->
 
 <!-- markdownlint-enable MD013 -->
 
 **Which model?** The part of speech is the dependable part of an answer, and it is the same quality in all three models
-(93.9 to 94.1% of the tokens of running text, the open corpus test split), so choose by what else you need:
+(94.5 to 94.7% of the tokens of running text, the open corpus test split), so choose by what else you need:
 
 - ⚡ **Basic** (core package, no download, 0.11 ms a sentence): the part of speech of every word, the tense of a verb
   whose past and non-past share a spelling (`put`, `cut`, `read`: "I will read that tomorrow" against "I have read that
@@ -284,13 +284,13 @@ embedded resource is damaged) and `DownloadConfigurationException` (an invalid m
   rate of the lemma, never an answer). Use it when the part of speech is all you need, and as the fallback of the
   other two.
 - 🎯 **BertBaseCased** (104 MiB download, about 8 ms a sentence): the model for **fine senses**. For the 856 trained
-  lemmas it commits to a fine sense on 27.2% of the real test sentences (26.9% of the SemCor words, the SemCor subset of
+  lemmas it commits to a fine sense on 27.1% of the real test sentences (26.9% of the SemCor words, the SemCor subset of
   825 of those lemmas) and is right in 94.5%
-  (86.6% on SemCor) of those answers; its most probable sense is right for 65.0% of the SemCor words, a little more
+  (86.7% on SemCor) of those answers; its most probable sense is right for 65.0% of the SemCor words, a little more
   often than always choosing the first sense in Open English WordNet order (60.7%, an optimistic baseline: see the SemCor
   caveat in [Accuracy and Model Choice](docs/user_guide/accuracy.md)).
 - ⚖️ **MiniLM** (22 MiB download, about 1.5 ms a sentence): mostly part of speech and groups. It commits to a fine
-  sense on 8.0% of the real test sentences (96.3% right) and its most probable sense is right for 58.6% of the
+  sense on 7.9% of the real test sentences (96.3% right) and its most probable sense is right for 58.7% of the
   SemCor words, below the first-sense baseline; choose it for the small download and the speed, not for senses.
 
 **What the columns measure.**
@@ -314,16 +314,16 @@ embedded resource is damaged) and `DownloadConfigurationException` (an invalid m
   probable sense is right. For comparison, always choosing the first (most frequent) sense of the right lemma and part of
   speech is right for 60.7% of these words; that baseline is optimistic because the order of the senses comes from
   WordNet counts that include SemCor itself. On all 184,323 mapped SemCor words of a trained lemma or of an untrained
-  lemma with two or more senses (17.1% of them are of a trained lemma), the fine top-1 is 59.7% for BertBaseCased,
-  58.6% for MiniLM and 58.2% for
+  lemma with two or more senses (17.1% of them are of a trained lemma), the fine top-1 is 60.4% for BertBaseCased,
+  59.3% for MiniLM and 59.0% for
   Basic, against 69.7% for the tag-count first sense (an optimistic baseline for the same reason): the models rank the
   senses of the lemmas they were not trained for by the usage prior (the WordNet 3.0 tag counts, which include SemCor, so
-  that figure is circular on SemCor: it was 4.1% on those words before the models ranked them; see
+  that figure, and every SemCor figure for the word prior of the tagger, which reads the same counts, is circular on
+  SemCor; see
   [Accuracy and Model Choice][link-accuracy]). The independent measurement of the usage prior is the *all-words gold
   set*: 397 tokens of untrained polysemous lemmas from the test split of the open corpus, labeled blind by two language
-  models (91.7% agreement), where the fine top-1 of the usage ranking is 65.0% for all three models (0% before, 68.5%
-  for the
-  first sense told the right lemma and part of speech; the share of sense answers and their precision did not change).
+  models (91.7% agreement), where the fine top-1 of the usage ranking is 65.5% for all three models, against 68.5% for
+  the first sense told the right lemma and part of speech.
 - *STE challenge set*: the 32 hard sentences of simplified technical English of the open corpus, scored like the running
   text; it is small and chosen for its hard cases, so read it as a regression check and not as accuracy.
 
@@ -332,7 +332,7 @@ test sentences and MiniLM 96.3% (the lemma-level target 0.97 is reached for Bert
 thresholds then keep a share of the calibration
 answers and the builder reports the target as not reached; see
 [Accuracy and Model Choice][link-accuracy]), and on
-SemCor, which is very unlike the training sentences, the answers are right in 86.6% (BERT) and 88.6% (MiniLM) of the
+SemCor, which is very unlike the training sentences, the answers are right in 86.7% (BERT) and 89.0% (MiniLM) of the
 cases, and the encoder models commit to a fine sense for a minority of the words (26.9% and 8.3% of the SemCor
 words). The probabilities of the fine senses
 are corrected to the usage of the senses (WordNet 3.0 counts);
@@ -340,7 +340,7 @@ when this correction was introduced it raised the fine top-1 on SemCor from 56.9
 53.6% (MiniLM) and lowered it slightly
 on the real test sentences, which are balanced by sense (see [Accuracy and Model Choice][link-accuracy]). The sense
 choice of the encoders is not yet clearly better than the first-sense baseline for the words they cover (BERT 65.0%,
-MiniLM 58.6%); the part of speech is the
+MiniLM 58.7%); the part of speech is the
 dependable part of an answer today. The RAM, latency and first-use columns were measured on one idle development
 machine (an Intel Core i7-13850HX laptop, Windows 11, .NET 10; the conditions and the spread of repeated runs are in
 [Accuracy and Model Choice][link-accuracy]), so they are machine dependent: read them as the order of magnitude and the
@@ -349,8 +349,8 @@ encoder answers on the real test sentences (the sets that `evaluate` reports are
 
 | Model | Sense (share, precision) | Group (share, precision) | Part of speech (share, precision) | Fine top-1 |
 | --- | ---: | ---: | ---: | ---: |
-| MiniLM | 8.0%, 96.3% | 1.2%, 96.4% | 90.9%, 96.5% | 62.4% |
-| BERT base cased | 27.2%, 94.5% | 0.8%, 88.9% | 72.1%, 97.4% | 72.3% |
+| MiniLM | 7.9%, 96.3% | 1.2%, 96.4% | 90.9%, 96.6% | 62.5% |
+| BERT base cased | 27.1%, 94.5% | 0.8%, 88.9% | 72.1%, 97.3% | 72.2% |
 
 The table is generated into [docs/user_guide/model-table.md][link-model-table]; the user guide chapter
 [Accuracy and Model Choice][link-accuracy] explains how the numbers were measured and how to read them. A reviewed suite
@@ -366,8 +366,8 @@ This version is a foundation, and these follow-ups are planned (the figures are 
   Tatoeba CC BY rows were removed from the corpus: at
   present 6,198 of the 7,035 senses of the trained lemmas meet their quota, 748 are short and 89 have no sentence at
   all (3,174 anchors and 791 held-out sentences are missing, see `WordSense.Builder tiers`).
-- **More fine senses on real text at the 0.97 target for MiniLM.** MiniLM answers 8.0% of the real
-  test sentences at the sense level (BertBaseCased 27.2%); more and better-balanced data, and tuning the
+- **More fine senses on real text at the 0.97 target for MiniLM.** MiniLM answers 7.9% of the real
+  test sentences at the sense level (BertBaseCased 27.1%); more and better-balanced data, and tuning the
   calibration (for example per domain), should raise both.
 - **A second check of the annotations.** Cross-check the open corpus with the second annotator `gemma4` (36% of its tokens
   are still `unchecked`, about 4,500 sentences) and take a human-reviewed gold sample of the open corpus. (The real-text
@@ -464,8 +464,9 @@ Package licenses:
 - **WordNet 3.0** (Princeton University, <https://wordnet.princeton.edu>): the sense frequency counts of the word data
   (`data/sense_frequency`, from the WordNet 3.0 sense index `index.sense`) are used under the WordNet license: WordNet 3.0
   Copyright 2006 by Princeton University, all rights reserved; the full notice is in `data/PROVENANCE.md`. They are
-  used for the usage prior that corrects the scores of the encoder weights and for the usage prior that the Basic model
-  ranks the senses of the lemmas no model scores by (the counts are embedded in the word image of the core package; the
+  used for the usage prior that corrects the scores of the encoder weights, for the usage prior that the Basic model
+  ranks the senses of the lemmas no model scores by and, summed over the lemmas of a spelling, for the word prior of the
+  Basic part-of-speech tagger (the counts are embedded in the word image of the core package; the
   order of the senses in the word image is the order of Open English WordNet), so the `NOTICE.md` of the core package and
   of the MiniLM and BertBaseCased packages reproduces the notice.
 - **SemCor 3.0** (the sense-annotated Brown Corpus text of the WordNet project): an evaluation source only. It is

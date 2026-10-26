@@ -16,7 +16,8 @@ table is bound to the word image by the hash of the analysis inventory.
   (noun to auxiliary) have the numeric values of `PartOfSpeech`; infinitive marker, punctuation and other have no part of
   speech. Open classes are noun, verb, adjective and adverb.
 - `BasicTables`: the header values `Gamma`, `Beta`, `Lambda1` to `Lambda3`, `HmmWeight`, `InvTemperature`,
-  `TenseWeight` and `ClauseSmoothing`; the
+  `TenseWeight`, `ClauseSmoothing` and the four numbers of the word prior (`PriorShare`, `PriorSmoothing`,
+  `PriorSenses` and `PriorExponent`); the
   unigram, bigram and trigram counts and the clause bigram and trigram counts (`ClauseBigrams`, `ClauseTrigrams`: the
   counts of the positions whose clause already has a verb, never above the totals; the counts of the other positions are
   the difference); the derived `Transition` (interpolated trigram, bigram and unigram probabilities,
@@ -35,6 +36,15 @@ table is bound to the word image by the hash of the analysis inventory.
   odds of a past verb against a non-past one in the training text, in eighths of a nat), the ascending feature hashes
   and one signed byte weight per hash (the log likelihood ratio of past against non-past), all read-only views like the
   cue tables. It is trained on all verbs, so it has no analyses and is not tied to the inventory.
+- The word prior is not stored in the table. Its four numbers are in the header and its evidence, the WordNet 3.0 tag
+  counts and the senses of the lemma and part of speech of every analysis of a word, is in the word image that the
+  table is bound to (`WordImage.UsageTotalsOf`, read by `WordSupport`, see the `PosTagger` design). Computing it at run
+  time instead of tabling it keeps `basic.bin` small (a table of the prior of all 28,000 ambiguous spellings would add
+  well over 100 KB), cannot disagree with the image, and follows an image rebuild without a retraining.
+- Each `LemmaCue` has a reliability, one byte (`ReliabilityByte`, 0 to 255; `Reliability` is the byte over 255): the
+  factor on the cue scores of the table in the fused score of an analysis. The builder measures how well a table predicts
+  held-out sentences of its own anchors and damps the tables that predict them near or below chance (see the builder
+  design, "Cue reliability"); a table that is fully reliable stores 255 and counts at full strength.
 - The analysis inventory hash: a 32-byte hash that is the inventory hash of the word image (its spelling, analysis,
   feature, entry, sense, group and lemma-block sections). It identifies the inventory the cue columns were trained
   against: `basic.bin` names its analyses, so it is rebuilt whenever the inventory changes, and a table that carries
@@ -44,17 +54,20 @@ table is bound to the word image by the hash of the analysis inventory.
   `RW:` for the left and right window and `NA:` for the governing function word) folded by xor-ing the upper half
   into the lower half. The builder uses the same hash, so training and inference cannot diverge.
 - The table format (Brotli, then little-endian; integers are 7-bit varints, strings are a varint byte length and
-  UTF-8): the four-byte magic `WSB5` that names the format and its revision (`WSB3`, without the tense weight and the
-  tense table, and `WSB4`, without the clause counts and the clause smoothing, are refused); the 32-byte analysis
+  UTF-8): the four-byte magic `WSB6` that names the format and its revision (`WSB3`, without the tense weight and the
+  tense table, `WSB4`, without the clause counts and the clause smoothing, and `WSB5`, without the word prior and the
+  reliability of the cue tables, are refused); the 32-byte analysis
   inventory hash;
-  nine doubles
-  (gamma, beta, lambda 1 to 3, tagger weight, inverse temperature, tense weight, clause smoothing); the tag count (13);
+  thirteen doubles
+  (gamma, beta, lambda 1 to 3, tagger weight, inverse temperature, tense weight, clause smoothing, prior share, prior
+  smoothing, prior sense weight, prior exponent); the tag count (13);
   the unigram (14),
   bigram
   (14 x 14) and trigram (14 x 14 x 14) counts, followed by the clause bigram (14 x 14) and clause trigram (14 x 14 x 14)
   counts; the word count and per word the word, a flags byte (bit 0: closed
   class), a 16-bit closed-class mask when closed, a 16-bit presence mask and one count per set bit; the suffix count and
   per suffix the suffix and four counts (noun, verb, adjective, adverb); the lemma count and per lemma the lemma, the
+  reliability byte, the
   analyses (lemma string, part of speech byte, features string, signed prior byte), the delta-coded ascending feature
   hashes and one signed byte weight per feature and analysis; and the tense section, a flag byte (0: none, 1: a table
   follows) and the signed prior byte, the delta-coded ascending feature hashes (at least one) and one signed byte weight
@@ -66,7 +79,9 @@ table is bound to the word image by the hash of the analysis inventory.
 - `Load(blob)`: decompresses and reads a table, validates it and derives the transition table. The blob must be exactly
   one complete Brotli stream (the decoder reports how many input bytes it consumed, and bytes after the end of the
   stream are rejected). It checks the magic, the
-  analysis inventory hash against the word image, the hyper-parameters (finite and in range), the tag count, that the
+  analysis inventory hash against the word image, the hyper-parameters (finite and in range; the prior share between 0
+  and 1, the prior exponent above 0 and up to 16, and for a share above 0 a positive slot smoothing or sense weight),
+  the tag count, that the
   clause counts do not exceed the total counts, that
   words, suffixes and lemmas are strictly ascending, the flags and masks, positive word counts, the analysis counts and
   parts of speech, that every analysis exists in the inventory and occurs once in its lemma table, strictly ascending
@@ -101,7 +116,8 @@ table is bound to the word image by the hash of the analysis inventory.
 #### Error Handling
 
 `BasicTables.Load` throws `InvalidDataException` for a data that is not Brotli, a wrong
-magic or format revision (including the retired `WSB3` and `WSB4`), a table built for another analysis inventory (the message
+magic or format revision (including the retired `WSB3`, `WSB4` and `WSB5`), a table built for another analysis inventory
+(the message
 names both hashes), an unknown or
 duplicate analysis, invalid hyper-parameters, a different tag count, unordered words, suffixes, lemmas or feature
 hashes, invalid flags, masks, analysis counts or parts of speech, oversized numbers, a truncated blob, bytes after the

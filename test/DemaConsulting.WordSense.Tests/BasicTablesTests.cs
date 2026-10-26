@@ -107,7 +107,7 @@ public class BasicTablesTests
     private static byte[] WithClauseCountAboveTotal(bool trigram)
     {
         var raw = TestTables.Decompress(TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], sentences: [[PosTag.Noun]], clauseSmoothing: 0));
-        var header = 4 + 32 + (9 * 8) + 1;
+        var header = 4 + 32 + (13 * 8) + 1;
         var counts = PosTag.Extended + (PosTag.Extended * PosTag.Extended) + (PosTag.Extended * PosTag.Extended * PosTag.Extended);
         var offset = header + counts + (trigram ? PosTag.Extended * PosTag.Extended : 0);
 
@@ -391,7 +391,7 @@ public class BasicTablesTests
         var version = TestTables.Decompress(TestTables.Default());
         version[3] = (byte)'2';
         var tags = TestTables.Decompress(TestTables.Default());
-        const int tagCountOffset = 4 + 32 + (9 * 8);
+        const int tagCountOffset = 4 + 32 + (13 * 8);
         Assert.Equal(PosTag.Count, tags[tagCountOffset]);
         tags[tagCountOffset]++;
 
@@ -409,13 +409,13 @@ public class BasicTablesTests
     {
         // Arrange: a current table whose magic is changed back to the revision before the tense model
         var raw = TestTables.Decompress(TestTables.Default());
-        Assert.Equal((byte)'5', raw[3]);
+        Assert.Equal((byte)'6', raw[3]);
         raw[3] = (byte)'3';
 
-        // Act
+        // Act: load the table whose magic is WSB3
         var error = Assert.Throws<InvalidDataException>(() => TestTables.Load(TestTables.Compress(raw)));
 
-        // Assert
+        // Assert: the load names an unknown format
         Assert.Contains("unknown format", error.Message, StringComparison.Ordinal);
     }
 
@@ -429,14 +429,224 @@ public class BasicTablesTests
     {
         // Arrange: a current table whose magic is changed back to the revision before the clause state
         var raw = TestTables.Decompress(TestTables.Default());
-        Assert.Equal((byte)'5', raw[3]);
+        Assert.Equal((byte)'6', raw[3]);
         raw[3] = (byte)'4';
 
-        // Act
+        // Act: load the table whose magic is WSB4
         var error = Assert.Throws<InvalidDataException>(() => TestTables.Load(TestTables.Compress(raw)));
 
-        // Assert
+        // Assert: the load names an unknown format
         Assert.Contains("unknown format", error.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The previous format <c>WSB5</c>, which has no word prior and no reliability of the cue tables, is rejected as an
+    ///     unknown format whatever else it holds, so a table that was trained before the word prior is never read as a current
+    ///     one (its header is shorter, so reading it as a current table would shift every later value).
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_PreviousFormatWsb5_ThrowsUnknownFormat()
+    {
+        // Arrange: a current table whose magic is changed back to the revision before the word prior
+        var raw = TestTables.Decompress(TestTables.Default());
+        Assert.Equal((byte)'6', raw[3]);
+        raw[3] = (byte)'5';
+
+        // Act: load the table whose magic is WSB5
+        var error = Assert.Throws<InvalidDataException>(() => TestTables.Load(TestTables.Compress(raw)));
+
+        // Assert: the load names an unknown format
+        Assert.Contains("unknown format", error.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The share of the word prior reads back from the header.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_PriorShare_ReadBack()
+    {
+        // Arrange: a table whose header has a prior share of 0.35
+        var blob = TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], priorShare: 0.35);
+
+        // Act: load the table
+        var tables = TestTables.Load(blob);
+
+        // Assert: the share is the one in the header
+        Assert.Equal(0.35, tables.PriorShare);
+    }
+
+    /// <summary>
+    ///     The smoothing of each slot of the word prior reads back from the header.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_PriorSmoothing_ReadBack()
+    {
+        // Arrange: a table whose header has a prior smoothing of 0.25
+        var blob = TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], priorSmoothing: 0.25);
+
+        // Act: load the table
+        var tables = TestTables.Load(blob);
+
+        // Assert: the smoothing is the one in the header
+        Assert.Equal(0.25, tables.PriorSmoothing);
+    }
+
+    /// <summary>
+    ///     The weight of each sense of the word prior reads back from the header.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_PriorSenses_ReadBack()
+    {
+        // Arrange: a table whose header has a sense weight of 0.75
+        var blob = TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], priorSenses: 0.75);
+
+        // Act: load the table
+        var tables = TestTables.Load(blob);
+
+        // Assert: the sense weight is the one in the header
+        Assert.Equal(0.75, tables.PriorSenses);
+    }
+
+    /// <summary>
+    ///     The exponent of the word prior reads back from the header.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_PriorExponent_ReadBack()
+    {
+        // Arrange: a table whose header has a prior exponent of 0.5
+        var blob = TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], priorExponent: 0.5);
+
+        // Act: load the table
+        var tables = TestTables.Load(blob);
+
+        // Assert: the exponent is the one in the header
+        Assert.Equal(0.5, tables.PriorExponent);
+    }
+
+    /// <summary>
+    ///     The reliability of a cue table reads back from the cue section as a factor from 0 to 1.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_CueReliability_ReadBack()
+    {
+        // Arrange: a table whose cue table has the reliability byte 51
+        var blob = TestTables.Build(
+            [("record", 0, new int[PosTag.Count])],
+            [],
+            [("read", TestTables.ReadColumns(), TestTables.CueHashes(), TestTables.CueWeights())],
+            reliability: 51);
+
+        // Act: load the table
+        var tables = TestTables.Load(blob);
+
+        // Assert: the byte and its factor, 51 over 255
+        Assert.Equal((byte)51, tables.Cues["read"].ReliabilityByte);
+        Assert.Equal(0.2, tables.Cues["read"].Reliability, 9);
+    }
+
+    /// <summary>
+    ///     A table whose word prior share is outside 0 to 1 is rejected.
+    /// </summary>
+    /// <param name="share">The share.</param>
+    [Theory]
+    [InlineData(-0.1)]
+    [InlineData(1.5)]
+    public void BasicTables_Load_PriorShareOutOfRange_Throws(double share)
+    {
+        // Arrange: a table whose header carries the share
+        var blob = TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], priorShare: share, priorSmoothing: 0.5);
+
+        // Act: load the table
+        var error = Assert.Throws<InvalidDataException>(() => TestTables.Load(blob));
+
+        // Assert: the load names the invalid hyper-parameters
+        Assert.Contains("invalid hyper-parameters", error.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A table whose word prior has a negative smoothing is rejected.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_PriorSmoothingNegative_Throws()
+    {
+        // Arrange: a table whose header carries a negative smoothing
+        var blob = TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], priorShare: 1.0, priorSmoothing: -0.5);
+
+        // Act: load the table
+        var error = Assert.Throws<InvalidDataException>(() => TestTables.Load(blob));
+
+        // Assert: the load names the invalid hyper-parameters
+        Assert.Contains("invalid hyper-parameters", error.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A table whose word prior has a negative sense weight is rejected.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_PriorSensesNegative_Throws()
+    {
+        // Arrange: a table whose header carries a negative sense weight
+        var blob = TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], priorShare: 1.0, priorSmoothing: 0.5, priorSenses: -1.0);
+
+        // Act: load the table
+        var error = Assert.Throws<InvalidDataException>(() => TestTables.Load(blob));
+
+        // Assert: the load names the invalid hyper-parameters
+        Assert.Contains("invalid hyper-parameters", error.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A table whose word prior exponent is not positive or is above 16 is rejected.
+    /// </summary>
+    /// <param name="exponent">The exponent.</param>
+    [Theory]
+    [InlineData(0.0)]
+    [InlineData(-1.0)]
+    [InlineData(17.0)]
+    [InlineData(1e6)]
+    public void BasicTables_Load_PriorExponentOutOfRange_Throws(double exponent)
+    {
+        // Arrange: a table whose header carries the exponent
+        var blob = TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], priorShare: 1.0, priorSmoothing: 0.5, priorExponent: exponent);
+
+        // Act: load the table
+        var error = Assert.Throws<InvalidDataException>(() => TestTables.Load(blob));
+
+        // Assert: the load names the invalid hyper-parameters
+        Assert.Contains("invalid hyper-parameters", error.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A table whose word prior is on but whose slot smoothing and sense weight are both zero is rejected, because a part
+    ///     of speech could weigh 0.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_PriorOnWithoutWeight_Throws()
+    {
+        // Arrange: a table whose prior is on with a smoothing of 0 and a sense weight of 0
+        var blob = TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], priorShare: 1.0, priorSmoothing: 0.0, priorSenses: 0.0);
+
+        // Act: load the table
+        var error = Assert.Throws<InvalidDataException>(() => TestTables.Load(blob));
+
+        // Assert: the load names the invalid hyper-parameters
+        Assert.Contains("invalid hyper-parameters", error.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The largest accepted prior exponent loads, so the table is not rejected for a value that the tagger can still use.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_LargestPriorExponent_Loads()
+    {
+        // Arrange: a table whose word prior exponent is the upper bound
+        var blob = TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], priorShare: 1.0, priorSmoothing: 0.5, priorSenses: 0.0, priorExponent: 16.0);
+
+        // Act: load the table
+        var tables = TestTables.Load(blob);
+
+        // Assert: the exponent 16 is accepted and read back
+        Assert.Equal(16.0, tables.PriorExponent);
     }
 
     /// <summary>

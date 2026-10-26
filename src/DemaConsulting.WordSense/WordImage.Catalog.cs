@@ -86,6 +86,35 @@ internal sealed partial class WordImage
     }
 
     /// <summary>
+    ///     Totals the usage of a lemma and part of speech: the sum of the WordNet 3.0 tag counts of its senses and the
+    ///     number of its senses.
+    /// </summary>
+    /// <param name="lemma">The lemma exactly as it is written in the catalog.</param>
+    /// <param name="pos">The part of speech.</param>
+    /// <returns>The sum of the tag counts and the number of senses; both 0 when the lemma and part of speech have no sense.</returns>
+    /// <exception cref="InvalidDataException">Thrown when the catalog is corrupt.</exception>
+    public (int TagCount, int SenseCount) UsageTotalsOf(string lemma, PartOfSpeech pos)
+    {
+        ArgumentNullException.ThrowIfNull(lemma);
+        var catalog = GetCatalog();
+        var block = catalog.FindBlock(lemma, pos);
+        if (block < 0)
+        {
+            return (0, 0);
+        }
+
+        var total = 0;
+        var start = (int)catalog.BlockStart[block];
+        var end = (int)catalog.BlockStart[block + 1];
+        for (var k = start; k < end; k++)
+        {
+            total += catalog.TagCount((int)catalog.BlockSenses[k]);
+        }
+
+        return (total, end - start);
+    }
+
+    /// <summary>
     ///     Finds a sense by its id.
     /// </summary>
     /// <param name="senseId">The sense id.</param>

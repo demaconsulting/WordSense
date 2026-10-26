@@ -406,7 +406,9 @@ reviews:
       - "docs/verification/word-sense/core/pos-tagger.md"
       - "src/DemaConsulting.WordSense/PosTagger.cs"
       - "src/DemaConsulting.WordSense/PosTag.cs"
+      - "src/DemaConsulting.WordSense/WordSupport.cs"
       - "test/DemaConsulting.WordSense.Tests/PosTaggerTests.cs"
+      - "test/DemaConsulting.WordSense.Tests/WordSupportTests.cs"
 
   # WordSense-Core-CueModel Review (one per unit)
   - id: WordSense-Core-CueModel

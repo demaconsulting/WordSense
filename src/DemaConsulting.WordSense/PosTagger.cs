@@ -11,7 +11,8 @@ namespace DemaConsulting.WordSense;
 /// <param name="ForcedTag">The only possible tag of a token that is not a word (a number or punctuation), or -1 for a word.</param>
 /// <param name="Possessive">Whether the token is a possessive written as one token (<c>technician's</c>): the tagger then sees the stem in <paramref name="Key"/> followed by the possessive marker, as in its training counts.</param>
 /// <param name="NonFinite">Whether the dictionary lists the word as a verb only in forms that are never the finite verb of a clause (a gerund, or a participle that is not also a past tense).</param>
-internal readonly record struct TaggerToken(string Key, int DictionaryMask, bool Capitalized, int ForcedTag, bool Possessive = false, bool NonFinite = false)
+/// <param name="Support">What the sense catalog says about the parts of speech of the word (the evidence of the word prior), or null when there is none or the caller did not look it up.</param>
+internal readonly record struct TaggerToken(string Key, int DictionaryMask, bool Capitalized, int ForcedTag, bool Possessive = false, bool NonFinite = false, WordSupport? Support = null)
 {
     /// <summary>
     ///     Creates a word token.
@@ -20,8 +21,9 @@ internal readonly record struct TaggerToken(string Key, int DictionaryMask, bool
     /// <param name="dictionaryMask">The tag mask of the dictionary entries, or 0 for an unknown word.</param>
     /// <param name="capitalized">Whether the written word starts with an upper-case letter.</param>
     /// <param name="nonFinite">Whether the dictionary lists the word as a verb only in forms that are never the finite verb of a clause (a gerund or a participle).</param>
+    /// <param name="support">What the sense catalog says about the parts of speech of the word, or null.</param>
     /// <returns>The token.</returns>
-    public static TaggerToken Word(string key, int dictionaryMask, bool capitalized, bool nonFinite = false) => new(key, dictionaryMask, capitalized, -1, false, nonFinite);
+    public static TaggerToken Word(string key, int dictionaryMask, bool capitalized, bool nonFinite = false, WordSupport? support = null) => new(key, dictionaryMask, capitalized, -1, false, nonFinite, support);
 
     /// <summary>
     ///     Creates the token of a possessive that is written as one word.
@@ -29,8 +31,9 @@ internal readonly record struct TaggerToken(string Key, int DictionaryMask, bool
     /// <param name="stem">The lower-case key of the stem (<c>technician</c> for <c>technician's</c>).</param>
     /// <param name="dictionaryMask">The tag mask of the possessive analyses.</param>
     /// <param name="capitalized">Whether the written word starts with an upper-case letter.</param>
+    /// <param name="support">What the sense catalog says about the parts of speech of the stem, or null.</param>
     /// <returns>The token.</returns>
-    public static TaggerToken PossessiveWord(string stem, int dictionaryMask, bool capitalized) => new(stem, dictionaryMask, capitalized, -1, true);
+    public static TaggerToken PossessiveWord(string stem, int dictionaryMask, bool capitalized, WordSupport? support = null) => new(stem, dictionaryMask, capitalized, -1, true, false, support);
 
     /// <summary>
     ///     Creates a token that has exactly one possible tag.
@@ -205,13 +208,31 @@ internal static class PosTagger
             }
         }
 
+        // The word prior from the sense catalog: a share for each possible tag. It replaces the generic tag prior, by the
+        // share that the table gives it, as the target of the pseudo counts that smooth the counts of the word (the word's
+        // own counts dominate once there are many of them); without evidence the share is 0 and the emission is the one of
+        // the counts and the generic tag prior alone
+        Span<double> generic = stackalloc double[K];
+        Span<double> prior = stackalloc double[K];
+        for (var j = 0; j < count; j++)
+        {
+            generic[j] = tables.TagPrior[allowed[j]] / priorSum;
+        }
+
+        var priorShare = tables.PriorShare > 0
+            && token.Support is { } support
+            && support.TryFillPrior(allowed[..count], generic[..count], tables.PriorSmoothing, tables.PriorSenses, tables.PriorExponent, prior[..count])
+                ? tables.PriorShare
+                : 0.0;
         var total = entry?.Total ?? 0;
         for (var j = 0; j < count; j++)
         {
             var t = allowed[j];
-            var q = tables.TagPrior[t] / priorSum;
             var seen = entry?.Counts[t] ?? 0;
-            var probability = (seen + (tables.Beta * q)) / (total + tables.Beta);
+
+            // The pseudo counts follow the word prior for the share of the prior and the generic tag prior for the rest
+            var target = ((1 - priorShare) * generic[j]) + (priorShare * prior[j]);
+            var probability = (seen + (tables.Beta * target)) / (total + tables.Beta);
             row[t] = Math.Pow(probability / tables.TagPrior[t], tables.Gamma);
         }
 

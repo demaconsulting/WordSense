@@ -4,7 +4,9 @@
 
 Tests in `test/DemaConsulting.WordSense.Tests/PosTaggerTests.cs` call `PosTagger.Posteriors` on a toy table (a few
 closed-class words, a word that is both noun and verb, and tag counts in which determiners and pronouns are followed by
-nouns and verbs) with hand-made tagger tokens. Nothing is mocked.
+nouns and verbs) with hand-made tagger tokens. Tests in `test/DemaConsulting.WordSense.Tests/WordSupportTests.cs` call
+`WordSupport` with a toy usage function; the tests of `WordSupport.Of` and of the word image read the embedded word image.
+Nothing else is mocked.
 
 #### Test Environment
 
@@ -43,3 +45,43 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Several possessives keep one row per token** (`PosTagger_Posteriors_SeveralPossessives_KeepOneRowPerToken`): a
   sentence with two possessives and other tokens gives one row for each token, each a distribution, with the fixed tags
   where the token has only one, and a possessive token is its stem noun with probability 1.
+- **Word without counts follows the catalog** (`PosTagger_Posteriors_WordWithoutCounts_FollowsTheCatalogPrior`): on
+  single-word sentences with equal noun and verb transitions, a word without counts whose catalog support is noun-heavy
+  is a noun and one whose support is verb-heavy is a verb.
+- **No support** (`PosTagger_Posteriors_NoSupport_IgnoresThePrior`): a token without catalog support gives equal noun
+  and verb posteriors for a word without counts.
+- **No share** (`PosTagger_Posteriors_NoShare_IgnoresThePrior`): a table whose prior share is 0 gives equal noun and
+  verb posteriors for a word without counts, whatever its catalog support is.
+- **Many counts outweigh the catalog** (`PosTagger_Posteriors_ManyCounts_OutweighTheCatalogPrior`): 400 verb counts
+  against 4 noun counts keep the verb against a noun-heavy catalog support.
+- **Few counts and the catalog** (`PosTagger_Posteriors_FewCounts_TieIsBrokenByTheCatalogPrior`): one count of each
+  lets a noun-heavy catalog support decide for the noun.
+- **Support totals** (`WordSupport_Compute_NounAndVerb_TotalsPerTag`): the tag counts, senses and lemma and
+  part-of-speech pairs are totaled for each open-class tag.
+- **One pair counts once** (`WordSupport_Compute_AnalysesOfOneSlot_CountOnce`): the past and the infinitive of a verb
+  count as one pair.
+- **Closed classes** (`WordSupport_Compute_ClosedClassAnalysis_IsIgnored`): a closed-class analysis adds nothing.
+- **No support** (`WordSupport_Compute_NoSenses_ReturnsNull`, `WordSupport_Compute_NoAnalyses_ReturnsNull`,
+  `WordSupport_Of_NoAnalyses_ReturnsNull`): a word whose analyses have no sense has no support, and neither has a word
+  without analyses.
+- **The prior** (`WordSupport_TryFillPrior_NounVerb_SumsToOneAndFollowsTheCounts`): the probabilities sum to one and
+  follow the smoothed counts.
+- **Uncovered tag** (`WordSupport_TryFillPrior_ClosedClassTag_KeepsItsGenericShare`): a closed-class tag keeps its
+  generic share.
+- **Exponent** (`WordSupport_TryFillPrior_ExponentBelowOne_FlattensThePrior`): an exponent below one flattens the
+  probabilities.
+- **Sense weight** (`WordSupport_TryFillPrior_SenseWeight_LiftsAPartOfSpeechWithManySenses`): the sense weight lifts a
+  part of speech with many senses.
+- **No evidence** (`WordSupport_TryFillPrior_NoPossibleTagHasASlot_ReturnsFalseWithTheGenericShare`): a word with no pair
+  among its possible tags reports no evidence and gives the generic share.
+- **Large exponent** (`WordSupport_TryFillPrior_LargeExponent_StaysFiniteAndNormalized`, theory with the exponents 16,
+  1000 and 1,000,000): the probabilities are finite, sum to one, and the frequent noun takes the larger share.
+- **Non-finite weight** (`WordSupport_TryFillPrior_NonFiniteWeight_Throws`, theory): a smoothing that is not a number or
+  is infinite, and an exponent that is not a number, throw `InvalidDataException`.
+- **Support from the image** (`WordSupport_Of_EmbeddedImage_ReadsTagCounts`): the support of `rank` in the embedded image
+  has more noun than verb tag counts.
+- **Repeated requests** (`WordSupport_Of_SameWordTwice_ReturnsTheSameSupport`): a second request for the same word
+  gives the same instance.
+- **Null key** (`WordSupport_Of_NullKey_Throws`): a missing key throws `ArgumentNullException`.
+- **Usage totals** (`WordImage_UsageTotalsOf_MatchesTheUsageOfTheSenses`): the usage totals of the word image equal the
+  sums over the usage of the senses.

@@ -133,7 +133,8 @@ form layers:
   by the project (CC0 1.0) and the project data (MIT), and the tagged tokens of the open part-of-speech corpus (CC0 1.0),
   which corroborate generated forms at build time and are not embedded. The statistics of the built-in model come from
   our own CC0 corpora (the open part-of-speech corpus and the sentence corpus) and from no treebank. The WordNet 3.0 counts
-  are used for the usage prior of the encoder models' training and for the usage ranking of the Basic model.
+  are used for the usage prior of the encoder models' training, for the usage ranking of the Basic model and, summed over
+  the lemmas of a spelling, for the word prior of its part-of-speech tagger.
 - The **Onnx** package implements the contracts for any BERT-style encoder: model file management, encoder,
   tokenizer, weights, thresholds and scoring of the fine senses. It references the core package and ONNX Runtime, and
   nothing else: its abstract encoder model is usable on its own and answers from the lexicon and the encoder alone.
@@ -196,6 +197,7 @@ src/DemaConsulting.WordSense/                      — core subsystem
 ├── BasicTables.cs                                  — basic-tables unit (tables and the feature hash)
 ├── PosTag.cs                                       — tag constants of the basic-tables and pos-tagger units
 ├── PosTagger.cs                                    — pos-tagger unit
+├── WordSupport.cs                                  — word-prior evidence (a class of the pos-tagger unit)
 ├── CueModel.cs                                     — cue-model unit
 ├── SenseFusion.cs                                  — sense-fusion unit
 ├── NamespaceDoc.cs                                 — namespace description for the generated API reference (no code)

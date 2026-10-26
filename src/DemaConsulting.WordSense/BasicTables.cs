@@ -98,8 +98,9 @@ internal sealed class LemmaCue
     /// <param name="analyses">The analyses, in the column order of the weights.</param>
     /// <param name="hashes">The ascending, distinct 16-bit feature hashes.</param>
     /// <param name="weights">The weights, feature-major: one value per analysis for each hash.</param>
+    /// <param name="reliability">The stored reliability of the table (0 to <see cref="MaximumReliability"/>), the factor on its scores.</param>
     /// <exception cref="ArgumentException">Thrown when an array is the default array.</exception>
-    public LemmaCue(string lemma, ImmutableArray<CueAnalysis> analyses, ImmutableArray<ushort> hashes, ImmutableArray<sbyte> weights)
+    public LemmaCue(string lemma, ImmutableArray<CueAnalysis> analyses, ImmutableArray<ushort> hashes, ImmutableArray<sbyte> weights, byte reliability = MaximumReliability)
     {
         if (analyses.IsDefault || hashes.IsDefault || weights.IsDefault)
         {
@@ -110,8 +111,27 @@ internal sealed class LemmaCue
         Analyses = analyses;
         Hashes = hashes;
         Weights = weights;
+        ReliabilityByte = reliability;
         _items = [.. analyses.Select(a => a.Features.Length == 0 ? [] : a.Features.Split('+'))];
     }
+
+    /// <summary>
+    ///     The stored value of a fully reliable table: the reliability is the stored byte divided by this value.
+    /// </summary>
+    public const byte MaximumReliability = 255;
+
+    /// <summary>
+    ///     Gets the stored reliability, 0 to <see cref="MaximumReliability"/>.
+    /// </summary>
+    public byte ReliabilityByte { get; }
+
+    /// <summary>
+    ///     Gets the reliability of the table, 0 to 1: the factor on its scores in the fused score of an analysis. The
+    ///     training measures how well the table predicts held-out sentences of its own training data (see <c>BasicTrainer</c>)
+    ///     and damps the tables that predict them poorly, so that a table whose anchors say little about the usual use of
+    ///     its word does not outvote the tagger.
+    /// </summary>
+    public double Reliability => ReliabilityByte / (double)MaximumReliability;
 
     /// <summary>
     ///     Gets the training lemma that keys the table.
@@ -256,25 +276,26 @@ internal sealed class TenseCue
 /// </summary>
 /// <remarks>
 ///     <para>
-///     The table is a Brotli-compressed container that the repository's builder writes (<c>WSB5</c>); after
+///     The table is a Brotli-compressed container that the repository's builder writes (<c>WSB6</c>); after
 ///     decompression every integer is a little-endian 7-bit varint unless noted, a double is eight little-endian
-///     bytes and a string is a varint byte length followed by UTF-8. The layout is: the magic <c>WSB5</c>; the
+///     bytes and a string is a varint byte length followed by UTF-8. The layout is: the magic <c>WSB6</c>; the
 ///     32-byte analysis inventory hash (<c>WordImage.InventoryHash</c>, the hash of the analysis, sense and group sections
-///     of the word image the table was trained for); nine doubles (gamma, beta, lambda1, lambda2, lambda3, the weight
+///     of the word image the table was trained for); thirteen doubles (gamma, beta, lambda1, lambda2, lambda3, the weight
 ///     of the tagger in the fusion, the inverse temperature of the cues, the weight of the tense model, the smoothing of
-///     the clause state); the tag count; the unigram, bigram and
+///     the clause state, the share of the word prior in the target of the pseudo counts of the emission, the smoothing of each slot of the word prior, the
+///     weight of each sense of the word prior and the exponent of the word prior); the tag count; the unigram, bigram and
 ///     trigram tag counts (the boundary is the last index) and the bigram and trigram counts of the positions whose
 ///     clause already has a verb; the tabled words (word, flags byte with bit 0 = closed
 ///     class, a 16-bit closed mask when closed, a 16-bit presence mask and one count per set bit); the suffix entries
 ///     (suffix and four counts for noun, verb, adjective and adverb); the cue lemmas (the training lemma, the
-///     analysis count, per analysis the lemma string, the part-of-speech byte, the features string and the signed
+///     reliability byte of the table, the analysis count, per analysis the lemma string, the part-of-speech byte, the features string and the signed
 ///     quantized prior byte, the delta-coded ascending 16-bit feature hashes and one signed byte weight per feature
 ///     and analysis); and the tense table (a flag byte, 0 when there is none and 1 when it follows: the signed
 ///     quantized prior byte, the delta-coded ascending 16-bit feature hashes and one signed byte weight per feature). Words, suffixes and lemmas are in ascending ordinal order, so equal data always gives equal
 ///     bytes. The load fails when the hash differs from the word image, when an analysis does not exist in the word
 ///     image, or when a lemma table names an analysis twice, or when a clause count exceeds its total count. The previous
-///     formats <c>WSB3</c> (without the tense weight and the tense table) and <c>WSB4</c> (without the clause counts and the
-///     clause smoothing) are rejected as unknown formats.
+///     formats <c>WSB3</c> (without the tense weight and the tense table), <c>WSB4</c> (without the clause counts and the
+///     clause smoothing) and <c>WSB5</c> (without the word prior and the reliability of the cue tables) are rejected as unknown formats.
 ///     </para>
 ///     <para>
 ///     An instance is immutable and safe for concurrent use: the statistics are exposed only as
@@ -296,11 +317,12 @@ internal sealed class BasicTables
     public const double SuffixSmoothing = 0.1;
 
     private const double MinimumTagPrior = 1e-9;
+    private const double MaximumPriorExponent = 16;
     private const int MaximumAnalyses = 255;
     private const int MaximumLemmaLength = 1024;
     private const int HashSize = 32;
     private const int InitialBufferSize = 1 << 16;
-    private static readonly byte[] Magic = "WSB5"u8.ToArray();
+    private static readonly byte[] Magic = "WSB6"u8.ToArray();
 
     private static readonly Lazy<BasicTables> DefaultTables = new(LoadEmbeddedResource, LazyThreadSafetyMode.ExecutionAndPublication);
 
@@ -330,6 +352,10 @@ internal sealed class BasicTables
         InvTemperature = parameters[6];
         TenseWeight = parameters[7];
         ClauseSmoothing = parameters[8];
+        PriorShare = parameters[9];
+        PriorSmoothing = parameters[10];
+        PriorSenses = parameters[11];
+        PriorExponent = parameters[12];
 
         // The reader hands over arrays that nothing else references, so they are wrapped without a copy and the table
         // exposes only read-only views of them
@@ -403,6 +429,28 @@ internal sealed class BasicTables
     ///     transition probabilities: a clause-state trigram context with <c>m</c> counts weighs <c>m / (m + smoothing)</c>.
     /// </summary>
     public double ClauseSmoothing { get; }
+
+    /// <summary>
+    ///     Gets the share, 0 to 1, of the word prior (see <see cref="WordSupport"/>) in the target of the pseudo counts of the
+    ///     emission of every word that the sense catalog knows: the emission is
+    ///     <c>(count + beta * ((1 - share) * generic + share * prior)) / (total + beta)</c>. 0 turns the word prior off.
+    /// </summary>
+    public double PriorShare { get; }
+
+    /// <summary>
+    ///     Gets the constant that the word prior adds to the weight of every lemma and part of speech of the word.
+    /// </summary>
+    public double PriorSmoothing { get; }
+
+    /// <summary>
+    ///     Gets the weight that the word prior gives to every sense of the word (the proxy of a word without tag counts).
+    /// </summary>
+    public double PriorSenses { get; }
+
+    /// <summary>
+    ///     Gets the exponent of the weight of a part of speech in the word prior (the temperature: below 1 flattens it).
+    /// </summary>
+    public double PriorExponent { get; }
 
     /// <summary>
     ///     Gets the shared tense table, or null when the table has none (then no slot is split by tense).
@@ -530,7 +578,7 @@ internal sealed class BasicTables
                 $"The basic table was trained for another analysis inventory: its inventory hash is {Convert.ToHexString(hash)}, the word image has {Convert.ToHexString(inventoryHash)}. Rebuild the table.");
         }
 
-        var parameters = new double[9];
+        var parameters = new double[13];
         for (var i = 0; i < parameters.Length; i++)
         {
             parameters[i] = reader.ReadDouble();
@@ -708,7 +756,13 @@ internal sealed class BasicTables
 
     private static void ValidateParameters(double[] p)
     {
-        if (p.Any(v => !double.IsFinite(v) || v > 1e6) || p[0] <= 0 || p[1] <= 0 || p[2] < 0 || p[3] < 0 || p[4] < 0 || p[5] < 0 || p[6] < 0 || p[7] < 0 || p[8] < 0)
+        if (p.Any(v => !double.IsFinite(v) || v > 1e6) || p[0] <= 0 || p[1] <= 0 || p[2] < 0 || p[3] < 0 || p[4] < 0 || p[5] < 0 || p[6] < 0 || p[7] < 0 || p[8] < 0 || p[9] is < 0 or > 1 || p[10] < 0 || p[11] < 0 || p[12] is <= 0 or > MaximumPriorExponent)
+        {
+            throw new InvalidDataException("The basic table has invalid hyper-parameters.");
+        }
+
+        // A word prior that is on needs a positive weight for every part of speech of a word, or a part of speech could weigh 0
+        if (p[9] > 0 && p[10] + p[11] <= 0)
         {
             throw new InvalidDataException("The basic table has invalid hyper-parameters.");
         }
@@ -805,6 +859,7 @@ internal sealed class BasicTables
             }
 
             previous = lemma;
+            var reliability = reader.ReadByte();
             var analysisCount = reader.ReadVarint();
             if (analysisCount is < 2 or > MaximumAnalyses)
             {
@@ -832,7 +887,8 @@ internal sealed class BasicTables
                 lemma,
                 ImmutableCollectionsMarshal.AsImmutableArray(analyses),
                 ImmutableCollectionsMarshal.AsImmutableArray(hashes),
-                ImmutableCollectionsMarshal.AsImmutableArray(weights)));
+                ImmutableCollectionsMarshal.AsImmutableArray(weights),
+                reliability));
         }
 
         return cues.ToFrozenDictionary(StringComparer.Ordinal);

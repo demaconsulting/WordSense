@@ -100,3 +100,182 @@ sections:
                   The caller's tokens and answers must stay parallel whatever the tagger reads internally.
                 tests:
                   - PosTagger_Posteriors_SeveralPossessives_KeepOneRowPerToken
+
+              - id: WordSense-Core-PosTagger-WordPrior-NoCounts
+                title: >-
+                  PosTagger shall give a word that has catalog support and no training counts a higher probability for
+                  the part of speech that the catalog supports more.
+                tags: [unit]
+                justification: |
+                  A word that the training text never showed has no evidence of its own; the catalog says which of its
+                  parts of speech is usual.
+                tests:
+                  - PosTagger_Posteriors_WordWithoutCounts_FollowsTheCatalogPrior
+
+              - id: WordSense-Core-PosTagger-WordPrior-ManyCounts
+                title: >-
+                  PosTagger shall give a word with many training counts the part of speech of its counts, whatever its
+                  catalog support says.
+                tags: [unit]
+                justification: |
+                  The counts of the word itself are better evidence than a dictionary that comes from other texts.
+                tests:
+                  - PosTagger_Posteriors_ManyCounts_OutweighTheCatalogPrior
+
+              - id: WordSense-Core-PosTagger-WordPrior-FewCounts
+                title: >-
+                  PosTagger shall use the catalog support of a word to decide between parts of speech that its few
+                  training counts do not separate.
+                tags: [unit]
+                justification: |
+                  A word with few counts is a noisy estimate; the catalog settles a tie that the counts cannot.
+                tests:
+                  - PosTagger_Posteriors_FewCounts_TieIsBrokenByTheCatalogPrior
+
+              - id: WordSense-Core-PosTagger-WordPrior-NoSupport
+                title: >-
+                  PosTagger shall not change the probabilities of a word without catalog support because of the word
+                  prior.
+                tags: [unit]
+                justification: |
+                  A word that the catalog does not know must not get invented evidence.
+                tests:
+                  - PosTagger_Posteriors_NoSupport_IgnoresThePrior
+
+              - id: WordSense-Core-PosTagger-WordPrior-Disabled
+                title: >-
+                  PosTagger shall not let the catalog support change the probabilities of any word when the prior share
+                  of the table is 0.
+                tags: [unit]
+                justification: |
+                  A table without a word prior must tag from its counts alone, so that the prior can be switched off.
+                tests:
+                  - PosTagger_Posteriors_NoShare_IgnoresThePrior
+
+              - id: WordSense-Core-PosTagger-Support-Totals
+                title: >-
+                  WordSupport shall total, for each open-class part of speech, the WordNet tag counts, the senses and
+                  the lemma and part-of-speech pairs of the analyses of a word.
+                tags: [unit]
+                justification: |
+                  The word prior needs the evidence of the catalog about each part of speech that the spelling can be.
+                tests:
+                  - WordSupport_Compute_NounAndVerb_TotalsPerTag
+
+              - id: WordSense-Core-PosTagger-Support-OnePair
+                title: >-
+                  WordSupport shall count the analyses of one lemma and part of speech once.
+                tags: [unit]
+                justification: |
+                  The past and the infinitive of a verb share their senses, so counting both would double the evidence
+                  of that part of speech.
+                tests:
+                  - WordSupport_Compute_AnalysesOfOneSlot_CountOnce
+
+              - id: WordSense-Core-PosTagger-Support-ClosedClass
+                title: >-
+                  WordSupport shall ignore the closed-class analyses of a word.
+                tags: [unit]
+                justification: |
+                  WordNet does not count the closed classes, so their senses say nothing about how often they occur.
+                tests:
+                  - WordSupport_Compute_ClosedClassAnalysis_IsIgnored
+
+              - id: WordSense-Core-PosTagger-Support-NoSenses
+                title: >-
+                  WordSupport shall give no support to a word whose analyses have no sense in the catalog.
+                tags: [unit]
+                justification: |
+                  Without catalog evidence the prior must be absent rather than invented.
+                tests:
+                  - WordSupport_Compute_NoSenses_ReturnsNull
+
+              - id: WordSense-Core-PosTagger-Support-NoAnalyses
+                title: >-
+                  WordSupport shall give no support to a word without analyses.
+                tags: [unit]
+                justification: |
+                  A word that the lexicon does not list has no catalog evidence.
+                tests:
+                  - WordSupport_Compute_NoAnalyses_ReturnsNull
+                  - WordSupport_Of_NoAnalyses_ReturnsNull
+
+              - id: WordSense-Core-PosTagger-Support-Distribution
+                title: >-
+                  WordSupport shall give each possible part of speech of a word a probability, the probabilities summing
+                  to 1, with the larger probability for the part of speech with the larger WordNet tag count.
+                tags: [unit]
+                justification: |
+                  The tagger needs a distribution over the possible parts of speech of the word, and the part of speech
+                  that the catalog shows as more frequent must get more of it.
+                tests:
+                  - WordSupport_TryFillPrior_NounVerb_SumsToOneAndFollowsTheCounts
+
+              - id: WordSense-Core-PosTagger-Support-Uncovered
+                title: >-
+                  WordSupport shall give a possible part of speech that the catalog does not cover the probability
+                  that it has without the word prior.
+                tags: [unit]
+                justification: |
+                  Evidence about the open classes must not outweigh a closed class, which the catalog does not count.
+                tests:
+                  - WordSupport_TryFillPrior_ClosedClassTag_KeepsItsGenericShare
+
+              - id: WordSense-Core-PosTagger-Support-Exponent
+                title: >-
+                  WordSupport shall flatten the probabilities of the parts of speech of a word as the exponent of the
+                  prior falls below 1.
+                tags: [unit]
+                justification: |
+                  The counts of the catalog come from other texts, so the prior needs a setting that softens them.
+                tests:
+                  - WordSupport_TryFillPrior_ExponentBelowOne_FlattensThePrior
+
+              - id: WordSense-Core-PosTagger-Support-SenseWeight
+                title: >-
+                  WordSupport shall give a part of speech more probability the more senses it has, in proportion to the
+                  sense weight of the prior.
+                tags: [unit]
+                justification: |
+                  A word whose lemma has no tag count at all still shows through its number of senses which part of
+                  speech is common.
+                tests:
+                  - WordSupport_TryFillPrior_SenseWeight_LiftsAPartOfSpeechWithManySenses
+
+              - id: WordSense-Core-PosTagger-Support-NoEvidence
+                title: >-
+                  WordSupport shall report that it has no evidence when no possible part of speech of the word has
+                  catalog support.
+                tags: [unit]
+                justification: |
+                  The caller must be able to fall back to its counts when the catalog says nothing about the possible
+                  parts of speech.
+                tests:
+                  - WordSupport_TryFillPrior_NoPossibleTagHasASlot_ReturnsFalseWithTheGenericShare
+
+              - id: WordSense-Core-PosTagger-Support-LargeExponent
+                title: >-
+                  WordSupport shall give finite probabilities that sum to 1 for every exponent that a table accepts.
+                tags: [unit]
+                justification: |
+                  A large exponent must not turn the probabilities into infinity or not-a-number values.
+                tests:
+                  - WordSupport_TryFillPrior_LargeExponent_StaysFiniteAndNormalized
+
+              - id: WordSense-Core-PosTagger-Support-NonFinite
+                title: >-
+                  WordSupport shall reject a word prior whose weights are not finite numbers as invalid data.
+                tags: [unit]
+                justification: |
+                  A weight that is not a finite number cannot give a probability; the failure must be loud.
+                tests:
+                  - WordSupport_TryFillPrior_NonFiniteWeight_Throws
+
+              - id: WordSense-Core-PosTagger-Support-Image
+                title: >-
+                  WordSupport shall give a word of the embedded lexicon the WordNet tag counts of its senses.
+                tags: [unit]
+                justification: |
+                  The prior follows the lexicon that the model is bound to and needs no table of its own.
+                tests:
+                  - WordSupport_Of_EmbeddedImage_ReadsTagCounts

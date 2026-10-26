@@ -20,6 +20,9 @@ CC0 1.0 (public domain dedication, <https://creativecommons.org/publicdomain/zer
 - the context cue statistics of the sentence corpus of this repository (`corpus/anchors` and `corpus/choosers`),
   whose sentences are project-authored (CC0 1.0), public domain in the United States, or Tatoeba sentences under CC0 1.0.
 
+The table holds four numbers of the word prior of the tagger. The prior itself is computed at run time from the WordNet
+3.0 tag counts of the word image, below. No treebank is used for it.
+
 The sentences themselves are not part of the package. No Universal Dependencies treebank, Wikipedia, Wiktionary or other
 CC BY-SA text was used to create the table, and no CC BY text was used either (the only CC BY material in the package is
 the Open English WordNet data of the word image, below).
@@ -35,7 +38,8 @@ open part-of-speech corpus of the project (CC0 1.0, see above) are used at build
 corroborates a generated inflected form; none of its text is embedded. The image holds the lemmas,
 the written forms with their analyses, the sense ids, sense keys, labels and groups, the order of the senses of each
 lemma, which is the order of Open English WordNet, and the WordNet 3.0 tag count of each sense (a number for each sense,
-which the built-in model uses as a usage prior to rank the senses of a lemma; it is never an answer). It does not hold the
+which the built-in model uses to rank the senses of a lemma and, summed over the lemmas of a spelling, as the word prior
+of its part-of-speech tagger; it is never an answer). It does not hold the
 glosses, the examples or the relations of the source data.
 
 ## Open English WordNet 2025
@@ -54,7 +58,9 @@ The sense usage counts of the word image (the number of times each sense was tag
 WordNet project, from the sense index file `index.sense` of WordNet 3.0, <https://wordnet.princeton.edu>, joined to the
 sense keys of Open English WordNet) are data of WordNet 3.0. The package embeds them, in a changed form (a number for
 each sense of the catalog, without the other contents of the index), and uses them to rank the senses of a lemma by
-usage. WordNet 3.0 is used under the following license, reproduced as the license requires:
+usage and to estimate the usual part of speech of a word for the tagger (the sum of the counts of the senses of each
+lemma and part of speech that a spelling can be). WordNet 3.0 is used under the following license, reproduced as the
+license requires:
 
 ```text
 WordNet Release 3.0

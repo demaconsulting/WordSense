@@ -23,14 +23,17 @@ public sealed class TaggerEvaluatorTests : IDisposable
     [Fact]
     public async Task WordSenseBuilder_TaggerEvaluator_EvaluateAsync_ScoresAnsweredWordTokens()
     {
+        // Arrange: two sentences with an unanswered number, an unknown word, punctuation and a tag that is not scored
         TaggedSentence[] sentences =
         [
             new(["They", "walk", "5", "zzyzx", "."], [PosTag.Pronoun, PosTag.Verb, PosTag.Noun, PosTag.Noun, PosTag.Punctuation]),
             new(["The", "walk", "-"], [PosTag.Determiner, PosTag.Noun, PosTag.Other]),
         ];
 
+        // Act: evaluate the sentences with the shipped table
         var score = await TaggerEvaluator.EvaluateAsync("toy", BasicTables.Default, sentences, TestContext.Current.CancellationToken);
 
+        // Assert: the counts of the scored, unanswered, excluded, ambiguous and noun-verb tokens
         Assert.Equal("toy", score.Name);
         Assert.Equal(2, score.Sentences);
         Assert.Equal(4, score.Scored);
@@ -39,6 +42,51 @@ public sealed class TaggerEvaluatorTests : IDisposable
         Assert.Equal(2, score.Ambiguous);
         Assert.InRange(score.Correct, 3, 4);
         Assert.InRange(score.AmbiguousCorrect, 1, 2);
+        Assert.Equal(2, score.NounVerb);
+        Assert.InRange(score.NounVerbCorrect, 1, 2);
+        Assert.True(score.NounVerbCorrect <= score.AmbiguousCorrect);
+    }
+
+    private static readonly TaggedSentence[] MixedAndImperativeSentences =
+    [
+        new(["Have", "a", "book", "."], [PosTag.Verb, PosTag.Determiner, PosTag.Noun, PosTag.Punctuation]),
+        new(["so", "we", "go"], [PosTag.Conjunction, PosTag.Pronoun, PosTag.Verb]),
+        new(["We", "go", "the", "way"], [PosTag.Pronoun, PosTag.Verb, PosTag.Determiner, PosTag.Noun]),
+    ];
+
+    /// <summary>
+    ///     The words that have both a closed-class and an open-class analysis are counted apart.
+    /// </summary>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_TaggerEvaluator_EvaluateAsync_CountsClosedAndOpenWords()
+    {
+        // Arrange: sentences with words that are both closed-class and open-class (so, have, the way)
+
+        // Act: evaluate the sentences with the shipped table
+        var score = await TaggerEvaluator.EvaluateAsync("toy", BasicTables.Default, MixedAndImperativeSentences, TestContext.Current.CancellationToken);
+
+        // Assert: the mixed words are a part of the scored tokens, and the correct ones a part of them
+        Assert.True(score.Mixed >= 2);
+        Assert.True(score.MixedCorrect <= score.Mixed);
+        Assert.True(score.Mixed < score.Scored);
+    }
+
+    /// <summary>
+    ///     The verbs that start a sentence before a determiner are counted apart.
+    /// </summary>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_TaggerEvaluator_EvaluateAsync_CountsStartingVerbs()
+    {
+        // Arrange: one sentence that starts with a verb before a determiner, among the shared sentences
+
+        // Act: evaluate the sentences with the shipped table
+        var score = await TaggerEvaluator.EvaluateAsync("toy", BasicTables.Default, MixedAndImperativeSentences, TestContext.Current.CancellationToken);
+
+        // Assert: one starting verb is counted, and the correct ones are a part of it
+        Assert.Equal(1, score.Imperative);
+        Assert.InRange(score.ImperativeCorrect, 0, 1);
     }
 
     /// <summary>

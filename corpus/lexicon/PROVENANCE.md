@@ -200,6 +200,39 @@ messages give no reason, so it is not a documented decision. Review them as data
 **Changing it.** The rule is not re-run. A change of the flag is a reviewed edit of the `flags` column of
 `form-frozen.tsv`, made directly in that file and reviewed as data; the generator reads the file as given.
 
+## Part-of-Speech Gaps Found by the Basic Tagger Audit (deferred, none added)
+
+The audit of the Basic tagger (UD English-EWT, development and test, and the training counts of the open corpus) lists
+the words whose gold part of speech the lexicon lacks. A part of speech may be added only when an Open English WordNet
+entry of the lower-case spelling has senses of it (the dictionary supports it, `oewn` evidence in `additions.tsv`) and
+never because a treebank tags the word so. The scan (every token of the three treebank files, the test file included, and
+the open training counts whose gold part of speech is not an analysis of the lower-case spelling, and whose spelling has
+an entry of that part of speech) found 47 spellings in the treebank and 15 in the open counts. No addition is made: the
+candidates below move none of the audit categories (the words with one analysis stay at 99 and the words that lack the
+gold part of speech at 28 to 30 of 569 noun-verb confusions), and every addition changes the word image, which forces a
+retraining of both encoder models and moves unrelated sense answers. The candidates are listed for a separate data
+change, and each needs dictionary evidence, not the treebank.
+
+**Candidates the dictionary supports** (each would be an `additions.tsv` row with `oewn` evidence; the adverbs also need
+the flag `only` of their `closed` rows in `form-frozen.tsv` cleared, because that flag suppresses every open-class
+analysis of a closed-class spelling): the adjective `rear` (5 tokens), and the adverb of `therefore` (47 tokens in the
+two sources), `moreover` (9), `nevertheless` (8), `nonetheless` (1) and `ergo` (1).
+
+**Deferred for another reason:**
+
+<!-- markdownlint-disable MD013 -->
+
+| Spelling (errors or tokens) | Gold | Why it stays as it is |
+| --- | --- | --- |
+| `google` (36 N/V errors), `download` (6), `harry` (4), `lynch`, `rob`, `thank`, `hear`, `sue`, `stoke`, `sit`, `photoshop`, `confirm`, `re-start` | noun | The Open English WordNet entry is a verb only (a noun use is a proper name, a product name or a truncation: `Google`, `Photoshop`, `Harry`); no dictionary entry or sense supports the noun, so it would be a part of speech added only because the treebank tags it so |
+| `dow` (10), `peters`, `bottling`, `tutoring`, `recruiting`, `pledging`, `birding`, `botching`, `basking`, `lurking`, `scarring`, `deters`, `met`, `screenshots` | noun | No entry of the spelling in Open English WordNet (names, and `-ing` nouns of verbs whose nominal gerund the dictionary does not list) |
+| `am` (21 N/V errors; 132 treebank tokens), `sat` (4), `york` (26) | noun | The entries exist (`AM`, `Sat`, `York` as capitalized lemmas) and the form table already has their analyses for the capitalized spellings (`AM`, `Sat`, `York`), but the Basic classifier looks the lower-case key up (the cue and emission statistics are keyed by it), so the analysis is not reached. The gap is in the classifier lookup, not in the data; a case-aware lookup of the written spelling is a separate change to the classifier, with its own risks for the sentence-initial capital, and is left for it |
+| `surprised` (8 tokens), `shocked` (7), `laid`, `posted`, `trained`, `wasted`, `lined`, `segregated` and about 20 more participles | adjective | Open English WordNet has the adjective entry, but an analysis for every participial adjective makes the common participles compete with the verb in the real-text evaluation (the corpus labels them with the verb senses only); only the listed technical ones are in `own-adjectives.tsv`, see `docs/design/word-sense/word-data/form-generator.md` |
+| `a` (21), `every`, `i`, `be`, `un`, `ok`, `tho`, `ha`, `er`, `afghan`, `latino`, `siamese`, `hoover`, `wed`, `des`, `contra` | noun, adjective or adverb | The entry is a capitalized lemma, a letter name or an abbreviation (`A`, `UN`, `Afghan`), or the added analysis would put a content word into the most frequent function word of the language (`a` as a noun) |
+| `advice` (2), `hav`, `norm`, `covert`, `followup`, `preorder`, `response`, `laden`, `u`, `is`, `searching` | other | Typos and truncations of the treebank (`hav`, `Covert into DVD`, `Lexus IS`) and entries that have the part of speech the text does not use |
+
+<!-- markdownlint-enable MD013 -->
+
 ## Counts
 
 | Step | Words |

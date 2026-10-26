@@ -10,13 +10,13 @@ namespace WordSense.Builder;
 /// <remarks>
 ///     The layout is described on <c>BasicTables</c>, the only reader. Words, suffixes and lemmas are written in the
 ///     ordinal order of the data, so equal data always gives equal bytes. The runtime hyper-parameters (gamma, beta, the
-///     three lambdas, the weight of the tagger, the inverse temperature, the weight of the tense model and the smoothing
-///     of the clause state) are written to the header from
+///     three lambdas, the weight of the tagger, the inverse temperature, the weight of the tense model, the smoothing
+///     of the clause state and the four numbers of the word prior) are written to the header from
 ///     <see cref="BasicHyperparameters"/>.
 /// </remarks>
 internal static class BasicTablesWriter
 {
-    private static readonly byte[] Magic = "WSB5"u8.ToArray();
+    private static readonly byte[] Magic = "WSB6"u8.ToArray();
 
     /// <summary>
     ///     Serializes the model data.
@@ -37,7 +37,7 @@ internal static class BasicTablesWriter
         raw.Write(Magic);
         raw.Write(inventoryHash);
         var hp = data.Hyperparameters;
-        foreach (var value in new[] { hp.Gamma, hp.Beta, hp.Lambda1, hp.Lambda2, hp.Lambda3, hp.HmmWeight, hp.InvTemperature, hp.TenseWeight, hp.ClauseSmoothing })
+        foreach (var value in new[] { hp.Gamma, hp.Beta, hp.Lambda1, hp.Lambda2, hp.Lambda3, hp.HmmWeight, hp.InvTemperature, hp.TenseWeight, hp.ClauseSmoothing, hp.PriorShare, hp.PriorSmoothing, hp.PriorSenses, hp.PriorExponent })
         {
             WriteDouble(raw, value);
         }
@@ -89,6 +89,7 @@ internal static class BasicTablesWriter
         foreach (var cue in data.Cues)
         {
             WriteString(raw, cue.Lemma);
+            raw.WriteByte(cue.Reliability);
             WriteVarint(raw, cue.Analyses.Length);
             foreach (var analysis in cue.Analyses)
             {

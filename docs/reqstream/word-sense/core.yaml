@@ -434,8 +434,115 @@ sections:
               - WordSense-Core-Tagger-ClauseBreak
               - WordSense-Core-Tagger-NonFiniteStart
               - WordSense-Core-Tagger-Possessive
+              - WordSense-Core-Tagger-WordPrior
+              - WordSense-Core-Tagger-WordPrior-Counts
+              - WordSense-Core-Tagger-WordPrior-Unknown
+              - WordSense-Core-Tagger-WordPrior-Disabled
+              - WordSense-Core-Tagger-WordPrior-Invalid
+              - WordSense-Core-Tagger-WordPrior-Format
             tests:
               - PosTagger_Posteriors_AfterDeterminer_PrefersNoun
+
+          - id: WordSense-Core-Tagger-WordPrior
+            title: >-
+              The core subsystem shall tag an ambiguous word that has no training counts with the part of speech that
+              the sense catalog of the embedded lexicon shows as more frequent for it.
+            tags: [subsystem]
+            justification: |
+              Most ambiguous words do not occur in the training text, so the tagger has no evidence of its own about
+              them. The catalog ships with the library and shows, for example, that rank is a noun far more often than
+              a verb.
+            children:
+              - WordSense-Core-PosTagger-WordPrior-NoCounts
+              - WordSense-Core-PosTagger-Support-Totals
+              - WordSense-Core-PosTagger-Support-OnePair
+              - WordSense-Core-PosTagger-Support-ClosedClass
+              - WordSense-Core-PosTagger-Support-Distribution
+              - WordSense-Core-PosTagger-Support-Uncovered
+              - WordSense-Core-PosTagger-Support-Exponent
+              - WordSense-Core-PosTagger-Support-SenseWeight
+              - WordSense-Core-PosTagger-Support-NoEvidence
+              - WordSense-Core-PosTagger-Support-LargeExponent
+              - WordSense-Core-PosTagger-Support-NonFinite
+              - WordSense-Core-PosTagger-Support-Image
+              - WordSense-Core-BasicClassifier-WordPrior-Support-Ambiguous
+              - WordSense-Core-BasicTables-Prior-Share
+              - WordSense-Core-BasicTables-Prior-Smoothing
+              - WordSense-Core-BasicTables-Prior-Senses
+              - WordSense-Core-BasicTables-Prior-Exponent
+            tests:
+              - PosTagger_Posteriors_WordWithoutCounts_FollowsTheCatalogPrior
+
+          - id: WordSense-Core-Tagger-WordPrior-Counts
+            title: >-
+              The core subsystem shall tag a word that has many training counts with the part of speech of its
+              counts, whatever the sense catalog shows.
+            tags: [subsystem]
+            justification: |
+              The counts of the word itself are better evidence than a dictionary that comes from other texts.
+            children:
+              - WordSense-Core-PosTagger-WordPrior-ManyCounts
+              - WordSense-Core-PosTagger-WordPrior-FewCounts
+            tests:
+              - PosTagger_Posteriors_ManyCounts_OutweighTheCatalogPrior
+
+          - id: WordSense-Core-Tagger-WordPrior-Unknown
+            title: >-
+              The core subsystem shall not let the sense catalog change the tag of a word that the catalog has no
+              sense for.
+            tags: [subsystem]
+            justification: |
+              A word without catalog evidence must be tagged from its counts and its context alone, so that the
+              catalog does not invent evidence.
+            children:
+              - WordSense-Core-PosTagger-WordPrior-NoSupport
+              - WordSense-Core-PosTagger-Support-NoSenses
+              - WordSense-Core-PosTagger-Support-NoAnalyses
+              - WordSense-Core-BasicClassifier-WordPrior-Support-Single
+              - WordSense-Core-BasicClassifier-WordPrior-Support-Unknown
+            tests:
+              - PosTagger_Posteriors_NoSupport_IgnoresThePrior
+
+          - id: WordSense-Core-Tagger-WordPrior-Disabled
+            title: >-
+              The core subsystem shall not let the sense catalog change the tag of any word when the table of the
+              model switches the word prior off.
+            tags: [subsystem]
+            justification: |
+              A table without a word prior must tag from its counts and its context alone, so that the prior can be
+              switched off and its effect measured.
+            children:
+              - WordSense-Core-PosTagger-WordPrior-Disabled
+            tests:
+              - PosTagger_Posteriors_NoShare_IgnoresThePrior
+
+          - id: WordSense-Core-Tagger-WordPrior-Invalid
+            title: >-
+              The core subsystem shall reject a table of the model whose word prior values are outside their valid
+              ranges.
+            tags: [subsystem]
+            justification: |
+              A word prior with a value outside its range would give a wrong emission for every word; such a table is
+              damage, not data.
+            children:
+              - WordSense-Core-BasicTables-Prior-ShareInvalid
+              - WordSense-Core-BasicTables-Prior-SmoothingInvalid
+              - WordSense-Core-BasicTables-Prior-SensesInvalid
+              - WordSense-Core-BasicTables-Prior-ExponentInvalid
+              - WordSense-Core-BasicTables-Prior-WeightInvalid
+            tests:
+              - BasicTables_Load_PriorOnWithoutWeight_Throws
+
+          - id: WordSense-Core-Tagger-WordPrior-Format
+            title: >-
+              The core subsystem shall reject a table of the model in the format WSB5, which has no word prior.
+            tags: [subsystem]
+            justification: |
+              A table in a format that has no word prior must fail loudly, not be read as a current one.
+            children:
+              - WordSense-Core-BasicTables-Wsb5
+            tests:
+              - BasicTables_Load_PreviousFormatWsb5_ThrowsUnknownFormat
 
           - id: WordSense-Core-Tagger-ClauseVerb
             title: >-
@@ -513,8 +620,25 @@ sections:
               - WordSense-Core-CueModel-Score
               - WordSense-Core-CueModel-Tense
               - WordSense-Core-BasicTables-Tense
+              - WordSense-Core-Cues-Reliability
             tests:
               - BasicClassifier_ClassifyAsync_SamePartOfSpeechAnalyses_UsesCues
+
+          - id: WordSense-Core-Cues-Reliability
+            title: >-
+              The core subsystem shall scale the cue scores of a cue table by the reliability that the table carries.
+            tags: [subsystem]
+            justification: |
+              A cue table is trained on a small, balanced sample of the senses of one word, and some tables predict
+              poorly. The builder stores a reliability with each table (see the builder requirements on the held-out
+              measurement), and a table of low reliability must count for less than the tagger.
+            children:
+              - WordSense-Core-BasicTables-Reliability
+              - WordSense-Core-BasicClassifier-CueReliability-Zero
+              - WordSense-Core-BasicClassifier-CueReliability-Full
+              - WordSense-Core-BasicClassifier-CueReliability-Partial
+            tests:
+              - BasicClassifier_ClassifyAsync_CueReliability_ScalesTheCueScores
 
           - id: WordSense-Core-Fusion
             title: >-

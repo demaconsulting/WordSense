@@ -16,7 +16,13 @@ namespace WordSense.Builder;
 /// <param name="AmbiguousCorrect">The number of right tokens among the ambiguous ones.</param>
 /// <param name="Unanswered">The number of tokens the classifier does not answer (an unknown word, a number or punctuation) whose gold tag is a word class.</param>
 /// <param name="Excluded">The number of tokens whose gold tag is punctuation or other (numbers, symbols, foreign words, particles other than <c>to</c>).</param>
-internal sealed record TaggerScore(string Name, int Sentences, int Scored, int Correct, int Ambiguous, int AmbiguousCorrect, int Unanswered, int Excluded);
+/// <param name="NounVerb">The number of scored tokens whose gold tag is noun or verb and whose word has both a noun and a verb analysis in the lexicon.</param>
+/// <param name="NounVerbCorrect">The number of right tokens among those.</param>
+/// <param name="Mixed">The number of scored tokens whose word has both a closed-class analysis (pronoun, preposition, conjunction, determiner or auxiliary) and an open-class one (noun, verb, adjective or adverb) in the lexicon.</param>
+/// <param name="MixedCorrect">The number of right tokens among those.</param>
+/// <param name="Imperative">The number of scored tokens that are the first word of their sentence, whose gold tag is verb and whose next token has the gold tag determiner (<c>Run the report</c>).</param>
+/// <param name="ImperativeCorrect">The number of right tokens among those.</param>
+internal sealed record TaggerScore(string Name, int Sentences, int Scored, int Correct, int Ambiguous, int AmbiguousCorrect, int Unanswered, int Excluded, int NounVerb = 0, int NounVerbCorrect = 0, int Mixed = 0, int MixedCorrect = 0, int Imperative = 0, int ImperativeCorrect = 0);
 
 /// <summary>
 ///     Measures the part-of-speech accuracy of the basic classifier (the statistical tagger and the cue model, the path
@@ -73,10 +79,11 @@ internal static class TaggerEvaluator
 
     private static async Task<TaggerScore> ScoreAsync(string name, IReadOnlyList<TaggedSentence> sentences, Func<IEnumerable<string>, CancellationToken, Task<ClassifyResult[]>> classify, CancellationToken cancellationToken)
     {
-        int scored = 0, correct = 0, ambiguous = 0, ambiguousCorrect = 0, unanswered = 0, excluded = 0;
+        int scored = 0, correct = 0, ambiguous = 0, ambiguousCorrect = 0, unanswered = 0, excluded = 0, nounVerb = 0, nounVerbCorrect = 0, mixed = 0, mixedCorrect = 0, imperative = 0, imperativeCorrect = 0;
         foreach (var sentence in sentences)
         {
             var results = await classify(sentence.Words, cancellationToken).ConfigureAwait(false);
+            var first = Array.FindIndex(sentence.Words, w => w.Any(char.IsLetter));
             for (var i = 0; i < results.Length; i++)
             {
                 var gold = sentence.Tags[i];
@@ -96,17 +103,37 @@ internal static class TaggerEvaluator
                 var right = PosTag.Of(details.PartOfSpeech) == gold;
                 scored++;
                 correct += right ? 1 : 0;
-                var partsOfSpeech = WordLexicon.Lookup(BasicClassifier.Normalize(sentence.Words[i])).Select(a => a.PartOfSpeech).Distinct().Count();
-                if (partsOfSpeech >= 2)
+                var parts = WordLexicon.Lookup(BasicClassifier.Normalize(sentence.Words[i])).Select(a => a.PartOfSpeech).Distinct().ToList();
+                if (i == first && gold == PosTag.Verb && i + 1 < sentence.Tags.Length && sentence.Tags[i + 1] == PosTag.Determiner)
+                {
+                    imperative++;
+                    imperativeCorrect += right ? 1 : 0;
+                }
+
+                if (parts.Any(IsClosedClass) && parts.Any(p => !IsClosedClass(p) && p != PartOfSpeech.Interjection))
+                {
+                    mixed++;
+                    mixedCorrect += right ? 1 : 0;
+                }
+
+                if (parts.Count >= 2)
                 {
                     ambiguous++;
                     ambiguousCorrect += right ? 1 : 0;
+                    if (gold is PosTag.Noun or PosTag.Verb && parts.Contains(PartOfSpeech.Noun) && parts.Contains(PartOfSpeech.Verb))
+                    {
+                        nounVerb++;
+                        nounVerbCorrect += right ? 1 : 0;
+                    }
                 }
             }
         }
 
-        return new TaggerScore(name, sentences.Count, scored, correct, ambiguous, ambiguousCorrect, unanswered, excluded);
+        return new TaggerScore(name, sentences.Count, scored, correct, ambiguous, ambiguousCorrect, unanswered, excluded, nounVerb, nounVerbCorrect, mixed, mixedCorrect, imperative, imperativeCorrect);
     }
+
+    private static bool IsClosedClass(PartOfSpeech part) =>
+        part is PartOfSpeech.Pronoun or PartOfSpeech.Preposition or PartOfSpeech.Conjunction or PartOfSpeech.Determiner or PartOfSpeech.Auxiliary;
 
     /// <summary>
     ///     Reads a gold file: one token per line with the sentence id, the form and the tag letter (see <see cref="PosTag.Letters"/>),

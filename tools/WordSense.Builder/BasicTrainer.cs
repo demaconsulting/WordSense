@@ -25,7 +25,14 @@ internal sealed record BasicSuffixRow(string Suffix, int[] Counts);
 /// <param name="Analyses">The analyses in weight-column order: ordinal order of lemma, part of speech and features.</param>
 /// <param name="Hashes">The ascending feature hashes.</param>
 /// <param name="Weights">The quantized weights, feature-major.</param>
-internal sealed record BasicCueRow(string Lemma, CueAnalysis[] Analyses, ushort[] Hashes, sbyte[] Weights);
+/// <param name="Reliability">The reliability of the table, 0 to 255 (255 is fully reliable): the factor on its scores at run time.</param>
+/// <param name="Sentences">The number of training sentences of the table (not written).</param>
+/// <param name="HeldOutAccuracy">The balanced accuracy of the table on held-out folds of its own training sentences, or NaN when it was not measured (not written).</param>
+/// <param name="AnchorReliability">The reliability that the held-out accuracy alone gives, 0 to 255 (not written).</param>
+/// <param name="RunningTokens">The number of tokens of the open corpus training split that the table covers (not written).</param>
+/// <param name="RunningHelped">The number of those tokens that the cues turned from a wrong part of speech to the right one (not written).</param>
+/// <param name="RunningHurt">The number of those tokens that the cues turned from the right part of speech to a wrong one (not written).</param>
+internal sealed record BasicCueRow(string Lemma, CueAnalysis[] Analyses, ushort[] Hashes, sbyte[] Weights, byte Reliability = 255, int Sentences = 0, double HeldOutAccuracy = double.NaN, byte AnchorReliability = 255, int RunningTokens = 0, int RunningHelped = 0, int RunningHurt = 0);
 
 /// <summary>
 ///     The shared tense table of the basic model, ready to be written.
@@ -82,7 +89,7 @@ internal sealed record BasicModelData(
     /// </summary>
     /// <returns>The summary.</returns>
     public string Summary() =>
-        $"{Words.Count} words ({ClosedWords} closed-class), {Suffixes.Count} suffixes, {Cues.Count} cue tables, {CueFeatures} cue features, {Collisions} hash collisions, {Skipped} cue sentences skipped (their label stands for no single analysis)"
+        $"{Words.Count} words ({ClosedWords} closed-class), {Suffixes.Count} suffixes, {Cues.Count} cue tables ({Cues.Count(c => c.Reliability < 255)} damped, {Cues.Count(c => c.AnchorReliability < 255)} by their held-out accuracy and {Cues.Count(c => c.RunningHurt > c.RunningHelped)} with more tokens hurt than helped on running text), {CueFeatures} cue features, {Collisions} hash collisions, {Skipped} cue sentences skipped (their label stands for no single analysis)"
         + (Tense is { } t ? $", a tense table of {t.Hashes.Length} features from {t.Past} past and {t.NonPast} non-past verbs ({t.Collisions} hash collisions)" : string.Empty);
 }
 
@@ -150,6 +157,36 @@ internal static class BasicTrainer
         var (cues, collisions, skipped) = TrainCues(anchors, choosers, hp);
         var tense = verbs is null ? null : TrainTense(verbs, hp);
         return new BasicModelData(hp, counts.Unigrams, counts.Bigrams, counts.Trigrams, counts.ClauseBigrams, counts.ClauseTrigrams, words, suffixes, cues, collisions, skipped, tense);
+    }
+
+    /// <summary>
+    ///     Gives a trained model the tag statistics of other counts: the n-grams, the tabled words and the suffixes come from
+    ///     <paramref name="counts"/>, everything else (the cue tables, the hyper-parameters) is the template's and the tense
+    ///     table is left out. The running-text measurement of the cue tables uses it to train the tagger on part of the
+    ///     training split and score the rest.
+    /// </summary>
+    /// <param name="template">The trained model.</param>
+    /// <param name="counts">The tag counts of the part of the training split.</param>
+    /// <param name="lexicon">The lexicon of the core package.</param>
+    /// <returns>The model with the statistics of <paramref name="counts"/>.</returns>
+    internal static BasicModelData WithCounts(BasicModelData template, TaggerCounts counts, Func<string, ImmutableArray<WordDetails>> lexicon)
+    {
+        ArgumentNullException.ThrowIfNull(template);
+        ArgumentNullException.ThrowIfNull(counts);
+        ArgumentNullException.ThrowIfNull(lexicon);
+        var hp = template.Hyperparameters;
+        var closed = counts.Words.ToDictionary(p => p.Key, p => ClosedMaskOf(p.Value, hp), StringComparer.Ordinal);
+        return template with
+        {
+            Unigrams = counts.Unigrams,
+            Bigrams = counts.Bigrams,
+            Trigrams = counts.Trigrams,
+            ClauseBigrams = counts.ClauseBigrams,
+            ClauseTrigrams = counts.ClauseTrigrams,
+            Words = SelectWords(counts, lexicon, closed, hp),
+            Suffixes = SelectSuffixes(counts, lexicon, closed, hp),
+            Tense = null,
+        };
     }
 
     /// <summary>
@@ -434,8 +471,11 @@ internal static class BasicTrainer
             }
 
             var featureCounts = new Dictionary<FeatureRef, int[]>();
-            foreach (var row in rows)
+            var rowFeatures = new FeatureRef[rows.Count][];
+            var rowColumns = new int[rows.Count];
+            for (var r = 0; r < rows.Count; r++)
             {
+                var row = rows[r];
                 var column = columnOf[row.Column];
                 var (start, length) = BasicClassifier.SegmentOf(row.Words, row.Target);
                 var lower = new string[length];
@@ -445,6 +485,8 @@ internal static class BasicTrainer
                 }
 
                 var count = CueModel.Extract(lower, row.Target - start, features);
+                rowFeatures[r] = features.AsSpan(0, count).ToArray();
+                rowColumns[r] = column;
                 for (var f = 0; f < count; f++)
                 {
                     if (!featureCounts.TryGetValue(features[f], out var perAnalysis))
@@ -458,11 +500,166 @@ internal static class BasicTrainer
             }
 
             var (cue, dropped) = BuildCue(group.Key, columns, featureCounts, hp);
-            cues.Add(cue);
+            var accuracy = HeldOutAccuracy(group.Key, columns, rows, rowFeatures, rowColumns, hp);
+            cues.Add(cue with
+            {
+                Reliability = ReliabilityOf(accuracy, columns.Length, hp.CueSkillTarget),
+                AnchorReliability = ReliabilityOf(accuracy, columns.Length, hp.CueSkillTarget),
+                Sentences = rows.Count,
+                HeldOutAccuracy = accuracy,
+            });
             collisions += dropped;
         }
 
         return (cues, collisions, skipped);
+    }
+
+    /// <summary>
+    ///     Measures how well a cue table predicts sentences that it was not trained on: the training sentences of the table
+    ///     are split into folds (by a stable hash of the sentence, so the split is reproducible), a table is trained on all
+    ///     folds but one and scores the sentences of the fold that is left out, and the balanced accuracy (the mean recall
+    ///     of the analyses that occur in the held-out folds) of all folds is returned.
+    /// </summary>
+    /// <remarks>
+    ///     The balanced accuracy is the right measure for a table that has no analysis prior: its columns are scored by the
+    ///     likelihood of the features alone, and the anchors of the columns are a balanced sample of the senses, not of the
+    ///     use of the word. A table that gets its own anchors wrong when they are held out has weights that are mostly the
+    ///     noise of a small sample.
+    /// </remarks>
+    /// <param name="table">The key of the table.</param>
+    /// <param name="columns">The analyses of the table.</param>
+    /// <param name="rows">The training sentences of the table.</param>
+    /// <param name="rowFeatures">The context features of each sentence.</param>
+    /// <param name="rowColumns">The column of each sentence.</param>
+    /// <param name="hp">The hyper-parameters (the number of folds and the cue vocabulary rules).</param>
+    /// <returns>The balanced accuracy, or NaN when there are fewer than two folds or no fold could be scored.</returns>
+    private static double HeldOutAccuracy(
+        string table,
+        AnalysisKey[] columns,
+        List<CueSample> rows,
+        FeatureRef[][] rowFeatures,
+        int[] rowColumns,
+        BasicHyperparameters hp)
+    {
+        if (hp.CueFolds < 2)
+        {
+            return double.NaN;
+        }
+
+        var fold = new int[rows.Count];
+        for (var r = 0; r < rows.Count; r++)
+        {
+            fold[r] = BasicTuner.StableHash(string.Join(' ', rows[r].Words) + "|" + rows[r].Target.ToString(System.Globalization.CultureInfo.InvariantCulture)) % hp.CueFolds;
+        }
+
+        var total = new int[columns.Length];
+        var right = new int[columns.Length];
+        for (var f = 0; f < hp.CueFolds; f++)
+        {
+            var trainCounts = new Dictionary<FeatureRef, int[]>();
+            for (var r = 0; r < rows.Count; r++)
+            {
+                if (fold[r] == f)
+                {
+                    continue;
+                }
+
+                foreach (var feature in rowFeatures[r])
+                {
+                    if (!trainCounts.TryGetValue(feature, out var perAnalysis))
+                    {
+                        perAnalysis = new int[columns.Length];
+                        trainCounts[feature] = perAnalysis;
+                    }
+
+                    perAnalysis[rowColumns[r]]++;
+                }
+            }
+
+            var (model, _) = BuildCue(table, columns, trainCounts, hp);
+            for (var r = 0; r < rows.Count; r++)
+            {
+                if (fold[r] != f)
+                {
+                    continue;
+                }
+
+                total[rowColumns[r]]++;
+                right[rowColumns[r]] += BestColumn(model, rowFeatures[r]) == rowColumns[r] ? 1 : 0;
+            }
+        }
+
+        var recall = 0.0;
+        var scored = 0;
+        for (var c = 0; c < columns.Length; c++)
+        {
+            if (total[c] > 0)
+            {
+                recall += (double)right[c] / total[c];
+                scored++;
+            }
+        }
+
+        return scored >= 2 ? recall / scored : double.NaN;
+    }
+
+    /// <summary>
+    ///     Gets the column that a trained table scores highest for the features of a sentence (the lowest column on a tie).
+    /// </summary>
+    /// <param name="cue">The trained table.</param>
+    /// <param name="features">The features of the sentence.</param>
+    /// <returns>The index of the column.</returns>
+    private static int BestColumn(BasicCueRow cue, FeatureRef[] features)
+    {
+        var width = cue.Analyses.Length;
+        var scores = new int[width];
+        for (var c = 0; c < width; c++)
+        {
+            scores[c] = cue.Analyses[c].Prior;
+        }
+
+        foreach (var feature in features)
+        {
+            var at = Array.BinarySearch(cue.Hashes, feature.Hash);
+            if (at < 0)
+            {
+                continue;
+            }
+
+            for (var c = 0; c < width; c++)
+            {
+                scores[c] += cue.Weights[(at * width) + c];
+            }
+        }
+
+        var best = 0;
+        for (var c = 1; c < width; c++)
+        {
+            best = scores[c] > scores[best] ? c : best;
+        }
+
+        return best;
+    }
+
+    /// <summary>
+    ///     Turns the held-out accuracy of a table into its reliability: a table at or above the target is fully reliable, a
+    ///     table at chance (one over its analyses) has none, and the reliability between is the share of the skill over chance
+    ///     that the target asks for.
+    /// </summary>
+    /// <param name="accuracy">The balanced held-out accuracy, or NaN when it was not measured.</param>
+    /// <param name="columns">The number of analyses of the table.</param>
+    /// <param name="target">The balanced accuracy at which a table is fully reliable; 0 turns the damping off.</param>
+    /// <returns>The reliability, 0 to 255; 255 when the damping is off or the accuracy is unknown.</returns>
+    internal static byte ReliabilityOf(double accuracy, int columns, double target)
+    {
+        if (target <= 0 || double.IsNaN(accuracy))
+        {
+            return 255;
+        }
+
+        var chance = 1.0 / columns;
+        var skill = target > chance ? (accuracy - chance) / (target - chance) : 1.0;
+        return (byte)Math.Round(Math.Clamp(skill, 0.0, 1.0) * 255);
     }
 
     /// <summary>

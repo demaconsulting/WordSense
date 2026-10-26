@@ -513,6 +513,34 @@ ranks these senses wrongly falls below them and fails the build, which is the po
 check and says nothing about the accuracy of the ranking on running text; that measurement is the all-words gold set of
 `corpus/allwords` (see `docs/user_guide/accuracy.md`).
 
+### Deliberate model change: the word prior of the tagger (rule 3, Basic retrained)
+
+Basic has a part-of-speech prior for every word (the WordNet 3.0 tag counts of the senses of the analyses blended into
+the emission, every ambiguous word tabled, the exponent of the emission weight at 1) and a reliability for every cue
+table (from its anchors and from the running text of the training split of the open corpus); see
+`docs/user_guide/accuracy.md`, "The Word Prior of the Tagger". The encoder models take the part of speech and the
+probabilities of Basic for the words they do not decide. The expectation file is written with
+`evaluate-suite --write-expectations` under rule 3, and the three platform-sensitive rows are kept under rule 4
+(`C-content-6`, `H-close-4` and `H-defense-1` of BertBaseCased measure `fine` on the development machine and stay as
+recorded). Answered / fine on the 364 rows: Basic 96.43% / 79.12%, MiniLM 96.43% / 91.76%, BertBaseCased 98.63% /
+95.60%. Two rows are graded as a miss for a model that could read them right; rule 3 explains both:
+
+<!-- markdownlint-disable MD013 -->
+
+| Row | Model | Grade | Why |
+| --- | --- | --- | --- |
+| `H-present-4` (`The shop sells ideas for wedding presents under twenty dollars`) | Basic | miss | `presents` has five verb counts in the open corpus, and the WordNet 3.0 counts of `present` are verb-heavy, so the word prior leans to the verb, which is chosen at 0.79. The context (`wedding presents`) is a noun; a hand fix would be a hand list, so the row is graded as a miss. |
+| `M-long-2` (`She has long brown hair that reaches her waist`) | MiniLM | miss | A near tie decided by the tagger: the combined result has the adverb at 0.498 and the adjective at 0.489. Basic reads `long` as an adverb here (a miss for Basic in the file too) at 0.997, which moves the blend of MiniLM (the primary weight 0.6) across the tie. |
+
+<!-- markdownlint-enable MD013 -->
+
+The strength of the prior is chosen on the development files with the suite as a binary guard only: a weaker prior (3
+pseudo counts) gains more on the development files but loses five suite rows (`state`, `feel`, `august`, `resume` and
+`present`), so the strength of 7 stays, which leaves `H-present-4` as the one row of Basic that is graded a miss. The
+pseudo count of the running-text reliability of the cue tables is chosen the same way: the development files are flat,
+and a pseudo count of 20 or less damps the table of `feel` (0 tokens helped and 2 hurt) enough to turn `M-feel-2`
+(Basic, `a cozy feel`, a noun at 0.54 against 0.46) into a miss, while 50 keeps it.
+
 ## Known misses
 
 The rows that all three models miss (`C-polish-2`, the adjective `Polish` in `a traditional Polish soup`, which the

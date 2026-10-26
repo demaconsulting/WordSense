@@ -72,9 +72,13 @@ returns the analyses of the form (one per lemma, part of speech and features, ne
 3. several analyses: `CueModel.Extract` gets the features of the word in its segment; `BasicTables.FindCue` looks up the
    cue table of the normalized word first (a form that spans lemmas, such as `left` or `bases`, has a table of its own)
    and then the table of the lemma of the first analysis. A table gives one cue score per analysis (`NaN` for an analysis
-   it has no column for), otherwise no analysis has a cue score, which leaves the fusion to the tagger alone;
+   it has no column for), otherwise no analysis has a cue score, which leaves the fusion to the tagger alone. The scores
+   of a table are scaled by its reliability (`LemmaCue.Reliability`, the factor on the inverse temperature of the fusion),
+   so a table that predicts held-out sentences of its own anchors poorly does not outvote the tagger and a table of
+   reliability 0 is as good as none;
    `SenseFusion.Fuse` gives one probability per analysis, and the case of the written word and then the tense of the
-   context adjust it (below).
+   context adjust it (below). The tagger token of a word with several parts of speech carries the catalog support of its
+   analyses (`WordSupport.Of`), which `PosTagger` blends into the emission of the word as its word prior.
    The classifier builds an `AnalysisCandidate` for each analysis (with the one sense of an analysis that has exactly
    one sense, or the ranked senses of an analysis that has several) and sorts them with a stable insertion sort (the
    number of analyses is small): the slots (lemma and part of speech) by the sum of the probabilities of their
