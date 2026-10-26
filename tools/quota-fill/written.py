@@ -43,7 +43,7 @@ def cmd_export(args):
     wanted = set(world["by_lemma"]) if args.tier else qf.lemmas_up_to(world, args.lemmas_up_to or args.wave)
     if args.skip_up_to:
         wanted -= qf.lemmas_up_to(world, args.skip_up_to) - set(qf.TECH_ALL)
-    only = set(args.only_lemmas.split(",")) if args.only_lemmas else None
+    only = set(qf.read_lemma_list(args.only_lemmas)) if args.only_lemmas else None
     tech = qf.read_tech_targets() if args.tech else {}
     if args.tech:
         # the written STE-style sentences complete the real FAA rows to the target, and are at least 8 per sense
@@ -262,7 +262,7 @@ if __name__ == "__main__":
             p.add_argument("--lemmas-up-to", type=int, default=0,
                            help="include the lemmas of every wave up to this one (a later round of an earlier wave)")
             p.add_argument("--skip-up-to", type=int, default=0, help="leave out the lemmas of the waves up to this one")
-            p.add_argument("--only-lemmas", default="", help="comma-separated lemmas that replace the wave set")
+            p.add_argument("--only-lemmas", default="", help="the lemmas that replace the wave set (a file of lemmas, or a comma-separated list)")
             p.add_argument("--tech", action="store_true", help="the technical senses of tech-senses.tsv (STE-style sentences)")
             p.add_argument("--retry", action="store_true", help="second round for senses that stayed short (another prompt)")
     a = ap.parse_args()

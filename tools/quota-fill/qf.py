@@ -54,15 +54,36 @@ def is_eval_document(prov_doc):
     return hashlib.sha256(("evaldoc|" + prov_doc).encode("utf-8")).digest()[0] % EVAL_DOCUMENT_SHARE == 0
 
 
-def doc_role(pdoc, doc_splits):
-    """The role of a document for new rows: "eval" (held-out rows only), "train" (anchors only) or None (the document
-    already supplies the other kind of row, so it supplies no new rows). A document that is not an evaluation document
-    but already supplies both kinds (the rows of the relabeled corpus and of wave 1 predate the rule) may supply more
-    anchors: it has anchors already, so no document becomes less clean for the evaluation."""
-    splits = doc_splits.get(pdoc, set())
+def doc_role(pdoc, lemma, lemma_splits):
+    """The role of a document for new rows of one lemma: "eval" (held-out rows only), "train" (anchors only) or None
+    (the document already supplies the other kind of row for this lemma, so it supplies no new rows of it).
+
+    The role is per lemma: an evaluation document that supplies anchors for other lemmas may supply held-out rows for
+    this lemma, but within one lemma a document never gives both anchors and held-out rows. A document that is not an
+    evaluation document but already supplies both kinds for the lemma (the rows of the relabeled corpus and of wave 1
+    predate the rule) may supply more anchors: it has anchors already, so no document becomes less clean for the
+    evaluation. `lemma_splits` is the result of real_documents_by_lemma()."""
+    splits = lemma_splits.get((lemma, pdoc), set())
     if is_eval_document(pdoc):
         return "eval" if "anchors" not in splits else None
     return "train" if "holdout" not in splits or "anchors" in splits else None
+
+
+def read_lemma_list(spec):
+    """A list of lemmas from a file (one lemma per line, or a TSV whose first column is the lemma and whose header cell
+    is "lemma"; blank lines and lines that start with # are skipped) or from a comma-separated list. A file is given
+    by its path, optionally with a leading @."""
+    path = spec[1:] if spec.startswith("@") else spec
+    if not spec.startswith("@") and not os.path.isfile(path):
+        return list(dict.fromkeys(x.strip() for x in spec.split(",") if x.strip()))
+    lemmas = []
+    with open(path, encoding="utf-8") as handle:
+        for number, line in enumerate(handle):
+            cell = line.rstrip("\r\n").split("\t", 1)[0].strip()
+            if not cell or cell.startswith("#") or (number == 0 and cell == "lemma"):
+                continue
+            lemmas.append(cell)
+    return list(dict.fromkeys(lemmas))
 
 
 def tech_lemmas():
@@ -112,14 +133,35 @@ def extra_real_wanted():
     return {k: v for k, v in wanted.items() if v > 0}
 
 
-def real_documents_by_split():
-    """prov document -> set of splits ('anchors', 'holdout') in which the corpus already has a real row of it."""
+def real_documents_by_lemma():
+    """(lemma, prov document) -> set of splits ('anchors', 'holdout') in which the corpus already has a real row of the
+    lemma from that document. The provenance id of a fine-sense row is the hash of `lemma|sentence`, the one of a
+    chooser row the hash of `form|sentence`; both are joined to the lemma of the row."""
+    documents = {}
+    for rid, split, source, key in provenance_rows():
+        if source not in WRITTEN_SOURCES:
+            documents[rid] = (source + ":" + (key if source.startswith("tatoeba") else key.split("#")[0]), split)
     result = {}
-    for _id, split, source, key in provenance_rows():
-        if source in WRITTEN_SOURCES:
-            continue
-        doc = source + ":" + (key if source.startswith("tatoeba") else key.split("#")[0])
-        result.setdefault(doc, set()).add(split)
+
+    def add(owner, lemma, sentence):
+        found = documents.get(hashlib.sha256((owner + "|" + sentence).encode("utf-8")).hexdigest()[:12])
+        if found:
+            result.setdefault((lemma, found[0]), set()).add(found[1])
+
+    for folder in ("anchors", "holdout"):
+        for path in corpus_files(folder):
+            with open(path, encoding="utf-8") as handle:
+                for line in handle:
+                    p = line.rstrip("\n").split("\t")
+                    if len(p) == 4:
+                        add(p[0], p[0], p[3])
+    for sub in ("anchors", "holdout"):
+        for path in corpus_files(os.path.join("choosers", sub)):
+            with open(path, encoding="utf-8") as handle:
+                for line in handle:
+                    p = line.rstrip("\n").split("\t")
+                    if len(p) == 3:
+                        add(p[0], p[1], p[2])
     return result
 
 

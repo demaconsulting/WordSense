@@ -219,23 +219,23 @@ def cmd_candidates(args):
     targets = [(l, tags, miss) for (l, tags, miss) in plan if miss > 0 or extras_by_lemma.get(l, 0) > 0]
     targets += [(l, 0, 0) for l in sorted(extras_by_lemma) if l not in planned and l in world["by_lemma"]]
     if args.only_lemmas:
-        names = [x for x in args.only_lemmas.split(",") if x in world["by_lemma"]]
+        names = [x for x in qf.read_lemma_list(args.only_lemmas) if x in world["by_lemma"]]
         targets = [(l, 0, missing[l]) for l in names if missing[l] > 0 or extras_by_lemma.get(l, 0) > 0]
     wanted = set()
     for l, _t, _m in targets:
         wanted |= lemma_forms[l]
     hits = scan_pool(rows, wanted)
     print(len(targets), "lemmas;", sum(len(v) for v in hits.values()), "hits of", len(hits), "forms", flush=True)
-    doc_splits = qf.real_documents_by_split()
+    lemma_splits = qf.real_documents_by_lemma()
     role_cache = {}
     tech = qf.tech_lemmas()
 
-    def role_of(h):
+    def role_of(lemma, h):
         sid, doc, family = rows[h[0]][0], rows[h[0]][1], rows[h[0]][2]
         pdoc = qf.prov_document(sid, doc, family)
-        if pdoc not in role_cache:
-            role_cache[pdoc] = qf.doc_role(pdoc, doc_splits)
-        return role_cache[pdoc]
+        if (lemma, pdoc) not in role_cache:
+            role_cache[(lemma, pdoc)] = qf.doc_role(pdoc, lemma, lemma_splits)
+        return role_cache[(lemma, pdoc)]
 
     selected = []  # (lemma, form, row index, start, end, role)
     extras = extras_by_lemma
@@ -256,7 +256,7 @@ def cmd_candidates(args):
             for h in hits[f]:
                 if args.faa_tech_only and rows[h[0]][2] == "faa" and lemma not in tech:
                     continue
-                r = role_of(h)
+                r = role_of(lemma, h)
                 if r:
                     by_role[r].append(h)
             n_eval = int(round(alloc[f] * 0.25))
@@ -330,7 +330,8 @@ if __name__ == "__main__":
     c.add_argument("--cap", type=int, default=450)
     c.add_argument("--min", type=int, default=150)
     c.add_argument("--family", default="", help="restrict the pool to one family (supplementary batch)")
-    c.add_argument("--only-lemmas", default="", help="comma-separated lemmas that replace the wave plan")
+    c.add_argument("--only-lemmas", default="",
+                   help="the lemmas that replace the wave plan (a file of lemmas, or a comma-separated list)")
     c.add_argument("--first-batch", type=int, default=1, help="number of the first batch (appends to a wave)")
     c.add_argument("--doc-cap", type=int, default=0, help="candidates per document and lemma (default 5)")
     c.add_argument("--faa-tech-only", action="store_true",

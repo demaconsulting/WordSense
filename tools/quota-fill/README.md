@@ -22,18 +22,31 @@ CC0 export `tools/quota-fill/cache/cc0.tar.bz2` and the FAA PDFs (`tools/quota-f
 | `textutil.py` | Sentence splitting, the sentence filter and the duplicate key of the builder (`Corpus.Normalize`) |
 | `pool.py build` | Builds the harvest pool from the public-domain documents and the CC0 Tatoeba export |
 | `faa.py extract` | Extracts the text of the accepted FAA handbooks (credited pages dropped) into the pool documents |
-| `curate_new.py export\|apply` | Adds lemmas (labels reviewed by a luna pass) and project senses to `corpus/curation/senses.tsv` |
-| `harvest.py candidates WAVE` | Samples candidate sentences for the lemmas of a wave and writes the labeling batches (`--family`, `--only-lemmas`, `--first-batch` add a supplementary batch; `--tier C\|U\|R` makes the wave every lemma with a short sense of that tier, named e.g. `4c`, `4u` or `4r` (a wave id with a letter is a tier wave, and the commands that select by tier (`harvest.py candidates` and `status`, `fill.py select`, `written.py export`) refuse it without `--tier`); `fill.py select` and `written.py export` take the same `--tier`; `--faa-tech-only` on `harvest.py candidates` and `fill.py select` keeps FAA text to the lemmas and senses of `corpus/curation/tech-senses.tsv`) |
+| `curate_new.py apply\|export --lemmas FILE`, `curate_new.py groups FILE` | `apply` appends the senses of the listed lemmas (a file with one lemma per line, or a TSV with the lemma first) to `corpus/curation/senses.tsv`, with the labels of the data (a reviewed label from `work/curate/out` replaces one); `export` writes the label-review batches; `groups` appends reviewed groups to `groups.tsv` and marks their members in `senses.tsv` |
+| `harvest.py candidates WAVE` | Samples candidate sentences for the lemmas of a wave and writes the labeling batches (`--family`, `--only-lemmas`, `--first-batch` add a supplementary batch; `--only-lemmas` takes a file of lemmas or a comma-separated list and replaces the wave plan; `--tier C\|U\|R` makes the wave every lemma with a short sense of that tier, named e.g. `4c`, `4u` or `4r` (a wave id with a letter is a tier wave, and the commands that select by tier (`harvest.py candidates` and `status`, `fill.py select`, `written.py export`) refuse it without `--tier`); `fill.py select` and `written.py export` take the same `--tier`; `--faa-tech-only` on `harvest.py candidates` and `fill.py select` keeps FAA text to the lemmas and senses of `corpus/curation/tech-senses.tsv`) |
 | `confusion.py WAVE` | Chooses the senses that get extra real anchors from the calibration-split errors |
-| `fill.py ingest WAVE`, `fill.py select WAVE [--kind real\|written]` | Reads the labels, picks the rows that fill the deficits and writes the corpus files |
-| `written.py export\|ingest\|labeled WAVE` | The top-up by writing: writer batches, validation, blind-label batches |
+| `fill.py ingest WAVE`, `fill.py select WAVE [--kind real\|written] [--only-lemmas FILE]` | Reads the labels, picks the rows that fill the deficits and writes the corpus files. `select` reads every `work/w*/labeled.tsv`, so a new wave always gives `--only-lemmas` (a file of lemmas or a comma-separated list): only those lemmas are filled and every other lemma stays as it is |
+| `written.py export\|ingest\|labeled WAVE` | The top-up by writing: writer batches (`--only-lemmas` as in `harvest.py`), validation, blind-label batches |
 | `chooser_harvest.py candidates\|select WAVE` | Harvest of chooser rows for the forms that lack a lemma |
 | `choosers.py status` | The forms whose chooser rows lack a lemma |
 | `coverage.py [WAVE]` | Writes `corpus/coverage/quota-coverage.tsv` and prints the counts |
 | `usage_weighted.py LABEL=OUTCOMES.tsv ...` | Diagnostic: re-weights the real test rows of `evaluate --outcomes` files by the harvest share of each sense (an independent usage prior) and prints the weighted fine top-1 and sense-level figures (see the user guide chapter "Accuracy and Model Choice") |
-| `prompts/` | The instructions given to the labeler, the writers, the lemma chooser and the label reviewer |
+| `prompts/` | The instructions given to the labeler, the writers, the lemma chooser, the label reviewer and the group proposer and reviewer (`group-proposer.md` proposes the near-duplicate groups of a lemma and part of speech from the full glosses; `group-reviewer.md` judges them blind, from the glosses only) |
 
 <!-- markdownlint-enable MD013 -->
+
+## Quotas and document roles
+
+A sense needs rows by its tier, from the WordNet 3.0 tag count (`lexindex.QUOTA`): **C** (5 or more tags) 20 anchors and
+5 held-out rows, **U** (1 to 4 tags, and every project sense) 10 and 3, **R** (no tag) 5 and 2. An R sense of a lemma
+with 15 or more senses needs 3 and 1 (`lexindex.quota_of`).
+
+The role of a real document is per lemma (`qf.doc_role`). One document in four is an evaluation document (the hash
+`SHA-256("evaldoc|" + document)`): it supplies held-out rows only, whatever other lemmas it supplies anchors for, and every
+other document supplies anchors only. Within one lemma a document never supplies both: an evaluation document that
+already has an anchor of the lemma supplies no held-out row of it, and a document that is not an evaluation document and
+already has a held-out row of the lemma and no anchor supplies no anchor (`qf.real_documents_by_lemma` joins the
+provenance rows to the lemmas of the rows).
 
 The pool documents are the ones of the open English part-of-speech corpus (`corpus/open/sources.tsv`) and the FAA
 documents of `faa.py`; the sources and their licence basis are in "Sources" of `corpus/README.md`. Wikipedia, Wiktionary,

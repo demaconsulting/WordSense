@@ -117,9 +117,11 @@ anchor rows of the choosers (a form whose label names one analysis).
    high-confidence answers are kept (about 88% of the candidates get a label).
 3. *Selection.* For each sense with a deficit, round robin over forms and documents (at most 3 sentences of a sense and
    10 of a lemma from one document), no near-duplicate (token Jaccard 0.8) of a corpus or suite sentence of the lemma.
-   Held-out sentences are filled first with real text, the anchors take the rest. A document gives either anchors or
-   held-out rows (an evaluation document is chosen by hash, one in four), so the held-out rows are disjoint from the
-   anchors by document; a document of the older rows that already supplies both may supply more anchors. The tier
+   Held-out sentences are filled first with real text, the anchors take the rest. The role of a document is per lemma:
+   an evaluation document (chosen by hash, one in four) gives held-out rows only, and every other document gives
+   anchors only. A document that supplies anchors for other lemmas may therefore supply held-out rows for a lemma, but
+   within one lemma a document never gives both anchors and held-out rows; a document of the older rows that already
+   supplies both for the lemma may supply more anchors. The tier
    waves use the technical FAA text for the technical senses only (`--faa-tech-only`), and an FAA sentence with a
    figure reference or a word split by the PDF extraction is always dropped.
 4. *Extra real anchors.* The senses that took part in a fine top-1 error of the encoders on the real *calibration* rows
@@ -159,8 +161,8 @@ the Tatoeba sentence id, or `quota-w<N>-written` for a sentence written by a mod
 **Files.** `quota-w3-*` fills the lemmas of ranks 121-200 and the technical lemmas. `quota-w32-written.tsv` is the second
 round for senses that stayed short (written with another prompt). `quota-w33-real.tsv` and `quota-w33-written.tsv` are
 the technical senses of `curation/tech-senses.tsv`. `quota-w<N>-forms*.tsv` follow the document roles like the
-fine-sense rows (an evaluation document gives held-out rows only, every other document anchors only), so a chooser row
-cannot link anchors and the real held-out split of one document.
+fine-sense rows (an evaluation document gives held-out rows only, every other document anchors only, per lemma), so a
+chooser row cannot link the anchors and the real held-out rows of one lemma through a document.
 
 **The encoder corpus is a balanced classifier corpus.** `anchors/`, `holdout/` and `choosers/` hold the number of
 sentences that the quota of a sense asks for, not a sample of running text (see "Two kinds of corpus, two uses").
@@ -169,10 +171,12 @@ sentences that the quota of a sense asks for, not a sample of running text (see 
 `tools/WordSense.Builder/RealSplit.cs`). The *calibration* half chooses the per-lemma thresholds of the encoder weights.
 The *test* half never influences a weight or a threshold and is the headline of `evaluate`, which also reports the
 calibration half, the written held-out sentences and the whole holdout as secondary or diagnostic sets. The documents of
-the two halves are disjoint. The harvest also keeps the documents that supply held-out rows apart from the documents
-that supply anchors (an *evaluation document* is chosen by the hash `SHA-256("evaldoc|" + document)`, one in four; the
-other documents supply anchors only). The older rows share some documents between anchors and held-out sentences, and
-`evaluate` reports the test rows of documents without anchors apart. The representative measurements are the open
+the two halves are disjoint. The harvest also keeps the documents that supply held-out rows of a lemma apart from the
+documents that supply anchors of that lemma (an *evaluation document* is chosen by the hash
+`SHA-256("evaldoc|" + document)`, one in four; the other documents supply anchors only; a document may supply anchors
+for one lemma and held-out rows for another). The older rows share some documents between anchors and held-out
+sentences, and `evaluate` reports the test rows of documents without anchors apart. The representative measurements are
+the open
 English part-of-speech corpus (`open/representative`) and SemCor (the independent evaluation).
 
 ## Real Sentences and Provenance

@@ -127,7 +127,7 @@ def cmd_select(args):
             os.remove(old)
     blocked = qf.corpus_keys()
     vocab = set(qf.load_world()["index"])
-    doc_splits = qf.real_documents_by_split()
+    lemma_splits = qf.real_documents_by_lemma()
     current = choosers.form_lemmas()
     cands = collections.defaultdict(list)
     stats = collections.Counter()
@@ -161,7 +161,7 @@ def cmd_select(args):
                     stats["damaged FAA text"] += 1
                     continue
                 stats["labeled high"] += 1
-                item["role"] = qf.doc_role(qf.prov_document(item["sid"], item["doc"], item["family"]), doc_splits)
+                item["role"] = qf.doc_role(qf.prov_document(item["sid"], item["doc"], item["family"]), lemma, lemma_splits)
                 if item["role"] is None:
                     stats["document has the other split"] += 1
                     continue

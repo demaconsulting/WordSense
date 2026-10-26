@@ -7,7 +7,8 @@ of the quota filling (harvest of real sentences and writing of the missing ones)
 
 The tiers size the data of a sense by its WordNet 3.0 tag count: **C** (five or more tags) needs 20 anchors and 5
 held-out sentences, **U** (one to four tags, and a project sense) 10 and 3, **R** (no tag) 5 and 2. A sense is `met` when
-it has both quotas, `short` when it has at least one sentence but misses a quota and `empty` when it has none.
+it has both quotas, `short` when it has at least one sentence but misses a quota and `empty` when it has none. In
+`quota-coverage.tsv`, the report of the current scope, an R sense of a lemma with 15 or more senses needs 3 and 1.
 
 <!-- markdownlint-disable MD013 -->
 

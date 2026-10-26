@@ -2,7 +2,9 @@
 
   python fill.py ingest WAVE            read work/w<WAVE>/out/*.tsv, validate against the batch meta, write labeled.tsv
   python fill.py select WAVE            choose rows for the senses with a deficit, write the corpus files of the wave
-                                        (anchors, holdout, provenance, choosers) named quota-w<WAVE>-real.tsv
+                                        (anchors, holdout, provenance, choosers) named quota-w<WAVE>-real.tsv;
+                                        --only-lemmas FILE restricts the deficits to the listed lemmas (a new wave must,
+                                        because select reads every labeled.tsv, the old waves' included)
 
 Every row written here is TARGETED by nature (a sentence found for a specific sense or form). The provenance row of a
 sentence has only the columns that the builder and these tools read (`id`, `split`, `source`, `source_key`); the licence
@@ -151,18 +153,25 @@ def spaced(n, h):
 def cmd_select(args):
     kind = args.kind
     tag = f"quota-w{args.wave}-{kind}.tsv"
+    world = qf.load_world()
+    senses = world["senses"]
+    listed = None
+    if args.only_lemmas:
+        listed = set(qf.read_lemma_list(args.only_lemmas))
+        unknown = sorted(listed - set(world["by_lemma"]))
+        if unknown:
+            raise SystemExit(f"--only-lemmas names lemmas that are not in the scope (corpus/curation/senses.tsv): "
+                             f"{', '.join(unknown[:10])}")
     for folder in ("anchors", "holdout", "provenance", os.path.join("choosers", "anchors"),
                    os.path.join("choosers", "holdout")):
         old = os.path.join(qf.CORPUS, folder, tag)
         if os.path.exists(old):
             os.remove(old)
-    world = qf.load_world()
-    senses = world["senses"]
     status = lexindex.quota_status(senses, world["scope"])
     deficit = {r["sense_id"]: (max(0, r["anchor_quota"] - r["anchors"]), max(0, r["holdout_quota"] - r["holdout"]))
                if not args.tier or r["tier"] == args.tier else (0, 0) for r in status}
     blocked = qf.corpus_keys()
-    doc_splits = qf.real_documents_by_split() if kind == "real" else {}
+    lemma_splits = qf.real_documents_by_lemma() if kind == "real" else {}
     extra = qf.extra_real_wanted() if kind == "real" and not args.tier else {}
     if args.tech:
         # the technical senses: extra anchors beyond the quota; the written ones fill what real FAA text did not
@@ -177,6 +186,10 @@ def cmd_select(args):
                         if len(parts) == 4:
                             have[parts[1]] += 1
             extra = {s: max(8, n - have[s]) for s, n in extra.items()}
+    if listed is not None:
+        # The other lemmas are left alone: the labeled files of earlier waves hold rows that the blind checks removed
+        deficit = {s: d for s, d in deficit.items() if senses[s]["lemma"] in listed}
+        extra = {s: n for s, n in extra.items() if senses[s]["lemma"] in listed}
     labeled = collections.defaultdict(list)
     vocab = set(world["index"])
     tech_senses = set(qf.read_tech_targets())
@@ -191,16 +204,17 @@ def cmd_select(args):
                 role = None
                 if kind == "real":
                     sid, form, tl, sense, conf, doc, family, sentence = parts[:8]
-                    pdoc = qf.prov_document(sid, doc, family)
-                    role = qf.doc_role(pdoc, doc_splits)
-                    if role is None:
-                        continue
                 else:
                     sid, form, intended, sense, conf, doc, family, sentence = parts
                     if sense != intended:
                         continue
                 if conf != "high" or sense not in deficit:
                     continue
+                if kind == "real":
+                    # the role of the document for the lemma of the labeled sense
+                    role = qf.doc_role(qf.prov_document(sid, doc, family), senses[sense]["lemma"], lemma_splits)
+                    if role is None:
+                        continue
                 if args.tech and kind == "real" and family != "faa":
                     continue
                 if family == "faa" and (textutil.pdf_damaged(sentence, vocab)
@@ -325,6 +339,9 @@ if __name__ == "__main__":
             p.add_argument("--faa-tech-only", action="store_true",
                            help="FAA sentences only for the technical senses of tech-senses.tsv (general text for the rest)")
             p.add_argument("--tech", action="store_true", help="the technical senses: extra anchors of tech-senses.tsv, real rows from FAA text only")
+            p.add_argument("--only-lemmas", default="",
+                           help="fill only the senses of these lemmas (a file of lemmas, or a comma-separated list); "
+                                "the deficits of every other lemma stay untouched")
     a = ap.parse_args()
     if a.cmd == "select":
         qf.check_tier_wave(ap, a)
