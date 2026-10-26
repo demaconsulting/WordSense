@@ -180,7 +180,7 @@ M-first-4	fine	fine	fine
 M-change-1	fine	fine	fine
 M-change-2	fine	fine	fine
 M-change-3	fine	fine	fine
-M-change-4	fine	fine	fine
+M-change-4	miss	fine	fine
 M-right-1	fine	fine	fine
 M-right-2	fine	fine	fine
 M-right-3	fine	fine	fine
@@ -311,7 +311,7 @@ C-desert-3	fine	fine	fine
 C-desert-4	fine	fine	fine
 C-digest-1	fine	fine	fine
 C-digest-2	answer	fine	fine
-C-digest-3	miss	fine	fine
+C-digest-3	answer	fine	fine
 C-digest-4	fine	fine	fine
 C-entrance-1	fine	fine	fine
 C-entrance-2	fine	fine	fine

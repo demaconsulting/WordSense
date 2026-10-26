@@ -230,6 +230,25 @@ public class CueRunningReliabilityTests
     }
 
     /// <summary>
+    ///     When every sentence falls into one fold there are no counts of other folds to score it with, so nothing is
+    ///     measured and no error occurs.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseBuilder_CueRunningReliability_MeasureAsync_AllSentencesInOneFold_MeasuresNothing()
+    {
+        // Arrange: the sentences that a stable hash puts into fold 0 of two
+        var data = Train(truthful: true, Hyperparameters());
+        var oneFold = Sentences().Where(s => BasicTuner.StableHash(string.Join(' ', s.Words)) % 2 == 0).ToList();
+        Assert.NotEmpty(oneFold);
+
+        // Act
+        var stats = await CueRunningReliability.MeasureAsync(data, oneFold, Lookup, TestContext.Current.CancellationToken, Toy);
+
+        // Assert
+        Assert.Empty(stats);
+    }
+
+    /// <summary>
     ///     The same inputs give the same statistics.
     /// </summary>
     [Fact]
@@ -247,22 +266,23 @@ public class CueRunningReliabilityTests
     }
 
     /// <summary>
-    ///     A model with the counts of other sentences keeps its cue tables and drops the tense table.
+    ///     A model with the counts of other sentences keeps its cue tables and drops the tense and noun/verb tables.
     /// </summary>
     [Fact]
     public void WordSenseBuilder_BasicTrainer_WithCounts_ReplacesTheStatisticsOnly()
     {
-        // Arrange: a trained model and the counts of ten other sentences
-        var data = Train(truthful: true, Hyperparameters());
+        // Arrange: a trained model with a noun/verb table, and the counts of ten other sentences
+        var data = Train(truthful: true, Hyperparameters()) with { NounVerb = new BasicNounVerbRow([3], [1], 1, 1) };
         var other = TaggerCounts.Count(Sentences().Take(10), Lookup);
 
         // Act: replace the counts of the model
         var changed = BasicTrainer.WithCounts(data, other, Lookup);
 
-        // Assert: the cue tables stay, the statistics and the tense table follow the new counts
+        // Assert: the cue tables stay, the statistics follow the new counts and the two shared tables are left out
         Assert.Same(data.Cues, changed.Cues);
         Assert.Equal(other.Unigrams, changed.Unigrams);
         Assert.Null(changed.Tense);
+        Assert.Null(changed.NounVerb);
         Assert.NotEqual(data.Unigrams, changed.Unigrams);
     }
 }

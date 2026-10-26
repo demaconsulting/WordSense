@@ -440,6 +440,7 @@ sections:
               - WordSense-Core-Tagger-WordPrior-Disabled
               - WordSense-Core-Tagger-WordPrior-Invalid
               - WordSense-Core-Tagger-WordPrior-Format
+              - WordSense-Core-Tagger-NounVerb
             tests:
               - PosTagger_Posteriors_AfterDeterminer_PrefersNoun
 
@@ -543,6 +544,23 @@ sections:
               - WordSense-Core-BasicTables-Wsb5
             tests:
               - BasicTables_Load_PreviousFormatWsb5_ThrowsUnknownFormat
+
+          - id: WordSense-Core-Tagger-NounVerb
+            title: >-
+              The core subsystem shall answer the part of speech Noun, not Verb, for a word that is mostly a verb when
+              it ends a noun compound after a determiner and a modifier noun (`call` in `Make a courtesy call to the
+              hotel .`, `sweep` in `Do a safety sweep of the room .`).
+            tags: [subsystem]
+            justification: |
+              The word itself weighs how often it is a verb, and a verb-dominant word keeps that weight in a context
+              that says noun. The words around it say more than the word does for a word that is rarely seen as a
+              noun, with a model that is shared by all such words and reads no word list.
+            tests:
+              - WordSenseCore_Tagger_VerbDominantWordEndingACompound_IsNoun
+            children:
+              - WordSense-Core-BasicClassifier-NounVerb
+              - WordSense-Core-BasicTables-NounVerb
+              - WordSense-Core-CueModel-NounVerb
 
           - id: WordSense-Core-Tagger-ClauseVerb
             title: >-

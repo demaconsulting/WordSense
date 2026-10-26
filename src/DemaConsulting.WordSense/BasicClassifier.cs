@@ -36,6 +36,13 @@ namespace DemaConsulting.WordSense;
 ///     the probability of the slot, so the level, the confidence and the sense are as without it.
 ///     </para>
 ///     <para>
+///     A word that has both a noun and a verb analysis (<c>stand</c>, <c>check</c>, <c>run</c>) has the probability of
+///     those two slots shifted by the shared noun/verb table of <see cref="BasicTables"/> (<c>ApplyNounVerb</c>), fitted on
+///     all such words of the open corpus: it reads the two words on each side and their grammatical classes (an
+///     auxiliary, a verb, a determiner), so <c>the monitor stand is adjustable</c> keeps the noun although the word
+///     <c>stand</c> is nearly always a verb. The two slots keep their total probability; the shift moves it between them.
+///     </para>
+///     <para>
 ///     The statistics carry no evidence that separates fine senses or groups, so the classifier never decides a sense
 ///     or a group from the context. An analysis whose lemma and part of speech have exactly one sense lists
 ///     that sense with probability 1 (no evidence is needed to choose it). An analysis that has two or more senses
@@ -81,6 +88,12 @@ internal sealed class BasicClassifier
     ///     emptying a slot variant entirely, because every analysis of a word keeps a probability above zero.
     /// </summary>
     private const double MaximumTenseLogOdds = 30.0;
+
+    /// <summary>
+    ///     The largest absolute log odds of the noun/verb table that a shift uses, in nats: it keeps the odds finite, so that
+    ///     a clear context never empties a slot entirely.
+    /// </summary>
+    private const double MaximumNounVerbLogOdds = 30.0;
 
     private readonly BasicTables? _tables;
     private readonly Func<string, ImmutableArray<WordDetails>> _lexicon;
@@ -167,7 +180,7 @@ internal sealed class BasicClassifier
         var tokens = ArrayPool<TaggerToken>.Shared.Rent(list.Count);
         var posteriors = ArrayPool<double>.Shared.Rent(list.Count * PosTag.Count);
         var features = new FeatureRef[CueModel.MaxFeatures];
-        var tenseFeatures = new FeatureRef[CueModel.MaxTenseFeatures];
+        var contextFeatures = new FeatureRef[CueModel.MaxTenseFeatures];
         try
         {
             var start = 0;
@@ -181,7 +194,7 @@ internal sealed class BasicClassifier
                 }
 
                 var length = end - start + 1;
-                ClassifySegment(tables, list, lower, start, length, tokens, posteriors, features, tenseFeatures, results);
+                ClassifySegment(tables, list, lower, start, length, tokens, posteriors, features, contextFeatures, results);
                 start = end + 1;
             }
         }
@@ -584,7 +597,7 @@ internal sealed class BasicClassifier
     }
 
     [SuppressMessage("Major Code Smell", "S107:Methods should not have too many parameters", Justification = "Private hot path that passes the statistics, the word, the context and pre-allocated scratch buffers; bundling them would allocate per call.")]
-    private ClassifyResult Choose(BasicTables tables, string word, string key, ImmutableArray<WordDetails> analyses, ReadOnlySpan<double> posterior, ReadOnlySpan<FeatureRef> features, Surroundings around, ReadOnlySpan<string> segment, int index, FeatureRef[] tenseFeatures)
+    private ClassifyResult Choose(BasicTables tables, string word, string key, ImmutableArray<WordDetails> analyses, ReadOnlySpan<double> posterior, ReadOnlySpan<FeatureRef> features, Surroundings around, ReadOnlySpan<string> segment, int index, FeatureRef[] contextFeatures)
     {
         var count = analyses.Length;
         Span<double> cues = count <= 32 ? stackalloc double[32] : new double[count];
@@ -620,9 +633,78 @@ internal sealed class BasicClassifier
         // does not outvote the tagger
         SenseFusion.Fuse(effective, analyses, cues, tables.HmmWeight, tables.InvTemperature * cueFactor, probabilities);
         ApplyCase(analyses, around.Case, probabilities);
-        ApplyTense(tables, analyses, segment, index, tenseFeatures, probabilities);
+        ApplyNounVerb(tables, analyses, segment, index, contextFeatures, probabilities);
+        ApplyTense(tables, analyses, segment, index, contextFeatures, probabilities);
         var list = ListAnalyses(analyses, probabilities, out var selectedGroup, out var slotProbability);
         return Answer(word, list, selectedGroup, slotProbability);
+    }
+
+    /// <summary>
+    ///     Shifts the probability between the noun slot and the verb slot of a word that has both, by what the neighbors of
+    ///     the word say, and leaves the total probability of the two slots and every other slot as they are.
+    /// </summary>
+    /// <remarks>
+    ///     <para>
+    ///     The tagger and the cue tables of a word weigh how often the word itself is a noun or a verb, and a word that is
+    ///     nearly always a verb (<c>stand</c>, <c>check</c>, <c>call</c>) keeps that weight in the compound <c>monitor stand
+    ///     is adjustable</c>, where its neighbors say noun. The shared noun/verb table (<see cref="BasicTables.NounVerb"/>) is
+    ///     fitted on the words of the open corpus that have a noun and a verb analysis, as a correction of the odds that the
+    ///     rest of the model gives them, and knows only the context: the two words and their classes on each side, with the
+    ///     class of a word derived from its lexicon analyses (<c>auxiliary</c>, <c>verb</c>, <c>determiner</c> and so on), so
+    ///     it decides for every such word without a word list.
+    ///     </para>
+    ///     <para>
+    ///     The odds of the verb slot against the noun slot are multiplied by <c>exp(w * L)</c>, where L is the log odds of the
+    ///     table for the neighbors (positive when the context says verb) and w is <see cref="BasicTables.NounVerbWeight"/>;
+    ///     the total of the two slots does not change, so the probability of an adjective or an adverb reading is not
+    ///     touched, and every analysis keeps a probability above zero. The analyses of a slot keep their shares of it, so the
+    ///     split of a verb slot between its tenses (<see cref="ApplyTense"/>) is as the other evidence made it.
+    ///     </para>
+    /// </remarks>
+    /// <param name="tables">The statistics.</param>
+    /// <param name="analyses">The analyses of the word.</param>
+    /// <param name="segment">The lower-case tokens of the sentence segment.</param>
+    /// <param name="index">The index of the word in <paramref name="segment"/>.</param>
+    /// <param name="contextFeatures">The buffer that receives the features, at least <see cref="CueModel.MaxNounVerbFeatures"/> long.</param>
+    /// <param name="probabilities">The probability of each analysis, parallel to <paramref name="analyses"/>; the noun and verb slots are shifted in place.</param>
+    private void ApplyNounVerb(BasicTables tables, ImmutableArray<WordDetails> analyses, ReadOnlySpan<string> segment, int index, FeatureRef[] contextFeatures, Span<double> probabilities)
+    {
+        if (tables.NounVerb is not { } model || tables.NounVerbWeight <= 0)
+        {
+            return;
+        }
+
+        var noun = 0.0;
+        var verb = 0.0;
+        for (var j = 0; j < analyses.Length; j++)
+        {
+            noun += analyses[j].PartOfSpeech == PartOfSpeech.Noun ? probabilities[j] : 0.0;
+            verb += analyses[j].PartOfSpeech == PartOfSpeech.Verb ? probabilities[j] : 0.0;
+        }
+
+        // Every analysis has a probability above zero, so a slot without analyses is the only one with no mass
+        if (noun <= 0 || verb <= 0)
+        {
+            return;
+        }
+
+        var count = CueModel.ExtractNounVerb(segment, index, _lexicon, contextFeatures);
+        var logOdds = Math.Clamp(tables.NounVerbWeight * CueModel.ScoreNounVerb(model, contextFeatures.AsSpan(0, count)), -MaximumNounVerbLogOdds, MaximumNounVerbLogOdds);
+        var verbScale = Math.Exp(logOdds);
+
+        // The two slots keep their total: the verb mass is scaled by the odds and both are renormalized
+        var keep = (noun + verb) / (noun + (verb * verbScale));
+        for (var j = 0; j < analyses.Length; j++)
+        {
+            if (analyses[j].PartOfSpeech == PartOfSpeech.Noun)
+            {
+                probabilities[j] *= keep;
+            }
+            else if (analyses[j].PartOfSpeech == PartOfSpeech.Verb)
+            {
+                probabilities[j] *= verbScale * keep;
+            }
+        }
     }
 
     /// <summary>
@@ -951,7 +1033,7 @@ internal sealed class BasicClassifier
         TaggerToken[] tokens,
         double[] posteriors,
         FeatureRef[] features,
-        FeatureRef[] tenseFeatures,
+        FeatureRef[] contextFeatures,
         ClassifyResult[] results)
     {
         for (var i = 0; i < length; i++)
@@ -991,7 +1073,7 @@ internal sealed class BasicClassifier
             {
                 var featureCount = CueModel.Extract(lower.AsSpan(start, length), i, features);
                 var around = new Surroundings(i > 0 && IsNounDeterminer(lower[start + i - 1]), written);
-                results[start + i] = Choose(tables, word, key, analyses, posteriors.AsSpan(i * PosTag.Count, PosTag.Count), features.AsSpan(0, featureCount), around, lower.AsSpan(start, length), i, tenseFeatures);
+                results[start + i] = Choose(tables, word, key, analyses, posteriors.AsSpan(i * PosTag.Count, PosTag.Count), features.AsSpan(0, featureCount), around, lower.AsSpan(start, length), i, contextFeatures);
             }
         }
     }

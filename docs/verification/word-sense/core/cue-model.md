@@ -54,3 +54,19 @@ All scenarios below pass on every platform and target framework of the CI matrix
   1 nat, a whole number of eighths, and the scale is 0.125.
 - **Tense score, null table** (`CueModel_ScoreTense_NullTable_Throws`): a null table throws `ArgumentNullException` for
   the parameter `cue`.
+- **Noun/verb features** (`CueModel_ExtractNounVerb_WordAndClassOfTheTwoNeighborsOnEachSide`): a target with two words
+  on each side gives eight features in a fixed order, the word and the class of the first left, the second left, the first
+  right and the second right neighbor, and a word the lexicon does not know has the class `<unknown>`.
+- **Noun/verb features, edges** (`CueModel_ExtractNounVerb_EdgeAndPunctuationNeighbors`): a neighbor outside the segment
+  is the segment edge for the word and for the class; a punctuation neighbor is itself the word and has the class of
+  punctuation.
+- **Neighbor class** (`CueModel_ContextClassOf_NamesTheClassOfTheAnalyses`, theory): an auxiliary, a verb that can be
+  finite, a gerund, a word with several parts of speech with a verb among them and one without, a word with one part of
+  speech and an unknown word get the classes `auxiliary`, `verb`, `nonfinite`, `ambiguous-verb`, `ambiguous`, the name of
+  the part of speech and `<unknown>`.
+- **Noun/verb features never read the target** (`CueModel_ExtractNounVerb_DoesNotReadTheTarget`): two sentences that
+  differ only in the target give the same features.
+- **Noun/verb score** (`CueModel_ScoreNounVerb_SumsKnownWeightsWithoutPrior`): the score is the sum of the weights of the
+  known features in eighths of a nat (an unknown feature adds nothing, no feature gives 0).
+- **Noun/verb, null arguments** (`CueModel_ExtractNounVerb_NullLexicon_Throws`, `CueModel_ScoreNounVerb_NullTable_Throws`):
+  a null lexicon and a null table each throw `ArgumentNullException` for their parameter.

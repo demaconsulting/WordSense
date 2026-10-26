@@ -36,6 +36,11 @@ public class BasicClassifierTests
     private static readonly WordDetails ComeInfinitive = new("come", PartOfSpeech.Verb, "VerbForm=Inf");
     private static readonly WordDetails ComeParticiple = new("come", PartOfSpeech.Verb, "VerbForm=Part");
 
+    // A word with a noun, a verb and an adjective analysis, for the noun/verb model
+    private static readonly WordDetails StandNoun = new("stand", PartOfSpeech.Noun, "Number=Sing");
+    private static readonly WordDetails StandVerb = new("stand", PartOfSpeech.Verb, "VerbForm=Inf");
+    private static readonly WordDetails StandAdjective = new("stand", PartOfSpeech.Adjective, "Degree=Pos");
+
     private static readonly SenseInfo CatSense = new("cat#feline", null, "cat", PartOfSpeech.Noun, "cat%1:05:00::");
 
     private static readonly Dictionary<string, ImmutableArray<WordDetails>> Lexicon = new(StringComparer.Ordinal)
@@ -60,6 +65,7 @@ public class BasicClassifierTests
         ["put"] = [PutInfinitive, PutPast],
         ["putt"] = [PutNoun, PutInfinitive, PutPast],
         ["come"] = [ComeInfinitive, ComeParticiple],
+        ["stand"] = [StandNoun, StandVerb, StandAdjective],
     };
 
     private static readonly Dictionary<(string Lemma, PartOfSpeech Pos), ImmutableArray<SenseInfo>> Senses = new()
@@ -840,6 +846,206 @@ public class BasicClassifierTests
     // slots), so the written case alone moves it
     private static double ProbabilityOf(ClassifyResult result, WordDetails details) =>
         result.Analyses.Single(a => a.Details == details).Probability;
+
+    // A toy noun/verb table: the tagger has no weight and no cue table is known, so the table alone decides between the noun
+    // and the verb of the word record
+    private static BasicTables NounVerbTables(double weight = 1.0, params (FeatureRef Feature, sbyte Weight)[] features)
+    {
+        var ordered = features.OrderBy(f => f.Feature.Hash).ToArray();
+        return TestTables.Load(TestTables.Build(
+            [("record", 0, new int[PosTag.Count])],
+            [],
+            [],
+            hmmWeight: 0,
+            nounVerb: ([.. ordered.Select(f => f.Feature.Hash)], [.. ordered.Select(f => f.Weight)]),
+            nounVerbWeight: weight));
+    }
+
+    private static readonly (FeatureRef Feature, sbyte Weight)[] NounCues =
+    [
+        (new FeatureRef(CueModel.Left, "the"), -24),
+        (new FeatureRef(CueModel.Left, "to"), 24),
+    ];
+
+    private static double VerbOverNoun(ClassifyResult result, WordDetails noun, WordDetails verb) =>
+        Math.Log(ProbabilityOf(result, verb) / ProbabilityOf(result, noun));
+
+    /// <summary>
+    ///     The context decides between the noun and the verb of a word that has both: the log odds of the verb against the
+    ///     noun are the sum of the weights of the features that the noun/verb table knows, and the context selects the
+    ///     analysis although the tagger has no weight and the lexicon lists the noun first.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_NounVerbTable_ContextFeaturesSetTheLogOdds()
+    {
+        // Arrange: the left neighbor "the" weighs -3 nats (-24 eighths) and "to" +3 nats, the weight of the model is 1
+        var classifier = Create(NounVerbTables(features: NounCues));
+
+        // Act
+        var afterThe = (await classifier.ClassifyAsync(["the", "record"], TestContext.Current.CancellationToken))[1];
+        var afterTo = (await classifier.ClassifyAsync(["to", "record"], TestContext.Current.CancellationToken))[1];
+        var alone = (await classifier.ClassifyAsync(["record"], TestContext.Current.CancellationToken))[0];
+
+        // Assert: the odds are the weights, and the selected analysis follows them
+        Assert.Equal(-3.0, VerbOverNoun(afterThe, TestTables.RecordNoun, TestTables.RecordVerb), 9);
+        Assert.Equal(3.0, VerbOverNoun(afterTo, TestTables.RecordNoun, TestTables.RecordVerb), 9);
+        Assert.Equal(0.0, VerbOverNoun(alone, TestTables.RecordNoun, TestTables.RecordVerb), 9);
+        Assert.Equal(TestTables.RecordNoun, afterThe.Details);
+        Assert.Equal(TestTables.RecordVerb, afterTo.Details);
+    }
+
+    /// <summary>
+    ///     The weight of the model multiplies the log odds before the exponential: with the log odds of -3 nats the weight 2
+    ///     gives -6 and the weight 0.5 gives -1.5.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_NounVerbTable_WeightScalesTheLogOdds()
+    {
+        // Arrange
+        var doubled = Create(NounVerbTables(weight: 2, features: NounCues));
+        var halved = Create(NounVerbTables(weight: 0.5, features: NounCues));
+
+        // Act
+        var strong = (await doubled.ClassifyAsync(["the", "record"], TestContext.Current.CancellationToken))[1];
+        var weak = (await halved.ClassifyAsync(["the", "record"], TestContext.Current.CancellationToken))[1];
+
+        // Assert
+        Assert.Equal(-6.0, VerbOverNoun(strong, TestTables.RecordNoun, TestTables.RecordVerb), 9);
+        Assert.Equal(-1.5, VerbOverNoun(weak, TestTables.RecordNoun, TestTables.RecordVerb), 9);
+    }
+
+    /// <summary>
+    ///     A weight of 0 turns the noun/verb model off, and so does a table without a noun/verb table: a context that the
+    ///     table weighs strongly changes nothing, and the noun and the verb keep their equal probabilities.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_NounVerbModelOff_LeavesProbabilitiesUnchanged()
+    {
+        // Arrange: a table with the weight 0 and a table without the noun/verb section
+        var zero = Create(NounVerbTables(weight: 0, features: NounCues));
+        var without = Create(TieTables);
+
+        // Act
+        var weightless = (await zero.ClassifyAsync(["the", "record"], TestContext.Current.CancellationToken))[1];
+        var plain = (await without.ClassifyAsync(["the", "record"], TestContext.Current.CancellationToken))[1];
+
+        // Assert
+        Assert.Equal(0.5, ProbabilityOf(weightless, TestTables.RecordNoun), 12);
+        Assert.Equal(0.5, ProbabilityOf(weightless, TestTables.RecordVerb), 12);
+        Assert.Equal(0.5, ProbabilityOf(plain, TestTables.RecordNoun), 12);
+        Assert.Equal(0.5, ProbabilityOf(plain, TestTables.RecordVerb), 12);
+    }
+
+    /// <summary>
+    ///     The shift keeps the total probability of the noun and the verb and does not touch any other slot: a word with an
+    ///     adjective as well keeps the probability of the adjective, and the probabilities still sum to one.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_NounVerbTable_KeepsTheTotalOfTheTwoSlotsAndTheOthers()
+    {
+        // Arrange: a word with a noun, a verb and an adjective, each a third before the shift
+        var classifier = Create(TestTables.Load(TestTables.Build(
+            [("stand", 0, new int[PosTag.Count])],
+            [],
+            [],
+            hmmWeight: 0,
+            nounVerb: ([NounCues[0].Feature.Hash], [NounCues[0].Weight]),
+            nounVerbWeight: 1.0)));
+
+        // Act
+        var stand = (await classifier.ClassifyAsync(["the", "stand"], TestContext.Current.CancellationToken))[1];
+
+        // Assert: the adjective keeps its third, the noun and the verb share the other two thirds by the odds exp(-3)
+        Assert.Equal(1.0 / 3.0, ProbabilityOf(stand, StandAdjective), 9);
+        Assert.Equal(2.0 / 3.0, ProbabilityOf(stand, StandNoun) + ProbabilityOf(stand, StandVerb), 9);
+        Assert.Equal(-3.0, VerbOverNoun(stand, StandNoun, StandVerb), 9);
+        Assert.Equal(1.0, stand.Analyses.Sum(a => a.Probability), 9);
+    }
+
+    /// <summary>
+    ///     A word without a verb analysis is not shifted, however the table weighs its context.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_NounVerbTable_WordWithoutVerb_IsNotShifted()
+    {
+        // Arrange: the toy word deer has two noun analyses and no verb
+        var classifier = Create(NounVerbTables(features: NounCues));
+
+        // Act
+        var deer = (await classifier.ClassifyAsync(["to", "deer"], TestContext.Current.CancellationToken))[1];
+
+        // Assert: the two analyses of the one slot keep their equal shares
+        Assert.Equal(0.5, ProbabilityOf(deer, DeerSing), 12);
+        Assert.Equal(0.5, ProbabilityOf(deer, DeerPlur), 12);
+    }
+
+    /// <summary>
+    ///     The log odds of the table are bounded to 30 nats after the weight multiplies them: the largest weight a table
+    ///     accepts keeps every probability finite and the slots normalized.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_NounVerbTable_LargeWeight_IsBoundedTo30Nats()
+    {
+        // Arrange: the largest weight the table accepts, which would overflow the exponential without the bound
+        var classifier = Create(NounVerbTables(weight: 1e6, features: NounCues));
+
+        // Act
+        var record = (await classifier.ClassifyAsync(["to", "record"], TestContext.Current.CancellationToken))[1];
+
+        // Assert
+        Assert.All(record.Analyses, a => Assert.True(double.IsFinite(a.Probability), $"{a.Probability}"));
+        Assert.Equal(1.0, record.Analyses.Sum(a => a.Probability), 6);
+        Assert.Equal(30.0, VerbOverNoun(record, TestTables.RecordNoun, TestTables.RecordVerb), 6);
+    }
+
+    /// <summary>
+    ///     The model reads the neighbors inside the sentence segment only: a word after a sentence-ending token does not
+    ///     see the words before it, so the table knows its left side as the segment edge.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_NounVerbTable_ReadsTheSegmentOnly()
+    {
+        // Arrange: the second sentence starts with the word record; "the" stands two tokens before it, in the first sentence
+        var classifier = Create(NounVerbTables(features: NounCues));
+
+        // Act
+        var results = await classifier.ClassifyAsync(["see", "the", ".", "record"], TestContext.Current.CancellationToken);
+
+        // Assert: no known feature, so the noun and the verb stay equal
+        Assert.Equal(0.0, VerbOverNoun(results[3], TestTables.RecordNoun, TestTables.RecordVerb), 9);
+    }
+
+    /// <summary>
+    ///     The class of a neighbor and the segment edge are features too: the table weighs the class of the right
+    ///     neighbor and of the second token on the left, and an unknown neighbor has the class of unknown words.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_NounVerbTable_ClassFeaturesSetTheLogOdds()
+    {
+        // Arrange: a noun to the right weighs +2 nats and the edge two tokens to the left -1 nat
+        (FeatureRef, sbyte)[] features =
+        [
+            (new FeatureRef(CueModel.RightClass, "noun"), 16),
+            (new FeatureRef(CueModel.Left2Class, CueModel.EdgeClass), -8),
+        ];
+        var classifier = Create(NounVerbTables(features: features));
+
+        // Act
+        var beforeNoun = (await classifier.ClassifyAsync(["record", "cat"], TestContext.Current.CancellationToken))[0];
+        var beforeUnknown = (await classifier.ClassifyAsync(["record", "zzzz"], TestContext.Current.CancellationToken))[0];
+
+        // Assert: the noun to the right and the edge give +1 nat, the unknown word to the right and the edge give -1 nat
+        Assert.Equal(1.0, VerbOverNoun(beforeNoun, TestTables.RecordNoun, TestTables.RecordVerb), 9);
+        Assert.Equal(-1.0, VerbOverNoun(beforeUnknown, TestTables.RecordNoun, TestTables.RecordVerb), 9);
+    }
 
     // Every analysis of the toy word polish has the probability 1/3 when the written case says nothing
     private static void AssertCaseNeutral(ClassifyResult polish)

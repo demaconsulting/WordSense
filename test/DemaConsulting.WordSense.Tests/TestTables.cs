@@ -90,6 +90,8 @@ internal static class TestTables
     /// <param name="priorSenses">The weight of every sense in the word prior, written to the header.</param>
     /// <param name="priorExponent">The exponent of the word prior, written to the header.</param>
     /// <param name="reliability">The stored reliability of every cue table (255 is fully reliable).</param>
+    /// <param name="nounVerb">The noun/verb table (ascending feature hashes and one weight per hash), or null for a table without one.</param>
+    /// <param name="nounVerbWeight">The weight of the noun/verb model, written to the header.</param>
     /// <returns>The compressed blob.</returns>
     public static byte[] Build(
         (string Word, int ClosedMask, int[] Counts)[] words,
@@ -106,7 +108,9 @@ internal static class TestTables
         double priorSmoothing = 0.5,
         double priorSenses = 0.0,
         double priorExponent = 1.0,
-        byte reliability = 255) => Compress(Raw(words, suffixes, cues, hmmWeight, invTemperature, inventoryHash, tense, tenseWeight, sentences ?? Sentences, clauseSmoothing, [priorShare, priorSmoothing, priorSenses, priorExponent], reliability));
+        byte reliability = 255,
+        (ushort[] Hashes, sbyte[] Weights)? nounVerb = null,
+        double nounVerbWeight = 1.0) => Compress(Raw(words, suffixes, cues, hmmWeight, invTemperature, inventoryHash, tense, tenseWeight, sentences ?? Sentences, clauseSmoothing, [priorShare, priorSmoothing, priorSenses, priorExponent], reliability, nounVerb, nounVerbWeight));
 
     /// <summary>
     ///     Reads a blob against the toy inventory.
@@ -230,12 +234,14 @@ internal static class TestTables
         int[][] sentences,
         double clauseSmoothing,
         double[] prior,
-        byte reliability)
+        byte reliability,
+        (ushort[] Hashes, sbyte[] Weights)? nounVerb,
+        double nounVerbWeight)
     {
         using var raw = new MemoryStream();
-        raw.Write("WSB6"u8);
+        raw.Write("WSB7"u8);
         raw.Write(inventoryHash ?? ToyHash);
-        foreach (var value in new[] { 0.75, 5, 0.1, 0.3, 0.6, hmmWeight, invTemperature, tenseWeight, clauseSmoothing }.Concat(prior))
+        foreach (var value in new[] { 0.75, 5, 0.1, 0.3, 0.6, hmmWeight, invTemperature, tenseWeight, clauseSmoothing }.Concat(prior).Append(nounVerbWeight))
         {
             var bytes = new byte[8];
             BinaryPrimitives.WriteDoubleLittleEndian(bytes, value);
@@ -343,6 +349,26 @@ internal static class TestTables
             }
 
             foreach (var weight in table.Weights)
+            {
+                raw.WriteByte((byte)weight);
+            }
+        }
+        else
+        {
+            raw.WriteByte(0);
+        }
+
+        // The noun/verb section: a flag byte, then the delta-coded hashes and the weights
+        if (nounVerb is { } nvTable)
+        {
+            raw.WriteByte(1);
+            Varint(raw, nvTable.Hashes.Length);
+            for (var f = 0; f < nvTable.Hashes.Length; f++)
+            {
+                Varint(raw, f == 0 ? nvTable.Hashes[f] : nvTable.Hashes[f] - nvTable.Hashes[f - 1]);
+            }
+
+            foreach (var weight in nvTable.Weights)
             {
                 raw.WriteByte((byte)weight);
             }

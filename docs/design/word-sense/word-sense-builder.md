@@ -150,19 +150,24 @@ implementation of the feature computation.
   reader of an external gold file.
 - `BasicHyperparameters`: every tunable number of the Basic model in one place (the runtime values that travel in the
   table header, the training choices, and the grid and sample sizes of the tuner).
-- `BasicTrainer`, `BasicModelData`, `BasicTenseRow`: select the tabled words (closed-class words and every
-  dictionary-ambiguous word of the counts, or the most frequent ones when `TopAmbiguousWords` limits them), the suffixes
+- `BasicTrainer`, `BasicModelData`, `BasicTenseRow`, `BasicNounVerbRow`: select the tabled words (closed-class words and
+  every dictionary-ambiguous word of the counts, or the most frequent ones when `TopAmbiguousWords` limits them), the
+  suffixes
   and the closed-class masks from the counts, train the cue tables from
   the anchors and the form-chooser anchors, with the analysis label of each sentence rolled up from its fine sense or
   chooser label, measure the reliability of every cue table on held-out folds of its own sentences, and train the shared
   tense table from every verb of the training split of the open corpus.
-- `BasicTablesWriter`: serializes the model data into the `WSB6` blob, deterministically.
+- `NounVerbStacker`, `NounVerbSample`: fit the shared noun/verb table of the words of the training split of the open
+  corpus that have a noun and a verb analysis, as a correction of the rest of the model (a cross-fitted logistic
+  regression).
+- `BasicTablesWriter`: serializes the model data into the `WSB7` blob, deterministically.
 - `CueRunningReliability`, `CueRunningStat`, `CueRunningRuntime`: measure the net benefit of every cue table on the training
   split of the open corpus (`BasicTrainer.WithCounts` gives the model the statistics of the other folds) and combine it
   with the anchor reliability. `CueRunningStat` holds the tokens covered, helped and hurt of one table, and
   `CueRunningRuntime` hands the runtime table and classifier to the measurement so that tests can run it on a toy world.
 - `BasicTuner`: scores the hyper-parameter grid (including the smoothing of the clause state, with the classifier
-  accuracy on the open corpus and treebank development sets), the weight of the tense model, the word prior (with the
+  accuracy on the open corpus and treebank development sets), the weight of the tense model, the weight and the L2
+  penalty of the noun/verb model, the word prior (with the
   number of tabled words) and the target accuracy of the cue reliability; its sections can be run one at a time.
 - `BasicModelBuilder`: the commands `open-counts` and `train-basic`.
 - `AppendixGenerator`: generates the senses appendix of the user guide.
@@ -233,8 +238,9 @@ instead of `--model`.
 - `train-basic [--corpus DIR] [--repository DIR] [--output FILE]`: retrains the whole Basic model with the default
   hyper-parameters from the committed counts of `corpus/open/counts`, the anchors and the chooser anchors, and writes
   `Resources/basic.bin` of the core package; it names `open-counts` when the counts are missing.
-- `tune-basic [--corpus DIR] [--repository DIR] [--gold FILE] [--sections all|grid|tense|prior|cue]`: scores the
-  hyper-parameter grid (the smoothing of the clause state among them), the weight of the tense model, the word prior and
+- `tune-basic [--corpus DIR] [--repository DIR] [--gold FILE] [--sections all|grid|tense|nounverb|prior|cue]`: scores the
+  hyper-parameter grid (the smoothing of the clause state among them), the weight of the tense model, the weight of the
+  noun/verb model, the word prior and
   the cue reliability and prints the tables; `--sections` runs one of them; it writes nothing.
 - `label-senses [--data DIR]`: gives every sense without a label a generated label (the SenseLabelGenerator unit of the
   WordData subsystem).
@@ -704,6 +710,21 @@ that fall short, most frequent first.
    the
    log odds of the classes as its prior. It reads no word list and no lemma, only the context.
 
+   **Noun/verb table** (`NounVerbStacker`, run by `train-basic` after the cue reliabilities). The shared noun/verb table
+   is fitted on the training split of the open corpus (never the development or test splits) as a correction of the rest
+   of the model. The split is cut into `RunningFolds` folds by a stable hash of the sentence; for each fold the model gets
+   the tagger statistics of the other folds and the cue tables at the reliabilities of the anchors with the running-text
+   reliabilities measured again on the other folds alone (`CueRunningReliability` on the split without the fold), without
+   a noun/verb table, and classifies the fold, so that no offset depends on a gold tag of its own fold. Every gold noun
+   or gold verb whose word has a noun and a verb analysis becomes a
+   sample: the hashes of its eight features (`CueModel.ExtractNounVerb`, hashed to 16 bits as at run time), the log odds
+   of the verb slot against the noun slot that the model gave it (bounded to 30 nats) and its class. The weights are a
+   logistic regression of the class on the sum of the feature weights with that log odds as a fixed offset, with the L2
+   penalty `NounVerbL2` and a per-feature step (Adagrad, 200 epochs), over the features of at least `NounVerbMinFeatureCount`
+   samples, quantized to 1/8 nat. Two features of a word that hash alike are two terms of the sum, as at run time, where
+   the weight is added once for each extracted feature. It reads no word list and no lemma, only the context. The weight
+   in the header (`NounVerbWeight`) scales the table at run time.
+
    **Cue reliability.** The anchors are a balanced sample of the senses of a word, and some tables predict their own
    sentences no better than chance (a few dozen sentences for a word with several analyses). For every cue table the trainer
    splits its sentences into `CueFolds` (5) folds by a stable hash of the sentence, trains the table on all folds but one
@@ -763,7 +784,11 @@ the real-text sentences and writes no file, so the reported evaluation stays hon
 the tense model (`TenseWeightGrid`; 0 turns it off) on the development split of the open corpus and the treebank
 development file (`--gold`, default `ud_dev.tsv`), with the model of the shipped configuration (all anchors and chooser
 anchors and the verbs of the training split): the accuracy on the same-spelling verbs and on the read family. The weight
-1.0 stays because any weight of at least 1 gave the same accuracy there.
+1.0 stays because any weight of at least 1 gave the same accuracy there. A third table scores the L2 penalty
+(`NounVerbL2Grid`) against the weight of the noun/verb model (`NounVerbWeightGrid`; 0 turns it off) on the same two
+development sets: the accuracy of the whole classifier and of the tokens that are a noun or a verb in the gold. The
+penalty 1.0 is the best on the development sets and the weight 0.5 is within noise of the best weight there; it stays
+because a larger weight lowers the confidence of a guarded noun compound in the test suite below its 0.8 threshold.
 
 Workflow: change a value in `BasicHyperparameters.Default` (or add values to `Grid`) and run `tune-basic` to compare
 variants; put the chosen value into `Default`, run `train-basic` (the word image must be current, `compile-image`, because

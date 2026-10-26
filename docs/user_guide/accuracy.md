@@ -35,7 +35,7 @@ in the model part of the first use and 2 MiB in memory. Read them as an order of
 models. RAM is the growth of the process from before the model was created to after warm-up, without the word table
 (about 15 MiB).
 
-Part of speech has the same quality in all three models (94.5 to 94.7% on the open corpus test split) and is the
+Part of speech has the same quality in all three models (94.6 to 94.7% on the open corpus test split) and is the
 dependable part of an answer. BertBaseCased commits to a sense most often, and its most probable sense is right for
 65.0% of the SemCor words, above the first-sense baseline of 60.7%. MiniLM's is right for 58.7%, below it. The levels of
 the encoder answers on the real test sentences:
@@ -56,10 +56,10 @@ noun-verb tokens):
 
 | Set | Basic |
 | --- | ---: |
-| Open corpus test | 94.53% (92.64%; 95.14%) |
-| Treebank test (convention-mapped) | 92.28% (89.61%; 92.36%) |
-| Treebank test, all three models | 92.62 to 92.66% |
-| Independent benchmark, all-token part of speech, pooled | 91.2% |
+| Open corpus test | 94.59% (92.72%; 95.41%) |
+| Treebank test (convention-mapped) | 92.37% (89.75%; 92.83%) |
+| Treebank test, MiniLM and BertBaseCased | 92.69 to 92.74% |
+| Independent benchmark, all-token part of speech, pooled | 91.3% |
 | Targeted challenge set | 98.65% |
 
 <!-- markdownlint-enable MD013 -->
@@ -76,6 +76,9 @@ is the cross-domain one. Three features of the tagger matter:
 - **Cue reliability.** Each of the 913 cue tables has a reliability that scales its weight. It comes from
   cross-validation on the table's own anchors and from the net help of its cues on the training split of the open corpus.
   162 of the 913 tables are damped.
+- **Noun/verb context.** A model shared by all words that have a noun and a verb reading corrects the split between the
+  two from the word and the grammatical class of the two tokens on each side. It is fitted on held-out predictions of the
+  rest of the model, so it adds only what the tagger and the cue tables miss.
 
 Basic never abstains, and it never names a fine sense or a group for an analysis with several senses: it ranks those
 senses by usage (see "The Usage Prior"). Its confidence is roughly calibrated at 0.9 and above and over-confident below
@@ -83,8 +86,8 @@ senses by usage (see "The Usage Prior"). Its confidence is roughly calibrated at
 
 **Weak spots.** Technical text strings nouns together (`service call`) and writes instructions without a determiner
 (`Wash pump`). The tagger is least reliable on the noun that ends a compound, on the first noun of a compound, and on a
-verb that starts a fragment before a noun without a determiner. Check the confidence and the alternatives in `Analyses`
-before you act on the part of speech of a technical term.
+verb that starts a fragment before a noun without a determiner. The Limitations chapter of the overview lists the weak
+spots with their figures and a rule for when to trust the part of speech of Basic.
 
 ## Tense of Same-Spelling Verbs
 
@@ -99,9 +102,9 @@ verb token whose form has both. The majority is the share of the more frequent g
 
 | Model | Open corpus test (110 tokens, majority 57.3%) | Treebank test (95, 63.2%) | Treebank pooled (994, 61.9%) | `read` on the treebank, pooled (72, 59.7%) | `read` on the independent read set, test half (198, always present 67.2%) |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Basic | 81.8% | 85.3% | 85.6% | 77.8% | 84.3% |
-| MiniLM | 83.6% | 85.3% | 85.3% | 77.8% | 83.8% |
-| BertBaseCased | 83.6% | 86.3% | 85.6% | 77.8% | 83.3% |
+| Basic | 81.8% | 85.3% | 86.0% | 77.8% | 84.3% |
+| MiniLM | 83.6% | 85.3% | 85.6% | 77.8% | 83.8% |
+| BertBaseCased | 83.6% | 86.3% | 85.9% | 77.8% | 83.3% |
 
 <!-- markdownlint-enable MD013 -->
 
@@ -121,7 +124,7 @@ For that case `FallbackWordSenseModel` combines the slot probabilities of the en
 `p_encoder^w × p_basic^(1−w)`. The primary weight `w` is 0.6 for MiniLM and 1 (no combination) for BertBaseCased,
 chosen on development data only. On the part-of-speech heteronyms of the independent benchmark (the treebank, SemCor
 and a read set; not part of the repository) BertBaseCased is right for 99.2% of the words, MiniLM for 97.5% and Basic for
-94.6%. A weight of 0.6 would lower BertBaseCased to 98.8%. An answer at the sense or group level is never touched.
+95.2%. A weight of 0.6 would lower BertBaseCased to 98.8%. An answer at the sense or group level is never touched.
 
 ## The Usage Prior
 
@@ -139,13 +142,13 @@ weights and costs nothing at run time.
 
 **Independent measurement.** The fine top-1 counts a token when the first ranked sense of the selected analysis is the
 gold sense. The baselines are told the gold lemma and part of speech. The models choose their own, and pick the right
-lemma and part of speech for 94.35% (development half) and 95.47% (test half) of the tokens. Where the analysis is
-right, their fine top-1 is 66.15% (development) and 68.60% (test). All figures are the output of
+lemma and part of speech for 94.84% (development half) and 95.72% (test half) of the tokens. Where the analysis is
+right, their fine top-1 is 66.32% (development) and 68.42% (test). All figures are the output of
 `evaluate-allwords --model all`.
 
 | Model or baseline | Development half | Test half |
 | --- | ---: | ---: |
-| Basic, MiniLM and BertBaseCased | 62.41% | 65.49% |
+| Basic, MiniLM and BertBaseCased | 62.90% | 65.49% |
 | First sense in OEWN order | 66.58% | 68.51% |
 | Sense with the highest WordNet 3.0 tag count | 66.58% | 68.51% |
 | Random sense | 27.99% | 27.23% |
@@ -165,12 +168,12 @@ an untrained lemma with fewer than two senses, which every model answers at the 
 
 | Model | Words | Sense answered | Sense precision | Fine top-1 |
 | --- | --- | ---: | ---: | ---: |
-| Basic | untrained (152,767) | 8.38% | 44.86% | 59.57% |
-| Basic | all (184,323) | 7.46% | 46.86% | 59.02% |
-| MiniLM | untrained | 8.37% | 44.85% | 59.47% |
-| MiniLM | all | 8.36% | 52.37% | 59.33% |
-| BertBaseCased | untrained | 8.40% | 44.75% | 59.48% |
-| BertBaseCased | all | 11.55% | 61.44% | 60.42% |
+| Basic | untrained (152,767) | 8.35% | 45.12% | 59.62% |
+| Basic | all (184,323) | 7.43% | 47.18% | 59.09% |
+| MiniLM | untrained | 8.34% | 45.11% | 59.52% |
+| MiniLM | all | 8.33% | 52.60% | 59.38% |
+| BertBaseCased | untrained | 8.37% | 45.00% | 59.54% |
+| BertBaseCased | all | 11.53% | 61.63% | 60.47% |
 | First sense with the highest WordNet 3.0 tag count | trained | | | 60.76% |
 | First sense with the highest WordNet 3.0 tag count | untrained | | | 71.53% |
 | First sense with the highest WordNet 3.0 tag count | all | | | 69.68% |

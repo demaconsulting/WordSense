@@ -206,6 +206,25 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **A slot that is not a tense slot** (`..._NonVerbSlot_LeavesProbabilitiesUnchanged`): the noun variants of `deer`
   (singular and plural) keep the probabilities of the table without a tense table (1/2 each) although the tense table has
   a strong past context.
+- **Noun/verb: the context sets the log odds** (`..._NounVerbTable_ContextFeaturesSetTheLogOdds`): with a toy table that
+  weighs the left neighbor `the` at -3 nats and `to` at +3 nats, the log odds of the verb of `record` against its noun
+  are -3, +3 and 0 (no context), and the selected analysis follows them although the tagger has no weight.
+- **Noun/verb: the weight** (`..._NounVerbTable_WeightScalesTheLogOdds`): the weights 2 and 0.5 give -6 and -1.5 nats for
+  the same context.
+- **Noun/verb: off** (`..._NounVerbModelOff_LeavesProbabilitiesUnchanged`): the weight 0 and a table without the
+  noun/verb table both leave the noun and the verb at 1/2 each.
+- **Noun/verb: totals** (`..._NounVerbTable_KeepsTheTotalOfTheTwoSlotsAndTheOthers`): for a word with a noun, a verb and
+  an adjective, the adjective keeps its third, the noun and the verb keep their two thirds together, and the
+  probabilities sum to 1.
+- **Noun/verb: no verb** (`..._NounVerbTable_WordWithoutVerb_IsNotShifted`): the two noun analyses of `deer` keep 1/2 each
+  after a context the table weighs.
+- **Noun/verb: bounded** (`..._NounVerbTable_LargeWeight_IsBoundedTo30Nats`): a weight of one million gives finite
+  probabilities that sum to 1 and log odds of exactly 30 nats.
+- **Noun/verb: segment** (`..._NounVerbTable_ReadsTheSegmentOnly`): a word after a sentence-ending token does not see the
+  words of the previous sentence, so no known feature applies and the noun and the verb stay equal.
+- **Noun/verb: classes** (`..._NounVerbTable_ClassFeaturesSetTheLogOdds`): the class of the right neighbor and of the
+  second left neighbor (the edge) are features: a noun to the right and the edge give +1 nat, an unknown word to the right
+  and the edge give -1 nat.
 - **The embedded lexicon** (`..._EmbeddedLexicon_SelectsTheLemmaOfTheWrittenCase`): with the tie table and the
   embedded lexicon, `August` and `Polish` inside a sentence select the capitalized lemma, `august` and `polish` the
   lower-case one, and `State` in `the State Department` keeps `state`.

@@ -381,6 +381,37 @@ public sealed class ProgramTests : IDisposable
     }
 
     /// <summary>
+    ///     The tuning command runs only the section that <c>--sections</c> names: the section of the noun/verb model scores
+    ///     the penalties and weights of the model and no other table.
+    /// </summary>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_Program_TuneBasic_SectionsNounVerb_RunsOnlyTheNounVerbSection()
+    {
+        // Arrange: valid training and development splits, and the counts
+        var corpus = PrepareCorpus();
+        _dir.Write("corpus/open/representative/data/train.tsv", OpenHeader + PutTrainSentence);
+        _dir.Write("corpus/open/representative/data/dev.tsv", OpenHeader + PutTrainSentence);
+        _dir.Write("corpus/open/representative/data/test.tsv", BrokenOpenFile);
+        _dir.Write("corpus/open/targeted/data/dev.tsv", BrokenOpenFile);
+        _dir.Write("corpus/open/targeted/data/test.tsv", BrokenOpenFile);
+        await RunAsync("open-counts", "--corpus", corpus);
+
+        // Act: tune only the section of the noun/verb model
+        var (code, output, error) = await RunAsync("tune-basic", "--repository", _dir.Root, "--corpus", corpus, "--sections", "nounverb");
+
+        // Assert: the table of the noun/verb model is there, with a row for every penalty and weight, and no other table is
+        Assert.True(code == 0, error);
+        Assert.Contains("| L2 | Noun/verb weight |", output, StringComparison.Ordinal);
+        Assert.Equal(
+            BasicHyperparameters.NounVerbL2Grid.Count * BasicHyperparameters.NounVerbWeightGrid.Count,
+            System.Text.RegularExpressions.Regex.Matches(output, @"^\| \d+\.\d \| \d\.\d\d \|", System.Text.RegularExpressions.RegexOptions.Multiline).Count);
+        Assert.DoesNotContain("Word prior variant", output, StringComparison.Ordinal);
+        Assert.DoesNotContain("Cue skill target", output, StringComparison.Ordinal);
+        Assert.DoesNotContain("Tense weight", output, StringComparison.Ordinal);
+    }
+
+    /// <summary>
     ///     A number option that is not a number, or is out of range, is a one-line error with exit code 1, not an
     ///     unhandled exception with a stack trace.
     /// </summary>

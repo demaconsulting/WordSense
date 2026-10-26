@@ -11,12 +11,12 @@ namespace WordSense.Builder;
 ///     The layout is described on <c>BasicTables</c>, the only reader. Words, suffixes and lemmas are written in the
 ///     ordinal order of the data, so equal data always gives equal bytes. The runtime hyper-parameters (gamma, beta, the
 ///     three lambdas, the weight of the tagger, the inverse temperature, the weight of the tense model, the smoothing
-///     of the clause state and the four numbers of the word prior) are written to the header from
-///     <see cref="BasicHyperparameters"/>.
+///     of the clause state, the four numbers of the word prior and the weight of the noun/verb model) are written to the
+///     header from <see cref="BasicHyperparameters"/>.
 /// </remarks>
 internal static class BasicTablesWriter
 {
-    private static readonly byte[] Magic = "WSB6"u8.ToArray();
+    private static readonly byte[] Magic = "WSB7"u8.ToArray();
 
     /// <summary>
     ///     Serializes the model data.
@@ -37,7 +37,7 @@ internal static class BasicTablesWriter
         raw.Write(Magic);
         raw.Write(inventoryHash);
         var hp = data.Hyperparameters;
-        foreach (var value in new[] { hp.Gamma, hp.Beta, hp.Lambda1, hp.Lambda2, hp.Lambda3, hp.HmmWeight, hp.InvTemperature, hp.TenseWeight, hp.ClauseSmoothing, hp.PriorShare, hp.PriorSmoothing, hp.PriorSenses, hp.PriorExponent })
+        foreach (var value in new[] { hp.Gamma, hp.Beta, hp.Lambda1, hp.Lambda2, hp.Lambda3, hp.HmmWeight, hp.InvTemperature, hp.TenseWeight, hp.ClauseSmoothing, hp.PriorShare, hp.PriorSmoothing, hp.PriorSenses, hp.PriorExponent, hp.NounVerbWeight })
         {
             WriteDouble(raw, value);
         }
@@ -127,6 +127,28 @@ internal static class BasicTablesWriter
             }
 
             foreach (var weight in tense.Weights)
+            {
+                raw.WriteByte((byte)weight);
+            }
+        }
+        else
+        {
+            raw.WriteByte(0);
+        }
+
+        // The noun/verb table: a flag byte, then the delta-coded hashes and one weight per hash
+        if (data.NounVerb is { } nounVerb)
+        {
+            raw.WriteByte(1);
+            WriteVarint(raw, nounVerb.Hashes.Length);
+            var last = 0;
+            for (var f = 0; f < nounVerb.Hashes.Length; f++)
+            {
+                WriteVarint(raw, f == 0 ? nounVerb.Hashes[f] : nounVerb.Hashes[f] - last);
+                last = nounVerb.Hashes[f];
+            }
+
+            foreach (var weight in nounVerb.Weights)
             {
                 raw.WriteByte((byte)weight);
             }

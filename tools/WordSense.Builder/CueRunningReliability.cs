@@ -101,6 +101,13 @@ internal static class CueRunningReliability
         for (var fold = 0; fold < folds; fold++)
         {
             cancellationToken.ThrowIfCancellationRequested();
+
+            // A fold with no sentence has nothing to score, and a fold that holds every sentence leaves no counts to score it with
+            if (!foldOf.Contains(fold) || foldOf.All(f => f == fold))
+            {
+                continue;
+            }
+
             var counts = TaggerCounts.Count(training.Where((_, i) => foldOf[i] != fold), lexicon);
             var tagger = BasicTrainer.WithCounts(data, counts, lexicon);
             var withCues = runtime.Load(tagger with { Cues = fullWeight });

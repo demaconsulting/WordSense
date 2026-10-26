@@ -46,6 +46,15 @@ internal sealed record BasicCueRow(string Lemma, CueAnalysis[] Analyses, ushort[
 internal sealed record BasicTenseRow(sbyte Prior, ushort[] Hashes, sbyte[] Weights, int Past, int NonPast, int Collisions);
 
 /// <summary>
+///     The shared noun/verb table of the basic model, ready to be written.
+/// </summary>
+/// <param name="Hashes">The ascending feature hashes.</param>
+/// <param name="Weights">The quantized log odds that each feature adds to the odds of verb against noun, parallel to <paramref name="Hashes"/>.</param>
+/// <param name="Nouns">The number of training words that are nouns.</param>
+/// <param name="Verbs">The number of training words that are verbs.</param>
+internal sealed record BasicNounVerbRow(ushort[] Hashes, sbyte[] Weights, int Nouns, int Verbs);
+
+/// <summary>
 ///     Everything the table of the basic model holds, before it is serialized.
 /// </summary>
 /// <param name="Hyperparameters">The hyper-parameters that were used (the runtime ones travel in the table header).</param>
@@ -60,6 +69,7 @@ internal sealed record BasicTenseRow(sbyte Prior, ushort[] Hashes, sbyte[] Weigh
 /// <param name="Collisions">The number of cue features dropped because their hash collided with a more frequent feature of the same table.</param>
 /// <param name="Skipped">The number of training sentences left out of the cue tables because their label stands for no single analysis.</param>
 /// <param name="Tense">The shared tense table, or null when the model was trained without verbs.</param>
+/// <param name="NounVerb">The shared noun/verb table, or null when it has not been fitted (see <c>NounVerbStacker</c>).</param>
 internal sealed record BasicModelData(
     BasicHyperparameters Hyperparameters,
     int[] Unigrams,
@@ -72,7 +82,8 @@ internal sealed record BasicModelData(
     IReadOnlyList<BasicCueRow> Cues,
     int Collisions,
     int Skipped,
-    BasicTenseRow? Tense = null)
+    BasicTenseRow? Tense = null,
+    BasicNounVerbRow? NounVerb = null)
 {
     /// <summary>
     ///     Gets the number of tabled words that are closed-class words.
@@ -90,7 +101,8 @@ internal sealed record BasicModelData(
     /// <returns>The summary.</returns>
     public string Summary() =>
         $"{Words.Count} words ({ClosedWords} closed-class), {Suffixes.Count} suffixes, {Cues.Count} cue tables ({Cues.Count(c => c.Reliability < 255)} damped, {Cues.Count(c => c.AnchorReliability < 255)} by their held-out accuracy and {Cues.Count(c => c.RunningHurt > c.RunningHelped)} with more tokens hurt than helped on running text), {CueFeatures} cue features, {Collisions} hash collisions, {Skipped} cue sentences skipped (their label stands for no single analysis)"
-        + (Tense is { } t ? $", a tense table of {t.Hashes.Length} features from {t.Past} past and {t.NonPast} non-past verbs ({t.Collisions} hash collisions)" : string.Empty);
+        + (Tense is { } t ? $", a tense table of {t.Hashes.Length} features from {t.Past} past and {t.NonPast} non-past verbs ({t.Collisions} hash collisions)" : string.Empty)
+        + (NounVerb is { } n ? $", a noun/verb table of {n.Hashes.Length} features from {n.Nouns} noun and {n.Verbs} verb words" : string.Empty);
 }
 
 /// <summary>
@@ -162,7 +174,7 @@ internal static class BasicTrainer
     /// <summary>
     ///     Gives a trained model the tag statistics of other counts: the n-grams, the tabled words and the suffixes come from
     ///     <paramref name="counts"/>, everything else (the cue tables, the hyper-parameters) is the template's and the tense
-    ///     table is left out. The running-text measurement of the cue tables uses it to train the tagger on part of the
+    ///     and noun/verb tables are left out. The running-text measurement of the cue tables uses it to train the tagger on part of the
     ///     training split and score the rest.
     /// </summary>
     /// <param name="template">The trained model.</param>
@@ -186,6 +198,7 @@ internal static class BasicTrainer
             Words = SelectWords(counts, lexicon, closed, hp),
             Suffixes = SelectSuffixes(counts, lexicon, closed, hp),
             Tense = null,
+            NounVerb = null,
         };
     }
 

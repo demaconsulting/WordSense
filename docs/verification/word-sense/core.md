@@ -170,6 +170,14 @@ tomorrow` and `Please put the books on the shelf` select a non-past analysis, `I
 put the keys in her bag` a past one, with the probabilities of the word summing to one. The split of the slot by the
 shared tense table is verified in the `BasicClassifier`, `CueModel` and `BasicTables` unit documents.
 
+#### A Verb-Dominant Word Ending a Compound Is a Noun
+
+Through the public `BasicWordSenseModel` (`WordSenseCore_Tagger_VerbDominantWordEndingACompound_IsNoun`, in
+`ContractsTests`), a word that is mostly a verb is answered as a noun when it follows a determiner and a modifier noun:
+`call` in `Make a courtesy call to the hotel .` and `sweep` in `Do a safety sweep of the room .`. The shift between the
+noun slot and the verb slot by the shared noun/verb table is verified in the `BasicClassifier`, `CueModel` and
+`BasicTables` unit documents, and the retirement of the format `WSB6` in the `BasicTables` unit document.
+
 #### Composite Model Answers Each Word with One Model
 
 `FallbackWordSenseModel` answers a word with the result of the primary model when it scored senses for it and with the

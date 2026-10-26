@@ -6,15 +6,16 @@ namespace DemaConsulting.WordSense;
 /// <summary>
 ///     One context feature of a target word: a neighboring token and where it was found.
 /// </summary>
-/// <param name="Kind">The kind of the feature: <see cref="CueModel.Window"/>, <see cref="CueModel.Left"/>, <see cref="CueModel.Right"/>, and for the tense model also <see cref="CueModel.LeftWindow"/>, <see cref="CueModel.RightWindow"/> and <see cref="CueModel.Governor"/>.</param>
-/// <param name="Token">The lower-case neighboring token.</param>
+/// <param name="Kind">The kind of the feature: <see cref="CueModel.Window"/>, <see cref="CueModel.Left"/>, <see cref="CueModel.Right"/>, for the tense model also <see cref="CueModel.LeftWindow"/>, <see cref="CueModel.RightWindow"/> and <see cref="CueModel.Governor"/>, and for the noun/verb model also <see cref="CueModel.Left2"/>, <see cref="CueModel.Right2"/> and the four class kinds (<see cref="CueModel.LeftClass"/>, <see cref="CueModel.Left2Class"/>, <see cref="CueModel.RightClass"/>, <see cref="CueModel.Right2Class"/>).</param>
+/// <param name="Token">The lower-case neighboring token, or for a class kind the name of the class of the neighbor.</param>
 internal readonly record struct FeatureRef(int Kind, string Token)
 {
     /// <summary>
     ///     Gets the 16-bit hash of the feature: a 32-bit FNV-1a over the UTF-16 code units of its name (the token, with
-    ///     a prefix of the kind: <c>L1:</c> or <c>R1:</c> for the immediate neighbors, <c>LW:</c> and <c>RW:</c> for the
-    ///     left and right window of the tense model and <c>NA:</c> for its governing function word; the plain window
-    ///     feature has none) folded by xor-ing its upper half into its lower half.
+    ///     a prefix of the kind: <c>L1:</c> or <c>R1:</c> for the immediate neighbors, <c>L2:</c> and <c>R2:</c> for the
+    ///     second neighbors, <c>L1C:</c>, <c>L2C:</c>, <c>R1C:</c> and <c>R2C:</c> for the class of a neighbor, <c>LW:</c>
+    ///     and <c>RW:</c> for the left and right window of the tense model and <c>NA:</c> for its governing function word;
+    ///     the plain window feature has none) folded by xor-ing its upper half into its lower half.
     /// </summary>
     public ushort Hash
     {
@@ -49,6 +50,12 @@ internal readonly record struct FeatureRef(int Kind, string Token)
         CueModel.Right => "R1:",
         CueModel.LeftWindow => "LW:",
         CueModel.RightWindow => "RW:",
+        CueModel.Left2 => "L2:",
+        CueModel.Right2 => "R2:",
+        CueModel.LeftClass => "L1C:",
+        CueModel.Left2Class => "L2C:",
+        CueModel.RightClass => "R1C:",
+        CueModel.Right2Class => "R2C:",
         _ => "NA:",
     };
 
@@ -75,7 +82,8 @@ internal readonly record struct FeatureRef(int Kind, string Token)
 ///     The context cue model: extracts the context features of a target word and scores the analyses of the word from
 ///     the table of hashed features of its training lemma, a naive Bayes classifier with additive smoothing whose log
 ///     weights are quantized to eighths of a nat. The same machinery with a richer feature set scores a verb as past or
-///     non-past from the table of the tense model, which is shared by all verbs.
+///     non-past from the table of the tense model, which is shared by all verbs, and a word as a verb rather than a noun
+///     from the table of the noun/verb model, which is shared by all words that have both analyses.
 /// </summary>
 internal static class CueModel
 {
@@ -296,6 +304,161 @@ internal static class CueModel
         var hashes = cue.Hashes.AsSpan();
         var weights = cue.Weights.AsSpan();
         int sum = cue.Prior;
+        foreach (var feature in features)
+        {
+            var row = hashes.BinarySearch(feature.Hash);
+            if (row >= 0)
+            {
+                sum += weights[row];
+            }
+        }
+
+        return sum * Quantum;
+    }
+
+    /// <summary>
+    ///     The kind of the noun/verb feature that is the token two positions before the target.
+    /// </summary>
+    public const int Left2 = 6;
+
+    /// <summary>
+    ///     The kind of the noun/verb feature that is the token two positions after the target.
+    /// </summary>
+    public const int Right2 = 7;
+
+    /// <summary>
+    ///     The kind of the noun/verb feature that is the class of the token directly before the target.
+    /// </summary>
+    public const int LeftClass = 8;
+
+    /// <summary>
+    ///     The kind of the noun/verb feature that is the class of the token two positions before the target.
+    /// </summary>
+    public const int Left2Class = 9;
+
+    /// <summary>
+    ///     The kind of the noun/verb feature that is the class of the token directly after the target.
+    /// </summary>
+    public const int RightClass = 10;
+
+    /// <summary>
+    ///     The kind of the noun/verb feature that is the class of the token two positions after the target.
+    /// </summary>
+    public const int Right2Class = 11;
+
+    /// <summary>
+    ///     The number of features of the noun/verb model for one target: the word and the class of each of the two
+    ///     neighbors on each side.
+    /// </summary>
+    public const int MaxNounVerbFeatures = 8;
+
+    /// <summary>
+    ///     The class of a neighbor that is not a word of the segment (the target is the first or the last word, or the second
+    ///     word from an end).
+    /// </summary>
+    public const string EdgeClass = "<edge>";
+
+    /// <summary>
+    ///     The class of a neighbor that has no letter (punctuation and numbers).
+    /// </summary>
+    public const string PunctuationClass = "<punct>";
+
+    /// <summary>
+    ///     The class of a neighbor that the lexicon does not know.
+    /// </summary>
+    public const string UnknownClass = "<unknown>";
+
+    private static readonly string[] SingleClasses = ["noun", "pronoun", "verb", "adjective", "adverb", "preposition", "conjunction", "interjection", "determiner", "auxiliary"];
+
+    /// <summary>
+    ///     Extracts the features of the noun/verb model for a target word: the word and the class of the two tokens on each
+    ///     side. The target itself is never a feature, so the model reads only the context and cannot tell one word from
+    ///     another.
+    /// </summary>
+    /// <param name="lower">The lower-case tokens of the segment.</param>
+    /// <param name="index">The index of the target in <paramref name="lower"/>.</param>
+    /// <param name="lexicon">The lexicon: the analyses of a lower-case word, or the default array when it is unknown; it gives the class of a neighbor.</param>
+    /// <param name="features">Receives the features; at least <see cref="MaxNounVerbFeatures"/> long.</param>
+    /// <returns>The number of features written, always <see cref="MaxNounVerbFeatures"/>: the first and second token to the left and to the right, each as a word feature (the token, or the segment edge) and as a class feature (see <see cref="ContextClassOf"/>).</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="lexicon"/> is null.</exception>
+    public static int ExtractNounVerb(ReadOnlySpan<string> lower, int index, Func<string, ImmutableArray<WordDetails>> lexicon, Span<FeatureRef> features)
+    {
+        ArgumentNullException.ThrowIfNull(lexicon);
+        AddNeighbor(lower, index - 1, Left, LeftClass, lexicon, features, 0);
+        AddNeighbor(lower, index - 2, Left2, Left2Class, lexicon, features, 2);
+        AddNeighbor(lower, index + 1, Right, RightClass, lexicon, features, 4);
+        AddNeighbor(lower, index + 2, Right2, Right2Class, lexicon, features, 6);
+        return MaxNounVerbFeatures;
+    }
+
+    private static void AddNeighbor(ReadOnlySpan<string> lower, int position, int wordKind, int classKind, Func<string, ImmutableArray<WordDetails>> lexicon, Span<FeatureRef> features, int slot)
+    {
+        if (position < 0 || position >= lower.Length)
+        {
+            features[slot] = new FeatureRef(wordKind, SegmentEdge);
+            features[slot + 1] = new FeatureRef(classKind, EdgeClass);
+            return;
+        }
+
+        var token = lower[position];
+        features[slot] = new FeatureRef(wordKind, token);
+        features[slot + 1] = new FeatureRef(classKind, HasLetter(token) ? ContextClassOf(lexicon(token)) : PunctuationClass);
+    }
+
+    /// <summary>
+    ///     Names the class of a neighbor from the analyses that the lexicon lists for it: <c>auxiliary</c> when one of them
+    ///     is an auxiliary (a form of <c>be</c>, <c>have</c> or <c>do</c>, a modal), <c>verb</c> when every analysis is a
+    ///     verb that can be the finite verb of a clause (<c>ends</c>, <c>returned</c>), <c>nonfinite</c> when every analysis
+    ///     is a gerund or a participle, <c>ambiguous-verb</c> when there are several parts of speech and a verb among them,
+    ///     <c>ambiguous</c> when there are several and no verb, otherwise the name of the only part of speech
+    ///     (<c>noun</c>, <c>determiner</c> and so on). It is a closed set of grammatical classes, not a list of words.
+    /// </summary>
+    /// <param name="analyses">The analyses of the neighbor, or the default array for a word that the lexicon does not know.</param>
+    /// <returns>The class name.</returns>
+    internal static string ContextClassOf(ImmutableArray<WordDetails> analyses)
+    {
+        if (analyses.IsDefaultOrEmpty)
+        {
+            return UnknownClass;
+        }
+
+        var mask = 0;
+        foreach (var analysis in analyses)
+        {
+            mask |= 1 << PosTag.Of(analysis.PartOfSpeech);
+        }
+
+        if ((mask & (1 << PosTag.Auxiliary)) != 0)
+        {
+            return SingleClasses[PosTag.Auxiliary];
+        }
+
+        if (System.Numerics.BitOperations.PopCount((uint)mask) > 1)
+        {
+            return (mask & (1 << PosTag.Verb)) != 0 ? "ambiguous-verb" : "ambiguous";
+        }
+
+        if (mask == 1 << PosTag.Verb && BasicClassifier.IsNonFiniteVerb(analyses))
+        {
+            return "nonfinite";
+        }
+
+        return SingleClasses[System.Numerics.BitOperations.TrailingZeroCount((uint)mask)];
+    }
+
+    /// <summary>
+    ///     Scores how likely the target word is a verb rather than a noun, from its context.
+    /// </summary>
+    /// <param name="cue">The noun/verb table.</param>
+    /// <param name="features">The noun/verb features of the target (see <see cref="ExtractNounVerb"/>).</param>
+    /// <returns>The log odds of verb against noun that the context says (the sum of the weights of the features that the table knows); positive when the context says verb.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="cue"/> is null.</exception>
+    public static double ScoreNounVerb(NounVerbCue cue, ReadOnlySpan<FeatureRef> features)
+    {
+        ArgumentNullException.ThrowIfNull(cue);
+        var hashes = cue.Hashes.AsSpan();
+        var weights = cue.Weights.AsSpan();
+        var sum = 0;
         foreach (var feature in features)
         {
             var row = hashes.BinarySearch(feature.Hash);
