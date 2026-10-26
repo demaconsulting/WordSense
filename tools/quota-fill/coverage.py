@@ -2,7 +2,11 @@
 
   python coverage.py [WAVE]    writes corpus/coverage/quota-coverage.tsv (the columns of relabel-coverage.tsv, measured on the
                                corpus as it is now) and prints the counts, in total and for the lemmas of the waves up to WAVE
+                               (a rank wave; it also writes quota-unfilled.tsv for them)
+  python coverage.py --only-lemmas FILE   the same for a file of lemmas (the stage 1 waves): quota-unfilled.tsv gets the open
+                               senses of these lemmas and keeps the rows of every other lemma
 """
+import argparse
 import collections
 import os
 import sys
@@ -51,14 +55,47 @@ def write_unfilled(world, rows, wave):
     return n
 
 
+def write_unfilled_for(world, rows, lemmas):
+    """Replaces the rows of quota-unfilled.tsv of the given lemmas by the senses that are not met now; the rows of every
+    other lemma stay."""
+    path = os.path.join(qf.CORPUS, "coverage", "quota-unfilled.tsv")
+    with open(path, encoding="utf-8") as handle:
+        header = handle.readline().rstrip("\n")
+        kept = [l.rstrip("\n") for l in handle if l.split("\t", 1)[0].split("#", 1)[0] not in lemmas]
+    stat = blind_agreement()
+    new = []
+    for r in rows:
+        s = world["senses"][r["sense_id"]]
+        if s["lemma"] in lemmas and r["status"] != "met":
+            w, c = stat[r["sense_id"]]
+            new.append("\t".join(str(x) for x in [r["sense_id"], r["part_of_speech"], r["tier"], r["anchors"],
+                                                  r["anchor_quota"], r["holdout"], r["holdout_quota"], w, c, s["gloss"][:140]]))
+    with open(path, "w", encoding="utf-8", newline="\n") as handle:
+        handle.write(header + "\n")
+        for line in kept + sorted(new):
+            handle.write(line + "\n")
+    return len(new)
+
+
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("wave", nargs="?", type=int, help="the rank wave whose lemmas quota-unfilled.tsv lists")
+    ap.add_argument("--only-lemmas", default="",
+                    help="a file of lemmas (stage 1 waves): quota-unfilled.tsv gets the open senses of these lemmas")
+    args = ap.parse_args()
     world = qf.load_world()
     rows = lexindex.quota_status(world["senses"], world["scope"])
     lexindex.write_coverage(rows, os.path.join(qf.CORPUS, "coverage", "quota-coverage.tsv"))
     c, ma, mh = counts(rows)
     print("all:", dict(c), "missing anchors", ma, "missing holdout", mh)
-    if len(sys.argv) > 1:
-        wave = int(sys.argv[1])
+    if args.only_lemmas:
+        lemmas = set(qf.read_lemma_list(args.only_lemmas))
+        sub = [r for r in rows if world["senses"][r["sense_id"]]["lemma"] in lemmas]
+        c, ma, mh = counts(sub)
+        print(len(lemmas), "lemmas,", dict(c), "missing anchors", ma, "missing holdout", mh)
+        print("unfilled senses listed for them:", write_unfilled_for(world, rows, lemmas))
+    elif args.wave:
+        wave = args.wave
         in_wave = qf.lemmas_up_to(world, wave)
         sub = [r for r in rows if world["senses"][r["sense_id"]]["lemma"] in in_wave]
         c, ma, mh = counts(sub)

@@ -18,6 +18,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import harvest
 import lexindex
 import qf
+import shortfix
 import textutil
 
 BATCH_SENTENCES = 220
@@ -205,6 +206,7 @@ def cmd_ingest(args):
 
 
 def cmd_labeled(args):
+    shortfix.require_complete(args.wave, "wr-label")
     world = qf.load_world()
     wdir = wave_dir(args.wave)
     stats = collections.Counter()

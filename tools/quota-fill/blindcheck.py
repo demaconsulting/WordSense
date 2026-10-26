@@ -26,6 +26,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import fill
 import harvest
 import qf
+import shortfix
 
 SPLITS = ("anchors", "holdout")
 
@@ -109,7 +110,13 @@ def write_batches(world, items, wdir, in_dir, meta_dir, prefix, seed):
     return len(batches), skipped
 
 
+def prefix(kind):
+    """The folder prefix of the check of a kind: chk for real rows, wchk for written rows."""
+    return "chk" if kind == "real" else "wchk"
+
+
 def cmd_export(args):
+    pre = prefix(args.kind)
     world = qf.load_world()
     rows = read_rows(args.wave, args.kind)
     if args.every > 1:
@@ -117,9 +124,9 @@ def cmd_export(args):
     items = [{"split": sp, "lemma": lemma, "sense": sense, "pos": pos, "sentence": sentence, "form": form_of(sentence)}
              for sp, lemma, sense, pos, sentence in rows]
     wdir = wave_dir(args.wave)
-    for sub in ("chk-out", "chk2-out"):
+    for sub in (pre + "-out", pre + "2-out"):
         os.makedirs(os.path.join(wdir, sub), exist_ok=True)
-    n, skipped = write_batches(world, items, wdir, "chk-in", "chk-meta", "c", f"chk|{args.wave}")
+    n, skipped = write_batches(world, items, wdir, pre + "-in", pre + "-meta", "c", f"chk|{args.wave}")
     print(len(items), "rows,", n, "batches, skipped (no sense list for the form):", skipped)
 
 
@@ -135,14 +142,16 @@ def confirmed(meta, answers, n):
 
 
 def cmd_judge(args):
+    pre = prefix(args.kind)
+    shortfix.require_complete(args.wave, pre)
     wdir = wave_dir(args.wave)
     world = qf.load_world()
     stats = collections.Counter()
     again = []
-    for meta_path in sorted(glob.glob(os.path.join(wdir, "chk-meta", "*.json"))):
+    for meta_path in sorted(glob.glob(os.path.join(wdir, pre + "-meta", "*.json"))):
         bid = os.path.splitext(os.path.basename(meta_path))[0]
         meta = qf.read_json(meta_path)
-        answers = read_answers(os.path.join(wdir, "chk-out", bid + ".tsv"))
+        answers = read_answers(os.path.join(wdir, pre + "-out", bid + ".tsv"))
         if answers is None:
             stats["batch without output"] += 1
         for n, item in meta["items"].items():
@@ -151,26 +160,29 @@ def cmd_judge(args):
                 stats["confirmed by the first labeler"] += 1
             else:
                 again.append(dict((k, v) for k, v in item.items() if k != "group"))
-    n, skipped = write_batches(world, again, wdir, "chk2-in", "chk2-meta", "j", f"chk2|{args.wave}")
-    os.makedirs(os.path.join(wdir, "chk2-out"), exist_ok=True)
+    n, skipped = write_batches(world, again, wdir, pre + "2-in", pre + "2-meta", "j", f"chk2|{args.wave}")
+    os.makedirs(os.path.join(wdir, pre + "2-out"), exist_ok=True)
     print(dict(stats), "->", len(again), "rows for the second labeler in", n, "batches, skipped", skipped)
 
 
 def cmd_apply(args):
+    pre = prefix(args.kind)
+    shortfix.require_complete(args.wave, pre)
+    shortfix.require_complete(args.wave, pre + "2")
     wdir = wave_dir(args.wave)
     world = qf.load_world()
     senses = world["senses"]
     first, second = {}, {}
-    for meta_path in sorted(glob.glob(os.path.join(wdir, "chk-meta", "*.json"))):
+    for meta_path in sorted(glob.glob(os.path.join(wdir, pre + "-meta", "*.json"))):
         bid = os.path.splitext(os.path.basename(meta_path))[0]
         meta = qf.read_json(meta_path)
-        answers = read_answers(os.path.join(wdir, "chk-out", bid + ".tsv")) or {}
+        answers = read_answers(os.path.join(wdir, pre + "-out", bid + ".tsv")) or {}
         for n, item in meta["items"].items():
             first[(item["split"], item["lemma"], item["sense"], item["sentence"])] = confirmed(meta, answers, n)
-    for meta_path in sorted(glob.glob(os.path.join(wdir, "chk2-meta", "*.json"))):
+    for meta_path in sorted(glob.glob(os.path.join(wdir, pre + "2-meta", "*.json"))):
         bid = os.path.splitext(os.path.basename(meta_path))[0]
         meta = qf.read_json(meta_path)
-        answers = read_answers(os.path.join(wdir, "chk2-out", bid + ".tsv")) or {}
+        answers = read_answers(os.path.join(wdir, pre + "2-out", bid + ".tsv")) or {}
         for n, item in meta["items"].items():
             second[(item["split"], item["lemma"], item["sense"], item["sentence"])] = confirmed(meta, answers, n)
     kind = args.kind

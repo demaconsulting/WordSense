@@ -25,6 +25,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import choosers
 import lexindex
 import qf
+import shortfix
 import textutil
 
 PROV_COLUMNS = ["id", "split", "source", "source_key"]
@@ -130,6 +131,9 @@ def cmd_agree(args):
     both name the same sense with high confidence; every other item becomes `unsure`. Writes agreement.tsv by lemma."""
     wdir = wave_dir(args.wave)
     first, second = args.labelers.split(",")
+    for name in (first, second):
+        if f"real-{name}" in shortfix.STAGES:
+            shortfix.require_complete(args.wave, f"real-{name}")
     os.makedirs(os.path.join(wdir, "out"), exist_ok=True)
     per_lemma = collections.defaultdict(collections.Counter)
     missing = 0
