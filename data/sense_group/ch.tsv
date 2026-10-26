@@ -1,0 +1,3 @@
+group_id	lemma	pos	label	origin	kind
+charge#group:accusing	charge	v	accusing	curated	related
+charge#group:assigning-responsibility	charge	v	assigning-responsibility	curated	equivalent

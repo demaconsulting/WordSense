@@ -1,0 +1,4 @@
+group_id	lemma	pos	label	origin	kind
+cut#group:direct-passage	cut	v	direct-passage	curated	related
+cut#group:physical-cutting	cut	n	physical-cutting	curated	related
+cut#group:physical-separation	cut	v	physical-separation	curated	related

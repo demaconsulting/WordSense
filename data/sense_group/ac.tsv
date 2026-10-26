@@ -1,0 +1,3 @@
+group_id	lemma	pos	label	origin	kind
+accept#group:assent	accept	v	assent	curated	related
+act#group:theatrical-performance	act	v	theatrical-performance	curated	related

@@ -1,5 +1,9 @@
 group_id	lemma	pos	label	origin	kind
 waste#group:squander	waste	v	squander	curated	equivalent
+water#group:supplying-water	water	v	supplying-water	curated	related
+wear#group:appearance	wear	v	appearance	curated	related
 well#group:cavity	well	n	cavity	curated	related
 well#group:good-manner	well	r	good-manner	curated	equivalent
 well#group:thoroughly-degree	well	r	thoroughly-degree	curated	equivalent
+win#group:earned-gain	win	v	earned-gain	curated	related
+world#group:humanity	world	n	humanity	curated	related

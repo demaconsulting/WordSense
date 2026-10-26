@@ -1,0 +1,4 @@
+group_id	lemma	pos	label	origin	kind
+single#group:individual	single	a	individual	curated	equivalent
+sit#group:being-seated	sit	v	being-seated	curated	related
+situation#group:circumstances	situation	n	circumstances	curated	related

@@ -1,0 +1,4 @@
+group_id	lemma	pos	label	origin	kind
+shoot#group:film-recording	shoot	v	film-recording	curated	equivalent
+shoot#group:rapid-movement	shoot	v	rapid-movement	curated	related
+short#group:deficient-amount	short	a	deficient-amount	curated	related

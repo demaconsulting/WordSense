@@ -1,7 +1,7 @@
 # Curated sense inventory (input of `seed-inventory`)
 
-`senses.tsv` and `groups.tsv` are the reviewed curation of 1,157 lemmas (263 curated groups). The import into `data/` keeps
-140 groups (see "Groups").
+`senses.tsv` and `groups.tsv` are the reviewed curation of 1,157 lemmas (446 curated groups). The import into `data/` keeps
+323 groups (see "Groups").
 
 - the first set, 20 lemmas (297 senses, 179 curated groups, 56 of them kept by the import): `back`, `even`, `first`,
   `forward`, `go`, `help`, `home`, `however`, `just`, `little`, `long`, `only`, `own`, `please`, `pretty`, `review`,
@@ -131,10 +131,20 @@ The importer applies these rules to the curated groups, in this order:
 - A group that remains needs a `kind` of the `group_kind` vocabulary of `data/schema.yaml`, non-empty `evidence` and a
   slug of lower-case ASCII letters, digits and hyphens; otherwise the import stops and writes nothing.
 
-The result is 140 groups of 307 senses: 110 `equivalent` and 30 `related`. The first set has 56 groups of 138 senses
-(26 `equivalent` and 30 `related`) and the second set 84 `equivalent` groups of 169 senses. The importer replaces the
+The result is 323 groups of 688 senses: 154 `equivalent` and 169 `related`. The first set has 56 groups of 138 senses
+(26 `equivalent` and 30 `related`), the second set 84 `equivalent` groups of 169 senses and the stage 1 set 183 groups of
+381 senses (44 `equivalent` and 139 `related`). The importer replaces the
 groups of the lemmas of the curation as a whole and removes any group row whose origin is not `curated`. After the
 import the tables are edited in `data/`, and these files only record what was imported.
+
+**Groups of the stage 1 set.** `gpt-6.1-sol` proposed groups from the full glosses for every lemma and part of speech of
+the set with four or more senses (363 units, 3,232 senses; `tools/quota-fill/prompts/group-proposer.md`): 190 groups.
+`claude-sonnet-5.5` reviewed them blind (`group-reviewer.md`: it saw the glosses of the unit and the proposed groups,
+nothing else, and 20 control groups of two senses with no word in common, which it rejected). It accepted 183 and
+rejected 7, and it changed the kind of 32 proposed `equivalent` groups to `related`. The evidence is `curated:gloss
+near-identical glosses` (`equivalent`) or `curated:gloss related meanings` (`related`); no judge data exists for the
+stage 1 lemmas yet, so these groups rest on the glosses and are candidates to drop or to extend when a confusion pass of
+trained encoders is available.
 
 **Decisions on the first set.** `test#group:trial` is `related` (18/65 in-group confusion). `only#group:merely` is
 `related`, and the `D` flag of `only#exclusively` is cleared, because it is a major adverb reading (226 WordNet tags)

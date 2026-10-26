@@ -1,3 +1,7 @@
 group_id	sense_id
 aggregate#group:combined-total	oewn-aggregate__1.06.00..
 aggregate#group:combined-total	oewn-aggregate__1.14.00..
+agree#group:compatibility	oewn-agree__2.42.00..
+agree#group:compatibility	oewn-agree__2.42.01..
+agree#group:harmony	oewn-agree__2.32.00..
+agree#group:harmony	oewn-agree__2.32.04..

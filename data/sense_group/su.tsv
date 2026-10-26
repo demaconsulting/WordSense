@@ -1,3 +1,5 @@
 group_id	lemma	pos	label	origin	kind
+suggest#group:indirect-indication	suggest	v	indirect-indication	curated	related
 suit#group:agreeable	suit	v	agreeable	curated	equivalent
 supplement#group:supplement-role	supplement	v	supplement-role	curated	equivalent
+sure#group:reliable-effect	sure	a	reliable-effect	curated	related

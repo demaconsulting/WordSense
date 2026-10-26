@@ -1,2 +1,3 @@
 group_id	lemma	pos	label	origin	kind
+apply#group:applicability	apply	v	applicability	curated	equivalent
 approach#group:spatial-approach	approach	n	spatial-approach	curated	equivalent

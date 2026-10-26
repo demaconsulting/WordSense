@@ -1,2 +1,4 @@
 group_id	lemma	pos	label	origin	kind
 aggregate#group:combined-total	aggregate	n	combined-total	curated	equivalent
+agree#group:compatibility	agree	v	compatibility	curated	related
+agree#group:harmony	agree	v	harmony	curated	related

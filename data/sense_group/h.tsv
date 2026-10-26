@@ -1,7 +1,14 @@
 group_id	lemma	pos	label	origin	kind
 handle#group:management	handle	v	management	curated	equivalent
+happen#group:occurring	happen	v	occurring	curated	related
+hard#group:demanding-effort	hard	a	demanding-effort	curated	related
+have#group:experiencing	have	v	experiencing	curated	equivalent
+have#group:medical-affliction	have	v	medical-affliction	curated	related
+have#group:possession	have	v	possession	curated	related
 help#group:assistance	help	n	assistance	curated	related
 help#group:improve	help	v	improve	curated	equivalent
+hold#group:capacity	hold	v	capacity	curated	related
+hold#group:physical-support	hold	v	physical-support	curated	related
 home#group:domestic	home	a	domestic	curated	related
 home#group:family-environment	home	n	family-environment	curated	equivalent
 home#group:homeland	home	n	homeland	curated	related

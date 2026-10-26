@@ -1,4 +1,12 @@
 group_id	sense_id
+name#group:appointment	oewn-name__2.41.00..
+name#group:appointment	oewn-name__2.41.01..
+name#group:identification	oewn-name__2.32.02..
+name#group:identification	oewn-name__2.32.07..
+new#group:unprecedented	oewn-new__5.00.00.original.00
+new#group:unprecedented	oewn-new__5.00.00.unprecedented.00
+night#group:nighttime	oewn-night__1.28.00..
+night#group:nighttime	oewn-night__1.28.02..
 nominate#group:candidate-nomination	oewn-nominate__2.32.00..
 nominate#group:candidate-nomination	oewn-nominate__2.41.02..
 nominate#group:role-assignment	oewn-nominate__2.41.00..

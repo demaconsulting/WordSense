@@ -1,2 +1,10 @@
 group_id	lemma	pos	label	origin	kind
+maintain#group:asserting	maintain	v	asserting	curated	related
+make#group:action-performance	make	v	action-performance	curated	related
+make#group:causing-action	make	v	causing-action	curated	related
+make#group:goal-attainment	make	v	goal-attainment	curated	equivalent
+make#group:material-construction	make	v	material-construction	curated	related
+make#group:numerical-total	make	v	numerical-total	curated	equivalent
+material#group:physical-substance	material	a	physical-substance	curated	equivalent
+matter#group:subject-of-concern	matter	n	subject-of-concern	curated	related
 multiply#group:reproduction	multiply	v	reproduction	curated	equivalent

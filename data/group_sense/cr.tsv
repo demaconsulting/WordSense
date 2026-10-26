@@ -1,4 +1,6 @@
 group_id	sense_id
+create#group:bringing-about	oewn-create__2.36.00..
+create#group:bringing-about	oewn-create__2.36.02..
 credit#group:giving-credit	oewn-credit__2.31.01..
 credit#group:giving-credit	oewn-credit__2.31.12..
 cry#group:vocal-cry	oewn-cry__2.32.01..

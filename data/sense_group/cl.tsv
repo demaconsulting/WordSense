@@ -1,2 +1,4 @@
 group_id	lemma	pos	label	origin	kind
+claim#group:entitlement	claim	n	entitlement	curated	related
+clear#group:approval	clear	v	approval	curated	related
 close#group:physical-nearness	close	a	physical-nearness	curated	equivalent

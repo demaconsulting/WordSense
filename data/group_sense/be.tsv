@@ -1,0 +1,10 @@
+group_id	sense_id
+be#group:identity	oewn-be__2.42.06..
+be#group:identity	oewn-be__2.42.07..
+become#group:changing-state	oewn-become__2.30.00..
+become#group:changing-state	oewn-become__2.42.01..
+begin#group:having-beginning	oewn-begin__2.42.00..
+begin#group:having-beginning	oewn-begin__2.42.03..
+begin#group:having-beginning	oewn-begin__2.42.04..
+better#group:superior-option	oewn-better__1.07.00..
+better#group:superior-option	oewn-better__1.07.01..

@@ -1,3 +1,13 @@
 group_id	lemma	pos	label	origin	kind
+observe#group:adherence	observe	v	adherence	curated	equivalent
+observe#group:attentive-watching	observe	v	attentive-watching	curated	related
 only#group:merely	only	r	merely	curated	related
 only#group:outcome	only	r	outcome	curated	equivalent
+open#group:availability	open	v	availability	curated	related
+open#group:free-passage	open	a	free-passage	curated	related
+open#group:physical-opening	open	v	physical-opening	curated	related
+open#group:publicly-visible	open	a	publicly-visible	curated	related
+open#group:unprotected	open	a	unprotected	curated	equivalent
+order#group:arranging	order	v	arranging	curated	related
+order#group:issuing-commands	order	v	issuing-commands	curated	related
+order#group:ordered-arrangement	order	n	ordered-arrangement	curated	related

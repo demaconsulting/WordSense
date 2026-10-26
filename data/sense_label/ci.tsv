@@ -283,9 +283,9 @@ oewn-city--born__5.00.00.urban.00	adjective	generated
 oewn-city--bred__5.00.00.urban.00	adjective	generated
 oewn-city--like__5.00.00.urban.00	adjective	generated
 oewn-city--state__1.14.00..	noun	generated
-oewn-city__1.14.00..	metropolis-2	generated
-oewn-city__1.15.00..	metropolis	generated
-oewn-city__1.15.01..	administrative-district	generated
+oewn-city__1.14.00..	metropolis-2	curated
+oewn-city__1.15.00..	metropolis	curated
+oewn-city__1.15.01..	administrative-district	curated
 oewn-cityfied__5.00.00.urban.00	adjective	generated
 oewn-cityscape__1.06.00..	painting	generated
 oewn-cityscape__1.09.00..	point-of-view	generated

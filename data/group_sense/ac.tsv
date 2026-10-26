@@ -1,0 +1,5 @@
+group_id	sense_id
+accept#group:assent	oewn-accept__2.31.01..
+accept#group:assent	oewn-accept__2.32.00..
+act#group:theatrical-performance	oewn-act__2.36.00..
+act#group:theatrical-performance	oewn-act__2.36.03..
