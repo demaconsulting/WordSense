@@ -38,7 +38,8 @@ namespace DemaConsulting.WordSense;
 ///     <para>
 ///     A word that has both a noun and a verb analysis (<c>stand</c>, <c>check</c>, <c>run</c>) has the probability of
 ///     those two slots shifted by the shared noun/verb table of <see cref="BasicTables"/> (<c>ApplyNounVerb</c>), fitted on
-///     all such words of the open corpus: it reads the two words on each side and their grammatical classes (an
+///     the words of the training split of the representative open corpus that have both analyses: it reads the two words on
+///     each side and their grammatical classes (an
 ///     auxiliary, a verb, a determiner), so <c>the monitor stand is adjustable</c> keeps the noun although the word
 ///     <c>stand</c> is nearly always a verb. The two slots keep their total probability; the shift moves it between them.
 ///     </para>

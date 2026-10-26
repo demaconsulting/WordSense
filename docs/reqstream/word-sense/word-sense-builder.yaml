@@ -919,7 +919,8 @@ sections:
             justification: |
               The tagger and the cue tables already read the neighbors of a word, so a table that learned the
               neighbors alone would count that evidence twice. Fitted against the odds of the rest of the model, the
-              table learns only what that model gets wrong, and the weight of the model is near 1.
+              table learns only what that model gets wrong, so its weights add to those odds as they are. The shipped
+              weight of the model (0.5 in the default hyper-parameters) was chosen on the development splits.
             tests:
               - WordSenseBuilder_NounVerbStacker_Fit_FeaturesOfTheClassesGetTheirSign
               - WordSenseBuilder_NounVerbStacker_Fit_LearnsOnlyWhatTheOffsetMisses

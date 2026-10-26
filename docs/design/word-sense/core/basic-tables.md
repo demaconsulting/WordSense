@@ -40,7 +40,8 @@ table is bound to the word image by the hash of the analysis inventory.
 - `NounVerbCue` (the `NounVerb` property, null for a table without one): the shared noun/verb table, the ascending
   feature hashes and one signed byte weight per hash, in eighths of a nat: what the feature adds to the log odds of verb
   against noun that the rest of the model gives a word. It has no prior and no analyses, all read-only views like the
-  tense table. The builder fits it on the words of the open corpus that have both a noun and a verb analysis.
+  tense table. The builder fits it on the words of the training split of the open corpus that have both a noun and a verb
+analysis.
 - The word prior is not stored in the table. Its four numbers are in the header and its evidence, the WordNet 3.0 tag
   counts and the senses of the lemma and part of speech of every analysis of a word, is in the word image that the
   table is bound to (`WordImage.UsageTotalsOf`, read by `WordSupport`, see the `PosTagger` design). Computing it at run

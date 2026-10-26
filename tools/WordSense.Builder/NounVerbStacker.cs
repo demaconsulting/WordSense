@@ -23,7 +23,10 @@ internal sealed record NounVerbSample(ushort[] Hashes, double Offset, bool IsVer
 ///     would count the same evidence a second time, and a weight chosen on the development sets would only shrink that
 ///     double count. Here the weights answer a different question: given what the rest of the model says about a word
 ///     that was not in its counts, which contexts show that it is wrong? The offset enters with the weight 1, so the
-///     weights add to the log odds of the model as they are, and the runtime weight of the table is near 1.
+///     weights add to the log odds of the model as they are. The run-time weight of the table (<c>NounVerbWeight</c>, 0.5 in
+///     <see cref="BasicHyperparameters.Default"/>) was chosen on the development splits of the open corpus and the
+///     treebank, within a range where they are flat, and is limited by the guard test that keeps a noun after a determiner
+///     and a noun above a confidence of 0.8.
 ///     </para>
 ///     <para>
 ///     The training split of the open corpus is cut into folds by a stable hash of the sentence, as the running-text
