@@ -4,26 +4,18 @@
 
 ## How Answers Work
 
-WordSense identifies the sense of a word in its sentence. The inventory of senses is the one of Open English WordNet for
-the lemmas of one word, plus a few project senses for the words that Open English WordNet does not cover (for example
-`the#determiner`). The lemma is the dictionary form of the word (for example `record`); a word such as `records` is
-matched to its lemma through the forms listed below. An answer is a lemma, a part of speech and, where the model is
-trained for the lemma, a sense or a group of senses.
+The sense inventory is Open English WordNet plus a few project senses for the words it does not cover (for example
+`the#determiner`). An answer is a lemma, a part of speech and, for a trained lemma, a sense or a group of senses.
 
 ### Senses
 
-Every sense has a readable id of the form `lemma#label` (for example `bank#coin-bank`) that is stable and never reused
-for another meaning, and is linked to one Open English WordNet sense key. A project sense has no key. The senses of a
-lemma and part of speech are listed in the order of Open English WordNet, which puts the commonly used senses first (the
-position of the sense in its entry); a project sense ranks last. Each sense is listed with its gloss, the definition of
-its Open English WordNet synset.
+A sense id has the form `lemma#label` (for example `bank#coin-bank`). It is stable and never reused, and it links to one
+Open English WordNet sense key; a project sense has no key. Senses are listed in the order of Open English WordNet,
+project senses last, each with the gloss of its synset.
 
 ### Parts of Speech
 
-The `PartOfSpeech` enumeration defines ten parts of speech: the eight classic ones, `Determiner` and `Auxiliary`. The
-trained lemmas listed here, which give the context answers, have senses of 8 of them. A dictionary answer can also be a
-part of speech of a lemma that is not listed, as the answer for a word with one part of speech or as a candidate of a
-word that has several. The table counts the trained lemmas and senses of each part of speech:
+`PartOfSpeech` has ten values. The trained lemmas have senses of 8 of them:
 
 | Part of speech | Lemmas | Senses |
 | -------------- | -----: | -----: |
@@ -38,68 +30,45 @@ word that has several. The table counts the trained lemmas and senses of each pa
 
 ### Groups
 
-A **group** is optional. It exists only where it was curated: a set of at least two, but not all, senses of one lemma
-and part of speech that are closely related in meaning and that a reader can confuse. A sense is in at most one group
-and needs none; the sense lines below show `none` for a sense in no group. When the model cannot tell the senses of a
-group apart it answers with the group, which is the level between the part of speech and the sense.
+A group is a curated set of at least two, but not all, closely related senses of one lemma and part of speech. A sense
+is in at most one group; the sense lines show `none` for a sense in no group.
 
 ### Forms
 
-Inflected forms are mapped to their lemma by the forms of the word table, so `presents` is analyzed as a form of
-`present`. Each lemma below lists every analysis of the forms the word table recognizes for it, the forms spelled like
-the lemma included, each with its features (`Feature=Value` items joined by `+`); when the lemma has several parts of
-speech, the part of speech comes first. So `read (verb, Tense=Past+VerbForm=Part)` is the past tense and participle
-spelled like the lemma. A form that is not in the table is unknown and is never analyzed.
+Each lemma lists the analyses of its forms with their features (`Feature=Value` items joined by `+`), and the part of
+speech first when there are several. So `read (verb, Tense=Past+VerbForm=Part)` is the past tense and participle spelled
+like the lemma.
 
 ### Dictionary Words
 
 The word table knows 365,007 spellings (lemmas and inflected forms) of 223,830 entries, and its sense catalog lists
-129,255 senses in 140 curated groups. Besides the lemmas listed below, every other word of the table is a dictionary
-word: it has no trained classifier, a word with one part of speech is answered directly with confidence 1, and a word
-with several parts of speech returns them as candidates, most frequent first (the encoder models answer it with the
-first one; the basic model chooses by tagger and context, and by the case of the word when the spelling has both a
-capitalized and a lower-case lemma). A capitalized word is looked up as written first and then in lower case.
+129,255 senses in 140 curated groups. Every word of the table that is not listed below has no trained classifier.
 
 The lemmas listed below are the 856 trained lemmas (the lemmas that have anchor sentences), with 7,035 senses (147 of
 them project senses) and 140 groups.
 
 ## Keys and Heteronyms
 
-WordSense names the meaning of a word and never its sound. A downstream library, for example a speech front end, maps
-the meanings to its own data, such as the phonemes of each: it needs one stable string for each answer and a way to know
-every string the library can return.
-
 ### Keys
 
-Every classified word has one key, `ClassifyResult.Key`, of the form `{spelling}|{lemma}/{Part}[/{Features}][#{label}]`:
-the spelling is the written form as the lexicon looks it up (lower case, straight apostrophe), the lemma keeps its case,
-the part is the `PartOfSpeech` name, the features are those of the analysis (left out when empty) and the label is the
-part after `#` of the sense id, from the answered sense or, when the answer is a group or a part of speech, from the
-most probable ranked sense of the analysis, and left out when the model ranked none. An unknown word has no key.
-`WordLexicon.Keys()` enumerates every key that any model can return, and `WordKey.TryParse` splits a key into its parts.
-A `\` escapes a `\`, `|`, `/` or `#` inside a part (a few lemmas contain `/`). The builder command `keys --output FILE`
-writes all keys, sorted, one for each line.
+A key names a meaning and never a sound: `{spelling}|{lemma}/{Part}[/{Features}][#{label}]`, where the label is the part
+after `#` of a sense id. An unknown word has no key. `WordLexicon.Keys()` enumerates every key any model can return, and
+the builder command `keys --output FILE` writes them. The user guide describes the format.
 
 ### Heteronyms
 
-A heteronym is a spelling that stands for different words, so that the spelling alone cannot decide what a consumer maps
-it to: the key does. The sections below list every such spelling in three levels, with its classes of meaning and the
-keys of each class (no phonemes; a consumer attaches its own data to the class). A key written without a label stands
-for its analysis and every sense of it; `#{a,b}` stands for the keys `#a` and `#b`. A key without a label of a spelling
-that is split by its senses (the sense level) decides nothing: the model did not choose a sense, so the consumer chooses
-a default. A group with a note (for example that some dialects merge the classes) says so after its keys. The table has
-370 heteronym records, one for each spelling of a group (367 distinct spellings, because a few spellings, such as
-`leading`, are in two groups): 269 at the entry level (128 derived from the pronunciations of Open English WordNet, 141
-curated), 4 at the tense level and 97 at the sense level. `WordSense.Builder heteronyms --output FILE` writes the same
-table as a TSV.
+A heteronym is a spelling whose key, not the spelling, decides the word. The sections below list each one with its
+classes of meaning and the keys of each class. A key without a label stands for its analysis and every sense of it;
+`#{a,b}` stands for the keys `#a` and `#b`. The table has 370 heteronym records, one for each spelling of a group (367
+distinct spellings, because a few spellings, such as `leading`, are in two groups): 269 at the entry level (128 derived
+from the pronunciations of Open English WordNet, 141 curated), 4 at the tense level and 97 at the sense level.
+`WordSense.Builder heteronyms --output FILE` writes the same table as a TSV.
 
 ### Heteronyms by Entry
 
-The analyses of these spellings (lemma and part of speech) belong to entries that sound different: the pronunciations of
-Open English WordNet of the entries of one lemma share no sound after the normalization (dialect, syllable marks and
-length marks ignored, stress kept). The curated table `corpus/curation/heteronyms.tsv` adds the cases that the
-pronunciations cannot show: spellings of different lemmas (`wound`, `dove`, `lives`) and the pairs, mostly of noun and
-verb, whose entries have no pronunciation in the data (`use`, `object`, `present`).
+The analyses (lemma and part of speech) belong to entries that sound different. The curated table
+`corpus/curation/heteronyms.tsv` adds spellings of different lemmas (`wound`, `dove`, `lives`) and pairs whose entries
+have no pronunciation in the data (`use`, `object`, `present`).
 
 - **abuse** (group `abuse`): abuse noun: `abuse|abuse/Noun/Number=Sing`; abuse verb: `abuse|abuse/Verb/VerbForm=Inf`
 - **abuses** (group `abuse`): abuse noun: `abuses|abuse/Noun/Number=Plur`; abuse verb:
@@ -602,8 +571,7 @@ verb, whose entries have no pronunciation in the data (`use`, `object`, `present
 
 ### Heteronyms by Tense
 
-The past tense and the present tense or infinitive of these verbs are spelled alike and sound different. The curated
-table lists them.
+The past tense and the present tense or infinitive are spelled alike and sound different.
 
 - **misread** (group `misread`): non-past: `misread|misread/Verb/VerbForm=Inf`; past:
   `misread|misread/Verb/Tense=Past+VerbForm=Part`
@@ -615,8 +583,7 @@ table lists them.
 
 ### Heteronyms by Sense
 
-The senses of one analysis of these spellings belong to different entries that sound different, so only the sense
-decides. The classes are curated in `corpus/curation/heteronyms.tsv`.
+The senses of one analysis belong to entries that sound different, so only the sense decides.
 
 - **agora** (group `agora`): marketplace: `agora|agora/Noun/Number=Sing#{market,public-square}`; monetary-unit:
   `agora|agora/Noun/Number=Sing#israeli-monetary-unit`
@@ -856,9 +823,8 @@ decides. The classes are curated in `corpus/curation/heteronyms.tsv`.
 ## Supported Lemmas
 
 The library supports 856 lemmas with 7,035 senses in total, listed alphabetically. Each lemma lists its parts of speech
-and the forms it recognizes. Under it, every sense gives its id and part of speech, its group, its Open English WordNet
-sense key (a project sense has none) and its gloss, in inventory order (the order of Open English WordNet within a part
-of speech, project senses last).
+and forms. Under it, every sense gives its id and part of speech, its group, its Open English WordNet sense key (a
+project sense has none) and its gloss.
 
 ### Lemmas Starting With A
 

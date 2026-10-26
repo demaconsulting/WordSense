@@ -15,7 +15,7 @@
   support and lemma-weights machinery); and the two concrete models `DemaConsulting.WordSense.MiniLM` and
   `DemaConsulting.WordSense.BertBaseCased`, each pinning its model files and embedding its own weights (fine-sense
   classifiers whose scores are corrected to the usage of the senses). Onnx
-  depends only on core; MiniLM and BertBaseCased depend on core and Onnx. (The former Basic package is retired.) No CC
+  depends only on core; MiniLM and BertBaseCased depend on core and Onnx. No CC
   BY-SA material is shipped; the training corpus is project-authored CC0 text and US public domain sources.
 - **languages**: C#, Python (one-off tokenizer fixture generator, the quota-fill scripts `tools/quota-fill`, the model
   preparation scripts `tools/model-prep` and the open-corpus scripts `tools/open-corpus`)
@@ -71,6 +71,14 @@
 
 Always use **US English** spelling in all output (code, comments, documentation,
 commit messages, and reports).
+
+# Documentation (ALL Agents)
+
+- Docs describe the current state only. Git holds the history: no "before and after", "previously" or change logs.
+- State each measured figure in one place and link to it from elsewhere.
+- Write concisely, in short sentences. Cut qualifiers and repetition.
+- The README stays near 1,200 words and the user guide near 6,000 words.
+- Explain a moved suite expectation in the commit message and the PR description, never in a README.
 
 # Reference Template
 

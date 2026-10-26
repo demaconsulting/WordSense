@@ -683,17 +683,18 @@ sections:
 
       - id: WordSense-Lib-Documentation
         title: >-
-          The documentation shall show a README usage sample whose code and output for each model are verified against
-          the library, README samples for the optional preparation step of a model (called on the concrete model type
-          and through the capability interface) that are compiled against the library, and an appendix that lists
-          every trained lemma with its senses (id, group, OEWN key and gloss) and every analysis of its forms with the
-          features (the forms spelled like the lemma included), explains the keys and lists the heteronyms by their
-          keys, and is never stale.
+          The documentation shall show a README usage sample whose code and Basic output are verified against the
+          library, user-guide samples for the optional preparation step of a model (called on the concrete model type
+          and through the capability interface) that are compiled against the library, user-guide outputs of the
+          sample for the MiniLM and BertBaseCased models that are verified against the library, and an appendix that
+          lists every trained lemma with its senses (id, group, OEWN key and gloss) and every analysis of its forms
+          with the features (the forms spelled like the lemma included), explains the keys and lists the heteronyms by
+          their keys, and is never stale.
         tags: [system]
         justification: |
           A usage example that no longer compiles or prints something else misleads new users, and a hand-written
-          list of supported words drifts from the corpus. Compiling and running the README sample, and generating the
-          appendix from the data and the corpus, keep both honest.
+          list of supported words drifts from the corpus. Compiling and running the README and user-guide samples, and
+          generating the appendix from the data and the corpus, keep both honest.
         children:
           - WordSense-WordSenseBuilder-Appendix
         tests:
