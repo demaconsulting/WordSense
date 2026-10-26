@@ -56,7 +56,8 @@ internal sealed record ProvenanceEntry(string Source, string SourceKey)
 /// </summary>
 /// <param name="Calibration">The real rows of the calibration documents.</param>
 /// <param name="Test">The real rows of the test documents.</param>
-/// <param name="TestWithoutAnchorDocuments">The test rows whose document supplies no anchor.</param>
+/// <param name="TestWithoutAnchorDocuments">The test rows whose document supplies no anchor of the lemma of the row (a
+/// document may supply anchors of other lemmas).</param>
 /// <param name="Written">The rows written by a model.</param>
 /// <param name="Other">The rows without a provenance row.</param>
 internal sealed record HoldoutSplit(
@@ -169,18 +170,18 @@ internal static class RealSplit
     /// </summary>
     /// <param name="corpus">The corpus directory with the provenance.</param>
     /// <param name="holdout">The held-out rows.</param>
-    /// <param name="anchors">The anchor rows, to find the documents that supply anchors, or null for none.</param>
+    /// <param name="anchors">The anchor rows, to find the documents that supply anchors of each lemma, or null for none.</param>
     /// <returns>The split; every list is empty when the corpus has no provenance.</returns>
     public static HoldoutSplit Classify(string corpus, IReadOnlyList<CorpusRow> holdout, IReadOnlyList<CorpusRow>? anchors = null)
     {
         ArgumentNullException.ThrowIfNull(holdout);
         var provenance = ReadProvenance(corpus);
-        var anchorDocuments = new HashSet<string>(StringComparer.Ordinal);
+        var anchorDocuments = new HashSet<(string Lemma, string Document)>();
         foreach (var anchor in anchors ?? [])
         {
             if (provenance.TryGetValue(IdOf(anchor), out var entry) && entry.IsReal)
             {
-                anchorDocuments.Add(entry.Document);
+                anchorDocuments.Add((anchor.Lemma, entry.Document));
             }
         }
 
@@ -202,7 +203,7 @@ internal static class RealSplit
             else
             {
                 test.Add(row);
-                if (!anchorDocuments.Contains(entry.Document))
+                if (!anchorDocuments.Contains((row.Lemma, entry.Document)))
                 {
                     testFree.Add(row);
                 }

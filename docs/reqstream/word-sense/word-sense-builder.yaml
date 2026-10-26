@@ -236,6 +236,7 @@ sections:
               - WordSenseBuilder_RealSplit_ReadProvenance_IdInTwoFiles_IsRefused
               - WordSenseBuilder_RealSplit_Classify_WrittenAndUnknownRows_AreNeverRealRows
               - WordSenseBuilder_RealSplit_Classify_ReportsTestRowsInDocumentsWithoutAnchors
+              - WordSenseBuilder_RealSplit_Classify_AnchorOfAnotherLemma_DoesNotCountAsAnchorDocument
               - WordSenseBuilder_RealCalibrator_Apply_RaisesThresholdsUntilThePooledPrecisionReachesTheTarget
               - WordSenseBuilder_RealCalibrator_Apply_LemmaWithEnoughRows_KeepsTheHigherOfItsOwnAndTheAdjustedThreshold
               - WordSenseBuilder_RealCalibrator_Apply_NoCalibrationRows_KeepsTheThresholds
@@ -321,7 +322,8 @@ sections:
             title: >-
               The builder shall report, for every sense of every trained lemma, the number of anchor and held-out
               sentences it should have, derived from its WordNet 3.0 tag count (five or more: 20 and 5; one to four, and
-              a project sense: 10 and 3; none: 5 and 2), with the status of the sense (met, short or empty), and list
+              a project sense: 10 and 3; none: 5 and 2, or 3 and 1 for a lemma with 15 or more senses), with the status
+              of the sense (met, short or empty), and list
               the senses that fall short of their quota with the sentences that are missing.
             tags: [unit]
             justification: |
@@ -330,6 +332,7 @@ sections:
               sense that cannot be trained is made visible instead of silently missing.
             tests:
               - WordSenseBuilder_Tiers_Quota_FollowsTheTagCount
+              - WordSenseBuilder_Tiers_Build_LargeLemma_AsksFewerSentencesForUntaggedSenses
               - WordSenseBuilder_Tiers_Report_ListsShortAndEmptySensesWithTheMissingSentences
               - WordSenseBuilder_Program_Tiers_WritesReport
 
@@ -421,7 +424,8 @@ sections:
               the part of speech, with the real-text test split (the real held-out sentences of the test documents) as
               the headline set and the real calibration split, the written held-out sentences and the whole held-out
               set only as clearly labeled secondary sets, with a diagnostic set of the test sentences whose document
-              supplies no anchor, and with a statement that no held-out set is representative running text; for the
+              supplies no anchor of the lemma of the sentence, and with a statement that no held-out set is
+              representative running text; for the
               basic model it shall also report calibration, confidence thresholds, table
               size, latency and a fixed comparison table printed on every run.
             tags: [unit]

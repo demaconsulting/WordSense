@@ -284,8 +284,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
   Tatoeba sentence is its own document.
 - **Only real rows are split** (`RealSplit_Classify_WrittenAndUnknownRows_AreNeverRealRows`): a row whose source is
   written for the project, and a row without provenance, is in neither split.
-- **Anchor documents** (`RealSplit_Classify_ReportsTestRowsInDocumentsWithoutAnchors`): the test rows whose document
-  supplies no anchor are listed apart.
+- **Anchor documents** (`RealSplit_Classify_ReportsTestRowsInDocumentsWithoutAnchors`,
+  `RealSplit_Classify_AnchorOfAnotherLemma_DoesNotCountAsAnchorDocument`): the test rows whose document supplies no
+  anchor of the lemma of the row are listed apart; an anchor of another lemma from the same document does not count.
 - **Strict provenance** (`RealSplit_ReadProvenance_MalformedFile_IsRefusedWithPathAndLine`,
   `RealSplit_ReadProvenance_IdInTwoFiles_IsRefused`): a provenance file with a header other than
   `id split source source_key`, a short or long row, an empty field, a split other than `anchors`, `holdout` or
@@ -336,7 +337,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
 #### tiers
 
 - **Quota follows the tag count** (`WordSenseBuilder_Tiers_Quota_FollowsTheTagCount`): five or more gives 20 anchor
-  and 5 held-out sentences, one to four (and a project sense) gives 10 and 3, none gives 5 and 2.
+  and 5 held-out sentences, one to four (and a project sense) gives 10 and 3, none gives 5 and 2, or 3 and 1 for a
+  lemma with 15 or more senses.
+- **Large lemmas** (`WordSenseBuilder_Tiers_Build_LargeLemma_AsksFewerSentencesForUntaggedSenses`): an untagged sense of
+  "cut" (70 senses) has the quota 3 and 1, one of "record" (12 senses) 5 and 2.
 - **Report** (`WordSenseBuilder_Tiers_Report_ListsShortAndEmptySensesWithTheMissingSentences`): every sense of a trained
   lemma has its tier and status; a sense with fewer sentences than its quota is `short`, one without any is `empty` and
   both are listed with the missing sentences; a sense that meets its quota is `met`.

@@ -137,8 +137,8 @@ public sealed class RealSplitTests : IDisposable
     }
 
     /// <summary>
-    ///     The test rows whose document supplies a real anchor are left out of the list of test rows without anchor
-    ///     documents.
+    ///     The test rows whose document supplies a real anchor of the same lemma are left out of the list of test rows without
+    ///     anchor documents; an anchor of another lemma does not count.
     /// </summary>
     [Fact]
     public void WordSenseBuilder_RealSplit_Classify_ReportsTestRowsInDocumentsWithoutAnchors()
@@ -162,5 +162,33 @@ public sealed class RealSplitTests : IDisposable
         // Assert
         Assert.Equal(2, split.Test.Count);
         Assert.Equal([holdoutFree], split.TestWithoutAnchorDocuments);
+    }
+
+    /// <summary>
+    ///     A document that supplies an anchor of one lemma is a document without anchors for a held-out row of another lemma.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealSplit_Classify_AnchorOfAnotherLemma_DoesNotCountAsAnchorDocument()
+    {
+        // Arrange: one test book gives an anchor of "walk" and a held-out row of "record"
+        var walk = SenseFixtures.Senses("walk", PartOfSpeech.Noun, 1)[0];
+        var record = SenseFixtures.Senses("record", PartOfSpeech.Noun, 1)[0];
+        var book = Enumerable.Range(0, 200).First(b => RealSplit.SideOf($"gutenberg:pg{b.ToString(CultureInfo.InvariantCulture)}") == HoldoutSide.Test);
+        var anchor = SenseFixtures.Row(walk, 1);
+        var holdoutWalk = SenseFixtures.Row(walk, 2);
+        var holdoutRecord = SenseFixtures.Row(record, 3);
+        WriteProvenance(
+        [
+            Provenance(anchor, "gutenberg", $"pg{book.ToString(CultureInfo.InvariantCulture)}#s1"),
+            Provenance(holdoutWalk, "gutenberg", $"pg{book.ToString(CultureInfo.InvariantCulture)}#s2"),
+            Provenance(holdoutRecord, "gutenberg", $"pg{book.ToString(CultureInfo.InvariantCulture)}#s3"),
+        ]);
+
+        // Act
+        var split = RealSplit.Classify(Corpus, [holdoutWalk, holdoutRecord], [anchor]);
+
+        // Assert
+        Assert.Equal(2, split.Test.Count);
+        Assert.Equal([holdoutRecord], split.TestWithoutAnchorDocuments);
     }
 }

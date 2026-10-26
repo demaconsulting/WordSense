@@ -103,7 +103,7 @@ internal sealed record EvaluationResult(
     internal const string RealTestSetName = "real text, test split (headline)";
 
     /// <summary>
-    ///     Gets the name of the set of the test sentences whose document supplies no anchor.
+    ///     Gets the name of the set of the test sentences whose document supplies no anchor of the lemma of the sentence.
     /// </summary>
     internal const string RealTestFreeSetName = "real text, test split, documents without anchors";
 
@@ -502,7 +502,8 @@ internal static class Evaluator
     /// </summary>
     /// <remarks>
     ///     The held-out sentences are not representative real text. The headline set is the real sentences of the test
-    ///     documents; the same sentences restricted to documents that supply no anchor, the calibration split (on which
+    ///     documents; the same sentences restricted to documents that supply no anchor of the lemma of the sentence, the
+    ///     calibration split (on which
     ///     the thresholds were chosen) and the written sentences are secondary or diagnostic and are named so.
     /// </remarks>
     /// <param name="split">The split of the held-out rows (see <see cref="RealSplit"/>).</param>

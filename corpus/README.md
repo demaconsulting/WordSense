@@ -175,8 +175,8 @@ the two halves are disjoint. The harvest also keeps the documents that supply he
 documents that supply anchors of that lemma (an *evaluation document* is chosen by the hash
 `SHA-256("evaldoc|" + document)`, one in four; the other documents supply anchors only; a document may supply anchors
 for one lemma and held-out rows for another). The older rows share some documents between anchors and held-out
-sentences, and `evaluate` reports the test rows of documents without anchors apart. The representative measurements are
-the open
+sentences, and `evaluate` reports the test rows of documents without anchors of the lemma of the row apart. The
+representative measurements are the open
 English part-of-speech corpus (`open/representative`) and SemCor (the independent evaluation).
 
 ## Real Sentences and Provenance
@@ -258,7 +258,7 @@ the challenge set overlap nothing.
   third judge who saw both answers. The third judge settled 15 of them and 64 stayed undecided; the undecided rows are
   never used as evidence. A blind re-judging of every 20th accepted row (790 rows) found no disagreement. Rows added
   later are checked by the blind labeler of the quota filling (see the method above).
-- **Quota status.** `coverage/quota-coverage.tsv` has the quota status of every sense. 6,198 of the 7,035 senses of the
+- **Quota status.** `coverage/quota-coverage.tsv` has the quota status of every sense. 6,227 of the 7,035 senses of the
   trained lemmas meet their quota (`WordSense.Builder tiers`).
 - **Tier waves `4u` and `4r`.** They fill the short senses of the uncommon and the rare tier (harvested with `--tier U`
   and `--tier R`, and `--faa-tech-only`):
