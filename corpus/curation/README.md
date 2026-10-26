@@ -1,13 +1,15 @@
 # Curated sense inventory (input of `seed-inventory`)
 
-`senses.tsv` and `groups.tsv` are the reviewed curation of 770 lemmas (263 curated groups). The import into `data/` keeps
+`senses.tsv` and `groups.tsv` are the reviewed curation of 1,157 lemmas (263 curated groups). The import into `data/` keeps
 140 groups (see "Groups").
 
 - the first set, 20 lemmas (297 senses, 179 curated groups, 56 of them kept by the import): `back`, `even`, `first`,
   `forward`, `go`, `help`, `home`, `however`, `just`, `little`, `long`, `only`, `own`, `please`, `pretty`, `review`,
   `right`, `still`, `test` and `well`;
 - the second set, 738 lemmas (6,283 senses), the lemmas of the legacy corpus: 6,580 senses in all;
-- the 12 technical lemmas (176 senses and 6 project senses), see "Technical lemmas".
+- the 12 technical lemmas (176 senses and 6 project senses), see "Technical lemmas";
+- the stage 1 set, 387 lemmas (3,836 senses, 58 of them project senses): the 371 most used polysemous lemmas that no
+  anchor trains, and the 16 heteronym lemmas of sense level that are not among them (see "Stage 1 lemmas").
 
 The ids of senses are public ids (`lemma#label`). The columns `tier`, `tag_count` and the others of `senses.tsv` are the
 per-sense data of the curation (the tier sizes the training data of the sense). `group_id` and `group_reason` record the
@@ -76,6 +78,18 @@ a minor one): real FAA text first, then written technical sentences. The quota f
 **Known gaps** (found by `gpt-6.1-sol` in a review of the FAA sentences that the labeler could not place): the noun
 `bleed` (bleed air), the verb `torque` as a sense, the noun `lock` as a mechanism, `arm` as a moment arm, a ground roll
 and `clean` as aerodynamically clean.
+
+## Stage 1 lemmas
+
+The stage 1 set is the encoder expansion of the most used polysemous lemmas. A polysemous lemma is a lemma with two or
+more labeled senses; the usage of a lemma is the sum of the WordNet 3.0 tag counts of its senses. The set is the 500 most
+used polysemous lemmas that have only letters and are lower case (a numeral, and a capitalized lemma such as
+`American`, which a lower-case harvest never finds, are replaced by the next lemmas in the ranking), minus the lemmas that
+an anchor trains already, plus the 16 sense-level heteronym lemmas (`heteronyms.tsv`) that are not in it. Their rows were
+added with `tools/quota-fill/curate_new.py apply --lemmas FILE`: the Open English WordNet sense, its gloss and its tag
+count (the tier follows the tag count), the label that the data holds (a generated label, kept as it is), and the project
+senses of the data (a sense without a sense key, tier U). After `seed-inventory` these labels are curated and never
+change.
 
 ## Part of speech of a curated sense
 
